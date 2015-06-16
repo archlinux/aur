@@ -1,0 +1,26 @@
+From 3b43b75b969852ec353a556f9abe5fdc091a6e86 Mon Sep 17 00:00:00 2001
+From: Adrian Bacircea <adrian.bacircea@gmail.com>
+Date: Fri, 31 May 2013 12:43:53 +0300
+Subject: [PATCH] Makefile
+
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 9073c91..dd4bd95 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,8 @@
+ modname := bbswitch
+ obj-m := $(modname).o
+ 
+-KVERSION := $(shell uname -r)
++KERNELRELEASE ?= $(shell uname -r)
++KVERSION = $(KERNELRELEASE)
+ KDIR := /lib/modules/$(KVERSION)/build
+ PWD := "$$(pwd)"
+ 
+-- 
+1.8.3
+

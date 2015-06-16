@@ -1,0 +1,25 @@
+PKGVER="$(ls /usr/src/ | grep bbswitch | sed 's/^.*-//')"
+_dkms="/usr/bin/dkms"
+
+
+post_install() {
+  ${_dkms} add -m "bbswitch/${PKGVER}"
+  ${_dkms} build -m "bbswitch/${PKGVER}"
+  ${_dkms} install -m "bbswitch/${PKGVER}"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  ${_dkms} remove -m "bbswitch/${PKGVER}" --all
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_remove() {
+  depmod -a
+}
