@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic
 
 pkgname=glass-wm-git
-pkgver=0.2.r0.g5c73ad4
+pkgver=0.2.r0.g4c4e31f
 pkgrel=1
 pkgdesc="A small, extensible, window manager."
 arch=('i686' 'x86_64')
