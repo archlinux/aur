@@ -1,0 +1,13 @@
+pkgbase = python-charade
+	pkgdesc = Universal encoding detector for Python 2 and 3. Python3 version.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/sigmavirus24/charade
+	arch = any
+	license = LGPL
+	depends = python
+	source = http://pypi.python.org/packages/source/c/charade/charade-1.0.3.tar.gz
+	md5sums = 79ac701a147705c09bdce31b79dfa12e
+
+pkgname = python-charade
+
