@@ -4,7 +4,7 @@
 
 pkgname=ns
 pkgver=2.35
-pkgrel=4
+pkgrel=5
 pkgdesc="Discrete event simulator targeted at networking research"
 url="http://www.isi.edu/nsnam/ns/"
 license=('GPL')

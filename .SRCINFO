@@ -1,7 +1,7 @@
 pkgbase = ns
 	pkgdesc = Discrete event simulator targeted at networking research
 	pkgver = 2.35
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.isi.edu/nsnam/ns/
 	arch = i686
 	arch = x86_64
