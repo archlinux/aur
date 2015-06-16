@@ -1,0 +1,34 @@
+_install_notes() {
+    echo
+    echo '---------------------------------------------------------------------------'
+    echo ' IMPORTANT NOTES:'
+    echo 
+    echo "IMPORTANT: Now, create tables in database with /usr/share/doc/kingfisher/kingfisher.pg.sql"
+    echo "And edit /etc/kingfisher/kingfisher.conf and /srv/http/kingfisher/inc/config.inc.php"
+    echo "Init Kingfisher Daemon with: /etc/rc.d/kingfisherd start"
+    echo "Configure httpd.conf and php.ini with pdo"
+    echo ""
+    echo "Ex. Create Database"
+    echo "$su postgres"
+    echo "$psql"
+    echo "postgres=# CREATE DATABASE kingfisher;"
+    echo "postgres=# CREATE USER kingfisher;"
+    echo "postgres=# \password kingfisher;"
+    echo "postgres=# \i /usr/share/doc/kingfisher/kingfisher.pg.sql;"   
+    echo "\q" 
+    echo "---------------------------------------------------------------------------"
+}
+
+# $1: The new package version
+post_install() {
+    _install_notes
+}
+
+post_upgrade() {
+    _install_notes
+}
+
+pre_remove() {
+    killall kingfisherd
+}
+

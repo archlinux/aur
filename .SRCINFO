@@ -1,0 +1,33 @@
+pkgbase = kingfisherqm
+	pkgdesc = Backend for Cups - count correct pages and administration
+	pkgver = 0.0.3
+	pkgrel = 5
+	url = http://sourceforge.net/projects/kingfisherqm/
+	install = kingfisher.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = postgresql
+	depends = postgresql-libs
+	depends = cups
+	depends = php
+	depends = php-apache
+	depends = apache
+	depends = perl
+	depends = perl-proc-daemon
+	depends = perl-proc-pid-file
+	depends = perl-dbd-pg
+	depends = perl-ipc-shareable
+	depends = perl-gdgraph
+	depends = perl-gdgraph-3d
+	depends = python
+	depends = pkpgcounter
+	options = !makeflags
+	backup = etc/kingfisher/kingfisher.conf
+	source = http://sourceforge.net/projects/kingfisherqm/files/kingfisherqm/0.0.3/kingfisherqm-0.0.3.tar.gz/download
+	source = kingfisher.install
+	md5sums = 9849252841240d87e89196060b9054e2
+	md5sums = ab1c8d8acf5cc8094b49def4953fac6d
+
+pkgname = kingfisherqm
+
