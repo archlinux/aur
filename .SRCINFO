@@ -1,0 +1,17 @@
+pkgbase = perl-net-telnet-cisco
+	pkgdesc = interact with a Cisco router
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Telnet-Cisco
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-net-telnet>=3.02
+	depends = perl-term-readkey
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOSHUA/Net-Telnet-Cisco-1.10.tar.gz
+	md5sums = a25845350be369cb8354e0ddc55708f9
+	sha512sums = 1fcae8e54425a2ddf2e32c772886af97d308421eb664abb296ec16e97531c2eb6727ea4607d48fa957e9a926dc5b88bfffdfa75da10793f4f0247fa3b1f45672
+
+pkgname = perl-net-telnet-cisco
+
