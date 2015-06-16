@@ -10,7 +10,7 @@ url="http://www.loggytronic.com/vomp.php"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://www.loggytronic.com/dl/$pkgname-$pkgver.tgz"
         'vompserver-large_recordings_fix.diff'
         "50-$_plugname.conf")
