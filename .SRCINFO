@@ -1,0 +1,17 @@
+pkgbase = perl-catalyst-model-netblogger
+	pkgdesc = Catalyst Model to post and retrieve blog entries using Net::Blogger
+	pkgver = 0.04001
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Model-NetBlogger
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-net-blogger>=1.01
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLACO/Catalyst-Model-NetBlogger-0.04001.tar.gz
+	md5sums = 3ae6ec34d1f39cb6c4f25b58849a45a9
+	sha512sums = 630405d09b785145d1928a5135df26540511bdaa001586ae0e22d5d2aaf312fd31750fcc64cce5a45159d649f0ef004585738d8e542e33657bd79b3c26829e78
+
+pkgname = perl-catalyst-model-netblogger
+
