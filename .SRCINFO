@@ -1,0 +1,16 @@
+pkgbase = perl-html-calendarmonthsimple
+	pkgdesc = Perl Module for Generating HTML Calendars
+	pkgver = 1.25
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-CalendarMonthSimple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-date-calc
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STIGMATA/HTML-CalendarMonthSimple-1.25.tar.gz
+	md5sums = 2f9fcad2627890cc11ab5c3cd3c986cf
+	sha512sums = d06e397637761d761b1ba94b3725002ce6975197396f72394c9ef9f74de4023affacba6603ac3ec4dd6c92092ac3d701abd11c7e7dc4ada7eb9c8cdfa54f2ce6
+
+pkgname = perl-html-calendarmonthsimple
+
