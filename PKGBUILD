@@ -3,7 +3,7 @@
 pkgname='rubiksolver-git'
 _pkgname='rubiksolver'
 pkgver=1.1.r0.g83426da
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt/QML application to assist with solving the popular Rubik's cube"
 arch=('i686' 'x86_64')
 url="https://github.com/qrwteyrutiyoup/rubiksolver"
