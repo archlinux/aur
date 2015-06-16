@@ -1,0 +1,33 @@
+pkgbase = renpy-git
+	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs (dev channel)
+	pkgver = 4480.94ba4e6
+	pkgrel = 1
+	url = http://www.renpy.org
+	install = renpy.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cython2
+	makedepends = python2-sphinx
+	depends = ttf-dejavu
+	depends = ffmpeg
+	depends = fribidi
+	depends = glew
+	depends = python2-pygame-sdl2-git
+	provides = renpy
+	provides = python-renpy
+	conflicts = renpy-bin
+	conflicts = renpy64
+	conflicts = python-renpy
+	conflicts = renpy
+	conflicts = renpy-allinone
+	replaces = renpy64
+	source = git://github.com/renpy/renpy.git
+	source = renpy.desktop
+	source = renpy-launcher.sh
+	md5sums = SKIP
+	md5sums = a9beb35fa6c6d8af7ba5d2a764c33158
+	md5sums = dfa92cdecc15e5c1ddee387fbbbb2d9c
+
+pkgname = renpy-git
+
