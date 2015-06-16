@@ -1,0 +1,17 @@
+pkgbase = perl-pod-spelling
+	pkgdesc = Send POD to a spelling checker
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Pod-Spelling
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-pod
+	depends = perl-pod-pom>=0.04
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LG/LGODDARD/Pod-Spelling-0.17.tar.gz
+	md5sums = 9240a8c7b6d9531f508fa27ec08c3c70
+	sha512sums = e4b7418d73b5b0addc821475942437e1257fc87318d23d88a2b83a306ab6f71df0af1758ce77a82782424aac9d24518b5392c06421affa659634555658926550
+
+pkgname = perl-pod-spelling
+
