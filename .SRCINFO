@@ -1,0 +1,17 @@
+pkgbase = perl-test-xml
+	pkgdesc = Compare XML in perl tests
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-XML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-xml-parser>=2.34
+	depends = perl-xml-semanticdiff>=0.95
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SE/SEMANTICO/Test-XML-0.08.tar.gz
+	md5sums = 490b487e07908358eb64a3c3c5b48143
+	sha512sums = 04b6a2180de258c5059442050b3292d7edcbca910f2a3b7b8332f3a64a9d26ae8a7f0eec176b9da3f1b6e984e0c6de533fe61e7a9aa13e07ecaea478405d8eb6
+
+pkgname = perl-test-xml
+
