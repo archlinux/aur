@@ -1,0 +1,24 @@
+pkgbase = perl-catalystx-leakchecker
+	pkgdesc = Debug memory leaks in Catalyst applications
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CatalystX-LeakChecker
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-devel-cycle>=1.11
+	depends = perl-moose>=0.90
+	depends = perl-moosex-types
+	depends = perl-namespace-autoclean
+	depends = perl-namespace-clean>=0.05
+	depends = perl-padwalker>=1.8
+	depends = perl-task-weaken
+	depends = perl-text-simpletable
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/CatalystX-LeakChecker-0.06.tar.gz
+	md5sums = 5cba5ffbbdedb754fe4d260fb1727acd
+	sha512sums = 6899db31dc2c071d530d7227fc19921fb9ac004831d081f0e6dd2e2a28f3dbff47bd28aece3aa80ae9459e6bc3a65417e297c50e3ee16cfd1183f81bc9cecc3f
+
+pkgname = perl-catalystx-leakchecker
+
