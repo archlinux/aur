@@ -1,0 +1,17 @@
+pkgbase = xmenud-git
+	pkgdesc = A small start menu application
+	pkgver = 20150616
+	pkgrel = 1
+	url = http://mad.unserver.de/2010/xmonad/xmenud/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pygtk
+	depends = python2-xdg
+	depends = gnome-menus
+	depends = python2
+	conflicts = xmenud
+	replaces = xmenud
+
+pkgname = xmenud-git
+
