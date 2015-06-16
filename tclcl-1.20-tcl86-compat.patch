@@ -1,0 +1,52 @@
+diff --git a/Tcl.cc b/Tcl.cc
+index 1b65037..5c8767c 100644
+--- a/Tcl.cc
++++ b/Tcl.cc
+@@ -213,7 +213,7 @@ void Tcl::error(const char* s)
+ 	if (strlen(s) > MAX_CODE_TO_DUMP) {
+ 		s = "\n[code omitted because of length]\n";
+ 	};
+-	fprintf(stderr, "%s: \"%s\": %s\n", application_, s, tcl_->result);
++	fprintf(stderr, "%s: \"%s\": %s\n", application_, s, Tcl_GetStringResult(tcl_));
+ 	exit(1);
+ }
+ 
+diff --git a/Tcl2.cc b/Tcl2.cc
+index 6e61aa8..6bced10 100644
+--- a/Tcl2.cc
++++ b/Tcl2.cc
+@@ -88,7 +88,7 @@ void Tcl::resultf(const char* fmt, ...)
+ 	va_list ap;
+ 	va_start(ap, fmt);
+ 	vsprintf(bp_, fmt, ap);
+-	tcl_->result = bp_;
++	Tcl_SetResult(tcl_, bp_, TCL_STATIC);
+ }
+ 
+ void Tcl::add_errorf(const char* fmt, ...)
+diff --git a/rate-variable.cc b/rate-variable.cc
+index fbcfb1d..a2e1a2c 100644
+--- a/rate-variable.cc
++++ b/rate-variable.cc
+@@ -82,7 +82,7 @@ char* RateVariable::update_rate_var(ClientData clientData, Tcl_Interp* tcl,
+ 		flags &= TCL_GLOBAL_ONLY;
+ 		CONST char* cv = (char *) Tcl_GetVar2(tcl, name1, name2, flags);
+ 		if (cv == NULL)
+-			return (tcl->result);
++			return (char*)Tcl_GetStringResult(tcl);
+ 		int curval = atoi(cv);
+ 		double rate = 0.;
+ 		timeval tv;
+diff --git a/tclcl.h b/tclcl.h
+index 73046ea..1453e6d 100644
+--- a/tclcl.h
++++ b/tclcl.h
+@@ -85,7 +85,7 @@ class Tcl {
+ 	/* may not work at all! */
+ 	inline char* result() const { return (tcl_->result); }
+ #endif  /* TCL_MAJOR_VERSION >= 8 */
+-	inline void result(const char* p) { tcl_->result = (char*)p; }
++	inline void result(const char* p) { Tcl_SetResult(tcl_, (char*)p, TCL_STATIC); }
+ 	void resultf(const char* fmt, ...);
+ 	inline void CreateCommand(const char* cmd, Tcl_CmdProc* cproc,
+ 				  ClientData cd = 0,

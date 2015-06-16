@@ -1,0 +1,18 @@
+pkgbase = tclcl
+	pkgdesc = Tcl with classes (TclCl) is a Tcl/C++ interface
+	pkgver = 1.20
+	pkgrel = 4
+	url = http://otcl-tclcl.sourceforge.net/tclcl/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = otcl
+	depends = gcc-libs
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/otcl-tclcl/tclcl-src-1.20.tar.gz
+	source = tclcl-1.20-tcl86-compat.patch
+	sha256sums = 64fd1ec4b1d1c13229e58a7e10bf8422d804c5d3f00221117eafc2aff306dc78
+	sha256sums = 8c1d4672013463ff9ccef0f064e739643a4ae50d2e3909e8943791ba8d1c275f
+
+pkgname = tclcl
+
