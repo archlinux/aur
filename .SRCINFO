@@ -1,0 +1,16 @@
+pkgbase = perl-javascript-value-escape
+	pkgdesc = Avoid XSS with JavaScript value interpolation
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/JavaScript-Value-Escape
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/JavaScript-Value-Escape-0.06.tar.gz
+	md5sums = bff17ecb9fb5297b06693b4859fd4e0b
+	sha512sums = 6fdf7c875a3fa08e036b2f8da4ca48efcc2a1aea8917eee8fd8909919da5b181017b46405b57ca0ffccc7e2aa32c0d40f0be59bd4a753cea617f3ba6408c992a
+
+pkgname = perl-javascript-value-escape
+
