@@ -1,0 +1,17 @@
+pkgbase = perl-mojo-base-xs
+	pkgdesc = very fast Mojo-styled accessors
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mojo-Base-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YK/YKO/Mojo-Base-XS-0.07.tar.gz
+	md5sums = 657a93cfb391a747ae4f9ee044ca7716
+	sha512sums = df55ba92fba8e349b331793fa5d249d0d6ea79391a87288e4060d99ece3fda15923c1c8a2dc9bfd382e734f24303766cf104d29229889ca90f4aeb7c693cf7f1
+
+pkgname = perl-mojo-base-xs
+
