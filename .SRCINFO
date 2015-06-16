@@ -1,0 +1,17 @@
+pkgbase = frotz
+	pkgdesc = Z-machine interpreter for playing Interactive Fiction games.
+	pkgver = 2.43d
+	pkgrel = 3
+	url = http://frotz.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	groups = inform
+	license = GPL
+	depends = ncurses
+	source = http://downloads.sourceforge.net/project/frotz/frotz/2.43/frotz-2.43d.tar.gz
+	md5sums = 6f4211c9180c75214cda1020c7db2629
+
+pkgname = frotz
+
