@@ -1,0 +1,18 @@
+pkgbase = perl-html-formattext-withlinks
+	pkgdesc = HTML to text conversion with links as footnotes
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-FormatText-WithLinks
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-format>=0
+	depends = perl-html-tree>=0
+	depends = perl-uri>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STRUAN/HTML-FormatText-WithLinks-0.14.tar.gz
+	md5sums = 264a1436883d20b81e669c65a1f97367
+	sha512sums = ec2cf859401985aaac45ba5ae1da18b3a142d51d821154ad40497a1ec468d86a6a6b85d7a1a66ec2d06bac49fe699def702c4cad86f1fa52da364cb29b6994b7
+
+pkgname = perl-html-formattext-withlinks
+
