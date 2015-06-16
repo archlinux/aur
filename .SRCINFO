@@ -1,0 +1,12 @@
+pkgbase = schematic
+	pkgdesc = Create a color scheme based on a seed RGB color value
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/jangler/schematic
+	arch = any
+	license = MIT
+	source = https://github.com/jangler/schematic/archive/0.2.1.tar.gz
+	sha256sums = 8031d1ff472bb7ef34c59395236a740591dbac812d364d3ffcb73ec89e585cd7
+
+pkgname = schematic
+
