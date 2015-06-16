@@ -1,0 +1,81 @@
+diff --git a/indep-utils/webtrace-conv/dec/proxytrace2any.cc b/indep-utils/webtrace-conv/dec/proxytrace2any.cc
+index 97116f5..49f9416 100644
+--- a/indep-utils/webtrace-conv/dec/proxytrace2any.cc
++++ b/indep-utils/webtrace-conv/dec/proxytrace2any.cc
+@@ -76,7 +76,7 @@ int main (int argc, char* argv[])
+ 	// Init tcl
+ 	Tcl_Interp *interp = Tcl_CreateInterp();
+ 	if (Tcl_Init(interp) == TCL_ERROR) {
+-		printf("%s\n", interp->result);
++		printf("%s\n", Tcl_GetStringResult(interp));
+ 		abort();
+ 	}
+ 	Tcl_InitHashTable(&cidHash, TCL_ONE_WORD_KEYS);
+diff --git a/indep-utils/webtrace-conv/epa/tr-stat.cc b/indep-utils/webtrace-conv/epa/tr-stat.cc
+index cb8c059..00973e0 100644
+--- a/indep-utils/webtrace-conv/epa/tr-stat.cc
++++ b/indep-utils/webtrace-conv/epa/tr-stat.cc
+@@ -243,7 +243,7 @@ int main(int argc, char**argv)
+ 	// Init tcl
+ 	Tcl_Interp *interp = Tcl_CreateInterp();
+ 	if (Tcl_Init(interp) == TCL_ERROR) {
+-		printf("%s\n", interp->result);
++		printf("%s\n", Tcl_GetStringResult(interp));
+ 		abort();
+ 	}
+ 	Tcl_InitHashTable(&cidHash, TCL_STRING_KEYS);
+diff --git a/indep-utils/webtrace-conv/nlanr/tr-stat.cc b/indep-utils/webtrace-conv/nlanr/tr-stat.cc
+index 2701bb4..e1cc08d 100644
+--- a/indep-utils/webtrace-conv/nlanr/tr-stat.cc
++++ b/indep-utils/webtrace-conv/nlanr/tr-stat.cc
+@@ -188,7 +188,7 @@ int main(int argc, char**argv)
+ 	// Init tcl
+ 	Tcl_Interp *interp = Tcl_CreateInterp();
+ 	if (Tcl_Init(interp) == TCL_ERROR) {
+-		printf("%s\n", interp->result);
++		printf("%s\n", Tcl_GetStringResult(interp));
+ 		abort();
+ 	}
+ 	Tcl_InitHashTable(&cidHash, TCL_ONE_WORD_KEYS);
+diff --git a/indep-utils/webtrace-conv/ucb/tr-stat.cc b/indep-utils/webtrace-conv/ucb/tr-stat.cc
+index 2359d2c..be7d231 100644
+--- a/indep-utils/webtrace-conv/ucb/tr-stat.cc
++++ b/indep-utils/webtrace-conv/ucb/tr-stat.cc
+@@ -224,7 +224,7 @@ int main(int argc, char**argv)
+ 	/* Init tcl */
+ 	Tcl_Interp *interp = Tcl_CreateInterp();
+ 	if (Tcl_Init(interp) == TCL_ERROR) {
+-		printf("%s\n", interp->result);
++		printf("%s\n", Tcl_GetStringResult(interp));
+ 		abort();
+ 	}
+ 	Tcl_InitHashTable(&cidHash, TCL_ONE_WORD_KEYS);
+diff --git a/pushback/ident-tree.h b/pushback/ident-tree.h
+index 3a4be3a..1c2a540 100644
+--- a/pushback/ident-tree.h
++++ b/pushback/ident-tree.h
+@@ -83,7 +83,7 @@ class DropHashTable {
+     Tcl_HashSearch searchPtr;
+     Tcl_HashEntry * he = Tcl_FirstHashEntry(hashTable_, &searchPtr);
+     while (he != NULL) {
+-      char * key = Tcl_GetHashKey(hashTable_, he);
++      char * key = (char*)Tcl_GetHashKey(hashTable_, he);
+       long value = (long)Tcl_GetHashValue(he);
+       printf("%s = %ld\n", key, value);
+       he = Tcl_NextHashEntry(&searchPtr);
+diff --git a/webcache/pagepool.cc b/webcache/pagepool.cc
+index 384b125..d52c6e3 100644
+--- a/webcache/pagepool.cc
++++ b/webcache/pagepool.cc
+@@ -658,7 +658,7 @@ int ClientPagePool::command(int argc, const char*const* argv)
+ 			for (he = Tcl_FirstHashEntry(namemap_, &hs); 
+ 			     he != NULL;
+ 			     he = Tcl_NextHashEntry(&hs)) {
+-				char* retVal = Tcl_GetHashKey(namemap_, he);
++				char* retVal = (char*)Tcl_GetHashKey(namemap_, he);
+ 				// Convert name to a PageID
+ 				PageID t1;
+ 				ClientPage::split_name (retVal, t1);
+-- 
+1.8.4.2
+

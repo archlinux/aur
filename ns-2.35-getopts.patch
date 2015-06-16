@@ -1,0 +1,65 @@
+From 8c77a16671969e2dbfa792553435800dd83cea24 Mon Sep 17 00:00:00 2001
+From: Sergio Correia <sergio@correia.cc>
+Date: Fri, 6 Dec 2013 04:19:26 -0300
+Subject: [PATCH 2/2] make tests work
+
+---
+ bin/raw2gp      | 6 ++++--
+ bin/raw2xg      | 6 ++++--
+ bin/raw2xg-sctp | 6 ++++--
+ 3 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/bin/raw2gp b/bin/raw2gp
+index dd123a3..07778a0 100755
+--- a/bin/raw2gp
++++ b/bin/raw2gp
+@@ -21,8 +21,10 @@ can be generated with -s 0.01 -m 90.
+ END
+ };
+ 
+-require 'getopts.pl';
+-&Getopts('ags:m:ql') || usage;
++use Getopt::Std;
++#require 'getopts.pl';
++#&Getopts('ags:m:ql') || usage;
++getopts('ags:m:ql') || usage;
+ 
+ # calculate offsets.  Do we need this?
+ # $offset = int($modulus / 10 + 1) * 10;
+diff --git a/bin/raw2xg b/bin/raw2xg
+index 02625c4..df42795 100755
+--- a/bin/raw2xg
++++ b/bin/raw2xg
+@@ -34,8 +34,10 @@ END
+ };
+ $usage = "usage: $progname [-a] [trace files...]\n";
+ 
+-require 'getopts.pl';
+-&Getopts('acefgds:m:n:qrplvt:xy') || usage;
++use Getopt::Std;
++#require 'getopts.pl';
++#&Getopts('acefgds:m:n:qrplvt:xy') || usage;
++getopts('acefgds:m:n:qrplvt:xy') || usage;
+ 
+ $c = 0;
+ @p = @pc = @pg = @a = @ac = @ae = @d = @lu = @ld = ();
+diff --git a/bin/raw2xg-sctp b/bin/raw2xg-sctp
+index 08dcf0f..3d3f789 100644
+--- a/bin/raw2xg-sctp
++++ b/bin/raw2xg-sctp
+@@ -26,8 +26,10 @@ END
+ };
+ $usage = "usage: $progname [-a] [trace files...]\n";
+ 
+-require 'getopts.pl';
+-&Getopts('aAfFs:m:n:qt:') || usage;
++use Getopt::Std;
++#require 'getopts.pl';
++#&Getopts('aAfFs:m:n:qt:') || usage;
++getopts('aAfFs:m:n:qt:') || usage;
+ 
+ $c = 0;
+ @pplus = @pminus = ();
+-- 
+1.8.4.2
+

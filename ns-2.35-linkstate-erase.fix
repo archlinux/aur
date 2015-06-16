@@ -1,0 +1,13 @@
+diff --git a/linkstate/ls.h b/linkstate/ls.h
+index 5a7800a..7b0fb53 100644
+--- a/linkstate/ls.h
++++ b/linkstate/ls.h
+@@ -134,7 +134,7 @@ public:
+ 		return ib.second ? ib.first : baseMap::end();
+ 	}
+ 
+-	void eraseAll() { erase(baseMap::begin(), baseMap::end()); }
++	void eraseAll() { this->erase(baseMap::begin(), baseMap::end()); }
+ 	T* findPtr(Key key) {
+ 		iterator it = baseMap::find(key);
+ 		return (it == baseMap::end()) ? (T *)NULL : &((*it).second);
