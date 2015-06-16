@@ -1,0 +1,16 @@
+pkgbase = perl-class-member
+	pkgdesc = A set of modules to make the module developement easier
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Member
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OP/OPI/Class-Member-1.6.tar.gz
+	md5sums = 43819bd7853c6c251e4bdf2bf1e81831
+	sha512sums = f0b9aad8a9cc000d8686f3e05c62dad162297e864c935cda2905d3e702a03ee324fbb51e94c600f9f4a99f07b58addbf2321f24e7e2911a5406b2c91c8df40e3
+
+pkgname = perl-class-member
+
