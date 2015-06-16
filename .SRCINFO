@@ -1,0 +1,16 @@
+pkgbase = perl-mime-base64-urlsafe
+	pkgdesc = Perl version of Python's URL-safe base64 codec
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MIME-Base64-URLSafe
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/MIME-Base64-URLSafe-0.01.tar.gz
+	md5sums = eccf42cc7e9576dd23b9f39ad59c9b62
+	sha512sums = c1633763e1e5439af331696b11a05b16d539bf92896cdd3daa7314c3be09c73044fd254ec2562c0da4d306dd2b60e827fe0acdfacaf327b2e00ba0e242139d9a
+
+pkgname = perl-mime-base64-urlsafe
+
