@@ -1,0 +1,16 @@
+pkgbase = perl-test-cpan-meta-yaml
+	pkgdesc = Validate your CPAN META.yml files
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-CPAN-Meta-YAML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-test-yaml-valid>=0.03
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Test-CPAN-Meta-YAML-0.22.tar.gz
+	md5sums = c5acd14f7ecbe1dbf21cc3548ee3dfef
+	sha512sums = 3570c29066ec2655d921f35742a106ba178fc12c9127ffe59b0803ebcb64c626010192ef9584cc6f5863aafdbf4d83d042969f9f456c2bc2e8f8e67bc46d0a2f
+
+pkgname = perl-test-cpan-meta-yaml
+
