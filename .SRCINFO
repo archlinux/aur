@@ -1,0 +1,17 @@
+pkgbase = perl-syntax-highlight-engine-kate
+	pkgdesc = a port to Perl of the syntax highlight engine of the Kate texteditor.
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Syntax-Highlight-Engine-Kate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-differences>=0.61
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SZ/SZABGAB/Syntax-Highlight-Engine-Kate-0.08.tar.gz
+	md5sums = 717f969580fb5894c818fbbc627cc37e
+	sha512sums = 11fe36284a2334f5bf671bce1258dafe5f4df8a5bdb5cdc237db68e3916e07b759100dbe1d437e57f65231d64a13f7452e506b1fee1e20a762b8ef74760b9673
+
+pkgname = perl-syntax-highlight-engine-kate
+
