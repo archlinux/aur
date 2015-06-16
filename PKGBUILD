@@ -1,7 +1,7 @@
 # Maintainer: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
 pkgname=${_pkgname}-git
-pkgver=v2.0.2.r331.g3675b3f
+pkgver=v2.0.2.r351.g5e9c44b
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"

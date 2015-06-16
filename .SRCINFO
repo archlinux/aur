@@ -1,6 +1,6 @@
 pkgbase = grafana-git
 	pkgdesc = A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb
-	pkgver = v2.0.2.r331.g3675b3f
+	pkgver = v2.0.2.r351.g5e9c44b
 	pkgrel = 1
 	url = http://grafana.org
 	install = grafana.install

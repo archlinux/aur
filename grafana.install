@@ -4,7 +4,7 @@ post_upgrade() {
 
 post_install() {
 	getent group grafana >/dev/null || groupadd -r grafana
-	getent passwd grafana >/dev/null || useradd -d /var/lib/grafana -r -U -M -s /bin/false grafana
+	getent passwd grafana >/dev/null || useradd -d /var/lib/grafana -g grafana -r -M -s /bin/false grafana
 	mkdir -p /var/{lib,log}/grafana
 	chown grafana:grafana /var/lib/grafana /var/log/grafana
 }
