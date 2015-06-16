@@ -1,0 +1,18 @@
+pkgbase = perl-poe-filter-ircd
+	pkgdesc = A POE-based parser for the IRC protocol
+	pkgver = 2.44
+	pkgrel = 2
+	url = http://search.cpan.org/dist/POE-Filter-IRCD/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = glibc
+	depends = perl-poe
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/POE-Filter-IRCD-2.44.tar.gz
+	md5sums = 7e2ba13c41760b95504f13b5b8636e86
+
+pkgname = perl-poe-filter-ircd
+
