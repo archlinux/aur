@@ -18,7 +18,7 @@ url="http://rephial.org/"
 license=('GPL2' 'custom')
 depends=('ncurses')
 makedepends=('python-docutils'
-			 #'texlive-most' #Uncomment if you want a pdf manual. That's quite the dependency, don't you think?
+			 'texlive-core' #Uncomment if you want a pdf manual. That's quite the dependency, don't you think?
 			)
 conflicts=('angband' 'angband-git')
 source=("http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-v${pkgver}.tar.gz")
