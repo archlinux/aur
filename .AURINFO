@@ -1,0 +1,14 @@
+pkgbase = perl-file-touch
+	pkgdesc = update file access and modification times, optionally creating files if needed
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/File-Touch
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	source = http://search.mcpan.org/CPAN/authors/id/N/NE/NEILB/File-Touch-0.09.tar.gz
+	options = !emptydirs
+
+pkgname = perl-file-touch
+
