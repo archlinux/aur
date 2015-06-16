@@ -1,0 +1,10 @@
+[Unit]
+Description=Session Announcement Protocol server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/sapserver -d
+
+[Install]
+WantedBy=multi-user.target

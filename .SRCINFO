@@ -1,0 +1,16 @@
+pkgbase = minisapserver
+	pkgdesc = Session Announcement Protocol server.
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = http://www.videolan.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	source = http://download.videolan.org/pub/videolan/miniSAPserver/0.3.8/minisapserver-0.3.8.tar.xz
+	source = minisapserver.service
+	md5sums = e2969e92d8c7af41f22ee29a6214ad11
+	md5sums = e682d99fc529db0c2504c43fe91b23d7
+
+pkgname = minisapserver
+
