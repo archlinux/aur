@@ -1,0 +1,18 @@
+pkgbase = rabcdasm-git
+	pkgdesc = Robust ABC (ActionScript Bytecode) [Dis-]Assembler
+	pkgver = 1.17.r0.gfe93f5e
+	pkgrel = 1
+	url = https://github.com/CyberShadow/RABCDAsm
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = dmd
+	makedepends = dtools
+	makedepends = libphobos-devel
+	depends = xz
+	source = rabcdasm-git::git+git://github.com/CyberShadow/RABCDAsm.git
+	sha256sums = SKIP
+
+pkgname = rabcdasm-git
+
