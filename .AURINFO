@@ -1,0 +1,14 @@
+pkgbase = perl-b-keywords
+	pkgdesc = Lists of reserved barewords and symbol names
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/B-Keywords
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/R/RU/RURBAN/B-Keywords-1.13.tar.gz
+	options = !emptydirs
+
+pkgname = perl-b-keywords
+
