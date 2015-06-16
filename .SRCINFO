@@ -1,0 +1,18 @@
+pkgbase = perl-dancer-template-caml
+	pkgdesc = Text::Caml for Dancer
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dancer-Template-Caml
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.7
+	depends = perl-dancer>=1.3072
+	depends = perl-text-caml>=0.009005
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Dancer-Template-Caml-0.10.tar.gz
+	md5sums = c160749c64a7cf38f099cc05f058b785
+	sha512sums = 6adeafad5f7bdfe4dd92031f6bfc4b46a9f1d081d27b22d36ef1a2b222471a9fc8dd053d9bf14648a20c822c70441f799692d29d8510813aa5ee61ed5895e4fa
+
+pkgname = perl-dancer-template-caml
+
