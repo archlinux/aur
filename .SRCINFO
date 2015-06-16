@@ -1,0 +1,18 @@
+pkgbase = perl-http-request-ascgi
+	pkgdesc = Set up a CGI environment from an HTTP::Request
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTTP-Request-AsCGI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor
+	depends = perl-http-message
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/HTTP-Request-AsCGI-1.2.tar.gz
+	md5sums = 82f4749a702992d405d2a8f8118e87ec
+	sha512sums = 5ea9fe149c7c938af5a089fafe4585f50ea98cd6bab0e06f6de5c8b89c2b749c2cf759fdd8aa70a2d65e34971d030342924c2eafd72b9290da3831eadcc29e89
+
+pkgname = perl-http-request-ascgi
+
