@@ -1,0 +1,14 @@
+pkgbase = vim-assistant
+	pkgdesc = Display the definition of functions, variables, etc. (Tags, PHP/JS/Vim/...)
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2805
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	source = vim-assistant-1.5.8.zip::http://www.vim.org/scripts/download_script.php?src_id=22247
+	md5sums = a12e2cffa436e58f48c12491be32c970
+
+pkgname = vim-assistant
+
