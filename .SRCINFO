@@ -1,6 +1,6 @@
 pkgbase = firefox-ubuntu
 	pkgdesc = Standalone web browser from mozilla.org with global menu integration
-	pkgver = 37.0.2
+	pkgver = 38.0.5
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	install = firefox.install
@@ -39,11 +39,11 @@ pkgbase = firefox-ubuntu
 	optdepends = gst-plugins-good: h.264 video
 	optdepends = gst-libav: h.264 video
 	optdepends = upower: Battery API
-	provides = firefox=37.0.2
+	provides = firefox=38.0.5
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/37.0.2/source/firefox-37.0.2.source.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/38.0.5/source/firefox-38.0.5.source.tar.bz2
 	source = mozconfig
 	source = firefox.desktop
 	source = firefox-install-dir.patch

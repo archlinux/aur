@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 235302 2015-03-31 16:50:17Z foutrelis $
+# $Id: PKGBUILD 240220 2015-06-02 17:35:45Z foutrelis $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-ubuntu
-pkgver=37.0.2
+pkgver=38.0.5
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with global menu integration"
 arch=('i686' 'x86_64')
@@ -26,13 +26,13 @@ options=('!emptydirs' '!makeflags')
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.bz2
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
         firefox-fixed-loading-icon.png unity-menubar.patch)
-sha256sums=('17d0258c1b4930d618e17ef64bdc4a919d215bd7460696b9855a152324e37a96'
+sha256sums=('4f53506d1e8a724a165ee509d9448fa7c9b7203183f53ae313063eb144a403b6'
             'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            '637f19d782f56a143af10a6448f9780d8cfd00a49446a0ce554ab4714e2a73f5')
+            '5fd329439480d861eb37edcca47fb3e05801f5a48b4d6c2afa17fb4c71c65fa1')
 #validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -56,8 +56,6 @@ prepare() {
   # WebRTC build tries to execute "python" and expects Python 2
   ln -s /usr/bin/python2 "$srcdir/path/python"
 
-  # Use gold, as Mozilla can use some of its features, such as safe ICF
-  #ln -s /usr/bin/ld.gold "$srcdir/path/ld"
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
