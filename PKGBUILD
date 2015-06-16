@@ -14,7 +14,7 @@ license=('GPL2')
 depends=('bash' 'gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 install="$pkgname.install"
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-hddarchive.git#commit=$_gitver"
         'hddarchive-default_settings.diff')
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
