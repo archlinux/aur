@@ -1,0 +1,18 @@
+pkgbase = perl-www-wikipedia
+	pkgdesc = Automated interface to the Wikipedia
+	pkgver = 2.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Wikipedia
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-text-autoformat
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/WWW-Wikipedia-2.01.tar.gz
+	md5sums = 68a5f07f2add4e5a8aa591c24aa6fa75
+
+pkgname = perl-www-wikipedia
+
