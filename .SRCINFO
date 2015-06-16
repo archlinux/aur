@@ -1,0 +1,17 @@
+pkgbase = perl-dbix-class-dynamicdefault
+	pkgdesc = Automatically set and update fields
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-Class-DynamicDefault
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-dbicx-testdatabase
+	depends = perl-dbix-class>=0.08127
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/DBIx-Class-DynamicDefault-0.04.tar.gz
+	md5sums = 0f4ae1e7bc8a638f679922b387fbb011
+	sha512sums = fb7b7b23585812b305ecae1341771762df4cd9e244ae002b586df3ebcc29b44a66f593c34da4d3c1212a234ee994f180d14d8d28879ec8246e0d1c0783baf8b8
+
+pkgname = perl-dbix-class-dynamicdefault
+
