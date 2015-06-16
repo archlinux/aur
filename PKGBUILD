@@ -2,13 +2,13 @@
 
 
 pkgname=rust-gnome-git
-pkgver=r902.caf1a79
-pkgrel=2
+pkgver=r904.170b6ca
+pkgrel=3
 pkgdesc="Rust bindings and wrappers for gnome libraries"
 arch=('i686' 'x86_64')
 url="https://github.com/rust-gnome"
 license=('MIT')
-depends=('rust' 'gtk3' 'glib2')
+depends=('gtk3' 'glib2')
 makedepends=('git' 'rust' 'cargo' 'gtk3' 'glib2')
 options=('!strip')
 source=('git+https://github.com/rust-gnome/gtk.git'
@@ -35,11 +35,9 @@ build() {
 package() {
 	cd "$srcdir/gtk/target"
 
-	# host=$(rustc -Vv | grep '^host:' | sed -e 's/^host: //;')
-	# rlib_dir="${pkgdir}/usr/lib/rustlib/${host}/lib/"
-	rustc_stdlib="$(pacman -Qlq rust-nightly-bin | grep 'libstd.*rlib')"
-	rlib_dir="${pkgdir}$(dirname ${rustc_stdlib})"
-	msg $rlib_dir
+	sysroot=$(rustc --print sysroot)
+	host=$(rustc -Vv | grep '^host:' | sed -e 's/^host: //;')
+	rlib_dir="${pkgdir}${sysroot}/lib/rustlib/${host}/lib/"
 	doc_dir="${pkgdir}/usr/share/doc/rust-gnome"
 
 	install -D -m 644 -t "$rlib_dir" release/libgtk.rlib
