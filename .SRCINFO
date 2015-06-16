@@ -1,0 +1,20 @@
+pkgbase = perl-business-edi
+	pkgdesc = Top level class for generating U.N. EDI interchange objects and subobjects.
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Business-EDI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-exporter-easy>=0.14
+	depends = perl-file-find-rule>=0.32
+	depends = perl-json-xs>=2.01
+	depends = perl-list-moreutils>=0.22
+	depends = perl-universal-require>=0.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOEATZ/Business-EDI-0.05.tgz
+	md5sums = f1a4f8448cccdef20b67a057025773ad
+	sha512sums = de49e34baa8ba1117f71f875a7581054f67002a47fd40626cacd27bf5e583f9db1493c47feef4a132dcf0be662c2b9564df8a289db784f9311a264844cca67ae
+
+pkgname = perl-business-edi
+
