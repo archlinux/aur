@@ -1,0 +1,16 @@
+pkgbase = perl-net-cidr
+	pkgdesc = Manipulate IPv4/IPv6 netblocks in CIDR notation
+	pkgver = 0.17
+	pkgrel = 2
+	url = http://search.mcpan.org/dist/Net-CIDR
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MR/MRSAM/Net-CIDR-0.17.tar.gz
+	md5sums = c4632887a13663c7ba769bd6ba1b3c26
+	sha512sums = bb1ad29f79879e46afc221ddec1d790ea69d470e7363dc90e27ec3fb34e15cf753b457b76a4ea0e70db4afc0aeb11f3e2bbe7c204abb5aae967d13ae9605460f
+
+pkgname = perl-net-cidr
+
