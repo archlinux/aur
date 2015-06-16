@@ -1,0 +1,13 @@
+pkgbase = ftnchek
+	pkgdesc = Static analyzer for Fortran 77 programs
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = http://www.dsm.fordham.edu/ftnchek/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = http://www.dsm.fordham.edu/ftnchek//download/ftnchek-3.3.1.tar.gz
+	md5sums = e1f4ce51ea1a85e7b080ab5d23013f97
+
+pkgname = ftnchek
+
