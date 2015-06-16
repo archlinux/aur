@@ -1,0 +1,18 @@
+pkgbase = perl-net-prober
+	pkgdesc = Probes network hosts for downtime, latency, etc...
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Prober
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-io-socket-ssl>=0
+	depends = perl-lwp-online>=0
+	depends = perl-lwpx-paranoidagent>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/COSIMO/Net-Prober-0.11.tar.gz
+	md5sums = 4a63f563c2a3ce61b8dff1a69806e50d
+	sha512sums = c3820d24437b6de0b8b29ac0409fc938df44f56c1701e64bef0b142661cc49db0b42a43705b98823ecc1e1c30189ec54b1bc5c3b873c777b5b4bd164266833c3
+
+pkgname = perl-net-prober
+
