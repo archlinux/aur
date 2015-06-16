@@ -10,7 +10,7 @@ url="http://www.muempf.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' 'libid3tag' 'libmad' 'libsndfile' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgbase | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://www.muempf.de/down/$pkgbase-$pkgver.tar.gz"
         'mp3-vdr2.1.2compat.diff'
         "50-mp3.conf"
