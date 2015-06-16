@@ -1,0 +1,15 @@
+pkgbase = coap-client
+	pkgdesc = Example cli coap client for libcoap
+	pkgver = 4.1.1
+	pkgrel = 2
+	url = http://sourceforge.net/projects/libcoap/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	license = BSD
+	depends = libcoap
+	source = http://downloads.sourceforge.net/project/libcoap/coap-18/libcoap-4.1.1.tar.gz
+
+pkgname = coap-client
+
