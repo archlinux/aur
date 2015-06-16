@@ -27,5 +27,4 @@ package() {
 	install -Dm755 "data/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
 	install -Dm644 "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
 	install -Dm644 "${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
-	rm "$pkdir/usr/bin/${pkgname}.py"
 }
