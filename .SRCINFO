@@ -1,0 +1,21 @@
+pkgbase = perl-twiggy
+	pkgdesc = AnyEvent HTTP server for PSGI (like Thin)
+	pkgver = 0.1023
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Twiggy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	makedepends = perl-test-tcp
+	depends = perl-anyevent
+	depends = perl-http-message
+	depends = perl-plack>=0.99
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Twiggy-0.1023.tar.gz
+	md5sums = 683b399ce829eb66cea9e0b072af233d
+	sha512sums = cea59446cc95184db37eff3706010765488bfb5e42ed7dc3e379de5f4e99645dd80507f1c0ad686511a152bb4269f4e92204598506eb1b5e46dabaac5b896e60
+
+pkgname = perl-twiggy
+
