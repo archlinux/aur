@@ -1,0 +1,16 @@
+pkgbase = perl-config-ini
+	pkgdesc = simple .ini-file format
+	pkgver = 0.025
+	pkgrel = 1
+	url = https://metacpan.org/release/Config-INI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mixin-linewise
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Config-INI-0.025.tar.gz
+	md5sums = 0402eb29869547dbcf03ed6f35fef3c0
+	sha512sums = 2831e2611409c1f09029b37e56bcbc875051cf9ac5e458f38fbac29a3e48665f49ea9ac66519eeee71e9b52b2c702507eb801c518a8417bbf0806270b0bc4155
+
+pkgname = perl-config-ini
+
