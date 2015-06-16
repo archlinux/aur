@@ -1,0 +1,17 @@
+pkgbase = perl-xml-elemental
+	pkgdesc = simplistic and perlish handling of XML
+	pkgver = 2.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Elemental
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-task-weaken>=1.02
+	depends = perl-xml-sax
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMA/XML-Elemental-2.11.tar.gz
+	md5sums = d9dc66d1b24e890e07b28020cf05f4a6
+	sha512sums = d9c1d324aa6c8d5648d9cde9ff801ee04b03e44614c82bf7d0330dfef02c03333c3a05f71cc41e052dfefe921c48c0f200dac477f76203afc93289c71f1aa96a
+
+pkgname = perl-xml-elemental
+
