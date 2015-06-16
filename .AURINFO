@@ -1,0 +1,40 @@
+pkgbase = perl-kiokudb
+	pkgdesc = Object Graph storage engine
+	pkgver = 0.57
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/KiokuDB
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-moose
+	checkdepends = perl-test-exception
+	depends = perl-cache-ref>=0.02
+	depends = perl-class-load
+	depends = perl-data-stream-bulk>=0.08
+	depends = perl-data-swap
+	depends = perl-data-uuid>=1.203
+	depends = perl-data-visitor>=0.24
+	depends = perl-hash-util-fieldhash-compat
+	depends = perl-json>=2.12
+	depends = perl-json-xs>=2.231
+	depends = perl-module-pluggable
+	depends = perl-moose>=2.0000
+	depends = perl-moosex-clone>=0.04
+	depends = perl-moosex-role-parameterized>=0.10
+	depends = perl-moosex-yaml>=0.04
+	depends = perl-padwalker>=1.9
+	depends = perl-path-class
+	depends = perl-scope-guard
+	depends = perl-search-gin
+	depends = perl-set-object>=1.26
+	depends = perl-sub-exporter
+	depends = perl-throwable
+	depends = perl-tie-toobject
+	depends = perl-try-tiny
+	depends = perl-yaml-libyaml
+	depends = perl-namespace-clean>=0.08
+	source = http://search.mcpan.org/CPAN/authors/id/D/DO/DOY/KiokuDB-0.57.tar.gz
+	options = !emptydirs
+
+pkgname = perl-kiokudb
+
