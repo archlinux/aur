@@ -1,0 +1,18 @@
+pkgbase = perl-moosex-nonmoose
+	pkgdesc = easy subclassing of non-Moose classes
+	pkgver = 0.26
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MooseX-NonMoose
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	depends = perl-list-moreutils
+	depends = perl-module-runtime
+	depends = perl-moose
+	depends = perl-try-tiny
+	source = http://search.mcpan.org/CPAN/authors/id/D/DO/DOY/MooseX-NonMoose-0.26.tar.gz
+	options = !emptydirs
+
+pkgname = perl-moosex-nonmoose
+
