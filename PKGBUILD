@@ -4,7 +4,7 @@
 
 pkgname=tclcl
 pkgver=1.20
-pkgrel=4
+pkgrel=5
 pkgdesc="Tcl with classes (TclCl) is a Tcl/C++ interface"
 url="http://otcl-tclcl.sourceforge.net/tclcl/"
 license=('MIT')
