@@ -1,0 +1,25 @@
+pkgbase = libfm-gtk3-git
+	pkgdesc = Library for file management
+	pkgver = 1.2.3.r50.ge6d3530
+	pkgrel = 1
+	url = http://www.lxde.org
+	install = libfm.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = menu-cache
+	depends = desktop-file-utils
+	depends = libexif
+	depends = dbus-glib
+	provides = libfm=1.2.3.r50.ge6d3530
+	provides = libfm-extra
+	conflicts = libfm
+	source = libfm::git://git.lxde.org/git/lxde/libfm.git
+	sha256sums = SKIP
+
+pkgname = libfm-gtk3-git
+
