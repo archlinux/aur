@@ -10,7 +10,7 @@ url="http://projects.vdr-developer.org/projects/plg-neutrinoepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=$_vdrapi")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/attachments/download/1475/$_plugname-$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('881426478efc94111c3f11c6b68f25c4')
