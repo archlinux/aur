@@ -1,0 +1,16 @@
+pkgbase = perl-moosex-semiaffordanceaccessor
+	pkgdesc = Name your accessors foo() and set_foo()
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MooseX-SemiAffordanceAccessor
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose>=0.94
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DR/DROLSKY/MooseX-SemiAffordanceAccessor-0.10.tar.gz
+	md5sums = a4a7c332448e3c55e08762d867783390
+	sha512sums = 6261248cc3b4a5dca4ae3303160034be89483fd27197978310c0f4b13573914d99837b50886a0f5e423a148f4b876e5c74e54836203eb4837865e4d4a1102f4f
+
+pkgname = perl-moosex-semiaffordanceaccessor
+
