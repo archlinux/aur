@@ -1,0 +1,17 @@
+post_install() {
+   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+   update-desktop-database -q
+   update-mime-database /usr/share/mime &>/dev/null
+   #echo " => Install access licence manually from https://www.sk.ee/getaccess/"
+}
+
+post_upgrade() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database /usr/share/mime &>/dev/null
+}
+
+post_remove() {
+  post_upgrade
+}
+

@@ -1,0 +1,28 @@
+pkgbase = qdigidoc
+	pkgdesc = Qt based UI application for verifying and signing digital signatures
+	pkgver = 3.10.0.1401
+	pkgrel = 1
+	url = http://www.id.ee/
+	install = qdigidoc.install
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	makedepends = opensc
+	makedepends = qt5-tools
+	makedepends = qt5-translations
+	depends = libdigidocpp
+	depends = qt5-base
+	depends = libldap
+	depends = shared-mime-info
+	depends = esteidcerts
+	depends = ccid
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	conflicts = qdigidoc-svn
+	conflicts = sk-qdigidoc-svn
+	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc/qdigidoc_3.10.0.1401.orig.tar.gz
+	sha256sums = e11cfd491de715472435887e0bdcda2ab82d45d1ce14718a28a8420875ce601c
+
+pkgname = qdigidoc
+
