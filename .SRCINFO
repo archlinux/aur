@@ -1,0 +1,18 @@
+pkgbase = perl-text-csv-simple
+	pkgdesc = Simpler parsing of CSV files
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-CSV-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-trigger
+	depends = perl-file-slurp
+	depends = perl-text-csv-xs
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TM/TMTM/Text-CSV-Simple-1.00.tar.gz
+	md5sums = 03eaf9232c84716e8a70ea1dcd9edfb2
+	sha512sums = 3b4779d06183a66fb2502eaabf506e10b7d08ebe16d20682e651f04ede50719b88cc1c43ad52300b5b2f28fc2f9870d05c80069cc37988b555933dd09e5e0245
+
+pkgname = perl-text-csv-simple
+
