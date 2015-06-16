@@ -1,0 +1,17 @@
+pkgbase = perl-html-stripscripts-parser
+	pkgdesc = XSS filter using HTML::Parser
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-StripScripts-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-parser>=3.56
+	depends = perl-html-stripscripts>=1.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/HTML-StripScripts-Parser-1.03.tar.gz
+	md5sums = b4c169034be56590a53f8835529627ba
+	sha512sums = 3bc766ff738623191b23c5212751cad32b76160bf5e3dcdfad5e161288c906deb1357fc092a962da87525b7364ba924de9ef68b94966c003ee7cb23e8035dc15
+
+pkgname = perl-html-stripscripts-parser
+
