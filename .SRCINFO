@@ -1,0 +1,16 @@
+pkgbase = perl-autoxs-header
+	pkgdesc = Container for the AutoXS header files
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/AutoXS-Header
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/AutoXS-Header-1.02.tar.gz
+	md5sums = bfed85ce503f6a2222b6ddd5cf7c41bc
+	sha512sums = 96396cf791c15c0f230eb78d5c9ee41ecf37dc91bb2f61c0a4663df83222ccab9d5bb3cb9219796e7f729e92e065b791403cbaef72c2d7630e74f147a8bb8f27
+
+pkgname = perl-autoxs-header
+
