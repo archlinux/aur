@@ -1,0 +1,20 @@
+pkgbase = supybot-git
+	pkgdesc = A cross-platform IRC bot written in Python
+	pkgver = 0.83.4.1.7089.6f925e5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/supybot/
+	arch = i686
+	arch = x86_64
+	license = 3-clause BSD
+	makedepends = git
+	depends = python2>=2.5
+	depends = python2-pysqlite-legacy
+	depends = python2-twisted
+	optdepends = python2-pyopenssl: SSL server support
+	provides = supybot
+	conflicts = supybot
+	source = git://supybot.git.sourceforge.net/gitroot/supybot/supybot
+	md5sums = SKIP
+
+pkgname = supybot-git
+
