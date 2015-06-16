@@ -1,0 +1,17 @@
+pkgbase = perl-version-next
+	pkgdesc = increment module version numbers simply and correctly
+	pkgver = 0.002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Version-Next
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception>=0.29
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Version-Next-0.002.tar.gz
+	md5sums = abf120bdaa094c3c8fcf23bbb21e34e8
+	sha512sums = bdae25c0f47b469684616d6f0c3a92c4f622cb1b4e09b015aaf11e9895d9d5d958dd6884d3ce2a71ede9139242a8c05ab4f9c4f9cf5a500a9f5b745342213743
+
+pkgname = perl-version-next
+
