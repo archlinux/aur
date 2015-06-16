@@ -1,0 +1,16 @@
+pkgbase = perl-system-command
+	pkgdesc = Object for running system commands
+	pkgver = 1.110
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/System-Command
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-ipc-run
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/B/BO/BOOK/System-Command-1.110.tar.gz
+	md5sums = 19166c2d22250544ea928481b726900c
+	sha512sums = 7395af65b2f79c96503e7d88ec90c8c8a55c192b4aefa5fb888dfcf0b24a623e6a50c1cf8bd233af701de387dea74fc7b004cf86254bff8c020a558ed812cf41
+
+pkgname = perl-system-command
+
