@@ -1,0 +1,16 @@
+pkgbase = perl-template-alloy
+	pkgdesc = TT2/3, HT, HTE, Tmpl, and Velocity Engine
+	pkgver = 1.020
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Template-Alloy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RH/RHANDOM/Template-Alloy-1.020.tar.gz
+	md5sums = b7106441b0f52759718edabb50a760b1
+	sha512sums = da848d64a05ef880b328efaf5f12aeeb1040150d2b0f90accbde7d5d78f9534a23a60767fd8d7f06b98bb664bb873e23289b23730736488e256d183e5e270e90
+
+pkgname = perl-template-alloy
+
