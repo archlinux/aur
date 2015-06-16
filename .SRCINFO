@@ -1,0 +1,19 @@
+pkgbase = perl-graphics-framebuffer
+	pkgdesc = A Simple Framebuffer Graphics Library
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://metacpan.org/release/Graphics-Framebuffer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-imager
+	depends = perl-switch
+	depends = perl-sys-mmap
+	depends = perl>=5.014
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKELSCH/Graphics-Framebuffer-4.1.tar.gz
+	md5sums = 8046a11a692b274e22b8905d9659235b
+	sha512sums = 50aa769529ad8b5c5617e61726712ecc57aacd5a694faf0b2c19feca8a72e2321868607ae78f90ebeab9b8b6ac10081aa66cf9b4befed4b71f75a8f4ea051afc
+
+pkgname = perl-graphics-framebuffer
+
