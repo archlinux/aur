@@ -1,0 +1,16 @@
+pkgbase = perl-devel-cover
+	pkgdesc = Code coverage metrics for Perl
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Devel-Cover
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warn
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/P/PJ/PJCJ/Devel-Cover-1.15.tar.gz
+	options = !emptydirs
+
+pkgname = perl-devel-cover
+
