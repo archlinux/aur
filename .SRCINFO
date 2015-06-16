@@ -1,0 +1,16 @@
+pkgbase = perl-file-modified
+	pkgdesc = checks intelligently if files have changed
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Modified
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORION/File-Modified-0.07.tar.gz
+	md5sums = 271a991b96ccbdaeb7098272c9f97d51
+	sha512sums = 8f3f8acec276c4760f25b483f5d3eb79d6184b69e77b9d3d68ce25cdf212158844c329b667871f0dcf0bc9e72d41a502d9feb7ed3654169ef964991d5ef7fbcf
+
+pkgname = perl-file-modified
+
