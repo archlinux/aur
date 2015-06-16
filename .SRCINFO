@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-authorization-roles
+	pkgdesc = Role based authorization for Catalyst based on Catalyst::Plugin::Authentication
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Authorization-Roles
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl>=5.008
+	depends = perl-catalyst-plugin-authentication>=0.10003
+	depends = perl-catalyst-runtime>=5.7
+	depends = perl-set-object>=1.14
+	depends = perl-universal-isa>=0.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Authorization-Roles-0.09.tar.gz
+	md5sums = d2797b0e1fc8e960cf92d9b725e33630
+	sha512sums = fb3ac02991a1f55cc90750a914c956042a06c77012d1a060ff5f67717130d23aafab47e62d6aae0787f33cb7064d05e5f3e758ff8680558c9e537a4123d38482
+
+pkgname = perl-catalyst-plugin-authorization-roles
+
