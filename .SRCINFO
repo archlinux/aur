@@ -1,0 +1,16 @@
+pkgbase = perl-catalyst-manual
+	pkgdesc = The Catalyst developer's manual
+	pkgver = 5.9007
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Manual
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-Manual-5.9007.tar.gz
+	md5sums = dd24ec95a064bab02c0ed0e4faf7a19e
+	sha512sums = 37da1afee051f8a1a3089994bab7b07beb8e7cefbd530b4a11cc4a06dba64f4b4ea7e2bd61c97c7b5d237c1adc38a3b00e401104b5fe81edc0eeac199dd82640
+
+pkgname = perl-catalyst-manual
+
