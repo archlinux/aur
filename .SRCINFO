@@ -1,0 +1,16 @@
+pkgbase = perl-filter-template
+	pkgdesc = Source filter for inline code templating.
+	pkgver = 1.040
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Filter-Template
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RC/RCAPUTO/Filter-Template-1.040.tar.gz
+	md5sums = 2056c653861787083fed9c81ed2ce0b2
+	sha512sums = 0dee3845a55fe69e80c5a08c83bbc621d66043113b0f15da6d87554051841f30ccee2b47379da647e294770db53cee1233dc0c82e6e674e278edca5ed63e81ef
+
+pkgname = perl-filter-template
+
