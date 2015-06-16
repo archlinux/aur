@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-session-store-delegate
+	pkgdesc = Delegate session storage to an
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-Delegate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-use-ok
+	depends = perl-catalyst-plugin-session>=0.27
+	depends = perl-moose
+	depends = perl-moosex-emulate-class-accessor-fast
+	depends = perl-mro-compat
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-Store-Delegate-0.06.tar.gz
+	md5sums = daa73e910e3ec47fd7abc31642cc65aa
+	sha512sums = 915d632600149da20e6d976c4104567e6fc3edbc9d64675e1d1fbb13b00f0bda4cdbd161ffb3e349ccc4fc130d5c72345a512afb8f8fdfe1694c7646741ff382
+
+pkgname = perl-catalyst-plugin-session-store-delegate
+
