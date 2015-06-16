@@ -1,0 +1,20 @@
+pkgbase = perl-web-simple
+	pkgdesc = A quick and easy way to build simple web applications
+	pkgver = 0.030
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Web-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-dumper-concise>=2.020
+	depends = perl-moo>=0.009014
+	depends = perl-plack>=0.9968
+	depends = perl-syntax-keyword-gather>=1.001
+	depends = perl>=5.006
+	depends = perl-strictures>=1
+	depends = perl-warnings-illegalproto
+	source = http://search.mcpan.org/CPAN/authors/id/M/MS/MSTROUT/Web-Simple-0.030.tar.gz
+	options = !emptydirs
+
+pkgname = perl-web-simple
+
