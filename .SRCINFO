@@ -1,0 +1,16 @@
+pkgbase = perl-tie-chararray
+	pkgdesc = Access Perl scalars as arrays of characters
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Tie-CharArray
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILTZU/Tie-CharArray-1.00.tar.gz
+	md5sums = ffa070b66d1d2aba74c57b5ca313b40c
+	sha512sums = a6e2720234f355fc856efa64d9b4050f173ee45b94cf8535dfcbb525f9e0f90a8b10a7e826bc38bc09caee57ea24a7cba303b265b2434157da8b3559bb2f13d2
+
+pkgname = perl-tie-chararray
+
