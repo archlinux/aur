@@ -1,0 +1,17 @@
+pkgbase = perl-module-runtime-conflicts
+	pkgdesc = Provide information on conflicts for Module::Runtime
+	pkgver = 0.002
+	pkgrel = 1
+	url = https://metacpan.org/release/Module-Runtime-Conflicts
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dist-checkconflicts
+	depends = perl-module-runtime
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Module-Runtime-Conflicts-0.002.tar.gz
+	md5sums = 6171a55eb2937b4429bed8dfd75080a9
+	sha512sums = e07ee4e7707b6c8ee52afc01f7fb7e8a04fc9ab3f3e4624fa7f4011bb314aa77aa0e060c58592e3bc21d9fb6d9d83190bb655b43940e79a4d95557ce720530af
+
+pkgname = perl-module-runtime-conflicts
+
