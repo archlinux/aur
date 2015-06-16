@@ -1,0 +1,16 @@
+pkgbase = llgal
+	pkgdesc = On-line gallery generator based on iGal
+	pkgver = 0.13.17
+	pkgrel = 1
+	url = http://home.gna.org/llgal/
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-image-size
+	depends = perl-locale-gettext
+	options = !emptydirs
+	source = http://download.gna.org/llgal/llgal-0.13.17.tar.bz2
+	md5sums = 3d42aaebcea39d0841ef6777a24ace41
+
+pkgname = llgal
+
