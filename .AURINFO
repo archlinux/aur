@@ -1,0 +1,14 @@
+pkgbase = perl-pod-perldoc
+	pkgdesc = Look up Perl documentation in Pod format.
+	pkgver = 3.23
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Pod-Perldoc
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+	options = !emptydirs
+
+pkgname = perl-pod-perldoc
+
