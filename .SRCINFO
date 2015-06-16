@@ -1,0 +1,16 @@
+pkgbase = perl-data-buffer
+	pkgdesc = Read/write buffer class
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Buffer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/Data-Buffer-0.04.tar.gz
+	md5sums = d971f7b92684cc4f4cba7a9c774b8480
+	sha512sums = 19725145b68a4143e8d1b65029df6715a880fe65298c7295464edb565b47005dab614f788066df1e662759a9e7c76d2c45116e78bf03e351ed57e29fe0d0b921
+
+pkgname = perl-data-buffer
+
