@@ -1,0 +1,20 @@
+pkgbase = perl-moosex-object-pluggable
+	pkgdesc = Make your classes pluggable
+	pkgver = 0.0013
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MooseX-Object-Pluggable
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	depends = perl-module-runtime
+	depends = perl-moose
+	depends = perl-try-tiny
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Object-Pluggable-0.0013.tar.gz
+	md5sums = ef047198af7e065cb3f02cf56daf8fdd
+	sha512sums = af0753fbd26a6b7b0173a8fdf6c386e2ea87c58832d88aaef3d70493bf23bf5a87a5bdedb19e049d8d1768ba2a98ff96243bfb17abe4d61842daa36001dfdb4e
+
+pkgname = perl-moosex-object-pluggable
+
