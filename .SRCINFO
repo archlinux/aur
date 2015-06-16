@@ -1,0 +1,23 @@
+pkgbase = perl-dbix-class-timestamp
+	pkgdesc = DBIx::Class extension to update and create date and time based fields
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-Class-TimeStamp
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-class-accessor-grouped
+	makedepends = perl-datetime-format-mysql
+	makedepends = perl-datetime-format-sqlite
+	makedepends = perl-time-warp
+	depends = perl>=5.8.1
+	depends = perl-datetime>=0.55
+	depends = perl-dbix-class>=0.08009
+	depends = perl-dbix-class-dynamicdefault>=0.03
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RI/RIBASUSHI/DBIx-Class-TimeStamp-0.14.tar.gz
+	md5sums = 02526ab3bc2aac7845ac18909a97a37b
+	sha512sums = f4b47b1c9eb467fb3b50caa4a4c9733c9b49d90716edacbda061524b0ee23365f6f872248acfcfff595c7185c9dd9732d1c107eda08585c629b1aabb9af2e930
+
+pkgname = perl-dbix-class-timestamp
+
