@@ -1,0 +1,17 @@
+pkgbase = perl-pegex
+	pkgdesc = Acmeist PEG Parser Framework
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://metacpan.org/release/Pegex
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-yaml-libyaml
+	depends = perl-file-sharedir
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Pegex-0.60.tar.gz
+	md5sums = 347f72c1c0347148d80058ea35927df8
+	sha512sums = e0ea53d38ad889cef33d3121acbc0dd265cea3a9396100266be9c3f1a2b4d43fc18f752087d8f95830783d18b9d18bcecd36a91bde756b6eb5dd900b661338c5
+
+pkgname = perl-pegex
+
