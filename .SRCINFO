@@ -1,0 +1,16 @@
+pkgbase = perl-net-ftp-autoreconnect
+	pkgdesc = FTP client class with automatic reconnect on failure
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-FTP-AutoReconnect
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GI/GIFF/Net-FTP-AutoReconnect-0.3.tar.gz
+	md5sums = 0e25887641efe59b6fd2dd6964fb77a7
+	sha512sums = cdb2796399c0440741f17b4b48c6ee66647a8b01ddde48430d03ddacb360f798c40ebfb3c8b4604963ac6ff6f78ce022d8d791a6df6d73b1d5c04b0f328509c1
+
+pkgname = perl-net-ftp-autoreconnect
+
