@@ -1,0 +1,16 @@
+pkgbase = perl-mldbm-sync
+	pkgdesc = safe concurrent access to MLDBM databases
+	pkgver = 0.30
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MLDBM-Sync
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mldbm>=1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHAMAS/MLDBM-Sync-0.30.tar.gz
+	md5sums = 1bb4e8d4bd6a30eee3f1126956409321
+	sha512sums = 6ec51617972eb332a9f99f85315497c1acd462cc8f4d91ebe94e698fbf6aaf7de4776a92b3b5dc1adb50f0dfb7e8146c22e727c1a770a62aa775aee3b16c434c
+
+pkgname = perl-mldbm-sync
+
