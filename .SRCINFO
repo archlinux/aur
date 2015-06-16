@@ -1,0 +1,35 @@
+pkgbase = perl-chi
+	pkgdesc = Unified cache handling interface
+	pkgver = 0.58
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CHI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-class
+	makedepends = perl-test-deep
+	makedepends = perl-test-exception
+	makedepends = perl-test-warn
+	depends = perl-carp-assert>=0.20
+	depends = perl-data-uuid
+	depends = perl-digest-jhash
+	depends = perl-hash-moreutils
+	depends = perl-json
+	depends = perl-list-moreutils>=0.13
+	depends = perl-log-any>=0.08
+	depends = perl-moo>=1.003
+	depends = perl-moox-types-mooselike>=0.23
+	depends = perl-moox-types-mooselike-numeric
+	depends = perl-string-rewriteprefix
+	depends = perl-task-weaken
+	depends = perl-time-duration>=1.06
+	depends = perl-time-duration-parse>=0.03
+	depends = perl-timedate
+	depends = perl-try-tiny>=0.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/CHI-0.58.tar.gz
+	md5sums = 2efc812710358a6f70fdba7407227d87
+	sha512sums = bcbb485c5160974efdf313a7f4b90062cfb343e3b91b6060d0888a1eae82f019cfaa8710220cf87fa1aa2d0bfed5d560c7192c3491cf0f2e145aee58f28ce60c
+
+pkgname = perl-chi
+
