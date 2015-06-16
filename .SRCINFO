@@ -1,0 +1,17 @@
+pkgbase = perl-test-yaml-meta
+	pkgdesc = Validation of the META.yml file in a distribution.
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-YAML-Meta
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-test-cpan-meta-yaml>=0.17
+	depends = perl-test-yaml-valid>=0.03
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Test-YAML-Meta-0.20.tar.gz
+	md5sums = 2edbc09069b916d2fdecef6990642562
+	sha512sums = 52f215b53b91de07fcf5c4f2830f5089731d4e53cc54863bcde067feef94a82d3ce63fdbc8f57f2264cccfb0b07fe8d94e0b18e51bd9776bb167d3d5d8945f41
+
+pkgname = perl-test-yaml-meta
+
