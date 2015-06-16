@@ -1,0 +1,16 @@
+pkgbase = usetaglib-git
+	pkgdesc = Command line utility to read and edit meta-data of audio formats supported by taglib.
+	pkgver = r18.d2fdf4b
+	pkgrel = 2
+	url = http://git.treefish.org/~alex/usetaglib.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = ca-certificates-cacert
+	depends = taglib>=1.9.1
+	source = usetaglib-git::git+https://git.treefish.org/~alex/usetaglib.git
+	md5sums = SKIP
+
+pkgname = usetaglib-git
+
