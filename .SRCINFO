@@ -1,0 +1,23 @@
+pkgbase = qastools-qt5
+	pkgdesc = A collection of desktop applications for the Linux sound system ALSA.
+	pkgver = 0.19
+	pkgrel = 2
+	url = http://xwmw.org/qastools/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = qasconfig
+	provides = qashctl
+	provides = qasmixer
+	conflicts = qastools
+	conflicts = qasmixer
+	conflicts = qashctl
+	conflicts = qasconfig
+	source = http://esclapion.free.fr/AUR/qastools.tar.gz
+	md5sums = f94285637508ac042e4bae0e433ca729
+
+pkgname = qastools-qt5
+
