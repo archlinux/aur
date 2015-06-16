@@ -1,0 +1,18 @@
+pkgbase = perl-padre-plugin-mojolicious
+	pkgdesc = Mojolicious support for Padre
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Padre-Plugin-Mojolicious
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-mojolicious>=2.34
+	depends = perl-padre>=0.92
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Padre-Plugin-Mojolicious-0.06.tar.gz
+	md5sums = e8edfc596ba6ea75f9cb105578eb52e2
+	sha512sums = 3ffde6428a6889a2892bef8cb02aded22394fb8696c74db1edfd183e8cc9d9c49240f650656d2a22e8efcd1e5b488cb1552fae5af2869ec4b71e551a34746ea3
+
+pkgname = perl-padre-plugin-mojolicious
+
