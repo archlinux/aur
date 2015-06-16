@@ -1,0 +1,23 @@
+pkgbase = perl-web-hippie
+	pkgdesc = Web toolkit for the long hair, or comet
+	pkgver = 0.40
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Web-Hippie
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-anyevent
+	depends = perl-anymq
+	depends = perl-class-accessor
+	depends = perl-http-date
+	depends = perl-json
+	depends = perl-plack
+	depends = perl-protocol-websocket
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLKAO/Web-Hippie-0.40.tar.gz
+	md5sums = 8b6ad727288f5cd565c355a7538a2369
+	sha512sums = eb4a62db4f4a2a5f87bdf1c7be030925563a60231ed7000565005638de4095516430d4287cb0dc51e3075ca5640cfbc76af5a457bf0b771e607beae165e76eee
+
+pkgname = perl-web-hippie
+
