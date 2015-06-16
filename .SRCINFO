@@ -1,0 +1,18 @@
+pkgbase = perl-io-aio
+	pkgdesc = Asynchronous Input/Output
+	pkgver = 4.31
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/IO-AIO
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = glibc>=2.20
+	depends = perl-common-sense
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.31.tar.gz
+	md5sums = de33075400968c2c23a861d05f92a979
+	sha512sums = f1e564595201ba46506d9aea4f8e54d8aae55b8b018ad8fddcd3eeba3b3a5f6814df21f5dee68a3a30cee7509de22a4440afcec73d6df15d20f44ef5e5496a27
+
+pkgname = perl-io-aio
+
