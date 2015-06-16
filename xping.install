@@ -1,0 +1,9 @@
+post_install() {
+cat <<End-of-message
+
+    xping will be installed set-uid because most platforms requires
+    superuser privileges to open RAW sockets. xping drops the privileges
+    when it has opened the sockets.
+
+End-of-message
+}
