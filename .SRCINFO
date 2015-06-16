@@ -1,0 +1,16 @@
+pkgbase = perl-heap-simple
+	pkgdesc = Fast and easy to use classic heaps
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Heap-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THOSPEL/Heap-Simple-0.13.tar.gz
+	md5sums = 7a70c8e7e52b35c33bbbb9ad8cdbdeb4
+	sha512sums = 703e996ecc5cfac03eeb76cf1fa8c583536c391907d9639cc0eb64fc206a16e0c77f424b5ace0d812d1a2ff292ca06754a7e1bcfd14f4adfb2989050ebffe739
+
+pkgname = perl-heap-simple
+
