@@ -1,0 +1,17 @@
+pkgbase = perl-array-iterator
+	pkgdesc = A simple class for iterating over Perl arrays
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Array-Iterator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	depends = perl-capture-tiny>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHARYANTO/Array-Iterator-0.11.tar.gz
+	md5sums = 56cbea833adf1dcbc27d3329281e3d2a
+	sha512sums = 1f99a09566c31fbce45983f6c92bc1b995b121dd4c110dc2be4fef2ab2a4b88589c91a5f3caa2948d8cc2f1313081a76f25721e1ef61077d58139deb7b542f6f
+
+pkgname = perl-array-iterator
+
