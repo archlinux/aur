@@ -1,0 +1,16 @@
+pkgbase = perl-css-dom
+	pkgdesc = Document Object Model for Cascading Style Sheets
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CSS-DOM
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-clone>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/CSS-DOM-0.15.tar.gz
+	md5sums = fc0c8bbd85087271d67da1a2104a7563
+	sha512sums = a2df55efee03b6485e0972abcab7f08460001b764c17abd71cb137e106f587b13658ee145802bc8d9d72ef569280518837a17c255524d2b261f827ac307031b0
+
+pkgname = perl-css-dom
+
