@@ -1,0 +1,17 @@
+pkgbase = perl-html-wikiconverter-wikkawiki
+	pkgdesc = Convert HTML to WikkaWiki markup
+	pkgver = 0.50
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter-WikkaWiki
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-wikiconverter>=0.5
+	depends = perl-uri>=1.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DIBERRI/HTML-WikiConverter-WikkaWiki-0.50.tar.gz
+	md5sums = 274b4dc8aca0b1f0b49e554121dfd680
+	sha512sums = 7ea753ace221488f92840d7b4c93d53a6a3bffd376bad6f0492f121046038b2442fb7729aa6133ca23a21e095edf397b6bf0e43fe487f56345f9df101caa2911
+
+pkgname = perl-html-wikiconverter-wikkawiki
+
