@@ -12,7 +12,7 @@ pkgdesc="Displays Canal+ group (Mediahighway) and Sky EPG Data"
 url="http://lukkinosat.altervista.org/"
 license=("GPL2")
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://lukkinosat.altervista.org/$pkgname-$pkgver.tgz"
         "50-$_plugname.conf")
 backup=("var/lib/vdr/plugins/${_plugname}/loadepg.conf"
