@@ -1,0 +1,20 @@
+pkgbase = perl-inline-asm
+	pkgdesc = Write Perl Subroutines in assembler.
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Inline-ASM
+	arch = x86_64
+	arch = i686
+	license = PerlArtistic
+	license = GPL
+	depends = perl-inline>=0.42
+	depends = binutils
+	depends = gcc
+	optdepends = nasm: NASM Support
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILW/Inline-ASM-0.03.tar.gz
+	md5sums = af0241d8d9993598fc146eab4be247b2
+	sha512sums = 6df41b742c834403b30515f83a29b26f0658929375c59a496c6cd2c69e226c389f3e5de019d6c2be926843412e4321eff75bd91bd31bd81d76f50c588074ac3c
+
+pkgname = perl-inline-asm
+
