@@ -1,0 +1,17 @@
+pkgbase = perl-cpan-checksums
+	pkgdesc = Write a CHECKSUMS file for a directory as on CPAN
+	pkgver = 2.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPAN-Checksums
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-compress-bzip2
+	depends = perl-data-compare
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/CPAN-Checksums-2.08.tar.gz
+	md5sums = 058679056ade8ee885b8538fe195d84a
+	sha512sums = 4da547d37b2ca919d7459607bb780b93d78429de88fe0749e23a2e8930ae97cbbd0350e0951fa0facf10ec595bac2bc25ef8da487f81f4e736cc3bd2c0e47f4d
+
+pkgname = perl-cpan-checksums
+
