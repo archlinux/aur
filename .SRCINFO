@@ -1,0 +1,19 @@
+pkgbase = perl-mousex-nativetraits
+	pkgdesc = Extend your attribute interfaces for Mouse
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MouseX-NativeTraits
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-any-moose>=0.13
+	makedepends = perl-test-fatal>=0.003
+	depends = perl>=5.6.2
+	depends = perl-mouse>=0.82
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/MouseX-NativeTraits-1.09.tar.gz
+	md5sums = de2ab3b97e701b69b7fa98fafd675eec
+	sha512sums = 2aad717c7c78c1014f705a85b8bb8cab79febb827aa478a0884bcdd4d8d702a366785bc6104ba115513c234b8ca71cafcbbbc070ba37d6328255fe1f972c3619
+
+pkgname = perl-mousex-nativetraits
+
