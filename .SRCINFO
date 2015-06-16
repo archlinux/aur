@@ -1,0 +1,18 @@
+pkgbase = perl-test-aggregate
+	pkgdesc = Aggregate *.t tests to make them run faster.
+	pkgver = 0.366
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Aggregate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-test-most>=0.21
+	depends = perl-test-nowarnings
+	depends = perl-test-trap
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RW/RWSTAUNER/Test-Aggregate-0.366.tar.gz
+	md5sums = cfad8ddb20ca360ded09f3694811dacf
+	sha512sums = 622c0246e71ab54308b3f55b966af7063f8430eb30939bb3ae698698fcc7315e165f028acfc57000b6f8cda9537979376508c450633f28bf696a22fb3f41706e
+
+pkgname = perl-test-aggregate
+
