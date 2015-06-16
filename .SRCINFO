@@ -1,0 +1,16 @@
+pkgbase = perl-dbix-class-forceutf8
+	pkgdesc = Force UTF8 (Unicode) flag on columns
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-Class-ForceUTF8
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbix-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THORIKAWA/DBIx-Class-ForceUTF8-0.0.2.tar.gz
+	md5sums = ed58e3d97f5f440e243ae4ee2739ced3
+	sha512sums = 966af61515d5958c9fb6802b40932b176676430936dd602558abac7fed21811abc2286a635d88b779e5992ec70a7bfe0ff6ecd21bc8df316cf3ef017219762c7
+
+pkgname = perl-dbix-class-forceutf8
+
