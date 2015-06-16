@@ -1,0 +1,17 @@
+pkgbase = perl-digest-fugue
+	pkgdesc = Perl interface to the Fugue digest algorithm
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Fugue
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-Fugue-0.04.tar.gz
+	md5sums = caa7d5284f72124416c4a0cd9040583a
+	sha512sums = 3030418dd30973214b610ecf04947ccffe437dde351990480e9a05a4e57ebe7638d67f9194d48a47ac4072a2b35961b05162942b03caf902d17babcb7b02a666
+
+pkgname = perl-digest-fugue
+
