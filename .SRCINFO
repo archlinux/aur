@@ -1,0 +1,20 @@
+pkgbase = perl-lwp-protocol-psgi
+	pkgdesc = Override LWP's HTTP/HTTPS backend with your own PSGI application
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://metacpan.org/release/LWP-Protocol-PSGI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	depends = perl-guard
+	depends = perl-plack
+	depends = perl-libwww
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/LWP-Protocol-PSGI-0.07.tar.gz
+	md5sums = 06349aa3bb408153eb9644c62862e6a3
+	sha512sums = 65a8faed0ad5f2a104931e4bcaa7d1f4065fd548248b4bcff417ad974e39ec1daaa8e6a55f3e4a09999a3c8d72561ed4dd2b179190675bc454ea86c73689d77c
+
+pkgname = perl-lwp-protocol-psgi
+
