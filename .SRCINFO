@@ -1,0 +1,17 @@
+pkgbase = perl-datetime-format-sqlite
+	pkgdesc = Parse and format SQLite dates and times
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Format-SQLite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime>=0.1
+	depends = perl-datetime-format-builder>=0.6
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CF/CFAERBER/DateTime-Format-SQLite-0.11.tar.gz
+	md5sums = 9cc9cc861407a1bbc696226605279842
+	sha512sums = 061f831c2a8d653706d315c1cff24ad887e3f8c65afdbd2140066735649c097be921f217e6e2761f8f34604066c618f296d40e9c650c3a1bb085cadbdfa7b7b9
+
+pkgname = perl-datetime-format-sqlite
+
