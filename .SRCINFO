@@ -1,0 +1,16 @@
+pkgbase = perl-html-wikiconverter-confluence
+	pkgdesc = Convert HTML to Confluence markup
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter-Confluence
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DIBERRI/HTML-WikiConverter-Confluence-0.01.tar.gz
+	md5sums = d2966e02d336401d184d4f2685999c37
+	sha512sums = 3b6bdd6afff13ced7cd3005b1ca17260060c6b0108f7e67c0da9d5c0c02b78e6a7ce4e933c028f7965bd4a42199e51bfc90a3e87d15c9ab24af1c357b625f5a6
+
+pkgname = perl-html-wikiconverter-confluence
+
