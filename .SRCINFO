@@ -1,0 +1,18 @@
+pkgbase = perl-task-moose
+	pkgdesc = Moose in a box
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Task-Moose
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose>=0.92
+	depends = perl-moosex-getopt
+	depends = perl-moosex-role-parameterized
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Task-Moose-0.03.tar.gz
+	md5sums = bbb32442a2b1a16b4ed4c0f2d94f8142
+	sha512sums = b6a1383f1f793b1e79f73400b62ee3b6b9e54d5c5e9f9636bb8f5988b8f9aa6e6d481bdb750391bbd579bec79b30b3e2f7b6abe8cacf6b1f81b38608b0cc6f66
+
+pkgname = perl-task-moose
+
