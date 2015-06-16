@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-configloader
+	pkgdesc = Load config files of various types
+	pkgver = 0.34
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Catalyst-Plugin-ConfigLoader
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-path-class
+	depends = perl-catalyst-runtime>=5.7008
+	depends = perl-config-any>=0.20
+	depends = perl-data-visitor>=0.24
+	depends = perl-mro-compat>=0.09
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-ConfigLoader-0.34.tar.gz
+	md5sums = 783b51f2f8113041cf2ab6c1a351bfce
+	sha512sums = 294826900f11b9c00a5106f71b3b778e3a9c41bd7ff5bd7e3a6c376242f330c9a4c9473a15854e7bba730b90a01711edfc4221d54d8609ab0f8480c95d59c115
+
+pkgname = perl-catalyst-plugin-configloader
+
