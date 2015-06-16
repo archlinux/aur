@@ -1,0 +1,26 @@
+pkgbase = perl-parse-method-signatures
+	pkgdesc = Perl6 like method signature parser
+	pkgver = 1.003016
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Parse-Method-Signatures
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-exception
+	makedepends = perl-aliased
+	depends = perl-class-load>=0.19
+	depends = perl-list-moreutils>=0.20
+	depends = perl-moose
+	depends = perl-moosex-traits>=0.06
+	depends = perl-moosex-types>=0.17
+	depends = perl-moosex-types-structured
+	depends = perl-ppi>=1.203
+	depends = perl-namespace-clean>=0.10
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/Parse-Method-Signatures-1.003016.tar.gz
+	md5sums = 903ec11316e55aee531fc2475ce76bac
+	sha512sums = ff0b2bcf91ba28a8646f4958e0aa2f77c88f7bf754c0971f5aa8e2056ba714049cdf0ffdb9eafceacee78f07564037920c5718174c5b505b1a4e0cd53739fa52
+
+pkgname = perl-parse-method-signatures
+
