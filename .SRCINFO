@@ -1,0 +1,16 @@
+pkgbase = perl-autorole
+	pkgdesc = Compiletime OR runtime mixin of traits/roles/mixins/your-word-here.
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/AutoRole
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RH/RHANDOM/AutoRole-0.04.tar.gz
+	md5sums = 7253e73e8872e482be2d98bf6242d535
+	sha512sums = 791452feff9e85b4b9110617ef076682e761b0a1a98a5e7950b4e09e45c465cba648c0a332099ae53aecda75880aeb0555c93b9424f9ef86b23c7a9751bd25eb
+
+pkgname = perl-autorole
+
