@@ -1,0 +1,15 @@
+pkgbase = tclvfs-cvs
+	pkgdesc = Virtual Filesystem support for Tcl
+	pkgver = 20110315
+	pkgrel = 3
+	url = http://sourceforge.net/projects/tclvfs/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cvs
+	depends = tcl
+	provides = tclvfs
+	conflicts = tclvfs
+
+pkgname = tclvfs-cvs
+
