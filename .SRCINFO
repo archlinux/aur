@@ -1,7 +1,7 @@
 pkgbase = nam
 	pkgdesc = Tcl/TK based animation tool for viewing network simulation traces and real world packet traces
 	pkgver = 1.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.isi.edu/nsnam/nam/
 	arch = i686
 	arch = x86_64
