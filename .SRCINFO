@@ -1,0 +1,18 @@
+pkgbase = perl-video-info
+	pkgdesc = Video::Info - Retrieve video properties such as: height width codec fps
+	pkgver = 0.993
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Video-Info
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-makemethods
+	depends = perl-mp3-info
+	depends = perl-video-openquicktime
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALLENDAY/Video-Info-0.993.tar.gz
+	md5sums = 509d49886aa49ef712024789a53f0320
+	sha512sums = a53f58ba6b5fda2d00f7a55f26d9b84a12a25690909cdf92133c833c9a1f1a9f09ca5246dd8f1bce1a98032049bb9055be3418605e6ced6af06269688ec03d00
+
+pkgname = perl-video-info
+
