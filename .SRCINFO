@@ -1,0 +1,17 @@
+pkgbase = perl-dbix-sqlite-simple
+	pkgdesc = easy access to SQLite databases using objects
+	pkgver = 0.34
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-SQLite-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-gomor
+	depends = perl-dbd-sqlite
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/DBIx-SQLite-Simple-0.34.tar.gz
+	md5sums = 7375627800f0ef136eff5ef18c766c64
+	sha512sums = 60a0dc247f23b674ec6863061ae165a20b8eb7d69cf468d4954bc4ea16619287a97794570441d3135d1e28040a30e869fefd43aa9d1fbbf2c093032574bf974f
+
+pkgname = perl-dbix-sqlite-simple
+
