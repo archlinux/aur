@@ -1,0 +1,20 @@
+pkgbase = perl-exporter-declare
+	pkgdesc = Exporting done right
+	pkgver = 0.113
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Exporter-Declare
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception>=0.29
+	depends = perl>=5.8.0
+	depends = perl-aliased
+	depends = perl-fennec-lite>=0.004
+	depends = perl-meta-builder>=0.003
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Exporter-Declare-0.113.tar.gz
+	md5sums = d5b93324f1513b3528785b2d1891425c
+	sha512sums = 315234189def9202a015a7f1adb91104db4ec449443b00e612bc818531df6887207c241986100cf4d121f3281ae9f0d31b8bb62f164e5d18de7ca6ae73012f81
+
+pkgname = perl-exporter-declare
+
