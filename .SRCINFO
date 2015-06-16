@@ -1,0 +1,17 @@
+pkgbase = perl-digest-whirlpool
+	pkgdesc = A 512-bit, collision-resistant, one-way hash function
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Whirlpool
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AV/AVAR/Digest-Whirlpool-1.09.tar.gz
+	md5sums = 852a7672ef11d46b229c0be77330e991
+	sha512sums = f8e5ee280d2e4fbe0fa34d52455ccbdd281c6206980da52ae12b6a03d10dff7fbea43a224ca8bb070d6bce8128e9363a9baccd276236b3b1eba1e8a969021252
+
+pkgname = perl-digest-whirlpool
+
