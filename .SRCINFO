@@ -1,0 +1,21 @@
+pkgbase = grive-tools
+	pkgdesc = Grive Tools will assist in the installation and setup of Google Drive under GTK
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools
+	install = grive-tools.install
+	arch = any
+	license = LGPL 3
+	depends = grive
+	depends = libappindicator-gtk3
+	depends = python2
+	depends = glib2
+	depends = zenity
+	depends = python2-pyinotify
+	depends = python2-gobject
+	depends = expect
+	source = https://launchpad.net/~thefanclub/+archive/grive-tools/+files/grive-tools_1.15.tar.gz
+	md5sums = SKIP
+
+pkgname = grive-tools
+

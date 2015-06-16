@@ -1,0 +1,13 @@
+post_install() {
+	chmod 755 /opt/thefanclub/grive-tools/grive-indicator
+	glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+post_upgrade() {
+	 glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+post_remove() {
+	glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
