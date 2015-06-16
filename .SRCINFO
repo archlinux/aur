@@ -1,0 +1,19 @@
+pkgbase = perl-xhtml-mediawiki
+	pkgdesc = Convert MediaWiki text to xhtml
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XHTML-MediaWiki
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-xml
+	depends = perl-html-parser
+	depends = perl-params-validate>=0.85
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GA/GAM/XHTML-MediaWiki-0.11.tar.gz
+	md5sums = 28d61f37a3b1b996e69bb5fb389ccfcd
+	sha512sums = c2a7fb2d5ca66643f9add7ae85dff68086c3b7375408bf76f7e891577be7dd31bf7b782169f86ddb776517582d6c3ce409ece94a370bc63adb4f41999db504d6
+
+pkgname = perl-xhtml-mediawiki
+
