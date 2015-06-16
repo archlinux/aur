@@ -1,0 +1,15 @@
+pkgbase = usbsoftrock
+	pkgdesc = Command line utility for interfacing with Si570 based SDR kits
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://code.google.com/p/usbsoftrock/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	depends = ncurses
+	source = https://usbsoftrock.googlecode.com/files/usbsoftrock-1.0.2.tar.gz
+	sha1sums = e2dd8c67e2352e623d5003c401c150fe633f91e4
+
+pkgname = usbsoftrock
+
