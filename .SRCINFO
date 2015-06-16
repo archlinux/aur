@@ -1,0 +1,20 @@
+pkgbase = perl-parse-dia-sql
+	pkgdesc = Convert Dia class diagrams into SQL.
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parse-Dia-SQL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl-html-lint
+	depends = perl-log-log4perl
+	depends = perl-text-table
+	depends = perl-xml-dom
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AF/AFF/Parse-Dia-SQL-0.25.tar.gz
+	md5sums = 3c101225c36a5130567c67d7f7cbb027
+	sha512sums = ffb3e1c6c114480231b199dab7cb0f70312641c2a6cff9de20b99e68fdc66173c7bbafb7ab9b3cd45a8c3cfb72972a02d369f9a689f7167ef8359a79f11ff536
+
+pkgname = perl-parse-dia-sql
+
