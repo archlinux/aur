@@ -1,0 +1,17 @@
+pkgbase = perl-catalyst-plugin-fillinform-forceutf8
+	pkgdesc = FillInForm with utf8 flag for Catalyst
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-FillInForm-ForceUTF8
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-html-fillinform-forceutf8
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HIDE/Catalyst-Plugin-FillInForm-ForceUTF8-0.02.tar.gz
+	md5sums = e17b8788854c572244a718bc8a5911dc
+	sha512sums = 1d9d74541ff1bc21a55dfabfd5a4d89762301573c36c1c2f431127d0aed9cd3ebdb02951f82c0ad4d99dba631f062ba37a43f688da45ec2273c44c4ee53c3dee
+
+pkgname = perl-catalyst-plugin-fillinform-forceutf8
+
