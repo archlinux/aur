@@ -1,72 +1,34 @@
 # Maintainer: Christoph Haag <haagch@frickel.club>
 pkgname=glslang-svn
-pkgver=r27423
+pkgver=r31499
 pkgrel=1
-pkgdesc="Glslang is the official reference compiler front end for the OpenGL ES and OpenGL shading languages."
+pkgdesc="Glslang is the official reference compiler front end for the OpenGL ES and OpenGL shading languages. Also includes spirv-remap (improve compression of SPIR-V binary files)"
 arch=("i686" "x86_64")
 url="http://www.khronos.org/opengles/sdk/tools/Reference-Compiler/"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('subversion')
+makedepends=('subversion' 'cmake' 'subversion')
 provides=("glslang")
 source=("svn+https://cvs.khronos.org/svn/repos/ogl/trunk/ecosystem/public/sdk/tools/glslang")
 md5sums=("SKIP") #generate with 'makepkg -g'
 
+prepare() {
+  #rm -rf "$srcdir/build"
+  # why can't Khronos figure out how to use cmake correctly?
+  sed -i '/set(CMAKE_INSTALL_PREFIX/d' "$srcdir/glslang/CMakeLists.txt"
+}
+
 build() {
-  cd glslang
-  #
-  # BUILD HERE
-  #
-#  ./autogen.sh
-#  ./configure --prefix=/usr
-#  make
-
-#! /bin/bash
-
-svn update
-
-#rm -f StandAlone/glslangValidator
-#rm -f Test/glslangValidator
-#rm -f glslang/MachineIndependent/lib/libglslang.so
-#rm -f Install/Linux/libglslang.so
-#rm -f Install/Linux/glslangValidator
-
-#cd StandAlone
-#make clean
-#cd ../glslang/MachineIndependent
-#make clean
-#cd ../..
-
-# build the StandAlone app and all it's dependencies
-make -C StandAlone
-
-# so we can find the shared library
-#LD_LIBRARY_PATH=`pwd`/glslang/MachineIndependent/lib
-#export LD_LIBRARY_PATH
-
-# install
-#cd Install/Linux
-#./install
-#cp glslangValidator ../../Test
-#LD_LIBRARY_PATH=/usr/local/lib
-#export LD_LIBRARY_PATH
-
-# run using test data
-#cd ../../Test
-#chmod +x runtests
-#./runtests
-
-
+  mkdir -p "$srcdir/build"
+  cd "$srcdir"/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ../glslang
+  make
 }
 
 package() {
-  cd glslang
-  #make DESTDIR="$pkgdir/" install
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/lib"
-  install Install/Linux/libglslang.so "$pkgdir/usr/lib"
-  install -m 755 Install/Linux/glslangValidator "$pkgdir/usr/bin"
+  cd "$srcdir"/build
+  make DESTDIR="$pkgdir/" install
 }
 
 pkgver() {
