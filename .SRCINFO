@@ -1,0 +1,22 @@
+pkgbase = esteidpkcs11loader
+	pkgdesc = Loads PKCS11 module for web authentication with smart cards
+	pkgver = 3.8.0.1052
+	pkgrel = 1
+	url = http://www.id.ee/
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = unzip
+	makedepends = zip
+	depends = opensc-git
+	depends = esteidcerts
+	depends = ccid
+	conflicts = esteid-browser-plugin-svn
+	conflicts = sk-esteidpkcs11loader-svn
+	source = https://installer.id.ee/media/sources/esteidpkcs11loader-3.8.0.1052.tar.gz
+	source = https://installer.id.ee/media/sources/esteidpkcs11loader-3.8.0.1052.tar.gz.asc
+	sha256sums = 331d7fb59554a4cf7c3cce8a263e5248476d994e3124f0b5adc06ba3cad1b091
+	sha256sums = SKIP
+
+pkgname = esteidpkcs11loader
+
