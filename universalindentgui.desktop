@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=UniversalIndentGUI
+GenericName=Code Formatter
+Comment=A cross platform GUI for several code formatters
+Exec=universalindentgui %F
+Terminal=false
+Type=Application
+Icon=universalindentgui
+StartupNotify=true
+Categories=GTK;Development;

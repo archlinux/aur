@@ -1,0 +1,91 @@
+diff --git a/src/AboutDialog.ui b/src/AboutDialog.ui
+index 0e1e9d7..4c2a93a 100755
+--- a/src/AboutDialog.ui
++++ b/src/AboutDialog.ui
+@@ -35,42 +35,11 @@
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+-     <property name="styleSheet">
+-      <string notr="true">QFrame#frame { background-color: qlineargradient( x1:0, y1:0, x2:0, y2:1, stop:0 #FFFF60, stop:0.5 #D8C304, stop:1 #FFFF60 ); border: 2px solid #A89C57; border-radius: 4px;}</string>
+-     </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <layout class="QVBoxLayout">
+       <item>
+-       <widget class="QLabel" name="bannerLabel">
+-        <property name="sizePolicy">
+-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+-          <horstretch>0</horstretch>
+-          <verstretch>0</verstretch>
+-         </sizepolicy>
+-        </property>
+-        <property name="minimumSize">
+-         <size>
+-          <width>570</width>
+-          <height>87</height>
+-         </size>
+-        </property>
+-        <property name="maximumSize">
+-         <size>
+-          <width>570</width>
+-          <height>87</height>
+-         </size>
+-        </property>
+-        <property name="text">
+-         <string/>
+-        </property>
+-        <property name="pixmap">
+-         <pixmap resource="../resources/Icons.qrc">:/aboutDialog/banner.png</pixmap>
+-        </property>
+-       </widget>
+-      </item>
+-      <item>
+        <widget class="QTextBrowser" name="versionTextBrowser">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+@@ -139,7 +108,7 @@ p, li { white-space: pre-wrap; }
+       <item>
+        <widget class="QTextBrowser" name="creditsTextBrowser">
+         <property name="styleSheet">
+-         <string notr="true">QTextBrowser#creditsTextBrowser{border:2px solid rgba(0,0,0,10%); background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,0,0,80%), stop:0.1 rgba(0,0,0,15%), stop:0.9 rgba(0,0,0,15%), stop:1 rgba(0,0,0,80%) )}</string>
++         <string notr="true">QTextBrowser#creditsTextBrowser{background-color: transparent; border-top: 1px solid #333;}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+@@ -166,9 +135,6 @@ p, li { white-space: pre-wrap; }
+         </item>
+         <item>
+          <widget class="QPushButton" name="okButton">
+-          <property name="styleSheet">
+-           <string notr="true">QPushButton#okButton { background-color: qlineargradient( x1:0, y1:0, x2:0, y2:1, stop:0 #DCB28A, stop:0.5 #B8784B, stop:1 #DCB28A ); border: 2px solid #A89C57; border-radius: 4px;} QPushButton:hover#okButton { background-color: qlineargradient( x1:0, y1:0, x2:0, y2:1, stop:0 #B8784B, stop:0.5 #DCB28A, stop:1 #B8784B ); } QPushButton:pressed#okButton{ border: 2px solid #D8CB75 }</string>
+-          </property>
+           <property name="text">
+            <string>          OK          </string>
+           </property>
+diff --git a/src/AboutDialogGraphicsView.cpp b/src/AboutDialogGraphicsView.cpp
+index d97cc70..cea44b6 100755
+--- a/src/AboutDialogGraphicsView.cpp
++++ b/src/AboutDialogGraphicsView.cpp
+@@ -80,7 +80,6 @@ AboutDialogGraphicsView::AboutDialogGraphicsView(AboutDialog *aboutDialog, QWidg
+ 
+     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+-    setStyleSheet("AboutDialogGraphicsView { border: 0px; }");
+ 
+     _timeLine = new QTimeLine(1000, this);
+     _timeLine->setFrameRange(270, 0);
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index f0f5251..bafd99b 100755
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -122,7 +122,7 @@ MainWindow::MainWindow(QString file2OpenOnStart, QWidget *parent) : QMainWindow(
+ 
+ 
+     // Generate about dialog box
+-    _aboutDialog = new AboutDialog(this, Qt::SplashScreen);
++    _aboutDialog = new AboutDialog(this);
+     _aboutDialogGraphicsView = new AboutDialogGraphicsView(_aboutDialog, this);
+     connect( _toolBarWidget->pbAbout, SIGNAL(clicked()), this, SLOT(showAboutDialog()) );
+     connect( _mainWindowForm->actionAbout_UniversalIndentGUI, SIGNAL(triggered()), this, SLOT(showAboutDialog()) );

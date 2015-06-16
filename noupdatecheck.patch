@@ -1,0 +1,173 @@
+diff --git a/UniversalIndentGUI.pro b/UniversalIndentGUI.pro
+index 67f4f95..1bb4bec 100755
+--- a/UniversalIndentGUI.pro
++++ b/UniversalIndentGUI.pro
+@@ -158,7 +158,6 @@ HEADERS += src/AboutDialog.h \
+            src/UiGuiSettingsDialog.h \
+            src/UiGuiSystemInfo.h \
+            src/UiGuiVersion.h \
+-           src/UpdateCheckDialog.h \
+            src/debugging/TSLogger.h
+ 
+ 
+@@ -166,7 +165,6 @@ FORMS += src/MainWindow.ui \
+          src/ToolBarWidget.ui \
+          src/UiGuiSettingsDialog.ui \
+          src/AboutDialog.ui \
+-         src/UpdateCheckDialog.ui \
+          src/debugging/TSLoggerDialog.ui
+ 
+ SOURCES += src/AboutDialog.cpp \
+@@ -184,7 +182,6 @@ SOURCES += src/AboutDialog.cpp \
+            src/UiGuiSettingsDialog.cpp \
+            src/UiGuiSystemInfo.cpp \
+            src/UiGuiVersion.cpp \
+-           src/UpdateCheckDialog.cpp \
+            src/debugging/TSLogger.cpp
+ 
+ RESOURCES += resources/Icons.qrc
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index f7b6185..f0f5251 100755
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -31,7 +31,6 @@
+ #include "UiGuiSettingsDialog.h"
+ #include "UiGuiHighlighter.h"
+ #include "IndentHandler.h"
+-#include "UpdateCheckDialog.h"
+ 
+ #include <QWidget>
+ #include <QLabel>
+@@ -90,7 +89,6 @@ MainWindow::MainWindow(QString file2OpenOnStart, QWidget *parent) : QMainWindow(
+ 	, _qTTranslator(NULL)
+ 	, _toolBarWidget(NULL)
+ 	, _indentHandler(NULL)
+-	, _updateCheckDialog(NULL)
+ 	, _textEditLineColumnInfoLabel(NULL)
+ {
+     // Init of some variables.
+@@ -144,11 +142,6 @@ MainWindow::MainWindow(QString file2OpenOnStart, QWidget *parent) : QMainWindow(
+ 
+     updateSourceView();
+ 
+-    // Check if a newer version is available but only if the setting for that is enabled and today not already a check has been done.
+-    if ( _settings->getValueByName("CheckForUpdate").toBool() && QDate::currentDate() != _settings->getValueByName("LastUpdateCheck").toDate() ) {
+-        _updateCheckDialog->checkForUpdate();
+-    }
+-
+     // Enable accept dropping of files.
+     setAcceptDrops(true);
+ }
+@@ -191,8 +184,6 @@ void MainWindow::initMainWindow() {
+     // -------------------------------
+     _currentEncoding = _settings->getValueByName("encoding").toString();
+ 
+-    _updateCheckDialog = new UpdateCheckDialog(_settings, this);
+-
+     // Register the load last file setting in the menu to the _settings object.
+     _settings->registerObjectProperty(_mainWindowForm->loadLastOpenedFileOnStartupAction, "checked", "loadLastSourceCodeFileOnStartup");
+ 
+@@ -207,7 +198,6 @@ void MainWindow::initMainWindow() {
+     connect( _mainWindowForm->actionSave_Source_File, SIGNAL(triggered()), this, SLOT(saveSourceFile()) );
+     connect( _mainWindowForm->actionExportPDF, SIGNAL(triggered()), this, SLOT(exportToPDF()) );
+     connect( _mainWindowForm->actionExportHTML, SIGNAL(triggered()), this, SLOT(exportToHTML()) );
+-    connect( _mainWindowForm->actionCheck_for_update, SIGNAL(triggered()), _updateCheckDialog, SLOT(checkForUpdateAndShowDialog()) );
+     connect( _mainWindowForm->actionShowLog, SIGNAL(triggered()), debugging::TSLogger::getInstance(), SLOT(show()) );
+ 
+     // Init the menu for selecting one of the recently opened files.
+diff --git a/src/MainWindow.h b/src/MainWindow.h
+index 1205a46..06b5eea 100755
+--- a/src/MainWindow.h
++++ b/src/MainWindow.h
+@@ -29,7 +29,6 @@ class AboutDialog;
+ class AboutDialogGraphicsView;
+ class UiGuiHighlighter;
+ class IndentHandler;
+-class UpdateCheckDialog;
+ namespace Ui {
+ 	class ToolBarWidget;
+ 	class MainWindowUi;
+@@ -136,7 +135,6 @@ private:
+ 
+     Ui::ToolBarWidget *_toolBarWidget;
+     IndentHandler *_indentHandler;
+-    UpdateCheckDialog *_updateCheckDialog;
+     QLabel *_textEditLineColumnInfoLabel;
+ };
+ 
+diff --git a/src/MainWindow.ui b/src/MainWindow.ui
+index 1a3cacd..13eb226 100755
+--- a/src/MainWindow.ui
++++ b/src/MainWindow.ui
+@@ -113,7 +113,6 @@
+     <property name="title">
+      <string>Help</string>
+     </property>
+-    <addaction name="actionCheck_for_update"/>
+     <addaction name="actionShowLog"/>
+     <addaction name="separator"/>
+     <addaction name="actionAbout_UniversalIndentGUI"/>
+@@ -424,21 +423,6 @@
+     <string>Opens the settings dialog, to set language etc.</string>
+    </property>
+   </action>
+-  <action name="actionCheck_for_update">
+-   <property name="icon">
+-    <iconset resource="../resources/Icons.qrc">
+-     <normaloff>:/mainWindow/system-software-update.png</normaloff>:/mainWindow/system-software-update.png</iconset>
+-   </property>
+-   <property name="text">
+-    <string>Check for update</string>
+-   </property>
+-   <property name="toolTip">
+-    <string>Checks online whether a new version of UniversalIndentGUI is available.</string>
+-   </property>
+-   <property name="statusTip">
+-    <string>Checks online whether a new version of UniversalIndentGUI is available.</string>
+-   </property>
+-  </action>
+   <action name="actionClear_Recently_Opened_List">
+    <property name="icon">
+     <iconset resource="../resources/Icons.qrc">
+diff --git a/src/UiGuiSettings.cpp b/src/UiGuiSettings.cpp
+index 3aacf1f..5645d93 100755
+--- a/src/UiGuiSettings.cpp
++++ b/src/UiGuiSettings.cpp
+@@ -180,10 +180,6 @@ bool UiGuiSettings::initSettings()
+     // Read the last selected language and stores the index it has in the list of available translations.
+     _qsettings->setValue( "UniversalIndentGUI/language", _availableTranslations.indexOf( _qsettings->value("UniversalIndentGUI/language", "").toString() ) );
+ 
+-    // Read the update check settings from the settings file.
+-    _qsettings->setValue( "UniversalIndentGUI/CheckForUpdate", _qsettings->value("UniversalIndentGUI/CheckForUpdate", true) );
+-    _qsettings->setValue( "UniversalIndentGUI/LastUpdateCheck", _qsettings->value("UniversalIndentGUI/LastUpdateCheck", QDate(1900,1,1)) );
+-
+     // Read the main window state.
+     _qsettings->setValue( "UniversalIndentGUI/MainWindowState", _qsettings->value("UniversalIndentGUI/MainWindowState", QByteArray()) );
+ 
+diff --git a/src/UiGuiSettingsDialog.ui b/src/UiGuiSettingsDialog.ui
+index e3c5f7a..2aae362 100755
+--- a/src/UiGuiSettingsDialog.ui
++++ b/src/UiGuiSettingsDialog.ui
+@@ -294,22 +294,6 @@
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+-        <widget class="QCheckBox" name="checkForUpdateCheckBox">
+-         <property name="toolTip">
+-          <string>Checks whether a new version of UniversalIndentGUI exists on program start, but only once a day.</string>
+-         </property>
+-         <property name="text">
+-          <string>Check online for update on program start</string>
+-         </property>
+-         <property name="connectedSettingName" stdset="0">
+-          <string notr="true">CheckForUpdate</string>
+-         </property>
+-         <property name="connectedPropertyName" stdset="0">
+-          <string notr="true">checked</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string/>
