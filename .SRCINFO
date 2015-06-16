@@ -1,0 +1,16 @@
+pkgbase = perl-class-ooorno
+	pkgdesc = Give your module classic AND OO interfaces
+	pkgver = 0.011
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-OOorNO
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/Class-OOorNO-0.011.tar.gz
+	md5sums = 1fddbef2595f4b833646fe92ea0db45b
+	sha512sums = 1883983c9c6903b2dfae30b9792385f79134c1260fa94ef773609f179b1741a3962ca5d9913f18615e972c052f92152341ee8b6b4e26c905127f043d233a55c4
+
+pkgname = perl-class-ooorno
+
