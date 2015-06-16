@@ -1,0 +1,18 @@
+pkgbase = perl-anyevent-redis
+	pkgdesc = Non-blocking Redis client
+	pkgver = 0.24
+	pkgrel = 1
+	url = http://search.cpan.org/dist/AnyEvent-Redis
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-tcp>=1.03
+	depends = perl>=5.8.1
+	depends = perl-anyevent
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DG/DGL/AnyEvent-Redis-0.24.tar.gz
+	md5sums = f3949261b2a7b3b083670ede03e92d94
+	sha512sums = 7486b0ce25e2f8a057380b33979f86315be4b924edfa75d526ce1f21d158d3f2241341ef3444580e35409f2af863af93ed85dcb4c1b7658ffab8ba977f4c994c
+
+pkgname = perl-anyevent-redis
+
