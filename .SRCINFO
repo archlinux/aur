@@ -1,0 +1,16 @@
+pkgbase = perl-fennec-lite
+	pkgdesc = Minimalist Fennec, the commonly used bits.
+	pkgver = 0.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Fennec-Lite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Fennec-Lite-0.004.tar.gz
+	md5sums = e0a373981c6758490667fffc6bca8156
+	sha512sums = 507b58a0f7f1efb4f46b615f3bdd28666b52bffe35376afe07341074c8051032d0650a35afe884e8e603de1b63653763e1f0501d7f390fea14fbebc0eb4fa8af
+
+pkgname = perl-fennec-lite
+
