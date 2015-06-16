@@ -1,0 +1,15 @@
+pkgbase = tokyocabinet-ruby
+	pkgdesc = Ruby Binding of Tokyo Cabinet DBM
+	pkgver = 1.29
+	pkgrel = 1
+	url = http://tokyocabinet.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = ruby
+	depends = tokyocabinet>=1.4
+	source = http://tokyocabinet.sourceforge.net/rubypkg/tokyocabinet-ruby-1.29.tar.gz
+	md5sums = e5259b9c9c0368aa88a2accd6f3b9db4
+
+pkgname = tokyocabinet-ruby
+
