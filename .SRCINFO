@@ -1,0 +1,16 @@
+pkgbase = perl-lyrics-fetcher-lyricwiki
+	pkgdesc = Get song lyrics from www.LyricWiki.org
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lyrics-Fetcher-LyricWiki
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BIGPRESH/Lyrics-Fetcher-LyricWiki-0.10.tar.gz
+	md5sums = e9344c29b2021e564382b6e98536a02e
+	sha512sums = 48ca235986bebea87c4df86ca16a7ecd2fda91faf1eef2ee42a64562e17990506eedcc8801e044f80a8c890c8ea54bbcc5828e24008ccccb9c522154685e16ab
+
+pkgname = perl-lyrics-fetcher-lyricwiki
+
