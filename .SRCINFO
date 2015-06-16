@@ -1,7 +1,7 @@
 pkgbase = azenis-green-icon-theme
 	pkgdesc = Azenis green icon theme
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 2
 	url = http://gnome-look.org/content/show.php/Azenis+Icons+Green?content=126630
 	arch = any
 	license = GPL

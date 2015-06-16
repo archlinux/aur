@@ -2,7 +2,7 @@
 
 pkgname=azenis-green-icon-theme
 pkgver=1
-pkgrel=3
+pkgrel=2
 pkgdesc="Azenis green icon theme"
 arch=('any')
 license=('GPL')
