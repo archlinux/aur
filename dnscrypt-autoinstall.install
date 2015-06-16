@@ -1,0 +1,30 @@
+post_install() {
+    printf "Reloading systemd manager configuration..."
+    systemctl daemon-reload
+
+    printf 'Done.\n'
+    printf 'Point your DNS servers to DNSCrypt by editing /etc/resolv.conf:\n'
+    printf 'nameserver 127.0.0.1\n'
+    printf 'nameserver 127.0.0.2\n\n'
+    
+    printf 'When using NetworkManager or similar networking tools, you may also\n'
+    printf 'make /etc/resolv.conf immutable:\n'
+    printf '# chattr +i /etc/resolv.conf\n'
+    printf 'See https://github.com/simonclausen/dnscrypt-autoinstall/issues/3 for details.\n'
+}
+
+post_upgrade() {
+    printf 'Reloading systemd manager configuration...\n'
+    systemctl daemon-reload
+}
+
+post_remove() {
+    printf 'Reloading systemd manager configuration...\n'
+    systemctl daemon-reload
+
+    printf 'Removing DNSCrypt configuration..\n\n'
+    rm /etc/conf.d/dnscrypt-config
+
+    printf 'If you have made /etc/resolv.conf immutable, undo with:\n'
+    printf '# chattr -i /etc/resolv.conf'
+}
