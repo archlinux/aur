@@ -1,0 +1,32 @@
+pkgbase = perl-moosex-method-signatures
+	pkgdesc = Method declarations with type constraints and no source filter
+	pkgver = 0.47
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MooseX-Method-Signatures
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-moose
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-fatal
+	depends = perl-b-hooks-endofscope>=0.10
+	depends = perl-context-preserve
+	depends = perl-devel-declare>=0.005011
+	depends = perl-eval-closure
+	depends = perl-module-runtime>=0.012
+	depends = perl-moose>=0.89
+	depends = perl-moosex-lazyrequire>=0.06
+	depends = perl-moosex-meta-typeconstraint-forcecoercion
+	depends = perl-moosex-types>=0.35
+	depends = perl-moosex-types-structured>=0.24
+	depends = perl-parse-method-signatures>=1.003014
+	depends = perl-sub-name
+	depends = perl-task-weaken
+	depends = perl-aliased
+	depends = perl-namespace-autoclean
+	depends = perl-namespace-clean
+	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Method-Signatures-0.47.tar.gz
+	options = !emptydirs
+
+pkgname = perl-moosex-method-signatures
+
