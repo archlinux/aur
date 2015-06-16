@@ -1,0 +1,20 @@
+pkgbase = ksshaskpass4
+	pkgdesc = ssh-add helper that uses kwallet and kpassworddialog. Compatible with KDE 4.x
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/Ksshaskpass?content=50971
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kwallet
+	provides = ksshaskpass
+	provides = ksshaskpass-frameworks
+	conflicts = ksshaskpass
+	conflicts = ksshaskpass-frameworks
+	source = http://kde-apps.org/CONTENT/content-files/50971-ksshaskpass-0.5.3.tar.gz
+	source = ksshaskpass.sh
+	md5sums = 05dad7745e9d92b08bd86e7ab7a9540d
+	md5sums = aef2815fb704c98737f23eead3b4e894
+
+pkgname = ksshaskpass4
+
