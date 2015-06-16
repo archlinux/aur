@@ -1,0 +1,19 @@
+pkgbase = perl-catalyst-plugin-fillinform
+	pkgdesc = FillInForm for Catalyst
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-FillInForm
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-action-renderview
+	depends = perl-catalyst-runtime
+	depends = perl-html-fillinform
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Catalyst-Plugin-FillInForm-0.12.tar.gz
+	md5sums = a8d7dba75cd7622d5fe625e37d51c5cb
+	sha512sums = 572c601a47218c23982f435115b89c48308af7cd22558165ca105a42ab3e247593f261785f4cce6d367f96f792de927219f3494b9e9d749a95dde93228fe2f2b
+
+pkgname = perl-catalyst-plugin-fillinform
+
