@@ -1,0 +1,19 @@
+pkgbase = perl-test-yaml-valid
+	pkgdesc = Test for valid YAML
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-YAML-Valid
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-yaml>=0.60
+	depends = perl-yaml-libyaml
+	depends = perl-yaml-syck>=0.60
+	depends = perl-yaml-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JR/JROCKWAY/Test-YAML-Valid-0.04.tar.gz
+	md5sums = 553374b7e9f906e005b979e1d6853708
+	sha512sums = 5e1ab689759fed4e907b23bb004989812b9f4602de187af8bb9d911aa2f0c2195c036a36348bba42e91a7d61e8c5000e5d396874aa32e9f9115ace24c9af8816
+
+pkgname = perl-test-yaml-valid
+
