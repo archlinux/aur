@@ -1,0 +1,16 @@
+pkgbase = perl-lingua-en-inflect
+	pkgdesc = Convert singular to plural. Select "a" or "an".
+	pkgver = 1.895
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-EN-Inflect
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Lingua-EN-Inflect-1.895.tar.gz
+	md5sums = 96ce4517a21800a6e90df1f4cdd515a5
+	sha512sums = f077d638840e700ebddce37952f89a002a2b67610eb86475a4e86b9f64cf89fac4b8e68c75c6739ac4fcfb4b6d5cc12491b2bf892ad08000f7bc38c509461eaf
+
+pkgname = perl-lingua-en-inflect
+
