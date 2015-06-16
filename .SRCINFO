@@ -1,0 +1,19 @@
+pkgbase = gqlplus
+	pkgdesc = Oracle SQLPlus front-end that provides, history and completion
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://gqlplus.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	depends = xdg-utils
+	source = http://sourceforge.net/projects/gqlplus/files/gqlplus/1.15/gqlplus-1.15.tar.gz
+	source = gqlplus.desktop
+	source = gqlplus.png
+	md5sums = d60e4768b3c065d52a19658d295e8fe8
+	md5sums = 6c8c81ae7ac03b97850e4e0443562a6c
+	md5sums = 46f2bc2f305d852242aa77918f80eab4
+
+pkgname = gqlplus
+
