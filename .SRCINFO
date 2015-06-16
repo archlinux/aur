@@ -1,0 +1,48 @@
+pkgbase = perl-dbix-class-schema-loader
+	pkgdesc = Create a DBIx::Class::Schema based on a database
+	pkgver = 0.07042
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/DBIx-Class-Schema-Loader
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0.107
+	checkdepends = perl-test-differences>=0.60
+	checkdepends = perl-test-exception>=0.31
+	checkdepends = perl-test-pod>=1.14
+	checkdepends = perl-test-warn>=0.21
+	makedepends = perl-config-any
+	makedepends = perl-config-general
+	makedepends = perl-dbd-sqlite>=1.29
+	makedepends = perl-dbix-class-introspectablem2m
+	makedepends = perl-moose>=1.12
+	makedepends = perl-moosex-markasmethods>=0.13
+	makedepends = perl-moosex-nonmoose>=0.25
+	makedepends = perl-namespace-autoclean>=0.09
+	depends = perl-carp-clan
+	depends = perl-class-accessor-grouped>=0.10008
+	depends = perl-class-c3-componentised>=1.0008
+	depends = perl-class-inspector>=1.27
+	depends = perl-class-unload>=0.07
+	depends = perl-dbix-class>=0.08127
+	depends = perl-data-dump>=1.06
+	depends = perl-hash-merge>=0.12
+	depends = perl-lingua-en-inflect-number>=1.1
+	depends = perl-lingua-en-inflect-phrase>=0.15
+	depends = perl-lingua-en-tagger>=0.23
+	depends = perl-list-moreutils>=0.32
+	depends = perl-mro-compat>=0.09
+	depends = perl-scope-guard>=0.20
+	depends = perl-string-camelcase>=0.02
+	depends = perl-string-toidentifier-en>=0.05
+	depends = perl-sub-name
+	depends = perl-try-tiny
+	depends = perl-namespace-clean>=0.23
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/DBIx-Class-Schema-Loader-0.07042.tar.gz
+	md5sums = bdf0f66ed6e97a9630dda37ffe356060
+	sha512sums = 62a4168f5a0d107f26ad090c7828352c5a15d2dcccd54b992585f314d1985a8d7eb4d466cc10e87e42aee2b55832428fdb28d7bcfcecde950a70228f7d0c6253
+
+pkgname = perl-dbix-class-schema-loader
+
