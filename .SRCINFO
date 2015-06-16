@@ -1,0 +1,18 @@
+pkgbase = perl-catalyst-component-accept-context
+	pkgdesc = Make the current Catalyst
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Component-ACCEPT_CONTEXT
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-devel-cycle>=0
+	depends = perl-catalyst-runtime>=0
+	depends = perl-mro-compat>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Component-ACCEPT_CONTEXT-0.07.tar.gz
+	md5sums = 2c1036f67b40596741a4a5ffffd487ac
+	sha512sums = 06c046844795b26f3d0eae0f5f9621adf010b7015f36af5ac699af3d5f065bf34481a290c1ce2a25c569aed2278128c815861dd3b09793c2b92fc71af605d371
+
+pkgname = perl-catalyst-component-accept-context
+
