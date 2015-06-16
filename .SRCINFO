@@ -1,0 +1,20 @@
+pkgbase = perl-lingua-en-tagger
+	pkgdesc = Part-of-speech tagger for English natural language processing.
+	pkgver = 0.24
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-EN-Tagger
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	depends = perl-html-parser>=3.45
+	depends = perl-html-tagset>=3.20
+	depends = perl-lingua-stem>=0.81
+	depends = perl-memoize-expirelru>=0.55
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.24.tar.gz
+	md5sums = cfa309e3e3b1e8940dac35e9e0b5da18
+	sha512sums = a14dca8d843e372c6097065b52ccc009885786e7ab7fdd5c73fe0aeeb26593daf22155ecddbf1b389be2aa4f4ac03efd9a1d2e198c465a97707de6914da41cc7
+
+pkgname = perl-lingua-en-tagger
+
