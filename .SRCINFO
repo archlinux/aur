@@ -1,0 +1,15 @@
+pkgbase = pyparted-git
+	pkgdesc = Python bindings for libparted
+	pkgver = 201506161101
+	pkgrel = 1
+	url = https://github.com/rhinstaller/pyparted
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = parted
+	provides = pyparted
+	conflicts = pyparted
+
+pkgname = pyparted-git
+
