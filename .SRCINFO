@@ -1,0 +1,16 @@
+pkgbase = perl-text-german
+	pkgdesc = German grundform reduction
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-German
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/U/UL/ULPFR/Text-German-0.06.tar.gz
+	md5sums = 9e968525f7385c80d636a4ba68d27bf4
+	sha512sums = cc53aed9f40efbbd4c92487be19757688d944d0ad055e1cfad5c1859eb93e44755aabc5d665e9efb20ffdae40a299711f47d9255c267c9bd8d9f3de10631e8bb
+
+pkgname = perl-text-german
+
