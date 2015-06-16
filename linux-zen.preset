@@ -1,0 +1,7 @@
+# DO NOT EDIT THE LINE BELOW
+ALL_kver="to be replaced"
+
+PRESETS=("default")
+
+default_config="/etc/mkinitcpio.d/linux-zen.conf"
+default_image="/boot/initramfs-linux-zen.img"
