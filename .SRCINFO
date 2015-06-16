@@ -1,0 +1,17 @@
+pkgbase = perl-math-base36
+	pkgdesc = Encoding and decoding of base36 strings
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-Base36
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/Math-Base36-0.12.tar.gz
+	md5sums = a08048902efcf329aca985e9bf3446eb
+	sha512sums = e9bd6418031354d22cb2e84073a2b308e0644cca6d377207005ee907d50050e700afda6df4e94618289b036a62ce27f8e0ca96722234b101b06977a596331e15
+
+pkgname = perl-math-base36
+
