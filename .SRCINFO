@@ -1,0 +1,16 @@
+pkgbase = perl-class-data-accessor
+	pkgdesc = Inheritable, overridable class and instance data accessor creation
+	pkgver = 0.04004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Data-Accessor
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLACO/Class-Data-Accessor-0.04004.tar.gz
+	md5sums = b5ea49ad12041ac8a7c1c0e111ed67d1
+	sha512sums = 2e36a4227f14baab9514ca299d5d6e44b69c049d4d166b4c1a12373205ccbf6ec39c35697425b9ede07657effd283cbce2dc8a92d1d12f3ae237cfd556e26169
+
+pkgname = perl-class-data-accessor
+
