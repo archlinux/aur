@@ -1,0 +1,15 @@
+pkgbase = openrdate
+	pkgdesc = Open implementation of rdate.
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://sourceforge.net/projects/openrdate/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = BSD
+	source = http://downloads.sourceforge.net/project/openrdate/openrdate/openrdate-1.2.tar.gz/openrdate-1.2.tar.gz
+	sha256sums = 2921fc96d4ca676190d6ffd45fa80e107c1fe12291c0c4f64827c29639863332
+
+pkgname = openrdate
+
