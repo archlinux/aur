@@ -7,7 +7,6 @@ pkgdesc="Bitsquare is a cross-platform desktop application that allows users to 
 arch=('x86_64')
 url="https://bitsquare.io/"
 license=('AGPL3')
-provides=('bitsquare')
 source_x86_64=("https://github.com/bitsquare/bitsquare/releases/download/v0.2.1/bitsquare-0.2.1.deb")
 md5sums_x86_64=('b327f6c83e34b85dbd0f2b4926f4f3aa')
 _binname=Bitsquare
