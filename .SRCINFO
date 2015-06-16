@@ -1,0 +1,18 @@
+pkgbase = perl-zmq
+	pkgdesc = Perl-ish Interface libzmq
+	pkgver = 1.06
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/ZMQ
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-sub-name
+	depends = perl-zmq-constants
+	depends = perl-zmq-libzmq3
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DM/DMAKI/ZMQ-1.06.tar.gz
+	md5sums = bb78a185d0d9e7ae0be02b115b0a7958
+	sha512sums = 27a7e13c5bd5d7152a25a81a02b90bcd6bb23b54136629b5dfa0bdcadebe484bcd252709ae8c545329a3c5048d86a026edf706436867dd6a50bc90e1e2259449
+
+pkgname = perl-zmq
+
