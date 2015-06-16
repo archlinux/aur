@@ -1,0 +1,17 @@
+pkgbase = perl-test-script
+	pkgdesc = Basic cross-platform tests for scripts
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Script
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-ipc-run3>=0.034
+	depends = perl-probe-perl>=0.01
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Test-Script-1.07.tar.gz
+	md5sums = f6b5baa6403cd24dac7f023e0ea22384
+	sha512sums = 2cf7dc06977288910f157a5c0804d02e2a259c693adda59b80b89bba7eab22f74b317976a8a6f0fe6f28a87090dcc6f57c0245006b1eea600e2d71e6966ede97
+
+pkgname = perl-test-script
+
