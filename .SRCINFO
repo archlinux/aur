@@ -1,0 +1,17 @@
+pkgbase = perl-sys-mmap
+	pkgdesc = uses mmap to map in a file as a Perl variable
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sys-Mmap
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Sys-Mmap-0.16.tar.gz
+	md5sums = faae869e876fa86f92e6de3f13af3aef
+	sha512sums = 9f533f8eaa2707a77fa69dc0163e5e55b13d6653ddb5f7850c3fcaa090c79069cccedb947c1b8cd5a125fd7b055803eff437697c120785f422bff0414be7cd05
+
+pkgname = perl-sys-mmap
+
