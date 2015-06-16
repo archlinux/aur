@@ -1,0 +1,17 @@
+pkgbase = perl-file-util
+	pkgdesc = Easy, versatile, portable file handling
+	pkgver = 4.131591
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Util
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-nowarnings
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/File-Util-4.131591.tar.gz
+	md5sums = 375676589ff8c93785cc8c9110fe00a8
+	sha512sums = 61953b4bb375194ad5189169697616c24bf82afb20dd57ef0eb540cfec4eddd32dd522e77bcb47eb9c4117113a61127303f615f6722ac33fccdcbe7a2c44f21c
+
+pkgname = perl-file-util
+
