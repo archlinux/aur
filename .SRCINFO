@@ -1,0 +1,20 @@
+pkgbase = perl-xml-xspf
+	pkgdesc = API for reading & writing XSPF Playlists
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-XSPF
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor>=0.20
+	depends = perl-html-parser
+	depends = perl-timedate
+	depends = perl-xml-parser>=2.30
+	depends = perl-xml-writer>=0.600
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DANIEL/XML-XSPF-0.7.tar.gz
+	md5sums = 61d5ed1545daec410865daf255cdb6a5
+	sha512sums = 5757636d807314ef1dc10c82ac063227810a84cedca64e345d23ae8ef9003a952cd2358a11c9b32c0c5e31070c4928838386af72b3eec24ca894e7857ddaa16f
+
+pkgname = perl-xml-xspf
+
