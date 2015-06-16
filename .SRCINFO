@@ -1,0 +1,16 @@
+pkgbase = perl-class-throwable
+	pkgdesc = A minimal lightweight exception class
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Throwable
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KM/KMX/Class-Throwable-0.11.tar.gz
+	md5sums = faf82871a6b471451cd65c54c6cac7e1
+	sha512sums = cfa053a9f20c2e619383711566df9de8fe22120545f3063f3661ff865e948a419aa9324c39c2b40e028564681d85a0421701f99d0ae285f483abf9e39d732d4a
+
+pkgname = perl-class-throwable
+
