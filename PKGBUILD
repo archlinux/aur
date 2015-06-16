@@ -10,22 +10,21 @@ url="http://www.vdr-portal.de/board1-news/board2-vdr-news/126741-announce-mpv-pl
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('AGPL3')
 depends=('mpv' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
 source=("$pkgname-$pkgver.tar.bz2::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=38361"
-        "50-$_plugname.conf")
-backup=("etc/vdr/conf.avail/50-$_plugname.conf")
+        "50-${pkgname//vdr-/}.conf")
+backup=("etc/vdr/conf.avail/50-${pkgname//vdr-/}.conf")
 md5sums=('5026ce63061e7390fa51b13c8df98e0f'
          'd1f90a5bc8d735b48764e12384324750')
 
 build() {
-  cd "${srcdir}/$_plugname-$pkgver"
+  cd "${srcdir}/${pkgname//vdr-/}-$pkgver"
 
   make
 }
 
 package() {
-  cd "${srcdir}/$_plugname-$pkgver"
+  cd "${srcdir}/${pkgname//vdr-/}-$pkgver"
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
+  install -Dm644 "$srcdir/50-${pkgname//vdr-/}.conf" "$pkgdir/etc/vdr/conf.avail/50-${pkgname//vdr-/}.conf"
 }
