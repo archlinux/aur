@@ -1,0 +1,19 @@
+pkgbase = perl-bdb
+	pkgdesc = Asynchronous Berkeley DB access
+	pkgver = 1.91
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/BDB
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = db>=5.3.28
+	depends = glibc>=2.20
+	depends = perl-common-sense
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/BDB-1.91.tar.gz
+	md5sums = b337bb3a52d911b9024b0587b2589dcb
+	sha512sums = ebd0c2609e56e3b7ed3932bc48bbfc88fda4c5751fab7ee406ef0b659f1e6d43b636e312136b0447b9d70928d5d5ef881af0115f12a32b394e2d6ea7525db903
+
+pkgname = perl-bdb
+
