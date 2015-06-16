@@ -1,0 +1,23 @@
+pkgbase = perl-plack-middleware-serverstatus-lite
+	pkgdesc = show server status like Apache's mod_status
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Plack-Middleware-ServerStatus-Lite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-tcp>=2.00
+	depends = perl-json>=2.53
+	depends = perl-libwww
+	depends = perl-net-cidr-lite
+	depends = perl-parallel-scoreboard>=0.03
+	depends = perl-plack
+	depends = perl-starman>=0.3013
+	depends = perl-try-tiny>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Plack-Middleware-ServerStatus-Lite-0.18.tar.gz
+	md5sums = 45e1ddc9c1fde9fa4be751841ea80d33
+	sha512sums = 5a3867bf2d750d28f0422fb26dee925a3b131c783c7622bdce52223e60863bd14ccb1e29f0963dbe17b9dadabf6c397a9b8d7719324c320839911ce49150fe65
+
+pkgname = perl-plack-middleware-serverstatus-lite
+
