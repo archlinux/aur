@@ -1,0 +1,16 @@
+pkgbase = perl-xml-parser-lite-tree
+	pkgdesc = Lightweight XML tree builder
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Parser-Lite-Tree
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IA/IAMCAL/XML-Parser-Lite-Tree-0.14.tar.gz
+	md5sums = 60d815773e13dc67a370e2482b7e4aa4
+	sha512sums = 049d9a63ef22f6073fb4f5cb0441e2a0224c1d4e94fb1e8236fc29f47259b4ae4cf2df186b0934c4f29dec1f10b0d413e1f67f78b11b4fb4e84808b730ec8214
+
+pkgname = perl-xml-parser-lite-tree
+
