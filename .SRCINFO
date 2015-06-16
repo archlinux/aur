@@ -1,0 +1,17 @@
+pkgbase = perl-net-rtorrent
+	pkgdesc = Perl interface to rtorrent via XML-RPC.
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-RTorrent
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-collection>=0.43
+	depends = perl-rpc-xml>=0.63
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZA/ZAG/Net-RTorrent-0.11.tar.gz
+	md5sums = 57194d076c6ce54f9d544e9b94e9353c
+	sha512sums = 9668ce84d61f5e801ea14591c352c768007305ca81d0bd4dd35bc3db6426f4924e34983a6c6bed7a1206896dcabcae7a15192372ec751c979196542b21f2135c
+
+pkgname = perl-net-rtorrent
+
