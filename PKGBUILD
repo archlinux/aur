@@ -11,7 +11,7 @@ url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
-_plugname=$(echo $pkgbase | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/$_plugname.git#commit=$_gitver"
         'xineliboutput-vdr2.1.6compat.diff'
         'xineliboutput_renamed_iDoubleTapTimeoutMs_in_libcec.diff'
