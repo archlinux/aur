@@ -1,0 +1,17 @@
+pkgbase = lib32-libpng14
+	pkgdesc = A collection of routines used to create PNG format graphics files (32-bit)
+	pkgver = 1.4.15
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.4.15.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.4.15-apng.patch.gz
+	md5sums = 4c6933572baec9c0e9203e5db1d4ddd1
+	md5sums = c1db113ab5ac0bad1ca4c36d19395c01
+
+pkgname = lib32-libpng14
+
