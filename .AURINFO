@@ -1,0 +1,29 @@
+pkgbase = perl-sql-translator
+	pkgdesc = SQL DDL transformations and more
+	pkgver = 0.11020
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/SQL-Translator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-exception>=0.31
+	makedepends = perl-json>=2.0
+	makedepends = perl-xml-writer>=0.500
+	makedepends = perl-yaml>=0.66
+	depends = perl-carp-clan
+	depends = perl-dbi>=1.54
+	depends = perl-file-sharedir>=1.0
+	depends = perl-list-moreutils>=0.09
+	depends = perl-moo>=1.000003
+	depends = perl-package-variant>=1.001001
+	depends = perl-parse-recdescent>=1.967009
+	depends = perl-try-tiny>=0.04
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/SQL-Translator-0.11020.tar.gz
+	md5sums = 271d40a2c484b41a8654f918be28695b
+	sha512sums = af044b6a5fca4935b119e0cec08b7ce0567a792d529cc9615708e0b87e052578f8697c9c036ea3f687fe2d9e9ac916a3b6d1585ede25104e7ca9caeab5940884
+
+pkgname = perl-sql-translator
+
