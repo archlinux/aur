@@ -1,0 +1,17 @@
+pkgbase = werebot
+	pkgdesc = Werewolf IRC Bot
+	pkgver = r54.56d53cc
+	pkgrel = 1
+	url = http://github.com/Darkhogg/werebot
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	source = werebot::git+https://github.com/Darkhogg/werebot.git
+	source = werebot.service
+	md5sums = SKIP
+	md5sums = b91fd86ab22acbf3dcabce202652a565
+
+pkgname = werebot
+
