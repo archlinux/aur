@@ -1,0 +1,15 @@
+pkgbase = tclxosd
+	pkgdesc = A Tcl bindings for libxosd (On Screen Display)
+	pkgver = 0.20
+	pkgrel = 2
+	url = http://sourceforge.net/projects/tclxosd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xosd
+	makedepends = tcl
+	source = http://downloads.sourceforge.net/project/tclxosd/tclxosd/tclxosd-0.20/tclxosd-0.20.tar.gz
+	md5sums = 7726c3c5358b5ec691f27fba844740f1
+
+pkgname = tclxosd
+
