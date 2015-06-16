@@ -10,7 +10,7 @@ url="http://projects.vdr-developer.org/projects/plg-gamepad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/attachments/download/1562/vdr-plugin-$_plugname-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/$_plugname/keymap.txt")
