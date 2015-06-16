@@ -1,0 +1,16 @@
+pkgbase = perl-snowball-norwegian
+	pkgdesc = Porters stemming algorithm for norwegian.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Snowball-Norwegian
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AS/ASKSH/Snowball-Norwegian-1.2.tar.gz
+	md5sums = 24197e600ea4d9b5bb5ca9c175f14676
+	sha512sums = a14da012954076c6c3fdaa4ea12dd74d8e07e96e061e368980781c965e72fe9f8ac4b9bc8eb761e232bf8c244edc816f6c991bb2cd02020919fe957cefe034d5
+
+pkgname = perl-snowball-norwegian
+
