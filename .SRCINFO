@@ -1,0 +1,16 @@
+pkgbase = perl-string-tokenizer
+	pkgdesc = A simple string tokenizer.
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-Tokenizer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STEVAN/String-Tokenizer-0.05.tar.gz
+	md5sums = 650bfc09bc0c7b671a67329b2bb901f8
+	sha512sums = 603fd93088bc49ffbed0ced28a53d76a80f6c215524ea94f9433ab1bde9037482d88b97030e5a81b0eaf89f59a6b6f648c7d7496f75b31f4e30bab7aa7b31470
+
+pkgname = perl-string-tokenizer
+
