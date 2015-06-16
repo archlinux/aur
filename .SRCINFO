@@ -1,0 +1,16 @@
+pkgbase = perl-term-readline-zoid
+	pkgdesc = another ReadLine package
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Term-ReadLine-Zoid
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-term-readkey
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PA/PARDUS/Term-ReadLine-Zoid/Term-ReadLine-Zoid-0.07.tar.gz
+	md5sums = 83438aa11e983f3bd5238b9f8535d7bf
+	sha512sums = b13da20516411ffe3996e6809d5f144a8b2ad0504d2ec2d725facd8aeab90b5fcf6ab4c31695454dc2eecaf802d5152e4cb4c9fe57a56a29e0faaedfd1d6d4be
+
+pkgname = perl-term-readline-zoid
+
