@@ -1,0 +1,17 @@
+pkgbase = perl-digest-shabal
+	pkgdesc = Perl interface to the Shabal digest algorithm
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Shabal
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-Shabal-0.04.tar.gz
+	md5sums = 94a9a9086831301a3c111321b816d033
+	sha512sums = f5a5efe296f313b61e9e050592d7e0dce82df3108e361e29e0f9a7f02de155ba5a316de9a0b7cc128561d195def6ee179e96657db86d0a7a7526135b0042fff0
+
+pkgname = perl-digest-shabal
+
