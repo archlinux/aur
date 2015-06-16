@@ -1,0 +1,17 @@
+pkgbase = perl-http-body
+	pkgdesc = HTTP Body Parser
+	pkgver = 1.22
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/HTTP-Body
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	depends = perl-http-message
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/G/GE/GETTY/HTTP-Body-1.22.tar.gz
+	md5sums = 81a38eab683d8750b78ad0d4845ef0d5
+	sha512sums = 62665989d76699a3c3747d8f4e23d2009488bc229220bcf6fc07fc425e6ac5118f6ea48c75af681c2f29e9ed644d7a7979368cc36df77aca0544786b523c9cfe
+
+pkgname = perl-http-body
+
