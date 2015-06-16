@@ -1,0 +1,18 @@
+pkgbase = perl-xml-sax-expat-incremental
+	pkgdesc = Incremental/non-blocking SAX Driver for Expat
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-SAX-Expat-Incremental
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl-xml-parser
+	depends = perl-xml-sax-expat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/XML-SAX-Expat-Incremental-0.05.tar.gz
+	md5sums = f6f4c46190510c23a4990ef5e3fc54b3
+	sha512sums = e9e9601d907b402b9185e3e639cb35992fb8969fff8cfebf8da6ad930e94b8ac0b727b162512135a2cb814659e4700c18e22ddf172f516756c200d729bdb4ee4
+
+pkgname = perl-xml-sax-expat-incremental
+
