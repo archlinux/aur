@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-engine-psgi
+	pkgdesc = PSGI engine for Catalyst
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Engine-PSGI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	makedepends = perl-test-tcp
+	depends = perl>=5.8.1
+	depends = perl-catalyst-action-renderview
+	depends = perl-catalyst-runtime>=5.80007
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Catalyst-Engine-PSGI-0.13.tar.gz
+	md5sums = 4b48a53b1ecf5c236488de57c773e9f0
+	sha512sums = 4447545400fc28c2eeb23230aec875a12b6837a03baa4c9e47da84f9b245ae06045423d8f14f28f9c2d11d6542f45c714a99301f0fd1301caa0950eaa7364b14
+
+pkgname = perl-catalyst-engine-psgi
+
