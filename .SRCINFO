@@ -1,0 +1,16 @@
+pkgbase = perl-template-tiny
+	pkgdesc = Template Toolkit reimplemented in as little code as possible
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Template-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/A/AD/ADAMK/Template-Tiny-1.12.tar.gz
+	md5sums = 166662a3d24c1c5f995c2ffc26e0eb36
+	sha512sums = 056b3dcffea92533b0c61423edede96654a98d9a2bed13753b03e3dc2849ba2c5d41607cb604b8752909cb07771d152e3c3c90f514f7eccaebd60b34bc270da2
+
+pkgname = perl-template-tiny
+
