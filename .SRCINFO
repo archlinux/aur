@@ -1,0 +1,17 @@
+pkgbase = perl-devel-caller
+	pkgdesc = meatier versions of caller
+	pkgver = 2.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Caller
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-padwalker>=0.08
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/Devel-Caller-2.06.tar.gz
+	md5sums = af52f47979b3c9358af9e5d8c283f263
+	sha512sums = f15a59169e191c8526f613d21c415e5d8d51b59eabf309952468fdee15277b2e8f831a2263a9dc006d9f3144a234fbc9c46ad3ab464b6fc055360c6445b209f9
+
+pkgname = perl-devel-caller
+
