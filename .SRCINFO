@@ -1,0 +1,16 @@
+pkgbase = perl-catalyst-engine-apache
+	pkgdesc = Catalyst Apache Engines
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Engine-Apache
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime>=5.80
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Catalyst-Engine-Apache-1.16.tar.gz
+	md5sums = 7a7241dadd7c0eb28ce10aeb90c9944e
+	sha512sums = 97fe7a43f97160ec6d5084168c63e4b24dd25f6430518c602da9d15a1a1b3df398b99d57b3f7430ea1705408b42ad6bd7202ec4dedbd5b899ed14b3576f69b4b
+
+pkgname = perl-catalyst-engine-apache
+
