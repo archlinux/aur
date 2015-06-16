@@ -1,0 +1,17 @@
+pkgbase = perl-cache-lru
+	pkgdesc = a simple, fast implementation of LRU cache in pure perl
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Cache-LRU
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/K/KA/KAZUHO/Cache-LRU-0.04.tar.gz
+	md5sums = e7b3768fdae203bec7a9bd9b8a6b7a90
+	sha512sums = 9fd4f56da78e4b8e291c4291ccb2e34bc50f7294fc8ff1d942d21fb116a5613c96f8e55ef9bb95a7ae3e810e791d3edf2f9f15063fd0fb85414a8e8964e88118
+
+pkgname = perl-cache-lru
+
