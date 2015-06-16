@@ -1,0 +1,19 @@
+pkgbase = perl-b-utils
+	pkgdesc = Helper functions for op tree manipulation
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/B-Utils
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-depends>=0.301
+	depends = perl-task-weaken
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/J/JJ/JJORE/B-Utils-0.25.tar.gz
+	md5sums = a45b286d9a0281c98416f2bdf689b800
+	sha512sums = 9a198f400d0a138c73a1d52f69e58b3a9100bb0aa4f851b9cec1f54cc2f9cb7e65c67fcad0495deeaf1ad427862b8135d262c46a7945e7cc26ee6a7a879e2ad7
+
+pkgname = perl-b-utils
+
