@@ -1,0 +1,17 @@
+pkgbase = perl-text-unaccent
+	pkgdesc = Remove accents from a string
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Unaccent
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LD/LDACHARY/Text-Unaccent-1.08.tar.gz
+	md5sums = 9ac9b28cbb66f4829a50d563ace79cb5
+	sha512sums = d2c6a308904d0f1d5cd05a9fd29436f54292ea537f2ad8f44b4ebc0523302db64bb087aeac1f8e51c093e71b205c6c4fd9649cf2c8cbf8b50266c0aa200917c8
+
+pkgname = perl-text-unaccent
+
