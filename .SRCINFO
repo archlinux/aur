@@ -1,0 +1,16 @@
+pkgbase = perl-javascript-closure
+	pkgdesc = compress your javascript code using Google online service of Closure Compiler
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Javascript-Closure
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHIRIRU/Javascript-Closure-0.07.tar.gz
+	md5sums = 953d1fadc4adcb7857f521689221b97d
+	sha512sums = d72dd83c35aa9c048bf2cab07846927538c95c58661e03d29cd89792c3d50c8960d8a69936ace823a477c14df92960b832b0b2c90a2780d98cb120c42a9fddc9
+
+pkgname = perl-javascript-closure
+
