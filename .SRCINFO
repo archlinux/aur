@@ -1,0 +1,17 @@
+pkgbase = perl-apache-dbi
+	pkgdesc = Initiate a persistent database connection
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Apache-DBI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbi>=1
+	depends = perl-digest-sha1>=2.01
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHRED/Apache-DBI-1.12.tar.gz
+	md5sums = 1bf6ca12b87de05bd53045325064636e
+	sha512sums = 5b989856f7b6cb75a7a7a9b1ee8e166a1f5aa03475574d340933f135f813d55806f4bdf878faac49cb72a1b00f4ee23ddedb90909869771f4d613bbfd4ed135b
+
+pkgname = perl-apache-dbi
+
