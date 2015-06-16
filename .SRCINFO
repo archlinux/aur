@@ -1,0 +1,22 @@
+pkgbase = perl-parallel-prefork
+	pkgdesc = A simple prefork server framework
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parallel-Prefork
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	makedepends = perl-test-sharedfork
+	depends = perl>=5.8.1
+	depends = perl-class-accessor-lite>=0.04
+	depends = perl-list-moreutils
+	depends = perl-proc-wait3>=0.03
+	depends = perl-scope-guard
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Parallel-Prefork-0.14.tar.gz
+	md5sums = 223570b872af5ec337e3fdc31e47d7e0
+	sha512sums = 18a9155775779d85956492f252f87e543590e4b4403f40fd4da86f041784b344683d88db49137cdad1e5d22c6f1017453bab7c0e1fb38731933194a32015547a
+
+pkgname = perl-parallel-prefork
+
