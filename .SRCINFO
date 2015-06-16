@@ -1,7 +1,7 @@
 pkgbase = openclonk
 	pkgdesc = Multiplayer-action-tactic-skill game
-	pkgver = 6.0
-	pkgrel = 3
+	pkgver = 6.1
+	pkgrel = 1
 	url = http://openclonk.org
 	install = openclonk.install
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = openclonk
 	makedepends = boost
 	makedepends = imagemagick
 	makedepends = mesa
-	depends = freetype2
 	depends = gtk2
 	depends = glew
 	depends = sdl_mixer
@@ -19,12 +18,10 @@ pkgbase = openclonk
 	depends = hicolor-icon-theme
 	depends = libupnp
 	conflicts = clonk_rage
-	source = http://openclonk.org/builds/release/6.0/openclonk-6.0-src.tar.bz2
+	source = http://openclonk.org/builds/release/6.1/openclonk-6.1-src.tar.bz2
 	source = directories.patch
-	source = sdlfix.patch
-	md5sums = 3e0dd1c5f60df0d37dbbb12b7ef5c38b
+	md5sums = 4d2b93bc4e0e5e97ee35b890838316b8
 	md5sums = 55e35baf307d699a704e9d939d8402fb
-	md5sums = 50b727b8d372be91adce1d0460bf0081
 
 pkgname = openclonk
 

@@ -4,26 +4,24 @@
 # Contributor: Wesley <rudirennsau at hotmail dot com>
 
 pkgname=openclonk
-pkgver=6.0
-pkgrel=3
-_orig=$pkgname-release-$pkgver-src
+pkgver=6.1
+pkgrel=1
+_orig=$pkgname-$pkgver-src
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
 license=('custom')
-depends=('freetype2' 'gtk2' 'glew' 'sdl_mixer' 'libxpm'  'hicolor-icon-theme' 'libupnp')
+depends=('gtk2' 'glew' 'sdl_mixer' 'libxpm'  'hicolor-icon-theme' 'libupnp')
 makedepends=('cmake' 'boost' 'imagemagick' 'mesa')
 conflicts=('clonk_rage')
 install=$pkgname.install
-source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2" 'directories.patch' 'sdlfix.patch')
-md5sums=('3e0dd1c5f60df0d37dbbb12b7ef5c38b'
-         '55e35baf307d699a704e9d939d8402fb'
-         '50b727b8d372be91adce1d0460bf0081')
+source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2" 'directories.patch')
+md5sums=('4d2b93bc4e0e5e97ee35b890838316b8'
+         '55e35baf307d699a704e9d939d8402fb')
 
 prepare() {
   cd "${srcdir}/${_orig}"
   patch -p1 -i ../directories.patch
-  patch -p1 -i ../sdlfix.patch
 }
 
 build() {
