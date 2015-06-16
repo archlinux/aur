@@ -1,0 +1,20 @@
+pkgbase = perl-class-dbi-frozen
+	pkgdesc = Class::DBI, frozen at 3.0.1
+	pkgver = 301.3.0.1
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-Frozen
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor>=0.18
+	depends = perl-class-data-inheritable>=0.02
+	depends = perl-class-trigger>=0.07
+	depends = perl-ima-dbi>=0.33
+	depends = perl-universal-moniker>=0.06
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Class-DBI-Frozen-301-3.0.1.tar.gz
+	md5sums = 834971643ffee38632b6702e92bef692
+	sha512sums = 08d2617422f4a808731e5d8419e8847477f98786be644ad90c66528378f00d82b389369b03eeec1af74a8f0ce9e00ed5245e9861e5a527b9630f9de8bf21d2f0
+
+pkgname = perl-class-dbi-frozen
+
