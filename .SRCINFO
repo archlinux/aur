@@ -1,0 +1,16 @@
+pkgbase = perl-dist-zilla-plugin-copyto
+	pkgdesc = Copy to Other Places Plugin for Dist::Zilla
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-CopyTo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dist-zilla
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RE/REDICAPS/Dist-Zilla-Plugin-CopyTo-0.11.tar.gz
+	md5sums = 00aa852b2b22c7f022f96075b6ffb697
+	sha512sums = c700575196e5e22bae66a8d8c745ace679bbab0f82a02146c4371cff08ada899209e38aed9dd1e4e78edcee0428198c572d3b4f2b3a9e82bf2af3b9b6a783932
+
+pkgname = perl-dist-zilla-plugin-copyto
+
