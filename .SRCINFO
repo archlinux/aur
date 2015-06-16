@@ -1,0 +1,15 @@
+pkgbase = python2-eve
+	pkgdesc = An open source Python REST API framework designed for human beings.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://python-eve.org/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	provides = python2-eve
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/E/Eve/Eve-0.5.3.tar.gz
+	sha256sums = 623e89bc551eee0fa4b2325ec17eef2cf13d019475befb8a425d62f1117619fb
+
+pkgname = python2-eve
+
