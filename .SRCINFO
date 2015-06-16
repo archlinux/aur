@@ -1,0 +1,16 @@
+pkgbase = perl-lingua-stem-fr
+	pkgdesc = Perl French Stemming
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-Stem-Fr
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SD/SDP/Lingua-Stem-Fr-0.02.tar.gz
+	md5sums = b4ea5dd1d942b190160e9cbc73115b20
+	sha512sums = e0709c19f4a0f2ef79f459c05e2207e0b263859e913ab722701827b4ff391b50dd41e7e3a3e16600a61f8c7e1ed557111abc36965b58fbf28ed06f9bedc09cf4
+
+pkgname = perl-lingua-stem-fr
+
