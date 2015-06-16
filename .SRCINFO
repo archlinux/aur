@@ -1,0 +1,16 @@
+pkgbase = zacman-git
+	pkgdesc = Another package manager for zsh
+	pkgver = 9.0502696
+	pkgrel = 1
+	url = https://github.com/fzerorubigd/zacman
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = gb-git
+	source = git://github.com/fzerorubigd/zacman.git
+	sha1sums = SKIP
+
+pkgname = zacman-git
+
