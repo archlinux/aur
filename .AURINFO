@@ -1,0 +1,15 @@
+pkgbase = perl-data-messagepack
+	pkgdesc = MessagePack serializing/deserializing
+	pkgver = 0.48
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Data-MessagePack
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	depends = perl>=5.8.1
+	source = http://search.mcpan.org/CPAN/authors/id/G/GF/GFUJI/Data-MessagePack-0.48.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-messagepack
+
