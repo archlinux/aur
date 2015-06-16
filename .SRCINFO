@@ -1,0 +1,18 @@
+pkgbase = perl-eval-withlexicals
+	pkgdesc = pure perl eval with persistent lexical variables
+	pkgver = 1.003002
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Eval-WithLexicals
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moo>=0.009006
+	depends = perl
+	depends = perl-strictures
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Eval-WithLexicals-1.003002.tar.gz
+	md5sums = a47dcb41ca639d3cae57191744ba72d3
+	sha512sums = d7a540a5ae14fb5ee649599ca3979ae07268c54ca14814544b6836ded2ba50345a7bf5b19653d6b48ddee51587701a0419bec81131e7f45b299e3ad88a3e16bf
+
+pkgname = perl-eval-withlexicals
+
