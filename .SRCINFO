@@ -1,0 +1,36 @@
+pkgbase = elements-alpha-git
+	pkgver = r7804.8865ad9
+	pkgrel = 1
+	url = http://elementsproject.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	source = elements-alpha-git::git+https://github.com/ElementsProject/elements#branch=alpha
+	source = elements-alpha.desktop
+	sha256sums = SKIP
+	sha256sums = dd954b357dc850c637d47763b8c43552bc7995b7062a95f405ab80a5e0ca0602
+
+pkgname = elements-alpha-cli-git
+	pkgdesc = A collection of Bitcoin experiments - RPC cli client
+	depends = boost-libs
+	depends = openssl
+
+pkgname = elements-alpha-daemon-git
+	pkgdesc = A collection of Bitcoin experiments - daemon
+	depends = boost-libs
+	depends = miniupnpc
+	depends = openssl
+
+pkgname = elements-alpha-qt-git
+	pkgdesc = A collection of Bitcoin experiments - Qt GUI
+	depends = boost-libs
+	depends = qt4
+	depends = miniupnpc
+	depends = qrencode
+	depends = protobuf
+
