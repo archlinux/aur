@@ -1,0 +1,16 @@
+pkgbase = perl-data-serializer
+	pkgdesc = Modules that serialize data structures
+	pkgver = 0.60
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Data-Serializer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/N/NE/NEELY/Data-Serializer-0.60.tar.gz
+	md5sums = 6ca3a58bad4691938b485b9c800aa5cc
+	sha512sums = 85211d2ca5db19219f89da5300b93835866baa5e12237efa61ea82d2b841f6b5a05bca889d98878151d1f7517b2af5d9a1535e7bbcd64245936b270a82be21bb
+
+pkgname = perl-data-serializer
+
