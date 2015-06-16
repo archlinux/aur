@@ -1,0 +1,19 @@
+pkgbase = perl-crypt-dsa
+	pkgdesc = DSA Signatures and Key Generation
+	pkgver = 1.17
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Crypt-DSA
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	depends = perl-data-buffer>=0.01
+	depends = perl-digest-sha1
+	depends = perl-file-which>=0.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Crypt-DSA-1.17.tar.gz
+	md5sums = 0a64dcd77e796ebacad4c6af2df74b57
+	sha512sums = 2eac27cb08439a6d5cfdf1ee5f38412bc1dddb53c1865e5adc4f8c758ba1d221e5d30608bd12178beb15aed28940fa5db547520d57d8714919e20f0588fb1bfc
+
+pkgname = perl-crypt-dsa
+
