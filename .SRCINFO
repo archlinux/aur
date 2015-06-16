@@ -1,0 +1,16 @@
+pkgbase = perl-text-xsv
+	pkgdesc = read character separated files
+	pkgver = 0.21
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-xSV
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TILLY/Text-xSV-0.21.tar.gz
+	md5sums = 293eea793ce885f3b5c84b98364d29b3
+	sha512sums = f04d83477805f6f43654d6ca15ee16c7bc213895b05cce4e784432c8ada070fe22de2e34464c2de5ce8ce3fb9c155ad1aaa1b9f19a032c49935fe9dd1eca25bb
+
+pkgname = perl-text-xsv
+
