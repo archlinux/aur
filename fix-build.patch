@@ -1,0 +1,11 @@
+--- autogen.sh	2014-02-09 10:13:23.000000000 +0100
++++ autogen.sh	2014-04-25 21:23:05.137403474 +0200
+@@ -1,6 +1,7 @@
+ #!/bin/sh -e
+ 
+-glibtoolize -f -c
++libtoolize -f -c
++intltoolize -f -c
+ aclocal --force
+ autoheader -f
+ autoconf -f

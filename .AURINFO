@@ -1,0 +1,20 @@
+pkgbase = gimmix
+	pkgdesc = Graphical MPD client written in C using GTK+2
+	pkgver = 0.5.7.2
+	pkgrel = 3
+	url = http://sourceforge.net/projects/gimmix.berlios
+	install = gimmix.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = desktop-file-utils
+	depends = libglade>=2.6.0
+	depends = libmpd>=0.17.0
+	depends = taglib
+	depends = libnxml
+	source = http://sourceforge.net/projects/gimmix.berlios/files/gimmix-0.5.7.2.tar.bz2
+	source = fix-build.patch
+
+pkgname = gimmix
+
