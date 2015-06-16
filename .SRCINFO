@@ -1,0 +1,17 @@
+pkgbase = perl-module-signature
+	pkgdesc = Module signature file manipulation
+	pkgver = 0.73
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Signature
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-ipc-run
+	depends = perl>=5.005
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Module-Signature-0.73.tar.gz
+	md5sums = de27bbca948ba8a13a7f614414cb623d
+	sha512sums = dd43923aa2bd21ec4025360d8ba27936d1e8d9906799b91d0386887c14326fd40e3e684afdffa37d36665a7c64bc4e582a83b3bb3b366bb49f76d2b28cb5eb41
+
+pkgname = perl-module-signature
+
