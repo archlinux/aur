@@ -1,0 +1,17 @@
+pkgbase = perl-string-similarity
+	pkgdesc = calculate the similarity of two strings
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-Similarity
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/String-Similarity-1.04.tar.gz
+	md5sums = 84936c1d393e92680a5d58039dcb9fd9
+	sha512sums = ed43dadd99fc795bfe68ad59ffb9df77d9758d2ca1d848b5e156010b6502d879152731b7e91c3a08c5d408b1f8d44612cef2f67281fea9da4e6cc8699247739c
+
+pkgname = perl-string-similarity
+
