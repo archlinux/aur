@@ -1,0 +1,17 @@
+pkgbase = perl-class-dbi-fromform
+	pkgdesc = Update Class::DBI data using Data::FormValidator or HTML Widget
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-FromForm
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-dbi
+	depends = perl-data-formvalidator
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Class-DBI-FromForm-0.04.tar.gz
+	md5sums = e7650bc088c6bec6f7068b34484f1118
+	sha512sums = f2c1ac06e01200b2fc2c29794ec4e721a555016a559856973e1db3a11ae67ba42241746755fb5fd011c9c21e8e19d0b53eaa3ea1cb4cdc9f2a48c90ffa783013
+
+pkgname = perl-class-dbi-fromform
+
