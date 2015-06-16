@@ -1,0 +1,18 @@
+pkgbase = perl-image-objectdetect
+	pkgdesc = detects objects from picture(using opencv)
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Image-ObjectDetect
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = opencv>=2.4.6
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JI/JIRO/Image-ObjectDetect-0.12.tar.gz
+	md5sums = ac18f31a5e67da2b32c3df66d8f71133
+	sha512sums = b029467463fade1e5a0d585082629d539d28bb0509b7b5a5fa5b68dc0551c29137d8b8109f74292e5a18562595bce74424e2bb302375416fc54a3a32bb92bea1
+
+pkgname = perl-image-objectdetect
+
