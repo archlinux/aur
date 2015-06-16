@@ -1,0 +1,16 @@
+pkgbase = perl-module-versions
+	pkgdesc = Handle versions of loaded modules with flexible result interface
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Versions
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THW/Module-Versions-0.02.zip
+	md5sums = ded1c89273006a13903091dddbd64d92
+	sha512sums = 6fa531bb7e20c0110c237a5e9f977dd06d5b533699b15ae89ac7a72ce651eb24af7db35117f5a5ed94141994e7a1b86d9bbec7587aaf2ab5980cad9637f52edf
+
+pkgname = perl-module-versions
+
