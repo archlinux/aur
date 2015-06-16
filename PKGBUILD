@@ -1,5 +1,5 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
-# Contributor: DJ Lucas <dj@linuxfromscratch.org>
+# Maintainer: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 # Contributor: ngoonee <ngoonee.talk@gmail.com>
 # Contributor: Adam Russell <adamlr6+arch@gmail.com>
 pkgname=openchange
@@ -7,8 +7,7 @@ _codename=VULCAN
 pkgver=2.3
 pkgrel=1
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
-and Exchange protocols.  This package was originally created to support \
-evolution-mapi and may not work for any other purpose."
+and Exchange protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.openchange.org"
 license=('GPL3')
@@ -17,15 +16,21 @@ depends=('samba>=4.2.2' 'libical' 'sqlite3' 'file' 'boost' 'python2'
 makedepends=('ccache' 'docbook-xsl' 'libxslt')
 options=(!makeflags)
 # Releases are mirrored at http://tracker.openchange.org/projects/openchange/files
-source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-${_codename}.tar.gz")
+source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-${_codename}.tar.gz"
+        "ocsmanager.service"
+        "openchange-provision-type-error.patch")
 
-sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e')
+sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
+            '45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3'
+            '65dc742e95dd1bff1581ea3d76b4dfe8d01ca52ab5e64ffc80efc10417a2ff97')
 
 # Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT
 _srcsubdir="${pkgname}-${pkgname}-${pkgver}-${_codename}"
 
 build() {
     cd "${srcdir}/${_srcsubdir}"
+
+    patch -p1 < "${srcdir}/openchange-provision-type-error.patch"
 
     PYTHON_CALLERS="$(find ${srcdir}/${_srcsubdir} -name '*.py')
                     $(find ${srcdir}/${_srcsubdir} -name 'configure.ac')
@@ -49,6 +54,7 @@ build() {
         --datadir=/usr/share/samba \
         --enable-pyopenchange \
         --with-modulesdir=/usr/lib/samba/modules
+
     make FLEX=/usr/bin/flex BISON=/usr/bin/bison || return 1
 }
 
@@ -56,7 +62,8 @@ package() {
     _pyver=`python2 -c 'import sys; print(sys.version[:3])'`
 
     cd "${srcdir}/${_srcsubdir}"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" pyopenchange-install
 
     # NOTE:  Not using `make installman' because that generates a bunch
     #   of doxygen-based manpages which may have conflicting names with
@@ -67,6 +74,27 @@ package() {
     cd "${pkgdir}/usr/lib"
     ln -s libmapi.so libmapi.so.0
     ln -s libocpf.so libocpf.so.0
+
+    # Install OCSManager
+    cd "${srcdir}/${_srcsubdir}"
+    make srcdir="${srcdir}/${_srcsubdir}" DESTDIR="${pkgdir}" ocsmanager-install
+    install -vdm700 -o http -g http "${pkgdir}/var/cache/ntlmauthhandler"
+    install -vDm644 "${srcdir}/ocsmanager.service" \
+                    "${pkgdir}/usr/lib/systemd/system/ocsmanager.service"
+    install -vDm644 "${srcdir}/${_srcsubdir}/mapiproxy/services/ocsmanager/ocsmanager.ini" \
+                    "${pkgdir}/etc/ocsmanager/ocsmanager.ini"
+    install -vDm644 "${srcdir}/${_srcsubdir}/mapiproxy/services/ocsmanager/ocsmanager-apache.conf" \
+                    "${pkgdir}/etc/httpd/conf/extra/ocsmanager.conf"
+
+    # Install RPC Proxy
+    cd "${sourcedir}/mapiproxy/services/web/rpcproxy"
+    install -vdm755 "${pkgdir}/usr/lib/openchange/web/rpcproxy"
+    install -vm644  "${srcdir}/${_srcsubdir}/mapiproxy/services/web/rpcproxy/rpcproxy.conf" \
+                    "${pkgdir}/etc/httpd/conf/extra/rpcproxy.conf"
+    python2 setup.py install \
+              --root="${pkgdir}" \
+              --install-lib=/usr/lib/openchange/web/rpcproxy \
+              --install-scripts=/usr/lib/openchange/web/rpcproxy
 
     find "${pkgdir}/usr/lib/python${_pyver}/site-packages" -name '*.py' | \
          xargs sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|"

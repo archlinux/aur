@@ -1,0 +1,12 @@
+diff -rupN a/python/openchange/mailbox.py b/python/openchange/mailbox.py
+--- a/python/openchange/mailbox.py	2015-06-16 14:58:47.625735072 -0700
++++ b/python/openchange/mailbox.py	2015-06-16 14:58:16.188582238 -0700
+@@ -498,7 +498,7 @@ class OpenChangeDBWithMysqlBackend(Mysql
+     def change_number(self):
+         if self._change_number is None:
+             cur = self._execute("SELECT change_number FROM servers WHERE id = %s",
+-                                self.server_id)
++                                (self.server_id,))
+             data = cur.fetchone()
+             if data:
+                 self._change_number = data[0]

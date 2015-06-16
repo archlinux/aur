@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenChange OCSManager
+After=samba.service
+
+[Service]
+Type=simple
+PIDFile=/var/run/ocsmanager.pid
+ExecStart=/usr/sbin/paster serve /etc/ocsmanager/ocsmanager.ini --pid-file=/run/ocsmanager.pid --log-file=/var/log/ocsmanager.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
