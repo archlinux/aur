@@ -1,0 +1,16 @@
+pkgbase = perl-boolean
+	pkgdesc = Boolean support for Perl
+	pkgver = 0.43
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/boolean
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IN/INGY/boolean-0.43.tar.gz
+	md5sums = 6e9d6f64c04d31b1226707732bd59fec
+	sha512sums = cc34a182c5ac4f5c1814d5d812d9f0a96e57503e711761ef6e8ad24362836a6faff65be9643d7ed373b68305c0b4c7d005526fd7860223c22ecdcecea1c22cc8
+
+pkgname = perl-boolean
+
