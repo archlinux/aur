@@ -1,0 +1,16 @@
+pkgbase = perl-inlinex-c2xs
+	pkgdesc = Convert from Inline C code to XS.
+	pkgver = 0.22
+	pkgrel = 2
+	url = http://search.mcpan.org/dist/InlineX-C2XS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-inline
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SI/SISYPHUS/InlineX-C2XS-0.22.tar.gz
+	md5sums = 3c8a8835895919a94b7c2359887b4245
+	sha512sums = ea0326bd1ef398538981b12d5c9f0a8d9194f5e06b528b01f31eec0eb49d625a42b43b574daa359131afc551286991aa017dc57a373256d842542dc77086c264
+
+pkgname = perl-inlinex-c2xs
+
