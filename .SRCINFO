@@ -1,0 +1,16 @@
+pkgbase = perl-text-emoticon
+	pkgdesc = Factory class for Yahoo! and MSN emoticons
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Emoticon
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-universal-require
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Text-Emoticon-0.04.tar.gz
+	md5sums = a9aef67754feabb94c75a0756909aae1
+	sha512sums = 3803e54b26b8c33beadd99b02ada75e34af8575c6f0d9d8257cd63bce35a59195a2eff23a3ca5e2db570f7afd0c143190bdc5469c00819d89c9935aef9385afb
+
+pkgname = perl-text-emoticon
+
