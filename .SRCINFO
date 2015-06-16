@@ -1,0 +1,20 @@
+pkgbase = nodejs-buster
+	pkgdesc = Buster.JS JavaScript Test framework. Meta package that pieces together various sub-projects.
+	pkgver = 0.7.18
+	pkgrel = 1
+	url = https://github.com/busterjs/buster
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = python2
+	provides = buster
+	provides = nodejs-buster
+	conflicts = buster
+	noextract = buster-0.7.18.tgz
+	source = http://registry.npmjs.org/buster/-/buster-0.7.18.tgz
+	sha1sums = c0ecca209ef956e81f2222393f60a80fd55b60b4
+
+pkgname = nodejs-buster
+
