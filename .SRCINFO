@@ -1,0 +1,16 @@
+pkgbase = perl-vcs-lite
+	pkgdesc = Minimal version control system
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://metacpan.org/release/VCS-Lite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-algorithm-diff>=1.13
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/VCS-Lite-0.12.tar.gz
+	md5sums = 2172c15dfd5beff450f2a8ca61a83d4e
+	sha512sums = 1c9bc9cd6057e546c4b90acd1557305ad78f237e05fc3f55770af2ae1342c6c314004a26a01c076563161649ae54d00fb31629350ed56b18bfc430478f2b5b76
+
+pkgname = perl-vcs-lite
+
