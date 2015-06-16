@@ -1,0 +1,16 @@
+pkgbase = perl-sub-delete
+	pkgdesc = Perl module enabling one to delete subroutines
+	pkgver = 1.00002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sub-Delete
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/Sub-Delete-1.00002.tar.gz
+	md5sums = 3c0b6adb2a241f626245b72688efd5aa
+	sha512sums = 41a926099634e24d805756123be6ed7153568b45acc061fa5b3d91141eea6a1c6109681a725f4351bcbe6ef320210d2f18800b7da7e9631574f535979ff22e06
+
+pkgname = perl-sub-delete
+
