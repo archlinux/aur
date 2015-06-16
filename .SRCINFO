@@ -1,0 +1,21 @@
+pkgbase = perl-data-dpath
+	pkgdesc = DPath is not XPath!
+	pkgver = 0.50
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Data-DPath
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	depends = perl-class-xsaccessor
+	depends = perl-iterator-util
+	depends = perl-list-moreutils
+	depends = perl-sub-exporter
+	depends = perl-aliased
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SC/SCHWIGON/Data-DPath-0.50.tar.gz
+	md5sums = e3fdba9f6d88988b7e85c0d558acb0e3
+	sha512sums = 34b956296f1495cc496c56863b7a381ac539c1304a9da48d67b161596d9bf1d43b027a510ce845b0f55dc2c72945bac35cf57acc58d83ee7d671da37cc2b774b
+
+pkgname = perl-data-dpath
+
