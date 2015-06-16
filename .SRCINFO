@@ -1,0 +1,14 @@
+pkgbase = safe-door
+	pkgdesc = A safe cracking game for BBS DOORS
+	pkgver = 0.9.6
+	pkgrel = 2
+	url = http://www.mbse.eu/bbsing/safedoor/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = doorlib
+	source = http://www.mbse.eu/download/bbsing/safe-door-0.9.6.tar.bz2
+	sha256sums = 7b3c91627fb2872c6d05ee562d4e4bdfe364f364b9bf9cc55071a80fb8605531
+
+pkgname = safe-door
+
