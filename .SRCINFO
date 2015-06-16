@@ -1,0 +1,17 @@
+pkgbase = perl-io-prompt
+	pkgdesc = Interactively prompt for user input
+	pkgver = 0.997002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IO-Prompt
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-term-readkey
+	depends = perl-want
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/IO-Prompt-0.997002.tar.gz
+	md5sums = 292048668ee6c489c61da6665bdc1c1f
+	sha512sums = 468afe08cb5d960070b0895108932f47cc8e151b868ac57d6ae9237c520878d72765fe7f6c34dcf1e72f2453fe608d9fb38cbd13b283e415a038356cf006d27b
+
+pkgname = perl-io-prompt
+
