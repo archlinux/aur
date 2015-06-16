@@ -1,0 +1,21 @@
+pkgbase = perl-net-amazon
+	pkgdesc = Framework for accessing amazon.com via REST
+	pkgver = 0.62
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Amazon
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	depends = perl-http-message
+	depends = perl-libwww
+	depends = perl-log-log4perl>=0.3
+	depends = perl-uri
+	depends = perl-xml-simple>=2.08
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOUMENOT/Net-Amazon-0.62.tar.gz
+	md5sums = ee90c82eca0fb06ca5ab9e9b9c2e92b8
+	sha512sums = 61e454ca611e0f0de45f7f4661c4b784f6f49cadcfdf5f63fe2cc0d66e7bccf755672bc3848f636cb94eda89f1d18b24ade1cf9a9df89afec76e52a306e7638f
+
+pkgname = perl-net-amazon
+
