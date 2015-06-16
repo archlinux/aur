@@ -1,0 +1,18 @@
+pkgbase = perl-pod-wordlist-hanekomu
+	pkgdesc = Add words for spell checking POD (DEPRECATED)
+	pkgver = 1.132680
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Pod-Wordlist-hanekomu
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-spelling
+	checkdepends = perl-test-eol
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Pod-Wordlist-hanekomu-1.132680.tar.gz
+	md5sums = e890599c15f0beaac5460e8586885247
+	sha512sums = ace1ef42a799608968754c780d218643493f47ade264c48e5d0a2800b31d75542ed1976afe13d8acb6a8c4b10d92b67d00638a0e0dd2647c91177eb43ae89124
+
+pkgname = perl-pod-wordlist-hanekomu
+
