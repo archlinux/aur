@@ -1,0 +1,16 @@
+pkgbase = perl-number-compare
+	pkgdesc = numeric comparisons
+	pkgver = 0.03
+	pkgrel = 3
+	url = http://search.mcpan.org/dist/Number-Compare
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RC/RCLAMP/Number-Compare-0.03.tar.gz
+	md5sums = ded4085a8fc96328742785574ca65208
+	sha512sums = fc7efb0177bcb84142619b7d8c0252f4548e547650ddbe9cfafaba97b8ae791c20fbffa6f8b01449b9dd217d9914f94bfeaff57cdfdc2c11e2a1456992bd9893
+
+pkgname = perl-number-compare
+
