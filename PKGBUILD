@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('dbus' 'gcc-libs' 'glib2' 'libpng' "vdr-api=${_vdrapi}")
 makedepends=('png++')
 backup=('etc/dbus-1/system.d/de.tvdr.vdr.conf')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("https://github.com/flensrocker/vdr-plugin-dbus2vdr/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=('etc/dbus-1/system.d/de.tvdr.vdr.conf'
