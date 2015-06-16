@@ -1,0 +1,19 @@
+pkgbase = perl-html-todocbook
+	pkgdesc = Converts an XHTML file into DocBook.
+	pkgver = 0.03
+	pkgrel = 2
+	url = http://search.cpan.org/dist/html2dbk
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-getopt-argvfile>=1.09
+	depends = perl-html-simpleparse
+	depends = perl-xml-libxml
+	depends = perl-xml-libxslt
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RU/RUBYKAT/html2dbk-0.03.tar.gz
+	md5sums = 757e2a57afa7768e1a8f2db27a468f86
+	sha512sums = ac3b2f610d2968da3fbe0cd4d00d5e8405da70aaca6b47a4c74f6d0311d53b1ca7fc2925dfb3b9ac959f52459e0b7e33ecf4b624f22054e1fce93f89891d2f91
+
+pkgname = perl-html-todocbook
+
