@@ -1,0 +1,17 @@
+pkgbase = perl-class-dbi-abstractsearch
+	pkgdesc = Abstract Class::DBI's SQL with SQL::Abstract::Limit
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-AbstractSearch
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-dbi>=0.9
+	depends = perl-sql-abstract-limit>=0.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Class-DBI-AbstractSearch-0.07.tar.gz
+	md5sums = d40e7301201135fe0246251097132a54
+	sha512sums = af1daf84c7fcf789638557a5ae7cf52714940bf11f9e65755e11facf0bdcf63cf1e7ccea631061fd38607d0790cbf134cbb3654ceaa0514d5246219d680a0ddd
+
+pkgname = perl-class-dbi-abstractsearch
+
