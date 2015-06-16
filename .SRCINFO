@@ -1,0 +1,25 @@
+pkgbase = perl-pithub
+	pkgdesc = Github v3 API
+	pkgver = 0.01028
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Pithub
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-most
+	depends = perl-array-iterator
+	depends = perl-cache-lru>=0.04
+	depends = perl-http-message
+	depends = perl-import-into>=1.002004
+	depends = perl-json-maybexs>=1.002000
+	depends = perl-lwp-protocol-https
+	depends = perl-moo>=1.001000
+	depends = perl-path-tiny>=0.037
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MS/MSCHWERN/Pithub-0.01028.tar.gz
+	md5sums = d823856c606fa03092ed30a253df9edd
+	sha512sums = cccb39999f711bc2d1a9d9c939d2694f9b0c746b51420e515235f1e9c470252907b0b34f2f5d91ab31fa48c9c7224d74b75506d53af07d25a174938dff696663
+
+pkgname = perl-pithub
+
