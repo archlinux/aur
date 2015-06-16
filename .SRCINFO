@@ -1,0 +1,17 @@
+pkgbase = perl-http-parser-xs
+	pkgdesc = a fast, primitive HTTP request parser
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTTP-Parser-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/HTTP-Parser-XS-0.16.tar.gz
+	md5sums = df6fce8f94d0e58dc6161963c647269b
+	sha512sums = c0e9ebd886e63053375ec5ea4b222779a4f800a3bd30d47ce307b88ddfdf4fe71aa47544c0084ad8f9e7d66f04af2a1647e84a0f80f9740da125afeb3df806c0
+
+pkgname = perl-http-parser-xs
+
