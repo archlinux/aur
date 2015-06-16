@@ -1,0 +1,16 @@
+pkgbase = perl-sub-identify
+	pkgdesc = Retrieve names of code references
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Sub-Identify
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RG/RGARCIA/Sub-Identify-0.10.tar.gz
+	md5sums = 08bb2f22c85007d2cbb0eb9541c77355
+	sha512sums = e6450e42a5bd8c2da42503bf6b54078b478056cd8d3c5c1c750ea09c7a5835aa7ec9df45fa5b00c6f9d86390f2a32b2f31ce582d2af4bfd9bcbe215a88831e99
+
+pkgname = perl-sub-identify
+
