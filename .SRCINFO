@@ -1,0 +1,16 @@
+pkgbase = perl-mldbm
+	pkgdesc = store multi-level Perl hash structure in single level tied hash
+	pkgver = 2.05
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MLDBM
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/C/CH/CHORNY/MLDBM-2.05.tar.gz
+	md5sums = 9b7ec37bfc36b0e83db9323be92beb50
+	sha512sums = 410fae3a2bd2182a4b9ace64127a92cbebc850d4252b8e9ccf0f6710f7086d87769eed518cd0c237031a96767bcff28f6c9695eaabac4bb629dc554261c78d2a
+
+pkgname = perl-mldbm
+
