@@ -1,0 +1,22 @@
+post_install() {
+	/usr/sbin/install_java_jce_ustrength install
+	echo "===> Everytime jre is updated, you must run:"
+	echo "===> /usr/bin/install_java_jce_ustrength install"
+	echo "===> Otherwise, the programs which need this package will break."
+}
+
+pre_upgrade() {
+	/usr/bin/install_java_jce_ustrength uninstall
+}
+
+post_upgrade() {
+	/usr/bin/install_java_jce_ustrength install
+}
+
+pre_remove() {
+	/usr/bin/install_java_jce_ustrength uninstall
+}
+
+op=$1
+shift
+$op $*

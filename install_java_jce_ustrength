@@ -1,0 +1,111 @@
+#!/bin/bash
+
+# The affected files:
+# dabfcb23d7bf9bf5a201c3f6ea9bfb2c  local_policy.jar
+# ef6e8eae7d1876d7f05d765d2c2e0529  US_export_policy.jar
+
+# Internal variables
+md5_this_localpolicy=dabfcb23d7bf9bf5a201c3f6ea9bfb2c
+md5_this_uspolicy=ef6e8eae7d1876d7f05d765d2c2e0529
+jcedir=/usr/share/java/java-jce_ustrength
+jresecuritydir=/usr/lib/jvm/default-runtime/lib/security
+_ext=java-jce_ustrength.backup
+
+# 1 = Root
+# 0 = other ID
+check_root(){
+	if [ ${UID} -eq 0 ]; then
+		return 1
+	fi
+	return 0
+}
+
+# 0 = Unlimited Strength JCE Policy already installed
+# 1 = Original JCE Policy installed
+# 2 = Destination files don't exist
+check_destinationfiles(){
+	if [ ! -e "${jresecuritydir}/US_export_policy.jar" -o ! -e "${jresecuritydir}/local_policy.jar" ];
+	then
+		return 2
+	fi
+	md5_uspolicy=$(md5sum ${jresecuritydir}/US_export_policy.jar | cut -d " " -f 1)
+	md5_localpolicy=$(md5sum ${jresecuritydir}/local_policy.jar | cut -d " " -f 1)
+	if [ "${md5_uspolicy}" == "${md5_this_uspolicy}" -a \
+	     "${md5_localpolicy}" == "${md5_this_localpolicy}" ]; then
+	     return 0
+        fi
+	return 1
+}
+
+install(){
+	check_destinationfiles
+	not_installed=$?
+	if [ "${not_installed}" -eq "1" ]; then
+		check_root
+		isroot=$?
+		if [ "${isroot}" -eq "0" ]; then
+			echo "You must be root for doing this operation."
+			exit 1
+		fi
+		echo -n "Installing Unlimited Strength JCE files..."
+		cp ${jresecuritydir}/US_export_policy.jar ${jresecuritydir}/US_export_policy.jar.${_ext} || return 1
+		cp ${jresecuritydir}/local_policy.jar ${jresecuritydir}/local_policy.jar.${_ext} || return 1
+		cp ${jcedir}/US_export_policy.jar ${jresecuritydir}/ || return 1
+		cp ${jcedir}/local_policy.jar ${jresecuritydir}/ || return 1
+		echo " installed."
+	else 
+		echo "Unlimited Strength JCE files already installed."
+	fi
+}
+
+uninstall(){
+	check_destinationfiles
+	not_installed=$?
+	if [ "$not_installed" -eq "0" ]; then
+		check_root
+		isroot=$?
+		if [ "${isroot}" -eq "0" ]; then
+			echo "You must be root for doing this operation."
+			exit 0
+		fi
+		echo -n "Uninstalling Unlimited Strength JCE files..."
+		if [ ! -e "${jresecuritydir}/US_export_policy.jar.${_ext}" -a \
+		     ! -e "${jresecuritydir}/local_policy.jar.${_ext}" ]; then
+		     echo "Previous backup of the files doesn't exist!"
+		     echo "For uninstall, reinstall the jre package."
+		     exit 0
+		fi
+
+		mv ${jresecuritydir}/US_export_policy.jar.${_ext} ${jresecuritydir}/US_export_policy.jar || return 1
+		mv ${jresecuritydir}/local_policy.jar.${_ext} ${jresecuritydir}/local_policy.jar || return 1
+		echo " uninstalled."
+	else 
+		if [ -e "${jresecuritydir}/US_export_policy.jar.${_ext}" -a \
+		     -e "${jresecuritydir}/local_policy.jar.${_ext}" ]; then
+		     check_root
+		     isroot=$?
+		     if [ "${isroot}" -eq "0" ]; then
+			echo "You must be root for doing this operation."
+			exit 1
+	      	     fi
+		     echo -n "Deleting old regular JCE files backup..."
+		     rm ${jresecuritydir}/US_export_policy.jar.${_ext} || return 1
+		     rm ${jresecuritydir}/local_policy.jar.${_ext} || return 1
+		     echo  " deleted."
+		fi
+
+		if [ "${not_installed}" -eq "1" ]; then
+			echo "Regular JCE files already installed."
+		fi
+	fi
+}
+
+case "$1" in
+	install) install
+		 ;;
+	uninstall) uninstall
+		   ;;
+	*) echo "Usage $0: {install|uninstall}"
+	   ;;
+esac
+exit 0
