@@ -1,0 +1,16 @@
+pkgbase = perl-pod-webserver
+	pkgdesc = a miniature web server for reading Pod in web browsers
+	pkgver = 3.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Pod-Webserver
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARANDAL/Pod-Webserver-3.05.tar.gz
+	md5sums = 99f47207edf23b5adb3a607348adb8ca
+	sha512sums = 7268e5d1748d175ad342bf04612a0d4cc77a4d4f1914b1d96d7fa4330490439cc8da1da8d9a0f20b765a8c2079e36a20f2163656154d635163b89dd36b76c8bc
+
+pkgname = perl-pod-webserver
+
