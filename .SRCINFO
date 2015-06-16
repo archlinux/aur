@@ -1,0 +1,16 @@
+pkgbase = perl-config-yaml
+	pkgdesc = Simple configuration automation
+	pkgver = 1.42
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Config-YAML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-yaml>=0.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDXI/Config-YAML-1.42.tar.gz
+	md5sums = cfee6763e19cb4c80bfb60f922b882dd
+	sha512sums = 101f95ec020b2afeeb77c7b38f08400588482db4f5ebe25c20b360ac1dc904784bf4c79f1ac112b29dade0a2ae7e2bbbdef3eb1924381b7e7c49b8144c32e123
+
+pkgname = perl-config-yaml
+
