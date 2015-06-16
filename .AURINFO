@@ -1,0 +1,15 @@
+pkgbase = perl-cpanplus-dist-build
+	pkgdesc = CPANPLUS plugin to install packages that use Build.PL
+	pkgver = 0.78
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/CPANPLUS-Dist-Build
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cpanplus>=0.84
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-0.78.tar.gz
+	options = !emptydirs
+
+pkgname = perl-cpanplus-dist-build
+
