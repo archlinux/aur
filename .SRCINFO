@@ -1,0 +1,18 @@
+pkgbase = perl-class-dbi-plugin-deepabstractsearch
+	pkgdesc = deep_search_where() for Class::DBI
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-Plugin-DeepAbstractSearch
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-dbi>=0.96
+	depends = perl-class-dbi-plugin>=0.02
+	depends = perl-sql-abstract>=1.18
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SR/SRIHA/Class-DBI-Plugin-DeepAbstractSearch-0.08.tar.gz
+	md5sums = c4753aff910ba9080dfa4040ed834d4e
+	sha512sums = 75ff99c88e9fd0a26c3bcbf91d89d023b11edaa3a184dd50b50ebc5e547e36f82bc90bd43ab27649a29a573443bc1fa3ff46ca364301f191fe60df8bd3a5ec2a
+
+pkgname = perl-class-dbi-plugin-deepabstractsearch
+
