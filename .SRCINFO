@@ -1,0 +1,16 @@
+pkgbase = perl-safe
+	pkgdesc = Compile and execute code in restricted compartments
+	pkgver = 2.35
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Safe
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RG/RGARCIA/Safe-2.35.tar.gz
+	md5sums = af3d60fc0dc6eb799c7ad9c7bb72575b
+	sha512sums = f729753d5ab98002d4eeef19feba06aa5d4ad49ba880d719f48d65272e2ac6e50525aede33eebc9451ee1d28c39e85b1467b185e2f009acb3f9a9cea13a5ec7b
+
+pkgname = perl-safe
+
