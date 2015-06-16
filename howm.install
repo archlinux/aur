@@ -1,0 +1,7 @@
+post_install() {
+	       echo "Please copy the configuration file in /usr/share/howm/examples/howmrc to ~/.config/howm/"
+}
+
+post_upgrade() {
+	       post_install
+}
