@@ -1,0 +1,15 @@
+pkgbase = pipework-git
+	pkgdesc = Software-Defined Networking for Linux Containers
+	pkgver = 0.1.13.16f53e6
+	pkgrel = 1
+	url = https://github.com/jpetazzo/pipework.git
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = bash
+	depends = iproute2
+	source = pipework::git+https://github.com/jpetazzo/pipework.git#branch=master
+	md5sums = SKIP
+
+pkgname = pipework-git
+
