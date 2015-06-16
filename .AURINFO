@@ -1,0 +1,16 @@
+pkgbase = perl-xml-catalog
+	pkgdesc = Resolve public identifiers and remap system identifiers
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/XML-Catalog
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-uri
+	depends = perl-xml-parser
+	depends = perl-libwww
+	source = http://search.mcpan.org/CPAN/authors/id/J/JF/JFEARN/XML-Catalog-1.03.tar.gz
+	options = !emptydirs
+
+pkgname = perl-xml-catalog
+
