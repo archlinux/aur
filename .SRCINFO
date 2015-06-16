@@ -1,0 +1,16 @@
+pkgbase = perl-cpanplus-dist-githook
+	pkgdesc = Use Git::CPAN::Hook to commit each install in a Git repository
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPANPLUS-Dist-GitHook
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-git-cpan-hook>=0.03
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-GitHook-0.02.tar.gz
+	md5sums = 7eedf5e8c1820b965c71cb415b0a7356
+	sha512sums = 27a2723b86cbc31e355195391df3b3c68951b93c4eb092161fc8889be3f291247354f0e8b86edea842a5b384817e3e6fdf2d9a67ae889af9d590787cc57486ae
+
+pkgname = perl-cpanplus-dist-githook
+
