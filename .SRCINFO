@@ -1,0 +1,20 @@
+pkgbase = perl-data-stream-bulk
+	pkgdesc = N at a time iteration API
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Stream-Bulk
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	depends = perl-moose>=0.90
+	depends = perl-namespace-clean
+	depends = perl-path-class
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Data-Stream-Bulk-0.11.tar.gz
+	md5sums = f41f1efb87b754de8764a61cbf34fcd2
+	sha512sums = 7c14e3e1e8d6d805aa6cedd6caec3f8e09cf30c196abd3661b3f6f12871212a808ad938ae24d13e4c1d7114ead912debf0f859d34cc42e70ef5e748dcc9242d2
+
+pkgname = perl-data-stream-bulk
+
