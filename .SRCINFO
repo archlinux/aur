@@ -1,0 +1,17 @@
+pkgbase = shell-tools-git
+	pkgdesc = collection of commonly used shell function
+	pkgver = v1
+	pkgrel = 1
+	url = https://github.com/greenify/shell-tools
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xorg-xrandr
+	depends = bash
+	depends = findutils
+	depends = gawk
+	source = git+https://github.com/greenify/shell-tools
+	md5sums = SKIP
+
+pkgname = shell-tools-git
+
