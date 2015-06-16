@@ -1,0 +1,18 @@
+pkgbase = perl-dist-zilla-plugin-hasversiontests
+	pkgdesc = Release tests for version numbers
+	pkgver = 1.101420
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-HasVersionTests
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-hasversion
+	depends = perl-dist-zilla
+	depends = perl-moose
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARCEL/Dist-Zilla-Plugin-HasVersionTests-1.101420.tar.gz
+	md5sums = 36a8dcfe262d234ae9f854530b755d8b
+	sha512sums = 3142befba31d1e05c64e953c597792db975cb0ba439240e48b0779c91a0384fc70668c06fde4199500b6b46b124debee2a93516c1db3be6b391e43feca9be909
+
+pkgname = perl-dist-zilla-plugin-hasversiontests
+
