@@ -1,0 +1,17 @@
+pkgbase = bioperl-run-git
+	pkgdesc = Wrapper modules around many common bioinformatics applications and tools.
+	pkgver = 20100604
+	pkgrel = 1
+	url = http://www.bioperl.org/wiki/Run_package
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-data-stag
+	makedepends = git
+	depends = perl
+	depends = perl-io-string
+	depends = bioperl-live-git
+	options = !emptydirs
+
+pkgname = bioperl-run-git
+
