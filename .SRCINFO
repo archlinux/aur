@@ -1,0 +1,16 @@
+pkgbase = perl-file-stat-modestring
+	pkgdesc = conversion file stat(2) mode to/from string representation.
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Stat-ModeString
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-stat-bits
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FE/FEDOROV/File-Stat-ModeString-1.00.tar.gz
+	md5sums = 65cef1f813a678911ed4168b22651c35
+	sha512sums = 170f1dc21f04d828e0a06fd7fcc0cbdaefdc5d4be95f87c6b6563ce1c679db18c009d2f811ae78927420a1fb93c70e6365ec949dae8d6c78cb8ee0f1bd44d73b
+
+pkgname = perl-file-stat-modestring
+
