@@ -1,0 +1,17 @@
+pkgbase = perl-dist-zilla-plugin-homepage
+	pkgdesc = Automatically sets the homepage URL
+	pkgver = 1.101420
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-Homepage
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dist-zilla
+	depends = perl-moose
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARCEL/Dist-Zilla-Plugin-Homepage-1.101420.tar.gz
+	md5sums = ce3405a348ba79f9e5231cba493273b6
+	sha512sums = 43703d80031ec186bfd47733081d2511bdcce5718f36b2e9029a0873762afe9337fb89edc18df34fab0edd55129244d0541604f8ca4037cbc1fb6d5166015258
+
+pkgname = perl-dist-zilla-plugin-homepage
+
