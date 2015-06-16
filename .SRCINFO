@@ -1,0 +1,16 @@
+pkgbase = perl-class-isa
+	pkgdesc = report the search path for a class's ISA tree
+	pkgver = 0.36
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-ISA
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Class-ISA-0.36.tar.gz
+	md5sums = 3a2ad203c8dc87d6c9de16215d00af47
+	sha512sums = 49171bc0f78bd8aa74271d2f9eb1f2e535e69c6774f47557b07df011c9b8f44f960ec3c162acd256218944e866666731af27520d1e66cf560f065995b7658416
+
+pkgname = perl-class-isa
+
