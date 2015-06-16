@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 
 package() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
 	install -Dm644 "${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
