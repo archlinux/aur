@@ -13,16 +13,20 @@ url="http://www.openchange.org"
 license=('GPL3')
 depends=('samba>=4.2.2' 'libical' 'sqlite3' 'file' 'boost' 'python2'
          'libmariadbclient' 'nanomsg>=0.5' 'libmemcached>=1.0.18')
-makedepends=('ccache' 'docbook-xsl' 'libxslt')
+makedepends=('ccache' 'docbook-xsl' 'libxslt' 'python2-setuptools'
+             'python2-pylons')
+optdepends=('python2-pylons: Needed for OCSManager')
 options=(!makeflags)
 # Releases are mirrored at http://tracker.openchange.org/projects/openchange/files
 source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-${_codename}.tar.gz"
         "ocsmanager.service"
-        "openchange-provision-type-error.patch")
+        "openchange-provision-type-error.patch"
+        "openchange-issue-249.patch")
 
 sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
             '45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3'
-            '65dc742e95dd1bff1581ea3d76b4dfe8d01ca52ab5e64ffc80efc10417a2ff97')
+            '65dc742e95dd1bff1581ea3d76b4dfe8d01ca52ab5e64ffc80efc10417a2ff97'
+            'e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834')
 
 # Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT
 _srcsubdir="${pkgname}-${pkgname}-${pkgver}-${_codename}"
@@ -31,6 +35,7 @@ build() {
     cd "${srcdir}/${_srcsubdir}"
 
     patch -p1 < "${srcdir}/openchange-provision-type-error.patch"
+    patch -p1 < "${srcdir}/openchange-issue-249.patch"
 
     PYTHON_CALLERS="$(find ${srcdir}/${_srcsubdir} -name '*.py')
                     $(find ${srcdir}/${_srcsubdir} -name 'configure.ac')
@@ -87,7 +92,7 @@ package() {
                     "${pkgdir}/etc/httpd/conf/extra/ocsmanager.conf"
 
     # Install RPC Proxy
-    cd "${sourcedir}/mapiproxy/services/web/rpcproxy"
+    cd "${srcdir}/${_srcsubdir}/mapiproxy/services/web/rpcproxy"
     install -vdm755 "${pkgdir}/usr/lib/openchange/web/rpcproxy"
     install -vm644  "${srcdir}/${_srcsubdir}/mapiproxy/services/web/rpcproxy/rpcproxy.conf" \
                     "${pkgdir}/etc/httpd/conf/extra/rpcproxy.conf"

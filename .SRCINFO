@@ -1,7 +1,7 @@
 pkgbase = openchange
-	pkgdesc = A portable, open source implementation of Microsoft Exchange server and Exchange protocols. This package was originally created to support evolution-mapi and may not work for any other purpose.
-	pkgver = 2.2
-	pkgrel = 4
+	pkgdesc = A portable, open source implementation of Microsoft Exchange server and Exchange protocols.
+	pkgver = 2.3
+	pkgrel = 1
 	url = http://www.openchange.org
 	arch = i686
 	arch = x86_64
@@ -9,21 +9,29 @@ pkgbase = openchange
 	arch = armv7h
 	license = GPL3
 	makedepends = ccache
-	makedepends = python2
 	makedepends = docbook-xsl
 	makedepends = libxslt
-	depends = samba>=4.2
+	makedepends = python2-setuptools
+	makedepends = python2-pylons
+	depends = samba>=4.2.2
 	depends = libical
 	depends = sqlite3
 	depends = file
 	depends = boost
 	depends = python2
 	depends = libmariadbclient
+	depends = nanomsg>=0.5
+	depends = libmemcached>=1.0.18
+	optdepends = python2-pylons: Needed for OCSManager
 	options = !makeflags
-	source = http://tracker.openchange.org/attachments/download/246/openchange-2.2-NANOPROBE.tar.gz
-	source = openchange-samba42.patch
-	sha256sums = f15eb26d16370e85f01649300dd6722c31f0750437a4b60acd604a79439cf688
-	sha256sums = 8e4c2afede896e16a74be87323412bdcad8173d6943107a0aab38c6b77860887
+	source = https://github.com/openchange/openchange/archive/openchange-2.3-VULCAN.tar.gz
+	source = ocsmanager.service
+	source = openchange-provision-type-error.patch
+	source = openchange-issue-249.patch
+	sha256sums = 46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e
+	sha256sums = 45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3
+	sha256sums = 65dc742e95dd1bff1581ea3d76b4dfe8d01ca52ab5e64ffc80efc10417a2ff97
+	sha256sums = e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834
 
 pkgname = openchange
 
