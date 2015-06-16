@@ -1,0 +1,16 @@
+pkgbase = perl-module-util
+	pkgdesc = Module name tools and transformations
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Util
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.5.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTLAW/Module-Util-1.09.tar.gz
+	md5sums = 4b7cc19f3f998e2d543ae033fbcb5666
+	sha512sums = 6669216598c5a3b41964e65792fa5bdea9675150bf2ef908ed3e154b9fbc207de0b766feaebc2656a5379393cf8acafa5e27aeb694b9a56d8ff3b5f9c35837ad
+
+pkgname = perl-module-util
+
