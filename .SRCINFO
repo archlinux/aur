@@ -1,0 +1,25 @@
+pkgbase = perl-datetimex-duration-skipdays
+	pkgdesc = Given a starting date, a number of days and a list of days to be skipped, returns the date X number of days away.
+	pkgver = 0.002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTimeX-Duration-SkipDays
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-checkdeps>=0.002
+	makedepends = perl-test-deep
+	makedepends = perl-test-nowarnings
+	makedepends = perl-test-useallmodules
+	depends = perl>=5.006
+	depends = perl-datetime
+	depends = perl-datetime-event-holiday-us
+	depends = perl-datetime-format-flexible
+	depends = perl-list-moreutils
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AY/AYOUNG/DateTimeX-Duration-SkipDays-0.002.tar.gz
+	md5sums = 2e2ed838ded0c4c4ad75853b651f7a9c
+	sha512sums = c1663d53fec6f5af69f21f312fa82d690984516726a221f8068c5ff49191ff7daf8bb93c97a9af4a4b775d2ee7b6be87af8f231ce0c39052dfafafc3ec9daa8c
+
+pkgname = perl-datetimex-duration-skipdays
+
