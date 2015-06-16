@@ -1,0 +1,16 @@
+pkgbase = perl-test-notabs
+	pkgdesc = Check the presence of tabs in your project
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-NoTabs
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Test-NoTabs-1.3.tar.gz
+	md5sums = 4b0800b977abf2576e873812046248fb
+	sha512sums = cb14adfe0c5518852493f195302b72395b93c353cad677402e7762307dd2e4a8d142043fa90697effa9c56564f0395bb0bc07399412b3d5522755eb2d03a5438
+
+pkgname = perl-test-notabs
+
