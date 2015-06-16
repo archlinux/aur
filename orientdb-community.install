@@ -1,0 +1,84 @@
+#
+# Install scriptlet for OrientDB version
+#
+post_install() {
+  groupadd -r orient
+  useradd -r -g orient -d /opt/orientdb -c "OrientDB The Graph-Document NoSQL - Community Edition" orient
+
+  chown -R orient.orient /opt/orientdb
+  chown -R orient.orient /var/log/orientdb
+
+  ln -sf /opt/orientdb/log /var/log/orientdb
+  ln -sf /opt/orientdb/config /etc/orientdb
+  ln -sf /opt/orientdb/bin/console.sh /usr/bin/orientdb-console
+
+  echo "==> OrientDB server should be launched from user 'orient'. Please keep that in mind."
+}
+
+post_upgrade() {
+  chown -R orient.orient /opt/orientdb
+  chown -R orient.orient /var/log/orientdb
+}
+
+pre_remove() {
+  # Cannot use echo -n in this context as stdout is not flushed
+  # Server may have been started manually, so systemctl will not stop it
+  # Grep only the Server entry, as an orient User session may be present
+  if [ "$(ps aux | grep -e '^orient' | grep -e com.orientechnologies.orient.server)" != "" ]; then
+
+    echo "==> OrientDB server is running. Stopping OrientDB. Wait 60 seconds before using Cntl-C."
+    echo "..........."
+
+    systemctl stop orientdb.service  2>&1
+    echo "..........."
+
+    counter1=0
+    counter2=0
+    while [ "$(ps aux | grep -e '^orient' | grep -e com.orientechnologies.orient.server)" != "" ]; do
+
+      sleep 1
+
+      counter1=`expr $counter1 + 1`
+      counter2=`expr $counter2 + 1`
+
+      if [ $counter1 -le 10 ]
+      then
+        echo -n "."
+      else
+        echo "."
+        counter1=0
+      fi
+
+      if [ $counter2 = 30 ]
+      then
+        echo ""
+        echo "Shutting down OrientDB directly."
+        su orient /opt/orientdb/bin/shutdown.sh
+      fi
+
+      if [ $counter2 -gt 60 ]
+      then
+        break
+      fi
+
+    done
+  fi
+  echo ""
+  rm -rf /etc/orientdb /usr/bin/orientdb-console /opt/orientdb/log || /bin/true
+}
+
+post_remove() {
+  userdel orient
+  groupdel orient 2>/dev/null || /bin/true
+
+  if [ -d /opt/orientdb ]; then
+    echo "==> OrientDB directory is not empty and will not be removed."
+    echo "    Backup database?"
+    echo "    Please check path '/opt/orientdb' and remove directory manually."
+  fi
+
+  if [ -d /var/log/orientdb ]; then
+    rm -rf /var/log/orientdb
+  fi
+}
+

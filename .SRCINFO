@@ -1,0 +1,22 @@
+pkgbase = orientdb-community
+	pkgdesc = The Graph-Document NoSQL - Community Edition
+	pkgver = 2.0.10
+	pkgrel = 1
+	url = http://www.orientdb.org
+	install = orientdb-community.install
+	arch = any
+	license = Apache
+	makedepends = unzip
+	depends = java-runtime-headless
+	depends = apache-ant
+	conflicts = orientdb
+	conflicts = orientdb-git
+	conflicts = orientdb-graphed-git
+	conflicts = orientdb-graphed
+	source = https://github.com/orientechnologies/orientdb/archive/2.0.10.tar.gz
+	source = orientdb.service
+	md5sums = 151441ee4a3fc1acdaf12fe5c3cdb39c
+	md5sums = 687903eba3737f9733bf1c45c4e68e6d
+
+pkgname = orientdb-community
+

@@ -1,0 +1,14 @@
+#
+# Service config for OrientDB version 1.7-rc1
+#
+[Unit]
+Description=OrientDB The Graph-Document NoSQL - Community Edition
+
+[Service]
+Type=simple
+User=orient
+ExecStart=/opt/orientdb/bin/server.sh
+ExecStop=/opt/orientdb/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target

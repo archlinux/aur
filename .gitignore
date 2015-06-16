@@ -1,0 +1,41 @@
+# general
+**.DS_Store
+Thumbs.db
+*~
+*.pyc
+
+# ctags file
+.tags
+.tags_sorted_by_file
+
+# vim artifacts
+*.swp
+.vimlog
+
+# Netbeans project directory
+/nbproject/
+
+# Rubymine artifacts
+.idea
+
+# Eclipse artifacts
+.project
+.pydevproject
+
+# Textmate project files
+/*.tmproj
+
+# sass
+.sass-cache
+*.sassc
+
+# scm revert files
+**.orig
+
+# package files
+*.gz
+*.zip
+
+# src
+src
+
