@@ -1,0 +1,15 @@
+pkgbase = perl-hash-util-fieldhash-compat
+	pkgdesc = Use Hash::Util::FieldHash or ties, depending on availability
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Hash-Util-FieldHash-Compat
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-use-ok
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Hash-Util-FieldHash-Compat-0.07.tar.gz
+	options = !emptydirs
+
+pkgname = perl-hash-util-fieldhash-compat
+
