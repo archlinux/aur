@@ -7,7 +7,6 @@ pkgdesc="Coinffeine is an open source, peer-to-peer (P2P) bitcoin exchange platf
 arch=('i686' 'x86_64')
 url="http://coinffeine.com/"
 license=('custom')
-provides=('coinffeine')
 source=("LICENSE")
 source_x86_64=("https://s3-eu-west-1.amazonaws.com/coinffeine-releases/v${pkgver}/coinffeine-${pkgver}_linux64.deb")
 source_i686=("https://s3-eu-west-1.amazonaws.com/coinffeine-releases/v${pkgver}/coinffeine-${pkgver}_linux32.deb")

@@ -6,7 +6,6 @@ pkgbase = coinffeine
 	arch = i686
 	arch = x86_64
 	license = custom
-	provides = coinffeine
 	source = LICENSE
 	sha256sums = eb488d0f731d3d4977e7c46b3934ca9c26ab27b73b40c22074054fc37a85010f
 	source_i686 = https://s3-eu-west-1.amazonaws.com/coinffeine-releases/v0.9.0/coinffeine-0.9.0_linux32.deb
