@@ -1,0 +1,20 @@
+pkgbase = perl-moosex-traits-pluggable
+	pkgdesc = trait loading and resolution for Moose
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MooseX-Traits-Pluggable
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-class-load
+	depends = perl-list-moreutils
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/MooseX-Traits-Pluggable-0.12.tar.gz
+	md5sums = b705fa4857c15d2f73fbdc0d46cb071c
+	sha512sums = 0f47d3d8ce6a8d24f4fe9cc2f5c25f594801c95667271f11b8b596f0100189610d9047177dfc23a7786c9f650ffbce3330d38df582dfc0b396b39102a85de2d3
+
+pkgname = perl-moosex-traits-pluggable
+
