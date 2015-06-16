@@ -1,0 +1,17 @@
+pkgbase = perl-catalyst-component-instancepercontext
+	pkgdesc = Moose role to create only one instance of component per context
+	pkgver = 0.001001
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Component-InstancePerContext
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-moose
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRODITI/Catalyst-Component-InstancePerContext-0.001001.tar.gz
+	md5sums = dd3e9c804cb7f8d6755132d92b26a80a
+	sha512sums = 548c1fad4f125263776d773b2c8b337ac619e6f04c7cbe0d4bb62de3f8845c07d0207b289aecd28de564bc9ad759163b7dac8b5254aff0dc5910cd6b4d71bdf7
+
+pkgname = perl-catalyst-component-instancepercontext
+
