@@ -1,0 +1,24 @@
+pkgbase = perl-catalyst-authentication-store-dbix-class
+	pkgdesc = A storage class for Catalyst Authentication using DBIx::Class
+	pkgver = 0.1506
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Catalyst-Authentication-Store-DBIx-Class
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-model-dbic-schema>=0.18
+	depends = perl-catalyst-plugin-authentication>=0.10008
+	depends = perl-catalyst-runtime>=5.8
+	depends = perl-dbix-class>=0.08
+	depends = perl-list-moreutils
+	depends = perl-moose
+	depends = perl-try-tiny
+	depends = perl-namespace-autoclean
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/Catalyst-Authentication-Store-DBIx-Class-0.1506.tar.gz
+	md5sums = b506cabc500730da343e98aad45539a0
+	sha512sums = 1d73a881934c8cea29bcbb09de1449d74c2b3b8b9cf2204ad82d602e086651b4702f6203248bdcb9f528b9e43aa0514b98e0c0d86f3d5742f818d1ea8682b4f3
+
+pkgname = perl-catalyst-authentication-store-dbix-class
+
