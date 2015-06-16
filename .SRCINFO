@@ -1,0 +1,25 @@
+pkgbase = perl-test-tempdir
+	pkgdesc = Temporary files support for testing.
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Test-TempDir
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-nfslock
+	depends = perl-moose
+	depends = perl-moosex-types-path-class
+	depends = perl-path-class
+	depends = perl-sub-exporter
+	depends = perl-test-checkdeps>=0.007
+	depends = perl-test-requires
+	depends = perl-test-use-ok
+	depends = perl-namespace-autoclean>=0.08
+	depends = perl-directory-scratch
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.08.tar.gz
+	md5sums = 81542818c02d82caecfdfe14ccb4d281
+	sha512sums = 83bd17bfccb7ff4b7e1a52246852948175a7ea3d03d35e37237da6ba4e28239b2d2ecb157774d80778921606d283ca73069d642424abcd482bfba6a11b0de711
+
+pkgname = perl-test-tempdir
+
