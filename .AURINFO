@@ -1,0 +1,14 @@
+pkgbase = perl-text-wikicreole
+	pkgdesc = Convert Wiki Creole 1.0 markup to XHTML
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Text-WikiCreole
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/J/JB/JBURNETT/Text-WikiCreole-0.07.tar.gz
+	options = !emptydirs
+
+pkgname = perl-text-wikicreole
+
