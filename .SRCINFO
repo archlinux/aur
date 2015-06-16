@@ -1,0 +1,16 @@
+pkgbase = perl-taint
+	pkgdesc = Perl utility extensions for tainted data
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Taint
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHOENIX/Taint-0.09.tar.gz
+	md5sums = e9b23bec1f15ee2f1e1d7309eb04ef92
+	sha512sums = 50547d198f9c77a92c1d55cd903b1a3325873ac1b309edfed568f17d3b9045d90dcfeb81493a0cda06882a55c8f03ce77317358d11d25a9caaee446dd31bc40d
+
+pkgname = perl-taint
+
