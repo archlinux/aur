@@ -1,0 +1,22 @@
+pkgbase = perl-amazon-s3
+	pkgdesc = A portable client library for working with and
+	pkgver = 0.45
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Amazon-S3
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor
+	depends = perl-digest-hmac
+	depends = perl-digest-md5-file
+	depends = perl-http-date
+	depends = perl-lwp-useragent-determined
+	depends = perl-uri
+	depends = perl-xml-simple>=1.08
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMA/Amazon-S3-0.45.tar.gz
+	md5sums = a055ab8fd27d86ddc65a216145391793
+	sha512sums = 69096502afc1ec66ff691d13cac3126b6f3423b5240857809db8f910f4ffa0cc712573f05c39979306e84d918bade44c26e4144e23e75bd8318cdc1ac918f4ee
+
+pkgname = perl-amazon-s3
+
