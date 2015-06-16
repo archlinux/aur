@@ -1,0 +1,19 @@
+pkgbase = perl-catalyst-model-menugrinder
+	pkgdesc = A Catalyst model base-class for using WWW::MenuGrinder
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Model-MenuGrinder
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-moose
+	depends = perl-scope-guard
+	depends = perl-www-menugrinder>=0.04
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARODLAND/Catalyst-Model-MenuGrinder-0.06.tar.gz
+	md5sums = 0f6055e3f0c04c4df1af70bc7738b1d4
+	sha512sums = b94f5b59a9143c07b005aef888a41b7de5869c5b9e1c589c4088b3b59bda1a9a361197b61f6491416390555353b5b8fbf7c5c2d55b2b5ffb02c6ec375475a9a7
+
+pkgname = perl-catalyst-model-menugrinder
+
