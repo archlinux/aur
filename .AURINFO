@@ -1,0 +1,14 @@
+pkgbase = perl-test-requiresinternet
+	pkgdesc = Easily test network connectivity
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Test-RequiresInternet
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/M/MA/MALLEN/Test-RequiresInternet-0.03.tar.gz
+	options = !emptydirs
+
+pkgname = perl-test-requiresinternet
+
