@@ -1,0 +1,16 @@
+pkgbase = perl-test-eol
+	pkgdesc = Check the correct line endings in your project
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-EOL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Test-EOL-1.5.tar.gz
+	md5sums = d6ae3b338c034dc747458ed0a5fb6667
+	sha512sums = bebed37b8b087ad7d989f85669043b8858e139ac87a8bd13f9e273cc13ca3248dc5ed1b62fb2f5d8854cccfacd227d07bf164e6557a811015fe7ac2d0495a16b
+
+pkgname = perl-test-eol
+
