@@ -1,0 +1,21 @@
+pkgbase = perl-catalystx-profile
+	pkgdesc = Profile your Catalyst application with Devel::NYTProf
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CatalystX-Profile
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime>=5.80020
+	depends = perl-catalystx-injectcomponent>=0.024
+	depends = perl-devel-nytprof>=3.01
+	depends = perl-moose>=0.93
+	depends = perl-namespace-autoclean>=0.09
+	depends = perl-sub-identify>=0.04
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/CatalystX-Profile-0.02.tar.gz
+	md5sums = 708ab56ebf8707c1668b1a48f3518c2f
+	sha512sums = a2dfc793c70081f2676496db62e81b469f56232d2588a9474da659e91836939c742d67e385625a021ab62ad9c9ff1a4e2d3429edf190b463ee0ad1b1bf6d083a
+
+pkgname = perl-catalystx-profile
+
