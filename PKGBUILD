@@ -10,7 +10,7 @@ url="http://uli-eckhardt.de/vdr/cdplayer.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libcdio-paranoia' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 backup=("var/lib/vdr/plugins/$_plugname/cd.mpg")
 source=("http://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
         "50-$_plugname.conf")
