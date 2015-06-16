@@ -1,0 +1,22 @@
+pkgbase = epiphany-libs
+	pkgdesc = Adapteva Epiphany runtime libraries and utilities
+	pkgver = 2015.1
+	pkgrel = 1
+	url = http://www.adapteva.com/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	depends = epiphany-elf-gcc
+	provides = epiphany-libs
+	conflicts = epiphany-libs
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/adapteva/epiphany-libs/archive/esdk-2015.1.tar.gz
+	source = epiphany_hdf.sh
+	sha256sums = 189c723a0402340a45c74f2cb07e17acda1ede9d8f830560dbd1c8622f7ebac2
+	sha256sums = bc7f54353f0f780a30b78779bfc6d1f8771e2023823914b2983d62c799af083d
+
+pkgname = epiphany-libs
+
