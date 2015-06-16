@@ -1,0 +1,22 @@
+pkgbase = perl-html-dom
+	pkgdesc = A Perl implementation of the HTML Document Object Model
+	pkgver = 0.053
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-DOM
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-css-dom>=0.07
+	depends = perl-html-encoding
+	depends = perl-html-parser>=3
+	depends = perl-html-tagset
+	depends = perl-http-message>=1.34
+	depends = perl-timedate
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/HTML-DOM-0.053.tar.gz
+	md5sums = 1e401513ca98125858ea1dbebe62459f
+	sha512sums = 310ed49d24fd6a11096bfef93b3106c7a6239fae8170b95460c84df8e02684b07d0acc772380708aaaf1b2079f08c411824596616e3f07b3e88a928efca26559
+
+pkgname = perl-html-dom
+
