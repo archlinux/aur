@@ -1,0 +1,16 @@
+pkgbase = perl-module-pluggable-fast
+	pkgdesc = Fast plugins with instantiation
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Pluggable-Fast
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-universal-require
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Module-Pluggable-Fast-0.19.tar.gz
+	md5sums = e0eeb561a04bb4f28a4f06774bf315f2
+	sha512sums = 6c5a78693a1dfa78c87a606f5f0758334ba9fbb9578edc477e56604aa42673a230a9d94ca533fc258831e3550041a3f5c30acb03c1e0d6bcfd9575ce01fd5842
+
+pkgname = perl-module-pluggable-fast
+
