@@ -1,0 +1,16 @@
+pkgbase = perl-cpanplus-dist-gentoo
+	pkgdesc = CPANPLUS backend generating Gentoo ebuilds.
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPANPLUS-Dist-Gentoo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/CPANPLUS-Dist-Gentoo-0.12.tar.gz
+	md5sums = 6474bd611a43db3f6e7ac471cbfac492
+	sha512sums = b834eaaac94d4370c10399dcba1515fa32f3b716ed1baf6caef219edcb6b8fa27ba3b85ee38c552147220df7b164db82e7991c361e6c2e94d450f3f27757e9eb
+
+pkgname = perl-cpanplus-dist-gentoo
+
