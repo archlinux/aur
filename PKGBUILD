@@ -14,7 +14,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
-_plugname=$(echo $pkgbase | sed 's/vdr-//g')
+_plugname=${pkgbase//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-streamdev.git#commit=$_gitver"
         "http://projects.vdr-developer.org/attachments/download/1844/vdr-plugin-streamdev-filter-patch.diff"
         "http://projects.vdr-developer.org/attachments/download/1853/vdr-plugin-streamdev-filter-patch2.diff"
