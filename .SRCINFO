@@ -1,0 +1,21 @@
+pkgbase = perl-pocketio
+	pkgdesc = Socket.IO Plack app
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PocketIO
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-tcp
+	depends = perl>=5.8.7
+	depends = perl-anyevent
+	depends = perl-json>=2.53
+	depends = perl-protocol-socketio>=0.04
+	depends = perl-protocol-websocket>=0.009006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/PocketIO-0.15.tar.gz
+	md5sums = 0c1d4f693f7198d08b0cc8c3b950ad62
+	sha512sums = 83a751b7fd685f6d57de7fea79eade5632d12f086bc4d76a1d498396be3ac0dfe2e0013e18a39ee1334af2fdb9601910a4630603f9c0b072c0087b0efae22d98
+
+pkgname = perl-pocketio
+
