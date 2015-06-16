@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=HeidiSQL
+GenericName=GUI for managing MySQL and Microsoft SQL databases
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=heidisql
+Exec=heidisql
+Categories=Development;Database;

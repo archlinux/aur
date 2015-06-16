@@ -1,0 +1,22 @@
+pkgbase = heidisql
+	pkgdesc = A lightweight GUI for managing MySQL and Microsoft SQL databases. Uses Wine. Package repo: https://github.com/WeCodePixels/heidisql-aur
+	pkgver = 9.2
+	pkgrel = 1
+	url = http://www.heidisql.com/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = bash
+	depends = wine
+	noextract = HeidiSQL_9.2_Portable.zip
+	source = http://www.heidisql.com/downloads/releases/HeidiSQL_9.2_Portable.zip
+	source = heidisql.png
+	source = heidisql.desktop
+	source = heidisql.sh
+	md5sums = e023fbe06e49b6c12d8d2d232f234353
+	md5sums = df3673bc694beceb8ed6cfeace6b6c3f
+	md5sums = ea4fc6959a315ef5c2bf8e22c479e22a
+	md5sums = 3cdbca3164df7d3629ffc469d52e53a0
+
+pkgname = heidisql
+
