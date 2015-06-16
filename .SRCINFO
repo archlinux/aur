@@ -1,0 +1,16 @@
+pkgbase = perl-snowball-swedish
+	pkgdesc = Porters stemming algorithm for swedish.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Snowball-Swedish
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AS/ASKSH/Snowball-Swedish-1.2.tar.gz
+	md5sums = e2ed0f5c2a9fc7e500c61553c4c1e9c9
+	sha512sums = 799f22c298100fad901cf69b3bcc0b3be109b1557feb5554a1aa2898542b27bff3c7bcea8fa402d850e211751a6a23453521a395460df551d46cbda3a4ab4296
+
+pkgname = perl-snowball-swedish
+
