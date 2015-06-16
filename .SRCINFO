@@ -1,0 +1,16 @@
+pkgbase = perl-css
+	pkgdesc = Object oriented access to Cascading Style Sheets (CSS)
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CSS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-parse-recdescent>=1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IA/IAMCAL/CSS-1.09.tar.gz
+	md5sums = 4b86ec12e673e545a5801f40ac1c5e48
+	sha512sums = 3169d7b56be09c847d36ae1f58bf5b1aefd191535941836e7ece103c1ab229d8847c3ab0a6422f51aeaa9e28c3a1983cc96a3c3bd60dd1f0b33a848bfb2c2df1
+
+pkgname = perl-css
+
