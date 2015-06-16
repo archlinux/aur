@@ -2,7 +2,7 @@
 
 pkgname=conky-top
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Top conky-lua for ArchLinux"
 arch=('any')
 url="http://alexiobash.com/conky-top-monitor-di-sistema-a-pannello/"
