@@ -1,7 +1,7 @@
 pkgbase = conky-lua-arch
 	pkgdesc = A conky-lua for ArchLinux
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alexiobash.com/en/conky-lua-arch/
 	arch = any
 	license = GPL

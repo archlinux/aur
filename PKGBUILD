@@ -2,7 +2,7 @@
 
 pkgname=conky-lua-arch
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A conky-lua for ArchLinux"
 arch=('any')
 url="http://alexiobash.com/en/conky-lua-arch/"
@@ -13,6 +13,6 @@ source=("http://mirror.alexiobash.com/alexiobash/project/conky-lua-arch/$pkgname
 md5sums=('2fa6ab6e26331833691c65581c46caec')
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname
 	make DESTDIR=${pkgdir} install
 }
