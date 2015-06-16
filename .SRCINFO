@@ -1,0 +1,18 @@
+pkgbase = perl-apache-log-parser
+	pkgdesc = Parser for Apache Log (common, combined, and any other custom styles by LogFormat).
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Apache-Log-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-exception>=0
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TA/TAGOMORIS/Apache-Log-Parser-0.02.tar.gz
+	md5sums = 29ccd3d42cacbab5f92ff9df8be6baaa
+	sha512sums = 39fdffca9d0bced7f0e87950f2a1ba3e2687ca582c2cf6dee7b364fd93875d510bbeec52558d9fc522702c8dd01a080ab1dc33c5c8116c49a7a4eaf82a092ad7
+
+pkgname = perl-apache-log-parser
+
