@@ -1,0 +1,18 @@
+pkgbase = perl-const-fast
+	pkgdesc = Facility for creating read-only scalars, arrays, and hashes
+	pkgver = 0.014
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Const-Fast
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	depends = perl-sub-exporter-progressive>=0.001007
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/L/LE/LEONT/Const-Fast-0.014.tar.gz
+	md5sums = e7e73b03102c4ac27053b25362349a82
+	sha512sums = 89258205fe31aa5a60759ed955e6dae305de69f4bc08251242a82eec9e37251b045908585c470106ed9047f604d3292eb3231c80504b29734966b58b8402a929
+
+pkgname = perl-const-fast
+
