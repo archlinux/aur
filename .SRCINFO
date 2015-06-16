@@ -1,0 +1,10 @@
+pkgbase = krat-myrelax
+	pkgdesc = krat-myrelax icons
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://zayronxio.blogspot.fr/2012/01/krat-myrelax-v-102.html
+	arch = any
+	license = GPL
+
+pkgname = krat-myrelax
+
