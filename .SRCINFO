@@ -1,0 +1,22 @@
+pkgbase = spidermonkey-1.7
+	pkgdesc = Mozilla's C implementation of JavaScript.
+	pkgver = 1.7.0
+	pkgrel = 5
+	url = http://www.mozilla.org/js/spidermonkey/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = nspr
+	depends = ppl
+	options = !makeflags
+	source = http://ftp.mozilla.org/pub/mozilla.org/js/js-1.7.0.tar.gz
+	source = spidermonkey-1.7-threadsafe.patch
+	source = spidermonkey-Makefile.patch
+	md5sums = 5571134c3863686b623ebe4e6b1f6fe6
+	md5sums = b2ef9be017b6aa1857354b5223975a4f
+	md5sums = 161d4c0f2c604d15cba29dab60b1f7a7
+
+pkgname = spidermonkey-1.7
+
