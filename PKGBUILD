@@ -9,7 +9,6 @@ url="https://bitsquare.io/"
 license=('AGPL3')
 depends=('bash' 'java-runtime-openjdk=8')
 makedepends=('maven' 'openjfx')
-provides=('bitsquare')
 source=("${pkgname}::git+https://github.com/bitsquare/bitsquare.git"
   "bitsquare.sh"
   "bitsquare.desktop")

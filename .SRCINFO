@@ -9,7 +9,6 @@ pkgbase = bitsquare-git
 	makedepends = openjfx
 	depends = bash
 	depends = java-runtime-openjdk=8
-	provides = bitsquare
 	source = bitsquare-git::git+https://github.com/bitsquare/bitsquare.git
 	source = bitsquare.sh
 	source = bitsquare.desktop
