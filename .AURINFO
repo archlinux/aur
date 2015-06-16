@@ -1,0 +1,14 @@
+pkgbase = perl-data-dumper-concise
+	pkgdesc = Less indentation and newlines plus sub deparsing
+	pkgver = 2.022
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Data-Dumper-Concise
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/F/FR/FREW/Data-Dumper-Concise-2.022.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-dumper-concise
+
