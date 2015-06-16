@@ -1,0 +1,35 @@
+pkgbase = perl-net-amazon-s3
+	pkgdesc = Use the Amazon S3 - Simple Storage Service
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-Amazon-S3
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-data-stream-bulk
+	depends = perl-datetime-format-http
+	depends = perl-digest-hmac
+	depends = perl-digest-md5-file
+	depends = perl-file-find-rule
+	depends = perl-http-date
+	depends = perl-http-message
+	depends = perl-lwp-useragent-determined
+	depends = perl-mime-types
+	depends = perl-moose>=0.85
+	depends = perl-moosex-strictconstructor>=0.16
+	depends = perl-moosex-types-datetime-morecoercions>=0.07
+	depends = perl-path-class
+	depends = perl-regexp-common
+	depends = perl-term-encoding
+	depends = perl-term-progressbar-simple
+	depends = perl-uri
+	depends = perl-xml-libxml
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PF/PFIG/Net-Amazon-S3-0.60.tar.gz
+	md5sums = 652bfee36dbb2c21e8e5633961db7780
+	sha512sums = b24fdf4061950df2eac2a03bf28cd6bd648a815f60930322c0d9159f49315feace747d9870b9f117f5f76298fccb006c076333bb427d65ff437e6d89ee754176
+
+pkgname = perl-net-amazon-s3
+
