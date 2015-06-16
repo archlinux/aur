@@ -1,0 +1,16 @@
+pkgbase = perl-gtk2-ex-podviewer
+	pkgdesc = a Gtk2 widget for displaying Plain old Documentation (POD).
+	pkgver = 0.18
+	pkgrel = 2
+	url = http://search.mcpan.org/dist/Gtk2-Ex-PodViewer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = gtk2-perl
+	depends = perl-io-stringy
+	depends = perl-gtk2-ex-simple-list
+	source = http://search.mcpan.org/CPAN/authors/id/G/GB/GBROWN/Gtk2-Ex-PodViewer-0.18.tar.gz
+	options = !emptydirs
+
+pkgname = perl-gtk2-ex-podviewer
+
