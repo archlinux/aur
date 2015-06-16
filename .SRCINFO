@@ -1,0 +1,19 @@
+pkgbase = gstreamer-screenrecording-git
+	pkgdesc = Record screen or window with VAAPI(intel I420 or NV12), OMX(radeon NV12), software (x264enc I420 or NV12) to mkv file, with or without sound.
+	pkgver = r34.a050b7a
+	pkgrel = 1
+	url = https://github.com/pontostroy/gstreamer-screenrecording
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = kdebase-kdialog
+	depends = gst-omx
+	depends = libomxil-bellagio
+	depends = gst-vaapi
+	provides = gstreamer-screenrecording
+	conflicts = gstreamer-screenrecording
+	source = git+https://github.com/pontostroy/gstreamer-screenrecording.git
+	md5sums = SKIP
+
+pkgname = gstreamer-screenrecording-git
+
