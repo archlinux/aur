@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-session-store-dbic
+	pkgdesc = Store your sessions via DBIx::Class
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-DBIC
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warn>=0.20
+	depends = perl-catalyst-plugin-session-store-delegate>=0.05
+	depends = perl-catalyst-runtime>=0
+	depends = perl-class-accessor>=0
+	depends = perl-dbix-class>=0.07000
+	depends = perl-mro-compat>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-Store-DBIC-0.14.tar.gz
+	md5sums = 8075626aa269768481f15eb2059014ff
+	sha512sums = 0cdbb8d8f1cacc931fd37432fab07f18e3d7edaa0d4305b50486df63ab799ffc977bae7144f83947a0ee72eca7ae3d195a64ee60f5293f96d2b46c0baad0b88a
+
+pkgname = perl-catalyst-plugin-session-store-dbic
+
