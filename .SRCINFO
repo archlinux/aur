@@ -1,0 +1,16 @@
+pkgbase = perl-net-irc
+	pkgdesc = DEAD SINCE 2004 Perl interface to the Internet Relay Chat protocol
+	pkgver = 0.79
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Net-IRC
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AP/APEIRON/Net-IRC-0.79.tar.gz
+	md5sums = 5849c6e482ade4367d783e04a4530ee6
+	sha512sums = daf51ec64aa4e630a4e3d6da48a24cc01737fe702269633d4b392662aacd45d3ed00adfe1fbd32905575f9905dee362d68ff030c7918fa17acb9a508474177f5
+
+pkgname = perl-net-irc
+
