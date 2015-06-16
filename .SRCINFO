@@ -1,0 +1,18 @@
+pkgbase = perl-html-wikiconverter-moinmoin
+	pkgdesc = Convert HTML to MoinMoin markup
+	pkgver = 0.54
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter-MoinMoin
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-wikiconverter>=0.63
+	depends = perl-params-validate
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DIBERRI/HTML-WikiConverter-MoinMoin-0.54.tar.gz
+	md5sums = 4fbc0ad12f3b3d12d8edd63c3d8c6182
+	sha512sums = 24f98092e7d65e6c5913019ffb727aa969bdb326db4ba05407d5bc345341efd9bf4bb0102cd311f479f03f19561f4b1e754c56f8e8d1f02dffe6b48a8894ced9
+
+pkgname = perl-html-wikiconverter-moinmoin
+
