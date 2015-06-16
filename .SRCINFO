@@ -1,0 +1,20 @@
+pkgbase = perl-dist-zilla-plugin-installguide
+	pkgdesc = Build an INSTALL file
+	pkgver = 1.200006
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugin-InstallGuide
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	depends = perl-dist-zilla
+	depends = perl-moose
+	depends = perl-path-tiny
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOHERTY/Dist-Zilla-Plugin-InstallGuide-1.200006.tar.gz
+	md5sums = 801443d28f1795868d1b541bfc28f622
+	sha512sums = cae2e5d62b525f3a68b6dbe7addcef14f8779229dd53774e9b691826fff5983f267bda349820292a97959c29a19666e46286992eea87396807c3cce235c6e39d
+
+pkgname = perl-dist-zilla-plugin-installguide
+
