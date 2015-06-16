@@ -1,0 +1,17 @@
+pkgbase = gtk2-theme-sonar
+	pkgdesc = GTK2 theme from openSUSE 11.3
+	pkgver = 11.3.0_70.3
+	pkgrel = 1
+	url = http://www.opensuse.org/
+	arch = any
+	license = GPL
+	makedepends = rpmextract
+	makedepends = patch
+	depends = gtk-engine-murrine
+	source = http://download.opensuse.org/repositories/GNOME:/Factory/openSUSE_Factory/src/gtk2-metatheme-sonar-11.3.0-70.3.src.rpm
+	source = metatheme-Sonar_compatibilty-with-murrine-0.98.patch
+	md5sums = b076342ba601497a10934ede5257c2f8
+	md5sums = a47da04787410b4c62f406a1c0352c30
+
+pkgname = gtk2-theme-sonar
+

@@ -1,0 +1,39 @@
+diff -ur Sonar.orig//gtk-2.0/gtkrc Sonar//gtk-2.0/gtkrc
+--- Sonar.orig//gtk-2.0/gtkrc	2009-10-21 00:20:34.000000000 +0530
++++ Sonar//gtk-2.0/gtkrc	2010-09-24 04:51:24.429407368 +0530
+@@ -87,7 +87,6 @@
+ 		roundness = 2
+ 		progressbarstyle = 1
+ 		animation = TRUE
+-		gradients = TRUE
+ 		reliefstyle = 2
+ 		sliderstyle = 1
+ 		menustyle = 0
+@@ -142,7 +141,6 @@
+ 		contrast = 0.9
+ 		glazestyle = 0
+ 		gradient_shades = { 1.05, 1.0, 1.0, 0.9 }
+-		gradients = TRUE
+ 		highlight_shade = 1.0
+ 		lightborder_shade = 1.4
+ 		lightborderstyle = 1
+@@ -158,11 +156,9 @@
+ 	
+ 	engine "murrine" {
+ 		colorize_scrollbar = TRUE
+-		gradients = TRUE
+ 		contrast = 0.3
+ 		glazestyle = 0
+ 		gradient_shades = { 1.1, 1.0, 1.0, 0.9 }
+-		gradients = TRUE
+ 		highlight_shade = 1.0
+ 		lightborder_shade = 1.2
+ 		lightborderstyle = 1
+@@ -554,7 +550,6 @@
+ style "inkscape-toolbar-fix" {
+         engine "murrine" 
+         {
+-                gradients = TRUE
+                 gradient_shades = {1.00,1.00,1.00,1.00}
+                 highlight_shade = 1.00
+    }
