@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('freetype2' 'gcc-libs' "vdr-api=$_vdrapi")
 optdepends=()
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/attachments/download/1327/$pkgname-$pkgver.tgz"
         'imonlcd-linker_fix.diff::http://projects.vdr-developer.org/git/vdr-plugin-imonlcd.git/patch/?id=fa47d6df0902d3ac1e4f326be4f2e578fd0f5f19'
         'imonlcd-fix_replay_time.diff::http://projects.vdr-developer.org/git/vdr-plugin-imonlcd.git/patch/?id=4f8c014e73e9ba11172d6070d8a123f9da20361f'
