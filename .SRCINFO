@@ -1,0 +1,16 @@
+pkgbase = perl-net-tomcat
+	pkgdesc = A Perl API for monitoring Apache Tomcat.
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-Tomcat
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LT/LTP/Net-Tomcat-0.02.tar.gz
+	md5sums = 5f7d6fe6b5f514ebf59d5446424a009b
+	sha512sums = 6eaf11e6404fc8b376a11ca76c918db079ea2e1b5237f764ae4ede30392e66dbb4036c1329bdfb3b470edcd2dd8e6a7673fd15a790a8d0a96a2683997d41b81d
+
+pkgname = perl-net-tomcat
+
