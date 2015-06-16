@@ -1,0 +1,17 @@
+pkgbase = perl-www-mechanize-formfiller
+	pkgdesc = framework to automate HTML forms
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Mechanize-FormFiller
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-random>=0.05
+	depends = perl-html-form>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORION/WWW-Mechanize-FormFiller-0.11.tar.gz
+	md5sums = 4604ef3cefa9fefaddbfc8c8787a7ed9
+	sha512sums = 60436af00f910465f5bfe60c55200c4a4301380295cf0ac39979a73c7f8efc78559ffd828fb145970838919beb2f4a99bbf134adb1976f577569a13f1c8e3b02
+
+pkgname = perl-www-mechanize-formfiller
+
