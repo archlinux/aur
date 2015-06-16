@@ -1,0 +1,17 @@
+pkgbase = perl-business-onlinepayment-surepay
+	pkgdesc = SurePay backend for Business::OnlinePayment
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Business-OnlinePayment-SurePay
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-business-onlinepayment
+	depends = perl-net-ssleay
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AK/AKHOBOV/Business-OnlinePayment-SurePay-0.01.tar.gz
+	md5sums = 64da3ecbced4e55c2a5c339474655002
+	sha512sums = 05843a38d06a890e320c631db4095a0f0b30161ef63ea5e5b02ee461591ec54c24ce1e76b88d60bb34128591ffa9c1e809a639b647ebeb97ac88c9e15453374f
+
+pkgname = perl-business-onlinepayment-surepay
+
