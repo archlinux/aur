@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-view-json
+	pkgdesc = JSON view for your data
+	pkgver = 0.33
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-View-JSON
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-yaml
+	depends = perl>=5.8.1
+	depends = perl-catalyst-runtime
+	depends = perl-json-any>=1.15
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Catalyst-View-JSON-0.33.tar.gz
+	md5sums = 30f15ca2a509f522589c1756095dff3c
+	sha512sums = 100474b849016b499c670110b27eca3a138217bfb66bbec198572b8008d93be31887870642a6ba2b20f65d16b83383c88893b91a6424d6d2d0a6c0107d6b9c1d
+
+pkgname = perl-catalyst-view-json
+
