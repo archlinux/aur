@@ -1,0 +1,17 @@
+pkgbase = perl-lib-ixp
+	pkgdesc = binding for libixp
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lib-IXP
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Lib-IXP-0.11.tar.gz
+	md5sums = ed912ce3834e64a40dc863c23e22af94
+	sha512sums = ec0c40d0ab8faa37ed42d33e31cd83389dc7928afab2ac8dddee9342d7156d43fac7e3905cead26e30adbc8d78061caa01a5887b589826f59f1159cebdb5c7cb
+
+pkgname = perl-lib-ixp
+
