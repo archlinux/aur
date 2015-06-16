@@ -1,0 +1,16 @@
+pkgbase = perl-zmq-constants
+	pkgdesc = Constants for libzmq
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/ZMQ-Constants
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DM/DMAKI/ZMQ-Constants-1.04.tar.gz
+	md5sums = 993961a924f88de186419b590266d9c0
+	sha512sums = a6ada74282c82713b724c5592606cc836a46e0e480477355d6cd7b27fe9afcbe0ce46dda28bf8ea184cc12a4d6a2ec7d9ba6870db59a88c69f37ac1f8f7c726f
+
+pkgname = perl-zmq-constants
+
