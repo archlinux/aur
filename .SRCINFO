@@ -1,0 +1,16 @@
+pkgbase = perl-locale-codes
+	pkgdesc = a distribution of modules to handle locale codes
+	pkgver = 3.26
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Locale-Codes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SB/SBECK/Locale-Codes-3.26.tar.gz
+	md5sums = 085c6bcedc258b29512b32b425475dbc
+	sha512sums = f923d3dcc4fa66c60a99a78c6e103cc861ebe4e9884f4d7a9f0cbe7bd48fd7314040bde85db1d6c2e9046aeb8774545c708340722590c37198e25f8f66f33db8
+
+pkgname = perl-locale-codes
+
