@@ -5,8 +5,8 @@
 
 pkgname=arduino
 epoch=1
-pkgver=1.6.4
-pkgrel=3
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64')
 url="http://arduino.cc/en/Main/Software"
@@ -21,8 +21,8 @@ source_i686+=("http://downloads.arduino.cc/arduino-${pkgver}-linux32.tar.xz")
 source_x86_64+=("http://downloads.arduino.cc/arduino-${pkgver}-linux64.tar.xz")
 sha256sums=('ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
             '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68')
-sha256sums_i686=('c30e6d681bb8d70c468b2110919ee99689668c8ca3af83a5bd0005934c761466')
-sha256sums_x86_64=('eb9f2dae8b2cd131e9744eb9385af7a765888cb17916e0163ce171124546495c')
+sha256sums_i686=('98a0edc24cada4aaaa71884b045857cc500602e8c55d7186430b771783e6a687')
+sha256sums_x86_64=('33d5ebbc31e524fd618c42c3f8f65c0d5a558ede8d44c76885ef9a0273414f25')
 
 build() {
   cd "arduino-${pkgver}"
