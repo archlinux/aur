@@ -1,0 +1,16 @@
+pkgbase = perl-exception-handler
+	pkgdesc = Report exceptions with formatted text call-stack
+	pkgver = 1.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Exception-Handler
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/Exception-Handler-1.004.tar.gz
+	md5sums = 62867ab3a5ccedb3a33b7a949d59e7f5
+	sha512sums = bacf05e5f6ae2edfd914315a2e677ad80bb018ad0460eb177e0e05170de87c8168f4dd44e312de343abf6b143fd87fbd2f5a9107953f5c2fa15802e926d60fca
+
+pkgname = perl-exception-handler
+
