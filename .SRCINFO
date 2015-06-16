@@ -1,0 +1,13 @@
+pkgbase = moss
+	pkgdesc = Mostly orthogonal sequencing server
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://jangler.info/code/moss
+	arch = any
+	license = MIT
+	makedepends = go
+	source = https://github.com/jangler/moss/archive/1.1.0.tar.gz
+	sha256sums = 550f76cf436aae775698c1368a57411fbd43d25aef07209d2022b0531fde296e
+
+pkgname = moss
+
