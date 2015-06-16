@@ -1,0 +1,21 @@
+pkgbase = scrolls
+	pkgdesc = You use the power of creatures, spells, and ancient machines to gain the edge in battle, deploying your forces by using scrolls.
+	pkgver = latest
+	pkgrel = 3
+	url = https://www.scrolls.com/
+	arch = x86_64
+	license = custom
+	depends = glu
+	source = scrolls
+	source = http://download.scrolls.com/client/linux.tar.gz
+	source = scrolls.desktop
+	source = scrolls.png
+	source = LICENSE
+	md5sums = 906032d3d16ad73b1204d086b0a59e0c
+	md5sums = SKIP
+	md5sums = 747f834cfc610de38986a47d95289f8e
+	md5sums = 73f17d8db78f23e135effae241e1f2a8
+	md5sums = be2ab8f5aba79a6060c12cc23b9c8a2c
+
+pkgname = scrolls
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Scrolls
+GenericName=Scrolls
+Comment=You use the power of creatures, spells, and ancient machines to gain the edge in battle, deploying your forces by using scrolls.
+Exec=scrolls
+Icon=/usr/share/pixmaps/scrolls.png
+Terminal=false
+Type=Application
+Categories=Game;
