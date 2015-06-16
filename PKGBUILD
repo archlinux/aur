@@ -80,6 +80,7 @@ package() {
   rm    azureus
   rm    installer.log
   rm    README.txt
+  rm    vuze.schemas
 
   # Move main stuff
   mv * "$pkgdir"/opt/vuze-dev/
