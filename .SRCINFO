@@ -1,0 +1,16 @@
+pkgbase = perl-data-taxi
+	pkgdesc = Taint-aware, XML-ish data serialization
+	pkgver = 0.96
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Taxi
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-debug-showstuff>=1.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIKO/Data-Taxi-0.96.tar.gz
+	md5sums = 267cf3f2121ed4f5a622e85b56799a60
+	sha512sums = 660d6bb8e10ad5666428e0b110b0117d6b122d343c79fbe14b54177486a3cb2fbd9070626eec90a0cf28b600bcaeb685bfb7e0722c83f9e19f1cfa32ddf2124c
+
+pkgname = perl-data-taxi
+
