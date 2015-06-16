@@ -1,0 +1,14 @@
+pkgbase = perl-readonly-xs
+	pkgdesc = Companion module for Readonly.pm, to speed up read-only
+	pkgver = 1.05
+	pkgrel = 2
+	url = http://search.mcpan.org/dist/Readonly-XS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-readonly>=1.02
+	source = http://search.mcpan.org/CPAN/authors/id/R/RO/ROODE/Readonly-XS-1.05.tar.gz
+	options = !emptydirs
+
+pkgname = perl-readonly-xs
+
