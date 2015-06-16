@@ -1,0 +1,15 @@
+pkgbase = video_entropyd
+	pkgdesc = A daemon using a webcam as entropy source
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.vanheusden.com/ved/
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.vanheusden.com/ved/video_entropyd-2.0.tgz
+	md5sums = dab5bb2687bc43ed7e51962de904fd4e
+
+pkgname = video_entropyd
+
