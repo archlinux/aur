@@ -1,7 +1,7 @@
 # Maintainer: Ciriaco Garcia de Celis <cgarcia at etherpilot.com>
 pkgname=qpid-proton
-pkgver=0.8
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Proton is a high-performance, lightweight messaging library"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://qpid.apache.org/releases/"
@@ -10,10 +10,10 @@ depends=('python2')
 makedepends=('util-linux' 'python2' 'cmake' 'swig')
 optdepends=()
 source=("http://www.eu.apache.org/dist/qpid/proton/$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('2cae466d975b0f1df28fdfb0fe8e8d000a35d99a')
+sha1sums=('98008d90acd0d47cbd7ac1572a2bb50b452338ed')
 
 build() {
-  cd "${srcdir}/qpid-proton-${pkgver}"
+  cd "${srcdir}/qpid-proton-${pkgver}-rc1"
   mkdir build
   cd build
   cmake .. -DSYSINSTALL_BINDINGS=ON -DPYTHON_EXECUTABLE=/usr/bin/python2.7 \
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/qpid-proton-${pkgver}/build"
+  cd "${srcdir}/qpid-proton-${pkgver}-rc1/build"
   make DESTDIR="${pkgdir}/" install
 }
