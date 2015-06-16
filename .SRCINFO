@@ -1,0 +1,16 @@
+pkgbase = perl-lyrics-fetcher
+	pkgdesc = Perl extension to manage fetchers of song lyrics.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lyrics-Fetcher
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BIGPRESH/Lyrics-Fetcher-0.5.2.tar.gz
+	md5sums = ab370936d25331b337677aa0b7ad48d0
+	sha512sums = cf333e00b602ee388970f121383c2bf229ab81a52c3dea805c7213af5201e4729e84da019892d3352733ec10570c9b62a2b2eef9e3b046236eed0f03de9bc9b6
+
+pkgname = perl-lyrics-fetcher
+
