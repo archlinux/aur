@@ -1,0 +1,36 @@
+pkgbase = perl-catalyst-plugin-autocrud
+	pkgdesc = Instant AJAX web front-end for DBIx::Class
+	pkgver = 2.143070
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Catalyst-Plugin-AutoCRUD
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-www-mechanize-catalyst
+	depends = perl-catalyst-action-renderview
+	depends = perl-catalyst-model-dbic-schema
+	depends = perl-catalyst-plugin-configloader
+	depends = perl-catalyst-runtime
+	depends = perl-catalyst-view-json
+	depends = perl-catalyst-view-tt
+	depends = perl-class-data-inheritable
+	depends = perl-dbd-sqlite
+	depends = perl-dbi
+	depends = perl-dbix-class>=0.08127
+	depends = perl-dbix-class-schema-loader
+	depends = perl-data-page
+	depends = perl-file-slurp
+	depends = perl-json>=2.90
+	depends = perl-json-xs
+	depends = perl-lingua-en-inflect-number
+	depends = perl-list-moreutils
+	depends = perl-mro-compat
+	depends = perl-module-pluggable
+	depends = perl-sql-translator
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/O/OL/OLIVER/Catalyst-Plugin-AutoCRUD-2.143070.tar.gz
+	md5sums = a0636a08518be90b4c6d3d343941e3e4
+	sha512sums = 1811161fe6c611182eea70289291129fd1ab09119e1b451a4c610654ceec12098d89354e300950890c6c33d5a0f14748e9c851376b570270a73857fa15fddb21
+
+pkgname = perl-catalyst-plugin-autocrud
+
