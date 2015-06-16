@@ -1,0 +1,16 @@
+pkgbase = perl-business-creditcard
+	pkgdesc = Validate/generate credit card checksums/names
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Business-CreditCard
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/Business-CreditCard-0.32.tar.gz
+	md5sums = 2626c62949def90825e44599796fadf6
+	sha512sums = 47b6c7cc98c577deaf159589b289ff827c2e5ef6470eecf068553bf77228431614980b7e6800438e2578474675aee583219aad5ef6232017852fbf2bce8f8e39
+
+pkgname = perl-business-creditcard
+
