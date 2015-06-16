@@ -1,0 +1,16 @@
+pkgbase = perl-library-callnumber-lc
+	pkgdesc = Deal with Library-of-Congress call numbers
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Library-CallNumber-LC
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DB/DBWELLS/Library-CallNumber-LC-0.22.tar.gz
+	md5sums = b25acaa6354e38b7623e084a1f9ce40a
+	sha512sums = 09dfda7c0b7ce549db583fd5a5a1fca726a2ef58cff150edc34861d872edbe0ac286071d6950d39d18e7b4aceef4d7db298c6f66736d019b859e420d14991cf8
+
+pkgname = perl-library-callnumber-lc
+
