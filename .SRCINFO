@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-actionrole-matchrequestmethod
+	pkgdesc = Dispatch actions based on HTTP request methods
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-ActionRole-MatchRequestMethod
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-controller-actionrole
+	depends = perl-catalyst-runtime>=5.80
+	depends = perl-http-message
+	depends = perl-moose>=1.03
+	depends = perl-namespace-autoclean
+	depends = perl-perl6-junction
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Catalyst-ActionRole-MatchRequestMethod-0.03.tar.gz
+	md5sums = 5343512bcdd2cff34cf944a7ffbc9f3c
+	sha512sums = cd38dae136dd41dd01569dc3447e54f7dab2845ce90ec5a0e0903419d84f605da3f100dc7c3992bde2f02549773987f583b881efc9ffd8af2173c4f9e61e4d95
+
+pkgname = perl-catalyst-actionrole-matchrequestmethod
+
