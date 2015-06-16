@@ -1,0 +1,17 @@
+pkgbase = fex-utils-git
+	pkgdesc = Utilities for F*EX, a web service to send very large files.
+	pkgver = 20150615.r0.ge600969
+	pkgrel = 1
+	url = http://fex.belwue.de
+	arch = any
+	license = custom:Anti-military Perl Artistic License
+	makedepends = git
+	makedepends = ca-certificates-cacert
+	depends = perl
+	depends = perl-io-socket-ssl
+	conflicts = fex-utils
+	source = fex-utils-git::git+https://git.treefish.org/fex.git
+	sha256sums = SKIP
+
+pkgname = fex-utils-git
+
