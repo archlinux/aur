@@ -1,0 +1,21 @@
+pkgbase = perl-cpan-inject
+	pkgdesc = Base class for injecting distributions into CPAN sources
+	pkgver = 1.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPAN-Inject
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-file-remove>=0.34
+	makedepends = perl-test-script>=1.02
+	depends = perl>=5.006
+	depends = perl-cpan-checksums>=1.05
+	depends = perl-file-chmod>=0.30
+	depends = perl-params-util>=0.21
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PS/PSHANGOV/CPAN-Inject-1.14.tar.gz
+	md5sums = f7118feb75f94d551edb9270f02e383b
+	sha512sums = 32c69f3e7235b8491b14589089e1b687fb91cc0a15722dc682d2e08fe4ceb9b0587fc2fe3b18cca57cd56a8764c813ab91e2efe38f622177a8ee2355e71f84a2
+
+pkgname = perl-cpan-inject
+
