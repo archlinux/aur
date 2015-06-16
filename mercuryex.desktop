@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mercury Exchange
+GenericName=P2P Altcoin Exchange
+Comment=A multi-coin wallet that supports trustless cross-chain trading
+Exec=/usr/bin/mercuryex
+Icon=/usr/share/pixmaps/mercuryex.png
+Terminal=false
+Type=Application
+Categories=Utility;Finance;
