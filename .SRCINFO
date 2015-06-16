@@ -1,0 +1,22 @@
+pkgbase = perl-zmq-libzmq3
+	pkgdesc = A libzmq 3.x wrapper for Perl
+	pkgver = 1.19
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/ZMQ-LibZMQ3
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-tcp>=1.08
+	makedepends = perl-devel-checklib>=0.4
+	depends = perl-task-weaken
+	depends = perl-zmq-constants
+	depends = zeromq>=4.0.5
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DM/DMAKI/ZMQ-LibZMQ3-1.19.tar.gz
+	md5sums = c1514be966e4db371d9eb5f5e05eac3a
+	sha512sums = feffe5273710d01cd09a9a96c311b94fe15054cc8a251b4d74d7af34c48480e017ec5fdde17fd7fc551b2b4566030858ebb1004c44fdcdfc377b38178f0449d5
+
+pkgname = perl-zmq-libzmq3
+
