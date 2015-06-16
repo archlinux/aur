@@ -1,0 +1,37 @@
+pkgbase = nightingale-git
+	pkgdesc = Community port of Songbird to be more Linux native, up to date, and open.
+	pkgver = 8d024f1
+	pkgrel = 1
+	url = http://getnightingale.com/
+	install = nightingale.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = MPL
+	license = BSD
+	makedepends = git
+	makedepends = subversion
+	makedepends = python
+	makedepends = unzip
+	makedepends = libidl2
+	makedepends = zip
+	makedepends = glib2
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = gtk2
+	depends = libxt
+	depends = sqlite3
+	depends = taglib
+	provides = nightingale
+	conflicts = nightingale
+	source = nightingale::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0
+	source = Nightingale.desktop
+	source = http://downloads.sourceforge.net/project/ngale/1.12-Build-Deps/linux--1.12-20130316-release-final.tar.lzma
+	md5sums = SKIP
+	md5sums = 7741cc247648e95dd9dad8c953616757
+
+pkgname = nightingale-git
+
