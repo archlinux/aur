@@ -1,0 +1,14 @@
+pkgbase = perl-net-daemon
+	pkgdesc = Perl extension for portable daemons
+	pkgver = 0.48
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Net-Daemon
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/M/MN/MNOONING/Net-Daemon-0.48.tar.gz
+	options = !emptydirs
+
+pkgname = perl-net-daemon
+
