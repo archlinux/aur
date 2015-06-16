@@ -1,0 +1,41 @@
+pkgbase = perl-catalyst-plugin-authorization-abilities
+	pkgdesc = Ability based authorization for Catalyst/DBIx::Class apps, based on Catalyst::Plugin::Authorization::Roles
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Authorization-Abilities
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-authentication-store-dbix-class
+	depends = perl-catalyst-devel
+	depends = perl-catalyst-model-dbic-schema
+	depends = perl-catalyst-plugin-authentication
+	depends = perl-catalyst-plugin-session
+	depends = perl-catalyst-plugin-session-state-cookie
+	depends = perl-catalyst-plugin-session-store-fastmmap
+	depends = perl-catalyst-runtime>=5.80
+	depends = perl-catalyst-view-tt
+	depends = perl-catalystx-simplelogin
+	depends = perl-config-jfdi
+	depends = perl-dbd-sqlite
+	depends = perl-dbix-class
+	depends = perl-dbix-class-datetime-epoch
+	depends = perl-dbix-class-encodedcolumn
+	depends = perl-hash-merge
+	depends = perl-html-formfu
+	depends = perl-http-message
+	depends = perl-module-install
+	depends = perl-moose
+	depends = perl-moosex-nonmoose
+	depends = perl-moosex-types-path-class
+	depends = perl-namespace-autoclean
+	depends = perl-path-class
+	depends = perl-sql-translator
+	depends = perl-universal-require
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/ID/IDOPEREL/Catalyst-Plugin-Authorization-Abilities-v0.31.0.tar.gz
+	md5sums = 11a832fdd03baa7aa48b66c4052afa0a
+	sha512sums = 6a1c7043bbb2520d56d52a406e3bd4392ac4fa64490490a850796e0ad48463927c28a7792aa83b7184c8f96ff2fc50be8671d8ba38e2af6ecaf8794dcbabaf35
+
+pkgname = perl-catalyst-plugin-authorization-abilities
+
