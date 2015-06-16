@@ -1,0 +1,23 @@
+pkgbase = perl-data-formvalidator
+	pkgdesc = Validates user input (usually from an HTML form) based
+	pkgver = 4.81
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-FormValidator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-date-calc>=5
+	depends = perl-email-valid
+	depends = perl-file-mmagic>=1.17
+	depends = perl-image-size
+	depends = perl-mime-types>=1.005
+	depends = perl-perl6-junction>=1.1
+	depends = perl-regexp-common
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKSTOS/Data-FormValidator-4.81.tar.gz
+	md5sums = 575116fb7857491e77110ea7eaf6b3a2
+	sha512sums = c9939686e60bb75e658a95407d616e7907f97e85d049d69abaf7ac89678985c555fe6d4177c773916c57964a45a423582e74d3cf79d75cef87a22f913ef82e23
+
+pkgname = perl-data-formvalidator
+
