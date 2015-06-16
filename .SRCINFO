@@ -2,7 +2,7 @@ pkgbase = python-pinject
 	pkgdesc = A pythonic dependency injection library
 	pkgver = 0.10.2
 	pkgrel = 1
-	url = https://github.com/tavendo/txaio
+	url = https://github.com/google/pinject
 	arch = any
 	license = APACHE
 	depends = python>=3.1
