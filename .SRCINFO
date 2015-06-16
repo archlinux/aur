@@ -1,0 +1,20 @@
+pkgbase = perl-salvation
+	pkgdesc = Simple and free architectural solution for huge applications
+	pkgver = 0.9913
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Salvation
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-carp-assert>=0.2
+	depends = perl-io-string>=1.08
+	depends = perl-moose>=2.0402
+	depends = perl-xml-writer>=0.615
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFILATOV/Salvation-0.9913.tar.gz
+	md5sums = 472a54064b11acb49d6c953a43b3bbcc
+	sha512sums = dde71445390ee110d99d92c9e355f20c581fe0b917b5017cee1c209a39c48039e21e97b1cede47e378f47f1f3a54e68846cb36275488a49e28c511c43c2ff6e4
+
+pkgname = perl-salvation
+
