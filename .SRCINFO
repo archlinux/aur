@@ -1,0 +1,17 @@
+pkgbase = perl-template-magic
+	pkgdesc = Magic merger of runtime values with templates
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Template-Magic
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-io-util>=1.46
+	depends = perl-ootools
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SK/SKNPP/Template-Magic-1.4.tar.gz
+	md5sums = 45eb67551fcf4254b22f0ac38084cffd
+	sha512sums = 3d2efacdc2538f5120b15d1431498a74284c53cd74254417952bea56f477d55f147a0fbaf3f6e88028c8f97f1277655ca76f32f78463870cc39e449c0643bdcd
+
+pkgname = perl-template-magic
+
