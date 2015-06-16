@@ -1,0 +1,17 @@
+pkgbase = perl-html-wikiconverter-mediawiki
+	pkgdesc = Convert HTML to MediaWiki markup
+	pkgver = 0.59
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter-MediaWiki
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-wikiconverter>=0.63
+	depends = perl-uri>=1.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DIBERRI/HTML-WikiConverter-MediaWiki-0.59.tar.gz
+	md5sums = 72b776cce2a1dddd48017655097b4d04
+	sha512sums = 24d466f2141d8142c2e8860f6ae12e88ceadfd7b1578a9db4b083d29616dd86ec70454e15fef43ec9fa577590722c09261513154f90698f02986feec63fc31b7
+
+pkgname = perl-html-wikiconverter-mediawiki
+
