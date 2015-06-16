@@ -1,0 +1,19 @@
+pkgbase = perl-dist-zilla-plugin-test-minimumversion
+	pkgdesc = Release tests for minimum required versions
+	pkgver = 2.000005
+	pkgrel = 187
+	url = http://search.mcpan.org/dist/Dist-Zilla-Plugin-Test-MinimumVersion
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-dist-zilla
+	checkdepends = perl-test-minimumversion
+	checkdepends = perl-test-output
+	depends = perl-dist-zilla
+	depends = perl-moose
+	depends = perl-moose-autobox
+	source = http://search.mcpan.org/CPAN/authors/id/D/DO/DOHERTY/Dist-Zilla-Plugin-Test-MinimumVersion-2.000005.tar.gz
+	options = !emptydirs
+
+pkgname = perl-dist-zilla-plugin-test-minimumversion
+
