@@ -1,0 +1,15 @@
+pkgbase = nodejs-jsctags
+	pkgdesc = jsctags is a ctags-compatible code indexing solution for JavaScript.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mozilla/doctorjs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	source = http://registry.npmjs.org/jsctags/-/jsctags-0.1.0.tgz
+	md5sums = 6b355fcbe918a1522180b56cbd96baef
+
+pkgname = nodejs-jsctags
+
