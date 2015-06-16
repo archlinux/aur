@@ -1,0 +1,17 @@
+pkgbase = perl-lexical-var
+	pkgdesc = static variables without namespace pollution
+	pkgver = 0.007
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lexical-Var
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	depends = perl-lexical-sealrequirehints>=0.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Lexical-Var-0.007.tar.gz
+	md5sums = cba23ac550e0a0ffaa8685cad198936d
+	sha512sums = 281ca88d601d0617b69eb4b0eee7cd33a0717584eaa5b03d3d5dd050c8c0ded20c1584feb9948c96a44fa216ff28d985c7e11eb54ca5ea19009ddbcd42ceea14
+
+pkgname = perl-lexical-var
+
