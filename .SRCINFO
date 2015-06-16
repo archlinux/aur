@@ -1,0 +1,19 @@
+pkgbase = nam
+	pkgdesc = Tcl/TK based animation tool for viewing network simulation traces and real world packet traces
+	pkgver = 1.15
+	pkgrel = 3
+	url = http://www.isi.edu/nsnam/nam/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tclcl
+	depends = gcc-libs
+	depends = otcl
+	depends = sh
+	source = http://downloads.sourceforge.net/sourceforge/nsnam/nam-1/1.15/nam-src-1.15.tar.gz
+	source = nam-1.15-tcl86.patch
+	sha256sums = 12ed547b3a5f8903890889d40cfea4d9bd66bb9ba6be99a0c753a9763cad8882
+	sha256sums = 2766040c6c367a03efa43e81cbe178150fad6f4ee0b2b6d0b87292cb7c0bfe0b
+
+pkgname = nam
+
