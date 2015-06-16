@@ -6,7 +6,7 @@ pkgver=0.10.2
 pkgrel=1
 pkgdesc="A pythonic dependency injection library"
 arch=('any')
-url="https://github.com/tavendo/txaio"
+url="https://github.com/google/pinject"
 license=('APACHE')
 depends=('python>=3.1')
 provides=("${_pkgname}")
