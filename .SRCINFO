@@ -1,0 +1,14 @@
+pkgbase = cottage
+	pkgdesc = Use howm commands, operators and set configuration values through a UNIX socket.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/HarveyHunt/cottage
+	arch = i686
+	arch = x86_64
+	license = GPL
+	checkdepends = linux-headers
+	source = https://github.com/HarveyHunt/cottage/archive/v0.2.tar.gz
+	sha256sums = ba24c1e2a2e365879653b5d824970dd502cc20375710b1cd2208ba7a3a785934
+
+pkgname = cottage
+
