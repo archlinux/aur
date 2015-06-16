@@ -1,0 +1,7 @@
+post_install() {
+echo To find out if it works, after connecting type the following:
+echo \"finger\"
+echo \(without the quotes\)
+echo and if it is enabled at the bottom it will show:
+echo \"Timeseal 1 : On\"
+}

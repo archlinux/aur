@@ -1,0 +1,16 @@
+pkgbase = fics-timeseal
+	pkgdesc = Timeseal support for eboard, xboard, scid and maybe others for playing chess on FICS
+	pkgver = 1
+	pkgrel = 4
+	url = http://www.freechess.org/
+	install = fics-timeseal.install
+	arch = any
+	license = unknown
+	optdepends = eboard: works automagically
+	optdepends = xboard: run fics-xboard-timeseal from a terminal
+	optdepends = scid: before connecting browse and select /usr/bin/timeseal
+	source = http://sourceforge.net/p/scidvspc/code/HEAD/tree/timeseal/timeseal.Linux-i386?format=raw
+	md5sums = b30dd4fafb3ac1c87804e0ab2fc7bdd7
+
+pkgname = fics-timeseal
+
