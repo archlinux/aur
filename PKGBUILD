@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('curl' "vdr-api=${_vdrapi}")
 optdepends=('vlc: Needed for vlc2iptv')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz"
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/3Sat.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Bundesligen-TV.conf'
