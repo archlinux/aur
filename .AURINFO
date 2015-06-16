@@ -1,0 +1,16 @@
+pkgbase = perl-string-camelcase
+	pkgdesc = camelcase, de-camelcase
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/String-CamelCase
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/H/HI/HIO/String-CamelCase-0.02.tar.gz
+	md5sums = 74885aa8756fda9ff039c350214a4c09
+	sha512sums = 51532369a5c8a0d231298a51ecf7a60d303dd896d2bd065f6fa984bd0fcbdfdc8220b205cc808a7e6e78195ab18d410a6ddca8e0f23f1eb23aff75acef089afd
+
+pkgname = perl-string-camelcase
+
