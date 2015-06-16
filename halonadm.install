@@ -1,0 +1,9 @@
+post_install() {
+cat <<End-of-message
+
+    Sample config is located in /usr/lib/python3.4/site-packages/halonadm/halonadm.conf.
+    Copy it to ~/.config/halonadm/halonadm.conf or ~/.halonadm.conf and fill in the
+    needed values.
+
+End-of-message
+}

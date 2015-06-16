@@ -1,0 +1,15 @@
+pkgbase = halonadm
+	pkgdesc = Manage Halon (http://halon.se) SP servers easily
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/loxley/halonadm
+	install = halonadm.install
+	arch = any
+	license = GPLv2
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-suds-jurko
+	source = https://pypi.python.org/packages/source/h/halonadm/halonadm-1.0.0.tar.gz
+
+pkgname = halonadm
+
