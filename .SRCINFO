@@ -1,0 +1,16 @@
+pkgbase = perl-cgi-ex
+	pkgdesc = CGI utility suite - makes powerful application writing fun and easy
+	pkgver = 2.42
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/CGI-Ex
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-template-alloy>=1.016
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.42.tar.gz
+	md5sums = 179f4f70747c955485c13cf1a39f586d
+	sha512sums = 787077760a3a49afda7ea8b7c0382e93451cbecc8598607a9f8d7b433e480ff172467695678168999a8d1098019382eb2bfad800a3af75604cb8a6f0420d481a
+
+pkgname = perl-cgi-ex
+
