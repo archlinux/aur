@@ -1,0 +1,17 @@
+pkgbase = perl-digest-blake
+	pkgdesc = Perl interface to the BLAKE digest algorithm
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-BLAKE
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-BLAKE-0.05.tar.gz
+	md5sums = 1fa7d48cc2d603c651f4a5e0665b8cfa
+	sha512sums = b5963eda6965e19daab4e9b656057c2675bd2d24771f658963ee20ad41cefb59c56e35071bebba6613e66eb64ddb50b72bad6fd63aaf82656fc31d3f4de64dd7
+
+pkgname = perl-digest-blake
+
