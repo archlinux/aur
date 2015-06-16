@@ -1,0 +1,24 @@
+pkgbase = perl-authen-scram
+	pkgdesc = Salted Challenge Response Authentication Mechanism (RFC 5802)
+	pkgver = 0.005
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Authen-SCRAM
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-failwarnings
+	checkdepends = perl-test-fatal
+	depends = perl-authen-sasl-saslprep
+	depends = perl-crypt-urandom
+	depends = perl-moo>=1.001000
+	depends = perl-pbkdf2-tiny>=0.003
+	depends = perl-try-tiny
+	depends = perl-type-tiny
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Authen-SCRAM-0.005.tar.gz
+	md5sums = 8af86d3644704c3abdddc4843ccc61f3
+	sha512sums = 8c183a490eb631e26c22fa19866f12d6e16fedd63169c470d86f6c0ea83df58e5ab2bcb7763455b1a7c179a5c71493dc37f7be2f7431f94f4c6481bd8f808ee5
+
+pkgname = perl-authen-scram
+
