@@ -1,0 +1,20 @@
+pkgbase = perl-file-userconfig
+	pkgdesc = Get a user's existing config directory, or copy in defaults
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-UserConfig
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-file-remove>=1.42
+	depends = perl-extutils-makemaker
+	depends = perl-file-homedir>=0.51
+	depends = perl-file-sharedir>=1.00
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/File-UserConfig-0.06.tar.gz
+	md5sums = 3f65da7bfc7949a4d0c088eeec2a4979
+	sha512sums = becf9b8a89a626c8959844f56df4d5757a2343b252aa9a7bfc9d300e629a69c54be441e24e53c30cabe946535a3224247843cd08ded3c548824e53579a3c21fd
+
+pkgname = perl-file-userconfig
+
