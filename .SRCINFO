@@ -1,0 +1,21 @@
+pkgbase = perl-datetime-event-holiday-us
+	pkgdesc = US Holiday's as DateTime::Set objects
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Event-Holiday-US
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-perl-critic-progressive
+	depends = perl>=5.004
+	depends = perl-datetime-format-ical
+	depends = perl-datetime-set
+	depends = perl-path-class
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AY/AYOUNG/DateTime-Event-Holiday-US-0.02.tar.gz
+	md5sums = 775da534b5fba049b209b2e44a29235f
+	sha512sums = 8f0a6af3dc58afd2215d17dfa814614369c9f1acef1432c4b2ea6e1250c13c961948722bdaeb59b35508b7d2c926d358199b2907c60aa00926c3d7f9cee97ec1
+
+pkgname = perl-datetime-event-holiday-us
+
