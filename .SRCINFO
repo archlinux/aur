@@ -1,0 +1,16 @@
+pkgbase = perl-math-matrix
+	pkgdesc = Multiply and invert Matrices
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-Matrix
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/U/UL/ULPFR/Math-Matrix-0.7.tar.gz
+	md5sums = 3db21136213dbd8ce95997f14ba0cbf8
+	sha512sums = 2d2add7964ab3822f2fbe09267a9ada365d22c35258ecf119985d00c02c6669ece679c6ecc84408a1d3fef4dc1e964946411f08096b3001d99b13a9a640b3576
+
+pkgname = perl-math-matrix
+
