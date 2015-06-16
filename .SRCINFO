@@ -1,0 +1,17 @@
+pkgbase = perl-socket-getaddrinfo
+	pkgdesc = address-family independent name resolving functions
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Socket-GetAddrInfo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-cchecker>=0.06
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Socket-GetAddrInfo-0.22.tar.gz
+	md5sums = 54c0d3a08757a1eeb118c1a5f54f6e1b
+	sha512sums = 3117ad5931dd116f45afa041b7aad4506382c4359b67e61564affba6f34fe14db5dbe0dc0a1bf4c0b680847bda58958604907ff0339d500728b44301cf1fe554
+
+pkgname = perl-socket-getaddrinfo
+
