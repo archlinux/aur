@@ -10,7 +10,7 @@ url="http://www.escape-edv.de/endriss/vdr/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://www.escape-edv.de/endriss/vdr/${pkgname}-${pkgver}.tgz"
         'av7110_ir_vdr_perms.conf'
         '70-remote-device.rules'
