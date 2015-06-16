@@ -1,0 +1,16 @@
+pkgbase = perl-class-std
+	pkgdesc = Support for creating standard "inside-out" classes
+	pkgver = 0.011
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Std
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Class-Std-0.011.tar.gz
+	md5sums = de8ad4f39cc9984595bc219df01ee23b
+	sha512sums = b2387a2873257dcd5cec71850193fe8eee655bc669a951bd87b011cc8ef5637caad8cdc34f2e1daf85f3231905545e68b112380f006a75f9f97f58ef3f8860ec
+
+pkgname = perl-class-std
+
