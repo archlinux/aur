@@ -1,0 +1,15 @@
+pkgbase = perl-anyevent-termkey
+	pkgdesc = terminal key input using libtermkey with AnyEvent
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/AnyEvent-TermKey
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-anyevent
+	depends = perl-term-termkey>=0.08
+	source = http://search.mcpan.org/CPAN/authors/id/P/PE/PEVANS/AnyEvent-TermKey-0.02.tar.gz
+	options = !emptydirs
+
+pkgname = perl-anyevent-termkey
+
