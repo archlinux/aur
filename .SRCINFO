@@ -1,0 +1,16 @@
+pkgbase = perl-test-assertions
+	pkgdesc = a simple set of building blocks for both unit and runtime testing
+	pkgver = 1.054
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Assertions
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-log-trace
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BB/BBC/Test-Assertions-1.054.tar.gz
+	md5sums = 71359868674fd4290bd7d9da407c1cda
+	sha512sums = 79b24ce95e9425240d1d1bb969e93bcce8f6423e87bdf011a2bbd3073daa6762b775dcd8b3b9851d873508868c7cc7cf227036004f71150340e43845456eb398
+
+pkgname = perl-test-assertions
+
