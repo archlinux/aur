@@ -1,0 +1,20 @@
+pkgbase = perl-bson
+	pkgdesc = Pure Perl implementation of MongoDB's BSON serialization
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/BSON
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-datetime
+	makedepends = perl-test-deep
+	depends = perl>=5.008
+	depends = perl-math-int64
+	depends = perl-tie-ixhash
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MINIMAL/BSON-0.11.tar.gz
+	md5sums = fe20da282bc2ca3fcce8d7d2596ae955
+	sha512sums = 197a471a352c902d03ab0ea81d31b2a22f368dd5f6ffbc649e03b1c13e5518a937cb8b0655f8568cc79a66fbf6a398b63616a06067809d6bca891926c272078b
+
+pkgname = perl-bson
+
