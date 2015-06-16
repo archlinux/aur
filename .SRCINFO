@@ -1,0 +1,18 @@
+pkgbase = perl-font-freetype
+	pkgdesc = read font files and render glyphs from Perl using FreeType2
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Font-FreeType
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = freetype2>=2.5.0.1
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GE/GEOFFR/Font-FreeType-0.03.tar.gz
+	md5sums = 47b9483c92f1b2df0bbb5258a6a596b2
+	sha512sums = fb10e09e7ce1a85a23e3d4e4fc6fbcf05a910b61f75117d09f464c1d68f59b624343b079d03b0787df0493f003c80a8e4bf9c72557c2763a39ed9af2deb622cd
+
+pkgname = perl-font-freetype
+
