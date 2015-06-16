@@ -1,0 +1,21 @@
+pkgbase = perl-anymq
+	pkgdesc = Non-blocking message queue system based on AnyEvent
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://search.cpan.org/dist/AnyMQ
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	depends = perl>=5.8.1
+	depends = perl-any-moose
+	depends = perl-anyevent
+	depends = perl-mousex-nativetraits
+	depends = perl-mousex-traits
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLKAO/AnyMQ-0.35.tar.gz
+	md5sums = 7e3662f0a5992820d5868ad3274c2bb0
+	sha512sums = 1007324d60c17e8c16fdfb0c45a6203ded08f1a24428998a4257cc5c9fa202c83aeb827d79dbd5f2e71c7dc027d3030310b236feeb6b5f4cbb0de66e3fd3d738
+
+pkgname = perl-anymq
+
