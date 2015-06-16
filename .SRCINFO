@@ -1,0 +1,16 @@
+pkgbase = perl-regexp-parser
+	pkgdesc = base class for parsing regexes
+	pkgver = 0.21
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Regexp-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Regexp-Parser-0.21.tar.gz
+	md5sums = 8bb8c36d27b9048bb298cfd277ddf4a9
+	sha512sums = b015eb3792cec6529304e75e02852619c1a22796ba9caf2cfdddfb80f740f0c436eae2abc7514a04ccee8d2f260c00de57b1d655ee10c1e9df294aa0a5938556
+
+pkgname = perl-regexp-parser
+
