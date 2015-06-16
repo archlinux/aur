@@ -1,0 +1,17 @@
+pkgbase = perl-audio-ecasound
+	pkgdesc = Perl binding to the ecasound sampler, recorder, fx-processor
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Audio-Ecasound
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWMANBS/Audio-Ecasound-1.01.tar.gz
+	md5sums = dfa32c87cfa1fe8432c94c041acd4b09
+	sha512sums = 1201ca722d6810263c3356fa714c9b19e25203118462b34b3114d5f42ec74c4b21ba7dc84ad5f72d6271b3f7bc6ed39aee1103b6d581f89c8ae9fd96c83941f6
+
+pkgname = perl-audio-ecasound
+
