@@ -1,0 +1,22 @@
+pkgbase = perl-ppix-editortools
+	pkgdesc = Utility methods and base class for manipulating Perl via PPI
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/PPIx-EditorTools
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-nowarnings>=0.084
+	makedepends = perl-test-most
+	depends = perl-class-xsaccessor>=1.02
+	depends = perl-ppi>=1.215
+	depends = perl-try-tiny>=0.11
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SZ/SZABGAB/PPIx-EditorTools-0.19.tar.gz
+	md5sums = 8ceaa3b9c8b2a5d3b601f99be4afe0f2
+	sha512sums = 363ca55cc4c03ed2a672ea2429c09656a567450f2be47f3c8f42ae0ac3c14c9d7b99660f61f7cba61dbe94680ee1663d77c9415965e444449b2489e3a2c18faa
+
+pkgname = perl-ppix-editortools
+
