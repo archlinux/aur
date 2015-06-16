@@ -1,0 +1,16 @@
+pkgbase = perl-mp3-tag
+	pkgdesc = Module for reading tags of MP3 audio files
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MP3-Tag
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.13.tar.gz
+	md5sums = 1eea17c9c8a03433634eb37fc16311d3
+	sha512sums = 3dcdc186d8e2f00fc474eccadb755058fcba6cb80637c87d8565981f073bb19fa867a755de7423e3d58393bc730fe85f601f63dd928f4fe27a9fe9b80f63bfc3
+
+pkgname = perl-mp3-tag
+
