@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Terrafire
+Comment=Award-winning arcade game featuring rendered 3D graphics, realistic gravitational physics and 360 degree parallax scrolling.
+TryExec=terrafire
+Exec=terrafire
+Icon=terrafire
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;

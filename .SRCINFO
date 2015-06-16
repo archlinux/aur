@@ -1,0 +1,19 @@
+pkgbase = terrafire
+	pkgdesc = Award-winning arcade game featuring rendered 3D graphics, realistic gravitational physics and 360 degree parallax scrolling from ORT Software.
+	pkgver = 2.0
+	pkgrel = 7
+	url = http://www.ortsoftware.com/tf.html
+	arch = i686
+	arch = x86_64
+	license = freeware
+	makedepends = innoextract
+	makedepends = imagemagick
+	depends = dosbox
+	provides = terrafire
+	source = terrafire.desktop
+	source = http://www.ortsoftware.com/tf_full.exe
+	md5sums = c144a31089faabfe183fff15a0c3b373
+	md5sums = cf078359a989aca11f85ddd3aca9276b
+
+pkgname = terrafire
+
