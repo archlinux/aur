@@ -1,0 +1,16 @@
+pkgbase = perl-mail-sender
+	pkgdesc = module for sending mails with attachments through an SMTP server
+	pkgver = 0.8.23
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Mail-Sender
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/J/JE/JENDA/Mail-Sender-0.8.23.tar.gz
+	md5sums = c80bb35cb2fee79d7421153bfefdcf60
+	sha512sums = e9c2e2806976aaea568885f41ff774b9cb460707123c0926ed20428b00a9e9db796d67dca938dc16463eeb8e1c92f8e82ba60c92bc053c20d5570d5604df651c
+
+pkgname = perl-mail-sender
+
