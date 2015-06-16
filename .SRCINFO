@@ -1,0 +1,14 @@
+pkgbase = jmeter-plugins-extraslib
+	pkgdesc = Additional plugins that do require additional libs to run.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://jmeter-plugins.org/
+	arch = any
+	license = APACHE
+	depends = jmeter>=2.10
+	options = !strip
+	source = http://jmeter-plugins.org/downloads/file/JMeterPlugins-ExtrasLibs-1.2.1.zip
+	md5sums = 045820f082a3ce17076db7c20884420a
+
+pkgname = jmeter-plugins-extraslib
+
