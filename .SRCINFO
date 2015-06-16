@@ -1,0 +1,21 @@
+pkgbase = perl-poe-filter-xml
+	pkgdesc = XML parsing for the POE framework
+	pkgver = 1.140700
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/POE-Filter-XML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose
+	depends = perl-moosex-insideout
+	depends = perl-moosex-nonmoose
+	depends = perl-poe
+	depends = perl-xml-libxml
+	depends = perl-xml-sax-base
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/N/NP/NPEREZ/POE-Filter-XML-1.140700.tar.gz
+	md5sums = 84cb678f898cd8c2383a864ae69dd8f2
+	sha512sums = d6a6321a35ac38086ebc6f8fe099b3d273e6bdcabe457e5644d1da2802d0e821257f2304206b2db87676f7a58acbdf0a6eb9cf0aad848a7b6c725733bce18f4f
+
+pkgname = perl-poe-filter-xml
+
