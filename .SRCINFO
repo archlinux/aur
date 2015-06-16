@@ -1,0 +1,20 @@
+pkgbase = perl-video-framegrab
+	pkgdesc = Grab a frame or metadata from a video
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Video-FrameGrab
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime>=0.47
+	depends = perl-datetime-format-duration>=1.03
+	depends = perl-imager>=0.7
+	depends = perl-log-log4perl>=1.0
+	depends = perl-sysadm-install>=0.17
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/Video-FrameGrab-0.07.tar.gz
+	md5sums = 0f6297ac0e957b911eae9a65d2f03ce2
+	sha512sums = 71c3a011dd388742e917654fc169c1e06726a5d4e63e65334527ffe5518e2e6198e1843d7b862b2f46ba49216d65b2e88a1729c2a9115f847f448e276f2242f6
+
+pkgname = perl-video-framegrab
+
