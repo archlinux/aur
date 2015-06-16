@@ -1,0 +1,19 @@
+pkgbase = perl-dbicx-testdatabase
+	pkgdesc = create a temporary database from a DBIx::Class::Schema
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBICx-TestDatabase
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-dbix-class>=0
+	makedepends = perl-test-use-ok>=0
+	depends = perl-dbd-sqlite>=1.29
+	depends = perl-sql-translator>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JR/JROCKWAY/DBICx-TestDatabase-0.05.tar.gz
+	md5sums = a022f7e4ae5dfebcb246a7903ad0aa6a
+	sha512sums = df17c75594998e4a17b284d5c20809019f31e5ab20dd354e2d7e159d1d76554e3c08bd1797277b9909efe8ecd10aa82b606b325e1759258521c7e3cd5995c2c1
+
+pkgname = perl-dbicx-testdatabase
+
