@@ -1,0 +1,20 @@
+pkgbase = perl-image-grab
+	pkgdesc = Perl extension for Grabbing images off the Internet.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Image-Grab
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-parser
+	depends = perl-html-tree
+	depends = perl-http-cookies
+	depends = perl-libwww
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MAHEX/Image-Grab-1.4.2.tar.gz
+	md5sums = 8a62dcff23997e525f7557451f5758dd
+	sha512sums = fce76dd733f25058222ab31ed14ac0d00e2e34a98822647c1089fa3945369ac84ab3f214e18f739f428510cbf961150f17fe6c911185c5eccc1e0da3b821a9de
+
+pkgname = perl-image-grab
+
