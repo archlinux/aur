@@ -1,0 +1,21 @@
+pkgbase = clutter-perl-svn
+	pkgdesc = Perl bindings for Clutter
+	pkgver = 3165
+	pkgrel = 1
+	url = http://clutter-project.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
+	depends = clutter-svn
+	depends = clutter-gst-svn
+	depends = clutter-cairo-svn
+	depends = clutter-gtk-svn
+	depends = gtk2-perl
+	depends = perl-gstreamer
+	provides = clutter-perl
+	conflicts = clutter-perl
+
+pkgname = clutter-perl-svn
+
