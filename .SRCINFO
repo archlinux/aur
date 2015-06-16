@@ -1,0 +1,16 @@
+pkgbase = perl-date-ical
+	pkgdesc = Perl extension for ICalendar date objects.
+	pkgver = 2.678
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Date-ICal
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-date-leapyear>=1.03
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RB/RBOW/Date-ICal-2.678.tar.gz
+	md5sums = 10a1d4ad6b941e91dd83748fefdbff5b
+	sha512sums = 317d793ed058b8cc21090f681f44e19c91282ad29b7c3fd0c2d2ee1bce66244b402ada90ea8c63d4bd25f5c9a5f5984257cbe700cd1d852e799232e421b77fe4
+
+pkgname = perl-date-ical
+
