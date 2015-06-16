@@ -1,0 +1,18 @@
+pkgbase = perl-config-json
+	pkgdesc = A JSON based config file system.
+	pkgver = 1.5100
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Config-JSON
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-deep>=0.095
+	depends = perl-any-moose>=0.13
+	depends = perl-json>=2.16
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RI/RIZEN/Config-JSON-1.5100.tar.gz
+	md5sums = 26918705ca68a635d391e4d809a78e3b
+	sha512sums = 09de924b251e14e98602dd1db74e09e975b0a6c4d0ddfb9a5ed3d32198f206ad51b79061e6f05122507baab45123379bfb589add17d7f2e0fab16ac71a2ce0f8
+
+pkgname = perl-config-json
+
