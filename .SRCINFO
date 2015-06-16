@@ -1,0 +1,16 @@
+pkgbase = pidgin-gnome-keyring
+	pkgdesc = Pidgin plugin for Gnome-Keyring integration
+	pkgver = 2.0
+	pkgrel = 2
+	url = https://github.com/aebrahim/pidgin-gnome-keyring/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = pidgin
+	depends = libsecret
+	depends = gnome-keyring
+	source = https://github.com/aebrahim/pidgin-gnome-keyring/archive/2.0.tar.gz
+	md5sums = 065d5a0c639dcc7466d2f02b6982f75f
+
+pkgname = pidgin-gnome-keyring
+
