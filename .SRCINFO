@@ -1,0 +1,14 @@
+pkgbase = jmeter-plugins-standard
+	pkgdesc = Basic plugins for everyday needs.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://jmeter-plugins.org/
+	arch = any
+	license = APACHE
+	depends = jmeter>=2.10
+	options = !strip
+	source = http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-1.2.1.zip
+	md5sums = 7aea7cf210028d6b236cef935b12ec88
+
+pkgname = jmeter-plugins-standard
+
