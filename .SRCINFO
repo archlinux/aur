@@ -1,0 +1,14 @@
+pkgbase = qisousb
+	pkgdesc = A graphical Qt tool to copy a hybrid ISO onto a USB key.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://forum.manjaro.org/index.php?topic=3682
+	arch = any
+	license = GPL
+	depends = qarma-git
+	depends = gksu
+	source = qisousb-1.1.tar.gz
+	sha1sums = b688ceec5f1a745e941b76d88e77a0e68b7136cc
+
+pkgname = qisousb
+
