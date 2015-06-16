@@ -1,0 +1,20 @@
+pkgbase = osvr-tracker-viewer-git
+	pkgdesc = Utility for viewing tracker (pose, position, orientation) data from the OSVR framework.
+	pkgver = r26.2115743
+	pkgrel = 1
+	url = https://github.com/OSVR/OSVR-Tracker-Viewer
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	depends = osvr-core-git
+	depends = openscenegraph
+	source = osvr-tracker-viewer::git+https://github.com/OSVR/OSVR-Tracker-Viewer.git
+	source = https://raw.githubusercontent.com/rpavlik/cmake-modules/master/FindMarkdown.cmake
+	source = https://raw.githubusercontent.com/rpavlik/cmake-modules/master/UseMarkdown.cmake
+	md5sums = SKIP
+	md5sums = 891ee26fa081a1305df71c8e2f00e456
+	md5sums = f0c88e585789807e8aa1c50b4a8c14b5
+
+pkgname = osvr-tracker-viewer-git
+
