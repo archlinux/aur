@@ -1,0 +1,18 @@
+pkgbase = perl-ima-dbi
+	pkgdesc = Database connection caching and organization
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Ima-DBI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-data-inheritable>=0.02
+	depends = perl-dbi>=1.2
+	depends = perl-dbix-contextualfetch>=1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERRIN/Ima-DBI-0.35.tar.gz
+	md5sums = f3c5c0b1fe509556ca35f08aae91b3f5
+	sha512sums = 9ccf86b440d0969fc6ebbc5d66db0edbff680eaac33d64d75954b5c6a669219ba8a37cb4914aa8f495e96e990c337f550a439e111ec2278fa133956773b55678
+
+pkgname = perl-ima-dbi
+
