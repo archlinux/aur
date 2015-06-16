@@ -1,0 +1,20 @@
+pkgbase = pentadactyl-git
+	pkgdesc = Vim-like five-fingered interface for Firefox
+	pkgver = r7111.aca9da8
+	pkgrel = 2
+	url = http://dactyl.sourceforge.net/pentadactyl
+	arch = any
+	license = MIT
+	makedepends = coreutils
+	makedepends = git
+	makedepends = sh
+	makedepends = zip
+	makedepends = unzip
+	optdepends = firefox
+	provides = pentadactyl
+	conflicts = pentadactyl
+	source = pentadactyl::git+https://github.com/5digits/dactyl.git
+	md5sums = SKIP
+
+pkgname = pentadactyl-git
+
