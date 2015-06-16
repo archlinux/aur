@@ -1,0 +1,14 @@
+pkgbase = ddwarf
+	pkgdesc = Digger Dwarf is a console-based gopher client
+	pkgver = 0.83
+	pkgrel = 2
+	url = http://www.viste-family.net/mateusz/software/ddwarf/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = freebasic
+	source = http://www.viste-family.net/mateusz/software/ddwarf/ddwarf083-src.zip
+	sha256sums = 03b6acdd16bcc44bf36e38ba8aab5fa21509703422c0c0b9c8cd466dadcee5a5
+
+pkgname = ddwarf
+
