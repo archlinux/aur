@@ -1,0 +1,16 @@
+pkgbase = perl-json-pp
+	pkgdesc = JSON::XS compatible pure-Perl module.
+	pkgver = 2.27202
+	pkgrel = 1
+	url = http://search.cpan.org/dist/JSON-PP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/JSON-PP-2.27202.tar.gz
+	md5sums = d7d6cbd3589e793aaa66a88833c02ce0
+	sha512sums = e8374a30e107f02c1226d33fb5cf063142a9c26445fed0acf0d56de901b4be007af75f1a90578568d0eb25301c8ee5eb963a7b29b6dcd4bad421d980b485d211
+
+pkgname = perl-json-pp
+
