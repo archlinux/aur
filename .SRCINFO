@@ -1,0 +1,19 @@
+pkgbase = xgraph
+	pkgdesc = X-Windows application for interactive plotting and graphing
+	pkgver = 12.1
+	pkgrel = 5
+	url = http://www.isi.edu/nsnam/xgraph/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = ttf-dejavu
+	source = http://www.isi.edu/nsnam/dist/xgraph-12.1.tar.gz
+	source = gcc4.4.diff
+	source = xgraph-12.1-replace-helvetica-with-dejavu.patch
+	sha256sums = 0aa17d3fa3abfa8b6679fc26812a988332a2a0f1f48973d17429089015672b08
+	sha256sums = cda2660d2c92b5dfe18571914364c1e4eccd1b35439fddcfe94be7321aafdfc9
+	sha256sums = 0eb5c0e591d637b9318065abd72b588a50aaa7cce7c772f286a4c4683f831a26
+
+pkgname = xgraph
+

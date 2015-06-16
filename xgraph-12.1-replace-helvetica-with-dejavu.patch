@@ -1,0 +1,15 @@
+diff --git a/init.c b/init.c
+index ff560cf..32b3450 100644
+--- a/init.c
++++ b/init.c
+@@ -63,8 +63,8 @@ static char rcsid[] = "$Id: init.c,v 1.2 1999/12/19 00:52:06 heideman Exp $";
+ #define DEF_LINE_WIDTH		"0"
+ #define DEF_GRID_SIZE		"0"
+ #define DEF_GRID_STYLE		"10"
+-#define DEF_LABEL_FONT		"helvetica-10"
+-#define DEF_TITLE_FONT		"helvetica-18"
++#define DEF_LABEL_FONT		"dejavu-10"
++#define DEF_TITLE_FONT		"dejavu-18"
+ #define DEF_GEOMETRY		""
+ #define DEF_REVERSE		"off"
+ /* PW Changes these to please JM */

@@ -1,0 +1,35 @@
+diff -aur xgraph-12.1.orig/dialog.c xgraph-12.1.new/dialog.c
+--- xgraph-12.1.orig/dialog.c	2009-06-16 20:27:46.000000000 +0200
++++ xgraph-12.1.new/dialog.c	2009-06-16 20:32:30.000000000 +0200
+@@ -777,7 +777,7 @@
+     memset(new_info->lines, 0, sizeof(Window) * E_LINES);
+ 
+     lineptr = text;
+-    while (getline(&lineptr, line)) {
++    while (xgraph_getline(&lineptr, line)) {
+ 	if (new_info->num_lines >= new_info->alloc_lines) {
+ 	    int old_alloc_lines_size = new_info->alloc_lines * sizeof(Window);
+ 	    new_info->alloc_lines *= 2;
+@@ -884,11 +884,11 @@
+     else
+ 	fputs(err_text, stderr);
+ }
+-
++
+ 
+ 
+ int 
+-getline(tptr, lptr)
++xgraph_getline(tptr, lptr)
+ char  **tptr;
+ char   *lptr;
+ 
+@@ -914,7 +914,7 @@
+ 	return 0;
+     }
+ }
+-
++
+ 
+ 
+ static void 
