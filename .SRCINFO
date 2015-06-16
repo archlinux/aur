@@ -1,0 +1,16 @@
+pkgbase = perl-cpanplus-dist-deb
+	pkgdesc = CPANPLUS plugin to create debian packages on the fly
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPANPLUS-Dist-Deb
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-yaml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KANE/CPANPLUS-Dist-Deb-0.12.tar.gz
+	md5sums = 63395c87a42a292cd9291a3665194de8
+	sha512sums = 7006df15f5b566cd82f1bd34c2eaef1572aa3eb0c1fb4c20d9ad2b160e561377dc456dc1951d92ca76e18784d1696032dc3780dc4bf09d789f9574e067de059d
+
+pkgname = perl-cpanplus-dist-deb
+
