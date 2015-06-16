@@ -1,0 +1,16 @@
+pkgbase = perl-www-mechanize-gzip
+	pkgdesc = tries to fetch webpages with gzip-compression
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Mechanize-GZip
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-www-mechanize>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEGI/WWW-Mechanize-GZip-0.12.tar.gz
+	md5sums = c3475fcff561629dddbd25b9db611e49
+	sha512sums = 056e9230660f4de922c02001cbc072ddd724d6d07ddaa602a6e0f4b1faded504777322d139fc5d2c1903378f6ef27019404dd02b4a279e931171faff682a728c
+
+pkgname = perl-www-mechanize-gzip
+
