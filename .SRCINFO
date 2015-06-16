@@ -1,0 +1,21 @@
+pkgbase = perl-app-basis
+	pkgdesc = Basis for simple applications
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/App-Basis
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-homedir
+	depends = perl-moo
+	depends = perl-path-tiny
+	depends = perl-try-tiny
+	depends = perl-yaml-libyaml
+	depends = perl>=5.014
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MO/MOODFARM/App-Basis-1.0.tar.gz
+	md5sums = 4e370f079b9837601b516538dbe97357
+	sha512sums = fea71861fe61124e06eb47a8b0b66f38ec183e8c11b852d1121b26a740dbff849d71d7aa1efd3a7aad99679225839692374d93c7709d8d49ebb7fce0e24dc94a
+
+pkgname = perl-app-basis
+
