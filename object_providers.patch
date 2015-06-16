@@ -1,0 +1,19 @@
+*** python-pinject/pinject/object_providers.py	2014-12-29 14:46:40.610002925 +0100
+--- ../python-pinject/pinject/object_providers.py	2014-12-29 14:44:34.350002941 +0100
+***************
+*** 61,67 ****
+  
+      def provide_class(self, cls, injection_context,
+                        direct_init_pargs, direct_init_kwargs):
+!         if type(cls.__init__) is types.MethodType or type(cls.__init__) is types.FunctionType:
+              init_pargs, init_kwargs = self.get_injection_pargs_kwargs(
+                  cls.__init__, injection_context,
+                  direct_init_pargs, direct_init_kwargs)
+--- 61,67 ----
+  
+      def provide_class(self, cls, injection_context,
+                        direct_init_pargs, direct_init_kwargs):
+!         if type(cls.__init__) is types.MethodType:
+              init_pargs, init_kwargs = self.get_injection_pargs_kwargs(
+                  cls.__init__, injection_context,
+                  direct_init_pargs, direct_init_kwargs)

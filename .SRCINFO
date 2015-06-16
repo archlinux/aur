@@ -1,0 +1,17 @@
+pkgbase = python-pinject
+	pkgdesc = A pythonic dependency injection library
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/tavendo/txaio
+	arch = any
+	license = APACHE
+	depends = python>=3.1
+	provides = python-pinject
+	conflicts = python-pinject
+	source = https://github.com/google/pinject/archive/v0.10.2.tar.gz
+	source = object_providers.patch
+	md5sums = ec41fb4da9ddcbf798722d7e660e8d6a
+	md5sums = b395777fa022cf684cb0e7e49e88e6a0
+
+pkgname = python-pinject
+
