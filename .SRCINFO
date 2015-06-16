@@ -1,0 +1,19 @@
+pkgbase = perl-plack-middleware-consolelogger
+	pkgdesc = Write logs to Firebug or Webkit Inspector
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Plack-Middleware-ConsoleLogger
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	depends = perl>=5.8.1
+	depends = perl-javascript-value-escape
+	depends = perl-plack>=0.99
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-ConsoleLogger-0.04.tar.gz
+	md5sums = 849e47d0a3fc832563e7c7d4026ab6fd
+	sha512sums = b559b12a920189029f9e467d4a82aca8abee14bd6662b6586aaafa056133a49cbaf0ad79935ac74746025f39b33856b38ddc2fdec86ad67815d88090fe8cbaab
+
+pkgname = perl-plack-middleware-consolelogger
+
