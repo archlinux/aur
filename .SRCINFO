@@ -1,0 +1,17 @@
+pkgbase = perl-newt
+	pkgdesc = Perl bindings for RedHat newt library
+	pkgver = 1.08
+	pkgrel = 5
+	url = http://search.cpan.org/dist/Newt
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AM/AMEDINA/Newt-1.08.tar.gz
+	md5sums = 462f3fabc05ec5dd4a2d554c01568bdf
+	sha512sums = 98460f314c03cb9e4bf0d81ff178319a28b2fcba70daff2ce05c0c25abf26da4a5e7e4947361d2c849abbf7ffdab2f0e9f19f7c9174ff9018141f9ccd2b38b04
+
+pkgname = perl-newt
+
