@@ -1,0 +1,47 @@
+pkgbase = perl-task-catalyst
+	pkgdesc = All you need to start with Catalyst
+	pkgver = 4.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Task-Catalyst
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-www-mechanize-catalyst
+	depends = perl-catalyst-action-rest
+	depends = perl-catalyst-actionrole-acl
+	depends = perl-catalyst-authentication-credential-http
+	depends = perl-catalyst-authentication-store-dbix-class
+	depends = perl-catalyst-component-instancepercontext
+	depends = perl-catalyst-controller-actionrole
+	depends = perl-catalyst-devel>=1.26
+	depends = perl-catalyst-manual>=5.80
+	depends = perl-catalyst-model-adaptor
+	depends = perl-catalyst-model-dbic-schema
+	depends = perl-catalyst-plugin-authentication
+	depends = perl-catalyst-plugin-configloader
+	depends = perl-catalyst-plugin-i18n
+	depends = perl-catalyst-plugin-session
+	depends = perl-catalyst-plugin-session-state-cookie
+	depends = perl-catalyst-plugin-session-store-dbic
+	depends = perl-catalyst-plugin-session-store-file
+	depends = perl-catalyst-plugin-stacktrace
+	depends = perl-catalyst-plugin-static-simple
+	depends = perl-catalyst-runtime
+	depends = perl-catalyst-view-email
+	depends = perl-catalyst-view-tt
+	depends = perl-catalystx-component-traits
+	depends = perl-catalystx-leakchecker
+	depends = perl-catalystx-profile
+	depends = perl-catalystx-repl
+	depends = perl-catalystx-simplelogin
+	depends = perl-fcgi
+	depends = perl-fcgi-procmanager
+	depends = perl-local-lib
+	depends = perl-starman
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Task-Catalyst-4.02.tar.gz
+	md5sums = 34719bd8b82392e01bd06388241cd72f
+	sha512sums = 5874d2dffdec143482549196f0bae20d3cc2bd2344ff69ee9f1daf5cd9145addf94dcbaad3ca353d7025cbdff2b59bc1c8095a3c74e98a030f6a1c8ea4f40f13
+
+pkgname = perl-task-catalyst
+
