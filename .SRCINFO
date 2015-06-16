@@ -1,0 +1,16 @@
+pkgbase = perl-dns-zoneedit
+	pkgdesc = Update your ZoneEdit dynamic DNS records
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DNS-ZoneEdit
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EG/EGILES/DNS-ZoneEdit-1.1.tar.gz
+	md5sums = a159edf49d8ffff980923ee5f150a203
+	sha512sums = 2ece9ee481813851982ddc730d54f82843afe2c13500d21fbb6dcfa0c150654d2f88bf5d7ad39f0d2b61498eb3e8dcdd9ecffb2ceadc82ac2a828ec0a48d5f82
+
+pkgname = perl-dns-zoneedit
+
