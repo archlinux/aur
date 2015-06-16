@@ -1,0 +1,18 @@
+pkgbase = perl-declare-constraints-simple
+	pkgdesc = Declarative Validation of Data Structures
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Declare-Constraints-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-aliased
+	depends = perl-carp-clan
+	depends = perl-class-inspector
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHAYLON/Declare-Constraints-Simple-0.03.tar.gz
+	md5sums = abcd5e9f2dd034deed975601b38d684e
+	sha512sums = acf34e8ce62b5abbd59b03d67bf91474565a32048aab84440c5895c2acde2561dab773c124e9b26ef6f25c87804ec38db73e0eb08ed9626cabdd86cb5f38de7a
+
+pkgname = perl-declare-constraints-simple
+
