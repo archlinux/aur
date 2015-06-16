@@ -1,0 +1,15 @@
+pkgbase = xping-git
+	pkgdesc = A simple ping program continiously probing multiple hosts using icmp-echo
+	pkgver = 20150222
+	pkgrel = 1
+	url = https://github.com/martintopholm/xping
+	install = xping.install
+	arch = any
+	license = THE BEER-WARE LICENSE
+	depends = libevent
+	conflicts = xping
+	source = git://github.com/martintopholm/xping.git
+	md5sums = SKIP
+
+pkgname = xping-git
+
