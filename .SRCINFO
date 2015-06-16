@@ -1,8 +1,8 @@
 pkgbase = castawesome
 	pkgdesc = A GUI frontend for ffmpeg livestreaming
 	pkgver = 0.15.1
-	pkgrel = 3
-	url = http://sourceforge.net/projects/castawesome/
+	pkgrel = 4
+	url = https://github.com/TheSamsai/Castawesome
 	arch = any
 	license = GPL3
 	depends = ffmpeg
