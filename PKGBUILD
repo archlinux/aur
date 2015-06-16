@@ -1,0 +1,50 @@
+# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Generator  : CPANPLUS::Dist::Arch 1.25
+
+pkgname='perl-crypt-rsa'
+pkgver='1.99'
+pkgrel='1'
+pkgdesc="RSA public-key cryptosystem."
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-class-loader>=2.00' 'perl-convert-ascii-armour' 'perl-crypt-blowfish' 'perl-crypt-cbc' 'perl-crypt-primes>=0.38' 'perl-crypt-random>=0.34' 'perl-data-buffer' 'perl-digest-md2' 'perl-digest-sha1' 'perl-math-pari>=2.001804' 'perl-sort-versions' 'perl-tie-encryptedhash')
+makedepends=()
+url='http://search.cpan.org/dist/Crypt-RSA'
+source=('http://search.cpan.org/CPAN/authors/id/V/VI/VIPUL/Crypt-RSA-1.99.tar.gz')
+md5sums=('f675a07810d735e99d7894338aba8e87')
+sha512sums=('69426a3bd8b0d803926ac71b78952a4240831ab6202eae1d9cf1ce6f7c921e74442604f397a65f74d567629d3b2d56587aa8ca62700a458174640b02a05cff6b')
+_distdir="Crypt-RSA-1.99"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
