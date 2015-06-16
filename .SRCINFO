@@ -1,0 +1,13 @@
+pkgbase = moderntimeline
+	pkgdesc = Timeline for the moderncv latex class
+	pkgver = 20150306
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/moderntimeline
+	arch = any
+	license = GPL
+	depends = texlive-latexextra
+	source = http://mirror.ctan.org/macros/latex/contrib/moderntimeline.zip
+	md5sums = c92231ed0239a9e30f271cc25e9123c7
+
+pkgname = moderntimeline
+
