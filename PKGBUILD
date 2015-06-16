@@ -1,5 +1,5 @@
 pkgname=hmat-oss
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A hierarchical matrix C/C++ library"
 license=('GPL')
@@ -8,7 +8,7 @@ url="https://github.com/jeromerobert/hmat-oss"
 depends=('cblas' 'lapack')
 makedepends=('cmake')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
-md5sums=('b4525676859f005f64e8d708356e404a')
+md5sums=('ef9aed3c53bf5b52802293f242f890a1')
 
 build() {
   cd $pkgname-$pkgver
