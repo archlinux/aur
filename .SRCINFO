@@ -1,0 +1,17 @@
+pkgbase = perl-mixin-linewise
+	pkgdesc = write your linewise code for handles; this does the rest
+	pkgver = 0.106
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Mixin-Linewise
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-perlio-utf8-strict
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Mixin-Linewise-0.106.tar.gz
+	md5sums = d4699cde97d8286f44624c1d19663334
+	sha512sums = 976b139528f728c36ed865fd31430084f24522fc3fada3c4be1beaced2f05ffce09a2e996a3f4e1aade91e3264df81d8de2eafe56ec806d5d3f22446ce6d45c8
+
+pkgname = perl-mixin-linewise
+
