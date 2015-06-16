@@ -8,16 +8,16 @@ arch=('x86_64')
 url="http://mercuryex.com/"
 license=('MIT')
 depends=('bash' 'java-openjfx')
-source_x86_64=("https://github.com/mappum/mercury/releases/download/0.0.2-alpha/MercuryWallet-0.0.2.jar"
-	"mercuryex.sh"
+source=( "mercuryex.sh"
 	"LICENSE.md"
   "mercuryex.png"
   "mercuryex.desktop")
-md5sums_x86_64=('90924d0f61c66e26c413100b1c18424d'
-                '4ce1d64a3c152cc85b99398b1afbe216'
-                '6b88abfd948fb39633c620b58c1f90c2'
-                '013d2867c255082cef02fae79b875e44'
-                '60a827b7da9b0638b9978b9964356611')
+source_x86_64=("https://github.com/mappum/mercury/releases/download/0.0.2-alpha/MercuryWallet-0.0.2.jar")
+md5sums=('4ce1d64a3c152cc85b99398b1afbe216'
+         '6b88abfd948fb39633c620b58c1f90c2'
+         '013d2867c255082cef02fae79b875e44'
+         '60a827b7da9b0638b9978b9964356611')
+md5sums_x86_64=('90924d0f61c66e26c413100b1c18424d')
 
 package() {
   install -D -m755 "mercuryex.sh" "${pkgdir}/usr/bin/mercuryex"

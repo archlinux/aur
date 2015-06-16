@@ -7,16 +7,16 @@ pkgbase = mercuryex
 	license = MIT
 	depends = bash
 	depends = java-openjfx
+	source = mercuryex.sh
+	source = LICENSE.md
+	source = mercuryex.png
+	source = mercuryex.desktop
+	md5sums = 4ce1d64a3c152cc85b99398b1afbe216
+	md5sums = 6b88abfd948fb39633c620b58c1f90c2
+	md5sums = 013d2867c255082cef02fae79b875e44
+	md5sums = 60a827b7da9b0638b9978b9964356611
 	source_x86_64 = https://github.com/mappum/mercury/releases/download/0.0.2-alpha/MercuryWallet-0.0.2.jar
-	source_x86_64 = mercuryex.sh
-	source_x86_64 = LICENSE.md
-	source_x86_64 = mercuryex.png
-	source_x86_64 = mercuryex.desktop
 	md5sums_x86_64 = 90924d0f61c66e26c413100b1c18424d
-	md5sums_x86_64 = 4ce1d64a3c152cc85b99398b1afbe216
-	md5sums_x86_64 = 6b88abfd948fb39633c620b58c1f90c2
-	md5sums_x86_64 = 013d2867c255082cef02fae79b875e44
-	md5sums_x86_64 = 60a827b7da9b0638b9978b9964356611
 
 pkgname = mercuryex
 
