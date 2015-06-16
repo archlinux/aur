@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('graphicsmagick' "vdr-api=${_vdrapi}")
 makedepends=('git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-text2skin.git#commit=$_gitver"
         'text2skin-vdr2.1.2compat.diff'
         'patch-1' 'patch-2' 'patch-3' 'patch-4'
