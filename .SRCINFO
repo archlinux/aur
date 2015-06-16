@@ -1,0 +1,15 @@
+pkgbase = pideo
+	pkgdesc = A simple script to play videos from storage devices in your RPi.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://github.com/darkhogg/piplay
+	arch = any
+	license = GPL3
+	depends = udevil
+	depends = udisks2
+	depends = subliminal-git
+	source = pideo
+	md5sums = 8edb114a9de906a2b21480d9b7aefecf
+
+pkgname = pideo
+
