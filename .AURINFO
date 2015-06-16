@@ -1,0 +1,19 @@
+pkgbase = perl-dist-zilla-plugin-test-distmanifest
+	pkgdesc = Release tests for the manifest
+	pkgver = 2.000004
+	pkgrel = 8675309
+	url = http://search.mcpan.org/dist/Dist-Zilla-Plugin-Test-DistManifest
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-distmanifest
+	checkdepends = perl-test-output
+	depends = perl-capture-tiny
+	depends = perl-dist-zilla
+	depends = perl-moose
+	depends = perl-moose-autobox
+	source = http://search.mcpan.org/CPAN/authors/id/D/DO/DOHERTY/Dist-Zilla-Plugin-Test-DistManifest-2.000004.tar.gz
+	options = !emptydirs
+
+pkgname = perl-dist-zilla-plugin-test-distmanifest
+
