@@ -1,0 +1,15 @@
+pkgbase = screenchange-git
+	pkgdesc = simplify access to xrandr and be able to quickly expand your desktop
+	pkgver = v8
+	pkgrel = 1
+	url = https://github.com/greenify/screenchange
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xorg-xrandr
+	depends = bash
+	source = git+https://github.com/greenify/screenchange.git
+	md5sums = SKIP
+
+pkgname = screenchange-git
+
