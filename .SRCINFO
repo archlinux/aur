@@ -1,0 +1,16 @@
+pkgbase = perl-lingua-en-inflect-number
+	pkgdesc = Force number of words to singular or plural
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-EN-Inflect-Number
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-lingua-en-inflect
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SI/SIMON/Lingua-EN-Inflect-Number-1.1.tar.gz
+	md5sums = bcee940ef603da93e7da11d8eecad409
+	sha512sums = bc64ddd4ccaa5b435450f018a9547403e24c2ef017a977fd891258643f6b331368825cdc1aeda58fc59c5803b888cba4b6954c1081aecace3c96cc24d0edae63
+
+pkgname = perl-lingua-en-inflect-number
+
