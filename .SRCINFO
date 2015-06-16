@@ -1,0 +1,16 @@
+pkgbase = perl-music-chord-positions
+	pkgdesc = generate various chord inversions and voicings
+	pkgver = 0.63
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Music-Chord-Positions
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-music-chord-note
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMATES/Music-Chord-Positions-0.63.tar.gz
+	md5sums = a9d604256f7cf08d2785ddd4684f82b6
+
+pkgname = perl-music-chord-positions
+
