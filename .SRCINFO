@@ -1,7 +1,7 @@
 pkgbase = geis
 	pkgdesc = Implementation of the GEIS (Gesture Engine Interface and Support) interface.
 	pkgver = 2.2.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/geis
 	arch = i686
 	arch = x86_64

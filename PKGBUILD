@@ -3,7 +3,7 @@
 
 pkgname=geis
 pkgver=2.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the GEIS (Gesture Engine Interface and Support) interface."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/geis"
