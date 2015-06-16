@@ -1,0 +1,22 @@
+pkgbase = vmd
+	pkgdesc = Visual Molecular Dynamics
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://www.ks.uiuc.edu/Research/vmd/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	depends = tcsh
+	depends = perl
+	depends = libxi
+	depends = tcl
+	depends = libxinerama
+	depends = mesa-libgl
+	depends = glu
+	optdepends = netcdf: MMTK and AMBER 9 trajectories support
+	optdepends = openbabel: additional file formats support
+	optdepends = sqlite: dmsplugin
+
+pkgname = vmd
+
