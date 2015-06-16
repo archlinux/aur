@@ -1,0 +1,17 @@
+pkgbase = perl-devel-animator
+	pkgdesc = trace based source code animator
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Devel-Animator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-tk
+	depends = perl-tk-statusbar
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/A/AS/ASAAG/Devel-Animator-2.20.tar.gz
+	md5sums = 56849f00b0d817325de4af22c94ea5f7
+	sha512sums = e0917d658146bee915ed38ffb7262b4c2dd1d2605da599336fce03a92634985e55d45a417a928b8e0a1dc8fcaf13cbbbfa9861df6b733e2306affa1a1ea10e31
+
+pkgname = perl-devel-animator
+
