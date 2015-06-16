@@ -1,0 +1,22 @@
+pkgbase = haveclip-core-git
+	pkgdesc = A simple clipboard manager and synchronization tool (core pkg)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://www.havefun.cz/projects/haveclip/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = xproto
+	makedepends = qca
+	makedepends = qca-ossl
+	depends = qt4
+	provides = haveclip-core
+	conflicts = haveclip
+	conflicts = haveclip-core-git
+	source = haveclip-core-git::git+https://github.com/aither64/haveclip-core.git#branch=master
+	md5sums = SKIP
+
+pkgname = haveclip-core-git
+
