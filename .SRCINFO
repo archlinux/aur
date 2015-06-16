@@ -1,0 +1,17 @@
+pkgbase = perl-digest-simd
+	pkgdesc = Perl interface to the SIMD digest algorithm
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-SIMD
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-SIMD-0.04.tar.gz
+	md5sums = 704a5e7d857e7005c493ce73d898357f
+	sha512sums = fc4e9afd508a098af65e06f7ca535e181a706efa403a550bf674bfc380ca0843987db56b46739f264dbc59d1e13921021e35999fbe32c6aa34bf344aa80b8ce8
+
+pkgname = perl-digest-simd
+
