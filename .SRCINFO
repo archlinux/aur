@@ -1,0 +1,18 @@
+pkgbase = kettu-git
+	pkgdesc = Rewrite of the Transmission Web Client with jQuery, Sammy and Mustache
+	pkgver = r370.036767e
+	pkgrel = 1
+	url = https://github.com/endor/kettu
+	arch = i686
+	arch = x86_64
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = transmission-cli
+	provides = kettu=r370.036767e
+	conflicts = kettu
+	source = kettu::git+https://github.com/endor/kettu.git
+	md5sums = SKIP
+
+pkgname = kettu-git
+
