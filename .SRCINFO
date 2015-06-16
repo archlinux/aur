@@ -1,0 +1,23 @@
+pkgbase = perl-aws-s3
+	pkgdesc = Lightweight interface to Amazon S3 (Simple Storage Service)
+	pkgver = 0.031
+	pkgrel = 1
+	url = http://search.cpan.org/dist/AWS-S3
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-load
+	depends = perl-digest-hmac
+	depends = perl-http-date
+	depends = perl-iterator-paged
+	depends = perl-lwp-useragent-determined
+	depends = perl-uri
+	depends = perl-vso>=0.024
+	depends = perl-xml-libxml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOHND/AWS-S3-0.031.tar.gz
+	md5sums = 1d6983712df3eeca4c31d6622f1a85f6
+	sha512sums = 8c077f91244a0c525f9544a9347abfe88192faa3e5f8cb697ad59246040d38029064ce1801979b16d6a11eb129ec242a25901a5e3b54a269256b0db9e132fb77
+
+pkgname = perl-aws-s3
+
