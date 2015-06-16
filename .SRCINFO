@@ -1,0 +1,23 @@
+pkgbase = perl-carp-repl
+	pkgdesc = read-eval-print-loop on die and/or warn
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Carp-REPL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-expect
+	depends = perl>=5.006
+	depends = perl-data-dump-streamer
+	depends = perl-devel-lexalias
+	depends = perl-devel-repl
+	depends = perl-devel-stacktrace-withlexicals
+	depends = perl-lexical-persistence
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSIBLEY/Carp-REPL-0.16.tar.gz
+	md5sums = f0bb710518e19e5acd005fd97a84fc09
+	sha512sums = 083cd5a2536b6ff2bfcc4b430b7c426e007578a1f78418e7848f8735fb77450a9a858faa5bd7548083e4f8df4d59996edbd0ef2ce46a1df83d5c987726296370
+
+pkgname = perl-carp-repl
+
