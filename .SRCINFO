@@ -1,0 +1,20 @@
+pkgbase = perl-net-uftp
+	pkgdesc = Universal interface for FTP-like modules (FTP, SFTP, SCP), in most cases Net::FTP compatible.
+	pkgver = 0.161
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Net-uFTP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor-fast-xs
+	depends = perl-file-stat-modestring
+	depends = perl-net-ftp-autoreconnect
+	depends = perl-net-ssh2
+	depends = perl-universal-require
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/ST/STRZELEC/Net-uFTP-0.161.tar.gz
+	md5sums = 6c4ecf439ae6524c1d1bbad6e74f1577
+	sha512sums = ed1db443db35d80b8433b039d5faca35bc371bcc67b3c3747750d70a903d7c102b2720d66c92ea0ac68a95abf66c40466dd32bdc0fd323346a8f57295b3bddb5
+
+pkgname = perl-net-uftp
+
