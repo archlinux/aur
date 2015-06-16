@@ -1,0 +1,16 @@
+pkgbase = perl-net-ident
+	pkgdesc = Lookup the username on the remote end of a TCP/IP connection
+	pkgver = 1.23
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Ident
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Net-Ident-1.23.tar.gz
+	md5sums = f9a2943dc6310c1f31458c49f926b007
+	sha512sums = a8aa80d4d9d3b8b9368fb8ad6e213a5c81bdea7530db685ffd143306f7d239e4db737086903c76edc8aa1e6c1366ce98eedaffe357dd43cf8d54c598a13e6337
+
+pkgname = perl-net-ident
+
