@@ -1,0 +1,15 @@
+pkgbase = nodejs-calipso
+	pkgdesc = A NodeJS CMS
+	pkgver = 0.3.54
+	pkgrel = 1
+	url = http://calip.so
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = calipso-0.3.54.tgz
+	source = http://registry.npmjs.org/calipso/-/calipso-0.3.54.tgz
+	md5sums = c1af28b828645d68e0650302535d51de
+
+pkgname = nodejs-calipso
+
