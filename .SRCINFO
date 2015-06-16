@@ -1,0 +1,18 @@
+pkgbase = perl-gtk2-gladexml-simple
+	pkgdesc = A clean object-oriented interface to Gtk2::GladeXML
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Gtk2-GladeXML-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = glade-perl
+	depends = gtk2-perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AM/AMNESIAC/Gtk2-GladeXML-Simple-0.32.tar.gz
+	md5sums = cfb8560e8a3e8bca07c9c8157c361799
+	sha512sums = 6fa86ecd21baf8b8015469587134c210793e33dea622215f78052eae3b18ada381c2d06df284ad1bd8a97caca3af16dcbc1fc443c78c0e65d56bc78d6f5ae212
+
+pkgname = perl-gtk2-gladexml-simple
+
