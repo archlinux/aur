@@ -1,0 +1,17 @@
+pkgbase = perl-router-simple
+	pkgdesc = simple HTTP router
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Router-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor-lite>=0.05
+	depends = perl>=5.008_001
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Router-Simple-0.15.tar.gz
+	md5sums = b50f47030795d7e33e07f22bc6f60119
+	sha512sums = 3c5f4a2f70bdc578e32f7fad23d9d3e22f6de26dc1abc8f280ea59b15b307bfa55907902de9e9cfde5c80f89f360ac6f75c77e436320dd4e1be52f536e386387
+
+pkgname = perl-router-simple
+
