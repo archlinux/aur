@@ -1,0 +1,19 @@
+pkgbase = perl-xml-rai
+	pkgdesc = RSS Abstraction Interface.
+	pkgver = 1.3031
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-RAI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-weaken
+	depends = perl-task-weaken>=1.02
+	depends = perl-timedate
+	depends = perl-xml-rss-parser>=4
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMA/XML-RAI-1.3031.tar.gz
+	md5sums = 821a7b05c465227cd0f1a61879fc1aef
+	sha512sums = bbeeb22124e90999c316464e707a3c35ed51a68552247d15b5c7ba4c297741535f51d0a24ea3038149f422ab492990960d13751ecbfa2ca4975dfd4dfc9d9a31
+
+pkgname = perl-xml-rai
+
