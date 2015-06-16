@@ -1,0 +1,16 @@
+pkgbase = perl-digest-md5-file
+	pkgdesc = Perl extension for getting MD5 sums for files and urls.
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-MD5-File
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DM/DMUEY/Digest-MD5-File-0.08.tar.gz
+	md5sums = 90daecd725bf77606c192f379aea1ff9
+	sha512sums = bf06d403e69f8c71d2b53fb09ae62abb56685ed321d2342cb0bed4e60dc038f460b13d45dd64598fcbc9a3291279293b55fbe69f492fa4dac0d946868901da9b
+
+pkgname = perl-digest-md5-file
+
