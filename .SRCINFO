@@ -1,0 +1,19 @@
+pkgbase = perl-weather-google
+	pkgdesc = Perl interface to Google's Weather API
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Weather-Google
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-pod
+	makedepends = perl-test-warn
+	depends = perl-libwww
+	depends = perl-xml-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PO/POSSUM/Weather-Google-0.06.tar.gz
+	md5sums = ff038bd02c2db6cff6abcbee4e0ed55b
+	sha512sums = 805ae8e623a7851f938601715d8dbaa74f5d95b1009dbfa2abc51236039be3c2bd732a3e96d7f76ccae26e683b99d233f4b1aaf6e8739f70c3422eb8cf149bd3
+
+pkgname = perl-weather-google
+
