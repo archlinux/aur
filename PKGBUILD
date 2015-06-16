@@ -26,7 +26,7 @@ package()
     # Copy data and fix permissions
     install -d "$pkgdir/usr/share/$pkgname"
     cp -rf frd.jar lib/ lookandfeel/ search/ objectdb.conf "$pkgdir/usr/share/$pkgname/"
-    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 '{}'
+    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 '{}' \;
 
     # Install bin, icon and desktop file
     install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
