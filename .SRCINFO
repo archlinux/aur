@@ -1,0 +1,18 @@
+pkgbase = python2-pyparted
+	pkgdesc = Python module for GNU parted
+	pkgver = 3.10.3
+	pkgrel = 1
+	url = https://github.com/rhinstaller/pyparted
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkg-config
+	depends = python2
+	depends = parted>=3.0
+	conflicts = pyparted-git
+	replaces = pyparted
+	source = https://github.com/rhinstaller/pyparted/archive/pyparted-3.10.3.tar.gz
+	sha512sums = 238da222bb76e6838861f4fdff63f52823d0c7ace068fd4f40d5ccf5de5b7c26fadf52add689ec143755d568c52788b79262ba1090639560c3b54daa67e6507f
+
+pkgname = python2-pyparted
+
