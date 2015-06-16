@@ -1,0 +1,17 @@
+pkgbase = perl-file-find-rule
+	pkgdesc = Alternative interface to File::Find
+	pkgver = 0.33
+	pkgrel = 3
+	url = http://search.mcpan.org/dist/File-Find-Rule
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-number-compare
+	depends = perl-text-glob>=0.07
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RC/RCLAMP/File-Find-Rule-0.33.tar.gz
+	md5sums = 92c6cb88549c30f5665e39bf80f3d704
+	sha512sums = 287537a39e4ceeef6388dcf27c6b10fd7aceae7ab55b27f6acd608687ae695f964703e5b2ea2efbb57f7e5a6b658d7637fef5e87695fe39ae3222f8c7808ff31
+
+pkgname = perl-file-find-rule
+
