@@ -1,0 +1,17 @@
+pkgbase = perl-data-validate-email
+	pkgdesc = common email validation methods
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Validate-Email
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-validate-domain>=0.04
+	depends = perl-email-address
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SO/SONNEN/Data-Validate-Email-0.04.tar.gz
+	md5sums = 25ddfadb1aa7bf909e62bb2002589e41
+	sha512sums = 38e978881dfdbf191b82f4ead38c73f7af65682739bfcc739a82a70fcb5b5b0769581a78bf1441f6ce2125277698454b14415d1c4542f2eadc31ed6354e2e0b2
+
+pkgname = perl-data-validate-email
+
