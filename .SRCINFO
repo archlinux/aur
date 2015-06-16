@@ -1,5 +1,5 @@
 pkgbase = esteidpkcs11loader
-	pkgdesc = Loads PKCS11 module for web authentication with smart cards (Official version by AS Sertifitseerimiskeskus)
+	pkgdesc = Loads PKCS11 module for web authentication with smart cards
 	pkgver = 3.8.0.1052
 	pkgrel = 1
 	url = http://www.id.ee/
