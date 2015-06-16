@@ -1,0 +1,14 @@
+pkgbase = perl-env-ps1
+	pkgdesc = prompt string formatter
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Env-PS1
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/R/RS/RSN/Env-PS1-0.06.tar.gz
+	options = !emptydirs
+
+pkgname = perl-env-ps1
+
