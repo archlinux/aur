@@ -1,0 +1,16 @@
+pkgbase = perl-log-any
+	pkgdesc = Bringing loggers and listeners together
+	pkgver = 1.032
+	pkgrel = 1
+	url = https://metacpan.org/release/Log-Any
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Log-Any-1.032.tar.gz
+	md5sums = f4ddf4eaf28c2eb2f4b87d36a10c383d
+	sha512sums = e7539f402c30637cb5b3935b7967130c4ecadb0bfdc35252740ab9f626c0c7752323f0bc0eb3b0530458570a5710ac8d845e48b8ea8e0517dc10b41077ac5184
+
+pkgname = perl-log-any
+
