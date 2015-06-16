@@ -1,0 +1,18 @@
+pkgbase = perl-xml-rss-parser
+	pkgdesc = A liberal object-oriented parser for RSS
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-RSS-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-errorhandler
+	depends = perl-class-xpath>=1.4
+	depends = perl-xml-elemental>=2.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMA/XML-RSS-Parser-4.0.tar.gz
+	md5sums = 5ffafdcb64edd843106f7a96efac4017
+	sha512sums = ca95c78465c6055e4228a20f8099ccae7d45dc9de908ca6a458cec2c4abbf3825f56b31030f5555d71b8b82521a6589ff84030ee8824dccda0fb178b8b73c43b
+
+pkgname = perl-xml-rss-parser
+
