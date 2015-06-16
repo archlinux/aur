@@ -1,0 +1,19 @@
+pkgbase = perl-catalyst-plugin-formvalidator
+	pkgdesc = Data::FormValidator
+	pkgver = 0.094
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-FormValidator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-data-formvalidator
+	depends = perl-moose>=0.93
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DH/DHOSS/Catalyst-Plugin-FormValidator-0.094.tar.gz
+	md5sums = 7b0caa2d001fd63167b6645ca2df11d2
+	sha512sums = 02bb20684db64c9c7510cfdeae54fb2f95ee67a7c1dde12bbba556fd10d8a882c70d8f400689cde65b340b26247cbc443fb09a8586c792b2e1b1e82cbed05caa
+
+pkgname = perl-catalyst-plugin-formvalidator
+
