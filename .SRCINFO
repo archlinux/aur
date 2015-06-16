@@ -1,0 +1,25 @@
+pkgbase = perl-metacpan-api
+	pkgdesc = A comprehensive, DWIM-featured API to MetaCPAN (DEPRECATED)
+	pkgver = 0.50
+	pkgrel = 1
+	url = https://metacpan.org/release/MetaCPAN-API
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-requiresinternet
+	checkdepends = perl-test-tinymocker
+	makedepends = perl>=5.006
+	depends = perl-json
+	depends = perl-moo>=1.000001
+	depends = perl-try-tiny
+	depends = perl-type-tiny
+	depends = perl-uri
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/MetaCPAN-API-0.50.tar.gz
+	md5sums = 06967b570f5eae2ef627c3667e40a55f
+	sha512sums = 1c57a1f80a8907f17a7586b2fd973c0eda63d4bf13714542c14bf02f361428fcf06b95125d6b1998eb70b2129973404d32dabe2ae213ad23bdc29893a42f06bc
+
+pkgname = perl-metacpan-api
+
