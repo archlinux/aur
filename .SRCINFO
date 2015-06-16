@@ -1,0 +1,15 @@
+pkgbase = ytifl
+	pkgdesc = Print the URL of the first result of a YouTube search
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://jangler.info/code/ytifl
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = ytifl-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ytifl-1.0.0.gem
+	sha1sums = 36e2cb19afc437569eb99f7734be4cb90c5b31d9
+
+pkgname = ytifl
+
