@@ -1,0 +1,17 @@
+pkgbase = perl-captcha-recaptcha
+	pkgdesc = A Perl implementation of the reCAPTCHA API
+	pkgver = 0.97
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Captcha-reCAPTCHA
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-tiny>=0.904
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHRED/Captcha-reCAPTCHA-0.97.tar.gz
+	md5sums = 0e8d3edfc5b580d99fca2bffeb7ef948
+	sha512sums = f16be381a858b9cb94a0c8a8bd1eb2aea383818ad8f1d9854f978e70ecee8f72de92ce948c486bdde4ffc06fb912720851ea67c3dc056dcc20f619be185ccb0e
+
+pkgname = perl-captcha-recaptcha
+
