@@ -1,0 +1,16 @@
+pkgbase = perl-pod-cpandoc
+	pkgdesc = perldoc that works for modules you don't have installed
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Pod-Cpandoc
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Pod-Cpandoc-0.15.tar.gz
+	md5sums = de06c9e2c3fa83952799e35f6c7b980f
+	sha512sums = 0df1d963d63c05f59daeeb9948e60db835395baaa66dc659922ca03d8664e2ed72f0dc0e375431865a4b7df33f6a0ca57538324911593668f42384d090e6ec25
+
+pkgname = perl-pod-cpandoc
+
