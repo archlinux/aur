@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-kcodecs
+	pkgdesc = Provide a collection of methods to manipulate strings using various encodings (mingw-w64)
+	pkgver = 5.11.0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kcodecs
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-extra-cmake-modules
+	depends = mingw-w64-qt5-base
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://download.kde.org/stable/frameworks/5.11/kcodecs-5.11.0.tar.xz
+	md5sums = 5cfbb6836dbbdeddef9d889cf824f1bd
+
+pkgname = mingw-w64-kcodecs
+
