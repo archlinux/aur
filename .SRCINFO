@@ -1,0 +1,27 @@
+pkgbase = haveclip-desktop-git
+	pkgdesc = A simple clipboard manage and synchronization tool (client pkg)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://www.havefun.cz/projects/haveclip/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = xproto
+	makedepends = qca
+	makedepends = qca-ossl
+	depends = qt4
+	depends = haveclip-core-git
+	provides = haveclip-desktop
+	conflicts = haveclip
+	conflicts = haveclip-desktop-git
+	source = haveclip-desktop-git::git+https://github.com/aither64/haveclip-desktop.git#branch=master
+	source = haveclip.desktop
+	source = haveclip.png
+	md5sums = SKIP
+	md5sums = 5b23858fd7e2f11bd312464331d481c8
+	md5sums = 383970eb2d819d67e96623bb8b0b33a4
+
+pkgname = haveclip-desktop-git
+
