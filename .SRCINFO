@@ -1,0 +1,26 @@
+pkgbase = perl-www-scripter-plugin-ajax
+	pkgdesc = WWW::Scripter plugin that provides the XMLHttpRequest object
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Scripter-Plugin-Ajax
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-constant-lexical
+	depends = perl-html-dom
+	depends = perl-http-cookies>=5.833
+	depends = perl-http-daemon
+	depends = perl-http-message
+	depends = perl-je>=0.041
+	depends = perl-libwww
+	depends = perl-uri>=1
+	depends = perl-www-scripter
+	depends = perl-www-scripter-plugin-javascript>=0.002
+	depends = perl-xml-dom-lite>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/WWW-Scripter-Plugin-Ajax-0.09.tar.gz
+	md5sums = b5460a6e639d79218f610990ee114649
+	sha512sums = d16da9c72d4ac7e050baa19b8bed05bea4970efd078292ade85d2ec5f0ba813437cb518e784c489ad991f9468c61e779408e03488a8d4f469490f7f056696924
+
+pkgname = perl-www-scripter-plugin-ajax
+
