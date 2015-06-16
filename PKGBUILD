@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('graphlcd-base' 'ttf-dejavu' "vdr-api=${_vdrapi}")
 optdepends=('serdisplib: Support more modern LCDs')
 makedepends=('git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-graphlcd.git#commit=$_gitver"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
