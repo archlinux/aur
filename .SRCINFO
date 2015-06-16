@@ -1,0 +1,19 @@
+pkgbase = perl-sql-abstract-limit
+	pkgdesc = portable LIMIT emulation
+	pkgver = 0.141
+	pkgrel = 1
+	url = http://search.cpan.org/dist/SQL-Abstract-Limit
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-deep
+	makedepends = perl-test-exception
+	depends = perl-dbi
+	depends = perl-sql-abstract>=1.2
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVEBAIRD/SQL-Abstract-Limit-0.141.tar.gz
+	md5sums = d8dde39b1d7910ddf5457108c02be552
+	sha512sums = f7c09b14fe9cb94675bdfbc428d38f9653352f6dae090dc5ce905e5886205192bbe1da8ebff53780c0cac39d078930ef2644ea238d8e8be5b0a577b7b75df7a9
+
+pkgname = perl-sql-abstract-limit
+
