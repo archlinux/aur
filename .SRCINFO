@@ -1,0 +1,20 @@
+pkgbase = perl-net-server-ss-prefork
+	pkgdesc = a hot-deployable variant of Net::Server::PreFork
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Server-SS-PreFork
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-http-server-simple
+	makedepends = perl-libwww
+	makedepends = perl-test-tcp>=0.06
+	depends = perl-net-server
+	depends = perl-server-starter>=0.02
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Net-Server-SS-PreFork-0.05.tar.gz
+	md5sums = 4198d48d27353f60cc297178f86c216f
+	sha512sums = 895d8dda97455b5ceb32e9f83a8792475b1249115a4df97d2178d513c48ba08576ea41453724da6ea37d5fd2afaa962cf18bf3a8db899202e196ef3e240af497
+
+pkgname = perl-net-server-ss-prefork
+
