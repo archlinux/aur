@@ -1,0 +1,25 @@
+pkgbase = perl-plack-middleware-oauth
+	pkgdesc = Plack middleware for OAuth1, OAuth2 and builtin provider configs.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Plack-Middleware-OAuth
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime
+	depends = perl-http-message
+	depends = perl-json-any
+	depends = perl-libwww
+	depends = perl-lwp-protocol-https
+	depends = perl-net-oauth
+	depends = perl-plack-middleware-session
+	depends = perl-uri
+	depends = perl-uri-query
+	depends = perl-yaml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORNELIUS/Plack-Middleware-OAuth-0.10.tar.gz
+	md5sums = c2fa55e1b2947655e66ce12017cdd5b4
+	sha512sums = 4fce75a5f803e931fb26aa5327eb1c809fba04999ac6a27e750c8919160366af78b2d4930f76808b791a41999afcf049caa2cfd8c12083274524d6c0bbffe637
+
+pkgname = perl-plack-middleware-oauth
+
