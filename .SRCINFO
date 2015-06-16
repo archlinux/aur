@@ -1,0 +1,17 @@
+pkgbase = perl-tkx
+	pkgdesc = Yet another Tk interface
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Tkx
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-tcl>=1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Tkx-1.09.tar.gz
+	md5sums = 8dfe38d1b7c6a92101e840949c584d7d
+	sha512sums = 061942367ba042b2044ac75cd7e7451ef1f5e3748204c60708d44dd8a360237f81023463badaa94a28c7d3b913b9196b5945f8a577baf2e8a376fdfd91877177
+
+pkgname = perl-tkx
+
