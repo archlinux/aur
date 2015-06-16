@@ -1,0 +1,19 @@
+pkgbase = perl-uri-fetch
+	pkgdesc = Smart URI fetching/caching
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/URI-Fetch
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	depends = perl-class-errorhandler
+	depends = perl-libwww
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/URI-Fetch-0.09.tar.gz
+	md5sums = cfc746bb7f142f0f5b82ea80a4416f2b
+	sha512sums = 1cf2d19ae4c18524856c5ae01588db3d46fa99a11315420047b586013c2e6989a2c45890edcb898eb0600395edebfaaadcdbdd6543d2ddda8576cf78d82e64fd
+
+pkgname = perl-uri-fetch
+
