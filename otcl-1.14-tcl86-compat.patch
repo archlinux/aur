@@ -1,0 +1,31 @@
+diff --git a/otcl.c b/otcl.c
+index b41b531..63c039f 100644
+--- a/otcl.c
++++ b/otcl.c
+@@ -462,7 +462,7 @@ OTclDispatch(ClientData cd, Tcl_Interp* in, int argc, CONST84 char* argv[]) {
+ 	     */
+ 	    CONST84 char *old_args2 = cl ? (char *) Tcl_GetCommandName(in, cl->object.id) : argv[0];
+ 	    sprintf(msg, "\n    (%.40s %.40s line %d)",
+-		    old_args2, argv[1], in->errorLine);
++		    old_args2, argv[1], Tcl_GetErrorLine(in));
+ 	    compat_Tcl_AddObjErrorInfo(in, msg, -1);
+     }
+     if (argc+2 > OTCLSMALLARGS) { ckfree((char*)args); args = 0; }
+@@ -499,7 +499,7 @@ OTclDispatch(ClientData cd, Tcl_Interp* in, int argc, CONST84 char* argv[]) {
+     if (result == TCL_ERROR) {
+ 	    char msg[100];
+ 	    sprintf(msg, "\n    (%.30s unknown line %d)",
+-		    cl ? args[2] : argv[0], in->errorLine);
++		    cl ? args[2] : argv[0], Tcl_GetErrorLine(in));
+ 	    compat_Tcl_AddObjErrorInfo(in, msg, -1);
+     }
+     if (argc+3 > OTCLSMALLARGS) { ckfree((char*)args); args = 0; }
+@@ -1601,7 +1601,7 @@ OTclCCreateMethod(ClientData cd, Tcl_Interp* in, int argc, CONST84 char*argv[])
+   (void)RemoveInstance(obj, obj->cl);
+   AddInstance(obj, cl);
+ 
+-  result = Tcl_VarEval(in, argv[4], " init ", in->result, 0);
++  result = Tcl_VarEval(in, argv[4], " init ", Tcl_GetStringResult(in), 0);
+   if (result != TCL_OK) return result;
+   Tcl_SetResult(in, (char *)argv[4], TCL_VOLATILE);
+   return TCL_OK;
