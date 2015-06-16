@@ -10,7 +10,7 @@ url="https://github.com/yavdr/vdr-plugin-restfulapi"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('cxxtools' 'graphicsmagick' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("https://github.com/yavdr/vdr-plugin-$_plugname/archive/$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
