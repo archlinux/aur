@@ -1,0 +1,12 @@
+pkgbase = db-silver-icons
+	pkgdesc = Icon theme gray for Lxqt and Kde containig part of oxygen
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/DB+Silver+Icons?content=157154
+	arch = any
+	license = GPL
+	source = http://esclapion.free.fr/AUR/db-silver-icons-1.3.tar.gz
+	md5sums = 5ed30430313e60efff21b5dbea8bedfe
+
+pkgname = db-silver-icons
+
