@@ -1,0 +1,49 @@
+## arg 1:  the new package version
+pre_install() {
+	echo "Installing Drone CI"
+}
+
+## arg 1:  the new package version
+post_install() {
+	echo "Adding docker user"
+
+	getent group drone &>/dev/null || /usr/sbin/groupadd -g 633 drone || return 1
+	getent passwd drone &>/dev/null || /usr/sbin/useradd -u 633 -g drone -c 'Drone' -s /sbin/nologin -d /var/lib/drone drone || return 1
+
+	# add drone to docker group
+	gpasswd -a drone docker
+
+	mkdir -p /var/lib/drone
+	sudo chown -R drone:drone /var/lib/drone
+	
+	echo "---------------------------------------------------------"
+	echo "1. Remember to edit the drone conf: /etc/drone/drone.toml"
+	echo "2. Remember to start docker: systemctl start docker"
+	echo "3. You need at least one auth provider [github/bitbucker/gitlab] enabled in your drone.toml"
+	echo ""
+	echo "You can enable both by: systemctl enable docker drone"
+	echo "---------------------------------------------------------"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	echo "Upgrading Drone CI"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	post_install
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	echo "Removing Drone CI"
+}
+
+## arg 1:  the old package version
+post_remove() {
+	getent passwd drone &>/dev/null && userdel drone >/dev/null
+	getent group drone &>/dev/null && groupdel drone >/dev/null
+}
