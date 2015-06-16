@@ -1,0 +1,16 @@
+pkgbase = perl-mo
+	pkgdesc = Micro Objects. Mo is less.
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Mo-0.35.tar.gz
+	md5sums = 6a33f13140dcf2f5104ab426e74cad4c
+	sha512sums = 9094fefe4acd0daa2e0f414715e6769861efdb67824edd642f43cf372a48629bb4411ab8ce66ea7c3deb29bf9762f632ca384da6862d1453f8504bf5cc96bddf
+
+pkgname = perl-mo
+
