@@ -14,7 +14,7 @@ optdepends=('vdr-scraper2vdr: To display scraped images in various EPG views (re
             'vdr-tvscraper: To display scraped images in various EPG views')
 conflicts=(skindesigner-{blackhole,holo,metrixhd,nopacity,shady,shady_kiss,skinelchi,tryouts})
 replaces=(skindesigner-{blackhole,holo,metrixhd,nopacity,shady,shady_kiss,skinelchi,tryouts})
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/git/vdr-plugin-skindesigner.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2"
         '99-skindesigner.conf'
         "50-$_plugname.conf")
