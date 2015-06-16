@@ -1,0 +1,14 @@
+pkgbase = mhwd-chroot
+	pkgdesc = chroot gui
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://forum.manjaro.org/index.php?topic=21472.0
+	arch = any
+	license = GPL
+	optdepends = gksu: gnome gui for su
+	optdepends = kdesu: kde gui for su
+	source = http://esclapion.free.fr/AUR/mhwd-chroot-1.4.tar.gz
+	md5sums = af28f5adaebd9cdce00ce35547528084
+
+pkgname = mhwd-chroot
+
