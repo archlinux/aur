@@ -1,7 +1,7 @@
 # Maintainer: Oliver Mangold <o dot mangold at gmail dot com>
 
 pkgname=python2-orient
-pkgver=1.4.2
+pkgver=1.4.2a
 pkgrel=1
 pkgdesc="Python 2 bindings for OrientDB"
 arch=('any')
@@ -11,7 +11,7 @@ groups=()
 depends=('python2')
 makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/source/p/pyorient/pyorient-${pkgver}.tar.gz)
-sha256sums=('9ef4b5122f0f602aabf1d99ccc17b50e4bd5b4ed51caae477d6bf9db2b729259')
+sha256sums=('7e5ad4a82caa6d8dfa0be8c0511343242ff0abde70ab007e1e5dc98af8eac084')
 
 build() {
   cd "$srcdir"/pyorient-${pkgver}
