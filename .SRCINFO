@@ -1,0 +1,16 @@
+pkgbase = perl-super
+	pkgdesc = control superclass method dispatch
+	pkgver = 1.20120705
+	pkgrel = 2
+	url = http://search.cpan.org/dist/SUPER
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-sub-identify
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHROMATIC/SUPER-1.20120705.tar.gz
+	md5sums = 0eee5ff59b912f9baa5dc852681238a0
+	sha512sums = aa3c0fa3f17115254fa4d1486a4dcb736a5bc43db09db8d8b6bd3b992d3cbd3e1fccca5316efa7106f019c6357f0a3fe37997bdc60e7851e2f880c72700b03cd
+
+pkgname = perl-super
+
