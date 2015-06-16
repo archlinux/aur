@@ -1,0 +1,23 @@
+pkgbase = mangle-git
+	pkgdesc = Simple python image converter for the Amazon Kindle
+	pkgver = 0.71.g4f0bb47
+	pkgrel = 1
+	url = http://foosoft.net/mangle/
+	install = mangle.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-natsort
+	depends = python2-reportlab
+	depends = python2-pillow
+	provides = mangle
+	conflicts = mangle
+	source = git://github.com/FooSoft/mangle.git
+	source = python2.patch
+	md5sums = SKIP
+	md5sums = 967a191ca673aec93546640002c794ab
+
+pkgname = mangle-git
+

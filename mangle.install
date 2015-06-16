@@ -1,0 +1,6 @@
+
+post_install()  {
+	echo ">>> To run mangle, please type"
+	echo ">>> $ mangle-convert"
+	echo ">>> and thank you for installing mangle!"
+}
