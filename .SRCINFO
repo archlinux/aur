@@ -1,0 +1,19 @@
+pkgbase = perl-catalyst-plugin-cache-store-fastmmap
+	pkgdesc = DEPRECATED - FastMmap cache store
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Cache-Store-FastMmap
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cache-fastmmap
+	depends = perl-catalyst-plugin-cache>=0.01
+	depends = perl-catalyst-runtime
+	depends = perl-path-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/Catalyst-Plugin-Cache-Store-FastMmap-0.02.tar.gz
+	md5sums = 0180d977ad2060a2579a4a3a77d0a1f3
+	sha512sums = de9598fdf9c67f15e6574228eff40ef31e12d8e945ebabd1ee084112455dafbca57f08a39335b9b5723b389d9f84868d3899069d1cdbf5874c86baf0da99315a
+
+pkgname = perl-catalyst-plugin-cache-store-fastmmap
+
