@@ -1,0 +1,16 @@
+pkgbase = perl-sys-statistics-linux
+	pkgdesc = Front-end module to collect system statistics
+	pkgver = 0.66
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sys-Statistics-Linux
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-universal-require
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BL/BLOONIX/Sys-Statistics-Linux-0.66.tar.gz
+	md5sums = 7bfc6ce644df994fdcefc3b63d529778
+	sha512sums = 0387e7746d923860e5d9362f3259c19fc2e173cf6199aae11238a9bc0b588afe05026a876592845e0ac12f445cfb2c38ff7646fe9beed5807548179c7b2754b4
+
+pkgname = perl-sys-statistics-linux
+
