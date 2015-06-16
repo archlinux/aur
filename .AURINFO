@@ -1,0 +1,14 @@
+pkgbase = perl-text-csv
+	pkgdesc = comma-separated values manipulator (using XS or PurePerl)
+	pkgver = 1.32
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Text-CSV
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/M/MA/MAKAMAKA/Text-CSV-1.32.tar.gz
+	options = !emptydirs
+
+pkgname = perl-text-csv
+
