@@ -1,0 +1,16 @@
+pkgbase = perl-cgi-ajax
+	pkgdesc = CGI::Ajax
+	pkgver = 0.707
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CGI-Ajax
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BP/BPEDERSE/CGI-Ajax-0.707.tar.gz
+	md5sums = 6efcb38dd86bbff3779adc9315cfa7d6
+	sha512sums = 093c884086017b37bf4ae58b25ec96425eb896b73e528dd9b656975b9ecd9bd438db637a4b3149ccccd4108637c5cde55e6f45a92d4e865a1b0cf866bf5d8e85
+
+pkgname = perl-cgi-ajax
+
