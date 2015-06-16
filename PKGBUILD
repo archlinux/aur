@@ -1,49 +1,39 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Adrián Pérez de Castro <aperez@igalia.com>
+
 pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver='0.9.0'
-pkgrel='2'
+pkgver='0.9.2'
+_libtexpdf_ver='04ad589e2aaaa6db1147de1f43cf5bc7e7ed327a'
+pkgrel='1'
 arch='any'
 url='http://www.sile-typesetter.org/'
 license='custom'
-source=("https://github.com/simoncozens/sile/archive/v${pkgver}.tar.gz")
-sha512sums=('2752ba3f08e814fede187e90b3c0ea559c682fabef085affc6afe0077b0c85195484b6dfe722040321f75f33dc01a876d15c5b7e37e6ca485ee1901b30e04195')
-depends=('lua51-lpeg'
-         'lua51-lgi'
-         'lua51-stdlib'
-         'lua51-expat'
-         'lua51-inspect'
-         'lua51-epnf'
-         'lua51-repl'
-         'lua51-cassowary'
-         'pango')
+source=("https://github.com/simoncozens/sile/archive/v${pkgver}.tar.gz"
+        "https://github.com/simoncozens/libtexpdf/archive/${_libtexpdf_ver}.tar.gz")
+sha512sums=('20483d10004b874ada9e21ba2abada439e9f7af470252e28ea61b0863282643902b388ae4fb6b1cdfd2277606f6988a11b8a3018782279e770746a5d6a56a5c2'
+            '9cc2ade221251964fe600deadcaf28ab7488018fbb09f6a0fe0bd5d0d8950f3d232c8782369e8c88e75c776a577ca8451866ee86af8f0ab70dd7ca47ecb26715')
+depends=('lua-lpeg'
+         'lua-expat'
+         'harfbuzz')
 
 prepare () {
 	cd "${pkgname}-${pkgver}"
-	cat > sile.sh <<-EOF
-	#! /bin/sh
-	export SILE_PATH=/usr/lib/sile
-	exec /usr/bin/lua5.1 /usr/lib/sile/sile "\$@"
-	EOF
+    # Adapt contents of upstream projects bootstrap.sh
+    rm -rf libtexpdf
+    cp -a ../libtexpdf-${_libtexpdf_ver} libtexpdf
+    autoreconf --install
+    (cd libtexpdf; autoreconf -I m4)
+    sed 's/rm -f core/rm -f/' -i configure
+}
+
+build () {
+	cd "${pkgname}-${pkgver}"
+    ./configure
+    make
 }
 
 package () {
 	cd "${pkgname}-${pkgver}"
-
-	# Program. This is taken from the "install.lua" script
-	install -m755 -d "${pkgdir}/usr/lib/sile"
-	cp -ar classes core packages languages sile \
-		"${pkgdir}/usr/lib/sile"
-	install -Dm755 sile.sh "${pkgdir}/usr/bin/sile"
-
-	# Documentation and examples
-	for file in README.md ROADMAP documentation/sile.pdf ; do
-		install -Dm644 "${file}" \
-			"${pkgdir}/usr/share/doc/${pkgname}/${file}"
-	done
-	cp -ar examples "${pkgdir}/usr/share/doc/${pkgname}/"
-
-	# License
-	install -Dm644 LICENSE \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make install DESTDIR="${pkgdir}/"
 }
