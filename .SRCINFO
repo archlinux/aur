@@ -1,0 +1,17 @@
+pkgbase = perl-spreadsheet-xlsx
+	pkgdesc = Perl extension for reading MS Excel 2007 files;
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Spreadsheet-XLSX
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-archive-zip>=1.18
+	depends = perl-spreadsheet-parseexcel
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DM/DMOW/Spreadsheet-XLSX-0.13-withoutworldwriteables.tar.gz
+	md5sums = ce6835443558c24d3306482a49201853
+	sha512sums = 519eb5636ffe87cc6589afc7930078c2a11b3a41cbe03a3c5b23d3225bee825f6e45ba1e8f4d889c6b14b4283f09a6926223e49f8ce6dd27bcf67eca659734da
+
+pkgname = perl-spreadsheet-xlsx
+
