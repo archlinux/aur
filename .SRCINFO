@@ -1,0 +1,17 @@
+pkgbase = perl-gnupg
+	pkgdesc = Perl module interface to the GNU Privacy Guard (v1.x.x series) Note: Tests fail if GnuPG is not correctly setup. See comments inside PKGBUILD if you have it set up correctly.
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/GnuPG
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = gnupg
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/Y/YA/YANICK/GnuPG-0.19.tar.gz
+	md5sums = e2fe3780e399a350151139707c45e91b
+	sha512sums = c1a425ebc4981b84fb75e5293068a163b9173245e8fd6307dc1e084b995bc1e273bbfe18f252f3353e89947f4e84220402103da9ed92e90292ec7e72a3975b85
+
+pkgname = perl-gnupg
+
