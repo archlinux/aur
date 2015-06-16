@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('ffmpeg')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://phivdr.dyndns.org/vdr/$pkgname/$pkgname-$pkgver.tgz"
         "10_suspendoutput_vdr-2.1.x_compat.patch::http://www.minidvblinux.de/git/?a=blob&p=vdr-plugin-suspendoutput&h=e9f9bc511668b6d884a000db29b01d970bc5095d"
         "11_suspendoutput_svdrp.patch::http://www.minidvblinux.de/git/?a=blob&p=vdr-plugin-suspendoutput&h=045172a810e98bad784cdae4f22bcc305118b490"
