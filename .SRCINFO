@@ -1,0 +1,16 @@
+pkgbase = perl-test-perl-critic-progressive
+	pkgdesc = Encourage Perl::Critic conformance over time.
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Perl-Critic-Progressive
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-critic>=1.082
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Test-Perl-Critic-Progressive-0.03.tar.gz
+	md5sums = 9d98e61592571c379e8d598db01fcc0a
+	sha512sums = 09ed6a434647d11b6d310b60ddce6d37e06f1a94c3c8dc6986f4b945270681059dcd260fcc8fe33f987bd954d3d59dec4cd19bd432054774eed226ae72202ee1
+
+pkgname = perl-test-perl-critic-progressive
+
