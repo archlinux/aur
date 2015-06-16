@@ -1,0 +1,22 @@
+pkgbase = perl-net-cloudstack
+	pkgdesc = Bindings for the CloudStack API
+	pkgver = 0.01005
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-CloudStack
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-libwww
+	depends = perl-mouse
+	depends = perl-uri-encode
+	depends = perl-xml-simple
+	depends = perl-xml-twig
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SN/SNUMANO/Net-CloudStack-0.01005.tar.gz
+	md5sums = 82877a90b7c39f3431585edfaf122836
+	sha512sums = b0e8450f2cf701f77c2ee2a104ed331b10137482a87fd48a694c319d498439a7a7357b877ff0740fda39d11ecd4d9a32084ae1d8c8d1cfd64ac853f0660a72c5
+
+pkgname = perl-net-cloudstack
+
