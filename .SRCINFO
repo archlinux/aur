@@ -1,0 +1,16 @@
+pkgbase = perl-datetime-tiny
+	pkgdesc = A datetime object with as little code as possible
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.004
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/DateTime-Tiny-1.04.tar.gz
+	md5sums = 9e7e4fe588445023763df113d3f2345f
+	sha512sums = da065b983ef7362a3190d1e0758fc071ded7c216c5bbff2aa111b9211b6deffdfa6c17a12ec6aa4c0fc51a091ea753d05c9b00acb4e30f57b6b99a66236de3c1
+
+pkgname = perl-datetime-tiny
+
