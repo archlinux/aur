@@ -1,0 +1,16 @@
+pkgbase = perl-parse-http-useragent
+	pkgdesc = Parser for the User Agent string
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parse-HTTP-UserAgent
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BU/BURAK/Parse-HTTP-UserAgent-0.35.tar.gz
+	md5sums = 6063593a9d2fdc098f37d645f525e0ab
+	sha512sums = cb46b790869386493cd3744829ae5b9a7c51d9fe89a00968f3b9afd1d9adb3f44980efcccfac17315eed8d43ceb9ccbb5207306bad62f27eb1fc4d46b5680b55
+
+pkgname = perl-parse-http-useragent
+
