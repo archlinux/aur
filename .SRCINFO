@@ -1,0 +1,16 @@
+pkgbase = perl-time-piece-mysql
+	pkgdesc = Adds MySQL-specific methods to Time::Piece
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Time-Piece-MySQL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KASEI/Time-Piece-MySQL-0.06.tar.gz
+	md5sums = be66a577f8790c16947d8e3e5a0e65a2
+	sha512sums = 8f748b50a763dbe4b0a545d6bb96f9ccffa05da48461c0fac63e89ba6029856ac60b871264217b820408aefa2dd4fdcbba036f5ad6ad9281f6699e33003f36e4
+
+pkgname = perl-time-piece-mysql
+
