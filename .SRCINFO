@@ -1,0 +1,16 @@
+pkgbase = perl-if
+	pkgdesc = use a Perl module if a condition holds
+	pkgver = 0.0601
+	pkgrel = 2
+	url = http://search.cpan.org/dist/if
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/if-0.0601.tar.gz
+	md5sums = 3a19abc96d20a47f6dafd7b29ff5383e
+	sha512sums = 1eb73d19b13270824b5e690eec18add1487cc07e370cb283a514b7343ac6609916e843f80a3d9e06d58652fe770974d65cd4c5a1121f213751e99caae68b9d7f
+
+pkgname = perl-if
+
