@@ -1,0 +1,17 @@
+pkgbase = python2-profilehooks
+	pkgdesc = Decorators for profiling/timing/tracing individual functions
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://mg.pov.lt/profilehooks
+	arch = any
+	license = custom:MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/profilehooks/profilehooks-1.8.0.tar.gz
+	source = LICENSE
+	sha256sums = 52277ed965938d8b6293aa41cb35278c72c9a6dd3f6e9f89c45da74767dbd6ea
+	sha256sums = 782297002c4e5baa591d289916113b39d8ae046e41855e6beb1266f26f9ec82a
+
+pkgname = python2-profilehooks
+
