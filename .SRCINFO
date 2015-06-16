@@ -1,0 +1,18 @@
+pkgbase = perl-mock-quick
+	pkgdesc = Quickly mock objects and classes, even temporarily replace them,
+	pkgver = 1.106
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mock-Quick
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception>=0.29
+	depends = perl-exporter-declare>=0.103
+	depends = perl-fennec-lite>=0.004
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Mock-Quick-1.106.tar.gz
+	md5sums = d220c092393d2bd3ac3b2a7781cfe9c0
+	sha512sums = 94f29dd6ec99da4c44ed206b90bc8c38c9dd805fa98f6e26f74cf9aab9cab6dc6d68400ef7ef756139fcc3c7b7c8b8c0a45350a37a3fbc4940a842e16d88d01f
+
+pkgname = perl-mock-quick
+
