@@ -1,0 +1,17 @@
+pkgbase = perl-catalystx-menu-tree
+	pkgdesc = Generate Catalyst application menus
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CatalystX-Menu-Tree
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CONVERTER/CatalystX-Menu-Tree-0.02.tar.gz
+	md5sums = 2eb58543ac89b40c8e1a7bd93d027b9c
+	sha512sums = 4e8110ddf9fc24705e09c71d6d7ca1db91cd3bcbd7968ae034576811b938aa2c0cafac2367b95535285b54a752d22a66a3367232a9133cf3b6141b910b16f3d0
+
+pkgname = perl-catalystx-menu-tree
+
