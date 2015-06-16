@@ -1,0 +1,16 @@
+pkgbase = perl-net-vypress-chat
+	pkgdesc = Perl extension for Vypress Chat protocol
+	pkgver = 0.71
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Vypress-Chat
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARTURAZ/Net-Vypress-Chat-0.71.tar.gz
+	md5sums = cbab3b748f2edb04c9d771103e6f380a
+	sha512sums = 2bd8f93508dc0c37c40c5ba6cc649d93ba957649fe07e307707de75787841706cf25abcd64330c8f5e66916c50c3f1044204a4befd5044abe5ac0b29f5646bb6
+
+pkgname = perl-net-vypress-chat
+
