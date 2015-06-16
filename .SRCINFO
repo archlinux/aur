@@ -1,0 +1,19 @@
+pkgbase = perl-crypt-dh-gmp
+	pkgdesc = Crypt::DH Using GMP Directly
+	pkgver = 0.00012
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Crypt-DH-GMP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	makedepends = perl-devel-checklib>=0.4
+	depends = gmp>=6.0.0
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DM/DMAKI/Crypt-DH-GMP-0.00012.tar.gz
+	md5sums = 9df5e4d790b81055d8609fa50ec31fdb
+	sha512sums = f799017db780613b6d971f626659765f282debe63207bdbc36db223030bcd8f7f478c6331372d9794bcc8207d71bfae6d62048439766916478f4b61f42c5bb6e
+
+pkgname = perl-crypt-dh-gmp
+
