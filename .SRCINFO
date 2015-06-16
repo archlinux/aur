@@ -1,0 +1,16 @@
+pkgbase = perl-biblio-counter
+	pkgdesc = COUNTER Codes of Practice report processing
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Biblio-COUNTER
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-csv
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NK/NKUITSE/Biblio-COUNTER-0.11.tar.gz
+	md5sums = 64e7fb23d4d68b80f9e15d88ae205172
+	sha512sums = 49803c624d42551a260f2f7b4e9d75365be2d57502221d1f5a4fb284481224116594ea4071d906ef757ef44a3eae474645b66b1318fd45511075068371e5cc6c
+
+pkgname = perl-biblio-counter
+
