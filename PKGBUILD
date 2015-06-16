@@ -11,14 +11,14 @@
 _pkgname=angband
 pkgname=angband-ncurses
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
 url="http://rephial.org/"
 license=('GPL2' 'custom')
 depends=('ncurses')
 makedepends=('python-docutils'
-			 'texlive-core' #Uncomment if you want a pdf manual. That's quite the dependency, don't you think?
+			 #'texlive-core' #Uncomment if you want a pdf manual. That's quite the dependency, don't you think?
 			)
 conflicts=('angband' 'angband-git')
 source=("http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-v${pkgver}.tar.gz")
@@ -44,5 +44,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   rm -f "${pkgdir}/usr/share/${_pkgname}/*/delete.me"
+  rm -R "${pkgdir}"/usr/share/angband/xtra/{graf,icon,sound}
   install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
