@@ -1,0 +1,17 @@
+--- src/hardware/ide.cpp.origin	2015-06-16 02:04:57.201788266 +0200
++++ src/hardware/ide.cpp	2015-06-16 02:07:09.294635540 +0200
+@@ -22,11 +22,14 @@
+ #include "bios_disk.h"
+ #include "../src/dos/cdrom.h"
+ 
++/*
+ #ifdef _MSC_VER
+ # define MIN(a,b) ((a) < (b) ? (a) : (b))
+ #else
+ # define MIN(a,b) std::min(a,b)
+ #endif
++*/
++#define MIN(a,b) ((a) < (b) ? (a) : (b))
+ 
+ #define MAX_IDE_CONTROLLERS 8
+ 

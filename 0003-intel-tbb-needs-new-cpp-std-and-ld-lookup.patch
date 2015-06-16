@@ -1,0 +1,22 @@
+--- configure.ac.origin	2015-06-16 00:12:39.664253351 +0200
++++ configure.ac	2015-06-16 02:26:08.926218940 +0200
+@@ -19,6 +19,11 @@
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ 
++dnl Add c++14 flag needed for intel-tbb
++CXXFLAGS="$CXXFLAGS -std=c++14"
++LDFLAGS="$LDFLAGS -std=c++14"
++LIBS="$LIBS -ltbb"
++
+ dnl Some needed libaries for OS2
+ dnl perharps join this with the other target depended checks. move them upwards
+ if test x$host = xi386-pc-os2-emx ; then
+@@ -593,6 +598,7 @@
+        AM_CONDITIONAL(HAVE_WINDRES, test "x$WINDRES" != "x:")
+        AC_SUBST(WINDRES)
+ 
++LIBS="$LIBS cpu/libcpu.a"
+ 
+ AC_CONFIG_FILES([ 
+ Makefile

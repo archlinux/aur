@@ -1,0 +1,242 @@
+--- src/hardware/memory.cpp.origin	2015-06-16 01:18:13.155376562 +0200
++++ src/hardware/memory.cpp	2015-06-16 01:34:39.819386299 +0200
+@@ -1109,28 +1109,28 @@
+ //save state support
+ extern void* VGA_PageHandler_Func[16];
+ 
+-Bit32u Memory_PageHandler_table[] = 
++Bit64u Memory_PageHandler_table[] =
+ {
+-	(Bit32u) NULL,
+-	(Bit32u) &ram_page_handler,
+-	(Bit32u) &rom_page_handler,
+-
+-	(Bit32u) VGA_PageHandler_Func[0],
+-	(Bit32u) VGA_PageHandler_Func[1],
+-	(Bit32u) VGA_PageHandler_Func[2],
+-	(Bit32u) VGA_PageHandler_Func[3],
+-	(Bit32u) VGA_PageHandler_Func[4],
+-	(Bit32u) VGA_PageHandler_Func[5],
+-	(Bit32u) VGA_PageHandler_Func[6],
+-	(Bit32u) VGA_PageHandler_Func[7],
+-	(Bit32u) VGA_PageHandler_Func[8],
+-	(Bit32u) VGA_PageHandler_Func[9],
+-	(Bit32u) VGA_PageHandler_Func[10],
+-	(Bit32u) VGA_PageHandler_Func[11],
+-	(Bit32u) VGA_PageHandler_Func[12],
+-	(Bit32u) VGA_PageHandler_Func[13],
+-	(Bit32u) VGA_PageHandler_Func[14],
+-	(Bit32u) VGA_PageHandler_Func[15],
++	(Bit64u) NULL,
++	(Bit64u) &ram_page_handler,
++	(Bit64u) &rom_page_handler,
++
++	(Bit64u) VGA_PageHandler_Func[0],
++	(Bit64u) VGA_PageHandler_Func[1],
++	(Bit64u) VGA_PageHandler_Func[2],
++	(Bit64u) VGA_PageHandler_Func[3],
++	(Bit64u) VGA_PageHandler_Func[4],
++	(Bit64u) VGA_PageHandler_Func[5],
++	(Bit64u) VGA_PageHandler_Func[6],
++	(Bit64u) VGA_PageHandler_Func[7],
++	(Bit64u) VGA_PageHandler_Func[8],
++	(Bit64u) VGA_PageHandler_Func[9],
++	(Bit64u) VGA_PageHandler_Func[10],
++	(Bit64u) VGA_PageHandler_Func[11],
++	(Bit64u) VGA_PageHandler_Func[12],
++	(Bit64u) VGA_PageHandler_Func[13],
++	(Bit64u) VGA_PageHandler_Func[14],
++	(Bit64u) VGA_PageHandler_Func[15],
+ };
+ 
+ 
+@@ -1150,12 +1150,12 @@
+ 
+ 
+ 		// assume 256MB max memory
+-		size_table = sizeof(Memory_PageHandler_table) / sizeof(Bit32u);
++		size_table = sizeof(Memory_PageHandler_table) / sizeof(Bit64u);
+ 		for( int lcv=0; lcv<memory.pages; lcv++ ) {
+ 			pagehandler_idx[lcv] = 0xff;
+ 
+ 			for( int lcv2=0; lcv2<size_table; lcv2++ ) {
+-				if( (Bit32u) memory.phandlers[lcv] == Memory_PageHandler_table[lcv2] ) {
++				if( (Bit64u) memory.phandlers[lcv] == Memory_PageHandler_table[lcv2] ) {
+ 					pagehandler_idx[lcv] = lcv2;
+ 					break;
+ 				}
+--- src/hardware/opl.cpp.origin	2015-06-16 01:40:49.911942900 +0200
++++ src/hardware/opl.cpp	2015-06-16 01:41:54.351809024 +0200
+@@ -1469,7 +1469,7 @@
+ 
+ 
+ 	for( int lcv=0; lcv<MAXOPERATORS; lcv++ ) {
+-		cur_wform_idx[lcv] = ((Bit32u) (op[lcv].cur_wform)) - ((Bit32u) &wavtable);
++		cur_wform_idx[lcv] = ((Bit64u) (op[lcv].cur_wform)) - ((Bit64u) &wavtable);
+ 	}
+ 
+ 	//****************************************************
+@@ -1571,7 +1571,7 @@
+ 	//****************************************************
+ 
+ 	for( int lcv=0; lcv<MAXOPERATORS; lcv++ ) {
+-		op[lcv].cur_wform = (Bit16s *) ((Bit32u) &wavtable + cur_wform_idx[lcv]);
++		op[lcv].cur_wform = (Bit16s *) ((Bit64u) &wavtable + cur_wform_idx[lcv]);
+ 	}
+ }
+ 
+--- src/hardware/dma.cpp.origin	2015-06-16 01:42:51.115024751 +0200
++++ src/hardware/dma.cpp	2015-06-16 01:44:04.361540100 +0200
+@@ -542,9 +542,9 @@
+ {
+ 	Bit8u size;
+ 
+-	size = sizeof(dma_state_callback_table) / sizeof(Bit32u);
++	size = sizeof(dma_state_callback_table) / sizeof(Bit64u);
+ 	for( int lcv=0; lcv<size; lcv++ ) {
+-		if( (Bit32u) dma_state_callback_table[lcv] == addr ) return lcv;
++		if( (Bit64u) dma_state_callback_table[lcv] == addr ) return lcv;
+ 	}
+ 
+ 
+@@ -553,9 +553,9 @@
+ }
+ 
+ 
+-Bit32u POD_State_Index_DMA_Callback( Bit8u index )
++Bit64u POD_State_Index_DMA_Callback( Bit8u index )
+ {
+-	return (Bit32u) dma_state_callback_table[index];
++	return (Bit64u) dma_state_callback_table[index];
+ }
+ 
+ 
+@@ -564,7 +564,7 @@
+ 	Bit8u dma_callback;
+ 
+ 
+-	dma_callback = POD_State_Find_DMA_Callback( (Bit32u) (callback) );
++	dma_callback = POD_State_Find_DMA_Callback( (Bit64u) (callback) );
+ 
+ 	//******************************************
+ 	//******************************************
+@@ -600,7 +600,7 @@
+ 	Bit8u dma_callback;
+ 
+ 
+-	dma_callback = POD_State_Find_DMA_Callback( (Bit32u) (callback) );
++	dma_callback = POD_State_Find_DMA_Callback( (Bit64u) (callback) );
+ 
+ 	//******************************************
+ 	//******************************************
+--- src/hardware/pic.cpp.origin	2015-06-16 01:36:06.012537505 +0200
++++ src/hardware/pic.cpp	2015-06-16 01:46:00.634634227 +0200
+@@ -805,12 +805,12 @@
+ 
+ 
+ 
+-Bit16u PIC_State_FindEvent( Bit32u addr ) {
++Bit16u PIC_State_FindEvent( Bit64u addr ) {
+ 	int size;
+ 
+-	size = sizeof(pic_state_event_table) / sizeof(Bit32u);
++	size = sizeof(pic_state_event_table) / sizeof(Bit64u);
+ 	for( int lcv=0; lcv<size; lcv++ ) {
+-		if( addr == (Bit32u) (pic_state_event_table[lcv]) ) return lcv;
++		if( addr == (Bit64u) (pic_state_event_table[lcv]) ) return lcv;
+ 	}
+ 
+ 
+@@ -820,12 +820,12 @@
+ }
+ 
+ 
+-Bit16u PIC_State_FindTimer( Bit32u addr ) {
++Bit16u PIC_State_FindTimer( Bit64u addr ) {
+ 	int size;
+ 
+-	size = sizeof(pic_state_timer_table) / sizeof(Bit32u);
++	size = sizeof(pic_state_timer_table) / sizeof(Bit64u);
+ 	for( int lcv=0; lcv<size; lcv++ ) {
+-		if( addr == (Bit32u) (pic_state_timer_table[lcv]) ) return lcv;
++		if( addr == (Bit64u) (pic_state_timer_table[lcv]) ) return lcv;
+ 	}
+ 
+ 
+@@ -835,17 +835,17 @@
+ }
+ 
+ 
+-Bit32u PIC_State_IndexEvent( Bit16u index ) {
++Bit64u PIC_State_IndexEvent( Bit16u index ) {
+ 	if( index == 0xffff ) return 0;
+ 
+-	return (Bit32u) (pic_state_event_table[index]);
++	return (Bit64u) (pic_state_event_table[index]);
+ }
+ 
+ 
+-Bit32u PIC_State_IndexTimer( Bit16u index ) {
++Bit64u PIC_State_IndexTimer( Bit16u index ) {
+ 	if( index == 0xffff ) return 0;
+ 
+-	return (Bit32u) (pic_state_timer_table[index]);
++	return (Bit64u) (pic_state_timer_table[index]);
+ }
+ 
+ 
+@@ -870,13 +870,13 @@
+ 
+ 
+ 				for( int lcv=0; lcv<PIC_QUEUESIZE; lcv++ ) {
+-					Bit32u pic_addr;
++					Bit64u pic_addr;
+ 
+-					pic_addr = (Bit32u) pic_queue.entries[lcv].next;
++					pic_addr = (Bit64u) pic_queue.entries[lcv].next;
+ 					pic_next_ptr[lcv] = 0xffff;
+ 
+ 					for( int lcv2=0; lcv2<PIC_QUEUESIZE; lcv2++ ) {
+-						if( pic_addr == (Bit32u) &pic_queue.entries[lcv2] ) {
++						if( pic_addr == (Bit64u) &pic_queue.entries[lcv2] ) {
+ 							pic_next_ptr[lcv] = lcv2;
+ 							break;
+ 						}
+@@ -919,7 +919,7 @@
+ 					stream.write(reinterpret_cast<const char*>(&pic_queue.entries[lcv].value), sizeof(pic_queue.entries[lcv].value) );
+ 
+ 					// - function ptr
+-					event_idx = PIC_State_FindEvent( (Bit32u) (pic_queue.entries[lcv].pic_event) );
++					event_idx = PIC_State_FindEvent( (Bit64u) (pic_queue.entries[lcv].pic_event) );
+ 					stream.write(reinterpret_cast<const char*>(&event_idx), sizeof(event_idx) );
+ 
+ 					// - reloc ptr
+@@ -947,7 +947,7 @@
+ 				ticker_ptr = firstticker;
+ 				for( int lcv=0; lcv<ticker_size; lcv++ ) {
+ 					// - function ptr
+-					ticker_handler_idx = PIC_State_FindTimer( (Bit32u) (ticker_ptr->handler) );
++					ticker_handler_idx = PIC_State_FindTimer( (Bit64u) (ticker_ptr->handler) );
+ 					stream.write(reinterpret_cast<const char*>(&ticker_handler_idx), sizeof(ticker_handler_idx) );
+ 
+ 					// - reloc new ptr (leave alone)
+--- src/hardware/dbopl.cpp.origin	2015-06-16 01:48:18.407685663 +0200
++++ src/hardware/dbopl.cpp	2015-06-16 01:49:18.980895573 +0200
+@@ -1538,7 +1538,7 @@
+ 				}
+ 			}
+ 
+-			wavebase_idx[lcv1][lcv2] = (Bit32u) chip.chan[lcv1].op[lcv2].waveBase - (Bit32u) &WaveTable;
++			wavebase_idx[lcv1][lcv2] = (Bit64u) chip.chan[lcv1].op[lcv2].waveBase - (Bit64u) &WaveTable;
+ 		}
+ 
+ 
+@@ -1641,7 +1641,7 @@
+ 		for( int lcv2=0; lcv2<2; lcv2++ ) {
+ 			chip.chan[lcv1].op[lcv2].volHandler = VolumeHandlerTable[ volhandler_idx[lcv1][lcv2] ];
+ 
+-			chip.chan[lcv1].op[lcv2].waveBase = (Bit16s *) ((Bit32u) wavebase_idx[lcv1][lcv2] + (Bit32u) &WaveTable);
++			chip.chan[lcv1].op[lcv2].waveBase = (Bit16s *) ((Bit64u) wavebase_idx[lcv1][lcv2] + (Bit64u) &WaveTable);
+ 		}
+ 
+ 
