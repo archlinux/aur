@@ -1,0 +1,16 @@
+pkgbase = perl-getopt-euclid
+	pkgdesc = Executable Uniform Command-Line Interface Descriptions
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Getopt-Euclid
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FA/FANGLY/Getopt-Euclid-0.4.5.tar.gz
+	md5sums = 4f5636af10a0939798bc7864a4dfdfab
+	sha512sums = 4a359aa53103c429bb1724f14961998cc879643573d955e935af9bb757fdbbe40f1276f3a15515011602e56eaf538fa7f30185e3050eb1f83948018b0806bbd4
+
+pkgname = perl-getopt-euclid
+
