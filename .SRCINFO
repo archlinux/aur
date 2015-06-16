@@ -1,0 +1,17 @@
+pkgbase = perl-sub-override
+	pkgdesc = Perl extension for easily overriding subroutines
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sub-Override
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-fatal>=0.010
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/Sub-Override-0.09.tar.gz
+	md5sums = 6889e2526c0e4f70da157fdf712542d3
+	sha512sums = 35000e8cabb6ca4cc0cac53af99fc9cb8ac14b1e71dbfa27dc58a339cb1b54e439064f2241798e351cc5ad297a2f9e4fde870ca97e2eb09a2430c11af589d412
+
+pkgname = perl-sub-override
+
