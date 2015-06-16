@@ -10,7 +10,7 @@ url="http://www.vdr-portal.de/board1-news/board2-vdr-news/p1039565-announce-vdr-
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=29502"
         "favorites-makefile-1.7.36.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32856")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
