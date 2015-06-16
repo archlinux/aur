@@ -1,0 +1,15 @@
+pkgbase = nodejs-google-image-search
+	pkgdesc = Download Images from Google Image in nodejs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/Filirom1/node-google-image-search
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = google-image-search-0.1.0.tgz
+	source = http://registry.npmjs.org/google-image-search/-/google-image-search-0.1.0.tgz
+	sha1sums = 66d9c47d6f157223cd5576113b7a64ee3b0c62f2
+
+pkgname = nodejs-google-image-search
+
