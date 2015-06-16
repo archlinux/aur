@@ -1,0 +1,16 @@
+pkgbase = perl-class-tiny
+	pkgdesc = Minimalist class construction
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://metacpan.org/release/Class-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Class-Tiny-1.001.tar.gz
+	md5sums = 2a5bfa3a8bb50a1ea930fa97514eeed4
+	sha512sums = 7d64a78f72edb249b988da9ab7e4769f2721030eeb1dd3e111f1d0ae2bed76ea6ee0d5feb30867eaf78f0d436ff2e72f701cb2c51d53ce40bb0840f9b3c33dc7
+
+pkgname = perl-class-tiny
+
