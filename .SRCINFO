@@ -1,0 +1,17 @@
+pkgbase = perl-javascript-minifier-xs
+	pkgdesc = XS based JavaScript minifier
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/JavaScript-Minifier-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/JavaScript-Minifier-XS-0.09.tar.gz
+	md5sums = b8d0e8110d2980573d807268bfab0768
+	sha512sums = b46e5e0fc70d6a28829f9e6878c0a8285b6b4ba680de85ffa6d567ca00d8aaced66d4e8bf800c96b923fb261095fe0722648ce930925bb55c47e549c8ef574c8
+
+pkgname = perl-javascript-minifier-xs
+
