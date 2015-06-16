@@ -1,0 +1,14 @@
+pkgbase = large-c
+	pkgdesc = a pseudo-interpreter of the C programming language
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://labs.cybozu.co.jp/blog/kazuhoatwork/2006/01/c.php
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = gcc
+	source = http://labs.cybozu.co.jp/blog/kazuhoatwork/my_projects/c/C
+	md5sums = 3e62807bd6d2ea82ec48bee387562386
+
+pkgname = large-c
+
