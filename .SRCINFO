@@ -1,0 +1,18 @@
+pkgbase = perl-dist-zilla-plugin-signature
+	pkgdesc = sign releases with Module::Signature
+	pkgver = 1.100930
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-Signature
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dist-zilla>=2.100921
+	depends = perl-file-chdir
+	depends = perl-module-signature
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/Dist-Zilla-Plugin-Signature-1.100930.tar.gz
+	md5sums = c443e2906036e45836576c964b610dc1
+	sha512sums = b5e247842a17922700c1250601afbe60f60d9f7da617af39d26ef1dce004ae44913c42ef2019c22f49e437d0df99ceff6ecb2de1a461f4f3b84247f49ba4028a
+
+pkgname = perl-dist-zilla-plugin-signature
+
