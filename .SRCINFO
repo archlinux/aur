@@ -1,0 +1,17 @@
+pkgbase = perl-poe-component-generic
+	pkgdesc = A POE component that provides non-blocking access to a blocking object.
+	pkgver = 0.1403
+	pkgrel = 1
+	url = http://search.cpan.org/dist/POE-Component-Generic
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-devel-symdump>=2
+	depends = perl-poe>=1.311
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GW/GWYN/POE-Component-Generic-0.1403.tar.gz
+	md5sums = 87d9ddc0f06684a15c4303c8733393d5
+	sha512sums = c2da67f177547f6f52dea266aec5fa962a7ba2c0f946b7615306a43b6136e77733d58404fd682885c5ff0ef6d802c751aebb9eae82d03efb6424ab3b561b7061
+
+pkgname = perl-poe-component-generic
+
