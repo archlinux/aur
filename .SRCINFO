@@ -1,0 +1,17 @@
+pkgbase = perl-uri-nested
+	pkgdesc = URI::Nested - Nested URIs
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/URI-Nested
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-uri>=1.40
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-Nested-0.10.tar.gz
+	md5sums = bdb8ce035cfe439edcd524d39c6bfe51
+	sha512sums = 00f6bc5ac77e629b7bd82ba593f839dc2da394c5e8fafc03db2d816fffc149557ece6a50e0b82867c4e458d1dff108535bb3ec4768401a30450f51e5a827b9e4
+
+pkgname = perl-uri-nested
+
