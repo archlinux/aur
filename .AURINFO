@@ -1,0 +1,15 @@
+pkgbase = perl-mojolicious-plugin-oauth2
+	pkgdesc = Auth against OAuth2 APIs
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Mojolicious-Plugin-OAuth2
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-io-socket-ssl
+	depends = perl-mojolicious>=1.64
+	source = http://search.mcpan.org/CPAN/authors/id/M/MR/MRAMBERG/Mojolicious-Plugin-OAuth2-1.1.tar.gz
+	options = !emptydirs
+
+pkgname = perl-mojolicious-plugin-oauth2
+
