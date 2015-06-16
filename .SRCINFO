@@ -1,0 +1,13 @@
+pkgbase = pidgin-kwallet-plugin-git
+	pkgdesc = A Pidgin plugin written in Perl for storing passwords using KWallet
+	pkgver = 1
+	pkgrel = 2
+	url = https://gitorious.org/libpurple-kwallet-plugin
+	arch = any
+	license = GPL
+	depends = perl-net-dbus
+	source = http://gitorious.org/libpurple-kwallet-plugin/libpurple-kwallet-plugin/blobs/raw/master/libpurple_kwallet_plugin.pl
+	md5sums = SKIP
+
+pkgname = pidgin-kwallet-plugin-git
+
