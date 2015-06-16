@@ -1,0 +1,17 @@
+pkgbase = perl-module-install-repository
+	pkgdesc = Automatically sets repository URL from svn/svk/Git checkout
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Install-Repository
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-path-class
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Module-Install-Repository-0.06.tar.gz
+	md5sums = cea8fc958cebe19e1be64d7cadbbc470
+	sha512sums = 793db0c81ddded246dc2feb9358ed2367492de077639f947b56290d381ec6310cfa5dc123bd7cd5cbdb2b770850a47c57206110c4dabb53cb577df33a445d54c
+
+pkgname = perl-module-install-repository
+
