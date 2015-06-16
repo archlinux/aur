@@ -1,0 +1,15 @@
+pkgbase = nodejs-jison
+	pkgdesc = An API for creating parsers in JavaScript
+	pkgver = 0.4.15
+	pkgrel = 1
+	url = https://github.com/zaach/jison
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = jison-0.4.15.tgz
+	source = http://registry.npmjs.org/jison/-/jison-0.4.15.tgz
+	sha1sums = 6c6336c43e76b13c7ce29f96898c8bdf4e1e38fa
+
+pkgname = nodejs-jison
+
