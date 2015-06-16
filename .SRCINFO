@@ -1,0 +1,17 @@
+pkgbase = perl-audio-musepack
+	pkgdesc = An object-oriented interface to Musepack file information and APE tag fields.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Audio-Musepack
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.005
+	depends = perl-audio-scan>=0.85
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DANIEL/Audio-Musepack-1.0.1.tar.gz
+	md5sums = 0a3adba7352af764f9fdfc3e8382aca8
+	sha512sums = 704b8d7948675fc8c5c691dd1ca10b375b6089b5bd538ccfeefbeed327bb95661e45562dccf39aa95852810e3e2dd75e6a576781fc781b8bf1b5c33569db1f50
+
+pkgname = perl-audio-musepack
+
