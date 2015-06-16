@@ -1,0 +1,17 @@
+pkgbase = perl-digest-hamsi
+	pkgdesc = Perl interface to the Hamsi digest algorithm
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Hamsi
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-Hamsi-0.03.tar.gz
+	md5sums = 0c914e94abb5f532659be89e417f9644
+	sha512sums = 2455c18abd429a98f21d29dab1ebc2fdc8152c7bd5111a6eb53c525438463b9fd37f297931378380d39a1106b942a92e3d4f2d523913f3244172cf2221db7509
+
+pkgname = perl-digest-hamsi
+
