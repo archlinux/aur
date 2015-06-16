@@ -1,0 +1,18 @@
+pkgbase = perl-unix-statgrab
+	pkgdesc = Perl extension for collecting information about the machine
+	pkgver = 0.04
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Unix-Statgrab
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = libstatgrab>=0.17
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VP/VPARSEVAL/Unix-Statgrab-0.04.tar.gz
+	md5sums = 94787010e27183ce5cf354c58c465d0d
+	sha512sums = 8e02f1424b8657568a310766630f8a2ea94c0abef4d6ebf84d4e605e21e685797bc44823ccde81b46bb97681b95b3dd6fff805035aba7a571cb136b216aa42a6
+
+pkgname = perl-unix-statgrab
+
