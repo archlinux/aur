@@ -1,0 +1,29 @@
+post_install()
+{
+    echo "creating file /etc/fedora-release (temporarily)..."
+    touch /etc/fedora-release
+    echo "Running NX post_install script..."
+    /usr/NX/nxclient --install fedora
+    echo "deleting file /etc/fedora-release..."
+    rm /etc/fedora-release
+}
+
+pre_remove()
+{
+    echo "Running NX pre_remove script..."
+    /usr/NX/scripts/setup/nxclient --uninstall fedora
+}
+
+post_remove()
+{
+    echo "Removing /usr/NX..."
+    rm -rf /usr/NX
+}
+
+pre_upgrade() {
+    pre_remove
+}
+
+post_upgrade() {
+    post_install
+}

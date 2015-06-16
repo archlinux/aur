@@ -1,0 +1,14 @@
+pkgbase = nomachine-enterprise-client
+	pkgdesc = Remote desktop application
+	pkgver = 4.6.4
+	pkgrel = 1
+	url = http://www.nomachine.com
+	install = nm-ent-client.install
+	arch = x86_64
+	arch = i686
+	license = custom:"Copyright 2002-2015 NoMachine S.a r.l."
+	conflicts = nomachine nxmanager nxwebplayer nxserver nxnode nxclient
+	options = !strip
+
+pkgname = nomachine-enterprise-client
+
