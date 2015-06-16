@@ -1,0 +1,17 @@
+pkgbase = perl-email-sender-transport-smtp-tls
+	pkgdesc = Email::Sender with Net::SMTP::TLS (Eg. Gmail)
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Email-Sender-Transport-SMTP-TLS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-email-sender>=1.300006
+	depends = perl-net-smtp-tls-butmaintained>=0.17
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Email-Sender-Transport-SMTP-TLS-0.15.tar.gz
+	md5sums = c1bc0d9a4486f1035af2c1ceda139f65
+	sha512sums = d2f44f5d2df42b0412c5556df7e846c9e1fb1dff0f864e2d801a158ffabaf255844c61c7e2bb2749a44448771c47f42784465f92ec4b8641ab4ab64dfbcef2a5
+
+pkgname = perl-email-sender-transport-smtp-tls
+
