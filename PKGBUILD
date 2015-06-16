@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 #install="$pkgname.install"
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/attachments/download/1004/vdr-plugin-$_plugname-$pkgver.tar.gz"
         "$pkgname-Makefile::http://projects.vdr-developer.org/git/vdr-plugin-chanman.git/plain/chanman/Makefile")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
