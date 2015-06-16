@@ -1,0 +1,17 @@
+pkgbase = perl-amf-perl
+	pkgdesc = Flash Remoting in Perl
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/release/AMF-Perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbi>=0.01
+	depends = perl-exception-class>=0.01
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SI/SIMONF/AMF-Perl-0.15.tar.gz
+	md5sums = 653fd3f7c9d67c6ef7d78cea0545be8c
+	sha512sums = a12bbc0415b2f2adf64a61ec5642fce0e8abd0c42206502e48820909c7d3a784be833a43b78a31cb5c0c5bd7d79df587e9d0e49499f40d9cce2c8e8371d8fc5e
+
+pkgname = perl-amf-perl
+
