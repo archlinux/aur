@@ -1,0 +1,18 @@
+pkgbase = perl-test-spelling
+	pkgdesc = check for spelling errors in POD files
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Spelling
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-simple
+	depends = perl-ipc-run3>=0.044
+	depends = perl-pod-spell>=1.01
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Test-Spelling-0.20.tar.gz
+	md5sums = 4a22461c1356d99f6a7d29b6e14b5e0c
+	sha512sums = 43c401c2e61d7b2365d0cd69abc5f90a570fa3469632843ff8379ae7e85e50fe18786d89023f2aab635a805ecdadcd270ec36c19a7c1fbc5520c7c38604ff5a7
+
+pkgname = perl-test-spelling
+
