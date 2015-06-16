@@ -1,0 +1,16 @@
+pkgbase = perl-test-compile
+	pkgdesc = Check whether Perl files compile correctly.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Compile
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-universal-require
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EG/EGILES/Test-Compile-v1.2.1.tar.gz
+	md5sums = f93c3ec04034a42c21ffdc2d72b09200
+	sha512sums = ebc11e6209e89676900d847b312252fc9915576da08ac4c9c2c73cc446e8c5007c1cdc71f0b1e3b19980a9ec2b7b9190c2d823b8510a6e2f45e798b89a979b73
+
+pkgname = perl-test-compile
+
