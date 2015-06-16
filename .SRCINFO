@@ -1,0 +1,19 @@
+pkgbase = cups-pdf-beta
+	pkgdesc = PDF printer for cups (beta)
+	pkgver = 3.0beta2
+	pkgrel = 1
+	url = http://www.cups-pdf.de/
+	install = cups-pdf.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = cups
+	depends = ghostscript
+	provides = cups-pdf=3.0beta2
+	conflicts = cups-pdf
+	backup = etc/cups/cups-pdf.conf
+	source = http://www.cups-pdf.de/src/cups-pdf_3.0beta2.tar.gz
+	md5sums = fabfa3a96551a7dd2c466f8b120c13a5
+
+pkgname = cups-pdf-beta
+
