@@ -1,0 +1,17 @@
+pkgbase = perl-fvwmpiazza
+	pkgdesc = Fvwm module for tiling windows
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/FvwmPiazza
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-base
+	depends = perl-yaml-syck
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RU/RUBYKAT/FvwmPiazza-0.3.tar.gz
+	md5sums = 75f99074e811227a510d09dc17d9c246
+	sha512sums = dfb4138a1c1664c9142d429b783f2ad2571ac7bf344b5bd21834a0c6de7eac4ca37de971713a73f3f2fc4337260c9ba369c07af350f00b7804b8c969a03b6a48
+
+pkgname = perl-fvwmpiazza
+
