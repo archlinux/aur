@@ -1,0 +1,17 @@
+pkgbase = perl-digest-groestl
+	pkgdesc = Perl interface to the Groestl digest algorithm
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Groestl
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-Groestl-0.05.tar.gz
+	md5sums = 622396e62eae8be986ac35d4c7dbb42d
+	sha512sums = 6d9fc6989dd308700970cdcecba1940a321b86cf1c5eecdc050b453284b46f60fe2f4199e61b59748187ce5846c2a3b8bf678c6d862555d18943184f49129d31
+
+pkgname = perl-digest-groestl
+
