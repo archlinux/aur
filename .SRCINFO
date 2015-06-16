@@ -1,0 +1,17 @@
+pkgbase = perl-rtpg
+	pkgdesc = is a module for accessing to rtorrent's SCGI functions.
+	pkgver = 0.92
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RTPG
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mime-types
+	depends = perl-rpc-xml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/U/UN/UNERA/RTPG-0.92.tar.gz
+	md5sums = ff9393d30fd39ecc33e95bdcec091743
+	sha512sums = 62a2b691faaf0cf572611aae71a73cf357531a9e16d16879072c57c527fb9d8e4369b1fde9046eba269d3c9a8d4976847b0d43e5a424df5de34ba9b16f6e28dd
+
+pkgname = perl-rtpg
+
