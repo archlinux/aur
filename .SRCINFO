@@ -1,0 +1,16 @@
+pkgbase = perl-je
+	pkgdesc = Pure-Perl ECMAScript (JavaScript) Engine
+	pkgver = 0.060
+	pkgrel = 1
+	url = http://search.cpan.org/dist/JE
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-timedate
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/JE-0.060.tar.gz
+	md5sums = f256a0ec25d57c0ea0d58cf4930dc997
+	sha512sums = 9dfe88797cb8946b6c360c59cb5087523ec334e7f60933aab26da9fc2aa58c4cedf437393dd0d47de304ef9dba597690d754dbab112a858fb61950bef4660499
+
+pkgname = perl-je
+
