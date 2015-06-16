@@ -1,0 +1,16 @@
+pkgbase = perl-parse-plainconfig
+	pkgdesc = Parser/Generator of human-readable conf files
+	pkgver = 2.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parse-PlainConfig
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-paranoid
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORLISS/Parse-PlainConfig/Parse-PlainConfig-2.06.tar.gz
+	md5sums = 0c6ba58e095dbc3183162d805abf9973
+	sha512sums = 0592b3bc79d1bdbd65b22d62443362f07131e54a5223e3043c63c68482c46051f6330b8d32ad38a917d1ccd21a5002651b8d50f425bc27297d6db7e1a5d2df57
+
+pkgname = perl-parse-plainconfig
+
