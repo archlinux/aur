@@ -1,0 +1,14 @@
+pkgbase = perl-io-socket-multicast
+	pkgdesc = IO::Socket::Multicast - Object interface to socket communications for perl
+	pkgver = 1.12
+	pkgrel = 2
+	url = http://search.cpan.org/dist/IO-Socket-Multicast/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRAMBLE/IO-Socket-Multicast-1.12.tar.gz
+	options = !emptydirs
+
+pkgname = perl-io-socket-multicast
+
