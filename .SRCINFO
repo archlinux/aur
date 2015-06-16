@@ -1,0 +1,16 @@
+pkgbase = perl-html-fillinform-forceutf8
+	pkgdesc = FillInForm with utf8 encoding
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-FillInForm-ForceUTF8
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-fillinform
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/HTML-FillInForm-ForceUTF8-0.02.tar.gz
+	md5sums = 10b5a3fd3da9af7ebbbb792a49b90832
+	sha512sums = bafe978979e3a3deb0cc56c0cd0bb1fc3ee398317c29ba1c99b2e69442fe4f155a2a3f06cad087c4fcc845eeb74438fb15603415e830b3e339bffca3bb48f125
+
+pkgname = perl-html-fillinform-forceutf8
+
