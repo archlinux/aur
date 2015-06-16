@@ -28,7 +28,7 @@ _CPUSUFFIXES=( core2 k7 k8 k10 barcelona bobcat
 # taken from graysky linux-ck see: https://aur.archlinux.org/packages/linux-ck
 # Set these variables to ANYTHING (yes or no or 1 or 0 or "I like icecream") to enable them
 #
-#_NUMA_off=yes		# Disable NUMA in kernel config
+_NUMA_off=yes		# Disable NUMA in kernel config
 
 # batch mode:
 # enable batch mode to stop the pkgbuild from asking you what to do and just use defaults
@@ -135,6 +135,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # end linux-ARCH patches
+
 
   # added gcc 4.7.1 support for Kconfig and menuconfig
   # now inclued in pf patchset
