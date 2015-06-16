@@ -1,0 +1,17 @@
+pkgbase = mbpfan-git
+	pkgdesc = Automatically adjust the fan on a MacBook Pro
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/dgraziotin/Fan-Control-Daemon
+	install = mbpfan.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = mbpfan
+	source = mbpfan-git::git://github.com/dgraziotin/mbpfan.git
+	source = mbpfan.install
+	md5sums = SKIP
+	md5sums = 750a90c1ff128d9b7eafcdd765d3595b
+
+pkgname = mbpfan-git
+
