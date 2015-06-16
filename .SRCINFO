@@ -1,0 +1,17 @@
+pkgbase = perl-css-minifier-xs
+	pkgdesc = XS based CSS minifier
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CSS-Minifier-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/CSS-Minifier-XS-0.08.tar.gz
+	md5sums = 10a71fd208a20f69c13526a3f592d934
+	sha512sums = f9aaf1f035d23dfa42af5251ff66193c40685b50cdf3716a0d10796311d11f9f4da72efb8661924814450de79e782b952a845564a4e4871c61be89a07b017b91
+
+pkgname = perl-css-minifier-xs
+
