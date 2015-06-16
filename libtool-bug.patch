@@ -1,0 +1,11 @@
+--- src/Makefile	2012-07-14 20:23:57.052033955 -0500
++++ src/Makefile	2012-07-14 20:23:37.079180978 -0500
+@@ -30,7 +30,7 @@
+ 
+ install:	all
+ 		mkdir -p ${DESTDIR}${LIBDIR}
+-		libtool cp libdoor.la ${DESTDIR}${LIBDIR}/libdoor.la
++		libtool --mode=install cp libdoor.la ${DESTDIR}${LIBDIR}/libdoor.la
+ 		mkdir -p ${DESTDIR}${INCDIR}
+ 		cp ${HDRS} ${DESTDIR}${INCDIR}
+ 

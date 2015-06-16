@@ -1,0 +1,15 @@
+pkgbase = doorlib
+	pkgdesc = A library for writing native Unix bbs doors.
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://www.mbse.eu/bbsing/doorlib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.mbse.eu/download/bbsing/doorlib-0.9.6.tar.bz2
+	source = libtool-bug.patch
+	sha256sums = 6091dc60debfacbabf52767afb830d4e67e66d460a03cef16c3e40d8b7fe6d38
+	sha256sums = 65726269784996132a8e03d26d072f9175d0c70412154bd0b0931d351f847ed2
+
+pkgname = doorlib
+
