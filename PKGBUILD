@@ -13,7 +13,7 @@ depends=('boblight' 'gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 replaces=('vdr-boblight')
 conflicts=('vdr-boblight')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("vdr-plugin-boblight-0.0.6.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=37154")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('688acb760958646a8a1abe8607eaf2e0')
