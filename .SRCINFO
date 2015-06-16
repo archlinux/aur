@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-view-tenjin
+	pkgdesc = Tenjin view class for Catalyst.
+	pkgver = 0.050001
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-View-Tenjin
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime>=5.80
+	depends = perl-data-dump
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	depends = perl-tenjin>=0.070001
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/ID/IDOPEREL/Catalyst-View-Tenjin-0.050001.tar.gz
+	md5sums = a4b0bdc90fd04683721adaec866f0fb1
+	sha512sums = 6818d7cafb9f2f09cbd2ecc91eb27cb7fbde294de4f957ca2c61f95e7bca96e2f5cfa02933059f879868d38821575253ecab38ec9071196bf7f6249ea524fe94
+
+pkgname = perl-catalyst-view-tenjin
+
