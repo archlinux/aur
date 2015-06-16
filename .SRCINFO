@@ -1,0 +1,15 @@
+pkgbase = python-pygithub
+	pkgdesc = Python library implementing the full GitHub API v3
+	pkgver = 1.25.2
+	pkgrel = 1
+	url = http://github.com/jacquev6/PyGithub
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	replaces = python-github
+	source = https://github.com/jacquev6/PyGithub/archive/v1.25.2.tar.gz
+	md5sums = edf77b46036f58b2c857c62444b93166
+
+pkgname = python-pygithub
+
