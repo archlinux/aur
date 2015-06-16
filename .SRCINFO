@@ -1,0 +1,16 @@
+pkgbase = perl-php-serialization
+	pkgdesc = simple flexible means of converting the output of PHP's serialize() into the equivalent Perl memory structure, and vice versa.
+	pkgver = 0.34
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PHP-Serialization
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/PHP-Serialization-0.34.tar.gz
+	md5sums = 333af0848ad79931875a35cc61dc22e0
+	sha512sums = 72218973f21ab71419751cf818e6bd998235aa74bf8ae60ec4a6080ba169d0d7fcefde4f433ce3f6f30ed3084a651deb8aa3a5dd818fc6ebf3fb6188def4efe7
+
+pkgname = perl-php-serialization
+
