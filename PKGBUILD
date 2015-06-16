@@ -10,7 +10,7 @@ url="http://www.uli-eckhardt.de/vdr/autostart.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libcdio' 'libdbus' 'libdvdread' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 backup=("var/lib/vdr/plugins/$_plugname/cd.mpg")
 source=("http://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
         "autostart-improve_libcdio.diff::http://hg.uli-eckhardt.de/autostart/raw-rev/51e4428d565d"
