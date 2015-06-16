@@ -1,0 +1,17 @@
+pkgbase = perl-digest-jh
+	pkgdesc = Perl interface to the JH digest algorithm
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-JH
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-JH-0.05.tar.gz
+	md5sums = 36f304409205093de195988cb6343b96
+	sha512sums = 1ee58e8a25c7dec876696ea3e29410ca5aa06eaa44f1bf0d8530f4665da8ec4be0d9b2ea4cc3907604f65080657636e144e32799b97bd57a2251014964dff1e4
+
+pkgname = perl-digest-jh
+
