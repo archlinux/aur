@@ -13,7 +13,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('ffmpeg' "vdr-api=${_vdrapi}")
 makedepends=('git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-markad.git#commit=$_gitver"
         "markad-newmakefile-vdr-1.7.36.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32670"
         "50-$_plugname.conf")
