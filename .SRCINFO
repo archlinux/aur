@@ -1,0 +1,15 @@
+pkgbase = go-oracle
+	pkgdesc = Go oracle. Source analysis tool
+	pkgver = 20150616
+	pkgrel = 1
+	url = https://godoc.org/golang.org/x/tools/cmd/oracle
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = go-oracle
+
