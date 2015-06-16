@@ -1,0 +1,17 @@
+pkgbase = perl-digest-luffa
+	pkgdesc = Perl interface to the Luffa digest algorithm
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Luffa
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-Luffa-0.04.tar.gz
+	md5sums = fd2f8cb89035d5ffc23893845c8a81e7
+	sha512sums = cb3ece0cfcd54a9c98567de3ee08165f2b5c21c9629df4fcf2c69595eba2b2e04550c01dac7b71a702ac9f8561866f2e0a27c8326feb288326766fcce2268472
+
+pkgname = perl-digest-luffa
+
