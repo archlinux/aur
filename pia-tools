@@ -321,7 +321,7 @@ check_root "$*"
 ARGS=$(getopt -o "adprfguscihv" \
               -l "allow,disallow,\
                   port,refresh,pia-dns,google-dns,restore-dns,\
-                  restore,force,\
+                  restore,force,check,\
                   update,setup,info,help,verbose" \
               -n "$0" -- "$@")
 
