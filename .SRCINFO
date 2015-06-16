@@ -1,0 +1,20 @@
+pkgbase = perl-devel-partialdump
+	pkgdesc = Partial dumping of data structures, optimized for argument printing.
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Devel-PartialDump
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warn
+	depends = perl-class-tiny
+	depends = perl-sub-exporter
+	depends = perl-test-use-ok
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Devel-PartialDump-0.17.tar.gz
+	md5sums = c076e685aa184dede1454b3bea3430fa
+	sha512sums = c473341a7c3e8b26ec56b90fa868cace4f5ebf612176a0bbb3c904ec488c4f6779ac26b8417fa9c18a6b6c98149718f5b7b90d0e8e0ec8cbf4bbdc1de6d279de
+
+pkgname = perl-devel-partialdump
+
