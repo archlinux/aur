@@ -1,0 +1,21 @@
+pkgbase = perl-xml-hash-xs
+	pkgdesc = Simple and fast hash to XML and XML to hash conversion
+	pkgver = 0.42
+	pkgrel = 1
+	url = https://metacpan.org/release/XML-Hash-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = glibc>=2.21
+	depends = icu>=55.1
+	depends = libxml2>=2.9.2
+	depends = perl
+	depends = zlib>=1.2.8
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YO/YOREEK/XML-Hash-XS-0.42.tar.gz
+	md5sums = 07cd065f2a3e8798a7a5e333ce3b8b7f
+	sha512sums = c37298df0d0af2f45d8f82fde124b8ae65c433305dec8727703161a29b99dee6f19a34e0cc7e148145aed4c9a508871e681aa6ac3fe4b508800b3879f344b3e9
+
+pkgname = perl-xml-hash-xs
+
