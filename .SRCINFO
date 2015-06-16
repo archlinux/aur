@@ -1,0 +1,16 @@
+pkgbase = perl-file-rsync
+	pkgdesc = Wrapper module for rsync(1) http://rsync.samba.org/
+	pkgver = 0.43
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Rsync
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEAKIN/File-Rsync-0.43.tar.gz
+	md5sums = fe745f0460454250bc4ed557de8f11ac
+	sha512sums = b23d4305609eb7d21a19b2e45cd47eb57d3b71aaad741cc5f7457d1826e0509cafa0555975345afc11b5342f19621558940e513be2b17575f322469f732534cd
+
+pkgname = perl-file-rsync
+
