@@ -1,0 +1,13 @@
+pkgbase = qtfind
+	pkgdesc = qt5 search tool for pcmanfm-qt
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://forum.manjaro.org/index.php?topic=16371.0
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = qt5-base
+	source = qtfind_1.2.tar.gz
+
+pkgname = qtfind
+
