@@ -1,0 +1,15 @@
+pkgbase = mariopants
+	pkgdesc = Music editor based on SNES Mario Paint.
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://rainwarrior.ca/projects/nes/mariopants.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = sdl
+	depends = tk
+	source = http://rainwarrior.ca/projects/nes/mariopants11src.tar.gz
+	sha256sums = 6c9772b71e421c4860232111fb84c6ef4fac03899df5c080d658a5dd516d987b
+
+pkgname = mariopants
+
