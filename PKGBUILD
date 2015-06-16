@@ -10,7 +10,7 @@ url="http://www.saunalahti.fi/rahrenbe/vdr/rssreader/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('curl' 'expat' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz")
 backup=('var/lib/vdr/plugins/rssreader/rssreader.conf'
         "etc/vdr/conf.avail/50-$_plugname.conf")
