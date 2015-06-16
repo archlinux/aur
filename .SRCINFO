@@ -1,0 +1,16 @@
+pkgbase = perl-mojolicious-plugin-toto
+	pkgdesc = A simple tab and object based site structure
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mojolicious-Plugin-Toto
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mojolicious>=3.84
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDUGGAN/Mojolicious-Plugin-Toto-0.25.tar.gz
+	md5sums = 49f7ca0dd48bf4b0693f66fdc5364e04
+	sha512sums = b227f63e4b411a6cc2d3b60b3a626e5789eef367ddbc4dc2c1e9b011493da31e4e0a2ff2050edad474d73d6ff19f0db8ae4dcb9e01da92b00059ddbefb7b575b
+
+pkgname = perl-mojolicious-plugin-toto
+
