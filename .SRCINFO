@@ -1,0 +1,16 @@
+pkgbase = perl-html-wikiconverter-tikiwiki
+	pkgdesc = Convert HTML to TikiWiki markup
+	pkgver = 0.50
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter-TikiWiki
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-wikiconverter>=0.5
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DIBERRI/HTML-WikiConverter-TikiWiki-0.50.tar.gz
+	md5sums = 25fa2d275319aa0e00aff52ddc2f26ec
+	sha512sums = e84d0d7b101a34666a70dd9a59df516be818e7f96bdc4b4dc6e6f80bc42978015d8597b8cced7ffaa68692da77d8db6fc8d49774cc9a26fd351f3e9c9839f097
+
+pkgname = perl-html-wikiconverter-tikiwiki
+
