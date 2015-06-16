@@ -1,0 +1,16 @@
+pkgbase = perl-text-emoticon-msn
+	pkgdesc = Emoticon filter of MSN Messenger
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Emoticon-MSN
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-emoticon>=0.02
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Text-Emoticon-MSN-0.04.tar.gz
+	md5sums = 726998dec4de488edbe4710980160c37
+	sha512sums = 42c706fd8cc9f7821da9293d5e547c6a3bd625f2bbe3428f6ac83206458e441d0194fae24bf1e20f3a77f35ae0b825fdf4295a500ad32da3edd47bc9472d97df
+
+pkgname = perl-text-emoticon-msn
+
