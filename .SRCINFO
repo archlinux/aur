@@ -1,0 +1,33 @@
+pkgbase = weston-rift-git
+	pkgdesc = Reference implementation of a Wayland compositor with Oculus Rift support
+	pkgver = 1.8.90.4701.6e605c5
+	pkgrel = 1
+	url = https://github.com/Nealefelaen/weston-rift
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxkbcommon
+	depends = wayland
+	depends = mesa
+	depends = poppler-glib
+	depends = mtdev
+	depends = libva
+	depends = libinput>=0.4
+	depends = libxcursor
+	depends = glu
+	depends = cairo
+	depends = pixman
+	depends = libunwind
+	depends = pango
+	depends = colord
+	depends = libwebp
+	depends = oculus-rift-sdk-jherico-git
+	provides = weston
+	conflicts = weston
+	conflicts = weston-git
+	source = weston::git+https://github.com/ChristophHaag/weston-rift.git
+	sha1sums = SKIP
+
+pkgname = weston-rift-git
+
