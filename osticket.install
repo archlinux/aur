@@ -1,0 +1,39 @@
+post_install() {
+  echo -n "adding http system group... "
+  groupadd http
+  echo "done."
+  chgrp -R http /srv/http/osticket
+  post_upgrade
+  cat << 'EOM'
+
+==> NOTES:
+
+ -> In order to use osticket, you have to be in the 'http' group
+
+ -> Setup Apache, MySQL and PHP, following 'http://wiki.archlinux.org/index.php/LAMP'
+
+ -> To finish the installation process, navigate to 'http://localhost/osticket' 
+    with your web browser.
+
+==> Need help installing osTicket?  
+
+ -> Read Documentation at 'http://osticket.com/wiki/Main_Page'
+
+EOM
+}
+
+post_upgrade() {
+  true
+}
+
+pre_remove() {
+  true
+}
+
+post_remove() {
+  true
+}
+
+op=$1
+shift
+$op $*
