@@ -1,8 +1,7 @@
-
 # Maintainer: mawcomw <mawcomw@gmail.com>
 
 pkgname=redmine
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A flexible project management web application. Written using the Ruby on Rails, it is cross-platform and cross-database."
 arch=('any')
@@ -38,7 +37,7 @@ backup=('usr/share/webapps/redmine/config/configuration.yml'
 #changelog
 source=("http://www.redmine.org/releases/$pkgname-$pkgver.tar.gz")
 #noextract
-md5sums=('edc27c4de4e8ac52f669883617d4dd5d')
+md5sums=('493463eff3ba9267233648536c59eb85')
 #sha1sums=()
 #sha256sums=()
 #sha384sums=()
