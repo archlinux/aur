@@ -1,0 +1,17 @@
+pkgbase = perl-mojox-validator
+	pkgdesc = Validator for Mojolicious
+	pkgver = 0.0016
+	pkgrel = 1
+	url = https://metacpan.org/release/MojoX-Validator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-input-validator
+	depends = perl-mojolicious>=5.81
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/MojoX-Validator-0.0016.tar.gz
+	md5sums = 52093355f92eb7784219a6db0eab81c4
+	sha512sums = ff298577ee4274b5e907a15f0e8889b5b3a0a1010a8d3f87999ffc9776752a7660642caace3762c2db457e82e0637b847bea5b2ef7316e7bea79b6ca9f8e6930
+
+pkgname = perl-mojox-validator
+
