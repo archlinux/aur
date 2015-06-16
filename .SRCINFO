@@ -1,0 +1,18 @@
+pkgbase = perl-mojox-renderer-xslate
+	pkgdesc = Text::Xslate renderer for Mojo
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MojoX-Renderer-Xslate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mojolicious>=3
+	depends = perl-text-xslate>=0.2013
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/MojoX-Renderer-Xslate-0.09.tar.gz
+	md5sums = 49be2805556bc3e9c71ca6343f16c3bf
+	sha512sums = 8b23e5931dbadf761d2cdfadd0e7bb44ee9f8992413ebfd741217b97fbcc416f69a74160bcc24b8786c59778ad2a95e7d89717371d01b9e1125eba8efe681022
+
+pkgname = perl-mojox-renderer-xslate
+
