@@ -5,7 +5,7 @@
 _pkgname=libevhtp
 pkgname="${_pkgname}"-seafile
 pkgver=1.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A more flexible replacement for libevent's httpd API. [Built for seafile]"
 arch=('i686' 'x86_64' 'armv5te' 'armv6h' 'armv7h')
 url="https://github.com/ellzey/libevhtp"
@@ -33,4 +33,4 @@ package () {
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
 	cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
-sha256sums=('9007ed1e6e4509b677267d4cea69248a84da6e43552c6363e0f09c55f4795f68')
+sha256sums=('fc8572823ae7ed77cd0db8fd0e25983ebc770b271d36905fb1379db371aab28a')
