@@ -1,0 +1,16 @@
+pkgbase = perl-business-ismn
+	pkgdesc = work with International Standard Music Numbers
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Business-ISMN
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-tie-cycle>=1.21
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/B/BD/BDFOY/Business-ISMN-1.13.tar.gz
+	md5sums = e8696a78b4aa8a99869fbb0625c5cc13
+	sha512sums = bad9fdfe16a6b62c823019af4162e0cb2f97dbda8cc5cad01ff3a6e80d22e5fa1d260ef410ad1393d03fc750f7976f06932ac948390cdeb995cc458e1d3cd984
+
+pkgname = perl-business-ismn
+
