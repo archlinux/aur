@@ -1,0 +1,17 @@
+pkgbase = ruby-taglib-ruby
+	pkgdesc = Ruby interface for the taglib C++ library
+	pkgver = 0.7.0
+	pkgrel = 2
+	url = http://robinst.github.io/taglib-ruby/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	depends = taglib
+	noextract = taglib-ruby-0.7.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/taglib-ruby-0.7.0.gem
+	sha1sums = bbaa0c769f25d207af3d3c8e8339c462da5714e1
+
+pkgname = ruby-taglib-ruby
+
