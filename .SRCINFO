@@ -1,0 +1,16 @@
+pkgbase = perl-convert-bencode
+	pkgdesc = Functions for converting to/from bencoded strings
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Convert-Bencode
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OR/ORCLEV/Convert-Bencode-1.03.tar.gz
+	md5sums = be0831c69fe581908d33bbebff0b5760
+	sha512sums = 880ca4acff1e93b3bddf837921225d31bb0a697214db5eec8f906897b305ddc4d11b67587e5cae43b0dd7e4aa6c3bee6aee172c51750a3b70929ac3c99b8f582
+
+pkgname = perl-convert-bencode
+
