@@ -7,6 +7,7 @@ pkgdesc="A multi-coin wallet that supports trustless cross-chain trading"
 arch=('x86_64')
 url="http://mercuryex.com/"
 license=('MIT')
+depends=('bash' 'java-openjfx')
 source_x86_64=("https://github.com/mappum/mercury/releases/download/0.0.2-alpha/MercuryWallet-0.0.2.jar"
 	"mercuryex.sh"
 	"LICENSE.md"
