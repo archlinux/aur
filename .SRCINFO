@@ -1,0 +1,16 @@
+pkgbase = perl-text-caml
+	pkgdesc = Mustache template engine
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Caml
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Text-Caml-0.10.tar.gz
+	md5sums = b129a4f5781e87a64f1a940c017f74e1
+	sha512sums = a0252b7a4d8c2ce1bfb9f43efdec5be4f9561034821f43ff0b03bc8d23f6c34d349afed057bfb5dfa80adfc62e2640531ac600f6bb0199302136971a11bbbd12
+
+pkgname = perl-text-caml
+
