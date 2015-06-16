@@ -1,0 +1,19 @@
+pkgbase = perl-dbix-class-encodedcolumn
+	pkgdesc = Automatically encode column values
+	pkgver = 0.00012
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-Class-EncodedColumn
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-dbd-sqlite
+	makedepends = perl-dir-self
+	depends = perl-dbix-class>=0.06002
+	depends = perl-sub-name>=0.04
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WR/WREIS/DBIx-Class-EncodedColumn-0.00012.tar.gz
+	md5sums = 6753b16841df185e30a4471d82b030a0
+	sha512sums = 797f88f2521119f63c8ebf3d20edab451fa240898df9c5a0f1ae66556da6f60350f9bbe34ef113e06e1c6d30b84daafdaa99e1d55f4a2f6ddfa46ecfcf3fcb92
+
+pkgname = perl-dbix-class-encodedcolumn
+
