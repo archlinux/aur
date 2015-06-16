@@ -1,0 +1,16 @@
+pkgbase = perl-locale-msgfmt
+	pkgdesc = Compile .po files to .mo files
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Locale-Msgfmt
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.5
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Locale-Msgfmt-0.15.tar.gz
+	md5sums = 7e6fde43db034f765f3a425dfa1dd4d8
+	sha512sums = 4de0462c6c420f4d4026acd78838db72e997119688f758183cd182bf3595f4f732152193df995bb546e1dc8ddd5f7f509702c40fcab9d562ffe7876a571539c4
+
+pkgname = perl-locale-msgfmt
+
