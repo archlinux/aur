@@ -1,0 +1,21 @@
+pkgbase = perl-poe-component-jabber
+	pkgdesc = A POE Component for communicating over Jabber
+	pkgver = 3.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/POE-Component-Jabber
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.10.0
+	depends = perl-authen-sasl>=2.12
+	depends = perl-digest-sha1>=2.11
+	depends = perl-poe>=1.003
+	depends = perl-poe-component-sslify>=0.15
+	depends = perl-poe-filter-xml>=0.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NP/NPEREZ/POE-Component-Jabber-3.00.tar.gz
+	md5sums = 821500f5938b30db17cb496ae4006d73
+	sha512sums = a7fff4b5854d82c5948d874a4931b6fd6650661bfae9ed2a72028fb6c122da3370b91a5c6b95b5342c02000154d8c11c6dccfd0b2d65992ad54d7e569f61f994
+
+pkgname = perl-poe-component-jabber
+
