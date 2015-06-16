@@ -1,0 +1,15 @@
+pkgbase = rubiksolver-git
+	pkgdesc = A Qt/QML application to assist with solving the popular Rubik's cube
+	pkgver = 1.1.r0.g83426da
+	pkgrel = 1
+	url = https://github.com/qrwteyrutiyoup/rubiksolver
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-quick1
+	source = git://github.com/qrwteyrutiyoup/rubiksolver.git
+	sha256sums = SKIP
+
+pkgname = rubiksolver-git
+
