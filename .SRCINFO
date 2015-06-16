@@ -1,0 +1,17 @@
+pkgbase = perl-openoffice-oodoc
+	pkgdesc = The Perl Open OpenDocument Connector
+	pkgver = 2.125
+	pkgrel = 1
+	url = http://search.cpan.org/dist/OpenOffice-OODoc
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-archive-zip>=1.18
+	depends = perl-xml-twig>=3.32
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMGDOC/OpenOffice-OODoc-2.125.tar.gz
+	md5sums = 270f34f94d7cc627a9944749eccf678f
+	sha512sums = 2366461e6166c7219070624942e559d499a1aca65697213335aaa427d0b3c472fa4c07e39ea7164343db22890143c6d1d3d1eb5be215280700ae9f5e663b0849
+
+pkgname = perl-openoffice-oodoc
+
