@@ -1,0 +1,20 @@
+post_install() {
+    usr/sbin/update-libguestfs-appliance
+}
+
+remove_old_appliance() {
+    rm -f usr/lib/guestfs/{kernel,initrd,root,README.fixed}
+}
+
+pre_remove() {
+    remove_old_appliance
+    rm -f /var/cache/guestfs/appliance-*
+}
+
+pre_upgrade() {
+    remove_old_appliance
+}
+
+post_upgrade() {
+    post_install
+}

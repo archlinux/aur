@@ -1,0 +1,49 @@
+pkgbase = libguestfs
+	pkgdesc = Access and modify virtual machine disk image
+	pkgver = 1.28.10
+	pkgrel = 1
+	url = http://libguestfs.org
+	install = appliance.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = qemu
+	makedepends = pcre
+	makedepends = cdrkit
+	makedepends = libvirt
+	makedepends = libconfig
+	makedepends = libxml2
+	makedepends = gperf
+	makedepends = python2
+	makedepends = perl
+	makedepends = perl-string-shellquote
+	makedepends = perl-libintl-perl
+	makedepends = perl-sys-virt
+	makedepends = ruby
+	makedepends = ocaml-findlib
+	makedepends = ocaml
+	depends = qemu
+	depends = augeas
+	depends = hivex>=1.3.2
+	depends = libconfig
+	depends = libvirt
+	depends = fuse
+	depends = file
+	depends = cpio
+	depends = wget
+	optdepends = python2: Python bindings
+	optdepends = perl: Perl Bindings
+	optdepends = perl-sys-virt: Sys-Virt tools
+	optdepends = ocaml: Ocaml libs
+	provides = guestfish=1.28.10
+	backup = etc/libguestfs-tools.conf
+	backup = etc/xdg/virt-builder/repos.d/libguestfs.conf
+	backup = etc/xdg/virt-builder/repos.d/libguestfs.gpg
+	source = http://libguestfs.org/download/1.28-stable/libguestfs-1.28.10.tar.gz
+	source = update-libguestfs-appliance
+	sha512sums = 95c659be0b2f6fd5880c253d5b4ad6ec2adfdc6078c1679ebdb0df4ebb8ae90bcc703cb513350fc1fdea0ea28e9c5585fbccc5cbff1a4fe39338bb39b2b8668d
+	sha512sums = 044035f1bcd56d6475301ad903003d036602e518dc896b0a050db9ae67cdc6662dda732ecc7bdde3d3aeed2ad64a2d4efb3a36c977bf2a5562ec3932204ae23f
+
+pkgname = libguestfs
+
