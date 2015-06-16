@@ -1,0 +1,16 @@
+pkgbase = perl-mixin-extrafields-param
+	pkgdesc = make your class provide a familiar "param" method
+	pkgver = 0.020
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mixin-ExtraFields-Param
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mixin-extrafields>=0.002
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Mixin-ExtraFields-Param-0.020.tar.gz
+	md5sums = 8f44556c61149f0c340b459af3d082bb
+	sha512sums = ee901998d6e11396d6665751944227e07f12b03f0d45144f6d23b18918e8a72093d784620b75a930438f282fff1b4844e5aaf8bcc35c510059499259939522ca
+
+pkgname = perl-mixin-extrafields-param
+
