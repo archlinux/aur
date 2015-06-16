@@ -1,0 +1,22 @@
+pkgbase = perl-config-autoconf
+	pkgdesc = A module to implement some of AutoConf macros in pure perl.
+	pkgver = 0.310
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Config-AutoConf
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = sed
+	makedepends = gawk
+	makedepends = grep
+	makedepends = bison
+	makedepends = pkg-config
+	makedepends = flex
+	depends = perl-capture-tiny
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RE/REHSACK/Config-AutoConf-0.310.tar.gz
+	md5sums = 456749ec964dceb5ae405650bc6e4f1c
+	sha512sums = c4d3dfdf908663a0917d5a51b581119696444ab3987fdb8cc5ef942f11b47f1063f7ff133b308fc3d7d0a0ed53e2186d9a7a1d2148208b140a8cb005d20cbae2
+
+pkgname = perl-config-autoconf
+
