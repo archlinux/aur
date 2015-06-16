@@ -1,0 +1,17 @@
+pkgbase = perl-html-treebuilder-xpath
+	pkgdesc = add XPath support to HTML::TreeBuilder
+	pkgver = 0.14
+	pkgrel = 3
+	url = http://search.cpan.org/dist/HTML-TreeBuilder-XPath
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-tree
+	depends = perl-xml-xpathengine
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MIROD/HTML-TreeBuilder-XPath-0.14.tar.gz
+	md5sums = a3fa3b73ff51dd6ec63be394dcd2a3b5
+	sha512sums = 36d68ff08e4cac37e0d596fdcc7c1e84ba4fbecd23f41fccbce43e223750d35a1a7d51a3456397e3037c286fa093c3cd7dd825a07ea90a0c69ed6545ace4b727
+
+pkgname = perl-html-treebuilder-xpath
+
