@@ -1,0 +1,16 @@
+pkgbase = perl-acpi
+	pkgdesc = Acpi for Perl
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Acpi
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SH/SHY/acpi/Acpi-0.1.tar.gz
+	md5sums = 92359e674987dc492ac99be979aadd36
+	sha512sums = e795be6be950139a4fb36c837a73d22dc390189d185ee04ad761f2cf009155c825c03269a2a4525a1eb3cea7e7bcbcccf951b7237e3aacb65aa342b3658b8385
+
+pkgname = perl-acpi
+
