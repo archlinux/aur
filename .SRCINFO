@@ -1,7 +1,7 @@
 pkgbase = libcxml-git
 	pkgdesc = A small C++ library which makes it marginally neater to parse XML using libxml++
 	pkgver = 0.r69.ba540d3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://carlh.net/software/libcxml/
 	arch = i686
 	arch = x86_64
