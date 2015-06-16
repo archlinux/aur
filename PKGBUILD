@@ -10,7 +10,7 @@ url="http://phivdr.dyndns.org/vdr/vdr-dummydevice/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://phivdr.dyndns.org/vdr/vdr-dummydevice/vdr-dummydevice-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('1a23299d3cb0b8bd539decd86f399aba')
