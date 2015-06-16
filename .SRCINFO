@@ -1,0 +1,18 @@
+pkgbase = perl-b-hooks-op-ppaddr
+	pkgdesc = Hook into opcode execution
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/B-Hooks-OP-PPAddr
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-depends>=0.302
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/B-Hooks-OP-PPAddr-0.03.tar.gz
+	md5sums = 9f19e30db188ffdfed950a7cd62b9d17
+	sha512sums = a90e699f8d37b3a0f36dfbfe18416673a5fe7f0cf1a4df4874a27617e59b1fc5228852bffa2496532f56e5fe7a502096bc1c78b9487a2841ac86baae6eddf59c
+
+pkgname = perl-b-hooks-op-ppaddr
+
