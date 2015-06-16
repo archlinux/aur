@@ -1,0 +1,15 @@
+pkgbase = python2-pyxb
+	pkgdesc = Generates Python code for classes that correspond to data structures defined by XMLSchema
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://pyxb.sourceforge.net/
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/P/PyXB/PyXB-1.2.4.tar.gz
+	sha256sums = 024f9d4740fde187cde469dbe8e3c277fe522a3420458c4ba428085c090afa69
+
+pkgname = python2-pyxb
+
