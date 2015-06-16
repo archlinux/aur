@@ -1,0 +1,18 @@
+pkgbase = perl-catalyst-view-mason
+	pkgdesc = Mason View Class
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-View-Mason
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-html-mason
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Catalyst-View-Mason-0.18.tar.gz
+	md5sums = 43babe65905c38da7ebb9bed4dcb212c
+	sha512sums = e0bf82e8633130d19d64bb3cf4c6a78e51e29e6faf89fe48118dcf62e9b7c38ab3d92dd9c55fb70c40c88c68ffc910490715a479a329b4298bbe793a9fd9fd29
+
+pkgname = perl-catalyst-view-mason
+
