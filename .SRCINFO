@@ -1,0 +1,18 @@
+pkgbase = perl-moosex-storage-format-xml-simple
+	pkgdesc = An XML::Simple serialization role
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Storage-Format-XML-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose
+	depends = perl-moosex-storage
+	depends = perl-xml-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRUNORC/MooseX-Storage-Format-XML-Simple-0.04.tar.gz
+	md5sums = 322336ef0ad495e19e4c4555319bc515
+	sha512sums = 12fee610039c20ad471aac048ed4312bc9f1e2c321f84c0bcba2e49b9b434463ce2f854f17e44f47be20853b192ded7ae76fdddf7302621d2e9847ece2ff9bb9
+
+pkgname = perl-moosex-storage-format-xml-simple
+
