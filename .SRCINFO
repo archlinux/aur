@@ -1,0 +1,14 @@
+pkgbase = python2-editrepl
+	pkgdesc = Runs a terminal based editor inside your REPL session
+	pkgver = 2013.06.20
+	pkgrel = 1
+	url = https://github.com/philipbjorge/EditREPL
+	arch = any
+	license = custom: BSD
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/E/EditREPL/EditREPL-2013.06.20.tar.gz
+	sha256sums = 2cf966b27768389c82d4197a1df9c37c2b25ac6c4a019468168e93069637fdbb
+
+pkgname = python2-editrepl
+
