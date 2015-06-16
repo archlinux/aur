@@ -1,0 +1,16 @@
+pkgbase = perl-html-tiny
+	pkgdesc = Lightweight, dependency free HTML/XML generation
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/HTML-Tiny-1.05.tar.gz
+	md5sums = f683dbc8e4570ba08d0fcb1f50c1b6dc
+	sha512sums = 3b2da589502981fc91afc5e650fc113dfb5abc53bcda24435cd47f313cafc98e64d53fb60f16232ebabb56a34f10752b29640a444df3238888e32a96915f669a
+
+pkgname = perl-html-tiny
+
