@@ -1,0 +1,31 @@
+pkgbase = perl-brownie
+	pkgdesc = Browser integration framework inspired by Capybara
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Brownie
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-fake-httpd>=0.03
+	makedepends = perl-test-mock-guard
+	makedepends = perl-test-tcp
+	makedepends = perl-test-useallmodules
+	makedepends = perl-uri
+	depends = perl>=5.8.1
+	depends = perl-class-load
+	depends = perl-file-slurp
+	depends = perl-html-selector-xpath
+	depends = perl-html-treebuilder-xpath
+	depends = perl-plack
+	depends = perl-selenium-remote-driver
+	depends = perl-selenium-server
+	depends = perl-sub-install
+	depends = perl-www-mechanize
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MASAKI/Brownie-0.09.tar.gz
+	md5sums = b7c0e2c26bf435108f24833a7bcebd1d
+	sha512sums = f37ee147854220a4af8fbca43680d02fe4788869ba2209588f1694ca20b0999e0afebd74b8e7d0ebb1c86e3809ae5bfa83f57d249a4292ef3f277c2b3f5d6999
+
+pkgname = perl-brownie
+
