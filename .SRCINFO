@@ -1,0 +1,18 @@
+pkgbase = pam_abl
+	pkgdesc = Automated blacklisting on repeated failed authentication attempts
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://pam-abl.sourceforge.net/
+	install = pam_abl.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = cmake
+	depends = db
+	depends = pam
+	source = http://downloads.sourceforge.net/pam-abl/pam-abl-0.6.0.tar.gz
+	md5sums = 62e02b88cf2da09eeea101a99f69f1ee
+
+pkgname = pam_abl
+
