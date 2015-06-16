@@ -1,0 +1,17 @@
+pkgbase = perl-digest-shavite3
+	pkgdesc = Perl interface to the SHAvite-3 digest algorithm
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-SHAvite3
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-SHAvite3-0.02.tar.gz
+	md5sums = 976b12920c67e8951f62f0b77da8ec6e
+	sha512sums = de406fc1cc76956215b7d87f203fb7bf27864ea1814bc01269cdbca6e1b497b11ed9e36de514bd225b5a930b2945e028a79600fa49dbcca5d7462a3cdc6a845b
+
+pkgname = perl-digest-shavite3
+
