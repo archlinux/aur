@@ -1,0 +1,20 @@
+pkgbase = perl-catalystx-menu-suckerfish
+	pkgdesc = Generate HTML UL for a CSS-enhanced Suckerfish menu
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CatalystX-Menu-Suckerfish
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime
+	depends = perl-catalystx-menu-tree
+	depends = perl-html-parser
+	depends = perl-html-tree
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CONVERTER/CatalystX-Menu-Suckerfish-0.03.tar.gz
+	md5sums = d423d75c50afbe8e07ba7bcb3136afc3
+	sha512sums = 6de8151706036ca5658ade71dfe9957c1ec89ae5244cb4eda60018c3b48e202868e632e171388f85bf0797a8c6e6ed3fd736592c7792b3292dcb21e7eda73331
+
+pkgname = perl-catalystx-menu-suckerfish
+
