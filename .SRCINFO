@@ -1,0 +1,17 @@
+pkgbase = lingot-hg
+	pkgdesc = LINGOT is a musical instrument tuner.
+	pkgver = r374.7ed4f5d21d15
+	pkgrel = 6
+	url = http://www.nongnu.org/lingot/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = intltool
+	depends = gtk2
+	depends = libglade
+	source = hg+http://hg.sv.gnu.org/hgweb/lingot
+	md5sums = SKIP
+
+pkgname = lingot-hg
+
