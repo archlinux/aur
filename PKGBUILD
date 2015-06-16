@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 optdepends=('lcdproc: to use local displays')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-lcdproc.git#commit=$_gitver"
         "50-$_plugname.conf"
         '92-lcdproc.rules')
