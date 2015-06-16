@@ -1,0 +1,17 @@
+pkgbase = perl-apache2-soap
+	pkgdesc = mod_perl-2 SOAP server
+	pkgver = 0.73
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Apache2-SOAP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = mod_perl
+	depends = perl-soap-lite
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKOBES/Apache2-SOAP-0.73.tar.gz
+	md5sums = e0c376abd24b9b494d0ee60b8eeecefb
+	sha512sums = 0aeeee4deab4b1e5555e6321f3e2c2ffeaa542717237f6ad62a4581d9ced6b4047d8c2bff480ac5ce6df6717bc6bdf9d95e97a8ef75b9cbc869047bc4c28ea19
+
+pkgname = perl-apache2-soap
+
