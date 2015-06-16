@@ -1,0 +1,18 @@
+pkgbase = perl-parallel-scoreboard
+	pkgdesc = a scoreboard for monitoring status of many workers
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parallel-Scoreboard
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor-lite>=0.05
+	depends = perl-html-parser
+	depends = perl-json
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Parallel-Scoreboard-0.03.tar.gz
+	md5sums = 5012c8b370ed66db603638c83c5506b7
+	sha512sums = d53c4566a464759d52a209220b4dd1d89389cdd41ae5eec37288a62adc10ed9bb736a9e7d9ce7ca5e61bed5206a67f4affb5bce9b65ca547c9660c03e7a4144a
+
+pkgname = perl-parallel-scoreboard
+
