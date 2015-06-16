@@ -1,0 +1,28 @@
+pkgbase = python-err
+	pkgdesc = A plugin based chatbot designed to be easily deployable, extensible and maintainable.
+	pkgver = 2.2.1
+	pkgrel = 3
+	url = http://errbot.net
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorlog
+	depends = python-daemonize
+	depends = python-bottle
+	depends = python-pip
+	depends = python-jinja
+	depends = python-yapsy
+	depends = python-webtest
+	optdepends = python-sleekxmpp: XMPP backend
+	optdepends = python-pyasn1: XMPP backend
+	optdepends = python-pyasn1-modules: XMPP backend
+	optdepends = python-dnspython: XMPP backend
+	optdepends = python-tox-git: TOX backend
+	optdepends = python-irc: IRC backend
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/e/err/err-2.2.1.tar.gz
+	sha256sums = de6bcf6e310c9d20112b4379f905059db60c2ee5126678155a991b6acbd437a3
+
+pkgname = python-err
+
