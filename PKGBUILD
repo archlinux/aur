@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-eepg.git#commit=$_gitver")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP')
