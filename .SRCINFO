@@ -1,0 +1,16 @@
+pkgbase = perl-sys-sigaction
+	pkgdesc = Perl extension for Consistent Signal Handling
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sys-SigAction
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBAXTER/Sys-SigAction-0.20.tar.gz
+	md5sums = 7ca212559c2c514277c4f81039456226
+	sha512sums = e9a601e59dce17b58f525a6323fe87cca968db1142905eb69167d849039014521115d87ffc594fd67df2ec3072e8fc82aaefbf8671f8c9598c1792f6850c4370
+
+pkgname = perl-sys-sigaction
+
