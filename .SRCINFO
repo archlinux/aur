@@ -1,0 +1,16 @@
+pkgbase = eclipse-luaeclipse
+	pkgdesc = Eclipse plugin for the development of applications in the Lua programming language.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://luaeclipse.luaforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = eclipse
+	source = http://luaforge.net/frs/download.php/3193/luaeclipse-1.2.0.zip
+	source = LICENSE
+	md5sums = f735a47b31186aac90aca30e485d00f5
+	md5sums = 84e13cfae8aac2d34107f67fbec06ca7
+
+pkgname = eclipse-luaeclipse
+
