@@ -1,7 +1,7 @@
 pkgbase = gcalcli
 	pkgdesc = Google Calendar Command Line Interface
-	pkgver = 3.2
-	pkgrel = 6
+	pkgver = 3.3
+	pkgrel = 1
 	url = https://github.com/insanum/gcalcli
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = gcalcli
 	depends = python2-gflags
 	optdepends = python2-vobject: for ics/vcal importing
 	optdepends = python2-parsedatetime: for fuzzy dates/times like "now", "today", "eod tomorrow", etc.
-	source = gcalcli-3.2::https://raw.githubusercontent.com/insanum/gcalcli/v3.2/gcalcli
-	sha256sums = 23dc5f924095ec593b5a50b6373e07bde71bfce0d64a750e6ad4d5701f238dcf
+	source = gcalcli-3.3::https://raw.githubusercontent.com/insanum/gcalcli/v3.3/gcalcli
+	sha256sums = 8f5e0ad429209b029507793eb3cea60a827b1e70003f44a0d4a9b4f5154d5da5
 
 pkgname = gcalcli
 
