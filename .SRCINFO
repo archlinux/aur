@@ -1,0 +1,16 @@
+pkgbase = perl-digest-adler32
+	pkgdesc = The Adler-32 checksum
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Adler32
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-Adler32-0.03.tar.gz
+	md5sums = 63fc73aa3f3ea5e0eaa76f14ce9ecafa
+	sha512sums = 4f090b5a8205841471bc0805fd508cc8b80637ffdc817ae695dd80ce7cbe2b5441babf0378baee425ee7cb98fe19191999ff681eba5601371dfe3837fdc6f23b
+
+pkgname = perl-digest-adler32
+
