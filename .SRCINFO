@@ -1,0 +1,15 @@
+pkgbase = kebab
+	pkgdesc = a backup tool that prioritizes confidentiality, integrity, and availability above all else.
+	pkgver = r2.1.26d759e
+	pkgrel = 1
+	url = https://github.com/davidlazar/kebab/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = kebab
+
