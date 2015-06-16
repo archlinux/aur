@@ -1,0 +1,23 @@
+Binary files fly-2.0.1/fly.o and fly/fly.o differ
+diff -r -u -N fly-2.0.1/Makefile fly/Makefile
+--- fly-2.0.1/Makefile	2009-06-17 04:24:05.000000000 +0300
++++ fly/Makefile	2010-05-29 22:00:05.326698067 +0300
+@@ -8,7 +8,7 @@
+ INCDIRS = -I$(GD)
+ CC = gcc
+ 
+-CFLAGS = -O -pedantic -Wall $(INCDIRS) $(LIBDIRS)
++CFLAGS = -O2 -march=native -fomit-frame-pointer -pedantic -Wall $(INCDIRS) $(LIBDIRS)
+ LIBS = -lgd -lm -lz -lfreetype -lpng -ljpeg #-lXpm 
+ 
+ all: fly
+@@ -20,7 +20,7 @@
+ 	$(CC) -c $(CFLAGS) fly.c
+ 
+ mostlyclean:
+-	rm -f fly.o temp.gif core; make clean;
++	rm -f fly.o temp.gif core
+ clean:
+-	rm -f fly.o fly temp.gif core; make clean;
++	rm -f fly.o fly temp.gif core
+ 
