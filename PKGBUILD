@@ -5,17 +5,17 @@
 
 _pkgname="python-jsonpickle"
 pkgname="${_pkgname}"
-pkgver=0.7.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Python library for serializing any arbitrary object graph into JSON."
 arch=('i686' 'x86_64')
-url="http://jsonpickle.github.io/"
+url="https://github.com/jsonpickle/jsonpickle"
 license=('New BSD')
 depends=('python>=3.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(https://pypi.python.org/packages/source/j/jsonpickle/jsonpickle-${pkgver}.tar.gz)
-md5sums=('41418970dcc9b19f698145054fba5549')
+source=(https://github.com/jsonpickle/jsonpickle/archive/v${pkgver}.tar.gz)
+md5sums=('e91211a4d4dfbeb431e062403e46d810')
 
 package() {
   cd "${srcdir}/jsonpickle-${pkgver}"
