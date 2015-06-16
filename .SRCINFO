@@ -1,0 +1,22 @@
+pkgbase = perl-net-cups
+	pkgdesc = Common Unix Printing System Interface
+	pkgver = 0.61
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-CUPS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = e2fsprogs>=1.42.8
+	depends = glibc>=2.17
+	depends = krb5>=1.11.3
+	depends = libcups>=1.6.2
+	depends = perl
+	depends = zlib>=1.2.8
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DH/DHAGEMAN/Net-CUPS-0.61.tar.gz
+	md5sums = 1aba74db9bcf15396005091f826b50e8
+	sha512sums = 6e906dfebd7a5970f393f8187808049004d6b89fc268bb89abb4dca43145ec97ea45dd3faa51a04de2843a2aedc8051bcb88ab688f4a9886acc188166e2c2cf7
+
+pkgname = perl-net-cups
+
