@@ -1,0 +1,16 @@
+pkgbase = perl-text-trim
+	pkgdesc = remove leading and/or trailing whitespace from strings
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Trim
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTLAW/Text-Trim-1.02.tar.gz
+	md5sums = 91506dcbef8201fd4645e885b631c0fa
+	sha512sums = d45981f5ab69276a713cf7e8c7229e00b322786bb6e0b8d06b3f303532bc2994582763a384a010954c4460eefaf80351d30c8a4f846b8f5337db6cef57b2b994
+
+pkgname = perl-text-trim
+
