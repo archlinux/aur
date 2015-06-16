@@ -1,0 +1,16 @@
+pkgbase = perl-text-similarity
+	pkgdesc = Measure the pair-wise Similarity of Files or Strings
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Similarity
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TP/TPEDERSE/Text-Similarity-0.10.tar.gz
+	md5sums = 33af64040b468436a8649609c4cc8857
+	sha512sums = 0897be5805bd86595e34b5e7dae1dac78ffe4ca7aa2cf1fb0305333ee2c175bc175a82b2d667c640940729d4ce096d23f5d029f509ed14d1b9da54c8f4c5f596
+
+pkgname = perl-text-similarity
+
