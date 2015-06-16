@@ -4,7 +4,7 @@
 
 pkgname=xgraph
 pkgver=12.1
-pkgrel=5
+pkgrel=6
 pkgdesc="X-Windows application for interactive plotting and graphing"
 url="http://www.isi.edu/nsnam/xgraph/"
 license=('custom')

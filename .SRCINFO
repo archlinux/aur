@@ -1,7 +1,7 @@
 pkgbase = xgraph
 	pkgdesc = X-Windows application for interactive plotting and graphing
 	pkgver = 12.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.isi.edu/nsnam/xgraph/
 	arch = i686
 	arch = x86_64
