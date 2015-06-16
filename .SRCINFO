@@ -1,0 +1,19 @@
+pkgbase = perl-selenium-remote-driver
+	pkgdesc = Perl Client for Selenium Remote Driver
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Selenium-Remote-Driver
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-libwww
+	depends = perl-lwp-protocol-psgi
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOWES/Selenium-Remote-Driver-0.17.tar.gz
+	md5sums = 07869ccacba8db9b2954e7ec91db436d
+	sha512sums = b5d413adb33998efe3a1a521700d958ed87e49bea9f2ab41d635083a6402c5a56afdf2d03c9566297cea6e0c83a2add7af2fc331f78e0a07c2d3def6db4876f6
+
+pkgname = perl-selenium-remote-driver
+
