@@ -1,0 +1,20 @@
+pkgbase = perl-cql-parser
+	pkgdesc = compiles CQL strings into parse trees of Node subtypes.
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CQL-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl>=5.008
+	depends = perl-class-accessor>=0.1
+	depends = perl-clone>=0.15
+	depends = perl-string-tokenizer>=0.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/CQL-Parser-1.12.tar.gz
+	md5sums = 51101eec70646bda06de940dc698fbe0
+	sha512sums = f894aa659926329d32bf13827b2414b590750716b74105f0c9d5c7e0a751bfdfe73eb1cda24090fc840a9c1b7f8ceaacb22c061afc43ddea3df1039b8298d9da
+
+pkgname = perl-cql-parser
+
