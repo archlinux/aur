@@ -1,0 +1,16 @@
+pkgbase = perl-uri-openurl
+	pkgdesc = Parse and construct OpenURL's (NISO Z39.88-2004)
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = http://search.cpan.org/dist/URI-OpenURL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-uri>=1.19
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMBRODY/URI-OpenURL-0.4.6.tar.gz
+	md5sums = b64093ce6aa75b092cc907d3852d007f
+	sha512sums = 93d1db63bbcd7555bab2e7020728fe597406d65d6844537e44074bb7191ced905a81db547ff7aed76d88b0e81642c2d4b5a1a536bfe7b6ff7069d1e588bb0990
+
+pkgname = perl-uri-openurl
+
