@@ -1,0 +1,16 @@
+pkgbase = perl-memhandle
+	pkgdesc = supply memory-based FILEHANDLE methods
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MemHandle
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCR/MemHandle-0.07.tar.gz
+	md5sums = f57ee185a582705476c22565f193e341
+	sha512sums = a043e94d95a863a899bb2c1fa7094d96d2ba8f908bc82fe4dc1cae45f3e0f8c545d9f106491f384130d294237e00176b49091605065501204f2f28417be2ebc3
+
+pkgname = perl-memhandle
+
