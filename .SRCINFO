@@ -1,0 +1,16 @@
+pkgbase = perl-cpanplus-dist-slackware
+	pkgdesc = Install Perl distributions on Slackware Linux
+	pkgver = 1.013
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPANPLUS-Dist-Slackware
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VO/VOEGELAS/CPANPLUS-Dist-Slackware-1.013.tar.gz
+	md5sums = 138f3a07c56e88347d49fe987fabb812
+	sha512sums = 7b810ae5cf356c12707bfffd2f3eec90e324ca70c3c231fae9838e575d68c7e9e9b0ae73074f4c04a8f8266854ef05420eae3798498f7083321e414ba86a288f
+
+pkgname = perl-cpanplus-dist-slackware
+
