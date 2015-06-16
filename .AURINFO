@@ -1,0 +1,24 @@
+pkgbase = perl-kephra
+	pkgdesc = crossplatform GUI-Texteditor along Perl alike Paradigms
+	pkgver = 0.4.3.34
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Kephra
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-checkmanifest>=0.9
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-nowarnings
+	checkdepends = perl-test-pod>=1.22
+	checkdepends = perl-test-script
+	depends = perl-config-general
+	depends = perl-file-userconfig
+	depends = perl-wx>=0.74
+	depends = perl-wx-perl-processstream
+	depends = perl-yaml-tiny
+	depends = perl>=5.6.0
+	source = http://search.mcpan.org/CPAN/authors/id/L/LI/LICHTKIND/Kephra-0.4.3.34.tar.gz
+	options = !emptydirs
+
+pkgname = perl-kephra
+
