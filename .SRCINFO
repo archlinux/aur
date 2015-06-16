@@ -1,0 +1,12 @@
+pkgbase = screenshotgun-git
+	pkgdesc = Open screenshoter with server part
+	pkgver = 88
+	pkgrel = 1
+	url = http://screenshotgun.com
+	arch = any
+	license = GPL
+	source = screenshotgun::git+https://github.com/ismd/screenshotgun.git
+	md5sums = SKIP
+
+pkgname = screenshotgun-git
+
