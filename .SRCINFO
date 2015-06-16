@@ -1,0 +1,17 @@
+pkgbase = perl-digest-echo
+	pkgdesc = Perl interface to the ECHO digest algorithm
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-ECHO
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-ECHO-0.04.tar.gz
+	md5sums = ce06665a19645d2b681afcca6cc8fde5
+	sha512sums = 494e02acfae5cef44325ecd1b0dff66f8719f6cb4a247fa3272506e4733be0a827f587f6816acc8fd67e39f360f447bf74766b6d2650cb35a351ae78c2e2f5ad
+
+pkgname = perl-digest-echo
+
