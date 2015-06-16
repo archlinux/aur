@@ -1,0 +1,16 @@
+pkgbase = perl-test-useallmodules
+	pkgdesc = do use_ok() for all the MANIFESTed modules
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-UseAllModules
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Test-UseAllModules-0.14.tar.gz
+	md5sums = 6b108cc6ca4affe59cbd927e4c47162b
+	sha512sums = 41e8b9fb6a0926c504d372fc8c7965956af2da5a6affea9b27b06e102d661c8d64c3eaeb4dd5bbc384767dc6dfc54cb47c31badd7fd69b830dc7eb83420636b6
+
+pkgname = perl-test-useallmodules
+
