@@ -1,0 +1,14 @@
+pkgbase = uzem
+	pkgdesc = A Uzebox 8-bit game console emulator
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://belogic.com/uzebox
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl
+	source = https://github.com/Uzebox/uzebox/archive/uzebox-3.3.tar.gz
+	sha256sums = d6f5d302df3d58eb536d706e6a830618ac72157bfe15c9c2b2025e4f3091bc38
+
+pkgname = uzem
+
