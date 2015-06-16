@@ -1,0 +1,17 @@
+pkgbase = perl-lexical-persistence
+	pkgdesc = Persistent lexical variable values for arbitrary calls.
+	pkgver = 1.023
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Lexical-Persistence
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-devel-lexalias>=0.05
+	depends = perl-padwalker>=1.96
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RC/RCAPUTO/Lexical-Persistence-1.023.tar.gz
+	md5sums = 6df044eaf0cb5c1b7770863e7e4130ca
+	sha512sums = b67e17bde4f6fc6209516ee6ec74aa273367f83b3bb9d9fe2be3ea2e8a574c1b7bbf751f370a54e1e8de4c845f07cb3de4f142f48e3234efdb13ea11176000db
+
+pkgname = perl-lexical-persistence
+
