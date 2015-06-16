@@ -1,0 +1,17 @@
+pkgbase = perl-indirect
+	pkgdesc = Lexically warn about using the indirect method call syntax.
+	pkgver = 0.33
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/indirect
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/V/VP/VPIT/indirect-0.33.tar.gz
+	md5sums = 3a8c66e97f46120ff44023ee295d5acb
+	sha512sums = 3cee58c3e14e6eb896916ffacef20ad41d66ed433fe0419c93eaf524db5ddfda628697241b2e8ae021835921ffc62b9db7df5e22a1465311e252de80c9e14e91
+
+pkgname = perl-indirect
+
