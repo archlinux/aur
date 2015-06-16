@@ -2,17 +2,17 @@
 
 _pkgname="python-rjsmin"
 pkgname="${_pkgname}"
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="rJSmin is a javascript minifier written in python"
 arch=('i686' 'x86_64')
-url="http://opensource.perlig.de/rjsmin/"
+url="https://github.com/ndparker/rjsmin"
 license=('APACHE')
 depends=('python>=3.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(http://storage.perlig.de/rjsmin/rjsmin-${pkgver}.tar.gz)
-md5sums=('bb8b37f1d9d816017ab9237cec290fbe')
+source=(https://github.com/ndparker/rjsmin/archive/${pkgver}.tar.gz)
+md5sums=('2dfd534af5511a2629e40d515d718695')
 
 package() {
     cd "${srcdir}/rjsmin-${pkgver}"
