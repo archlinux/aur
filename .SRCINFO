@@ -1,0 +1,17 @@
+pkgbase = perl-mojolicious-plugin-ttrenderer
+	pkgdesc = Template Renderer Plugin for Mojolicious
+	pkgver = 1.56
+	pkgrel = 1
+	url = https://metacpan.org/release/Mojolicious-Plugin-TtRenderer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mojolicious>=5.81
+	depends = perl-template-toolkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Mojolicious-Plugin-TtRenderer-1.56.tar.gz
+	md5sums = f402272e7182be65702a1199d792d1ff
+	sha512sums = 63345df71c2bc99a8b3f424787fe24e874d75857d5c2a770602e80aae5b31899725dec8eaf9370e8291c1b688aa76c7b3eb8b0d6aa524427d0b30b0f29116045
+
+pkgname = perl-mojolicious-plugin-ttrenderer
+
