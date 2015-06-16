@@ -1,0 +1,17 @@
+pkgbase = perl-anyevent-aio
+	pkgdesc = truly asynchronous file and directory I/O
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/AnyEvent-AIO
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-anyevent>=3.4
+	depends = perl-io-aio>=3
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-AIO-1.1.tar.gz
+	md5sums = faf3a4fe3dcffb04d27fbbd2c08651b9
+	sha512sums = f4fa0ad73d917ef2e9bea254778c7ea117cc417a5eed9d2c5ee3f132ae9f25ad286ec35c97397e843da9f0dd32e3eb7e3921bf54613017e3fc9c63db3bbb9f59
+
+pkgname = perl-anyevent-aio
+
