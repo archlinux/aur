@@ -1,0 +1,16 @@
+pkgbase = perl-css-lessp
+	pkgdesc = LESS for perl. Parse .less files and returns valid css (lesscss.org for more info about less files)
+	pkgver = 0.86
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CSS-LESSp
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRINCHEV/CSS-LESSp-0.86.tar.gz
+	md5sums = 3d454551f3d9f00372c3508f4d7317ed
+	sha512sums = b2390cdf656f7390a73fdb54a6ce7f455eb94ac0b2d7dd8c28f69907f09ce63bd9beec913d3bcc3cde66e1e4798c14a19d68cadca36edccaff0c55b0b65f0cfc
+
+pkgname = perl-css-lessp
+
