@@ -1,0 +1,16 @@
+pkgbase = perl-bundle-cpan
+	pkgdesc = Bundle to optimize the behaviour of CPAN.pm
+	pkgver = 1.861
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Bundle-CPAN
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/Bundle-CPAN-1.861.tar.gz
+	md5sums = c77297b18fe9e1cd38829787700c3bd6
+	sha512sums = 22a64474bc7651012880c6d1afadc45e90f23554329f905b04cfb4029eaefcc5d836956b6fcae4b37af7723c9bfdf9e581dcce2971536eead29426bee9feb771
+
+pkgname = perl-bundle-cpan
+
