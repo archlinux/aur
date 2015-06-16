@@ -1,0 +1,17 @@
+pkgbase = perl-regexp-copy
+	pkgdesc = copy Regexp objects
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Regexp-Copy
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JD/JDUNCAN/Regexp-Copy-0.06.tar.gz
+	md5sums = d0f3875e0655c0ac9eb37813ec82c137
+	sha512sums = 109bb3aee1ded2d808c0ae1a1512df466abc44073764254a2ca4f7ac1cd74f8c976657f42474761ddad33b39c8dcabbc1db36a85aa758688d5e680f771e33458
+
+pkgname = perl-regexp-copy
+
