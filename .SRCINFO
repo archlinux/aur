@@ -1,0 +1,17 @@
+pkgbase = nodejs-irccloud-cli
+	pkgdesc = irccloud commandline interface
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/yhsiang/irccloud-cli
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	depends = nodejs
+	depends = nodejs-livescript
+	noextract = irccloud-cli-0.2.2.tgz
+	source = http://registry.npmjs.org/irccloud-cli/-/irccloud-cli-0.2.2.tgz
+	md5sums = f9dcd997b1d56cd8ffc78463d4858539
+
+pkgname = nodejs-irccloud-cli
+
