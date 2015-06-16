@@ -1,0 +1,19 @@
+pkgbase = perl-test-minimumversion
+	pkgdesc = does your code require newer perl than you think?
+	pkgver = 0.101081
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Test-MinimumVersion
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-find-rule
+	depends = perl-file-find-rule-perl
+	depends = perl-perl-minimumversion>=1.32
+	depends = perl-test-tester
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Test-MinimumVersion-0.101081.tar.gz
+	md5sums = 9971f68a4fdfc4a5445018b0d2e3e452
+	sha512sums = 9af5821e8d6e4d6471464bf52d60c7f04b87c864b06d92b26f1b9e3ac262fb9d4650a784b8c25a6318b999977f8ed7e32c2716e544763ac65400d1e44e42894d
+
+pkgname = perl-test-minimumversion
+
