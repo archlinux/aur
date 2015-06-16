@@ -1,0 +1,17 @@
+pkgbase = perl-encode
+	pkgdesc = character encodings in Perl
+	pkgver = 2.71
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Encode
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DA/DANKOGAI/Encode-2.71.tar.gz
+	md5sums = 127f9ed0bdc07e4736ad70ac06223440
+	sha512sums = a493b2e3589124b836f0d0e496c118d81c6aa9839ee61fe6450411d57e1292588dfeafdfd33f6dc063c62a54bc1983044db4c9b46005856462b033986bb09cb4
+
+pkgname = perl-encode
+
