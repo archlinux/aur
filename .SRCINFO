@@ -1,0 +1,16 @@
+pkgbase = python-pytmx
+	pkgdesc = Python library to read Tiled Map Editor's TMX maps
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/bitcraft/PyTMX
+	arch = i686
+	arch = x86_64
+	license = LGPL v3
+	makedepends = git
+	depends = python>=3.1
+	depends = python-six
+	provides = python-pytmx
+	conflicts = python-pytmx
+
+pkgname = python-pytmx
+
