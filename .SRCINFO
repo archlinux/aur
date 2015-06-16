@@ -1,0 +1,17 @@
+pkgbase = perl-algorithm-dependency
+	pkgdesc = Base class for implementing various dependency trees
+	pkgver = 1.110
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Algorithm-Dependency
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-classapi>=0.6
+	depends = perl-params-util>=0.31
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Algorithm-Dependency-1.110.tar.gz
+	md5sums = dc1dab2ac44c315caa092397423b1429
+	sha512sums = f10b80bdf0b5db2fdb8d8fb86454a1c2e93682c00504cd594f39820ca720a4d506689ca22777613e13a724b01d3f47f73643659807f3de2747202786cc1ea8d0
+
+pkgname = perl-algorithm-dependency
+
