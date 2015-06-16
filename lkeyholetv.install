@@ -1,0 +1,4 @@
+post_install() {
+	echo "lkeyholetv will not run if /usr/bin/firefox or /usr/bin/seamonkey does not exist."
+	echo "You should either install Firefox or Seamonkey, or touch /usr/bin/firefox."
+}

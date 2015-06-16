@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Categories=Video;Multimedia;
+Exec=/usr/bin/lkeyholetv
+GenericName=P2P TV Streaming
+GenericName[en_US]=P2P TV Streaming
+Icon=/usr/share/pixmaps/keyholetv.xpm
+MultipleArgs=false
+Name=KeyHoleTV
+StartupNotify=false
+Terminal=false
+Type=Application;

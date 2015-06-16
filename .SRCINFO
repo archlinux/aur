@@ -1,0 +1,26 @@
+pkgbase = lkeyholetv
+	pkgdesc = A client for KeyHoleTV, an online television portal that links to Japanese television channels, radio stations, and user-made channels.
+	pkgver = 2.1
+	pkgrel = 8
+	url = http://www.v2p.jp/video/english/
+	install = lkeyholetv.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk2
+	depends = cairo
+	depends = pango
+	depends = libx11
+	depends = libpng
+	optdepends = sdl: SDL video support
+	provides = lkeyholetv
+	source = http://www.oiseyer.com/Download/Ubuntu/LinuxKeyHoleTV2.1-Ubuntu.tar.gz
+	source = lkeyholetv.desktop
+	source = lkeyholetv
+	md5sums = d60b1fc652605cebc4a5fe478e3ab32b
+	md5sums = 59fdf1ff19320034a3797d823211e535
+	md5sums = ae00db79eb19f3f1515f873852c903d2
+
+pkgname = lkeyholetv
+
