@@ -1,0 +1,14 @@
+pkgbase = rhvoice-dictionary-git
+	pkgdesc = Русский словарь для RHVoice
+	pkgver = 20150616
+	pkgrel = 1
+	url = https://github.com/vantu5z/RHVoice-dictionary
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = rhvoice
+	provides = rhvoice-dictionary
+	replaces = rhvoice-dictionary
+
+pkgname = rhvoice-dictionary-git
+
