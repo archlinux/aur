@@ -1,0 +1,23 @@
+pkgbase = poppassd-ceti-git
+	pkgdesc = POP3 password change daemon
+	pkgver = 20140924
+	pkgrel = 1
+	url = https://github.com/kravietz/poppassd-ceti
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = m4
+	depends = pam
+	provides = poppassd
+	source = poppassd.socket
+	source = poppassd@.service
+	source = poppassd.pam
+	sha256sums = e37648591a8789256410954cee2481951b3e8b7e89705c37435da9ddf8698bc8
+	sha256sums = 6111aed841cc9e31dbd2d476cb8e4e786db2c9300c5e39468f4aa2703d43d123
+	sha256sums = 3025b1cfaf35e78f1351854f837708b00515351d88a03fdf8ca61e93aabe421e
+
+pkgname = poppassd-ceti-git
+

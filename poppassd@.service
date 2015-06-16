@@ -1,0 +1,8 @@
+[Unit]
+Description=POP3 Password Change Service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/poppassd
+StandardInput=socket
+StandardOutput=socket
