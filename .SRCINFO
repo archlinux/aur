@@ -1,0 +1,17 @@
+pkgbase = perl-digest-skein
+	pkgdesc = Perl interface to the Skein digest algorithm
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Skein
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RA/RADEK/Digest-Skein-0.05.tar.gz
+	md5sums = cb7ff5208a078e5e504715e6486a06d5
+	sha512sums = 6c3ef28cd2033ba20ce4a9f246ed6c8dbdac2d137f82f3ac00e02a304a0fb71ffb36e8d5a54c6c51ad6325decd2fb82b4362858b78e8bf160634a4b0ffcc9739
+
+pkgname = perl-digest-skein
+
