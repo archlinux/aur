@@ -1,7 +1,7 @@
 # Maintainer: Johan Svensson <johan@loxley.se>
 pkgname=xping
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple ping program continiously probing multiple hosts using icmp-echo"
 url="https://github.com/martintopholm/xping"
 arch=('any')
@@ -20,5 +20,6 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm4555 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm4555 "$srcdir/$pkgname/$pkgname-http" "$pkgdir/usr/bin/$pkgname-http"
     install -Dm444 "$srcdir/$pkgname/$pkgname.8.gz" "$pkgdir/usr/share/man/man8/$pkgname.8.gz"
 }
