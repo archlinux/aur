@@ -1,0 +1,16 @@
+pkgbase = perl-unicode-normalize
+	pkgdesc = Unicode Normalization Forms
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Unicode-Normalize
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SA/SADAHIRO/Unicode-Normalize-1.18.tar.gz
+	md5sums = 41060b0a2715fcaf4d337b417736a574
+	sha512sums = e76adbada2ba21306bd34d1296af63f6ad9994c88789338104ff64d1983895a4aeb7b7c66b0f483429450ba2683759d58818380aa8452cde966ee539a7352e75
+
+pkgname = perl-unicode-normalize
+
