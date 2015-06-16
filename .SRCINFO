@@ -1,0 +1,16 @@
+pkgbase = perl-xml-dom-lite
+	pkgdesc = Lite Pure Perl XML DOM Parser Kit
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-DOM-Lite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RH/RHUNDT/XML-DOM-Lite-0.15.tar.gz
+	md5sums = 1748c70d2c9991340b80379e64e5d9c1
+	sha512sums = 1b4a53e479ae6fd4a3ce8d5fad4d49b5e89cc70a4376d2bdfd10d5ca4ffe29d9f0749883539f8b6825e75b56715735fd91cf6a3bb9d9335c6682f3772bf4aa34
+
+pkgname = perl-xml-dom-lite
+
