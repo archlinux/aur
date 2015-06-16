@@ -1,0 +1,20 @@
+pkgbase = perl-forks
+	pkgdesc = drop-in replacement for Perl threads using fork()
+	pkgver = 0.36
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/forks
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-acme-damn
+	depends = perl-devel-symdump
+	depends = perl-list-moreutils>=0.15
+	depends = perl-sys-sigaction>=0.11
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RY/RYBSKEJ/forks-0.36.tar.gz
+	md5sums = 48a1819dd2ff67d756f268771e1a9827
+	sha512sums = d361d7fcfec925b03552bb5f8ae4eb2155b7945d0a57ff04c9ed45e7620a55fe6a1907b1aef8af3f80f8eabc158ab5886628ee1a987dc674e4c25e1042425469
+
+pkgname = perl-forks
+
