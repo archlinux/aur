@@ -1,0 +1,16 @@
+pkgbase = perl-net-xwhois
+	pkgdesc = Whois Client Interface for Perl5.
+	pkgver = 0.90
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-XWhois
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VI/VIPUL/Net-XWhois-0.90.tar.gz
+	md5sums = 1c0394d6a4b5bd05d8686b0a0dc18999
+	sha512sums = f64e1b519da2941baa8c95fe267fd69a565a6f6a9b64da2d3040d68e36816f4c5261925150b1766847d4a5947b01d8745e7d85c80127d9772c7903b64ac01d4e
+
+pkgname = perl-net-xwhois
+
