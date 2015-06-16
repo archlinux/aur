@@ -1,0 +1,16 @@
+pkgbase = perl-tap-harness-archive
+	pkgdesc = Create an archive of TAP test results
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/TAP-Harness-Archive
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-yaml-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/TAP-Harness-Archive-0.15.tar.gz
+	md5sums = 1fbf09c898f8d847da2c7ad7ea915b16
+	sha512sums = 809340fc0071bd24dd4fd68bbdf4e4d4e1c2e56647b858af4e5b0f19101707dd1e4d5ea5b3214db2a815fe533a3a82ee5f6183b209a9f6af0a36e9edd83f5bf0
+
+pkgname = perl-tap-harness-archive
+
