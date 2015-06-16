@@ -1,0 +1,20 @@
+pkgbase = styleproject-git
+	pkgdesc = A maclike style for kde4.
+	pkgver = r265.528ef21
+	pkgrel = 1
+	url = http://sourceforge.net/p/styleproject
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qt5-x11extras
+	depends = kdebase-workspace
+	provides = styleproject
+	conflicts = styleproject
+	source = styleproject::git://git.code.sf.net/p/styleproject/code.git
+	md5sums = SKIP
+
+pkgname = styleproject-git
+
