@@ -1,0 +1,30 @@
+pkgbase = amule-adnza-svn
+	pkgdesc = aMule patched for Fastweb Network (Italy) by Adunanza forum - SVN development branch
+	pkgver = 546
+	pkgrel = 1
+	url = http://amule-adunanza.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	license = GPL
+	makedepends = subversion
+	depends = wxgtk
+	depends = wxgtk2.8
+	depends = gd
+	depends = geoip
+	depends = libupnp
+	depends = crypto++
+	depends = libsm
+	provides = amule
+	conflicts = amule
+	conflicts = amule-adnza
+	source = fix_icon+comment+name2.patch
+	source = amuled.systemd
+	source = amuleweb.systemd
+	md5sums = cef300135ba532b171db957ccff0311a
+	md5sums = 59772c41860e238f1c822feb8ca8d47f
+	md5sums = 05975c5d94bfc41fddb894d98b1115d5
+
+pkgname = amule-adnza-svn
+
