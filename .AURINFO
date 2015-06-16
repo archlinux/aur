@@ -1,0 +1,17 @@
+pkgbase = perl-tk-statusbar
+	pkgdesc = A statusbar widget for Perl/Tk
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Tk-StatusBar
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-tk
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/Z/ZA/ZABEL/Tk-StatusBar-0.04.tar.gz
+	md5sums = cdcf1bba733077aaa3b93d38209e9a78
+	sha512sums = 5a281c66f23530440279a1b392cbab05f05c08b837d0d5b08ccc8375b8334640e25101f181bf3427006d53305b05ff4368e045f7eb217402cc4bd68dda47f99b
+
+pkgname = perl-tk-statusbar
+
