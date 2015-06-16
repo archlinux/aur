@@ -1,0 +1,46 @@
+pkgname="tor-browser-fr"
+
+pre_install() {
+	echo ""
+	echo "==> Si vous voulez vérifier la signature gnupg vous allez"
+	echo "==> importer la clé publique appropriée (Trouvable ici https://www.torproject.org/docs/signing-keys.html)."
+	echo "==> Choisissez-en une et lancez :"
+	echo "==> pacman-key -r <keyid>"
+	echo "==> Après ça, la vérification de la signature marchera."
+	echo ""
+}
+
+post_install() {
+	echo ""
+	echo "==> ${pkgname} a été extrait dans ~/.$pkgname"
+	echo "==> La première fois, exécutez $pkgname avec votre utilisateur habituel !"
+	echo "==> Amusez-vous bien !"
+	echo ""
+}
+
+pre_upgrade() {
+	# remove old files
+	rm -rf /opt/$pkgname
+}
+
+post_upgrade() {
+	echo ""
+	echo "==> Le $pkgname copié dans votre dossier Home sera mis à jour"
+	echo "==> la première fois que vous le lancerez avec votre utilisateur normal !"
+	echo "==> Amusez-vous bien !"
+	echo ""
+}
+
+post_remove() {
+	# remove old files
+	rm -rf /opt/$pkgname
+
+	echo ""
+	echo "==> N'oubliez pas de supprimer le dossier tor-brower qui est dans votre dossier Home"
+	echo "==> Effacer à la main: En tant que votre utilisateur normal, faire :"
+	echo "==> "
+	echo "==> rm -rf ~/.${pkgname}"
+	echo ""
+}
+
+# vim:set ts=2 sw=2 et:
