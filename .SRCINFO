@@ -1,0 +1,23 @@
+pkgbase = knyttstories
+	pkgdesc = In Knytt Stories, each level is its own little adventure. One level is included with the game, where you have to stop a machine that draws the life out of the planet. An official expansion pack is also featured at the website with four original levels.
+	pkgver = 1.2.1
+	pkgrel = 5
+	url = http://nifflas.ni2.se/
+	install = knyttstories.install
+	arch = i686
+	arch = x86_64
+	license = freeware
+	makedepends = unzip
+	source = knyttstories
+	source = msvcp60.zip
+	source = http://nifflas.ni2.se/content/Knytt%20Stories/Knytt%20Stories%20121.zip
+	source = knyttstories.desktop
+	source = knyttstories.png
+	md5sums = b34bc8c1f391c9a5efb9e984606a6c16
+	md5sums = e27d1c3b981aff789500e0ba2cd05616
+	md5sums = 05458d098a8c65edff607f2bbb9c93e1
+	md5sums = f41b9e383744e08ac5de5fe7330a3735
+	md5sums = d997338aae63d77ce4bedcd218dcb5d2
+
+pkgname = knyttstories
+

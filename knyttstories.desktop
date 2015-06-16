@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.2.1
+Encoding=UTF-8
+Name=Knytt Stories
+Comment=Jump 'n' run and adventure game
+Icon=/usr/share/pixmaps/knyttstories.png
+Exec=/usr/bin/knyttstories
+Terminal=false
+StartupNotify=false
+Categories=Game;
+

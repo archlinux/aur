@@ -1,0 +1,17 @@
+post_install () {
+	echo "Knytt Stories is now installed."
+	echo "Enter 'knyttstories' and enjoy :)"
+	echo "NOTE 1: In order for this to work properly, you need to be"
+	echo "a member of the 'games' group."
+	echo "NOTE 2: If you're upgrading from an earlier version of this"
+	echo "package and there are problems, delete Data in"
+	echo "~/.knyttstories/ and try starting the game again."
+#	echo "Please also drop me a note if anything bad happens."
+}
+
+pre_upgrade () {
+	echo "NOTE: If you're upgrading from an earlier version of this"
+	echo "package and there are problems, delete Data in"
+	echo "~/.knyttstories/ and try starting the game again."
+#	echo "Please also drop me a note if anything bad happens."
+}
