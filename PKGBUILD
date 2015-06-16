@@ -7,7 +7,7 @@ _icon="default"
 pkgname=vuze-extreme-mod
 pkgver=5.6.1.3
 _ver=5612
-pkgrel=2
+pkgrel=3
 pkgdesc="A modded version of the Vuze BitTorrent client with multiple spoofing capabilities"
 arch=('i686' 'x86_64')
 url="http://www.sb-innovation.de/f41/"
@@ -41,7 +41,6 @@ package() {
   install -d "$pkgdir"/opt/vuze-extreme-mod/
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/share/applications/
-  install -d "$pkgdir"/usr/share/gconf/schemas/
   install -d "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
   install -d "$pkgdir"/usr/share/pixmaps/
 
@@ -55,10 +54,9 @@ package() {
     x86_64) mv swt/swt64.jar "$pkgdir"/opt/vuze-extreme-mod/swt.jar ;;
   esac
 
-  # Icon, desktop and schemas
+  # Icon and desktop 
   mv vuze.png "$pkgdir"/usr/share/pixmaps/vuze-extreme-mod.png
   mv vuze.desktop "$pkgdir"/usr/share/applications/vuze-extreme-mod.desktop
-  mv vuze.schemas "$pkgdir"/usr/share/gconf/schemas/vuze-extreme-mod.schemas
 
   # Licenses
   mv GPL.txt      "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
@@ -71,6 +69,7 @@ package() {
   rm    azureus
   rm    installer.log
   rm    README.txt
+  rm    vuze.schemas
 
   # Move main stuff
   mv * "$pkgdir"/opt/vuze-extreme-mod/
