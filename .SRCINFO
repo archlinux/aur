@@ -1,0 +1,16 @@
+pkgbase = perl-net-bittorrent
+	pkgdesc = BitTorrent peer-to-peer protocol
+	pkgver = 0.052
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-BitTorrent
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.8
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SANKO/Net-BitTorrent-0.052.tar.gz
+	md5sums = aca81c2b804a2bcdf0d1693ca83bd03f
+	sha512sums = 5e3b79bf644290756e190e26f2a5fba44c88d4fb9c007ff57c37cd0305f05f11ff7409e061a8e1d3f44367ba385b130c86f6be4b343e5e190459a3df6eafe062
+
+pkgname = perl-net-bittorrent
+
