@@ -1,0 +1,17 @@
+pkgbase = perl-image-imlib2
+	pkgdesc = Interface to the Imlib2 image library
+	pkgver = 2.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Image-Imlib2
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/Image-Imlib2-2.03.tar.gz
+	md5sums = 303b91fae2b863903e41a3cac34fa0d3
+	sha512sums = d38eba0da1d9fe46244400454f55d2d4d682a7aff78c123c01476c14f30de3fc4699a1f926fc82fea09341f0577f943d82fe73cd40225bc69a06e1c710383d60
+
+pkgname = perl-image-imlib2
+
