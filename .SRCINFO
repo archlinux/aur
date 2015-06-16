@@ -1,0 +1,20 @@
+pkgbase = perl-datetime-format-flexible
+	pkgdesc = DateTime::Format::Flexible - Flexibly parse strings and turn them into DateTime objects.
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Format-Flexible
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-mocktime
+	depends = perl-datetime
+	depends = perl-datetime-format-builder>=0.74
+	depends = perl-datetime-timezone
+	depends = perl-list-moreutils
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THINC/DateTime-Format-Flexible-0.25.tar.gz
+	md5sums = e0da700eeab8639382be0f7cca763c85
+	sha512sums = c2cdd0dc682a7ef87f006c27c3822f92db658d187748852c2079b58a08fa527f83ed810e4b737dcc3d3de26eae7b89fb173ab2ffbc25935b868d01510fab8ca6
+
+pkgname = perl-datetime-format-flexible
+
