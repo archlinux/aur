@@ -1,0 +1,17 @@
+pkgbase = perl-flow
+	pkgdesc = Make data flow processing easy
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Flow
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-json>=2.21
+	depends = perl-xml-flow>=0.85
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZA/ZAG/Flow-0.9.tar.gz
+	md5sums = c8d7fb9c1b55f5091e2b272904452c98
+	sha512sums = 926569c0d67753460d41fef854e0bf245f01027ad88cc94074e61ecf110932c5343365d562029f20b28f0962a3029f59de832b743194715570400aaeed19b6bd
+
+pkgname = perl-flow
+
