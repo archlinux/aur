@@ -1,0 +1,20 @@
+pkgbase = perl-pod-spell
+	pkgdesc = a formatter for spellchecking Pod
+	pkgver = 1.17
+	pkgrel = 1
+	url = https://metacpan.org/release/Pod-Spell
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	depends = perl-class-tiny
+	depends = perl-file-sharedir-projectdistdir>=1.000
+	depends = perl-lingua-en-inflect
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XE/XENO/Pod-Spell-1.17.tar.gz
+	md5sums = b0895135155569ad4f8903ab11cbeb0b
+	sha512sums = 45538a9d310d7a9b61607919e71421e1dab604d7acac591248d54cc98747cc49adea72d1d53be8dce6b969cb31cf7948348364da2e6d3b0421421380e121753b
+
+pkgname = perl-pod-spell
+
