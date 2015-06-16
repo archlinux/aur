@@ -1,0 +1,18 @@
+pkgbase = elemines-git
+	pkgdesc = an EFL minesweeper clone
+	pkgver = 0.3.196.cadeb02
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = efl
+	depends = elementary
+	depends = etrophy
+	options = !libtool
+	source = git://git.enlightenment.org/games/elemines.git
+	md5sums = SKIP
+
+pkgname = elemines-git
+
