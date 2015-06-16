@@ -13,8 +13,8 @@ depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
 optdepends=('hddtemp: HDD temperature support'
             'gnu-netcat: querying hddtemp service')
-conflicts=("${_pkgname%-*}")
-provides=("${_pkgname%-*}")
+conflicts=("${_pkgname-*}")
+provides=("${_pkgname-*}")
 source=("git://github.com/kotelnik/$_gitpkgname.git")
 md5sums=('SKIP')
 

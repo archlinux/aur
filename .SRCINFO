@@ -11,8 +11,8 @@ pkgbase = plasma5-applets-thermal-monitor-git
 	depends = qt5-graphicaleffects
 	optdepends = hddtemp: HDD temperature support
 	optdepends = gnu-netcat: querying hddtemp service
-	provides = plasma5-applets-thermal
-	conflicts = plasma5-applets-thermal
+	provides = plasma5-applets-thermal-monitor
+	conflicts = plasma5-applets-thermal-monitor
 	source = git://github.com/kotelnik/plasma-applet-thermal-monitor.git
 	md5sums = SKIP
 
