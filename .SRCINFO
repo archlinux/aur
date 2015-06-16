@@ -1,0 +1,16 @@
+pkgbase = perl-swf-file
+	pkgdesc = Create SWF file.
+	pkgver = 0.42
+	pkgrel = 1
+	url = https://metacpan.org/release/SWF-File
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-temporarybag>=0.08
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YS/YSAS/SWF-File-0.42.tar.gz
+	md5sums = 7319b35179edd24958fe1a92be8b3a0b
+	sha512sums = 3b4df24486654e86f885c7e81a97076e778a5e1a5afb9d6f37ecad4d22784b6e7d5cedc08b8e29dbdae4533e0c630c76a9ae5a43ced3f146e0ac392a4c68fa40
+
+pkgname = perl-swf-file
+
