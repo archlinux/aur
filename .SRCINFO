@@ -1,0 +1,26 @@
+pkgbase = efbb-git
+	pkgdesc = Escape from Booty Bay is an EFL-based physics game that explore EPhysics amazing features
+	pkgver = 0.1.0.32.9158208
+	pkgrel = 1
+	url = http://git.enlightenment.org/games/efbb.git
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = CCPL:BY
+	license = CCPL:BY-NC
+	license = CCPL:BY-SA
+	license = CCPL:sampling+
+	makedepends = geneet-git
+	makedepends = git
+	depends = elementary
+	depends = efl
+	depends = libcanberra
+	depends = etrophy
+	conflicts = efbb-svn
+	replaces = efbb-svn
+	options = !libtool
+	source = git://git.enlightenment.org/games/efbb.git
+	md5sums = SKIP
+
+pkgname = efbb-git
+
