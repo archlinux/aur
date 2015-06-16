@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+export LUSCUS_DIR=/usr/lib/PKGNAME
+/usr/lib/PKGNAME/luscus.exe $*

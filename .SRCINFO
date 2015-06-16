@@ -1,0 +1,17 @@
+pkgbase = luscus
+	pkgdesc = molecular editor and viewer
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/luscus/
+	arch = x86_64
+	arch = i686
+	license = custum:Academic Free License 3.0
+	depends = gtk2
+	depends = gtkglext
+	source = http://downloads.sourceforge.net/project/luscus/luscus_0.8.1.tar.gz
+	source = luscus
+	md5sums = 8a42b84097d0ebd1b2430929d157ed0a
+	md5sums = c1c2080566dde278b09df69f4c166305
+
+pkgname = luscus
+
