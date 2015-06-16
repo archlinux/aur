@@ -1,0 +1,33 @@
+pkgbase = perl-mongodb
+	pkgdesc = Official MongoDB Driver for Perl
+	pkgver = 0.708.0.0
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MongoDB
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0.111
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-warn
+	depends = glibc>=2.20
+	depends = perl
+	depends = perl-authen-scram
+	depends = perl-boolean
+	depends = perl-data-dump
+	depends = perl-datetime>=0.78
+	depends = perl-datetime-tiny
+	depends = perl-json
+	depends = perl-moose
+	depends = perl-namespace-clean
+	depends = perl-safe-isa
+	depends = perl-syntax-keyword-junction
+	depends = perl-throwable
+	depends = perl-tie-ixhash
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MO/MONGODB/MongoDB-v0.708.0.0.tar.gz
+	md5sums = 72dfd57225f2d0cabdb2ce668473d0da
+	sha512sums = 1bc623d45e885953d51fcefda8efe2e1fa20b507ef3fda77dac40aa3009f7bd0290c75413dc9ef1f026776dbb1c06b77950842bc2d05d310aad694403130be72
+
+pkgname = perl-mongodb
+
