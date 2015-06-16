@@ -1,0 +1,16 @@
+pkgbase = perl-proc-pid-file
+	pkgdesc = A module to manage PID files
+	pkgver = 1.27
+	pkgrel = 2
+	url = https://metacpan.org/release/Proc-PID-File
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EC/ECALDER/Proc-PID-File-1.27.tar.gz
+	md5sums = 3fcb07f914f863f9a0967b35af562f9f
+	sha512sums = 05d5bcdcc6a9fb2d2cb3779fb6ad6469c7c7845147eae1a4a27dec5bf728ad4fde5c4e2d44bf91382e7609fd701a23dd6fe9edb798dbeecc012d240e25a79bb3
+
+pkgname = perl-proc-pid-file
+
