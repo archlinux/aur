@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-metagrip
+	pkgdesc = A gtk2, gtk3, metacity window border theme. Works on MATE, Cinnamon for sure, and probably XFCE
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://art.gnome.org/themes/metacity/1360
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	source = gtk-theme-metagrip-1.0.tar.gz::http://ftp.gnome.org/pub/gnome/teams/art.gnome.org/themes/metacity/MCity-MetaGrip.tar.gz
+	md5sums = c307f9b8d4a24228904c0c1809e82904
+
+pkgname = gtk-theme-metagrip
+
