@@ -1,0 +1,17 @@
+pkgbase = perl-class-dbi-plugin-type
+	pkgdesc = Determine type information for columns
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-Plugin-Type
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-dbi
+	depends = perl-dbi>=0.94
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SI/SIMON/Class-DBI-Plugin-Type-0.02.tar.gz
+	md5sums = 2f80426ccc67629543404ee9376a6d3e
+	sha512sums = b48102e896fc4cb1e492538ea5fb1a0eab7ab1486cb2cbe39a49dad14ec0f4a76b31d32bac1eae2cb6749a4d5b6758a3725f9527e6c4af3410ba6283973a95a5
+
+pkgname = perl-class-dbi-plugin-type
+
