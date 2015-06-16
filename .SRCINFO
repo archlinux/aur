@@ -1,0 +1,16 @@
+pkgbase = perl-text-textile
+	pkgdesc = A humane web text generator.
+	pkgver = 2.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Textile
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BC/BCHOATE/Text-Textile-2.12.tar.gz
+	md5sums = 2b4a3abc496f3c167b72fdd5549268a8
+	sha512sums = 629d9b61b78fbac638d7d9959afa2621e37d34e15d96dc6751fd693b86e14031242f82cb28ae193f783c0954e0f481d407f52be03ca98f314ff3b26af8fc9cd7
+
+pkgname = perl-text-textile
+
