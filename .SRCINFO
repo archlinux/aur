@@ -1,0 +1,18 @@
+pkgbase = perl-moosex-singleton
+	pkgdesc = turn your Moose class into a singleton
+	pkgver = 0.29
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Singleton
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-fatal
+	makedepends = perl-test-requires
+	depends = perl-moose>=1.10
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAARE/MooseX-Singleton-0.29.tar.gz
+	md5sums = b4ea5f8cc9b9f952623527a52da55e8d
+	sha512sums = bfaf99127488f75f40c6df309360da1be67290865ffb962e1c6e694858d055723ccbe8bc199fff592525b04a428007376bcd515bf095baa9f0bc193d72c277fb
+
+pkgname = perl-moosex-singleton
+
