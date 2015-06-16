@@ -28,6 +28,7 @@ build() {
 package_elements-mainchain-cli-git() {
   pkgdesc="Bitcoin RPC cli client modified for bitcoin experiments"
   depends=(boost-libs openssl)
+  conflicts=(bitcoin-cli)
 
   cd "$pkgbase"
   install -Dm755 src/bitcoin-cli "$pkgdir"/usr/bin/bitcoin-cli
@@ -37,6 +38,7 @@ package_elements-mainchain-cli-git() {
 package_elements-mainchain-daemon-git() {
   pkgdesc="Bitcoin daemon modified for bitcoin experiments"
   depends=(boost-libs miniupnpc openssl)
+  conflicts=(bitcoin-daemon)
 
   cd "$pkgbase"
   install -Dm755 src/bitcoind "$pkgdir"/usr/bin/bitcoind
@@ -52,6 +54,7 @@ package_elements-mainchain-daemon-git() {
 package_elements-mainchain-qt-git() {
   pkgdesc="Bitcoin Qt GUI modified for bitcoin experiments"
   depends=(boost-libs qt4 miniupnpc qrencode protobuf)
+  conflicts=(bitcoin-qt)
  
   cd "$pkgbase"
   install -Dm755 src/qt/bitcoin-qt "$pkgdir"/usr/bin/bitcoin-qt
