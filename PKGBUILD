@@ -10,7 +10,7 @@ url="http://projects.vdr-developer.org/projects/plg-tvguideng"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=("vdr-api=$_vdrapi" 'vdr-skindesigner')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/git/vdr-plugin-$_plugname.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('28d156c79a1a01786946c4dd9cb3e06c')
