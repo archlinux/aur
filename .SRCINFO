@@ -1,0 +1,18 @@
+pkgbase = perl-collection
+	pkgdesc = CRUD framework
+	pkgver = 0.58
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Collection
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-flow>=0.6
+	depends = perl-json-xs>=2.29
+	depends = perl-string-crc32>=1.4
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZA/ZAG/Collection-0.58.tar.gz
+	md5sums = f2f5adb24a9b3f21ba32c0223c43f2f8
+	sha512sums = bb5b22a2f5f8d991f0e80db139a6effe8f32ec745d8dc854d5a3b46172a8f2fff8c49ddbccb5c4b2920bba1d948a7dbfb790d6471d879c7fbd7657e04b0ef2cd
+
+pkgname = perl-collection
+
