@@ -1,0 +1,18 @@
+pkgbase = perl-poe-component-sslify
+	pkgdesc = Makes using SSL in the world of POE easy!
+	pkgver = 1.008
+	pkgrel = 1
+	url = http://search.cpan.org/dist/POE-Component-SSLify
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-net-ssleay>=1.36
+	depends = perl-poe
+	depends = perl-task-weaken>=1.03
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AP/APOCAL/POE-Component-SSLify-1.008.tar.gz
+	md5sums = a7b8d0276b7c171485cbca086b147c5d
+	sha512sums = 73c3952bb2763352b0a4b48817e01b0ed9c19caafb6eca80e0773b558a481fe0a255f718f20ea7a474f8e8f8d1c65e3b2fa7950dd0c624aca9011d99ed5b2dde
+
+pkgname = perl-poe-component-sslify
+
