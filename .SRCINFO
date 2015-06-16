@@ -1,0 +1,21 @@
+pkgbase = qcachegrind-git
+	pkgdesc = Visualization of Performance Profiling Data (Qt version)
+	pkgver = 20130302
+	pkgrel = 1
+	url = http://kcachegrind.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = qt4
+	depends = qt4
+	optdepends = graphviz
+	provides = qcachegrind
+	conflicts = qcachegrind,
+	conflicts = qcachegrind-svn
+
+pkgname = qcachegrind-git
+
