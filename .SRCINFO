@@ -1,0 +1,17 @@
+pkgbase = perl-cache-berkeleydb
+	pkgdesc = implements the Cache::Cache interface.
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Cache-BerkeleyDB
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-berkeleydb>=0.21
+	depends = perl-cache-cache>=1.00
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BALDUR/Cache-BerkeleyDB-0.03.tar.gz
+	md5sums = ae7dd7aeb1e2cd8142dbbc554dc62a4e
+	sha512sums = be86c9b3fac0dbb19c9c4d26b41fe9e068ed39924e8234d81b906660ef8cb492d5f116738058d5d4cac93129eff4f6910e6c9a0cc60d5deaabe1e81f5f01b20a
+
+pkgname = perl-cache-berkeleydb
+
