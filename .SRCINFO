@@ -7,7 +7,6 @@ pkgbase = bitaddress-git
 	license = MIT
 	makedepends = nodejs-grunt-cli
 	depends = bash
-	provides = bitsquare
 	source = bitaddress-git::git+https://github.com/pointbiz/bitaddress.org.git
 	source = bitaddress.sh
 	source = bitaddress.desktop

@@ -9,7 +9,6 @@ url="https://www.bitaddress.org"
 license=('MIT')
 depends=('bash')
 makedepends=('nodejs-grunt-cli')
-provides=('bitsquare')
 source=("${pkgname}::git+https://github.com/pointbiz/bitaddress.org.git"
   "bitaddress.sh"
   "bitaddress.desktop")
