@@ -1,0 +1,16 @@
+pkgbase = perl-routes-tiny
+	pkgdesc = Routes
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/routes-tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/routes-tiny-0.11.tar.gz
+	md5sums = 1c0c6c870840ea0ffeb4ef6db92a0145
+	sha512sums = 49bd4f512b2ba810269fcde540e4cd0697f8d49a4268771b20387656290076bca19c57f446c54be66e8fc7e71ae38b7496da57a43a1a03bbd1267e7a777068b0
+
+pkgname = perl-routes-tiny
+
