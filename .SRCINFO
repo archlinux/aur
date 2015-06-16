@@ -1,0 +1,21 @@
+pkgbase = perl-datetimex-easy
+	pkgdesc = Parse a date/time string using the best method available
+	pkgver = 0.089
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTimeX-Easy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-most
+	depends = perl-datetime
+	depends = perl-datetime-format-flexible
+	depends = perl-datetime-format-ical
+	depends = perl-datetime-format-natural
+	depends = perl-timedate
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROKR/DateTimeX-Easy-0.089.tar.gz
+	md5sums = 6439e6a2c238c091031b0f478c2c3418
+	sha512sums = 7f508bd78fc2bd257af55d61c43c26b270729b1d2de9643eb1c025c21bde51537e12a0b260037347b46808dbaf16a5b81f01fd4229bfe0926deae753e62be870
+
+pkgname = perl-datetimex-easy
+
