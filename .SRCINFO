@@ -1,0 +1,18 @@
+pkgbase = qlipper-qt5-git
+	pkgdesc = Clipboard applet based on qt5
+	pkgver = r65.44eb028
+	pkgrel = 2
+	url = https://github.com/pvanek/qlipper
+	arch = i686
+	arch = x86_64
+	license = GPLv2+
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = qlipper
+	conflicts = qlipper
+	source = git+https://github.com/pvanek/qlipper
+	md5sums = SKIP
+
+pkgname = qlipper-qt5-git
+
