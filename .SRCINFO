@@ -1,0 +1,14 @@
+pkgbase = fllog
+	pkgdesc = An Amateur Radio Logbook
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.w1hkj.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	source = http://www.w1hkj.com/downloads/fllog/fllog-1.2.0.tar.gz
+	sha256sums = 7cac198e0e9def5853a6b3df1ad1968752a90f0d2d3477e071567fdde4c436d3
+
+pkgname = fllog
+
