@@ -1,0 +1,37 @@
+pkgbase = perl-catalyst-model-dbic-schema
+	pkgdesc = DBIx::Class::Schema Model Class
+	pkgver = 0.65
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Catalyst-Model-DBIC-Schema
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-requires
+	makedepends = perl-dbd-sqlite
+	depends = perl-carp-clan
+	depends = perl-catalyst-component-instancepercontext
+	depends = perl-catalyst-runtime>=5.80005
+	depends = perl-catalystx-component-traits>=0.14
+	depends = perl-dbix-class>=0.08114
+	depends = perl-dbix-class-schema-loader>=0.04005
+	depends = perl-hash-merge
+	depends = perl-list-moreutils
+	depends = perl-module-runtime>=0.012
+	depends = perl-moose>=1.12
+	depends = perl-moosex-markasmethods>=0.13
+	depends = perl-moosex-nonmoose>=0.16
+	depends = perl-moosex-types
+	depends = perl-moosex-types-loadableclass>=0.009
+	depends = perl-tie-ixhash
+	depends = perl-try-tiny
+	depends = perl-namespace-autoclean>=0.09
+	depends = perl-namespace-clean
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/G/GB/GBJK/Catalyst-Model-DBIC-Schema-0.65.tar.gz
+	md5sums = 8db4a9c80610c24bfbc571e26e18ec6a
+	sha512sums = 26b9efbcabb1d32e073ab4c67dd5daba568170261a7e99a5a7ade03412860b860a0216a011c170fc3b2db2ca8cee80d8c557eb5fb24a1696b91c4adc598ec171
+
+pkgname = perl-catalyst-model-dbic-schema
+
