@@ -1,0 +1,17 @@
+pkgbase = perl-pod-pom
+	pkgdesc = POD Object Model
+	pkgver = 0.28
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Pod-POM
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-file-slurp
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDREWF/Pod-POM-0.28.tar.gz
+	md5sums = 808ae281809e7bdf3fc8ef4e0b7487a9
+	sha512sums = d154509505eadb019994fa52d8013ead0eea8f1304330923a2093980478ad113c72fd0da0a26829ab752234d884d2bda16cbc7ddc17975852e3a86dd496b177f
+
+pkgname = perl-pod-pom
+
