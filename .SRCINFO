@@ -1,0 +1,15 @@
+pkgbase = taffy
+	pkgdesc = A command-line audio tagging tool
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/jangler/taffy
+	arch = any
+	license = MIT
+	depends = ruby-taglib-ruby
+	noextract = taffy-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/taffy-1.2.0.gem
+	sha1sums = 532906ef9fabf322b5f119cb613ac38d30712adb
+
+pkgname = taffy
+
