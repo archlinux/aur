@@ -1,0 +1,15 @@
+pkgbase = pyncp-git
+	pkgdesc = Python Network Copy
+	pkgver = r12.0314369
+	pkgrel = 2
+	url = https://github.com/makefu/pyncp
+	arch = any
+	license = WTFPL2
+	makedepends = git
+	depends = python2
+	optdepends = tk: visual ui
+	source = git://github.com/makefu/pyncp.git
+	md5sums = SKIP
+
+pkgname = pyncp-git
+
