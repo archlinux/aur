@@ -1,0 +1,35 @@
+pkgbase = mapserver
+	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
+	pkgver = 6.4.1
+	pkgrel = 2
+	url = http://www.mapserver.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cfitsio
+	depends = libpng
+	depends = freetype2
+	depends = gd
+	depends = zlib
+	depends = gdal
+	depends = proj
+	depends = libjpeg-turbo
+	depends = libxml2
+	depends = libpqxx
+	depends = pdflib-lite
+	depends = geos
+	depends = agg
+	depends = apache
+	depends = fcgi
+	depends = mod_fastcgi
+	depends = python2
+	depends = php
+	depends = php-apache
+	depends = swig
+	depends = libsvg-cairo
+	depends = php-pear
+	source = http://download.osgeo.org/mapserver/mapserver-6.4.1.tar.gz
+	md5sums = bbd17581b38b9baf9461a633551725cc
+
+pkgname = mapserver
+
