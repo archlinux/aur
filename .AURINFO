@@ -1,0 +1,14 @@
+pkgbase = double-conversion
+	pkgdesc = Binary-decimal and decimal-binary routines for IEEE doubles
+	pkgver = 2.0.1
+	pkgrel = 2
+	url = https://code.google.com/p/double-conversion/
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = cmake
+	source = https://double-conversion.googlecode.com/files/double-conversion-2.0.1.tar.gz
+	source = shared_lib.patch
+
+pkgname = double-conversion
+
