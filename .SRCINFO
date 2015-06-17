@@ -1,0 +1,22 @@
+pkgbase = mruby-git
+	pkgdesc = Lightweight Ruby (preliminary release for internal team review)
+	pkgver = 1.1.0.r154.ga1d4992
+	pkgrel = 1
+	url = https://github.com/mruby/mruby
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = bison
+	makedepends = ruby
+	provides = mruby
+	conflicts = mruby
+	replaces = mruby
+	options = staticlibs
+	source = git://github.com/mruby/mruby
+	source = remove_termcap_static_lib.patch
+	sha1sums = SKIP
+	sha1sums = 3042fc7811afee7e88535dca43495a1a5486d6a5
+
+pkgname = mruby-git
+
