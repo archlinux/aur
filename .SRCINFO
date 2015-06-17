@@ -1,0 +1,12 @@
+pkgbase = kdm-theme-branding-starboard
+	pkgdesc = KDM4 Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=149221
+	arch = any
+	license = GPL
+	source = http://dl.dropbox.com/u/27352353/Branding-Starboard-Arch.tar.gz
+	md5sums = 631b94121ec2005e0128fbc0940a07e5
+
+pkgname = kdm-theme-branding-starboard
+
