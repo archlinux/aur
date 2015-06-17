@@ -1,7 +1,7 @@
 pkgbase = sjk
 	pkgdesc = Swiss Java Knife is CLI tool for JVM diagnostic, troubleshooting and profiling
 	pkgver = 0.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aragozin/jvm-tools
 	arch = any
 	license = APACHE
