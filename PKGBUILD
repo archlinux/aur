@@ -2,11 +2,11 @@
 
 pkgname=rtapp
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
 url=("http://www.audio-linux.com")
-license=('GPL')
+license=('custom')
 depends=('util-linux' 'bash' 'rtirq')
 optdepends=('linux-rt: The Linux-rt kernel and modules'
             'rt-tests: A collection of latency testing tools for the linux(-rt) kernel')
