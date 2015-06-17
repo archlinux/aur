@@ -1,0 +1,35 @@
+pkgbase = xplico
+	pkgdesc = Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://www.xplico.org/
+	install = xplico.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = tcpdump
+	depends = libpcap
+	depends = sqlite3
+	depends = sox
+	depends = lame
+	depends = perl
+	depends = apache
+	depends = php
+	depends = php-sqlite
+	depends = php-apache
+	depends = php-pear
+	depends = perl
+	depends = libnet
+	depends = recode
+	depends = json-c
+	depends = python-httplib2
+	depends = libmysqlclient
+	depends = ndpi
+	optdepends = geoip-citydata: City database for geoip IP location lookups
+	optdepends = ghostpdl: reconstruct document printed with network printer
+	optdepends = videosnarf: decode VoIP based on RTP
+	source = xplico::git+https://github.com/M0Rf30/xplico.git
+	md5sums = SKIP
+
+pkgname = xplico
+
