@@ -1,0 +1,66 @@
+_datadir=/usr/share/webapps/gitlab-ci
+_etcdir=/etc/webapps/gitlab-ci
+
+fix_perms() {
+	chown -R gitlab_ci "${_datadir}/tmp"
+	chown -R gitlab_ci:gitlab /run/gitlab-ci
+	chmod -R u+rwX "${_datadir}/tmp"
+	chmod 755 /run/gitlab-ci
+	# Rails needs to create a token file called .secret into datadir
+	chown -R gitlab_ci:gitlab "${_datadir}"
+}
+
+pids_dir() {
+	systemd-tmpfiles --create gitlab-ci.conf
+}
+
+post_install() {
+	groupadd gitlab &>/dev/null
+	useradd -m -g gitlab -G users -s /bin/false gitlab_ci
+	pids_dir
+	fix_perms
+	echo "You have to configure the database."
+	echo "Configure the application database in ${_etcdir}/database.yml and run:"
+	echo "# su - gitlab_ci -s /bin/sh -c \"cd ${_datadir}; bundle exec rake setup RAILS_ENV=production\""
+	echo "# su - gitlab_ci -s /bin/sh -c \"cd ${_datadir}; bundle exec whenever -w RAILS_ENV=production\""
+	echo "Configure the application in ${_etcdir}/application.yml"
+}
+
+pre_upgrade() {
+	echo "Stopping gitlab-ci-unicorn & gitlab-ci-sidekiq services, check them after update !"
+	if [[ `systemctl is-active gitlab-ci-unicorn` == 'active' ]]; then
+		touch /tmp/gitlab-ci-upgrade-unicorn
+		systemctl stop gitlab-ci-unicorn
+	fi
+	if [[ `systemctl is-active gitlab-ci-sidekiq` == 'active' ]]; then
+		touch /tmp/gitlab-ci-upgrade-sidekiq
+		systemctl stop gitlab-ci-sidekiq
+	fi
+
+	fix_perms
+}
+
+post_upgrade() {
+	getent group gitlab >/dev/null 2>&1 || groupadd gitlab &>/dev/null
+	getent passwd gitlab_ci >/dev/null 2>&1 || useradd -m -g gitlab -G users -s /bin/false gitlab_ci &>/dev/null
+	pids_dir
+	fix_perms
+
+	su - gitlab_ci -s /bin/sh -c "cd '${_datadir}'; bundle exec rake db:migrate RAILS_ENV=production"
+
+	systemctl daemon-reload
+	if [ -e /tmp/gitlab-ci-upgrade-unicorn ]; then
+		systemctl start gitlab-ci-unicorn
+		rm /tmp/gitlab-ci-upgrade-unicorn
+	fi
+	if [ -e /tmp/gitlab-ci-upgrade-sidekiq ]; then
+		systemctl start gitlab-ci-sidekiq
+		rm /tmp/gitlab-ci-upgrade-sidekiq
+	fi
+}
+
+post_remove() {
+	if getent passwd gitlab_ci > /dev/null 2>&1; then
+		userdel gitlab_ci
+	fi
+}

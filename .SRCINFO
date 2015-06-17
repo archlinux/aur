@@ -1,0 +1,51 @@
+pkgbase = gitlab-ci
+	pkgdesc = Continuous integration server for gitlabhq | Coordinator
+	pkgver = 7.11.4
+	pkgrel = 1
+	url = http://www.gitlab.com/gitlab-ci
+	install = gitlab-ci.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby>=2.0
+	depends = ruby-bundler>=1.5.2
+	depends = openssh
+	depends = redis
+	depends = libxslt
+	depends = icu
+	depends = nodejs
+	optdepends = mariadb: database backend
+	optdepends = postgresql: database backend
+	options = !strip
+	backup = etc/webapps/gitlab-ci/application.yml
+	backup = etc/webapps/gitlab-ci/database.yml
+	backup = etc/webapps/gitlab-ci/resque.yml
+	backup = etc/webapps/gitlab-ci/unicorn.rb
+	backup = etc/logrotate.d/gitlab-ci
+	source = gitlab-ci-7.11.4.tar.gz::https://github.com/gitlabhq/gitlab-ci/archive/v7.11.4.tar.gz
+	source = gitlab-ci.target
+	source = gitlab-ci-unicorn.service
+	source = gitlab-ci-sidekiq.service
+	source = gitlab-ci.tmpfiles.d
+	source = gitlab-ci.logrotate
+	source = apache2.4.conf.example
+	source = apache2.4-ssl.conf.example
+	source = apache.conf.example
+	source = apache-ssl.conf.example
+	source = nginx-ssl.conf.example
+	source = lighttpd.conf.example
+	sha512sums = 954cabcf17044851c5bad4a34f9119cea01c6682a69f4512d61e25ba5660c5badb1d47d054cf88a30e67dd2e5b028ddf22dae4ca7ec3ea74734cb2430ba5d9dd
+	sha512sums = 30cf8ad2a26f0f6d87cb230c69668f8d7b15329af21985349bbc2c8eb3560ccbc82dd173e65be41aa71246b2426fc123f43d45b103371ce47a56d9ba7bda46bc
+	sha512sums = 3f202f6c21f380f8fd98b34bc7e6d48a94dcb5339e67e71284ef9589b0381dba73ecccdb4f0c3cefd5786e5326e8220c6650ed350c2ba6ea214be9b1232bf253
+	sha512sums = b1585c29e3b17f3ba9ad237a1a612749bbc9bc25ed06f0c5862213440b0608ed34b8fdf8e0dbf0b198dc16593120edf9a467c218bb9aac8ab51cfd2867215873
+	sha512sums = 83642ba8433e1e59ecd2f603098ccebe45a0109bddf1b060a9d95fd958c02f99f86beaf5f26d3c6acadd830f9a579bb2312af534658998fc5a4c56c78244e67d
+	sha512sums = cdc948304eed5cfc62de2a953295129a9d9d61ee0be6165397bca6678108052e314d4c0ed4b7211df5a65ebdc39b4738900e7f71b58146b1b3b120bf1cdd4271
+	sha512sums = 1323dc3bae4f4c9d4a42062abc83f4330014519df78a00a263ac20f9cc489af4d781f1b32a77756ed96b53c44de2bd2bd19c36c193b04f01f40be8c2f5369f7a
+	sha512sums = d6a7a53455c5209e1b07a29b8a32f7409edb2b0da2342c024c5aacec91a01d95f8ff4be7e9e9b8886262ec4269291d6f698b94b5316eac925b097e3f62343d2d
+	sha512sums = 59e6625134c0dca27cb801fc3d44a01320ada4d5b99000800ad4a1bc7378d5f7f7212103a256940e97a1fe865d9772b68339c393950cceda88e37a0d104e992d
+	sha512sums = 55c5c994780c18e088dc4206be392f4591aedab324fecb22dca6cd81eb87988ebab61bf6612481e8aac000b304f33a82ef257118c657ff165440ba5acb28f0a0
+	sha512sums = a60c61bd312b4726802f5072f49033c6f09fdd291e6a8d95e198279945faeed41ecd5e7cc0ea185c59142ca5d7c8a75278b956922941dee0462c65bc24a23e49
+	sha512sums = c90b0986503c20150a114b3bbea762f9c7d82069c90509d8b3cc6ac388e519ccc9a82cf4baa0c3218c797a36e3240cd04053224eca5c7f6bd535bd21c5435cb7
+
+pkgname = gitlab-ci
+

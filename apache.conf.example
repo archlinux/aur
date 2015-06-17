@@ -1,0 +1,41 @@
+#Note this config assumes unicorn is listening on port 8081.
+#Module dependencies
+#  mod_rewrite
+#  mod_proxy
+#  mod_proxy_http
+<VirtualHost *:80>
+	ServerName gitlabci.example.com
+	ServerSignature Off
+
+	ProxyPreserveHost On
+
+	<Location />
+		Order deny,allow
+		Allow from all
+
+		ProxyPassReverse http://127.0.0.1:8081
+		ProxyPassReverse http://gitlabci.example.com/
+	</Location>
+
+	#apache equivalent of nginx try files
+	# http://serverfault.com/questions/290784/what-is-apaches-equivalent-of-nginxs-try-files
+	# http://stackoverflow.com/questions/10954516/apache2-proxypass-for-rails-app-gitlab
+	RewriteEngine on
+	RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+	RewriteRule .* http://127.0.0.1:8081%{REQUEST_URI} [P,QSA]
+
+	# needed for downloading attachments
+	DocumentRoot /usr/share/webapps/gitlab-ci/public
+
+	#Set up apache error documents, if back end goes down (i.e. 503 error) then a maintenance/deploy page is thrown up.
+	ErrorDocument 404 /404.html
+	ErrorDocument 422 /422.html
+	ErrorDocument 500 /500.html
+	ErrorDocument 503 /deploy.html
+
+	LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
+	ErrorLog  /var/log/httpd/logs/gitlabci.example.com_error.log
+	CustomLog /var/log/httpd/logs/gitlabci.example.com_forwarded.log common_forwarded
+	CustomLog /var/log/httpd/logs/gitlabci.example.com_access.log combined env=!dontlog
+	CustomLog /var/log/httpd/logs/gitlabci.example.com.log combined
+</VirtualHost>
