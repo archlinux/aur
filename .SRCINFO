@@ -1,0 +1,17 @@
+pkgbase = libisf-qt-git
+	pkgdesc = A library to encode and decode handwriting data in MS Ink Serialized Format (ISF)
+	pkgver = 151.e4c356a
+	pkgrel = 1
+	url = http://www.kmess.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qt4
+	source = libisf::git://gitorious.org/kmess/libisf-qt.git
+	md5sums = SKIP
+
+pkgname = libisf-qt-git
+
