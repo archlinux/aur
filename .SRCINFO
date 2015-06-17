@@ -1,0 +1,20 @@
+pkgbase = akabeicore-git
+	pkgdesc = Core library for Akabei, Chakra’s package manager
+	pkgver = 579.0c9c444
+	pkgrel = 1
+	url = https://gitorious.org/chakra/akabeicore
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = translate-toolkit
+	makedepends = git
+	depends = kdelibs
+	depends = libarchive
+	depends = sqlite3
+	source = akabeicore::git://gitorious.org/chakra/akabeicore.git
+	md5sums = SKIP
+
+pkgname = akabeicore-git
+
