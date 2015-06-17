@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-pulsar-eztv-platbr
+	pkgdesc = Pulsar is an torrent finding and streaming engine for Kodi
+	pkgver = 0.0.9b
+	pkgrel = 1
+	url = https://github.com/platbr/
+	arch = any
+	license = GPL3
+	depends = kodi
+	options = !strip
+	source = https://github.com//platbr/script.pulsar.eztv-platbr/archive/0.0.9b.tar.gz
+	md5sums = d22e1f9e0894de34707bacec6babceb8
+
+pkgname = kodi-addon-pulsar-eztv-platbr
+
