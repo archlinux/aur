@@ -1,0 +1,15 @@
+pkgbase = jdk7-docs
+	pkgdesc = Java SE Development Kit Documentation 7
+	pkgver = 7.80
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/index.html
+	arch = any
+	license = custom
+	conflicts = jdk-docs
+	options = docs
+	options = !strip
+	source = http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-docs-all.zip
+	md5sums = bd0cd35d2ffda8557577b37c9ac9c0eb
+
+pkgname = jdk7-docs
+
