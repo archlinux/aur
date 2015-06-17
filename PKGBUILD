@@ -1,7 +1,7 @@
 # Maintainer: Masoud <mpoloton@gmail.com>
 
 pkgname=('python-pyfr')
-pkgver=0.3.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Python based framework for solving advection-diffusion type problems on streaming architectures"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=('metis: needed for running PyFR in parallel'
             'cblas: OpenMP Backend'
             'openblas: Optimized BLAS' )
             
-md5sums=('febd0aa2e1a364c2a5e6f26a70a667cf')
+sha256sums=('dce2c04183b8c533bd2498fb867cf5896f6f969808b3b0ec9c1fc293e956e9ba')
 
 
 build() {
