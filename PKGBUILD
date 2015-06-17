@@ -2,7 +2,7 @@
 
 pkgname=erlang-jsx
 _pkgname=${pkgname/erlang-//}
-pkgver=2.5.2
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="An erlang application for consuming, producing and manipulating json."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url=https://github.com/talentdeficit/jsx/
 license=('MIT')
 depends=('erlang-nox')
 makedepends=('rebar')
-source=("https://github.com/talentdeficit/jsx/archive/v2.5.2.tar.gz")
-md5sums=('2f9d7212772b843269ec5621387f98dd')
+source=("https://github.com/talentdeficit/jsx/archive/v$pkgver.tar.gz")
+md5sums=('413694a899c50ade66c0504b82078161')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
