@@ -1,0 +1,21 @@
+pkgbase = portage-git
+	pkgdesc = Gentoo's package management system
+	pkgver = 12988.4c5b4a1
+	pkgrel = 1
+	url = http://www.gentoo.org/proj/en/portage/index.xml
+	install = portage-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = epydoc
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = python2
+	depends = xmlto
+	depends = rsync
+	depends = eselect-git
+	source = portage::git://git.overlays.gentoo.org/proj/portage.git
+	md5sums = SKIP
+
+pkgname = portage-git
+

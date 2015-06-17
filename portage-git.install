@@ -1,0 +1,19 @@
+post_install()
+{
+	if [ "`id portage`" == "" ]; then 
+          groupadd portage -g 250
+          useradd portage -u 250 -g 250  -d /var/tmp -s /bin/false -c portage
+        fi   
+	echo "Use "eselect profile list" and choose a profile"
+        echo "Example: eselect profile list"
+        echo "         eselect profile set 9"
+}
+
+post_remove()
+{
+	groupdel portage        
+	userdel portage
+        if [ -e /var/portage ]; then
+          rm -r /var/portage
+	fi
+}
