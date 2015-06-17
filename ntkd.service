@@ -1,0 +1,12 @@
+[Unit]
+Description=Netsukuku
+After=network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/bin/ntkd
+PIDFile=/var/run/ntkd.pid
+
+[Install]
+WantedBy=multi-user.target

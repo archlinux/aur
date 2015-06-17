@@ -1,0 +1,19 @@
+pkgbase = pyntk-svn
+	pkgdesc = Netsukuku: An experimental peer-to-peer wireless routing system, written in Python
+	pkgver = 1185
+	pkgrel = 1
+	url = http://netsukuku.freaknet.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = python2-distribute
+	depends = stackless-python2
+	provides = pyntk
+	source = pyntk::svn+https://github.com/venugopalk/netsukuku
+	source = ntkd.service
+	md5sums = SKIP
+	md5sums = 2afcefb8d01dfc1f89873f04db67e098
+
+pkgname = pyntk-svn
+
