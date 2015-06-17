@@ -1,0 +1,17 @@
+pkgbase = kodi-addon-pulsar-providers-meta
+	pkgdesc = Providers for pulsar, a Kodi addon. Meta package
+	pkgver = 1
+	pkgrel = 2
+	url = https://github.com/mancuniancol/
+	arch = any
+	license = GPL3
+	depends = kodi
+	depends = kodi-addon-pulsar
+	depends = kodi-addon-pulsar-eztv-mc
+	depends = kodi-addon-pulsar-kickass-mc
+	depends = kodi-addon-pulsar-magnetdl
+	depends = kodi-addon-pulsar-provider-manager
+	depends = kodi-addon-pulsar-yify-mc
+
+pkgname = kodi-addon-pulsar-providers-meta
+
