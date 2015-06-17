@@ -1,0 +1,14 @@
+pkgbase = exquisite
+	pkgdesc = Bootsplash program able to render in Framebuffer, or X11 (Enlightenmen17 component)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = efl
+	source = http://download.enlightenment.org/releases/exquisite-1.0.0.tar.bz2
+	md5sums = 5d939d267d97230f0f772b17938ad2ab
+
+pkgname = exquisite
+
