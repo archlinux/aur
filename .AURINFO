@@ -1,0 +1,17 @@
+pkgbase = python2-obelisk
+	pkgdesc = Pure Python Obelisk + Bitcoin client side library
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/darkwallet/python-obelisk
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-pyzmq
+	depends = python2-ecdsa
+	depends = python2-twisted
+	conflicts = python2-obelisk-git
+	replaces = python2-obelisk-git
+	source = https://pypi.python.org/packages/source/p/python-obelisk/python-obelisk-0.1.3.tar.gz
+
+pkgname = python2-obelisk
+
