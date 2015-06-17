@@ -1,0 +1,4 @@
+post_install () {
+  echo "Please run scdl-config before scdl in order to configure soundcloud-dl"
+  echo "Enjoy"
+}
