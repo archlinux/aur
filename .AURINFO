@@ -1,0 +1,14 @@
+pkgbase = ndpi
+	pkgdesc = Open and Extensible GPLv3 Deep Packet Inspection Library
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.ntop.org/products/ndpi/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	conflicts = ndpi-svn
+	source = http://ftp.de.debian.org/debian/pool/main/n/ndpi/ndpi_1.5.0.orig.tar.gz
+	md5sums = d6659045aab8d5cfe0778605bf408d00
+
+pkgname = ndpi
+
