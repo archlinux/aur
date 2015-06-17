@@ -1,0 +1,16 @@
+pkgbase = perl-x500-dn
+	pkgdesc = Handle X.500 DNs (Distinguished Names), parse and format them
+	pkgver = 0.29
+	pkgrel = 3
+	url = http://search.cpan.org/~rjoop/X500-DN-0.29/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-parse-recdescent
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJOOP/X500-DN-0.29.tar.gz
+	md5sums = 48d364190ea638d2de985c4b38197818
+
+pkgname = perl-x500-dn
+
