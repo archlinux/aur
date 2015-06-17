@@ -1,0 +1,7 @@
+# makepkg folders
+src
+pkg
+knossos
+
+# generated packages
+*pkg.tar.xz
