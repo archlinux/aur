@@ -1,0 +1,23 @@
+pkgbase = scangearmp-mg6200
+	pkgdesc = Canon Scanner Driver (for mg6200 series)
+	pkgver = 1.80
+	pkgrel = 2
+	url = http://support-au.canon.com.au/contents/AU/EN/0100393102.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = findutils
+	makedepends = grep
+	makedepends = gawk
+	depends = sane
+	depends = gtk2
+	depends = libpng>=1.2.8
+	source = http://gdlp01.c-wss.com/gds/1/0100003931/01/scangearmp-source-1.80-1.tar.gz
+	source = fix_scanfile.patch
+	source = configures.patch
+	md5sums = 88e3891918357304a9f527d043b435d2
+	md5sums = 13df0530aaf3283490e09427070311a8
+	md5sums = 356b6bfbd8577f3fc19d1044605fdbad
+
+pkgname = scangearmp-mg6200
+
