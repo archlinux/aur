@@ -1,0 +1,15 @@
+pkgbase = whatweb
+	pkgdesc = Next generation web scanner that identifies what websites are running.
+	pkgver = 0.4.7
+	pkgrel = 2
+	url = http://www.morningstarsecurity.com/research/whatweb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ruby1.8
+	conflicts = whatweb-git
+	source = http://www.morningstarsecurity.com/downloads/whatweb-0.4.7.tar.gz
+	md5sums = c1bdbc4a6d757f2aa3172b2c8c8c8be9
+
+pkgname = whatweb
+
