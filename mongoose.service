@@ -1,0 +1,9 @@
+[Unit]
+Description=Mongoose HTTP Daemon
+
+[Service]
+ExecStart=/usr/bin/mongoose /etc/mongoose/mongoose.conf
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
