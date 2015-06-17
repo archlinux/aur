@@ -1,0 +1,18 @@
+pkgbase = libopencm3-git
+	pkgdesc = Open Source firmware library for various ARM Cortex microcontrollers
+	pkgver = r1638.3a106db
+	pkgrel = 1
+	url = http://www.libopencm3.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = arm-none-eabi-gcc
+	makedepends = arm-none-eabi-newlib
+	makedepends = python-yaml
+	options = !strip
+	options = staticlibs
+	source = git://github.com/libopencm3/libopencm3.git
+	sha256sums = SKIP
+
+pkgname = libopencm3-git
+
