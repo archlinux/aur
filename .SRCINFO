@@ -1,7 +1,7 @@
 pkgbase = electron
 	pkgdesc = Framework for writing cross-platform desktop applications using JavaScript, HTML and CSS.
-	pkgver = 0.26.0
-	pkgrel = 2
+	pkgver = 0.28.1
+	pkgrel = 1
 	url = https://github.com/atom/electron
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = electron
 	depends = gtk2
 	depends = libgnome-keyring
 	optdepends = nodejs
-	source = electron.zip::https://github.com/atom/electron/releases/download/v0.26.0/electron-v0.26.0-linux-ia32.zip
-	sha256sums = 0c08b6772786cc0a471fecf6ba04438aacb3c9bf9be2167dc64219be0249aee2
+	source = electron.zip::https://github.com/atom/electron/releases/download/v0.28.1/electron-v0.28.1-linux-ia32.zip
+	sha256sums = b7fcfad602f7e7b4cdf5c279d66ff077b176c1cb9fc0ee56697a185988634ed6
 
 pkgname = electron
 
