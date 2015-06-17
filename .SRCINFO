@@ -1,0 +1,17 @@
+pkgbase = dvcs-autosync-git
+	pkgdesc = A personal Dropbox replacement based on Git
+	pkgver = 0.5.192.4bea986
+	pkgrel = 1
+	url = http://mayrhofer.eu.org/dvcs-autosync
+	changelog = dvcs-autosync-git.changelog
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-pyinotify
+	depends = xmpppy
+	depends = python2
+	source = git://gitorious.org/dvcs-autosync/dvcs-autosync.git
+	md5sums = SKIP
+
+pkgname = dvcs-autosync-git
+

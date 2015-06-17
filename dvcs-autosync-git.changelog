@@ -1,0 +1,8 @@
+2013-09-02 Daniele Paolella <danielepaolella@email.it>
+
+	* 0.5.192.4bea986-1 :
+	default to master branch;
+	use pkgver() autobump;
+	don't provide nor conflict with jabberbot;
+	use builtin git support;
+	added changelog.
