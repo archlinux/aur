@@ -1,0 +1,12 @@
+[Unit]
+Description=Openbazaar Marketplace
+
+[Service]
+Type=forking
+User=openbazaar
+WorkingDirectory=/var/lib/openbazaar/
+ExecStart=/usr/bin/openbazaar
+ExecStop=/usr/bin/openbazaar-stop
+
+[Install]
+WantedBy=multi-user.target

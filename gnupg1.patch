@@ -1,0 +1,11 @@
+--- a/node/transport.py	2015-04-07 17:45:10.421596664 +0200
++++ b/node/transport.py	2015-04-07 17:46:02.221316041 +0200
+@@ -722,7 +722,7 @@
+             try:
+                 self.log.info('Generating PGP keypair. This may take several minutes...')
+                 print 'Generating PGP keypair. This may take several minutes...'
+-                gpg = gnupg.GPG()
++                gpg = gnupg.GPG(gpgbinary='gpg1')
+                 input_data = gpg.gen_key_input(key_type="RSA",
+                                                key_length=4096,
+                                                name_email='pgp@openbazaar.org',

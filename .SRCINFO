@@ -1,0 +1,46 @@
+pkgbase = openbazaar-hoffmabc-git
+	pkgdesc = A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL
+	pkgver = 3984.fc90dff
+	pkgrel = 1
+	url = http://openbazaar.org
+	install = openbazaar.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = gnupg1
+	depends = jquery
+	depends = python2-bitcoin
+	depends = python2-dnschain
+	depends = python2-gnupg
+	depends = python2-ipy
+	depends = python2-miniupnpc
+	depends = python2-obelisk
+	depends = python2-pillow
+	depends = python2-psutil
+	depends = python2-pycountry
+	depends = python2-pyee
+	depends = python2-pyelliptic
+	depends = python2-pysqlcipher
+	depends = python2-pystun
+	depends = python2-qrcode
+	depends = python2-requests
+	depends = python2-rfc3986
+	depends = python2-tornado
+	optdepends = pybitmessage: Send and receive messages to anyone on the bitmessage network
+	conflicts = openbazaar
+	conflicts = openbazaar-git
+	options = !strip
+	source = openbazaar::git+https://github.com/hoffmabc/OpenBazaar#branch=feature-0.4-fixes
+	source = openbazaar.service
+	source = openbazaar.sh
+	source = openbazaar-stop.sh
+	source = gnupg1.patch
+	md5sums = SKIP
+	md5sums = 3aa1c8dc7384d62ffdb404e973afc1f3
+	md5sums = 85569b5ec72425e081d4bb35806daa00
+	md5sums = 97eb92b231bf82e033926e5d350eb3be
+	md5sums = c16bf5d35cc3a8d2839e4bd153f15d6e
+
+pkgname = openbazaar-hoffmabc-git
+

@@ -1,0 +1,38 @@
+usr=openbazaar
+home=/var/lib/openbazaar
+log=/var/lib/openbazaar/logs
+
+post_install() {
+  _mkuser
+  _chown
+}
+
+post_upgrade() {
+  _mkuser
+  _chown
+}
+
+## arg 1:  the old package version
+post_remove() {
+  _rmuser
+  echo "Please remove $home manually"
+}
+
+_chown() {
+  chown -R $usr:$dsr $home $log
+}
+
+_mkuser() {
+  getent passwd $usr &>/dev/null || {
+    echo -n "Creating openbazaar user... "
+    grep -E "^openbazaar:" /etc/group >/dev/null || groupadd $usr
+    useradd -m -d $home -g $usr -s /usr/bin/nologin $usr 2>/dev/null
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing openbazaar user... "
+  userdel -rf $usr 2>/dev/null
+  echo "done"
+}
