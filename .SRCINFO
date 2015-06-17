@@ -1,0 +1,36 @@
+pkgbase = qutecom-hg
+	pkgdesc = A free VoIP softphone, superseding WengoPhone. This is the latest repository source code.
+	pkgver = 526
+	pkgrel = 1
+	url = http://www.qutecom.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = qt4
+	makedepends = boost
+	makedepends = glib2
+	makedepends = mercurial
+	depends = libstdc++5
+	depends = qt4
+	depends = openssl
+	depends = gnutls
+	depends = e2fsprogs
+	depends = libxml2
+	depends = speex
+	depends = ffmpeg
+	depends = portaudio
+	depends = alsa-lib
+	depends = libsndfile
+	depends = libsamplerate
+	depends = curl
+	depends = libosip2
+	conflicts = wengophone2
+	conflicts = qutecom
+	options = !emptydirs
+	source = new-videodev.patch
+	md5sums = 52b536108d9c9aabe6e07a18f72db81b
+
+pkgname = qutecom-hg
+

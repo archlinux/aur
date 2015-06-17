@@ -1,0 +1,42 @@
+Description: fix for linux/videodev.h moved to libv4l1-videodev.h in new kernels (2.6.38)
+Author: Ludovico Cavedon <cavedon@debian.org>
+
+Index: qutecom-2.2+dfsg1/libs/pixertool/src/v4l/v4l-pixertool.c
+===================================================================
+--- qutecom-2.2+dfsg1.orig/libs/pixertool/src/v4l/v4l-pixertool.c	2011-04-12 17:31:31.000000000 +0000
++++ qutecom-2.2+dfsg1/libs/pixertool/src/v4l/v4l-pixertool.c	2011-04-12 17:34:17.000000000 +0000
+@@ -21,7 +21,7 @@
+ 
+ #include <sys/types.h>
+ 
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ 
+ pixosi pix_v4l_to_pix_osi(int pix) {
+ 	pixosi palette;
+Index: qutecom-2.2+dfsg1/libs/webcam/include/webcam/V4LWebcamDriver.h
+===================================================================
+--- qutecom-2.2+dfsg1.orig/libs/webcam/include/webcam/V4LWebcamDriver.h	2011-04-12 17:31:17.000000000 +0000
++++ qutecom-2.2+dfsg1/libs/webcam/include/webcam/V4LWebcamDriver.h	2011-04-12 17:34:31.000000000 +0000
+@@ -24,7 +24,7 @@
+ 
+ #include <thread/Thread.h>
+ 
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ 
+ #include <map>
+ #include <string>
+Index: qutecom-2.2+dfsg1/libs/webcam/src/v4l/V4LWebcamDriver.cpp
+===================================================================
+--- qutecom-2.2+dfsg1.orig/libs/webcam/src/v4l/V4LWebcamDriver.cpp	2011-04-12 17:31:51.000000000 +0000
++++ qutecom-2.2+dfsg1/libs/webcam/src/v4l/V4LWebcamDriver.cpp	2011-04-12 17:34:06.000000000 +0000
+@@ -185,7 +185,7 @@
+ 	// format to such an unsupported format.
+ 
+ 	// Try to choose a palette that will be supported by ffmpeg.
+-	static const __u16 try_palettes[] = {
++	static const uint16_t try_palettes[] = {
+ 		VIDEO_PALETTE_RGB24,
+ 		VIDEO_PALETTE_RGB32,
+ 		VIDEO_PALETTE_YUV420P,
