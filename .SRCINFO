@@ -1,0 +1,15 @@
+pkgbase = redispp-git
+	pkgdesc = C++ client for Redis
+	pkgver = r38.c55b002
+	pkgrel = 1
+	url = https://github.com/brianwatling/redispp
+	arch = i686
+	arch = x86_64
+	license = Public domain
+	makedepends = git
+	makedepends = boost
+	source = git://github.com/brianwatling/redispp
+	sha1sums = SKIP
+
+pkgname = redispp-git
+
