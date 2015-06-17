@@ -1,0 +1,21 @@
+pkgbase = hdf5-fortran-cxx
+	pkgdesc = General purpose library and file format for storing scientific data with GNU gfortran and GNU C++ support enabled, but without threadsafe.
+	pkgver = 1.8.14
+	pkgrel = 1
+	url = http://www.hdfgroup.org/HDF5/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = time
+	depends = zlib
+	depends = sh
+	depends = gcc
+	depends = gcc-fortran
+	provides = hdf5
+	conflicts = hdf5
+	options = !libtool
+	source = ftp://ftp.hdfgroup.org/HDF5/current/src/hdf5-1.8.14.tar.bz2
+	sha1sums = 3c48bcb0d5fb21a3aa425ed035c08d8da3d5483a
+
+pkgname = hdf5-fortran-cxx
+
