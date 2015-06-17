@@ -1,6 +1,6 @@
 pkgbase = lollypop-git
 	pkgdesc = Music player for GNOME
-	pkgver = 0.9.32.r40.g6377263
+	pkgver = 0.9.32.r54.g78c4532
 	pkgrel = 1
 	url = https://github.com/gnumdk/lollypop
 	install = lollypop.install
@@ -20,9 +20,9 @@ pkgbase = lollypop-git
 	depends = python-gobject
 	depends = python-cairo
 	depends = totem-plparser
-	optdepends = python-pylast: last.fm support
+	optdepends = python-pylast: Last.FM support
 	optdepends = python-wikipedia: display advanced artist information
-	provides = lollypop=0.9.32.r40.g6377263
+	provides = lollypop=0.9.32.r54.g78c4532
 	conflicts = lollypop
 	options = !emptydirs
 	source = git://github.com/gnumdk/lollypop.git
