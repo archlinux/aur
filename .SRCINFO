@@ -1,0 +1,17 @@
+pkgbase = libmimic-qt-git
+	pkgdesc = A video encoding/decoding library webcam data of the MSN protocol
+	pkgver = 12.7893d0c
+	pkgrel = 1
+	url = http://www.kmess.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qt4
+	source = libmimic::git://gitorious.org/kmess/libmimic-qt.git
+	md5sums = SKIP
+
+pkgname = libmimic-qt-git
+
