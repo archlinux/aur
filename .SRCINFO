@@ -1,0 +1,15 @@
+pkgbase = google-coredumper
+	pkgdesc = Library can be compiled into applications to create core dumps of the running program -- without terminating.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://code.google.com/p/google-coredumper/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://google-coredumper.googlecode.com/files/coredumper-1.2.1.tar.gz
+	source = fixes.diff
+	sha1sums = 8f770458bca2d0eea878689b5ae2329d7d21d450
+	sha1sums = 11d4cc83b2e02210d21271fda608c9a2c2ac8716
+
+pkgname = google-coredumper
+
