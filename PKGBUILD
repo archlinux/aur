@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.4.0"
+pkgver="1.5.0"
 pkgrel="1"
 pkgdesc="OpenStack Command-line Client"
 arch=("any")
@@ -13,11 +13,11 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=0.11" "python2-pbr>=0.11")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('9530a82c9785284f40705e63862cdd5a22c19da05e2712f4681eaa1bf6cc3cd8')
+sha256sums=('72d680039381cf42e00c9e3a2c9a33e02132844dc03a798d69d68d46780c8a00')
 
 package_python-openstackclient() {
     depends=("python-babel>=1.3"
-             "python-cinderclient>=1.2.1"
+             "python-cinderclient>=1.2.2"
              "python-cliff>=1.10.0"
              "python-cliff-tablib>=1.0"
              "python-glanceclient>=0.18.0"
@@ -38,7 +38,7 @@ package_python-openstackclient() {
 
 package_python2-openstackclient() {
     depends=("python2-babel>=1.3"
-             "python2-cinderclient>=1.2.1"
+             "python2-cinderclient>=1.2.2"
              "python2-cliff>=1.10.0"
              "python2-cliff-tablib>=1.0"
              "python2-glanceclient>=0.18.0"
