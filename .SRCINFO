@@ -1,0 +1,17 @@
+pkgbase = modeller
+	pkgdesc = 3D Structure Homology Modeller
+	pkgver = 9.15
+	pkgrel = 1
+	url = http://salilab.org/modeller/
+	install = modeller.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python2
+	depends = glib2
+	optdepends = python: python3 support
+	source = http://www.salilab.org/modeller/9.15/modeller-9.15.tar.gz
+	sha256sums = 9833eace132429abee54f2f7055a55f88ac9990cd79024f95a58d12161ca8eee
+
+pkgname = modeller
+

@@ -1,0 +1,43 @@
+post_install() {
+
+MODINSTALL="$pkgdir/usr/lib/modeller"
+if [ "$CARCH" = "i686" ]; then
+    # for i686
+    EXECUTABLE_TYPE="i386-intel8"
+else # for x86_64
+    EXECUTABLE_TYPE="x86_64-intel8"
+fi
+
+cat << EOF
+==> You can also use Modeller as a Python module, if you have Python
+==> installed (any version between 2.3 and 2.7). Do this using the script:
+==> ${MODINSTALL}/bin/modpy.sh"
+==> Simply add your regular Python command line after this script, e.g.
+==> ${MODINSTALL}/bin/modpy.sh python myscript.py"
+
+==> Alternatively, you could ensure that the following directories containing
+==> Python modules are in your Python path:
+==> ${MODINSTALL}/modlib
+==> ${MODINSTALL}/lib/${EXECUTABLE_TYPE} (for Python 2.3 or Python 2.4)
+==> ${MODINSTALL}/lib/${EXECUTABLE_TYPE}/python2.5 (for Python 2.5, 2.6, 2.7)
+==> (e.g. by setting the PYTHONPATH environment variable) and that the
+==> following directory containing dynamic libraries is in your dynamic
+==> library search path:
+==> ${MODINSTALL}/lib/${EXECUTABLE_TYPE}
+==> (e.g. by setting the LD_LIBRARY_PATH variable (LIBPATH on AIX systems).
+==> Ask your systems administrator for help if you wish to do this.
+
+==> ########################################################################
+==> THE LICENSE KEY IS NOT SET.
+==> Go to http://salilab.org/modeller/registration.html to get a license key,
+==> and then set the 'license' variable to it in the file
+==> ${MODINSTALL}/modlib/modeller/config.py
+==> example: license = 'XXXX'
+==> ########################################################################
+
+EOF
+}
+
+post_upgrade() {
+ post_install $1
+}
