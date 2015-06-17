@@ -1,14 +1,15 @@
 # Maintainer: notfoss <AT> gmx.com
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname="lnav-git"
-pkgver="0.7.2.r138.g9018238"
-pkgrel="2"
+pkgver="0.7.3.r60.g92dd592"
+pkgrel="1"
 pkgdesc="A featureful ncurses based log file viewer"
 arch=("i686" "x86_64")
 url="http://lnav.org/"
 license=("BSD")
 depends=("bzip2" "ncurses" "pcre" "readline" "sqlite" "zlib")
-makedepends=("git")
+makedepends=("git" "re2c")
 conflicts=("lnav")
 provides=("lnav")
 source=("$pkgname"::"git+https://github.com/tstack/lnav.git")
@@ -22,8 +23,20 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    ./configure --prefix=/usr --disable-static
-    make PREFIX=/usr DESTDIR="$pkgdir"
+    ./autogen.sh
+    ./configure \
+        --prefix=/usr \
+        --sbindir=/usr/bin \
+        --libexecdir=/usr/lib/lnav \
+        --sysconfdir=/etc \
+        --sharedstatedir=/usr/share/lnav \
+        --localstatedir=/var/lib/lnav \
+        --disable-static \
+        --with-ncurses \
+        --with-pcre \
+        --with-readline \
+        --with-sqlite3
+    make
 }
 
 package() {
