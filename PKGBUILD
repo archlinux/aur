@@ -1,17 +1,26 @@
-# Maintainer: Neil Santos <nsantos16+aur@gmail.com>
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Contributor: Neil Santos <nsantos16+aur@gmail.com>
 
 pkgname=bzrlog
+_pkgname=BzrLog
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Log oriented GUI for Bazaar VCS'
-arch=('i686' 'x86_64')
-url='http://lacl.univ-paris12.fr/pommereau/soft/bzrlog/index.html'
-license=('GPL')
+arch=('any')
+url='https://launchpad.net/bzrlog'
+license=('GPL2')
 depends=('bzr' 'pygtk' 'bzr-gtk')
-source=('http://lacl.univ-paris12.fr/pommereau/soft/bzrlog/BzrLog-1.1.tar.gz')
-md5sums=('87b10a940cd74009438754a3a0ebf0f6')
+source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$_pkgname-${pkgver}.tar.gz")
+md5sums=('26b655e4edcabd2ccfa71c66dafac89b')
 
-build() {
-  mkdir -p $pkgdir/usr/bin
-  install -m 755 $srcdir/BzrLog-$pkgver/bzrlog  $pkgdir/usr/bin/bzrlog
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  sed -i '1s|#!/usr/bin/env python|#!/usr/bin/python2|' bzrlog
 }
+
+package() {
+  mkdir -p $pkgdir/usr/bin
+  install -m 755 $srcdir/$_pkgname-$pkgver/bzrlog  $pkgdir/usr/bin/bzrlog
+}
+
+# vim:set ts=2 sw=2 et:

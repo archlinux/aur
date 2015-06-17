@@ -1,16 +1,15 @@
 pkgbase = bzrlog
 	pkgdesc = Log oriented GUI for Bazaar VCS
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://lacl.univ-paris12.fr/pommereau/soft/bzrlog/index.html
-	arch = i686
-	arch = x86_64
-	license = GPL
+	pkgrel = 2
+	url = https://launchpad.net/bzrlog
+	arch = any
+	license = GPL2
 	depends = bzr
 	depends = pygtk
 	depends = bzr-gtk
-	source = http://lacl.univ-paris12.fr/pommereau/soft/bzrlog/BzrLog-1.1.tar.gz
-	md5sums = 87b10a940cd74009438754a3a0ebf0f6
+	source = https://launchpad.net/bzrlog/trunk/1.1/+download/BzrLog-1.1.tar.gz
+	md5sums = 26b655e4edcabd2ccfa71c66dafac89b
 
 pkgname = bzrlog
 
