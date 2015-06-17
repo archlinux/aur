@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Magic Assistant
+GenericName=Card Organizer
+Exec=magicassistant
+#Icon=firefox
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development
