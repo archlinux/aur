@@ -1,0 +1,28 @@
+pkgbase = codebox
+	pkgdesc = Open source cloud & desktop IDE
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://www.codebox.io
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = nodejs-grunt-cli
+	makedepends = python2
+	depends = nodejs
+	depends = chromium
+	provides = codebox
+	conflicts = codebox-git
+	options = !strip
+	source = https://github.com/CodeboxIDE/codebox/archive/0.8.1.tar.gz
+	source = codebox.desktop
+	source = codebox.png
+	source = codebox.sh
+	source = patch
+	md5sums = 47ffd457c77202585a8992efc6ad2c21
+	md5sums = a8fc2754ad75e7d862afd30a2a0489f9
+	md5sums = 6c86317e59784c87ea0c2280f6daf8ff
+	md5sums = d902fa5bcab6ba80bb223467194347ff
+	md5sums = 56a9ae4523f31a76c5981ef23fbdd6df
+
+pkgname = codebox
+

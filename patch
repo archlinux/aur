@@ -1,0 +1,15 @@
+--- a/init.sh	2014-07-23 07:35:28.000000000 +0200
++++ b/init.sh	2014-09-01 11:49:59.801642749 +0200
+@@ -3,10 +3,10 @@
+ # Constants
+ export USER='codebox'
+ export TERM='xterm-256color'
+-export HOME="/home/codebox"
++export HOME=$HOME
+ WORKSPACE="${HOME}/workspace/"
+ SSH_DIR="${HOME}/.ssh/"
+-CODEBOX_DIR="/opt/codebox"
++CODEBOX_DIR="/var/lib/codebox"
+ SERVER_SCRIPT="${CODEBOX_DIR}/bin/codebox.js"
+ PYTHON_ACTIVATE="/opt/virtualenv/bin/activate"
+ # Extra flags for the codebox server

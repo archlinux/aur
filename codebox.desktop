@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Codebox
+Comment=Open source cloud & desktop IDE
+Exec=codebox
+Icon=codebox
+Terminal=false
+Type=Application
+Categories=Development;Utilities;TextEditor
