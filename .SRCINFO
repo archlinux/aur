@@ -1,0 +1,18 @@
+pkgbase = libevent-fb
+	pkgdesc = An event notification library (for HipHop compiler)
+	pkgver = 1.4.14b
+	pkgrel = 2
+	url = http://www.monkey.org/~provos/libevent/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = libevent
+	options = !libtool
+	source = http://www.monkey.org/~provos/libevent-1.4.14b-stable.tar.gz
+	source = libevent-1.4.14.fb-changes.diff
+	md5sums = a00e037e4d3f9e4fe9893e8a2d27918c
+	md5sums = cde91fe8ec39bbed1319e4114417bd7b
+
+pkgname = libevent-fb
+
