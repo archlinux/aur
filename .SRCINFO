@@ -1,0 +1,17 @@
+pkgbase = python2-gnupg-hg
+	pkgdesc = The gnupg module allows Python programs to make use of the functionality provided by the GNU Privacy Guard.
+	pkgver = r58.1337e6ce364f
+	pkgrel = 1
+	url = https://bitbucket.org/vinay.sajip/python-gnupg
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	depends = python2
+	depends = gnupg
+	provides = python2-gnupg
+	replaces = python2-gnupg
+	source = python-gnupg::hg+https://bitbucket.org/vinay.sajip/python-gnupg
+	md5sums = SKIP
+
+pkgname = python2-gnupg-hg
+
