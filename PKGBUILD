@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=kodi-addon-pulsar
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Pulsar is an torrent finding and streaming engine for Kodi'
 classname=plugin.video.pulsar
@@ -22,4 +22,4 @@ package() {
   rm -r ${pkgdir}/${installpath}/${classname}/resources/bin/{windows_x86,darwin_x64,linux_arm}
 }
 
-md5sums=('af05e3acf9e49547c680e14cc5a8d43b')
+md5sums=('f40d16540520a24baf79de667037fb1c')
