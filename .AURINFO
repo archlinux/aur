@@ -1,0 +1,13 @@
+pkgbase = sldr
+	pkgdesc = Super Light Async DNS Resolver
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/cesanta/sldr
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://github.com/cesanta/sldr/archive/1.2.tar.gz
+
+pkgname = sldr
+
