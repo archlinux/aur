@@ -1,0 +1,20 @@
+pkgbase = wifiphisher
+	pkgdesc = Fast automated phishing attacks against WPA networks.
+	pkgver = 12.73f24a7
+	pkgrel = 1
+	url = https://github.com/sophron/wifiphisher
+	arch = any
+	groups = blackarch
+	groups = blackarch-wireless
+	groups = blackarch-social
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-httplib2
+	depends = scapy
+	depends = aircrack-ng
+	source = git+https://github.com/sophron/wifiphisher.git
+	sha1sums = SKIP
+
+pkgname = wifiphisher
+
