@@ -1,0 +1,19 @@
+pkgbase = tuxboot
+	pkgdesc = A tool that helps you to create a bootable Live USB drive for Clonezilla live, DRBL live, GParted live and Tux2live
+	pkgver = 0.8
+	pkgrel = 1
+	epoch = 1
+	url = http://www.tuxboot.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = syslinux
+	depends = qt4
+	depends = mtools
+	depends = polkit
+	conflicts = tuxboot-git
+	source = http://downloads.sourceforge.net/project/tuxboot/0.8/source/tuxboot-0.8.src.tar.gz
+	sha1sums = 94dbb964eee8b3c49febb353d2cc5d491716ecf0
+
+pkgname = tuxboot
+
