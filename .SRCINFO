@@ -1,0 +1,18 @@
+pkgbase = python2-astroml
+	pkgdesc = AstroML is a Python module for machine learning and data mining built on numpy, scipy, scikit-learn, and matplotlib.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.astroml.org/
+	arch = any
+	license = BSD-3-Clause
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-scikit-learn
+	depends = python2-matplotlib
+	optdepends = astroml-examples
+	conflicts = python2-astroml-git
+	source = https://pypi.python.org/packages/source/a/astroML/astroML-0.3.tar.gz
+	md5sums = 56d5c281ca079eb569ef1898be1604db
+
+pkgname = python2-astroml
+
