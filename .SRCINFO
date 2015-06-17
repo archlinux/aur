@@ -1,0 +1,16 @@
+pkgbase = ruby-fast-stemmer
+	pkgdesc = Fast Porter stemmer based on a C version of algorithm
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://github.com/romanbsd/fast-stemmer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = fast-stemmer-1.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fast-stemmer-1.0.2.gem
+	sha1sums = b577a60cbb90838679744d6484a89bfc4386980f
+
+pkgname = ruby-fast-stemmer
+
