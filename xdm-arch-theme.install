@@ -1,0 +1,11 @@
+post_install()
+{
+    echo -e "
+Remember to have your xdm point to the config file
+/etc/X11/xdm/arch-xdm/xdm-config, e.g. by using xdm's
+-config parameter.
+
+Have fun!";
+}
+
+
