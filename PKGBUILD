@@ -7,11 +7,11 @@ pkgdesc="Emulator with builtin DOS for running DOS Games (Daum version)"
 arch=('i686' 'x86_64')
 url="http://ykhwong.x-y.net/"
 license=('GPL')
-depends=('sdl_net' 'zlib' 'sdl_sound' 'libgl' 'libpng' 'alsa-lib' 'gcc-libs'
-         'glu' 'intel-tbb' 'sdl_sound-hg' 'sdl-openglhq' 'openglide-cvs')
+depends=('sdl_net' 'zlib' 'sdl_sound-hg' 'libgl' 'libpng' 'alsa-lib' 'gcc-libs'
+         'glu' 'intel-tbb' 'sdl-openglhq' 'openglide-cvs')
 makedepends=('dos2unix' 'gendesk' 'mesa')
 
-provides=("dosbox=$pkgver")
+provides=("dosbox")
 conflicts=("dosbox")
 
 source=('http://ykhwong.x-y.net/downloads/dosbox/patch/source.7z'
