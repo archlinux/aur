@@ -1,0 +1,16 @@
+pkgbase = fisoco-git
+	pkgdesc = a Finding, Sorting and Converting free software
+	pkgver = 0.3
+	pkgrel = 0
+	url = https://github.com/Felandral/Fisoco
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = git
+	makedepends = gtkmm3
+	makedepends = intltool
+	source = fisoco-git-0.3::git+http://github.com/Felandral/Fisoco#branch=master
+	md5sums = SKIP
+
+pkgname = fisoco-git
+
