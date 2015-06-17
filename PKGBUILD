@@ -2,8 +2,8 @@
 # Contributor: Daniel Perez <tuvistavie@gmail.com>
 
 pkgname=electron
-pkgver=0.26.0
-pkgrel=2
+pkgver=0.28.1
+pkgrel=1
 pkgdesc="Framework for writing cross-platform desktop applications using JavaScript, HTML and CSS."
 
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('nodejs')
 depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 [[ $CARCH == 'x86_64' ]] && \
-    sha256sums=('d8a2f282484f82c1c66353b614e938c1c1a7b99b8ffc0bb19424af7755148435') || \
-    sha256sums=('0c08b6772786cc0a471fecf6ba04438aacb3c9bf9be2167dc64219be0249aee2')
+    sha256sums=('f78a609c23bb35fa564ad8d6ed62cd2a92213a4e5ab8103a069a953177ad44b9') || \
+    sha256sums=('b7fcfad602f7e7b4cdf5c279d66ff077b176c1cb9fc0ee56697a185988634ed6')
 source=("electron.zip::https://github.com/atom/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-${_arch}.zip")
 
 package() {
