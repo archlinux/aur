@@ -1,0 +1,18 @@
+pkgbase = jacknotifier-git
+	pkgdesc = Headphones Jack Notification Daemon
+	pkgver = 11.0de9ea9
+	pkgrel = 1
+	url = https://github.com/gentoo-root/jacknotifier
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = dbus
+	depends = libnotify
+	depends = jacklistener-git
+	provides = jacknotifier
+	source = jacknotifier::git://github.com/gentoo-root/jacknotifier.git
+	md5sums = SKIP
+
+pkgname = jacknotifier-git
+
