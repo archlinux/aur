@@ -17,7 +17,7 @@ pkgbase=linux-lts-tresor    # Build stock -lts kernel with TRESOR patches
 _srcname=linux-3.14
 pkgname=linux-lts-tresor # placeholder
 pkgdesc="Linux longterm stable kernel and modules with integrated TRESOR"
-pkgver=3.14.40
+pkgver=3.14.44
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www1.informatik.uni-erlangen.de/tresor"
@@ -39,7 +39,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		'0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
 		'0003-module-remove-MODULE_GENERIC_TABLE.patch'
 		'0006-genksyms-fix-typeof-handling.patch'
-        'http://www1.informatik.uni-erlangen.de/filepool/projects/tresor/tresor_sysfs.c')
+        'http://www1.informatik.uni-erlangen.de/filepool/projects/tresor/tresor_sysfs.c'
+		'gcc5_buildfixes.diff')
 source_i686+=("http://www1.informatik.uni-erlangen.de/filepool/projects/tresor/tresor-patch-3.6.2_i686"
               'tresor-patch-3.6.2_i686.patch'
               'tresor-patch-3.6.2_i686.patch.asc')
@@ -49,7 +50,7 @@ source_x86_64+=("http://www1.informatik.uni-erlangen.de/filepool/projects/tresor
 
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            '6334031465a7cdf8187c86016ba63e1adc58c892910f2c3703c70eaae2fdbafe'
+            '5af4e26194d3195e5a7c9235b0e6b60f577e7948ba2e1f653341d6263ef2ffc0'
             'SKIP'
             '4e99472f8281b485a9ef3468de13e909597c9d921706b306fbb26960941d595e'
             '145a66ef4f702ed516a57d846dd00b5acac7b5cc1eff86d1e7ee6bd5a66040b2'
@@ -60,12 +61,13 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            'd6fcbd0ea7a5a4c42d326286b60bbd5b1d476b8a6752046fa28133e05351c1fe')
+            'd6fcbd0ea7a5a4c42d326286b60bbd5b1d476b8a6752046fa28133e05351c1fe'
+            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
 sha256sums_i686=('9a286a85c16ca5b6a02419af1aedbfe6e8b89bcabdcb32670ead3f26c09eadfd'
-                 '0ceee86dd811c5a3e306985eeb83be4eea6a83589e268cb7e12867d7f161ffb3'
+                 '70299f864c2ec04ea72dc7a6ba814ad1c516c2662aa3acd69a74996a056a5e83'
                  'SKIP')
 sha256sums_x86_64=('54009b369b95a77ab13f6dd7cdbe22b0785b6314cae3a6c39190b48f4c4b12ce'
-                   '10b954d0a4ae7efe83fe67faa84cd1ee2ebef18d64a37cbe4d1a3bd7d8ac75c1'
+                   '60f118c95104f561fa42b1992621399c6cc44aea7026437bf0c04c565c609f18'
                    'SKIP')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -84,6 +86,12 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+	# buildfixes for gcc5
+	# https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
+	# https://lkml.org/lkml/2014/11/9/27
+	# https://lkml.org/lkml/2014/12/14/55
+	patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
