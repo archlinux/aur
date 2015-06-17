@@ -1,0 +1,17 @@
+pkgbase = websocketd-git
+	pkgdesc = Like inetd, but for WebSockets. Turn any application that uses STDIO/STDOUT into a WebSocket server.
+	pkgver = 147.fbda5f2
+	pkgrel = 1
+	url = https://github.com/joewalnes/websocketd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = mercurial
+	depends = glibc
+	conflicts = websocketd
+	source = websocketd::git+https://github.com/joewalnes/websocketd.git
+	md5sums = SKIP
+
+pkgname = websocketd-git
+
