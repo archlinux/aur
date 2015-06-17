@@ -1,0 +1,21 @@
+pkgbase = liblas-git
+	pkgdesc = libLAS is a C/C++ library for reading and writing the very common LAS LiDAR format.
+	pkgver = 0
+	pkgrel = 1
+	url = http://www.liblas.org
+	install = 
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc>=4.0
+	depends = boost>=1.38.0
+	depends = gdal>=1.7.0
+	depends = libgeotiff>=1.3.0
+	depends = laszip
+	conflicts = liblas
+	source = liblas-git::git://github.com/libLAS/libLAS.git
+
+pkgname = liblas-git
+
