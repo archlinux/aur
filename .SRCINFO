@@ -1,0 +1,17 @@
+pkgbase = jflap
+	pkgdesc = Software to learning the basic concepts of Formal Languages and Automata Theory
+	pkgver = 7.0
+	pkgrel = 4
+	url = http://www.jflap.org/
+	arch = i686
+	arch = x86_64
+	license = CCPL
+	depends = java-environment
+	conflicts = j_flap
+	source = http://www.cs.duke.edu/csed/jflap/jflaptmp/may15-2011/withoutSource/JFLAP.jar
+	source = jflap
+	md5sums = 95d5f8f9f098331f6f61c24f7931589f
+	md5sums = fdc683f3cb88b3e336cda4a8d3b14837
+
+pkgname = jflap
+
