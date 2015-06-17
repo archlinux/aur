@@ -1,0 +1,16 @@
+pkgbase = aarch64-linux-gnu-eglibc-headers
+	pkgdesc = Embedded GNU C Library. Stage 1 - headers only. Needed for initialy build toolchain (aarch64-linux-gnu)
+	pkgver = 2.19.r25988
+	pkgrel = 1
+	url = http://www.eglibc.org
+	arch = any
+	license = GPL
+	makedepends = aarch64-linux-gnu-gcc-stage1
+	makedepends = subversion
+	depends = aarch64-linux-gnu-linux-api-headers
+	options = !strip
+	source = eglibc::svn://svn.eglibc.org/branches/eglibc-2_19/libc
+	sha1sums = SKIP
+
+pkgname = aarch64-linux-gnu-eglibc-headers
+
