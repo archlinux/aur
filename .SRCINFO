@@ -1,0 +1,20 @@
+pkgbase = apstools
+	pkgdesc = Parallels APS Command Line Tools
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://doc.apsstandard.org/tools/cli_tools/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = java-runtime
+	provides = apstools
+	conflicts = apstools
+	conflicts = apslint
+	replaces = apstools
+	replaces = apslint
+	source = http://download.apsstandard.org/apstools/2.1-43/apstools-2.1-43.noarch.rpm
+	md5sums = 4e395ad4167941e865b8e0827f07062b
+
+pkgname = apstools
+
