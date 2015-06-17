@@ -2,14 +2,14 @@
 
 pkgname=eclipse-moreunit
 pkgver=3.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='JUnit assistent to write more tests in Eclipse'
 arch=('any')
 url='http://moreunit.sourceforge.net/'
 license=('EPL')
 depends=('eclipse>=3.4.0')
 options=('!strip')
-source=("moreunit.zip::https://downloads.sourceforge.net/project/moreunit/moreunit/Version%20${pkgver}/org.moreunit-${pkgver}.zip?r=&ts=1422472184&use_mirror=optimate")
+source=("moreunit.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%20${pkgver}/org.moreunit-${pkgver}.zip")
 sha256sums=('e499a621991ba41159d0084d549d57108d80660c88a3b8b0d68a552fc139dbed')
 
 package() {
