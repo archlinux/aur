@@ -2,14 +2,14 @@
 # Contributor: flamelab <panosfilip@gmail.com>
 
 pkgname=slingshot-launcher-bzr
-pkgver=r407
+pkgver=r552
 pkgrel=1
 pkgdesc='The Pantheon Application Launcher'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/slingshot'
 license=('GPL3')
 groups=('pantheon')
-depends=('gala-bzr' 'gnome-menus' 'granite' 'zeitgeist')
+depends=('gala-bzr' 'gnome-menus' 'granite-bzr' 'zeitgeist')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('slingshot-launcher')
 conflicts=('slingshot-launcher')

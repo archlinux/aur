@@ -1,6 +1,6 @@
 pkgbase = slingshot-launcher-bzr
 	pkgdesc = The Pantheon Application Launcher
-	pkgver = r407
+	pkgver = r552
 	pkgrel = 1
 	url = https://launchpad.net/slingshot
 	install = slingshot-launcher.install
@@ -13,7 +13,7 @@ pkgbase = slingshot-launcher-bzr
 	makedepends = vala
 	depends = gala-bzr
 	depends = gnome-menus
-	depends = granite
+	depends = granite-bzr
 	depends = zeitgeist
 	provides = slingshot-launcher
 	conflicts = slingshot-launcher
