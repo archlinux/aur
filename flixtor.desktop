@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Flixtor
+Comment=Watch torrent movies instantly
+Exec=flixtor %U
+Icon=flixtor
+Terminal=false
+Type=Application
+Categories=Player;Video;Network;
