@@ -1,0 +1,18 @@
+pkgbase = gibson-git
+	pkgdesc = Gibson is a high efficiency, tree based memory cache server.
+	pkgver = r228.4a287eb
+	pkgrel = 1
+	url = http://gibson-db.in/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	backup = etc/gibson/gibson.conf
+	source = git://github.com/evilsocket/gibson#branch=unstable
+	source = gibson.service
+	sha1sums = SKIP
+	sha1sums = e78f6f4988c56f91dfb287f83cf9ded0183ef091
+
+pkgname = gibson-git
+

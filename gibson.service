@@ -1,0 +1,7 @@
+[Unit]
+Description=Gibson Cache Service
+
+[Service]
+ExecStart=/usr/bin/gibson --daemonize 0
+KillMode=process
+Restart=always
