@@ -2,7 +2,7 @@
 # Contributor: Carl George <carl at carlgeorge dot us>
 pkgname=mint-themes
 pkgver=3.14_7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mint-X GTK2, GTK3, Metacity and Xfce theme."
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-themes"
