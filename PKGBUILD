@@ -2,7 +2,7 @@
 
 pkgname='python2-cleanup-maildir-git'
 _gitname='cleanup-maildir'
-_gitroot='https://github.com/jvc/cleanup-maildir.git'
+_gitroot='git://github.com/jvc/cleanup-maildir.git'
 pkgver=1.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
 	msg "Connecting to GIT server...."
 
 	if [ -d "$_gitname" ] ; then
-		cd "$_gitname" && git pull origin
+		cd "$_gitname" && git pull origin master
 		msg "The local files are updated."
 	else
 		git clone ${_gitroot}
@@ -38,11 +38,8 @@ build() {
 package() {
 
 	# install script
-	echo ${srcdir}
-	echo
-	echo $srcdir
 	cd "$srcdir/$_gitname"
-   install -D -m644 "$srcdir/$_gitname/cleanup-maildir" "$pkgdir/usr/lib/python2.7/site-packages/$_gitname/cleanup-maildir"
+    install -D -m644 "$srcdir/$_gitname/cleanup-maildir" "$pkgdir/usr/lib/python2.7/site-packages/$_gitname/cleanup-maildir"
 
 }
 
