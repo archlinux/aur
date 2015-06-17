@@ -1,0 +1,15 @@
+pkgbase = ruby-blankslate-2
+	pkgdesc = BlankSlate extracted from Builder.
+	pkgver = 2.1.2.4
+	pkgrel = 1
+	url = http://github.com/masover/blankslate
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = blankslate-2.1.2.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/blankslate-2.1.2.4.gem
+	sha1sums = f12304a670c66f0d289daf57c6412b3a1af25601
+
+pkgname = ruby-blankslate-2
+
