@@ -4,14 +4,14 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.12.6.r874.gf1085d3
-pkgrel=2
+pkgver=0.4.12.6.r976.g9715672
+pkgrel=1
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
-depends=('leveldb' 'curl' 'hiredis' 'sqlite' 'luajit' 'xdg-utils' 'irrlicht' 'openal' 'enet' 'libvorbis' 'hicolor-icon-theme')
+depends=('leveldb' 'curl' 'hiredis' 'sqlite' 'luajit' 'xdg-utils' 'irrlicht' 'openal' 'enet' 'jsoncpp' 'libvorbis' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'msgpack-c')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -45,11 +45,12 @@ prepare() {
 	# Use Arch's enet lib
 	patch ./src/main.cpp ../enet_shared_lib.patch
 	
-	# Remove src/msgpack-c and src/enet submodule
-	git submodule deinit src/{msgpack-c,enet}
-	git rm --cached src/{msgpack-c,enet}
+	# Remove src/msgpack-c src/enet and src/jsoncpp submodules
+	git submodule deinit src/{msgpack-c,enet,jsoncpp}
+	git rm --cached src/{msgpack-c,enet,jsoncpp}
 	git config -f .gitmodules --remove-section submodule.src/msgpack-c
 	git config -f .gitmodules --remove-section submodule.src/enet
+	git config -f .gitmodules --remove-section submodule.src/jsoncpp
 	git add .gitmodules
 	
 	# Cloning with submodules
@@ -72,7 +73,8 @@ build() {
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DRUN_IN_PLACE=0 \
-		-DENABLE_SYSTEM_MSGPACK=1
+		-DENABLE_SYSTEM_MSGPACK=1 \
+		-DENABLE_SYSTEM_JSONCPP=1
 	make -j${njobs}
 }
 
