@@ -1,0 +1,14 @@
+pkgbase = feedworker-itasa
+	pkgdesc = Subtitles client to download the latest updates on Itasa (italiansubs.net)
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = http://www.italiansubs.net/index.php?option=com_content&view=article&id=6991&Itemid=88
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime-headless
+	source = http://www.italiansubs.net/software/FeedWorkerItasa_203.zip
+	md5sums = e1c08a772167494d6328a0882639a3c4
+
+pkgname = feedworker-itasa
+
