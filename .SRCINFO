@@ -1,0 +1,14 @@
+pkgbase = python2-pysqlcipher
+	pkgdesc = Python interface to SQLCipher
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = http://github.com/leapcode/pysqlcipher/
+	arch = any
+	license = ZLIB
+	depends = python2
+	depends = sqlcipher
+	source = https://pypi.python.org/packages/source/p/pysqlcipher/pysqlcipher-2.6.4.tar.gz
+	md5sums = d0d03064ee657dca58abdc7860277939
+
+pkgname = python2-pysqlcipher
+
