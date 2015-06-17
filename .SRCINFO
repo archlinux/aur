@@ -1,0 +1,18 @@
+pkgbase = gyp-git
+	pkgdesc = GYP can Generate Your Projects.
+	pkgver = 1980.e1c8fcf
+	pkgrel = 1
+	url = http://code.google.com/p/gyp/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	conflicts = gyp-svn
+	replaces = gyp-svn
+	source = gyp::git+https://chromium.googlesource.com/external/gyp
+	md5sums = SKIP
+
+pkgname = gyp-git
+
