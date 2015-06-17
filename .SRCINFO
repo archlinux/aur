@@ -1,0 +1,19 @@
+pkgbase = s6-musl
+	pkgdesc = skarnet's small supervision suite.
+	pkgver = 2.1.0.1
+	pkgrel = 1
+	url = http://www.skarnet.org/software/s6
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = skalibs-musl>=2.2.1.0
+	makedepends = musl
+	depends = execline-musl>=2.0.2.0
+	provides = s6=2.1.0.1
+	options = staticlibs
+	source = http://www.skarnet.org/software/s6/s6-2.1.0.1.tar.gz
+	sha256sums = cfe8d67ed70d5b44f4c75f14f077a71160139d994ae45c894cbc11374335eca6
+
+pkgname = s6-musl
+
