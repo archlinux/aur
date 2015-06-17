@@ -1,6 +1,6 @@
 # Maintainer: tailinchu <use_my_id at gmail dot com>
 
-pkgname=fcitx-minimal
+pkgname=fcitx-minimal-git
 pkgver=4.2.9
 pkgrel=1
 pkgdesc="Flexible Context-aware Input Tool with eXtension with a minimal set of dependencies (git version)"

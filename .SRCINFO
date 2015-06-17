@@ -1,4 +1,4 @@
-pkgbase = fcitx-minimal
+pkgbase = fcitx-minimal-git
 	pkgdesc = Flexible Context-aware Input Tool with eXtension with a minimal set of dependencies (git version)
 	pkgver = 4.2.9
 	pkgrel = 1
@@ -27,5 +27,5 @@ pkgbase = fcitx-minimal
 	source = git://github.com/fcitx/fcitx.git
 	md5sums = SKIP
 
-pkgname = fcitx-minimal
+pkgname = fcitx-minimal-git
 
