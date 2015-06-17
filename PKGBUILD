@@ -6,7 +6,7 @@
 
 pkgname=aria2-fast
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Aria2 Download utility with little patch to maximize aria2 download connections'
 arch=('i686' 'x86_64')
 url='http://aria2.sourceforge.net/'
@@ -47,4 +47,4 @@ package() {
   rm -rf ${pkgdir}/usr/share/doc/aria2/bash_completion
 }
 md5sums=('ad6eb57511a05ce823e194eb71a7e9fa'
-         'b4e0837bd7c255b645c9a8bbdd550e3f')
+         '8d1c33b0ff5a3611ac0f8e46ca93c48c')

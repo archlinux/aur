@@ -1,24 +1,3 @@
-diff -Npur ../aria2-1.16.0.ori/src/HttpSkipResponseCommand.cc ./src/HttpSkipResponseCommand.cc
---- ../aria2-1.16.0.ori/src/HttpSkipResponseCommand.cc	2012-12-16 10:59:30.274471789 +0700
-+++ ./src/HttpSkipResponseCommand.cc	2012-12-16 11:06:09.824474859 +0700
-@@ -11,7 +11,7 @@
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See th	e
-  * GNU General Public License for more details.
-  *
-  * You should have received a copy of the GNU General Public License
-@@ -209,7 +209,7 @@ bool HttpSkipResponseCommand::processRes
-     } else if(statusCode == 404) {
-       throw DL_ABORT_EX2(MSG_RESOURCE_NOT_FOUND,
-                          error_code::RESOURCE_NOT_FOUND);
--    } else if(statusCode == 503) {
-+    } else if(statusCode == 503 or statusCode == 502 or statusCode == 403) {
-       // Only retry if pretry-wait > 0. Hammering 'busy' server is not
-       // a good idea.
-       if(getOption()->getAsInt(PREF_RETRY_WAIT) > 0) {
 diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFactory.cc
 --- ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc	2012-12-16 10:59:30.284471787 +0700
 +++ ./src/OptionHandlerFactory.cc	2012-12-16 11:04:24.561140718 +0700
