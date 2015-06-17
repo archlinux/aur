@@ -1,0 +1,21 @@
+pkgbase = supersonic-git
+	pkgdesc = Open-source web-based media streamer and jukebox fork of Subsonic
+	pkgver = 429.330ab98
+	pkgrel = 1
+	url = https://github.com/Mach5/supersonic.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = maven
+	makedepends = git
+	depends = java-runtime
+	backup = var/supersonic/db
+	source = git+https://github.com/Mach5/supersonic.git
+	source = supersonic.rc
+	source = supersonic.service
+	md5sums = SKIP
+	md5sums = 51516851d4ea41f639f52c8152a650c3
+	md5sums = 37668217ee341b57a043a8a632727f4d
+
+pkgname = supersonic-git
+
