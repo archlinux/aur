@@ -6,4 +6,3 @@ Categories=Qt;Science;
 Exec=/usr/bin/knossos-git
 Icon=/usr/share/pixmaps/knossos-git.png
 Terminal=false
-Name[en_US]=KNOSSOS-git
