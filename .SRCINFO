@@ -1,0 +1,37 @@
+pkgbase = ossim
+	pkgdesc = OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data.
+	pkgver = 1.8.18
+	pkgrel = 1
+	url = http://www.ossim.org
+	install = ossim.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = freetype2
+	depends = gdal
+	depends = libgeotiff
+	depends = libjpeg
+	depends = libtiff
+	depends = openscenegraph
+	depends = openjpeg
+	depends = doxygen
+	depends = hdf5-cpp-fortran
+	depends = minizip
+	depends = expat
+	depends = ffmpeg
+	optdepends = qt4
+	optdepends = java-environment-common
+	optdepends = openmpi
+	optdepends = gpstk-bin
+	provides = ossim
+	conflicts = ossim
+	source = http://download.osgeo.org/ossim/source/latest/ossim-1.8.18.tar.gz
+	source = ossim.sh
+	md5sums = 7bb918d8e20715d794eef86ad26e1389
+	md5sums = cb85c216a099b10f057cddeeae4a57fb
+
+pkgname = ossim
+
