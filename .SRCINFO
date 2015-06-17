@@ -1,0 +1,24 @@
+pkgbase = airpwn-git
+	pkgdesc = A generic packet injection tool for 802.11 networks.
+	pkgver = 10.cf2ac0e
+	pkgrel = 1
+	url = http://airpwn.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = pcre
+	depends = libpcap
+	depends = openssl
+	depends = libnet
+	depends = python2
+	depends = lorcon-old-git
+	optdepends = net-tools: to put wireless interfaces into monitor mode
+	optdepends = iw: for mac80211 monitor-mode support
+	optdepends = madwifi-utils: for madwifi monitor-mode support
+	options = !libtool
+	source = airpwn::git://github.com/M0Rf30/airpwn.git
+	md5sums = SKIP
+
+pkgname = airpwn-git
+
