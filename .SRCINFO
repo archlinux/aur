@@ -1,0 +1,16 @@
+pkgbase = perl-xml-filter-domfilter-libxml
+	pkgdesc = XML-Filter-DOMFilter-LibXML perl module (SAX filter allowing DOM processing of selected subtrees)
+	pkgver = 0.02
+	pkgrel = 6
+	url = http://search.cpan.org/dist/XML-Filter-DOMFilter-LibXML/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-xml-libxml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PA/PAJAS/XML-Filter-DOMFilter-LibXML-0.02.tar.gz
+	md5sums = 9089d02fbd5ff914070af4c3b9142f02
+
+pkgname = perl-xml-filter-domfilter-libxml
+
