@@ -1,0 +1,18 @@
+pkgbase = unrealtournament-bonuspack4
+	pkgdesc = Bonuspack 4: The Christmas 2000 Pack for Unreal Tournament.
+	pkgver = 20001223
+	pkgrel = 2
+	url = http://www.unrealtournament2004.com/utgoty/
+	arch = i686
+	arch = x86_64
+	groups = unrealtournament
+	groups = unrealtournament-bonuspacks
+	license = custom
+	makedepends = umodunpack
+	depends = unrealtournament
+	conflicts = ut1999-bonuspack4
+	source = http://downloads.unrealadmin.org/UnrealTournament/BonusPack/utbonuspack4.zip
+	md5sums = c9e7373ee15472ec53e62a7199f33966
+
+pkgname = unrealtournament-bonuspack4
+
