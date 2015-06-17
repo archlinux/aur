@@ -1,0 +1,19 @@
+pkgbase = jacklistener-git
+	pkgdesc = Jack Listener Daemon (jack-sensing)
+	pkgver = 46.6779b2e
+	pkgrel = 1
+	url = https://github.com/gentoo-root/jacklistener
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = dbus
+	optdepends = jackeventcmd-git: Run custom commands when headphones are (un)plugged
+	optdepends = jacknotifier-git: Headphones Jack Notification Daemon
+	optdepends = musicpaused-git: Pause music when headphones are unplugged
+	provides = jacklistener
+	source = jacklistener::git://github.com/gentoo-root/jacklistener.git
+	md5sums = SKIP
+
+pkgname = jacklistener-git
+
