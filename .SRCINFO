@@ -1,0 +1,13 @@
+pkgbase = cmake-uselatex
+	pkgdesc = CMAKE commands to actually use the LaTeX compiler
+	pkgver = 1.10.5
+	pkgrel = 4
+	url = http://www.cmake.org/Wiki/CMakeUserUseLATEX
+	arch = any
+	license = GPL
+	depends = cmake
+	source = http://www.cmake.org/Wiki/images/8/80/UseLATEX.cmake
+	sha256sums = c54d2cbf3c4bc723a37d3a72b9580978b9573962f88ea0c6af259d2b38be8347
+
+pkgname = cmake-uselatex
+
