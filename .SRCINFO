@@ -1,0 +1,14 @@
+pkgbase = perp
+	pkgdesc = Perp, aka the perpetrator, a persistent process supervisor.
+	pkgver = 2.07
+	pkgrel = 1
+	url = http://b0llix.net/perp/
+	install = perp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://b0llix.net/perp/distfiles/perp-2.07.tar.gz
+	md5sums = a2acc7425d556d9635a25addcee9edb5
+
+pkgname = perp
+

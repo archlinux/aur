@@ -1,0 +1,16 @@
+post_install() {
+echo " >> to activate perp, run the commands "
+echo " >> # perp-setup /etc/perp"
+echo " >> # kill -HUP 1"
+echo " >> become familiar with perp's configuration and operation. skim the manual pages for perp_intro(8), perpd(8), and perpetrate(5)."
+}
+
+post_upgrade() {
+echo " >> If upgrading a previous perp installation, follow all the steps above. The perp-setup(8) utility script will not disturb any previous 
+configuration it finds in any of /etc/inittab, /etc/rc.local, or /etc/perp/.boot."
+echo " >> As a special case, if upgrading from perp-0.00 to a later release in"
+echo " >> the perp-2.* series, it will be necessary to remove a couple of old"
+echo " >> files from the earlier release manually. These are:"
+echo " >> /usr/sbin/perpetrate"
+echo " >> /usr/share/man/man8/perpetrate.8"
+} 
