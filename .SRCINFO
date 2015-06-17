@@ -1,0 +1,16 @@
+pkgbase = warp-git
+	pkgdesc = A fast preprocessor for C and C++
+	pkgver = r5.b140373
+	pkgrel = 1
+	url = https://github.com/facebook/warp
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gdc
+	depends = gcc-libs
+	source = git+https://github.com/facebook/warp.git
+	md5sums = SKIP
+
+pkgname = warp-git
+
