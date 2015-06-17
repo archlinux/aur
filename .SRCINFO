@@ -1,0 +1,15 @@
+pkgbase = iptables-nftables
+	pkgdesc = backward compatibility iptables/ip6tables user-space utility
+	pkgver = 1.4.15
+	pkgrel = 1
+	url = http://netfilter.org/projects/nftables/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	provides = iptables
+	conflicts = iptables
+	source = http://git.netfilter.org/iptables-nftables/snapshot/iptables-nftables-1.4.15.zip
+	sha1sums = 9ec2ab98ea4be0dc6570e17e9c62107fa769cb2b
+
+pkgname = iptables-nftables
+
