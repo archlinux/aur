@@ -1,0 +1,29 @@
+pkgbase = guitar-pro
+	pkgdesc = A popular tablature editor software for guitar, bass, and many other instruments.
+	pkgver = 11621
+	pkgrel = 1
+	url = http://www.guitar-pro.com
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = binutils
+	makedepends = tar
+	depends = gksu
+	depends = glib2
+	depends = libgl
+	depends = libxml2
+	depends = portaudio
+	depends = pulseaudio
+	depends = zlib
+	depends = libxrender
+	depends = freetype2
+	depends = libpng12
+	source = https://dl.dropboxusercontent.com/sh/29kr9dvw7gnmojk/AAAHHwi1HBlb3yNUPoH4t3Npa/gp6-full-linux-demo-r11621.deb
+	source = https://dl.dropboxusercontent.com/sh/29kr9dvw7gnmojk/AAC9yXcEWbxXgtBL5wUcgam_a/libcrypto.so.0.9.8
+	source = https://dl.dropboxusercontent.com/sh/29kr9dvw7gnmojk/AADCm1FBezXrR3ZosGBS8wUva/libssl.so.0.9.8
+	md5sums = 57afc9199affe93952d38a05600b54e0
+	md5sums = e66ee85eccfa5e5d0aabedcd13c6c8b4
+	md5sums = 8d7331135369f0dc131c4a95f034c4b7
+
+pkgname = guitar-pro
+
