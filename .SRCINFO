@@ -1,0 +1,20 @@
+pkgbase = alsa-hda-tools-git
+	pkgdesc = Tools for the Linux High Definition Audio (HDA) ALSA driver
+	pkgver = 1.41f2cb1
+	pkgrel = 1
+	url = http://git.alsa-project.org/?p=alsa-hda-tools.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pygtk
+	depends = python2
+	conflicts = hda-verb
+	conflicts = hda-verb-git
+	source = patch
+	source = alsa-hda-tools::git://git.alsa-project.org/alsa-hda-tools.git
+	md5sums = a0a0b3441be2ce61625cc13f7fda6258
+	md5sums = SKIP
+
+pkgname = alsa-hda-tools-git
+
