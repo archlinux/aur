@@ -1,0 +1,13 @@
+diff --git a/waitpacket.c b/waitpacket.c
+index a6c20f0..6e6acfb 100644
+--- a/waitpacket.c
++++ b/waitpacket.c
+@@ -656,7 +656,7 @@ found:
+ 	printf("  TCP timestamp: tcpts=%u\n", tstamp);
+ 	if (first_tstamp) {
+ 		int tsdiff;
+-		int hz_set[] = { 2, 10, 100, 1000, 0 };
++		int hz_set[] = { 1, 2, 10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 150, 200, 250, 300, 400, 500, 600, 700, 750, 800, 1000, 2000, 9000, 0 };
+ 		int hzdiff = -1;
+ 		int hz = 0, sec;
+ 		int days, hours, minutes;

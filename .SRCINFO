@@ -1,0 +1,22 @@
+pkgbase = hping-git
+	pkgdesc = A command-line oriented TCP/IP packet assembler/analyzer.
+	pkgver = r13.3547c76
+	pkgrel = 1
+	url = http://www.hping.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = BSD
+	makedepends = git
+	depends = libpcap
+	provides = hping
+	conflicts = hping
+	source = hping::git+https://github.com/antirez/hping.git
+	source = Makefile.patch
+	source = tshzset.patch
+	sha512sums = SKIP
+	sha512sums = 120005e7ebc8c26bb199aed79cafd9333126ddaf284aa02823eecefc138e342f5f5437af88940598e4437972a4bb98386647ef82c7eef5c9b9b480b8fdbc0ad2
+	sha512sums = f6f110ba3b3f6ffd7131a464b9f3092e0b9da3087d7502d2a2757cdceaa722ae55c82a8c6a858d1671c50befd181afd597732b6df5d658656df351ca4090a2c3
+
+pkgname = hping-git
+
