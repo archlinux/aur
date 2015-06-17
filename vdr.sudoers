@@ -1,0 +1,4 @@
+# Allow vdr to shut down the system, see vdr-shutdown.sh.
+
+Defaults:vdr    !requiretty
+vdr             ALL = (root) NOPASSWD: /sbin/shutdown

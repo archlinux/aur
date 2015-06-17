@@ -1,0 +1,12 @@
+# VDR friendly udev rules for DVB and other devices.
+
+# See also *-vdr-remote.rules if using the remote plugin.
+
+# See also /etc/security/console.perms.d/*-vdr.perms and
+# https://bugzilla.redhat.com/202132
+
+# DVB devices
+KERNEL=="dvb*", GROUP="video", MODE="0660"
+
+# Remote controller, serial port 1 (eg. vdr --rcu=/dev/ttyS0):
+#KERNEL=="ttyS0", GROUP="video", MODE="0660"

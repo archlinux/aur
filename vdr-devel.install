@@ -1,0 +1,55 @@
+# vdr.install
+
+# VDR directory environment
+VDR_USER=vdr
+CONFDIR=/etc/vdr
+VIDEODIR=/var/spool/video
+EPGDIR=/var/spool/epg
+
+## arg 1:  the new package version
+post_install() {
+  echo ""
+  echo "********************************************************************"
+  echo "  Configuration files are installed in ${CONFDIR} and should be"
+  echo '  owned by "'${VDR_USER}':'${VDR_USER}'"'
+  echo ""
+  echo "  NOTE: The template runvdr script that comes with the vdr source"
+  echo "  is installed in /usr/share/doc/vdr, NOT in /usr/bin. To make a"
+  echo "  fully working installation either copy the template to /usr/bin,"
+  echo "  edit it as necessary and then make it executable or use one of"
+  echo "  the alternative runvdr scripts that can be found by searching"
+  echo "  the Internet, e.g. runvdr-extreme."
+  echo "********************************************************************"
+  echo ""
+  if ! getent passwd ${VDR_USER} >/dev/null; then
+    echo -n 'Creating VDR user "'${VDR_USER}'"...'
+    [ ! -e ${VIDEODIR} ] && mkdir -p ${VIDEODIR}
+    [ ! -e ${EPGDIR} ] && mkdir -p ${EPGDIR}
+    usr/sbin/groupadd -g 199 ${VDR_USER} >/dev/null
+    /usr/sbin/useradd -r -d ${VIDEODIR} -g ${VDR_USER} -G video -s /bin/false -c "Video Disk Recorder" ${VDR_USER} &>/dev/null
+    passwd -l ${VDR_USER} &>/dev/null
+    chown -R ${VDR_USER}:${VDR_USER} ${CONFDIR}
+    chown ${VDR_USER}:${VDR_USER} ${VIDEODIR}
+    chown ${VDR_USER}:${VDR_USER} ${EPGDIR}
+    echo "done."
+    echo ""
+  else
+    echo 'VDR user "'${VDR_USER}'" already exists.  Check that:'
+    echo '1. "'${CONFDIR}'" and vdr configuration files are owned by "'${VDR_USER}':'${VDR_USER}'"'
+    echo '2. "'${VIDEODIR}'" exists and is owned by "'${VDR_USER}':'${VDR_USER}'"'
+    echo '3. "'${EPGDIR}'" exists and is owned by "'${VDR_USER}':'${VDR_USER}'"'
+    echo ""
+  fi
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+# arg 1:  the old package version
+post_remove() {
+  echo 'VDR user "'${VDR_USER}'", "'${EPGDIR}'" and "'${VIDEODIR}'" will not be deleted.'
+}
+

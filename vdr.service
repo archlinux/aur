@@ -1,0 +1,15 @@
+[Unit]
+Description=Video Disk Recorder
+Documentation=man:vdr(1)
+Documentation=file:///usr/share/doc/vdr/INSTALL
+After=syslog.target network.target lirc.service
+
+[Service]
+Environment=VDR_INIT=1
+ExecStartPre=/usr/bin/vdr-check-setup
+ExecStart=/usr/sbin/runvdr
+ExecStop=-/usr/sbin/runvdr --set-wakeup
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
