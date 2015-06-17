@@ -8,6 +8,8 @@ url="http://aoeu.info/"
 license=('Public-Domain')
 groups=('keyboardlayouts')
 
+makedepends=('gzip')
+
 source=('http://www.aoeu.info/layouts/files/svorak.map.gz')
 md5sums=('310d74295f2c3fb9f8ef4dfaa940bdc4')
 sha1sums=('a5f7da109c228e61a8b24e01b6a872cb906b30d3')
@@ -21,7 +23,7 @@ build() {
     mkdir -p usr/share/kbd/keymaps/i386/dvorak
 
     cp $srcdir/../svorak.map.gz usr/share/kbd/keymaps/i386/dvorak/svorak-yescapslock.map.gz
-    cat $srcdir/../svorak.map.gz | gunzip -c | sed 's/Caps_Lock/Control/' | gzip -c > usr/share/kbd/keymaps/i386/dvorak/svorak.map.gz
+    zcat $srcdir/../svorak.map.gz | sed 's/Caps_Lock/Control/' | gzip -c > usr/share/kbd/keymaps/i386/dvorak/svorak.map.gz
 }
 
 package() {
