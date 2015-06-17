@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Atraci
+Comment=Free music streaming player
+Exec=atraci %U
+Icon=atraci
+Terminal=false
+Type=Application
+Categories=Player;Video;AudioVideo;Network;

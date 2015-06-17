@@ -1,0 +1,26 @@
+pkgbase = atraci-git
+	pkgdesc = Free music streaming player
+	pkgver = r397.06706a1
+	pkgrel = 1
+	url = http://getatraci.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs-grunt-cli
+	makedepends = ruby-compass
+	depends = nodejs
+	depends = libnotify
+	optdepends = node-webkit: Allows you to skip downloading node-webkit
+	provides = atraci
+	conflicts = atraci-bin
+	options = !strip
+	source = git+https://github.com/Atraci/atraci
+	source = atraci.desktop
+	source = atraci.sh
+	md5sums = SKIP
+	md5sums = acf4beaa9c9af13179c691cdc7b730f5
+	md5sums = 694aa454a631bb4a37b1e44f1d36e234
+
+pkgname = atraci-git
+
