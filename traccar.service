@@ -1,0 +1,13 @@
+[Unit]
+Description=Traccar GPS System
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/opt/traccar/bin/traccar.pid
+ExecStart=/opt/traccar/bin/traccar start
+ExecStop=/opt/traccar/bin/traccar stop
+ExecReload=/opt/traccar/bin/traccar restart
+
+[Install]
+WantedBy=multi-user.target
