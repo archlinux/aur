@@ -1,0 +1,18 @@
+pkgbase = kmesstestserver-git
+	pkgdesc = A tool to debug the MSN protocol – by emulating a full WLM-compatible server.
+	pkgver = 69.a46f689
+	pkgrel = 1
+	url = http://www.kmess.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = kdebase-lib
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qt4
+	source = kmesstestserver::git://gitorious.org/kmess/kmesstestserver.git
+	md5sums = SKIP
+
+pkgname = kmesstestserver-git
+
