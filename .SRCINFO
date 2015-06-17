@@ -16,7 +16,7 @@ pkgbase = knossos-git
 	source = git+https://github.com/knossos-project/knossos.git
 	source = knossos-git.desktop
 	md5sums = SKIP
-	md5sums = 7d21e73633da771937198884e435d605
+	md5sums = 85ae9c1721e627ccbe4eb850dcb7c42d
 
 pkgname = knossos-git
 
