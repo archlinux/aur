@@ -1,0 +1,20 @@
+pkgbase = xen-docs
+	pkgdesc = Xen 4 (docs)
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = http://xen.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	makedepends = transfig
+	makedepends = ghostscript
+	conflicts = xen4
+	conflicts = xen3
+	conflicts = xen-hv-tools
+	conflicts = libxen4
+	source = http://bits.xensource.com/oss-xen/release/4.5.0/xen-4.5.0.tar.gz
+	md5sums = 9bac43d2419d05a647064d9253bb03fa
+
+pkgname = xen-docs
+
