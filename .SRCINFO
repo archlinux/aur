@@ -1,0 +1,19 @@
+pkgbase = inception
+	pkgdesc = A FireWire physical memory manipulation and hacking tool exploiting IEEE 1394 SBP-2 DMA.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://www.breaknenter.org/projects/inception/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	depends = python
+	depends = libforensic1394
+	provides = inception
+	conflicts = inception-git
+	source = https://github.com/carmaa/inception/archive/v0.4.1.tar.gz
+	sha512sums = b488d955527f8faa7d7e49d415c7f242a4b62dda63e6c00acfd13e6f00bb029815c6caa6a67d9d0d905f85858275994eef84443e5103b298398fc2ba52159795
+
+pkgname = inception
+
