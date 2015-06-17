@@ -1,0 +1,11 @@
+[Unit]
+Description=Peerflix Server
+
+[Service]
+Type=forking
+User=root
+WorkingDirectory=/opt/peerflix-server/
+ExecStart=/usr/bin/peerflix-server
+
+[Install]
+WantedBy=multi-user.target
