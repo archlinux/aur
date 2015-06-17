@@ -1,0 +1,17 @@
+pkgbase = sidef-git
+	pkgdesc = A modern object-oriented programming language. (-git version)
+	pkgver = 0.05.23.g4c740e3
+	pkgrel = 1
+	url = https://github.com/trizen/sidef
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = perl>=5.14.0
+	depends = perl-data-dump
+	provides = sidef
+	conflicts = sidef
+	source = git://github.com/trizen/sidef.git
+	md5sums = SKIP
+
+pkgname = sidef-git
+
