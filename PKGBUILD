@@ -1,6 +1,6 @@
 # Maintainer: FzerorubigD <fzerorubigd {AT} GMail {DOT} com>
 pkgname=zacman-git
-pkgver=9.0502696
+pkgver=15.86aa498
 pkgrel=1
 pkgdesc="Another package manager for zsh"
 arch=('i686' 'x86_64')
@@ -30,4 +30,5 @@ build() {
 package() {
   mkdir -p $pkgdir/usr/bin
   install -m755 $srcdir/${_gitname}/bin/zacman $pkgdir/usr/bin/zacman
+  install -Dm644 ${srcdir}/${_gitname}/contrib/zsh/_zacman ${pkgdir}/usr/share/zsh/site-functions/_zacman
 }
