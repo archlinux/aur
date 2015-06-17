@@ -1,0 +1,44 @@
+post_install() {
+	if [ ! -f /opt/brick/libnss3.so.1d ]; then
+		ln -s /usr/lib/libnss3.so /opt/brick/libnss3.so.1d
+	fi
+	if [ ! -f /opt/brick/libnssutil3.so.1d ]; then
+		ln -s /usr/lib/libnssutil3.so /opt/brick/libnssutil3.so.1d
+	fi
+	if [ ! -f /opt/brick/libnspr4.so.0d ]; then
+		ln -s /usr/lib/libnspr4.so /opt/brick/libnspr4.so.0d
+	fi
+	if [ ! -f /opt/brick/libplc4.so.0d ]; then
+		ln -s /usr/lib/libplc4.so /opt/brick/libplc4.so.0d
+	fi
+	if [ ! -f /opt/brick/libsmime3.so.1d ]; then
+		ln -s /usr/lib/libsmime3.so /opt/brick/libsmime3.so.1d
+	fi
+	if [ ! -f /opt/brick/libssl3.so.1d ]; then
+		ln -s /usr/lib/libssl3.so /opt/brick/libssl3.so.1d
+	fi
+	if [ ! -f /opt/brick/libplds4.so.0d ]; then
+		ln -s /usr/lib/libplds4.so /opt/brick/libplds4.so.0d
+	fi
+
+	for icon in "/opt/brick/resources/app_icons/brick"*.png; do
+		size="${icon##*/brick}"
+		xdg-icon-resource install --novendor --size "${size%.png}" "$icon" "brick" &> /dev/null
+	done
+
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	desktop-file-install /opt/brick/brick.desktop
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove(){
+	rm /opt/bick/{libnss3.so.1d,libnssutil3.so.1d,libnspr4.so.0d,libplc4.so.0d,libsmime3.so.1d,libssl3.so.1d,libplds4.so.0d}
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
