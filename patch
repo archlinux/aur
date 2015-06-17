@@ -1,0 +1,19 @@
+--- k-izer.cpp	2007-10-26 21:47:39.000000000 +0200
++++ k-izer.a.cpp	2010-06-09 13:39:58.993650300 +0200
+@@ -595,16 +595,6 @@
+   Fl::background(0xe0,0xe0,0xe0);
+   kmap = new KMap(2,2,K_ZERO);
+   gui_window = new Fl_Double_Window(512,512, "Karnaughizer v. 0.3");
+-
+-#ifdef WIN32
+-  //gui_window->icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(IDI_ASTERISK)));
+-  gui_window->icon((char *)LoadIcon(fl_display, "A"));
+-#else
+-  Pixmap p, mask;
+-  XpmCreatePixmapFromData(fl_display, DefaultRootWindow(fl_display), icon_xpm, &p, &mask, NULL);
+-  gui_window->icon((char*)p);
+-#endif
+-  
+   gui_menu = new Fl_Menu_Bar(0,0,512,32);
+   gui_menu->copy(menu_items);
+   gui_kmap = new Fl_KMap(32,32,256,256,*kmap,ilist,rlist);

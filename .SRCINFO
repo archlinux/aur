@@ -1,0 +1,17 @@
+pkgbase = k-izer
+	pkgdesc = Karnaughizer is a simple Karnaugh map minimizer
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://lonelydeveloper.org/projects
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fltk
+	source = http://lonelydeveloper.org/workspace/files/k-izer-0.3-src.tgz
+	source = patch
+	md5sums = 40d1bec7de9b6b0014e11af0ac08a67e
+	md5sums = d9cf38cba88c3518cd4c0441c01f8fa0
+
+pkgname = k-izer
+
