@@ -1,0 +1,21 @@
+pkgbase = icc_examin
+	pkgdesc = ICC Examin is a colour management utility.
+	pkgver = 0.55
+	pkgrel = 2
+	url = http://oyranos.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ftgl
+	depends = fltk
+	depends = openicc
+	depends = oyranos
+	optdepends = argyllcms
+	optdepends = cinepaint-oyranos
+	source = http://prdownloads.sourceforge.net/oyranos/icc_examin-0.55.tar.bz2
+	source = configure_tests.patch
+	md5sums = 51ba3b849eb47793974cab6956750cf0
+	md5sums = b84b2b1913026b82b99f682d73f24b8d
+
+pkgname = icc_examin
+

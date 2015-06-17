@@ -1,0 +1,22 @@
+--- configure_tests.sh  2012-03-11 12:39:07.580639217 +0100
++++ configure_tests.sh.new      2012-03-11 12:39:44.857591740 +0100
+@@ -3,7 +3,7 @@
+ set > testset.txt
+ ERROR=0
+ WARNING=0
+-STRIPOPT='s/-O.// ; s/-isysroot [[:graph:]]*// ; s/-arch ppc// ; s/-arch i386//'
++STRIPOPT='s/-Wl[^ ]*//g ; s/-O.// ; s/-isysroot [[:graph:]]*// ; s/-arch ppc// ; s/-arch i386//'
+ 
+ mkdir -p tests
+
+--- configure_tests.sh  2013-08-31 22:18:03.212083000 +0200
++++ configure_tests.sh.new 2013-08-31 22:24:21.538871000 +0200
+@@ -543,7 +543,7 @@
+     if [ -z "$found" ]; then
+       pkg-config  --atleast-version=0.2 $pc_package
+       if [ $? = 0 ]; then
+-        found=`pkg-config --cflags $pc_package`
++        found=`pkg-config --libs $pc_package`
+         version=`pkg-config --modversion $pc_package`
+       fi
+     fi
