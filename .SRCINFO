@@ -1,0 +1,15 @@
+pkgbase = squirrelmail-plugin-captcha
+	pkgdesc = Plugin for squirrelmail. This plugin places a CAPTCHA input on the login screen.
+	pkgver = 1.2.3
+	pkgrel = 2
+	url = http://www.squirrelmail.org/plugin_view.php?id=263
+	arch = any
+	license = GPLv2
+	depends = squirrelmail>=1.4.17
+	depends = php-gd
+	backup = srv/http/squirrelmail/plugins/captcha/config.php
+	source = http://www.squirrelmail.org/plugins/captcha-1.2.3-1.2.9.tar.gz
+	md5sums = b4a15b2dba938a1f7e477a0627cb640b
+
+pkgname = squirrelmail-plugin-captcha
+
