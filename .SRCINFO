@@ -1,0 +1,17 @@
+pkgbase = python2-lightblue-pebble-git
+	pkgdesc = Cross-platform Bluetooth API for Python (with Pebble patches)
+	pkgver = r30.86b5c89
+	pkgrel = 1
+	url = https://github.com/pebble/lightblue-0.4
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-pybluez
+	depends = openobex
+	source = python2-lightblue-pebble-git::git+https://github.com/pebble/lightblue-0.4
+	sha512sums = SKIP
+
+pkgname = python2-lightblue-pebble-git
+
