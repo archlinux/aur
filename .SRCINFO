@@ -1,0 +1,26 @@
+pkgbase = java-environment-fake
+	pkgdesc = Fake Java Environment
+	pkgver = 3
+	pkgrel = 1
+	url = http://me.me
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = java-environment
+	provides = java-runtime
+	provides = jre7-openjdk
+	provides = java-runtime-headless
+	provides = jre7-openjdk-headless
+	conflicts = java-environment
+	conflicts = java-runtime
+	conflicts = jre7-openjdk
+	conflicts = java-runtime-headless
+	conflicts = jre7-openjdk-headless
+	replaces = java-environment
+	replaces = java-runtime
+	replaces = jre7-openjdk
+	replaces = java-runtime-headless
+	replaces = jre7-openjdk-headless
+
+pkgname = java-environment-fake
+
