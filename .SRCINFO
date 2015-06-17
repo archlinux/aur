@@ -1,0 +1,18 @@
+pkgbase = xininfo-git
+	pkgdesc = Small helper program for monitor layouts.
+	pkgver = 21.a354f48
+	pkgrel = 1
+	url = https://github.com/DaveDavenport/xininfo
+	install = xininfo-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	provides = xininfo
+	options = !strip
+	source = git+https://github.com/DaveDavenport/xininfo.git
+	md5sums = SKIP
+
+pkgname = xininfo-git
+
