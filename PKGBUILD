@@ -6,7 +6,7 @@ _cmd="falcon-bench"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.3.0"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://github.com/falconry/${_name}"
@@ -15,11 +15,15 @@ makedepends=("cython"
              "python-setuptools"
              "cython2"
              "python2-setuptools")
-checkdepends=("python-nose"
+checkdepends=("python-coverage"
+              "python-ddt"
+              "python-nose"
               "python-requests"
               "python-six"
               "python-testtools"
               "python-yaml"
+              "python2-coverage"
+              "python2-ddt"
               "python2-nose"
               "python2-requests"
               "python2-six"
@@ -31,8 +35,6 @@ sha256sums=('f27602b5a2ff8ee40b3179b3f5bdb9af09efbcd9af9bb7f01ad6a28ad0fc3b82'
             '0e6c1a8a9952846c6cd4560e7fe891f9d3184438c80743a45ea71cc7b98a659a')
 
 prepare() {
-    # python-ddt hasn't been packaged yet, just nuke those tests for now
-    find "${srcdir}/${_name}-${pkgver}/tests" -type f -exec grep -q 'import ddt' {} \; -delete
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
     patch -d "${srcdir}/${_name}-${pkgver}" -p1 -i "${srcdir}/fix-test_cookies.patch"
 }
@@ -46,9 +48,9 @@ build() {
 
 check() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py test
+    nosetests
     cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py test
+    nosetests2
 }
 
 package_python-falcon() {
