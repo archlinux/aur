@@ -1,0 +1,36 @@
+pkgbase = cockpit-git
+	pkgdesc = A systemd web based user interface for Linux servers
+	pkgver = 0.38.r33.g27888f6
+	pkgrel = 1
+	url = http://www.cockpit-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = jsl
+	makedepends = git
+	makedepends = intltool
+	makedepends = python2-pyscss
+	makedepends = gtk-doc
+	makedepends = perl-javascript-minifier-xs
+	makedepends = gobject-introspection
+	makedepends = storaged
+	makedepends = xmlto
+	makedepends = nodejs
+	depends = libssh
+	depends = krb5
+	depends = sshpass
+	depends = accountsservice
+	depends = perl-json
+	depends = udisks2
+	depends = json-glib
+	depends = libgsystem
+	depends = perl-locale-po
+	depends = networkmanager
+	depends = pcp
+	source = git://github.com/cockpit-project/cockpit
+	source = cockpit.pam
+	sha1sums = SKIP
+	sha1sums = 9d1268e4e9ad6aca14d2afd5e64176f497cc027d
+
+pkgname = cockpit-git
+
