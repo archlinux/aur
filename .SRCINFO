@@ -1,0 +1,31 @@
+pkgbase = fcitx-minimal
+	pkgdesc = Flexible Context-aware Input Tool with eXtension with a minimal set of dependencies (git version)
+	pkgver = 4.2.9
+	pkgrel = 1
+	url = http://github.com/fcitx/fcitx
+	install = fcitx.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = iso-codes
+	depends = pango
+	depends = libxinerama
+	depends = gtk-update-icon-cache
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = libxkbfile
+	depends = libxfixes
+	depends = dbus
+	depends = libxkbcommon
+	provides = fcitx=4.2.9
+	conflicts = fcitx
+	source = git://github.com/fcitx/fcitx.git
+	md5sums = SKIP
+
+pkgname = fcitx-minimal
+
