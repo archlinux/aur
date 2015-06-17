@@ -1,0 +1,9 @@
+post_install () {
+  echo -e "You have to install Ultimate Mouse or Ultimate Gamepad on your phone. You just need to follow these steps:\n"
+  echo -e "1.Install the app. You can find it through your application provider (Google Play Market or App Store)."
+  echo -e "\tYou can find the links in the downloads section too."
+  echo -e "2.Open the application and select the connection type you would like to use:" 
+  echo -e "\tBluetooth or WiFi (*Bluetooth is not available for iPhone and iOS)"
+  echo -e "3.Select the receiver from the list to establish the connection"
+  echo -e "4.Enjoy the Ultimate Control experience!"
+}

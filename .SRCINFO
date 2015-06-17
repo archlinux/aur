@@ -1,0 +1,15 @@
+pkgbase = ultimate_control
+	pkgdesc = Ultimate Control is a set of software tools that allow you to take control of your computer wirelessly.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.negusoft.com/index.php/ultimate-control
+	install = ultimate_control.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime-headless
+	source = http://www.negusoft.com/downloads/ultimate_control_v1.2_linux_64bit.tar.gz
+	md5sums = 0ad5bdbea3053ce419fd3b941262917b
+
+pkgname = ultimate_control
+
