@@ -1,0 +1,16 @@
+pkgbase = lorcon-old-git
+	pkgdesc = LORCON wireless packet injection library
+	pkgver = 1.659d7d9
+	pkgrel = 1
+	url = http://802.11ninja.net/svn/lorcon/branch/lorcon-old/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libnl1
+	depends = libpcap
+	source = lorcon-old::git://github.com/M0Rf30/lorcon-old.git
+	md5sums = SKIP
+
+pkgname = lorcon-old-git
+
