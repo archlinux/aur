@@ -1,0 +1,17 @@
+pkgbase = nano-syntax-highlighting-git
+	pkgdesc = Nano editor syntax highlighting enhancements
+	pkgver = 115.7a6608a
+	pkgrel = 2
+	url = https://github.com/scopatz/nanorc
+	install = nano-syntax-highlighting.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = nano
+	provides = nano-syntax-highlighting
+	conflicts = nano-syntax-highlighting
+	source = nanorc::git+https://github.com/scopatz/nanorc.git#branch=master
+	md5sums = SKIP
+
+pkgname = nano-syntax-highlighting-git
+
