@@ -1,6 +1,6 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xiphos-svn
-pkgver=4903 
+pkgver=4910 
 pkgrel=1
 pkgdesc="A Bible study tool -- svn version"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_svnmod"
   CXX=g++ python2 ./waf --prefix=/usr configure 
-  python2 ./waf --prefix=/usr build 
+LANG=C  python2 ./waf --prefix=/usr build 
 }
 
 package() {
