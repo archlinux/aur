@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Network;FileTransfer;Qt;
+Comment[de]=Graphical User Interface für pyLoad
+Comment=Graphical User Interface for pyLoad
+Exec=/usr/bin/pyLoadGui
+GenericName[de]=pyLoad GUI
+GenericName=pyLoad GUI
+Icon=pyload-gui
+MimeType=
+Name[de]=pyLoad GUI 
+Name=pyLoad GUI 
+Path=
+StartupNotify=false
+Terminal=false
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
