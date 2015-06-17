@@ -1,0 +1,15 @@
+pkgbase = swg-git
+	pkgdesc = A new generation static website generator, featured by the Mako (http://www.makotemplates.org/) template system, born from the need to have both performances and "WEB 2.0" contents and capabilities
+	pkgver = 62.bf962e4
+	pkgrel = 1
+	url = http://www.evilsocket.net/?s=swg
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-mako
+	source = swg::git+https://github.com/evilsocket/SWG.git
+	md5sums = SKIP
+
+pkgname = swg-git
+
