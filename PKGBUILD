@@ -11,6 +11,8 @@ groups=('keyboardlayouts')
 makedepends=('gzip')
 
 source=('http://www.aoeu.info/layouts/files/svorak.map.gz')
+noextract=('svorak.map.gz')
+
 md5sums=('310d74295f2c3fb9f8ef4dfaa940bdc4')
 sha1sums=('a5f7da109c228e61a8b24e01b6a872cb906b30d3')
 sha256sums=('fbf33afa1dbd1442e7cf44761f87acb6e11f7dae19120b03afe1e4951c32be87')

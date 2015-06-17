@@ -7,6 +7,7 @@ pkgbase = svorak
 	groups = keyboardlayouts
 	license = Public-Domain
 	makedepends = gzip
+	noextract = svorak.map.gz
 	source = http://www.aoeu.info/layouts/files/svorak.map.gz
 	md5sums = 310d74295f2c3fb9f8ef4dfaa940bdc4
 	sha1sums = a5f7da109c228e61a8b24e01b6a872cb906b30d3
