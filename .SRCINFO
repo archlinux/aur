@@ -1,0 +1,17 @@
+pkgbase = emmet-vim-git
+	pkgdesc = A vim plug-in which expands abbreviations, similar to emmet.
+	pkgver = r817.920904c
+	pkgrel = 1
+	url = https://github.com/mattn/emmet-vim
+	install = emmet.install
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim
+	provides = emmet-vim
+	source = emmet-vim-git::git+https://github.com/mattn/emmet-vim#branch=master
+	sha256sums = SKIP
+
+pkgname = emmet-vim-git
+
