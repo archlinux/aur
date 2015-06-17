@@ -1,0 +1,21 @@
+pkgbase = dcron
+	pkgdesc = dillon's lightweight cron daemon
+	pkgver = 4.5
+	pkgrel = 5
+	url = http://www.jimpryor.net/linux/dcron.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	optdepends = msmtp-mta: sending cron job output via email
+	provides = cron
+	conflicts = cron
+	backup = var/spool/cron/root
+	backup = etc/conf.d/crond
+	source = http://www.jimpryor.net/linux/releases/dcron-4.5.tar.gz
+	source = service
+	md5sums = 078833f3281f96944fc30392b1888326
+	md5sums = 2eefc422db24bf2ac38e3a16292ccdc4
+
+pkgname = dcron
+
