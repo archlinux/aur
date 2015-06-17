@@ -1,0 +1,65 @@
+_datadir='/usr/share/webapps/gitlab-shell'
+_homedir='/var/lib/gitlab'
+_logdir='/var/log/gitlab'
+_etcdir='/etc/webapps/gitlab-shell'
+
+fix_perms() {
+	touch "${_homedir}/.ssh/authorized_keys"
+	chmod 0600 "${_homedir}/.ssh/authorized_keys"
+	chmod -R 2770 "${_homedir}/repositories"
+	chmod -R 0750 "${_logdir}" "${_homedir}/satellites"
+	chmod -R 0700 "${_homedir}/.ssh"
+	chown -R gitlab:gitlab "${_datadir}" "${_homedir}" "${_logdir}"
+	chown root:gitlab "${_etcdir}/secret"
+	chmod 640 "${_etcdir}/secret"
+}
+
+generate_secret() {
+	if [ ! -s "${_etcdir}/secret" ]; then
+		hexdump -v -n 64 -e '1/1 "%02x"' /dev/urandom > "${_etcdir}/secret"
+	fi
+}
+
+post_install() {
+	groupadd gitlab &>/dev/null
+	useradd -d "${_homedir}" -g gitlab -s "${_datadir}/bin/gitlab-shell" gitlab
+
+	systemd-tmpfiles --create gitlab-shell.conf
+
+	generate_secret
+
+	fix_perms
+	sudo -u gitlab -H git config --global user.name  "GitLab"
+	sudo -u gitlab -H git config --global user.email "gitlab@$(hostname)"
+}
+
+pre_upgrade() {
+	if [ \( ! -f ${_etcdir}/config.yml \) -a \( -f /etc/webapps/gitlab/shell.yml \) ]; then
+		mkdir -p "${_etcdir}"
+		cp /etc/webapps/gitlab/shell.yml ${_etcdir}/config.yml
+	fi
+	if [ ! -s "${_etcdir}/secret" ]; then
+		if [ \( -s ${_datadir}/.gitlab_shell_secret \) -a \( ! -L ${_datadir}/.gitlab_shell_secret \) ]; then
+			mv "${_datadir}/.gitlab_shell_secret" "${_etcdir}/secret"
+		else
+			rm -f "${_datadir}/.gitlab_shell_secret"
+		fi
+	fi
+}
+
+post_upgrade() {
+	getent group gitlab >/dev/null 2>&1 || groupadd gitlab &>/dev/null
+	if getent passwd gitlab >/dev/null 2>&1; then
+		usermod -d "${_homedir}" -g gitlab -s "${_datadir}/bin/gitlab-shell" gitlab &>/dev/null
+	else
+		useradd -d "${_homedir}" -g gitlab -s "${_datadir}/bin/gitlab-shell" gitlab &>/dev/null
+	fi
+
+	generate_secret
+	fix_perms
+}
+
+post_remove() {
+	getent passwd gitlab >/dev/null 2>&1 && userdel -r gitlab
+	getent group gitlab >/dev/null 2>&1 && groupdel gitlab
+}
