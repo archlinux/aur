@@ -1,6 +1,6 @@
 pkgbase = terminator-bzr
 	pkgdesc = A tool for arranging multiple terminals in a single window
-	pkgver = 1549
+	pkgver = 1558
 	pkgrel = 1
 	url = http://www.tenshu.net/terminator/
 	install = terminator.install
