@@ -1,0 +1,22 @@
+pkgbase = torrentv-git
+	pkgdesc = Stream Torrents to your AppleTV/Roku/Chromecast
+	pkgver = r47.3aab1c5
+	pkgrel = 1
+	url = http://torrentv.github.io/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs-grunt-cli
+	makedepends = nodejs-bower
+	depends = nodejs
+	provides = torrentv
+	conflicts = torrentv
+	options = !strip
+	source = torrentv::git+https://github.com/TorrenTV/TorrenTV.git
+	source = torrentv.desktop
+	md5sums = SKIP
+	md5sums = b07f00426e616e773b7c6af46be2461a
+
+pkgname = torrentv-git
+
