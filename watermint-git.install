@@ -1,0 +1,25 @@
+
+post_install() {
+    echo ">>>"
+    echo ">>>>To play Watermint with the Retail Version:"
+    echo ">>>   Move the pak0.pk3 file from the original game CD to"
+    echo ">>>      /opt/watermint/mpbase/"
+    echo ">>>"
+    echo ">>>>When you have the .pk3 file(s) installed, run the game:"
+    echo ">>>      watermint"
+    echo ">>>"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Watermint
+GenericName=Watermint
+Comment=Watermint - Quake III Engine Fork
+Exec=/usr/bin/watermint
+Icon=/usr/share/pixmaps/watermint.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+

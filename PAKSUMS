@@ -1,0 +1,18 @@
+// pk3s listed here must be present with correct checksums to allow pure to be enabled.
+// If you modify a pk3 and change it's checksum here,
+// all you accomplish is being able to run a server no one can join
+// without your modified pk3s.
+
+// If you want to use modified pk3s (and don't want the annoying pop up), uncomment the following line:
+//config noPakMismatchWarningDialog
+
+// nodownload keyword tells server not to allow pk3 to be downloaded
+pak0	4204185745	nodownload
+pak1	4193093146	nodownload
+pak2	2353701282	nodownload
+pak3	3321918099	nodownload
+pak4	2809125413	nodownload
+pak5	1185311901	nodownload
+pak6	750524939	nodownload
+pak7	2842227859	nodownload
+pak8	3662040954	nodownload
