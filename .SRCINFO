@@ -1,0 +1,15 @@
+pkgbase = mactel-boot
+	pkgdesc = Utility to bless EFI bootloaders in Apple-Intel Macs
+	pkgver = 0.9
+	pkgrel = 3
+	url = https://bugzilla.redhat.com/show_bug.cgi?id=755093
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.codon.org.uk/~mjg59/mactel-boot/mactel-boot-0.9.tar.bz2
+	source = mactel-boot-setup
+	sha256sums = 7c58df71b4c8fe3bdb719063a34265fe8e338d6cb5db024fc90ae716cbbf52f6
+	sha256sums = d74b68d3a7dde589a03779b3a245d66a04dda8247d876f5aea56e3fe365fc8f7
+
+pkgname = mactel-boot
+

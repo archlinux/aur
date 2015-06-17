@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+## Based on http://pkgs.fedoraproject.org/gitweb/?p=mactel-boot.git;a=blob_plain;f=mactel-boot-setup;hb=f17
+
+## Execute as root
+
+_HFS_PLUS_PART_MP="${1}"
+_LOADER_PATH="${2}"
+_LOADER_CONFIG="${3}"
+
+if [[ -z "${1}" ]] || [[ -z "${2}" ]]; then
+	echo
+	echo "Usage: mactel-boot-setup <HFS_PLUS_PARTITION_MOUNTPOINT> <LOADER_PATH> <LOADER_CONFIG>"
+	echo
+	echo "Example: mactel-boot-setup /boot/mactel /EFI/refind/refindx64.efi /EFI/refind/refind.conf"
+	echo
+	exit 0
+fi
+
+### check for root
+if [[ ! ${UID} -eq 0 ]]; then 
+	echo "ERROR: Please run as root user!"
+	exit 1
+fi
+
+if [[ "$(df -T "${_HFS_PLUS_PART_MP}" | tail -n +2 | awk '{print $2}')" == "hfsplus" ]]; then
+	if [[ -f "${_HFS_PLUS_PART_MP}/${_LOADER_PATH}" ]]; then
+		[[ ! -f "${_HFS_PLUS_PART_MP}/mach_kernel" ]] && echo "This file is required for booting" > "${_HFS_PLUS_PART_MP}/mach_kernel"
+		
+		mkdir -p "${_HFS_PLUS_PART_MP}/System/Library/CoreServices"
+		cp -f "/usr/share/mactel-boot/SystemVersion.plist" "${_HFS_PLUS_PART_MP}/System/Library/CoreServices/SystemVersion.plist"
+		
+		[[ -z ${_LOADER_CONFIG} ]] && _LOADER_CONFIG="$(echo "${_LOADER_PATH}" | sed 's|efi|cfg|g')"
+		
+		ln -f "${_HFS_PLUS_PART_MP}/${_LOADER_PATH}" "${_HFS_PLUS_PART_MP}/System/Library/CoreServices/boot.efi"
+		[[ -f "${_HFS_PLUS_PART_MP}/${_LOADER_CONFIG}" ]] && ln -sf "${_HFS_PLUS_PART_MP}/${_LOADER_CONFIG}" "${_HFS_PLUS_PART_MP}/System/Library/CoreServices/$(basename "${_HFS_PLUS_PART_MP}/${_LOADER_CONFIG}")"
+		
+		if [[ -f "/usr/share/mactel-boot/arch.vol" ]]; then
+			cp -f "/usr/share/mactel-boot/arch.vol" "$(dirname "${_HFS_PLUS_PART_MP}/${_LOADER_PATH}")/.disk_label"
+			cp -f "/usr/share/mactel-boot/arch.vol" "${_HFS_PLUS_PART_MP}/System/Library/CoreServices/.disk_label"
+		else
+			touch "$(dirname "${_HFS_PLUS_PART_MP}/${_LOADER_PATH}")/.disk_label"
+			touch "${_HFS_PLUS_PART_MP}/System/Library/CoreServices/.disk_label"
+		fi
+		
+		if [[ -f "/boot/efi/EFI/arch/refind/icons/os_arch.icns" ]]; then
+			cp "/boot/efi/EFI/arch/refind/icons/os_arch.icns" "${_HFS_PLUS_PART_MP}/.VolumeIcon.icns"
+		else
+			touch "${_HFS_PLUS_PART_MP}/.VolumeIcon.icns"
+		fi
+		
+		hfs-bless "${_HFS_PLUS_PART_MP}/${_LOADER_PATH}"
+		echo
+	else
+		echo "${_HFS_PLUS_PART_MP}/${_LOADER_PATH} not found."
+	fi
+else
+	echo
+	echo "${_HFS_PLUS_PART_MP} is not an HFS-PLUS Partition Mountpoint"
+	echo
+	exit 2
+fi
+
+unset _HFS_PLUS_PART_MP
+unset _LOADER_PATH
+unset _LOADER_CONFIG
