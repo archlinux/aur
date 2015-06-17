@@ -1,0 +1,23 @@
+pkgbase = thinkingrock
+	pkgdesc = Java-based GTD application
+	pkgver = 2.2.1
+	pkgrel = 6
+	url = http://www.thinkingrock.com.au
+	install = thinkingrock.install
+	arch = any
+	license = CDDL
+	depends = jre6-compat
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = gendesk
+	source = http://downloads.sourceforge.net/thinkingrock/tr-2.2.1.tar.gz
+	source = dirstructure.patch
+	source = thinkingrock.png
+	source = thinkingrock.install
+	sha256sums = f54d3206fed91aacef776f3d66979bc0bb97893e3e922738fa3156c4fcdedc42
+	sha256sums = 9d2f499543fb5062d38aedd17b480e46ad3c44e4c6e00e583e651d90eaaf3c1e
+	sha256sums = 921b96171fa464fada4362e8bc14e217f23e15aa4745d297b44ec504ce98db06
+	sha256sums = f8f6bdbcd42d322f7325beaf927b3ef7b5a769070e91d2b89f1a6815f1fa68f7
+
+pkgname = thinkingrock
+

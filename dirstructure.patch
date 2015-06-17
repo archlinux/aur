@@ -1,0 +1,66 @@
+diff -Naur tr-2.0.1.original/bin/tr tr-2.0.1/bin/tr
+--- tr-2.0.1.original/bin/tr	2009-02-17 13:35:16.000000000 +0100
++++ tr-2.0.1/bin/tr	2009-02-17 13:36:44.000000000 +0100
+@@ -16,11 +16,15 @@
+     fi
+ done
+ 
+-progdir=`dirname "$PRG"`
+-APPNAME=`basename "$0"`
++progdir=/opt/thinkingrock
++APPNAME=tr
+ 
+-if [ -f "$progdir/../etc/$APPNAME".conf ] ; then
+-    . "$progdir/../etc/$APPNAME".conf
++
++jdkhome=/opt/java6/jre
++
++
++if [ -f "$progdir/etc/$APPNAME".conf ] ; then
++    . "$progdir/etc/$APPNAME".conf
+ fi
+ 
+ # XXX does not correctly deal with spaces in non-userdir params
+@@ -48,9 +52,9 @@
+     . "${userdir}/etc/$APPNAME".conf
+ fi
+ 
+-if [ -n "$jdkhome" -a \! -d "$jdkhome" -a -d "$progdir/../$jdkhome" ]; then
++if [ -n "$jdkhome" -a \! -d "$jdkhome" -a -d "$progdir/$jdkhome" ]; then
+     # #74333: permit jdkhome to be defined as relative to app dir
+-    jdkhome="$progdir/../$jdkhome"
++    jdkhome="$progdir/$jdkhome"
+ fi
+ 
+ readClusters() {
+@@ -61,18 +65,18 @@
+   fi
+   while read X; do
+     if [ "$X" \!= "" ]; then
+-      $echo "$progdir/../$X"
++      $echo "$progdir/$X"
+     fi
+   done
+ }
+ 
+-clusters=`(cat "$progdir/../etc/$APPNAME".clusters; echo) | readClusters | tr '\012' ':'`
++clusters=`(cat "$progdir/etc/$APPNAME".clusters; echo) | readClusters | tr '\012' ':'`
+ 
+ if [ ! -z "$extraclusters" ] ; then
+     clusters="$clusters:$extraclusters"
+ fi
+ 
+-nbexec=`echo "$progdir"/../platform*/lib/nbexec`
++nbexec=`echo "$progdir"/platform*/lib/nbexec`
+ 
+ case "`uname`" in
+     Darwin*)
+@@ -80,7 +84,7 @@
+             --jdkhome '"$jdkhome"' \
+             -J-Dcom.apple.mrj.application.apple.menu.about.name='ThinkingRock' \
+             -J-Xdock:name='ThinkingRock' \
+-            '"-J-Xdock:icon=$progdir/../../$APPNAME.icns"' \
++            '"-J-Xdock:icon=$progdir/../$APPNAME.icns"' \
+             --branding '"$APPNAME"' \
+             --clusters '"$clusters"' \
+             --userdir '"${userdir}"' \
