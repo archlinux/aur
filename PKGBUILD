@@ -3,6 +3,8 @@ pkgname='mraa-git'
 pkgver=0.7.2.7.ga44c585
 pkgrel=0
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
+provides=(${pkgname%-*}=$pkgver)
+conflicts=(${pkgname%-*})
 makedepends=('git' 'cmake' 'swig')
 optdepends=('python: for Python support')
 url="https://github.com/intel-iot-devkit/mraa"

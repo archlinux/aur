@@ -10,6 +10,8 @@ pkgbase = mraa-git
 	makedepends = cmake
 	makedepends = swig
 	optdepends = python: for Python support
+	provides = mraa=0.7.2.7.ga44c585
+	conflicts = mraa
 	source = git+https://github.com/intel-iot-devkit/mraa.git
 	md5sums = SKIP
 
