@@ -1,0 +1,22 @@
+--- a/neo/SConstruct	2012-09-22 03:27:40.055442154 +0200
++++ b/neo/SConstruct	2012-09-22 03:28:44.809960265 +0200
+@@ -240,13 +240,13 @@
+ # BASE + GAME + OPT for game
+ # _noopt versions of the environements are built without the OPT
+ 
+-BASECPPFLAGS = [ ]
++BASECPPFLAGS = ['-lGL' ]
+ CORECPPPATH = [ ]
+-CORELIBPATH = [ ]
+-CORECPPFLAGS = [ ]
+-GAMECPPFLAGS = [ ]
+-BASELINKFLAGS = [ ]
+-CORELINKFLAGS = [ ]
++CORELIBPATH = ['/usr/lib' ]
++CORECPPFLAGS = ['-lGL']
++GAMECPPFLAGS = ['-lGL' ]
++BASELINKFLAGS = ['-lGL' ]
++CORELINKFLAGS = ['-lGL' ]
+ 
+ # for release build, further optimisations that may not work on all files
+ OPTCPPFLAGS = [ ]

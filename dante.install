@@ -1,0 +1,46 @@
+post_install() {
+    chown $USER:users /opt/dante/base/*
+    echo "==> "
+    echo "==> The following files need to be copied from the win32 install CDs "
+    echo "==> to your base/ directory ( md5 sums provided below as reference ) "
+    echo "==> by default, /usr/share/doom3/base "
+    echo "==> "
+    echo "==>     71b8d37b2444d3d86a36fd61783844fe base/pak000.pk4 "
+    echo "==>     4bc4f3ba04ec2b4f4837be40e840a3c1 base/pak001.pk4 "
+    echo "==>     fa84069e9642ad9aa4b49624150cc345 base/pak002.pk4 "
+    echo "==>     f22d8464997924e4913e467e7d62d5fe base/pak003.pk4 "
+    echo "==>     38561a3c73f93f2e6fd31abf1d4e9102 base/pak004.pk4 "
+    echo "==> "
+    echo "==> If you are also installing the Resurrection of Evil Expansion Pack, "
+    echo "==> you need to copy the following file to your d3xp/ directory "
+    echo "==> by default, /usr/share/doom3/d3xp "
+    echo "==> "
+    echo "==>     a883fef0fd10aadeb73d34c462ff865d d3xp/pak000.pk4 "
+    echo "==> "
+    echo "==> Localization is now supported on Linux. Copy the following file from "
+    echo "==> your install media to /usr/share/doom3/base: "
+    echo "==> "
+    echo "==>     b9fbe9def3d590a0465d850cc147e0c4 zpak000.pk4"
+    echo "==> "
+    echo "==> To change the game the language uses, open the ~/dante/base/DoomConfig.cfg file"
+    echo "==> and change the Silk sys_lang variable. For example:"
+    echo "==> "
+    echo "==>     Silk sys_lang \"italian\""
+    echo "==> "
+    echo "==> Start the game with the command: dante "
+    echo "==> Start the dedicated server with the command: dante-dedicated "
+    echo "==> "
+    echo "==> If installed, you can start the Expansion Pack directly from the command line with the command: dante +set fs_game d3xp "
+    echo "==> Or you can select it in the mods menu of the base game. "
+    echo "==> "
+    echo "==> For troubleshooting and help, see: "
+    echo "==> http://zerowing.idsoftware.com/linux/ "
+    echo "==> "
+}
+
+
+
+op=$1
+shift
+
+$op $*

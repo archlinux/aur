@@ -1,0 +1,33 @@
+pkgbase = dante-egl-git
+	pkgdesc = idTech4 ES2.0, aka Oliver's Doom, aka omcfadde's Doom (EGL rendering version)
+	pkgver = 127.e4da33b
+	pkgrel = 1
+	url = http://omcfadde.blogspot.fi/
+	install = dante.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = scons
+	makedepends = git
+	depends = doom3-data
+	depends = libjpeg
+	depends = libogg
+	depends = libvorbis
+	depends = openal
+	depends = sdl
+	depends = libgl
+	source = dante::git+https://github.com/omcfadde/dante.git
+	source = patch
+	source = dante.png
+	source = dante.desktop
+	source = dante.launcher
+	source = dante-dedicated.launcher
+	md5sums = SKIP
+	md5sums = 8e936c28e9e93a823af1a28137e1674d
+	md5sums = f99eb141eecc4b9dd188d6819d741546
+	md5sums = cab09ebf8f3a4f46a0da928eb6104edd
+	md5sums = aa0c0f54ac74acb5302a16cbdb5be214
+	md5sums = 18d42e3ec43b7221a09648754e8d14de
+
+pkgname = dante-egl-git
+

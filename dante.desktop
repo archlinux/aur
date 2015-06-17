@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dante
+GenericName=Dante
+Comment=
+Exec=/usr/bin/dante
+Icon=/usr/share/pixmaps/dante.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
