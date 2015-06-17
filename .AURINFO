@@ -1,0 +1,16 @@
+pkgbase = python2-pyblock
+	pkgdesc = Python modules for dealing with block devices
+	pkgver = 0.52
+	pkgrel = 1
+	url = https://git.fedorahosted.org/git/pyblock.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = libselinux
+	depends = dmraid
+	source = https://git.fedorahosted.org/cgit/pyblock.git/snapshot/pyblock-pyblock-0.52-1.tar.xz
+	source = use_python2.patch
+
+pkgname = python2-pyblock
+
