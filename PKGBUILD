@@ -9,9 +9,9 @@
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.0
 _pkgver=4.0.5
-_rtpatchver=rt3
+_rtpatchver=rt4
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -31,7 +31,7 @@ sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
             '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
             'SKIP'
-            '508e57f15acfcc0cb01163c8238fe2c85998cbe5d091b6c85c6e3d6a54cf6f7d'
+            '9503166ca9cfc71b3d05d3c86a650a42f730f28d62eb04e77443d67a70f5d2df'
             'SKIP'
             '7db363fd3001c5235a6ec499310ecec6f552faa3c2872954ccbb9d02e6e8e817'
             'cb290ad42aed7f297d90b112227af533e37cfeabbf8bff8a9df4674647b461ab'
