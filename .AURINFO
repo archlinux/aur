@@ -1,0 +1,22 @@
+pkgbase = italc
+	pkgdesc = Classroom management software which enables teachers to view and control computers
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://italc.sourceforge.net/
+	install = italc.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	depends = libxtst
+	depends = libxinerama
+	depends = openssl
+	depends = libjpeg-turbo
+	depends = zlib
+	source = http://prdownloads.sourceforge.net/italc/italc-2.0.2.tar.bz2
+	source = italc.service
+	source = italc.desktop
+
+pkgname = italc
+

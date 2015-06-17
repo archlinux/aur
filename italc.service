@@ -1,0 +1,12 @@
+[Unit]
+Description=Italc Client Daemon
+
+[Service]
+ExecStart=/usr/bin/ica
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

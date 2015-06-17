@@ -1,0 +1,45 @@
+post_install() {
+	# now search for keys, any other paths?
+	i=0;
+	for file in $( find /etc -regex '.*italc.*public/.*\|.*italc.*private/.*' ) ; do
+		if [ ! -d "$file" ] ; then
+		
+			name_key[i]=$file ;
+			i=$((i+1)); 
+		fi
+	done
+
+	# check if any keys were not found, and create them
+	if [ -z "${name_key[0]}" ] ; then
+		echo "No iTALC keys found"
+		echo "Use this command to generate keys:"
+		echo "imc -role teacher -createkeypair"
+		
+		#add group and change group assignment
+		groupadd italc;
+		echo "Check the privilages:"
+		echo "chgrp -R italc /etc/italc/keys/private"
+                echo "chmod -R 640 /etc/italc/keys/private"
+                echo "chmod -R ug+X /etc/italc/keys/private"
+	# keys were found, show the installer and let them know default paths
+	else
+		echo "iTALC keys found: ${name_key[@]}"
+		echo -e "\nNOTE: Default iTALC key locations are: /etc/italc/keys/[public | private]/<role>/key "
+		echo "If your keys are not in these directories, you should move,copy or link them."
+	fi
+
+        #postinstall instruction
+        echo "If you are installing on the master (aka teacher) computer, dont forget to add the user to the italc group."
+
+        # update of the icon cache
+        gtk-update-icon-cache /usr/share/icons/hicolor
+}
+
+post_update() {
+   /bin/true
+}
+
+post_remove() {
+  groupdel italc
+  echo "Remember to backup your keys and delete /etc/italc folder"
+}

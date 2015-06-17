@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=iTALC
+Comment=
+Icon=/usr/share/pixmaps/italc.xpm
+Exec=italc
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true
