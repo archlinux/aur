@@ -1,0 +1,20 @@
+pkgbase = squirrelmail-dev-svn
+	pkgdesc = Webmail for Nuts! (Development version Subversion source)
+	pkgver = 14499
+	pkgrel = 1
+	url = http://www.squirrelmail.org
+	install = squirrelmail-dev-svn.install
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = php
+	depends = perl
+	depends = imap-server
+	provides = squirrelmail=1.5.2
+	conflicts = squirrelmail
+	options = !strip
+	backup = srv/http/squirrelmail/.htaccess
+	backup = srv/http/squirrelmail/config/config.php
+
+pkgname = squirrelmail-dev-svn
+
