@@ -1,0 +1,20 @@
+pkgbase = rocksdb
+	pkgdesc = Embedded key-value store for fast storage
+	pkgver = 3.11
+	pkgrel = 1
+	url = http://rocksdb.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python2
+	depends = gperftools
+	depends = zlib
+	depends = bzip2
+	depends = lz4
+	depends = snappy
+	depends = gcc-libs
+	source = https://github.com/facebook/rocksdb/archive/rocksdb-3.11.zip
+	sha256sums = 8214dde4a06b364e8aa081fb9e553aea302d554c79879fdf24be7c6844bcd675
+
+pkgname = rocksdb
+
