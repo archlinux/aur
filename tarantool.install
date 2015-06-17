@@ -1,0 +1,11 @@
+post_install() {
+  if [ $(ls -A /var/lib/tarantool/) ]; then
+    echo 'Tarantool database directory /var/lib/tarantool/ is not empty. Do not create a database.'
+    return 0
+  fi
+
+  # otherwise create one
+  # it is weird but tarantool uses path relative to fs root...
+  cd /
+  tarantool_box --init-storage
+}
