@@ -1,0 +1,16 @@
+pkgbase = perl-thread-pool-simple
+	pkgdesc = A simple thread-pool implementation
+	pkgver = 0.25
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Thread-Pool-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JW/JWU/Thread-Pool-Simple/Thread-Pool-Simple-0.25.tar.gz
+	md5sums = ac144e153813174c0d6b22425d1a24d1
+	sha512sums = 8cc89c42f5d2b4210a21f9cfc977ea0938d4405bab95d01015d38f189d958421bddc4bb734640accfa3f7e4ac21fd04119f078a684e1a8b1d910cd3cab8c7452
+
+pkgname = perl-thread-pool-simple
+
