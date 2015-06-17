@@ -1,0 +1,14 @@
+pkgbase = python2-cryptsetup
+	pkgdesc = Python bindings for Network Security Services (NSS)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://git.fedorahosted.org/cgit/python-cryptsetup.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = cryptsetup
+	source = https://git.fedorahosted.org/cgit/python-cryptsetup.git/snapshot/python-cryptsetup-python-cryptsetup-0.1.4-1.tar.xz
+
+pkgname = python2-cryptsetup
+
