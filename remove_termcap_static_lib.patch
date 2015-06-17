@@ -1,0 +1,17 @@
+diff --git a/mrbgems/mruby-bin-mirb/mrbgem.rake b/mrbgems/mruby-bin-mirb/mrbgem.rake
+index 6ddd972..fa0499f 100644
+--- a/mrbgems/mruby-bin-mirb/mrbgem.rake
++++ b/mrbgems/mruby-bin-mirb/mrbgem.rake
+@@ -6,11 +6,7 @@ MRuby::Gem::Specification.new('mruby-bin-mirb') do |spec|
+   if spec.build.cc.search_header_path 'readline/readline.h'
+     spec.cc.defines << "ENABLE_READLINE"
+     if spec.build.cc.search_header_path 'termcap.h'
+-      if MRUBY_BUILD_HOST_IS_CYGWIN then
+-        spec.linker.libraries << 'ncurses'
+-      else
+-        spec.linker.libraries << 'termcap'
+-      end
++      spec.linker.libraries << 'ncurses'
+     end
+     spec.linker.libraries << 'readline'
+   elsif spec.build.cc.search_header_path 'linenoise.h'
