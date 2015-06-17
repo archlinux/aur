@@ -1,0 +1,20 @@
+pkgbase = aarch64-linux-gnu-gdb
+	pkgdesc = The GNU Debugger for the ARM64 target
+	pkgver = 7.9
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = texinfo
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python2
+	depends = guile
+	options = !emptydirs
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-7.9.tar.xz
+	sha256sums = 9b315651a16528f7af8c7d8284699fb0c965df316cc7339bb0b7bae335848392
+
+pkgname = aarch64-linux-gnu-gdb
+
