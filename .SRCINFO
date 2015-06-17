@@ -1,0 +1,14 @@
+pkgbase = gtge
+	pkgdesc = Golden T Game Engine is an advanced cross-platform game programming library written in Java language
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://goldenstudios.or.id/
+	arch = any
+	license = LGPL3
+	depends = java-runtime
+	options = !emptydirs
+	source = http://goldenstudios.or.id/products/GTGE/GTGE_0_2_3_complete.zip
+	md5sums = c6a433a72e134907766f0cada892f439
+
+pkgname = gtge
+
