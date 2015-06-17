@@ -1,0 +1,16 @@
+pkgbase = emacs-gnus-git
+	pkgdesc = Emacs Gnus from git
+	pkgver = m0.11.r178.g3af70ac
+	pkgrel = 1
+	url = http://gnus.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	provides = emacs-gnus
+	conflicts = emacs-gnus
+	source = emacs-gnus-git::git+http://git.gnus.org/gnus.git
+	md5sums = SKIP
+
+pkgname = emacs-gnus-git
+
