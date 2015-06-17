@@ -1,0 +1,17 @@
+pkgbase = kde-plasma-themes-midna
+	pkgdesc = Mcder's light plasma theme for KaOS.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://kaosx.us
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = kdeartwork
+	license = GPL
+	license = Creative-Commons-BY-SA-NC
+	depends = kdebase-workspace
+	source = http://kaosx.us/repo/apps/kde-plasma-themes-midna-1.1.0-1-x86_64.pkg.tar.xz
+	md5sums = 4637a85609ec33f67471d21261da02ee
+
+pkgname = kde-plasma-themes-midna
+
