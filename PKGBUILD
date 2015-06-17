@@ -2,8 +2,8 @@
 
 pkgname=hdf5-fortran-cxx
 _pkgname=hdf5
-pkgver="1.8.14"
-_pkgver="1.8.14"
+pkgver="1.8.15p1"
+_pkgver="1.8.15-patch1"
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data with GNU gfortran and GNU C++ support enabled, but without threadsafe."
@@ -15,7 +15,7 @@ makedepends=('time')
 source=(ftp://ftp.hdfgroup.org/HDF5/current/src/${_pkgname}-${_pkgver}.tar.bz2)
 #source=(http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.8/src/${_pkgname}-${pkgver}.tar.bz2)
 options=('!libtool')
-sha1sums=('3c48bcb0d5fb21a3aa425ed035c08d8da3d5483a')
+sha1sums=('82ed248e5d0293bc1dba4c13c9b2880a26643ee0')
 provides=('hdf5')
 
 build() {
