@@ -1,0 +1,22 @@
+pkgbase = nightmode-git
+	pkgdesc = A kwin plugin that makes the entire screen darker.
+	pkgver = 1.5325650
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/Nightmode?content=123805
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = kdelibs
+	depends = kdebase-workspace
+	provides = nightmode
+	conflicts = nightmode
+	source = nightmode::git+https://github.com/M0Rf30/nightmode.git
+	source = patch
+	md5sums = SKIP
+	md5sums = 006039a049dee049b7e2007a2c05875e
+
+pkgname = nightmode-git
+
