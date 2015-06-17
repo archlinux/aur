@@ -1,0 +1,13 @@
+pkgbase = veriwell
+	pkgdesc = The Verilog Simulator
+	pkgver = 2.8.7
+	pkgrel = 1
+	url = http://veriwell.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/project/veriwell/VeriWell/Veriwell%202.8.7/veriwell-2.8.7.tar.gz
+	sha1sums = 9ef4e6a25a4fd65db325a89ed89b199547fabbd6
+
+pkgname = veriwell
+
