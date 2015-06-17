@@ -1,0 +1,32 @@
+pkgbase = appglass
+	pkgdesc = A lightweight application Launcher for GNU/Linux
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/kumarasinghe/appglass/
+	install = appglass.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gambas3-runtime
+	depends = gambas3-gb-desktop
+	depends = gambas3-gb-form
+	depends = gambas3-gb-image
+	depends = gambas3-gb-qt4
+	depends = gambas3-gb-qt4-opengl
+	depends = gambas3-gb-opengl
+	depends = findutils
+	depends = coreutils
+	depends = wget
+	depends = mplayer
+	depends = imagemagick
+	depends = xdg-utils
+	depends = xterm
+	depends = bash
+	depends = xorg-xprop
+	depends = xcompmgr
+	conflicts = appglass-git
+	source = https://github.com/kumarasinghe/appglass/archive/1.0.tar.gz
+	md5sums = 0fa5ff776108909464235438779d7e4b
+
+pkgname = appglass
+
