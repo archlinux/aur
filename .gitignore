@@ -1,0 +1,14 @@
+# build dirs
+/src/
+/pkg/
+
+# archives
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+
+# tmp
+.*.swp
+*~
+

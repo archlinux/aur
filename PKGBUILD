@@ -3,7 +3,7 @@
 _pkgname=serf
 pkgname=${_pkgname}-cluster
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Decentralized cluster membership, failure detection and orchestration util'
 arch=('i686' 'x86_64')
 url='https://www.serfdom.io/'
