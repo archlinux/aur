@@ -1,0 +1,17 @@
+pkgbase = haskell-al
+	pkgdesc = OpenAL haskell raw API
+	pkgver = 0.1.3.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/al
+	install = haskell-al.install
+	arch = any
+	license = custom:BSD3
+	makedepends = ghc<7.11
+	depends = openal<1.17
+	depends = haskell-mtl>=2.1
+	depends = haskell-mtl<2.3
+	source = http://hackage.haskell.org/package/al-0.1.3.2/al-0.1.3.2.tar.gz
+	md5sums = 2a68d1fa2afb93c9d37a3d324226f00a
+
+pkgname = haskell-al
+
