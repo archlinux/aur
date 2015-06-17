@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Return To Castle Wolfenstein SP
+Comment=Return To Castle Wolfenstein (Single Player)
+Exec=/usr/bin/iortcwsp
+Icon=/usr/share/pixmaps/iortcw.png
+Terminal=false
+Categories=Game
+
