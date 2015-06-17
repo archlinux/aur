@@ -1,0 +1,14 @@
+pkgbase = coldornot
+	pkgdesc = A simple tool to convert temperatures
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/loctauxphilippe/coldornot
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://github.com/loctauxphilippe/coldornot/releases/download/2.4/coldornot-2.4.tar.gz
+	md5sums = 24c7c54b5a823aa94077cd626e0b33eb
+
+pkgname = coldornot
+
