@@ -1,0 +1,15 @@
+pkgbase = wxsqlite3-2.8
+	pkgdesc = wxWidgets wrapper for SQLite3, build for wxWidgets 2.8
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = http://wxcode.sourceforge.net/components/wxsqlite3/
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	depends = wxgtk2.8
+	depends = sqlite3
+	source = http://downloads.sourceforge.net/wxcode/wxsqlite3-3.1.1.tar.gz
+	sha1sums = a7be92b441b26dfdb94908eb6ac96ee4a0ed335b
+
+pkgname = wxsqlite3-2.8
+
