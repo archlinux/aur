@@ -1,0 +1,24 @@
+pkgbase = netbeans-php-nightly
+	pkgdesc = Netbeans IDE for PHP
+	pkgver = latest
+	pkgrel = 9
+	url = http://netbeans.org
+	install = netbeans.install
+	arch = any
+	license = CDDL
+	makedepends = gendesk
+	makedepends = setconf
+	depends = java-environment
+	depends = ttf-font
+	depends = libxtst
+	depends = giflib
+	depends = atk
+	optdepends = php: for developing programs in php
+	optdepends = lib32-glibc
+	options = !strip
+	backup = usr/share/netbeans-php-nightly/etc/netbeans.conf
+	source = netbeans-nightly.png
+	sha512sums = 243e5170718d24a15ab67a0f0491c1c50d5bb8bace08485eb73ce33988583aa7fa0ae9f3ad149c9aaeeb99d130e11888e76ac1474e725f3e57e89ae7b36b6040
+
+pkgname = netbeans-php-nightly
+
