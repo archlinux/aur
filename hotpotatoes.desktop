@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Name=Hot Potatoes
+Comment=The Hot Potatoes suite
+Type=Application
+Categories=Education;
+Exec=hotpotatoes %F
+Icon=hotpotatoes

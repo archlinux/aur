@@ -1,0 +1,20 @@
+pkgbase = hotpotatoes
+	pkgdesc = The Hot Potatoes Suite
+	pkgver = 6.1
+	pkgrel = 4
+	url = http://hotpot.uvic.ca/index.php
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime-headless
+	source = http://hotpot.uvic.ca/javahotpot61.zip
+	source = 256.png
+	source = hotpotatoes.desktop
+	source = hotpotatoes
+	md5sums = 3fe77c129296c46c239d9cc0258d36fd
+	md5sums = c1929d08080a72e0b814d6a763bac959
+	md5sums = 9265aee30c90f0f5502d2c0b8cd58904
+	md5sums = 24d5b1b945fb775bdd5b162894973b40
+
+pkgname = hotpotatoes
+

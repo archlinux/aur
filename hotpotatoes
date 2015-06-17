@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+cd /opt/hotpotatoes
+java -jar hotpot6.jar
