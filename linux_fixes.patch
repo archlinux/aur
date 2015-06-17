@@ -1,0 +1,30 @@
+diff --git a/me_unpack.py b/me_unpack.py
+index c7d4f7e..86b3f8f 100644
+--- a/me_unpack.py
++++ b/me_unpack.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python2
+ # Intel ME ROM image dumper/extractor
+ # Copyright (c) 2012-2014 Igor Skochinsky
+ # Version 0.1 2012-10-10
+@@ -287,10 +288,7 @@ def extract_code_mods(nm, f, soff):
+ 
+ 
+ def decomp_lzma(compdata):
+-    import subprocess, _subprocess
+-    # hide the console window
+-    si = subprocess.STARTUPINFO()
+-    si.dwFlags |= _subprocess.STARTF_USESHOWWINDOW
++    import subprocess
+     if in_ida:
+         basedir = idaapi.idadir("loaders")
+     else:
+@@ -298,7 +296,7 @@ def decomp_lzma(compdata):
+     path = os.path.join(basedir, "lzma")
+     #print "using decompressor at '%s'" % path
+     try:
+-        process = subprocess.Popen([path, "d", "-si", "-so"], startupinfo=si, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
++        process = subprocess.Popen([path, "d", "-si", "-so"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+         output, errout = process.communicate(compdata)
+         retcode = process.poll()
+     except IOError as e:
