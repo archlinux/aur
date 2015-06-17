@@ -1,0 +1,30 @@
+pkgbase = gegl-legacy
+	pkgdesc = Graph based image processing framework, leagcy version of 0.1.8
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://www.gegl.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = ruby
+	makedepends = lua
+	makedepends = openexr
+	makedepends = ffmpeg
+	makedepends = librsvg
+	makedepends = jasper
+	makedepends = exiv2
+	depends = babl-legacy
+	depends = gtk2
+	optdepends = openexr: for using the openexr plugin
+	optdepends = ffmpeg: for using the ffmpeg plugin
+	optdepends = librsvg: for using the svg plugin
+	optdepends = jasper: for using the jasper plugin
+	provides = gegl
+	conflicts = gegl
+	options = !libtool
+	source = ftp://ftp.gimp.org/pub/gegl/0.1/gegl-0.1.8.tar.bz2
+	sha1sums = 3d4d902580f5c5122b01b5188b6b5da03089ecac
+
+pkgname = gegl-legacy
+
