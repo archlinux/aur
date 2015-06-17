@@ -1,0 +1,17 @@
+pkgbase = periscope-git
+	pkgdesc = Subtitles searching module written in python.
+	pkgver = 20121120
+	pkgrel = 4
+	url = https://github.com/patrickdessalle/periscope
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-beautifulsoup3
+	provides = periscope
+	provides = periscope-svn
+	conflicts = periscope
+	conflicts = periscope-svn
+
+pkgname = periscope-git
+
