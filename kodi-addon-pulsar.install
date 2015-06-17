@@ -1,0 +1,30 @@
+classname=plugin.video.pulsar
+usr=420
+home=/var/lib/kodi/.kodi/addons
+repo=$home/repository.pulsar
+addonpath=$home/${classname}
+
+_chown() {
+  chmod 755 $(find $addonpath -type d)
+  chmod 644 $(find $addonpath -type f)
+  chown -R $usr:$usr $home $addonpath
+}
+
+## arg 1:  the new package version
+post_install() {
+  getent passwd $usr &> /dev/null || useradd -r -d $home -s /bin/bash $usr
+  _chown
+
+}
+
+post_upgrade() {
+  _chown
+}
+
+## arg 1:  the old package version
+post_remove() {
+  rm -r $addonpath $repo
+  return 0
+}
+
+# vim:set ts=2 sw=2 et:

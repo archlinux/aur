@@ -1,0 +1,17 @@
+pkgbase = kodi-addon-pulsar
+	pkgdesc = Pulsar is an torrent finding and streaming engine for Kodi
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/steeve/plugin.video.pulsar
+	install = kodi-addon-pulsar.install
+	arch = any
+	license = GPL3
+	depends = kodi
+	depends = kodi-standalone-service
+	noextract = plugin.video.pulsar-0.5.0.zip
+	options = !strip
+	source = https://github.com/steeve/plugin.video.pulsar/releases/download/v0.5.0/plugin.video.pulsar-0.5.0.zip
+	md5sums = af05e3acf9e49547c680e14cc5a8d43b
+
+pkgname = kodi-addon-pulsar
+
