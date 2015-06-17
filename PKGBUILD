@@ -1,5 +1,5 @@
 # Maintainer: Félicien PILLOT <felicien.pillot@member.fsf.org>
-pkgname=fisoco-git
+pkgname=fisoco
 pkgver=0.3
 pkgrel=0
 pkgdesc="a Finding, Sorting and Converting free software"

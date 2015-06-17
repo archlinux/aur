@@ -1,4 +1,4 @@
-pkgbase = fisoco-git
+pkgbase = fisoco
 	pkgdesc = a Finding, Sorting and Converting free software
 	pkgver = 0.3
 	pkgrel = 0
@@ -9,8 +9,8 @@ pkgbase = fisoco-git
 	makedepends = git
 	makedepends = gtkmm3
 	makedepends = intltool
-	source = fisoco-git-0.3::git+http://github.com/Felandral/Fisoco#branch=master
+	source = fisoco-0.3::git+http://github.com/Felandral/Fisoco#branch=master
 	md5sums = SKIP
 
-pkgname = fisoco-git
+pkgname = fisoco
 
