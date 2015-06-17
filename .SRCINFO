@@ -1,0 +1,18 @@
+pkgbase = unrealtournament-bonuspack3
+	pkgdesc = Bonuspack 3: The Inoxx Pack for Unreal Tournament.
+	pkgver = 20000511
+	pkgrel = 2
+	url = http://www.unrealtournament2004.com/utgoty/
+	arch = i686
+	arch = x86_64
+	groups = unrealtournament
+	groups = unrealtournament-bonuspacks
+	license = custom
+	depends = unrealtournament
+	conflicts = ut1999-bonuspack3
+	noextract = utinoxxpacknoumod.zip
+	source = http://downloads.unrealadmin.org/UnrealTournament/BonusPack/utinoxxpacknoumod.zip
+	md5sums = 2825ad2bbf5c9ea0887b91907c16dd31
+
+pkgname = unrealtournament-bonuspack3
+
