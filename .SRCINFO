@@ -1,0 +1,14 @@
+pkgbase = libxcm
+	pkgdesc = A library containing the a reference implementation of the net-color specs
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://oyranos.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = xorg-server
+	source = http://prdownloads.sourceforge.net/oyranos/libXcm-0.5.3.tar.bz2
+	md5sums = c5d293b235f98f0bd211678ffefebc4c
+
+pkgname = libxcm
+
