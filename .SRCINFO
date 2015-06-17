@@ -1,0 +1,13 @@
+pkgbase = strobe
+	pkgdesc = Super optimised TCP port surveyor (in honour of Julian Assange)
+	pkgver = 1.06
+	pkgrel = 2
+	url = http://ftp.cerias.purdue.edu/pub/tools/unix/scanners/strobe/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://ftp.cerias.purdue.edu/pub/tools/unix/scanners/strobe/strobe-1.06.tar.gz
+	md5sums = ec976426618e32f7440a4495e8c858e9
+
+pkgname = strobe
+
