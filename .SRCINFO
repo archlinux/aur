@@ -1,0 +1,16 @@
+pkgbase = pytimechart-git
+	pkgdesc = a tool to display ftrace (or perf) traces
+	pkgver = r142.f8fb8cc
+	pkgrel = 1
+	url = https://github.com/tardyp/pytimechart
+	arch = any
+	license = LGPL2.1
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-chaco
+	depends = python2-etsproxy
+	source = git://github.com/tardyp/pytimechart.git
+	sha1sums = SKIP
+
+pkgname = pytimechart-git
+
