@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-pulsar-icanuck
+	pkgdesc = Pulsar Providers specially crafted addons to function with the Pulsar Video Addon
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/icanuckkodirepo/
+	arch = any
+	license = GPL3
+	depends = kodi
+	depends = kodi-addon-pulsar
+	source = http://downloads.sourceforge.net/project/icanuckkodirepo/repository.icanuck-2.0.0.zip
+	md5sums = daa559b57d944a90e294326401d8afba
+
+pkgname = kodi-addon-pulsar-icanuck
+
