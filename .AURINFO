@@ -1,0 +1,19 @@
+pkgbase = vmd.pl-git
+	pkgdesc = Download music manager from vkontakte.ru
+	pkgver = r30.c944c59
+	pkgrel = 1
+	url = https://github.com/genaev/vmd
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = perl
+	depends = perl-vk-app
+	depends = perl-file-homedir
+	depends = perl-thread-pool-simple
+	source = git://github.com/genaev/vmd
+	source = hide-config-dir.diff
+	sha1sums = SKIP
+	sha1sums = c8be3ca159cc99106ee06273af89a0733178819a
+
+pkgname = vmd.pl-git
+

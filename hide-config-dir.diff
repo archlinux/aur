@@ -1,0 +1,13 @@
+diff --git a/vmd.pl b/vmd.pl
+index a1a84f0..cf23145 100755
+--- a/vmd.pl
++++ b/vmd.pl
+@@ -363,7 +363,7 @@ sub app {
+ sub cookie_and_api_id_files {
+   my $data_dir =  File::HomeDir->my_data;
+   die "Can't get user's data directory" unless $data_dir;
+-  $data_dir .= '/'.$app_name;
++  $data_dir .= '/.'.$app_name;
+   mkdir $data_dir,0700 or die "Can't create app config directory" unless(-d $data_dir);
+ 
+   my $cookie_file = $data_dir.'/.cookie';
