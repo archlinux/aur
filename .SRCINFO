@@ -1,0 +1,18 @@
+pkgbase = pam-face-authentication
+	pkgdesc = PAM face auth
+	pkgver = 0.3
+	pkgrel = 7
+	url = http://code.google.com/p/pam-face-authentication
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = pam
+	depends = opencv
+	depends = libx11
+	depends = qt4
+	source = http://pam-face-authentication.googlecode.com/files/pam-face-authentication-0.3.tar.gz
+	md5sums = 5ef71bcf4bdebd2ee7216387ef17fc27
+
+pkgname = pam-face-authentication
+
