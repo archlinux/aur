@@ -1,0 +1,14 @@
+pkgbase = emacs-bbdb
+	pkgdesc = The Insidious Big Brother Database Version 3
+	pkgver = 3.1.2
+	pkgrel = 2
+	url = http://savannah.nongnu.org/projects/bbdb/
+	arch = any
+	license = GPL
+	makedepends = texlive-bin
+	depends = emacs
+	source = http://download.savannah.gnu.org/releases/bbdb/bbdb-3.1.2.tar.gz
+	md5sums = b57cbb57ab8d4235517e79011fb52b2f
+
+pkgname = emacs-bbdb
+
