@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=gdl-git
-pkgver=3.12.0
+pkgver=3.16.0.1.g7cef922
 pkgrel=1
 pkgdesc="GNOME Docking Libraries, git version"
 arch=('i686' 'x86_64')
