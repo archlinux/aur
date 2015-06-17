@@ -1,0 +1,23 @@
+pkgbase = gromacs-git
+	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. Development branch.
+	pkgver = 5.1.beta1.r121.gabc4a07
+	pkgrel = 1
+	url = http://www.gromacs.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = fftw-bettersimd
+	optdepends = openmpi: needed for parallelization across nodes
+	optdepends = lapack: normal modes and matrix manipulation
+	optdepends = boost-libs: better implementation support for smart pointers and exception handling
+	optdepends = libxml2: required for running test suite
+	optdepends = libx11: needed for gmx view
+	optdepends = lesstif: needed for gmx view
+	optdepends = vmd: visualization
+	options = !libtool
+	source = git://git.gromacs.org/gromacs.git
+	sha1sums = SKIP
+
+pkgname = gromacs-git
+
