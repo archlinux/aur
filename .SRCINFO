@@ -1,0 +1,21 @@
+pkgbase = aarch64-linux-gnu-eglibc
+	pkgdesc = Embedded GNU C Library (aarch64-linux-gnu)
+	pkgver = 2.19.r25988
+	pkgrel = 1
+	url = http://www.eglibc.org
+	arch = any
+	license = GPL
+	makedepends = aarch64-linux-gnu-gcc-stage2
+	makedepends = subversion
+	makedepends = gperf
+	depends = aarch64-linux-gnu-linux-api-headers
+	provides = aarch64-linux-gnu-eglibc-headers=2.19.r25988
+	conflicts = aarch64-linux-gnu-eglibc-headers
+	replaces = aarch64-linux-gnu-eglibc-headers
+	options = !strip
+	options = staticlibs
+	source = eglibc::svn://svn.eglibc.org/branches/eglibc-2_19/libc
+	md5sums = SKIP
+
+pkgname = aarch64-linux-gnu-eglibc
+
