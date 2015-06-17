@@ -1,0 +1,5 @@
+post_install() {
+       echo "Add this line to your PAM configuration file:"
+       echo "auth required pam_google_authenticator.so"
+       echo "Run the "google-authenticator" binary to create a new secret key in your home directory."
+}
