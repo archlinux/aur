@@ -1,0 +1,17 @@
+pkgbase = evopedia-git
+	pkgdesc = Offline Wikipedia Viewer
+	pkgver = 120.9a3aa55
+	pkgrel = 1
+	url = http://evopedia.info/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bzip2
+	depends = qt4
+	conflicts = evopedia
+	source = evopedia::git://github.com/evopedia/evopedia_qt.git
+	md5sums = SKIP
+
+pkgname = evopedia-git
+
