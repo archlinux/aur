@@ -1,0 +1,14 @@
+pkgbase = little_boxes
+	pkgdesc = Put boxes around stdin
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/giodamelio/little_boxes
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/giodamelio/little_boxes/archive/1.0.0.zip
+	sha1sums = 2322f84a81c138241994f96fd3a1a57370ca679e
+
+pkgname = little_boxes
+
