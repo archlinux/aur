@@ -1,0 +1,18 @@
+pkgbase = lorcon-git
+	pkgdesc = LORCON wireless packet injection library
+	pkgver = 13.c50fdac
+	pkgrel = 1
+	url = https://code.google.com/p/lorcon/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libnl
+	depends = libnl1
+	depends = libpcap
+	conflicts = lorcon
+	source = lorcon::git+https://code.google.com/p/lorcon/
+	md5sums = SKIP
+
+pkgname = lorcon-git
+
