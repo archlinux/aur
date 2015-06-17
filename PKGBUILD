@@ -1,9 +1,9 @@
 # Maintainer: notfoss <AT> gmx.com
 
 pkgname="dex-editor-git"
-pkgver="1882.dbfe91c"
+pkgver="1889.b1f65ce"
 pkgrel="1"
-pkgdesc="dex - dextrous text editor. A small and lightweight command line based text editor."
+pkgdesc="A small and lightweight command line based text editor."
 arch=("i686" "x86_64")
 url="http://github.com/tihirvon/dex"
 license=("GPL2")

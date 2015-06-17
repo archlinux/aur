@@ -1,6 +1,6 @@
 pkgbase = dex-editor-git
-	pkgdesc = dex - dextrous text editor. A small and lightweight command line based text editor.
-	pkgver = 1882.dbfe91c
+	pkgdesc = A small and lightweight command line based text editor.
+	pkgver = 1889.b1f65ce
 	pkgrel = 1
 	url = http://github.com/tihirvon/dex
 	arch = i686
