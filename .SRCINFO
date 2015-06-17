@@ -1,6 +1,6 @@
 pkgbase = cheat-git
 	pkgdesc = Cheat allows you to create and view interactive cheatsheets on the command-line
-	pkgver = 2.0.9.30.g7eb405d
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://github.com/chrisallenlane/cheat
 	arch = any

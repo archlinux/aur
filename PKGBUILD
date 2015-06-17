@@ -3,7 +3,7 @@
 # Maintainer: Quan Guo < guotsuan@gmail.com>
 
 pkgname=cheat-git
-pkgver=2.0.9.30.g7eb405d
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Cheat allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
