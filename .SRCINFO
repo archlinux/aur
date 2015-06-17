@@ -1,6 +1,6 @@
 pkgbase = emacs-bookmarkplus-mode
 	pkgdesc = Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways
-	pkgver = 2013.07.23
+	pkgver = 2015.04.03
 	pkgrel = 1
 	url = http://www.emacswiki.org/emacs/BookmarkPlus
 	install = emacs-bookmarkplus-mode.install

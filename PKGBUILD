@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-bookmarkplus-mode
-pkgver=2013.07.23
+pkgver=2015.04.03
 pkgrel=1
 pkgdesc="Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways"
 url="http://www.emacswiki.org/emacs/BookmarkPlus"
