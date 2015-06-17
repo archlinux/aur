@@ -1,0 +1,16 @@
+pkgbase = drbl-experimental
+	pkgdesc = A software to manage the deployment of the GNU/Linux operating system across many clients.
+	pkgver = 2.8.12
+	pkgrel = 1
+	url = http://drbl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = bc
+	provides = drbl
+	source = http://free.nchc.org.tw/drbl-core/src/unstable/drbl-2.8.12.tar.bz2
+	md5sums = fb9ccae51bc7db40b68c36110c56b69d
+
+pkgname = drbl-experimental
+
