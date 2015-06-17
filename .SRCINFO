@@ -1,0 +1,19 @@
+pkgbase = notevim-git
+	pkgdesc = A script to help you manage your notes and access them quickly
+	pkgver = 0.r13.18f2688
+	pkgrel = 3
+	url = https://github.com/winged/notevim
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = wmctrl
+	optdepends = python2-neovim: If you want to use it with Neovim
+	provides = notevim
+	provides = notevim-git
+	source = notevim-git::git://github.com/winged/notevim.git
+	source = LICENSE::https://raw.githubusercontent.com/winged/notevim/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = 2eb36a7daa0b8aebd44467eefd37ef289c99cfdd4c7189d5c436a7bef8ce1c51
+
+pkgname = notevim-git
+
