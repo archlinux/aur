@@ -1,6 +1,6 @@
 pkgbase = emacs-newlisp-mode-git
 	pkgdesc = newLISP editing mode for Emacs
-	pkgver = 48.c1c38ac
+	pkgver = 50.7f44e7c
 	pkgrel = 1
 	url = https://github.com/kosh04/newlisp-mode
 	install = emacs-newlisp-mode.install

@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-newlisp-mode-git
-pkgver=48.c1c38ac
+pkgver=50.7f44e7c
 pkgrel=1
 pkgdesc="newLISP editing mode for Emacs"
 arch=('any')
