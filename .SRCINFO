@@ -1,0 +1,17 @@
+pkgbase = wcmcommander
+	pkgdesc = Multi-platform open source file manager (Windows, Linux, FreeBSD, OS X) mimicking the look-n-feel of Far Manager
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = http://wcm.linderdaum.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libx11
+	depends = libssh2
+	depends = smbclient
+	depends = freetype2
+	source = https://github.com/corporateshark/wcmcommander/archive/release-0.20.0.tar.gz
+	sha1sums = 77f034f0da7f13b362b742b965ad9fb444892802
+
+pkgname = wcmcommander
+
