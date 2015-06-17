@@ -1,0 +1,43 @@
+pkgbase = openbazaar-git
+	pkgdesc = A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL
+	pkgver = 4054.05a993d
+	pkgrel = 1
+	url = http://openbazaar.org
+	install = openbazaar.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = jquery
+	depends = python2-bitcoin
+	depends = python2-dnschain
+	depends = python2-gnupg-hg
+	depends = python2-ipy
+	depends = python2-miniupnpc
+	depends = python2-obelisk
+	depends = python2-pillow
+	depends = python2-psutil
+	depends = python2-pycountry
+	depends = python2-pyee
+	depends = python2-pyelliptic
+	depends = python2-pystun
+	depends = python2-qrcode
+	depends = python2-requests
+	depends = python2-rfc3986
+	depends = python2-tornado
+	optdepends = pybitmessage-git: Send and receive messages to anyone on the bitmessage network
+	provides = openbazaar
+	replaces = openbazaar
+	options = !strip
+	backup = etc/openbazaar.conf
+	source = openbazaar::git+https://github.com/OpenBazaar/OpenBazaar.git#branch=develop
+	source = openbazaar.service
+	source = openbazaar.sh
+	source = openbazaar.conf
+	md5sums = SKIP
+	md5sums = 1d1e3933c4fd26f565e47f475eede2b4
+	md5sums = 87ad334f35bce82931151fa94c06bab1
+	md5sums = 0741fc4c68e499b10cbf272f27efd3a0
+
+pkgname = openbazaar-git
+
