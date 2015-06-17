@@ -1,0 +1,35 @@
+pkgbase = assaultcube-reloaded
+	pkgdesc = AssaultCube Reloaded
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://acr.victorz.ca
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = openal
+	depends = zlib
+	depends = gcc-libs
+	depends = libgl
+	depends = enet
+	depends = libvorbis
+	depends = libx11
+	depends = glu
+	source = https://github.com/actf/acr/archive/v2.6.2.tar.gz
+	source = git+https://github.com/actf/translations.git
+	source = acreloaded
+	source = acreloaded-server
+	source = acreloaded.desktop
+	source = acreloaded.svg
+	md5sums = 31659ae86f3adbabfd303384b04a9786
+	md5sums = SKIP
+	md5sums = c6db5816ce66282f6d6c7d08792b6095
+	md5sums = 53b17712afb7f0a5646b9894032d06ff
+	md5sums = bff621e554812c7325b2bd7f56e9e881
+	md5sums = 3b142417157d73da4a7981fd07bcb628
+
+pkgname = assaultcube-reloaded
+

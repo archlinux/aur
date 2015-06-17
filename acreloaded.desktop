@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=acreloaded
+Icon=acreloaded
+Type=Application
+Terminal=false
+MultipleArgs=false
+Name=AssaultCube Reloaded
+GenericName=Realistic Multiplayer FPS
+MimeType=text/html
+StartupNotify=false
+Categories=Game;ActionGame;

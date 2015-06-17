@@ -1,0 +1,50 @@
+# Maintainer: M0Rf30
+
+pkgname=assaultcube-reloaded
+pkgver=2.6.2
+pkgrel=1
+pkgdesc='AssaultCube Reloaded'
+arch=('i686' 'x86_64')
+url='http://acr.victorz.ca'
+license=('GPL3')
+depends=('sdl' 'sdl_mixer' 'sdl_image' 'openal' 'zlib' 'gcc-libs' 'libgl' 'enet' 'libvorbis' 'libx11' 'glu')
+makedepends=('git' )
+source=("https://github.com/actf/acr/archive/v${pkgver}.tar.gz"
+	      "git+https://github.com/actf/translations.git"
+        'acreloaded'
+        'acreloaded-server'
+        'acreloaded.desktop'
+        'acreloaded.svg')
+
+package() {
+  mkdir -p ${pkgdir}/usr/share/acreloaded/locale
+  mkdir -p ${pkgdir}/usr/bin
+  
+  cd ${srcdir}/acr-${pkgver}
+  cd  source/src
+
+  make DESTDIR=$pkgdir install
+  cd ../..
+
+  cp -rf bot config packages acr/packages ${pkgdir}/usr/share/acreloaded
+
+  install -Dm755 bin_unix/native_client ${pkgdir}/usr/share/acreloaded/native_client
+  install -Dm755 bin_unix/native_server ${pkgdir}/usr/share/acreloaded/native_server
+  install -Dm644 ${srcdir}/acreloaded.svg ${pkgdir}/usr/share/pixmaps/acreloaded.svg
+  install -Dm644 ${srcdir}/acreloaded.desktop ${pkgdir}/usr/share/applications/acreloaded.desktop
+  install -Dm755 ${srcdir}/acreloaded ${pkgdir}/usr/bin/acreloaded
+  install -Dm755 ${srcdir}/acreloaded-server ${pkgdir}/usr/bin/acreloaded-server
+
+  
+msg "Checkout Languages"
+  cd $srcdir
+  rm -r translations/.git
+  cp -r translations/* $pkgdir/usr/share/acreloaded/locale/
+}
+
+md5sums=('31659ae86f3adbabfd303384b04a9786'
+         'SKIP'
+         'c6db5816ce66282f6d6c7d08792b6095'
+         '53b17712afb7f0a5646b9894032d06ff'
+         'bff621e554812c7325b2bd7f56e9e881'
+         '3b142417157d73da4a7981fd07bcb628')
