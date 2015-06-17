@@ -1,0 +1,20 @@
+home=/var/lib/i2pd
+pidfile=/run/i2pd.pid
+post_install() {
+  groupadd -g 44 i2p &>/dev/null
+  useradd -u 44 -g i2p -d ${home} -s /bin/nologin i2p &> /dev/null
+  chown i2p:i2p -R ${home} ${pidfile} &> /dev/null
+  chmod 700 ${home} &> /dev/null
+  systemd-tmpfiles --create i2pd.conf
+}
+
+post_upgrade() {
+  getent group i2p &>/dev/null || groupadd -g 44 i2p &>/dev/null
+  getent passwd i2p &>/dev/null || useradd -u 44 -g i2p -d ${home} -s /bin/nologin i2p &> /dev/null
+  chown i2p:i2p -R ${home} ${pidfile} &> /dev/null
+}
+
+pre_remove() {
+  getent passwd i2p &>/dev/null && userdel i2p &> /dev/null
+  getent group i2p &>/dev/null && groupdel i2p &> /dev/null
+}
