@@ -1,0 +1,17 @@
+pkgbase = pal
+	pkgdesc = A command-line calendar program.
+	pkgver = 0.4.3
+	pkgrel = 6
+	url = http://palcal.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pkg-config
+	depends = glib2
+	depends = readline
+	depends = gettext
+	source = http://iweb.dl.sourceforge.net/project/palcal/pal/0.4.3/pal-0.4.3.tgz
+	sha256sums = ce470cb7be76522ff58cd0325ad7817b6cc2132a5e0cea55de8c9eb63b54551c
+
+pkgname = pal
+
