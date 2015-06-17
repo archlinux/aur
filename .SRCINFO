@@ -1,0 +1,21 @@
+pkgbase = passwordsafe-debian
+	pkgdesc = Simple and secure password manager, from Debian package
+	pkgver = 0.93BETA
+	pkgrel = 1
+	url = http://passwordsafe.sourceforge.net
+	install = passwordsafe-debian.install
+	arch = i686
+	arch = x86_64
+	license = Artistic License 2.0
+	depends = xerces-c
+	depends = wxgtk2.8
+	depends = ykpers
+	provides = pwsafe
+	provides = passwordsafe
+	conflicts = pwsafe
+	conflicts = pwsafe-cvs
+	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.93/passwordsafe-debian-0.93BETA.i686.deb
+	md5sums = e747fa099a0b8c4c4371054448fb77d4
+
+pkgname = passwordsafe-debian
+
