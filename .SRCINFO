@@ -1,0 +1,21 @@
+pkgbase = tocc
+	pkgdesc = Tag-based file management system (contains toccfs and official CLI client)
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://t-o-c-c.com
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libtocc
+	depends = fuse
+	source = https://github.com/aidin36/tocc/releases/download/v1.0.1/tocc-1.0.1.tar.gz
+	source = https://github.com/aidin36/tocc/releases/download/v1.0.1/tocc-1.0.1.tar.gz.sig
+	sha256sums = c880171c2a94cc298cf073ad347205763080c15710407834627aa24a4e93a2cd
+	sha256sums = SKIP
+	sha384sums = 2f35616be2906600e2ea19244222e894ac675cc9a62e00f9e2f15a0c81853b341747a56d4b6e1f34665b4fb8ffc0a541
+	sha384sums = SKIP
+	sha512sums = a1c1abcf097d3e8c7782ef6bfa3d62d91b53db6c20348cbaa16f2c082fbbe46d42a2609d0da8bd1790eb578be450e9d0f6f78041e25d14ec0b61ffba453b4140
+	sha512sums = SKIP
+
+pkgname = tocc
+
