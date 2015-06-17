@@ -1,0 +1,14 @@
+pkgbase = perl-linux-desktopfiles
+	pkgdesc = Perl module to get and parse the Linux .desktop files
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/module/Linux::DesktopFiles
+	arch = any
+	license = GPLv3
+	makedepends = perl-module-build
+	depends = perl>=5.14.0
+	source = http://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Linux-DesktopFiles-0.09.tar.gz
+	sha256sums = 45afb52301ed1553fa741c40e62dc91280bb0e6e58dad83e6a49415a02f0973b
+
+pkgname = perl-linux-desktopfiles
+
