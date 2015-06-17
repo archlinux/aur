@@ -1,0 +1,13 @@
+pkgbase = cyassl
+	pkgdesc = A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://www.yassl.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/cyassl/cyassl/archive/v3.3.0.zip
+	sha1sums = 969713afc5ba0056e80691d535aa002f94d5858e
+
+pkgname = cyassl
+
