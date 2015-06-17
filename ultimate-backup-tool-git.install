@@ -1,0 +1,3 @@
+post_install() {
+  echo "Please change BackupDir variable in /usr/bin/backup_android_to_linux script" 
+}

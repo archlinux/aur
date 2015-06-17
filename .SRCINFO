@@ -1,0 +1,16 @@
+pkgbase = ultimate-backup-tool-git
+	pkgdesc = Tool to backup android without root
+	pkgver = 20130104
+	pkgrel = 1
+	url = https://github.com/UltimateBackuptool
+	install = ultimate-backup-tool-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dos2unix
+	depends = android-sdk-platform-tools
+	depends = bash
+
+pkgname = ultimate-backup-tool-git
+
