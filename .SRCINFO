@@ -1,0 +1,18 @@
+pkgbase = python2-astroml-addons-git
+	pkgdesc = AstroML addons package contains addon code for the astroML package. AstroML is a Python module for machine learning and data mining built on numpy, scipy, scikit-learn, and matplotlib.
+	pkgver = 2013.12.11.gb6d3e97
+	pkgrel = 1
+	url = http://www.astroml.org/
+	arch = any
+	license = BSD-3-Clause
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-scikit-learn
+	depends = python2-matplotlib
+	depends = python2
+	depends = python2-pyfits
+	source = git+https://github.com/astroML/astroML_addons.git
+	md5sums = SKIP
+
+pkgname = python2-astroml-addons-git
+
