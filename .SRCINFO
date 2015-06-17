@@ -1,0 +1,21 @@
+pkgbase = libreengineering
+	pkgdesc = A suite of instrumentation, electrical, mechanical, process engineering calculation and design programs and other tools.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://libreeng.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-pyenchant
+	depends = python2-pysqlite
+	depends = python2-sqlalchemy
+	optdepends = hunspell: required for Translit only
+	source = http://downloads.sourceforge.net/project/libreeng/LibreEngineering-0.5.0.tar.bz2
+	source = libreengineering.sh
+	md5sums = 75fc0abf74619c0343b571287bd9f4a9
+	md5sums = 4598d1adaf2629c19e319e48316c77fb
+
+pkgname = libreengineering
+
