@@ -1,0 +1,70 @@
+_homedir=/var/lib/subsonic
+_playlistdir=/var/playlists
+
+post_install() {
+
+    getent group subsonic &>/dev/null || groupadd --system subsonic > /dev/null
+    getent passwd subsonic &>/dev/null || useradd --system \
+                                                  --home-dir /var/lib/subsonic \
+                                                  --shell /usr/bin/nologin \
+                                                  --gid subsonic \
+                                                  --groups audio \
+                                                  --comment "Subsonic user" \
+                                                  subsonic > /dev/null
+    passwd --lock subsonic > /dev/null
+
+    fix_permissions
+    echo "*************************************************"
+    echo "* Edit /etc/subsonic.conf to configure subsonic *"
+    echo "*************************************************"
+
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    if [[ `systemctl is-active subsonic` == 'active' ]]; then
+        systemctl stop subsonic
+    fi
+}
+
+post_remove() {
+    getent passwd subsonic &>/dev/null && userdel subsonic >/dev/null
+    getent group subsonic &>/dev/null && groupdel subsonic >/dev/null
+}
+
+fix_permissions() {
+    chown -R subsonic:subsonic ${_homedir}
+    chown subsonic:subsonic ${_playlistdir}
+}
+
+pre_upgrade() {
+    rm -f /tmp/subsonic-was-active
+    if [[ `systemctl is-active subsonic` == 'active' ]]; then
+        touch /tmp/subsonic-was-active
+        echo "Stopping subsonic"
+        systemctl stop subsonic
+    fi
+}
+
+post_upgrade() {
+    post_install
+
+    if [[ $(vercmp 5.0.beta1 $2) == "1" ]]; then
+        echo "!! Subsonics home dir is now located in /var/lib/subsonic."
+        echo "   You will have to move the database located in "
+        echo "   /var/subsonic/db to this new location."
+        echo ""
+        echo "!! This package now runs subsonic as the user 'subsonic'."
+        echo "   You mightneed to edit permissions for your media folders."
+        rm -f /tmp/subsonic-was-active
+        echo ""
+        echo "!! Not restarting subsonic automatically."
+        echo "   You might need to change configs"
+    fi
+
+    if [ -e /tmp/subsonic-was-active ]; then
+        echo "Starting subsonic"
+        systemctl start subsonic
+        rm /tmp/subsonic-was-active
+    fi
+}
