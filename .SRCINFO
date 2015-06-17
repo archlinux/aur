@@ -1,0 +1,22 @@
+pkgbase = smartmontools-svn
+	pkgdesc = Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives - latest SVN version
+	pkgver = 4110
+	pkgrel = 1
+	url = http://smartmontools.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = bash
+	depends = gcc-libs
+	depends = libcap-ng
+	provides = smartmontools
+	conflicts = smartmontools
+	backup = etc/conf.d/smartd
+	source = smartmontools-svn::svn+https://svn.code.sf.net/p/smartmontools/code/trunk/smartmontools
+	source = smartd.conf
+	sha256sums = SKIP
+	sha256sums = c2c0f2f6b4a3f3d76da1c7706139297aef6e3f2a705eb7fdd800544812427c74
+
+pkgname = smartmontools-svn
+
