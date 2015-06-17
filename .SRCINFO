@@ -1,0 +1,27 @@
+pkgbase = terminator-bzr
+	pkgdesc = A tool for arranging multiple terminals in a single window
+	pkgver = 1549
+	pkgrel = 1
+	url = http://www.tenshu.net/terminator/
+	install = terminator.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = intltool
+	depends = hicolor-icon-theme
+	depends = pygtk
+	depends = python2-keybinder2
+	depends = python2-notify
+	depends = vte
+	depends = xdg-utils
+	optdepends = gnome-python: gnome-terminal profile support
+	provides = terminator
+	conflicts = terminator
+	source = terminator::bzr+http://bazaar.launchpad.net/~gnome-terminator/terminator/trunk/
+	md5sums = SKIP
+
+pkgname = terminator-bzr
+
