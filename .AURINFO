@@ -1,0 +1,14 @@
+pkgbase = atf
+	pkgdesc = Automated Testing Framework
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://github.com/jmmv/atf/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	source = https://github.com/jmmv/atf/archive/atf-0.21.zip
+	sha1sums = 743a0a5fda87470330e7dffcd2436f39285a1f95
+
+pkgname = atf
+
