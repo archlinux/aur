@@ -1,0 +1,14 @@
+pkgbase = picotest-git
+	pkgdesc = Test::More for the C programming language
+	pkgver = r5.d088dc1
+	pkgrel = 1
+	url = https://github.com/h2o/picotest
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/h2o/picotest
+	sha512sums = SKIP
+
+pkgname = picotest-git
+
