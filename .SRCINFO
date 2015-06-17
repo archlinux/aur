@@ -1,0 +1,15 @@
+pkgbase = brumbrumrally
+	pkgdesc = A 2D racing game
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://dataapa.net/brumbrumrally/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_image
+	depends = sdl_net
+	source = http://dataapa.net/brumbrumrally/files/brumbrumrally-0.5.tar.gz
+	md5sums = fd9be6233fcb9355ff696cc8022d65ea
+
+pkgname = brumbrumrally
+
