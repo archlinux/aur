@@ -1,0 +1,27 @@
+pkgbase = gnome-pie-git
+	pkgdesc = A visual application launcher for gnome.
+	pkgver = 316.6d9b7ba
+	pkgrel = 1
+	url = https://github.com/Simmesimme/Gnome-Pie
+	install = gnome-pie-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = cmake
+	makedepends = git
+	depends = gtk3
+	depends = libunique3
+	depends = gnome-menus
+	depends = cairo
+	depends = libgee
+	depends = libxml2
+	depends = libxtst
+	depends = libunique
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	depends = bamf
+	source = gnome-pie::git://github.com/Simmesimme/Gnome-Pie.git
+
+pkgname = gnome-pie-git
+
