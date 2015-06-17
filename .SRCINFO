@@ -1,0 +1,12 @@
+pkgbase = oxygencolors
+	pkgdesc = Oxygencolors is a full customizable iconset based on original oxygen
+	pkgver = 6.3
+	pkgrel = 3
+	url = http://www.kde-look.org/content/show.php/oxygencolors?content=104048
+	arch = any
+	license = GPL
+	source = http://dl.dropbox.com/u/4514366/AUR/oxygencolors(v6.3).tar.bz2
+	sha1sums = c4e36e8d983cbdb2b4a849beecbc8b7848a3926c
+
+pkgname = oxygencolors
+
