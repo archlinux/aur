@@ -1,0 +1,13 @@
+# arg 1:  the new package version
+_javaclasspath="/usr/lib/jvm/java-7-openjdk/jre/lib/ext/"
+
+post_install() {
+  ln -s -r /usr/share/java/gnumail.jar ${_javaclasspath}
+  ln -s -r /usr/share/java/mysql-jdbc/mysql-connector-java-bin.jar ${_javaclasspath}
+  echo "Please follow the pdf guide file in /opt/opengts"
+}
+
+post_remove() {
+  rm ${_javaclasspath}/gnumail.jar
+  rm ${_javaclasspath}/mysql-connector-java-bin.jar
+}

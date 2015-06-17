@@ -1,0 +1,2687 @@
+<!-- 
+===============================================================================
+Copyright: Copyright 2007-2015 GeoTelematic Solutions, Inc.
+Project  : OpenGTS - Open GPS Tracking System
+URL      : http://www.opengts.org
+File     : build.xml
+===============================================================================
+-->
+
+<project name="OpenGTS Java Server" default="help" basedir=".">
+
+  <!-- Build properties -->
+  <property environment="Env"/>
+  <property file="build.properties"/>
+  
+  <!-- CelltracGTS/Server plug-in jar file -->
+  <property name="ctrac_version_jar">ctrac_2.5.8.jar</property>
+
+  <!-- optional source (may not be present in this release) -->
+  <available file="${basedir}/lib/gtsopt/ctrac.jar"                     type="file" property="exists.gtsopt.ctrac"/>
+  <available file="${src.gts}/org/opengts/opt/StartupInit.java"         type="file" property="exists.optional"/>
+  <available file="${src.gts}/org/opengts/util/ExcelTools.java"         type="file" property="exists.exceltools"/>
+  <available file="${src.gts}/org/opengts/util/PosixSignalHandler.java" type="file" property="exists.sigHandler"/>
+  <!-- <available file="${war.home}/download" type="dir" property="exists.download"/> -->
+
+  <!-- Server jar classpath -->
+  <property name="Server_Jar_Classpath" value="gtsutils.jar gtsdb.jar ruledb.jar bcrossdb.jar optdb.jar custom.jar"/>
+
+  <!-- jar classpath -->
+  <path id="compile.classpath">
+    <pathelement location="${build.home}"/>
+    <fileset dir="${build.lib}">
+        <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- war classpath -->
+  <path id="compile.war.classpath">
+    <pathelement location="${build.home}"/>
+    <fileset dir="${build.lib}">
+        <include name="*.jar"/>
+    </fileset>
+    <fileset dir="${lib.home}">
+        <include name="**/*.jar"/>
+    </fileset>
+    <fileset dir="${catalina.home}"> 
+        <!-- Tomcat 5.5.XX -->
+        <include name="common/lib/*.jar"/>
+        <!-- Tomcat 6.0.XX -->
+        <include name="lib/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- tomcat classpath -->
+  <path id="tomcat.classpath">
+    <pathelement location="${build.home}"/>
+    <fileset dir="${catalina.home}"> 
+        <!-- Tomcat 5.5.XX -->
+        <include name="common/lib/*.jar"/>
+        <!-- Tomcat 6.0.XX -->
+        <include name="lib/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- Tomcat 8? : ${Env.CATALINA_HOME}/lib/servlet-api.jar -->
+  <available classname="javax.servlet.WriteListener" classpathref="tomcat.classpath" property="exists.tomcat8"/>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: help -->
+  <target name="help" 
+    description="Clean/Build project">
+    <echo message="clean    : Remove 'build' directory"/>
+    <echo message="gtsdmtp  : Create OpenGTS DMTP server with the MySQL datastore"/>
+    <echo message="events   : Create 'Events' Servlet WAR file"/>
+    <echo message="track    : Create 'Track' Servlet WAR file"/>
+    <echo message="mologogo : Create 'Mologogo' Servlet WAR file"/>
+    <echo message="tools    : Create miscellaneous tools (ie. 'CheckInstall')"/>
+    <echo message="all      : all of the above"/>
+    <echo message="help     : This help"/>
+  </target>
+  
+  <!-- Target: environment -->
+  <target name="environment" 
+    description="Display Environment settings">
+    <echo message="GTS_HOME      = ${Env.GTS_HOME}"/>
+    <echo message="GTS_CONF      = ${Env.GTS_CONF}"/>
+    <echo message="GTS_TOOLS     = ${Env.GTS_TOOLS}"/>
+    <echo message="JAVA_HOME     = ${Env.JAVA_HOME}"/>
+    <echo message="CATALINA_HOME = ${Env.CATALINA_HOME}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: all -->
+  <target name="all" depends="clean,custom,compile" 
+    description="Clean/Build Server and all WAR files">
+    <echo message="Build 'all' complete."/>
+  </target>
+
+  <!-- Target: clean -->
+  <target name="clean" 
+    description="Clean build">
+    <delete dir="${build.home}"/>
+    <delete file="${src.gts}/org/opengts/CompileTime.java"/>
+  </target>
+
+  <!-- Target: compile -->
+  <target name="compile" depends="compile.base,compile.servers,compile.servlets" 
+    description="Build Server and all WAR files">
+    <echo message="Libraries compiled ..."/>
+  </target>
+
+  <!-- Target: compile.base -->
+  <target name="compile.base" depends="gtsutils,gtsdb,optjars,tools,gtsdmtp" 
+    description="Build Base Libraries">
+    <echo message="Libraries compiled ..."/>
+  </target>
+
+  <!-- Target: compile.servers -->
+  <target name="compile.servers" depends="compile.base,gtsdmtp,icare,aspicore,astra,tk10x,sipgear,taip,lantrix,template" 
+    description="Build Servers">
+    <echo message="Servers compiled ..."/>
+  </target>
+
+  <!-- Target: compile.servlets -->
+  <target name="compile.servlets" depends="compile.base,track,events,gprmc,gc101,mologogo,gpsmapper" 
+    description="Build Servlet/War files">
+    <echo message="Servlet/War file compiled ..."/>
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: tomcat "${catalina.home}" -->
+  <target name="tomcat.env" depends="tomcat.home"
+    description="Check for Tomcat environment variables"/>
+
+  <!-- Target: tomcat "${catalina.home}" -->
+  <target name="tomcat.home" 
+    description="Check for CATALINA_HOME environment variable">
+    <fail unless="Env.CATALINA_HOME">
+        CATALINA_HOME environment variable has not been defined.
+        (make sure CATALINA_HOME is defined and exported to the list of environment variables)
+    </fail>
+    <echo message="'CATALINA_HOME' is defined - ${Env.CATALINA_HOME}"/>
+  </target>
+
+  <!-- Target: tomcat.base "${catalina.base}" -->
+  <target name="tomcat.base" 
+    description="Check for CATALINA_BASE environment variable">
+    <fail unless="Env.CATALINA_BASE">
+        CATALINA_BASE environment variable has not been defined.
+        (make sure CATALINA_BASE is defined and exported to the list of environment variables)
+    </fail>
+    <echo message="'CATALINA_BASE' is defined - ${Env.CATALINA_BASE}"/>
+  </target>
+
+  <!-- Target: tomcat.shexe "${catalina.base}" -->
+  <target name="tomcat.shexe" depends="tomcat.sh_exe"/>
+  <target name="tomcat.sh_exe" 
+    description="Make Tomcat $CATALINA_HOME/bin/*.sh files executable">
+    <fail unless="Env.CATALINA_HOME">
+        CATALINA_HOME environment variable has not been defined.
+        (make sure CATALINA_HOME is defined and exported to the list of environment variables)
+    </fail>
+    <chmod dir="${Env.CATALINA_HOME}/bin" perm="a+x" includes="*.sh"/>
+    <echo message="'$CATALINA_HOME/bin/*.sh' files should now be executable"/>
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: 'gts_vars.env' -->
+  <!-- ant -Dinstall.home=<dir> -Dinstall.user=<user> gts_vars.env -->
+  <target name="gts_vars.env"
+    description="Create 'gts_vars.env' ('Linux'/'Mac OS X' only)">
+    <!-- Only supported on Linux and Mac OS X platforms -->
+    <echo message="Ant properties:"/>
+    <echo message="  install.home = ${install.home}"/>
+    <echo message="  install.user = ${install.user}"/>
+    <echo message="------------------------------------------------------------------------------------------"/>
+    <exec executable="bin/makeGtsVarsEnv.sh" dir="${tools.home}" os="Linux, Mac OS X" failonerror="true">
+        <!-- IE: bin/makeGtsVarsEnv.sh -dir /usr/local -user opengts -out ./gts_vars.env -->
+        <arg value="-dir"/>
+            <arg value="${install.home}"/>
+        <arg value="-user"/>
+            <arg value="${install.user}"/>
+        <arg value="-out"/>
+            <arg value="${basedir}/gts_vars.env"/>
+    </exec>
+  </target>
+
+  <!-- Target: 'checkInstall' -->
+  <target name="checkInstall"
+    description="Run 'checkInstall'">
+    <echo message="OS = ${os.name}"/>
+    <exec executable="bin/checkInstall.sh"  dir="${tools.home}" os="Linux, Mac OS X"/>
+    <exec executable="bin/checkInstall.bat" dir="${tools.home}" os="Windows"/>
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: prepare (create build directories) -->
+  <target name="prepare" 
+    description="Prepare for compile">
+    <mkdir dir="${build.home}"/>
+    <mkdir dir="${build.lib}"/>
+    <property name="compile.classpath" refid="compile.classpath"/>
+    <echo message="OS = ${os.name}"/>
+    <echo message="JavaHome = ${java.home}"/>
+
+    <!-- display Java version "java -version" on stdout -->
+    <exec executable="java" dir="${java.home}" failonerror="true">
+        <arg value="-version"/>
+    </exec>
+
+    <!-- copy library 'jars' to build directory "build/lib/" -->
+    <copy todir="${build.lib}" failonerror="true" verbose="false">
+        <fileset dir="${basedir}/lib/opendmtp">
+           <include name="*.jar"/>
+           <include name="dmtpserv.sh"/>
+        </fileset>
+        <fileset dir="${basedir}/lib/gtsopt">
+           <include name="*.jar"/>
+        </fileset>
+    </copy>
+    <chmod file="${build.lib}/dmtpserv.sh" perm="a+x"/>
+
+    <!-- copy 'war' files to build directory "build/" -->
+    <copy todir="${build.home}" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/lib/gtsopt">
+           <include name="*.war"/>
+        </fileset>
+    </copy>
+
+    <!-- copy '.class' files to build directory "build/" -->
+    <echo message="(Ignore copy 'not found' warnings)"/>
+    <copy todir="${build.home}" failonerror="false" verbose="false">
+        <!-- ok if this directory does not exist -->
+        <fileset dir="${basedir}/lib/gtsopt/classes">
+           <include name="*.class"/>
+        </fileset>
+    </copy>
+
+    <!-- copy JavaMail support jars build directory -->
+    <mkdir dir="${basedir}/jlib/javamail"/>  <!-- make sure 'from' dir exists to avoid warnings -->
+    <copy todir="/usr/share/java/gnumail.jar" failonerror="false" verbose="false">
+        <!-- ok if this file does not exist -->
+        <fileset dir="${basedir}/jlib/javamail">
+           <include name="activation.jar"/> <!-- not needed for JDK 6+ -->
+           <include name="gnumail.jar"/>
+           <include name="mail.jar"/>
+        </fileset>
+    </copy>
+
+    <!-- copy Apache Derby support jars build directory -->
+    <mkdir dir="${basedir}/jlib/jdbc.derby"/>  <!-- make sure 'from' dir exists to avoid warnings -->
+    <copy todir="/usr/share/java/derby/*.jar" failonerror="false" verbose="false">
+        <!-- ok if this file does not exist -->
+        <fileset dir="${basedir}/jlib/jdbc.derby">
+           <include name="*.jar"/>
+        </fileset>
+    </copy>
+
+    <!-- copy Microsoft SQL Server support jars build directory -->
+    <mkdir dir="${basedir}/jlib/jdbc.sqlserver"/>  <!-- make sure 'from' dir exists to avoid warnings -->
+    <copy todir="${build.lib}" failonerror="false" verbose="false">
+        <!-- ok if this file does not exist -->
+        <fileset dir="${basedir}/jlib/jdbc.sqlserver">
+           <include name="*.jar"/>
+        </fileset>
+    </copy>
+
+    <!-- copy MySQL support to build directory -->
+    <mkdir dir="${basedir}/jlib/jdbc.mysql"/>  <!-- make sure 'from' dir exists to avoid warnings -->
+    <copy todir="/usr/share/java/mysql-jdbc/mysql-connector-java-bin.jar" failonerror="false" verbose="false">
+        <!-- ok if this file does not exist -->
+        <fileset dir="${basedir}/jlib/jdbc.mysql">
+           <include name="mysql-connector-java-bin.jar"/>
+        </fileset>
+    </copy>
+
+    <!-- copy Apache support to build directory -->
+    <mkdir dir="${basedir}/jlib/apache"/>  <!-- make sure 'from' dir exists to avoid warnings -->
+    <copy todir="${build.lib}" failonerror="false" verbose="false">
+        <!-- ok if this file does not exist -->
+        <fileset dir="${basedir}/jlib/apache">
+           <include name="*.jar"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  
+  <!-- Target: gtsdmtp -->
+  <target name="gtsdmtp.jar" depends="gtsdmtp"/>
+  <target name="gtsdmtp" depends="prepare,gtsdb" 
+    description="Create 'gtsdmtp.jar'">
+    <echo message="Creating 'gtsdmtp.jar' ..."/>
+
+    <!-- compile OpenGTS/OpenDMTP wrapper -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/gtsdmtp/**/*.java"/>
+    </javac>
+
+    <!-- create gtsdmtp.jar file -->
+    <jar jarfile="${build.lib}/gtsdmtp.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath} dmtpserv.jar"/>
+            <attribute name="Main-Class" value="org.opengts.servers.gtsdmtp.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/gtsdmtp/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: CompileTime.java -->
+  <target name="CompileTime.java"
+    description="Create CompileTime.java">
+
+    <!-- (re)create compile time source file here? -->
+    <echo message="Creating CompileTime module ..."/>
+    <java classname="org.opengts.util.CompiletimeVars" fork="true" failonerror="true">
+        <arg value="-configFileDir=${basedir}"/>
+        <arg value="-template?=${basedir}/CompileTime.jtemp"/>
+        <arg value="-package=org.opengts"/>
+        <arg value="-output=${src.gts}/org/opengts/CompileTime.java"/>
+        <arg value="-overwrite=false"/> <!-- do not overwrite -->
+        <arg value="-extra=${CompiletimeVars.extra}"/>
+        <arg value="${CompiletimeVars.arg}"/>
+        <arg value="${CompiletimeVars.arg.1}"/>
+        <arg value="${CompiletimeVars.arg.2}"/>
+        <arg value="${CompiletimeVars.arg.3}"/>
+        <classpath>
+            <pathelement location="${build.lib}/gtsutils.jar"/>
+        </classpath>
+    </java>
+
+  </target>
+
+  <!-- Target: gtsdb.jar -->
+  <target name="gtsdb.jar" depends="gtsdb"/>
+  <target name="gtsdb" depends="prepare,gtsutils,CompileTime.java" 
+    description="Create 'gtsdb.jar'">
+
+    <!-- compile GTS db -->
+    <echo message="Creating gtsdb.jar ..."/>
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        encoding="UTF-8"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <!-- <compilerarg value="-Xlint:unchecked"/> -->
+        <classpath refid="compile.classpath"/>
+        <!-- StartupInit.java, CompileTime.java -->
+        <include name="org/opengts/*.java"/>
+        <!-- [Reverse]GeocodeProvider -->
+        <include name="org/opengts/geocoder/**/*.java"/>
+        <include name="org/opengts/extra/geocoder/rgproxy/*.java"/>
+        <include name="org/opengts/extra/geocoder/geoinverso/*.java"/>
+        <include name="org/opengts/extra/geocoder/nacgeo/*.java"/>
+        <include name="org/opengts/extra/geocoder/nokiahere/*.java"/>
+        <!-- MobileLocationProvider -->
+        <include name="org/opengts/cellid/**/*.java"/>
+        <include name="org/opengts/extra/cellid/**/*.java"/>
+        <exclude name="org/opengts/extra/cellid/locaid/*.java"/>
+        <!-- Misc -->
+        <include name="org/opengts/dbtypes/**/*.java"/>
+        <include name="org/opengts/db/**/*.java"/>
+        <include name="org/opengts/extra/tables/**/*.java"/>
+        <include name="org/opengts/extra/rule/**/*.java"/>
+        <include name="org/opengts/extra/service/**/*.java"/>
+    </javac>
+
+    <!-- copy Locale properties -->
+    <copy todir="${build.home}" verbose="false">
+        <fileset dir="${src.gts}">
+            <include name="org/opengts/*.properties"/>
+            <!-- [Reverse]GeocodeProvider -->
+            <include name="org/opengts/geocoder/**/*.properties"/>
+            <include name="org/opengts/extra/geocoder/rgproxy/*.properties"/>
+            <include name="org/opengts/extra/geocoder/geoinverso/*.properties"/>
+            <include name="org/opengts/extra/geocoder/nacgeo/*.properties"/>
+            <include name="org/opengts/extra/geocoder/nokiahere/*.properties"/>
+            <!-- MobileLocationProvider -->
+            <include name="org/opengts/cellid/**/*.properties"/>
+            <include name="org/opengts/extra/cellid/**/*.properties"/>
+            <!-- Misc -->
+            <include name="org/opengts/dbtypes/**/*.properties"/>
+            <include name="org/opengts/db/**/*.properties"/>
+            <include name="org/opengts/extra/tables/**/*.properties"/>
+            <include name="org/opengts/extra/rule/**/*.properties"/>
+            <include name="org/opengts/extra/service/**/*.properties"/>
+        </fileset>
+    </copy>
+
+    <!-- create gtsdb.jar file -->
+    <jar jarfile="${build.lib}/gtsdb.jar">
+        <fileset dir="${build.home}">
+            <!-- StartupInit, CompileTime -->
+            <include name="org/opengts/*.class"/>
+            <include name="org/opengts/*.properties"/>
+            <!-- [Reverse]GeocodeProvider -->
+            <include name="org/opengts/geocoder/**/*.class"/>
+            <include name="org/opengts/geocoder/**/*.properties"/>
+            <include name="org/opengts/extra/geocoder/rgproxy/*.class"/>
+            <include name="org/opengts/extra/geocoder/rgproxy/*.properties"/>
+            <include name="org/opengts/extra/geocoder/geoinverso/*.class"/>
+            <include name="org/opengts/extra/geocoder/geoinverso/*.properties"/>
+            <include name="org/opengts/extra/geocoder/nacgeo/*.class"/>
+            <include name="org/opengts/extra/geocoder/nacgeo/*.properties"/>
+            <include name="org/opengts/extra/geocoder/nokiahere/*.class"/>
+            <include name="org/opengts/extra/geocoder/nokiahere/*.properties"/>
+            <!-- MobileLocationProvider -->
+            <include name="org/opengts/cellid/**/*.class"/>
+            <include name="org/opengts/cellid/**/*.properties"/>
+            <include name="org/opengts/extra/cellid/**/*.class"/>
+            <include name="org/opengts/extra/cellid/**/*.properties"/>
+            <!-- Misc -->
+            <include name="org/opengts/dbtypes/**/*.class"/>
+            <include name="org/opengts/dbtypes/**/*.properties"/>
+            <include name="org/opengts/db/**/*.class"/>
+            <include name="org/opengts/db/**/*.properties"/>
+            <include name="org/opengts/extra/tables/**/*.class"/>
+            <include name="org/opengts/extra/tables/**/*.properties"/>
+            <include name="org/opengts/extra/rule/**/*.class"/>
+            <include name="org/opengts/extra/rule/**/*.properties"/>
+            <include name="org/opengts/extra/service/**/*.class"/>
+            <include name="org/opengts/extra/service/**/*.properties"/>
+        </fileset>
+    </jar>
+
+    <!-- create version script file -->
+    <copy todir="${build.lib}" verbose="false">
+        <fileset dir="${basedir}/bin">
+           <include name="gtsdb.sh"/>
+        </fileset>
+    </copy>
+    <chmod file="${build.lib}/gtsdb.sh" perm="a+x"/>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: gtsutils.optional -->
+  <target name="gtsutils.optional" if="exists.exceltools" depends="gtsutils.exceltools,gtsutils.sigHandler,gtsutils.tomcat7" 
+    description="Compile 'gtsutils.jar' optional components">
+  </target>
+
+  <!-- Target: gtsutils.exceltools -->
+  <target name="gtsutils.exceltools" if="exists.exceltools" depends="prepare" 
+    description="Compile 'gtsutils.jar' Excel Tools components">
+    <echo message="Compiling gtsutils.jar Excel Tools source ... "/>
+    <!-- compile "ExcelTools.java" -->
+    <!-- (continue if this compile fails) -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}"
+        failonerror="false">
+        <compilerarg line="-Xmaxerrs 1"/> <!-- "-Xmaxerrs 0" invokes a compiler bug -->
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/util/ExcelTools.java"/>
+    </javac>
+    <echo message="* Ignore any compile error that may be displayed above ..."/>
+    <!-- -->
+  </target>
+
+  <!-- Target: gtsutils.sigHandler -->
+  <target name="gtsutils.sigHandler" if="exists.sigHandler" depends="prepare" 
+    description="Compile 'gtsutils.jar' Signal Handler components">
+    <echo message="Compiling gtsutils.jar Signal Handler source ... "/>
+    <!-- compile "PosixSignalHandler.java" -->
+    <!-- (continue if this compile fails) -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}"
+        failonerror="false">
+        <compilerarg line="-Xmaxerrs 1"/> <!-- "-Xmaxerrs 0" invokes a compiler bug -->
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/util/PosixSignalHandler.java"/>
+    </javac>
+    <echo message="* Ignore any compile error that may be displayed above ..."/>
+    <!-- -->
+  </target>
+
+  <!-- Target: gtsutils.tomcat7 -->
+  <target name="gtsutils.tomcat7" unless="exists.tomcat8" depends="prepare" 
+    description="Compiling special files for Tomcat-7">
+    <!-- NOT CURRENTLY USED
+    <echo message="Compiling special files for Tomcat-7 ... "/>
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+        <include name="javax/servlet/WriteListener.java"/>
+    </javac>
+    -->
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: gtsutils.jar -->
+  <target name="gtsutils" depends="gtsutils.jar"/>
+
+  <!-- Target: gtsutils.compile -->
+  <target name="gtsutils.compile" depends="prepare" 
+    description="Compile 'gtsutils.jar' components">
+    <echo message="Compiling gtsutils.jar source ... "/>
+
+    <!--
+    <echo message="Ignore any &quot;sun.reflect.Reflection&quot; warnings that may be displayed"/>
+    -->
+
+    <!-- compile GTS utils (sans "SendMailArgs.java", "ExcelTools.java") -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <!-- the utils dir has known unchecked warnings (ie. anything with "newInstance" etc) -->
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+      <!-- Utils -->
+        <include name="org/opengts/util/**/*.java"/>
+        <exclude name="org/opengts/util/SendMailArgs.java"/>
+        <exclude name="org/opengts/util/ExcelTools.java"/>
+        <include name="org/opengts/extra/util/**/*.java"/>
+      <!-- MobileLocationProvider (moved to 'gtsdb.jar') -->
+        <!-- include name="org/opengts/cellid/**/*.java"/ -->
+        <!-- include name="org/opengts/extra/cellid/**/*.java"/ -->
+      <!-- Misc -->
+        <include name="org/opengts/google/**/*.java"/>
+        <include name="org/opengts/extra/shapefile/**/*.java"/>
+    </javac>
+
+    <!-- compile "SendMailArgs.java" -->
+    <!-- (continue if this compile fails) -->
+    <echo message="Compiling SendMailArgs.java (optional if 'mail.jar' not available) ... "/>
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}"
+        failonerror="false">
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/util/SendMailArgs.java"/>
+    </javac>
+    <!-- -->
+
+    <!-- compile GTS dbtools -->
+    <echo message="Compiling dbtools ... "/>
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <!-- the dbtools dir has known unchecked warnings (ie. DBRecordIterator.java) -->
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/dbtools/**/*.java"/>
+        <include name="org/opengts/extra/dbtools/**/*.java"/>
+    </javac>
+
+  </target>
+
+  <!-- Target: gtsutils.jar -->
+  <target name="gtsutils.jar" depends="prepare,gtsutils.compile,gtsutils.optional" 
+    description="Create 'gtsutils.jar'">
+    <echo message="Creating gtsutils.jar ... "/>
+
+    <!-- copy Locale properties -->
+    <copy todir="${build.home}" verbose="false">
+        <fileset dir="${src.gts}">
+          <!-- Util -->
+            <include name="org/opengts/util/**/*.properties"/>
+            <include name="org/opengts/extra/util/**/*.properties"/>
+          <!-- MobileLocationProvider (moved to 'gtsdb.jar') -->
+            <!-- include name="org/opengts/cellid/**/*.properties"/ -->
+            <!-- include name="org/opengts/extra/cellid/**/*.properties"/ -->
+          <!-- DB Tools -->
+            <include name="org/opengts/dbtools/**/*.properties"/>
+            <include name="org/opengts/extra/dbtools/**/*.properties"/>
+          <!-- Misc -->
+            <include name="org/opengts/google/**/*.properties"/>
+            <include name="org/opengts/extra/shapefile/**/*.properties"/>
+        </fileset>
+    </copy>
+
+    <!-- create gtsutils.jar file -->
+    <jar jarfile="${build.lib}/gtsutils.jar">
+        <manifest>
+            <attribute name="Premain-Class" value="org.opengts.util.OSTools"/>
+        </manifest>
+        <fileset dir="${build.home}">
+          <!-- Util -->
+            <include name="org/opengts/util/**/*.class"/>
+            <include name="org/opengts/util/**/*.properties"/>
+            <include name="org/opengts/extra/util/**/*.class"/>
+            <include name="org/opengts/extra/util/**/*.properties"/>
+          <!-- MobileLocationProvider (moved to 'gtsdb.jar') -->
+            <!-- include name="org/opengts/cellid/**/*.class"/ -->
+            <!-- include name="org/opengts/extra/cellid/**/*.class"/ -->
+            <!-- include name="org/opengts/cellid/**/*.properties"/ -->
+            <!-- include name="org/opengts/extra/cellid/**/*.properties"/ -->
+          <!-- DB tools -->
+            <include name="org/opengts/dbtools/**/*.class"/>
+            <include name="org/opengts/dbtools/**/*.properties"/>
+            <include name="org/opengts/extra/dbtools/**/*.class"/>
+            <include name="org/opengts/extra/dbtools/**/*.properties"/>
+          <!-- Misc -->
+            <include name="org/opengts/google/**/*.class"/>
+            <include name="org/opengts/google/**/*.properties"/>
+            <include name="org/opengts/extra/shapefile/**/*.class"/>
+            <include name="org/opengts/extra/shapefile/**/*.properties"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: wartools.jar -->
+  <target name="wartools.jar" depends="wartools"/>
+  <target name="wartools" depends="tomcat.env,prepare,gtsdb" 
+    description="Create 'wartools.jar'">
+    <echo message="Creating 'wartools.jar' ..."/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <!-- compile war tools -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/tools/**/*.java"/>
+        <include name="org/opengts/war/report/**/*.java"/>
+        <include name="org/opengts/extra/war/report/**/*.java"/>
+    </javac>
+
+    <!-- copy Locale properties -->
+    <copy todir="${build.home}" verbose="false">
+        <fileset dir="${src.gts}">
+            <include name="org/opengts/war/tools/**/*.properties"/>
+            <include name="org/opengts/war/report/**/*.properties"/>
+            <include name="org/opengts/extra/war/report/**/*.properties"/>
+        </fileset>
+    </copy>
+
+    <!-- create wartools.jar file -->
+    <jar jarfile="${build.lib}/wartools.jar">
+        <fileset dir="${build.home}">
+            <include name="org/opengts/war/tools/**/*.class"/>
+            <include name="org/opengts/war/tools/**/*.properties"/>
+            <include name="org/opengts/war/report/**/*.class"/>
+            <include name="org/opengts/war/report/**/*.properties"/>
+            <include name="org/opengts/extra/war/report/**/*.class"/>
+            <include name="org/opengts/extra/war/report/**/*.properties"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: warmaps.jar -->
+  <target name="warmaps.jar" depends="warmaps"/>
+  <target name="warmaps" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Create 'warmaps.jar'">
+    <echo message="Creating 'warmaps.jar' ..."/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+    
+    <!-- compile maps -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/maps/**/*.java"/>
+    </javac>
+
+    <!-- copy Locale properties -->
+    <copy todir="${build.home}" verbose="false">
+        <fileset dir="${src.gts}">
+            <include name="org/opengts/war/maps/**/*.properties"/>
+        </fileset>
+    </copy>
+
+    <!-- create warmaps.jar file -->
+    <jar jarfile="${build.lib}/warmaps.jar">
+        <fileset dir="${build.home}">
+            <include name="org/opengts/war/maps/**/*.class"/>
+            <include name="org/opengts/war/maps/**/*.properties"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- track servlet build directory -->
+  <property name="build.track" value="${build.home}/track"/>
+
+  <!-- Target: track -->
+  <target name="track.all" depends="track"/> 
+  <target name="track" depends="track.compile,track.war" 
+    description="Compile/Create 'track.war'">
+    <echo message="'track.war' created."/>
+  </target>
+
+  <!-- Target: track.prepare -->
+  <target name="track.prepare" depends="tomcat.env"
+    description="Copy runtime configuration for 'track.war'">
+
+    <!-- create required directories -->
+    <mkdir dir="${build.track}"/>
+    <mkdir dir="${build.track}/WEB-INF"/>
+    <mkdir dir="${build.track}/WEB-INF/classes"/>
+    <mkdir dir="${build.track}/WEB-INF/tld"/>
+    <mkdir dir="${build.track}/images"/>
+    <mkdir dir="${build.track}/js"/>
+    <mkdir dir="${build.track}/css"/>
+
+    <!-- .conf files -->
+    <copy todir="${build.track}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.track}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private.xml"/>
+            <include name="private_release.xml"/>   <!-- may not be present -->
+            <include name="reports.dtd"/>
+            <include name="reports.xml"/>
+            <include name="dcservers.dtd"/>
+            <include name="dcservers.xml"/>
+            <include name="dcservers_release.xml"/> <!-- may not be present -->
+            <include name="timezones.conf"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "dcservers/dcserver_*" files (may not be present) -->
+    <copy todir="${build.track}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/dcservers">
+            <include name="dcserver_*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "private/private*" files -->
+    <copy todir="${build.track}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" / "clients/gts/war/track/custom" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.track}/WEB-INF" failonerror="false" verbose="false"> <!-- quiet="true" -->
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+    <echo message="(Ignore '.../clients/gts/war/track/custom not found' warnings)"/>
+    <copy todir="${build.track}/custom" failonerror="false" verbose="false"> <!-- quiet="true" -->
+        <fileset dir="${basedir}/clients/gts/war/track/custom"/>
+    </copy>
+
+    <!-- copy images -->
+    <copy todir="${build.track}/images" verbose="false">
+        <fileset dir="${war.home}/track/images">
+            <include name="*.gif"/>
+            <include name="*.jpeg"/>
+            <include name="*.jpg"/>
+            <include name="*.png"/>
+        </fileset>
+    </copy>
+
+    <!-- copy other non-Java files (js, css, png, etc) -->
+    <copy todir="${build.track}" verbose="false">
+        <fileset dir="${war.home}/track" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+  </target>
+
+  <!-- Target: track.compile -->
+  <target name="track.compile" depends="tomcat.env,prepare,gtsdb,wartools,warmaps,track.prepare" 
+    description="Compile 'track.war' source">
+    <echo message="Compiling 'track.war' servlet ..."/>
+    <delete file="${build.home}/track.war"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <!-- compile track servlet -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.track}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/track/**/*.java"/>
+        <include name="org/opengts/extra/war/track/**/*.java"/>
+        <include name="org/opengts/extra/war/service/Service.java"/>
+    </javac>
+
+    <!-- copy Locale property files -->
+    <copy todir="${build.track}/WEB-INF/classes" verbose="false">
+        <fileset dir="${src.gts}">
+            <include name="org/opengts/war/track/**/*.properties"/>
+            <include name="org/opengts/extra/war/track/**/*.properties"/>
+            <include name="org/opengts/extra/war/service/*.properties"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: track.war -->
+  <target name="track.war" depends="track.prepare" 
+    description="Create 'track.war' archive">
+    <echo message="Creating 'track.war' archive ..."/>
+    <delete file="${build.home}/track.war"/>
+
+    <!-- create track.war file -->
+    <war warfile="${build.home}/track.war" webxml="${build.track}/WEB-INF/web.xml">
+        <classes dir="${build.track}/WEB-INF/classes">
+            <include name="org/opengts/war/track/**/*"/>
+            <include name="org/opengts/extra/war/track/**/*"/>
+            <include name="org/opengts/extra/war/service/**/*"/>
+            <include name="org/opengts/custom/*/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="ruletrack.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="bcrosstrack.jar"/>
+            <include name="warmaps.jar"/>
+            <include name="optdb.jar"/>
+            <include name="opttrack.jar"/>
+            <include name="dmtpserv.jar"/>
+            <include name="audit.jar"/>
+            <include name="custom.jar"/>
+            <include name="customtrack.jar"/>
+        </lib>
+        <fileset dir="${build.track}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: track.deploy -->
+  <target name="track.deploy" depends="track.war" 
+    description="Deploy 'track.war' to Tomcat">
+    <echo message="Deploying 'track.war' to ${catalina.base}/webapps/${track.deployWar}"/>
+    <copy 
+        file="${build.home}/track.war" 
+        tofile="${catalina.base}/webapps/${track.deployWar}"
+        overwrite="true"
+        failonerror="true"
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${track.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- service servlet build directory -->
+  <property name="build.service" value="${build.home}/service"/>
+
+  <!-- Target: service -->
+  <target name="service.all" depends="service"/> 
+  <target name="service" depends="service.compile,service.war" 
+    description="Compile/Create 'service.war'">
+    <echo message="'service.war' created."/>
+  </target>
+
+  <!-- Target: service.prepare -->
+  <target name="service.prepare" depends="tomcat.env"
+    description="Copy runtime configuration for 'service.war'">
+
+    <!-- create required directories -->
+    <mkdir dir="${build.service}"/>
+    <mkdir dir="${build.service}/WEB-INF"/>
+    <mkdir dir="${build.service}/WEB-INF/classes"/>
+    <mkdir dir="${build.service}/images/pp"/>
+    <mkdir dir="${build.service}/js"/>
+
+    <!-- .conf files -->
+    <copy todir="${build.service}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.service}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private.xml"/>
+            <include name="private_release.xml"/>
+            <include name="reports.dtd"/>
+            <include name="reports.xml"/>
+            <include name="dcservers.dtd"/>
+            <include name="dcservers.xml"/>
+            <include name="dcservers_release.xml"/>
+            <include name="dcserver_*.xml"/>
+            <include name="timezones.conf"/>
+        </fileset>
+    </copy>
+
+    <!-- copy private config files -->
+    <copy todir="${build.service}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.service}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy pushpins -->
+    <copy todir="${build.service}/images/pp" verbose="false">
+        <fileset dir="${war.home}/track/images/pp">
+            <include name="*.gif"/>
+            <include name="*.jpeg"/>
+            <include name="*.jpg"/>
+            <include name="*.png"/>
+        </fileset>
+    </copy>
+
+    <!-- copy other non-Java files (js, css, etc) -->
+    <copy todir="${build.service}" verbose="false">
+        <fileset dir="${war.home}/service" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+  </target>
+
+  <!-- Target: service.compile -->
+  <target name="service.compile" depends="tomcat.env,prepare,gtsdb,wartools,service.prepare" 
+    description="Compile 'service.war' source">
+    <echo message="Compiling 'service.war' servlet ..."/>
+    <delete file="${build.home}/service.war"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <!-- compile service servlet -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.service}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:unchecked"/> <!-- value="${compile.Xlint}"/> -->
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/extra/service/ServiceXML.java"/>
+        <include name="org/opengts/extra/war/service/**/*.java"/>
+    </javac>
+
+    <!-- copy Locale property files -->
+    <copy todir="${build.service}/WEB-INF/classes" verbose="false">
+        <fileset dir="${src.gts}">
+            <include name="org/opengts/extra/war/service/**/*.properties"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: service.war -->
+  <target name="service.war" depends="service.prepare" 
+    description="Create 'service.war' archive">
+    <echo message="Creating 'service.war' archive ..."/>
+    <delete file="${build.home}/service.war"/>
+
+    <!-- create service.war file -->
+    <war warfile="${build.home}/service.war" webxml="${build.service}/WEB-INF/web.xml">
+        <classes dir="${build.service}/WEB-INF/classes">
+            <include name="org/opengts/extra/service/ServiceXML.class"/>
+            <include name="org/opengts/extra/war/service/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="ruletrack.jar"/>   
+            <include name="bcrossdb.jar"/>
+            <include name="bcrosstrack.jar"/>
+            <include name="warmaps.jar"/>
+            <include name="optdb.jar"/>
+            <include name="opttrack.jar"/>
+            <include name="dmtpserv.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.service}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: service.deploy -->
+  <target name="service.deploy" depends="service.war" 
+    description="Deploy 'service.war' to Tomcat">
+    <echo message="Deploying 'service.war' to ${catalina.base}/webapps/${service.deployWar}"/>
+    <copy 
+        file="${build.home}/service.war" 
+        tofile="${catalina.base}/webapps/${service.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${service.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- events servlet build directory -->
+  <property name="build.events" value="${build.home}/events"/>
+
+  <!-- Target: events -->
+  <target name="events.all" depends="events"/> 
+  <target name="events" depends="events.compile,events.war" 
+    description="Compile/Create 'events.war'">
+    <echo message="'events.war' created."/>
+  </target>
+
+  <!-- Target: events.compile -->
+  <target name="events.compile" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'events.war' source">
+
+    <echo message="Compiling 'events.war' servlet ..."/>
+    <delete file="${build.home}/events.war"/>
+    <mkdir dir="${build.events}"/>
+    <mkdir dir="${build.events}/WEB-INF"/>
+    <mkdir dir="${build.events}/WEB-INF/classes"/>
+    <mkdir dir="${build.events}/WEB-INF/tlds"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <!-- compile event servlet -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.events}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/events/**/*.java"/>
+    </javac>
+
+    <!-- .conf files -->
+    <copy todir="${build.events}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- override .conf -->
+    <copy todir="${build.events}" verbose="false" overwrite="true">
+        <fileset dir="${war.home}/events" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- "private*.xml" files -->
+    <copy todir="${build.events}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- "private/private*.xml" files -->
+    <copy todir="${build.events}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- "clients/gts/private/private_common.xml" file (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.events}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+  </target>
+  
+  <!-- Target: events.war -->
+  <target name="events.war" depends="" 
+    description="Create 'events.war' archive">
+    <echo message="Creating 'events.war' file ..."/>
+
+    <!-- create events.war file -->
+    <delete file="${build.home}/events.war"/>
+    <war warfile="${build.home}/events.war" webxml="${build.events}/WEB-INF/web.xml">
+        <classes dir="${build.events}/WEB-INF/classes">
+            <include name="org/opengts/war/events/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.events}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: events.deploy -->
+  <target name="events.deploy" depends="events.war" 
+    description="Deploy 'events.war' to Tomcat">
+    <echo message="Deploying 'events.war' to ${catalina.base}/webapps/${events.deployWar}"/>
+    <copy 
+        file="${build.home}/events.war" 
+        tofile="${catalina.base}/webapps/${events.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${events.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- mologogo servlet build directory -->
+  <property name="build.mologogo" value="${build.home}/mologogo"/>
+
+  <!-- Target: mologogo -->
+  <target name="mologogo.all" depends="mologogo"/> 
+  <target name="mologogo" depends="mologogo.compile,mologogo.war" 
+    description="Compile/Create 'mologogo.war'">
+    <echo message="'mologogo.war' created."/>
+  </target>
+
+  <!-- Target: mologogo.compile -->
+  <target name="mologogo.compile" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'mologogo.war' source">
+    <echo message="Compiling 'mologogo.war' servlet ..."/>
+    <delete file="${build.home}/mologogo.war"/>
+    <mkdir dir="${build.mologogo}"/>
+    <mkdir dir="${build.mologogo}/WEB-INF"/>
+    <mkdir dir="${build.mologogo}/WEB-INF/classes"/>
+    <mkdir dir="${build.mologogo}/WEB-INF/tlds"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.mologogo}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/mologogo/**/*.java"/>
+    </javac>
+
+    <!-- .conf files -->
+    <copy todir="${build.mologogo}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- override .conf -->
+    <copy todir="${build.mologogo}" verbose="false" overwrite="true">
+        <fileset dir="${war.home}/mologogo" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.mologogo}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.mologogo}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.mologogo}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: mologogo.war -->
+  <target name="mologogo.war" depends=""
+    description="Create 'mologogo.war' archive">
+    <echo message="Creating 'mologogo.war' archive ..."/>
+    <delete file="${build.home}/mologogo.war"/>
+
+    <!-- create mologogo.war file -->
+    <war warfile="${build.home}/mologogo.war" webxml="${build.mologogo}/WEB-INF/web.xml">
+        <classes dir="${build.mologogo}/WEB-INF/classes">
+            <include name="org/opengts/war/mologogo/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.mologogo}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: mologogo.deploy -->
+  <target name="mologogo.deploy" depends="mologogo.war" 
+    description="Deploy 'mologogo.war' to Tomcat">
+    <echo message="Deploying 'mologogo.war' to ${catalina.base}/webapps/${mologogo.deployWar}"/>
+    <copy 
+        file="${build.home}/mologogo.war" 
+        tofile="${catalina.base}/webapps/${mologogo.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${mologogo.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  
+  <!-- CelltracGTS servlet build directory (MAY NOT BE SUPPORTED IN THIS RELEASE) -->
+  <property name="build.ctracgts" value="${build.home}/ctracgts"/>
+
+  <!-- Target: ctracgts -->
+  <target name="ctracgts.all" depends="ctracgts"/> 
+  <target name="ctracgts" depends="ctracgts.compile,ctracgts.war" 
+    description="Compile/Create 'ctracgts.war'">
+    <echo message="'ctracgts.war' created."/>
+  </target>
+
+  <!-- Target: ctracgts.compile (MAY NOT BE SUPPORTED IN THIS RELEASE) -->
+  <target name="ctracgts.compile" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'ctracgts.war' source">
+    <echo message="Compiling 'ctracgts.war' servlet ..."/>
+    <delete file="${build.home}/ctracgts.war"/>
+    <mkdir dir="${build.ctracgts}"/>
+    <mkdir dir="${build.ctracgts}/WEB-INF"/>
+    <mkdir dir="${build.ctracgts}/WEB-INF/classes"/>
+    <mkdir dir="${build.ctracgts}/WEB-INF/tlds"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.ctracgts}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/ctracgts/**/*.java"/>
+    </javac>
+
+    <!-- .conf files -->
+    <copy todir="${build.ctracgts}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- override .conf -->
+    <copy todir="${build.ctracgts}" verbose="false" overwrite="true">
+        <fileset dir="${war.home}/ctracgts" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.ctracgts}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.ctracgts}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.ctracgts}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- "dcservers*.xml" files -->
+    <copy todir="${build.ctracgts}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="dcservers.dtd"/>
+            <include name="dcservers.xml"/>
+            <!-- include name="dcservers_release.xml"/ --> <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- "dcservers/dcserver_*.xml" files (may not be present) -->
+    <copy todir="${build.ctracgts}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/dcservers">
+            <include name="dcserver_ctracgts.xml"/>
+            <include name="dcserver_w-ctracgts.xml"/>
+            <!-- include name="dcserver_*.xml"/ -->
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: ctracgts.war (MAY NOT BE SUPPORTED IN THIS RELEASE) -->
+  <target name="ctracgts.war" depends=""
+    description="Create 'ctracgts.war' archive">
+    <echo message="Creating 'ctracgts.war' archive ..."/>
+    <delete file="${build.home}/ctracgts.war"/>
+
+    <!-- create ctracgts.war file -->
+    <war warfile="${build.home}/ctracgts.war" webxml="${build.ctracgts}/WEB-INF/web.xml">
+        <classes dir="${build.ctracgts}/WEB-INF/classes">
+            <include name="org/opengts/war/ctracgts/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.ctracgts}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: ctracgts.deploy (MAY NOT BE SUPPORTED IN THIS RELEASE) -->
+  <target name="ctracgts.deploy" depends="ctracgts.war" 
+    description="Deploy 'ctracgts.war' to Tomcat">
+    <echo message="Deploying 'ctracgts.war' to ${catalina.base}/webapps/${ctracgts.deployWar}"/>
+    <copy 
+        file="${build.home}/ctracgts.war" 
+        tofile="${catalina.base}/webapps/${ctracgts.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${ctracgts.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- GPRMC servlet build directory -->
+  <property name="build.gprmc" value="${build.home}/gprmc"/>
+
+  <!-- Target: gprmc -->
+  <target name="gprmc.all" depends="gprmc"/> 
+  <target name="gprmc" depends="gprmc.compile,gprmc.war" 
+    description="Compile/Create 'gprmc.war'">
+    <echo message="'gprmc.war' created."/>
+  </target>
+
+  <!-- Target: gprmc.compile -->
+  <target name="gprmc.compile" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'gprmc.war' source">
+    <echo message="Compiling 'gprmc.war' servlet ..."/>
+    <delete file="${build.home}/gprmc.war"/>
+    <mkdir dir="${build.gprmc}"/>
+    <mkdir dir="${build.gprmc}/WEB-INF"/>
+    <mkdir dir="${build.gprmc}/WEB-INF/classes"/>
+    <mkdir dir="${build.gprmc}/WEB-INF/tlds"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.gprmc}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/gprmc/**/*.java"/>
+    </javac>
+
+    <!-- .conf files -->
+    <copy todir="${build.gprmc}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- override .conf -->
+    <copy todir="${build.gprmc}" verbose="false" overwrite="true">
+        <fileset dir="${war.home}/gprmc" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.gprmc}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- .xml files -->
+    <copy todir="${build.gprmc}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.gprmc}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: gprmc.war -->
+  <target name="gprmc.war" depends=""
+    description="Create 'gprmc.war' archive">
+    <echo message="Creating 'gprmc.war' archive ..."/>
+    <delete file="${build.home}/gprmc.war"/>
+
+    <!-- create gprmc.war file -->
+    <war warfile="${build.home}/gprmc.war" webxml="${build.gprmc}/WEB-INF/web.xml">
+        <classes dir="${build.gprmc}/WEB-INF/classes">
+            <include name="org/opengts/war/gprmc/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.gprmc}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: gprmc.deploy -->
+  <target name="gprmc.deploy" depends="gprmc.war" 
+    description="Deploy 'gprmc.war' to Tomcat">
+    <echo message="Deploying 'gprmc.war' to ${catalina.base}/webapps/${gprmc.deployWar}"/>
+    <copy 
+        file="${build.home}/gprmc.war" 
+        tofile="${catalina.base}/webapps/${gprmc.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${gprmc.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- gc101 servlet build directory -->
+  <property name="build.gc101" value="${build.home}/gc101"/>
+
+  <!-- Target: gc101 -->
+  <target name="gc101.all" depends="gc101"/> 
+  <target name="gc101" depends="gc101.compile,gc101.war" 
+    description="Compile/Create 'gc101.war'">
+    <echo message="'gc101.war' created."/>
+  </target>
+
+  <!-- Target: gc101.compile -->
+  <target name="gc101.compile" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'gc101.war' source">
+    <echo message="Compiling 'gc101.war' servlet ..."/>
+    <delete file="${build.home}/gc101.war"/>
+    <mkdir dir="${build.gc101}"/>
+    <mkdir dir="${build.gc101}/WEB-INF"/>
+    <mkdir dir="${build.gc101}/WEB-INF/classes"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <!-- compile gc101 server -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.gc101}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/gc101/**/*.java"/>
+    </javac>
+
+    <!-- copy .conf files -->
+    <copy todir="${build.gc101}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- override .conf -->
+    <copy todir="${build.gc101}" verbose="false">
+        <fileset dir="${war.home}/gc101" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- copy other config files -->
+    <copy todir="${build.gc101}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy private config files -->
+    <copy todir="${build.gc101}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.gc101}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: gc101.war -->
+  <target name="gc101.war" depends="" 
+    description="Create 'gc101.war' archive">
+    <echo message="Creating 'gc101.war' archive ..."/>
+    <delete file="${build.home}/gc101.war"/>
+
+    <!-- create gc101.war file -->
+    <war warfile="${build.home}/gc101.war" webxml="${build.gc101}/WEB-INF/web.xml">
+        <classes dir="${build.gc101}/WEB-INF/classes">
+            <include name="**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.gc101}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: gc101.deploy -->
+  <target name="gc101.deploy" depends="gc101.war" 
+    description="Deploy 'gc101.war' to Tomcat">
+    <echo message="Deploying 'gc101.war' to ${catalina.base}/webapps/${gc101.deployWar}"/>
+    <copy 
+        file="${build.home}/gc101.war" 
+        tofile="${catalina.base}/webapps/${gc101.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${gc101.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  
+  <!-- GPSMapper servlet build directory -->
+  <property name="build.gpsmapper" value="${build.home}/gpsmapper"/>
+
+  <!-- Target: gpsmapper -->
+  <target name="gpsmapper.all" depends="gpsmapper"/> 
+  <target name="gpsmapper" depends="gpsmapper.compile,gpsmapper.war" 
+    description="Compile/Create 'gpsmapper.war'">
+    <echo message="'gpsmapper.war' created."/>
+  </target>
+
+  <!-- Target: gpsmapper.compile -->
+  <target name="gpsmapper.compile" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'gpsmapper.war' source">
+    <echo message="Compiling 'gpsmapper.war' servlet ..."/>
+    <delete file="${build.home}/gpsmapper.war"/>
+    <mkdir dir="${build.gpsmapper}"/>
+    <mkdir dir="${build.gpsmapper}/WEB-INF"/>
+    <mkdir dir="${build.gpsmapper}/WEB-INF/classes"/>
+    <mkdir dir="${build.gpsmapper}/WEB-INF/tlds"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.gpsmapper}/WEB-INF/classes"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/war/gpsmapper/**/*.java"/>
+    </javac>
+
+    <copy todir="${build.gpsmapper}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <copy todir="${build.gpsmapper}" verbose="false">
+        <fileset dir="${war.home}/gpsmapper" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- copy other config files -->
+    <copy todir="${build.gpsmapper}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy private config files -->
+    <copy todir="${build.gpsmapper}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- copy "clients/gts/private" files (may not be present) -->
+    <echo message="(Ignore '.../clients/gts/private not found' warnings)"/>
+    <copy todir="${build.gpsmapper}/WEB-INF" failonerror="false" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: gpsmapper.war -->
+  <target name="gpsmapper.war" depends=""
+    description="Create 'gpsmapper.war' archive">
+    <echo message="Creating 'gpsmapper.war' archive ..."/>
+    <delete file="${build.home}/gpsmapper.war"/>
+
+    <!-- create gpsmapper.war file -->
+    <war warfile="${build.home}/gpsmapper.war" webxml="${build.gpsmapper}/WEB-INF/web.xml">
+        <classes dir="${build.gpsmapper}/WEB-INF/classes">
+            <include name="org/opengts/war/gpsmapper/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+        </lib>
+        <fileset dir="${build.gpsmapper}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: gpsmapper.deploy -->
+  <target name="gpsmapper.deploy" depends="gpsmapper.war" 
+    description="Deploy 'gpsmapper.war' to Tomcat">
+    <echo message="Deploying 'gpsmapper.war' to ${catalina.base}/webapps/${gpsmapper.deployWar}"/>
+    <copy 
+        file="${build.home}/gpsmapper.war" 
+        tofile="${catalina.base}/webapps/${gpsmapper.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${gpsmapper.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Device Parser Module example template -->
+  <target name="template" depends="prepare,gtsdb" 
+    description="Create 'Device Communication Server' template ...">
+    <echo message="template ..."/>
+
+    <!-- compile template -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/template/**/*.java"/>
+    </javac>
+
+    <!-- create template.jar server -->
+    <jar jarfile="${build.lib}/template.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.template.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/template/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: [OLD] Device Parser Module example template -->
+  <target name="template_old" depends="prepare,gtsdb" 
+    description="Create [OLD] 'Device Communication Server' template_old ...">
+    <echo message="template_old ..."/>
+
+    <!-- compile template_old -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/template_old/**/*.java"/>
+    </javac>
+
+    <!-- create template_old.jar server -->
+    <jar jarfile="${build.lib}/template_old.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.template_old.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/template_old/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Device Parser Module I-CARE G3300 -->
+  <target name="icare" depends="prepare,gtsdb" 
+    description="Create 'Device Communication Server' I-CARE G3300 ...">
+    <echo message="I-Care G3300 server 'icare.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/icare/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/icare.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.icare.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/icare/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Device Parser Module Aspicore -->
+  <target name="aspicore" depends="prepare,gtsdb" 
+    description="Create 'Device Communication Server' Aspicore ...">
+    <echo message="Aspicore 'aspicore.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/aspicore/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/aspicore.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.aspicore.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/aspicore/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Device Parser Module TK102/TK103 -->
+  <target name="tk10x" depends="prepare,gtsdb" 
+    description="Create TK102/TK103 DCS ...">
+    <echo message="TK102/TK103 'tk10x.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/tk10x/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/tk10x.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.tk10x.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/tk10x/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Device Parser Module SipGear -->
+  <target name="sipgear" depends="prepare,gtsdb" 
+    description="Create 'Device Communication Server' SipGear ...">
+    <echo message="SipGear 'sipgear.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/sipgear/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/sipgear.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.sipgear.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/sipgear/**/*.class"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Trimble ASCII Interface Protocol -->
+  <target name="taip" depends="prepare,gtsdb" 
+    description="Create 'Device Communication Server' TAIP ...">
+    <echo message="TAIP server 'taip.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/taip/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/taip.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.taip.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/taip/**/*.class"/>
+        </fileset>
+    </jar>
+    
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Lantrix T1800/T2000 Protocol -->
+  <target name="lantrix" depends="prepare,gtsdb" 
+    description="Create Lantrix T1800/T2000 DCS ...">
+    <echo message="Lantrix T1800/T2000 DCS 'lantrix.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/lantrix/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/lantrix.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.lantrix.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/lantrix/**/*.class"/>
+        </fileset>
+    </jar>
+    
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: Astra Telematics Protocols -->
+  <target name="astra" depends="prepare,gtsdb" 
+    description="Create Astra Telematics DCS ...">
+    <echo message="Astra Telematics DCS 'astra.jar' ..."/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/servers/*.java"/>
+        <include name="org/opengts/servers/astra/**/*.java"/>
+    </javac>
+
+    <!-- create jar -->
+    <jar jarfile="${build.lib}/astra.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath}"/>
+            <attribute name="Main-Class" value="org.opengts.servers.astra.Main"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <include name="org/opengts/servers/*.class"/>
+            <include name="org/opengts/servers/astra/**/*.class"/>
+        </fileset>
+    </jar>
+    
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- CTRAC servlet build directory -->
+  <property name="build.ctrac" value="${build.home}/ctrac"/>
+
+  <!-- Target: ctrac -->
+  <target name="ctrac.all" depends="ctrac"/> 
+  <target name="ctrac" depends="ctrac.exists,ctrac.prep,ctrac.war" 
+    description="Compile/Create 'ctrac.war'">
+    <echo message="'ctrac.war' created."/>
+  </target>
+
+  <!-- Target: ctrac.download" -->
+  <target name="ctrac.download" 
+    description="Download/Install 'ctrac.jar'">
+
+    <!-- download "lib/gtsopt/ctrac.jar" (source currently not available) -->
+    <java classname="org.opengts.util.FileTools" fork="false" failonerror="true">
+        <arg value="-conf=${basedir}/default.conf"/>
+        <arg value="-wget=http://www.geotelematic.com/CelltracGTS/ctrac/${ctrac_version_jar}"/>
+        <arg value="-toDir=${basedir}/lib/gtsopt"/>
+        <arg value="-toFile=ctrac.jar"/>
+        <arg value="-overwrite=true"/>
+        <arg value="-progress=false"/>
+        <classpath refid="compile.classpath"/>
+    </java>
+
+  </target>
+
+  <!-- Target: ctrac.exists -->
+  <target name="ctrac.exists"
+    description="Check for ${build.lib}/ctrac.jar">
+
+    <!-- copy "lib/gtsopt/ctrac.jar" to "build/lib/ctrac.jar" -->
+    <copy todir="${build.lib}" overwrite="true" failonerror="false" verbose="false"> <!-- quiet="true" [Ant 1.8] -->
+        <fileset dir="${basedir}/lib/gtsopt">
+           <include name="ctrac.jar"/>
+        </fileset>
+    </copy>
+
+    <!-- "build/lib/ctrac.jar" exists? -->
+    <available file="${build.lib}/ctrac.jar" type="file" property="exists.build.ctrac"/>
+    <fail unless="exists.build.ctrac">:
+    ==============================================================================
+     CelltracGTS/Server jar file "ctrac.jar" has not yet been installed.
+    ====
+     The "ctrac.jar" file first needs to be downloaded from the following link:
+       http://www.geotelematic.com/CelltracGTS/ctrac/${ctrac_version_jar}
+     Then installed at the following location:
+       ${basedir}/lib/gtsopt/ctrac.jar
+    ====
+     The following command will automatically dowload and install "ctrac.jar":
+       ant ctrac.download
+    ====
+     Note: Source code is currently not available for "ctrac.jar", however we 
+       plan to have a version of CelltracGTS/Server with source code available
+       in a future release.
+     For more information, please visit the following link:
+       http://www.geotelematic.com/CelltracGTS/Server.html
+    ==============================================================================
+    </fail>
+    <echo message="'${build.lib}/ctrac.jar' found"/>
+
+  </target>
+
+  <!-- Target: ctrac.prep -->
+  <target name="ctrac.prep" depends="tomcat.env,prepare,gtsdb,wartools" 
+    description="Compile 'ctrac.war' source">
+
+    <echo message="Compiling 'ctrac.war' servlet ..."/>
+    <delete file="${build.home}/ctrac.war"/>
+    <mkdir dir="${build.ctrac}"/>
+    <mkdir dir="${build.ctrac}/WEB-INF"/>
+    <mkdir dir="${build.ctrac}/WEB-INF/classes"/>
+    <mkdir dir="${build.ctrac}/WEB-INF/tlds"/>
+    <property name="compile.war.classpath" refid="compile.war.classpath"/>
+
+    <!-- .conf files -->
+    <copy todir="${build.ctrac}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="webapp.conf"/>
+            <include name="common.conf"/>
+            <include name="system.conf"/>
+            <include name="custom.conf"/>           <!-- may not be present -->
+            <include name="custom_gts.conf"/>       <!-- may not be present -->
+            <include name="config.conf"/>
+            <include name="config_old.conf"/>       <!-- may not be present -->
+            <include name="GTS_Enterprise"/>        <!-- may not be present -->
+            <include name="timezones.conf"/>
+       <!-- <include name="authkeys.conf"/> -->        <!-- may not be present -->
+       <!-- <include name="authkey_w-ctrac.conf"/> --> <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- override .conf -->
+    <copy todir="${build.ctrac}" verbose="false" overwrite="true">
+        <fileset dir="${war.home}/ctrac" excludes="**/*.java"/>
+        <!-- this list may contain a custom "webapp.conf" file -->
+    </copy>
+
+    <!-- "private*.xml" files -->
+    <copy todir="${build.ctrac}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- "private/private*.xml" files -->
+    <copy todir="${build.ctrac}/WEB-INF" failonerror="false" quiet="true" verbose="false">
+        <fileset dir="${basedir}/private">
+            <include name="private.dtd"/>
+            <include name="private*.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- "clients/gts/private/private_common.xml" file (may not be present) -->
+    <copy todir="${build.ctrac}/WEB-INF" failonerror="false" quiet="true" verbose="false">
+        <fileset dir="${basedir}/clients/gts/private">
+            <include name="private_common.xml"/>
+        </fileset>
+    </copy>
+
+    <!-- "reports.xml" files -->
+    <!-- copy todir="${build.ctrac}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="reports.dtd"/>
+            <include name="reports.xml"/>
+        </fileset>
+    </copy -->
+
+    <!-- "dcservers*.xml" files -->
+    <copy todir="${build.ctrac}/WEB-INF" verbose="false">
+        <fileset dir="${basedir}">
+            <include name="dcservers.dtd"/>
+            <include name="dcservers.xml"/>
+        <!-- include name="dcservers_release.xml"/ --> <!-- may not be present -->
+        </fileset>
+    </copy>
+
+    <!-- "dcservers/dcserver_*.xml" files (may not be present) -->
+    <copy todir="${build.ctrac}/WEB-INF" failonerror="false" quiet="true" verbose="false">
+        <fileset dir="${basedir}/dcservers">
+            <include name="dcserver_w-ctrac.xml"/>
+        <!-- include name="dcserver_ctrac.xml"/ -->
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Target: ctrac.war -->
+  <target name="ctrac.war" depends="" 
+    description="Create 'ctrac.war' archive">
+    <echo message="Creating 'ctrac.war' file ..."/>
+    
+    <!-- "build/lib/ctrac.jar" exists? -->
+    <available file="${build.lib}/ctrac.jar" type="file" property="exists.build.ctrac"/>
+    <fail unless="exists.build.ctrac">
+        "${build.lib}/ctrac.jar" not found.
+    </fail>
+
+    <!-- create ctrac.war file -->
+    <delete file="${build.home}/ctrac.war"/>
+    <war warfile="${build.home}/ctrac.war" webxml="${build.ctrac}/WEB-INF/web.xml">
+        <classes dir="${build.ctrac}/WEB-INF/classes">
+            <include name="org/opengts/opt/war/ctrac/**/*"/>
+        </classes>
+        <lib dir="${build.lib}">
+            <include name="ctrac.jar"/>
+            <include name="gtsutils.jar"/>
+            <include name="gtsdb.jar"/>
+            <include name="wartools.jar"/>
+            <include name="optdb.jar"/>
+            <include name="ruledb.jar"/>
+            <include name="bcrossdb.jar"/>
+            <include name="custom.jar"/>
+            <!-- add other included jar files here -->
+        </lib>
+        <fileset dir="${build.ctrac}">
+            <include name="**/*"/>
+            <exclude name="WEB-INF/web.xml"/>
+            <exclude name="WEB-INF/classes/**/*"/>
+            <exclude name="WEB-INF/lib/**/*"/>
+        </fileset>
+    </war>
+
+  </target>
+
+  <!-- Target: ctrac.deploy -->
+  <target name="ctrac.deploy" depends="ctrac.war" 
+    description="Deploy 'ctrac.war' to Tomcat">
+    <echo message="Deploying 'ctrac.war' to ${catalina.base}/webapps/${ctrac.deployWar}"/>
+    <copy 
+        file="${build.home}/ctrac.war" 
+        tofile="${catalina.base}/webapps/${ctrac.deployWar}"
+        overwrite="true" 
+        failonerror="true" 
+        verbose="true"
+        />
+    <echo message="Deployed ${catalina.base}/webapps/${ctrac.deployWar}"/>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+
+  <!-- Target: miscellaneous tools -->
+  <target name="tools" depends="prepare,gtsdb,tomcat.env" 
+    description="Create Miscellaneous tools ...">
+    <echo message="Tools ..."/>
+
+    <!-- compile tools -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <compilerarg compiler="${compiler.compiler}" value="${compile.Xlint}"/>
+        <classpath refid="compile.war.classpath"/>
+        <include name="org/opengts/tools/**/*.java"/>
+    </javac>
+
+    <!-- copy Locale properties -->
+    <copy todir="${build.home}" verbose="false">
+        <fileset dir="${src.gts}">
+            <include name="org/opengts/tools/**/*.properties"/>
+        </fileset>
+    </copy>
+
+    <!-- create tools.jar file -->
+    <jar jarfile="${build.lib}/tools.jar">
+        <manifest>
+            <attribute name="Class-Path" value="${Server_Jar_Classpath} dmtpserv.jar opttrack.jar wartools.jar warmaps.jar"/>
+            <attribute name="Main-Class" value="org.opengts.tools.CheckInstall"/>
+        </manifest>
+        <fileset dir="${build.home}">
+            <!-- class files -->
+            <include name="org/opengts/tools/**/*.class"/>
+            <!-- property files -->
+            <include name="org/opengts/tools/**/*.properties"/>
+        </fileset>
+    </jar>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: systemProps -->
+  <target name="systemProps" depends="prepare" 
+    description="Print System Properties">
+    <echo message="Print System Properties ... "/>
+
+    <!-- compile -->
+    <javac srcdir="${src.gts}"
+        includeAntRuntime="false"
+        source="${compiler.source}"
+        target="${compiler.target}"
+        destdir="${build.home}"
+        debug="${compile.debug}"
+        nowarn="${compile.nowarn}"
+        deprecation="${compile.deprecation}"
+        optimize="${compile.optimize}">
+        <!-- the utils dir has known unchecked warnings (ie. anything with "newInstance" etc) -->
+        <compilerarg compiler="${compiler.compiler}" value="-Xlint:all,-serial,-path"/>
+        <classpath refid="compile.classpath"/>
+        <include name="org/opengts/tools/PrintProperties.java"/>
+    </javac>
+    
+    <java classname="org.opengts.tools.PrintProperties" fork="false">
+        <classpath refid="compile.classpath"/>
+    </java>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: javadocs -->
+  <target name="javadoc" depends="javadocs"/>
+  <target name="javadocs"
+    description="Create Javadocs ...">
+    <echo message="Create Javadocs ..."/>
+  
+    <!-- clean old javadocs -->
+    <delete dir="${basedir}/javadocs"/>
+    <mkdir dir="${basedir}/javadocs"/>
+
+    <!-- create javadocs -->
+    <javadoc 
+        destdir="${basedir}/javadocs/"
+        classpathref="compile.war.classpath"
+        maxmemory="1024m">
+        <!-- linksource="yes" -->
+        <fileset dir="${basedir}/src/org/opengts">
+            <include name="*.java"/>
+            <exclude name="CompileTime.java"/>
+            </fileset>
+        <fileset dir="${basedir}/src/org/opengts/util"      includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/dbtools"   includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/dbtypes"   includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/db"        includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/geocoder"  includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/servers"   includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/tools"     includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/war"       includes="**/*.java" />
+        <fileset dir="${basedir}/src/org/opengts/extra">
+            <include name="**/*.java"/>
+            <include name="package-info.java"/>
+            <exclude name="war/track/page/WorkOrderInfo.java"/>
+            <exclude name="war/track/page/WorkZoneInfo.java"/>
+            <exclude name="geocoder/rgproxy/*.java"/>
+            <exclude name="geocoder/geoinverso/*.java"/>
+            <exclude name="geocoder/nacgeo/*.java"/>
+            <exclude name="geocoder/nokiahere/*.java"/>
+            <exclude name="geocoder/mappoint/*.java"/>
+            <exclude name="tables/WorkOrder*.java"/>
+            <exclude name="tables/WorkZone*.java"/>
+            <exclude name="cellid/locaid/GCIDService.java"/>
+            </fileset>
+        <fileset dir="${basedir}/src/org/opengts/rule">
+            <include name="package-info.java"/>
+            <include name="RuleListener.java"/>
+            <include name="tables/Rule.java"/>
+            </fileset>
+    </javadoc>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: locale -->
+  <target name="locale" 
+    description="Copy LocalStrings files to ${build.locale} ...">
+    
+    <delete dir="${build.locale}"/>
+    <mkdir dir="${build.locale}"/>
+    
+    <copy todir="${build.locale}" verbose="false">
+        <fileset dir="${src.gts}">
+           <include name="**/LocalStrings_*.properties"/>
+        </fileset>
+    </copy>
+
+    <!--
+    <move todir="${build.locale}">
+        <fileset dir="${build.locale}">
+           <include name="**/LocalStrings_en*.properties"/>
+        </fileset>
+        <mapper type="regexp" from="^(.*)(_en)(.*)" to="\1_XX\3"/>
+    </move>
+    -->
+    
+    <!-- delete temporary directories (may not be present) -->
+    <delete dir="${build.locale}/org/opengts/custom"/>
+    <delete dir="${build.locale}/org/opengts/opt"/>
+    <delete dir="${build.locale}/org/opengts/rule"/>
+
+  </target>
+
+  <!-- Target: locale.old -->
+  <target name="locale.old" 
+    description="Copy Old LocalStrings files to ${build.locale}.old ...">
+    
+    <delete dir="${build.locale}.old"/>
+    <mkdir dir="${build.locale}.old"/>
+    
+    <copy todir="${build.locale}.old" verbose="false">
+        <fileset dir="${src.gts}">
+           <include name="**/LocalStrings_*.properties.old"/>
+        </fileset>
+    </copy>
+
+  </target>
+
+  <!-- ======================================================================== -->
+
+  <!-- Target: epoch -->
+  <target name="epoch"  depends="gtsutils" 
+    description="Display Epoch time ...">
+    <java classname="org.opengts.util.DateTime">
+        <arg value="-now_sec"/>
+        <classpath>
+            <pathelement location="${build.lib}/gtsutils.jar"/>
+        </classpath>
+    </java>
+  </target>
+
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+  <!-- Custom build scripts -->
+  <import file="build_custom.xml"           optional="false"/>  <!-- required -->
+  <!-- ======================================================================== -->
+
+  <!-- ======================================================================== -->
+  <!-- optional GTSE build scripts -->
+  <import file="ant/build_gtscustom.xml"    optional="true"/>
+  <import file="ant/build_rulewar.xml"      optional="true"/>
+  <import file="ant/build_sanav.xml"        optional="true"/>
+  <import file="ant/build_t880x.xml"        optional="true"/>
+  <!-- ======================================================================== -->
+
+  <!-- ======================================================================== -->
+  <!-- private build scripts (not included in release) -->
+  <import file="ant/build_rule.xml"         optional="true"/>
+  <import file="ant/build_servers.xml"      optional="true"/>
+  <import file="ant/build_generic.xml"      optional="true"/>
+  <import file="ant/build_celltrac.xml"     optional="true"/>
+  <import file="ant/build_ctrac.xml"        optional="true"/>
+  <import file="ant/build_intellitrac.xml"  optional="true"/>
+  <import file="ant/build_intraca.xml"      optional="true"/>
+  <import file="ant/build_gsspot.xml"       optional="true"/>
+  <import file="ant/build_axonn.xml"        optional="true"/>
+  <import file="ant/build_fa888.xml"        optional="true"/>
+  <import file="ant/build_geoforce.xml"     optional="true"/>
+  <import file="ant/build_delorme.xml"      optional="true"/>
+  <import file="ant/build_covixon.xml"      optional="true"/>
+  <import file="ant/build_squarell.xml"     optional="true"/>
+  <import file="ant/build_dnap.xml"         optional="true"/>
+  <import file="ant/build_optui.xml"        optional="true"/>
+  <import file="ant/build_bcross.xml"       optional="true"/>
+  <import file="ant/build_paratel.xml"      optional="true"/>
+  <import file="ant/build_torque.xml"       optional="true"/>
+  <import file="ant/build_proxyrg.xml"      optional="true"/>
+  <import file="ant/build_aemp.xml"         optional="true"/>
+  <import file="ant/build_opt.xml"          optional="true"/>
+  <import file="ant/build_private.xml"      optional="true"/>
+  <import file="ant/build_qgt500.xml"       optional="true"/>
+  <!-- ======================================================================== -->
+
+  <!-- Target: optional jars -->
+  <target name="optjars" if="exists.optional" description="Building optional jars (if available)">
+    <antcall target="rulefactory.jars"     inheritAll="true" inheritRefs="true"/>
+    <antcall target="bordercrossing.jars"  inheritAll="true" inheritRefs="true"/>
+    <antcall target="optional.jars"        inheritAll="true" inheritRefs="true"/>
+  </target>
+
+  <!-- Target: private download -->
+  <!--
+  <target name="privDownload" if="exists.download" description="Building private targets (if available)">
+    <antcall target="download" inheritAll="true" inheritRefs="true"/>
+  </target>
+  -->
+
+  <!-- ======================================================================== -->
+
+</project>
