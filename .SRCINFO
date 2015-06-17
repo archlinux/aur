@@ -1,0 +1,17 @@
+pkgbase = usbtranfer
+	pkgdesc = USBTransfer (USBAktarici) is a program for transfering popular Linux distributions to USB drive. Developed by Oğuz Kırat.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://code.google.com/p/usbaktarici/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = python2-pyqt4
+	source = https://usbaktarici.googlecode.com/files/USBTransfer301Source.zip
+	source = usbtranfer
+	md5sums = 4c5eb2e8753718336026dfc1167c3d75
+	md5sums = b805ff9b9fd678bbb5c3b2e7d3db0337
+
+pkgname = usbtranfer
+
