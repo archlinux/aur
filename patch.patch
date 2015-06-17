@@ -1,0 +1,156 @@
+diff -r -u10 a/direct/src/plugin/handleStreamBuf.cxx b/direct/src/plugin/handleStreamBuf.cxx
+--- a/direct/src/plugin/handleStreamBuf.cxx	2010-04-25 04:42:37.000000000 -0300
++++ b/direct/src/plugin/handleStreamBuf.cxx	2014-07-10 18:01:37.000000000 -0300
+@@ -15,20 +15,21 @@
+ #include "handleStreamBuf.h"
+ 
+ #include <assert.h>
+ #include <string.h>
+ 
+ #ifndef _WIN32
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <unistd.h>
+ #endif  // _WIN32
+ 
+ #if !defined(_WIN32) && !defined(__APPLE__) && !defined(__FreeBSD__)
+ #include <libio.h>
+ #endif // !_WIN32 && !__APPLE__ && !__FreeBSD__
+ 
+ static const size_t handle_buffer_size = 4096;
+ 
+ ////////////////////////////////////////////////////////////////////
+ //     Function: HandleStreamBuf::Constructor
+diff -r -u10 a/direct/src/plugin/mkdir_complete.cxx b/direct/src/plugin/mkdir_complete.cxx
+--- a/direct/src/plugin/mkdir_complete.cxx	2011-08-29 23:54:02.000000000 -0300
++++ b/direct/src/plugin/mkdir_complete.cxx	2014-07-10 18:00:48.000000000 -0300
+@@ -17,20 +17,21 @@
+ #include "wstring_encode.h"
+ 
+ #ifdef _WIN32
+ #include <windows.h>
+ #include <io.h>    // chmod()
+ #else
+ #include <fcntl.h>
+ #include <sys/stat.h>  // for mkdir()
+ #include <errno.h>
+ #include <string.h>     // strerror()
++#include <unistd.h>
+ #endif
+ 
+ 
+ 
+ ////////////////////////////////////////////////////////////////////
+ //     Function: get_dirname
+ //  Description: Returns the directory component of the indicated
+ //               pathname, or the empty string if there is no
+ //               directory prefix.
+ ////////////////////////////////////////////////////////////////////
+diff -r -u10 a/direct/src/plugin/p3dAuthSession.cxx b/direct/src/plugin/p3dAuthSession.cxx
+--- a/direct/src/plugin/p3dAuthSession.cxx	2011-08-30 19:45:58.000000000 -0300
++++ b/direct/src/plugin/p3dAuthSession.cxx	2014-07-10 17:52:00.000000000 -0300
+@@ -21,22 +21,25 @@
+ #include "wstring_encode.h"
+ 
+ #include <ctype.h>
+ 
+ #ifndef _WIN32
+ #include <fcntl.h>
+ #include <sys/wait.h>
+ #include <sys/select.h>
+ #include <signal.h>
+ #include <dlfcn.h>
++#include <unistd.h>
+ #endif
+ 
++
++
+ ////////////////////////////////////////////////////////////////////
+ //     Function: P3DAuthSession::Constructor
+ //       Access: Public
+ //  Description: 
+ ////////////////////////////////////////////////////////////////////
+ P3DAuthSession::
+ P3DAuthSession(P3DInstance *inst) :
+   _inst(inst)
+ {
+   P3DInstanceManager *inst_mgr = P3DInstanceManager::get_global_ptr();
+diff -r -u10 a/direct/src/plugin/p3dSplashWindow.cxx b/direct/src/plugin/p3dSplashWindow.cxx
+--- a/direct/src/plugin/p3dSplashWindow.cxx	2011-08-29 23:54:02.000000000 -0300
++++ b/direct/src/plugin/p3dSplashWindow.cxx	2014-07-10 18:00:11.000000000 -0300
+@@ -379,21 +379,21 @@
+ //       Access: Protected
+ //  Description: Reads the image filename and sets image parameters
+ //               width, height, num_channels, and data.  Returns true
+ //               on success, false on failure.
+ ////////////////////////////////////////////////////////////////////
+ bool P3DSplashWindow::
+ read_image_data_png(ImageData &image, string &data,
+                     FILE *fp, const string &image_filename) {
+   png_structp png;
+   png = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL,
+-                                png_error, png_warning);
++			       (png_error_ptr)png_error, (png_error_ptr)png_warning);
+   if (png == NULL) {
+     return false;
+   }
+ 
+   png_infop info;
+   info = png_create_info_struct(png);
+   if (info == NULL) {
+     png_destroy_read_struct(&png, NULL, NULL);
+     return false;
+   }
+diff -r -u10 a/direct/src/plugin_npapi/startup.cxx b/direct/src/plugin_npapi/startup.cxx
+--- a/direct/src/plugin_npapi/startup.cxx	2011-08-30 21:16:55.000000000 -0300
++++ b/direct/src/plugin_npapi/startup.cxx	2014-07-10 18:03:10.000000000 -0300
+@@ -109,21 +109,21 @@
+   }
+ }
+ 
+ 
+ ////////////////////////////////////////////////////////////////////
+ //     Function: NP_GetMIMEDescription
+ //  Description: On Unix, this function is called by the browser to
+ //               get the mimetypes and extensions this plugin is
+ //               supposed to handle.
+ ////////////////////////////////////////////////////////////////////
+-char*
++const char*
+ NP_GetMIMEDescription(void) {
+   return (char*) "application/x-panda3d:p3d:Panda3D applet;";
+ }
+ 
+ ////////////////////////////////////////////////////////////////////
+ //     Function: NP_GetValue
+ //  Description: On Unix, this function is called by the browser to
+ //               get some information like the name and description.
+ ////////////////////////////////////////////////////////////////////
+ NPError
+diff -r -u10 a/direct/src/plugin_npapi/startup.h b/direct/src/plugin_npapi/startup.h
+--- a/direct/src/plugin_npapi/startup.h	2009-11-03 20:29:32.000000000 -0200
++++ b/direct/src/plugin_npapi/startup.h	2014-07-10 18:02:52.000000000 -0300
+@@ -22,19 +22,19 @@
+ #endif
+ 
+ extern "C" {
+ #ifdef _WIN32
+   NPError OSCALL NP_Initialize(NPNetscapeFuncs *browserFuncs);
+ #else
+   NPError OSCALL NP_Initialize(NPNetscapeFuncs *browserFuncs,
+                                NPPluginFuncs *pluginFuncs);
+ #endif
+ 
+-  char* NP_GetMIMEDescription(void);
++  const char* NP_GetMIMEDescription(void);
+   NPError NP_GetValue(void*, NPPVariable variable, void* value);
+   NPError OSCALL NP_GetEntryPoints(NPPluginFuncs *pluginFuncs);
+   NPError OSCALL NP_Shutdown(void);
+ }
+ 
+ void request_ready(P3D_instance *instance);
+ 
+ #endif
+

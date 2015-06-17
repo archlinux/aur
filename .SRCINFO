@@ -1,0 +1,19 @@
+pkgbase = panda3d-runtime-git
+	pkgdesc = 3D engine with Python bindings. Runtime and web plugin.
+	pkgver = git
+	pkgrel = 1
+	url = http://www.panda3d.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2
+	makedepends = libpng
+	makedepends = libjpeg
+	depends = openssl
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = panda3d::git+https://github.com/panda3d/panda3d.git
+	md5sums = SKIP
+
+pkgname = panda3d-runtime-git
+
