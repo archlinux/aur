@@ -1,0 +1,17 @@
+pkgbase = yoml-git
+	pkgdesc = a DOM-like interface to YAML
+	pkgver = r12.8ce39f7
+	pkgrel = 1
+	url = https://github.com/h2o/yoml
+	arch = any
+	license = unknown
+	checkdepends = picotest-git
+	makedepends = git
+	depends = libyaml
+	source = git+https://github.com/h2o/yoml
+	source = use_picotest_pkg.patch
+	sha256sums = SKIP
+	sha256sums = 9906eca6e57e5dadb32af1c83b46726801ef487d98ddb30ec314fd4c958dd569
+
+pkgname = yoml-git
+

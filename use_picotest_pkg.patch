@@ -1,0 +1,9 @@
+diff --git a/Makefile b/Makefile
+index 6f48590..4be2030 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,3 +1,3 @@
+ test:
+-	$(CC) -Wall -g -I deps/picotest deps/picotest/picotest.c test-yoml.c -lyaml -o test-yoml
++	$(CC) -Wall -g test-yoml.c -lyaml -lpicotest -o test-yoml
+ 	./test-yoml
