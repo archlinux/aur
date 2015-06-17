@@ -1,0 +1,13 @@
+pkgbase = python2-straight.plugin
+	pkgdesc = A simple namespaced plugin facility
+	pkgver = 1.4.0.p1
+	pkgrel = 1
+	url = https://github.com/ironfroggy/straight.plugin
+	arch = any
+	license = MIT
+	depends = python2
+	source = https://pypi.python.org/packages/source/s/straight.plugin/straight.plugin-1.4.0-post-1.tar.gz
+	md5sums = e1a22847055f377fa4c9a99d733eb44c
+
+pkgname = python2-straight.plugin
+
