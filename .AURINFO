@@ -1,0 +1,25 @@
+pkgbase = kdeplasma-applets-veromix-git
+	pkgdesc = A plasmoid mixer for the Pulseaudio sound server
+	pkgver = 29.813dcbd
+	pkgrel = 1
+	url = https://github.com/M0Rf30/veromix-plasmoid
+	install = kdeplasma-applets-veromix-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = kdesdk-dev-scripts
+	depends = kdebindings-python2
+	depends = kdebase-workspace
+	depends = python2-pyqt4
+	depends = pulseaudio
+	depends = pyxdg
+	depends = python2-dbus
+	optdepends = pulseaudio-equalizer
+	optdepends = swh-plugins: equalizer and other effects support
+	conflicts = kdeplasma-applets-veromix
+	conflicts = veromix-git
+	source = veromix-plasmoid::git://github.com/M0Rf30/veromix-plasmoid.git#branch=stable
+
+pkgname = kdeplasma-applets-veromix-git
+

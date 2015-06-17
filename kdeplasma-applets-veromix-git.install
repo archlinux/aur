@@ -1,0 +1,5 @@
+post_install() 
+{
+	update-desktop-database -q
+	echo "Now you can remove veromix.desktop from ~/.config/autostart :D"
+}
