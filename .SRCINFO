@@ -1,0 +1,16 @@
+pkgbase = kodi-addon-pulsar-magnetdl
+	pkgdesc = Magnet provider for pulsar
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/mancuniancol/
+	install = provider.install
+	arch = any
+	license = GPL3
+	depends = kodi
+	depends = kodi-addon-pulsar
+	options = !strip
+	source = https://github.com//mancuniancol/script.pulsar.magnetdl-mc/archive/3.0.tar.gz
+	md5sums = f4cbf27aae53337d86233461fb535b8b
+
+pkgname = kodi-addon-pulsar-magnetdl
+
