@@ -1,0 +1,22 @@
+pkgbase = akabei-git
+	pkgdesc = Chakra’s CLI package manager
+	pkgver = 286.d29fab4
+	pkgrel = 1
+	url = https://gitorious.org/chakra/akabei
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = translate-toolkit
+	makedepends = git
+	depends = kdelibs
+	depends = libarchive
+	depends = sqlite3
+	depends = akabeicore-git
+	depends = akabeiclient-git
+	source = akabei::git://gitorious.org/chakra/akabei.git
+	md5sums = SKIP
+
+pkgname = akabei-git
+
