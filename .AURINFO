@@ -1,0 +1,13 @@
+pkgbase = python2-cexio-api-git
+	pkgdesc = CEX.IO API integration. Python sources.
+	pkgver = 16.36976c0
+	pkgrel = 1
+	url = https://github.com/matveyco/cex.io-api-python
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	source = cexio::git+https://github.com/matveyco/cex.io-api-python.git
+
+pkgname = python2-cexio-api-git
+
