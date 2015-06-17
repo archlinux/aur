@@ -1,0 +1,17 @@
+pkgbase = lorcon-old
+	pkgdesc = LORCON wireless packet injection library
+	pkgver = 197
+	pkgrel = 4
+	url = http://802.11ninja.net/lorcon/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = libnl
+	depends = libpcap
+	provides = lorcon=199
+	source = svn+http://802.11ninja.net/svn/lorcon/branch/lorcon-old
+	sha1sums = SKIP
+
+pkgname = lorcon-old
+
