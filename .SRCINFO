@@ -1,0 +1,15 @@
+pkgbase = ruby-parslet-1.5
+	pkgdesc = Parser construction library with great error reporting in Ruby.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://kschiess.github.com/parslet
+	arch = any
+	depends = ruby
+	depends = ruby-blankslate-2
+	noextract = parslet-1.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/parslet-1.5.0.gem
+	sha1sums = 4c0f7a11134c4b65498c1ed1fda50c9def190b1e
+
+pkgname = ruby-parslet-1.5
+
