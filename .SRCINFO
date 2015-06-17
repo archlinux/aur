@@ -1,13 +1,12 @@
 pkgbase = bzr-stats
 	pkgdesc = Simple statistics plugin for Bazaar.
 	pkgver = 0.1.0+bzr51
-	pkgrel = 1
+	pkgrel = 2
 	url = http://launchpad.net/bzr-stats
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = bzr
-	source = https://launchpad.net/debian/wheezy/+source/bzr-stats/0.1.0+bzr51-1/+files/bzr-stats_0.1.0+bzr51.orig.tar.bz2
+	source = http://http.debian.net/debian/pool/main/b/bzr-stats/bzr-stats_0.1.0+bzr51.orig.tar.bz2
 	md5sums = 8a02f3bd22f1c9a37f1ded89151639c9
 
 pkgname = bzr-stats
