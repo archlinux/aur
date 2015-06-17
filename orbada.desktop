@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Orbada
+GenericName=Database Manager
+Comment=Database SQL, query tool, using JDBC for Oracle, SQLite, Firebird, etc
+Exec=orbada
+Icon=/opt/orbada/orbada.ico
+Terminal=false
+Categories=System
