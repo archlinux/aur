@@ -1,0 +1,18 @@
+pkgbase = menutray
+	pkgdesc = A simple GTK+ application menu tray, written in Perl.
+	pkgver = 0.43
+	pkgrel = 1
+	url = https://github.com/trizen/menutray
+	install = readme.install
+	arch = any
+	license = GPLv3
+	depends = perl>=5.14.0
+	depends = gtk2-perl
+	depends = perl-data-dump
+	depends = perl-linux-desktopfiles>=0.08
+	optdepends = perl-gtk3: for Gtk3 support (--gtk3)
+	source = https://github.com/trizen/menutray/archive/0.43.tar.gz
+	sha256sums = 2657574ab03d150fd52b67b4730b6bd015937228d71ef171183bc4ac216f7b4c
+
+pkgname = menutray
+
