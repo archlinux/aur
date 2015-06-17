@@ -1,0 +1,34 @@
+pkgbase = pyload-unstable-git
+	pkgdesc = Downloadtool for One-Click-Hoster written in python. Latest stable branch
+	pkgver = 3074.90e8d1e
+	pkgrel = 1
+	url = https://github.com/pyload/pyload
+	install = pyload-unstable-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-crypto
+	depends = python2-pycurl
+	depends = tesseract
+	depends = python2-imaging
+	depends = python2-jinja
+	depends = python2-beaker
+	depends = python2-pyopenssl
+	optdepends = python2-flup: for additional webservers
+	optdepends = python2-notify: Notifications for GUI
+	optdepends = js: ClickNLoad
+	provides = pyload
+	conflicts = pyload
+	conflicts = pyload-hg
+	conflicts = pyload-git
+	backup = var/lib/pyload/pyload.conf
+	source = pyload::git+https://github.com/pyload/pyload.git#branch=master
+	source = pyload.service
+	source = pyload.conf
+	md5sums = SKIP
+	md5sums = d34a58f919ecf5e53da1c8986e62a1fe
+	md5sums = 32b00d50be868c165930c592b99730a9
+
+pkgname = pyload-unstable-git
+
