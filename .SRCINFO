@@ -1,0 +1,17 @@
+pkgbase = musicpaused-git
+	pkgdesc = Pause music when headphones are unplugged
+	pkgver = 8.c8a4f14
+	pkgrel = 1
+	url = https://github.com/gentoo-root/musicpaused
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = dbus
+	depends = jacklistener-git
+	provides = musicpaused
+	source = musicpaused::git://github.com/gentoo-root/musicpaused.git
+	md5sums = SKIP
+
+pkgname = musicpaused-git
+
