@@ -1,7 +1,7 @@
 pkgbase = switchboard-plug-network-bzr
 	pkgdesc = Network plug for Switchboard
 	pkgver = r85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/switchboard-plug-networking
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = switchboard-plug-network-bzr
 	makedepends = bzr
 	makedepends = cmake
 	makedepends = vala
+	depends = libnm-glib
+	depends = libnm-gtk
 	depends = net-tools
 	depends = switchboard-bzr
 	provides = switchboard-plug-network

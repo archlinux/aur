@@ -2,13 +2,13 @@
 
 pkgname=switchboard-plug-network-bzr
 pkgver=r85
-pkgrel=1
+pkgrel=2
 pkgdesc='Network plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-networking'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('net-tools' 'switchboard-bzr')
+depends=('libnm-glib' 'libnm-gtk' 'net-tools' 'switchboard-bzr')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-network')
 conflicts=('switchboard-plug-network')
