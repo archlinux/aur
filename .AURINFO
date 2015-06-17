@@ -1,0 +1,14 @@
+pkgbase = libcintelhex-git
+	pkgdesc = A C library for parsing Intel HEX files
+	pkgver = r150.0679008
+	pkgrel = 1
+	url = https://github.com/martin-helmich/libcintelhex
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = cunit
+	makedepends = git
+	source = git://github.com/martin-helmich/libcintelhex
+
+pkgname = libcintelhex-git
+
