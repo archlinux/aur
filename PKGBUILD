@@ -10,9 +10,9 @@ license=('GPL3')
 optdepends=('gtk-engine-murrine: for the GTK2 theme'
             'mint-x-icons: Mint icon theme')
 conflicts=('mint-x-theme')
-source=("${url}/${pkgname}_1.4.0.tar.gz"
+source=("${url}/${pkgname}_1.4.1.tar.gz"
         "${url}-gtk3/${pkgname}-gtk3_3.14+7.tar.gz")
-sha256sums=('404757ea4990d14868e736068df7f98cd3607239b3d9aea12376cef9fbd02bf8'
+sha256sums=('e1717158722ea105ddf06532cda0529b01bef8aa39ef41119900dcd39d38426d'
             '7ede53d9774cc5741dd50ab72276aba0cca87dca4bc47a079a05a314f3c37d64')
 
 prepare() {
