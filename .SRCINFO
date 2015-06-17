@@ -1,0 +1,23 @@
+pkgbase = mapcache
+	pkgdesc = A server that implements tile caching to speed up access to WMS layers
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.mapserver.org/en/mapcache
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = libpng
+	depends = apache
+	depends = curl
+	depends = gdal
+	depends = geos
+	depends = libgeotiff
+	depends = db
+	optdepends = geos: Imrpoved vector support
+	provides = mapserver
+	conflicts = mapcache
+
+pkgname = mapcache
+
