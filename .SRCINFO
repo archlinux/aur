@@ -1,0 +1,17 @@
+pkgbase = libsigrok4dsl-git
+	pkgdesc = A library which provides the basic API for DreamSourceLab hardware
+	pkgver = r66.71d0f5a
+	pkgrel = 1
+	url = https://github.com/DreamSourceLab/DSView
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libzip
+	depends = libusb
+	depends = libserialport
+	source = git://github.com/DreamSourceLab/DSView.git
+	sha1sums = SKIP
+
+pkgname = libsigrok4dsl-git
+
