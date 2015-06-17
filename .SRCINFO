@@ -1,0 +1,15 @@
+pkgbase = kde-ksplash-themes-midna
+	pkgdesc = Midna KSplash-Theme, based on litho flowers for KaOS.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://kaosx.us
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = kdeartwork
+	license = GPL
+	source = http://kaosx.us/repo/apps/kde-ksplash-themes-midna-2.0.0-1-x86_64.pkg.tar.xz
+	md5sums = 296fff476bdd008808c43bae97fe44a3
+
+pkgname = kde-ksplash-themes-midna
+
