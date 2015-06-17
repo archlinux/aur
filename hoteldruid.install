@@ -1,0 +1,12 @@
+post_install() {
+    echo "Now you must install o configure your web server (PHP Compatible) to run Wordpress"
+}
+
+pre_remove() {
+  cp -r /srv/http/hoteldruid /srv/http/hoteldruid_backup
+  echo "Your HotelDruid folder was backed up to /srv/http/hoteldruid_backup"
+}
+
+post_remove() {
+  rm -rf /srv/http/hoteldruid
+}
