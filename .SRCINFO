@@ -1,6 +1,6 @@
 pkgbase = dropbox-experimental
 	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily. (Experimental build)
-	pkgver = 3.7.34
+	pkgver = 3.7.37
 	pkgrel = 1
 	url = http://www.dropbox.com
 	arch = i686
@@ -25,10 +25,10 @@ pkgbase = dropbox-experimental
 	sha256sums = 513d7b8395ade6f573b1397acf300326c8dc97e868bca0bc219fb3336b0d4533
 	sha256sums = 2dc647035f4537b7286adb39a71c629353a57f8df03ab81283a3f110579a80aa
 	sha256sums = 1db4b5c19121932d606142642109af4703f211393afe58566c7ec43499d25169
-	source_i686 = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-3.7.34.tar.gz
-	sha256sums_i686 = 51f23c91563936dbf3a892a78d75a9c5237e4d47fb7ca0bd91022e068921eb47
-	source_x86_64 = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86_64-3.7.34.tar.gz
-	sha256sums_x86_64 = 00d643a9e88a4478b8dbd126e0489d0d3c453f20e674372e8333a9a2320f3ab6
+	source_i686 = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-3.7.37.tar.gz
+	sha256sums_i686 = ca5a0c897ed0972a418ca0308682372b12a5be11130c9d04f0799121c6659732
+	source_x86_64 = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86_64-3.7.37.tar.gz
+	sha256sums_x86_64 = e8976de3d4f8d93e56659673835548453837fb4438d579154373cd7253c8ddbc
 
 pkgname = dropbox-experimental
 
