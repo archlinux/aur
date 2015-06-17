@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+	pkexec --disable-internal-agent "/usr/bin/ocztoolbox" "$@"
+else
+	/usr/bin/ocztoolbox "$@"
+fi
