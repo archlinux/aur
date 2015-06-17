@@ -1,0 +1,17 @@
+pkgbase = skulltag
+	pkgdesc = Closed source OpenGL ZDoom port with Client/Server multiplayer.
+	pkgver = 098d
+	pkgrel = 4
+	url = http://skulltag.net/
+	install = skulltag.install
+	arch = i686
+	arch = x86_64
+	license = closed
+	depends = sdl
+	depends = gtk2
+	depends = libjpeg6
+	optdepends = timidity++: midi support
+	optdepends = freedoom: free IWAD
+
+pkgname = skulltag
+
