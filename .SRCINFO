@@ -1,0 +1,22 @@
+pkgbase = coova-chilli-arch
+	pkgdesc = an open-source software access controller
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://coova.org/CoovaChilli
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = curl
+	depends = libpcap
+	depends = openssl
+	optdepends = python2
+	replaces = coova-chilli
+	options = !libtool
+	backup = etc/chilli.conf
+	source = http://ap.coova.org/chilli/coova-chilli-1.3.0.tar.gz
+	source = coova-chilli
+	md5sums = dc0037e3cdebcb60508081b4e42e984a
+	md5sums = b416def2a56b69f0e5c3b5b09703cda9
+
+pkgname = coova-chilli-arch
+
