@@ -1,0 +1,21 @@
+pkgbase = unrealtournament-rocketarena
+	pkgdesc = The popular Rocket Arena gametype also for UT1999.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.moddb.com/mods/rocket-arenaut
+	install = install.sh
+	arch = i686
+	arch = x86_64
+	groups = unrealtournament
+	groups = unrealtournament-bonuspacks
+	license = custom
+	makedepends = umodunpack
+	depends = unrealtournament-bonuspack3
+	optdepends = unrealtournament-bonuspack1: requires ServerPackages=RocketArenaMultiMesh setting
+	source = rocketarena-1.6.zip::http://www.ut-files.com/index.php?dir=GameTypes/RocketArena/&file=rocketarenautfull160.zip
+	source = install.sh
+	md5sums = 66569b63e630690e9ca5b22722b4a548
+	md5sums = dfb1f79f67027be07df189d41e3a2422
+
+pkgname = unrealtournament-rocketarena
+
