@@ -1,0 +1,27 @@
+pkgbase = steadyflow
+	pkgdesc = A download manager that aims for minimalism, ease of use, and a clean, malleable codebase
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://launchpad.net/steadyflow
+	install = steadyflow.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	makedepends = wget
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gtk3
+	depends = gvfs
+	depends = libgee06
+	depends = libnotify
+	depends = libunique
+	conflicts = steadyflow-bzr
+	source = http://launchpad.net/steadyflow/trunk/0.2.0/+download/steadyflow-0.2.0.tar.xz
+	source = patch
+	md5sums = 16b9907c1d681e7f0a861f066d4fda0e
+	md5sums = 53ff49bd70c499fa75498ba06250e7fc
+
+pkgname = steadyflow
+

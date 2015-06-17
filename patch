@@ -1,0 +1,11 @@
+--- a/Steadyflow/Services.vala	2012-06-30 14:39:35.000000000 +0200
++++ b/Steadyflow/Services.vala	2014-05-19 16:05:43.826607777 +0200
+@@ -61,7 +61,7 @@
+ 				 "information to the developer:\n\nError Code %d:\n\n%s").printf (e.code, message));
+ 			
+ 		md.run ();
+-		exit(1);
++		GLib.Process.exit(1);
+ 	}
+ }
+ 
