@@ -1,0 +1,18 @@
+pkgbase = serf-cluster
+	pkgdesc = Decentralized cluster membership, failure detection and orchestration util
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://www.serfdom.io/
+	arch = i686
+	arch = x86_64
+	license = custom:MPLv2
+	depends = glibc
+	source = https://raw.githubusercontent.com/hashicorp/serf/v0.6.4/LICENSE
+	sha256sums = bef1747eda88b9ed46e94830b0d978c3499dad5dfe38d364971760881901dadd
+	source_i686 = https://dl.bintray.com/mitchellh/serf/0.6.4_linux_386.zip
+	sha256sums_i686 = 841aac4dc60c31c89ea6ca1f5baba139e99982fabb8bbabdf061e429b8cac939
+	source_x86_64 = https://dl.bintray.com/mitchellh/serf/0.6.4_linux_amd64.zip
+	sha256sums_x86_64 = bdb2a60a37fbb46c1a498bbb1354e34c1951e3c5df8003b95f9d4019c4e37663
+
+pkgname = serf-cluster
+
