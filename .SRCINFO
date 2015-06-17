@@ -1,0 +1,19 @@
+pkgbase = seriesmarker
+	pkgdesc = A TV series browser and tracker application.
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = http://toroettg.github.io/SeriesMarker/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytvdbapi
+	depends = python-pyside
+	depends = python-appdirs
+	depends = python-sqlalchemy
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/S/SeriesMarker/SeriesMarker-0.0.3.tar.gz
+	md5sums = fc546636a48bda938988fea11bcd266b
+
+pkgname = seriesmarker
+
