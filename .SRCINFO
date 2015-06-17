@@ -1,0 +1,14 @@
+pkgbase = intlfonts
+	pkgdesc = Free X11 fonts for all characters that Emacs 20 can handle
+	pkgver = 1.2.1
+	pkgrel = 4
+	url = http://directory.fsf.org/wiki/Intlfonts
+	install = intlfonts.install
+	arch = any
+	license = GPL
+	depends = xorg-font-utils
+	source = ftp://ftp.gnu.org/pub/gnu/intlfonts/intlfonts-1.2.1.tar.gz
+	md5sums = d77e9c4ec066a985687e5c67992677e4
+
+pkgname = intlfonts
+

@@ -1,0 +1,22 @@
+update_font_cache() {
+  echo -n "Updating font cache... "
+  fc-cache -s /usr/share/emacs/fonts
+  mkfontscale /usr/share/emacs/fonts/TrueType /usr/share/emacs/fonts/Type1
+  mkfontdir /usr/share/emacs/fonts/bdf /usr/share/emacs/fonts/TrueType /usr/share/emacs/fonts/Type1 2> /dev/null
+  echo "done."
+}
+
+post_install() {
+  update_font_cache
+  echo "Fonts installed to /usr/share/emacs/fonts."
+  echo "You may want to edit font paths in /etc/X11/xorg.conf and /etc/fonts/local.conf."
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  update_font_cache
+  echo "You may want to delete /usr/share/emacs/fonts and edit font paths in /etc/X11/xorg.conf and /etc/fonts/local.conf."
+}
