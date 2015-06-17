@@ -1,0 +1,30 @@
+pkgbase = gmediafinder-git
+	pkgdesc = Application to stream or download videos and music from various YouTube-like sites without having flash installed.
+	pkgver = 121.694694c
+	pkgrel = 1
+	url = http://gnomefiles.org/content/show.php/Gmediafinder?content=138588
+	install = gmediafinder.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python2-distribute
+	depends = gnome-icon-theme
+	depends = gstreamer0.10-ffmpeg
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-python
+	depends = libvisual-plugins
+	depends = python2-beautifulsoup4
+	depends = python2-configobj
+	depends = python2-distutils-extra
+	depends = python2-gdata
+	depends = python2-html5lib
+	depends = python2-lxml
+	depends = python2-mechanize
+	depends = python-virtkey
+	depends = python2-xlib
+	depends = pywebkitgtk
+	source = git+https://github.com/smolleyes/gmediafinder2.git
+	md5sums = SKIP
+
+pkgname = gmediafinder-git
+
