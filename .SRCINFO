@@ -1,0 +1,14 @@
+pkgbase = halberd
+	pkgdesc = Tool to discover HTTP load balancers
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = http://halberd.superadditive.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	source = http://halberd.superadditive.com/dist/halberd-0.2.4.tar.gz
+	md5sums = d60d0fba8f379ea72c623ad1dd6052c3
+
+pkgname = halberd
+
