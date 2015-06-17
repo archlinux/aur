@@ -1,0 +1,914 @@
+=== modified file '__init__.py'
+--- __init__.py	2011-01-31 10:19:52 +0000
++++ __init__.py	2015-06-17 15:44:06 +0000
+@@ -71,9 +71,9 @@
+ 
+ bzrlib.api.require_any_api(bzrlib, bzr_compatible_versions)
+ 
+-if __name__ != 'bzrlib.plugins.gtk':
++if __name__ != 'bzrlib.plugins.gtk2':
+     from bzrlib.trace import warning
+-    warning("Not running as bzrlib.plugins.gtk, things may break.")
++    warning("Not running as bzrlib.plugins.gtk2, things may break.")
+ 
+ def import_pygtk():
+     try:
+@@ -109,23 +109,7 @@
+     return data_path(os.path.join('icons', *args))
+ 
+ 
+-commands = {
+-    "gannotate": ["gblame", "gpraise"],
+-    "gbranch": [],
+-    "gcheckout": [],
+-    "gcommit": ["gci"],
+-    "gconflicts": [],
+-    "gdiff": [],
+-    "ginit": [],
+-    "gmerge": [],
+-    "gmissing": [],
+-    "gpreferences": [],
+-    "gpush": [],
+-    "gsend": [],
+-    "gstatus": ["gst"],
+-    "gtags": [],
+-    "visualise": ["visualize", "vis", "viz", 'glog'],
+-    }
++commands = {}
+ 
+ try:
+     from bzrlib.plugins import loom
+@@ -136,10 +120,10 @@
+ 
+ for cmd, aliases in commands.iteritems():
+     plugin_cmds.register_lazy("cmd_%s" % cmd, aliases,
+-                              "bzrlib.plugins.gtk.commands")
++                              "bzrlib.plugins.gtk2.commands")
+ 
+ def save_commit_messages(*args):
+-    from bzrlib.plugins.gtk import commit
++    from bzrlib.plugins.gtk2 import commit
+     commit.save_commit_messages(*args)
+ 
+ branch.Branch.hooks.install_named_hook('post_uncommit',
+@@ -150,12 +134,12 @@
+ if credential_store_registry is not None:
+     try:
+         credential_store_registry.register_lazy(
+-            "gnome-keyring", "bzrlib.plugins.gtk.keyring", "GnomeKeyringCredentialStore",
++            "gnome-keyring", "bzrlib.plugins.gtk2.keyring", "GnomeKeyringCredentialStore",
+             help="The GNOME Keyring.", fallback=True)
+     except TypeError:
+     # Fallback credentials stores were introduced in Bazaar 1.15
+         credential_store_registry.register_lazy(
+-            "gnome-keyring", "bzrlib.plugins.gtk.keyring", "GnomeKeyringCredentialStore",
++            "gnome-keyring", "bzrlib.plugins.gtk2.keyring", "GnomeKeyringCredentialStore",
+             help="The GNOME Keyring.")
+ 
+ 
+
+=== modified file 'about.py'
+--- about.py	2010-12-17 22:48:28 +0000
++++ about.py	2015-06-17 15:35:20 +0000
+@@ -24,7 +24,7 @@
+ import gtk
+ import os
+ 
+-from bzrlib.plugins.gtk import data_path, icon_path
++from bzrlib.plugins.gtk2 import data_path, icon_path
+ 
+ 
+ def read_license():
+@@ -49,7 +49,7 @@
+     def __init__(self):
+         super(AboutDialog, self).__init__()
+         self.set_name("Bazaar GTK")
+-        self.set_version(bzrlib.plugins.gtk.version_string)
++        self.set_version(bzrlib.plugins.gtk2.version_string)
+         self.set_website("http://bazaar-vcs.org/BzrGtk")
+         self.set_license(read_license())
+         self.set_logo(gtk.gdk.pixbuf_new_from_file(icon_path("bzr-icon-64.png")))
+
+=== modified file 'annotate/gannotate.py'
+--- annotate/gannotate.py	2011-02-18 13:01:03 +0000
++++ annotate/gannotate.py	2015-06-17 15:35:46 +0000
+@@ -28,8 +28,8 @@
+ from bzrlib.revision import NULL_REVISION, CURRENT_REVISION
+ 
+ from colormap import AnnotateColorSaturation
+-from bzrlib.plugins.gtk.revisionview import RevisionView
+-from bzrlib.plugins.gtk.window import Window
++from bzrlib.plugins.gtk2.revisionview import RevisionView
++from bzrlib.plugins.gtk2.window import Window
+ 
+ 
+ (
+@@ -259,7 +259,7 @@
+                 tree2 = repository.revision_tree(revision.parent_ids[0])
+             else:
+                 tree2 = repository.revision_tree(NULL_REVISION)
+-        from bzrlib.plugins.gtk.diff import DiffWindow
++        from bzrlib.plugins.gtk2.diff import DiffWindow
+         window = DiffWindow(self)
+         window.set_diff("Diff for line %d" % (row+1), tree1, tree2)
+         window.set_file(tree1.id2path(self.file_id))
+
+=== modified file 'branch.py'
+--- branch.py	2008-05-05 18:16:46 +0000
++++ branch.py	2015-06-17 15:35:20 +0000
+@@ -29,7 +29,7 @@
+ from bzrlib.branch import Branch
+ import bzrlib.errors as errors
+ 
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ 
+ from dialog import error_dialog, info_dialog
+ 
+
+=== modified file 'branchview/treeview.py'
+--- branchview/treeview.py	2011-02-18 13:16:37 +0000
++++ branchview/treeview.py	2015-06-17 15:36:01 +0000
+@@ -12,12 +12,12 @@
+ import treemodel
+ from bzrlib import ui
+ 
+-from bzrlib.plugins.gtk.ui import ProgressPanel
++from bzrlib.plugins.gtk2.ui import ProgressPanel
+ from linegraph import linegraph, same_branch
+ from graphcell import CellRendererGraph
+ from treemodel import TreeModel
+ from bzrlib.revision import NULL_REVISION
+-from bzrlib.plugins.gtk import lock
++from bzrlib.plugins.gtk2 import lock
+ 
+ 
+ class TreeView(gtk.VBox):
+@@ -423,7 +423,7 @@
+             self.emit('revision-selected')
+ 
+     def _on_revision_selected(self, widget, event):
+-        from bzrlib.plugins.gtk.revisionmenu import RevisionMenu
++        from bzrlib.plugins.gtk2.revisionmenu import RevisionMenu
+         if event.button == 3:
+             menu = RevisionMenu(self.branch.repository, 
+                 [self.get_revision().revision_id],
+
+=== modified file 'checkout.py'
+--- checkout.py	2010-05-29 23:42:20 +0000
++++ checkout.py	2015-06-17 15:35:20 +0000
+@@ -24,7 +24,7 @@
+ 
+ import gtk
+ 
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ from errors import show_bzr_error
+ 
+ from bzrlib.branch import Branch
+
+=== modified file 'commands.py'
+--- commands.py	2011-01-31 10:19:52 +0000
++++ commands.py	2015-06-17 15:35:20 +0000
+@@ -31,7 +31,7 @@
+     )
+ from bzrlib.option import Option
+ 
+-from bzrlib.plugins.gtk import (
++from bzrlib.plugins.gtk2 import (
+     _i18n,
+     import_pygtk,
+     set_ui_factory,
+@@ -72,7 +72,7 @@
+     """
+ 
+     def get_gtk_dialog(self, path):
+-        from bzrlib.plugins.gtk.branch import BranchDialog
++        from bzrlib.plugins.gtk2.branch import BranchDialog
+         return BranchDialog(path)
+ 
+ 
+@@ -82,7 +82,7 @@
+     """
+     
+     def get_gtk_dialog(self, path):
+-        from bzrlib.plugins.gtk.checkout import CheckoutDialog
++        from bzrlib.plugins.gtk2.checkout import CheckoutDialog
+         return CheckoutDialog(path)
+ 
+ 
+@@ -96,7 +96,7 @@
+     def run(self, location="."):
+         (br, path) = branch.Branch.open_containing(location)
+         open_display()
+-        from bzrlib.plugins.gtk.push import PushDialog
++        from bzrlib.plugins.gtk2.push import PushDialog
+         dialog = PushDialog(br.repository, br.last_revision(), br)
+         dialog.run()
+ 
+@@ -115,7 +115,7 @@
+             (br, path) = branch.Branch.open_containing(location)
+             tree = None
+         open_display()
+-        from bzrlib.plugins.gtk.loom import LoomDialog
++        from bzrlib.plugins.gtk2.loom import LoomDialog
+         dialog = LoomDialog(br, tree)
+         dialog.run()
+ 
+@@ -176,7 +176,7 @@
+     
+     :return: The viz window object.
+     """
+-    from bzrlib.plugins.gtk.viz import BranchWindow
++    from bzrlib.plugins.gtk2.viz import BranchWindow
+     return BranchWindow(branch, revisions, limit)
+ 
+ 
+@@ -332,7 +332,7 @@
+ 
+     def run(self, path='.', revision=None):
+         gtk = open_display()
+-        from bzrlib.plugins.gtk.status import StatusWindow
++        from bzrlib.plugins.gtk2.status import StatusWindow
+         (wt, wt_path) = workingtree.WorkingTree.open_containing(path)
+ 
+         if revision is not None:
+@@ -358,7 +358,7 @@
+     def run(self):
+         (br, path) = branch.Branch.open_containing(".")
+         gtk = open_display()
+-        from bzrlib.plugins.gtk.mergedirective import SendMergeDirectiveDialog
++        from bzrlib.plugins.gtk2.mergedirective import SendMergeDirectiveDialog
+         from StringIO import StringIO
+         dialog = SendMergeDirectiveDialog(br)
+         if dialog.run() == gtk.RESPONSE_OK:
+@@ -380,7 +380,7 @@
+     def run(self):
+         (wt, path) = workingtree.WorkingTree.open_containing('.')
+         open_display()
+-        from bzrlib.plugins.gtk.conflicts import ConflictsDialog
++        from bzrlib.plugins.gtk2.conflicts import ConflictsDialog
+         dialog = ConflictsDialog(wt)
+         dialog.run()
+ 
+@@ -391,7 +391,7 @@
+     """
+     def run(self):
+         open_display()
+-        from bzrlib.plugins.gtk.preferences import PreferencesWindow
++        from bzrlib.plugins.gtk2.preferences import PreferencesWindow
+         dialog = PreferencesWindow()
+         dialog.run()
+ 
+@@ -402,8 +402,8 @@
+     """
+     takes_args = ["merge_from_path?"]
+     def run(self, merge_from_path=None):
+-        from bzrlib.plugins.gtk.dialog import error_dialog
+-        from bzrlib.plugins.gtk.merge import MergeDialog
++        from bzrlib.plugins.gtk2.dialog import error_dialog
++        from bzrlib.plugins.gtk2.merge import MergeDialog
+         
+         (wt, path) = workingtree.WorkingTree.open_containing('.')
+         old_tree = wt.branch.repository.revision_tree(wt.branch.last_revision())
+@@ -431,7 +431,7 @@
+             if str(e) == "could not open display":
+                 raise NoDisplayError
+ 
+-        from bzrlib.plugins.gtk.missing import MissingWindow
++        from bzrlib.plugins.gtk2.missing import MissingWindow
+         from bzrlib.branch import Branch
+ 
+         local_branch = Branch.open_containing(".")[0]
+
+=== modified file 'commit.py'
+--- commit.py	2010-07-21 20:21:17 +0000
++++ commit.py	2015-06-17 15:35:20 +0000
+@@ -36,9 +36,9 @@
+ except ImportError:
+     from bzrlib.util import bencode
+ 
+-from bzrlib.plugins.gtk import _i18n
+-from bzrlib.plugins.gtk.dialog import question_dialog
+-from bzrlib.plugins.gtk.errors import show_bzr_error
++from bzrlib.plugins.gtk2 import _i18n
++from bzrlib.plugins.gtk2.dialog import question_dialog
++from bzrlib.plugins.gtk2.errors import show_bzr_error
+ 
+ try:
+     import dbus
+
+=== modified file 'conflicts.py'
+--- conflicts.py	2011-02-18 13:01:03 +0000
++++ conflicts.py	2015-06-17 15:35:20 +0000
+@@ -26,7 +26,7 @@
+ import gobject
+ 
+ from bzrlib.config import GlobalConfig
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ 
+ from dialog import error_dialog, warning_dialog
+ 
+
+=== modified file 'diff.py'
+--- diff.py	2010-10-08 14:26:56 +0000
++++ diff.py	2015-06-17 15:35:20 +0000
+@@ -44,8 +44,8 @@
+ from bzrlib.diff import show_diff_trees, internal_diff
+ from bzrlib.patches import parse_patches
+ from bzrlib.trace import warning
+-from bzrlib.plugins.gtk import _i18n
+-from bzrlib.plugins.gtk.window import Window
++from bzrlib.plugins.gtk2 import _i18n
++from bzrlib.plugins.gtk2.window import Window
+ from dialog import error_dialog, info_dialog, warning_dialog
+ 
+ 
+
+=== modified file 'errors.py'
+--- errors.py	2011-02-18 13:01:03 +0000
++++ errors.py	2015-06-17 15:35:20 +0000
+@@ -15,7 +15,7 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ import bzrlib.errors as errors
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ from dialog import error_dialog, info_dialog
+ 
+ 
+
+=== modified file 'initialize.py'
+--- initialize.py	2008-05-05 18:16:46 +0000
++++ initialize.py	2015-06-17 15:35:20 +0000
+@@ -30,7 +30,7 @@
+ from bzrlib import bzrdir
+ from bzrlib import transport
+ import bzrlib.errors as errors
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ 
+ class InitDialog(gtk.Dialog):
+     """ Initialize dialog. """
+
+=== modified file 'loom.py'
+--- loom.py	2008-07-31 01:55:07 +0000
++++ loom.py	2015-06-17 15:35:20 +0000
+@@ -23,9 +23,9 @@
+ import gtk
+ import gobject
+ 
+-from bzrlib.plugins.gtk import _i18n
+-from bzrlib.plugins.gtk.diff import DiffWidget
+-from bzrlib.plugins.gtk.dialog import question_dialog
++from bzrlib.plugins.gtk2 import _i18n
++from bzrlib.plugins.gtk2.diff import DiffWidget
++from bzrlib.plugins.gtk2.dialog import question_dialog
+ from bzrlib.plugins.loom import branch as loom_branch
+ from bzrlib.plugins.loom import tree as loom_tree
+ 
+
+=== modified file 'merge.py'
+--- merge.py	2008-07-27 11:37:31 +0000
++++ merge.py	2015-06-17 15:35:20 +0000
+@@ -27,9 +27,9 @@
+ from bzrlib.branch import Branch
+ import bzrlib.errors as errors
+ 
+-from bzrlib.plugins.gtk import _i18n, icon_path
+-from bzrlib.plugins.gtk.dialog import error_dialog, info_dialog, warning_dialog
+-from bzrlib.plugins.gtk.errors import show_bzr_error
++from bzrlib.plugins.gtk2 import _i18n, icon_path
++from bzrlib.plugins.gtk2.dialog import error_dialog, info_dialog, warning_dialog
++from bzrlib.plugins.gtk2.errors import show_bzr_error
+ 
+ 
+ class MergeDialog(gtk.Dialog):
+
+=== modified file 'mergedirective.py'
+--- mergedirective.py	2011-02-18 13:01:03 +0000
++++ mergedirective.py	2015-06-17 15:35:20 +0000
+@@ -23,7 +23,7 @@
+ import bzrlib
+ import gtk
+ 
+-from bzrlib.plugins.gtk.branchbox import BranchSelectionBox
++from bzrlib.plugins.gtk2.branchbox import BranchSelectionBox
+ 
+ class CreateMergeDirectiveDialog(gtk.Dialog):
+     def __init__(self, branch, stop_revid=None):
+
+=== modified file 'missing.py'
+--- missing.py	2011-02-18 13:01:03 +0000
++++ missing.py	2015-06-17 15:35:20 +0000
+@@ -24,7 +24,7 @@
+ 
+ from bzrlib.missing import find_unmerged
+ 
+-from bzrlib.plugins.gtk.revisionview import RevisionView
++from bzrlib.plugins.gtk2.revisionview import RevisionView
+ 
+ 
+ class MissingWindow(gtk.Dialog):
+
+=== modified file 'nautilus-bzr.py'
+--- nautilus-bzr.py	2011-02-18 13:01:03 +0000
++++ nautilus-bzr.py	2015-06-17 15:35:20 +0000
+@@ -18,7 +18,7 @@
+ from bzrlib.plugin import load_plugins
+ load_plugins()
+ 
+-from bzrlib.plugins.gtk.commands import cmd_gannotate, start_viz_window
++from bzrlib.plugins.gtk2.commands import cmd_gannotate, start_viz_window
+ 
+ print "Bazaar nautilus module initialized"
+ 
+@@ -83,7 +83,7 @@
+         except NotBranchError:
+             return
+ 
+-        from bzrlib.plugins.gtk.diff import DiffWindow
++        from bzrlib.plugins.gtk2.diff import DiffWindow
+         window = DiffWindow()
+         window.set_diff(tree.branch._get_nick(local=True), tree, 
+                         tree.branch.basis_tree())
+@@ -132,7 +132,7 @@
+         if vfs_file.get_uri_scheme() != 'file':
+             return
+ 
+-        from bzrlib.plugins.gtk.branch import BranchDialog
++        from bzrlib.plugins.gtk2.branch import BranchDialog
+         
+         dialog = BranchDialog(vfs_file.get_name())
+         response = dialog.run()
+@@ -161,7 +161,7 @@
+             except NotBranchError, e:
+                 path = e.path
+ 
+-        from bzrlib.plugins.gtk.commit import CommitDialog
++        from bzrlib.plugins.gtk2.commit import CommitDialog
+         dialog = CommitDialog(tree, path)
+         response = dialog.run()
+         if response != gtk.RESPONSE_NONE:
+@@ -198,7 +198,7 @@
+         except NotBranchError:
+             return
+ 
+-        from bzrlib.plugins.gtk.pull import PullDialog
++        from bzrlib.plugins.gtk2.pull import PullDialog
+         dialog = PullDialog(tree, path)
+         dialog.display()
+         gtk.main()
+@@ -216,7 +216,7 @@
+         except NotBranchError:
+             return
+ 
+-        from bzrlib.plugins.gtk.merge import MergeDialog
++        from bzrlib.plugins.gtk2.merge import MergeDialog
+         dialog = MergeDialog(tree, path)
+         dialog.run()
+         dialog.destroy()
+
+=== modified file 'notify.py'
+--- notify.py	2011-02-18 13:01:03 +0000
++++ notify.py	2015-06-17 15:35:20 +0000
+@@ -96,12 +96,12 @@
+             self.zeroconfserver.close()
+ 
+     def show_about(self, item):
+-        from bzrlib.plugins.gtk.about import AboutDialog
++        from bzrlib.plugins.gtk2.about import AboutDialog
+         dialog = AboutDialog()
+         dialog.run()
+ 
+     def show_preferences(self, item):
+-        from bzrlib.plugins.gtk.preferences import PreferencesWindow
++        from bzrlib.plugins.gtk2.preferences import PreferencesWindow
+         prefs = PreferencesWindow()
+         prefs.run()
+ 
+
+=== modified file 'preferences/__init__.py'
+--- preferences/__init__.py	2011-02-18 13:01:03 +0000
++++ preferences/__init__.py	2015-06-17 15:37:06 +0000
+@@ -23,9 +23,9 @@
+ import gtk
+ 
+ from bzrlib.config import GlobalConfig
+-from bzrlib.plugins.gtk.preferences.identity import IdentityPage
+-from bzrlib.plugins.gtk.preferences.plugins import PluginsPage
+-from bzrlib.plugins.gtk.preferences.notifications import NotificationsPage
++from bzrlib.plugins.gtk2.preferences.identity import IdentityPage
++from bzrlib.plugins.gtk2.preferences.plugins import PluginsPage
++from bzrlib.plugins.gtk2.preferences.notifications import NotificationsPage
+ 
+ class PreferencesWindow(gtk.Dialog):
+     """Displays global preferences windows."""
+
+=== modified file 'preferences/notifications.py'
+--- preferences/notifications.py	2011-02-18 13:01:03 +0000
++++ preferences/notifications.py	2015-06-17 15:37:06 +0000
+@@ -22,8 +22,8 @@
+ 
+ import gtk
+ 
+-import bzrlib.plugins.gtk
+-from bzrlib.plugins.gtk.notify import has_avahi, has_dbus
++import bzrlib.plugins.gtk2
++from bzrlib.plugins.gtk2.notify import has_avahi, has_dbus
+ 
+ def has_email():
+     return (getattr(bzrlib.plugins, "email", None) is not None)
+
+=== modified file 'push.py'
+--- push.py	2009-05-06 11:51:38 +0000
++++ push.py	2015-06-17 15:35:20 +0000
+@@ -28,7 +28,7 @@
+ from bzrlib.config import LocationConfig
+ import bzrlib.errors as errors
+ 
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ from dialog import error_dialog, info_dialog, question_dialog
+ 
+ from history import UrlHistory
+
+=== modified file 'revbrowser.py'
+--- revbrowser.py	2008-05-05 18:16:46 +0000
++++ revbrowser.py	2015-06-17 15:35:20 +0000
+@@ -26,8 +26,8 @@
+ import gtk
+ 
+ from bzrlib.osutils import format_date
+-from bzrlib.plugins.gtk import _i18n
+-from bzrlib.plugins.gtk.branchview.treeview import TreeView
++from bzrlib.plugins.gtk2 import _i18n
++from bzrlib.plugins.gtk2.branchview.treeview import TreeView
+ 
+ 
+ class RevisionBrowser(gtk.Dialog):
+
+=== modified file 'revisionmenu.py'
+--- revisionmenu.py	2008-07-01 21:54:21 +0000
++++ revisionmenu.py	2015-06-17 15:35:20 +0000
+@@ -82,12 +82,12 @@
+         self.show_all()
+ 
+     def store_merge_directive(self, item):
+-        from bzrlib.plugins.gtk.mergedirective import CreateMergeDirectiveDialog
++        from bzrlib.plugins.gtk2.mergedirective import CreateMergeDirectiveDialog
+         window = CreateMergeDirectiveDialog(self.branch, self.revids[0])
+         window.show()
+ 
+     def send_merge_directive(self, item):
+-        from bzrlib.plugins.gtk.mergedirective import SendMergeDirectiveDialog
++        from bzrlib.plugins.gtk2.mergedirective import SendMergeDirectiveDialog
+         from cStringIO import StringIO
+         window = SendMergeDirectiveDialog(self.branch, self.revids[0])
+         if window.run() == gtk.RESPONSE_OK:
+@@ -99,7 +99,7 @@
+         window.destroy()
+ 
+     def show_diff(self, item):
+-        from bzrlib.plugins.gtk.diff import DiffWindow
++        from bzrlib.plugins.gtk2.diff import DiffWindow
+         window = DiffWindow(parent=self._parent)
+         parentids = self.repository.get_revision(self.revids[0]).parent_ids
+         if len(parentids) == 0:
+@@ -112,7 +112,7 @@
+         window.show()
+ 
+     def show_push(self, item):
+-        from bzrlib.plugins.gtk.push import PushDialog
++        from bzrlib.plugins.gtk2.push import PushDialog
+         dialog = PushDialog(self.repository, self.revids[0], self.branch)
+         response = dialog.run()
+ 
+@@ -120,7 +120,7 @@
+             dialog.destroy()
+ 
+     def show_tag(self, item):
+-        from bzrlib.plugins.gtk.tags import AddTagDialog
++        from bzrlib.plugins.gtk2.tags import AddTagDialog
+         dialog = AddTagDialog(self.repository, self.revids[0], self.branch)
+         response = dialog.run()
+ 
+
+=== modified file 'revisionview.py'
+--- revisionview.py	2009-12-09 13:27:53 +0000
++++ revisionview.py	2015-06-17 15:35:20 +0000
+@@ -30,10 +30,10 @@
+     from bzrlib.util.bencode import bdecode
+ from bzrlib.testament import Testament
+ 
+-from bzrlib.plugins.gtk import icon_path
++from bzrlib.plugins.gtk2 import icon_path
+ 
+ try:
+-    from bzrlib.plugins.gtk import seahorse
++    from bzrlib.plugins.gtk2 import seahorse
+ except ImportError:
+     has_seahorse = False
+ else:
+
+=== modified file 'search.py'
+--- search.py	2008-07-20 13:23:29 +0000
++++ search.py	2015-06-17 15:35:20 +0000
+@@ -24,7 +24,7 @@
+ import gtk
+ 
+ from bzrlib.plugins.search import index as _mod_index
+-from bzrlib.plugins.gtk import _i18n
++from bzrlib.plugins.gtk2 import _i18n
+ 
+ class SearchDialog(gtk.Dialog):
+     """Search dialog."""
+
+=== modified file 'setup.py'
+--- setup.py	2011-03-02 14:44:38 +0000
++++ setup.py	2015-06-17 15:41:43 +0000
+@@ -27,8 +27,8 @@
+     def run(self):
+         from bzrlib.tests import TestLoader, TestSuite, TextTestRunner
+         from bzrlib.plugin import PluginImporter
+-        PluginImporter.specific_paths["bzrlib.plugins.gtk"] = os.path.dirname(__file__)
+-        from bzrlib.plugins.gtk.tests import load_tests
++        PluginImporter.specific_paths["bzrlib.plugins.gtk2"] = os.path.dirname(__file__)
++        from bzrlib.plugins.gtk2.tests import load_tests
+         suite = TestSuite()
+         loader = TestLoader()
+         load_tests(suite, None, loader)
+@@ -115,63 +115,30 @@
+     version = bzr_plugin_version[:3]
+     version_string = ".".join([str(x) for x in version])
+     setup(
+-        name = "bzr-gtk",
++        name = "bzr-gtk-gtk2",
+         version = version_string,
+         maintainer = "Jelmer Vernooij",
+         maintainer_email = "jelmer@samba.org",
+         description = "GTK+ Frontends for various Bazaar commands",
+         license = "GNU GPL v2 or later",
+-        scripts = ['bzr-handle-patch', 'bzr-notify'],
+         url = "http://bazaar-vcs.org/BzrGtk",
+         package_dir = {
+-            "bzrlib.plugins.gtk": ".",
+-            "bzrlib.plugins.gtk.viz": "viz",
+-            "bzrlib.plugins.gtk.annotate": "annotate",
+-            "bzrlib.plugins.gtk.tests": "tests",
+-            "bzrlib.plugins.gtk.branchview": "branchview",
+-            "bzrlib.plugins.gtk.preferences": "preferences",
++            "bzrlib.plugins.gtk2": ".",
++            "bzrlib.plugins.gtk2.viz": "viz",
++            "bzrlib.plugins.gtk2.annotate": "annotate",
++            "bzrlib.plugins.gtk2.tests": "tests",
++            "bzrlib.plugins.gtk2.branchview": "branchview",
++            "bzrlib.plugins.gtk2.preferences": "preferences",
+             },
+         packages = [
+-            "bzrlib.plugins.gtk",
+-            "bzrlib.plugins.gtk.viz",
+-            "bzrlib.plugins.gtk.annotate",
+-            "bzrlib.plugins.gtk.tests",
+-            "bzrlib.plugins.gtk.branchview",
+-            "bzrlib.plugins.gtk.preferences",
++            "bzrlib.plugins.gtk2",
++            "bzrlib.plugins.gtk2.viz",
++            "bzrlib.plugins.gtk2.annotate",
++            "bzrlib.plugins.gtk2.tests",
++            "bzrlib.plugins.gtk2.branchview",
++            "bzrlib.plugins.gtk2.preferences",
+         ],
+-        data_files=[ ('share/bzr-gtk', ['credits.pickle']),
+-                    ('share/bzr-gtk/icons', ['icons/commit.png',
+-                                             'icons/commit16.png',
+-                                             'icons/diff.png',
+-                                             'icons/diff16.png',
+-                                             'icons/log.png',
+-                                             'icons/log16.png',
+-                                             'icons/pull.png',
+-                                             'icons/pull16.png',
+-                                             'icons/push.png',
+-                                             'icons/push16.png',
+-                                             'icons/refresh.png',
+-                                             'icons/sign-bad.png',
+-                                             'icons/sign-ok.png',
+-                                             'icons/sign.png',
+-                                             'icons/sign-unknown.png',
+-                                             'icons/tag-16.png',
+-                                             'icons/bug.png',
+-                                             'icons/bzr-icon-64.png']),
+-                    ('share/applications', ['bazaar-properties.desktop',
+-                                            'bzr-handle-patch.desktop',
+-                                            'bzr-notify.desktop']),
+-                    ('share/application-registry', ['bzr-gtk.applications']),
+-                    ('share/pixmaps', ['icons/bzr-icon-64.png']),
+-                    ('share/icons/hicolor/scalable/apps', ['icons/bzr-panel.svg']),
+-                    ('share/icons/hicolor/scalable/emblems',
+-                     ['icons/emblem-bzr-added.svg',
+-                      'icons/emblem-bzr-conflict.svg',
+-                      'icons/emblem-bzr-controlled.svg',
+-                      'icons/emblem-bzr-modified.svg',
+-                      'icons/emblem-bzr-removed.svg',
+-                      'icons/emblem-bzr-ignored.svg'])
+-                    ],
++        data_files=[ ('share/bzr-gtk', ['credits.pickle']) ],
+         cmdclass={'install_data': InstallData,
+                   'build_credits': CreateCredits,
+                   'build': BuildData,
+
+=== modified file 'status.py'
+--- status.py	2008-11-06 15:45:24 +0000
++++ status.py	2015-06-17 15:35:20 +0000
+@@ -21,7 +21,7 @@
+     pass
+ 
+ import gtk
+-from bzrlib.plugins.gtk import (
++from bzrlib.plugins.gtk2 import (
+     _i18n,
+     window,
+     )
+@@ -64,7 +64,7 @@
+         file = self.model[path][1]
+         if file is None:
+             return
+-        from bzrlib.plugins.gtk.diff import DiffWindow
++        from bzrlib.plugins.gtk2.diff import DiffWindow
+         window = DiffWindow()
+         window.set_diff("Working tree changes", self.wt, self.old_tree)
+         window.set_file(file)
+
+=== modified file 'tags.py'
+--- tags.py	2008-05-23 13:14:58 +0000
++++ tags.py	2015-06-17 15:35:20 +0000
+@@ -23,9 +23,9 @@
+ 
+ import gtk
+ 
+-from bzrlib.plugins.gtk import _i18n
+-from bzrlib.plugins.gtk.revisionview import RevisionView
+-from bzrlib.plugins.gtk.window import Window
++from bzrlib.plugins.gtk2 import _i18n
++from bzrlib.plugins.gtk2.revisionview import RevisionView
++from bzrlib.plugins.gtk2.window import Window
+ 
+ from dialog import error_dialog
+ from revidbox import RevisionSelectionBox
+
+=== modified file 'tests/test_annotate_config.py'
+--- tests/test_annotate_config.py	2009-05-07 11:48:03 +0000
++++ tests/test_annotate_config.py	2015-06-17 15:37:11 +0000
+@@ -20,7 +20,7 @@
+     tests,
+     )
+ 
+-from bzrlib.plugins.gtk.annotate import (
++from bzrlib.plugins.gtk2.annotate import (
+     config,
+     gannotate,
+     )
+
+=== modified file 'tests/test_commit.py'
+--- tests/test_commit.py	2011-02-18 13:01:03 +0000
++++ tests/test_commit.py	2015-06-17 15:37:11 +0000
+@@ -30,7 +30,7 @@
+ except ImportError:
+     from bzrlib.util import bencode
+ 
+-from bzrlib.plugins.gtk import commit
++from bzrlib.plugins.gtk2 import commit
+ 
+ 
+ # TODO: All we need is basic ancestry code to test this, we shouldn't need a
+
+=== modified file 'tests/test_diff.py'
+--- tests/test_diff.py	2011-02-18 13:01:03 +0000
++++ tests/test_diff.py	2015-06-17 15:37:11 +0000
+@@ -25,7 +25,7 @@
+     )
+ from bzrlib.merge_directive import MergeDirective2
+ 
+-from bzrlib.plugins.gtk.diff import (
++from bzrlib.plugins.gtk2.diff import (
+     DiffController,
+     DiffView,
+     iter_changes_to_status,
+@@ -39,8 +39,8 @@
+  
+  from bzrlib import tests
+  
+--from bzrlib.plugins.gtk.diff import DiffView, iter_changes_to_status
+-+from bzrlib.plugins.gtk.diff import (
++-from bzrlib.plugins.gtk2.diff import DiffView, iter_changes_to_status
+++from bzrlib.plugins.gtk2.diff import (
+ +    DiffController,
+ +    DiffView,
+ +    iter_changes_to_status,
+
+=== modified file 'tests/test_history.py'
+--- tests/test_history.py	2011-02-18 13:01:03 +0000
++++ tests/test_history.py	2015-06-17 15:37:11 +0000
+@@ -17,7 +17,7 @@
+ from bzrlib import config
+ from bzrlib.tests import TestCaseInTempDir
+ 
+-from bzrlib.plugins.gtk.history import UrlHistory
++from bzrlib.plugins.gtk2.history import UrlHistory
+ 
+ 
+ class TestsUrlHistory(TestCaseInTempDir):
+
+=== modified file 'tests/test_linegraph.py'
+--- tests/test_linegraph.py	2011-02-18 13:01:03 +0000
++++ tests/test_linegraph.py	2015-06-17 15:37:11 +0000
+@@ -21,7 +21,7 @@
+     tests,
+     )
+ 
+-from bzrlib.plugins.gtk.branchview.linegraph import linegraph
++from bzrlib.plugins.gtk2.branchview.linegraph import linegraph
+ 
+ 
+ class TestLinegraph(tests.TestCase):
+
+=== modified file 'tests/test_revisionview.py'
+--- tests/test_revisionview.py	2011-02-18 13:01:03 +0000
++++ tests/test_revisionview.py	2015-06-17 15:37:11 +0000
+@@ -24,7 +24,7 @@
+ except ImportError:
+     from bzrlib.util import bencode
+ 
+-from bzrlib.plugins.gtk import revisionview
++from bzrlib.plugins.gtk2 import revisionview
+ 
+ 
+ class TestPendingRevisions(tests.TestCaseWithMemoryTransport):
+
+=== modified file 'viz/branchwin.py'
+--- viz/branchwin.py	2011-02-18 13:01:03 +0000
++++ viz/branchwin.py	2015-06-17 15:36:23 +0000
+@@ -10,11 +10,11 @@
+ 
+ import gtk
+ 
+-from bzrlib.plugins.gtk import icon_path
+-from bzrlib.plugins.gtk.branchview import TreeView
+-from bzrlib.plugins.gtk.preferences import PreferencesWindow
+-from bzrlib.plugins.gtk.revisionmenu import RevisionMenu
+-from bzrlib.plugins.gtk.window import Window
++from bzrlib.plugins.gtk2 import icon_path
++from bzrlib.plugins.gtk2.branchview import TreeView
++from bzrlib.plugins.gtk2.preferences import PreferencesWindow
++from bzrlib.plugins.gtk2.revisionmenu import RevisionMenu
++from bzrlib.plugins.gtk2.window import Window
+ 
+ from bzrlib.config import GlobalConfig
+ from bzrlib.revision import NULL_REVISION
+@@ -355,7 +355,7 @@
+         (width, height) = self.get_size()
+         self.diff_paned.set_size_request(20, 20) # shrinkable
+ 
+-        from bzrlib.plugins.gtk.revisionview import RevisionView
++        from bzrlib.plugins.gtk2.revisionview import RevisionView
+         self.revisionview = RevisionView(branch=self.branch)
+         self.revisionview.set_size_request(width/3, int(height / 2.5))
+         # user-configured size
+@@ -370,7 +370,7 @@
+         self.treeview.connect('tag-added', lambda w, t, r: self.revisionview.update_tags())
+         self.diff_paned.pack1(self.revisionview)
+ 
+-        from bzrlib.plugins.gtk.diff import DiffWidget
++        from bzrlib.plugins.gtk2.diff import DiffWidget
+         self.diff = DiffWidget()
+         self.diff_paned.pack2(self.diff)
+ 
+@@ -492,7 +492,7 @@
+ 
+     def _branch_search_cb(self, w):
+         from bzrlib.plugins.search import index as _mod_index
+-        from bzrlib.plugins.gtk.search import SearchDialog
++        from bzrlib.plugins.gtk2.search import SearchDialog
+         from bzrlib.plugins.search import errors as search_errors
+ 
+         try:
+@@ -517,7 +517,7 @@
+         dialog.destroy()
+ 
+     def _about_dialog_cb(self, w):
+-        from bzrlib.plugins.gtk.about import AboutDialog
++        from bzrlib.plugins.gtk2.about import AboutDialog
+         AboutDialog().run()
+ 
+     def _col_visibility_changed(self, col, property):
+@@ -603,7 +603,7 @@
+ 
+     def show_diff(self, revid=None, parentid=NULL_REVISION):
+         """Open a new window to show a diff between the given revisions."""
+-        from bzrlib.plugins.gtk.diff import DiffWindow
++        from bzrlib.plugins.gtk2.diff import DiffWindow
+         window = DiffWindow(parent=self)
+ 
+         rev_tree    = self.branch.repository.revision_tree(revid)
+
