@@ -4,4 +4,4 @@ pkg
 knossos
 
 # generated packages
-*pkg.tar.xz
+*.tar.*
