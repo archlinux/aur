@@ -1,0 +1,19 @@
+pkgbase = horao-git
+	pkgdesc = Oslandia's 3D visualisation stack with QGIS plugin
+	pkgver = 0
+	pkgrel = 2
+	url = http://oslandia.github.io/horao/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = openmpi
+	makedepends = cmake
+	makedepends = boost
+	depends = openscenegraph
+	depends = postgis
+	depends = postgis-sfcgal
+	optdepends = qgis
+	source = horao::git://github.com/Oslandia/horao.git
+
+pkgname = horao-git
+
