@@ -1,0 +1,12 @@
+diff -aur syslog-notify-0.1.pristine/src/syslog-notify.c syslog-notify-0.1.new/src/syslog-notify.c
+--- syslog-notify-0.1.pristine/src/syslog-notify.c	2011-03-31 16:11:18.509750668 +0300
++++ syslog-notify-0.1.new/src/syslog-notify.c	2011-03-31 16:11:42.286417334 +0300
+@@ -66,7 +66,7 @@
+     close(fd);
+     return;
+   }
+-  notification=notify_notification_new(title,message,NULL,NULL);
++  notification=notify_notification_new(title,message,NULL);
+   notify_notification_set_timeout(notification,NOTIFY_EXPIRES_DEFAULT);
+   notify_notification_set_urgency(notification,NOTIFY_URGENCY_NORMAL);
+   notify_notification_set_hint_string(notification,"x-canonical-append",

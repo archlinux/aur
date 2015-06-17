@@ -1,0 +1,35 @@
+# This is a default template for a post-install scriptlet.  You can
+# remove any functions you don't need (and this header).
+
+show_text() {
+cat<<EOF
+
+=== To use syslog-notify you must redirect syslog output to the pipe '/var/spool/syslog-notify'
+
+Example for syslog-ng (add to /etc/syslog-ng.conf):
+  destination d_syslog_notify { pipe("/var/spool/syslog-notify"); };
+  log { source(src); destination(d_syslog_notify); };
+
+Consult the manual of the syslog daemon used on your system for accordant information
+
+EOF
+}
+
+# arg 1:  the new package version
+post_install() {
+    mkfifo /var/spool/syslog-notify
+    chmod a+rw /var/spool/syslog-notify
+    show_text
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    show_text
+}
+
+# arg 1:  the old package version
+post_remove() {
+    rm /var/spool/syslog-notify
+    echo "==== If any syslog output redirection to the syslog-notify pipe was added, then don't forget to remove it"
+}

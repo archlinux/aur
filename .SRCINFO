@@ -1,0 +1,17 @@
+pkgbase = syslog-notify
+	pkgdesc = Pop-up display for system log messages
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://jtniehof.github.com/syslog-notify
+	install = syslog-notify.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libnotify
+	source = http://cloud.github.com/downloads/jtniehof/syslog-notify/syslog-notify-0.1.tar.bz2
+	source = syslog-notify.patch
+	md5sums = 18474e11ceb0add6e8b70fe7680f0abf
+	md5sums = 3dc49b913d4ee1a00426fb993770084d
+
+pkgname = syslog-notify
+
