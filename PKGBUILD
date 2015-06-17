@@ -1,7 +1,7 @@
 # Maintainer: tailinchu <use_my_id at gmail dot com>
 
 pkgname=ttf-noto
-pkgver=20150612
+pkgver=20150617
 pkgrel=1
 pkgdesc="Fonts support all languages/characters in Unicode"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('ttf-font')
 source=("http://storage.googleapis.com/noto-website/pkgs/Noto-hinted.zip")
 install=$pkgname.install
 PKGEXT='.pkg.tar' # because XZ compression is awfully slow
-md5sums=('077a9978839e37b29af710819fb17729')
+md5sums=('4f8816beb30a47baa6dfbc11bffdc9bb')
 
 package() {
 	mkdir -p $pkgdir/usr/share/fonts/{TTF,OTF}
