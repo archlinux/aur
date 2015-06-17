@@ -1,0 +1,17 @@
+pkgbase = thtk-git
+	pkgdesc = A collection of tools for exploring and modifying the Touhou game series
+	pkgver = r278.e69474d
+	pkgrel = 1
+	url = https://github.com/thpatch/thtk
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libpng
+	provides = thtk=r278.e69474d
+	conflicts = thtk
+	source = thtk-git::git://github.com/thpatch/thtk.git
+	md5sums = SKIP
+
+pkgname = thtk-git
+
