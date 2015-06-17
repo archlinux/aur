@@ -1,0 +1,27 @@
+pkgbase = hyde-git
+	pkgdesc = Hyde is a static website generator powered by Python & Django.
+	pkgver = 510.696adac
+	pkgrel = 1
+	url = http://ringce.com/hyde
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = git
+	depends = python2
+	depends = python2-distribute
+	depends = python-markdown
+	depends = python2-django
+	depends = python2-yaml
+	depends = python2-pyrss2gen
+	depends = python2-cherrypy
+	depends = python2-pygments
+	depends = python2-fswrap
+	depends = python2-typogrify
+	depends = python2-commando
+	depends = python2-smartypants
+	conflicts = hyde
+	source = hyde::git://github.com/hyde/hyde.git
+	md5sums = SKIP
+
+pkgname = hyde-git
+
