@@ -3,7 +3,7 @@
 
 pkgname=xcape-git
 pkgver=1.1.r9.gf3802fc
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Use modifier pressed/released solo as another key/chord, e.g. CapsLock > Escape"
 arch=('i686' 'x86_64')
@@ -29,7 +29,6 @@ build() {
 package() {
   cd xcape
   make DESTDIR="$pkgdir/" MANDIR="/share/man/man1" install
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
