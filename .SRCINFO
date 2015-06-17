@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-theme-london-smoke
+	pkgdesc = A Gnome-Shell theme by theRealPadster.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://therealpadster.deviantart.com/art/London-Smoke-Gnome-Shell-207708800
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = gnome-shell
+	optdepends = gnome-shell-extension-user-theme: User Theme extension for GNOME Shell
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
+	source = http://www.deviantart.com/download/207708800/london_smoke_gnome_shell_by_therealpadster-d3fnx4w.zip
+	md5sums = 4d838abab42204a95f479f0e9137fa3f
+
+pkgname = gnome-shell-theme-london-smoke
+
