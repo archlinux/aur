@@ -1,0 +1,14 @@
+pkgbase = kdeplasma-applets-actos-soundmenu-git
+	pkgdesc = Very simple Sound Menu plasmoid with volume and playback (MPRIS) controls for the current media player
+	pkgver = 4.b6d5fa2
+	pkgrel = 1
+	url = https://github.com/ghinda/actos-soundmenu
+	arch = any
+	license = GPL3
+	depends = kdebase-plasma
+	depends = kdemultimedia-kmix
+	source = actos-soundmenu::git://github.com/ghinda/actos-soundmenu
+	md5sums = SKIP
+
+pkgname = kdeplasma-applets-actos-soundmenu-git
+
