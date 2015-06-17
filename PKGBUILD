@@ -259,6 +259,6 @@ package_xorg-server-devel-dev() {
   rm -rf "${pkgdir}/usr/lib/xorg-server"
   rm -rf "${pkgdir}/var"
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-devel-dev"
-  ln -sf ../xorg-server-common/COPYING "${pkgdir}/usr/share/licenses/xorg-server-devel-dev/COPYING"
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-devel"
+  ln -sf ../xorg-server-common/COPYING "${pkgdir}/usr/share/licenses/xorg-server-devel/COPYING"
 }
