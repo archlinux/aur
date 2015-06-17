@@ -1,0 +1,17 @@
+pkgbase = jackeventcmd-git
+	pkgdesc = Run custom commands when headphones are (un)plugged
+	pkgver = 2.fd76b9a
+	pkgrel = 1
+	url = https://github.com/gentoo-root/jackeventcmd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = dbus
+	depends = jacklistener
+	provides = jackeventcmd
+	source = jackeventcmd::git://github.com/gentoo-root/jackeventcmd.git
+	md5sums = SKIP
+
+pkgname = jackeventcmd-git
+
