@@ -1,0 +1,16 @@
+pkgbase = cupp-v3
+	pkgdesc = Common User Passwords Profiler
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://www.remote-exploit.org/?page_id=418
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	source = http://www.remote-exploit.org/content/cupp-3.0.tar.gz
+	source = cupp-bin
+	md5sums = d7bea1245095036a368566b9a15ddc86
+	md5sums = a44a6a199c7e80c926bffe95c1a5e8a7
+
+pkgname = cupp-v3
+
