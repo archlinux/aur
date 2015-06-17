@@ -1,0 +1,20 @@
+--- a/src/monkeysphere-authentication	2014-08-06 19:27:38.000000000 +0200
++++ b/src/monkeysphere-authentication	2014-12-07 23:23:37.770134940 +0100
+@@ -73,7 +73,7 @@
+     GNUPGHOME="$GNUPGHOME_CORE"
+     export GNUPGHOME
+ 
+-    gpg --fixed-list-mode --no-greeting --quiet --no-tty "$@"
++    gpg1 --fixed-list-mode --no-greeting --quiet --no-tty "$@"
+ }
+ 
+ # function to interact with the gpg sphere keyring
+@@ -81,7 +81,7 @@
+     GNUPGHOME="$GNUPGHOME_SPHERE"
+     export GNUPGHOME
+  
+-    su_monkeysphere_user gpg --fixed-list-mode --no-greeting --quiet --no-tty "$@"
++    su_monkeysphere_user gpg1 --fixed-list-mode --no-greeting --quiet --no-tty "$@"
+ }
+ 
+ check_openpgp2ssh_sanity() {

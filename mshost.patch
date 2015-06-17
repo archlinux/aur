@@ -1,0 +1,11 @@
+--- a/src/monkeysphere-host	2014-08-06 19:27:38.000000000 +0200
++++ b/src/monkeysphere-host.new	2014-12-07 23:23:07.306801343 +0100
+@@ -71,7 +71,7 @@
+ 
+ # function to interact with the gpg keyring
+ gpg_host() {
+-    GNUPGHOME="$GNUPGHOME_HOST" LC_ALL=C gpg --no-auto-check-trustdb --trust-model=always --no-greeting --quiet --no-tty --fixed-list-mode "$@"
++    GNUPGHOME="$GNUPGHOME_HOST" LC_ALL=C gpg1 --no-auto-check-trustdb --trust-model=always --no-greeting --quiet --no-tty --fixed-list-mode "$@"
+ }
+ 
+ # list the info about the a key, in colon format, to stdout

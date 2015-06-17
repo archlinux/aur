@@ -1,0 +1,25 @@
+--- Makefile.orig	2013-06-07 13:02:23.123944233 -0300
++++ Makefile	2013-06-07 13:02:43.351065809 -0300
+@@ -36,17 +36,17 @@
+ # this target is to be called from the tarball, not from the git
+ # working dir!
+ install: all installman
+-	mkdir -p $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/sbin
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/monkeysphere/m $(DESTDIR)$(PREFIX)/share/monkeysphere/mh $(DESTDIR)$(PREFIX)/share/monkeysphere/ma $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions
+ 	mkdir -p $(DESTDIR)$(ETCPREFIX)/etc/monkeysphere
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/monkeysphere
+ 	printf "Monkeysphere %s\n" $(MONKEYSPHERE_VERSION) > $(DESTDIR)$(PREFIX)/share/monkeysphere/VERSION
+ 	install src/monkeysphere $(DESTDIR)$(PREFIX)/bin
+ 	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/bin/monkeysphere
+-	install src/monkeysphere-host $(DESTDIR)$(PREFIX)/sbin
+-	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/sbin/monkeysphere-host
+-	install src/monkeysphere-authentication $(DESTDIR)$(PREFIX)/sbin
+-	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/sbin/monkeysphere-authentication
++	install src/monkeysphere-host $(DESTDIR)$(PREFIX)/bin
++	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/bin/monkeysphere-host
++	install src/monkeysphere-authentication $(DESTDIR)$(PREFIX)/bin
++	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/bin/monkeysphere-authentication
+ 	install src/monkeysphere-authentication-keys-for-user $(DESTDIR)$(PREFIX)/share/monkeysphere
+ 	install -m 0644 src/share/common $(DESTDIR)$(PREFIX)/share/monkeysphere
+ 	install -m 0644 src/share/defaultenv $(DESTDIR)$(PREFIX)/share/monkeysphere

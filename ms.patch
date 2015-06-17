@@ -1,0 +1,11 @@
+--- a/src/monkeysphere	2014-08-06 19:27:38.000000000 +0200
++++ b/src/monkeysphere	2014-12-07 23:22:52.903467885 +0100
+@@ -62,7 +62,7 @@
+ 
+ # user gpg command to define common options
+ gpg_user() {
+-    LC_ALL=C gpg --fixed-list-mode --no-greeting --quiet --no-tty "$@"
++    LC_ALL=C gpg1 --fixed-list-mode --no-greeting --quiet --no-tty "$@"
+ }
+ 
+ # output the ssh fingerprint of a gpg key
