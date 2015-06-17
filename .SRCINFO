@@ -1,0 +1,24 @@
+pkgbase = archweb-git
+	pkgdesc = Arch website code
+	pkgver = 1911.ffaa2cf
+	pkgrel = 1
+	url = http://projects.archlinux.org/archweb.git/
+	install = archweb-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2-django
+	depends = python2-south
+	depends = python2-bencode
+	depends = python2-memcached
+	depends = python2-pyinotify
+	depends = python2-psycopg2
+	depends = python2-markdown
+	depends = python2-pytz
+	depends = pgpdump-git
+	source = archweb::git://projects.archlinux.org/archweb.git
+	md5sums = SKIP
+
+pkgname = archweb-git
+

@@ -1,0 +1,22 @@
+
+post_install() {
+
+echo "1. Copy local_settings.py.example to local_settings.py and modify."
+echo "   Make sure to uncomment the appropriate db section (either sqlite or mysql)."
+echo ""
+echo " 2. Sync the database to create it."
+echo "    $ python manage.py syncdb"
+echo ""
+echo " 3. Load the fixtures to prepopulate some data."
+echo "    $ python manage.py loaddata arches.json repos.json"
+echo ""
+echo " 4. Use the following commands to start a service instance"
+echo "    $ python manage.py runserver"
+echo ""
+echo " 5. To optionally populate the database with real data:"
+echo "    $ wget ftp://ftp.archlinux.org/core/os/i686/core.db.tar.gz"
+echo "    $ scripts/reporead.py i686 ./core.db.tar.gz"
+echo ""
+echo "    (alter architecture and repo to get x86_64 and extra packages if needed)"
+}
+
