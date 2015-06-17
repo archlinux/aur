@@ -1,0 +1,15 @@
+pkgbase = uefivars-git
+	pkgdesc = A tool to populate UEFI Runtime Variables. Requires the kernel module efivars to be loaded.
+	pkgver = r1.1f22f91
+	pkgrel = 1
+	url = https://github.com/fpmurphy/Various/tree/master/uefivars-2.0
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = efibootmgr
+	source = git://github.com/fpmurphy/Various
+	sha1sums = SKIP
+
+pkgname = uefivars-git
+
