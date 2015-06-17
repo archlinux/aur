@@ -22,7 +22,7 @@ source=("git+https://github.com/knossos-project/knossos.git"
 	"knossos-git.desktop"
 )
 md5sums=('SKIP'
-         '7d21e73633da771937198884e435d605')
+         '85ae9c1721e627ccbe4eb850dcb7c42d')
 
 pkgver() {
 	cd "knossos"
