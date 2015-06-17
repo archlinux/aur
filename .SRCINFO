@@ -1,0 +1,12 @@
+pkgbase = unsimgcr
+	pkgdesc = Tool to encrypt LPC313x boot images as per boot ROM requirements
+	pkgver = 20110518
+	pkgrel = 1
+	url = http://www.lpclinux.com/LPC313x/LPC313xGettingstartedELDK
+	arch = i686
+	arch = x86_64
+	source = ftp://ftp.lpclinux.com/lpc313x/misc/unsimgcr_src.tar
+	sha1sums = c9b3b8f712a09e1820111ea941f8741fa5d82c12
+
+pkgname = unsimgcr
+
