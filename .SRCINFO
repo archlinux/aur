@@ -1,0 +1,17 @@
+pkgbase = kcm_webcam
+	pkgdesc = A modified version of Password & User Account section
+	pkgver = 0.2.2.1
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/KCM+webcam+support+?content=119405
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = opencv
+	source = http://kde-apps.org/CONTENT/content-files/119405-kcm.tar.gz
+	md5sums = 9c00bbdd5a9857c1d98cc2b29bccd6c6
+
+pkgname = kcm_webcam
+
