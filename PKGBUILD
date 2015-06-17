@@ -4,9 +4,9 @@
 
 pkgname="dcron"
 pkgver="4.5"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="dillon's lightweight cron daemon"
-arch=("any")
+arch=("i686" "x86_64" "armv6h")
 license=("GPL")
 url="http://www.jimpryor.net/linux/dcron.html"
 backup=("var/spool/cron/root" "etc/conf.d/crond")
