@@ -1,0 +1,15 @@
+pkgbase = rosa-media-player-plugin
+	pkgdesc = The new multimedia player(based on SMPlayer) with clean and elegant UI (mozilla plugin only).
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.rosalab.ru/blogs/rosa-media-player-10-beta
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mplayer
+	depends = qt4
+	source = http://file-store.rosalinux.ru/download/24ab538782cffdb15e17a95cce32ba1aa7df0cd9
+	md5sums = 258928a989192d9abb92030cb1b998b0
+
+pkgname = rosa-media-player-plugin
+
