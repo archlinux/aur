@@ -1,0 +1,17 @@
+pkgbase = gibsonclient-git
+	pkgdesc = Client for Gibson - a high efficiency, tree based memory cache server.
+	pkgver = r29.2bd52b0
+	pkgrel = 1
+	url = http://gibson-db.in/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	source = git://github.com/evilsocket/libgibsonclient
+	source = git://github.com/antirez/linenoise
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = gibsonclient-git
+
