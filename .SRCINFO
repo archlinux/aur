@@ -1,0 +1,20 @@
+pkgbase = ndpi-xplico-svn
+	pkgdesc = Open and Extensible GPLv3 Deep Packet Inspection Library
+	pkgver = 6937
+	pkgrel = 1
+	url = http://www.ntop.org/products/ndpi/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	conflicts = ndpi
+	conflicts = ndpi-svn
+	replaces = ndpi
+	replaces = ndpi-svn
+	source = ndpi::svn+https://svn.ntop.org/svn/ntop/trunk/nDPI#revision=6937
+	source = patch
+	md5sums = SKIP
+	md5sums = 4584b764ef17faa91345808eca48b9ba
+
+pkgname = ndpi-xplico-svn
+
