@@ -1,0 +1,16 @@
+pkgbase = mtg_deck_composer
+	pkgdesc = Proxy generator for Magic: The Gathering cards written in python using ImageMagick
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/the-isz/mtg_deck_composer
+	arch = any
+	license = GPL
+	depends = python
+	depends = imagemagick
+	depends = ghostscript
+	options = !emptydirs
+	source = https://github.com/the-isz/mtg_deck_composer/tarball/0.1
+	md5sums = 87dbd58c1a16de73ec09de8697d3bd80
+
+pkgname = mtg_deck_composer
+
