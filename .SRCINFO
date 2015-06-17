@@ -1,0 +1,14 @@
+pkgbase = awesome-revelation-git
+	pkgdesc = Show all clients per screen in Awesome window manager
+	pkgver = 2014.02.19.g1d705ce
+	pkgrel = 1
+	url = https://github.com/guotsuan/awesome-revelation.git
+	arch = any
+	license = GPL3
+	depends = awesome
+	conflicts = awesome-revelation
+	source = git+https://github.com/guotsuan/awesome-revelation.git
+	md5sums = SKIP
+
+pkgname = awesome-revelation-git
+
