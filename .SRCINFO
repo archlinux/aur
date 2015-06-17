@@ -1,0 +1,13 @@
+pkgbase = eric4-i18n-it
+	pkgdesc = Italian translation for the Eric4 IDE
+	pkgver = 4.5.21
+	pkgrel = 1
+	url = http://eric-ide.python-projects.org/index.html
+	arch = any
+	license = GPL
+	depends = eric4
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-it-4.5.21.tar.gz
+	md5sums = f7d616c86c1781745d62bb2445363569
+
+pkgname = eric4-i18n-it
+
