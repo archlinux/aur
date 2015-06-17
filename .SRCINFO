@@ -1,0 +1,19 @@
+pkgbase = shairport-git
+	pkgdesc = Emulates an AirPort Express for the purpose of streaming music from iTunes and compatible iPods and iPhones
+	pkgver = r475.d679d19
+	pkgrel = 1
+	url = http://github.com/abrasive/shairport
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libao
+	depends = openssl
+	depends = libpulse
+	depends = avahi
+	backup = etc/conf.d/shairport
+	source = git://github.com/abrasive/shairport.git
+	sha1sums = SKIP
+
+pkgname = shairport-git
+
