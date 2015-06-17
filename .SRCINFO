@@ -1,0 +1,18 @@
+pkgbase = tup-git
+	pkgdesc = A fast, file-based build system
+	pkgver = 0.7.1.r8.g6238fb6
+	pkgrel = 1
+	url = http://gittup.org/tup/index.html
+	install = tup.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = fuse
+	provides = tup
+	conflicts = tup
+	source = git://github.com/gittup/tup
+	sha512sums = SKIP
+
+pkgname = tup-git
+

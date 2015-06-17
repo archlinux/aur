@@ -1,0 +1,30 @@
+suid_set=tmp/tup.upgrade.suid_set
+binary=/usr/bin/tup
+
+suid_msg() {
+  if [ -f $suid_set ]; then
+    echo "$binary has suid bit set. It allows you to run commands in chroot-ed environment (e.g. for full dependency tracking)."
+    echo "See 'man tup' for more information."
+  else
+    echo "If you want to be able to run commands in chroot-ed environment (e.g. for full dependency tracking)" \
+         "you need to set suid bit on tup binary: 'sudo chmod +s $binary'."
+    echo "See 'man tup' for more information."
+  fi
+}
+
+pre_upgrade() {
+  [ -u $binary ] && touch $suid_set
+  return 0
+}
+
+post_install() {
+  suid_msg
+  return 0
+}
+
+post_upgrade() {
+  suid_msg
+  [ -f $suid_set ] && chmod +s $binary
+  rm -f $suid_set
+  return 0
+}
