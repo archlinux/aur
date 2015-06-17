@@ -1,0 +1,14 @@
+pkgbase = python2-pyuserinput-git
+	pkgdesc = A module for cross-platform control of the mouse and keyboard in python that is simple to install and use.
+	pkgver = 86.9fd2879
+	pkgrel = 1
+	url = https://github.com/SavinaRoja/PyUserInput
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-xlib
+	source = git+https://github.com/SavinaRoja/PyUserInput.git
+	md5sums = SKIP
+
+pkgname = python2-pyuserinput-git
+
