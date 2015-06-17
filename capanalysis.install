@@ -1,0 +1,39 @@
+ 
+pre_install() {
+  if [ -f /opt/capanalysis/cfg/canalysis.cfg ]; then
+            if [ -d /opt/capanalysis/www/app/tmp/cache ]; then
+                rm -rf /opt/capanalysis/www/app/tmp/cache/models/*
+                rm -rf /opt/capanalysis/www/app/tmp/cache/views/*
+                rm -rf /opt/capanalysis/www/app/tmp/sessions/*
+                rm -rf /opt/capanalysis/www/app/tmp/logs/*
+            fi
+            cp /opt/capanalysis/cfg/canalysis.cfg /opt/capanalysis/cfg/canalysis.cfg.backup
+  fi
+
+}
+ post_install() {
+  if [ -f /opt/capanalysis/cfg/canalysis.cfg.backup ]; then
+            # upgrade DB
+            mv /opt/capanalysis/cfg/canalysis.cfg /opt/capanalysis/cfg/canalysis.cfg.last
+            cp /opt/capanalysis/cfg/canalysis.cfg.backup /opt/capanalysis/cfg/canalysis.cfg
+  fi
+      
+    chown -R http:http /opt/capanalysis
+    echo "Rember to paste this line"
+    echo "   # Capanalysis"
+    echo "   Include conf/extra/httpd-capana.conf"
+    echo "in /etc/httpd/conf/httpd.conf"
+    echo "Uncomment sqlite and pear in /etc/php/php.ini"
+    echo "Set the paramater date.timezone in your php.ini: for example date.timezone = "Europe/Rome""
+}
+
+post_remove(){
+   if [ -d /opt/capanalysis ]; then
+            rm -rf /opt/capanalysis
+            echo 'drop database capanalysis;' > /tmp/dbrm
+            echo 'drop user capana;' >> /tmp/dbrm
+            sudo -u postgres psql -f /tmp/dbrm
+            rm -f /tmp/dbrm
+   fi
+  echo "Don't forget to restore php.ini and httpd.conf files"
+}

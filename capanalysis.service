@@ -1,0 +1,13 @@
+[Unit]
+Description=Capanalysis
+After=network.target syslog.target
+
+[Service]
+Type=forking
+PrivateTmp=true
+ExecStart=/opt/capanalysis/bin/capanalysis -c /opt/capanalysis/cfg/canalysis.cfg
+Restart=always
+PIDFile=/var/run/capana.pid
+
+[Install]
+WantedBy=multi-user.target
