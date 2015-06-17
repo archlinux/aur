@@ -1,0 +1,13 @@
+pkgbase = linux-tegra
+	pkgdesc = A computer program that allows device makers and hardware developers to interact at a low level (read/write/erase/repartition/reformat) with the storage (e.g. eMMC) connected to the NVIDIA Tegra chip on a low level from a connected PC
+	pkgver = 19.3.0
+	pkgrel = 1
+	url = https://developer.nvidia.com/linux-tegra
+	arch = x86_64
+	license = NVIDIA
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	source = https://developer.nvidia.com/sites/default/files/akamai/mobile/files/L4T/Tegra124_Linux_R19.3.0_armhf.tbz2
+
+pkgname = linux-tegra
+
