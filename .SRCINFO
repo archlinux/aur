@@ -1,0 +1,31 @@
+pkgbase = ossim-svn
+	pkgdesc = OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data.
+	pkgver = 21089
+	pkgrel = 1
+	url = http://svn.osgeo.org/ossim/
+	install = ossim.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	makedepends = minizip
+	depends = freetype2
+	depends = gdal
+	depends = libgeotiff
+	depends = libjpeg
+	depends = libtiff
+	depends = openscenegraph28
+	depends = openjpeg
+	depends = gpstk-bin
+	depends = doxygen
+	optdepends = qt
+	optdepends = openjdk6
+	provides = ossim
+	conflicts = ossim
+	source = ossim.sh
+	md5sums = cb85c216a099b10f057cddeeae4a57fb
+
+pkgname = ossim-svn
+
