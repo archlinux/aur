@@ -1,0 +1,17 @@
+pkgbase = notipy
+	pkgdesc = A minimalistic gtk3 notification daemon written in python.
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = https://github.com/the-isz/notipy
+	arch = any
+	license = GPL
+	depends = python2-gobject
+	depends = gtk3
+	depends = dbus-python
+	provides = notification-daemon
+	options = !emptydirs
+	source = https://github.com/the-isz/notipy/tarball/0.2.2
+	md5sums = d76a043e979f5ff0980e005b2f72104f
+
+pkgname = notipy
+
