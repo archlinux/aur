@@ -1,0 +1,11 @@
+/srv/namecoin/debug.log
+{
+        rotate 5
+        copytruncate
+        daily
+        missingok
+        notifempty
+        compress
+        delaycompress
+        sharedscripts
+}

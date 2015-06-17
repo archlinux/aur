@@ -1,0 +1,96 @@
+post_install() {
+  _mkuser
+  _mkssl
+  chown -R namecoin:namecoin /etc/namecoin /srv/namecoin
+  printf "$namecoin\n"
+}
+
+post_upgrade() {
+  _mkuser
+  chown -R namecoin:namecoin /etc/namecoin /srv/namecoin
+  printf "$namecoin\n"
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /srv/namecoin
+}
+
+_mkuser() {
+  getent passwd namecoin &>/dev/null || {
+    echo -n "Creating namecoin user... "
+    grep -E "^namecoin:" /etc/group >/dev/null || groupadd namecoin
+    useradd -m -d /etc/namecoin -g namecoin -s /usr/bin/nologin namecoin 2>/dev/null
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing namecoin user... "
+  userdel -rf namecoin 2>/dev/null
+  echo "done"
+}
+
+_mkssl() {
+  echo -n "Enabling SSL..."
+  mkdir -p /{etc,srv}/namecoin
+  openssl genrsa -out /etc/namecoin/server.pem 2048
+  expect <<EOF | perl -ne 'print if /-----BEGIN\sCERTIFICATE-----/../-----END\sCERTIFICATE-----/' > /etc/namecoin/server.cert
+    spawn openssl req -new -x509 -nodes -sha1 -days 3650 -key /etc/namecoin/server.pem
+    expect "Country*" {
+      send "\r"
+    }
+    expect "State*" {
+      send "\r"
+    }
+    expect "Locality*" {
+      send "\r"
+    }
+    expect "Organization*" {
+      send "\r"
+    }
+    expect "Organizational*" {
+      send "\r"
+    }
+    expect "Common*" {
+      send "\r"
+    }
+    expect "Email*" {
+      send "\r"
+    }
+    expect eof
+EOF
+  echo "done"
+}
+
+read -d '' namecoin <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Namecoin Core                                                      ##
+##  ____________                                                      ##
+##                                                                    ##
+##  To start namecoin-core:                                            ##
+##                                                                    ##
+##      # systemctl start namecoin                                     ##
+##                                                                    ##
+##  To communicate with namecoin-core as a normal user:                ##
+##                                                                    ##
+##      $ mkdir -p ~/.namecoin                                         ##
+##      $ cat > ~/.namecoin/namecoin.conf <<'EOF'                       ##
+##      rpcconnect=127.0.0.1                                          ##
+##      rpcport=8336                                                  ##
+##      rpcuser=namecoin                                               ##
+##      rpcpassword=secret                                            ##
+##      rpcssl=1                                                      ##
+##      EOF                                                           ##
+##                                                                    ##
+##      $ namecoind getmininginfo                                      ##
+##                                                                    ##
+##  Config:        /etc/namecoin/namecoin.conf                          ##
+##  Blockchain:    /srv/namecoin                                       ##
+##  Documentation: /usr/share/doc/namecoin                             ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
