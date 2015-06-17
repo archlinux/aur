@@ -1,0 +1,21 @@
+pkgbase = thrift-git
+	pkgdesc = Scalable cross-language services framework for IPC/RPC
+	pkgver = 0.9.2.r3833.4f4b15b
+	pkgrel = 1
+	url = http://thrift.apache.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = boost
+	makedepends = libevent
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = thrift
+	conflicts = thrift
+	replaces = thrift
+	source = git://github.com/apache/thrift
+	sha1sums = SKIP
+
+pkgname = thrift-git
+
