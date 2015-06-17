@@ -1,0 +1,28 @@
+pkgbase = gnome-break-timer-git
+	pkgdesc = The new typing break for GNOME, (replaces gnome-typing-break-bzr & drwright)
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.gnome.org/GnomeBreakTimer
+	install = gnome-break-timer-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = vala
+	makedepends = git
+	makedepends = intltool
+	depends = libnotify
+	depends = libcanberra
+	depends = libgee06
+	depends = json-glib
+	depends = libxtst
+	depends = gtk3
+	conflicts = gnome-typing-break-bzr
+	replaces = gnome-typing-break-bzr
+	options = !makeflags
+	source = git://git.gnome.org/gnome-break-timer.git
+	source = gnome-break-timer-git.install
+	sha256sums = SKIP
+	sha256sums = b9f8bdaa058b458951112febd3210674a78cf8cbd1fa48ef6b166ccd55603da8
+
+pkgname = gnome-break-timer-git
+
