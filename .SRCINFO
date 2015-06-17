@@ -1,0 +1,13 @@
+pkgbase = squirrelmail-plugin-secure_login
+	pkgdesc = Plugin for squirrelmail. Automatically enables a secure HTTPS/SSL-encrypted connection for login page if it hasn't already been requested by the referring hyperlink or bookmark
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.squirrelmail.org/plugin_view.php?id=61
+	arch = any
+	license = GPLv2
+	depends = squirrelmail>=1.2.8
+	source = http://www.squirrelmail.org/plugins/secure_login-1.4-1.2.8.tar.gz
+	md5sums = e511a8e78beab042b123d468ea7e0df9
+
+pkgname = squirrelmail-plugin-secure_login
+
