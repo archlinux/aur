@@ -1,0 +1,21 @@
+pkgbase = clonezilla-experimental
+	pkgdesc = The Free and Open Source Software for Disk Imaging and Cloning
+	pkgver = 3.10.2
+	pkgrel = 1
+	url = http://clonezilla.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = partclone
+	depends = ntfsprogs
+	depends = coreutils
+	depends = partimage
+	depends = drbl-experimental
+	depends = pigz
+	depends = sshfs
+	provides = clonezilla
+	source = http://free.nchc.org.tw/drbl-core/src/unstable/clonezilla-3.10.2.tar.bz2
+	md5sums = 48ade9bbee5a86fbeae61705955a2edf
+
+pkgname = clonezilla-experimental
+
