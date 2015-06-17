@@ -1,0 +1,20 @@
+pkgbase = execline-musl
+	pkgdesc = A (non-interactive) scripting language, like sh. Statically linked against musl.
+	pkgver = 2.0.2.0
+	pkgrel = 2
+	url = http://www.skarnet.org/software/execline
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = skalibs-musl>=2.2.1.0
+	makedepends = musl
+	provides = execline=2.0.2.0
+	options = staticlibs
+	source = http://www.skarnet.org/software/execline/execline-2.0.2.0.tar.gz
+	source = execlineb.eb
+	sha256sums = 73aa2db6e253f1821361033028d9b77733b799f93e4d7d477e4230534d7fce32
+	sha256sums = 8fe12757dc79669237d23f2a883ba60215b0cb9dd51c597783d628cadcf1af8e
+
+pkgname = execline-musl
+
