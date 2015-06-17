@@ -1,0 +1,17 @@
+pkgbase = jackcpp
+	pkgdesc = Some c++ classes which wrap the Jack audio io api and lock-free ring buffer.
+	pkgver = 6.a0a3fa3
+	pkgrel = 1
+	url = http://x37v.info/jack_cpp/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = jack
+	depends = swig
+	depends = doxygen
+	source = jackcpp::git://github.com/x37v/jackcpp.git
+	md5sums = SKIP
+
+pkgname = jackcpp
+
