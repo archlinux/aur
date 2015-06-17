@@ -1,5 +1,6 @@
-# Maintainer: Oozyslug <oozyslug@gmail.com>
-# Contributor: Anntoin Wilkinson <anntoin@gmail.com>
+# Submitter: oozyslug <oozyslug at gmail dot com>
+# Maintainer: Oozyslug <oozyslug at gmail dot com>
+# Contributor: koral <koral at mailoo dot org>
 
 pkgname=nix
 pkgver=1.9
