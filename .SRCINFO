@@ -1,0 +1,18 @@
+pkgbase = python2-desktopleapr
+	pkgdesc = A Leap Motion Desktop Navigator for Linux
+	pkgver = 2.a7a0789
+	pkgrel = 1
+	url = https://github.com/hsocasnavarro/DesktopLeapr
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = python2-xlib
+	depends = leap-motion-sdk
+	optdepends = xdotool
+	source = git+https://github.com/hsocasnavarro/DesktopLeapr.git
+	source = desktopleapr
+	md5sums = SKIP
+	md5sums = 2b5e6bd36251bfb6aa528f5b85a0b056
+
+pkgname = python2-desktopleapr
+
