@@ -1,0 +1,12 @@
+pkgbase = safe-iop
+	pkgdesc = Provides a collection of (macro-based) functions for performing safe integer operations across platform and architecture with a straightforward API
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://code.google.com/p/safe-iop/
+	arch = any
+	license = BSD
+	source = https://safe-iop.googlecode.com/files/safe-iop-0.3.1.tgz
+	sha1sums = 1d401b94c04b958a5350e1079781bbfb00cb1a69
+
+pkgname = safe-iop
+
