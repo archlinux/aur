@@ -1,0 +1,15 @@
+pkgbase = netsukuku
+	pkgdesc = an experimental peer-to-peer routing system
+	pkgver = 0.0.9b
+	pkgrel = 2
+	url = http://netsukuku.freaknet.org
+	install = netsukuku.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	source = http://netsukuku.freaknet.org/files/packages/netsukuku-0.0.9b-i486-9.tgz
+	md5sums = 1ef4ce3eed387d5e69c6b1a6d2bd036f
+
+pkgname = netsukuku
+

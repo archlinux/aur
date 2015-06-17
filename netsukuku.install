@@ -1,0 +1,22 @@
+# arg 1: the netsukuku version
+post_install() {
+  echo "To start netsukuku daemon: /etc/rc.d/ntkd start"
+  echo "For help: /etc/rc.d/ntkd help"
+  echo "To configure the program edit /etc/netsukuku/netsukuku.conf"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  /etc/rc.d/ntkd stop
+}
+
+op=$1
+shift
+
+$op $*
