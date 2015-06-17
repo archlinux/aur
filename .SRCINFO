@@ -1,0 +1,33 @@
+pkgbase = sound-juicer-git
+	pkgdesc = A cd ripper application
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.gnome.org
+	install = sound-juicer-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = yelp-tools
+	makedepends = gnome-common
+	makedepends = appstream-glib
+	depends = libmusicbrainz5
+	depends = libdiscid
+	depends = gtk3
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = brasero
+	depends = hicolor-icon-theme
+	depends = iso-codes
+	optdepends = gst-plugins-ugly: for MP3 encoding
+	optdepends = gst-plugins-bad: for Opus encoding
+	conflicts = sound-juicer
+	replaces = sound-juicer
+	options = !emptydirs
+	source = git://git.gnome.org/sound-juicer.git
+	source = sound-juicer-git.install
+	sha256sums = SKIP
+	sha256sums = b9e4f14cd493e0b9066a4a22e8a477bbfda18999f994524454b42249646461ee
+
+pkgname = sound-juicer-git
+
