@@ -1,0 +1,17 @@
+pkgbase = matwm2
+	pkgdesc = A nice tiling or floating window manager
+	pkgver = 0.1.2pre3
+	pkgrel = 1
+	url = http://squidjam.com/matwm/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxinerama
+	depends = libxft
+	source = http://www.squidjam.com/matwm/pub/matwm2-0.1.2pre3.tar.gz
+	source = matwm2.desktop
+	md5sums = 7e043ac26ea6c8b29fa7119825ba488d
+	md5sums = 8b9993b93fe1d5337b631165db7252c9
+
+pkgname = matwm2
+
