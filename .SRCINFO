@@ -1,0 +1,21 @@
+pkgbase = setbfree-git
+	pkgdesc = A DSP Tonewheel Organ emulator
+	pkgver = 0.8.0.8.g90e925d
+	pkgrel = 1
+	url = http://setbfree.org/
+	install = setbfree.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = lv2
+	depends = ftgl
+	depends = desktop-file-utils
+	depends = pango
+	depends = ttf-bitstream-vera
+	provides = setbfree
+	conflicts = setbfree
+	source = setbfree::git+https://github.com/pantherb/setBfree.git
+	md5sums = SKIP
+
+pkgname = setbfree-git
+

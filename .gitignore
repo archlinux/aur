@@ -1,0 +1,7 @@
+setbfree
+src
+pkg
+setbfree-*.tar.xz
+setbfree-*.src.tar.gz
+.AURINFO
+
