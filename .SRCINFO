@@ -1,0 +1,14 @@
+pkgbase = android-armv7a-eabi-system-image-21
+	pkgdesc = Android ARM EABI v7a System Image, API-21
+	pkgver = 5.0_r01
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-platform-21
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/android/sysimg_arm-21_r01.zip
+	sha1sums = 74a74b89a06ffba03448ccdfbb414c49026e660c
+
+pkgname = android-armv7a-eabi-system-image-21
+
