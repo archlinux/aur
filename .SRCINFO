@@ -1,0 +1,13 @@
+pkgbase = fbruteforcer
+	pkgdesc = Facebook bruteforcer tools
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://gunslingerc0de.wordpress.com/
+	arch = any
+	license = GPL
+	depends = python2-mechanize
+	source = fbruteforcer.py
+	md5sums = 0e3175a55ce7e2b9801f06bc936cd311
+
+pkgname = fbruteforcer
+
