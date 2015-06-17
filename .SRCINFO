@@ -1,16 +1,29 @@
 pkgbase = python-falcon
 	pkgdesc = An unladen web framework for building APIs and app backends.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/falconry/falcon
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-requests
+	checkdepends = python-six
+	checkdepends = python-testtools
+	checkdepends = python-yaml
+	checkdepends = python2-nose
+	checkdepends = python2-requests
+	checkdepends = python2-six
+	checkdepends = python2-testtools
+	checkdepends = python2-yaml
 	makedepends = cython
 	makedepends = python-setuptools
 	makedepends = cython2
 	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/source/f/falcon/falcon-0.3.0.tar.gz
+	source = fix-test_cookies.patch
 	sha256sums = f27602b5a2ff8ee40b3179b3f5bdb9af09efbcd9af9bb7f01ad6a28ad0fc3b82
+	sha256sums = 0e6c1a8a9952846c6cd4560e7fe891f9d3184438c80743a45ea71cc7b98a659a
 
 pkgname = python-falcon
 	depends = python-six>=1.4.0
