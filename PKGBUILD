@@ -16,7 +16,7 @@ replaces=('vice')
 source=(http://downloads.sourceforge.net/project/vice-emu/releases/${_pkgname}-${pkgver}.tar.gz no-fc-cache.patch
 giflib.patch no-lib64.patch vice.desktop vice icons.tar.gz)
 
-md5sums=('b017647a0c159bbe43cdb81762d1c577' 'c7ba8ff930bee0e41565f4a1d9594922' 'da055d4e65b74a62bfb28e2d1dcd94a5' '1aced7ac8b2f33bad2b39e5582e76135' '23fa249a212e3f6c0d6791d2bd96c425' '67b09c727f231d21bdb1e9a69db7307d' '768377ae66a4bb3f15f93c18c592b689')
+md5sums=('b017647a0c159bbe43cdb81762d1c577' 'c7ba8ff930bee0e41565f4a1d9594922' 'da055d4e65b74a62bfb28e2d1dcd94a5' '1aced7ac8b2f33bad2b39e5582e76135' '23fa249a212e3f6c0d6791d2bd96c425' 'ed5f9c2d4fdd51bc8c0388c1bfde56f3' '768377ae66a4bb3f15f93c18c592b689')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
