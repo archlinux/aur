@@ -1,0 +1,26 @@
+pkgbase = mosh-git
+	pkgdesc = Mobile shell, surviving disconnects with local echo and line editing, development version
+	pkgver = 20150611
+	pkgrel = 1
+	url = http://mosh.mit.edu/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = git
+	depends = protobuf
+	depends = ncurses
+	depends = zlib
+	depends = openssh
+	depends = perl
+	depends = perl-io-tty
+	depends = libutempter
+	optdepends = perl-io-socket-ip: for IPv6 support
+	optdepends = vte-mosh-fix: to work properly in vte
+	optdepends = vte3-mosh-fix: to work properly in vte3
+	conflicts = mosh
+	source = git+https://github.com/keithw/mosh.git
+	md5sums = SKIP
+
+pkgname = mosh-git
+
