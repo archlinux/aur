@@ -1,79 +1,28 @@
-#!/bin/bash
+#!/bin/sh
 
-title="VICE: Which emulator do you want to use ?"
-emulator_type=`matedialog  --width="530" --height="275" --title="$title" --list --radiolist --column="Click Here" \
-    --column="Emulator Type" --column="Description" \
-    FALSE "x64" "C64 emulator"\
-    FALSE "x64dtv" "C64 Direct-to-TV (DTV) emulator"\
-    FALSE "x128" "C128 emulator"\
-    FALSE "xvic" "VIC20 emulator"\
-    FALSE "xpet" "PET emulator"\
-    FALSE "xplus4" "PLUS4 emulator"\
-    FALSE "xcbm2" "CBM-II emulator"\
-    | sed 's/ max//g' `
+Xdialog --title "VICE" \
+        --menu "VICE is an emulator for Commodore\n\
+computers. It emulates the C64, the C128,\n\
+the VIC20, almost all PET models, the PLUS4\n\
+and the CBM-II.\n\\n\
+Choose the emulator you like to run:" 24 60 6 \
+        "x64"  "- C64 emulator" \
+	"x64dtv" "- C64 Direct-to-TV (DTV) emulator" \
+        "x128" "- C128 emulator" \
+        "xvic" "- VIC20 emulator" \
+        "xpet" "- PET emulator" \
+        "xplus4" "- PLUS4 emulator" \
+        "xcbm2"  "- CBM-II emulator" 2> /tmp/menu.tmp.$$
 
-echo "$emulator_type chosen as the Emulator Type!."
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
 
-#user must select a target type (Check if they cancelled)
-if [ ! "$emulator_type" ]; then
-                           exit
-fi
-
-######### This part takes the selection and applies it!  #############
-
-if [ "$emulator_type" = "x64" ]
-then
-        # Do x64 here.
-        x64 
-
-elif [ "$emulator_type" = "x64dtv" ]
-then
-        # Do x64dtv here.
-        x64dtv
-
-elif [ "$emulator_type" = "x128" ]
-then
-        # Do x128 here.
-        x128 
-
-
-
-elif [ "$emulator_type" = "xvic" ]
-then
-        # Do xvic here.
-        xvic 
-
-
-
-elif [ "$emulator_type" = "xpet" ]
-then
-        # Do xpet here.
-        xpet 
-
-
-
-elif [ "$emulator_type" = "xplus4" ]
-then
-        # Do xplus4 here.
-        xplus4 
-
-
-
-elif [ "$emulator_type" = "xcbm2" ]
-then
-        # Do xcbm2 here.
-        xcbm2 
-
-else
-
-#if [ "$exit_type" = "Cancel" ]
-#then
-        # Do Cancel here.
-    sleep 1 | matedialog --progress --percentage=95 --title=Cancelling Exit --auto-close --auto-kill --no-cancel --width=300
-fi
-
-
-
-
-
-
+case $retval in
+  0)
+    $choice;;
+  1)
+    ;;
+  255)
+    ;;
+esac

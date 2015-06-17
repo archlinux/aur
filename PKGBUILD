@@ -7,7 +7,7 @@ pkgdesc="A Versatile Commodore Emulator with menu entry , icons and dialog"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
-depends=('giflib' 'lame' 'libjpeg' 'libpng' 'libxrandr' 'libnet' 'libpcap' 'vte' 'gtkdialog')
+depends=('giflib' 'lame' 'libjpeg' 'libpng' 'libxrandr' 'libnet' 'libpcap' 'vte' 'xdialog')
 makedepends=('xorg-font-utils' 'pkg-config')
 optdepends=('pulseaudio' 'pulseaudio-alsa' 'alsa-lib')
 provides=("vice=$pkgver")
