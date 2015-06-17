@@ -1,0 +1,24 @@
+post_install() {
+	echo ""
+	echo "You can now simply run the 'serve-branches' with the branch you want to"
+	echo "serve on the command line:"
+	echo ""
+	echo "  ./serve-branches ~/path/to/branch"
+	echo ""
+	echo "The script listens on port 8080 so head to http://localhost:8080/ in"
+	echo "your browser to see the branch.  You can also pass a directory that"
+	echo "contains branches to the script, and it will serve a very simple"
+	echo "directory listing at other pages."
+	echo ""
+	echo "Consult to /usr/share/doc/loggerhead/README.txt for further information."
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+op=$1
+shift
+
+$op $*

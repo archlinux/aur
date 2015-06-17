@@ -1,0 +1,18 @@
+pkgbase = loggerhead
+	pkgdesc = A web viewer for projects in bazaar.
+	pkgver = 1.18.1
+	pkgrel = 3
+	url = https://launchpad.net/loggerhead
+	install = loggerhead.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python
+	depends = python2-simpletal
+	depends = python2-paste>=1.2
+	optdepends = python-paste-deploy: needed when proxying through Apache
+	source = http://launchpad.net/loggerhead/1.18/1.18.1/+download/loggerhead-1.18.1.tar.gz
+	md5sums = bef897d4674967ef835d1183d587d34f
+
+pkgname = loggerhead
+
