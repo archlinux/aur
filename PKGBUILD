@@ -1,7 +1,7 @@
 # Maintainer: Félicien PILLOT <felicien.pillot@member.fsf.org>
 pkgname=fisoco
 pkgver=0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="a Finding, Sorting and Converting free software"
 url="https://github.com/Felandral/Fisoco"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ makedepends=('git' 'gtkmm3' 'intltool')
 conflicts=()
 replaces=()
 backup=()
-source=("${pkgname}-${pkgver}::git+http://github.com/Felandral/Fisoco#branch=master")
+source=("${pkgname}-${pkgver}::http://github.com/Felandral/Fisoco#branch=master")
 md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname-$pkgver"
