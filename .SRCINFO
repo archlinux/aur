@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-pulsar-yify-platbr
+	pkgdesc = Pulsar is an torrent finding and streaming engine for Kodi
+	pkgver = 0.0.4b
+	pkgrel = 1
+	url = https://github.com/platbr/
+	arch = any
+	license = GPL3
+	depends = kodi
+	options = !strip
+	source = https://github.com//platbr/script.pulsar.yify-platbr/archive/0.0.4b.tar.gz
+	md5sums = 9e36bb0f113fae6e427f029f0c69d29f
+
+pkgname = kodi-addon-pulsar-yify-platbr
+
