@@ -1,0 +1,17 @@
+pkgbase = libtermkey-git
+	pkgdesc = This library allows easy processing of keyboard entry from terminal-based programs. It handles all the necessary logic to recognise special keys, UTF-8 combining, and so on, with a simple interface.
+	pkgver = 0.r351.87a4d22
+	pkgrel = 1
+	url = http://www.leonerd.org.uk/code/libtermkey/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = libtermkey
+	conflicts = libtermkey
+	source = libtermkey-git::git://github.com/neovim/libtermkey.git
+	source = LICENSE::https://raw.githubusercontent.com/neovim/libtermkey/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = d2d251b07bfd2cf6b32cf392752975a693be89dd1f0baa712ee6b5e20b9c0835
+
+pkgname = libtermkey-git
+
