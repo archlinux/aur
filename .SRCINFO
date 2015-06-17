@@ -1,0 +1,18 @@
+pkgbase = s6-linux-utils-musl
+	pkgdesc = Tiny Linux-specific utilities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.skarnet.org/software/s6-linux-utils
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = skalibs
+	makedepends = libnl
+	makedepends = musl
+	provides = s6-linux-utils
+	source = http://www.skarnet.org/software/s6-linux-utils/s6-linux-utils-1.0.0.tar.gz
+	md5sums = 89efa44c5582a7d18d12baf0c3d26074
+
+pkgname = s6-linux-utils-musl
+
