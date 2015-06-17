@@ -1,0 +1,13 @@
+pkgbase = ssmalloc-git
+	pkgdesc = A Low-latency, Locality-conscious Memory Allocator with Stable Performance Scalability
+	pkgver = r11.47f69d4
+	pkgrel = 1
+	url = http://ipads.se.sjtu.edu.cn/ssmalloc
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = git://github.com/Naruil/SSMalloc
+	sha1sums = SKIP
+
+pkgname = ssmalloc-git
+
