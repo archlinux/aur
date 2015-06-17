@@ -1,0 +1,33 @@
+pkgbase = idjc
+	pkgdesc = Powerful client for individuals interested in streaming live radio shows
+	pkgver = 0.8.14
+	pkgrel = 2
+	url = http://idjc.sourceforge.net/
+	install = idjc.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = desktop-file-utils
+	depends = python2
+	depends = dbus-python
+	depends = mutagen
+	depends = jack
+	depends = pygtk
+	depends = vorbis-tools
+	depends = libsndfile
+	depends = libsamplerate
+	depends = glib2
+	depends = lame
+	depends = libmad
+	depends = ffmpeg
+	depends = flac
+	depends = speex
+	depends = libshout-idjc
+	depends = twolame
+	optdepends = mysql-python: Ampache and Prokyon 3 support
+	conflicts = idjc-git
+	source = http://downloads.sourceforge.net/idjc/idjc-0.8.14.tar.gz
+	md5sums = 0b1068b5be415a73288f8f9bd449c69c
+
+pkgname = idjc
+
