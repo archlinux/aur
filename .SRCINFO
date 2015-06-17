@@ -1,0 +1,17 @@
+pkgbase = kdm-plugin-pam-face-authentication
+	pkgdesc = PAM face auth - KDM plugin
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://code.google.com/p/pam-face-authentication
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = pam-face-authentication
+	source = http://pam-face-authentication.googlecode.com/files/kdm-plugin-pam-face-authentication-0.2.tar.gz
+	md5sums = 3174cb6915d8f08c02bd6858d9164779
+
+pkgname = kdm-plugin-pam-face-authentication
+
