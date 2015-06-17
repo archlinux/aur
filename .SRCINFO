@@ -1,0 +1,16 @@
+pkgbase = mtd-tools-git
+	pkgdesc = MTD userspace tools
+	pkgver = 928.dcea43e
+	pkgrel = 1
+	url = http://www.linux-mtd.infradead.org/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = util-linux
+	depends = lzo2
+	source = mtd-utils::git://git.infradead.org/mtd-utils.git
+	md5sums = SKIP
+
+pkgname = mtd-tools-git
+
