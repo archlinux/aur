@@ -1,0 +1,13 @@
+pkgbase = kdm-theme-archlinux-dark
+	pkgdesc = An Arch-Linux themed KDM greeter with user list selection box (Optimised for 1920x1200 displays, designed to seamlessly blend into the OxyArch Splash screen)
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Arch+Linux+Dark?content=156549
+	arch = any
+	license = CC-BY-SA
+	options = !strip
+	source = http://kde-look.org/CONTENT/content-files/156549-archlinux-dark.tar.gz
+	sha512sums = d7cb3dbee0de66a979578d21b4433bcdec5eed8556d6576b4fc875ce69677cc540527e33c6d233efdfc13fc71fceb75450dd92f860d1e2cd8cc4306b8ade00b5
+
+pkgname = kdm-theme-archlinux-dark
+
