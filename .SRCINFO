@@ -1,0 +1,16 @@
+pkgbase = kodi-addon-pulsar-provider-manager
+	pkgdesc = Provider manager for pulsar
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/mancuniancol/script.pulsar.eztv-mc
+	install = provider.install
+	arch = any
+	license = GPL3
+	depends = kodi
+	depends = kodi-addon-pulsar
+	options = !strip
+	source = https://github.com//mancuniancol/script.provider.manager/archive/3.0.tar.gz
+	md5sums = c2959c2568e8e0d7c5da63f1f1788669
+
+pkgname = kodi-addon-pulsar-provider-manager
+
