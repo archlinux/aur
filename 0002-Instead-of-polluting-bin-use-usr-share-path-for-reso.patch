@@ -1,0 +1,59 @@
+From f8cb9408922e777cd688787dd373faaf27650ca0 Mon Sep 17 00:00:00 2001
+From: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date: Fri, 15 May 2015 16:28:42 -0700
+Subject: [PATCH 2/2] Instead of polluting bin use /usr/share/ path for
+ resources
+
+---
+ DSView/CMakeLists.txt       | 14 +++++++-------
+ DSView/pv/devicemanager.cpp |  4 ++++
+ 2 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/DSView/CMakeLists.txt b/DSView/CMakeLists.txt
+index 2f5eb78..1882843 100644
+--- a/DSView/CMakeLists.txt
++++ b/DSView/CMakeLists.txt
+@@ -350,13 +350,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "/usr/local/lib")
+ 
+ # Install the executable.
+ install(TARGETS ${PROJECT_NAME} DESTINATION bin/)
+-install(FILES res/DSLogic.fw DESTINATION bin/res/)
+-install(FILES res/DSLogic33.bin DESTINATION bin/res/)
+-install(FILES res/DSLogic50.bin DESTINATION bin/res/)
+-install(FILES res/DSLogicPro.fw DESTINATION bin/res/)
+-install(FILES res/DSLogicPro.bin DESTINATION bin/res/)
+-install(FILES res/DSCope.fw DESTINATION bin/res/)
+-install(FILES res/DSCope.bin DESTINATION bin/res/)
++install(FILES res/DSLogic.fw DESTINATION share/dsview/)
++install(FILES res/DSLogic33.bin DESTINATION share/dsview/)
++install(FILES res/DSLogic50.bin DESTINATION share/dsview/)
++install(FILES res/DSLogicPro.fw DESTINATION share/dsview/)
++install(FILES res/DSLogicPro.bin DESTINATION share/dsview/)
++install(FILES res/DSCope.fw DESTINATION share/dsview/)
++install(FILES res/DSCope.bin DESTINATION share/dsview/)
+ 
+ #===============================================================================
+ #= Packaging (handled by CPack)
+diff --git a/DSView/pv/devicemanager.cpp b/DSView/pv/devicemanager.cpp
+index e4a2b6e..b94cbf3 100644
+--- a/DSView/pv/devicemanager.cpp
++++ b/DSView/pv/devicemanager.cpp
+@@ -103,11 +103,15 @@ std::list<boost::shared_ptr<device::DevInst> > DeviceManager::driver_scan(
+ 
+     // Check If DSL hardware driver
+     if (strcmp(driver->name, "demo") != 0) {
++        /*
+         QDir dir(QCoreApplication::applicationDirPath());
+         if (!dir.cd("res"))
+             return driver_devices;
+         std::string str = dir.absolutePath().toStdString() + "/";
+         strcpy(config_path, str.c_str());
++        */
++        // dirty
++        strcpy(config_path, "/usr/share/dslogic/");
+     }
+ 
+ 	// Do the scan
+-- 
+2.4.1
+

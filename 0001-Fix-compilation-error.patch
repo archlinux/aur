@@ -1,0 +1,31 @@
+From a55609ad36a768a8e70c242719b050902c99c2d2 Mon Sep 17 00:00:00 2001
+From: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date: Fri, 15 May 2015 16:04:00 -0700
+Subject: [PATCH 1/2] Fix compilation error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+/home/anatol/sources/archpackages/dsview-git/src/DSView/DSView/pv/data/decode/annotation.cpp: In constructor ‘pv::data::decode::Annotation::Annotation(const srd_proto_data*)’:
+/home/anatol/sources/archpackages/dsview-git/src/DSView/DSView/pv/data/decode/annotation.cpp:43:17: error: ‘const struct srd_proto_data_annotation’ has no member named ‘ann_class’
+  _format = pda->ann_class;
+---
+ DSView/pv/data/decode/annotation.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/DSView/pv/data/decode/annotation.cpp b/DSView/pv/data/decode/annotation.cpp
+index 32d3897..c3c7440 100644
+--- a/DSView/pv/data/decode/annotation.cpp
++++ b/DSView/pv/data/decode/annotation.cpp
+@@ -40,7 +40,7 @@ Annotation::Annotation(const srd_proto_data *const pdata) :
+ 		(const srd_proto_data_annotation*)pdata->data;
+ 	assert(pda);
+ 
+-	_format = pda->ann_class;
++	_format = pda->ann_format;
+ 
+ 	const char *const *annotations = (char**)pda->ann_text;
+ 	while(*annotations) {
+-- 
+2.4.1
+
