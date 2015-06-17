@@ -1,6 +1,6 @@
 pkgbase = ovmf-svn
 	pkgdesc = UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version
-	pkgver = 17582
+	pkgver = 17651
 	pkgrel = 1
 	url = https://tianocore.github.io/ovmf/
 	install = ovmf.install
@@ -11,17 +11,17 @@ pkgbase = ovmf-svn
 	makedepends = python2
 	makedepends = iasl
 	makedepends = nasm
-	provides = ovmf=17582
-	provides = ovmf-tianocore-edk2=17582
-	provides = ovmf-tianocore-edk2-svn=17582
+	provides = ovmf=17651
+	provides = ovmf-tianocore-edk2=17651
+	provides = ovmf-tianocore-edk2-svn=17651
 	conflicts = ovmf
 	conflicts = ovmf-tianocore-edk2
 	conflicts = ovmf-tianocore-edk2-svn
-	noextract = openssl-0.9.8zf.tar.gz
+	noextract = openssl-1.0.2c.tar.gz
 	options = !strip
 	options = docs
 	options = !makeflags
-	source = https://www.openssl.org/source/openssl-0.9.8zf.tar.gz
+	source = https://www.openssl.org/source/openssl-1.0.2c.tar.gz
 	source = tianocore-edk2-svn_BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
 	source = tianocore-edk2-svn_MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
 	source = tianocore-edk2-svn_MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
@@ -35,7 +35,7 @@ pkgbase = ovmf-svn
 	source = tianocore-edk2-svn_ShellPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellPkg
 	source = tianocore-edk2-svn_FatBinPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/FatBinPkg
 	source = tianocore-edk2-svn_OvmfPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/OvmfPkg
-	sha1sums = 3f2f4ca864b13a237ae063cd34d01bbdbc8f108f
+	sha1sums = 6e4a5e91159eb32383296c7c83ac0e59b83a0a44
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
