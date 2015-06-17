@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Jape
+Comment=Graphical proof assistant
+Exec=jape
+Icon=jape
+Terminal=false
+Categories=Education;Science;Java;
