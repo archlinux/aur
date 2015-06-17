@@ -1,0 +1,19 @@
+pkgbase = softethervpn-git
+	pkgdesc = Multi-protocol VPN Program from University of Tsukuba
+	pkgver = v4.17.9562.beta
+	pkgrel = 1
+	url = http://www.softether.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/SoftEtherVPN/SoftEtherVPN.git
+	source = softethervpn-bridge.service
+	source = softethervpn-client.service
+	source = softethervpn-server.service
+	sha1sums = SKIP
+	sha1sums = e3d0c38be26123bb533e80f0a595e9867e9cf6ad
+	sha1sums = efd246e8176683237609b7dae2e12300169b297f
+	sha1sums = cdfb0c943128286bb318b5c044e5ca53c1dcffff
+
+pkgname = softethervpn-git
+
