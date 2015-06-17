@@ -1,0 +1,16 @@
+pkgbase = vakitci
+	pkgdesc = Get,show and notify for prayer times
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/canatan/projects/tree/master/vakitci
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-webengine
+	depends = qt5-webengine
+	options = strip
+	source = https://www.dropbox.com/s/yc2dnv6nlxinkyo/vakitci.txz?dl=0
+	md5sums = SKIP
+
+pkgname = vakitci
+
