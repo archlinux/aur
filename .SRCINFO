@@ -8,6 +8,7 @@ pkgbase = can-utils-git
 	arch = armv7h
 	license = GPLv2
 	makedepends = git
+	makedepends = autoconf
 	makedepends = libtool
 	provides = can-utils
 	conflicts = can-utils
