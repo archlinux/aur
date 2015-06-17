@@ -1,0 +1,13 @@
+pkgbase = kodi-addon-superrepo-adult
+	pkgdesc = The world largest Kodi addon repository containing more than 1.300 addons
+	pkgver = 0.5.205
+	pkgrel = 1
+	url = http://superrepo.org/
+	arch = any
+	license = GPL3
+	depends = kodi
+	source = http://mirrors.superrepo.org/addons/helix/repository.superrepo.org.helix.others.adult/repository.superrepo.org.helix.others.adult-0.5.205.zip
+	md5sums = 2ff22cb7257d8e95a645a97abd22bb80
+
+pkgname = kodi-addon-superrepo-adult
+
