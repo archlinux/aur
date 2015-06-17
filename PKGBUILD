@@ -1,7 +1,7 @@
 # Maintainer: Alexander Konarev  <avkonarev@gmail.com>
 # Author: Andrey Ovsankin aka EvilBeaver
 pkgname=onescript
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise"
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ source=(
         )
 noextract=("OneScript-$pkgver-bin.zip")
 
-md5sums=('c4a3a16290c4ee594b1b6114cec3d3ba'
+md5sums=('d4f3b23a3cfcf477923ecced2f2f4c83'
          'e88df2f8a75ee97859839b3f45fe7e0a'
          'd0c25bfc717401e9806a7612581f6995')
 
