@@ -1,0 +1,18 @@
+pkgbase = libgrid-svn
+	pkgdesc = 3D Resampling Core. The Grid Library (libGrid) is the resampling backend for the libMini terrain rendering engine.
+	pkgver = 0
+	pkgrel = 1
+	url = https://code.google.com/p/libgrid/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	depends = libmini-svn
+	depends = libiconv
+	provides = libgrid-svn
+	source = libgrid-svn::svn+http://libgrid.googlecode.com/svn/libgrid/grid
+	options = staticlibs
+
+pkgname = libgrid-svn
+
