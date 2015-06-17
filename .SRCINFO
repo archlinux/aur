@@ -1,0 +1,21 @@
+pkgbase = mars-mips
+	pkgdesc = An IDE for programming in MIPS assembly language intended for educational-level use
+	pkgver = 4.5
+	pkgrel = 1
+	url = http://courses.missouristate.edu/KenVollmar/MARS/index.htm
+	install = mars-mips.install
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = Mars${_ver}.jar
+	source = http://courses.missouristate.edu/KenVollmar/MARS/MARS_4_5_Aug2014/Mars4_5.jar
+	source = mars-mips
+	source = mars.png
+	source = mars.desktop
+	md5sums = 4709fae736e6c9d4078ea4b21e0be1e9
+	md5sums = d7e664dcebde337e0b94a3aafb351fb8
+	md5sums = 6a74c887b0166d4adb5b06c64d6a444b
+	md5sums = 83281c7998223ff073bb31efd473275c
+
+pkgname = mars-mips
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mars
+Comment=An IDE for programming in MIPS assembly language
+Icon=mars
+Exec=mars-mips
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
