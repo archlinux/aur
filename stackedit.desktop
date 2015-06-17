@@ -1,0 +1,9 @@
+[Desktop Entry]
+GenericName=Stackedit Markdown Editor
+Name=Stackedit
+Description=In-browser markdown editor 
+Type=Application
+Categories=Development;
+Exec=/usr/bin/stackedit
+Icon=stackedit
+MimeType=text/x-markdown; charset=UTF-8;

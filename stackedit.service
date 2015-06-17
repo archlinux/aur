@@ -1,0 +1,11 @@
+[Unit]
+Description=Stackedit in-browser markdown editor
+
+[Service]
+Type=forking
+User=stackedit
+WorkingDirectory=/var/lib/stackedit/
+ExecStart=/usr/bin/node /var/lib/stackedit/server.js
+
+[Install]
+WantedBy=multi-user.target
