@@ -1,9 +1,11 @@
 pkgbase = dcron-git
 	pkgdesc = dillon's lightweight cron daemon (Git version).
-	pkgver = 4.5.r7.gbccc0e8
-	pkgrel = 3
+	pkgver = 4.5.r9.g6186237
+	pkgrel = 1
 	url = http://www.jimpryor.net/linux/dcron.html
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
 	license = GPL
 	makedepends = git
 	depends = bash

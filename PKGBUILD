@@ -2,10 +2,10 @@
 # Contributor: Jim Pryor <profjim@jimpryor.net>
 
 pkgname="dcron-git"
-pkgver="4.5.r7.gbccc0e8"
-pkgrel="3"
+pkgver="4.5.r9.g6186237"
+pkgrel="1"
 pkgdesc="dillon's lightweight cron daemon (Git version)."
-arch=("any")
+arch=("i686" "x86_64" "armv6h")
 license=("GPL")
 url="http://www.jimpryor.net/linux/dcron.html"
 backup=("var/spool/cron/root" "etc/conf.d/crond")
