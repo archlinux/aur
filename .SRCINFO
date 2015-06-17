@@ -1,0 +1,18 @@
+pkgbase = libtrash
+	pkgdesc = A shared, preloaded library that implements a trash can under Linux
+	pkgver = 3.3
+	pkgrel = 3
+	url = http://pages.stern.nyu.edu/~marriaga/software/libtrash/
+	install = libtrash.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = glibc
+	source = http://pages.stern.nyu.edu/~marriaga/software/libtrash/libtrash-latest.tgz
+	source = libtrash.sh
+	sha256sums = 24b4dcf03afb8feec8c1a95174a74a68c64ea400e9b8957838c62eebdc2c0b86
+	sha256sums = 9eefbca7672300d4c4c053c4ab26ebfb5095d859b8b233f11ed9c1c3e806bab2
+
+pkgname = libtrash
+
