@@ -1,0 +1,34 @@
+pkgbase = liblikely-git
+	pkgdesc = An image recognition runtime for heterogenous architectures
+	pkgver = r582.58f1e78
+	pkgrel = 1
+	url = http://liblikely.org/
+	arch = i686
+	arch = x86_64
+	license = Apache2
+	makedepends = git
+	makedepends = cmake
+	depends = xz
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = jasper
+	depends = ncurses
+	options = !emptydirs
+	source = git://github.com/biometrics/likely#branch=gh-pages
+	source = git://github.com/biometrics/likely-data
+	source = git://github.com/llvm-mirror/llvm
+	source = git://github.com/LuaDist/lua
+	source = git://github.com/Itseez/opencv
+	source = git://git.gitorious.org/qcustomplot/qcustomplot.git
+	source = git://github.com/bagder/curl
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = liblikely-git
+
