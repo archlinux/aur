@@ -1,0 +1,22 @@
+pkgbase = lnav-git
+	pkgdesc = A featureful ncurses based log file viewer
+	pkgver = 0.7.2.r138.g9018238
+	pkgrel = 2
+	url = http://lnav.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bzip2
+	depends = ncurses
+	depends = pcre
+	depends = readline
+	depends = sqlite
+	depends = zlib
+	provides = lnav
+	conflicts = lnav
+	source = lnav-git::git+https://github.com/tstack/lnav.git
+	md5sums = SKIP
+
+pkgname = lnav-git
+
