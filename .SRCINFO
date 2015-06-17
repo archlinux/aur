@@ -1,0 +1,16 @@
+pkgbase = kodi-addon-pulsar-yify-mc
+	pkgdesc = YiFy provider for pulsar
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/mancuniancol/
+	install = provider.install
+	arch = any
+	license = GPL3
+	depends = kodi
+	depends = kodi-addon-pulsar
+	options = !strip
+	source = https://github.com//mancuniancol/script.pulsar.yify-mc/archive/3.0.tar.gz
+	md5sums = 80913c8f170f21027232a7f27473891a
+
+pkgname = kodi-addon-pulsar-yify-mc
+
