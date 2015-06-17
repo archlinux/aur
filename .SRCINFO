@@ -1,0 +1,30 @@
+pkgbase = bzzwolfsp-svn
+	pkgdesc = A Return to Castle Wolfenstein Single Player engine mod to make Cooperative play possible
+	pkgver = 1634
+	pkgrel = 1
+	url = https://code.google.com/p/bzzwolfsp/
+	install = bzzwolfsp-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	depends = wolf-data
+	depends = sdl2
+	depends = opus
+	depends = opusfile
+	depends = libogg
+	depends = zlib
+	source = bzzwolfsp::svn+http://bzzwolfsp.googlecode.com/svn/trunk/
+	source = bzzwolfsp.launcher
+	source = bzzwolfspded.launcher
+	source = Makefile.local
+	source = create_pk3.sh
+	md5sums = SKIP
+	md5sums = e7d7237e08b1affeab32e52f7d5e3244
+	md5sums = b1f5b0189e4576e4b606f98dd2ec0141
+	md5sums = 53a8ec6a5b3a67f73fe876dbe2384b95
+	md5sums = cbdfd0fcc3b6ca0bec6cc28c0ec66aa8
+
+pkgname = bzzwolfsp-svn
+
