@@ -1,0 +1,18 @@
+pkgbase = cakephp2
+	pkgdesc = The Rapid Development Framework for PHP
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = http://cakephp.org/
+	arch = any
+	license = MIT
+	depends = php
+	options = !strip
+	source = cakephp-2.6.4.tar.gz::https://github.com/cakephp/cakephp/tarball/2.6.4
+	source = cake.sh
+	source = httpd-cakephp2.conf
+	md5sums = f1c60d68442693075474f881baee725c
+	md5sums = d0bd278b4ad99ff5ffa69161de14da29
+	md5sums = 5f3cad61b94b911e697f45a00ac8b0e6
+
+pkgname = cakephp2
+
