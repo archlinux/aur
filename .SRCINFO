@@ -1,0 +1,16 @@
+pkgbase = roomjuice
+	pkgdesc = A multi-user jukebox web application. You can stream the music to other people as well.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://grecni.com/roomjuice/
+	arch = any
+	license = GPL2
+	depends = taginfo
+	depends = php
+	depends = mlocate
+	optdepends = apache
+	source = http://grecni.com/roomjuice/dl/roomjuice-0.3.4.tar.bz2
+	md5sums = 63ffa98e28b418d1713282215206a6a7
+
+pkgname = roomjuice
+
