@@ -1,6 +1,6 @@
 pkgbase = plasma-desktop-git
 	pkgdesc = KDE Plasma Desktop
-	pkgver = r2353.f98326a
+	pkgver = r2474.a76328c
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = plasma-desktop-git.install
@@ -21,6 +21,7 @@ pkgbase = plasma-desktop-git
 	depends = kmenuedit-git
 	depends = kinfocenter-git
 	depends = polkit-kde-agent-git
+	depends = kpeople-git
 	optdepends = plasma-nm-git: Network manager applet
 	provides = plasma-desktop
 	conflicts = plasma-desktop
