@@ -1,0 +1,15 @@
+pkgbase = menuconfig-git
+	pkgdesc = Standalone version of the mconf tool from the linux kernel
+	pkgver = r17.0a95e19
+	pkgrel = 1
+	url = https://github.com/TheGeorge/menuconfig
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	source = git://github.com/TheGeorge/menuconfig.git
+
+pkgname = menuconfig-git
+
