@@ -1,0 +1,17 @@
+pkgbase = perl-dr-tarantool
+	pkgdesc = a Perl driver for Tarantool
+	pkgver = 0.44
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DR-Tarantool/
+	arch = any
+	license = Artistic Perl
+	depends = perl
+	depends = perl-json-xs
+	depends = perl-anyevent
+	depends = perl-devel-globaldestruction
+	depends = perl-list-moreutils
+	source = http://search.cpan.org/CPAN/authors/id/U/UN/UNERA/DR-Tarantool-0.44.tar.gz
+	sha1sums = 948684822c3e14820abb4d70a8b51ee0d234d398
+
+pkgname = perl-dr-tarantool
+
