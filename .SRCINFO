@@ -1,6 +1,6 @@
 pkgbase = python-pyuv
 	pkgdesc = A Python module which provides an interface to libuv.
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://crate.io/packages/pyuv/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-pyuv
 	license = MIT
 	depends = python
 	depends = libuv
-	source = https://github.com/saghul/pyuv/archive/pyuv-1.0.2.tar.gz
-	sha256sums = 8b205c5a3095c627fb8561968b27f7070df824fa935e1ea65ac3658c0510a3b1
+	source = https://github.com/saghul/pyuv/archive/pyuv-1.1.0.tar.gz
+	sha256sums = 6344a0ad2d00c9b5d26ee84ae0ffdbd46712eb2f8a9ed8105c86d9619a4268b8
 
 pkgname = python-pyuv
 
