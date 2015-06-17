@@ -1,0 +1,16 @@
+pkgbase = spectrojack
+	pkgdesc = a little spectrogram/audiogram/sonogram/whatever for JACK
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://sed.free.fr/spectrojack/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = jack
+	depends = fftw
+	depends = gtk2
+	source = http://sed.free.fr/spectrojack/spectrojack-0.4.tar.gz
+	md5sums = d8cbfc174c876150d66141020244fc8d
+
+pkgname = spectrojack
+
