@@ -1,0 +1,17 @@
+pkgbase = connman_dmenu-git
+	pkgdesc = connman dmenu frontend (git version)
+	pkgver = 60.0595a14
+	pkgrel = 1
+	url = http://github.com/taylorchu/connman_dmenu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	depends = connman
+	depends = dmenu
+	depends = dnsutils
+	source = git://github.com/taylorchu/connman_dmenu.git
+	md5sums = SKIP
+
+pkgname = connman_dmenu-git
+
