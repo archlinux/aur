@@ -1,0 +1,16 @@
+pkgbase = nwipe
+	pkgdesc = A fork of the dwipe command that will securely erase disks using a variety of recognised methods
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://www.andybev.com/index.php/Nwipe
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = device-mapper
+	depends = ncurses
+	depends = parted
+	source = nwipe-0.16.tar.gz::http://sourceforge.net/projects/nwipe/files/nwipe-0.16.tar.gz/download
+	md5sums = 98487303370494b65df47e98649a054a
+
+pkgname = nwipe
+
