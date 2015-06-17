@@ -1,0 +1,22 @@
+pkgbase = newsoul-git
+	pkgdesc = Museek+, a daemon/server based Soulseek client, resurrected.
+	pkgver = 142.119b876
+	pkgrel = 1
+	url = https://github.com/KenjiTakahashi/newsoul
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	makedepends = premake
+	depends = json-c
+	depends = libevent
+	depends = taglib
+	depends = nettle
+	depends = sqlite
+	optdepends = python2-crypto: some python utils
+	provides = newsoul
+	source = newsoul::git+https://github.com/KenjiTakahashi/newsoul.git
+	md5sums = SKIP
+
+pkgname = newsoul-git
+
