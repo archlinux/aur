@@ -1,0 +1,28 @@
+pkgbase = wolfsp-git
+	pkgdesc = Return to Castle Wolfenstein Single Player (Justin Crawford fork)
+	pkgver = 69.046504e
+	pkgrel = 1
+	url = https://github.com/Justasic/RTCW-SP
+	install = wolfsp-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = libxxf86dga
+	makedepends = cmake
+	depends = sdl_sound
+	depends = libxxf86vm
+	depends = mesa
+	depends = wolf-data
+	source = wolfsp::git://github.com/Justasic/RTCW-SP.git
+	source = wolfsp.launcher
+	source = wolfsp.png
+	source = wolfsp.desktop
+	md5sums = SKIP
+	md5sums = 81ff046200847bcb29189eb91f753533
+	md5sums = bf26dc4c10d4bbfbd0c7a052a00c3cdf
+	md5sums = 82c8aa5312d55e9a89a51c759d964841
+
+pkgname = wolfsp-git
+

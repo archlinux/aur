@@ -1,0 +1,31 @@
+
+post_install() {
+    echo ">>> Copy the following files off a Windows installation or CD-ROM to the"
+    echo ">>> /opt/wolfsp/main/ directory in order to play:"
+    echo ">>>    pak0.pk3"
+    echo ">>>    sp_pak1.pk3"
+    echo ">>>"
+    echo ">>> Then run the following commands: "
+    echo ">>>    chown root:root /opt/wolfsp/main/{pak0.pk3,sp_pak1.pk3,sp_pak2.pk3}"
+    echo ">>>    chmod 0444 /opt/wolfsp/main/{pak0.pk3,sp_pak1.pk3}"
+    echo ">>>"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+post_remove() {
+    echo ">>> To complete the uninstallation remove the RtCW data directory:"
+    echo ">>>    rm -r /opt/wolfsp/"
+    echo ">>>"
+}
+op=$1
+shift
+
+$op $*
+
