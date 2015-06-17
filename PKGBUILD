@@ -1,6 +1,6 @@
 pkgname=tamzen-font
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Programmatic fork of the Tamsyn monospace font.'
 arch=('any')
 url="https://github.com/sunaku/${pkgname}"
