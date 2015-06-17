@@ -1,10 +1,9 @@
 pkgbase = dcron
 	pkgdesc = dillon's lightweight cron daemon
 	pkgver = 4.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.jimpryor.net/linux/dcron.html
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = bash
 	optdepends = msmtp-mta: sending cron job output via email
