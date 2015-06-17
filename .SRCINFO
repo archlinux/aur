@@ -1,0 +1,18 @@
+pkgbase = python2-cosmolopy
+	pkgdesc = a cosmology package for Python
+	pkgver = 0.1.103.r20.gf23ea37
+	pkgrel = 1
+	url = http://roban.github.com/CosmoloPy/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cython2
+	makedepends = git
+	depends = python2-scipy
+	depends = python2-numpy
+	provides = python2-cosmolopy
+	source = cosmolopy::git+https://github.com/roban/CosmoloPy.git
+	md5sums = SKIP
+
+pkgname = python2-cosmolopy
+
