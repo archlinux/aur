@@ -1,0 +1,14 @@
+pkgbase = minijail
+	pkgdesc = Tool to run a process in jailed environment
+	pkgver = R41.6680
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/platform/minijail
+	arch = i686
+	arch = x86_64
+	license = custom:chromiumos
+	depends = libcap
+	source = https://chromium.googlesource.com/chromiumos/platform2/+archive/refs/heads/release-R41-6680.B.tar.gz
+	sha1sums = SKIP
+
+pkgname = minijail
+
