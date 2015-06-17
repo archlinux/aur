@@ -1,0 +1,16 @@
+pkgbase = wp-download-git
+	pkgdesc = Wikipedia Dump Downloader
+	pkgver = 18.13abbc8
+	pkgrel = 1
+	url = http://packages.python.org/wp-download/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-progressbar
+	source = wpdown::git://github.com/babilen/wp-download.git
+	md5sums = SKIP
+
+pkgname = wp-download-git
+
