@@ -1,0 +1,29 @@
+commit cad439604a16665c926b031c1b85d151fb9b1273
+Author: mtravis15432 <mtravis15432@users.noreply.github.com>
+Date:   Sun Dec 1 16:11:10 2013 -0800
+
+    Update parser.yy
+    
+    Remove deprecated bison definition.
+
+diff --git a/infinisqld/parser.yy b/infinisqld/parser.yy
+index 932d4e2..2e6072e 100644
+--- a/infinisqld/parser.yy
++++ b/infinisqld/parser.yy
+@@ -24,14 +24,14 @@
+  */
+ 
+ %define api.pure
+-%parse-param { struct perlarxer *pld }
++%parse-param {struct perlarxer *pld}
++%lex-param {struct perlarxer *pld}
+ 
+ %{
+ #include "larx.h"
+ #include "infinisql_gch.h"
+ #include "infinisql_Larxer.h"
+ 
+-#define YYLEX_PARAM pld->scaninfo
+ #define PUSHSTACK(X) pld->larxerPtr->pushstack(X)
+ #define PUSHSTACK2(X, Y) pld->larxerPtr->pushstack(X, Y)
+ #define PUSHOPERATOR(X) pld->larxerPtr->pushstack(Larxer::TYPE_operator, (int64_t)X)

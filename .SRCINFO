@@ -1,0 +1,23 @@
+pkgbase = infinisql
+	pkgdesc = the database for always on, rapid growth applications that need to collect and analyze in real time--even for complex transactions
+	pkgver = 0.1.2.alpha
+	pkgrel = 1
+	url = http://www.infinisql.org/
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	makedepends = boost
+	depends = crypto++
+	depends = zeromq
+	depends = pcre
+	depends = lz4
+	depends = msgpack
+	source = https://github.com/infinisql/infinisql/archive/v0.1.2-alpha.zip
+	source = fix_bison_issue.diff
+	source = respect_destdir.diff
+	sha1sums = 1a1b3816150dd5048ba393edec50ae8c0d9fb0b3
+	sha1sums = 4781697bb1c39ea7468ee1b24455e612f844106e
+	sha1sums = f1e6b805c0a037d404e883bd2a5e945440b02652
+
+pkgname = infinisql
+
