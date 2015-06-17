@@ -6,7 +6,7 @@
 
 pkgname=sky
 pkgver=2.0.355
-pkgrel=1
+pkgrel=2
 pkgdesc="Lync & Skype for business on Linux"
 
 arch=(
@@ -46,7 +46,8 @@ package() {
         libicutu libicuuc libicui18n libicuio"
 
     # fix broken rpaths of bundled icu libs
-    for lib in ${icu_libs}; do
+    chrpath -d "${srcdir}"/opt/sky_linux/sky
+    for lib in libsipw ${icu_libs}; do
         chrpath -d "${srcdir}"/opt/sky_linux/lib/${lib}.so*
     done
     
