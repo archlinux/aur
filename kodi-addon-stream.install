@@ -1,0 +1,32 @@
+classname=plugin.video.stream
+post_install() {
+  getent group kodi > /dev/null || groupadd -g 420 kodi
+  if ! getent passwd kodi > /dev/null; then
+	  useradd -c 'XBMC user' -u 420 -g kodi -G audio,video,network,optical -d /var/lib/kodi -s /sbin/nologin kodi
+	  passwd -l kodi > /dev/null
+  fi
+  chown -R kodi:kodi /usr/share/kodi/addons/${classname}
+}
+
+post_upgrade() {
+  post_install $1
+  if ! getent group kodi | cut -d: -f3 | grep 420 > /dev/null 2>&1; then
+	  groupmod -g 420 kodi > /dev/null 2>&1
+  fi
+  if ! id -u kodi | grep 420 > /dev/null 2>&1; then
+	  usermod -u 420 kodi > /dev/null 2>&1
+	  if [[ $? -ne 0 ]]; then
+		  echo "Changing uid of user kodi failed"
+		  echo "It is recommended that the uid is changed."
+		  echo "Stop all processes running under the kodi user and reinstall kodi"
+		  echo "or change the uid manually. (usermod -u 420 kodi)"
+	  fi
+	  chown -R kodi:kodi /usr/share/kodi/addons/${classname}
+  fi
+}
+
+post_remove() {
+  getent passwd kodi > /dev/null 2>&1 && userdel kodi
+  getent group kodi > /dev/null 2>&1 && groupdel kodi
+}
+
