@@ -1,0 +1,16 @@
+pkgbase = qmmp-plugin-pack
+	pkgdesc = Qmmp Plugin Pack
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = http://qmmp.ylsoftware.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=2.8.0
+	depends = qmmp>=0.8.4
+	provides = qmmp-plugin-pack
+	source = http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-0.8.4.tar.bz2
+	sha1sums = f05c3a99060fc6faf873ae68eaefd6cb648e70b3
+
+pkgname = qmmp-plugin-pack
+
