@@ -1,0 +1,16 @@
+pkgbase = grub-theme-midna
+	pkgdesc = Midna Grub-theme, based on Monochrome-light.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://kaosx.us
+	install = grub-themes.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = CC-SA
+	depends = grub-common
+	source = http://kaosx.us/repo/core/grub-theme-midna-1.1-1-x86_64.pkg.tar.xz
+	md5sums = 227f8e496c9493bd872e5042fde77877
+
+pkgname = grub-theme-midna
+
