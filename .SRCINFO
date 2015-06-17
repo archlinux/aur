@@ -1,0 +1,21 @@
+pkgbase = hdctools-git
+	pkgdesc = Chrome OS Hardware Debug & Control Tools
+	pkgver = r468.2a81b5c
+	pkgrel = 1
+	url = http://sites.google.com/a/google.com/chromeos-partner/hardware-control-and-debug
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = tidyhtml
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pyusb
+	depends = python2-pyserial
+	depends = python2-pexpect
+	depends = libftdi
+	depends = python2-numpy
+	source = git+https://chromium.googlesource.com/chromiumos/third_party/hdctools
+	sha1sums = SKIP
+
+pkgname = hdctools-git
+
