@@ -1,0 +1,27 @@
+pkgbase = sacks
+	pkgdesc = An integrated system to allow Digital Gathering (Adunanza Digitale).Adunanza Digitale is an assembly available on-line.
+	pkgver = 12.67f6745
+	pkgrel = 1
+	url = http://adunanzadigitale.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libvncserver
+	depends = python2
+	depends = python2-pyqt4
+	depends = vlc
+	depends = python-dnspython
+	depends = openssl
+	depends = python2-pjproject
+	depends = pyvnc
+	depends = xmpppy
+	source = sacks::git://github.com/M0Rf30/sacks.git
+	source = sacks-bin
+	source = sacks.desktop
+	md5sums = SKIP
+	md5sums = 4041f5db9c0dd29c8ebbbe6327d4e4c5
+	md5sums = 65b46bae1c502b0cc8e72bc283a2fcc0
+
+pkgname = sacks
+

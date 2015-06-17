@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Sacks
+GenericName=Sacks
+Comment=See and Common Knowledge Say
+Exec=sacks
+Icon=sacks
+Type=Application
+Terminal=false
+Categories=Qt;KDE;Network;Application;
