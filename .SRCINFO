@@ -1,6 +1,6 @@
 pkgbase = nvidia-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS)
-	pkgver = 352.09
+	pkgver = 352.21
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-dkms.install
@@ -8,15 +8,15 @@ pkgbase = nvidia-dkms
 	arch = x86_64
 	license = custom
 	depends = dkms
-	depends = nvidia-utils=352.09
+	depends = nvidia-utils=352.21
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
 	provides = nvidia
 	conflicts = nvidia
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.09/NVIDIA-Linux-x86-352.09.run
-	sha256sums_i686 = a799e5e9016f23dd7f69a74844652dcebdf0f655bf2d8b72370e22b19e8b98d3
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.09/NVIDIA-Linux-x86_64-352.09-no-compat32.run
-	sha256sums_x86_64 = 385137b4e6492710890f621cc09a0ef14f0ab5d90829a1f9b14c689b0b663848
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.21/NVIDIA-Linux-x86-352.21.run
+	sha256sums_i686 = 616382a5f47e62c8f35509ce684a6ebc94e4a62c51208a11c5976517123040d0
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.21/NVIDIA-Linux-x86_64-352.21-no-compat32.run
+	sha256sums_x86_64 = cfccf25135bf5c33f68eb892e341b35126f6561f257b32893ccd055d624964eb
 
 pkgname = nvidia-dkms
 

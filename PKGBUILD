@@ -4,7 +4,7 @@
 # Contributor: Atilla ÖNTAŞ <tarakbumba@gmail.com>
 
 pkgname=nvidia-dkms
-pkgver=352.09
+pkgver=352.21
 pkgrel=1
 pkgdesc='NVIDIA kernel module sources (DKMS)'
 arch=('i686' 'x86_64')
@@ -19,9 +19,8 @@ install='nvidia-dkms.install'
 source=()
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=()
-sha256sums_i686=('a799e5e9016f23dd7f69a74844652dcebdf0f655bf2d8b72370e22b19e8b98d3')
-sha256sums_x86_64=('385137b4e6492710890f621cc09a0ef14f0ab5d90829a1f9b14c689b0b663848')
+sha256sums_i686=('616382a5f47e62c8f35509ce684a6ebc94e4a62c51208a11c5976517123040d0')
+sha256sums_x86_64=('cfccf25135bf5c33f68eb892e341b35126f6561f257b32893ccd055d624964eb')
 
 [[ $CARCH == i686 ]] && _pkg=NVIDIA-Linux-x86-${pkgver}
 [[ $CARCH == x86_64 ]] && _pkg=NVIDIA-Linux-x86_64-${pkgver}-no-compat32
