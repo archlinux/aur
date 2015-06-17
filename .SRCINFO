@@ -1,0 +1,12 @@
+pkgbase = ksplash-oxyarch
+	pkgdesc = A Arch Linux splash screen for KDE 4.x based on the Default KDE 4 splash screen
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php?content=98805
+	arch = any
+	license = GPL
+	source = https://dl.dropbox.com/u/4813183/linux/theme/KDE/ksplash-oxyarch-1.0.tar.gz
+	md5sums = a6e2adbd9d4a2344aaa1091801574706
+
+pkgname = ksplash-oxyarch
+
