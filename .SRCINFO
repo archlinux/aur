@@ -1,0 +1,22 @@
+pkgbase = partclone-git
+	pkgdesc = PUtilities to back up and restore used-blocks of a partition.
+	pkgver = 607.619fe5a
+	pkgrel = 1
+	url = http://partclone.nchc.org.tw/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = e2fsprogs
+	depends = progsreiserfs
+	depends = ntfsprogs
+	depends = dosfstools
+	depends = btrfs-progs
+	depends = ncurses
+	provides = partclone
+	conflicts = partlcone
+	source = partclone::git://partclone.nchc.org.tw/partclone.git
+	md5sums = SKIP
+
+pkgname = partclone-git
+
