@@ -1,0 +1,33 @@
+diff --git a/src/elfcore.c b/src/elfcore.c
+index 4304770..0301f0a 100644
+--- a/src/elfcore.c
++++ b/src/elfcore.c
+@@ -40,6 +40,7 @@ extern "C" {
+ #include <elf.h>
+ #include <fcntl.h>
+ #include <limits.h>
++#include <linux/sched.h>
+ #include <pthread.h>
+ #include <signal.h>
+ #include <stdint.h>
+diff --git a/src/linuxthreads.c b/src/linuxthreads.c
+index c09c68e..f7ba427 100644
+--- a/src/linuxthreads.c
++++ b/src/linuxthreads.c
+@@ -39,7 +39,7 @@ extern "C" {
+ #endif
+ 
+ #include <asm/stat.h>
+-#include <sched.h>
++#include <linux/sched.h>
+ #include <signal.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -49,7 +49,6 @@ extern "C" {
+ #include <asm/fcntl.h>
+ #include <asm/posix_types.h>
+ #include <asm/types.h>
+-#include <linux/dirent.h>
+ 
+ #include "linux_syscall_support.h"
+ #include "thread_lister.h"

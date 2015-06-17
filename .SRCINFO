@@ -1,0 +1,15 @@
+pkgbase = perl-devel-coredumper
+	pkgdesc = create core dumps of the running perl interpreter, without terminating
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/$_cpanname/
+	arch = any
+	license = BSD
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Devel-CoreDump-0.02.tar.gz
+	source = fixes.diff
+	sha1sums = 9c062b63eaeaa5e01e0ed2f696d06b22a8c695be
+	sha1sums = 4b695e999b5c35c425458783722082776566158b
+
+pkgname = perl-devel-coredumper
+
