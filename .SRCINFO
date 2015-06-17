@@ -1,0 +1,15 @@
+pkgbase = archive-mounter
+	pkgdesc = Open with archive mounter nautilus menu entry
+	pkgver = 3
+	pkgrel = 2
+	url = http://www.gnome.org
+	arch = any
+	license = GPL3
+	depends = gvfs
+	options = !libtool
+	options = !strip
+	source = mount-archive.desktop
+	md5sums = 57527c23be43c43a77b7d9a5b8f00ae4
+
+pkgname = archive-mounter
+
