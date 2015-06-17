@@ -1,0 +1,19 @@
+pkgbase = qjackctl-svn
+	pkgdesc = A Qt front-end for the JACK low-latency audio server
+	pkgver = 734
+	pkgrel = 1
+	url = http://qjackctl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = openssl
+	makedepends = subversion
+	depends = jack
+	depends = qt4
+	depends = subversion
+	provides = qjackctl
+	conflicts = qjackctl-cvs
+	options = !makeflags
+
+pkgname = qjackctl-svn
+
