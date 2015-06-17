@@ -1,0 +1,16 @@
+pkgbase = python2-vatnumber
+	pkgdesc = Python module to validate VAT numbers
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://code.google.com/p/vatnumber/
+	arch = any
+	license = GPL3
+	makedepends = setuptools
+	depends = python2
+	optdepends = python2-suds: SOAP client for European Union's Vat information exchange service
+	conflicts = python-vatnumber
+	source = http://vatnumber.googlecode.com/files/vatnumber-1.1.tar.gz
+	md5sums = 7b57a0e7e3debbbfdf8c4d8472e8e947
+
+pkgname = python2-vatnumber
+
