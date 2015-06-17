@@ -1,0 +1,17 @@
+pkgbase = colord-kde
+	pkgdesc = Interfaces and session daemon to colord for KDE
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/graphics/colord-kde
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = colord
+	source = http://download.kde.org/stable/colord-kde/0.3.0/src/colord-kde-0.3.0.tar.bz2
+	md5sums = d7e3231fa0da675449aef587dc49ed58
+
+pkgname = colord-kde
+
