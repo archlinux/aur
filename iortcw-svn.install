@@ -1,0 +1,14 @@
+pre_remove() {
+    /bin/true
+}
+
+post_remove() {
+    echo ">>> To complete the uninstallation remove the RtCW data directory:"
+    echo ">>>    rm -r /opt/iortcw/"
+    echo ">>>"
+}
+op=$1
+shift
+
+$op $*
+

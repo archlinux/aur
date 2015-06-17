@@ -1,0 +1,35 @@
+pkgbase = iortcw-svn
+	pkgdesc = Merge of ioquake3 features and fixes into Return to Castle Wolfenstein
+	pkgver = 790
+	pkgrel = 1
+	url = https://code.google.com/p/iortcw
+	install = iortcw-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	depends = wolf-data
+	depends = sdl2
+	depends = openal
+	depends = opus
+	depends = opusfile
+	depends = libogg
+	depends = zlib
+	source = svn+http://iortcw.googlecode.com/svn/trunk/
+	source = iortcwsp.launcher
+	source = iortcwmp.launcher
+	source = iortcwded.launcher
+	source = iortcw.desktop
+	source = iortcw.png
+	source = Makefile.local
+	md5sums = SKIP
+	md5sums = e400094c42766cb2b130d4d95bbe1caf
+	md5sums = bbc343567fa9a2f0101bdbd07cc9d32a
+	md5sums = 1cb1d7fda29d223a57003d097a1a4a31
+	md5sums = 30c95f4d2b130703d36345ebd259d738
+	md5sums = bf26dc4c10d4bbfbd0c7a052a00c3cdf
+	md5sums = 8fbd50c6b07bd89bc40b1c61d61c9431
+
+pkgname = iortcw-svn
+
