@@ -1,0 +1,18 @@
+pkgbase = pacoloco-hub-git
+	pkgdesc = Local network caching service for pacman
+	pkgver = r1.e774513
+	pkgrel = 1
+	url = https://github.com/anatol/pacoloco.cr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = crystal
+	depends = libunwind
+	depends = gc
+	depends = openssl
+	depends = pcre
+	source = git://github.com/anatol/pacoloco.cr
+	sha1sums = SKIP
+
+pkgname = pacoloco-hub-git
+
