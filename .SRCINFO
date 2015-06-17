@@ -1,0 +1,15 @@
+pkgbase = pyqt4topyqt5
+	pkgdesc = A tool to help to convert an application PyQt4 to PyQt5
+	pkgver = 12112013
+	pkgrel = 2
+	url = http://oqapy.eu
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://oqapy.eu/releases/pyqt4topyqt5.tar.gz
+	source = pyqt4topyqt5.sh
+	md5sums = dd76a5a290bc3244fd4187c4075b9064
+	md5sums = 1828862eb80db72059b1375ca3060286
+
+pkgname = pyqt4topyqt5
+
