@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-superrepo-all
+	pkgdesc = The world largest XBMC addon repository containing more than 1.300 addons
+	pkgver = 0.5.205
+	pkgrel = 1
+	url = http://superrepo.org/
+	arch = any
+	license = GPL3
+	depends = kodi
+	optdepends = kodi-addon-superrepo-adult: enable adult addons for XBMC
+	source = http://mirrors.superrepo.org/addons/helix/repository.superrepo.org.helix.all/repository.superrepo.org.helix.all-0.5.205.zip
+	md5sums = 2de695735f88c5ad9d6949030697ff17
+
+pkgname = kodi-addon-superrepo-all
+
