@@ -1,0 +1,29 @@
+pkgbase = aarch64-linux-gnu-gcc-stage2
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = http://gcc.gnu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = gmp
+	makedepends = mpfr
+	depends = aarch64-linux-gnu-binutils
+	depends = aarch64-linux-gnu-eglibc-headers
+	depends = libmpc
+	depends = zlib
+	provides = aarch64-linux-gnu-gcc-stage1
+	conflicts = aarch64-linux-gnu-gcc-stage1
+	replaces = aarch64-linux-gnu-gcc-stage1
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = ftp://gcc.gnu.org/pub/gcc/snapshots/5-20150519/gcc-5-20150519.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.12.2.tar.bz2
+	sha256sums = ae90f35a54171c0b043a3fbae5bb5d7783ced4a1ea90b3e7d892d372a1ecbfdb
+	sha256sums = f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4
+
+pkgname = aarch64-linux-gnu-gcc-stage2
+
