@@ -1,0 +1,21 @@
+pkgbase = s6-networking-musl
+	pkgdesc = A suite of small networking utilities for Unix systems..
+	pkgver = 2.1.0.0
+	pkgrel = 1
+	url = http://www.skarnet.org/software/s6-networking
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = musl
+	makedepends = skalibs-musl>=2.2.0.0
+	makedepends = s6-dns-musl>=2.0.0.2
+	depends = execline-musl>=2.0.2.0
+	depends = s6-musl>=2.1.0.0
+	provides = s6-networking=2.1.0.0
+	options = staticlibs
+	source = http://www.skarnet.org/software/s6-networking/s6-networking-2.1.0.0.tar.gz
+	sha256sums = be75bddad884287c442900e10417c63980788ca1c5bae4188b64b375efba734d
+
+pkgname = s6-networking-musl
+
