@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LastPass
+GenericName=LastPass Pocket
+Exec=lastpass
+Icon=lastpass
+Comment=A password manager that makes web browsing easier and more secure
+Terminal=false
+Type=Application
+Categories=Utility;Security;
+MimeType=application/x-lastpass;
