@@ -1,0 +1,16 @@
+pkgbase = kde-kdm-themes-midna
+	pkgdesc = KaOS grey KDM-Theme.
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://kaosx.us
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = kdeartwork
+	license = GPL
+	depends = kdebase-workspace
+	source = http://kaosx.us/repo/apps/kde-kdm-themes-midna-2.0-1-x86_64.pkg.tar.xz
+	md5sums = 0f3d89b4559d22734a93d5ae69f77eda
+
+pkgname = kde-kdm-themes-midna
+
