@@ -1,0 +1,16 @@
+pkgbase = nanomsg-git
+	pkgdesc = Simple high-performance implementation of several "scalability protocols"
+	pkgver = 0.5.beta.r82.ga6dcc0c
+	pkgrel = 1
+	url = http://nanomsg.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = nanomsg
+	source = git://github.com/nanomsg/nanomsg
+	sha256sums = SKIP
+
+pkgname = nanomsg-git
+
