@@ -1,0 +1,24 @@
+pkgbase = osgearth
+	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
+	pkgver = 2.5
+	pkgrel = 2
+	url = http://www.osgearth.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = openscenegraph
+	depends = gdal
+	depends = expat
+	depends = curl
+	depends = minizip
+	optdepends = geos: Imrpoved vector support
+	optdepends = sqlite: Flat file cache
+	optdepends = libzip: Archive support
+	optdepends = v8
+	provides = osgearth
+	conflicts = osgearth-qt5
+
+pkgname = osgearth
+
