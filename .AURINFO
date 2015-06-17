@@ -1,0 +1,17 @@
+pkgbase = eggdrop-gseen.mod
+	pkgdesc = Mod for Eggdrop. The advantage of gseen in contrast to most other seen scripts is it's speed.
+	pkgver = 1.1.1.dev3
+	pkgrel = 3
+	url = http://www.kreativrauschen.com/gseen.mod/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = hardening-wrapper
+	source = http://ftp.eggheads.org/pub/eggdrop/source/1.6/eggdrop1.6.21.tar.bz2
+	source = http://www.kreativrauschen.com/gseen.mod/gseen.mod.1.1.1.dev3.tar.gz
+	source = dlopen.c
+	options = !makeflags
+	backup = etc/eggdrop-gseen.mod.conf
+
+pkgname = eggdrop-gseen.mod
+
