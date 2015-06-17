@@ -1,0 +1,18 @@
+pkgbase = python-cclib
+	pkgdesc = A library for parsing and interpreting the results of computational chemistry packages.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://cclib.github.io
+	arch = any
+	license = LGPL
+	source = https://github.com/cclib/cclib/releases/download/v1.3.1/cclib-1.3.1.tar.gz
+	sha256sums = 2a5270cc575008e618f485265e6e7a41c5072f8d9a89fc89e0eadd13933d69f1
+
+pkgname = python-cclib
+	depends = python
+	depends = python-numpy
+
+pkgname = python2-cclib
+	depends = python2
+	depends = python2-numpy
+
