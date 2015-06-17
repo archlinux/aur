@@ -1,0 +1,14 @@
+pkgbase = grub2-theme-archxion
+	pkgdesc = Grub2 gfxmenu theme.
+	pkgver = 1.0
+	pkgrel = 6
+	url = https://github.com/Generator/Grub2-themes
+	install = grub2-theme-archxion.install
+	arch = any
+	license = GPLv3
+	depends = grub
+	source = https://github.com/downloads/Generator/Grub2-themes/Archxion.tar.bz2
+	md5sums = b994445c08e81c00d91c727e06053f44
+
+pkgname = grub2-theme-archxion
+

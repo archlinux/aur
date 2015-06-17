@@ -1,0 +1,29 @@
+post_install() {
+  cat << _EOF
+
+==> Installation:
+==> Add theme to your /etc/default/grub: GRUB_THEME="/boot/grub/themes/Archxion/theme.txt"
+==> Preferred resolution 1024x768: GRUB_GFXMODE=1024x768
+==> Update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+_EOF
+}
+
+pre_upgrade() {
+  checkver=$(pacman -Qs grub2-theme-archxion | head -n 1 | awk '{print $2}')
+  target=/boot/grub/themes/Archlinux
+
+  if [[ $checkver == "1.0-1" ]]; then
+  cat << _EOF
+
+==> Install target changed to /boot/grub/themes/Archxion
+==> No longer needed to copy /usr/share/grub/themes/Archxion to /boot/grub/themes/
+
+_EOF
+     # Not Working
+     #if [ -d "$target" ]; then
+     #   rm -rf /boot/grub/themes/Archxion
+     #fi
+  fi
+}
+
