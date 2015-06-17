@@ -1,0 +1,19 @@
+pkgbase = authpuppy
+	pkgdesc = A new implementation of the authentication server for Wifidog networks.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.authpuppy.org/
+	install = authpuppy.install
+	arch = any
+	license = GPL
+	depends = apache
+	depends = php
+	depends = mysql
+	options = !strip
+	source = http://launchpadlibrarian.net/78643482/authpuppy-1.0.0-stable.tgz
+	source = httpd-authpuppy.conf
+	md5sums = a168ba71cd0e4347ab0983daf6d8e150
+	md5sums = 1b008fb4616c661a22fcb5584fce8846
+
+pkgname = authpuppy
+

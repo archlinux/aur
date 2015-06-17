@@ -1,0 +1,7 @@
+## arg 1:  the new package version
+post_install() {
+  echo " You need to setup Apache to serve /srv/http/wifidog-auth then open install.php in your browser to finish installation"
+  echo " Add your httpd-authpuppy.conf in httpd.conf "
+}
+
+# vim:set ts=2 sw=2 et:
