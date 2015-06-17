@@ -1,0 +1,13 @@
+pkgbase = python2-bunch
+	pkgdesc = A dot-accessible dictionary (a la JavaScript objects)
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = http://pypi.python.org/pypi/bunch/
+	arch = any
+	license = MIT
+	depends = python2
+	source = http://pypi.python.org/packages/source/b/bunch/bunch-1.0.1.tar.gz
+	md5sums = 0a829d64e95ed96defbcae2bf9061bb0
+
+pkgname = python2-bunch
+
