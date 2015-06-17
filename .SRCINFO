@@ -1,0 +1,17 @@
+pkgbase = eminent-git
+	pkgdesc = Effortless wmii-style dynamic tagging for the awesome window manager version 3.5 or later, second iteration
+	pkgver = 2014.10.23.ge6b721e
+	pkgrel = 1
+	url = https://github.com/guotsuan/eminent
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = awesome
+	provides = eminent
+	conflicts = eminent
+	source = git://github.com/guotsuan/eminent.git
+	md5sums = SKIP
+
+pkgname = eminent-git
+
