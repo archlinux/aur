@@ -1,0 +1,10 @@
+--- a/CDebugSessionDlg.cpp	2012-12-08 10:41:34.000000000 +0100
++++ b/CDebugSessionDlg.cpp	2013-03-04 14:59:50.656956759 +0100
+@@ -22,6 +22,7 @@
+ *******************************************************************************/
+ #include <algorithm>
+ #include <errno.h>
++#include <unistd.h>
+ #include <fstream>
+ #include <iostream>
+ #include <vector>
