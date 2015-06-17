@@ -1,0 +1,16 @@
+pkgbase = i8krellm
+	pkgdesc = GKrellM plugin for Dell Inspiron/Latitude notebooks
+	pkgver = 2.5
+	pkgrel = 2
+	url = http://www.coding-zone.com/?page=i8krellm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = i8kutils
+	depends = gkrellm
+	depends = gtk2
+	source = ftp://ftp.uni-kl.de/pub/linux/gentoo/distfiles/i8krellm-2.5.tar.gz
+	md5sums = adf099b85ca7b6f13ad17ee1a3be2cdb
+
+pkgname = i8krellm
+
