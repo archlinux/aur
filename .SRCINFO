@@ -1,0 +1,14 @@
+pkgbase = python2-intelhex
+	pkgdesc = library provides support for reading, modifying, writing Intel HEX files
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.bialix.com/intelhex/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://launchpad.net/intelhex/trunk/1.5/+download/intelhex-1.5.tar.gz
+	sha1sums = 37657539645754d75e6718bc06274ce55751e782
+
+pkgname = python2-intelhex
+
