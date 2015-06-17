@@ -1,0 +1,14 @@
+pkgbase = apache-mime4j
+	pkgdesc = Apache JAMES Mime4j
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://james.apache.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = java-runtime
+	source = http://it.apache.contactlab.it//james/mime4j/0.7.2/apache-mime4j-0.7.2-bin.tar.gz
+	md5sums = 5fdb0e4931fb502959e523a20cef756a
+
+pkgname = apache-mime4j
+
