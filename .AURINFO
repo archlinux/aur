@@ -1,0 +1,14 @@
+pkgbase = perl-vk-app
+	pkgdesc = Creation of a client application for vk.com
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/$_cpanname/
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = perl-lwp-protocol-https
+	depends = perl-json
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MAG/VK-App-0.11.tar.gz
+
+pkgname = perl-vk-app
+
