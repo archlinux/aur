@@ -1,0 +1,19 @@
+pkgbase = cocoon-git
+	pkgdesc = A GUI for Git
+	pkgver = 1144.5c2ba08
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/sdk/cocoon
+	install = cocoon-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdebase-runtime
+	replaces = cocoon
+	source = cocoon::git://anongit.kde.org/cocoon
+	md5sums = SKIP
+
+pkgname = cocoon-git
+
