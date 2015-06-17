@@ -1,0 +1,15 @@
+pkgbase = python2-pyleapmouse-git
+	pkgdesc = A Leap Motion based mouse in Python.
+	pkgver = 63.97d8839
+	pkgrel = 1
+	url = https://github.com/pythonian4000/PyLeapMouse
+	arch = any
+	license = unknown
+	depends = python2
+	depends = python2-pyuserinput-git
+	depends = leap-motion-sdk
+	source = git+https://github.com/openleap/PyLeapMouse.git
+	source = pyleapmouse
+
+pkgname = python2-pyleapmouse-git
+
