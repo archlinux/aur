@@ -1,0 +1,25 @@
+--- a/usr/bin/system76-driver-cli	2014-06-08 20:24:45.504460175 -0400
++++ b/usr/bin/system76-driver-cli	2014-06-08 20:29:25.407321835 -0400
+@@ -27,6 +27,7 @@
+ import logging
+ 
+ import system76driver
++from system76driver import daemon
+ from system76driver.products import PRODUCTS
+ from system76driver.actions import ActionRunner
+ 
+@@ -55,12 +56,12 @@
+ 
+ # We want to be very careful not to automatically do anything on non-System76
+ # hardware, so we check both sys_vendor and product_version:
+-sys_vendor = system76driver.read_dmi_id('sys_vendor')
++sys_vendor = daemon.load_json_conf('/etc/system76-daemon.json').get('vendor') or system76driver.read_dmi_id('sys_vendor')
+ if sys_vendor not in ('System76, Inc.', 'System76, Inc'):
+     log.warning('wrong sys_vendor: %r', sys_vendor)
+     sys.exit(exitcode)
+ 
+-product_version = system76driver.read_dmi_id('product_version')
++product_version = daemon.load_json_conf('/etc/system76-daemon.json').get('model') or system76driver.read_dmi_id('product_version')
+ try:
+     product = PRODUCTS[product_version]
+     log.info('product_version: %r', product_version)

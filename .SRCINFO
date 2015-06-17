@@ -1,0 +1,32 @@
+pkgbase = system76-driver
+	pkgdesc = System76 Driver provides drivers, restore, and regression support for System76 computers
+	pkgver = 15.04.6
+	pkgrel = 1
+	url = https://launchpad.net/system76-driver
+	install = system76-driver.install
+	arch = any
+	license = GPL
+	depends = python>=3.4
+	depends = python-gobject
+	depends = python-dbus
+	depends = dmidecode
+	optdepends = pm-utils: For powermanagement features
+	optdepends = gtk3: To launch System76 Driver GUI
+	optdepends = grub: To apply kernel boot time parameters
+	optdepends = polkit: runnning System76 Driver GUI from application menu
+	optdepends = pulseaudio: To apply microphone fix
+	source = https://launchpad.net/~system76-dev/+archive/stable/+files/system76-driver_15.04.6.tar.gz
+	source = system76.service
+	source = galu1.patch
+	source = grub.patch
+	source = gtk.patch
+	source = cli.patch
+	sha1sums = f67b44300934b0aa2b85aaba17239a0b9c694ecc
+	sha1sums = cf763432441c3da0563eee041145a02109f2bb3a
+	sha1sums = 6fb7b26f77098424586424bd35522882412ddd09
+	sha1sums = dd95fd7317786c9fc9b0233c248d192832a83fe0
+	sha1sums = b276d403153adae45fb71c2e1a7a0340cab27e74
+	sha1sums = 5175c3a54efefcf4a3526094e33a1281cb59c4eb
+
+pkgname = system76-driver
+

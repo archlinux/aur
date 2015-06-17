@@ -1,0 +1,49 @@
+post_install() {
+cat << EOF
+
+	To enable the System76 driver service at boot, run the following command as root:
+
+		systemctl enable system76.service
+
+	To manually start the service (without reboot), run the following command as root:
+
+		systemctl start system76.service
+
+	Before removing the System76 service, run the following commands as root:
+
+		systemctl stop system76.service
+		systemctl disable system76.service
+
+	To install settings and patches, specific for your System76 laptop model, execute System76 Driver 
+	application and click "Install Drivers". If the application won't start, you can manually start it 
+	using following command as root:
+
+	GUI version:
+
+		system76-driver   
+
+	CLI version:
+
+		system76-driver-cli
+
+
+	(!) If you do not use grub bootloader, please check output for possible manual actions required for
+	your model related to bootloader modifications.
+
+	(!) For Clevo W740SU BIOS/Firmware users on Galago UltraPro: your will need to create /etc/system76-daemon.json
+	file with following content:
+
+		{
+			"vendor": "System76, Inc",
+			"model": "galu1"
+		}
+    
+	to override laptop model for daemon and system76-driver-cli, because it fails to correctly identify laptop
+	model with non-System76 BIOS/Firmware flashed.
+
+EOF
+}
+
+post_upgrade() {
+	post_install
+}

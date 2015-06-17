@@ -1,0 +1,8 @@
+[Unit]
+Description=System76 driver
+ 
+[Service]
+ExecStart=/usr/bin/python /usr/lib/system76-driver/system76-daemon
+
+[Install]
+WantedBy=multi-user.target
