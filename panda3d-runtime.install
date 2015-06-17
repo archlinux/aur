@@ -1,0 +1,16 @@
+post_install() {
+  update-mime-database usr/share/mime
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  update-mime-database usr/share/mime
+  update-desktop-database -q
+}
+
+post_remove() {
+  update-mime-database usr/share/mime
+  update-desktop-database -q
+}
+
+# vim:set ts=2 sw=2 et:

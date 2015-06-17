@@ -1,0 +1,25 @@
+pkgbase = panda3d-runtime
+	pkgdesc = 3D engine with Python bindings. Runtime and web plugin.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.panda3d.org
+	install = panda3d-runtime.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2
+	makedepends = libpng
+	makedepends = libjpeg
+	makedepends = xulrunner
+	depends = openssl
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = http://www.panda3d.org/download/panda3d-runtime-1.0.4/panda3d-runtime-1.0.4.tar.gz
+	source = panda3d-runtime.install
+	source = patch.patch
+	md5sums = 4410c5b1cb49f2d1de127d8cf51c8596
+	md5sums = 781da785acb14d547624b505ef01e064
+	md5sums = 197359757fd33d038c466ba572ec8d1b
+
+pkgname = panda3d-runtime
+
