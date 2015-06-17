@@ -1,0 +1,13 @@
+pkgbase = partclone-utils
+	pkgdesc = Utility for use with partclone generated images.
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = http://www.idealworldinc.com/partclone-utils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.idealworldinc.com/partclone-utils/partclone-utils.tar.gz
+	md5sums = 4c27d7fb4680cdcfe5871f2bdcd4475d
+
+pkgname = partclone-utils
+
