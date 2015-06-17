@@ -1,0 +1,18 @@
+pkgbase = can-utils-git
+	pkgdesc = Linux-CAN / SocketCAN user space applications
+	pkgver = r258.8af831f
+	pkgrel = 1
+	url = https://github.com/linux-can/can-utils
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPLv2
+	makedepends = git
+	makedepends = libtool
+	provides = can-utils
+	conflicts = can-utils
+	source = git+https://github.com/linux-can/can-utils.git
+	md5sums = SKIP
+
+pkgname = can-utils-git
+
