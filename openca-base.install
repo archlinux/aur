@@ -1,0 +1,25 @@
+post_install() {
+  exec /usr/etc/openca/configure_etc.sh
+  echo "Remember to add these lines in /etc/httpd/conf/httpd.conf"
+  echo ""
+  echo "# OpenCa"
+  echo "Include conf/extra/openca/online.conf"
+  echo "Include conf/extra/openca/offline.conf"
+  echo "Include conf/extra/openca/common.conf"
+  echo ""
+  echo "Do /etc/rc.d/openca start and choose the Web interface password (Username: admin)" 
+  echo "Remember to execute apache web server and the db daemon (e.g MySql)"
+  echo "For DB -- Username: openca Password: openca DB: openca"  
+  chmod 777 -R /var/openca/log/xml/*
+}
+
+post_remove() {
+  echo "Remember to remove these lines in /etc/httpd/conf/httpd.conf"
+  echo ""
+  echo "# OpenCa"
+  echo "Include conf/extra/openca/online.conf"
+  echo "Include conf/extra/openca/offline.conf"
+  echo "Include conf/extra/openca/common.conf"
+  rm -r /usr/etc/openca
+  rm -r /srv/http/html/pki/
+}

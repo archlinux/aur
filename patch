@@ -1,0 +1,9 @@
+--- a/src/Makefile	2008-10-07 23:13:13.000000000 +0200
++++ b/src/Makefile	2013-01-18 22:04:40.435658743 +0100
+@@ -17,7 +17,6 @@
+ SUBDIRS = \
+ 	$(COMMON_DIR)	\
+ 	$(MODULE_DIR)	\
+-	$(EXT_MODULE_DIR) \
+ 	$(SCRIPT_DIR)	\
+ 	$(WEB_DIR)
