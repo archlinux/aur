@@ -1,0 +1,10 @@
+--- setup.py	2010-09-19 11:14:01.357000362 +0200
++++ ../../setup.py	2010-09-19 11:31:20.317000361 +0200
+@@ -11,7 +11,6 @@
+     url='http://pypi.python.org/pypi/rapid-spring/',
+     license='LICENSE.txt',
+     description='spring content downloading',
+-    long_description=open('README.txt').read(),
+     # running `setup.py sdist' gives a warning about this, but still
+     # install_requires is the only thing that works with pip/easy_install...
+     install_requires=['bitarray'],

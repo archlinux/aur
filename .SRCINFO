@@ -1,0 +1,20 @@
+pkgbase = rapid-spring-git
+	pkgdesc = Commandline client for Spring rapid downloading system
+	pkgver = 233.df54975
+	pkgrel = 1
+	url = http://github.com/tvo/rapid/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-bitarray
+	depends = python2
+	depends = spring
+	depends = python-pip
+	depends = python2-cx_freeze
+	source = rapid::git://github.com/tvo/rapid.git
+	source = patch
+	md5sums = SKIP
+	md5sums = 278ddeedb23a852ae2fa9957fddde982
+
+pkgname = rapid-spring-git
+
