@@ -1,0 +1,13 @@
+pkgbase = squirrelmail-plugin-add_address
+	pkgdesc = Plugin for squirrelmail. Helps users add addresses to their address book from incoming and outgoing messages quickly and easily.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.squirrelmail.org/plugin_view.php?id=269
+	arch = any
+	license = GPLv2
+	depends = squirrelmail>=1.4.10
+	source = http://www.squirrelmail.org/plugins/add_address-1.0.3-1.4.0.tar.gz
+	md5sums = e922dbad293ac0941a36eb0e543faa20
+
+pkgname = squirrelmail-plugin-add_address
+
