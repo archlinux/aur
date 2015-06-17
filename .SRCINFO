@@ -1,0 +1,13 @@
+pkgbase = vedis
+	pkgdesc = an embeddable datastore C library built with over 70 commands similar in concept to Redis but without the networking layer
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = http://vedis.symisc.net/
+	arch = i686
+	arch = x86_64
+	license = Sleepycat
+	source = http://vedis.symisc.net/db/vedis-ds-126.zip
+	sha256sums = 64d5f8ddabfa3733843fbdd53615d83a1da794a0ee437442f38be8a9adff7118
+
+pkgname = vedis
+
