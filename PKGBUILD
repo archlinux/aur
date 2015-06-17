@@ -3,9 +3,9 @@
 
 pkgname="dcron-git"
 pkgver="4.5.r7.gbccc0e8"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="dillon's lightweight cron daemon (Git version)."
-arch=("i686" "x86_64")
+arch=("any")
 license=("GPL")
 url="http://www.jimpryor.net/linux/dcron.html"
 backup=("var/spool/cron/root" "etc/conf.d/crond")
