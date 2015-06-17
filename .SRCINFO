@@ -1,0 +1,25 @@
+pkgbase = nftables-git
+	pkgdesc = Netfilter nf_tables infrastructure library
+	pkgver = 0.099.r3.g35f689e
+	pkgrel = 1
+	url = http://netfilter.org/projects/nftables/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = docbook2x
+	makedepends = perl-xml-libxml
+	depends = libmnl
+	depends = gmp
+	depends = libnftnl-git
+	depends = ncurses
+	conflicts = nftables
+	source = git://git.netfilter.org/nftables
+	source = nftables.service
+	source = nftables-ctl
+	sha1sums = SKIP
+	sha1sums = efbc57f8ea6c37baaa8dac7bab026e9babf5aa97
+	sha1sums = 384642dd1b9490870a92b5d6fca62c3e942be109
+
+pkgname = nftables-git
+

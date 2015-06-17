@@ -1,0 +1,12 @@
+[Unit]
+Description=nftables
+Documentation=man:nftables(8)
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/nftables-ctl start
+ExecStop=/usr/bin/nftables-ctl stop
+
+[Install]
+WantedBy=multi-user.target
