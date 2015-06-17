@@ -1,0 +1,19 @@
+pkgbase = nix
+	pkgdesc = A purely functional package manager
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://nixos.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bzip2
+	makedepends = gc
+	makedepends = openssl
+	depends = perl-www-curl
+	depends = perl-dbd-sqlite
+	depends = perl-dbi
+	source = http://nixos.org/releases/nix/nix-1.9/nix-1.9.tar.xz
+	sha256sums = 8a47cd7c35dfa628a4acfaef387e7451013c61d250bbcf1f38067a7c73f9f3e1
+
+pkgname = nix
+
