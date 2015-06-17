@@ -1,0 +1,15 @@
+pkgbase = python-nibabel
+	pkgdesc = Python library for reading and writing of some common neuroimaging file formats
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://nipy.org/nibabel
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/n/nibabel/nibabel-2.0.0.tar.gz
+	md5sums = befa2fcbd242496a83007a47aad538de
+
+pkgname = python-nibabel
+
