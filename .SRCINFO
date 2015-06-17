@@ -1,0 +1,21 @@
+pkgbase = kdeplasma-applets-qrcodeplasmoid-git
+	pkgdesc = A plasmoid to quickly export some selected text in QR Code
+	pkgver = 10.9af2b9a
+	pkgrel = 1
+	url = http://kde.org/
+	install = kdeplasma-applets-qrcodeplasmoid-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = kdebase-workspace
+	depends = qrencode
+	source = qrgenplasmoid::git+https://github.com/PVince81/qrgenplasmoid.git
+	source = patch
+	md5sums = SKIP
+	md5sums = 34928af1b21b65413109cd3808e509ef
+
+pkgname = kdeplasma-applets-qrcodeplasmoid-git
+

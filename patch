@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2011-08-02 09:57:50.532290460 +0200
++++ b/CMakeLists.txt	2011-08-02 10:00:16.128168366 +0200
+@@ -14,7 +14,7 @@
+ # TODO: option to enable/disable standalone and plasmoid build
+ 
+ # Add debug symbols
+-SET(CMAKE_CXX_FLAGS "-g -Wall")
++SET(CMAKE_CXX_FLAGS "-g -Wall -fPIC")
+ 
+ find_package(Qt4 REQUIRED)
+ find_package(QREncode REQUIRED)
