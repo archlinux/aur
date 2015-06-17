@@ -1,0 +1,17 @@
+pkgbase = s6-portable-utils-musl
+	pkgdesc = Tiny portable generic utilities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.skarnet.org/software/s6-portable-utils
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = skalibs
+	makedepends = musl
+	provides = s6-portable-utils
+	source = http://www.skarnet.org/software/s6-portable-utils/s6-portable-utils-1.0.0.tar.gz
+	md5sums = 64601d936aee7c88ed0e5a8f54e45fd6
+
+pkgname = s6-portable-utils-musl
+
