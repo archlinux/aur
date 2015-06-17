@@ -19,7 +19,8 @@ depends=("boost"
 )
 makedepends=("cmake")
 source=("git+https://github.com/knossos-project/knossos.git"
-	"knossos-git.desktop")
+	"knossos-git.desktop"
+)
 md5sums=('SKIP'
          '7d21e73633da771937198884e435d605')
 
