@@ -1,0 +1,13 @@
+--- cpp2dia.tclsh	2003-05-14 05:27:30.000000000 -0400
++++ cpp2dia.tclsh	2010-05-03 15:41:48.000000000 -0400
+@@ -97,8 +97,8 @@
+ 	global env
+ 	set iConfigVersion 1
+ 		
+-	set aDefault(install_path) [file join $env(HOME) "cpp2dia" ]
+-	set aDefault(dot_layouter) [file join $env(HOME) "gv1.7c" bin neato ]
++	set aDefault(install_path) "/usr/share/cpp2dia"
++	set aDefault(dot_layouter) "/usr/bin/neato"
+ 	set aDefault(dot_graphtype) "graph"
+ 	set aDefault(glob_header) "*.h *.hxx"
+ 	set aDefault(glob_source) "*.cxx *.cpp"

@@ -1,0 +1,15 @@
+post_install() {
+	echo "if you run version 1.2.0 for the first time a config file will be created in $HOME/.cpp2diarc"
+	echo "set the configuration in $HOME/.cpp2diarc to the values, you like."
+	
+	/bin/true
+}
+
+post_upgrade() {
+	post_install
+}
+
+op=$1
+shift
+
+$op "$@"
