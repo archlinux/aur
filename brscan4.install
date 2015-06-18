@@ -1,0 +1,46 @@
+# new package version
+devices_file="/opt/brother/scanner/brscan4/brsanenetdevice4.cfg"
+
+pre_install() {
+  /bin/true
+}
+
+# new package version
+post_install() {
+  echo "Find additional documentation about scanner driver install at:"
+  echo "http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn1.html"
+  echo "For a network installation run the following as root:"
+  echo "brsaneconfig4 -a name=\"Brother\" model=\"YOURMODELHERE\" ip=YOUR.SCANNER.IP.HERE"
+  /opt/brother/scanner/brscan4/setupSaneScan4 -i
+}
+
+# the new package version
+# old package version
+pre_upgrade() {
+  # If user has already configured their scanner then make a config backup
+  if [ -f $devices_file ]; then
+    cp $devices_file $devices_file.backup || return 1
+  fi
+}
+
+# new package version
+# old package version
+post_upgrade() {
+  # After upgrade revert user's scanner config and delete a config backup
+  if [ -f $devices_file.backup ]; then
+    cp $devices_file.backup $devices_file || return 1
+    rm $devices_file.backup || return 1
+  fi
+}
+
+# old package version
+pre_remove() {
+  /opt/brother/scanner/brscan4/setupSaneScan4 -e
+  /bin/true
+}
+
+# old package version
+post_remove() {
+  /bin/true
+}
+

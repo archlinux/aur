@@ -1,0 +1,16 @@
+#!/usr/bin/gawk -f
+BEGIN {
+	FS = ",";
+	print "ACTION==\"add\", ATTR{idVendor}==\"04f9\", GOTO=\"brscan4\"";
+	print "GOTO=\"brscan4_end\"";
+	print "LABEL=\"brscan4\"";
+}
+NF >= 3 && $1 ~ /^ *0[xX][[:xdigit:]]+ *$/ {
+	id = "000" tolower( substr( $1, 3 ));
+	id = substr( id, length( id ) - 3 );
+	print "ATTR{idProduct}==\"" id "\", MODE=\"0664\", GROUP=\"scanner\", ENV{libsane_matched}=\"yes\"";
+}
+END {
+	print "LABEL=\"brscan4_end\"";
+}
+
