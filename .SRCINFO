@@ -1,0 +1,30 @@
+pkgbase = binwalk
+	pkgdesc = A tool for searching a given binary image for embedded files
+	pkgver = 2.0.1
+	pkgrel = 4
+	url = http://binwalk.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	optdepends = python-pyqtgraph: graph and visualization support
+	optdepends = python-opengl: binviz module support
+	optdepends = arj: ARJ decompression support
+	optdepends = cabextract: CAB archive support
+	optdepends = cpio: CPIO archvie support
+	optdepends = gzip: GZIP decompression support
+	optdepends = lha: LHA decompression support
+	optdepends = mtd-utils: JFFS filesystem support
+	optdepends = p7zip: ZIP, LZMA and ISO decompression support
+	optdepends = squashfs-tools: squashfs support
+	optdepends = tar: TAR archive support
+	optdepends = unrar: RAR decompression support
+	optdepends = xz: XZ decompression support
+	optdepends = firmware-mod-kit: cramfs support
+	source = binwalk-2.0.1.tar.gz::https://github.com/devttys0/binwalk/archive/v2.0.1.tar.gz
+	source = replace-java.patch
+	sha512sums = de223f61a0a212469c21b8e36d02cadc83f1cdb96a0f6114490d15d8dc12c93a86b46ef74379acb96b32b305e75ca66e940d7a18a8dc3b5036ebe8946dcca0f3
+	sha512sums = 743caf39ce5ca0bc7573e0600815bbf4932522b9235b7f35187483030c6148d52ab1946f1ec20bf43f9c040576365beb714afe384c4d7485d87463cf25668234
+
+pkgname = binwalk
+
