@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-suspend-button-git
+	pkgdesc = Allows to modify the suspend/shutdown button in the status menu.
+	pkgver = r15.9321c11
+	pkgrel = 1
+	url = https://github.com/laserb/gnome-shell-extension-suspend-button
+	install = gnome-shell-extension-suspend-button.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-suspend-button-git::git+https://github.com/laserb/gnome-shell-extension-suspend-button
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-suspend-button-git
+
