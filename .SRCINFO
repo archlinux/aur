@@ -1,0 +1,14 @@
+pkgbase = kmc
+	pkgdesc = Count k-mers in a set of reads from genome sequencing projects
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://sun.aei.polsl.pl/kmc/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	source = http://sun.aei.polsl.pl/kmc/download/kmc.tar.gz
+	md5sums = 3d36398f63277bf1c7c8bd69a026cd40
+
+pkgname = kmc
+
