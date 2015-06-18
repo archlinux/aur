@@ -1,0 +1,16 @@
+pkgbase = python2-pybloomfiltermmap
+	pkgdesc = A Bloom filter (bloomfilter) for Python built on mmap
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = http://github.com/axiak/pybloomfiltermmap/
+	arch = any
+	license = MIT
+	depends = python2
+	provides = python2-pybloomfiltermmap
+	conflicts = python2-pybloomfiltermmap-git
+	options = !emptydirs
+	source = https://github.com/axiak/pybloomfiltermmap/archive/release/0.3.12.tar.gz
+	sha512sums = 515192b4a4ba3cc9619b3bbac234a372f1770c6bd101d49b07083493cbdc5bb3f74e974b89d0681407ab417682cf3bbe39f269341b4fd99707beb1849d418518
+
+pkgname = python2-pybloomfiltermmap
+
