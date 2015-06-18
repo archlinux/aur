@@ -1,0 +1,14 @@
+pkgbase = dnsmap
+	pkgdesc = passive DNS network mapper
+	pkgver = 0.30
+	pkgrel = 3
+	url = https://dnsmap.googlecode.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	source = https://dnsmap.googlecode.com/files/dnsmap-0.30.tar.gz
+	sha512sums = a4653fec0c407b88d1edc0d40dead19d2fa405d840b701160586c3efc90e7fccef166966af19809b7d175ed9c658b014298a991544213fb604fa9b007030e63d
+
+pkgname = dnsmap
+
