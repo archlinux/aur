@@ -1,0 +1,18 @@
+--- bzrlog	2015-06-17 17:51:46.802086661 +0200
++++ bzrlog.new	2015-06-17 17:55:11.424604142 +0200
+@@ -3,12 +3,12 @@
+ import os, os.path, shutil, textwrap, sys, locale, StringIO, string
+ import gtk, pango
+ import bzrlib, bzrlib.plugin, bzrlib.workingtree
+-import bzrlib.plugins.gtk.commit as gtk_commit
++import bzrlib.plugins.gtk2.commit as gtk_commit
+ 
+ try :
+-    from bzrlib.plugins.gtk.diff import iter_changes_to_status
++    from bzrlib.plugins.gtk2.diff import iter_changes_to_status
+ except :
+-    from bzrlib.plugins.gtk.diff import _iter_changes_to_status as iter_changes_to_status
++    from bzrlib.plugins.gtk2.diff import _iter_changes_to_status as iter_changes_to_status
+ 
+ bzrlib.plugin.load_plugins()
+ 

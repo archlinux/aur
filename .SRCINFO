@@ -1,15 +1,17 @@
 pkgbase = bzrlog
 	pkgdesc = Log oriented GUI for Bazaar VCS
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/bzrlog
 	arch = any
 	license = GPL2
 	depends = bzr
 	depends = pygtk
-	depends = bzr-gtk
+	depends = bzr-gtk-gtk2
 	source = https://launchpad.net/bzrlog/trunk/1.1/+download/BzrLog-1.1.tar.gz
+	source = bzr-gtk-gtk2.patch
 	md5sums = 26b655e4edcabd2ccfa71c66dafac89b
+	md5sums = 2656e6f33c808d48f3002f0ceb35e02f
 
 pkgname = bzrlog
 
