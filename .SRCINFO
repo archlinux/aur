@@ -1,0 +1,15 @@
+pkgbase = archlinux-lxdm-theme
+	pkgdesc = Simple Arch Linux theme for LXDM, by Thayer Williams and Allan McRae
+	pkgver = 1
+	pkgrel = 3
+	url = http://allanmcrae.com/2011/08/simple-arch-linux-theme-for-lxdm/
+	arch = any
+	license = CCPL:by-sa
+	depends = lxdm
+	source = http://allanmcrae.com/files/lxdm-theme.tar.gz
+	source = git-fixes.patch
+	md5sums = 899b33309ee04f3200bb08aedb5717ed
+	md5sums = 7eba1f5ca1dacbc670a05b0467004db5
+
+pkgname = archlinux-lxdm-theme
+
