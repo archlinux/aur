@@ -17,7 +17,7 @@ optdepends=(
 options=('!strip')
 install="${pkgname}.install"
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rapid7/metasploit-framework/archive/${pkgver}.tar.gz)
-sha512sums=('8c5340683f6618946d5c3ebefd59cd5167dba8c8fd8334b5a12f8dc3e515e7d814dda4029d7577b5d6e2615362a8a33965dfc09b8f5dae728abfdb84bd89e2a2')
+sha512sums=('530b4016f2405d0ca793961ce11e70efde75f1da4f58e5045ff0fd46386e35be2eb88dacde9365ae256c8d7397c47b6bed03474ce16649de573c9f1b68a714ee')
 
 package() {
   cd metasploit-framework-${pkgver}
