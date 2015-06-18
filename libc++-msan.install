@@ -1,0 +1,7 @@
+post_install() {
+  echo compile with \`clang++ -std=c++11 -stdlib=libc++ -lc++abi\` to use libc++
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,24 @@
+pkgbase = libc++-msan
+	pkgdesc = Standard C++ library implementation from the LLVM project (Memory Sanitizer enabled)
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://libcxx.llvm.org
+	install = libc++-msan.install
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = clang
+	makedepends = subversion
+	makedepends = cmake
+	depends = glibc
+	depends = libc++abi
+	depends = gcc-libs
+	provides = libc++
+	conflicts = libc++
+	options = debug
+	options = !strip
+	source = http://www.llvm.org/releases/3.6.0/libcxx-3.6.0.src.tar.xz
+	md5sums = 5d4a2ff4e2023eaa3f2025e26274d504
+
+pkgname = libc++-msan
+
