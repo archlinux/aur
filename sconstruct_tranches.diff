@@ -1,0 +1,51 @@
+--- SConstruct_old	2009-11-18 14:30:07.000000000 +0100
++++ SConstruct	2009-11-18 13:31:12.000000000 +0100
+@@ -1,6 +1,15 @@
+ # ENVIRONMENT
+ env = Environment(CPPFLAGS=' -I/usr/include/libxml2 -I/usr/include/lash-1.0',LIBS=['asound','pthread','xml2','jack'])
+ 
++# CONFIGURATION OPTIONS
++opts = Variables('tranches.conf') 
++opts.Add(PathVariable('PREFIX', 'Directory to install under', '/usr/local', PathVariable.PathIsDir))
++opts.Add(PathVariable("DESTDIR", 'Root directory to install into', '/usr/local', PathVariable.PathIsDir))
++opts.Update(env)
++#opts.Save('tranches.conf', env)  # Save, so user doesn't have to specify PREFIX every time
++
++Help(opts.GenerateHelpText(env))
++
+ # SOURCE FILES
+ base = Glob('src/base/*.cpp')
+ audio = Glob('src/audio/*.cpp')
+@@ -82,9 +91,9 @@
+ 		env['LINKCOMSTR'] = "Linking $TARGET"
+ 
+ # INSTALL
+-bin = env.Install('/usr/local/bin', 'tranches')
+-desktop = env.Install('/usr/local/share/applications', 'data/tranches.desktop')
+-icon = env.Install('/usr/local/share/pixmaps', 'data/tranches.png')
++bin = env.Install('$DESTDIR/$PREFIX/bin', 'tranches')
++desktop = env.Install('$DESTDIR/$PREFIX/share/applications', 'data/tranches.desktop')
++icon = env.Install('$DESTDIR/$PREFIX/share/pixmaps', 'data/tranches.png')
+ env.Alias('install', [bin,desktop,icon])
+ 
+ # HELP
+@@ -98,6 +107,8 @@
+ 
+ 		Si tout se passe bien, entrez 'scons install' en tant qu'administrateur 
+ 		pour installer Tranches dans /usr/local/
++			utilisez DESTDIR ou PREFIX pour installer dans d'autres endroits, 
++			p. ex. 'scons PREFIX="/usr" install'
+ 
+ 		Si vous voulez nettoyer la compilation, entrez 'scons -c'
+ 		Si vous voulez desinstaller Tranches, entrez 'scons -c install'
+@@ -113,7 +124,9 @@
+ 
+ 		If everything went good, type 'scons install' as root 
+ 		to install Tranches in /usr/local/
+-
++			use DESTDIR or PREFIX to install in other places, 
++			e.g. 'scons PREFIX="/usr" install'
++		
+ 		If you want to clean the build, type 'scons -c'
+ 		If you want to uninstall Tranches, type 'scons -c install'
+ 	     """)
