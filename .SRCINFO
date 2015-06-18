@@ -1,0 +1,14 @@
+pkgbase = jack_snapshot
+	pkgdesc = stores and restores a set of JACK connections
+	pkgver = 0.0.4
+	pkgrel = 2
+	url = http://sourceforge.net/projects/heaven/files/Audio%20Applications/Jack%20Related/jack_snapshot/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	source = http://downloads.sourceforge.net/project/heaven/Audio%20Applications/Jack%20Related/jack_snapshot/jack_snapshot-0.0.4.tar.gz
+	md5sums = 253fb004146e9405c5fd85f66e1bfc0d
+
+pkgname = jack_snapshot
+
