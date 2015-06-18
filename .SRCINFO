@@ -1,0 +1,18 @@
+pkgbase = tapeutape
+	pkgdesc = MIDI controllable sampler
+	pkgver = 0.1.1
+	pkgrel = 6
+	url = http://hitmuri.net/index.php/software/tapeutape
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = fltk
+	depends = lash
+	source = http://www.hitmuri.net/uploads/Software/tapeutape-0.1.1.tar.gz
+	source = sconstruct_tapeutape.diff
+	md5sums = ac1168e2b93a2ae1a18d583f904c9dd1
+	md5sums = 6fa7653d512dc4074dd15615eeccbc25
+
+pkgname = tapeutape
+
