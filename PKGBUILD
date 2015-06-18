@@ -60,7 +60,7 @@ _kernelname=${_pkgname#linux}
 _basekernel=3.12
 true && pkgname=(${_pkgname} ${_pkgname}-headers)
 pkgver=3.12.44
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -69,7 +69,7 @@ options=('!strip')
 _ckpatchversion=2
 _ckpatchname="patch-3.12-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.12.0-v7r7"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.12.0-v7r8"
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
@@ -86,9 +86,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.tar.xz"
         '0004-nfs-rpc_pipe-remove-the-clntXX-dir-if-creating-the-p.patch'
         '0005-nfs-sunrpc-add-an-info-file-for-the-dummy-gssd.patch'
         '0006-nfs-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-whe.patch'
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.12.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.12.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.12.0.patch")
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.12.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.12.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.12.0.patch")
 
 sha256sums=('2e120ec7fde19fa51dc6b6cc11c81860a0775defcad5a5bf910ed9a50e845a02'
             'SKIP'
@@ -107,9 +107,9 @@ sha256sums=('2e120ec7fde19fa51dc6b6cc11c81860a0775defcad5a5bf910ed9a50e845a02'
             'df5c98b5719b97accbee16d387b81781cd9694801cf1f1d831fdf5069942fda1'
             'ed41c98da84dc0003777edca3101d4923be76701d6b494cd7c512a4da39de710'
             'b54af31bf32ea47dd47c48113481cc3288c04d844f5b4814663b108f43f415a7'
-            'ef00dfd04a3a22faa6443c47e07746678a56f6bb72277b50a784b9a57ca540c9'
-            '768c704c85fb9bf818b22f40ace594a95464f6cff97409959dd851c8f64f6993'
-            'c8032c87a844fe11056e39abc40c55cfbcb6503e04258101bdafa9fa87dd0f46')
+            '35e1c8370eb4b44edc21ed8bf4543b7995ea82b4845b10b42d042c53af018090'
+            'e07254c6a6ca387ddc20e4f6178c80c92354fca64e8aae2788fd46d9b924853a'
+            'f174d3bce97d48246e07c63e63f925af8be4ce2232a47602b4bcf2155598f811')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
