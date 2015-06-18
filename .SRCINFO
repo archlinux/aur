@@ -1,0 +1,17 @@
+pkgbase = vlc-vr-git
+	pkgdesc = movie player based on libvlc that can render to the Oculus Rift
+	pkgver = 9.6e5cdae
+	pkgrel = 1
+	url = https://github.com/jdtaylor/vlc-vr
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = vlc
+	optdepends = oculus-udev: Udev rule to make the rift sensors usable to the group "plugdev"
+	provides = vlc-vr
+	source = git+https://github.com/jdtaylor/vlc-vr.git
+	md5sums = SKIP
+
+pkgname = vlc-vr-git
+
