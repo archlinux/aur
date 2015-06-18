@@ -1,0 +1,17 @@
+pkgbase = edje2yuv
+	pkgdesc = Realtime Lua as programmable glue in LV2
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ventosus/edje2yuv
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = cmake
+	depends = efl
+	depends = mjpegtools
+	depends = ffmpeg
+	source = https://github.com/ventosus/edje2yuv/archive/1.0.1.tar.gz
+	md5sums = 4feee66f5b3653250b0879cd941da3ab
+
+pkgname = edje2yuv
+
