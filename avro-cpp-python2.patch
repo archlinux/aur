@@ -1,0 +1,10 @@
+Only in avro-cpp-1.7.7-patched/: CMakeLists.txt.orig
+diff -ur avro-cpp-1.7.7/scripts/gen-cppcode.py avro-cpp-1.7.7-patched/scripts/gen-cppcode.py
+--- avro-cpp-1.7.7/scripts/gen-cppcode.py	2014-07-18 20:20:04.000000000 +0100
++++ avro-cpp-1.7.7-patched/scripts/gen-cppcode.py	2014-07-30 01:19:33.603500815 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ license = '''/**
+  * Licensed to the Apache Software Foundation (ASF) under one
