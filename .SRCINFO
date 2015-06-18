@@ -1,0 +1,18 @@
+pkgbase = clusterit
+	pkgdesc = Tools to make a cluster of computers
+	pkgver = 2.5
+	pkgrel = 3
+	url = http://www.sourceforge.net/projects/clusterit
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libx11
+	depends = sh
+	conflicts = synce-librapi
+	source = http://downloads.sourceforge.net/clusterit/clusterit-2.5.tar.gz
+	source = LICENSE
+	md5sums = f0e772e07122e388de629fb57f7237ab
+	md5sums = 49524975a324d7bcc9589fc5f95f5c3c
+
+pkgname = clusterit
+
