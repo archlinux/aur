@@ -1,0 +1,27 @@
+pkgbase = python2-kivy-git
+	pkgdesc = A python2 module for developing multi-touch enabled media rich applications. Git version.
+	pkgver = 1.9.0.6186fa0
+	pkgrel = 1
+	epoch = 1
+	url = http://kivy.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2-pygame
+	depends = python2-opengl
+	depends = python2-pillow
+	depends = gstreamer0.10-python
+	depends = cython2-kivy
+	depends = mtdev
+	optdepends = python2-twisted: networking framework integration
+	provides = python2-kivy
+	provides = kivy
+	conflicts = python2-kivy
+	conflicts = kivy
+	conflicts = kivy-git
+	replaces = kivy-git
+	source = git://github.com/kivy/kivy.git
+	md5sums = SKIP
+
+pkgname = python2-kivy-git
+
