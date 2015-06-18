@@ -1,0 +1,16 @@
+pkgbase = jnoisemeter
+	pkgdesc = measures noise levels to various standards
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://kokkinizita.linuxaudio.org/linuxaudio/index.html#jnoisemeter
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = clxclient
+	depends = clthreads
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/jnoisemeter-0.1.0.tar.bz2
+	md5sums = 245160e5623c7f21cdd6f862ac07cd85
+
+pkgname = jnoisemeter
+
