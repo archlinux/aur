@@ -1,0 +1,9 @@
+post_install(){
+    echo ""
+    echo "Save and configuration files are stored in the same directory as"
+    echo "  the game data; therefore, you must change ownership in order"
+    echo "  to save your data. The following example would work:"
+    echo ""
+    echo "  # chown -R <your-user> /opt/gog-freedom-planet"
+    echo ""
+}
