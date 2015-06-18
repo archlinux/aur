@@ -1,0 +1,21 @@
+pkgbase = python2-pyspf
+	pkgdesc = Python 2 implementation of Sender Policy Framework (SPF)
+	pkgver = 2.0.11
+	pkgrel = 2
+	url = http://bmsi.com/python/milter.html
+	arch = any
+	license = Python
+	checkdepends = python2-yaml
+	checkdepends = python2-authres
+	depends = python2-pydns
+	depends = python2
+	depends = python2-ipaddr
+	optdepends = python2-authres: support Authentication-Results headers
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyspf/pyspf-2.0.11.tar.gz
+	md5sums = 83add3a0d8732bcc28841ceb5da440ba
+	sha1sums = 20935e09aba723c2c1423b34db27fb37485cf421
+	sha256sums = 693e80df3d61d69daaa2590e0f2bc8167d5fa36ce373d43987984cb00ae23928
+
+pkgname = python2-pyspf
+
