@@ -1,0 +1,14 @@
+pkgbase = hg-versioninfo
+	pkgdesc = Easily record repository version information to a .py file.
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://bitbucket.org/dowski/mercurial-version-info-plugin/overview
+	arch = i686
+	arch = x86_64
+	license = GPL
+	options = !emptydirs
+	source = https://bitbucket.org/dowski/mercurial-version-info-plugin/downloads/Mercurial%20Version%20Info%20Plugin-1.0.2.tar.gz
+	md5sums = 00ae25047312558945676d16a5248717
+
+pkgname = hg-versioninfo
+
