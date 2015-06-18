@@ -1,0 +1,26 @@
+pkgbase = xwax-jack
+	pkgdesc = Open-source digital vinyl emulation software.
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.xwax.co.uk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = sdl
+	makedepends = sdl_ttf
+	depends = ttf-dejavu
+	depends = alsa-lib
+	depends = jack
+	optdepends = oggdeg: for OGG import
+	optdepends = faad: for AAC import
+	optdepends = cdparanoia: for CD import
+	optdepends = mpg123: for MP3 import
+	optdepends = flac: for FLAC import
+	optdepends = ffmpeg: for video fallback import
+	provides = xwax
+	conflicts = xwax
+	source = http://www.xwax.co.uk/releases/xwax-1.4.tar.gz
+	md5sums = 01afde1f1222fca38eab736e0b3df116
+
+pkgname = xwax-jack
+
