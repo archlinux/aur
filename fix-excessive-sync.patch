@@ -1,0 +1,25 @@
+From: Nico Golde <nion@debian.org>
+Bug: http://bugs.debian.org/623140
+Description: remove excessive sync calls causing lots of disk activity and replace by fsync on closing the file.
+
+Index: tcpxtract-1.0.1/extract.c
+===================================================================
+--- tcpxtract-1.0.1.orig/extract.c	2011-04-19 16:07:25.000000000 +0200
++++ tcpxtract-1.0.1/extract.c	2011-04-19 16:10:21.000000000 +0200
+@@ -163,7 +163,6 @@
+         error("Quiting.");
+     }
+     elist->nwritten += nbytes;
+-    sync();
+ }
+ 
+ /* remove all finished extracts from the list */
+@@ -182,6 +181,8 @@
+                 eptr->next->prev = eptr->prev;
+             if (*elist == eptr)
+                 *elist = eptr->next;
++
++            fsync(eptr->fd);
+             close(eptr->fd);
+             free(eptr);
+         }

@@ -1,0 +1,15 @@
+Fix incorrect magic byte values for png headers
+Bug: #649249
+Index: tcpxtract-1.0.1/tcpxtract.conf
+===================================================================
+--- tcpxtract-1.0.1.orig/tcpxtract.conf	2011-11-19 12:50:13.000000000 +0100
++++ tcpxtract-1.0.1/tcpxtract.conf	2011-11-19 12:50:35.000000000 +0100
+@@ -30,7 +30,7 @@
+ jpg(1000000, \xff\xd8\xff\xe1);
+ 
+ # PNG   (used in web pages)
+-png(1000000, \x50\x4e\x47\?, \xff\xfc\xfd\xfe);
++png(1000000, \?\x50\x4e\x47, \xff\xfc\xfd\xfe);
+ 
+ # BMP 	(used by MSWindows, use only if you have reason to think there are
+ #      	BMP files worth digging for. This often kicks back a lot of false

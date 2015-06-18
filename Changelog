@@ -1,0 +1,10 @@
+2013-05-10  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	1.0.1-4:
+	* new maintainer
+	* updated PKGBUILD
+	* corrected man path
+	* removed empty dir
+	* added Debian patches
+	* added Changelog
+

@@ -1,0 +1,26 @@
+pkgbase = tcpxtract
+	pkgdesc = A tool for extracting files from network traffic
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = http://tcpxtract.sourceforge.net
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libpcap
+	options = !emptydirs
+	source = http://sourceforge.net/projects/tcpxtract/files/tcpxtract/1.0.1/tcpxtract-1.0.1.tar.gz/download
+	source = 01_fixmanpage.patch
+	source = 02-fix_png_header_bytes.patch
+	source = conf_default_path.patch
+	source = fix-excessive-sync.patch
+	source = tcpxtract-fix-segfault.patch
+	sha256sums = 613aa6be39772b236d89c5ef377c27b10ac44d1c34731105599283862dfc05be
+	sha256sums = efaba466fb36eef76e1c5071a83b82056d1604322a5a1edbe0824828ea0298e2
+	sha256sums = dd36070732e433665543ef86a13e68823d3c661d3eea7db0785fcab055295944
+	sha256sums = 3591411f1fba7caeb16f05f3e67fc716e1e8b525b118680ab103b1722cea50cf
+	sha256sums = a50480e35d3fa9daffecd3681d161822c7926b652ed09fd7a62d7b909fffced7
+	sha256sums = 8f5627378a29f5a111227a39ad5001a81195b11e74ec375924ce6c7ab96e1819
+
+pkgname = tcpxtract
+

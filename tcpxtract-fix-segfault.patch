@@ -1,0 +1,37 @@
+From: Chow Loong Jin <hyperair@ubuntu.com>
+Bug: http://bugs.debian.org/599746
+Description: fix segfaults due to uninitialized variables
+
+--- tcpxtract-1.0.1/sessionlist.c	2005-10-04 22:50:03.000000000 +0800
++++ tcpxtract-1.0.1-new/sessionlist.c	2010-10-11 03:14:18.071445668 +0800
+@@ -62,6 +62,10 @@
+     (*last_slist)->prev = slist_ptr;
+     (*last_slist)->next = NULL;
+     (*last_slist)->srchptr_list = NULL;
++    (*last_slist)->extract_list = NULL;
++    (*last_slist)->recording = 0;
++    (*last_slist)->last_recvd = 0;
++    (*last_slist)->last_seqnum = 0;
+     return *last_slist;
+ }
+ 
+--- tcpxtract-1.0.1/tcpxtract.c	2005-10-06 09:44:39.000000000 +0800
++++ tcpxtract-1.0.1-new/tcpxtract.c	2010-10-11 03:03:52.741420701 +0800
+@@ -237,7 +237,7 @@
+ {
+     int c;
+     char *capfname = NULL;          /* Capture file for input */
+-    char *dev;                      /* Sniffing devise */
++    char *dev = NULL;                      /* Sniffing devise */
+     char errbuf[PCAP_ERRBUF_SIZE];  /* Error buffer */
+     
+     struct bpf_program filter;          /* hold compiled program */
+@@ -283,7 +283,7 @@
+             break;
+         case 'o':
+             if (optarg[strlen(optarg) - 1] != '/') {
+-                output_prefix = emalloc(strlen(optarg) + 1);
++                output_prefix = emalloc(strlen(optarg) + 2);
+                 strcpy(output_prefix, optarg);
+                 output_prefix[strlen(optarg)] = '/';
+                 output_prefix[strlen(optarg) + 1] = '\0';
