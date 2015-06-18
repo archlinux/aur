@@ -1,0 +1,26 @@
+--- tests/hashbang.sh	2015-05-21 01:33:22.536889045 +0200
++++ tests/hashbang.sh	2015-05-21 01:32:41.612244703 +0200
+@@ -2,10 +2,16 @@
+ 
+ ME=$$
+ 
++TMP="$(mktemp -d)"
++for part in $@
++do
++	ln -sf "$(pwd)/${part}" "${TMP}/${part/\/}"
++done
++
+ (/bin/echo -n '#!';
+  for part in $@
+  do
+-   /bin/echo -n "`pwd`/$part "
++   /bin/echo -n "${TMP}/${part/\/} "
+  done) | sed 's/ $//' > tmp/script-$ME
+ 
+ /bin/echo "" >> tmp/script-$ME
+@@ -21,4 +27,4 @@
+ ./tmp/script-$ME | grep "^ohai$" || exit 1
+ 
+ rm tmp/script-$ME
+-
++rm -r ${TMP}
