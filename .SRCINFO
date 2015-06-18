@@ -1,0 +1,32 @@
+pkgbase = unrealircd-pie
+	pkgdesc = Open Source IRC Server (hardened)
+	pkgver = 3.2.10.4
+	pkgrel = 1
+	url = http://unrealircd.com
+	install = unrealircd.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = sed
+	depends = openssl
+	depends = curl
+	depends = c-ares
+	depends = tre=0.8.0
+	provides = ircd
+	provides = unrealircd
+	conflicts = ircd
+	conflicts = unrealircd
+	backup = etc/unrealircd/unrealircd.conf
+	source = http://www.unrealircd.com/downloads/Unreal3.2.10.4.tar.gz
+	source = unrealircd.service
+	source = unrealircd.tmpfiles.d
+	source = arch-fixes.patch
+	source = pie.patch
+	md5sums = ea4e303a9783f703ecf7769d4c07a124
+	md5sums = 677d8de0bae770488a2c1730f9475a51
+	md5sums = 3ec519ea7dbe99696eb6c51dfc0d382a
+	md5sums = 5f4bf9f99f6c78bc9e6ee4ec66b021fa
+	md5sums = 939998a9ea163375ca3ecba457406adc
+
+pkgname = unrealircd-pie
+

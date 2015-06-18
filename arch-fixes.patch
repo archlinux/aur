@@ -1,0 +1,56 @@
+diff -wbBur Unreal3.2.10.2.org/doc/example.conf Unreal3.2.10.2/doc/example.conf
+--- Unreal3.2.10.2.org/doc/example.conf	2013-11-24 23:24:26.000000000 +0400
++++ Unreal3.2.10.2/doc/example.conf	2014-01-27 14:38:16.669081776 +0400
+@@ -33,8 +33,8 @@
+  */
+ 
+ /* FOR *NIX, uncomment the following 2lines: */
+-//loadmodule "src/modules/commands.so";
+-//loadmodule "src/modules/cloak.so";
++loadmodule "modules/commands.so";
++loadmodule "modules/cloak.so";
+ 
+ /* FOR Windows, uncomment the following 2 lines: */
+ //loadmodule "modules/commands.dll";
+diff -wbBur Unreal3.2.10.2.org/include/config.h Unreal3.2.10.2/include/config.h
+--- Unreal3.2.10.2.org/include/config.h	2013-11-24 23:24:26.000000000 +0400
++++ Unreal3.2.10.2/include/config.h	2014-01-27 14:38:53.349081379 +0400
+@@ -248,7 +248,7 @@
+ #define RPATH   	"ircd.rules"	/* server rules file */
+ #define OPATH   	"oper.motd"	/* Operators MOTD file */
+ #define	LPATH		"debug.log"	/* Where the debug file lives, if DEBUGMODE */
+-#define	PPATH		"ircd.pid"	/* file for server pid */
++#define	PPATH		"/run/unrealircd/ircd.pid"	/* file for server pid */
+ #define VPATH		"ircd.svsmotd"	/* Services MOTD append. */
+ #define BPATH		"bot.motd"	/* Bot MOTD */
+ #define IRCDTUNE 	"ircd.tune"	/* tuning .. */
+diff -wbBur Unreal3.2.10.2.org/src/ircd.c Unreal3.2.10.2/src/ircd.c
+--- Unreal3.2.10.2.org/src/ircd.c	2013-11-24 23:24:26.000000000 +0400
++++ Unreal3.2.10.2/src/ircd.c	2014-01-27 14:38:16.669081776 +0400
+@@ -840,7 +840,7 @@
+ const char *compiledfor, *runtime;
+ int error = 0;
+ 
+-#ifdef USE_SSL
++#if 0
+ 	compiledfor = OPENSSL_VERSION_TEXT;
+ 	runtime = SSLeay_version(SSLEAY_VERSION);
+ 	if (strcasecmp(compiledfor, runtime))
+@@ -850,7 +850,7 @@
+ 		error=1;
+ 	}
+ #endif
+-#ifdef ZIP_LINKS
++#if 0
+ 	runtime = zlibVersion();
+ 	compiledfor = ZLIB_VERSION;
+ 	if (*compiledfor != *runtime)
+@@ -860,7 +860,7 @@
+ 		error = 1;
+ 	}
+ #endif
+-#ifdef USE_LIBCURL
++#if 0
+ 	/* Perhaps someone should tell them to do this a bit more easy ;)
+ 	 * problem is runtime output is like: 'libcurl/7.11.1 zlib/1.2.1 c-ares/1.2.0'
+ 	 * while header output is like: '7.11.1'.

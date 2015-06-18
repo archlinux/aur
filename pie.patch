@@ -1,0 +1,226 @@
+diff -uNr Unreal3.2.10.4/src/Makefile Unreal3.2.10.4-patched/src/Makefile
+--- Unreal3.2.10.4/src/Makefile	2014-07-26 16:42:10.000000000 +0100
++++ Unreal3.2.10.4-patched/src/Makefile	2015-03-15 19:07:47.841447670 +0000
+@@ -63,7 +63,7 @@
+ 	+cd modules; $(MY_MAKE) MODULEFILE=$(MODULEFILE) 'EXLIBS=$(EXLIBS)' custommodule
+ 
+ ircd: $(OBJS)
+-	$(CC) $(CFLAGS) $(CRYPTOLIB) -o ircd $(OBJS) $(LDFLAGS) $(IRCDLIBS) $(CRYPTOLIB)
++	$(CC) $(CFLAGS) $(CRYPTOLIB) -pie -o ircd $(OBJS) $(LDFLAGS) $(IRCDLIBS) $(CRYPTOLIB)
+ 
+ staticircd: $(OBJS)
+ 	$(CC) $(CFLAGS) $(CRYPTOLIB) -DSTATIC_LINKING -o ircd.static $(OBJS) \
+@@ -89,58 +89,59 @@
+ 	$(SHELL) version.c.SH
+ 
+ version.o: version.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c version.c
++	$(CC) $(CFLAGS) -fPIE -c version.c
+ 
+ parse.o: parse.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c parse.c
++	$(CC) $(CFLAGS) -fPIE -c parse.c
+ 
+ socket.o: socket.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c socket.c
++	$(CC) $(CFLAGS) -fPIE -c socket.c
+ 
+ 
+ 
+ dbuf.o: dbuf.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c dbuf.c
++	$(CC) $(CFLAGS) -fPIE -c dbuf.c
+ 
+ packet.o: packet.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c packet.c
++	$(CC) $(CFLAGS) -fPIE -c packet.c
+ 
+ aln.o: aln.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c aln.c
++	$(CC) $(CFLAGS) -fPIE -c aln.c
+ 
+ auth.o: auth.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c auth.c
++	$(CC) $(CFLAGS) -fPIE -c auth.c
+ 
+ zip.o: zip.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c zip.c
++	$(CC) $(CFLAGS) -fPIE -c zip.c
+ 
+ send.o: send.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c send.c
++	$(CC) $(CFLAGS) -fPIE -c send.c
+ 
+ ssl.o: ssl.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c ssl.c
++	$(CC) $(CFLAGS) -fPIE -c ssl.c
+ 
+ match.o: match.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c match.c
++	$(CC) $(CFLAGS) -fPIE -c match.c
+ 
+ modules.o: modules.c $(INCLUDES)
++	$(CC) $(CFLAGS) -fPIE -c modules.c
+ 
+ support.o: support.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c support.c
++	$(CC) $(CFLAGS) -fPIE -c support.c
+ 
+ umodes.o: umodes.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c umodes.c
++	$(CC) $(CFLAGS) -fPIE -c umodes.c
+ 
+ userload.o: userload.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c userload.c
++	$(CC) $(CFLAGS) -fPIE -c userload.c
+ 
+ s_svs.o: s_svs.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_svs.c
++	$(CC) $(CFLAGS) -fPIE -c s_svs.c
+ events.o: events.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c events.c
++	$(CC) $(CFLAGS) -fPIE -c events.c
+ 
+ help.o: help.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c help.c
++	$(CC) $(CFLAGS) -fPIE -c help.c
+ 
+ #install: all
+ #	-if [ ! -d ${IRCDDIR} -a ! -f ${IRCDDIR} ] ; then \
+@@ -165,103 +166,103 @@
+ 	makedepend -I${INCLUDEDIR} ${SRC}
+ 
+ channel.o: channel.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c channel.c
++	$(CC) $(CFLAGS) -fPIE -c channel.c
+ 
+ ircd.o: ircd.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c ircd.c
++	$(CC) $(CFLAGS) -fPIE -c ircd.c
+ 
+ list.o: list.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c list.c
++	$(CC) $(CFLAGS) -fPIE -c list.c
+ 
+ lusers.o: lusers.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c lusers.c
++	$(CC) $(CFLAGS) -fPIE -c lusers.c
+ 
+ res.o: res.c $(INCLUDES) ../include/res.h
+-	$(CC) $(CFLAGS) -c res.c
++	$(CC) $(CFLAGS) -fPIE -c res.c
+ 
+ timesynch.o: timesynch.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c timesynch.c
++	$(CC) $(CFLAGS) -fPIE -c timesynch.c
+ 
+ cloak.o: cloak.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c cloak.c
++	$(CC) $(CFLAGS) -fPIE -c cloak.c
+ 
+ fdlist.o: fdlist.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c fdlist.c
++	$(CC) $(CFLAGS) -fPIE -c fdlist.c
+ 
+ s_bsd.o: s_bsd.c $(INCLUDES) ../include/res.h
+-	$(CC) $(CFLAGS) -c s_bsd.c
++	$(CC) $(CFLAGS) -fPIE -c s_bsd.c
+ 
+ s_auth.o: s_auth.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_auth.c
++	$(CC) $(CFLAGS) -fPIE -c s_auth.c
+ 
+ s_conf.o: s_conf.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_conf.c
++	$(CC) $(CFLAGS) -fPIE -c s_conf.c
+ 
+ s_debug.o: s_debug.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_debug.c
++	$(CC) $(CFLAGS) -fPIE -c s_debug.c
+ 
+ s_err.o: s_err.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_err.c
++	$(CC) $(CFLAGS) -fPIE -c s_err.c
+ 
+ s_misc.o: s_misc.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_misc.c
++	$(CC) $(CFLAGS) -fPIE -c s_misc.c
+ 
+ scache.o: scache.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c scache.c
++	$(CC) $(CFLAGS) -fPIE -c scache.c
+ 
+ ircsprintf.o: ircsprintf.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c ircsprintf.c
++	$(CC) $(CFLAGS) -fPIE -c ircsprintf.c
+ 
+ s_user.o: s_user.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_user.c
++	$(CC) $(CFLAGS) -fPIE -c s_user.c
+ 
+ charsys.o: charsys.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c charsys.c
++	$(CC) $(CFLAGS) -fPIE -c charsys.c
+ 
+ s_extra.o: s_extra.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_extra.c
++	$(CC) $(CFLAGS) -fPIE -c s_extra.c
+ 
+ s_kline.o: s_kline.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_kline.c
++	$(CC) $(CFLAGS) -fPIE -c s_kline.c
+ 
+ s_serv.o: s_serv.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_serv.c
++	$(CC) $(CFLAGS) -fPIE -c s_serv.c
+ 
+ s_numeric.o: s_numeric.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c s_numeric.c
++	$(CC) $(CFLAGS) -fPIE -c s_numeric.c
+ 
+ whowas.o: whowas.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c whowas.c
++	$(CC) $(CFLAGS) -fPIE -c whowas.c
+ 
+ hash.o: hash.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c hash.c
++	$(CC) $(CFLAGS) -fPIE -c hash.c
+ 
+ crule.o: crule.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c crule.c
++	$(CC) $(CFLAGS) -fPIE -c crule.c
+ 
+ cidr.o: cidr.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c cidr.c
++	$(CC) $(CFLAGS) -fPIE -c cidr.c
+ 
+ random.o: random.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c random.c
++	$(CC) $(CFLAGS) -fPIE -c random.c
+ 
+ extcmodes.o: extcmodes.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c extcmodes.c
++	$(CC) $(CFLAGS) -fPIE -c extcmodes.c
+ 
+ extbans.o: extbans.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c extbans.c
++	$(CC) $(CFLAGS) -fPIE -c extbans.c
+ 
+ md5.o: md5.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c md5.c
++	$(CC) $(CFLAGS) -fPIE -c md5.c
+ 
+ api-command.o: api-command.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c api-command.c
++	$(CC) $(CFLAGS) -fPIE -c api-command.c
+ 
+ api-isupport.o: api-isupport.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c api-isupport.c
++	$(CC) $(CFLAGS) -fPIE -c api-isupport.c
+ 
+ url.o: url.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c url.c
++	$(CC) $(CFLAGS) -fPIE -c url.c
+ 
+ # DO NOT DELETE THIS LINE -- make depend depends on it.
+ 
