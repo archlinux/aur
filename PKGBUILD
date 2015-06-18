@@ -2,7 +2,7 @@
 # Contributor: Andrea Cattaneo <andrea.cattaneo.dev@gmail.com>
 
 pkgname=genymotion
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
@@ -13,20 +13,20 @@ install=$pkgname.install
 sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7')
 if [[ $CARCH == x86_64 ]]; then
   _ARCH="x64"
-  sha512sums+=('b890b2a687496968d4dea2d0b075303549871886cb200b35fc57238647a0c2103140158887096ef8db36d948152926b30e89ce01e8cb23feecabe06eac4b4564')
+  sha512sums+=('d4c4f6b7f4d5c6d8ea6efc68a80db29cb7f443ff0a57f2e904947874a5a8801bb718c96a3f433ce54fe768376c1dbaaf699d43efeb8d8ef3c7b3b440997cacd8')
 else
   _ARCH="x86"
-  sha512sums+=('89693fa432737800b71c84f8c08ed2361a5d8d51f120aeace5cb7be62d68f6129ea63ddd22255affd215dc6890b71059fffd8051417c9ec4f88a8f3bf5ac287f')
+  sha512sums+=('747e7d25bc419e4129bcebb120b718d45a2a5f2a650e63c6ac578b2da2f2535fd37f5e5b1d7782f19de0e7268d552edaeb3d1f323ea4358e81dcacd015e63769')
 fi
 source=("genymotion.desktop"
-        "$pkgname.bin::http://files2.genymotion.com/genymotion/genymotion-$pkgver/genymotion-${pkgver}_$_ARCH.bin")
+        "http://files2.genymotion.com/genymotion/genymotion-$pkgver/$pkgname-${pkgver}_$_ARCH.bin")
 
 package(){
   cd $srcdir
 
   install -d $pkgdir/opt
-  chmod +x $pkgname.bin
-  yes | ./$pkgname.bin -d $pkgdir/opt
+  chmod +x $pkgname-${pkgver}_$_ARCH.bin
+  yes | ./$pkgname-${pkgver}_$_ARCH.bin -d $pkgdir/opt
   rm $pkgdir/opt/genymotion/libQt*
 
   install -d $pkgdir/usr/bin
