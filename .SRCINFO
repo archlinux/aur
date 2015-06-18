@@ -1,0 +1,33 @@
+pkgbase = arj
+	pkgdesc = Free and portable clone of the ARJ archiver
+	pkgver = 3.10.22
+	pkgrel = 10
+	url = http://arj.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = glibc
+	options = !makeflags
+	source = arj-3.10.22.tar.gz::http://downloads.sourceforge.net/arj/arj-3.10.22.tar.gz
+	source = arches_align.patch
+	source = no_remove_static_const.patch
+	source = 64_bit_clean.patch
+	source = custom-printf.patch
+	source = security_format.patch
+	source = use_safe_strcpy.patch
+	source = CVE-2015-0556-symlink-traversal.patch
+	source = CVE-2015-0557-dir-traversal.patch
+	source = CVE-2015-2782-buffer-overflow.patch
+	sha512sums = 4730dfdbab4f8095396c337578ed69bdaae52955ad468db50b52af8ad2846ecd6cfc05eb3ac0d03838c1c32ea60126f14a22b93e8181c06b9546456f3937ff76
+	sha512sums = 166b027adc6b0ffab02d96cd6ede70dc7d2f1f33ef21177c97dd43fdf1ca235a0a8f70e963d749dfb04c5c55ffe42a8601d8df97d84824118b408d00ca6eeb7c
+	sha512sums = 580e9bd4b37f9bf76784331f4e55abc30349cdd1735fd05897226137e78f0e420c6dcb287fcb111ac667b9f41c16e53b70cde50bce913eb85567afa05957c29a
+	sha512sums = c6600b74af7e3ba982fa8471a19c9ca7d4652d5de871809edb4124e405a33b623eb10abc4fff00e578dc0144e955b9aaaaecac06c66f9923b005635cf00f9a06
+	sha512sums = b1739a5cf75bb4036e41dd071fd4452e8d58805c539147d61594c14f959370a523939bd73de29473ea79f023ef759cec2feff497d5ded777919dd289dae8f769
+	sha512sums = 82611c25aadb4dc73284a6ad5c47fdfc708ebb4f92271bfcc8a6ca5855bc3582ac77b32ac0e94294f1158e41a7292637feabee043dfb2c0000193136fb288e56
+	sha512sums = f72101f5fb9828afcf1851980ec1fa71d91942b2617b9182bbb92ca3d82069bee898436be9105b4a0445a6a0707c311b569f59397bc9ea29c9a98b7c088dd50c
+	sha512sums = c74003d2a4631adcd4b9bdb38830ed373e63da021c29f682e3e6faf032100f8963c544e0aeaa277220c02f24f72ceecc4b0ef96b03de2f113ccf7ff4471a4ca4
+	sha512sums = d7c23ebacf19df5b49a18ec259aa12cf7671105c609098fe344400639cb851fe5df769c3cf64922d86998d717b7ab9b42f831aeedd1dc0763080cf8d34c523c5
+	sha512sums = 1acabf5fdbdc48c88ef4ecfdacd116f0d64315fb51fa08f36ba8a02c0e05bb79f82b82ac09039e8027d651d115275ff4f0d72302657730fa91eb0cbaecf15e08
+
+pkgname = arj
+
