@@ -3,7 +3,7 @@
 
 _appname_=packer
 pkgname=${_appname_}-color
-pkgver=20130730
+pkgver=20140810
 pkgrel=1
 pkgdesc="Adds AUR support to 'pacman' | Adds better colourisation and error handling to 'packer'"
 url="http://github.com/keenerd/packer"
@@ -15,7 +15,7 @@ optdepends=("sudo: install and update packages as non-root"
             "customizepkg: apply customizepkg modifications"
             "zsh-packer-color: for Zsh tab completion")
 install="${pkgname}.install"
-source=(${pkgname}.patch)
+source=(color.patch AUR4.patch)
 
 _gitroot="http://github.com/keenerd/${_appname_}.git"
 _gitname="${_appname_}"
@@ -31,9 +31,10 @@ build() {
 		git clone "${_gitroot}"
 		cd ${_gitname}
 	fi
-	
+
 	# Patches
-	patch -Np1 < "${startdir}"/${pkgname}.patch
+	patch -Np1 < "${startdir}"/color.patch
+	patch -Np1 < "${startdir}"/AUR4.patch
 
 	# Changes
 	sed -i 's|packer |packer-color |g' ${_appname_}
@@ -48,4 +49,5 @@ package() {
 	install -D -m644 ${_appname_}.8 "${pkgdir}/usr/share/man/man8/${pkgname}.8"
 }
 
-sha1sums=('9ca7967f2c6abfc1664959d227f9d9375b76d47b')
+sha1sums=('9ca7967f2c6abfc1664959d227f9d9375b76d47b'
+          '6583b901d12e27976b95af5bfabf513edc9c10f8')

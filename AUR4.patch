@@ -1,0 +1,33 @@
+diff -aur a/packer b/packer
+--- a/packer	2015-06-19 06:53:19.000000000 +1000
++++ b/packer	2015-06-19 06:53:27.000000000 +1000
+@@ -24,8 +24,9 @@
+ usermakepkgconf="$HOME/.makepkg.conf"
+ pacmanconf='/etc/pacman.conf'
+ 
+-RPCURL="https://aur.archlinux.org/rpc.php?type"
+-PKGURL="https://aur.archlinux.org"
++RPCURL="https://aur4.archlinux.org/rpc.php?type"
++PKGURL="https://aur4.archlinux.org"
++PKGBURL="https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h"
+ 
+ if [[ -t 1 && ! $COLOR = "NO" ]]; then
+   COLOR1='\e[1;39m'
+@@ -235,14 +236,14 @@
+ 
+ pkglink() {
+   rpcinfo $1
+-  echo "${PKGURL}$(jshon -Q -e results -e URLPath -u < "$tmpdir/$1.info")"
++  echo "$(jshon -Q -e results -e URLPath -u < "$tmpdir/$1.info")"
+ }
+ 
+ # downloads pkgbuild ($1), edits if $2 is set
+ pkginfo() {
+   if ! [[ -f "$tmpdir/$1.PKGBUILD" ]]; then
+-    pkgpath=$(pkglink $1)
+-    curl -Lfs "${pkgpath%/*}/PKGBUILD" > "$tmpdir/$1.PKGBUILD"
++    pkgpath=$PKGBURL=$1
++    curl -Lfs "$pkgpath" > "$tmpdir/$1.PKGBUILD"
+     if [[ $2 ]]; then
+       # rename for syntax highlighting
+       cp "$tmpdir/$1.PKGBUILD" "$tmpdir/PKGBUILD"
