@@ -1,0 +1,26 @@
+pkgbase = ros-jade-control-msgs
+	pkgdesc = ROS - control_msgs contains base messages and actions useful for controlling robots.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://ros.org/wiki/control_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-actionlib-msgs
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-trajectory-msgs
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-trajectory-msgs
+	depends = ros-jade-std-msgs
+	source = control_msgs::git+https://github.com/ros-gbp/control_msgs-release.git#tag=release/jade/control_msgs/1.3.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-control-msgs
+
