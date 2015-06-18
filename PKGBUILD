@@ -1,5 +1,5 @@
 pkgname=jrebel
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="JRebel is a JVM-plugin that makes it possible for Java developers to instantly see any code change made to an app without redeploying."
 url="http://zeroturnaround.com/software/jrebel/"
@@ -20,7 +20,7 @@ source=("$_pkgfile::$_downloadurl"
         "$pkgname.sh"
         "$pkgname.csh")
 
-md5sums=('b0d0c4b7751c4b763b89227cbcd6de6e'
+md5sums=('43bb03c9fd1e44b7fc8b7db735ea0070'
          '3acd6fe2b66cc18c74d15fff985bac33'
          '4f7cfc0ab796d6de2da1c650247fe3d1')
 
