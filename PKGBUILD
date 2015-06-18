@@ -2,7 +2,7 @@
 
 pkgname=cc-cli
 pkgver=7
-pkgrel=2
+pkgrel=3
 pkgdesc='CloudControl Command Line Interface'
 arch=('any')
 url='https://git.arkena.net/cloudcontrol/cc-cli'
