@@ -1,0 +1,16 @@
+pkgbase = qmidiroute
+	pkgdesc = a filter/router for MIDI events
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = http://alsamodular.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://downloads.sourceforge.net/alsamodular/qmidiroute-0.3.0.tar.bz2
+	source = qmidiroute.desktop
+	md5sums = 8f2dfc9f0abc5d243e365b919926dc55
+	md5sums = 40a978928bb4795ac28b9387074875bb
+
+pkgname = qmidiroute
+

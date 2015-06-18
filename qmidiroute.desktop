@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QMidiRoute
+Comment=MIDI router and filter utility
+Exec=qmidiroute
+Icon=qmidiroute_48.xpm
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;AudioVideo;Multimedia;
