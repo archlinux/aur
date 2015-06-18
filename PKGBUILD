@@ -7,17 +7,17 @@ arch=('i686' 'x86_64')
 url="https://github.com/choderalab/pymbar"
 license=('LGPL')
 depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-six')
-optdepends=('python2-nose')
+optdepends=('python2-nose: nosetests')
 makedepends=('git')
 source=('git://github.com/choderalab/pymbar.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/pymbar"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/pymbar"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/pymbar"
+	cd "$srcdir/pymbar"
     python2 setup.py install --root=$pkgdir || return 1
 }
