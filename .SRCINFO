@@ -1,0 +1,13 @@
+pkgbase = python-fastaq-git
+	pkgdesc = Manipulate FASTA and FASTQ files.
+	pkgver = v1.7.0.r0.g360153c
+	pkgrel = 2
+	url = https://github.com/sanger-pathogens/Fastaq
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = python-fastaq
+
+pkgname = python-fastaq-git
+
