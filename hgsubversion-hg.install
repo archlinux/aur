@@ -1,0 +1,13 @@
+post_install() {
+ echo ">>please add the following in your ~/.hgrc:"
+ echo ""
+ echo "[extensions]"
+ echo "hgext.rebase ="
+ echo "hgsubversion ="
+ echo ""
+}
+
+post_upgrade() {
+   post_install
+}
+
