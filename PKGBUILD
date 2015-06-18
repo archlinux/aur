@@ -5,10 +5,10 @@
 # Contributor: 325.15 - patch : Ninez 
 
 pkgname=nvidia-last-rt
-pkgver=352.09
+pkgver=352.21
 _extramodules=extramodules-4.0-rt
 _kernver="$(cat /lib/modules/${_extramodules}/version)"
-pkgrel=4
+pkgrel=1
 pkgdesc="NVIDIA last drivers for linux-rt."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
