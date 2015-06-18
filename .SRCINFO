@@ -1,0 +1,14 @@
+pkgbase = dirbuster
+	pkgdesc = An application designed to brute force directories and files names on web/application servers
+	pkgver = 1.0_RC1
+	pkgrel = 10
+	url = http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
+	arch = any
+	license = LGPL
+	depends = java-runtime
+	depends = sh
+	source = https://downloads.sourceforge.net/dirbuster/DirBuster-1.0-RC1.tar.bz2
+	sha512sums = 0462b14d5bd58ef8ebd4e3b26c8c72f838bb8241de23544f548f4f55bf8bccf23b49dc05eb7c23e15dc601ccc267f71bb93c43b66f0f7a89a834433b35ba1c1f
+
+pkgname = dirbuster
+
