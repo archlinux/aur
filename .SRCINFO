@@ -1,0 +1,19 @@
+pkgbase = wifite
+	pkgdesc = A tool to attack multiple WEP and WPA encrypted networks at the same time
+	pkgver = 131
+	pkgrel = 2
+	url = https://github.com/derv82/wifite
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = aircrack-ng
+	optdepends = reaver: WPS attack support
+	optdepends = pyrit: detect WPA handshakes
+	optdepends = wireshark-cli: detect handshakes
+	optdepends = cowpatty: detect WPA handshakes
+	optdepends = macchanger: change MAC for attacks
+	source = wifite-131.tar.gz::https://github.com/derv82/wifite/archive/fd486ba7d4714cc79405eb895d3808b0f9928472.tar.gz
+	sha512sums = e260d8a0671b13edb14f86151eec98e55cbab7edb0123d76c322f4564c68b54811895b991572aa0c9e9a38df7b5a6c850574361f1f4a4bf51fe4a72688d6ad1b
+
+pkgname = wifite
+
