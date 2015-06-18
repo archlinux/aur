@@ -1,0 +1,21 @@
+pkgbase = qira
+	pkgdesc = QEMU Interactive Runtime Analyser
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/BinaryAnalysisPlatform/qira
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = qemu
+	depends = python2-ipaddr
+	depends = python2-flask-socketio
+	depends = python2-pillow
+	depends = python2-capstone
+	depends = python2-pydot
+	depends = python2-pyelftools
+	source = https://github.com/BinaryAnalysisPlatform/qira/raw/master/releases/qira-1.1.tar.xz
+	sha512sums = 11ee4d9390a28825342fe9921633aad186eebe05f2aeb875378aec193e5cb62ca8807869eeb751c8f8c0d8806e33640a6ed468d274e14ebc92b935a7e358c923
+
+pkgname = qira
+
