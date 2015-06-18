@@ -1,0 +1,14 @@
+pkgbase = python2-darts.util.lru
+	pkgdesc = Library that provides a simple dictionary with LRU behaviour
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/darts.util.lru
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-darts.util.lru-0.5.tar.gz::https://pypi.python.org/packages/source/d/darts.util.lru/darts.util.lru-0.5.tar.gz
+	sha512sums = 900734e1c93dd91aa844179ed5eb144d2c43e8ce7760d08e5216d87b700e6bdb0062f7585237449708cd95284a353870c9051637199ee95ebe9b54e67ff866e9
+
+pkgname = python2-darts.util.lru
+
