@@ -1,0 +1,24 @@
+pkgbase = yoshimi
+	pkgdesc = ZynAddSubFX fork with improved JACK audio & MIDI IO
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = http://yoshimi.sourceforge.net/
+	install = yoshimi.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = mesa
+	depends = jack
+	depends = fltk
+	depends = fftw
+	depends = mxml
+	depends = cairo
+	depends = lv2
+	source = http://downloads.sourceforge.net/project/yoshimi/1.3/yoshimi-1.3.5.tar.bz2
+	md5sums = e47f538cafba8579a0350c16aa086d8c
+	sha256sums = d90569375ac1ab829fea84622654452ff6382b0baef4de64e753ab5a477086ba
+
+pkgname = yoshimi
+
