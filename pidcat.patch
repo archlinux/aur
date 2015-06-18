@@ -1,0 +1,8 @@
+--- pidcat.py	2014-02-09 15:14:50.481729244 -0600
++++ pidcat.new	2014-02-09 15:14:36.381617069 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -u
++#!/usr/bin/python2 -u
+ 
+ '''
+ Copyright 2009, The Android Open Source Project
