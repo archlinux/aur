@@ -1,0 +1,19 @@
+pkgbase = lhapdf
+	pkgdesc = A particle physics tool for evaluating PDFs from discretised data files.
+	pkgver = 6.1.5
+	pkgrel = 1
+	url = http://lhapdf.hepforge.org/
+	install = lhapdf.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = boost
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = automake
+	depends = python2
+	source = http://www.hepforge.org/archive/lhapdf/LHAPDF-6.1.5.tar.gz
+	md5sums = 7396c93b9e956fb1cfa4dbfea84494bc
+
+pkgname = lhapdf
+
