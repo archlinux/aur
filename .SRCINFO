@@ -1,0 +1,15 @@
+pkgbase = perl-term-extendedcolor
+	pkgdesc = Like Term::ANSIColor, but for the extended colorset
+	pkgver = 0.224
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Term-ExtendedColor
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WO/WOLDRICH/Term-ExtendedColor-0.224.tar.gz
+	sha512sums = d4d5ccd3b1a8ffd4a15fa360bbcda0167fcce1fcc128da5fc23e05f891e3e1e403250c43d358ce16f6cab7034a67d76cc3bd8ed2926185f75208cd6d3b9d4547
+
+pkgname = perl-term-extendedcolor
+
