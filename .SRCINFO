@@ -1,0 +1,19 @@
+pkgbase = cowpatty
+	pkgdesc = Wireless WPA/WPA2 PSK handshake cracking utility
+	pkgver = 4.6
+	pkgrel = 6
+	url = http://www.willhackforsushi.com/?page_id=50
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	depends = libpcap
+	options = docs
+	options = !makeflags
+	source = http://www.willhackforsushi.com/code/cowpatty/4.6/cowpatty-4.6.tgz
+	source = cowpatty-4.6-fixup16.patch
+	sha512sums = 87c55f3f43c0342cbcc46227a1e4cfe3f23e215adc68e376991b85344b00b56e7b57e3cf0f1e3d18378cd830a247b2e36644b41b5c0f00a2a382b410f4ab35af
+	sha512sums = ad98cbf6abc2e08e15eba733d0e572c1ae08559dc458da7c07c5def920fd1d1885c63635f464533062fef9dcf31eb55dcdfff62936fdeb25f23d1e60da3b5990
+
+pkgname = cowpatty
+
