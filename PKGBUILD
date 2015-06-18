@@ -1,8 +1,9 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
  
 pkgname=docker-machine
-pkgver=0.3.0_rc3
+pkgver=0.3.0
 pkgrel=1
+epoch=1
 pkgdesc='Machine management for a container-centric world'
 arch=('i686' 'x86_64')
 url='https://github.com/docker/machine'
@@ -17,8 +18,8 @@ _arch=amd64
 
 source=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-${_arch}")
 
-sha256sums=('e659304032dc2df166a377881df64783785ee473e2af7506eb08b7855e70974b')
-[[ $CARCH = i686 ]] && sha256sums[0]='355a238ec0c7f05085234d7532e52fd1d3cf755e26e9068d227d29364d81c583'
+sha256sums=('ed753c2cca60072be7a082bda1531ab64618403d283bd06b09d3fddc2fd55f12')
+[[ $CARCH = i686 ]] && sha256sums[0]='5672657778b5f8270e7cc6adb7229cff871d3779bed07ee6c086d15c7c102015'
 
 package() {
     install -Dm755 docker-machine "${pkgdir}/usr/bin/docker-machine"
