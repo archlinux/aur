@@ -1,0 +1,20 @@
+pkgbase = telegram-git
+	pkgdesc = Telegram messenger CLI
+	pkgver = r806.3ced7bb
+	pkgrel = 1
+	url = https://github.com/vysheng/tg
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libconfig
+	depends = libevent
+	depends = lua
+	depends = jansson
+	provides = telegram
+	conflicts = telegram
+	source = telegram-git::git+https://github.com/vysheng/tg
+	sha256sums = SKIP
+
+pkgname = telegram-git
+
