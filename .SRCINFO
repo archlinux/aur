@@ -1,0 +1,18 @@
+pkgbase = python2-flask-socketio
+	pkgdesc = Socket.IO integration for Flask applications
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = https://flask-socketio.readthedocs.org/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	depends = python2-flask
+	depends = python2-gevent-websocket
+	depends = python2-gevent-socketio
+	options = !makeflags
+	source = python2-flask-socketio-0.6.0.tar.gz::https://github.com/miguelgrinberg/Flask-SocketIO/archive/v0.6.0.tar.gz
+	sha512sums = bf2953411baa357e594e5ea4680bf01a5baf12ec0e15cdf5f45a683668524fead5e8625bc4198640e1d75ac1d969a8d0b5f2d57008785486b4b571db89e2fd47
+
+pkgname = python2-flask-socketio
+
