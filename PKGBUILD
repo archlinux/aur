@@ -1,8 +1,8 @@
 # Maintainer: Jonas Platte <aur@jonasplatte.de>
 
 pkgname=cxxtools-git
-pkgver=2.2.2.8ee2899
-pkgrel=2
+pkgver=2.2.2.97e42ae
+pkgrel=1
 pkgdesc="A collection of general-purpose C++ classes"
 arch=('i686' 'x86_64')
 url="http://www.tntnet.org/cxxtools"
