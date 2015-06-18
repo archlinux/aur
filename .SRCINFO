@@ -1,6 +1,6 @@
 pkgbase = metasploit
 	pkgdesc = An advanced open-source platform for developing, testing, and using exploit code
-	pkgver = 4.11.2
+	pkgver = 4.11.3
 	pkgrel = 1
 	url = https://www.metasploit.com/
 	install = metasploit.install
@@ -13,7 +13,7 @@ pkgbase = metasploit
 	optdepends = java-runtime: msfgui support
 	optdepends = ruby-pg: database support
 	options = !strip
-	source = metasploit-4.11.2.tar.gz::https://github.com/rapid7/metasploit-framework/archive/4.11.2.tar.gz
+	source = metasploit-4.11.3.tar.gz::https://github.com/rapid7/metasploit-framework/archive/4.11.3.tar.gz
 	sha512sums = 8c5340683f6618946d5c3ebefd59cd5167dba8c8fd8334b5a12f8dc3e515e7d814dda4029d7577b5d6e2615362a8a33965dfc09b8f5dae728abfdb84bd89e2a2
 
 pkgname = metasploit
