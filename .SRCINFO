@@ -1,0 +1,13 @@
+pkgbase = xortool
+	pkgdesc = A tool to analyze multi-byte XOR cipher
+	pkgver = 0.96
+	pkgrel = 2
+	url = https://github.com/hellman/xortool
+	arch = any
+	license = MIT
+	depends = python2
+	source = xortool-0.96.tar.gz::https://github.com/hellman/xortool/archive/v0.96.tar.gz
+	sha512sums = ff8745a337fc376aa3aab0737626fd542c6b2d0abbb098c548ae7d318693bc45f2ed0e5b5635b15841a3cc42127d759514b31a1989404b3980eb0c67993d220e
+
+pkgname = xortool
+
