@@ -1,0 +1,48 @@
+ver=0.3.2.12.17
+post_install() {
+    DKMS=`which dkms 2>/dev/null`
+
+    echo ">>> DKMS: Module add, build, and install "
+
+    $DKMS add  -m dkms-phc-intel -v $ver
+    for kver in /lib/modules/*
+    do
+        if test -e ${kver}/build
+        then
+            kver="`basename $kver`"
+
+            $DKMS build -m dkms-phc-intel -v $ver -k $kver
+            $DKMS install -m dkms-phc-intel -v $ver -k $kver
+
+            echo ">>> Updating kernel modules..."
+            depmod -a $kver
+        fi
+    done
+}
+
+pre_upgrade() {
+    echo ">>> ================"
+    echo ">>> USE: \"systemctl enable dkms-phc-intel.service\" to enable automatic module update after kernel version bump"
+    echo ">>> ================"
+    pre_remove
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    DKMS=`which dkms 2>/dev/null`
+    echo ">>> DKMS: Module uninstall "
+
+    line=`$DKMS status -m dkms-phc-intel`
+    if echo "$line" | grep -E 'added|built|installed'; then
+        version=`echo "$line" | sed "s/dkms-phc-intel,\([^,]*\)[,:].*/\1/;t;d"`
+        $DKMS remove -m dkms-phc-intel -v $version --all
+    fi
+
+}
+
+post_remove() {
+    /sbin/depmod -a
+}

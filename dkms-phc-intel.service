@@ -1,0 +1,11 @@
+[Unit]
+Description=DKMS phc-intel Module Generation
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/systemd/scripts/dkms-phc-intel start
+ExecStop=/usr/lib/systemd/scripts/dkms-phc-intel stop
+
+[Install]
+WantedBy=multi-user.target

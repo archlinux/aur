@@ -1,0 +1,4 @@
+# configuration for phc-intel
+
+# voltage IDs to be set for all CPUs
+VIDS=""
