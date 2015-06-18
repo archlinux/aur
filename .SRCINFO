@@ -1,0 +1,17 @@
+pkgbase = genchemlab
+	pkgdesc = An application intended to simulate common general chemistry laboratory exercises
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ids1024/genchemlab/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = glu
+	source = https://github.com/ids1024/genchemlab/archive/v1.0.1.tar.gz
+	source = desktop-file.patch
+	md5sums = c67acd494495572c876e807089429dc6
+	md5sums = ca2976a9c05e63682293b8137d5f6048
+
+pkgname = genchemlab
+
