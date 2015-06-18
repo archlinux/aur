@@ -1,38 +1,30 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
 
 pkgname=mqrg-git
+_gitname="microqrcode"
 pkgver=20140617
-pkgrel=2
+pkgrel=1
 pkgdesc="microqrcode generator draws QR codes into the text terminal"
 url="https://github.com/trezor/microqrcode"
 arch=('i686' 'x86_64')
 license=('MIT')
-source=()
+source=(git+https://github.com/trezor/${_gitname}.git)
 depends=('glibc')
 makedepends=('git' 'check')
 
-_gitname="microqrcode"
-_gitroot="git://github.com/trezor/${_gitname}.git"
-
+pkgver() {
+  cd "$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd $srcdir
-  msg "Connecting to GIT (${_gitroot}) ..."
-
-  if [ -d $_gitname ]; then
-    cd $_gitname && git pull origin
-    msg "The local files of ${_gitname} were updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-  
-  msg "GIT checkout done or server timeout"
-
-  cd ${srcdir}/$_gitname
-  make
+  cd ${srcdir}/${_gitname}
+  make || true
 }
 
 package() {
   cd ${srcdir}/$_gitname
   install -Dm755 ./test ${pkgdir}/usr/bin/${_gitname}
+  install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
+md5sums=('SKIP')

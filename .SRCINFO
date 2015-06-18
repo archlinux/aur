@@ -1,7 +1,7 @@
 pkgbase = mqrg-git
 	pkgdesc = microqrcode generator draws QR codes into the text terminal
 	pkgver = 20140617
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/trezor/microqrcode
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = mqrg-git
 	makedepends = git
 	makedepends = check
 	depends = glibc
+	source = git+https://github.com/trezor/microqrcode.git
+	md5sums = SKIP
 
 pkgname = mqrg-git
 
