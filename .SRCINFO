@@ -1,0 +1,14 @@
+pkgbase = dvorak7min
+	pkgdesc = dvorak7min is a simple ncurses-based typing tutor for those trying to become fluent with the Dvorak keyboard layout
+	pkgver = 1.6.1
+	pkgrel = 3
+	url = http://packages.debian.org/unstable/games/dvorak7min
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://ftp.de.debian.org/debian/pool/main/d/dvorak7min/dvorak7min_1.6.1.orig.tar.gz
+	md5sums = 0dbeb1ac986893f1b14f70e392b9009e
+
+pkgname = dvorak7min
+
