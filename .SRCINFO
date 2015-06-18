@@ -1,0 +1,18 @@
+pkgbase = gjacktransport
+	pkgdesc = graphical slider for controlling JACK Transport
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://gjacktransport.sourceforge.net/
+	install = gjacktransport.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lash
+	depends = intltool
+	backup = etc/gjackclockrc
+	backup = etc/gjacktransportrc
+	source = http://downloads.sourceforge.net/project/gjacktransport/gjacktransport/v0.5/gjacktransport-0.5.3.tar.gz
+	md5sums = 9d87f1d499a805236206fdba9d30a2fa
+
+pkgname = gjacktransport
+

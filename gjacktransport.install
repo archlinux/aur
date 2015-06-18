@@ -1,0 +1,22 @@
+post_install() {
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install
+  cat << EOF
+
+  ==> New rc files installed as:
+  ==>
+  ==> /etc/gjackclockrc.pacnew
+  ==> /etc/gjacktransport.pacnew
+  ==>
+  ==> Remember, due to changes, your old rc files may not work.
+  ==> If this happens, replace the old rc with the new one.
+
+EOF
+}
+
+post_remove() {
+  post_install
+}
