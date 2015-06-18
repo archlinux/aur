@@ -1,0 +1,17 @@
+pkgbase = sysjitter
+	pkgdesc = A tool that measures the jitter experienced by user-level threads running on each CPU core of a computer.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.openonload.org/
+	arch = x86_64
+	license = GPL3
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = http://www.openonload.org/download/sysjitter/sysjitter-1.1.tgz
+	sha512sums = 0b1085fcf22611e1ba4a2ff355d353d4a45a44e88b650c718f6888678fd298965470134c1f49a087aea25f6207aaf9e071e46210dc91165bcf238e504faf7860
+
+pkgname = sysjitter
+
