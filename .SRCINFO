@@ -1,11 +1,11 @@
 pkgbase = blackman
 	pkgdesc = Emerge for Blackarch - Download and compile packages as Emerge does
-	pkgver = 0.5
-	pkgrel = 1
+	pkgver = 0.5.7.2
+	pkgrel = 2
 	url = https://github.com/BlackArch/blackman
 	arch = any
 	license = GPL
-	source = https://github.com/BlackArch/blackman/archive/v0.5.tar.gz
+	source = https://github.com/BlackArch/blackman/archive/v0.5.7.2.tar.gz
 	sha1sums = ac0da4f9ada8986ca30cdf308d2095e87bc83a91
 
 pkgname = blackman

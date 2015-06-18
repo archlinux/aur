@@ -2,8 +2,8 @@
 # See COPYING for license details.
 
 pkgname='blackman'
-pkgver='0.5'
-pkgrel=1
+pkgver='0.5.7.2'
+pkgrel=2
 pkgdesc="Emerge for Blackarch - Download and compile packages as Emerge does"
 arch=('any')
 url="https://github.com/BlackArch/blackman"
