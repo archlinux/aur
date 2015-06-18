@@ -1,0 +1,18 @@
+pkgbase = cxxtools-git
+	pkgdesc = A modular, multithreaded, high performance webapplication server for C++
+	pkgver = 2.2.2.8ee2899
+	pkgrel = 1
+	url = http://www.tntnet.org/cxxtools
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = gcc-libs
+	depends = sh
+	provides = cxxtools
+	conflicts = cxxtools
+	source = cxxtools-git::git+https://github.com/maekitalo/cxxtools.git
+	sha256sums = SKIP
+
+pkgname = cxxtools-git
+
