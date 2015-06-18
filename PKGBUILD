@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-indigo-qt-gui'
-pkgver='0.2.27'
+pkgver='0.2.28'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
