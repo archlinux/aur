@@ -1,0 +1,15 @@
+pkgbase = godebug-git
+	pkgdesc = Cross-platform debugger for Go
+	pkgver = r185.5f2c0ee
+	pkgrel = 1
+	url = https://github.com/mailgun/godebug
+	arch = any
+	license = Apache2
+	makedepends = go
+	provides = godebug
+	options = !strip
+	source = godebug-git::git+https://github.com/mailgun/godebug
+	sha256sums = SKIP
+
+pkgname = godebug-git
+
