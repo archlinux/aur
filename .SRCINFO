@@ -1,0 +1,21 @@
+pkgbase = lkvm-git
+	pkgdesc = Native Linux KVM tool
+	pkgver = 20130921
+	pkgrel = 1
+	url = https://github.com/penberg/linux-kvm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	depends = zlib
+	depends = libaio
+	depends = libvncserver
+	depends = sdl
+	depends = git
+	provides = kvm
+	options = !buildflags
+	source = git+git://github.com/penberg/linux-kvm.git
+	md5sums = SKIP
+
+pkgname = lkvm-git
+
