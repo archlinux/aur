@@ -1,0 +1,15 @@
+pkgbase = gsteg
+	pkgdesc = Steganography application in Gtk
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.github.com/elken/GSteg
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = cmake
+	depends = gtkmm3
+	source = gsteg::git+https://github.com/elken/GSteg
+	md5sums = SKIP
+
+pkgname = gsteg
+
