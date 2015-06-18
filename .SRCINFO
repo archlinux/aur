@@ -1,0 +1,16 @@
+pkgbase = uperf
+	pkgdesc = A network performance tool that supports modelling and replay of various networking patterns
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.uperf.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = lksctp-tools
+	source = http://sourceforge.net/projects/uperf/files/uperf/uperf-1.0.4.tar.bz2
+	source = lpthread.patch
+	md5sums = ccbc52686451c14c5532d7ccd67b699c
+	md5sums = bad43924882b7ed98ed429bf365f3375
+
+pkgname = uperf
+

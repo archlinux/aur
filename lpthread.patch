@@ -1,0 +1,12 @@
+diff -aur uperf-1.0.4/configure uperf-1.0.4_lpthread/configure
+--- uperf-1.0.4/configure	2011-08-24 07:03:14.000000000 -0700
++++ uperf-1.0.4_lpthread/configure	2015-06-18 00:35:43.651395774 -0700
+@@ -1763,7 +1763,7 @@
+ 
+ CFLAGS="${CFLAGS=}"
+ UPERF_LIBS="${UPERF_LIBS=}"
+-#UPERF_LIBS="$UPERF_LIBS -lpthread -lrt -lm"
++UPERF_LIBS="$UPERF_LIBS -lpthread -lrt -lm"
+ 
+ # Checks for programs.
+ am__api_version='1.10'
