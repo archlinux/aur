@@ -1,0 +1,19 @@
+pkgbase = gdb78
+	pkgdesc = The GNU Debugger
+	pkgver = 7.8.2
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = xz
+	depends = guile
+	backup = etc/gdb78/gdbinit
+	source = http://ftp.gnu.org/gnu/gdb/gdb-7.8.2.tar.xz
+	source = http://ftp.gnu.org/gnu/gdb/gdb-7.8.2.tar.xz.sig
+	sha1sums = 85a9cc2a4dfb748bc8eb74113af278524126a9bd
+	sha1sums = SKIP
+
+pkgname = gdb78
+
