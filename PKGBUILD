@@ -2,10 +2,10 @@
 
 pkgname=cxxtools-git
 pkgver=2.2.2.97e42ae
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of general-purpose C++ classes"
 arch=('i686' 'x86_64')
-url="http://www.tntnet.org/cxxtools"
+url="http://www.tntnet.org/cxxtools.html"
 license=('LGPL')
 depends=('gcc-libs' 'sh')
 makedepends=('git')
