@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-theme-ciliora-tertia-git
+	pkgdesc = Ciliora Tertia GNOME Shell theme.
+	pkgver = r26.f3d1a84
+	pkgrel = 1
+	url = http://zagortenay333.deviantart.com/art/Ciliora-Tertia-Shell-536134191
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = sed
+	depends = gnome-shell
+	provides = gnome-shell-theme-ciliora-tertia
+	source = git+https://github.com/zagortenay333/ciliora-tertia-shell.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-theme-ciliora-tertia-git
+
