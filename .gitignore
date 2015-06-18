@@ -1,0 +1,5 @@
+# Ignore downloaded sources and keys
+*.xz
+*.tar
+*.tar.*
+*.sign

@@ -1,0 +1,57 @@
+pkgbase = linux-tomoyo
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	provides = linux-lts
+	provides = linux-tomoyo
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
+	source = config
+	source = config.x86_64
+	source = linux-tomoyo.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = SKIP
+	sha256sums = 60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0
+	sha256sums = SKIP
+	sha256sums = e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1
+	sha256sums = 5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be
+	sha256sums = 9775f80a030ee12b9fced88cadd4af9cc00bbc16e13740d2183bbdeb8d39a7e0
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-tomoyo
+	pkgdesc = The Linux-tomoyo kernel and modules
+	install = linux-tomoyo.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-tomoyo=4.0.5
+	conflicts = kernel26-tomoyo
+	replaces = kernel26-tomoyo
+	backup = etc/mkinitcpio.d/linux-tomoyo.preset
+
+pkgname = linux-tomoyo-headers
+	pkgdesc = Header files and scripts for building modules for Linux-tomoyo kernel
+	provides = kernel26-tomoyo-headers=4.0.5
+	conflicts = kernel26-tomoyo-headers
+	replaces = kernel26-tomoyo-headers
+
+pkgname = linux-tomoyo-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-tomoyo kernel
+	provides = kernel26-tomoyo-docs=4.0.5
+	conflicts = kernel26-tomoyo-docs
+	replaces = kernel26-tomoyo-docs
+
