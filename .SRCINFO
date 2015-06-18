@@ -1,0 +1,13 @@
+pkgbase = hash-identifier
+	pkgdesc = Identify the different types of hashes used to encrypt data and especially passwords
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://code.google.com/p/hash-identifier/
+	arch = any
+	license = GPL3
+	depends = python2
+	source = https://hash-identifier.googlecode.com/files/Hash_ID_v1.1.py
+	sha512sums = af889ebd84d2bd73c9a9623b5573bbb8a4cf5d3ffa6de75b272644905c4c1fa7e5bfcfb24d5ac75ffd73e4305447dd357f16b6248a16424094fc8b8cffca378d
+
+pkgname = hash-identifier
+
