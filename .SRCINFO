@@ -1,0 +1,20 @@
+pkgbase = qtadb
+	pkgdesc = GUI for Android SDK/ADB, Android phone manager
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = http://qtadb.wordpress.com/
+	install = qtadb.install
+	arch = i686
+	arch = x86_64
+	license = custom:proprietary
+	depends = qt4
+	depends = android-sdk-platform-tools
+	source = svn+http://svn.code.sf.net/p/qtadb/code/tags/0.8.0
+	source = qtadb.desktop
+	source = qtadb.png
+	md5sums = SKIP
+	md5sums = 75874703002c52e58e98412362987f94
+	md5sums = e27b5da6b0b6ad185201ea073857da28
+
+pkgname = qtadb
+
