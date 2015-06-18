@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Longloops
+GenericName=Longloops
+Comment=Brain-stretching game in which you must build loops out of sections of pipe..
+Icon=/usr/share/pixmaps/longloops.xpm
+Exec=/usr/bin/longloops
+Categories=Game;ArcadeGame;

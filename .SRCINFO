@@ -1,0 +1,17 @@
+pkgbase = longloops
+	pkgdesc = Brain-stretching game in which you must build loops out of sections of pipe.
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = https://launchpad.net/longloops/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = gtkmm
+	source = https://launchpad.net/%7Emusic1/+archive/ppa/+files/longloops_1.0.1.orig.tar.gz
+	source = longloops.desktop
+	md5sums = 0e4470e33ad299e04753a0f17d108298
+	md5sums = 8701f4631dc8f5555bff5231eda84456
+
+pkgname = longloops
+
