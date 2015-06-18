@@ -1,0 +1,7 @@
+post_install() {
+	printf "\n  %s\n\n" ">> No man page available, read /usr/share/doc/urxvt-resize-font-git/README.md"
+}
+
+post_upgrade() {
+	post_install $1
+}

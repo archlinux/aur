@@ -1,0 +1,17 @@
+pkgbase = urxvt-resize-font-git
+	pkgdesc = An urxvt plugin to adjust the font size on the fly
+	pkgver = 4.5336d3f
+	pkgrel = 2
+	url = https://github.com/simmel/urxvt-resize-font
+	install = urxvt-resize-font-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rxvt-unicode
+	provides = urxvt-resize-font
+	conflicts = urxvt-resize-font
+	source = urxvt-resize-font-git::git+https://github.com/simmel/urxvt-resize-font.git
+	sha256sums = SKIP
+
+pkgname = urxvt-resize-font-git
+
