@@ -1,0 +1,20 @@
+pkgbase = pacman4console
+	pkgdesc = A 9 level ncurses pacman game with editor, patched not to disturb our package manager and to have nice ghosts
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://sites.google.com/site/doctormike/pacman.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://ftp.debian.org/debian/pool/main/p/pacman4console/pacman4console_1.2.orig.tar.gz
+	source = pacman4console.patch
+	source = pacman4console
+	source = pacman4consoleedit
+	md5sums = 1568960898ad9cb66c77412b85cd7d86
+	md5sums = fdd2bd5b2d7f2a4afa5634146449288c
+	md5sums = b913fb9959f2988a41457c270eb0d3b3
+	md5sums = fc43203fcbc5b27872131ac6dfe85ddc
+
+pkgname = pacman4console
+

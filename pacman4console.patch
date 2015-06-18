@@ -1,0 +1,107 @@
+--- Makefile	2009-12-22 13:23:44.086853403 +0100
++++ Makefile.new	2009-12-22 13:26:21.380175264 +0100
+@@ -1,17 +1,17 @@
+ all:
+-	gcc -lncurses pacman.c     -o pacman
+-	gcc -lncurses pacmanedit.c -o pacmanedit
++	gcc -lncurses pacman.c     -o pacman4console
++	gcc -lncurses pacmanedit.c -o pacman4consoleedit
+ 
+ install:	all
+-	cp pacman /usr/local/bin
+-	cp pacmanedit /usr/local/bin
+-	mkdir -p /usr/local/share/pacman
+-	cp -fR Levels/ /usr/local/share/pacman/
+-	chown root:games /usr/local/bin/pacman
+-	chown root:games /usr/local/share/pacman -R
+-	chmod 750 /usr/local/bin/pacman
+-	chmod 750 /usr/local/bin/pacmanedit
+-	chmod 750 /usr/local/share/pacman/ -R
++	install -D pacman4console $(DESTDIR)/usr/bin/pacman4console
++	install -D pacman4consoleedit $(DESTDIR)/usr/bin/pacman4consoleedit
++	mkdir -p $(DESTDIR)/usr/share/pacman4console
++	cp -fR Levels/ $(DESTDIR)/usr/share/pacman4console/
++	chown root:games $(DESTDIR)/usr/bin/pacman4console
++	chown root:games $(DESTDIR)/usr/share/pacman4console -R
++	chmod 755 $(DESTDIR)/usr/bin/pacman4console
++	chmod 755 $(DESTDIR)/usr/bin/pacman4consoleedit
++	chmod 755 $(DESTDIR)/usr/share/pacman4console/ -R 
+ 
+ uninstall:
+ 	rm -f /usr/local/bin/pacman
+--- pacman.c	2009-12-22 13:28:23.423485413 +0100
++++ pacman.c.new	2009-12-22 13:31:01.556844974 +0100
+@@ -196,10 +196,10 @@
+ 
+ 	//Display ghosts
+ 	if(Invincible == 0) {
+-		wattron(win, COLOR_PAIR(Ghost1)); mvwaddch(win, Loc[0][0], Loc[0][1], '&');
+-		wattron(win, COLOR_PAIR(Ghost2)); mvwaddch(win, Loc[1][0], Loc[1][1], '&');
+-		wattron(win, COLOR_PAIR(Ghost3)); mvwaddch(win, Loc[2][0], Loc[2][1], '&');
+-		wattron(win, COLOR_PAIR(Ghost4)); mvwaddch(win, Loc[3][0], Loc[3][1], '&');
++		wattron(win, COLOR_PAIR(Ghost1)); mvwaddch(win, Loc[0][0], Loc[0][1], 'A');
++		wattron(win, COLOR_PAIR(Ghost2)); mvwaddch(win, Loc[1][0], Loc[1][1], 'A');
++		wattron(win, COLOR_PAIR(Ghost3)); mvwaddch(win, Loc[2][0], Loc[2][1], 'A');
++		wattron(win, COLOR_PAIR(Ghost4)); mvwaddch(win, Loc[3][0], Loc[3][1], 'A');
+ 	}
+ 
+ 	//OR display vulnerable ghosts
+@@ -323,10 +323,10 @@
+ 		if(getch()!=ERR) return;
+ 		wattron(win, COLOR_PAIR(Pellet)); mvwprintw(win, 13, 23, "*");
+ 		wattron(win, COLOR_PAIR(Pacman)); mvwprintw(win, 13, a, " C");
+-		wattron(win, COLOR_PAIR(Ghost1)); mvwprintw(win, 13, a-3, " &");
+-		wattron(win, COLOR_PAIR(Ghost3)); mvwprintw(win, 13, a-5, " &");
+-		wattron(win, COLOR_PAIR(Ghost2)); mvwprintw(win, 13, a-7, " &");
+-		wattron(win, COLOR_PAIR(Ghost4)); mvwprintw(win, 13, a-9, " &");
++		wattron(win, COLOR_PAIR(Ghost1)); mvwprintw(win, 13, a-3, " A");
++		wattron(win, COLOR_PAIR(Ghost3)); mvwprintw(win, 13, a-5, " A");
++		wattron(win, COLOR_PAIR(Ghost2)); mvwprintw(win, 13, a-7, " A");
++		wattron(win, COLOR_PAIR(Ghost4)); mvwprintw(win, 13, a-9, " A");
+ 		wrefresh(win);
+ 		usleep(100000);
+ 	}
+@@ -341,7 +341,7 @@
+ 		//Make ghosts half as fast
+ 		if(a%2) b--;
+ 
+-		wattron(win, COLOR_PAIR(BlueGhost)); mvwprintw(win, 13, b-9, "& & & &");
++		wattron(win, COLOR_PAIR(BlueGhost)); mvwprintw(win, 13, b-9, "A A A A");
+ 		wattron(win, COLOR_PAIR(Pacman)); mvwprintw(win, 13, b-9+1, " ");
+ 		wattron(win, COLOR_PAIR(Pacman)); mvwprintw(win, 13, b-9+3, " ");
+ 		wattron(win, COLOR_PAIR(Pacman)); mvwprintw(win, 13, b-9+5, " ");
+--- pacman.h	2009-12-22 13:28:36.600151049 +0100
++++ pacman.h.new	2009-12-22 13:31:14.193571255 +0100
+@@ -1,5 +1,5 @@
+ // Some variables that you may want to change
+-char LevelFile[50] = "/usr/local/share/pacman/Levels/level__.dat";	//Locations of default levels
++char LevelFile[50] = "/usr/share/pacman4console/Levels/level__.dat";	//Locations of default levels
+ int FreeLife = 1000;							//Starting points for free life
+ int Points = 0;								//Initial points
+ int Lives = 3;								//Number of lives you start with
+--- pacmanedit.c	2009-12-22 13:28:46.550158906 +0100
++++ pacmanedit.c.new	2009-12-22 13:33:44.830134771 +0100
+@@ -89,10 +89,10 @@
+ 		case 2: chr = '.'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Pellet));    break;
+ 		case 3: chr = '*'; attr = A_BOLD;   wattron(win, COLOR_PAIR(PowerUp));   break;
+ 		case 4: chr = ' '; attr = A_NORMAL; wattron(win, COLOR_PAIR(GhostWall)); break;
+-		case 5: chr = '&'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost1));    break;
+-		case 6: chr = '&'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost2));    break;
+-		case 7: chr = '&'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost3));    break;
+-		case 8: chr = '&'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost4));    break;
++		case 5: chr = 'A'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost1));    break;
++		case 6: chr = 'A'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost2));    break;
++		case 7: chr = 'A'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost3));    break;
++		case 8: chr = 'A'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Ghost4));    break;
+ 		case 9: chr = 'C'; attr = A_NORMAL; wattron(win, COLOR_PAIR(Pacman));    break;
+ 		}
+ 		mvwaddch(win, a, b, chr | attr);
+@@ -113,7 +113,7 @@
+ 	wattron(status, COLOR_PAIR(Pellet));	mvwaddch(status, 1, 19, '.');
+ 	wattron(status, COLOR_PAIR(PowerUp));	mvwaddch(status, 1, 26 , '*' | A_BOLD);
+ 	wattron(status, COLOR_PAIR(GhostWall));	mvwaddch(status, 2,  3, ' ');
+-	wattron(status, COLOR_PAIR(Ghost1));	mvwaddch(status, 2, 12, '&');
++	wattron(status, COLOR_PAIR(Ghost1));	mvwaddch(status, 2, 12, 'A');
+ 	wattron(status, COLOR_PAIR(Pacman));	mvwaddch(status, 2, 19, 'C');
+ 
+ 	wrefresh(status);
