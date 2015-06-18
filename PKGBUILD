@@ -2,8 +2,8 @@
 
 pkgname=cc-cli
 pkgver=7
-pkgrel=1
-pkgdesc='CloundControl Command Line Interface'
+pkgrel=2
+pkgdesc='CloudControl Command Line Interface'
 arch=('any')
 url='https://git.arkena.net/cloudcontrol/cc-cli'
 license=('GPL2')
