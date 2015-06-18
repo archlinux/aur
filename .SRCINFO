@@ -1,0 +1,21 @@
+pkgbase = bokken-hg
+	pkgdesc = GUI for radare2 and pyew
+	pkgver = 1.7.3.08fd9bbc3d7f
+	pkgrel = 1
+	url = http://inguma.eu/projects/bokken
+	arch = any
+	license = GPL2
+	makedepends = mercurial
+	depends = pygtk
+	depends = pygtksourceview2
+	depends = python2-pillow
+	depends = graphviz
+	depends = r2-bindings
+	optdepends = pyew: pyew backend support
+	provides = bokken
+	conflicts = bokken
+	source = bokken-hg::hg+https://inguma.eu/repos/bokken
+	sha512sums = SKIP
+
+pkgname = bokken-hg
+
