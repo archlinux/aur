@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-beta
-pkgver=44.0.2403.39
+pkgver=44.0.2403.52
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ source=('eula_text.html')
 source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
 md5sums=('b7e752f549b215ac77f284b6486794b6')
-md5sums_i686=('c405e5255389f6ce5a2b069834252ef0')
-md5sums_x86_64=('1cda3299578193d00a0a15f03323583c')
+md5sums_i686=('5dc234cdfdcc17eeaf318d8787ce6383')
+md5sums_x86_64=('6a77cfd1f8fb0b33a16ce31acd55a864')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
