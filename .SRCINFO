@@ -1,0 +1,21 @@
+pkgbase = python-tblib
+	pkgdesc = Python traceback fiddling library
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ionelmc/python-tblib
+	arch = any
+	license = BSD
+	checkdepends = python-tox
+	checkdepends = python-six
+	checkdepends = python2-six
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-tblib-1.0.1.tar.gz::https://pypi.python.org/packages/source/t/tblib/tblib-1.0.1.tar.gz
+	sha512sums = 5a26e96c7d0a89b463766e8b83a2f949a468a717295ae89c53496e0abbf1129598da0d2054a5d2d85710fb152302c9bbc06b2819f419fb5a5748c5dc3bbfe1ee
+
+pkgname = python-tblib
+	depends = python-six
+
+pkgname = python2-tblib
+	depends = python2-six
+
