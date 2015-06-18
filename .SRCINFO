@@ -1,0 +1,19 @@
+pkgbase = eclipse-pmd
+	pkgdesc = Plug-in to analyze static Java, Javascript, XML, and XSL source code
+	pkgver = 4.0.7
+	pkgrel = 1
+	url = http://pmd.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = java-environment-common
+	depends = eclipse>=3.4.0
+	noextract = feature.jar
+	noextract = plugin.jar
+	options = !strip
+	source = feature.jar::http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site/features/net.sourceforge.pmd.eclipse_4.0.7.v20150522-1709.jar
+	source = plugin.jar::http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site/plugins/net.sourceforge.pmd.eclipse.plugin_4.0.7.v20150522-1709.jar
+	sha256sums = 31e08b5c42f5be1076ac2b156242211e49877ab7220f455b7a45ef097de5f898
+	sha256sums = f5d5ec3d7329aff59cde2cae957d94523984e53386a8d3485b7de190ed4ec154
+
+pkgname = eclipse-pmd
+
