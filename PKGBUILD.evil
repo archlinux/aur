@@ -1,0 +1,56 @@
+# Maintainer: Dan Fuhry <dan@fuhry.us>
+# :mode=shellscript:
+pkgname=kcrap-lnf
+pkgver=0.2.3+grawity1
+pkgrel=1
+_krbver=1.12.1
+pkgdesc="Kerberos Challenge Response Authentication Protocol"
+license=('MIT')
+depends=('krb5')
+url="http://www.spock.org/kcrap/"
+conflicts=('kcrap')
+provides=("kcrap=$pkgver")
+replaces=('kcrap')
+
+#source=("http://wiki.infn.it/_media/strutture/lnf/dr/calcolo/wireless/kcrap-0.2.3-lnf-k5-1.9.tgz"
+source=("git://github.com/grawity/kcrap-lnf"
+	"http://web.mit.edu/kerberos/dist/krb5/${_krbver%.*}/krb5-${_krbver}-signed.tar")
+#sha1sums=('5f7561e2e25d10b5bc11ced97becd12a2340ece0' SKIP)
+sha1sums=(SKIP SKIP)
+
+arch=('i686' 'x86_64')
+backup=('etc/kcrap_server.conf')
+
+prepare() {
+	(pkgname=krb5; pkgver=${_krbver}
+	_check_pgpsig
+	tar -xf ${pkgname}-${pkgver}.tar.gz)
+}
+
+build() {
+	cd "${srcdir}/kcrap-lnf"
+	
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc \
+		--with-mit-krb5-src="${srcdir}/krb5-${_krbver}/src/include" \
+		CFLAGS=-I/usr/include/et \
+		LIBS=-lkadm5srv \
+		;
+	make -j1
+}
+
+package() {
+	cd "${srcdir}/kcrap-lnf"
+	make install DESTDIR="${pkgdir}"
+	install -Dm0644 "server/kcrap_server.conf" "${pkgdir}/etc/kcrap_server.conf"
+	mv "${pkgdir}/usr/sbin/kcrap_server" "${pkgdir}/usr/bin/kcrap_server"
+	rm -rf "${pkgdir}/usr/sbin"
+	chmod -x "${pkgdir}/usr/include/kcrap.h"
+}
+
+_url='https://projects.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/krb5'
+if ! declare -f _check_pgpsig >& /dev/null; then
+	eval "$(eval "$(curl -s "$_url")" && declare -f _check_pgpsig)"
+fi
