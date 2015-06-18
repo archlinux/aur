@@ -3,7 +3,7 @@
 
 pkgname=netcf
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -21,7 +21,8 @@ build() {
   ./configure --prefix=/usr \
 	--disable-static \
 	--with-init-script=none \
-	--with-driver=redhat
+	--with-driver=redhat \
+	--libexecdir=/usr/lib/$pkgname
   make
 }
 
