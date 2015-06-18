@@ -1,0 +1,19 @@
+pkgbase = yesplz
+	pkgdesc = Unixporn.com image screenshot & uploader (Courtesy of sigFLUP)
+	pkgver = 1
+	pkgrel = 1
+	url = http://uberleethackerforce.deepgeek.us/
+	arch = any
+	license = custom
+	makedepends = glibc
+	makedepends = libjpeg-turbo
+	makedepends = libx11
+	makedepends = elfutils
+	makedepends = libxcb
+	makedepends = libxau
+	makedepends = libxdmcp
+	source = http://ponce.cc/slackware/sources/repo/yesplz_aug_4_2010.tgz
+	md5sums = 5dfbc9adc87ac088c8ef255d7fb86891
+
+pkgname = yesplz
+
