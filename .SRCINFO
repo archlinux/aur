@@ -1,0 +1,18 @@
+pkgbase = pdsh
+	pkgdesc = Parallel Distributed Shell
+	pkgver = 2.29
+	pkgrel = 2
+	url = http://code.google.com/p/pdsh/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = openssh
+	depends = readline
+	optdepends = perl: required by the dshbak utility
+	options = libtool
+	source = http://pdsh.googlecode.com/files/pdsh-2.29.tar.bz2
+	md5sums = e3512d03e491de6f1a735ab0ff702108
+
+pkgname = pdsh
+
