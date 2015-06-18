@@ -1,0 +1,19 @@
+pkgbase = installsystems
+	pkgdesc = Easy Installation Framework
+	pkgver = 9
+	pkgrel = 1
+	url = https://github.com/seblu/installsystems
+	arch = any
+	groups = base
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = python2-psutil
+	depends = python2-progressbar
+	depends = python2-jinja
+	optdepends = python2-paramiko: support ssh repositories
+	source = git+https://github.com/seblu/installsystems.git#tag=v9
+	md5sums = SKIP
+
+pkgname = installsystems
+
