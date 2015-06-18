@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=x42-whirl
+GenericName=setBfree Whirl Speaker
+Comment=A Leslie speaker emulation JACK client and LV2 plug-in
+Icon=x42-whirl
+Exec=x42-whirl
+Terminal=false
+Categories=AudioVideo;Audio;
