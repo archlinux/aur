@@ -1,0 +1,25 @@
+pkgbase = arrayfire-git
+	pkgdesc = High performance software library for parallel computing with an easy-to-use API.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/arrayfire/arrayfire
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = subversion
+	depends = cblas
+	depends = fftw
+	optdepends = openblas: faster blas support
+	optdepends = cuda: Required for building CUDA backend
+	optdepends = libclc: Required for building OpenCL backend
+	optdepends = opencl-headers: Required for building OpenCL backend
+	optdepends = boost: Required for CUDA and OpenCL backends
+	optdepends = freeimage: Required to build image support
+	provides = arrayfire
+	source = arrayfire::git://github.com/arrayfire/arrayfire.git#branch=master
+	md5sums = SKIP
+
+pkgname = arrayfire-git
+
