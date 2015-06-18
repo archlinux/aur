@@ -30,8 +30,7 @@ pkgbase = tahoe-lafs
 	depends = net-tools
 	depends = python2-setuptools
 	optdepends = python2-numpy: reliability test
-	provides = tahoe-lafs
-	conflicts = tahoe-lafs
+	conflicts = tahoe-lafs-i2p
 	source = https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-1.10.1.tar.bz2
 	sha256sums = 5bde7bd28fdd23e7c312381e2818d75e90a80c40b18562f171510a7c716fd4c0
 
