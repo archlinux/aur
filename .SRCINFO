@@ -1,0 +1,15 @@
+pkgbase = stampy
+	pkgdesc = Mapper of short reads from illumina sequencing machines onto a reference genome
+	pkgver = 1.0.23
+	pkgrel = 1
+	url = http://www.well.ox.ac.uk/project-stampy
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	depends = python2
+	source = http://www.well.ox.ac.uk/bioinformatics/Software/Stampy-latest.tgz
+	md5sums = 30bbfc2c4a2750f6cc87bbfe52394dcd
+
+pkgname = stampy
+
