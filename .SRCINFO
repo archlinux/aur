@@ -1,0 +1,36 @@
+pkgbase = ufoai-git
+	pkgdesc = In UFO: Alien Invasion you fight aliens trying to capture Earth (dev version)
+	pkgver = 2.6.42188.8e2a1a5
+	pkgrel = 1
+	epoch = 1
+	url = http://ufoai.org/wiki/News
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	makedepends = zip
+	makedepends = gtksourceview2
+	makedepends = gtkglext
+	makedepends = openal
+	depends = libjpeg
+	depends = libgl
+	depends = libpng
+	depends = curl
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = libtheora
+	depends = xvidcore
+	depends = glu
+	optdepends = python2: compiling self-created maps
+	optdepends = gtksourceview2: compiling the map-editor
+	optdepends = gtkglext: compiling the map-editor
+	optdepends = openal: compiling the map-editor
+	conflicts = ufoai
+	conflicts = ufoai-data
+	source = git+https://github.com/ufoai/ufoai
+	sha256sums = SKIP
+
+pkgname = ufoai-git
+
