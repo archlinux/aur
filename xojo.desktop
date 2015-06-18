@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Xojo
+Comment=A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web.
+Exec=Xojo
+Icon=xojo
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;

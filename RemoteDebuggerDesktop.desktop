@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Remote Debugger Desktop
+Comment=Xojo remote debugger desktop
+Exec=RemoteDebuggerDesktop
+Icon=xojo
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;

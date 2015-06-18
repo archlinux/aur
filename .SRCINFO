@@ -1,0 +1,19 @@
+pkgbase = xojo
+	pkgdesc = A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web.
+	pkgver = 2015r22
+	pkgrel = 4
+	url = http://www.xojo.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rackcdn.com/Xojo2015r22/xojo2015r22.tgz
+	source = xojo.desktop
+	source = lingua.desktop
+	source = RemoteDebuggerDesktop.desktop
+	sha256sums = 1ba6699dd8990a03d6b404111077dea7758e1cf93080a088cad8bb81383e879a
+	sha256sums = 17250f624de25bb575a3ca5d3158a60cba95248c624d71959c0bcb823384e9ee
+	sha256sums = 7b084164ba9430b389a500a551a0cec5283f4eaa54dc27c01e7f0aa477e69612
+	sha256sums = 024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97
+
+pkgname = xojo
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lingua
+Comment=Xojo translation assistant
+Exec=Lingua
+Icon=xojo
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;
