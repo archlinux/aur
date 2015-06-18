@@ -1,6 +1,6 @@
 pkgbase = noise-bzr
 	pkgdesc = The Pantheon Music Player
-	pkgver = r1798
+	pkgver = r1818
 	pkgrel = 1
 	url = https://launchpad.net/noise
 	install = noise.install
@@ -9,6 +9,7 @@ pkgbase = noise-bzr
 	license = GPL3
 	makedepends = bzr
 	makedepends = cmake
+	makedepends = gobject-introspection
 	makedepends = vala
 	depends = desktop-file-utils
 	depends = granite-bzr

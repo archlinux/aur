@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=noise-bzr
-pkgver=r1798
+pkgver=r1818
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://launchpad.net/noise'
 license=('GPL3')
 depends=('desktop-file-utils' 'granite-bzr' 'gst-plugins-base-libs' 'libgpod'
          'libindicate-gtk3' 'libnotify' 'libpeas' 'sqlheavy' 'taglib')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
 optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-good: "Good" plugin libraries'
             'gst-plugins-bad: "Bad" plugin libraries'
