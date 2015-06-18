@@ -1,0 +1,16 @@
+pkgbase = villoc-git
+	pkgdesc = Tool for visualization of heap operations
+	pkgver = 0.0.19.c207275
+	pkgrel = 1
+	url = https://github.com/wapiflapi/villoc
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = villoc
+	conflicts = villoc
+	source = villoc-git::git+https://github.com/wapiflapi/villoc
+	sha512sums = SKIP
+
+pkgname = villoc-git
+
