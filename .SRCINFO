@@ -1,0 +1,14 @@
+pkgbase = vit
+	pkgdesc = A terminal interface for Taskwarrior with Vim key bindings and colorization support
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://taskwarrior.org/projects/taskwarrior/wiki/Vit
+	arch = any
+	license = GPL3
+	depends = perl-curses
+	depends = task
+	source = http://taskwarrior.org/download/vit-1.2.tar.gz
+	sha512sums = 20d584c9414c50788390b3f90a8f2ea68204bcebd7466d27124f5c39b6fbdb56987bfb525148b4ed2e568838504183f80be001723fec99b4869600e2f2cb5e18
+
+pkgname = vit
+
