@@ -1,0 +1,18 @@
+pkgbase = gwinwrap-svn
+	pkgdesc = Gwinwrap is a frontend to xwinwrap written in pygtk and glade
+	pkgver = 1
+	pkgrel = 4
+	url = http://code.google.com/p/gwinwrap
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = shantz-xwinwrap-bzr
+	depends = python
+	depends = pygtk
+	depends = xscreensaver
+	source = gwinwrap.bash
+	md5sums = 16d6bc1b1e7ebf19e7fe1a4a8179c3c6
+
+pkgname = gwinwrap-svn
+
