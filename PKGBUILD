@@ -1,7 +1,7 @@
 # Maintainer: Patrick Darwinkel <patrick@darwinkel.net>
 pkgname=ogar
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully functional open source Agar.io server implementation, written in Node.js."
 arch=(any)
 url="https://github.com/vram4/Ogar"
