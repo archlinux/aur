@@ -1,17 +1,17 @@
 # Maintainer: Félicien PILLOT <felicien.pillot@member.fsf.org>
 pkgname=fisoco
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a Finding, Sorting and Converting free software"
 url="https://github.com/Felandral/Fisoco"
-arch=('x86_64' 'i686')
+arch=('any')
 license=('GPLv3')
 depends=()
 makedepends=('git' 'gtkmm3' 'intltool')
 conflicts=()
 replaces=()
 backup=()
-source=("${pkgname}-${pkgver}::http://github.com/Felandral/Fisoco#branch=master")
+source=("${pkgname}-${pkgver}::git+http://github.com/Felandral/Fisoco#branch=master")
 md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -20,17 +20,23 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	aclocal
-	intltoolize
-	autoreconf
-	./configure --prefix=$HOME/build/local/fisoco
-	make
+  cd ${srcdir}/${pkgname}-${pkgver}
+  echo "Generating local autoconf macros..."
+  aclocal
+  echo "Generating translations Makefile..."
+  intltoolize
+  echo "Running Autotools..."
+  autoreconf
+  echo "Running configure..."
+  ./configure
+  sleep 1
+  echo "Compiling..."
+  sleep 1
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make install && make clean
+  make DESTDIR="${pkgdir}" install
 }
-
 
