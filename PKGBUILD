@@ -10,8 +10,7 @@ pkgdesc="Secure, decentralized, and fault-tolerant filesystem."
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
 license=('GPL')
 arch=('any')
-conflicts=('tahoe-lafs')
-provides=('tahoe-lafs')
+conflicts=('tahoe-lafs-i2p')
 BUILDENV+=(!check)
 
 depends=('openssl>=1.0.2'
