@@ -1,5 +1,5 @@
 pkgbase = bunsen-common-git
-	pkgdesc = Shared shell scripts commonly used in BunsenLinux projects
+	pkgdesc = Shared shell scripts commonly used in BunsenLabs Linux projects
 	pkgver = r7.5ec5e6f
 	pkgrel = 1
 	url = https://github.com/BunsenLabs/bunsen-common

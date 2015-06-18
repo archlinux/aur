@@ -1,8 +1,8 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-common-git
 pkgver=r7.5ec5e6f
-pkgrel=1
-pkgdesc="Shared shell scripts commonly used in BunsenLinux projects"
+pkgrel=2
+pkgdesc="Shared shell scripts commonly used in BunsenLabs Linux projects"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-common"
 license=('GPL3')
