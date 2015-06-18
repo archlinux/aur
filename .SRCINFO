@@ -1,0 +1,22 @@
+pkgbase = volatility
+	pkgdesc = Advanced memory forensics framework
+	pkgver = 2.4.1
+	pkgrel = 3
+	url = https://github.com/volatilityfoundation/volatility/wiki
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2-crypto
+	depends = distorm
+	optdepends = yara: classify malware support
+	optdepends = python2-pillow: screenshots plugin support
+	optdepends = python2-openpyxl: excel file support
+	optdepends = python2-pytz: timezone conversion support
+	optdepends = ipython2: enhanced volshell support
+	optdepends = libforensic1394: firewire live analysis support
+	optdepends = libraw1394: alternative firewire live analysis support
+	source = volatility-2.4.1.tar.gz::https://github.com/volatilityfoundation/volatility/archive/2.4.1.tar.gz
+	sha512sums = cc2db2a17b071a21852bab967c9615df0fce369dac35ffbca8754bc789e218a86fc88bd2042203174308e620e281a24debc7b0a8bacd516a404a9170ea522596
+
+pkgname = volatility
+
