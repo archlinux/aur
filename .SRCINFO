@@ -1,0 +1,21 @@
+pkgbase = irssi-otr-git
+	pkgdesc = Off-the-Record Messaging (OTR) for the Irssi IRC client
+	pkgver = 1.0.0.221.4ad3b7b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/cryptodotis/irssi-otr
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = irssi
+	depends = libotr
+	depends = glib2
+	provides = irssi-otr
+	conflicts = irssi-otr
+	replaces = irssi-otr4-git
+	source = irssi-otr-git::git+https://github.com/cryptodotis/irssi-otr.git
+	sha512sums = SKIP
+
+pkgname = irssi-otr-git
+
