@@ -6,7 +6,6 @@ pkgbase = bzr-gtk-bzr
 	install = bzr-gtk.install
 	arch = any
 	license = GPL
-	makedepends = bzr
 	depends = pygtk
 	depends = bzr
 	depends = pycairo

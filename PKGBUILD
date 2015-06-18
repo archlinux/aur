@@ -13,8 +13,8 @@ url="http://bazaar-vcs.org/bzr-gtk"
 license=('GPL')
 depends=('pygtk' 'bzr' 'pycairo' 'libglade'
          'desktop-file-utils' 'gtk-update-icon-cache')
-#makedepends=('bzr' 'bzr-stats')
-makedepends=('bzr') # bzr-stats currently not used due to workaround
+# bzr-stats currently not used due to workaround
+#makedepends=('bzr-stats')
 provides=('bzr-gtk')
 conflicts=('bzr-gtk')
 install=${_pkgname}.install
