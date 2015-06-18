@@ -2,12 +2,12 @@
 
 pkgname=ncl
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ncar Command Language, is an interpreted language designed specifically for scientific data analysis and visualization"
 url="http://www.ncl.ucar.edu"
 license=('custom:NCL Source Code License')
 arch=('i686' 'x86_64')
-depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5' 'triangle' 'hdf-eos-common' 'hdf-eos2' 'hdf-eos5' 'hdf4-nonetcdf' 'netcdf-fortran' 'libx11' 'imake' 'g2clib' 'gdal' 'openmotif' 'glibc' 'libjpeg' 'libpng' 'jasper' 'udunits' 'libxaw' 'tcsh' 'flex')
+depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5' 'triangle' 'hdf-eos-common' 'hdf-eos2' 'hdf-eos5' 'hdf4-nonetcdf' 'netcdf-fortran' 'libx11' 'imake' 'g2clib' 'gdal' 'lesstif' 'glibc' 'libjpeg' 'libpng' 'jasper' 'udunits' 'libxaw' 'tcsh' 'flex')
 makedepends=('gcc' 'gcc-fortran' 'unzip' 'tcsh')
 provides=('ncl')
 install=${pkgname}.install
@@ -18,7 +18,7 @@ md5sums=('4834df63d3b56778441246303ab921c4'
          'b779f6a9cbd6f9f2494f9cd9d553bfc5'
          'a996694fec633798787cb3f288022125'
          '2dc539dc3133339aed425aa03f87f103'
-         'b823840cdab9e6a0500d5ed8e0d4f5ba'
+         'b3789a50df2765286c26faa991e667ce'
          '33fd270a3ea1b4beb770b3e89ada4f59'
          '7a2ef22854fa4c3308ee7369f04d89bb'
          '913322ce7d4ca5efed7674693e8a3124')
@@ -57,7 +57,7 @@ build() {
 package() {
   #install
   cd $srcdir/${pkgname}_ncarg-$pkgver
-  make  install   # >> log 2>&1
+  make  install #  >> log 2>&1
 
   #fontcaps, and graphcaps
   cd $srcdir/${pkgname}_ncarg-$pkgver/common/src/fontcap
