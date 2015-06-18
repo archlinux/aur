@@ -1,0 +1,16 @@
+pkgbase = canon-pixma-mx450-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX450 series
+	pkgver = 3.90
+	pkgrel = 1
+	url = http://www.canon.de/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MX_series/MX455.aspx
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	source = http://gdlp01.c-wss.com/gds/3/0100005153/01/cnijfilter-mx450series-3.90-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/7/0100005177/01/scangearmp-mx450series-2.10-1-deb.tar.gz
+	md5sums = 09707c1d807b8a4008ddf24d61f1af05
+	md5sums = 48eec5bb9d80cf4790bf096f7d9c3fd1
+
+pkgname = canon-pixma-mx450-complete
+
