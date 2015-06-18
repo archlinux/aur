@@ -1,0 +1,22 @@
+pkgbase = glipper
+	pkgdesc = Clipboard manager for GNOME
+	pkgver = 2.4
+	pkgrel = 4
+	url = https://launchpad.net/glipper
+	arch = any
+	license = GPL2
+	makedepends = python2-distutils-extra
+	depends = python2
+	depends = python2-gconf
+	depends = python2-gobject2
+	depends = pygtk
+	depends = python2-keybinder2
+	depends = python2-xdg
+	depends = gconf
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	source = http://launchpad.net/glipper/trunk/2.4/+download/glipper-2.4.tar.gz
+	md5sums = a01b832771da95435ae9e1a1218dd334
+
+pkgname = glipper
+
