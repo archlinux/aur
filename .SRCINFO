@@ -1,5 +1,5 @@
 pkgbase = cxxtools-git
-	pkgdesc = A modular, multithreaded, high performance webapplication server for C++
+	pkgdesc = A collection of general-purpose C++ classes
 	pkgver = 2.2.2.8ee2899
 	pkgrel = 1
 	url = http://www.tntnet.org/cxxtools

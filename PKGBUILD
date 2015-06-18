@@ -2,8 +2,8 @@
 
 pkgname=cxxtools-git
 pkgver=2.2.2.8ee2899
-pkgrel=1
-pkgdesc="A modular, multithreaded, high performance webapplication server for C++"
+pkgrel=2
+pkgdesc="A collection of general-purpose C++ classes"
 arch=('i686' 'x86_64')
 url="http://www.tntnet.org/cxxtools"
 license=('LGPL')
