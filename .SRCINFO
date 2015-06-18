@@ -1,0 +1,15 @@
+pkgbase = xdot
+	pkgdesc = Interactive viewer for graphs written in Graphviz's dot language
+	pkgver = 0.6
+	pkgrel = 3
+	url = https://github.com/jrfonseca/xdot.py
+	arch = any
+	license = LGPL2.1
+	makedepends = python2-setuptools
+	depends = graphviz
+	depends = pygtk
+	source = xdot-0.6.tar.gz::https://github.com/jrfonseca/xdot.py/archive/0.6.tar.gz
+	sha512sums = 25dcb35aacdd58fb13519346d1d8cf500eeeeb3cc40dee85e967d23c52c0c37ba092a023aec6cd72a35b74e3ea6a2168e1691ad218e4a6af17ea6d56d824f05b
+
+pkgname = xdot
+
