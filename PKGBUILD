@@ -31,10 +31,14 @@ ros_depends=(ros-jade-std-srvs
   ros-jade-ros
   ros-jade-genlisp
   ros-jade-ros-comm
-  ros-jade-roslisp
   ros-jade-message-runtime
   ros-jade-rosbag-migration-rule)
 depends=(${ros_depends[@]})
+
+# roslisp cannot be installed on ARM
+if test "$CARCH" == x86_64 || test "$CARCH" == i686 ; then
+  ros_depends+=('ros-jade-roslisp')
+fi
 
 _tag=release/jade/ros_core/${pkgver}-${_pkgver_patch}
 _dir=ros_core

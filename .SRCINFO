@@ -26,7 +26,6 @@ pkgbase = ros-jade-ros-core
 	depends = ros-jade-ros
 	depends = ros-jade-genlisp
 	depends = ros-jade-ros-comm
-	depends = ros-jade-roslisp
 	depends = ros-jade-message-runtime
 	depends = ros-jade-rosbag-migration-rule
 	source = ros_core::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/ros_core/1.2.0-0
