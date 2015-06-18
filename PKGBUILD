@@ -6,7 +6,7 @@
 pkgbase=linux-pf-lts
 _major=3
 _minor=14
-_patchlevel=43
+_patchlevel=44
 _pfpatchlevel=33
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -53,6 +53,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         '0006-genksyms-fix-typeof-handling.patch'
+        'gcc5_buildfixes.diff'
 	'logo_linux_clut224.ppm.bz2'		#\
 	'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
 	'logo_linux_vga16.ppm.bz2'		#/
@@ -116,7 +117,11 @@ prepare() {
   # add upstream patch
   #  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # add latest fixes from stable queue, if needed
+  # buildfixes for gcc5
+  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
+  # https://lkml.org/lkml/2014/11/9/27
+  # https://lkml.org/lkml/2014/12/14/55
+  patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"  # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
@@ -535,8 +540,8 @@ package_linux-pf-lts() {
   true && install=${install}.pkg
 
   sed \
-    -e "s|KERNEL_NAME=.*|KERNEL_NAME=${_kernelname}|" \
-    -e "s|KERNEL_VERSION=.*|KERNEL_VERSION=${_kernver}|" \
+    -e "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
@@ -754,6 +759,7 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
+            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a'
             '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
             '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
             '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
@@ -767,4 +773,5 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'd9bd56619b609f9b37f1301af0f539dfd47f2e7ad8f9682f4a7c0ce30b2baf82'
             'de9202050d916e4b2426ec5630d15165c22b3911b7dbf5f02068daeb453fb330'
             '1c105726eb1ceda96f7db33fdfe269fea405d7599ca5b57aabe8af565638d427'
-            '1b7c21229775206bc0a7a44a5f9af23ea7ff0b7c9fdb1bad0e6536097c93b4cc')
+            '1b7c21229775206bc0a7a44a5f9af23ea7ff0b7c9fdb1bad0e6536097c93b4cc'
+            '585481b0cb3d830ed61f480acaec12d93b96ff3a72f845446bbc517b258d07e9')
