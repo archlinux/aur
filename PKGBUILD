@@ -2,12 +2,12 @@
 
 pkgname=tntnet-git
 pkgver=2.3.pre1.b824f78
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular, multithreaded, high performance webapplication server for C++"
 arch=('i686' 'x86_64')
 url="http://www.tntnet.org/tntnet.html"
 license=('LGPL')
-depends=('cxxtools>=2.2.2' 'zlib' 'openssl' 'sh')
+depends=('cxxtools-git' 'zlib' 'openssl' 'sh')
 makedepends=('git')
 optdepends=('base-devel: to build tntnet web applications')
 provides=('tntnet')
