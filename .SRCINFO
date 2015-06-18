@@ -1,0 +1,28 @@
+pkgbase = pyev
+	pkgdesc = Python libev interface
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyev
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = libev
+	source = https://pypi.python.org/packages/source/p/pyev/pyev-0.9.0.tar.gz
+	md5sums = 9d7466c84c4fc57a5d2f02d89da82b7b
+
+pkgname = python-pyev
+	pkgdesc = A cross-platform process and system utilities module for Python
+	depends = glibc
+	depends = libev
+	depends = python
+
+pkgname = python2-pyev
+	pkgdesc = A cross-platform process and system utilities module for Python2
+	depends = glibc
+	depends = libev
+	depends = python2
+
