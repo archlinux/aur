@@ -1,0 +1,15 @@
+--- src/nautilus-compare-preferences.py
++++ src/nautilus-compare-preferences.py
+@@ -1 +1 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+--- src/nautilus-compare.py
++++ src/nautilus-compare.py
+@@ -1 +1 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+--- src/utils.py
++++ src/utils.py
+@@ -1 +1 @@
+-#!/usr/bin/python
++#!/usr/bin/python2

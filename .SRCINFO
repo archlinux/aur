@@ -1,0 +1,26 @@
+pkgbase = nautilus-compare
+	pkgdesc = Simple context menu file comparison extension for Nautilus 3 and above.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://launchpad.net/nautilus-compare/
+	install = nautilus-compare.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = nautilus>=3
+	depends = python2-nautilus>=1
+	depends = python2-xdg
+	optdepends = meld
+	optdepends = kdiff3
+	optdepends = diffuse
+	optdepends = kdeskdk-kompare
+	optdepends = fldiff
+	optdepends = tkdiff
+	source = https://launchpad.net/nautilus-compare/trunk/0.0.4/+download/nautilus-compare-0.0.4.tar.gz
+	source = nautilus-compare.patch
+	sha256sums = b01e2e11483682f1b604b2cc74d0668b84c8d12b0f32704e43b907dc2c5fb6f3
+	sha256sums = 97efe2d56c1cfe9a3134ab0f38f17da216d3c9addf45489f5bca5501a211f36c
+
+pkgname = nautilus-compare
+
