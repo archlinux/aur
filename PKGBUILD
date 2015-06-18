@@ -3,13 +3,13 @@
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 pkgver=20150325.r35.4c705ff
-pkgrel=3
+pkgrel=4
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
 license=('MIT')
 install=$pkgname.install
 depends=('glibc')
-makedepends=('git' 'gcc-go' 'godep' 'mercurial')
+makedepends=('git' 'go' 'godep' 'mercurial')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 
 source=(
