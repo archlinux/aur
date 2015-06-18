@@ -1,0 +1,18 @@
+pkgbase = vim-visincr
+	pkgdesc = Produce increasing/decreasing columns of numbers, dates, or daynames
+	pkgver = 20
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=670
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = vim-visincr.vba.gz::http://www.vim.org/scripts/download_script.php?src_id=16281
+	source = license.txt
+	md5sums = c306a1521171156abeb04390fee554fa
+	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+
+pkgname = vim-visincr
+
