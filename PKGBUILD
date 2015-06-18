@@ -3,9 +3,9 @@
 
 pkgname='sile-git'
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver='0.9.2'
+pkgver=0.9.2_53_g4d132dc
 _branch='master'
-pkgrel='1'
+pkgrel=1
 arch='any'
 url='http://www.sile-typesetter.org/'
 license='MIT'
@@ -16,6 +16,11 @@ sha512sums=('SKIP')
 depends=('lua-lpeg'
          'lua-expat'
          'harfbuzz')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/-/_/g'
+}
 
 prepare () {
     cd "${pkgname%-git}"
