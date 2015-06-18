@@ -1,0 +1,36 @@
+diff -ur cnijfilter-source-3.50-1/backend/src/cnij_backend_common.c cnijfilter-source-3.50-1_patched/backend/src/cnij_backend_common.c
+--- cnijfilter-source-3.50-1/backend/src/cnij_backend_common.c	2010-08-30 03:04:39.000000000 +0200
++++ cnijfilter-source-3.50-1_patched/backend/src/cnij_backend_common.c	2012-09-02 13:30:26.520357899 +0200
+@@ -38,6 +38,7 @@
+ // CUPS Header
+ #include <cups/cups.h>
+ #include <cups/ipp.h>
++#include <cups/ppd.h>
+ 
+ // Header file for CANON
+ #include "cnij_backend_common.h"
+diff -ur cnijfilter-source-3.50-1/cngpij/cngpij/bjcups.c cnijfilter-source-3.50-1_patched/cngpij/cngpij/bjcups.c
+--- cnijfilter-source-3.50-1/cngpij/cngpij/bjcups.c	2010-10-12 08:36:19.000000000 +0200
++++ cnijfilter-source-3.50-1_patched/cngpij/cngpij/bjcups.c	2012-09-02 13:52:42.310349005 +0200
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+diff -ur cnijfilter-source-3.50-1/cngpijmon/src/bjcupsmon_cups.c cnijfilter-source-3.50-1_patched/cngpijmon/src/bjcupsmon_cups.c
+--- cnijfilter-source-3.50-1/cngpijmon/src/bjcupsmon_cups.c	2012-09-02 14:40:56.953663063 +0200
++++ cnijfilter-source-3.50-1_patched/cngpijmon/src/bjcupsmon_cups.c	2012-09-02 14:40:37.653663194 +0200
+@@ -18,8 +18,10 @@
+  */
+ 
+ /*** Includes ***/
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
++#include <cups/ppd.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <pwd.h>

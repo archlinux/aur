@@ -1,0 +1,13 @@
+--- cnijfilter-source-3.50-1/printui/po/id.po	2011-01-14 06:44:07.000000000 +0100
++++ cnijfilter-source-3.50-1/printui/po/id.po_patched	2012-09-02 14:18:26.257005393 +0200
+@@ -1389,8 +1389,8 @@
+ "Paper Source: %s is not available for the selected Media Type.\n"
+ "Paper Source setting has been changed to %s."
+ msgstr ""
+-"Setelan Sumber Kertas saat ini tidak tersedia untuk Tipe Media yang dipilih.\n"
+-"Setelan Sumber Kertas telah diubah."
++"Setelan Sumber %s Kertas saat ini tidak tersedia untuk Tipe Media yang dipilih.\n"
++"Setelan Sumber Kertas telah diubah %s."
+ 
+ #. bkenh_enh
+ #: po/keystr.h:324
