@@ -1,0 +1,16 @@
+pkgbase = archversion-git
+	pkgdesc = Archlinux Version Controller (Git version)
+	pkgver = 2013.12.17
+	pkgrel = 1
+	url = https://github.com/seblu/archversion
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = pyalpm
+	depends = python-xdg
+	source = git+https://github.com/seblu/archversion.git
+	md5sums = SKIP
+
+pkgname = archversion-git
+
