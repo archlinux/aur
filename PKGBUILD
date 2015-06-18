@@ -24,8 +24,8 @@ prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Correct open_display bug
-  patch <"${startdir}/bzr_notify_open_display.patch"
-  patch <"${startdir}/bzr_handle_patch_open_display.patch"
+  patch < ../bzr_notify_open_display.patch
+  patch < ../bzr_handle_patch_open_display.patch
 
   # package as bzrlib.plugins.gtk2 (and don't conflict with bzr-gtk
   patch -p0 < ../gtk2-package.patch
