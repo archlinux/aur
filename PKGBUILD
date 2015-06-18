@@ -6,7 +6,7 @@
 
 pkgname=modeller
 pkgver=9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
@@ -29,7 +29,7 @@ package() {
     MODINSTALL="${pkgdir}/usr/lib/modeller"
     _MODINSTALL="/usr/lib/modeller"
 
-    if [ "{$CARCH}" = "i686" ]; then
+    if [ "${CARCH}" = "i686" ]; then
         # for i686
         EXECUTABLE_TYPE="i386-intel8"
     elif [ "${CARCH}" = "x86_64" ]; then
