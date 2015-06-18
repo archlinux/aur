@@ -1,0 +1,19 @@
+pkgbase = nsoq-git
+	pkgdesc = Network Security Tool for packet manipulation that allows a large number of options
+	pkgver = 1.9.5.31.494143a
+	pkgrel = 1
+	url = http://www.nsoq.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = nsoq
+	conflicts = nsoq
+	source = nsoq-git::git+https://github.com/FelipeEcker/nsoq
+	sha512sums = SKIP
+
+pkgname = nsoq-git
+
