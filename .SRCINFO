@@ -1,0 +1,20 @@
+pkgbase = python-icalendar-git
+	pkgdesc = A parser/generator of iCalendar files (RFC 2445)
+	pkgver = 3.9.0.2.g31e8af3
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/icalendar/
+	arch = any
+	license = GPL
+	makedepends = python-distribute
+	makedepends = git
+	depends = python
+	depends = python-pytz
+	depends = python-dateutil
+	provides = python-icalendar
+	conflicts = python-icalendar
+	replaces = python-icalendar
+	source = icalendar::git+https://github.com/collective/icalendar.git
+	sha512sums = SKIP
+
+pkgname = python-icalendar-git
+
