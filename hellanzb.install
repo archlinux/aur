@@ -1,0 +1,20 @@
+# arg 1:  the new package version
+post_install() {
+  echo ">>> If you wish to use SSL, please install pyopenssl."
+  echo ">>> "
+  echo ">>> To configure:"
+  echo ">>> Copy /etc/hellanzb.conf.sample to either /etc/hellanzb.conf or"
+  echo ">>> ~/.config/hellanzb.conf and edit."
+  echo ">>> "
+  echo ">>> To run:"
+  echo ">>> Run /usr/bin/hellanzb.py or use the rc script /etc/rc.d/hellanzb."
+  echo ">>> If using the rc script, make sure to edit /etc/conf.d/hellanzb."
+}
+
+post_upgrade() {
+	post_install
+}
+
+op=$1
+shift
+$op $*

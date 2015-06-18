@@ -1,0 +1,10 @@
+--- PostProcessorUtil.py.orig   2011-03-20 14:51:43.299935839 +0200
++++ PostProcessorUtil.py        2011-03-20 14:52:15.873693265 +0200
+@@ -839,6 +839,7 @@ def par2(postProcessor, parFiles, wildca
+     repairCmd = [Hellanzb.PAR2_CMD, 'r', '--']
+     for parFile in parFiles:
+         repairCmd.append(pathjoin(dirName, parFile))
++    os.chdir(dirName)
+     repairCmd.append('*._hellanzb_dupe*')
+         
+     t = Topen(repairCmd, postProcessor)

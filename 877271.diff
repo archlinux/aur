@@ -1,0 +1,11 @@
+--- xmlrpc.py	2010-03-10 18:29:19.000000000 -0600
++++ /usr/lib/python2.6/site-packages/Hellanzb/HellaXMLRPC/xmlrpc.py	2010-03-10 18:30:03.000000000 -0600
+@@ -31,7 +31,7 @@
+ from twisted.python import log, reflect
+ 
+ import twisted.copyright
+-if twisted.copyright.version >= '2.0.0':
++if twisted.copyright.version >= '2.0.0' or twisted.copyright.version >= '10.0.0':
+     from twisted.web import http
+ else:
+     from twisted.protocols import http

@@ -1,0 +1,12 @@
+--- HtPasswdAuth.py     2010-03-10 18:30:29.000000000 -0600
++++ /usr/lib/python2.6/site-packages/Hellanzb/HellaXMLRPC/HtPasswdAuth.py	2010-03-10 18:30:49.0000000$
+@@ -19,7 +19,7 @@
+ from twisted.web.resource import Resource
+
+ import twisted.copyright
+-if twisted.copyright.version >= '2.0.0':
++if twisted.copyright.version >= '2.0.0' or twisted.copyright.version >= '10.0.0':
+     from twisted.web import http
+ else:
+     from twisted.protocols import http
+

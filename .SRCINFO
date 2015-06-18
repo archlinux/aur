@@ -1,0 +1,33 @@
+pkgbase = hellanzb-git
+	pkgdesc = nzb downloader and post processor
+	pkgver = 9999
+	pkgrel = 7
+	url = https://github.com/pjenvey/hellanzb
+	install = hellanzb.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = twisted-web2
+	depends = par2cmdline
+	depends = unrar
+	depends = python2-pyopenssl
+	provides = hellanzb
+	conflicts = hellanzb
+	backup = etc/conf.d/hellanzb
+	source = hellanzb.rc
+	source = hellanzb.conf.d
+	source = 877271.diff
+	source = 877271-2.diff
+	source = 877281.diff
+	source = par2fix.diff
+	md5sums = e33d67945276f754e3ba406bd947296d
+	md5sums = 0bda37be41e3d0662bd8cdb0fdff6a20
+	md5sums = e02e555616f9ffd748f3aedaaf17d143
+	md5sums = 93160251bb66d63cbc55e79765b3b1db
+	md5sums = c0da3f5b87a84abe2d5cb7c3d87769df
+	md5sums = 3337cb86e63325a6ffb81842f9cbaff3
+
+pkgname = hellanzb-git
+
