@@ -1,0 +1,19 @@
+pkgbase = perl-lingua-translate-google
+	pkgdesc = Google backend for Lingua::Translate
+	pkgver = 0.22
+	pkgrel = 2
+	url = http://search.cpan.org/~DYLAN/Lingua-Translate-Google
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-uri
+	depends = perl-readonly
+	depends = perl-libwww
+	depends = perl-libwww>=1.73
+	depends = perl-unicode-maputf8>=1.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DY/DYLAN/Lingua-Translate-Google-0.22.tar.gz
+	md5sums = d1f71ce4afe3298fa01f7b5a40c58139
+
+pkgname = perl-lingua-translate-google
+
