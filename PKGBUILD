@@ -2,13 +2,14 @@
 
 pkgname=gog-freedom-planet
 pkgver=1.0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedom Planet is a combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force."
 url="http://freedomplanet.galaxytrail.com/"
 license=('custom')
 arch=('i686' 'x86_64')
 source=("gog://gog_freedom_planet_${pkgver}.tar.gz")
 sha256sums=('6e1aa64edc14abd2594afe1acd160d6e0f3e3e910304ce254b33fe71634b963e')
+install=("${pkgname}.install")
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
