@@ -1,0 +1,16 @@
+pkgbase = xkbset
+	pkgdesc = Program to help manage many of XKB features of X window.
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://www.math.missouri.edu/~stephen/software/#xkbset
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = coreutils
+	depends = libx11
+	optdepends = perl-tk
+	source = http://www.math.missouri.edu/~stephen/software/xkbset/xkbset-0.5.tar.gz
+	md5sums = 282c416a76a237fa84a7b513c9d7b2cf
+
+pkgname = xkbset
+
