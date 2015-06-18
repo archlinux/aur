@@ -1,0 +1,19 @@
+pkgbase = python2-pysang
+	pkgdesc = A Sanger chromatograph viewer.
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/iosonofabio/pysang
+	arch = any
+	license = Public domain
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-biopython
+	depends = python2-matplotlib
+	depends = python2-pyside
+	provides = python2-pysang
+	options = !emptydirs
+	source = https://github.com/iosonofabio/pysang/archive/0.3.9.tar.gz
+	md5sums = 24430da09817a9e66c54f713aff674f9
+
+pkgname = python2-pysang
+
