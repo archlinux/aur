@@ -1,0 +1,22 @@
+pkgbase = perl-lingua-translate
+	pkgdesc = Translate text from one language to another
+	pkgver = 0.09
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Lingua-Translate
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-html-parser>=2.19
+	depends = perl-libwww>=1.73
+	depends = perl-pod-constants>=0.15
+	depends = perl-unicode-maputf8>=1.09
+	depends = perl-unicode-maputf8
+	depends = perl-pod-constants
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SAMV/Lingua-Translate-0.09.tar.gz
+	md5sums = 82571abf6f5872bb2f106f71185a6aa9
+
+pkgname = perl-lingua-translate
+
