@@ -1,0 +1,92 @@
+post_install() {
+cat<<'EOF' > /etc/rc.d/sysrqd || return 1
+#!/bin/bash                                        
+
+#                                        
+# writen by sputnick for archlinux/AUR  <gilles DOT quenot AT gmail DOT com>
+# adapted from debian sysrqd init script - Julien Danjou <acid@debian.org>  
+#                                                                           
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/sbin/sysrqd                                          
+NAME=sysrqd                                                      
+DESC="sysrq daemon"                                              
+SECRET=/etc/sysrqd.secret                                        
+PID=$(pgrep -f /usr/sbin/sysrqd)                                 
+
+[[ -x $DAEMON && -f $SECRET ]] || exit 0
+
+# Include sysrqd defaults if available
+[[ -f /etc/conf.d/sysrqd ]] && . /etc/conf.d/sysrqd          
+
+case "$1" in
+  start)    
+        stat_busy "Starting $DESC: "
+        [[ ! $PID ]] && $DAEMON -- $DAEMON_OPTS
+
+                if(($? > 0 )); then
+                        stat_fail
+                else
+                        add_daemon $NAME
+                        stat_done
+                fi
+        ;;
+  stop)
+        stat_busy "Stopping $DESC: "
+                [[ $PID ]] && kill $PID &> /dev/null
+
+                if(( $? > 0 )); then
+                        stat_fail
+                else
+                        rm_daemon $NAME
+                        stat_done
+                fi
+
+        ;;
+  restart|force-reload)
+        stat_busy "Restarting $DESC: "
+                $0 stop
+        sleep 1
+                $0 start
+        ;;
+  *)
+        N=/etc/rc.d/$NAME
+        printf "Usage: $N {start|stop|restart|force-reload}\n" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
+EOF
+chmod 0755 /etc/rc.d/sysrqd || return 1
+
+cat<<EOF
+- Add sysrqd to /etc/rc.conf to run sysrqd at bootup
+
+- Create a password file:
+  echo "mypassword" > /etc/sysrqd.secret
+  chmod 0600 /etc/sysrqd.secret
+
+- Optionnaly, create a bind file to bind to a specific IP
+  echo 192.168.2.13 > /etc/sysrqd.bind
+
+EOF
+	
+}
+ 
+post_upgrade() {
+	/bin/true
+}
+ 
+pre_remove() {
+	/bin/rm -f /usr/bin/sysrqd /usr/sbin/sysrqd /etc/rc.d/sysrqd
+}
+ 
+op=$1
+shift
+ 
+$op "$@"

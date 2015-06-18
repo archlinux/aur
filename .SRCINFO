@@ -1,0 +1,17 @@
+pkgbase = sysrqd
+	pkgdesc = A small daemon intended to manage Linux Sysrq over network.
+	pkgver = v14.r0.ge9479f8
+	pkgrel = 1
+	url = http://julien.danjou.info/software/sysrqd
+	install = sysrqd.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = sysrqd
+	conflicts = sysrqd
+	source = sysrqd::git+https://github.com/jd/sysrqd.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sysrqd
+
