@@ -1,0 +1,19 @@
+pkgbase = cowfortune
+	pkgdesc = A configurable fortune cookie proclaiming cow (and a few other creatures)
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = https://github.com/anthraxx/cowfortune
+	install = cowfortune.install
+	arch = any
+	license = MIT
+	depends = cowsay
+	depends = fortune-mod
+	optdepends = lolcat: rainbow coloring support
+	backup = etc/cowfortune/config
+	backup = etc/cowfortune/whitelist
+	backup = etc/cowfortune/blacklist
+	source = cowfortune-0.1.2.tar.gz::https://github.com/anthraxx/cowfortune/archive/0.1.2.tar.gz
+	sha512sums = 42ab237ab571bc758e678fc66d1c4eb9694807e5886ee23056ccd738805a31c1de2c07c35466e4cc6c8cf4d7fcdd94289ddf207e5de374ccd60e37161d72469b
+
+pkgname = cowfortune
+
