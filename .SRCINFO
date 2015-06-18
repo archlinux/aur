@@ -5,7 +5,6 @@ pkgbase = dh-make
 	url = http://packages.debian.org/sid/dh-make
 	arch = any
 	license = GPL
-	depends = debhelper
 	depends = dpkg
 	depends = perl
 	depends = make

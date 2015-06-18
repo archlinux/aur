@@ -7,7 +7,7 @@ pkgdesc="tool that converts source archives into Debian package source"
 arch=('any')
 url="http://packages.debian.org/sid/dh-make"
 license=('GPL')
-depends=('debhelper' 'dpkg' 'perl' 'make')
+depends=('dpkg' 'perl' 'make')
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
 sha256sums=('1b33c7fadacbe629889aec54d3a1a9cc1a3dd20b5ef04abdde9f14a1c3ea399e')
 
