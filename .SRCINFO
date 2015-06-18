@@ -1,0 +1,14 @@
+pkgbase = jm2cv-git
+	pkgdesc = converts between JACK MIDI and CV control voltage
+	pkgver = 20130518
+	pkgrel = 1
+	url = http://git.fuzzle.org/cgit/jm2cv.git/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	provides = jm2cv
+	conflicts = jm2cv
+
+pkgname = jm2cv-git
+
