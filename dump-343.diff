@@ -1,0 +1,1993 @@
+Nethack 3.4.3 dump patch, version 1.5
+diff -bNurdX diff_ign.txt nethack-3.4.3/dat/opthelp nethack-3.4.3-dump/dat/opthelp
+--- nethack-3.4.3/dat/opthelp	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/dat/opthelp	2011-08-13 15:12:43.000000000 +0300
+@@ -92,6 +92,9 @@
+ boulder       override the default boulder symbol with another default: [`]
+ disclose      the types of information you want offered at the end of the
+               game  [ni na nv ng nc]
++dumpfile      the name of the file where to dump the disclosure information
++              when the game ends (only if the patch has been compiled in)
++              [none]
+ fruit         the name of a fruit you enjoy eating  [slime mold]
+               (basically a whimsy which NetHack uses from time to time).
+ menustyle     user interface for selection of multiple objects:
+diff -bNurdX diff_ign.txt nethack-3.4.3/doc/Guidebook.mn nethack-3.4.3-dump/doc/Guidebook.mn
+--- nethack-3.4.3/doc/Guidebook.mn	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/doc/Guidebook.mn	2011-08-13 15:12:43.000000000 +0300
+@@ -1770,6 +1770,12 @@
+ .lp dogname
+ Name your starting dog (ex. ``dogname:Fang'').
+ Cannot be set with the `O' command.
++.lp dumpfile
++The name of a file where the disclosure information is written when the
++game ends. You may use the macro %n that will be replaced with the name
++of your player character. The game must have write permissions to the
++directory where the file is written. Normally /tmp may be used for unix
++systems.
+ .lp dungeon
+ Set the graphics symbols for displaying the dungeon
+ (default \&``\ |--------||.-|++##.##<><>_|\e\e#{}.}..##\ #}'').
+diff -bNurdX diff_ign.txt nethack-3.4.3/doc/Guidebook.tex nethack-3.4.3-dump/doc/Guidebook.tex
+--- nethack-3.4.3/doc/Guidebook.tex	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/doc/Guidebook.tex	2011-08-13 15:12:43.000000000 +0300
+@@ -2209,6 +2209,13 @@
+ Name your starting dog (ex.\ ``{\tt dogname:Fang}'').
+ Cannot be set with the `{\tt O}' command.
+ %.lp
++\item[\ib{dumpfile}]
++The name of a file where the disclosure information is written when the
++game ends. You may use the macro %n that will be replaced with the name
++of your player character. The game must have write permissions to the
++directory where the file is written. Normally /tmp may be used for unix
++systems.
++%.lp
+ \item[\ib{dungeon}]
+ Set the graphics symbols for displaying the dungeon (default
+ ``\verb& |--------||.-|++##& \verb&.##<><>_|\\#{}.}..## #}&'').
+diff -bNurdX diff_ign.txt nethack-3.4.3/doc/Guidebook.txt nethack-3.4.3-dump/doc/Guidebook.txt
+--- nethack-3.4.3/doc/Guidebook.txt	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/doc/Guidebook.txt	2011-08-13 15:12:43.000000000 +0300
+@@ -2274,6 +2274,13 @@
+             Name  your  starting dog (ex. ``dogname:Fang'').  Cannot be set
+             with the `O' command.
+ 
++          dumpfile
++            The name of a file where the disclosure information is
++            written when the game ends. You may use the macro %n that
++            will be replaced with the name of your player character.
++            The game must have write permissions to the directory where
++            the file is written. Normally /tmp may be used for unixes.
++
+           dungeon
+             Set the graphics symbols for displaying  the  dungeon  (default
+             `` |--------||.-|++##.##<><>_|\\#{}.}..## #}'').   The  dungeon
+diff -bNurdX diff_ign.txt nethack-3.4.3/include/config.h nethack-3.4.3-dump/include/config.h
+--- nethack-3.4.3/include/config.h	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/include/config.h	2011-08-13 15:12:43.000000000 +0300
+@@ -350,6 +350,10 @@
+ 
+ /*#define GOLDOBJ */	/* Gold is kept on obj chains - Helge Hafting */
+ /*#define AUTOPICKUP_EXCEPTIONS */ /* exceptions to autopickup */
++#define DUMP_LOG        /* Dump game end information to a file */
++/* #define DUMP_FN "/tmp/%n.nh" */      /* Fixed dumpfile name, if you want
++                                         * to prevent definition by users */
++#define DUMPMSGS 20     /* Number of latest messages in the dump file  */
+ 
+ /* End of Section 5 */
+ 
+diff -bNurdX diff_ign.txt nethack-3.4.3/include/decl.h nethack-3.4.3-dump/include/decl.h
+--- nethack-3.4.3/include/decl.h	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/include/decl.h	2011-08-13 15:12:43.000000000 +0300
+@@ -184,6 +184,9 @@
+ E long done_money;
+ #endif
+ E char killer_buf[BUFSZ];
++#ifdef DUMP_LOG
++E char dump_fn[];		/* dumpfile name (dump patch) */
++#endif
+ E const char *configfile;
+ E NEARDATA char plname[PL_NSIZ];
+ E NEARDATA char dogname[];
+diff -bNurdX diff_ign.txt nethack-3.4.3/include/extern.h nethack-3.4.3-dump/include/extern.h
+--- nethack-3.4.3/include/extern.h	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/include/extern.h	2011-08-13 15:13:25.000000000 +0300
+@@ -131,6 +131,10 @@
+ E int FDECL(describe_level, (char *));
+ E const char *FDECL(rank_of, (int,SHORT_P,BOOLEAN_P));
+ E void NDECL(bot);
++#ifdef DUMP_LOG
++E void FDECL(bot1str, (char *));
++E void FDECL(bot2str, (char *));
++#endif
+ 
+ /* ### cmd.c ### */
+ 
+@@ -166,6 +170,10 @@
+ E int NDECL(extcmd_via_menu);
+ E void FDECL(enlightenment, (int));
+ E void FDECL(show_conduct, (int));
++#ifdef DUMP_LOG
++E void FDECL(dump_enlightenment, (int));
++E void FDECL(dump_conduct, (int));
++#endif
+ E int FDECL(xytod, (SCHAR_P,SCHAR_P));
+ E void FDECL(dtoxy, (coord *,int));
+ E int FDECL(movecmd, (CHAR_P));
+@@ -281,6 +289,9 @@
+ E void FDECL(row_refresh, (int,int,int));
+ E void NDECL(cls);
+ E void FDECL(flush_screen, (int));
++#ifdef DUMP_LOG
++E void NDECL(dump_screen);
++#endif
+ E int FDECL(back_to_glyph, (XCHAR_P,XCHAR_P));
+ E int FDECL(zapdir_to_glyph, (int,int,int));
+ E int FDECL(glyph_at, (XCHAR_P,XCHAR_P));
+@@ -553,6 +564,10 @@
+ #if !defined(MAKEDEFS_C) && !defined(LEV_LEX_C)
+ E void FDECL(done, (int));
+ E void FDECL(container_contents, (struct obj *,BOOLEAN_P,BOOLEAN_P));
++#ifdef DUMP_LOG
++E void FDECL(dump, (char *, char *));
++E void FDECL(do_containerconts, (struct obj *,BOOLEAN_P,BOOLEAN_P,BOOLEAN_P,BOOLEAN_P));
++#endif
+ E void FDECL(terminate, (int));
+ E int NDECL(num_genocides);
+ 
+@@ -745,6 +760,7 @@
+ E char *FDECL(yymmdd, (time_t));
+ #endif
+ E long FDECL(yyyymmdd, (time_t));
++E struct tm *getlt();
+ E int NDECL(phase_of_the_moon);
+ E boolean NDECL(friday_13th);
+ E int NDECL(night);
+@@ -790,6 +806,9 @@
+ E char *FDECL(xprname, (struct obj *,const char *,CHAR_P,BOOLEAN_P,long,long));
+ E int NDECL(ddoinv);
+ E char FDECL(display_inventory, (const char *,BOOLEAN_P));
++#ifdef DUMP_LOG
++E char FDECL(dump_inventory, (const char *,BOOLEAN_P,BOOLEAN_P));
++#endif
+ E int FDECL(display_binventory, (int,int,BOOLEAN_P));
+ E struct obj *FDECL(display_cinventory,(struct obj *));
+ E struct obj *FDECL(display_minventory,(struct monst *,int,char *));
+@@ -2237,6 +2256,9 @@
+ E int NDECL(abon);
+ E int NDECL(dbon);
+ E int NDECL(enhance_weapon_skill);
++#ifdef DUMP_LOG
++E void NDECL(dump_weapon_skill);
++#endif
+ E void FDECL(unrestrict_weapon_skill, (int));
+ E void FDECL(use_skill, (int,int));
+ E void FDECL(add_weapon_skill, (int));
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/botl.c nethack-3.4.3-dump/src/botl.c
+--- nethack-3.4.3/src/botl.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/botl.c	2011-08-13 15:12:43.000000000 +0300
+@@ -165,10 +165,16 @@
+ }
+ #endif
+ 
++#ifdef DUMP_LOG
++void bot1str(char *newbot1)
++#else
+ STATIC_OVL void
+ bot1()
++#endif
+ {
++#ifndef DUMP_LOG
+ 	char newbot1[MAXCO];
++#endif
+ 	register char *nb;
+ 	register int i,j;
+ 
+@@ -215,6 +221,15 @@
+ 	if (flags.showscore)
+ 	    Sprintf(nb = eos(nb), " S:%ld", botl_score());
+ #endif
++#ifdef DUMP_LOG
++}
++STATIC_OVL void
++bot1()
++{
++	char newbot1[MAXCO];
++
++	bot1str(newbot1);
++#endif
+ 	curs(WIN_STATUS, 1, 0);
+ 	putstr(WIN_STATUS, 0, newbot1);
+ }
+@@ -242,10 +257,17 @@
+ 	return ret;
+ }
+ 
++#ifdef DUMP_LOG
++void bot2str(newbot2)
++char* newbot2;
++#else
+ STATIC_OVL void
+ bot2()
++#endif
+ {
++#ifndef DUMP_LOG
+ 	char  newbot2[MAXCO];
++#endif
+ 	register char *nb;
+ 	int hp, hpmax;
+ 	int cap = near_capacity();
+@@ -292,6 +314,14 @@
+ 	if(Slimed)         Sprintf(nb = eos(nb), " Slime");
+ 	if(cap > UNENCUMBERED)
+ 		Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
++#ifdef DUMP_LOG
++}
++STATIC_OVL void
++bot2()
++{
++	char newbot2[MAXCO];
++	bot2str(newbot2);
++#endif
+ 	curs(WIN_STATUS, 1, 1);
+ 	putstr(WIN_STATUS, 0, newbot2);
+ }
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/cmd.c nethack-3.4.3-dump/src/cmd.c
+--- nethack-3.4.3/src/cmd.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/cmd.c	2011-08-13 15:12:43.000000000 +0300
+@@ -1126,6 +1126,305 @@
+ 	return;
+ }
+ 
++#ifdef DUMP_LOG
++void
++dump_enlightenment(final)
++int final;
++{
++	int ltmp;
++	char buf[BUFSZ];
++	char buf2[BUFSZ];
++	const char *enc_stat[] = { /* copied from botl.c */
++	     "",
++	     "burdened",
++	     "stressed",
++	     "strained",
++	     "overtaxed",
++	     "overloaded"
++	};
++	char *youwere = "  You were ";
++	char *youhave = "  You have ";
++	char *youhad  = "  You had ";
++	char *youcould = "  You could ";
++
++	dump("", "Final attributes");
++
++#ifdef ELBERETH
++	if (u.uevent.uhand_of_elbereth) {
++	    static const char * const hofe_titles[3] = {
++				"the Hand of Elbereth",
++				"the Envoy of Balance",
++				"the Glory of Arioch"
++	    };
++	    dump(youwere,
++		(char *)hofe_titles[u.uevent.uhand_of_elbereth - 1]);
++	}
++#endif
++
++	if (u.ualign.record >= 20)
++		dump(youwere, "piously aligned");
++	else if (u.ualign.record > 13)
++	    dump(youwere, "devoutly aligned");
++	else if (u.ualign.record > 8)
++	    dump(youwere, "fervently aligned");
++	else if (u.ualign.record > 3)
++	    dump(youwere, "stridently aligned");
++	else if (u.ualign.record == 3)
++	    dump(youwere, "aligned");
++	else if (u.ualign.record > 0)
++	    dump(youwere, "haltingly aligned");
++	else if (u.ualign.record == 0)
++	    dump(youwere, "nominally aligned");
++	else if (u.ualign.record >= -3)	dump(youhave, "strayed");
++	else if (u.ualign.record >= -8)	dump(youhave, "sinned");
++	else dump("  You have ", "transgressed");
++	Sprintf(buf, " %d", u.ualign.record);
++	dump("  Your alignment was ", buf);
++
++
++	/*** Resistances to troubles ***/
++	if (Fire_resistance) dump(youwere, "fire resistant");
++	if (Cold_resistance) dump(youwere, "cold resistant");
++	if (Sleep_resistance) dump(youwere, "sleep resistant");
++	if (Disint_resistance) dump(youwere, "disintegration-resistant");
++	if (Shock_resistance) dump(youwere, "shock resistant");
++	if (Poison_resistance) dump(youwere, "poison resistant");
++	if (Drain_resistance) dump(youwere, "level-drain resistant");
++	if (Sick_resistance) dump(youwere, "immune to sickness");
++	if (Antimagic) dump(youwere, "magic-protected");
++	if (Acid_resistance) dump(youwere, "acid resistant");
++	if (Stone_resistance) dump(youwere, "petrification resistant");
++	if (Invulnerable) dump(youwere, "invulnerable");
++	if (u.uedibility) dump(youcould, "recognize detrimental food");
++
++	/*** Troubles ***/
++	if (Halluc_resistance) 	dump("  ", "You resisted hallucinations");
++	if (Hallucination) dump(youwere, "hallucinating");
++	if (Stunned) dump(youwere, "stunned");
++	if (Confusion) dump(youwere, "confused");
++	if (Blinded) dump(youwere, "blinded");
++	if (Sick) {
++		if (u.usick_type & SICK_VOMITABLE)
++			dump(youwere, "sick from food poisoning");
++		if (u.usick_type & SICK_NONVOMITABLE)
++			dump(youwere, "sick from illness");
++	}
++	if (Stoned) dump(youwere, "turning to stone");
++	if (Slimed) dump(youwere, "turning into slime");
++	if (Strangled)
++		dump(youwere, (u.uburied) ? "buried" : "being strangled");
++	if (Glib) {
++		Sprintf(buf, "slippery %s", makeplural(body_part(FINGER)));
++		dump(youhad, buf);
++	}
++	if (Fumbling) dump("  ", "You fumbled");
++	if (Wounded_legs
++#ifdef STEED
++	    && !u.usteed
++#endif
++			  ) {
++		Sprintf(buf, "wounded %s", makeplural(body_part(LEG)));
++		dump(youhad, buf);
++	}
++#ifdef STEED
++	if (Wounded_legs && u.usteed) {
++	    Strcpy(buf, x_monnam(u.usteed, ARTICLE_YOUR, (char *)0, 
++		    SUPPRESS_SADDLE | SUPPRESS_HALLUCINATION, FALSE));
++	    *buf = highc(*buf);
++	    Strcat(buf, " had wounded legs");
++	    dump("  ", buf);
++	}
++#endif
++	if (Sleeping) dump("  ", "You fell asleep");
++	if (Hunger) dump("  ", "You hungered rapidly");
++
++	/*** Vision and senses ***/
++	if (See_invisible) dump("  ", "You saw invisible");
++	if (Blind_telepat) dump(youwere, "telepathic");
++	if (Warning) dump(youwere, "warned");
++	if (Warn_of_mon && flags.warntype) {
++		Sprintf(buf, "aware of the presence of %s",
++			(flags.warntype & M2_ORC) ? "orcs" :
++			(flags.warntype & M2_DEMON) ? "demons" :
++			something); 
++		dump(youwere, buf);
++	}
++	if (Undead_warning) dump(youwere, "warned of undead");
++	if (Searching) dump(youhad, "automatic searching");
++	if (Clairvoyant) dump(youwere, "clairvoyant");
++	if (Infravision) dump(youhad, "infravision");
++	if (Detect_monsters)
++	  dump(youwere, "sensing the presence of monsters");
++	if (u.umconf) dump(youwere, "going to confuse monsters");
++
++	/*** Appearance and behavior ***/
++	if (Adornment) {
++	    int adorn = 0;
++	    if(uleft && uleft->otyp == RIN_ADORNMENT) adorn += uleft->spe;
++	    if(uright && uright->otyp == RIN_ADORNMENT) adorn += uright->spe;
++	    if (adorn < 0)
++		dump(youwere, "poorly adorned");
++	    else
++		dump(youwere, "adorned");
++	}
++	if (Invisible) dump(youwere, "invisible");
++	else if (Invis) dump(youwere, "invisible to others");
++	/* ordinarily "visible" is redundant; this is a special case for
++	   the situation when invisibility would be an expected attribute */
++	else if ((HInvis || EInvis || pm_invisible(youmonst.data)) && BInvis)
++	    dump(youwere, "visible");
++	if (Displaced) dump(youwere, "displaced");
++	if (Stealth) dump(youwere, "stealthy");
++	if (Aggravate_monster) dump("  ", "You aggravated monsters");
++	if (Conflict) dump("  ", "You caused conflict");
++
++	/*** Transportation ***/
++	if (Jumping) dump(youcould, "jump");
++	if (Teleportation) dump(youcould, "teleport");
++	if (Teleport_control) dump(youhad, "teleport control");
++	if (Lev_at_will) dump(youwere, "levitating, at will");
++	else if (Levitation)
++	  dump(youwere, "levitating");	/* without control */
++	else if (Flying) dump(youcould, "fly");
++	if (Wwalking) dump(youcould, "walk on water");
++	if (Swimming) dump(youcould, "swim");
++	if (Breathless) dump(youcould, "survive without air");
++	else if (Amphibious) dump(youcould, "breathe water");
++	if (Passes_walls) dump(youcould, "walk through walls");
++#ifdef STEED
++	if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) {
++	    Sprintf(buf, "riding %s", y_monnam(u.usteed));
++	    dump(youwere, buf);
++	}
++#endif
++	if (u.uswallow) {
++	    Sprintf(buf, "swallowed by %s", a_monnam(u.ustuck));
++#ifdef WIZARD
++	    if (wizard) Sprintf(eos(buf), " (%u)", u.uswldtim);
++#endif
++	    dump(youwere, buf);
++	} else if (u.ustuck) {
++	    Sprintf(buf, "%s %s",
++		    (Upolyd && sticks(youmonst.data)) ? "holding" : "held by",
++		    a_monnam(u.ustuck));
++	    dump(youwere, buf);
++	}
++
++	/*** Physical attributes ***/
++	if (u.uhitinc)
++	    dump(youhad,
++		enlght_combatinc("to hit", u.uhitinc, final, buf));
++	if (u.udaminc)
++	    dump(youhad,
++		enlght_combatinc("damage", u.udaminc, final, buf));
++	if (Slow_digestion) dump(youhad, "slower digestion");
++	if (Regeneration) dump("  ", "You regenerated");
++	if (u.uspellprot || Protection) {
++	    int prot = 0;
++
++	    if(uleft && uleft->otyp == RIN_PROTECTION) prot += uleft->spe;
++	    if(uright && uright->otyp == RIN_PROTECTION) prot += uright->spe;
++	    if (HProtection & INTRINSIC) prot += u.ublessed;
++	    prot += u.uspellprot;
++	    
++	    if (prot < 0)
++		dump(youwere, "ineffectively protected");
++	    else
++		dump(youwere, "protected");
++	}
++	if (Protection_from_shape_changers)
++		dump(youwere, "protected from shape changers");
++	if (Polymorph) dump(youwere, "polymorphing");
++	if (Polymorph_control) dump(youhad, "polymorph control");
++	if (u.ulycn >= LOW_PM) {
++		Strcpy(buf, an(mons[u.ulycn].mname));
++		dump(youwere, buf);
++	}
++	if (Upolyd) {
++	    if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form");
++	    else Sprintf(buf, "polymorphed into %s",
++			 an(youmonst.data->mname));
++#ifdef WIZARD
++	    if (wizard) Sprintf(eos(buf), " (%d)", u.mtimedone);
++#endif
++	    dump(youwere, buf);
++	}
++	if (Unchanging)
++	  dump(youcould, "not change from your current form");
++	if (Fast) dump(youwere, Very_fast ? "very fast" : "fast");
++	if (Reflecting) dump(youhad, "reflection");
++	if (Free_action) dump(youhad, "free action");
++	if (Fixed_abil) dump(youhad, "fixed abilities");
++	if (Lifesaved)
++		dump("  ", "Your life would have been saved");
++	if (u.twoweap) dump(youwere, "wielding two weapons at once");
++
++	/*** Miscellany ***/
++	if (Luck) {
++	    ltmp = abs((int)Luck);
++	    Sprintf(buf, "%s%slucky (%d)",
++		    ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "",
++		    Luck < 0 ? "un" : "", Luck);
++	    dump(youwere, buf);
++	}
++#ifdef WIZARD
++	 else if (wizard) dump("  ", "Your luck was zero");
++#endif
++	if (u.moreluck > 0) dump(youhad, "extra luck");
++	else if (u.moreluck < 0) dump(youhad, "reduced luck");
++	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
++	    ltmp = stone_luck(FALSE);
++	    if (ltmp <= 0)
++		dump("  ", "Bad luck did not time out for you");
++	    if (ltmp >= 0)
++		dump("  ", "Good luck did not time out for you");
++	}
++
++	if (u.ugangr) {
++	    Sprintf(buf, " %sangry with you",
++		u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : "");
++#ifdef WIZARD
++	    if (wizard) Sprintf(eos(buf), " (%d)", u.ugangr);
++#endif
++	    Sprintf(buf2, "%s was %s", u_gname(), buf);
++	    dump("  ", buf2);
++	}
++
++    {
++	const char *p;
++
++	buf[0] = '\0';
++	if (final < 2) {    /* quit/escaped/ascended */
++	    p = "survived after being killed ";
++	    switch (u.umortality) {
++	    case 0:  p = "survived";  break;
++	    case 1:  Strcpy(buf, "once");  break;
++	    case 2:  Strcpy(buf, "twice");  break;
++	    case 3:  Strcpy(buf, "thrice");  break;
++	    default: Sprintf(buf, "%d times", u.umortality);
++		     break;
++	    }
++	} else {		/* game ended in character's death */
++	    p = "are dead";
++	    switch (u.umortality) {
++	    case 0:  impossible("dead without dying?");
++	    case 1:  break;			/* just "are dead" */
++	    default: Sprintf(buf, " (%d%s time!)", u.umortality,
++			     ordin(u.umortality));
++		     break;
++	    }
++	}
++	if (p) {
++	  Sprintf(buf2, "You %s %s", p, buf);
++	  dump("  ", buf2);
++	}
++    }
++	dump("", "");
++	return;
++
++} /* dump_enlightenment */
++#endif
++
+ /*
+  * Courtesy function for non-debug, non-explorer mode players
+  * to help refresh them about who/what they are.
+@@ -1341,6 +1640,99 @@
+ 	destroy_nhwindow(en_win);
+ }
+ 
++#ifdef DUMP_LOG
++void
++dump_conduct(final)
++int final;
++{
++	char buf[BUFSZ];
++	int ngenocided;
++
++	dump("", "Voluntary challenges");
++
++	if (!u.uconduct.food)
++	    dump("", "  You went without food");
++	    /* But beverages are okay */
++	else if (!u.uconduct.unvegan)
++	    dump("", "  You followed a strict vegan diet");
++	else if (!u.uconduct.unvegetarian)
++	    dump("", "  You were a vegetarian");
++	else if (Role_if(PM_MONK) && u.uconduct.unvegetarian < 10) {
++	    sprintf(buf, "  You ate non-vegetarian food %ld time%s.", 
++		u.uconduct.unvegetarian, plur(u.uconduct.unvegetarian));
++	    dump("", buf);
++	}
++
++	if (!u.uconduct.gnostic)
++	    dump("", "  You were an atheist");
++
++	if (!u.uconduct.weaphit)
++	    dump("", "  You never hit with a wielded weapon");
++	else if (Role_if(PM_MONK) && u.uconduct.weaphit < 10) {
++	    Sprintf(buf, "  You hit with a wielded weapon %ld time%s",
++		    u.uconduct.weaphit, plur(u.uconduct.weaphit));
++	    dump("", buf);
++	}
++#ifdef WIZARD
++	else if (wizard) {
++	    Sprintf(buf, "hit with a wielded weapon %ld time%s",
++		    u.uconduct.weaphit, plur(u.uconduct.weaphit));
++	    dump("  You ", buf);
++	}
++#endif
++	if (!u.uconduct.killer)
++	    dump("", "  You were a pacifist");
++
++	if (!u.uconduct.literate)
++	    dump("", "  You were illiterate");
++#ifdef WIZARD
++	else if (wizard) {
++	    Sprintf(buf, "read items or engraved %ld time%s",
++		    u.uconduct.literate, plur(u.uconduct.literate));
++	    dump("  You ", buf);
++	}
++#endif
++
++	ngenocided = num_genocides();
++	if (ngenocided == 0) {
++	    dump("", "  You never genocided any monsters");
++	} else {
++	    Sprintf(buf, "genocided %d type%s of monster%s",
++		    ngenocided, plur(ngenocided), plur(ngenocided));
++	    dump("  You ", buf);
++	}
++
++	if (!u.uconduct.polypiles)
++	    dump("", "  You never polymorphed an object");
++	else {
++	    Sprintf(buf, "polymorphed %ld item%s",
++		    u.uconduct.polypiles, plur(u.uconduct.polypiles));
++	    dump("  You ", buf);
++	}
++
++	if (!u.uconduct.polyselfs)
++	    dump("", "  You never changed form");
++	else {
++	    Sprintf(buf, "changed form %ld time%s",
++		    u.uconduct.polyselfs, plur(u.uconduct.polyselfs));
++	    dump("  You ", buf);
++	}
++
++	if (!u.uconduct.wishes)
++	    dump("", "  You used no wishes");
++	else {
++	    Sprintf(buf, "used %ld wish%s",
++		    u.uconduct.wishes, (u.uconduct.wishes > 1L) ? "es" : "");
++	    dump("  You ", buf);
++
++	    if (!u.uconduct.wisharti)
++		dump("", "  You did not wish for any artifacts");
++	}
++
++	dump("", "");
++}
++#endif /* DUMP_LOG */
++
+ #endif /* OVLB */
+ #ifdef OVL1
+ 
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/decl.c nethack-3.4.3-dump/src/decl.c
+--- nethack-3.4.3/src/decl.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/decl.c	2011-08-13 15:12:43.000000000 +0300
+@@ -209,6 +209,15 @@
+ 
+ NEARDATA struct mvitals mvitals[NUMMONS];
+ 
++/* originally from end.c */
++#ifdef DUMP_LOG
++#ifdef DUMP_FN
++char dump_fn[] = DUMP_FN;
++#else
++char dump_fn[PL_PSIZ] = DUMMY;
++#endif
++#endif /* DUMP_LOG */
++
+ NEARDATA struct c_color_names c_color_names = {
+ 	"black", "amber", "golden",
+ 	"light blue", "red", "green",
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/display.c nethack-3.4.3-dump/src/display.c
+--- nethack-3.4.3/src/display.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/display.c	2011-08-13 15:12:43.000000000 +0300
+@@ -1370,6 +1370,106 @@
+ 
+ /* ========================================================================= */
+ 
++#ifdef DUMP_LOG
++/* D: Added to dump screen to output file */
++STATIC_PTR uchar get_glyph_char(glyph)
++int glyph;
++{
++    uchar   ch;
++    register int offset;
++
++    if (glyph >= NO_GLYPH)
++        return ' ';
++
++    /*
++     *  Map the glyph back to a character.
++     *
++     *  Warning:  For speed, this makes an assumption on the order of
++     *		  offsets.  The order is set in display.h.
++     */
++    if ((offset = (glyph - GLYPH_WARNING_OFF)) >= 0) {	/* a warning flash */
++	ch = def_warnsyms[offset].sym;
++    } else if ((offset = (glyph - GLYPH_SWALLOW_OFF)) >= 0) {	/* swallow */
++	/* see swallow_to_glyph() in display.c */
++	ch = (uchar) defsyms[S_sw_tl + (offset & 0x7)].sym;
++    } else if ((offset = (glyph - GLYPH_ZAP_OFF)) >= 0) {	/* zap beam */
++	/* see zapdir_to_glyph() in display.c */
++	ch = defsyms[S_vbeam + (offset & 0x3)].sym;
++    } else if ((offset = (glyph - GLYPH_CMAP_OFF)) >= 0) {	/* cmap */
++	ch = defsyms[offset].sym;
++    } else if ((offset = (glyph - GLYPH_OBJ_OFF)) >= 0) {	/* object */
++	ch = def_oc_syms[(int)objects[offset].oc_class];
++    } else if ((offset = (glyph - GLYPH_RIDDEN_OFF)) >= 0) { /* mon ridden */
++	ch = def_monsyms[(int)mons[offset].mlet];
++    } else if ((offset = (glyph - GLYPH_BODY_OFF)) >= 0) {	/* a corpse */
++	ch = def_oc_syms[(int)objects[CORPSE].oc_class];
++    } else if ((offset = (glyph - GLYPH_DETECT_OFF)) >= 0) { /* mon detect */
++	ch = def_monsyms[(int)mons[offset].mlet];
++    } else if ((offset = (glyph - GLYPH_INVIS_OFF)) >= 0) {  /* invisible */
++	ch = DEF_INVISIBLE;
++    } else if ((offset = (glyph - GLYPH_PET_OFF)) >= 0) {	/* a pet */
++	ch = def_monsyms[(int)mons[offset].mlet];
++    } else {						    /* a monster */
++	ch = monsyms[(int)mons[glyph].mlet];
++    }
++    return ch;
++}
++
++#ifdef TTY_GRAPHICS
++extern const char * FDECL(compress_str, (const char *));
++#else
++const char*
++compress_str(str) /* copied from win/tty/wintty.c */
++const char *str;
++{
++	static char cbuf[BUFSZ];
++	/* compress in case line too long */
++	if((int)strlen(str) >= 80) {
++		register const char *bp0 = str;
++		register char *bp1 = cbuf;
++
++		do {
++			if(*bp0 != ' ' || bp0[1] != ' ')
++				*bp1++ = *bp0;
++		} while(*bp0++);
++	} else
++	    return str;
++	return cbuf;
++}
++#endif /* TTY_GRAPHICS */
++
++/* Take a screen dump */
++void dump_screen()
++{
++    register int x,y;
++    int lastc;
++    /* D: botl.c has a closer approximation to the size, but we'll go with
++     *    this */
++    char buf[300], *ptr;
++    
++    for (y = 0; y < ROWNO; y++) {
++	lastc = 0;
++	ptr = buf;
++	for (x = 1; x < COLNO; x++) {
++	    uchar c = get_glyph_char(gbuf[y][x].glyph);
++	    *ptr++ = c;
++	    if (c != ' ')
++		lastc = x;
++	}
++	buf[lastc] = '\0';
++	dump("", buf);
++    }
++    dump("", "");
++    bot1str(buf);
++    ptr = (char *) compress_str((const char *) buf);
++    dump("", ptr);
++    bot2str(buf);
++    dump("", buf);
++    dump("", "");
++    dump("", "");
++}
++#endif /* DUMP_LOG */
++
+ /*
+  * back_to_glyph()
+  *
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/end.c nethack-3.4.3-dump/src/end.c
+--- nethack-3.4.3/src/end.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/end.c	2011-08-13 15:13:29.000000000 +0300
+@@ -40,7 +40,15 @@
+ STATIC_DCL void FDECL(artifact_score, (struct obj *,BOOLEAN_P,winid));
+ STATIC_DCL void FDECL(savelife, (int));
+ STATIC_DCL void FDECL(list_vanquished, (CHAR_P,BOOLEAN_P));
++#ifdef DUMP_LOG
++extern char msgs[][BUFSZ];
++extern int lastmsg;
++extern void NDECL(dump_spells);
++void FDECL(do_vanquished, (int, BOOLEAN_P, BOOLEAN_P));
++STATIC_DCL void FDECL(list_genocided, (int, BOOLEAN_P, BOOLEAN_P));
++#else
+ STATIC_DCL void FDECL(list_genocided, (CHAR_P,BOOLEAN_P));
++#endif /* DUMP_LOG */
+ STATIC_DCL boolean FDECL(should_query_disclose_option, (int,char *));
+ 
+ #if defined(__BEOS__) || defined(MICRO) || defined(WIN32) || defined(OS2)
+@@ -86,6 +94,74 @@
+ 
+ extern const char * const killed_by_prefix[];	/* from topten.c */
+ 
++#ifdef DUMP_LOG
++FILE *dump_fp = (FILE *)0;  /* file pointer for dumps */
++/* functions dump_init, dump_exit and dump are from the dump patch */
++
++void
++dump_init ()
++{
++  if (dump_fn[0]) {
++    char *actual_fn = dump_fn;
++    char *p = (char *) strstr(dump_fn, "%n");
++    if (p) {
++      int new_dump_fn_len = strlen(dump_fn)+strlen(plname)-2; /* %n */
++      char *new_dump_fn = (char *) alloc((unsigned)(new_dump_fn_len+1));
++      char *q = new_dump_fn;
++      strncpy(q, dump_fn, p-dump_fn);
++      q += p-dump_fn;
++      strncpy(q, plname, strlen(plname) + 1);
++      regularize(q);
++      q[strlen(plname)] = '\0';
++      q += strlen(q);
++      p += 2;	/* skip "%n" */
++      strncpy(q, p, strlen(p));
++      new_dump_fn[new_dump_fn_len] = '\0';
++      actual_fn = new_dump_fn;
++    }
++    p = (char*) strstr(actual_fn, "%d");
++    if (p) {
++      int new_len = strlen(actual_fn) + 13; /* date length - "%d" + 1 */
++      char *new_dump_fn = (char *) alloc((unsigned)(new_len));
++      char *q = new_dump_fn;
++      struct tm *lt = getlt();
++      long t = (long)lt->tm_hour * 10000L + (long)lt->tm_min * 100L
++	+ (long)lt->tm_sec;
++      strncpy(q, actual_fn, p - actual_fn);
++      q += p - actual_fn;
++      sprintf(q, "%ld%06ld", yyyymmdd(0), t);
++      q += 14;
++      p += 2; /* skip "%d" */
++      strncpy(q, p, strlen(p));
++      q[strlen(p)]='\0';
++      if (actual_fn != dump_fn) free(actual_fn);
++      actual_fn = new_dump_fn;
++    }
++    dump_fp = fopen (actual_fn, "w");
++    if (actual_fn != dump_fn) free(actual_fn);
++
++    if (!dump_fp) {
++      pline("Can't open %s for output.", dump_fn);
++      pline("Dump file not created.");
++    }
++  }
++}
++
++void
++dump_exit ()
++{
++  if (dump_fp)
++    fclose (dump_fp);
++}
++
++void dump (pre, str)
++     char *pre, *str;
++{
++  if (dump_fp)
++    fprintf (dump_fp, "%s%s\n", pre, str);
++}
++#endif  /* DUMP_LOG */
++
+ /*ARGSUSED*/
+ void
+ done1(sig_unused)   /* called as signal() handler, so sent at least one arg */
+@@ -366,18 +442,30 @@
+ 	    ask = should_query_disclose_option('i', &defquery);
+ 	    if (!done_stopprint) {
+ 		c = ask ? yn_function(qbuf, ynqchars, defquery) : defquery;
+-		if (c == 'y') {
++	    } else {
++		c = 'n';
++	    }
++		{
++#ifdef DUMP_LOG
++			boolean want_disp = (c == 'y')? TRUE: FALSE;
++#endif
+ 			struct obj *obj;
+ 
+ 			for (obj = invent; obj; obj = obj->nobj) {
+ 			    makeknown(obj->otyp);
+ 			    obj->known = obj->bknown = obj->dknown = obj->rknown = 1;
+ 			}
++#ifdef DUMP_LOG
++			(void) dump_inventory((char *)0, TRUE, want_disp);
++			do_containerconts(invent, TRUE, TRUE, TRUE, want_disp);
++#else
++			if (c == 'y') {
+ 			(void) display_inventory((char *)0, TRUE);
+ 			container_contents(invent, TRUE, TRUE);
+ 		}
+-		if (c == 'q')  done_stopprint++;
++#endif /* DUMP_LOG */
+ 	    }
++		if (c == 'q')  done_stopprint++;
+ 	}
+ 
+ 	ask = should_query_disclose_option('a', &defquery);
+@@ -388,14 +476,28 @@
+ 		enlightenment(how >= PANICKED ? 1 : 2); /* final */
+ 	    if (c == 'q') done_stopprint++;
+ 	}
++#ifdef DUMP_LOG
++	if (dump_fp) {
++	  dump_enlightenment((int) (how >= PANICKED ? 1 : 2));
++	  dump_spells();
++	}
++#endif
+ 
+ 	ask = should_query_disclose_option('v', &defquery);
++#ifdef DUMP_LOG
++	do_vanquished(defquery, ask, TRUE);
++#else
+ 	if (!done_stopprint)
+ 	    list_vanquished(defquery, ask);
++#endif
+ 
+ 	ask = should_query_disclose_option('g', &defquery);
++#ifdef DUMP_LOG
++	    list_genocided(defquery, ask,TRUE);
++#else
+ 	if (!done_stopprint)
+ 	    list_genocided(defquery, ask);
++#endif
+ 
+ 	ask = should_query_disclose_option('c', &defquery);
+ 	if (!done_stopprint) {
+@@ -405,6 +507,12 @@
+ 		show_conduct(how >= PANICKED ? 1 : 2);
+ 	    if (c == 'q') done_stopprint++;
+ 	}
++#ifdef DUMP_LOG
++	if (dump_fp) {
++	    dump_conduct(how >= PANICKED ? 1 : 2);
++	    dump_weapon_skill();
++	}
++#endif
+ }
+ 
+ /* try to get the player back in a viable state after being killed */
+@@ -523,6 +631,11 @@
+ 			otmp->oartifact ? artifact_name(xname(otmp), &dummy) :
+ 				OBJ_NAME(objects[otmp->otyp]),
+ 			value, currency(value), points);
++#ifdef DUMP_LOG
++		if (dump_fp)
++		  dump("", pbuf);
++		if (endwin != WIN_ERR)
++#endif
+ 		putstr(endwin, 0, pbuf);
+ 	    }
+ 	}
+@@ -542,6 +655,7 @@
+ 	boolean bones_ok, have_windows = iflags.window_inited;
+ 	struct obj *corpse = (struct obj *)0;
+ 	long umoney;
++	int i;
+ 
+ 	if (how == TRICKED) {
+ 	    if (killer) {
+@@ -614,6 +728,36 @@
+ 	program_state.gameover = 1;
+ 	/* in case of a subsequent panic(), there's no point trying to save */
+ 	program_state.something_worth_saving = 0;
++#ifdef DUMP_LOG
++	/* D: Grab screen dump right here */
++	if (dump_fn[0]) {
++	  dump_init();
++	  Sprintf(pbuf, "%s, %s %s %s %s", plname,
++		  aligns[1 - u.ualign.type].adj,
++		  genders[flags.female].adj,
++		  urace.adj,
++		  (flags.female && urole.name.f)?
++		   urole.name.f : urole.name.m);
++	  dump("", pbuf);
++# ifdef DUMPMSGS
++	  if (lastmsg >= 0) {
++		dump ("", "Latest messages");
++		for (i = lastmsg + 1; i < DUMPMSGS; i++) {
++		  if (msgs[i] && strcmp(msgs[i], "") )
++		    dump ("  ", msgs[i]);
++		} 
++		for (i = 0; i <= lastmsg; i++) {
++		  if (msgs[i] && strcmp(msgs[i], "") )
++		    dump ("  ", msgs[i]);
++		} 
++		dump ("","");
++	  }
++#  endif /* DUMPMSGS */
++	  /* D: Add a line for clearance from the screen dump */
++	  dump("", "");
++	  dump_screen();
++	}
++#endif /* DUMP_LOG */
+ 	/* render vision subsystem inoperative */
+ 	iflags.vision_inited = 0;
+ 	/* might have been killed while using a disposable item, so make sure
+@@ -692,8 +836,9 @@
+ 
+ 	if (have_windows) display_nhwindow(WIN_MESSAGE, FALSE);
+ 
+-	if (strcmp(flags.end_disclose, "none") && how != PANICKED)
++	if (strcmp(flags.end_disclose, "none") && how != PANICKED) {
+ 		disclose(how, taken);
++	}
+ 	/* finish_paybill should be called after disclosure but before bones */
+ 	if (bones_ok && taken) finish_paybill();
+ 
+@@ -770,15 +915,18 @@
+ 		/* don't bother counting to see whether it should be plural */
+ 	}
+ 
+-	if (!done_stopprint) {
+ 	    Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname,
+ 		   how != ASCENDED ?
+ 		      (const char *) ((flags.female && urole.name.f) ?
+ 		         urole.name.f : urole.name.m) :
+ 		      (const char *) (flags.female ? "Demigoddess" : "Demigod"));
++	if (!done_stopprint) {
+ 	    putstr(endwin, 0, pbuf);
+ 	    putstr(endwin, 0, "");
+ 	}
++#ifdef DUMP_LOG
++	if (dump_fp) dump("", pbuf);
++#endif
+ 
+ 	if (how == ESCAPED || how == ASCENDED) {
+ 	    register struct monst *mtmp;
+@@ -805,31 +953,39 @@
+ 	    keepdogs(TRUE);
+ 	    viz_array[0][0] |= IN_SIGHT; /* need visibility for naming */
+ 	    mtmp = mydogs;
+-	    if (!done_stopprint) Strcpy(pbuf, "You");
++	    Strcpy(pbuf, "You");
+ 	    if (mtmp) {
+ 		while (mtmp) {
+-		    if (!done_stopprint)
+ 			Sprintf(eos(pbuf), " and %s", mon_nam(mtmp));
+ 		    if (mtmp->mtame)
+ 			u.urexp += mtmp->mhp;
+ 		    mtmp = mtmp->nmon;
+ 		}
+ 		if (!done_stopprint) putstr(endwin, 0, pbuf);
++#ifdef DUMP_LOG
++		if (dump_fp) dump("", pbuf);
++#endif
+ 		pbuf[0] = '\0';
+ 	    } else {
+ 		if (!done_stopprint) Strcat(pbuf, " ");
+ 	    }
+-	    if (!done_stopprint) {
+ 		Sprintf(eos(pbuf), "%s with %ld point%s,",
+ 			how==ASCENDED ? "went to your reward" :
+ 					"escaped from the dungeon",
+ 			u.urexp, plur(u.urexp));
++#ifdef DUMP_LOG
++	    if (dump_fp) dump("", pbuf);
++#endif
++	    if (!done_stopprint) {
+ 		putstr(endwin, 0, pbuf);
+ 	    }
+ 
+ 	    if (!done_stopprint)
+ 		artifact_score(invent, FALSE, endwin);	/* list artifacts */
+-
++#ifdef DUMP_LOG
++	    else
++		artifact_score(invent, FALSE, WIN_ERR);
++#endif
+ 	    /* list valuables here */
+ 	    for (val = valuables; val->list; val++) {
+ 		sort_valuables(val->list, val->size);
+@@ -855,10 +1011,13 @@
+ 				count, plur(count));
+ 		    }
+ 		    putstr(endwin, 0, pbuf);
++#ifdef DUMP_LOG
++		    if (dump_fp) dump("", pbuf);
++#endif
+ 		}
+ 	    }
+ 
+-	} else if (!done_stopprint) {
++	} else {
+ 	    /* did not escape or ascend */
+ 	    if (u.uz.dnum == 0 && u.uz.dlevel <= 0) {
+ 		/* level teleported out of the dungeon; `how' is DIED,
+@@ -878,21 +1037,32 @@
+ 
+ 	    Sprintf(eos(pbuf), " with %ld point%s,",
+ 		    u.urexp, plur(u.urexp));
+-	    putstr(endwin, 0, pbuf);
++	    if (!done_stopprint) putstr(endwin, 0, pbuf);
++#ifdef DUMP_LOG
++	    if (dump_fp) dump("", pbuf);
++#endif
+ 	}
+ 
+-	if (!done_stopprint) {
+ 	    Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.",
+ 		    umoney, plur(umoney), moves, plur(moves));
+-	    putstr(endwin, 0, pbuf);
++	if (!done_stopprint)  putstr(endwin, 0, pbuf);
++#ifdef DUMP_LOG
++	if (dump_fp) {
++	  dump("", pbuf);
++	  Sprintf(pbuf, "Killer: %s", killer);
++	  dump("", pbuf);
+ 	}
+-	if (!done_stopprint) {
++#endif
+ 	    Sprintf(pbuf,
+ 	     "You were level %d with a maximum of %d hit point%s when you %s.",
+ 		    u.ulevel, u.uhpmax, plur(u.uhpmax), ends[how]);
++	if (!done_stopprint) {
+ 	    putstr(endwin, 0, pbuf);
+ 	    putstr(endwin, 0, "");
+ 	}
++#ifdef DUMP_LOG
++	    if (dump_fp) dump("", pbuf);
++#endif
+ 	if (!done_stopprint)
+ 	    display_nhwindow(endwin, TRUE);
+ 	if (endwin != WIN_ERR)
+@@ -909,6 +1079,9 @@
+ 		exit_nhwindows((char *)0);
+ 	    topten(how);
+ 	}
++#ifdef DUMP_LOG
++	if (dump_fp) dump_exit();
++#endif
+ 
+ 	if(done_stopprint) { raw_print(""); raw_print(""); }
+ 	terminate(EXIT_SUCCESS);
+@@ -919,6 +1092,16 @@
+ container_contents(list, identified, all_containers)
+ struct obj *list;
+ boolean identified, all_containers;
++#ifdef DUMP_LOG
++{
++	do_containerconts(list, identified, all_containers, FALSE, TRUE);
++}
++
++void do_containerconts(list, identified, all_containers, want_dump, want_disp)
++struct obj *list;
++boolean identified, all_containers, want_dump, want_disp;
++#endif
++/* The original container_contents function */
+ {
+ 	register struct obj *box, *obj;
+ 	char buf[BUFSZ];
+@@ -928,25 +1111,62 @@
+ 		if (box->otyp == BAG_OF_TRICKS) {
+ 		    continue;	/* wrong type of container */
+ 		} else if (box->cobj) {
+-		    winid tmpwin = create_nhwindow(NHW_MENU);
++		    winid tmpwin;
++#ifdef DUMP_LOG
++		    if (want_disp)
++#endif
++		    tmpwin = create_nhwindow(NHW_MENU);
+ 		    Sprintf(buf, "Contents of %s:", the(xname(box)));
++#ifdef DUMP_LOG
++		    if (want_disp) {
++#endif
+ 		    putstr(tmpwin, 0, buf);
+ 		    putstr(tmpwin, 0, "");
++#ifdef DUMP_LOG
++		    }
++		    if (dump_fp) dump("", buf);
++#endif
+ 		    for (obj = box->cobj; obj; obj = obj->nobj) {
+ 			if (identified) {
+ 			    makeknown(obj->otyp);
+ 			    obj->known = obj->bknown =
+ 			    obj->dknown = obj->rknown = 1;
+ 			}
++#ifdef DUMP_LOG
++			if (want_dump)  dump("  ", doname(obj));
++			if (want_disp)
++#endif
+ 			putstr(tmpwin, 0, doname(obj));
+ 		    }
++#ifdef DUMP_LOG
++		    if (want_dump)  dump("","");
++		    if (want_disp) {
++#endif
+ 		    display_nhwindow(tmpwin, TRUE);
+ 		    destroy_nhwindow(tmpwin);
+-		    if (all_containers)
++#ifdef DUMP_LOG
++		    }
++		    if (all_containers) {
++			do_containerconts(box->cobj, identified, TRUE,
++					  want_dump, want_disp);
++#else
++		    if (all_containers) {
+ 			container_contents(box->cobj, identified, TRUE);
++#endif /* DUMP_LOG */
++		    }
+ 		} else {
++#ifdef DUMP_LOG
++		    if (want_disp) {
++#endif
+ 		    pline("%s empty.", Tobjnam(box, "are"));
+ 		    display_nhwindow(WIN_MESSAGE, FALSE);
++#ifdef DUMP_LOG
++		    }
++		    if (want_dump) {
++		      dump(The(xname(box)), " is empty.");
++		      dump("", "");
++		    }
++#endif
+ 		}
+ 	    }
+ 	    if (!all_containers)
+@@ -977,6 +1197,17 @@
+ list_vanquished(defquery, ask)
+ char defquery;
+ boolean ask;
++#ifdef DUMP_LOG
++{
++  do_vanquished(defquery, ask, FALSE);
++}
++
++void
++do_vanquished(defquery, ask, want_dump)
++int defquery;
++boolean ask;
++boolean want_dump;
++#endif
+ {
+     register int i, lev;
+     int ntypes = 0, max_lev = 0, nkilled;
+@@ -996,13 +1227,22 @@
+      * includes all dead monsters, not just those killed by the player
+      */
+     if (ntypes != 0) {
+-	c = ask ? yn_function("Do you want an account of creatures vanquished?",
++#ifdef DUMP_LOG
++	c = done_stopprint ? 'n': ask ?
++#else
++	c = ask ?
++#endif
++	  yn_function("Do you want an account of creatures vanquished?",
+ 			      ynqchars, defquery) : defquery;
+ 	if (c == 'q') done_stopprint++;
+ 	if (c == 'y') {
+ 	    klwin = create_nhwindow(NHW_MENU);
+ 	    putstr(klwin, 0, "Vanquished creatures:");
+ 	    putstr(klwin, 0, "");
++#ifdef DUMP_LOG
++	} /* the original end of block removed by the patch */
++	    if (want_dump)  dump("", "Vanquished creatures");
++#endif
+ 
+ 	    /* countdown by monster "toughness" */
+ 	    for (lev = max_lev; lev >= 0; lev--)
+@@ -1030,20 +1270,32 @@
+ 			    Sprintf(buf, "%d %s",
+ 				    nkilled, makeplural(mons[i].mname));
+ 		    }
+-		    putstr(klwin, 0, buf);
++		    if (c == 'y') putstr(klwin, 0, buf);
++#ifdef DUMP_LOG
++		    if (want_dump)  dump("  ", buf);
++#endif
+ 		}
+ 	    /*
+ 	     * if (Hallucination)
+ 	     *     putstr(klwin, 0, "and a partridge in a pear tree");
+ 	     */
+ 	    if (ntypes > 1) {
+-		putstr(klwin, 0, "");
++		if (c == 'y') putstr(klwin, 0, "");
+ 		Sprintf(buf, "%ld creatures vanquished.", total_killed);
+-		putstr(klwin, 0, buf);
++		if (c == 'y') putstr(klwin, 0, buf);
++#ifdef DUMP_LOG
++		if (want_dump)  dump("  ", buf);
++#endif
+ 	    }
++	    if (c == 'y') {
+ 	    display_nhwindow(klwin, TRUE);
+ 	    destroy_nhwindow(klwin);
+ 	}
++#ifdef DUMP_LOG
++	    if (want_dump)  dump("", "");
++#else
++	} /* the original end of if (c == 'y') */
++#endif
+     }
+ }
+ 
+@@ -1059,10 +1311,18 @@
+     return n;
+ }
+ 
++#ifdef DUMP_LOG
++STATIC_OVL void
++list_genocided(defquery, ask, want_dump)
++int defquery;
++boolean ask;
++boolean want_dump;
++#else
+ STATIC_OVL void
+ list_genocided(defquery, ask)
+ char defquery;
+ boolean ask;
++#endif
+ {
+     register int i;
+     int ngenocided;
+@@ -1079,8 +1339,13 @@
+ 	if (c == 'q') done_stopprint++;
+ 	if (c == 'y') {
+ 	    klwin = create_nhwindow(NHW_MENU);
+-	    putstr(klwin, 0, "Genocided species:");
++	    Sprintf(buf, "Genocided species:");
++	    putstr(klwin, 0, buf);
+ 	    putstr(klwin, 0, "");
++#ifdef DUMP_LOG
++	}
++	    if (want_dump)  dump("", "Genocided species");
++#endif
+ 
+ 	    for (i = LOW_PM; i < NUMMONS; i++)
+ 		if (mvitals[i].mvflags & G_GENOD) {
+@@ -1090,13 +1355,22 @@
+ 				mons[i].mname);
+ 		    else
+ 			Strcpy(buf, makeplural(mons[i].mname));
+-		    putstr(klwin, 0, buf);
++		    if (c == 'y') putstr(klwin, 0, buf);
++#ifdef DUMP_LOG
++		    if (want_dump)  dump("  ", buf);
++#endif
+ 		}
+ 
+-	    putstr(klwin, 0, "");
++	    if (c == 'y') putstr(klwin, 0, "");
+ 	    Sprintf(buf, "%d species genocided.", ngenocided);
+-	    putstr(klwin, 0, buf);
+-
++	    if (c == 'y') putstr(klwin, 0, buf);
++#ifdef DUMP_LOG
++	    if (want_dump) {
++		dump("  ", buf);
++		dump("", "");
++	    }
++	    if (c == 'y') {
++#endif
+ 	    display_nhwindow(klwin, TRUE);
+ 	    destroy_nhwindow(klwin);
+ 	}
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/hacklib.c nethack-3.4.3-dump/src/hacklib.c
+--- nethack-3.4.3/src/hacklib.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/hacklib.c	2011-08-13 15:13:33.000000000 +0300
+@@ -455,7 +455,7 @@
+ #if defined(AMIGA) && !defined(AZTEC_C) && !defined(__SASC_60) && !defined(_DCC) && !defined(__GNUC__)
+ extern struct tm *FDECL(localtime,(time_t *));
+ #endif
+-static struct tm *NDECL(getlt);
++struct tm *NDECL(getlt);
+ 
+ void
+ setrandom()
+@@ -485,7 +485,7 @@
+ #endif
+ }
+ 
+-static struct tm *
++struct tm *
+ getlt()
+ {
+ 	time_t date;
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/invent.c nethack-3.4.3-dump/src/invent.c
+--- nethack-3.4.3/src/invent.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/invent.c	2011-08-13 15:12:43.000000000 +0300
+@@ -19,7 +19,12 @@
+ STATIC_DCL boolean FDECL(putting_on, (const char *));
+ STATIC_PTR int FDECL(ckunpaid,(struct obj *));
+ STATIC_PTR int FDECL(ckvalidcat,(struct obj *));
++#ifdef DUMP_LOG
++static char FDECL(display_pickinv,
++		 (const char *,BOOLEAN_P, long *, BOOLEAN_P, BOOLEAN_P));
++#else
+ static char FDECL(display_pickinv, (const char *,BOOLEAN_P, long *));
++#endif /* DUMP_LOG */
+ #ifdef OVLB
+ STATIC_DCL boolean FDECL(this_type_only, (struct obj *));
+ STATIC_DCL void NDECL(dounpaid);
+@@ -1017,7 +1022,11 @@
+ 		    if (ilet == '?' && !*lets && *altlets)
+ 			allowed_choices = altlets;
+ 		    ilet = display_pickinv(allowed_choices, TRUE,
+-					   allowcnt ? &ctmp : (long *)0);
++					   allowcnt ? &ctmp : (long *)0
++#ifdef DUMP_LOG
++					   , FALSE, TRUE
++#endif
++					   );
+ 		    if(!ilet) continue;
+ 		    if (allowcnt && ctmp >= 0) {
+ 			cnt = ctmp;
+@@ -1689,11 +1698,21 @@
+  * inventory and return a count as well as a letter. If out_cnt is not null,
+  * any count returned from the menu selection is placed here.
+  */
++#ifdef DUMP_LOG
++static char
++display_pickinv(lets, want_reply, out_cnt, want_dump, want_disp)
++register const char *lets;
++boolean want_reply;
++long* out_cnt;
++boolean want_dump;
++boolean want_disp;
++#else
+ static char
+ display_pickinv(lets, want_reply, out_cnt)
+ register const char *lets;
+ boolean want_reply;
+ long* out_cnt;
++#endif
+ {
+ 	struct obj *otmp;
+ 	char ilet, ret;
+@@ -1704,6 +1723,9 @@
+ 	anything any;
+ 	menu_item *selected;
+ 
++#ifdef DUMP_LOG
++	if (want_disp) {
++#endif
+ 	/* overriden by global flag */
+ 	if (flags.perm_invent) {
+ 	    win = (lets && *lets) ? local_win : WIN_INVEN;
+@@ -1713,6 +1735,11 @@
+ 	} else
+ 	    win = WIN_INVEN;
+ 
++#ifdef DUMP_LOG
++	}
++	if (want_dump)   dump("", "Your inventory");
++#endif
++
+ 	/*
+ 	Exit early if no inventory -- but keep going if we are doing
+ 	a permanent inventory update.  We need to keep going so the
+@@ -1725,11 +1752,24 @@
+ 	to here is short circuited away.
+ 	*/
+ 	if (!invent && !(flags.perm_invent && !lets && !want_reply)) {
++#ifdef DUMP_LOG
++	  if (want_disp) {
++#endif
+ #ifndef GOLDOBJ
+ 	    pline("Not carrying anything%s.", u.ugold ? " except gold" : "");
+ #else
+ 	    pline("Not carrying anything.");
+ #endif
++#ifdef DUMP_LOG
++	  }
++	  if (want_dump) {
++#ifdef GOLDOBJ
++	    dump("  ", "Not carrying anything");
++#else
++	    dump("  Not carrying anything", u.ugold ? " except gold." : ".");
++#endif
++	  }
++#endif
+ 	    return 0;
+ 	}
+ 
+@@ -1743,16 +1783,31 @@
+ 	    ret = '\0';
+ 	    for (otmp = invent; otmp; otmp = otmp->nobj) {
+ 		if (otmp->invlet == lets[0]) {
++#ifdef DUMP_LOG
++		  if (want_disp) {
++#endif
+ 		    ret = message_menu(lets[0],
+ 			  want_reply ? PICK_ONE : PICK_NONE,
+ 			  xprname(otmp, (char *)0, lets[0], TRUE, 0L, 0L));
+ 		    if (out_cnt) *out_cnt = -1L;	/* select all */
++#ifdef DUMP_LOG
++		  }
++		  if (want_dump) {
++		    char letbuf[7];
++		    sprintf(letbuf, "  %c - ", lets[0]);
++		    dump(letbuf,
++			 xprname(otmp, (char *)0, lets[0], TRUE, 0L, 0L));
++		  }
++#endif
+ 		    break;
+ 		}
+ 	    }
+ 	    return ret;
+ 	}
+ 
++#ifdef DUMP_LOG
++	if (want_disp)
++#endif
+ 	start_menu(win);
+ nextclass:
+ 	classcount = 0;
+@@ -1763,11 +1818,24 @@
+ 			if (!flags.sortpack || otmp->oclass == *invlet) {
+ 			    if (flags.sortpack && !classcount) {
+ 				any.a_void = 0;		/* zero */
++#ifdef DUMP_LOG
++				if (want_dump)
++				    dump("  ", let_to_name(*invlet, FALSE));
++				if (want_disp)
++#endif
+ 				add_menu(win, NO_GLYPH, &any, 0, 0, iflags.menu_headings,
+ 				    let_to_name(*invlet, FALSE), MENU_UNSELECTED);
+ 				classcount++;
+ 			    }
+ 			    any.a_char = ilet;
++#ifdef DUMP_LOG
++			    if (want_dump) {
++			      char letbuf[7];
++			      sprintf(letbuf, "  %c - ", ilet);
++			      dump(letbuf, doname(otmp));
++			    }
++			    if (want_disp)
++#endif
+ 			    add_menu(win, obj_to_glyph(otmp),
+ 					&any, ilet, 0, ATR_NONE, doname(otmp),
+ 					MENU_UNSELECTED);
+@@ -1783,6 +1851,9 @@
+ 		}
+ #endif
+ 	}
++#ifdef DUMP_LOG
++	if (want_disp) {
++#endif
+ 	end_menu(win, (char *) 0);
+ 
+ 	n = select_menu(win, want_reply ? PICK_ONE : PICK_NONE, &selected);
+@@ -1792,6 +1863,10 @@
+ 	    free((genericptr_t)selected);
+ 	} else
+ 	    ret = !n ? '\0' : '\033';	/* cancelled */
++#ifdef DUMP_LOG
++	} /* want_disp */
++	if (want_dump)  dump("", "");
++#endif
+ 
+ 	return ret;
+ }
+@@ -1808,9 +1883,24 @@
+ register const char *lets;
+ boolean want_reply;
+ {
+-	return display_pickinv(lets, want_reply, (long *)0);
++	return display_pickinv(lets, want_reply, (long *)0
++#ifdef DUMP_LOG
++			       , FALSE , TRUE
++#endif
++	);
+ }
+ 
++#ifdef DUMP_LOG
++/* See display_inventory. This is the same thing WITH dumpfile creation */
++char
++dump_inventory(lets, want_reply, want_disp)
++register const char *lets;
++boolean want_reply, want_disp;
++{
++  return display_pickinv(lets, want_reply, (long *)0, TRUE, want_disp);
++}
++#endif
++
+ /*
+  * Returns the number of unpaid items within the given list.  This includes
+  * contained objects.
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/options.c nethack-3.4.3-dump/src/options.c
+--- nethack-3.4.3/src/options.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/options.c	2011-08-13 15:12:43.000000000 +0300
+@@ -224,6 +224,14 @@
+ 						SET_IN_GAME },
+ 	{ "dogname",  "the name of your (first) dog (e.g., dogname:Fang)",
+ 						PL_PSIZ, DISP_IN_GAME },
++#ifdef DUMP_LOG
++	{ "dumpfile", "where to dump data (e.g., dumpfile:/tmp/dump.nh)",
++#ifdef DUMP_FN
++						PL_PSIZ, DISP_IN_GAME },
++#else
++						PL_PSIZ, SET_IN_GAME },
++#endif
++#endif
+ 	{ "dungeon",  "the symbols to use in drawing the dungeon map",
+ 						MAXDCHARS+1, SET_IN_FILE },
+ 	{ "effects",  "the symbols to use in drawing special effects",
+@@ -1077,6 +1085,19 @@
+ 		return;
+ 	}
+ 
++#ifdef DUMP_LOG
++	fullname = "dumpfile";
++	if (match_optname(opts, fullname, 3, TRUE)) {
++#ifndef DUMP_FN
++		if (negated) bad_negation(fullname, FALSE);
++		else if ((op = string_for_opt(opts, !tfrom_file)) != 0
++			&& strlen(op) > 1)
++			nmcpy(dump_fn, op, PL_PSIZ);
++#endif
++		return;
++       }
++#endif
++
+ 	fullname = "horsename";
+ 	if (match_optname(opts, fullname, 5, TRUE)) {
+ 		if (negated) bad_negation(fullname, FALSE);
+@@ -2933,6 +2954,10 @@
+ 	}
+ 	else if (!strcmp(optname, "dogname")) 
+ 		Sprintf(buf, "%s", dogname[0] ? dogname : none );
++#ifdef DUMP_LOG
++	else if (!strcmp(optname, "dumpfile"))
++		Sprintf(buf, "%s", dump_fn[0] ? dump_fn: none );
++#endif
+ 	else if (!strcmp(optname, "dungeon"))
+ 		Sprintf(buf, "%s", to_be_done);
+ 	else if (!strcmp(optname, "effects"))
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/pline.c nethack-3.4.3-dump/src/pline.c
+--- nethack-3.4.3/src/pline.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/pline.c	2011-08-13 15:12:43.000000000 +0300
+@@ -15,6 +15,11 @@
+ 
+ static char *FDECL(You_buf, (int));
+ 
++#if defined(DUMP_LOG) && defined(DUMPMSGS)
++char msgs[DUMPMSGS][BUFSZ];
++int lastmsg = -1;
++#endif
++
+ /*VARARGS1*/
+ /* Note that these declarations rely on knowledge of the internals
+  * of the variable argument handling stuff in "tradstdc.h"
+@@ -55,6 +60,12 @@
+ 	    Vsprintf(pbuf,line,VA_ARGS);
+ 	    line = pbuf;
+ 	}
++#if defined(DUMP_LOG) && defined(DUMPMSGS)
++	if (DUMPMSGS > 0 && !program_state.gameover) {
++	  lastmsg = (lastmsg + 1) % DUMPMSGS;
++	  strncpy(msgs[lastmsg], line, BUFSZ);
++	}
++#endif
+ 	if (!iflags.window_inited) {
+ 	    raw_print(line);
+ 	    return;
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/spell.c nethack-3.4.3-dump/src/spell.c
+--- nethack-3.4.3/src/spell.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/spell.c	2011-08-13 15:12:43.000000000 +0300
+@@ -1114,6 +1114,35 @@
+ 	return FALSE;
+ }
+ 
++#ifdef DUMP_LOG
++void 
++dump_spells()
++{
++	int i;
++	char buf[BUFSZ];
++
++	if (spellid(0) == NO_SPELL) {
++	    dump("", "You didn't know any spells.");
++	    dump("", "");
++	    return;
++	}
++	dump("", "Spells known in the end");
++
++	Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category");
++	dump("  ",buf);
++	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
++		Sprintf(buf, "%c - %-20s  %2d%s   %-12s %3d%%",
++			spellet(i), spellname(i), spellev(i),
++			spellknow(i) ? " " : "*",
++			spelltypemnemonic(spell_skilltype(spellid(i))),
++			100 - percent_success(i));
++		dump("  ", buf);
++	}
++	dump("","");
++
++} /* dump_spells */
++#endif
++
+ /* Integer square root function without using floating point. */
+ STATIC_OVL int
+ isqrt(val)
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/topten.c nethack-3.4.3-dump/src/topten.c
+--- nethack-3.4.3/src/topten.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/topten.c	2011-08-13 15:12:43.000000000 +0300
+@@ -358,6 +358,12 @@
+ 	      "Since you were in %s mode, the score list will not be checked.",
+ 		    wizard ? "wizard" : "discover");
+ 		topten_print(pbuf);
++#ifdef DUMP_LOG
++		if (dump_fn[0]) {
++		  dump("", pbuf);
++		  dump("", "");
++		}
++#endif
+ 	    }
+ 	    goto showwin;
+ 	}
+@@ -378,6 +384,9 @@
+ 	}
+ 
+ 	HUP topten_print("");
++#ifdef DUMP_LOG
++	dump("", "");
++#endif
+ 
+ 	/* assure minimum number of points */
+ 	if(t0->points < POINTSMIN) t0->points = 0;
+@@ -422,6 +431,10 @@
+ 				    t1->points);
+ 			    topten_print(pbuf);
+ 			    topten_print("");
++#ifdef DUMP_LOG
++			    dump("", pbuf);
++			    dump("", "");
++#endif
+ 			}
+ 		    }
+ 		    if(occ_cnt < 0) {
+@@ -452,17 +465,27 @@
+ 			goto destroywin;
+ 		}
+ #endif	/* UPDATE_RECORD_IN_PLACE */
+-		if(!done_stopprint) if(rank0 > 0){
+-		    if(rank0 <= 10)
++		if(rank0 > 0){
++		    if(rank0 <= 10) {
++			if(!done_stopprint) 
+ 			topten_print("You made the top ten list!");
+-		    else {
++#ifdef DUMP_LOG
++			dump("", "You made the top ten list!");
++#endif
++		    } else {
+ 			char pbuf[BUFSZ];
+ 			Sprintf(pbuf,
+ 			  "You reached the %d%s place on the top %d list.",
+ 				rank0, ordin(rank0), ENTRYMAX);
+-			topten_print(pbuf);
++			if(!done_stopprint) topten_print(pbuf);
++#ifdef DUMP_LOG
++			dump("", pbuf);
++#endif
+ 		    }
+-		    topten_print("");
++		    if(!done_stopprint) topten_print("");
++#ifdef DUMP_LOG
++		    dump("", "");
++#endif
+ 		}
+ 	}
+ 	if(rank0 == 0) rank0 = rank1;
+@@ -475,7 +498,7 @@
+ 		    && rank >= rank0
+ #endif
+ 		) writeentry(rfile, t1);
+-	    if (done_stopprint) continue;
++	    /* if (done_stopprint) continue; */
+ 	    if (rank > flags.end_top &&
+ 		    (rank < rank0 - flags.end_around ||
+ 		     rank > rank0 + flags.end_around) &&
+@@ -488,8 +511,12 @@
+ 		)) continue;
+ 	    if (rank == rank0 - flags.end_around &&
+ 		    rank0 > flags.end_top + flags.end_around + 1 &&
+-		    !flags.end_own)
+-		topten_print("");
++		    !flags.end_own) {
++		if(!done_stopprint) topten_print("");
++#ifdef DUMP_LOG
++		dump("", "");
++#endif
++	    }
+ 	    if(rank != rank0)
+ 		outentry(rank, t1, FALSE);
+ 	    else if(!rank1)
+@@ -546,7 +573,10 @@
+ 	bp = eos(linebuf);
+ 	while(bp < linebuf + COLNO - 9) *bp++ = ' ';
+ 	Strcpy(bp, "Hp [max]");
+-	topten_print(linebuf);
++	if(!done_stopprint) topten_print(linebuf);
++#ifdef DUMP_LOG
++	dump("", linebuf);
++#endif
+ }
+ 
+ /* so>0: standout line; so=0: ordinary line */
+@@ -664,9 +694,16 @@
+ 	    if (so) {
+ 		while (bp < linebuf + (COLNO-1)) *bp++ = ' ';
+ 		*bp = 0;
+-		topten_print_bold(linebuf);
+-	    } else
+-		topten_print(linebuf);
++		if(!done_stopprint) topten_print_bold(linebuf);
++#ifdef DUMP_LOG
++		dump("*", linebuf[0]==' '? linebuf+1: linebuf);
++#endif
++	    } else {
++		if(!done_stopprint) topten_print(linebuf);
++#ifdef DUMP_LOG
++		dump(" ", linebuf[0]==' '? linebuf+1: linebuf);
++#endif
++	    }
+ 	    Sprintf(linebuf, "%15s %s", "", linebuf3);
+ 	    lngr = strlen(linebuf);
+ 	}
+@@ -688,9 +725,12 @@
+ 	    if (so >= COLNO) so = COLNO-1;
+ 	    while (bp < linebuf + so) *bp++ = ' ';
+ 	    *bp = 0;
+-	    topten_print_bold(linebuf);
++	    if(!done_stopprint) topten_print_bold(linebuf);
+ 	} else
+-	    topten_print(linebuf);
++	    if(!done_stopprint) topten_print(linebuf);
++#ifdef DUMP_LOG
++	dump(" ", linebuf[0]==' '? linebuf+1: linebuf);
++#endif
+ }
+ 
+ STATIC_OVL int
+diff -bNurdX diff_ign.txt nethack-3.4.3/src/weapon.c nethack-3.4.3-dump/src/weapon.c
+--- nethack-3.4.3/src/weapon.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-dump/src/weapon.c	2011-08-13 15:12:43.000000000 +0300
+@@ -9,6 +9,10 @@
+  */
+ #include "hack.h"
+ 
++#ifdef DUMP_LOG
++STATIC_DCL int FDECL(enhance_skill, (boolean));
++#endif
++
+ /* Categories whose names don't come from OBJ_NAME(objects[type])
+  */
+ #define PN_BARE_HANDED			(-1)	/* includes martial arts */
+@@ -851,6 +855,23 @@
+  */
+ int
+ enhance_weapon_skill()
++#ifdef DUMP_LOG
++{
++	return enhance_skill(FALSE);
++}
++
++void dump_weapon_skill()
++{
++	enhance_skill(TRUE);
++}
++
++int enhance_skill(boolean want_dump)
++/* This is the original enhance_weapon_skill() function slightly modified
++ * to write the skills to the dump file. I added the wrapper functions just
++ * because it looked like the easiest way to add a parameter to the
++ * function call. - Jukka Lahtinen, August 2001
++ */
++#endif
+ {
+     int pass, i, n, len, longest,
+ 	to_advance, eventually_advance, maxxed_cnt;
+@@ -860,8 +881,15 @@
+     anything any;
+     winid win;
+     boolean speedy = FALSE;
++#ifdef DUMP_LOG
++    char buf2[BUFSZ];
++    boolean logged;
++#endif
+ 
+ #ifdef WIZARD
++#ifdef DUMP_LOG
++	if (!want_dump)
++#endif
+ 	if (wizard && yn("Advance skills without practice?") == 'y')
+ 	    speedy = TRUE;
+ #endif
+@@ -878,6 +906,11 @@
+ 		else if (peaked_skill(i)) maxxed_cnt++;
+ 	    }
+ 
++#ifdef DUMP_LOG
++	    if (want_dump)
++		dump("","Your skills at the end");
++	    else {
++#endif
+ 	    win = create_nhwindow(NHW_MENU);
+ 	    start_menu(win);
+ 
+@@ -905,6 +938,9 @@
+ 		add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,
+ 			     "", MENU_UNSELECTED);
+ 	    }
++#ifdef DUMP_LOG
++	    } /* want_dump or not */
++#endif
+ 
+ 	    /* List the skills, making ones that could be advanced
+ 	       selectable.  List the miscellaneous skills first.
+@@ -916,8 +952,26 @@
+ 		/* Print headings for skill types */
+ 		any.a_void = 0;
+ 		if (i == skill_ranges[pass].first)
++#ifdef DUMP_LOG
++		if (want_dump) {
++		    dump("  ",(char *)skill_ranges[pass].name);
++		    logged=FALSE;
++		} else
++#endif
+ 		    add_menu(win, NO_GLYPH, &any, 0, 0, iflags.menu_headings,
+ 			     skill_ranges[pass].name, MENU_UNSELECTED);
++#ifdef DUMP_LOG
++		if (want_dump) {
++		    if (P_SKILL(i) > P_UNSKILLED) {
++		 	Sprintf(buf2,"%-*s [%s]",
++			    longest, P_NAME(i),skill_level_name(i, buf));
++			dump("    ",buf2);
++			logged=TRUE;
++		    } else if (i == skill_ranges[pass].last && !logged) {
++			dump("    ","(none)");
++		    }
++               } else {
++#endif
+ 
+ 		if (P_RESTRICTED(i)) continue;
+ 		/*
+@@ -962,6 +1016,9 @@
+ 		any.a_int = can_advance(i, speedy) ? i+1 : 0;
+ 		add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,
+ 			 buf, MENU_UNSELECTED);
++#ifdef DUMP_LOG
++		} /* !want_dump */
++#endif
+ 	    }
+ 
+ 	    Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" :
+@@ -971,6 +1028,12 @@
+ 		Sprintf(eos(buf), "  (%d slot%s available)",
+ 			u.weapon_slots, plur(u.weapon_slots));
+ #endif
++#ifdef DUMP_LOG
++	    if (want_dump) {
++		dump("","");
++		n=0;
++	    } else {
++#endif
+ 	    end_menu(win, buf);
+ 	    n = select_menu(win, to_advance ? PICK_ONE : PICK_NONE, &selected);
+ 	    destroy_nhwindow(win);
+@@ -987,6 +1050,9 @@
+ 		    }
+ 		}
+ 	    }
++#ifdef DUMP_LOG
++	    }
++#endif
+ 	} while (speedy && n > 0);
+ 	return 0;
+ }
+diff -bNurdX diff_ign.txt nethack-3.4.3/win/tty/wintty.c nethack-3.4.3-dump/win/tty/wintty.c
+--- nethack-3.4.3/win/tty/wintty.c	2003-12-08 01:39:14.000000000 +0200
++++ nethack-3.4.3-dump/win/tty/wintty.c	2011-08-13 15:12:43.000000000 +0300
+@@ -162,7 +162,7 @@
+ STATIC_DCL void FDECL(process_menu_window, (winid,struct WinDesc *));
+ STATIC_DCL void FDECL(process_text_window, (winid,struct WinDesc *));
+ STATIC_DCL tty_menu_item *FDECL(reverse, (tty_menu_item *));
+-STATIC_DCL const char * FDECL(compress_str, (const char *));
++const char * FDECL(compress_str, (const char *));
+ STATIC_DCL void FDECL(tty_putsym, (winid, int, int, CHAR_P));
+ static char *FDECL(copy_of, (const char *));
+ STATIC_DCL void FDECL(bail, (const char *));	/* __attribute__((noreturn)) */
+@@ -1722,7 +1722,7 @@
+ }
+ 
+ 
+-STATIC_OVL const char*
++const char*
+ compress_str(str)
+ const char *str;
+ {

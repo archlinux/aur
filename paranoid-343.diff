@@ -1,0 +1,321 @@
+diff -urd nethack-3.4.3/dat/opthelp nethack-3.4.3-paranoid/dat/opthelp
+--- nethack-3.4.3/dat/opthelp	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/dat/opthelp	2011-08-14 11:14:54.000000000 +0300
+@@ -61,6 +61,15 @@
+ Boolean option if MFLOPPY was set at compile time:
+ checkspace check free disk space before writing files to disk     [TRUE]
+ 
++Boolean option if PARANOID was set at compile time:
++paranoid_hit   ask for explicit 'yes' when hitting peacefuls      [FALSE]
++
++Boolean option if PARANOID was set at compile time:
++paranoid_quit  ask for explicit 'yes' when quitting               [FALSE]
++
++Boolean option if PARANOID was set at compile time:
++paranoid_remove always show menu with the T and R commands        [FALSE]
++
+ Boolean option if EXP_ON_BOTL was set at compile time:
+ showexp    display your accumulated experience points             [FALSE]
+ 
+diff -urd nethack-3.4.3/doc/Guidebook.mn nethack-3.4.3-paranoid/doc/Guidebook.mn
+--- nethack-3.4.3/doc/Guidebook.mn	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/doc/Guidebook.mn	2011-08-14 11:14:54.000000000 +0300
+@@ -2027,6 +2027,15 @@
+ The value of this option should be a string containing the
+ symbols for the various object types.  Any omitted types are filled in
+ at the end from the previous order.
++.lp paranoid_hit
++If true, asks you to type the word ``yes'' when hitting any peaceful
++monster, not just the letter ``y''.
++.lp paranoid_quit
++If true, asks you to type the word ``yes'' when quitting or entering
++Explore mode, not just the letter ``y''.
++.lp paranoid_remove
++If true, always show menu with the R and T commands even when there is
++only one item to remove or take off.
+ .lp perm_invent
+ If true, always display your current inventory in a window.  This only
+ makes sense for windowing system interfaces that implement this feature.
+diff -urd nethack-3.4.3/doc/Guidebook.tex nethack-3.4.3-paranoid/doc/Guidebook.tex
+--- nethack-3.4.3/doc/Guidebook.tex	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/doc/Guidebook.tex	2011-08-14 11:14:54.000000000 +0300
+@@ -2486,6 +2486,18 @@
+ containing the symbols for the various object types.  Any omitted types
+ are filled in at the end from the previous order.
+ %.lp
++\item[\ib{paranoid\_hit}]
++If true, asks you to type the word ``yes'' when hitting any peaceful
++monster, not just the letter ``y''.
++%.lp
++\item[\ib{paranoid\_quit}]
++If true, asks you to type the word ``yes'' when quitting or entering
++Explore mode, not just the letter ``y''.
++%.lp
++\item[\ib{paranoid\_remove}]
++If true, always show menu with the R and T commands even when there is
++only one item to remove or take off.
++%.lp
+ \item[\ib{perm\_invent}]
+ If true, always display your current inventory in a window.  This only
+ makes sense for windowing system interfaces that implement this feature.
+diff -urd nethack-3.4.3/doc/Guidebook.txt nethack-3.4.3-paranoid/doc/Guidebook.txt
+--- nethack-3.4.3/doc/Guidebook.txt	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/doc/Guidebook.txt	2011-08-14 11:14:54.000000000 +0300
+@@ -2607,6 +2607,18 @@
+             Any  omitted  types  are filled in at the end from the previous
+             order.
+ 
++          paranoid_hit
++            If true, asks you to type the word ``yes'' when hitting any
++            peaceful monster, not just the letter ``y''.
++
++          paranoid_quit
++            If true, asks you  to type the word ``yes'' when quitting or
++            entering Explore mode, not just the letter ``y''.
++
++          paranoid_remove
++            If true, always show menu with the R and T commands even when
++	    there is only one item to remove or take off.
++
+           perm_invent
+             If true, always display your current  inventory  in  a  window.
+             This  only makes sense for windowing system interfaces that im-
+diff -urd nethack-3.4.3/include/flag.h nethack-3.4.3-paranoid/include/flag.h
+--- nethack-3.4.3/include/flag.h	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/include/flag.h	2011-08-14 11:14:54.000000000 +0300
+@@ -216,6 +216,11 @@
+ 	boolean lan_mail;	/* mail is initialized */
+ 	boolean lan_mail_fetched; /* mail is awaiting display */
+ #endif
++#ifdef PARANOID
++	boolean  paranoid_hit;  /* Ask for 'yes' when hitting peacefuls */
++	boolean  paranoid_quit; /* Ask for 'yes' when quitting */
++	boolean  paranoid_remove; /* Always show menu for 'T' and 'R' */
++#endif
+ /*
+  * Window capability support.
+  */
+diff -urd nethack-3.4.3/src/cmd.c nethack-3.4.3-paranoid/src/cmd.c
+--- nethack-3.4.3/src/cmd.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/src/cmd.c	2011-08-14 11:14:54.000000000 +0300
+@@ -478,9 +478,26 @@
+ STATIC_PTR int
+ enter_explore_mode()
+ {
++#ifdef PARANOID
++	char buf[BUFSZ];
++	int really_xplor = FALSE;
++#endif
+ 	if(!discover && !wizard) {
+ 		pline("Beware!  From explore mode there will be no return to normal game.");
++#ifdef PARANOID
++		if (iflags.paranoid_quit) {
++		  getlin ("Do you want to enter explore mode? [yes/no]?",buf);
++		  (void) lcase (buf);
++		  if (!(strcmp (buf, "yes"))) really_xplor = TRUE;
++		} else {
++		  if (yn("Do you want to enter explore mode?") == 'y') {
++		    really_xplor = TRUE;
++		  }
++		}
++		if (really_xplor) {
++#else
+ 		if (yn("Do you want to enter explore mode?") == 'y') {
++#endif
+ 			clear_nhwindow(WIN_MESSAGE);
+ 			You("are now in non-scoring explore mode.");
+ 			discover = TRUE;
+diff -urd nethack-3.4.3/src/do_wear.c nethack-3.4.3-paranoid/src/do_wear.c
+--- nethack-3.4.3/src/do_wear.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/src/do_wear.c	2011-08-14 11:14:54.000000000 +0300
+@@ -1078,7 +1078,11 @@
+ 			  "  Use 'R' command to remove accessories." : "");
+ 		return 0;
+ 	}
+-	if (armorpieces > 1)
++	if (armorpieces > 1
++#ifdef PARANOID
++	    || iflags.paranoid_remove
++#endif
++	    )
+ 		otmp = getobj(clothes, "take off");
+ 	if (otmp == 0) return(0);
+ 	if (!(otmp->owornmask & W_ARMOR)) {
+@@ -1128,7 +1132,11 @@
+ 		      "  Use 'T' command to take off armor." : "");
+ 		return(0);
+ 	}
+-	if (Accessories != 1) otmp = getobj(accessories, "remove");
++	if (Accessories != 1
++#ifdef PARANOID
++	    || iflags.paranoid_remove
++#endif
++	    ) otmp = getobj(accessories, "remove");
+ 	if(!otmp) return(0);
+ 	if(!(otmp->owornmask & (W_RING | W_AMUL | W_TOOL))) {
+ 		You("are not wearing that.");
+diff -urd nethack-3.4.3/src/end.c nethack-3.4.3-paranoid/src/end.c
+--- nethack-3.4.3/src/end.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/src/end.c	2011-08-14 11:14:54.000000000 +0300
+@@ -112,7 +112,21 @@
+ int
+ done2()
+ {
++#ifdef PARANOID
++	char buf[BUFSZ];
++	int really_quit = FALSE;
++
++	if (iflags.paranoid_quit) {
++	  getlin ("Really quit [yes/no]?",buf);
++	  (void) lcase (buf);
++	  if (!(strcmp (buf, "yes"))) really_quit = TRUE;
++	} else {
++	  if(yn("Really quit?") == 'y') really_quit = TRUE;
++	}
++	if (!really_quit) {
++#else /* PARANOID */
+ 	if(yn("Really quit?") == 'n') {
++#endif /* PARANOID */
+ #ifndef NO_SIGNAL
+ 		(void) signal(SIGINT, (SIG_RET_TYPE) done1);
+ #endif
+@@ -536,6 +550,10 @@
+ done(how)
+ int how;
+ {
++#if defined(WIZARD) && defined(PARANOID)
++	char paranoid_buf[BUFSZ];
++	int really_bon = TRUE;
++#endif
+ 	boolean taken;
+ 	char kilbuf[BUFSZ], pbuf[BUFSZ];
+ 	winid endwin = WIN_ERR;
+@@ -725,8 +743,18 @@
+ 
+ 	if (bones_ok) {
+ #ifdef WIZARD
++# ifdef PARANOID
++	    if(wizard) {
++		getlin("Save WIZARD MODE bones? [no/yes]", paranoid_buf);
++		(void) lcase (paranoid_buf);
++		if (strcmp (paranoid_buf, "yes"))
++		  really_bon = FALSE;
++            }
++            if(really_bon)
++# else
+ 	    if (!wizard || yn("Save bones?") == 'y')
+-#endif
++#endif /* PARANOID */
++#endif /* WIZARD */
+ 		savebones(corpse);
+ 	    /* corpse may be invalid pointer now so
+ 		ensure that it isn't used again */
+diff -urd nethack-3.4.3/src/options.c nethack-3.4.3-paranoid/src/options.c
+--- nethack-3.4.3/src/options.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/src/options.c	2011-08-14 11:14:54.000000000 +0300
+@@ -143,6 +143,11 @@
+ #else
+ 	{"page_wait", (boolean *)0, FALSE, SET_IN_FILE},
+ #endif
++#ifdef PARANOID
++	{"paranoid_hit", &iflags.paranoid_hit, FALSE, SET_IN_GAME},
++	{"paranoid_quit", &iflags.paranoid_quit, FALSE, SET_IN_GAME},
++	{"paranoid_remove", &iflags.paranoid_remove, FALSE, SET_IN_GAME},
++#endif
+ 	{"perm_invent", &flags.perm_invent, FALSE, SET_IN_GAME},
+ 	{"popup_dialog",  &iflags.wc_popup_dialog, FALSE, SET_IN_GAME},	/*WC*/
+ 	{"prayconfirm", &flags.prayconfirm, TRUE, SET_IN_GAME},
+diff -urd nethack-3.4.3/src/potion.c nethack-3.4.3-paranoid/src/potion.c
+--- nethack-3.4.3/src/potion.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/src/potion.c	2011-08-14 11:15:12.000000000 +0300
+@@ -1527,6 +1527,9 @@
+ 	register struct obj *potion, *obj;
+ 	struct obj *singlepotion;
+ 	const char *tmp;
++#ifdef PARANOID
++	char *objname;
++#endif
+ 	uchar here;
+ 	char allowall[2];
+ 	short mixture;
+@@ -1537,15 +1540,27 @@
+ 		return(0);
+ 
+ 	here = levl[u.ux][u.uy].typ;
++#ifdef PARANOID
++	objname = the(xname(obj));
++#endif
+ 	/* Is there a fountain to dip into here? */
+ 	if (IS_FOUNTAIN(here)) {
++#ifdef PARANOID
++		Sprintf(qbuf, "Dip %s into the fountain?", strlen(objname) < 50? objname: "it");
++		if(yn(qbuf) == 'y') {
++#else
+ 		if(yn("Dip it into the fountain?") == 'y') {
++#endif
+ 			dipfountain(obj);
+ 			return(1);
+ 		}
+ 	} else if (is_pool(u.ux,u.uy)) {
+ 		tmp = waterbody_name(u.ux,u.uy);
++#ifdef PARANOID
++		Sprintf(qbuf, "Dip %s into the %s?", strlen(objname)+strlen(tmp) < 50? objname: "it", tmp);
++#else
+ 		Sprintf(qbuf, "Dip it into the %s?", tmp);
++#endif
+ 		if (yn(qbuf) == 'y') {
+ 		    if (Levitation) {
+ 			floating_above(tmp);
+@@ -1562,7 +1577,12 @@
+ 		}
+ 	}
+ 
++#ifdef PARANOID
++	Sprintf(qbuf, "dip %s into", strlen(objname) < 50? objname: "it");
++	if(!(potion = getobj(beverages, qbuf)))
++#else
+ 	if(!(potion = getobj(beverages, "dip into")))
++#endif
+ 		return(0);
+ 	if (potion == obj && potion->quan == 1L) {
+ 		pline("That is a potion bottle, not a Klein bottle!");
+diff -urd nethack-3.4.3/src/uhitm.c nethack-3.4.3-paranoid/src/uhitm.c
+--- nethack-3.4.3/src/uhitm.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-paranoid/src/uhitm.c	2011-08-14 11:14:54.000000000 +0300
+@@ -99,6 +99,9 @@
+ struct obj *wep;	/* uwep for attack(), null for kick_monster() */
+ {
+ 	char qbuf[QBUFSZ];
++#ifdef PARANOID
++	char buf[BUFSZ];
++#endif
+ 
+ 	/* if you're close enough to attack, alert any waiting monster */
+ 	mtmp->mstrategy &= ~STRAT_WAITMASK;
+@@ -199,11 +202,26 @@
+ 			return(FALSE);
+ 		}
+ 		if (canspotmon(mtmp)) {
++#ifdef PARANOID
++			Sprintf(qbuf, "Really attack %s? [no/yes]",
++				mon_nam(mtmp));
++			if (iflags.paranoid_hit) {
++				getlin (qbuf, buf);
++				(void) lcase (buf);
++				if (strcmp (buf, "yes")) {
++				  flags.move = 0;
++				  return(TRUE);
++				}
++			} else {
++#endif
+ 			Sprintf(qbuf, "Really attack %s?", mon_nam(mtmp));
+ 			if (yn(qbuf) != 'y') {
+ 				flags.move = 0;
+ 				return(TRUE);
+ 			}
++#ifdef PARANOID
++			}
++#endif
+ 		}
+ 	}
+ 

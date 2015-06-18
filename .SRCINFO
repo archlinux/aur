@@ -1,0 +1,34 @@
+pkgbase = nethack-patch
+	pkgdesc = A single player dungeon exploration game patched with UI enhancements
+	pkgver = 3.4.3
+	pkgrel = 8
+	url = http://www.nethack.org/index.html
+	install = nethack.install
+	arch = i686
+	arch = x86_64
+	license = custom: nethack
+	makedepends = flex
+	makedepends = bison
+	depends = ncurses
+	depends = gzip
+	provides = nethack=3.4.3
+	conflicts = nethack
+	backup = usr/share/nethack/record
+	backup = usr/share/nethack/logfile
+	source = http://downloads.sourceforge.net/nethack/nethack-343-src.tgz
+	source = nh343-menucolor.diff
+	source = hpmon.diff
+	source = dump-343.diff
+	source = sortloot-343d.diff
+	source = paranoid-343.diff
+	source = nethack-3.4.3-gray-1.diff
+	md5sums = 21479c95990eefe7650df582426457f9
+	md5sums = ade00f9cb51f1b0140557d329d56844c
+	md5sums = a8e5cab6a93100612d428f3973dc418f
+	md5sums = e61887eed94ecf4d3233bc6bc04bd7b5
+	md5sums = 4b0e68547c081b0ca2204b9b7019459c
+	md5sums = 8c9aeefd18faa754b32efa3fd09f7b19
+	md5sums = 4d2576ef824b756b2b28ac333fb77535
+
+pkgname = nethack-patch
+

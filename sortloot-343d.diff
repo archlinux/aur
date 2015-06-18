@@ -1,0 +1,531 @@
+diff -urd nethack-3.4.3-extborn/dat/opthelp nethack-3.4.3-sortloot/dat/opthelp
+--- nethack-3.4.3-extborn/dat/opthelp	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/dat/opthelp	2011-08-14 10:41:39.000000000 +0300
+@@ -127,6 +127,11 @@
+ scores        the parts of the score list you wish to see when the game ends
+               You choose a combination of top scores, scores around the top
+               scores, and all of your own scores.  [!own/3 top/2 around]
++sortloot      controls the sortloot patch [none]:
++              full -- All pickup lists of items are sorted by item description
++              loot -- When inventory letters are shown, has no effect.
++                      Otherwise sorts by description
++              none -- Works the traditional way, like without the patch
+ suppress_alert disable various version-specific warnings about changes
+               in game play or the user interface, such as notification given
+               for the 'Q' command that quitting is now done via #quit
+diff -urd nethack-3.4.3-extborn/doc/Guidebook.mn nethack-3.4.3-sortloot/doc/Guidebook.mn
+--- nethack-3.4.3-extborn/doc/Guidebook.mn	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/doc/Guidebook.mn	2011-08-14 10:41:39.000000000 +0300
+@@ -2108,6 +2108,18 @@
+ Show your approximate accumulated score on bottom line (default off).
+ .lp "silent  "
+ Suppress terminal beeps (default on).
++.lp sortloot
++Controls the behavior of the sortloot patch that sorts pickup lists for
++inventory and #loot commands and some others.
++The possible values are:
++.sd
++.si
++full - always sort the lists;
++loot - only sort the lists that don't use inventory
++       letters, like with the #loot and pickup commands;
++none - show lists the traditional way without sorting.
++.ei
++.ed
+ .lp sortpack
+ Sort the pack contents by type when displaying inventory (default on).
+ .lp sound
+diff -urd nethack-3.4.3-extborn/doc/Guidebook.tex nethack-3.4.3-sortloot/doc/Guidebook.tex
+--- nethack-3.4.3-extborn/doc/Guidebook.tex	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/doc/Guidebook.tex	2011-08-14 10:41:39.000000000 +0300
+@@ -2585,6 +2585,21 @@
+ \item[\ib{silent}]
+ Suppress terminal beeps (default on).
+ %.lp
++\item[\ib{sortloot}]
++Controls the behavior of the sortloot patch that sorts pickup lists for
++inventory and \#loot commands and some others.
++
++The possible values are:
++%.sd
++%.si
++{\tt full} --- always sort the lists;\\
++{\tt loot} --- only sort the lists that don't use inventory
++       letters, like with the \#loot and pickup commands;\\
++{\tt none} --- show lists the traditional way without sorting.
++%.ei
++%.ed
++%.lp
++The default is 'none', the way an unpatched game works.
+ \item[\ib{sortpack}]
+ Sort the pack contents by type when displaying inventory (default on).
+ %.lp
+diff -urd nethack-3.4.3-extborn/doc/Guidebook.txt nethack-3.4.3-sortloot/doc/Guidebook.txt
+--- nethack-3.4.3-extborn/doc/Guidebook.txt	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/doc/Guidebook.txt	2011-08-14 10:41:39.000000000 +0300
+@@ -2735,6 +2735,18 @@
+           silent
+             Suppress terminal beeps (default on).
+ 
++          sortloot
++            Controls the behavior of the sortloot patch that sorts
++            pickup lists for inventory and #loot commands and some
++            others.
++            The possible values are:
++
++                 full - always sort the lists
++                 loot - only sort the lists that don't use inventory
++                        letters, like with the #loot and pickup commands
++                 none - show lists the traditional way without sorting
++            The default is 'none', the way an unpatched game works.
++
+           sortpack
+             Sort the pack contents by type when displaying  inventory  (de-
+             fault on).
+diff -urd nethack-3.4.3-extborn/include/extern.h nethack-3.4.3-sortloot/include/extern.h
+--- nethack-3.4.3-extborn/include/extern.h	2011-08-13 15:13:25.000000000 +0300
++++ nethack-3.4.3-sortloot/include/extern.h	2011-08-14 10:41:39.000000000 +0300
+@@ -1379,6 +1379,9 @@
+ E boolean FDECL(not_fully_identified, (struct obj *));
+ E char *FDECL(corpse_xname, (struct obj *,BOOLEAN_P));
+ E char *FDECL(cxname, (struct obj *));
++#ifdef SORTLOOT
++E char *FDECL(cxname2, (struct obj *));
++#endif
+ E char *FDECL(killer_xname, (struct obj *));
+ E const char *FDECL(singular, (struct obj *,char *(*)(OBJ_P)));
+ E char *FDECL(an, (const char *));
+diff -urd nethack-3.4.3-extborn/include/flag.h nethack-3.4.3-sortloot/include/flag.h
+--- nethack-3.4.3-extborn/include/flag.h	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/include/flag.h	2011-08-14 10:41:39.000000000 +0300
+@@ -219,6 +219,9 @@
+ #ifdef SHOW_BORN
+ 	boolean show_born;	/* show numbers of created monsters */
+ #endif
++#ifdef SORTLOOT
++	char sortloot;          /* sort items to loot alphabetically */
++#endif
+ /*
+  * Window capability support.
+  */
+diff -urd nethack-3.4.3-extborn/src/end.c nethack-3.4.3-sortloot/src/end.c
+--- nethack-3.4.3-extborn/src/end.c	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/src/end.c	2011-08-14 10:41:39.000000000 +0300
+@@ -1104,6 +1104,11 @@
+ /* The original container_contents function */
+ {
+ 	register struct obj *box, *obj;
++#ifdef SORTLOOT
++	struct obj **oarray;
++	int i,j,n;
++	char *invlet;
++#endif /* SORTLOOT */
+ 	char buf[BUFSZ];
+ 
+ 	for (box = list; box; box = box->nobj) {
+@@ -1116,6 +1121,40 @@
+ 		    if (want_disp)
+ #endif
+ 		    tmpwin = create_nhwindow(NHW_MENU);
++#ifdef SORTLOOT
++		    /* count the number of items */
++		    for (n = 0, obj = box->cobj; obj; obj = obj->nobj) n++;
++		    /* Make a temporary array to store the objects sorted */
++		    oarray = (struct obj **) alloc(n*sizeof(struct obj*));
++
++		    /* Add objects to the array */
++		    i = 0;
++		    invlet = flags.inv_order;
++		nextclass:
++		    for (obj = box->cobj; obj; obj = obj->nobj) {
++                      if (!flags.sortpack || obj->oclass == *invlet) {
++			if (iflags.sortloot == 'f'
++			    || iflags.sortloot == 'l') {
++			  /* Insert object at correct index */
++			  for (j = i; j; j--) {
++			    if (strcmpi(cxname2(obj), cxname2(oarray[j-1]))>0
++			    || (flags.sortpack &&
++				oarray[j-1]->oclass != obj->oclass))
++			      break;
++			    oarray[j] = oarray[j-1];
++			  }
++			  oarray[j] = obj;
++			  i++;
++			} else {
++			  /* Just add it to the array */
++			  oarray[i++] = obj;
++			}
++		      }
++		    } /* for loop */
++		    if (flags.sortpack) {
++		      if (*++invlet) goto nextclass;
++		    }
++#endif /* SORTLOOT */
+ 		    Sprintf(buf, "Contents of %s:", the(xname(box)));
+ #ifdef DUMP_LOG
+ 		    if (want_disp) {
+@@ -1126,7 +1165,12 @@
+ 		    }
+ 		    if (dump_fp) dump("", buf);
+ #endif
++#ifdef SORTLOOT
++		    for (i = 0; i < n; i++) {
++		      obj = oarray[i];
++#else
+ 		    for (obj = box->cobj; obj; obj = obj->nobj) {
++#endif
+ 			if (identified) {
+ 			    makeknown(obj->otyp);
+ 			    obj->known = obj->bknown =
+diff -urd nethack-3.4.3-extborn/src/invent.c nethack-3.4.3-sortloot/src/invent.c
+--- nethack-3.4.3-extborn/src/invent.c	2011-08-13 15:12:43.000000000 +0300
++++ nethack-3.4.3-sortloot/src/invent.c	2011-08-14 10:41:39.000000000 +0300
+@@ -1715,6 +1715,10 @@
+ #endif
+ {
+ 	struct obj *otmp;
++#ifdef SORTLOOT
++	struct obj **oarray;
++	int i, j;
++#endif
+ 	char ilet, ret;
+ 	char *invlet = flags.inv_order;
+ 	int n, classcount;
+@@ -1805,6 +1809,33 @@
+ 	    return ret;
+ 	}
+ 
++#ifdef SORTLOOT
++	/* count the number of items */
++	for (n = 0, otmp = invent; otmp; otmp = otmp->nobj)
++	  if(!lets || !*lets || index(lets, otmp->invlet)) n++;
++
++	/* Make a temporary array to store the objects sorted */
++	oarray = (struct obj **)alloc(n*sizeof(struct obj*));
++
++	/* Add objects to the array */
++	i = 0;
++	for(otmp = invent; otmp; otmp = otmp->nobj)
++	  if(!lets || !*lets || index(lets, otmp->invlet)) {
++	    if (iflags.sortloot == 'f') {
++	      /* Insert object at correct index */
++	      for (j = i; j; j--) {
++		if (strcmpi(cxname2(otmp), cxname2(oarray[j-1]))>0) break;
++		oarray[j] = oarray[j-1];
++	      }
++	      oarray[j] = otmp;
++	      i++;
++	    } else {
++	      /* Just add it to the array */
++	      oarray[i++] = otmp;
++	    }
++	  }
++#endif /* SORTLOOT */
++
+ #ifdef DUMP_LOG
+ 	if (want_disp)
+ #endif
+@@ -1812,6 +1843,37 @@
+ nextclass:
+ 	classcount = 0;
+ 	any.a_void = 0;		/* set all bits to zero */
++#ifdef SORTLOOT
++	for(i = 0; i < n; i++) {
++	  otmp = oarray[i];
++	  ilet = otmp->invlet;
++	  if (!flags.sortpack || otmp->oclass == *invlet) {
++	    if (flags.sortpack && !classcount) {
++	      any.a_void = 0;             /* zero */
++#ifdef DUMP_LOG
++	      if (want_dump)
++		dump("  ", let_to_name(*invlet, FALSE));
++	      if (want_disp)
++#endif
++	      add_menu(win, NO_GLYPH, &any, 0, 0, iflags.menu_headings,
++		       let_to_name(*invlet, FALSE), MENU_UNSELECTED);
++	      classcount++;
++	    }
++	    any.a_char = ilet;
++#ifdef DUMP_LOG
++	    if (want_dump) {
++	      char letbuf[7];
++	      sprintf(letbuf, "  %c - ", ilet);
++	      dump(letbuf, doname(otmp));
++	    }
++	    if (want_disp)
++#endif
++	    add_menu(win, obj_to_glyph(otmp),
++		     &any, ilet, 0, ATR_NONE, doname(otmp),
++		     MENU_UNSELECTED);
++	  }
++	}
++#else /* SORTLOOT */
+ 	for(otmp = invent; otmp; otmp = otmp->nobj) {
+ 		ilet = otmp->invlet;
+ 		if(!lets || !*lets || index(lets, ilet)) {
+@@ -1842,6 +1904,7 @@
+ 			}
+ 		}
+ 	}
++#endif /* SORTLOOT */
+ 	if (flags.sortpack) {
+ 		if (*++invlet) goto nextclass;
+ #ifdef WIZARD
+@@ -1851,6 +1914,9 @@
+ 		}
+ #endif
+ 	}
++#ifdef SORTLOOT
++	free(oarray);
++#endif
+ #ifdef DUMP_LOG
+ 	if (want_disp) {
+ #endif
+diff -urd nethack-3.4.3-extborn/src/objnam.c nethack-3.4.3-sortloot/src/objnam.c
+--- nethack-3.4.3-extborn/src/objnam.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-sortloot/src/objnam.c	2011-08-14 10:41:39.000000000 +0300
+@@ -15,6 +15,9 @@
+ #endif
+ static char *NDECL(nextobuf);
+ static void FDECL(add_erosion_words, (struct obj *, char *));
++#ifdef SORTLOOT
++char * FDECL(xname2, (struct obj *, boolean));
++#endif
+ 
+ struct Jitem {
+ 	int item;
+@@ -233,6 +236,15 @@
+ char *
+ xname(obj)
+ register struct obj *obj;
++#ifdef SORTLOOT
++{
++	return xname2(obj, FALSE);
++}
++char *
++xname2(obj, ignore_oquan)
++register struct obj *obj;
++boolean ignore_oquan;
++#endif
+ {
+ 	register char *buf;
+ 	register int typ = obj->otyp;
+@@ -469,6 +481,9 @@
+ 	default:
+ 		Sprintf(buf,"glorkum %d %d %d", obj->oclass, typ, obj->spe);
+ 	}
++#ifdef SORTLOOT
++	if (!ignore_oquan)
++#endif
+ 	if (obj->quan != 1L) Strcpy(buf, makeplural(buf));
+ 
+ 	if (obj->onamelth && obj->dknown) {
+@@ -853,6 +868,16 @@
+ 	    return corpse_xname(obj, FALSE);
+ 	return xname(obj);
+ }
++#ifdef SORTLOOT
++char *
++cxname2(obj)
++struct obj *obj;
++{
++	if (obj->otyp == CORPSE)
++	    return corpse_xname(obj, TRUE);
++	return xname2(obj, TRUE);
++}
++#endif /* SORTLOOT */
+ 
+ /* treat an object as fully ID'd when it might be used as reason for death */
+ char *
+diff -urd nethack-3.4.3-extborn/src/options.c nethack-3.4.3-sortloot/src/options.c
+--- nethack-3.4.3-extborn/src/options.c	2011-08-13 16:05:20.000000000 +0300
++++ nethack-3.4.3-sortloot/src/options.c	2011-08-14 10:41:39.000000000 +0300
+@@ -317,6 +317,9 @@
+ 	{ "scroll_amount", "amount to scroll map when scroll_margin is reached",
+ 						20, DISP_IN_GAME }, /*WC*/
+ 	{ "scroll_margin", "scroll map when this far from the edge", 20, DISP_IN_GAME }, /*WC*/
++#ifdef SORTLOOT
++	{ "sortloot", "sort object selection lists by description", 4, SET_IN_GAME },
++#endif
+ #ifdef MSDOS
+ 	{ "soundcard", "type of sound card to use", 20, SET_IN_FILE },
+ #endif
+@@ -543,6 +546,10 @@
+ 	flags.warnlevel = 1;
+ 	flags.warntype = 0L;
+ 
++#ifdef SORTLOOT
++	iflags.sortloot = 'n';
++#endif
++
+      /* assert( sizeof flags.inv_order == sizeof def_inv_order ); */
+ 	(void)memcpy((genericptr_t)flags.inv_order,
+ 		     (genericptr_t)def_inv_order, sizeof flags.inv_order);
+@@ -1863,6 +1870,24 @@
+ 	    return;
+ 	}
+ 
++#ifdef SORTLOOT
++	fullname = "sortloot";
++	if (match_optname(opts, fullname, 4, TRUE)) {
++		op = string_for_env_opt(fullname, opts, FALSE);
++		if (op) {
++			switch (tolower(*op)) {
++                        case 'n':
++                        case 'l':
++                        case 'f': iflags.sortloot = tolower(*op);
++				break;
++                        default:  badoption(opts);
++				return;
++			}
++		}
++		return;
++	}
++#endif /* SORTLOOT */
++
+ 	fullname = "suppress_alert";
+ 	if (match_optname(opts, fullname, 4, TRUE)) {
+ 		op = string_for_opt(opts, negated);
+@@ -2287,6 +2312,12 @@
+ 	"teleport", "run", "walk", "crawl"
+ };
+ 
++#ifdef SORTLOOT
++static NEARDATA const char *sortltype[] = {
++	"none", "loot", "full"
++};
++#endif
++
+ /*
+  * Convert the given string of object classes to a string of default object
+  * symbols.
+@@ -2564,7 +2595,7 @@
+     boolean retval = FALSE;
+     
+     /* Special handling of menustyle, pickup_burden, pickup_types,
+-     * disclose, runmode, msg_window, menu_headings, and number_pad options.
++     * disclose, runmode, msg_window, menu_headings, number_pad and sortloot
+ #ifdef AUTOPICKUP_EXCEPTIONS
+      * Also takes care of interactive autopickup_exception_handling changes.
+ #endif
+@@ -2785,6 +2816,26 @@
+         }
+ 	destroy_nhwindow(tmpwin);
+         retval = TRUE;
++#ifdef SORTLOOT
++    } else if (!strcmp("sortloot", optname)) {
++	const char *sortl_name;
++	menu_item *sortl_pick = (menu_item *)0;
++	tmpwin = create_nhwindow(NHW_MENU);
++	start_menu(tmpwin);
++	for (i = 0; i < SIZE(sortltype); i++) {
++	    sortl_name = sortltype[i];
++	    any.a_char = *sortl_name;
++	    add_menu(tmpwin, NO_GLYPH, &any, *sortl_name, 0,
++		     ATR_NONE, sortl_name, MENU_UNSELECTED);
++	}
++	end_menu(tmpwin, "Select loot sorting type:");
++	if (select_menu(tmpwin, PICK_ONE, &sortl_pick) > 0) {
++	    iflags.sortloot = sortl_pick->item.a_char;
++	    free((genericptr_t)sortl_pick);
++	}
++	destroy_nhwindow(tmpwin);
++	retval = TRUE;
++#endif /* SORTLOOT */
+     } else if (!strcmp("menu_headings", optname)) {
+ 	static const char *mhchoices[3] = {"bold", "inverse", "underline"};
+ 	const char *npletters = "biu";
+@@ -3100,6 +3151,17 @@
+ 		if (iflags.wc_scroll_margin) Sprintf(buf, "%d",iflags.wc_scroll_margin);
+ 		else Strcpy(buf, defopt);
+ 	}
++#ifdef SORTLOOT
++	else if (!strcmp(optname, "sortloot")) {
++		char *sortname = (char *)NULL;
++		for (i=0; i < SIZE(sortltype) && sortname==(char *)NULL; i++) {
++		   if (iflags.sortloot == sortltype[i][0])
++		     sortname = (char *)sortltype[i];
++		}
++		if (sortname != (char *)NULL)
++		   Sprintf(buf, "%s", sortname);
++	}
++#endif /* SORTLOOT */
+ 	else if (!strcmp(optname, "player_selection"))
+ 		Sprintf(buf, "%s", iflags.wc_player_selection ? "prompts" : "dialog");
+ #ifdef MSDOS
+diff -urd nethack-3.4.3-extborn/src/pickup.c nethack-3.4.3-sortloot/src/pickup.c
+--- nethack-3.4.3-extborn/src/pickup.c	2003-12-08 01:39:13.000000000 +0200
++++ nethack-3.4.3-sortloot/src/pickup.c	2011-08-14 10:41:39.000000000 +0300
+@@ -690,9 +690,15 @@
+ int how;			/* type of query */
+ boolean FDECL((*allow), (OBJ_P));/* allow function */
+ {
++#ifdef SORTLOOT
++	int i, j;
++#endif
+ 	int n;
+ 	winid win;
+ 	struct obj *curr, *last;
++#ifdef SORTLOOT
++	struct obj **oarray;
++#endif
+ 	char *pack;
+ 	anything any;
+ 	boolean printed_type_name;
+@@ -717,6 +723,33 @@
+ 	    return 1;
+ 	}
+ 
++#ifdef SORTLOOT
++	/* Make a temporary array to store the objects sorted */
++	oarray = (struct obj **)alloc(n*sizeof(struct obj*));
++
++	/* Add objects to the array */
++	i = 0;
++	for (curr = olist; curr; curr = FOLLOW(curr, qflags)) {
++	  if ((*allow)(curr)) {
++	    if (iflags.sortloot == 'f' ||
++		(iflags.sortloot == 'l' && !(qflags & USE_INVLET)))
++	      {
++		/* Insert object at correct index */
++		for (j = i; j; j--)
++		  {
++		    if (strcmpi(cxname2(curr), cxname2(oarray[j-1]))>0) break;
++		    oarray[j] = oarray[j-1];
++		  }
++		oarray[j] = curr;
++		i++;
++	      } else {
++		/* Just add it to the array */
++		oarray[i++] = curr;
++	      }
++	  }
++	}
++#endif /* SORTLOOT */
++
+ 	win = create_nhwindow(NHW_MENU);
+ 	start_menu(win);
+ 	any.a_obj = (struct obj *) 0;
+@@ -730,7 +763,12 @@
+ 	pack = flags.inv_order;
+ 	do {
+ 	    printed_type_name = FALSE;
++#ifdef SORTLOOT
++	    for (i = 0; i < n; i++) {
++		curr = oarray[i];
++#else /* SORTLOOT */
+ 	    for (curr = olist; curr; curr = FOLLOW(curr, qflags)) {
++#endif /* SORTLOOT */
+ 		if ((qflags & FEEL_COCKATRICE) && curr->otyp == CORPSE &&
+ 		     will_feel_cockatrice(curr, FALSE)) {
+ 			destroy_nhwindow(win);	/* stop the menu and revert */
+@@ -758,6 +796,9 @@
+ 	    pack++;
+ 	} while (qflags & INVORDER_SORT && *pack);
+ 
++#ifdef SORTLOOT
++	free(oarray);
++#endif
+ 	end_menu(win, qstr);
+ 	n = select_menu(win, how, pick_list);
+ 	destroy_nhwindow(win);
