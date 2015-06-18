@@ -1,0 +1,14 @@
+pkgbase = hgsubversion
+	pkgdesc = extension for Mercurial that allows using Mercurial as a Subversion client
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://bitbucket.org/durin42/hgsubversion
+	arch = any
+	license = GPL2
+	depends = mercurial
+	depends = subversion
+	source = https://bitbucket.org/durin42/hgsubversion/get/1.8.1.tar.bz2
+	md5sums = 2741b5d1d0b0d36e76372efa96a6143d
+
+pkgname = hgsubversion
+
