@@ -1,6 +1,6 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library in C++/Python
-	pkgver = 1.5
+	pkgver = 1.6rc1
 	pkgrel = 1
 	url = http://www.openturns.org/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = openturns
 	optdepends = r: plotting, linear model, truncated normal distribution estimation and statistical tests
 	optdepends = python-matplotlib: nicer plotting
 	backup = etc/openturns/openturns.conf
-	source = http://downloads.sourceforge.net/sourceforge/openturns/openturns/openturns-1.5.tar.bz2
-	md5sums = 2622a0c0884014bf59cb6f34c48e7ff7
+	source = http://downloads.sourceforge.net/sourceforge/openturns/openturns/openturns-1.6rc1.tar.bz2
+	sha1sums = e424323b8c32e638cee0b3630fc3d531334bf419
 
 pkgname = openturns
 
