@@ -1,25 +1,27 @@
+Description: Exclude buildtest python package from Debian package.
  By default tahoe-lafs also install a buildtest package but this isn't relevant
  in the context of the Debian package.
+Forwarded: not-needed
 Author: bertagaz <bertagaz@ptitcanardnoir.org>
-Index: tahoe/setup.py
+Index: tahoe.git/setup.py
 ===================================================================
---- tahoe.orig/setup.py	2012-07-04 21:42:07.000000000 +0200
-+++ tahoe/setup.py	2012-07-04 21:59:45.051169297 +0200
-@@ -467,8 +467,7 @@
-                 'allmydata.util',
+--- tahoe.git.orig/setup.py	2013-09-03 19:04:12.745099226 +0200
++++ tahoe.git/setup.py	2013-09-03 19:04:24.637106872 +0200
+@@ -436,8 +436,7 @@
                  'allmydata.web',
                  'allmydata.web.static',
+                 'allmydata.web.static.css',
 -                'allmydata.windows',
 -                'buildtest'],
 +                'allmydata.windows'],
        classifiers=trove_classifiers,
        test_suite="allmydata.test",
        install_requires=install_requires,
-Index: tahoe/src/allmydata_tahoe.egg-info/SOURCES.txt
+Index: tahoe.git/src/allmydata_tahoe.egg-info/SOURCES.txt
 ===================================================================
---- tahoe.orig/src/allmydata_tahoe.egg-info/SOURCES.txt	2012-07-04 21:41:43.000000000 +0200
-+++ tahoe/src/allmydata_tahoe.egg-info/SOURCES.txt	2012-07-04 21:59:25.615659017 +0200
-@@ -431,7 +431,5 @@
+--- tahoe.git.orig/src/allmydata_tahoe.egg-info/SOURCES.txt	2013-09-03 19:00:55.393107907 +0200
++++ tahoe.git/src/allmydata_tahoe.egg-info/SOURCES.txt	2013-09-03 19:04:12.753100409 +0200
+@@ -422,7 +422,5 @@
  src/allmydata_tahoe.egg-info/not-zip-safe
  src/allmydata_tahoe.egg-info/requires.txt
  src/allmydata_tahoe.egg-info/top_level.txt
@@ -29,10 +31,10 @@ Index: tahoe/src/allmydata_tahoe.egg-info/SOURCES.txt
 -twisted/plugins/allmydata_trial.py
 \ No newline at end of file
 +twisted/plugins/allmydata_trial.py
-Index: tahoe/src/allmydata_tahoe.egg-info/top_level.txt
+Index: tahoe.git/src/allmydata_tahoe.egg-info/top_level.txt
 ===================================================================
---- tahoe.orig/src/allmydata_tahoe.egg-info/top_level.txt	2012-07-04 21:41:43.295659068 +0200
-+++ tahoe/src/allmydata_tahoe.egg-info/top_level.txt	2012-07-04 21:59:25.615659017 +0200
+--- tahoe.git.orig/src/allmydata_tahoe.egg-info/top_level.txt	2013-09-03 19:00:55.393107907 +0200
++++ tahoe.git/src/allmydata_tahoe.egg-info/top_level.txt	2013-09-03 19:04:12.753100409 +0200
 @@ -1,2 +1 @@
  allmydata
 -buildtest

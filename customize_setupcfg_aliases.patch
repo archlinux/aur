@@ -1,0 +1,20 @@
+Description: Customize upstream's defined setup.py aliases.
+ We don't need some of the setup.py options defined in setup.cfg by upstream in
+ the Debian package context.
+Forwarded: not-needed
+Author: bertagaz <bertagaz@ptitcanardnoir.org>
+Index: tahoe.git/setup.cfg
+===================================================================
+--- tahoe.git.orig/setup.cfg	2013-10-09 14:41:43.909073001 +0200
++++ tahoe.git/setup.cfg	2013-10-10 14:05:43.673073382 +0200
+@@ -5,8 +5,8 @@
+ 	https://tahoe-lafs.org/source/tahoe-lafs/deps/tahoe-lafs-dep-eggs/
+ 
+ [aliases]
+-build = update_version develop --prefix=support make_executable build
+-test = update_version develop --prefix=support make_executable build trial
++build = update_version make_executable build
++test = update_version develop make_executable build trial
+ sdist = update_version sdist
+ install = update_version install
+ bdist_egg = update_version bdist_egg

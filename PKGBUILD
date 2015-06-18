@@ -6,7 +6,7 @@ pkgver=1.10.0.post26
 _patchver=1.10.0-r0
 pkgrel=2
 pkgdesc="Secure, decentralized, and fault-tolerant filesystem over the I2P network"
-url='http://tahoe-lafs.org'
+url='https://tahoe-lafs.org/trac/tahoe-lafs'
 license=('GPL')
 arch=('any')
 conflicts=('tahoe-lafs')
@@ -36,8 +36,7 @@ depends=('openssl>=1.0.2'
          'libffi'
          'python2-foolscap-i2p'
          'net-tools' # provides /sbin/ifconfig
-         'python2-setuptools'
-         )
+         'python2-setuptools')
 
 optdepends=('grid-updates: helps keep you up to date with latest grid news'
             'python2-numpy: reliability test')
@@ -47,26 +46,23 @@ source=("https://tahoe-lafs.org/source/tahoe-lafs/tarballs/allmydata-tahoe-${pkg
         #'0001-multiple-introducer-support.patch'
         #'0002-proxy-support.patch'
         #'0003-allow-non-routable.patch'
+        'customize_setupcfg_aliases.patch'
         'exclude_buildtest_package.patch'
         "http://killyourtv.i2p.me/tahoe-lafs/patches/tahoe-lafs-i2p-${_patchver}.patch"
         'tahoe-repair-all.sh')
 
 sha256sums=('542830908e6deb66767ef98271bcf067f9787c0013b764caae23c7649b4f3171'
             'b410d6276466f9feb270ae3e27bc7bc1901effc5132a089ff88a98b7efe6895e'
-            '469aa0ace523b64449e7d2d52958119a84032c50b07828b3dffbb81dca5327bd'
+            'df6a6796cc599fc60da4a25d86d7c2806df6a6ebc1850b117dd19b09ea7d9f8e'
+            '0cd7ae573726b79922bead80fec2367f64805bcbf1cebeda6d6a3fb3af13c983'
             '425456a08477da50ef1511ea1b24cc6a529c4abaae345a3da89a31c025d74b80'
             '1525fd5c2ac2c93844f23160e70bb47040a9a8ee7dff8b6fff8ca48b374ac216')
-
 prepare() {
     cd "${srcdir}/allmydata-tahoe-${pkgver}"
-    patch -Np1 -i ../setuptools_fix.patch
-    if [[ ! -r "${srcdir}/tahoe-lafs-i2p-${_patchver}.patch" ]]; then
-        for p in $(ls ${srcdir}/*.patch); do
-            patch -Np1 -i $p
-        done
-    else
-        patch -Np1 -i "${srcdir}/tahoe-lafs-i2p-${_patchver}.patch"
-    fi
+    for p in ${srcdir}/*.patch; do
+        msg "$(basename $p)"
+        patch -Np1 -i "$p"
+    done
 }
 
 build(){
