@@ -1,0 +1,18 @@
+pkgbase = radamsa-git
+	pkgdesc = General purpose mutation based fuzzer
+	pkgver = 0.4.282.d55035a
+	pkgrel = 1
+	url = https://github.com/aoh/radamsa
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = owl-lisp
+	depends = glibc
+	provides = radamsa
+	conflicts = radamsa
+	source = radamsa-git::git+https://github.com/aoh/radamsa
+	sha512sums = SKIP
+
+pkgname = radamsa-git
+
