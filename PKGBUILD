@@ -7,7 +7,7 @@ pkgdesc="A modular, multithreaded, high performance webapplication server for C+
 arch=('i686' 'x86_64')
 url="http://www.tntnet.org/tntnet.html"
 license=('LGPL')
-depends=('cxxtools' 'zlib' 'openssl' 'sh')
+depends=('cxxtools>=2.2.2' 'zlib' 'openssl' 'sh')
 makedepends=('git')
 optdepends=('base-devel: to build tntnet web applications')
 provides=('tntnet')
