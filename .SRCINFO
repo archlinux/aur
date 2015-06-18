@@ -1,0 +1,17 @@
+pkgbase = aurbot-git
+	pkgdesc = AUR Builder Bot
+	pkgver = 21
+	pkgrel = 1
+	url = https://github.com/seblu/aurbot
+	install = aurbot.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = systemd
+	optdepends = devtools
+	source = git+https://github.com/seblu/aurbot.git
+	md5sums = SKIP
+
+pkgname = aurbot-git
+
