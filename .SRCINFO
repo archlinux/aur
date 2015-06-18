@@ -1,0 +1,22 @@
+pkgbase = tntnet-git
+	pkgdesc = A modular, multithreaded, high performance webapplication server for C++
+	pkgver = 2.3.pre1.b824f78
+	pkgrel = 1
+	url = http://www.tntnet.org/tntnet.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = cxxtools
+	depends = zlib
+	depends = openssl
+	depends = sh
+	optdepends = base-devel: to build tntnet web applications
+	provides = tntnet
+	conflicts = tntnet
+	backup = etc/tntnet/tntnet.xml
+	source = tntnet-git::git+https://github.com/maekitalo/tntnet.git
+	sha256sums = SKIP
+
+pkgname = tntnet-git
+
