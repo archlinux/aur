@@ -1,0 +1,18 @@
+pkgbase = sfnettest
+	pkgdesc = A suite of tools developed by Solarflare for probing network performance.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.openonload.org/
+	arch = x86_64
+	license = GPL2
+	depends = openonload
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = http://www.openonload.org/download/sfnettest/sfnettest-1.5.0.tgz
+	sha512sums = 27b71cf706ab2f84d115f41e76e05bb0057d48042ee145bca280c58b4d5c3cfb810d3e0d126d8573b6907c2dbf918fe013241cb87172a1f4e0470bdfa5f5433a
+
+pkgname = sfnettest
+
