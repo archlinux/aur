@@ -1,0 +1,19 @@
+pkgbase = webkit2png-git
+	pkgdesc = Takes screenshots using webkit
+	pkgver = r98.520112e
+	pkgrel = 1
+	url = https://github.com/adamn/python-webkit2png
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-pyqt4
+	depends = qtwebkit
+	source = webkit2png-git::git+https://github.com/adamn/python-webkit2png.git
+	source = webkit2png.patch
+	sha256sums = SKIP
+	sha256sums = 71c900fe1523ed7333454a517f8ce3db5dd6e35edb02f83833dfb82d5d3dcde3
+
+pkgname = webkit2png-git
+
