@@ -1,0 +1,19 @@
+pkgbase = reprepro
+	pkgdesc = A tool to handle local repositories of Debian packages
+	pkgver = 4.16.0
+	pkgrel = 1
+	url = http://mirrorer.alioth.debian.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = db
+	depends = gpgme
+	depends = zlib
+	depends = bzip2
+	depends = libarchive
+	optdepends = apt: Importing from other sources
+	source = http://ftp.debian.org/debian/pool/main/r/reprepro/reprepro_4.16.0.orig.tar.gz
+	sha256sums = fdd2cae3f23b26e3b44734925af5afb76486a46bde104254eb04d8344d98f591
+
+pkgname = reprepro
+
