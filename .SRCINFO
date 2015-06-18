@@ -1,0 +1,19 @@
+pkgbase = basex
+	pkgdesc = Light-weight, high-performance XML database system and XPath/XQuery processor.
+	pkgver = 8.2
+	pkgrel = 1
+	url = http://basex.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = java-environment-common
+	depends = bash
+	source = http://files.basex.org/releases/8.2/BaseX82.zip
+	source = basex.sh
+	source = BaseX.desktop
+	sha1sums = 4dfd8ce5508748777586d26ccedc466f437e7da6
+	sha1sums = b82c43d2f247d65b93b2f073543b8ceee038bfd1
+	sha1sums = 53eb192fe09410da5dff22ba7ecd5b26e5753fd7
+
+pkgname = basex
+
