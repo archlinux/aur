@@ -1,13 +1,13 @@
 pkgbase = tntnet-git
 	pkgdesc = A modular, multithreaded, high performance webapplication server for C++
 	pkgver = 2.3.pre1.b824f78
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tntnet.org/tntnet.html
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	depends = cxxtools
+	depends = cxxtools-git
 	depends = zlib
 	depends = openssl
 	depends = sh
