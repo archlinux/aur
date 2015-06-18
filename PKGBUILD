@@ -4,7 +4,7 @@
 
 pkgname=qtiplot-opj
 pkgver=0.9.8.9
-pkgrel=12
+pkgrel=13
 pkgdesc="Data analysis and scientific plotting - free clone of Origin, with Origin import enabled"
 # more info in: http://www.staff.science.uu.nl/~zeven101/qtiplot.html
 arch=('i686' 'x86_64')
@@ -47,8 +47,8 @@ md5sums=('652096a365851da3b5f6fefdcbe2aaec'
 '66ab87e227dc1436d8a08adaef657d74'
 '354648b6702d7b7fb71d7d230b6a9bbf'
 'a433c4c2187a0a988ed849e486349297'
-'6e990ff9c3a456b446b581492ddf669c'
-'35683f3b32e1edcca0bb02c471d284e9'
+'20e01401a57befbef8b98721d6920fd1'
+'a7c3c43ff10ba117d3e79ad305ba13f0'
 '58b7f423e59db7764f53988cdbd7308e'
 'b5e7832b05c991c80b83964670d00af8'
 'd71623b74a9264225a438553f230cc40'
