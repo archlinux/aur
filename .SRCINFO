@@ -1,0 +1,14 @@
+pkgbase = texlive-astronat
+	pkgdesc = BibTeX style files used in Astronomy journals
+	pkgver = 1
+	pkgrel = 1
+	url = http://ads.harvard.edu/pubs/bibtex/astronat/doc/html/astronat_1.html
+	install = texlive-astronat.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://ads.harvard.edu/pubs/bibtex/astronat/astronat.tar.gz
+	md5sums = 9f26cf9c2ac16ddeb7ac3aa677eab730
+
+pkgname = texlive-astronat
+
