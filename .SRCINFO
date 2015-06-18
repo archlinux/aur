@@ -1,0 +1,20 @@
+pkgbase = kamerka
+	pkgdesc = Take photos using your webcam and shiny animated QML interface (KDE4 app)
+	pkgver = 0.10
+	pkgrel = 2
+	epoch = 1
+	url = http://dos1.github.io/kamerka/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = qt4
+	depends = v4l-utils
+	depends = qimageblitz
+	source = kamerka-0.10.tar.gz::https://github.com/dos1/kamerka/archive/0.10.tar.gz
+	sha256sums = 8331021ab5420362f32803bae7329449a756f4839993305a1271390de3ef4df8
+
+pkgname = kamerka
+
