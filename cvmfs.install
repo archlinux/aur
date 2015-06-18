@@ -1,0 +1,17 @@
+# arg 1:  the new package version
+post_install() {
+  cvmfs_config setup
+  systemctl restart autofs
+  echo "  - modify /etc/cvmfs/default.local according to your needs, cf. the Technical Report at http://cernvm.cern.ch/portal/sites/cernvm.cern.ch/files/cvmfstech-2.1-5.pdf"
+  echo "  - (re)start autofs (and enable it if you want persistency):"
+  echo "      sudo systemctl restart autofs"
+}
+
+# arg 1:  the old package version
+post_remove() {
+  sed -i '/cvmfs/d' /etc/autofs/auto.master
+  systemctl restart autofs
+  sed -i '/added by CernVM-FS/d' /etc/fuse.conf
+  userdel cvmfs
+  rm -rf /var/lib/cvmfs /cvmfs
+}

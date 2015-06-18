@@ -1,0 +1,19 @@
+pkgbase = cvmfs
+	pkgdesc = A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way.
+	pkgver = 2.1.19
+	pkgrel = 1
+	url = http://cernvm.cern.ch/portal/filesystem
+	install = cvmfs.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = cmake
+	depends = fuse
+	depends = sqlite3
+	depends = curl
+	backup = etc/cvmfs/default.local
+	source = https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.19/cvmfs-2.1.19.tar.gz
+	md5sums = 57b3dd1687af498803a1dcb4f22382d6
+
+pkgname = cvmfs
+
