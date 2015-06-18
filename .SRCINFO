@@ -1,0 +1,19 @@
+pkgbase = simgear-git
+	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
+	pkgver = 20150613
+	pkgrel = 2
+	url = http://simgear.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glut
+	depends = freealut
+	depends = plib
+	depends = openscenegraph-git
+	depends = boost>=1.49
+	provides = simgear-git
+	conflicts = simgear
+
+pkgname = simgear-git
+
