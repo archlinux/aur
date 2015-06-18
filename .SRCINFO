@@ -5,6 +5,8 @@ pkgbase = screenshotgun-git
 	url = http://screenshotgun.com
 	arch = any
 	license = GPL
+	makedepends = git
+	depends = qt5-base
 	source = screenshotgun::git+https://github.com/ismd/screenshotgun.git
 	md5sums = SKIP
 
