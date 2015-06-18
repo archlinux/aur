@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=pgmodeler
+Exec=/usr/bin/pgmodeler
+Icon=/usr/share/pgmodeler/conf/pgmodeler_logo.png
+Type=Application
+Categories=Application;Development;
+MimeType=text/x-pgmodeler
+Comment=PostgreSQL Database Modeler

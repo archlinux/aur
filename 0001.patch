@@ -1,0 +1,81 @@
+From 5ed986351102ac3441d19427a87ca3c8cdd83697 Mon Sep 17 00:00:00 2001
+From: Mhd Sulhan <ms@kilabit.info>
+Date: Fri, 19 Jun 2015 01:45:22 +0700
+Subject: [PATCH 1/2] Allow user to set RPATHDIR instead of using
+ PRIVATELIBDIR.
+
+This allow to build pgmodeler in chroot environment with rpath point to
+RPATHDIR instead of path to build directory.
+---
+ pgmodeler.pri | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/pgmodeler.pri b/pgmodeler.pri
+index 5b07b98..76ec4bb 100644
+--- a/pgmodeler.pri
++++ b/pgmodeler.pri
+@@ -69,7 +69,11 @@ linux {
+   !defined(SCHEMASDIR, var):    SCHEMASDIR = $$SHAREDIR/schemas
+ 
+   # Specifies where to find the libraries at runtime
+-  QMAKE_RPATHDIR += $$PRIVATELIBDIR
++  defined(RPATHDIR, var) {
++    QMAKE_RPATHDIR += $$RPATHDIR
++  } else {
++    QMAKE_RPATHDIR += $$PRIVATELIBDIR
++  }
+ 
+   # Forcing the display of some warnings
+   CONFIG(debug, debug|release): QMAKE_CXXFLAGS += "-Wall -Wextra -Wuninitialized"
+@@ -113,7 +117,11 @@ macx {
+   !defined(SCHEMASDIR, var):    SCHEMASDIR = $$BINDIR/schemas
+ 
+   # Specifies where to find the libraries at runtime
+-  QMAKE_RPATHDIR += @executable_path/../Frameworks
++  defined(RPATHDIR, var) {
++    QMAKE_RPATHDIR += $$RPATHDIR
++  } else {
++    QMAKE_RPATHDIR += @executable_path/../Frameworks
++  }
+ }
+ 
+ # Creating constants based upon the custom paths so the GlobalAttributes
+@@ -213,6 +221,7 @@ defineTest(printBuildDetails) {
+  log("  LANGDIR       = $$LANGDIR $$LB")
+  log("  SAMPLESDIR    = $$SAMPLESDIR $$LB")
+  log("  SCHEMASDIR    = $$SCHEMASDIR $$LB $$LB")
++ log("  QMAKE_RPATHDIR= $$QMAKE_RPATHDIR")
+  log("* To change a variable value run qmake again setting the desired value e.g.: $$LB")
+  log("  > qmake PREFIX+=/usr/local -r pgmodeler.pro $$LB $$LB")
+  log("* Proceed with build process by running: $$LB")
+-- 
+2.4.4
+
+
+From cab1633801b5b87f9dca7213462762e93066fc73 Mon Sep 17 00:00:00 2001
+From: Mhd Sulhan <ms@kilabit.info>
+Date: Fri, 19 Jun 2015 04:15:30 +0700
+Subject: [PATCH 2/2] Fix log output format.
+
+---
+ pgmodeler.pri | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pgmodeler.pri b/pgmodeler.pri
+index 76ec4bb..a45851d 100644
+--- a/pgmodeler.pri
++++ b/pgmodeler.pri
+@@ -220,8 +220,8 @@ defineTest(printBuildDetails) {
+  log("  DOCDIR        = $$DOCDIR $$LB")
+  log("  LANGDIR       = $$LANGDIR $$LB")
+  log("  SAMPLESDIR    = $$SAMPLESDIR $$LB")
+- log("  SCHEMASDIR    = $$SCHEMASDIR $$LB $$LB")
+- log("  QMAKE_RPATHDIR= $$QMAKE_RPATHDIR")
++ log("  SCHEMASDIR    = $$SCHEMASDIR $$LB")
++ log("  QMAKE_RPATHDIR= $$QMAKE_RPATHDIR $$LB $$LB")
+  log("* To change a variable value run qmake again setting the desired value e.g.: $$LB")
+  log("  > qmake PREFIX+=/usr/local -r pgmodeler.pro $$LB $$LB")
+  log("* Proceed with build process by running: $$LB")
+-- 
+2.4.4
+

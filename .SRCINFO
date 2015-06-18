@@ -1,0 +1,29 @@
+pkgbase = pgmodeler-git
+	pkgdesc = PostgreSQL Database Modeler
+	pkgver = v0.8.1.beta.r3.ga0fcabf
+	pkgrel = 1
+	url = http://www.pgmodeler.com.br
+	install = pgmodeler-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	depends = qtchooser
+	depends = qt5-base
+	depends = libxml2
+	depends = postgresql-libs
+	depends = desktop-file-utils
+	provides = pgmodeler
+	conflicts = pgmodeler
+	source = pgmodeler-git::git+https://github.com/pgmodeler/pgmodeler.git#branch=0.8.1-beta1
+	source = pgmodeler.desktop
+	source = pgmodeler-git.install
+	source = 0001.patch
+	md5sums = SKIP
+	md5sums = cfc645148c08399b2678d0dd68857706
+	md5sums = ea9cce04170c669434a402c966d257f9
+	md5sums = c7ec0019361f0ff97bc9a73acd794eb2
+
+pkgname = pgmodeler-git
+
