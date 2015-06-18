@@ -1,0 +1,20 @@
+pkgbase = iva
+	pkgdesc = Iterative Virus Assembler
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://sanger-pathogens.github.io/iva/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-pysam
+	depends = python-fastaq
+	depends = python-networkx
+	depends = kmc
+	depends = smalt
+	depends = mummer
+	source = https://github.com/sanger-pathogens/iva/archive/v0.10.1.tar.gz
+	md5sums = cf5ad6b522d4174c9a54f2660d4e7913
+
+pkgname = iva
+
