@@ -3,11 +3,11 @@ post_install() {
 }
 
 post_upgrade() {
-	[[ "$(grep install= /etc/memtest86-efi.conf)" == *"1" ]] && /usr/bin/memtest86-efi --update
+	/usr/bin/memtest86-efi --status || /usr/bin/memtest86-efi --update
 	exit 0
 }
 
 pre_remove() {
-	[[ "$(grep install= /etc/memtest86-efi.conf)" == *"1" ]] && /usr/bin/memtest86-efi --remove
+	/usr/bin/memtest86-efi --status || /usr/bin/memtest86-efi --remove
 	exit 0
 }
