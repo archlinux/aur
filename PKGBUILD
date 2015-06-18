@@ -8,7 +8,7 @@ _net_uri="http://dev.gentoo.org/~robbat2/distfiles"
 _g_uri="https://github.com/gentoo/gentoo-functions/archive" #/0.10.tar.gz
 
 _udev="udev-init-scripts"
-_uver=29
+_uver=30
 
 _net="netifrc"
 _nver=0.3.1
@@ -19,14 +19,15 @@ _gver=0.10
 pkgname=openrc-core
 pkgdesc="Gentoo's universal init system, udev enabled."
 pkgver=0.16.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Gentoo's universal init system, udev enabled."
 arch=('i686' 'x86_64')
 url="http://www.gentoo.org/proj/en/base/openrc/"
 license=('BSD2' 'GPL2')
 depends=('inetutils' 'psmisc' 'sysvinit' 'udev>=186')
 optdepends=('dhcpcd-openrc: dhcpcd initscript')
-conflicts=('openrc' 'openrc-git' 'initscripts' 'systemd-sysvcompat' 'openrc-sysvinit' 'eudev-openrc')
+conflicts=('openrc' 'openrc-git' 'initscripts' 'systemd-sysvcompat' 'openrc-sysvinit'
+			'eudev-openrc')
 backup=('etc/rc.conf'
 	'etc/conf.d/consolefont'
 	'etc/conf.d/keymaps'
@@ -43,7 +44,7 @@ source=("${_src_uri}/${_pkgname}-${pkgver}.tar.bz2"
 	"${_pkgname}.logrotate"
 	'kmod-static-nodes')
 sha256sums=('6771257e208da2e4d20b4ac2e3e7f065eb8873566644ff385e9dbd6bc5221d21'
-            '63fd923b259f216d8a1b1b64d8e541d67fb5ef86ac163ad087306017fa6426d9'
+            '4de998d68e28f8ce4c1d4c9955aec0fa4cfe84673cbf3bfe1be71a1e9918693f'
             'a92a96b6f065981ee1c0232a507f3695230eeb7fb6172ec9048c2538b36cfea8'
             '709c8b22f404001a512e47a7a4d3192070b3e150fb9d0f943de09736d665b0db'
             '0b44210db9770588bd491cd6c0ac9412d99124c6be4c9d3f7d31ec8746072f5c'

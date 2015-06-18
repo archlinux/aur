@@ -7,7 +7,6 @@ post_install() {
 	echo "	==> Set up your network interface before you reboot."
 	local _url="https://wiki.gentoo.org/wiki/Handbook:X86/Full/Networking"
 	echo "	==> Visit ${_url}"
-	#rc-update -u
 }
 
 post_upgrade() {
