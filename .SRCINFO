@@ -1,0 +1,11 @@
+pkgbase = xfce-slimlock
+	pkgdesc = Workaround for using slimlock in xfce4 via symlink
+	pkgver = 2
+	pkgrel = 1
+	url = https://bbs.archlinux.org/viewtopic.php?id=143805
+	arch = any
+	license = GPL2
+	depends = slim
+
+pkgname = xfce-slimlock
+
