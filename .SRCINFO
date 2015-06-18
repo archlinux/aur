@@ -1,0 +1,31 @@
+pkgbase = isostick-updater
+	pkgdesc = Updating your isostick firmware
+	pkgver = 71
+	pkgrel = 1
+	url = http://isostick.com
+	arch = x86_64
+	license = custom
+	depends = lib32-zlib
+	depends = lib32-expat
+	depends = lib32-fontconfig
+	depends = lib32-freetype2
+	depends = lib32-gcc-libs
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-libffi
+	depends = lib32-libice
+	depends = lib32-libsm
+	depends = lib32-libx11
+	depends = lib32-libxau
+	depends = lib32-libxcb
+	depends = lib32-libxdmcp
+	depends = lib32-libxext
+	depends = lib32-libxrender
+	depends = lib32-pcre
+	depends = lib32-util-linux
+	depends = lib32-zlib
+	source = http://isostick.com/updater/isostick-updater.tar.gz
+	md5sums = 1fa85837f9e1898d43992d61ee87233e
+
+pkgname = isostick-updater
+
