@@ -1,8 +1,8 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 pkgname=edje2yuv
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="Realtime Lua as programmable glue in LV2"
+pkgrel=2
+pkgdesc='A program to export Edje layout programs to video streams'
 arch=('i686' 'x86_64')
 url='https://github.com/ventosus/edje2yuv'
 license=('Artistic2.0')

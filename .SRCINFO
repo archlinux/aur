@@ -1,7 +1,7 @@
 pkgbase = edje2yuv
-	pkgdesc = Realtime Lua as programmable glue in LV2
+	pkgdesc = A program to export Edje layout programs to video streams
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ventosus/edje2yuv
 	arch = i686
 	arch = x86_64
