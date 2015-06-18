@@ -6,7 +6,6 @@ pkgbase = gnome-shell-theme-ciliora-tertia-git
 	arch = any
 	license = GPLv3
 	makedepends = git
-	makedepends = sed
 	depends = gnome-shell
 	provides = gnome-shell-theme-ciliora-tertia
 	source = git+https://github.com/zagortenay333/ciliora-tertia-shell.git
