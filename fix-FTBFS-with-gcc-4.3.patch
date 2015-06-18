@@ -1,0 +1,21 @@
+--- a/hiscore.cpp
++++ b/hiscore.cpp
+@@ -21,6 +21,8 @@
+ #include <stdlib.h>
+ #include <sys/stat.h>
+ #include "hiscore.h"
++#include <climits>
++#include <cstring>
+ //-----------------------------------------------------------------------------
+ HiScores &hiScores()
+ {
+--- a/config.cpp
++++ b/config.cpp
+@@ -25,6 +25,7 @@
+ #include <stdio.h>
+ #include <sys/stat.h>
+ #include "config.h"
++#include <climits>
+ //------------------------------------------------------------------------------
+ using namespace std;
+ //-----------------------------------------------------------------------------
