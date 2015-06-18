@@ -1,0 +1,29 @@
+--- libressl-2.0.0/crypto/rand/rand_lib.c	2014-07-11 19:41:26.000000000 +0200
++++ libressl-2.0.0/crypto/rand/rand_lib.c	2014-07-12 00:16:22.583713400 +0200
+@@ -98,3 +98,15 @@
+ 		arc4random_buf(buf, num);
+ 	return 1;
+ }
++
++int
++RAND_egd(const char *path)
++{
++	return -1;
++}
++
++int
++RAND_egd_bytes(const char *path, int bytes)
++{
++	return -1;
++}
+--- libressl-2.0.0/include/openssl/rand.h	2014-07-11 19:41:25.000000000 +0200
++++ libressl-2.0.0/include/openssl/rand.h	2014-07-12 00:08:44.893435315 +0200
+@@ -96,6 +96,8 @@
+ int  RAND_write_file(const char *file);
+ const char *RAND_file_name(char *file, size_t num);
+ int RAND_status(void);
++int RAND_egd(const char *path);
++int RAND_egd_bytes(const char *path,int bytes);
+ int RAND_poll(void);
+ 
+ /* BEGIN ERROR CODES */
