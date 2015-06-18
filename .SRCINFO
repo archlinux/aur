@@ -1,0 +1,16 @@
+pkgbase = scanssh
+	pkgdesc = Fast SSH server and open proxy scanner.
+	pkgver = 2.1
+	pkgrel = 3
+	url = http://www.monkey.org/~provos/scanssh/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libdnet
+	depends = libevent
+	depends = openssl
+	source = http://www.monkey.org/~provos/scanssh-2.1.tar.gz
+	md5sums = 9fab4253b56b2d15367d4872b370cdcb
+
+pkgname = scanssh
+
