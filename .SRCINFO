@@ -1,0 +1,17 @@
+pkgbase = vim-hexman
+	pkgdesc = Simpler Hex viewing and editing
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=666
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = vim-hexman::http://www.vim.org/scripts/download_script.php?src_id=21365
+	source = license.txt
+	sha256sums = 91150d156ae1c8c33e46dbb0d0c34c87d57dec795b12f33024495002505cfaad
+	sha256sums = 1b65169352a57daa6faa024201869c9929d321157e1a6f795b664a9c56f10f9f
+
+pkgname = vim-hexman
+
