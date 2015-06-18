@@ -1,0 +1,14 @@
+pkgbase = masscan
+	pkgdesc = TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/robertdavidgraham/masscan
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	depends = libpcap
+	source = masscan-1.0.3.tar.gz::https://github.com/robertdavidgraham/masscan/archive/1.0.3.tar.gz
+	sha512sums = e64b11deaaaa71d5be95e8f2b1fdfa679f5c8e8074c97f9d60d57659f33aec0699673c5aab72824f62d1a8b0e8c9188dcf296dd078bc6c2dbdad95c35c3a5f40
+
+pkgname = masscan
+
