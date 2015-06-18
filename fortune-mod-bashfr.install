@@ -1,0 +1,16 @@
+post_install() {
+    true
+}
+
+post_upgrade() {
+    rm -f /etc/cron.daily/bashfr
+}
+ 
+pre_remove() {
+	/bin/rm -f /etc/cron.weekly/bashfr /usr/share/fortune/fr/bashfr.dat /usr/share/fortune/fr/bashfr
+}
+ 
+op=$1
+shift
+ 
+$op "$@"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Script d'update des fortunes DTC/bashfr du paquet fortune-mod-bashfr
+
+export PATH=/usr/bin:/bin:/usr/sbin:$PATH
+
+cd /tmp
+if ! wget &> /dev/null -N http://sputnick.fr/scripts/bashfr; then
+    echo >&2 "Le telechargement du fichier fortune bashfr a echoue, merci de passer le paquet fortune-mod-bashfr en perime si le probleme persiste."
+    exit 1
+fi
+
+if ! strfile -s -r bashfr bashfr.dat; then
+    echo >&2 "Attention, extra/fortune-mod semble avoir ete desinstalle, $0 a donc echoue."
+    exit 1
+fi
+
+install -D -m644 bashfr /usr/share/fortune/fr/bashfr
+install -D -m644 bashfr.dat /usr/share/fortune/fr/bashfr.dat
+
+\rm -f fortunes bashfr{,.dat}
