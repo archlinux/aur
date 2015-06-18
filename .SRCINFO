@@ -1,0 +1,17 @@
+pkgbase = python2-tweepy
+	pkgdesc = A Python library for accessing the entire Twitter API
+	pkgver = 3.3.0
+	pkgrel = 2
+	url = http://www.tweepy.org
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2-requests
+	depends = python2-requests-oauthlib
+	depends = python2-six
+	source = tweepy-3.3.0.tar.gz::https://github.com/tweepy/tweepy/archive/v3.3.0.tar.gz
+	sha512sums = f88cfc6abc95295930947ca4cd86717bac93b1a2b976048e7c9c606da314ca953d849b176f27f46ca4f46db6165d0dbdb45858921bcdab3f3afcd18fcf2bdc40
+
+pkgname = python2-tweepy
+
