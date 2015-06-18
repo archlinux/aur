@@ -1,0 +1,13 @@
+pkgbase = fastjet
+	pkgdesc = A particle physics package for jet finding in pp and e+e- collisions.
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://fastjet.fr
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	source = http://fastjet.fr/repo/fastjet-3.1.2.tar.gz
+	md5sums = ebefb7caf3b904a71917ff6de11767a7
+
+pkgname = fastjet
+
