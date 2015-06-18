@@ -1,0 +1,21 @@
+pkgbase = cernvm-webapi
+	pkgdesc = CernVM WebAPI Based on URI-Handlers
+	pkgver = r206.44badf3
+	pkgrel = 1
+	url = https://test4theory.cern.ch/challenge/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc
+	depends = cmake
+	depends = gksu
+	depends = virtualbox
+	source = git+https://github.com/wavesoft/cernvm-webapi.git
+	source = git+https://github.com/wavesoft/libcernvm.git
+	source = cernvm-webapi.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 61d5a2e39d22a46447b2655ed428f7bf
+
+pkgname = cernvm-webapi
+

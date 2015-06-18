@@ -1,0 +1,8 @@
+[Unit]
+Description=CernVM WebAPI Based on URI-Handlers
+
+[Service]
+ExecStart=/usr/local/bin/cernvm-webapi
+
+[Install]
+WantedBy=multi-user.target
