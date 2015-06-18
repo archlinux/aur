@@ -1,0 +1,16 @@
+pkgbase = irssi-xmpp
+	pkgdesc = irssi plugin to connect to the Jabber network
+	pkgver = 0.52
+	pkgrel = 2
+	url = http://cybione.org/~irssi-xmpp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = loudmouth
+	depends = irssi
+	depends = libidn
+	source = irssi-xmpp-0.52.tar.gz::http://cybione.org/~irssi-xmpp/files/irssi-xmpp-0.52.tar.gz
+	sha512sums = 27f7b877d02e0812b59e9f23ee12e58b842e3923ab5f0aa8cdf874dc9b30d9d22dbae9ef848ee5ffe2dcb667a0344f960125a3ffc072ce065e1fdf714eb98b27
+
+pkgname = irssi-xmpp
+
