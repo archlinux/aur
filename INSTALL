@@ -1,0 +1,4 @@
+By default, kippo runs on port 2222. Do not try to run it on port 22.
+Instead, use something like
+    iptables -t nat -A PREROUTING -i enp0s1 -p tcp --dport 22 -j REDIRECT --to-port 2222
+to make it reachable on port 22.
