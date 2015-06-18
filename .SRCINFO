@@ -1,0 +1,20 @@
+pkgbase = tntdb-git
+	pkgdesc = A C++ library for easy and robust access of SQL databases
+	pkgver = 1.3.1.3dd171f
+	pkgrel = 1
+	url = http://www.tntnet.org/tntdb.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = cxxtools
+	depends = postgresql-libs
+	depends = libmysqlclient
+	depends = sqlite
+	provides = tntdb
+	conflicts = tntdb
+	source = tntdb-git::git+https://github.com/maekitalo/tntdb.git
+	sha256sums = SKIP
+
+pkgname = tntdb-git
+
