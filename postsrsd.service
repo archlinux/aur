@@ -1,0 +1,15 @@
+[Unit]
+Description=Postfix Sender Rewriting Scheme daemon
+ 
+[Service]
+Type=forking
+RuntimeDirectory=postsrsd
+PIDFile=/run/postsrsd/postsrsd.pid
+Environment=SRS_DOMAIN=localhost.localdomain SRS_FORWARD_PORT=10001 SRS_REVERSE_PORT=10002 SRS_SECRET=/etc/postsrsd/postsrsd.secret \
+    SRS_EXCLUDE_DOMAINS= RUN_AS=postsrsd CHROOT=/run/postsrsd
+EnvironmentFile=/etc/postsrsd/postsrsd.conf
+ExecStart=/usr/bin/postsrsd -D -4 -f${SRS_FORWARD_PORT} -r${SRS_REVERSE_PORT} -d${SRS_DOMAIN} -s${SRS_SECRET} -u${RUN_AS} \
+    -c${CHROOT} -X${SRS_EXCLUDE_DOMAINS} -p/run/postsrsd/postsrsd.pid
+ 
+[Install]
+WantedBy=multi-user.target
