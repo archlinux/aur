@@ -1,0 +1,16 @@
+pkgbase = notify-desktop-git
+	pkgdesc = A replacement for notify-send with replaces-id support and less dependencies
+	pkgver = r16.90a4043
+	pkgrel = 1
+	url = https://github.com/nowrep/notify-desktop
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = libdbus
+	options = !emptydirs
+	source = git+https://github.com/nowrep/notify-desktop
+	sha256sums = SKIP
+
+pkgname = notify-desktop-git
+
