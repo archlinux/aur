@@ -2,7 +2,7 @@
 # Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname='tor-browser-ru'
-pkgver='4.5.1'
+pkgver='4.5.2'
 _language='ru'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -33,9 +33,9 @@ source=("https://www.torproject.org/dist/torbrowser/${pkgver}/tor-browser-linux$
         "${pkgname}.sh")
 
 if [[ "$CARCH" == 'x86_64' ]]; then
-   sha256sums=('18edd8fc59f4221aadeb3beb4964ca12788e76deea344056a480dcb6175e9e5b')
+   sha256sums=('7d7e08c27031aa13718f734c717e5ecbc9fbc7ffb588ebbea8687ed7f96dbe6f')
 else
-   sha256sums=('10ddf846984e80ec65a1bf29f480c3c82dc3ba23439d779619800101221a5de2')
+   sha256sums=('3dd256bd6659ceb3d64e245c52aed1dc8c6a8f4deb7f1e168fcba6804b242026')
 fi
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
