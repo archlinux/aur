@@ -1,0 +1,14 @@
+pkgbase = perl-grutatxt
+	pkgdesc = A plain text to HTML (and other formats) converter
+	pkgver = 2.0.16
+	pkgrel = 2
+	url = http://triptico.com/software/grutatxt.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	source = http://triptico.com/download/grutatxt/Grutatxt-2.0.16.tar.gz
+	md5sums = c4ed46b4470442bfdea312679d188eb6
+
+pkgname = perl-grutatxt
+
