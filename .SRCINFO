@@ -1,0 +1,19 @@
+pkgbase = coursera-dl-git
+	pkgdesc = Script for downloading Coursera.org videos and naming them
+	pkgver = 524.57fd3db
+	pkgrel = 2
+	url = https://github.com/coursera-dl/coursera/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-distribute
+	depends = python-requests
+	depends = python-six
+	optdepends = python-html5lib: recommended for parsing pages
+	source = git://github.com/coursera-dl/coursera.git
+	sha256sums = SKIP
+
+pkgname = coursera-dl-git
+
