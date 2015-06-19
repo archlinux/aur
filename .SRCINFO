@@ -1,0 +1,18 @@
+pkgbase = python2-ode
+	pkgdesc = User-friendly Python interface to ODE solvers
+	pkgver = 0.1a4
+	pkgrel = 1
+	url = http://web.engr.illinois.edu/~mrgates2/ode/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-numpy
+	depends = gcc-fortran
+	source = http://web.engr.illinois.edu/~mrgates2/ode/ode-0.1a4.tar.gz
+	source = http://web.engr.illinois.edu/~mrgates2/ode/ode.patch
+	md5sums = 4a706e6753902de3aef3986a81bbb803
+	md5sums = 26f67b7ce7b6251ef3d1e118d77f35ff
+
+pkgname = python2-ode
+
