@@ -1,0 +1,12 @@
+pkgbase = picojson-git
+	pkgdesc = a header-file-only, JSON parser serializer in C++
+	pkgver = v1.3.0.r6.gcc130fb
+	pkgrel = 1
+	url = https://github.com/kazuho/picojson
+	arch = any
+	license = BSD2
+	source = picojson::git+https://github.com/kazuho/picojson.git
+	md5sums = SKIP
+
+pkgname = picojson-git
+

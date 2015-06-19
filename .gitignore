@@ -1,0 +1,10 @@
+picojson/
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tgz
+*.rpm
+*.zip
+*.bz2
+*.deb
