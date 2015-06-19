@@ -1,0 +1,16 @@
+pkgbase = terminusmod
+	pkgdesc = Modified Terminus Font
+	pkgver = 1.9.9
+	pkgrel = 2
+	url = http://sourceforge.net/projects/terminusmod
+	install = terminusmod.install
+	arch = any
+	license = GPLv2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://sourceforge.net/projects/terminusmod/files/terminusmod-1.9.9.tar.gz
+	md5sums = 3c0ae977e531d7406702f60da124f51c
+
+pkgname = terminusmod
+
