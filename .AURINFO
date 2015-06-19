@@ -1,0 +1,28 @@
+pkgbase = python2-sfepy
+	pkgdesc = Simple Finite Elements in Python
+	pkgver = 2014.2
+	pkgrel = 1
+	url = http://sfepy.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = python2-distribute
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-pyparsing
+	depends = python2-matplotlib
+	depends = python2-pytables
+	depends = ipython2
+	depends = mayavi
+	depends = cython2
+	depends = python2-sympy
+	optdepends = umfpack
+	optdepends = pysparse
+	optdepends = gmsh
+	optdepends = tetgen
+	optdepends = python2-pexpect
+	source = http://sfepy.org/doc-devel/_static/downloads.php?fun=download2&ver=sfepy-2014.2.tar.gz
+
+pkgname = python2-sfepy
+
