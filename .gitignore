@@ -1,0 +1,9 @@
+go-cross-all-platforms-1.4.2/
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tgz
+*.rpm
+*.zip
+*.bz2
