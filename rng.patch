@@ -1,0 +1,15 @@
+diff -Nur carve-1.4.0.orig/tests/geom3d_unittest.cpp carve-1.4.0/tests/geom3d_unittest.cpp
+--- carve-1.4.0.orig/tests/geom3d_unittest.cpp	2011-08-27 06:17:26.000000000 +1000
++++ carve-1.4.0/tests/geom3d_unittest.cpp	2012-02-12 18:49:14.929357041 +1100
+@@ -31,9 +31,10 @@
+ 
+ #include BOOST_INCLUDE(random.hpp)
+ 
+-// OSX only.
+ uint32_t getseed() {
++#if defined(__APPLE__)
+   srandomdev();
++#endif
+   return random();
+ }
+ 

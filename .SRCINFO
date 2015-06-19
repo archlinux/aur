@@ -1,0 +1,22 @@
+pkgbase = carve
+	pkgdesc = Fast, robust constructive solid geometry library
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = http://code.google.com/p/carve/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = freeglut
+	depends = gcc-libs
+	optdepends = freeglut: carve-view
+	source = http://carve.googlecode.com/files/carve-1.4.0.tgz
+	source = boost.patch
+	source = rng.patch
+	md5sums = 5c3ea3b80e94adc549611f80e729acc9
+	md5sums = 126433e01f1eeef41a7b1b5e9c0207df
+	md5sums = b2f407c6d8e1fbc9d436a1fef4f611e3
+
+pkgname = carve
+
