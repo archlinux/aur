@@ -1,0 +1,41 @@
+--- Makefile	2008-08-03 15:20:34.000000000 +0530
++++ Makefile.1	2008-08-03 15:20:22.000000000 +0530
+@@ -3,20 +3,20 @@
+ CFLAGS=-g -Wall
+ 
+ # Install paths and command on recommendation from Peter Pentchev
+-INSTALL=/usr/bin/install -c
++INSTALL=/bin/install -c
+ 
+ # Some prefer /usr/local over /usr as installation root
+ #INSTALL_PATH=/usr/local
+-INSTALL_PATH=/usr
++INSTALL_PATH=$(DESTDIR)/usr
+ 
+ BINDIR=$(INSTALL_PATH)/bin
+-MAN1DIR=$(INSTALL_PATH)/man/man1
++MAN1DIR=$(INSTALL_PATH)/share/man/man1
+ 
+ # BSD might prefer this
+ # DOCPATH=$(INSTALL_PATH)/share/doc/hodie
+ 
+ # Linux might prefer this:
+-DOCDIR=$(INSTALL_PATH)/doc/packages/hodie
++DOCDIR=$(INSTALL_PATH)/share/doc/hodie
+ 
+ #############################
+ # End of user configuration #
+@@ -41,10 +41,10 @@
+ $(OBJECTS): $(HEADERS)
+ 
+ install: $(EXEC)
+-	$(INSTALL) -s -m 755 $(EXEC) $(BINDIR)
+-	install -m 644 hodie.1 $(MAN1DIR)
++	$(INSTALL) -D -m755 $(EXEC) $(BINDIR)/$(EXEC)
++	install -D -m644 hodie.1 $(MAN1DIR)/hodie.1
+ 	install -d $(DOCDIR)
+-	install -m 644 $(DOCS) $(DOCDIR)
++	install -m644 $(DOCS) $(DOCDIR)
+ 
+ uninstall:
+ 	-rm -f $(BINDIR)/$(EXEC)
