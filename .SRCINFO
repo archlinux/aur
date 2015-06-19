@@ -1,7 +1,7 @@
 pkgbase = ntpdate
 	pkgdesc = Client for the Network Time Protocol (NTP)
 	pkgver = 4.2.8.p2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ntp.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ntpdate
 	source = ntpdate.conf
 	source = ntpdate.service
 	source = restore-html2man.patch
-	sha256sums = 0b2953c7f68dca5a36183b2dbbeef091f2d074e12fb35007a10efd66787a8ab4
+	sha256sums = 0d69bc0e95caad43ea04fdad410e756bae1a71e67b1c2bd799b76b55e04c9b31
 	sha256sums = 1ddbf0f51e030c6ec48d50e1b0eb6682f2d51567fbbb8fdd695a0e38a6036fd7
 	sha256sums = 2267e19120de4a73703ed0d83a4a0088309600ce3fed88c3c17a950fa0c1aa85
 	sha256sums = c97469a1562db1ae3ef41b323021c9261ef87ed558a7f986fd0c4d6dc7b237f9
