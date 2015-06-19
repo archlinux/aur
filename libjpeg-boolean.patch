@@ -1,0 +1,36 @@
+--- a/plugins/djvJpegPlugin/djvJpegLoad.cpp
++++ b/plugins/djvJpegPlugin/djvJpegLoad.cpp
+@@ -215,14 +215,7 @@ bool jpegOpen(
+ 
+     libjpeg::jpeg_save_markers(jpeg, JPEG_COM, 0xFFFF);
+ 
+-    //! \todo How do we fix the windows/libjpeg TRUE name clash?
+-
+-    libjpeg::boolean b =
+-#if defined(DJV_WINDOWS)
+-        1;
+-#else
+-        libjpeg::TRUE;
+-#endif // DJV_WINDOWS
++    libjpeg::boolean b = 1;
+ 
+     if (! libjpeg::jpeg_read_header(jpeg, b))
+     {
+--- a/plugins/djvJpegPlugin/djvJpegSave.cpp
++++ b/plugins/djvJpegPlugin/djvJpegSave.cpp
+@@ -242,14 +242,7 @@ bool jpegOpen(
+ 
+     libjpeg::jpeg_set_defaults(jpeg);
+ 
+-    //! \todo How do we fix the windows/libjpeg TRUE name clash?
+-
+-    libjpeg::boolean b =
+-#if defined(DJV_WINDOWS)
+-        1;
+-#else
+-        libjpeg::TRUE;
+-#endif // DJV_WINDOWS
++    libjpeg::boolean b = 1;
+ 
+     libjpeg::jpeg_set_quality(jpeg, quality, b);
+     libjpeg::jpeg_start_compress(jpeg, b);
