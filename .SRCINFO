@@ -1,0 +1,26 @@
+pkgbase = perl-fusqlfs
+	pkgdesc = FusqlFS module which implements FUSE file system for database management. Supports PgSQL, MySQL and SQLite, can be extended to support other DBs.
+	pkgver = 0.009
+	pkgrel = 1
+	url = http://search.cpan.org/dist/FusqlFS
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	makedepends = perl-test-deep
+	depends = perl>=5.10.0
+	depends = perl-fuse
+	depends = perl-dbi
+	depends = perl-getopt-argvfile
+	optdepends = perl-dbd-mysql: MySQL backend support
+	optdepends = perl-dbd-pg: PgSQL backend support
+	optdepends = perl-dbd-sqlite: SQLite backend support
+	optdepends = perl-yaml-tiny: YAML output format support
+	optdepends = perl-xml-simple: XML output format support
+	optdepends = perl-yaml-syck: JSON output format support
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KS/KSTEPME/FusqlFS-0.009.tar.gz
+	md5sums = 2101520ba09b54157d7ffa1fc21bdd4a
+
+pkgname = perl-fusqlfs
+
