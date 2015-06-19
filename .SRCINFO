@@ -1,0 +1,20 @@
+pkgbase = rodent
+	pkgdesc = Lightweight, yet full of options filemanager, compatible with console commands
+	pkgver = 5.3.16.0
+	pkgrel = 1
+	url = http://xffm.org/
+	install = rodent.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	makedepends = intltool
+	makedepends = librsvg
+	depends = librfm5
+	depends = desktop-file-utils
+	optdepends = python2: for rfm-simple-agent
+	source = http://downloads.sourceforge.net/project/xffm/5.3.16.0/rodent-5.3.16.0.tar.bz2
+	md5sums = 12e12dbe475ae3847ffb05246c9e191a
+
+pkgname = rodent
+
