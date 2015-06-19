@@ -26,7 +26,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "knossos"
-	git describe --always --dirty --tags | sed 's/^v//;s/-/./g'
+	git describe --always --dirty --tags | sed 's/^v//;s/-/+/;s/-/./g'
 }
 
 build() {
