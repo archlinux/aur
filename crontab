@@ -1,0 +1,95 @@
+#!/usr/bin/python2
+
+import tempfile
+import sys
+import os
+import argparse
+import getpass
+
+EDITOR = (os.environ.get('EDITOR') or
+	  os.environ.get('VISUAL','/usr/bin/vim'))
+CRONTAB_DIR = '/var/spool/cron'
+
+args_parser = argparse.ArgumentParser(description='maintain crontab files for individual users')
+
+args_parser.add_argument('-u', '--user', type=str, dest='user', default=getpass.getuser(),
+        help='''It specifies the name of the user whose crontab is to be
+ tweaked. If this option is not given, crontab examines "your" crontab, i.e., the crontab of the person
+ executing the command. Note that su(8) can confuse crontab and that if you are running inside of su(8) you
+ should always use the -u option for safety's sake. The first form of this command is used to install a new
+ crontab from some named file or standard input if the pseudo-filename "-" is given.''')
+
+args_parser.add_argument('file', type=str, default='-', nargs='?')
+
+args_parser.add_argument('-l', '--list', dest='action', action='store_const', const='list',
+        help='''The current crontab will be displayed on standard output.''')
+
+args_parser.add_argument('-r', '--remove', dest='action', action='store_const', const='remove',
+        help='''The current crontab will be removed.''')
+
+args_parser.add_argument('-e', '--edit', dest='action', action='store_const', const='edit',
+        help='''This option is used to edit the current crontab using the editor
+ specified by the VISUAL or EDITOR environment variables. After
+ you exit from the editor, the modified crontab will be installed
+ automatically.''')
+
+args_parser.add_argument('-i', '--ask', dest='ask', action='store_true', default=False,
+        help='''This option modifies the -r option to prompt the user for a
+ 'y/Y' response before actually removing the crontab.''')
+
+#args_parser.add_argument('-s', '--secure', dest='secure', action='store_true', default=False,
+        #help='''It will append the current SELinux security context string as an
+ #MLS_LEVEL setting to the crontab file before editing / replacement occurs
+ #- see the documentation of MLS_LEVEL in crontab(5).''')
+
+def confirm(message):
+    while True:
+        answer = raw_input(message).lower()
+        if answer not in 'yn':
+            print('Please reply "y" or "n"')
+            continue
+
+        return answer == 'y'
+
+def list(cron_file, args):
+    with open(cron_file, 'r') as f:
+        sys.stdout.write(f.read())
+
+def remove(cron_file, args):
+    if not args.ask or confirm('Are you sure you want to delete %s (y/n)? ' % cron_file):
+        os.unlink(cron_file)
+
+def edit(cron_file, args):
+    with tempfile.NamedTemporaryFile() as tmp:
+        with open(cron_file, 'r') as inp:
+            tmp.file.write(inp.read())
+
+        tmp.file.flush()
+
+        if os.system("'%s' '%s'" % (EDITOR, tmp.name)) == 0:
+            tmp.file.seek(0)
+            with open(cron_file, 'w') as out:
+                out.write(tmp.file.read())
+
+def replace(cron_file, args):
+    infile = args.file
+    if infile == '-':
+        with open(cron_file, 'w') as out:
+            out.write(sys.stdin.read())
+
+    else:
+        with open(cron_file, 'w'), open(infile, 'r') as out, inp:
+            out.write(inp.read())
+
+if __name__ == '__main__':
+    args = args_parser.parse_args()
+    cron_file = os.path.join(CRONTAB_DIR, args.user)
+
+    action = {
+            'list': list,
+            'edit': edit,
+            'remove': remove,
+            }.get(args.action, replace)
+
+    action(cron_file, args)
+

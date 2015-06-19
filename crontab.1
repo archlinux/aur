@@ -1,0 +1,32 @@
+.TH CRONTAB 1 "2014-06-26" "" systemd-crontab-generator
+
+.SH NAME
+crontab - maintain crontab files for individual users
+
+.SH SYNOPSIS
+crontab [\-u user] file
+.br
+crontab [\-u user] [\-l | \-r | \-e] [\-i]
+
+.SH DESCRIPTION
+Crontab is the program used to let users install, deinstall or list
+recurrent jobs in the legacy cron format.
+.br
+Each user can have their own crontab, and though these are files in /var/spool/,
+they are not intended to be edited directly.
+.br
+These jobs are then automatically translated in systemd Timers & Units
+by systemd-crontab-generator.
+
+.SH FILES
+.TP
+.I /var/spool/cron
+Directory for users crontabs.
+
+.SH LIMITATIONS
+The \-s flag (SELinux) is not supported.
+.br
+/etc/cron.allow & /etc/cron.deny are not supported.
+
+.SH AUTHOR
+Alexandre Detiste <alexandre@detiste.be>
