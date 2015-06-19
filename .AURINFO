@@ -1,0 +1,17 @@
+pkgbase = python2-nodepy-git
+	pkgdesc = Python package for designing, analyzing, and testing numerical methods for initial value ODEs
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://numerics.kaust.edu.sa/nodepy/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-numpy
+	depends = python2-sympy
+	source = git://github.com/ketch/nodepy.git
+
+pkgname = python2-nodepy-git
+
