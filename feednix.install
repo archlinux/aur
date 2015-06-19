@@ -1,3 +1,6 @@
+post_install(){
+    chmod 700 $HOME/.config/feednix/config.json
+}
 post_update(){
         echo "NOTE: New config file saved as $HOME/.config/feednix/config.json.new"
 }

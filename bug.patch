@@ -1,0 +1,19 @@
+--- /home/jorge/main.cpp	2015-06-19 12:08:34.683450955 -0500
++++ /home/jorge/workspace/Feednix/src/main.cpp	2015-06-19 12:11:30.476793529 -0500
+@@ -17,7 +17,6 @@
+     system(std::string("rm -R " + TMPDIR + " 2> /dev/null").c_str());
+     if(curses != NULL)
+         curses->cleanup();
+-    std::cout << "Aborted.\nCheck log for details." << std::endl;
+ }
+ 
+ void sighandler(int signum){
+@@ -42,7 +41,7 @@
+ 
+     //Insure that config file and directory are present if not copy default into user home
+     if(fopen(std::string(std::string(HOME_PATH) + "/.config/feednix/config.json").c_str(), "r") == NULL){
+-        system(("mkdir -p " + HOME_PATH + "/config/feednix &> /dev/null").c_str());
++        system(("mkdir -p " + HOME_PATH + "/.config/feednix &> /dev/null").c_str());
+         system(("cp /etc/xdg/feednix/config.json " + HOME_PATH + "/.config/feednix").c_str());
+         system(("chmod 600 " + HOME_PATH + "/.config/feednix/config.json").c_str());
+     }

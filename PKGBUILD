@@ -2,8 +2,8 @@
 # Contributor: Jorge Martinez Hernandez <jorgemartinezhernandez@gmail.com>
 
 pkgname=feednix
-pkgver=v1.0
-pkgrel=8
+pkgver=1.1
+pkgrel=1
 pkgdesc="A simple ncurses-based console client for Feedly"
 
 arch=('i686' 'x86_64')
@@ -14,43 +14,31 @@ optdepends=('w3m: for post preview on command line')
 makedepends=('autoconf' 'automake')
 conflicts=('feednix-git')
 install='feednix.install'
-md5sums=('a4144178f97aa1cb288886a75bca0da4'
-         '7ae4f47db57888146958b574082cd45c'
-         'e019131964e92e5145d3f3e2e2987d3b'
-         'f7a8e589a3bc4ee807642e70fa82e9cd')
-source=('https://downloads.sourceforge.net/project/feednix/Feednix/feednix-1.0.tar.gz'
-        'abort-error.patch'
-        'preview-error.patch'
-        'autogen.patch')
+md5sums=('dd5aa9c550f7f229cc53ef7010523015'
+        '28c0d860262dca62ef26c6cc15bdb650')
+source=('https://github.com/Jarkore/Feednix/archive/v1.1.tar.gz'
+        'bug.patch')
 
 prepare(){
+    cd ${srcdir}/Feednix-${pkgver}/src
+    patch -uN < ${srcdir}/bug.patch 
 
-    cd "${srcdir}/Feednix/src"
-    patch -uN < $srcdir/abort-error.patch
-    patch -uN < $srcdir/preview-error.patch
-
-    cd ..
-    patch -uN < $srcdir/autogen.patch
 }
 
 build(){
-        cd Feednix
-        ./autogen.sh
-        ./configure
-        make
+    cd ${srcdir}/Feednix-${pkgver}/
+    ./autogen.sh
+    ./configure
+    make
 }
 
 package(){
-        cd "${srcdir}/Feednix"
-        make PREFIX=/usr DESTDIR="${pkgdir}" install
+    cd ${srcdir}/Feednix-${pkgver}/
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
 
-        if [[ ! -d "/etc/xdg/feednix" ]]; then
-                install -D -m755 config.json "${pkgdir}/etc/xdg/feednix/config.json"
-        fi 
+    if [[ ! -d "/etc/xdg/feednix" ]]; then
+        install -D -m755 config.json "${pkgdir}/etc/xdg/feednix/config.json"
+    fi 
 
-        if [[ -f "$HOME/.config/feednix/config.json" ]]; then
-                install -o $USER -g $USER -D -m600 config.json "${pkgdir}/${HOME}/.config/feednix/config.json.new"
-        fi
-
-        install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/feednix/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/feednix/LICENSE"
 }
