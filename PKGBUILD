@@ -1,7 +1,7 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=whippet
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A launcher and xdg-open replacement for control freaks. Opens files and URLs with applications associated by name and/or mimetype. Applications and associations may be customized using an SQLite database."
 arch=('any')
@@ -14,6 +14,7 @@ md5sums=('36178e5419ca9f2a1d981e62a91a1f7f')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
+  gzip ${pkgname}.1
   install -Dm755 ${pkgname}                  "$pkgdir/usr/bin/${pkgname}"
   install -Dm644 ${pkgname}.png              "$pkgdir/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 ${pkgname}.desktop          "$pkgdir/usr/share/applications/${pkgname}.desktop"
