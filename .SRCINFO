@@ -1,6 +1,6 @@
 pkgbase = kfortune-git
 	pkgdesc = kernel-space remake of the popular fortune program
-	pkgver = r39.0217400
+	pkgver = r40.15e546c
 	pkgrel = 1
 	url = https://github.com/vojtechkral/kfortune
 	install = install
