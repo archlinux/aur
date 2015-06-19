@@ -1,8 +1,8 @@
 pkgbase = openocd-git-libftdi
 	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices -using libftdi instead of ftd2xx
-	pkgver = 20140604
+	pkgver = r132.8fd59d7
 	pkgrel = 1
-	url = http://openocd.berlios.de/web/
+	url = http://openocd.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = openocd-git-libftdi
 	makedepends = automake>=1.11
 	makedepends = tcl
 	depends = libftdi
+	depends = hidapi
 	provides = openocd
 	conflicts = openocd
 	options = !strip
