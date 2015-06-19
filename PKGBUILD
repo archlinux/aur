@@ -4,7 +4,7 @@ pkgver=0.1
 pkgrel=1
 pkgdesc="search in arch wiki from command line"
 arch=('any')
-url="https://github.com/deadhead420/archlinux/blob/master/wiki"
+url="https://github.com/deadhead420/archlinux"
 license=('GPL')
 depends=('bash')
 optdepends=(
@@ -12,7 +12,7 @@ optdepends=(
   'elinks: to view the wiki inside your shell'
   'links: to view the wiki inside your shell'
 )
-source='https://raw.githubusercontent.com/deadhead420/archlinux/master/wiki/wiki.sh'
+source='https://raw.githubusercontent.com/deadhead420/archlinux/master/wiki.sh'
 md5sums=('13269023719830461f164fabb5d349b3')
 
 package() {
