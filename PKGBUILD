@@ -1,8 +1,9 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Sergio A. Morales <sergiomorales@archlinux.cl>
+
 pkgname=389-admin
-pkgver=1.1.38
+pkgver=1.1.42
 pkgrel=1
 pkgdesc="389 Administration Server HTTP agent"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ url="http://directory.fedoraproject.org/"
 license=('GPL')
 depends=('389-ds-base' '389-adminutil' 'mod_nss' 'perl-mozldap')
 source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2")
-sha256sums=('25229fe1c0f709cc0ff14e0015d897f956876835d30d08cd6034f71e41aa1721')
+sha256sums=('4caf0671ca5f456a9778ba547c8d3e3b370005fa7bdc37b229c546d0f57850c1')
 
 build() {
   cd $pkgname-$pkgver
@@ -39,3 +40,5 @@ package() {
   mv "$pkgdir"/etc/rc.d/init.d/dirsrv-admin "$pkgdir"/etc/rc.d/dirsrv-admin
   rm -rf "$pkgdir"/etc/rc.d/init.d
 }
+
+# vim:set ts=2 sw=2 et:
