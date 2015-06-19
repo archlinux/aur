@@ -5,7 +5,7 @@
 
 pkgname=yum-metadata-parser
 pkgver=1.1.4
-pkgrel=7
+pkgrel=8
 pkgdesc="C-based metadata parser to quickly parse xml metadata into sqlite databases."
 arch=('i686' 'x86_64')
 license=('GPL')
