@@ -9,6 +9,7 @@ pkgbase = shotcut-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-declarative
+	depends = qt5-graphicaleffects
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols
 	depends = qt5-webkit
