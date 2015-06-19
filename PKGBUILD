@@ -7,6 +7,7 @@ pkgdesc="Config files defining IPv4 public DNS for systemd's DNS resolver"
 arch=('any')
 url="https://github.com/jamesan/aur-pkgs/tree/master/$pkgname"
 license=('GPL')
+install="$pkgname.install"
 source=(
     comodo-secure-dns.conf
     dns-advantage.conf
