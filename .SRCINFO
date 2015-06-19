@@ -1,0 +1,23 @@
+pkgbase = kreogist-mu
+	pkgdesc = Fantastic cross-platform music manager
+	pkgver = 0.8(unstable)
+	pkgrel = 7
+	epoch = 0
+	url = https://kreogist.github.io/Mu/
+	changelog = kreogist-mu.changelog
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = pulseaudio
+	depends = ffmpeg
+	depends = phonon-qt5
+	depends = gst-libav
+	depends = gstreamer0.10-ffmpeg
+	optdepends = gst-plugins-good: good plugin libraries
+	optdepends = gst-plugins-bad: bad plugin libraries
+	optdepends = gst-plugins-ugly: ugly plugin libraries
+	source = https://github.com/frantic1048/mu-archlinux/raw/master/kreogist-mu-0.8(unstable).tar.gz
+	md5sums = 59ca29c0f5db6f0394ac967975948aff
+
+pkgname = kreogist-mu
+
