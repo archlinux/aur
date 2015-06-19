@@ -1,6 +1,6 @@
 #Maintainer: Alexey Stukalov <astukalov@gmail.com>
 pkgname=smartgit
-pkgver=6.5.8
+pkgver=6.5.9
 pkgrel=1
 pkgdesc="Git/Hg GUI client written in Java."
 arch=("any")
@@ -17,7 +17,7 @@ _pkgfolder=${pkgname}
 source=(https://www.syntevo.com/downloads/${pkgname}/${pkgname}-generic-${_pkgver}.tar.gz
         smartgit.desktop)
 install="smartgit.install"
-md5sums=('84ebfa3fbd5e039b740971c511f705ce'
+md5sums=('a54a45a4124028be6b77c5a573adf5fc'
          'c372fb0864ce6010c92f75910acbe8d0')
 
 package() {
