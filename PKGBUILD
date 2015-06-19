@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=howl-editor-git
-pkgver=0.2.1.468.gbbcea7b
+pkgver=0.2.1.472.g02b936b
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
 url='http://howl.io/'
 license=('MIT')
-depends=('gtk3' 'desktop-file-utils')
+depends=('gtk3' 'desktop-file-utils' 'coffee-script')
 makedepends=('git' 'wget')
 provides=('howl-editor')
 conflicts=('howl-editor')
