@@ -1,0 +1,15 @@
+pkgbase = tinc-pre-systemd
+	pkgdesc = systemd unit files for aur/tinc-pre
+	pkgver = 3
+	pkgrel = 1
+	url = http://www.tinc-vpn.org
+	arch = any
+	license = GPL3
+	depends = tinc-pre
+	source = tincd@.service
+	source = tincd.service
+	md5sums = 8029b9d35e0abe980d4677c41647f395
+	md5sums = db9bbc5ccfc1b2af12ff048db151e289
+
+pkgname = tinc-pre-systemd
+
