@@ -2,7 +2,7 @@
 # Contributor: Sean Greenslade <zootboysean@gmail.com>
 
 pkgdesc='Utilities for building arch packages for ROS stacks.'
-url=http://www.ros.org
+url="https://github.com/bchretien/arch-ros-stacks"
 
 pkgname='ros-build-tools'
 pkgver='0.1.0'
