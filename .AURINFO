@@ -1,0 +1,23 @@
+pkgbase = python2-odespy-git
+	pkgdesc = Easy access in Python to a large collection of ODE solvers.
+	pkgver = 0.2.0.r147.1db410c
+	pkgrel = 1
+	url = http://hplgit.github.io/odespy/doc/web/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-setuptools
+	makedepends = gcc-fortran
+	depends = python2
+	depends = python2-numpy
+	optdepends = python2-nose: necessary for basic tests
+	optdepends = python2-sympy: used in Sympy_odefun
+	optdepends = python2-scipy: necessary for Vode, Dopri5 and Dop853 solvers
+	optdepends = python2-scitools: plot curves in demos
+	optdepends = python2-odelab
+	provides = python2-odespy
+	conflicts = python2-odespy
+	source = git+https://github.com/hplgit/odespy.git
+
+pkgname = python2-odespy-git
+
