@@ -46,7 +46,7 @@ package() {
     
     cd "${srcdir}"/${pkgname}-${pkgver}-stable
 
-    install -D -m755 bin/godot.x11.tools.${_arch} "${pkgdir}"/usr/bin/godot
+    install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
     install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot/LICENSE
 }
 
