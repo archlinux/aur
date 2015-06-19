@@ -3,7 +3,7 @@
 
 pkgname=pharo
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk"
 arch=(i686 x86_64)
 url="http://www.pharo-project.org/"
@@ -16,7 +16,7 @@ fi
 
 source=(http://files.pharo.org/platform/Pharo${pkgver}-linux.zip $pkgname.desktop)
 
-md5sums=('b8cc96d9963b66f1d1486f47794db87a'\
+md5sums=('5ffa099bcfe774e4a2cbd5e5807c4ebe'\
 		'1447999d37a6d87ddddc2f99d9781bbc')
 
 package() {
