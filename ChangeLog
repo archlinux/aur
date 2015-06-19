@@ -1,0 +1,23 @@
+2015-03-19 FoolEcho <foolecho@gmail.com>
+
+	* 1.1.0.2-2 :
+	Use of local.
+
+2015-03-06 FoolEcho <foolecho@gmail.com>
+
+	* 1.1.0.2-1 :
+	Game updated to 1.4.
+
+2014-12-22 FoolEcho <foolecho@gmail.com>
+
+	* 1.0.0.1-3 :
+	libpulse added as optional dependency (i686).
+
+	* 1.0.0.1-2 :
+	Added lib32-libpulse as optional dependency (for pulseaudio users).
+	Description: typo.
+
+2014-11-06 FoolEcho <foolecho@gmail.com>
+
+	* 1.0.0.1-1 :
+	First release.

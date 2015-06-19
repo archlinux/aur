@@ -1,0 +1,20 @@
+pkgbase = gog-icewind-dale-enhanced-edition
+	pkgdesc = Icewind Dale: Enhanced Edition is a classic RPG running through the Spine of the World of the Forgotten Realms. GOG Version. Linux native.
+	pkgver = 1.1.0.2
+	pkgrel = 2
+	url = http://www.gog.com/game/icewind_dale_enhanced_edition
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-glibc
+	depends = lib32-alsa-lib
+	depends = lib32-libgl
+	optdepends = lib32-libpulse: pulseaudio support
+	source = local://gog_icewind_dale_enhanced_edition_1.1.0.2.tar.gz
+	source = gog-icewind-dale-enhanced-edition
+	md5sums = f46925947ffda89b02d660078a296a3d
+	md5sums = 0ccf31e1428606487b2ea9079e69da03
+
+pkgname = gog-icewind-dale-enhanced-edition
+
