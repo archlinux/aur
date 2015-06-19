@@ -1,0 +1,18 @@
+pkgbase = nfsshell
+	pkgdesc = Userland NFS command tool
+	pkgver = 19980519
+	pkgrel = 1
+	url = http://www.paramecium.org/~leendert/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = readline
+	source = http://www.cs.vu.nl/pub/leendert/nfsshell.tar.gz
+	source = gcc.patch
+	source = LICENSE
+	md5sums = d447235518691fc3176ce89a6d836ce7
+	md5sums = 33481c081308673963d52762febe0cc2
+	md5sums = d1305abf7d53b470f136495cfc1480ae
+
+pkgname = nfsshell
+
