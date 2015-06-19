@@ -1,0 +1,29 @@
+--- page.c.orig	1999-04-12 07:45:26.000000000 +1000
++++ page.c	2008-02-18 17:03:21.000000000 +1100
+@@ -31,7 +31,7 @@
+ 
+ #if ( !defined(sgi) && !defined(_AIX) &&!defined(__USE_BSD))
+ extern int	sys_nerr;
+-extern char *	sys_errlist[];
++extern const char *const	sys_errlist[];
+ #endif
+ 
+ static const char *
+@@ -70,7 +70,7 @@
+ 	 */
+ 	allocation = (caddr_t) mmap(
+ 	 startAddr
+-	,(int)size
++	,size
+ 	,PROT_READ|PROT_WRITE
+ 	,MAP_PRIVATE|MAP_ANONYMOUS
+ 	,-1
+@@ -122,7 +122,7 @@
+ 	 */
+ 	allocation = (caddr_t) mmap(
+ 	 startAddr
+-	,(int)size
++	,size
+ 	,PROT_READ|PROT_WRITE
+ 	,MAP_PRIVATE
+ 	,devZeroFd

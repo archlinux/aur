@@ -1,0 +1,12 @@
+--- efence.c.orig	1999-04-13 11:00:49.000000000 +1000
++++ efence.c	2008-02-18 17:01:45.000000000 +1100
+@@ -271,7 +271,9 @@
+ 	char *	string;
+ 	Slot *	slot;
+ 
++#if 0
+ 	EF_Print(version);
++#endif
+ 
+ #ifdef USE_SEMAPHORE
+ 	if (sem_init(&EF_sem, 0, 1) >= 0) {
