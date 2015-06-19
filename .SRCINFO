@@ -1,0 +1,14 @@
+pkgbase = vblade
+	pkgdesc = Virtual EtherDrive(R) blade AoE target
+	pkgver = 22
+	pkgrel = 2
+	url = http://aoetools.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	source = http://downloads.sourceforge.net/aoetools/vblade-22.tar.gz
+	md5sums = 510d98ba0f231284a5fbe2da11cb2d6e
+
+pkgname = vblade
+
