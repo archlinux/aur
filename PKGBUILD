@@ -1,4 +1,5 @@
-# Maintainer: Daniel Wallace <daniel.wallace at gatech dot edu> <- In AUR this have 4690 votes, but was a troll and now fixed
+# Contributor: Daniel Wallace <daniel.wallace at gatech dot edu>
+# Once In AUR3 this package used to have 4690 votes, but was a troll and now fixed
 # Maintainer: Pablo Lezaeta <prflr88 @ gmail . com> (Pony Provider)
 
 pkgname=ponysay-git
