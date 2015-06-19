@@ -1,0 +1,19 @@
+pkgbase = rss2email-wking
+	pkgdesc = A tool for delivering news from RSS feeds to your email program
+	pkgver = 3.9
+	pkgrel = 1
+	url = https://github.com/wking/rss2email
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-html2text
+	depends = python-feedparser
+	conflicts = rss2email
+	conflicts = rss2email-git
+	conflicts = rss2email-xdg-git
+	options = zipman
+	source = https://github.com/wking/rss2email/archive/v3.9.zip
+	md5sums = 33884132e027c224bd1ce3097c1f60ee
+
+pkgname = rss2email-wking
+
