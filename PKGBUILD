@@ -10,6 +10,7 @@ license=('GPL3')
 depends=(
     'qt5-base'
     'qt5-declarative'
+    'qt5-graphicaleffects'
     'qt5-multimedia'
     'qt5-quickcontrols'
     'qt5-webkit'
