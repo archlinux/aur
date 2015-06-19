@@ -1,0 +1,16 @@
+pkgbase = cowloop
+	pkgdesc = Utilities for copy-on-write loop driver (block device) to be used on top of any other block driver
+	pkgver = 3.2.0.1
+	pkgrel = 2
+	url = http://www.atcomputing.nl/Tools/cowloop/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kernel26-headers>=2.6.31
+	depends = glibc
+	depends = kernel26>=2.6.31
+	source = http://www.atcomputing.nl/Tools/cowloop/packages/cowloop-3.2.0.1.tar.gz
+	md5sums = a64f1411fe5e968ded40b5476ff948b3
+
+pkgname = cowloop
+
