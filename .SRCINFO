@@ -1,6 +1,6 @@
 pkgbase = apachedirectorystudio
 	pkgdesc = Eclipse based LDAP browser and directory client
-	pkgver = 2.0.0.v20130628
+	pkgver = 2.0.0.v20150606
 	pkgrel = 1
 	url = http://directory.apache.org/studio/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = apachedirectorystudio
 	license = Apache
 	depends = java-runtime
 	depends = gtk2
-	source = http://www.apache.org/dist/directory/studio/dist/2.0.0.v20130628/ApacheDirectoryStudio-linux--2.0.0.v20130628.tar.gz
+	source = http://www.us.apache.org/dist/directory/studio/2.0.0.v20150606-M9/ApacheDirectoryStudio-2.0.0.v20150606-M9-linux.gtk..tar.gz
 
 pkgname = apachedirectorystudio
 
