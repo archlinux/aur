@@ -1,0 +1,14 @@
+pkgbase = xcursor-green-apparatus
+	pkgdesc = Green (Blue, Red, and Yellow) Apparatus X Cursor Theme
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://s0ury.deviantart.com/art/J-Aroche-s-G-A-Converted-88491633
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxcursor
+	source = http://fc02.deviantart.net/fs30/f/2008/164/0/1/J_Aroche__s_G_A__Converted_by_s0ury.zip
+	md5sums = 6d59a65d1d84f68ba458932c41291b29
+
+pkgname = xcursor-green-apparatus
+
