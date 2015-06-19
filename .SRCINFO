@@ -1,0 +1,25 @@
+pkgbase = python-pyramid
+	pkgdesc = Pyramid is a very general open source Python web framework.
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = http://www.pylonsproject.org/
+	arch = any
+	license = custom:BSD
+	depends = python
+	depends = python-mako
+	depends = python-webob
+	depends = python-repoze.lru
+	depends = python-zope-deprecation
+	depends = python-zope-interface
+	depends = python-venusian
+	depends = python-translationstring
+	depends = python-setuptools
+	optdepends = python-pyramid-debugtoolbar: development mode
+	optdepends = python3-paste-deploy: pserve/pcreate
+	optdepends = python3-chameleon: pserve/pcreate
+	optdepends = python-waitress: pserve/pcreate
+	source = https://pypi.python.org/packages/source/p/pyramid/pyramid-1.5.7.tar.gz
+	sha256sums = c1302d5ccb6833e8794ddb649aa9bb64d86c05adb127c93e329f8863907449b4
+
+pkgname = python-pyramid
+
