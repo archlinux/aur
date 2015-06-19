@@ -1,0 +1,13 @@
+pkgbase = sqlpp11
+	pkgdesc = A type safe embedded domain specific language for SQL queries and results in C++
+	pkgver = 0.34
+	pkgrel = 1
+	url = https://github.com/rbock/sqlpp11
+	arch = any
+	license = BSD
+	makedepends = cmake
+	source = https://github.com/rbock/sqlpp11/archive/0.34.tar.gz
+	sha256sums = ba102151a5afba6a5133785f994b3edc1096592688bedbe018ed2fff5d9a699b
+
+pkgname = sqlpp11
+
