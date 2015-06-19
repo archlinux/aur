@@ -1,0 +1,17 @@
+pkgbase = autopsy
+	pkgdesc = The Autopsy Forensic Browser is a GUI for The Sleuth Kit.
+	pkgver = 2.24
+	pkgrel = 5
+	url = http://www.sleuthkit.org/autopsy
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = sleuthkit
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/autopsy/autopsy-2.24.tar.gz
+	source = autopsy.pl
+	md5sums = 4ed18aa9f79453d74957b5db220d0d59
+	md5sums = e5c67fdd92c6203c0c34ff5b07269aef
+
+pkgname = autopsy
+
