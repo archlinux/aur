@@ -1,5 +1,5 @@
 # Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/pkgbuilds
+# Submit issues/pull requests at https://github.com/crumblingstatue/aur-mingw-w64-sdl2
 
 pkgname=mingw-w64-sdl2
 pkgver=2.0.3
