@@ -1,0 +1,20 @@
+# This file was orignially written for Debian, and can be copied, used,
+# modified and redistributed under the same licence as SeaView itself.
+
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=seaview
+Exec=seaview %f
+Name=SeaView
+GenericName=Multiple sequence alignment editor
+GenericName[en]=Multiple sequence alignment editor
+GenericName[fr]=Éditeur d'alignements multiples de séquences
+GenericName[pt_BR]=Editor de alinhamento múltiplo de seqüências
+Comment=Edits multiple sequence alignments and prints them in PostScript format.
+Comment[en]=Edits multiple sequence alignments and prints them in PostScript format.
+Comment[fr]=Édite des aligmements multiples de séquences et les imprime au format PostScript.
+Comment[pt_BR]=Edita múltiplos alinhamentos de seqüências e os imprimem em formato PostScript.
+Type=Application
+Categories=Biology;Science;Education;
+MimeType=text/x-clustalw-alignment;

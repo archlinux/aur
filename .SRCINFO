@@ -1,0 +1,22 @@
+pkgbase = seaview
+	pkgdesc = GUI for multiple sequence alignment and molecular phylogeny
+	pkgver = 4.5.4
+	pkgrel = 1
+	url = http://doua.prabi.fr/software/seaview
+	install = seaview.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = shared-mime-info
+	depends = fltk
+	optdepends = clustal-omega: alignment
+	optdepends = muscle: alignment
+	source = ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/seaview/archive/seaview_4.5.4.tar.gz
+	source = seaview.desktop
+	source = seaview.sharedmimeinfo
+	md5sums = 9c7797be6349bd5ad5dfa30297d3bd71
+	md5sums = 94f13509470dd69f053ffc178884e292
+	md5sums = 9592a71ee55fa6edfbaddbce2d5469b9
+
+pkgname = seaview
+

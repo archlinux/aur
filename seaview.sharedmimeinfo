@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="text/x-clustalw-alignment">
+    <sub-class-of type="text/plain"/>
+    <comment>Multiple sequence alignment in Clustal W format</comment>
+    <comment xml:lang="fr">Alignement multiple de séquences au format Clustal W</comment>
+    <magic priority="50">
+      <match type="string" offset="0" value="CLUSTAL"/>
+    </magic>
+    <glob pattern="*.aln"/>
+  </mime-type>
+</mime-info>
