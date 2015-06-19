@@ -4,7 +4,7 @@
 pkgname=deepin-music
 pkgver=1.1.20150413165956
 _srcdirname=deepin-music-player-1.1+20150413165956~fa225d345b
-pkgrel=1
+pkgrel=3
 pkgdesc='Awesome music player with brilliant and tweakful UI Deepin-UI based.'
 arch=('any')
 url="https://gitcafe.com/Deepin/deepin-music"
@@ -37,7 +37,7 @@ package() {
            'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins'
            'mutagen' 'python2-chardet' 'python2-pyquery' 'python2-cssselect'
            'python2-dbus' 'sonata' 'cddb-py' 'python2-scipy' 'python2-pycurl'
-           'python2-xlib' 'python2-keybinder2' 'python2-deepin-music-player' 'desktop-file-utils')
+           'python2-xlib' 'python2-keybinder2' 'python2-deepin-ui' 'desktop-file-utils')
 
   cd "${_srcdirname}"
 
