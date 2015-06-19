@@ -1,0 +1,17 @@
+pkgbase = python-pydde-git
+	pkgdesc = A solver for delay differential equations written in Python and C.
+	pkgver = 0.2.2.r13.g602c0aa
+	pkgrel = 1
+	url = https://github.com/hensing/PyDDE
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	depends = python-numpy
+	provides = python-pydde
+	conflicts = python-pydde
+	source = git+https://github.com/hensing/PyDDE.git
+
+pkgname = python-pydde-git
+
