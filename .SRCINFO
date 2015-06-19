@@ -1,0 +1,13 @@
+pkgbase = tlocate
+	pkgdesc = mlocate rewritten using only GNU coreutils, sudo and bash with proper btrfs subvolume handling, semi-arbitrary filtering and other improvements
+	pkgver = r4.4bcb781
+	pkgrel = 1
+	url = https://github.com/crossroads1112/tlocate
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/crossroads1112/tlocate.git
+	md5sums = SKIP
+
+pkgname = tlocate
+
