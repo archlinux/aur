@@ -1,0 +1,18 @@
+pkgbase = netresolve-git
+	pkgdesc = Network name resolution library
+	pkgver = r220.6f6d053
+	pkgrel = 1
+	url = http://www.sourceware.org/netresolve
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = c-ares
+	depends = unbound
+	source = git://sourceware.org/git/netresolve.git
+	source = wrapper-paths.patch
+	sha256sums = SKIP
+	sha256sums = 078bebb4e277a32df1b996f0b232661da19600b535d9624024578e73e18b0f85
+
+pkgname = netresolve-git
+

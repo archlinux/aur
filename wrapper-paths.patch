@@ -1,0 +1,11 @@
+--- usr/bin/wrapresolve~	2014-12-30 22:09:44.486739673 +0100
++++ usr/bin/wrapresolve	2014-12-30 22:10:02.110073407 +0100
+@@ -3,7 +3,7 @@
+ # Compatibility wrapper for netresolve that runs a program with libc functions
+ # replaced by netresolve based implementations.
+
+-export LD_PRELOAD="libnetresolve-libc.so libnetresolve-asyncns.so"
++export LD_PRELOAD="/usr/lib/libnetresolve-libc.so /usr/lib/libnetresolve-asyncns.so"
+
+ while [ $# -gt 0 ]; do
+     case "$1" in
