@@ -1,0 +1,15 @@
+pkgbase = libopencl
+	pkgdesc = AMD OpenCL library and ICD loader
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = libcl
+	conflicts = libcl
+	conflicts = nvidia-utils
+
+pkgname = libopencl
+
