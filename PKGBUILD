@@ -3,9 +3,9 @@
 # Contributor: Mamut Ghiunhan <venerix [at] gmail [dot] com> (Previous Maintainer)
 
 pkgname=nvidia-lts-ck
-pkgver=352.09
+pkgver=352.21
 _extramodules=extramodules-3.14-lts-ck
-pkgrel=3
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-lts-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
