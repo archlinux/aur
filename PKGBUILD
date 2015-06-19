@@ -1,6 +1,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Dag Odenhall <dag.odenhall@gmail.com>
 # Contributor: Giorgio Lando <patroclo7@gmail.com>
+# Maintainer: dawidd6 <d6dziurla@vp.pl>
 
 pkgname=sic
 pkgver=1.2
