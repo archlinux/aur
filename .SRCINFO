@@ -1,0 +1,15 @@
+pkgbase = evrouter
+	pkgdesc = An Input Event Router for Linux
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://www.bedroomlan.org/~alexios/coding_evrouter.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automake>=1.10.1
+	depends = libxtst
+	source = http://debian.bedroomlan.org/debian/pool/main/e/evrouter/evrouter_0.4.tar.gz
+	md5sums = eef1b9d8e3b545c330eb025670ffa3e8
+
+pkgname = evrouter
+
