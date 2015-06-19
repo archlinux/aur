@@ -5,7 +5,10 @@ pkgbase = nxt-git
 	url = http://nxt.org
 	install = nxt.install
 	arch = any
-	license = MIT/GPL
+	license = MIT
+	license = GPL
+	license = MPL
+	license = APACHE
 	makedepends = java-environment-openjdk=8
 	depends = bash
 	depends = java-runtime-openjdk=8

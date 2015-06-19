@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The Nxt Reference Software Client for use with the Nxt Cryptocurrency."
 arch=('any')
 url="http://nxt.org"
-license=('MIT/GPL')
+license=('MIT' 'GPL' 'MPL' 'APACHE')
 depends=('bash' 'java-runtime-openjdk=8')
 makedepends=('java-environment-openjdk=8')
 optdepends=('flashplugin: for add to clipboard support')
@@ -29,10 +29,15 @@ build() {
 }
 
 package() {
-  # Copy to /opt/nxt
+  # Copy everything to /opt/nxt
   install -dm755 "$pkgdir/opt/nxt"
   cp -r "${pkgname}"/* "$pkgdir"/opt/nxt/
 
-  # Copy service file
-  install -Dm644 nxt.service  "$pkgdir/usr/lib/systemd/system/nxt.service"
+  # Service file
+  install -Dm644 nxt.service "$pkgdir/usr/lib/systemd/system/nxt.service"
+
+  # License files
+  install -Dm644 "${pkgname}/COPYING.txt" "$pkgdir/usr/share/licenses/nxt/COPYING.txt"
+  install -Dm644 "${pkgname}/3RD-PARTY-LICENSES.txt" "$pkgdir/usr/share/licenses/nxt/3RD-PARTY-LICENSES.txt"
+  install -Dm644 "${pkgname}/LICENSE.txt" "$pkgdir/usr/share/licenses/nxt/LICENSES.txt"
 }
