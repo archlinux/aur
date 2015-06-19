@@ -1,6 +1,6 @@
 pkgbase = pesign-git
 	pkgdesc = Tools for manipulating signed PE-COFF binaries - GIT Version
-	pkgver = 0.110.9.g2a1de2b
+	pkgver = 0.110.12.g8854461
 	pkgrel = 1
 	url = https://github.com/rhinstaller/pesign
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pesign-git
 	depends = efivar
 	depends = popt
 	depends = nss
-	provides = pesign=0.110.9.g2a1de2b
+	provides = pesign=0.110.12.g8854461
 	conflicts = pesign
 	options = !strip
 	options = !emptydirs
