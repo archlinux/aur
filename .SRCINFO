@@ -1,0 +1,13 @@
+pkgbase = python2-appy
+	pkgdesc = a bunch of tools for developing python applications
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = http://appyframework.org/
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://launchpad.net/appy/0.8/0.8.5/+download/appy-0.8.5.zip
+	md5sums = 92aa226442e8b42fc04897e91f035634
+
+pkgname = python2-appy
+
