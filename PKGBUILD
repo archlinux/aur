@@ -1,18 +1,17 @@
 pkgname=infer
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Static Analyzer by Facebook"
 arch=('x86_64')
 url="https://github.com/facebook/infer"
 license=('BSD')
 depends=('python2' 'java-environment' 'bash')
 source=("https://github.com/facebook/infer/releases/download/v${pkgver}/infer-linux64-v${pkgver}.tar.xz")
-sha256sums=('75e0765b0b91a27fa37fb9cb33e080dc4b2247eb327484d508b572fcbd8af7ce')
+sha256sums=('ce61012f005e2c5d41919761814451ac6198a0b646c2795d7e2cad9bd2110e2b')
 
 
 build() {
 	cd "$pkgname-linux64-v$pkgver"
-	find . -type f -print0 | xargs -0 sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|g'
 }
 
 package() {
