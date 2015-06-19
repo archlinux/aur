@@ -1,0 +1,19 @@
+pkgbase = libcm
+	pkgdesc = A compositing manager library
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://ftp.gnome.org/pub/GNOME/sources/libcm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = libgl
+	depends = libxcomposite
+	depends = libxdamage
+	depends = mesa
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/libcm/0.1/libcm-0.1.1.tar.bz2
+	md5sums = a975d0a913dd882c0a93487b534782bc
+
+pkgname = libcm
+
