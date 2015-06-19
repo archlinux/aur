@@ -1,0 +1,31 @@
+pkgbase = qt5-python27-git
+	pkgdesc = PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)
+	pkgver = 3.0
+	pkgrel = 2
+	url = https://github.com/knossos-project/PythonQt
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = ninja
+	depends = python2
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-webkit
+	depends = qt5-xmlpatterns
+	provides = qt5-python27
+	provides = pythonqt
+	conflicts = pythonqt
+	replaces = qt5-python26
+	replaces = qt5-python25
+	replaces = qt5-python24
+	replaces = qt5-python23
+	replaces = qt5-python22
+	replaces = qt5-python21
+	replaces = qt5-python20
+	source = git+https://github.com/knossos-project/PythonQt.git
+	md5sums = SKIP
+
+pkgname = qt5-python27-git
+

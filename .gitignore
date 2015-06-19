@@ -1,0 +1,7 @@
+# makepkg folders
+src
+pkg
+PythonQt
+
+# generated packages
+*.tar.*
