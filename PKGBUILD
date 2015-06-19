@@ -4,10 +4,10 @@ pkgname=ipe
 _sfproject=ipe7
 _dirver=7.1
 pkgver=7.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
-depends=('lua' 'qt4' 'freetype2' 'zlib' 'poppler' 'python2')
+depends=('lua52' 'qt4' 'freetype2' 'zlib' 'poppler' 'python2')
 arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
@@ -20,7 +20,7 @@ source=("http://downloads.sourceforge.net/project/$_sfproject/$pkgname/$_dirver/
 md5sums=('8c31313ec839fb7958b4a627634c907e'
          '3bc8dc576ee3acced2ff3c6ea6a01319'
          '694f0d5402655901be385647e5d8d6e3'
-         'af3db2930ff57decb63cd322a845b025')
+         'c163912a81062e0d9b7ffcfbdfdce7e0')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/src"

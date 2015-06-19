@@ -1,31 +1,24 @@
---- config.mak	2014-05-07 00:28:31.000000000 -0700
-+++ ../../../ipe-7.1.5/src/config.mak	2014-05-07 07:08:11.675366079 -0700
-@@ -31,7 +31,7 @@
+--- config.mak	2015-02-23 05:02:13.000000000 -0800
++++ /home/users/morozov/config.mak	2015-06-19 10:31:32.271140419 -0700
+@@ -34,7 +34,7 @@
  #
  # The name of the Lua package (it could be "lua", "lua52", or "lua5.2")
  #
 -LUA_PACKAGE   ?= lua5.2
-+LUA_PACKAGE   ?= lua
++LUA_PACKAGE   ?= lua52
  #
  ZLIB_CFLAGS   ?=
  ZLIB_LIBS     ?= -lz
-@@ -57,7 +57,7 @@
+@@ -62,7 +62,7 @@
  # If you have different Qt versions installed, you may have to change
- # this to "moc-qt4" if the default is Qt3's "moc".
+ # this to "moc-qt4"
  #
 -MOC	      ?= moc
 +MOC	      ?= moc-qt4
  #
  else
  #
-@@ -76,13 +76,13 @@
- 	 -I/usr/X11/include/libpng12
- CAIRO_LIBS ?= -L/usr/X11/lib -lcairo
- LUA_CFLAGS ?= -I/usr/local/include
--LUA_LIBS   ?= -L/usr/local/lib -llua52 -lm
-+LUA_LIBS   ?= -L/usr/local/lib -llua -lm
- QT_CFLAGS  ?= -I/Library/Frameworks/QtCore.framework/Versions/4/Headers \
- 	      -I/Library/Frameworks/QtGui.framework/Versions/4/Headers
+@@ -89,7 +89,7 @@
  QT_LIBS    ?= -F/Library/Frameworks -L/Library/Frameworks \
  	      -framework QtCore -framework ApplicationServices \
  	      -framework QtGui -framework AppKit -framework Cocoa -lz -lm
