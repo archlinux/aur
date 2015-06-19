@@ -1,0 +1,27 @@
+pkgbase = atraci-bin
+	pkgdesc = An application that lets you listen instantly to more than 60 million songs
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://getatraci.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libnotify
+	optdepends = libudev.so.0: install it if Atraci does not run correctly
+	conflicts = atraci-git
+	conflicts = atraci
+	options = !strip
+	source = atraci.desktop
+	source = atraci.install
+	source = atraci.png
+	md5sums = abb9ee963a310dde90b24250163d1e89
+	md5sums = 57a030ed14fb00d3df2a74bc499680e9
+	md5sums = ca605a2dfdec42b086201731c7315daa
+	source_i686 = https://github.com/Atraci/Atraci/releases/download/0.7.0/Atraci-linux32.tar.gz
+	md5sums_i686 = c30ce89dc54a919c92bcc206570319bd
+	source_x86_64 = https://github.com/Atraci/Atraci/releases/download/0.7.0/Atraci-linux64.tar.gz
+	md5sums_x86_64 = 4170610f99a02dd74338a7f4527a7f35
+
+pkgname = atraci-bin
+

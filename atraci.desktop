@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Atraci
+GenericName=Music player
+Comment=An application that lets you listen to songs instantly
+Exec=atraci %U
+Categories=AudioVideo;Audio;Player;Network;
+Icon=atraci
+Terminal=false
+Type=Application
