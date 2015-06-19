@@ -1,0 +1,34 @@
+diff -Nur JPype-0.5.4.1.orig/src/python/jpype/_jclass.py JPype-0.5.4.1/src/python/jpype/_jclass.py
+--- JPype-0.5.4.1.orig/src/python/jpype/_jclass.py	2008-02-01 09:11:30.000000000 +1100
++++ JPype-0.5.4.1/src/python/jpype/_jclass.py	2010-10-21 11:55:37.000000000 +1100
+@@ -16,7 +16,6 @@
+ #*****************************************************************************
+ import _jpype, _jexception, _jcollection
+ from _pykeywords import KEYWORDS
+-import sets
+ 
+ 
+ _CLASSES = {}
+@@ -158,7 +157,7 @@
+ 				i.customize(name, jc, bases, members)
+ 		
+ 		# remove multiple bases that would cause a MRO problem
+-		toRemove = sets.Set()
++		toRemove = set()
+ 		for c in bases :
+ 			for d in bases :
+ 				if c == d :
+diff -Nur JPype-0.5.4.1.orig/src/python/jpype/_pykeywords.py JPype-0.5.4.1/src/python/jpype/_pykeywords.py
+--- JPype-0.5.4.1.orig/src/python/jpype/_pykeywords.py	2008-02-01 09:11:30.000000000 +1100
++++ JPype-0.5.4.1/src/python/jpype/_pykeywords.py	2010-10-21 11:55:16.000000000 +1100
+@@ -15,9 +15,7 @@
+ #   
+ #*****************************************************************************
+ 
+-import sets
+-
+-KEYWORDS = sets.Set( (
++KEYWORDS = set( (
+     "del", "for", "is", "raise",
+     "assert", "elif", "from", "lambda", "return",   
+     "break", "else", "global", "not", "try",

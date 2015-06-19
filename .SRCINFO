@@ -1,0 +1,18 @@
+pkgbase = jpype
+	pkgdesc = Allow Python programs full access to Java class libraries
+	pkgver = 0.5.4.2
+	pkgrel = 2
+	url = http://jpype.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = python2-distribute
+	depends = java-environment
+	depends = python2
+	source = http://downloads.sourceforge.net/project/jpype/JPype/0.5.4/JPype-0.5.4.2.zip
+	source = sets.patch
+	md5sums = 2b34c008268c05fcb01ef612f42f65ac
+	md5sums = 04d64be7b92d7c6b7adb354a36c2b6f2
+
+pkgname = jpype
+
