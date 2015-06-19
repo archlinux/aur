@@ -1,6 +1,6 @@
 pkgbase = ropper-git
 	pkgdesc = Show information about binary files and find gadgets to build rop chains for different architectures
-	pkgver = 1.5.2.122.d950ffd
+	pkgver = 1.6.2.170.266a808
 	pkgrel = 1
 	url = https://github.com/sashs/Ropper
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ropper-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-capstone
-	depends = sqlite
+	optdepends = sqlite: gadgets database support
 	provides = ropper
 	conflicts = ropper
 	source = ropper-git::git+https://github.com/sashs/Ropper
