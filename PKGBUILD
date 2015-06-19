@@ -8,16 +8,16 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.8.beta4.r0.g06dbbff
+pkgver=6.8.beta5.r0.g05875d5
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.sagemath.org"
-license=('GPL')
-depends=('ipython2' 'ppl' 'glpk' 'mpfi' 'palp' 'polybori' 'singular' 'libcliquer' 'maxima-ecl' 'gfan' 'sympow' 'tachyon' 'python2-rpy2'
-  'python2-matplotlib' 'python2-scipy' 'python2-sympy' 'python2-networkx' 'libgap' 'gap' 'flintqs' 'lcalc' 'lrcalc'
-  'eclib' 'gmp-ecm' 'zn_poly' 'gd' 'python2-cvxopt' 'pynac' 'linbox' 'gsl' 'rubiks' 'pari-galdata' 'pari-seadata-small' 'planarity'
-  'sage-data-combinatorial_designs' 'sage-data-elliptic_curves' 'sage-data-graphs' 'sage-data-polytopes_db' 'sage-data-conway_polynomials')
+license=(GPL)
+depends=(ipython2 ppl glpk mpfi palp polybori singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
+  python2-cvxopt python2-matplotlib python2-scipy python2-sympy python2-networkx libgap gap flintqs lcalc lrcalc
+  eclib gmp-ecm zn_poly gd pynac linbox gsl rubiks pari-galdata pari-seadata-small planarity rankwidth
+  sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
 optdepends=('cython2: to compile cython code'
 	'jmol: 3D plots'
 	'sage-notebook: Browser-based (flask) notebook interface'
@@ -35,10 +35,10 @@ optdepends=('cython2: to compile cython code'
 	'coxeter3: Coxeter groups implementation'
 	'cryptominisat: SAT solver'
 	'arb: floating-point ball arithmetic')
-makedepends=('cython2-devel' 'boost' 'ratpoints' 'symmetrica' 'fflas-ffpack' 'python2-jinja' 'coin-or-cbc'
-  'mcqd' 'coxeter3' 'cryptominisat' 'arb' 'modular_decomposition' 'bliss-graphs')
-conflicts=('sagemath')
-provides=('sagemath' 'sage-mathematics')
+makedepends=(cython2-devel boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
+  mcqd coxeter3 cryptominisat arb modular_decomposition bliss-graphs)
+conflicts=(sagemath)
+provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
 "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" 'anal.h'
 'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
