@@ -1,0 +1,16 @@
+pkgbase = python-grab
+	pkgdesc = Grab - Web Scraping Framework
+	pkgver = 0.6.19
+	pkgrel = 1
+	url = http://github.com/lorien/grab
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pycurl
+	depends = python-lxml
+	depends = python-cssselect
+	source = https://pypi.python.org/packages/source/g/grab/grab-0.6.19.tar.gz
+	sha256sums = 4d77969ff085e6ca089d166115ab8fe50922fcb822e6a8e49d62e094cac970b8
+
+pkgname = python-grab
+
