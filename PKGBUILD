@@ -3,7 +3,7 @@
 
 pkgname=python-pyramid-debugtoolbar
 _pkgname=pyramid_debugtoolbar
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='Interactive HTML debugger for Pyramid application development'
 arch=('any')
@@ -14,11 +14,11 @@ depends=('python'
 	 'python-pygments')
 makedepends=('python-distribute')
 source=(https://pypi.python.org/packages/source/p/pyramid_debugtoolbar/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('38c4ae0524b7e045f816c96697369849c0f8562e3f1ae0fbaf168b53b2105ea3')
+sha256sums=('6ea0ffd2736d9c5dc8da4cb289c9eec87cac090b91ed717dc0127e9850f3191f')
 
 build(){
   cd ${srcdir}/${_pkgname}-${pkgver}
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
