@@ -1,8 +1,8 @@
 # Maintainer: Frantic1048 <dev_frantic1048@163.com>
 
 pkgname=kreogist-mu
-pkgver='0.8(unstable)'
-pkgrel=7
+pkgver='0.8'
+pkgrel=8
 epoch=0
 pkgdesc="Fantastic cross-platform music manager"
 changelog="kreogist-mu.changelog"
@@ -22,11 +22,11 @@ optdepends=(
   'gst-plugins-ugly: ugly plugin libraries'
 )
 changelog=$pkgname.changelog
-source=("https://github.com/frantic1048/mu-archlinux/raw/master/$pkgname-$pkgver.tar.gz")
-md5sums=('59ca29c0f5db6f0394ac967975948aff')
+source=("https://github.com/frantic1048/mu-archlinux/releases/download/$pkgver/$pkgname-$pkgver-$arch.7z")
+md5sums=('ef52dc72deacb1286f5ad221dfeb24c2')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver-$arch"
   install -d  "${pkgdir}/usr/bin/"
   install -m=775 $pkgname "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
