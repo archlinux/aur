@@ -1,0 +1,25 @@
+From e7f2324175d6abe3334c8c3144a27bea6de7f024 Mon Sep 17 00:00:00 2001
+From: Laurent Ribon <laurent.ribon@gmail.com>
+Date: Mon, 17 Jun 2013 09:39:36 +0200
+Subject: [PATCH] Remove unecessary #include <OpenGL/glu.h>
+
+---
+ examples/example11/glc_declarativeitem.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/examples/example11/glc_declarativeitem.cpp b/examples/example11/glc_declarativeitem.cpp
+index a77a04e..790bd49 100644
+--- a/examples/example11/glc_declarativeitem.cpp
++++ b/examples/example11/glc_declarativeitem.cpp
+@@ -11,8 +11,6 @@
+ #include <GLC_Exception>
+ #include <GLC_Factory>
+ 
+-#include <OpenGL/glu.h>
+-
+ #include "glc_declarativeitem.h"
+ 
+ #ifndef GL_MULTISAMPLE
+-- 
+1.8.5.2
+

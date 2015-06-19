@@ -1,0 +1,19 @@
+pkgbase = glc-lib
+	pkgdesc = OpenGL Library Class
+	pkgver = 2.5.0
+	pkgrel = 2
+	url = http://www.glc-lib.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = mesa
+	depends = qt4
+	source = https://github.com/laumaya/GLC_lib/archive/Version_2_5_0.zip
+	source = glu.patch
+	source = zlib.patch
+	md5sums = 0cb9fc5609fcbcbb2148e50377d8bf0d
+	md5sums = 80bb3acdf8a360a3169ac268acee463d
+	md5sums = 687ed819254496d964ce9e9d3a5e672a
+
+pkgname = glc-lib
+
