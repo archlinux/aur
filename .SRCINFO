@@ -1,0 +1,26 @@
+pkgbase = ipe
+	pkgdesc = The extensible drawing editor
+	pkgver = 7.1.7
+	pkgrel = 2
+	url = http://tclab.kaist.ac.kr/ipe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lua
+	depends = qt4
+	depends = freetype2
+	depends = zlib
+	depends = poppler
+	depends = python2
+	conflicts = ipe
+	source = http://downloads.sourceforge.net/project/ipe7/ipe/7.1/ipe-7.1.7-src.tar.gz
+	source = http://hg.mrzv.org/IpePresenter/archive/d0b0ea368ce9.tar.gz
+	source = ipe.bash-completion
+	source = config.patch
+	md5sums = 8c31313ec839fb7958b4a627634c907e
+	md5sums = 3bc8dc576ee3acced2ff3c6ea6a01319
+	md5sums = 694f0d5402655901be385647e5d8d6e3
+	md5sums = af3db2930ff57decb63cd322a845b025
+
+pkgname = ipe
+

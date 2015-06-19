@@ -1,0 +1,16 @@
+have ipe &&
+_ipe()
+{
+    local cur xspec
+
+    COMPREPLY=()
+    _get_comp_words_by_ref cur
+    
+    xspec="!*.@(ipe|pdf|eps)"
+
+    _expand || return 0
+
+    COMPREPLY=( $( compgen -f -X "$xspec" -- "$cur" ) \
+        $( compgen -d -- "$cur" ) )
+} &&
+complete -F _ipe -o filenames ipe
