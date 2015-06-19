@@ -1,0 +1,14 @@
+pkgbase = admesh
+	pkgdesc = Program for processing STL triangulated solid meshes
+	pkgver = 0.98.2
+	pkgrel = 1
+	url = https://github.com/admesh/admesh/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://github.com/admesh/admesh/releases/download/v0.98.2/admesh-0.98.2.tar.gz
+	md5sums = a90692eb6dc5289e95949bbbca3e37e9
+
+pkgname = admesh
+
