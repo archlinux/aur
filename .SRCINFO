@@ -1,0 +1,14 @@
+pkgbase = yakuake-skin-ethais
+	pkgdesc = An oxygen-style theme for Yakuake
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Yakuake+Ethais+KDE4?content=129282
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = yakuake
+	source = http://kde-look.org/CONTENT/content-files/129282-ethais.tar.gz
+	md5sums = e7b11e1885cac7ce33a1a9d60f974fd0
+
+pkgname = yakuake-skin-ethais
+
