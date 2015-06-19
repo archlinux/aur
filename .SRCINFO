@@ -1,12 +1,13 @@
 pkgbase = lio-utils
 	pkgdesc = deprecated low-level configuration tool set for LIO (Target and iSCSI)
 	pkgver = 4.1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://linux-iscsi.org/wiki/Lio-utils
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = python2
+	optdepends = lio-snmp: monitor lio with snmp
 	conflicts = targetcli-fb
 	backup = etc/target/tcm_start.sh
 	backup = etc/target/lio_start.sh

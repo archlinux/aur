@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=lio-utils
 pkgver=4.1
-pkgrel=10
+pkgrel=11
 epoch=
 pkgdesc="deprecated low-level configuration tool set for LIO (Target and iSCSI)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python2')
 # for binary packages including lio-snmp in this package might be fine
 #makedepends=('net-snmp')
-#optdepends=("net-snmp: monitor lio with snmp")
+optdepends=("lio-snmp: monitor lio with snmp")
 provides=()
 conflicts=('targetcli-fb')
 replaces=()
