@@ -1,0 +1,23 @@
+pkgbase = iup
+	pkgdesc = C cross platform GUI toolkit
+	pkgver = 3.14
+	pkgrel = 1
+	url = http://www.tecgraf.puc-rio.br/iup/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libcd
+	optdepends = lua: bindings for Lua are available
+	optdepends = cd: for additional controls support
+	optdepends = im: for advanced imaging support
+	optdepends = mesa: for OpenGL support
+	options = staticlibs
+	source = http://downloads.sourceforge.net/project/iup/3.14/Docs%20and%20Sources/iup-3.14_Sources.tar.gz
+	source = http://heanet.dl.sourceforge.net/project/iup/3.14/Docs%20and%20Sources/iup-3.14_Docs.pdf
+	source = makfiles.patch
+	md5sums = fce0f918d6e48a01521173f7f8b687a1
+	md5sums = 3c96de1263691a5a6b42bcadb12513f2
+	md5sums = 9c50f5376fe5cc0f459ec0148c452c57
+
+pkgname = iup
+
