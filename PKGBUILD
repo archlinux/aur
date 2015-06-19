@@ -2,11 +2,11 @@
 # Maintainer: dkaylor <dpkaylor@gmail.com>
 
 pkgname=md5deep
-pkgver=4.3
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Advanced checksum hashing tool"
-url="http://md5deep.sourceforge.net"
+url="https://github.com/jessek/hashdeep"
 license=('Public Domain')
 
 # Copyright and license stuff:
@@ -22,24 +22,25 @@ license=('Public Domain')
 # As such, md5deep exists in the public domain under 17 USC 105.
 
 depends=('glibc')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-
-md5sums=('f172e686ca1df83a53308ad90f7f706d')
-sha1sums=('b9dd6444f07c9fc344ebef201baebdf71bda337f')
-sha256sums=('905bcf8bddf0e7e2650b280d5e7af8cb8cd41dad4f299751dfec397dcb4f8d54')
-sha512sums=('fe1240e6ae039b18d35a9de0cf15fb77eaac9d5505b6b550eb32858bf6d603f8186de06114d40325d5071640f46cec70795e9c192fa7b6ca9022a12c212a9b14')
-
+source=("https://github.com/jessek/hashdeep/archive/release-$pkgver.tar.gz")
+md5sums=('9ccfd5ba3e3d9cffddeb118cacad0c27')
+sha1sums=('cb4e313352974299c32bc55fe56396adb74517ef')
+sha256sums=('dbda8ab42a9c788d4566adcae980d022d8c3d52ee732f1cbfa126c551c8fcc46')
+sha512sums=('c37ec85ed04d4452f9038f43434c02e064cf9e17c4eaa233867dba0236443922a14ccb8ec76c68820087751c2ca3db014d3f17dd8fcd2c2bde84d620aae50de1')
 
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir/hashdeep-release-$pkgver"
+  
+  sh ./bootstrap.sh
 
   ./configure --prefix=/usr
+
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir/hashdeep-release-$pkgver"
 
   make DESTDIR=$pkgdir install
 }
