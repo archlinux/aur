@@ -1,0 +1,22 @@
+pkgbase = xtables-addons
+	pkgdesc = Successor to patch-o-matic(-ng). Additional extensions for iptables, ip6tables, etc. CHAOS, TARPIT, TEE, DELUDE and other targets; condition, geoip, ipp2p and other matches. Includes ipset package.
+	pkgver = 2.6
+	pkgrel = 3
+	url = http://xtables-addons.sourceforge.net/
+	install = xtables-addons.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-api-headers
+	makedepends = linux-headers
+	depends = iptables>=1.4.5
+	depends = glibc
+	depends = linux>=3.7
+	provides = ipset
+	conflicts = ipset
+	replaces = ipset
+	source = http://download.sourceforge.net/project/xtables-addons/Xtables-addons/2.6/xtables-addons-2.6.tar.xz
+	md5sums = 087835ba7e564481b6fd398692268340
+
+pkgname = xtables-addons
+
