@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-git
-pkgver=1.3.r11.5e6d796
+pkgver=1.3.r64.ab03cbc
 _pkgver=1.3
 pkgrel=1
 pkgdesc="plugins from picard-plugins repository (except contrib)"
