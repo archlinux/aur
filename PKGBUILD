@@ -12,9 +12,9 @@
 
 pkgbase=linux-libre-rt      # Build stock -rt kernel
 _pkgbasever=4.0-gnu
-_pkgver=4.0.4-gnu
+_pkgver=4.0.5-gnu
 _rtbasever=4.0
-_rtpatchver=rt1
+_rtpatchver=rt4
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64' 'mips64el')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -46,17 +46,14 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch'
-        'i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch'
-        'fix-typo-in-intel-sst.patch'
         # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
         "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch"
         "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig")
 sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
-            'e447de9a53c5aefd25f0474f3304ab87076b88353badaae20dcbd85712e85e61'
+            '5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172'
             'SKIP'
-            'd69e0a95e30acc679343593a0c9d8eb9caf874cc2a97ae599691aef4e5a589f7'
+            '9503166ca9cfc71b3d05d3c86a650a42f730f28d62eb04e77443d67a70f5d2df'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -69,9 +66,6 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             '5bf34aee37178508394885b9b8f870c5ace955aca18f3d5ccc25fea876d8b334'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b8911ed02e9f463bdff9dfe0dde84f0b3a9650aa989a5e9a6c4fad67a0ce19c9'
-            '396e6adf67143770881d0609633e40a8bf3e462ca6e539773466a561940d84d8'
-            'a2bb8b48f0ddcd432f2ac62bef731357c29d106f2d32efa92ef571476d722216'
             '13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22'
             'SKIP')
 validpgpkeys=(
@@ -115,15 +109,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # https://bugzilla.kernel.org/show_bug.cgi?id=98501
-  patch -Np1 -i "${srcdir}/md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch"
-
-  # stop a bogus WARN_ON with i915
-  patch -p1 -i "${srcdir}/i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch"
-
-  # fix a typo in soc/intel/sst/sst.c
-  patch -p1 -i "${srcdir}/fix-typo-in-intel-sst.patch"
 
   # Adding loongson-community patch
   if [ "${CARCH}" == "mips64el" ]; then
