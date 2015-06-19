@@ -1,0 +1,16 @@
+pkgbase = randompd
+	pkgdesc = Command-line utillity for quickly adding a random track to your mpd playlist.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/mkroman/randompd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = libmpdclient
+	source = git+https://github.com/mkroman/randompd.git#tag=v0.2
+	sha1sums = SKIP
+
+pkgname = randompd
+
