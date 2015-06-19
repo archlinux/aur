@@ -16,10 +16,10 @@ sha256sums=('f1560a284541feb720c3ae35b6b31f80c2be5cb9ca86b3a1ee9459846f821ada')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python2 ./setup.py build
+    python2 setup.py build
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python2 ./setup.py install --prefix="${pkgdir}/usr"
+    python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
