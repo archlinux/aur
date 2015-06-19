@@ -1,23 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kipi-plugins-frameworks-git
-pkgver=5.0.0.r10379.18f6765
+pkgver=5.0.0.r10442.a077aeb
 pkgrel=1
-pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam, Gwenview, and KPhotoalbum. KF5 Frameworks branch (GIT version)"
+pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam, Gwenview, and KPhotoalbum. KF5 Frameworks branch. (GIT version)"
+arch=('i686' 'x86_64')
 url='http://www.digikam.org/sharedlibs'
-arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('libkdcraw-frameworks-git' 'libkexiv2-frameworks-git' 'libkipi-frameworks-git' 'libkvkontakte-frameworks-git' 'threadweaver')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'kparts')
+depends=('libkdcraw-frameworks-git' 'libkexiv2-frameworks-git' 'libkipi-frameworks-git' 'threadweaver')
+optdepends=('libkvkontakte-frameworks-git: VKontakte.ru Exporter plugin'
+            'hugin: Panaorama plugin')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git')
 conflicts=('kipi-plugins')
-source=("git://anongit.kde.org/kipi-plugins#branch=frameworks")
+source=('git://anongit.kde.org/kipi-plugins#branch=frameworks')
 sha1sums=('SKIP')
-install="kipi-plugins-frameworks-git.install"
+install=kipi-plugins-frameworks-git.install
 
 pkgver() {
   cd kipi-plugins
-  _ver="$(cat CMakeLists.txt | grep -e KIPIPLUGINS_MAJOR_VERSION -e KIPIPLUGINS_MINOR_VERSION -e KIPIPLUGINS_PATCH_VERSION | head -n3 | cut -d '"' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _MAJOR_VERSION -e _MINOR_VERSION -e _PATCH_VERSION | cut -d '"' -f2 | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare(){
@@ -36,5 +38,5 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR=${pkgdir} install
+  make -C build DESTDIR="${pkgdir}" install
 }
