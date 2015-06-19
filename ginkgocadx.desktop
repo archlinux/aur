@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ginkgo CADx
+GenericName=DICOM viewer
+Comment=Complete DICOM viewer solution
+Exec=ginkgocadx
+Icon=ginkgocadx
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;Viewer;
+X-KDE-StartupNotify=true

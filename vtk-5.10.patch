@@ -1,0 +1,279 @@
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/cadxcore.vcproj ginkgocadx-2.14.0.4972/src/cadxcore/cadxcore.vcproj
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/cadxcore.vcproj	2012-06-26 21:57:36.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/cadxcore.vcproj	2012-06-30 21:40:28.122990260 +1000
+@@ -1718,14 +1718,6 @@
+ 				Name="vtk"
+ 				>
+ 				<File
+-					RelativePath=".\vtk\hackimageactor.cpp"
+-					>
+-				</File>
+-				<File
+-					RelativePath=".\vtk\hackimageactor.h"
+-					>
+-				</File>
+-				<File
+ 					RelativePath=".\vtk\vtkginkgoimageviewer.cpp"
+ 					>
+ 				</File>
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/cadxcore.xcodeproj/project.pbxproj ginkgocadx-2.14.0.4972/src/cadxcore/cadxcore.xcodeproj/project.pbxproj
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/cadxcore.xcodeproj/project.pbxproj	2012-06-26 21:56:19.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/cadxcore.xcodeproj/project.pbxproj	2012-06-30 21:40:48.223299698 +1000
+@@ -23,7 +23,6 @@
+ 		073FA0241331160800CC2CDB /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 073F9DF0133115CB00CC2CDB /* sqlite3.c */; };
+ 		073FA0251331160800CC2CDB /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 073F9DF3133115CB00CC2CDB /* stdafx.cpp */; };
+ 		073FA0261331160800CC2CDB /* ginkgoimagecommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 073F9DF7133115CB00CC2CDB /* ginkgoimagecommand.cpp */; };
+-		073FA0271331160800CC2CDB /* hackimageactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 073F9DF9133115CB00CC2CDB /* hackimageactor.cpp */; };
+ 		073FA0281331160800CC2CDB /* ginkgointeractorstyleimage2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 073F9DFC133115CB00CC2CDB /* ginkgointeractorstyleimage2d.cpp */; };
+ 		073FA0291331160800CC2CDB /* vtkginkgoimageviewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 073F9DFE133115CB00CC2CDB /* vtkginkgoimageviewer.cpp */; };
+ 		073FA02A1331160800CC2CDB /* vtkopenglginkgotexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 073F9E00133115CB00CC2CDB /* vtkopenglginkgotexture.cpp */; };
+@@ -437,8 +436,6 @@
+ 		073F9DF4133115CB00CC2CDB /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
+ 		073F9DF7133115CB00CC2CDB /* ginkgoimagecommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ginkgoimagecommand.cpp; sourceTree = "<group>"; };
+ 		073F9DF8133115CB00CC2CDB /* ginkgoimagecommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ginkgoimagecommand.h; sourceTree = "<group>"; };
+-		073F9DF9133115CB00CC2CDB /* hackimageactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hackimageactor.cpp; sourceTree = "<group>"; };
+-		073F9DFA133115CB00CC2CDB /* hackimageactor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hackimageactor.h; sourceTree = "<group>"; };
+ 		073F9DFC133115CB00CC2CDB /* ginkgointeractorstyleimage2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ginkgointeractorstyleimage2d.cpp; sourceTree = "<group>"; };
+ 		073F9DFD133115CB00CC2CDB /* ginkgointeractorstyleimage2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ginkgointeractorstyleimage2d.h; sourceTree = "<group>"; };
+ 		073F9DFE133115CB00CC2CDB /* vtkginkgoimageviewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vtkginkgoimageviewer.cpp; sourceTree = "<group>"; };
+@@ -1451,8 +1448,6 @@
+ 			isa = PBXGroup;
+ 			children = (
+ 				073F9DF6133115CB00CC2CDB /* command */,
+-				073F9DF9133115CB00CC2CDB /* hackimageactor.cpp */,
+-				073F9DFA133115CB00CC2CDB /* hackimageactor.h */,
+ 				073F9DFB133115CB00CC2CDB /* interactor */,
+ 				073F9DFE133115CB00CC2CDB /* vtkginkgoimageviewer.cpp */,
+ 				073F9DFF133115CB00CC2CDB /* vtkginkgoimageviewer.h */,
+@@ -2577,7 +2572,6 @@
+ 				073FA0241331160800CC2CDB /* sqlite3.c in Sources */,
+ 				073FA0251331160800CC2CDB /* stdafx.cpp in Sources */,
+ 				073FA0261331160800CC2CDB /* ginkgoimagecommand.cpp in Sources */,
+-				073FA0271331160800CC2CDB /* hackimageactor.cpp in Sources */,
+ 				073FA0281331160800CC2CDB /* ginkgointeractorstyleimage2d.cpp in Sources */,
+ 				073FA0291331160800CC2CDB /* vtkginkgoimageviewer.cpp in Sources */,
+ 				073FA02A1331160800CC2CDB /* vtkopenglginkgotexture.cpp in Sources */,
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/vtk/hackimageactor.cpp ginkgocadx-2.14.0.4972/src/cadxcore/vtk/hackimageactor.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/vtk/hackimageactor.cpp	2012-06-26 21:56:20.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/vtk/hackimageactor.cpp	1970-01-01 10:00:00.000000000 +1000
+@@ -1,93 +0,0 @@
+-/*
+- *  
+- *  $Id$
+- *  Ginkgo CADx Project
+- *
+- *  Copyright 2008-10 MetaEmotion S.L. All rights reserved.
+- *  http://ginkgo-cadx.com
+- *
+- *  This file is licensed under LGPL v3 license.
+- *  See License.txt for details
+- *
+- *  Code based in VTK
+- */
+-#include "hackimageactor.h"
+-#include <vtkRenderWindow.h>
+-#include <vtkgl.h>
+-
+-vtkHackedTempImageActor::vtkHackedTempImageActor(vtkImageActor* realActor)
+-{
+-	vtkHackedTempImageActor* realhia =  ((vtkHackedTempImageActor* ) ((vtkOpenGLImageActor*)realActor) );
+-	m_IdTextura = realhia->Index;
+-	m_vtkRenderWindow = realhia->RenderWindow;
+-	
+-	m_TextureDimensions[0] = realhia->TextureSize[0];
+-	m_TextureDimensions[1] = realhia->TextureSize[1];
+-	this->SetReferenceCount(0);
+-
+-}
+-
+-vtkHackedTempImageActor::~vtkHackedTempImageActor()
+-{
+-}
+-
+-long vtkHackedTempImageActor::GetTextureId() const
+-{
+-	return m_IdTextura;
+-}
+-
+-const int* vtkHackedTempImageActor::GetTextureDimensions() const
+-{
+-	return m_TextureDimensions;
+-}
+-
+- vtkHackedTempImageActor::operator long () const
+-{
+-	return m_IdTextura;
+-}
+-
+-bool vtkHackedTempImageActor::TextureDefined() const
+-{
+- const unsigned int tid = m_IdTextura;
+-
+- if (m_vtkRenderWindow == NULL)
+-	 return false;
+-
+- return tid != 0;
+-}
+-
+- bool vtkHackedTempImageActor::TextureLoaded() const
+- {
+-	 int width;
+-	 if (m_IdTextura != 0) {
+-		glEnable(GL_TEXTURE_2D);
+-		glBindTexture(GL_TEXTURE_2D, m_IdTextura);
+-		glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+-		glBindTexture(GL_TEXTURE_2D, 0);
+-
+-		// Supermegahackkkkkkkkkk!
+-		if (glGetError() != 0)
+-			return false;
+-
+-		glDisable(GL_TEXTURE_2D);
+-		if (width == m_TextureDimensions[0]) {
+-			return true;
+-		}
+-		else {
+-			return false;
+-		}
+-	 }
+-	 return true;
+-
+-	/* 
+-	GLboolean resident = GL_FALSE;
+-	 const unsigned int tid = m_IdTextura;
+-	 if (tid != 0) {
+-		glAreTexturesResident(1, &tid, &resident);
+-	 }
+-	 else {
+-		 resident = GL_TRUE;
+-	 }
+-	 return (resident == GL_TRUE);
+-	 */
+- }
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/vtk/hackimageactor.h ginkgocadx-2.14.0.4972/src/cadxcore/vtk/hackimageactor.h
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/vtk/hackimageactor.h	2012-06-26 21:56:20.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/vtk/hackimageactor.h	1970-01-01 10:00:00.000000000 +1000
+@@ -1,46 +0,0 @@
+-/*
+- *  
+- *  $Id$
+- *  Ginkgo CADx Project
+- *
+- *  Copyright 2008-10 MetaEmotion S.L. All rights reserved.
+- *  http://ginkgo-cadx.com
+- *
+- *  This file is licensed under LGPL v3 license.
+- *  See License.txt for details
+- *
+- *  Code based in VTK
+- */
+-#pragma once
+-#ifdef __DEPRECATED
+-#undef __DEPRECATED
+-#endif
+-#include <vtkOpenGLImageActor.h>
+-
+-class vtkRenderWindow;
+-
+-
+-class vtkHackedTempImageActor : public vtkOpenGLImageActor {
+-	public:
+-		vtkHackedTempImageActor(vtkImageActor* realActor);
+-
+-		~vtkHackedTempImageActor();
+-
+-		long GetTextureId() const;
+-
+-		const int* GetTextureDimensions() const;
+-
+-		//indica si la textura tiene id (se ha intentado cargar)
+-		bool TextureDefined() const;
+-
+-		//indica si la textura esta cargada
+-		bool TextureLoaded() const;
+-
+-		operator long () const;
+-
+-	protected:
+-		long m_IdTextura;
+-		int m_TextureDimensions[2];
+-
+-		vtkRenderWindow *m_vtkRenderWindow;
+-};
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/vtk/vtkginkgoimageviewer.cpp ginkgocadx-2.14.0.4972/src/cadxcore/vtk/vtkginkgoimageviewer.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/vtk/vtkginkgoimageviewer.cpp	2012-06-26 21:56:20.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/vtk/vtkginkgoimageviewer.cpp	2012-06-30 21:39:32.882135234 +1000
+@@ -74,7 +74,6 @@
+ #include <vtkMatrix4x4.h>
+ #include <vtkPointData.h>
+ 
+-#include <hackimageactor.h>
+ 
+ #define VTK_GINKGO_ZOOM_MIN 0.25f
+ #define VTK_GINKGO_ZOOM_MAX 200
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/widgets/wlupa.cpp ginkgocadx-2.14.0.4972/src/cadxcore/widgets/wlupa.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/widgets/wlupa.cpp	2012-06-26 21:56:20.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/widgets/wlupa.cpp	2012-06-30 21:40:00.775900866 +1000
+@@ -32,7 +32,6 @@
+ #include <vtkPointData.h>
+ #include <vtkBMPWriter.h>
+ #include <vtkginkgoimageviewer.h>
+-#include <vtkOpenGLImageActor.h>
+ 
+ 
+ 
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/widgets/wlupa.h ginkgocadx-2.14.0.4972/src/cadxcore/widgets/wlupa.h
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/widgets/wlupa.h	2012-06-26 21:56:20.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/widgets/wlupa.h	2012-06-30 21:39:32.875468281 +1000
+@@ -26,7 +26,6 @@
+ #endif
+ #include <vtkSmartPointer.h>
+ #include <vtkImageData.h>
+-#include <hackimageactor.h>
+ 
+ namespace GNC {
+ 	namespace GCS {
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/vistas/vista2d.cpp ginkgocadx-2.14.0.4972/src/visualizator/visualizator/vistas/vista2d.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/vistas/vista2d.cpp	2012-06-26 21:56:21.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/visualizator/visualizator/vistas/vista2d.cpp	2012-06-30 21:39:32.865467947 +1000
+@@ -67,7 +67,6 @@
+ #include <vtkAlgorithm.h>
+ #include <vtkAlgorithmOutput.h>
+ #include <vtkImageData.h>
+-#include <hackimageactor.h>
+ #include <vtkAlgorithmOutput.h>
+ #include <vtkInformation.h>
+ 
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/vistas/waveformview.cpp ginkgocadx-2.14.0.4972/src/visualizator/visualizator/vistas/waveformview.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/vistas/waveformview.cpp	2012-06-26 21:56:21.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/visualizator/visualizator/vistas/waveformview.cpp	2012-06-30 21:39:32.865467947 +1000
+@@ -60,7 +60,6 @@
+ #include <vtkAlgorithm.h>
+ #include <vtkAlgorithmOutput.h>
+ #include <vtkImageData.h>
+-#include <hackimageactor.h>
+ #include <vtkAlgorithmOutput.h>
+ #include <vtkInformation.h>
+ #include <vtkCamera.h>
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/wxvtk/gvistacompleja.cpp ginkgocadx-2.14.0.4972/src/visualizator/visualizator/wxvtk/gvistacompleja.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/wxvtk/gvistacompleja.cpp	2012-06-26 21:57:36.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/visualizator/visualizator/wxvtk/gvistacompleja.cpp	2012-06-30 21:39:32.872134808 +1000
+@@ -70,7 +70,6 @@
+ //#include <widgets/wprogreso.h>
+ #include <widgets/wanotacionesquina.h>
+ 
+-#include <hackimageactor.h>
+ 
+ 
+ #include "reconstruction/endoscopy.h"
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/wxvtk/gvistasimple.cpp ginkgocadx-2.14.0.4972/src/visualizator/visualizator/wxvtk/gvistasimple.cpp
+--- ginkgocadx-2.14.0.4972.orig/src/visualizator/visualizator/wxvtk/gvistasimple.cpp	2012-06-26 21:57:36.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/visualizator/visualizator/wxvtk/gvistasimple.cpp	2012-06-30 21:39:32.868801389 +1000
+@@ -46,7 +46,6 @@
+ #include "../exportacion/iherramientaoverlays.h"
+ 
+ #include <widgets/openglhelper.h>
+-#include <hackimageactor.h>
+ 
+ 
+ class GVtkObserver: public vtkCommand

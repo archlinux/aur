@@ -1,0 +1,255 @@
+diff -Nur ginkgocadx-2.8.0.4602.orig/src/cadxcore/commands/comandoexportacion.cpp ginkgocadx-2.8.0.4602/src/cadxcore/commands/comandoexportacion.cpp
+--- ginkgocadx-2.8.0.4602.orig/src/cadxcore/commands/comandoexportacion.cpp	2012-01-26 19:12:04.000000000 +1100
++++ ginkgocadx-2.8.0.4602/src/cadxcore/commands/comandoexportacion.cpp	2012-02-11 20:19:47.017270784 +1100
+@@ -36,7 +36,6 @@
+ 
+ #include <itkExceptionObject.h>
+ #include <itkImage.h>
+-#include <itkOrientedImage.h>
+ #include <itkRGBPixel.h>
+ #include <itkGDCMImageIO.h>
+ #include <itkJPEGImageIO.h>
+diff -Nur ginkgocadx-2.8.0.4602.orig/src/cadxcore/commands/comandogenerarthumbnails.cpp ginkgocadx-2.8.0.4602/src/cadxcore/commands/comandogenerarthumbnails.cpp
+--- ginkgocadx-2.8.0.4602.orig/src/cadxcore/commands/comandogenerarthumbnails.cpp	2012-01-26 19:12:04.000000000 +1100
++++ ginkgocadx-2.8.0.4602/src/cadxcore/commands/comandogenerarthumbnails.cpp	2012-02-11 20:19:37.683789667 +1100
+@@ -49,7 +49,6 @@
+ 
+ #include <itkExceptionObject.h>
+ #include <itkImage.h>
+-#include <itkOrientedImage.h>
+ #include <itkRGBPixel.h>
+ #include <itkGDCMImageIO.h>
+ #include <itkImageFileReader.h>
+diff -Nur ginkgocadx-2.8.0.4602.orig/src/cadxcore/main/controllers/streaming/streamingloader.cpp ginkgocadx-2.8.0.4602/src/cadxcore/main/controllers/streaming/streamingloader.cpp
+--- ginkgocadx-2.8.0.4602.orig/src/cadxcore/main/controllers/streaming/streamingloader.cpp	2012-01-26 19:12:04.000000000 +1100
++++ ginkgocadx-2.8.0.4602/src/cadxcore/main/controllers/streaming/streamingloader.cpp	2012-02-11 20:19:24.886929338 +1100
+@@ -46,7 +46,6 @@
+ #include <vtkImageDataStreamer.h>
+ 
+ #include <itkImage.h>
+-#include <itkOrientedImage.h>
+ #include <itkCommand.h>
+ #include <itkMetaDataObject.h>
+ 
+@@ -272,7 +271,7 @@
+ 							case ImageIO::UCHAR:
+ 								{
+ 									typedef unsigned char TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -282,7 +281,7 @@
+ 							case ImageIO::CHAR:
+ 								{
+ 									typedef char TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -292,7 +291,7 @@
+ 							case ImageIO::USHORT:
+ 								{
+ 									typedef unsigned short TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -302,7 +301,7 @@
+ 							case ImageIO::SHORT:
+ 								{
+ 									typedef short TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -312,7 +311,7 @@
+ 							case ImageIO::UINT:
+ 								{
+ 									typedef unsigned int TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -322,7 +321,7 @@
+ 							case ImageIO::INT:
+ 								{
+ 									typedef int TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -332,7 +331,7 @@
+ 							case ImageIO::ULONG:
+ 								{
+ 									typedef unsigned long TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -342,7 +341,7 @@
+ 							case ImageIO::LONG:
+ 								{
+ 									typedef long TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -352,7 +351,7 @@
+ 							case ImageIO::FLOAT:
+ 								{
+ 									typedef float TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -361,7 +360,7 @@
+ 							case ImageIO::DOUBLE:
+ 								{
+ 									typedef double TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -383,7 +382,7 @@
+ 								{
+ 									typedef unsigned char TypedComponentType;
+ 									typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -394,7 +393,7 @@
+ 								{
+ 									typedef char TypedComponentType;
+ 									typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-									typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++									typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 									typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 									TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 									pTypedReader->SetFileName(fichero);
+@@ -405,7 +404,7 @@
+ 							{
+ 								typedef unsigned short TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -416,7 +415,7 @@
+ 							{
+ 								typedef short TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -427,7 +426,7 @@
+ 							{
+ 								typedef unsigned int TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -438,7 +437,7 @@
+ 							{
+ 								typedef int TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -449,7 +448,7 @@
+ 							{
+ 								typedef long TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -460,7 +459,7 @@
+ 							{
+ 								typedef unsigned long TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -471,7 +470,7 @@
+ 							{
+ 								typedef float TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -482,7 +481,7 @@
+ 							{
+ 								typedef double TypedComponentType;
+ 								typedef itk::RGBPixel<TypedComponentType> TypedPixelType;
+-								typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++								typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 								typedef itk::ImageFileReader<TypedImageType> TypedReaderType;
+ 								TypedReaderType* pTypedReader = static_cast<TypedReaderType*>(m_pReader.GetPointer());
+ 								pTypedReader->SetFileName(fichero);
+@@ -646,7 +645,7 @@
+ 		m_pOutput->RemoveAllInputs();
+ 
+ 		typedef unsigned short TypedPixelType;
+-		typedef itk::OrientedImage<TypedPixelType, 3 > TypedImageType;
++		typedef itk::Image<TypedPixelType, 3 > TypedImageType;
+ 		typedef itk::ImageToVTKImageFilter<TypedImageType> TypedJoinerType;
+ 		
+ 		TypedImageType::Pointer img = TypedImageType::New();
+diff -Nur ginkgocadx-2.8.0.4602.orig/src/cadxcore/stdafx.h ginkgocadx-2.8.0.4602/src/cadxcore/stdafx.h
+--- ginkgocadx-2.8.0.4602.orig/src/cadxcore/stdafx.h	2012-01-26 19:12:05.000000000 +1100
++++ ginkgocadx-2.8.0.4602/src/cadxcore/stdafx.h	2012-02-11 20:18:55.606475488 +1100
+@@ -69,7 +69,6 @@
+ 	#include <itkThresholdImageFilter.h>
+ 
+ 	#include <itkImage.h>
+-	#include <itkOrientedImage.h>
+ 	#include <itkRGBPixel.h>
+ 	#include <itkScalarImageToHistogramGenerator.h>
+ 	#include <itkBinaryThresholdImageFilter.h>
+diff -Nur ginkgocadx-2.8.0.4602.orig/src/lightvisualizator/lightvisustdafx.h ginkgocadx-2.8.0.4602/src/lightvisualizator/lightvisustdafx.h
+--- ginkgocadx-2.8.0.4602.orig/src/lightvisualizator/lightvisustdafx.h	2012-01-26 19:08:42.000000000 +1100
++++ ginkgocadx-2.8.0.4602/src/lightvisualizator/lightvisustdafx.h	2012-02-11 20:18:45.342984445 +1100
+@@ -69,7 +69,6 @@
+ 	#include <itkThresholdImageFilter.h>
+ 
+ 	#include <itkImage.h>
+-	#include <itkOrientedImage.h>
+ 	#include <itkRGBPixel.h>
+ 	#include <itkScalarImageToHistogramGenerator.h>
+ 	#include <itkBinaryThresholdImageFilter.h>
+diff -Nur ginkgocadx-2.8.0.4602.orig/src/visualizator/visustdafx.h ginkgocadx-2.8.0.4602/src/visualizator/visustdafx.h
+--- ginkgocadx-2.8.0.4602.orig/src/visualizator/visustdafx.h	2012-01-26 19:08:44.000000000 +1100
++++ ginkgocadx-2.8.0.4602/src/visualizator/visustdafx.h	2012-02-11 20:18:35.549498434 +1100
+@@ -69,7 +69,6 @@
+ 	#include <itkThresholdImageFilter.h>
+ 
+ 	#include <itkImage.h>
+-	#include <itkOrientedImage.h>
+ 	#include <itkRGBPixel.h>
+ 	#include <itkScalarImageToHistogramGenerator.h>
+ 	#include <itkBinaryThresholdImageFilter.h>

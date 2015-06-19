@@ -1,0 +1,18 @@
+diff -Nur ginkgocadx-2.14.0.4972.orig/src/cadxcore/CMakeLists.txt ginkgocadx-2.14.0.4972/src/cadxcore/CMakeLists.txt
+--- ginkgocadx-2.14.0.4972.orig/src/cadxcore/CMakeLists.txt	2012-06-26 21:56:21.000000000 +1000
++++ ginkgocadx-2.14.0.4972/src/cadxcore/CMakeLists.txt	2012-06-30 20:07:59.080117964 +1000
+@@ -209,10 +209,10 @@
+ 	LINK_INTERFACE_LIBRARIES ""
+ 	INSTALL_RPATH_USE_LINK_PATH FALSE )
+ INSTALL(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib/ginkgocadx)
+-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/es/ginkgocadxcore.mo DESTINATION share/ginkgocadx/lang/es)
+-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/ja/ginkgocadxcore.mo DESTINATION share/ginkgocadx/lang/ja)
+-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/de/ginkgocadxcore.mo DESTINATION share/ginkgocadx/lang/de)
+-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/tr/ginkgocadxcore.mo DESTINATION share/ginkgocadx/lang/tr)
++INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/es/cadxcore.mo DESTINATION share/ginkgocadx/lang/es)
++INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/ja/cadxcore.mo DESTINATION share/ginkgocadx/lang/ja)
++INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/de/cadxcore.mo DESTINATION share/ginkgocadx/lang/de)
++INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lang/tr/cadxcore.mo DESTINATION share/ginkgocadx/lang/tr)
+ INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/conformance.xml DESTINATION share/ginkgocadx)
+ ################ LIBS ################
+ 

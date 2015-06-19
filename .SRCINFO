@@ -1,0 +1,31 @@
+pkgbase = ginkgo-cadx-2
+	pkgdesc = Complete DICOM viewer solution
+	pkgver = 2.14.0.4972
+	pkgrel = 2
+	url = http://ginkgo-cadx.com/
+	install = ginkgo-cadx.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = dcmtk
+	depends = insight-toolkit
+	depends = tcp_wrappers
+	depends = vtk
+	depends = wxgtk2.8
+	conflicts = ginkgo-cadx
+	options = !strip
+	source = http://downloads.sourceforge.net/project/ginkgocadx/2.14.0/ginkgocadx-2.14.0.4972.tgz
+	source = itk-4.0.patch
+	source = vtk-5.10.patch
+	source = translations.patch
+	source = ginkgocadx.desktop
+	source = ginkgocadx.png
+	md5sums = a52f7d2319195224e675b6e1af088947
+	md5sums = 0cc4bacb5b1378e2865669887688e06f
+	md5sums = 9e9bccebcd37bf9ae7aaa8198a4c1266
+	md5sums = 7085e99c2689c3e70317e8af23599cb4
+	md5sums = 16998d859432ab9348a9e835d0135a98
+	md5sums = 1de087126d5e72ecdacc2e215601827f
+
+pkgname = ginkgo-cadx-2
+
