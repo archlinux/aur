@@ -1,7 +1,7 @@
 pkgbase = purple-skypeweb-git
 	pkgdesc = SkypeWeb Plugin for Pidgin
-	pkgver = 0.0.1.r4.gdbcb241de04b0e
-	pkgrel = 4
+	pkgver = 0.0.1.r5.gba5483c9
+	pkgrel = 5
 	url = https://github.com/EionRobb/skype4pidgin/tree/master/skypeweb
 	arch = x86_64
 	arch = i686
