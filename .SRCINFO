@@ -1,0 +1,12 @@
+pkgbase = xcursor-gruppled
+	pkgdesc = An X11 theme by gruppler made entirely in Inkscape, inspired by Ghost Cursors
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://www.gnome-look.org/content/show.php/Gruppled+Cursors?content=86081
+	arch = any
+	license = GPL
+	source = http://www.gnome-look.org/CONTENT/content-files/86081-gruppled.tar.gz
+	md5sums = 3370fcb63f46a57e3c2b3e66ca715fba
+
+pkgname = xcursor-gruppled
+
