@@ -1,0 +1,15 @@
+pkgbase = autopackage-devel
+	pkgdesc = The multi-distribution binary packaging framework for Linux systems
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://www.autopackage.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = autopackage
+	depends = curl
+	source = http://autopackage.googlecode.com/files/autopackage-devel-1.4.2.tar.bz2
+	md5sums = 1578569239f4f9503a64029999ca781e
+
+pkgname = autopackage-devel
+
