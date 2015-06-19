@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/apotheon"
+
+"$gogdir"/start.sh
+

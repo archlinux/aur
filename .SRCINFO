@@ -1,0 +1,20 @@
+pkgbase = gog-apotheon
+	pkgdesc = The Gods of Olympus have abandoned humanity, leaving you to perish without their benevolence. GOG linux game package required!
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/apotheon
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = local://gog_apotheon_1.0.0.1.tar.gz
+	source = gog-apotheon
+	md5sums = 13432c627e378516474895eafab39ccb
+	md5sums = 08eee547be3e5dc1f43c6937fca5bc6e
+
+pkgname = gog-apotheon
+
