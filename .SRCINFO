@@ -1,0 +1,36 @@
+pkgbase = mutter-catalyst
+	pkgdesc = A window manager for GNOME with patch for catalyst compatibility
+	pkgver = 3.16.2
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = mutter-catalyst.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	makedepends = libxkbcommon-x11
+	depends = clutter
+	depends = dconf
+	depends = gobject-introspection
+	depends = gsettings-desktop-schemas
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = gnome-desktop
+	depends = upower
+	depends = libxkbcommon-x11
+	provides = mutter=3.16.2
+	conflicts = mutter-wayland
+	conflicts = mutter
+	replaces = mutter-wayland
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/mutter/3.16/mutter-3.16.2.tar.xz
+	source = catalyst-comment.patch
+	sha256sums = 4a2b752f0b3aa59f50563190222623324f5154acbb6bf174213f5849e77d0763
+	sha256sums = fe058744aadcf87cb92a9268beddbb1a501631e02b335a58c593b36c8b47d7d9
+
+pkgname = mutter-catalyst
+
