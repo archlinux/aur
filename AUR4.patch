@@ -1,6 +1,6 @@
 diff -aur a/packer b/packer
---- a/packer	2015-06-19 06:53:19.000000000 +1000
-+++ b/packer	2015-06-19 06:53:27.000000000 +1000
+--- a/packer	2015-06-20 08:13:43.000000000 +1000
++++ b/packer	2015-06-20 08:15:06.000000000 +1000
 @@ -24,8 +24,9 @@
  usermakepkgconf="$HOME/.makepkg.conf"
  pacmanconf='/etc/pacman.conf'
@@ -13,14 +13,7 @@ diff -aur a/packer b/packer
  
  if [[ -t 1 && ! $COLOR = "NO" ]]; then
    COLOR1='\e[1;39m'
-@@ -235,14 +236,14 @@
- 
- pkglink() {
-   rpcinfo $1
--  echo "${PKGURL}$(jshon -Q -e results -e URLPath -u < "$tmpdir/$1.info")"
-+  echo "$(jshon -Q -e results -e URLPath -u < "$tmpdir/$1.info")"
- }
- 
+@@ -241,8 +242,8 @@
  # downloads pkgbuild ($1), edits if $2 is set
  pkginfo() {
    if ! [[ -f "$tmpdir/$1.PKGBUILD" ]]; then
