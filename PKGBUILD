@@ -8,8 +8,8 @@
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 pkgname=pure-ftpd-db
 _srcname=pure-ftpd
-pkgver=1.0.36
-pkgrel=7
+pkgver=1.0.40
+pkgrel=1
 pkgdesc="A fast, production quality, standards-conformant FTP server. Compiled with mysql and pgsql."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -59,6 +59,6 @@ package() {
 	install -Dm644 -t ${pkgdir}/usr/share/doc/${_srcname}/ README* pureftpd-*sql.conf
 	
 }
-md5sums=('7899c75c1fed7dbad0352eb31080e066'
-	 'b6989f475edef34f2810646cc73b7b9e')
+md5sums=('33a503343a0f960332156387cc2dde55'
+         'b6989f475edef34f2810646cc73b7b9e')
 
