@@ -1,4 +1,4 @@
-# Maintainer: KNOSSOS-Team <knossos-team at mpimf-heidelberg.mpg.de>
+# Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
 #
 # KNOSSOS saves its user preferences in $HOME/.config/MPIMF/
 
