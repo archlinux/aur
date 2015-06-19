@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily pacman mirrorlist refresh
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+AccuracySec=12h
