@@ -1,0 +1,15 @@
+
+post_install() {
+  echo "updating desktop mime database..."
+  update-desktop-database
+}
+
+post_upgrade() {
+  echo "updating desktop mime database..."
+  update-desktop-database
+}
+
+post_remove() {
+  echo "updating desktop mime database..."
+  update-desktop-database
+}
