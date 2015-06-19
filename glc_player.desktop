@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GLC_Player
+GenericName=3D model viewer
+Comment=Open source 3D model viewer
+Exec=glc_player
+Icon=glc_player
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;Viewer;Qt;
+MimeType=application/x-3ds;image/x-3ds;
+X-KDE-StartupNotify=true

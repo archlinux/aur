@@ -1,0 +1,554 @@
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/FileEntry.cpp GLC_Player/FileEntry.cpp
+--- GLC_Player-2.3.0/FileEntry.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/FileEntry.cpp	2013-12-30 12:20:26.866049005 +1100
+@@ -397,3 +397,8 @@
+ 		}
+ 	}
+ }
++
++void FileEntry::setVboUsage(bool usage)
++{
++	m_World.collection()->setVboUsage(usage);
++}
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/FileEntry.h GLC_Player/FileEntry.h
+--- GLC_Player-2.3.0/FileEntry.h	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/FileEntry.h	2013-12-30 12:20:26.866049005 +1100
+@@ -222,7 +222,8 @@
+ 	//! Set the space partitionning usage
+ 	void setSpacePartionningUsage(bool usage);
+ 
+-
++	//! set VBO usage
++	void setVboUsage(bool usage);
+ //////////////////////////////////////////////////////////////////////
+ // private member
+ //////////////////////////////////////////////////////////////////////
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/glc_player.cpp GLC_Player/glc_player.cpp
+--- GLC_Player-2.3.0/glc_player.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/glc_player.cpp	2013-12-30 12:20:26.889382337 +1100
+@@ -51,6 +51,7 @@
+ #include <GLC_Mesh>
+ #include <GLC_ErrorLog>
+ #include <SaveFileThread.h>
++#include <GLC_WorldTo3ds>
+ 
+ glc_player::glc_player(QWidget *parent)
+ : QMainWindow(parent)
+@@ -797,29 +798,35 @@
+ 
+ void glc_player::exportCurrentModel()
+ {
+-	const QString suffix(".3dxml");
+-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Model As ")
+-	, m_CurrentPath, tr("3DXML file (*.3dxml)"));
+-	if (!fileName.isEmpty())
+-	{
+-		if (!fileName.endsWith(suffix))
+-		{
+-			fileName.append(suffix);
+-		}
++	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Model As "), m_CurrentPath, tr("3DXML file (*.3dxml);;3DS file (*.3ds)"));
++	const QString suffix= QFileInfo(fileName).suffix();
+ 
++	if (!fileName.isEmpty() && ((suffix == "3dxml") || (suffix == "3ds")))
++	{
+ 		GLC_World worldToSav= m_FileEntryHash.value(m_pAlbumManagerView->currentModelId()).getWorld();
+-		if (GLC_State::vboUsed())
++		if (suffix == "3dxml")
+ 		{
+-			GLC_WorldTo3dxml worldTo3dxml(worldToSav, false);
+-			connect(&worldTo3dxml, SIGNAL(currentQuantum(int)), this, SLOT(updateProgressBarForExport(int)));
+-			QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+-			worldTo3dxml.exportTo3dxml(fileName, GLC_WorldTo3dxml::Compressed3dxml);
+-			QApplication::restoreOverrideCursor();
++			if (GLC_State::vboUsed())
++			{
++				GLC_WorldTo3dxml worldTo3dxml(worldToSav, true);
++				connect(&worldTo3dxml, SIGNAL(currentQuantum(int)), this, SLOT(updateProgressBarForExport(int)));
++				QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
++				worldTo3dxml.exportTo3dxml(fileName, GLC_WorldTo3dxml::Compressed3dxml);
++				QApplication::restoreOverrideCursor();
++			}
++			else
++			{
++				ExportProgressDialog exportProgress(this, worldToSav, fileName);
++				exportProgress.startThread();
++			}
+ 		}
+ 		else
+ 		{
+-			ExportProgressDialog exportProgress(this, worldToSav, fileName);
+-			exportProgress.startThread();
++			GLC_WorldTo3ds worldTo3ds(worldToSav);
++			connect(&worldTo3ds, SIGNAL(currentQuantum(int)), this, SLOT(updateProgressBarForExport(int)));
++			QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
++			worldTo3ds.exportToFile(fileName, true);
++			QApplication::restoreOverrideCursor();
+ 		}
+ 	}
+ }
+@@ -1143,9 +1150,19 @@
+ 			m_OpenglView.setDisplayInfoPanel(m_dislayInfoPanel);
+ 		}
+ 
++		bool updateVboUsage= false;
+ 		if ((m_UseVbo == 1) != settingsDialog.vboIsUsed())
+ 		{
+-			m_UseVbo= static_cast<int>(settingsDialog.vboIsUsed());
++			if (settingsDialog.vboIsUsed())
++			{
++				m_UseVbo= 1;
++			}
++			else
++			{
++				m_UseVbo= 0;
++			}
++			updateVboUsage= true;
++			qDebug() << "updateVboUsage " << updateVboUsage << m_UseVbo;
+ 		}
+ 		// Shader Usage
+ 		if ((m_UseShader == 1) != settingsDialog.shaderIsUsed())
+@@ -1231,6 +1248,20 @@
+ 			QApplication::restoreOverrideCursor();
+ 		}
+ 
++		if (updateVboUsage)
++		{
++			QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
++			FileEntryHash::iterator iEntry= m_FileEntryHash.begin();
++			const bool useVbo= (m_UseVbo == 1);
++			GLC_State::setVboUsage(useVbo);
++			while (m_FileEntryHash.constEnd() != iEntry)
++			{
++				iEntry.value().setVboUsage(useVbo);
++				++iEntry;
++			}
++			QApplication::restoreOverrideCursor();
++
++		}
+ 		m_QuitConfirmation= settingsDialog.quitConfirmation();
+ 		m_OpenglView.updateGL();
+ 	}
+@@ -1247,6 +1278,10 @@
+ 	// Check if the world as been successfully built
+ 	if (!world.isEmpty())
+ 	{
++		if (GLC_State::vboUsed())
++		{
++			world.collection()->setVboUsage(true);
++		}
+ 		m_FileEntryHash[modelId].setWorld(world);
+ 		m_FileEntryHash[modelId].setAttachedFileNames(m_OpenFileThread.attachedFiles());
+ 
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/glc_player.h GLC_Player/glc_player.h
+--- GLC_Player-2.3.0/glc_player.h	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/glc_player.h	2013-12-30 12:20:26.889382337 +1100
+@@ -32,7 +32,7 @@
+ 
+ #include <GLC_Global>
+ 
+-#include <QtGui/QMainWindow>
++#include <QMainWindow>
+ 
+ class SelectionProperty;
+ class EditLightDialog;
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/glc_player.pro GLC_Player/glc_player.pro
+--- GLC_Player-2.3.0/glc_player.pro	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/glc_player.pro	2013-12-30 12:20:26.889382337 +1100
+@@ -23,7 +23,7 @@
+ 
+ unix { 
+     LIBS += -lGLC_lib
+-    INCLUDEPATH += "/usr/local/include/GLC_lib"
++    INCLUDEPATH += "/usr/local/include/GLC_lib-2.5"
+ }
+ 
+ TRANSLATIONS = ressources/glc_player_fr.ts
+@@ -139,4 +139,4 @@
+     QMAKE_INFO_PLIST = ressources/Info_mac.plist
+     TARGET = glc_player
+ }
+-    
+\ No newline at end of file
++    
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/opengl_view/MaterialOpenglView.cpp GLC_Player/opengl_view/MaterialOpenglView.cpp
+--- GLC_Player-2.3.0/opengl_view/MaterialOpenglView.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/opengl_view/MaterialOpenglView.cpp	2013-12-30 12:20:26.889382337 +1100
+@@ -26,10 +26,11 @@
+ 
+ #include <GLC_Factory>
+ #include <GLC_Exception>
++#include <GLC_Context>
+ 
+ MaterialOpenglView::MaterialOpenglView(QWidget * pParent, const QGLWidget* pShareWidget, GLC_Material* pMaterial)
+-: QGLWidget(pParent, pShareWidget)
+-, m_GlView(this)
++: QGLWidget(new GLC_Context(QGLFormat()), pParent, pShareWidget)
++, m_GlView()
+ , m_World()
+ , m_Light()
+ , m_pGeom(NULL)
+@@ -97,10 +98,9 @@
+ void MaterialOpenglView::paintGL()
+ {
+ 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+-	glLoadIdentity();
++	GLC_Context::current()->glcLoadIdentity();
+ 
+ 	// Enable and execute lighting
+-	m_Light.enable();
+ 	try
+ 	{
+ 		m_Light.glExecute();
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/opengl_view/MultiShotsOpenglView.cpp GLC_Player/opengl_view/MultiShotsOpenglView.cpp
+--- GLC_Player-2.3.0/opengl_view/MultiShotsOpenglView.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/opengl_view/MultiShotsOpenglView.cpp	2013-12-30 12:20:26.889382337 +1100
+@@ -25,10 +25,11 @@
+ #include "MultiShotsOpenglView.h"
+ #include <GLC_Exception>
+ #include <GLC_State>
++#include <GLC_Context>
+ 
+ MultiShotsOpenglView::MultiShotsOpenglView(QWidget * pParent, QGLWidget* pShareWidget)
+-: QGLWidget(QGLFormat(QGL::SampleBuffers), pParent, pShareWidget)
+-, m_GlView(this)
++: QGLWidget(new GLC_Context(QGLFormat(QGL::SampleBuffers)), pParent, pShareWidget)
++, m_GlView()
+ , m_World()
+ , m_MotionTimer()
+ , m_RotationVector()
+@@ -124,11 +125,9 @@
+ void MultiShotsOpenglView::paintGL()
+ {
+ 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+-	glLoadIdentity();
++	GLC_Context::current()->glcLoadIdentity();
+ 	m_GlView.setDistMinAndMax(m_World.collection()->boundingBox());
+ 
+-	// Enable and execute lighting
+-	m_pOpenglView->getLight()->enable();
+ 	try
+ 	{
+ 		m_pOpenglView->getLight()->glExecute();
+@@ -139,7 +138,6 @@
+ 			const int size= m_pOpenglView->getLights()->size();
+ 			for (int i= 0; i < size; ++i)
+ 			{
+-				m_pOpenglView->getLights()->operator[](i)->enable();
+ 				m_pOpenglView->getLights()->operator[](i)->glExecute();
+ 			}
+ 		}
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/opengl_view/OpenglView.cpp GLC_Player/opengl_view/OpenglView.cpp
+--- GLC_Player-2.3.0/opengl_view/OpenglView.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/opengl_view/OpenglView.cpp	2013-12-30 12:20:26.889382337 +1100
+@@ -36,6 +36,7 @@
+ #include <GLC_FlyMover>
+ #include <GLC_RenderStatistics>
+ #include <GLC_UserInput>
++#include <GLC_Context>
+ 
+ // For VSYNC problem under Mac OS X
+ #if defined(Q_OS_MAC)
+@@ -46,8 +47,8 @@
+ ShaderList OpenglView::m_ShaderList;
+ 
+ OpenglView::OpenglView(QWidget *pParent)
+-: QGLWidget(QGLFormat(QGL::SampleBuffers),pParent)
+-, m_GlView(this)
++: QGLWidget(new GLC_Context(QGLFormat(QGL::SampleBuffers)),pParent)
++, m_GlView()
+ , m_MoverController()
+ , m_World()
+ , m_Light()
+@@ -78,6 +79,8 @@
+ , m_UserLights()
+ , m_CurrentLightIndex(-1)
+ {
++
++	connect(&m_GlView, SIGNAL(updateOpenGL()), this, SLOT(updateGL()));
+ 	//setMouseTracking(true);
+ 	m_Light.setPosition(1.0, 1.0, 1.0);
+ 	m_Light.setName(tr("Master Light"));
+@@ -508,13 +511,11 @@
+ 	m_World.collection()->updateInstanceViewableState();
+ 
+ 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+-	glLoadIdentity();
++	GLC_Context::current()->glcLoadIdentity();
+ 	if (!m_SnapShootMode) glEnable(GL_MULTISAMPLE);
+ 	try
+ 	{
+ 		// Enable and execute lighting
+-		m_Light.enable();
+-
+ 		m_Light.glExecute();
+ 		m_GlView.glExecuteCam();
+ 		if (!m_UserLights.isEmpty())
+@@ -522,7 +523,6 @@
+ 			const int size= m_UserLights.size();
+ 			for (int i= 0; i < size; ++i)
+ 			{
+-				m_UserLights[i]->enable();
+ 				m_UserLights[i]->glExecute();
+ 			}
+ 		}
+@@ -611,13 +611,13 @@
+ 	if (!m_SelectionMode && m_dislayInfoPanel && !m_SnapShootMode)
+ 	{
+ 		// Display info area
+-		glMatrixMode(GL_PROJECTION);
+-		glPushMatrix();
+-		glLoadIdentity();
+-		glOrtho(-1,1,-1,1,-1,1);
+-		glMatrixMode(GL_MODELVIEW);
+-		glPushMatrix();
+-		glLoadIdentity();
++		GLC_Context::current()->glcMatrixMode(GL_PROJECTION);
++		GLC_Context::current()->glcPushMatrix();
++		GLC_Context::current()->glcLoadIdentity();
++		GLC_Context::current()->glcOrtho(-1,1,-1,1,-1,1);
++		GLC_Context::current()->glcMatrixMode(GL_MODELVIEW);
++		GLC_Context::current()->glcPushMatrix();
++		GLC_Context::current()->glcLoadIdentity();
+ 		glPushAttrib(GL_ENABLE_BIT);
+ 		glDisable(GL_DEPTH_TEST);
+ 		glDisable(GL_LIGHTING);
+@@ -628,11 +628,11 @@
+ 
+ 		// Restore 3DState
+ 		glPopAttrib();
+-		glPopMatrix(); // restore modelview
++		GLC_Context::current()->glcPopMatrix(); // restore modelview
+ 
+-		glMatrixMode(GL_PROJECTION);
+-		glPopMatrix();
+-		glMatrixMode(GL_MODELVIEW);
++		GLC_Context::current()->glcMatrixMode(GL_PROJECTION);
++		GLC_Context::current()->glcPopMatrix();
++		GLC_Context::current()->glcMatrixMode(GL_MODELVIEW);
+ 	}
+ 	if (!m_SnapShootMode) glEnable(GL_MULTISAMPLE);
+ }
+@@ -995,9 +995,9 @@
+ 	GLC_Matrix4x4 uiMatrix(m_GlView.cameraHandle()->viewMatrix());
+ 	// Change matrix to follow camera orientation
+ 	const double scaleFactor= 0.08;
+-	glTranslated(1.0 - (scaleFactor * displayRatio * 1.4), - panelRatio + (scaleFactor * 1.3), 0.0);
+-	glScaled(scaleFactor * displayRatio, scaleFactor, scaleFactor);
+-	glMultMatrixd(uiMatrix.getData());
++	GLC_Context::current()->glcTranslated(1.0 - (scaleFactor * displayRatio * 1.4), - panelRatio + (scaleFactor * 1.3), 0.0);
++	GLC_Context::current()->glcScaled(scaleFactor * displayRatio, scaleFactor, scaleFactor);
++	GLC_Context::current()->glcMultMatrix(uiMatrix);
+ 
+ 	qglColor(Qt::red);
+ 	renderText(1.0, 0.0, 0.0, "X");
+Binary files GLC_Player-2.3.0/ressources/.DS_Store and GLC_Player/ressources/.DS_Store differ
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ressources/shaders/goochShading.vert GLC_Player/ressources/shaders/goochShading.vert
+--- GLC_Player-2.3.0/ressources/shaders/goochShading.vert	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ressources/shaders/goochShading.vert	2013-12-30 12:20:26.916049004 +1100
+@@ -7,6 +7,9 @@
+ //
+ // See 3Dlabs-License.txt for license information
+ //
++uniform mat4 modelview_matrix;
++uniform mat4 mvp_matrix;
++uniform mat3 inv_modelview_matrix;
+ 
+ varying float NdotL;
+ varying vec3  ReflectVec;
+@@ -16,12 +19,12 @@
+ {
+ 	gl_TexCoord[0]= gl_MultiTexCoord0;
+ 	vec3 LightPosition= gl_LightSource[0].position.xyz;
+-    vec3 ecPos      = vec3(gl_ModelViewMatrix * gl_Vertex);
+-    gl_ClipVertex	= gl_ModelViewMatrix * gl_Vertex;
+-    vec3 tnorm      = normalize(gl_NormalMatrix * gl_Normal);
++    vec3 ecPos      = vec3(modelview_matrix * gl_Vertex);
++    gl_ClipVertex	= modelview_matrix * gl_Vertex;
++    vec3 tnorm      = normalize(inv_modelview_matrix * gl_Normal);
+     vec3 lightVec   = normalize(LightPosition - ecPos);
+     ReflectVec      = normalize(reflect(-lightVec, tnorm));
+     ViewVec         = normalize(-ecPos);
+     NdotL           = (dot(lightVec, tnorm) + 1.0) * 0.4;
+-    gl_Position     = ftransform();
++    gl_Position     = mvp_matrix * gl_Vertex;
+ }
+\ No newline at end of file
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ressources/shaders/minnaert.vert GLC_Player/ressources/shaders/minnaert.vert
+--- GLC_Player-2.3.0/ressources/shaders/minnaert.vert	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ressources/shaders/minnaert.vert	2013-12-30 12:20:26.916049004 +1100
+@@ -6,6 +6,10 @@
+ // Visual Computing Lab (2006)
+ //
+ 
++uniform mat4 modelview_matrix;
++uniform mat4 mvp_matrix;
++uniform mat3 inv_modelview_matrix;
++
+ varying vec3 normal;
+ varying vec3 vpos;
+ 
+@@ -13,12 +17,12 @@
+ {
+ 	gl_TexCoord[0]= gl_MultiTexCoord0;
+ 	// vertex normal
+-	normal = gl_NormalMatrix * gl_Normal;
++	normal = normalize(inv_modelview_matrix * gl_Normal);
+ 	
+ 	// vertex position (in eye-space)
+-	vpos = vec3(gl_ModelViewMatrix * gl_Vertex);
+-	gl_ClipVertex	= gl_ModelViewMatrix * gl_Vertex;
++	vpos = vec3(modelview_matrix * gl_Vertex);
++	gl_ClipVertex	= modelview_matrix * gl_Vertex;
+ 	
+ 	
+-	gl_Position = ftransform();
++	gl_Position = mvp_matrix * gl_Vertex;
+ }
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ressources/shaders/select.vert GLC_Player/ressources/shaders/select.vert
+--- GLC_Player-2.3.0/ressources/shaders/select.vert	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ressources/shaders/select.vert	2013-12-30 12:20:26.916049004 +1100
+@@ -1,15 +1,38 @@
++
++struct light
++{
++	vec4 position;
++	vec4 ambient_color;
++	vec4 diffuse_color;
++	vec4 specular_color;
++	vec3 spot_direction;
++	vec3 attenuation_factors;
++	float spot_exponent;
++	float spot_cutoff_angle;
++	bool compute_distance_attenuation;
++};
++
++uniform mat4 modelview_matrix;
++uniform mat4 mvp_matrix;
++uniform mat3 inv_modelview_matrix;
++uniform bool enable_lighting;
++
++// Light
++uniform bool light_enable_state[8];
++uniform light light_state[8];
++
+ varying vec3 normal, lightDir,I;
+ varying vec4 Cs;
+ 
+ void main()
+ {	
+-	vec4 P = gl_ModelViewMatrix * gl_Vertex;
++	vec4 P = modelview_matrix * gl_Vertex;
+ 	gl_ClipVertex= P;
+ 	lightDir = normalize(vec3(gl_LightSource[0].position));
+ 	I = P.xyz;
+-	normal = normalize(gl_NormalMatrix * gl_Normal);
++	normal = normalize(inv_modelview_matrix * gl_Normal);
+ 
+ 	Cs= vec4(0.5,0.8,1.0,0.2);
+ 		
+-	gl_Position = ftransform();
++	gl_Position = mvp_matrix * gl_Vertex;
+ }
+\ No newline at end of file
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ressources/shaders/toon.vert GLC_Player/ressources/shaders/toon.vert
+--- GLC_Player-2.3.0/ressources/shaders/toon.vert	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ressources/shaders/toon.vert	2013-12-30 12:20:26.916049004 +1100
+@@ -1,11 +1,17 @@
++
++uniform mat4 modelview_matrix;
++uniform mat4 mvp_matrix;
++uniform mat3 inv_modelview_matrix;
++
++
+ varying vec3 Normal;
+ varying vec3 LightDir;
+ 
+ void main(void)
+ {
+ 	gl_TexCoord[0]= gl_MultiTexCoord0;
+-	Normal = normalize(gl_NormalMatrix * gl_Normal);
+-	gl_ClipVertex	= gl_ModelViewMatrix * gl_Vertex;
+-	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
++	Normal = normalize(inv_modelview_matrix * gl_Normal);
++	gl_ClipVertex	= modelview_matrix * gl_Vertex;
++	gl_Position = mvp_matrix * gl_Vertex;
+ 	LightDir=vec3(gl_LightSource[0].position);
+ }
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ui_class/ModelStructure.cpp GLC_Player/ui_class/ModelStructure.cpp
+--- GLC_Player-2.3.0/ui_class/ModelStructure.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ui_class/ModelStructure.cpp	2013-12-30 12:20:26.919382337 +1100
+@@ -84,7 +84,7 @@
+ 	structure->addAction(m_pActionCollapse);
+ 	connect(m_pActionCollapse, SIGNAL(triggered()), this, SLOT(collapseOnSelection()));
+ 	m_pActionCollapse->setEnabled(false);
+-/*
++
+ 	// Copy Paste
+ 	pSeparator= new QAction("separtor", this);
+ 	pSeparator->setSeparator(true);
+@@ -95,7 +95,7 @@
+ 	structure->addAction(m_pEditPosition);
+ 	connect(m_pEditPosition, SIGNAL(triggered()), this, SLOT(editPosition()));
+ 	m_pEditPosition->setEnabled(false);
+-	*/
++
+ }
+ 
+ ModelStructure::~ModelStructure()
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ui_class/ScreenshotDialog.cpp GLC_Player/ui_class/ScreenshotDialog.cpp
+--- GLC_Player-2.3.0/ui_class/ScreenshotDialog.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ui_class/ScreenshotDialog.cpp	2013-12-30 12:20:26.922715670 +1100
+@@ -181,7 +181,7 @@
+ 	{
+ 		m_PreviousFilePath= QFileInfo(fileName).absolutePath();
+ 		fileName= m_PreviousFilePath + QDir::separator() + QFileInfo(fileName).completeBaseName() + extension;
+-		imageToSave.save(fileName, imageFormat.toAscii().data(), 100);
++		imageToSave.save(fileName, imageFormat.toLatin1().data(), 100);
+ 		QDialog::accept();
+ 	}
+ }
+diff -Nur '--exclude=.git' '--exclude=.gitignore' '--exclude=Makefile' '--exclude=documents' GLC_Player-2.3.0/ui_class/SettingsDialog.cpp GLC_Player/ui_class/SettingsDialog.cpp
+--- GLC_Player-2.3.0/ui_class/SettingsDialog.cpp	2011-06-21 10:30:02.000000000 +1000
++++ GLC_Player-git-c01999c/ui_class/SettingsDialog.cpp	2013-12-30 12:20:26.922715670 +1100
+@@ -117,6 +117,7 @@
+ 	}
+ 	if (vboIsUsed)
+ 	{
++		qDebug() << "settings use VBO";
+ 		useVbo->setCheckState(Qt::Checked);
+ 	}
+ 	else
+@@ -248,11 +249,6 @@
+ 		restart= true;
+ 	}
+ 
+-	if (m_InitVboUsage != vboIsUsed())
+-	{
+-		restart= true;
+-	}
+-
+ 	if (m_InitShaderUsage != shaderIsUsed())
+ 	{
+ 		restart= true;
+@@ -468,7 +464,7 @@
+ 	openglVersion->setText(GLC_State::version());
+ 	openglHardware->setText(GLC_State::renderer());
+ 	// VBO Support
+-	if (GLC_State::vboUsed())
++	if (m_InitVboUsage)
+ 	{
+ 		vboUsage->setText(tr("Used"));
+ 	}
+@@ -478,9 +474,10 @@
+ 		QPalette myPalette;
+ 		myPalette.setColor(QPalette::Normal, QPalette::WindowText, Qt::red);
+ 		vboUsage->setPalette(myPalette);
+-		useVbo->setCheckState(Qt::Unchecked);
++
+ 		if (!GLC_State::vboSupported())
+ 		{
++			useVbo->setCheckState(Qt::Unchecked);
+ 			useVbo->setEnabled(false);
+ 		}
+ 	}
