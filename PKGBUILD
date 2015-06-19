@@ -16,7 +16,7 @@ sha256sums=('1720cff2ca9c369c840c1d685a7c7a21da1afa687bfe62edd93cae4bf429ca5a')
 
 build(){
 cd ${srcdir}/${_pkgname}-${pkgver}
-python2 setup.py build
+python setup.py build
 }
 
 package() {
