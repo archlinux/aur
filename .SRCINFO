@@ -1,0 +1,27 @@
+pkgbase = winexe
+	pkgdesc = Remotely execute commands on Windows NT/2000/XP/2003 systems
+	pkgver = 1.00
+	pkgrel = 5
+	url = http://sourceforge.net/projects/winexe/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	depends = gnutls
+	depends = libsasl
+	depends = popt
+	depends = talloc
+	depends = tdb
+	source = http://downloads.sourceforge.net/project/winexe/winexe-1.00.tar.gz
+	source = getopts.patch
+	source = gnutls.patch
+	source = gnutls-priority.patch
+	source = pidl.patch
+	md5sums = 48325521ddc40d14087d1480dc83d51e
+	md5sums = 30ca08fe03518e9428799187159c78f4
+	md5sums = 201d74de823b8b07195a62a5c9e1bfdf
+	md5sums = 922f19f7156e9663659b8b51327222cd
+	md5sums = 486d86e0f181a844ddbf1e6267098ef3
+
+pkgname = winexe
+
