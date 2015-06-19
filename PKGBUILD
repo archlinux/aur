@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan dot husmann at t minus online dot de>
 
 pkgname=iojs-git
-pkgver=v2.3.0.5.g7c79490
+pkgver=v2.3.0.42.g8ac5081
 pkgrel=1
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-depends=('openssl')
-makedepends=('python2' 'git')
+depends=('python2' 'gnuplot' 'openssl')
+makedepends=( 'git')
 provides=('nodejs' 'npm')
 conflicts=('nodejs' 'iojs' 'npm')
 options=('!emptydirs')
