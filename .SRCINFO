@@ -1,0 +1,16 @@
+pkgbase = nolifenx
+	pkgdesc = A library to read NX files
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/NoLifeDev/NoLifeNx
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = cmake
+	depends = lz4
+	depends = gcc-libs
+	source = https://github.com/NoLifeDev/NoLifeNx/archive/1.0.0.tar.gz
+	sha1sums = 0bf58d5a84111a423653c6bb33206576c8f6f248
+
+pkgname = nolifenx
+
