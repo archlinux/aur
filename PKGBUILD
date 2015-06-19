@@ -15,7 +15,7 @@ source=(https://raw.githubusercontent.com/colinkeenan/${pkgname}/v${pkgver}/${pk
 	https://raw.githubusercontent.com/colinkeenan/${pkgname}/v${pkgver}/${pkgname}.svg)
 md5sums=('31d86f8194656301764f26aa632bf709'
          '3bab05dbc5357bbe934942503a79c6a3'
-         'bcd4d82fa14628eb47ffc6e8cb66c0cf'
+         '636ab11b688fc0826f7b1b0397e1c0e5'
          '5f1dfb475e6f52d7169795fa146de4e0')
 
 package() {
