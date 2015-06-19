@@ -1,0 +1,19 @@
+pkgbase = portaudio-svn
+	pkgdesc = A Free, cross platform, open-source, audio I/O library.
+	pkgver = 1913
+	pkgrel = 1
+	url = http://www.portaudio.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = subversion
+	depends = gcc-libs
+	depends = jack
+	provides = portaudio
+	conflicts = portaudio
+	options = !libtool
+	source = portaudio-svn::svn+https://subversion.assembla.com/svn/portaudio/portaudio/trunk/
+	md5sums = SKIP
+
+pkgname = portaudio-svn
+
