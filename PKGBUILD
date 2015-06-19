@@ -1,7 +1,7 @@
 # Maintainer: Brandon Giesing <brandon@giesing.cf>
 
 pkgname=ttf-roboto-slab
-pkgver=r46d486c
+pkgver=r4f5374de05
 pkgrel=1
 pkgdesc='Serif Roboto font from Google Keep'
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-  printf "r$(git rev-parse --short HEAD)"
+  printf "r$(svn propget git-commit --revprop -r HEAD https://github.com/google/fonts/trunk/apache/robotoslab | cut -c 10)"
 }
 
 package() {
