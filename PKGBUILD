@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
-pkgver=1.3
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -15,8 +15,6 @@ conflicts=('picard-plugins<1.1')
 # previous location (only temporarily offline?)
 #http://kalou.net/unix/picard/metaflac_rgscan.py
 source=(
-https://raw.github.com/mineo/mbstuff/master/picard/plugins/padded.py
-https://raw.github.com/mineo/mbstuff/master/picard/plugins/keep.py
 https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titlesort.py
 https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titleversion.py
 https://raw.github.com/weisslj/picardplugins/master/f2k_rgscan.py
@@ -33,9 +31,7 @@ https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/
 https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_wiki.py
 https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/langconv.py
 )
-sha256sums=('cdc233c8c3f656394762656d3cf602232154686e593168fecbb9bb033c5f29bb'
-            '0ea27833fbce95b1205c1aeba5f3d55758349bfb43ebc19c1987ee47c5dbe522'
-            'edee52bc7ca1cf4fb017b02889328a089380b27943255ae31ccc1ece9ef9b853'
+sha256sums=('edee52bc7ca1cf4fb017b02889328a089380b27943255ae31ccc1ece9ef9b853'
             '1885a5876e30b30197a3a9ddb34ffac8cd4458803038468b12fb8801efa91dd1'
             '6492413a9b60b2f3fcccaff8f0a4cb10eb0b97e5d94363c8c34e207c721a4fa9'
             'a0bfe0ac40e006563e28ba6c9f5cd40d256b40e85a757444c7cd9d708c5322a6'
@@ -56,7 +52,6 @@ package() {
   cd "$srcdir"
   install -d "$plugindir"
   install -m644 -t "$plugindir" \
-    padded.py keep.py \
     titlesort.py titleversion.py \
     f2k_rgscan.py metaflac_rgscan.py sidecar.py \
     removeperfectalbums.py autosave.py \
