@@ -1,0 +1,33 @@
+pkgbase = shotcut-git
+	pkgdesc = Video editor
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/mltframework/shotcut
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols
+	depends = qt5-webkit
+	depends = qt5-x11extras
+	depends = mlt
+	depends = ffmpeg
+	depends = libx264
+	depends = libvpx
+	depends = lame
+	depends = frei0r-plugins
+	depends = ladspa
+	provides = shotcut
+	conflicts = shotcut
+	source = shotcut::git+https://github.com/mltframework/shotcut.git
+	source = shotcut.desktop
+	source = cutelogger.patch
+	sha512sums = SKIP
+	sha512sums = 38aefcdfb092a53aac7d7989ea55f6e2d8ab581c7976291b476974aebf853169c40607301ef64612a62d5de30ae7a13de54cb9a91827568b216cb2b30b0501cf
+	sha512sums = fe18194558fca8096643528d239f91d0f7c948e58c8297e0338d6905e4df3732dd915eecc8bd25a62b1fba9731f21fcabc8f4ec32e45c46b74b061f549fb1c6a
+
+pkgname = shotcut-git
+
