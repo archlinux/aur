@@ -1,0 +1,17 @@
+pkgbase = ftpproxy
+	pkgdesc = FTP proxy with optional access and command control and client monitoring
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://www.ftpproxy.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	backup = etc/xinet.d/ftpproxy
+	source = http://www.ftpproxy.org/download/ftpproxy-1.2.3.tgz
+	source = ftpproxy.xinetd
+	md5sums = c2068bc452e1d7554d3bda08030aa433
+	md5sums = 701382c974b7e4965123444038ec1897
+
+pkgname = ftpproxy
+
