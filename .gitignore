@@ -1,0 +1,9 @@
+go-gpm-bootstrap/
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tgz
+*.rpm
+*.zip
+*.bz2
