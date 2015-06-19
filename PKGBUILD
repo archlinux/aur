@@ -1,5 +1,5 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
-# % Trigger: 1434720999 %
+# % Trigger: 1434721091 %
 # vim: ft=sh syn=sh ts=2 et
 
 pkgdesc="Standalone systemd libs (including -compat)"
