@@ -1,0 +1,30 @@
+pkgbase = ajenti-git
+	pkgdesc = An easy server administration frontend.
+	pkgver = 1.2.21.32.g83672a0
+	pkgrel = 1
+	url = http://github.com/Eugeny/ajenti/
+	install = ajenti.install
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = coffee-script
+	makedepends = lessc
+	makedepends = yuicompressor
+	depends = python2-gevent-socketio
+	depends = python2-lxml
+	depends = python2-passlib
+	depends = python2-psutil
+	depends = python2-daemon
+	depends = python2-catcher
+	depends = python2-reconfigure
+	depends = python2-pyopenssl
+	depends = python2-pillow
+	depends = python2-exconsole
+	optdepends = python2-ldap: Active Directory and LDAP authorization support
+	optdepends = python2-dbus: Services Management using Upstart and/or SystemD
+	backup = etc/ajenti/config.json
+	source = ajenti-git::git+https://github.com/Eugeny/ajenti.git#branch=master
+	md5sums = SKIP
+
+pkgname = ajenti-git
+
