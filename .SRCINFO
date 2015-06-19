@@ -8,6 +8,7 @@ pkgbase = python2-alchemical-analysis-git
 	license = LGPL
 	makedepends = git
 	depends = python2
+	depends = python2-pymbar-git
 	source = git://github.com/MobleyLab/alchemical-analysis.git
 	md5sums = SKIP
 
