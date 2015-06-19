@@ -1,0 +1,13 @@
+--- a/pgtune
++++ b/pgtune
+@@ -610,8 +610,8 @@ def read_options(program_args):
+     parser.add_option('-D', '--debug', action="store_true", dest="debug",
+                       default="False", help="Enable debugging mode")
+   
+-    parser.add_option('-S', '--settings', dest="settings_dir", default=None, 
+-                      help="Directory where settings data files are located at.  Defaults to the directory where the script is being run from")
++    parser.add_option('-S', '--settings', dest="settings_dir", default="/usr/share/pgtune", 
++                      help="Directory where settings data files are located at.")
+ 
+     parser.add_option('--doctest', help='run doctests', action='store_true')
+     options, args = parser.parse_args(program_args)

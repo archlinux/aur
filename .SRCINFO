@@ -1,0 +1,18 @@
+pkgbase = pgtune-git
+	pkgdesc = PostgreSQL Config Tuner
+	pkgver = r32.da57e00
+	pkgrel = 1
+	url = https://github.com/gregs1104/pgtune
+	arch = any
+	license = BSD
+	depends = python2
+	provides = pgtune
+	conflicts = pgtune
+	options = !emptydirs
+	source = git+https://github.com/gregs1104/pgtune.git
+	source = settings_dir.patch
+	md5sums = SKIP
+	md5sums = 887123049b3d675885ae827787eefff7
+
+pkgname = pgtune-git
+
