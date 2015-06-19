@@ -5,13 +5,13 @@ pkgdesc='A dummy package to provide systemd'
 pkgname='systemd-dummy'
 epoch=1
 pkgver=1
-pkgrel=3
+pkgrel=4
 depends=( 'libsystemd' )
 arch=( 'any' )
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
 
-provides=( 'systemd=218' )
+provides=( 'systemd=219' )
 
 package() {
   # systemd-tmfiles stub
