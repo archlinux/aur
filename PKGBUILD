@@ -1,7 +1,7 @@
 # Original contributor: Karro <karolina.lindqvist@kramnet.se>
 #
 # Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/pkgbuilds
+# Submit issues/pull requests at https://github.com/crumblingstatue/aur-libcd
 
 pkgname=libcd
 pkgver=5.8.2
