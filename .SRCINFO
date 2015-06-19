@@ -1,5 +1,5 @@
 pkgbase = python-musicbrainzngs
-	pkgdesc = bindings for the MusicBrainz NGS service
+	pkgdesc = bindings for the MusicBrainz NGS web service (WS/2)
 	pkgver = 0.5
 	pkgrel = 1
 	url = http://python-musicbrainzngs.readthedocs.org/

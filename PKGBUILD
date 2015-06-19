@@ -7,7 +7,7 @@ name=musicbrainzngs
 pkgname=$python-$name
 pkgver=0.5
 pkgrel=1
-pkgdesc="bindings for the MusicBrainz NGS service"
+pkgdesc="bindings for the MusicBrainz NGS web service (WS/2)"
 url="http://python-musicbrainzngs.readthedocs.org/"
 license="BSD"
 arch=('any')
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd $srcdir/$name-$pkgver
-  $python setup.py install --root=$pkgdir
+  $python setup.py install --skip-build --root=$pkgdir
 }
