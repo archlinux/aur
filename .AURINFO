@@ -1,0 +1,16 @@
+pkgbase = linkchecker
+	pkgdesc = An utility to check HTML documents for broken links.
+	pkgver = 9.3
+	pkgrel = 1
+	url = http://wummel.github.io/linkchecker/
+	arch = any
+	license = GPL
+	makedepends = qt4
+	depends = python2>=2.5
+	depends = python2-requests
+	optdepends = python2-qscintilla: for gui version
+	optdepends = python2-pyqt4: for gui version
+	source = http://pypi.python.org/packages/source/L/LinkChecker/LinkChecker-9.3.tar.gz
+
+pkgname = linkchecker
+
