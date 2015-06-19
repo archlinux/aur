@@ -1,0 +1,15 @@
+pkgbase = inform7
+	pkgdesc = A design system for interactive fiction based on natural language
+	pkgver = 6L38
+	pkgrel = 1
+	url = http://inform7.com/
+	arch = i686
+	arch = x86_64
+	license = custom:Inform
+	depends = perl
+	source = http://inform7.com/download/content/6L38/I7_6L38_Linux_all.tar.gz
+	source = install-inform7.sh.patch
+	source = LICENSE
+
+pkgname = inform7
+
