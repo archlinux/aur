@@ -1,0 +1,22 @@
+pkgbase = libim
+	pkgdesc = Toolkit for Digital Imaging
+	pkgver = 3.9.1
+	pkgrel = 4
+	url = http://www.tecgraf.puc-rio.br/im/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	optdepends = lua: bindings for Lua are available
+	optdepends = fftw: for fft support
+	options = staticlibs
+	source = http://downloads.sourceforge.net/project/imtoolkit/3.9.1/Docs%20and%20Sources/im-3.9.1_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/imtoolkit/3.9.1/Docs%20and%20Sources/im-3.9.1_Docs.pdf
+	source = LICENSE
+	md5sums = f2626e894acc42a1c67adc318124d890
+	md5sums = 97d806f9493e6c7b7a9f72d15f902d77
+	md5sums = 214b5ab19962418fa755a45b35504219
+
+pkgname = libim
+
