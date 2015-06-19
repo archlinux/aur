@@ -1,0 +1,17 @@
+pkgbase = couchapp-git
+	pkgdesc = A set of helpers and a jQuery plugin that conspire to get you up and running on CouchDB quickly and correctly.
+	pkgver = 20140302
+	pkgrel = 1
+	url = http://github.com/couchapp/couchapp/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = setuptools
+	depends = python2
+	depends = python2-restkit
+	depends = python2-watchdog
+	provides = couchapp
+
+pkgname = couchapp-git
+
