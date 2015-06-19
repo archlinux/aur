@@ -6,7 +6,6 @@ pkgbase = python-musicbrainzngs-git
 	arch = any
 	license = BSD
 	makedepends = git
-	makedepends = python
 	source = git+https://github.com/alastair/python-musicbrainzngs.git
 	md5sums = SKIP
 
@@ -14,4 +13,9 @@ pkgname = python-musicbrainzngs-git
 	depends = python
 	provides = python-musicbrainzngs=0.5_86.g98b6885
 	conflicts = python-musicbrainzngs
+
+pkgname = python2-musicbrainzngs-git
+	depends = python2
+	provides = python2-musicbrainzngs=0.5_86.g98b6885
+	conflicts = python2-musicbrainzngs
 
