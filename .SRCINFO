@@ -1,0 +1,17 @@
+pkgbase = htp
+	pkgdesc = HTML pre-processor
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://htp.sf.net
+	arch = i686
+	arch = x86_64
+	license = custom:artistic
+	makedepends = make
+	makedepends = gcc
+	depends = perl
+	options = docs
+	source = http://downloads.sourceforge.net/htp/htp-1.18.tar.gz
+	md5sums = 5ed177996785254d83695e83019c8fe5
+
+pkgname = htp
+
