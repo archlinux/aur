@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=fakepkg
-pkgver=1.21.4
+pkgver=1.21.5
 pkgrel=1
 pkgdesc="A tool to reassemble installed packages from its deliverd files. It comes in handy if there is no internet connection available and you have no access to an up-to-date package cache."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 url="https://github.com/Edenhofer/bin"
 depends=('bash>=4.2' 'pacman' 'tar' 'xz' 'gzip' 'parallel')
 source=("${pkgname}-${pkgver}.zip"::"https://github.com/Edenhofer/fakepkg/archive/v${pkgver}.zip")
-md5sums=('205336d9d2add15a31c96e9852bd75d2')
+md5sums=('e1adf60094cfe6fd3ae9c7058a45a1ad')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
