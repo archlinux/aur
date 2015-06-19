@@ -1,5 +1,5 @@
 # Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/pkgbuilds
+# Submit issues/pull requests at https://github.com/crumblingstatue/aur-nolifenx
 
 pkgname=nolifenx
 pkgver=1.0.0
