@@ -1,3 +1,4 @@
+picard-plugins/
 *.py
 *.tar.gz
 *.tar.xz
