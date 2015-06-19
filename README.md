@@ -10,10 +10,10 @@ docker build --tag php-imagick-aur .
 docker run --rm --volume "$(pwd):/package" php-imagick-aur
 ```
 
-Alternatively, using [Fig]:
+Alternatively, using [Docker Compose]:
 
 ```bash
-fig run build
+docker-compose run build
 ```
 
 This will start create a docker image tagged as php-imagick-aur and build the
@@ -24,4 +24,4 @@ your current directory.
 [imagick]: http://pecl.php.net/package/imagick
 [makepkg]: https://wiki.archlinux.org/index.php/Makepkg
 [Docker]: https://www.docker.com/
-[Fig]: http://www.fig.sh/
+[Docker Compose]: http://docs.docker.com/compose/
