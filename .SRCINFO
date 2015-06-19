@@ -1,0 +1,16 @@
+pkgbase = python2-template2pdf
+	pkgdesc = Modules to render tRML template to PDF
+	pkgver = 0.6.5
+	pkgrel = 2
+	url = http://code.google.com/p/template2pdf/
+	arch = any
+	license = LGPL
+	depends = python-imaging
+	depends = python-reportlab
+	source = http://pypi.python.org/packages/source/t/template2pdf/template2pdf-0.6.5.tar.gz
+	source = image_resolver.patch
+	md5sums = 6b112bae8cb16be44f0047b77bba4697
+	md5sums = 9ae0b508524c973ed0715af9e2c18953
+
+pkgname = python2-template2pdf
+

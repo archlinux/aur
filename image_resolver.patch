@@ -1,0 +1,99 @@
+Index: template2pdf/t2p/trml2pdf.py
+===================================================================
+--- template2pdf/t2p/trml2pdf.py	(revision 66)
++++ template2pdf/t2p/trml2pdf.py	(revision 67)
+@@ -28,6 +28,7 @@
+ import reportlab
+ from reportlab.pdfgen import canvas
+ from reportlab import platypus
++
+ try:
+     from reportlab.graphics.barcode.common import Codabar, Code11, I2of5, MSI
+     from reportlab.graphics.barcode.code128 import Code128
+@@ -54,8 +55,9 @@
+ def _child_get(node, childs):
+     """Filter child nodes
+     """
+-    return filter(lambda n: ((n.nodeType==n.ELEMENT_NODE) and (n.localName==childs)),
+-                  node.childNodes)
++    return filter(
++        lambda n: ((n.nodeType==n.ELEMENT_NODE) and (n.localName==childs)),
++        node.childNodes)
+ 
+ 
+ class _rml_styles(object):
+@@ -262,7 +264,7 @@
+         else:
+             self.canvas = canvas.Canvas(out)
+             pd = self.dom.documentElement.getElementsByTagName('pageDrawing')[0]
+-            pd_obj = _rml_canvas(self.canvas, None, self)
++            pd_obj = _rml_canvas(self.canvas, doc_tmpl=None, doc=self)
+             pd_obj.render(pd)
+             self.canvas.showPage()
+             self.canvas.save()
+@@ -387,7 +389,9 @@
+ 
+     def _image(self, node):
+         img, args = self.doc.image_resolver(node)
+-        self.canvas.drawImage(img, **args)
++        x = args.pop('x', 0)
++        y = args.pop('y', 0)
++        self.canvas.drawImage(img, x, y, **args)
+ 
+     def _path(self, node):
+         self.path = self.canvas.beginPath()
+@@ -455,7 +459,7 @@
+ 
+     def render(self, canvas, doc):
+         canvas.saveState()
+-        cnv = _rml_canvas(canvas, doc, self.styles)
++        cnv = _rml_canvas(canvas, None, doc)
+         cnv.render(self.node)
+         canvas.restoreState()
+ 
+@@ -525,7 +529,8 @@
+ 
+     def _illustration(self, node):
+         class Illustration(platypus.flowables.Flowable):
+-            def __init__(self, node, styles):
++            def __init__(self, node, styles, parent):
++                self.parent = parent
+                 self.node = node
+                 self.styles = styles
+                 self.width = utils.as_pt(node.getAttribute('width'))
+@@ -535,8 +540,8 @@
+             def draw(self):
+                 canvas = self.canv
+                 drw = _rml_draw(self.node, self.styles)
+-                drw.render(self.canv, None)
+-        return Illustration(node, self.styles)
++                drw.render(self.canv, self.parent.doc)
++        return Illustration(node, self.styles, self)
+ 
+     def _flowable(self, node):
+         if node.localName=='para':
+@@ -661,7 +666,7 @@
+                 frames.append( frame )
+             gr = pt.getElementsByTagName('pageGraphics')
+             if len(gr):
+-                drw = _rml_draw(gr[0], self.doc)
++                drw = _rml_draw(gr[0], self.styles)
+                 self.page_templates.append(
+                     platypus.PageTemplate(frames=frames, onPage=drw.render,
+                                           **utils.getAttrsAsDict(pt, [], {'id': 'str'})))
+@@ -676,6 +681,7 @@
+         fis = r.render(node_story)
+         self.doc_tmpl.build(fis)
+ 
++
+ def parseString(data, fout=None):
+     r = _rml_doc(data)
+     if fout:
+@@ -688,6 +694,7 @@
+         r.render(fp)
+         return fp.getvalue()
+ 
++
+ def trml2pdf_help():
+     print 'Usage: trml2pdf input.rml >output.pdf'
+     print 'Render the standard input (RML) and output a PDF file'
