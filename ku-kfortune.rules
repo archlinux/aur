@@ -1,0 +1,1 @@
+KERNEL=="ka", SYMLINK+="abc", MODE="0644"

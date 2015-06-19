@@ -1,0 +1,16 @@
+pkgbase = fortune-mod-ku-git
+	pkgdesc = Fortune cookies from the AbcLinuxu.cz & KERNEL ULTRAS community
+	pkgver = r34.e92dc09
+	pkgrel = 1
+	url = http://fortune.kral.hk/
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	optdepends = kfortune: read cookies from a /dev file
+	source = git+https://bitbucket.org/kralyk/ku-fortune-cookies.git
+	source = ku-kfortune.rules
+	sha256sums = SKIP
+	sha256sums = 16c2826f2ef494a256d1582ce0bee80897f61c32b01e46f489c0661c531363e1
+
+pkgname = fortune-mod-ku-git
+
