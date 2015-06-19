@@ -1,0 +1,14 @@
+pkgbase = mp_doccer
+	pkgdesc = C source code documentation generator
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://triptico.com/software/mp_doccer.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	source = http://triptico.com/download/mp_doccer-1.2.2.tar.gz
+	md5sums = fcc04deff7ce456cc7c438a173e5ca8b
+
+pkgname = mp_doccer
+
