@@ -1,0 +1,12 @@
+pkgbase = vim-bitbake-git
+	pkgdesc = Vim files for the BitBake tool
+	pkgver = r50.d601f51
+	pkgrel = 1
+	url = https://github.com/kergoth/vim-bitbake
+	arch = any
+	license = MIT
+	depends = vim
+	source = git+https://github.com/kergoth/vim-bitbake.git
+
+pkgname = vim-bitbake-git
+
