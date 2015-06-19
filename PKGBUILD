@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='ttf-monoid-git'
 pkgdesc='Open Source coding font'
-pkgver=r184.4f68767
+pkgver=r200.39641b8
 pkgrel=1
 arch=('any')
 license=('custom:MIT')
@@ -28,13 +28,16 @@ prepare () {
 
 build () {
 	cd "${pkgname}"
-	python3 -c 'import fontbuilder; fontbuilder.build("_release", "Source", "Monoid.sfdir");'
+	python3 -c 'import fontbuilder; fontbuilder.build("_regular", "Source", "Monoid.sfdir");'
+	python3 -c 'import fontbuilder; fontbuilder.build("_oblique", "Source", "Monoid-Oblique.sfdir");'
 }
 
 package () {
 	cd "${pkgname}"
-	install -Dm644 _release/Monoid.ttf \
+	install -Dm644 _regular/Monoid.ttf \
 		"${pkgdir}/usr/share/fonts/TTF/Monoid.ttf"
-	install -Dm644 License.txt \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 _oblique/Monoid.ttf \
+		"${pkgdir}/usr/share/fonts/TTF/Monoid-Oblique.ttf"
+	install -Dm644 Readme.md \
+		"${pkgdir}/usr/share/licenses/${pkgname}/README.md"
 }
