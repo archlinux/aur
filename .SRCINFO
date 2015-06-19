@@ -1,0 +1,16 @@
+pkgbase = ttf-adobe-source-code-pro
+	pkgdesc = A set of OpenType fonts that have been designed to work well in user interface (UI) environments.
+	pkgver = 1.017R
+	pkgrel = 1
+	url = http://adobe-fonts.github.io/source-code-pro
+	arch = any
+	license = custom:SIL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/adobe-fonts/source-code-pro/archive/1.017R.zip
+	md5sums = 6f3499830ea1ffb4a7ade2d65fe2ddee
+
+pkgname = ttf-adobe-source-code-pro
+
+pkgname = otf-adobe-source-code-pro
+
