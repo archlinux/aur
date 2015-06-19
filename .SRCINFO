@@ -1,0 +1,15 @@
+pkgbase = libreoffice-extension-pepitocleaner
+	pkgdesc = An extension created to quickly resolve the most common formatting mistakes
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = http://pepitoweb.altervista.org
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	depends = libreoffice-common
+	noextract = PepitoCleaner.oxt
+	source = http://pepitoweb.altervista.org/PepitoCleaner.oxt
+	md5sums = 2222a113c52ab3e5dc9a284b86c80eea
+
+pkgname = libreoffice-extension-pepitocleaner
+
