@@ -1,0 +1,14 @@
+pkgbase = trac-narcissus
+	pkgdesc = Team reflection plugin for Trac
+	pkgver = 87
+	pkgrel = 1
+	url = http://trac-hacks.org/wiki/NarcissusPlugin
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	makedepends = python2-distribute
+	depends = python-imaging
+	depends = trac>=0.12
+
+pkgname = trac-narcissus
+
