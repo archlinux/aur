@@ -1,0 +1,9 @@
+go-gpm-all/
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tgz
+*.rpm
+*.zip
+*.bz2
