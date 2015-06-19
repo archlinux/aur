@@ -1,0 +1,12 @@
+diff -Nur clamfs-1.0.1.orig/src/scancache.cxx clamfs-1.0.1/src/scancache.cxx
+--- clamfs-1.0.1.orig/src/scancache.cxx	2009-02-08 01:09:26.000000000 +1100
++++ clamfs-1.0.1/src/scancache.cxx	2010-08-01 21:25:14.985359686 +1000
+@@ -37,7 +37,7 @@
+ }
+ 
+ ScanCache::ScanCache(long int elements, long int expire):
+-    ExpireLRUCache<ino_t, CachedResult>::ExpireLRUCache<ino_t, CachedResult>(elements, expire) {
++    ExpireLRUCache<ino_t, CachedResult>(elements, expire) {
+ }
+ 
+ ScanCache::~ScanCache() {
