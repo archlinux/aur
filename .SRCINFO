@@ -1,0 +1,14 @@
+pkgbase = rankwidth
+	pkgdesc = A program that calculates rank-width and rank-decompositions
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = igraph
+	source = http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw-0.7.tar.gz
+	md5sums = 58695835a1b5aaa3935143feabc8619a
+
+pkgname = rankwidth
+
