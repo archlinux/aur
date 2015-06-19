@@ -3,7 +3,7 @@
 # Contributor: maoserr
 #
 # Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/pkgbuilds
+# Submit issues/pull requests at https://github.com/crumblingstatue/aur-iup
 
 pkgname=iup
 pkgver=3.14
