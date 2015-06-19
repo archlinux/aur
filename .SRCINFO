@@ -1,7 +1,7 @@
 pkgbase = pure-ftpd-db
 	pkgdesc = A fast, production quality, standards-conformant FTP server. Compiled with mysql and pgsql.
-	pkgver = 1.0.36
-	pkgrel = 7
+	pkgver = 1.0.40
+	pkgrel = 1
 	url = http://www.pureftpd.org/
 	changelog = pure-ftpd-db.changelog
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = pure-ftpd-db
 	provides = pure-ftpd
 	conflicts = pure-ftpd
 	backup = etc/pure-ftpd/pure-ftpd.conf
-	source = ftp://pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.36.tar.bz2
+	source = ftp://pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.40.tar.bz2
 	source = pure-ftpd.service
-	md5sums = 7899c75c1fed7dbad0352eb31080e066
+	md5sums = 33a503343a0f960332156387cc2dde55
 	md5sums = b6989f475edef34f2810646cc73b7b9e
 
 pkgname = pure-ftpd-db
