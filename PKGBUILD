@@ -1,3 +1,5 @@
+# Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
+
 pkgname="qt5-python27-git"
 pkgver=3.0
 pkgrel=2
