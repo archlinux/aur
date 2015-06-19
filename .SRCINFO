@@ -1,0 +1,16 @@
+pkgbase = python-pyramid-debugtoolbar
+	pkgdesc = Interactive HTML debugger for Pyramid application development
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/Pylons/pyramid_debugtoolbar
+	arch = any
+	license = custom:BSD
+	makedepends = python-distribute
+	depends = python
+	depends = python-pyramid
+	depends = python-pygments
+	source = https://pypi.python.org/packages/source/p/pyramid_debugtoolbar/pyramid_debugtoolbar-2.3.tar.gz
+	sha256sums = 38c4ae0524b7e045f816c96697369849c0f8562e3f1ae0fbaf168b53b2105ea3
+
+pkgname = python-pyramid-debugtoolbar
+
