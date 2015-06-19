@@ -2,8 +2,8 @@
 
 pkgname=kreogist-mu
 pkgver='0.8'
-pkgrel=8
-epoch=0
+pkgrel=1
+epoch=1
 pkgdesc="Fantastic cross-platform music manager"
 changelog="kreogist-mu.changelog"
 arch=('x86_64')

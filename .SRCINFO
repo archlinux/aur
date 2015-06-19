@@ -1,8 +1,8 @@
 pkgbase = kreogist-mu
 	pkgdesc = Fantastic cross-platform music manager
 	pkgver = 0.8
-	pkgrel = 8
-	epoch = 0
+	pkgrel = 1
+	epoch = 1
 	url = https://kreogist.github.io/Mu/
 	changelog = kreogist-mu.changelog
 	arch = x86_64
