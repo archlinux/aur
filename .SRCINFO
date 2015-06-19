@@ -1,0 +1,20 @@
+pkgbase = python2-pushybullet
+	pkgdesc = PushBullet APIv2 python bindings
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = http://github.com/kstep/pushybullet
+	arch = any
+	license = GPL
+	depends = python2
+	optdepends = python2-websocket-client: read pushes stream in real-time
+	optdepends = python2-dateutil: parse datetime in string format
+	optdepends = python2-magic: file type autodetection
+	source = pushybullet.py
+	source = pb
+	source = setup.py
+	md5sums = 9596e1f55ea766bdd0e110b85bc6767a
+	md5sums = 654983199a909516b9d643c3c1714190
+	md5sums = ddf1a4bf540c4c21044fe8ec50b76ef3
+
+pkgname = python2-pushybullet
+
