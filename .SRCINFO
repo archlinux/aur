@@ -1,0 +1,17 @@
+pkgbase = luajit-git
+	pkgdesc = Just-in-time compiler and drop-in replacement for Lua 5.1
+	pkgver = 2.0.3.28.ga6c34b8
+	pkgrel = 1
+	url = http://luajit.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	provides = luajit
+	conflicts = luajit
+	source = git+http://luajit.org/git/luajit-2.0.git
+	sha256sums = SKIP
+
+pkgname = luajit-git
+
