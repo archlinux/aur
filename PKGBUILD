@@ -3,8 +3,8 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=141.1383.1
-_pkgver=14.1.4
+_buildver=142.2491.4
+_pkgver=15
 _eap="True"
 epoch=1
 pkgver=${_pkgver}.${_buildver}
