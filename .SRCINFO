@@ -1,0 +1,19 @@
+pkgbase = orthanc
+	pkgdesc = Open-source, lightweight DICOM server.
+	pkgver = 0.8.6
+	pkgrel = 3
+	url = http://orthanc-server.com/
+	arch = x86_64
+	arch = i686
+	license = custom:GPL3WithOpenSSLException
+	makedepends = python
+	makedepends = cmake
+	makedepends = mercurial
+	makedepends = unzip
+	makedepends = doxygen
+	depends = util-linux
+	source = Orthanc-0.8.6.tar.gz::http://downloads.sourceforge.net/orthancserver/Orthanc-0.8.6.tar.gz
+	sha256sums = 0668e23dbdf4aa12bf417cf22bfb7b50379797fc6b1132a582789289d1728e69
+
+pkgname = orthanc
+
