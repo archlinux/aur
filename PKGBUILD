@@ -1,9 +1,5 @@
 # Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="https://github.com/rhinstaller/pesign.git"
-_gitname="pesign"
-_gitbranch="master"
-
 _pkgname="pesign"
 pkgname="${_pkgname}-git"
 
@@ -21,23 +17,26 @@ provides=("${_pkgname}=${pkgver}")
 
 options=('!strip' '!emptydirs' 'docs')
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
+source=("pesign::git+https://github.com/rhinstaller/pesign.git#branch=master")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/"
+	cd "${srcdir}/${_pkgname}/"
 	echo "$(git describe --tags)" | sed -e 's|-|.|g'
+}
+
+prepare(){
+	
+	cd "${srcdir}/${_pkgname}/"
+	
+	git clean -x -d -f
+	echo
+	
 }
 
 build() {
 	
-	rm -rf "${srcdir}/${_gitname}_build/" || true
-	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
-	
-	cd "${srcdir}/${_gitname}_build/"
-	
-	git clean -x -d -f
-	echo
+	cd "${srcdir}/${_pkgname}/"
 	
 	unset CFLAGS
 	unset CPPFLAGS
@@ -52,12 +51,11 @@ build() {
 
 package() {
 	
-	cd "${srcdir}/${_gitname}_build"
+	cd "${srcdir}/${_pkgname}"
 	
 	make INSTALLROOT="${pkgdir}/" PREFIX="/usr/" LIBDIR="/usr/lib/" install
 	
 	chmod 0644 "${pkgdir}/usr/lib/libdpe.a"
-	
 	rm -rf "${pkgdir}/etc/rpm/"
 	
 }
