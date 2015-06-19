@@ -4,7 +4,7 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1491.50c0ac2
+pkgver=1496.988e4c4
 pkgrel=1
 pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, LLVM JIT, bytecode, BNF macros, many advanced modules & bindings and much more!'
 url='http://www.daovm.net/'
@@ -104,17 +104,15 @@ build() {
   mv "DaoGenomeTools/"      "$_basename/modules/"
   # FIXME not getting compiled
   mv "DaoGObject/"          "$_basename/modules/"
-  mv "DaoGraphics/"         "$_basename/modules/"
+  # FIXME randgen issue 2015-06-18 20:14:35 CEST
+  #mv "DaoGraphics/"         "$_basename/modules/"
   mv "DaoGSL/"              "$_basename/modules/"
   mv "DaoOpenGL/"           "$_basename/modules/"
   mv "DaoSQL/"              "$_basename/modules/"
-  # FIXME not getting compiled
+  # FIXME see also below `sed -i ...'
+  #   wrap/dao_sdl.h:18:16: fatal error: SDL.h: No such file or directory
+  #   #include"SDL.h"
   #mv "DaoSDL/"              "$_basename/modules/"
-  # FIXME doesn't compile
-  #  # relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a shared object
-  #  sed -i -r 's|(./configure)|autoreconf \&\& \1|' \
-  #    modules/regex/makefile.dao
-  rm -rf "$_basename/modules/regex"
   cd "$_basename"
 
   # order matters when using gcc
@@ -137,9 +135,7 @@ EOF
     clangdao_exe.AddLinkingFlag( \"$(llvm-config --libs)\" )" \
     tools/clangdao/makefile.dao
 
-  # FIXME raise issue no GitHub
-  #   DaoMake::Settings["DLL-FLAG"]        = "-shared,--enable-new-dtags"
-  #sed -i -r 's|-shared|-shared -enable-new-dtags|' \
+  # FIXME
   sed -i -r 's|-Wl,-rpath=|-Wl,--enable-new-dtags,-rpath=|' \
     tools/daomake/platforms/unix.dao
 
@@ -156,6 +152,14 @@ EOF
   # https://github.com/daokoder/DaoSQL/issues/2
   sed -i -r 's|(#include) *"mysql.h"|\1 <mysql/mysql.h>|' \
     modules/DaoSQL/DaoMySQL/daoMySQL.h
+
+  # FIXME https://github.com/daokoder/dao-modules/issues/41
+  for d in cgi html http json; do
+    sed -i -r "s|\"web/$d\"|\"web\"|" modules/web/$d/makefile.dao
+  done
+
+  # FIXME will be fixed/allowed in upstream soon
+  #sed -i -r '/regex/s|^[ #]+||' modules/makefile.dao
 
   # https://github.com/daokoder/DaoSDL/issues/2
   #sed -i -r 's|(#include) *"(SDL[^"]+)"|\1 <SDL2/\2>|' \
@@ -195,6 +199,8 @@ EOF
   # stop right after the daomake tool creates the Makefile
   #sed -i -r 's|^[[:space:]]*\$\(MAKE\)[[:space:]]*$||' Makefile.daomake
 
+  # FIXME disable generation of finders, because they contain
+  #   compile-time specific paths
   make -f Makefile.daomake linux MODE=debug RESET='--reset' \
     OPTIONS="--option-INSTALL-PATH '/usr' --no-local-rpath"
   #make -f Makefile.daomake linux MODE=release RESET='--reset' \
