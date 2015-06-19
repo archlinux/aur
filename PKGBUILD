@@ -3,7 +3,7 @@
 
 pkgname=ntpdate
 _pkgname=ntp
-_pkgver=4.2.8p1
+_pkgver=4.2.8p2
 pkgver=${_pkgver/p/.p}
 pkgrel=1
 pkgdesc='Client for the Network Time Protocol (NTP)'
@@ -18,10 +18,10 @@ source=("http://archive.ntp.org/ntp4/${_pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.conf"
         "${pkgname}.service"
         "restore-html2man.patch")
-sha256sums=('948274b88f1ed002d867ced6aaefdfd0999668b11285ac2b3a67ff2629d59d88'
+sha256sums=('0b2953c7f68dca5a36183b2dbbeef091f2d074e12fb35007a10efd66787a8ab4'
             '1ddbf0f51e030c6ec48d50e1b0eb6682f2d51567fbbb8fdd695a0e38a6036fd7'
             '2267e19120de4a73703ed0d83a4a0088309600ce3fed88c3c17a950fa0c1aa85'
-            '59571e06242a224c7cacaec7395b7fd25078ab469abb035ea0eb6fbecab8fd65')
+            'c97469a1562db1ae3ef41b323021c9261ef87ed558a7f986fd0c4d6dc7b237f9')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
