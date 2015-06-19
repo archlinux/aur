@@ -1,0 +1,10 @@
+[Unit]
+Description=NXT
+After=network.target
+
+[Service]
+User=nxt
+ExecStart=/usr/bin/bash -c 'cd /opt/nxt/; ./run.sh'
+
+[Install]
+WantedBy=multi-user.target

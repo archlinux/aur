@@ -1,0 +1,21 @@
+pkgbase = nxt-git
+	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency.
+	pkgver = 1.5.12.r5.g5bbafe1
+	pkgrel = 1
+	url = http://nxt.org
+	install = nxt.install
+	arch = any
+	license = MIT/GPL
+	makedepends = java-environment-openjdk=8
+	depends = bash
+	depends = java-runtime-openjdk=8
+	optdepends = flashplugin: for add to clipboard support
+	source = nxt-git::git+https://bitbucket.org/JeanLucPicard/nxt.git
+	source = nxt.service
+	source = nxt.install
+	sha256sums = SKIP
+	sha256sums = 293bf1e313677f769e4a12e6e0f78bbd58c796ebe7c34528ba50cd73bbea15a7
+	sha256sums = b7575397d7dd19e9b1bab75e21a433f3bdc98279ad822fe57235b830c062abca
+
+pkgname = nxt-git
+

@@ -1,0 +1,20 @@
+post_install() {
+    getent passwd nxt &>/dev/null || {
+        echo -n ">>> Creating nxt user... "
+        useradd --system --user-group --home /opt/nxt nxt
+        echo "done"
+    }
+    chown -R nxt:nxt /opt/nxt
+}
+
+post_upgrade() {
+    chown -R nxt:nxt /opt/nxt
+}
+
+pre_remove() {
+    getent passwd nxt &>/dev/null && {
+        echo -n ">>> Removing nxt user... "
+        userdel nxt
+        echo "done"
+    }
+}
