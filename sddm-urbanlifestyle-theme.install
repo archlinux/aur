@@ -11,7 +11,7 @@ post_install() {
 	echo -e "\n[Theme]"
 	echo -e "# Current theme name"
 	echo -e "Current=${bold_underline_white}urbanlifestyle${color_reset}\n"
-	echo -e " ${bold_blue}->${color_reset} ${bold_white}More info at https://wiki.archlinux.org/index.php/SDDM${color_reset}"
+	echo -e " ${bold_blue}->${color_reset} ${bold_white}More info at https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme${color_reset}"
 }
 
 post_upgrade() {
@@ -24,5 +24,5 @@ post_remove() {
 	echo -e "\n[Theme]"
 	echo -e "# Current theme name"
 	echo -e "Current=${bold_underline_white}maui${color_reset}\n"
-	echo -e " ${bold_blue}->${color_reset} ${bold_white}More info at https://wiki.archlinux.org/index.php/SDDM${color_reset}"
+	echo -e " ${bold_blue}->${color_reset} ${bold_white}More info at https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme${color_reset}"
 }
