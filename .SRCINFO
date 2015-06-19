@@ -1,0 +1,18 @@
+pkgbase = django12
+	pkgdesc = A high-level Python Web framework.
+	pkgver = 1.2.7
+	pkgrel = 2
+	url = http://www.djangoproject.com/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	optdepends = mysql-python: for MySQL backend
+	optdepends = python2-psycopg2: for PostgreSQL backend
+	provides = django=1.2.7
+	conflicts = django
+	source = http://www.djangoproject.com/m/releases/1.2/Django-1.2.7.tar.gz
+	md5sums = 902fe294a2f7b16e5e1dee42d458c2ba
+
+pkgname = django12
+
