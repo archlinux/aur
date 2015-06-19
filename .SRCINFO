@@ -1,0 +1,15 @@
+pkgbase = libmrss-git
+	pkgdesc = RSS parsing library including PHP module
+	pkgver = 20130403
+	pkgrel = 1
+	url = http://github.com/kstep/libmrss
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = php
+	depends = libnxml
+	provides = libmrss
+
+pkgname = libmrss-git
+
