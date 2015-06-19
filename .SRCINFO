@@ -1,0 +1,15 @@
+pkgbase = musket
+	pkgdesc = a parallel short-read error corrector for Illumina sequencing
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://musket.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	depends = zlib
+	source = http://downloads.sourceforge.net/musket/musket-1.1.tar.gz
+	md5sums = 28455d698304d1387e5ee274506a7ed9
+
+pkgname = musket
+
