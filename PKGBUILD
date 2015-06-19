@@ -9,9 +9,9 @@ pkgrel=7
 pkgdesc="C-based metadata parser to quickly parse xml metadata into sqlite databases."
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://pkgs.fedoraproject.org/repo/pkgs/yum-metadata-parser/"
+url="http://yum.baseurl.org/download/yum-metadata-parser/"
 depends=('python2' 'libxml2'  'glib2')
-source=(http://pkgs.fedoraproject.org/repo/pkgs/yum-metadata-parser/yum-metadata-parser-1.1.4.tar.gz/05289971e5cfde532631f2a99f6c58c7/${pkgname}-${pkgver}.tar.gz)
+source=(http://yum.baseurl.org/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('f1560a284541feb720c3ae35b6b31f80c2be5cb9ca86b3a1ee9459846f821ada')
 
 build() {
