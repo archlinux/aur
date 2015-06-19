@@ -14,7 +14,7 @@ md5sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-  printf "r$(svn propget git-commit --revprop -r HEAD https://github.com/google/fonts/trunk/apache/robotoslab | cut -c 10)"
+  printf "r$(svn propget git-commit --revprop -r HEAD https://github.com/google/fonts/trunk/apache/robotoslab | cut -c -10)"
 }
 
 package() {
