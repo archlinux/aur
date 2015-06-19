@@ -1,0 +1,29 @@
+pkgbase = libcd
+	pkgdesc = Platform-independent graphics library
+	pkgver = 5.8.2
+	pkgrel = 2
+	url = http://www.tecgraf.puc-rio.br/cd/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = lua
+	depends = ftgl
+	depends = libim
+	depends = pdflib-lite
+	depends = gtk2
+	depends = libxmu
+	depends = pangox-compat
+	options = staticlibs
+	source = http://downloads.sourceforge.net/project/canvasdraw/5.8.2/Docs%20and%20Sources/cd-5.8.2_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/canvasdraw/5.8.2/Docs%20and%20Sources/cd-5.8.2_Docs.pdf
+	source = LICENSE
+	source = cdpdf.mak.patch
+	source = cdluaim5.patch
+	md5sums = 0e78ee6eedfde1acca6cc5351ba4bb1d
+	md5sums = 906e59f55fc48e3f4cd3c40582aea150
+	md5sums = 3b326faf9f9ab35096453525b55bd8c8
+	md5sums = eec4463334ef927ed6c4ccb81086c6df
+	md5sums = ed8a4b981b24f38d82efd8aa5b3dea87
+
+pkgname = libcd
+

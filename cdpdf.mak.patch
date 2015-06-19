@@ -1,0 +1,11 @@
+--- cdpdf.mak.old	2015-05-19 10:10:41.865276298 +0200
++++ cdpdf.mak	2015-05-19 10:10:48.141943259 +0200
+@@ -6,7 +6,7 @@
+ SRC = drv/cdpdf.c
+ 
+ INCLUDES = . sim pdflib/pdflib
+-LIBS = pdflib
++LIBS = pdf
+ 
+ USE_CD = YES
+ CD = ..
