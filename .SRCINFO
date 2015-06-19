@@ -1,0 +1,13 @@
+pkgbase = memo-git
+	pkgdesc = Memo is a Unix-style note-taking software
+	pkgver = git
+	pkgrel = 1
+	url = http://www.getmemo.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/nrosvall/memo.git
+	md5sums = SKIP
+
+pkgname = memo-git
+
