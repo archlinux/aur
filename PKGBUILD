@@ -2,7 +2,7 @@
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python2-grab
-pkgver=0.6.19
+pkgver=0.6.20
 pkgrel=1
 pkgdesc="Grab - Web Scraping Framework"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://github.com/lorien/grab"
 license=('MIT')
 depends=('python2' 'python2-pycurl' 'python2-lxml' 'python2-cssselect')
 source=(https://pypi.python.org/packages/source/g/grab/grab-${pkgver}.tar.gz)
-sha256sums=('4d77969ff085e6ca089d166115ab8fe50922fcb822e6a8e49d62e094cac970b8')
+sha256sums=('4c40ca059d00df5e4b68ca52e5d0e6796ca8f9d00577568dcc25d857d8565bab')
 
 build() {
   cd "$srcdir/grab-$pkgver"
