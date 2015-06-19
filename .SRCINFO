@@ -1,0 +1,19 @@
+pkgbase = python3-pydde
+	pkgdesc = A solver for delay differential equations written in Python and C.
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = http://users.ox.ac.uk/~clme1073/python/PyDDE/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python3-numpy
+	depends = python3-numpy
+	source = http://users.ox.ac.uk/~clme1073/python/PyDDE/PyDDE-0.2.2.tar.gz
+	source = 2to3.diff
+	source = Py3-C-API.diff
+	md5sums = 275eb5f15fb7124f06fef17655f63c12
+	md5sums = 3814569707d1dfb89c754afb746f87cf
+	md5sums = 7d937ddf1ce78e778b07711ea19f2ddf
+
+pkgname = python3-pydde
+

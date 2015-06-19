@@ -1,0 +1,99 @@
+--- wrapper.c	2008-12-07 14:24:01.000000000 -0200
++++ wrapper3.c	2011-04-19 18:03:18.826666759 -0300
+@@ -544,19 +544,84 @@
+ /* All the required Python module stuff */
+ /****************************************/
+ 
++struct module_state {
++    PyObject *error;
++};
++
++#if PY_MAJOR_VERSION >= 3
++#define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
++#else
++#define GETSTATE(m) (&_state)
++static struct module_state _state;
++#endif
++
+ // method definitions
+-static PyMethodDef ddesolveMethods[] = { 
+-         { "pastgradient", wrap_pastgradient, METH_VARARGS },
+-         { "pastvalue", wrap_pastvalue, METH_VARARGS },
+-         { "clean", wrap_freeglobaldata, METH_VARARGS },
+-         { "dde", wrap_dde, METH_VARARGS },
+-         { NULL, NULL } 
++static PyMethodDef ddesolve_methods[] = { 
++    { "pastgradient", wrap_pastgradient, METH_VARARGS },
++    { "pastvalue", wrap_pastvalue, METH_VARARGS },
++    { "clean", wrap_freeglobaldata, METH_VARARGS },
++    { "dde", wrap_dde, METH_VARARGS },
++    { NULL, NULL } 
+ }; 
+ 
+-// module initialisation
+-void initddesolve(void) { 
+-         PyObject *m; 
+-         m = Py_InitModule("ddesolve", ddesolveMethods); 
+-         import_array();
+-} 
++
++#if PY_MAJOR_VERSION >= 3
++
++static int ddesolve_traverse(PyObject *m, visitproc visit, void *arg) {
++    Py_VISIT(GETSTATE(m)->error);
++    return 0;
++}
++
++static int ddesolve_clear(PyObject *m) {
++    Py_CLEAR(GETSTATE(m)->error);
++    return 0;
++}
++
++
++static struct PyModuleDef moduledef = {
++    PyModuleDef_HEAD_INIT,
++    "ddesolve",
++    NULL,
++    sizeof(struct module_state),
++    ddesolve_methods,
++    NULL,
++    ddesolve_traverse,
++    ddesolve_clear,
++    NULL
++};
++
++#define INITERROR return NULL
++
++    PyObject *
++PyInit_ddesolve(void)
++
++#else
++#define INITERROR return
++
++    void
++initddesolve(void)
++#endif
++{
++#if PY_MAJOR_VERSION >= 3
++    PyObject *module = PyModule_Create(&moduledef);
++#else
++    PyObject *module = Py_InitModule("ddesolve", ddesolve_methods);
++#endif
++
++    import_array();
++
++    if (module == NULL)
++        INITERROR;
++    struct module_state *st = GETSTATE(module);
++
++    st->error = PyErr_NewException("ddesolve.Error", NULL, NULL);
++    if (st->error == NULL) {
++        Py_DECREF(module);
++        INITERROR;
++    }
++
++#if PY_MAJOR_VERSION >= 3
++    return module;
++#endif
++}
+ 

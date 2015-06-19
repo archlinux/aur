@@ -1,0 +1,252 @@
+--- ./PyDDE/__init__.py
++++ ./PyDDE/__init__.py	(refactored)
+@@ -1,2 +1,2 @@
+ __all__ = ["pydde"]
+-print "Loaded package PyDDE, Version 0.2.2."
++print("Loaded package PyDDE, Version 0.2.2.")
+--- ./PyDDE/pydde.py
++++ ./PyDDE/pydde.py	(refactored)
+@@ -27,6 +27,7 @@
+ 
+ import copy
+ import sys
++import collections
+ 
+ try:
+     from Numeric import array, zeros, concatenate
+@@ -34,16 +35,16 @@
+     try:
+         from numpy import array, zeros, concatenate
+     except ImportError:
+-        print "Error: could not import either Numeric or SciPy."  
+-        print "Please check that at least one of these is installed before using PyDDE."
+-        raise ImportError, 'PyDDE.pydde'
++        print("Error: could not import either Numeric or SciPy.")  
++        print("Please check that at least one of these is installed before using PyDDE.")
++        raise ImportError('PyDDE.pydde')
+ 
+ try:
+     import PyDDE.ddesolve as _ddesolve
+ except ImportError:
+-    print "Error: could not import the ddesolve integration routines!  The solver is non-functional."
++    print("Error: could not import the ddesolve integration routines!  The solver is non-functional.")
+     _ddesolve = None
+-    raise ImportError, 'PyDDE.pydde'
++    raise ImportError('PyDDE.pydde')
+ 
+     
+ class dde:
+@@ -58,7 +59,7 @@
+             self.PROB = None
+             self.SOLVER = None
+         except:
+-            print "DDE Warning: something went wrong during initialisation."
++            print("DDE Warning: something went wrong during initialisation.")
+             raise
+ 
+         
+@@ -100,29 +101,29 @@
+         
+         # Check that the supplied functions are callable.
+         try:
+-            if not(callable(grad)):
+-                raise(TypeError,"grad")
+-            if not(callable(switchfunctions)):
+-                raise(TypeError,"switchfunctions")
+-            if not(callable(maps)):
+-                raise(TypeError,"maps")
+-            if not(callable(storehistory)):
+-                raise(TypeError,"storehistory")
+-        except TypeError, errstr:
+-            print "DDE Error: User supplied function not callable:", errstr
+-            print "DDE Error: Problem initialisation failed!"
++            if not(isinstance(grad, collections.Callable)):
++                raise TypeError
++            if not(isinstance(switchfunctions, collections.Callable)):
++                raise TypeError
++            if not(isinstance(maps, collections.Callable)):
++                raise TypeError
++            if not(isinstance(storehistory, collections.Callable)):
++                raise TypeError
++        except TypeError as errstr:
++            print("DDE Error: User supplied function not callable:", errstr)
++            print("DDE Error: Problem initialisation failed!")
+             return 0
+         
+         # Check that the number of constants and variables are reasonable.
+         try:
+             if not(no_vars > 0):
+-                raise(TypeError, "no_vars")
+-        except TypeError, errstr:
+-            print "DDE Error: Number of state variables not positive:", errstr
++                raise TypeError
++        except TypeError as errstr:
++            print("DDE Error: Number of state variables not positive:", errstr)
+             return 0
+         
+         if (no_cons != len(c)):
+-            print "DDE Warning: Number of constants no_cons reset to agree with length of constants array c."
++            print("DDE Warning: Number of constants no_cons reset to agree with length of constants array c.")
+             no_cons = len(c)
+         
+         # check that the state scale is of the appropriate length
+@@ -140,29 +141,29 @@
+         try:
+             g = grad(initstate,c,t0)
+             if (len(g) != no_vars):
+-                raise(IndexError,"grad")
++                raise IndexError
+             if (nsw > 0):
+                 sw = switchfunctions(initstate,c,t0)
+                 if (len(sw) != nsw):
+-                    raise(IndexError,"switchfunctions")
++                    raise IndexError
+                 for i in range(nsw):
+                     ms,mc = maps(initstate,c,t0,i)
+                     if ((len(ms) != no_vars) or (len(mc) != no_cons)):
+-                        raise(IndexError,"maps")
+-        except IndexError, errstr:
+-            print "DDE Error: Output of user supplied function incorrect:", errstr
+-            print "DDE Error: Problem initialisation failed!"
++                        raise IndexError
++        except IndexError as errstr:
++            print("DDE Error: Output of user supplied function incorrect:", errstr)
++            print("DDE Error: Problem initialisation failed!")
+             return 0
+         
+         try:
+             self.PROB = (int(no_vars), int(no_cons), # number of variables and constants
+                          int(no_vars), int(nlag), int(nsw), int(len(otimes)),
+                          float(t0), float(t1),
+-                         array(map(float,initstate)), array(map(float,c)), array(map(float,otimes)),
++                         array(list(map(float,initstate))), array(list(map(float,c))), array(list(map(float,otimes))),
+                          grad, switchfunctions, maps, storehistory)
+         except:
+-            print "DDE Error: Something is wrong: perhaps one of the supplied variables has the wrong type?"
+-            print "DDE Error: Problem initialisation failed!"
++            print("DDE Error: Something is wrong: perhaps one of the supplied variables has the wrong type?")
++            print("DDE Error: Problem initialisation failed!")
+             return 0
+         
+         # all went well
+@@ -207,10 +208,10 @@
+         try:
+             self.SOLVER = (float(tol), int(hbsize),
+                            float(dt), # output and integration timesteps
+-                           array(map(float,statescale)))
++                           array(list(map(float,statescale))))
+         except:
+-            print "DDE Error: Something is wrong: perhaps one of the supplied variables has the wrong type?"
+-            print "DDE Error: Solver initialisation failed!"
++            print("DDE Error: Something is wrong: perhaps one of the supplied variables has the wrong type?")
++            print("DDE Error: Solver initialisation failed!")
+             return 0
+         
+         # all went well
+@@ -237,16 +238,16 @@
+                 #clean(1)
+                 
+             else:
+-                print self._solved
+-                print again
+-                print "DDE Error: Solver thinks the solution is already given in the <instance>.data.\n \
+-                       To force the solver to run again, use <instance>.solve(again=1)"
++                print(self._solved)
++                print(again)
++                print("DDE Error: Solver thinks the solution is already given in the <instance>.data.\n \
++                       To force the solver to run again, use <instance>.solve(again=1)")
+         
+         except AssertionError:
+-            print "DDE Error: The DDE has not been properly initialised!"
++            print("DDE Error: The DDE has not been properly initialised!")
+             self._solved = 0
+         except:
+-            print "DDE Error: Solution failed!"
++            print("DDE Error: Solution failed!")
+             self._solved = 0
+             raise
+         
+@@ -293,7 +294,7 @@
+     try:
+         assert(_ddesolve.clean(wipe))
+     except AssertionError:
+-        print "DDE Error: Problem cleaning up after the solver."
++        print("DDE Error: Problem cleaning up after the solver.")
+         return 0
+     except:
+         return 0
+--- ./PyDDE/test/test.py
++++ ./PyDDE/test/test.py	(refactored)
+@@ -23,20 +23,20 @@
+         try:
+             from Numeric import *
+         except:
+-            print "Could not import Numeric, numpy and scipy.  Test cannot run."
+-            raise StandardError, "PyDDE test script."
++            print("Could not import Numeric, numpy and scipy.  Test cannot run.")
++            raise Exception("PyDDE test script.")
+ 
+ try:
+     import PyDDE.pydde as p
+ except ImportError:
+-    print "Could not import PyDDE.pydde.  Test cannot run."
+-    raise StandardError, "PyDDE test script."
++    print("Could not import PyDDE.pydde.  Test cannot run.")
++    raise Exception("PyDDE test script.")
+ 
+ try:
+     import timing
+     timeit = 1
+ except ImportError:
+-    print "Could not import timing module.  No timing of tests will occur."
++    print("Could not import timing module.  No timing of tests will occur.")
+     timeit = 0
+     
+ '''
+@@ -51,7 +51,7 @@
+ try:
+     del ode_eg
+ except:
+-    print "DDE Test: Running for the first time..."
++    print("DDE Test: Running for the first time...")
+ 
+ ode_eg = p.dde()
+ 
+@@ -85,7 +85,7 @@
+ try:
+     del dde_eg
+ except:
+-    print "DDE Test: Running for the first time..."
++    print("DDE Test: Running for the first time...")
+ 
+ dde_eg = p.dde()
+ 
+@@ -115,7 +115,7 @@
+ try:
+     del sdde_eg
+ except:
+-    print "DDE Test: Running for the first time..."
++    print("DDE Test: Running for the first time...")
+ 
+ sdde_eg = p.dde()
+ 
+@@ -160,7 +160,7 @@
+ 
+ if timeit:
+     timing.finish()
+-    print str(timing.seconds())+"."+str(timing.milli())+" seconds"
++    print(str(timing.seconds())+"."+str(timing.milli())+" seconds")
+     
+     
+ try:
+@@ -248,7 +248,7 @@
+     sddepp.writeEPSfile("../test/sdde_eg.eps")
+         
+ except ImportError:
+-    print "DDE Test: Could not import PyX!  Cannot print output from examples."
+-except:
+-    print "DDE Test: An error occured during attempt to plot data."
++    print("DDE Test: Could not import PyX!  Cannot print output from examples.")
++except:
++    print("DDE Test: An error occured during attempt to plot data.")
+     raise
