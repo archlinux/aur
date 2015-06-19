@@ -1,0 +1,18 @@
+pkgbase = xmbmon
+	pkgdesc = X Motherboard Monitor
+	pkgver = 2.05
+	pkgrel = 4
+	url = http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/download.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxt
+	source = http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/xmbmon/xmbmon205.tar.gz
+	source = Makefile.in.patch
+	source = font.patch
+	md5sums = ab6614c785f5b653fcc69fb9c02058f0
+	md5sums = 3f0659309f48935ce511d9ff87e76d65
+	md5sums = 19d78a98841fe1c3705ea788e422592f
+
+pkgname = xmbmon
+

@@ -1,0 +1,37 @@
+diff -Nur xmbmon205.orig/Makefile.in xmbmon205/Makefile.in
+--- xmbmon205.orig/Makefile.in	2004-08-13 17:04:21.000000000 +1000
++++ xmbmon205/Makefile.in	2010-04-07 19:08:15.205685344 +1000
+@@ -37,11 +37,11 @@
+ RM=rm -f
+ INSTALL=install
+ 
+-INST_DIR=/usr/local/bin
+-INST_MANDIR=/usr/local/man/man1
+-INST_XDIR=/usr/X11R6/bin
+-INST_MANXDIR=/usr/X11R6/man/man1
+-INST_XRDIR=/usr/X11R6/lib/X11/app-defaults
++INST_DIR=/usr/bin
++INST_MANDIR=/usr/share/man/man1
++INST_XDIR=/usr/bin
++INST_MANXDIR=/usr/share/man/man1
++INST_XRDIR=/usr/lib/X11/app-defaults
+  
+ .c.o:
+ 	$(CC) -c $(CFLAGS) $*.c
+@@ -133,12 +133,12 @@
+ 	$(RM) Makefile config.cache config.log config.h config.status
+ 
+ install: $(PROGRAM)
+-	$(INSTALL) -o root -g wheel -m 4555 -c -p mbmon $(INST_DIR)
+-	$(INSTALL) -o root -g wheel -m 4555 -c -p xmbmon $(INST_XDIR)
++	$(INSTALL) -m 4555 -c -p mbmon $(DESTDIR)$(INST_DIR)
++	$(INSTALL) -m 4555 -c -p xmbmon $(DESTDIR)$(INST_XDIR)
+ 
+ install-man: $(MANPAGE)
+-	$(INSTALL) -o root -g wheel -m 444 -c -p mbmon.1 $(INST_MANDIR)
+-	$(INSTALL) -o root -g wheel -m 444 -c -p xmbmon.1x $(INST_MANXDIR)
++	$(INSTALL) -m 444 -c -p mbmon.1 $(DESTDIR)$(INST_MANDIR)
++	$(INSTALL) -m 444 -c -p xmbmon.1x $(DESTDIR)$(INST_MANXDIR)
+ 
+ lint:
+ 	$(LINT) $(INCLUDES) $(DEFS) $(FONTDEFINES) $(SRCS) -lm
