@@ -1,10 +1,11 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
+# % Trigger %
 # vim: ft=sh syn=sh ts=2 et
 
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
 pkgver=219
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
