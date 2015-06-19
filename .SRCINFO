@@ -1,0 +1,16 @@
+pkgbase = python-pydelay
+	pkgdesc = A Python tool for solving delay differential equations
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://pydelay.sf.net
+	arch = any
+	license = MIT
+	depends = python-numpy
+	depends = python-scipy
+	depends = gcc
+	optdepends = python-matplotlib: To plot the solutions and run the examples
+	source = http://dl.sourceforge.net/project/pydelay/pydelay-0.1.1.tar.gz
+	md5sums = 6163145919477596bb4ea15edb922c5d
+
+pkgname = python-pydelay
+
