@@ -1,0 +1,18 @@
+pkgbase = arch-headless
+	pkgdesc = Modify your arch ISO for a headless (and keyboardless) computer.
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://github.com/wiemag/arch-headless
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = squashfs-tools
+	depends = cdrkit
+	depends = coreutils
+	depends = grep
+	depends = which
+	source = https://github.com/wiemag/arch-headless/archive/v1.10.tar.gz
+	md5sums = 3f23216117f07a71735afdca6639d669
+
+pkgname = arch-headless
+
