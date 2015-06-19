@@ -1,0 +1,15 @@
+pkgbase = nodejs-htmlhint
+	pkgdesc = Static Code Analysis Tool for HTML, you can use it with IDE or in build system.
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = http://htmlhint.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = htmlhint-0.9.7.tgz
+	source = http://registry.npmjs.org/htmlhint/-/htmlhint-0.9.7.tgz
+	sha256sums = 23b7df7531b1a0876c6724fb1e5e25990a0eec0153978ec4fed5d6e280759f71
+
+pkgname = nodejs-htmlhint
+
