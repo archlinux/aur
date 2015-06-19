@@ -1,0 +1,32 @@
+pkgbase = gnome-inform7
+	pkgdesc = GNOME port of the Inform 7 IDE for the Inform 7 programming language for interactive fiction
+	pkgver = 6L38
+	pkgrel = 1
+	url = http://sourceforge.net/projects/gnome-inform7
+	install = gnome-inform7.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf>=2.60
+	makedepends = automake>=1.10
+	makedepends = graphviz
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = texlive-core
+	depends = aspell-en
+	depends = dconf
+	depends = desktop-file-utils
+	depends = goocanvas1
+	depends = gtksourceview2
+	depends = gtkspell
+	depends = hicolor-icon-theme
+	depends = webkitgtk2
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	source = http://inform7.com/download/content/6L38/I7_6L38_Linux_all.tar.gz
+	source = http://downloads.sourceforge.net/project/gnome-inform7/gnome-inform7/6L38/gnome-inform7-6L38.tar.gz
+	options = !libtool
+
+pkgname = gnome-inform7
+
