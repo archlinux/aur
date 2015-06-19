@@ -1,0 +1,52 @@
+pkgname=supertuxkart-git
+pkgver=14738+16316
+pkgrel=1
+pkgdesc="A kart racing game featuring Tux and his friends - development version"
+url="http://supertuxkart.sourceforge.net/"
+license=("cc-by-sa-3.0")
+arch=('i686' 'x86_64')
+
+makedepends=("git" "subversion" "cmake" "bluez-libs")
+
+depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew")
+
+conflicts=("supertuxkart")
+replaces=("supertuxkart-cmakesvn" "supertuxkart-svn")
+
+source=(
+    "stk-code::git+https://github.com/supertuxkart/stk-code.git"
+
+    # assets reside in subversion repository
+    "stk-assets::svn+https://svn.code.sf.net/p/supertuxkart/code/stk-assets"
+)
+md5sums=('SKIP' 'SKIP')
+
+pkgver() {
+    cd "${srcdir}/stk-code"
+    local _git_rev="$(git rev-list --count HEAD)"
+    
+    cd "${srcdir}/stk-assets"
+    local _assets_rev="$(svnversion)"
+
+    printf "%s+%s" "${_git_rev}" "${_assets_rev}"
+}
+
+build() 
+{    cd "${srcdir}/stk-code"
+    msg "Starting build..."
+
+    [ -d "cmake_build" ] && rm -rf cmake_build
+    mkdir cmake_build && cd cmake_build
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    # cmake -DUSE_WIIUSE=no -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
+}
+
+package() {
+    cd "stk-code/cmake_build"
+    make DESTDIR=${pkgdir} install
+
+    cd "${pkgdir}/usr/share/pixmaps"
+    [ ! -f supertuxkart.png ] && ln -s supertuxkart{_128,}.png
+}
