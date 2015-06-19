@@ -1,6 +1,8 @@
-# Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
+# Maintainer: Patrick McCarty <pnorcks at gmail dot com>
+# Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Chris Tusa <linisys@gmail.com>
 # Contributor: Thore Bunde <root [at] netpimp [dot] de>
+
 pkgname=yum-metadata-parser
 pkgver=1.1.4
 pkgrel=7
