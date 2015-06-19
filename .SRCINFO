@@ -1,0 +1,15 @@
+pkgbase = ddrutility
+	pkgdesc = Set of utilities for use with GNU ddrescue to aid with data recovery
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ddrutility/
+	install = ddrutility.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	source = http://downloads.sourceforge.net/project/ddrutility/ddrutility-2.7.tar.gz
+	md5sums = 687b1864ca2fc960f88051f1fd9ab1ce
+
+pkgname = ddrutility
+
