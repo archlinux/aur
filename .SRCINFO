@@ -1,0 +1,32 @@
+pkgbase = xf86-input-synaptics-xswipe-git
+	pkgdesc = Synaptics driver for notebook touchpads - Forked branch with -m flag forward ported and 4/5 finger detectable
+	pkgver = r1464.8cc57ce
+	pkgrel = 1
+	url = https://github.com/dieghen89/xserver-xorg-input-synaptics
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	groups = xorg
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-XINPUT_VERSION=21.1
+	makedepends = libxi
+	makedepends = libx11
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	makedepends = git
+	depends = libxtst
+	depends = mtdev
+	depends = libevdev
+	provides = synaptics
+	provides = xf86-input-synaptics
+	conflicts = synaptics
+	conflicts = xf86-input-synaptics
+	replaces = synaptics
+	replaces = xf86-input-synaptics
+	backup = etc/X11/xorg.conf.d/50-synaptics.conf
+	source = xf86-input-synaptics-xswipe-git::git+https://github.com/dieghen89/xserver-xorg-input-synaptics.git
+	sha256sums = SKIP
+
+pkgname = xf86-input-synaptics-xswipe-git
+
