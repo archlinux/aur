@@ -1,6 +1,9 @@
 # Maintainer: Felix Schindler <felix at schindlerfamily dot de>
 # Contributor: Tianjiao Yin <ytj000(at)gmail(dot)(see)(oh)(em)>
 #              Allan McRae <allan@archlinux.org>
+#
+# This PKGBUILD is maintained at https://github.com/ftalbrecht/aur
+# in the gcc46 branch
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
