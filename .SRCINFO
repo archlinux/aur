@@ -1,0 +1,25 @@
+pkgbase = ros-jade-eigen-conversions
+	pkgdesc = ROS - Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/eigen_conversions
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-orocos-kdl
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = eigen3
+	depends = ros-jade-orocos-kdl
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = eigen3
+	source = eigen_conversions::git+https://github.com/ros-gbp/geometry-release.git#tag=release/jade/eigen_conversions/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-eigen-conversions
+
