@@ -1,0 +1,30 @@
+pkgbase = ros-jade-pointcloud-to-laserscan
+	pkgdesc = ROS - Converts a 3D Point Cloud into a 2D laser scan.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://ros.org/wiki/perception_pcl
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-tf2-sensor-msgs
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf2-ros
+	makedepends = ros-jade-tf2
+	makedepends = ros-jade-message-filters
+	depends = ros-jade-tf2-sensor-msgs
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-nodelet
+	depends = ros-jade-roscpp
+	depends = ros-jade-tf2-ros
+	depends = ros-jade-tf2
+	depends = ros-jade-message-filters
+	source = pointcloud_to_laserscan::git+https://github.com/ros-gbp/pointcloud_to_laserscan-release.git#tag=release/jade/pointcloud_to_laserscan/1.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-pointcloud-to-laserscan
+
