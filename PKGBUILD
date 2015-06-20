@@ -7,13 +7,13 @@
 ## If you will not be using ibus, comment out below.
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
-_uim_mozc="yes"
+#_uim_mozc="yes"
 ## If applying patch for uim-mozc fails, try to uncomment below.
 #_kill_kill_line="yes"
 ## This will disable the 'kill-line' feature of uim-mozc.
 
 ## If you will be using mozc.el on Emacs, uncomment below.
-_emacs_mozc="yes"
+#_emacs_mozc="yes"
 
 ## ニコニコ大百科IME辞書 (NICONICOPEDIA IME dictionary, see below)
 #_NICODIC="true"
