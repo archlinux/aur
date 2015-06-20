@@ -1,0 +1,16 @@
+pkgbase = ruby-rack-protection
+	pkgdesc = This gem protects against typical web attacks. Should work for all Rack apps, including Rails.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/rkh/rack-protection
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack
+	noextract = rack-protection-1.5.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rack-protection-1.5.3.gem
+	sha1sums = 1c28529c1d7376c61faed80f3d3297905a14c2b3
+
+pkgname = ruby-rack-protection
+
