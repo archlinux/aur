@@ -1,0 +1,22 @@
+From 990e2ab837c66b6070848a40e2e3335d6aef27a0 Mon Sep 17 00:00:00 2001
+From: nikmilpv <nikmil@gmail.com>
+Date: Sun, 21 Jun 2015 01:07:32 +0200
+Subject: [PATCH] Fixed typo that prevented ant builds
+
+---
+ build.gradle | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.gradle b/build.gradle
+index 0160f5c..44fc963 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -97,7 +97,7 @@ dependencies {
+ // use ant targets with prefix antTargets.XXXXX
+ ant.importBuild "build-wrapper.xml"
+ // add jars from this classpath to the classpath for the ant build
+-ant.references.jars.setFiles(configurations.compile.asPath.replace(";"," "))
++ant.references.jars.setFiles(configurations.compile.asPath.replace(":"," "))
+ 
+ sourceCompatibility = 1.6
+ mainClassName = "net.sf.jabref.JabRefMain"
