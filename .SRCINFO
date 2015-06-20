@@ -1,0 +1,25 @@
+pkgbase = papyros-shell
+	pkgdesc = Wayland and QtQuick based desktop shell for Papyros
+	pkgver = 0.0.5
+	pkgrel = 3
+	url = https://github.com/papyros/papyros-shell
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = qt5-base-git
+	depends = qt5-declarative-git
+	depends = qt5-quickcontrols-git
+	depends = qt5-graphicaleffects-git
+	depends = qt5-wayland-dev-git
+	depends = gsettings-qt-bzr
+	depends = qml-material
+	depends = qml-extras
+	depends = qml-desktop
+	provides = papyros-shell
+	source = papyros-shell::git+https://github.com/papyros/papyros-shell.git#tag=v0.0.5
+	sha256sums = SKIP
+
+pkgname = papyros-shell
+
