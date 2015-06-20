@@ -1,0 +1,25 @@
+pkgbase = ros-jade-stage
+	pkgdesc = ROS - Mobile robot simulator http://rtv.github.com/Stage.
+	pkgver = 4.1.1
+	pkgrel = 3
+	url = http://rtv.github.com/Stage
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = fltk
+	makedepends = libjpeg-turbo
+	makedepends = gtk2
+	makedepends = libtool
+	makedepends = mesa
+	makedepends = pkg-config
+	depends = ros-jade-catkin
+	depends = libjpeg-turbo
+	depends = mesa
+	depends = gtk2
+	source = stage::git+https://github.com/ros-gbp/stage-release.git#tag=release/jade/stage/4.1.1-2
+	md5sums = SKIP
+
+pkgname = ros-jade-stage
+
