@@ -1,0 +1,28 @@
+pkgbase = ros-jade-tf-conversions
+	pkgdesc = ROS - This package contains a set of conversion functions to convert common tf datatypes (point, vector, pose, etc) into semantically identical datatypes used by other libraries.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf_conversions
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-orocos-kdl
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-kdl-conversions
+	makedepends = eigen3
+	depends = ros-jade-tf
+	depends = ros-jade-orocos-kdl
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-python-orocos-kdl
+	depends = ros-jade-kdl-conversions
+	depends = eigen3
+	source = tf_conversions::git+https://github.com/ros-gbp/geometry-release.git#tag=release/jade/tf_conversions/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-tf-conversions
+
