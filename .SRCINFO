@@ -1,0 +1,24 @@
+pkgbase = ros-jade-actionlib-tutorials
+	pkgdesc = ROS - The actionlib_tutorials package.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://www.ros.org/wiki/actionlib/Tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-actionlib-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-actionlib
+	depends = ros-jade-actionlib
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	source = actionlib_tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/jade/actionlib_tutorials/0.1.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-actionlib-tutorials
+
