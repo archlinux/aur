@@ -1,0 +1,14 @@
+pkgbase = extract-xiso
+	pkgdesc = xdvdfs (xbox iso) file creation and extraction utility
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/extract-xiso
+	arch = i686
+	arch = x86_64
+	license = custom
+	conflicts = extract-xiso-somski
+	source = http://downloads.sourceforge.net/extract-xiso/extract-xiso-2.7.1.tar.gz
+	md5sums = 464aeb312aca6f4a1ffee42384b3c738
+
+pkgname = extract-xiso
+
