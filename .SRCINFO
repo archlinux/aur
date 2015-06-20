@@ -1,0 +1,25 @@
+pkgbase = teighaviewer-qt5
+	pkgdesc = Application for the visualization of CAD drawing files, QT5 version
+	pkgver = 4.00.1.0
+	pkgrel = 3
+	url = http://www.opendesign.com/guestfiles
+	install = teighaviewer-qt5.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = libxfixes
+	depends = libgl
+	depends = libxkbcommon-x11
+	depends = bash
+	depends = hicolor-icon-theme
+	conflicts = teighaviewer-qt4
+	source = license
+	md5sums = 62b5539acd57c50855e29d1157c10697
+	source_i686 = http://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT5_lnxX86_4.7dll.deb
+	md5sums_i686 = dc13e90b7e43c0fa09b2a4bda70d29a2
+	source_x86_64 = http://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb
+	md5sums_x86_64 = ece1f92f224ad4e9b62adad16db9d263
+
+pkgname = teighaviewer-qt5
+
