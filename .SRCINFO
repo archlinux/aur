@@ -1,0 +1,14 @@
+pkgbase = packup
+	pkgdesc = A simple Pacman backup and restore script.
+	pkgver = 3.e8af569
+	pkgrel = 4
+	url = https://github.com/ghost1227/packup
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = dialog
+	source = git://github.com/ghost1227/packup
+	md5sums = SKIP
+
+pkgname = packup
+
