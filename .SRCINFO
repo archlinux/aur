@@ -1,0 +1,16 @@
+pkgbase = ros-jade-smach
+	pkgdesc = ROS - SMACH is a task-level architecture for rapidly creating complex robot behavior.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	source = smach::git+https://github.com/ros-gbp/executive_smach-release.git#tag=release/jade/smach/2.0.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-smach
+
