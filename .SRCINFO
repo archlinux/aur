@@ -1,0 +1,33 @@
+pkgbase = ros-jade-laser-assembler
+	pkgdesc = ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages.
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = http://ros.org/wiki/laser_assembler
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-filters
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-message-filters
+	makedepends = ros-jade-pluginlib
+	makedepends = ros-jade-laser-geometry
+	depends = ros-jade-filters
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-tf
+	depends = ros-jade-message-filters
+	depends = ros-jade-pluginlib
+	depends = ros-jade-laser-geometry
+	source = laser_assembler::git+https://github.com/ros-gbp/laser_assembler-release.git#tag=release/jade/laser_assembler/1.7.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-laser-assembler
+
