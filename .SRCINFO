@@ -1,0 +1,23 @@
+pkgbase = ros-jade-urdf-tutorial
+	pkgdesc = ROS - This package contains a number of URDF tutorials.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://ros.org/wiki/urdf_tutorial
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-urdf
+	makedepends = ros-jade-catkin
+	depends = ros-jade-urdf
+	depends = ros-jade-pr2-description
+	depends = ros-jade-rviz
+	depends = ros-jade-xacro
+	depends = ros-jade-joint-state-publisher
+	depends = ros-jade-robot-state-publisher
+	source = urdf_tutorial::git+https://github.com/ros-gbp/urdf_tutorial-release.git#tag=release/jade/urdf_tutorial/0.2.4-0
+	md5sums = SKIP
+
+pkgname = ros-jade-urdf-tutorial
+
