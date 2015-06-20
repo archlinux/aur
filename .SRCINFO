@@ -1,0 +1,14 @@
+pkgbase = figleaf
+	pkgdesc = Python code coverage analysis tool. A minimal replacement for coverage.py
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/figleaf/0.6.1
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://darcs.idyll.org/~t/projects/figleaf-0.6.1.tar.gz
+	sha256sums = 04d22485db08f9f60c7de92407753423fa0f574c00211e409e8b0f9482f2f062
+
+pkgname = figleaf
+
