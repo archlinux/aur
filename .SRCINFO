@@ -1,0 +1,16 @@
+pkgbase = ruby-rack-ssl
+	pkgdesc = Force SSL/TLS in your app.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/josh/rack-ssl
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack
+	noextract = rack-ssl-1.4.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rack-ssl-1.4.1.gem
+	sha1sums = 87f2fb53c6882436b8d522288993d658dc7025ce
+
+pkgname = ruby-rack-ssl
+
