@@ -1,0 +1,34 @@
+pkgbase = ros-jade-image-proc
+	pkgdesc = ROS - Single image rectification and color processing.
+	pkgver = 1.12.12
+	pkgrel = 1
+	url = http://www.ros.org/wiki/image_proc
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cv-bridge
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-image-geometry
+	makedepends = ros-jade-camera-calibration-parsers
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = opencv
+	makedepends = boost
+	depends = ros-jade-cv-bridge
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-nodelet
+	depends = ros-jade-roscpp
+	depends = ros-jade-image-transport
+	depends = ros-jade-image-geometry
+	depends = ros-jade-dynamic-reconfigure
+	depends = opencv
+	source = image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/image_proc/1.12.12-0
+	md5sums = SKIP
+
+pkgname = ros-jade-image-proc
+
