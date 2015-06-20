@@ -1,0 +1,38 @@
+pkgbase = ros-jade-image-view
+	pkgdesc = ROS - A simple viewer for ROS image topics.
+	pkgver = 1.12.12
+	pkgrel = 1
+	url = http://www.ros.org/wiki/image_view
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-stereo-msgs
+	makedepends = ros-jade-cv-bridge
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-message-filters
+	makedepends = ros-jade-std-srvs
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-camera-calibration-parsers
+	makedepends = opencv
+	makedepends = gtk2
+	depends = ros-jade-cv-bridge
+	depends = ros-jade-nodelet
+	depends = ros-jade-roscpp
+	depends = ros-jade-image-transport
+	depends = ros-jade-message-filters
+	depends = ros-jade-std-srvs
+	depends = ros-jade-rosconsole
+	depends = ros-jade-camera-calibration-parsers
+	depends = opencv
+	depends = gtk2
+	source = image_view::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/image_view/1.12.12-0
+	md5sums = SKIP
+
+pkgname = ros-jade-image-view
+
