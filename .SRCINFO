@@ -1,0 +1,22 @@
+pkgbase = ros-jade-joint-state-publisher
+	pkgdesc = ROS - This package contains a tool for setting and publishing joint state values for a given URDF.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/joint_state_publisher
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-rospy
+	makedepends = wxpython
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-rospy
+	depends = wxpython
+	source = joint_state_publisher::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/jade/joint_state_publisher/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-joint-state-publisher
+
