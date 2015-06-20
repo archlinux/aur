@@ -1,0 +1,24 @@
+pkgbase = ros-jade-compressed-image-transport
+	pkgdesc = ROS - Compressed_image_transport provides a plugin to image_transport for transparently sending images encoded as JPEG or PNG.
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/image_transport_plugins
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-cv-bridge
+	makedepends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-tf
+	depends = ros-jade-image-transport
+	depends = ros-jade-cv-bridge
+	depends = ros-jade-dynamic-reconfigure
+	source = compressed_image_transport::git+https://github.com/ros-gbp/image_transport_plugins-release.git#tag=release/jade/compressed_image_transport/1.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-compressed-image-transport
+
