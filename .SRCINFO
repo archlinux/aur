@@ -1,0 +1,33 @@
+pkgbase = papyros-shell-git
+	pkgdesc = Wayland and QtQuick based desktop shell for Papyros
+	pkgver = 0.0.5.r93.gd7f4629
+	pkgrel = 1
+	url = https://github.com/papyros/papyros-shell
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = extra-cmake-modules
+	depends = qt5-base-git
+	depends = qt5-declarative-git
+	depends = qt5-quickcontrols-git
+	depends = qt5-graphicaleffects-git
+	depends = greenisland-git
+	depends = qml-material
+	depends = qml-extras
+	depends = kdeclarative
+	depends = pam
+	depends = libpulse
+	depends = libqtxdg
+	depends = solid
+	depends = kconfig
+	depends = plasma-nm
+	optdepends = pulseaudio: audio support
+	optdepends = sddm: login screen theme
+	provides = papyros-shell-git
+	source = papyros-shell-git::git+https://github.com/papyros/papyros-shell.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = papyros-shell-git
+
