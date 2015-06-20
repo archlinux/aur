@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=Shadowgrounds: Survivor
+Comment=A sequel to Shadowgrounds
+Icon=/opt/shadowgrounds-survivor/Survivor.xpm
+Exec="/usr/bin/shadowgrounds-survivor"
+Categories=Game;ActionGame;
