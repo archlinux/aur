@@ -1,0 +1,15 @@
+[Unit]
+Description=Solr full text search engine
+After=network.target
+
+[Service]
+Type=simple
+User=solr
+Group=solr
+PrivateTmp=true
+ExecStart=/usr/bin/java -jar /usr/lib/solr/start.jar -config /etc/solr/jetty.xml jetty.home=/usr/share/solr
+#ExecStart=/usr/bin/java -jar /usr/lib/solr/start.jar -config /etc/solr/jetty.xml
+
+[Install]
+WantedBy=multi-user.target
+

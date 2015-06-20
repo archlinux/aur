@@ -1,0 +1,27 @@
+pkgbase = solr
+	pkgdesc = Popular, blazing fast open source enterprise search platform from the Apache Lucene project
+	pkgver = 4.10.4
+	pkgrel = 1
+	url = http://lucene.apache.org/solr/
+	install = solr.install
+	arch = any
+	license = Apache
+	makedepends = unzip
+	depends = java-environment-common
+	backup = etc/solr/web.xml
+	backup = etc/solr/solr.xml
+	backup = etc/solr/jetty.xml
+	backup = etc/solr/zoo.cfg
+	backup = etc/solr/core0/conf/schema.xml
+	backup = etc/solr/core0/conf/solrconfig.xml
+	backup = etc/solr/core1/conf/schema.xml
+	backup = etc/solr/core1/conf/solrconfig.xml
+	source = http://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.tgz
+	source = jetty-solr.xml
+	source = solr.service
+	sha256sums = ac3543880f1b591bcaa962d7508b528d7b42e2b5548386197940b704629ae851
+	sha256sums = 672b64e05b26ca3434d9ef4cf6f02b06358609b72a483340682f70a080c7770f
+	sha256sums = 4d2d0f9c9c44b17146d69389e1545dc85d3a9b1c9b7d9ea9f138b292fc47433b
+
+pkgname = solr
+
