@@ -1,0 +1,14 @@
+pkgbase = miniircd-git
+	pkgdesc = A small and configuration free IRC server, suitable for private use.
+	pkgver = 0.4.r33.ged76e15
+	pkgrel = 1
+	url = https://github.com/jrosdahl/miniircd
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	source = git+https://github.com/jrosdahl/miniircd.git
+	md5sums = SKIP
+
+pkgname = miniircd-git
+
