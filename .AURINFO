@@ -1,0 +1,13 @@
+pkgbase = jamestown-gtp
+	pkgdesc = Gunpower, Treason, & Plot: DLC for a neo-classical top-down shooter (DLC sold separately)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.finalformgames.com/jamestown/
+	arch = any
+	license = custom
+	depends = jamestown>=1.0.2
+	source = hib://JamestownLinux_1_0_2_GTP_1409159048.zip
+	md5sums = 4488a432df220b448cd858ca9fa06618
+
+pkgname = jamestown-gtp
+
