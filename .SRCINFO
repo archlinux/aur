@@ -1,0 +1,25 @@
+pkgbase = teighafileconverter-qt4
+	pkgdesc = Converts files between the .dwg and .dxf file formats, QT4 version
+	pkgver = 4.00.1.0
+	pkgrel = 1
+	url = http://www.opendesign.com/guestfiles
+	install = teighafileconverter-qt4.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = hicolor-icon-theme
+	provides = teighafileconverter
+	conflicts = teighafileconverter
+	conflicts = teighafileconverter-qt5
+	source = http://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT4_lnxX86_4.4dll.deb
+	source = license
+	md5sums = 14334b959bf85de848605a7ebbdf6be1
+	md5sums = 62b5539acd57c50855e29d1157c10697
+	depends_i686 = qt4
+	depends_i686 = libgl
+	depends_x86_64 = lib32-qt4
+	depends_x86_64 = lib32-libgl
+
+pkgname = teighafileconverter-qt4
+
