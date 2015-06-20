@@ -1,0 +1,19 @@
+pkgbase = ros-jade-orocos-kdl
+	pkgdesc = ROS - This package contains a recent version of the Kinematics and Dynamics Library (KDL), distributed by the Orocos Project.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://wiki.ros.org/orocos_kdl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = eigen3
+	depends = ros-jade-catkin
+	depends = eigen3
+	depends = pkg-config
+	source = orocos_kdl::git+https://github.com/smits/orocos-kdl-release.git#tag=release/jade/orocos_kdl/1.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-orocos-kdl
+
