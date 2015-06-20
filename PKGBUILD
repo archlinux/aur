@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'sqlite' 'libnotify' 'file')
 optdepends=('perl-file-mimeinfo: to better determine mimetypes' 'sqlitebrowser: to manage database' 'sudo: to run applications as root' 'gxmessage: to view .desktop files')
 source=("http://mcfadzean.org.uk/appstogo/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('36178e5419ca9f2a1d981e62a91a1f7f')
+md5sums=('157e79e247aede06930cf4d69943f97f')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
