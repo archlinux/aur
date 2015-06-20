@@ -1,0 +1,26 @@
+pkgbase = ros-jade-collada-parser
+	pkgdesc = ROS - This package contains a C++ parser for the Collada robot description format.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/collada_parser
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-urdf-parser-plugin
+	makedepends = ros-jade-class-loader
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = collada-dom
+	makedepends = urdfdom-headers
+	depends = ros-jade-urdf-parser-plugin
+	depends = ros-jade-class-loader
+	depends = ros-jade-roscpp
+	depends = collada-dom
+	depends = urdfdom-headers
+	source = collada_parser::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/jade/collada_parser/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-collada-parser
+
