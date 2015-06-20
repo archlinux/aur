@@ -1,0 +1,19 @@
+pkgbase = qt5-xmlpatterns-git
+	pkgdesc = A cross-platform application and UI framework (QtXmlPatterns)
+	pkgver = v5.5.0.beta1.2.g25ad8b7
+	pkgrel = 1
+	url = https://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	makedepends = python
+	depends = qt5-base-git
+	provides = qt5-xmlpatterns
+	conflicts = qt5-xmlpatterns
+	source = qt5-xmlpatterns::git://code.qt.io/qt/qtxmlpatterns.git#branch=5.5
+	sha256sums = SKIP
+
+pkgname = qt5-xmlpatterns-git
+
