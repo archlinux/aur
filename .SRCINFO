@@ -1,0 +1,15 @@
+pkgbase = minlog-git
+	pkgdesc = Interactive proof system based on first order natural deduction calculus.
+	pkgver = 171.f281021
+	pkgrel = 1
+	url = http://www.mathematik.uni-muenchen.de/~logik/minlog/index.php
+	arch = any
+	license = GPL
+	makedepends = texlive-core
+	makedepends = git
+	depends = bash
+	source = git+http://www.mathematik.uni-muenchen.de/~minlogit/git/minlog.git
+	md5sums = SKIP
+
+pkgname = minlog-git
+
