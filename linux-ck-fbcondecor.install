@@ -1,0 +1,43 @@
+KERNEL_NAME=-ck-fbcondecor
+KERNEL_VERSION=4.0
+
+post_install () {
+	# updating module dependencies
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod ${KERNEL_VERSION}
+	echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+	mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_upgrade() {
+	pacman -Sl repo-ck &>/dev/null
+	hasrepock=$?
+
+	if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+		echo "WARNING: /boot appears to be a separate partition but is not mounted."
+	fi
+	# updating module dependencies
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod ${KERNEL_VERSION}
+	echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+	mkinitcpio -p linux${KERNEL_NAME}
+
+	if [ $hasrepock -eq 0 ]; then
+		echo
+		echo ">>> Thank you for using http://repo-ck.com/$arch for your linux-ck package needs."
+		echo ">>> Note that the following CPU optimized packages are or could be available to you:"
+		echo " AMD   : barcelona, bobcat, bulldozer, kx, k10, piledriver"
+		echo " Intel : atom, core2, haswell, ivybridge, nehalem, p4, pentm, sandybridge"
+		echo
+		echo ">>> Search via group name:  pacman -Sg ck-ivybridge"
+		echo 
+		echo ">>> Post in the repo support thread if package group is unavailable for your architecture:"
+		echo ">>> https://bbs.archlinux.org/viewtopic.php?id=111715"
+	fi
+}
+
+post_remove() {
+	# also remove the compat symlinks
+	rm -f boot/initramfs-linux${KERNEL_NAME}.img
+	rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+}
