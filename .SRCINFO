@@ -1,0 +1,24 @@
+pkgbase = teeworlds-hunter
+	pkgdesc = A customized server by bluelightzero where a Tee hunts everyone else
+	pkgver = 0.6.2.r6.944705e
+	pkgrel = 1
+	url = https://www.teeworlds.com/forum/viewtopic.php?id=10408
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python
+	makedepends = bam
+	makedepends = mesa
+	makedepends = unzip
+	depends = gcc-libs
+	source = git+https://github.com/bluelightzero/teeworlds-hunter.git
+	source = 0001-Enabled-mastersrv-and-versionsrv-as-they-are-require.patch
+	source = server.sh.in
+	source = README
+	md5sums = SKIP
+	md5sums = a76fcf155a7a38a51d95ad1ff0050472
+	md5sums = 529146a3b13993770fa414f66c67fa26
+	md5sums = 81785338a2084be394a997a465e33027
+
+pkgname = teeworlds-hunter
+

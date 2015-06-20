@@ -1,0 +1,12 @@
+#/bin/sh
+# Run the teeworlds modified server "@MODNAME@" with its config file
+
+bin=/usr/share/@MODNAME@/teeworlds_srv
+cfg=/usr/share/@MODNAME@/server.cfg
+
+if [ ! -z "$1" -a "$1" == "-f"]; then
+    $bin -f $2   # expects config file in "$2
+else
+    $bin -f $cfg
+fi
+

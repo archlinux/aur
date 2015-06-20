@@ -1,0 +1,57 @@
+=========Hunter Server Mod===========
+
+The hunter vs everyone else.
+
+*IMPORTANT*: Please return frequently for updates as this mod is new and bugs may be discovered.
+
+Rules:
+
+- 1 player is randomly selected to be the 'Hunter'
+- The other players then have to work out who this player is and kill them.
+- Friendly fire is always on. It is possible to mistake a normal player with the hunter.
+- All Deaths are anonymous, it will not show who killed who. This does not stop players saying it in chat, but they might lie!
+- If the hunter dies then everyone else wins.
+- If the hunter is last one left then hunter wins.
+- The hunter has different Weapon stats than normal players
+
+Differences:
+
+- Hunter has hammer, normal players don't. Hammer is instant kill.
+- Hunter's handgun does x2 damage
+- Hunter's shotgun can kill in 2 close shots
+- Hunter's lazer can kill in 2 close shots
+- Hunter's Grenade does not self harm (allowing many rocket jumps) and has visible debris.
+
+Source:
+
+https://github.com/bluelightzero/teeworlds-hunter
+
+Compiling:
+
+- Follow normal instructions
+- Use bam server_release
+
+Bug report:
+
+- Please report any bugs to my github page.
+- please be aware that some bugs may exist, I have been testing this all day with friends and It is pretty solid.
+
+IMPORTANT keep this option the same:
+
+sv_tournament_mode 1
+
+Recommended cfg: 
+
+sv_name "Hunter CTF5 *NEW*"
+sv_motd "A random player is secretly selected to be hunter. Hunter vs Everyone else. Hunter is stronger."
+sv_map ctf5
+sv_gametype mod
+sv_max_clients 16
+sv_register 1
+sv_tournament_mode 1
+
+Note for map makers:
+
+- Place extra hearts and shields to help game last longer
+- Try not to use death tiles, players have only 1 life.
+- Place lasers in harder to reach places, a hunter can use them to quickly kill off normal players so putting it in easy reach can cause a camping issue.
