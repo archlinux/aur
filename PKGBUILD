@@ -3,13 +3,13 @@
 # QT4 version
 pkgname=zulucrypt
 pkgver=4.7.6
-pkgrel=3
+pkgrel=4
 _altpkgname=zuluCrypt
 pkgdesc="a cli and gui frontend to cryptsetup."
 url="http://mhogomchungu.github.io/zuluCrypt/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('cryptsetup' 'qt4' 'libpwquality' 'libsecret' )
+depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' )
 optdepends=('kdeutils-kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
 makedepends=('cmake')
@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}/${_altpkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=false -DHOMEMOUNTPREFIX=false -DNOKDE=true -DCMAKE_BUILD_TYPE=release . ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DNOKDE=true -DCMAKE_BUILD_TYPE=release . ..
   make
 }
 
