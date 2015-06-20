@@ -1,0 +1,18 @@
+pkgbase = ros-jade-rviz-python-tutorial
+	pkgdesc = ROS - Tutorials showing how to call into rviz internals from python scripts.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://ros.org/wiki/rviz_python_tutorial
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rviz
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rviz
+	source = rviz_python_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/jade/rviz_python_tutorial/0.9.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rviz-python-tutorial
+
