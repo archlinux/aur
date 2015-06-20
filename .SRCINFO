@@ -1,0 +1,16 @@
+pkgbase = vim-openbrowser
+	pkgdesc = Open URI with your favorite browser from vim
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=3133
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = unzip
+	depends = vim
+	source = http://www.vim.org/scripts/download_script.php?src_id=17003
+	sha256sums = c57f9e80807f6e35d33db1bcd7995816f1c998f1cd15b20cffbe427dfd61bb0e
+
+pkgname = vim-openbrowser
+
