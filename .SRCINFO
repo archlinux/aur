@@ -1,0 +1,26 @@
+pkgbase = ros-jade-tf2-sensor-msgs
+	pkgdesc = ROS - Small lib to transform sensor_msgs with tf.
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-tf2
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf2-ros
+	makedepends = eigen3
+	depends = ros-jade-tf2
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-cmake-modules
+	depends = ros-jade-tf2-ros
+	depends = eigen3
+	source = tf2_sensor_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/jade/tf2_sensor_msgs/0.5.11-0
+	md5sums = SKIP
+
+pkgname = ros-jade-tf2-sensor-msgs
+
