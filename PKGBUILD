@@ -28,11 +28,15 @@ package_libsystemd-standalone() {
   provides=( 'libsystemd.so' 'libsystemd' )
 
   cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd.so.0.6.0 "${pkgdir}/usr/lib/libsystemd.so.0.6.0"
+  install -Dm644 .libs/libsystemd.so.0.8.0 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
   ln -s libsystemd.so.0.6.0 "${pkgdir}/usr/lib/libsystemd.so"
 
+  # Headers
   install -Dm644 src/systemd/_sd-common.h "${pkgdir}/usr/include/systemd/_sd-common.h"
   install -Dm644 src/systemd/sd-messages.h "${pkgdir}/usr/include/systemd/sd-messages.h"
+  install -Dm644 src/systemd/sd-bus.h "${pkgdir}/usr/include/systemd/sd-bus.h"
+  install -Dm644 src/systemd/sd-event.h "${pkgdir}/usr/include/systemd/sd-event.h"
+
   install -Dm644 src/libsystemd/libsystemd.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd.pc"
 }
 
@@ -86,22 +90,14 @@ package_libsystemd-daemon() {
 
 package_libsystemd-udev() {
   install='libsystemd.install'
-  provides=( 'libgudev-1.0.so' 'libudev.so' 'libudev' )
+  provides=( 'libudev.so' 'libudev' )
 
   cd "$srcdir/systemd-${pkgver}"
   install -Dm644 .libs/libudev.so.1.6.2 "${pkgdir}/usr/lib/libudev.so.1.6.2"
-  ln -s libgudev-1.0.so.0.2.0 "${pkgdir}/usr/lib/libgudev-1.0.so"
   ln -s libudev.so.1.6.2 "${pkgdir}/usr/lib/libudev.so"
 
   install -Dm644 src/libudev/libudev.pc "${pkgdir}/usr/lib/pkgconfig/libudev.pc"
   install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
-
-  # gudev
-  install -Dm644 .libs/libgudev-1.0.so.0.2.0 "${pkgdir}/usr/lib/libgudev-1.0.so.0.2.0"
-  install -Dm644 src/gudev/gudev-1.0.pc "${pkgdir}/usr/lib/pkgconfig/gudev-1.0.pc"
-  for i in src/gudev/*.h; do
-    install -Dm644 "$i" "${pkgdir}/usr/include/gudev-1.0/gudev/$i"
-  done
 }
 
 sha1sums=('682ebb60305f4bf1067aca929d664d062e80888f')
