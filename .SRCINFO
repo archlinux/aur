@@ -1,0 +1,26 @@
+pkgbase = ros-jade-kdl-parser
+	pkgdesc = ROS - The Kinematics and Dynamics Library (KDL) defines a tree structure to represent the kinematic and dynamic parameters of a robot mechanism.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/kdl_parser
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-urdf
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-orocos-kdl
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-rosconsole
+	depends = ros-jade-rosconsole
+	depends = ros-jade-roscpp
+	depends = ros-jade-urdf
+	depends = ros-jade-orocos-kdl
+	source = kdl_parser::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/jade/kdl_parser/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-kdl-parser
+
