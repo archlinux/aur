@@ -1,4 +1,6 @@
-# Maintainer: Kevin Klement (klement at philos dot umass dot edu)
+# Maintainer: Martin Doege <mdoege at compuserve dot com>
+# Contributor: Kevin Klement (klement at philos dot umass dot edu)
+
 pkgname=otf-bergamo
 pkgver=1
 pkgrel=4
