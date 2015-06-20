@@ -1,0 +1,18 @@
+pkgbase = darwinia
+	pkgdesc = Save Darwinians from the Viral Infection that threatens their existance (game sold separately)
+	pkgver = 1.43
+	pkgrel = 2
+	url = http://www.introversion.co.uk/darwinia/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	depends = sdl
+	depends = libvorbis
+	source = darwinia.desktop
+	source = hib://darwinia_1.43_i386.tar.gz
+	md5sums = bed5bb0f56b58ddc842122cee08c8c76
+	md5sums = b29633364637e9ac0079068c7b57a861
+
+pkgname = darwinia
+

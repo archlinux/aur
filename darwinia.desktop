@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=darwinian
+Name=Darwinia
+Comment=Save Darwinians from the Viral Infection that threatens their existance
+Exec=/usr/bin/darwinia
+Terminal=false
+Categories=Game;
