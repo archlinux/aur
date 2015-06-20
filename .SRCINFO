@@ -1,0 +1,12 @@
+pkgbase = repacman
+	pkgdesc = A tool for producing a pacman package from software's existing installation
+	pkgver = 0.98
+	pkgrel = 2
+	url = http://archlinuxfr/repacman
+	arch = any
+	license = GPL
+	source = http://foulmetal.free.fr/archlinux/repacman-0.98.tar.gz
+	md5sums = 361ea0aca3183a99ac73788c49ef18c7
+
+pkgname = repacman
+
