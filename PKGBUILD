@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL2')
 conflicts=('java-service-wrapper-bin')
 makedepends=('apache-ant' 'java-environment>=7')
-[[ "$CARCH" = "x86_64" ]] && makedepends+=('cunit' 'classpath')
+[[ "$CARCH" = "x86_64" ]] && makedepends+=('classpath')
 source=("http://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz")
 sha256sums=('d891b94149ecd11ba0dc807762873b7b0ee0cbbf997d4f7203ac22b57de82b08')
 
