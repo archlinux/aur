@@ -1,0 +1,22 @@
+pkgbase = ros-jade-rospy-tutorials
+	pkgdesc = ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rospy_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-std-msgs
+	depends = ros-jade-rospy
+	source = rospy_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/jade/rospy_tutorials/0.6.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rospy-tutorials
+
