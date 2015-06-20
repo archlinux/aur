@@ -2,7 +2,7 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=chromedriver
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ conflicts=('chromium')
 
 if [ "$CARCH" = "i686" ]; then
     _arch='linux32'
-    md5sums=('844c200a4d8e79ad68d76ed68f67aadd')
+    md5sums=('fffdb4c098adc2ab61b0e0f5b694f27e')
 elif [ "$CARCH" = "x86_64" ]; then
     _arch='linux64'
-    md5sums=('21c22803a1fd903ba15ea21ee81de317')
+    md5sums=('fa8e1bc6f9ce474582876653604d675e')
 fi
 
 source=("http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_${_arch}.zip")
