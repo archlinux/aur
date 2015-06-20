@@ -1,0 +1,34 @@
+pkgbase = ros-jade-turtle-actionlib
+	pkgdesc = ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://ros.org/wiki/turtle_actionlib
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-actionlib-msgs
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-turtlesim
+	makedepends = ros-jade-actionlib
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-angles
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-turtlesim
+	depends = ros-jade-actionlib
+	depends = ros-jade-rosconsole
+	depends = ros-jade-angles
+	source = turtle_actionlib::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/jade/turtle_actionlib/0.1.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-turtle-actionlib
+
