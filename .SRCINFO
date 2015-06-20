@@ -1,0 +1,13 @@
+pkgbase = mime-rails
+	pkgdesc = MIME types for Ruby on Rails
+	pkgver = LATEST
+	pkgrel = 1
+	url = https://github.com/gmate
+	install = mime-rails.install
+	arch = any
+	depends = shared-mime-info
+	source = https://github.com/gmate/gmate/raw/master/mime/rails.xml
+	sha512sums = SKIP
+
+pkgname = mime-rails
+

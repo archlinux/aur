@@ -1,0 +1,5 @@
+post_install() {
+	# update mime database
+    echo "==> updating mime database"
+    update-mime-database /usr/share/mime &> /dev/null
+}
