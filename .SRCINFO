@@ -1,0 +1,17 @@
+pkgbase = emacs-po-mode
+	pkgdesc = Emacs po-mode for editing gettext .po files (gettext-tools)
+	pkgver = 0.19.3
+	pkgrel = 1
+	url = http://www.gnu.org/software/gettext/
+	install = emacs-po-mode.install
+	arch = any
+	license = GPL
+	depends = gettext
+	depends = libcroco
+	depends = expat
+	depends = emacs
+	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.3.tar.xz
+	md5sums = 092c3f460553ceb4a638ff81d36434c4
+
+pkgname = emacs-po-mode
+

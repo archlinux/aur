@@ -1,0 +1,15 @@
+post_install() {
+  cat << _EOF
+==> Add the followings into your \$HOME/.emacs.d/init.el file to enable
+==> PO-mode autoloading and autorecognition of "*.po" files:
+
+   (autoload 'po-mode "po-mode"
+             "Major mode for translators to edit PO files" t)
+   (setq auto-mode-alist (cons '("\\\\.po\\\\'\\\\|\\\\.po\\\\." . po-mode)
+                               auto-mode-alist))
+   (autoload 'po-find-file-coding-system "po-compat")
+   (modify-coding-system-alist 'file "\\\\.po\\\\'\\\\|\\\\.po\\\\."
+                               'po-find-file-coding-system)
+
+_EOF
+}
