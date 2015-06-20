@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/opt/beathazardultra/SmileLogo.png
+Exec=/usr/bin/beathazardultra
+Terminal=false
+StartupNotify=false
+Name=Beat Hazard Ultra
+Comment=Intense music-driven arcade shooter powered by your music
+Categories=Game;

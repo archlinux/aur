@@ -1,0 +1,20 @@
+pkgbase = beathazardultra
+	pkgdesc = Intense music-driven arcade shooter powered by your music (game sold separately)
+	pkgver = 20130308
+	pkgrel = 1
+	url = http://www.coldbeamgames.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = allegro
+	options = !strip
+	source = beathazardultra.desktop
+	source = hib://beathazard-installer_03-08-13
+	source = beathazardultra.sh
+	md5sums = c734328d12709b1d6fc7a39a2e5a5325
+	md5sums = 79abdec2257bec523800f070287df91e
+	md5sums = f00693e0dcf73ced11aa793ffa27924a
+
+pkgname = beathazardultra
+
