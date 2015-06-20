@@ -1,0 +1,14 @@
+pkgbase = pidgin-mrim-prpl
+	pkgdesc = Mail.ru IM protocol support plugin for Pidgin
+	pkgver = 0.1.28.1
+	pkgrel = 1
+	url = https://bitbucket.org/mrim-prpl-team/mrim-prpl
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = libpurple>=2.4.1
+	provides = mrim-prpl
+	source = https://bitbucket.org/mrim-prpl-team/mrim-prpl/downloads/mrim-prpl-0.1.28.1.tar.xz
+
+pkgname = pidgin-mrim-prpl
+
