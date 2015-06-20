@@ -1,0 +1,25 @@
+pkgbase = teighaviewer-qt4
+	pkgdesc = Application for the visualization of CAD drawing files, QT4 version
+	pkgver = 4.00.1.0
+	pkgrel = 1
+	url = http://www.opendesign.com/guestfiles
+	install = teighaviewer-qt4.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = hicolor-icon-theme
+	provides = teighaviewer
+	conflicts = teighaviewer
+	conflicts = teighaviewer-qt5
+	source = http://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT4_lnxX86_4.4dll.deb
+	source = license
+	md5sums = f98e24dcea0ab88637c3d70132c61200
+	md5sums = 62b5539acd57c50855e29d1157c10697
+	depends_i686 = qt4
+	depends_i686 = libgl
+	depends_x86_64 = lib32-qt4
+	depends_x86_64 = lib32-libgl
+
+pkgname = teighaviewer-qt4
+
