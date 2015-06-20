@@ -7,13 +7,13 @@ pkgname='ros-indigo-urdfdom-py'
 pkgver='0.3.0'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-catkin_pkg
+  python2-catkin-pkg
   python2)
 
 ros_depends=(ros-indigo-catkin)

@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-urdfdom-py
 	pkgdesc = ROS - A library to access URDFs using the DOM model.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/urdf
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = ros-indigo-urdfdom-py
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
-	makedepends = python2-catkin_pkg
+	makedepends = python2-catkin-pkg
 	makedepends = python2
 	depends = ros-indigo-catkin
 	depends = python2
