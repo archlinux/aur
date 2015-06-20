@@ -13,7 +13,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost
 
 conflicts=('openmodelica-svn')
 
-source=('openmodelica::git+https://openmodelica.org/git-readonly/OpenModelica.git')
+#source=('openmodelica::git+https://openmodelica.org/git-readonly/OpenModelica.git')
 md5sums=('SKIP')
 
 _gitmod="openmodelica"
@@ -26,20 +26,20 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
    
-    if [ -d ${_gitmod} ] ; then
-        msg "Directory ${srcdir}/${_gitmod} already exists: updating from git ... "
-        cd "${_gitmod}" 
-        git pull --recurse-submodules && git submodule update --recursive
-        msg "The local files are updated."
-    else
-        msg "Directory ${srcdir}/${_gitmod} does not exist: cloning from git ... "
-        git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
-        msg "Cloning completed."
-    fi
-    sleep 10
+    #if [ -d ${_gitmod} ] ; then
+    #    msg "Directory ${srcdir}/${_gitmod} already exists: updating from git ... "
+    #    cd "${_gitmod}" 
+    #    git pull --recurse-submodules && git submodule update --recursive
+    #    msg "The local files are updated."
+    #else
+    #    msg "Directory ${srcdir}/${_gitmod} does not exist: cloning from git ... "
+    #    git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
+    #    msg "Cloning completed."
+    #fi
+    #sleep 10
    
-   #rm -r -f "${srcdir}/${_gitmod}"
-   #git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
+    rm -r -f "${srcdir}/${_gitmod}"
+    git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
 }
 
 

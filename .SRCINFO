@@ -36,7 +36,6 @@ pkgbase = openmodelica-git
 	depends = suitesparse
 	depends = boost-libs
 	conflicts = openmodelica-svn
-	source = openmodelica::git+https://openmodelica.org/git-readonly/OpenModelica.git
 	md5sums = SKIP
 
 pkgname = openmodelica-git
