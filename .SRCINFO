@@ -1,0 +1,24 @@
+pkgbase = ros-jade-map-msgs
+	pkgdesc = ROS - This package defines messages commonly used in mapping packages.
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://ros.org/wiki/map_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-nav-msgs
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-std-msgs
+	source = map_msgs::git+https://github.com/ros-gbp/navigation_msgs-release.git#tag=release/jade/map_msgs/1.13.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-map-msgs
+
