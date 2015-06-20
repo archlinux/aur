@@ -1,21 +1,16 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
-pkgver=r2586.dbba632103c9
-pkgrel=1
-arch=('any')
+pkgver=r2721.24acbceb37ae
+pkgrel=2
+arch=('i686' 'x86_64')
 url="http://furius.ca/beancount/"
 license=('GPL')
 source=("${pkgname}::hg+https://bitbucket.org/blais/beancount/")
 sha1sums=('SKIP')
-depends=('python-dateutil')
+depends=('python-dateutil' 'python>=3.3')
 makedepends=('mercurial')
-
-# TODO: Add python-cdecimal when package is available
-depends=(
-	python-bottle
-	wget
-)
+optdepends=('python-bottle: For the "beancount web" web-based interface')
 
 pkgver () {
 	cd "${pkgname}"
