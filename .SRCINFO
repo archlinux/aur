@@ -1,0 +1,18 @@
+pkgbase = ros-jade-qt-dotgraph
+	pkgdesc = ROS - qt_dotgraph provides helpers to work with dot graphs.
+	pkgver = 0.2.28
+	pkgrel = 1
+	url = http://ros.org/wiki/qt_dotgraph
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-python-qt-binding
+	depends = python2-pydot
+	source = qt_dotgraph::git+https://github.com/ros-gbp/qt_gui_core-release.git#tag=release/jade/qt_dotgraph/0.2.28-0
+	md5sums = SKIP
+
+pkgname = ros-jade-qt-dotgraph
+
