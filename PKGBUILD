@@ -13,7 +13,7 @@ conflicts=('gnome-shell-pomodoro-git')
 install='gschemas.install'
 changelog='NEWS'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/codito/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('400420823d75a1a88f960516e5dc37994f9c89226bd5757cd63dc4af4d26a0fb')
+sha256sums=('06693d4858d7d96c36f93afd2a3c352bbaeea90e67839a7669a9f0f1fe4e825c')
 
 prepare() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
