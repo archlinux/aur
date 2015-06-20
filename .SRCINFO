@@ -1,0 +1,18 @@
+pkgbase = qt5-quickcontrols-git
+	pkgdesc = A cross-platform application and UI framework (QtQuick)
+	pkgver = v5.5.0.beta1.23.g234dc90
+	pkgrel = 1
+	url = https://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-declarative-git
+	provides = qt5-quickcontrols
+	conflicts = qt5-quickcontrols
+	source = qt5-quickcontrols::git://code.qt.io/qt/qtquickcontrols.git#branch=5.5
+	sha256sums = SKIP
+
+pkgname = qt5-quickcontrols-git
+
