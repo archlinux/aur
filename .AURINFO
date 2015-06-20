@@ -1,0 +1,14 @@
+pkgbase = libcstl
+	pkgdesc = A common data structure and used algorithms C library
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/activesys/libcstl
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://libcstl.org/downloads/libcstl-2.3.0.tar.gz
+	options = !libtool
+
+pkgname = libcstl
+
