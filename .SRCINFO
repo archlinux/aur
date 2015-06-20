@@ -1,0 +1,16 @@
+pkgbase = ros-jade-angles
+	pkgdesc = ROS - This package provides a set of simple math utilities to work with angles.
+	pkgver = 1.9.10
+	pkgrel = 1
+	url = http://ros.org/wiki/angles
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	source = angles::git+https://github.com/ros-gbp/geometry_angles_utils-release.git#tag=release/jade/angles/1.9.10-0
+	md5sums = SKIP
+
+pkgname = ros-jade-angles
+
