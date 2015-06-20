@@ -1,4 +1,5 @@
 # Maintainer: James Barnett <jbarnet4 at tulane dot edu>
+# Contributor: NeveHanter
 # Contributor: Shanto
 
 pkgname=tiobench
@@ -15,7 +16,7 @@ md5sums=('bf485bf820e693c79e6bd2a38702a128')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i 's/aligned_alloc/faligned_alloc/g' tiotest.c
-  sed -i 's/^CLFAGS.*/CFLAGS=-O2 -Wall -fabi-version=2/g' Makefile
+  sed -i '/inline/d' crc32.c
   make
 }
 
