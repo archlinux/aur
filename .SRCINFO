@@ -1,17 +1,22 @@
 pkgbase = otf-bergamo
 	pkgdesc = Open type serif font resembling Bembo
 	pkgver = 1
-	pkgrel = 3
-	url = http://www.fontsite.com/download-free-fonts/bergamo-std
+	pkgrel = 4
+	url = http://fontsite.com/font-library/bergamo-pro/
 	install = otf-bergamo.install
 	arch = any
 	license = custom:FontSite Free Font License
-	makedepends = unzip
 	depends = fontconfig
+	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	noextract = BergamoStd.zip
-	source = http://www.fontsite.com/freefonts/BergamoStd.zip
-	md5sums = 2e0ded1cf1791dc8650510087aaff2de
+	source = file://BergamoProRegular.zip
+	source = file://BergamoProItalic.zip
+	source = file://BergamoProBold.zip
+	source = file://BergamoProBoldItalic.zip
+	sha256sums = 27719e4cf3acc070c8bef0f8b51a5b6b4f1e4a2c8c3048bfde9721d808d999c6
+	sha256sums = d330370f75aa6292ef729a2a7fe6acb0434211ee9cdb5a5c716de1ecb919909c
+	sha256sums = 351f2b1302076ff933e31bb0fc8ae05b4bb6a115ffa56ce96c5ca48b3f894830
+	sha256sums = 2219b7ac1517e342cda32c5562dabca776d8a04066666bcc74f2396dfe24a0ea
 
 pkgname = otf-bergamo
 
