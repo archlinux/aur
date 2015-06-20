@@ -1,17 +1,15 @@
 pkgbase = zfec
-	pkgdesc = a fast erasure codec which can be used with the command-line, C, Python, or Haskell
+	pkgdesc = A fast erasure codec which can be used with the command-line, C, Python, or Haskell
 	pkgver = 1.4.24
 	pkgrel = 2
-	url = http://pypi.python.org/pypi/zfec
+	url = https://pypi.python.org/pypi/zfec
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = darcsver
-	makedepends = setuptools_darcs
 	depends = python2
 	depends = pyutil
 	depends = zbase32
-	source = http://pypi.python.org/packages/source/z/zfec/zfec-1.4.24.tar.gz
+	source = https://pypi.python.org/packages/source/z/zfec/zfec-1.4.24.tar.gz
 	md5sums = e1bca3a1f18374f72bdf8cd42ea9c919
 
 pkgname = zfec
