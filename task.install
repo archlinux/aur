@@ -1,0 +1,16 @@
+_task_completion() {
+	echo ">>> In order to enable tab completion for bash:"
+	echo ">>>  copy it to your /etc/bash_completion.d directory (system-wide)"
+	echo ">>>  or source it from your home directory's .bashrc file.'"
+	echo ""
+}
+
+post_install() {
+	_task_completion
+	/bin/true
+}
+
+post_upgrade() {
+	_task_completion
+	/bin/true
+}
