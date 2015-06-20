@@ -1,0 +1,45 @@
+2015-04-24 Peter Sutton <foxxy@foxdogstudios.com>
+
+	* 20150424-1 :
+	New upstream release
+
+2015-02-18 Peter Sutton <foxxy@foxdogstudios.com>
+
+	* 20150218-1 :
+	Fixed pkgver
+
+2015-02-17 Peter Sutton <foxxy@foxdogstudios.com>
+
+	* 20141225-1 :
+	New upstream release
+
+2014-11-25 Christopher Arndt <chris@chrisarndt.de>
+
+	* 20141118-1 :
+	new upstream release
+
+2014-08-10 Christopher Arndt <chris@chrisarndt.de>
+
+	* 20140424-1 :
+	new upstream release
+
+2014-03-12 Christopher Arndt <chris@chrisarndt.de>
+
+	* 20140205-1 :
+	updated to new upstream release.
+	switched to sha256 checksum.
+	fixed 'license' tag.
+
+2013-12-28 Christopher Arndt <chris@chrisarndt.de>
+
+	* 20131225-1 :
+	updated to new upstream release.
+
+2013-11-29 Christopher Arndt <chris@chrisarndt.de>
+
+	* 20131126-1 :
+	updated to new upstream release.
+	added ChangeLog.
+	added missing 'package()' function to PKGBUILD.
+	added samples to documentation dir.
+	added programming docs to documentation dir.
