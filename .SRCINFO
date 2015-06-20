@@ -1,0 +1,14 @@
+pkgbase = cleanlib32
+	pkgdesc = Remove unneeded lib32 packages from your Arch Linux system.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/josephgbr/cleanlib32
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	optdepends = sudo: execute cleanlib32 as normal user with root permissions
+	source = https://github.com/josephgbr/cleanlib32/releases/0.2/423/cleanlib32-0.2.tar.xz
+	md5sums = 3e735ea002218ef1fb53e714cd6c5c96
+
+pkgname = cleanlib32
+
