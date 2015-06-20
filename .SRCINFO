@@ -1,0 +1,16 @@
+pkgbase = classix
+	pkgdesc = ICD-10 lookup application
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://code.google.com/p/classix/
+	arch = any
+	license = GPL
+	depends = python2>=2.5
+	depends = sqlite3
+	depends = pygtk>=2.10
+	depends = pygobject>=2.12
+	source = http://classix.googlecode.com/files/classix-0.3.1.tar.gz
+	md5sums = 0b372d7bd85d19e10a5c60af492adf64
+
+pkgname = classix
+
