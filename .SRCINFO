@@ -1,0 +1,16 @@
+pkgbase = mockito
+	pkgdesc = A java mocking framework that lets you write beautiful tests with a clean and simple API
+	pkgver = 1.10.19
+	pkgrel = 1
+	url = https://github.com/mockito/mockito
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = mockito-all-1.10.19.jar
+	source = https://bintray.com/artifact/download/szczepiq/maven/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar
+	source = LICENSE
+	sha256sums = d1a7a7ef14b3db5c0fc3e0a63a81b374b510afe85add9f7984b97911f4c70605
+	sha256sums = c91362ba4ffbea02d2ed5b7104893d56142479ea58068c95eee17925e25372da
+
+pkgname = mockito
+
