@@ -1,0 +1,23 @@
+pkgbase = ros-jade-perception
+	pkgdesc = ROS - A metapackage to aggregate several packages.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-perception-pcl
+	depends = ros-jade-image-common
+	depends = ros-jade-laser-pipeline
+	depends = ros-jade-vision-opencv
+	depends = ros-jade-ros-base
+	depends = ros-jade-image-transport-plugins
+	depends = ros-jade-image-pipeline
+	source = perception::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/perception/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-perception
+
