@@ -1,0 +1,14 @@
+pkgbase = xroot-bin
+	pkgdesc = GUI frontend for su/sudo
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://code.google.com/p/xroot/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libx11
+	source = https://xroot.googlecode.com/files/xroot-0.0.6.tar.gz
+	md5sums = 4a7d43bb9b755a422e2ee77df422b62b
+
+pkgname = xroot-bin
+
