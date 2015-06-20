@@ -1,0 +1,23 @@
+pkgbase = vvvvvv
+	pkgdesc = A retro-styled 2D platformer (game sold separately)
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://thelettervsixtim.es/
+	arch = i686
+	arch = x86_64
+	groups = humblebundle3
+	groups = humblebundle4
+	groups = humblebundles
+	license = custom
+	depends = sh
+	depends = sdl2_mixer
+	noextract = vvvvvv-06182014-bin
+	source = hib://vvvvvv-06182014-bin
+	source = vvvvvv.desktop
+	source = vvvvvv.sh
+	md5sums = 65312dd3b51c700927b1086ba045ece1
+	md5sums = f3f06f16bf7f3280279e2d3da425a5d2
+	md5sums = 6d1c555a18bcd5cba8c55a62cf0964ac
+
+pkgname = vvvvvv
+

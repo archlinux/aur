@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VVVVVV
+Comment=A retro styled 2D platformer
+Exec=/usr/bin/vvvvvv
+Icon=vvvvvv
+Terminal=false
+Categories=Game
