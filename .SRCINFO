@@ -1,0 +1,14 @@
+pkgbase = cufflinks-bin
+	pkgdesc = Transcriptome assembly and differential expression analysis for RNA-Seq.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://cole-trapnell-lab.github.io/cufflinks/
+	arch = x86_64
+	license = Boost Software License v1
+	provides = cufflinks=2.2.1
+	conflicts = cufflinks
+	source = http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+	sha1sums = 55fcb817faae45f465ccfaddceacc217307fc33a
+
+pkgname = cufflinks-bin
+
