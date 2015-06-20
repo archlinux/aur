@@ -1,0 +1,36 @@
+pkgbase = ros-jade-depth-image-proc
+	pkgdesc = ROS - Contains nodelets for processing depth images such as those produced by OpenNI camera.
+	pkgver = 1.12.12
+	pkgrel = 1
+	url = http://ros.org/wiki/depth_image_proc
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-cv-bridge
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-eigen-conversions
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-tf2
+	makedepends = ros-jade-message-filters
+	makedepends = ros-jade-image-geometry
+	makedepends = ros-jade-stereo-msgs
+	makedepends = ros-jade-tf2-ros
+	makedepends = boost
+	depends = ros-jade-cv-bridge
+	depends = ros-jade-nodelet
+	depends = ros-jade-eigen-conversions
+	depends = ros-jade-image-transport
+	depends = ros-jade-tf2
+	depends = ros-jade-image-geometry
+	depends = ros-jade-tf2-ros
+	depends = boost
+	source = depth_image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/depth_image_proc/1.12.12-0
+	md5sums = SKIP
+
+pkgname = ros-jade-depth-image-proc
+
