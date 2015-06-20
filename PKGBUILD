@@ -1,5 +1,5 @@
 pkgname=popcorntime-nw12-git
-pkgver=r4952.e506f43
+pkgver=r4909.c99341e
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install="popcorntime.install"
 _gitname=desktop
 
 source=('popcorntime.install'
-        "git+https://git.popcorntime.io/popcorntime/desktop.git#branch=nw12_streamer_take3"
+        "git+https://git.popcorntime.io/popcorntime/desktop.git#branch=nw12"
         "popcorntime.desktop")
 md5sums=('efe872f41ed74a706308b4015e4fd82f'
          'SKIP'
@@ -41,7 +41,9 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-  # FIXME: fails the first time with: "Fatal error: Cannot read property 'length' of undefined"
+  # FIXME: fails the first time:
+  # Downloading: http://get.popcorntime.io/nw/v0.12.1/node-webkit-v0.12.1-linux-x64.tar.gz
+  # Fatal error: Cannot read property 'length' of undefined
   grunt build || grunt build
 }
 
