@@ -1,0 +1,21 @@
+pkgbase = ros-jade-simulators
+	pkgdesc = ROS - A metapackage to aggregate several packages.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-gazebo-ros-pkgs
+	depends = ros-jade-stage-ros
+	depends = ros-jade-rqt-common-plugins
+	depends = ros-jade-robot
+	depends = ros-jade-rqt-robot-plugins
+	source = simulators::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/simulators/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-simulators
+
