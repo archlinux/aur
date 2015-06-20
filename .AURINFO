@@ -1,0 +1,49 @@
+pkgbase = linux-fbcondecor
+	pkgdesc = The linux-fbcondecor kernel and modules with frame buffer decoration support.
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.1.sign
+	source = fbcondecor-4.0.patch
+	source = config
+	source = config.x86_64
+	source = linux-fbcondecor.preset
+	source = change-default-console-loglevel.patch
+	options = !strip
+
+pkgname = linux-fbcondecor
+	pkgdesc = The Linux-fbcondecor kernel and modules
+	install = linux-fbcondecor.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-fbcondecor=4.0.1
+	conflicts = kernel26-fbcondecor
+	replaces = kernel26-fbcondecor
+	backup = etc/mkinitcpio.d/linux-fbcondecor.preset
+
+pkgname = linux-fbcondecor-headers
+	pkgdesc = Header files and scripts for building modules for Linux-fbcondecor kernel
+	provides = kernel26-fbcondecor-headers=4.0.1
+	conflicts = kernel26-fbcondecor-headers
+	replaces = kernel26-fbcondecor-headers
+
+pkgname = linux-fbcondecor-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-fbcondecor kernel
+	provides = kernel26-fbcondecor-docs=4.0.1
+	conflicts = kernel26-fbcondecor-docs
+	replaces = kernel26-fbcondecor-docs
+
