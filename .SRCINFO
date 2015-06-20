@@ -1,0 +1,20 @@
+pkgbase = dexed-vst-git
+	pkgdesc = A VST plugin synth closely modeled on the Yamaha DX7
+	pkgver = 0.8.0.r97.1eda313
+	pkgrel = 1
+	url = http://plugin.org.uk/
+	arch = i686
+	arch = x86_64
+	groups = vst-plugins
+	license = GPL3
+	makedepends = git
+	depends = alsa-lib
+	depends = libxext
+	depends = gcc-libs-multilib
+	provides = dexed-vst
+	conflicts = dexed-vst
+	source = dexed-vst::git+https://github.com/asb2m10/dexed.git
+	md5sums = SKIP
+
+pkgname = dexed-vst-git
+
