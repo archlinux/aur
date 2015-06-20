@@ -1,4 +1,5 @@
-# Maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=papyros-shell-git
 pkgver=0.0.5.r93.gd7f4629
@@ -8,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
 depends=("qt5-base-git" "qt5-declarative-git" "qt5-quickcontrols-git" "qt5-graphicaleffects-git"
- 		 "greenisland-git" "qml-material" "qml-extras" "kdeclarative"
+ 		 "greenisland-git" "qml-material-git" "qml-extras-git" "kdeclarative"
  		 "pam" "libpulse" "libqtxdg" "solid" "kconfig" "plasma-nm")
 optdepends=('pulseaudio: audio support' 'sddm: login screen theme')
 makedepends=("git" "python" "extra-cmake-modules")
