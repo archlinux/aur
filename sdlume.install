@@ -1,0 +1,17 @@
+post_install() { 
+  echo "Try running SDLUME with these options:"
+  echo "sdlume <rom>"
+  echo "  for launching arcade games (similar to sdlmame)"
+  echo "-or-"
+  echo "sdlume <system> <software>"
+  echo "  for launching console games (similar to sdlmess)"
+  echo
+  echo "Note: There is no software path option in the ini, so you"
+  echo "will need to provide the full path to your disk image"
+  echo "for the latter command to succeed."
+}
+
+post_upgrade() {
+  echo "~/.ume/ume.ini is no longer required. If it exists,"
+  echo "/usr/share/sdlume/ini/ume.ini will not be used."
+}

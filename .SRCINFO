@@ -1,0 +1,25 @@
+pkgbase = sdlume
+	pkgdesc = Universal Machine Emulator combines the features of MAME and MESS into a single multi-purpose emulator
+	pkgver = 0.161
+	pkgrel = 1
+	url = http://mamedev.emulab.it/haze/
+	install = sdlume.install
+	arch = i686
+	arch = x86_64
+	license = custom:MAME License
+	makedepends = mesa
+	makedepends = python2
+	depends = libxinerama
+	depends = sdl2_ttf
+	depends = qt4
+	optdepends = ttf-liberation: recommended UI font
+	noextract = mame0161s.zip
+	source = sdlume.sh
+	source = ume.ini
+	source = mame0161s.zip::http://mamedev.org/downloader.php?file=releases/mame0161s.zip
+	sha256sums = 5d9a5fe9c088078749687444a8bbc9506fdeed80000fcf64e7c65304da8f736a
+	sha256sums = 78cb7a361debcb3e9696e7fc659416539bcc2d800db4a148eb126c5206802d89
+	sha256sums = c0ba4c8e6ea7a491cbf7b317221d03c916dee53ca3cde4ff26adbc478a395a0f
+
+pkgname = sdlume
+
