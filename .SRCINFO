@@ -1,0 +1,19 @@
+pkgbase = ripright
+	pkgdesc = A minimal automatic CD ripper and tagging utility
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://www.mcternan.me.uk/ripright
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = curl
+	depends = flac
+	depends = cdparanoia
+	depends = imagemagick
+	depends = libdiscid
+	provides = ripright
+	source = http://www.mcternan.me.uk/ripright/software/ripright-0.9.tar.gz
+	md5sums = 1ab4feab25ae9f886ba9811eb586044d
+
+pkgname = ripright
+
