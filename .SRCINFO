@@ -1,0 +1,20 @@
+pkgbase = ros-jade-pluginlib-tutorials
+	pkgdesc = ROS - The pluginlib_tutorials package.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://www.ros.org/wiki/pluginlib/Tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-pluginlib
+	makedepends = ros-jade-catkin
+	depends = ros-jade-roscpp
+	depends = ros-jade-pluginlib
+	source = pluginlib_tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/jade/pluginlib_tutorials/0.1.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-pluginlib-tutorials
+
