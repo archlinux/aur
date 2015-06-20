@@ -5,7 +5,7 @@
 
 _pkgbasename=nss
 pkgname=lib32-${_pkgbasename}-chacha20
-pkgver=3.19.1
+pkgver=3.19.2
 pkgrel=0
 pkgdesc="Mozilla Network Security Services with ChaCha20-Poly1305 (32-bit)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RTM
         nss.pc.in
         ssl-renegotiate-transitional.patch
         mozilla820740-chacha20.patch)
-sha256sums=('b7be709551ec13206d8e3e8c065b894fa981c11573115e9478fa051029c52fff'
+sha256sums=('1306663e8f61d8449ad8cbcffab743a604dcd9f6f34232c210847c51dce2c9ae'
             'b9f1428ca2305bf30b109507ff335fa00bce5a7ce0434b50acd26ad7c47dd5bd'
             '12df04bccbf674db1eef7a519a28987927b5e9c107b1dc386686f05e64f49a97'
             '5e9b6e3d1b35b0c634178d07d1b289a641b397d8199099917fbb240c83f8d5b9')
