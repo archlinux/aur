@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=multiwinia
+Name=Multiwinia
+Comment=Challenge your opponent to a game of stick-man slaughter
+Exec=/usr/bin/multiwinia
+Terminal=false
+Categories=Game;

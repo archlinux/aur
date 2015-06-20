@@ -1,0 +1,20 @@
+pkgbase = multiwinia
+	pkgdesc = Challenge your opponent to a game of stick-man slaughter (game sold separately)
+	pkgver = 1.3.1
+	pkgrel = 3
+	url = http://www.introversion.co.uk/multiwinia/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	depends = openal
+	depends = sdl
+	depends = libvorbis
+	depends = libpng12
+	source = multiwinia.desktop
+	source = hib://multiwinia_1.3.1-1_i386.tar.gz
+	md5sums = 59653ec01acf2befc0211c4cd7ac13bc
+	md5sums = bbc7d907431f15065a0f38f6623c4217
+
+pkgname = multiwinia
+
