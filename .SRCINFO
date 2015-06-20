@@ -1,0 +1,13 @@
+pkgbase = python2-larch
+	pkgdesc = Python copy-on-write B-tree library
+	pkgver = 1.20131130
+	pkgrel = 1
+	url = http://liw.fi/larch/
+	arch = any
+	license = GPL3
+	depends = python2-tracing
+	source = http://code.liw.fi/debian/pool/main/p/python-larch/python-larch_1.20131130.orig.tar.gz
+	sha256sums = 2717e851bde45b66e8b2d44181861f24135d185abab8111119857943d3b5cac1
+
+pkgname = python2-larch
+
