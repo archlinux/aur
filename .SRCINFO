@@ -1,0 +1,15 @@
+pkgbase = python-twython
+	pkgdesc = Pure Python wrapper for the Twitter API
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/ryanmcgrath/twython
+	arch = any
+	license = MIT
+	depends = python-requests
+	depends = python-requests-oauthlib
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/twython/twython-3.2.0.tar.gz
+	sha1sums = 1743ab480c1096d073ae4e9ff5a0e81f071fcfb9
+
+pkgname = python-twython
+
