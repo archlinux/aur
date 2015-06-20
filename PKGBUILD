@@ -1,4 +1,5 @@
-# Maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=qml-material
 pkgver=0.0.5
