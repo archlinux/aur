@@ -4,7 +4,7 @@
 
 _pkgname=Gelide
 pkgname=gelide-git
-pkgver=20131228.g0db66d3
+pkgver=20150620.g10d8aec
 pkgrel=1
 pkgdesc="A front-end for any emulated system (git version)"
 arch=('i686' 'x86_64')
@@ -14,12 +14,10 @@ depends=('gtkmm' 'libxml2' 'gnome-icon-theme' 'gnome-doc-utils')
 makedepends=('git' 'intltool')
 conflicts=('gelide')
 install=$pkgname.install
-source=("git+https://github.com/tapule/Gelide.git" "$pkgname.patch")
-md5sums=('SKIP'
-         '7aa4e68495b41b9725192baf583c6f57')
+source=("git+https://github.com/tapule/Gelide.git")
+md5sums=('SKIP')
 
 build() {
-patch -p1 < $srcdir/$pkgname.patch
 cd $srcdir/$_pkgname
 ./autogen.sh --prefix=/usr
 make || return 1

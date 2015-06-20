@@ -1,6 +1,6 @@
 pkgbase = gelide-git
 	pkgdesc = A front-end for any emulated system (git version)
-	pkgver = 20131228.g0db66d3
+	pkgver = 20150620.g10d8aec
 	pkgrel = 1
 	url = http://gelide.sourceforge.net/
 	install = gelide-git.install
@@ -15,9 +15,7 @@ pkgbase = gelide-git
 	depends = gnome-doc-utils
 	conflicts = gelide
 	source = git+https://github.com/tapule/Gelide.git
-	source = gelide-git.patch
 	md5sums = SKIP
-	md5sums = 7aa4e68495b41b9725192baf583c6f57
 
 pkgname = gelide-git
 
