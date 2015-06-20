@@ -1,0 +1,20 @@
+pkgbase = batterymon-clone
+	pkgdesc = A simple battery monitor tray icon using acpi
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/jareksed/batterymon-clone
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = pygtk
+	depends = python2-distutils-extra
+	optdepends = python2-notify
+	optdepends = notification-daemon
+	provides = batterymon
+	conflicts = batterymon
+	source = batterymon-clone::git://github.com/JarekSed/batterymon-clone.git
+	md5sums = SKIP
+
+pkgname = batterymon-clone
+
