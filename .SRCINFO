@@ -1,0 +1,17 @@
+pkgbase = fb2edit
+	pkgdesc = FB2 ebooks editor
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = http://fb2edit.lintest.ru
+	install = fb2edit.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=2.8.10
+	depends = qtwebkit
+	depends = libxml2
+	source = http://fb2edit.lintest.ru/pub/fb2edit-0.0.8.tar.bz2
+	md5sums = 2c7c06f24414808d397c08fbed70b54c
+
+pkgname = fb2edit
+
