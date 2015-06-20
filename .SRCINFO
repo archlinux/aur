@@ -1,0 +1,23 @@
+pkgbase = swordandsworcery
+	pkgdesc = An exploratory action adventure videogame with an emphasis on audiovisual style (game sold separately)
+	pkgver = 1.02
+	pkgrel = 2
+	url = http://www.swordandsworcery.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	depends = mesa
+	depends = curl
+	depends = sdl
+	noextract = swordandsworcery_1.02.tar.gz
+	options = !strip
+	source = swordandsworcery.desktop
+	source = http://www.swordandsworcery.com/storage/icon_512.png
+	source = hib://swordandsworcery_1.02.tar.gz
+	md5sums = e0aca231d3b4bf8c68bf799f1e9b1201
+	md5sums = 071d74203e593188ee28c0913d57d4ff
+	md5sums = 2ede02c0552baeb12979bf9a68fdf399
+
+pkgname = swordandsworcery
+

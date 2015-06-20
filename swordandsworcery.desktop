@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/opt/swordandsworcery/icon_512.png
+Exec=/usr/bin/swordandsworcery
+Terminal=false
+StartupNotify=false
+Name=Superbrothers: Sword & Sworcery EP
+Comment=An exploratory action adventure videogame with an emphasis on audiovisual style
+Categories=Game;
