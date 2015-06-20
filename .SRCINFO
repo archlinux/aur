@@ -1,0 +1,15 @@
+pkgbase = ruby-daemons
+	pkgdesc = A toolkit to create and control daemons in different ways
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = http://daemons.rubyforge.org
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = daemons-1.1.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/daemons-1.1.9.gem
+	sha1sums = e73ba58fe9e948f7edc5017f91f53b8f0a955a37
+
+pkgname = ruby-daemons
+
