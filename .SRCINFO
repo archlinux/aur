@@ -1,0 +1,26 @@
+pkgbase = ros-jade-rqt-rviz
+	pkgdesc = ROS - rqt_rviz provides a GUI plugin embedding RViz.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_rviz
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rviz
+	makedepends = ros-jade-rqt-gui-cpp
+	makedepends = ros-jade-pluginlib
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-rqt-gui
+	makedepends = boost
+	depends = ros-jade-rviz
+	depends = ros-jade-rqt-gui-cpp
+	depends = ros-jade-pluginlib
+	depends = ros-jade-rqt-gui
+	depends = boost
+	source = rqt_rviz::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_rviz/0.4.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-rviz
+
