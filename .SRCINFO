@@ -1,0 +1,30 @@
+pkgbase = ros-jade-interactive-markers
+	pkgdesc = ROS - 3D interactive marker communication library for RViz and similar tools.
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = http://ros.org/wiki/interactive_markers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-visualization-msgs
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-rospy
+	depends = ros-jade-rostest
+	depends = ros-jade-std-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-tf
+	depends = ros-jade-visualization-msgs
+	depends = ros-jade-rosconsole
+	depends = ros-jade-rospy
+	source = interactive_markers::git+https://github.com/ros-gbp/interactive_markers-release.git#tag=release/jade/interactive_markers/1.11.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-interactive-markers
+
