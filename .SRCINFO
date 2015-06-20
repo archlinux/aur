@@ -1,0 +1,41 @@
+pkgbase = ros-jade-collada-urdf
+	pkgdesc = ROS - This package contains a tool to convert Unified Robot Description Format (URDF) documents into COLLAborative Design Activity (COLLADA) documents.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/collada_urdf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-urdf
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-geometric-shapes
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-collada-parser
+	makedepends = ros-jade-resource-retriever
+	makedepends = ros-jade-angles
+	makedepends = pcre
+	makedepends = assimp
+	makedepends = collada-dom
+	makedepends = urdfdom
+	makedepends = urdfdom-headers
+	depends = ros-jade-urdf
+	depends = ros-jade-collada-parser
+	depends = ros-jade-geometric-shapes
+	depends = ros-jade-roscpp
+	depends = ros-jade-tf
+	depends = ros-jade-resource-retriever
+	depends = ros-jade-angles
+	depends = pcre
+	depends = assimp
+	depends = collada-dom
+	depends = urdfdom
+	depends = urdfdom-headers
+	source = collada_urdf::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/jade/collada_urdf/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-collada-urdf
+
