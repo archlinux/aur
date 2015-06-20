@@ -1,5 +1,7 @@
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+
 pkgname=python-geojson
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 
 pkgdesc="Python bindings and utlities for GeoJSON"
@@ -12,7 +14,7 @@ makedepends=('python-setuptools')
 
 source=("https://github.com/frewsxcv/python-geojson/archive/$pkgver.tar.gz")
 
-sha1sums=('dbbc0770241f9eef870fcf3c2c7a45f47e6217b6')
+sha1sums=('6fd94cc40b57cc56b00caf30c1a1bb0414cb9cb3')
 
 package() {
 	cd python-geojson-$pkgver
