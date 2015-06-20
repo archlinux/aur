@@ -1,0 +1,25 @@
+pkgbase = ros-jade-robot
+	pkgdesc = ROS - A metapackage which extends ros_base and includes ROS libaries for any robot hardware.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-robot-model
+	depends = ros-jade-filters
+	depends = ros-jade-diagnostics
+	depends = ros-jade-executive-smach
+	depends = ros-jade-xacro
+	depends = ros-jade-geometry
+	depends = ros-jade-ros-base
+	depends = ros-jade-robot-state-publisher
+	depends = ros-jade-control-msgs
+	source = robot::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/robot/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-robot
+
