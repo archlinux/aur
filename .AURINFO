@@ -1,0 +1,16 @@
+pkgbase = cufflinks
+	pkgdesc = Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples..
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://cufflinks.cbcb.umd.edu
+	arch = x86_64
+	license = Artistic
+	depends = boost
+	depends = eigen3
+	depends = python2
+	depends = samtools
+	depends = perl
+	source = http://cufflinks.cbcb.umd.edu/downloads/cufflinks-2.2.1.tar.gz
+
+pkgname = cufflinks
+
