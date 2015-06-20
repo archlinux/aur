@@ -1,0 +1,17 @@
+pkgbase = jackett
+	pkgdesc = User any tracker with Sonarr
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/zone117x/Jackett
+	install = jackett.install
+	arch = any
+	license = GPL
+	depends = mono
+	depends = curl
+	source = https://github.com/zone117x/Jackett/releases/download/v0.3.1/Release.v0.3.1.zip
+	source = jackett.service
+	md5sums = 08a7b51dcdddfbbb0487aba455ce72d4
+	md5sums = bfefcb47a83a216e223dbc1294d03e0c
+
+pkgname = jackett
+
