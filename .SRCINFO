@@ -1,0 +1,16 @@
+pkgbase = direvent-git
+	pkgdesc = Daemon that monitors events in the file system directories
+	pkgver = 5.0.r114.5259b13
+	pkgrel = 1
+	url = http://www.gnu.org.ua/software/direvent/
+	install = direvent-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	source = git://git.savannah.gnu.org/direvent.git
+	md5sums = SKIP
+
+pkgname = direvent-git
+
