@@ -1,7 +1,7 @@
 pkgbase = ros-jade-rospack
 	pkgdesc = ROS - ROS Package Tool.
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/rospack
 	arch = any
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = ros-jade-rospack
 	makedepends = python2
 	depends = python2-rosdep
 	depends = tinyxml
-	depends = python2-catkin_pkg
+	depends = python2-catkin-pkg
 	depends = python2
 	depends = boost
 	depends = pkg-config
