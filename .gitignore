@@ -1,0 +1,7 @@
+pkg
+src
+xcftools
+xcftools-git-*.src.tar.gz
+xcftools-git-*.pkg.tar.xz
+.AURINFO
+

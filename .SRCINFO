@@ -1,0 +1,20 @@
+pkgbase = xcftools-git
+	pkgdesc = Command line tools for extracting images and information from GIMP XCF files (Git version).
+	pkgver = 1.0.7.r18.196f517
+	pkgrel = 1
+	url = https://github.com/j-jorge/xcftools/
+	arch = x86_64
+	arch = i686
+	license = Custom
+	makedepends = git
+	depends = libpng
+	depends = perl
+	provides = xcftools
+	conflicts = xcftools
+	source = xcftools::git+https://github.com/j-jorge/xcftools.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = ad91bc83ff4050aca9867ee0d9b5921f8a31fe50d37b9aaf0e260aa0b4e8987a
+
+pkgname = xcftools-git
+
