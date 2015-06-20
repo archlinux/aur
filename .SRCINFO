@@ -1,0 +1,21 @@
+pkgbase = icingaweb2-git
+	pkgdesc = Icinga Web 2 Interface
+	pkgver = r7176.9b14fff
+	pkgrel = 1
+	url = http://www.icinga.org
+	install = icingaweb2-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = php
+	optdepends = php-gd: export data to PDF
+	optdepends = php-intl: support for internationalization
+	optdepends = php-ldap: for LDAP authentication
+	optdepends = php-pgsql: for PostgreSQL backend
+	provides = icingaweb2
+	conflicts = icingaweb2
+	source = git+https://github.com/Icinga/icingaweb2.git
+	sha256sums = SKIP
+
+pkgname = icingaweb2-git
+

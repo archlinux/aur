@@ -1,0 +1,12 @@
+post_install() {
+  getent group icingacmd &> /dev/null && usermod -a -G icingacmd http &> /dev/null
+
+  #chown -R root:http /etc/webapps/icingaweb2
+  chown -R root:http /etc/icingaweb2
+  chown -R http:http /var/log/icingaweb2
+}
+
+post_remove() {
+  echo "    You may remove the user 'http' from group 'icingacmd' by running"
+  echo "    'gpasswd -d http icingacmd' if no other icinga web interface is installed."
+}
