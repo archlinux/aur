@@ -1,0 +1,22 @@
+pkgbase = papyros-files
+	pkgdesc = The file manager for Papyros
+	pkgver = 0.0.5
+	pkgrel = 2
+	url = https://github.com/papyros/files-app
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = intltool
+	depends = qt5-declarative-git
+	depends = qt5-graphicaleffects-git
+	depends = kdeclarative
+	depends = qml-material
+	depends = taglib
+	provides = papyros-files
+	source = papyros-files::git+https://github.com/papyros/files-app.git#tag=v0.0.5
+	sha256sums = SKIP
+
+pkgname = papyros-files
+
