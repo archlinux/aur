@@ -1,0 +1,17 @@
+pkgbase = python-readme
+	pkgdesc = Python library to safely render arbitrary README files into HTML
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/pypa/readme
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-bleach
+	depends = python-docutils
+	depends = python-html5lib
+	depends = python-pygments
+	source = http://pypi.python.org/packages/source/r/readme/readme-0.5.1.tar.gz
+	sha256sums = 4d33851d7fa56d1f93b7ba979ebbb17b5175ccde9fd9dfb974427bdd72ec667b
+
+pkgname = python-readme
+

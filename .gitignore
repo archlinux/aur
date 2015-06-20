@@ -1,0 +1,7 @@
+pkg
+src
+readme-*.tar.gz
+python-readme-*.pkg.tar.xz
+python-readme-*.src.tar.gz
+.AURINFO
+
