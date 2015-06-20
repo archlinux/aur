@@ -1,6 +1,6 @@
 pkgbase = r2-bindings
 	pkgdesc = Language bindings of the radare2 api for valabind and friends
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = http://radare.org
 	arch = i686
@@ -9,9 +9,10 @@ pkgbase = r2-bindings
 	makedepends = valabind
 	depends = radare2
 	depends = python2
+	depends = python
 	options = !emptydirs
-	source = http://www.radare.org/get/radare2-bindings-0.9.8.tar.xz
-	sha512sums = e2541340cb180ec87aacbf507ad66b73322bb5b558b2ffdc71c085f2dc767160150b3bbf52ac6590936c5244705b191217b1b2d7ea051d6a78c94988ab684cd8
+	source = r2-bindings-0.9.9.tar.gz::https://github.com/radare/radare2-bindings/archive/0.9.9.tar.gz
+	sha512sums = e7bd499c1c8403815ef50ffa29ae119db0fce7e33ade41f06c9c534581f2645476ac63003fa985eadd82dc60fe1cc534de1f92d5eba6f17e3d2c748e4a7f7760
 
 pkgname = r2-bindings
 
