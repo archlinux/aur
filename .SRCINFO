@@ -1,0 +1,21 @@
+pkgbase = qstlink2-git
+	pkgdesc = A ST-Link V2 (Debugger/Programmer) client.
+	pkgver = 1.1.7.r168.034198c
+	pkgrel = 1
+	url = https://github.com/fpoussin/QStlink2
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = libusb
+	provides = qstlink2
+	conflicts = qstlink2
+	conflicts = qstlink
+	conflicts = qstlink2-svn
+	source = qstlink2::git+https://github.com/fpoussin/QStlink2.git
+	sha256sums = SKIP
+
+pkgname = qstlink2-git
+
