@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Solar 2
+Comment=An open-world, sandbox game set in an infinite abstract universe
+Icon=/opt/solar2/solar2.png
+Exec=/usr/bin/solar2
+Categories=Game;

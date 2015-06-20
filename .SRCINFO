@@ -1,0 +1,21 @@
+pkgbase = solar2
+	pkgdesc = An open-world, sandbox game set in an infinite abstract universe (game sold separately)
+	pkgver = 1.10
+	pkgrel = 3
+	url = http://murudai.com/solar/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl_mixer
+	depends = glu
+	depends = openal
+	options = !strip
+	source = hib://solar2-linux-1.10.tar.gz
+	source = solar2.desktop
+	source = solar2.png::https://humblebundle-a.akamaihd.net/misc/files/a72badb523/images/icons/solar_android_pc.png
+	md5sums = 243918907eea486fdc820b7cac0c260b
+	md5sums = 642ebed8f1bbbc0541ed826e775b7c65
+	md5sums = b49600d174ac15a910d93d874062f8ec
+
+pkgname = solar2
+
