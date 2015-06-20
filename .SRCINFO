@@ -1,0 +1,18 @@
+pkgbase = fltk-xcas
+	pkgdesc = Graphical user interface toolkit for X modified by giac/xcas' author
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libjpeg
+	depends = libxinerama
+	depends = libxft
+	provides = fltk
+	conflicts = fltk
+	source = http://www-fourier.ujf-grenoble.fr/~parisse/giac/freebsd/fltk-giac.tar.gz
+	md5sums = d71fee3a06747f263d81e7142306ab5b
+
+pkgname = fltk-xcas
+
