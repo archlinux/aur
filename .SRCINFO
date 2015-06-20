@@ -1,0 +1,15 @@
+pkgbase = msi-kb-backlit
+	pkgdesc = A command line tool to change backlit colors of your MSI keyboard
+	pkgver = 0.1.0.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/msi-kb-backlit
+	install = msi-kb-backlit.install
+	arch = any
+	license = custom:BSD3
+	makedepends = ghc<7.11
+	makedepends = cabal-install<1.23
+	source = http://hackage.haskell.org/package/msi-kb-backlit-0.1.0.1/msi-kb-backlit-0.1.0.1.tar.gz
+	sha256sums = 8437ed623ae07c5350d24b5b8f96ac82fdade7afe9cd6a6085b39103475001d3
+
+pkgname = msi-kb-backlit
+
