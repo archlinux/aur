@@ -1,0 +1,22 @@
+pkgbase = ros-jade-rqt-reconfigure
+	pkgdesc = ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfigure_gui), and provides the way to view and edit the parameters that are accessible via dynamic_reconfigure.
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_reconfigure
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-rqt-gui-py
+	depends = ros-jade-rqt-gui
+	depends = ros-jade-rqt-console
+	depends = ros-jade-rqt-py-common
+	depends = ros-jade-rospy
+	source = rqt_reconfigure::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_reconfigure/0.3.11-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-reconfigure
+
