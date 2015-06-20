@@ -1,0 +1,21 @@
+pkgbase = ocropy
+	pkgdesc = Python-based OCR package using recurrent neural networks (formerly ocropus)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tmbdev/ocropy
+	arch = any
+	license = APACHE
+	depends = python-imaging
+	depends = python2-scipy
+	depends = python2-matplotlib
+	depends = python2-pytables
+	depends = imagemagick
+	depends = opencv
+	depends = python2-beautifulsoup4
+	source = https://github.com/tmbdev/ocropy/archive/v1.0.tar.gz
+	source = http://www.tmbdev.net/en-default.pyrnn.gz
+	md5sums = 622636a7dde7c304ec719b65cf885a86
+	md5sums = cedd140c7d7650e910f0550ad0f04727
+
+pkgname = ocropy
+
