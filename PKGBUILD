@@ -1,4 +1,5 @@
-# Maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=qml-material-git
 pkgver=0.1.r19.gb382e69
@@ -8,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://github.com/papyros/qml-material"
 license=("LGPL")
 depends=("qt5-base-git" "qt5-declarative-git" "qt5-quickcontrols-git" "qt5-svg-git" 
-		 "qt5-graphicaleffects-git" "qml-extras")
+		 "qt5-graphicaleffects-git" "qml-extras-git")
 makedepends=("git")
 provides=("$pkgname")
 source=("$pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")

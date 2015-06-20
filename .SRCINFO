@@ -12,7 +12,7 @@ pkgbase = qml-material-git
 	depends = qt5-quickcontrols-git
 	depends = qt5-svg-git
 	depends = qt5-graphicaleffects-git
-	depends = qml-extras
+	depends = qml-extras-git
 	provides = qml-material-git
 	source = qml-material-git::git+https://github.com/papyros/qml-material.git#branch=develop
 	sha256sums = SKIP
