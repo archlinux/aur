@@ -1,0 +1,12 @@
+post_install() {
+    echo ""
+    echo "Set colors using the options below in .rtorrent.rc:"
+    echo "Options: done_fg_color, done_bg_color, active_fg_color, active_bg_color"
+    echo "Colors: 0 = black 1 = red 2 = green 3 = yellow 4 = blue 5 = magenta 6 = cyan 7 = white"
+    echo "Example: done_fg_color = 1"
+}
+
+post_upgrade() {
+  post_install
+}
+
