@@ -1,0 +1,22 @@
+pkgbase = hammerfight
+	pkgdesc = A 2D physics-based video game in which you swing large melee weapons to destroy enemies (game sold separately)
+	pkgver = 1.004
+	pkgrel = 1
+	epoch = 1
+	url = http://www.koshutin.com/
+	arch = i686
+	arch = x86_64
+	groups = humblebundle3
+	groups = humblebundle4
+	groups = humblebundles
+	license = custom
+	depends = openal
+	depends = gcc-libs
+	depends = sdl
+	source = hammerfight.desktop
+	source = hib://hammerfight_1.004_all.tar.gz
+	md5sums = 8233b9a99ef7bfe02e358b8c9bb827b4
+	md5sums = cc3fd17aa5849b0de3f0aa967ea8afe2
+
+pkgname = hammerfight
+
