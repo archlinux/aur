@@ -1,0 +1,21 @@
+pkgbase = kgraphviewer
+	pkgdesc = A Graphviz dot graph file viewer for KDE
+	pkgver = 2.2.0
+	pkgrel = 2
+	url = http://www.kde.org/applications/graphics/kgraphviewer/
+	install = kgraphviewer.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = docbook-xsl
+	depends = kdebase-runtime
+	depends = graphviz
+	source = http://download.kde.org/stable/kgraphviewer/2.2.0/src/kgraphviewer-2.2.0.tar.xz
+	md5sums = 043ace59a061a99fff2757a17be4e1d6
+
+pkgname = kgraphviewer
+
