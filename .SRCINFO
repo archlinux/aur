@@ -13,7 +13,7 @@ pkgbase = greenisland-papyros-git
 	makedepends = gdb
 	makedepends = extra-cmake-modules
 	depends = qt5-declarative-git
-	depends = qt5-wayland-dev-git
+	depends = qt5-wayland-git
 	options = debug
 	source = greenisland::git://github.com/papyros/greenisland.git#branch=feature/window_manager
 	md5sums = SKIP

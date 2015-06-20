@@ -1,4 +1,5 @@
-# Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=greenisland-papyros-git
 pkgver=20150618.4855207
@@ -7,7 +8,7 @@ pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/greenisland/greenisland.git'
 license=('GPL', 'LGPL')
-depends=('qt5-declarative-git' 'qt5-wayland-dev-git')
+depends=('qt5-declarative-git' 'qt5-wayland-git')
 makedepends=('git' 'gdb' 'extra-cmake-modules')
 options=('debug')
 
