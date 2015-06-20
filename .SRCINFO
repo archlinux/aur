@@ -1,0 +1,23 @@
+pkgbase = ros-jade-camera-calibration-parsers
+	pkgdesc = ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters.
+	pkgver = 1.11.5
+	pkgrel = 1
+	url = http://ros.org/wiki/camera_calibration_parsers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-catkin
+	makedepends = boost
+	makedepends = yaml-cpp
+	makedepends = pkg-config
+	depends = ros-jade-sensor-msgs
+	depends = yaml-cpp
+	source = camera_calibration_parsers::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/camera_calibration_parsers/1.11.5-0
+	md5sums = SKIP
+
+pkgname = ros-jade-camera-calibration-parsers
+
