@@ -1,0 +1,29 @@
+pkgbase = gnome-commander-git
+	pkgdesc = A graphical two-pane filemanager for GNOME
+	pkgver = 1.4.0.24.g7ee4460
+	pkgrel = 1
+	url = http://gcmd.github.io/
+	install = gnome-commander.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perlxml
+	makedepends = gnome-doc-utils
+	makedepends = chmlib
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = libgnomeui
+	depends = exiv2
+	depends = taglib
+	depends = libgsf
+	depends = python2
+	depends = poppler
+	depends = libunique
+	provides = gnome-commander
+	conflicts = gnome-commander
+	options = !libtool
+	source = git://git.gnome.org/gnome-commander
+	md5sums = SKIP
+
+pkgname = gnome-commander-git
+
