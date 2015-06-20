@@ -1,0 +1,19 @@
+pkgbase = jackass-git
+	pkgdesc = A VST plugin that provides JACK-MIDI support for VST hosts.
+	pkgver = 1.0.r13.adcd7eb
+	pkgrel = 1
+	url = https://github.com/falkTX/JackAss/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = unzip
+	depends = gcc-libs-multilib
+	depends = wine
+	provides = jackass
+	conflicts = jackass
+	source = jackass::git+https://github.com/falkTX/JackAss.git
+	sha256sums = SKIP
+
+pkgname = jackass-git
+
