@@ -1,4 +1,4 @@
-Maintainer: Grey Christoforo <grey@christoforo.net>
+#Maintainer: Grey Christoforo <grey@christoforo.net>
 pkgname=tclkit
 pkgver=8.6.4
 _tcltk_tag=core_8_6_4
