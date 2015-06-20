@@ -1,0 +1,40 @@
+pkgbase = ros-jade-geometric-shapes
+	pkgdesc = ROS - This package contains generic definitions of geometric shapes and bodies.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://ros.org/wiki/geometric_shapes
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-eigen-stl-containers
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-octomap
+	makedepends = ros-jade-shape-msgs
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-resource-retriever
+	makedepends = ros-jade-visualization-msgs
+	makedepends = ros-jade-random-numbers
+	makedepends = qhull
+	makedepends = assimp
+	makedepends = eigen3
+	makedepends = boost
+	makedepends = console-bridge
+	makedepends = pkg-config
+	depends = ros-jade-eigen-stl-containers
+	depends = ros-jade-octomap
+	depends = ros-jade-shape-msgs
+	depends = ros-jade-resource-retriever
+	depends = ros-jade-visualization-msgs
+	depends = ros-jade-random-numbers
+	depends = assimp
+	depends = boost
+	depends = eigen3
+	depends = console-bridge
+	depends = qhull
+	source = geometric_shapes::git+https://github.com/ros-gbp/geometric_shapes-release.git#tag=release/jade/geometric_shapes/0.4.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-geometric-shapes
+
