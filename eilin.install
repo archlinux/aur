@@ -1,0 +1,12 @@
+post_install() {
+  echo "NOTE: To use eilin as normal user you have to add yourself into \"eilin\" group"
+  getent group eilin >> /dev/null || groupadd eilin
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent group eilin &>/dev/null && groupdel eilin
+}

@@ -1,0 +1,19 @@
+pkgbase = eilin
+	pkgdesc = Utility to control EIZO monitors under Linux
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://sourceforge.net/p/eilin/home/Home/
+	install = eilin.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt4
+	depends = libusb
+	depends = expat
+	optdepends = qt4: system tray icon
+	source = http://downloads.sourceforge.net/project/eilin/eilin-3.2.tar.gz
+	md5sums = ba6449d2d522b6ff838c3604511a03f7
+
+pkgname = eilin
+
