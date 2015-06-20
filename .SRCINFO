@@ -1,0 +1,28 @@
+pkgbase = ros-jade-image-transport
+	pkgdesc = ROS - image_transport should always be used to subscribe to and publish images.
+	pkgver = 1.11.5
+	pkgrel = 1
+	url = http://ros.org/wiki/image_transport
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-roslib
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-message-filters
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-pluginlib
+	depends = ros-jade-roslib
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-message-filters
+	depends = ros-jade-rosconsole
+	depends = ros-jade-pluginlib
+	source = image_transport::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/image_transport/1.11.5-0
+	md5sums = SKIP
+
+pkgname = ros-jade-image-transport
+
