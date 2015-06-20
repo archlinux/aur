@@ -1,0 +1,13 @@
+pkgbase = pyg3t
+	pkgdesc = Python gettext Translation Toolkit
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://launchpad.net/pyg3t
+	arch = any
+	license = GPL
+	depends = python2
+	source = https://launchpad.net/pyg3t/trunk/0.3.1/+download/pyg3t-0.3.1.tar.gz
+	md5sums = a05172b2988fd8a6ff1203c490b5217f
+
+pkgname = pyg3t
+
