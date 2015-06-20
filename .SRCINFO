@@ -1,0 +1,15 @@
+pkgbase = otf-ipamjfont
+	pkgdesc = Japanese outline Mincho fonts implementing IVS compliant with Hanyo-Denshi collection (based on IPAex Mincho fonts)
+	pkgver = 003.01
+	pkgrel = 1
+	url = http://mojikiban.ipa.go.jp/
+	install = otf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://download.forest.impress.co.jp/pub/library/i/ipamjfont/10750/ipamjm00301.zip
+	sha1sums = 62098c7963dff6ceb45965bfdb791f4324142448
+
+pkgname = otf-ipamjfont
+
