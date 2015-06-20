@@ -1,0 +1,18 @@
+pkgbase = ros-jade-random-numbers
+	pkgdesc = ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost libraries.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://ros.org/wiki/random_numbers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = boost
+	depends = boost
+	source = random_numbers::git+https://github.com/ros-gbp/random_numbers-release.git#tag=release/jade/random_numbers/0.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-random-numbers
+
