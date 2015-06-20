@@ -13,7 +13,7 @@ license=('none')
 pkgdesc="Python script to manipulate maildirs."
 provides=(cleanup-maildir)
 conflicts=(cleanup-maildir)
-source=("git://github.com/jvc/cleanup-maildir.git")
+source=($pkgname::git://github.com/jvc/cleanup-maildir.git)
 md5sums=('SKIP')
 
 pkgver() {
