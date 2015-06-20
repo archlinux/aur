@@ -1,0 +1,17 @@
+pkgbase = teeman-git
+	pkgdesc = Bash tool to manage your teeworlds servers
+	pkgver = r6.8087971
+	pkgrel = 1
+	url = https://bitbucket.org/florianleleu/teeman
+	install = teeman-git.install
+	arch = any
+	license = custom:CC-BY-SA
+	makedepends = git
+	depends = bash
+	depends = wget
+	depends = net-tools
+	source = git+https://florianleleu@bitbucket.org/florianleleu/teeman
+	md5sums = SKIP
+
+pkgname = teeman-git
+
