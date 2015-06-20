@@ -1,0 +1,25 @@
+pkgbase = sdlmess
+	pkgdesc = Multiple Emulator Super System, computer and game console emulator
+	pkgver = 0.161
+	pkgrel = 1
+	url = http://www.mess.org/
+	install = sdlmess.install
+	arch = i686
+	arch = x86_64
+	license = custom:MAME License
+	makedepends = mesa
+	makedepends = python2
+	depends = libxinerama
+	depends = sdl2_ttf
+	depends = qt4
+	optdepends = ttf-liberation: recommended UI font
+	noextract = mame0161s.zip
+	source = sdlmess.sh
+	source = mess.ini
+	source = mame0161s.zip::http://mamedev.org/downloader.php?file=releases/mame0161s.zip
+	sha256sums = 28fe6bcf5e7f846866371f3e98c699b19ed7dd73459c41b165d1916b222dc400
+	sha256sums = 773e632b687387fbf27af72481af30d3fd18e0326495399f1791b83a5fecae3d
+	sha256sums = c0ba4c8e6ea7a491cbf7b317221d03c916dee53ca3cde4ff26adbc478a395a0f
+
+pkgname = sdlmess
+

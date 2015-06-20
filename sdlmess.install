@@ -1,0 +1,12 @@
+post_install() { 
+  echo "Try running SDLMESS with these options:"
+  echo "sdlmess <system> <device> <software>"
+  echo
+  echo "Note: There is no software path option in the ini, so you"
+  echo "will need to provide the full path to your disk image."
+}
+
+post_upgrade() {
+  echo "~/.mess/mess is no longer required. If it exists,"
+  echo "/usr/share/sdlmess/ini/mess.ini will not be used."
+}
