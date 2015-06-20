@@ -3,10 +3,10 @@
 pkgname=python2-catkin-lint
 _name=catkin_lint
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Check catkin packages for common errors"
 url="https://github.com/fkie/catkin_lint"
-depends=('python2' 'python2-catkin_pkg')
+depends=('python2' 'python2-catkin-pkg')
 makedepends=('python2')
 license=('BSD')
 arch=('any')

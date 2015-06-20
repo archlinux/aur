@@ -1,13 +1,13 @@
 pkgbase = python2-catkin-lint
 	pkgdesc = Check catkin packages for common errors
 	pkgver = 1.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkie/catkin_lint
 	arch = any
 	license = BSD
 	makedepends = python2
 	depends = python2
-	depends = python2-catkin_pkg
+	depends = python2-catkin-pkg
 	conflicts = python-catkin-lint
 	source = https://pypi.python.org/packages/source/c/catkin_lint/catkin_lint-1.3.7.tar.gz
 	md5sums = d4a09bec1398619d7351b849eca5f88a
