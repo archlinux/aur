@@ -1,0 +1,64 @@
+#!/usr/bin/ruby
+require 'fuzzy_match'
+require 'i18n'
+I18n.enforce_available_locales = false
+
+$stations_high = {
+  'Inter' => 'http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u',
+  'Info' => 'http://www.tv-radio.com/station/france_info/france_info.m3u',
+  'Culture' => 'http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u',
+  'Musique' => 'http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u',
+  'FIP' => 'http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u',
+  'Le Mouv\'' => 'http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u',
+  'Bleu Ile-de-France' => 'http://www.tv-radio.com/station/france_bleu_ile-de-france_mp3/france_bleu_ile-de-france_mp3-128k.m3u'
+}
+
+$stations_low = $stations_high.map do |k,v|
+  { k => v.sub('128k', '32k') }
+end.reduce(:merge).merge({
+  'Info' => 'http://www.tv-radio.com/station/france_info/franceinfo-32k.m3u',
+  'Inter Grandes Ondes' => 'http://www.tv-radio.com/station/franceintergrandesondes-mp3/franceintergrandesondes-mp3-32k.m3u'
+}).merge([
+  'Alsace', 'Armorique', 'Auxerre', 'Azur', 'Basse-Normandie',
+  'Béarn', 'Belfort', 'Berry', 'Besançon', 'Bourgogne', 'Breiz Izel',
+  'Champagne', 'Cotentin', 'Creuse', 'Drôme Ardèche', 'Frequenza Mora',
+  'Gard Lozère', 'Gascogne', 'Gironde', 'Haute Normandie', 'Herault',
+  'Isère', 'La Rochelle', 'Limousin', 'Loire Océan', 'Lorraine Nord',
+  'Maine', 'Mayenne', 'Nord', 'Orléans', 'Pays Basques', 'Pays d\'Auvergne',
+  'Pays de Savoie', 'Périgord', 'Picardie', 'Poitou', 'Provence',
+  'Rousillon', 'Sud Lorraine', 'Toulouse', 'Touraine', 'Vaucluse'
+].map do |region|
+  slug = I18n.transliterate(region, '').sub("'", '').gsub(/[\s\-]+/, '_').downcase
+  lien = "http://www.tv-radio.com/station/france_bleu_#{slug}_mp3/france_bleu_#{slug}_mp3-32k.m3u"
+  {"Bleu #{region}" => lien}
+end.reduce(:merge))
+
+if ARGV[0] =~ /list/
+  puts '==> Haut débit:'
+  $stations_high.keys.sort.each {|s| puts "- #{s}" }
+  puts
+  puts '==> Bas débit:'
+  $stations_low.keys.sort.each {|s| puts "- #{s}" }
+  exit 0
+end
+
+rate = if ARGV[0] =~ /(low|bas|32|faible)/ then :low and ARGV.shift else :high end
+station = ARGV.join ' '
+match = FuzzyMatch.new($stations_low).find(station)
+puts match.inspect
+if match
+  debit = 'Bas'
+  if rate == :high and $stations_high.member? match[0]
+    match[1] = $stations_high[match[0]]
+    debit = 'Haut'
+  end
+
+  puts "==> France #{match[0]} (#{debit} débit)\n\n"
+  cache = "#{ENV['HOME']}/.cache/radio-france.m3u"
+  open = ENV['PLAYER'] || 'mimeo'
+  `rm -f "#{cache}"; wget -O #{cache} #{match[1]}`
+  exec "#{open} #{cache}"
+else
+  puts "==> Rien trouvé"
+  exit 1
+end
