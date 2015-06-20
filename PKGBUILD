@@ -2,7 +2,7 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
 pkgver=1.9.3.dev.r335.g8c5d48e
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -27,21 +27,9 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}"
-   
-    if [ -d ${_gitmod} ] ; then
-         msg "Directory ${srcdir}/${_gitmod} already exists: updating from git ... "
-         cd "${_gitmod}" 
-         git pull --recurse-submodules && git submodule update --recursive
-         msg "The local files are updated."
-    else
-        msg "Directory ${srcdir}/${_gitmod} does not exist: cloning from git ... "
-        git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
-        msg "Cloning completed."
-    fi
-    sleep 10
-   
-    #rm -r -f "${srcdir}/${_gitmod}"
-    #git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
+      
+    rm -r -f "${srcdir}/${_gitmod}"
+    git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
 }
 
 
