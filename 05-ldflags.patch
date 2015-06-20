@@ -1,0 +1,77 @@
+Description: Add usage of LDFLAGS
+Author: Bastian Blank <waldi@debian.org>
+
+--- ncpfs-2.2.6.orig/Make.rules.in
++++ ncpfs-2.2.6/Make.rules.in
+@@ -43,6 +43,8 @@ CFLAGS_DEFINES := -DN_PLAT_LINUX -DLOCAL
+ 
+ CCFLAGS := $(CFLAGS_DEFINES) $(CFLAGS_OPTIONS) $(INCLUDES)
+ 
++LDFLAGS := @LDFLAGS@
++
+ # If your system is ELF, either also do a 'make install', or append the util/
+ # directory where the dynamic library resides to the environment
+ # variable LD_LIBRARY_PATH
+--- ncpfs-2.2.6.orig/sutil/Makefile.in
++++ ncpfs-2.2.6/sutil/Makefile.in
+@@ -85,7 +85,7 @@ ncpm_common.d mount_login.d: %.d: %.c
+ 		[ -s $@ ] || rm -f $@
+ 
+ $(UTILS): %: %.o ../lib/libncp.a ncpm_common.o mount_login.o
+-	$(CC) @GC_SECTIONS@-o $@ $(addsuffix .o,$@) $(LDFLAGS_$@) ../lib/libncp.a ${LIBS}
++	$(CC) @GC_SECTIONS@-o $@ $(addsuffix .o,$@) $(LDFLAGS_$@) $(LDFLAGS) ../lib/libncp.a ${LIBS}
+ 
+ ../lib/libncp.a:
+ 	make -C ../lib libncp.a
+--- ncpfs-2.2.6.orig/ipx-1.0/Makefile.in
++++ ncpfs-2.2.6/ipx-1.0/Makefile.in
+@@ -33,10 +33,10 @@ $(ALL_OBJECTS): %.o: %.c
+ 		[ -s $@ ] || rm -f $@
+ 
+ $(UTIIPX): %: %.o ipxutil.o
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) ipxutil.o ${LIBS}
++	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) ipxutil.o $(LDFLAGS) ${LIBS}
+ 
+ $(UTILS): %: %.o
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) ${LIBS}
++	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(LDFLAGS) ${LIBS}
+ 
+ $(MAN8GZ): %.gz: %
+ 	gzip -9 -c $< >$@
+--- ncpfs-2.2.6.orig/util/Makefile.in
++++ ncpfs-2.2.6/util/Makefile.in
+@@ -94,10 +94,10 @@ $(O_USERUTILS) $(O_SBINUTILS) $(O_OTHER)
+ pqstat nwpqjob nprint: dsqueue.o
+ 
+ $(UTILS): %: %.o $(LIBDEP)
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(ADDOBJS_$@) -L$(NCPLIB_DIR) -lncp ${LIBS}
++	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(ADDOBJS_$@) $(LDFLAGS) -L$(NCPLIB_DIR) -lncp ${LIBS}
+ 
+ ipx_probe: ipx_probe.c
+-	$(CC) $(CFLAGS) $(CCFLAGS) -o ipx_probe ipx_probe.c ${LIBS}
++	$(CC) $(CFLAGS) $(CCFLAGS) -o ipx_probe ipx_probe.c $(LDFLAGS) ${LIBS}
+ 
+ dep:
+ 
+--- ncpfs-2.2.6.orig/lib/Makefile.in
++++ ncpfs-2.2.6/lib/Makefile.in
+@@ -122,7 +122,7 @@ $(SHARED_NCPLIB): $(SHARED_NCPLIB_BIN)
+ 	ln -sf $< $@
+ 
+ $(SHARED_NCPLIB_BIN): $(SHARED_O_OBJ) ${this_srcdir}/libncp.vers
+-	$(CC) -shared -o $@ -Wl,-soname=$(SHARED_NCPLIB_SONAME) $(SHARED_VLINK) $(SHARED_O_OBJ) ${LIBS} -lc
++	$(CC) -shared -o $@ -Wl,-soname=$(SHARED_NCPLIB_SONAME) $(SHARED_VLINK) $(SHARED_O_OBJ) $(LDFLAGS) ${LIBS} -lc
+ 
+ install_static: $(STATIC_NCPLIB_BIN)
+ 	$(INSTALL) -d $(DESTDIR)$(libadir)
+--- ncpfs-2.2.6.orig/ipxdump/Makefile.in
++++ ncpfs-2.2.6/ipxdump/Makefile.in
+@@ -24,7 +24,7 @@ install: $(EXEC)
+ ifeq ($(ncp_if_ether_support),yes)
+ 
+ $(EXEC): %: %.o $(OBJECTS)
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(OBJECTS)
++	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(LDFLAGS) $(OBJECTS)
+ 
+ else
+ .PHONY ipxdump ipxparse
