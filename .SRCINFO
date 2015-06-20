@@ -1,0 +1,17 @@
+pkgbase = yoono
+	pkgdesc = Allows you to connect to all your social networks and IM services
+	pkgver = 1.8.44
+	pkgrel = 1
+	url = http://www.yoono.com
+	arch = i686
+	arch = x86_64
+	license = custom:yoono
+	source = http://cdn.yoono.com/desktop/yoono-desktop-1.8.44.tar.bz2
+	source = yoono
+	source = yoono.desktop
+	md5sums = 7581c3a52ac9292883acae7fa11eea7f
+	md5sums = c4ef2d69caac5b00d69cbfe6cb27a495
+	md5sums = 723b2875156c48d89a5680b1b212af40
+
+pkgname = yoono
+

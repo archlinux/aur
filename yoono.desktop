@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.6
+Name=Yoono Desktop
+Comment=
+Icon=yoono
+Exec=yoono
+Terminal=false
+Type=Application
+Categories=Application;Network;
