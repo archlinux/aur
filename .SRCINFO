@@ -1,0 +1,21 @@
+pkgbase = xfce4-dev-tools-git
+	pkgdesc = The Xfce development tools
+	pkgver = 20150313
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = pkg-config
+	depends = gtk-doc
+	depends = make
+	depends = intltool
+	provides = xfce4-dev-tools
+	conflicts = xfce4-dev-tools
+	options = !libtool
+	source = git://git.xfce.org/xfce/xfce4-dev-tools
+	md5sums = SKIP
+
+pkgname = xfce4-dev-tools-git
+
