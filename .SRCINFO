@@ -1,0 +1,14 @@
+pkgbase = csv2latex
+	pkgdesc = A csv to LaTeX file converter
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://packages.ubuntu.com/en/source/oneiric/csv2latex
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/c/csv2latex/csv2latex_0.18.orig.tar.gz
+	md5sums = e8fbfbfd4b3a369a8c1cedd833ebe8a3
+
+pkgname = csv2latex
+
