@@ -1,0 +1,14 @@
+pkgbase = hcraft
+	pkgdesc = HTTP Vuln Request Crafter
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/hcraft/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://downloads.sourceforge.net/project/hcraft/hcraft/hcraft-1.0.0/hcraft-1.0.0.tar.gz
+	md5sums = c426ff53347e12572373da1ea376806c
+	sha256sums = 21e12487fb27a61a91451476e306c807e28a0b00a11009bdef0970e34c3d9945
+
+pkgname = hcraft
+
