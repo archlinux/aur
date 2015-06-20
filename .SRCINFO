@@ -1,0 +1,18 @@
+pkgbase = wbarconf
+	pkgdesc = Configuration GUI for wbar written in Python and GTK
+	pkgver = 0.7.2.2
+	pkgrel = 1
+	url = http://kapsi.fi/ighea/wbarconf/
+	arch = arm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = pygtk
+	depends = pygobject
+	depends = wbar
+	source = http://kapsi.fi/ighea/wbarconf/wbarconf-0.7.2.2.tar.gz
+	md5sums = 5a7a82768883ab79e3313035d6887ad0
+
+pkgname = wbarconf
+
