@@ -1,7 +1,7 @@
 # Maintainer: AcidHub <acidhub@craft.net.br>
 
 pkgname=bash-pipes
-pkgver=1.1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc='Pipes screensaver for bash'
 arch=('any')
@@ -9,9 +9,9 @@ url='https://github.com/BlackXT/pipes.sh'
 license=('GPL')
 depends=('bash')
 source=("https://github.com/BlackXT/pipes.sh/archive/v$pkgver.tar.gz")
-sha512sums=('c6fb30c32405ef04ab09c9e77554c8bc2a1d799ad78461305f1f97aace8866f15034608afd59dece5637d593ae60a6e9d5f41ace54172fbe82488b629edf1a78')
+sha512sums=('88e2457f5072c4d13e9afc44964e75b84b0bcee3d80cd439e9ca733ca0d2108fbd998bbd73c5333679b42a6681b68e0193c7ff707070163de93e527994fe0d96')
 
 package() {
-	install -Dm755 "$srcdir"/pipes.sh-$pkgver/pipes.sh "$pkgdir"/usr/bin/pipes
-	install -Dm755 "$srcdir"/pipes.sh-$pkgver/pipes_orig.sh "$pkgdir"/usr/bin/pipes_orig
+    cd pipes.sh-$pkgver
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }
