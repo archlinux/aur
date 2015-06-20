@@ -1,0 +1,18 @@
+pkgbase = girl
+	pkgdesc = GNOME Internet Radio Locator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Girl
+	install = girl.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = libgnomeui
+	depends = totem
+	depends = streamripper
+	source = https://download.gnome.org/sources/girl/1.0/girl-1.0.0.tar.xz
+	sha256sums = db2371ac35994c21dcddf8ade0d20109ecd871e43a470f464edc97a5477da0bf
+
+pkgname = girl
+
