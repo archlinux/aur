@@ -5,7 +5,7 @@
 pkgname=minecraftsp-anjocaido
 epoch=1
 pkgver=autoupdate
-pkgrel=5
+pkgrel=6
 pkgdesc="Minecraft is a sandbox game which allows players to build constructions out of textured cubes in a 3D world."
 arch=(any)
 license=('unknown')
@@ -14,7 +14,7 @@ depends=('java-runtime' 'xorg-xrandr' 'openal')
 provides=('minecraft')
 replaces=('minecraft')
 source=('minecraft'
-        'http://itachisan.altervista.org/aur/minecraftsp-anjocaido/MinecraftSP.jar'
+        'https://github.com/ItachiSan/linux_packaging/raw/master/aur-files/minecraftsp-anjocaido/MinecraftSP.jar'
         'minecraft.desktop'
         'minecraft.png'
         'readme.txt')

@@ -1,7 +1,7 @@
 pkgbase = minecraftsp-anjocaido
 	pkgdesc = Minecraft is a sandbox game which allows players to build constructions out of textured cubes in a 3D world.
 	pkgver = autoupdate
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = http://www.mcalpha.tk/
 	install = minecraft.install
@@ -13,7 +13,7 @@ pkgbase = minecraftsp-anjocaido
 	provides = minecraft
 	replaces = minecraft
 	source = minecraft
-	source = http://itachisan.altervista.org/aur/minecraftsp-anjocaido/MinecraftSP.jar
+	source = https://github.com/ItachiSan/linux_packaging/raw/master/aur-files/minecraftsp-anjocaido/MinecraftSP.jar
 	source = minecraft.desktop
 	source = minecraft.png
 	source = readme.txt
