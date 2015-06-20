@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Dynamite Jack
+Comment=Use only bombs and a flashlight to escape to freedom
+Icon=/opt/dynamitejack/dynamitejack.png
+Exec=/usr/bin/dynamitejack
+Categories=Game;

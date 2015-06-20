@@ -1,0 +1,23 @@
+pkgbase = dynamitejack
+	pkgdesc = Use only bombs and a flashlight to escape to freedom (game sold separately)
+	pkgver = 1.0.23
+	pkgrel = 1
+	url = http://www.galcon.com/dynamitejack/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	depends = mesa
+	depends = sdl
+	options = !strip
+	source = hib://dynamitejack-1.0.23.tgz
+	source = dynamitejack.desktop
+	source = dynamitejack.png::https://humblebundle-a.akamaihd.net/misc/files/hashed/c96d16d4598c839d39a580422bb828ba01fa6b46.png
+	source = dynamitejack.sh
+	md5sums = 72eeb2829c98c16c308d13d54144515e
+	md5sums = bd2a35f46506c078261eedbd4887739c
+	md5sums = afefd46bea9bd595bc9d8ae0c2f47607
+	md5sums = 7e01e4e7fa0d5e68553837ea1aacbc49
+
+pkgname = dynamitejack
+
