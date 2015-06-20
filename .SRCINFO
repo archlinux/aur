@@ -1,0 +1,25 @@
+pkgbase = ros-jade-smach-ros
+	pkgdesc = ROS - The smach_ros package contains extensions for the SMACH library to integrate it tightly with ROS.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-catkin
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-rostopic
+	depends = ros-jade-actionlib
+	depends = ros-jade-std-srvs
+	depends = ros-jade-smach-msgs
+	depends = ros-jade-smach
+	depends = ros-jade-rospy
+	source = smach_ros::git+https://github.com/ros-gbp/executive_smach-release.git#tag=release/jade/smach_ros/2.0.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-smach-ros
+
