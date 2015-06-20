@@ -1,0 +1,24 @@
+pkgbase = ros-jade-rqt-gui-cpp
+	pkgdesc = ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for ROS.
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_gui_cpp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-qt-gui-cpp
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-qt-gui
+	depends = ros-jade-qt-gui-cpp
+	depends = ros-jade-nodelet
+	depends = ros-jade-roscpp
+	depends = ros-jade-qt-gui
+	source = rqt_gui_cpp::git+https://github.com/ros-gbp/rqt-release.git#tag=release/jade/rqt_gui_cpp/0.2.14-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-gui-cpp
+
