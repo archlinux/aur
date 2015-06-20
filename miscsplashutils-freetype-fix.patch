@@ -1,0 +1,60 @@
+unchanged:
+--- Makefile	2007-06-09 10:43:16.000000000 -0400
++++ ./fbtruetype/Makefile	2014-09-11 09:18:41.067044105 -0400
+@@ -19,16 +19,14 @@
+ 
+ LIBDIR   = $(PREFIX)/$(LIB)
+ 
+-PROGRAMS = fbtruetype fbtruetype.static
++PROGRAMS = fbtruetype 
+ OBJECTS  = fbtruetype.o messages.o console.o ttf.o luxisri.o
+ 
+ LDFLAGS  += -L$(LIBDIR)
+-LIBSS    = $(LIBDIR)/libfreetype.a $(LIBDIR)/libz.a -lm
+ LIBSD    = -lfreetype -lm
+ 
+ CFLAGS   += -I/usr/include/freetype2
+ COMPILE  = $(CC) $(CFLAGS)
+-LINKS    = $(CC) $(CFLAGS) $(LDFLAGS) -static -o $@
+ LINKD    = $(CC) $(CFLAGS) $(LDFLAGS) -o $@
+ 
+ INSTALL_PROG = install
+@@ -47,20 +45,16 @@
+ mostlyclean:
+ 	-rm -f *.o core
+ clean:	mostlyclean
+-	-rm -f fbtruetype fbtruetype.static
++	-rm -f fbtruetype 
+ 
+ fbtruetype: $(OBJECTS)
+ 	@rm -f fbtruetype
+ 	$(LINKD) $(LDFLAGS) $(OBJECTS) $(LIBSD)
+-fbtruetype.static: $(OBJECTS)
+-	@rm -f fbtruetype.static
+-	$(LINKS) $(LDFLAGS) $(OBJECTS) $(LIBSS)
+ 
+ install:
+-	$(INSTALL_PROG) -D fbtruetype $(DESTDIR)/sbin/fbtruetype
+-	$(INSTALL_PROG) -D fbtruetype.static $(DESTDIR)/sbin/fbtruetype.static
++	$(INSTALL_PROG) -D fbtruetype $(DESTDIR)/bin/fbtruetype
+ 
+ strip: $(PROGRAMS)
+ 	$(STRIP) -s $(PROGRAMS)
+ 
+-.PHONY: mostlyclean clean fbtruetype fbtruetype.static all strip
++.PHONY: mostlyclean clean fbtruetype  all strip
+only in patch2:
+unchanged:
+--- ./fbtruetype/ttf.c	2006-02-03 10:10:41.000000000 -0500
++++ ./fbtruetype/ttf.c	2014-09-11 09:07:32.005039477 -0400
+@@ -13,8 +13,8 @@
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
+ /* #include <freetype/freetype.h> */
+-#include <freetype/ftoutln.h>
+-#include <freetype/ttnameid.h>
++#include FT_OUTLINE_H
++#include FT_TRUETYPE_IDS_H
+ 
+ #include "ttf.h"
+ 

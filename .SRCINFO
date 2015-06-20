@@ -1,0 +1,16 @@
+pkgbase = miscsplashutils
+	pkgdesc = Miscellaneous framebuffer utilities including fbres and fbtruetype
+	pkgver = 0.1.8
+	pkgrel = 5
+	url = http://dev.gentoo.org/~spock/projects/gensplash/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = freetype2
+	source = http://distfiles.gentoo.org/distfiles/miscsplashutils-0.1.8.tar.bz2
+	source = miscsplashutils-freetype-fix.patch
+	md5sums = 0a9505c5c5ed169e6158d2c1b06ff40b
+	md5sums = 05285f0a2b42e206e20e2973e69bd4c8
+
+pkgname = miscsplashutils
+
