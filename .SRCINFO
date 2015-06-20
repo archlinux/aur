@@ -1,0 +1,21 @@
+pkgbase = kdeplasma-applets-gmailfeed-git
+	pkgdesc = Gmail Feed is a plasmoid for Plasma 5.
+	pkgver = v1.1.r2.gf430070
+	pkgrel = 1
+	url = https://github.com/anthon38/gmailfeed
+	install = kdeplasma-applets-gmailfeed.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = hicolor-icon-theme
+	depends = knotifications
+	provides = kdeplasma-applets-gmailfeed
+	conflicts = kdeplasma-applets-gmailfeed
+	source = git://github.com/anthon38/gmailfeed.git
+	md5sums = SKIP
+
+pkgname = kdeplasma-applets-gmailfeed-git
+
