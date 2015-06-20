@@ -1,0 +1,7 @@
+post_install() {
+  echo "Run \`$ hub alias\` in your preferred shell to receive the appropriate setup instructions."
+}
+
+post_remove() {
+  echo "You may want to remove references to hub in your shell's config files"
+}

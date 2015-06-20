@@ -1,0 +1,14 @@
+pkgbase = hub-bin
+	pkgdesc = hub helps you win at git. Go-powered version
+	pkgver = 2.2.0
+	pkgrel = 8
+	url = https://hub.github.com
+	install = hub-bin.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/github/hub/releases/download/v2.2.0/hub-linux-amd64-2.2.0.tar.gz
+	sha512sums = b982c9345164b8c4afeb1b679cf129293cd441940bab8645699328b872d77ecc228cd4a1f6e95f2e71b553591636aab519c7c5ac43c7a8f771b1f80c05751465
+
+pkgname = hub-bin
+
