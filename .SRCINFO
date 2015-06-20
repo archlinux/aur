@@ -1,0 +1,16 @@
+pkgbase = xom
+	pkgdesc = A Java XML Object Model
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = http://xom.nu
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = apache-ant
+	depends = java-runtime
+	source = http://www.cafeconleche.org/XOM/xom-1.2.10.tar.gz
+	md5sums = bf8dcc53740812c9ad0d3d6eea592994
+	sha256sums = d8d58d26cba76f6f9e1a65ab537f759f662d1f4441e9a94b6687e23fdb76f879
+
+pkgname = xom
+
