@@ -1,0 +1,30 @@
+pkgbase = ros-jade-gazebo-msgs
+	pkgdesc = ROS - Message and service data structures for interacting with Gazebo from ROS.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://gazebosim.org/tutorials?cat=connect_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-message-runtime
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-trajectory-msgs
+	makedepends = ros-jade-std-srvs
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-message-generation
+	depends = ros-jade-trajectory-msgs
+	depends = ros-jade-std-srvs
+	source = gazebo_msgs::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/jade/gazebo_msgs/2.5.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-gazebo-msgs
+
