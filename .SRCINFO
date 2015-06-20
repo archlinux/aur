@@ -1,0 +1,13 @@
+pkgbase = python2-tracing
+	pkgdesc = Python debug logging helper
+	pkgver = 0.8
+	pkgrel = 2
+	url = http://liw.fi/tracing/
+	arch = any
+	license = GPL3
+	depends = python2
+	source = http://code.liw.fi/debian/pool/main/p/python-tracing/python-tracing_0.8.orig.tar.gz
+	sha256sums = 808a064cc5fd1972fb07a7d72b4069cbff284ac7077bcd90eb2ce79d8b5c9ed0
+
+pkgname = python2-tracing
+
