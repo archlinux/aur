@@ -1,0 +1,20 @@
+pkgbase = ros-jade-librviz-tutorial
+	pkgdesc = ROS - Tutorial showing how to compile your own C++ program with RViz displays and features.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://ros.org/wiki/librviz_tutorial
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rviz
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rviz
+	depends = ros-jade-roscpp
+	source = librviz_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/jade/librviz_tutorial/0.9.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-librviz-tutorial
+
