@@ -1,0 +1,21 @@
+pkgbase = gatling-stress-tool
+	pkgdesc = Open-source load testing framework based on Scala, Akka and Netty
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = http://gatling.io
+	arch = any
+	license = apache
+	depends = java-environment-common
+	backup = usr/share/java/gatling-stress-tool/conf/application.conf
+	backup = usr/share/java/gatling-stress-tool/conf/gatling.conf
+	backup = usr/share/java/gatling-stress-tool/conf/recorder.conf
+	backup = usr/share/java/gatling-stress-tool/conf/logback.xml
+	source = https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/2.1.6/gatling-charts-highcharts-bundle-2.1.6-bundle.zip
+	source = gatling
+	source = gatling-recorder
+	sha256sums = eea191b253583f6d1ae10c979d2f667f442f59271c1034e57dc4c70c8f747f12
+	sha256sums = b537f7c31f0fe66b291f30e05498c7412e01bf4572abaea0a07823b2cf4f07d9
+	sha256sums = 6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf
+
+pkgname = gatling-stress-tool
+
