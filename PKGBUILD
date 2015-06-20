@@ -1,6 +1,3 @@
-# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
-# Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
-
 pkgname=popcorntime-nw12-git
 pkgver=r4952.e506f43
 pkgrel=1
