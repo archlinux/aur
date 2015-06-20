@@ -19,7 +19,6 @@ pkgbase = unix-runescape-client
 	optdepends = alsa-oss: for "force alsa" fix
 	optdepends = pulseaudio: for "force pulseaudio" fix
 	optdepends = p7zip: to extract launcher from .msi
-	optdepends = cairo-nogl: if game crashes during loading/auto-setup
 	conflicts = runescape-client-bin
 	source = unix-runescape-client-4.3.3.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v4.3.3.tar.gz
 	md5sums = 221ce034080a21761690278fcf5913ca

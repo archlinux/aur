@@ -15,7 +15,6 @@ optdepends=(
   'alsa-oss: for "force alsa" fix'
   'pulseaudio: for "force pulseaudio" fix'
   'p7zip: to extract launcher from .msi'
-  'cairo-nogl: if game crashes during loading/auto-setup'
 )
 conflicts=('runescape-client-bin')
 install=$pkgname.install
@@ -34,6 +33,6 @@ package() {
   cp -Rt "$pkgdir"/usr/bin templates/packaging/usr/games/*
   cp -Rt "$pkgdir"/usr templates/packaging/usr/share
 
-  # these libraries are old, uptodate version is in AUR as 'cairo-nogl' package, if you need this
+  # these libraries are old, and they are not needed anymore with current cairo from [extra]
   rm -rf "$_instdir"/rsu/3rdParty/linux/cairo-nogl
 }
