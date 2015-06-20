@@ -1,6 +1,6 @@
 pkgbase = singularityviewer-alpha
 	pkgdesc = An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)
-	pkgver = 1.8.6.6517
+	pkgver = 1.8.6.6583
 	pkgrel = 1
 	url = http://www.singularityviewer.org/
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = singularityviewer-alpha
 	optdepends = lib32-freealut: for OpenAL support
 	provides = singularityviewer
 	conflicts = singularityviewer
-	source = http://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha--1.8.6.6517.tar.bz2
+	source = http://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha--1.8.6.6583.tar.bz2
 	source = singularityviewer.desktop
 	source = singularityviewer.launcher
 
