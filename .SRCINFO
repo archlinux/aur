@@ -1,0 +1,12 @@
+pkgbase = firefox-extension-smoothwheel
+	pkgdesc = Scrolls the page smoothly when scrolling the mouse wheel
+	pkgver = 0.45.8.20130519.3
+	pkgrel = 1
+	url = http://smoothwheel.mozdev.org/
+	arch = any
+	license = GPLv2
+	source = https://addons.cdn.mozilla.net/storage/public-staging/357/smoothwheel-0.45.8.20130519.3-sm+fx+tb.xpi
+	md5sums = 2b83ad98f8add58d9ba125bf13adf539
+
+pkgname = firefox-extension-smoothwheel
+
