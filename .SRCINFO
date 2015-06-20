@@ -1,0 +1,19 @@
+pkgbase = ros-jade-executive-smach
+	pkgdesc = ROS - This metapackage depends on the SMACH library and ROS SMACH integration packages.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://ros.org/wiki/smach
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-smach
+	depends = ros-jade-smach-msgs
+	depends = ros-jade-smach-ros
+	source = executive_smach::git+https://github.com/ros-gbp/executive_smach-release.git#tag=release/jade/executive_smach/2.0.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-executive-smach
+
