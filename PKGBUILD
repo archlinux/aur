@@ -104,4 +104,4 @@ package_libsystemd-udev() {
   done
 }
 
-sha1sums=('307d1c3e48b3bca1039cb66df2d7def074efe2ef')
+sha1sums=('682ebb60305f4bf1067aca929d664d062e80888f')
