@@ -1,0 +1,14 @@
+pkgbase = pipepanic
+	pkgdesc = Pipe connecting game using libSDL
+	pkgver = 0.1.3
+	pkgrel = 4
+	url = http://www.users.waitrose.com/~thunor/pipepanic/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	source = http://www.users.waitrose.com/~thunor/pipepanic/dload/pipepanic-0.1.3-source.tar.gz
+	md5sums = 99b68e990012b2f58c184b8ba9e4fb4d
+
+pkgname = pipepanic
+
