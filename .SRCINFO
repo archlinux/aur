@@ -1,0 +1,18 @@
+pkgbase = ros-jade-rviz-plugin-tutorials
+	pkgdesc = ROS - Tutorials showing how to write plugins for RViz.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://ros.org/wiki/rviz_plugin_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rviz
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rviz
+	source = rviz_plugin_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/jade/rviz_plugin_tutorials/0.9.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rviz-plugin-tutorials
+
