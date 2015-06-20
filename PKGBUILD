@@ -1,7 +1,8 @@
+ 
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
-pkgver=1.9.3.dev.r334.g6e33791
-pkgrel=1
+pkgver=1.9.3.dev.r335.g8c5d48e
+pkgrel=2
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -14,7 +15,8 @@ makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost
 conflicts=('openmodelica-svn')
 
 #source=('openmodelica::git+https://openmodelica.org/git-readonly/OpenModelica.git')
-md5sums=('SKIP')
+source=()
+md5sums=()
 
 _gitmod="openmodelica"
 
@@ -26,20 +28,20 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
    
-    #if [ -d ${_gitmod} ] ; then
-    #    msg "Directory ${srcdir}/${_gitmod} already exists: updating from git ... "
-    #    cd "${_gitmod}" 
-    #    git pull --recurse-submodules && git submodule update --recursive
-    #    msg "The local files are updated."
-    #else
-    #    msg "Directory ${srcdir}/${_gitmod} does not exist: cloning from git ... "
-    #    git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
-    #    msg "Cloning completed."
-    #fi
-    #sleep 10
+    if [ -d ${_gitmod} ] ; then
+         msg "Directory ${srcdir}/${_gitmod} already exists: updating from git ... "
+         cd "${_gitmod}" 
+         git pull --recurse-submodules && git submodule update --recursive
+         msg "The local files are updated."
+    else
+        msg "Directory ${srcdir}/${_gitmod} does not exist: cloning from git ... "
+        git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
+        msg "Cloning completed."
+    fi
+    sleep 10
    
-    rm -r -f "${srcdir}/${_gitmod}"
-    git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
+    #rm -r -f "${srcdir}/${_gitmod}"
+    #git clone https://openmodelica.org/git-readonly/OpenModelica.git "${_gitmod}" --recursive
 }
 
 
