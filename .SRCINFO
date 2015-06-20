@@ -1,0 +1,22 @@
+pkgbase = ros-jade-nodelet-tutorial-math
+	pkgdesc = ROS - Package for Nodelet tutorial.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://www.ros.org/wiki/nodelet_tutorial_math
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-nodelet
+	depends = ros-jade-roscpp
+	depends = ros-jade-std-msgs
+	source = nodelet_tutorial_math::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/jade/nodelet_tutorial_math/0.1.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-nodelet-tutorial-math
+
