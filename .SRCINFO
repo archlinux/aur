@@ -1,0 +1,27 @@
+pkgbase = teeworlds-sushitee
+	pkgdesc = A customized client by SushiTee of this 2D shooting game
+	pkgver = 0.6.2
+	pkgrel = 2
+	url = https://www.teeworlds.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = python
+	makedepends = bam
+	makedepends = mesa
+	makedepends = imagemagick
+	makedepends = gendesk
+	depends = alsa-lib
+	depends = glu
+	depends = sdl
+	depends = freetype2
+	provides = teeworlds
+	conflicts = teeworlds
+	source = https://github.com/SushiTee/teeworlds/archive/Client-Pack-0.6.tar.gz
+	source = https://github.com/SushiTee/teeworlds-translation/archive/master.zip
+	md5sums = f328e401de98bb0f2a9d7ded1a0398bd
+	md5sums = b7d7c0be0667c34ebb94b1663db7f5ac
+
+pkgname = teeworlds-sushitee
+
