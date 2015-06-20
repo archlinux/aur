@@ -1,0 +1,27 @@
+pkgbase = nmclient
+	pkgdesc = Novell Messenger client for linux
+	pkgver = 2.2.2
+	pkgrel = 5
+	url = http://gwclient.provo.novell.com/
+	install = nmclient.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = rpmextract
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	source = https://gwclient.innerweb.novell.com/client/messenger/nvlmsgrlinuxrpm.zip
+	md5sums = b10d0015e76edb50eb169193bc919a5a
+	depends_i686 = java-runtime
+	depends_i686 = glib2
+	depends_i686 = libxext
+	depends_i686 = gtk2
+	depends_x86_64 = java32-runtime
+	depends_x86_64 = lib32-glib2
+	depends_x86_64 = lib32-libxext
+	depends_x86_64 = lib32-gtk2
+
+pkgname = nmclient
+
