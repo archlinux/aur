@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GL Frontier
+GenericName=GL Frontier
+Comment=A port of Frontier Elite 2 to openGL
+Exec=glfrontier
+Categories=Game;
+

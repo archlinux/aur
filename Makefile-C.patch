@@ -1,0 +1,22 @@
+--- frontvm3-20060623/Makefile-C	2006-06-24 11:08:29.000000000 +1200
++++ Makefile-C	2014-06-07 00:17:02.531086333 +1200
+@@ -1,5 +1,5 @@
+ export CFLAGS = -O2 -g -Wall -DOGG_MUSIC
+-export LIBS = -lGL -lGLU -lvorbisfile -lvorbis -logg
++export LIBS = -lGL -lGLU -lvorbisfile -lvorbis -logg -lm
+ export FE2OBJS = ../fe2.part1.o ../fe2.part2.o
+ 
+ THIS=Makefile-C
+@@ -25,10 +25,10 @@
+ fe2obj:
+ 	as68k/as68k --output-c fe2.s
+ 	# this bit can be optimised because it is lots of small functions
+-	$(CC) -DPART1 -O1 -fomit-frame-pointer -Wall -Wno-unused -s `sdl-config --cflags` -c fe2.s.c -o fe2.part1.o
++	$(CC) -DPART1 -O2 -fomit-frame-pointer -Wall -Wno-unused -s `sdl-config --cflags` -c fe2.s.c -o fe2.part1.o
+ 	# this can't unless you have shitloads of memory and a fuck meaty
+ 	# machine, because it is a huge stinking function.
+-	$(CC) -DPART2 -O0 -fomit-frame-pointer -Wall -Wno-unused -s `sdl-config --cflags` -c fe2.s.c -o fe2.part2.o
++	$(CC) -DPART2 -O2 -fomit-frame-pointer -Wall -Wno-unused -s `sdl-config --cflags` -c fe2.s.c -o fe2.part2.o
+ 
+ clean:
+ 	$(MAKE) -C src/ clean
