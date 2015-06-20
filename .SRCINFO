@@ -1,0 +1,16 @@
+pkgbase = graphwalker
+	pkgdesc = Model-Based testing tool built in Java
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://graphwalker.org/
+	arch = any
+	license = MIT
+	depends = java-environment-common
+	optdepends = maven
+	source = http://graphwalker.org/archive/graphwalker.jar
+	source = graphwalker
+	sha256sums = 00c44ffd66457c08efe67e8be11e9283f8a5e7e3a51e9f676c814e7ee2a0a8a8
+	sha256sums = 524a9bdd1155e99aaf17f0317d303cdcfda3a1fac9ae8efe8da17348569a368b
+
+pkgname = graphwalker
+
