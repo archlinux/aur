@@ -1,0 +1,20 @@
+pkgbase = ros-jade-visualization-marker-tutorials
+	pkgdesc = ROS - The visulalization_marker_tutorials package.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://ros.org/wiki/visualization_marker_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-visualization-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	depends = ros-jade-visualization-msgs
+	depends = ros-jade-roscpp
+	source = visualization_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/jade/visualization_marker_tutorials/0.9.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-visualization-marker-tutorials
+
