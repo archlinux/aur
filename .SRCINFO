@@ -1,0 +1,16 @@
+pkgbase = pyg3t-bzr
+	pkgdesc = Python GetText Translation Toolkit (bzr)
+	pkgver = 0.3r120
+	pkgrel = 1
+	url = https://launchpad.net/pyg3t
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = python2
+	provides = pyg3t
+	conflicts = pyg3t
+	source = pyg3t::bzr+http://bazaar.launchpad.net/~pyg3t-dev-team/pyg3t/trunk
+	md5sums = SKIP
+
+pkgname = pyg3t-bzr
+
