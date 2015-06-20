@@ -1,0 +1,26 @@
+pkgbase = gnome-2048-git
+	pkgdesc = Obtain the 2048 tile
+	pkgver = 0.1.0.r87.e2b36b5
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/2048
+	install = gnome-2048.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = yelp-tools
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = git
+	makedepends = appstream-glib
+	depends = clutter-gtk
+	depends = libgee
+	depends = libgames-support
+	provides = gnome-2048
+	conflicts = gnome-2048
+	options = !libtool
+	source = git+https://git.gnome.org/browse/gnome-2048
+	md5sums = SKIP
+
+pkgname = gnome-2048-git
+
