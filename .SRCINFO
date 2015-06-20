@@ -1,0 +1,20 @@
+pkgbase = pari25
+	pkgdesc = Computer algebra system designed for fast computations in number theory
+	pkgver = 2.5.5
+	pkgrel = 2
+	url = http://pari.math.u-bordeaux.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	makedepends = texlive-core
+	depends = gmp
+	depends = libx11
+	optdepends = perl: gphelp, tex2mail
+	provides = pari
+	conflicts = pari
+	source = http://pari.math.u-bordeaux.fr/pub/pari/unix/OLD/2.5/pari-2.5.5.tar.gz
+	sha1sums = 77637f935ee4a3b78e7015cef00146bd2f7e96bc
+
+pkgname = pari25
+
