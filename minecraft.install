@@ -1,0 +1,27 @@
+post_install() {
+    echo
+    echo ">>> PACKAGES NOTES"
+    echo ">>> --------------"
+    echo ">>> IMPORTANT NOTICE:"
+    echo ">>> 1) This launcher allows you to play on single player freely."
+    echo ">>> 2) If you want to play the full game, buy the official one."
+    echo ">>> 3) This game will auto update and store the updated binary and game configuration"
+    echo ">>> when needed; at first launch you'll be able to choose your installation folder."
+    echo
+    echo ">>> For more infos do 'cat /usr/share/minecraft/readme.txt"
+    echo
+    echo ">>> Actual installation folder: ~/.minecraft"
+}
+
+post_upgrade() {
+    echo ">>> Saves are now in default folder (~/.minecraft), so move them there..."
+    echo ">>> It's not my fault (doh)"
+    echo
+    echo ">>> How to keep your saves (if you used previous version of this package):"
+    echo ">>> 1) Enter into the folder 'where_I_installed_MinecraftSP/saves'" 
+    echo ">>> 2) Copy the folders (your worlds) "
+    echo ">>> 3) Paste them into '.minecraft/saves' "
+    echo ">>> 4) Optional: remove your old Minecraft"
+    echo ">>> 5) Enjoy your blocks :P"
+    echo 
+}
