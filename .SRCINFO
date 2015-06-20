@@ -1,0 +1,22 @@
+pkgbase = ros-jade-rqt-dep
+	pkgdesc = ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency graph.
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_dep
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-qt-gui-py-common
+	depends = ros-jade-qt-dotgraph
+	depends = ros-jade-rqt-graph
+	depends = ros-jade-rqt-gui-py
+	depends = ros-jade-qt-gui
+	depends = python2-rospkg
+	source = rqt_dep::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_dep/0.3.11-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-dep
+
