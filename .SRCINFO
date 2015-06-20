@@ -1,0 +1,15 @@
+pkgbase = python-pushbullet.py
+	pkgdesc = A simple python client for pushbullet.com.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/randomchars/pushbullet.py
+	arch = any
+	license = MIT
+	depends = python-requests
+	depends = python-magic
+	depends = python-websocket-client
+	source = https://pypi.python.org/packages/source/p/pushbullet.py/pushbullet.py-0.8.1.tar.gz
+	md5sums = 1e8eccd95062df199830d92a29c57bdf
+
+pkgname = python-pushbullet.py
+
