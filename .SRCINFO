@@ -1,0 +1,17 @@
+pkgbase = rsem
+	pkgdesc = accurate quantification of gene and isoform expression from RNA-Seq data
+	pkgver = 1.2.19
+	pkgrel = 1
+	url = http://deweylab.biostat.wisc.edu/rsem/
+	install = rsem.install
+	arch = i686
+	arch = x86_64
+	license = GNU
+	depends = perl
+	depends = r
+	optdepends = bowtie2
+	source = https://github.com/bli25wisc/RSEM/archive/v1.2.19.tar.gz
+	md5sums = 69667ee47337617847dc97da2765fd08
+
+pkgname = rsem
+

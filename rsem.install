@@ -1,0 +1,7 @@
+post_install() {
+   echo
+   echo "To use rsem, log out and log back in, or run"
+   echo "source /etc/profile"
+   echo "To enable it immediately"
+   echo
+}
