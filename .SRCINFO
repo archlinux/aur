@@ -1,0 +1,28 @@
+pkgbase = ros-jade-roscpp-tutorials
+	pkgdesc = ROS - This package attempts to show the features of ROS step-by-step, including using messages, servers, parameters, etc.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/roscpp_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-roscpp-serialization
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-rostime
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-roscpp-serialization
+	depends = ros-jade-rosconsole
+	depends = ros-jade-rostime
+	source = roscpp_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/jade/roscpp_tutorials/0.6.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roscpp-tutorials
+
