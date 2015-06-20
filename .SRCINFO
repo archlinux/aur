@@ -1,0 +1,15 @@
+pkgbase = vanessa-logger
+	pkgdesc = Provides a generic logging layer that may be used to log to one or more of syslog, an open file handle or a file name.
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = http://horms.net/projects/vanessa/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = vanessa_logger
+	options = !libtool
+	source = http://horms.net/projects/vanessa//download/vanessa_logger/0.0.10/vanessa_logger-0.0.10.tar.bz2
+	sha1sums = 94e59c4cf54bdc443a8dc0da75fff2cebc76e924
+
+pkgname = vanessa-logger
+
