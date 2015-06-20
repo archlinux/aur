@@ -1,0 +1,21 @@
+pkgbase = ros-jade-rqt-topic
+	pkgdesc = ROS - rqt_topic provides a GUI plugin for displaying debug information about ROS topics including publishers, subscribers, publishing rate, and ROS Messages.
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_topic
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rqt-gui-py
+	depends = ros-jade-std-msgs
+	depends = ros-jade-rostopic
+	depends = ros-jade-rqt-gui
+	depends = python2-rospkg
+	source = rqt_topic::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_topic/0.3.11-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-topic
+
