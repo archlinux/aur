@@ -1,0 +1,18 @@
+pkgbase = ipx
+	pkgdesc = IPX userspace tools
+	pkgver = 1.1
+	pkgrel = 3
+	url = ftp://sunsite.unc.edu/pub/Linux/system/filesystems/ncpfs/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.ibiblio.org/pub/Linux/system/filesystems/ncpfs/ipx-1.1.tar.gz
+	source = nowarn.patch
+	md5sums = 300bdb7e4c8ed31d510c4781c0ae3969
+	md5sums = 353284ce85fc0a6a7f06652daae93e21
+	sha1sums = 7e29b6c3343236b66f76f642529f82e02ce8211a
+	sha1sums = a34683e4d56e941437f05bd6be85f507d1233f5c
+
+pkgname = ipx
+

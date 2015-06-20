@@ -1,0 +1,52 @@
+Gemeinsame Unterverzeichnisse: ipx-1.1/Samples und ipx-1.1-nowarn/Samples.
+Nur in ipx-1.1-nowarn/: ipx_configure.
+diff -u ipx-1.1/ipx_configure.c ipx-1.1-nowarn/ipx_configure.c
+--- ipx-1.1/ipx_configure.c	2002-03-10 13:08:37.000000000 +0100
++++ ipx-1.1-nowarn/ipx_configure.c	2008-05-15 12:11:57.000000000 +0200
+@@ -12,6 +12,8 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#include <string.h>
++#include <stdlib.h>
+ 
+ struct option	options[] = {
+ 	{ "auto_primary", required_argument, NULL, 1 },
+Nur in ipx-1.1-nowarn/: ipx_interface.
+diff -u ipx-1.1/ipx_interface.c ipx-1.1-nowarn/ipx_interface.c
+--- ipx-1.1/ipx_interface.c	2002-03-10 13:02:34.000000000 +0100
++++ ipx-1.1-nowarn/ipx_interface.c	2008-05-15 12:42:35.000000000 +0200
+@@ -15,6 +15,8 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#include <string.h>
++
+ 
+ static struct ifreq	id;
+ static char	*progname;
+Nur in ipx-1.1-nowarn/: ipx_internal_net.
+diff -u ipx-1.1/ipx_internal_net.c ipx-1.1-nowarn/ipx_internal_net.c
+--- ipx-1.1/ipx_internal_net.c	2002-03-10 13:03:00.000000000 +0100
++++ ipx-1.1-nowarn/ipx_internal_net.c	2008-05-15 12:42:17.000000000 +0200
+@@ -14,6 +14,8 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#include <string.h>
++
+ 
+ static struct ifreq	id;
+ static char	*progname;
+Nur in ipx-1.1-nowarn/: ipx_route.
+diff -u ipx-1.1/ipx_route.c ipx-1.1-nowarn/ipx_route.c
+--- ipx-1.1/ipx_route.c	2002-03-10 13:03:15.000000000 +0100
++++ ipx-1.1-nowarn/ipx_route.c	2008-05-15 12:41:49.000000000 +0200
+@@ -15,6 +15,7 @@
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+ #include <linux/route.h>
++#include <string.h>
+ 
+ static struct rtentry	rd;
+ static char	*progname;
