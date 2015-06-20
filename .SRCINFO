@@ -1,0 +1,16 @@
+pkgbase = tcl-vfs
+	pkgdesc = virtual file system for tcl
+	pkgver = 20150321
+	pkgrel = 2
+	url = http://sourceforge.net/projects/tclvfs/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tcl
+	depends = tcl
+	conflicts = tclvfs-cvs
+	source = https://github.com/l3iggs/tcl-vfs/archive/v20150321.tar.gz
+	md5sums = 4b23b16dca5570d2bcfaa576cadd4c53
+
+pkgname = tcl-vfs
+
