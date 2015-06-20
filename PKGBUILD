@@ -1,4 +1,5 @@
-# Maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=papyros-files
 pkgver=0.0.5
