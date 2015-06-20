@@ -1,0 +1,7 @@
+lv2-ir
+src
+pkg
+lv2-ir-git-*.tar.xz
+lv2-ir-git-*.src.tar.gz
+.AURINFO
+

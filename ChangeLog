@@ -1,0 +1,7 @@
+2015-05-19 Christopher Arndt <chris@chrisarndt.de>
+
+	* 1.3.2.r17.af1f8ab-1 :
+	changed pkgdesc (plugin is not zero-latency anmore)
+	use modern PKGBUILD facilities for VCS packages
+	added convert4chan program
+	installed README to doc dir

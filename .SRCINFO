@@ -1,0 +1,23 @@
+pkgbase = lv2-ir-git
+	pkgdesc = Real-time signal convolver esp. suited for impulse response reverb effects
+	pkgver = 1.3.2.r17.af1f8ab
+	pkgrel = 1
+	url = http://factorial.hu/plugins/lv2/ir
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	makedepends = lv2
+	depends = gtk2>=2.16
+	depends = libsamplerate
+	depends = zita-convolver
+	provides = ir.lv2
+	provides = lv2-ir
+	conflicts = ir.lv2
+	conflicts = lv2-ir
+	source = lv2-ir::git+https://github.com/Anchakor/ir.lv2.git
+	md5sums = SKIP
+
+pkgname = lv2-ir-git
+
