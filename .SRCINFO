@@ -1,0 +1,21 @@
+pkgbase = ros-jade-rqt-shell
+	pkgdesc = ROS - rqt_shell is a Python GUI plugin providing an interactive shell.
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_shell
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-qt-gui-py-common
+	depends = ros-jade-rqt-gui-py
+	depends = ros-jade-qt-gui
+	depends = ros-jade-rqt-gui
+	depends = python2-rospkg
+	source = rqt_shell::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_shell/0.3.11-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-shell
+
