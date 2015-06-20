@@ -1,6 +1,6 @@
 pkgbase = armory-bin
 	pkgdesc = Full-featured Bitcoin wallet (official binary)
-	pkgver = 0.93.1
+	pkgver = 0.93.2
 	pkgrel = 1
 	url = https://bitcoinarmory.com
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = armory-bin
 	depends = xdg-utils
 	conflicts = armory
 	conflicts = armory-git
-	source = https://s3.amazonaws.com/bitcoinarmory-releases/armory_0.93.1_ubuntu-64bit.deb
-	sha256sums = 4fd5fd09cd220972621cd0dab2d815ba9ee4c3f70453ca256e9f8d7a20bb6167
+	source = https://s3.amazonaws.com/bitcoinarmory-releases/armory_0.93.2_ubuntu-64bit.deb
+	sha256sums = 677b484cbafcaff8a520cd4526beff985ca73eed54b437fa5cfdc123bd2c517a
 
 pkgname = armory-bin
 
