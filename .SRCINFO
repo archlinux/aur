@@ -1,0 +1,17 @@
+pkgbase = python-pgpmime-nopyassuan-git
+	pkgdesc = Fork of python-pgpmime that does not require pyassuan
+	pkgver = 20140213
+	pkgrel = 1
+	url = https://github.com/ValiValpas/pgp-mime
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pygpgme
+	provides = python-pgpmime
+	conflicts = python-pgpmime-git
+	source = python-pgpmime-nopyassuan-git::git+https://github.com/ValiValpas/pgp-mime.git
+	md5sums = SKIP
+
+pkgname = python-pgpmime-nopyassuan-git
+
