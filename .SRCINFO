@@ -1,0 +1,23 @@
+pkgbase = ros-jade-diagnostic-analysis
+	pkgdesc = ROS - The diagnostic_analysis package can convert a log of diagnostics data into a series of CSV files.
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/diagnostics_analysis
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-diagnostic-msgs
+	makedepends = ros-jade-roslib
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-rosbag
+	makedepends = ros-jade-catkin
+	depends = ros-jade-diagnostic-msgs
+	depends = ros-jade-roslib
+	depends = ros-jade-rosbag
+	source = diagnostic_analysis::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/jade/diagnostic_analysis/1.8.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-diagnostic-analysis
+
