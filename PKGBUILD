@@ -11,7 +11,6 @@ arch=('any')
 #url="https://launchpad.net/python-weather-api"
 url="http://code.google.com/p/python-weather-api"
 license=('MIT')
-depends=('python')
 source=(https://launchpad.net/python-weather-api/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz)
 md5sums=('75bf8257f32f2d36169d57d92566cdb1')
 
