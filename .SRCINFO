@@ -1,0 +1,18 @@
+pkgbase = python-pyplothelper-git
+	pkgdesc = A collection of scripts that facilitate the creation of fancy plots with matplotlib.
+	pkgver = 20140210
+	pkgrel = 1
+	url = https://github.com/ValiValpas/pyplot_helper/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-brewer2mpl
+	provides = python-pyplothelper
+	source = python-pyplothelper-git::git+git://github.com/ValiValpas/pyplot_helper
+	md5sums = SKIP
+
+pkgname = python-pyplothelper-git
+
