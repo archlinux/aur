@@ -1,0 +1,29 @@
+pkgbase = tsc
+	pkgdesc = The Secret Chronicles of Dr. M.
+	pkgver = 2.0.0b7
+	pkgrel = 1
+	url = http://www.secretchronicles.de/en/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gperf
+	makedepends = boost
+	makedepends = ruby
+	makedepends = doxygen
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = cegui-0.7
+	depends = boost-libs
+	depends = libxml++
+	source = ftp://ftp.secretchronicles.de/releases/TSC-2.0.0-beta7.tar.xz
+	source = ftp://ftp.secretchronicles.de/releases/TSC-2.0.0-beta7.tar.xz.sig
+	source = tsc.desktop
+	source = tsc.png
+	sha256sums = 37d87c8141ff264cb50d87492a20c5ddae0329e9d62ed46d53894612ca0274b4
+	sha256sums = SKIP
+	sha256sums = b23544efc282e4f2f7a418f1a55abfc0c8dd0f385d20188da3d6ff842aa29d3b
+	sha256sums = 7cd526bf0f61fa8eb65c8df10cad8992a20f934f7c717af1785e087616e67c2f
+
+pkgname = tsc
+

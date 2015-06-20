@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=The Secret Chronicles of Dr. M
+Exec=tsc
+Icon=tsc
+Terminal=false
+Categories=Game;ArcadeGame;
+StartupNotify=false
