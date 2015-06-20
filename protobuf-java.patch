@@ -1,0 +1,21 @@
+diff -aur protobuf-2.4.1/java/pom.xml protobuf-2.4.1-patched/java/pom.xml
+--- protobuf-2.4.1/java/pom.xml	2011-04-30 19:23:04.000000000 +0200
++++ protobuf-2.4.1-patched/java/pom.xml	2011-05-09 17:58:09.000000000 +0200
+@@ -78,7 +78,7 @@
+             <configuration>
+               <tasks>
+                 <mkdir dir="target/generated-sources" />
+-                <exec executable="../src/protoc">
++                <exec executable="protoc">
+                   <arg value="--java_out=target/generated-sources" />
+                   <arg value="--proto_path=../src" />
+                   <arg value="../src/google/protobuf/descriptor.proto" />
+@@ -96,7 +96,7 @@
+             <configuration>
+               <tasks>
+                 <mkdir dir="target/generated-test-sources" />
+-                <exec executable="../src/protoc">
++                <exec executable="protoc">
+                   <arg value="--java_out=target/generated-test-sources" />
+                   <arg value="--proto_path=../src" />
+                   <arg value="--proto_path=src/test/java" />
