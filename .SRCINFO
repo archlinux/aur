@@ -1,0 +1,19 @@
+pkgbase = zeronet-git
+	pkgdesc = Decentralized websites using Bitcoin crypto and the BitTorrent network.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/HelloZeroNet/ZeroNet
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = python2>=2.7.10
+	depends = python2-gevent
+	depends = python2-msgpack
+	provides = zeronet
+	conflicts = zeronet
+	source = git://github.com/HelloZeroNet/ZeroNet.git
+	md5sums = SKIP
+
+pkgname = zeronet-git
+
