@@ -1,0 +1,13 @@
+## arg 1:  the new package version
+post_install() {
+   echo
+   echo "To enable access to the UCSC SQL database, run the following for each user:"
+   echo "cp /opt/kentUtils/.hg.conf ~/."
+   echo "chmod 600 ~/.hg.conf"
+   echo
+   echo "To use the tools, log out and log back in to use the tools, or run"
+   echo "source /etc/profile"
+   echo "To enable them immediately"
+   echo
+}
+
