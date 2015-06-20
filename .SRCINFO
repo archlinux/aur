@@ -1,0 +1,23 @@
+pkgbase = chess_toolkit-git
+	pkgdesc = Fast chess toolkit written in C. GIT repository.
+	pkgver = 20150620
+	pkgrel = 1
+	url = https://github.com/stevecancode/chess_toolkit
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = make
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = texinfo
+	makedepends = help2man
+	makedepends = bison
+	makedepends = flex
+	makedepends = git
+	makedepends = glibc
+	makedepends = check
+	depends = glibc
+
+pkgname = chess_toolkit-git
+
