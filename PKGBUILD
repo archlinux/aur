@@ -4,10 +4,10 @@ pkgdesc="ROS - Converts a 3D Point Cloud into a 2D laser scan."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-indigo-pointcloud-to-laserscan'
-pkgver='1.2.6'
+pkgver='1.3.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-ros
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 
 _tag=release/indigo/pointcloud_to_laserscan/${pkgver}-${_pkgver_patch}
 _dir=pointcloud_to_laserscan
-source=("${_dir}"::"git+https://github.com/ros-gbp/perception_pcl-release.git"#tag=${_tag})
+source=("${_dir}"::"git+https://github.com/ros-gbp/pointcloud_to_laserscan-release.git"#tag=${_tag})
 md5sums=('SKIP')
 
 build() {
