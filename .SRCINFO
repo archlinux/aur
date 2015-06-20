@@ -1,0 +1,16 @@
+pkgbase = sudokuki
+	pkgdesc = A free graphical sudoku game written in Java
+	pkgver = 1.2.2
+	pkgrel = 2
+	url = http://sudokuki.sourceforge.net/
+	arch = any
+	license = GPL3
+	makedepends = java-environment
+	depends = java-runtime
+	options = !emptydirs
+	options = !libtool
+	source = http://downloads.sourceforge.net/sudokuki/sudokuki-1.2.2.tar.bz2
+	md5sums = b7e205cf978829ad638845190d3ebb2d
+
+pkgname = sudokuki
+
