@@ -1,0 +1,17 @@
+pkgbase = ros-jade-eigen-stl-containers
+	pkgdesc = ROS - This package provides a set of typedefs that allow using Eigen datatypes in STL containers.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://eigen.tuxfamily.org/dox/TopicUnalignedArrayAssert.html
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = eigen3
+	source = eigen_stl_containers::git+https://github.com/ros-gbp/eigen_stl_containers-release.git#tag=release/jade/eigen_stl_containers/0.1.4-0
+	md5sums = SKIP
+
+pkgname = ros-jade-eigen-stl-containers
+
