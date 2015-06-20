@@ -1,4 +1,5 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
