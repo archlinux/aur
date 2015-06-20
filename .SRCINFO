@@ -1,0 +1,15 @@
+pkgbase = tcl-tabs
+	pkgdesc = Tcl Automated Build System
+	pkgver = 20150314
+	pkgrel = 4
+	url = http://www.endorser.org/en/blog/tcl/tabs
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = tcl
+	depends = tcl-cookfs
+	source = https://github.com/l3iggs/tcl-tabs/archive/v20150314.tar.gz
+	md5sums = 882dad0eb289114c4b0fe2d7ee98c598
+
+pkgname = tcl-tabs
+
