@@ -1,0 +1,17 @@
+pkgbase = bbswitch-ck-fbcondecor
+	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-ck
+	pkgver = 0.8
+	pkgrel = 8
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch-ck-fbcondecor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-ck-fbcondecor-headers>=4.0
+	makedepends = linux-ck-fbcondecor-headers<4.1
+	depends = linux-ck>=4.0
+	depends = linux-ck<4.1
+	source = https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
+
+pkgname = bbswitch-ck-fbcondecor
+
