@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+  echo " ==> Source /etc/profile.d/grinder.sh or logout for settings to take effect"
+}
+# vim:set ts=2 sw=2 et:

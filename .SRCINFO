@@ -1,0 +1,14 @@
+pkgbase = grinder
+	pkgdesc = The Grinder
+	pkgver = 3.11
+	pkgrel = 1
+	url = http://grinder.sourceforge.net/
+	install = grinder.install
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/grinder/The%20Grinder%203/3.11/grinder-3.11-binary.zip
+	md5sums = e4f905d8f7e8f4a1352ef024a867226c
+
+pkgname = grinder
+
