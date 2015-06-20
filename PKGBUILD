@@ -1,22 +1,14 @@
 # Contributor: Leonardo Ferreira Fontenelle <leonardof@gnome.org>
 pkgname=classix
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ICD-10 lookup application"
 arch=('any')
 url="http://code.google.com/p/classix/"
 license=('GPL')
-#groups=()
-depends=('python2>=2.5' 'sqlite3' 'pygtk>=2.10' 'pygobject>=2.12')
-#makedepends=()
-#provides=()
-#conflicts=()
-#replaces=()
-#backup=()
-#install=
+depends=('python2>=2.5' 'sqlite>=3' 'sqlite<4' 'pygtk>=2.10' 'python2-gobject2>=2.12' 'desktop-file-utils')
 source=("http://classix.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-#noextract=()
-md5sums=('0b372d7bd85d19e10a5c60af492adf64') #generate with 'makepkg -g'
+md5sums=('0b372d7bd85d19e10a5c60af492adf64')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,6 +19,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" install
 }
 
