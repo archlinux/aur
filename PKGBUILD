@@ -12,8 +12,8 @@ source=("tclkit.tar.gz::https://github.com/patthoyts/kitgen/archive/${_kit_commi
 	"tk.tar.gz::https://github.com/tcltk/tk/archive/${_tcltk_tag}.tar.gz"
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcltk_tag}.tar.gz")
 md5sums=('2053997a397309fa10d0b62a3df114ae'
-         '71a7b3311f207d6f7d85181e09534824'
-         'f8c680c0903124af27ba55c6dd4ee12b')
+         '25c2e90900e44ea851f891cbb232ca2c'
+         'f2157b4a1f4595c93c978f2203e4a93d')
 
 build() {
   mv "kitgen-$_kit_commit" kitgen
