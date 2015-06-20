@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/opt/dearesther/support/dearesther/windata/cxmenu/icons/dearesther.png
+Exec=/usr/bin/dearesther
+Terminal=false
+StartupNotify=false
+Name=Dear Esther
+Comment=An experimental first-person adventure, strongly driven by a fractured narrative
+Categories=Game;

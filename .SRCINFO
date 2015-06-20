@@ -1,0 +1,23 @@
+pkgbase = dearesther
+	pkgdesc = An experimental first-person adventure, strongly driven by a fractured narrative (game sold separately)
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://dear-esther.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = glu
+	depends = libxi
+	depends = gcc-libs
+	noextract = install-dearesther-1.6.bin
+	options = !strip
+	source = dearesther.desktop
+	source = dearesther.sh
+	source = hib://install-dearesther-1.6.bin
+	md5sums = 3596d66ededb400331f91e5855d79d29
+	md5sums = a5a32737beb3e795ac3c790851d69c16
+	md5sums = 42ac76a31ac8782bda3e03bd8bec5bf4
+
+pkgname = dearesther
+
