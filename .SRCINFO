@@ -1,0 +1,18 @@
+pkgbase = ruby-sinatra
+	pkgdesc = Classy web-development dressed in a DSL
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = http://www.sinatrarb.com/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack
+	depends = ruby-tilt-1
+	depends = ruby-rack-protection
+	noextract = sinatra-1.4.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sinatra-1.4.5.gem
+	sha1sums = 97e695f50c078ea57424dd8a48424269e6afdacb
+
+pkgname = ruby-sinatra
+
