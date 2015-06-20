@@ -1,0 +1,28 @@
+pkgbase = ros-jade-turtle-tf
+	pkgdesc = ROS - turtle_tf demonstrates how to write a tf broadcaster and listener with the turtlesim.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://ros.org/wiki/turtle_tf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-turtlesim
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-rospy
+	depends = ros-jade-turtlesim
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-tf
+	depends = ros-jade-rospy
+	source = turtle_tf::git+https://github.com/ros-gbp/geometry_tutorials-release.git#tag=release/jade/turtle_tf/0.2.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-turtle-tf
+
