@@ -1,0 +1,21 @@
+pkgbase = git-lfs-test-server-git
+	pkgdesc = Standalone Git LFS server
+	pkgver = v0.2.1.r1.g90efc5f
+	pkgrel = 1
+	url = https://github.com/github/lfs-test-server
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = mercurial
+	makedepends = git
+	makedepends = go
+	provides = git-lfs-test-server
+	conflicts = git-lfs-test-server
+	conflicts = git-lfs-test-server-bin
+	options = !strip
+	options = !emptydirs
+	source = git://github.com/github/lfs-test-server
+	md5sums = SKIP
+
+pkgname = git-lfs-test-server-git
+
