@@ -1,0 +1,14 @@
+pkgbase = oki-330-530-ps
+	pkgdesc = CUPS drivers for OKI C330 and C530 PS printers
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://www.okidata.com
+	arch = any
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	source = ftp://ftp2.okidata.com/pub/drivers/linux/SFP/color/desktop/C330PS.tar
+	md5sums = 3919ba609354aa7a0351e6fb84625e0b
+
+pkgname = oki-330-530-ps
+
