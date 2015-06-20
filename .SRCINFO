@@ -1,0 +1,17 @@
+pkgbase = crawljax
+	pkgdesc = Open source Java tool for automatically crawling and testing modern web applications
+	pkgver = 3.6
+	pkgrel = 1
+	url = http://crawljax.com/
+	arch = any
+	license = apache
+	depends = java-runtime
+	optdepends = phantomjs: headless Webkit
+	noextract = crawljax-cli-3.6.zip
+	source = https://github.com/crawljax/crawljax/releases/download/crawljax-3.6/crawljax-cli-3.6.zip
+	source = crawljax
+	sha256sums = a16a7b11a7f65f11e525104d9f60be8855f1a327b9b25649b24f0f47c9d0cfbe
+	sha256sums = c9d7111e3080ee9a32ff8de4ca5c5ae89d8131e70f945f3afafebd583b3fbca4
+
+pkgname = crawljax
+
