@@ -1,0 +1,22 @@
+pkgbase = ros-jade-resource-retriever
+	pkgdesc = ROS - This package retrieves data from url-format files such as http://, ftp://, package:// file://, etc., and loads the data into memory.
+	pkgver = 1.11.6
+	pkgrel = 1
+	url = http://ros.org/wiki/resource_retriever
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-roslib
+	makedepends = ros-jade-catkin
+	makedepends = curl
+	depends = ros-jade-rosconsole
+	depends = ros-jade-roslib
+	depends = curl
+	source = resource_retriever::git+https://github.com/ros-gbp/resource_retriever-release.git#tag=release/jade/resource_retriever/1.11.6-0
+	md5sums = SKIP
+
+pkgname = ros-jade-resource-retriever
+
