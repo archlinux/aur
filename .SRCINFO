@@ -1,0 +1,17 @@
+pkgbase = tcl-cookfs
+	pkgdesc = cookfs file system for tcl
+	pkgver = 1.4
+	pkgrel = 4
+	url = http://www.endorser.org/en/blog/tcl/cookfs
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tcl
+	depends = tcl
+	depends = tcl-vfs
+	depends = tcllib
+	source = https://github.com/l3iggs/tcl-cookfs/archive/1.4.tar.gz
+	md5sums = 4e9c8c2a49a0499207911bdca0801df9
+
+pkgname = tcl-cookfs
+
