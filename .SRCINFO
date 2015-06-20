@@ -1,0 +1,21 @@
+pkgbase = supermeatboy
+	pkgdesc = An insanely hard and delightfully meaty platformer (game sold separately)
+	pkgver = 20131111
+	pkgrel = 1
+	url = http://www.supermeatboy.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = openal
+	depends = sdl2
+	depends = sh
+	depends = gcc-libs
+	options = !strip
+	source = hib://supermeatboy-linux-11112013-bin
+	source = supermeatboy.desktop
+	md5sums = fc024d757395eebfdee342571671332b
+	md5sums = dc9beaef2fc60faa16d39aed8e84b0d3
+
+pkgname = supermeatboy
+

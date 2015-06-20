@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Super Meat Boy
+Comment=An insanely hard and delightfully meaty platformer
+Icon=/opt/supermeatboy/supermeatboy.png
+Exec=/usr/bin/supermeatboy
+Categories=Game;
