@@ -16,10 +16,8 @@ md5sums=('2e0ded1cf1791dc8650510087aaff2de')
 package() {
   cd $srcdir/
   unzip -j BergamoStd.zip
-  chmod a+r *.otf
-  chmod a-x *.otf
-  mkdir -p $pkgdir/usr/share/fonts/OTF
-  cp *.otf $pkgdir/usr/share/fonts/OTF
+  install -d "$pkgdir/usr/share/fonts/OTF"
+  install -m644 *.otf "$pkgdir/usr/share/fonts/OTF"
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 cat >> $pkgdir/usr/share/licenses/$pkgname/EULA.txt << EOF
 End-User License Agreement [Free Fonts]
