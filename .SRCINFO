@@ -1,0 +1,15 @@
+pkgbase = ruby-tilt-1
+	pkgdesc = Generic interface to multiple Ruby template engines
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/rtomayko/tilt/
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = tilt-1.4.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tilt-1.4.1.gem
+	sha1sums = a63b374ab06aeb6f567bd24e61434e386cce0811
+
+pkgname = ruby-tilt-1
+
