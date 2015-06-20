@@ -1,0 +1,24 @@
+pkgbase = kompare-git
+	pkgdesc = Diff/Patch Frontend. (GIT version)
+	pkgver = r855.bfd5dc3
+	pkgrel = 1
+	url = https://www.kde.org/applications/development/kompare
+	install = kompare-git.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = libkomparediff2-git
+	depends = ktexteditor
+	depends = desktop-file-utils
+	provides = kompare
+	conflicts = kdesdk-kompare
+	conflicts = kompare
+	source = git://anongit.kde.org/kompare.git
+	sha1sums = SKIP
+
+pkgname = kompare-git
+
