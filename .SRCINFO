@@ -1,0 +1,17 @@
+pkgbase = ruby-eventmachine
+	pkgdesc = Ruby/EventMachine library
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = http://rubyeventmachine.com
+	arch = i686
+	arch = x86_64
+	license = Ruby
+	license = GPL
+	depends = ruby
+	noextract = eventmachine-1.0.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/eventmachine-1.0.7.gem
+	sha1sums = 4e6fe81a3e424e8d6f53d4774364fa0d47da27fb
+
+pkgname = ruby-eventmachine
+
