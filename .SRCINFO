@@ -1,0 +1,17 @@
+pkgbase = qml-extras
+	pkgdesc = A UI framework for QtQuick implementing Material Design
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/papyros/qml-extras
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base-git
+	depends = qt5-declarative-git
+	provides = qml-extras
+	source = qml-extras::git+https://github.com/papyros/qml-extras.git#tag=v0.0.5
+	sha256sums = SKIP
+
+pkgname = qml-extras
+
