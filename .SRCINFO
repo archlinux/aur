@@ -1,0 +1,17 @@
+pkgbase = prisma-puzzle-timer
+	pkgdesc = Feature-rich timer for a number of mechanical puzzles
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://bitbucket.org/walter/puzzle-timer
+	arch = any
+	license = BSD
+	depends = java-runtime
+	source = https://bitbucket.org/walter/puzzle-timer/downloads/PrismaPuzzleTimer0.6.jar
+	source = prisma-puzzle-timer
+	source = prisma-puzzle-timer.desktop
+	sha256sums = 9af37ba8f645e922edadb28997a028d2227bd41c90746d99887906e025e81709
+	sha256sums = fe8ae332c7d896a0d6c556727336de4a22b5f5476d970423278621a94b5a54f9
+	sha256sums = c3604cc9e11335a4deb8f127fd299b3e1a16d66bc39e969a37d9b509b36d3dc5
+
+pkgname = prisma-puzzle-timer
+

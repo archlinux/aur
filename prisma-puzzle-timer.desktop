@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Prisma Puzzle Timer
+Comment=Feature-rich timer for a number of mechanical puzzles
+Exec=prisma-puzzle-timer
+Icon=/usr/share/prisma-puzzle-timer/icon.png
+Terminal=false
+Categories=Game;LogicGame;Java;
