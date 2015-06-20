@@ -1,7 +1,7 @@
 pkgbase = zulucrypt
 	pkgdesc = a cli and gui frontend to cryptsetup.
 	pkgver = 4.7.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://mhogomchungu.github.io/zuluCrypt/
 	install = zulucrypt.install
 	changelog = zulucrypt.changelog
@@ -10,7 +10,7 @@ pkgbase = zulucrypt
 	license = GPL
 	makedepends = cmake
 	depends = cryptsetup
-	depends = qt4
+	depends = qt5-base
 	depends = libpwquality
 	depends = libsecret
 	optdepends = kdeutils-kwalletmanager: retrieve volume keys from kde kwallet
