@@ -1,6 +1,6 @@
 pkgbase = linux-ck-fbcondecor
-	pkgver = 4.0.4
-	pkgrel = 3
+	pkgver = 4.0.5
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
 	arch = x86_64
@@ -11,40 +11,38 @@ pkgbase = linux-ck-fbcondecor
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
 	source = fbcondecor-4.0.patch
 	source = config.x86_64
 	source = config
 	source = linux-ck-fbcondecor.preset
 	source = change-default-console-loglevel.patch
-	source = md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch
 	source = http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patch-4.0-ck1.bz2
 	source = http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-rtmn-fix.patch
 	source = http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-update_inittask.patch
 	source = bfs462-nosubmit.patch
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
-	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r7/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-4.0.patch
-	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r7/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-4.0.patch
-	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r7/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-4.0.0.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch
 	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
 	sha256sums = SKIP
-	sha256sums = c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9
+	sha256sums = 60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0
 	sha256sums = SKIP
 	sha256sums = b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42
 	sha256sums = 9c007d15907fe17f3cd91b4629ce377d28dc1a40100487c040580c62e1751c90
 	sha256sums = 741faed63124845a44b393c6da0b6fcfbb23d6a65e37b97866dfe49855576f11
 	sha256sums = 2b264754fb155101481e44ea583ff219fdd35a6d88e59bda63b7e854eac7aa7b
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = fb30d31f04db40513af8417a1d9fa8e084bd23e91a4ff72c21899c1229b07247
 	sha256sums = be3ca32d048428a0cbd476bfe467e0d46d1848b95d4d7b70ab57b522d19f6cd2
 	sha256sums = c28632c55b3603d538ec0669ee09fc47d1a04b40d0096c5511549946dd3aff16
 	sha256sums = a23de756d3680fb1c1cbabe3ae8c1cfb149a833177d054b9b23cc18d4d8e364a
 	sha256sums = 80a635a9998ff1d580889ecb79c018d4916314612077aecf080cb50e73e58757
 	sha256sums = 819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532
-	sha256sums = ff13786f79587cfc7016f0d287b82cfd79d21d00082e7fc0c954582e26c7243e
-	sha256sums = 940a0aa5b790f06e9b15ad9fc91b8cecc6e7f4bdbdbcc584fd1508d9d431c5ea
-	sha256sums = e8b5df967de0e91bfbec7a8acd39e8967ea51e090090c5d7888b408d16cce6bb
+	sha256sums = b0648f9fca9b155c3a7195008acd6fb8f1a644c6a8743050f3ee96e1245b88d9
+	sha256sums = f1389d30e08cc1fab638407289743d15efcde4dac63f9e3052b0df9c0880ef57
+	sha256sums = fd7f55a254217e1b57558a6288cc2aab28f7c62d7d0b8db09b598382d5bce618
 
 pkgname = linux-ck-fbcondecor
 	pkgdesc = Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.461 and the fbcondecor framebuffer decoration support.
@@ -55,9 +53,9 @@ pkgname = linux-ck-fbcondecor
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = nvidia-ck: nVidia drivers for linux-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-ck-fbcondecor=4.0.4
-	provides = linux-ck=4.0.4
-	provides = linux-fbcondecor=4.0.4
+	provides = linux-ck-fbcondecor=4.0.5
+	provides = linux-ck=4.0.5
+	provides = linux-fbcondecor=4.0.5
 	conflicts = kernel26-ck
 	conflicts = linux-ck-corex
 	conflicts = linux-ck-p4
@@ -67,12 +65,14 @@ pkgname = linux-ck-fbcondecor
 	conflicts = linux-ck-nehalem
 	conflicts = linux-ck-sandybridge
 	conflicts = linux-ck-ivybridge
+	conflicts = linux-ck-broadwell
 	conflicts = linux-ck-haswell
 	conflicts = linux-ck-kx
 	conflicts = linux-ck-k10
 	conflicts = linux-ck-barcelona
 	conflicts = linux-ck-bulldozer
 	conflicts = linux-ck-piledriver
+	conflicts = linux-ck-silvermont
 	conflicts = linux-ck
 	replaces = kernel26-ck
 	backup = etc/mkinitcpio.d/linux-ck-fbcondecor.preset
@@ -80,10 +80,10 @@ pkgname = linux-ck-fbcondecor
 pkgname = linux-ck-fbcondecor-headers
 	pkgdesc = Header files and scripts to build modules for linux-ck-fbcondecor.
 	depends = linux-ck-fbcondecor
-	provides = linux-ck-headers=4.0.4
-	provides = linux-ck-fbcondecor-headers=4.0.4
-	provides = linux-fbcondecor-headers=4.0.4
-	provides = linux-headers=4.0.4
+	provides = linux-ck-headers=4.0.5
+	provides = linux-ck-fbcondecor-headers=4.0.5
+	provides = linux-fbcondecor-headers=4.0.5
+	provides = linux-headers=4.0.5
 	conflicts = kernel26-ck-headers
 	conflicts = linux-ck-corex-headers
 	conflicts = linux-ck-p4-headers
@@ -94,6 +94,7 @@ pkgname = linux-ck-fbcondecor-headers
 	conflicts = linux-ck-sandybridge-headers
 	conflicts = linux-ck-ivybridge-headers
 	conflicts = linux-ck-haswell-headers
+	conflicts = linux-ck-broadwell-headers
 	conflicts = linux-ck-kx-headers
 	conflicts = linux-ck-k10-headers
 	conflicts = linux-ck-barcelona-headers

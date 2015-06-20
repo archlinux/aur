@@ -56,8 +56,8 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.0
-pkgver=4.0.4
-pkgrel=3
+pkgver=4.0.5
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -66,7 +66,7 @@ options=('!strip')
 _ckpatchversion=1
 _ckpatchname="patch-4.0-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r7"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -75,7 +75,6 @@ fbcondecor-4.0.patch
 'config.x86_64' 'config'
 'linux-ck-fbcondecor.preset'
 'change-default-console-loglevel.patch'
-'md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch'
 # ck1
 "http://ck.kolivas.org/patches/4.0/4.0/4.0-ck${_ckpatchversion}/${_ckpatchname}.bz2"
 "http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-rtmn-fix.patch"
@@ -84,27 +83,26 @@ fbcondecor-4.0.patch
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
-"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-4.0.patch"
-"${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-4.0.patch"
-"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-4.0.0.patch")
+"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch"
+"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch"
+"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch")
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9'
+            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
             '9c007d15907fe17f3cd91b4629ce377d28dc1a40100487c040580c62e1751c90'
             '741faed63124845a44b393c6da0b6fcfbb23d6a65e37b97866dfe49855576f11'
             '2b264754fb155101481e44ea583ff219fdd35a6d88e59bda63b7e854eac7aa7b'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'fb30d31f04db40513af8417a1d9fa8e084bd23e91a4ff72c21899c1229b07247'
             'be3ca32d048428a0cbd476bfe467e0d46d1848b95d4d7b70ab57b522d19f6cd2'
             'c28632c55b3603d538ec0669ee09fc47d1a04b40d0096c5511549946dd3aff16'
             'a23de756d3680fb1c1cbabe3ae8c1cfb149a833177d054b9b23cc18d4d8e364a'
             '80a635a9998ff1d580889ecb79c018d4916314612077aecf080cb50e73e58757'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
-            'ff13786f79587cfc7016f0d287b82cfd79d21d00082e7fc0c954582e26c7243e'
-            '940a0aa5b790f06e9b15ad9fc91b8cecc6e7f4bdbdbcc584fd1508d9d431c5ea'
-            'e8b5df967de0e91bfbec7a8acd39e8967ea51e090090c5d7888b408d16cce6bb')
+            'b0648f9fca9b155c3a7195008acd6fb8f1a644c6a8743050f3ee96e1245b88d9'
+            'f1389d30e08cc1fab638407289743d15efcde4dac63f9e3052b0df9c0880ef57'
+            'fd7f55a254217e1b57558a6288cc2aab28f7c62d7d0b8db09b598382d5bce618')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -120,9 +118,6 @@ prepare() {
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-	
-	# https://bugzilla.kernel.org/show_bug.cgi?id=98501
-	patch -Np1 -i "${srcdir}/md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch"
 	
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
@@ -276,7 +271,7 @@ package_linux-ck-fbcondecor() {
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-ck-fbcondecor=${pkgver}" "linux-ck=${pkgver}" "linux-fbcondecor=${pkgver}")
-	conflicts=('kernel26-ck' 'linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck')
+	conflicts=('kernel26-ck' 'linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-broadwell' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck-silvermont' 'linux-ck')
 	replaces=('kernel26-ck')
 	backup=("etc/mkinitcpio.d/linux-ck-fbcondecor.preset")
 	install=linux-ck-fbcondecor.install
@@ -343,7 +338,7 @@ package_linux-ck-fbcondecor-headers() {
 	#pkgdesc="${_Hpkgdesc}"
 	depends=('linux-ck-fbcondecor') # added to keep kernel and headers packages matched
 	provides=("linux-ck-headers=${pkgver}" "linux-ck-fbcondecor-headers=${pkgver}" "linux-fbcondecor-headers=${pkgver}" "linux-headers=${pkgver}")
-	conflicts=('kernel26-ck-headers' 'linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers' 'linux-ck-headers')
+	conflicts=('kernel26-ck-headers' 'linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-broadwell-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers' 'linux-ck-headers')
 	replaces=('kernel26-ck-headers')
 	#groups=('ck-generic')
 
