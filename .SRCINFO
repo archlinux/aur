@@ -1,0 +1,18 @@
+pkgbase = qt5-svg-git
+	pkgdesc = A cross-platform application and UI framework (QtSvg)
+	pkgver = v5.5.0.beta1
+	pkgrel = 1
+	url = https://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-base-git
+	provides = qt5-svg
+	conflicts = qt5-svg
+	source = qt5-svg::git://code.qt.io/qt/qtsvg.git#branch=5.5
+	sha256sums = SKIP
+
+pkgname = qt5-svg-git
+
