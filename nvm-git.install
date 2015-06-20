@@ -1,0 +1,32 @@
+## arg 1:  the new package version
+post_install() {
+  echo "
+You need to source nvm before you can use it. Do one of the following
+or similar depending on your shell:
+
+  echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
+  echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zprofile
+
+Alternatively, you can copy the contents of init-nvm.sh to your
+.bashrc (or similar) if you would like an NVM_DIR other than ~/.nvm
+"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "
+Don't forget to clean up any lines added to your shell's startup script!
+
+For example, from your .bashrc (or .zprofile etc.), delete the line:
+
+source /usr/share/nvm/init-nvm.sh
+"
+}
+
+# vim:set ts=2 sw=2 et:
