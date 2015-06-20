@@ -1,0 +1,16 @@
+post_install() {
+  post_remove $1
+
+  echo 'To play against computers, you must manually add GTP Engines in preferences:'
+  echo '- For GNU Go, use "gnugo --mode gtp --quiet" as the command'
+  echo '- For GRhino, use "gtp-rhino" as the command'
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
+}

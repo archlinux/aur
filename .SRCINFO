@@ -1,0 +1,20 @@
+pkgbase = quarry
+	pkgdesc = A multi-purpose GUI for Go, Amazons, and Othello
+	pkgver = 0.3.0.1
+	pkgrel = 1
+	url = https://gitorious.org/quarry
+	install = quarry.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xmlto
+	depends = librsvg
+	depends = desktop-file-utils
+	depends = gtk2
+	optdepends = gnugo: play Go against the computer
+	optdepends = grhino: play Othello against the computer
+	source = quarry-0.3.0.1.tar.gz::https://gitorious.org/quarry/quarry/archive/a6003cd78d9d3045aa65f11db3fdd05a0bff31fb.tar.gz
+	md5sums = 11039e0c0fef8ccfdc6aeadfb6ae73bd
+
+pkgname = quarry
+
