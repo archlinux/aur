@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 20165
+	pkgver = 20181
 	pkgrel = 1
 	url = http://www.scribus.net
 	install = scribus-svn.install
@@ -21,6 +21,7 @@ pkgbase = scribus-svn
 	depends = libcdr
 	depends = desktop-file-utils
 	depends = libvisio
+	depends = libpagemaker
 	provides = scribus
 	conflicts = scribus
 	options = !makeflags

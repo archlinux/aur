@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=20165
+pkgver=20181
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.scribus.net"
 install=${pkgname}.install
 depends=('qt5-webkit' 'hunspell' 'podofo' 'python2' 'libcups'
 	 'graphicsmagick' 'shared-mime-info' 'poppler' 'libcdr' 
-	 'desktop-file-utils' 'libvisio')
+	 'desktop-file-utils' 'libvisio' 'libpagemaker')
 makedepends=('subversion' 'cmake' 'qt5-tools')
 conflicts=('scribus')
 provides=('scribus')
