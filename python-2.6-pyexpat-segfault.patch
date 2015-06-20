@@ -1,0 +1,13 @@
+diff -aur Python-2.6.9/Modules/pyexpat.c Python-2.6.9.new/Modules/pyexpat.c
+--- Python-2.6.9/Modules/pyexpat.c	2014-04-25 21:34:10.703530459 +0200
++++ Python-2.6.9.new/Modules/pyexpat.c	2014-04-25 21:34:27.836864643 +0200
+@@ -456,6 +456,9 @@
+     PyObject *args;
+     PyObject *temp;
+ 
++    if (!have_handler(self, CharacterData))
++        return -1;
++
+     args = PyTuple_New(1);
+     if (args == NULL)
+         return -1;

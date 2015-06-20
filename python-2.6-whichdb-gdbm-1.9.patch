@@ -1,0 +1,12 @@
+diff -aur Python-2.6.9/Lib/whichdb.py Python-2.6.9.new/Lib/whichdb.py
+--- Python-2.6.9/Lib/whichdb.py	2013-10-29 16:04:38.000000000 +0100
++++ Python-2.6.9.new/Lib/whichdb.py	2014-04-25 22:53:05.937101545 +0200
+@@ -91,7 +91,7 @@
+         return ""
+ 
+     # Check for GNU dbm
+-    if magic == 0x13579ace:
++    if magic in (0x13579ace, 0x13579acd, 0x13579acf):
+         return "gdbm"
+ 
+     # Check for old Berkeley db hash file format v2

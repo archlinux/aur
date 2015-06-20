@@ -1,0 +1,17 @@
+--- setup.py.orig	2013-01-10 08:41:07.226990643 +0100
++++ setup.py	2013-01-10 08:51:14.641536855 +0100
+@@ -1122,12 +1122,8 @@
+ 
+         # The standard Unix dbm module:
+         if platform not in ['cygwin']:
+-            if find_file("ndbm.h", inc_dirs, []) is not None:
+-                # Some systems have -lndbm, others don't
+-                if self.compiler.find_library_file(lib_dirs, 'ndbm'):
+-                    ndbm_libs = ['ndbm']
+-                else:
+-                    ndbm_libs = []
++            if find_file("ndbm.h", inc_dirs, []) and self.compiler.find_library_file(lib_dirs, 'ndbm'):
++                ndbm_libs = ['ndbm']
+                 exts.append( Extension('dbm', ['dbmmodule.c'],
+                                        define_macros=[('HAVE_NDBM_H',None)],
+                                        libraries = ndbm_libs ) )

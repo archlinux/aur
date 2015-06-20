@@ -1,0 +1,7 @@
+pkg
+src
+Python-2.6*.tar.xz
+python26-*.tar.xz
+python26-*.src.tar.gz
+.AURINFO
+

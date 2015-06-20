@@ -1,0 +1,165 @@
+# Maintainer:  Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Rémy Oudompheng <remy@archlinux.org>
+# Contributor: Chris McDonald <xwraithanx@gmail.com>
+
+pkgname=python26
+pkgver=2.6.9
+pkgrel=6
+_pybasever=2.6
+pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
+arch=('i686' 'x86_64' 'arm')
+license=('PSF')
+url="http://www.python.org/"
+depends=('db>=4.8' 'bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'sqlite3' 'libffi')
+makedepends=('tk>=8.5.0')
+optdepends=('tk: for IDLE, pynche and modulator')
+provides=(python2=${pkgver})
+changelog=ChangeLog
+source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
+        modulator-launcher
+        pynche-launcher
+        python-2.6-db-4.8.patch
+        python-2.6-dbm.patch
+        python-2.6-distutils.patch
+        python-2.6-internal-expat.patch
+        python-2.6-mhlib-nlinks.patch
+        python-2.6-pyexpat-segfault.patch
+        python-2.6-readline-6.3.patch
+        python-2.6-sqlite-test.patch
+        python-2.6-tkinter-86.patch
+        python-2.6-whichdb-gdbm-1.9.patch)
+sha256sums=('cae7bb995006ea5b703d9d28446f694894c441fe4bfb95d561c0ac908cd06e41'
+            '9fb0914357b43d4d6d5ea58ef7827cd0f5784792060e776dfa62d6e372b08f8e'
+            'e92e300ef7844478c53c37d7c05a27adc714d11106e79537da4b3b8ef039d6cb'
+            '2a4b9d85c6b616e5df30d42d0890865f2c2103e8d7d5d7d77c092f1f7aff1458'
+            '43fd72dda5d85d8aeda1de100073ee472463fd5c8af55162598f7acec1d65323'
+            '68804810b351403e16c09e24053221dda123d3163f24f3feb4fb2dab595e774e'
+            'c99c8305180083e40aff789e3a3c74ed375037fdc7bd02876270b09274033069'
+            'fd2a30acdd05e172ff3c0db2cce3371c184d67a1d9bd04a1582a5e6bc8fb80e6'
+            '2aea683887955e59c6cff227a0d63aee3991571b7207a97d5985ba9ebd69e983'
+            '5cc38033f7b7f7d6a25e63e14e9ae2de71bdf9106049e1cbad666bfe26d9cb7b'
+            '9c01e3bb264eaf6444b76ba6f5265d79bda234b5542fe3d2b478628412186c1e'
+            'dbbc72d9c71c065fe3700af4322a130d5c5c459b6ee512f66e7e5eb9e4971171'
+            'e0dc2156ca821eaaada49cf5e1e301fc828215288aae648a6e7e4d4da1b38050')
+
+prepare() {
+  cd "${srcdir}/Python-${pkgver}"
+
+  patch -Np0 -i ${srcdir}/python-2.6-internal-expat.patch
+
+  # http://bugs.python.org/issue6949
+  patch -Np0 -i ${srcdir}/python-2.6-db-4.8.patch
+
+  patch -Np0 -i ${srcdir}/python-2.6-dbm.patch
+
+  # http://bugs.python.org/issue10126
+  patch -Np1 -i ${srcdir}/python-2.6-distutils.patch
+
+  # http://bugs.python.org/issue7759
+  patch -Np1 -i ${srcdir}/python-2.6-mhlib-nlinks.patch
+
+  # http://bugs.python.org/issue9054
+  patch -Np1 -i ${srcdir}/python-2.6-pyexpat-segfault.patch
+
+  # http://bugs.python.org/issue20374
+  patch -Np1 -i ${srcdir}/python-2.6-readline-6.3.patch
+
+  # http://bugs.python.org/issue20901
+  patch -Np1 -i ${srcdir}/python-2.6-sqlite-test.patch
+
+  patch -Np1 -i ${srcdir}/python-2.6-tkinter-86.patch
+
+  # http://bugs.python.org/issue13007
+  patch -Np1 -i ${srcdir}/python-2.6-whichdb-gdbm-1.9.patch
+
+  # Ensure that we are using the system copy of various libraries
+  # (expat, zlib and libffi), rather than copies shipped in the tarball
+  rm -r Modules/expat
+  rm -r Modules/zlib
+}
+
+build() {
+  cd "${srcdir}/Python-${pkgver}"
+
+  export OPT="${CFLAGS}"
+  ./configure --prefix=/usr \
+    --enable-shared \
+    --enable-ipv6 \
+    --enable-unicode=ucs4 \
+    --with-system-ffi \
+    --with-threads
+
+  make MACHDEP=linux2
+}
+
+check() {
+  cd "${srcdir}/Python-${pkgver}"
+
+  if [ $EUID -eq 0 ]; then
+    echo "Effective user ID 0 detected!"
+    echo "Several tests will FAIL if you run them as root."
+    echo "If you must build this package as root,"
+    echo "use the --nocheck option to makepkg."
+    return 1
+  fi
+
+  # test_float fails on arm
+  # issue with no fix: http://bugs.python.org/issue8265
+  if [ "x$CARCH" = "xarm" ]; then
+    LD_LIBRARY_PATH="$(pwd)" ./python Lib/test/regrtest.py -x test_float
+  else
+    make test
+  fi
+}
+
+package() {
+  cd "${srcdir}/Python-${pkgver}"
+
+  make DESTDIR="${pkgdir}" altinstall maninstall
+
+  ln -sf ../../libpython${_pybasever}.so \
+      "${pkgdir}/usr/lib/python${_pybasever}/config/libpython${_pybasever}.so"
+
+  mv "${pkgdir}/usr/bin/smtpd.py" "${pkgdir}/usr/lib/python${_pybasever}/"
+
+  # Install the tools
+
+  # modulator
+  sed -i "s#%%PYBASEVER%%#${_pybasever}#g" "${srcdir}/modulator-launcher"
+  install -m755 "${srcdir}/modulator-launcher" \
+    "${pkgdir}/usr/bin/modulator${_pybasever}"
+  cp -r Tools/modulator "${pkgdir}/usr/lib/python${_pybasever}/site-packages"
+
+  # pynche
+  sed -i "s#%%PYBASEVER%%#${_pybasever}#g" "${srcdir}/pynche-launcher"
+  install -m755 "${srcdir}/pynche-launcher" \
+    "${pkgdir}/usr/bin/pynche${_pybasever}"
+  rm -f Tools/pynche/*.pyw
+  cp -r Tools/pynche "${pkgdir}/usr/lib/python${_pybasever}/site-packages"
+
+  # some useful "stuff"
+  install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
+  install -m755 Tools/i18n/{msgfmt,pygettext}.py \
+    "${pkgdir}/usr/lib/python${_pybasever}/Tools/i18n/"
+  install -m755 Tools/scripts/{README,*py} \
+    "${pkgdir}/usr/lib/python${_pybasever}/Tools/scripts/"
+
+  # fix conflicts with main python package
+  mv "${pkgdir}"/usr/bin/idle{,${_pybasever}}
+  mv "${pkgdir}"/usr/bin/pydoc{,${_pybasever}}
+  mv "${pkgdir}"/usr/bin/2to3{,-${_pybasever}}
+  mv "${pkgdir}"/usr/share/man/man1/python{.1,${pkgver}}
+
+  # clean up #!s
+  find "${pkgdir}/usr/lib/python${_pybasever}/" -name '*.py' | xargs sed -i \
+    "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python${_pybasever}|"
+
+  # clean-up reference to build directory
+  sed -i "s#${srcdir}/Python-${pkgver}:##" \
+    "${pkgdir}/usr/lib/python${_pybasever}/config/Makefile"
+
+  # license
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
