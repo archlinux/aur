@@ -1,0 +1,20 @@
+pkgbase = ros-jade-common-tutorials
+	pkgdesc = ROS - Metapackage that contains common tutorials.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://ros.org/wiki/common_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-pluginlib-tutorials
+	depends = ros-jade-actionlib-tutorials
+	depends = ros-jade-turtle-actionlib
+	depends = ros-jade-nodelet-tutorial-math
+	source = common_tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/jade/common_tutorials/0.1.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-common-tutorials
+
