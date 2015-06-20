@@ -1,0 +1,28 @@
+pkgbase = ros-jade-driver-base
+	pkgdesc = ROS - A framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test.
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = http://www.ros.org/wiki/driver_base
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-self-test
+	makedepends = ros-jade-diagnostic-updater
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-self-test
+	depends = ros-jade-diagnostic-updater
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-dynamic-reconfigure
+	source = driver_base::git+https://github.com/ros-gbp/driver_common-release.git#tag=release/jade/driver_base/1.6.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-driver-base
+
