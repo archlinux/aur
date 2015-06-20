@@ -1,0 +1,29 @@
+pkgbase = uim-mozc
+	pkgdesc = uim plugin module for Mozc
+	pkgver = 2.17.2095.102
+	pkgrel = 1
+	url = http://code.google.com/p/macuim/
+	install = uim-mozc.install
+	arch = i686
+	arch = x86_64
+	groups = mozc-im
+	license = BSD
+	makedepends = pkg-config
+	makedepends = python2
+	makedepends = subversion
+	makedepends = git
+	makedepends = ninja
+	makedepends = clang
+	depends = mozc
+	depends = uim
+	source = mozc::git+https://github.com/google/mozc.git#commit=321e0656b0f2e233ab1c164bd86c58568c9e92f2
+	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
+	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-316.2b3eff9.tar.xz
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = 8b17dcfdb43ac86e223c71c17676bd5f6aa8c40d
+
+pkgname = uim-mozc
+
