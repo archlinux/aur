@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Trine
+Comment=A physics-based fantasy action game with three playable characters and co-op mode
+Icon=/opt/trine/Trine.xpm
+Exec=/usr/bin/trine-launcher
+Categories=Game;ActionGame;

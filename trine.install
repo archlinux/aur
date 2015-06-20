@@ -1,0 +1,10 @@
+post_install() {
+    echo ">>>>"
+    echo ">>>> WARNING! The first time you launch Trine use trine-launcher"
+    echo ">>>> or the trine.desktop file, not the trine command"
+    echo ">>>> otherwise you will not be able to save your progress"
+}
+
+post_upgrade() {
+    post_install
+}

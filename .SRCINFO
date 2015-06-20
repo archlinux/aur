@@ -1,0 +1,26 @@
+pkgbase = trine
+	pkgdesc = A physics-based fantasy action game with three playable characters and co-op mode (game sold separately)
+	pkgver = 1.0.8_update4
+	pkgrel = 4
+	url = http://trine-thegame.com
+	install = trine.install
+	arch = i686
+	arch = x86_64
+	license = custom: "commercial"
+	makedepends = unzip
+	depends = glu
+	depends = libglade
+	depends = libvorbis
+	depends = libxmu
+	depends = nvidia-cg-toolkit
+	depends = openal
+	depends = sdl_image
+	depends = sdl_ttf
+	optdepends = libtxc_dxtn: texture decoding for open source ATI and Intel drivers
+	source = trine.desktop
+	source = hib://TrineUpdate4.32.run
+	md5sums = 1c9f699d983521866f936feac81e86c9
+	md5sums = 7c84061f9f74052a45d15c35df18d143
+
+pkgname = trine
+
