@@ -1,0 +1,18 @@
+pkgbase = ruby-nokogiri
+	pkgdesc = HTML, XML, SAX, and Reader parser
+	pkgver = 1.6.6.2
+	pkgrel = 1
+	url = http://nokogiri.org
+	arch = any
+	license = MIT
+	depends = libxml2
+	depends = libxslt
+	depends = ruby
+	depends = ruby-mini_portile
+	noextract = nokogiri-1.6.6.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nokogiri-1.6.6.2.gem
+	sha512sums = bb0422878e690648ab154c7d1ab0bd4fd9ec0875b2f0be0292ba9cb5541ea33b770794a7ba411e603a06472af4f9a3337ec8ff5d74debd826fc63f1d3ab1d5f1
+
+pkgname = ruby-nokogiri
+
