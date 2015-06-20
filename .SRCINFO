@@ -1,6 +1,6 @@
 pkgbase = bfs-git
 	pkgdesc = A breadth-first version of find.
-	pkgver = r2.864bdf1
+	pkgver = r7.2229140
 	pkgrel = 1
 	url = http://tavianator.com/cgit/bfs.git/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = bfs-git
 	makedepends = git
 	provides = bfs
 	conflicts = bfs
-	source = bfs::git+git://tavianator.com/bfs.git
+	source = bfs::git+https://github.com/tavianator/bfs.git
 	md5sums = SKIP
 
 pkgname = bfs-git

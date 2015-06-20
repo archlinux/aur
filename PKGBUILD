@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=r2.864bdf1
+pkgver=r7.2229140
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('bfs::git+git://tavianator.com/bfs.git')
+source=('bfs::git+https://github.com/tavianator/bfs.git')
 md5sums=('SKIP')
 noextract=()
 
