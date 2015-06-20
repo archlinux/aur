@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=Shadowgrounds
+Comment=Epic sci-fi alien shooter
+Icon=/opt/shadowgrounds/Shadowgrounds.xpm
+Exec=/usr/bin/shadowgrounds
+Categories=Game;ActionGame;

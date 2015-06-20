@@ -1,0 +1,12 @@
+post_install() {
+  cat <<EOF
+This package uses lib32-gtk2, which is easy to have misconfigured. If the GUI
+does not show up, make sure you have installed the lib32 version of your GTK+
+theme. For example: lib32-gtk-engines, lib32-gtk-engine-equinox, or
+lib32-gtk-engine-murrine
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
