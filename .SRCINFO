@@ -1,0 +1,36 @@
+pkgbase = ros-jade-stereo-image-proc
+	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
+	pkgver = 1.12.12
+	pkgrel = 1
+	url = http://www.ros.org/wiki/stereo_image_proc
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-cv-bridge
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-image-proc
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-message-filters
+	makedepends = ros-jade-image-geometry
+	makedepends = ros-jade-stereo-msgs
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = opencv
+	depends = ros-jade-nodelet
+	depends = ros-jade-cv-bridge
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-image-proc
+	depends = ros-jade-image-transport
+	depends = ros-jade-message-filters
+	depends = ros-jade-image-geometry
+	depends = ros-jade-stereo-msgs
+	depends = ros-jade-dynamic-reconfigure
+	depends = opencv
+	source = stereo_image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/stereo_image_proc/1.12.12-0
+	md5sums = SKIP
+
+pkgname = ros-jade-stereo-image-proc
+
