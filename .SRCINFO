@@ -1,0 +1,32 @@
+pkgbase = ros-jade-urdf
+	pkgdesc = ROS - This package contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/urdf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-urdf-parser-plugin
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-rosconsole-bridge
+	makedepends = ros-jade-pluginlib
+	makedepends = pcre
+	makedepends = urdfdom
+	makedepends = urdfdom-headers
+	depends = ros-jade-urdf-parser-plugin
+	depends = ros-jade-rosconsole-bridge
+	depends = ros-jade-roscpp
+	depends = ros-jade-pluginlib
+	depends = pcre
+	depends = urdfdom
+	depends = urdfdom-headers
+	source = urdf::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/jade/urdf/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-urdf
+
