@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-ki18n
+	pkgdesc = Advanced internationalization framework (mingw-w64)
+	pkgver = 5.11.0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/ki18n
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-qt5-script
+	depends = mingw-w64-gettext
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = http://download.kde.org/stable/frameworks/5.11/ki18n-5.11.0.tar.xz
+	md5sums = a6bd7a449ccfbbab1a3e400d984ceabe
+
+pkgname = mingw-w64-ki18n
+
