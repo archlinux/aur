@@ -1,0 +1,18 @@
+pkgbase = ros-jade-urdf-parser-plugin
+	pkgdesc = ROS - This package contains a C++ base class for URDF parsers.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/urdf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = urdfdom-headers
+	depends = urdfdom-headers
+	source = urdf_parser_plugin::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/jade/urdf_parser_plugin/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-urdf-parser-plugin
+
