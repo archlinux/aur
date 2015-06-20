@@ -1,0 +1,17 @@
+pkgbase = python2-catkin-pkg
+	pkgdesc = Standalone Python library for the catkin build system
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = http://wiki.ros.org/catkin_pkg
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ros-build-tools
+	provides = python2-catkin_pkg
+	conflicts = python2-catkin_pkg
+	replaces = python2-catkin_pkg
+	source = https://pypi.python.org/packages/source/c/catkin_pkg/catkin_pkg-0.2.9.tar.gz
+	md5sums = 66b484e850748b38a5a66f70debc4914
+
+pkgname = python2-catkin-pkg
+
