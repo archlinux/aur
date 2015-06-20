@@ -7,7 +7,7 @@ pkgname='ros-indigo-rospack'
 pkgver='2.2.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
@@ -24,7 +24,7 @@ ros_depends=()
 depends=(${ros_depends[@]}
   python2-rosdep
   tinyxml
-  python2-catkin_pkg
+  python2-catkin-pkg
   python2
   boost
   pkg-config)
