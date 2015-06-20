@@ -1,0 +1,14 @@
+pkgbase = frcursive
+	pkgdesc = French cursive hand fonts from CTAN (for texlive)
+	pkgver = 20111109
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/fonts/frcursive/
+	install = frcursive.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	source = http://mirror.ctan.org/fonts/frcursive.zip
+	sha1sums = 8ba9222801483fd2146da04b3cbfd949d8de8bff
+
+pkgname = frcursive
+

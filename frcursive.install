@@ -1,0 +1,17 @@
+post_install() {
+  echo "Updating TeX tree..."
+  /usr/bin/mktexlsr
+  /usr/bin/updmap-sys --quiet --enable MixedMap=frcursive.map
+}
+
+post_upgrade() {
+  echo "Updating TeX tree..."
+  /usr/bin/mktexlsr
+}
+
+post_remove() {
+  echo "Updating TeX tree..."
+  /usr/bin/mktexlsr
+  /usr/bin/updmap-sys --quiet --disable frcursive.map
+}
+
