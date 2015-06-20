@@ -1,0 +1,20 @@
+pkgbase = papyros-settings-git
+	pkgdesc = The file settings for Papyros
+	pkgver = 0.0.1.r1.g585dda2
+	pkgrel = 1
+	url = https://github.com/papyros/settings-app
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt5-declarative-git
+	depends = qml-material
+	depends = papyros-shell
+	provides = papyros-settings-git
+	source = papyros-settings-git::git+https://github.com/papyros/settings-app.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = papyros-settings-git
+
