@@ -1,0 +1,36 @@
+pkgbase = ffmpeg-git
+	pkgdesc = Universal multimedia toolkit
+	pkgver = r72137.f6b8b96
+	pkgrel = 1
+	url = http://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = yasm
+	depends = alsa-lib
+	depends = bzip2
+	depends = freetype2
+	depends = gnutls
+	depends = lame
+	depends = libass
+	depends = libfdk-aac
+	depends = libtheora
+	depends = libva
+	depends = libvdpau
+	depends = libvorbis
+	depends = libvpx
+	depends = opus
+	depends = sdl
+	depends = texinfo
+	depends = libx264
+	depends = x265-hg
+	depends = zlib
+	provides = ffmpeg=r72137.f6b8b96
+	provides = qt-faststart
+	conflicts = ffmpeg
+	source = ffmpeg-git::git://source.ffmpeg.org/ffmpeg.git
+	md5sums = SKIP
+
+pkgname = ffmpeg-git
+
