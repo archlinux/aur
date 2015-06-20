@@ -1,0 +1,22 @@
+pkgbase = libkomparediff2-git
+	pkgdesc = Library to compare files and strings. (GIT version)
+	pkgver = r263.1e58d07
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdesdk/libkomparediff2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = cmake
+	depends = kio
+	provides = libkomparediff2
+	conflicts = libkomparediff2
+	source = git://anongit.kde.org/libkomparediff2
+	sha1sums = SKIP
+
+pkgname = libkomparediff2-git
+
