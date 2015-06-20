@@ -1,0 +1,14 @@
+pkgbase = teamspeak3-lang-pt_br
+	pkgdesc = Brazilian Portuguese translation for TeamSpeak3
+	pkgver = 3.0.10.1a
+	pkgrel = 1
+	url = http://addons.teamspeak.com/directory/category/Translations.html
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = teamspeak3
+	source = teamspeak_pt_br_3.0.10.1a.ts3_addon.zip::http://addons.teamspeak.com/directory/addon/download/Brazilian-Portuguese-translation.html
+	md5sums = 757c891350014866e6cdde24d6b70898
+
+pkgname = teamspeak3-lang-pt_br
+
