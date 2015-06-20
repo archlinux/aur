@@ -6,7 +6,7 @@ pkgdesc="Open type serif font resembling Bembo"
 arch=('any')
 url="http://www.fontsite.com/download-free-fonts/bergamo-std"
 license=('custom:FontSite Free Font License')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 source=(file://BergamoProRegular.zip
         file://BergamoProItalic.zip
         file://BergamoProBold.zip
