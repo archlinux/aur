@@ -7,7 +7,7 @@
 
 pkgname=trousers
 pkgver=0.3.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source TCG Software Stack implementation for use with a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
@@ -25,7 +25,7 @@ sha256sums=('bb908e4a3c88a17b247a4fc8e0fff3419d8a13170fe7bdfbe0e2c5c082a276d3'
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
+  CFLAGS="${CFLAGS} -std=gnu89" ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --libdir=/usr/lib \
               --sbindir=/usr/bin \
