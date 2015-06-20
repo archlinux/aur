@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/opt/psychonauts/psychonauts.png
+Exec=/usr/bin/psychonauts
+Terminal=false
+StartupNotify=false
+Name=Psychonauts
+Comment=A mind-bending platforming adventure
+Categories=Game;
