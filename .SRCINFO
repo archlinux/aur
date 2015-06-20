@@ -1,0 +1,18 @@
+pkgbase = taskopen
+	pkgdesc = Script for taking notes and open urls with taskwarrior
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://github.com/ValiValpas/taskopen/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = perl
+	depends = perl-json
+	depends = task>=2.0.0
+	source = https://github.com/ValiValpas/taskopen/archive/v1.0.2.tar.gz
+	sha256sums = 06430d66265513ebdada2caa33cf1ee5585cc9bfabb91da13ae8acc376619d86
+
+pkgname = taskopen
+
