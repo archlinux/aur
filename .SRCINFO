@@ -1,0 +1,41 @@
+pkgbase = ros-jade-gazebo-ros
+	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://gazebosim.org/tutorials?cat=connect_ros
+	arch = any
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosgraph-msgs
+	makedepends = ros-jade-roslib
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-gazebo-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-std-srvs
+	makedepends = ros-jade-geometry-msgs
+	makedepends = gazebo
+	makedepends = tinyxml
+	depends = ros-jade-rosgraph-msgs
+	depends = ros-jade-roslib
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-std-msgs
+	depends = ros-jade-gazebo-msgs
+	depends = ros-jade-message-generation
+	depends = ros-jade-roscpp
+	depends = ros-jade-tf
+	depends = ros-jade-std-srvs
+	depends = ros-jade-geometry-msgs
+	depends = gazebo
+	depends = tinyxml
+	source = gazebo_ros::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/jade/gazebo_ros/2.5.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-gazebo-ros
+
