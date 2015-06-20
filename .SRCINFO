@@ -1,0 +1,16 @@
+pkgbase = filetimecapsule-git
+	pkgdesc = A webservice for disabling distracting files.
+	pkgver = 1
+	pkgrel = 1
+	url = http://filetimecapsule.com
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-tornado
+	depends = nginx
+	source = git+https://github.com/rukai/FileTimeCapsule.git
+	md5sums = SKIP
+
+pkgname = filetimecapsule-git
+
