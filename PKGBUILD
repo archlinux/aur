@@ -4,21 +4,24 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-indigo-pcl-ros'
-pkgver='1.2.6'
+pkgver='1.2.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
   ros-indigo-nodelet
   ros-indigo-roscpp
   ros-indigo-rosbag
+  ros-indigo-genmsg
   ros-indigo-std-msgs
   ros-indigo-catkin
   ros-indigo-pcl-msgs
+  ros-indigo-rosconsole
   ros-indigo-pcl-conversions
   ros-indigo-sensor-msgs
+  ros-indigo-roslib
   ros-indigo-cmake-modules
   ros-indigo-dynamic-reconfigure
   ros-indigo-pluginlib
