@@ -1,0 +1,20 @@
+pkgbase = ros-jade-python-qt-binding
+	pkgdesc = ROS - This stack provides Python bindings for Qt.
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = http://ros.org/wiki/python_qt_binding
+	arch = any
+	license = BSD, LGPL, GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosbuild
+	makedepends = ros-jade-catkin
+	makedepends = python2-pyqt4
+	makedepends = qt4
+	depends = python2-pyqt4
+	source = python_qt_binding::git+https://github.com/ros-gbp/python_qt_binding-release.git#tag=release/jade/python_qt_binding/0.2.16-0
+	md5sums = SKIP
+
+pkgname = ros-jade-python-qt-binding
+
