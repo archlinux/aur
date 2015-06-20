@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/opt/uplink/uplink.png
+Exec=/usr/bin/uplink
+Terminal=false
+StartupNotify=false
+Name=Uplink
+Comment=Futuristic computer crime game
+Categories=Game;

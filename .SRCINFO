@@ -1,0 +1,21 @@
+pkgbase = uplink-hib
+	pkgdesc = A futuristic computer crime game (requires uplink from Humble Bundle)
+	pkgver = 1.6_1
+	pkgrel = 7
+	url = http://www.introversion.co.uk/uplink
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mesa
+	depends = libjpeg6
+	depends = sdl_mixer
+	depends = libtiff3
+	depends = freetype2
+	conflicts = uplink
+	source = uplink.desktop
+	source = hib://uplink_1.6-1_i386.tar.gz
+	md5sums = e4c6a0050cb3a0894fb5c70a46c51414
+	md5sums = db4f1b9506cff9e348dd52709f6a8ad7
+
+pkgname = uplink-hib
+
