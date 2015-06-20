@@ -1,0 +1,18 @@
+pkgbase = ros-jade-convex-decomposition
+	pkgdesc = ROS - Convex Decomposition Tool for Robot Model.
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = http://codesuppository.blogspot.com
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = unzip
+	depends = unzip
+	source = convex_decomposition::git+https://github.com/ros-gbp/convex_decomposition-release.git#tag=release/jade/convex_decomposition/0.1.10-0
+	md5sums = SKIP
+
+pkgname = ros-jade-convex-decomposition
+
