@@ -1,0 +1,24 @@
+pkgbase = microchip-mplabxc32-bin
+	pkgdesc = C/C++ compiler for PIC32 MCUs
+	pkgver = 1.33
+	pkgrel = 3
+	url = http://www.microchip.com/xc32
+	install = microchip-mplabxc32-bin.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = xclm-dirs
+	provides = mplabxc32
+	conflicts = mplabxc32
+	options = !strip
+	options = docs
+	options = libtool
+	options = emptydirs
+	options = !zipman
+	options = staticlibs
+	options = !upx
+	source = http://ww1.microchip.com/downloads/en/DeviceDoc/xc32-v1.33-full-install-linux-installer.run
+	md5sums = 9f4f086d6f2b9c044f9cd2e46ec3f56c
+
+pkgname = microchip-mplabxc32-bin
+

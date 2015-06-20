@@ -1,0 +1,31 @@
+post_install() {
+  echo "
+Before using MPLAB_XC32 you have to agree with the LICENSE at:
+/usr/share/licenses/microchip-mplabxc32-bin/LICENSE
+
+For using MPLAB_XC32 with MPALB_X (microchip-mplabx-bin), in MPLAB_X go to:
+Tools->Options->Embedded->Add
+
+and enter:
+/opt/microchip/xc32/v1.33/bin
+
+//-------- C++ --------
+If you never activated the free C++ support to get it working you will need to get a free C++ activation key at:
+http://www.microchip.com/MPLABXCcompilers
+
+and them run:
+sudo /opt/microchip/xc32/v1.33/bin/xclm -actkey activation-key hostid=mac hostname=host
+
+To get hostid and hostname you can use:
+/opt/microchip/xc32/v1.33/bin/xclm -hostinfo
+
+This will install a license file at '/opt/microchip/xclm/license/'
+
+This activation should only need to be done once.
+//-------- C++ --------
+"
+}
+
+post_upgrade() {
+  post_install
+}
