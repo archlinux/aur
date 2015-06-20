@@ -1,0 +1,15 @@
+pkgbase = fitnesse-standalone
+	pkgdesc = The fully integrated standalone wiki and acceptance testing framework
+	pkgver = 20150424
+	pkgrel = 1
+	url = http://www.fitnesse.org/
+	arch = any
+	license = CPL
+	depends = java-runtime-common
+	source = http://www.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=20150424
+	source = fitnesse-standalone
+	sha256sums = 7324109bde6691e78ac6fd55a6771caf1b3e3099da8e9542e1f791274f37f99b
+	sha256sums = 330273cec48faaa726768c42ed837aca0ad91776d4a004f70b703bf4d59e3658
+
+pkgname = fitnesse-standalone
+
