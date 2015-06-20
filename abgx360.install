@@ -1,0 +1,10 @@
+post_install() {
+   echo
+   echo "The first time abgx360 is run it will create an empty folder:"
+   echo "~/.abgx360/StealthFiles"
+   echo "Is is recommended that you search the interent for the file"
+   echo "abgx360_video_waves_1-19.7z"
+   echo "and extract the condents of that archive into your StealthFiles directory."
+   echo
+}
+
