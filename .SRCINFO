@@ -1,0 +1,22 @@
+pkgbase = rcssserver
+	pkgdesc = The RoboCup Soccer Simulator Server
+	pkgver = 15.2.2
+	pkgrel = 1
+	url = https://sourceforge.net/apps/mediawiki/sserver/index.php?title=Main_Page
+	arch = x86_64
+	arch = i686
+	groups = rcss
+	license = LGPL
+	makedepends = boost>=1.32
+	makedepends = bison27
+	depends = boost-libs
+	optdepends = rcssmonitor: RCSS Monitor
+	optdepends = librcss: basic library to develop the RCSS client and tools
+	replaces = rcssbase
+	options = buildflags
+	options = makeflags
+	source = http://downloads.sourceforge.net/sourceforge/sserver/rcssserver-15.2.2.tar.gz
+	sha512sums = 7deb17a1645fd5ec398d0d709fc626ad9b7546ee2480dc89ec9df4c9f0d5ef2d5a46758305df0f349751555c8d337081c3ba1ebe005a745b9242de6156d89f34
+
+pkgname = rcssserver
+
