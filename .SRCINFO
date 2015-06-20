@@ -1,0 +1,18 @@
+pkgbase = ros-jade-geometry-tutorials
+	pkgdesc = ROS - Metapackage of geometry tutorials ROS.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/geometry_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-turtle-tf2
+	depends = ros-jade-turtle-tf
+	source = geometry_tutorials::git+https://github.com/ros-gbp/geometry_tutorials-release.git#tag=release/jade/geometry_tutorials/0.2.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-geometry-tutorials
+
