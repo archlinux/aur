@@ -1,0 +1,16 @@
+pkgbase = ros-jade-octomap
+	pkgdesc = ROS - The OctoMap library implements a 3D occupancy grid mapping approach, providing data structures and mapping algorithms in C++.
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = http://octomap.github.io
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	depends = ros-jade-catkin
+	source = octomap::git+https://github.com/ros-gbp/octomap-release.git#tag=release/jade/octomap/1.6.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-octomap
+
