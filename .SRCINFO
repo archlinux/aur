@@ -1,0 +1,17 @@
+pkgbase = mit-scheme
+	pkgdesc = MIT/GNU Scheme
+	pkgver = 9.2
+	pkgrel = 1
+	url = http://www.gnu.org/software/mit-scheme/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = ncurses
+	depends = zlib
+	optdepends = openssl: support for openssl
+	source = http://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-9.2-x86-64.tar.gz
+	md5sums = 9fcc6c156e53efeb0560996551fa0a57
+
+pkgname = mit-scheme
+
