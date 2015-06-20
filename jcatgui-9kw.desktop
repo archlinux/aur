@@ -1,8 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Name=jCatGUI
-Exec=java -jar /usr/share/jcatgui-9kw/jCatGUI_9kw.jar
-StartupNotify=false
-Icon=jcatgui-9kw
-Type=Application
-Categories=Network;

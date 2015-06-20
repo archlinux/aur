@@ -1,19 +1,15 @@
 pkgbase = jcatgui-9kw
 	pkgdesc = An application written to solve jobs or rather to earn credits on 9kw.eu in more comfortable way than in a browser.
-	pkgver = 1.1.6.b
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://sites.google.com/site/jcatgui9kw/
 	arch = any
 	license = unknown
+	makedepends = gendesk
+	depends = bash
 	depends = java-runtime
 	source = https://sites.google.com/site/jcatgui9kw/jCatGUI_9kw.zip
-	source = notify.wav
-	source = jcatgui-9kw.desktop
-	source = jcatgui-9kw.png
-	md5sums = 28ffa0b7d05cf8945422f815525b65fa
-	md5sums = 73bbae9aa821442121b423d32cacdc70
-	md5sums = dddc2627da8cfdcbb0bdd03729145a2b
-	md5sums = a4f5f45962d237882135aa652cbd5418
+	sha256sums = 7aefe6dadd035102a20d2e9f398511f195fa395e324d989b93128d18ec7ccad1
 
 pkgname = jcatgui-9kw
 
