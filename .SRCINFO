@@ -1,0 +1,22 @@
+pkgbase = ros-jade-rqt-gui-py
+	pkgdesc = ROS - rqt_gui_py enables GUI plugins to use the Python client library for ROS.
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_gui_py
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rospy
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-qt-gui
+	makedepends = ros-jade-rqt-gui
+	depends = ros-jade-rospy
+	depends = ros-jade-qt-gui
+	depends = ros-jade-rqt-gui
+	source = rqt_gui_py::git+https://github.com/ros-gbp/rqt-release.git#tag=release/jade/rqt_gui_py/0.2.14-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rqt-gui-py
+
