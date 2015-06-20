@@ -1,0 +1,19 @@
+update_mime() {
+  update-mime-database usr/share/mime >/dev/null
+}
+
+post_install() {
+  update_mime
+
+  echo ""
+  echo "==> Remember to add (require 'rust-mode) to your ~/.emacs if you wish to use it."
+  echo ""
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  update_mime
+}
