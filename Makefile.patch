@@ -1,0 +1,26 @@
+--- ./net-responsibility-3.0b1/Makefile.am	2011-12-21 17:56:00.000000000 -0500
++++ Makefile.am	2012-01-14 13:54:17.441976226 -0500
+@@ -72,23 +72,3 @@
+ 	find $(distdir) -type d -name .svn -print0 | xargs -0 rm -rf
+ 	find $(distdir) -type d -name .dep -print0 | xargs -0 rm -rf
+ 	find $(distdir) -type d -name obj -print0 | xargs -0 rm -rf
+-
+-install: install-am postinst
+-
+-uninstall: prerm uninstall-am postrm
+-
+-postinst:
+-	$(top_srcdir)/scripts/postinst $(pkgdatadir) $(initdir)
+-
+-prerm:
+-	$(top_srcdir)/scripts/prerm $(pkgdatadir) $(initdir)
+-
+-postrm:
+-	rm -f $(piddir)/net-responsibility.pid
+-	rm -f $(pkgdatadir)/blacklist.xml
+-	rm -f $(pkgdatadir)/config.xml
+-	rm -rf $(pkgdatadir)/reports
+-	rm -f $(databasedir)/net-responsibility.db
+-	rm -f $(initdir)/net-responsibility
+-
+-.PHONY: prerm postinst postrm

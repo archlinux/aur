@@ -1,0 +1,35 @@
+
+## arg 1:  the new package version
+post_install() {
+   if ! [ -f etc/config.xml ]; then
+    mkdir etc/reports
+    net-responsibilty --install
+   else
+    echo "Using existing configuration"
+   fi
+   systemctl enable net-responsibility.service
+   systemctl start net-responsibility
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  if [ -f etc/rc.d/net-responsiblity ]; then
+    etc/rc.d/net-responsibility stop
+  fi
+  if [ -f usr/share/net-responsibility/config.xml ]; then		
+    net-responsibility --uninstall
+  fi
+}
+
+## arg 1:  the old package version
+post_remove() {
+  rm -f /var/run/net-responsibility.pid
+  rm -f usr/share/net-responsibility/blacklist.xml
+  rm -f usr/share/net-responsibility/config.xml
+  rm -rf usr/share/net-responsibility/reports
+  rm -f /var/log/net-responsibility.db
+  rm -f etc/rc.d/net-responsibility
+  rm -f etc/conf.d/net-responsibility.conf
+}
+
+# vim:set ts=2 sw=2 et:

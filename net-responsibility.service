@@ -1,0 +1,10 @@
+[Unit]
+Description=Net Responsibilty Systemd support
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/net-responsibility --daemon
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

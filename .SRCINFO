@@ -1,0 +1,23 @@
+pkgbase = net-responsibility
+	pkgdesc = An Internet Accountablity software written in C++ for Linux, Windows, and Mac OS X
+	pkgver = 3.0.3
+	pkgrel = 6
+	url = http://www.netresponsibility.com
+	install = net-responsibility.install
+	arch = i686
+	arch = x86_64
+	license = gpl
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = poco
+	depends = libpcap
+	source = https://bitbucket.org/netresponsibilityteam/net-responsibility/downloads/net-responsibility-3.0.3.tar.gz
+	source = Makefile.patch
+	source = net-responsibility.service
+	md5sums = d757a4429507de92ceac517dab04ca5c
+	md5sums = b7436f6e9dc2ac5993dc0dd17bf08f4a
+	md5sums = 46fc73d3c72361c6a1b7cad80c075f0d
+
+pkgname = net-responsibility
+
