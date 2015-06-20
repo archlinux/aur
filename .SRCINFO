@@ -1,0 +1,22 @@
+pkgbase = ros-jade-pcl-msgs
+	pkgdesc = ROS - Package containing PCL (Point Cloud Library)-related ROS messages.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://wiki.ros.org/pcl_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-std-msgs
+	source = pcl_msgs::git+https://github.com/ros-gbp/pcl_msgs-release.git#tag=release/jade/pcl_msgs/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-pcl-msgs
+
