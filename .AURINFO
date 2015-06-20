@@ -1,0 +1,19 @@
+pkgbase = ruby-thin
+	pkgdesc = A thin and fast web server
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://code.macournoyer.com/thin/
+	arch = i686
+	arch = x86_64
+	license = Ruby
+	depends = ruby
+	depends = ruby-rack
+	depends = ruby-eventmachine
+	depends = ruby-daemons
+	noextract = thin-1.6.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/thin-1.6.3.gem
+	sha1sums = ad99e77149b922c3f067b0140438c044d24115f1
+
+pkgname = ruby-thin
+
