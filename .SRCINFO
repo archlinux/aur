@@ -1,0 +1,27 @@
+pkgbase = ros-jade-pcl-conversions
+	pkgdesc = ROS - Provides conversions from PCL data types and ROS message types.
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = http://wiki.ros.org/pcl_conversions
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-pcl-msgs
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = pcl
+	depends = ros-jade-pcl-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-sensor-msgs
+	depends = pcl
+	source = pcl_conversions::git+https://github.com/ros-gbp/pcl_conversions-release.git#tag=release/jade/pcl_conversions/0.2.0-1
+	md5sums = SKIP
+
+pkgname = ros-jade-pcl-conversions
+
