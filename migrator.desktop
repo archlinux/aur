@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Java;Development;
+Exec=java -cp $CLASSPATH:/usr/share/java/slf4j/slf4j-api.jar:/usr/share/java/slf4j/slf4j-migrator.jar org.slf4j.migrator.Main
+Name=SLF4J Migrator
+StartupNotify=true
+Terminal=false
+Type=Application
+
