@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Jamestown
+Comment=A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars
+Exec=/usr/bin/jamestown
+Icon=jamestown
+Terminal=false
+Categories=Game;

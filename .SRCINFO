@@ -1,0 +1,22 @@
+pkgbase = jamestown
+	pkgdesc = A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars (game sold separately)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.finalformgames.com/jamestown/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libgl
+	depends = openal
+	depends = sdl
+	source = hib://JamestownLinux_1_0_2.zip
+	source = https://github.com/ValveSoftware/source-sdk-2013/raw/master/sp/src/lib/public/linux32/libsteam_api.so
+	source = jamestown.desktop
+	source = jamestown.sh
+	md5sums = dcfb4348aba89f0f26bf5b4c7e05d936
+	md5sums = 60ded2356764af5c0e81fddc18b347da
+	md5sums = a3c076b5acfe960aed6464d1d268d6d2
+	md5sums = 031b946ddcc8538bd19d0eda8b34b91c
+
+pkgname = jamestown
+
