@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/deponia-2-chaos-on-deponia"
+
+"$gogdir"/start.sh
+

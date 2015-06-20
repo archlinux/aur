@@ -1,0 +1,20 @@
+pkgbase = gog-deponia-2-chaos-on-deponia
+	pkgdesc = Rufus is not a pleasant guy. Ill-tempered and entirely too convinced of his own greatness, he lives at the edge of a small settlement somewhere in the most remote sector of the garbage-covered planet Deponia. GOG linux game package required!
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/deponia_2_chaos_on_deponia
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = local://gog_deponia_2_chaos_on_deponia_1.0.0.1.tar.gz
+	source = gog-deponia-2-chaos-on-deponia
+	md5sums = c231dd926257bc2cf9849d82e711e808
+	md5sums = 2b15664c975ed0f2b7a1142700627274
+
+pkgname = gog-deponia-2-chaos-on-deponia
+
