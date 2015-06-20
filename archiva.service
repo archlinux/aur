@@ -1,0 +1,12 @@
+[Unit]
+Description=Repository Management Software
+After=network.target
+
+[Service]
+Type=simple
+User=root
+SyslogIdentifier=archiva
+ExecStart= /usr/share/java/archiva/bin/archiva console
+
+[Install]
+WantedBy=multi-user.target
