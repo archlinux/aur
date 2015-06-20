@@ -1,0 +1,23 @@
+pkgbase = pkgdistcache
+	pkgdesc = A distributed local-network cache for pacman packages
+	pkgver = 0.3.1
+	pkgrel = 4
+	url = http://venator.ath.cx/dw/doku.php?id=linux:pkgdistcache
+	install = pkgdistcache.install
+	arch = any
+	license = GPL
+	depends = avahi
+	depends = python2-dbus
+	depends = python2-gobject2
+	depends = curl
+	source = pkgdistcache-client
+	source = pkgdistcache-daemon
+	source = pkgdistcache.conf
+	source = pkgdistcached.service
+	sha256sums = d53ba7417b6d6db3c36876f7ef92933553ce27597b94ce727deeef8c6edac1f8
+	sha256sums = 812075ee7b50f576d9706e0f9aab48ccfb2ee1fd8c06d91476c90c0fe7d576d8
+	sha256sums = d77ac418aa651bc622cd91204d6907554c6cdb4bb989e484cc54da32342faa51
+	sha256sums = 5eb96f9e4bcec466d097ac46d72fd9626fb36bd61a3d3ceb1ca69706036f27c2
+
+pkgname = pkgdistcache
+

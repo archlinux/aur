@@ -1,0 +1,18 @@
+post_install() {
+	cat <<EOF
+
+==> Quick start:
+
+*** SERVER MODE ***
+Start and enable service:
+ $ sudo systemctl start pkgdistcached
+ $ sudo systemctl enable pkgdistcached
+
+*** CLIENT MODE ***
+1) Make sure avahi-daemon is enabled:
+ $ sudo systemctl enable avahi-daemon
+2) Edit /etc/pacman.conf, set the option:
+     XferCommand = /usr/bin/pkgdistcache-client %u %o
+
+EOF
+}

@@ -1,0 +1,8 @@
+[Unit]
+Description=Distributed pacman package cache
+
+[Service]
+ExecStart=/usr/bin/pkgdistcache-daemon -F
+
+[Install]
+WantedBy=multi-user.target
