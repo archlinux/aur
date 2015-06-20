@@ -2,7 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=0.3.r54.g71d0f5a
+pkgver=0.93.r1.g71d0f5a
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
@@ -17,8 +17,8 @@ source=(git://github.com/DreamSourceLab/DSView
         dsview.desktop)
 md5sums=('SKIP'
          '1e65dd1e0a3154296f37429ff2f6e817'
-         'ee5cc08bff5f6a23ef4ba5fdfbf956a1'
-         'af6d97ba0fbea628e320bdb4b469b766'
+         'da765c96fbe56910e32755995ec3616a'
+         '9a0a3d388369283019d7f0efa8d0c8a6'
          '095886809795b40d663bfe4b79395811')
 install=dsview.install
 
@@ -37,6 +37,8 @@ build() {
   cd "$srcdir/DSView/DSView"
 
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_SKIP_RPATH=1 .
+
+  # for f in $(find . -type f -name "*.png"); do echo "Processing $f ..."; convert $f -strip $f; done
   make
 }
 

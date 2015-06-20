@@ -1,6 +1,6 @@
 pkgbase = dsview-git
 	pkgdesc = GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.
-	pkgver = 0.3.r54.g71d0f5a
+	pkgver = 0.93.r1.g71d0f5a
 	pkgrel = 1
 	url = http://www.dreamsourcelab.com/
 	install = dsview.install
@@ -20,8 +20,8 @@ pkgbase = dsview-git
 	source = dsview.desktop
 	md5sums = SKIP
 	md5sums = 1e65dd1e0a3154296f37429ff2f6e817
-	md5sums = ee5cc08bff5f6a23ef4ba5fdfbf956a1
-	md5sums = af6d97ba0fbea628e320bdb4b469b766
+	md5sums = da765c96fbe56910e32755995ec3616a
+	md5sums = 9a0a3d388369283019d7f0efa8d0c8a6
 	md5sums = 095886809795b40d663bfe4b79395811
 
 pkgname = dsview-git

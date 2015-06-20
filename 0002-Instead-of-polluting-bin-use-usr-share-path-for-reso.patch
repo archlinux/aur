@@ -50,7 +50,7 @@ index e4a2b6e..b94cbf3 100644
          strcpy(config_path, str.c_str());
 +        */
 +        // dirty
-+        strcpy(config_path, "/usr/share/dslogic/");
++        strcpy(config_path, "/usr/share/dsview/");
      }
  
  	// Do the scan

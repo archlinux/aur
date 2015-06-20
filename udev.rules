@@ -1,6 +1,8 @@
-## DSLogic
-# 2a0e:0001
-ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", ENV{ID_MM_DEVICE_IGNORE}="1"
-ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", ENV{MTP_NO_PROBE}="1"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", GROUP="plugdev", MODE="0660"
+## DSLogic udev rules
 
+ATTR{idVendor}!="2a0e", GOTO="not_DreamStudio"
+# Logic analyzer
+ATTR{idProduct}=="0001", SYMLINK+="dslogic", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+# Oscilloscope
+ATTR{idProduct}=="0002", SYMLINK+="dslogic_scope", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+LABEL="not_DreamStudio"
