@@ -1,0 +1,19 @@
+pkgbase = ros-jade-pr2-description
+	pkgdesc = ROS - This package contains the description (mechanical, kinematic, visual, etc.) of the PR2 robot.
+	pkgver = 1.11.9
+	pkgrel = 1
+	url = http://ros.org/wiki/pr2_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-ivcon
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-convex-decomposition
+	depends = ros-jade-xacro
+	source = pr2_description::git+https://github.com/pr2-gbp/pr2_common-release.git#tag=release/jade/pr2_description/1.11.9-0
+	md5sums = SKIP
+
+pkgname = ros-jade-pr2-description
+
