@@ -1,0 +1,18 @@
+pkgbase = gtksourceview-highlight-rhtml
+	pkgdesc = Embedded Ruby syntax highlighting for gtksourceview
+	pkgver = LATEST
+	pkgrel = 1
+	url = https://github.com/gmate
+	arch = any
+	license = GPL
+	source = https://github.com/gmate/gmate/raw/master/lang-specs/rhtml.lang
+	sha512sums = SKIP
+
+pkgname = gtksourceview2-highlight-rhtml
+	depends = gtksourceview2
+	depends = gtksourceview2-highlight-rails
+
+pkgname = gtksourceview3-highlight-rhtml
+	depends = gtksourceview3
+	depends = gtksourceview3-highlight-rails
+
