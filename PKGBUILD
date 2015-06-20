@@ -12,8 +12,8 @@ source=(http://www.fontsite.com/freefonts/BergamoStd.zip)
 noextract=(BergamoStd.zip)
 install=$pkgname.install
 md5sums=('2e0ded1cf1791dc8650510087aaff2de')
-build()
-{
+
+package() {
   cd $srcdir/
   unzip -j BergamoStd.zip
   chmod a+r *.otf
