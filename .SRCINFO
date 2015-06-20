@@ -1,0 +1,21 @@
+pkgbase = python-parched-git
+	pkgdesc = A Pacman package and PKGBUILD parser module for Python
+	pkgver = 0.1.r25.4c3ec3f
+	pkgrel = 3
+	url = https://github.com/sebnow/parched
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = python-parched
+	conflicts = python-parched
+	options = !emptydirs
+	source = python-parched::git+https://github.com/sebnow/parched.git
+	source = LICENSE
+	source = parched-assignment.patch
+	md5sums = SKIP
+	md5sums = 31eccf56949504b5ce33110068948cf2
+	md5sums = a3397cfc40ce25f7455360c6481dbeff
+
+pkgname = python-parched-git
+

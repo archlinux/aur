@@ -1,0 +1,7 @@
+python-parched
+src
+pkg
+python-parched-git-*.tar.xz
+python-parched-git-*.src.tar.gz
+.AURINFO
+
