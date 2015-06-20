@@ -17,7 +17,7 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=45.0.2427.7
+pkgver=45.0.2431.0
 _launcher_ver=2
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome (Dev Channel)'
@@ -153,6 +153,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/cld_2'
            'third_party/cros_system_api'
            'third_party/cython/python_flags.py'
+           'third_party/devscripts'
            'third_party/dom_distiller_js'
            'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js'
            'third_party/ffmpeg'
@@ -231,6 +232,7 @@ _necesary=('base/third_party/dmg_fp'
 # -Dlogging_like_official_build=1            | Save space by removing DLOG and DCHECK messages (about 6% reduction).
 # -Dlinux_use_gold_flags=0                   | Never use bundled gold binary. Disable gold linker flags for now.
 # -Dusb_ids_path=/usr/share/hwdata/usb.ids   | Use the file at run time instead of effectively compiling it in.
+# -Denable_hotwording=0                      | http://crbug.com/491435
 _flags=("-Dclang=${_use_clang}"
         '-Ddisable_glibc=1'
         '-Ddisable_fatal_linker_warnings=1'
@@ -239,6 +241,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Denable_touch_ui=1'
         '-Denable_webrtc=1'
         '-Denable_widevine=1'
+        '-Denable_hotwording=0'
         '-Dffmpeg_branding=Chrome'
         "-Dgoogle_api_key=${_google_api_key}"
         "-Dgoogle_default_client_id=${_google_default_client_id}"
@@ -486,7 +489,7 @@ package() {
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
   done
 
-  for i in ffmpegsumo widevinecdm widevinecdmadapter clearkeycdm; do
+  for i in widevinecdm widevinecdmadapter clearkeycdm; do
     install -Dm755 "lib${i}.so" "${pkgdir}/usr/lib/chromium-dev/lib${i}.so"
   done
 
@@ -524,5 +527,5 @@ package() {
     strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium-dev/"nacl_helper{,_bootstrap,_nonsfi}
   fi
   strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"{chromium-dev,chrome-sandbox,chromedriver}
-  strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{ffmpegsumo,widevinecdm{,adapter},clearkeycdm}.so
+  strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{widevinecdm{,adapter},clearkeycdm}.so
 }
