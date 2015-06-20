@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Qt Assistant (5.1.1-6)
+Comment=Shows Qt documentation and examples
+Exec=/opt/qt51/bin/assistant
+Icon=assistant-qt51
+Terminal=false
+Type=Application
+Categories=Qt;Development;Documentation;

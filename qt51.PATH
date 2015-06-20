@@ -1,0 +1,4 @@
+export PATH=/opt/qt51/bin:$PATH
+export LD_LIBRARY_PATH=/opt/qt51/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/opt/qt51/lib/pkgconfig:$PKG_CONFIG_PATH
+
