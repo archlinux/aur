@@ -1,11 +1,11 @@
 pkgname=python2-rosdep
 pkgver=0.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tool for installing system dependencies on a variety of platforms."
 url="http://ros.org/doc/api/rosdep2/html/"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('python2' 'python2-catkin_pkg' 'python2-rospkg' 'python2-rosdistro' 'python2-yaml')
+depends=('python2' 'python2-catkin-pkg' 'python2-rospkg' 'python2-rosdistro' 'python2-yaml')
 optdepends=()
 makedepends=('python2-distribute' 'python2-setuptools')
 
