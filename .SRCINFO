@@ -1,0 +1,13 @@
+pkgbase = memcache-top
+	pkgdesc = perl command-line memcached stat reporter, top-like output
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://code.google.com/p/memcache-top/
+	arch = any
+	license = BSD New License
+	depends = perl
+	source = http://memcache-top.googlecode.com/files/memcache-top-v0.6
+	md5sums = 5eb035237cb482772f898597eda26106
+
+pkgname = memcache-top
+
