@@ -1,0 +1,13 @@
+pkgbase = libhdhomerun
+	pkgdesc = Library for interfacing with HDHomeRun device
+	pkgver = 20150406
+	pkgrel = 1
+	url = http://www.silicondust.com/downloads
+	arch = any
+	license = LGPL
+	depends = glibc
+	source = http://download.silicondust.com/hdhomerun/libhdhomerun_20150406.tgz
+	md5sums = 6c765b35101681ed3c54695a1c6109c6
+
+pkgname = libhdhomerun
+
