@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.2.1
+Exec=tankatwar
+Terminal=false
+Categories=Game;StrategyGame;
+StartupNotify=false
+Name=TANK@WAR
+GenericName=Tank at War
+Comment=Multiplayer tank battle game

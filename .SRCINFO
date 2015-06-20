@@ -1,0 +1,19 @@
+pkgbase = tankatwar
+	pkgdesc = TANK@WAR is a solo and team-based multiplayer 3D online game dedicated to armored warfare set in the modern age. Throw yourself into epic tank battles..
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://tankatwar.com/
+	arch = x86_64
+	license = Custom
+	depends = openal
+	depends = lib32-openal
+	depends = lib32-mesa
+	source = http://tankatwar.com/files/TANK@WAR-1.2.1-linux64.tar.gz
+	source = tankatwar.png
+	source = tankatwar.desktop
+	sha256sums = 81a9835ea646076e42cc699ef30bbb3ab80e50b6567ae17b64a1aca355cc96f8
+	sha256sums = 6c1c711d786990c3a2a003f0bba61b56194802f7f2da52081af8c2eeb426b73c
+	sha256sums = 1860f7c9875b1d3b4ce5c03e4754606547fb09f8193bc25fa3ef906f90fd608e
+
+pkgname = tankatwar
+
