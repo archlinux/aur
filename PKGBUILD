@@ -14,7 +14,7 @@ install=$pkgname.install
 md5sums=('2e0ded1cf1791dc8650510087aaff2de')
 
 package() {
-  cd $srcdir/
+  cd "$srcdir"
   unzip -j BergamoStd.zip
   install -d "$pkgdir/usr/share/fonts/OTF"
   install -m644 *.otf "$pkgdir/usr/share/fonts/OTF"
