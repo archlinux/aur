@@ -2,15 +2,15 @@ pkgbase = pyutil
 	pkgdesc = general-purpose python library (used by tahoe-lafs)
 	pkgver = 2.0.0
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/pyutil
+	url = https://pypi.python.org/pypi/pyutil
 	arch = any
 	license = GPL2
 	makedepends = python2-setuptools
 	depends = python2
-	depends = python2-simplejson
-	depends = zbase32
+	depends = python2-simplejson>=2.1.0
+	depends = zbase32>=1.1.0
 	depends = twisted
-	source = http://pypi.python.org/packages/source/p/pyutil/pyutil-2.0.0.tar.gz
+	source = https://pypi.python.org/packages/source/p/pyutil/pyutil-2.0.0.tar.gz
 	md5sums = 025a06985691133479500139a3729909
 
 pkgname = pyutil
