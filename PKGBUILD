@@ -1,7 +1,7 @@
 # Maintainer: Zoe <chp321@gmail.com>
 pkgname=wavsplit
 pkgver=1.2.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Splits large WAV files at given time positions'
 arch=('i686' 'x86_64')
 url="http://download.tuxfamily.org/xcfaudio/WavSplit/"

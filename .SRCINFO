@@ -1,7 +1,7 @@
 pkgbase = wavsplit
 	pkgdesc = Splits large WAV files at given time positions
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 3
 	url = http://download.tuxfamily.org/xcfaudio/WavSplit/
 	arch = i686
 	arch = x86_64
