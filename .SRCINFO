@@ -1,0 +1,21 @@
+pkgbase = ros-jade-qt-gui
+	pkgdesc = ROS - qt_gui provides the infrastructure for an integrated graphical user interface based on Qt.
+	pkgver = 0.2.28
+	pkgrel = 1
+	url = http://ros.org/wiki/qt_gui
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = python2-pyqt4
+	makedepends = qt4
+	depends = ros-jade-python-qt-binding
+	depends = python2-rospkg
+	depends = tango-icon-theme
+	source = qt_gui::git+https://github.com/ros-gbp/qt_gui_core-release.git#tag=release/jade/qt_gui/0.2.28-0
+	md5sums = SKIP
+
+pkgname = ros-jade-qt-gui
+
