@@ -1,0 +1,24 @@
+pkgbase = ros-jade-tf2
+	pkgdesc = ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time.
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rostime
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-tf2-msgs
+	makedepends = ros-jade-catkin
+	makedepends = console-bridge
+	depends = ros-jade-rostime
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-tf2-msgs
+	depends = console-bridge
+	source = tf2::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/jade/tf2/0.5.11-0
+	md5sums = SKIP
+
+pkgname = ros-jade-tf2
+
