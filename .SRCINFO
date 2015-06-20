@@ -1,0 +1,22 @@
+pkgbase = ros-jade-diagnostic-common-diagnostics
+	pkgdesc = ROS - diagnostic_common_diagnostics.
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://ros.org/wiki/diagnostic_common_diagnostics
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-diagnostic-updater
+	makedepends = ros-jade-rospy
+	depends = ros-jade-tf
+	depends = ros-jade-diagnostic-updater
+	depends = ros-jade-rospy
+	depends = hddtemp
+	source = diagnostic_common_diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/jade/diagnostic_common_diagnostics/1.8.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-diagnostic-common-diagnostics
+
