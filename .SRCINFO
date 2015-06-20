@@ -1,0 +1,26 @@
+pkgbase = ros-jade-desktop
+	pkgdesc = ROS - A metapackage to aggregate several packages.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-urdf-tutorial
+	depends = ros-jade-robot
+	depends = ros-jade-roslint
+	depends = ros-jade-geometry-tutorials
+	depends = ros-jade-rqt-robot-plugins
+	depends = ros-jade-common-tutorials
+	depends = ros-jade-viz
+	depends = ros-jade-ros-tutorials
+	depends = ros-jade-rqt-common-plugins
+	depends = ros-jade-visualization-tutorials
+	source = desktop::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/desktop/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-desktop
+
