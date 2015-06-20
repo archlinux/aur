@@ -1,0 +1,20 @@
+pkgbase = dvdisaster-alpha
+	pkgdesc = Provides a margin of safety against data loss on CD and DVD media caused by aging or scratches
+	pkgver = 0.79.3
+	pkgrel = 2
+	url = http://www.dvdisaster.com/
+	install = dvdisaster.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	provides = dvdisaster
+	conflicts = dvdisaster
+	options = !makeflags
+	source = http://dvdisaster.net/downloads/dvdisaster-0.79.3.tar.bz2
+	source = buildFix.patch
+	sha1sums = cfa5c16d75036081b2856f1e84d04ca0f35c2656
+	sha1sums = a1028bbe87e7f54a4f24c2a686cdf45890f9069d
+
+pkgname = dvdisaster-alpha
+

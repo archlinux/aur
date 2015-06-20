@@ -1,0 +1,14 @@
+diff -Naur dvdisaster-0.79.3/tools/pngio.c dvdisaster-0.79.3.new/tools/pngio.c
+--- dvdisaster-0.79.3/tools/pngio.c	2010-11-11 11:38:56.000000000 +0100
++++ dvdisaster-0.79.3.new/tools/pngio.c	2015-04-12 17:03:27.700890472 +0200
+@@ -26,6 +26,10 @@
+ #include "md5.h"
+ #include "memory.h"
+ 
++#if defined(PNG_LIBPNG_VER_MINOR) && PNG_LIBPNG_VER_MINOR >= 5
++# include <zlib.h>
++#endif
++
+ /***
+  *** aux stuff
+  ***/
