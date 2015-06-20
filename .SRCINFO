@@ -1,0 +1,20 @@
+pkgbase = ros-jade-kdl-conversions
+	pkgdesc = ROS - Conversion functions between KDL and geometry_msgs types.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = http://ros.org/wiki/kdl_conversions
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-orocos-kdl
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-catkin
+	depends = ros-jade-orocos-kdl
+	depends = ros-jade-geometry-msgs
+	source = kdl_conversions::git+https://github.com/ros-gbp/geometry-release.git#tag=release/jade/kdl_conversions/1.11.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-kdl-conversions
+
