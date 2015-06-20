@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-add-to-search-bar
+	pkgdesc = Add any search engine to the search bar.
+	pkgver = 2.8
+	pkgrel = 2
+	url = https://firefox.maltekraus.de/extensions/add-to-search-bar
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = firefox
+	source = https://addons.cdn.mozilla.net/user-media/addons/3682/add_to_search_bar-2.8-fx.xpi
+	md5sums = e95fae25a54ef043bda414d7c2e60675
+
+pkgname = firefox-extension-add-to-search-bar
+
