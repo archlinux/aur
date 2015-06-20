@@ -1,0 +1,21 @@
+pkgbase = qml-material
+	pkgdesc = A UI framework for QtQuick implementing Material Design
+	pkgver = 0.0.5
+	pkgrel = 2
+	url = https://github.com/papyros/qml-material
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base-git
+	depends = qt5-declarative-git
+	depends = qt5-quickcontrols-git
+	depends = qt5-svg-git
+	depends = qt5-graphicaleffects-git
+	depends = qml-extras
+	provides = qml-material
+	source = qml-material::git+https://github.com/papyros/qml-material.git#tag=v0.0.5
+	sha256sums = SKIP
+
+pkgname = qml-material
+
