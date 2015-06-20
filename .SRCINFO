@@ -1,0 +1,15 @@
+pkgbase = python-binaryornot
+	pkgdesc = Ultra-lightweight pure Python package to check if a file is binary or text
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/audreyr/binaryornot
+	arch = any
+	groups = devel
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = https://github.com/audreyr/binaryornot/archive/0.3.0.tar.gz
+	md5sums = 8ef002b896a5f93b9875d78ffa3cf666
+
+pkgname = python-binaryornot
+
