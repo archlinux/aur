@@ -4,15 +4,15 @@ pkgname=nginx-mainline-waf
 _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.9.1
-pkgrel=3
+pkgver=1.9.2
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, with ngx_pagespeed, Naxsi, GeoIP (GeoIP Legacy) and YubiKey Auth Support builtin, with Thread Pools.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
 
-_psver=1.9.32.3-beta
-_psolver=1.9.32.3
+_psver=1.9.32.4-beta
+_psolver=1.9.32.4
 
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'yubico-c-client')
 backup=('etc/nginx/fastcgi.conf'
@@ -112,27 +112,27 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('fc054d51effa7c80a2e143bc4e2ae6a7'
-         '74cfc43f35b21dd25cea4b98cf093ebf'
-         'd8eef6df918da873823a34bbf979875f'
+md5sums=('572a0f217f845d3592b5ca779066d1c3'
+         '2b3fe1f14b519c99b6412dafc5e8cb2e'
+         '9f4d11cabbe5cd0c6945a4a89c82bff0'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
-sha1sums=('b021d26bcefd41c8b9f9f35f263edf005e0f41dd'
-          'e8348f87284df0148392f8cef188a96a2b453a10'
-          'e97903dc9f6ff4b5dce4f73007909b4d97f8ee8e'
+sha1sums=('814855ab98d6b0900207a6e5307252b130af61a2'
+          '84605b331b4e961c19de93f16e6d7ea75836d48a'
+          'd0cda2462d52783ff22fefd86ff80b5945de7583'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
           'df6dd84b41f5127fec39216d578cfbbe1815699f'
           'e43ccb1e8eb90bea64cb3cd0967a2df891473834')
-sha256sums=('09f555fae694c0944f172b575ad239f56d40d14559d98e843de0a690f38c1dad'
-            '167100fb198a0a4dd622747cd37ab520f42786f1ee6c7d444f585dacc4d88570'
-            'b0aa65cd3a917c27b02b62d71582ffcf790639cbd73ae9d6e8374c5bc5fde9e2'
+sha256sums=('80b6425be14a005c8cb15115f3c775f4bc06bf798aa1affaee84ed9cf641ed78'
+            'b84cb83dd591a1350d676a18b8b409757619485f38bec237613b223420b0cc62'
+            'f4d6f1788751aeb3c59931f7923b7eb2dff97743abf0bc6ae74dd5fd001207fa'
             'SKIP'
             'SKIP'
             'SKIP'
