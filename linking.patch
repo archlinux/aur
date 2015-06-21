@@ -1,0 +1,25 @@
+diff -ruN gpass-0.5.1-orig/src/Makefile.am gpass-0.5.1/src/Makefile.am
+--- gpass-0.5.1-orig/src/Makefile.am	2006-02-19 13:20:01.000000000 +0100
++++ gpass-0.5.1/src/Makefile.am	2011-04-27 03:16:38.000000000 +0200
+@@ -26,5 +26,5 @@
+ 
+ gpass_DEPENDENCIES	= $(top_builddir)/lib/libgpass.a
+ gpass_CFLAGS		= $(GNOME_CFLAGS) $(MHASH_INCLUDES) $(MCRYPT_CFLAGS)
+-gpass_LDADD		= $(GNOME_LIBS) $(MHASH_LIBS) $(MCRYPT_LIBS) \
+-			  $(top_builddir)/lib/libgpass.a
++gpass_LDADD		= $(top_builddir)/lib/libgpass.a \
++			  $(GNOME_LIBS) $(MHASH_LIBS) $(MCRYPT_LIBS)
+diff -ruN gpass-0.5.1-orig/src/Makefile.in gpass-0.5.1/src/Makefile.in
+--- gpass-0.5.1-orig/src/Makefile.in	2006-03-11 16:29:28.000000000 +0100
++++ gpass-0.5.1/src/Makefile.in	2011-04-27 03:18:43.000000000 +0200
+@@ -283,8 +283,8 @@
+ 
+ gpass_DEPENDENCIES = $(top_builddir)/lib/libgpass.a
+ gpass_CFLAGS = $(GNOME_CFLAGS) $(MHASH_INCLUDES) $(MCRYPT_CFLAGS)
+-gpass_LDADD = $(GNOME_LIBS) $(MHASH_LIBS) $(MCRYPT_LIBS) \
+-			  $(top_builddir)/lib/libgpass.a
++gpass_LDADD = $(top_builddir)/lib/libgpass.a \
++			  $(GNOME_LIBS) $(MHASH_LIBS) $(MCRYPT_LIBS)
+ 
+ all: all-am
+ 

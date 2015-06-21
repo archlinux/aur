@@ -1,0 +1,25 @@
+pkgbase = gpass
+	pkgdesc = A password manegement software for GNOME2 desktop.
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://projects.netlab.jp/gpass/
+	install = gpass.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libgnomeui
+	depends = gtk2
+	depends = mhash
+	depends = libmcrypt
+	source = https://github.com/raffael-sfm/gpass/releases/download/0.5.1/gpass-0.5.1.tar.gz
+	source = linking.patch
+	source = gerror.patch
+	md5sums = f7144c5b3b2056d6f33d8dbf1011a211
+	md5sums = 75b1cf5ea00c1b22545a100350d0fd97
+	md5sums = cde8d8b6212b09db6cad7be153bba12d
+	sha256sums = 0a8216538144e34188e07bcc9f0415c36702fcb90890ddfbf75a594e5864a881
+	sha256sums = b96b0fab02c2c849178fcf986565e830bbd647d22a2f4491ad6b42f86a19af06
+	sha256sums = 36140942553b61ab21dc7846bff0e8bbe5685a7ecb429e3f3126dd6a60a9f0e6
+
+pkgname = gpass
+

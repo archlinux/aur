@@ -1,0 +1,23 @@
+diff -ur gpass-0.5.1-orig/include/gpass/error.h gpass-0.5.1/include/gpass/error.h
+--- gpass-0.5.1-orig/include/gpass/error.h	2012-08-25 16:33:41.000000000 +0200
++++ gpass-0.5.1/include/gpass/error.h	2012-08-25 16:34:15.000000000 +0200
+@@ -19,8 +19,6 @@
+ #ifndef __GPASS_ERROR_H__
+ #define __GPASS_ERROR_H__
+ 
+-#include <glib/gerror.h>
+-
+ G_BEGIN_DECLS
+ 
+ void gpass_error_show_and_exit(GError *error);
+diff -ur gpass-0.5.1-orig/src/helper.h gpass-0.5.1/src/helper.h
+--- gpass-0.5.1-orig/src/helper.h	2012-08-25 16:33:40.000000000 +0200
++++ gpass-0.5.1/src/helper.h	2012-08-25 16:33:58.000000000 +0200
+@@ -19,7 +19,6 @@
+ #ifndef __GPASS_HELPER_H__
+ #define __GPASS_HELPER_H__
+ 
+-#include <glib/gerror.h>
+ #include <gtk/gtkmessagedialog.h>
+ 
+ G_BEGIN_DECLS
