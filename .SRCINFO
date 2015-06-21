@@ -1,0 +1,16 @@
+pkgbase = duma
+	pkgdesc = Multi-platform memory debugging library (Detect Unintended Memory Access)
+	pkgver = 2.5.15
+	pkgrel = 2
+	url = http://duma.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = gcc-libs
+	source = http://sourceforge.net/projects/duma/files/duma/2.5.15/duma_2_5_15.tar.gz
+	md5sums = fe630c69cbaa39caf225a3d9ed2fda1f
+	sha256sums = baaf794854e3093ad1bddadbfb8ad4b220a7117d70359ee216bd59e353734e17
+
+pkgname = duma
+
