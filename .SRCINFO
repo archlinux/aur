@@ -1,0 +1,21 @@
+pkgbase = fractal-hib
+	pkgdesc = An enthralling music puzzler experience (Humble Bundle version)
+	pkgver = 20130613
+	pkgrel = 1
+	url = http://www.cipherprime.com/games/fractal/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = hib-dlagent
+	depends = mesa
+	depends = libxcursor
+	depends = glu
+	source = hib://Fractal_20130613_Linux_1371245691.tar.gz
+	source = fractal.sh
+	source = fractal.desktop
+	md5sums = 4ea677cd81cccc250f4c02a618b299f5
+	md5sums = ef357ae4ef92514176959df8068c769a
+	md5sums = 44d4b6f8bc260becf997c9e2382862d8
+
+pkgname = fractal-hib
+

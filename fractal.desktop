@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Fractal
+Comment=Music Puzzler Game
+Exec=fractal
+Icon=fractal
+Terminal=false
+StartupNotify=false
+Categories=Game;LogicGame
