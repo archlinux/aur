@@ -1,0 +1,40 @@
+From e35d6f6156c6aa04ab6639ec57f49616b12b731a Mon Sep 17 00:00:00 2001
+From: Jose Luis Rivero <jrivero@osrfoundation.org>
+Date: Mon, 24 Mar 2014 21:34:46 +0100
+Subject: [PATCH] Fix soname versions
+
+---
+ urdf_parser/CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/urdf_parser/CMakeLists.txt b/urdf_parser/CMakeLists.txt
+index cd23331..7ce2429 100644
+--- a/urdf_parser/CMakeLists.txt
++++ b/urdf_parser/CMakeLists.txt
+@@ -2,19 +2,19 @@ include_directories(include)
+ 
+ add_library(urdfdom_world SHARED src/pose.cpp src/model.cpp src/link.cpp src/joint.cpp src/world.cpp)
+ target_link_libraries(urdfdom_world ${tinyxml_libraries} ${console_bridge_LIBRARIES} ${Boost_LIBRARIES})
+-set_target_properties(urdfdom_world PROPERTIES SOVERSION 0.2)
++set_target_properties(urdfdom_world PROPERTIES SOVERSION 0.3)
+ 
+ add_library(urdfdom_model SHARED src/pose.cpp src/model.cpp src/link.cpp src/joint.cpp)
+ target_link_libraries(urdfdom_model ${tinyxml_libraries} ${console_bridge_LIBRARIES} ${Boost_LIBRARIES})
+-set_target_properties(urdfdom_model PROPERTIES SOVERSION 0.2)
++set_target_properties(urdfdom_model PROPERTIES SOVERSION 0.3)
+ 
+ add_library(urdfdom_sensor SHARED src/urdf_sensor.cpp)
+ target_link_libraries(urdfdom_sensor urdfdom_model ${tinyxml_libraries} ${console_bridge_LIBRARIES} ${Boost_LIBRARIES})
+-set_target_properties(urdfdom_sensor PROPERTIES SOVERSION 0.2)
++set_target_properties(urdfdom_sensor PROPERTIES SOVERSION 0.3)
+ 
+ add_library(urdfdom_model_state SHARED src/urdf_model_state.cpp src/twist.cpp)
+ target_link_libraries(urdfdom_model_state ${tinyxml_libraries} ${console_bridge_LIBRARIES} ${Boost_LIBRARIES})
+-set_target_properties(urdfdom_model_state PROPERTIES SOVERSION 0.2)
++set_target_properties(urdfdom_model_state PROPERTIES SOVERSION 0.3)
+ 
+ # --------------------------------
+ 
+-- 
+1.9.3
+
