@@ -1,0 +1,18 @@
+pkgbase = facadefs
+	pkgdesc = A FUSE-based filesystem sandbox.
+	pkgver = 2012.12.24.1
+	pkgrel = 2
+	url = http://xyne.archlinux.ca/projects/facadefs
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-fuse
+	source = http://xyne.archlinux.ca/projects/facadefs/src/facadefs-2012.12.24.1.tar.xz
+	source = http://xyne.archlinux.ca/projects/facadefs/src/facadefs-2012.12.24.1.tar.xz.sig
+	md5sums = 72e9f7e3445047d7b433f9d922b62597
+	md5sums = dd1bf693b38d851b3e2664b9b4517a50
+	sha512sums = f9c1b3288b3173d5c853af98935f5856dedfba96e1c4ff301e9f77e75ce44956bd95463dfbc34f528f45ad5ac2013c80673119e38a2b653bcf6a6bd2f9ae354a
+	sha512sums = 1e60e7d80c81ffe6d44ba97a6b2b69864921c4f5f40bdce1398e1db1393c479e85623a708956a38d2147c010bf81efe7d3e72c46bcb6750541acd92105e78f3d
+
+pkgname = facadefs
+
