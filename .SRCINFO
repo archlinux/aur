@@ -1,0 +1,20 @@
+pkgbase = python2-astlib
+	pkgdesc = Python astronomy modules
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://astlib.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-astropy>=0.4
+	depends = python2-numpy>=1.3.0
+	depends = python2-scipy>=0.7.1
+	depends = python2-matplotlib>=0.98.3
+	source = http://downloads.sourceforge.net/project/astlib/astlib/0.8.0/astLib-0.8.0.tar.gz
+	sha1sums = cbd999f87773002e471bd165927c2ee124a5515f
+
+pkgname = python2-astlib
+
