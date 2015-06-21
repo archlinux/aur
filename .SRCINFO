@@ -1,0 +1,14 @@
+pkgbase = dirb
+	pkgdesc = DIRB is a web content scanner, brute forceing for hidden files
+	pkgver = 2.22
+	pkgrel = 1
+	url = http://dirb.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = curl
+	source = http://sourceforge.net/projects/dirb/files/dirb/2.22/dirb222.tar.gz
+	sha512sums = 57305160b11be9d48b44ece5848a102ab7a493a7ac30a44c31339fd7ca659866521ba621dc0639dc28bf21c3b5315390b934441590dac7d5b463e68df4b80b81
+
+pkgname = dirb
+
