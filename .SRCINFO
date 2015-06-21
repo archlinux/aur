@@ -1,4 +1,4 @@
-pkgbase = iicli-modular-git
+pkgbase = iicli-modular
 	pkgdesc = simple gui client for ii network
 	pkgver = 0.1
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = iicli-modular-git
 	source = git+https://github.com/vit1-irk/iicli-modular/
 	md5sums = SKIP
 
-pkgname = iicli-modular-git
+pkgname = iicli-modular
 
