@@ -1,0 +1,16 @@
+pkgbase = python-cmuclmtk
+	pkgdesc = Wrapper library for accessing the language model tools for CMU Sphinx (CMUCLMTK).
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Holzhaus/python-cmuclmtk
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = cmuclmtk
+	provides = python-cmuclmtk
+	source = https://pypi.python.org/packages/source/c/cmuclmtk/cmuclmtk-0.1.5.tar.gz
+	md5sums = 87a2e2bf1f08a51509df558d7ad72def
+
+pkgname = python-cmuclmtk
+
