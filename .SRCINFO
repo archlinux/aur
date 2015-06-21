@@ -1,0 +1,15 @@
+pkgbase = discspan
+	pkgdesc = Backup a directory of files to multiple DVDs on the Linux platform
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = http://sourceforge.net/projects/discspan/
+	arch = any
+	license = GPL2
+	depends = dbus-python
+	depends = cdrkit
+	backup = etc/discspan.ini
+	source = http://downloads.sourceforge.net/project/discspan/discspan/discspan-0.2.2/discspan-0.2.2.tar.gz
+	md5sums = afc1c616746b52277a2f997b1772bfaf
+
+pkgname = discspan
+
