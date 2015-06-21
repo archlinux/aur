@@ -1,0 +1,27 @@
+pkgbase = falcon
+	pkgdesc = a general purpose untyped language, based on a Virtual Machine executing portable pseudo codes
+	pkgver = 0.9.6.8
+	pkgrel = 3
+	url = http://falconpl.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:FPLLv1.1
+	makedepends = cmake
+	depends = bison
+	depends = gtk2
+	depends = gd
+	depends = curl
+	depends = dbus-core
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = sqlite
+	depends = libmysqlclient
+	depends = postgresql-libs
+	source = http://falconpl.org/project_dl/_official_rel/Falcon-0.9.6.8.tgz
+	md5sums = 8435f6f2fe95097ac2fbe000da97c242
+	sha256sums = f4b00983e7f91a806675d906afd2d51dcee048f12ad3af4b1dadd92059fa44b9
+
+pkgname = falcon
+
