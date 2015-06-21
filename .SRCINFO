@@ -1,6 +1,6 @@
 pkgbase = pagmo-git
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model.
-	pkgver = 20140826
+	pkgver = 20150609
 	pkgrel = 1
 	url = https://github.com/esa/pagmo
 	arch = i686
