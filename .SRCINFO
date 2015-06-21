@@ -1,0 +1,18 @@
+pkgbase = diana-git
+	pkgdesc = A command line interface to the aria2 daemon
+	pkgver = 20140126.59
+	pkgrel = 1
+	url = https://github.com/baskerville/diana
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = aria2
+	depends = python
+	provides = diana
+	conflicts = diana
+	source = git://github.com/baskerville/diana
+	sha512sums = SKIP
+
+pkgname = diana-git
+
