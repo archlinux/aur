@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Chroma
+GenericName=Chroma
+Comment=Puzzle game
+Comment[fr]=Jeu de casse-tête
+Icon=/usr/share/chroma/graphics/icon.png
+Exec=/usr/bin/chroma
+Categories=Game;
