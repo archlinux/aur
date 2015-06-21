@@ -1,0 +1,14 @@
+pkgbase = mkwvconf-git
+	pkgdesc = Automatically generate a wvdial configuration for mobile broadband devices.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/schuay/mkwvconf
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mobile-broadband-provider-info
+	depends = python2
+	depends = pyxml
+
+pkgname = mkwvconf-git
+
