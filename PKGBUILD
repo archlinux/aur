@@ -1,42 +1,82 @@
-# Maintainer: Peter Ivanov <ivanovp@gmail.com>
-# Contributor: joat
-# Submitter: BxS <bxsbxs at gmail dot com>
+# Maintainer: Grey Christoforo <grey@christoforo.net>
 
-pkgname=microchip-mplabxc16-bin
+_number_of_bits=16
+pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.24
-pkgrel=3
-pkgdesc="C compiler for PIC24 MCUs and dsPIC DSCs"
+pkgrel=4
+pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their dsPIC and PIC24 microcontroller families"
 arch=(i686 x86_64)
-url=http://www.microchip.com/xc16
+url=http://www.microchip.com/xc${_number_of_bits}
 license=(custom)
-makedepends=(xclm-dirs)
-[ $CARCH = x86_64 ] && depends=(lib32-gcc-libs)
-provides=(mplabxc16)
-conflicts=(mplabxc16)
+if [[ $CARCH = i686 ]]; then
+  depends=(
+    'expat'
+    'gcc-libs'
+  )
+else
+  depends=(
+    'lib32-expat'
+    'lib32-gcc-libs'
+  )
+fi
+makedepends=(sdx tcl tcl-vfs) 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-PKGEXT='.pkg.tar'
+source=("installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" liblzmadec0.2.so)
+noextract=(installerBlobFromMicrochip liblzmadec0.2.so)
+md5sums=('6c9c843c8233a450535bdb66f13644fe'
+         'e43a1f543ba4f67a2d5b2e8d9656a6c7')
 install=$pkgname.install
-instdir=/opt/microchip/xc16/v$pkgver
-installer=xc16-v$pkgver-full-install-linux-installer.run
-source=(http://ww1.microchip.com/downloads/en/DeviceDoc/$installer)
-[ $CARCH = x86_64 ] && source+=(fakeroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/core/i686/fakeroot/download/)
-md5sums=('6c9c843c8233a450535bdb66f13644fe')
-[ $CARCH = x86_64 ] && md5sums+=('32eac8a541e28049f0306cf7f4ec7044')
+
+build() {
+  # unwrap installer files
+  sdx.kit unwrap installerBlobFromMicrochip
+  
+  # read unpack options
+  _unpack_options=$(cat installerBlobFromMicrochip.vfs/cookfsinfo.txt)
+  
+  # write unpack tcl script to file
+cat > unpack.tcl <<EOF
+package require vfs::cookfs
+package require Tcllzmadec
+vfs::cookfs::Mount ${_unpack_options} installerBlobFromMicrochip virtual
+file copy virtual unpacked.vfs
+EOF
+
+  # if this is a 64bit machine, we need to use the packaged zlma decoder so since the insaller only provides a 32bit one
+  if [[ $CARCH = x86_64 ]]; then
+    mv liblzmadec0.2.so installerBlobFromMicrochip.vfs/libraries/lzma*/.
+  fi
+
+  msg2 "Unpacking installer. This might take a while..."
+  LD_LIBRARY_PATH=./usr/lib: TCL_LIBRARY=./installerBlobFromMicrochip.vfs/lib TCLLIBPATH=./installerBlobFromMicrochip.vfs/libraries tclsh unpack.tcl
+
+  #now reassemble files larger than 5MB in the archive, which were split up for whatever reason
+  msg2 "Reassembling files..."
+  for f in `find ./unpacked.vfs -name '*___bitrockBigFile1'`
+  do
+    firstChunk="$f"
+    baseName="${firstChunk//___bitrockBigFile1/}"
+    allPieces="$(find -path "${baseName}*" | sort --version-sort)"
+    cat $allPieces > "$baseName".reassembled
+    rm $allPieces
+    mv "$baseName".reassembled "$baseName"
+  done
+}
 
 package() {
-  echo -e "Creating the Package\n  Please wait..."
+  mv unpacked.vfs/compiler/programfileslinux/* unpacked.vfs/compiler/programfiles/
+  mv unpacked.vfs/compiler/programfiles/*License.txt unpacked.vfs/compiler/programfiles/docs/.
 
-  mkdir -p $pkgdir$instdir
-  chmod 0755 $srcdir/$installer
-  echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\ny\n\n\n$pkgdir$instdir\n\n\ni\ni\nn\nn\nn\n\n" >inst_input
+  mkdir -p "$pkgdir"/opt/$pkgname
+  mv unpacked.vfs/compiler/programfiles/* "$pkgdir"/opt/$pkgname/.
 
-  ORIGINAL_LD=$LD_LIBRARY_PATH
-  [ $CARCH = x86_64 ] && LD_LIBRARY_PATH=$srcdir/usr/lib/libfakeroot:\$LD_LIBRARY_PATH
-  $srcdir/$installer --mode text <inst_input &>/dev/null || true
-  LD_LIBRARY_PATH=$ORIGINAL_LD
+  msg2 "Making executables executable"
+  find "$pkgdir"/opt/$pkgname/bin -type f -exec /bin/sh -c "file {} | grep -q executable && chmod +x {}" \;
 
-  rm -r inst_input $pkgdir$instdir/{Uninstall*,bin/{roam.lic,xclm},etc,rollbackBackupDirectory} || true
-
+  mkdir -p "$pkgdir/etc/profile.d"
+  echo "export PATH="'$PATH'":/opt/${pkgname}/bin" > "$pkgdir/etc/profile.d/${pkgname}.sh"
+  echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
+ 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s $instdir/MPLAB_XC16_Compiler_License.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  ln -s "$pkgdir"/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
