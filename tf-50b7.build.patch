@@ -1,0 +1,21 @@
+diff -ur tf-50b7.orig/unix/vars.mak.in tf-50b7.patch/unix/vars.mak.in
+--- tf-50b7.orig/unix/vars.mak.in	2005-04-17 22:15:56.000000000 -0500
++++ tf-50b7.patch/unix/vars.mak.in	2006-01-28 21:30:07.000000000 -0600
+@@ -12,11 +12,11 @@
+ 
+ # @configure_input@
+ 
+-prefix     = @prefix@
+-exec_prefix= @exec_prefix@
+-bindir     = @bindir@
+-datadir    = @datadir@
+-mandir     = @mandir@
++prefix     = ${DESTDIR}@prefix@
++exec_prefix= ${DESTDIR}@exec_prefix@
++bindir     = ${DESTDIR}@bindir@
++datadir    = ${DESTDIR}@datadir@
++mandir     = ${DESTDIR}@mandir@
+ 
+ TFVERSION  = @TFVERSION@
+ X          = @EXEEXT@
+Only in tf-50b7.patch/unix: vars.mak.in~

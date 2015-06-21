@@ -1,0 +1,26 @@
+--- tf-50b7/src/enumlist.h	2006-09-07 16:51:39.000000000 +0200
++++ tf-50b7-new/src/enumlist.h	2006-09-07 17:11:29.000000000 +0200
+@@ -71,6 +71,7 @@
+ bicode(STAT_LOGGING,	STRING_LITERAL("log")),
+ bicode(STAT_MAIL,	STRING_LITERAL("mail")),
+ bicode(STAT_CLOCK,	STRING_LITERAL("clock")),
++bicode(STAT_ALERT,	STRING_LITERAL("alert")),
+ bicode(STAT_COUNT,	STRING_NULL),
+ bicode(STAT_NONE = -1,	STRING_NULL)
+ }
+--- tf-50b7/src/output.c	2005-04-18 05:15:36.000000000 +0200
++++ tf-50b7-new/src/output.c	2006-10-07 21:55:37.000000000 +0200
+@@ -1976,11 +1976,10 @@
+ 	new_pos = 0;
+ 	new_len = msg->len > Wrap ? Wrap : msg->len;
+ 	if (msg->len < Wrap) {
+-	    /* if there's a field after @world, and msg fits there, use it */
++	    /* use the @alert field */
+ 	    for (node = statusfield_list[row]->head; node; node = node->next) {
+ 		field = (StatusField*)node->datum;
+-		if (field->internal == STAT_WORLD && node->next) {
+-		    field = (StatusField*)node->next->datum;
++		if (field->internal == STAT_ALERT) {
+ 		    break;
+ 		}
+ 	    }

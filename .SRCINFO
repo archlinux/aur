@@ -1,0 +1,25 @@
+pkgbase = tinyfugue-patched
+	pkgdesc = The best MUD client. Patched with log prefix and a more useful alert stream.
+	pkgver = 5.0b8
+	pkgrel = 1
+	url = http://tinyfugue.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pcre
+	depends = zlib
+	depends = ncurses
+	depends = openssl
+	conflicts = tinyfugue
+	replaces = tinyfugue
+	source = http://downloads.sourceforge.net/sourceforge/tinyfugue/tf-50b8.tar.gz
+	source = tf-50b7.alert.patch
+	source = tf-50b7.build.patch
+	source = tf-50b7.log_prefix.patch
+	md5sums = 3e994e791966d274f63b0e61abf2ef59
+	md5sums = 395e6636969c518bafa0f86279a7e183
+	md5sums = ddb83f770b9fcbcd425143405abef327
+	md5sums = 3c67ccfc6267502682f12af4fc221d34
+
+pkgname = tinyfugue-patched
+

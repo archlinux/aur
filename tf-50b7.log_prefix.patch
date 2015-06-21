@@ -1,0 +1,58 @@
+diff -Naur tf-50b7/src/globals.h tf-50b7-new/src/globals.h
+--- tf-50b7/src/globals.h	2005-04-18 05:15:35.000000000 +0200
++++ tf-50b7-new/src/globals.h	2006-10-07 22:56:04.000000000 +0200
+@@ -191,6 +191,7 @@
+ #define keypad		getintvar(VAR_keypad)
+ #define kprefix		getstrvar(VAR_kprefix)
+ #define login		getintvar(VAR_login)
++#define log_prefix	getstrvar(VAR_log_prefix)
+ #define lpflag		getintvar(VAR_lp)
+ #define lpquote		getintvar(VAR_lpquote)
+ #define maildelay	gettimevar(VAR_maildelay)
+diff -Naur tf-50b7/src/history.c tf-50b7-new/src/history.c
+--- tf-50b7/src/history.c	2005-04-18 05:15:35.000000000 +0200
++++ tf-50b7-new/src/history.c	2006-10-07 22:56:09.000000000 +0200
+@@ -131,6 +131,7 @@
+         /* ugly, but some people want it */
+        const char *p = str->data;
+         int i = 0, first = TRUE, len, remaining = str->len;
++
+         do { /* must loop at least once, to handle empty string case */
+             if (!first && wrapflag)
+                 for (i = wrapspace; i; i--) tfputc(' ', hist->logfile);
+@@ -141,7 +142,23 @@
+            remaining -= len;
+         } while (remaining);
+     } else {
+-        tfputs(str->data, hist->logfile);
++       if (log_prefix->len) {
++               time_t t;
++               struct tm *tm_;
++               int len;
++               String *buffer = NULL;
++
++               buffer = Stringnew(NULL, 256 + str->len, 0);
++               buffer->links++;
++               tftime(buffer, log_prefix, &str->time);
++               Stringcat(buffer, str->data);
++
++               tfputs(buffer->data, hist->logfile);
++
++               Stringfree(buffer);
++       } else {
++           tfputs(str->data, hist->logfile);
++       }
+     }
+     tfflush(hist->logfile);
+ }
+diff -Naur tf-50b7/src/varlist.h tf-50b7-new/src/varlist.h
+--- tf-50b7/src/varlist.h	2005-04-18 05:15:36.000000000 +0200
++++ tf-50b7-new/src/varlist.h	2006-10-07 22:54:41.000000000 +0200
+@@ -85,6 +85,7 @@
+ varflag(VAR_keypad,	"keypad",	FALSE,		tog_keypad)
+ varstr (VAR_kprefix,	"kprefix",	NULL,		NULL)
+ varflag(VAR_login,	"login",	TRUE,		NULL)
++varstr (VAR_log_prefix, "log_prefix",	"%H:%M:%S ",	NULL)
+ varflag(VAR_lp,		"lp",		FALSE,		tog_lp)
+ varflag(VAR_lpquote,	"lpquote",	FALSE,		ch_lpquote)
+ vartime(VAR_maildelay,	"maildelay",	60,0,		ch_maildelay)
