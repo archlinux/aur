@@ -1,0 +1,21 @@
+death.wav: Copyright 2003 Manuel Moss (http://armagetron.sf.net/)
+break.wav: Copyright 2003 John-Paul Gignac (http://pathological.sf.net)
+gameover.wav: Copyright 2002 Pete Shinners (http://www.pygame.org)
+
+pickaxe.svg: Copyright 2004 Jenn Hartnoll
+diamond1.svg: Copyright 2004 Michael Urman
+Character portraits: Copyright 2004 Jessi Silver
+
+intro.ogg: Copyright 2004 Brendan Becker
+single.ogg, versus-1.ogg: Copyright 2005 Ben Zeigler
+
+clicked.wav, rotate.wav, select-confirm.wav, select-move.wav,
+and tick.wav: Released into the public domain. If this is not allowed
+in your jurisdiction, you may freely copy, distribute, modify, and
+distribute modified versions of these files, for any purpose.
+
+All else: Copyright 2004 Joe Wreschnig <piman@sacredchao.net>
+
+Unless otherwise noted above, all material (source code, documentation,
+and game data) is licensed under the GNU GPL version 2 as published by
+the Free Software Foundation, copyrighted by the owners credited above.

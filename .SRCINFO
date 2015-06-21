@@ -1,0 +1,19 @@
+pkgbase = angrydd
+	pkgdesc = "Angry, Drunken Dwarves" is a classic "falling blocks" puzzle game
+	pkgver = 1.0.1
+	pkgrel = 6
+	url = http://www.sacredchao.net/~piman/angrydd/
+	arch = any
+	license = GPL
+	license = custom
+	depends = python2-pygame>=1.6.2
+	depends = python2-numpy
+	source = http://www.sacredchao.net/~piman/angrydd//angrydd-1.0.1.tar.gz
+	source = angrydd.desktop
+	source = LICENSE
+	md5sums = 3b0f9771eaae3ffb23d13576a54075e9
+	md5sums = 4e26bb276083c699df425770e0fc451b
+	md5sums = 04f141a60ab1c9aeef6341227618f39d
+
+pkgname = angrydd
+
