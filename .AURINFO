@@ -1,0 +1,16 @@
+pkgbase = python2-pynlpl
+	pkgdesc = Python Natural Language Processing Library
+	pkgver = 0.6.13
+	pkgrel = 1
+	url = https://github.com/proycon/pynlpl
+	arch = any
+	license = GPL
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-pynlpl
+	conflicts = python2-pynlpl-git
+	source = https://pypi.python.org/packages/source/P/PyNLPl/PyNLPl-0.6.13.tar.gz
+
+pkgname = python2-pynlpl
+
