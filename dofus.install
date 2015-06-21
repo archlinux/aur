@@ -1,0 +1,16 @@
+post_install() {
+  chgrp -R games /opt/ankama/dofus
+  chmod -R g+w /opt/ankama/dofus
+  touch /opt/ankama/dofus/share/log4as.xml
+  chmod 666 /opt/ankama/dofus/share/log4as.xml
+  cat <<END
+The game files are installed under group "games". Please add your user
+to this group with "usermod -a -G games", otherwise you will need to
+enter your password when the game auto-updates.
+END
+}
+
+post_upgrade() {
+  post_install
+}
+

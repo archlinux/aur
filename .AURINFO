@@ -1,0 +1,20 @@
+pkgbase = dofus
+	pkgdesc = A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .
+	pkgver = 2.27
+	pkgrel = 1
+	url = http://www.dofus.com/
+	install = dofus.install
+	arch = i686
+	arch = x86_64
+	license = custom:Dofus License
+	depends = ankama-transition>=3.10.1-3
+	depends = adobe-air-sdk
+	source = http://dl.ak.ankama.com/games/linux/dofus-release-package.tar.gz
+	source = air-generic-launcher.sh
+	source = transition.conf.patch
+	source = dofus.patch
+	source = dofus.desktop.patch
+	backup = opt/ankama/dofus/transition.conf
+
+pkgname = dofus
+
