@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dofus Beta
+Exec=/usr/bin/dofus-beta
+Icon=dofus-beta
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;RolePlaying

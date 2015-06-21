@@ -1,0 +1,17 @@
+post_install() {
+  chgrp -R games /opt/ankama/dofus-beta
+  chmod -R g+w /opt/ankama/dofus-beta
+  touch /opt/ankama/dofus-beta/share/log4as.xml
+  chmod 666 /opt/ankama/dofus-beta/share/log4as.xml
+  chmod 666 /opt/ankama/dofus-beta/share/META-INF/AIR/application.xml
+  cat <<END
+The game files are installed under group "games". Please add your user
+to this group with "usermod -a -G games", otherwise you will need to
+enter your password when the game auto-updates.
+END
+}
+
+post_upgrade() {
+  post_install
+}
+

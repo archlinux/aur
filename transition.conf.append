@@ -1,0 +1,8 @@
+# Use adl instead of Air binaries on Arch Linux
+bypass_air_installation = true
+
+dofus.reg.path = "${root}/share/reg/bin/air-generic-launcher.sh"
+
+launcher.command = """
+"${root}/bin/air-generic-launcher.sh" --lang=${i18n.lang} --update-server-port=${service_port} --updater_version=v2
+"""
