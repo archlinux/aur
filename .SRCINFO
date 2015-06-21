@@ -1,0 +1,17 @@
+pkgbase = fehbg-mgr
+	pkgdesc = Save and restore named fehbg states.
+	pkgver = 2013.7.10
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/fehbg-mgr
+	arch = any
+	license = GPL
+	depends = bash-statemgr
+	source = http://xyne.archlinux.ca/projects/fehbg-mgr/src/fehbg-mgr-2013.7.10.tar.xz
+	source = http://xyne.archlinux.ca/projects/fehbg-mgr/src/fehbg-mgr-2013.7.10.tar.xz.sig
+	md5sums = 848902ea724c71468c51a43dd1523782
+	md5sums = a4b66ffb770cffc96ef26291ad86010e
+	sha512sums = 3e3a298707c952ce0274b63b0e7551818d8ef4c1e1c624f03d9f78dbb41477c424aa8185ff2dcc3ff5f4253a5f426d533af586876a182bbdb799d315dc720c18
+	sha512sums = 8eaef0156a30e23e334db7d7fc26a6dc431d3a089820c2fbfca652459550529b2da339818f03b99cee6255d0fab4e5a010c4a39cbdce37723e86a283ad8faf9b
+
+pkgname = fehbg-mgr
+
