@@ -1,13 +1,13 @@
 # Maintainer: codl <codl@codl.fr>
 pkgname='urn-git'
-pkgver=r81.d016166
+pkgver=r82.0513661
 pkgrel=1
 pkgdesc='Split timer for speedrunning'
 url='https://github.com/3snowp7im/urn'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
-depends=('gtk3' 'jansson' 'hicolor-icon-theme')
+depends=('gtk3' 'jansson' 'hicolor-icon-theme' 'vim')
 makedepends=('imagemagick')
 
 install='urn-git.install'
