@@ -1,0 +1,25 @@
+pkgbase = airdcnano
+	pkgdesc = AirDC++ nano is a high-performance text-mode client for sharing and chatting.
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://www.airdcpp.net/nano
+	arch = any
+	license = GPL
+	makedepends = scons
+	depends = bzip2
+	depends = ncurses
+	depends = zlib
+	depends = glib2
+	depends = miniupnpc
+	depends = geoip
+	depends = boost
+	depends = leveldb
+	optdepends = natpmp: NAT-PMP port mapping support
+	optdepends = intel-tbb: Intel x86 multicore support
+	provides = airdcnano
+	conflicts = airdcnano-git
+	source = https://github.com/airdcnano/airdcnano/releases/download/1.03/airdcnano-1.03.tar.gz
+	md5sums = 8b1176d4d5e9834888011c6aa6f114a9
+
+pkgname = airdcnano
+
