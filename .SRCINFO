@@ -1,0 +1,19 @@
+pkgbase = kingdom-rush-hib
+	pkgdesc = An epic fantasy action defense game
+	pkgver = 1396975560
+	pkgrel = 1
+	url = http://www.kingdomrush.com/home.html
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	makedepends = hib-dlagent
+	depends = libglapi
+	options = !strip
+	options = !upx
+	source = hib://kingdomrush_linux_1396975560.zip
+	source = kingdom-rush.desktop
+	md5sums = 5451ced59c51b250dd23a733d7af7bb9
+	md5sums = a4e933da1ca5dcb75210bdf59b23d4e5
+
+pkgname = kingdom-rush-hib
+

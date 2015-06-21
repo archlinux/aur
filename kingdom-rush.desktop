@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Kingdom Rush
+Comment=A tower defense game
+Exec=kingdom-rush
+Icon=kingdom-rush
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
