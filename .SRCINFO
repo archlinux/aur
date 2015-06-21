@@ -1,0 +1,37 @@
+pkgbase = lmms-git
+	pkgdesc = The Linux MultiMedia Studio.
+	pkgver = 0.9.92.r79.g6c920df
+	pkgrel = 2
+	url = http://lmms.sourceforge.net
+	install = lmms-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ladspa
+	makedepends = raptor
+	makedepends = rasqal
+	makedepends = libxft
+	makedepends = freetype2
+	makedepends = redland
+	makedepends = gcc-multilib
+	depends = qt4
+	depends = sdl_sound
+	depends = jack
+	depends = libsamplerate
+	depends = fluidsynth
+	depends = zynaddsubfx
+	depends = portaudio
+	depends = libxft
+	depends = libxinerama
+	depends = shared-mime-info
+	optdepends = wine: VST support (experimental)
+	optdepends = fftw: SpectrumAnalyzer plugin
+	provides = lmms
+	conflicts = lmms
+	source = git://github.com/LMMS/lmms.git
+	sha512sums = SKIP
+
+pkgname = lmms-git
+
