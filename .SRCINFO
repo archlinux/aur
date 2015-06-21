@@ -1,6 +1,6 @@
 pkgbase = smplayer-qt4
 	pkgdesc = Complete front-end for MPlayer/MPV
-	pkgver = 14.9.0.6690
+	pkgver = 14.9.0.6994
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
 	install = smplayer.install
@@ -15,8 +15,8 @@ pkgbase = smplayer-qt4
 	optdepends = mpv: video player based on MPlayer/mplayer2
 	provides = smplayer
 	conflicts = smplayer
-	source = http://downloads.sourceforge.net/sourceforge/smplayer/smplayer-14.9.0.6690.tar.bz2
-	sha256sums = 5ec8a1d2912828e9b19f800e338029e6757fc30e3974cf62a21b67f46632bc5a
+	source = http://downloads.sourceforge.net/sourceforge/smplayer/smplayer-14.9.0.6994.tar.bz2
+	sha256sums = 4993f4d753f2982667e088d0f06fccd36535d8e65eff5acbef82d4cde132b301
 
 pkgname = smplayer-qt4
 
