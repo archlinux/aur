@@ -1,0 +1,17 @@
+pkgbase = lsgrp
+	pkgdesc = A simple command-line utility to list all members of a group.
+	pkgver = 2013.2
+	pkgrel = 2
+	url = http://xyne.archlinux.ca/projects/lsgrp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://xyne.archlinux.ca/projects/lsgrp/src/lsgrp-2013.2.tar.xz
+	source = http://xyne.archlinux.ca/projects/lsgrp/src/lsgrp-2013.2.tar.xz.sig
+	md5sums = 2250c4688c3d36d7fe4c54f32b56104d
+	md5sums = 7d9dc969887d174d100d32baf5b449ae
+	sha512sums = 6c2236fe1d290c0fc616cb912a2c461eb3b3ad4b8a423cb955d993da11a235b9e9a8e0bbcdb5981b203106ad3548afe927856446e66c3f5fafa4a98f35a554af
+	sha512sums = f13ccfecbbfada3e69ee3a686a74b880918203296b962a0a4318d8cefa3c6aaeaef4cdbc104f74674e7fee2b5f0551933337bbec13aae8432f4c8f6029f6b945
+
+pkgname = lsgrp
+
