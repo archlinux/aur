@@ -1,0 +1,43 @@
+pkgbase = gdal-curl
+	pkgdesc = A translator library for raster geospatial data formats with curl and podofo (PDF) support
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.gdal.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = perl
+	makedepends = swig
+	makedepends = chrpath
+	depends = curl
+	depends = geos
+	depends = giflib
+	depends = hdf5
+	depends = libgeotiff
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = netcdf
+	depends = python2
+	depends = python2-numpy
+	depends = cfitsio
+	depends = sqlite3
+	depends = libmariadbclient
+	depends = postgresql-libs
+	depends = podofo
+	optdepends = postgresql: postgresql database support
+	optdepends = mariadb: mariadb/mysql database support
+	optdepends = swig: perl binding support
+	optdepends = poppler: pdf conversion support
+	optdepends = libspatialite: spatiallite support
+	provides = gdal==2.0.0
+	conflicts = gdal
+	options = !libtool
+	options = !makeflags
+	source = http://download.osgeo.org/gdal/2.0.0/gdal-2.0.0.tar.xz
+	source = gdal-1.5.1-python-install.patch
+	md5sums = abba44bf198784e28cbf931fa4981059
+	md5sums = 81afc1c26d29cee84aadb6924fe33861
+
+pkgname = gdal-curl
+
