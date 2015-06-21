@@ -1,0 +1,27 @@
+pkgbase = frog-git
+	pkgdesc = Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch. It includes a tokenizer, part-of-speech tagger, lemmatizer, morphological analyser, named entity recognition, shallow parser and dependency parser.
+	pkgver = 1
+	pkgrel = 3
+	url = http://ilk.uvt.nl/frog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libtool
+	makedepends = autoconf
+	depends = ticcutils
+	depends = ucto
+	depends = libfolia
+	depends = icu
+	depends = libxml2
+	depends = python2
+	depends = frogdata
+	depends = timbl
+	depends = mbt
+	provides = frog
+	conflicts = frog
+	options = !libtool
+	source = git://github.com/proycon/frog.git
+	md5sums = SKIP
+
+pkgname = frog-git
+
