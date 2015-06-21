@@ -1,0 +1,26 @@
+--- pybindgen_unfix/pybindgen/pytypeobject.py	2015-04-13 12:35:28.815857809 +0200
++++ pybindgen/pybindgen/pytypeobject.py	2015-04-13 12:58:13.561729000 +0200
+@@ -293,7 +293,11 @@
+         Py_XDECREF(py_result);
+         return -1;
+     }
++#if PY_MAJOR_VERSION >= 3
+     result = PyLong_AsSsize_t(py_result);
++#else
++    result = PyInt_AsSsize_t(py_result);
++#endif
+     Py_DECREF(py_result);
+     return result;
+ }
+@@ -323,7 +319,11 @@
+         Py_XDECREF(py_result);
+         return -1;
+     }
++#if PY_MAJOR_VERSION >= 3
+     result = PyLong_AsSsize_t(py_result);
++#else
++    result = PyInt_AsSsize_t(py_result);
++#endif
+     Py_DECREF(py_result);
+     return result;
+ }
