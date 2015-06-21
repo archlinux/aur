@@ -1,0 +1,16 @@
+pkgbase = jrtplib
+	pkgdesc = An object-oriented RTP library written in C++
+	pkgver = 3.9.1
+	pkgrel = 2
+	url = http://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jrtplib
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = jthread>=1.3.1
+	source = http://research.edm.uhasselt.be/jori/jrtplib/jrtplib-3.9.1.tar.gz
+	md5sums = 97468e1d6765d77c40a6d248f3d6cb83
+	sha256sums = dfd08752e5cc0abae3e2dfbdaf9cf545319128e5bc1add222f782f50a584b20c
+
+pkgname = jrtplib
+
