@@ -1,0 +1,22 @@
+pkgbase = python2-clam-git
+	pkgdesc = CLAM turns command-line tools into fully RESTful webservices and also offers a modern web-based user-interface
+	pkgver = 1472
+	pkgrel = 2
+	url = http://proycon.github.io/clam
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-lxml
+	depends = python2-webpy
+	depends = python2-crypto
+	depends = python2-pycurl
+	depends = python2-requests-oauthlib
+	provides = python2-clam
+	source = git://github.com/proycon/clam
+	md5sums = SKIP
+
+pkgname = python2-clam-git
+
