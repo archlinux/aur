@@ -1,0 +1,113 @@
+--- php.ini-production.old	2015-06-21 09:33:50.323831396 +0800
++++ php.ini-production	2015-06-21 09:30:24.343922874 +0800
+@@ -291,7 +291,7 @@
+ ; and below.  This directive makes most sense if used in a per-directory
+ ; or per-virtualhost web server configuration file.
+ ; http://php.net/open-basedir
+-;open_basedir =
++open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/:/usr/share/webapps/
+ 
+ ; This directive allows you to disable certain functions for security reasons.
+ ; It receives a comma-delimited list of function names.
+@@ -697,7 +697,7 @@
+ ;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ; UNIX: "/path1:/path2"
+-;include_path = ".:/php/includes"
++include_path = ".:/usr/share/pear"
+ ;
+ ; Windows: "\path1;\path2"
+ ;include_path = ".;c:\php\includes"
+@@ -720,7 +720,7 @@
+ 
+ ; Directory in which the loadable extensions (modules) reside.
+ ; http://php.net/extension-dir
+-; extension_dir = "./"
++extension_dir = "/usr/lib/php/modules/"
+ ; On windows:
+ ; extension_dir = "ext"
+ 
+@@ -845,7 +845,7 @@
+ ;
+ ; For example, on Windows:
+ ;
+-;   extension=msql.dll
++;   extension=msql.so
+ ;
+ ; ... or under UNIX:
+ ;
+@@ -864,42 +864,42 @@
+ ; extension folders as well as the separate PECL DLL download (PHP 5+).
+ ; Be sure to appropriately set the extension_dir directive.
+ ;
+-;extension=php_bz2.dll
+-;extension=php_curl.dll
+-;extension=php_fileinfo.dll
+-;extension=php_gd2.dll
+-;extension=php_gettext.dll
+-;extension=php_gmp.dll
+-;extension=php_intl.dll
+-;extension=php_imap.dll
+-;extension=php_interbase.dll
+-;extension=php_ldap.dll
+-;extension=php_mbstring.dll
+-;extension=php_exif.dll      ; Must be after mbstring as it depends on it
+-;extension=php_mysql.dll
+-;extension=php_mysqli.dll
+-;extension=php_oci8_12c.dll  ; Use with Oracle Database 12c Instant Client
+-;extension=php_openssl.dll
+-;extension=php_pdo_firebird.dll
+-;extension=php_pdo_mysql.dll
+-;extension=php_pdo_oci.dll
+-;extension=php_pdo_odbc.dll
+-;extension=php_pdo_pgsql.dll
+-;extension=php_pdo_sqlite.dll
+-;extension=php_pgsql.dll
+-;extension=php_pspell.dll
+-;extension=php_shmop.dll
++;extension=php_bz2.so
++;extension=php_curl.so
++;extension=php_fileinfo.so
++;extension=php_gd2.so
++;extension=php_gettext.so
++;extension=php_gmp.so
++;extension=php_intl.so
++;extension=php_imap.so
++;extension=php_interbase.so
++;extension=php_ldap.so
++;extension=php_mbstring.so
++;extension=php_exif.so      ; Must be after mbstring as it depends on it
++;extension=php_mysql.so
++;extension=php_mysqli.so
++;extension=php_oci8_12c.so  ; Use with Oracle Database 12c Instant Client
++;extension=php_openssl.so
++;extension=php_pdo_firebird.so
++;extension=php_pdo_mysql.so
++;extension=php_pdo_oci.so
++;extension=php_pdo_odbc.so
++;extension=php_pdo_pgsql.so
++;extension=php_pdo_sqlite.so
++;extension=php_pgsql.so
++;extension=php_pspell.so
++;extension=php_shmop.so
+ 
+ ; The MIBS data available in the PHP distribution must be installed. 
+ ; See http://www.php.net/manual/en/snmp.installation.php 
+-;extension=php_snmp.dll
++;extension=php_snmp.so
+ 
+-;extension=php_soap.dll
+-;extension=php_sockets.dll
+-;extension=php_sqlite3.dll
+-;extension=php_tidy.dll
+-;extension=php_xmlrpc.dll
+-;extension=php_xsl.dll
++;extension=php_soap.so
++;extension=php_sockets.so
++;extension=php_sqlite3.so
++;extension=php_tidy.so
++;extension=php_xmlrpc.so
++;extension=php_xsl.so
+ 
+ ;;;;;;;;;;;;;;;;;;;
+ ; Module Settings ;

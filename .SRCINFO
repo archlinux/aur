@@ -1,0 +1,141 @@
+pkgbase = php7
+	pkgver = 7.0.0alpha1
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = apache
+	makedepends = imap
+	makedepends = postgresql-libs
+	makedepends = libldap
+	makedepends = postfix
+	makedepends = sqlite
+	makedepends = unixodbc
+	makedepends = net-snmp
+	makedepends = libzip
+	makedepends = enchant
+	makedepends = file
+	makedepends = freetds
+	makedepends = libmcrypt
+	makedepends = tidyhtml
+	makedepends = aspell
+	makedepends = libltdl
+	makedepends = gd
+	makedepends = icu
+	makedepends = curl
+	makedepends = libxslt
+	makedepends = openssl
+	makedepends = db
+	makedepends = gmp
+	makedepends = systemd
+	source = https://downloads.php.net/~ab/php-7.0.0alpha1.tar.xz
+	source = php.ini.patch
+	source = apache.conf
+	source = php-fpm.service
+	source = php-fpm.tmpfiles
+	md5sums = bd56863c6412a7c302adfb80983b3e5e
+	md5sums = 6d87a7a54ff51f634ff91f0b390dab20
+	md5sums = 0677a10d2e721472d6fccb470356b322
+	md5sums = cc2940f5312ba42e7aa1ddfab74b84c4
+	md5sums = c60343df74f8e1afb13b084d5c0e47ed
+
+pkgname = php7
+	pkgdesc = An HTML-embedded scripting language
+	depends = pcre
+	depends = libxml2
+	depends = curl
+	depends = libzip
+	backup = etc/php/php.ini
+
+pkgname = php7-cgi
+	pkgdesc = CGI and FCGI SAPI for PHP
+	depends = php
+
+pkgname = php7-apache
+	pkgdesc = Apache SAPI for PHP
+	depends = php
+	depends = apache
+	backup = etc/httpd/conf/extra/php7_module.conf
+
+pkgname = php7-fpm
+	pkgdesc = FastCGI Process Manager for PHP
+	install = php-fpm.install
+	depends = php
+	depends = systemd
+	backup = etc/php/php-fpm.conf
+
+pkgname = php7-embed
+	pkgdesc = Embedded PHP SAPI library
+	depends = php
+
+pkgname = php7-phpdbg
+	pkgdesc = Interactive PHP debugger
+	depends = php
+
+pkgname = php7-enchant
+	pkgdesc = enchant module for PHP
+	depends = php
+	depends = enchant
+
+pkgname = php7-gd
+	pkgdesc = gd module for PHP
+	depends = php
+	depends = gd
+
+pkgname = php7-intl
+	pkgdesc = intl module for PHP
+	depends = php
+	depends = icu
+
+pkgname = php7-ldap
+	pkgdesc = ldap module for PHP
+	depends = php
+	depends = libldap
+
+pkgname = php7-mcrypt
+	pkgdesc = mcrypt module for PHP
+	depends = php
+	depends = libmcrypt
+	depends = libltdl
+
+pkgname = php7-mssql
+	pkgdesc = mssql module for PHP
+	depends = php
+	depends = freetds
+
+pkgname = php7-odbc
+	pkgdesc = ODBC modules for PHP
+	depends = php
+	depends = unixodbc
+
+pkgname = php7-pgsql
+	pkgdesc = PostgreSQL modules for PHP
+	depends = php
+	depends = postgresql-libs
+
+pkgname = php7-pspell
+	pkgdesc = pspell module for PHP
+	depends = php
+	depends = aspell
+
+pkgname = php7-snmp
+	pkgdesc = snmp module for PHP
+	depends = php
+	depends = net-snmp
+
+pkgname = php7-sqlite
+	pkgdesc = sqlite module for PHP
+	depends = php
+	depends = sqlite
+
+pkgname = php7-tidy
+	pkgdesc = tidy module for PHP
+	depends = php
+	depends = tidyhtml
+
+pkgname = php7-xsl
+	pkgdesc = xsl module for PHP
+	depends = php
+	depends = libxslt
+
