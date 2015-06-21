@@ -1,0 +1,14 @@
+pkgbase = texlive-achemso
+	pkgdesc = LaTeX support for American Chemical Society journal submissions.
+	pkgver = 3.9a
+	pkgrel = 1
+	url = http://ctan.org/tex-archive/macros/latex/contrib/achemso
+	install = texlive-achemso.install
+	arch = any
+	license = custom
+	depends = texlive-bin
+	source = http://mirrors.ctan.org/macros/latex/contrib/achemso.zip
+	sha1sums = 1e2ad3aef42a5ec3b9806cf0dbf324cba470ce00
+
+pkgname = texlive-achemso
+
