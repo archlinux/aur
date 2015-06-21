@@ -1,0 +1,16 @@
+pkgbase = python-fitsio
+	pkgdesc = A python package for FITS input/output wrapping cfitsio
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/esheldon/fitsio
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = https://github.com/esheldon/fitsio/archive/v0.9.7.tar.gz
+	sha1sums = 386cd8829973c935f331ceb854c98bf426704659
+
+pkgname = python-fitsio
+
