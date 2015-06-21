@@ -1,0 +1,13 @@
+pkgbase = android-samples-21
+	pkgdesc = Android SDK Samples, API-21
+	pkgver = 5.0.1_r04
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	options = !strip
+	source = http://dl.google.com/android/repository/samples-21_r04.zip
+	sha1sums = 3a08d37e97f567f5f629a06a9012f89b05c5ad8a
+
+pkgname = android-samples-21
+
