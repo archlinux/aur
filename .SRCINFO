@@ -1,0 +1,15 @@
+pkgbase = dd_rhelp
+	pkgdesc = a bash script that handles a very usefull program called dd_rescue.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.kalysto.org/utilities/dd_rhelp/index.en.html
+	arch = any
+	license = GPL
+	depends = ddrescue
+	depends = bc
+	depends = bash
+	source = http://www.kalysto.org/pkg/dd_rhelp-0.3.0.tar.gz
+	md5sums = 302f51dff914bfa71268ed57778fe2a6
+
+pkgname = dd_rhelp
+
