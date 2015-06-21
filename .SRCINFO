@@ -1,0 +1,77 @@
+pkgbase = java8-openjdk
+	pkgver = 8.u45
+	pkgrel = 1
+	url = http://openjdk.java.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = jdk7-openjdk
+	makedepends = ccache
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = fontconfig
+	makedepends = libcups
+	makedepends = alsa-lib
+	source = jdk8u-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u45-b14.tar.gz
+	source = corba-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u45-b14.tar.gz
+	source = hotspot-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u45-b14.tar.gz
+	source = jdk-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/archive/jdk8u45-b14.tar.gz
+	source = jaxws-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxws/archive/jdk8u45-b14.tar.gz
+	source = jaxp-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u45-b14.tar.gz
+	source = langtools-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u45-b14.tar.gz
+	source = nashorn-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u45-b14.tar.gz
+	source = 004_add-fontconfig.patch
+	source = 005_enable-infinality.patch
+	source = 006_allow-linux-4.patch
+	sha256sums = b3567bc0383fedb263cd0b2ba84c8716b0dc4e51cf2828c56cdfd96e2d1aa6b2
+	sha256sums = 6158c421b49b6c197e17e198525998505f4643c4c7a6b92278f8e700e77f99de
+	sha256sums = 1dc7c5038f57f77a1e92cf1b48a188a0291805e69f570e1164efb7adb34c5a59
+	sha256sums = 2b125825962a2ff110afadb37784faf276e7146023c4a6cede6a3f923f48c692
+	sha256sums = e6f6233c26335536436de89ebf741df8b142119d8b41abc34c3287dd155a43bb
+	sha256sums = c5e0f96dd56326598bdd5e29c16ca63f2b12becf0228b6bac6688260c08e5976
+	sha256sums = eed8556576f39d6028e5ce31560b157cf956ee82367501435c5844fd2ca970b9
+	sha256sums = e18987e06e448820daa49e2ea5ef6dee2f497dadba5a2488bb707ba574cf30e9
+	sha256sums = 7eccdeda71d651423a066c942b3d300eccd8d95e161725fa508d84f0bc010ceb
+	sha256sums = efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac
+	sha256sums = 769cd85c0fe71345224eb5a61faff7441070e612a3ccfbb8e92d4dd827d21b04
+
+pkgname = jre8-openjdk-headless-infinality
+	pkgdesc = OpenJDK Java 8 headless runtime environment with infinality patch applied
+	install = install_jre8-openjdk-headless.sh
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = nss
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	conflicts = jre8-openjdk-headless
+	replaces = jre8-openjdk-headless-wm
+	backup = 
+
+pkgname = jre8-openjdk-infinality
+	pkgdesc = OpenJDK Java 8 full runtime environment with infinality patch applied
+	install = install_jre8-openjdk.sh
+	depends = jre8-openjdk-headless-infinality=8.u45-1
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = icedtea-web: web browser plugin + Java Web Start
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ look and feel - desktop usage
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	conflicts = jre8-openjdk
+	replaces = jre8-openjdk-wm
+
+pkgname = jdk8-openjdk-infinality
+	pkgdesc = OpenJDK Java 8 development kit with infinality patch applied
+	install = install_jdk8-openjdk.sh
+	depends = java-environment-common
+	depends = jre8-openjdk-infinality=8.u45-1
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+	conflicts = jdk8-openjdk
+	replaces = jdk8-openjdk-wm
+
