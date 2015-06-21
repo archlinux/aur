@@ -1,13 +1,13 @@
 pkgbase = infer
 	pkgdesc = Static Analyzer by Facebook
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/infer
 	arch = x86_64
 	license = BSD
 	depends = python2
+	depends = python
 	depends = java-environment
-	depends = bash
 	source = https://github.com/facebook/infer/releases/download/v0.1.1/infer-linux64-v0.1.1.tar.xz
 	sha256sums = ce61012f005e2c5d41919761814451ac6198a0b646c2795d7e2cad9bd2110e2b
 
