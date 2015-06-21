@@ -2,7 +2,7 @@
 
 pkgname=stone-soup-git
 _pkgname=stone-soup
-pkgver=0.13.a0.2887.gd743108
+pkgver=0.17.a0.1409.ge6d9485
 pkgrel=1
 pkgdesc="An open-source, single-player, role-playing roguelike game of exploration and treasure-hunting"
 arch=('i686' 'x86_64' 'ppc')
@@ -14,7 +14,7 @@ license=('custom')
 backup=('usr/share/stone-soup/data/settings/tiles_options.txt'
         'usr/share/stone-soup/data/settings/init.txt')
 source=("${_pkgname}.desktop"
-        "git://gitorious.org/crawl/crawl.git")
+        "git+https://github.com/crawl/crawl.git")
 md5sums=('98be780cddb2a0915bbab15ad93644f1'
          'SKIP')
 
