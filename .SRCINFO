@@ -1,0 +1,15 @@
+pkgbase = python2-coords
+	pkgdesc = for managing astronomical coordinate systems
+	pkgver = 0.39.5
+	pkgrel = 1
+	url = https://trac6.assembla.com/astrolib
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/a/astrolib.coords/astrolib.coords-0.39.5.tar.gz
+	sha1sums = b92d553b2d57fd20a8966e00f8f7fdc4e725d83e
+
+pkgname = python2-coords
+
