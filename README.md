@@ -10,10 +10,10 @@ docker build --tag php-gnupg-aur .
 docker run --rm --volume "$(pwd):/package" php-gnupg-aur
 ```
 
-Alternatively, using [Fig]:
+Alternatively, using [Docker Compose]:
 
 ```bash
-fig run build
+docker-compose run build
 ```
 
 This will start create a docker image tagged as php-gnupg-aur and build the
@@ -24,4 +24,4 @@ your current directory.
 [gnupg]: http://pecl.php.net/package/gnupg
 [makepkg]: https://wiki.archlinux.org/index.php/Makepkg
 [Docker]: https://www.docker.com/
-[Fig]: http://www.fig.sh/
+[Docker Compose]: http://docs.docker.com/compose/
