@@ -1,4 +1,5 @@
-# Maintainer: Ray Rashif <schiv@archlinux.org>
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=qsampler
