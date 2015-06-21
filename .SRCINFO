@@ -1,0 +1,18 @@
+pkgbase = svn-export
+	pkgdesc = An svn export emulator with support for incremental exports.
+	pkgver = 2013.1.30
+	pkgrel = 2
+	url = http://xyne.archlinux.ca/projects/svn-export
+	arch = any
+	license = GPL
+	depends = python3
+	depends = subversion
+	source = http://xyne.archlinux.ca/projects/svn-export/src/svn-export-2013.1.30.tar.xz
+	source = http://xyne.archlinux.ca/projects/svn-export/src/svn-export-2013.1.30.tar.xz.sig
+	md5sums = 9ae1866e3197590ac0f288d3da3cc144
+	md5sums = cd57071964216d794db6c6d6083d1ced
+	sha512sums = c1ff3781fa3200528699203c8fa01c6b84655e95ef75163ebbaab21bf5918021eaddf8a12ddeac469633e74d77be47a399f73198624f6188e1a266d6737af37c
+	sha512sums = dfb2819c9f77e227f329d945ba2466f078f062a7fd79b2ec503b60d7d618a2f175ee6b21752a6d1955abedfce536d58c639224e46c51933db0413c2b868767b5
+
+pkgname = svn-export
+
