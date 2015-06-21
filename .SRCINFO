@@ -1,0 +1,20 @@
+pkgbase = timbl
+	pkgdesc = Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification
+	pkgver = 6.4.6
+	pkgrel = 2
+	url = http://ilk.uvt.nl/timbl/
+	install = timbl.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	depends = gcc-libs
+	depends = libxml2
+	depends = ticcutils
+	options = !libtool
+	source = http://software.ticc.uvt.nl/timbl-6.4.6.tar.gz
+	md5sums = 5c71abd9fa793f0adfa096ef065bf1c2
+
+pkgname = timbl
+
