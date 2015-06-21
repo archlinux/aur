@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=QPitch
+Comment=QT4 guitar/instrument tuner
+Exec=qpitch
+Icon=/usr/share/icons/hicolor/32x32/apps/qpitch_logo.xpm
+Type=Application
+Categories=Application;AudioVideo
+Terminal=false
+GenericName=Instrument Tuner
