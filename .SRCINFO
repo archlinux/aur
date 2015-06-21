@@ -1,0 +1,20 @@
+pkgbase = autochown
+	pkgdesc = Monitor multiple directories using glob patterns and automatically adjust file ownership and permissions.
+	pkgver = 2015
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/autochown
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = rabbit_tree
+	backup = etc/autochownd.conf
+	source = http://xyne.archlinux.ca/projects/autochown/src/autochown-2015.tar.xz
+	source = http://xyne.archlinux.ca/projects/autochown/src/autochown-2015.tar.xz.sig
+	md5sums = 97a785967a84a02be514aa44e489bc60
+	md5sums = fdce74f14b2900cf22b77af7c565b515
+	sha512sums = 6d4cc443cde99ebbd614d25c1df543e9cc0f0212d65c77dd93109ccd5eaf0fd0993260feaf0d74e8ad7f743191e73aaa4980e175d3c8cf2c92c1219c04d1a2c5
+	sha512sums = c6c4aca88693f37a0664f0ee81677bafcaea249f80d0ed6be52c1a26cd6ad8794f121fd833b90110eacc52fae8166560bf69a895ab9b3d13abbab38fbb56e9ed
+
+pkgname = autochown
+
