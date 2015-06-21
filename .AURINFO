@@ -1,0 +1,15 @@
+pkgbase = python2-gtts
+	pkgdesc = A Python interface to Google's Text to Speech API.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/pndurette/gTTS
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-gtts
+	source = https://pypi.python.org/packages/source/g/gTTS/gTTS-1.0.2.tar.gz
+
+pkgname = python2-gtts
+
