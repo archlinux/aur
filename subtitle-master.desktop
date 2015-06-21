@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Subtitle Master
+Comment=Find and download subtitles for your videos.
+Comment[pt_BR]=Encontre e baixe legendas para os seus filmes.
+Keywords=subtitle;subtitles;movie;movies;video;videos
+Keywords[pt_BR]=legenda;legendas;filme;filmes;vídeo;vídeos
+Exec=subtitlemaster %U
+Icon=subtitle-master
+Terminal=false
+Type=Application
+Categories=Multimedia;

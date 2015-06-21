@@ -1,0 +1,23 @@
+pkgbase = subtitle-master
+	pkgdesc = Easily find and download subtitles for your videos.
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://subtitlemaster.com/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = ttf-liberation
+	depends = gconf
+	depends = nss
+	provides = subtitle-master
+	conflicts = subtitle-master
+	options = !strip
+	source = https://github.com/subtitle-master/subtitlemaster/releases/download/2.0.0-beta1/subtitle-master-2.0.0-beta1-linux64.zip
+	source = subtitle-master.png
+	source = subtitle-master.desktop
+	sha1sums = af87faf0c0c59be3d3efc3a24f13bd0f80a6f418
+	sha1sums = a07f3ec238c3f68e8e26593e27069f2f31fbe309
+	sha1sums = d3c692aa68d8ba5b9a0848822f4225c3b2a0ae35
+
+pkgname = subtitle-master
+
