@@ -1,0 +1,12 @@
+pkgbase = jasper-tts-espeak
+	pkgdesc = Meta package to satisfy dependencies for Jasper's espeak TTS engine.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://jasperproject.github.io
+	arch = any
+	license = MIT
+	depends = jasper-voice-control
+	depends = espeak
+
+pkgname = jasper-tts-espeak
+
