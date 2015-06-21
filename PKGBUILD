@@ -11,7 +11,6 @@ pkgname=('php7'
          'php7-intl'
          'php7-ldap'
          'php7-mcrypt'
-         'php7-mssql'
          'php7-odbc'
          'php7-pgsql'
          'php7-pspell'
@@ -21,7 +20,7 @@ pkgname=('php7'
          'php7-xsl')
 
 pkgver=7.0.0alpha1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -137,7 +136,7 @@ build() {
 	# php
 	mkdir -p ${srcdir}/build-php
 	cd ${srcdir}/build-php
-	ln -s ../${_pkgbase}-${pkgver}/configure
+	ln -sf ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--disable-cgi \
 		--with-readline \
