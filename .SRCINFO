@@ -1,0 +1,14 @@
+pkgbase = obsetlayout
+	pkgdesc = A simple tool to set the desktop layout in Openbox.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://openbox.org/wiki/Help:FAQ#How_do_I_put_my_desktops_into_a_grid_layout_instead_of_a_single_row.3F
+	arch = i686
+	arch = x86_64
+	license = unknown
+	provides = obsetlayout=1.0.2
+	source = http://openbox.org/dist/tools/setlayout.c
+	sha512sums = 40f7913ecc1b5df9a931ab36a5d4cf47b59eba543fe8b21e4a2724e7cfdfe06814893d8ded8c7a1ce0082126ca89397de0521f9c265a57e376664042b63d612f
+
+pkgname = obsetlayout
+
