@@ -1,19 +1,21 @@
-# Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor: Hilton Medeiros <medeiros.hilton at gmail.com>
 
 pkgname=otf-crimson-text
-pkgver=december2013.r0.gfe95931
+pkgver=2014.06
 pkgrel=1
-pkgdesc="A font family for book production in the tradition of beautiful oldstyle typefaces."
+epoch=1
+pkgdesc="A font family for book production in the tradition of beautiful oldstyle typefaces"
 arch=('any')
-url="http://aldusleaf.org/0-crimson.html"
+url="https://github.com/skosch/Crimson/"
 license=('OFL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=crimson-text.install
-source=("$pkgname"::'git://github.com/skosch/Crimson.git')
+source=("$pkgname".zip::'https://github.com/skosch/Crimson/archive/master.zip')
 md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/Crimson-master/Desktop Fonts"
   install -d "$pkgdir/usr/share/fonts/OTF"
-  install -m644 otf/*.otf "$pkgdir/usr/share/fonts/OTF/"
+  install -m644 OTF/*.otf "$pkgdir/usr/share/fonts/OTF/"
 }

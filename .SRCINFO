@@ -1,15 +1,16 @@
 pkgbase = otf-crimson-text
-	pkgdesc = A font family for book production in the tradition of beautiful oldstyle typefaces.
-	pkgver = december2013.r0.gfe95931
+	pkgdesc = A font family for book production in the tradition of beautiful oldstyle typefaces
+	pkgver = 2014.06
 	pkgrel = 1
-	url = http://aldusleaf.org/0-crimson.html
+	epoch = 1
+	url = https://github.com/skosch/Crimson/
 	install = crimson-text.install
 	arch = any
 	license = OFL
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = otf-crimson-text::git://github.com/skosch/Crimson.git
+	source = otf-crimson-text.zip::https://github.com/skosch/Crimson/archive/master.zip
 	md5sums = SKIP
 
 pkgname = otf-crimson-text
