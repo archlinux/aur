@@ -1,0 +1,15 @@
+pkgbase = nuttcp
+	pkgdesc = TCP/UDP network testing tool - simple, easy to use, with interesting feature set.
+	pkgver = 6.1.2
+	pkgrel = 1
+	url = http://www.lcp.nrl.navy.mil/nuttcp/
+	install = nuttcp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = ftp://ftp.lcp.nrl.navy.mil/pub/nuttcp/nuttcp-6.1.2.tar.bz2
+	md5sums = a16d4d6d5def02cea980e57feaf30500
+
+pkgname = nuttcp
+

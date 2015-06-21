@@ -1,0 +1,14 @@
+post_install() {
+  cat <<EOF
+Note, that manpage included can have a little outdated information.
+The same goes for nuttcp -h output.
+Please review top of the nuttcp-6.1.2.c file for detailed changelog.
+EOF
+
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# vim:set ts=2 sw=2 et:
