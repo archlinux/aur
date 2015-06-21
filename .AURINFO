@@ -1,0 +1,16 @@
+pkgbase = python-tempmail
+	pkgdesc = Wrapper for online service which provides temporary email address: https://temp-mail.ru/
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/saippuakauppias/temp-mail
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	optdepends = python-simplejson: For a serious speed boost in JSON decode
+	provides = python-tempmail
+	source = https://pypi.python.org/packages/source/t/temp-mail/temp-mail-0.2.tar.gz
+
+pkgname = python-tempmail
+
