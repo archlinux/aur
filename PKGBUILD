@@ -1,7 +1,7 @@
 # Maintainer: Adrian Berriel <berriel[at]gmail[dot]com>
 
 pkgname=plasma-theme-helium
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Transparent theme based on air and eleonora. but giving it an extra touch"
 arch=('i686' 'x86_64')
