@@ -1,6 +1,6 @@
 pkgbase = qstat-git
 	pkgdesc = A command line utility that displays the status of internet game servers
-	pkgver = r391.60dc5e4
+	pkgver = r396.a60436f
 	pkgrel = 1
 	url = https://github.com/multiplay/qstat
 	arch = i686
