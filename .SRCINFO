@@ -1,0 +1,20 @@
+pkgbase = bist-svn
+	pkgdesc = A chemical drawing tool
+	pkgver = 161
+	pkgrel = 1
+	url = http://gna.org/projects/bist/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	depends = fltk>=1.3
+	depends = gsl
+	depends = expat
+	depends = openbabel>=2.0
+	depends = cairo
+	depends = pango
+	provides = bist
+	conflicts = bist
+
+pkgname = bist-svn
+
