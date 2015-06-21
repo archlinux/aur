@@ -1,0 +1,17 @@
+pkgbase = svg2ggr
+	pkgdesc = Extract gradients from svg files and save them to Gimp gradient files (ggr).
+	pkgver = 2012
+	pkgrel = 2
+	url = http://xyne.archlinux.ca/projects/svg2ggr
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://xyne.archlinux.ca/projects/svg2ggr/src/svg2ggr-2012.tar.xz
+	source = http://xyne.archlinux.ca/projects/svg2ggr/src/svg2ggr-2012.tar.xz.sig
+	md5sums = f170e57058b7608d64849ffe1fff1be5
+	md5sums = 2eeab763ba4c56502d9d0f1593f53cf6
+	sha512sums = 8e1b183044f98063876f11b0181f8fea9e41199601a8b9c3d2aeb64ec8b1b9817717003b9a665db3849935ca76638951748013df0ba2dd670517a2409c689a4e
+	sha512sums = fbb7c3f73d164b500dc8a0284ffdc45661606e7c55629d39ae2786af70ea266581501d5ec6c8a55a7a4f53189b666633dbac2cf944a9c5911e5f6cfc866a1774
+
+pkgname = svg2ggr
+
