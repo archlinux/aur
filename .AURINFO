@@ -1,0 +1,17 @@
+pkgbase = mfcuk-svn
+	pkgdesc = MiFare Classic Universal toolKit (MFCUK)
+	pkgver = 94
+	pkgrel = 2
+	url = http://code.google.com/p/mfcuk/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = libnfc>=1.7.0
+	provides = mfcuk
+	conflicts = mfcuk
+	source = mfcuk::svn+http://mfcuk.googlecode.com/svn/trunk
+	md5sums = SKIP
+
+pkgname = mfcuk-svn
+
