@@ -3,7 +3,7 @@
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.34
-pkgrel=3
+pkgrel=4
 pkgdesc="Microchip's MPLAB XC8 C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -64,9 +64,6 @@ EOF
 }
 
 package() {
-  #mv unpacked.vfs/compiler/programfileslinux/* unpacked.vfs/compiler/programfiles/
-  #mv unpacked.vfs/compiler/programfiles/*License.txt unpacked.vfs/compiler/programfiles/docs/.
-
   mkdir -p "$pkgdir"/opt/$pkgname
   mv unpacked.vfs/compiler/programfiles/* "$pkgdir"/opt/$pkgname/.
 
@@ -78,5 +75,5 @@ package() {
   echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
  
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s "$pkgdir"/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  ln -s /opt/microchip-mplabxc8-bin/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

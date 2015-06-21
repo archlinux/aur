@@ -6,7 +6,7 @@ It also defines XC8_TOOLCHAIN_ROOT pointing to the toolchain install dir.
 Log out and log back in to update your environment varibles.
 
 Before using MPLAB_XC8 you have to agree with the LICENSE at:
-/usr/share/licenses/microchip-mplabxc9-bin/LICENSE
+/usr/share/licenses/microchip-mplabxc8-bin/LICENSE
 
 For using MPLAB_XC8 with MPLAB_X (microchip-mplabx-bin), in MPLAB_X go to:
 Tools->Options->Embedded->Add
