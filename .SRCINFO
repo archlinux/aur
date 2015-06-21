@@ -1,0 +1,14 @@
+pkgbase = clpbar
+	pkgdesc = Simple tool to show the user information about data being passed in file transfers
+	pkgver = 1.11.1
+	pkgrel = 2
+	url = http://clpbar.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/clpbar/bar_1.11.1.tar.gz
+	md5sums = 4836a9767cbfb9c0b16020d23b4b5e91
+
+pkgname = clpbar
+
