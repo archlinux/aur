@@ -1,0 +1,28 @@
+pkgbase = allacrost-svn
+	pkgdesc = A single player 2D role-playing game inspired by classic console RPGs
+	pkgver = 2040
+	pkgrel = 1
+	url = http://www.allacrost.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = subversion
+	makedepends = icoutils
+	depends = glu
+	depends = mesa
+	depends = qt4
+	depends = openal
+	depends = libvorbis
+	depends = sdl_ttf
+	conflicts = allacrost
+	options = !emptydirs
+	source = allacrost::svn+https://allacrost.svn.sourceforge.net/svnroot/allacrost/trunk/game
+	source = png15.patch
+	source = allacrost.desktop
+	md5sums = SKIP
+	md5sums = a649b2c6e764bb99cb5a6fda7f87a39c
+	md5sums = 0065e56f64dc81f3467f21f0f07bbc9c
+
+pkgname = allacrost-svn
+
