@@ -1,0 +1,16 @@
+pkgbase = python2-calabash
+	pkgdesc = Bash-style pipelining syntax for Python generators.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/calabash
+	arch = any
+	license = CUSTOM
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/calabash/calabash-0.0.3.tar.gz
+	source = UNLICENSE
+	md5sums = 83480435d2d0dfa6e63ba450540a8d6e
+	md5sums = 7246f848faa4e9c9fc0ea91122d6e680
+
+pkgname = python2-calabash
+
