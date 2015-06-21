@@ -1,6 +1,6 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 # vim: ft=sh syn=sh et
-# % Trigger: 1434922889 %
+# % Trigger: 1434923067 %
 
 pkgdesc='A dummy package to provide systemd'
 pkgname='systemd-dummy'
