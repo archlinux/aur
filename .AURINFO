@@ -1,0 +1,15 @@
+pkgbase = python2-fakeuseragent
+	pkgdesc = Up to date simple useragent faker with real world database.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/hellysmile/fake-useragent
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-fakeuseragent
+	conflicts = python2-fakeuseragent-git
+	source = https://pypi.python.org/packages/source/f/fake-useragent/fake-useragent-0.0.4.tar.gz
+
+pkgname = python2-fakeuseragent
+
