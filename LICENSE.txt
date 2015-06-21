@@ -1,0 +1,108 @@
+End User License Agreement
+
+Important notice to end user:
+
+This is the End User License Agreement (EULA) for “Defender’s Quest.” Please read through this document carefully. By copying, installing, downloading, or otherwise using this game software, you agree that you understand, accept, and comply with the terms set forth below. Failure to comply with these terms may result in enforcement actions against you. If you need clarification, explanations for the terms are italicized below.
+
+This EULA is the binding legal agreement between you, the individual end user (“you”), and Level Up Labs, LLC (“Level Up Labs”, “we”, “us”), a Limited Liability Company, for the download, purchase, and use of the game “Defender’s Quest” (“Game”). For purposes of this Agreement the “Game” means collectively the interactive video game client “Defender’s Quest” and all applicable client software (including, among other things, installer software, the game client, launcher software, and download management software) that you will or have installed on your computer, including all printed materials, digital or electronic documentation obtained by you through our website, http://www.defendersquest.com/, or by any other distribution channels now known or hereafter devised, regardless of the legal standing of that distributor .
+
+LICENSE:
+
+Level Up Labs owns all international copyrights in and to the Game including but not limited to, all images, code, graphics, data files, game elements, trade secrets, proprietary technology, sound effects, story, and dialogue. We prohibit any copying, reproduction, and circumvention of technology of the Game beyond the terms of this license. The Game is licensed to you, as opposed to being sold or assigned to you, and your continued legal use of the Game is contingent upon your compliance with this EULA.
+
+What this means:   Although you own a copy of the Game, the underlying rights still belong to the developer, us, and your use of your copy is limited to the terms of the license. If you exceed the rights granted in this license, you’re committing copyright infringement, which is illegal and could put you at risk of legal action against you.
+
+•   Upon payment of applicable license fees, we hereby grant you the non-exclusive, non-transferrable, revocable, and limited right to license one copy of the Game for your personal, non-commercial use.
+
+What this means:   We don’t mind if you use your copy to install the Game on multiple computers that you own, but you can’t resell the Game or give it away to your buddies.
+
+
+•   You may not modify, distribute, transmit, display, perform, reproduce (except for one archival and backup copy as permitted by applicable laws), publish, license, create derivative works from, adapt, translate, sublicense, auction, rent, lease or sell all or any part of the Game. Notwithstanding the foregoing, if you are the proprietor of an Internet café or public gaming room, you may operate the Software in a pay-for-play environment, provided that all computers used have their own valid and individually licensed copy of the Game installed, such Game having been purchased digitally through our website. In addition, you may not reverse engineer, decompile, or disassemble any part of the Game. All rights not expressly granted are reserved by us. You agree that you have no interest, monetary or otherwise, in any feature, content, or intellectual property contained in the Game.
+
+What this means:   As we said before, selling or giving away the Game isn’t allowed. Additionally, reverse engineering or using/adapting any part of the Game’s code or other content for commercial or redistribution purposes isn’t permitted. If you run an Internet Café or game parlor, you need to have a valid license for each copy of the Game you install on your systems—since you can’t exactly call that “personal use”, a validly purchased license for each copy of the Game on each system is required. This is an exception to the non-commercial and personal use provision above.
+
+
+•   Absent a valid distribution Agreement between you and Level Up Labs, you may not make the Game available on any third party network, FTP, internet website, torrent site, file-sharing service, intranet, or “cloud”, whereby individuals other than you may download and install the Game. You further agree that you will not link to any such third party network, torrent, FTP, file-sharing service, intranet, or “cloud” that is not legally owned by Level Up Labs or its distributors.
+
+What this means:   Redistribution of the Game without a license to do so is considered piracy, which is illegal under Federal and International law. This license is not a license for redistribution, so if you distribute the Game you’re violating this license. And as stated before, that’s copyright infringement, or piracy. The most popular means of piracy is through digital distribution, such as torrent clients or other file-sharing services. We want to continue providing worthwhile content for our users, but we can’t do it if our games are pirated—we need to eat, too, and we can’t make money off of pirated software.
+
+
+•   You agree that Level Up Labs may collect personally identifiable information from you for purposes related to your use of our products and services and that some personally identifiable information provided by you may be stored outside the country in which you reside. For more information on our privacy policy please visit this link.
+
+What this means:   Although the information you provide at purchase goes through a third party, we may at some point (whether through surveys or your own user feedback) come across information like your name, e-mail address, etc. We’ll do our best to keep that information secure, but please refer to the privacy policy for specific details regarding that information.
+
+DISCLAIMER:
+
+All characters, events, and portrayals contained in the Game are purely fictional and any resemblance to real events or real individuals whether alive or dead is purely coincidental. We do not claim any rights or interest in or to existing trademarks, trade names, personalities or likenesses that may incidentally resemble an existing product, service, or person.
+
+What this means:   We do our level best to avoid these situations, but sometimes coincidences happen. If you share the name of one of our characters, we’re not stalking you—it really was an accident.
+
+
+
+LIMITATION OF LIABILITY:
+
+•   All Information, Content, Services, And Material Available In The Game And Software Are Provided On An “As Is” Basis. To The Full Extent Applicable By Law, We Disclaim Any Warranties Or Representations Of Any Kind, Express Or Implied, Including Any Warranty Of Merchantability Or Fitness For A Particular Purpose. We Do Not Warrant The Non-Infringement Of Intellectual Property Or Proprietary Rights.
+
+What this means:   We do our best to make the highest quality games out there, but we can’t guarantee that your copy isn’t defective. This is bold because it’s important—there is no warranty to this Game, so you purchase and download at your own risk. We do not guarantee that the copy of the Game you’ve purchased is bug free, or even functional on your system.
+
+
+•   Your Purchase And Use Of The Game Is Done So At Your Own Risk. We Do Not Warrant That Your Ability To Play The Game Will Be Timely, Secure, Uninterrupted, Or Defect-Free. In No Event Will Level Up Labs (Including Its Officers, Directors, Employees, Or Agents) Nor Its Affiliates Be Liable For Direct, Indirect, Incidental, Special, Exemplary, Or Consequential Damages (Including But Not Limited To Lost Profits, Loss Of Business, Procurement Of Substitute Goods Or Services, Loss Of Use Or Loss Of Data, Or Business Interruption) However Caused And On Any Theory Of Liability, Whether In Contract, Strict Liability, Or Tort Arising In Any Way Out Of Purchase Or Use Of The Game.
+
+What this means:   Since you know there’s no warranty or guarantee regarding the Game, you’re assuming the risk in purchasing and downloading it. We also can’t guarantee that our site won’t get hacked and the copy you’ve downloaded is nothing more than a virus, and we won’t be liable to you if that happens. You can’t hold us liable for legal damages if the copy of the Game you’ve downloaded crashes your system, doesn’t function, or sends you to some crazy fetish site—we’ll do our best to keep it from happening, but software is never a risk free product.
+
+
+•   In Addition, Level Up Labs And Its Licensors And Distributors Disclaim Any And All Warranties With Respect To The Privacy And Integrity Of The Computer Resources You Use To Operate The Software. Neither We Nor Our Licensors Or Distributors Shall Be Liable For Any Disruptions, Delays Or Other Omissions In Any Connection, Data Exchange Or Other Interaction That You May Experience When You Use The Game. Neither We Nor Our Licensors Or Distributors Shall Be Responsible For The Conduct Of Any Users Or Computers That Connect, Exchange Data, Or Otherwise Interact With You Or Your Computer As A Result Of Your Use Of The Game.
+
+What this means:   Even though this is a stand-alone game, we may integrate some features at some point in the future that incorporate things like player ladders, etc. We’re not making any warranties or guarantees regarding the information collected through those systems, except as provided in our privacy policy.
+
+
+DISPUTE RESOLUTION POLICY:
+
+You agree to follow this Agreement’s dispute resolution policy as set forth below in connection with any potential claims or disputes arising from your purchase and use of the Game:
+
+•    Informal Negotiations. Parties to a dispute concerning this Agreement or purchase and use of the Game will attempt to informally negotiate a potential settlement or resolution to the dispute;
+
+
+•    Online Arbitration. In the event that informal negotiations are unsuccessful, the parties agree to follow the American Arbitration Association’s online arbitration procedures to resolve the dispute.
+
+
+•    Binding Arbitration. If for any reason online arbitration is unsuccessful or unavailable to the parties, parties agree to submit to binding arbitration in the jurisdiction of Bryan, Texas
+
+What this means:   Arbitration is cheaper and easier than litigation. If there’s a dispute, we want to resolve it in the cheapest and most efficient way possible—this benefits both you, the user, and us. If you have a problem with our Game we welcome you to provide feedback. If the matter is significant enough, mediation and arbitration are our first steps in resolving that matter. Additionally, if you violate the license terms of this Agreement, our first steps will be through arbitration.
+
+Our failure to enforce at any time any of the provisions of this EULA or related agreements shall in no way be construed to be a present or future waiver of such provisions, nor in any way affect the right of any party to enforce each and every such provision. The express waiver by Level Up Labs of any provision, condition or requirement of this EULA or related agreements shall not constitute a waiver of any future obligation to comply with such provision, condition or requirement. Notwithstanding anything else in this EULA, no default, delay or failure to perform on the part of Level Up Labs shall be considered a breach of this EULA if such default, delay or failure to perform is shown to be due to causes beyond our reasonable control.
+
+What this means:   We can’t monitor each and every user to determine if a breach of this license occurs—however, the failure to enforce this EULA against you in the event of one breach doesn’t mean that we’re giving you permission to continue violating this license. You will still be on the hook for copyright infringement and any other valid claims we can enforce for any and all contract violations we learn about.
+
+
+
+MISCELLENEOUS PROVISIONS:
+
+•    Jurisdiction and Choice of Law. The validity, interpretation, and performance of this EULA are governed and controlled by the laws and regulations of the state of Texas. In the event of a dispute you agree to submit to the personal and exclusive jurisdiction of the State and Federal Courts of Bryan, Texas.
+
+What this means:   If there is a dispute, that dispute will be resolved in Texas. You’re agreeing that your sole means of remedy is placed in the hands of the Texas courts; additionally, you’re agreeing that Texas not only governs this document but governs your actions in connection with this license.
+
+
+•    Severability. If any portion of this EULA is found invalid by any competent Court of Law, the invalidity will not affect other provisions or applications of the remainder of this EULA which can be given effect without the invalid portion.
+
+What this means:   If a court determines that any part of this Agreement isn’t legal or enforceable, the rest of the EULA that IS legal and enforceable remains in force. The entirety and enforceability of this license doesn’t hinge on the enforceability of any one particular provision.
+
+
+•    Notification of Changes to this Agreement. We may from time to time change this Agreement. You agree that notification to you of these changes will be effective upon posting those notifications and changes on the Defender’s Quest web site.
+
+What this means:   this EULA or our privacy policy may change at any time. When it does, we will notify you through our website.
+
+
+•    Prior Versions. This EULA, including our Privacy Policy, constitutes the full understanding of your agreement with us. Any prior versions of this document have no effect on this Agreement.
+
+What this means:   Only this version of the EULA is binding. Prior versions are no longer enforceable.
+
+
+•    Assignment. This EULA, including our Privacy Policy, may be assigned by Level Up Labs to any third party at our sole discretion by acquisition of the Game assets or company, or by merger.
+
+What this means:   Studios or their game properties get bought out from time to time. If that happens, this Agreement will still be enforceable by the third party who assumes ownership over us or the Game.
+
+
+•    Legal Fees. In the event that either party is required to obtain the assistance of an attorney in order to enforce the terms of this Agreement, the Party prevailing in such an enforcement action will be entitled to recovery of all reasonable attorney’s fees in connection with such action.
+
+What this means:   Attorneys aren’t cheap. If you violate this Agreement, in addition to other damages, you may be liable for our attorney fees. 
