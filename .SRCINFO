@@ -1,0 +1,18 @@
+pkgbase = cilk
+	pkgdesc = General-purpose programming language designed for multithreaded parallel computing.
+	pkgver = 5.4.6
+	pkgrel = 3
+	url = http://supertech.csail.mit.edu/cilk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = glibc
+	options = !makeflags
+	options = staticlibs
+	options = !libtool
+	source = http://supertech.csail.mit.edu/cilk/cilk-5.4.6.tar.gz
+	md5sums = 8ee528dee8072d158687560735a8d15b
+
+pkgname = cilk
+
