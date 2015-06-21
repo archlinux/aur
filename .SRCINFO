@@ -1,0 +1,18 @@
+pkgbase = mbt
+	pkgdesc = Memory-based tagger-generator and tagger in one.
+	pkgver = 3.2.12
+	pkgrel = 1
+	url = http://ilk.uvt.nl/mbt
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libtool
+	depends = ticcutils
+	depends = timbl
+	depends = timblserver
+	options = !libtool
+	source = http://software.ticc.uvt.nl/mbt-3.2.12.tar.gz
+	md5sums = 9b1af47c2c79c6f4f2d19f9ae98c2825
+
+pkgname = mbt
+
