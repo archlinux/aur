@@ -3,12 +3,12 @@
 
 pkgname='kawa'
 pkgver='2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A Scheme implementation and framework targeted the JVM.'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/kawa/index.html'
 license=('X11/MIT')
-depends=('java-runtime')
+depends=('java-environment')
 source=("http://ftp.gnu.org/pub/gnu/kawa/$pkgname-$pkgver.tar.gz")
 sha256sums=('bf73041cebff6e8bbf13883a9a5fefa8bffd88fc68547b9cb6d3314e616211e5')
 
