@@ -15,7 +15,7 @@ optdepends=('php-gd: export data to PDF'
 url="http://www.icinga.org"
 source=("https://github.com/Icinga/${pkgname}/archive/v${_pkgver}.tar.gz")
 install='icingaweb2.install'
-sha256sums=('2d86bc919f5c37eec8145a3cedaeb60c2bdebab01d38650c2c18b7b43ea1c707')
+sha256sums=('cfc4eda0b451acf1d348d787823db2422b4d088aa5fea84e6d1e2cf8d132f0c3')
 
 package() {
   cd "$srcdir/$pkgname-$_pkgver"

@@ -12,7 +12,7 @@ pkgbase = icingaweb2
 	optdepends = php-ldap: for LDAP authentication
 	optdepends = php-pgsql: for PostgreSQL backend
 	source = https://github.com/Icinga/icingaweb2/archive/v2.0.0-rc1.tar.gz
-	sha256sums = 2d86bc919f5c37eec8145a3cedaeb60c2bdebab01d38650c2c18b7b43ea1c707
+	sha256sums = cfc4eda0b451acf1d348d787823db2422b4d088aa5fea84e6d1e2cf8d132f0c3
 
 pkgname = icingaweb2
 
