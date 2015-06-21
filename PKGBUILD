@@ -1,36 +1,82 @@
-# Maintainer: Peter Ivanov <ivanovp@gmail.com>
-# Contributor: joat <joat at lavabit dot com>
-# Submitter: BxS <bxsbxs at gmail dot com>
+# Maintainer: Grey Christoforo <grey@christoforo.net>
 
-pkgname=microchip-mplabxc32-bin
-pkgver=1.33
-pkgrel=3
-pkgdesc="C/C++ compiler for PIC32 MCUs"
+_number_of_bits=32
+pkgname=microchip-mplabxc${_number_of_bits}-bin
+pkgver=1.34
+pkgrel=1
+pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(i686 x86_64)
-url=http://www.microchip.com/xc32
+url=http://www.microchip.com/xc${_number_of_bits}
 license=(custom)
-depends=(xclm-dirs)
-[ $CARCH = x86_64 ] && depends+=(lib32-gcc-libs lib32-expat)
-[ $CARCH = x86_64 ] && makedepends=(lib32-fakeroot)
-provides=(mplabxc32)
-conflicts=(mplabxc32)
+if [[ $CARCH = i686 ]]; then
+  depends=(
+    'expat'
+    'gcc-libs'
+  )
+else
+  depends=(
+    'lib32-expat'
+    'lib32-gcc-libs'
+  )
+fi
+makedepends=(sdx tcl tcl-vfs) 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-PKGEXT='.pkg.tar'
+source=("installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" liblzmadec0.2.so)
+noextract=(installerBlobFromMicrochip liblzmadec0.2.so)
+md5sums=('538d2e0c00fcb4f85bb15166f2320b83'
+         'e43a1f543ba4f67a2d5b2e8d9656a6c7')
 install=$pkgname.install
-instdir=/opt/microchip/xc32/v$pkgver
-installer=xc32-v$pkgver-full-install-linux-installer.run
-source=(http://ww1.microchip.com/downloads/en/DeviceDoc/$installer)
-md5sums=('9f4f086d6f2b9c044f9cd2e46ec3f56c')
+
+build() {
+  # unwrap installer files
+  sdx.kit unwrap installerBlobFromMicrochip
+  
+  # read unpack options
+  _unpack_options=$(cat installerBlobFromMicrochip.vfs/cookfsinfo.txt)
+  
+  # write unpack tcl script to file
+cat > unpack.tcl <<EOF
+package require vfs::cookfs
+package require Tcllzmadec
+vfs::cookfs::Mount ${_unpack_options} installerBlobFromMicrochip virtual
+file copy virtual unpacked.vfs
+EOF
+
+  # if this is a 64bit machine, we need to use the packaged zlma decoder so since the insaller only provides a 32bit one
+  if [[ $CARCH = x86_64 ]]; then
+    mv liblzmadec0.2.so installerBlobFromMicrochip.vfs/libraries/lzma*/.
+  fi
+
+  msg2 "Unpacking installer. This might take a while..."
+  LD_LIBRARY_PATH=./usr/lib: TCL_LIBRARY=./installerBlobFromMicrochip.vfs/lib TCLLIBPATH=./installerBlobFromMicrochip.vfs/libraries tclsh unpack.tcl
+
+  #now reassemble files larger than 5MB in the archive, which were split up for whatever reason
+  #msg2 "Reassembling files..."
+  #ifor f in `find ./unpacked.vfs -name '*___bitrockBigFile1'`
+  #do
+  #  firstChunk="$f"
+  #  baseName="${firstChunk//___bitrockBigFile1/}"
+  #  allPieces="$(find -path "${baseName}*" | sort --version-sort)"
+  #  cat $allPieces > "$baseName".reassembled
+  #  rm $allPieces
+  #  mv "$baseName".reassembled "$baseName"
+  #done
+}
 
 package() {
-  echo -e "Creating the Package\n  Please wait..."
+  mv unpacked.vfs/compiler/programfilesosx/* unpacked.vfs/compiler/programfiles/
+  mv unpacked.vfs/compiler/programfiles/*License.txt unpacked.vfs/compiler/programfiles/docs/.
 
-  chmod 755 $srcdir/$installer
-  echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny\n1\nn\n$pkgdir$instdir\nn\ny\ni\n" > $srcdir/inst_input
+  mkdir -p "$pkgdir"/opt/$pkgname
+  mv unpacked.vfs/compiler/programfiles/* "$pkgdir"/opt/$pkgname/.
 
-  HOME=$srcdir $srcdir/$installer --mode text < $srcdir/inst_input &> /dev/null || true
+  msg2 "Making executables executable"
+  find "$pkgdir"/opt/$pkgname/bin -type f -exec /bin/sh -c "file {} | grep -q executable && chmod +x {}" \;
 
-  chmod -R 755 $pkgdir$instdir/{bin,etc}
+  mkdir -p "$pkgdir/etc/profile.d"
+  echo "export PATH="'$PATH'":/opt/${pkgname}/bin" > "$pkgdir/etc/profile.d/${pkgname}.sh"
+  echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
+ 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s $instdir/MPLAB_XC32_Compiler_License.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  ln -s /opt/$pkgname/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
