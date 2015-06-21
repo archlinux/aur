@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan dot husmann at t minus online dot de>
 
 pkgname=iojs-git
-pkgver=v2.3.0.43.g3ba4f71
+pkgver=v2.3.0.44.gb0990ef
 pkgrel=1
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
