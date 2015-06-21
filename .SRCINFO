@@ -1,0 +1,20 @@
+pkgbase = dwarftherapist-hg
+	pkgdesc = An extension application for the fantastic game Dwarf Fortress
+	pkgver = 571
+	pkgrel = 2
+	url = http://code.google.com/p/dwarftherapist/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = mercurial
+	depends = qt4
+	depends = icu
+	conflicts = dwarftherapist-svn
+	replaces = dwarftherapist-svn
+	source = fix_file_path.diff
+	source = dwarftherapist.desktop
+	md5sums = e5109f6cadbd19865f72a8ad86279d92
+	md5sums = 32c80fd6e3b86900c1677b4e2859b07b
+
+pkgname = dwarftherapist-hg
+

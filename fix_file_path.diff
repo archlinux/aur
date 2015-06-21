@@ -1,0 +1,33 @@
+--- src/dfinstance.cpp	2011-02-18 14:22:11.000000000 +0100
++++ src/dfinstance.cpp	2011-02-18 14:23:44.293333731 +0100
+@@ -79,7 +79,7 @@
+     search_paths << working_dir.path();
+ 
+     QString subdir = LAYOUT_SUBDIR;
+-    search_paths << QString("etc/memory_layouts/%1").arg(subdir);
++    search_paths << QString("/usr/share/dwarftherapist/memory_layouts/%1").arg(subdir);
+ 
+     TRACE << "Searching for MemoryLayout ini files in the following directories";
+     foreach(QString path, search_paths) {
+--- src/dwarftherapist.cpp	2011-02-18 14:22:11.000000000 +0100
++++ src/dwarftherapist.cpp	2011-02-18 14:24:58.803333733 +0100
+@@ -92,7 +92,7 @@
+ 
+     //setup logging
+     m_log_mgr = new LogManager(this);
+-    TruncatingFileLogger *log = m_log_mgr->add_logger("log/run.log");
++    TruncatingFileLogger *log = m_log_mgr->add_logger(QDir::tempPath() + "/dwarftherapist.log");
+     if (log) {
+         LogAppender *app = m_log_mgr->add_appender("core", log, LL_TRACE);
+         if (app) {
+--- src/gamedatareader.cpp	2011-02-18 14:22:11.000000000 +0100
++++ src/gamedatareader.cpp	2011-02-18 14:24:35.426667066 +0100
+@@ -35,7 +35,7 @@
+     : QObject(parent)
+ {
+     QDir working_dir = QDir::current();
+-    QString filename = working_dir.absoluteFilePath("etc/game_data.ini");
++    QString filename = "/usr/share/dwarftherapist/game_data.ini";
+     m_data_settings = new QSettings(filename, QSettings::IniFormat);
+ 
+     QStringList labor_names;
