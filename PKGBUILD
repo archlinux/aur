@@ -2,7 +2,7 @@
 
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=1.34
+pkgver=1.40
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ makedepends=(sdx tcl tcl-vfs)
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 source=("installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" liblzmadec0.2.so)
 noextract=(installerBlobFromMicrochip liblzmadec0.2.so)
-md5sums=('538d2e0c00fcb4f85bb15166f2320b83'
+md5sums=('06f3f019001cee7d8792561dc8a8da80'
          'e43a1f543ba4f67a2d5b2e8d9656a6c7')
 install=$pkgname.install
 
@@ -50,17 +50,18 @@ EOF
   msg2 "Unpacking installer. This might take a while..."
   LD_LIBRARY_PATH=./usr/lib: TCL_LIBRARY=./installerBlobFromMicrochip.vfs/lib TCLLIBPATH=./installerBlobFromMicrochip.vfs/libraries tclsh unpack.tcl
 
-  #now reassemble files larger than 5MB in the archive, which were split up for whatever reason
-  #msg2 "Reassembling files..."
-  #ifor f in `find ./unpacked.vfs -name '*___bitrockBigFile1'`
-  #do
-  #  firstChunk="$f"
-  #  baseName="${firstChunk//___bitrockBigFile1/}"
-  #  allPieces="$(find -path "${baseName}*" | sort --version-sort)"
-  #  cat $allPieces > "$baseName".reassembled
-  #  rm $allPieces
-  #  mv "$baseName".reassembled "$baseName"
-  #done
+  # now reassemble files larger than 5MB in the archive, which were split up for whatever reason
+  msg2 "Reassembling files..."
+  for f in $(find ./unpacked.vfs -name '*___bitrockBigFile1')
+  do
+    firstChunk="$f"
+    baseName="${firstChunk//___bitrockBigFile1/}"
+    allPieces="$(find -path "${baseName}*" | sort --version-sort)"
+    cat $allPieces > "$baseName".reassembled
+    rm $allPieces
+    mv "$baseName".reassembled "$baseName"
+  done
+
 }
 
 package() {
@@ -78,5 +79,5 @@ package() {
   echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
  
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s /opt/$pkgname/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  ln -s /opt/$pkgname/docs/$(basename /opt/$pkgname/docs/*icense.txt) $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

@@ -1,6 +1,6 @@
 pkgbase = microchip-mplabxc32-bin
 	pkgdesc = Microchip's MPLAB XC32 C compiler toolchain for all of their 32bit microcontrollers
-	pkgver = 1.34
+	pkgver = 1.40
 	pkgrel = 1
 	url = http://www.microchip.com/xc32
 	install = microchip-mplabxc32-bin.install
@@ -21,9 +21,9 @@ pkgbase = microchip-mplabxc32-bin
 	options = !zipman
 	options = staticlibs
 	options = !upx
-	source = installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc32-v1.34-full-install-linux-installer.run
+	source = installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc32-v1.40-full-install-linux-installer.run
 	source = liblzmadec0.2.so
-	md5sums = 538d2e0c00fcb4f85bb15166f2320b83
+	md5sums = 06f3f019001cee7d8792561dc8a8da80
 	md5sums = e43a1f543ba4f67a2d5b2e8d9656a6c7
 
 pkgname = microchip-mplabxc32-bin
