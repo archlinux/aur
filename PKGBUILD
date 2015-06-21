@@ -1,30 +1,31 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 # Contributor: Jakub Kozisek <nodevel at gmail dot com>
 
-_gitname=puddletag
 pkgname=puddletag-git
+pkgdesc="An audio tag editor for GNU/Linux."
+license=('GPL')
+url="http://puddletag.sourceforge.net/"
 pkgver=758.489acd2
 pkgrel=1
-pkgdesc="An audio tag editor for GNU/Linux."
-arch=('i686' 'x86_64')
-url="http://puddletag.sourceforge.net/"
-license=('GPL')
-depends=('python2' 'python2-pyqt' 'python2-pyparsing' 'mutagen' 'python2-configobj' 'python2-musicbrainz2')
+
+provides=('puddletag')
+conflicts=('puddletag')
+
+source=("$pkgname::git://github.com/keithgg/puddletag")
+md5sums=('SKIP')
+depends=('python2' 'mutagen' 'python2-pyqt' 'python2-pyparsing' 'python2-configobj' 'python2-musicbrainz2')
 makedepends=('git')
 optdepends=('python2-imaging: edit/view FLAC cover art'
             'quodlibet: edit a QuodLibet library')
-provides=('puddletag')
-conflicts=('puddletag')
-source=("git://github.com/keithgg/${_gitname}")
-md5sums=(SKIP)
+arch=('i686' 'x86_64')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/$pkgname"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-    cd "$srcdir/$_gitname/source"
+    cd "$srcdir/$pkgname/source"
 
     export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages"
     mkdir -p "$PYTHONPATH"
