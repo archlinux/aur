@@ -1,0 +1,16 @@
+pkgbase = alcarys-complex-trial
+	pkgdesc = An action-RPG style adventure (trial version)
+	pkgver = 1.03
+	pkgrel = 2
+	url = http://www.modestarcade.com/games/alcaryscomplex/
+	arch = i686
+	arch = x86_64
+	license = custom:Commercial
+	depends = openal
+	depends = libgl
+	depends = openssl
+	source = http://www.modestarcade.com/game/alcarys/Alcarys_Complex_Trial_1.03_UBU.tar.gz
+	md5sums = e0b860fe45ffed0bcda8fa50866a4592
+
+pkgname = alcarys-complex-trial
+
