@@ -1,0 +1,18 @@
+pkgbase = pdoc
+	pkgdesc = A simple program and library to auto generate API documentation for Python modules.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/BurntSushi/pdoc
+	arch = any
+	license = UNLICENSE
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mako
+	depends = python-markdown
+	depends = python-argparse
+	provides = pdoc
+	provides = python-pdoc
+	source = https://pypi.python.org/packages/source/p/pdoc/pdoc-0.2.4.tar.gz
+
+pkgname = pdoc
+
