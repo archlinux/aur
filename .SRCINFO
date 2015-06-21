@@ -1,0 +1,17 @@
+pkgbase = anodyne-hib
+	pkgdesc = A top-down action-adventure game
+	pkgver = 1.508
+	pkgrel = 2
+	url = http://www.anodynegame.com/
+	arch = any
+	license = custom
+	depends = adobe-air-sdk
+	source = hib://Anodyne_1_508_Linux-1378683147.zip
+	source = air-generic-launcher.sh
+	source = eula.txt
+	md5sums = 35d5911b9e14e31153767dd983df50f7
+	md5sums = f179eaa5e6e6674b1853cf826fc33c3a
+	md5sums = b9cfbd29fb8a1d605e193311b778d7d8
+
+pkgname = anodyne-hib
+
