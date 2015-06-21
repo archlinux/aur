@@ -1,0 +1,18 @@
+pkgbase = pacman_sdl
+	pkgdesc = Pacman clone using SDL. Guide Pacman through a maze and collect pac-dots while avoiding ghosts.
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://github.com/schuay/pacman/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = sdl_ttf
+	depends = sdl_gfx
+	depends = sdl_mixer
+	depends = sdl_image
+	source = https://github.com/downloads/schuay/pacman/pacman-0.1.1.tar.bz2
+	md5sums = 8cc780d3995579c329f297455899fff5
+
+pkgname = pacman_sdl
+
