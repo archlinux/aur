@@ -1,0 +1,19 @@
+pkgbase = libfolia
+	pkgdesc = C++ library for FoLiA (Format for Linguistic Annotation)
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://proycon.github.io/folia
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libtool
+	makedepends = autoconf
+	depends = ticcutils
+	depends = icu
+	depends = libxml2
+	options = !libtool
+	source = http://software.ticc.uvt.nl/libfolia-0.13.tar.gz
+	md5sums = 9053c8eaefb83131d1f31eaccd844608
+
+pkgname = libfolia
+
