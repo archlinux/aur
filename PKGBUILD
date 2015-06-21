@@ -11,7 +11,7 @@ arch=( 'any' )
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
 
-provides=( 'systemd=219' )
+provides=( 'systemd=221' )
 
 package() {
   # systemd-tmfiles stub
