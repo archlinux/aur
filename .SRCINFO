@@ -1,0 +1,16 @@
+pkgbase = ttf-karatdemo-normal
+	pkgdesc = A free trial version of the normal-weight Karat font used in the Arch Linux logo.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.rubicon.ca/samp_pg3.htm
+	install = ttf-karatdemo-normal.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	source = ftp://ftp.rubicon.ca/outgoing/KaratDemo_TT.zip
+	md5sums = 02887e3a54b6ceea6534a9456e363d33
+
+pkgname = ttf-karatdemo-normal
+
