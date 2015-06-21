@@ -1,0 +1,20 @@
+pkgbase = ottools
+	pkgdesc = Tools for encrypting files with one-time pads.
+	pkgver = 2013.3
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/ottools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = otsplit
+	conflicts = otsplit
+	replaces = otsplit
+	source = http://xyne.archlinux.ca/projects/ottools/src/ottools-2013.3.tar.xz
+	source = http://xyne.archlinux.ca/projects/ottools/src/ottools-2013.3.tar.xz.sig
+	md5sums = c338e362d2603424f753819c2ac84c16
+	md5sums = 497a16050e0759bb6b432633db9074ee
+	sha512sums = cdbce6f96072ed6bca9aaceb7198bb4a455be9e72e657cbe6965b23890178a0f32059fba22d3975a9ec52db44fab2feb134fef6326189118c04773ae366c6ab0
+	sha512sums = 73d6e3bebea0faac3eab7f99a1c6ba09e4c174d54f29f0b3fb1693d073dfd6bcac1f9d0a6bfcfa5ff8229c26e6ee03b5a69caa0a6f7f55044ec745c02f9757dd
+
+pkgname = ottools
+
