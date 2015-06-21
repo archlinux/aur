@@ -1,0 +1,6 @@
+# arg 1:  the new package version
+post_install() {
+  echo
+  echo "NOTE: Remember to add your user to the video group."
+  echo
+}

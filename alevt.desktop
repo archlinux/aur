@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AleVT
+Comment=X11 Teletext browser
+Exec=alevt
+Icon=mini-alevt
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;
