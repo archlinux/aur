@@ -1,0 +1,17 @@
+pkgbase = ifm
+	pkgdesc = A language and a program for keeping track of your progress through an Interactive Fiction game.
+	pkgver = 5.4
+	pkgrel = 1
+	url = http://fluffybunny.memebot.com/ifm.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tk
+	depends = tk
+	depends = perl
+	options = docs
+	source = http://mirror.ifarchive.org/if-archive/mapping-tools/ifm-5.4.tar.gz
+	md5sums = fa18a544fc0fec2ddc452777317357ea
+
+pkgname = ifm
+
