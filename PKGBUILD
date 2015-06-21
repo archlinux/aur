@@ -1,6 +1,6 @@
 # Contributor: vit01 (vitirk) <me@ii-net.tk>
 
-pkgname='iicli-modular-git'
+pkgname='iicli-modular'
 pkgver='0.1'
 pkgdesc="simple gui client for ii network"
 pkgrel=1
