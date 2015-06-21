@@ -1,0 +1,12 @@
+diff -ruN gbcflsh_1.1_src.orig/gbcf.pro gbcflsh_1.1_src/gbcf.pro
+--- gbcflsh_1.1_src.orig/gbcf.pro	2015-06-07 16:08:46.800217639 +0200
++++ gbcflsh_1.1_src/gbcf.pro	2015-06-07 16:09:15.903447609 +0200
+@@ -57,7 +57,7 @@
+ langpack.files = src/*.qm
+ exec.path = /usr/bin
+ exec.files = gbcflsh
+-config.path = ~/.config/GBCFProject
++config.path = /usr/share/gbcf/GBCFProject
+ config.files = GameBoyCartFlasher.conf
+ INSTALLS += langpack exec config
+ }

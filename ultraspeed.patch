@@ -1,0 +1,115 @@
+diff -ruN gbcflsh_1.1_src.orig/src/const.h gbcflsh_1.1_src/src/const.h
+--- gbcflsh_1.1_src.orig/src/const.h	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/const.h	2015-06-04 13:21:56.421095104 +0200
+@@ -64,7 +64,7 @@
+ enum dap_t
+ { LONGER = 0x00, DEFAULT = 0x01, DATAPOLL = 0x02, TOGGLE = 0x03 };
+ enum speed_type
+-{ LOW = 0x00, STANDARD = 0x01, HIGH = 0x02 };
++{ LOW = 0x00, STANDARD = 0x01, HIGH = 0x02, ULTRA = 0x03 };
+ 
+ /* MBC types */
+ enum mbc_t
+diff -ruN gbcflsh_1.1_src.orig/src/gbcflsh.cpp gbcflsh_1.1_src/src/gbcflsh.cpp
+--- gbcflsh_1.1_src.orig/src/gbcflsh.cpp	2008-03-25 19:20:01.000000000 +0100
++++ gbcflsh_1.1_src/src/gbcflsh.cpp	2015-06-04 13:23:45.123778698 +0200
+@@ -35,12 +35,14 @@
+       if (strcmp (*argv, "-showbbl") == 0)
+ 	Settings::showbbl = TRUE;
+ /*
+- * USB speed LOW 125000bps HI 375000
++ * USB speed LOW 125000bps, HI 375000, ULTRA 1500000
+  */
+       if (strcmp (*argv, "-lowspeed") == 0)
+ 	Settings::speed = LOW;
+       if (strcmp (*argv, "-highspeed") == 0)
+ 	Settings::speed = HIGH;
++	  if (strcmp (*argv, "-ultraspeed") == 0)
++		  Settings::speed = ULTRA;
+ /* 
+  * communication threads prioryty are used when communication 
+  * or gui is freezing
+diff -ruN gbcflsh_1.1_src.orig/src/Logic.cpp gbcflsh_1.1_src/src/Logic.cpp
+--- gbcflsh_1.1_src.orig/src/Logic.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/Logic.cpp	2015-06-04 12:31:56.859682511 +0200
+@@ -8,6 +8,7 @@
+ #include "AbstractPort.h"
+ #include <ctype.h>
+ #include <cassert>
++#include <stdio.h>
+ 
+ /* array used to generate crc16 */
+ unsigned short crc16_tab[256] = {
+diff -ruN gbcflsh_1.1_src.orig/src/ReadFlashThread.cpp gbcflsh_1.1_src/src/ReadFlashThread.cpp
+--- gbcflsh_1.1_src.orig/src/ReadFlashThread.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/ReadFlashThread.cpp	2015-06-04 12:32:23.919628575 +0200
+@@ -2,6 +2,7 @@
+ ** ReadFlashThread.cpp
+ ** Author: Kraku
+ *****************************************************************************/
++#include <stdio.h>
+ #include "ReadFlashThread.h"
+ #include "Settings.h"
+ #include "Logic.h"
+diff -ruN gbcflsh_1.1_src.orig/src/ReadRamThread.cpp gbcflsh_1.1_src/src/ReadRamThread.cpp
+--- gbcflsh_1.1_src.orig/src/ReadRamThread.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/ReadRamThread.cpp	2015-06-04 12:32:45.456252452 +0200
+@@ -2,6 +2,7 @@
+ ** ReadRamThread.cpp
+ ** Author: Kraku
+ *****************************************************************************/
++#include <stdio.h>
+ #include "ReadRamThread.h"
+ #include "Settings.h"
+ #include "Logic.h"
+diff -ruN gbcflsh_1.1_src.orig/src/USBPort.cpp gbcflsh_1.1_src/src/USBPort.cpp
+--- gbcflsh_1.1_src.orig/src/USBPort.cpp	2008-03-25 19:11:14.000000000 +0100
++++ gbcflsh_1.1_src/src/USBPort.cpp	2015-06-04 13:25:20.819881457 +0200
+@@ -44,6 +44,11 @@
+       if (ftdi_set_baudrate (&ftdic, 375000) < 0)
+ 	return FALSE;
+     }
++  else if (Settings::speed == ULTRA)
++    {
++      if (ftdi_set_baudrate (&ftdic, 1500000) < 0)
++	return FALSE;
++    }
+ 
+   if (ftdi_set_latency_timer (&ftdic, 2) < 0)
+     return FALSE;
+diff -ruN gbcflsh_1.1_src.orig/src/USBPortWin.cpp gbcflsh_1.1_src/src/USBPortWin.cpp
+--- gbcflsh_1.1_src.orig/src/USBPortWin.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/USBPortWin.cpp	2015-06-04 13:25:54.339685692 +0200
+@@ -41,6 +41,10 @@
+         if(FT_SetBaudRate(ftHandle,375000) != FT_OK)
+ 	   	   return FALSE;
+     }
++    else if(Settings::speed == ULTRA){
++        if(FT_SetBaudRate(ftHandle,1500000) != FT_OK)
++	   	   return FALSE;
++    }
+ 
+ 	if(FT_SetLatencyTimer(ftHandle, 2) != FT_OK)
+ 		return FALSE;
+diff -ruN gbcflsh_1.1_src.orig/src/WriteFlashThread.cpp gbcflsh_1.1_src/src/WriteFlashThread.cpp
+--- gbcflsh_1.1_src.orig/src/WriteFlashThread.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/WriteFlashThread.cpp	2015-06-04 12:33:25.666172885 +0200
+@@ -2,6 +2,7 @@
+ ** WriteFlashThread.cpp
+ ** Author: Kraku
+ *****************************************************************************/
++#include <stdio.h>
+ #include "WriteFlashThread.h"
+ #include "Settings.h"
+ #include "Logic.h"
+diff -ruN gbcflsh_1.1_src.orig/src/WriteRamThread.cpp gbcflsh_1.1_src/src/WriteRamThread.cpp
+--- gbcflsh_1.1_src.orig/src/WriteRamThread.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src/src/WriteRamThread.cpp	2015-06-04 12:33:42.996138721 +0200
+@@ -2,6 +2,7 @@
+ ** WriteRamThread.cpp
+ ** Author: Kraku
+ *****************************************************************************/
++#include <stdio.h>
+ #include "WriteRamThread.h"
+ #include "Settings.h"
+ #include "Logic.h"

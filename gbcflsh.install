@@ -1,0 +1,5 @@
+post_install() {
+  echo Warning: You should copy /usr/share/gbcf/GBCFProject directory to ~/.config/ for each user you wish to use the application. Otherwise language configuration will not work!
+}
+
+
