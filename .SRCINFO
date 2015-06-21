@@ -1,0 +1,19 @@
+pkgbase = timblserver-git
+	pkgdesc = Tilburg Memory Based Learner Server.
+	pkgver = 1
+	pkgrel = 2
+	url = http://ilk.uvt.nl/timbl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	depends = timbl
+	provides = timblserver
+	conflicts = timblserver
+	options = !libtool
+	source = git://github.com/proycon/timblserver.git
+	md5sums = SKIP
+
+pkgname = timblserver-git
+
