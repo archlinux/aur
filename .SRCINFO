@@ -1,0 +1,13 @@
+pkgbase = psgrep
+	pkgdesc = Process list search thru grep
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://code.google.com/p/psgrep/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://psgrep.googlecode.com/files/psgrep-1.0.6.tar.bz2
+	md5sums = 2d74c8746950c2b4efe5eac96303bf09
+
+pkgname = psgrep
+
