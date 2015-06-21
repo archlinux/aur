@@ -1,0 +1,16 @@
+pkgbase = vim-endwise
+	pkgdesc = Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=2386
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	source = vim-endwise.zip::http://www.vim.org/scripts/download_script.php?src_id=21704
+	md5sums = 55130343b89e56d9c52c82921146f338
+	sha256sums = e896e765f6b207e00e7e28850483520816ccf47d5f7b26587be51ad312ececff
+
+pkgname = vim-endwise
+
