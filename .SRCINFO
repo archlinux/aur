@@ -1,0 +1,18 @@
+pkgbase = legendofedgar
+	pkgdesc = 2D platformer: Venture across the world, battle fearsome creatures and solve puzzles to rescue your father.
+	pkgver = 1.21
+	pkgrel = 1
+	url = http://sourceforge.net/projects/legendofedgar/
+	install = legendofedgar.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = hicolor-icon-theme
+	source = https://github.com/riksweeney/edgar/releases/download/1.21/edgar-1.21-1.tar.gz
+	md5sums = 89b786bfcf81767a9447ddd397b943d5
+
+pkgname = legendofedgar
+
