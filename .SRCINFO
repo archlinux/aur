@@ -1,0 +1,21 @@
+pkgbase = timbl-git
+	pkgdesc = Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification
+	pkgver = 1
+	pkgrel = 3
+	url = http://ilk.uvt.nl/timbl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	depends = gcc-libs
+	depends = libxml2
+	depends = ticcutils
+	provides = timbl
+	conflicts = timbl
+	options = !libtool
+	source = git://github.com/proycon/timbl.git
+	md5sums = SKIP
+
+pkgname = timbl-git
+
