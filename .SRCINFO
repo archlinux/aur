@@ -1,0 +1,17 @@
+pkgbase = synclinks
+	pkgdesc = A tool that synchronizes hierarchies of symlinks.
+	pkgver = 2013
+	pkgrel = 2
+	url = http://xyne.archlinux.ca/projects/synclinks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://xyne.archlinux.ca/projects/synclinks/src/synclinks-2013.tar.xz
+	source = http://xyne.archlinux.ca/projects/synclinks/src/synclinks-2013.tar.xz.sig
+	md5sums = db03da0db54e061954563abdacb6790f
+	md5sums = ad935987e8064d88be17eb6360e6a419
+	sha512sums = 23a4a29d56354af17401f213fc20f33577535af59c25952de5702771b55755a2a2c2c5db85af9934b11cae37090074fb591ac988dd0b44348700aba39e6e336d
+	sha512sums = d1d2c9d8c8bd6964905bf059db191210b6ab4261e2dc78319988c8ee7fbb7f68ad3204afe2df4979b1f6c7f1512d8fa5de7f2885bba371abcd1618d19b1212a1
+
+pkgname = synclinks
+
