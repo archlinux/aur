@@ -1,0 +1,3 @@
+pocketsphinx:
+    hmm_dir: '/usr/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k'
+    fst_model: '/usr/share/phonetisaurus/scripts/g014b2b/g014b2b.fst'

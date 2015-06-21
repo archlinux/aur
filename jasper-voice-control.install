@@ -1,0 +1,15 @@
+post_install() {
+	getent group jasper &>/dev/null || groupadd -r jasper >/dev/null
+	getent passwd jasper &>/dev/null || useradd -r -g jasper -d /var/lib/jasper -s /bin/false -c jasper jasper >/dev/null
+	chown -R jasper:jasper /var/lib/jasper
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	getent passwd jasper &>/dev/null && userdel jasper >/dev/null
+	getent group jasper &>/dev/null && groupdel jasper >/dev/null
+	true
+}

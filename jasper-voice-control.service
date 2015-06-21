@@ -1,0 +1,11 @@
+[Unit]
+Description=Jasper Voice Control
+ 
+[Service]
+Type=simple
+User=jasper
+Group=jasper
+ExecStart=/usr/bin/jasper-voice-control
+ 
+[Install]
+WantedBy=multi-user.target
