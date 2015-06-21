@@ -1,0 +1,17 @@
+pkgbase = python3-memoizedb
+	pkgdesc = Generic data retrieval memoizer that uses an sqlite database to cache data.
+	pkgver = 2012.12
+	pkgrel = 4
+	url = http://xyne.archlinux.ca/projects/python3-memoizedb
+	arch = any
+	license = GPL
+	depends = python3
+	source = http://xyne.archlinux.ca/projects/python3-memoizedb/src/python3-memoizedb-2012.12.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-memoizedb/src/python3-memoizedb-2012.12.tar.xz.sig
+	md5sums = cbd300a5bd7e11130954f2b50a99d631
+	md5sums = 868a3327f75bc7a253ee871374666126
+	sha512sums = 8b04119253f92b579ef49bb58118db183fde1584f192d7c3c1371564b310adb277327745ec0628f0a09ab17a18ae5e28708d0b128516655667e3a9c1eafeb5bd
+	sha512sums = c2dbf0c71ad4471e6abc7a057d39ec3be9689ce4a01ad03f8f927b8987f99d5fb7b6d9027805b4038576200af63ca6f007fdefbd7b5bfb76a65ccf3964037d95
+
+pkgname = python3-memoizedb
+
