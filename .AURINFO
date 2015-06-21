@@ -1,0 +1,12 @@
+pkgbase = jasper-tts-pico
+	pkgdesc = Meta package to satisfy dependencies for Jasper's Pico TTS engine.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://jasperproject.github.io
+	arch = any
+	license = MIT
+	depends = jasper-voice-control
+	depends = svox-pico-git
+
+pkgname = jasper-tts-pico
+
