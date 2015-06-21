@@ -1,0 +1,14 @@
+pkgbase = python2-wifileds
+	pkgdesc = Library for multiple WiFi LED vendors.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/joaquincasares/python-wifi-leds
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-wifileds
+	source = https://pypi.python.org/packages/source/w/wifileds/wifileds-1.0.6.tar.gz
+
+pkgname = python2-wifileds
+
