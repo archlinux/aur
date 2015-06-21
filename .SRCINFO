@@ -1,0 +1,14 @@
+pkgbase = ophis
+	pkgdesc = An assembler for the 6502 microprocessor
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://michaelcmartin.github.io/Ophis/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	source = https://github.com/michaelcmartin/ophis/archive/v2.1.tar.gz
+	sha1sums = 3cab892b4347fcd398676d6adc36340f847632cc
+
+pkgname = ophis
+
