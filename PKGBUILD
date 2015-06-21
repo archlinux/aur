@@ -3,7 +3,7 @@
 _number_of_bits=16
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.24
-pkgrel=5
+pkgrel=6
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their dsPIC and PIC24 microcontroller families"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -78,5 +78,5 @@ package() {
   echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
  
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s "$pkgdir"/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  ln -s /opt/$pkgname/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
