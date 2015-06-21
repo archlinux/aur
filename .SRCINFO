@@ -1,0 +1,18 @@
+pkgbase = armh
+	pkgdesc = Pacman history parser and helper script for the Arch Rollback Machine (ARM).
+	pkgver = 2013.5.22.1
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/armh
+	arch = any
+	license = GPL
+	depends = python3
+	depends = pyalpm
+	source = http://xyne.archlinux.ca/projects/armh/src/armh-2013.5.22.1.tar.xz
+	source = http://xyne.archlinux.ca/projects/armh/src/armh-2013.5.22.1.tar.xz.sig
+	md5sums = 531a453d07568c73c467c0c55e87eeb6
+	md5sums = 65e1643faa37a2fa0195d704a98bed2c
+	sha512sums = 1a4de77c305d7764291fc2663bd3887714933f44cd26b6d59015ba8d14bad184356331b42a47f0347b0eb350377f1aa7bb6b643ead95185550db2e2a582b878d
+	sha512sums = 1340e02cd54de1676eb55f2f0ebe1500952451c193c3fdf629e26464ca46c775b36b5da1cb51641890cf863680a83adf01ccff9665cbe61243dcfbb651dfba78
+
+pkgname = armh
+
