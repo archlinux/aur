@@ -6,4 +6,4 @@
  )
 +
 +set(CM_VER ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
-+install(FILES cmake/FindSFGUI.cmake DESTINATION share/cmake-${CM_VER}/Modules)
++install(FILES cmake/Modules/FindSFGUI.cmake DESTINATION share/cmake-${CM_VER}/Modules)

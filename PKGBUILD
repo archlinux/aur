@@ -1,8 +1,8 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfgui-git
-pkgver=0.2.3.r1.g5a17f40
-pkgrel=3
+pkgver=0.2.3.r33.g6f4a009
+pkgrel=1
 pkgdesc="SFGUI (Simple and Fast Graphical User Interface), a C++ GUI library for SFML."
 arch=('i686' 'x86_64')
 url="http://sfgui.sfml-dev.org/"
@@ -17,7 +17,7 @@ options=('debug')
 source=("git+https://github.com/TankOs/SFGUI.git"
         "0001-add_cmake_module_install.patch")
 sha256sums=('SKIP'
-            '7015fd528b2f40f35dc917bc76364a92dd34aaacdd86e1571d2855c3e235a8f1')
+            'c7001f8d3525fe757cb1ba1b4435c6362545175456426461024850183a57cee6')
 
 pkgver() {
   cd "${srcdir}/SFGUI"
