@@ -1,0 +1,32 @@
+pkgbase = ogre-1.8
+	pkgdesc = Scene-oriented, flexible 3D engine written in C++. Version 1.8.
+	pkgver = 1.8.1
+	pkgrel = 4
+	url = http://www.ogre3d.org
+	install = ogre-1.8.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	makedepends = mesa
+	depends = boost-libs
+	depends = freeimage
+	depends = freetype2
+	depends = libxaw
+	depends = libxrandr
+	depends = nvidia-cg-toolkit
+	depends = zziplib
+	depends = ois
+	depends = glu
+	provides = ogre
+	source = OGRE-1.8.tar.bz2::http://downloads.sourceforge.net/ogre/ogre_src_v1-8-1.tar.bz2
+	source = freetype.patch
+	md5sums = b85e3dcf370a46b3a8624d4fdd722d39
+	md5sums = 65fd7049ed67142fdb363df821bd40e8
+
+pkgname = ogre-1.8
+

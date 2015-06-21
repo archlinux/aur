@@ -1,0 +1,6 @@
+post_install() {
+    echo "To view the OGRE samples just run OgreSampleBrowser or launch"
+    echo "it directly in /opt/OGRE-1.8/samples/"
+    echo "Update your paths:"
+    echo "  export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib"
+}
