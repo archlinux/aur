@@ -1,4 +1,4 @@
-# $Id: c3338e328e8e42fdbd690eaf3b9e2a273a7137d8 $
+# $Id: 469156894119f3e86346aecbb0de97fac03a04fe $
 # Maintainer: Ido Rosen <ido@kernel.org>
 #
 # NOTE: To request changes to this package, please submit a pull request
@@ -18,12 +18,12 @@
 
 pkgname='openonload'
 pkgdesc="A high performance network stack from Solarflare."
-pkgver='201502.u1'
+pkgver='201502.u2'
 if [[ -z "$_kernelver" ]]; then
-    _kernelver="$(uname -r)"
-    #_kernelver="$(cat /lib/modules/extramodules-3.14-lts/version)"
+    #_kernelver="$(uname -r)"                                      # running
+    _kernelver="$(cat /lib/modules/extramodules-3.14-lts/version)" # installed
 fi
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.openonload.org/'
 license=('custom')
@@ -37,7 +37,7 @@ source=("http://www.openonload.org/download/openonload-${pkgver//\./-}.tgz"
         'openonload-201405-extramodules-and-noinitrc.patch'
         'openonload-201405-extramodules-and-noinitrc2.patch'
 )
-sha512sums=('0b2611d9e7c3987aa7b01cfe173d6b3b1f7335f33da259953d43a8c3b3608362b1114812045fbe5f380f568cfec8be5a6ecd5a98a576230604a19e57d0655400'
+sha512sums=('2f345653f8df621e60ab0e177a165ff72ea4d8bea47adc173e89f1b7b194ca77a452aa6cbb13053f0600171f0aacce677f34ec71eb4ea7ecd5a5d165dd2b1015'
             'ac464250f2fb96d13e8ae129bac80c03f8cca62e450fdd765f24ccd064e28e9942e4a16ebc693e75c71fc1eb86c3a1b08337b2e39c6c618e129d8ec87d872bdb'
             'b7e4529e37c64f99c660ca9b58f388cdd8f0d2f250ba875eb210f4909bb1f1c985a065aae64c048ca6f824adc6e3176c6eae1f582c049631326db73e939edd7b'
             'd4fda83764e79cff525f578e14b337937d2a6a3e0fc5f3cc5ec07b739f4bcc46b294fa560db595b0efb14bdf70eab44e833c05278e28d8fb947f9f8b77748a78'
