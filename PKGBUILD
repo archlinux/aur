@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 depends=()
 makedepends=('gcc-fortran')
 conflicts=('fftw')
+provides=('fftw')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/beta/fftw-3.3.4-bettersimd.tar.gz)
 sha1sums=('87b6bf32627795002dffaaee2a0ee2d9d70d8006')
@@ -17,12 +18,10 @@ build() {
   cd ${srcdir}/fftw-${pkgver}
   CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
   ./configure F77=gfortran --enable-avx --enable-sse --enable-shared --enable-single --prefix=/usr --enable-threads --enable-openmp
-  make -j 8
+  make
 }
 
 package() {
-
   cd ${srcdir}/fftw-${pkgver}
   make DESTDIR=${pkgdir} install
-
 }
