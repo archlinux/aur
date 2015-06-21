@@ -1,0 +1,20 @@
+post_install () {
+	echo ""
+	echo "==> To use gnuserv, add the following Lisp to your ~/.emacs file:"
+	echo "==> "
+	echo "==> (autoload 'gnuserv-start \"gnuserv-compat\""
+	echo "==>           \"Allow this Emacs process to be a server for client processes.\""
+	echo "==>           t)"
+	echo "==> "
+	echo "==> Then, run (gnuserv-start). This may be done in your ~/.emacs. See "
+	echo "==> /usr/share/emacs/site-lisp/gnuserv-compat.el for commentary."
+	echo ""
+}
+
+post_upgrade () {
+	        post_install $1
+	}
+
+	op=$1
+	shift
+	$op $*

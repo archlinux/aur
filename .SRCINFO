@@ -1,0 +1,15 @@
+pkgbase = gnuserv
+	pkgdesc = gnuserv with gnu emacs compatability layer
+	pkgver = 3.12.8
+	pkgrel = 1
+	url = http://meltin.net/hacks/emacs/
+	install = gnuserv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	source = http://meltin.net/hacks/emacs/src/gnuserv-3.12.8.tar.gz
+	md5sums = 3173682652726fa3685a4cf2193c27e4
+
+pkgname = gnuserv
+
