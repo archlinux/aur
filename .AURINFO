@@ -1,0 +1,15 @@
+pkgbase = sabnzbd-knockstrap-git
+	pkgdesc = Knockstrap is a theme for SABnzbd, the popular automated Usenet download tool. It brings a larger, more modern, brighter and cleaner look to one of your favorite tools.
+	pkgver = 20140816
+	pkgrel = 1
+	url = https://github.com/aforty/sabnzbd-knockstrap
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = sabnzbd
+	provides = sabnzbd-knockstrap
+	conflicts = sabnzbd-knockstrap
+	source = git+https://github.com/aforty/sabnzbd-knockstrap.git
+
+pkgname = sabnzbd-knockstrap-git
+
