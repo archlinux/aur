@@ -1,0 +1,13 @@
+pkgbase = libdasm
+	pkgdesc = a disassembly library
+	pkgver = 1.6r15
+	pkgrel = 1
+	url = http://code.google.com/p/libdasm/
+	arch = i686
+	arch = x86_64
+	license = custom:Public Domain
+	source = http://libdasm.googlecode.com/files/libdasm-beta.zip
+	md5sums = 573944eacf5c942644b538926c217b95
+
+pkgname = libdasm
+
