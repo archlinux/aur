@@ -6,7 +6,7 @@
 
 pkgname=packettracer
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'i686' 'x86_64' )
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
@@ -18,9 +18,7 @@ license=('custom')
 
 # Requires Netacad Username/Password to download
 source=( 'http://Cisco \Packet \Tracer \6.2 \for \Linux \- \Ubuntu \installation \- \Student \version.tar.gz' 'packettracer' 'linguist' )
-md5sums=('403fa8f9b1f974935587bf8b8227653a'
-	 'e0bdbe6ca4d693f4dde2eab81bb97a74'
-         'fd2f166d9b2cfbae0bd4cff792a9a270')
+sha512sums=('231ef1cacdb5c77c78fa517ec4c3767cab64cca3d7f519b3c09432a327ed226ba0b9bdda9b5dc9836f87b4529ead6be976a48335860a9d15232fa0a33fa66be8' '0cf78b00428e5a795a29704eacaef1dbf2f93e0758b1e8341c79839ecb699022f0b9d2ba0b9bdbf196ed362fc708ec347624ba7b29033b18f865df0e93c858d3' '2fe30ef63d29903addbe3042aa505e9b1497ce2abc935855c062de1e2582a66425f10844ad38309ad099805a58ed89e47e78c2a943fc45a87d809eb0dfae39a3')
 
 # We don't want to strip anything from the static libraries
 # We want to keep all binaries orginal (Cisco is goofy)
