@@ -1,0 +1,57 @@
+_old_locale_name='en_XX.UTF-8@POSIX'
+_old_locale_gen_entry="$_old_locale_name"' UTF-8'
+_old_regex='\s*'"${_old_locale_gen_entry/./\\.}"'\s*$'
+_old_regex_general='^\s*#\?'"$_old_regex"
+_old_regex_commented='^\s*#'"$_old_regex"
+
+_locale_name='en_XX@POSIX'
+_locale_gen_entry="$_locale_name"' UTF-8'
+_regex='\s*'"${_locale_gen_entry/./\\.}"'\s*$'
+_regex_general='^\s*#\?'"$_regex"
+_regex_commented='^\s*#'"$_regex"
+
+post_install ()
+{
+  # Add the locale to locale.gen if absent.
+  grep -q "$_regex_general" etc/locale.gen || \
+    echo "$_locale_gen_entry" >> etc/locale.gen
+
+  # Update locales if the locale is uncommented.
+  grep -q "$_regex_commented" etc/locale.gen || \
+    usr/bin/locale-gen
+}
+
+
+
+post_upgrade ()
+{
+  new_version_="$1"
+  old_version_="$2"
+  if [[ $(vercmp "$old_version_" 2013.7-2) -lt 0 ]]
+  then
+    if grep -q "$_old_regex_general" etc/locale.gen
+    then
+      echo
+      # Remove the old locale from the archive.
+      usr/bin/localedef --delete-from-archive "$_old_locale_name"
+
+      # Remove the old locale from locale.gen.
+      sed -i '/'"$_old_regex_general"'/d' etc/locale.gen
+    fi
+  fi
+
+  post_install
+}
+
+
+
+pre_remove ()
+{
+  # Remove the locale from the archive.
+  usr/bin/localedef --delete-from-archive "$_locale_name"
+
+  # Remove the locale from locale.gen.
+  sed -i '/'"$_regex_general"'/d' etc/locale.gen
+}
+
+# vim: set ts=2 sw=2 et:
