@@ -1,14 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-frameworks-git
-pkgver=v2.4.0.beta3.197.gf965d1b
+pkgver=15.08.beta.r5028.79f1b32
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
-url="http://www.krusader.org/"
+url='http://www.krusader.org'
 license=('GPL')
 depends=('kdelibs4support' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python' 'acl')
+optdepends=('acl: Access control list utilities')
 provides=('krusader')
 conflicts=('krusader')
 source=('git://anongit.kde.org/krusader#branch=plasma')
@@ -17,14 +18,12 @@ install=krusader-frameworks-git.install
 
 pkgver() {
   cd krusader
-  echo "$(git describe --long --tags | tr - .)"
+  _ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
-
-  sed 's|              krviewer.rc|install(FILES krviewer.rc|g' -i krusader/krusader/CMakeLists.txt
-  sed -e '111i\ \ \ \ \ \ \ \ \DESTINATION ${KXMLGUI_INSTALL_DIR}/krusader)' -i krusader/krusader/CMakeLists.txt
 }
 
 build() {

@@ -1,8 +1,8 @@
 pkgbase = krusader-frameworks-git
 	pkgdesc = Advanced twin panel file manager for KDE. KF5 Frameworks branch. (GIT version)
-	pkgver = v2.4.0.beta3.197.gf965d1b
+	pkgver = 15.08.beta.r5028.79f1b32
 	pkgrel = 1
-	url = http://www.krusader.org/
+	url = http://www.krusader.org
 	install = krusader-frameworks-git.install
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = krusader-frameworks-git
 	makedepends = kdoctools
 	makedepends = git
 	makedepends = python
+	makedepends = acl
 	depends = kdelibs4support
 	depends = hicolor-icon-theme
+	optdepends = acl: Access control list utilities
 	provides = krusader
 	conflicts = krusader
 	source = git://anongit.kde.org/krusader#branch=plasma
