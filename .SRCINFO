@@ -1,0 +1,18 @@
+pkgbase = defenders-quest-demo
+	pkgdesc = A Tower Defense / RPG hybrid that focuses on story, customization, and tactics.
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://www.defendersquest.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = adobe-air-sdk
+	source = http://www.defendersquest.com/files/defenders_quest_demo_1_0_1_linux/defenders_quest_demo_1_0_1.tar.gz
+	source = air-generic-launcher.sh
+	source = LICENSE.txt
+	md5sums = 87b37cdb3338b30c86f16a3c34906de6
+	md5sums = f179eaa5e6e6674b1853cf826fc33c3a
+	md5sums = 0a762badadf7f3827cc300f3ac21fdda
+
+pkgname = defenders-quest-demo
+
