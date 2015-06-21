@@ -1,0 +1,13 @@
+pkgbase = android-samples-22
+	pkgdesc = Android SDK Samples, API-22
+	pkgver = 5.1.1_r06
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	options = !strip
+	source = http://dl.google.com/android/repository/samples-22_r06.zip
+	sha1sums = 1f6f4a81a8f19a9b9c9bf4adb64a91330a861c7f
+
+pkgname = android-samples-22
+
