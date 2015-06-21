@@ -1,0 +1,18 @@
+pkgbase = relight
+	pkgdesc = Save and restore backlight settings.
+	pkgver = 2015
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/relight
+	install = relight.install
+	arch = any
+	license = GPL
+	optdepends = dialog: for relight-menu support
+	source = http://xyne.archlinux.ca/projects/relight/src/relight-2015.tar.xz
+	source = http://xyne.archlinux.ca/projects/relight/src/relight-2015.tar.xz.sig
+	md5sums = 7c4a37d2cc54b6a87cb017b1803d9d01
+	md5sums = 744ecda76c99f901f7d9a0ce6bc5fb22
+	sha512sums = ad0adec20551a585b1a50a6706d441d463205f042f70ddecc8824e76b9f591a617e06f44921f2824a822d9909048ac6f29dcd904d0e10cda84d485ec5fdc5aac
+	sha512sums = e090b1850e600af3f6b2ad1cc26aef9e0e470b25c2091c14402525dedb2874d0931f3ba8fb2d738d61d59f44135d526e2ea000ff7a6dea5756c540397e1bc1cf
+
+pkgname = relight
+

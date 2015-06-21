@@ -1,0 +1,16 @@
+post_upgrade()
+{
+  #newver="$1"
+  oldver="$2"
+  if [[ $(vercmp "$oldver" 2015) -le 0 ]]
+  then
+    cat <<'MSG'
+==> WARNING: The settings directory has been moved from /var/tmp/relight to
+             /etc/relight.  To migrate your old settings simply run
+
+                 mv -t /etc /var/tmp/relight
+
+             as root.
+MSG
+  fi
+}
