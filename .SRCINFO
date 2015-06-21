@@ -1,0 +1,12 @@
+pkgbase = jasper-tts-flite
+	pkgdesc = Meta package to satisfy dependencies for Jasper's Flite TTS engine.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://jasperproject.github.io
+	arch = any
+	license = MIT
+	depends = jasper-voice-control
+	depends = flite
+
+pkgname = jasper-tts-flite
+
