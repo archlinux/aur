@@ -1,0 +1,24 @@
+pkgbase = ticcutils-git
+	pkgdesc = Common library with functions for tools developed at Tilburg Centre for Cognition and Communication
+	pkgver = 161
+	pkgrel = 2
+	url = http://ilk.uvt.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	depends = gcc-libs
+	depends = libxml2
+	depends = bzip2
+	depends = libtar
+	depends = boost
+	depends = zlib
+	provides = ticcutils
+	conflicts = ticcutils
+	options = !libtool
+	source = git://github.com/proycon/ticcutils.git
+	md5sums = SKIP
+
+pkgname = ticcutils-git
+
