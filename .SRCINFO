@@ -1,0 +1,17 @@
+pkgbase = anura-citadel-git
+	pkgdesc = A turn based strategy game based on the Anura engine
+	pkgver = 0.0.636.gcfe7ea4
+	pkgrel = 1
+	url = https://github.com/davewx7/Citadel
+	arch = any
+	license = custom
+	makedepends = git
+	depends = anura-git
+	depends = frogatto-git
+	source = git+https://github.com/davewx7/Citadel.git
+	source = anura-citadel-git.sh
+	md5sums = SKIP
+	md5sums = 7cca30cbd18a60c3f96658abb9eacfcd
+
+pkgname = anura-citadel-git
+
