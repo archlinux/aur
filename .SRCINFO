@@ -1,0 +1,19 @@
+pkgbase = tn40xx
+	pkgdesc = Tehuti Networks tn40xx network driver.
+	pkgver = 0.3.6.12.1
+	pkgrel = 1
+	url = http://www.tehutinetworks.net/
+	arch = x86_64
+	license = custom
+	makedepends = linux-lts-headers
+	depends = linux-lts
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = http://www.tehutinetworks.net/images/UL240756/tn40xx-0.3.6.12.1.tgz
+	sha512sums = 9d8391a6189f57541ace4ffee3097178a5110587dc86763647b20b8b0376f96da1fa02a3679578e5ce8fe56c56fe6e0bbb9f4fb4c6ef9d7854b11a3713f7830c
+
+pkgname = tn40xx
+
