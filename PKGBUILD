@@ -1,50 +1,82 @@
-# Maintainer: Peter Ivanov <ivanovp@gmail.com>
-# Contributor: titron <titron at titron dot ru>
-# Contributor: David Manouchehri <david@davidmanouchehri.com>
-# Submitter: BxS <bxsbxs at gmail dot com>
+# Maintainer: Grey Christoforo <grey@christoforo.net>
 
-pkgname=microchip-mplabxc8-bin
+_number_of_bits=8
+pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.34
-pkgrel=2
-pkgdesc="C compiler for PIC10 PIC12 PIC16 PIC18 MCUs"
+pkgrel=3
+pkgdesc="Microchip's MPLAB XC8 C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 arch=(i686 x86_64)
-url=http://www.microchip.com/xc8
+url=http://www.microchip.com/xc${_number_of_bits}
 license=(custom)
-makedepends=(xclm-dirs)
-[ $CARCH = x86_64 ] && depends+=(lib32-gcc-libs lib32-expat)
-[ $CARCH = x86_64 ] && makedepends=(lib32-fakeroot)
-provides=(mplabxc8)
-conflicts=(mplabxc8)
+if [[ $CARCH = i686 ]]; then
+  depends=(
+    'expat'
+    'gcc-libs'
+  )
+else
+  depends=(
+    'lib32-expat'
+    'lib32-gcc-libs'
+  )
+fi
+makedepends=(sdx tcl tcl-vfs) 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-PKGEXT='.pkg.tar'
+source=("installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" liblzmadec0.2.so)
+noextract=(installerBlobFromMicrochip liblzmadec0.2.so)
+md5sums=('443c0b7045bf414aaccb64b91036aac8'
+         'e43a1f543ba4f67a2d5b2e8d9656a6c7')
 install=$pkgname.install
-instdir=/opt/microchip/xc8/v$pkgver
-installer=xc8-v$pkgver-full-install-linux-installer.run
-source=(http://ww1.microchip.com/downloads/en/DeviceDoc/xc8-v$pkgver-full-install-linux-installer.run)
-md5sums=('443c0b7045bf414aaccb64b91036aac8')
+
+build() {
+  # unwrap installer files
+  sdx.kit unwrap installerBlobFromMicrochip
+  
+  # read unpack options
+  _unpack_options=$(cat installerBlobFromMicrochip.vfs/cookfsinfo.txt)
+  
+  # write unpack tcl script to file
+cat > unpack.tcl <<EOF
+package require vfs::cookfs
+#package require Tcllzmadec
+vfs::cookfs::Mount ${_unpack_options} installerBlobFromMicrochip virtual
+file copy virtual unpacked.vfs
+EOF
+
+  # if this is a 64bit machine, we need to use the packaged zlma decoder so since the insaller only provides a 32bit one
+  #if [[ $CARCH = x86_64 ]]; then
+  #  mv liblzmadec0.2.so installerBlobFromMicrochip.vfs/libraries/lzma*/.
+  #fi
+
+  msg2 "Unpacking installer. This might take a while..."
+  LD_LIBRARY_PATH=./usr/lib: TCL_LIBRARY=./installerBlobFromMicrochip.vfs/lib TCLLIBPATH=./installerBlobFromMicrochip.vfs/libraries tclsh unpack.tcl
+
+  #now reassemble files larger than 5MB in the archive, which were split up for whatever reason
+  msg2 "Reassembling files..."
+  for f in `find ./unpacked.vfs -name '*___bitrockBigFile1'`
+  do
+    firstChunk="$f"
+    baseName="${firstChunk//___bitrockBigFile1/}"
+    allPieces="$(find -path "${baseName}*" | sort --version-sort)"
+    cat $allPieces > "$baseName".reassembled
+    rm $allPieces
+    mv "$baseName".reassembled "$baseName"
+  done
+}
 
 package() {
-  if [ ! -d $instdir/etc ]; then
-    error "You have to create directory $instdir/etc before building this package!"
-    exit 1
-  fi
-  echo -e "Creating the Package\n  Please wait..."
+  #mv unpacked.vfs/compiler/programfileslinux/* unpacked.vfs/compiler/programfiles/
+  #mv unpacked.vfs/compiler/programfiles/*License.txt unpacked.vfs/compiler/programfiles/docs/.
 
-  cd $pkgdir
+  mkdir -p "$pkgdir"/opt/$pkgname
+  mv unpacked.vfs/compiler/programfiles/* "$pkgdir"/opt/$pkgname/.
 
-  mkdir -p $pkgdir$instdir
+  msg2 "Making executables executable"
+  find "$pkgdir"/opt/$pkgname/bin -type f -exec /bin/sh -c "file {} | grep -q executable && chmod +x {}" \;
 
-  chmod 0755 $srcdir/$installer
-  echo -e "i\ni\ni\ni\ni\ni\ni\ni\ni\ni\ni\ni\n\n\n\n\n\n\n\n\n\n\ny\n\n\n\n\n\n\n\n\n\n\n" > inst_input
-  $srcdir/$installer --mode text --prefix $pkgdir$instdir < inst_input &> /dev/null || true
-  rm inst_input
-
-  rm -r $pkgdir$instdir/rollbackBackupDirectory || true
-
-  mkdir -p $pkgdir$instdir/bin
-  echo -e "#!/bin/sh" > $pkgdir$instdir/bin/xclm
-  chmod 0755 $pkgdir$instdir/bin/xclm
-
+  mkdir -p "$pkgdir/etc/profile.d"
+  echo "export PATH="'$PATH'":/opt/${pkgname}/bin" > "$pkgdir/etc/profile.d/${pkgname}.sh"
+  echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
+ 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s $instdir/docs/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  ln -s "$pkgdir"/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
