@@ -1,6 +1,6 @@
 pkgbase = keyfinder-cli-git
 	pkgdesc = A DJ friendly tool for estimating the musical key of an audio file
-	pkgver = 34.65ffc11
+	pkgver = 39.e8a20e7
 	pkgrel = 1
 	url = https://github.com/EvanPurkhiser/keyfinder-cli
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = keyfinder-cli-git
 	makedepends = boost
 	depends = libkeyfinder-git
 	depends = ffmpeg
-	source = git://github.com/EvanPurkhiser/keyfinder-cli
+	source = keyfinder-cli-git::git://github.com/EvanPurkhiser/keyfinder-cli
 	md5sums = SKIP
 
 pkgname = keyfinder-cli-git
