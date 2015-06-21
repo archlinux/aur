@@ -1,0 +1,17 @@
+pkgbase = timblserver
+	pkgdesc = Tilburg Memory Based Learner Server.
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://ilk.uvt.nl/timbl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libtool
+	makedepends = autoconf
+	depends = timbl
+	options = !libtool
+	source = http://software.ticc.uvt.nl/timblserver-1.9.tar.gz
+	md5sums = ba5af5bdc1f638cd24edf68b6083854a
+
+pkgname = timblserver
+
