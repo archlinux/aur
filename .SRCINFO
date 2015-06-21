@@ -1,0 +1,28 @@
+pkgbase = valyria-tear-git
+	pkgdesc = An attempt at creating a free (as meant in the Gnu Public License) J-RPG game.
+	pkgver = 1746.b1b6bfd
+	pkgrel = 1
+	url = http://valyriatear.blogspot.fr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = cmake
+	makedepends = boost
+	depends = sdl
+	depends = sdl_ttf
+	depends = openal
+	depends = libogg
+	depends = libvorbis
+	depends = glu
+	depends = libpng
+	depends = libjpeg
+	depends = gettext
+	depends = lua51
+	provides = valyria-tear
+	conflicts = valyria-tear
+	source = git+https://github.com/Bertram25/ValyriaTear.git
+	md5sums = SKIP
+
+pkgname = valyria-tear-git
+
