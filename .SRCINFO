@@ -1,0 +1,19 @@
+pkgbase = python3-currencyconverter
+	pkgdesc = Module and command-line tool for currency conversion and rate retrieval.
+	pkgver = 2014.11
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/python3-currencyconverter
+	arch = any
+	license = GPL
+	depends = python3
+	depends = python3-memoizedb
+	depends = python-xdg
+	source = http://xyne.archlinux.ca/projects/python3-currencyconverter/src/python3-currencyconverter-2014.11.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-currencyconverter/src/python3-currencyconverter-2014.11.tar.xz.sig
+	md5sums = e4e3e61b234a251f6dbd6d489c0a3b16
+	md5sums = da0bef4a1c93b7e5e2db787d77800b90
+	sha512sums = aca82b2cbd25cada82240af57bc89d8f1da4175f4b656785958e1fb5e76e484a1dbf160a8ecdc63b35b89c41f5f4f5afd56c18184df1d9ca785284f446fc5257
+	sha512sums = 6a1adb5ed8a8c02e2dab6f8fa829a78c4459e2f30b8608ccb297809ad3b77947261188d1a3f52b86ed2a6a72bd44e7ac20336d036f9af8b422c9cb7c77bf152e
+
+pkgname = python3-currencyconverter
+
