@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = 20150619.0801a13
+	pkgver = 20150620.b0bf947
 	pkgrel = 1
 	url = http://kodi.tv
 	arch = i686
