@@ -1,0 +1,18 @@
+pkgbase = neptune-triton
+	pkgdesc = Fractal explorer and fractal expander
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://element90.wordpress.com/software/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = boost
+	depends = boost-libs
+	depends = gmp
+	depends = qt4
+	depends = mpfr
+	source = https://copy.com/H3pHYNItJdyH
+	sha512sums = d146dd8383381e8e268a24f59c828f9c004d55b3580696e3f174cab64cf2b0682e3ff4710ac10d04f9bcfaabbd52e0985afcb3d4961bc9b304b747349a1751e5
+
+pkgname = neptune-triton
+
