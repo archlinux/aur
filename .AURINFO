@@ -1,0 +1,16 @@
+pkgbase = python2-facebook-sdk
+	pkgdesc = Facebook Platform Python SDK
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://pythonforfacebook.com
+	arch = any
+	license = Apache
+	makedepends = python2
+	depends = python2
+	provides = python2-facebook-sdk
+	conflicts = python2-facebook-sdk-git
+	conflicts = facebook-python-sdk-git
+	source = https://pypi.python.org/packages/source/f/facebook-sdk/facebook-sdk-0.4.0.tar.gz
+
+pkgname = python2-facebook-sdk
+
