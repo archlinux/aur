@@ -1,0 +1,13 @@
+#! /usr/bin/perl
+
+sub on_sel_grab
+{
+  my $query = $_[0]->selection;
+  open (my $pipe,'|-','xsel -ib') or die;
+  print $pipe $query;
+  close $pipe;
+  open (my $pipe,'|-','xsel -ip') or die;
+  print $pipe $query;
+  close $pipe;
+}
+

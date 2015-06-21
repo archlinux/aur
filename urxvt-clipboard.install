@@ -1,0 +1,18 @@
+post_install ()
+{
+  cat <<'MSG'
+Add "clipboard" to the "URxvt.perl-ext-common" field in ~/.Xdefaults to enable
+the clipboard.
+MSG
+}
+
+post_remove ()
+{
+  cat <<'MSG'
+Don't forget to remove "clipboard" from the "URxvt.perl-ext-common" field in
+~/.Xdefaults.
+MSG
+}
+
+# vim: set ts=2 sw=2 et:
+

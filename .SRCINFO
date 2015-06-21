@@ -1,0 +1,16 @@
+pkgbase = urxvt-clipboard
+	pkgdesc = clipboard script for urxvt
+	pkgver = 2
+	pkgrel = 2
+	url = http://wiki.archlinux.org/index.php/Rxvt-unicode
+	install = urxvt-clipboard.install
+	arch = any
+	license = GPL
+	depends = rxvt-unicode
+	depends = xsel
+	conflicts = urxvt-perls
+	source = clipboard
+	md5sums = c676d897f4680b8b3420b130a2ad9784
+
+pkgname = urxvt-clipboard
+
