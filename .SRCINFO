@@ -1,0 +1,20 @@
+pkgbase = edb-debugger
+	pkgdesc = EDB (Evan's Debugger) is a QT4 based binary mode debugger with the goal of having usability on par with OllyDbg.
+	pkgver = 0.9.20
+	pkgrel = 1
+	url = http://www.codef00.com/projects#debugger
+	install = edb.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost>=1.35.0
+	depends = qt4>=4.6
+	source = http://www.codef00.com/projects/debugger-0.9.20.tgz
+	source = edb.desktop
+	md5sums = 5916d415f598fae8632dd763f58e11d1
+	md5sums = 8844cd95efef848f8f4a444259491961
+	sha256sums = fd4ebdf8a30ace88395b7b61407fd264cb3919d97368d4932201f0fed6b7ef4d
+	sha256sums = af1d0eae06544fbca7a9af2e2f55dc472324abf28402652e88d3b62c1882a132
+
+pkgname = edb-debugger
+
