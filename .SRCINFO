@@ -1,0 +1,21 @@
+pkgbase = ossec-server
+	pkgdesc = Open Source Host-based Intrusion Detection System
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://www.ossec.net/
+	install = ossec.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = openssl
+	options = emptydirs
+	backup = var/ossec/etc/ossec.conf
+	source = http://www.ossec.net/files/ossec-hids-2.8.2.tar.gz
+	source = ossec.service
+	source = config
+	md5sums = 3036d5babc96216135759338466e1f79
+	md5sums = 4a197f7f05b2a1d0da54e4fdef1718a5
+	md5sums = 16b67bc144fd38d94c5709d42a67fc7d
+
+pkgname = ossec-server
+
