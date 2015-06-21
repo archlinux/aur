@@ -1,0 +1,20 @@
+pkgbase = apron-ppl-svn
+	pkgdesc = The APRON numerical abstract domain library, with the PPL domain
+	pkgver = 0.9.11.r1054
+	pkgrel = 1
+	url = http://apron.cri.ensmp.fr/library/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = svn
+	makedepends = sed
+	depends = gmp>=5
+	depends = mpfr>=3
+	depends = ppl
+	provides = apron-svn
+	conflicts = apron-svn
+	source = apron-ppl-svn::svn://scm.gforge.inria.fr/svnroot/apron/apron/trunk
+	md5sums = SKIP
+
+pkgname = apron-ppl-svn
+
