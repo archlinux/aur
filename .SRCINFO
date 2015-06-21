@@ -1,0 +1,23 @@
+pkgbase = wopr-git
+	pkgdesc = Memory Based Word Predictor/Language Model
+	pkgver = 1
+	pkgrel = 1
+	url = http://ilk.uvt.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	depends = ticcutils
+	depends = icu
+	depends = libxml2
+	depends = libfolia
+	depends = timbl
+	depends = timblserver
+	provides = wopr
+	options = !libtool
+	source = git://github.com/proycon/wopr.git
+	md5sums = SKIP
+
+pkgname = wopr-git
+
