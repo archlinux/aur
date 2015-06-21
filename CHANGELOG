@@ -1,0 +1,16 @@
+2015-06-21	Andy Pieters aur@AndyPieters.me.uk
+
+	* 2.2.0Jun:
+	
+		new upstream minor release "Jun":
+		
+			lifx-firmware-update (2.2.0) testing; urgency=low
+
+			* Cloud connectivity improvements.
+			* Platform fixes for config data corruption.
+
+			-- LIFX Labs <software@lifx.com>  Mon, 15 Jun 2015 13:50:00 +1000
+
+	* 2.2.0-1 :
+	
+		new upstream release.

@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+# NOTE: shebang added for convenience of packager
+
+# What is the required syntax? full declarative? e.g.: function foo() { .. } 
+# OR short syntax? e.g.: foo() { .. }
+# I will default to full.
+
+function post_install() {
+
+	__update_desktop_entries
+	
+	echo -e "\n" \
+			"NOTE: you do not need a wireless adaptor in your computer to upgrade LIFX\n" \
+			"      bulbs.\n\n" \
+			"You only need to be on the same LAN network as the bulbs are,\n" \
+			"wired or wireless."
+	
+}
+
+function post_remove() {
+
+	__update_desktop_entries
+	
+}
+
+function post_upgrade() {
+	
+	post_install
+}
+
+__update_desktop_entries() {
+
+	XDG_UTILS_DEBUG_LEVEL=0 xdg-icon-resource forceupdate --theme hicolor 
+
+	update-desktop-database -q
+	
+}

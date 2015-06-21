@@ -1,0 +1,32 @@
+pkgbase = lifx-firmware-update
+	pkgdesc = Firmware updater for Lifx light bulbs
+	pkgver = 2.2.0Jun
+	pkgrel = 1
+	url = http://www.lifx.com/pages/updates
+	arch = x86_64
+	license = custom:unknown
+	makedepends = binutils
+	depends = qt5-base
+	source = https://dropbox.com/s/fwc759w5bg96a1n/lifx-firmware-update_2.2.0_amd64-Jun.deb?dl=1
+	source = lifx-firmware-update.install
+	source = CHANGELOG
+	source = LICENSE
+	sha512sums = a636fc42878f04e091a0341142ae43fa1250be4aaadc5da052bdc970184d606f2b079a3f570dd6c0cdd3aa9491bdae3b3b19cb27fb7cd59165f4f7a9a7375f25
+	sha512sums = 4d5898fcc387611be0356c0de7142affcadef110980b03013d2c18ebe1da509f48191d8a9c46c113e9854e98ac9bb9728d0c3482200f3a764e72c08457bc1ffd
+	sha512sums = 90764741ca88c2d7b2f3cae083a22a0b87d6f1c8cef0d703d4d51e2a40d39b853ee44306900ea1719c14d642ffde3df1ad34cd07437c3cca6f625173d4b9a677
+	sha512sums = 04f404a850a3b839feaa8b5590043bd9d7442ac354a2060045943005de5dfc5e7f706835beef68d08aae1a007841e1342190352c3c8e4f7b3c1d51703d8c504a
+
+pkgname = lifx-firmware-update
+	install = lifx-firmware-update.install
+	changelog = CHANGELOG
+	depends = libotav1
+	depends = libotav2
+
+pkgname = libotav1
+	pkgdesc = Support library for Lifx-firmware-updater
+	provides = libotav1
+
+pkgname = libotav2
+	pkgdesc = Support library for Lifx-firmware-updater
+	provides = libotav2
+
