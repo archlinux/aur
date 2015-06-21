@@ -1,0 +1,19 @@
+pkgbase = python-atpy
+	pkgdesc = A high-level Python package providing a way to manipulate tables of astronomical data in a uniform way.
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = http://atpy.readthedocs.org/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-distribute
+	depends = python-numpy
+	depends = python-astropy
+	optdepends = pygresql: for PostGreSQL tables
+	optdepends = mysql-python: for MySQL tables
+	optdepends = python-h5py: for HDF5 tables
+	source = https://pypi.python.org/packages/source/A/ATpy/ATpy-0.9.7.tar.gz
+	sha1sums = 93525db0a36770b7cbbafefa6041fc80aac51c61
+
+pkgname = python-atpy
+
