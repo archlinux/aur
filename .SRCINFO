@@ -1,0 +1,23 @@
+pkgbase = bkchem
+	pkgdesc = Chemical drawing program
+	pkgver = 0.14.0_pre2
+	pkgrel = 3
+	url = http://bkchem.zirael.org
+	install = bkchem.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = tcl
+	depends = tk
+	optdepends = pycairo: alternative PNG/PDF export
+	optdepends = inchi: InChI generation
+	source = http://bkchem.zirael.org/download/bkchem-0.14.0-pre2.tar.gz
+	source = bkchem.install
+	source = bkchem.desktop
+	sha1sums = 9c17e8cbd0443d55b82c32f27f5965dd014033c5
+	sha1sums = eeb36aefd2b680ff018bb0f7ac55b7b6a45f564e
+	sha1sums = 0ec695c51ac51092d6665e3ccb14d4f53d7af3aa
+
+pkgname = bkchem
+

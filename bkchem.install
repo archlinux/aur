@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOT
+==> To enable InChI/InChIKey string generation in BKChem, you must install
+==> inchi and set the corresponding InChI binary path under the options menu.
+EOT
+}

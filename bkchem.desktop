@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BKchem
+GenericName=Structural formulas
+GenericName[de]=Strukturformeln
+GenericName[fr]=Formules développées
+GenericName[nl]=Structuurformule
+Comment=2D chemical structure formula editor for molecules
+Comment[de]=2D-Strukturformeln für Moleküle zeichnen
+Comment[fr]=Dessiner des formules développées planes
+Icon=/usr/share/bkchem/images/bkchem.png
+Exec=/usr/bin/bkchem
+Path=~
+Terminal=false
+MimeType=image/svg+xml;text/xml;
+Categories=Science;Chemistry;
+StartupNotify=true
