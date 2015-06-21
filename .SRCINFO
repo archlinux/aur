@@ -1,0 +1,17 @@
+pkgbase = qt4wvdialer
+	pkgdesc = A simple graphical frontend to wvdial, ported to Qt4.
+	pkgver = 0.4.4
+	pkgrel = 3
+	url = http://github.com/schuay/qt4wvdialer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = wvdial
+	source = https://github.com/downloads/schuay/qt4wvdialer/qt4wvdialer-0.4.4.tar.bz2
+	source = qt4wvdialer.desktop
+	md5sums = 2580a9dfdb10a083e3160f890d392b74
+	md5sums = e6530cad1fb85453a85c8c9e53d16a91
+
+pkgname = qt4wvdialer
+
