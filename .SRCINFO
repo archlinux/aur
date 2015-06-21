@@ -1,0 +1,19 @@
+pkgbase = siggen
+	pkgdesc = Curses based signal generator
+	pkgver = 2.3.10
+	pkgrel = 1
+	url = http://www.comp.leeds.ac.uk/jj/linux/siggen.html
+	install = siggen.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	provides = siggen
+	conflicts = siggen
+	source = http://www.comp.leeds.ac.uk/jj/linux/siggen.tgz
+	source = segfault-and-install.patch
+	sha256sums = 10f2749d144675c0faf37bffa276b49cbb2d44388a087928808acf5d0b0914fc
+	sha256sums = 1b316cba9663b90d1a8bfbe70d79a79c7304ad4f3b950b9a069ba43ec4fe64df
+
+pkgname = siggen
+

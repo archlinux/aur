@@ -1,0 +1,38 @@
+siggen 2.3.10 patch by doragasu (2015). This patch fixes two things:
+1.- Allows to install siggen anywhere, overriding INSDIR and MANDIR.
+2.- Fixes some segfaults due to misc.c missing string.h include.
+diff -ruN siggen-2.3.10/Makefile siggen-2.3.10.work/Makefile
+--- siggen-2.3.10/Makefile	2008-05-11 21:47:57.000000000 +0200
++++ siggen-2.3.10.work/Makefile	2015-06-19 21:59:07.081129612 +0200
+@@ -28,8 +28,8 @@
+ #
+ srcdir		= .
+ includedir	= /usr/include/ncurses
+-INSDIR		= /usr/local/bin
+-MANDIR		= /usr/local/man
++INSDIR		?= /usr/local/bin
++MANDIR		?= /usr/local/man
+ LOCALINS	= $(HOME)/bin
+ LOCALMAN	= $(HOME)/man
+ 
+@@ -96,6 +96,9 @@
+ sysinstall: $(PROGS)
+ 	@strip $(PROGS)
+ 	@chmod 755 $(PROGS)
++	@mkdir -p $(INSDIR)
++	@mkdir -p $(MANDIR)/man1
++	@mkdir -p $(MANDIR)/man5
+ 	@echo "Copying $(PROGS) to $(INSDIR)"
+ 	@cp -p $(PROGS) $(INSDIR)
+ 	@for n in $(PROGS) ; do \
+diff -ruN siggen-2.3.10/misc.c siggen-2.3.10.work/misc.c
+--- siggen-2.3.10/misc.c	2008-05-11 22:55:16.000000000 +0200
++++ siggen-2.3.10.work/misc.c	2015-06-21 18:09:07.299554288 +0200
+@@ -27,6 +27,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <limits.h>
++#include <string.h>
+ #include "config.h"
+ /*
+  * delay(us)  wait us microsecs using select. Effectively
