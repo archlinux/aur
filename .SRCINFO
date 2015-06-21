@@ -1,0 +1,24 @@
+pkgbase = powerpill
+	pkgdesc = Pacman wrapper for parallel and segmented downloads.
+	pkgver = 2014.12
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/powerpill
+	arch = any
+	license = GPL
+	depends = python3
+	depends = pyalpm
+	depends = pm2ml>2012.12.12
+	depends = reflector
+	depends = aria2
+	optdepends = rsync: Rsync download support
+	optdepends = python3-threaded_servers: internal Pacserve support
+	backup = etc/powerpill/powerpill.json
+	source = http://xyne.archlinux.ca/projects/powerpill/src/powerpill-2014.12.tar.xz
+	source = http://xyne.archlinux.ca/projects/powerpill/src/powerpill-2014.12.tar.xz.sig
+	md5sums = b61056c77845b57cce338982bc07d41a
+	md5sums = 9e4c8b2f5083ab702588d9ed62a6353c
+	sha512sums = b97685cf9aace031d396ee121395af3a95eb56e4b23361f736ffbc701a803e4afe677136a3d84d2f16cf2909547f7182be6e1735ea25a9220237b5c02d360dc6
+	sha512sums = 6622af47328e2de5f1251a75a46f140a78220bdfd8a039ffa69aa02351cda205ee1e745b1afb77040a37258502276a97a35afafadbe924591472d24458f21947
+
+pkgname = powerpill
+
