@@ -1,0 +1,15 @@
+pkgbase = gtubeclock
+	pkgdesc = A nixie tube style clock for X.
+	pkgver = 0.9.1
+	pkgrel = 3
+	url = http://www.bonnyswan.com/gtubeclock/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = libgnomeui
+	source = http://www.bonnyswan.com/gtubeclock/downloads/gtubeclock-0.9.1.tar.gz
+	md5sums = 94dffc6431e29cc25ae68f4318c33e05
+
+pkgname = gtubeclock
+
