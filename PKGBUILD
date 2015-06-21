@@ -20,7 +20,7 @@ build() {
   cd $srcdir/tiemu-$pkgver
   patch -p1 --input ../01-build-fix.patch
   ./configure --without-kde --disable-gdb --prefix=/usr || return 1
-  make || return 1
+  make
 }
 
 package() 
