@@ -1,0 +1,16 @@
+pkgbase = syder-arcade-hib
+	pkgdesc = A free scrolling multi directional shoot 'em up
+	pkgver = 1396896809
+	pkgrel = 2
+	url = http://www.studioevil.com/games/syder-arcade
+	arch = i686
+	arch = x86_64
+	license = custom: Commercial
+	depends = libglapi
+	source = hib://SyderArcade_Linux_1396896809.zip
+	source = syder-arcade.desktop
+	md5sums = c665a69be0d8be8eb99f240d38d2e07a
+	md5sums = f9be4058d493813f225e65878711f3c8
+
+pkgname = syder-arcade-hib
+

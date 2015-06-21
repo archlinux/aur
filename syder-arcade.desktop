@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Syder Arcade
+Comment=A free scrolling multi directional shoot 'em up
+Exec=syder-arcade
+Icon=syder-arcade
+Terminal=false
+StartupNotify=true
+Categories=Application;Game;ArcadeGame;
