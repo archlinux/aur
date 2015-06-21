@@ -1,0 +1,16 @@
+[Unit]
+Description=NZBGet Daemon
+Documentation=http://nzbget.net/Documentation
+After=network.target
+
+[Service]
+User=nzbget
+Group=nzbget
+ExecStart=/usr/bin/nzbget -c /etc/nzbget.conf -D
+ExecStop=/usr/bin/nzbget -Q
+ExecReload=/usr/bin/nzbget -O
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
