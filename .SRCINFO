@@ -1,0 +1,17 @@
+pkgbase = python3-scinum
+	pkgdesc = A collection of scientific number classes for arbitrary precision, standard and custom units, and uncertainty for measured values.
+	pkgver = 2012.12
+	pkgrel = 4
+	url = http://xyne.archlinux.ca/projects/python3-scinum
+	arch = any
+	license = GPL
+	depends = python3
+	source = http://xyne.archlinux.ca/projects/python3-scinum/src/python3-scinum-2012.12.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-scinum/src/python3-scinum-2012.12.tar.xz.sig
+	md5sums = 08091b49a670628654777d95c7044ff2
+	md5sums = d1b6ffe697e8327e0647ca6cb1c3f365
+	sha512sums = 6b85f5ad66ffbfa5f3c10d246b15428bc14962647465a16ee44db7838f1e25f298ed3bdbd2d6538c3f29e5d6f2457327cd79334b10a35408dddbe3a1ab770adc
+	sha512sums = 1868845c1e87af6455929333be828c906227f12c61a4498ce4f258f87a8ede90e20872a6fec0afd8c2b1759a1e4892f3b3da04c5c08ad674243bc154b1c4e9a8
+
+pkgname = python3-scinum
+
