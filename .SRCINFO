@@ -1,0 +1,17 @@
+pkgbase = picmi-git
+	pkgdesc = A nonogram logic game for KDE
+	pkgver = 20130301
+	pkgrel = 1
+	url = http://github.com/schuay/picmi/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = libkdegames
+	conflicts = picmi
+
+pkgname = picmi-git
+
