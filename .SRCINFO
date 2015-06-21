@@ -1,14 +1,14 @@
 pkgbase = catalyst-test
 	pkgdesc = AMD/ATI drivers for Ubuntu 15.04, AMD's version is 15.200. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
 	pkgver = 15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.amd.com
 	install = catalyst-test.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = linux>=3.0
-	depends = linux<4.1
+	depends = linux<4.2
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
@@ -79,6 +79,7 @@ pkgbase = catalyst-test
 	source = fglrx_3.17rc6-no_hotplug.patch
 	source = kolasa-3.19-get_cpu_var.patch
 	source = kolasa_4.0-cr4-strn.patch
+	source = kolasa_4.1_remove-IRQF_DISABLED.patch
 	md5sums = bdadc856a7ba723873561d2d1e9de191
 	md5sums = 601d9c756571dd79d26944e54827631e
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
@@ -104,6 +105,7 @@ pkgbase = catalyst-test
 	md5sums = 67a22f624bae95a76638ce269392cb01
 	md5sums = 3aa45013515b724a71bbd8e01f98ad99
 	md5sums = dee3df1c5d3ed87363f4304da917fc00
+	md5sums = 81a9e38dee025151cccb7e5db2362cfb
 
 pkgname = catalyst-test
 
