@@ -1,0 +1,16 @@
+pkgbase = gonvert
+	pkgdesc = unit conversion utility with 51 categories and 972 units
+	pkgver = 0.2.34
+	pkgrel = 1
+	url = http://www.unihedron.com/projects/gonvert/index.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = python2
+	depends = pygtk
+	source = http://www.unihedron.com/projects/gonvert/downloads/gonvert-0.2.34.tar.gz
+	sha256sums = deed2542bed898f1202b6e9a55f7bbd27714ffb94985c0cdf034823bfb2832f4
+
+pkgname = gonvert
+
