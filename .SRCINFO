@@ -1,0 +1,18 @@
+pkgbase = iicli-modular-git
+	pkgdesc = simple gui client for ii network
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://ii-net.tk/ii-doc
+	install = iicli-modular.install
+	arch = any
+	license = CC0
+	makedepends = git
+	depends = python2
+	depends = python2-pyqt4
+	depends = bash
+	optdepends = tk
+	source = git+https://github.com/vit1-irk/iicli-modular/
+	md5sums = SKIP
+
+pkgname = iicli-modular-git
+
