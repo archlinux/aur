@@ -2,7 +2,7 @@
 
 pkgname=spacevecalg-git
 _name=spacevecalg
-pkgver=20150226
+pkgver=20150621
 pkgver() {
   date +%Y%m%d
 }
@@ -12,7 +12,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/jorisv/SpaceVecAlg"
 license=('GPLv3')
 depends=('eigen3' 'python2')
-makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost')
+makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost'
+             'python2-pybindgen' 'eigen3topython')
 provides=('spacevecalg')
 source=("${_name}::git+https://github.com/jorisv/SpaceVecAlg")
 md5sums=('SKIP')
@@ -35,11 +36,11 @@ build()
   make
 }
 
-check()
-{
-  cd ${srcdir}/build
-  make test
-}
+#check()
+#{
+#  cd ${srcdir}/build
+#  make test
+#}
 
 package()
 {
