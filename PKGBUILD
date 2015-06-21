@@ -4,13 +4,13 @@ pkgname=mutagen-hg
 pkgdesc="An audio metadata tag reader and writer, mercurial version"
 license=('GPL2')
 url="http://code.google.com/p/mutagen/"
-pkgver=r1080.7c6543b03d64
+pkgver=r1102.b27f57a13d47
 pkgrel=1
 
 conflicts=('mutagen')
 provides=('mutagen')
 
-source=("$pkgname::hg+https://code.google.com/p/mutagen/")
+source=("$pkgname::hg+https://bitbucket.org/lazka/mutagen")
 md5sums=('SKIP')
 depends=('python2')
 makepends=('mercurial')
