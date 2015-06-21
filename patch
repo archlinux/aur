@@ -1,0 +1,13 @@
+diff --git a/src/lcdtest.c b/src/lcdtest.c
+index 93e5f29..20cf943 100644
+--- a/src/lcdtest.c
++++ b/src/lcdtest.c
+@@ -742,7 +742,7 @@ int enumerate_sdl_modes (int *width, int *height, FILE *out)
+ }
+ 
+ 
+-const char font_path [] = "/usr/share/fonts/liberation/LiberationMono-Regular.ttf";
++const char font_path [] = "/usr/share/fonts/TTF/LiberationMono-Regular.ttf";
+ 
+ int main (int argc, char *argv [])
+ {
