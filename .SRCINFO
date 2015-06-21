@@ -1,0 +1,29 @@
+pkgbase = easytag-git
+	pkgdesc = Utility for viewing and editing tags for most audio formats - git version
+	pkgver = 1543.2330fa3
+	pkgrel = 1
+	url = http://projects.gnome.org/easytag/
+	install = easytag-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = appdata-tools
+	depends = id3lib
+	depends = taglib
+	depends = libid3tag
+	depends = gtk3
+	depends = libvorbis
+	depends = flac
+	depends = speex
+	depends = opusfile
+	depends = wavpack
+	depends = desktop-file-utils
+	provides = easytag
+	conflicts = easytag
+	source = git://git.gnome.org/easytag
+	md5sums = SKIP
+
+pkgname = easytag-git
+
