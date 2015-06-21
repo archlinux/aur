@@ -1,0 +1,20 @@
+pre_install() {
+  rm /usr/bin/newlisp
+}
+
+post_install() {
+  ln -sf /usr/bin/newlisp-10.6.2 /usr/bin/newlisp
+}
+
+pre_upgrade() {
+[[ -f /usr/bin/newlisp ]] && rm /usr/bin/newlisp
+}
+
+post_upgrade() {
+  ln -sf /usr/bin/newlisp-10.6.2 /usr/bin/newlisp
+}
+
+pre_remove() {
+[[ -f /usr/bin/newlisp ]] && rm /usr/bin/newlisp
+}
+
