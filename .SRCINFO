@@ -1,0 +1,19 @@
+pkgbase = rabbit_tree
+	pkgdesc = Radix bit tries for implementing associative arrays and sets in C.
+	pkgver = 2014
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/rabbit_tree
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	source = http://xyne.archlinux.ca/projects/rabbit_tree/src/rabbit_tree-2014.tar.xz
+	source = http://xyne.archlinux.ca/projects/rabbit_tree/src/rabbit_tree-2014.tar.xz.sig
+	md5sums = 09b3c5bd14ca4ee5cee3c67c61a498a4
+	md5sums = a0934a44ec3310d93b9eff590a4f9925
+	sha512sums = a185fd91df87d450899599fea36a7f722185454296b80554045cdd4c66efa5b3867e6e5229a3bcdf20174aa94248386a1cbc436e0a7ddd4bca6edab30f52ba6d
+	sha512sums = 22edc97190ff52b2477edd8e6efe4952178f99a6d3f3293a379c87e99e4d1b42104fed01db8afcf4c50981024f689a1de623414717a47f7fe36cd20fa3940abc
+
+pkgname = rabbit_tree
+
