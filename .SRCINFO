@@ -1,0 +1,13 @@
+pkgbase = android-sources-22
+	pkgdesc = Android SDK Sources, API-22
+	pkgver = 5.1_r01
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	options = !strip
+	source = http://dl.google.com/android/repository/sources-22_r01.zip
+	sha1sums = 98320e13976d11597a4a730a8d203ac9a03ed5a6
+
+pkgname = android-sources-22
+
