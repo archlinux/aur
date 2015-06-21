@@ -1,0 +1,16 @@
+pkgbase = pyzotero-git
+	pkgdesc = A Python wrapper fro the Zotero API
+	pkgver = 1363479022
+	pkgrel = 1
+	url = https://github.com/urschrei/pyzotero
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	provides = pyzotero
+	conflicts = pyzotero
+	source = git://github.com/urschrei/pyzotero.git
+	sha512sums = SKIP
+
+pkgname = pyzotero-git
+
