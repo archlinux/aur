@@ -1,0 +1,14 @@
+pkgbase = polysh
+	pkgdesc = a tool to aggregate several remote shells into one.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://guichaz.free.fr/polysh/
+	arch = any
+	license = GPL2
+	depends = python2
+	options = !emptydirs
+	source = http://guichaz.free.fr/polysh/files/polysh-0.4.tar.bz2
+	md5sums = 1d267caad5398b841c36d8c68b883a29
+
+pkgname = polysh
+
