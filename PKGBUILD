@@ -1,7 +1,7 @@
 # Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=qstat-git
-pkgver=r391.60dc5e4
+pkgver=r396.a60436f
 pkgrel=1
 pkgdesc="A command line utility that displays the status of internet game servers"
 url="https://github.com/multiplay/qstat"
@@ -23,8 +23,6 @@ pkgver() {
 
 build() {
     cd "${srcdir}/qstat"
-
-    sed "s#strndup#strndupz0r#g" -i qstat.c
 
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc
