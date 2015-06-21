@@ -1,0 +1,16 @@
+pkgbase = sextractor-bin
+	pkgdesc = builds a catalogue of objects from an astronomical image
+	pkgver = 2.19.5
+	pkgrel = 1
+	url = http://www.astromatic.net/software/sextractor
+	arch = x86_64
+	license = GPL
+	makedepends = rpmextract
+	provides = sextracator
+	conflicts = sextractor
+	replaces = sextractor
+	source = http://www.astromatic.net/download/sextractor/sextractor-2.19.5-1.x86_64.rpm
+	sha1sums = 9992b239f2ff9c801ff81b1e830fe1244a3da216
+
+pkgname = sextractor-bin
+
