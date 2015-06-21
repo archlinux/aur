@@ -1,0 +1,13 @@
+pkgbase = frogdata
+	pkgdesc = Data for Frog. Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://ilk.uvt.nl/frog
+	arch = any
+	license = GPL3
+	options = !libtool
+	source = http://software.ticc.uvt.nl/frogdata-0.6.tar.gz
+	md5sums = 91b7e08c0715e3b5bfa57aea5a6dcda2
+
+pkgname = frogdata
+
