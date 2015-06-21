@@ -1,0 +1,16 @@
+pkgbase = python-momoko
+	pkgdesc = Asynchronous Psycopg wrapper for Tornado.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://momoko.61924.nl
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tornado
+	depends = python-psycopg2
+	source = http://pypi.python.org/packages/source/M/Momoko/Momoko-2.0.0.tar.gz
+	sha1sums = 81b62104a6f5a3f3c7e9b922dae32f3cecbfb328
+
+pkgname = python-momoko
+
