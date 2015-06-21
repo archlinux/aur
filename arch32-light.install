@@ -1,0 +1,30 @@
+post_install ()
+{
+cat <<'MSG'
+--> Please read the man page (man arch32-light) and the comments in the
+    configuration files located at /etc/arch32.conf and /etc/arch32d.conf
+    before using the chroot.
+
+    Run "arch32initialize" to initialize the chroot.
+
+    You may enable the "arch32" service to mount the chroot at startup but this
+    is only strictly necessary if you intend to use "pacman32" as a non-root
+    user.
+
+    The original initscripts daemon is still provided but will likely be removed
+    in the future.
+MSG
+}
+
+
+
+pre_remove ()
+{
+  /usr/bin/arch32m unmount
+  source /etc/arch32d.conf
+  echo "--> You may remove the chroot with \"rm -rf '$ARCH32ROOT'\""
+  echo "    if all mountpoints have been successfully unmounted."
+  echo "--> Don't forget to disable the \"arch32\" service."
+}
+
+# vim: set ts=2 sw=2 et:
