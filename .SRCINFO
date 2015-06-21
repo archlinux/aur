@@ -16,6 +16,14 @@ pkgbase = spreads
 	depends = python2-tornado
 	depends = python2-wand
 	depends = python2-pyside
+	depends = python2-pathlib
+	depends = python2-enum34
+	depends = python2-isbnlib
+	depends = python2-roman
+	depends = python2-blinker
+	depends = python2-futures
+	depends = python2-yaml
+	depends = python2-colorama
 	source = http://buildbot.diybookscanner.org/nightly/spreads-0.5git20150527.c802.tar.gz
 	sha512sums = fcb66af0583c990467e308515e330ce0ff8a5732eea18cf33c127fcdf502e171f1e734028dce9272d6b31fd00876cff2227f026268dfd37ee6606b934c7ee1c1
 

@@ -17,7 +17,15 @@ depends=('python2-pip'
          'python2-requests'
          'python2-tornado'
          'python2-wand'
-         'python2-pyside')
+         'python2-pyside'
+         'python2-pathlib'
+         'python2-enum34'
+         'python2-isbnlib'
+         'python2-roman'
+         'python2-blinker'
+         'python2-futures'
+         'python2-yaml'
+         'python2-colorama')
 source=("http://buildbot.diybookscanner.org/nightly/$pkgname-$pkgver.tar.gz")
 sha512sums=('fcb66af0583c990467e308515e330ce0ff8a5732eea18cf33c127fcdf502e171f1e734028dce9272d6b31fd00876cff2227f026268dfd37ee6606b934c7ee1c1')
 
