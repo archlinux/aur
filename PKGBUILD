@@ -2,7 +2,7 @@
 
 pkgname=eigen3topython-git
 _name=eigen3topython
-pkgver=20150226
+pkgver=20150611
 pkgver() {
   date +%Y%m%d
 }
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/jorisv/Eigen3ToPython"
 license=('GPLv3')
 depends=('python2' 'eigen3')
-makedepends=('doxygen' 'cmake' 'git' 'pkg-config')
+makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'python2-pybindgen')
 provides=('eigen3topython')
 source=("${_name}::git+https://github.com/jorisv/Eigen3ToPython")
 md5sums=('SKIP')
