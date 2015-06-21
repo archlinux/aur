@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-murrinapolymer
+	pkgdesc = This light gray GTK theme aims to be clean and easy to our poor eyes.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/MurrinaPolymer?content=122165
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	source = http://dl.dropbox.com/u/465797/MurrinaPolymer.tar.gz
+	md5sums = e123c838382820150cf910874900a130
+
+pkgname = gtk-theme-murrinapolymer
+
