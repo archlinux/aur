@@ -1,0 +1,16 @@
+pkgbase = yersinia
+	pkgdesc = A network tool designed to take advantage of some weakness in different network protocols
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://www.yersinia.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	depends = libnet
+	optdepends = gtk2: required for the gtk 2.0 interface
+	source = http://www.yersinia.net/download/yersinia-0.7.3.tar.gz
+	md5sums = 53ca82d6cb463810b6a205d0e2362784
+
+pkgname = yersinia
+
