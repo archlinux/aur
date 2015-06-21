@@ -1,0 +1,15 @@
+pkgbase = jsonpipe-git
+	pkgdesc = Convert JSON to a UNIX-friendly line-based format.
+	pkgver = 20110412
+	pkgrel = 1
+	url = https://github.com/zacharyvoase/jsonpipe
+	arch = any
+	license = CUSTOM
+	makedepends = git
+	depends = python2
+	depends = python2-simplejson
+	depends = python2-argparse
+	depends = python2-calabash
+
+pkgname = jsonpipe-git
+
