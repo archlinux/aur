@@ -1,0 +1,14 @@
+pkgbase = phonetisaurus-g014b2b
+	pkgdesc = Precompiled train/test distribution for the unaccented CMUdict g014b2b distribution. Performance on this is %75.5 using the basic decoder.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://phonetisaurus.googlecode.com
+	arch = any
+	license = BSD
+	makedepends = openfst
+	depends = phonetisaurus
+	provides = phonetisaurus-g014b2b
+	source = http://phonetisaurus.googlecode.com/files/g014b2b.tgz
+
+pkgname = phonetisaurus-g014b2b
+
