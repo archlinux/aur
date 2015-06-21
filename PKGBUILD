@@ -1,6 +1,6 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 
-pkgname=ftblauncher
+pkgname=ftb
 pkgver=latest
 pkgrel=1
 pkgdesc="The Feed The Beast Minecraft mod pack manager and launcher."
