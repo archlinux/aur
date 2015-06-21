@@ -1,0 +1,19 @@
+pkgbase = ankama-transition
+	pkgdesc = Updater for Ankama games Dofus and Wakfu
+	pkgver = 3.11.1
+	pkgrel = 1
+	url = http://www.ankama.com
+	install = ankama-transition.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt4
+	depends = polkit
+	depends = openssl
+	source = http://dl.ak.ankama.com/games/linux/ankama-transition-release.tar.gz
+	source = transition.sh
+	md5sums = bac15a49942ac46c8270e8f5b94c3d1c
+	md5sums = 2be6feebbe106c854ca79d623a030d70
+
+pkgname = ankama-transition
+
