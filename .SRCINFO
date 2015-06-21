@@ -1,0 +1,23 @@
+pkgbase = colibri-core-git
+	pkgdesc = Colibri Core is a set of command-line tools as well as a C++ library (with Python binding) for NLP. It enables you to work with basic linguistic constructions such as n-grams and skipgrams in a quick and memory-efficient way.
+	pkgver = 735
+	pkgrel = 2
+	url = https://proycon.github.io/colibri-core
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libtool
+	makedepends = autoconf
+	depends = gcc-libs
+	depends = python
+	depends = python-setuptools
+	depends = cython
+	depends = bzip2
+	optdepends = libfolia: FoLiA input support
+	provides = colibri-core
+	source = git://github.com/proycon/colibri-core.git
+	md5sums = SKIP
+
+pkgname = colibri-core-git
+
