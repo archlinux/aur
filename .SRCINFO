@@ -1,0 +1,17 @@
+pkgbase = sqtop-git
+	pkgdesc = sqtop is a console applicaton to display information about currently active client connections for a Squid proxy in a convenient way.
+	pkgver = 40.gdc33d36
+	pkgrel = 1
+	url = http://code.google.com/p/sqtop/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = squid
+	depends = squid
+	provides = sqtop
+	conflicts = sqtop
+	source = git+https://code.google.com/p/sqtop/
+	sha256sums = SKIP
+
+pkgname = sqtop-git
+
