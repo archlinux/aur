@@ -6,7 +6,7 @@ epoch=
 pkgdesc="Modular workflow assistant for book digitization"
 arch=('any')
 url="https://github.com/DIYBookScanner/spreads"
-license=('AGPLv3')
+license=('AGPL3')
 depends=('python2'
          'python2-pip'
          'libffi'
