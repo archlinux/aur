@@ -1,0 +1,15 @@
+pkgbase = populate-git
+	pkgdesc = A simple game, written in vala
+	pkgver = 20.daa13fb
+	pkgrel = 2
+	url = https://github.com/alsoijw/populate
+	arch = any
+	license = GPL3
+	makedepends = vala
+	depends = libgee
+	depends = gtk3
+	source = populate-git::git+https://github.com/alsoijw/populate.git
+	md5sums = SKIP
+
+pkgname = populate-git
+
