@@ -1,0 +1,18 @@
+pkgbase = python2-ucto-git
+	pkgdesc = Python binding for Ucto, an advanced tokenizer (for NLP)
+	pkgver = 10
+	pkgrel = 1
+	url = https://github.com/proycon/python-ucto
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cython2
+	depends = python2
+	depends = ucto>=0.8.0
+	provides = python2-ucto
+	source = git://github.com/proycon/python-ucto.git
+	md5sums = SKIP
+
+pkgname = python2-ucto-git
+
