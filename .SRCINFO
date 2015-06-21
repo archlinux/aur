@@ -1,0 +1,14 @@
+pkgbase = tinypy
+	pkgdesc = A minimalist implementation of python in 64k of code
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://code.google.com/p/tinypy/
+	arch = i686
+	license = MIT
+	makedepends = python
+	optdepends = sdl: for pygame module
+	source = http://tinypy.googlecode.com/files/tinypy-1.1.tar.gz
+	md5sums = 1091300b72fcc1f75cafb91bea92772e
+
+pkgname = tinypy
+
