@@ -1,7 +1,8 @@
 #Maintainer: Grey Christoforo <grey@christoforo.net>
 pkgname=tclkit
 pkgver=8.6.4
-_tcltk_tag=core_8_6_4
+_tcl_tag=potential_incompatibility
+_tk_tag=core_8_6_4
 _kit_commit=c21eeb1e379bd5acb5b304f0784877b8e8dd31ca
 pkgrel=2
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime"
@@ -9,19 +10,20 @@ arch=('i686' 'x86_64')
 url="https://github.com/patthoyts/kitgen"
 options=(emptydirs !buildflags !makeflags !strip)
 license=('custom')
+makedepends=('upx')
 source=("tclkit.tar.gz::https://github.com/patthoyts/kitgen/archive/${_kit_commit}.tar.gz"
-	"tk.tar.gz::https://github.com/tcltk/tk/archive/${_tcltk_tag}.tar.gz"
-	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcltk_tag}.tar.gz")
+	"tk.tar.gz::https://github.com/tcltk/tk/archive/${_tk_tag}.tar.gz"
+	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz")
 md5sums=('2053997a397309fa10d0b62a3df114ae'
          '25c2e90900e44ea851f891cbb232ca2c'
-         'f2157b4a1f4595c93c978f2203e4a93d')
+         'd442eacfbf4932a0a956ecab5c362af1')
 
 build() {
   mv "kitgen-$_kit_commit" kitgen
   cd kitgen
   mkdir -p 8.6
-  mv ../tk-$_tcltk_tag 8.6/tk
-  mv ../tcl-$_tcltk_tag 8.6/tcl
+  mv ../tk-$_tk_tag 8.6/tk
+  mv ../tcl-$_tcl_tag 8.6/tcl
   local options="thread allenc cli dyn"
   if [ "${CARCH}" = "x86_64" ]; then
 	local B64=b64
