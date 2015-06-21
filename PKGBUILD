@@ -3,7 +3,7 @@
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.34
-pkgrel=4
+pkgrel=5
 pkgdesc="Microchip's MPLAB XC8 C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}

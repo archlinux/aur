@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabxc8-bin
 	pkgdesc = Microchip's MPLAB XC8 C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device
 	pkgver = 1.34
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.microchip.com/xc8
 	install = microchip-mplabxc8-bin.install
 	arch = i686

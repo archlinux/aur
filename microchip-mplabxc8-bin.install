@@ -1,4 +1,4 @@
-post_install() {
+message_to_user(){
    echo '
 This package provides a file: /etc/profile.d/microchip-mplabxc8-bin.sh
 It will add the toolchain binaries to the PATH variable for every user.
@@ -14,4 +14,12 @@ Tools->Options->Embedded->Add
 and enter:
 $XC8_TOOLCHAIN_ROOT/bin
 '
+}
+
+post_install() {
+  message_to_user
+}
+
+post_upgrade() {
+  message_to_user
 }
