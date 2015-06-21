@@ -4,13 +4,13 @@
 
 pkgname=multirust
 pkgver=0.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool for managing multiple Rust installations"
 arch=('any')
 url="https://github.com/brson/multirust"
 license=('MIT')
-source=("https://github.com/brson/multirust/archive/${pkgver}.tar.gz")
-sha512sums=('790784182e4a9d4e600cbdb29a71578f1772e2e40f886a6858db84761edc596ff7387eb3048180c1f69f34d5f8aaf13353189508c8558348e43cb260e9d89e0c')
+source=('git+https://github.com/brson/multirust')
+md5sums=('SKIP')
 depends=('bash' 'curl')
 builddepends=('git')
 optdepends=('gnupg: to verify signatures')
@@ -19,6 +19,7 @@ provides=('rust' 'cargo')
 
 prepare() {
   cd "${srcdir}/multirust"
+  git checkout $pkgver
   git submodule update --init
 }
 
