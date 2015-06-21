@@ -1,0 +1,24 @@
+pkgbase = geepro
+	pkgdesc = Willem Programmer software for GNU/Linux
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/geepro
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cairo
+	depends = gtk3
+	depends = libxml2
+	depends = perl
+	depends = intltool
+	depends = pkg-config
+	depends = gettext
+	provides = geepro
+	conflicts = geepro
+	source = http://downloads.sourceforge.net/geepro/geepro-0.0.4-rev_161_mod.tar.gz
+	source = geepro.desktop
+	md5sums = f7f40bbd9d07b1c9906b3a88cbab36f0
+	md5sums = 961938da7fc32b0183e6e7b60349da3c
+
+pkgname = geepro
+

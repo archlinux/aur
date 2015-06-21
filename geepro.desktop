@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Geepro
+Comment=Willem Programmer software for GNU/Linux
+Exec=geepro
+Icon=geepro
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
