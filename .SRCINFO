@@ -1,0 +1,18 @@
+pkgbase = python-frog-git
+	pkgdesc = Python binding for Frog, a NLP suite for Dutch containing a part-of-speech tagger, lemmatizer, morphological analyser, named entity recognition, shallow parser and dependency parser
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/proycon/python-frog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cython
+	depends = python
+	depends = frog>=0.12.20
+	provides = python-frog
+	source = git://github.com/proycon/python-frog.git
+	md5sums = SKIP
+
+pkgname = python-frog-git
+
