@@ -1,0 +1,20 @@
+pkgbase = unibrow
+	pkgdesc = A unicode character browser that sits in the tray.
+	pkgver = 2012.12
+	pkgrel = 3
+	url = http://xyne.archlinux.ca/projects/unibrow
+	install = unibrow.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	depends = gtk2
+	source = http://xyne.archlinux.ca/projects/unibrow/src/unibrow-2012.12.tar.xz
+	source = http://xyne.archlinux.ca/projects/unibrow/src/unibrow-2012.12.tar.xz.sig
+	md5sums = 317d88af0c35e744191c0b4792fc0a91
+	md5sums = 62c39193d43ebf3372ceb03cd73f6169
+	sha512sums = a818157d6f31a312f7ef6de32b830fbc634552becccc77cff89f71566465f6538436aae6b6951ca9ae68d69a104fafe37893c204c1a7919baad6ee13e9634cc0
+	sha512sums = 0990d16320a214a8842389b30e11c5ca0bfa88ce9156cc007346ea05bc86a7ac1a497c18055b554cb747f7639f84555b8b367d511954e41af416ea8693fb183d
+
+pkgname = unibrow
+
