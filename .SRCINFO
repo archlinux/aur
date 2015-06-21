@@ -1,0 +1,37 @@
+pkgbase = pfstools
+	pkgdesc = Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://pfstools.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = openexr
+	makedepends = imagemagick
+	makedepends = libtiff
+	makedepends = freeglut
+	makedepends = glu
+	makedepends = netpbm
+	makedepends = qt4
+	depends = gcc-libs
+	optdepends = freeglut: OpenGL image viewer
+	optdepends = glu: OpenGL image viewer
+	optdepends = qt4: Qt GUI
+	optdepends = opencv: pfsalign
+	optdepends = openexr: OpenEXR support
+	optdepends = imagemagick: ImageMagick support
+	optdepends = netpbm: PBM support
+	optdepends = dcraw: RAW support
+	optdepends = gsl: mantiuk08 tone mapping operator
+	optdepends = fftw: durand02 tone mapping operator
+	provides = pfscalibration
+	provides = pfstmo
+	conflicts = pfscalibration
+	conflicts = pfstmo
+	options = !libtool
+	source = http://downloads.sourceforge.net/pfstools/pfstools-2.0.3.tgz
+	md5sums = c34b3df1f0950120138f13f521f2a5d6
+
+pkgname = pfstools
+
