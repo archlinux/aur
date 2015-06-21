@@ -1,6 +1,6 @@
 pkgbase = mutagen-hg
 	pkgdesc = An audio metadata tag reader and writer, mercurial version
-	pkgver = r0
+	pkgver = r1080.7c6543b03d64
 	pkgrel = 1
 	url = http://code.google.com/p/mutagen/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mutagen-hg
 	depends = python2
 	provides = mutagen
 	conflicts = mutagen
-	source = hg+https://code.google.com/p/mutagen/
-	sha1sums = SKIP
+	source = mutagen-hg::hg+https://code.google.com/p/mutagen/
+	md5sums = SKIP
 
 pkgname = mutagen-hg
 

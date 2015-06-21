@@ -1,31 +1,32 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
-_hgname=mutagen
 pkgname=mutagen-hg
-pkgver=r0
-pkgrel=1
 pkgdesc="An audio metadata tag reader and writer, mercurial version"
-arch=('any')
-url="http://code.google.com/p/mutagen/"
 license=('GPL2')
-depends=('python2')
-makepends=('mercurial')
+url="http://code.google.com/p/mutagen/"
+pkgver=r1080.7c6543b03d64
+pkgrel=1
+
 conflicts=('mutagen')
 provides=('mutagen')
-source=(hg+https://code.google.com/p/$_hgname/)
-sha1sums=('SKIP')
+
+source=("$pkgname::hg+https://code.google.com/p/mutagen/")
+md5sums=('SKIP')
+depends=('python2')
+makepends=('mercurial')
+arch=('any')
 
 pkgver() {
-    cd "$srcdir/$_hgname"
+    cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 package() {
-  cd "${srcdir}/$_hgname"
+    cd "$srcdir/$pkgname"
 
-  python2 setup.py install --root="${pkgdir}"
-  install -d "${pkgdir}/usr/bin"
-  install -m755 tools/* "${pkgdir}/usr/bin"
-  sed -i 's|^#!.*/usr/bin/env.*python|#!/usr/bin/env python2|' "${pkgdir}"/usr/bin/* \
-    "${pkgdir}/usr/lib/python2.7/site-packages/mutagen/__init__.py"
+    python2 setup.py install --root="${pkgdir}"
+    install -d "${pkgdir}/usr/bin"
+    install -m755 tools/* "${pkgdir}/usr/bin"
+    sed -i 's|^#!.*/usr/bin/env.*python|#!/usr/bin/env python2|' "${pkgdir}"/usr/bin/* \
+      "${pkgdir}/usr/lib/python2.7/site-packages/mutagen/__init__.py"
 }
