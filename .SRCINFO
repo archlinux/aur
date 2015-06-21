@@ -1,0 +1,18 @@
+pkgbase = python-ptt
+	pkgdesc = Includes a Twitter API, command-line tool, and IRC bot.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://mike.verdone.ca/twitter/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-distribute
+	optdepends = python-irclib: ircbot support
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/t/twitter/twitter-1.10.0.tar.gz
+	source = LICENSE
+	md5sums = 30d6de298affb11dcf56f96db3d9b36a
+	md5sums = a5da3e25967f8405eb578fa3ab7f4098
+
+pkgname = python-ptt
+
