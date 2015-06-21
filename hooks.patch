@@ -1,0 +1,215 @@
+--- network.orig
++++ network
+@@ -12,6 +12,15 @@
+ # dhcpcd settings
+ [ -f /etc/conf.d/dhcpcd ] && . /etc/conf.d/dhcpcd
+ 
++
++function run_hooks ()
++{
++  nwm_confdir="/etc/networkmod/$1"
++  if [ -d "$nwm_confdir" ]; then
++    find "$nwm_confdir" -type f -executable -exec {} "$2" \;
++  fi
++}
++
+ ifup()
+ {
+ 	if [ "$1" = "" ]; then
+@@ -29,6 +38,8 @@
+ 		ifname=${ifcfg%% *}
+ 	fi
+ 
++  run_hooks pre-ifup "$ifname"
++
+ 	/sbin/ifconfig $ifname up
+ 
+ 	wi_up $1 || return 1
+@@ -41,6 +52,9 @@
+ 	else
+ 		/sbin/ifconfig $ifcfg
+ 	fi
++
++  run_hooks post-ifup "$ifname"
++
+ 	return $?
+ }
+ 
+@@ -49,6 +63,8 @@
+ 	eval iwcfg="\$wlan_${1}"
+ 	[ "$iwcfg" = "" ] && return 0
+ 
++  run_hooks pre-wi_up "$1"
++
+ 	/usr/sbin/iwconfig $iwcfg
+ 	[[ -z "$WIRELESS_TIMEOUT" ]] && WIRELESS_TIMEOUT=2
+ 	sleep $WIRELESS_TIMEOUT
+@@ -58,6 +74,9 @@
+ 		printhl "Could not associate $1 - try increasing WIRELESS_TIMEOUT and check network is WEP or has no security"
+ 		return 1
+ 	fi
++
++  run_hooks post-wi_up "$1"
++
+ 	return 0
+ }
+ 
+@@ -73,8 +92,15 @@
+ 			/bin/kill $(cat /var/run/dhcpcd-${1}.pid)
+ 		fi
+ 	fi
++
++
++  run_hooks pre-ifdown "$1"
++
+ 	# Always bring the interface itself down
+ 	/sbin/ifconfig ${1} down >/dev/null 2>&1
++
++  run_hooks post-ifdown "$1"
++
+ 	return $?
+ }
+ 
+@@ -98,11 +124,17 @@
+ 		return 1
+ 	fi
+ 	eval routecfg="\$${1}"
++
++  run_hooks pre-rtup "$1"
++
+ 	if grep -q :: <<< $routecfg; then
+ 			/sbin/route -A inet6 add $routecfg
+ 	else
+ 			/sbin/route add $routecfg
+ 	fi
++
++  run_hooks post-rtup "$1"
++
+ 	return $?
+ }
+ 
+@@ -113,11 +145,17 @@
+ 		return 1
+ 	fi
+ 	eval routecfg="\$${1}"
++
++  run_hooks pre-rtdown "$1"
++
+ 	if grep -q :: <<< $routecfg; then
+ 			/sbin/route -A inet6 del $routecfg
+ 	else
+ 			/sbin/route del $routecfg
+ 	fi
++
++  run_hooks post-rtdown "$1"
++
+ 	return $?
+ }
+ 
+@@ -136,6 +174,7 @@
+ 
+ bond_up()
+ {
++  run_hooks pre-bond_up ""
+ 	for ifline in ${BOND_INTERFACES[@]}; do
+ 		if [ "$ifline" = "${ifline#!}" ]; then
+ 			eval bondcfg="\$bond_${ifline}"
+@@ -144,20 +183,24 @@
+ 			fi
+ 		fi
+ 	done
++  run_hooks post-bond_up ""
+ }
+ 
+ bond_down()
+ {
++  run_hooks pre-bond_down ""
+ 	for ifline in ${BOND_INTERFACES[@]}; do
+ 		if [ "$ifline" = "${ifline#!}" ]; then
+ 			eval bondcfg="\$bond_${ifline}"
+ 			/sbin/ifenslave -d $ifline $bondcfg || error=1
+ 		fi
+ 	done
++  run_hooks post-bond_down ""
+ }
+ 
+ bridge_up()
+ {
++  run_hooks pre-bridge_up ""
+ 	for br in ${BRIDGE_INTERFACES[@]}; do
+ 		if [ "$br" = "${br#!}" ]; then
+ 			# if the bridge already exists, remove it
+@@ -183,26 +226,29 @@
+ 			done
+ 		fi
+ 	done
++  run_hooks post-bridge_up ""
+ }
+ 
+ bridge_down()
+ {
++  run_hooks pre-bridge_down ""
+ 	for br in ${BRIDGE_INTERFACES[@]}; do
+ 		if [ "$br" = "${br#!}" ]; then
+ 			/usr/sbin/brctl delbr $br
+ 		fi
+ 	done
++  run_hooks post-bridge_down ""
+ }
+ 
+ 
+ case "$1" in
+ 	start)
+-		if ! ck_daemon network; then
+-			echo "Network is already running.  Try 'network restart'"
++		if ! ck_daemon networkmod; then
++			echo "Networkmod is already running.  Try 'networkmod restart'"
+ 			exit
+ 		fi
+ 
+-		stat_busy "Starting Network"
++		stat_busy "Starting Networkmod"
+ 		error=0
+ 		# bring up bridge interfaces
+ 		bridge_up
+@@ -221,25 +267,25 @@
+ 			fi
+ 		done
+ 		if [ $error -eq 0 ]; then
+-			add_daemon network
++			add_daemon networkmod
+ 			stat_done
+ 		else
+ 			stat_fail
+ 		fi
+ 		;;
+ 	stop)
+-		#if ck_daemon network; then
+-		#	echo "Network is not running.  Try 'network start'"
++		#if ck_daemon networkmod; then
++		#	echo "Networkmod is not running.  Try 'networkmod start'"
+ 		#	exit
+ 		#fi
+ 
+ 		if [ "${NETWORK_PERSIST}" = "yes" -o "${NETWORK_PERSIST}" = "YES" ]; then
+-			status "Skipping Network Shutdown" true
++			status "Skipping Networkmod Shutdown" true
+ 			exit 0
+ 		fi
+ 
+-		stat_busy "Stopping Network"
+-		rm_daemon network
++		stat_busy "Stopping Networkmod"
++		rm_daemon networkmod
+ 		error=0
+ 		for rtline in "${ROUTES[@]}"; do
+ 			if [ "$rtline" = "${rtline#!}" ]; then
+@@ -270,7 +316,7 @@
+ 		$1 $2
+ 		;;
+ 	*)
+-		echo "usage: $0 {start|stop|restart}"  
++		echo "usage: $0 {start|stop|restart}"
+ 		echo "       $0 {ifup|ifdown|iflist|rtup|rtdown|rtlist}"
+ esac
+ 

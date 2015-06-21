@@ -1,0 +1,19 @@
+pkgbase = networkmod
+	pkgdesc = Modified version of the Arch initscript's Network daemon, with hooks.
+	pkgver = 2010.07
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/scripts/arch/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = initscripts
+	optdepends = bridge-utils: Network bridging support
+	optdepends = dhcpcd: DHCP network configuration
+	optdepends = wireless_tools: Wireless networking
+	source = ftp://ftp.archlinux.org/other/initscripts/initscripts-2010.07-1.tar.xz
+	source = hooks.patch
+	md5sums = 0cea15a64d999d0e1aa0c4bb4dbd1af8
+	md5sums = 5006fd23407dea751fdbd23625607ede
+
+pkgname = networkmod
+
