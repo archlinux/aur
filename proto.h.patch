@@ -1,0 +1,21 @@
+--- old/Lib/proto.h	2013-03-22 20:12:01.547763581 +0900
++++ new/Lib/proto.h	2013-03-22 20:12:12.767843231 +0900
+@@ -492,14 +492,14 @@
+ /***************************************************************
+ * Test Directory
+ ****************************************************************/
+-void Test_PartGraph(int, idxtype *, idxtype *);
++int Test_PartGraph(int, idxtype *, idxtype *);
+ int VerifyPart(int, idxtype *, idxtype *, idxtype *, idxtype *, int, int, idxtype *);
+ int VerifyWPart(int, idxtype *, idxtype *, idxtype *, idxtype *, int, float *, int, idxtype *);
+-void Test_PartGraphV(int, idxtype *, idxtype *);
++int Test_PartGraphV(int, idxtype *, idxtype *);
+ int VerifyPartV(int, idxtype *, idxtype *, idxtype *, idxtype *, int, int, idxtype *);
+ int VerifyWPartV(int, idxtype *, idxtype *, idxtype *, idxtype *, int, float *, int, idxtype *);
+-void Test_PartGraphmC(int, idxtype *, idxtype *);
++int Test_PartGraphmC(int, idxtype *, idxtype *);
+ int VerifyPartmC(int, int, idxtype *, idxtype *, idxtype *, idxtype *, int, float *, int, idxtype *);
+-void Test_ND(int, idxtype *, idxtype *);
++int Test_ND(int, idxtype *, idxtype *);
+ int VerifyND(int, idxtype *, idxtype *);
+ 

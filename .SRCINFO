@@ -1,0 +1,24 @@
+pkgbase = metis4
+	pkgdesc = METIS is a set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices.
+	pkgver = 4.0.3
+	pkgrel = 2
+	url = http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
+	install = metis4.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = patch
+	source = http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/OLD/metis-4.0.3.tar.gz
+	source = cmake.tar.gz
+	source = mtest.c.patch
+	source = proto.h.patch
+	md5sums = d3848b454532ef18dc83e4fb160d1e10
+	md5sums = abd46399444a8d50f7a3873262a3eebf
+	md5sums = f37ee4a31911a5a9079e971e67b039e9
+	md5sums = b116697d7050eba7fb3e6768a6fedc07
+
+pkgname = metis4
+
