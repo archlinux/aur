@@ -1,0 +1,28 @@
+pkgbase = xcas
+	pkgdesc = Computer Algebra System
+	pkgver = 1.2.0
+	pkgrel = 15
+	url = http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
+	install = xcas.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = latex2html
+	makedepends = readline
+	depends = fltk-xcas
+	depends = mesa
+	depends = mpfr
+	depends = pari25
+	depends = gsl
+	depends = lapack
+	depends = ntl
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libao
+	provides = xcas
+	provides = giac
+	source = http://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/giac_1.2.0-15.tar.gz
+	md5sums = 0e67ec6ab189857b45c249eef9b92f05
+
+pkgname = xcas
+
