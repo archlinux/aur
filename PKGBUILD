@@ -2,7 +2,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=java-asm
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="An all purpose Java bytecode manipulation and analysis framework"
 arch=('any')
@@ -27,7 +27,6 @@ package() {
     done
 }
 
-md5sums=('82636e8a1b8eec18ee20e9b71a16441a'
-         'de1a27d7c9e101090ae065f8fc643a0b')
-sha256sums=('e50c38c908e4aacedecf49f405937069ce6411bef9806b9a4fc9d335d6bdb36f'
+sha256sums=('3759da0c28497e7165cc4146ee45e68bef4ac375e5693d184514e54131478b9d'
             'daa45cc0832746afadb8778c1155bb5ba9079da624803a4a6bc3429ea52e7523')
+
