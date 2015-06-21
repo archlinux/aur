@@ -12,7 +12,7 @@ _commit=HEAD
 # Add the following to your rtorrent.rc if your
 # filesystem supports the fallocate() function
 # system.file.allocate.set = yes
-[[ $(stat -Lfc %T /home) = @(ext4|xfs|btrfs) ]] &&
+[[ $(stat -Lfc %T /home) = @(ext4|xfs|btrfs|ocfs2) ]] &&
     _falloc='--with-posix-fallocate'
 
 pkgname=libtorrent-pyro-git
@@ -48,6 +48,8 @@ prepare() {
 
 build() {
     cd "$srcdir/libtorrent"
+    #export CC=clang
+    #export CXX=clang++
     export CXXFLAGS+=" -std=c++11"
 
     ./configure $_falloc $_debug \
