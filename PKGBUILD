@@ -11,7 +11,6 @@ pkgname=('php7'
          'php7-intl'
          'php7-ldap'
          'php7-mcrypt'
-         'php7-mssql'
          'php7-odbc'
          'php7-pgsql'
          'php7-pspell'
@@ -21,7 +20,7 @@ pkgname=('php7'
          'php7-xsl')
 
 pkgver=7.0.0alpha1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -105,7 +104,6 @@ build() {
 		--with-libzip \
 		--with-mcrypt=shared \
 		--with-mhash \
-		--with-mssql=shared \
 		--with-mysql-sock=/run/mysqld/mysqld.sock \
 		--with-mysql=shared,mysqlnd \
 		--with-mysqli=shared,mysqlnd \
@@ -137,7 +135,7 @@ build() {
 	# php
 	mkdir -p ${srcdir}/build-php
 	cd ${srcdir}/build-php
-	ln -s ../${_pkgbase}-${pkgver}/configure
+	ln -sf ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--disable-cgi \
 		--with-readline \
@@ -220,7 +218,7 @@ package_php7() {
 	# remove static modules
 	rm -f ${pkgdir}/usr/lib/php/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,intl,ldap,mcrypt,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
 	# fix broken link
@@ -307,12 +305,6 @@ package_php7-mcrypt() {
 	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/usr/lib/php/modules/mcrypt.so
 }
 
-package_php7-mssql() {
-	pkgdesc='mssql module for PHP'
-	depends=('php' 'freetds')
-
-	install -D -m755 ${srcdir}/build-php/modules/mssql.so ${pkgdir}/usr/lib/php/modules/mssql.so
-}
 
 package_php7-odbc() {
 	pkgdesc='ODBC modules for PHP'

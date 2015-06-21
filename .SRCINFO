@@ -99,11 +99,6 @@ pkgname = php7-mcrypt
 	depends = libmcrypt
 	depends = libltdl
 
-pkgname = php7-mssql
-	pkgdesc = mssql module for PHP
-	depends = php
-	depends = freetds
-
 pkgname = php7-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php
