@@ -1,0 +1,19 @@
+pkgbase = tothemoon-hib
+	pkgdesc = An indie Adventure RPG, about two doctors traversing through the memories of a dying man to fulfill his last wish.
+	pkgver = 1389114090
+	pkgrel = 2
+	url = http://freebirdgames.com/to_the_moon/
+	arch = i686
+	arch = x86_64
+	license = custom:Commercial
+	options = !upx
+	options = !strip
+	source = hib://ToTheMoon_linux_1389114090.sh
+	source = tothemoon.desktop
+	source = tothemoon.sh
+	md5sums = 706a5c9467328438d412370ffb1454de
+	md5sums = 420880f33ee61863b926d10501141ae6
+	md5sums = bae0487d388dc529abd740b7371cf566
+
+pkgname = tothemoon-hib
+

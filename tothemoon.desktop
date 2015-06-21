@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=To The Moon
+Comment=Adventure RPG
+Exec=tothemoon
+Icon=tothemoon
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
