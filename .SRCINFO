@@ -1,0 +1,34 @@
+pkgbase = pyload-nightly
+	pkgdesc = Downloadtool for One-Click-Hoster written in python. Nightly build of pyload 0.5 public beta.
+	pkgver = 0.4.9.9dev
+	pkgrel = 1
+	url = http://beta.pyload.org/index.php/5-pyload-beta
+	install = pyload-nightly.install
+	arch = any
+	license = GPL
+	depends = python2>=2.5.0
+	depends = python2<2.8.0
+	depends = python2-pycurl
+	depends = python2-jinja
+	depends = python2-beaker
+	optdepends = python2-crypto: RSDF/CCF/DLC support
+	optdepends = tesseract: Automatic captcha recognition for a small amount of plugins
+	optdepends = python2-pillow: Automatic captcha recognition for a small amount of plugins
+	optdepends = js: Used for several hoster, ClickNLoad
+	optdepends = python2-feedparser: Feedparser support
+	optdepends = python2-beautifulsoup4: BeautifulSoup support
+	optdepends = python2-pyopenssl: For SSL connection
+	optdepends = python2-flup: for additional webservers
+	provides = pyload
+	conflicts = pyload
+	conflicts = pyload-hg
+	backup = var/lib/pyload/pyload.conf
+	source = http://nightly.pyload.org/job/Nightly/lastSuccessfulBuild/artifact/dist/pyload-0.4.9.9-dev.tar.gz
+	source = pyload.service
+	source = pyload.conf
+	md5sums = SKIP
+	md5sums = d34a58f919ecf5e53da1c8986e62a1fe
+	md5sums = e8aa7a9b1ef8ba58a3fdaaf3a43e98a3
+
+pkgname = pyload-nightly
+
