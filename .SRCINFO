@@ -1,0 +1,14 @@
+pkgbase = suomi-malaga-voikko
+	pkgdesc = A description of Finnish morphology written in Malaga.
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://voikko.sourceforge.net/
+	arch = any
+	license = GPL2
+	makedepends = python2
+	makedepends = malaga>=7.12
+	source = http://www.puimula.org/voikko-sources/suomi-malaga/suomi-malaga-1.18.tar.gz
+	md5sums = 0da9547e23e2c058f0da9122aef060ac
+
+pkgname = suomi-malaga-voikko
+
