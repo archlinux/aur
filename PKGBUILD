@@ -2,20 +2,20 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=qsampler
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="LinuxSampler Qt GUI"
 arch=('i686' 'x86_64')
 url="http://qsampler.sourceforge.net/"
 license=('GPL')
-depends=('qt4' 'linuxsampler' 'liblscp')
+depends=('qt5-base' 'linuxsampler' 'liblscp')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('ae9e7d8b79771de2437bb40406eb42bc')
+md5sums=('6d52d621e77e9d2072901b25250d3b43')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  sed -i 's/ac_qtdirs=.*/ac_qtdirs="qt4"/' configure
+ # sed -i 's/ac_qtdirs=.*/ac_qtdirs="qt4"/' configure
 }
 
 build() {
