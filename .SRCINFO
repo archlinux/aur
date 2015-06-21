@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete and free Internet live audio and video broadcasting solution for Linux/Unix (mingw-w64)
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
@@ -36,9 +36,9 @@ pkgbase = mingw-w64-ffmpeg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ffmpeg.org/releases/ffmpeg-2.7.tar.bz2
-	source = http://ffmpeg.org/releases/ffmpeg-2.7.tar.bz2.asc
-	md5sums = 5a16425b0bde1b952f58cff71b569a45
+	source = http://ffmpeg.org/releases/ffmpeg-2.7.1.tar.bz2
+	source = http://ffmpeg.org/releases/ffmpeg-2.7.1.tar.bz2.asc
+	md5sums = f159c6d7eed8546b23e1a17325cbf1f8
 	md5sums = SKIP
 
 pkgname = mingw-w64-ffmpeg
