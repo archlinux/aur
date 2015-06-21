@@ -1,0 +1,18 @@
+pkgbase = mbtserver
+	pkgdesc = Memory-based tagger-generator and tagger server.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://ilk.uvt.nl/mbt
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ticcutils
+	depends = timbl
+	depends = timblserver
+	depends = mbt
+	options = !libtool
+	source = http://software.ticc.uvt.nl/mbtserver-0.9.tar.gz
+	md5sums = 09b7b6978df17920dd0e28384c3013f3
+
+pkgname = mbtserver
+
