@@ -1,0 +1,21 @@
+pkgbase = mbt-git
+	pkgdesc = Memory-based tagger-generator and tagger in one.
+	pkgver = 1
+	pkgrel = 2
+	url = http://ilk.uvt.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	depends = ticcutils
+	depends = timbl
+	depends = timblserver
+	provides = mbt
+	conflicts = mbt
+	options = !libtool
+	source = git://github.com/proycon/mbt.git
+	md5sums = SKIP
+
+pkgname = mbt-git
+
