@@ -1,6 +1,6 @@
 pkgbase = docker-compose
 	pkgdesc = Fast, isolated development environments using Docker
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
@@ -13,14 +13,14 @@ pkgbase = docker-compose
 	depends = python2-six
 	depends = python2-texttable
 	depends = python2-websocket-client
-	depends = python2-docker-py>=1.0.0
-	depends = python2-dockerpty
+	depends = python2-docker-py>=1.2.3
+	depends = python2-dockerpty>=0.3.4
 	depends = docker
 	depends = python2-certifi
-	source = https://github.com/docker/compose/archive/1.2.0.tar.gz
+	source = https://github.com/docker/compose/archive/1.3.0.tar.gz
 	source = remove-requires-upper-bound.patch
-	sha256sums = 89c2626f6d03ca18440a67470272f1383c2ca867320abf710abdab96d467868d
-	sha256sums = e1716b10f44ee9ee6dcdd6a0b9d638bc8a9f25fc756dcd16790c7142780ec9cd
+	sha256sums = 7fcf5ce1df5c53aedcfc875c2620035c735d75191ace6bc8ad97b9aeb522f153
+	sha256sums = 3038eed8d1aec71b3197b786c7b4ad0b188bfe7e5476ad0a45ea3cd065585d21
 
 pkgname = docker-compose
 
