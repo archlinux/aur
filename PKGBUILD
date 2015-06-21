@@ -59,8 +59,6 @@ prepare() {
     cd "$srcdir/rtorrent"
     #patch -Np1 -i "${startdir}/rtorrent.patch"
 
-    #sed -i configure.ac \
-    #    -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):"
     sed -i src/ui/download_list.cc \
         -e 's:rTorrent \" VERSION:rTorrent-PS " VERSION:'
     sed -i doc/scripts/update_commands_0.9.sed \
@@ -83,6 +81,8 @@ prepare() {
 
 build() {
     cd "$srcdir/rtorrent"
+    #xport CC=clang
+    #export CXX=clang++
     export CXXFLAGS+=" -std=c++11 -fno-strict-aliasing"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
