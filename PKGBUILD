@@ -3,7 +3,7 @@
 
 pkgname=vboot-utils
 pkgdesc='Chromium OS verified boot utilities'
-pkgver=43.6946
+pkgver=44.7077
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 arch=(i686 x86_64)
@@ -11,15 +11,8 @@ url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
 license=('custom:chromiumos')
 depends=(libutil-linux openssl)
 makedepends=(libyaml trousers)
-source=(
-    fix_compile_error.patch
-    https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/refs/heads/$_tag.tar.gz)
-sha1sums=('a00c70b5c23b438361865cd2450851f0a71af720'
-          'SKIP')
-
-prepare() {
-  patch -p1 < fix_compile_error.patch
-}
+source=(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/refs/heads/$_tag.tar.gz)
+sha1sums=('791308e35dc867ec33879dd7add9c1eb3a22c7b1')
 
 build() {
   make

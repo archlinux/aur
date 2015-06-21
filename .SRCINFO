@@ -1,6 +1,6 @@
 pkgbase = vboot-utils
 	pkgdesc = Chromium OS verified boot utilities
-	pkgver = 43.6946
+	pkgver = 44.7077
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 	arch = i686
@@ -10,10 +10,8 @@ pkgbase = vboot-utils
 	makedepends = trousers
 	depends = libutil-linux
 	depends = openssl
-	source = fix_compile_error.patch
-	source = https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/refs/heads/release-R43-6946.B.tar.gz
-	sha1sums = a00c70b5c23b438361865cd2450851f0a71af720
-	sha1sums = SKIP
+	source = https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/refs/heads/release-R44-7077.B.tar.gz
+	sha1sums = 791308e35dc867ec33879dd7add9c1eb3a22c7b1
 
 pkgname = vboot-utils
 
