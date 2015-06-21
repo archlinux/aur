@@ -1,0 +1,103 @@
+From f0cc60359934abb2aa8c8aede3e0753167643a18 Mon Sep 17 00:00:00 2001
+From: Xyne <xyne@archlinux.ca>
+Date: Tue, 10 Sep 2013 06:04:50 +0000
+Subject: [PATCH] kernel 3.10 patch based on
+ https://code.google.com/p/r8168/issues/detail?id=15
+
+---
+ jme.c | 33 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 32 insertions(+), 1 deletion(-)
+
+diff --git a/jme.c b/jme.c
+index 6ab8a2e..0bef759 100644
+--- a/jme.c
++++ b/jme.c
+@@ -42,6 +42,12 @@
+ #include <linux/if_vlan.h>
+ #include <linux/slab.h>
+ #include <net/ip6_checksum.h>
++
++#include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++#include <uapi/linux/if_ether.h>
++#endif
++
+ #include "jme.h"
+ 
+ static int force_pseudohp = -1;
+@@ -1057,8 +1063,11 @@ jme_alloc_and_feed_skb(struct jme_adapter *jme, int idx)
+ 
+ 		if (rxdesc->descwb.flags & cpu_to_le16(RXWBFLAG_TAGON)) {
+ 			u16 vid = le16_to_cpu(rxdesc->descwb.vlan);
+-
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++			__vlan_hwaccel_put_tag(skb, htons(ETH_P_IP), vid);
++#else
+ 			__vlan_hwaccel_put_tag(skb, vid);
++#endif
+ 			NET_STAT(jme).rx_bytes += 4;
+ 		}
+ 		jme->jme_rx(skb);
+@@ -2946,7 +2955,11 @@ static const struct net_device_ops jme_netdev_ops = {
+ 	.ndo_set_features       = jme_set_features,
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++static int
++#else
+ static int __devinit
++#endif
+ jme_init_one(struct pci_dev *pdev,
+ 	     const struct pci_device_id *ent)
+ {
+@@ -3003,6 +3016,15 @@ jme_init_one(struct pci_dev *pdev,
+ 						NETIF_F_TSO |
+ 						NETIF_F_TSO6 |
+ 						NETIF_F_RXCSUM;
++	#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++	netdev->features		=	NETIF_F_IP_CSUM |
++						NETIF_F_IPV6_CSUM |
++						NETIF_F_SG |
++						NETIF_F_TSO |
++						NETIF_F_TSO6 |
++						NETIF_F_HW_VLAN_CTAG_TX |
++						NETIF_F_HW_VLAN_CTAG_RX;
++	#else
+ 	netdev->features		=	NETIF_F_IP_CSUM |
+ 						NETIF_F_IPV6_CSUM |
+ 						NETIF_F_SG |
+@@ -3010,6 +3032,7 @@ jme_init_one(struct pci_dev *pdev,
+ 						NETIF_F_TSO6 |
+ 						NETIF_F_HW_VLAN_TX |
+ 						NETIF_F_HW_VLAN_RX;
++	#endif
+ 	if (using_dac)
+ 		netdev->features	|=	NETIF_F_HIGHDMA;
+ 
+@@ -3197,7 +3220,11 @@ err_out:
+ 	return rc;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++static void
++#else
+ static void __devexit
++#endif
+ jme_remove_one(struct pci_dev *pdev)
+ {
+ 	struct net_device *netdev = pci_get_drvdata(pdev);
+@@ -3306,7 +3333,11 @@ static struct pci_driver jme_driver = {
+ 	.name           = DRV_NAME,
+ 	.id_table       = jme_pci_tbl,
+ 	.probe          = jme_init_one,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++	.remove         = jme_remove_one,
++#else
+ 	.remove         = __devexit_p(jme_remove_one),
++#endif
+ 	.shutdown       = jme_shutdown,
+ 	.driver.pm	= JME_PM_OPS,
+ };
+-- 
+1.8.4
+

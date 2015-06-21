@@ -1,0 +1,20 @@
+pkgbase = jme-git
+	pkgdesc = JMicron Ethernet Linux driver
+	pkgver = 1329935374
+	pkgrel = 1
+	url = http://bbs.cooldavid.org/git/?p=jme.git
+	install = jme-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	provides = jme
+	conflicts = jme
+	source = git://bbs.cooldavid.org/jme.git#branch=master
+	source = kernel-3.10.patch
+	sha512sums = SKIP
+	sha512sums = 72c1d51afea066df405a7e0ade6ac3313664538349819ab869be1c1050e3a4cb6fa88f503332b046d58903ae8b51f21cfccdd57cd6b0d38320bb6e1d68bc5cd8
+
+pkgname = jme-git
+
