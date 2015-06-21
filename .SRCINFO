@@ -1,0 +1,27 @@
+pkgbase = ftb-launcher
+	pkgdesc = The FTB Minecraft mod pack manager and launcher.
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.feed-the-beast.com/
+	install = ftb.install
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = java-runtime
+	depends = xorg-server-utils
+	depends = openal
+	provides = ftb-launcher
+	noextract = FTB_Launcher.jar
+	source = http://ftb.cursecdn.com/FTB2/launcher/FTB_Launcher.jar
+	source = ftb
+	source = ftb.desktop
+	source = ftb.png
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 510cfebbd916203c15b5cb4187f8d133
+	md5sums = 108626111fbd1557dd7517d71a5e7bef
+	md5sums = 8b65032bcc390af97255244c0558c780
+	md5sums = dbff5a2b542fa58854455bf1a0b94b83
+
+pkgname = ftb-launcher
+

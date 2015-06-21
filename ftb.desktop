@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Feed The Beast: Launcher
+GenericName=FTB
+Comment=A Minecraft mod pack manager and launcher.
+Exec=ftb
+Icon=/usr/share/pixmaps/ftb.png
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# fix for users of special IM modules
+unset XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
+
+if [[ ! -d ~/.local/share/ftb ]]; then
+    mkdir -p ~/.local/share/ftb
+fi
+cd ~/.local/share/ftb
+exec java -jar /usr/share/java/ftb/FTB_Launcher.jar $@ >/dev/null
