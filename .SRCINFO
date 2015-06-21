@@ -1,0 +1,18 @@
+pkgbase = cronwhip
+	pkgdesc = Run missed cronjobs.
+	pkgver = 2015
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/cronwhip
+	arch = any
+	license = GPL
+	depends = python3
+	depends = sysvinit-tools
+	source = http://xyne.archlinux.ca/projects/cronwhip/src/cronwhip-2015.tar.xz
+	source = http://xyne.archlinux.ca/projects/cronwhip/src/cronwhip-2015.tar.xz.sig
+	md5sums = d6b36c5f541e20ed64f05d0adaffae3b
+	md5sums = 9b2c7b452259b9b6adfd1aa45c097ff3
+	sha512sums = b6650373d47207e7bee854aa05141b99b593b8575c4291ff5a9aaca0d9225589303ebcd7096bf7e8d608d1a809bfa822ea30671d68eaf9aa8b89a8824ec3884f
+	sha512sums = 0c96508197a05ca3ea2052e4e6d0947a7e9421d29a414ac90dcd693acad49ff26638bd2d7e0d7cfcf85a297f03abb8994c399a8a88d9f6d6faa972316c7fdb94
+
+pkgname = cronwhip
+
