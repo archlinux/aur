@@ -1,0 +1,4 @@
+post_install() {
+  echo 'Please note that, unlike Chroma, the XOR levels are not free or open source software - copyright is retained by the original authors. They are being made available here only in the absence of any complaints from said authors regarding their presence, nor that of the various other copies and conversions of XOR that exist elsewhere on the Internet. Copyright has been waived on the Enigma levels, which have been granted to the public domain.'
+}
+# vim:set ts=2 sw=2 et:
