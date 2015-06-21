@@ -1,0 +1,13 @@
+pkgbase = undup-git
+	pkgdesc = compress files by consolidating duplicate data
+	pkgver = 20120207
+	pkgrel = 1
+	url = https://github.com/radii/undup
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = openssl
+
+pkgname = undup-git
+
