@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Type Rider
+Comment=Play as 2 dots and travel through the ages of typographic styles and techniques
+Exec=type-rider
+Icon=type-rider
+Terminal=false
+StartupNotify=true
+Categories=Game;ActionGame;AdventureGame;

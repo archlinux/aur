@@ -1,0 +1,16 @@
+pkgbase = type-rider-hib
+	pkgdesc = Play as 2 dots and travel through the ages of typographic styles and techniques
+	pkgver = 1395097265
+	pkgrel = 1
+	url = http://www.bulkypix.com/game/typerider
+	arch = i686
+	arch = x86_64
+	license = custom: Commercial
+	depends = libglapi
+	source = hib://TypeRider_linux_1395097265.tar.gz
+	source = type-rider.desktop
+	md5sums = b7eff6824e31b2c64e663a24ac495ec0
+	md5sums = 4b6cfde1ade0f7c953efe06f70b3bbc7
+
+pkgname = type-rider-hib
+
