@@ -1,0 +1,19 @@
+pkgbase = omniorbpy-pyorbit-compat
+	pkgdesc = omniORB is a CORBA object request broker for C++ and Python (this package is compatible with pyorbit)
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://omniorb.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2
+	depends = omniorb
+	depends = pyorbit
+	provides = omniorbpy
+	conflicts = omniorbpy
+	conflicts = omniorbpy-omg
+	source = http://downloads.sourceforge.net/omniorb/omniORBpy-4.2.0.tar.bz2
+	sha512sums = bb31ab18d6ab4ce32633b588c52ead09943fbe8e0475fd5240fcd97f9f59ccee166e7beb26f5afe619a028728aafc7881eeab27474bc422dcfb27d20deba951a
+
+pkgname = omniorbpy-pyorbit-compat
+
