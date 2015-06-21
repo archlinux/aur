@@ -1,0 +1,36 @@
+# Maintainer: Gustaf Lindstedt <gustaflindstedt at protonmail dot com>
+
+pkgname=xwobf-git
+pkgver=0.r8.cc04f4d
+pkgrel=1
+pkgdesc='Generates a screenshot which obfuscates all X windows.'
+arch=('any')
+url='https://github.com/glindste/xwobf'
+license=('MIT')
+depends=('xorg-server' 'libxcb' 'imagemagick')
+makedepends=('git' 'libxcb' 'imagemagick')
+source=("${pkgname}::git://github.com/glindste/xwobf.git")
+provides=("xwobf=${pkgver}")
+conflicts=('xwobf')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" \
+                    "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}/" install
+
+  # install LICENSE
+  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:

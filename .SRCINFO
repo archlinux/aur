@@ -1,0 +1,20 @@
+pkgbase = xwobf-git
+	pkgdesc = Generates a screenshot which obfuscates all X windows.
+	pkgver = 0.r8.cc04f4d
+	pkgrel = 1
+	url = https://github.com/glindste/xwobf
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = libxcb
+	makedepends = imagemagick
+	depends = xorg-server
+	depends = libxcb
+	depends = imagemagick
+	provides = xwobf=0.r8.cc04f4d
+	conflicts = xwobf
+	source = xwobf-git::git://github.com/glindste/xwobf.git
+	md5sums = SKIP
+
+pkgname = xwobf-git
+
