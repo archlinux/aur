@@ -1,0 +1,24 @@
+# arg 1:  the new package version
+pre_install() {
+  getent group ossec >/dev/null || usr/sbin/groupadd -g 525 ossec
+  getent passwd ossec >/dev/null || usr/sbin/useradd -u 524 -g ossec -d '/var/ossec' -s /bin/false ossec
+  getent passwd ossecm >/dev/null || usr/sbin/useradd -u 525 -g ossec -d '/var/ossec' -s /bin/false ossecm
+  getent passwd ossecr >/dev/null || usr/sbin/useradd -u 526 -g ossec -d '/var/ossec' -s /bin/false ossecr
+  usr/bin/passwd -l ossec &>/dev/null
+  usr/bin/passwd -l ossecm &>/dev/null
+  usr/bin/passwd -l ossecr &>/dev/null
+}
+
+post_upgrade() {
+  pre_install $1
+}
+
+# arg 1:  the old package version
+post_remove() {
+  usr/sbin/userdel ossec &>/dev/null
+  usr/sbin/userdel ossecm &>/dev/null
+  usr/sbin/userdel ossecr &>/dev/null
+  usr/sbin/groupdel ossec &>/dev/null
+}
+
+# vim:set ts=2 sw=2 et:
