@@ -7,9 +7,7 @@ pkgdesc="Modular workflow assistant for book digitization"
 arch=('any')
 url="https://github.com/DIYBookScanner/spreads"
 license=('AGPL3')
-depends=('python2'
-         'python2-pip'
-         'libffi'
+depends=('python2-pip'
          'libjpeg-turbo'
          'python2-cffi'
          'lua52'
