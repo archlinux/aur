@@ -5,12 +5,12 @@
 
 pkgname=aoi
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D modeling and rendering studio (Art of Illusion)"
 arch=('any')
 url="http://www.artofillusion.org/"
 license=('GPL')
-depends=('java-runtime')
+depends=('java-environment')
 optdepends=('jmf:  QuickTime animation support'
             'jogl: OpenGL rendering support')
 makedepends=('gendesk')

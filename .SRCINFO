@@ -1,12 +1,12 @@
 pkgbase = aoi
 	pkgdesc = A 3D modeling and rendering studio (Art of Illusion)
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.artofillusion.org/
 	arch = any
 	license = GPL
 	makedepends = gendesk
-	depends = java-runtime
+	depends = java-environment
 	optdepends = jmf: QuickTime animation support
 	optdepends = jogl: OpenGL rendering support
 	source = http://sourceforge.net/projects/aoi/files/ArtOfIllusion/3.0.1/aoi301.zip
