@@ -1,0 +1,21 @@
+pkgbase = ocaml-ocamlgraph-git
+	pkgdesc = Graph library for OCaml
+	pkgver = 20150621
+	pkgrel = 1
+	url = https://github.com/backtracking/ocamlgraph
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = ocaml-findlib
+	makedepends = lablgtk2
+	depends = ocaml
+	provides = ocaml-ocamlgraph
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = git+https://github.com/backtracking/ocamlgraph.git
+	md5sums = SKIP
+
+pkgname = ocaml-ocamlgraph-git
+
