@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-x86-22
+	pkgdesc = Android Google APIs, API-22 (x86 System Image)
+	pkgver = 5.1_r01
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-22
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/google_apis/sysimg_x86-22_r01.zip
+	source = source.properties
+	sha1sums = 4d18a23357af30a7df9a8f5f31b7dc3f4d1f74b2
+	sha1sums = ced9d94a69d5d93f8a44f32c094fe78ccc9b1465
+
+pkgname = android-google-apis-x86-22
+
