@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/mlbviewer"
 license=('GPL2')
 depends=('libconfig' 'curl' 'python2' 'rtmpdump')
-makedepends=('subversion')
+makedepends=('git')
 optdepends=('mpv: lightweight streaming media player'
             'python2-gdata: MLB classics')
 install="${pkgname}.install"
