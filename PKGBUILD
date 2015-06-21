@@ -2,14 +2,14 @@
 # Contributor: Rudolf Olah <omouse@gmail.com>
 
 pkgname=kawa-svn
-pkgver=8512
+pkgver=8533
 pkgrel=1
 pkgdesc="Kawa is a JVM-based Scheme compiler"
 url="http://www.gnu.org/software/kawa/"
 
 conflicts=('kawa')
 provides=('kawa')
-depends=('java-runtime')
+depends=('java-environment')
 makedepends=('subversion' 'texinfo')
 arch=('i686' 'x86_64')
 license=('X11/MIT')
