@@ -1,11 +1,11 @@
 pkgbase = bibstuff
 	pkgdesc = Collection of python2 scripts and modules for interacting with BibTeX style databases of citation references
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/bibstuff/
 	arch = any
 	license = MIT
-	depends = python2-simpleparse
+	depends = python2
 	source = http://bibstuff.googlecode.com/files/bibstuff-1.0.0.tar.gz
 	md5sums = 02dfd248f265e30fc70641f65c2d0208
 

@@ -2,16 +2,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibstuff  
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of python2 scripts and modules for interacting with BibTeX style databases of citation references"
 url="http://code.google.com/p/bibstuff/"
 arch=('any')
 license=('MIT')
-depends=('python2-simpleparse')
+depends=('python2')
 source=(http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz)
 md5sums=('02dfd248f265e30fc70641f65c2d0208')
 
-build() {
+package() {
   cd $srcdir/$pkgname-$pkgver
   python2 setup.py install --root=$pkgdir
 
