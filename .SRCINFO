@@ -1,0 +1,14 @@
+pkgbase = distorm
+	pkgdesc = The ultimate disassembler (for AMD64, X86-64)
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://code.google.com/p/distorm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	source = http://distorm.googlecode.com/files/distorm3.zip
+	md5sums = 2cd594169fc96b4442056b7494c09153
+
+pkgname = distorm
+
