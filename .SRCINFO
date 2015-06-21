@@ -1,0 +1,18 @@
+pkgbase = frogdata-git
+	pkgdesc = Data for Frog. Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch.
+	pkgver = 1
+	pkgrel = 1
+	url = http://ilk.uvt.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	provides = frogdata
+	conflicts = frogdata
+	options = !libtool
+	source = git://github.com/proycon/frogdata.git
+	md5sums = SKIP
+
+pkgname = frogdata-git
+
