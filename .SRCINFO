@@ -1,0 +1,20 @@
+pkgbase = python-folia-git
+	pkgdesc = Command line tools for dealing with the FoLiA format (Format for Linguistic Annotation).
+	pkgver = 479
+	pkgrel = 2
+	url = https://proycon.github.io/folia
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-lxml
+	depends = python-pynlpl-git
+	provides = python-folia
+	conflicts = python2-folia
+	source = git://github.com/proycon/folia.git
+	md5sums = SKIP
+
+pkgname = python-folia-git
+
