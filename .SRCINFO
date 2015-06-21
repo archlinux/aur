@@ -1,6 +1,6 @@
 pkgbase = eigen3topython-git
 	pkgdesc = Bidirectional bridge between NumPy and Eigen 3.
-	pkgver = 20150226
+	pkgver = 20150611
 	pkgrel = 1
 	url = https://github.com/jorisv/Eigen3ToPython
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = eigen3topython-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = pkg-config
+	makedepends = python2-pybindgen
 	depends = python2
 	depends = eigen3
 	provides = eigen3topython
