@@ -1,30 +1,30 @@
 # Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit com>
 
-_gitname=httpie-oauth
 pkgname=python-httpie-oauth
-pkgver=5.6cf6ed4
-pkgrel=2
 pkgdesc="OAuth plugin for httpie"
-url="https://github.com/jakubroztocil/httpie-oauth"
-source=(git://github.com/jakubroztocil/httpie-oauth.git)
-depends=(python-oauthlib python-requests-oauthlib)
-makedepends=(python-distribute git)
-md5sums=('SKIP')
 license=('BSD')
+url="https://github.com/jakubroztocil/httpie-oauth"
+pkgver=5.6cf6ed4
+pkgrel=1
+
+source=("$pkgname::git://github.com/jakubroztocil/httpie-oauth.git")
+md5sums=('SKIP')
+depends=('python-oauthlib' 'python-requests-oauthlib')
+makedepends=('python-distribute' 'git')
 arch=('any')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$srcdir/$pkgname"
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	python3 setup.py build
+    cd "$srcdir/$pkgname"
+    python3 setup.py build
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	python3 setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/$pkgname"
+    python3 setup.py install --root="$pkgdir" --optimize=1
 }
