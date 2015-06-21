@@ -1,0 +1,15 @@
+pkgbase = texlive-siunitx
+	pkgdesc = Typeset chemical formulae/equations and Risk and Safety phrases in LaTeX.
+	pkgver = 2.6e
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/siunitx/
+	install = texlive-siunitx.install
+	arch = any
+	license = LPPL
+	depends = texlive-bin
+	conflicts = texlive-science
+	source = http://mirrors.ctan.org/install/macros/latex/contrib/siunitx.tds.zip
+	sha1sums = d5d0dbe320a316520ebc61197f16752eb32ebfe0
+
+pkgname = texlive-siunitx
+
