@@ -1,0 +1,17 @@
+pkgbase = hasciicam
+	pkgdesc = Renders video input as ascii (either to the terminal, to a text file, or a live webpage)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://ascii.dyne.org/
+	install = hasciicam.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = aalib
+	depends = libv4l
+	depends = ftplib
+	source = https://files.dyne.org/.xsend.php?file=hasciicam/releases/hasciicam_1.1.2.tar.gz
+	md5sums = 2c7393270e18ab913043683fa3390d8c
+
+pkgname = hasciicam
+
