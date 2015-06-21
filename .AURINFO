@@ -1,0 +1,22 @@
+pkgbase = wakfu-transition
+	pkgdesc = A turn-based tactical Massively Multiplayer Online Role-playing Game (MMORPG) written in Java/OpenGL.
+	pkgver = 1.38
+	pkgrel = 2
+	url = http://www.wakfu.com/
+	install = wakfu.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libglapi
+	depends = openal
+	depends = java-environment
+	depends = ankama-transition
+	provides = wakfu
+	conflicts = wakfu
+	source = http://dl.ak.ankama.com/games/installers/wakfu-x86.tar.gz
+	source = wakfu.sh
+	source = wakfu.desktop
+	source = transition.conf.patch
+
+pkgname = wakfu-transition
+

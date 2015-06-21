@@ -1,0 +1,12 @@
+--- Wakfu/transition.conf	2014-12-04 07:31:29.000000000 -0500
++++ Wakfu/transition.conf	2014-12-07 19:57:39.252870353 -0500
+@@ -18,6 +18,8 @@
+ }
+ 
+ 
+-update.projects *= "transition"
+ update.projects *= "game"
+ 
++# Use the DBus service, which seems to work better, instead of sudo
++plugins.enable *= "dbusservice"
++ 

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Wakfu
+GenericName=Wakfu
+Comment=An MMORPG
+Icon=wakfu
+Exec=/usr/bin/wakfu
+Categories=Game;RolePlaying;
