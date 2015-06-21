@@ -1,34 +1,34 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 # Contributor: farid abdelnour < farid at atelier-labs.org>
 
-bzrname=oggfwd
 pkgname=oggfwd-bzr
+pkgdesc="Pipes an ogg stream to an icecast server"
+license=('GPL')
+url="http://v2v.cc/~j/oggfwd/"
 pkgver=r13
 pkgrel=1
-pkgdesc="Pipes an ogg stream to an icecast server"
+
+conflicts=('oggfwd')
+provides=('oggfwd')
+
+source=("$pkgname::bzr+http://v2v.cc/~j/oggfwd")
+md5sums=('SKIP')
+depends=('libshout')
+makedepends=('bzr')
 arch=('i686' 'x86_64')
-url="http://v2v.cc/~j/oggfwd/"
-license=('GPL')
-depends=(libshout)
-makedepends=(bzr)
-conflicts=(oggfwd)
-provides=(oggfwd)
-source=(bzr+http://v2v.cc/~j/oggfwd)
-md5sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$bzrname"
-  printf "r%s" "$(bzr revno)"
+    cd "$srcdir/$pkgname"
+    printf "r%s" "$(bzr revno)"
 }
 
 build () {
-  cd "$srcdir/$bzrname"
-  make oggfwd
+    cd "$srcdir/$pkgname"
+    make oggfwd
 }
 
 package() {
-  cd "$srcdir/$bzrname"
-  install -D -m755 oggfwd   "$pkgdir/usr/bin/oggfwd"
-  install -D -m644 oggfwd.1 "$pkgdir/usr/share/man/man1/oggfwd.1"
+    cd "$srcdir/$pkgname"
+    install -D -m755 oggfwd   "$pkgdir/usr/bin/oggfwd"
+    install -D -m644 oggfwd.1 "$pkgdir/usr/share/man/man1/oggfwd.1"
 }
-

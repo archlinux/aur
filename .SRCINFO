@@ -10,7 +10,7 @@ pkgbase = oggfwd-bzr
 	depends = libshout
 	provides = oggfwd
 	conflicts = oggfwd
-	source = bzr+http://v2v.cc/~j/oggfwd
+	source = oggfwd-bzr::bzr+http://v2v.cc/~j/oggfwd
 	md5sums = SKIP
 
 pkgname = oggfwd-bzr
