@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-armv7-eabi-22
+	pkgdesc = Android Google APIs, API-22 (ARM EABI v7a System Image)
+	pkgver = 5.1_r01
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-22
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/google_apis/sysimg_arm-22_r01.zip
+	source = source.properties
+	sha1sums = 70273783312d4519f8b503cdd8be980180fb1197
+	sha1sums = 8744348c5c9f24e164535409dcae7fe2011b046c
+
+pkgname = android-google-apis-armv7-eabi-22
+
