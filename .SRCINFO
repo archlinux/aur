@@ -1,0 +1,17 @@
+pkgbase = redshift-adjust
+	pkgdesc = Script for manually adjusting the colour temperature with hotkeys
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/maandree/redshift-adjust
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	depends = redshift
+	depends = bash
+	depends = coreutils
+	source = https://github.com/maandree/redshift-adjust/archive/1.tar.gz
+	sha256sums = 1a24d0d286ec0392aa080c886831b801327d7760a9322377c9e4dc4453c4b68b
+
+pkgname = redshift-adjust
+
