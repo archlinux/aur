@@ -1,0 +1,18 @@
+pkgbase = xzoom
+	pkgdesc = a screen magnifier
+	pkgver = 0.3
+	pkgrel = 4
+	url = ftp://sunsite.unc.edu/pub/linux/libs/X/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxt
+	depends = libxext
+	source = ftp://sunsite.unc.edu/pub/linux/libs/X/xzoom-0.3.tgz
+	source = ftp://ftp.acc.umu.se/mirror/cdimage/snapshot/Debian/pool/main/x/xzoom/xzoom_0.3-23.diff.gz
+	md5sums = c6ecc5fade34cf46cbe8c00b93d7ac78
+	md5sums = d3a397e24aba7025f94e264fea0906d0
+
+pkgname = xzoom
+
