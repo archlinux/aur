@@ -7,13 +7,12 @@ pkgdesc="Mercurial Keyring Extension"
 arch=('any')
 url="http://pypi.python.org/pypi/mercurial_keyring"
 makedepends=('python2-distribute')
+depends=('python2-keyring' 'python2')
 license=('BSD')
 source=(http://pypi.python.org/packages/source/m/mercurial_keyring/mercurial_keyring-$pkgver.tar.gz)
 md5sums=('1188569abb046692bf5ad1badf6d8c89')
 
 package() {
-  depends=('python2-keyring' 'python2')
-
   cd $srcdir/mercurial_keyring-$pkgver
   python2 setup.py install --root=$pkgdir || return 1
 
