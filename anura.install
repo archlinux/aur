@@ -1,0 +1,16 @@
+post_install() {
+  chgrp users /usr/share/anura-git/modules
+  chmod g+w /usr/share/anura-git/modules
+
+  cat <<EOF
+Note: By default, anura will try to launch the frogatto module, which
+      can be installed through the frogatto-git package. Use the
+      --module= option to switch module. Modules are installed in
+      /usr/share/anura-git/modules. This directory is made user writeable
+      to allow the in-game editor's "new module" command to work.
+EOF
+}
+
+post_upgrade() {
+ post_install
+}
