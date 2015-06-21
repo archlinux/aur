@@ -1,0 +1,16 @@
+pkgbase = stiff
+	pkgdesc = is a program that converts scientific FITS images to the more popular TIFF format for illustration purposes.
+	pkgver = 2.1.3
+	pkgrel = 2
+	url = http://www.astromatic.net/software/stiff
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libtiff>=3.6
+	depends = libjpeg>=6.0
+	depends = zlib>=1.2
+	source = http://www.astromatic.net/download/stiff/stiff-2.1.3.tar.gz
+	sha1sums = a5424ab71865a5e5a7a600fa27566771a4e5e273
+
+pkgname = stiff
+
