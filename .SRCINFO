@@ -1,0 +1,17 @@
+pkgbase = tex2png
+	pkgdesc = Convert TeX and LaTeX to PNG images.
+	pkgver = 2014.12.28
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/tex2png
+	arch = any
+	license = GPL
+	depends = texlive-bin
+	source = http://xyne.archlinux.ca/projects/tex2png/src/tex2png-2014.12.28.tar.xz
+	source = http://xyne.archlinux.ca/projects/tex2png/src/tex2png-2014.12.28.tar.xz.sig
+	md5sums = 67447ccdf30cbb97adba9175e4c7043c
+	md5sums = 5aa8cbc3d3aacb22b490cc47db100081
+	sha512sums = 80c823dd1dc214ec75a13b6771a3a8c20be492c33c33c15a6afcce018fa7481114a9bf90dc093a92f2492975d3fdd57ba308dc556f08060fdd2748d206f399af
+	sha512sums = 218dae1395cbe4d9252c2c515f6a5fbe398496f433b8558e092efd4b002ca1819eac3f63734ff19b48a47ca1038ceaf81b8688495c766342e9e13ea909fe3ddf
+
+pkgname = tex2png
+
