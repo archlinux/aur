@@ -1,0 +1,19 @@
+pkgbase = python2-aplpy
+	pkgdesc = An astronomical plotting library in python
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://aplpy.sourceforge.net/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-matplotlib>=1.0.0
+	depends = python2-numpy>=1.4
+	depends = python2-pyregion
+	depends = python2-pillow
+	depends = python2-astropy
+	depends = python2-pyavm
+	source = https://pypi.python.org/packages/source/A/APLpy/APLpy-1.0.tar.gz
+	md5sums = a660dc5a5e62536e32bf61e44a5eb6c8
+
+pkgname = python2-aplpy
+
