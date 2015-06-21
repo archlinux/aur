@@ -153,13 +153,12 @@ EOF
   sed -i -r 's|(#include) *"mysql.h"|\1 <mysql/mysql.h>|' \
     modules/DaoSQL/DaoMySQL/daoMySQL.h
 
-  # FIXME https://github.com/daokoder/dao-modules/issues/41
-  for d in cgi html http json; do
-    sed -i -r "s|\"web/$d\"|\"web\"|" modules/web/$d/makefile.dao
-  done
-
-  # FIXME will be fixed/allowed in upstream soon
+  # FIXME will be fixed in upstream soon
   #sed -i -r '/regex/s|^[ #]+||' modules/makefile.dao
+  sed -i -r '/regex/s|(.*)|#\1|' modules/makefile.dao
+
+  # FIXME will be fixed in upstream soon
+  sed -i -r '/image/s|(.*)|#\1|' modules/makefile.dao
 
   # https://github.com/daokoder/DaoSDL/issues/2
   #sed -i -r 's|(#include) *"(SDL[^"]+)"|\1 <SDL2/\2>|' \
