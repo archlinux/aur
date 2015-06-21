@@ -1,0 +1,21 @@
+pkgbase = python2-pynlpl-git
+	pkgdesc = Python Natural Language Processing Library (pronounce as: pineapple). Contains various modules useful for common, and less common, NLP tasks. Includes full FoLiA library.
+	pkgver = 1324
+	pkgrel = 2
+	url = https://github.com/proycon/pynlpl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-lxml
+	depends = python2-httplib2
+	depends = python2-numpy
+	provides = python2-pynlpl
+	conflicts = python2-pynlpl
+	source = git://github.com/proycon/pynlpl.git
+	md5sums = SKIP
+
+pkgname = python2-pynlpl-git
+
