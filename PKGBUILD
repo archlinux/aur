@@ -29,4 +29,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	python2 setup.py install --prefix=/usr --root="${pkgdir}"
+	chmod 0644 $pkgdir/usr/lib/python2.7/site-packages/spreads-0.5git20150527.c802-py2.7.egg-info/* \
+		$pkgdir/usr/lib/python2.7/site-packages/spreadsplug/web/client/build/*
 }
