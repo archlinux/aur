@@ -1,0 +1,13 @@
+pkgbase = jasper-tts-festival
+	pkgdesc = Meta package to satisfy dependencies for Jasper's Festival TTS engine.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://jasperproject.github.io
+	arch = any
+	license = MIT
+	depends = jasper-voice-control
+	depends = festival
+	depends = festival-english
+
+pkgname = jasper-tts-festival
+
