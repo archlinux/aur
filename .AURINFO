@@ -1,0 +1,18 @@
+pkgbase = knockd
+	pkgdesc = A simple port-knocking daemon
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://www.zeroflux.org/projects/knock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap>=1.0.0
+	source = http://www.zeroflux.org/proj/knock/files/knock-0.7.tar.gz
+	source = knockd
+	source = knockd.logrotate
+	source = knockd.service
+	source = limits.h.patch
+	backup = etc/knockd.conf
+
+pkgname = knockd
+
