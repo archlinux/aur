@@ -10,28 +10,21 @@ arch=('any')
 url="http://jabref.sourceforge.net/"
 license=('GPL')
 depends=('java-environment' 'sh')
-makedepends=('git' 'apache-ant')
+makedepends=('git')
 provides=('jabref')
 conflicts=('jabref')
-source=('jabref::git+https://github.com/JabRef/jabref.git' 'jabref.desktop' 'jabref.sh' 'ant-classpath.patch')
+source=('jabref::git+https://github.com/JabRef/jabref.git' 'jabref.desktop' 'jabref.sh')
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
-         '9da2f8a5010e25bb04c81225309cc9e5'
-         '261ee0e47d07640f61a2de1d30f58283')
+         '9da2f8a5010e25bb04c81225309cc9e5')
 
 pkgver() {
   cd $_gitname
   git describe --tags|sed 's/-/./g'| cut -c3-
 }
 
-prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 -i "$srcdir/ant-classpath.patch"
-}
-
 build() {
   cd "$srcdir/$_gitname"
-  /etc/profile.d/apache-ant.sh
   ./gradlew antTargets.addgitinfo generateSource antTargets.jars
 }
 

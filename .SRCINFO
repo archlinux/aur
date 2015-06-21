@@ -6,7 +6,6 @@ pkgbase = jabref-git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = apache-ant
 	depends = java-environment
 	depends = sh
 	provides = jabref
@@ -14,11 +13,9 @@ pkgbase = jabref-git
 	source = jabref::git+https://github.com/JabRef/jabref.git
 	source = jabref.desktop
 	source = jabref.sh
-	source = ant-classpath.patch
 	md5sums = SKIP
 	md5sums = 5f76feb6b2f66a2ea8b52bca999a934f
 	md5sums = 9da2f8a5010e25bb04c81225309cc9e5
-	md5sums = 261ee0e47d07640f61a2de1d30f58283
 
 pkgname = jabref-git
 
