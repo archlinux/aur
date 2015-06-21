@@ -1,0 +1,18 @@
+pkgbase = dbgraph
+	pkgdesc = A tool for automatically generating UML database diagrams.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/dbgraph
+	install = dbgraph.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	depends = desktop-file-utils
+	source = dbgraph.desktop
+	source = dbgraph_0.1.2.zip::http://sourceforge.net/projects/dbgraph/files/DBGraph%20v0.1/DBGraph_0.1.2.zip/download?nowrap
+	md5sums = 6f6699fbd4aa2e734d4507ef7aebcd93
+	md5sums = 1aed54b5c23721b85a2587c3bafd7dc8
+
+pkgname = dbgraph
+

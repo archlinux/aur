@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Graphics;Database;Editor;
+Comment[en_US]=
+Comment=
+Exec=java -jar DBGraphGUI.jar
+GenericName[en_US]=
+GenericName=
+Icon=
+MimeType=
+Name[en_US]=DBGraph
+Name=DBGraph
+Path=/opt/dbgraph
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
