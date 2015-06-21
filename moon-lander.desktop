@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/moon-lander/images/win_icon.bmp
+Exec=/usr/bin/moon-lander
+Terminal=false
+StartupNotify=false
+Name=Moon-Lander
+GenericName=Game
+Comment=An addictive game of skill where you must land a space-ship on the moon at a perfect speed.
+Categories=Game;

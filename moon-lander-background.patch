@@ -1,0 +1,25 @@
+--- moon-lander-1.0.orig/moon_lander.c	2007-03-10 23:07:38.000000000 +0100
++++ moon-lander-1.0/moon_lander.c	2007-03-10 23:14:50.000000000 +0100
+@@ -197,6 +197,8 @@
+     while (!done){
+       if ( files[count] = readdir(dir) ){
+       
++	if ( files[count]->d_type & DT_DIR )
++	  continue;
+ 	//printf("I see - %d %s\n", count, files[count]->d_name);
+ 	count++;
+       }
+@@ -222,12 +224,12 @@
+ 
+   game->back_no++;
+   
+-  if (game->back_no < 2){
+-    game->back_no = 2;
++  if (game->back_no < 0){
++    game->back_no = 0;
+   }
+ 
+   if (game->back_no >= count){
+-    game->back_no = 2;
++    game->back_no = 0;
+   }

@@ -1,0 +1,23 @@
+pkgbase = moon-lander
+	pkgdesc = An addictive game of skill where you must land a space-ship on the moon at a perfect speed.
+	pkgver = 1.0
+	pkgrel = 7
+	url = http://none
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = sdl
+	depends = sdl_mixer>=1.2.10
+	depends = sdl_image
+	depends = libvorbis
+	source = http://ftp.debian.org/debian/pool/main/m/moon-lander/moon-lander_1.0.orig.tar.gz
+	source = moon-lander-background.patch
+	source = moon-lander.desktop
+	source = LICENSE
+	md5sums = 5726de9d85b9e8b60c27f2ea6428bc96
+	md5sums = d6b948632202ddcda78da4bb1fcd021a
+	md5sums = 8bba1446183337ab24b427cb92a118f8
+	md5sums = 883198142cca0450dfaab47ec26ac8c2
+
+pkgname = moon-lander
+
