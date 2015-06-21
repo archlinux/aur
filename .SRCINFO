@@ -1,0 +1,23 @@
+pkgbase = gnupg1
+	pkgdesc = GNU Privacy Guard - a PGP replacement tool
+	pkgver = 1.4.19
+	pkgrel = 4
+	url = http://www.gnupg.org/
+	install = gnupg.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	depends = zlib
+	depends = bzip2
+	depends = libldap>=2.4.18
+	depends = libusb-compat
+	depends = curl>=7.16.2
+	depends = readline>=6.0.00
+	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.19.tar.bz2
+	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.19.tar.bz2.sig
+	sha1sums = 5503f7faa0a0e84450838706a67621546241ca50
+	sha1sums = SKIP
+
+pkgname = gnupg1
+
