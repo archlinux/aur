@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabxc16-bin
 	pkgdesc = Microchip's MPLAB XC16 C compiler toolchain for their dsPIC and PIC24 microcontroller families
 	pkgver = 1.24
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.microchip.com/xc16
 	install = microchip-mplabxc16-bin.install
 	arch = i686

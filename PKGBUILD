@@ -3,7 +3,7 @@
 _number_of_bits=16
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.24
-pkgrel=6
+pkgrel=7
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their dsPIC and PIC24 microcontroller families"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
