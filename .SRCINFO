@@ -1,0 +1,14 @@
+pkgbase = ds9-bin
+	pkgdesc = SAOImage DS9: Astronomical Data Visualization Application
+	pkgver = 7.3.2
+	pkgrel = 1
+	url = http://hea-www.harvard.edu/RD/ds9/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	provides = ds9
+	options = !strip
+	source = http://hea-www.harvard.edu/RD/ds9/download/linux/ds9.linux.7.3.2.tar.gz
+
+pkgname = ds9-bin
+
