@@ -1,0 +1,20 @@
+pkgbase = oglft
+	pkgdesc = OpenGL-FreeType Library
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://oglft.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	makedepends = glut
+	depends = qt3
+	depends = libgl
+	depends = gle-te
+	depends = freetype2
+	options = !libtool
+	source = http://downloads.sourceforge.net/oglft/oglft-0.9.tar.gz
+	md5sums = c3a8e0993f98edb7611c20f46631d2a6
+
+pkgname = oglft
+
