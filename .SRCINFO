@@ -1,0 +1,17 @@
+pkgbase = python3-xynexdg
+	pkgdesc = Implementation of various freedesktop.org standards, for internal use in Xyne's modules.
+	pkgver = 2012.12.24.1
+	pkgrel = 4
+	url = http://xyne.archlinux.ca/projects/python3-xynexdg
+	arch = any
+	license = GPL
+	depends = python3
+	source = http://xyne.archlinux.ca/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz.sig
+	md5sums = a6ddefdec93966a105ad4f02440ca32f
+	md5sums = d42588a485c7853efdf2305966883f98
+	sha512sums = 6653de168af4252d1be8e67b6daaa1c0ba91bb6de080f106392d298bfa702e72aa3d78b68bd833a0f6d825d8b21f9df009a00102289d5a0cccc996857c36509c
+	sha512sums = 7e8cc7a8441d2e1102ff29569b7227153dd9d1c20d40b34eb15e0c200e2163b61d0d9ea7c4e8931376a31e4d114ba01627c377fe15fb57e0010cd2ab1451cc6a
+
+pkgname = python3-xynexdg
+
