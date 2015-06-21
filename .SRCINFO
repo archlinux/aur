@@ -1,0 +1,19 @@
+pkgbase = gopenvpn-git
+	pkgdesc = gopenvpn is a simple graphical front-end for OpenVPN, the open source VPN solution.
+	pkgver = svn.migration.r12.gb4192eb
+	pkgrel = 4
+	url = http://gopenvpn.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libglade
+	depends = libgnome-keyring
+	depends = gtk2
+	depends = openvpn
+	optdepends = gnome-keyring: handle credentials
+	source = gopenvpn-git::git://gopenvpn.git.sourceforge.net/gitroot/gopenvpn/gopenvpn.git
+	md5sums = SKIP
+
+pkgname = gopenvpn-git
+
