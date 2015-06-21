@@ -1,6 +1,6 @@
 post_install() {
    echo '
-This package provides a file: /etc/profile.d/xc16-toolchain-bin.sh
+This package provides a file: /etc/profile.d/microchip-mplabxc16-bin.sh
 It will add the toolchain binaries to the PATH variable for every user.
 It also defines XC16_TOOLCHAIN_ROOT pointing to the toolchain install dir.
 Log out and log back in to update your environment varibles.
