@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-22
+	pkgdesc = Android Google APIs, API-22
+	pkgver = 5.1_r01
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-22
+	options = !strip
+	source = http://dl.google.com/android/repository/google_apis-22_r01.zip
+	source = source.properties
+	sha1sums = 5def0f42160cba8acff51b9c0c7e8be313de84f5
+	sha1sums = 67cb1b75f302fd2442b7c4e8f30394f3457fd441
+
+pkgname = android-google-apis-22
+
