@@ -1,0 +1,21 @@
+pkgbase = latin-words
+	pkgdesc = Latin-english-latin intelligent dictionary and latin text analyser
+	pkgver = 1.97FC
+	pkgrel = 4
+	url = http://users.erols.com/whitaker/words.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc-ada
+	makedepends = unzip
+	provides = wordslatin
+	conflicts = wordslatin
+	source = http://archives.nd.edu/whitaker/wordsall.zip
+	source = words.sh
+	source = license.txt
+	md5sums = e70ae2112bb7c7c491c3ec7a57af779c
+	md5sums = a8a9a0b6dd56aacaeefaa7e1bd8077c8
+	md5sums = 43cc5e098f51e02401d2a140cb8a6796
+
+pkgname = latin-words
+
