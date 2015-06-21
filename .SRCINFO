@@ -1,0 +1,35 @@
+pkgbase = udevil-git
+	pkgdesc = Mount without password - includes devmon - git branch
+	pkgver = 20131209.192
+	pkgrel = 1
+	url = http://ignorantguru.github.com/udevil/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gettext
+	depends = udev
+	depends = glib2
+	optdepends = nfs-utils: mount nfs shares
+	optdepends = sshfs: mount sftp shares
+	optdepends = curlftpfs: mount ftp shares
+	optdepends = cifs-utils: mount samba shares
+	optdepends = davfs2: mount WebDAV shares
+	optdepends = eject: eject via devmon
+	optdepends = spacefm: devmon popups
+	optdepends = zenity: devmon popups
+	optdepends = pmount: devmon mount without suid udevil
+	optdepends = udisks: devmon mount without suid udevil
+	optdepends = udisks2: devmon mount without suid udevil
+	provides = udevil
+	provides = devmon
+	conflicts = udevil
+	conflicts = devmon
+	conflicts = devmon-git
+	backup = etc/udevil/udevil.conf
+	backup = etc/conf.d/devmon
+	source = git://github.com/IgnorantGuru/udevil.git
+	md5sums = SKIP
+
+pkgname = udevil-git
+
