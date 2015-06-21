@@ -1,5 +1,5 @@
-pkgbase = ftb-launcher
-	pkgdesc = The FTB Minecraft mod pack manager and launcher.
+pkgbase = ftblauncher
+	pkgdesc = The Feed The Beast Minecraft mod pack manager and launcher.
 	pkgver = latest
 	pkgrel = 1
 	url = http://www.feed-the-beast.com/
@@ -23,5 +23,5 @@ pkgbase = ftb-launcher
 	md5sums = 8b65032bcc390af97255244c0558c780
 	md5sums = dbff5a2b542fa58854455bf1a0b94b83
 
-pkgname = ftb-launcher
+pkgname = ftblauncher
 
