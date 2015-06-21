@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Frogatto (development build)
+GenericName=Old-school 2D platformer
+Comment=Old-school 2D platformer
+Exec=/usr/bin/frogatto-git
+Terminal=false
+MultipleArgs=false
+Type=Application
+Icon=/usr/share/anura-git/modules/frogatto/images/window-icon.png
+Categories=Game;ArcadeGame

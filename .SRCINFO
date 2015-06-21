@@ -1,0 +1,19 @@
+pkgbase = frogatto-git
+	pkgdesc = An action-adventure game, starring a certain quixotic frog.
+	pkgver = 1.2.4474.g4185880
+	pkgrel = 2
+	epoch = 1
+	url = http://www.frogatto.com/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = anura-git
+	source = git+https://github.com/frogatto/frogatto.git
+	source = frogatto-git.sh
+	source = frogatto-git.desktop
+	md5sums = SKIP
+	md5sums = c3faef878e21beccf0e4f7b26b4eb1f6
+	md5sums = 935c3d8662a92b9bc775da36cf1ef059
+
+pkgname = frogatto-git
+
