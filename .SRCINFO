@@ -1,0 +1,31 @@
+pkgbase = stone-soup-git
+	pkgdesc = An open-source, single-player, role-playing roguelike game of exploration and treasure-hunting
+	pkgver = 0.13.a0.2887.gd743108
+	pkgrel = 1
+	url = http://crawl.develz.org/
+	arch = i686
+	arch = x86_64
+	arch = ppc
+	license = custom
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	depends = lua51
+	depends = ncurses
+	depends = sdl_image
+	depends = sqlite
+	depends = glu
+	depends = freetype2
+	depends = ttf-dejavu
+	conflicts = crawl
+	conflicts = stone-soup
+	conflicts = stone-soup-tile
+	backup = usr/share/stone-soup/data/settings/tiles_options.txt
+	backup = usr/share/stone-soup/data/settings/init.txt
+	source = stone-soup.desktop
+	source = git://gitorious.org/crawl/crawl.git
+	md5sums = 98be780cddb2a0915bbab15ad93644f1
+	md5sums = SKIP
+
+pkgname = stone-soup-git
+

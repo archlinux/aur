@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stone Soup
+GenericName=Crawl Stone Soup
+Comment=An open-source, single-player, role-playing roguelike game of exploration and treasure-hunting
+Icon=stone-soup.png
+Exec=/usr/bin/crawl-tiles
+Categories=Game;ArcadeGame
+
