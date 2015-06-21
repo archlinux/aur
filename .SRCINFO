@@ -1,6 +1,6 @@
 pkgbase = php7
 	pkgver = 7.0.0alpha1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -46,16 +46,22 @@ pkgname = php7
 	depends = libxml2
 	depends = curl
 	depends = libzip
+	provides = php
+	conflicts = php
 	backup = etc/php/php.ini
 
 pkgname = php7-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php
+	provides = php-cgi
+	conflicts = php-cgi
 
 pkgname = php7-apache
 	pkgdesc = Apache SAPI for PHP
 	depends = php
 	depends = apache
+	provides = php-apache
+	conflicts = php-apache
 	backup = etc/httpd/conf/extra/php7_module.conf
 
 pkgname = php7-fpm
@@ -63,74 +69,104 @@ pkgname = php7-fpm
 	install = php-fpm.install
 	depends = php
 	depends = systemd
+	provides = php-fpm
+	conflicts = php-fpm
 	backup = etc/php/php-fpm.conf
 
 pkgname = php7-embed
 	pkgdesc = Embedded PHP SAPI library
 	depends = php
+	provides = php-embed
+	conflicts = php-embed
 
 pkgname = php7-phpdbg
 	pkgdesc = Interactive PHP debugger
 	depends = php
+	provides = php-phpdbg
+	conflicts = php-phpdbg
 
 pkgname = php7-enchant
 	pkgdesc = enchant module for PHP
 	depends = php
 	depends = enchant
+	provides = php-enchant
+	conflicts = php-enchant
 
 pkgname = php7-gd
 	pkgdesc = gd module for PHP
 	depends = php
 	depends = gd
+	provides = php-gd
+	conflicts = php-gd
 
 pkgname = php7-intl
 	pkgdesc = intl module for PHP
 	depends = php
 	depends = icu
+	provides = php-intl
+	conflicts = php-intl
 
 pkgname = php7-ldap
 	pkgdesc = ldap module for PHP
 	depends = php
 	depends = libldap
+	provides = php-ldap
+	conflicts = php-ldap
 
 pkgname = php7-mcrypt
 	pkgdesc = mcrypt module for PHP
 	depends = php
 	depends = libmcrypt
 	depends = libltdl
+	provides = php-mcrypt
+	conflicts = php-mcrypt
 
 pkgname = php7-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php
 	depends = unixodbc
+	provides = php-odbc
+	conflicts = php-odbc
 
 pkgname = php7-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php
 	depends = postgresql-libs
+	provides = php-pgsql
+	conflicts = php-pgsql
 
 pkgname = php7-pspell
 	pkgdesc = pspell module for PHP
 	depends = php
 	depends = aspell
+	provides = php-pspell
+	conflicts = php-pspell
 
 pkgname = php7-snmp
 	pkgdesc = snmp module for PHP
 	depends = php
 	depends = net-snmp
+	provides = php-snmp
+	conflicts = php-snmp
 
 pkgname = php7-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php
 	depends = sqlite
+	provides = php-sqlite
+	conflicts = php-sqlite
 
 pkgname = php7-tidy
 	pkgdesc = tidy module for PHP
 	depends = php
 	depends = tidyhtml
+	provides = php-tidy
+	conflicts = php-tidy
 
 pkgname = php7-xsl
 	pkgdesc = xsl module for PHP
 	depends = php
 	depends = libxslt
+	provides = php-xsl
+	conflicts = php-xsl
 

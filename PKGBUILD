@@ -20,7 +20,7 @@ pkgname=('php7'
          'php7-xsl')
 
 pkgver=7.0.0alpha1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -72,6 +72,7 @@ build() {
 		--enable-gd-native-ttf \
 		--enable-intl=shared \
 		--enable-mbstring \
+		--enable-mysqlnd \
 		--enable-opcache \
 		--enable-phar=shared \
 		--enable-posix=shared \
@@ -105,7 +106,6 @@ build() {
 		--with-mcrypt=shared \
 		--with-mhash \
 		--with-mysql-sock=/run/mysqld/mysqld.sock \
-		--with-mysql=shared,mysqlnd \
 		--with-mysqli=shared,mysqlnd \
 		--with-openssl=shared \
 		--with-pcre-regex=/usr \
@@ -207,7 +207,8 @@ package_php7() {
 	pkgdesc='An HTML-embedded scripting language'
 	depends=('pcre' 'libxml2' 'curl' 'libzip')
 	backup=('etc/php/php.ini')
-
+    provides=('php')
+    conflicts=('php')
 	cd ${srcdir}/build-php
 	make -j1 INSTALL_ROOT=${pkgdir} install
 	install -d -m755 ${pkgdir}/usr/share/pear
@@ -228,6 +229,8 @@ package_php7() {
 package_php7-cgi() {
 	pkgdesc='CGI and FCGI SAPI for PHP'
 	depends=('php')
+    provides=('php-cgi')
+    conflicts=('php-cgi')
 
 	install -D -m755 ${srcdir}/build-cgi/sapi/cgi/php-cgi ${pkgdir}/usr/bin/php-cgi
 }
@@ -236,6 +239,8 @@ package_php7-apache() {
 	pkgdesc='Apache SAPI for PHP'
 	depends=('php' 'apache')
 	backup=('etc/httpd/conf/extra/php7_module.conf')
+    provides=('php-apache')
+    conflicts=('php-apache')
 
 	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/libphp7.so
 	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/php7_module.conf
@@ -246,6 +251,8 @@ package_php7-fpm() {
 	depends=('php' 'systemd')
 	backup=('etc/php/php-fpm.conf')
 	install='php-fpm.install'
+    provides=('php-fpm')
+    conflicts=('php-fpm')
 
 	install -D -m755 ${srcdir}/build-fpm/sapi/fpm/php-fpm ${pkgdir}/usr/bin/php-fpm
 	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.8 ${pkgdir}/usr/share/man/man8/php-fpm.8
@@ -258,6 +265,8 @@ package_php7-fpm() {
 package_php7-embed() {
 	pkgdesc='Embedded PHP SAPI library'
 	depends=('php')
+    provides=('php-embed')
+    conflicts=('php-embed')
 
 	install -D -m755 ${srcdir}/build-embed/libs/libphp7.so ${pkgdir}/usr/lib/libphp7.so
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/php/sapi/embed/php_embed.h
@@ -266,6 +275,8 @@ package_php7-embed() {
 package_php7-phpdbg() {
 	pkgdesc='Interactive PHP debugger'
 	depends=('php')
+    provides=('php-phpdbg')
+    conflicts=('php-phpdbg')
 
 	install -D -m755 ${srcdir}/build-phpdbg/sapi/phpdbg/phpdbg ${pkgdir}/usr/bin/phpdbg
 }
@@ -273,6 +284,8 @@ package_php7-phpdbg() {
 package_php7-enchant() {
 	pkgdesc='enchant module for PHP'
 	depends=('php' 'enchant')
+    provides=('php-enchant')
+    conflicts=('php-enchant')
 
 	install -D -m755 ${srcdir}/build-php/modules/enchant.so ${pkgdir}/usr/lib/php/modules/enchant.so
 }
@@ -280,6 +293,8 @@ package_php7-enchant() {
 package_php7-gd() {
 	pkgdesc='gd module for PHP'
 	depends=('php' 'gd')
+    provides=('php-gd')
+    conflicts=('php-gd')
 
 	install -D -m755 ${srcdir}/build-php/modules/gd.so ${pkgdir}/usr/lib/php/modules/gd.so
 }
@@ -287,6 +302,8 @@ package_php7-gd() {
 package_php7-intl() {
 	pkgdesc='intl module for PHP'
 	depends=('php' 'icu')
+    provides=('php-intl')
+    conflicts=('php-intl')
 
 	install -D -m755 ${srcdir}/build-php/modules/intl.so ${pkgdir}/usr/lib/php/modules/intl.so
 }
@@ -294,6 +311,8 @@ package_php7-intl() {
 package_php7-ldap() {
 	pkgdesc='ldap module for PHP'
 	depends=('php' 'libldap')
+    provides=('php-ldap')
+    conflicts=('php-ldap')
 
 	install -D -m755 ${srcdir}/build-php/modules/ldap.so ${pkgdir}/usr/lib/php/modules/ldap.so
 }
@@ -301,6 +320,8 @@ package_php7-ldap() {
 package_php7-mcrypt() {
 	pkgdesc='mcrypt module for PHP'
 	depends=('php' 'libmcrypt' 'libltdl')
+    provides=('php-mcrypt')
+    conflicts=('php-mcrypt')
 
 	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/usr/lib/php/modules/mcrypt.so
 }
@@ -309,6 +330,8 @@ package_php7-mcrypt() {
 package_php7-odbc() {
 	pkgdesc='ODBC modules for PHP'
 	depends=('php' 'unixodbc')
+    provides=('php-odbc')
+    conflicts=('php-odbc')
 
 	install -D -m755 ${srcdir}/build-php/modules/odbc.so ${pkgdir}/usr/lib/php/modules/odbc.so
 	install -D -m755 ${srcdir}/build-php/modules/pdo_odbc.so ${pkgdir}/usr/lib/php/modules/pdo_odbc.so
@@ -317,6 +340,8 @@ package_php7-odbc() {
 package_php7-pgsql() {
 	pkgdesc='PostgreSQL modules for PHP'
 	depends=('php' 'postgresql-libs')
+    provides=('php-pgsql')
+    conflicts=('php-pgsql')
 
 	install -D -m755 ${srcdir}/build-php/modules/pgsql.so ${pkgdir}/usr/lib/php/modules/pgsql.so
 	install -D -m755 ${srcdir}/build-php/modules/pdo_pgsql.so ${pkgdir}/usr/lib/php/modules/pdo_pgsql.so
@@ -325,6 +350,8 @@ package_php7-pgsql() {
 package_php7-pspell() {
 	pkgdesc='pspell module for PHP'
 	depends=('php' 'aspell')
+    provides=('php-pspell')
+    conflicts=('php-pspell')
 
 	install -D -m755 ${srcdir}/build-php/modules/pspell.so ${pkgdir}/usr/lib/php/modules/pspell.so
 }
@@ -332,6 +359,8 @@ package_php7-pspell() {
 package_php7-snmp() {
 	pkgdesc='snmp module for PHP'
 	depends=('php' 'net-snmp')
+    provides=('php-snmp')
+    conflicts=('php-snmp')
 
 	install -D -m755 ${srcdir}/build-php/modules/snmp.so ${pkgdir}/usr/lib/php/modules/snmp.so
 }
@@ -339,6 +368,8 @@ package_php7-snmp() {
 package_php7-sqlite() {
 	pkgdesc='sqlite module for PHP'
 	depends=('php' 'sqlite')
+    provides=('php-sqlite')
+    conflicts=('php-sqlite')
 
 	install -D -m755 ${srcdir}/build-php/modules/sqlite3.so ${pkgdir}/usr/lib/php/modules/sqlite3.so
 	install -D -m755 ${srcdir}/build-php/modules/pdo_sqlite.so ${pkgdir}/usr/lib/php/modules/pdo_sqlite.so
@@ -347,6 +378,8 @@ package_php7-sqlite() {
 package_php7-tidy() {
 	pkgdesc='tidy module for PHP'
 	depends=('php' 'tidyhtml')
+    provides=('php-tidy')
+    conflicts=('php-tidy')
 
 	install -D -m755 ${srcdir}/build-php/modules/tidy.so ${pkgdir}/usr/lib/php/modules/tidy.so
 }
@@ -354,6 +387,8 @@ package_php7-tidy() {
 package_php7-xsl() {
 	pkgdesc='xsl module for PHP'
 	depends=('php' 'libxslt')
+    provides=('php-xsl')
+    conflicts=('php-xsl')
 
 	install -D -m755 ${srcdir}/build-php/modules/xsl.so ${pkgdir}/usr/lib/php/modules/xsl.so
 }
