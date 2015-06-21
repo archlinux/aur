@@ -1,0 +1,17 @@
+pkgbase = jasper-plugins
+	pkgdesc = Meta package to satisfy dependencies for Jasper's standard plugins.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://jasperproject.github.io
+	arch = any
+	license = MIT
+	depends = jasper-voice-control
+	depends = python2-beautifulsoup4
+	depends = python2-semantic
+	depends = python2-facebook-sdk
+	depends = python2-feedparser
+	depends = python2-dateutil
+	depends = python2-mpd
+
+pkgname = jasper-plugins
+
