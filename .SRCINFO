@@ -1,0 +1,17 @@
+pkgbase = sigueme
+	pkgdesc = Application for enhancing visual focus on people with autism spectrum disorder (warning: only in spanish language).
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.proyectosigueme.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = java-runtime-headless
+	depends = vlc
+	provides = sigueme
+	conflicts = sigueme
+	source = http://www.proyectosigueme.com/wp-content/uploads/2013/02/Sigueme.deb
+	md5sums = be82c63a48ecc0366c2b0a7bf653f59a
+
+pkgname = sigueme
+
