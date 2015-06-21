@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Peazip
+Comment=Archiver utility
+Exec=peazip
+Icon=peazip
+Terminal=false
+StartupNotify=false
+Categories=Application;Utility;

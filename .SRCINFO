@@ -1,0 +1,22 @@
+pkgbase = peazip-qt-build
+	pkgdesc = Free cross-platform file archiver (compiles from source)
+	pkgver = 5.5.3
+	pkgrel = 2
+	url = http://peazip.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = lazarus-qt
+	makedepends = icoutils
+	depends = qt4pas
+	provides = peazip-qt
+	conflicts = peazip-qt
+	source = http://sourceforge.net/projects/peazip/files/5.5.3/peazip-5.5.3.src.zip
+	source = peazip.desktop
+	source = altconf.txt
+	md5sums = 58c518ebc8c4020d0e3ec1778faa6fd7
+	md5sums = 6fef20588a593e13c218cc9863a4fd5c
+	md5sums = d9ba7d703137b28770d1aa64d8ea6a28
+
+pkgname = peazip-qt-build
+
