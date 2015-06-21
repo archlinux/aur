@@ -1,0 +1,17 @@
+pkgbase = rezerwar
+	pkgdesc = Puzzle game that could be described as a mix of a known tetromino game and the average pipe game
+	pkgver = 0.4.2
+	pkgrel = 3
+	url = http://tamentis.com/projects/rezerwar/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	depends = sdl_mixer
+	source = http://tamentis.com/projects/rezerwar/files/rezerwar-0.4.2.tar.gz
+	source = rezerwar.desktop
+	md5sums = 42018abe251e45ab8cc30133cde61ff8
+	md5sums = a9afa64e7b067d89f65c2d5fe8e4b200
+
+pkgname = rezerwar
+
