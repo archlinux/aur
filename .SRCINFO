@@ -1,0 +1,18 @@
+pkgbase = jpdftweak
+	pkgdesc = A Swiss Army Knife GUI application for PDF documents
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://jpdftweak.sourceforge.net/
+	install = jpdftweak.install
+	arch = any
+	license = AGPL3
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/jpdftweak/jpdftweak-compact-1.1.zip
+	source = jpdftweak.sh
+	source = jpdftweak.desktop
+	md5sums = a497589cc75b47e8f8b3e7cf22343a31
+	md5sums = 8b129e219ecd593b4f8a178f2e275d23
+	md5sums = 8c62361be9a7de12f86593b7e7111c22
+
+pkgname = jpdftweak
+
