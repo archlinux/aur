@@ -1,17 +1,18 @@
 # Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=xqf-git
-pkgver=1.0.6.2.r33.gae6a628
+pkgver=1.0.6.2.r132.gb96ceee
 pkgrel=1
 pkgdesc="A game server browser and launcher for Unix/X11 for many popular games (a qstat frontend)"
 url="https://xqf.github.io/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qstat' 'gtk2' 'geoip')
+depends=('qstat' 'gtk2' 'geoip' 'minizip')
 makedepends=('git' 'intltool')
 replaces=('xqf-cvs' 'xqf-svn')
 conflicts=('xqf' 'xqf-cvs' 'xqf-svn')
 provides=('xqf')
+install=xqf-git.install
 source=('xqf::git+https://github.com/XQF/xqf.git')
 sha256sums=('SKIP')
 
@@ -23,8 +24,7 @@ pkgver() {
 build() {
     cd "${srcdir}/xqf"
 
-    ./autogen.sh --prefix=/usr
-    ./configure --prefix=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
@@ -32,7 +32,4 @@ package() {
     cd "${srcdir}/xqf"
 
     make DESTDIR="${pkgdir}" install
-
-    # Remove empty directory
-    rm -r "${pkgdir}/usr/libexec"
 }
