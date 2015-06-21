@@ -9,7 +9,7 @@ pkgdesc="Fast, isolated development environments using Docker"
 depends=('python2-docopt' 'python2-yaml' 'python2-requests' 'python2-pip'
          'python2-six' 'python2-texttable' 'python2-websocket-client'
          'python2-docker-py>=1.2.3' 'python2-dockerpty>=0.3.4' 'docker' 'python2-certifi')
-arch=('x86_64' 'i686')
+arch=('any')
 source=("https://github.com/docker/compose/archive/$pkgver.tar.gz"
         "remove-requires-upper-bound.patch")
 url="https://www.docker.com/"
