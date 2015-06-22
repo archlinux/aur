@@ -1,0 +1,13 @@
+pkgbase = hyphen-ru
+	pkgdesc = Russian hyphenation rules
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://wiki.services.openoffice.org/wiki/Dictionaries
+	arch = any
+	license = LGPL
+	optdepends = hyphen: offers hyphenation library functions
+	source = http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/hyph_ru_RU.zip
+	md5sums = f8a8b8a368bc7394b5a4060082c44bb4
+
+pkgname = hyphen-ru
+
