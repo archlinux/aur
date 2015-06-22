@@ -1,0 +1,17 @@
+pkgbase = dogtail-git
+	pkgdesc = GUI test tool and automation framework
+	pkgver = 0.8.3.512.b1ea9fb
+	pkgrel = 1
+	url = https://fedorahosted.org/dogtail/
+	install = dogtail.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = hicolor-icon-theme
+	conflicts = dogtail
+	replaces = dogtail
+	source = git+https://git.fedorahosted.org/git/dogtail.git
+	sha256sums = SKIP
+
+pkgname = dogtail-git
+
