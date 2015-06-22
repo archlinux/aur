@@ -1,0 +1,19 @@
+pkgbase = sphinx-svn
+	pkgdesc = Free open-source SQL full-text search engine (SVN version, with libsphinxclient, with systemd support)
+	pkgver = 5125
+	pkgrel = 1
+	url = http://www.sphinxsearch.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = fakeroot
+	depends = libmysqlclient
+	provides = sphinx
+	conflicts = sphinx
+	options = !makeflags
+	source = sphinx.service
+	sha256sums = 847218ba5cd0b8f5a3b0d851352ffca1085229bfdf2779cbe2eff5e5eef99351
+
+pkgname = sphinx-svn
+
