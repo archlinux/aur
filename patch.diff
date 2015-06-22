@@ -1,0 +1,64 @@
+
+# HG changeset patch
+# User Michael Hines <michael.hines@yale.edu>
+# Date 1398115465 14400
+# Node ID dce1de58303d5f733ca4fa6701083455ce0d10c8
+# Parent  840b0bd992336e3bc047c829a18a5e609f71de56
+Python 3.4 complained about a prototype.
+
+diff -r 840b0bd99233 -r dce1de58303d src/nrnpython/nrnpython.cpp
+--- a/src/nrnpython/nrnpython.cpp	Mon Apr 21 13:33:19 2014 -0400
++++ b/src/nrnpython/nrnpython.cpp	Mon Apr 21 17:24:25 2014 -0400
+@@ -17,11 +17,11 @@
+ extern int nrnpy_nositeflag;
+ extern char* hoc_ctp;
+ extern FILE* hoc_fin;
+-extern char* hoc_promptstr;
++extern const char* hoc_promptstr;
+ extern char* neuronhome_forward();
+ //extern char*(*PyOS_ReadlineFunctionPointer)(FILE*, FILE*, char*);
+ #if ((PY_MAJOR_VERSION >= 3) || (PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION > 2))
+-static char* nrnpython_getline(FILE*, FILE*, char*);
++static char* nrnpython_getline(FILE*, FILE*, const char*);
+ #else
+ static char* nrnpython_getline(char*);
+ #endif
+@@ -207,7 +207,7 @@
+ }
+ 
+ #if ((PY_MAJOR_VERSION >= 3) || (PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION > 2))
+-static char* nrnpython_getline(FILE*, FILE*, char* prompt) {
++static char* nrnpython_getline(FILE*, FILE*, const char* prompt) {
+ #else
+ static char* nrnpython_getline(char* prompt) {
+ #endif
+diff -r 840b0bd99233 -r dce1de58303d src/oc/hoc.c
+--- a/src/oc/hoc.c	Mon Apr 21 13:33:19 2014 -0400
++++ b/src/oc/hoc.c	Mon Apr 21 17:24:25 2014 -0400
+@@ -122,6 +122,7 @@
+ #endif
+ 
+ #if READLINE
++extern char* readline(const char* prompt);
+ extern void rl_deprep_terminal(void);
+ extern void add_history(const char*);
+ #endif
+@@ -146,7 +147,7 @@
+ #define CBUFSIZE 512
+ HocStr* hoc_tmpbuf;
+ HocStr* hoc_cbufstr;
+-char* hoc_promptstr;
++const char* hoc_promptstr;
+ static CHAR	*cbuf;
+ CHAR	*ctp;
+ int hoc_ictp;
+@@ -1692,7 +1693,7 @@
+ 		}
+ 	}else{
+ #if READLINE
+-		if (nrn_fw_eq(fin, stdin) && nrn_istty_) { char *line, *readline(); int n;
++		if (nrn_fw_eq(fin, stdin) && nrn_istty_) { char *line; int n;
+ #if INTERVIEWS
+ #ifdef MINGW
+ IFGUI
+
