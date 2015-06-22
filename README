@@ -1,0 +1,5 @@
+This is the version of foomatic-filters from the original source
+openprinting.org.  The version of foomatic-rip in cups-filters is
+modified for use solely with cups.  This version is here to support
+the lprng package in the AUR.  The package is renamed
+"foomatic-filters-lprng" to avoid conflict with cups-filters.

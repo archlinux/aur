@@ -1,0 +1,19 @@
+pkgbase = foomatic-filters-lprng
+	pkgdesc = Universal print filter, lprng version
+	pkgver = 4.0.17
+	pkgrel = 1
+	url = http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/foomatic
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libdbus
+	optdepends = lprng: lprng printing system
+	optdepends = hplip: drivers for HP printers
+	conflicts = cups
+	source = http://www.openprinting.org/download/foomatic/foomatic-filters-4.0.17.tar.gz
+	source = README
+	md5sums = b05f5dcbfe359f198eef3df5b283d896
+	md5sums = 87ddcfc880342ff1f8414a2eda5d8b17
+
+pkgname = foomatic-filters-lprng
+
