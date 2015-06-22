@@ -1,0 +1,14 @@
+pkgbase = django-threaded-multihost-hg
+	pkgdesc = Provides multi-host utilities to Django projects by using threadlocals, middleware and simple utilities. Using the middleware provided, you can easily provide multi-site awareness to any project.
+	pkgver = 20101010
+	pkgrel = 1
+	url = http://bitbucket.org/bkroeze/django-threaded-multihost
+	arch = any
+	license = GPL
+	depends = python
+	depends = django
+	provides = django-threaded-multihost
+	conflicts = django-threaded-multihost
+
+pkgname = django-threaded-multihost-hg
+
