@@ -1,0 +1,13 @@
+pkgbase = shift-shift
+	pkgdesc = Simple Xorg keyboard switcher for my needs. Lshift for group1. Rshift for group2.
+	pkgver = 7.25aca6e
+	pkgrel = 1
+	url = https://github.com/grafov/shift-shift
+	arch = any
+	license = GPL
+	makedepends = go
+	source = git://github.com/grafov/shift-shift.git
+	md5sums = SKIP
+
+pkgname = shift-shift
+
