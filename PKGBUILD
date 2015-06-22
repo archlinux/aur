@@ -3,8 +3,8 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.9.1
-_pkgver=2_9_1
+pkgver=2.9.2
+_pkgver=2_9_2
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=('visit')
 source=("${_url}/svn/${_pkgname}/trunk/releases/${pkgver}/build_${_pkgname}${_pkgver}"
         "visit.sh")
 
-sha256sums=('21d5caffe4429dfe4865b8c45ff1f0718f8bca033766a6e35e1e2b5c7b109477'
+sha256sums=('4b1d396b41923b3b2c1b2da2524cb424f0166d9898d04f367f52a0426ae7a688'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da')
 
 prepare(){
