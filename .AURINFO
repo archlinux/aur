@@ -1,0 +1,26 @@
+pkgbase = dangerdeep-svn
+	pkgdesc = submarine simulator,svn version
+	pkgver = 3341
+	pkgrel = 2
+	url = http://dangerdeep.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = fftw
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = mesa
+	source = dangerdeep.png
+	source = dangerdeep.desktop
+	source = SConstruct
+	source = matrix3.h
+	source = subsim.cpp
+	md5sums = 969e717f644d67083f482666b50a06d6
+	md5sums = baead4d3ea86004547269063f0f973d5
+	md5sums = 9c08dc3cabd8fdfc81e011d5112c519c
+	md5sums = e439379b37332c1be7c065ab457c2454
+	md5sums = ab299e4c90daf055d22e95c71aa8d9b2
+
+pkgname = dangerdeep-svn
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Danger from the deep
+Name[en_US]=Danger from the deep
+GenericName=Dangerdeep
+Comment=A submarine simulator
+Exec=dangerdeep
+Icon=/usr/share/pixmaps/dangerdeep.png
+Type=Application
+Categories=Game;
+Version=1.0
