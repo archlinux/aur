@@ -1,0 +1,13 @@
+pkgbase = archlinux-static-ip
+	pkgdesc = Make ArchLinux ready for a static IP setup
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/malte70/archlinux-static-ip
+	arch = any
+	license = MIT
+	depends = bash
+	source = archlinux-static-ip-0.0.1.tar.gz::https://github.com/malte70/archlinux-static-ip/archive/v0.0.1.tar.gz
+	sha256sums = 4c6066b6b1ee20ad06504acd995193253e1d6feebb5a1c50b49cb7060b2741d7
+
+pkgname = archlinux-static-ip
+
