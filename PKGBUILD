@@ -8,7 +8,8 @@ pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
 license=("GPL2")
-depends=("sdl2" "libpng" "openal" "mesa" "glu" "gettext" "freetype2" "hicolor-icon-theme" "xdg-utils")   # 'glib2' provided by 'gettext', and 'zlib' by 'libpng'
+depends=("sdl2" "libpng" "openal" "mesa" "glu" "gettext" "freetype2" "hicolor-icon-theme"
+         "xdg-utils" "shared-mime-info")   # 'glib2' provided by 'gettext', and 'zlib' by 'libpng'
 makedepends=('zip')
 install="${pkgname}.install"
 source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
@@ -38,7 +39,8 @@ if [[ -n $FSUAE3264 && $CARCH == "x86_64" && -n $(gcc -v 2>&1|grep '\-\-enable-m
       depends+=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glu" "lib32-gettext" "lib32-freetype2")
      pkgdesc="${pkgdesc/(dev/dual 64 and 32-bit dev}"
    elif [[ $FSUAE3264 == 0 ]]; then
-      depends=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glu" "lib32-gettext" "lib32-freetype2" "xdg-utils" "hicolor-icon-theme")
+      depends=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glu" "lib32-gettext" "lib32-freetype2"
+         "hicolor-icon-theme" "xdg-utils" "shared-mime-info")
       pkgdesc="${pkgdesc/(dev/(32-bit dev}"
    fi
 else
