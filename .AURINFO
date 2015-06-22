@@ -1,0 +1,14 @@
+pkgbase = git-bzr-ng
+	pkgdesc = bi-directional git to bzr bridge: never fear bzr again
+	pkgver = 61.9878a30
+	pkgrel = 1
+	url = http://github.com/termie/git-bzr-ng
+	arch = any
+	license = GPL
+	depends = git
+	depends = bzr
+	depends = bzr-fastimport
+	source = git+http://github.com/termie/git-bzr-ng.git
+
+pkgname = git-bzr-ng
+
