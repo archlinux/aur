@@ -3,18 +3,18 @@
 
 pkgname=lib32-libvpx
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='VP8 and VP9 codec'
 arch=('x86_64')
 url='http://www.webmproject.org/'
 license=('BSD')
 depends=('lib32-gcc-libs' 'libvpx')
 makedepends=('gcc-multilib' 'git' 'yasm')
-source=("libvpx::git+http://code.google.com/p/webm.libvpx#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-${pkgver}.tar.bz2")
+sha256sums=('f582d9b2d60a592a4a3d8c32965ca2d2167e9ade38c6c30bac8801ff66a118e4')
 
 build() {
-  cd libvpx
+  cd libvpx-${pkgver}
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  cd libvpx
+  cd libvpx-${pkgver}
 
   make DIST_DIR="${pkgdir}/usr" install
   rm -rf "${pkgdir}"/usr/include
