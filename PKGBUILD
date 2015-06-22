@@ -2,7 +2,7 @@
 # Contributor: Bill Kolokithas <kolokithas.b@gmail.com>
 
 pkgname=j4-dmenu-desktop
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="A much faster replacement for i3-dmenu-desktop. It's purpose is to find .desktop files and offer you a menu to start an application using dmenu."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('dmenu')
 makedepends=('git' 'cmake')
 conflicts=('j4-dmenu-desktop-git')
 source=("https://github.com/enkore/j4-dmenu-desktop/archive/r${pkgver}.zip")
-md5sums=('52f023363f530908fe9612b1ada3a861')
+md5sums=('5f61d11c02b2a719872bc6e04346ae41')
 
 prepare() {
 	# Patch for issue #20; backported as it was not included for the 2.11 cut
