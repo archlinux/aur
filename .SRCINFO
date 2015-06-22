@@ -1,0 +1,17 @@
+pkgbase = qhangups
+	pkgdesc = Alternative client for Google Hangouts written in PyQt
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/xmikos/qhangups
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = hangups-git
+	depends = python-quamash
+	depends = python-pyqt4
+	depends = python-appdirs
+	source = https://github.com/xmikos/qhangups/archive/v1.6.0.tar.gz
+	md5sums = fe96c8a8ae206fcb0668ebe5b22417db
+
+pkgname = qhangups
+
