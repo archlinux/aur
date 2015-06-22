@@ -20,10 +20,9 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release    \
-	      -DCMAKE_INSTALL_PREFIX=/usr   \
-		  -DCMAKE_SKIP_INSTALL_RPATH=ON \
-	      -DPYTHON_DESIRED=3            \
+	cmake -DCMAKE_BUILD_TYPE=Release  \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DPYTHON_DESIRED=3          \
 	      ../libcomps
 	make
 }
