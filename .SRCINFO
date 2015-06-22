@@ -1,0 +1,19 @@
+pkgbase = gst-python2-git
+	pkgdesc = GStreamer Python 2 overrides for the gobject-introspection-based pygst bindings (Git version)
+	pkgver = 1.3.0.1.1272.59784c2
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/modules/gst-python.html
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = LGPL
+	depends = gstreamer
+	depends = python2
+	depends = gobject-introspection
+	provides = gst-python2
+	conflicts = gst-python2
+	source = git://anongit.freedesktop.org/gstreamer/gst-python
+	md5sums = SKIP
+
+pkgname = gst-python2-git
+
