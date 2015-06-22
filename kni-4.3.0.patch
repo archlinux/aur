@@ -1,0 +1,110 @@
+diff --git a/Makefile b/Makefile
+index 08e5db2..27235be 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ # Authors: see AUTHORS file
+ #===========================================================================
+ 
+-TARGETS			=	lib/kinematics src/common src/Base src/InvKin src/LM src/kni_wrapper py demo
++TARGETS			=	lib/kinematics src/common src/Base src/InvKin src/LM src/kni_wrapper demo
+ TARGETS_B		=	$(foreach target,$(TARGETS),$(target).build)
+ TARGETS_C		=	$(foreach target,$(TARGETS),$(target).clean)
+ NEURONICS_DOC_DIR	=	doc/neuronics-doc/source
+diff --git a/demo/Makefile b/demo/Makefile
+index df71b21..088b032 100644
+--- a/demo/Makefile
++++ b/demo/Makefile
+@@ -37,7 +37,7 @@ $(CTARGETS_D):
+ 
+ $(TARGETS_D): $(CTARGETS_D)
+ 	echo "Building: $@"
+-	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -lpthread -o $(@:.demo=)/$(@:.demo=) $(wildcard $(@:.demo=)/*.cpp) ${AVAILABLE_LIBRARIES}
++	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -pthread -o $(@:.demo=)/$(@:.demo=) $(wildcard $(@:.demo=)/*.cpp) ${AVAILABLE_LIBRARIES}
+ 	
+ 
+ $(TARGETS_D_C):
+diff --git a/lib/kinematics/Makefile b/lib/kinematics/Makefile
+index e05bd01..6c577d2 100644
+--- a/lib/kinematics/Makefile
++++ b/lib/kinematics/Makefile
+@@ -4,7 +4,7 @@
+ # Jonas Haller 2009
+ #===========================================================================
+ CXX			=	g++
+-CXXFLAGS	+=	-c -Wall -D_REENTRANT -D__NO_MATH_INLINES -pthread  -I $(BOOST_INCLUDE_DIR)
++CXXFLAGS	+=	-fPIC -c -Wall -D_REENTRANT -D__NO_MATH_INLINES -pthread  -I $(BOOST_INCLUDE_DIR)
+ LD			=	g++
+ LDFLAGS		=	-shared -fPIC
+ MAKE		=	make
+diff --git a/lib/kinematics/roboop/Makefile b/lib/kinematics/roboop/Makefile
+index 74cbf5d..8681d38 100644
+--- a/lib/kinematics/roboop/Makefile
++++ b/lib/kinematics/roboop/Makefile
+@@ -7,7 +7,7 @@ CC = g++
+ # edit the following to reflect the location of boost include files
+ # if not in the defaut (/usr/include)
+ BOOST_INCLUDE_DIR=/usr/include
+-CFLAGS = -O -I $(BOOST_INCLUDE_DIR) -I ./source -I ./newmat -Wall -D_REENTRANT -pthread #-Duse_namespace #-fno-const-strings
++CFLAGS = -fPIC -O -I $(BOOST_INCLUDE_DIR) -I ./source -I ./newmat -Wall -D_REENTRANT -pthread #-Duse_namespace #-fno-const-strings
+ LIBS = -L./ -lroboop -lnewmat -lm -pthread
+ AR = ar
+ RANLIB = ranlib
+diff --git a/src/Base/cdlSocket.cpp b/src/Base/cdlSocket.cpp
+index 2afc54e..9585ce9 100644
+--- a/src/Base/cdlSocket.cpp
++++ b/src/Base/cdlSocket.cpp
+@@ -21,6 +21,7 @@
+ /****************************************************************************/
+ #include "KNI/cdlSocket.h"
+ #include <iostream>
++#include <sstream>
+ /****************************************************************************/
+ //test write:
+ int writesz;
+@@ -91,8 +92,9 @@ CCdlSocket::CCdlSocket(char* ipAddr, int port): _ipAddr(ipAddr), _port(port){
+ 	int res;
+ 	_socketfd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+ 	if(_socketfd == -1){
+-		std::cout << "socket could not be created"<<_ipAddr<<" port: "<< _port<<" \n";
+-		exit(1);
++		std::ostringstream s;
++		s << "socket could not be created"<<_ipAddr<<" port: "<< _port<<" \n";
++		throw Exception( s.str().c_str(), 0 );
+ 	}
+ 	memset(&_socketAddr, 0, sizeof(_socketAddr));  
+ 	_socketAddr.sin_family = AF_INET;
+@@ -102,14 +104,16 @@ CCdlSocket::CCdlSocket(char* ipAddr, int port): _ipAddr(ipAddr), _port(port){
+ 	//connect to the server
+ 	res = inet_pton ( AF_INET, _ipAddr, &_socketAddr.sin_addr );
+ 	if ( errno == EAFNOSUPPORT ){
+-		std::cout << "inet_pton failed, try again "<<_ipAddr<<" port: "<< _port<<" \n";
+-		exit(1);
++		std::ostringstream s;
++		s << "inet_pton failed, try again "<<_ipAddr<<" port: "<< _port<<" \n";
++		throw Exception( s.str().c_str(), 0 );
+ 	}
+ //	std::cout << "trying to connect to server...\n";
+ 	res = connect(_socketfd, (struct sockaddr *) &_socketAddr, _len);
+ 	if(res != 0){
+-		std::cout << "client could not connect, check if server is running on ip "<<_ipAddr<<" port: "<< _port<<" \n";
+-		exit(1);
++		std::ostringstream s;
++		s << "client could not connect, check if server is running on ip "<<_ipAddr<<" port: "<< _port<<" \n";
++		throw Exception( s.str().c_str(), 0 );
+ 	}
+ 	else{
+ //		std::cout << "client connected to ip "<<_ipAddr<<", port: "<< _port<<" \n";
+diff --git a/src/common/Makefile b/src/common/Makefile
+index 8ec540c..c7460b5 100644
+--- a/src/common/Makefile
++++ b/src/common/Makefile
+@@ -5,7 +5,7 @@
+ #===========================================================================
+ 
+ CXX		=	g++
+-CXXFLAGS	+=	-g -O2 -Wall
++CXXFLAGS	+=	-g -O2 -Wall  -fPIC
+ 
+ TARGETS		=	alib
+ 

@@ -1,0 +1,16 @@
+pkgbase = kni
+	pkgdesc = Katana Native Interface Linux, only for FW 2.2.x
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = http://www.neuronics.ch
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	options = !makeflags
+	source = http://www.neuronics.com/cms_de/mediabase/KNI_4.3.0.tar.gz
+	source = kni-4.3.0.patch
+	md5sums = d4e208d06205a2ce46e52720c1b68eed
+	md5sums = 6a2e972b5fc955a973e3a69c50ad3fb0
+
+pkgname = kni
+
