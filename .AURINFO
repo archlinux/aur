@@ -1,0 +1,16 @@
+pkgbase = whdd
+	pkgdesc = Diagnostic and recovery tool for block devices (near to replace MHDD for Linux)
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://whdd.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = ncurses
+	depends = smartmontools
+	depends = dialog
+	source = http://github.com/krieger-od/whdd/tarball/2.2/whdd-2.2.tar.gz
+
+pkgname = whdd
+
