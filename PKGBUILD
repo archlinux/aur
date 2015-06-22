@@ -16,8 +16,8 @@ _commit=HEAD
     _falloc='--with-posix-fallocate'
 
 pkgname=libtorrent-pyro-git
-pkgver=20140703
-pkgrel=1
+pkgver=20150519
+pkgrel=2
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='http://libtorrent.rakshasa.no'
 license=('GPL')
@@ -42,7 +42,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/libtorrent"
     #patch -Np1 -i "${startdir}/libtorrent.patch"
-
+    #patch -Np1 -i "${startdir}/remove_tr1_prefix.patch"
     ./autogen.sh
 }
 
