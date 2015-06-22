@@ -1,0 +1,23 @@
+pkgbase = planner-git
+	pkgdesc = Project management application
+	pkgver = 20110408
+	pkgrel = 1
+	url = http://live.gnome.org/Planner/
+	install = planner-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = gtk-doc
+	depends = libgnomecanvas
+	depends = libgnomeui
+	depends = pygobject-git
+	provides = planner
+	conflicts = planner
+	options = makeflags
+	options = !emptydirs
+
+pkgname = planner-git
+
