@@ -1,0 +1,44 @@
+From b8fd1e7c4b18aa396c7b08ada93d9e63eda6fea8 Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Wed, 6 Aug 2014 14:15:20 +0200
+Subject: [PATCH] Revert "display: Don't focus the no-focus-window when sending
+ WM_TAKE_FOCUS to a globally active window"
+
+This reverts commit 844f4e9348e29be52ded19d83fdbd1e5e9ce5529.
+---
+ src/core/display.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/src/core/display.c b/src/core/display.c
+index e8a284f..0dff45e 100644
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -5737,6 +5737,25 @@ meta_display_request_take_focus (MetaDisplay *display,
+   meta_topic (META_DEBUG_FOCUS, "WM_TAKE_FOCUS(%s, %u)\n",
+               window->desc, timestamp);
+ 
++  if (window != display->focus_window)
++    {
++      /* The "Globally Active Input" window case, where the window
++       * doesn't want us to call XSetInputFocus on it, but does
++       * want us to send a WM_TAKE_FOCUS.
++       *
++       * We can't just set display->focus_window to @window, since we
++       * we don't know when (or even if) the window will actually take
++       * focus, so we could end up being wrong for arbitrarily long.
++       * But we also can't leave it set to the current window, or else
++       * bug #597352 would come back. So we focus the no_focus_window
++       * now (and set display->focus_window to that), send the
++       * WM_TAKE_FOCUS, and then just forget about @window
++       * until/unless we get a FocusIn.
++       */
++      meta_display_focus_the_no_focus_window (display,
++                                              window->screen,
++                                              timestamp);
++    }
+   meta_window_send_icccm_message (window,
+                                   display->atom_WM_TAKE_FOCUS,
+                                   timestamp);
+-- 
+2.0.4
+

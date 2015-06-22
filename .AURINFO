@@ -1,0 +1,37 @@
+pkgbase = mutter-wine-fullscreen
+	pkgdesc = Window and compositing manager based on Clutter. Wine fullscreen fixed (Hearthstone).
+	pkgver = 3.12.2
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = mutter.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = cogl
+	depends = clutter
+	depends = dconf
+	depends = gobject-introspection
+	depends = gsettings-desktop-schemas
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = upower
+	depends = wayland
+	provides = mutter=3.12.2
+	provides = mutter-wayland=3.12.2
+	conflicts = mutter
+	conflicts = mutter-wayland
+	source = git://git.gnome.org/mutter#tag=3.12.2
+	source = 0001-Revert-display-Don-t-focus-the-no-focus-window-when-.patch
+	options = !libtool
+	options = !emptydirs
+
+pkgname = mutter-wine-fullscreen
+
