@@ -1,0 +1,16 @@
+pkgbase = ttf-xirwena
+	pkgdesc = A decorative medieval style ttf font by Pia Frauss
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.pia-frauss.de/
+	install = ttf.install
+	arch = any
+	license = Free for personal use
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=xirwena
+	md5sums = 4ad89b6cd7593a050a411a94a9f99cda
+
+pkgname = ttf-xirwena
+
