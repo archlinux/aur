@@ -1,0 +1,16 @@
+pkgbase = ttf-neverwinter
+	pkgdesc = A basic decorative ttf font by Neale Davidson based on the logo of the popular Neverwinter Nights computer game from Bioware (and has since become the official font!)
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.pixelsagas.com/
+	install = ttf.install
+	arch = any
+	license = Free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=neverwinter
+	md5sums = e16bc6d0cceb700d42bfafdc6ebed0a2
+
+pkgname = ttf-neverwinter
+
