@@ -2,14 +2,14 @@
 
 pkgname=rpw
 
-pkgver=4.1.0
-FNAME="RPW-4-1-0.jar"
+pkgver=4.2.0
+FNAME="RPW-4-2-0.jar"
 pkgrel=1
 
 pkgdesc="Minecraft resource pack editor by MightyPork"
 arch=('any')
-url='http://www.ondrovo.com/rpw'
-license=('MIT')
+url='http://rpw.ondrovo.com/'
+license=('RPW license')
 
 
 depends=('java-runtime')
@@ -21,8 +21,8 @@ optdepends=('gimp: Editing textures'
 
 provides=('rpw')
 
-md5sums=('d2d0f235d0b9e9cffaa1b0653a4aa6b8'
-         'b7c9c0001311f4acd9847b115f72f90b')
+md5sums=('adfad7ec9146015ccd2f729e3b41e3b2'
+         '34ccc931e00e0e1354d2409159824290')
 
 
 package() {
