@@ -2,7 +2,7 @@
 #Contributor: socke <github@socker.lepus.uberspace.de>
 
 pkgname=assimp-git
-pkgver=3.0.1.1629.b65b380
+pkgver=3.1.1.2748.85e2f47
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner"
 arch=(i686 x86_64)
