@@ -2,8 +2,8 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 pkgname=visit-bin
 _pkgname=visit
-pkgver=2.9.1
-_pkgver=2_9_1
+pkgver=2.9.2
+_pkgver=2_9_2
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -19,8 +19,8 @@ source=("http://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/${_pkg
         'visit-bin.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('6ae02f9007e7690abbfe6cc669bbdef01b49003c888d4fb00d60bb36271834f7'
-            'a4ccbefbba784f8038e3f06a8e64ffe89da727e5cdce1f97ad771d111e6c8439'
+sha256sums=('12df37fd1cd90f7edfece21cd560ac724fed95502a9a2df6b0508f7d9d021499'
+            '2695303938a9c816f17a8275861809aaeec03e7460de49a9ec68dbd004155c30'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             'abc1c05f6567281cb8654dfbe3d0ef87ec3537e8e60191ba0625d4f99feb27c7')
 
