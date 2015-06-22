@@ -4,6 +4,7 @@ pkgrel=1
 pkgdesc="Tool for fast packaging golang code"
 arch=('i686' 'x86_64')
 license=('GPL')
+url=('https://github.com/seletskiy/go-makepkg')
 makedepends=('go' 'git')
 
 source=(
