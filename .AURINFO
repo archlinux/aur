@@ -1,0 +1,15 @@
+pkgbase = hovr-git
+	pkgdesc = A Blender Game Engine Demo for the Oculus Rift and the Nintendo Balance Board
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/lubosz/python-rift
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = blender
+	depends = python-balanceboard-git
+	depends = python-rift-git
+	source = git+https://github.com/lubosz/hovr.git
+
+pkgname = hovr-git
+
