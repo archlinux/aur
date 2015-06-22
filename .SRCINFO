@@ -1,0 +1,15 @@
+pkgbase = php-translit
+	pkgdesc = Transliterates non-latin character sets to latin
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = http://pecl.php.net/package/translit
+	arch = x86_64
+	arch = i686
+	license = PHP
+	depends = php
+	backup = etc/php/conf.d/translit.ini
+	source = http://pecl.php.net/get/translit-0.6.1.tgz
+	sha256sums = 864faa76ef249e0203b761fd6a0b93ad5f61d1c1f4893dc0637997772bf671e3
+
+pkgname = php-translit
+
