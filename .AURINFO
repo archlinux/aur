@@ -1,0 +1,19 @@
+pkgbase = clutter-gst-git
+	pkgdesc = A GStreamer integration library for Clutter
+	pkgver = 2.99.5.651.08ce0ee
+	pkgrel = 1
+	url = http://clutter-project.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gtk-doc
+	makedepends = git
+	depends = clutter>=1.18.0
+	depends = gstreamer
+	provides = clutter-gst=2.99.5.651.08ce0ee
+	conflicts = clutter-gst
+	source = git://git.gnome.org/clutter-gst
+	options = !libtool
+
+pkgname = clutter-gst-git
+
