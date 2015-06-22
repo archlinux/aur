@@ -1,0 +1,23 @@
+pkgbase = plowshare-git
+	pkgdesc = Command-line downloader and uploader for Rapidshare, Mediafire and other file sharing websites.
+	pkgver = 2.1.1.r3.gc068042
+	pkgrel = 1
+	url = https://github.com/mcrapet/plowshare
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = recode
+	depends = js185
+	optdepends = bash-completion: enable bash auto completion
+	optdepends = libcaca: ascii display for no X server
+	optdepends = tiv: ascii display for no X server
+	optdepends = aview: ascii display for no X server
+	provides = plowshare
+	conflicts = plowshare
+	replaces = plowshare-svn
+	source = plowshare-git::git+https://github.com/mcrapet/plowshare.git
+	md5sums = SKIP
+
+pkgname = plowshare-git
+
