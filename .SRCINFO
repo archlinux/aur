@@ -1,0 +1,12 @@
+pkgbase = mcabber-module-external-editor
+	pkgdesc = Write multiline messages in mcabber using editor
+	pkgver = 13.7eabded
+	pkgrel = 1
+	url = https://github.com/kovetskiy/mcabber-external-editor
+	arch = any
+	license = GPL
+	source = git://github.com/kovetskiy/mcabber-external-editor
+	md5sums = SKIP
+
+pkgname = mcabber-module-external-editor
+
