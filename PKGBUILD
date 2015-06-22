@@ -3,13 +3,13 @@
 _gitname=graphite-api
 pkgname=${_gitname}-git
 pkgver=1.0.1.r121.gb3f3cee
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphite-web, without the interface. Just the rendering HTTP API."
 url="https://github.com/Dieterbe/graphite-api"
 license=('Apache')
 depends=('python' 'python-pytz' 'python-six' 'python-flask' 'python-structlog'
          'python-yaml' 'python-tzlocal' 'python-cairocffi' 'python-pyparsing'
-	 'gunicorn')
+	 'python-blinker' 'gunicorn')
 makedepends=('python-setuptools' 'python-mock')
 optdepends=('python-flask-cache: For caching'
             'python-raven: For sentry support'
