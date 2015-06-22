@@ -1,0 +1,14 @@
+pkgbase = cinnamon-theme-ciliora-secunda
+	pkgdesc = Ciliora-Secunda theme for Cinnamon 2.4
+	pkgver = 20150429
+	pkgrel = 1
+	url = http://cinnamon-spices.linuxmint.com/themes/view/411
+	arch = any
+	license = GPL
+	depends = cinnamon>=2.4.0
+	depends = cinnamon<2.5.0
+	source = http://cinnamon-spices.linuxmint.com/uploads/themes/BLI6-T6I8-GR51.zip
+	sha256sums = f2f1b5bd8db1a7c74d3bb1f782d506a1445d91acba5de7d6237e4c05569d8fe3
+
+pkgname = cinnamon-theme-ciliora-secunda
+
