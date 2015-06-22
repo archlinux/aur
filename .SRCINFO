@@ -1,0 +1,15 @@
+pkgbase = freeimage-cvs
+	pkgdesc = FreeImage is a library for developers who would like to support popular graphics image formats.
+	pkgver = 20101223
+	pkgrel = 1
+	url = http://freeimage.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cvs
+	depends = gcc-libs
+	provides = freeimage
+	conflicts = freeimage
+
+pkgname = freeimage-cvs
+
