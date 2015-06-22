@@ -1,6 +1,6 @@
 pkgbase = python-vdirsyncer-git
 	pkgdesc = Synchronize CalDAV and CardDAV.
-	pkgver = 0.4.4.r60.g2aaeeb4
+	pkgver = 0.5.2.r9.g6fa3b1d
 	pkgrel = 1
 	url = https://github.com/untitaker/vdirsyncer
 	arch = i686
