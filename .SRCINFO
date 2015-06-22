@@ -3,6 +3,7 @@ pkgbase = tn40xx
 	pkgver = 0.3.6.12.1
 	pkgrel = 1
 	url = http://www.tehutinetworks.net/
+	install = tn40xx.install
 	arch = x86_64
 	license = custom
 	makedepends = linux-lts-headers
@@ -13,7 +14,9 @@ pkgbase = tn40xx
 	options = !buildflags
 	options = staticlibs
 	source = http://www.tehutinetworks.net/images/UL240756/tn40xx-0.3.6.12.1.tgz
+	source = tn40xx.install
 	sha512sums = 9d8391a6189f57541ace4ffee3097178a5110587dc86763647b20b8b0376f96da1fa02a3679578e5ce8fe56c56fe6e0bbb9f4fb4c6ef9d7854b11a3713f7830c
+	sha512sums = 911a59684dd0f7fa9913546a90f6144947251f2afe9fd17f6f0b9acb08c93a8dde0df70b2d1cd58de4d60eaffc7b608a978f7f2ffd4f69a22a31319818e806c0
 
 pkgname = tn40xx
 

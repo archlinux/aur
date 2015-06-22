@@ -16,9 +16,11 @@ license=('custom')
 depends=('linux-lts')
 makedepends=('linux-lts-headers')
 options=('!libtool' '!strip' '!makeflags' '!buildflags' 'staticlibs')
-source=("http://www.tehutinetworks.net/images/UL240756/${pkgname}-${pkgver}.tgz")
-sha512sums=('9d8391a6189f57541ace4ffee3097178a5110587dc86763647b20b8b0376f96da1fa02a3679578e5ce8fe56c56fe6e0bbb9f4fb4c6ef9d7854b11a3713f7830c')
-#install=
+source=("http://www.tehutinetworks.net/images/UL240756/${pkgname}-${pkgver}.tgz"
+        "tn40xx.install")
+sha512sums=('9d8391a6189f57541ace4ffee3097178a5110587dc86763647b20b8b0376f96da1fa02a3679578e5ce8fe56c56fe6e0bbb9f4fb4c6ef9d7854b11a3713f7830c'
+            '911a59684dd0f7fa9913546a90f6144947251f2afe9fd17f6f0b9acb08c93a8dde0df70b2d1cd58de4d60eaffc7b608a978f7f2ffd4f69a22a31319818e806c0')
+install=tn40xx.install
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
@@ -37,5 +39,4 @@ package() {
     install -m755 ${pkgname}.ko "${pkgdir}/lib/modules/$(uname -r)/drivers/net/"
     install -dm755 "${pkgdir}/etc/pm/config.d/"
     echo "SUSPEND_MODULES=${pkgname}" > "${pkgdir}/etc/pm/config.d/${pkgname}"
-    depmod "$(uname -r)"
 }
