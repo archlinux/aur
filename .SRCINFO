@@ -1,0 +1,14 @@
+pkgbase = cpuid
+	pkgdesc = Linux tool to dump x86 CPUID information about the CPU(s)
+	pkgver = 20140123
+	pkgrel = 1
+	url = http://www.etallen.com/cpuid.html
+	arch = i686
+	arch = x86_64
+	groups = system
+	license = GPL
+	source = http://www.etallen.com/cpuid/cpuid-20140123.src.tar.gz
+	md5sums = f1a6946a1ece87928ddd1d1e3b06ed4b
+
+pkgname = cpuid
+
