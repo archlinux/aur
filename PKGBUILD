@@ -1,5 +1,6 @@
 # vim: ft=PKGBUILD
 # Maintainer: Jack Frost <fbt@fleshless.org>
+# % Trigger: 1434983485 %
 
 pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
