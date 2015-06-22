@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=howl-editor-git
-pkgver=0.2.1.472.g02b936b
+pkgver=0.2.1.476.gabf5bf9
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
