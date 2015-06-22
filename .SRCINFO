@@ -1,0 +1,23 @@
+pkgbase = jibber
+	pkgdesc = Notification backend for Jira WebHooks to Jabber
+	pkgver = 21.405d41d
+	pkgrel = 1
+	url = https://github.com/seletskiy/jibber
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	backup = etc/jibber/jibber.conf
+	backup = etc/jibber/tpl/footer.tpl
+	backup = etc/jibber/tpl/head.tpl
+	backup = etc/jibber/tpl/issue-updated-changelog.tpl
+	backup = etc/jibber/tpl/issue-updated-comment.tpl
+	backup = etc/jibber/tpl/issue-updated-common.tpl
+	backup = etc/jibber/tpl/main.tpl
+	source = git://github.com/seletskiy/jibber.git
+	source = jibber.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = jibber
+

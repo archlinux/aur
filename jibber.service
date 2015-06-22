@@ -1,0 +1,9 @@
+[Unit]
+Description=Jira WebHook Forwarder to Jabber
+
+[Service]
+ExecStart=/usr/bin/jibber
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
