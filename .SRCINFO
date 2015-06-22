@@ -1,0 +1,16 @@
+pkgbase = ttf-oldeenglish
+	pkgdesc = A basic decorative medieval style ttf font by Dieter Steffmann
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.steffmann.de/
+	install = ttf.install
+	arch = any
+	license = Free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=olde_english
+	md5sums = d62ce8bba549293855c4bee64dba3f9f
+
+pkgname = ttf-oldeenglish
+
