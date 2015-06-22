@@ -1,0 +1,16 @@
+pkgbase = ttf-germanica
+	pkgdesc = A basic decorative medieval style ttf font family by Paul Lloyd
+	pkgver = 1
+	pkgrel = 1
+	url = http://moorstation.org/typoasis/designers/lloyd/
+	install = ttf.install
+	arch = any
+	license = Free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=germanica_family
+	md5sums = 2f67c636510e535c41f550b03cdf068a
+
+pkgname = ttf-germanica
+
