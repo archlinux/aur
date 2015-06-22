@@ -1,0 +1,19 @@
+pkgbase = python-cairo-git
+	pkgdesc = Python bindings for the cairo graphics library. Git version.
+	pkgver = 1.10.1.34.5a45b0b
+	pkgrel = 1
+	url = http://www.cairographics.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = pkg-config
+	depends = python
+	depends = cairo>=1.12
+	provides = python-cairo=1.10.0
+	conflicts = python-cairo
+	source = python-cairo-git::git://git.cairographics.org/git/pycairo
+	options = !libtool
+
+pkgname = python-cairo-git
+
