@@ -3,7 +3,7 @@ _update_font_cache() {
 	fc-cache -f > /dev/null
 	mkfontscale /usr/share/fonts/TTF
 	mkfontdir /usr/share/fonts/TTF
-	echo "done."	
+	echo "done."
 }
 
 _warn_11838() {

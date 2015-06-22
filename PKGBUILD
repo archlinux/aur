@@ -75,7 +75,7 @@ build() {
 	cd "$srcdir/unifont-$pkgver/src"
 	msg2 "Building utilities"
 	make -j1
-	
+
 	cd "$srcdir/unifont-$pkgver/font"
 	if _wanted bdf-unifont; then
 		# always building it, because the _csur variants
@@ -83,7 +83,7 @@ build() {
 		msg2 "Building the BDF version"
 		make -j1 bdf -o distclean
 	fi
-	
+
 	if [[ -z "$_use_precompiled" ]]; then
 		if _wanted psf-unifont; then
 			msg2 "Building the PSF version"
@@ -94,7 +94,7 @@ build() {
 			make -j1 pcf -o distclean
 		fi
 		if _wanted ttf-unifont; then
-			msg2 "Building the TTF version" 
+			msg2 "Building the TTF version"
 			make -j1 ttf csurttf upperttf uppercsurttf -o distclean
 		fi
 	fi
@@ -108,7 +108,7 @@ package_ttf-unifont() {
 	provides=(ttf-unifont ttf-unifont-csur)
 	arch=(any)
 	install=ttf.install
-	
+
 	_ttfdir=/usr/share/fonts/TTF
 
 	cd "$srcdir/unifont-$pkgver/font/$_compiled"
@@ -134,7 +134,7 @@ package_pcf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (PCF version)"
 	provides=(pcf-unifont)
 	arch=(any)
-	
+
 	_pcfdir=/usr/share/fonts/misc
 
 	cd "$srcdir/unifont-$pkgver/font/$_compiled"
@@ -165,7 +165,7 @@ package_bdf-unifont() {
 package_psf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (PSF version, for APL)"
 	arch=(any)
-	
+
 	cd "$srcdir/unifont-$pkgver/font/$_compiled"
 	install -D -m 0644 "Unifont-APL8x16-${pkgver}.psf.gz" \
 		"${pkgdir}/usr/share/kbd/consolefonts/Unifont-APL8x16.psf.gz"
