@@ -1,0 +1,14 @@
+pkgbase = cdls
+	pkgdesc = A curses based file manager for system managers
+	pkgver = 4.2
+	pkgrel = 2
+	url = ftp://pd7w.fs2a.eu/cdls-4.2.tar.gz
+	arch = i686,
+	arch = x86_64
+	license = public domain
+	depends = ncurses
+	source = ftp://pd7w.fs2a.eu/cdls-4.2.tar.gz
+	md5sums = 4ed5f945ebb53838f7a60c0c4f634d0b
+
+pkgname = cdls
+
