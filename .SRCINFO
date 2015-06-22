@@ -1,6 +1,6 @@
 pkgbase = tidy-html5
 	pkgdesc = A tool to tidy down your HTML5 code to a clean style
-	pkgver = 4.9.32
+	pkgver = 4.9.36
 	pkgrel = 1
 	url = https://github.com/htacg/tidy-html5
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = tidy-html5
 	makedepends = cmake
 	provides = tidy5
 	conflicts = tidy-html5-git
-	source = https://github.com/htacg/tidy-html5/archive/4.9.32.tar.gz
-	md5sums = f3237ceea653c823da04d36652f724ee
+	source = https://github.com/htacg/tidy-html5/archive/4.9.36.tar.gz
+	md5sums = 65bb2d576cf6c6f0dd06228274bfa4fb
 
 pkgname = tidy-html5
 
