@@ -1,0 +1,13 @@
+pkgbase = hunspell-la
+	pkgdesc = Latin dictionary for Hunspell
+	pkgver = 20130331
+	pkgrel = 1
+	url = http://extensions.libreoffice.org/extension-center/latin-spelling-and-hyphenation-dictionaries
+	arch = any
+	license = GPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://extensions.libreoffice.org/extension-center/latin-spelling-and-hyphenation-dictionaries/pscreleasefolder.2011-11-05.0070960452/2013.03.31/dict-la_2013-03-31.oxt
+	md5sums = 46674c8e9985b97e3f71555ed83a90cd
+
+pkgname = hunspell-la
+
