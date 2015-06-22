@@ -1,0 +1,18 @@
+--- setup.py.orig	2014-10-04 19:35:40.752617544 +0100
++++ setup.py	2014-10-04 19:35:53.059350786 +0100
+@@ -22,7 +22,6 @@
+     "fsui": "../python",
+     "game_center": "../python",
+     "lhafile": "../python-lhafile",
+-    "six": "../python",
+ }
+ packages = sorted(package_map.keys())
+ if sys.platform != "win32":
+@@ -139,7 +138,6 @@
+             res_dirs.append('fsgs/res')
+             res_dirs.append('fsui/res')
+             res_dirs.append('lhafile/res')
+-            res_dirs.append('six/res')
+ 
+             for res_dir in res_dirs:
+                 full = os.path.join(self.collect_dir, res_dir)
