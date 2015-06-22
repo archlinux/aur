@@ -1,0 +1,12 @@
+pkgbase = urxvt-fifo
+	pkgdesc = Extension for sending keys to urxvt via fifo
+	pkgver = 3.9a75925
+	pkgrel = 1
+	url = https://github.com/kovetskiy/urxvt-fifo
+	arch = any
+	license = GPL
+	source = git+https://github.com/kovetskiy/urxvt-fifo
+	md5sums = SKIP
+
+pkgname = urxvt-fifo
+
