@@ -5,7 +5,7 @@ pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
 license=( 'custom:ISC' )
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 arch=( 'any' )
 url='https://github.com/fbt/watchman'
 
@@ -28,7 +28,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# BASH completion
-	install -Dm644 bash/completion/watchman "$pkgdir/usr/share/bash-completion/completions/watchman"
+	install -Dm644 bash/completion/watchman "$pkgdir/usr/share/bash-completion/completions/watchman-sm"
 
 	# a link to provide a system-wide 'service' script
 	cd "${pkgdir}${install_prefix}/bin"; ln -s watchman-service service
