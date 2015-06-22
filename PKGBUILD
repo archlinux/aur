@@ -1,5 +1,3 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-sdk
 pkgver=1.0
 pkgrel=1
@@ -36,6 +34,5 @@ package()
 {
   cd "$srcdir/pspsdk/build-psp"
   make install DESTDIR="$pkgdir"
-  rm "$pkgdir"/usr/psp/lib/crt0.o # already owned by psp-newlib
 }
 
