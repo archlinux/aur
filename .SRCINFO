@@ -1,0 +1,14 @@
+pkgbase = ucspi-unix
+	pkgdesc = UNIX-domain socket client-server command-line tools.
+	pkgver = 0.36
+	pkgrel = 1
+	url = http://untroubled.org/ucspi-unix
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bglibs
+	source = http://untroubled.org/ucspi-unix/ucspi-unix-0.36.tar.gz
+	md5sums = 759407949912ccb860808ae2205e8a1a
+
+pkgname = ucspi-unix
+
