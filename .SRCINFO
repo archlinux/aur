@@ -1,0 +1,14 @@
+pkgbase = view64
+	pkgdesc = SDL image viewer for Commodore C64 image formats
+	pkgver = 1.58
+	pkgrel = 1
+	url = http://view64.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl2
+	source = http://sourceforge.net/projects/view64/files/source/view64-1.58-src.zip
+	md5sums = 6152ba352459cefdbb3097bc443abff5
+
+pkgname = view64
+
