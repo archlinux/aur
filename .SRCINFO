@@ -1,0 +1,19 @@
+pkgbase = gst-python-git
+	pkgdesc = GStreamer GObject Introspection overrides for Python 3
+	pkgver = 1.3.0.1.1277.16979ed
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/modules/gst-python.html
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = LGPL
+	depends = gstreamer
+	depends = python
+	depends = gobject-introspection
+	provides = gst-python
+	conflicts = gst-python
+	source = git://anongit.freedesktop.org/gstreamer/gst-python
+	md5sums = SKIP
+
+pkgname = gst-python-git
+
