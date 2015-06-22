@@ -3,7 +3,7 @@
 
 pkgname=racket-minimal
 _pkgname=racket
-pkgver=6.1.1
+pkgver=6.2
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket"
 url='http://racket-lang.org/'
@@ -13,8 +13,8 @@ depends=('libffi')
 options=('!strip' '!emptydirs')
 provides=('racket')
 conflicts=('racket')
-source=("http://mirror.racket-lang.org/installers/$pkgver/$pkgname-$pkgver-src.tgz")
-sha1sums=('d0988205d4369b27196b4afbce679c97057eee55')
+source=("http://mirror.racket-lang.org/installers/$pkgver/${_pkgname}-${pkgver}-src.tgz")
+sha1sums=('24a48002e9c3c00c3731c4562679f012b77bf62d')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/src"

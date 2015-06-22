@@ -1,6 +1,6 @@
 pkgbase = racket-minimal
 	pkgdesc = Minimal Racket installation, without DrRacket
-	pkgver = 6.1.1
+	pkgver = 6.2
 	pkgrel = 1
 	url = http://racket-lang.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = racket-minimal
 	conflicts = racket
 	options = !strip
 	options = !emptydirs
-	source = http://mirror.racket-lang.org/installers/6.1.1/racket-minimal-6.1.1-src.tgz
-	sha1sums = d0988205d4369b27196b4afbce679c97057eee55
+	source = http://mirror.racket-lang.org/installers/6.2/racket-6.2-src.tgz
+	sha1sums = 24a48002e9c3c00c3731c4562679f012b77bf62d
 
 pkgname = racket-minimal
 
