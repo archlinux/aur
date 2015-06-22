@@ -1,0 +1,12 @@
+pkgbase = mcabber-module-autojoin
+	pkgdesc = Provides autojoining for rooms without bookmarks
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/seletskiy/mcabber-autojoin
+	arch = any
+	license = GPL
+	source = git+https://github.com/seletskiy/mcabber-autojoin
+	md5sums = SKIP
+
+pkgname = mcabber-module-autojoin
+
