@@ -1,0 +1,15 @@
+pkgbase = librevisa
+	pkgdesc = Compliant implementation of the VISA standard in a free software library
+	pkgver = 0.0.20130412
+	pkgrel = 1
+	url = http://www.librevisa.org
+	arch = i686,
+	arch = x86_64
+	license = GPL3
+	depends = libusb
+	depends = avahi
+	source = http://www.librevisa.org/download/librevisa-0.0.20130412.tar.gz
+	md5sums = 3849021d141042ad396e7386de525eb0
+
+pkgname = librevisa
+
