@@ -1,0 +1,14 @@
+pkgbase = python2-openglcontext
+	pkgdesc = OpenGLcontext is a learning environment for PyOpenGL.
+	pkgver = 2.2.0a3
+	pkgrel = 1
+	url = http://pyopengl.sourceforge.net/context
+	arch = any
+	license = BSD
+	depends = python2-opengl
+	provides = python2-openglcontext
+	source = https://pypi.python.org/packages/source/O/OpenGLContext/OpenGLContext-2.2.0a3.tar.gz
+	md5sums = b5bdedbdae5215e7acff3b087c8220d3
+
+pkgname = python2-openglcontext
+
