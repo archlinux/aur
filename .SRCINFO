@@ -1,0 +1,16 @@
+pkgbase = lib32-kmod
+	pkgdesc = Linux kernel module handling
+	pkgver = 20
+	pkgrel = 1
+	url = http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	depends = lib32-xz
+	options = !libtool
+	source = ftp://ftp.kernel.org/pub/linux/utils/kernel/kmod/kmod-20.tar.xz
+	md5sums = d6f4fef718a50bd88080de6a43bc64d8
+
+pkgname = lib32-kmod
+
