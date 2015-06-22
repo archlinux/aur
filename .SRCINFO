@@ -1,0 +1,19 @@
+pkgbase = gst-devtools-git
+	pkgdesc = Development and debugging tools for GStreamer: validate and mediainfo.
+	pkgver = 0.0.1.1.635.dae0c4e
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = gstreamer
+	provides = gst-devtools=0.0.1.1.635.dae0c4e
+	conflicts = gst-devtools
+	options = !libtool
+	options = !emptydirs
+	source = git+git://anongit.freedesktop.org/gstreamer/gst-devtools
+	sha256sums = SKIP
+
+pkgname = gst-devtools-git
+
