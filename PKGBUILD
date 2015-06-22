@@ -5,7 +5,7 @@ pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
 license=( 'custom:ISC' )
 pkgver=1.9.4
-pkgrel=3
+pkgrel=4
 arch=( 'any' )
 url='https://github.com/fbt/watchman'
 
