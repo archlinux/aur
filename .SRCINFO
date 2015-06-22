@@ -1,0 +1,18 @@
+pkgbase = samorost2
+	pkgdesc = Samorost 2 is an award-winning point-and-click adventure/puzzle Flash game by Amanita Design
+	pkgver = 1.0
+	pkgrel = 6
+	url = http://amanita-design.net/samorost-2/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = xdg-utils
+	depends = flashplugin
+	source = samorost2
+	source = samorost2.desktop
+	sha256sums = 594dc311057d005bcc0d2b9989c0f095ed8f57c75d9003cc52978d2eb7c87829
+	sha256sums = 7af55922b26b62704645dc928464444361754e4f6e7e348e6ba55efb997be2af
+
+pkgname = samorost2
+

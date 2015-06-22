@@ -1,0 +1,10 @@
+post_install()
+{
+	update-desktop-database
+}
+
+post_upgrade()
+{
+	find /usr/share/samorost2/ -type d -exec chmod 755 '{}' \;
+	post_install
+}
