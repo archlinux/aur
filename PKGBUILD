@@ -2,8 +2,8 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.9.1
-_pkgver=2_9_1
+pkgver=2.9.2
+_pkgver=2_9_2
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("${_url}/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar
         "visit.sh"
         "visit_FindIceT.patch")
 
-sha256sums=('b5269e5de4dc159d0030c0971d47784062d9118cc3b6747a30b0efc4d2404bc2'
+sha256sums=('97d19e2609fbba655772feb055919b925214ab68c95ff46481572bd7e9c9ea31'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a')
 
