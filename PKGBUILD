@@ -3,7 +3,7 @@
 # Contributor for Qt5 version: pavbaranov
 
 pkgname=masterpdfeditor-qt5
-pkgver=3.0.62
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A complete solution for creation and editing PDF files. (Free for non-commercial use) - Qt5 version"
 url="http://code-industry.net/free-pdf-editor.php"
@@ -17,7 +17,7 @@ source=(${pkgname}.desktop)
 source_x86_64=(http://code-industry.net/public/master-pdf-editor-${pkgver}_qt5.amd64.tar.gz)
 
 sha256sums=('29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd')
-sha256sums_x86_64=('9218d1df1d92da8c6bc90589911116804a94c2771c4ba9c6db9eeec7a557f856')
+sha256sums_x86_64=('db5b0ec7f873a7ea72e751017a30346fa5dc93f1ae74edc172f39010d1f89204')
 
 package() {
     mkdir -p "${pkgdir}/opt/masterpdfeditor"
