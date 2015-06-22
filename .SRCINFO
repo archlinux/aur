@@ -1,14 +1,14 @@
 pkgbase = nitrux-icon-theme
 	pkgdesc = New squared icon set for Linux that sports clean lines, smooth gradients, and simple icon logos
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = http://nitrux.in/store/nitrux-icon-theme/
 	arch = any
 	license = custom:Creative Commons
 	depends = librsvg
 	options = !strip
-	source = http://nitrux.in/downloads/files/free/nitrux-icon-theme-3.5.1.tar.gz
-	md5sums = 538d07a0cf198ffb708251572450d856
+	source = http://nitrux.in/downloads/files/free/nitrux-icon-theme-3.5.2.tar.gz
+	md5sums = 283b41eacd18495461e9ff1be11bee5f
 
 pkgname = nitrux-icon-theme
 
