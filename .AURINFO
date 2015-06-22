@@ -1,0 +1,11 @@
+pkgbase = aria-robot
+	pkgdesc = MobileRobots Advanced Robot Interface for Applications. A C++ library for MobileRobots/ActivMedia platforms.
+	pkgver = 2.8.1
+	pkgrel = 2
+	url = http://robots.mobilerobots.com/wiki/ARIA
+	arch = x86_64
+	license = GPL2
+	source = http://robots.mobilerobots.com/ARIA/download/current/ARIA-2.8.1+x86_64+gcc4.6.tgz
+
+pkgname = aria-robot
+
