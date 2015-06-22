@@ -1,0 +1,31 @@
+From eba488d8274872115d65b14bf032a636f926732e Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Mon, 4 Aug 2014 12:13:54 +0200
+Subject: [PATCH] eglut: add wayland backend to build
+
+---
+ src/egl/eglut/CMakeLists.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/egl/eglut/CMakeLists.txt b/src/egl/eglut/CMakeLists.txt
+index a885977..972a016 100644
+--- a/src/egl/eglut/CMakeLists.txt
++++ b/src/egl/eglut/CMakeLists.txt
+@@ -10,6 +10,14 @@ if (X11_FOUND)
+ 	endif (BUILD_SHARED_LIBS)
+ endif (X11_FOUND)
+ 
++if (WAYLAND_FOUND)
++	add_library (eglut_wayland eglut.h eglut.c eglutint.h eglut_wayland.c)
++	target_link_libraries (eglut_wayland ${EGL_LIBRARIES} wayland-client)
++	if (BUILD_SHARED_LIBS)
++		install (TARGETS eglut_wayland DESTINATION ${LIBDIR})
++	endif (BUILD_SHARED_LIBS)
++endif (WAYLAND_FOUND)
++
+ add_library (eglut_screen eglut.h eglut.c eglutint.h eglut_screen.c)
+ target_link_libraries (eglut_screen ${EGL_LIBRARIES})
+ if (BUILD_SHARED_LIBS)
+-- 
+2.0.4
+

@@ -1,0 +1,22 @@
+pkgbase = eglut-git
+	pkgdesc = The OpenGL Utility Toolkit for EGL. From mesa demos with Wayland backend.
+	pkgver = 8.2.0.5978.87a60bf
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/mesa/demos/tree/src/egl/eglut
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glew
+	depends = libegl
+	depends = freeglut
+	depends = wayland
+	provides = eglut=8.2.0.5978.87a60bf
+	conflicts = eglut
+	source = git://anongit.freedesktop.org/mesa/demos
+	source = 0001-eglut-add-wayland-backend-to-build.patch
+	sha256sums = SKIP
+	sha256sums = 15d038a859aab3fe2ba10496e5b0f0b5cc0bad7276f13ee0120d5911c8c99b6c
+
+pkgname = eglut-git
+
