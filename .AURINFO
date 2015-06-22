@@ -1,0 +1,10 @@
+pkgbase = glcorearb
+	pkgdesc = glcorearb Header
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.opengl.org/registry
+	arch = any
+	license = custom
+
+pkgname = glcorearb
+
