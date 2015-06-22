@@ -1,0 +1,27 @@
+pkgbase = gst-plugins-ugly-git
+	pkgdesc = GStreamer Multimedia Framework Ugly Plugins
+	pkgver = 1.3.1.1.5085.a665347
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gst-plugins-base-libs
+	depends = libdvdread
+	depends = lame
+	depends = libmpeg2
+	depends = a52dec
+	depends = libmad
+	depends = libsidplay
+	depends = libcdio
+	depends = x264
+	depends = opencore-amr
+	provides = gst-plugins-ugly=1.3.1.1.5085.a665347
+	conflicts = gst-plugins-ugly
+	options = !libtool
+	options = !emptydirs
+	source = git://anongit.freedesktop.org/gstreamer/gst-plugins-ugly
+	sha256sums = SKIP
+
+pkgname = gst-plugins-ugly-git
+
