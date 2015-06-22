@@ -1,0 +1,20 @@
+pkgbase = kio-mtp-git
+	pkgdesc = MTP KIO Slave - Access MTP Devices in Dolphin or Konqueror
+	pkgver = 20130309
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/base/kio-mtp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = qt4
+	depends = kdebase-runtime
+	depends = kdelibs
+	depends = libmtp
+	conflicts = kio-mtp
+
+pkgname = kio-mtp-git
+
