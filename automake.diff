@@ -1,0 +1,13 @@
+diff --git a/configure.in b/configure.in
+index c44651b..fa7a7d7 100644
+--- a/configure.in
++++ b/configure.in
+@@ -8,7 +8,7 @@ AC_SUBST(PACKAGE)
+ AC_SUBST(VERSION)
+ 
+ AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ 
+ # Used programs
