@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Astromenace
+Comment=Space shooter
+Exec=/usr/bin/astromenace
+Icon=/usr/share/pixmaps/astromenace.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;ArcadeGame;
