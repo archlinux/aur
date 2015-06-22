@@ -1,0 +1,31 @@
+pkgbase = xchat-gnome-git
+	pkgdesc = GNOME frontend to the popular X-Chat IRC client
+	pkgver = 0.3.0.2753.eb12886
+	pkgrel = 1
+	url = http://live.gnome.org/Xchat-Gnome
+	install = xchat-gnome.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool>=0.40.0
+	makedepends = gnome-doc-utils
+	makedepends = python2
+	makedepends = tcl
+	depends = gconf>=2.8.0
+	depends = libsexy>=0.1.11
+	depends = libnotify>=0.7.0
+	depends = libcanberra>=0.3
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = python2: plugin support
+	optdepends = tcl: plugin support
+	provides = xchat-gnome
+	conflicts = xchat-gnome
+	options = !libtool
+	source = git://git.gnome.org/xchat-gnome
+	sha256sums = SKIP
+
+pkgname = xchat-gnome-git
+
