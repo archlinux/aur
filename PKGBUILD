@@ -1,15 +1,15 @@
 # Contributor: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
 depends=('ncurses' 'qt5-tools' 'qt5-websockets' 'qt5-webengine' 'wget' 'pcre')
-source=('http://www.jsoftware.com/download/j701_b_source.tar.gz' 'http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20150404.tar.gz')
-md5sums=('2ef8f28c383665258588300587263294' 'SKIP' 'b5f5d8ab0650f03b7dc32e6505080c9b')
+source=('http://www.jsoftware.com/download/j701_b_source.tar.gz' 'http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20150620.tar.gz')
+md5sums=('2ef8f28c383665258588300587263294' 'SKIP' 'd331e03cd54f50a07efa8ea980d2c5cf')
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
 else
@@ -23,8 +23,8 @@ echo ${_version:10}
 
 prepare() {
 cd "${srcdir}"/jgplsrc
-sed -i 's@readline=0@readline=1@' bin/jconfig
-sed -i 's@LIBREADLINE=""@LIBREADLINE="/usr/lib/libreadline.so"@' bin/jconfig
+sed -i 's@# readline=1@readline=1@' bin/jconfig
+sed -i 's@# LIBREADLINE=" -ledit -lncurses "@LIBREADLINE=" -ledit -lncurses "@' bin/jconfig
 sed -i 's@-W1,soname,libj.so@-Wl,-soname,libj.so@' bin/jconfig
 sed -i 's@#define SY_ALIGN.*@#define SY_ALIGN 1@' js.h
 if [ "${CARCH}" = x86_64 ]; then
