@@ -1,0 +1,12 @@
+Index: wiicpp/wiicpp.h
+===================================================================
+--- wiicpp/wiicpp.h	(revision 90)
++++ wiicpp/wiicpp.h	(working copy)
+@@ -33,6 +33,7 @@
+ #ifndef WIICPP_H_
+ #define WIICPP_H_
+ 
++#include <unistd.h>
+ #include <vector>
+ #include <wiic.h>
+ #include <dataset.h>

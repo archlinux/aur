@@ -1,0 +1,20 @@
+pkgbase = wiic-svn
+	pkgdesc = WiiC is a C/C++ library that manages Wii devices. It supports Wiimote, Nunchuck, Classic, Guitar Hero 3, Motion Plus, and Balance Board.
+	pkgver = 90
+	pkgrel = 2
+	url = http://sourceforge.net/projects/wiic/
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = svn
+	depends = bluez
+	depends = opencv
+	provides = wiic
+	conflicts = wiic
+	source = wiic::svn+https://wiic.svn.sourceforge.net/svnroot/wiic/src/
+	source = usleep.patch
+	sha256sums = SKIP
+	sha256sums = b025fd075b63f8d5cc6f3903d700f3fecd26ab317626b06749181488a16d1695
+
+pkgname = wiic-svn
+
