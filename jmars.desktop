@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=JMARS
+Exec=/usr/share/jmars/jmars
+Icon=/usr/share/jmars/.install4j/jmars.png
+Categories=Application;
