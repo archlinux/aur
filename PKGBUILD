@@ -1,5 +1,5 @@
 pkgname=tuxonice-userui
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="TuxOnIce userspace user interface"
 url="https://github.com/NigelCunningham/Tuxonice-Userui"
@@ -10,7 +10,7 @@ depends=('bash' 'libmng' 'libpng' 'freetype2')
 makedepends=('')
 options=('!makeflags')
 source=(
-    'https://github.com/gdamjan/Tuxonice-Userui/archive/v1.1.1.tar.gz'
+    'https://github.com/gdamjan/Tuxonice-Userui/archive/v'${pkgver}'.tar.gz'
     'initcpio-install'
     'initcpio-hook'
     'pm-utils-hook'
@@ -34,7 +34,7 @@ package () {
   make INSTDIR=$pkgdir/usr/bin DESTDIR=$pkgdir PREFIX=/usr install
 }
 
-md5sums=('a04ea588012974beec16209a018677dc'
+md5sums=('5b6aba10d64691ce7c75eb59b6e6167e'
          'a8e8ecb03e319321713652e25bc34a98'
          '96a359994273ab0e8baa198914ef0433'
          '9f647880008584b7751c3f9ecec7945b'
