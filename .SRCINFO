@@ -1,0 +1,15 @@
+pkgbase = dell-idrac-tools
+	pkgdesc = Dell iDRAC server management tools (RACADM)
+	pkgver = 7.4.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = openssl098
+	options = !strip
+	source = http://downloads.dell.com/FOLDER02020533M/1/OM-MgmtStat-Dell-Web-LX-7.4.0-866_A00.tar.gz
+	source = http://downloads.dell.com/FOLDER02020533M/1/OM-MgmtStat-Dell-Web-LX-7.4.0-866_A00.tar.gz.sign
+	sha256sums = ea562fecb8c663912b9a0152a9f3e6cd457ddc7dfdb33da9dedba99c4a376e25
+	sha256sums = SKIP
+
+pkgname = dell-idrac-tools
+
