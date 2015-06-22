@@ -1,0 +1,27 @@
+pkgbase = radiotray-python3-git
+	pkgdesc = An online radio streaming player that runs on a Linux system tray.
+	pkgver = 0.7.3.498.3ef60fd
+	pkgrel = 1
+	url = http://radiotray.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gst-plugins-base
+	depends = gtk3
+	depends = libnotify
+	depends = python-xdg
+	depends = python-dbus
+	depends = gst-plugins-good
+	depends = python-lxml
+	optdepends = gst-plugins-bad
+	optdepends = gst-plugins-ugly
+	optdepends = gst-libav
+	provides = radiotray
+	conflicts = radiotray
+	conflicts = radiotray-svn
+	conflicts = radiotray-hg
+	source = git+https://github.com/lubosz/radiotray.git
+	md5sums = SKIP
+
+pkgname = radiotray-python3-git
+
