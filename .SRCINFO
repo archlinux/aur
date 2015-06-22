@@ -1,0 +1,18 @@
+pkgbase = libphonenumber
+	pkgdesc = library for parsing, formatting, storing and validating phone numbers by Google
+	pkgver = 7.0.6
+	pkgrel = 1
+	url = https://github.com/googlei18n/libphonenumber
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gtest
+	depends = boost-libs
+	depends = protobuf
+	source = https://github.com/googlei18n/libphonenumber/archive/libphonenumber-7.0.6.tar.gz
+	sha256sums = 3041e538d72c6b2e42e68da69df7ca6f74b84584ce148e0d33c87a1cd62b7cbc
+
+pkgname = libphonenumber
+
