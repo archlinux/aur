@@ -1,0 +1,26 @@
+pkgbase = xboxdrv-git
+	pkgdesc = An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers
+	pkgver = 0.9.0.1412.a99985e
+	pkgrel = 1
+	url = http://pingus.seul.org/~grumbel/xboxdrv/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = scons
+	makedepends = boost
+	makedepends = pkg-config
+	makedepends = libx11
+	makedepends = dbus-glib
+	makedepends = libusb
+	depends = libx11
+	depends = dbus-glib
+	depends = libusbx
+	provides = xboxdrv=0.9.0.1412.a99985e
+	conflicts = xboxdrv
+	source = xboxdrv-git::git://github.com/Grumbel/xboxdrv.git
+	source = xboxdrv.service
+	source = xboxdrv.conf
+
+pkgname = xboxdrv-git
+
