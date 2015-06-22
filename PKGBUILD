@@ -1,5 +1,3 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-freetype2
 pkgver=2.1.10
 pkgrel=1
@@ -11,7 +9,8 @@ groups=('psp')
 depends=('psp-sdk')
 makedepends=('psp-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("git+https://github.com/pspdev/psp-ports.git")
+# before PR#17
+source=("git+https://github.com/pspdev/psp-ports.git#commit=c4d3464")
 md5sums=('SKIP')
 
 

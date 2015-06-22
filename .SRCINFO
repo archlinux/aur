@@ -11,7 +11,7 @@ pkgbase = psp-freetype2
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = git+https://github.com/pspdev/psp-ports.git
+	source = git+https://github.com/pspdev/psp-ports.git#commit=c4d3464
 	md5sums = SKIP
 
 pkgname = psp-freetype2
