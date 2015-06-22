@@ -1,0 +1,14 @@
+pkgbase = postgresql-ip4r
+	pkgdesc = ip4r support for postgresql
+	pkgver = 2.0.2
+	pkgrel = 2
+	url = http://ip4r.projects.pgfoundry.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = postgresql>=9.2
+	source = ip4r.tgz::http://pgfoundry.org/frs/download.php/3650/$_pkg_name-$pkgver.tgz
+	md5sums = ae4d6eb8b7949f791c14041e7fe07464
+
+pkgname = postgresql-ip4r
+
