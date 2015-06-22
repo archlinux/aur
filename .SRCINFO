@@ -1,0 +1,13 @@
+pkgbase = python-crank
+	pkgdesc = Generalized Object based Dispatch mechanism for use across frameworks.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/TurboGears/crank
+	arch = any
+	license = MIT
+	depends = python
+	source = git://github.com/TurboGears/crank.git#tag=0.7.1
+	md5sums = SKIP
+
+pkgname = python-crank
+
