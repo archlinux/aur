@@ -1,0 +1,13 @@
+pkgbase = mythes-ru
+	pkgdesc = Russian thesaurus
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://wiki.services.openoffice.org/wiki/Dictionaries
+	arch = any
+	license = LGPL
+	optdepends = libmythes: offers thesaurus library functions
+	source = http://pkgs.fedoraproject.org/repo/pkgs/mythes-ru/thes_ru_RU_v2.zip/802cc8a3e5447a65debdbad13247f5c4/thes_ru_RU_v2.zip
+	sha256sums = 58f7f86d63b9f4052c90f4964a37b608b4defabf0723902fa9b6f007a35fbdd4
+
+pkgname = mythes-ru
+
