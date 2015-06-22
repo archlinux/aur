@@ -1,0 +1,16 @@
+pkgbase = gletools-hg
+	pkgdesc = Advanced opengl utilities for pyglet.
+	pkgver = 20101219
+	pkgrel = 1
+	url = http://codeflow.org
+	arch = any
+	license = custom:AGPL3
+	makedepends = python2-distribute
+	makedepends = mercurial
+	depends = python2
+	depends = pyglet-hg
+	provides = gletools
+	conflicts = gletools
+
+pkgname = gletools-hg
+
