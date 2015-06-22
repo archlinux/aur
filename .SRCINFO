@@ -1,0 +1,15 @@
+pkgbase = adflib
+	pkgdesc = A free, portable and open implementation of the Amiga filesystem
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = http://lclevy.free.fr/adflib/unadf.html
+	arch = i686,
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	optdepends = unadf
+	source = https://github.com/tonigi/ADFlib/archive/0.7.12.tar.gz
+	md5sums = af11dbb3f79ef799538c9f03cd5a40cd
+
+pkgname = adflib
+
