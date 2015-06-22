@@ -1,0 +1,14 @@
+pkgbase = qmail-qfilter
+	pkgdesc = qmail-queue multi-filter front end
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://untroubled.org/qmail-qfilter/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bglibs
+	source = http://untroubled.org/qmail-qfilter/qmail-qfilter-2.1.tar.gz
+	md5sums = 744c4399a7f8c94b6c198e3de9941093
+
+pkgname = qmail-qfilter
+
