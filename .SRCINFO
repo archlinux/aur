@@ -1,0 +1,16 @@
+pkgbase = simple-tpm-pk11-git
+	pkgdesc = Simple PKCS11 provider for TPM chips. GIT version.
+	pkgver = 0.02.2.g7bf168f
+	pkgrel = 1
+	url = http://blog.habets.se/2013/11/TPM-chip-protecting-SSH-keys---properly
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = tpm-tools
+	depends = opencryptoki
+	provides = simple-tpm-pk11
+	source = git+https://github.com/ThomasHabets/simple-tpm-pk11.git
+	md5sums = SKIP
+
+pkgname = simple-tpm-pk11-git
+
