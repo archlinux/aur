@@ -1,7 +1,7 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 
 pkgname=python-q
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc='Quick-and-dirty debugging output for tired (Python) programmers'
 arch=('any')
@@ -9,7 +9,7 @@ url='http://pypi.python.org/pypi/q/'
 license=('Apache')
 depends=('python')
 source=("http://pypi.python.org/packages/source/q/q/q-$pkgver.tar.gz")
-md5sums=('d4c4ee489dea818f85dfcfb9156fe8de')
+md5sums=('0251ce38a2dce77917a8929d7968e035')
 
 package() {
   cd "$srcdir/q-$pkgver"
