@@ -1,0 +1,14 @@
+pkgbase = django-haystack-git
+	pkgdesc = Modular search for Django.
+	pkgver = 20120918
+	pkgrel = 1
+	url = http://haystacksearch.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = django
+	optdepends = python2-pysolr-git: solr backend
+
+pkgname = django-haystack-git
+
