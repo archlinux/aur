@@ -1,0 +1,16 @@
+pkgbase = ttf-goodcity
+	pkgdesc = A basic decorative medieval style ttf font by A. S. Meit
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.dafont.com/good-city-modern.font
+	install = ttf.install
+	arch = any
+	license = Uknown proprietary
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=good_city_modern
+	md5sums = 0aaf829370590d41791b5d6ce0c784cd
+
+pkgname = ttf-goodcity
+
