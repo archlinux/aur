@@ -3,7 +3,7 @@
 
 pkgname=lib32-libappindicator-gtk2
 pkgver=12.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Allow applications to export a menu into the Unity Menu bar'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libappindicator'
@@ -37,15 +37,15 @@ build() {
   export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
 
   ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libdir=/usr/lib32 \
-              --disable-{gtk-doc-html,mono-test,static,tests,mono}
-  make -j1
+              --disable-{gtk-doc-html,mono-test,static,tests}
+  make CSC=dmcs -j1
 }
 
 package() {
   cd libappindicator-${pkgver}
 
-  make -j1 DESTDIR="${pkgdir}" install
-  make -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
+  make CSC=dmcs -j1 DESTDIR="${pkgdir}" install
+  make CSC=dmcs -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
   rm -rf "${pkgdir}"/usr/share
   rm -rf "${pkgdir}"/usr/include
 }
