@@ -4,7 +4,7 @@
 
 pkgname=shinken
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
 url='http://www.shinken-monitoring.org/'
@@ -96,6 +96,7 @@ source=(
     "shinken-receiver.service"
     "shinken-scheduler.service"
     "shinken.tmpfiles"
+    "default"
 )
 
 prepare() {
@@ -119,11 +120,12 @@ package() {
     cd "$srcdir/shinken-${pkgver}"
 
     mkdir -p $pkgdir/usr/lib/python2.7/site-packages/
-    cp -r build/bdist.linux-x86_64/egg/shinken $pkgdir/usr/lib/python2.7/site-packages/
+    cp -r build/lib/shinken $pkgdir/usr/lib/python2.7/site-packages/
 
     mkdir -p $pkgdir/etc/default
     cp -r etc/ $pkgdir/etc/shinken/
-    cp build/bin/default/shinken $pkgdir/etc/default/shinken
+
+    cp $srcdir/default $pkgdir/etc/default/shinken
 
     mkdir -p $pkgdir/usr/bin
     BINFILES=`ls bin/shinken* | grep -v "\.py$"`
@@ -163,5 +165,6 @@ sha256sums=('b5734a5764aec89ae0286d505bb9f260b6ee1aa3b6fa1d9ef20fd261fe6def8b'
             '8c2bdcc3af62f06a2f8168fb9eef74d65a931fba8be91a4947edc7d3e93666b1'
             'eaf9ca44e8d4a1589d694ea9341ad91c41306a6c0038d5fa7a41e36556cfafff'
             'b4d80c1b54dfa5890d4a9e68622e197444aa8c6132d003b7ddd12ae9b2a15615'
-            '02bfb59fdfdbfd3f55ef8a32c2b7c70f340d4db604a8d3bf7b22825632f0584d')
+            '02bfb59fdfdbfd3f55ef8a32c2b7c70f340d4db604a8d3bf7b22825632f0584d'
+            '3cfb0d927acc802cbaadd1031da215df7250784f8ace99e18c53ba36423b7411')
 
