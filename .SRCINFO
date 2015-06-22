@@ -1,0 +1,20 @@
+pkgbase = keyfinder-git
+	pkgdesc = KeyFinder is a tool for estimating the musical key of digital recordings, to aid DJs in harmonic mixing.
+	pkgver = 243.e200ccc
+	pkgrel = 1
+	url = http://www.ibrahimshaath.co.uk/keyfinder/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = libsamplerate
+	depends = libkeyfinder-git
+	depends = qt5-xmlpatterns
+	provides = keyfinder
+	conflicts = keyfinder
+	source = git://github.com/ibsh/is_KeyFinder.git
+	sha256sums = SKIP
+
+pkgname = keyfinder-git
+
