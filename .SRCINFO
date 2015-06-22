@@ -1,0 +1,34 @@
+pkgbase = pipelight
+	pkgdesc = A browser plugin which allows one to use windows only plugins inside Linux browser
+	pkgver = 0.2.8
+	pkgrel = 2
+	epoch = 1
+	url = https://launchpad.net/pipelight
+	install = pipelight.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	license = MPL
+	makedepends = cabextract
+	makedepends = xz
+	depends = wine-silverlight>=1.7.33-1
+	depends = ttf-ms-fonts
+	depends = wget
+	depends = cabextract
+	depends = unzip
+	depends = gnupg
+	depends = libsm
+	depends = libgl
+	optdepends = zenity: needed for file dialogs,
+	optdepends = kdebase-kdialog: needed for file dialogs in KDE
+	noextract = pluginloader-v0.2.8.tar.gz
+	source = https://bitbucket.org/mmueller2012/pipelight/get/v0.2.8.tar.bz2
+	source = pluginloader-v0.2.8.tar.gz::http://repos.fds-team.de/pluginloader/v0.2.8/pluginloader.tar.gz
+	source = gnupg_fix.patch
+	md5sums = 9fcbc7019a49eb0c2f613eaba0e96df6
+	md5sums = 71b595924b8c8d91c830c2a897362ad2
+	md5sums = ac561ff3cc7df2bc3805567780ed545c
+
+pkgname = pipelight
+
