@@ -1,0 +1,28 @@
+pkgbase = gnome-terminal-git
+	pkgdesc = The GNOME Terminal Emulator. Git Version
+	pkgver = 3.15.91.5228.e5f7763
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = gnome-terminal.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = gtk2
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = appdata-tools
+	depends = gconf
+	depends = vte3-git
+	depends = gsettings-desktop-schemas
+	depends = libsm
+	provides = gnome-terminal=3.15.91.5228.e5f7763
+	conflicts = gnome-terminal
+	options = !emptydirs
+	source = git://git.gnome.org/gnome-terminal
+	md5sums = SKIP
+
+pkgname = gnome-terminal-git
+
