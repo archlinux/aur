@@ -14,8 +14,8 @@ _build_voip=false
 _svnmod=trunk
 
 pkgname=retroshare-svn
-pkgver=8406
-pkgrel=2
+pkgver=8541
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -82,6 +82,11 @@ build() {
 	cd libresapi/src
 	$_qmake
 	make
+	# i'm not 100% sure if this step is required
+	# it will download/update some JavaScript files
+	cd webui
+	make
+	cd ..
 	cd ../..
 
 	msg "Compiling retroshare-gui..."
@@ -121,12 +126,22 @@ package() {
 	cd "$srcdir/$_svnmod"
 
 	# Binaries
-	install -D -m 755 retroshare-gui/src/RetroShare "$pkgdir/usr/bin/retroshare"
+	install -D -m 755 \
+		retroshare-gui/src/RetroShare \
+		"$pkgdir/usr/bin/retroshare"
 	if [[ "$_build_nogui" == "true" ]]; then
 		install -D -m 755 \
 			"retroshare-nogui/src/retroshare-nogui" \
 			"${pkgdir}/usr/bin/retroshare-nogui"
 	fi
+
+	# Webui files
+	install -d -m 655 "${pkgdir}/usr/share/RetroShare/webfiles/"
+	for _file in $(ls libresapi/src/webfiles/); do
+		install -D -m 644 \
+			"libresapi/src/webfiles/${_file}" \
+			"${pkgdir}/usr/share/RetroShare/webfiles/"
+	done
 
 	# Plugins
 	if [[ "$_build_voip" == "true" ]] ; then
