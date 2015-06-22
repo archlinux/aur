@@ -1,4 +1,4 @@
-# Maintainer: felix <`[ $RANDOM % 6 = 0 ] && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgbase=unifont
 pkgname=(
 	ttf-unifont
