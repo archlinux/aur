@@ -1,0 +1,15 @@
+pkgbase = dxa65
+	pkgdesc = Disassembler for MOS 6502 and compatible CPUs
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://www.floodgap.com/retrotech/xa#dxa
+	arch = i686,
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	optdepends = unadf
+	source = http://www.floodgap.com/retrotech/xa/dists/dxa-0.1.3.tar.gz
+	md5sums = 4fb88a7eda5939472b3a1d1c48b057fc
+
+pkgname = dxa65
+
