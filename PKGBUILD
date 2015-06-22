@@ -3,7 +3,7 @@
 
 pkgname=lib32-glew1.10
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform C/C++ extension loading library'
 arch=('x86_64')
 url='http://glew.sourceforge.net'
@@ -31,8 +31,7 @@ package() {
   cd glew-${pkgver}
 
   make GLEW_DEST="${pkgdir}/usr" install
-  rm -rf "${pkgdir}"/usr/{bin,include,lib32/{libGLEW.so,pkgconfig}}
-  #chmod 755 "${pkgdir}"/usr/lib32/libGLEW.so.${pkgver}
+  rm -rf "${pkgdir}"/usr/{bin,include,lib32/{libGLEW.{a,so},pkgconfig}}
 
   install -dm 755 "${pkgdir}"/usr/share/licenses/lib32-glew1.10
   install -m 644 LICENSE.txt "${pkgdir}"/usr/share/licenses/lib32-glew1.10/
