@@ -1,0 +1,18 @@
+pkgbase = nvc-git
+	pkgdesc = VHDL compiler and simulator
+	pkgver = r2798.e2bdf92
+	pkgrel = 1
+	url = https://github.com/nickg/nvc
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = pkgconfig
+	makedepends = make
+	makedepends = flex
+	depends = llvm
+	depends = tcl
+	source = git+https://github.com/nickg/nvc.git
+	md5sums = SKIP
+
+pkgname = nvc-git
+
