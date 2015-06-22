@@ -1,0 +1,28 @@
+pkgbase = wesnoth-git
+	pkgdesc = The latest version of a turn-based strategy game on a fantasy world
+	pkgver = 1.11.11.4439.g0771fdd
+	pkgrel = 1
+	url = http://www.wesnoth.org/
+	arch = x86_64
+	license = GPL
+	makedepends = openssh
+	makedepends = python
+	makedepends = scons
+	makedepends = git
+	depends = boost
+	depends = fribidi
+	depends = lua
+	depends = sdl
+	depends = sdl_ttf
+	depends = sdl_net
+	depends = sdl_mixer
+	depends = sdl_image
+	provides = wesnoth
+	conflicts = wesnoth
+	conflicts = wesnoth-data
+	conflicts = wesnoth-devel
+	source = git://github.com/wesnoth/wesnoth.git
+	md5sums = SKIP
+
+pkgname = wesnoth-git
+
