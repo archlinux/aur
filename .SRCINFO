@@ -1,0 +1,15 @@
+pkgbase = bglibs
+	pkgdesc = BG Libraries Collection
+	pkgver = 1.106
+	pkgrel = 1
+	url = http://untroubled.org/bglibs
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = perl
+	options = !libtool
+	source = http://untroubled.org/bglibs/bglibs-1.106.tar.gz
+	md5sums = 99bf5936456c7661c329beab63d2b520
+
+pkgname = bglibs
+
