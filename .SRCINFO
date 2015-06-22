@@ -1,6 +1,6 @@
 pkgbase = godot-git
 	pkgdesc = Godot Game Engine.
-	pkgver = 1.1._stable_37af8b4
+	pkgver = 1.1.r1488.e9bbb97
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
