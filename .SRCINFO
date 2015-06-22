@@ -1,0 +1,13 @@
+pkgbase = robustirc-bridge-git
+	pkgdesc = Bridge to robustirc.net-IRC-Network, latest version from git
+	pkgver = 20150317
+	pkgrel = 1
+	url = https://github.com/robustirc/bridge
+	arch = i686
+	arch = x86_64
+	license = BSD-3-clause
+	depends = go
+	conflicts = robustirc-bridge
+
+pkgname = robustirc-bridge-git
+
