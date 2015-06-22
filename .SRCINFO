@@ -1,0 +1,14 @@
+pkgbase = freeimage-qt-git
+	pkgdesc = FreeImage patched to be linkable against Qt
+	pkgver = 20101223
+	pkgrel = 1
+	url = http://freeimage.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	provides = freeimage
+	conflicts = freeimage
+
+pkgname = freeimage-qt-git
+
