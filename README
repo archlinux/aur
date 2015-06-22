@@ -1,0 +1,31 @@
+arch-tetra SLiM Login Manager theme
+=============================
+
+Introduction
+------------
+This package contains minimal login theme for the SLiM login manager 
+(http://slim.berlios.de/).
+
+Requirements
+------------
+For proper viewing, this theme relies on the 'egdes' typeface (font),
+from Artwiz (http://artwizaleczapka.sourceforge.net/).  These fonts 
+may already be available from your distribution's repository.  
+
+Arch Linux users can install them by running the following as root:
+
+    # pacman -S artwiz-fonts
+
+Installation
+------------
+Installation will depend upon your distribution; typically SLiM themes
+are placed in '/usr/share/slim/themes/'
+
+Arch Linux users can install it with their preferred method via AUR:
+    https://aur.archlinux.org/packages/slim-theme-arch-tetra/
+
+Once installed, activate a given theme by editing the SLiM config,
+located at '/etc/slim.conf' for Arch Linux users. Change the value for 
+'current_theme' to the name of the theme folder:
+
+    current_theme   arch-tetra
