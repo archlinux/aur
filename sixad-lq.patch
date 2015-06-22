@@ -1,0 +1,28 @@
+--- qtsixa/qtsixa/sixad-lq.orig	2013-09-29 21:43:43.156531023 -0400
++++ qtsixa/qtsixa/sixad-lq	2013-09-29 21:47:58.981811765 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ # Small utility that triggers an action when certain LQ (Link/Signal Quality) attributtes are achieved
+@@ -10,10 +10,10 @@
+ 
+ #Check for system arguments
+ if (len(sys.argv) == 1):
+-  print "Usage:  sixa_lq <addr (text)> <operation (text)> <value (int)> <alsoDisconnect? (bool-int)> <bash command (text, in commas)>"
++  print "Usage:  sixad_lq <addr (text)> <operation (text)> <value (int)> <alsoDisconnect? (bool-int)> <bash command (text, in commas)>"
+   exit(0)
+ elif (len(sys.argv) < 5):
+-  print "Error: Unsufficient arguments"
++  print "Error: Insufficient arguments"
+   exit(-1)
+ 
+ 
+@@ -98,4 +98,4 @@
+ 
+ else:
+   print "Error: Invalid operation selected"
+-  exit(-5)
+\ No newline at end of file
++  exit(-5)

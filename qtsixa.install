@@ -1,0 +1,15 @@
+post_install() {
+  groupadd sixad &> /dev/null 
+  chown -R root:sixad /var/lib/sixad/
+  chmod 775 -R /var/lib/sixad/
+  echo "You may need to add your user in sixad's group in order to use QTSixa"
+  echo "'sudo usermod -a -G sixad username'"
+}
+ 
+post_upgrade() {
+  groupadd sixad &> /dev/null 
+  chown -R root:sixad /var/lib/sixad/
+  chmod 775 -R /var/lib/sixad/
+  echo "You may need to add your user in sixad's group in order to use QTSixa"
+  echo "'sudo usermod -a -G sixad username'"
+}

@@ -1,0 +1,8 @@
+--- qtsixa/qtsixa/sixad-notify.orig	2013-09-29 21:43:56.159793912 -0400
++++ qtsixa/qtsixa/sixad-notify	2013-09-29 21:48:22.971681801 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ # Small utility that displays notifications when a device* is connected

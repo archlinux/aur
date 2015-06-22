@@ -1,0 +1,54 @@
+--- qtsixa/sixad/sixad.init.ori	2011-07-18 20:04:47.000000000 +0200
++++ qtsixa/sixad/sixad.init	2011-10-22 16:40:56.000000000 +0200
+@@ -19,40 +19,40 @@
+ ps -e | grep sixad-bin > /dev/null
+ }
+ 
+-. /lib/lsb/init-functions
++. /etc/rc.conf
++. /etc/rc.d/functions
+ 
+ case "$1" in
+   start)
+ if (sixad_already_running_check "$1"); then
+-  log_warning_msg "sixad is already running"
++  stat_busy "Sixad is already running."
++  stat_fail
+ else
+ {
+-  log_daemon_msg "Starting sixad"
++  stat_busy "Starting sixad"
+   $DAEMON --start &>>/var/log/sixad &
+-  log_end_msg 0
++  stat_done
+ }
+ fi
+     ;;
+   stop)
+     if (sixad_already_running_check "$1"); then
+     {
+-      log_daemon_msg "Stopping sixad"
++      stat_busy "Stopping sixad"
+       $DAEMON --stop || true
+-      log_end_msg 0
++      stat_done
+     }
+     else
+-      log_warning_msg "sixad is not running"
++      stat_busy "Stopping sixad... is not running"
++      stat_fail
+     fi
+     ;;
+   restart)
+     $0 stop
+     $0 start
+     ;;
+-  status)
+-    status_of_proc "sixad-bin" "sixad" && exit 0 || exit $?
+-    ;;
+   *)
+-    echo "Usage: /etc/init.d/sixad {start|stop|restart|status}" >&2
++    echo "Usage: /etc/rc.d/sixad {start|stop|restart}" >&2
+     exit 1
+     ;;
+ esac

@@ -1,0 +1,17 @@
+--- qtsixa/sixad/sixad.orig	2011-10-12 18:39:33.000000000 +0200
++++ qtsixa/sixad/sixad	2011-12-28 18:18:05.000000000 +0100
+@@ -117,10 +117,10 @@
+   $SUDO rc-update add sixad
+ # Debian (default)
+ else
+-  if [ -f /etc/rc2.d/S90sixad ]; then true; else $SUDO ln -s /etc/init.d/sixad /etc/rc2.d/S90sixad; fi
+-  if [ -f /etc/rc3.d/S90sixad ]; then true; else $SUDO ln -s /etc/init.d/sixad /etc/rc3.d/S90sixad; fi
+-  if [ -f /etc/rc4.d/S90sixad ]; then true; else $SUDO ln -s /etc/init.d/sixad /etc/rc4.d/S90sixad; fi
+-  if [ -f /etc/rc5.d/S90sixad ]; then true; else $SUDO ln -s /etc/init.d/sixad /etc/rc5.d/S90sixad; fi
++  if [ -f /etc/rc2.d/S90sixad ]; then true; else $SUDO ln -s /etc/rc.d/sixad /etc/rc2.d/S90sixad; fi
++  if [ -f /etc/rc3.d/S90sixad ]; then true; else $SUDO ln -s /etc/rc.d/sixad /etc/rc3.d/S90sixad; fi
++  if [ -f /etc/rc4.d/S90sixad ]; then true; else $SUDO ln -s /etc/rc.d/sixad /etc/rc4.d/S90sixad; fi
++  if [ -f /etc/rc5.d/S90sixad ]; then true; else $SUDO ln -s /etc/rc.d/sixad /etc/rc5.d/S90sixad; fi
+ fi
+   ;;
+ 
