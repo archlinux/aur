@@ -1,0 +1,14 @@
+pkgbase = iselect
+	pkgdesc = Interactive Terminal Selection
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = http://www.ossp.org/pkg/tool/iselect/
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	depends = ncurses
+	source = ftp://ftp.ossp.org/pkg/tool/iselect/iselect-1.4.0.tar.gz
+	md5sums = d278a61fe2557f9ce8270328b5f7b3b6
+
+pkgname = iselect
+
