@@ -1,0 +1,14 @@
+post_install() {
+	echo "Recompiling schemas."
+	glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+post_upgrade() {
+	echo "Recompiling schemas."
+	glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+post_remove() {
+	echo "Recompiling schemas."
+	glib-compile-schemas /usr/share/glib-2.0/schemas
+}
