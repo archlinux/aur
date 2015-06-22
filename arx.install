@@ -1,0 +1,10 @@
+post_install() {
+  echo "This package only installs the game binary."
+  echo "You will also need the demo or full game data."
+  echo "Launch arx from the directory where data.pak is located."
+  echo "See http://arx.parpg.net/Getting_the_game_data for more information."
+}
+
+post_upgrade() {
+  post_install
+}

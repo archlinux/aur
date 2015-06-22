@@ -1,0 +1,24 @@
+pkgbase = arx-git
+	pkgdesc = Cross-platform port of Arx Fatalis.
+	pkgver = 20111108
+	pkgrel = 1
+	url = https://github.com/arx/ArxLibertatis
+	install = arx.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = sdl
+	depends = devil
+	depends = openal
+	depends = zlib
+	depends = boost
+	depends = glew
+	depends = mesa
+	depends = libgl
+	provides = arx
+	conflicts = arx
+
+pkgname = arx-git
+
