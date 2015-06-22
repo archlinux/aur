@@ -1,0 +1,16 @@
+pkgbase = ttf-labrit
+	pkgdesc = A basic decorative ttf font by Apostrophic Labs
+	pkgver = 1
+	pkgrel = 1
+	url = http://moorstation.org/typoasis/designers/lab/
+	install = ttf.install
+	arch = any
+	license = Free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=labrit
+	md5sums = 25d12059e240c989456bf11653ca66a2
+
+pkgname = ttf-labrit
+
