@@ -1,0 +1,18 @@
+pkgbase = opencbm-git
+	pkgdesc = OpenCBM allows access to Commodore (C64) storage devices VIC 1540, 1541, 1570, 1571, or even 1581 floppy drive
+	pkgver = r1186.f1712e2
+	pkgrel = 1
+	epoch = 
+	url = http://sourceforge.net/projects/opencbm/
+	install = 
+	changelog = 
+	arch = i686,
+	arch = x86_64
+	license = GPL2
+	makedepends = cc65
+	depends = ncurses
+	depends = libusb-compat
+	source = git+http://git.code.sf.net/p/opencbm/code
+
+pkgname = opencbm-git
+
