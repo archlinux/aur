@@ -11,7 +11,7 @@ _commit=HEAD
 
 pkgname=rtorrent-pyro-git
 pkgver=20150506
-pkgrel=1
+pkgrel=2
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
 license=('GPL')
@@ -81,7 +81,7 @@ prepare() {
 
 build() {
     cd "$srcdir/rtorrent"
-    #xport CC=clang
+    #export CC=clang
     #export CXX=clang++
     export CXXFLAGS+=" -std=c++11 -fno-strict-aliasing"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"

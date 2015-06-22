@@ -1,7 +1,7 @@
 pkgbase = rtorrent-pyro-git
 	pkgdesc = Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches
 	pkgver = 20150506
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyroscope/rtorrent-ps
 	install = pyroscope.install
 	arch = i686
