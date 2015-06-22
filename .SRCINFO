@@ -1,0 +1,17 @@
+pkgbase = python2-pycanberra-git
+	pkgdesc = simple wrapper around most of the libcanberra public api
+	pkgver = 8.88c53cd
+	pkgrel = 1
+	url = https://github.com/psykoyiko/pycanberra
+	arch = any
+	license = (L)GPL2
+	makedepends = git
+	depends = libcanberra
+	depends = python2
+	conflicts = python2-pycanberra
+	replaces = python2-pycanberra
+	source = git://github.com/psykoyiko/pycanberra.git
+	sha1sums = SKIP
+
+pkgname = python2-pycanberra-git
+
