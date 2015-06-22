@@ -1,0 +1,25 @@
+pkgbase = ptask-git
+	pkgdesc = A GTK+ graphical user interface for managing tasks in taskwarrior
+	pkgver = 0.0.9.r3.g81823af
+	pkgrel = 1
+	url = http://wpitchoune.net/ptask
+	install = ptask-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = help2man
+	makedepends = asciidoc
+	depends = task
+	depends = json-c
+	depends = gtk3
+	depends = xdg-utils
+	provides = ptask
+	conflicts = ptask
+	source = ptask-git::git+http://git.wpitchoune.net/ptask.git
+	source = task-2.4.4-compat.patch
+	sha512sums = SKIP
+	sha512sums = 85ee768407ca6827df6544d86772d392e269d26e1ca6ca2faebb059e52cc9acd04c4baf2a1f4f02f5d088dd470992c9a35398512c465a988fc3aa3588d1a8a77
+
+pkgname = ptask-git
+
