@@ -38,7 +38,7 @@ build() {
 
   ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libdir=/usr/lib32 \
               --disable-{gtk-doc-html,mono-test,static,tests} --with-gtk='3'
-  make -j1
+  make CSC=dmcs -j1
 }
 
 package_lib32-libappindicator-gtk3() {
@@ -48,8 +48,8 @@ package_lib32-libappindicator-gtk3() {
 
   cd libappindicator-${pkgver}
 
-  make -j1 DESTDIR="${pkgdir}" install
-  make -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
+  make CSC=dmcs -j1 DESTDIR="${pkgdir}" install
+  make CSC=dmcs -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
   rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/include"
 }
@@ -59,7 +59,7 @@ arch=('any')
 
   cd libappindicator-${pkgver}
 
-  make -j1 -C bindings/mono DESTDIR="${pkgdir}" install
+  make CSC=dmcs -j1 -C bindings/mono DESTDIR="${pkgdir}" install
   ls "${pkgdir}/usr/lib/mono"
   mv "${pkgdir}/usr/lib/mono/appindicator-sharp" "${pkgdir}/usr/lib32/mono/"
   mv "${pkgdir}/usr/lib/mono/gac" "${pkgdir}/usr/lib32/mono/"
