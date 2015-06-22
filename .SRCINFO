@@ -1,0 +1,17 @@
+pkgbase = ctags-php
+	pkgdesc = Generates an index file of language objects found in source files. SVN trunk revision 804. With php patch.
+	pkgver = 804
+	pkgrel = 1
+	url = http://sourceforge.net/p/ctags/patches/83/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = glibc
+	provides = ctags
+	conflicts = ctags
+	source = http://sourceforge.net/p/ctags/patches/_discuss/thread/3a930d9f/1405/attachment/0000-PHP-parser-rewrite.patch
+	sha256sums = 689859265e7ea6b7246c8142d0d3844fd867826b01cbfe7fd4e2a29fa3b39336
+
+pkgname = ctags-php
+
