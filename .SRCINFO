@@ -1,0 +1,16 @@
+pkgbase = ggoban
+	pkgdesc = A gtk go game interface to play and edit game records
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://launchpad.net/ggoban
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gtkmm
+	optdepends = gnugo: playing against the computer
+	source = http://launchpad.net/ggoban/trunk/0.2/+download/ggoban-0.2.tar.gz
+	sha512sums = 52cde90ccf09a32e9cde6bebdcdde62f9b64a8a3a40a906b0676345bc5f93f9eada86283087b6c8755f66e1e3427e734d3b212ba4f47b72e46d4bdd17300f6ea
+
+pkgname = ggoban
+
