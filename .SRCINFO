@@ -1,0 +1,20 @@
+pkgbase = kerminal-git
+	pkgdesc = A terminal user interface for Kerbal Space Program via the Telemachus mod.
+	pkgver = 20141202.5436795
+	pkgrel = 1
+	url = https://github.com/SavinaRoja/Kerminal
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-docopt
+	depends = python-autobahn
+	depends = python-npyscreen2
+	provides = kerminal
+	conflicts = kerminal
+	options = !emptydirs
+	source = kerminal::git+https://github.com/SavinaRoja/Kerminal
+	md5sums = SKIP
+
+pkgname = kerminal-git
+
