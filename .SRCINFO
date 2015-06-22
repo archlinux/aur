@@ -1,0 +1,37 @@
+pkgbase = r-deprecated-215
+	pkgdesc = Language and environment for statistical computing and graphics - deprecated version (2.15.3)
+	pkgver = 215
+	pkgrel = 3
+	url = http://www.r-project.org/
+	install = r-215.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = blas
+	depends = lapack
+	depends = bzip2
+	depends = libpng
+	depends = libjpeg
+	depends = libtiff
+	depends = ncurses
+	depends = pcre
+	depends = readline
+	depends = zlib
+	depends = perl
+	depends = gcc-libs
+	depends = tk
+	depends = libxt
+	depends = libxmu
+	depends = pango
+	depends = xz
+	options = !makeflags
+	source = http://cran.rapporter.net/src/base/R-2/R-2.15.3.tar.gz
+	source = r-215.desktop
+	source = r-215.png
+	md5sums = b2f1a5d701f1f90679be0c60e1931a5c
+	md5sums = 74294ec8b4b06b6d43f6b48d4517de6e
+	md5sums = ba441e25f707d69566b84d90ca071ded
+
+pkgname = r-deprecated-215
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=R-devel
+GenericName=environment for statistical computing - deprecated version (2.15.3)
+Comment=language and environment for statistical computing and graphics - deprecated version
+Exec=R-215
+Icon=/usr/share/pixmaps/r-215.png
+DocPath=/usr/lib/R-215/doc/html/index.html
+StartupNotify=true
+Terminal=true
+Type=Application
+Categories=Education;Science;Math;
