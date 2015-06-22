@@ -1,0 +1,16 @@
+pkgbase = django-profiles-hg
+	pkgdesc = A simple, generic user-profile application for Django
+	pkgver = 0.2.25.c21962558420
+	pkgrel = 1
+	url = http://bitbucket.org/ubernostrum/django-profiles/wiki/Home
+	arch = any
+	license = BSD
+	makedepends = python-distribute
+	depends = python-django
+	provides = django-profiles
+	conflicts = django-profiles
+	source = hg+https://bitbucket.org/ubernostrum/django-profiles
+	md5sums = SKIP
+
+pkgname = django-profiles-hg
+
