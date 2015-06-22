@@ -1,0 +1,23 @@
+pkgbase = graph-gtk-git
+	pkgdesc = Provides an embedible "boxes and lines" graph editor in the form of a Gtk+ widget
+	pkgver = 0.1.60.4e721bb
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	depends = libxml2
+	depends = glib2
+	optdepends = sh: feedback script
+	provides = graph-gtk=0.1.60.4e721bb
+	conflicts = graph-gtk
+	options = !libtool
+	source = git+https://github.com/lubosz/graph-gtk.git#branch=gir
+	md5sums = SKIP
+
+pkgname = graph-gtk-git
+
