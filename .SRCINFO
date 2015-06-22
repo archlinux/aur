@@ -1,0 +1,17 @@
+pkgbase = fastforward
+	pkgdesc = fastforward handles qmail forwarding according to a cdb database
+	pkgver = 0.51
+	pkgrel = 1
+	url = http://cr.yp.to/fastforward.html
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	depends = qmail
+	source = http://cr.yp.to/software/fastforward-0.51.tar.gz
+	source = fastforward-cc-conf.patch
+	md5sums = 6dc619180ba9726380dc1047e45a1d8d
+	md5sums = 7c6ebb4e2e514bebc11296f0a2ee80eb
+
+pkgname = fastforward
+
