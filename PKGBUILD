@@ -2,9 +2,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-pae
-pkgver=352.09
+pkgver=352.21
 _extramodules=extramodules-4.0-pae
-pkgrel=3
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-pae"
 arch=('i686')
 url="http://www.nvidia.com/"
@@ -19,7 +19,7 @@ source=("nv-drm.patch")
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301')
-md5sums_i686=('0e009686400c522209eaa8ab835ff81f')
+md5sums_i686=('c91760a04f658845722380f6c7fd4709')
 md5sums_x86_64=('9ca9f07f91361362f304ca8317ddd453')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
