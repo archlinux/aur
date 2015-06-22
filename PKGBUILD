@@ -1,4 +1,3 @@
-
 pkgname=psp-newlib
 pkgver=1.20.0
 pkgrel=1
@@ -33,5 +32,6 @@ package()
   cd "$srcdir/newlib-$pkgver/build-psp"
   make install DESTDIR="$pkgdir"
   rm -r "$pkgdir"/usr/share
+  rm "$pkgdir"/usr/psp/lib/crt0.o # provided by psp-sdk
 }
 
