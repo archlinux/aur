@@ -1,22 +1,12 @@
-From c64466c743a3c1a278692226b959924098704710 Mon Sep 17 00:00:00 2001
-From: ChucklesTheBeard <ChucklesTheBeard+git@gmail.com>
-Date: Mon, 1 Jun 2015 18:34:25 -0400
-Subject: [PATCH] ignore certain tests
-
----
- Tests/Core/Meta.cs         | 2 ++
- Tests/Core/Types/Module.cs | 4 +++-
- 2 files changed, 5 insertions(+), 1 deletion(-)
-
 diff --git a/Tests/Core/Meta.cs b/Tests/Core/Meta.cs
-index f2916be..3ed2f5e 100644
+index f2916be..b7b5504 100644
 --- a/Tests/Core/Meta.cs
 +++ b/Tests/Core/Meta.cs
 @@ -8,6 +8,7 @@ namespace Tests.Core
      public class Meta
      {
          [Test]
-+	[Ignore]
++        [Ignore]
          public void Version()
          {
              string version = CKAN.Meta.BuildVersion();
@@ -24,19 +14,19 @@ index f2916be..3ed2f5e 100644
          }
  
          [Test]
-+	[Ignore]
++        [Ignore]
          public void ReleaseNumber()
          {
              Version version = CKAN.Meta.ReleaseNumber();
 diff --git a/Tests/Core/Types/Module.cs b/Tests/Core/Types/Module.cs
-index f94900a..d6bd106 100644
+index f640e77..2b00c54 100644
 --- a/Tests/Core/Types/Module.cs
 +++ b/Tests/Core/Types/Module.cs
 @@ -84,6 +84,7 @@ namespace Tests.Core.Types
          }
  
          [Test]
-+	[Ignore]
++        [Ignore]
          public void IsSpecSupported()
          {
              if (CKAN.Meta.ReleaseNumber() == null)
@@ -44,17 +34,14 @@ index f94900a..d6bd106 100644
          }
  
          [Test]
-+	[Ignore]
++        [Ignore]
          public void FutureModule()
          {
              if (CKAN.Meta.ReleaseNumber() == null)
-@@ -127,4 +129,4 @@ namespace Tests.Core.Types
- 
+@@ -146,4 +148,4 @@ namespace Tests.Core.Types
+             Assert.AreEqual("GPL-3.0", mod.license[0].ToString());
          }
      }
 -}
 \ No newline at end of file
 +}
--- 
-2.4.2
-
