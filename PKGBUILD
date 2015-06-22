@@ -2,18 +2,19 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=audience
-pkgver=0.1
+pkgver=0.1.0.1
 pkgrel=1
 pkgdesc='The Pantheon Video Player'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/audience'
 license=('GPL3')
 groups=('pantheon')
-depends=('clutter-gtk' 'desktop-file-utils' 'granite' 'gst-plugins-base-libs')
+depends=('clutter-gtk' 'desktop-file-utils' 'granite-bzr'
+         'gst-plugins-base-libs')
 makedepends=('clutter-gst' 'cmake' 'vala')
 install='audience.install'
 source=("https://launchpad.net/audience/freya/${pkgver}/+download/audience-${pkgver}.tgz")
-sha256sums=('adcf66ca073a24a0d29bf0ecbd5bfe1ad269e4b94c5fdd0101c7c269ed15d039')
+sha256sums=('ff3b0b797316f0c2d4822824057e111d916bc35eac929dca3d3beac4aba5660b')
 
 build() {
   cd audience-${pkgver}

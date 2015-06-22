@@ -1,6 +1,6 @@
 pkgbase = audience
 	pkgdesc = The Pantheon Video Player
-	pkgver = 0.1
+	pkgver = 0.1.0.1
 	pkgrel = 1
 	url = https://launchpad.net/audience
 	install = audience.install
@@ -13,10 +13,10 @@ pkgbase = audience
 	makedepends = vala
 	depends = clutter-gtk
 	depends = desktop-file-utils
-	depends = granite
+	depends = granite-bzr
 	depends = gst-plugins-base-libs
-	source = https://launchpad.net/audience/freya/0.1/+download/audience-0.1.tgz
-	sha256sums = adcf66ca073a24a0d29bf0ecbd5bfe1ad269e4b94c5fdd0101c7c269ed15d039
+	source = https://launchpad.net/audience/freya/0.1.0.1/+download/audience-0.1.0.1.tgz
+	sha256sums = ff3b0b797316f0c2d4822824057e111d916bc35eac929dca3d3beac4aba5660b
 
 pkgname = audience
 
