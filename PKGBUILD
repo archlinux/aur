@@ -3,8 +3,8 @@
 pkgname=little_boxes
 pkgdesc="Put boxes around stdin"
 url="https://github.com/giodamelio/little_boxes"
-pkgrel=1
-makedepends=('rust' 'cargo')
+pkgrel=2
+makedepends=('rust' 'cargo-bin')
 arch=('x86_64')
 license=('MIT')
 pkgver='1.0.0'
