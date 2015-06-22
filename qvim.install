@@ -1,0 +1,19 @@
+xdg_update ()
+{
+  update-desktop-database -q
+  if type "gtk-update-icon-cache" > /dev/null; then
+    gtk-update-icon-cache -q /usr/share/icons/hicolor
+  fi
+}
+
+post_install() {
+  xdg_update
+}
+
+post_upgrade() {
+  xdg_update
+}
+
+post_remove() {
+  xdg_update
+}

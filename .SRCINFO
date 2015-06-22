@@ -1,0 +1,33 @@
+pkgbase = qvim
+	pkgdesc = A Qt Gui for Vim
+	pkgver = 20150102
+	pkgrel = 1
+	url = https://bitbucket.org/equalsraf/vim-qt
+	install = qvim.install
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = pkgconfig
+	makedepends = git
+	depends = qt4
+	depends = vim-runtime
+	depends = gpm
+	depends = perl
+	depends = python2
+	depends = python
+	depends = ruby
+	depends = luajit
+	depends = libxt
+	conflicts = vim-qt-git
+	options = !strip
+	source = qvim::git+https://bitbucket.org/equalsraf/vim-qt.git#tag=package-20150102
+	source = qvim.desktop
+	source = qvim.svg
+	md5sums = SKIP
+	md5sums = bf0a2b39f308b1db61eaae92bf00b080
+	md5sums = 58c3f5ca063bd624b9feb5942e4f2adf
+
+pkgname = qvim
+
