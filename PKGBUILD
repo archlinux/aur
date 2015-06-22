@@ -2,11 +2,11 @@
 
 pkgname=dtv-scan-tables-git
 pkgver=r1183.f2053b3
-pkgrel=2
-pkgdesc="Initial DVB scan tables, formerly part of the linuxtv-dvb-apps package"
+pkgrel=3
+pkgdesc="Digital TV scan tables"
 arch=('any')
 url="http://linuxtv.org/"
-license=('GPL2')
+license=('GPL2' 'LGPL2')
 makedepends=('git' 'v4l-utils')
 conflicts=('dtv-scan-tables')
 provides=('dtv-scan-tables')
