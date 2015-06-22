@@ -1,0 +1,17 @@
+pkgbase = gavl-svn
+	pkgdesc = A low level library, upon which multimedia APIs can be built.
+	pkgver = 1.4.0.4061
+	pkgrel = 1
+	url = http://gmerlin.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = gavl=1.4.0.4061
+	conflicts = gavl
+	options = !libtool
+	source = svn://svn.code.sf.net/p/gmerlin/code/trunk/gavl/
+	md5sums = SKIP
+
+pkgname = gavl-svn
+
