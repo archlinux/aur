@@ -1,5 +1,3 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-binutils
 pkgver=2.22
 pkgrel=1
