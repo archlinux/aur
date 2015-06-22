@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=coffee-script-git
-pkgver=1.9.3.3.g1f197fc
+pkgver=1.9.3.5.g342b395
 pkgrel=1
 pkgdesc='Language that compiles into JavaScript'
 arch=any
