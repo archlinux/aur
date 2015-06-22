@@ -10,7 +10,8 @@ url="http://assimp.sourceforge.net/"
 license=('BSD')
 depends=('boost')
 makedepends=('git')
-conflicts=()
+conflicts=('assimp')
+provides=('assimp='$pkgver)
 options=(makeflags !emptydirs)
 _gitname="assimp"
 source=("git://github.com/assimp/assimp.git")
@@ -32,9 +33,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  cmake . \
-    -DCMAKE_INSTALL_PREFIX=/usr
-
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
