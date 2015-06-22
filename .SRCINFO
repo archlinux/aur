@@ -1,0 +1,16 @@
+pkgbase = obkey
+	pkgdesc = Openbox Key Editor
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://code.google.com/p/obkey
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	conflicts = obkey-git
+	replaces = obkey-dev
+	source = http://obkey.googlecode.com/files/obkey-1.0.tar.gz
+	md5sums = fd11d473d79055af1e68f40c354d233b
+
+pkgname = obkey
+
