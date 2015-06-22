@@ -1,0 +1,18 @@
+pkgbase = qtcbm
+	pkgdesc = Qt GUI Frontend for the (Open)CBM utils
+	pkgver = 1.0.0
+	pkgrel = 2
+	epoch = 
+	url = https://github.com/mveinot/QtCBM
+	install = 
+	changelog = 
+	arch = i686,
+	arch = x86_64
+	license = GPLv2
+	depends = qt5-base
+	depends = opencbm-git
+	source = https://github.com/mveinot/QtCBM/archive/v1.0.0.tar.gz
+	source = git+https://git.gitorious.org/qt-solutions/qt-solutions.git
+
+pkgname = qtcbm
+
