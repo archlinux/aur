@@ -1,0 +1,16 @@
+pkgbase = python2-keepass-git
+	pkgdesc = Keepass bindings for python2
+	pkgver = r32.4a0467d
+	pkgrel = 1
+	url = http://github.com/brettviren/python-keepass
+	arch = any
+	license = GPL2
+	makedepends = python2-distribute
+	makedepends = git
+	depends = python2
+	depends = python2-crypto
+	source = python-keepass::git+https://github.com/brettviren/python-keepass.git
+	sha256sums = SKIP
+
+pkgname = python2-keepass-git
+
