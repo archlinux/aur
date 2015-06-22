@@ -4,9 +4,9 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.0
+_srcname=linux-4.1
 _patchname=patch-4.1-rc8
-pkgver=4.1rc8
+pkgver=4.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://imasheep.hurrdurr.org/"
@@ -14,7 +14,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
         #"https://www.kernel.org/pub/linux/kernel/v3.x/testing/${_patchname}.sign"
         # the main kernel config files
@@ -23,8 +23,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         )
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
-            'dad6572b2e806bf0efbd6920c2a37aa3ba0349225eab85f7dcbc2de34399ec99'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             '514aa8a9d03d2419c8084725fcdb2b5b4ce07966f5bd6a51224a5f7a5f8c3694'
             'b268b03a042e3f604a12a80c6e24c42006e4d9bf4a6d9b3201eb006942718128'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
@@ -39,7 +38,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  patch -p1 -i "${srcdir}/${_patchname}"
+  #patch -p1 -i "${srcdir}/${_patchname}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
