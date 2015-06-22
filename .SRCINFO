@@ -1,0 +1,13 @@
+pkgbase = python-intheam-git
+	pkgdesc = Python client module for the Inthe.AM REST API
+	pkgver = r3.ce25800
+	pkgrel = 1
+	url = https://github.com/aperezdc/intheam-python
+	arch = any
+	license = MIT
+	depends = python-click
+	source = python-intheam-git::git+https://github.com/aperezdc/intheam-python
+	sha512sums = SKIP
+
+pkgname = python-intheam-git
+
