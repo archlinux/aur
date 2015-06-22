@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=antimony-git
-pkgver=20150529
+pkgver=20150621
 pkgrel=1
 pkgdesc="Graph-based 3D CSG CAD modeller"
 url="http://www.mattkeeter.com/projects/antimony/3/"
@@ -27,17 +27,17 @@ pkgver() {
 build() {
     cd "$_gitname"
 
-    sed -i 's/lboost_python-py34/lboost_python3/' qt/shared.pri
-    sed -i 's|/usr/local/bin/sb/|/usr/share/antimony/sb/|' qt/antimony.pro 
-    sed -i 's|/usr/share/antimony/sb/fab|/usr/lib/python3.4/site-packages/fab|' qt/antimony.pro
-    sed -i 's|return path.join("/");|return "/usr/share/antimony/sb/nodes";|' src/app/app.cpp
+    sed -i 's|/usr/local/bin/sb/|/usr/share/antimony/sb/|' app/app.pro 
+    sed -i 's|/usr/local/|/usr/|' qt/*.pri
+    sed -i 's|/usr/local/|/usr/|' app/*.pro
+    #sed -i 's|/usr/share/antimony/sb/fab|/usr/lib/python3.4/site-packages/fab|' qt/antimony.pro
+    sed -i 's|return path.join("/");|return "/usr/share/antimony/sb/nodes";|' app/src/app/app.cpp
 
     mkdir -p build
     cd build
-    qmake-qt5 PREFIX="/usr" ../qt/antimony.pro
+    qmake-qt5 PREFIX="/usr" ../app/app.pro
     sed -i 's|/local/bin|/bin|g' Makefile
     make
-    make  # binary isn't built on first pass?
 }
 
 check() {
@@ -53,4 +53,5 @@ check() {
 package() {
     cd "$_gitname/build"
     make INSTALL_ROOT="$pkgdir" install
+    install -Dm755 antimony "$pkgdir/usr/bin/antimony"
 }

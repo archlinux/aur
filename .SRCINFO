@@ -1,6 +1,6 @@
 pkgbase = antimony-git
 	pkgdesc = Graph-based 3D CSG CAD modeller
-	pkgver = 20150529
+	pkgver = 20150621
 	pkgrel = 1
 	url = http://www.mattkeeter.com/projects/antimony/3/
 	arch = i686
