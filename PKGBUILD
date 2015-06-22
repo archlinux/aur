@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pyanimenc-git
-pkgver=r37.bc0ba61
+pkgver=r37.617a8f7
 pkgrel=1
 pkgdesc='Python Transcoding Tools'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('fdkaac: fdkaac encoder'
             'x265: x265 encoder')
 provides=('pyanimenc')
 conflicts=('pyanimenc')
-source=('git+https://github.com/alucryd/pyanimenc.git#branch=noglade')
+source=('git+https://github.com/alucryd/pyanimenc.git')
 sha256sums=('SKIP')
 
 pkgver() {
