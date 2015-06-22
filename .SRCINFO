@@ -1,0 +1,14 @@
+pkgbase = lib32-libxnvctrl
+	pkgdesc = NVIDIA X Ctrl library
+	pkgver = 343.36
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = libxext
+	options = staticlibs
+	source = ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-343.36.tar.bz2
+	sha256sums = c0429f79354bf6aaeda49d0a6a3a830f073b185b21b4a8223f1e5781c788d275
+
+pkgname = lib32-libxnvctrl
+
