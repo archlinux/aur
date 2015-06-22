@@ -1,6 +1,6 @@
 pkgbase = qtcreator-googletest-plugin-git
 	pkgdesc = QtCreator plugin using Google Test
-	pkgver = r15.e721079
+	pkgver = r66.00d0053
 	pkgrel = 1
 	url = http://gres.biz/qtc-gtest/
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
 
 pkgname=qtcreator-googletest-plugin-git
-pkgver=r15.e721079
+pkgver=r66.00d0053
 pkgrel=1
 pkgdesc="QtCreator plugin using Google Test"
 groups=('qt' 'qt5')
@@ -24,7 +24,14 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build qmake LIBS+="-L/usr/lib/qtcreator/ -L/usr/lib/qtcreator/plugins"
+  QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build qmake \
+    "LIBS+=-L/usr/lib/qtcreator/ -L/usr/lib/qtcreator/plugins" \
+    "QMAKE_EXTRA_COMPILERS+=lrelease" \
+    "lrelease.input=TRANSLATIONS" \
+    "lrelease.output=\${QMAKE_FILE_PATH}/\${QMAKE_FILE_BASE}.qm" \
+    "lrelease.commands=\$\$[QT_INSTALL_BINS]/lrelease \${QMAKE_FILE_IN} -qm \${QMAKE_FILE_PATH}/\${QMAKE_FILE_BASE}.qm" \
+    "lrelease.CONFIG+=no_link" \
+    "PRE_TARGETDEPS+=compiler_lrelease_make_all"
   make
 }
 
@@ -33,4 +40,6 @@ package() {
   make INSTALL_ROOT="${pkgdir}/usr" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m755 -d "${pkgdir}/usr/share/qtcreator/translations"
+  install -m644 ./translation/*.qm "${pkgdir}/usr/share/qtcreator/translations/"
 }
