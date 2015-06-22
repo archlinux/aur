@@ -1,5 +1,3 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-gcc-base
 pkgver=4.6.4
 pkgrel=1
