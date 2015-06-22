@@ -3,8 +3,8 @@
 # Contributor: Julien "Adyxax" Dessaux <judessaux@gmail.com>
 
 pkgname=shinken
-pkgver=2.2
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
 url='http://www.shinken-monitoring.org/'
@@ -82,9 +82,11 @@ backup=(
     'etc/shinken/commands/notify-host-by-xmpp.cfg'
     'etc/shinken/commands/notify-service-by-xmpp.cfg'
     'etc/shinken/receivers/receiver-master.cfg'
+    'etc/default/shinken'
+    'etc/logrotate.d/shinken'
 )
 source=(
-    "https://pypi.python.org/packages/source/S/Shinken/Shinken-${pkgver//_/-}.tar.gz"
+    "https://github.com/naparuba/${pkgname}/archive/${pkgver}.tar.gz"
     "shinken-arbiter.service"
     "shinken-broker.service"
     "shinken.install"
@@ -97,54 +99,62 @@ source=(
 )
 
 prepare() {
-	cd "$srcdir/Shinken-${pkgver//_/-}"
-	find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python2.6$|#!/usr/bin/env python2|' {} \;
-	find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
-	find bin -type f -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
-	sed -i "s#/usr/lib/nagios/plugins#/usr/lib/monitoring-plugins#" etc/resource.d/paths.cfg
+    cd "$srcdir/shinken-${pkgver}"
+    find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python2.6$|#!/usr/bin/env python2|' {} \;
+    find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
+    find bin -type f -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
+    sed -i "s#/usr/lib/nagios/plugins#/usr/lib/monitoring-plugins#" etc/resource.d/paths.cfg
 }
 
 build() {
-	cd "$srcdir/Shinken-${pkgver//_/-}"
-	python2 setup.py build
+    cd "$srcdir/shinken-${pkgver}"
+    python2 setup.py build
 
-	msg2 "Building docs"
-	cd doc
-	sphinx-build2 -b man -d build/doctrees/ source/ build/man/
+    msg2 "Building docs"
+    cd doc
+    sphinx-build2 -b man -d build/doctrees/ source/ build/man/
 }
 
 package() {
-	cd "$srcdir/Shinken-${pkgver//_/-}"
-	python2 setup.py install --skip-build -O1 --root="$pkgdir"
+    cd "$srcdir/shinken-${pkgver}"
 
-	cp -r $srcdir/Shinken-${pkgver//_/-}/etc/ $pkgdir/etc/shinken/
+    mkdir -p $pkgdir/usr/lib/python2.7/site-packages/
+    cp -r build/bdist.linux-x86_64/egg/shinken $pkgdir/usr/lib/python2.7/site-packages/
 
-	install -dm0755 $pkgdir/var/lib/shinken/rw
+    mkdir -p $pkgdir/etc/default
+    cp -r etc/ $pkgdir/etc/shinken/
+    cp build/bin/default/shinken $pkgdir/etc/default/shinken
 
-	# man
-	install -dm0755 $pkgdir/usr/share/man
-	mv $pkgdir/var/lib/shinken/doc/build/man $pkgdir/usr/share/man/man1
+    mkdir -p $pkgdir/usr/bin
+    BINFILES=`ls bin/shinken* | grep -v "\.py$"`
+    for binfile in $BINFILES ; do
+        cp $binfile $pkgdir/usr/bin
+    done
 
-	# logrotate
-	install -Dm0644 $srcdir/shinken.logrotate "$pkgdir/etc/logrotate.d/shinken"
-	# log dir
-	install -dDm0750 $pkgdir/var/log/shinken
+    install -dm0755 $pkgdir/var/lib/shinken/rw
+    cp -r cli doc inventory modules share libexec $pkgdir/var/lib/shinken/
 
-	# systemd
-	install -Dm0644 $srcdir/shinken.tmpfiles $pkgdir/usr/lib/tmpfiles.d/shinken.conf
-	for service in arbiter poller reactionner scheduler broker receiver; do
-	    install -Dm0644 $srcdir/shinken-${service}.service $pkgdir/usr/lib/systemd/system/shinken-${service}.service
-	done
-    
-	# cleanup
-	rm -rf $pkgdir/etc/init.d
-	rm -r $pkgdir/var/run/
-	rm -r $pkgdir/etc/shinken/sample*
-	rm $pkgdir/etc/shinken/dev.cfg
-	rm -r $pkgdir/etc/shinken/certs/
+    mkdir -p $pkgdir/usr/share/man/man1/
+    gzip -c doc/build/man/shinken.1 > $pkgdir/usr/share/man/man1/shinken.1.gz
+
+    # logrotate
+    install -Dm0644 $srcdir/shinken.logrotate "$pkgdir/etc/logrotate.d/shinken"
+    # log dir
+    install -dDm0750 $pkgdir/var/log/shinken
+
+    # systemd
+    install -Dm0644 $srcdir/shinken.tmpfiles $pkgdir/usr/lib/tmpfiles.d/shinken.conf
+    for service in arbiter poller reactionner scheduler broker receiver; do
+        install -Dm0644 $srcdir/shinken-${service}.service $pkgdir/usr/lib/systemd/system/shinken-${service}.service
+    done
+
+    # cleanup
+    rm -r $pkgdir/etc/shinken/sample*
+    rm $pkgdir/etc/shinken/dev.cfg
+    rm -r $pkgdir/etc/shinken/certs/
 }
 
-sha256sums=('72d7beb296cf7dad6084b8b788eef91818c61567bcf6745ad749c3fd31c4e5c4'
+sha256sums=('b5734a5764aec89ae0286d505bb9f260b6ee1aa3b6fa1d9ef20fd261fe6def8b'
             'efa31d6bac681f6e994f5a0544ecaa5ab044099057d5e75d2e6b41e9e69f361f'
             '845315a7eb1b1a3f7fca8051b1470d28b5e9950ce55cda17bf2d0a7bc4a1e644'
             '86dcb7112517110c6fc4f47070e8f217d45185ce2ceab1b9d69653f3870577c2'
