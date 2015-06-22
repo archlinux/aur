@@ -1,0 +1,19 @@
+pkgbase = arm-mem-git
+	pkgdesc = ARM-accelerated versions of selected functions from string.h
+	pkgver = 22.3aee5f4
+	pkgrel = 1
+	url = https://github.com/bavison/arm-mem
+	install = arm-mem.install
+	arch = armv6h
+	arch = armv7
+	license = BSD
+	makedepends = git
+	provides = libcofi_rpi-git
+	conflicts = libcofi_rpi-git
+	source = arm-mem::git://github.com/bavison/arm-mem.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 28d63fe2467e38160c025156d21e4e91
+
+pkgname = arm-mem-git
+

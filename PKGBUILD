@@ -1,0 +1,41 @@
+# Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
+
+# armv7h & armv6h
+buildarch=20
+
+pkgname=arm-mem-git
+pkgver=22.3aee5f4
+pkgrel=1
+pkgdesc="ARM-accelerated versions of selected functions from string.h"
+arch=('armv6h' 'armv7')
+url="https://github.com/bavison/arm-mem"
+license=('BSD')
+makedepends=('git')
+conflicts=('libcofi_rpi-git')
+provides=('libcofi_rpi-git')
+install=arm-mem.install
+source=('arm-mem::git://github.com/bavison/arm-mem.git'
+        'LICENSE')
+md5sums=('SKIP'
+         '28d63fe2467e38160c025156d21e4e91')
+
+pkgver() {
+  cd "${srcdir}/arm-mem"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd "${srcdir}/arm-mem"
+
+  make
+}
+
+package() {
+  cd "${srcdir}/arm-mem"
+
+  mkdir -p "${pkgdir}/"{etc/profile.d,usr/lib,usr/share/licenses/arm-mem-git}
+
+  cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/arm-mem-git/"
+  cp libarmmem.so "${pkgdir}/usr/lib/"
+}
+
