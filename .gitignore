@@ -1,0 +1,13 @@
+.*
+*~
+!.SRCINFO
+!.git*
+!.mailmap
+/src
+/pkg
+/openrct2-git
+*.tar.xz
+*.tar.xz.sig
+*.src.tar.gz
+*.zip
+*.svg
