@@ -1,7 +1,7 @@
 pkgbase = vuze
 	pkgdesc = The java-based bittorrent kitchen-sink servlet.
 	pkgver = 5.6.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://azureus.sourceforge.net/
 	install = vuze.install
 	arch = i686

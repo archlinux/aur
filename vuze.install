@@ -7,7 +7,9 @@
 
 
 post_install() {
-  /usr/bin/gconfpkg --install "vuze"
+  if [[ -x /usr/bin/gconfpkg ]]; then
+    /usr/bin/gconfpkg --install "vuze"
+  fi
   update-desktop-database -q
   ln -s /usr/bin/vuze /usr/bin/azureus
 }

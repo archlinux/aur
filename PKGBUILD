@@ -7,7 +7,7 @@
 
 pkgname=vuze
 pkgver=5.6.1.2
-pkgrel=1
+pkgrel=2
 _ver=${pkgver//./} 
 _extra="" # sometimes Azureus devs add letters at the end.
 pkgdesc="The java-based bittorrent kitchen-sink servlet."
