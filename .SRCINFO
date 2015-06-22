@@ -1,0 +1,37 @@
+pkgbase = runit
+	pkgdesc = A replacement for sysvinit, and other init schemes, with service supervision
+	pkgver = 2.1.2
+	pkgrel = 0
+	url = http://smarden.org/runit/
+	install = runit.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = ed
+	depends = bash
+	depends = util-linux-ng
+	backup = etc/runit/1
+	backup = etc/runit/2
+	backup = etc/runit/3
+	backup = etc/runit/ctrlaltdel
+	backup = etc/runit/runsvdir/
+	backup = etc/runit/runsvdir/all
+	backup = etc/runit/runsvdir/all/getty-1/run
+	backup = etc/runit/runsvdir/all/getty-1/finish
+	backup = etc/runit/runsvdir/all/getty-2/run
+	backup = etc/runit/runsvdir/all/getty-2/finish
+	backup = etc/runit/runsvdir/all/getty-3/run
+	backup = etc/runit/runsvdir/all/getty-3/finish
+	backup = etc/runit/runsvdir/all/getty-4/run
+	backup = etc/runit/runsvdir/all/getty-4/finish
+	source = http://smarden.org/runit/runit-2.1.2.tar.gz
+	source = 1
+	source = 2
+	source = 3
+	sha256sums = 6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18
+	sha256sums = d51e713c3b60149c82c897016a6c007065525dfe91384f9b140aec5280b05fd5
+	sha256sums = d3ba839507835b70458cef1f33593bf65398d56cd12da43551d20b770b3d514a
+	sha256sums = 23e8557456a32c79c2688e656cfde0edde20d2103ba5cc519640cf0d479485ec
+
+pkgname = runit
+
