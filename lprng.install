@@ -1,0 +1,10 @@
+post_install() {
+  mv /etc/lprng/printcap.sample /etc/lprng/lpd/lpd.conf.sample \
+    /etc/lprng/lpd/lpd.perms.sample /usr/share/doc/lprng
+  echo 'See /usr/share/doc/lprng/README to configure'
+}
+
+pre_remove() {
+  /usr/bin/systemctl stop lpd.service
+  /usr/bin/systemctl disable lpd.service
+}

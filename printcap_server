@@ -1,0 +1,17 @@
+# Example printcap file for network postscript printer The "bounce"
+# syntax is needed to make lpd pay attention to the filter (see lprng
+# documentation) when the printer is not connected directly to the
+# server machine, e.g., via a usb port.  The user lpr command goes to
+# the first squawk, which then relays it to the second one.  The
+# filter "myfilter" is a print filter, perhaps customized from the
+# examples "foofilter", "gsfilter" or "psfilter".  Options like
+# specifying the number of copies (mc#...) must be placed in the
+# bounce receiver entry as shown.
+
+# Squawk -- a network printer with IP address 192.168.100.242
+squawk:lp=squawk@localhost:mc#100
+squawk:server
+	:sd=/var/spool/lpd/squawk
+	:lpd_bounce
+	:lp=xx@192.168.100.242
+	:filter=/etc/lprng/lpd/myfilter

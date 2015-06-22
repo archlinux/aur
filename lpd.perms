@@ -1,0 +1,18 @@
+# lpd.perms -- Edit for your needs
+#
+# accept printing requests from the localhost -- you always need this
+ACCEPT SERVICE=X REMOTEIP=127.0.0.1
+#
+# accept printing requests from a range of IP addresses --
+# edit for your needs or comment out
+#ACCEPT SERVICE=X REMOTEIP=192.168.100.0/24
+#
+# accept printing requests from particular clients -- not needed if
+# these clients are included in the above REMOTEIP range -- edit for your
+# needs or comment out
+#ACCEPT SERVICE=X REMOTEHOST=merlin.nmt.edu
+#ACCEPT SERVICE=X REMOTEHOST=peregrine.nmt.edu
+# etc.
+#
+# reject all other printing requests
+REJECT SERVICE=X
