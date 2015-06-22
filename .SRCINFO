@@ -1,0 +1,18 @@
+pkgbase = libovr_nsb-git
+	pkgdesc = Pure C implementation of the Oculus Rift SDK
+	pkgver = 1878f25
+	pkgrel = 1
+	url = https://github.com/ultranbrown/libovr_nsb
+	arch = x86_64
+	arch = i686
+	license = Oculus Rift SDK License
+	depends = hidapi-git
+	depends = freeglut
+	optdepends = oculus-udev: Udev rule for Oculus Rift
+	provides = libovr_nsb
+	conflicts = libovr_nsb
+	source = git+https://github.com/ultranbrown/libovr_nsb.git
+	sha256sums = SKIP
+
+pkgname = libovr_nsb-git
+
