@@ -1,0 +1,19 @@
+pkgbase = nestk-git
+	pkgdesc = C++ Library for Kinect. Core library used by RGBDemo to process Kinect data.
+	pkgver = ece0f7b
+	pkgrel = 1
+	url = https://github.com/nburrus/nestk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = opencv
+	depends = eigen3
+	depends = glew
+	options = makeflags
+	options = !emptydirs
+	source = git://github.com/rgbdemo/nestk.git
+	sha256sums = SKIP
+
+pkgname = nestk-git
+
