@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r3415.909060b
+pkgver=r3672.473eea3
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -77,6 +77,9 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/openrct2/data/language"
   install -m644 data/language/* "$pkgdir/usr/share/openrct2/data/language/"
+
+  install -dm755 "$pkgdir/usr/share/openrct2/data/title"
+  install -m644 data/title/* "$pkgdir/usr/share/openrct2/data/title/"
 
   # ArchLinux-specific stuff (launcher, .desktop file and icon).
   install -Dm755 "$srcdir/openrct2" "$pkgdir/usr/bin/openrct2"
