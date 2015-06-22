@@ -43,7 +43,7 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   make DESTDIR="$pkgdir" MANDIR=/usr/share/man install
-  install -D -m755 "$srcdir/knockd.service" "$pkgdir/usr/lib/systemd/system/knockd.service"
+  install -D -m644 "$srcdir/knockd.service" "$pkgdir/usr/lib/systemd/system/knockd.service"
   install -D -m644 "$srcdir/knockd.logrotate" "$pkgdir/etc/logrotate.d/knockd"
 }
 
