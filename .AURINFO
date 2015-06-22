@@ -1,0 +1,16 @@
+pkgbase = python-rift-git
+	pkgdesc = Python bindings for the Oculus Rift
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/lubosz/python-rift
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = python>=3.0
+	depends = cython
+	depends = openhmd-git
+	depends = oculus-udev
+	source = git+https://github.com/lubosz/python-rift.git
+
+pkgname = python-rift-git
+
