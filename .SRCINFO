@@ -1,0 +1,21 @@
+pkgbase = liblub-git
+	pkgdesc = OpenGL 3 + 4 graphics library with examples.
+	pkgver = 20120913
+	pkgrel = 1
+	url = https://github.com/lubosz/liblub
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = wget
+	depends = assimp
+	depends = grantlee
+	depends = mesa
+	depends = eject
+	depends = xcb-util-keysyms
+	provides = liblub
+	conflicts = liblub
+
+pkgname = liblub-git
+
