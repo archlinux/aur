@@ -1,0 +1,26 @@
+pkgbase = firefox-nightly-de
+	pkgdesc = Standalone web browser from mozilla.org, nightly build, german
+	pkgver = 41.0a1
+	pkgrel = 1
+	url = http://www.mozilla.org/projects/firefox
+	install = firefox.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = desktop-file-utils
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = alsa-lib
+	depends = libnotify
+	provides = firefox-nightly
+	conflicts = firefox-nightly
+	source = firefox-nightly.desktop
+	source = firefox-nightly-safe.desktop
+	sha1sums = 628027fb884e45903af21c09fd3474556ac6da56
+	sha1sums = cecfda3254e589cef2e61779a9f2a3b28b4d9fcc
+
+pkgname = firefox-nightly-de
+
