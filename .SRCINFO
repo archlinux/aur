@@ -1,0 +1,14 @@
+pkgbase = django-registration-hg
+	pkgdesc = A user-registration application for Django.
+	pkgver = 20101010
+	pkgrel = 1
+	url = http://bitbucket.org/ubernostrum/django-registration/wiki/Home
+	arch = any
+	license = GPL
+	depends = python
+	depends = django
+	provides = django-registration
+	conflicts = django-registration
+
+pkgname = django-registration-hg
+
