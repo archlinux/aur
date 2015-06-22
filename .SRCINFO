@@ -1,0 +1,14 @@
+pkgbase = daemontools-encore
+	pkgdesc = collection of tools for managing UNIX services - derived from the public-domain release of daemontools by D. J. Bernstein.
+	pkgver = 1.06
+	pkgrel = 1
+	url = http://untroubled.org/daemontools-encore
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	source = http://untroubled.org/daemontools-encore/daemontools-encore-1.06.tar.gz
+	md5sums = 1db6f1f7c913f728389e384c6340d53c
+
+pkgname = daemontools-encore
+
