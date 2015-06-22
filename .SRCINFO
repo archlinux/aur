@@ -1,0 +1,16 @@
+pkgbase = ttf-14minute
+	pkgdesc = A basic decorative ttf font
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.coolfonts.info/font-23-14_minutes.php
+	install = ttf.install
+	arch = any
+	license = Unknown proprietary
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.coolfonts.info/download-23-14_minutes.zip
+	md5sums = 1839eec4972435ad028254082cc16b82
+
+pkgname = ttf-14minute
+
