@@ -1,0 +1,16 @@
+pkgbase = libmtp-gvfs-git
+	pkgdesc = Library implementation of the Media Transfer Protocol
+	pkgver = 20120910
+	pkgrel = 1
+	url = http://libmtp.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libusb
+	provides = libmtp
+	conflicts = libmtp
+	conflicts = libmtp-git
+	options = !libtool
+
+pkgname = libmtp-gvfs-git
+
