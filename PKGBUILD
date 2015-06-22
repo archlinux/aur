@@ -30,7 +30,7 @@ package() {
 
 	# BASH completion
 	install -Dm644 bash/completion/watchman "$pkgdir/usr/share/bash-completion/completions/watchman"
-	ln -s /usr/share/bash-completion/completions/{watchman,service}
+	ln -s /usr/share/bash-completion/completions/watchman "$pkgdir/usr/share/bash-completion/completions/service"
 
 	# a link to provide a system-wide 'service' script
 	cd "${pkgdir}${install_prefix}/bin"; ln -s watchman-service service
