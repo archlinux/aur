@@ -1,0 +1,17 @@
+pkgbase = python-turbogears
+	pkgdesc = A hybrid web framework able to act both as a Full Stack framework or as a Microframework
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = http://www.turbogears.org/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-webob
+	depends = python-crank
+	depends = python-beaker
+	depends = python-repoze.lru
+	source = git://github.com/TurboGears/tg2.git#tag=tg2.3.5
+	md5sums = SKIP
+
+pkgname = python-turbogears
+
