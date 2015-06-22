@@ -1,0 +1,18 @@
+--- scrot-0.82/scrot-0.8/src/main.c	2003-06-23 05:05:48.000000000 -0700
++++ scrot-0.8/src/main.c	2014-02-07 01:33:21.939662356 -0800
+@@ -152,7 +151,6 @@
+ {
+   Imlib_Image im;
+ 
+-  XBell(disp, 0);
+   im =
+     gib_imlib_create_image_from_drawable(root, 0, 0, 0, scr->width,
+                                          scr->height, 1);
+@@ -365,7 +364,6 @@
+     if ((ry + rh) > scr->height)
+       rh = scr->height - ry;
+ 
+-    XBell(disp, 0);
+     im = gib_imlib_create_image_from_drawable(root, 0, rx, ry, rw, rh, 1);
+   }
+   return im;
