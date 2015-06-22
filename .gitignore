@@ -9,3 +9,5 @@ pkgdir
 *.tar
 *.zip
 *.rar
+*.rpm
+*.deb

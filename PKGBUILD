@@ -1,4 +1,6 @@
 # Contributor: Nazarov Pavel <genocid@rambler.ru>
+# Maintainer: Pablo Lezaeta <prflr88 (arro'a) gmail puntocom>
+
 pkgname=redhat-artwork
 pkgver=14
 pkgrel=1
@@ -29,7 +31,7 @@ md5sums=('8a6a3bd7cdf85ef9176494ceae690a82'
 
 
 package() {
-    cd $srcdir
+    cd "$srcdir"
     mkdir ./archives
     cd ./archives
 
@@ -49,7 +51,7 @@ package() {
         cd $x
         ./configure --prefix=/usr
         cd ./theme
-        make install DESTDIR=$pkgdir || return 1
+        make install DESTDIR="$pkgdir"
         cd ../../
     done
 
