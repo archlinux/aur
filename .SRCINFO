@@ -1,0 +1,15 @@
+pkgbase = tsocks-multilib
+	pkgdesc = Transparent SOCKS proxying library - multilib version
+	pkgver = 1.8beta5
+	pkgrel = 3
+	url = http://tsocks.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	provides = tsocks
+	conflicts = tsocks
+	source = http://downloads.sourceforge.net/tsocks/tsocks-1.8beta5.tar.gz
+	sha512sums = b41636ea6b77abf0d1e3cda7bbca4e7ee96f3cdb1843f3a2c530650931e5567f67921de67b28ba9bab0f51df39770a3f7fb458cf7ac78aad7aa861923df2c4a9
+
+pkgname = tsocks-multilib
+
