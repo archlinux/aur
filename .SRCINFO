@@ -1,0 +1,12 @@
+pkgbase = mcabber-module-focus
+	pkgdesc = autoleaving focus for mcabber
+	pkgver = 2.f6c6c90
+	pkgrel = 1
+	url = https://github.com/kovetskiy/mcabber-focus
+	arch = any
+	license = GPL
+	source = git+https://github.com/kovetskiy/mcabber-focus
+	md5sums = SKIP
+
+pkgname = mcabber-module-focus
+
