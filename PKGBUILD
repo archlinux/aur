@@ -32,7 +32,6 @@ build() {
 	cd "$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release           \
 	      -DCMAKE_INSTALL_PREFIX=/usr          \
-	      -DCMAKE_SKIP_INSTALL_RPATH=ON        \
 	      -DPACKAGE_ARCHITECTURE=$CARCH        \
 	      -DLIB=lib                            \
 	      -DBUILD_RUBY_GEM=OFF                 \
