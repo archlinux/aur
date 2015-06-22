@@ -1,0 +1,14 @@
+pkgbase = python-glfw
+	pkgdesc = A ctypes-based wrapper for GLFW3.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/FlorianRhiem/pyGLFW
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python>=3.0
+	source = https://pypi.python.org/packages/source/g/glfw/glfw-1.0.1.tar.gz
+	md5sums = 0532a2a11705cddcc5da9ceb01bb8fc6
+
+pkgname = python-glfw
+
