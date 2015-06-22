@@ -1,0 +1,16 @@
+pkgbase = ttf-neverworld
+	pkgdesc = A basic decorative ttf font with fantasy symbols by Enoch based on Neale Davidson fonts
+	pkgver = 1
+	pkgrel = 1
+	url = http://nwvault.ign.com/View.php?view=other.detail&id=973
+	install = ttf.install
+	arch = any
+	license = Free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://nwvault.ign.com/fms/Download.php?id=55468
+	md5sums = 70bfc99fb78656318a6847e5127caa06
+
+pkgname = ttf-neverworld
+
