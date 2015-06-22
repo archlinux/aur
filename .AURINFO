@@ -1,0 +1,15 @@
+pkgbase = runki
+	pkgdesc = Ankiweb.net console client. Manage Anki flashcards without a friction.
+	pkgver = 20140625
+	pkgrel = 1
+	url = https://github.com/seletskiy/runki
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = runki
+	conflicts = runki
+	source = runki::git://github.com/seletskiy/runki.git
+
+pkgname = runki
+
