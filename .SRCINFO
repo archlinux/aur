@@ -1,0 +1,14 @@
+pkgbase = bosh
+	pkgdesc = Browsable Output SHell
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://bosh.sourceforge.net/
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	depends = ncurses
+	source = http://sourceforge.net/projects/bosh/files/bosh/bosh%200.6/bosh-0.6.tar.gz/download
+	md5sums = 975ef183ed4d2314186b1f2705d57c65
+
+pkgname = bosh
+
