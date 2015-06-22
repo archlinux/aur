@@ -1,0 +1,15 @@
+pkgbase = giti
+	pkgdesc = A python command line tool fetching getting .gitignore files
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/victorhaggqvist/giti
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://github.com/victorhaggqvist/giti/archive/v0.2.1.zip
+	sha512sums = 04a103603f17ec0d217fd949ae7706c03007f45eaf551636a4cf34f0d995d60b99f18d0755c5ff4f6a79583d7d96ad55f56286a24099a430bebd5ec59ddf06fd
+
+pkgname = giti
+
