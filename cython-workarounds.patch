@@ -1,21 +1,28 @@
 diff --git a/include/ClientDB.py b/include/ClientDB.py
-index 216de51..b0c2b88 100755
+index 37cfbeb..6256694 100755
 --- a/include/ClientDB.py
 +++ b/include/ClientDB.py
-@@ -2279,7 +2279,7 @@ class DB( HydrusDB.HydrusDB ):
-             if tag_service_key == CC.COMBINED_TAG_SERVICE_KEY: service_phrase = ''
-             else: service_phrase = 'service_id = ' + HydrusData.ToString( tag_service_id ) + ' AND '
+@@ -2472,7 +2472,7 @@ class DB( HydrusDB.HydrusDB ):
+                 counts_iterable = self._c.execute( nonzero_counts_query )
+                 
              
--            query_hash_ids = { id for ( id, count ) in self._c.execute( 'SELECT hash_id, COUNT( DISTINCT tag_id ) FROM mappings WHERE ' + service_phrase + 'hash_id IN ' + HydrusData.SplayListForDB( query_hash_ids ) + ' AND status IN ' + HydrusData.SplayListForDB( statuses ) + ' GROUP BY hash_id;' ) if False not in ( pred( count ) for pred in tag_predicates ) }
-+            query_hash_ids = { id for ( id, count ) in self._c.execute( 'SELECT hash_id, COUNT( DISTINCT tag_id ) FROM mappings WHERE ' + service_phrase + 'hash_id IN ' + HydrusData.SplayListForDB( query_hash_ids ) + ' AND status IN ' + HydrusData.SplayListForDB( statuses ) + ' GROUP BY hash_id;' ) if False not in (lambda count:( pred( count ) for pred in tag_predicates ))(count) }
+-            query_hash_ids = { id for ( id, count ) in counts_iterable if False not in ( pred( count ) for pred in tag_predicates ) }
++            query_hash_ids = { id for ( id, count ) in counts_iterable if False not in (lambda count:( pred( count ) for pred in tag_predicates ))(count) }
              
          
          #
+@@ -6007,4 +6007,4 @@ class DB( HydrusDB.HydrusDB ):
+         shutil.copytree( path + os.path.sep + 'client_thumbnails', HC.CLIENT_THUMBNAILS_DIR )
+         shutil.copytree( path + os.path.sep + 'client_updates', HC.CLIENT_UPDATES_DIR )
+         
+-    
+\ No newline at end of file
++    
 diff --git a/include/ClientGUICanvas.py b/include/ClientGUICanvas.py
-index 732f8e0..e801153 100755
+index d1ae796..c9fd2f5 100755
 --- a/include/ClientGUICanvas.py
 +++ b/include/ClientGUICanvas.py
-@@ -50,7 +50,8 @@ NON_LARGABLY_ZOOMABLE_MIMES = [ mime for mime in HC.VIDEO if mime != HC.VIDEO_WE
+@@ -48,7 +48,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
  
  EMBED_BUTTON_MIMES = [ HC.VIDEO_FLV, HC.APPLICATION_FLASH ]
  
@@ -26,10 +33,10 @@ index 732f8e0..e801153 100755
      ( media_width, media_height ) = media.GetResolution()
      
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 3f5efb5..779be78 100755
+index 6dcd165..63fee56 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
-@@ -244,7 +244,8 @@ class Dialog( wx.Dialog ):
+@@ -243,7 +243,8 @@ class Dialog( wx.Dialog ):
      
      def EventDialogButton( self, event ): self.EndModal( event.GetId() )
      
@@ -2137,10 +2144,10 @@ index c205af2..0000000
 -    
 -HydrusSerialisable.SERIALISABLE_TYPES_TO_OBJECT_TYPES[ HydrusSerialisable.SERIALISABLE_TYPE_SEED_QUEUE ] = SeedQueue
 diff --git a/include/HydrusData.py b/include/HydrusData.py
-index 4ab9f67..259f478 100644
+index 731c256..ff5e0af 100644
 --- a/include/HydrusData.py
 +++ b/include/HydrusData.py
-@@ -963,15 +963,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
+@@ -981,15 +981,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
                  
                  if data_type in ( HC.CONTENT_DATA_TYPE_TAG_SIBLINGS, HC.CONTENT_DATA_TYPE_TAG_PARENTS ) and action in ( HC.CONTENT_UPDATE_PENDING, HC.CONTENT_UPDATE_PETITION ):
                      
@@ -2458,10 +2465,10 @@ index 1b29013..2ce6c3b 100755
 -    
 \ No newline at end of file
 diff --git a/include/HydrusSerialisable.py b/include/HydrusSerialisable.py
-index 473cfe9..533f55c 100644
+index ff6805f..0e213c7 100644
 --- a/include/HydrusSerialisable.py
 +++ b/include/HydrusSerialisable.py
-@@ -130,4 +130,4 @@ class SerialisableBaseNamed( SerialisableBase ):
+@@ -131,4 +131,4 @@ class SerialisableBaseNamed( SerialisableBase ):
      def GetName( self ): return self._name
      
      def SetName( self, name ): self._name = name
