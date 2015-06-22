@@ -1,7 +1,7 @@
 pkgbase = textroom-svn
 	pkgdesc = Full Screen text editor heavily inspired by Q10 and JDarkRoom - svn-version
 	pkgver = 278
-	pkgrel = 5
+	pkgrel = 6
 	url = http://code.google.com/p/textroom/
 	install = textroom.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = textroom-svn
 	source = textroom::svn+http://textroom.googlecode.com/svn/trunk
 	source = spell-check_patch
 	md5sums = SKIP
-	md5sums = 3cd7541b37a0589e95d59581dfea2bdd
+	md5sums = 371286a9101e153e2612eadf2f0ea1d1
 
 pkgname = textroom-svn
 

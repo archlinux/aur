@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=textroom-svn
 pkgver=278
-pkgrel=5
+pkgrel=6
 pkgdesc="Full Screen text editor heavily inspired by Q10 and JDarkRoom - svn-version "
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/textroom/"
@@ -13,7 +13,7 @@ conflicts=('textroom')
 install=textroom.install
 source=('textroom::svn+http://textroom.googlecode.com/svn/trunk' spell-check_patch)
 md5sums=('SKIP'
-         '3cd7541b37a0589e95d59581dfea2bdd')
+         '371286a9101e153e2612eadf2f0ea1d1')
 _svnmod="textroom"
 
 pkgver() {
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_svnmod"
-  patch -p1 < "$srcdir"/spell-check_patch
+  patch -p1 < "$srcdir"/spell-check_patch || true
 }
 
 build() {

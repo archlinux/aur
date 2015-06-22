@@ -3,7 +3,7 @@
 @@ -28,6 +28,7 @@
  ****************************************************************************/
  
- #include <QtGui> 
+ #include <QtGui>
 +#include <QTextCodec>
  #include <SDL/SDL.h>
  #ifdef Q_OS_MACX
