@@ -1,6 +1,6 @@
 pkgbase = armadillo
 	pkgdesc = C++ linear algebra library
-	pkgver = 5.200.1
+	pkgver = 5.200.2
 	pkgrel = 1
 	url = http://arma.sourceforge.net/
 	install = armadillo.install
@@ -13,8 +13,8 @@ pkgbase = armadillo
 	depends = arpack
 	depends = superlu=4.3
 	optdepends = hdf5: HDF5 output
-	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-5.200.1.tar.gz
-	sha512sums = 750e18a7c464bfe17ed113014312cce54793780d2c5d1f6510faaedac44bc6c055955b0ffba6884ab1111be5c22740a0b3ddcd9533caf51afe1bda33074177f4
+	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-5.200.2.tar.gz
+	sha512sums = 034539d724fd1e4078a709cd616d280178fcfdcb1d3c3ca2f80f5f2ebc4b39b60f11e3bd22773be8a8fd61350a406a6f4056d56f88ed74964f438bed0d224f6f
 
 pkgname = armadillo
 
