@@ -1,0 +1,13 @@
+pkgbase = oculus-udev
+	pkgdesc = Udev rule for Oculus Rift
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.oculusvr.com/
+	install = oculus-udev.install
+	arch = any
+	license = custom
+	source = 83-oculus.rules
+	sha256sums = 26279a271b31c1163b34986a6745eed18408fff4b669d53515dfa9e35dfa85db
+
+pkgname = oculus-udev
+
