@@ -1,0 +1,18 @@
+pkgbase = gnonlin-git
+	pkgdesc = A library for creating non-linear video editors
+	pkgver = 1.3.0.1.728.94e3c11
+	pkgrel = 1
+	url = http://gnonlin.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gstreamer-git
+	depends = gst-plugins-base-git
+	provides = gnonlin=1.3.0.1.728.94e3c11
+	conflicts = gnonlin
+	options = !libtool
+	source = git+git://anongit.freedesktop.org/gstreamer/gnonlin
+	md5sums = SKIP
+
+pkgname = gnonlin-git
+
