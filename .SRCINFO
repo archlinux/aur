@@ -1,0 +1,15 @@
+pkgbase = hunspell-ru-aot-ieyo
+	pkgdesc = Russian hunspell dictionary
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = http://extensions.openoffice.org/en/projectrelease/russkiy-orfograficheskiy-slovar-aot-eyo-russian-spellcheck-dict-ieyo-based-works
+	arch = any
+	license = LGPL
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-ru
+	conflicts = hunspell-ru
+	source = http://downloads.sourceforge.net/project/aoo-extensions/5149/3/dict_ru_ru-aot-0.3.9-ieyo.oxt
+	md5sums = ad19073f05e62294295be1749ba2c3b2
+
+pkgname = hunspell-ru-aot-ieyo
+
