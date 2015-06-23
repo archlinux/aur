@@ -1,0 +1,19 @@
+pkgbase = em8300
+	pkgdesc = DXR3 and Hollywood+ driver
+	pkgver = 0.18.0
+	pkgrel = 2
+	url = http://dxr3.sourceforge.net/
+	install = em8300.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kernel26-headers>=2.6.33
+	depends = kernel26>=2.6.33
+	depends = em8300-utils=0.18.0
+	source = http://downloads.sourceforge.net/project/dxr3/em8300/0.18.0/em8300-0.18.0.tar.gz
+	source = 2.6.35.patch
+	md5sums = 2ef10f5159508a31a877e7e6d18c6896
+	md5sums = 922a6f5641a805ca05c2b712caeed9f8
+
+pkgname = em8300
+
