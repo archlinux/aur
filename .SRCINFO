@@ -1,6 +1,6 @@
 pkgbase = sourceweb
 	pkgdesc = Source code indexer and code navigation tool for C/C++ code.
-	pkgver = r393.b6e24d4
+	pkgver = r395.867cd09
 	pkgrel = 1
 	url = https://github.com/rprichard/sourceweb
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sourceweb
 	depends = qt4
 	depends = python
 	depends = clang
-	source = sourceweb::git+https://github.com/adytzu2007/sourceweb#branch=archlinux
+	source = sourceweb::git+https://github.com/adytzu2007/sourceweb#branch=clang-3.6
 	sha256sums = SKIP
 
 pkgname = sourceweb
