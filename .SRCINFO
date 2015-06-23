@@ -1,0 +1,15 @@
+pkgbase = freechart-svn
+	pkgdesc = Free powerful charting library based on wxWidgets.
+	pkgver = r3179
+	pkgrel = 1
+	url = http://wxcode.sourceforge.net/components/freechart/
+	arch = x86_64
+	arch = i686
+	license = custom:"wxWindows"
+	makedepends = subversion
+	depends = wxgtk
+	source = svn+http://svn.code.sf.net/p/wxcode/code/trunk/wxCode/components/freechart/
+	md5sums = SKIP
+
+pkgname = freechart-svn
+
