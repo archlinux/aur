@@ -1,0 +1,19 @@
+pkgbase = alarm-clock
+	pkgdesc = Alarm clock to schedule your tasks
+	pkgver = 1.4.3
+	pkgrel = 2
+	url = http://gnome-automate.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk2
+	depends = gstreamer0.10
+	depends = libunique
+	depends = libnotify
+	options = !libtool
+	source = http://distro.ibiblio.org/slitaz/sources/packages-cooking/a/alarm-clock-1.4.3.tar.bz2
+	md5sums = e3100874935553c15b7d7d66d560bfc7
+
+pkgname = alarm-clock
+
