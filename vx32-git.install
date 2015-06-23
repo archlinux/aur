@@ -1,0 +1,5 @@
+post_install() {
+	echo ">>> Add /opt/vx32-git/bin to your \$PATH."
+	echo ">>> Invoke \"9vx -r /path/to/plan9/filetree -u glenda\" to start."
+}
+
