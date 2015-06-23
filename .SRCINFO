@@ -1,13 +1,13 @@
 pkgbase = ignis
 	pkgdesc = A Console Based Static Website Building Program
 	pkgver = 1.0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://devbrush.com/project/ignis
 	arch = any
 	license = BSD
 	depends = python>=3.0
-	source = http://devbrush.com/files/ignis1.0.3.1.src.tar.gz
-	sha512sums = 2f8da98ec089d4ea70e1e7cf5093cc5770fadcb55e4324c76f8d418d23edc470b9f3637c9ab65e00af84c82274d6c79fc51ed129c1b0cffe6c6e4a835698faec
+	source = http://devbrush.com/files/ignis1.0.3.1.tar.gz
+	sha512sums = 6a13fcd382d20126b61b1723183798d19ceaab31e7eda28f70b8a3b45cc86dc19b27ec385c8845d4c4bda537fb5ee73e7ff8a3111a1d25dda051a90455dce08f'
 
 pkgname = ignis
 
