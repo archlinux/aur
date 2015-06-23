@@ -1,0 +1,17 @@
+pkgbase = groonga-gobject
+	pkgdesc = GObject wrapper of Groonga.
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = http://groonga.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = LGPL3
+	depends = groonga
+	depends = gobject-introspection
+	optdepends = cutter-test_framework
+	source = http://packages.groonga.org/source/groonga-gobject/groonga-gobject-1.0.1.tar.gz
+	sha1sums = 9614288b0b51efa8bd3374dcdd3e9c7295fe7873
+
+pkgname = groonga-gobject
+
