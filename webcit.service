@@ -1,0 +1,9 @@
+[Unit]
+Description=Citadel/UX Groupware
+
+[Service]
+ExecStart=/usr/local/webcit/webcit -d -p2000
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
