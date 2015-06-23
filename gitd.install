@@ -1,0 +1,8 @@
+post_install() {
+cat << EOF
+To use this program, please check /etc/gitd/gitd.conf and configure it using your preferred notification program. Also, you have to have a notification server running in order for the notifications to be caught, and many DE's support this natively. See https://wiki.archlinux.org/index.php/Desktop_notifications for more details on this. In order for the program to start, one has to let systemd know about gitd. Type
+        systemctl enable gitd.service
+        systemctl start gitd.service
+to complete the installation. For more information, see gitd(8)
+EOF
+}

@@ -1,22 +1,23 @@
 # Maintainer: Benjamin James <benjamin-james@utulsa.edu>
 
 pkgname=gitd
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A way of notifying you of git commits"
 arch=('any')
 url="https://github.com/benjamin-james/gitd"
 license=('GPL3')
+install='gitd.install'
 depends=('git' 'glibc')
 makedepends=('autoconf')
 optdepends=('libnotify: the default notifier for gitd through notify-send')
 provides=('gitd')
 source=(https://github.com/benjamin-james/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-md5sums=('2cbd1094d858658ddef3ddba312101c3')
+md5sums=('bc8fd8785c73f758b807e0116a586bb6')
 build() {
 	cd "${pkgname}"
-	./autogen.sh
-	./configure --prefix=/usr --sysconfdir=/etc
+	autoreconf -i
+	./configure --prefix=/usr --sysconfdir=/etc/gitd/
 	make
 }
 

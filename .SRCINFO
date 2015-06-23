@@ -1,8 +1,9 @@
 pkgbase = gitd
 	pkgdesc = A way of notifying you of git commits
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/benjamin-james/gitd
+	install = gitd.install
 	arch = any
 	license = GPL3
 	makedepends = autoconf
@@ -10,8 +11,8 @@ pkgbase = gitd
 	depends = glibc
 	optdepends = libnotify: the default notifier for gitd through notify-send
 	provides = gitd
-	source = https://github.com/benjamin-james/gitd/releases/download/0.2.0/gitd-0.2.0.tar.xz
-	md5sums = 2cbd1094d858658ddef3ddba312101c3
+	source = https://github.com/benjamin-james/gitd/releases/download/0.4.0/gitd-0.4.0.tar.xz
+	md5sums = bc8fd8785c73f758b807e0116a586bb6
 
 pkgname = gitd
 
