@@ -2,7 +2,7 @@
  
 _realname='graphene'
 pkgname="$_realname-git"
-pkgver=0.99.3.268.8e11ee1
+pkgver=1.2.3.566.2256b8c
 pkgrel=1
 pkgdesc='A thin layer of graphic data types'
 arch=('i686' 'x86_64')
