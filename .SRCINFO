@@ -1,0 +1,18 @@
+pkgbase = wordgrinder
+	pkgdesc = A word processor for processing words.
+	pkgver = 0.5.2.1
+	pkgrel = 2
+	url = http://wordgrinder.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = lua52
+	depends = lua52-filesystem
+	depends = zlib
+	source = http://downloads.sourceforge.net/wordgrinder/wordgrinder-0.5.2.1.tar.bz2
+	md5sums = 5410114f6617da254481a52cfb1dca95
+	sha1sums = 161702ccbe22ccc4d1b39e966e6ae1e0cc8f2255
+	sha256sums = 7e0d5345e996a6d0dec33cd485577cf86b33b21845477e901705d971bda442f5
+
+pkgname = wordgrinder
+
