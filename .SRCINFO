@@ -1,0 +1,18 @@
+pkgbase = ttf-anonymous-pro-minus
+	pkgdesc = Anonymous Pro (2009) is a family of four fixed-width fonts designed with coding in mind. There are two versions: Anonymous Pro and Anonymous Pro Minus. Anonymous Pro contains embedded bitmaps for smaller sizes, Anonymous Pro Minus does not.
+	pkgver = 1.003
+	pkgrel = 1
+	url = http://www.marksimonson.com/fonts/view/anonymous-pro
+	install = ttf-anonymous-pro-minus.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	source = http://www.marksimonson.com/assets/content/fonts/AnonymousProMinus-1.003.zip
+	md5sums = 16468f49e2a56f8e2ad39f09728391bd
+
+pkgname = ttf-anonymous-pro-minus
+
