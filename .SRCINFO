@@ -1,0 +1,19 @@
+pkgbase = vdr-plugin-actuator
+	pkgdesc = For archvdr project!!! VDR-Plugin to control a linear or an horizon to horizon actuator and use as a channelscanner
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://ventoso.org/luca/vdr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vdr
+	makedepends = unzip
+	depends = vdr>=1.7.27
+	backup = etc/vdr/plugins/plugin.actuator.conf
+	source = http://ventoso.org/luca/vdr/vdr-actuator-1.2.1.tgz
+	source = plugin.actuator.conf
+	md5sums = 88b87846b86a5130afa46e39d0d1d88f
+	md5sums = 89ba2f74cb03d8855599bf3a846bcceb
+
+pkgname = vdr-plugin-actuator
+
