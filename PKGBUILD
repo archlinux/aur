@@ -2,7 +2,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=greenisland-papyros-git
-pkgver=20150618.4855207
+pkgver=20150622.aa2afca
 pkgrel=1
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
