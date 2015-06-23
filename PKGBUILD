@@ -58,10 +58,7 @@ build() {
     --enable-libvorbis \
     --enable-libx264 \
     --enable-libxvid \
-    --enable-runtime-cpudetect \
     --enable-shared \
-    --enable-swresample \
-    --enable-vdpau \
     --enable-version3 \
     --enable-x11grab
 
@@ -71,6 +68,7 @@ build() {
 #    --enable-libspeex \
 #    --enable-libvpx \
 #    --enable-libx265 \
+#    --enable-libssh \
 
   make
 }
