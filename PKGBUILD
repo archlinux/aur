@@ -1,4 +1,4 @@
-# Contributor: Vojtech Kral <kral.vojtech (at) gmail.com>
+# Contributor: Vojtech Kral <vojtech_kral^hk>
 
 pkgname=fortune-mod-ku-git
 pkgver=r34.e92dc09
