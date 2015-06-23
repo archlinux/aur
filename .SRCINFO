@@ -1,6 +1,6 @@
 pkgbase = masterpdfeditor-qt5
 	pkgdesc = A complete solution for creation and editing PDF files. (Free for non-commercial use) - Qt5 version
-	pkgver = 3.2.0
+	pkgver = 3.2.11
 	pkgrel = 1
 	url = http://code-industry.net/free-pdf-editor.php
 	install = masterpdfeditor-qt5.install
@@ -10,8 +10,8 @@ pkgbase = masterpdfeditor-qt5
 	conflicts = masterpdfeditor
 	source = masterpdfeditor-qt5.desktop
 	sha256sums = 29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd
-	source_x86_64 = http://code-industry.net/public/master-pdf-editor-3.2.0_qt5.amd64.tar.gz
-	sha256sums_x86_64 = db5b0ec7f873a7ea72e751017a30346fa5dc93f1ae74edc172f39010d1f89204
+	source_x86_64 = http://code-industry.net/public/master-pdf-editor-3.2.11_qt5.amd64.tar.gz
+	sha256sums_x86_64 = 0a3d9c3ce3d753001bac2b59f227e455f4cd2ca6c83acd6d47472b708be4f6ed
 
 pkgname = masterpdfeditor-qt5
 
