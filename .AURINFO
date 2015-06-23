@@ -1,0 +1,15 @@
+pkgbase = gimp-plugin-reflection
+	pkgdesc = Gimp plugin script that adds reflection to pictures and images with a single click
+	pkgver = 285.923
+	pkgrel = 2
+	url = https://github.com/otaviocc/gimpscripts
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gimp
+	source = git+https://github.com/otaviocc/gimpscripts.git
+	md5sums = SKIP
+
+pkgname = gimp-plugin-reflection
+
