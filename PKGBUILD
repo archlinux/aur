@@ -1,4 +1,5 @@
-# Maintainer: Leonard de Ruijter <leonard@aur.archlinux.org>
+# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
+
 pkgname=icecast-kh
 pkgver=2.4.0_kh1
 pkgrel=1
