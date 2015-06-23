@@ -138,6 +138,7 @@ pkgbase = wine-staging
 	replaces = bin32-wine
 	options = staticlibs
 	options = !ccache
+	options = !upx
 	source = http://prdownloads.sourceforge.net/wine/wine-1.7.45.tar.bz2
 	source = https://github.com/wine-compholio/wine-staging/archive/v1.7.45.tar.gz
 	source = 30-win32-aliases.conf
