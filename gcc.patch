@@ -1,0 +1,18 @@
+--- recollViewer.cpp	2011-12-09 08:55:23.000000000 +0100
++++ recollViewer.cpp_patched	2012-05-29 10:35:01.090153257 +0200
+@@ -12,7 +12,7 @@
+ 
+ #include <kicon.h>
+ #include <krun.h>
+-#include <qt4/QtCore/qstringlist.h>
++#include <QtCore/qstringlist.h>
+ 
+ #include "recollViewer.h"
+ #include "cmdstrings.h"
+@@ -445,4 +445,4 @@
+     }
+ }
+ 
+-#include "recollViewer.moc"
+\ No newline at end of file
++#include "recollViewer.moc"

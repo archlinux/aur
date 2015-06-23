@@ -1,0 +1,6 @@
+post_install() {
+  echo "Run kbuildsycoca4 as user to refresh KDE plasma settings."
+}
+post_upgrade() {
+  echo "Run kbuildsycoca4 as user to refresh KDE plasma settings."
+}

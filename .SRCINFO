@@ -1,0 +1,21 @@
+pkgbase = recollrunner
+	pkgdesc = Simple, down-and-dirty Recoll plugin for Krunner.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=128203
+	install = recollrunner.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = make
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = recoll
+	source = http://opendesktop.org/CONTENT/content-files/128203-recollrunner-0.6.tar.bz2
+	source = gcc.patch
+	md5sums = 3826a01e5864b96bc170426bc3d3f370
+	md5sums = 76525e7bd3ea371d5a98d2e632e5367f
+
+pkgname = recollrunner
+
