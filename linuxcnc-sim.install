@@ -1,0 +1,4 @@
+post_install () {
+  echo "To copy linuxcnc to desktop run:"
+  echo "ln -s /usr/bin/linuxcnc ~/Desktop/linuxcnc"
+}

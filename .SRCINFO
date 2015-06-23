@@ -1,0 +1,27 @@
+pkgbase = linuxcnc-sim
+	pkgdesc = It can interpret G-code and simulate a CNC machine (formerly EMC2).
+	pkgver = 20150219
+	pkgrel = 1
+	url = http://linuxcnc.org/
+	install = linuxcnc-sim.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = bc
+	depends = bwidget
+	depends = tcl
+	depends = tk
+	depends = xorg-server
+	depends = python2-libgnome
+	depends = python2-imaging
+	depends = tkimg
+	depends = python2-gtkglext
+	depends = tclx
+	source = linuxcnc::git://git.linuxcnc.org/git/linuxcnc.git
+	source = boost.patch
+	md5sums = SKIP
+	md5sums = ba6948dc5dc155849f55039e454cdbd6
+
+pkgname = linuxcnc-sim
+
