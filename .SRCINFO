@@ -1,0 +1,15 @@
+pkgbase = sqlite-pcre-git
+	pkgdesc = Perl-compatible regular expression support for the SQLite
+	pkgver = 20120608
+	pkgrel = 1
+	url = http://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = pcre
+	makedepends = sqlite
+	depends = sqlite
+
+pkgname = sqlite-pcre-git
+
