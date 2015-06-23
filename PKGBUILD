@@ -1,7 +1,7 @@
 # Maintainer: Theodoros Theodoridis <theodoridisgr@mail.com>
 
-pkgname=range-v3
-pkgver=20150622
+pkgname=range-v3-git
+pkgver=20150623
 pkgrel=1
 pkgdesc="Eric Niebler' C++ ranges library."
 arch=('any')
