@@ -4,16 +4,16 @@
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
  
 pkgname=eclipse-subclipse
-pkgver=1.10.5
+pkgver=1.10.9
 pkgrel=1
-_urlver=49382
+_urlver=49431
 pkgdesc="Subversion integration for the Eclipse platform"
 arch=('any')
 url="http://subclipse.tigris.org/"
 license=('EPL')
 depends=('eclipse' 'subversion')
 source=(http://subclipse.tigris.org/files/documents/906/${_urlver}/site-${pkgver}.zip)
-md5sums=('5537c75cf09189351672a8807cb75d61')
+md5sums=('8768699bbc8d6950e771c6936df08ef0')
  
 
 package() {
