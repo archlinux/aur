@@ -1,0 +1,14 @@
+pkgbase = nodejs-wiki-stream
+	pkgdesc = Automated explorer for wikipedia.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/joshhartigan/wiki-stream
+	arch = any
+	license = Simplifed
+	license = BSD
+	license = License
+	depends = nodejs
+	depends = npm
+
+pkgname = nodejs-wiki-stream
+
