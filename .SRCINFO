@@ -1,0 +1,14 @@
+pkgbase = python-python-meteor
+	pkgdesc = An event driven meteor client
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/hharnisc/python-meteor
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-python-ddp
+	source = https://pypi.python.org/packages/source/p/python-meteor/python-meteor-0.1.6.tar.gz
+	md5sums = a3aa0993f07fd941adddc44b91438ab8
+
+pkgname = python-python-meteor
+
