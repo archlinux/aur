@@ -1,0 +1,15 @@
+pkgbase = smplayer-theme-faenza
+	pkgdesc = Normal, dark and silver faenza theme for smplayer.
+	pkgver = 2
+	pkgrel = 2
+	url = http://qt-apps.org/content/show.php/smplayer-theme-faenza?content=156022
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	depends = smplayer
+	source = http://qt-apps.org/CONTENT/content-files/156022-smplayer-theme-faenza-2.tar.gz
+	md5sums = 740f2559ca375798cb2a36b6100bbd1b
+
+pkgname = smplayer-theme-faenza
+
