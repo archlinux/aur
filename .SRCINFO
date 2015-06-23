@@ -1,0 +1,22 @@
+pkgbase = edbrowse
+	pkgdesc = Editor, browser, and mail client based on /bin/ed.
+	pkgver = 3.5.4
+	pkgrel = 1
+	url = http://edbrowse.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = openssl
+	depends = js>=2.4
+	depends = openssl
+	depends = pcre
+	depends = curl>=7.17.0
+	depends = readline
+	conflicts = edbrowse-git
+	source = http://edbrowse.org/edbrowse-3.5.4.zip
+	md5sums = b58fe2e97ff6eef543f03f059403963a
+	sha1sums = 5ea0182655c70b4908d9da304d5f571fc05f43a1
+	sha256sums = 9b8ef8c8b83a207f59999e9117b1f1f09ca498ccd08811782dd4d42081679225
+
+pkgname = edbrowse
+
