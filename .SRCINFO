@@ -1,0 +1,17 @@
+pkgbase = ffmpegthumbs-mattepaint
+	pkgdesc = An alternative version of the standard KDE ffmpegthumbs.
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php/FFMpegThumbs-MattePaint?content=153902
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = gcc
+	depends = kdebase-workspace>=4.3.0
+	source = http://kde-look.org/CONTENT/content-files/153902-ffmpegthumbs-mattepaint-0.4.tar.gz
+	md5sums = 89398e47e3290bbc02893bcca82a8ae8
+
+pkgname = ffmpegthumbs-mattepaint
+
