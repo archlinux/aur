@@ -4,7 +4,7 @@
 
 _pkgbasename=libva-intel-driver
 pkgname=lib32-libva-intel-driver
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=('x86_64')
