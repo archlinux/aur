@@ -1,0 +1,19 @@
+pkgbase = khronos-ocl-icd
+	pkgdesc = Khronos Group OpenCL 1.2 installable client driver (ICD) loader
+	pkgver = 1.2.11.0
+	pkgrel = 1
+	url = http://www.khronos.org/registry/cl
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = mesa
+	depends = opencl-headers>=1.2
+	provides = libcl
+	provides = opencl-icd-loader
+	conflicts = libcl
+	replaces = libcl
+	source = http://www.khronos.org/registry/cl/specs/opencl-icd-1.2.11.0.tgz
+	sha256sums = bb82a4bfec8d2fe3839c1f079554990af2229bbd52f31acec31d0c4e11e99048
+
+pkgname = khronos-ocl-icd
+
