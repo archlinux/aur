@@ -1,0 +1,21 @@
+--- old/src/testoob/compatibility/trace.py	2009-10-07 17:08:46.000000000 -0500
++++ new/src/testoob/compatibility/trace.py	2014-03-16 21:53:53.332878659 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # portions copyright 2001, Autonomous Zones Industries, Inc., all rights...
+ # err...  reserved and offered to the public under the terms of the
+@@ -739,10 +739,10 @@
+ 
+                 s = s.replace("$prefix",
+                               os.path.join(sys.prefix, "lib",
+-                                           "python" + sys.version[:3]))
++                                           "python2" + sys.version[:3]))
+                 s = s.replace("$exec_prefix",
+                               os.path.join(sys.exec_prefix, "lib",
+-                                           "python" + sys.version[:3]))
++                                           "python2" + sys.version[:3]))
+                 s = os.path.normpath(s)
+                 ignore_dirs.append(s)
+             continue
