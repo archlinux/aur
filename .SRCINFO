@@ -1,0 +1,21 @@
+pkgbase = vlmc-git
+	pkgdesc = VideoLAN Movie Creator, a simple and user-friendly video editor
+	pkgver = 0.3594.6b0c72b
+	pkgrel = 1
+	epoch = 1
+	url = http://vlmc.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = vlc
+	depends = frei0r-plugins
+	provides = vlmc
+	conflicts = vlmc
+	source = git+git://git.videolan.org/vlmc.git
+	sha256sums = SKIP
+
+pkgname = vlmc-git
+
