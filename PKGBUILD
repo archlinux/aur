@@ -28,8 +28,8 @@ md5sums_i686=('92d07cde8bd5af9efa9a9fb36cbe4c84')
 md5sums_x86_64=('04c18f5090c783e23884f211ddd927e4')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source_x86_64=('http://mirror.pcbeta.com/google/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_45.0.2427.7-1_amd64.deb')
-#md5sums_x86_64=('f5432da25a52d4b1e190a20d2edf087a')
+#source_x86_64=('http://mirror.pcbeta.com/google/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_45.0.2431.0-1_amd64.deb')
+#md5sums_x86_64=('1067f853ed8eed27a349ee57cc2fa3c8')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
