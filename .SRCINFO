@@ -1,0 +1,15 @@
+pkgbase = pblazasm
+	pkgdesc = Command line tool to assemble Picoblaze code in Xilinx, pBlazIDE or extended syntax
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://code.google.com/p/pblazasm/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = svn
+	options = !strip
+	source = pblazasm.patch
+	md5sums = d1238c80c6dc408a839f460b48e84ba0
+
+pkgname = pblazasm
+

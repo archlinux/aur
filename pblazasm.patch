@@ -1,0 +1,43 @@
+--- Makefile.orig	2011-07-12 07:48:36.656784380 +0200
++++ Makefile	2011-07-12 07:49:16.283451761 +0200
+@@ -12,7 +12,7 @@
+ #MP = "C:/Qt/2010.04/mingw/include"
+ #CC = "C:/Qt/2010.04/mingw/bin/gcc"
+ MP = "C:/tcc/inc"
+-CC = "C:/tcc/tcc"
++CC = gcc
+ 
+ 
+ C_SRCS += \
+@@ -23,7 +23,7 @@
+ ./pbSymbols.c \
+ ./getopt.c
+ 
+-EXE = "./pBlazASM.exe"
++EXE = "./pBlazASM"
+ OBJS = $(C_SRCS:.c=.o)
+ LIBS = 
+ INCS = -I$(MP) -I"../inc"
+@@ -33,7 +33,7 @@
+ ## rules
+ 
+ # All Target
+-all:	test
++all:	$(EXE)
+ 
+ test:	$(EXE)
+ 	$(EXE) -l -m pBlazASM_Syntax.psm
+--- pbParser.c.orig	2011-07-12 07:50:42.186787239 +0200
++++ pbParser.c	2011-07-12 07:50:44.376787312 +0200
+@@ -28,9 +28,9 @@
+ #include "pbLexer.h"
+ #include "pbErrors.h"
+ 
+-//#ifdef _MSC_VER	//Microsoft Visual C doesn't have strcasemcp, but has stricmp instead
++#ifdef _MSC_VER	//Microsoft Visual C doesn't have strcasemcp, but has stricmp instead
+ #define strcasecmp	stricmp
+-//#endif
++#endif
+ 
+ 
+ /**
