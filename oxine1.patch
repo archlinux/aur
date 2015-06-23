@@ -1,0 +1,11 @@
+diff -rupN oxine-0.7.1/src/vdr.c oxine-0.7.1-patched/src/vdr.c
+--- oxine-0.7.1/src/vdr.c	2007-08-23 11:40:02.000000000 +0200
++++ oxine-0.7.1-patched/src/vdr.c	2013-07-04 22:24:33.152330674 +0200
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#define __USE_XOPEN
+ #include <time.h>
+ #include <unistd.h>
+ #include <netinet/in.h>

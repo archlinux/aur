@@ -1,0 +1,221 @@
+Index: src/odk_osd.c
+===================================================================
+--- src/odk_osd.c	(Revision 3677)
++++ src/odk_osd.c	(Arbeitskopie)
+@@ -57,40 +57,22 @@
+ #include "odk_private.h"
+ #include "utils.h"
+ 
+-
+-#ifdef DEBUG
+-#define VALIDATE_POINT(x,y)    {        \
+-    if ((x < 0)                         \
+-        || (x >= odk->osd.width)) {     \
+-        fatal ("x-value is outside "    \
+-               "the valid drawing "     \
+-               "area: 0 <= %d <= %d",   \
+-                x, odk->osd.width);     \
+-        assert (x >= 0);                \
+-        assert (x < odk->osd.width);    \
+-    }                                   \
+-    if ((y < 0)                         \
+-        || (y >= odk->osd.height)) {    \
+-        fatal ("y-value is outside "    \
+-               "the valid drawing "     \
+-               "area: 0 <= %d <= %d",   \
+-               y, odk->osd.height);     \
+-        assert (y >= 0);                \
+-        assert (y < odk->osd.height);   \
+-    }                                   \
++#define VALIDATE_POINT(x,y)     {               \
++    if (((x) < 0) || ((x) >= odk->osd.width)) { \
++        debug ("x-value is outside "            \
++               "the valid drawing "             \
++               "area: 0 <= %d < %d",            \
++                x, odk->osd.width);             \
++        return;                                 \
++    }                                           \
++    if (((y) < 0) || ((y) >= odk->osd.height)) {\
++        debug ("y-value is outside "            \
++               "the valid drawing "             \
++               "area: 0 <= %d <  %d",           \
++               y, odk->osd.height);             \
++        return;                                 \
++    }                                           \
+ }
+-#else
+-#define VALIDATE_POINT(x,y)    {        \
+-    if ((x < 0)                         \
+-        || (x >= odk->osd.width)) {     \
+-        return;                         \
+-    }                                   \
+-    if ((y < 0)                         \
+-        || (y >= odk->osd.height)) {    \
+-        return;                         \
+-    }                                   \
+-}
+-#endif
+ 
+ #define CLAMP(x, low, high)  (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
+ 
+@@ -1294,11 +1276,11 @@
+     case OSD_VECTOR_ARROW_DOWN:
+         {
+             int x1 = x;
+-            int y1 = y;
++            int y1 = y + (h / 2);
+             int x2 = x + w;
+-            int y2 = y;
++            int y2 = y + (h / 2);
+             int x3 = x + (w / 2);
+-            int y3 = y + (h / 2);
++            int y3 = y + h;
+             odk_draw_triangle (odk, x1, y1, x2, y2, x3, y3, color, true);
+         }
+         {
+@@ -1438,24 +1420,26 @@
+ 
+ 
+ typedef struct {
+-    double x;
+-    double y;
++    int x;
++    int y;
+ } point_t;
+ 
++
+ static void
+ swap_points (point_t * p1, point_t * p2)
+ {
+-    double x = p1->x;
+-    double y = p1->y;
++    int x = p1->x;
++    int y = p1->y;
+     p1->x = p2->x;
+     p1->y = p2->y;
+     p2->x = x;
+     p2->y = y;
+ }
+ 
++
+ static void
+-line_draw (odk_t * odk, int minx, int miny, int maxx, int maxy, point_t * p1,
+-           point_t * p2, int color)
++line_draw (odk_t * odk, int minx, int miny, int maxx, int maxy,
++           point_t * p1, point_t * p2, int color)
+ {
+     if (p1->x > maxx)
+         p1->x = maxx;
+@@ -1488,7 +1472,9 @@
+     if (!(odk->osd.hscale && odk->osd.vscale))
+         return;
+ 
+-    point_t p[3];
++    /* This is necessary for this code to work in some versions of gcc. I have
++     * no idea why this is the case though... */
++    volatile point_t p[3];
+ 
+     p[0].x = round ((double) x1 * odk->osd.hscale);
+     p[0].y = round ((double) y1 * odk->osd.vscale);
+@@ -1502,47 +1488,55 @@
+         int j = i;
+         for (; j < 3; j++) {
+             if (p[i].y > p[j].y) {
+-                swap_points (&p[i], &p[j]);
++                swap_points ((point_t *) & p[i], (point_t *) & p[j]);
+             }
+-            else if ((p[i].y == p[j].y)
+-                     && (p[i].x > p[j].x)) {
+-                swap_points (&p[i], &p[j]);
++            else if ((p[i].y == p[j].y) && (p[i].x > p[j].x)) {
++                swap_points ((point_t *) & p[i], (point_t *) & p[j]);
+             }
+         }
+     }
+ 
++#ifdef DEBUG
+     assert (p[0].y <= p[1].y);
+     assert (p[1].y <= p[2].y);
++#endif
+ 
+     int minx = odk->osd.width;
+     int maxx = 0;
+     int miny = odk->osd.height;
+     int maxy = 0;
+     for (i = 0; i < 3; i++) {
+-        if (p[i].x < minx)
++        if (p[i].x < minx) {
+             minx = p[i].x;
+-        if (p[i].x > maxx)
++        }
++        if (p[i].x > maxx) {
+             maxx = p[i].x;
+-        if (p[i].y < miny)
++        }
++        if (p[i].y < miny) {
+             miny = p[i].y;
+-        if (p[i].y > maxy)
++        }
++        if (p[i].y > maxy) {
+             maxy = p[i].y;
++        }
+     }
+ 
+     if (filled) {
+-        point_t *A = &p[0];
+-        point_t *B = &p[1];
+-        point_t *C = &p[2];
++        point_t *A = (point_t *) & p[0];
++        point_t *B = (point_t *) & p[1];
++        point_t *C = (point_t *) & p[2];
+ 
+-        double dx1 = 0;
+-        if (B->y - A->y > 0)
++        int dx1 = 0;
++        if (B->y - A->y > 0) {
+             dx1 = (B->x - A->x) / (B->y - A->y);
+-        double dx2 = 0;
+-        if (C->y - A->y > 0)
++        }
++        int dx2 = 0;
++        if (C->y - A->y > 0) {
+             dx2 = (C->x - A->x) / (C->y - A->y);
+-        double dx3 = 0;
+-        if (C->y - B->y > 0)
++        }
++        int dx3 = 0;
++        if (C->y - B->y > 0) {
+             dx3 = (C->x - B->x) / (C->y - B->y);
++        }
+ 
+         point_t s;
+         point_t *S = &s;
+@@ -1553,20 +1547,24 @@
+         E->x = A->x;
+         E->y = A->y;
+         if (dx1 > dx2) {
+-            for (; S->y <= B->y; S->y++, E->y++, S->x += dx2, E->x += dx1)
++            for (; S->y <= B->y; S->y++, E->y++, S->x += dx2, E->x += dx1) {
+                 line_draw (odk, minx, miny, maxx, maxy, S, E, color);
++            }
+             E->x = B->x;
+             E->y = B->y;
+-            for (; S->y <= C->y; S->y++, E->y++, S->x += dx2, E->x += dx3)
++            for (; S->y <= C->y; S->y++, E->y++, S->x += dx2, E->x += dx3) {
+                 line_draw (odk, minx, miny, maxx, maxy, S, E, color);
++            }
+         }
+         else {
+-            for (; S->y <= B->y; S->y++, E->y++, S->x += dx1, E->x += dx2)
++            for (; S->y <= B->y; S->y++, E->y++, S->x += dx1, E->x += dx2) {
+                 line_draw (odk, minx, miny, maxx, maxy, S, E, color);
++            }
+             S->x = B->x;
+             S->y = B->y;
+-            for (; S->y <= C->y; S->y++, E->y++, S->x += dx3, E->x += dx2)
++            for (; S->y <= C->y; S->y++, E->y++, S->x += dx3, E->x += dx2) {
+                 line_draw (odk, minx, miny, maxx, maxy, S, E, color);
++            }
+         }
+     }
+ 

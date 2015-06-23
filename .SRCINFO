@@ -1,0 +1,26 @@
+pkgbase = oxine-vdr
+	pkgdesc = Oxine is a lightweight pure OSD (on screen display) GUI for the famous xine engine with VDR support.
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://oxine.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = xine-lib
+	depends = libexif
+	depends = eject
+	depends = libcdio
+	depends = curl
+	depends = libxinerama
+	depends = gdk-pixbuf2
+	conflicts = oxine
+	source = http://downloads.sourceforge.net/sourceforge/oxine/oxine-0.7.1.tar.gz
+	source = oxine_0.7.1_triangle.patch
+	source = oxine1.patch
+	md5sums = 2a2d05ee21892624e35cf539e532c0dd
+	md5sums = 80f259f8d4b3f0e4ab00d6b784502f44
+	md5sums = 46a3ce145554547bba46c015e627b442
+
+pkgname = oxine-vdr
+
