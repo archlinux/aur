@@ -1,0 +1,20 @@
+pkgbase = r2-bindings-git
+	pkgdesc = Language bindings of the radare2 api for valabind and friends
+	pkgver = r502.56750b7
+	pkgrel = 1
+	url = http://radare.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = valabind
+	depends = radare2
+	depends = python2
+	depends = python
+	provides = r2-bindings
+	conflicts = r2-bindings
+	options = !emptydirs
+	source = git+https://github.com/radare/radare2-bindings.git
+	md5sums = SKIP
+
+pkgname = r2-bindings-git
+
