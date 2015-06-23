@@ -1,0 +1,26 @@
+pkgbase = flowblade
+	pkgdesc = a multitrack non-linear video editor for Linux
+	pkgver = 0.18
+	pkgrel = 4
+	url = https://github.com/jliljebl/flowblade
+	install = flowblade.install
+	arch = any
+	license = GPL
+	depends = ffmpeg
+	depends = pygtk
+	depends = mlt-python-bindings
+	depends = ladspa
+	depends = sox
+	depends = frei0r-plugins
+	depends = python2-dbus
+	depends = python2-gnomevfs
+	depends = python2-numpy
+	depends = python2-imaging
+	provides = flowblade
+	conflicts = flowblade-hg
+	conflicts = flowblade-git
+	source = https://github.com/jliljebl/flowblade/archive/v0.18.tar.gz
+	md5sums = 42f9b18020455c81aa15545469acdf96
+
+pkgname = flowblade
+
