@@ -1,4 +1,4 @@
-# Contributor: Vojtech "kralyk" Kral
+# Contributor: Vojtech Kral <vojtech_kral^hk>
 
 pkgname='libopencl'
 pkgver=2.0
@@ -35,59 +35,59 @@ _inner='inner.tar.bz2'
 
 _wget()
 {
-  wget -c -t 3 --waitretry=3 -O - $@
+	wget -c -t 3 --waitretry=3 -O - $@
 }
 
 prepare()
 {
-  local fbase nonce1 post_id nonce2 postdata1 postdata2
+	local fbase nonce1 post_id nonce2 postdata1 postdata2
 
-  echo 'To download AMD APP SDK you need to accept AMD APP SDK license agreement. (To view the license, visit AMD APP SDK website.)'   # IANAL
-  read -p "Accept? [y/n] " -n 1 -r
-  echo
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    msg 'Downloading AMD APP SDK...'
+	echo 'To download AMD APP SDK you need to accept AMD APP SDK license agreement. (To view the license, visit AMD APP SDK website.)'   # IANAL
+	read -p "Accept? [y/n] " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		msg 'Downloading AMD APP SDK...'
 
-    fbase=$(echo -n $_file | base64)
+		fbase=$(echo -n $_file | base64)
 
-    echo -n '[nonce1] '
-    _wget -nv "$url" > 'nonce1'
-    nonce1=$(sed -n -e "/${fbase}/s/.*_nonce\" value=\"\([[:alnum:]]*\)\".*/\1/p;" 'nonce1')
-    post_id=$(sed -n -e "/post_id/s/.*value=\"\([[:alnum:]]*\)\".*/\1/p;" 'nonce1' | head -n 1)
+		echo -n '[nonce1] '
+		_wget -nv "$url" > 'nonce1'
+		nonce1=$(sed -n -e "/${fbase}/s/.*_nonce\" value=\"\([[:alnum:]]*\)\".*/\1/p;" 'nonce1')
+		post_id=$(sed -n -e "/post_id/s/.*value=\"\([[:alnum:]]*\)\".*/\1/p;" 'nonce1' | head -n 1)
 
-    echo -n '[nonce2] '
-    postdata1="amd_developer_central_downloads_page_nonce=${nonce1}&_wp_http_referer=%2Ftools-and-sdks%2Fopencl-zone%2Famd-accelerated-parallel-processing-app-sdk%2F&f=${fbase/=/%3D}&post_id=${post_id}"
-    nonce2=$(_wget -nv --post-data "${postdata1}" "${_agr_url}" | sed -n -e "/${fbase}/s/.*_nonce\" value=\"\([[:alnum:]]*\)\".*/\1/p;")
+		echo -n '[nonce2] '
+		postdata1="amd_developer_central_downloads_page_nonce=${nonce1}&_wp_http_referer=%2Ftools-and-sdks%2Fopencl-zone%2Famd-accelerated-parallel-processing-app-sdk%2F&f=${fbase/=/%3D}&post_id=${post_id}"
+		nonce2=$(_wget -nv --post-data "${postdata1}" "${_agr_url}" | sed -n -e "/${fbase}/s/.*_nonce\" value=\"\([[:alnum:]]*\)\".*/\1/p;")
 
-    echo -n '[tarball] '
-    postdata2="amd_developer_central_nonce=${nonce2}&_wp_http_referer=%2Famd-license-agreement-appsdk%2F&f=${fbase/=/%3D}"
-    _wget --post-data "${postdata2}" "${_agr_url}" -O "${_tarball}"
+		echo -n '[tarball] '
+		postdata2="amd_developer_central_nonce=${nonce2}&_wp_http_referer=%2Famd-license-agreement-appsdk%2F&f=${fbase/=/%3D}"
+		_wget --post-data "${postdata2}" "${_agr_url}" -O "${_tarball}"
 
-    msg "Validating ${_tarball} files with sha256sum ..."
-    echo "${_hash} ${_tarball}" | sha256sum -c || exit 1
+		msg "Validating ${_tarball} files with sha256sum ..."
+		echo "${_hash} ${_tarball}" | sha256sum -c || exit 1
 
-    msg "Extracting ${_tarball} ..."
-    bsdtar -jxf "${_tarball}"
-    dd ibs="${_offset}" skip=1 if="${_sfx}" of="${_inner}" 2> /dev/null
-    bsdtar -jxf "${_inner}"
-  else
-    exit 1
-  fi
+		msg "Extracting ${_tarball} ..."
+		bsdtar -jxf "${_tarball}"
+		dd ibs="${_offset}" skip=1 if="${_sfx}" of="${_inner}" 2> /dev/null
+		bsdtar -jxf "${_inner}"
+	else
+		exit 1
+	fi
 }
 
 package()
 {
-  #Install libOpenCL
-  #I'm not very sure about so version, so I'm going to cover several cases...
-  install -d -m 755 "${pkgdir}/usr/lib"
-  install -m 755 "lib/${_arch}/libOpenCL.so.1" "${pkgdir}/usr/lib/libOpenCL.so"
-  ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.1"
-  ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2"
-  ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2.0"
-  ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2.0.0"
+	#Install libOpenCL
+	#I'm not very sure about so version, so I'm going to cover several cases...
+	install -d -m 755 "${pkgdir}/usr/lib"
+	install -m 755 "lib/${_arch}/libOpenCL.so.1" "${pkgdir}/usr/lib/libOpenCL.so"
+	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.1"
+	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2"
+	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2.0"
+	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2.0.0"
 
-  #Install license
-  install -d -m 755 "${pkgdir}/usr/share/licenses/libopencl"
-  install -m 644 'APPSDK-EULA-linux.txt' "${pkgdir}/usr/share/licenses/libopencl"
+	#Install license
+	install -d -m 755 "${pkgdir}/usr/share/licenses/libopencl"
+	install -m 644 'APPSDK-EULA-linux.txt' "${pkgdir}/usr/share/licenses/libopencl"
 }
