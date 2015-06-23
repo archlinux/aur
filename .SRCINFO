@@ -1,6 +1,6 @@
 pkgbase = ruby-activesupport
 	pkgdesc = A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://rubygems.org/gems/activesupport/
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = ruby-activesupport
 	depends = ruby-tzinfo
 	depends = ruby-minitest
 	depends = ruby-thread_safe
-	noextract = activesupport-4.2.1.gem
+	noextract = activesupport-4.2.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/activesupport-4.2.1.gem
-	sha1sums = cffc77380c131a6369fd26b57f651995308f0fd0
+	source = https://rubygems.org/downloads/activesupport-4.2.2.gem
+	sha1sums = b4b91de89a8c6f223bed5c01a7e578956d4a2bf7
 
 pkgname = ruby-activesupport
 
