@@ -1,0 +1,18 @@
+pkgbase = yap
+	pkgdesc = A high-performance Prolog compiler
+	pkgver = 6.2.2
+	pkgrel = 5
+	url = http://www.dcc.fc.up.pt/~vsc/Yap/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = gmp
+	depends = unixodbc
+	depends = libmariadbclient
+	source = http://www.dcc.fc.up.pt/~vsc/Yap/yap-6.2.2.tar.gz
+	source = friend-function.patch
+	md5sums = 95eaa54978e4811ff6e504e7dca9e835
+	md5sums = 5b5884a62e8cd9482408565576b872f8
+
+pkgname = yap
+
