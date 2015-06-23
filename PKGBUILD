@@ -2,12 +2,12 @@
 # Maintainer:  Michael Hansen < zrax0111 gmail com >
 pkgname=postgresql-uuid-ossp
 pkgver=9.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="PostgreSQL UUID-OSSP Extension"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
 url="http://www.postgresql.org/"
-depends=('readline' 'postgresql>=9.4' 'uuid')
+depends=('readline' 'postgresql>=9.4' 'util-linux')
 options=('!makeflags')
 source=(ftp://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
 sha256sums=('538ed99688d6fdbec6fd166d1779cf4588bf2f16c52304e5ef29f904c43b0013')
@@ -17,7 +17,7 @@ build() {
 
     # configure
     ./configure --prefix=/usr --datadir=/usr/share/postgresql \
-        --with-ossp-uuid || return 1
+        --with-uuid=e2fs || return 1
 
     # make and install
     make || return 1
