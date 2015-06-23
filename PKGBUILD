@@ -1,4 +1,4 @@
-# Maintainer: Vojtech Kral <vojtech -at- kral -dot- hk>
+# Maintainer: Vojtech Kral <vojtech_kral^hk>
 # Contributor:  Arkham <arkham at archlinux dot us>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
@@ -21,16 +21,16 @@ sha256sums=('f26d570b63e9591e438a625f87eee80480b160f077a4d7aae433c8d3e0d20ab9'
 
 package()
 {
-    cd $srcdir/FreeRapid-$pkgver
+	cd $srcdir/FreeRapid-$pkgver
 
-    # Copy data and fix permissions
-    install -d "$pkgdir/usr/share/$pkgname"
-    cp -rf frd.jar lib/ lookandfeel/ search/ objectdb.conf "$pkgdir/usr/share/$pkgname/"
-    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 '{}' \;
+	# Copy data and fix permissions
+	install -d "$pkgdir/usr/share/$pkgname"
+	cp -rf frd.jar lib/ lookandfeel/ search/ objectdb.conf "$pkgdir/usr/share/$pkgname/"
+	find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 '{}' \;
 
-    # Install bin, icon and desktop file
-    install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-    ln -sf "$pkgname" "$pkgdir/usr/bin/frd"
-    install -Dm 644 frd.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-    install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	# Install bin, icon and desktop file
+	install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	ln -sf "$pkgname" "$pkgdir/usr/bin/frd"
+	install -Dm 644 frd.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
