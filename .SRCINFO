@@ -1,0 +1,14 @@
+pkgbase = sim4
+	pkgdesc = A similarity-based tool for aligning an expressed DNA sequence with a genomic sequence for the gene
+	pkgver = 2012_10_10
+	pkgrel = 1
+	url = http://globin.bx.psu.edu/html/docs/sim4.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://globin.bx.psu.edu/dist/sim4/sim4.tar.gz
+	md5sums = 8bca6eb05c5aaf689db0db12522bdf34
+
+pkgname = sim4
+
