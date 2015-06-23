@@ -1,0 +1,17 @@
+pkgbase = quassel-git-monolithic
+	pkgdesc = A Qt4 IRC client - Monolithic Version
+	pkgver = 0.12.0.r7.g92490c7
+	pkgrel = 1
+	url = http://quassel-irc.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	conflicts = quassel-monolithic
+	replaces = quassel
+	source = quassel::git://git.quassel-irc.org/quassel.git
+	md5sums = SKIP
+
+pkgname = quassel-git-monolithic
+
