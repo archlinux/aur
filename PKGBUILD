@@ -4,8 +4,8 @@
 # Contributor: farnsworth517 
 
 pkgname=soulseekqt
-pkgver=20141130
-_pkgver=2014-11-30
+pkgver=20150621
+_pkgver=2015-6-21
 
 if [[ "$CARCH" == 'x86_64' ]] ; then
    _pkgver=$_pkgver-64bit
@@ -21,17 +21,18 @@ license=('custom')
 
 if [[ "$CARCH" == 'i686' ]] ; then
    depends=( 'libxext' 'fontconfig' 'libxrender' 'libsm' 'alsa-lib' )
-   md5sums=( '0ce2ebf13704574205cc4c47368fb14b'
+   md5sums=( 'f0ae206b59144a3773fb609b86d24c39'
              '0a2137a47e9ac0b4b57a0d55872d0842'
              '256ec24f7ad2d39ac8da0f1c03d3cafe' )
 elif [[ "$CARCH" == 'x86_64' ]] ; then
    depends=( 'libxext' 'fontconfig' 'libxrender' )
-   md5sums=( '8f644c5903d11233ebb3c65a4eafaeb6'
+   md5sums=( '7d3f295e219782cca78a813ab682ff23'
              '0a2137a47e9ac0b4b57a0d55872d0842'
              '256ec24f7ad2d39ac8da0f1c03d3cafe' )
 fi
 
-source=( "http://www.soulseekqt.net/SoulseekQT/Linux/SoulseekQt-$_pkgver.tgz"
+source=( "https://dl.dropboxusercontent.com/u/7226803/SoulseekQt-$_pkgver.tgz"
+	 #"http://www.soulseekqt.net/SoulseekQT/Linux/SoulseekQt-$_pkgver.tgz"
          $pkgname.desktop 
          $pkgname.png )
 
