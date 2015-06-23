@@ -5,7 +5,7 @@
 
 _pkgname=qt5-xmlpatterns
 pkgname=$_pkgname-git
-pkgver=v5.5.0.beta1.2.g25ad8b7
+pkgver=v5.5.0.rc1.2.g25ad8b7
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtXmlPatterns)"
 arch=("i686" "x86_64")
