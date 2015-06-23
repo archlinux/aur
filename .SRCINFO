@@ -1,0 +1,31 @@
+pkgbase = codelite-bin
+	pkgdesc = Open-source, cross platform IDE for the C/C++ programming languages
+	pkgver = 8.0
+	pkgrel = 1
+	url = http://www.codelite.org/
+	install = codelite.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = chrpath
+	depends = clang
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = webkitgtk2
+	depends = wxgtk
+	depends = curl
+	depends = libssh
+	depends = python2
+	depends = libedit
+	depends = glu
+	optdepends = graphviz: callgraph visualization
+	provides = codelite
+	replaces = codelite
+	replaces = codelite-svn
+	source = http://repos.codelite.org/rpms/fedora/codelite-8.0-1.fc21.x86_64.rpm
+	source = http://repos.codelite.org/wxCrafter-2.1/fedora/64/wxcrafter-2.1-1.x86_64.rpm
+	md5sums = ff84dff257af4f0dac705d259c997ca8
+	md5sums = 2e060bc371420afad430fb6a3facea4e
+
+pkgname = codelite-bin
+
