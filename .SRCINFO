@@ -1,0 +1,14 @@
+pkgbase = comicseer
+	pkgdesc = Cross-platform comicbook reader (cbz pdf and more)
+	pkgver = 2.51
+	pkgrel = 1
+	url = http://www.xylasoft.com/comicseer/index.php
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = qt4
+	depends = zlib
+	optdepends = comictagger: For editing comic metadata
+
+pkgname = comicseer
+

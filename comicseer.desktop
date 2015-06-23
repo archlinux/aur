@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ComicSeer
+GenericName=Comicbook Viewer
+Comment=Viewer for Comic files (cbr/cbz format files)
+Exec=comicseer %f
+Icon=/usr/share/doc/comicseer/comicseer.png
+Categories=Graphics;Viewer;
