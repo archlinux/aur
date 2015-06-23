@@ -1,0 +1,14 @@
+pkgbase = neatvi-git
+	pkgdesc = A small ex/vi editor.
+	pkgver = r1.b1c10bc
+	pkgrel = 1
+	url = http://repo.or.cz/w/neatvi.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	source = neatvi-git::git+http://repo.or.cz/neatvi.git
+	md5sums = SKIP
+
+pkgname = neatvi-git
+
