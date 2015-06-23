@@ -6,7 +6,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
       'lib32-gnutls' 'lib32-sdl' 'lib32-libva'
       'lib32-libass' 'lib32-libbluray' 'lib32-fribidi'
       'lib32-gsm' 'lib32-libmodplug' 'lib32-lame'
-      'lib32-opus' 'lib32-libpulse' 'lib32-rtmpdump' 'lib32-schroedinger'
+      'lib32-opus' 'lib32-libpulse' 'lib32-schroedinger'
       'lib32-libtheora' 'lib32-v4l-utils' 'lib32-libxv'
       'lib32-libx264' 'lib32-xvidcore' 'lib32-libvdpau'
       )
@@ -52,7 +52,6 @@ build() {
     --enable-libmp3lame \
     --enable-libopus \
     --enable-libpulse \
-    --enable-librtmp \
     --enable-libschroedinger \
     --enable-libtheora \
     --enable-libv4l2 \
