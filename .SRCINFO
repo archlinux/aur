@@ -1,0 +1,17 @@
+pkgbase = rodovid
+	pkgdesc = Rodovid is a drag-n-drop genealogic program for Linux
+	pkgver = 0.3.16
+	pkgrel = 1
+	url = http://sourceforge.net/projects/rodovid/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-tk
+	depends = perl-gedcomlite
+	depends = perl-pdf-api2
+	source = http://sourceforge.net/projects/rodovid/files/0.3.16/linux/rpm/rodovid-0.3.16-1.noarch.rpm
+	md5sums = fd44458d49bb7797ddfdb17493a03b52
+
+pkgname = rodovid
+
