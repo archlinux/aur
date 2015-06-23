@@ -1,0 +1,21 @@
+pkgbase = qupzilla-git
+	pkgdesc = A new and very fast open source browser based on WebKit core, written in Qt Framework.
+	pkgver = v1.8.0.r142.g8d7cfb0
+	pkgrel = 1
+	url = http://www.qupzilla.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-script
+	depends = qt5-tools
+	depends = qt5-webengine
+	provides = qupzilla
+	conflicts = qupzilla
+	conflicts = qupzilla-qt5-git
+	source = git://github.com/qupzilla/qupzilla.git#branch=master
+	md5sums = SKIP
+
+pkgname = qupzilla-git
+
