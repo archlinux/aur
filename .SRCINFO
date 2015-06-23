@@ -1,0 +1,13 @@
+pkgbase = archlinux-themes-gdm-old
+	pkgdesc = Arch Linux themes for legacy GNOME Desktop Manager (GDM =< 2.28)
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://www.archlinux.org/
+	arch = any
+	license = CCPL:cc-by-sa
+	optdepends = gdm-old: to implement these themes
+	source = ftp://ftp.archlinux.org/other/artwork/archlinux-themes-gdm-1.4.tar.gz
+	md5sums = bce4170608ed6f982f92277b7279ab98
+
+pkgname = archlinux-themes-gdm-old
+
