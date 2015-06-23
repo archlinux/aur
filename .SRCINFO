@@ -1,0 +1,16 @@
+pkgbase = bizou
+	pkgdesc = Bizou - a (french) KISS php image gallery
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://positon.org/bizou/
+	arch = any
+	license = GPLv3
+	depends = php
+	depends = php-gd
+	options = !strip
+	backup = etc/webapps/bizou/config.php
+	source = http://positon.org/bizou/bizou_v1.7.tar.gz
+	md5sums = 7ad2151722b65495d41eaf2e4b61508c
+
+pkgname = bizou
+
