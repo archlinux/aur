@@ -1,0 +1,15 @@
+pkgbase = boost.process
+	pkgdesc = Flexible framework for the C++ programming language to manage running programs
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.highscore.de/boost/process0.5/
+	arch = i686
+	arch = x86_64
+	license = boost
+	depends = boost
+	depends = gcc
+	source = http://www.highscore.de/boost/process0.5/process.zip
+	md5sums = aa7e995dddf8a2cbb1c581b344f44b6e
+
+pkgname = boost.process
+
