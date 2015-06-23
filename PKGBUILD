@@ -1,13 +1,13 @@
 # Maintainer: Daniel Sandman <revoltism@gmail.com>
 
 pkgname=pachist-git
-pkgver=r25.5c50978
+pkgver=0
 pkgrel=1
 pkgdesc="A small bash program to show the installed package history in Arch Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/Almehdi/pachist"
 license=('GPL3')
-depends=('colout-git')
+#depends=('colout-git')
 makedepends=('git')
 conflicts=('pachist')
 provides=('pachist')
