@@ -2,12 +2,12 @@
 
 pkgname=brackets
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS. Stable git Tags."
 arch=('i686' 'x86_64')
 url="http://brackets.io"
 license=('MIT')
-depends=(alsa-lib nodejs npm desktop-file-utils gconf libgcrypt15 libudev.so.0)
+depends=(alsa-lib nodejs npm desktop-file-utils gconf libgcrypt15 libudev0)
 optdepends=(
 	"google-chrome: to enable Live Preview"
 	"gnuplot: to enable node benchmarking"
@@ -16,7 +16,7 @@ optdepends=(
 	"hicolor-icon-theme: for hicolor theme hierarchy"
 )
 conflicts=("brackets-git" "brackets-bin")
-makedepends=('git' 'p7zip' 'gyp-git')
+makedepends=('git' 'unzip' 'gyp-git')
 install=${pkgname}.install
 source=("brackets-shell::git+https://github.com/adobe/brackets-shell.git#branch=linux-1547"
 		#"brackets-shell::git+https://github.com/adobe/brackets-shell.git#tag=release-${pkgver}"
