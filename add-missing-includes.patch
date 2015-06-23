@@ -1,0 +1,28 @@
+Index: kiofuseapp.h
+===================================================================
+--- kiofuseapp.h	(revision 1360808)
++++ kiofuseapp.h	(working copy)
+@@ -22,6 +22,9 @@
+ #define KIO_FUSE_APP_H
+ 
+ #include <errno.h>
++extern "C" {
++#include <stdint.h>
++}
+ 
+ #include "cache.h"
+ #include "jobhelpers.h"
+Index: kiofuseops.cpp
+===================================================================
+--- kiofuseops.cpp	(revision 1360808)
++++ kiofuseops.cpp	(working copy)
+@@ -24,6 +24,9 @@
+ #include <QThread>
+ 
+ #include <kdebug.h>
++extern "C" {
++#include <unistd.h>
++}
+ 
+ int kioFuseGetAttr(const char *relPath, struct stat *stbuf)
+ {
