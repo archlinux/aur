@@ -1,0 +1,18 @@
+pkgbase = vdr-plugin-image-git
+	pkgdesc = For archvdr project! Plugin that allows to display of digital images on the TV screen
+	pkgver = 2
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/plg-image
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	depends = vdr
+	depends = ffmpeg
+	depends = libexif
+	depends = netpbm
+	optdepends = file: for better filetype detection
+	conflicts = vdr-image
+
+pkgname = vdr-plugin-image-git
+
