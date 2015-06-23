@@ -1,0 +1,29 @@
+From c4b0c614e0989eeaa11853edab427a08810ccfb7 Mon Sep 17 00:00:00 2001
+From: Moritz Lipp <mlq@pwmt.org>
+Date: Tue, 23 Jun 2015 11:02:07 +0200
+Subject: [PATCH] Invalid operands to binary operator in findNextColor
+
+---
+ utils/eye4graphics.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/utils/eye4graphics.cc b/utils/eye4graphics.cc
+index ac9594e..3c5ddaa 100644
+--- a/utils/eye4graphics.cc
++++ b/utils/eye4graphics.cc
+@@ -568,9 +568,9 @@ int findNextColor(BoundingBox* bbox,
+                 bbox->right = x;
+                 bbox->top = y;
+                 bbox->bottom = y;
+-                bbox->error = (((hay_pixel.red & 0xff) << 16) +
+-                               ((hay_pixel.green & 0xff) << 8) +
+-                               (hay_pixel.blue & 0xff));
++                bbox->error = ((((int) hay_pixel.red & 0xff) << 16) +
++                               (((int) hay_pixel.green & 0xff) << 8) +
++                               ((int) hay_pixel.blue & 0xff));
+                 return 1;
+             }
+         }
+-- 
+2.4.4
+
