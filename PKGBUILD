@@ -13,10 +13,10 @@ md5sums=('625013ba47fe79d296b76a74200c3312')
 
 build() {
     cd "$srcdir/pyrabbit-$pkgver"
-    python setup.py build
+    python2 setup.py build
 }
 
 package() {
     cd "$srcdir/pyrabbit-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
