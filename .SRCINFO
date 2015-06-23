@@ -1,0 +1,23 @@
+pkgbase = criu
+	pkgdesc = Checkpoint/Restore in Userspace tool
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://criu.org
+	changelog = criu.changelog
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = asciidoc
+	depends = protobuf-c
+	options = !buildflags
+	source = http://download.openvz.org/criu/criu-1.5.2.tar.bz2
+	source = makefiles.diff
+	md5sums = 5288cb4148cf9631ea2ec1b5ec148f6d
+	md5sums = 441e65c3eaed9eb7e1158b4837476a94
+	sha1sums = a45b104bf76f7932148613d3409b28b110e75cc2
+	sha1sums = 788e00452867f05de4b5983dab96645248418d91
+	sha256sums = e8226018ac6c4094d61a1c002543e2b2253b4041a8edb24d4c1eaa41ce5ab345
+	sha256sums = a9443c6c45ccda0e6253b0d39f9576a8f6da95ae68f77b2995761a54d99a88ca
+
+pkgname = criu
+
