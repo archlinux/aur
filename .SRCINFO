@@ -1,0 +1,15 @@
+pkgbase = python2-posix_ipc
+	pkgdesc = POSIX IPC primitives (semaphores, shared memory and message queues) for Python 2
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://semanchuk.com/philip/posix_ipc/
+	arch = any
+	license = BSD
+	makedepends = python-distribute
+	depends = python2
+	options = !emptydirs
+	source = http://semanchuk.com/philip/posix_ipc/posix_ipc-1.0.0.tar.gz
+	md5sums = 85607a392087715ac3a3c7ded2492d06
+
+pkgname = python2-posix_ipc
+
