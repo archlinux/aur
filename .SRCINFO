@@ -1,0 +1,18 @@
+pkgbase = mate-menu-git
+	pkgdesc = Mate Menu fork of MintMenu
+	pkgver = r453.3de5f14
+	pkgrel = 1
+	url = https://bitbucket.org/ubuntu-mate/mate-menu/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = python2-xlib
+	depends = mate-applets
+	depends = python2-distutils-extra
+	depends = python2-setuptools
+	source = git+https://bitbucket.org/ubuntu-mate/mate-menu.git
+	sha256sums = SKIP
+
+pkgname = mate-menu-git
+
