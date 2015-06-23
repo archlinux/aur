@@ -5,7 +5,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=2.4.2
+pkgver=2.7.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix"
@@ -23,7 +23,7 @@ depends=(
       )
 makedepends=('yasm')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
-sha256sums=('974f90a9d7bde835213ab970c2190402e5d6566e47a7bb657d756ee92540fa7e')
+sha256sums=('7e07b97d2415feeae9c9b5595e35e7b7aab33207e81bf9f8c0d1eece43f7f720')
 
 build() {
   cd $_pkgbasename-$pkgver
