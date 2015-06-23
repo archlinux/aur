@@ -1,0 +1,14 @@
+pkgbase = rirc-git
+	pkgdesc = A terminal IRC client in C.
+	pkgver = r304.5c01735
+	pkgrel = 1
+	url = https://github.com/rcr/rirc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = rirc-git::git+https://github.com/rcr/rirc
+	md5sums = SKIP
+
+pkgname = rirc-git
+
