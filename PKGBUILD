@@ -1,4 +1,5 @@
-# Maintainer: Leonard de Ruijter <leonard@aur.archlinux.org>
+# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
+
 pkgname=liquidsoap
 pkgver=1.1.1
 pkgrel=4
