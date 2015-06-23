@@ -1,0 +1,17 @@
+pkgbase = ttf-klingon-piqad-mandel
+	pkgdesc = Klingon pIqaD Mandel font.
+	pkgver = 20150223
+	pkgrel = 1
+	epoch = 3
+	url = http://www.evertype.com/fonts/tlh/
+	install = ttf-klingon-piqad-mandel.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.evertype.com/fonts/tlh/klingon-piqad-mandel.zip
+	sha384sums = 076413a87a5b57c93bfe0e53775eba8c980de5823c57b0688a2554c17762f60746938e57adfbfd9276c8863a61cecedc
+
+pkgname = ttf-klingon-piqad-mandel
+
