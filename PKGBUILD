@@ -2,29 +2,26 @@
 # Contributor: Moritz Kiefer <moritz.kiefer@gmail.com>
 
 pkgname=mumble-jack
-pkgver=1.2.8
-pkgrel=3
+pkgver=1.2.9
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble with support for JACK"
 license=('BSD')
-depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack')
+depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus')
 makedepends=('boost' 'mesa' 'avahi')
 provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 url=http://mumble.info/
 source=(http://downloads.sourceforge.net/mumble/mumble-$pkgver.tar.gz
-        gcc49.patch::https://github.com/mumble-voip/mumble/commit/349436284b5f1baa61836c98ff0d518392140c5d.patch
         http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch)
-md5sums=('1a3ef91489ff674dfc010377d7721a28'
-         '9a1c254352dd4bb9fe4ba2f7471fb030'
+md5sums=('85decb9a1efb13e7558fab6265f81ad8'
          '03d89f5f4265de696505211984b969a0')
 
 
 prepare() {
   cd $srcdir/mumble-$pkgver
 
-  patch -Np1 < $srcdir/gcc49.patch
   patch -Np1 < $srcdir/mumble-jack-support.patch
 }
 
