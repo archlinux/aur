@@ -1,0 +1,12 @@
+diff -rupN carlmig-radio-tray-1717a0e8c143/src/SysTray.py patched/src/SysTray.py
+--- carlmig-radio-tray-1717a0e8c143/src/SysTray.py	2012-08-09 23:23:51.000000000 +0200
++++ patched/src/SysTray.py	2015-01-05 13:34:09.941743473 +0100
+@@ -182,7 +182,7 @@ class SysTray(object):
+     
+         
+     def run(self):
+-        gtk.gdk.threads_init()
++#        gtk.gdk.threads_init()
+         gtk.main()
+ 
+ 
