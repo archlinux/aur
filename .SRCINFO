@@ -1,0 +1,14 @@
+pkgbase = python2-meteor-ejson
+	pkgdesc = Encoder and Decoder for Extended JSON (EJSON) as used in Meteor and DDP.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lyschoening/meteor-ejson-python
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-six
+	source = https://pypi.python.org/packages/source/m/meteor-ejson/meteor-ejson-1.0.0.tar.gz
+	md5sums = 90952e08f858e936ea6703e503c6f01c
+
+pkgname = python2-meteor-ejson
+
