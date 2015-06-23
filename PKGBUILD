@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=ib-tws
-pkgver=949.3e
+pkgver=950.2g
 pkgrel=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -22,7 +22,7 @@ md5sums=('e1cae2de592add7133bb08123e8db1ad'
          '9205b5eade96d69f8e470cc52c30db4a'
          'c95eeb41fec3aae6ad5e82703a39060c'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         '0d34d5f35335523c3833cb06623d06ce')
+         'ac44e5900c36629b0a432305947b7f4a')
 
 build() {
 	# Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
