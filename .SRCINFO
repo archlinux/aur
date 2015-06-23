@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-ugly-git
 	pkgdesc = GStreamer Multimedia Framework Ugly Plugins
-	pkgver = 1.3.1.1.5085.a665347
+	pkgver = 1.5.1.1.5184.c72abcf
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = gst-plugins-ugly-git
 	depends = libcdio
 	depends = x264
 	depends = opencore-amr
-	provides = gst-plugins-ugly=1.3.1.1.5085.a665347
+	provides = gst-plugins-ugly=1.5.1.1.5184.c72abcf
 	conflicts = gst-plugins-ugly
 	options = !libtool
 	options = !emptydirs
