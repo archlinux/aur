@@ -1,0 +1,743 @@
+ #!/bin/bash
+
+post_install() {
+	echo 'Executing post install scripts ...'
+
+	ABS_ROOT=/usr/local/lexmark/legacy
+	REL_ROOT=/usr/local/lexmark/legacy
+	OEM=lexmark
+
+	release=`cat /etc/*release | grep Ubuntu`
+	if [ "$release" != "" ]; then
+	    if [ -f $ABS_ROOT/bin/.scripts/apparmor.pl ]; then
+		perl $ABS_ROOT/bin/.scripts/apparmor.pl
+		apparmor_parser -r /etc/apparmor.d/usr.sbin.cupsd
+	    fi
+	fi
+	echo 'update the demon script'
+	_ESC=`echo $ABS_ROOT | sed  's/\//\\\\\//g'`
+	if [ -f ${ABS_ROOT}/bin/.scripts/demon ]; then
+	    cat ${ABS_ROOT}/bin/.scripts/demon | sed -e "s/__OEM__/${OEM}/" | sed -e "s/__ABS_ROOT__/${_ESC}/" > ${ABS_ROOT}/bin/.scripts/demon_tmp
+	    mv ${ABS_ROOT}/bin/.scripts/demon_tmp ${ABS_ROOT}/bin/.scripts/demon
+	fi
+
+	script=''
+
+	#this is for fedora & suse
+	if [ -d /etc/X11/xinit/xinitrc.d ]; then
+	    if [ ! -f /etc/X11/xinit/xinitrc.d/99demon2 ]; then
+		cp ${ABS_ROOT}/bin/.scripts/demon /etc/X11/xinit/xinitrc.d/99demon2
+		chmod 555 /etc/X11/xinit/xinitrc.d/99demon2
+		script='/etc/X11/xinit/xinitrc.d/99demon2'
+	    fi
+	fi
+
+	#this is for ubuntu
+	if [ -d /etc/X11/Xsession.d ]; then
+	    if [ ! -f /etc/X11/Xsession.d/99demon2 ]; then
+		cp ${ABS_ROOT}/bin/.scripts/demon /etc/X11/Xsession.d/99demon2
+		chmod 555 /etc/X11/Xsession.d/99demon2
+		script='/etc/X11/Xsession.d/99demon2'
+	    fi
+	fi
+
+	echo 'create the pid file'
+	if [ ! -d /var/run/${OEM} ]; then
+	    mkdir /var/run/${OEM}
+	fi
+	if [ -f /var/run/${OEM}/demond2.pid ]; then
+	    chmod 666 /var/run/${OEM}/demond2.pid
+	else
+	    echo > /var/run/${OEM}/demond2.pid
+	    chmod 666 /var/run/${OEM}/demond2.pid
+	fi 
+
+	echo 'terminate previous running instance/s of device monitor'
+	killall -9 demond > /dev/null 2>&1
+
+	#get the username used to logged in to the 
+	#system by checking the USER environment variables
+	user1=$USER
+	user2=$SUDO_USER
+	user3=$USERNAME
+	username="root"
+#	if [ "$user1" != "root" ]; then
+#	    username=$user1;
+#	elif [ "$user2" != "root" ]; then
+#	    username=$user2;
+#	elif [ "$user3" != "root" ]; then
+#	    username=$user3;
+#	fi
+
+	echo 'run device monitor'
+	#TODO: investigate other ways to run daemon
+	#/bin/sh ${script}
+	if [ $username == "root" ]; then
+	    #/bin/sh /usr/local/lexmark/legacy/bin/.scripts/demon
+	    /bin/sh $script
+	else
+	    sudo -u $username /usr/local/lexmark/legacy/bin/.scripts/demon
+	    if [ $? -ne 0 ]; then
+		#/bin/sh /usr/local/lexmark/legacy/bin/.scripts/demon
+		/bin/sh $script
+	    fi
+	fi;
+
+
+	echo 'add symbolic link to /usr/lib for 2008 HPEs'
+	if [ ! -d ${REL_ROOT} ]; then
+	    ln -s ${ABS_ROOT} ${REL_ROOT}
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08flib.so ${REL_ROOT}/lib/liblxkrf08flib
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08flib.so /usr/lib/liblxkrf08flib
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08flib.so /usr/lib/liblxkrf08flib.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpec.so ${REL_ROOT}/lib/liblxkrf08hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpec.so /usr/lib/liblxkrf08hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpec.so /usr/lib/liblxkrf08hpec.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpeh.so ${REL_ROOT}/lib/liblxkrf08hpeh
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpeh.so /usr/lib/liblxkrf08hpeh
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpeh.so /usr/lib/liblxkrf08hpeh.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpep.so ${REL_ROOT}/lib/liblxkrf08hpep
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpep.so /usr/lib/liblxkrf08hpep
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrf08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrf08hpep.so /usr/lib/liblxkrf08hpep.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08flib.so ${REL_ROOT}/lib/liblxkrs08flib
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08flib.so /usr/lib/liblxkrs08flib
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08flib.so /usr/lib/liblxkrs08flib.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpec.so ${REL_ROOT}/lib/liblxkrs08hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpec.so /usr/lib/liblxkrs08hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpec.so /usr/lib/liblxkrs08hpec.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpeh.so ${REL_ROOT}/lib/liblxkrs08hpeh
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpeh.so /usr/lib/liblxkrs08hpeh
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpeh.so /usr/lib/liblxkrs08hpeh.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpep.so ${REL_ROOT}/lib/liblxkrs08hpep
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpep.so /usr/lib/liblxkrs08hpep
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkrs08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkrs08hpep.so /usr/lib/liblxkrs08hpep.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08flib.so ${REL_ROOT}/lib/liblxkyf08flib
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08flib.so /usr/lib/liblxkyf08flib
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08flib ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08flib.so /usr/lib/liblxkyf08flib.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpec.so ${REL_ROOT}/lib/liblxkyf08hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpec.so /usr/lib/liblxkyf08hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpec.so /usr/lib/liblxkyf08hpec.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpeh.so ${REL_ROOT}/lib/liblxkyf08hpeh
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpeh.so /usr/lib/liblxkyf08hpeh
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpeh ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpeh.so /usr/lib/liblxkyf08hpeh.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpep.so ${REL_ROOT}/lib/liblxkyf08hpep
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpep.so /usr/lib/liblxkyf08hpep
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkyf08hpep ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkyf08hpep.so /usr/lib/liblxkyf08hpep.so
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxknf09hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxknf09hpec.so ${REL_ROOT}/lib/liblxknf09hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkns09hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkns09hpec.so ${REL_ROOT}/lib/liblxkns09hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxknf10hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxknf10hpec.so ${REL_ROOT}/lib/liblxknf10hpec
+	fi
+	if [ ! -f ${REL_ROOT}/lib/liblxkns10hpec ]; then
+	    ln -s ${REL_ROOT}/lib/liblxkns10hpec.so ${REL_ROOT}/lib/liblxkns10hpec
+	fi
+	if [ ! -d ${REL_ROOT} ]; then
+	    ln -s ${ABS_ROOT} ${REL_ROOT}
+	fi
+
+	BIN_FILENAME=lxhcp
+	CUPS_BACKEND_ROOT="/usr/lib/cups/backend"
+	CUPS_BACKEND_ROOT_64="/usr/lib64/cups/backend"
+
+
+	MACHINE_TYPE_A=`uname -m`
+	MACHINE_TYPE_B=`uname -i`
+
+	CUPS_BACKEND_PATH=$CUPS_BACKEND_ROOT
+
+	if [ ${MACHINE_TYPE_A} = 'x86_64' -o ${MACHINE_TYPE_B} = 'x86_64' ]; then
+		if [ -d "$CUPS_BACKEND_ROOT_64" ]; then
+			CUPS_BACKEND_PATH=$CUPS_BACKEND_ROOT_64
+		else
+			CUPS_BACKEND_PATH=$CUPS_BACKEND_ROOT
+		fi
+	fi
+
+
+	if [ -f ${CUPS_BACKEND_PATH}/${BIN_FILENAME} ]; then
+	    	ver1=`${CUPS_BACKEND_PATH}/${BIN_FILENAME} -v`
+	    	ver2=`${ABS_ROOT}/bin/${BIN_FILENAME} -v`
+	    	major1=`echo $ver1 | awk -F. '{print $1}'`
+	    	major2=`echo $ver2 | awk -F. '{print $1}'`
+	    	minor1=`echo $ver1 | awk -F. '{print $2}'`
+	    	minor2=`echo $ver2 | awk -F. '{print $2}'`
+	    	if [ $major2 -gt $major1 ]; then
+			echo "Installing ${BIN_FILENAME} backend ..."
+			cp ${ABS_ROOT}/bin/${BIN_FILENAME} ${CUPS_BACKEND_PATH}/${BIN_FILENAME}
+	    	elif [ $major2 -eq $major1 ]; then
+			if [ $minor2 -gt $minor1 ]; then
+		    		echo "Installing ${BIN_FILENAME} backend ...";
+		    		cp ${ABS_ROOT}/bin/${BIN_FILENAME} ${CUPS_BACKEND_PATH}/${BIN_FILENAME}
+			fi
+	    	fi
+	else
+	    	echo "Installing ${BIN_FILENAME} backend ...";
+	    	cp ${ABS_ROOT}/bin/${BIN_FILENAME} ${CUPS_BACKEND_PATH}/${BIN_FILENAME}
+	fi
+	if [ ! -d ${REL_ROOT} ]; then
+	    ln -s ${ABS_ROOT} ${REL_ROOT}
+	fi
+
+	SCAN_LIB="/usr/lib/sane"
+	SCAN_LIB_64="/usr/lib64/sane"
+
+	MACHINE_TYPE_A=`uname -m`
+	MACHINE_TYPE_B=`uname -i`
+	echo 'Install scanner ...'
+	if [ ${MACHINE_TYPE_A} = 'x86_64' -o ${MACHINE_TYPE_B} = 'x86_64' ]; then
+	   if [ -d ${SCAN_LIB_64} ]; then
+		if [ ! -f ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ]; then
+		    ln -s ${REL_ROOT}/lib/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1.0.18
+		fi
+		if [ ! -f ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1 ]; then
+		    ln -s ${REL_ROOT}/lib/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1
+		fi
+		if [ ! -f ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so ]; then
+		    ln -s ${REL_ROOT}/lib/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so
+		fi
+	   fi
+	fi
+	if [ -d ${SCAN_LIB} ]; then
+	   if [ ! -f ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ]; then
+	       ln -s ${REL_ROOT}/lib/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1.0.18
+	   fi
+	   if [ ! -f ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1 ]; then
+	       ln -s ${REL_ROOT}/lib/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1
+	   fi
+	   if [ ! -f ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so ]; then
+	       ln -s ${REL_ROOT}/lib/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so
+	   fi
+	fi
+	if [ ! -f /etc/sane.d/LexmarkLegacy_1_0_0.conf ]; then
+	    ln -s ${REL_ROOT}/etc/LexmarkLegacy_1_0_0.conf /etc/sane.d/LexmarkLegacy_1_0_0.conf
+	fi
+	if [ ! -f /etc/udev/rules.d/99-lexmarklegacy-10.rules ]; then
+	    ln -s ${REL_ROOT}/etc/99-lexmarklegacy-10.rules /etc/udev/rules.d/99-lexmarklegacy-10.rules
+	fi
+
+	if [ -f "/sbin/udevadm" ] ; then
+	   udevadm_version=`/sbin/udevadm version`
+	   udevadm_new_version=126
+	   if [ $udevadm_version -gt $udevadm_new_version ] ; then
+		/sbin/udevadm control --reload-rules
+	   else
+		/sbin/udevadm control --reload_rules
+	   fi
+	fi
+
+	scanlib_dll=`grep LexmarkLegacy_1_0_0 /etc/sane.d/dll.conf`
+	if [ "$scanlib_dll" = "" ]; then
+	    echo "LexmarkLegacy_1_0_0" >> /etc/sane.d/dll.conf
+	fi
+
+	# Check if xsane image location exists 
+	if [ ! -f /usr/share/sane/xsane ]; then
+	    # Copy scanner logo to xsane image location; 
+	    # replace if there's an existing image copy 
+	    cp -rf ${REL_ROOT}/etc/Lexmark-logo.xpm /usr/share/sane/xsane > /dev/null 2>&1
+	fi
+
+
+	#-- ADDED by rkhu (2010/09/08) ---
+	#-- DESC: Enable internationalization/localization support for
+	#         linux scanner driver
+
+	# The name for .mo files (should match backend name)
+	MO_NAME="sane-LexmarkLegacy_1_0_0.mo"
+
+	# Get list of language directories (directories are assumed
+	# to have been named after standard locale names/abbreviations)
+	DIRS=`ls ${REL_ROOT}/etc/locale`
+
+	# For all language directories
+	for DIR in $DIRS
+	do
+	   MO_PATH="/usr/share/locale/${DIR}/LC_MESSAGES/${MO_NAME}"
+
+	   # Check if the language file is not existing in OS locale directory
+	   if [ ! -f ${MO_PATH} ]; then
+	       # Link language file to OS locale directory
+	       ln -s ${REL_ROOT}/etc/locale/${DIR}/LC_MESSAGES/*.mo ${MO_PATH} > /dev/null 2>&1
+	   fi
+	done
+
+	#-- END (2010/09/08) ---
+
+	if [ ! -d ${REL_ROOT} ]; then
+	    ln -s ${ABS_ROOT} ${REL_ROOT}
+	fi
+	ROOT1=/usr/share/cups/model/Lexmark
+	ROOT2=/usr/share/ppd/Lexmark
+	if [ ! -d ${ROOT1} ]; then
+	    mkdir -p ${ROOT1}
+	fi
+	if [ ! -d ${ROOT2} ]; then
+	    mkdir -p ${ROOT2}
+	fi
+	for item in lxPro700.ppd lxS600.ppd lxPro200-S500.ppd lxS300-S400.ppd lxZ2400.ppd lxX2600.ppd lxPro800-Pro900.ppd lxX3646.ppd lxX5666.ppd lxX4900.ppd lxX7600.ppd lxZ2300.ppd; do
+	    if [ ! -f ${ROOT1}/${item} ]; then
+		cp -R ${REL_ROOT}/etc/${item} ${ROOT1}/${item}
+	    fi
+	    if [ ! -f ${ROOT2}/${item} ]; then
+		cp -R ${REL_ROOT}/etc/${item} ${ROOT2}/${item}
+	    fi
+	done
+	echo 'Install DBUS service umf ...'
+	DBUS_SERVICE=umf-legacy
+	DBUS_CID=mdwapclss.apps.umframework.DBusProxyLegacy
+
+	if [ -d /etc/dbus-1/session.d ]; then
+	    if [ ! -f /etc/dbus-1/session.d/${DBUS_SERVICE}.conf ]; then
+		ln -s ${ABS_ROOT}/etc/umf.conf /etc/dbus-1/session.d/${DBUS_SERVICE}.conf
+	    fi
+	fi
+	#this is for fedora & suse
+	if [ -d /etc/X11/xinit/xinitrc.d ]; then
+	    if [ ! -f /etc/X11/xinit/xinitrc.d/99umf ]; then
+		cp ${ABS_ROOT}/bin/.scripts/99umf /etc/X11/xinit/xinitrc.d
+		chmod 555 /etc/X11/xinit/xinitrc.d/99umf
+	    fi
+	fi
+
+	#this is for ubuntu
+	if [ -d /etc/X11/Xsession.d ]; then
+	    if [ ! -f /etc/X11/Xsession.d/99umf ]; then
+		cp ${ABS_ROOT}/bin/.scripts/99umf /etc/X11/Xsession.d
+		chmod 644 /etc/X11/Xsession.d/99umf
+	    fi
+	fi
+
+	echo 'creating the service file'
+	if [ ! -f /usr/share/dbus-1/services/${DBUS_SERVICE}.service ]; then
+	    echo "[D-BUS Service]" > /usr/share/dbus-1/services/${DBUS_SERVICE}.service
+	    echo "Name=${DBUS_CID}" >> /usr/share/dbus-1/services/${DBUS_SERVICE}.service
+	    echo "Exec=${ABS_ROOT}/bin/.scripts/umf.sh" >> /usr/share/dbus-1/services/${DBUS_SERVICE}.service
+	fi
+
+	echo 'initializing umf.sh'
+	if [ -f ${ABS_ROOT}/bin/.scripts/umf.sh ]; then
+	    rm -f ${ABS_ROOT}/bin/.scripts/umf.sh
+	fi
+	echo "#!/bin/sh" > ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "OS_ARCH=\`uname -aa | grep x86_64\`" >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "ARCH=''"                             >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "if [ -n \"\$OS_ARCH\" ]; then"       >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	ARCH=64"                           >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "fi"                                  >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "JAVA_CMD=java"					   >> ${ABS_ROOT}/bin/.scripts/umf.sh
+
+	echo "if [ -f \"/usr/local/lexmark/fwu_legacy/jre/bin/java\" ]; then" 	>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	JAVA_CMD=\"/usr/local/lexmark/fwu_legacy/jre/bin/java\"" 		>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "elif [ -f \"/usr/local/lexmark/wsu_legacy/jre/bin/java\" ]; then" >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	JAVA_CMD=\"/usr/local/lexmark/wsu_legacy/jre/bin/java\"" 		>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "elif [ -f \"/usr/local/lexmark/legacy/jre/bin/java\" ]; then" 	>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	JAVA_CMD=\"/usr/local/lexmark/legacy/jre/bin/java\"" 			>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "elif [ -f \"/usr/bin/java\" ]; then" 							>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	JAVA_CMD=\"/usr/bin/java\"" 								>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "elif [ -f \"/etc/alternatives/java\" ]; then" 				>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	JAVA_CMD=\"/etc/alternatives/java\"" 						>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "else" 														>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "	exit 1" 													>> ${ABS_ROOT}/bin/.scripts/umf.sh
+	echo "fi"															>> ${ABS_ROOT}/bin/.scripts/umf.sh
+
+	echo "\${JAVA_CMD} -Djava.library.path=${ABS_ROOT}/lib\${ARCH} -Ddbus=${DBUS_CID} -classpath ${ABS_ROOT}/jar/debug-disable-1.1.jar:${ABS_ROOT}/jar/hexdump-0.2.jar:${ABS_ROOT}/jar/libdbus-java-2.6.jar:${ABS_ROOT}/jar/unix-0.5.jar:${ABS_ROOT}/jar/xpp3_min-1.1.4c.jar:${ABS_ROOT}/jar/xstream-1.3.1.jar:${ABS_ROOT}/jar/uiframework.jar:${ABS_ROOT}/jar/tools.jar:${ABS_ROOT}/jar/devicecore.jar:${ABS_ROOT}/jar/config.jar:${ABS_ROOT}/jar/localize.jar:${ABS_ROOT}/jar/umframework.jar mdwapclss.apps.umframework.UserMessagingFramework"         >> ${ABS_ROOT}/bin/.scripts/umf.sh
+	chmod +x ${ABS_ROOT}/bin/.scripts/umf.sh
+
+	#remove remnant
+	rm -f /tmp/.umf_*
+
+	if [ ! -f /usr/share/applications/lxtoolboxlegacy.desktop ];
+	then
+	   cp ${ABS_ROOT}/etc/lxtoolbox.desktop /usr/share/applications/lxtoolboxlegacy.desktop
+	fi
+
+	if [ -f /usr/share/gnome-menus/update-gnome-menus-cache ];
+	then
+	   /usr/share/gnome-menus/update-gnome-menus-cache /usr/share/applications > /tmp/app
+	   ls /usr/share/applications | grep desktop | grep cache | xargs -ti cp /tmp/app /usr/share/applications/{} > /dev/null 2>&1
+	   rm /tmp/app
+	fi
+}
+
+#post_upgrade() {
+#post_install
+#}
+
+pre_remove() {
+	echo 'Executing pre remove scripts ...'
+
+	ABS_ROOT=/usr/local/lexmark/legacy
+	REL_ROOT=/usr/local/lexmark/legacy
+	OEM=lexmark
+	echo 'Remove demond ...'
+	#this is for fedora & suse
+	if [ -f /etc/X11/xinit/xinitrc.d/99demon2 ]; then
+	    rm -f /etc/X11/xinit/xinitrc.d/99demon2
+	fi
+
+	#this is for ubuntu
+	if [ -f /etc/X11/Xsession.d/99demon2 ]; then
+	    rm -f /etc/X11/Xsession.d/99demon2
+	fi
+
+	echo 'delete demond2.pid'
+	if [ -f /var/run/lexmark/demond2.pid ]; then
+	    rm -f /var/run/lexmark/demond2.pid
+	fi
+
+	echo 'terminate previous running instance/s of device monitor'
+	killall -9 demond > /dev/null 2>&1
+
+	echo 'Remove symbolic link to /usr/lib for 2008 HPEs'
+	if [ -f ${REL_ROOT}/lib/liblxkrf08flib ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrf08flib
+	fi
+	if [ -f /usr/lib/liblxkrf08flib ]; then
+	    unlink /usr/lib/liblxkrf08flib
+	fi
+	if [ -f /usr/lib/liblxkrf08flib.so ]; then
+	    unlink /usr/lib/liblxkrf08flib.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrf08hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrf08hpec
+	fi
+	if [ -f /usr/lib/liblxkrf08hpec ]; then
+	    unlink /usr/lib/liblxkrf08hpec
+	fi
+	if [ -f /usr/lib/liblxkrf08hpec.so ]; then
+	    unlink /usr/lib/liblxkrf08hpec.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrf08hpeh ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrf08hpeh
+	fi
+	if [ -f /usr/lib/liblxkrf08hpeh ]; then
+	    unlink /usr/lib/liblxkrf08hpeh
+	fi
+	if [ -f /usr/lib/liblxkrf08hpeh.so ]; then
+	    unlink /usr/lib/liblxkrf08hpeh.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrf08hpep ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrf08hpep
+	fi
+	if [ -f /usr/lib/liblxkrf08hpep ]; then
+	    unlink /usr/lib/liblxkrf08hpep
+	fi
+	if [ -f /usr/lib/liblxkrf08hpep.so ]; then
+	    unlink /usr/lib/liblxkrf08hpep.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrs08flib ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrs08flib
+	fi
+	if [ -f /usr/lib/liblxkrs08flib ]; then
+	    unlink /usr/lib/liblxkrs08flib
+	fi
+	if [ -f /usr/lib/liblxkrs08flib.so ]; then
+	    unlink /usr/lib/liblxkrs08flib.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrs08hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrs08hpec
+	fi
+	if [ -f /usr/lib/liblxkrs08hpec ]; then
+	    unlink /usr/lib/liblxkrs08hpec
+	fi
+	if [ -f /usr/lib/liblxkrs08hpec.so ]; then
+	    unlink /usr/lib/liblxkrs08hpec.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrs08hpeh ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrs08hpeh
+	fi
+	if [ -f /usr/lib/liblxkrs08hpeh ]; then
+	    unlink /usr/lib/liblxkrs08hpeh
+	fi
+	if [ -f /usr/lib/liblxkrs08hpeh.so ]; then
+	    unlink /usr/lib/liblxkrs08hpeh.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkrs08hpep ]; then
+	    unlink ${REL_ROOT}/lib/liblxkrs08hpep
+	fi
+	if [ -f /usr/lib/liblxkrs08hpep ]; then
+	    unlink /usr/lib/liblxkrs08hpep
+	fi
+	if [ -f /usr/lib/liblxkrs08hpep.so ]; then
+	    unlink /usr/lib/liblxkrs08hpep.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkyf08flib ]; then
+	    unlink ${REL_ROOT}/lib/liblxkyf08flib
+	fi
+	if [ -f /usr/lib/liblxkyf08flib ]; then
+	    unlink /usr/lib/liblxkyf08flib
+	fi
+	if [ -f /usr/lib/liblxkyf08flib.so ]; then
+	    unlink /usr/lib/liblxkyf08flib.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkyf08hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxkyf08hpec
+	fi
+	if [ -f /usr/lib/liblxkyf08hpec ]; then
+	    unlink /usr/lib/liblxkyf08hpec
+	fi
+	if [ -f /usr/lib/liblxkyf08hpec.so ]; then
+	    unlink /usr/lib/liblxkyf08hpec.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkyf08hpeh ]; then
+	    unlink ${REL_ROOT}/lib/liblxkyf08hpeh
+	fi
+	if [ -f /usr/lib/liblxkyf08hpeh ]; then
+	    unlink /usr/lib/liblxkyf08hpeh
+	fi
+	if [ -f /usr/lib/liblxkyf08hpeh.so ]; then
+	    unlink /usr/lib/liblxkyf08hpeh.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkyf08hpep ]; then
+	    unlink ${REL_ROOT}/lib/liblxkyf08hpep
+	fi
+	if [ -f /usr/lib/liblxkyf08hpep ]; then
+	    unlink /usr/lib/liblxkyf08hpep
+	fi
+	if [ -f /usr/lib/liblxkyf08hpep.so ]; then
+	    unlink /usr/lib/liblxkyf08hpep.so
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxknf09hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxknf09hpec
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkns09hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxkns09hpec
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxknf10hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxknf10hpec
+	fi
+	if [ -f ${REL_ROOT}/lib/liblxkns10hpec ]; then
+	    unlink ${REL_ROOT}/lib/liblxkns10hpec
+	fi
+	if [ ! -d ${REL_ROOT} ]; then
+	    ln -s ${ABS_ROOT} ${REL_ROOT}
+	fi
+	OEM=lexmark
+
+	rm -rf ${ABS_ROOT}/docs/license*
+	rm -rf ${ABS_ROOT}/docs/EU*
+	echo 'Remove scanner ...'
+
+	SCAN_LIB="/usr/lib/sane"
+	SCAN_LIB_64="/usr/lib64/sane"
+
+	MACHINE_TYPE_A=`uname -m`
+	MACHINE_TYPE_B=`uname -i`
+
+	if [ ${MACHINE_TYPE_A} = 'x86_64' -o ${MACHINE_TYPE_B} = 'x86_64' ]; then
+	   if [ -d ${SCAN_LIB_64} ]; then
+	       if [ -f ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ]; then
+		   unlink ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1.0.18
+	       fi
+	       if [ -f ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so ]; then
+		   unlink ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so
+	       fi
+	       if [ -f ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1 ]; then
+		   unlink ${SCAN_LIB_64}/libsane-LexmarkLegacy_1_0_0.so.1
+	       fi
+	   fi
+	fi
+	if [ -f ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1.0.18 ]; then
+	    unlink ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1.0.18
+	fi
+	if [ -f ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so ]; then
+	    unlink ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so
+	fi
+	if [ -f ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1 ]; then
+	    unlink ${SCAN_LIB}/libsane-LexmarkLegacy_1_0_0.so.1
+	fi
+
+	if [ -f /etc/sane.d/LexmarkLegacy_1_0_0.conf ]; then
+	    unlink /etc/sane.d/LexmarkLegacy_1_0_0.conf
+	fi
+	if [ -f /etc/udev/rules.d/99-lexmarklegacy-10.rules ]; then
+	    unlink /etc/udev/rules.d/99-lexmarklegacy-10.rules
+	fi
+
+	if [ -f "/sbin/udevadm" ] ; then
+	   udevadm_version=`/sbin/udevadm version`
+	   udevadm_new_version=126
+	   if [ $udevadm_version -gt $udevadm_new_version ] ; then
+		/sbin/udevadm control --reload-rules
+	   else
+		/sbin/udevadm control --reload_rules
+	   fi
+	fi
+
+
+	#-- ADDED by rkhu (2010/09/08) ---
+	#-- DESC: Disable internationalization/localization support for
+	#         linux scanner driver
+
+	# The name for .mo files (should match backend name)
+	MO_NAME="sane-LexmarkLegacy_1_0_0.mo"
+
+	# Get list of language directories (directories are assumed
+	# to have been named after standard locale names/abbreviations)
+	DIRS=`ls ${REL_ROOT}/etc/locale`
+
+	# For all language directories
+	for DIR in $DIRS
+	do
+	   MO_PATH="/usr/share/locale/${DIR}/LC_MESSAGES/${MO_NAME}"
+
+	   # Check if the language file is existing in OS locale directory
+	   if [ -f ${MO_PATH} ]; then
+	       # Unlink language file to OS locale directory
+	       unlink ${MO_PATH} > /dev/null 2>&1
+	   fi
+	done
+
+	#-- END (2010/09/08) ---
+
+
+	OEM=lexmark
+	export IFS=" "
+	SIZE=`cat /etc/passwd | awk -F ":" '{print $6}' | wc -w`
+
+	counter=1
+	while [ $counter -le $SIZE ]
+	do
+	    VALUE=`cat /etc/passwd | awk -F ":" '{print $6}' | sed -n $counter'p'`
+
+	    if [ -d $VALUE/.$OEM ];
+	    then
+		rm -rf $VALUE/.$OEM
+	    fi
+
+	    counter=`expr $counter + 1`
+	done
+
+	${ABS_ROOT}/bin/.scripts/unregisterPrinters.sh ${ABS_ROOT}
+
+	if [ -f ${ABS_ROOT}/etc/netscanconfig.xml ]; 
+	then
+	    rm -rf ${ABS_ROOT}/etc/netscanconfig.xml
+	fi
+	if [ ! -d ${REL_ROOT} ]; then
+	    ln -s ${ABS_ROOT} ${REL_ROOT}
+	fi
+	ROOT1=/usr/share/cups/model/Lexmark
+	ROOT2=/usr/share/ppd/Lexmark
+	for item in lxPro700.ppd lxS600.ppd lxPro200-S500.ppd lxS300-S400.ppd lxZ2400.ppd lxX2600.ppd lxPro800-Pro900.ppd lxX3646.ppd lxX5666.ppd lxX4900.ppd lxX7600.ppd lxZ2300.ppd; do
+	    if [ -f ${ROOT1}/${item} ]; then
+		unlink ${ROOT1}/${item}
+	    fi
+	    if [ -f ${ROOT2}/${item} ]; then
+		unlink ${ROOT2}/${item}
+	    fi
+	done
+	echo 'Remove DBUS service umf'
+	if [ -f /etc/dbus-1/session.d/umf.conf ]; then
+	    unlink /etc/dbus-1/session.d/umf.conf
+	fi
+
+	#this is for fedora & suse
+	if [ -f /etc/X11/xinit/xinitrc.d/99umf ]; then
+	    rm -f /etc/X11/xinit/xinitrc.d/99umf
+	fi
+
+	#this is for ubuntu
+	if [ -f /etc/X11/Xsession.d/99umf ]; then
+	    rm -f /etc/X11/Xsession.d/99umf
+	fi
+
+	#removing the service file
+	if [ -f /usr/share/dbus-1/services/umf.service ]; then
+	    rm -f /usr/share/dbus-1/services/umf.service
+	fi
+
+	#initializing umf.sh
+	if [ -f ${ABS_ROOT}/bin/.scripts/umf.sh ]; then
+	    rm -f ${ABS_ROOT}/bin/.scripts/umf.sh
+	fi
+	echo 'Clean menu desktop file'
+	if [ -f /usr/share/applications/lxtoolboxlegacy.desktop ]; 
+	then
+	   rm /usr/share/applications/lxtoolboxlegacy.desktop
+	fi
+
+	if [ -f /usr/share/gnome-menus/update-gnome-menus-cache ];
+	then
+	   /usr/share/gnome-menus/update-gnome-menus-cache /usr/share/applications > /tmp/app
+	   ls /usr/share/applications | grep desktop | grep cache | xargs -ti cp /tmp/app /usr/share/applications/{} > /dev/null 2>&1
+	   rm /tmp/app
+	fi
+}
