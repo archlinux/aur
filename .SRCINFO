@@ -1,0 +1,13 @@
+pkgbase = clock-git
+	pkgdesc = Displays time on terminal in diffrent ways.
+	pkgver = 20120504
+	pkgrel = 1
+	url = https://github.com/mogria/clock.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = git+git://github.com/mogria/clock.git
+	md5sums = SKIP
+
+pkgname = clock-git
+
