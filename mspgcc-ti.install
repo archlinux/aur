@@ -1,0 +1,12 @@
+post_install() {
+    echo "
+Add /opt/ti/mspgcc/bin to your PATH!
+
+Before using MSPGCC you have to agree with the LICENSE at:
+/opt/ti/mspgcc/License.txt
+"
+}
+
+post_upgrade() {
+  post_install
+}
