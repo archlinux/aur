@@ -1,7 +1,7 @@
 pkgbase = pamac-aur
 	pkgdesc = A Gtk3 frontend for libalpm
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manjaro/pamac
 	install = pamac.install
 	arch = any
@@ -28,7 +28,9 @@ pkgbase = pamac-aur
 	options = !emptydirs
 	backup = etc/pamac.conf
 	source = pamac-2.3.3.tar.gz::https://github.com/manjaro/pamac/archive/v2.3.3.tar.gz
+	source = pamac-grid-row-resize.patch::https://github.com/manjaro/pamac/commit/07dc17b9709b272d1bcd2170e28c59495b2fa333.patch
 	sha256sums = 5683a5e14ceedc83a4aa0c1415c75aeb65ba334923b34528fa5da2523ebb12e4
+	sha256sums = afce6fdd69f57999fbf16e0777f0f9ca18fd2883953ff2d8a9730c49448975db
 
 pkgname = pamac-aur
 
