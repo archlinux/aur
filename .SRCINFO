@@ -1,0 +1,21 @@
+pkgbase = rtv
+	pkgdesc = Browse Reddit from your terminal
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/michael-lazar/rtv
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python3-kitchen
+	depends = ncurses
+	depends = python
+	depends = python-six
+	depends = python-requests
+	depends = python-praw
+	depends = python-setuptools
+	conflicts = rtv-git
+	source = https://github.com/michael-lazar/rtv/archive/v1.4.tar.gz
+	md5sums = 4dfff139915adb28e60ac53e5e320c97
+
+pkgname = rtv
+
