@@ -1,0 +1,16 @@
+pkgbase = lsmbox
+	pkgdesc = A tool to monitor mbox MMDF MH and Maildir E-Mail directory formats.
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = ftp://ftp.acc.umu.se/mirror/lap/lsmbox
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	depends = ncurses
+	source = ftp://ftp.acc.umu.se/mirror/lap/lsmbox/lsmbox-2.1.3.tar.xz
+	md5sums = 5d239f2f065fbababa48c1ad6d057dad
+
+pkgname = lsmbox
+
