@@ -1,9 +1,9 @@
-# Contributor: Vojtech Kral <vojtech@kral.hk>
+# Contributor: Vojtech Kral <vojtech_kral^hk>
 
 
 pkgname=rust-gnome-git
-pkgver=r904.170b6ca
-pkgrel=3
+pkgver=r912.f6fdffc
+pkgrel=1
 pkgdesc="Rust bindings and wrappers for gnome libraries"
 arch=('i686' 'x86_64')
 url="https://github.com/rust-gnome"
