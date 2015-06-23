@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-ublock-git
+	pkgdesc = An efficient blocker for modern browsers. Fast and lean. Written from scratch. Development through benchmarking.
+	pkgver = r2664.8919ea1
+	pkgrel = 1
+	url = https://github.com/chrisaljoudi/uBlock
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = git
+	depends = firefox
+	source = firefox-extension-ublock-git::git+https://github.com/chrisaljoudi/uBlock.git
+	md5sums = SKIP
+
+pkgname = firefox-extension-ublock-git
+
