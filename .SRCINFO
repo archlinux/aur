@@ -1,7 +1,7 @@
 pkgbase = haskell-stack
 	pkgdesc = The Haskell Tool Stack
 	pkgver = 0.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/commercialhaskell/stack
 	arch = x86_64
 	arch = i686

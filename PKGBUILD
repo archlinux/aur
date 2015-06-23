@@ -2,7 +2,7 @@
 pkgname=haskell-stack
 _pkgname=stack
 pkgver='0.1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64' 'i686')
 url="https://www.github.com/commercialhaskell/stack"
@@ -17,7 +17,7 @@ if [ "${CARCH}" = 'x86_64' ]; then
     sha1sums=('e7fc5e6b29788d3fb539364291a49eab036371c4')
 elif [ "${CARCH}" = 'i686' ]; then
     _arch='i686'
-    sha1sums=('7c7f595e9fb2fc54a877dc3e9b03ecf297529ee5')
+    sha1sums=('1b4832d9a8bdab49b6453f34752b89d7aba68b3f')
 fi
 source=("http://download.fpcomplete.com/archlinux/${_pkgname}_${pkgver}-${_arch}.tar.gz")
 # install=
