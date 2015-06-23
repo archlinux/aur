@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Work Bench
+Comment=Python Subversion Client
+Exec=workbench
+Icon=wb
+Terminal=false
+Type=Application
+Categories=GNOME;Application;Development;
+StartupNotify=false
