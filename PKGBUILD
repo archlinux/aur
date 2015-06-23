@@ -13,7 +13,7 @@ license=('MIT')
 depends=('lib32-libva>=1.5.1')
 replaces=('lib32-libva-driver-intel')
 source=(http://freedesktop.org/software/vaapi/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.bz2)
-md5sums=('16752f1584398265072129553b7907ce')
+md5sums=('93ba8b1fbe5322d3c3ef47d187f6951e')
 
 prepare() {
   cd $_pkgbasename-$pkgver

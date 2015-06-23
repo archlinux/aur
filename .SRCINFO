@@ -8,7 +8,7 @@ pkgbase = lib32-libva-intel-driver
 	depends = lib32-libva>=1.5.1
 	replaces = lib32-libva-driver-intel
 	source = http://freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-1.5.1.tar.bz2
-	md5sums = 16752f1584398265072129553b7907ce
+	md5sums = 93ba8b1fbe5322d3c3ef47d187f6951e
 
 pkgname = lib32-libva-intel-driver
 
