@@ -1,0 +1,14 @@
+pkgbase = trf
+	pkgdesc = Tandem repeats finder: a program to analyze DNA sequences
+	pkgver = 4.07b
+	pkgrel = 3
+	url = http://tandem.bu.edu/trf/trf.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = trf407b.linux64::http://tandem.bu.edu/cgi-bin/trf/trf.download.pl?fileselect=26
+	source = trf407b.linux::http://tandem.bu.edu/cgi-bin/trf/trf.download.pl?fileselect=27
+	source = LICENSE
+
+pkgname = trf
+
