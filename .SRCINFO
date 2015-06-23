@@ -1,0 +1,15 @@
+pkgbase = ruby-multi_json
+	pkgdesc = A common interface to multiple JSON libraries.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/intridea/multi_json
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = multi_json-1.11.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/multi_json-1.11.0.gem
+	sha1sums = 64a2d7e1853600c280105b3a473f21934ecfde1b
+
+pkgname = ruby-multi_json
+
