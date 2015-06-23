@@ -2,7 +2,7 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=papyros-shell-git
-pkgver=0.0.5.r99.gbfeca24
+pkgver=0.0.5.r100.ga381c4f
 pkgrel=1
 pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
