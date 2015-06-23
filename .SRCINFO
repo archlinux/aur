@@ -1,0 +1,26 @@
+pkgbase = libdreamdvd
+	pkgdesc = This is a libdvdnav wrapper library which can be used to simply build a dvd player frontend for dream multimedia settop boxes. One of the dependencies for Enigma2 project.
+	pkgver = 20120425
+	pkgrel = 1
+	url = https://schwerkraft.elitedvb.net/projects/libdreamdvd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bison
+	makedepends = fakeroot
+	makedepends = flex
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = m4
+	makedepends = make
+	makedepends = patch
+	makedepends = pkg-config
+	makedepends = git
+	depends = gcc-libs
+	source = git://schwerkraft.elitedvb.net/libdreamdvd/libdreamdvd.git
+	md5sums = SKIP
+
+pkgname = libdreamdvd
+
