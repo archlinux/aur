@@ -1,0 +1,14 @@
+post_install(){
+gtk-update-icon-cache /usr/share/icons/hicolor/
+cat << _EOF
+=> This is the RabbitCVS core version. When installing RabbitVCS, you must install the core package as well as a package for each front-end you wish to use.
+_EOF
+}
+
+post_upgrade(){
+gtk-update-icon-cache /usr/share/icons/hicolor/
+}
+
+post_remove(){
+gtk-update-icon-cache /usr/share/icons/hicolor/
+}
