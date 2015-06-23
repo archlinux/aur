@@ -1,6 +1,6 @@
 pkgbase = lib32-libva
 	pkgdesc = Video Acceleration (VA) API for Linux
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/vaapi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lib32-libva
 	depends = lib32-libxfixes
 	optdepends = lib32-libva-vdpau-driver: vdpau back-end for nvidia
 	optdepends = lib32-libva-intel-driver: back-end for intel cards
-	source = http://freedesktop.org/software/vaapi/releases/libva/libva-1.5.0.tar.bz2
+	source = http://freedesktop.org/software/vaapi/releases/libva/libva-1.5.1.tar.bz2
 	md5sums = ad0b55794308ec397d249a0a2a6df27a
 
 pkgname = lib32-libva
