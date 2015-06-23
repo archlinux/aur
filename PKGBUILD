@@ -3,7 +3,7 @@
 pkgname=vim-sensible
 pkgver=1.1
 pkgrel=1
-pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
+pkgdesc="vim defaults everyone can agree on"
 arch=('any')
 url="https://github.com/tpope/${pkgname}"
 license=('custom:vim')
