@@ -1,0 +1,30 @@
+Index: tractags/db.py
+===================================================================
+--- tractags/db.py	(revision 13816)
++++ tractags/db.py	(working copy)
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ # Copyright (C) 2012 Steffen Hoffmann <hoff.st@web.de>
+Index: tractags/db_default.py
+===================================================================
+--- tractags/db_default.py	(revision 13816)
++++ tractags/db_default.py	(working copy)
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ # Copyright (C) 2012,2013 Steffen Hoffmann <hoff.st@web.de>
+Index: tractags/model.py
+===================================================================
+--- tractags/model.py	(revision 13816)
++++ tractags/model.py	(working copy)
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ # Copyright (C) 2014 Jun Omae <jun66j5@gmail.com>
