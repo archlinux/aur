@@ -1,7 +1,6 @@
-# Maintainer: Vojtech Kral
-# Maintainer: Félix Saparelli <aur@passcod.name>
+# Maintainer: Vojtech Kral <vojtech_kral^hk>
+# Contributor: Félix Saparelli <aur@passcod.name>
 # Contributor: ask
-# Repo: https://github.com/passcod/pkgs/tree/master/rust-bindgen-git
 
 pkgname=rust-bindgen-git
 pkgver=0.14.0.ba150d9
