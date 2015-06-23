@@ -1,0 +1,28 @@
+pkgbase = radiotray-hg
+	pkgdesc = An online radio streaming player that runs on a Linux system tray.
+	pkgver = 495
+	pkgrel = 1
+	url = http://radiotray.wordpress.com/
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-python
+	depends = pygtk
+	depends = python2-notify
+	depends = python2-xdg
+	depends = python2-dbus
+	depends = gstreamer0.10-good-plugins
+	depends = python2-gobject
+	depends = python2-lxml
+	optdepends = gstreamer0.10-bad-plugins
+	optdepends = gstreamer0.10-ugly-plugins
+	optdepends = gstreamer0.10-ffmpeg
+	provides = radiotray
+	conflicts = radiotray
+	conflicts = radiotray-svn
+	source = radiotray::hg+https://bitbucket.org/carlmig/radio-tray#revision=40d9969
+	source = encoding.patch
+
+pkgname = radiotray-hg
+

@@ -1,0 +1,17 @@
+diff -Naur radiotray-0.7.3/build/lib/radiotray/Context.py radiotray-0.7.3-new/build/lib/radiotray/Context.py
+--- radiotray-0.7.3/build/lib/radiotray/Context.py	2012-04-02 23:54:38.000000000 +0200
++++ radiotray-0.7.3-new/build/lib/radiotray/Context.py	2013-09-07 12:14:32.000000000 +0200
+@@ -40,9 +40,9 @@
+         if(self.title and len(self.title) > 0 and self.artist and len(self.artist) > 0):
+             return self.artist + " - " + self.title
+         elif(self.title and len(self.title) > 0):
+-            return self.title
++            return self.title.encode('latin-1').decode('cp1251').encode('utf8') 
+         elif(self.artist and len(self.artist) > 0):
+-            return self.artist
++            return self.artist.encode('latin-1').decode('cp1251').encode('utf8') 
+         else:
+             return 'Playing'
+-            
+\ No newline at end of file
++            
