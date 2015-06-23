@@ -2,11 +2,11 @@ pkgname="conky-top"
 
 post_install() {
 	echo
+	echo "==> To modify Configuration edit file: /etc/conky/conky-top.conf"
+	echo "==> To modify Update Script edit file: /usr/share/conkytop/update.pl"
 	echo "==> To modify Gmail Script edit file: /usr/share/conkytop/gmail.pl"
 	echo 
 	echo "line 10: my $username = 'username';"
 	echo "line 11: my $password = 'password';"
-	echo 
-	echo "echo "==> To modify Update Script edit file: /usr/share/conkytop/update.pl""
 	echo 
 }
