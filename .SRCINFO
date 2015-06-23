@@ -1,0 +1,18 @@
+pkgbase = repeatmasker
+	pkgdesc = Screen DNA sequences for interspersed repeats and low complexity DNA sequences
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://www.repeatmasker.org/
+	install = repeatmasker.install
+	arch = any
+	license = custom
+	depends = perl
+	depends = hmmer
+	depends = rmblast
+	depends = trf
+	depends = perl-text-soundex
+	source = http://www.repeatmasker.org/RepeatMasker-open-4-0-5.tar.gz
+	md5sums = 6dd3a49044ff288f3c7d30f1ce61e418
+
+pkgname = repeatmasker
+

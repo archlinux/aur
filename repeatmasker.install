@@ -1,0 +1,57 @@
+# Configure RepeatMasker. The prompts are:
+# PRESS ENTER TO CONTINUE
+# Enter path [ perl ]:
+# REPEATMASKER INSTALLATION DIRECTORY Enter path
+# TRF PROGRAM Enter path
+# 2. RMBlast - NCBI Blast with RepeatMasker extensions: [ Un-configured ]
+# RMBlast (rmblastn) INSTALLATION PATH
+# Do you want RMBlast to be your default search engine for Repeatmasker?
+# 4. HMMER3.1 & DFAM
+# HMMER INSTALLATION PATH Enter path
+# Do you want HMMER to be your default search engine for Repeatmasker?
+# 5. Done
+
+post_install() {
+  set -e
+  cd /usr/lib/RepeatMasker
+
+  cat << 'EOF' > /usr/lib/RepeatMasker/config.txt
+
+/usr/bin/perl
+/usr/lib/RepeatMasker
+/usr/bin/trf
+2
+/usr/bin
+Y
+4
+/usr/bin
+N
+5
+EOF
+
+  perl ./configure </usr/lib/RepeatMasker/config.txt >/dev/null
+
+  cat << 'EOF'
+RepeatMasker is now ready to use.
+The program is installed with a minimal repeat library
+by default.  This library only contains simple, low-complexity,
+and common artefact ( contaminate ) sequences.  These are
+adequate for use with your own custom repeat library.  If you
+plan to search using common species specific repeats you will
+need to obtain the complete RepeatMasker repeat library from
+GIRI ( www.girinst.org ) and install it:
+  cd /usr/lib/RepeatMasker
+  tar zxvf repeatmaskerlibraries-20140131.tar.gz
+  ./configure <config.txt
+
+The default aligner is RMBlast. You may reconfigure RepeatMasker
+by running
+  cd /usr/lib/RepeatMasker && ./configure
+EOF
+
+}
+
+post_upgrade() {
+  post_install $1
+}
+
