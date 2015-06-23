@@ -1,0 +1,17 @@
+pkgbase = smssender-gui
+	pkgdesc = Fast and easy-to-use client for sending sms over internet gateways
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = http://smssender.gorrion.ch
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = crypto++
+	depends = qjson
+	depends = qrencode
+	depends = qt4
+	provides = smssender-gui
+	conflicts = smssender-gui
+
+pkgname = smssender-gui
+
