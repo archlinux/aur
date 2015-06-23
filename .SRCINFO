@@ -1,0 +1,15 @@
+pkgbase = alienfeed-git
+	pkgdesc = Reddit command-line client. Follow the latest submissions from your terminal.
+	pkgver = 230d5a6
+	pkgrel = 1
+	url = http://github.com/jawerty/AlienFeed
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2
+	depends = python2-praw-git
+	source = git://github.com/jawerty/AlienFeed
+	md5sums = SKIP
+
+pkgname = alienfeed-git
+
