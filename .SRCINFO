@@ -1,0 +1,21 @@
+pkgbase = dfilemanager-git
+	pkgdesc = Dfilemanager, a QT based crossplatform File browser.
+	pkgver = r384.806a28a
+	pkgrel = 2
+	url = http://dfilemanager.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-script
+	depends = qt5-tools
+	optdepends = solid
+	provides = dfilemanager
+	conflicts = dfilemanager
+	source = dfilemanager::git://git.code.sf.net/p/dfilemanager/code
+	md5sums = SKIP
+
+pkgname = dfilemanager-git
+
