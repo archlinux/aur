@@ -3,7 +3,7 @@
 
 pkgname=gst-libav-git
 _gitname=gst-libav
-pkgver=1.3.1.1.1753.78b64cb
+pkgver=1.5.1.1.1834.c44f1a9
 pkgrel=1
 pkgdesc="Gstreamer libav Plugin"
 arch=('i686' 'x86_64')

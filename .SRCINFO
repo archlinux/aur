@@ -1,6 +1,6 @@
 pkgbase = gst-libav-git
 	pkgdesc = Gstreamer libav Plugin
-	pkgver = 1.3.1.1.1753.78b64cb
+	pkgver = 1.5.1.1.1834.c44f1a9
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = gst-libav-git
 	makedepends = yasm
 	depends = gst-plugins-base-git
 	depends = bzip2
-	provides = gst-libav=1.3.1.1.1753.78b64cb-1
-	provides = gst-ffmpeg=1.3.1.1.1753.78b64cb-1
+	provides = gst-libav=1.5.1.1.1834.c44f1a9-1
+	provides = gst-ffmpeg=1.5.1.1.1834.c44f1a9-1
 	conflicts = gst-libav
 	conflicts = gst-ffmpeg
 	options = !libtool
