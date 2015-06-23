@@ -1,4 +1,4 @@
-pkgbase = python-weblib
+pkgbase = python2-weblib
 	pkgdesc = Set of tools for web scraping projects
 	pkgver = 0.1.14
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = python-weblib
 	source = https://pypi.python.org/packages/source/w/weblib/weblib-0.1.14.tar.gz
 	sha256sums = f9602ce66a6c5e010509d515a57b55d8c9d1eda8c4cbf5544a9ae11382618d8a
 
-pkgname = python-weblib
+pkgname = python2-weblib
 

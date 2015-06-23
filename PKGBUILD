@@ -1,7 +1,7 @@
 # $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
-pkgname=python-weblib
+pkgname=python2-weblib
 pkgver=0.1.14
 pkgrel=1 
 pkgdesc="Set of tools for web scraping projects"
