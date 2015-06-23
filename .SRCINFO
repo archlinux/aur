@@ -1,9 +1,11 @@
 pkgbase = vim-eunuch-git
 	pkgdesc = Vim sugar for the UNIX shell commands that need it the most, by tpope
-	pkgver = 1403562539
+	pkgver = 1.1.r4.ge36b9a7
 	pkgrel = 1
 	url = https://github.com/tpope/vim-eunuch
+	install = vimdoc.install
 	arch = any
+	groups = vim-plugins
 	license = custom:vim
 	makedepends = git
 	depends = vim

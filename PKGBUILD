@@ -1,27 +1,28 @@
-_pkgname=vim-eunuch
+# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+
 pkgname=vim-eunuch-git
-pkgver=1403562539
+pkgver=1.1.r4.ge36b9a7
 pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
-url='https://github.com/tpope/vim-eunuch'
+url="https://github.com/tpope/${pkgname%-git}"
 license=('custom:vim')
+groups=('vim-plugins')
 depends=('vim')
 makedepends=('git')
-provides=('vim-eunuch')
-conflicts=('vim-eunuch')
-
-source=('git://github.com/tpope/vim-eunuch.git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+install=vimdoc.install
+source=("git://github.com/tpope/${pkgname%-git}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd -- "$srcdir/$_pkgname"
-  git log -n1 --pretty=format:%ct
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -dm755 "$pkgdir/usr/share/vim/vimfiles"
-  find * -maxdepth 0 -type d -exec cp -R -t "$pkgdir/usr/share/vim/vimfiles" '{}' \+
+    cd "${srcdir}/${pkgname%-git}"
+    install -dm755 "${pkgdir}/usr/share/vim/vimfiles"
+    find * -maxdepth 0 -type d -exec cp -rt "${pkgdir}/usr/share/vim/vimfiles" '{}' \+
 }
-
