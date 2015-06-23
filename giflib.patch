@@ -1,0 +1,11 @@
+--- Enigma2PC/enigma2/lib/gdi/picload.cpp	2014-11-14 13:31:25.520547625 +0100
++++ Enigma2PC-build/enigma2/lib/gdi/picload.cpp	2014-11-14 16:10:11.584332546 +0100
+@@ -538,7 +538,7 @@
+ 	int cmaps;
+ 	int extcode;
+ 
+-	gft = DGifOpenFileName(filepara->file);
++	gft = DGifOpenFileName(filepara->file, NULL);
+ 	if (gft == NULL)
+ 		return;
+ 	do
