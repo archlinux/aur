@@ -1,6 +1,6 @@
 # Maintainer: gandalf3 <zzyxpaw at (@) gmail dot (.) com>
 
-pkgname=mineways-wine
+pkgname=scrot-no-beep
 pkgver=0.8
 pkgrel=1
 pkgdesc="A patched version of scrot which does not beep when capturing the screen"

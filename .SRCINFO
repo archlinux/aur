@@ -1,4 +1,4 @@
-pkgbase = mineways-wine
+pkgbase = scrot-no-beep
 	pkgdesc = A patched version of scrot which does not beep when capturing the screen
 	pkgver = 0.8
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = mineways-wine
 	md5sums = ccae904d225609571bdd3b03445c1e88
 	md5sums = 6455143a83f0ebd38e5aad6d15fb589a
 
-pkgname = mineways-wine
+pkgname = scrot-no-beep
 
