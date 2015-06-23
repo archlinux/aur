@@ -1,0 +1,13 @@
+pkgbase = uclibc
+	pkgdesc = C library for developing embedded Linux systems
+	pkgver = 0.9.33.2
+	pkgrel = 1
+	url = http://www.uclibc.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://www.uclibc.org/downloads/uClibc-0.9.33.2.tar.xz
+	md5sums = 73e6fe215648d02246f4d195b25fb17e
+
+pkgname = uclibc
+
