@@ -1,0 +1,16 @@
+pkgbase = vim-promptline-git
+	pkgdesc = Generate a fast shell prompt with powerline symbols and airline colors
+	pkgver = 1416082879
+	pkgrel = 1
+	url = https://github.com/edkolev/promptline.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-promptline
+	conflicts = vim-promptline
+	source = git://github.com/edkolev/promptline.vim.git
+	sha512sums = SKIP
+
+pkgname = vim-promptline-git
+
