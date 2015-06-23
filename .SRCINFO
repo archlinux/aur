@@ -1,0 +1,16 @@
+pkgbase = ohsnap
+	pkgdesc = Monospaced font based on Artwiz Snap.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/osnapfont
+	install = ohsnap.install
+	arch = any
+	license = GPLv2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://sourceforge.net/projects/osnapfont/files/ohsnap-1.8.0.tar.gz
+	md5sums = aeb3d8e1f9634900036f886a14b3b03a
+
+pkgname = ohsnap
+
