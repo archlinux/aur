@@ -1,0 +1,17 @@
+pkgbase = mined
+	pkgdesc = A powerful text editor with a comprehensive and easy-to-use user interface and fast, small-footprint behaviour.
+	pkgver = 2015.25
+	pkgrel = 1
+	url = http://towo.net/mined/
+	install = mined.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = desktop-file-utils
+	source = http://towo.net/mined/download/mined-2015.25.tar.gz
+	md5sums = 92c25368a0d81d1cc2aa01b46742a28e
+	sha1sums = bdfac26d3939bbcd7a10b9df1bff80dd664b986b
+	sha256sums = 51bca986a9fe49bbce1e41e77dd48591dc775ed93f76f97702a3a73b7ffa67e6
+
+pkgname = mined
+
