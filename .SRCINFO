@@ -1,15 +1,15 @@
 pkgbase = python-scandir
 	pkgdesc = A better directory iterator that returns all file info OS provides
-	pkgver = 0.9
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/benhoyt/scandir
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	source = https://github.com/benhoyt/scandir/archive/v0.9.tar.gz
-	md5sums = 999529e7a3dc64fe7c705208e35780a8
-	sha256sums = 05f86a67d82d8a919b3eac16efd81509f8447bf9ea5b27be9f354fa2ff08523a
+	source = https://pypi.python.org/packages/source/s/scandir/scandir-1.1.tar.gz
+	md5sums = 6b6b777bcc119429e8f86bfe54be2635
+	sha256sums = 3a3be7a7ef07f59731a084832f231032fd87df6200e6a703695ac1832b190d28
 
 pkgname = python-scandir
 	depends = python
