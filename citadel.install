@@ -1,0 +1,32 @@
+## arg 1:  the new package version
+pre_install() {
+	:;
+}
+
+## arg 1:  the new package version
+post_install() {
+	echo "run 'systemctl start citadel'"
+	echo "then run '/usr/local/citadel/setup' to configure citadel"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	:;
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	:;
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	:;
+}
+
+## arg 1:  the old package version
+post_remove() {
+	:;
+}
