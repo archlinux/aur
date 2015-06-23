@@ -26,7 +26,7 @@ build() {
 package() {
      cd "$srcdir/$pkgname"
      install -D -m755 pachist "$pkgdir/usr/bin/pachist"
-     install -D -m644 pachist.1.gz "$pkgdir/usr/share/man/man1/$pachist.1.gz"
+     install -D -m644 pachist.1.gz "$pkgdir/usr/share/man/man1/pachist.1.gz"
      install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
      install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
