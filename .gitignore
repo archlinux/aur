@@ -1,0 +1,4 @@
+datamash-*.tar.*
+*.swp
+src/
+pkg/
