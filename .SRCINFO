@@ -1,6 +1,6 @@
 pkgbase = i3pystatus
 	pkgdesc = i3status replacement written in python for the i3 window manager
-	pkgver = 3.32
+	pkgver = 3.33
 	pkgrel = 1
 	url = https://github.com/enkore/i3pystatus
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = i3pystatus
 	optdepends = python-pywapi: For the weather module.,
 	optdepends = python-basiciw: For the wireless module.
 	optdepends = python-colour: For the pulseaudio module.
-	source = https://github.com/enkore/i3pystatus/archive/3.32.tar.gz
-	md5sums = 28bd78db1c53576781383a1c6111ea3a
+	source = https://github.com/enkore/i3pystatus/archive/3.33.tar.gz
+	md5sums = 984caa999542996aba2a09b90f6aadc0
 
 pkgname = i3pystatus
 
