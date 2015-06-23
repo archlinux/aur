@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-dlib
-	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64 with pre-build library)
+	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64)
 	pkgver = 18.16
 	pkgrel = 1
 	url = http://www.dlib.net/
