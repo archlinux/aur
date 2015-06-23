@@ -1,0 +1,33 @@
+From 00b5e55c90477eeac02bec58f032cb6916a1eb5c Mon Sep 17 00:00:00 2001
+From: Hib Eris <hib@hiberis.nl>
+Date: Mon, 20 Feb 2012 21:36:16 +0100
+Subject: [PATCH] tiff: fix compile warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Backport
+
+Signed-off-by: Andreas Müller <schnitzeltony@googlemail.com>
+---
+ backend/tiff/tiff2ps.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/backend/tiff/tiff2ps.c b/backend/tiff/tiff2ps.c
+index c0dc0bf..fc63c2e 100644
+--- a/backend/tiff/tiff2ps.c
++++ b/backend/tiff/tiff2ps.c
+@@ -1127,8 +1127,8 @@ PS_Lvl2page(TIFF2PSContext* ctx, TIFF* tif, uint32 w, uint32 h)
+ 	}
+ 	buf_data = (unsigned char *)_TIFFmalloc(chunk_size);
+ 	if (!buf_data) {
+-		TIFFError(ctx->filename, "Can't alloc %u bytes for %s.",
+-			chunk_size, tiled_image ? "tiles" : "strips");
++		TIFFError(ctx->filename, "Can't alloc %u bytes for %s.",
++			(uint) chunk_size, tiled_image ? "tiles" : "strips");
+ 		return(FALSE);
+ 	}
+ 
+-- 
+1.7.6.5
+

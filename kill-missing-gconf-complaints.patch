@@ -1,0 +1,12 @@
+--- a/configure.ac	2010-09-27 20:48:44.000000000 +0200
++++ b/configure.ac	2012-03-20 22:01:07.676509469 +0100
+@@ -11,6 +11,9 @@
+ # The evince API version
+ m4_define([ev_api_version], [2.32])
+ 
++# Kill gconf
++m4_pattern_allow([AM_GCONF_SOURCE_2],[GCONF_SCHEMAS_INSTALL])
++
+ # Libtool versioning. The backend and view libraries have separate versions.
+ # Before making a release, the libtool version should be modified.
+ # The string is of the form C:R:A.

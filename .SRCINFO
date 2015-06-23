@@ -1,0 +1,34 @@
+pkgbase = evince2-light
+	pkgdesc = Simply a document viewer (GTK2 version, GNOME free!)
+	pkgver = 2.32.0
+	pkgrel = 7
+	url = http://projects.gnome.org/evince/
+	install = evince2-light.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = poppler-glib
+	depends = libspectre
+	depends = djvulibre
+	depends = t1lib
+	depends = gsfonts
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = evince
+	conflicts = evince
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/evince/2.32/evince-2.32.0.tar.bz2
+	source = update-poppler.patch
+	source = libview-crash.patch
+	source = kill-missing-gconf-complaints.patch
+	source = 0001-tiff-fix-compile-warning.patch
+	md5sums = ebc3ce6df8dcbf29cb9492f8dd031319
+	md5sums = 10630dcef4486c00e58ef93963b4177f
+	md5sums = 98139149793acd30188e037780e9a2cf
+	md5sums = 0db697ba8cdca1deb889d36aaacf4f52
+	md5sums = 339d61e12fd953913e29c4ee8e908f54
+
+pkgname = evince2-light
+
