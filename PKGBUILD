@@ -7,6 +7,7 @@ pkgdesc="Easily control Intel p-state driver"
 pkgver=1.2.5
 pkgrel=1
 arch=('i686' 'x86_64')
+depends=('coreutils')
 makedepends=()
 optdepends=()
 provides=('pstate-frequency')
