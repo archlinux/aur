@@ -1,0 +1,15 @@
+pkgbase = python-hidraw-git
+	pkgdesc = Pythonic bindings for linux's hidraw ioctls
+	pkgver = r4.bbd7855
+	pkgrel = 1
+	url = https://github.com/vpelletier/python-hidraw
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python-setuptools
+	depends = python-ioctl-opt-git
+	source = python-hidraw-git::git+https://github.com/vpelletier/python-hidraw.git
+	sha256sums = SKIP
+
+pkgname = python-hidraw-git
+
