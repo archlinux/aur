@@ -1,0 +1,24 @@
+pkgbase = intellij-idea-15-ultimate-eap
+	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
+	pkgver = 15.0.0
+	pkgrel = 1
+	url = http://www.jetbrains.com/idea/
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	depends = java-environment
+	depends = giflib
+	options = !strip
+	backup = usr/share/intellij-idea-15-ultimate-eap/bin/idea.vmoptions
+	backup = usr/share/intellij-idea-15-ultimate-eap/bin/idea64.vmoptions
+	source = http://download.jetbrains.com/idea/ideaIU-142.2491.4.tar.gz
+	source = intellij-idea-15-ultimate-eap.sh
+	source = intellij-idea-15-ultimate-eap.desktop
+	source = LICENSE.txt
+	sha256sums = e18df5aa71809836108d960ceca7236b04ae42026efb08a7fc5020a3484ed596
+	sha256sums = 7a5870094d47b7e34d9ecb24ab9fcf3103e7a9678479d376685582e6d3b960da
+	sha256sums = 1190729e96c0fd3bbdc8264f683c3fbf610cb993b312e9b4dfa74211913859bb
+	sha256sums = 1e7c6a508b99d65cc8e3e1cb314bda0140ec124cb9ec187b597604e4d87fe042
+
+pkgname = intellij-idea-15-ultimate-eap
+
