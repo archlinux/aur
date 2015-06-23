@@ -1,0 +1,22 @@
+pkgbase = urfkill-git
+	pkgdesc = Handle rfkill events in userspace
+	pkgver = urfkill.0.5.0.43.g3c7f43e
+	pkgrel = 1
+	url = https://github.com/lcp/urfkill
+	arch = x86_64
+	license = GPL2
+	makedepends = glibc>=2.20
+	makedepends = git
+	makedepends = gtk-doc
+	depends = expat>=2.01
+	depends = gobject-introspection>=0.6.7
+	depends = libsystemd>=148
+	depends = polkit>=0.91
+	depends = systemd
+	provides = urfkill
+	conflicts = urfkill
+	source = urfkill::git+https://github.com/lcp/urfkill.git
+	md5sums = SKIP
+
+pkgname = urfkill-git
+
