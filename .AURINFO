@@ -1,0 +1,23 @@
+pkgbase = easea
+	pkgdesc = EASEA (EAsy Specification of Evolutionary Algorithms) is an Artificial Evolution platform that allows with only basic skills in computer science to implement evolutionary algorithms and to exploit the massive parallelism of many-core architecture
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = http://easea.unistra.fr/
+	install = easea.install
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = gcc>4.4,
+	makedepends = cuda>4.1,
+	makedepends = make>3,
+	makedepends = texlive-bin
+	depends = gcc-libs
+	depends = perl
+	depends = bash
+	depends = java-environment
+	source = http://optimate.dl.sourceforge.net/project/easea/EASEA%20for%20UNIX/1.0.3/easea-1.0.3.tar.gz
+	source = easea.sh
+	options = staticlibs
+
+pkgname = easea
+
