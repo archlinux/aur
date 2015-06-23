@@ -1,6 +1,6 @@
 pkgbase = git-crypt-git
 	pkgdesc = Transparent file encryption in Git
-	pkgver = 0.4_1_g1b1715b
+	pkgver = 0.5.0_1_ge0b3bd7
 	pkgrel = 1
 	url = http://www.agwa.name/projects/git-crypt/
 	arch = i686

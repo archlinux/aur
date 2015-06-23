@@ -1,11 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
-#
-# Any suggestions welcome; please submit paches via Github:
-# https://github.com/alerque/aur/tree/master/git-crypt-git
 
 pkgname=git-crypt-git
-pkgver=0.4_1_g1b1715b
+pkgver=0.5.0_1_ge0b3bd7
 pkgrel=1
 _branch=master
 pkgdesc="Transparent file encryption in Git"
@@ -25,14 +22,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  make
+  make PREFIX=/usr
 }
 
 package() {
   cd "${pkgname%-git}"
-  mkdir -p "${pkgdir}/usr/bin"
-  make PREFIX="$pkgdir/usr" install
-
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
