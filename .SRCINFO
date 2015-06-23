@@ -1,6 +1,6 @@
 pkgbase = qt5-svg-git
 	pkgdesc = A cross-platform application and UI framework (QtSvg)
-	pkgver = v5.5.0.beta1
+	pkgver = v5.5.0.rc1
 	pkgrel = 1
 	url = https://qt-project.org/
 	arch = i686

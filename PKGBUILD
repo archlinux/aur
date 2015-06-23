@@ -5,7 +5,7 @@
 
 _pkgname=qt5-svg
 pkgname=$_pkgname-git
-pkgver=v5.5.0.beta1
+pkgver=v5.5.0.rc1
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtSvg)"
 arch=("i686" "x86_64")
