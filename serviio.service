@@ -1,0 +1,9 @@
+[Unit]
+Description=Serviio
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/serviio
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Serviio
+Comment[fr]=Console d'administration du serveur DLNA
+Comment[en]=Administration console of DLNA server
+Exec= serviio-console
+Categories=AudioVideo
+Icon=serviio
+Path=
+Terminal=false
+StartupNotify=false
