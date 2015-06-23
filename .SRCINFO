@@ -1,0 +1,16 @@
+pkgbase = libdvbsi++
+	pkgdesc = libdvbsi++ - A free DVB SI parser library written in C++
+	pkgver = 20130923
+	pkgrel = 1
+	url = http://git.opendreambox.org/?p=obi/libdvbsi%2B%2B.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	depends = gcc-libs
+	source = git://git.opendreambox.org/git/obi/libdvbsi++.git
+	md5sums = SKIP
+
+pkgname = libdvbsi++
+
