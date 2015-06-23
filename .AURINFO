@@ -1,0 +1,21 @@
+pkgbase = gpswatch-git
+	pkgdesc = Linux client for crane gps watch (from Aldi or Hofer).
+	pkgver = 20141008
+	pkgrel = 1
+	url = https://github.com/mru00/GpsWatch
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = git
+	depends = perl
+	depends = perl-xml-writer
+	depends = perl-device-serialport
+	depends = libxml2
+	provides = gpswatch
+	conflicts = gpswatch
+	options = !emptydirs
+	source = git://github.com/mru00/GpsWatch.git
+	md5sums = SKIP
+
+pkgname = gpswatch-git
+
