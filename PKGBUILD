@@ -5,7 +5,7 @@ pkgname=$_target-gcc-stage1
 pkgver=5.1.0
 _islver=0.14.1
 pkgrel=1
-_snapshot=5-20150519
+_snapshot=5-20150616
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
@@ -16,7 +16,7 @@ options=(!emptydirs !strip)
 source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
         ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha256sums=('ae90f35a54171c0b043a3fbae5bb5d7783ced4a1ea90b3e7d892d372a1ecbfdb'
+sha256sums=('7d24ae045743dac384fc11692ef6fff5fd001ce0c10fa6ba128cd34110caf0de'
             '1f20561843eb9f6ae2076800bc45f3680ff7696520257cd5734ccfb843464cae')
 
 if [ -n "$_snapshot" ]; then
@@ -94,5 +94,4 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir"/usr/share/man/man7
   rm -r "$pkgdir"/usr/share/info
-  rm "$pkgdir"/usr/lib/libcc1.*
 }
