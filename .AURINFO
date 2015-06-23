@@ -1,0 +1,22 @@
+pkgbase = lgogdownloader-git
+	pkgdesc = An open source downloader for GOG.com games, uses the GOG.com API (git version)
+	pkgver = 20140830
+	pkgrel = 1
+	url = http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = help2man
+	depends = boost
+	depends = jsoncpp
+	depends = liboauth
+	depends = rhash
+	depends = tinyxml
+	depends = htmlcxx
+	depends = curl
+	provides = lgogdownloader
+	conflicts = lgogdownloader
+	source = git://github.com/Sude-/lgogdownloader.git
+
+pkgname = lgogdownloader-git
+
