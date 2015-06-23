@@ -1,0 +1,14 @@
+pkgbase = bamtools-git
+	pkgdesc = API and toolkit for reading, writing, and manipulating BAM (genome alignment) files.
+	pkgver = 20110606
+	pkgrel = 1
+	url = https://github.com/pezmaster31/bamtools
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = bamtools
+
+pkgname = bamtools-git
+
