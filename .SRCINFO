@@ -1,6 +1,6 @@
 pkgbase = gstreamer-git
 	pkgdesc = GStreamer Multimedia Framework (Git version)
-	pkgver = 1.3.0.1.15403.7d7511a
+	pkgver = 1.5.1.1.16312.c1a9a34
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gstreamer-git
 	depends = libxml2
 	depends = glib2
 	optdepends = sh: feedback script
-	provides = gstreamer=1.3.0.1.15403.7d7511a
+	provides = gstreamer=1.5.1.1.16312.c1a9a34
 	conflicts = gstreamer
 	options = !libtool
 	source = git+git://anongit.freedesktop.org/gstreamer/gstreamer
