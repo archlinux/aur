@@ -1,0 +1,18 @@
+pkgbase = vdr-plugin-dxr3-git
+	pkgdesc = Dxr3 VDR-Plugin (0.2-branch)
+	pkgver = 20121029
+	pkgrel = 1
+	url = http://linuxtv.org/vdrwiki/index.php/Dxr3-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vdr
+	makedepends = git
+	depends = vdr
+	depends = gettext
+	depends = pkgconfig
+	depends = ffmpeg
+	depends = em8300
+
+pkgname = vdr-plugin-dxr3-git
+
