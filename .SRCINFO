@@ -1,0 +1,13 @@
+pkgbase = edid_disable_exts
+	pkgdesc = Modifies a binary EDID file and disables EDID extensions and updates the checksum
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://analogbit.com/software/edid_disable_exts
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://analogbit.com/files/edid_disable_exts_v1.2.tgz
+	md5sums = 1607c4e1f5351edc89d35d844adb749e
+
+pkgname = edid_disable_exts
+
