@@ -1,0 +1,17 @@
+pkgbase = retawq
+	pkgdesc = An interactive, multi-threaded network client for text terminals.
+	pkgver = 0.2.6c
+	pkgrel = 2
+	url = http://retawq.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = ncurses
+	source = http://downloads.sourceforge.net/sourceforge/retawq/retawq-0.2.6c.tar.gz
+	md5sums = ee60188bea597680bd39e435a8c73ff9
+	sha1sums = ac99979e99ae3b3edba547dd23d54c8f5fb3c6f5
+	sha256sums = a42e82494f00e054c2de1b065bbc8fb439d93eb69f9b97cc4868e71e48a9eae0
+
+pkgname = retawq
+
