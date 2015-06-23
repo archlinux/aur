@@ -1,0 +1,12 @@
+pkgbase = rmblast
+	pkgdesc = RMBlast is a RepeatMasker compatible version of the standard NCBI BLAST suite.
+	pkgver = 2.2.28
+	pkgrel = 4
+	url = http://www.repeatmasker.org/RMBlast.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = blast+-bin
+
+pkgname = rmblast
+
