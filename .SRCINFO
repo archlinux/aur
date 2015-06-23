@@ -1,0 +1,16 @@
+pkgbase = loopy
+	pkgdesc = Simple video player for KDE, based on the phonon libraries.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/Loopy?content=120880
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs>=4.3
+	source = http://kde-apps.org/CONTENT/content-files/120880-loopy_0.5.3.tar.gz
+	md5sums = 8297f27b6b6ce44be3ff0b387c750edc
+
+pkgname = loopy
+
