@@ -1,0 +1,22 @@
+pkgbase = aurora-pentadactyl-git
+	pkgdesc = Vim-like five-fingered interface for Firefox
+	pkgver = pentadactyl.1.1.r125.g07b64b3
+	pkgrel = 1
+	url = https://github.com/5digits/dactyl/
+	arch = any
+	license = MIT
+	makedepends = coreutils
+	makedepends = git
+	makedepends = sh
+	makedepends = zip
+	makedepends = unzip
+	optdepends = firefox
+	provides = pentadactyl
+	provides = aurora-pentadactyl-hg
+	conflicts = pentadactyl
+	conflicts = aurora-pentadactyl-hg
+	source = pentadactyl::git+https://github.com/5digits/dactyl.git
+	md5sums = SKIP
+
+pkgname = aurora-pentadactyl-git
+
