@@ -1,6 +1,6 @@
 pkgbase = moonlight
 	pkgdesc = Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = http://moonlight-stream.com
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = moonlight
 	makedepends = apache-ant
 	depends = java-runtime
 	depends = sh
-	source = moonlight-0.6.0.tar.gz::https://github.com/moonlight-stream/moonlight-pc/archive/v0.6.0.tar.gz
-	sha512sums = ecdd1893ab2c2cfd217bea44ef0d5e20ada167132d6400e621d50f4ea48d6e01fd8e70a602cbd5dc989a1517f3aa65e7fc705f09c02f764bac2f04a27f1ae278
+	source = moonlight-0.6.1.tar.gz::https://github.com/moonlight-stream/moonlight-pc/archive/v0.6.1.tar.gz
+	sha512sums = 33b8d00ad6d775a04fa4d2b4a4fd472037a0931e85c5e1e8c48c92529e97a8f5c243162b1aa24c349cce39098e28b690ee81b69c5df06fb94d87ea1e3409c0ac
 
 pkgname = moonlight
 
