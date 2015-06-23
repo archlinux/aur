@@ -1,0 +1,16 @@
+pkgbase = perl-text-soundex
+	pkgdesc = Implementation of the soundex algorithm
+	pkgver = 3.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-Soundex
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Text-Soundex-3.04.tar.gz
+	options = !emptydirs
+	options = purge
+
+pkgname = perl-text-soundex
+
