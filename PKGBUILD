@@ -9,17 +9,20 @@ pkgdesc="Assume the role of an immigration inspector for the communist state of 
 arch=('i686' 'x86_64')
 url="http://papersplea.se"
 license=('custom:commercial')
-depends=('hicolor-icon-theme')
+depends=('hicolor-icon-theme' 'xdg-utils')
 depends_x86_64=('lib32-gcc-libs' 'lib32-libgl')
 depends_i386=('gcc-libs' 'libgl')
+install=papersplease.install
 options=(!strip)
 source=("$pkgname.desktop"
         "launch-$pkgname.sh"
         "${pkgname}.png"
+        "${pkgname}.install"
         "${_pkgname}_${pkgver}_i386.tar.gz::hib://${_pkgname}_${pkgver}_i386.tar.gz")
 sha256sums=('478b736281d4d397bcff3972a548dc85bddae49342d561adefa25186310cd5ec'
             'e199745f2158fd04fd70ce463aa57452be3a5d8c9c390970e2cadbe7d2122dd4'
             'e8aaf890dbfa6363f0197892ca2abd5ac4a45918787a8524cf8c99d785000823'
+            '9b7837376b5ba5bfb46b2ffff6cab3d527fbe479694d097f4fbabe2bccca6f07'
             '50562ad2b01cb7558147cd05de4dc37c02deb2e66fc5d3bff77994785f9551d7')
 
 # Disable compression of the package
