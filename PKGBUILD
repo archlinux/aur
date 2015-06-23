@@ -1,7 +1,7 @@
-# Maintainer: Leonard de Ruijter <leonard@aur.archlinux.org>
+# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
-# Packager: Justin Davis <jrcd 83 at gmail>
+# Contributor: Justin Davis <jrcd 83 at gmail>
 
 pkgname=ocaml-biniou
 _oname=biniou
