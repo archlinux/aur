@@ -1,0 +1,22 @@
+pkgbase = intellij-idea-14-ultimate
+	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
+	pkgver = 14.1.4
+	pkgrel = 1
+	url = http://www.jetbrains.com/idea/
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	depends = java-environment
+	depends = giflib
+	options = !strip
+	backup = usr/share/intellij-idea-14-ultimate/bin/idea.vmoptions
+	backup = usr/share/intellij-idea-14-ultimate/bin/idea64.vmoptions
+	source = http://download.jetbrains.com/idea/ideaIU-14.1.4.tar.gz
+	source = intellij-idea-14-ultimate.sh
+	source = intellij-idea-14-ultimate.desktop
+	sha256sums = 5c6dfb5ba9f2c3294ee125e96e96e50287a460784287181a8e83e4326005bac3
+	sha256sums = c6016019b11a2101ced4d8d0c557fff93d8f6d925219cb40d9d56af1d16968fb
+	sha256sums = f93bc88bfde1a1488b6f906362cb3835a02bde735b7aa24940f8ca12086badf8
+
+pkgname = intellij-idea-14-ultimate
+

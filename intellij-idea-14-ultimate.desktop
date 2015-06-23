@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IntelliJ IDEA 14 Ultimate Edition
+Comment=Intelligent Java IDE
+Exec=intellij-idea-14-ultimate %u
+Icon=intellij-idea-14-ultimate
+Terminal=false
+Type=Application
+Categories=Development;IDE;Java;
+StartupWMClass=jetbrains-idea
