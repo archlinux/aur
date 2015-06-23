@@ -15,8 +15,8 @@ source=("http://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz"
         "${pkgname}.desktop"
         "LICENSE.txt")
 sha256sums=('e18df5aa71809836108d960ceca7236b04ae42026efb08a7fc5020a3484ed596'
-            '7a5870094d47b7e34d9ecb24ab9fcf3103e7a9678479d376685582e6d3b960da'
-            '1190729e96c0fd3bbdc8264f683c3fbf610cb993b312e9b4dfa74211913859bb'
+            '7b43aa8ff84d13e226167ccf462050d2e8cc2b038cd80737e431987fda3b4782'
+            '975df5b4b635a9c6fa06c4bca6d6a99383bec898321559e690d15d3b080c4706'
             '1e7c6a508b99d65cc8e3e1cb314bda0140ec124cb9ec187b597604e4d87fe042')
 
 package() {

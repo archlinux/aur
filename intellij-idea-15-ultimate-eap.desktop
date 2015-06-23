@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=IntelliJ IDEA 15 Ultimate Edition
 Comment=Intelligent Java IDE
-Exec=intellij-idea-15-ultimate %u
-Icon=intellij-idea-15-ultimate
+Exec=intellij-idea-15-ultimate-eap %u
+Icon=intellij-idea-15-ultimate-eap
 Terminal=false
 Type=Application
 Categories=Development;IDE;Java;
