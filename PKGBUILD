@@ -1,8 +1,8 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 _pkgname=moonlight
 pkgname=${_pkgname}-git
-pkgver=0.6.0.383.16fbe17
+pkgver=0.6.1.388.ec8b08a
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="http://moonlight-stream.com"
@@ -31,18 +31,18 @@ EOF
 build() {
   cd ${pkgname}
   if [ "${CARCH}" == "x86_64" ]; then
-    ant limelight-lin64
+    ant moonlight-lin64
   elif [ "${CARCH}" == "i686" ]; then
-    ant limelight-lin32
+    ant moonlight-lin32
   fi
 }
 
 package() {
   cd ${pkgname}
   if [ "${CARCH}" == "x86_64" ]; then
-    install -Dm 644 ./build/limelight-lin64.jar "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
+    install -Dm 644 ./build/moonlight-lin64.jar "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
   elif [ "${CARCH}" == "i686" ]; then
-    install -Dm 644 ./build/limelight-lin32.jar "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
+    install -Dm 644 ./build/moonlight-lin32.jar "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
   fi
   install -Dm 755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
