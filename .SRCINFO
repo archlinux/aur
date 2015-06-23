@@ -1,0 +1,16 @@
+pkgbase = dsrpdb
+	pkgdesc = Simple C++ PDB reader
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = http://graphics.stanford.edu/~drussel
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = boost
+	source = http://graphics.stanford.edu/~drussel/dsr-pdb.tgz
+	source = size_t.patch
+	md5sums = aba4dd6d7ba2fae1a612d70192bd0bbe
+	md5sums = 49dfc4cb6034f72aa64b3ea69fdb41f2
+
+pkgname = dsrpdb
+

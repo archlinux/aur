@@ -1,0 +1,11 @@
+--- dsr-pdb-1.0.3/lib/PDB.cc	2005-11-02 14:27:11.000000000 -0800
++++ src/dsr-pdb-1.0.3/lib/PDB.cc	2008-09-03 09:50:07.000000000 -0700
+@@ -82,7 +82,7 @@
+     assert(i < models_.size());
+     return models_[i];
+   };
+-  unsigned int PDB::number_of_models() const {
++  size_t PDB::number_of_models() const {
+     return models_.size(); 
+   }
+ 
