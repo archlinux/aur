@@ -1,0 +1,20 @@
+pkgbase = drive-git
+	pkgdesc = Drive is a tiny program to pull or push Google Drive files. You need go1.2 installed in order to build the program.
+	pkgver = r369.a4cfe9a
+	pkgrel = 1
+	url = https://github.com/odeke-em/drive
+	install = drive-git.install
+	arch = any
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	conflicts = drive
+	options = !strip
+	options = !emptydirs
+	source = drive-git::git+https://github.com/odeke-em/drive.git
+	md5sums = SKIP
+
+pkgname = drive-git
+
