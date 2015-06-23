@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-kernelnewbies
+	pkgdesc = Fortune cookie collection by miscellaneous Linux kernel newbies
+	pkgver = 20131209
+	pkgrel = 1
+	url = http://fortunes.cat-v.org/kernelnewbies/
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = kernelnewbies.gz
+	md5sums = 8988729444de707f69958c837e0ca9b3
+
+pkgname = fortune-mod-kernelnewbies
+
