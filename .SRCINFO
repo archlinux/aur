@@ -1,0 +1,16 @@
+pkgbase = perl-term-extendedcolor-xresources
+	pkgdesc = Subclass to Term::ExtendedColor
+	pkgver = 0.072
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Term-ExtendedColor-Xresources
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-term-readkey
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WO/WOLDRICH/Term-ExtendedColor-Xresources-0.072.tar.gz
+	md5sums = 8cfc8be19d7f1500194b4a5d2caffda7
+
+pkgname = perl-term-extendedcolor-xresources
+
