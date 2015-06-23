@@ -14,7 +14,7 @@ makedepends=('mesa' 'gcc-multilib')
 optdepends=('lib32-libva-vdpau-driver: vdpau back-end for nvidia'
             'lib32-libva-intel-driver: back-end for intel cards')
 source=(http://freedesktop.org/software/vaapi/releases/libva/libva-$pkgver.tar.bz2)
-md5sums=('ad0b55794308ec397d249a0a2a6df27a')
+md5sums=('d6d34cd725a0100a5e476e711838e1b1')
 
 build() {
   export CC='gcc -m32'
