@@ -1,0 +1,17 @@
+pkgbase = kcm_baloo_advanced
+	pkgdesc = Advanced KCM module for baloo file
+	pkgver = v1.00.00.r0.g35991b9
+	pkgrel = 3
+	url = https://gitlab.com/ericlnu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = baloo
+	source = git+https://gitlab.com/ericlnu/baloo-kcmadv.git
+	md5sums = SKIP
+
+pkgname = kcm_baloo_advanced
+
