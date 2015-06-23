@@ -1,0 +1,16 @@
+pkgbase = python2-pyephem
+	pkgdesc = PyEphem provides scientific-grade astronomical computations
+	pkgver = 3.7.5.3
+	pkgrel = 1
+	url = http://rhodesmill.org/pyephem/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = python2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pyephem/pyephem-3.7.5.3.tar.gz
+	md5sums = 46b101da152bb109b1137263b150f390
+
+pkgname = python2-pyephem
+
