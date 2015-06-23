@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Multidoge
+Comment=Light Dogecoin wallet
+Keywords=doge;coin;bit;crypto;
+Exec=multidoge
+Terminal=false
+NoDisplay=false
+Type=Application
+Icon=/usr/share/pixmaps/multidoge.png
+Categories=Utility;
