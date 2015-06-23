@@ -1,0 +1,15 @@
+pkgbase = python2-cvxmod
+	pkgdesc = Convex optimization modelling in Python
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = http://cvxmod.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-cvxopt
+	source = http://cvxmod.net/dist/python2-cvxmod-0.4.6.tar.gz
+	md5sums = e5d859659853809e5c7fc2e2970be88e
+
+pkgname = python2-cvxmod
+
