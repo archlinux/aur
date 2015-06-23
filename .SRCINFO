@@ -1,0 +1,17 @@
+pkgbase = ann
+	pkgdesc = Approximate nearest neighbor library.
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = http://www.cs.umd.edu/~mount/ANN/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://www.cs.umd.edu/~mount/ANN/Files/1.1.2/ann_1.1.2.tar.gz
+	source = shared-libs.patch
+	source = parallel.patch
+	md5sums = 7ffaacc7ea79ca39d4958a6378071365
+	md5sums = e185876a0a578a5886c11fbfea5c4644
+	md5sums = b332924dd27ee8a7fc479f28761a4381
+
+pkgname = ann
+
