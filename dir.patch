@@ -1,0 +1,31 @@
+commit 5d86b2ae19baf36bd94689bba1e6875d7feac5d5
+Author: Agustin Ferrario <agustin.ferrario@hotmail.com.ar>
+Date:   Thu May 30 02:02:14 2013 -0300
+
+    Updated directories to the proper Arch directories
+
+diff --git a/set_dark.sh b/set_dark.sh
+index 5742e80..ad5a6a9 100755
+--- a/set_dark.sh
++++ b/set_dark.sh
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ default='solarized'
+-dir=`dirname $0`
++dir='/usr/share/guake/solarized-colors/'
+ 
+ if [ -d $dir/colors/$1 ]; then
+   theme=$1
+
+diff --git a/set_light.sh b/set_light.sh
+index e150376..7283c7b 100755
+--- a/set_light.sh
++++ b/set_light.sh
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ default='solarized'
+-dir=`dirname $0`
++dir='/usr/share/guake/solarized-colors/'
+ 
+ if [ -d $dir/colors/$1 ]; then
+   theme=$1

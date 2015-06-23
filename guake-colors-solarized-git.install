@@ -1,0 +1,12 @@
+post_install() {
+	echo "=====> To use solarized colors run:"
+	echo "=====> $ set_dark.sh \#to use the dark version of solarized colors"
+	echo "=====> $ set_light.sh \#to use the light version of solarized colors"
+}
+
+
+post_upgrade() {
+	echo "=====> To use solarized colors run:"
+	echo "=====> $ set_dark.sh \#to use the dark version of solarized colors"
+	echo "=====> $ set_light.sh \#to use the light version of solarized colors"
+}
