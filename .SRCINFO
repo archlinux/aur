@@ -1,0 +1,15 @@
+pkgbase = nettop
+	pkgdesc = Network packets monitor.
+	pkgver = 0.2.3
+	pkgrel = 6
+	url = https://github.com/gim-/nettop
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = slang
+	depends = libpcap
+	source = https://github.com/gim-/nettop/archive/v0.2.3.tar.gz
+	sha256sums = adf522b91a2ba9b6f3bcc4bab67317e51c55f751709bef813240353f02ba8d23
+
+pkgname = nettop
+
