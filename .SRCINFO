@@ -1,0 +1,17 @@
+pkgbase = vim-better-indent-support-for-php-with-html-git
+	pkgdesc = Vim indent script for PHP
+	pkgver = 20130518
+	pkgrel = 1
+	url = https://github.com/captbaritone/better-indent-support-for-php-with-html
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-better-indent-support-for-php-with-html
+	conflicts = vim-better-indent-support-for-php-with-html
+	source = vim-better-indent-support-for-php-with-html::git+https://github.com/captbaritone/better-indent-support-for-php-with-html
+	sha256sums = SKIP
+
+pkgname = vim-better-indent-support-for-php-with-html-git
+
