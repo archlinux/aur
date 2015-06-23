@@ -1,0 +1,15 @@
+pkgbase = kirss-git
+	pkgdesc = A simple RSS reader.
+	pkgver = 0.8.r9.gb4328ad
+	pkgrel = 2
+	url = https://github.com/nathanj/kirss
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python>=2.5
+	conflicts = kirss
+	source = kirss-git::git+https://github.com/nathanj/kirss
+	md5sums = SKIP
+
+pkgname = kirss-git
+
