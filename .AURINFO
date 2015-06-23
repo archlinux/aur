@@ -1,0 +1,22 @@
+pkgbase = xine-lib_for_enigma2
+	pkgdesc = Xine-lib, version, created only for the Enigma2 project.
+	pkgver = 20140610
+	pkgrel = 1
+	url = https://github.com/Raider05/enigma2pc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	depends = gcc-libs
+	depends = pulseaudio
+	depends = ffmpeg
+	provides = xine-lib
+	conflicts = xine-lib
+	source = git://github.com/Raider05/enigma2pc.git
+	source = codec.patch
+	md5sums = SKIP
+	md5sums = 88e2588c9d0287c553f966be6b64d79d
+
+pkgname = xine-lib_for_enigma2
+

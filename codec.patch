@@ -1,0 +1,36 @@
+diff -Naur enigma2/xine-lib/src/combined/ffmpeg/ff_audio_decoder.c enigma2-build/xine-lib/src/combined/ffmpeg/ff_audio_decoder.c
+--- enigma2/xine-lib/src/combined/ffmpeg/ff_audio_decoder.c	2014-11-13 23:50:49.556106945 +0100
++++ enigma2-build/xine-lib/src/combined/ffmpeg/ff_audio_decoder.c	2014-11-13 23:54:40.616783379 +0100
+@@ -45,6 +45,8 @@
+ #include "ffmpeg_compat.h"
+ 
+ #define AUDIOBUFSIZE (64 * 1024)
++#define MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
+ 
+ typedef struct {
+   audio_decoder_class_t   decoder_class;
+diff -Naur enigma2/xine-lib/src/combined/ffmpeg/ffmpeg_decoder.h enigma2-build/xine-lib/src/combined/ffmpeg/ffmpeg_decoder.h
+--- enigma2/xine-lib/src/combined/ffmpeg/ffmpeg_decoder.h	2014-11-13 23:51:01.154634859 +0100
++++ enigma2-build/xine-lib/src/combined/ffmpeg/ffmpeg_decoder.h	2014-11-13 23:54:53.975088274 +0100
+@@ -33,7 +33,7 @@
+ 
+ typedef struct ff_codec_s {
+   uint32_t          type;
+-  enum CodecID      id;
++  enum AVCodecID      id;
+   const char       *name;
+ } ff_codec_t;
+ 
+diff -Naur enigma2/xine-lib/src/combined/ffmpeg/ff_video_decoder.c enigma2-build/xine-lib/src/combined/ffmpeg/ff_video_decoder.c
+--- enigma2/xine-lib/src/combined/ffmpeg/ff_video_decoder.c	2014-11-13 20:52:32.000000000 +0100
++++ enigma2-build/xine-lib/src/combined/ffmpeg/ff_video_decoder.c	2014-11-13 23:55:10.992928791 +0100
+@@ -962,7 +962,7 @@
+         this->bih.biWidth  = _X_BE_16(&this->buf[12]);
+         this->bih.biHeight = _X_BE_16(&this->buf[14]);
+ 
+-        this->context->sub_id = _X_BE_32(&this->buf[30]);
++//        this->context->sub_id = _X_BE_32(&this->buf[30]);
+ 
+         this->context->slice_offset = calloc(SLICE_OFFSET_SIZE, sizeof(int));
+         this->slice_offset_size = SLICE_OFFSET_SIZE;
