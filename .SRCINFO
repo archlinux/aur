@@ -1,0 +1,20 @@
+pkgbase = orpie
+	pkgdesc = A console-based RPN (reverse polish notation) desktop calculator.
+	pkgver = 1.5.2
+	pkgrel = 9
+	url = http://pessimization.com/software/orpie/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	makedepends = gsl
+	makedepends = camlp4
+	depends = ncurses
+	depends = gsl
+	source = http://pessimization.com/software/orpie/orpie-1.5.2.tar.gz
+	md5sums = 1fd02e75549cca954cebbd13271ea7f5
+	sha1sums = 9786df20fb272fd36f87868bed04cab504602282
+	sha256sums = de557fc7f608c6cb1f44a965d3ae07fc6baf2b02a0d7994b89d6a0e0d87d3d6d
+
+pkgname = orpie
+
