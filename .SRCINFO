@@ -1,6 +1,6 @@
 pkgbase = hydra-git
 	pkgdesc = A very fast network logon cracker which support many different services
-	pkgver = 8.2.130.392251f
+	pkgver = 8.2.138.027a8e9
 	pkgrel = 1
 	url = http://www.thc.org/thc-hydra/
 	arch = i686
@@ -19,9 +19,7 @@ pkgbase = hydra-git
 	provides = hydra
 	conflicts = hydra
 	source = hydra-git::git+https://github.com/vanhauser-thc/thc-hydra
-	source = fix-locations.patch
 	sha512sums = SKIP
-	sha512sums = 229fdaff59c6970a030ec81a78a2d34861a6caa947e7c2f6f9186cfd3bc0bf35ec96deadaae58ff1eaa45574f268fa5d9b9688df8c033fcee35ddeb302fb2069
 
 pkgname = hydra-git
 
