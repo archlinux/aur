@@ -1,0 +1,13 @@
+pkgname="conky-lua-arch"
+
+post_install() {
+	echo
+	echo "==> To modify Configuration edit file: /etc/conky/conky-arch.conf"
+	echo 
+	echo "==> FIX FOR GNOME USERS <=="
+	echo "Change in /etc/conky/conky-arch.conf Line 21:"
+	echo "own_window_type "overwrite""
+	echo "to"
+	echo "own_window_type "normal""
+	echo 
+}
