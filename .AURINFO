@@ -1,0 +1,15 @@
+pkgbase = auroraedesigner
+	pkgdesc = An application to preview KWin Aurorae themes and edit the configuration.
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php?content=122763
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	source = http://kde-apps.org/CONTENT/content-files/122763-auroraedesigner-0.3.1.tar.gz
+
+pkgname = auroraedesigner
+
