@@ -1,0 +1,16 @@
+# $1: new package version
+post_install() {
+  echo ":: The Neovim executable is called 'nvim'."
+  echo ":: To use your existing Vim configuration:"
+  echo "   ln -s ~/.vimrc ~/.nvimrc"
+  echo "   ln -s ~/.vim ~/.nvim"
+  echo ":: See ':help nvim' for more information on Neovim."
+}
+
+# $1: new package version
+# $2: old package version
+post_upgrade() {
+  if [[ "$(vercmp ${2} 0.r2965.51c6f38)" -le 0 ]]; then
+    post_install "${1}"
+  fi
+}
