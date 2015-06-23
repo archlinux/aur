@@ -1,0 +1,18 @@
+pkgbase = cgal-ipelets
+	pkgdesc = Ipelets from CGAL
+	pkgver = 4.6
+	pkgrel = 1
+	url = http://www.cgal.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = QPL
+	makedepends = cmake
+	makedepends = boost
+	depends = cgal
+	depends = ipe
+	source = http://gforge.inria.fr/frs/download.php/34705/CGAL-4.6.tar.xz
+	md5sums = 65fa7e17cd654ef68da47df608000007
+
+pkgname = cgal-ipelets
+
