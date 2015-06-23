@@ -1,0 +1,8 @@
+post_install() {
+  echo -e '\033[1mDINGOO_SDK, MIPSTOOLS and PATH environment variables should be set.\nUse dingoo-sdk.sh.\033[0m'
+}
+
+post_upgrade() {
+  echo -e '\033[1mDINGOO_SDK, MIPSTOOLS and PATH environment variables should be set.\nUse dingoo-sdk.sh.\033[0m'
+}
+
