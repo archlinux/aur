@@ -2,14 +2,15 @@
 
 pkgname=conky-top
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A Top conky-lua for ArchLinux"
 arch=('any')
 url="http://alexiobash.com/conky-top-monitor-di-sistema-a-pannello/"
 license=('GPL')
-depends=('conky-lua')
-source=("http://mirror.alexiobash.com/alexiobash/project/conky-top/$pkgname-$pkgver.tar.gz")
-md5sums=('612c6548655ebdfe170c8b28da05973c')
+depends=('conky-lua' 'perl-mail-imapclient' 'perl-io-socket-ssl' )
+source=("$pkgname::git+http://git.alexiobash.com/git/$pkgname")
+install="${pkgname}.install"
+md5sums=('SKIP')
 
 package() {
 	cd $srcdir/$pkgname
