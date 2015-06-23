@@ -1,7 +1,7 @@
 pkgbase = kimchi
 	pkgdesc = HTML5 management for KVM
 	pkgver = 1.4.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kimchi-project/kimchi
 	arch = any
 	license = LGPL2.1
@@ -33,6 +33,7 @@ pkgbase = kimchi
 	depends = websockify
 	depends = novnc
 	depends = sudo
+	depends = python2-functools32
 	backup = etc/kimchi/kimchi.conf
 	source = https://github.com/kimchi-project/kimchi/archive/1.4.1.tar.gz
 	source = python2.patch
