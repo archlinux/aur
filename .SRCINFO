@@ -1,0 +1,22 @@
+pkgbase = papilio-zap-ide
+	pkgdesc = ZPUino Arduino Papilio IDE is specially designed to get you up and running quickly with Soft Processors on the Papilio FPGA boards
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://forum.gadgetfactory.net/index.php?/files/file/8-zap-zpuino-arduino-papilio-ide/
+	install = papilio-zap-ide.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = java-runtime
+	options = !strip
+	source = zap-2.3.0-linux32.tgz::http://www.gadgetfactory.net/download/zap/zap-2.3.0-linux32.tgz
+	source = zap
+	source = zap.desktop
+	source = zap.png
+	md5sums = 0a368962003d8353bd1c2bffd7a553c3
+	md5sums = 68db64c3499e036948fdad012b93610b
+	md5sums = b508e3dcaaaee7fea7db42433e7d9ef2
+	md5sums = 9e36d33891d5e68d38ec55d1494499a5
+
+pkgname = papilio-zap-ide
+

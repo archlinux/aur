@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Papilio ZAP
+GenericName=Papilio ZAP IDE
+Comment=The open-source Arduino environment with Papilio support
+Exec=zap
+Icon=zap
+Type=Application
+Terminal=false
+Categories=Development;IDE;Qt;KDE;;Application;
