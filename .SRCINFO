@@ -1,0 +1,14 @@
+pkgbase = python3-kitchen
+	pkgdesc = Useful snippets of python code
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://fedorahosted.org/kitchen
+	arch = any
+	license = LGPLv2+
+	makedepends = python
+	depends = python
+	source = https://github.com/fedora-infra/kitchen/archive/1.2.1.tar.gz
+	md5sums = 654de4eba96b8bbf30ec7bd213b67921
+
+pkgname = python3-kitchen
+
