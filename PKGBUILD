@@ -3,7 +3,7 @@
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=lib32-libva
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux'
 arch=('x86_64')
