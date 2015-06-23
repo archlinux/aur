@@ -1,0 +1,14 @@
+pkgbase = colortest-256-ng-git
+	pkgdesc = Gives a visual presentation of what the 256 colors indexes is and how \ they look
+	pkgver = 20100822
+	pkgrel = 1
+	url = http://github.com/trapd00r/colortest-256-ng.git
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = perl
+	depends = perl-term-extendedcolor
+	depends = perl-term-extendedcolor-xresources
+
+pkgname = colortest-256-ng-git
+
