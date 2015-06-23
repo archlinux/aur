@@ -4,7 +4,8 @@
 pkgname=pamac-aur
 _pkgname=pamac
 pkgver=2.3.3
-pkgrel=1
+_pkgver=2.3.3
+pkgrel=2
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="d8e9826ab0b84bdb6f4b6c0dcc4ce1461bf04595"
 pkgdesc="A Gtk3 frontend for libalpm"
@@ -27,11 +28,12 @@ if [ "${_gitcommit}" != "" ]; then
   source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
 else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-#          "add-openrc-support.patch::https://github.com/manjaro/pamac/commit/78d407c7715586f83d1c5e35537b45d6d89f6d91.patch")
 fi
 
-sha256sums=('5683a5e14ceedc83a4aa0c1415c75aeb65ba334923b34528fa5da2523ebb12e4')
-#            'fc6d2fc8253c668c44656821ac9a7df959c7a0c94cca8a4b8c6ecb0a7e35baf1')
+source+=("pamac-grid-row-resize.patch::https://github.com/manjaro/pamac/commit/07dc17b9709b272d1bcd2170e28c59495b2fa333.patch")
+
+sha256sums=('5683a5e14ceedc83a4aa0c1415c75aeb65ba334923b34528fa5da2523ebb12e4'
+            'afce6fdd69f57999fbf16e0777f0f9ca18fd2883953ff2d8a9730c49448975db')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
@@ -42,10 +44,8 @@ prepare() {
   cd "$srcdir/pamac-$pkgver/src"
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" manager_window.vala
   cd "$srcdir/pamac-$pkgver/"
-  #patch -Np 1 -i $srcdir/add-openrc-support.patch
-  # no warning ... add glib : pkg-config --cflags --libs glib-2.0
-  #sed -i -e "s|--fatal-warnings|-X -w|g" Makefile
-  #sed -i -e "s|valac|valac -X -w -X -I/usr/include/glib-2.0 -X -I/usr/lib/glib-2.0/include -X -lglib-2.0 |g" Makefile
+  # patches here
+  patch -Np1 -i $srcdir/pamac-grid-row-resize.patch
 }
 
 build() {
