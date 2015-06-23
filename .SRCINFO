@@ -1,0 +1,22 @@
+pkgbase = gscreenshot
+	pkgdesc = A GUI front-end for scrot
+	pkgver = 1.3
+	pkgrel = 5
+	url = http://gscreenshot.googlecode.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libglade
+	depends = scrot
+	depends = pygtk
+	depends = python-imaging
+	noextract = gscreenshot-1.3.tar.gz
+	source = http://gscreenshot.googlecode.com/svn/trunk/gscreenshot-1.3.tar.gz
+	source = black-white_2-Style-applets-screenshooter.png
+	source = gscreenshot.desktop
+	md5sums = 9b71ff62bb1a4d30557f6af6726da10f
+	md5sums = 289f9c98f97be35bc558ee5d314d3a3d
+	md5sums = edca8ec37120e6bfbb438e136f03551d
+
+pkgname = gscreenshot
+
