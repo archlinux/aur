@@ -1,4 +1,5 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
+# Contributor: deadsurgeon42 <deadsurgeon42 at gmail dot com>
 pkgname=vibrancy-colors
 pkgver=2.3
 pkgrel=1
