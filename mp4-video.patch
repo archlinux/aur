@@ -1,0 +1,19 @@
+diff -Naur ushare-1.1a/src/mime.c ushare-1.1a_mod/src/mime.c
+--- ushare-1.1a/src/mime.c	2013-09-09 12:05:13.781612810 +0200
++++ ushare-1.1a_mod/src/mime.c	2013-09-09 12:03:07.000000000 +0200
+@@ -52,6 +52,7 @@
+   { "m2v",   UPNP_VIDEO, "http-get:*:video/mpeg2:"},
+   { "mpg2",  UPNP_VIDEO, "http-get:*:video/mpeg2:"},
+   { "mpeg2", UPNP_VIDEO, "http-get:*:video/mpeg2:"},
++  { "mp4",   UPNP_AUDIO, "http-get:*:video/mp4:"},
+   { "m4v",   UPNP_VIDEO, "http-get:*:video/mp4:"},
+   { "m4p",   UPNP_VIDEO, "http-get:*:video/mp4:"},
+   { "mp4ps", UPNP_VIDEO, "http-get:*:video/x-nerodigital-ps:"},
+@@ -80,7 +81,6 @@
+   { "mp1",  UPNP_AUDIO, "http-get:*:audio/mp1:"},
+   { "mp2",  UPNP_AUDIO, "http-get:*:audio/mp2:"},
+   { "mp3",  UPNP_AUDIO, "http-get:*:audio/mpeg:"},
+-  { "mp4",  UPNP_AUDIO, "http-get:*:audio/mp4:"},
+   { "m4a",  UPNP_AUDIO, "http-get:*:audio/mp4:"},
+   { "ogg",  UPNP_AUDIO, "http-get:*:audio/x-ogg:"},
+   { "wav",  UPNP_AUDIO, "http-get:*:audio/wav:"},

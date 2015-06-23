@@ -1,0 +1,61 @@
+--- ushare-1.1a/src/cds.c	2007-12-09 16:03:36.000000000 +0300
++++ ushare-1.1a.my/src/cds.c	2012-01-26 05:14:03.317360310 +0400
+@@ -20,6 +20,8 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>
+ 
+--- ushare-1.1a/src/cms.c	2007-12-09 16:03:36.000000000 +0300
++++ ushare-1.1a.my/src/cms.c	2012-01-26 05:15:33.236991387 +0400
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>
+ 
+--- ushare-1.1a/src/http.c	2012-01-26 05:27:44.073992912 +0400
++++ ushare-1.1a.my/src/http.c	2012-01-26 05:17:31.756505126 +0400
+@@ -25,6 +25,7 @@
+ #include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <errno.h>
+ 
+--- ushare-1.1a/src/presentation.c	2007-12-09 16:03:36.000000000 +0300
++++ ushare-1.1a.my/src/presentation.c	2012-01-26 05:19:41.635972259 +0400
+@@ -19,6 +19,8 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
+ 
+ #if HAVE_LANGINFO_CODESET
+ # include <langinfo.h>
+--- ushare-1.1a/src/mime.c	2007-12-09 16:03:36.000000000 +0300
++++ ushare-1.1a.my/src/mime.c	2012-01-26 05:23:54.251602492 +0400
+@@ -21,6 +21,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <stdio.h>
+ 
+ #include "mime.h"
+ #include "ushare.h"
+--- ushare-1.1a/src/services.c	2007-12-09 16:03:36.000000000 +0300
++++ ushare-1.1a.my/src/services.c	2012-01-26 05:21:28.572200186 +0400
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>

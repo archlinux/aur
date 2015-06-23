@@ -1,0 +1,17 @@
+post_install() {
+    if [ -z "`grep '^ushare:' /etc/group`" ]; then
+        groupadd -r ushare
+    fi
+    if [ -z "`grep '^ushare:' /etc/passwd`" ]; then
+        useradd -r -d /var/empty -g ushare -s /sbin/nologin ushare
+    fi
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    userdel ushare
+    groupdel ushare
+}
