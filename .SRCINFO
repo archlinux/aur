@@ -1,0 +1,17 @@
+pkgbase = python-encfswrapper-git
+	pkgdesc = A command-line tool to mount encrypted encfs filesystem while another program runs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lenzenmi/encfswrapper
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = encfs
+	provides = python-encfswrapper
+	conflicts = python-encfswraper
+	source = master::git://github.com/lenzenmi/encfswrapper.git
+	md5sums = SKIP
+
+pkgname = python-encfswrapper-git
+
