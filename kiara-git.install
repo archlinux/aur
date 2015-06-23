@@ -1,0 +1,3 @@
+post_install() {
+echo "To configure, edit /etc/kiararc or copy to ~/.kiararc and edit."
+}
