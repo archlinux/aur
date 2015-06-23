@@ -1,0 +1,31 @@
+diff -Naur Picoasm/cassembler.cpp Picoasm.jo//cassembler.cpp
+--- Picoasm/cassembler.cpp	2007-02-15 20:17:16.000000000 +0100
++++ Picoasm.jo//cassembler.cpp	2011-07-12 07:09:13.806724143 +0200
+@@ -1,6 +1,7 @@
+ #include "cassembler.h"
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ #define NO_LINE_NR 	0xFFFFFFFF
+ 
+diff -Naur Picoasm/main.cpp Picoasm.jo//main.cpp
+--- Picoasm/main.cpp	2007-02-02 21:58:23.000000000 +0100
++++ Picoasm.jo//main.cpp	2011-07-12 07:08:53.290056958 +0200
+@@ -17,7 +17,7 @@
+   verilog. 
+ * George found problem with instrOR_SX_SY in CAssembler::addInstruction().
+   Fixed it here. 
+-/*****************************************************************************
++ *****************************************************************************
+ 02/01/2007 V 0.1
+ Initial version based on kpicosim version 0.1.
+ * Uses cassembler, cpicoblaze, and cinstruction.cpp/.h files and
+@@ -36,6 +36,7 @@
+ #include "cinstruction.h"
+ 
+ #include <string>
++#include <string.h>
+ #include <iostream>
+ #include <stdio.h>      // printf
+ #include <unistd.h>     // getopt

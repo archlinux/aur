@@ -1,0 +1,18 @@
+pkgbase = picoasm
+	pkgdesc = Assembler for the Xilinx PicoBlaze-3 soft-core processor
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://marksix.home.xs4all.nl/picoasm.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = gcc
+	options = !strip
+	source = http://marksix.home.xs4all.nl/downloads/Picoasm_29mar08.tar.gz
+	source = picoasm.patch
+	md5sums = 58ef733437fff17bf73801270dd543d5
+	md5sums = c3f2ce172a4b88ace764bc46d5b938e1
+
+pkgname = picoasm
+
