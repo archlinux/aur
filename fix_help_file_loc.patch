@@ -1,0 +1,25 @@
+--- help.c.old	1999-01-31 23:28:23.000000000 -0500
++++ help.c	2013-06-15 12:20:39.902488856 -0500
+@@ -11,10 +11,7 @@
+ #include "aee.h"
+ 
+ char *help_file_list[4] = {
+-	"/usr/local/aee/help.ae", 
+-	"/usr/local/lib/help.ae", 
+-	"~/.help.ae", 
+-	"help.ae" 
++	"/usr/share/aee/help.ae"
+ 	};
+ 
+ void 
+--- localize.c.old	2002-07-06 00:02:21.000000000 -0500
++++ localize.c	2013-06-15 12:20:56.052376894 -0500
+@@ -64,7 +64,7 @@
+ 	catalog = catopen("aee", 0);
+ #endif /* NO_CATGETS */
+ 
+-	ae_help_file = catgetlocal( 1, "/usr/local/lib/help.ae");
++	ae_help_file = catgetlocal( 1, "/usr/share/aee/help.ae");
+ 	main_buffer_name = catgetlocal( 2, "main");
+ 
+ 

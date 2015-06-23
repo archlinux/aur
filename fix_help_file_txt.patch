@@ -1,0 +1,16 @@
+--- help.ae.old	2002-02-04 00:24:32.000000000 -0500
++++ help.ae	2013-06-15 12:40:19.692911745 -0500
+@@ -1058,11 +1058,11 @@
+ 
+ 	The file 'init.ae' may be used to set parameters and define keys to 
+ perform certain functions within ae.  This file may reside in three 
+-locations: /usr/local/lib/init.ae, .init.ae in your home directory, and 
++locations: /usr/share/aee/init.ae, .init.ae in your home directory, and 
+ .init.ae in the current working directory.
+ 
+         First, aee checks for a system level initialization file, located in 
+-/usr/local/lib.  Next the user's home directory is checked for a file named 
++/usr/share/aee.  Next the user's home directory is checked for a file named 
+ .init.ae, then the current directory.  The settings from each file are read, 
+ so that the directives from the most recently read file will take precedence 
+ over previously read files.  This allows, for example, the .init.ae file in 

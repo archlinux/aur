@@ -1,0 +1,12 @@
+--- aee.c.old	2002-07-06 00:03:09.000000000 -0500
++++ aee.c	2013-06-13 12:49:23.995110401 -0500
+@@ -2611,8 +2611,7 @@
+ }
+ 
+ char *init_name[4] = {
+-	"/usr/local/aee/init.ae", 
+-	"/usr/local/lib/init.ae", 
++	"/usr/share/aee/init.ae", 
+ 	NULL, 
+ 	".init.ae"
+ 	};

@@ -1,0 +1,21 @@
+pkgbase = aee
+	pkgdesc = Advanced Easy Editor. Classic text editor with both curses and X11 interfaces.
+	pkgver = 2.2.15b
+	pkgrel = 2
+	url = http://www.users.qwest.net/~hmahon/
+	arch = i686
+	arch = x86_64
+	groups = editors
+	license = PerlArtistic
+	depends = libx11
+	source = http://www.users.qwest.net/~hmahon/sources/aee-2.2.15b.tar.gz
+	source = fix_init_file_loc.patch
+	source = fix_help_file_loc.patch
+	source = fix_help_file_txt.patch
+	sha256sums = 7abbaffe35018f9de87c8685f9bee2ea3f261e88ce60674f1a5a9a3a0f54d752
+	sha256sums = 1d41f9cabed74b20be28da6345af5e139cde13598aef692fbf905cfa3cc7ddce
+	sha256sums = 8d9c63ac16c0e06e7fe53ec322f3d09f4c9751a45a3e0955b8366e61ec15d81a
+	sha256sums = ad45d4bce57a3ce5392f83a680869353bcba236dc1c1bee7677c29e62cb005fc
+
+pkgname = aee
+
