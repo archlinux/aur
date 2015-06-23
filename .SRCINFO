@@ -1,0 +1,18 @@
+pkgbase = ttf-adobe-fonts
+	pkgdesc = Fonts from Adobe Acrobat Reader X including Myriad Pro, Myriad CAD, Minion Pro, Courier Std and Adobe Pi Std
+	pkgver = 11.0.06
+	pkgrel = 1
+	url = http://www.adobe.com/products/reader.html
+	install = ttf-adobe-fonts.install
+	arch = any
+	license = custom
+	makedepends = p7zip
+	conflicts = acroread-fonts-systemwide
+	noextract = AdbeRdr11006_en_US.exe
+	source = http://ardownload.adobe.com/pub/adobe/reader/win/11.x/11.0.06/en_US/AdbeRdr11006_en_US.exe
+	source = LICENSE
+	md5sums = 8fae6f3fdf8d3f083d6a8f3ce22b36d0
+	md5sums = d4d2d30b83bb8e9578ebc22676e328b3
+
+pkgname = ttf-adobe-fonts
+
