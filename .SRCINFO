@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-joel
+	pkgdesc = fortune cookie file of Joel Spolsky quotes
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.shlomifish.org/humour/fortunes/joel-on-software
+	arch = i686
+	arch = x86_64
+	groups = fortune-mods
+	license = GPL
+	depends = fortune-mod
+	source = joel-on-software
+	md5sums = 1da724c939ceffdc5ab2a59113df53e7
+
+pkgname = fortune-mod-joel
+

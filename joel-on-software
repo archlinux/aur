@@ -1,0 +1,1208 @@
+We're programmers. Programmers are, in their hearts, architects, and the first
+thing they want to do when they get to a site is to bulldoze the place flat
+and build something grand. We're not excited by incremental renovation:
+tinkering, improving, planting flower beds.
+
+    -- Joel Spolsky
+    -- "Things you Should Never Do, Part I" ( http://www.joelonsoftware.com/articles/fog0000000069.html )
+%
+Have you ever heard of SEMA? It's a fairly esoteric system for measuring how
+good a software team is. No, wait! Don't follow that link! It will take you
+about six years just to understand that stuff. So I've come up with my own,
+highly irresponsible, sloppy test to rate the quality of a software team. The
+great part about it is that it takes about 3 minutes. With all the time you
+save, you can go to medical school.
+
+    -- Joel Spolsky
+    -- "Things you Should Never Do, Part I" ( http://www.joelonsoftware.com/articles/fog0000000069.html )
+%
+To make people happy, you have to let them feel like they are in control of
+their environment. To do this, you need to correctly interpret their actions.
+The interface needs to behave in the way they are expecting it to behave.
+
+Thus, the cardinal axiom of all user interface design:
+
+<<< A user interface is well-designed when the program behaves exactly how the
+user thought it would. >>>
+
+As Hillel said, everything else is commentary. All the other rules of good UI
+design are just corollaries.
+
+    -- Joel Spolsky
+    -- "User Interface Design for Programmers - Chapter 1" ( http://www.joelonsoftware.com/uibook/chapters/fog0000000057.html )
+%
+There's a subtle reason that programmers always want to throw away the code
+and start over. The reason is that they think the old code is a mess. And here
+is the interesting observation: they are probably wrong. The reason that they
+think the old code is a mess is because of a cardinal, fundamental law of
+programming:
+
+<<< It's harder to read code than to write it. >>>
+
+    -- Joel Spolsky
+    -- "Things you Should Never Do, Part I" ( http://www.joelonsoftware.com/articles/fog0000000069.html )
+%
+TRS-80 Level-I BASIC could only store two string variables, A$ and B$.
+Similarly, I was born with only two bug-storing-slots in my brain. At any
+given time, I can only remember two bugs. If you ask me to remember three, one
+of them will fall on the floor and get swept under the bed with the dust
+bunnies, who will eat it.
+
+    -- Joel Spolsky
+    -- "Painless Bug Tracking" ( http://www.joelonsoftware.com/articles/fog0000000029.html )
+%
+A lot of software developers are seduced by the old "80/20" rule. It seems to
+make a lot of sense: 80% of the people use 20% of the features. So you
+convince yourself that you only need to implement 20% of the features, and you
+can still sell 80% as many copies.
+
+Unfortunately, it's never the same 20%. Everybody uses a different set of
+features. In the last 10 years I have probably heard of dozens of companies
+who, determined not to learn from each other, tried to release "lite" word
+processors that only implement 20% of the features. This story is as old as
+the PC. Most of the time, what happens is that they give their program to a
+journalist to review, and the journalist reviews it by writing their review
+using the new word processor, and then the journalist tries to find the "word
+count" feature which they need because most journalists have precise word
+count requirements, and it's not there, because it's in the "80% that nobody
+uses," and the journalist ends up writing a story that attempts to claim
+simultaneously that lite programs are good, bloat is bad, and I can't use this
+damn thing 'cause it won't count my words. If I had a dollar for every time
+this has happened I would be very happy.
+
+    -- Joel Spolsky
+    -- "Strategy Letter IV: Bloatware and the 80/20 Myth" ( http://www.joelonsoftware.com/articles/fog0000000020.html )
+%
+Whenever somebody gives you a spec for some new technology, if you can't
+understand the spec, don't worry too much. Nobody else is going to understand
+it, either, and it's probably not going to be important. This is the lesson of
+SGML, which hardly anyone used, until Tim Berners-Lee dumbed it down
+dramatically and suddenly people understood it. For the same reason he
+simplified the file transfer protocol, creating HTTP to replace FTP.
+
+You can see this phenomenon all over the place; even within a given technology
+some things are easy enough to figure out and people use them (like COM's
+IUnknown), while others are so morbidly complicated (IMonikers) when they
+should be simple (what's wrong with URLs?) that they languish.
+
+    -- Joel Spolsky
+    -- Diary entry for 2 April, 2002 ( http://www.joelonsoftware.com/news/20020402.html )
+%
+When I was 6 and my dad brought home one of the world's first pocket
+calculators, an HP-35, he tried to convince me that it had a computer inside
+it. I thought that was unlikely. All the computers on Star Trek were the size
+of a room and had big reel-to-reel tape recorders. I thought that there was
+just a clever correlation between the keys on the keypad and the individual
+elements of the LED display that happened to produce mathematically correct
+results. (Hey, I was 6).
+
+    -- Joel Spolsky
+    -- "User Interface Design for Programmers - Chapter 2" ( http://www.joelonsoftware.com/uibook/chapters/fog0000000058.html )
+%
+Imagine that we had a way of sending actors from Broadway to Hollywood that
+involved putting them in cars and driving them across the country. Some of
+these cars crashed, killing the poor actors. Sometimes the actors got drunk on
+the way and shaved their heads or got nasal tattoos, thus becoming too ugly to
+work in Hollywood, and frequently the actors arrived in a different order than
+they had set out, because they all took different routes. Now imagine a new
+service called Hollywood Express, which delivered actors to Hollywood,
+guaranteeing that they would (a) arrive (b) in order (c) in perfect condition.
+The magic part is that Hollywood Express doesn't have any method of delivering
+the actors, other than the unreliable method of putting them in cars and
+driving them across the country. Hollywood Express works by checking that each
+actor arrives in perfect condition, and, if he doesn't, calling up the home
+office and requesting that the actor's identical twin be sent instead. If the
+actors arrive in the wrong order Hollywood Express rearranges them. If a large
+UFO on its way to Area 51 crashes on the highway in Nevada, rendering it
+impassable, all the actors that went that way are rerouted via Arizona and
+Hollywood Express doesn't even tell the movie directors in California what
+happened. To them, it just looks like the actors are arriving a little bit
+more slowly than usual, and they never even hear about the UFO crash.
+
+    -- Joel Spolsky
+    -- "The Law of Leaky Abstractions" ( http://www.joelonsoftware.com/articles/LeakyAbstractions.html )
+%
+A common misconception, I assume popularized by Hollywood, is that as you get
+closer to shipping software, activity becomes frenetic as everybody scrambles
+to finish all the things that need to be done in time for the deadline. In the
+typical crappy movie, there's a mad rush of typing in a room full of cool
+alterna-dressed programmers with found-object earrings and jeans jackets.
+Somebody stands up and shouts to the room in general "I need the Jiff
+subroutine! Somebody give me the Jiff subroutine!" A good looking young woman
+in Vivienne Tam urbanwear throws a floppy disk at him. "Thanks!" As the second
+hand swoops towards the :00, the whole team waits breathlessly around Ryan
+Phillipe's computer and watches the "copy" progress indicator as the final
+bits are put onto a floppy disk with less than a second to spare before the VC
+cuts off funding. ... On good teams, the days before shipping just get quieter
+and quieter as programmers literally run out of things to do one at a time.
+(Yesterday I took the day off to explore New York City with my wee niece and
+nephews.)
+
+    -- Joel Spolsky
+    -- "Working on CityDesk, Part One" ( http://www.joelonsoftware.com/articles/fog0000000009.html )
+%
+Version 5.0 of Microsoft's flagship spreadsheet program Excel came out in
+1993. It was positively huge: it required a whole 15 megabytes of hard drive
+space. In those days we could still remember our first 20MB PC hard drives
+(around 1985) and so 15MB sure seemed like a lot. By the time Excel 2000 came
+out, it required a whopping 146MB ... almost a tenfold increase! Dang those
+sloppy Microsoft programmers, right?
+
+Wrong.
+
+In 1993, given the cost of hard drives in those days, Microsoft Excel 5.0 took
+up about $36 worth of hard drive space. In 2000, given the cost of hard drives
+in 2000, Microsoft Excel 2000 takes up about $1.03 in hard drive space. (These
+figures are adjusted for inflation and based on hard drive price data from
+here.)
+
+In real terms, it's almost like Excel is actually getting smaller!
+
+    -- Joel Spolsky
+    -- "Strategy Letter IV: Bloatware and the 80/20 Myth" ( http://www.joelonsoftware.com/articles/fog0000000020.html )
+%
+So I have an announcement to make: if you are a programmer working in 2003 and
+you don't know the basics of characters, character sets, encodings, and
+Unicode, and I catch you, I'm going to punish you by making you peel onions
+for 6 months in a submarine. I swear I will.
+
+    -- Joel Spolsky
+    -- "The Absolute Minimum Every Software Developer Absolutely, 
+	Positively Must Know About Unicode and Character Sets (No Excuses!)" ( http://www.joelonsoftware.com/articles/Unicode.html )
+%
+But the idea of unifying the mess of Visual Basic and Windows API programming
+by creating a completely new, ground-up programming environment with not one,
+not two, but three languages (or are there four?) is sort of like the idea of
+getting two quarreling kids to stop arguing by shouting "shut up!" louder than
+either of them. It only works on TV. In real life when you shout "shut up!" to
+two people arguing loudly you just create a louder three-way argument.
+
+    -- Joel Spolsky
+    -- "How Microsoft Lost the API War" ( http://www.joelonsoftware.com/articles/APIWar.html )
+%
+And here's the clincher: I noticed (and confirmed this with a recruiter
+friend) that Windows API programmers here in New York City who know C++ and
+COM programming earn about $130,000 a year, while typical Web programmers
+using managed code languages (Java, PHP, Perl, even ASP.NET) earn about
+$80,000 a year. That's a huge difference, and when I talked to some friends
+from Microsoft Consulting Services about this they admitted that Microsoft had
+lost a whole generation of developers. The reason it takes $130,000 to hire
+someone with COM experience is because nobody bothered learning COM
+programming in the last eight years or so, so you have to find somebody really
+senior, usually they're already in management, and convince them to take a job
+as a grunt programmer, dealing with (God help me) marshalling and monikers and
+apartment threading and aggregates and tearoffs and a million other things
+that, basically, only Don Box ever understood, and even Don Box can't bear to
+look at them any more.
+
+    -- Joel Spolsky
+    -- "How Microsoft Lost the API War" ( http://www.joelonsoftware.com/articles/APIWar.html )
+%
+One of the biggest questions you're going to be asking now is, "How much
+should I charge for my software?" When you ask the experts they don't seem to
+know. Pricing is a deep, dark mystery, they tell you. The biggest mistake
+software companies make is charging too little, so they don't get enough
+income, and they have to go out of business. An even bigger mistake, yes, even
+bigger than the biggest mistake, is charging too much, so they don't get
+enough customers, and they have to go out of business. Going out of business
+is not good because everybody loses their job, and you have to go work at
+Wal*Mart as a greeter, earning minimum wage and being forced to wear a
+polyester uniform all day long.
+
+So if you like cotton uniforms you better get this right.
+
+The answer is really complicated. I'm going to start with a little economic
+theory, then I'm going to tear the theory to bits, and when I'm finished,
+you'll know a lot more about pricing and you still won't know how much to
+charge for your software, but that's just the nature of pricing. If you can't
+be bothered to read this, just charge $0.05 for your software, unless it does
+bug tracking, in which case charge $30,000,000 for it.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+NOW WE'RE GETTING SOMEWHERE!
+
+This is really cool. I think we're on the verge of solving the problem of how
+much to charge for software! I'M SO EXCITED!
+
+The reason I'm so excited is it looks like if you plot price against profit,
+you get a nice curve with a big hump in the middle! And we all know what humps
+mean! Humps mean local maxima! Or camels. But here they mean local maxima!
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+"O frabjous day! Callooh! Callay!" I chortle. We have found the optimum price,
+$220, and that's how much you should charge for your software. Thanks for your
+time.
+
+Ahem.
+
+Thank you for your time! Nothing more to see here! Move along now!
+
+You're not leaving.
+
+I see.
+
+Some of the more observant members of my audience have detected through
+careful analysis of the scrollbar position in their web browser that I might
+have something more to say other than "$220."
+
+Well, maybe. There's just a tiny little loose end I left untied which I might
+as well tie up now if you're all still up for it. Ok? OK!
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+The difference between $399 and $220, i.e., $179, is called consumer surplus.
+It's the extra value that those rich consumers got from their purchase that
+they would have been perfectly happy to do without.
+
+It's sort of like if you were all set to buy that new merino wool sweater, and
+you thought it was going to cost $70, which is well worth it, and when you got
+to Banana Republic it was on sale for only $50! Now you have an extra $20 in
+found money that you would have been perfectly happy to give to the Banana
+Republicans!
+
+Yipes!
+
+That bothers good capitalists. Gosh darn it, if you're willing to do without
+it, well, give it to me! I can put it to good use, buying a SUV or condo or
+Mooney or yacht one of those other things capitalists buy!
+
+In economist jargon, capitalists want to capture the consumer surplus.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+There are more subtle ways to segment. You know those grocery coupons you see
+in the paper? The ones that get you 25 cents off a box of Tide detergent if
+you clip them out and remember to bring them to the store? Well, the trouble
+with grocery coupons is that there's so much manual labour involved in
+clipping them, and sorting them out, and remembering which ones to use, and
+choosing brands based on which coupons you have, and so on, and the net effect
+is that if you clip coupons you're probably working for about $7.00 an hour.
+
+Now, if you're retired and living off of social security, $7 an hour sounds
+pretty good, so you do it, but if you're a stock analyst at Merrill Lynch
+getting paid $12,000,000 a year to say nice things about piece-of-junk
+Internet companies, working for $7 an hour is a joke, and you're not going to
+clip coupons. Heck, in one hour you could issue "buy" recommendations on ten
+piece-of-junk Internet companies! So coupons are a way for consumer products
+companies to charge two different prices and effectively segment their market
+into two. Mail-in rebates are pretty much the same as coupons, with some other
+twists like the fact that they reveal your address, so you can be direct
+marketed to in the future.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+In the world of software, you can just make a version of your product called
+"Professional" and another version called "Home" with some inconsequential
+differences, and hope that the corporate purchasers (again, the people who are
+not spending their own money) will be too embarassed at the thought of using
+"Windows XP Home Edition" at work and they'll buy the Pro edition. Home
+Edition at work? Somehow that feels like coming to work in your pyjamas! Ick!
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+Bad Idea #1: Site Licenses.
+
+The opposite of segmentation, really. I have certain competitors that do this:
+they charge small customers per-user but then there's a "unlimited" license at
+a fixed price. This is nutty, because you're giving the biggest price break
+precisely to the largest customers, the ones who would be willing to pay you
+the most money. Do you really want IBM to buy your software for their 400,000
+employees and pay you $2000? Hmm?
+
+As soon as you have an "unlimited" price, you are instantly giving a gigantic
+gift of consumer surplus to the least price-sensitive customers who should
+have been the cash cows of your business.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+Notice the gap? There's no software priced between $1000 and $75,000. I'll
+tell you why. The minute you charge more than $1000 you need to get serious
+corporate signoffs. You need a line item in their budget. You need purchasing
+managers and CEO approval and competitive bids and paperwork. So you need to
+send a salesperson out to the customer to do PowerPoint, with his airfare,
+golf course memberships, and $19.95 porn movies at the Ritz Carlton. And with
+all this, the cost of making one successful sale is going to average about
+$50,000. If you're sending salespeople out to customers and charging less than
+$75,000, you're losing money.
+
+The joke of it is, big companies protect themselves so well against the risk
+of buying something expensive that they actually drive up the cost of the
+expensive stuff, from $1000 to $75000, which mostly goes towards the cost of
+jumping all the hurdles that they set up to insure that no purchase can
+possibly go wrong.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+We have lots of FogBugz customers who have high-priced Remedy, Rational, or
+Mercury products sitting on the shelves after investments of well over
+$100,000, because that software isn't good enough to actually use. Then they
+buy a couple of thousand dollars worth of FogBugz and that's the product they
+really use. The Rational salesperson is laughing at me, because I have $2000
+in the bank and he has $100,000. But I have far more customers than he does,
+and they're all using my product, and evangelizing it, and spreading it, while
+Rational customers either (a) don't use it or (b) use it and can't stand it.
+But he's still laughing at me from his 40 foot yacht while I play with rubber
+duckies in the bathtub. Like I said, all three methods work fine. But cheaper
+prices is like buying advertising and as such is an investment in the future.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+You can have focus groups and ask people, but they'll lie to you. Some people
+will lie to show off their generosity and wealth. "Heck, yeah, I'd buy a pair
+of $400 jeans in a New York Minute!" Other people will lie because they really
+want your thing and they think you'll decide to charge less money if they tell
+you a low number. "Blogging software? Hmm. I'd pay, at most, 38 cents."
+
+Then you ask another focus group the next day, and this time, the first man to
+speak has a crush on a pretty woman in the group, and he wants to impress her,
+so he starts talking about how much his car cost and everyone is thinking Big
+Numbers. And the day after that, you serve Starbucks during the break, and
+while you're in the john everyone unbeknownst to you gets into a side
+conversation about paying $4 for a cup of coffee, and they're in a real frugal
+mood when you ask them about their willingness to pay.
+
+Then you finally get the focus group to agree that your software is worth $25
+a month, and then you ask them how much they would pay for a permanent license
+and the same people just won't go a penny over $100. People seriously can't
+count.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+And, in fact, you can't even be sure that the demand curve is downward
+sloping.
+
+The only reason we assumed that the demand curve is downward sloping is that
+we assumed things like "if Freddy is willing to buy a pair of sneakers for
+$130, he is certainly willing to buy those same sneakers for $20." Right? Ha!
+Not if Freddy is an American teenager! American teenagers would not be caught
+dead in $20 sneakers. It's, like, um, the death penalty? if you are wearing
+sneakers? that only cost $20 a pair? in school?
+
+I'm not joking around here: prices send signals. Movies in my town cost, I
+think, $11. Criminy. There used to be a movie theatre that had movies for $3.
+Did anyone go there? I DON'T THINK SO. It's obviously just a dumping ground
+for lousy movies. Somebody is now at the bottom of the East River with $20.00
+cement sneakers because they dared to tell the consumer which movies the
+industry thought were lousy.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+When you're setting a price, you're sending a signal. If your competitor's
+software ranges in price from about $100 to about $500, and you decide, heck,
+my product is about in the middle of the road, so I'll sell it for $300, well,
+what message do you think you're sending to your customers? You're telling
+them that you think your software is "eh." I have a better idea: charge $1350.
+Now your customers will think, "oh, man, that stuff has to be the cat's
+whiskers since they're charging mad coin for it!"
+
+And then they won't buy it because the limit on the corporate AMEX is $500.
+
+Misery.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+The more you learn about pricing, the less you seem to know.
+
+I've been nattering on about this topic for well over 5000 words and I don't
+really feel like we're getting anywhere, you and I.
+
+Some days it seems like it would be easier to be a taxi driver, with prices
+set by law. Or to be selling sugar. Plain ol' sugar. Yep. That would be sweet.
+
+Take my advice, offered about 20 pages back: charge $0.05 for your software.
+Unless it does bug tracking, in which case the correct price is $30,000,000.
+Thank you for your time, and I apologize for leaving you even less able to
+price software than you were when you started reading this.
+
+    -- Joel Spolsky
+    -- "Camels and Rubber Duckies" ( http://www.joelonsoftware.com/articles/CamelsandRubberDuckies.html )
+%
+In Usenet, whenever a single newsgroup got too large, it tended to fork. So
+from comp we got comp.sys.ibm.pc which split into smaller and smaller groups
+like the unloved comp.sys.ibm.pc.hardware.video, created because people were
+sick of talking about video drivers on the main group.
+
+I didn't like forks, because they make discussions less interesting. I mean,
+it's bad enough there's a comp.software.windows.nt.40.microsoft.notepad, does
+there have to be a
+comp.software.windows.nt.40.microsoft.notepad.helpfile.index? Seriously now.
+
+    -- Joel Spolsky
+    -- blog entry of 2 September, 2004 ( http://www.joelonsoftware.com/oldnews/pages/September2004.html )
+%
+I want to tell you two stories from my career which I think are classic
+illustrations of the difference between tech companies that are well-managed
+and tech companies that are disasters. It comes down to the difference between
+trusting employees and letting them get things done, versus treating them like
+burger flippers that need to be monitored and controlled every minute, lest
+they wander off and sabotage everything.
+
+    -- Joel Spolsky
+    -- "Two Stories" ( http://www.joelonsoftware.com/articles/TwoStories.html )
+%
+My first assignment at my first job was working at Microsoft, where I was told
+to come up with a new macro language strategy for Excel. Pretty soon, I had
+the first draft of the "Excel Basic" spec (which later evolved into Visual
+Basic for Applications, but that's another story). Somehow, this mysterious
+group of people at Microsoft called the "Application Architecture" group got
+wind of my spec, which must have concerned them, because for some reason they
+thought that they were in charge of things like macro language strategies, and
+they asked to see my spec.
+
+I asked around. Who's the Application Architecture group? Nobody seemed to
+think they were very serious. It turns out that they were a group of just four
+people, recent hires with PhDs (very unusual for Microsoft). I sent them a
+copy of my spec and went to meet them, in case they had something interesting
+to say.
+
+    -- Joel Spolsky
+    -- "Two Stories" ( http://www.joelonsoftware.com/articles/TwoStories.html )
+%
+I sent them [= the Application Architecture group] a copy of my spec and went
+to meet them, in case they had something interesting to say.
+
+"Blah blah!" said one of them. "Blah blah blah, blah blah blah!" said another.
+I don't think they quite had anything interesting to say. They were very
+enamored of the idea of subclassing and sort of thought that people making
+macros in Excel wanted to subclass a lot of things. In any case, one of the
+fellows said, "Well, this is all very interesting. What's next? Who has to
+approve your spec?"
+
+I laughed. Even though I had only been at Microsoft for a few months, I knew
+that there was no such thing as somebody approving my spec. Hell, nobody had
+time to read my spec, let alone approve it. The programmers were bugging me
+every day to get them more pages so that they could write more code. My boss
+(and his boss) made it very clear to me that nobody else understood macros or
+had time to work on macros, so whatever I did, it better be right. And here
+this PhD working in a strange research group at Microsoft assumed that things
+were a bit more formal than that.
+
+    -- Joel Spolsky
+    -- "Two Stories" ( http://www.joelonsoftware.com/articles/TwoStories.html )
+%
+I pretty rapidly realized that the App Architecture group knew even less than
+I did about macros. At least, I had talked to a handful of macro developers
+and some Excel old-timers to get a grip on what people actually did with Excel
+macros: things like recalculating a spreadsheet every day, or rearranging some
+data according to a certain pattern. But the App Architecture group had merely
+thought about macros as an academic exercise, and they couldn't actually come
+up with any examples of the kind of macros people would want to write.
+Pressured, one of them came up with the idea that since Excel already had
+underlining and double-underlining, perhaps someone would want to write a
+macro to triple underline. Yep. REAL common. So I proceeded to ignore them as
+diplomatically as possible.
+
+    -- Joel Spolsky
+    -- "Two Stories" ( http://www.joelonsoftware.com/articles/TwoStories.html )
+%
+I would have been perfectly happy to leave it at that. If the Apps
+Architecture team needed care and feeding and wanted to argue about stuff,
+that was OK, I would argue with them as much as they wanted as long as they
+left the programmers alone to do their work. But then something even more
+interesting happened that blew my mind. I was sitting at lunch with some
+coworkers, in the Redmond sun, when Pete Higgins came up to me. At that time
+Pete was the general manager for Office -- I knew who he was, of course, but
+didn't expect that he knew me very well. - "How's it going, Joel?" he asked.
+"I hear you've been having some issues with the App Architecture group." - "Oh
+no!" I said. "Nothing I can't handle." - "Say no more," he said, "I
+understand." He left. By the next day the rumor had gotten back to me: the App
+Architecture group was disbanded. Not only that, but each member of the group
+was sent to a different department at Microsoft, as far apart as possible. I
+never heard from them again. I was blown away, of course. At Microsoft, if
+you're the Program Manager working on the Excel macro strategy, even if you've
+been at the company for less than six months, it doesn't matter - you are the
+GOD of the Excel macro strategy, and nobody, not even employee number 6, is
+allowed to get in your way. Period.
+
+    -- Joel Spolsky
+    -- "Two Stories" ( http://www.joelonsoftware.com/articles/TwoStories.html )
+%
+Let's look at a small example. The Unix programming culture holds in high
+esteem programs which can be called from the command line, which take
+arguments that control every aspect of their behavior, and the output of which
+can be captured as regularly-formatted, machine readable plain text. Such
+programs are valued because they can easily be incorporated into other
+programs or larger software systems by programmers. To take one miniscule
+example, there is a core value in the Unix culture, which Raymond calls
+"Silence is Golden," that a program that has done exactly what you told it to
+do successfully should provide no output whatsoever. It doesn't matter if
+you've just typed a 300 character command line to create a file system, or
+built and installed a complicated piece of software, or sent a manned rocket
+to the moon. If it succeeds, the accepted thing to do is simply output
+nothing. The user will infer from the next command prompt that everything must
+be OK.
+
+    -- Joel Spolsky
+    -- "Biculturalism" ( http://www.joelonsoftware.com/articles/Biculturalism.html )
+%
+Brett also snuck in a feature he's been itching for: lots and lots and lots of
+keyboard shortcuts. There's only one keyboard shortcut you have to memorize,
+though: Ctrl+; switches FogBugz into keyboard mode and little letters light up
+reminding you what the shortcuts are for various commands around the screen.
+It's really pretty cool to be able to work through a bunch of cases,
+assigning, editing, and reprioritizing, without ever reaching for the mouse.
+Combined with the speed and responsiveness from Ajax, FogBugz has almost
+reached the level of speed and fluidity of my dry cleaner's DOS 2.0 character
+mode database application. And that's pretty darn responsive for a web app.
+
+    -- Joel Spolsky
+    -- "FogBugz 4+1/2 and Subjective Well-Being" ( http://www.joelonsoftware.com/articles/FB4.5.html )
+%
+The recruiters-who-use-grep, by the way, are ridiculed here, and for good
+reason. I have never met anyone who can do Scheme, Haskell, and C pointers who
+can't pick up Java in two days, and create better Java code than people with
+five years of experience in Java, but try explaining that to the average HR
+drone.
+
+    -- Joel Spolsky
+    -- "The Perils of JavaSchools" ( http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html )
+%
+The most sympathetic interpretation of why CS departments are so enthusiastic
+to dumb down their classes is that it leaves them more time to teach actual CS
+concepts, if they don't need to spend two whole lectures unconfusing students
+about the difference between, say, a Java int and an Integer. Well, if that's
+the case, 6.001 has the perfect answer for you: Scheme, a teaching language so
+simple that the entire language can be taught to bright students in about ten
+minutes; then you can spend the rest of the semester on fixed points. Feh.
+
+I'm going back to ones and zeros.
+
+(You had ones? Lucky bastard! All we got were zeros.)
+
+    -- Joel Spolsky
+    -- "The Perils of JavaSchools" ( http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html )
+%
+Of course, these are not the only factors that determine success or failure:
+in particular, if you have a great software team working on a product that
+nobody wants, well, people aren't going to want it. And it's possible to
+imagine a team of "gunslingers" that doesn't do any of this stuff that still
+manages to produce incredible software that changes the world. But, all else
+being equal, if you get these 12 things right, you'll have a disciplined team
+that can consistently deliver.
+
+    -- Joel Spolsky
+    -- "The Joel Test: 12 Steps to Better Code" ( http://www.joelonsoftware.com/articles/fog0000000043.html )
+%
+The very first version of Microsoft Word for Windows was considered a "death
+march" project. It took forever. It kept slipping. The whole team was working
+ridiculous hours, the project was delayed again, and again, and again, and the
+stress was incredible. When the dang thing finally shipped, years late,
+Microsoft sent the whole team off to Cancun for a vacation, then sat down for
+some serious soul-searching.
+
+What they realized was that the project managers had been so insistent on
+keeping to the "schedule" that programmers simply rushed through the coding
+process, writing extremely bad code, because the bug fixing phase was not a
+part of the formal schedule. There was no attempt to keep the bug-count down.
+Quite the opposite. The story goes that one programmer, who had to write the
+code to calculate the height of a line of text, simply wrote "return 12;" and
+waited for the bug report to come in about how his function is not always
+correct. The schedule was merely a checklist of features waiting to be turned
+into bugs. In the post-mortem, this was referred to as "infinite defects
+methodology".
+
+To correct the problem, Microsoft universally adopted something called a "zero
+defects methodology". Many of the programmers in the company giggled, since it
+sounded like management thought they could reduce the bug count by executive
+fiat. Actually, "zero defects" meant that at any given time, the highest
+priority is to eliminate bugs before writing any new code.
+
+    -- Joel Spolsky
+    -- "The Joel Test: 12 Steps to Better Code" ( http://www.joelonsoftware.com/articles/fog0000000043.html )
+%
+Writing code in a compiled language is one of the last things that still can't
+be done instantly on a garden variety home computer. If your compilation
+process takes more than a few seconds, getting the latest and greatest
+computer is going to save you time. If compiling takes even 15 seconds,
+programmers will get bored while the compiler runs and switch over to reading
+The Onion, which will suck them in and kill hours of productivity.
+
+Debugging GUI code with a single monitor system is painful if not impossible.
+If you're writing GUI code, two monitors will make things much easier.
+
+Most programmers eventually have to manipulate bitmaps for icons or toolbars,
+and most programmers don't have a good bitmap editor available. Trying to use
+Microsoft Paint to manipulate bitmaps is a joke, but that's what most
+programmers have to do.
+
+At my last job, the system administrator kept sending me automated spam
+complaining that I was using more than ... get this ... 220 megabytes of hard
+drive space on the server. I pointed out that given the price of hard drives
+these days, the cost of this space was significantly less than the cost of the
+toilet paper I used. Spending even 10 minutes cleaning up my directory would
+be a fabulous waste of productivity.
+
+    -- Joel Spolsky
+    -- "The Joel Test: 12 Steps to Better Code" ( http://www.joelonsoftware.com/articles/fog0000000043.html )
+%
+This has two implications.
+
+One: it’s crucial that tech support have access to the development team. This
+means that you can’t outsource tech support: they have to be right there at
+the same street address as the developers, with a way to get things fixed.
+Many software companies still think that it’s “economical” to run tech support
+in Bangalore or the Philippines, or to outsource it to another company
+altogether. Yes, the cost of a single incident might be $10 instead of $50,
+but you’re going to have to pay $10 again and again.
+
+When we handle a tech support incident with a well-qualified person here in
+New York, chances are that’s the last time we’re ever going to see that
+particular incident. So with one $50 incident we’ve eliminated an entire class
+of problems.
+
+Somehow, the phone companies and the cable companies and the ISPs just don’t
+understand this equation. They outsource their tech support to the cheapest
+possible provider and end up paying $10 again and again and again fixing the
+same problem again and again and again instead of fixing it once and for all
+in the source code. The cheap call centers have no mechanism for getting
+problems fixed; indeed, they have no incentive to get problems fixed because
+their income depends on repeat business, and there’s nothing they like better
+than being able to give the same answer to the same question again and again.
+
+    -- Joel Spolsky
+    -- "Seven steps to remarkable customer service" ( http://www.joelonsoftware.com/articles/customerservice.html )
+%
+Microsoft’s Raymond Chen tells the story of a customer who complains that the
+keyboard isn’t working. Of course, it’s unplugged. If you try asking them if
+it’s plugged in, "they will get all insulted and say indignantly, 'Of course
+it is! Do I look like an idiot?' without actually checking."
+
+"Instead," Chen suggests, "say 'Okay, sometimes the connection gets a little
+dusty and the connection gets weak. Could you unplug the connector, blow into
+it to get the dust out, then plug it back in?'
+
+"They will then crawl under the desk, find that they forgot to plug it in (or
+plugged it into the wrong port), blow out the dust, plug it in, and reply,
+'Um, yeah, that fixed it, thanks.'"
+
+Many requests for a customer to check something can be phrased this way.
+Instead of telling them to check a setting, tell them to change the setting
+and then change it back "just to make sure that the software writes out its
+settings."
+
+    -- Joel Spolsky
+    -- "Seven steps to remarkable customer service" ( http://www.joelonsoftware.com/articles/customerservice.html )
+%
+When the Macintosh first came out, there was no software available for it. So
+obviously, Apple created a giant glossy catalog listing all the great software
+that was "available". Half of the items listed said, in fine print, "under
+development," and the other half couldn't be had for love or money. Some were
+such lame products nobody would buy them. But even having a thick glossy
+catalog with one software "product" per page described in glowing prose
+couldn't disguise the fact that you just could not buy a word processor or
+spreadsheet to run on your 128KB Macintosh. There were similar "software
+product guides" for NeXT and BeOS. (Attention, NeXT and BeOS bigots: I don't
+need any flak about your poxy operating systems, OK? Write your own column.)
+The only thing a software product guide tells you is that there is no software
+available for the system. When you see one of these beasts, run fleeing in the
+opposite direction.
+
+    -- Joel Spolsky
+    -- "Strategy Letter II: Chicken and Egg Problems" ( http://www.joelonsoftware.com/articles/fog0000000054.html )
+%
+Amiga, Atari ST, Gem, IBM TopView, NeXT, BeOS, Windows CE, General Magic, the
+list of failed "new platforms" goes on and on. Because they are platforms,
+they are, by definition, not very interesting in and of themselves without
+juicy software to run on them. But, with very few exceptions (and I'm sure
+I'll get a whole host of email from tedious supporters of arcane and unloved
+platforms like the Amiga or RSTS-11), no software developer with the least bit
+of common sense would intentionally write software for a platform with 100,000
+users on a good day, like BeOS, when they could do the same amount of work and
+create software for a platform with 100,000,000 users, like Windows. The fact
+that anybody writes software for those oddball systems at all proves that the
+profit motive isn't everything: religious fervor is still alive and well. Good
+for you, darling. You wrote a nice microEmacs clone for the Timex Sinclair
+1000. Bravo. Here's a quarter, buy yourself a treat.
+
+    -- Joel Spolsky
+    -- "Strategy Letter II: Chicken and Egg Problems" ( http://www.joelonsoftware.com/articles/fog0000000054.html )
+%
+Software developers don’t really like to make schedules. Usually, they try to
+get away without one. "It’ll be done when it’s done!" they say, expecting that
+such a brave, funny zinger will reduce their boss to a fit of giggles, and in
+the ensuing joviality, the schedule will be forgotten.
+
+Most of the schedules you do see are halfhearted attempts. They’re stored on a
+file share somewhere and completely forgotten. When these teams ship, two
+years late, that weird guy with the file cabinet in his office brings the old
+printout to the post mortem, and everyone has a good laugh. "Hey look! We
+allowed two weeks for rewriting from scratch in Ruby!"
+
+Hilarious! If you’re still in business.
+
+    -- Joel Spolsky
+    -- "Evidence Based Scheduling" ( http://www.joelonsoftware.com/items/2007/10/26.html )
+%
+Most estimators get the scale wrong but the relative estimates right.
+Everything takes longer than expected, because the estimate didn’t account for
+bug fixing, committee meetings, coffee breaks, and that crazy boss who
+interrupts all the time. This common estimator has very consistent velocities,
+but they’re below 1.0. For example, {0.6, 0.5, 0.6, 0.6, 0.5, 0.6, 0.7, 0.6}
+
+    -- Joel Spolsky
+    -- "Evidence Based Scheduling" ( http://www.joelonsoftware.com/items/2007/10/26.html )
+%
+Let me walk you through a quick example. To make this example as simple as
+possible, I'm going to imagine a very predictable programmer, John, whose
+whole job is writing those one-line getter and setter functions that inferior
+programming languages require. All day long this is all he does:
+
+private int width; public int getWidth () { return width; } public void
+setWidth (int _width} { width = _width; }
+
+I know, I know... it's a deliberately dumb example, but you know you've met
+someone like this.
+
+Anyway. Each getter or setter takes him 2 hours. So his task estimates look
+like this:
+
+{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, ... }
+
+Now, this poor guy has a boss who interrupts him every once in a while with a
+two-hour conversation about marlin fishing. Now, of course, John could have a
+task on his schedule called "Painful conversations about marlin," and put that
+on his timesheet, but this might not be politically prudent. Instead, John
+just keeps the clock running. So his actual times look like this:
+
+{2, 2, 2, 2, 4, 2, 2, 2, 2, 4, 2, ... }
+
+And his velocities are:
+
+{1, 1, 1, 1, 0.5, 1, 1, 1, 1, 0.5, 1, ... }
+
+    -- Joel Spolsky
+    -- "Evidence Based Scheduling" ( http://www.joelonsoftware.com/items/2007/10/26.html )
+%
+Assuming you had everything planned down to the last detail when you started
+work, EBS works great. To be honest, though, you may do some features that you
+hadn’t planned. You get new ideas, your salespeople sell features you don’t
+have, and somebody on the board of directors comes up with a cool new idea to
+make your golf cart GPS application monitor EKGs while golfers are buzzing
+around the golf course. All this leads to delays that could not have been
+predicted when you did the original schedule.
+
+    -- Joel Spolsky
+    -- "Evidence Based Scheduling" ( http://www.joelonsoftware.com/items/2007/10/26.html )
+%
+Way back when I was working on Excel 5, our initial feature list was huge and
+would have gone way over schedule. "Oh my!" we thought. "Those are all super
+important features! How can we live without a macro editing wizard?"
+
+As it turns out, we had no choice, and we cut what we thought was "to the
+bone" to make the schedule. Everybody felt unhappy about the cuts. To make
+people feel better, we told ourselves that we weren’t cutting the features, we
+were simply deferring them to Excel 6.
+
+As Excel 5 was nearing completion, I started working on the Excel 6 spec with
+a colleague, Eric Michelman. We sat down to go through the list of "Excel 6"
+features that had been punted from the Excel 5 schedule. Guess what? It was
+the shoddiest list of features you could imagine. Not one of those features
+was worth doing. I don’t think a single one of them ever was. The process of
+culling features to fit a schedule was the best thing we could have done. If
+we hadn’t done this, Excel 5 would have taken twice as long and included 50%
+useless crap features that would have had to be supported, for backwards
+compatibility, until the end of time.
+
+    -- Joel Spolsky
+    -- "Evidence Based Scheduling" ( http://www.joelonsoftware.com/items/2007/10/26.html )
+%
+Last week, Microsoft published the binary file formats for Office. These
+formats appear to be almost completely insane. The Excel 97-2003 file format
+is a 349 page PDF file. But wait, that’s not all there is to it! This document
+includes the following interesting comment:
+
+Each Excel workbook is stored in a compound file.
+
+You see, Excel 97-2003 files are OLE compound documents, which are,
+essentially, file systems inside a single file. These are sufficiently
+complicated that you have to read another 9 page spec to figure that out. And
+these “specs” look more like C data structures than what we traditionally
+think of as a spec. It's a whole hierarchical file system.
+
+If you started reading these documents with the hope of spending a weekend
+writing some spiffy code that imports Word documents into your blog system, or
+creates Excel-formatted spreadsheets with your personal finance data, the
+complexity and length of the spec probably cured you of that desire pretty
+darn quickly. A normal programmer would conclude that Office’s binary file
+formats:
+
+* are deliberately obfuscated * are the product of a demented Borg mind * were
+created by insanely bad programmers * and are impossible to read or create
+correctly.
+
+    -- Joel Spolsky
+    -- Blog entry for 19 February 2008 ( http://www.joelonsoftware.com/items/2008/02/19.html )
+%
+You know, as much as I hate to see Joel backhand ole Perl, I've seen it done
+before (http://www.cabochon.com/~stevey/blog-rants/blog-ancient-perl.html) and
+I'm over it. Whatever. It's not a real object oriented language, too many
+idiosyncrasies, yadda yadda yadda I woke up next to python.
+
+But, I mean, PHP?? Uh, what?
+
+Weekly root exploits, a thousand ways to escape a DB insert, object oriented
+is even further behind in adoption than Perl (there's actually tons of pretty
+clean oo Perl code, on CPAN), doesn't play well with apache2.
+
+Oh but it's popular. Yes, it's very easy to find PHP programmers. You know,
+it's also pretty easy to find JavaScript programmers! COBOL was apparently
+pretty hot at one point.
+
+It's not that I have anything against PHP. I mean, people seem to get sh*t
+done with it. And they're not all friggin frigtards. Even 37 signals built
+their website in PHP and those guys are supposed to be the bees knees.
+
+But ... PHP is industrial strength, Python is halfway there, and Perl is ass?
+
+Yes. Also: Toyota can be deeded to your grandkids, but Honda will explode
+before you drive it home; Heath tastes totally incredible and Skor will make
+you vomit.
+
+    -- "a Hack"
+    -- "PHP more maintainable than Perl, also Pepsi way better than Coke" ( http://discuss.joelonsoftware.com/default.asp?joel.3.383234.18 )
+%
+A few months ago when we released CityDesk, I got an email from a customer
+complaining that he was used to doing Alt+F, Alt+S to save files.
+Unfortunately due to a tiny, unnoticed bug, that keyboard shortcut saved the
+file and then closed it, irritatingly. I had never noticed because I'm in the
+habit of doing Alt+F,S to save files, not Alt+F,Alt+S -- a tiny difference --
+and Alt+F,S worked fine.
+
+Once you get into the habit of doing Alt+F,Alt+S to save, it becomes so
+automatic you don't think of it as Alt+F,Alt+S. You think of it as save. And
+when you push the "save" button in your brain and the file you were working on
+goes away, it makes you feel like you're not in control of your environment.
+It's a small thing, but about the fourth time that it happens, you're going to
+be seriously unhappy. That's why I spent several hours tracking down this bug
+and fixing it. In a bizarre application of Murphy's Law, this fix led to a
+cascade of events that caused us to waste something like a week, but that's
+neither here nor there. It was worth the time spent. This is what it means to
+be concerned about usability. If you still think that something as small as
+how long you hold down the Alt key when you active a menu command doesn't
+matter, well, your software is going to make people unhappy. These tiny
+inconsistencies are what makes Swing applications so unbearably annoying to
+use, and in my opinion it's why there are virtually no commercially successful
+Java GUI applications.
+
+    -- Joel Spolsky
+    -- "Book Reviews" ( http://www.joelonsoftware.com/navLinks/fog0000000262.html )
+%
+You’re about to see the mother of all flamewars on internet groups where web
+developers hang out. It’ll make the Battle of Stalingrad look like that time
+your sister-in-law stormed out of afternoon tea at your grandmother’s and
+wrapped the Mustang around a tree.
+
+This upcoming battle will be presided over by Dean Hachamovitch, the Microsoft
+veteran currently running the team that’s going to bring you the next version
+of Internet Explorer, 8.0. The IE 8 team is in the process of making a
+decision that lies perfectly, exactly, precisely on the fault line smack in
+the middle of two different ways of looking at the world. It’s the difference
+between conservatives and liberals, it’s the difference between “idealists”
+and “realists,” it’s a huge global jihad dividing members of the same family,
+engineers against computer scientists, and Lexuses vs. olive trees.
+
+And there’s no solution. But it will be really, really entertaining to watch,
+because 99% of the participants in the flame wars are not going to understand
+what they’re talking about. It’s not just entertainment: it’s required reading
+for every developer who needs to design interoperable systems.
+
+    -- Joel Spolsky
+    -- "Martian Headsets" ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+And the whole problem hinges on the little tiny decision of what IE8 should do
+when it encounters a page that claims to support “standards”, but has probably
+only been tested against IE7.
+
+What the hell is a standard?
+
+Don’t they have standards in all kinds of engineering endeavors? (Yes.)
+
+Don’t they usually work? (Mmmm…..)
+
+Why are “web standards” so frigging messed up? (It’s not just Microsoft’s
+fault. It’s your fault too. And Jon Postel’s (1943-1998). I’ll explain that
+later.)
+
+There is no solution. Each solution is terribly wrong. Eric Bangeman at ars
+technica writes, “The IE team has to walk a fine line between tight support
+for W3C standards and making sure sites coded for earlier versions of IE still
+display correctly.” This is incorrect. It’s not a fine line. It’s a line of
+negative width. There is no place to walk. They are damned if they do and
+damned if they don’t.
+
+    -- Joel Spolsky
+    -- "Martian Headsets" ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+That’s why I can’t take sides on this issue and I’m not going to. But every
+working software developer should understand, at least, how standards work,
+how standards should work, how we got into this mess, so I want to try to
+explain a little bit about the problem here, and you’ll see that it’s the same
+reason Microsoft Vista is selling so poorly, and it’s the same issue I wrote
+about when I referred to the Raymond Chen camp (pragmatists) at Microsoft vs.
+the MSDN camp (idealists), the MSDN camp having won, and now nobody can figure
+out where their favorite menu commands went in Microsoft Office 2007, and
+nobody wants Vista, and it’s all the same debate: whether you are an Idealist
+(”red”) or a Pragmatist (”blue”).
+
+    -- Joel Spolsky
+    -- "Martian Headsets" ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+Imagine that you went to Mars, where you discovered that the beings who live
+there don’t have the portable music player. They’re still using boom boxes.
+
+You realize this is a huge business opportunity and start selling portable MP3
+players (except on Mars they’re called Qxyzrhjjjjukltks) and compatible
+headphones. To connect the MP3 player to the headphones, you invent a neat
+kind of metal jack that looks like this:
+
+Picture of a stereo headphone jackBecause you control the player and the
+headphone, you can ensure that your player works with your headphones. This is
+a ONE TO ONE market. One player, one headphone.
+
+    -- Joel Spolsky
+    -- "Martian Headsets" ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+So far, all is well. We have a de-facto standard for headphone jacks here. The
+written spec is not complete and not adequate, but anybody who wants to make a
+compatible headphone just has to plug it into your personal stereo device and
+test it, and if it works, all is well, they can sell it, and it will work.
+
+Until you decide to make a new version, the Qxyzrhjjjjukltk 2.0.
+
+The Qxyzrhjjjjukltk 2.0 is going to include a telephone (turns out Marslings
+didn’t figure out cell phones on their own, either) and the headphone is going
+to have to have a built-in microphone, which requires one more conductor, so
+you rework the connector into something totally incompatible and kind of ugly,
+with all kinds of room for expansion: Completely different 25-conductor
+connectorAnd the Qxyzrhjjjjukltk 2.0 is a complete and utter failure in the
+market. Yes, it has a nice telephone thing, but nobody cared about that. They
+cared about their large collections of headphones. It turns out that when I
+said Marslings are very particular about the color of things that they stick
+in their ears, I meant it. Most trendy Marslings at this point have a whole
+closet full of nice headphones. They all look the same to you (red), but
+Marslings are very, very finicky about shades of red in a way that you never
+imagined. The newest high-end apartments on Mars are being marketed with a
+headphone closet. I kid you not.
+
+    -- Joel Spolsky
+    -- Martian Headsets ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+A few years pass; you’re still selling Qxyzrhjjjjukltks like crazy; but now
+there are lots of Qxyzrhjjjjukltk clones on the market, like the open source
+FireQx, and lots of headphones, and you all keep inventing new features that
+require changes to the headphone jack and it’s driving the headphone makers
+crazy because they have to test their new designs out against every
+Qxyzrhjjjjukltk clone which is costly and time consuming and frankly most of
+them don’t have time and just get it to work on the most popular
+Qxyzrhjjjjukltk 5.0, and if that works, they’re happy, but of course when you
+plug the headphones into FireQx 3.0 lo and behold they explode in your hands
+because of a slight misunderstanding about some obscure thing in the spec
+which nobody really understands called hasLayout, and everybody understands
+that when it’s raining the hasLayout property is true and the voltage is
+supposed to increase to support the windshield-wiper feature, but there seems
+to be some debate over whether hail and snow are rain for the purpose of
+hasLayout, because the spec just doesn’t say. FireQx 3.0 treats snow as rain,
+because you need windshield wipers in the snow, Qxyzrhjjjjukltk 5.0 does not,
+because the programmer who worked on that feature lives in a warm part of Mars
+without snow and doesn’t have a driver’s license anyway. Yes, they have
+driver’s licenses on Mars.
+
+    -- Joel Spolsky
+    -- Martian Headsets ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+And eventually some tedious bore writes a lengthy article on her blog
+explaining a trick you can use to make Qxyzrhjjjjukltk 5.0 behave just like
+FireQx 3.0 through taking advantage of a bug in Qxyzrhjjjjukltk 5.0 in which
+you trick Qxyzrhjjjjukltk into deciding that it’s raining when it’s snowing by
+melting a little bit of the snow, and it’s ridiculous, but everyone does it,
+because they have to solve the hasLayout incompatibility. Then the
+Qxyzrhjjjjukltk team fixes that bug in 6.0, and you’re screwed again, and you
+have to go find some new bug to exploit to make your windshield-wiper-equipped
+headphone work with either device.
+
+NOW. This is the MANY-MANY market. Many players on the left hand side who
+don’t cooperate, and SCRILLIONS of players on the right hand side. And they’re
+all making mistakes because To Err Is Human.
+
+    -- Joel Spolsky
+    -- Martian Headsets ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+If you’ve ever visited the ultra-orthodox Jewish communities of Jerusalem, all
+of whom agree in complete and utter adherence to every iota of Jewish law, you
+will discover that despite general agreement on what constitutes kosher food,
+that you will not find a rabbi from one ultra-orthodox community who is
+willing to eat at the home of a rabbi from a different ultra-orthodox
+community. And the web designers are discovering what the Jews of Mea Shearim
+have known for decades: just because you all agree to follow one book doesn’t
+ensure compatibility, because the laws are so complex and complicated and
+convoluted that it’s almost impossible to understand them all well enough to
+avoid traps and landmines, and you’re safer just asking for the fruit plate.
+
+    -- Joel Spolsky
+    -- "Martian Headsets" ( http://www.joelonsoftware.com/items/2008/03/17.html )
+%
+Last week Kent Beck made a claim that you don't really need bug tracking
+databases when you're doing Extreme Programming, because the combination of
+pair programming (with persistent code review) and test driven development
+(guaranteeing 100% code coverage of the automated tests) means you hardly ever
+have bugs.
+
+Lo and behold, I discovered that very few of the bugs in there would have been
+discovered with pair programming or test driven development. Many of our
+"bugs" are really what XP calls stories -- basically, just feature requests.
+
+A lot of the other bugs were only discovered after much use in the field. The
+Polish keyboard thing. There's no way pair programming was going to find that.
+And logical mistakes that never occurred to us in the way that different
+features work together. The larger and more complex a program, the more
+interactions between the features that you don't think about. A particular
+unlikely sequence of characters ({${?, if you must know) that confuses the
+lexer. Some ftp servers produce an error when you delete a file that doesn't
+exist (our ftp server does not complain so this never occurred to us.)
+
+I carefully studied every bug. Out of 106 bugs we fixed for the service pack
+release of CityDesk, exactly 5 of them could have been prevented through pair
+programming or test driven design. We actually had more bugs that we knew
+about and thought weren't important (only to be corrected by our customers!)
+than bugs that could have been caught by XP methods.
+
+But Kent is right, for other types of development. For most corporate
+development applications, none of these things would be considered a bug.
+Program crashes on invalid input? Run it again, and this time watch your
+{${?'s! And we only have One Kind of FTP server and nobody in the whole
+company uses Polish Windows.
+
+    -- Joel Spolsky
+    -- "Five Worlds" ( http://www.joelonsoftware.com/articles/FiveWorlds.html )
+%
+"Seriously, there is no reason why the command line should be required to
+configure Oracle just like there is no reason why the command line should be
+required to configure Linux. It is an indication of a company and people who
+are trying to raise the barrier to entry in order to hold on to revenue
+streams from support and training."
+
+You're so right. I mean, all those wonderful GUI tools for Linux
+administration out there that Linux Inc. won't let you use.
+
+Oh wait. That's right. There's no single company deciding what you can and
+can't use.
+
+Okay, maybe it's the fact that the people who *could* write tools for Linux
+system administration *already know* how to administer Linux systems, so they
+don't need GUI tools. Yeah, that sounds a bit more likely.
+
+Maybe with Oracle you have point. I'm sure they balance the lost support
+revenue from better tools against the lost sales revenue from more people
+wanting to buy their product because of the tools.
+
+    -- Drew Kime
+    -- Comment on "Oracle - How Quaint?" ( http://discuss.joelonsoftware.com/default.asp?joel.3.637120.37 )
+%
+Think of the history of data access strategies to come out of Microsoft. ODBC,
+RDO, DAO, ADO, OLEDB, now ADO.NET - All New! Are these technological
+imperatives? The result of an incompetent design group that needs to reinvent
+data access every goddamn year? (That's probably it, actually.) But the end
+result is just cover fire. The competition has no choice but to spend all
+their time porting and keeping up, time that they can't spend writing new
+features. Look closely at the software landscape. The companies that do well
+are the ones who rely least on big companies and don't have to spend all their
+cycles catching up and reimplementing and fixing bugs that crop up only on
+Windows XP. The companies who stumble are the ones who spend too much time
+reading tea leaves to figure out the future direction of Microsoft. People get
+worried about .NET and decide to rewrite their whole architecture for .NET
+because they think they have to. Microsoft is shooting at you, and it's just
+cover fire so that they can move forward and you can't, because this is how
+the game is played, Bubby. Are you going to support Hailstorm? SOAP? RDF? Are
+you supporting it because your customers need it, or because someone is firing
+at you and you feel like you have to respond? The sales teams of the big
+companies understand cover fire. They go into their customers and say, "OK,
+you don't have to buy from us. Buy from the best vendor. But make sure that
+you get a product that supports (XML / SOAP / CDE / J2EE) because otherwise
+you'll be Locked In The Trunk." Then when the little companies try to sell
+into that account, all they hear is obedient CTOs parrotting "Do you have
+J2EE?" And they have to waste all their time building in J2EE even if it
+doesn't really make any sales, and gives them no opportunity to distinguish
+themselves. It's a checkbox feature -- you do it because you need the checkbox
+saying you have it, but nobody will use it or needs it. And it's cover fire.
+
+    -- Joel Spolsky
+    -- Fire and Motion ( http://www.joelonsoftware.com/articles/fog0000000339.html )
+%
+In those days, I thought, golly, there are zillions of bug tracking packages
+out there. Every programmer has written a dinky bug tracking package. Why
+would anyone buy ours? I knew one thing: programmers who start businesses
+often have the bad habit of thinking everybody else is a programmer just like
+them and wants the same stuff as them, and so they have an unhealthy tendency
+to start businesses that sell programming tools. That's why you see so many
+scrawny companies hawking source-code-generating geegaws, error catching and
+emailing geegaws, debugging geegaws, syntax-coloring editing tchotchkes,
+ftping baubles, and, ahem, bug tracking packages. All kinds of stuff that only
+a programmer could love. I had no intention of falling into that trap!
+
+Of course, nothing ever works out exactly as planned. FogBUGZ was popular.
+Really popular. It accounts for a significant chunk of Fog Creek's revenue and
+sales are growing steadily. The People won't stop buying it.
+
+    -- Joel Spolsky
+    -- Rub a dub dub ( http://www.joelonsoftware.com/articles/fog0000000348.html )
+%
+So we did version 2.0. This was an attempt to add some of the most obviously
+needed features. While David worked on version 2.0 we honestly didn't think it
+was worth that much effort, so he tended to do things in what you might call
+an "expedient" fashion rather than, say, an "elegant" fashion. Certain, ahem,
+design issues in the original code were allowed to fester. There were two
+complete sets of nearly identical code for drawing the main bug-editing page.
+SQL statements were scattered throughout the HTML hither and yon, to and fro,
+pho and ton. Our HTML was creaky and designed for those ancient browsers that
+were so buggy they could crash loading about:blank.
+
+Yeah, it worked brilliantly, we've been at zero known bugs for a while now.
+But inside, the code was, to use the technical term, a "big mess." Adding new
+features was a hemorrhoid. To add one field to the central bug table would
+probably require 50 modifications, and you'd still be finding places you
+forgot to modify long after you bought your first family carplane for those
+weekend trips to your beach house on Mars.
+
+    -- Joel Spolsky
+    -- Rub a dub dub ( http://www.joelonsoftware.com/articles/fog0000000348.html )
+%
+Something important is almost never mentioned in all the literature about
+programming and software development, and as a result we sometimes
+misunderstand each other.
+
+You're a software developer. Me too. But we may not have the same goals and
+requirements. In fact there are several different worlds of software
+development, and different rules apply to different worlds.
+
+You read a book about UML modeling, and nowhere does it say that it doesn't
+make sense for programming device drivers. Or you read an article saying that
+"the 20MB runtime [required for .NET] is a NON issue" and it doesn't mention
+the obvious: if you're trying to write code for a 32KB ROM on a pager it very
+much is an issue!
+
+I think there are five worlds here, sometimes intersecting, often not. The
+five are:
+
+When you read the latest book about Extreme Programming, or one of Steve
+McConnell's excellent books, or Joel on Software, or Software Development
+magazine, you see a lot of claims about how to do software development, but
+you hardly ever see any mention of what kind of development they're talking
+about, which is unfortunate, because sometimes you need to do things
+differently in different worlds.
+
+    -- Joel Spolsky
+    -- Five Worlds ( http://www.joelonsoftware.com/articles/FiveWorlds.html )
