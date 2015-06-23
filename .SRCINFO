@@ -1,0 +1,21 @@
+pkgbase = fusecompress-git
+	pkgdesc = Transparent (using fuse) compressing filesystem.
+	pkgver = 2.1.r146.ged259df
+	pkgrel = 1
+	url = http://github.com/tex/fusecompress/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	depends = fuse
+	depends = file
+	depends = boost-libs
+	depends = xz
+	depends = lzo2
+	provides = fusecompress
+	source = fusecompress-git::git+https://github.com/tex/fusecompress
+	md5sums = SKIP
+
+pkgname = fusecompress-git
+
