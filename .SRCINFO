@@ -1,0 +1,12 @@
+pkgbase = fleet
+	pkgdesc = A distributed init system.
+	pkgver = v0.10.2
+	pkgrel = 1
+	url = https://github.com/coreos/fleet
+	arch = any
+	license = Apache
+	source = https://github.com/coreos/fleet/releases/download/v0.10.2/fleet-v0.10.2-linux-amd64.tar.gz
+	md5sums = 58a3be3119adb0dcfaccea03007958a0
+
+pkgname = fleet
+
