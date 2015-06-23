@@ -5,7 +5,7 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=v5.5.0.beta1.345.g56aad2a
+pkgver=v5.5.0.beta1.356.gbac1116
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework"
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ license=("GPL3" "LGPL")
 depends=(
 	"dbus" "xcb-util-keysyms" "xcb-util-wm" "xcb-util-image"
 	"libxext" "inputproto" "libgl" "libxkbcommon" "systemd"
-	"libpng" "sqlite" "fontconfig" "icu" "libxrender"
+	"libpng" "sqlite" "fontconfig" "icu" "libxrender" "libinput"
 )
 makedepends=("git" "postgresql-libs")
 optdepends=(
@@ -62,7 +62,8 @@ build() {
 		-optimized-qmake \
 		-dbus-linked \
 		-reduce-relocations \
-		-opengl es2
+		-opengl es2 \
+		-libinput
 	make
 }
 
