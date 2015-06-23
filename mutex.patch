@@ -1,0 +1,82 @@
+diff -Nru em8300-cgmeiner-build/modules/em8300_alsa.c em8300-cgmeiner/modules/em8300_alsa.c
+--- em8300-cgmeiner-build/modules/em8300_alsa.c	2011-06-11 15:17:24.530300168 +0200
++++ em8300-cgmeiner/modules/em8300_alsa.c	2011-06-11 15:53:53.142791260 +0200
+@@ -487,7 +487,7 @@
+ 
+ 	memset(em8300_alsa, 0, sizeof(em8300_alsa_t));
+ 
+-	init_MUTEX(&em8300_alsa->lock);
++	sema_init(&em8300_alsa->lock,1);
+ 
+ 	em8300_alsa->em = em;
+ 	em8300_alsa->card = card;
+diff -Nru em8300-cgmeiner-build/modules/em8300_fifo.c em8300-cgmeiner/modules/em8300_fifo.c
+--- em8300-cgmeiner-build/modules/em8300_fifo.c	2011-06-11 15:17:24.540297986 +0200
++++ em8300-cgmeiner/modules/em8300_fifo.c	2011-06-11 15:53:53.142791260 +0200
+@@ -116,7 +116,7 @@
+ 		}
+ 	}
+ 
+-	init_MUTEX(&f->lock);
++	sema_init(&f->lock,1);
+ 	f->valid = 1;
+ 
+ 	return 0;
+diff -Nru em8300-cgmeiner-build/modules/em8300_main.c em8300-cgmeiner/modules/em8300_main.c
+--- em8300-cgmeiner-build/modules/em8300_main.c	2011-06-11 15:17:24.550295804 +0200
++++ em8300-cgmeiner/modules/em8300_main.c	2011-06-11 15:56:46.345002204 +0200
+@@ -52,8 +52,10 @@
+ #include <linux/i2c-algo-bit.h>
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,36)
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,38)
+ #include <linux/smp_lock.h>
+ #endif
++#endif
+ 
+ #include "em8300_compat24.h"
+ #include "encoder.h"
+@@ -206,7 +208,9 @@
+ 	int subdevice = EM8300_IMINOR(inode) % 4;
+ 	long ret;
+ 
++#ifdef CONFIG_KERNEL_LOCK
+ 	lock_kernel();
++#endif
+ 	switch (subdevice) {
+ 	case EM8300_SUBDEVICE_AUDIO:
+ 		ret = em8300_audio_ioctl(em, cmd, arg);
+@@ -217,8 +221,9 @@
+ 	case EM8300_SUBDEVICE_CONTROL:
+ 		ret = em8300_control_ioctl(em, cmd, arg);
+ 	}
++#ifdef CONFIG_KERNEL_LOCK
+ 	unlock_kernel();
+-
++#endif
+ 	return ret;
+ 
+ }
+@@ -534,9 +539,13 @@
+ 	struct em8300_s *em = filp->private_data;
+ 	long ret;
+ 
++#ifdef CONFIG_KERNEL_LOCK
+ 	lock_kernel();
++#endif
+ 	ret = em8300_audio_ioctl(em, cmd, arg);
++#ifdef CONFIG_KERNEL_LOCK
+ 	unlock_kernel();
++#endif
+ 	
+ 	return ret;
+ }
+@@ -877,7 +886,7 @@
+ 	init_waitqueue_head(&em->sp_ptsfifo_wait);
+ 
+ 	em->audio_driver_style = NONE;
+-	init_MUTEX(&em->audio_driver_style_lock);
++	sema_init(&em->audio_driver_style_lock,1);
+ 
+ 	result = request_irq(dev->irq, em8300_irq, IRQF_SHARED | IRQF_DISABLED, "em8300", (void *) em);
+ 

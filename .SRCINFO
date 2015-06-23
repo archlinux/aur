@@ -1,0 +1,19 @@
+pkgbase = em8300-hg
+	pkgdesc = DXR3 and Hollywood+ driver from cgmeiner repo
+	pkgver = 727
+	pkgrel = 3
+	url = http://dxr3.sourceforge.net/
+	install = em8300.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	depends = linux
+	depends = em8300-utils-hg=727
+	provides = em8300
+	conflicts = em8300
+	source = mutex.patch
+	md5sums = 9ab5168b2bfbd4da783e62e4e4280672
+
+pkgname = em8300-hg
+
