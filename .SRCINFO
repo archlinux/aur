@@ -1,0 +1,14 @@
+pkgbase = jchroot-git
+	pkgdesc = A chroot with more isolation.
+	pkgver = r25.8b1ca1c
+	pkgrel = 1
+	url = https://github.com/vincentbernat/jchroot
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	source = jchroot-git::git+https://github.com/vincentbernat/jchroot
+	md5sums = SKIP
+
+pkgname = jchroot-git
+
