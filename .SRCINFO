@@ -1,0 +1,20 @@
+pkgbase = ekg
+	pkgdesc = A Gadu-Gadu compatible client.
+	pkgver = 1.8rc2
+	pkgrel = 2
+	url = http://ekg.chmurka.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = libjpeg
+	depends = aspell
+	depends = python2
+	depends = giflib
+	depends = libgadu
+	provides = ekg
+	source = http://ekg.chmurka.net/ekg-1.8rc2.tar.gz
+	md5sums = f697c711da91ddf57c882114539e92fe
+	sha1sums = e6efb2eae35170ac7d5e1c7419b646457f128dfd
+
+pkgname = ekg
+
