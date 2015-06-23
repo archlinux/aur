@@ -1,0 +1,16 @@
+pkgbase = lxt
+	pkgdesc = A file manager program, that was inspired by the popular DOS program XTreeGold.
+	pkgver = 1.3b
+	pkgrel = 2
+	url = http://www.stahlke.org/dan/lxt/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	provides = lxt
+	source = http://www.stahlke.org/dan/lxt/lxt-1.3b.tar.gz
+	md5sums = 3c1c5ac92623165712b24161ccc70935
+	sha1sums = 399e0d8588f143a57c697156ce079aff2da510a0
+
+pkgname = lxt
+
