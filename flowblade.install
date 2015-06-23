@@ -1,0 +1,11 @@
+post_install() {
+	[ -x `which update-mime-database` ] &&  update-mime-database usr/share/mime
+}
+
+post_upgrade() {
+	[ -x `which update-mime-database` ] &&  update-mime-database usr/share/mime
+}
+
+post_remove() {
+	[ -x `which update-mime-database` ] &&  update-mime-database usr/share/mime
+}
