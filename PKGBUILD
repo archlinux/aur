@@ -5,7 +5,7 @@
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=0.3.3357
+pkgver=0.3.3370
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -34,8 +34,8 @@ build() {
 
 package() {
   cd $_pkgname
-  install -Dm755 'cjdroute' "$pkgdir/usr/bin/cjdroute"
-  install -Dm755 'contrib/sh/run-cjdroute.sh' "$pkgdir/usr/bin/run-cjdroute"
-  install -Dm644 "contrib/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm644 'doc/man/cjdroute.conf.5' "$pkgdir/usr/share/man/man5/cjdroute.conf.5"
+  install -Dm755 cjdroute "$pkgdir/usr/bin/cjdroute"
+  install -Dm755 contrib/sh/run-cjdroute.sh "$pkgdir/usr/bin/run-cjdroute"
+  install -Dm644 contrib/systemd/$_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 doc/man/cjdroute.conf.5 "$pkgdir/usr/share/man/man5/cjdroute.conf.5"
 }
