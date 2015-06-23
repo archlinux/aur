@@ -1,0 +1,14 @@
+pkgbase = darkplaces-server
+	pkgdesc = An advanced Quake 1 game engine, server only.
+	pkgver = 20110628
+	pkgrel = 1
+	url = http://icculus.org/twilight/darkplaces/
+	install = darkplaces-server.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://icculus.org/twilight/darkplaces/files/darkplacesengine20110628.zip
+	md5sums = c42103732cedfcf385ee959db9db6cb4
+
+pkgname = darkplaces-server
+
