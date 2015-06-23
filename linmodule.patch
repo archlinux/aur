@@ -1,0 +1,40 @@
+diff -crB em8300/modules/em8300_alsa.c em8300-build/modules/em8300_alsa.c
+*** em8300/modules/em8300_alsa.c	2012-02-09 02:48:32.714337907 +0200
+--- em8300-build/modules/em8300_alsa.c	2012-02-09 03:13:43.432414517 +0200
+***************
+*** 19,24 ****
+--- 19,25 ----
+   */
+  
+  #include "em8300_alsa.h"
++ #include <linux/module.h>
+  
+  #if defined(CONFIG_SND) || defined(CONFIG_SND_MODULE)
+  
+diff -crB em8300/modules/em8300_sysfs.c em8300-build/modules/em8300_sysfs.c
+*** em8300/modules/em8300_sysfs.c	2012-02-09 02:48:32.767665478 +0200
+--- em8300-build/modules/em8300_sysfs.c	2012-02-09 03:12:17.235909847 +0200
+***************
+*** 20,25 ****
+--- 20,26 ----
+   */
+  
+  #include "em8300_sysfs.h"
++ #include <linux/module.h>
+  
+  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,46)
+  
+diff -crB em8300/modules/em8300_udev.c em8300-build/modules/em8300_udev.c
+*** em8300/modules/em8300_udev.c	2012-02-09 02:48:32.767665478 +0200
+--- em8300-build/modules/em8300_udev.c	2012-02-09 03:10:45.103358300 +0200
+***************
+*** 19,24 ****
+--- 19,25 ----
+   */
+  
+  #include "em8300_udev.h"
++ #include <linux/module.h>
+  
+  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,2)
+  
+Лише у em8300-build/modules: em8300_version.h

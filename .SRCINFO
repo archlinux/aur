@@ -1,0 +1,19 @@
+pkgbase = em8300-git
+	pkgdesc = DXR3 and Hollywood+ driver from uluckas repo
+	pkgver = 20121113
+	pkgrel = 1
+	url = http://dxr3.sourceforge.net/
+	install = em8300.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	depends = linux<=3.4.6
+	depends = em8300-utils-git
+	provides = em8300
+	conflicts = em8300
+	source = linmodule.patch
+	md5sums = 788049fb54f578900bb99253b37becdb
+
+pkgname = em8300-git
+
