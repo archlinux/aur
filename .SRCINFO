@@ -11,6 +11,7 @@ pkgbase = lib32-libappindicator-gtk2
 	makedepends = perl-xml-libxml
 	makedepends = pygtk
 	makedepends = vala
+	makedepends = gtk-sharp-2
 	depends = lib32-libdbusmenu-gtk2
 	depends = lib32-libindicator-gtk2
 	provides = lib32-libappindicator

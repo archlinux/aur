@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('lib32-libdbusmenu-gtk2' 'lib32-libindicator-gtk2')
 provides=('lib32-libappindicator')
 makedepends=('dbus-glib' 'gobject-introspection'
-             'perl-xml-libxml' 'pygtk' 'vala')
+             'perl-xml-libxml' 'pygtk' 'vala' 'gtk-sharp-2')
 options=('!emptydirs')
 source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz"
         'python-gtfo.patch')
