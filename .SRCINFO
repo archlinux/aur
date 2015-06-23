@@ -1,0 +1,24 @@
+pkgbase = urjtag-svn
+	pkgdesc = Enhanced, modern tool for communicating over JTAG with flash chips, CPUs,and many more
+	pkgver = 0.10.r2040
+	pkgrel = 2
+	url = http://urjtag.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = svn
+	makedepends = gcc
+	makedepends = libftd2xx
+	makedepends = flex
+	makedepends = bison
+	depends = libftd2xx
+	conflicts = urjtag
+	options = !strip
+	source = svn+http://urjtag.svn.sourceforge.net/svnroot/urjtag/trunk
+	source = urjtag_libftd2xx.patch
+	md5sums = SKIP
+	md5sums = 366620fd96427e69e37dd761dd173be9
+
+pkgname = urjtag-svn
+
