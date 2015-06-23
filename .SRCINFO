@@ -1,0 +1,18 @@
+pkgbase = anypaper
+	pkgdesc = Frontend for feh and other wallpaper setting tools.
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://anypaper.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	depends = gtk2
+	depends = libpng
+	depends = feh
+	source = http://downloads.sourceforge.net/anypaper/anypaper-2.4.tar.gz
+	md5sums = bb6b520725c7842424de2be04a59c541
+
+pkgname = anypaper
+
