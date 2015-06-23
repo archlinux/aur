@@ -1,0 +1,23 @@
+pkgbase = dxr3player-cvs
+	pkgdesc = DVD player for the DXR3 MPEG-2 decoder board dxr3Player is a DVD player for Linux and the DXR3 (aka Hollywood+) MPEG-2 decoder board. It can now also play DVDs without a DXR3 board, using the X Window System through the SDL library.
+	pkgver = 20130427
+	pkgrel = 1
+	url = http://dxr3player.sourceforge.net/
+	arch = i686
+	license = GPL
+	makedepends = cvs
+	makedepends = em8300-utils
+	makedepends = gcc
+	makedepends = libpng
+	depends = em8300-utils
+	depends = em8300
+	depends = libmad
+	depends = libmpeg2
+	depends = sdl
+	depends = lirc
+	depends = lirc-utils
+	conflicts = dxr3player
+	replaces = dxr3player
+
+pkgname = dxr3player-cvs
+
