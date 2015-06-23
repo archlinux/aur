@@ -1,0 +1,17 @@
+pkgbase = swath
+	pkgdesc = A general-purpose utility for analyzing word boundaries in Thai text and inserting predefined word delimiter codes
+	pkgver = 0.5.2
+	pkgrel = 3
+	url = http://linux.thai.net/projects/swath
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = texlive-lang
+	license = GPL
+	depends = gcc-libs
+	depends = libdatrie>=0.2.1
+	source = ftp://linux.thai.net/pub/thailinux/software/swath/swath-0.5.2.tar.xz
+	md5sums = 837b313d17de9c4bcdfd0164f8df9365
+
+pkgname = swath
+
