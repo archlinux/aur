@@ -1,0 +1,14 @@
+pkgbase = movgrab
+	pkgdesc = A command-line movie downloader.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://sites.google.com/site/columscode/home/movgrab
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = openssl
+	source = http://sites.google.com/site/columscode/files/movgrab-1.2.1.tar.gz
+	md5sums = db162d6963b9753d6235f23419d08a5a
+
+pkgname = movgrab
+
