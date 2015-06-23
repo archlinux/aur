@@ -1,6 +1,6 @@
 pkgbase = gst-editing-services-git
 	pkgdesc = GStreamer editing services (Git version)
-	pkgver = 1.3.0.1.1893.be23365
+	pkgver = 1.5.0.1.2277.e3fc124
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/modules/gst-editing-services.html
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = gst-editing-services-git
 	makedepends = pkgconfig
 	makedepends = gtk-doc
 	depends = gst-plugins-base-git
-	provides = gst-editing-services=1.3.0.1.1893.be23365
+	provides = gst-editing-services=1.5.0.1.2277.e3fc124
 	conflicts = gst-editing-services
 	options = !libtool
 	source = git://anongit.freedesktop.org/gstreamer/gst-editing-services

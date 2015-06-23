@@ -3,7 +3,7 @@
 # Contributor: Thijs Vermeir <thijsvermeir@gmail.com>
 
 pkgname=gst-editing-services-git
-pkgver=1.3.0.1.1893.be23365
+pkgver=1.5.0.1.2277.e3fc124
 pkgrel=1
 pkgdesc='GStreamer editing services (Git version)'
 arch=('i686' 'x86_64')
