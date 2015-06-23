@@ -1,0 +1,15 @@
+*** ../include/linux/em8300.h.old	2010-08-04 00:33:05.352620013 +0300
+--- ../include/linux/em8300.h	2010-08-04 00:33:19.900620013 +0300
+***************
+*** 234,239 ****
+--- 234,243 ----
+  #include <linux/wait.h> /* wait_queue_head_t */
+  #include <linux/list.h> /* struct list_head */
+  
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,34)
++ #include <linux/semaphore.h> /* struct semaphore */
++ #endif
++ 
+  #if defined(CONFIG_SND) || defined(CONFIG_SND_MODULE)
+  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,16)
+  #define snd_card_t struct snd_card
