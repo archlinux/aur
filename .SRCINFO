@@ -1,6 +1,6 @@
 pkgbase = qt5-declarative-git
 	pkgdesc = A cross-platform application and UI framework (QtQml, QtQuick)
-	pkgver = v5.5.0.beta1.48.g9dee99e
+	pkgver = v5.5.0.beta1.49.g3e5a89a
 	pkgrel = 1
 	url = https://qt-project.org/
 	arch = i686
