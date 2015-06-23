@@ -1,0 +1,22 @@
+pkgbase = libunity
+	pkgdesc = Library for instrumenting and integrating with all aspects of the Unity shell
+	pkgver = 7.1.4
+	pkgrel = 1
+	url = https://launchpad.net/libunity
+	install = libunity.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bzr
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = vala
+	depends = dee
+	depends = gtk3
+	depends = libdbusmenu-glib
+	source = libunity-7.1.4::bzr+lp:libunity#revision=312
+	sha256sums = SKIP
+
+pkgname = libunity
+
