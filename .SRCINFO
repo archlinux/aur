@@ -1,0 +1,15 @@
+pkgbase = python-btrsnap
+	pkgdesc = A command-line tool to simplify working with timestamped btrfs snapshots
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/lenzenmi/btrsnap
+	arch = any
+	license = GPL3
+	depends = python
+	depends = btrfs-progs
+	depends = python-dateutil
+	source = https://github.com/lenzenmi/btrsnap/archive/2.0.0.tar.gz
+	md5sums = 579d7c55d6747bdd29214515c8eeb786
+
+pkgname = python-btrsnap
+
