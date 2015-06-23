@@ -1,0 +1,16 @@
+pkgbase = em8300-utils-hg
+	pkgdesc = DXR3 and Hollywood+ driver
+	pkgver = 727
+	pkgrel = 1
+	url = http://dxr3.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gtk2
+	optdepends = gtk2: to use dxr3view, dhc or autocal
+	optdepends = perl: to use em8300 scripts
+	provides = em8300-utils
+	conflicts = em8300-utils
+
+pkgname = em8300-utils-hg
+
