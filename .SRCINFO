@@ -1,0 +1,18 @@
+pkgbase = mergelog
+	pkgdesc = Utility that merges httpd log files by date
+	pkgver = 4.5
+	pkgrel = 1
+	url = http://mergelog.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = http://prdownloads.sourceforge.net/mergelog/mergelog-4.5.tar.gz
+	source = fix-SCAN_OFFSET.patch
+	source = fix-link-order-ftbfs-gcc4.6.patch
+	md5sums = d748039b14092315881fa329beeb6682
+	md5sums = 2c6f6678b0ed29e796b17ccc3eaa3b44
+	md5sums = e8e6b94391f98fd1f2c8d5d91c9bd47a
+
+pkgname = mergelog
+

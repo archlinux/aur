@@ -1,0 +1,19 @@
+commit 53c029127dfbbd5b389c97d1ca585b700aea7307
+Author: Ryan Niebur <ryanryan52@gmail.com>
+Date:   Mon Sep 7 14:40:23 2009 -0700
+
+    set SCAN_OFFSET to 8 (Closes: #538859)
+
+diff --git a/src/mergelog.c b/src/mergelog.c
+index 9cdb0fa..0ec5f80 100644
+--- a/src/mergelog.c
++++ b/src/mergelog.c
+@@ -32,7 +32,7 @@
+ 
+ #define BUFFER_SIZE 32768
+ #define DATE_SIZE 14
+-#define SCAN_OFFSET 9
++#define SCAN_OFFSET 8
+ #define SCAN_SIZE 512
+ 
+ 

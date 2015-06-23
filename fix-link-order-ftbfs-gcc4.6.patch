@@ -1,0 +1,10 @@
+Index: mergelog-4.5.1/src/Makefile.am
+===================================================================
+--- mergelog-4.5.1.orig/src/Makefile.am	2011-09-13 17:03:08.000000000 -0400
++++ mergelog-4.5.1/src/Makefile.am	2011-09-13 17:04:15.000000000 -0400
+@@ -4,4 +4,4 @@
+ 	$(COMPILE) $(LIBS) -DVERSION=\"$(VERSION)\" -Wall mergelog.c -o $@
+ 
+ zmergelog: mergelog.c
+-	$(COMPILE) $(LIBS) -DVERSION=\"$(VERSION)\" -Wall -DUSE_ZLIB mergelog.c -o $@
++	$(COMPILE) -DVERSION=\"$(VERSION)\" -Wall -DUSE_ZLIB mergelog.c -o $@ $(LIBS)
