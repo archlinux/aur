@@ -1,0 +1,22 @@
+pkgbase = lddgraph-git
+	pkgdesc = Small C++ code which creates dependencies graphs using ldd and Graphviz
+	pkgver = r15.d42c718
+	pkgrel = 1
+	url = http://www.github.com/bbenoist/lddgraph
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc-libs
+	depends = graphviz
+	depends = imagemagick
+	provides = lddgraph
+	conflicts = lddgraph
+	source = git+https://github.com/bbenoist/lddgraph.git
+	sha256sums = SKIP
+
+pkgname = lddgraph-git
+
