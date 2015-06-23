@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=NeoTextureEdit
+Exec=neotextureedit
+Comment=easy to use graph-based procedural seamless texture editor
+Icon=neotextureedit.png
+Terminal=false
+Path=/usr/bin
+Categories=Graphics;Raster;
+StartupNotify=True
+MimeType=application/x-neotextureedit;

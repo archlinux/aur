@@ -1,0 +1,19 @@
+pkgbase = neotextureedit
+	pkgdesc = easy to use graph-based procedural seamless texture editor
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://neotextureedit.sourceforge.net/index.html
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://hivelocity.dl.sourceforge.net/project/neotextureedit/0.6/0.6.4/NeoTextureEdit_0.6.4.tar.gz
+	source = neotextureedit.desktop
+	source = neotextureedit
+	source = neotextureedit.png
+	md5sums = fca10a15260f8435291353cc77a92a11
+	md5sums = d8f09181b3f103b3b3693cad827d11ff
+	md5sums = 328343739771327d9c58069702aa3518
+	md5sums = 7503e1364f05a7c8cc6ee63b8a3c0826
+
+pkgname = neotextureedit
+
