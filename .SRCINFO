@@ -1,0 +1,21 @@
+pkgbase = npd6-git
+	pkgdesc = A Linux daemon to provide a proxy service for IPv6 Neighbor Solcitations received by a gateway routing device.
+	pkgver = r130.ad66f24
+	pkgrel = 1
+	url = http://npd6.github.io/npd6/
+	install = npd6.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	provides = npd6
+	conflicts = npd6
+	source = git://github.com/npd6/npd6.git
+	source = npd6.service
+	source = npd6.install
+	md5sums = SKIP
+	md5sums = 319cc4f814a322e6aa9032c4d0f41dc6
+	md5sums = c9516ae0cefd3f29247f9971eb6eeced
+
+pkgname = npd6-git
+

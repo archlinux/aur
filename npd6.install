@@ -1,0 +1,4 @@
+post_install() {
+    echo "Sample Configuration file has been installed as /etc/npd6.conf.sample"
+	echo "Edit it and save to /etc/npd6.conf"
+}
