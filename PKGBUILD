@@ -14,7 +14,7 @@ url="http://ffmpeg.org/"
 license=('GPL')
 depends=(
       'lib32-alsa-lib' 'lib32-fontconfig'
-      'lib32-gnutls' 'lib32-sdl'
+      'lib32-gnutls' 'lib32-sdl' 'lib32-libva'
       'lib32-libass' 'lib32-libbluray' 'lib32-fribidi'
       'lib32-gsm' 'lib32-libmodplug' 'lib32-lame'
       'lib32-opus' 'lib32-libpulse' 'lib32-rtmpdump' 'lib32-schroedinger'

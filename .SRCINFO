@@ -12,6 +12,7 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-fontconfig
 	depends = lib32-gnutls
 	depends = lib32-sdl
+	depends = lib32-libva
 	depends = lib32-libass
 	depends = lib32-libbluray
 	depends = lib32-fribidi
