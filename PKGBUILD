@@ -3,7 +3,7 @@
 pkgname=kimchi
 _gitname=kimchi-1.4.1
 pkgver=1.4.1
-pkgrel=5
+pkgrel=6
 
 pkgdesc="HTML5 management for KVM"
 
@@ -39,6 +39,7 @@ depends=('python2-cherrypy'
   'websockify'
   'novnc'
   'sudo'
+  'python2-functools32'
 )
 
 
