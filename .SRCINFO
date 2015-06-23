@@ -1,0 +1,16 @@
+pkgbase = nuweb
+	pkgdesc = A Simple Literate Programming Tool
+	pkgver = 1.58
+	pkgrel = 1
+	url = http://nuweb.sourceforge.net/
+	install = nuweb.install
+	arch = any
+	license = unknown
+	depends = texlive-core
+	source = http://downloads.sourceforge.net/project/nuweb/nuweb-1.58.tar.gz
+	source = nuweb.install
+	md5sums = 85ce11cfdf5d6ebc82309bcd3e26fd6f
+	md5sums = aa285f8379d9d62b469591e0a2dd0bd7
+
+pkgname = nuweb
+
