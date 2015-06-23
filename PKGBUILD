@@ -5,7 +5,7 @@
 # Contributor: Gabor Nyekhelyi (n0gabor) <n0gabor@vipmail.hu>
 
 pkgname=pitivi-git
-pkgver=0.93.5994.c671383
+pkgver=0.94.6386.937f6cf
 pkgrel=1
 pkgdesc='Pitivi allows users to easily edit audio/video projects based on the GStreamer framework (Git version)'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = pitivi-git
 	pkgdesc = Pitivi allows users to easily edit audio/video projects based on the GStreamer framework (Git version)
-	pkgver = 0.93.5994.c671383
+	pkgver = 0.94.6386.937f6cf
 	pkgrel = 1
 	url = http://www.pitivi.org/
 	install = pitivi-git.install
@@ -22,7 +22,6 @@ pkgbase = pitivi-git
 	depends = goocanvas
 	depends = gst-python-git
 	depends = gst-editing-services-git
-	depends = gnonlin-git
 	depends = python-xdg
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
