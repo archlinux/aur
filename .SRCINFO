@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-dkms
+	pkgdesc = mkinitcpio hook to autoinstall dkms modules
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://linux.dell.com/dkms/
+	install = mkinitcpio-dkms.install
+	arch = any
+	license = GPL3
+	depends = dkms
+	source = dkms
+	sha256sums = 1afc9a3e0bd3d6b2e3c9d30ef99e7a8a01272e3c5d5fcdb86f0b80922cf7f4ba
+
+pkgname = mkinitcpio-dkms
+
