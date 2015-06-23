@@ -1,0 +1,15 @@
+[Unit]
+Description=Groonga HTTP server daemon
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Type=forking
+ExecStartPre=-/usr/bin/mkdir -p /var/log/groonga/httpd /var/run/groonga
+ExecStart=/usr/bin/groonga-httpd
+ExecStop=/usr/bin/groonga-httpd -s stop
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
