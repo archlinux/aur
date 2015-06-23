@@ -1,0 +1,19 @@
+pkgbase = vdr-plugin-rotorng
+	pkgdesc = For archvdr project!!! VDR-Plugin to control rotor. You can also use it as a channelscanner.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/plg-rotor-ng/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vdr
+	makedepends = unzip
+	depends = vdr>=1.7.15
+	backup = etc/vdr/plugins/plugin.rotorng.conf
+	source = http://projects.vdr-developer.org/attachments/download/1088/rotorng-0.3.1.tar.gz
+	source = plugin.rotorng.conf
+	md5sums = 7272c243c92995c521b8ca6712f42115
+	md5sums = 89ba2f74cb03d8855599bf3a846bcceb
+
+pkgname = vdr-plugin-rotorng
+
