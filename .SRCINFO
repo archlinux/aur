@@ -1,0 +1,17 @@
+pkgbase = man-pages-pl
+	pkgdesc = A collection of Polish translations of Linux manual pages
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://sourceforge.net/projects/manpages-pl/
+	arch = any
+	license = BSD
+	license = GPL
+	license = LGPL
+	license = MIT
+	makedepends = sed
+	depends = man-db
+	source = http://downloads.sourceforge.net/project/manpages-pl/manpages-pl-0.6.tar.bz2
+	md5sums = b3b16acf9de5c6d75bbf9c788bf5cf6a
+
+pkgname = man-pages-pl
+
