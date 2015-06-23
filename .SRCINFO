@@ -1,0 +1,14 @@
+pkgbase = neatcc-git
+	pkgdesc = A simple ARM/x86(_64) C compiler.
+	pkgver = r307.96a803c
+	pkgrel = 1
+	url = http://repo.or.cz/w/neatcc.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	source = neatcc-git::git+git://repo.or.cz/neatcc.git
+	md5sums = SKIP
+
+pkgname = neatcc-git
+
