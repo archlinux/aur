@@ -5,9 +5,9 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.0
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
-_toipatch=tuxonice-for-linux-4.0.4-2015-06-04.patch
+_toipatch=tuxonice-for-linux-4.0.5-2015-06-17.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,14 +28,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
+            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
             'SKIP'
             'a33ac3308e9bcafd99ab6a51a4429fcb0122b8ffcdb2e7115b52d20f0adb81fc'
             'cc070af025151db516145d111d6c5c081b933fc9cbbbda394a19d4ea60dd83b7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'fe591fb892e1e4c8438314357e1e78ec2f2f40a68f87f1b334edb5ffe8069dac')
+            '9296692f3e2143039a781404ba761ff43bd4e51f9d1bd4ac295357e98ebbec80')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
