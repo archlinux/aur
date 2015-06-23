@@ -1,0 +1,87 @@
+diff -ru gtk-smooth-engine-0.6.0.1.orig/engines/gtk2/src/smooth_gtk2_drawing.c gtk-smooth-engine-0.6.0.1/engines/gtk2/src/smooth_gtk2_drawing.c
+--- gtk-smooth-engine-0.6.0.1.orig/engines/gtk2/src/smooth_gtk2_drawing.c	2010-09-04 17:58:15.000000000 -0400
++++ gtk-smooth-engine-0.6.0.1/engines/gtk2/src/smooth_gtk2_drawing.c	2010-09-04 19:29:45.000000000 -0400
+@@ -244,6 +244,7 @@
+            SmoothInt height)
+ {
+ 	gboolean free_dash_list = FALSE;
++	gboolean pattern_assigned = FALSE;
+ 	gint8 *dash_list = NULL;
+ 
+ 	SmoothColor color;
+@@ -253,9 +254,7 @@
+ 	SmoothBool interior_focus = FALSE;
+ 
+ 	/* Setup Pen Color, Line Pattern, & Width */
+-	{
+ 		/* Get Style's Focus Color */
+-		{
+ 			if (FOCUS_USE_FOREGROUND(style, state_type)) 
+ 			{
+ 				color = FOCUS_FOREGROUND(style, GDKSmoothWidgetState(state_type));
+@@ -265,13 +264,13 @@
+ 				color = COLOR_CUBE(style).Interaction[GDKSmoothWidgetState(state_type)].Foreground;
+ 			}
+ 	
+-			SmoothCanvasCacheColor(Canvas, &color);		
+-		}
++			SmoothCanvasCacheColor(Canvas, &color);	
+ 
+ 		/* Check for a Smooth Focus Part Line Width and Pattern */
+ 		if (FOCUS_USE_PATTERN(style, state_type))
+ 		{
+ 			dash_pattern.Pattern = FOCUS_PATTERN(style, state_type);
++			pattern_assigned = TRUE;
+ 		}
+ 		else 
+ 		{
+@@ -286,6 +285,7 @@
+ 			if (dash_list) 
+ 			{
+ 				dash_pattern.Pattern = dash_list;
++				pattern_assigned = TRUE;
+ 			} 
+     		}
+ 
+@@ -305,19 +305,23 @@
+ 		if (CHECK_DETAIL(detail, "add-mode"))
+ 		{
+ 			dash_pattern.Pattern = "\4\4";
++			pattern_assigned = TRUE;
+ 		}
+ 
++	
++	if (pattern_assigned) {
++		dash_pattern.Length = strlen(dash_pattern.Pattern);
++		
+ 		SmoothCanvasSetPenValues(Canvas, color, line_width, 
+ 						dash_pattern.Pattern[0] ? GDK_LINE_ON_OFF_DASH : GDK_LINE_SOLID,
+ 						GDK_JOIN_MITER, GDK_CAP_NOT_LAST);
++		
++		SmoothCanvasSetPenPattern(Canvas, dash_pattern);
+ 	}
+ 
+-	dash_pattern.Length = strlen(dash_pattern.Pattern);
+-
+-	if (dash_pattern.Pattern[0])
+-		SmoothCanvasSetPenPattern(Canvas, dash_pattern);
+-	
+-	gtk_widget_get_focus_props (widget, NULL, NULL, &interior_focus);
++	if (widget) {
++		gtk_widget_get_focus_props (widget, NULL, NULL, &interior_focus);
++	}
+ 
+  	if (CHECK_DETAIL(detail, "button") && (is_in_combo_box (widget) && (ENTRY_BUTTON_EMBED(style))))
+ 	{
+diff -ru gtk-smooth-engine-0.6.0.1.orig/engines/shared/gtk/smooth_gtk_drawing.c gtk-smooth-engine-0.6.0.1/engines/shared/gtk/smooth_gtk_drawing.c
+--- gtk-smooth-engine-0.6.0.1.orig/engines/shared/gtk/smooth_gtk_drawing.c	2010-09-04 17:58:15.000000000 -0400
++++ gtk-smooth-engine-0.6.0.1/engines/shared/gtk/smooth_gtk_drawing.c	2010-09-04 19:24:00.000000000 -0400
+@@ -610,7 +610,7 @@
+ 		else
+ 			SmoothDrawBorderWithGap(&border, Canvas, base, x, y-thick, width, height+thick, GTK_POS_TOP, 0, width);
+ 	}
+-	else if (CHECK_DETAIL(detail, "trough"))
++	else if (part && CHECK_DETAIL(detail, "trough"))
+ 	{
+ 			SmoothDrawBorderWithGap(&border, Canvas, base, x+PART_XPADDING(part), y+PART_YPADDING(part), 
+ 						width-PART_XPADDING(part)*2, height-PART_YPADDING(part)*2, 0, 0, 0);
