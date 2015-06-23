@@ -1,0 +1,17 @@
+pkgbase = gotemps
+	pkgdesc = Convert between Fahrenheit and Celsius via the command line using Go.
+	pkgver = 1
+	pkgrel = 1
+	url = http://github.com/darthlukan/gotemps
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = git+git://github.com/darthlukan/gotemps
+	sha256sums = SKIP
+
+pkgname = gotemps
+
