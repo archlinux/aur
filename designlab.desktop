@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Papilio DesignLab
+GenericName=Papilio DesignLab
+Comment=The open-source Arduino environment with Papilio support
+Exec=designlab
+Icon=designlab
+Type=Application
+Terminal=false
+Categories=Development;IDE;Qt;KDE;;Application;
