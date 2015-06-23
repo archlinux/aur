@@ -1,0 +1,16 @@
+pkgbase = cwebx
+	pkgdesc = The CWEBx system for Structured Software Documentation (Literate Programming) in C.
+	pkgver = 3.52
+	pkgrel = 1
+	url = http://wwwmathlabo.univ-poitiers.fr/~maavl/CWEBx/
+	install = cweb.install
+	arch = any
+	license = unknown
+	depends = texlive-core
+	source = http://wwwmathlabo.univ-poitiers.fr/~maavl/CWEBx/cweb-x3.52.tgz
+	md5sums = 30fadade903fd110eb4478962ab21016
+	sha1sums = 5d087aa6413bdce69f1cf16c797779ace5c3e086
+	sha256sums = 92e57b4414388743bd0b91d81c91bea4645a8b04c8f744754b0855e90934186b
+
+pkgname = cwebx
+
