@@ -1,0 +1,14 @@
+pkgbase = gensort
+	pkgdesc = Generate input records for the sort benchmarks presented on www.sortbenchmark.org
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.ordinal.com/gensort.html
+	arch = i686,
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	source = http://www.ordinal.com/try.cgi/gensort-1.5.tar.gz
+	sha256sums = 7f7573783d8298cef3dd4aa1db8225c914de1a0cfed283965ea20b69838a67ad
+
+pkgname = gensort
+
