@@ -1,0 +1,16 @@
+pkgbase = simpletagger
+	pkgdesc = A small helper application that lets you tag any of your files.
+	pkgver = 0.2.5
+	pkgrel = 3
+	url = http://opendesktop.org/content/show.php?content=145364
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt4
+	makedepends = automoc4
+	depends = qt4
+	source = http://opendesktop.org/CONTENT/content-files/145364-simpletagger-0.2.5.tar.gz
+	md5sums = 420bd6271110747ccc39097022dfba83
+
+pkgname = simpletagger
+
