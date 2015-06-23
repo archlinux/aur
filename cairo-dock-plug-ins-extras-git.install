@@ -1,0 +1,37 @@
+post_install() {
+flag=0 
+cd_pluginsdatadir=$(pkg-config gldi --variable=pluginsdatadir)  
+for directory in /home/*/.config/cairo-dock/third-party/;do 
+  cd $directory 
+  if [ -e .SKIP ];then 
+    continue  
+  fi 
+  flag_directory=0 
+  for applet in $(ls -d */ | sed 's,/$,,g');do 
+    if [ $applet = "locale" ];then 
+      continue 
+    fi 
+    if [ $(grep -c [[]$applet[]] ${pkgdir}${cd_pluginsdatadir}/Dbus/third-party/list.conf) -ge 1 ];then 
+      if [ $flag = 0 ];then 
+        echo -e "\e[1;4;91mThe following applets have been found installed in a local directory. Except if you develop one of these applets, they should be removed to avoid possible conflicts with this package:\\r\033[0m"
+        flag=1 
+      fi 
+      if [ $flag_directory = 0 ];then 
+        echo -e "\e[1;94mIn $directory :\\r\033[0m" 
+        flag_directory=1 
+      fi 
+      echo -e "\e[1;92m  [$applet]\\r\033[0m" 
+    fi 
+  done 
+done 
+if [ $flag = 1 ];then 
+  echo -e "\e[1;4;91mNote : to avoid this message on next update you can launch this command: touch ~/.config/cairo-dock/third-party/.SKIP\033[0m" 
+  echo "Press any key to continue..."
+  read -p ""
+fi
+rm -rf ${pkgdir}${cd_pluginsdatadir}/Dbus/third-party/list.conf
+}
+
+post_upgrade() {
+  post_install
+}
