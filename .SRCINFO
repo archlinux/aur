@@ -1,0 +1,14 @@
+pkgbase = vim-colortest
+	pkgdesc = xterm 256 color test and visual colors list
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1349
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	depends = perl
+	source = colortest::http://www.vim.org/scripts/download_script.php?src_id=4568
+	md5sums = 3fb0cacc39d4bbed8c06689740a8f62d
+
+pkgname = vim-colortest
+
