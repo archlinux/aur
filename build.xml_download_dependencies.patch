@@ -1,0 +1,49 @@
+--- build.xml.orig	2015-04-02 15:27:03.731384919 -0500
++++ build.xml	2015-04-02 15:34:25.839820382 -0500
+@@ -56,9 +56,10 @@
+     <get dest="tmp/jigsaw_2.2.6.tar.gz" src="http://jigsaw.w3.org/Distrib/jigsaw_2.2.6.tar.gz" usetimestamp="true"/>
+     <get dest="tmp/commons-collections-3.2.1-bin.zip" src="http://www.apache.org/dist/commons/collections/binaries/commons-collections-3.2.1-bin.zip" usetimestamp="true"/>
+     <get dest="tmp/commons-digester-1.8.1-bin.zip" src="https://archive.apache.org/dist/commons/digester/binaries/commons-digester-1.8.1-bin.zip" usetimestamp="true"/>
++    <get dest="tmp/commons-logging-1.1.1-bin.tar.gz" src="http://archive.apache.org/dist/commons/logging/binaries/commons-logging-1.1.1-bin.tar.gz" usetimestamp="true"/>
++    <get dest="tmp/commons-beanutils-1.9.0-bin.tar.gz" src="http://archive.apache.org/dist/commons/beanutils/binaries/commons-beanutils-1.9.0-bin.tar.gz" usetimestamp="true"/>
+     <get dest="tmp/commons-lang-2.6-bin.zip" src="http://www.apache.org/dist/commons/lang/binaries/commons-lang-2.6-bin.zip" usetimestamp="true"/>
+     <get dest="tmp/velocity-1.7.tar.gz" src="http://www.apache.org/dist/velocity/engine/1.7/velocity-1.7.tar.gz" usetimestamp="true"/>
+-    <get dest="tmp/velocity-tools-2.0.tar.gz" src="http://www.apache.org/dist/velocity/tools/2.0/velocity-tools-2.0.tar.gz" usetimestamp="true"/>
+     <get dest="tmp/Xerces-J-bin.2.11.0.tar.gz" src="http://www.apache.org/dist/xerces/j/binaries/Xerces-J-bin.2.11.0.tar.gz" usetimestamp="true"/>
+     <get dest="tmp/servlet-api-2.5-6.0.0.jar" src="http://repo1.maven.org/maven2/org/mortbay/jetty/servlet-api/2.5-6.0.0/servlet-api-2.5-6.0.0.jar" usetimestamp="true"/>
+     <get dest="tmp/htmlparser-1.4.zip" src="http://about.validator.nu/htmlparser/htmlparser-1.4.zip" usetimestamp="true"/>
+@@ -69,19 +70,22 @@
+     <unzip src="tmp/commons-lang-2.6-bin.zip" dest="tmp"/>
+     <unzip src="tmp/htmlparser-1.4.zip" dest="tmp"/>
+     <untar compression="gzip" src="tmp/velocity-1.7.tar.gz" dest="tmp"/>
+-    <untar compression="gzip" src="tmp/velocity-tools-2.0.tar.gz" dest="tmp"/>
+     <untar compression="gzip" src="tmp/Xerces-J-bin.2.11.0.tar.gz" dest="tmp"/>
++    <untar compression="gzip" src="tmp/commons-beanutils-1.9.0-bin.tar.gz" dest="tmp"/>
++    <untar compression="gzip" src="tmp/commons-logging-1.1.1-bin.tar.gz" dest="tmp"/>
+ 
+     <copy file="tmp/servlet-api-2.5-6.0.0.jar" tofile="lib/servlet-api-2.5-6.0.0.jar"/>
+     <copy file="tmp/Jigsaw/classes/jigsaw.jar" tofile="lib/jigsaw.jar"/>
+     <copy file="tmp/commons-collections-3.2.1/commons-collections-3.2.1.jar" tofile="lib/commons-collections-3.2.1.jar"/>
+     <copy file="tmp/commons-digester-1.8.1/commons-digester-1.8.1.jar" tofile="lib/commons-digester-1.8.1.jar"/>
++    <copy file="tmp/commons-beanutils-1.9.0/commons-beanutils-1.9.0.jar" tofile="lib/commons-beanutils-1.9.0.jar"/>
++    <copy file="tmp/commons-logging-1.1.1/commons-logging-1.1.1.jar" tofile="lib/commons-logging-1.1.1.jar"/>
+     <copy file="tmp/commons-lang-2.6/commons-lang-2.6.jar" tofile="lib/commons-lang-2.6.jar"/>
+     <copy file="tmp/velocity-1.7/velocity-1.7.jar" tofile="lib/velocity-1.7.jar"/>
+-    <copy file="tmp/velocity-tools-2.0/lib/velocity-tools-generic-2.0.jar" tofile="lib/velocity-tools-generic-2.0.jar"/>
+     <copy file="tmp/xerces-2_11_0/xercesImpl.jar" tofile="lib/xercesImpl.jar"/>
+     <copy file="tmp/xerces-2_11_0/xml-apis.jar" tofile="lib/xml-apis.jar"/>
+-    <get dest="lib/tagsoup-1.2.jar" src="http://home.ccil.org/~cowan/XML/tagsoup/tagsoup-1.2.jar"/>
++    <get dest="lib/tagsoup-1.2.1.jar" src="http://home.ccil.org/~cowan/XML/tagsoup/tagsoup-1.2.1.jar"/>
++    <get dest="lib/velocity-tools-generic-2.0.jar" src="http://archive.apache.org/dist/velocity/tools/2.0/velocity-tools-generic-2.0.jar" usetimestamp="true"/>
+     <copy file="tmp/htmlparser-1.4/htmlparser-1.4.jar" tofile="lib/htmlparser-1.4.jar"/>
+   </target>
+ 
+@@ -123,7 +127,7 @@
+ 			<include name="org/**"/>
+ 			<manifest>
+         <attribute name="Main-Class" value="org.w3c.css.css.CssValidator"/>
+-        <attribute name="Class-path" value=". lib/commons-collections-3.2.1.jar lib/commons-digester-1.8.1.jar lib/commons-lang-2.6.jar lib/jigsaw.jar lib/tagsoup-1.2.jar lib/velocity-1.7.jar lib/velocity-tools-generic-2.0.jar lib/xercesImpl.jar lib/xml-apis.jar lib/htmlparser-1.4.jar"/>
++        <attribute name="Class-path" value=". lib/commons-collections-3.2.1.jar lib/commons-digester-1.8.1.jar lib/commons-lang-2.6.jar lib/jigsaw.jar lib/tagsoup-1.2.1.jar lib/velocity-1.7.jar lib/velocity-tools-generic-2.0.jar lib/xercesImpl.jar lib/xml-apis.jar lib/htmlparser-1.4.jar lib/commons-logging-1.1.1.jar lib/commons-beanutils-1.9.0.jar lib/servlet-api-2.5-6.0.0.jar"/>
+ 			</manifest>
+ 		</jar>
+ 	</target>

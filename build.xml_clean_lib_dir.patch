@@ -1,0 +1,10 @@
+--- build.xml.orig	2015-04-02 14:52:27.073922285 -0500
++++ build.xml	2015-04-02 14:53:01.074191921 -0500
+@@ -144,6 +144,7 @@
+     <delete dir="./build"/>
+     <delete dir="./javadoc"/>
+     <delete dir="./tmp"/>
++    <delete dir="./lib"/>
+   </target>
+ 
+ </project>
