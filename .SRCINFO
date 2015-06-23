@@ -1,0 +1,24 @@
+pkgbase = drive
+	pkgdesc = Pull or push Google Drive files
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = http://github.com/odeke-em/drive
+	install = drive.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	conflicts = drive-git
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/odeke-em/drive/archive/v0.2.3.tar.gz
+	sha256sums = b03c2125c1655ca5d30bd1dddbbe265d85152afda72027399233061f22d8a9f9
+
+pkgname = drive
+
