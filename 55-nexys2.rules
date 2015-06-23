@@ -1,0 +1,7 @@
+# /etc/udev/rules.d/55-nexys2.rules
+SUBSYSTEM!="usb|usb_device", GOTO="nexys2_rules_end"
+ACTION!="add", GOTO="nexys2_rules_end"
+
+ATTRS{idVendor}=="1443", ATTRS{idProduct}=="0005", MODE="0660", GROUP="tty"
+
+LABEL="nexys2_rules_end"

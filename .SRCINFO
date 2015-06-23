@@ -1,0 +1,20 @@
+pkgbase = nexys2prog
+	pkgdesc = A tool to load .bit files to Digilent's Nexys 2 board
+	pkgver = 20101021
+	pkgrel = 1
+	url = http://ixo-jtag.sourceforge.net/nexys2-linux-howto.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	depends = libftd2xx
+	depends = fxload
+	depends = urjtag-svn
+	options = !strip
+	source = nexys2prog_path.patch
+	source = 55-nexys2.rules
+	md5sums = 651a177d161a2464b49dda15a3606776
+	md5sums = 94eda290718149882b7f67d97857329c
+
+pkgname = nexys2prog
+

@@ -1,0 +1,11 @@
+--- src/nexys2prog-20101021/nexys2prog.orig	2010-10-21 07:25:54.713333324 +0200
++++ src/nexys2prog-20101021/nexys2prog	2010-10-21 07:26:09.366666655 +0200
+@@ -83,7 +83,7 @@
+ my $USBID_DIGILENT = "1443:0005";
+ my $XILINX;
+ my $TMPID = sprintf("/tmp/nexys2prog-%8.8X-%4.4X", time(), $$);
+-my $FIRMWARE_FILE = $FindBin::RealBin."/usb_jtag.hex";
++my $FIRMWARE_FILE = "/usr/share/nexys2prog/usb_jtag.hex";
+ 
+ my $verbose = 0;
+ my $filebase;
