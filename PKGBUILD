@@ -2,7 +2,7 @@
 # Don't forget updating the version @ *.service
 pkgname=graylog-web-interface
 replaces=graylog2-web-interface
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Web interface for Graylog, an open source syslog implementation"
 arch=(any)
@@ -16,7 +16,7 @@ source=(
 )
 backup=(etc/webapps/$pkgname/$pkgname.conf)
 options=(!strip)
-sha256sums=('d7aaa73f7513dc42c24e6a3ecae4e5ed7e5e738f1886bf1a92789b7c71b2e3de'
+sha256sums=('2d1e414f0b4928f5ba866f89652db0f0995496ffd6bd178ee0d8458e4abd89eb'
             'SKIP'
             'SKIP')
 
