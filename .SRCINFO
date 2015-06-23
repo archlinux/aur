@@ -1,0 +1,17 @@
+pkgbase = ttf-klingon-piqad-hasta
+	pkgdesc = Klingon pIqaD HaSta font.
+	pkgver = 20150223
+	pkgrel = 1
+	epoch = 3
+	url = http://www.evertype.com/fonts/tlh/
+	install = ttf-klingon-piqad-hasta.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.evertype.com/fonts/tlh/klingon-piqad-hasta.zip
+	sha384sums = 4e2c870982affcbe903d62700a2d6602e205f83cf391e0d19a4d87442cfcd5ed410e6e0d8a9228e1ae45eafee0e914b4
+
+pkgname = ttf-klingon-piqad-hasta
+
