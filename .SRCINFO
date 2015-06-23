@@ -1,0 +1,15 @@
+pkgbase = ruby-builder
+	pkgdesc = Builders for MarkUp.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://onestepback.org
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = builder-3.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/builder-3.2.2.gem
+	sha1sums = 0ee99b207f9994864c2a21ce24be26eddafee7f1
+
+pkgname = ruby-builder
+
