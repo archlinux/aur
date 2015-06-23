@@ -1,0 +1,26 @@
+pkgbase = residualvm-grim_mouse-git
+	pkgdesc = A fork of ResidualVM which adds mouse support (point and click) to Grim Fandango
+	pkgver = 4854.f33e138
+	pkgrel = 1
+	url = http://forums.residualvm.org/viewtopic.php?p=3049
+	install = grim_mouse.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl
+	depends = zlib
+	depends = alsa-lib
+	depends = glu
+	depends = libmad
+	depends = mesa
+	depends = libmpeg2
+	depends = freetype2
+	provides = residualvm
+	conflicts = residualvm
+	conflicts = residualvm-git
+	source = git://github.com/tobiaspfaff/grim_mouse#branch=mouse
+	source = http://demos.residualvm.org/patches/gfupd101.exe
+
+pkgname = residualvm-grim_mouse-git
+

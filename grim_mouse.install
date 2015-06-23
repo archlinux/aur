@@ -1,0 +1,11 @@
+post_install() {
+	echo "==> "
+	echo "==> Remember that this build of ResidualVM is not supported by the ResidualVM developers."
+	echo "==> "
+}
+
+
+op=$1
+shift
+
+$op $*
