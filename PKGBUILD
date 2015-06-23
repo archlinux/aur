@@ -1,9 +1,9 @@
 # Maintainer: Alexandre Ferrando <alferpal@gmail.com>
 
 pkgname=iojs
-pkgver=2.3.0
+pkgver=2.3.1
 _foldername=iojs-v${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
 license=('MIT')
@@ -16,7 +16,7 @@ conflicts=('nodejs' 'iojs-bin')
 options=('!emptydirs')
 source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}.tar.gz")
 install=iojs.install
-sha256sums=('556e1a2f58c993fcb7a89c55bc2a4da6fba74cd4d444777a8b64b19d57c4cc3c')
+sha256sums=('c2198e3a63fc204a4bcb11568ce9925a4985b87048222a0a7da1143f8f866aee')
 
 prepare() {
 
