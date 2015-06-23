@@ -1,0 +1,12 @@
+pkgbase = vdrpbd-git
+	pkgdesc = A daemon to handle ACPI power button event on VDR systems
+	pkgver = 1
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/vdrpbd
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-net-dbus
+
+pkgname = vdrpbd-git
+
