@@ -1,0 +1,29 @@
+post_install(){
+cat << _EOF
+=> Be sure to restart Nautilus for RabbitCVS to get loaded.
+=> Restart nautilus with the following commands:
+=>   $ nautilus -q
+=>   $ pgrep -f service.py | xargs kill
+=>   $ nohup nautilus > /dev/null &
+_EOF
+}
+
+post_upgrade(){
+cat << _EOF
+=> Be sure to restart Nautilus for RabbitCVS to get reloaded.
+=> Restart nautilus with the following commands:
+=>   $ pgrep -f service.py | xargs kill
+=>   $ nautilus -q
+=>   $ nohup nautilus > /dev/null &
+_EOF
+}
+
+post_remove(){
+cat << _EOF
+=> Be sure to restart Nautilus for RabbitCVS to get unloaded.
+=> Restart nautilus with the following commands:
+=>   $ pgrep -f service.py | xargs kill
+=>   $ nautilus -q
+=>   $ nohup nautilus > /dev/null &
+_EOF
+}
