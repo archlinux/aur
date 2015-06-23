@@ -1,0 +1,7 @@
+#
+# The SC plugin requires vdr to be a member of the group 'dialout' in order to
+# get access to the serial ports
+#
+
+dialout
+

@@ -1,0 +1,26 @@
+pkgbase = vdr-plugin-sc-hg
+	pkgdesc = A sc plugin for archvdr project (http://sourceforge.net/apps/trac/archvdr/wiki/ArchVDR)
+	pkgver = 574
+	pkgrel = 4
+	url = http://85.17.209.13:6100/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vdr>=1.7.0
+	depends = mercurial
+	conflicts = vdr-sc
+	backup = etc/vdr/plugins/plugin.sc.conf
+	backup = usr/share/vdr/command-hooks/commands.vdr-sc.conf
+	source = 01_Makefile-MAXCAID.dpatch
+	source = commands.vdr-sc.conf
+	source = plugin.sc.conf
+	source = reload-softcam.key
+	source = vdr-plugin-sc.groups
+	md5sums = ab77234b0286182ff910dbb5e09c24cf
+	md5sums = 1f190101eb8ec7d46a6d9d3282f33317
+	md5sums = 0a1e85a99005696b3bd6507320ef4cad
+	md5sums = 57edddf2161a255cc2acea521d3d3b6f
+	md5sums = c0d6e9f7c568c50bd13522dba67d1aa8
+
+pkgname = vdr-plugin-sc-hg
+

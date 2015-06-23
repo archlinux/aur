@@ -1,0 +1,18 @@
+## 01_Makefile-MAXCAID.dpatch by VDR Fan <no@mail.ad>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: set MAXCAID definition to 64
+
+@DPATCH@
+diff -urNad vdr-plugin-sc-9~hgbuild~/Makefile vdr-plugin-sc-9~hgbuild/Makefile
+--- vdr-plugin-sc-9~hgbuild~/build/Makefile	2008-04-19 17:17:09.000000000 +0200
++++ vdr-plugin-sc-9~hgbuild/build/Makefile	2008-04-19 17:25:27.000000000 +0200
+@@ -115,7 +115,7 @@
+ endif
+ 
+ # max number of CAIDs per slot
+-MAXCAID := $(shell sed -ne '/define MAXCASYSTEMIDS/ s/^.[a-zA-Z ]*\([0-9]*\).*$$/\1/p' $(VDRDIR)/ci.c)
++MAXCAID = 64
+ ifneq ($(strip $(MAXCAID)),)
+   DEFINES += -DVDR_MAXCAID=$(MAXCAID)
+ endif
