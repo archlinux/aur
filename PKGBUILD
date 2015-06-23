@@ -14,8 +14,8 @@ depends=('mono' 'gnome-sharp')
 makedepends=('automake')
 options=(!emptydirs)
 install=$pkgname.install
-source=(http://launchpad.net/${pkgname}/${_majorver}/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz)
-md5sums=('27338fe72e44e8563e912bc7d06478b0')
+source=(http://hugsmile.eu/file/src/${pkgname}-${pkgver}.tar.gz)
+md5sums=('b1b74a867ab50245f4f360a50856a483')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

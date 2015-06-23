@@ -11,8 +11,8 @@ pkgbase = glippy
 	depends = mono
 	depends = gnome-sharp
 	options = !emptydirs
-	source = http://launchpad.net/glippy/1.0/0.6/+download/glippy-0.6.tar.gz
-	md5sums = 27338fe72e44e8563e912bc7d06478b0
+	source = http://hugsmile.eu/file/src/glippy-0.6.tar.gz
+	md5sums = b1b74a867ab50245f4f360a50856a483
 
 pkgname = glippy
 
