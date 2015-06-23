@@ -6,12 +6,12 @@
 
 pkgname=sky
 pkgver=2.0.355
-pkgrel=2
+pkgrel=3
 pkgdesc="Lync & Skype for business on Linux"
 
 arch=(
     'x86_64'
-#    'i686' 
+    'i686' 
 )
 if [[ $CARCH == 'x86_64' ]]; then
     _arch=64
@@ -26,15 +26,15 @@ options=('!strip')
 install="${pkgname}.install"
 
 depends=('openssl' 'nss' 'gstreamer0.10-base' 'libpulse' 'alsa-lib' 'v4l-utils' 
-    'libxinerama' 'libxss' 'libxcb')
+    'libxinerama' 'libxss' 'libxcb' 'gtk2' 'libxmu')
 optdepends=('ibus: Intelligent Input Bus (IBus) support')
 makedepends=('binutils' 'chrpath')
 
 source_x86_64=("http://tel.red/linux/sky_ubuntu64_v${pkgver}.deb")
-# source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
+source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
 
 sha256sums_x86_64=('fb43fe7abab7b65e4aea4485f61ebd2a579799e7378cb8632675d745c2831ab3')
-# sha256sums_i686=('6ee4ed6f140aea508dadd325a04bffb86971434de35172eda9c58ff36e7117b2')
+sha256sums_i686=('5465636f2565d2655a04ea731961bc3c52c585cc2d2129fe73a9b53c2fc35e4e')
 
 package() {
     cd "${srcdir}"
@@ -56,6 +56,7 @@ package() {
     install -Dm 644 "${srcdir}/usr/share/pixmaps/sky.png" "${pkgdir}/usr/share/pixmaps/sky.png"
     mv "${srcdir}/opt" "${pkgdir}/"
     find "${pkgdir}/" -type d -exec chmod 0755 {} \;
+    find "${pkgdir}/" -type f -exec chmod go-w {} \;
 
     mkdir -m 755 "${pkgdir}/usr/bin"
     ln -sr "${pkgdir}/opt/sky_linux/sky.sh" "${pkgdir}/usr/bin/sky"
