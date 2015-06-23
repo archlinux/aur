@@ -1,0 +1,13 @@
+pkgbase = puf
+	pkgdesc = puf is similar to GNU wget but it is able to download files in parallel.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://puf.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/puf/puf-1.0.0.tar.gz
+	md5sums = 78f870f2a0c611ace8c5e9ced7b08a83
+
+pkgname = puf
+
