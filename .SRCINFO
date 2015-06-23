@@ -1,0 +1,17 @@
+pkgbase = java-berkeleydb
+	pkgdesc = Java bindings for the Berkeley DB embedded database system
+	pkgver = 5.3.28
+	pkgrel = 4
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-environment
+	depends = db
+	source = http://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+	source = https://zeroc.com/download/berkeley-db/berkeley-db.5.3.28.patch
+	md5sums = b99454564d5b4479750567031d66fe24
+	md5sums = 1892bb1e53db84242eda1d80c15b64cc
+
+pkgname = java-berkeleydb
+
