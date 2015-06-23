@@ -1,0 +1,35 @@
+pkgbase = enigma-dev-git
+	pkgdesc = ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation.
+	pkgver = 0.0.0
+	pkgrel = 3
+	url = http://enigma-dev.org
+	install = enigma-dev-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = alure
+	depends = zlib
+	depends = openal
+	depends = libx11
+	depends = libgl
+	depends = mesa
+	depends = gtk2
+	depends = dumb
+	depends = java-runtime
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = lateralgm
+	conflicts = lateralgm
+	source = lateralgm
+	source = lateralgm.desktop
+	source = git://github.com/enigma-dev/enigma-dev.git
+	source = http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png
+	md5sums = b6eea00e8293de6307bc96a78956159f
+	md5sums = 0eca65efd1ad5b863e22a284be894b59
+	md5sums = SKIP
+	md5sums = e6daacba04f0491b256f8a4d2cc9181a
+
+pkgname = enigma-dev-git
+

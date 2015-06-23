@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LateralGM
+Exec=lateralgm
+Comment=Game Development IDE for Enigma written in java
+Icon=lateralgm
+Terminal=false
+Path=/usr/bin/
+Categories=Application;Development;IDE;
+StartupNotify=true
+MimeType=application;application/x-gm81;application/x-gmk;application/x-gm6;application/x-gmd;application/x-egm;application/x-gm50;application/x-gm51;application/x-gm52;application/x-gm53;application/x-gm60;application/x-gm61;application/x-gm71;application/x-gm80;application/x-gm81;
