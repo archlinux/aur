@@ -1,0 +1,21 @@
+pkgbase = lib32-libgudev
+	pkgdesc = GObject bindings for libudev (32 bit, library only)
+	pkgver = 230
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/libgudev
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = lib32-systemd
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = lib32-glib2
+	depends = lib32-systemd
+	depends = libgudev
+	depends = gcc-multilib
+	provides = libgudev-1.0.so
+	conflicts = lib32-systemd<221
+	source = libgudev-230.tar.xz::https://download.gnome.org/sources/libgudev/230/libgudev-230.tar.xz
+	sha256sums = a2e77faced0c66d7498403adefcc0707105e03db71a2b2abd620025b86347c18
+
+pkgname = lib32-libgudev
+
