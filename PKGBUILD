@@ -1,4 +1,4 @@
-# Maintainer: Vojtech Kral <vojtech () kral.hk>
+# Maintainer: Vojtech Kral <vojtech_kral^hk>
 
 pkgname='netresolve-git'
 pkgver=r220.6f6d053
@@ -40,6 +40,3 @@ package()
 	cd "$pkgdir"
 	patch -p0 < "$srcdir/wrapper-paths.patch"
 }
-
-
-# vim:set ts=2 sw=2 et:
