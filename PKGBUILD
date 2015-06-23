@@ -9,6 +9,7 @@ pkgver=1.2.5.git
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
+depends=('coreutils')
 optdepends=()
 provides=('pstate-frequency')
 conflicts=('pstate-frequency')
