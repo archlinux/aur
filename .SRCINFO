@@ -1,0 +1,16 @@
+pkgbase = nes-git
+	pkgdesc = NES emulator written in Go.
+	pkgver = r103.9d56bd1
+	pkgrel = 1
+	url = https://github.com/fogleman/nes
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = nes-git::git+https://github.com/fogleman/nes.git
+	md5sums = SKIP
+
+pkgname = nes-git
+
