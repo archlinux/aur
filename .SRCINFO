@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-portal2
+	pkgdesc = Fortune cookies: Portal 2 (video game)
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://en.wikiquote.org/wiki/Portal_2
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = portal2
+	md5sums = 865731bb737ce4a6a609f54d0fecd815
+
+pkgname = fortune-mod-portal2
+
