@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-dune-the-butlerian-jihad
+	pkgdesc = A fortune file constructed from the quotes at the start of every chapter in Dune: The Butlerian Jihad.
+	pkgver = 2
+	pkgrel = 1
+	url = http://github.com/xiongchiamiov/fortune-mod-dune-the-butlerian-jihad
+	arch = any
+	groups = fortune-mods
+	license = custom:WTFPL
+	depends = fortune-mod
+	source = http://github.com/xiongchiamiov/fortune-mod-dune-the-butlerian-jihad/tarball/master
+	md5sums = 18e6b8b0973bf69987b0438815a4b761
+
+pkgname = fortune-mod-dune-the-butlerian-jihad
+
