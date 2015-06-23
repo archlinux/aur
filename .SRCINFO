@@ -1,0 +1,26 @@
+pkgbase = sdcc-svn
+	pkgdesc = Small Device C Compiler suite
+	pkgver = 3.4.1.svn9120
+	pkgrel = 1
+	url = http://sdcc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gputils
+	makedepends = flex
+	makedepends = bison
+	makedepends = patch
+	makedepends = boost
+	depends = bash
+	depends = gcc-libs
+	depends = boost-libs
+	optdepends = python
+	provides = sdcc
+	conflicts = sdcc
+	options = !strip
+	options = staticlibs
+	source = sdcc::svn://svn.code.sf.net/p/sdcc/code/trunk
+	md5sums = SKIP
+
+pkgname = sdcc-svn
+
