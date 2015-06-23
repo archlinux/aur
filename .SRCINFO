@@ -1,0 +1,18 @@
+pkgbase = mangaget2-git
+	pkgdesc = A terminal based manga ripper.
+	pkgver = r293.9153fdd
+	pkgrel = 1
+	url = https://github.com/darkdragn/mangaGet2
+	arch = any
+	makedepends = git
+	depends = ncurses
+	depends = python
+	depends = python-six
+	depends = python-requests
+	depends = python-praw
+	depends = python-setuptools
+	source = git+https://github.com/darkdragn/mangaGet2.git
+	sha256sums = SKIP
+
+pkgname = mangaget2-git
+
