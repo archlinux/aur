@@ -1,0 +1,23 @@
+pkgbase = tesseract-ocr-git
+	pkgdesc = OCR Engine developed at HP Labs and now sponsored by Google.
+	pkgver = 3.04.rc1.r66.g941d870
+	pkgrel = 1
+	url = https://code.google.com/p/tesseract-ocr/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gcc
+	depends = gcc-libs
+	depends = libtiff
+	depends = libpng
+	depends = leptonica
+	depends = giflib
+	provides = tesseract
+	conflicts = tesseract
+	options = !libtool
+	source = tesseract-ocr::git+https://code.google.com/p/tesseract-ocr
+	sha256sums = SKIP
+
+pkgname = tesseract-ocr-git
+
