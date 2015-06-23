@@ -1,0 +1,16 @@
+pkgbase = qlipper
+	pkgdesc = Lightweight & cross-platform clipboard history applet based on qt
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = https://github.com/pvanek/qlipper/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	depends = libqxt
+	source = https://github.com/pvanek/qlipper/archive/2.0.2.tar.gz
+	md5sums = 29c8c7b4a4b08ce127b224d21b7a00d4
+
+pkgname = qlipper
+
