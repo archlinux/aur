@@ -1,0 +1,16 @@
+pkgbase = qantenna
+	pkgdesc = A multiplatform antenna and radiation pattern analyzer
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://qantenna.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glu
+	depends = necpp-git
+	depends = qt5-base
+	source = http://downloads.sourceforge.net/project/qantenna/qantenna/0.3.0/qantenna-0.3.0.orig.tar.xz
+	md5sums = 06b98e442afed37dbed7f9d645942942
+
+pkgname = qantenna
+
