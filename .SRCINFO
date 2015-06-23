@@ -1,0 +1,22 @@
+pkgbase = pyalpm-manjaro
+	pkgdesc = Manjaro patching Libalpm bindings for Python 3
+	pkgver = 0.6.2.2
+	pkgrel = 3
+	url = http://projects.archlinux.org/users/remy/pyalpm.git/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = patch
+	depends = python>=3.4
+	depends = pacman>=4.1
+	provides = pyalpm=0.6.2
+	conflicts = pyalpm
+	replaces = pyalpm
+	source = ftp://ftp.archlinux.org/other/pyalpm/pyalpm-0.6.2.tar.gz
+	source = custom.patch
+	sha256sums = 42ac78baf8221c04fc9a0cb29dd8e4fb425d054292fd9206a2eb7fc21e0564a0
+	sha256sums = 06c3f35b214c33dd7a16f0b150183f3debedd39d8c20afc349de89aeabdaae0c
+
+pkgname = pyalpm-manjaro
+

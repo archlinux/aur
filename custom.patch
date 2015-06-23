@@ -1,0 +1,1274 @@
+diff --git a/pycman/config.py b/pycman/config.py
+index 28924a2..1295750 100644
+--- a/pycman/config.py
++++ b/pycman/config.py
+@@ -2,7 +2,8 @@
+ # 
+ # pycman - A Python implementation of Pacman
+ # Copyright (C) 2011 Rémy Oudompheng <remy@archlinux.org>
+-# 
++# Copyright (C) 2013 Guillaume Benoit <guillaume@manjaro.org>
++#
+ #   This program is free software; you can redistribute it and/or modify
+ #   it under the terms of the GNU General Public License as published by
+ #   the Free Software Foundation; either version 2 of the License, or
+@@ -82,6 +83,68 @@ BOOLEAN_OPTIONS = (
+ 	'Color'
+ )
+ 
++def define_siglevel(default_level, conf_string):
++	for directive in conf_string.split():
++		affect_package = False
++		affect_database = False
++		if 'Package' in directive:
++			affect_package = True
++		elif 'Database' in directive:
++			affect_database = True
++		else:
++			affect_package = True
++			affect_database = True
++		if 'Never' in directive:
++			if affect_package:
++				default_level &= ~pyalpm.SIG_PACKAGE
++				default_level |= pyalpm.SIG_PACKAGE_SET
++			if affect_database:
++				default_level &= ~pyalpm.SIG_DATABASE
++		elif 'Optional' in directive:
++			if affect_package:
++				default_level |= pyalpm.SIG_PACKAGE
++				default_level |= pyalpm.SIG_PACKAGE_OPTIONAL
++				default_level |= pyalpm.SIG_PACKAGE_SET
++			if affect_database:
++				default_level |= pyalpm.SIG_DATABASE
++				default_level |= pyalpm.SIG_DATABASE_OPTIONAL
++		elif 'Required' in directive:
++			if affect_package:
++				default_level |= pyalpm.SIG_PACKAGE
++				default_level &= ~pyalpm.SIG_PACKAGE_OPTIONAL
++				default_level |= pyalpm.SIG_PACKAGE_SET
++			if affect_database:
++				default_level |= pyalpm.SIG_DATABASE
++				default_level &= ~pyalpm.SIG_DATABASE_OPTIONAL
++		elif 'TrustedOnly' in directive:
++			if affect_package:
++				default_level &= ~pyalpm.SIG_PACKAGE_MARGINAL_OK
++				default_level &= ~pyalpm.SIG_PACKAGE_UNKNOWN_OK
++				default_level |= pyalpm.SIG_PACKAGE_TRUST_SET
++			if affect_database:
++				default_level &= ~pyalpm.SIG_DATABASE_MARGINAL_OK
++				default_level &= ~pyalpm.SIG_DATABASE_UNKNOWN_OK
++		elif 'TrustAll' in directive:
++			if affect_package:
++				default_level |= pyalpm.SIG_PACKAGE_MARGINAL_OK
++				default_level |= pyalpm.SIG_PACKAGE_UNKNOWN_OK
++				default_level |= pyalpm.SIG_PACKAGE_TRUST_SET
++			if affect_database:
++				default_level |= pyalpm.SIG_DATABASE_MARGINAL_OK
++				default_level |= pyalpm.SIG_DATABASE_UNKNOWN_OK
++		else:
++			print('unrecognized siglevel: {}'.format(conf_string))
++	return default_level
++
++def merge_siglevel(base_level, over_level):
++	if not over_level & pyalpm.SIG_PACKAGE_SET:
++		over_level |= base_level & pyalpm.SIG_PACKAGE
++		over_level |= base_level & pyalpm.SIG_PACKAGE_OPTIONAL
++	if not over_level & pyalpm.SIG_PACKAGE_TRUST_SET:
++		over_level |= base_level & pyalpm.SIG_PACKAGE_MARGINAL_OK
++		over_level |= base_level & pyalpm.SIG_PACKAGE_UNKNOWN_OK
++	return over_level
++
+ def pacman_conf_enumerator(path):
+ 	filestack = []
+ 	current_section = None
+@@ -95,13 +158,14 @@ def pacman_conf_enumerator(path):
+ 			continue
+ 
+ 		line = line.strip()
+-		if len(line) == 0: continue
++		if len(line) == 0:
++			continue
+ 		if line[0] == '#':
+ 			continue
+ 		if line[0] == '[' and line[-1] == ']':
+ 			current_section = line[1:-1]
+ 			continue
+-		if current_section is None:
++		if not current_section:
+ 			raise InvalidSyntax(f.name, 'statement outside of a section', line)
+ 		# read key, value
+ 		key, equal, value = [x.strip() for x in line.partition('=')]
+@@ -129,7 +193,7 @@ def pacman_conf_enumerator(path):
+ 				warnings.warn(InvalidSyntax(f.name, 'unrecognized option', key))
+ 		else:
+ 			if key in BOOLEAN_OPTIONS:
+-				yield (current_section, key, True)
++				yield (current_section, key, 1)
+ 			else:
+ 				warnings.warn(InvalidSyntax(f.name, 'unrecognized option', key))
+ 
+@@ -148,7 +212,7 @@ def cb_log(level, line):
+ 		line = "FUNC: " + line
+ 	sys.stderr.write(line)
+ 
+-class PacmanConfig(object):
++class PacmanConfig:
+ 	def __init__(self, conf = None, options = None):
+ 		self.options = {}
+ 		self.repos = collections.OrderedDict()
+@@ -157,9 +221,10 @@ class PacmanConfig(object):
+ 		self.options["GPGDir"]  = "/etc/pacman.d/gnupg/"
+ 		self.options["LogFile"] = "/var/log/pacman.log"
+ 		self.options["Architecture"] = os.uname()[-1]
+-		if conf is not None:
++		self.default_siglevel = pyalpm.SIG_PACKAGE | pyalpm.SIG_PACKAGE_OPTIONAL | pyalpm.SIG_DATABASE | pyalpm.SIG_DATABASE_OPTIONAL
++		if conf:
+ 			self.load_from_file(conf)
+-		if options is not None:
++		if options:
+ 			self.load_from_options(options)
+ 
+ 	def load_from_file(self, filename):
+@@ -171,26 +236,34 @@ class PacmanConfig(object):
+ 					self.options.setdefault(key, []).append(value)
+ 				else:
+ 					self.options[key] = value
++					# define here default_siglevel to make it usable for servers
++					if key == 'SigLevel':
++						self.default_siglevel = define_siglevel(self.default_siglevel, self.options["SigLevel"])
+ 			else:
+-				servers = self.repos.setdefault(section, [])
++				if not self.repos.get(section):
++					self.repos[section] = ([], self.default_siglevel)
+ 				if key == 'Server':
+-					servers.append(value)
+-		if "CacheDir" not in self.options:
++					self.repos[section][0].append(value)
++				elif key == 'SigLevel':
++					urls = self.repos[section][0].copy()
++					new_siglevel = define_siglevel(self.repos[section][1], value)
++					self.repos[section] = (urls, new_siglevel)
++		if not "CacheDir" in self.options:
+ 			self.options["CacheDir"]= ["/var/cache/pacman/pkg"]
+ 
+ 	def load_from_options(self, options):
+ 		global _logmask
+-		if options.root is not None:
++		if options.root:
+ 			self.options["RootDir"] = options.root
+-		if options.dbpath is not None:
++		if options.dbpath:
+ 			self.options["DBPath"] = options.dbpath
+-		if options.gpgdir is not None:
++		if options.gpgdir:
+ 			self.options["GPGDir"] = options.gpgdir
+-		if options.arch is not None:
++		if options.arch:
+ 			self.options["Architecture"] = options.arch
+-		if options.logfile is not None:
++		if options.logfile:
+ 			self.options["LogFile"] = options.logfile
+-		if options.cachedir is not None:
++		if options.cachedir:
+ 			self.options["CacheDir"] = [option.cachedir]
+ 		if options.debug:
+ 			_logmask = 0xffff
+@@ -211,14 +284,36 @@ class PacmanConfig(object):
+ 			h.ignorepkgs = self.options["IgnorePkg"]
+ 		if "IgnoreGroup" in self.options:
+ 			h.ignoregrps = self.options["IgnoreGroup"]
+-
++		# Boolean
++		if "UseSyslog" in self.options:
++			h.usesyslog = self.options["UseSyslog"]
++		if "CheckSpace" in self.options:
++			h.checkspace = self.options["CheckSpace"]
++		# register default siglevel, it should have been updated previously
++		h.siglevel = self.default_siglevel
++		# update localsiglevel
++		if "LocalFileSigLevel" in self.options:
++			localsiglevel = define_siglevel(self.default_siglevel, self.options["LocalFileSigLevel"])
++			localsiglevel = merge_siglevel(self.default_siglevel, localsiglevel)
++		else:
++			localsiglevel = self.default_siglevel
++		# define localsiglevel
++		h.localsiglevel = localsiglevel
++		# update remotesiglevel
++		if "RemoteFileSigLevel" in self.options:
++			remotesiglevel = define_siglevel(self.default_siglevel, self.options["RemoteFileSigLevel"])
++			remotesiglevel = merge_siglevel(self.default_siglevel, remotesiglevel)
++		else:
++			remotesiglevel = self.default_siglevel
++		# define remotesiglevel
++		h.remotesiglevel = remotesiglevel
+ 		h.logcb = cb_log
+ 
+ 		# set sync databases
+ 		for repo, servers in self.repos.items():
+-			db = h.register_syncdb(repo, 0)
++			db = h.register_syncdb(repo, servers[1])
+ 			db_servers = []
+-			for rawurl in servers:
++			for rawurl in servers[0]:
+ 				url = rawurl.replace("$repo", repo)
+ 				url = url.replace("$arch", self.options["Architecture"])
+ 				db_servers.append(url)
+@@ -230,7 +325,7 @@ class PacmanConfig(object):
+ 		return h
+ 
+ 	def __str__(self):
+-		return("PacmanConfig(options=%s, repos=%s)" % (str(self.options), str(self.repos)))
++		return("PacmanConfig(options={}, repos={})".format(self.options, self.repos))
+ 
+ def make_parser(*args, **kwargs):
+ 	parser = argparse.ArgumentParser(*args, **kwargs)
+diff --git a/src/db.c b/src/db.c
+index 8b9ffd2..673c983 100644
+--- a/src/db.c
++++ b/src/db.c
+@@ -2,6 +2,7 @@
+  * db.c : wrapper class around alpm_db_t
+  *
+  *  Copyright (c) 2011 Rémy Oudompheng <remy@archlinux.org>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -236,7 +237,7 @@ struct PyGetSetDef db_getset[] = {
+ 
+ static PyTypeObject AlpmDBType = {
+   PyVarObject_HEAD_INIT(NULL, 0)
+-  "alpm.DB",             /*tp_name*/
++  "pyalpm.DB",             /*tp_name*/
+   sizeof(AlpmDB),        /*tp_basicsize*/
+   0,                          /*tp_itemsize*/
+   .tp_dealloc = (destructor)pyalpm_db_dealloc,
+diff --git a/src/handle.c b/src/handle.c
+index 08853f0..4cfe20e 100644
+--- a/src/handle.c
++++ b/src/handle.c
+@@ -2,6 +2,7 @@
+  * handle.c : wrapper class around alpm_handle_t
+  *
+  *  Copyright (c) 2011 Rémy Oudompheng <remy@archlinux.org>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -270,6 +271,20 @@ struct PyGetSetDef pyalpm_handle_getset[] = {
+     (setter)option_set_checkspace_alpm,
+     "check disk space before transactions (an integer, 0 = False, 1 = True)", NULL } ,
+ 
++  /** siglevel */
++  { "siglevel",
++    (getter)option_get_default_siglevel_alpm,
++    (setter)option_set_default_siglevel_alpm,
++    "default siglevel", NULL } ,
++  { "localsiglevel",
++    (getter)option_get_local_file_siglevel_alpm,
++    (setter)option_set_local_file_siglevel_alpm,
++    "local siglevel", NULL } ,
++  { "remotesiglevel",
++    (getter)option_get_remote_file_siglevel_alpm,
++    (setter)option_set_remote_file_siglevel_alpm,
++    "remote siglevel", NULL } ,
++
+   /** lists */
+   { "cachedirs",
+     (getter)option_get_cachedirs_alpm,
+@@ -379,7 +394,7 @@ static PyMethodDef pyalpm_handle_methods[] = {
+ 
+ PyTypeObject AlpmHandleType = {
+   PyVarObject_HEAD_INIT(NULL, 0)
+-  "alpm.Handle",       /*tp_name*/
++  "pyalpm.Handle",       /*tp_name*/
+   sizeof(AlpmHandle),  /*tp_basicsize*/
+   0,                   /*tp_itemsize*/
+   .tp_flags = Py_TPFLAGS_DEFAULT,
+diff --git a/src/options.c b/src/options.c
+index 0dad965..8ffdb30 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -2,6 +2,7 @@
+  * options.c : options module for pyalpm
+  *
+  *  Copyright 2008 Imanol Celaya <ilcra1989@gmail.com>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -26,15 +27,6 @@
+ #include "options.h"
+ #include "util.h"
+ 
+-static int PyLong_to_int(PyObject *value, int overflow_val)
+-{
+-  int overflow;
+-  long lval = PyLong_AsLongAndOverflow(value, &overflow);
+-  if (overflow != 0) return overflow_val;
+-  if (lval > INT_MAX || lval < INT_MIN) return overflow_val;
+-  return (int)lval;
+-}
+-
+ /** Boolean options
+  */
+ /*
+@@ -111,6 +103,90 @@ int option_set_checkspace_alpm(PyObject *self, PyObject *value, void* closure)
+   return 0;
+ }
+ 
++PyObject* option_get_default_siglevel_alpm(PyObject *self, void* closure) {
++  alpm_handle_t *handle = ALPM_HANDLE(self);
++  int ret = alpm_option_get_default_siglevel(handle);
++  if (ret == -1) {
++    RET_ERR("failed getting default siglevel", alpm_errno(handle), NULL);
++  } else
++    return PyLong_FromLong(ret);
++}
++
++int option_set_default_siglevel_alpm(PyObject *self, PyObject *value, void* closure)
++{
++  alpm_handle_t *handle = ALPM_HANDLE(self);
++  if(!PyLong_Check(value))
++  {
++    PyErr_SetString(PyExc_TypeError, "wrong arguments");
++    return -1;
++  }
++  if (alpm_option_set_default_siglevel(handle, PyLong_to_int(value, -1)) != 0)
++  {
++    PyErr_SetString(PyExc_TypeError, "wrong arguments");
++    return -1;
++  }
++  else
++  {
++    return 0;
++  }
++}
++
++PyObject* option_get_local_file_siglevel_alpm(PyObject *self, void* closure) {
++  alpm_handle_t *handle = ALPM_HANDLE(self);
++  int ret = alpm_option_get_local_file_siglevel(handle);
++  if (ret == -1) {
++    RET_ERR("failed getting default siglevel", alpm_errno(handle), NULL);
++  } else
++    return PyLong_FromLong(ret);
++}
++
++int option_set_local_file_siglevel_alpm(PyObject *self, PyObject *value, void* closure)
++{
++  alpm_handle_t *handle = ALPM_HANDLE(self);
++  if(!PyLong_Check(value))
++  {
++    PyErr_SetString(PyExc_TypeError, "wrong arguments");
++    return -1;
++  }
++  if (alpm_option_set_local_file_siglevel(handle, PyLong_to_int(value, -1)) != 0)
++  {
++    PyErr_SetString(PyExc_TypeError, "wrong arguments");
++    return -1;
++  }
++  else
++  {
++    return 0;
++  }
++}
++
++PyObject* option_get_remote_file_siglevel_alpm(PyObject *self, void* closure) {
++  alpm_handle_t *handle = ALPM_HANDLE(self);
++  int ret = alpm_option_get_remote_file_siglevel(handle);
++  if (ret == -1) {
++    RET_ERR("failed getting default siglevel", alpm_errno(handle), NULL);
++  } else
++    return PyLong_FromLong(ret);
++}
++
++int option_set_remote_file_siglevel_alpm(PyObject *self, PyObject *value, void* closure)
++{
++  alpm_handle_t *handle = ALPM_HANDLE(self);
++  if(!PyLong_Check(value))
++  {
++    PyErr_SetString(PyExc_TypeError, "wrong arguments");
++    return -1;
++  }
++  if (alpm_option_set_remote_file_siglevel(handle, PyLong_to_int(value, -1)) != 0)
++  {
++    PyErr_SetString(PyExc_TypeError, "wrong arguments");
++    return -1;
++  }
++  else
++  {
++    return 0;
++  }
++}
++
+ /**
+  * List options
+  * in addition to getters/setters, these have add/remove methods
+@@ -346,14 +422,14 @@ void pyalpm_logcb(alpm_loglevel_t level, const char *fmt, va_list va_args) {
+ 
+ void pyalpm_dlcb(const char *filename, off_t xfered, off_t total) {
+   PyObject *result;
+-  result = PyObject_CallFunction(global_py_callbacks[CB_DOWNLOAD], "sii", filename, xfered, total);
++  result = PyObject_CallFunction(global_py_callbacks[CB_DOWNLOAD], "sLL", filename, xfered, total);
+   if (!result) PyErr_Print();
+   Py_CLEAR(result);
+ }
+ 
+ void pyalpm_totaldlcb(off_t total) {
+   PyObject *result;
+-  result = PyObject_CallFunction(global_py_callbacks[CB_TOTALDL], "i", total);
++  result = PyObject_CallFunction(global_py_callbacks[CB_TOTALDL], "L", total);
+   if (!result) PyErr_Print();
+   Py_CLEAR(result);
+ }
+diff --git a/src/options.h b/src/options.h
+index 4b42f3b..6615399 100644
+--- a/src/options.h
++++ b/src/options.h
+@@ -2,6 +2,7 @@
+  * options.h
+  *
+  *  Copyright 2008 Imanol Celaya <ilcra1989@gmail.com>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -64,6 +65,16 @@ PyObject * option_remove_ignorepkg_alpm(PyObject *self, PyObject *args);
+ PyObject * option_add_ignoregrp_alpm(PyObject *self, PyObject *args);
+ PyObject * option_remove_ignoregrp_alpm(PyObject *self, PyObject *args);
+ 
++/** Siglevel options */
++PyObject * option_get_default_siglevel_alpm(PyObject *self, void* closure);
++int option_set_default_siglevel_alpm(PyObject *self, PyObject *value, void* closure);
++
++PyObject * option_get_local_file_siglevel_alpm(PyObject *self, void* closure);
++int option_set_local_file_siglevel_alpm(PyObject *self, PyObject *value, void* closure);
++
++PyObject* option_get_remote_file_siglevel_alpm(PyObject *self, void* closure);
++int option_set_remote_file_siglevel_alpm(PyObject *self, PyObject *value, void* closure);
++
+ /** Callback options */
+ void pyalpm_logcb(alpm_loglevel_t level, const char *fmt, va_list va_args);
+ void pyalpm_dlcb(const char *filename, off_t xfered, off_t total);
+diff --git a/src/package.c b/src/package.c
+index d4ab941..e6056ad 100644
+--- a/src/package.c
++++ b/src/package.c
+@@ -2,6 +2,7 @@
+  * package.c : wrapper class around alpm_pkg_t
+  *
+  *  Copyright (c) 2011 Rémy Oudompheng <remy@archlinux.org>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -37,7 +38,7 @@ int PyAlpmPkg_Check(PyObject *object) {
+ 
+ static PyObject* pyalpm_pkg_repr(PyObject *rawself) {
+   AlpmPackage *self = (AlpmPackage *)rawself;
+-  return PyUnicode_FromFormat("<alpm.Package(\"%s-%s-%s\") at %p>",
++  return PyUnicode_FromFormat("<pyalpm.Package(\"%s-%s-%s\") at %p>",
+ 			      alpm_pkg_get_name(self->c_data),
+ 			      alpm_pkg_get_version(self->c_data),
+ 			      alpm_pkg_get_arch(self->c_data),
+@@ -46,7 +47,7 @@ static PyObject* pyalpm_pkg_repr(PyObject *rawself) {
+ 
+ static PyObject* pyalpm_pkg_str(PyObject *rawself) {
+   AlpmPackage *self = (AlpmPackage *)rawself;
+-  return PyUnicode_FromFormat("alpm.Package(\"%s-%s-%s\")",
++  return PyUnicode_FromFormat("pyalpm.Package(\"%s-%s-%s\")",
+ 			      alpm_pkg_get_name(self->c_data),
+ 			      alpm_pkg_get_version(self->c_data),
+ 			      alpm_pkg_get_arch(self->c_data));
+@@ -329,7 +330,7 @@ static struct PyMethodDef pyalpm_pkg_methods[] = {
+ 
+ PyTypeObject AlpmPackageType = {
+   PyVarObject_HEAD_INIT(NULL, 0)
+-  "alpm.Package",             /*tp_name*/
++  "pyalpm.Package",             /*tp_name*/
+   sizeof(AlpmPackage),        /*tp_basicsize*/
+   0,                          /*tp_itemsize*/
+   .tp_dealloc = (destructor)pyalpm_package_dealloc,
+@@ -360,6 +361,8 @@ void init_pyalpm_package(PyObject *module) {
+   PyModule_AddIntConstant(module, "SIG_PACKAGE_OPTIONAL", ALPM_SIG_PACKAGE_OPTIONAL);
+   PyModule_AddIntConstant(module, "SIG_PACKAGE_MARGINAL_OK", ALPM_SIG_PACKAGE_MARGINAL_OK);
+   PyModule_AddIntConstant(module, "SIG_PACKAGE_UNKNOWN_OK", ALPM_SIG_PACKAGE_UNKNOWN_OK);
++  PyModule_AddIntConstant(module, "SIG_PACKAGE_SET", ALPM_SIG_PACKAGE_SET);
++  PyModule_AddIntConstant(module, "SIG_PACKAGE_TRUST_SET", ALPM_SIG_PACKAGE_TRUST_SET);
+ }
+ 
+ /* vim: set ts=2 sw=2 et: */
+diff --git a/src/pyalpm.c b/src/pyalpm.c
+index 507f564..6a63c62 100644
+--- a/src/pyalpm.c
++++ b/src/pyalpm.c
+@@ -3,6 +3,7 @@
+  *
+  *  Copyright 2008 Imanol Celaya <ilcra1989@gmail.com>
+  *  Copyright (c) 2011 Rémy Oudompheng <remy@archlinux.org>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  pyalpm is free software: you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -103,7 +104,7 @@ static PyMethodDef methods[] = {
+ 
+ static struct PyModuleDef pyalpm_def = {
+   PyModuleDef_HEAD_INIT,
+-  "alpm",
++  "pyalpm",
+   "This module wraps the libalpm library",
+   -1,
+   methods,
+diff --git a/src/transaction.c b/src/transaction.c
+index 09c4434..26c345a 100644
+--- a/src/transaction.c
++++ b/src/transaction.c
+@@ -2,6 +2,7 @@
+  * transaction.c : wrapper class around libalpm transactions
+  *
+  *  Copyright (c) 2011 Rémy Oudompheng <remy@archlinux.org>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -20,6 +21,7 @@
+  *
+  */
+ 
++#include <stdio.h>
+ #include <string.h>
+ #include <alpm.h>
+ #include <Python.h>
+@@ -36,98 +38,151 @@ void pyalpm_eventcb(alpm_event_t event, void* data1, void *data2) {
+   PyObject *obj2 = Py_None;
+   switch(event) {
+     case ALPM_EVENT_CHECKDEPS_START:
+-      eventstr = "Checking dependencies";
++      eventstr = "ALPM_EVENT_CHECKDEPS_START";
+       break;
+     case ALPM_EVENT_CHECKDEPS_DONE:
+-      eventstr = "Done checking dependencies";
++      eventstr = "ALPM_EVENT_CHECKDEPS_DONE";
+       break;
+     case ALPM_EVENT_FILECONFLICTS_START:
+-      eventstr = "Checking file conflicts";
++      eventstr = "ALPM_EVENT_FILECONFLICTS_START";
+       break;
+     case ALPM_EVENT_FILECONFLICTS_DONE:
+-      eventstr = "Done checking file conflicts";
++      eventstr = "ALPM_EVENT_FILECONFLICTS_DONE";
+       break;
+     case ALPM_EVENT_RESOLVEDEPS_START:
+-      eventstr = "Resolving dependencies";
++      eventstr = "ALPM_EVENT_RESOLVEDEPS_START";
+       break;
+     case ALPM_EVENT_RESOLVEDEPS_DONE:
+-      eventstr = "Done resolving dependencies";
++      eventstr = "ALPM_EVENT_RESOLVEDEPS_DONE";
+       break;
+     case ALPM_EVENT_INTERCONFLICTS_START:
+-      eventstr = "Checking inter conflicts";
++      eventstr = "ALPM_EVENT_INTERCONFLICTS_START";
+       break;
+     case ALPM_EVENT_INTERCONFLICTS_DONE:
+-      eventstr = "Done checking inter conflicts";
++      eventstr = "ALPM_EVENT_INTERCONFLICTS_DONE";
+       break;
+     case ALPM_EVENT_ADD_START:
+-      eventstr = "Adding a package";
++      eventstr = "ALPM_EVENT_ADD_START";
+       obj1 = pyalpm_package_from_pmpkg(data1);
+       break;
+     case ALPM_EVENT_ADD_DONE:
+-      eventstr = "Done adding a package";
++      eventstr = "ALPM_EVENT_ADD_DONE";
+       obj1 = pyalpm_package_from_pmpkg(data1);
+       if (data2) obj2 = pyalpm_package_from_pmpkg(data2);
+       break;
+     case ALPM_EVENT_REMOVE_START:
+-      eventstr = "Remove package";
++      eventstr = "ALPM_EVENT_REMOVE_START";
+       obj1 = pyalpm_package_from_pmpkg(data1);
+       break;
+     case ALPM_EVENT_REMOVE_DONE:
+-      eventstr = "Done removing package";
++      eventstr = "ALPM_EVENT_REMOVE_DONE";
+       obj1 = pyalpm_package_from_pmpkg(data1);
+       break;
+     case ALPM_EVENT_UPGRADE_START:
+-      eventstr = "Upgrading a package";
++      eventstr = "ALPM_EVENT_UPGRADE_START";
+       obj1 = pyalpm_package_from_pmpkg(data1);
+       obj2 = pyalpm_package_from_pmpkg(data2);
+       break;
+     case ALPM_EVENT_UPGRADE_DONE:
+-      eventstr = "Done upgrading a package";
++      eventstr = "ALPM_EVENT_UPGRADE_DONE";
+       obj1 = pyalpm_package_from_pmpkg(data1);
+       obj2 = pyalpm_package_from_pmpkg(data2);
+       break;
++    case ALPM_EVENT_DOWNGRADE_START:
++      eventstr = "ALPM_EVENT_DOWNGRADE_START";
++      obj1 = pyalpm_package_from_pmpkg(data1);
++      obj2 = pyalpm_package_from_pmpkg(data2);
++      break;
++    case ALPM_EVENT_DOWNGRADE_DONE:
++      eventstr = "ALPM_EVENT_DOWNGRADE_DONE";
++      obj1 = pyalpm_package_from_pmpkg(data1);
++      obj2 = pyalpm_package_from_pmpkg(data2);
++      break;
++    case ALPM_EVENT_REINSTALL_START:
++      eventstr = "ALPM_EVENT_REINSTALL_START";
++      obj1 = pyalpm_package_from_pmpkg(data1);
++      break;
++    case ALPM_EVENT_REINSTALL_DONE:
++      eventstr = "ALPM_EVENT_REINSTALL_DONE";
++      obj1 = pyalpm_package_from_pmpkg(data1);
++      break;
+     case ALPM_EVENT_INTEGRITY_START:
+-      eventstr = "Checking integrity";
++      eventstr = "ALPM_EVENT_INTEGRITY_START";
+       break;
+     case ALPM_EVENT_INTEGRITY_DONE:
+-      eventstr = "Done checking integrity";
++      eventstr = "ALPM_EVENT_INTEGRITY_DONE";
+       break;
+     case ALPM_EVENT_LOAD_START:
++      eventstr = "ALPM_EVENT_LOAD_START";
++      break;
+     case ALPM_EVENT_LOAD_DONE:
++      eventstr = "ALPM_EVENT_LOAD_DONE";
++      break;
+     case ALPM_EVENT_DELTA_INTEGRITY_START:
++      eventstr = "ALPM_EVENT_DELTA_INTEGRITY_START";
++      break;
+     case ALPM_EVENT_DELTA_INTEGRITY_DONE:
++      eventstr = "ALPM_EVENT_DELTA_INTEGRITY_DONE";
++      break;
+     case ALPM_EVENT_DELTA_PATCHES_START:
++      eventstr = "ALPM_EVENT_DELTA_PATCHES_START";
++      break;
+     case ALPM_EVENT_DELTA_PATCHES_DONE:
++      eventstr = "ALPM_EVENT_DELTA_PATCHES_DONE";
++      break;
+     case ALPM_EVENT_DELTA_PATCH_START:
+-      /* info here */
++      eventstr = "ALPM_EVENT_DELTA_PATCH_START";
++      obj1 = PyUnicode_FromFormat("%s", (char *)data1);
++      obj2 = PyUnicode_FromFormat("%s", (char *)data2);
++      break;
+     case ALPM_EVENT_DELTA_PATCH_DONE:
++      eventstr = "ALPM_EVENT_DELTA_PATCH_DONE";
++      break;
+     case ALPM_EVENT_DELTA_PATCH_FAILED:
++      eventstr = "ALPM_EVENT_DELTA_PATCH_FAILED";
++      break;
+     case ALPM_EVENT_SCRIPTLET_INFO:
+-      /* info here */
++      eventstr = "ALPM_EVENT_SCRIPTLET_INFO";
++      obj1 = PyUnicode_FromFormat("%s", data1);
++      break;
+     case ALPM_EVENT_RETRIEVE_START:
+-      /* info here */
+-      eventstr = "event not implemented";
++      eventstr = "ALPM_EVENT_RETRIEVE_START";
+       break;
+     case ALPM_EVENT_DISKSPACE_START:
+-      eventstr = "Checking disk space";
++      eventstr = "ALPM_EVENT_DISKSPACE_START";
+       break;
+     case ALPM_EVENT_DISKSPACE_DONE:
+-      eventstr = "Done checking disk space";
++      eventstr = "ALPM_EVENT_DISKSPACE_DONE";
+       break;
+     case ALPM_EVENT_OPTDEP_REQUIRED:
++      eventstr = "ALPM_EVENT_OPTDEP_REQUIRED";
++      obj1 = pyalpm_package_from_pmpkg(data1);
++      obj2 = PyUnicode_FromFormat("%s", alpm_dep_compute_string(data2));
++      break;
+     case ALPM_EVENT_DATABASE_MISSING:
++      eventstr = "ALPM_EVENT_DATABASE_MISSING";
++      obj1 = PyUnicode_FromFormat("%s", (char *)data1);
++      break;
+     case ALPM_EVENT_KEYRING_START:
++      eventstr = "ALPM_EVENT_KEYRING_START";
++      break;
+     case ALPM_EVENT_KEYRING_DONE:
++      eventstr = "ALPM_EVENT_KEYRING_DONE";
++      break;
+     case ALPM_EVENT_KEY_DOWNLOAD_START:
++      eventstr = "ALPM_EVENT_KEY_DOWNLOAD_START";
++      break;
+     case ALPM_EVENT_KEY_DOWNLOAD_DONE:
++      eventstr = "ALPM_EVENT_KEY_DOWNLOAD_DONE";
++      break;
+     default:
+       eventstr = "unknown event";
+   }
+   {
+     PyObject *result = NULL;
+-    if (global_py_callbacks[CB_PROGRESS]) {
+-      result = PyObject_CallFunction(global_py_callbacks[CB_EVENT], "is(NN)",
+-          event, eventstr, obj1, obj2);
++    if (global_py_callbacks[CB_EVENT]) {
++      result = PyObject_CallFunction(global_py_callbacks[CB_EVENT], "s(NN)",
++          eventstr, obj1, obj2);
+     } else {
+       PyErr_SetString(PyExc_RuntimeError, "event callback was called but it's not set!");
+     }
+@@ -137,15 +192,109 @@ void pyalpm_eventcb(alpm_event_t event, void* data1, void *data2) {
+ }
+ 
+ void pyalpm_questioncb(alpm_question_t question,
+-        void* data1, void *data2, void* data3, int* retcode) {
++        void* data1, void *data2, void* data3, int *retcode) {
++  const char *eventstr;
++  PyObject *result = NULL;
++  if (global_py_callbacks[CB_QUESTION]) {
++    switch(question) {
++      case ALPM_QUESTION_INSTALL_IGNOREPKG:
++        eventstr = "ALPM_QUESTION_INSTALL_IGNOREPKG";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(Ns)s",
++          eventstr, pyalpm_package_from_pmpkg(data1), data2, data3);
++        break;
++      case ALPM_QUESTION_REPLACE_PKG:
++        eventstr = "ALPM_QUESTION_REPLACE_PKG";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(NN)s",
++          eventstr, pyalpm_package_from_pmpkg(data1), pyalpm_package_from_pmpkg(data2), data3);
++        break;
++      case ALPM_QUESTION_CONFLICT_PKG:
++        eventstr = "ALPM_QUESTION_CONFLICT_PKG";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(ss)s",
++          eventstr, data1, data2, data3);
++        break;
++      case ALPM_QUESTION_CORRUPTED_PKG:
++        eventstr = "ALPM_QUESTION_CORRUPTED_PKG";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(ss)s",
++          eventstr, data1, alpm_strerror(*(alpm_errno_t *)data2), data3);
++        break;
++      case ALPM_QUESTION_REMOVE_PKGS:
++        eventstr = "ALPM_QUESTION_REMOVE_PKGS";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(Ns)s",
++          eventstr, alpmlist_to_pylist(data1, pyalpm_package_from_pmpkg), data2, data3);
++        break;
++      case ALPM_QUESTION_SELECT_PROVIDER:
++        {
++        char *depstring = alpm_dep_compute_string((alpm_depend_t *)data2);
++        eventstr = "ALPM_QUESTION_SELECT_PROVIDER";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(Ns)s",
++          eventstr, alpmlist_to_pylist(data1, pyalpm_package_from_pmpkg), depstring, data3);
++        }
++        break;
++      case ALPM_QUESTION_IMPORT_KEY:
++        {
++        alpm_pgpkey_t *key = data1;
++        eventstr = "ALPM_QUESTION_IMPORT_KEY";
++        result = PyObject_CallFunction(global_py_callbacks[CB_QUESTION], "s(iicssi)s",
++          eventstr, key->revoked, key->length, key->pubkey_algo, key->fingerprint, key->uid, key->created, data3);
++        }
++        break;
++      default:
++        eventstr = "unknown event";
++        break;
++    }
++    {
++      *retcode = PyLong_to_int(result, -1);
++    }
++  }
++  else {
++    PyErr_SetString(PyExc_RuntimeError, "question callback was called but it's not set!");
++  }
++  if (PyErr_Occurred()) PyErr_Print();
++  Py_CLEAR(result);
+ }
+ 
+ void pyalpm_progresscb(alpm_progress_t op,
+         const char* target_name, int percentage, size_t n_targets, size_t cur_target) {
++  const char *eventstr;
+   PyObject *result = NULL;
++  switch(op) {
++    case ALPM_PROGRESS_ADD_START:
++      eventstr = "ALPM_PROGRESS_ADD_START";
++      break;
++    case ALPM_PROGRESS_UPGRADE_START:
++      eventstr = "ALPM_PROGRESS_UPGRADE_START";
++      break;
++    case ALPM_PROGRESS_DOWNGRADE_START:
++      eventstr = "ALPM_PROGRESS_DOWNGRADE_START";
++      break;
++    case ALPM_PROGRESS_REINSTALL_START:
++      eventstr = "ALPM_PROGRESS_REINSTALL_START";
++      break;
++    case ALPM_PROGRESS_REMOVE_START:
++      eventstr = "ALPM_PROGRESS_REMOVE_START";
++      break;
++    case ALPM_PROGRESS_CONFLICTS_START:
++      eventstr = "ALPM_PROGRESS_CONFLICTS_START";
++      break;
++    case ALPM_PROGRESS_DISKSPACE_START:
++      eventstr = "ALPM_PROGRESS_DISKSPACE_START";
++      break;
++    case ALPM_PROGRESS_INTEGRITY_START:
++      eventstr = "ALPM_PROGRESS_INTEGRITY_START";
++      break;
++    case ALPM_PROGRESS_LOAD_START:
++      eventstr = "ALPM_PROGRESS_LOAD_START";
++      break;
++    case ALPM_PROGRESS_KEYRING_START:
++      eventstr = "ALPM_PROGRESS_KEYRING_START";
++      break;
++    default:
++       eventstr = "unknown event";
++      break;
++  }
+   if (global_py_callbacks[CB_PROGRESS]) {
+-    result = PyObject_CallFunction(global_py_callbacks[CB_PROGRESS], "sinn",
+-      target_name, percentage, n_targets, cur_target);
++    result = PyObject_CallFunction(global_py_callbacks[CB_PROGRESS], "ssinn",
++      eventstr, target_name, percentage, n_targets, cur_target);
+   } else {
+     PyErr_SetString(PyExc_RuntimeError, "progress callback was called but it's not set!");
+   }
+@@ -157,40 +306,102 @@ void pyalpm_progresscb(alpm_progress_t op,
+ }
+ 
+ /** Transaction info translation */
+-static PyObject* pyobject_from_pmdepmissing(void *item) {
+-  alpm_depmissing_t* miss = (alpm_depmissing_t*)item;
+-  char* needed = alpm_dep_compute_string(miss->depend);
+-  PyObject *result = Py_BuildValue("(sss)",
+-      miss->target,
+-      needed,
+-      miss->causingpkg);
+-  free(needed);
+-  return result;
+-}
+-
+-static PyObject* pyobject_from_pmconflict(void *item) {
+-  alpm_conflict_t* conflict = (alpm_conflict_t*)item;
+-  return Py_BuildValue("(sss)",
+-      conflict->package1,
+-      conflict->package2,
+-      conflict->reason);
+-}
+-
+ static PyObject* pyobject_from_pmfileconflict(void *item) {
+   alpm_fileconflict_t* conflict = (alpm_fileconflict_t*)item;
+-  const char *target = conflict->target;
+-  const char *filename = conflict->file;
++  char *err_str;
++  char *str_result;
++  PyObject *result;
++  size_t needed;
+   switch(conflict->type) {
+   case ALPM_FILECONFLICT_TARGET:
+-    return Py_BuildValue("(sss)", target, filename, conflict->ctarget);
++    err_str = _("%s exists in both '%s' and '%s'\n");
++    needed = strlen(err_str)+strlen(conflict->file)+strlen(conflict->target)+strlen(conflict->ctarget);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, conflict->file, conflict->target, conflict->ctarget);
++    result = Py_BuildValue("s", str_result);
++    return result;
+   case ALPM_FILECONFLICT_FILESYSTEM:
+-    return Py_BuildValue("(ssO)", target, filename, Py_None);
++    err_str = _("%s: %s exists in filesystem\n");
++    needed = strlen(err_str)+strlen(conflict->target)+strlen(conflict->file);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, conflict->target, conflict->file);
++    result = Py_BuildValue("s", str_result);
++    return result;
+   default:
+     PyErr_Format(PyExc_RuntimeError, "invalid type %d for alpm_fileconflict_t object", conflict->type);
+     return NULL;
+   }
+ }
+ 
++static PyObject* pyobject_from_invalidarch(void *item) {
++  const char *pkgname = (const char *)item;
++  char *err_str = _("package %s does not have a valid architecture\n");
++  char *str_result;
++  PyObject *result;
++  size_t needed;
++  needed = strlen(err_str)+strlen(pkgname);
++  str_result = malloc(needed+1);
++  sprintf(str_result, err_str, pkgname);
++  result = Py_BuildValue("s", str_result);
++  return result;
++}
++
++static PyObject* pyobject_from_invalid(void *item) {
++  const char *filename = (const char *)item;
++  char *err_str = _("%s is invalid or corrupted\n");
++  char *str_result;
++  PyObject *result;
++  size_t needed;
++  needed = strlen(err_str)+strlen(filename);
++  str_result = malloc(needed+1);
++  sprintf(str_result, err_str, filename);
++  result = Py_BuildValue("s", str_result);
++  return result;
++}
++
++static PyObject* pyobject_from_neededdeps(void *item) {
++  alpm_depmissing_t* miss = (alpm_depmissing_t*)item;
++  char* depstring = alpm_dep_compute_string(miss->depend);
++  char *err_str = _("%s: requires %s\n");
++  char *str_result;
++  PyObject *result;
++  size_t needed;
++  needed = strlen(err_str)+strlen(miss->target)+strlen(depstring);
++  str_result = malloc(needed+1);
++  sprintf(str_result, err_str, miss->target, depstring);
++  result = Py_BuildValue("s", str_result);
++  free(depstring);
++  return result;
++}
++
++static PyObject* pyobject_from_conflictdeps(void *item) {
++  alpm_conflict_t* conflict = (alpm_conflict_t*)item;
++  char *err_str;
++  char *str_result;
++  size_t needed;
++  PyObject *result;
++  if(conflict->reason->mod == ALPM_DEP_MOD_ANY)
++  {
++    err_str = _("%s and %s are in conflict\n");
++    needed = strlen(err_str)+strlen(conflict->package1)+strlen(conflict->package2);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, conflict->package1, conflict->package2);
++    result = Py_BuildValue("s", str_result);
++    return result;
++  }
++  else
++  {
++    char *reason = alpm_dep_compute_string(conflict->reason);
++    err_str = _("%s and %s are in conflict (%s)\n");
++    needed = strlen(err_str)+strlen(conflict->package1)+strlen(conflict->package2)+strlen(reason);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, conflict->package1, conflict->package2, reason);
++    result = Py_BuildValue("s", str_result);
++    free(reason);
++    return result;
++  }
++}
++
+ /* Standard methods */
+ const char* flagnames[19] = {
+   "nodeps",
+@@ -283,13 +494,22 @@ PyObject* pyalpm_trans_init(PyObject *self, PyObject *args, PyObject *kwargs) {
+   /* run alpm_trans_init() */
+   {
+     alpm_transflag_t flag_int = 0;
++    char *err_str = _("failed to init transaction (%s)\n");
++    const char *detail;
++    char *str_result;
++    size_t needed;
+     int i, ret;
+     for (i = 0; i < 18; i++) {
+       if (flags[i]) flag_int |= 1U << i;
+     }
+     ret = alpm_trans_init(handle, flag_int);
+-    if (ret == -1) {
+-      RET_ERR("transaction could not be initialized", alpm_errno(handle), NULL);
++    if (ret == -1)
++    {
++      detail = alpm_strerror(alpm_errno(handle));
++      needed = strlen(err_str)+strlen(detail);
++      str_result = malloc(needed+1);
++      sprintf(str_result, err_str, detail);
++      RET_ERR(str_result, alpm_errno(handle), NULL);
+     }
+   }
+   result = pyalpm_transaction_from_pmhandle(handle);
+@@ -299,13 +519,34 @@ PyObject* pyalpm_trans_init(PyObject *self, PyObject *args, PyObject *kwargs) {
+ static PyObject* pyalpm_trans_prepare(PyObject *self, PyObject *args) {
+   alpm_handle_t *handle = ALPM_HANDLE(self);
+   alpm_list_t *data;
+-
++  char *err_str = _("failed to prepare transaction (%s)\n");
++  alpm_errno_t err;
++  const char *detail;
++  char *str_result;
++  size_t needed;
++  PyObject *info = NULL;
+   int ret = alpm_trans_prepare(handle, &data);
+   if (ret == -1) {
+-    /* return the list of package conflicts in the exception */
+-    PyObject *info = alpmlist_to_pylist(data, pyobject_from_pmdepmissing);
++    err = alpm_errno(handle);
++    switch(err){
++      case ALPM_ERR_PKG_INVALID_ARCH:
++        info = alpmlist_to_pylist(data, pyobject_from_invalidarch);
++        break;
++      case ALPM_ERR_UNSATISFIED_DEPS:
++        info = alpmlist_to_pylist(data, pyobject_from_neededdeps);
++        break;
++      case ALPM_ERR_CONFLICTING_DEPS:
++        info = alpmlist_to_pylist(data, pyobject_from_conflictdeps);
++        break;
++      default:
++        break;
++    }
+     if (!info) return NULL;
+-    RET_ERR_DATA("transaction preparation failed", alpm_errno(handle), info, NULL);
++    detail = alpm_strerror(err);
++    needed = strlen(err_str)+strlen(detail);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, detail);
++    RET_ERR_DATA(str_result, alpm_errno(handle), info, NULL);
+   }
+ 
+   Py_RETURN_NONE;
+@@ -317,7 +558,10 @@ static PyObject* pyalpm_trans_commit(PyObject *self, PyObject *args) {
+   int ret;
+   enum _alpm_errno_t err;
+   PyObject *err_info = NULL;
+-
++  char *err_str = _("failed to commit transaction (%s)\n");
++  const char *detail;
++  char *str_result;
++  size_t needed;
+   ret = alpm_trans_commit(handle, &data);
+   if (ret == 0) Py_RETURN_NONE;
+   if (ret != -1) {
+@@ -336,28 +580,54 @@ static PyObject* pyalpm_trans_commit(PyObject *self, PyObject *args) {
+     case ALPM_ERR_PKG_INVALID_CHECKSUM:
+     case ALPM_ERR_PKG_INVALID_SIG:
+     case ALPM_ERR_DLT_INVALID:
+-      err_info = alpmlist_to_pylist(data, pyobject_from_string);
++      err_info = alpmlist_to_pylist(data, pyobject_from_invalid);
+       break;
+     default:
+       break;
+   }
++  detail = alpm_strerror(err);
++  needed = strlen(err_str)+strlen(detail);
++  str_result = malloc(needed+1);
++  sprintf(str_result, err_str, detail);
+   if (err_info)
+-    RET_ERR_DATA("transaction failed", err, err_info, NULL);
++    RET_ERR_DATA(str_result, err, err_info, NULL);
+   else
+-    RET_ERR("transaction failed", err, NULL);
++    RET_ERR(str_result, err, NULL);
+ }
+ 
+ static PyObject* pyalpm_trans_interrupt(PyObject *self, PyObject *args) {
+   alpm_handle_t *handle = ALPM_HANDLE(self);
++  char *err_str = _("failed to interrupt transaction (%s)\n");
++  const char *detail;
++  char *str_result;
++  size_t needed;
+   int ret = alpm_trans_interrupt(handle);
+-  if (ret == -1) RET_ERR("unable to interrupt transaction", alpm_errno(handle), NULL);
++  if (ret == -1)
++    {
++      detail = alpm_strerror(alpm_errno(handle));
++      needed = strlen(err_str)+strlen(detail);
++      str_result = malloc(needed+1);
++      sprintf(str_result, err_str, detail);
++      RET_ERR(str_result, alpm_errno(handle), NULL);
++    }
+   Py_RETURN_NONE;
+ }
+ 
+ PyObject* pyalpm_trans_release(PyObject *self, PyObject *args) {
+   alpm_handle_t *handle = ALPM_HANDLE(self);
++  char *err_str = _("failed to release transaction (%s)\n");
++  const char *detail;
++  char *str_result;
++  size_t needed;
+   int ret = alpm_trans_release(handle);
+-  if (ret == -1) RET_ERR("unable to release transaction", alpm_errno(handle), NULL);
++  if (ret == -1)
++    {
++      detail = alpm_strerror(alpm_errno(handle));
++      needed = strlen(err_str)+strlen(detail);
++      str_result = malloc(needed+1);
++      sprintf(str_result, err_str, detail);
++      RET_ERR(str_result, alpm_errno(handle), NULL);
++    }
+   Py_RETURN_NONE;
+ }
+ 
+@@ -367,14 +637,24 @@ static PyObject* pyalpm_trans_add_pkg(PyObject *self, PyObject *args) {
+   alpm_pkg_t *pmpkg;
+   PyObject *pkg;
+   int ret;
+-
++  char *err_str = "'%s': %s\n";
++  const char *detail;
++  char *str_result;
++  size_t needed;
+   if (!PyArg_ParseTuple(args, "O!", &AlpmPackageType, &pkg)) {
+     return NULL;
+   }
+ 
+   pmpkg = pmpkg_from_pyalpm_pkg(pkg);
+   ret = alpm_add_pkg(handle, pmpkg);
+-  if (ret == -1) RET_ERR("unable to update transaction", alpm_errno(handle), NULL);
++  if (ret == -1)
++  {
++    detail = alpm_strerror(alpm_errno(handle));
++    needed = strlen(err_str)+strlen(alpm_pkg_get_name(pmpkg))+strlen(detail);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, alpm_pkg_get_name(pmpkg), detail);
++    RET_ERR(str_result, alpm_errno(handle), NULL);
++  }
+   /* alpm_add_pkg eats the reference to pkg */
+   pyalpm_pkg_unref(pkg);
+   Py_RETURN_NONE;
+@@ -385,6 +665,10 @@ static PyObject* pyalpm_trans_remove_pkg(PyObject *self, PyObject *args) {
+   PyObject *pkg;
+   alpm_pkg_t *pmpkg;
+   int ret;
++  char *err_str = "'%s': %s\n";
++  const char *detail;
++  char *str_result;
++  size_t needed;
+ 
+   if (!PyArg_ParseTuple(args, "O!", &AlpmPackageType, &pkg)) {
+     return NULL;
+@@ -392,7 +676,14 @@ static PyObject* pyalpm_trans_remove_pkg(PyObject *self, PyObject *args) {
+ 
+   pmpkg = pmpkg_from_pyalpm_pkg(pkg);
+   ret = alpm_remove_pkg(handle, pmpkg);
+-  if (ret == -1) RET_ERR("unable to update transaction", alpm_errno(handle), NULL);
++  if (ret == -1)
++  {
++    detail = alpm_strerror(alpm_errno(handle));
++    needed = strlen(err_str)+strlen(alpm_pkg_get_name(pmpkg))+strlen(detail);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, alpm_pkg_get_name(pmpkg), detail);
++    RET_ERR(str_result, alpm_errno(handle), NULL);
++  }
+   Py_RETURN_NONE;
+ }
+ 
+@@ -401,13 +692,24 @@ static PyObject* pyalpm_trans_sysupgrade(PyObject *self, PyObject *args, PyObjec
+   char* keyword[] = {"downgrade", NULL};
+   PyObject *downgrade;
+   int do_downgrade, ret;
++  char *err_str = "%s\n";
++  const char *detail;
++  char *str_result;
++  size_t needed;
+ 
+   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O!", keyword, &PyBool_Type, &downgrade))
+     return NULL;
+ 
+   do_downgrade = (downgrade == Py_True) ? 1 : 0;
+   ret = alpm_sync_sysupgrade(handle, do_downgrade);
+-  if (ret == -1) RET_ERR("unable to update transaction", alpm_errno(handle), NULL);
++  if (ret == -1)
++  {
++    detail = alpm_strerror(alpm_errno(handle));
++    needed = strlen(err_str)+strlen(detail);
++    str_result = malloc(needed+1);
++    sprintf(str_result, err_str, detail);
++    RET_ERR(str_result, alpm_errno(handle), NULL);
++  }
+   Py_RETURN_NONE;
+ }
+ 
+@@ -445,7 +747,7 @@ static struct PyMethodDef pyalpm_trans_methods[] = {
+  */
+ static PyTypeObject AlpmTransactionType = {
+   PyVarObject_HEAD_INIT(NULL, 0)
+-  "alpm.Transaction",    /*tp_name*/
++  "pyalpm.Transaction",    /*tp_name*/
+   sizeof(AlpmHandle),  /*tp_basicsize*/
+   .tp_flags = Py_TPFLAGS_DEFAULT,
+   .tp_doc = "This class is the main interface to get/set libalpm options",
+diff --git a/src/util.c b/src/util.c
+index 5520081..b49895d 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -3,6 +3,7 @@
+  *
+  *  Copyright 2008 Imanol Celaya <ilcra1989@gmail.com>
+  *  Copyright 2011 Rémy Oudompheng <remy@archlinux.org>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -49,30 +50,26 @@ static PyObject* pyalpm_error_str(PyObject* exception) {
+     PyErr_Fetch(&exctype, &excvalue, &exctraceback);
+     handle_format = PyArg_ParseTuple(args, "siO",
+         &errstring, &errcode, &data);
+-    if (!handle_format) {
++    if(handle_format)
++    {
++      result = PyUnicode_FromFormat("%s", errstring);
++    }
++    else
++    {
+       PyErr_Clear();
+       result = PyObject_Str(args);
+-    }
+-    PyErr_Restore(exctype, excvalue, exctraceback);
+-  }
+-
+-  if(handle_format) {
+-    if (data == Py_None) {
+-      result = PyUnicode_FromFormat("%s, pm_errno %d (%s)", errstring, errcode, alpm_strerror(errcode));
+-    } else {
+-      result = PyUnicode_FromFormat("%s, pm_errno %d (%s), %S", errstring, errcode, alpm_strerror(errcode), data);
++      PyErr_Restore(exctype, excvalue, exctraceback);
+     }
+   }
+-
+   Py_DECREF(args);
+   return result;
+ }
+ 
+ void init_pyalpm_error(PyObject* module) {
+-  alpm_error = PyErr_NewExceptionWithDoc("alpm.error",
++  alpm_error = PyErr_NewExceptionWithDoc("pyalpm.error",
+       "Exception raised when an error arises from libalpm\n"
+       "The args attribute will usually contain a tuple "
+-      "(error message, errno from libalpm, extra data)\n",
++      "(error message, errno from libalpm, string error from libalpm, extra data)\n",
+       NULL, NULL);
+   ((PyTypeObject*)alpm_error)->tp_str = pyalpm_error_str;
+   PyModule_AddObject(module, "error", alpm_error);
+diff --git a/src/util.h b/src/util.h
+index bde136e..3e71c85 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -2,6 +2,7 @@
+  * util.h : utility functions for pyalpm
+  *
+  *  Copyright 2008 Imanol Celaya <ilcra1989@gmail.com>
++ *  Copyright (c) 2013 Guillaume Benoit <guillaume@manjaro.org>
+  *
+  *  This file is part of pyalpm.
+  *
+@@ -26,6 +27,10 @@
+ #include <Python.h>
+ #include <alpm.h>
+ #include <alpm_list.h>
++#include <libintl.h>
++/* define _() as shortcut for gettext()
++   pick up translations from pacman */
++#define _(str) dgettext ("pacman", str)
+ 
+ /** error objects */
+ extern PyObject* alpm_error;
+@@ -54,6 +59,16 @@ PyObject* pyobject_from_string(void *s);
+ PyObject* alpmlist_to_pylist(alpm_list_t *prt, pyobjectbuilder pybuilder);
+ int pylist_string_to_alpmlist(PyObject *list, alpm_list_t* *result);
+ 
++/** Number conversion function */
++static int PyLong_to_int(PyObject *value, int overflow_val)
++{
++  int overflow;
++  long lval = PyLong_AsLongAndOverflow(value, &overflow);
++  if (overflow != 0) return overflow_val;
++  if (lval > INT_MAX || lval < INT_MIN) return overflow_val;
++  return (int)lval;
++}
++
+ #endif
+ 
+ /* vim: set ts=2 sw=2 et: */
