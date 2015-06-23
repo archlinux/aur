@@ -20,7 +20,6 @@ pkgbase = papersplease
 	sha256sums = e8aaf890dbfa6363f0197892ca2abd5ac4a45918787a8524cf8c99d785000823
 	sha256sums = 9b7837376b5ba5bfb46b2ffff6cab3d527fbe479694d097f4fbabe2bccca6f07
 	sha256sums = 50562ad2b01cb7558147cd05de4dc37c02deb2e66fc5d3bff77994785f9551d7
-	depends_x86_64 = lib32-gcc-libs
 	depends_x86_64 = lib32-libgl
 
 pkgname = papersplease
