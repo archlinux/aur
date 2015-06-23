@@ -1,7 +1,7 @@
 pkgbase = populate-git
 	pkgdesc = A simple game, written in vala
 	pkgver = 20.daa13fb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alsoijw/populate
 	arch = any
 	license = GPL3
