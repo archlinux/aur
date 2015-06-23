@@ -6,7 +6,7 @@ pkgbase = python-pyee
 	arch = any
 	license = MIT
 	depends = python
-	source = https://pypi.python.org/packages/source/p/pyee/pyee-$pkgver.tar.gz
+	source = https://pypi.python.org/packages/source/p/pyee/pyee-0.0.9.tar.gz
 	md5sums = d72a257a2507ab2376746bfd75c402be
 
 pkgname = python-pyee
