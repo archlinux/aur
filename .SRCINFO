@@ -1,0 +1,15 @@
+pkgbase = python2-fastcluster
+	pkgdesc = Fast hierarchical clustering routines for Python
+	pkgver = 1.1.13
+	pkgrel = 1
+	url = http://danifold.net/fastcluster.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-numpy
+	source = https://pypi.python.org/packages/source/f/fastcluster/fastcluster-1.1.13.tar.gz
+	md5sums = ca2a5f5e8ab81628c72ed2cc0e1e21c6
+
+pkgname = python2-fastcluster
+
