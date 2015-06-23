@@ -2,7 +2,7 @@
 pkgname=labjack-exodriver-git
 _gitname="labjack-exodriver"
 pkgver=161.612b06a
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux low-level LabJack U12, U3, U6, UE9, Digit and T7 USB library"
 arch=('i686' 'x86_64')
 url="http://labjack.com/support/software"
@@ -41,7 +41,7 @@ package() {
   cp -dpr --no-preserve=ownership \
     liblabjackusb/liblabjackusb.so ${pkgdir}/usr/lib/liblabjackusb.so
   install -D -m644 10-labjack.rules \
-    ${pkgdir}/lib/udev/rules.d/10-labjack.rules
+    ${pkgdir}/usr/lib/udev/rules.d/10-labjack.rules
   install -D -m644 liblabjackusb/labjackusb.h ${pkgdir}/usr/include/
   install -D -m644 ../LICENSE \
     ${pkgdir}/usr/share/licenses/labjack-exodriver/LICENSE
