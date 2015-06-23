@@ -1,0 +1,16 @@
+pkgbase = xjobs
+	pkgdesc = A utility like xargs, but with enhanced support for multiprocessor machines
+	pkgver = 20140125
+	pkgrel = 1
+	url = http://www.maier-komor.de/xjobs.html
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = glibc
+	source = http://www.maier-komor.de/xjobs/xjobs-20140125.tgz
+	md5sums = 05d8ea4d83e7cb3694a43c6bb27e0a56
+	sha1sums = 6c577d7d73e0ae1d0953bbece30d465e1348f694
+	sha256sums = cbe582b1109c380bd80a02eb21b721dcfc5ef701446bfc9606b99246a84e737a
+
+pkgname = xjobs
+
