@@ -1,0 +1,5 @@
+satanic-icon-themes-*.tar.*
+satanic-icon-themes*.deb
+*.swp
+src/
+pkg/

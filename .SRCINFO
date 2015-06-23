@@ -1,0 +1,12 @@
+pkgbase = satanic-icon-themes
+	pkgdesc = Icons from Ubuntu Satanic Edition.
+	pkgver = 666.9
+	pkgrel = 1
+	url = http://www.ubuntusatanic.org
+	arch = any
+	license = GPL
+	source = http://www.ubuntusatanic.org/hell/pool/main/s/satanic-icon-themes/satanic-icon-themes_666.9_all.deb
+	md5sums = da67063378ed26a966c6f364e56a1f63
+
+pkgname = satanic-icon-themes
+
