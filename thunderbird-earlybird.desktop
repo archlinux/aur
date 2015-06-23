@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Earlybird
+Comment=Mail & News Reader
+GenericName=Mail Client & News Reader
+Exec=thunderbird-earlybird %u
+TryExec=thunderbird-earlybird
+Icon=thunderbird-earlybird
+Terminal=false
+Type=Application
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;
+StartupNotify=true
