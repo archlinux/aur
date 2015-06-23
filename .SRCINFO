@@ -1,0 +1,16 @@
+pkgbase = python-python-ddp
+	pkgdesc = An event driven ddp client
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/hharnisc/python-ddp
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyee
+	depends = python-ws4py
+	depends = python-meteor-ejson
+	source = https://pypi.python.org/packages/source/p/python-ddp/python-ddp-0.1.5.tar.gz
+	md5sums = df80774a52f84258154c9371b6acf48d
+
+pkgname = python-python-ddp
+
