@@ -1,0 +1,35 @@
+pkgbase = kdenetwork-kopete-git
+	pkgdesc = Instant Messenger, Git version
+	pkgver = 4.13.1
+	pkgrel = 1
+	url = http://kde.org/applications/internet/kopete/
+	install = kdenetwork-kopete-git.install
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = kdenetwork
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = kdepim-libkdepim
+	makedepends = git
+	depends = kdebase-runtime
+	depends = kdepimlibs
+	depends = qca-ossl
+	depends = libotr
+	depends = libidn
+	depends = qimageblitz
+	depends = libgadu
+	depends = mediastreamer
+	depends = jsoncpp
+	provides = kdenetwork-kopete=4.13.1
+	conflicts = kdenetwork-kopete
+	replaces = kdenetwork-kopete
+	source = kopete::git+http://anongit.kde.org/kopete
+	sha1sums = SKIP
+
+pkgname = kdenetwork-kopete-git
+
