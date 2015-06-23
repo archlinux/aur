@@ -2,12 +2,12 @@
 
 pkgname=qtpass
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-platform GUI for pass'
 url='http://qtpass.org'
 license=('GPL3')
 arch=('armv6h' 'armv7h' 'arm' 'i686' 'x86_64')
-depends=('qt5-base' 'pass')
+depends=('qt5-base' 'pass' 'libxkbcommon-x11')
 source=("https://github.com/IJHack/$pkgname/archive/v$pkgver.tar.gz")
 sha512sums=('b804007815b6c3c9b7adbca568d74bddb863d184c085c934881c4354016f96458d725d4ec9bd5ee90647d9a84648e5ec3057af7ba419424cbd974533ae864c89')
 
