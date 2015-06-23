@@ -1,0 +1,15 @@
+pkgbase = ansible-lint
+	pkgdesc = checks playbooks for practices and behaviour that could potentially be improved
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = https://github.com/willthames/ansible-lint
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	depends = ansible
+	source = https://pypi.python.org/packages/source/a/ansible-lint/ansible-lint-2.0.3.tar.gz
+	sha256sums = 19636c2809adcd35b2251a3a11bbfa2aed881f2da1f4a8c814766c39d41e3387
+
+pkgname = ansible-lint
+
