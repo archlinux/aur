@@ -22,6 +22,11 @@ url="https://github.com/enkore/i3pystatus"
 source=("https://github.com/enkore/i3pystatus/archive/$pkgver.tar.gz")
 md5sums=('28bd78db1c53576781383a1c6111ea3a')
 
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  python setup.py build
+}
+
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="$pkgdir"
