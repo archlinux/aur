@@ -1,0 +1,15 @@
+pkgbase = ruby-activesupport-2
+	pkgdesc = Support and utility classes used by the Rails framework.
+	pkgver = 2.3.18
+	pkgrel = 1
+	url = http://www.rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = activesupport-2.3.18.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activesupport-2.3.18.gem
+	sha1sums = 1b9102fa31a47cf66b0c2583c99b707544d42054
+
+pkgname = ruby-activesupport-2
+
