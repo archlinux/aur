@@ -9,7 +9,7 @@ license="GPL"
 depends=('python2' 'python2-cvxopt')
 source=(http://cvxmod.net/dist/$pkgname-$pkgver.tar.gz)
 
-build() {
+install() {
  cd $startdir/src/$pkgname-$pkgver
  python2 setup.py install --root=$startdir/pkg
 }
