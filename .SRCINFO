@@ -1,0 +1,13 @@
+pkgbase = python-pyxdg
+	pkgdesc = PyXDG contains implementations of freedesktop.org standards in python.
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://freedesktop.org/wiki/Software/pyxdg
+	arch = any
+	license = LGPL2
+	depends = python
+	source = https://pypi.python.org/packages/source/p/pyxdg/pyxdg-0.25.tar.gz
+	md5sums = bedcdb3a0ed85986d40044c87f23477c
+
+pkgname = python-pyxdg
+
