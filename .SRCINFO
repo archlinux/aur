@@ -1,0 +1,17 @@
+pkgbase = ruby-activesupport-3
+	pkgdesc = A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
+	pkgver = 3.2.21
+	pkgrel = 1
+	url = http://www.rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-i18n
+	depends = ruby-multi_json
+	noextract = activesupport-3.2.21.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activesupport-3.2.21.gem
+	sha1sums = 0a503dfc64a73980b18d799f9b80f02b3b1645b7
+
+pkgname = ruby-activesupport-3
+
