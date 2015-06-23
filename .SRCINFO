@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-switch
+	pkgdesc = Gtk theme switcher
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = http://muhri.net/nav.php3?node=gts
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk
+	source = http://www.muhri.net/gtk-theme-switch-1.0.1.tar.gz
+	md5sums = a1ce98489cbe410c5483e155e5834c46
+
+pkgname = gtk-theme-switch
+
