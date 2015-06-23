@@ -1,0 +1,363 @@
+diff -ruN vdr-sc.orig/cam.c vdr-sc/cam.c
+--- vdr-sc.orig/cam.c	2013-05-04 22:47:03.338513750 +0200
++++ vdr-sc/cam.c	2013-05-04 22:49:16.315041313 +0200
+@@ -2799,10 +2799,19 @@
+ :stall(MAX_STALL_MS)
+ {
+   devId=DevId;
++#ifndef LIBDVBCSA
+   cs=get_suggested_cluster_size();
+   PRINTF(L_CORE_CSA,"%s: clustersize=%d rangesize=%d",devId,cs,cs*2+5);
+   range=MALLOC(unsigned char *,(cs*2+5));
+   memset(keys,0,sizeof(keys));
++#else
++  cs = dvbcsa_bs_batch_size();
++  PRINTF(L_CORE_CSA,"%d: batch_size=%d", devId, cs);
++  cs_tsbbatch_even = (dvbcsa_bs_batch_s *) malloc((cs + 1) * sizeof(struct dvbcsa_bs_batch_s));
++  cs_tsbbatch_odd = (dvbcsa_bs_batch_s *) malloc((cs + 1) * sizeof(struct dvbcsa_bs_batch_s));
++  memset(cs_key_even, 0, sizeof(cs_key_even));
++  memset(cs_key_odd, 0, sizeof(cs_key_odd));
++#endif
+   memset(pidmap,0,sizeof(pidmap));
+   ResetState();
+ }
+@@ -2810,8 +2819,19 @@
+ cDeCSA::~cDeCSA()
+ {
+   for(int i=0; i<MAX_CSA_IDX; i++)
++#ifndef LIBDVBCSA
+     if(keys[i]) free_key_struct(keys[i]);
+   free(range);
++#else
++  {
++    if (cs_key_even[i])
++      dvbcsa_bs_key_free(cs_key_even[i]);
++    if (cs_key_odd[i])
++      dvbcsa_bs_key_free(cs_key_odd[i]);
++  }
++  free(cs_tsbbatch_even);
++  free(cs_tsbbatch_odd);
++#endif
+ }
+ 
+ void cDeCSA::ResetState(void)
+@@ -2819,7 +2839,9 @@
+   PRINTF(L_CORE_CSA,"%s: reset state",devId);
+   memset(even_odd,0,sizeof(even_odd));
+   memset(flags,0,sizeof(flags));
++#ifndef LIBDVBCSA
+   lastData=0;
++#endif
+ }
+ 
+ void cDeCSA::SetActive(bool on)
+@@ -2831,8 +2853,16 @@
+ 
+ bool cDeCSA::GetKeyStruct(int idx)
+ {
++#ifndef LIBDVBCSA
+   if(!keys[idx]) keys[idx]=get_key_struct();
+   return keys[idx]!=0;
++#else
++  if (!cs_key_even[idx])
++    cs_key_even[idx] = dvbcsa_bs_key_alloc();
++  if (!cs_key_odd[idx])
++    cs_key_odd[idx] = dvbcsa_bs_key_alloc();
++  return (cs_key_even[idx] != 0) && (cs_key_odd[idx] != 0);
++#endif
+ }
+ 
+ bool cDeCSA::SetDescr(ca_descr_t *ca_descr, bool initial)
+@@ -2850,13 +2880,21 @@
+       }
+     LDUMP(L_CORE_CSA,ca_descr->cw,8,"%s.%d: %4s key set",devId,idx,ca_descr->parity?"odd":"even");
+     if(ca_descr->parity==0) {
++#ifndef LIBDVBCSA
+       set_even_control_word(keys[idx],ca_descr->cw);
++#else
++      dvbcsa_bs_key_set(ca_descr->cw, cs_key_even[idx]);
++#endif
+       if(!CheckNull(ca_descr->cw,8)) flags[idx]|=FL_EVEN_GOOD|FL_ACTIVITY;
+       else PRINTF(L_CORE_CSA,"%s.%d: zero even CW",devId,idx);
+       wait.Broadcast();
+       }
+     else {
++#ifndef LIBDVBCSA
+       set_odd_control_word(keys[idx],ca_descr->cw);
++#else
++      dvbcsa_bs_key_set(ca_descr->cw, cs_key_odd[idx]);
++#endif
+       if(!CheckNull(ca_descr->cw,8)) flags[idx]|=FL_ODD_GOOD|FL_ACTIVITY;
+       else PRINTF(L_CORE_CSA,"%s.%d: zero odd CW",devId,idx);
+       wait.Broadcast();
+@@ -2875,24 +2913,80 @@
+   return true;
+ }
+ 
++#ifdef LIBDVBCSA
++unsigned char ts_packet_get_payload_offset(unsigned char *ts_packet)
++{
++  if (ts_packet[0] != TS_SYNC_BYTE)
++    return 0;
++
++  unsigned char adapt_field   = (ts_packet[3] &~ 0xDF) >> 5; // 11x11111
++  unsigned char payload_field = (ts_packet[3] &~ 0xEF) >> 4; // 111x1111
++
++  if (!adapt_field && !payload_field)     // Not allowed
++    return 0;
++
++  if (adapt_field)
++  {
++    unsigned char adapt_len = ts_packet[4];
++    if (payload_field && adapt_len > 182) // Validity checks
++      return 0;
++    if (!payload_field && adapt_len > 183)
++      return 0;
++    if (adapt_len + 4 > TS_SIZE)  // adaptation field takes the whole packet
++      return 0;
++    return 4 + 1 + adapt_len;     // ts header + adapt_field_len_byte + adapt_field_len
++  }
++  else
++  {
++    return 4; // No adaptation, data starts directly after TS header
++  }
++}
++#endif
++
+ bool cDeCSA::Decrypt(unsigned char *data, int len, bool force)
+ {
+   cMutexLock lock(&mutex);
++#ifndef LIBDVBCSA
++  if (!range)
++#else
++  if (!cs_tsbbatch_even || !cs_tsbbatch_odd)
++#endif
++  {
++    PRINTF(L_CORE_CSA,"%s: Error allocating memory for DeCSA", __FUNCTION__);
++    return false;
++  }
++
++#ifndef LIBDVBCSA
+   int r=-2, ccs=0, currIdx=-1;
+   bool newRange=true;
+   range[0]=0;
++#else
++  int ccs = 0, currIdx = -1;
++  int payload_len, offset;
++  int cs_fill_even = 0;
++  int cs_fill_odd = 0;
++#endif
+   len-=(TS_SIZE-1);
+   int l;
+   for(l=0; l<len; l+=TS_SIZE) {
+     if(data[l]!=TS_SYNC_BYTE) {       // let higher level cope with that
+       PRINTF(L_CORE_CSA,"%s: garbage in TS buffer",devId);
++#ifndef LIBDVBCSA
+       if(ccs) force=true;             // prevent buffer stall
++#endif
+       break;
+       }
+     unsigned int ev_od=data[l+3]&0xC0;
+     if(ev_od==0x80 || ev_od==0xC0) { // encrypted
++#ifdef LIBDVBCSA
++      offset = ts_packet_get_payload_offset(data + l);
++      payload_len = TS_SIZE - offset;
++#endif
+       int idx=pidmap[((data[l+1]<<8)+data[l+2])&(MAX_CSA_PIDS-1)];
+       if(currIdx<0 || idx==currIdx) { // same or no index
++#ifdef LIBDVBCSA
++        data[l + 3] &= 0x3f;    // consider it decrypted now
++#endif
+         currIdx=idx;
+         if(ccs==0 && ev_od!=even_odd[idx]) {
+           even_odd[idx]=ev_od;
+@@ -2917,20 +3011,38 @@
+             else PRINTF(L_CORE_CSA,"%s.%d: not active. wait skipped",devId,idx);
+             }
+           }
++#ifndef LIBDVBCSA
+         if(newRange) {
+           r+=2; newRange=false;
+           range[r]=&data[l];
+           range[r+2]=0;
+           }
+         range[r+1]=&data[l+TS_SIZE];
++#else
++        if (((ev_od & 0x40) >> 6) == 0)
++        {
++          cs_tsbbatch_even[cs_fill_even].data = &data[l + offset];
++          cs_tsbbatch_even[cs_fill_even].len = payload_len;
++          cs_fill_even++;
++        }
++        else
++        {
++          cs_tsbbatch_odd[cs_fill_odd].data = &data[l + offset];
++          cs_tsbbatch_odd[cs_fill_odd].len = payload_len;
++          cs_fill_odd++;
++        }
++#endif
+         if(++ccs>=cs) break;
+         }
++#ifndef LIBDVBCSA
+       else newRange=true;             // other index, create hole
++#endif
+       }
+     else {                            // unencrypted
+       // nothing, we don't create holes for unencrypted packets
+       }
+     }
++#ifndef LIBDVBCSA
+   int scanTS=l/TS_SIZE;
+   int stallP=ccs*100/scanTS;
+ 
+@@ -2977,6 +3089,26 @@
+       }
+     else PRINTF(L_CORE_CSAVERB,"%s.%d: incomplete ccs=%3d cs=%3d",devId,currIdx,ccs,cs);
+     }
++#else
++  if (GetKeyStruct(currIdx))
++  {
++    if (cs_fill_even)
++    {
++      cs_tsbbatch_even[cs_fill_even].data = NULL;
++      dvbcsa_bs_decrypt(cs_key_even[currIdx], cs_tsbbatch_even, 184);
++      cs_fill_even = 0;
++    }
++    if (cs_fill_odd)
++    {
++      cs_tsbbatch_odd[cs_fill_odd].data = NULL;
++      dvbcsa_bs_decrypt(cs_key_odd[currIdx], cs_tsbbatch_odd, 184);
++      cs_fill_odd = 0;
++    }
++
++    stall.Set(MAX_STALL_MS);
++    return true;
++  }
++#endif
+   return false;
+ }
+ 
+diff -ruN vdr-sc.orig/cam.h vdr-sc/cam.h
+--- vdr-sc.orig/cam.h	2013-05-04 22:47:03.631830306 +0200
++++ vdr-sc/cam.h	2013-05-04 22:49:16.315041313 +0200
+@@ -235,15 +235,28 @@
+ 
+ #ifndef SASC
+ 
++#ifdef LIBDVBCSA
++extern "C" {
++#include <dvbcsa/dvbcsa.h>
++}
++#endif
++
+ #define MAX_CSA_PIDS 8192
+ #define MAX_CSA_IDX  16
+ 
+ class cDeCSA {
+ private:
+   int cs;
++#ifndef LIBDVBCSA
+   unsigned char **range, *lastData;
+-  unsigned char pidmap[MAX_CSA_PIDS];
+   void *keys[MAX_CSA_IDX];
++#else
++  struct dvbcsa_bs_batch_s *cs_tsbbatch_even;
++  struct dvbcsa_bs_batch_s *cs_tsbbatch_odd;
++  struct dvbcsa_bs_key_s *cs_key_even[MAX_CSA_IDX];
++  struct dvbcsa_bs_key_s *cs_key_odd[MAX_CSA_IDX];
++#endif
++  unsigned char pidmap[MAX_CSA_PIDS];
+   unsigned int even_odd[MAX_CSA_IDX], flags[MAX_CSA_IDX];
+   cMutex mutex;
+   cCondVar wait;
+diff -ruN vdr-sc.orig/device.c vdr-sc/device.c
+--- vdr-sc.orig/device.c	2013-05-04 22:47:03.338513750 +0200
++++ vdr-sc/device.c	2013-05-04 22:49:16.318374424 +0200
+@@ -52,7 +52,7 @@
+   SetDescription("TS buffer on device %d", CardIndex);
+   f=File; size=Size; cardIndex=CardIndex; decsa=DeCsa;
+   delivered=false;
+-  ringBuffer=new cRingBufferLinear(Size,TS_SIZE,true,"FFdecsa-TS");
++  ringBuffer=new cRingBufferLinear(Size,TS_SIZE,true,RINGBUFFERNAME);
+   ringBuffer->SetTimeouts(100,100);
+   if(decsa) decsa->SetActive(true);
+   SetActive(ScActive);
+diff -ruN vdr-sc.orig/device.h vdr-sc/device.h
+--- vdr-sc.orig/device.h	2013-05-04 22:47:03.628497164 +0200
++++ vdr-sc/device.h	2013-05-04 22:49:16.318374424 +0200
+@@ -25,6 +25,12 @@
+ #include <vdr/thread.h>
+ #include "misc.h"
+ 
++#ifndef LIBDVBCSA
++#define RINGBUFFERNAME "FFdecsa-TS"
++#else
++#define RINGBUFFERNAME "libdvbcsa-ts"
++#endif
++
+ class cDeCSA;
+ 
+ // ----------------------------------------------------------------
+diff -ruN vdr-sc.orig/Makefile vdr-sc/Makefile
+--- vdr-sc.orig/Makefile	2013-05-04 22:47:03.628497164 +0200
++++ vdr-sc/Makefile	2013-05-04 22:55:28.510416219 +0200
+@@ -143,19 +143,23 @@
+   DEFINES += -DVDR_MAXCAID=$(MAXCAID)
+ endif
+ 
++ifndef LIBDVBCSA
+ # FFdeCSA
+-CPUOPT     ?= pentium
+-PARALLEL   ?= PARALLEL_32_INT
+-CSAFLAGS   ?= -Wall -fPIC -g -O3 -mmmx -fomit-frame-pointer -fexpensive-optimizations -funroll-loops
++PARALLEL   ?= PARALLEL_128_SSE2
++CSAFLAGS   ?= -fexpensive-optimizations -funroll-loops -mmmx -msse -msse2 -msse3
+ FFDECSADIR  = FFdecsa
+ FFDECSA     = $(FFDECSADIR)/FFdecsa.o
+-FFDECSATEST = $(FFDECSADIR)/FFdecsa_test.done
++DECSALIB    = $(FFDECSA)
++else
++# libdvbcsa
++DECSALIB    = -ldvbcsa
++DEFINES    += -DLIBDVBCSA
++endif
+ 
+ # SASC
+ ifdef SASC
+ DEFINES += -DSASC
+ FFDECSA =
+-FFDECSATEST =
+ endif
+ 
+ # export for system makefiles
+@@ -175,7 +179,7 @@
+ else
+ BUILDTARGETS = $(LIBDIR)/libvdr-$(PLUGIN).so.$(APIVERSION) systems-pre $(DEVPLUGTARGETS)
+ endif
+-BUILDTARGETS += $(FFDECSATEST) systems i18n
++BUILDTARGETS += systems i18n
+ 
+ all: $(BUILDTARGETS)
+ .PHONY: i18n systems systems-pre contrib clean clean-core clean-systems clean-pre dist srcdist
+@@ -196,7 +200,7 @@
+ 	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(SHAREDDEFINES) $(INCLUDES) $<
+ 
+ libvdr-$(PLUGIN).so: $(OBJS) $(FFDECSA)
+-	$(CXX) $(CXXFLAGS) -shared $(OBJS) $(FFDECSA) $(LIBS) $(SHAREDLIBS) -o $@
++	$(CXX) $(CXXFLAGS) -shared $(OBJS) $(DECSALIB) $(LIBS) $(SHAREDLIBS) -o $@
+ 
+ $(LIBDIR)/libvdr-$(PLUGIN).so.$(APIVERSION): libvdr-$(PLUGIN).so
+ 	@cp -p $< $@
+@@ -216,8 +220,10 @@
+ $(LIBDIR)/libsc-dvbhddevice-$(SCAPIVERS).so.$(APIVERSION): libsc-dvbhddevice.so
+ 	@cp -p $< $@
+ 
+-$(FFDECSA) $(FFDECSATEST): $(FFDECSADIR)/*.c $(FFDECSADIR)/*.h
+-	@$(MAKE) COMPILER="$(CXX)" FLAGS="$(CSAFLAGS) -march=$(CPUOPT)" PARALLEL_MODE=$(PARALLEL) -C $(FFDECSADIR) all
++ifndef LIBDVBCSA
++$(FFDECSA): $(FFDECSADIR)/*.c $(FFDECSADIR)/*.h
++	@$(MAKE) COMPILER="$(CXX)" FLAGS="$(CXXFLAGS) $(CSAFLAGS)" PARALLEL_MODE=$(PARALLEL) -C $(FFDECSADIR) all
++endif
+ 
+ $(I18Npot): $(shell grep -rl '\(tr\|trNOOP\)(\".*\")' *.c $(SYSDIR))
+ 	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --package-name=VDR-SC --package-version=$(VERSION) --msgid-bugs-address='<noone@nowhere.org>' -o $@ `ls $^`

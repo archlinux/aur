@@ -1,0 +1,29 @@
+pkgbase = vdr-sc
+	pkgdesc = Software CAM emulation
+	pkgver = 20120721
+	pkgrel = 12
+	url = http://207.44.152.197/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = mercurial
+	depends = libdvbcsa
+	depends = openssl
+	depends = vdr-api=2.1.6
+	backup = etc/vdr/conf.avail/20-sc.conf
+	source = vdr-sc::hg+http://85.17.209.13:6100#revision=29b7b5f2
+	source = ftp://ftp.tvdr.de/vdr/Developer/vdr-2.1.6.tar.bz2
+	source = http://data.gpo.zugaina.org/vdr-devel/media-plugins/vdr-sc/files/vdr-sc-0.9.3.20120815_vdr-2.1.4_compilefix.diff
+	source = Add_libdvbcsa_support.diff
+	source = 20-sc.conf
+	md5sums = SKIP
+	md5sums = 79519dac59166fabc2029b916bd61d00
+	md5sums = 529bc4056e2be62904f676780ea2fbc8
+	md5sums = b00108754f574c0773d30e288b703045
+	md5sums = 397dfba03003ba28c5f95d0855497d78
+
+pkgname = vdr-sc
+
