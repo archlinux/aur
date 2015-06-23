@@ -1,0 +1,19 @@
+pkgbase = ruby-sprinkle
+	pkgdesc = Ruby DSL based software provisioning tool
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/sprinkle-tool/sprinkle
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-erubis
+	depends = ruby-open4
+	depends = ruby-activesupport
+	depends = ruby-highline
+	depends = ruby-capistrano-2
+	source = https://rubygems.org/downloads/sprinkle-0.7.7.gem
+	noextract = sprinkle-0.7.7.gem
+	options = !emptydirs
+
+pkgname = ruby-sprinkle
+
