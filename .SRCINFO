@@ -1,0 +1,20 @@
+pkgbase = xunlei-lixian-git
+	pkgdesc = A python script for Xunlei lixian.
+	pkgver = r621.ac605e8
+	pkgrel = 1
+	url = https://github.com/iambus/xunlei-lixian/
+	install = xunlei-lixian-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = wget
+	optdepends = aria2: better download performance
+	optdepends = axel: better download performance
+	source = git+https://github.com/iambus/xunlei-lixian.git
+	source = xunlei-lixian-git.install
+	sha256sums = SKIP
+	sha256sums = 9d806e9a4dc66105c052a5941de67c8f51f62f25de5a218cb47936d47434bb75
+
+pkgname = xunlei-lixian-git
+
