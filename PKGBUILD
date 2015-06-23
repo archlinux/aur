@@ -1,4 +1,4 @@
-# Maintainer: Vojtech Kral <vojtech.kral at gmail>
+# Maintainer: Vojtech Kral <vojtech_kral^hk>
 
 pkgname=akonadi-fake
 pkgver=1000.0.0
@@ -15,5 +15,3 @@ package()
 {
   true
 }
-
-# vim:set ts=2 sw=2 et:
