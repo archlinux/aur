@@ -1,0 +1,24 @@
+pkgbase = okular-git
+	pkgdesc = KDE document viewer
+	pkgver = 20140311
+	pkgrel = 1
+	url = http://kde.org/
+	arch = i686
+	arch = x86_64
+	groups = kde4-git
+	license = GPL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdebase-runtime
+	depends = qimageblitz
+	depends = poppler-qt
+	depends = chmlib
+	depends = djvulibre
+	depends = ebook-tools
+	depends = libspectre
+	provides = kdegraphics-okular
+	conflicts = kdegraphics-okular
+
+pkgname = okular-git
+
