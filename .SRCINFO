@@ -1,0 +1,18 @@
+pkgbase = vdr-plugin-upnp-git
+	pkgdesc = For archvdr project!!! UPnP plugin for VDR
+	pkgver = 20130105
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/plg-upnp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vdr>=1.7.27libupnp
+	depends = sqlite
+	depends = boost-libs
+	depends = tnt
+	depends = tntdb
+	conflicts = vdr-plugin-upnp
+
+pkgname = vdr-plugin-upnp-git
+
