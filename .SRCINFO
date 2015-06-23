@@ -1,0 +1,20 @@
+pkgbase = hid-replay-git
+	pkgdesc = HID event recorder and utilities.
+	pkgver = 0.7.1.r0.g241710c
+	pkgrel = 1
+	url = https://github.com/bentiss/hid-replay/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	optdepends = xmlto: build manpages
+	optdepends = asciidoc: build manpages
+	provides = hid-replay
+	conflicts = hid-replay
+	options = !libtool
+	source = hid-replay-git::git://github.com/bentiss/hid-replay.git#branch=master
+	md5sums = SKIP
+
+pkgname = hid-replay-git
+
