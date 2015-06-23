@@ -1,0 +1,9 @@
+
+post_install() {
+    /opt/WhatsAppForDesktop/after-install.sh
+}
+
+post_remove() {
+    rm -f /usr/local/bin/whatsappfordesktop
+    rm -f /usr/share/applications/whatsappfordesktop.desktop
+}
