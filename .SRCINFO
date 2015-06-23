@@ -1,0 +1,22 @@
+pkgbase = edbrowse-git
+	pkgdesc = Editor, browser, and mail client based on /bin/ed.
+	pkgver = 3.5.4.r15.gfd29362
+	pkgrel = 1
+	url = http://edbrowse.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = openssl
+	makedepends = git
+	depends = js>=2.4
+	depends = openssl
+	depends = pcre
+	depends = curl>=7.17.0
+	depends = readline
+	provides = edbrowse
+	conflicts = edbrowse
+	source = edbrowse-git::git+https://github.com/CMB/edbrowse
+	md5sums = SKIP
+
+pkgname = edbrowse-git
+
