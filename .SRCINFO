@@ -1,0 +1,17 @@
+pkgbase = cpulimit-git
+	pkgdesc = Limit cpu usage in %. Actualy sends SIGSTOP/SIGCONT
+	pkgver = 92.49d7c69
+	pkgrel = 2
+	url = https://github.com/opsengine/cpulimit
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = cpulimit
+	conflicts = cpulimit
+	source = cpulimit-git::git+git://github.com/opsengine/cpulimit.git
+	md5sums = SKIP
+
+pkgname = cpulimit-git
+
