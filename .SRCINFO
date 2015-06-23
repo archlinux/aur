@@ -1,0 +1,17 @@
+pkgbase = gns3-launcher-icons
+	pkgdesc = Graphical network simulator - desktop launcher and icons ressource
+	pkgver = 0.8.6
+	pkgrel = 2
+	url = http://www.gns3.net/
+	install = gns3-launcher-icons.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gns3
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	source = http://ppa.launchpad.net/gns3/ppa/ubuntu/pool/main/g/gns3/gns3_0.8.6-1~ppa4.debian.tar.gz
+	md5sums = c5bfc765c470ba39c3baa73fc978b111
+
+pkgname = gns3-launcher-icons
+
