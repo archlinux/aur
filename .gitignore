@@ -1,0 +1,5 @@
+satanic-gnome-themes-*.tar.*
+satanic-gnome-themes*.deb
+*.swp
+src/
+pkg/
