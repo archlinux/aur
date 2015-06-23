@@ -1,9 +1,9 @@
 # Maintainer: Alexiobash <me@alexiobash.com>
-# http://alexiobash.com/anonimato-con-tor-browser-su-archlinux/
+
 pkgname='tor-browser-it'
-pkgver='4.5.1'
+pkgver='4.5.2'
 _language='it'
-pkgrel=2
+pkgrel=3
 pkgdesc='Tor Browser Bundle: browsing anonimo usando firefox e tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
@@ -31,9 +31,9 @@ source+=("${pkgname}.desktop"
 md5sums=('f0cfc7681d58a77251abc49b250802d3'
          '494afbfa60fb4ce21840244cc3f7208c'
          'bb53b2544e2038943e703c7c6ccf48a1')
-md5sums_x86_64=('6addd8fc5b3c5c525d8126882b16a9bd'
+md5sums_x86_64=('38c97d9964019a6cf965dced0fdf41de'
                 'SKIP')
-md5sums_i686=('3449b2d8ccbf754b9fa234295fa19d5e'
+md5sums_i686=('2e4a3cd8e75f33b02f4cc84714be4748'
               'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
