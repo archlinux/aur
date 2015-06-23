@@ -1,0 +1,4 @@
+post_install() {
+echo "You need an API key in your config file before you can run wego."
+echo "Vist https://github.com/schachmat/wego and read setup section."
+}
