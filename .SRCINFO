@@ -1,0 +1,17 @@
+pkgbase = irssistats
+	pkgdesc = Parses irssi log files as stats presented in HTML
+	pkgver = 0.75
+	pkgrel = 2
+	url = http://royale.zerezo.com/irssistats/
+	install = irssistats.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = irssi
+	source = irssistats.install
+	source = http://royale.zerezo.com/irssistats/irssistats-0.75.tar.gz
+	md5sums = ba71de6c892f886cf0a5b49d7eacbb49
+	md5sums = f3654fd292220bd9adada7ff6c7f0421
+
+pkgname = irssistats
+

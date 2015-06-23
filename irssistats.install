@@ -1,0 +1,4 @@
+post_install() {
+    echo " Sample configuration files installed in /etc/irssistats"
+    echo " HTML files installed to /etc/webapps" 
+}
