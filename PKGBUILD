@@ -1,6 +1,6 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=tlocate
-pkgver=r13.3d13e3e
+pkgver=r14.7138702
 pkgrel=1
 pkgdesc="mlocate rewritten using only GNU coreutils, sudo and bash with proper btrfs subvolume handling, semi-arbitrary filtering and other improvements"
 arch=('any')
