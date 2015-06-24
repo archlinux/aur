@@ -1,0 +1,14 @@
+pkgbase = xmms-skins-huge
+	pkgdesc = Over 680 home-made skin collection for XMMS
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://xmms.org/skins.php
+	arch = any
+	license = GPL
+	depends = xmms
+	depends = unzip
+	source = http://webs.ono.com/supercarlos/xmms-skins-huge-src-1.0.0.tar.gz
+	sha256sums = 954e874a9bc712297508273998eec47aed113ca9c3fb1c0a83f682ba05da71e4
+
+pkgname = xmms-skins-huge
+
