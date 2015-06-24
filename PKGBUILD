@@ -13,7 +13,7 @@ install=rutorrent.install
 options=(!strip)
 
 depends=('php' 'curl' 'mktorrent')
-makedepends=('git' 'subversion')
+makedepends=('git')
 optdepends=('php-geoip: enable geoip plugin'
             'geoip: enable geoip plugin'
             'unrar: enable unpack plugin'
@@ -27,22 +27,20 @@ backup=("${_webdir}/rutorrent/conf/config.php"
         "${_webdir}/rutorrent/conf/access.ini"
         "${_webdir}/rutorrent/conf/plugins.ini")
 
-_plugins=('filemanager' 'fileshare' 'fileupload' 'mediastream' 'titlebar')
+_plugins=('extra/filemanager'
+          'extra/fileshare'
+          'extra/fileupload'
+          'extra/mediastream'
+          'titlebar')
 
 source=("plugins.ini"
         "https://raw.githubusercontent.com/weixiyen/jquery-filedrop/master/jquery.filedrop.js"
         "rutorrent::git+https://github.com/Novik/ruTorrent.git"
         "titlebar::git+https://github.com/SanKen/rutorrent-titlebar.git"
-        "filemanager::svn+http://svn.rutorrent.org/svn/filemanager/trunk/filemanager"
-        "fileshare::svn+http://svn.rutorrent.org/svn/filemanager/trunk/fileshare"
-        "fileupload::svn+http://svn.rutorrent.org/svn/filemanager/trunk/fileupload"
-        "mediastream::svn+http://svn.rutorrent.org/svn/filemanager/trunk/mediastream")
+        "extra::git+https://github.com/nelu/rutorrent-thirdparty-plugins.git")
 
 md5sums=('a3efa833b362ac7f3ff69ddaa720de81'
          '020b0c3fc1220d490992473a75485add'
-         'SKIP'
-         'SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -63,14 +61,13 @@ prepare() {
         -e "s:\$XMLRPCMountPoint .*:\$XMLRPCMountPoint = \"/rutorrent/RPC1\";:" \
         -e "s:\$tempDirectory .*:\$tempDirectory = '/${_webdir}/rutorrent/tmp';:"
 
-
     for i in php stat curl id gzip; do
         sed -i conf/config.php \
             -e "s:\"$i\".*=> ''.*:\"$i\"   => \'$(which $i)\',:"
     done
 
     for i in rar zip unzip unrar tar; do
-        sed -i ../filemanager/conf.php \
+        sed -i ../extra/filemanager/conf.php \
             -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '$(which $i)':"
         sed -i plugins/unpack/conf.php \
             -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '$(which $i)':"
@@ -95,16 +92,22 @@ package() {
     cd "$srcdir/rutorrent/plugins"
 
     for i in ${_plugins[@]}; do
-        cp -r "$srcdir/$i" .
+        rm -rf "$srcdir/$i/.git"
+        cp -r  "$srcdir/$i" .
     done
-    cp -f "$srcdir/jquery.filedrop.js" filedrop/jquery.filedrop.js
+
+    cp -f  "$srcdir/jquery.filedrop.js" filedrop/jquery.filedrop.js
 
     install -dm755 "$pkgdir/$_webdir"
+
     cd "$pkgdir/$_webdir"
 
     cp -r "$srcdir/rutorrent" .
     rm -r rutorrent/{.git*,README*}
 
-    install -Dm755 "$srcdir/plugins.ini" rutorrent/conf/plugins.ini
-    mkdir -p rutorrent/tmp
+    cd rutorrent
+
+    install -Dm755 "$srcdir/plugins.ini" conf/plugins.ini
+    mkdir -p tmp
+    cp share/.htaccess tmp/
 }
