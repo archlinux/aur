@@ -1,0 +1,22 @@
+pkgbase = brother-ql500-lpr
+	pkgdesc = Brother LPR driver for P-Touch QL-500 labelprinter
+	pkgver = 1.0.1
+	pkgrel = 7
+	url = http://solutions.brother.com/linux/en_us/
+	install = lpr.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = cups
+	depends = ghostscript
+	noextract = ql500lpr-1.0.1-0.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/ql500lpr-1.0.1-0.i386.rpm
+	source = license.txt
+	source = lpr.install
+	md5sums = cfbe68328d8ef6afb1e05e6b7642f02f
+	md5sums = 47cf89c2ae034aaf18ea0a6379c897da
+	md5sums = e64e7a8c9f8201221e814c81d8ba3796
+
+pkgname = brother-ql500-lpr
+

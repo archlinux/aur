@@ -1,0 +1,18 @@
+# Install file for brother-ql500-lpr
+
+post_install() {
+	useradd -s /bin/false -g lp lp
+	mkdir -p /var/spool/lpd/ql500
+	ln -s /usr/share/brother/ /opt/
+	chown lp:lp /usr/share/brother/PTouch/ql500/inf
+	chmod 775 /usr/share/brother/PTouch/ql500/inf
+	chown lp:lp /usr/share/brother/PTouch/ql500/inf/brql500rc
+	chmod 664 /usr/share/brother/PTouch/ql500/inf/brql500rc
+	/usr/share/brother/PTouch/ql500/inf/setupPrintcappt1 ql500 -i USB
+}
+
+pre_remove() {
+	rm -rf /var/spool/lpd/ql500
+	rm -f /opt/brother
+	/usr/share/brother/PTouch/ql500/inf/setupPrintcappt1 ql500 -e
+}
