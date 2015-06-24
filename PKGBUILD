@@ -7,6 +7,7 @@ arch=('any')
 url="http://www.catb.org/esr/coverity-submit/"
 license=('BSD')
 depends=('python2' 'curl')
+optdepends=('cov-analysis: available after login at coverity')
 makedepends=('pychecker')
 source=(http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('afc40b86f9911617b5c309d3330a65c8')
