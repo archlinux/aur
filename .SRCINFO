@@ -1,0 +1,15 @@
+pkgbase = ruby-gpgme-1
+	pkgdesc = Ruby-GPGME is a Ruby language binding of GPGME (GnuPG Made Easy)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://rubyforge.org/projects/ruby-gpgme/
+	arch = i686
+	arch = x86_64
+	depends = ruby
+	noextract = gpgme-1.0.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gpgme-1.0.8.gem
+	sha1sums = a9fd66e94bf78089e262823d329c308e0755d038
+
+pkgname = ruby-gpgme-1
+
