@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=4064.5832e84
+pkgver=4067.452644c
 pkgrel=1
 pkgdesc="A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL"
 arch=(any)
