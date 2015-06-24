@@ -1,0 +1,24 @@
+_svc=('salt-master' 'salt-minion' 'salt-syncdic')
+_rlvl="default"
+
+post_install() {
+	_cmd="rc-update add ${_svc[0]} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update add ${_svc[1]} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update add ${_svc[2]} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc[0]} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update del ${_svc[1]} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update del ${_svc[2]} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}

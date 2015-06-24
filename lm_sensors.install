@@ -1,0 +1,28 @@
+_svc=('lm_sensors' 'fancontrol' 'sensord')
+_rlvl=('boot' 'default')
+
+post_install() {
+	_cmd="rc-update add ${_svc[0]} ${_rlvl[0]}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update add ${_svc[1]} ${_rlvl[1]}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update add ${_svc[2]} ${_rlvl[1]}"
+	echo "	==> run '${_cmd}'"
+	
+	
+	echo "To set command args for ${_svc[2]}, add 'SENSORD_OPTIONS=""'"
+	echo "to /etc/conf.d/sensord"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc[0]} ${_rlvl[0]}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update del ${_svc[1]} ${_rlvl[1]}"
+	echo "	==> run '${_cmd}'"
+	_cmd="rc-update del ${_svc[2]} ${_rlvl[1]}"
+	echo "	==> run '${_cmd}'"
+}

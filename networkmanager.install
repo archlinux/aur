@@ -1,0 +1,19 @@
+_svc="NetworkManager"
+_rlvl="default"
+
+post_install() {
+	_cmd="rc-update add ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}
+
+post_upgrade() {
+	# For transition from old nm-openrc
+	oldpkgver=${2%-*}
+	[ "$oldpkgver" -lt 20150118 ] && rc-update del networkmanager
+	post_install "$1"
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}

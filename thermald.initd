@@ -1,0 +1,7 @@
+#!/usr/bin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/thermald"
+command_args="--dbus-enable"
+start_stop_daemon_args="--quiet"
