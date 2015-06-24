@@ -6,31 +6,25 @@ pkgbase=cndrvcups-common-lb
 pkgname=cndrvcups-common-lb
 # used this name to avoid conflict with the existing cndrvcups-common (no longer in aur) which was wrong version for cndrvcups-lb
 _pkgname=cndrvcups-common
-pkgver=2.90
+pkgver=3.10
 pkgrel=1
 pkgdesc="Common printer driver modules for cndrvcups-lb package, built from source"
 arch=('i686' 'x86_64')
 url="http://support-au.canon.com.au/contents/AU/EN/0100270808.html"
 license=('GPL' 'MIT' 'custom')
-  depends=('libglade')
-if [[ ${CARCH} == "i686" ]]; then
-  depends+=('gcc-libs')
-  _lib32dir="lib"
-else
-  depends+=('lib32-gcc-libs')
-  _lib32dir="lib32"
-fi
+depends_i686=('libglade' 'gcc-libs')
+depends_x86_64=('libglade' 'lib32-gcc-libs')
 makedepends=('automake' 'autoconf')
 conflicts=('cndrvcups-lb-bin')
-#source=(Linux_UFRII_PrinterDriver_V290_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEw&cmp=ABS&lang=EN')
-source=(Linux_UFRII_PrinterDriver_V290_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEx&cmp=ABS&lang=EN')
+#source=(Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEy&cmp=ABS&lang=EN')
+source=(Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEy&cmp=ABS&lang=EN')
 options=('!emptydirs' '!strip' 'staticlibs')
-sha512sums=('23181155f5719fa0a9c216c058be749b5faaa8ee745d260eba2e5e284ef4ff161e344289a7c301a2d74cc919c5031763b0daf41cd07686cfdce188492a9b34b2')
+sha512sums=('08139f53b841a1b1bc32b15c6699cea21484c3d8a92a12e196446570ebd1a6f8e2a8ae6984bd3841055edd66399960c438f61c36159f423a8e5510ed3c2d046f')
 
 # build instructions are adapted from upstream cndrvcups-common.spec file
 
 prepare() {
-    cd "${srcdir}"/Linux_UFRII_PrinterDriver_V290_uk_EN/Sources
+    cd "${srcdir}"/Linux_UFRII_PrinterDriver_V300_uk_EN/Sources
     tar xf "${_pkgname}"-"${pkgver}"-1.tar.gz -C "${srcdir}"
 }
 
@@ -62,9 +56,14 @@ package()
 
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
     mkdir -p "${pkgdir}"/usr/{bin,lib/cups/backend,include}
-    if [[ ${CARCH}=="x86_64" ]]; then
+    
+    if [[ ${CARCH} == "i686" ]]; then
+      _lib32dir="lib"
+    else
+      _lib32dir="lib32"
       mkdir -p "${pkgdir}"/usr/"${_lib32dir}"
     fi
+
     mkdir -p "${pkgdir}"/usr/share/{caepcm,cngplp,locale/ja/LC_MESSAGES}
 
     make install DESTDIR="${pkgdir}"
@@ -110,7 +109,10 @@ package()
     ln -sf libcanonc3pl.so.1.0.0    libcanonc3pl.so
     ln -sf libcanonc3pl.so.1.0.0    libcanonc3pl.so.1
     
+    # according to gentoo ebuild (for 2.90 )c3pldrv dlopens the absolute path /usr/lib/libc3pl.so
+    ln -s /usr/lib32/libc3pl.so libc3pl.so
+    
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
     install -m755 -d "${pkgdir}"/usr/share/licenses/"${pkgname}"
-    install -m755 LICENSE-common-"${pkgver}"* "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -m755 LICENSE-* "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
