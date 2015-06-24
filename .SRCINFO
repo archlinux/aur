@@ -1,0 +1,13 @@
+pkgbase = keepass-plugin-dbbackup
+	pkgdesc = Creates backups of modified databases
+	pkgver = 2.0.8.6
+	pkgrel = 2
+	url = http://keepass.info/plugins.html#databasebackup
+	arch = any
+	license = GPLv2
+	depends = keepass>=2.27
+	source = http://keepass.info/extensions/v2/databasebackup/DataBaseBackup-2.0.8.6.zip
+	md5sums = 69b8e7d8e76cbe1088f7630d202b250c
+
+pkgname = keepass-plugin-dbbackup
+
