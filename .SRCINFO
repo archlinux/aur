@@ -1,0 +1,34 @@
+pkgbase = mingw-w64-popt
+	pkgdesc = A commandline option parser (mingw-w64)
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://rpm5.org
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://rpm5.org/files/popt/popt-1.16.tar.gz
+	source = 0001-nl_langinfo.mingw32.patch
+	source = 197416.all.patch
+	source = 217602.all.patch
+	source = 278402-manpage.all.patch
+	source = 318833.all.patch
+	source = 356669.all.patch
+	source = 367153-manpage.all.patch
+	source = get-w32-console-maxcols.mingw32.patch
+	source = no-uid-stuff-on.mingw32.patch
+	sha1sums = cfe94a15a2404db85858a81ff8de27c8ff3e235e
+	sha1sums = 62640c0a0845cea5f3cd5646d26fd681ea36cadf
+	sha1sums = bd7c8872f0bb80ec2a8b78596eb3ba5706795133
+	sha1sums = 977fbbe108cf817103f706dd314236e6bace7557
+	sha1sums = 18d169ff43b6ef4ee613272fdb2bbdc01df1f166
+	sha1sums = a446c763439fe97459c6ea9bea22054a69ea9cc6
+	sha1sums = 2664b32cd6882e3c7da2d1ed3d40b14807a2c604
+	sha1sums = 63e5fdae8160445794458b03fc5a61e7354efada
+	sha1sums = 6599adf3797d7bfb4534bc910372c431fc0efced
+	sha1sums = 4c3b7b302044bd45decec78f7f7d4ece15d9f3f7
+
+pkgname = mingw-w64-popt
+
