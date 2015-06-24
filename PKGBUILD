@@ -1,26 +1,18 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
 # Contributor: Eduardo Robles Elvira <edulix AT gmail DOT com>
 # Contributor: Jon Nordby <jononor@gmail.com>
-pkgname=obs-build-git
-pkgver=2.5.0_325.g402588e
+pkgname=obs-build
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="Building part of the OpenSUSE Build Service, osc-build - git version"
+pkgdesc="Building part of the OpenSUSE Build Service, osc-build"
 url="http://build.opensuse.org"
 arch=(any)
 license=("GPL")
 depends=(bash perl rpm-org xz)
-makedepends=(git)
-provides=(obs-build)
-conflicts=(obs-build)
-source=('git+https://github.com/openSUSE/obs-build.git')
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/obs-build"
-  git describe --tags | sed -e 's/obs_//g' -e 's/-/_/' -e 's/-/./g' -e 's/$v//g'
-}
+source=("https://github.com/openSUSE/$pkgname/archive/obs_${pkgver}.tar.gz")
+sha256sums=('98b6fe50367805e588c05ae47d78da576a753c5cc32861c99e559dcef79ef328')
 
 package() {
-  cd "$srcdir/obs-build"
+  cd "$srcdir/$pkgname-obs_${pkgver}"
   make install DESTDIR="$pkgdir"
 }
