@@ -1,0 +1,15 @@
+pkgbase = python2-elementtidy
+	pkgdesc = The ElementTidy parser can read (almost) arbitrary HTML files, and turn them into well-formed element trees.
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://effbot.org/zone/element-tidylib.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = setuptools
+	depends = python2
+	source = http://effbot.org/media/downloads/elementtidy-1.0-20050212.zip
+	md5sums = b36db272e051156f9c66b8472c43bf64
+
+pkgname = python2-elementtidy
+
