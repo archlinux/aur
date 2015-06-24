@@ -1,0 +1,14 @@
+Avoid linking against libformw.  This was indicated by dpkg-shlibdeps.
+
+ -- Rafael Laboissiere <rafael@debian.org>  Fri, 13 Feb 2009 18:22:28 +0100
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,6 @@
+ AC_CHECK_LIB(vc, vc_new)
+ AC_CHECK_LIB(ncursesw, newwin)
+ AC_CHECK_LIB(menuw, new_menu)
+-AC_CHECK_LIB(formw, new_form)
+ CFLAGS="$CFLAGS -I/usr/include/ncursesw/"
+ 
+ # Glib settings

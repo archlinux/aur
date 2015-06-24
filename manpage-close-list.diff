@@ -1,0 +1,23 @@
+Close unended lists 
+
+ -- Rafael Laboissiere <rafael@debian.org>  Mon, 30 Jun 2008 16:46:12 +0200
+
+Index: rolo-011.dfsg.1/doc/rolo.1
+===================================================================
+--- rolo-011.dfsg.1.orig/doc/rolo.1	2008-06-30 16:47:37.000000000 +0200
++++ rolo-011.dfsg.1/doc/rolo.1	2008-06-30 16:47:53.000000000 +0200
+@@ -42,12 +42,14 @@
+ to invoke when displaying contact entries in advanced edit. If
+ ROLO_EDITOR is not set, then EDITOR is used. If EDITOR is also not
+ set, the default value of vi is used.
++.El
+ .Sh FILES
+ .Bl -tag -width "~/.rolo/contacts.vcf" -compact
+ .It Pa ~/.rolo/rolorc
+ Rolo configuration file.
+ .It Pa ~/.rolo/contacts.vcf
+ Default data file that rolo reads upon startup.
++.El
+ .Sh SEE ALSO
+ .Xr vi 1
+ .Sh AUTHORS

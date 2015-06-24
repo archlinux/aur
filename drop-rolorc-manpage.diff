@@ -1,0 +1,19 @@
+Remove the references to ~/.rolorc in the man page.  This file is
+not used by rolo and the mention to it in the man page is
+probably a mistake from the upstream author (closes: #421926).
+
+ -- Rafael Laboissiere <rafael@debian.org>  Mon, 30 Jun 2008 16:46:12 +0200
+
+Index: rolo-011.dfsg.1/doc/rolo.1
+===================================================================
+--- rolo-011.dfsg.1.orig/doc/rolo.1	2008-06-30 16:49:08.000000000 +0200
++++ rolo-011.dfsg.1/doc/rolo.1	2008-06-30 16:49:14.000000000 +0200
+@@ -45,8 +45,6 @@
+ .El
+ .Sh FILES
+ .Bl -tag -width "~/.rolo/contacts.vcf" -compact
+-.It Pa ~/.rolo/rolorc
+-Rolo configuration file.
+ .It Pa ~/.rolo/contacts.vcf
+ Default data file that rolo reads upon startup.
+ .El

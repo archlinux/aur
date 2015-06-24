@@ -1,0 +1,20 @@
+Use libncursesw instead of libncurses, in order to get UTF-8 support
+
+ -- Rafael Laboissiere <rafael@debian.org>  Thu, 12 Feb 2009 00:22:58 +0100
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,9 +14,10 @@
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB(vc, vc_new)
+-AC_CHECK_LIB(ncurses, newwin)
+-AC_CHECK_LIB(menu, new_menu)
+-AC_CHECK_LIB(form, new_form)
++AC_CHECK_LIB(ncursesw, newwin)
++AC_CHECK_LIB(menuw, new_menu)
++AC_CHECK_LIB(formw, new_form)
++CFLAGS="$CFLAGS -I/usr/include/ncursesw/"
+ 
+ # Checks for header files.
+ AC_HEADER_STDC

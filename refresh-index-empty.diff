@@ -1,0 +1,19 @@
+Avoid a segmentation fault when deleting a record in a vcf file containing
+that single record (closes: #415737)
+
+ -- Rafael Laboissiere <rafael@debian.org>  Mon, 30 Jun 2008 16:46:12 +0200
+
+Index: rolo-011.dfsg.1/src/index.c
+===================================================================
+--- rolo-011.dfsg.1.orig/src/index.c	2008-06-30 16:48:31.000000000 +0200
++++ rolo-011.dfsg.1/src/index.c	2008-06-30 16:48:37.000000000 +0200
+@@ -616,7 +616,8 @@
+ 
+   items = menu_items (menu);
+   current_index = current_index >= count ? count : current_index;
+-  set_current_item (menu, items[current_index]);
++  if (items != NULL)
++    set_current_item (menu, items[current_index]);
+ }
+ 
+ /***************************************************************************
