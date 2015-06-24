@@ -1,6 +1,7 @@
 #!/bin/bash
 
 nxt_status=$(systemctl is-active nxt)
+nxt_tor_status=$(systemctl is-active nxt-tor)
 
 which notify-send > /dev/null
 is_libnotify_installed=$?
@@ -9,7 +10,7 @@ if [ $libnotify_installed ]; then
   echo "libnotify_installed"
 fi
 
-if [ $nxt_status != "active" ]; then
+if [ $nxt_status != "active" && $nxt_tor_status != "active" ]; then
   start_nxt_message="NXT service isn't active. Try starting NXT with 'systemctl start nxt' if NRS doesn't load."
   if [ $is_libnotify_installed ]; then
     notify-send "NRS" "$start_nxt_message"

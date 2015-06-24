@@ -1,0 +1,11 @@
+[Unit]
+Description=NXT Tor
+After=network.target tor.service
+Requires=tor.service
+
+[Service]
+User=nxt
+ExecStart=/usr/bin/bash -c 'cd /opt/nxt/; ./run-tor.sh'
+
+[Install]
+WantedBy=multi-user.target
