@@ -1,0 +1,21 @@
+pkgbase = gpaste
+	pkgdesc = Clipboard management system with a gnome-shell extension
+	pkgver = 3.16.2.1
+	pkgrel = 1
+	url = https://github.com/Keruspe/GPaste
+	install = gpaste.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-control-center
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = intltool
+	depends = gnome-shell>=3.16.1
+	optdepends = wgetpaste>=2.26
+	options = !libtool
+	source = http://www.imagination-land.org/files/gpaste/gpaste-3.16.2.1.tar.xz
+	md5sums = 935b66abf61e1a0d6385acdbecbb8134
+
+pkgname = gpaste
+
