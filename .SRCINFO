@@ -1,0 +1,21 @@
+pkgbase = gc-static
+	pkgdesc = A garbage collector for C and C++ (includes static library)
+	pkgver = 7.4.2
+	pkgrel = 1
+	url = http://www.hboehm.info/gc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = libatomic_ops
+	provides = gc
+	conflicts = gc
+	replaces = gc
+	options = staticlibs
+	source = http://www.hboehm.info/gc/gc_source/gc-7.4.2.tar.gz
+	source = noelision.patch
+	md5sums = 12c05fd2811d989341d8c6d81f66af87
+	md5sums = 0be354bf60cc18363dc4c1601697717b
+
+pkgname = gc-static
+
