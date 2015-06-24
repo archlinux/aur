@@ -1,0 +1,12 @@
+[Desktop Entry]
+Comment=A mindmapping tool
+Comment[ja]=マインドマップ作成ツール
+Type=Application
+Version=1.0
+Name=Freeplane
+Exec=freeplane %F
+Icon=freeplane
+Terminal=false
+GenericName=Freeplane
+MimeType=application/x-troff-mm;
+Categories=Office;
