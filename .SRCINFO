@@ -1,0 +1,27 @@
+pkgbase = rainbow-lollipop-git
+	pkgdesc = the visual history browser
+	pkgver = 391+ga682ca3
+	pkgrel = 5
+	url = http://rainbow-lollipop.de
+	install = rainbow-lollipop.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = vala
+	makedepends = gettext
+	depends = libgee
+	depends = zeromq
+	depends = webkit2gtk
+	depends = clutter-gtk
+	depends = desktop-file-utils
+	depends = libhttpseverywhere-git
+	provides = rainbow-lollipop
+	conflicts = rainbow-lollipop
+	source = git+https://github.com/grindhold/rainbow-lollipop.git
+	md5sums = SKIP
+
+pkgname = rainbow-lollipop-git
+
