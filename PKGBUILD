@@ -7,23 +7,26 @@ _pkgbase=gstreamer0.10-good
 pkgname=('lib32-gstreamer0.10-good' 'lib32-gstreamer0.10-good-plugins')
 _pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 license=('LGPL')
 depends=('gstreamer0.10-good' 'gstreamer0.10-good-plugins' "lib32-gstreamer0.10-base")
-makedepends=('intltool' 'pkgconfig' 'libavc1394' 'libiec61883' 'aalib' 'lib32-libshout' 'lib32-libdv' 'lib32-flac' 'lib32-gconf' 'lib32-wavpack' 'lib32-taglib' 'lib32-libsoup' 'lib32-v4l-utils' 'lib32-libcaca' 'lib32-bzip2' 'lib32-gdk-pixbuf2' 'lib32-libpulse' 'lib32-jack' 'git' 'lib32-cairo')
+makedepends=('intltool' 'pkgconfig' 'libavc1394' 'libiec61883' 'aalib' 'lib32-libshout' 'lib32-libdv' 'lib32-flac' 'lib32-gconf' 'lib32-wavpack' 'lib32-taglib' 'lib32-libsoup' 'lib32-v4l-utils' 'lib32-libcaca' 'lib32-bzip2' 'lib32-gdk-pixbuf2' 'lib32-libpulse' 'lib32-jack' 'git' 'lib32-cairo' 'lib32-libgudev')
 url="http://gstreamer.freedesktop.org/"
 options=(!emptydirs)
 source=("git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-good#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9"
-        "test-rtp-payloading.patch")
+	"test-rtp-payloading.patch"
+	"souptest.patch")
 md5sums=('SKIP'
-         '6781763eb752d57f3d111a41905d25bd')
-         
+         '6781763eb752d57f3d111a41905d25bd'
+         '271035db9b124f4f95731803b52bae27')
+
 prepare() {
 cd gst-plugins-good
 sed -i '/AC_PATH_XTRA/d' configure.ac
 sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
-patch -p1 -i ../test-rtp-payloading.patch
+patch -Np1 -i ../test-rtp-payloading.patch
+patch -Np1 -i ../souptest.patch
 }
 
 build() {
@@ -40,6 +43,7 @@ NOCONFIGURE=1 ./autogen.sh
   --disable-esd \
   --disable-gtk-doc \
   --libdir=/usr/lib32/ \
+  --libexecdir=/usr/lib32 \
   --build=i686-unknown-linux-gnu \
   --with-package-name="GStreamer Good Plugins (Archlinux)" \
   --with-package-origin="http://www.archlinux.org/"

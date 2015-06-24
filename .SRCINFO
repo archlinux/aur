@@ -1,6 +1,6 @@
 pkgbase = lib32-gstreamer0.10-good
 	pkgver = 0.10.31
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -24,14 +24,17 @@ pkgbase = lib32-gstreamer0.10-good
 	makedepends = lib32-jack
 	makedepends = git
 	makedepends = lib32-cairo
+	makedepends = lib32-libgudev
 	depends = gstreamer0.10-good
 	depends = gstreamer0.10-good-plugins
 	depends = lib32-gstreamer0.10-base
 	options = !emptydirs
 	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-good#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9
 	source = test-rtp-payloading.patch
+	source = souptest.patch
 	md5sums = SKIP
 	md5sums = 6781763eb752d57f3d111a41905d25bd
+	md5sums = 271035db9b124f4f95731803b52bae27
 
 pkgname = lib32-gstreamer0.10-good
 	pkgdesc = GStreamer Multimedia Framework Good plugin libraries (lib32)
