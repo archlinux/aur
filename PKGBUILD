@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=yacreader
 pkgver=7.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc=('A comic reader for cross-platform reading and managing your digital comic collection.')
 arch=('i686' 'x86_64')
 url="http://www.yacreader.com"
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd $srcdir/$pkgname-$pkgver/
-  qmake
+  qmake-qt5
   make
 }
 
