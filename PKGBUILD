@@ -2,17 +2,16 @@
 pkgname=acousticbrainz-client-git
 _pkgname=acousticbrainz-client
 _python=python
-pkgver=0.1.r2.g366bdd1
-pkgrel=1
+pkgver=0.1.r6.g6c54a52
+pkgrel=2
 pkgdesc="client to upload data to an acousticbrainz server"
 arch=('any')
 url="http://acousticbrainz.org/"
 license=('GPL3')
 depends=('essentia-acousticbrainz' 'python-requests')
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 options=()
 source=("git+https://github.com/MTG/$_pkgname.git")
 md5sums=('SKIP')

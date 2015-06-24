@@ -1,13 +1,15 @@
 pkgbase = acousticbrainz-client-git
 	pkgdesc = client to upload data to an acousticbrainz server
-	pkgver = 0.1.r2.g366bdd1
-	pkgrel = 1
+	pkgver = 0.1.r6.g6c54a52
+	pkgrel = 2
 	url = http://acousticbrainz.org/
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = essentia-acousticbrainz
 	depends = python-requests
+	provides = acousticbrainz-client=0.1.r6.g6c54a52
+	conflicts = acousticbrainz-client
 	source = git+https://github.com/MTG/acousticbrainz-client.git
 	md5sums = SKIP
 
