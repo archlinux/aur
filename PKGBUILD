@@ -25,8 +25,6 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    git submodule init
-    git submodule update
 }
 
 build() {
