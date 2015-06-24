@@ -3,7 +3,7 @@
 pkgname='tor-browser-it'
 pkgver='4.5.2'
 _language='it'
-pkgrel=3
+pkgrel=4
 pkgdesc='Tor Browser Bundle: browsing anonimo usando firefox e tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
