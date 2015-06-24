@@ -1,6 +1,6 @@
 pkgbase = arora-git
 	pkgdesc = A lightweight, cross-platform Qt4 WebKit browser
-	pkgver = 0.11.0.20.gc5421dc
+	pkgver = 0.11.0.21.g7c7514d
 	pkgrel = 1
 	url = https://code.google.com/p/arora/
 	install = arora.install

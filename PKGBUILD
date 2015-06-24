@@ -5,7 +5,7 @@
 
 pkgname=arora-git
 pkgrel=1
-pkgver=0.11.0.20.gc5421dc
+pkgver=0.11.0.21.g7c7514d
 pkgdesc="A lightweight, cross-platform Qt4 WebKit browser"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/arora/"
