@@ -1,6 +1,6 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 pkgname=pertino
-pkgver=440.4469
+pkgver=450.4488
 pkgrel=1
 pkgdesc="Cloud-based VPN client"
 arch=(i686 x86_64)
@@ -10,18 +10,18 @@ depends=('dhclient')
 makedepends=('rpmextract' 'sed')
 source=("http://download.pertino.com/clients/linux/$(echo $pkgver | tr . -)/$pkgname-$pkgver-1.$CARCH.rpm")
 noextract=($(basename "${source[0]}"))
-sha1sums=('828ba00f1cea4a4432afd2590c0ef8390976bb91')
+sha1sums=(05423c848eb1076c2f7e769cf77720a347d9cb8f)
 install=${pkgname}.install
 
 package() {
-	srcfile="${noextract[0]}"
-	mv "$srcfile" "$pkgdir"
+    srcfile="${noextract[0]}"
+    mv "$srcfile" "$pkgdir"
     cd "$pkgdir"
-	rpmextract.sh "$pkgdir/$srcfile"
+    rpmextract.sh "$pkgdir/$srcfile"
     rm "$pkgdir/$srcfile"
 
     # Put the systemd unit in the proper place and patch the executable
-	mkdir -p "$pkgdir/usr/lib/systemd/system/"
+    mkdir -p "$pkgdir/usr/lib/systemd/system/"
     sed -e 's#/opt/pertino/pgateway/pGateway#/usr/bin/pGateway#' \
         "$pkgdir/opt/pertino/pgateway/init/pgateway.service" \
         > "$pkgdir/usr/lib/systemd/system/pgateway.service"
