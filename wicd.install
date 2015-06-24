@@ -1,0 +1,20 @@
+_svc="wicd"
+_rlvl="default"
+
+post_install() {
+	_cmd="rc-update add ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+# 	echo "To start wicd at boot, add /etc/init.d/wicd to a runlevel and:"
+# 	echo "Remove all net.* initscripts (except for net.lo) from all runlevels"
+# 	echo "Add these scripts to the RC_PLUGsvcS line in /etc/rc.conf"
+# 	echo "(For example, rc_hotplug="!net.eth* !net.wlan*")"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}

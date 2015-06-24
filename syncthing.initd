@@ -1,0 +1,22 @@
+#!/usr/bin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+  need net
+}
+
+start() {
+  ebegin "Starting syncthing"
+  start-stop-daemon --start --make-pidfile --pidfile /run/syncthing.pid \
+    --background --user ${SYNCTHING_USER} --name syncthing \
+    --exec /usr/bin/syncthing -- -gui-address=${SYNCTHING_ADDRESS} ${SYNCTHING_ARGS}
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping syncthing"
+  start-stop-daemon --stop --pidfile /run/syncthing.pid --user ${SYNCTHING_USER}
+  eend $?
+}
