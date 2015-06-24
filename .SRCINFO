@@ -1,0 +1,21 @@
+pkgbase = fwupd
+	pkgdesc = A simple daemon to allow session software to update firmware
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/hughsie/fwupd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = docbook2x
+	depends = libgcab
+	depends = appstream-glib>=0.3.5
+	depends = fwupdate
+	depends = gpgme
+	depends = colord
+	source = fwupd-0.1.3.tar.gz::https://github.com/hughsie/fwupd/archive/0.1.3.tar.gz
+	source = docbook-sgml-arg.patch
+	sha256sums = 1fc73412301833dfd6cb0c5117765d39ef02b7fa303c892c6c13d1dec54e9334
+	sha256sums = 983dd26a21dad2f61d706ff610acdee5df88a2d17b301fd153bcd2662d33422a
+
+pkgname = fwupd
+
