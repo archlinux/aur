@@ -1,0 +1,19 @@
+pkgbase = xnretro
+	pkgdesc = XnRetro allows you to create stunning images with vintage or instant effect on your Desktop.
+	pkgver = 1.26
+	pkgrel = 3
+	url = http://www.xnview.com/
+	arch = i686
+	arch = x86_64
+	license = freeware
+	depends = lib32-qt4
+	depends = qtwebkit
+	depends = lib32-gstreamer0.10-base
+	depends = lib32-libpng12
+	source = http://download.xnview.com/XnRetro-linux.tgz
+	source = XnRetro.desktop
+	sha256sums = e0912a4fd9d9e095f695bf6e89b81b3ed9894caca05d247fde9126b3102990cd
+	sha256sums = d25ccfca3ef1cb4f1474be5f2ec49666bda98e2220daa2d9ab7d22b801cd1c8b
+
+pkgname = xnretro
+

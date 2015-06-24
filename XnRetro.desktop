@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=0
+Exec=/opt/XnRetro/XnRetro
+Icon=xnretro.png
+Type=Application
+Categories=Graphics;
+StartupNotify=true
+Name=XnView Retro
+GenericName=XnRetro
+
+Name[en_US]=XnRetro.desktop
