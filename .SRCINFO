@@ -1,7 +1,7 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xrdp.sourceforge.net/
 	install = xrdp.install
 	arch = i686
