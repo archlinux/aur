@@ -4,7 +4,7 @@
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname=skype4pidgin-git
-pkgver=r728.158ddac
+pkgver=r771.ba5483c
 pkgrel=1
 pkgdesc="A Skype plugin for libpurple clients (Pidgin, Empathy, Finch, etc)"
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ replaces=('skype4pidgin' 'skype4pidgin-svn' 'skype4pidgin-svn-dbus' 'skype4finch
 provides=('skype4pidgin')
 source=("$pkgname::git+https://github.com/EionRobb/skype4pidgin"
         'Makefile.patch'
-	'https://copy.com/D1X42Cf78kCl/public/packages/skype_icons_empathy.tar.xz')
+	'https://repo.dray.be/package-files/skype_icons_empathy.tar.xz')
 md5sums=('SKIP'
          '8848134ab5babbc46549ae627365ff20'
          '5728aa01ac674fca2c01348719fe8672')
