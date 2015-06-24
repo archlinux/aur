@@ -1,0 +1,15 @@
+pkgbase = kmidimon-bin
+	pkgdesc = A MIDI monitor for Linux using ALSA sequencer
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = http://kmidimon.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	depends = drumstick
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/k/kmidimon/kmidimon_0.7.5-1_amd64.deb
+	md5sums = e365f3924db9d1558f66c0ddd76c4866
+
+pkgname = kmidimon-bin
+
