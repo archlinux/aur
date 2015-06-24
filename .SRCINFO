@@ -1,0 +1,15 @@
+pkgbase = libejdb
+	pkgdesc = Embedded JSON Database engine
+	pkgver = 1.2.8
+	pkgrel = 2
+	url = http://ejdb.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = zlib
+	provides = libtcejdb
+	source = https://github.com/Softmotions/ejdb/archive/v1.2.8.tar.gz
+	md5sums = f49656a3a3ba7e44dfd7f9907edb72d2
+
+pkgname = libejdb
+
