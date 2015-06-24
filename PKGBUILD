@@ -18,6 +18,9 @@ build() {
 
   # doc build errors prevent success
   sed -i '/doc/d' CMakeLists.txt
+  
+  # Compile code with -fPIC (build code with Position Independent Code)
+  sed -i '49iADD_DEFINITIONS(-fPIC)' CMakeLists.txt
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release
