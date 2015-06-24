@@ -1,0 +1,13 @@
+pkgbase = keepass-plugin-pronouncepwgen
+	pkgdesc = A pronounceable password generator plugin for KeePass
+	pkgver = 1.0.4b
+	pkgrel = 2
+	url = http://pronouncepwgen.sourceforge.net/
+	arch = any
+	license = GPLv2
+	depends = keepass
+	source = http://vorboss.dl.sourceforge.net/project/pronouncepwgen/pronouncepwgen/1.0.4b/PronouncePwGen-1.0.4b.zip
+	md5sums = e7f1134a543afd1fd76bb06a81d1880a
+
+pkgname = keepass-plugin-pronouncepwgen
+
