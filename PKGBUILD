@@ -1,16 +1,17 @@
-# Maintainer: jospehgbr <rafael.f.f1@gmail.com>
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Contributor: jospehgbr <rafael.f.f1@gmail.com>
 
 _pkgbase=libass
 pkgname=lib32-${_pkgbase}
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable library for SSA/ASS subtitles rendering (32 bit)"
 arch=('x86_64')
-url="http://code.google.com/p/libass/"
+url="https://github.com/libass/libass/"
 license=('BSD')
-depends=('lib32-enca' 'lib32-fontconfig' 'lib32-fribidi' "${_pkgbase}")
+depends=("${_pkgbase}"
+'lib32-enca' 'lib32-fontconfig' 'lib32-fribidi' 'lib32-harfbuzz')
 makedepends=('gcc-multilib')
-options=(!libtool)
 source=("http://libass.googlecode.com/files/${_pkgbase}-${pkgver}.tar.xz")
 md5sums=('0f54b1f3a24fa897ebbbcc5bc744b32a')
 
@@ -18,7 +19,9 @@ build() {
   export CC='gcc -m32'  
   cd ${_pkgbase}-${pkgver}
   ./configure --prefix=/usr --libdir=/usr/lib32 \
-        --disable-harfbuzz
+	--enable-enca \
+	--enable-harfbuzz \
+	--enable-fontconfig
   make
 }
 
