@@ -10,8 +10,8 @@ arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=('custom')
 makedepends=('cmake' 'lib32-mesa-libgl' 'lib32-procps-ng' 'python2' 'gcc-multilib')
-source=("$pkgname-$pkgver.zip::https://github.com/apitrace/apitrace/archive/${pkgver}.zip")
-md5sums=('9661028558461feaab6e66538b15a805')
+source=("apitrace-$pkgver.tar.gz::https://github.com/apitrace/apitrace/archive/${pkgver}.tar.gz")
+md5sums=('b1ede292d6e18da7f8041b82d86e3e6b')
 
 build() {
   cd ${srcdir}/apitrace-*
