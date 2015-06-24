@@ -1,0 +1,8 @@
+yaaw-git/
+src/
+pkg/
+*.tar.*
+*.tgz
+*.gem
+*.deb
+*.zip
