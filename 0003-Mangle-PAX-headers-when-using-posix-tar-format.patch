@@ -1,0 +1,28 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Thu, 6 Jun 2013 14:31:25 +0300
+Subject: Mangle PAX headers when using posix tar format
+
+Mangle tar PAX headers in order to guarantee that created tarballs are
+always identical so that the delta can be applied cleanly.
+
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ pristine-tar | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/pristine-tar b/pristine-tar
+index f1fae98..3e92a74 100755
+--- a/pristine-tar
++++ b/pristine-tar
+@@ -357,6 +357,11 @@ sub recreatetarball_helper {
+             "--files-from", "$tempdir/manifest");
+ 	if (exists $options{tar_format}) {
+ 		push @cmd, ("-H", $options{tar_format});
++		if ($options{tar_format} eq 'posix') {
++			# Mangle PAX headers so that created tarballs are always identical
++			# so that delta can be successfully applied
++			push @cmd, ('--pax-option=exthdr.name=%d/PaxHeaders/%f,ctime:=0');
++		}
+ 	}
+ 
+ 	doit(@cmd);

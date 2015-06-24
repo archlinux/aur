@@ -1,0 +1,54 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Fri, 31 May 2013 13:51:40 +0300
+Subject: Use posix tar format by default
+
+Should lead to smaller deltas as e.g. git-archive produces tarballs in
+posix format.
+
+The tar format guessing makes sure that pristine-tar commits generated
+with "gnu" tar format also are usable.
+
+Change-Id: I52c20b81c4b02ec22d3744d49b64415af14e0ab4
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ pristine-tar | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/pristine-tar b/pristine-tar
+index 1c321d4..f1fae98 100755
+--- a/pristine-tar
++++ b/pristine-tar
+@@ -396,12 +396,10 @@ sub gentar {
+ 
+ 	my @try;
+ 	push @try, sub { recreatetarball($delta->{manifest}, getcwd,
+-			clobber_source => 0, %opts) };
+-	push @try, \&recreatetarball_longlink_100;
++			clobber_source => 0, tar_format => "posix", %opts) };
+ 	push @try, sub { recreatetarball($delta->{manifest}, getcwd,
+ 			clobber_source => 0, tar_format => "gnu", %opts) };
+-	push @try, sub { recreatetarball($delta->{manifest}, getcwd,
+-			clobber_source => 0, tar_format => "posix", %opts) };
++	push @try, \&recreatetarball_longlink_100;
+ 
+ 	my $ok;
+ 	foreach my $variant (@try) {
+@@ -511,7 +509,8 @@ sub gendelta {
+ 		if ($#out == 0 && -d $out[0]) {
+ 			$sourcedir=$out[0];
+ 		}
+-		$recreatetarball=recreatetarball("$tempdir/manifest", $sourcedir, clobber_source => 1);
++		$recreatetarball=recreatetarball("$tempdir/manifest", $sourcedir,
++									clobber_source => 1, tar_format => "posix");
+ 	}
+ 	else {
+ 		$recreatetarball=$opts{recreatetarball};
+@@ -778,7 +777,7 @@ sub commit {
+ 	my ($sourcedir, $id)=export($upstream);
+ 	genmanifest($tarball, "$tempdir/manifest");
+ 	my $recreatetarball=recreatetarball("$tempdir/manifest", $sourcedir,
+-		clobber_source => 1, create_missing => 1);
++		clobber_source => 1, create_missing => 1, tar_format => "posix");
+ 	my $pid = open(GENDELTA, "-|");
+ 	if (! $pid) {
+ 		# child

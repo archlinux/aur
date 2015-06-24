@@ -1,0 +1,28 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Fri, 23 Aug 2013 00:47:12 +0300
+Subject: Remove all timestamps from extended PAX headers
+
+The timestamps can break pristine-tar generation as they are different
+every time an archive is generated from git (when using tree id
+instead of commit id as the sha-1 to checkout). Git uses the current
+time as the modification time of files when a tree is archived.
+
+Change-Id: I25fc631c4f1c62fc5ec2c1a8112dd01c643aae90
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ pristine-tar | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pristine-tar b/pristine-tar
+index 3e92a74..19af965 100755
+--- a/pristine-tar
++++ b/pristine-tar
+@@ -360,7 +360,7 @@ sub recreatetarball_helper {
+ 		if ($options{tar_format} eq 'posix') {
+ 			# Mangle PAX headers so that created tarballs are always identical
+ 			# so that delta can be successfully applied
+-			push @cmd, ('--pax-option=exthdr.name=%d/PaxHeaders/%f,ctime:=0');
++			push @cmd, ('--pax-option=exthdr.name=%d/PaxHeaders/%f,mtime:=0,atime:=0,ctime:=0');
+ 		}
+ 	}
+ 

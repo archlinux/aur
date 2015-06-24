@@ -1,0 +1,28 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Fri, 29 Nov 2013 12:44:56 +0200
+Subject: HACK: workaround for some broken pristine-tar branches
+
+Created by previous buggy versions of the pristine-tar tool distributed
+for openSUSE in Tizen.
+
+Change-Id: I31b1b5527fa399dd0c4baff87b0775a0ff8da773
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ pristine-bz2 | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/pristine-bz2 b/pristine-bz2
+index dbbe319..112d49e 100755
+--- a/pristine-bz2
++++ b/pristine-bz2
+@@ -263,6 +263,10 @@ sub genbz2 {
+ 	@params=split(' ', $delta->{params});
+ 
+ 	my $program=$delta->{program};
++	# Work around for some broken pristine-tar data in Tizen repos
++	if ($program =~ /.*upstream-bzip2\/bzip2$/) {
++		$program="bzip2"
++	}
+ 	if (! grep { $program eq $_ } @supported_bzip2_programs) {
+ 		die "paranoia check failed on program from delta ($program)";
+ 	}
