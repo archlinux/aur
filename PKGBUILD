@@ -9,7 +9,8 @@ url="http://nxt.org"
 license=('MIT' 'GPL' 'MPL' 'APACHE')
 depends=('bash' 'java-runtime-openjdk=8')
 makedepends=('java-environment-openjdk=8')
-optdepends=('flashplugin: for add to clipboard support')
+optdepends=('flashplugin: for add to clipboard support'
+  'libnotify: NRS startup error notification')
 source=("${pkgname}::git+https://bitbucket.org/JeanLucPicard/nxt.git"
   "nxt.service"
   "nxt.install"
