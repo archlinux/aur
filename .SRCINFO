@@ -1,7 +1,7 @@
 pkgbase = bzr-builddeb
 	pkgdesc = bzr plugin for Debian package management
 	pkgver = 2.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jameswestby.net/bzr/builddeb/user_manual
 	arch = any
 	license = GPL2
@@ -13,8 +13,9 @@ pkgbase = bzr-builddeb
 	depends = quilt
 	depends = python2-debian>=0.1.11
 	depends = python2-apt
-	optdepends = bzr-svn: Subversion integration
-	optdepends = python2-lzma: liblzma bindings
+	optdepends = bzr-svn-plugin: Subversion integration
+	optdepends = bzr-git-plugin: Git integration
+	optdepends = python2-pyliblzma: lzma bindings
 	optdepends = distro-info: for the merge-upstream command
 	options = !emptydirs
 	source = http://ftp.debian.org/debian/pool/main/b/bzr-builddeb/bzr-builddeb_2.8.8.tar.xz

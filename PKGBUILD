@@ -2,13 +2,16 @@
 pkgname=bzr-builddeb
 _python=python2
 pkgver=2.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="bzr plugin for Debian package management"
 arch=('any')
 url="http://jameswestby.net/bzr/builddeb/user_manual"
 license=('GPL2')
 depends=('bzr>=2.1' 'devscripts' 'dpkg' 'patchutils' 'pristine-tar' 'quilt' 'python2-debian>=0.1.11' 'python2-apt')
-optdepends=('bzr-svn: Subversion integration' 'python2-lzma: liblzma bindings'
+optdepends=(
+'bzr-svn-plugin: Subversion integration'
+'bzr-git-plugin: Git integration'
+'python2-pyliblzma: lzma bindings'
 'distro-info: for the merge-upstream command')
 makedepends=()
 conflicts=()
