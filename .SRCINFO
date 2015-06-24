@@ -1,0 +1,14 @@
+pkgbase = keepass-plugin-favicon
+	pkgdesc = A KeePass plugin that downloads and stores favicons. PKGBUILD source code at https://github.com/GutenYe/aur/tree/master/keepass-plugin-favicon
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/keepass-favicon/
+	arch = any
+	license = GPLv2
+	depends = keepass
+	conflicts = keepass-favicon
+	source = KeePassFaviconDownloader.plgx::http://downloads.sourceforge.net/project/keepass-favicon/1.9.0/KeePassFaviconDownloader.plgx
+	md5sums = 7b9bbc3196a31213403e2d0eafb1ef0a
+
+pkgname = keepass-plugin-favicon
+
