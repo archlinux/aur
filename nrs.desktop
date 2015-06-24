@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NRS
+GenericName=Nxt Reference Software
+Comment=Nxt Reference Software
+Exec=/usr/bin/nrs
+Icon=/usr/share/pixmaps/nrs.png
+Terminal=false
+Type=Application
+Categories=Utility;Finance;

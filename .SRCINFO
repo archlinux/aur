@@ -16,9 +16,11 @@ pkgbase = nxt-git
 	source = nxt-git::git+https://bitbucket.org/JeanLucPicard/nxt.git
 	source = nxt.service
 	source = nxt.install
+	source = nrs.sh
 	sha256sums = SKIP
 	sha256sums = 293bf1e313677f769e4a12e6e0f78bbd58c796ebe7c34528ba50cd73bbea15a7
 	sha256sums = b7575397d7dd19e9b1bab75e21a433f3bdc98279ad822fe57235b830c062abca
+	sha256sums = fc58e5aac478f3459686f0a9ab5e059776c1a34392391fed257e5130bfd29bc2
 
 pkgname = nxt-git
 
