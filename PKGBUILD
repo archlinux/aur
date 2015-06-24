@@ -3,12 +3,12 @@
 _pkgname=xchm
 pkgname=${_pkgname}-wx3
 pkgver=1.23
-pkgrel=0
+pkgrel=1
 pkgdesc="A cross-platform GUI front-end to chmlib (wxWidgets 3.0 version)"
 arch=('i686' 'x86_64')
 url="http://xchm.sourceforge.net/index.html"
 license=('GPL3')
-depends=('chmlib')
+depends=('wxgtk' 'chmlib')
 makedepends=('git')
 conflicts=('xchm')
 provides=('xchm')
@@ -40,6 +40,7 @@ build() {
 package() {
 	cd "$srcdir/xchm-code"
 	make DESTDIR="${pkgdir}/" install
+	# want to add your locale string for the desktop? Contact me.
 	install -D -m644 ${srcdir}/xchm.desktop "${pkgdir}/usr/share/applications/xchm.desktop"
 	install -D -m644 ${srcdir}/xchm.xml "${pkgdir}/usr/share/mime/packages/xchm.xml"
 }
