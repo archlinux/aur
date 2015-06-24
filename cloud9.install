@@ -1,0 +1,49 @@
+post_install() {
+  getent group cloud9 > /dev/null || groupadd -g 419 cloud9
+  if ! getent passwd cloud9 > /dev/null; then
+	  useradd -c 'Cloud9 user' -u 419 -g cloud9 -G audio,video,network,optical -d /opt/cloud9 -s /usr/bin/bash cloud9
+	  passwd -l cloud9 > /dev/null
+  fi
+  
+  echo "Notes:"
+  echo "------"
+  echo "* The default workspace is the working directory."
+  echo "* Call 'cloud9 -w <workspace>' to switch to a different workspace."
+  echo "* To listen on a different port you can use the '-p' switch." 
+  echo "* See 'cloud9 --help' for more information."
+}
+
+post_upgrade() {
+  post_install $1
+  if ! getent group cloud9 | cut -d: -f3 | grep 419 > /dev/null 2>&1; then
+	  groupmod -g 419 cloud9 > /dev/null 2>&1
+  fi
+  if ! id -u cloud9 | grep 419 > /dev/null 2>&1; then
+	  usermod -u 419 cloud9 > /dev/null 2>&1
+	  if [[ $? -ne 0 ]]; then
+		  echo "Changing uid of user cloud9 failed"
+		  echo "It is recommended that the uid is changed."
+		  echo "Stop all processes running under the cloud9 user and reinstall cloud9"
+		  echo "or change the uid manually. (usermod -u 419 cloud9)"
+	  fi
+	  chown -R cloud9:cloud9 /opt/cloud9
+  fi
+}
+
+post_remove() {
+  getent passwd cloud9 > /dev/null 2>&1 && userdel cloud9
+  getent group cloud9 > /dev/null 2>&1 && groupdel cloud9
+}
+
+
+
+
+function post_install {
+    echo "Notes:"
+    echo "------"
+    echo "* The default workspace is the working directory."
+    echo "* Call 'cloud9 -w <workspace>' to switch to a different workspace."
+    echo "* To listen on a different port you can use the '-p' switch." 
+    echo "* See 'cloud9 --help' for more information."
+}
+

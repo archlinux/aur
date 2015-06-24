@@ -1,0 +1,32 @@
+pkgbase = c9.core
+	pkgdesc = Cloud9 Core - Part of the Cloud9 SDK for Plugin Development https://c9.io
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://c9.io/
+	install = cloud9.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	provides = cloud9
+	conflicts = cloud9
+	options = !libtool
+	source = c9.core::git+https://github.com/c9/core.git
+	source = cloud9.sh
+	source = cloud9.desktop
+	source = cloud9.png
+	source = cloud9.service
+	source = cloud9@.service
+	source = cloud9.install
+	md5sums = SKIP
+	md5sums = 86f1e75f56277bc81e0f170398e42773
+	md5sums = 5982f046d81679c9a248a52fd87ab93f
+	md5sums = fad2be0e1cf10d29ad98727739353626
+	md5sums = 373c0a4e2b8278fd315940dd61b3a952
+	md5sums = 8fbf927e0cb9af22bf15666fd993a5e1
+	md5sums = 67158ed4cec5bd4d7298890d57a214f4
+
+pkgname = c9.core
+

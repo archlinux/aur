@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cloud9 IDE
+Description=Your code anywhere, anytime.
+Type=Application
+Categories=Development;
+Exec=/usr/bin/cloud9
+Icon=cloud9
+MimeType=text/html;
