@@ -1,0 +1,8 @@
+polkit.addRule(function(action, subject) {
+	if (action.id == "org.freedesktop.consolekit.system.stop" ||
+		action.id == "org.freedesktop.consolekit.system.restart" ||
+		action.id == "org.freedesktop.consolekit.system.hibernate" ||
+		action.id == "org.freedesktop.consolekit.system.suspend") {
+		return polkit.Result.YES;
+	}
+});

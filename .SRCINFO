@@ -1,0 +1,29 @@
+pkgbase = consolekit
+	pkgdesc = A framework for defining and tracking users, login sessions, and seats
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/ConsoleKit2/ConsoleKit2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	depends = dbus
+	depends = glib2
+	depends = libx11
+	depends = polkit-consolekit
+	depends = udev
+	depends = zlib
+	optdepends = consolekit-openrc: consolekit openrc initscript
+	options = libtool
+	source = https://github.com/ConsoleKit2/ConsoleKit2/releases/download/0.9.4/ConsoleKit2-0.9.4.tar.bz2
+	source = consolekit.tmpfiles.conf
+	source = 25-consolekit.rules
+	source = consolekit.pamd
+	sha256sums = b3e9554472f1a431576c317536d93ba1ef292916ea8447667deee0b555980e2e
+	sha256sums = 778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1
+	sha256sums = c5159d9fe8fdd52ad0d6a84af7ba00bac09edaae965896ab0d099a4df1c5ea6b
+	sha256sums = f7b88e87f447e2d37c12886f57d932c385f19a8fef238e0f1de7a1746d8be69e
+
+pkgname = consolekit
+
