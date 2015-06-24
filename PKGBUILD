@@ -3,7 +3,7 @@
 
 pkgname=kmidimon
 pkgver=0.7.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A MIDI monitor for Linux using ALSA sequencer"
 arch=('i686' 'x86_64')
 url="http://kmidimon.sourceforge.net/"
@@ -20,8 +20,7 @@ build() {
   sed -i '/doc/d' CMakeLists.txt
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release  \
-          -DKDE4_ENABLE_FPIC=TRUE
+          -DCMAKE_BUILD_TYPE=Release
           
   make
 }
