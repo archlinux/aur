@@ -1,0 +1,14 @@
+pkgbase = osmupdate
+	pkgdesc = a tool to download and cumulate .osc OsmChange files of different categories (minutely, hourly, daily)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Osmupdate
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = glibc
+	source = http://m.m.i24.cc/osmupdate.c
+	md5sums = 740162c2400a5e8c78a1bd9a79993242
+
+pkgname = osmupdate
+
