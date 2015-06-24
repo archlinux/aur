@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BorderMaker
+Comment=A Java application to resize and decorate pictures with borders, text and watermarks
+Exec=bordermaker
+Icon=/usr/share/pixmaps/bordermaker.png
+Terminal=false
+Type=Application
+Categories=Graphics;Java
+StartupNotify=true
