@@ -1,0 +1,18 @@
+pkgbase = lib32-libass
+	pkgdesc = A portable library for SSA/ASS subtitles rendering (32 bit)
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://code.google.com/p/libass/
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	depends = lib32-enca
+	depends = lib32-fontconfig
+	depends = lib32-fribidi
+	depends = libass
+	options = !libtool
+	source = http://libass.googlecode.com/files/libass-0.10.1.tar.xz
+	md5sums = 0f54b1f3a24fa897ebbbcc5bc744b32a
+
+pkgname = lib32-libass
+
