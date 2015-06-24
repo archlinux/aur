@@ -1,0 +1,36 @@
+pkgbase = cupsdriver-mp640
+	pkgdesc = Canon Printer Driver (For Multifunction MP640) (build from source with grayscale support and quality selection via updated ppd)
+	pkgver = 3.20
+	pkgrel = 10
+	url = http://software.canon-europe.com/products/0010757.asp
+	install = cnijfilter.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = popt
+	depends = ghostscript
+	depends = libtiff
+	depends = libpng
+	conflicts = cnijfilter-mp640
+	source = http://files.canon-europe.com/files/soft37280/Software/IJ_Linux_Printer_Driver_Source_320.tar
+	source = libpng15.patch
+	source = unknown-chars.patch
+	source = fixautomake.patch
+	source = fixconfigh.patch
+	source = cups.patch
+	source = id.patch
+	source = cnijfilter.install
+	source = canonmp640+.ppd
+	sha256sums = ef1e6da87aa0ecfd61a22a128321d0163c6566e60b9cbe6a4bd29f4742103299
+	sha256sums = da3333adfca8e319aa197bc87ec8e88a58ccb666c0e944ae72bd737140a6158e
+	sha256sums = b18e0d02d2272be390199a67637886b2a718fa9836fe73badae937d0200ddfd7
+	sha256sums = afbc2caf4783b151a37d4ac26771f54db89d17fe7d71ea4f649f0a04904346ac
+	sha256sums = d4de612eb476762c569aee63dc241e01cc90656d88cfc7a85b133527a7f379ba
+	sha256sums = 0f3aadea09d84fc981c4cd4be511eba81fa72552329f66166f38b0e279716541
+	sha256sums = 8edfc00b955895e9c4dbe1707ba700c8efee212a6b5fde46b80f2a92e5a0df38
+	sha256sums = 169f64e900af2d098471c70b3da47aeea5194a547a6c1d1e3734f497f0916e25
+	sha256sums = cdf8b1f9df5cf2c3898a10b8606187bda686a3cc7eeca7d2f8b36ad5a328a369
+
+pkgname = cupsdriver-mp640
+

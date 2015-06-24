@@ -1,0 +1,585 @@
+*PPD-Adobe: "4.3"
+*%  CUPS add-on PPD file for Canon Inkjet Printer Driver.
+*%  Copyright CANON INC. 2001-2009
+*%  All Rights Reserved.
+*%
+*%  This program is free software; you can redistribute it and/or modify
+*%  it under the terms of the GNU General Public License as published by
+*%  the Free Software Foundation; version 2 of the License.
+*%
+*%  This program is distributed in the hope that it will be useful,
+*%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*%  GNU General Public License for more details.
+*%
+*%  You should have received a copy of the GNU General Public License
+*%  along with this program; if not, write to the Free Software
+*%  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA.
+
+*FileVersion: "1.0"
+*FormatVersion:	"4.3"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Manufacturer: "Canon"
+*ModelName: "Canon MP640 series"
+*NickName: "Canon MP640 series Ver.3.20"
+*PCFileName: "CNMP640.PPD"
+*Product: "(mp640)"
+*PSVersion: "(3010.000) 550"
+*PSVersion: "(3010.000) 651"
+*PSVersion: "(3010.000) 705"
+*PSVersion: "(3010.000) 715"
+*ShortNickName: "MP640"
+
+*ColorDevice: True
+*DefaultColorSpace: RGB
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*LanguageLevel: "3"
+*FileSystem: False
+*TTRasterizer: Type42
+
+*cupsFilter: "application/vnd.cups-postscript 0 pstocanonij"
+*cupsManualCopies: True
+*cupsModelNumber: 362
+*cupsVersion: 1.1
+
+*MaxMediaWidth: "612"
+*MaxMediaHeight: "1917"
+*CenterRegistered: False
+*HWMargins: 9.64 14.17 9.64 8.50
+*LeadingEdge Short: ""
+*DefaultLeadingEdge: Short
+*VariablePaperSize: True
+*ParamCustomPageSize Width: 1 points 155.91 612.00
+*ParamCustomPageSize Height: 2 points 257.96 1916.23
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 1 1
+*CustomPageSize True: "pop pop pop <</PageSize [5 -2 roll] /ImagingBBox null>>setpagedevice"
+
+*OpenUI *ColorModel/Color Model: PickOne
+*DefaultColorModel: rgb
+*ColorModel rgb/RGB: "<</cupsColorOrder 0/cupsColorSpace 1/cupsCompression 0/cupsBitsPerColor 8>>setpagedevice"
+*CloseUI: *ColorModel
+
+*OpenUI *PageSize/Page Size: PickOne
+*DefaultPageSize: A4
+*PageSize Letter/Letter 8.5"x11" 215.9x279.4mm: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize Letter.bl/Letter 8.5"x11" 215.9x279.4mm (borderless): "<</CNPageSizeName(Letter.bl)/PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize Legal/Legal 8.5"x14" 215.9x355.6mm: "<</CNPageSizeName(Legal)/PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize A5/A5 148.0x210.0mm: "<</CNPageSizeName(A5)/PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize A4/A4 210.0x297.0mm: "<</CNPageSizeName(A4)/PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize A4.bl/A4 210.0x297.0mm (borderless): "<</CNPageSizeName(A4.bl)/PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize B5/B5 182.0x257.0mm: "<</CNPageSizeName(B5)/PageSize[516 729]/ImagingBBox null>>setpagedevice"
+*PageSize 4X6/4"x6" 10x15cm 101.6x152.4mm: "<</CNPageSizeName(4X6)/PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize 4X6.bl/4"x6" 10x15cm 101.6x152.4mm (borderless): "<</CNPageSizeName(4X6.bl)/PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize 4X8/4"x8" 101.6x203.2mm: "<</CNPageSizeName(4X8)/PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageSize 4X8.bl/4"x8" 101.6x203.2mm (borderless): "<</CNPageSizeName(4X8.bl)/PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageSize 5X7/5"x7" 13x18cm 127.0x177.8mm: "<</CNPageSizeName(5X7)/PageSize[360 504]/ImagingBBox null>>setpagedevice"
+*PageSize 5X7.bl/5"x7" 13x18cm 127.0x177.8mm (borderless): "<</CNPageSizeName(5X7.bl)/PageSize[360 504]/ImagingBBox null>>setpagedevice"
+*PageSize 8X10/8"x10" 20x25cm 203.2x254.0mm: "<</CNPageSizeName(8X10)/PageSize[576 720]/ImagingBBox null>>setpagedevice"
+*PageSize 8X10.bl/8"x10" 20x25cm 203.2x254.0mm (borderless): "<</CNPageSizeName(8X10.bl)/PageSize[576 720]/ImagingBBox null>>setpagedevice"
+*PageSize l/L 89.0x127.0mm: "<</CNPageSizeName(l)/PageSize[252 360]/ImagingBBox null>>setpagedevice"
+*PageSize l.bl/L 89.0x127.0mm (borderless): "<</CNPageSizeName(l.bl)/PageSize[252 360]/ImagingBBox null>>setpagedevice"
+*PageSize 2l/2L 127.0x178.0mm: "<</CNPageSizeName(2l)/PageSize[360 505]/ImagingBBox null>>setpagedevice"
+*PageSize 2l.bl/2L 127.0x178.0mm (borderless): "<</CNPageSizeName(2l.bl)/PageSize[360 505]/ImagingBBox null>>setpagedevice"
+*PageSize postcard/Hagaki 100.0x148.0mm: "<</CNPageSizeName(postcard)/PageSize[283 420]/ImagingBBox null>>setpagedevice"
+*PageSize postcard.bl/Hagaki 100.0x148.0mm (borderless): "<</CNPageSizeName(postcard.bl)/PageSize[283 420]/ImagingBBox null>>setpagedevice"
+*PageSize postdbl/Hagaki 2 200.0x148.0mm: "<</CNPageSizeName(postdbl)/PageSize[567 420]/ImagingBBox null>>setpagedevice"
+*PageSize envelop10p/Comm. Env. #10 4.12"x9.5" 104.6x241.3mm: "<</CNPageSizeName(envelop10p)/PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize envelopdlp/DL Env. 110.0x220.0mm: "<</CNPageSizeName(envelopdlp)/PageSize[312 624]/ImagingBBox null>>setpagedevice"
+*PageSize envj4p/Youkei 4 105.0x235.0mm: "<</CNPageSizeName(envj4p)/PageSize[298 666]/ImagingBBox null>>setpagedevice"
+*PageSize envj6p/Youkei 6 98.0x190.0mm: "<</CNPageSizeName(envj6p)/PageSize[278 539]/ImagingBBox null>>setpagedevice"
+*PageSize businesscard/Card 2.16"x3.58" 55.0x91.0mm: "<</CNPageSizeName(businesscard)/PageSize[156 258]/ImagingBBox null>>setpagedevice"
+*PageSize businesscard.bl/Card 2.16"x3.58" 55.0x91.0mm (borderless): "<</CNPageSizeName(businesscard.bl)/PageSize[156 258]/ImagingBBox null>>setpagedevice"
+*PageSize wide/Wide 4"x7.1" 101.6x180.6mm: "<</CNPageSizeName(wide)/PageSize[288 512]/ImagingBBox null>>setpagedevice"
+*PageSize wide.bl/Wide 4"x7.1" 101.6x180.6mm (borderless): "<</CNPageSizeName(wide.bl)/PageSize[288 512]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*DefaultPageRegion: A4
+*PageRegion Letter/Letter 8.5"x11" 215.9x279.4mm: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion Letter.bl/Letter 8.5"x11" 215.9x279.4mm (borderless): "<</CNPageSizeName(Letter.bl)/PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal/Legal 8.5"x14" 215.9x355.6mm: "<</CNPageSizeName(Legal)/PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion A5/A5 148.0x210.0mm: "<</CNPageSizeName(A5)/PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion A4/A4 210.0x297.0mm: "<</CNPageSizeName(A4)/PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion A4.bl/A4 210.0x297.0mm (borderless): "<</CNPageSizeName(A4.bl)/PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion B5/B5 182.0x257.0mm: "<</CNPageSizeName(B5)/PageSize[516 729]/ImagingBBox null>>setpagedevice"
+*PageRegion 4X6/4"x6" 10x15cm 101.6x152.4mm: "<</CNPageSizeName(4X6)/PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion 4X6.bl/4"x6" 10x15cm 101.6x152.4mm (borderless): "<</CNPageSizeName(4X6.bl)/PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion 4X8/4"x8" 101.6x203.2mm: "<</CNPageSizeName(4X8)/PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageRegion 4X8.bl/4"x8" 101.6x203.2mm (borderless): "<</CNPageSizeName(4X8.bl)/PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageRegion 5X7/5"x7" 13x18cm 127.0x177.8mm: "<</CNPageSizeName(5X7)/PageSize[360 504]/ImagingBBox null>>setpagedevice"
+*PageRegion 5X7.bl/5"x7" 13x18cm 127.0x177.8mm (borderless): "<</CNPageSizeName(5X7.bl)/PageSize[360 504]/ImagingBBox null>>setpagedevice"
+*PageRegion 8X10/8"x10" 20x25cm 203.2x254.0mm: "<</CNPageSizeName(8X10)/PageSize[576 720]/ImagingBBox null>>setpagedevice"
+*PageRegion 8X10.bl/8"x10" 20x25cm 203.2x254.0mm (borderless): "<</CNPageSizeName(8X10.bl)/PageSize[576 720]/ImagingBBox null>>setpagedevice"
+*PageRegion l/L 89.0x127.0mm: "<</CNPageSizeName(l)/PageSize[252 360]/ImagingBBox null>>setpagedevice"
+*PageRegion l.bl/L 89.0x127.0mm (borderless): "<</CNPageSizeName(l.bl)/PageSize[252 360]/ImagingBBox null>>setpagedevice"
+*PageRegion 2l/2L 127.0x178.0mm: "<</CNPageSizeName(2l)/PageSize[360 505]/ImagingBBox null>>setpagedevice"
+*PageRegion 2l.bl/2L 127.0x178.0mm (borderless): "<</CNPageSizeName(2l.bl)/PageSize[360 505]/ImagingBBox null>>setpagedevice"
+*PageRegion postcard/Hagaki 100.0x148.0mm: "<</CNPageSizeName(postcard)/PageSize[283 420]/ImagingBBox null>>setpagedevice"
+*PageRegion postcard.bl/Hagaki 100.0x148.0mm (borderless): "<</CNPageSizeName(postcard.bl)/PageSize[283 420]/ImagingBBox null>>setpagedevice"
+*PageRegion postdbl/Hagaki 2 200.0x148.0mm: "<</CNPageSizeName(postdbl)/PageSize[567 420]/ImagingBBox null>>setpagedevice"
+*PageRegion envelop10p/Comm. Env. #10 4.12"x9.5" 104.6x241.3mm: "<</CNPageSizeName(envelop10p)/PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion envelopdlp/DL Env. 110.0x220.0mm: "<</CNPageSizeName(envelopdlp)/PageSize[312 624]/ImagingBBox null>>setpagedevice"
+*PageRegion envj4p/Youkei 4 105.0x235.0mm: "<</CNPageSizeName(envj4p)/PageSize[298 666]/ImagingBBox null>>setpagedevice"
+*PageRegion envj6p/Youkei 6 98.0x190.0mm: "<</CNPageSizeName(envj6p)/PageSize[278 539]/ImagingBBox null>>setpagedevice"
+*PageRegion businesscard/Card 2.16"x3.58" 55.0x91.0mm: "<</CNPageSizeName(businesscard)/PageSize[156 258]/ImagingBBox null>>setpagedevice"
+*PageRegion businesscard.bl/Card 2.16"x3.58" 55.0x91.0mm (borderless): "<</CNPageSizeName(businesscard.bl)/PageSize[156 258]/ImagingBBox null>>setpagedevice"
+*PageRegion wide/Wide 4"x7.1" 101.6x180.6mm: "<</CNPageSizeName(wide)/PageSize[288 512]/ImagingBBox null>>setpagedevice"
+*PageRegion wide.bl/Wide 4"x7.1" 101.6x180.6mm (borderless): "<</CNPageSizeName(wide.bl)/PageSize[288 512]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*OpenUI *MediaType/Media Type: PickOne
+*DefaultMediaType: plain
+*MediaType plain/Plain Paper: "<</MediaType(plain)>>setpagedevice"
+*MediaType glossygold/Photo Paper Plus Glossy II: "<</MediaType(glossygold)>>setpagedevice"
+*MediaType prophoto2/Photo Paper Pro II: "<</MediaType(prophoto2)>>setpagedevice"
+*MediaType proplatinum/Photo Paper Pro Platinum: "<</MediaType(proplatinum)>>setpagedevice"
+*MediaType semigloss/Photo Paper Plus Semi-gloss: "<</MediaType(semigloss)>>setpagedevice"
+*MediaType glossypaper/Glossy Photo Paper: "<</MediaType(glossypaper)>>setpagedevice"
+*MediaType matte/Matte Photo Paper: "<</MediaType(matte)>>setpagedevice"
+*MediaType highres/High Resolution Paper: "<</MediaType(highres)>>setpagedevice"
+*MediaType postcardaddress/Hagaki A: "<</MediaType(postcardaddress)>>setpagedevice"
+*MediaType ijpostcard/Ink Jet Hagaki: "<</MediaType(ijpostcard)>>setpagedevice"
+*MediaType glossypost/Hagaki K: "<</MediaType(glossypost)>>setpagedevice"
+*MediaType prophotopost/Hagaki P: "<</MediaType(prophotopost)>>setpagedevice"
+*MediaType postcard/Hagaki: "<</MediaType(postcard)>>setpagedevice"
+*MediaType tshirt/T-Shirt Transfers: "<</MediaType(tshirt)>>setpagedevice"
+*MediaType envelope/Envelope: "<</MediaType(envelope)>>setpagedevice"
+*MediaType otherphoto/Other Photo Paper: "<</MediaType(otherphoto)>>setpagedevice"
+*CloseUI: *MediaType
+
+*OpenUI *InputSlot/Paper Source: PickOne
+*DefaultInputSlot: auto
+*InputSlot auto/Automatically Select: "<</MediaPosition 0>>setpagedevice"
+*InputSlot asf/Rear Tray: "<</MediaPosition 0>>setpagedevice"
+*InputSlot cassette/Cassette: "<</MediaPosition 1>>setpagedevice"
+*InputSlot continuous/Continuous Autofeed: "<</MediaPosition 0>>setpagedevice"
+*CloseUI: *InputSlot
+
+*OpenUI *CNExtension/Amount of Extension: PickOne
+*DefaultCNExtension: 2
+*CNExtension 0/0: "<</CNExtension(0)>>setpagedevice"
+*CNExtension 1/1: "<</CNExtension(1)>>setpagedevice"
+*CNExtension 2/2: "<</CNExtension(2)>>setpagedevice"
+*CNExtension 3/3: "<</CNExtension(3)>>setpagedevice"
+*CloseUI: *CNExtension
+
+*OpenUI *CNQuality/Quality: PickOne
+*DefaultCNQuality: 3
+*CNQuality 1/Super High: "1"
+*CNQuality 2/High: "2"
+*CNQuality 3/Normal: "3"
+*CNQuality 4/Standard: "4"
+*CNQuality 5/Economy: "5"
+*CloseUI: *CNQuality
+
+*OpenUI *CNGrayscale/Grayscale: PickOne
+*DefaultCNGrayscale: false
+*CNGrayscale false/Off: "false"
+*CNGrayscale true/On: "true"
+*CloseUI: *CNGrayscale
+
+*OpenUI *Resolution/Output Resolution: PickOne
+*DefaultResolution: 600
+*Resolution 600/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
+*Resolution 1200/1200 dpi: "<</HWResolution[1200 1200]>>setpagedevice"
+*Resolution 2400/2400 dpi: "<</HWResolution[2400 2400]>>setpagedevice"
+*CloseUI: *Resolution
+
+*DefaultImageableArea: A4
+*ImageableArea Letter: "18.14 14.17 594.14 783.50"
+*ImageableArea Letter.bl: "0 0 612 792"
+*ImageableArea Legal: "18.14 14.17 594.14 999.50"
+*ImageableArea A5: "9.64 14.17 409.89 586.77"
+*ImageableArea A4: "9.64 14.17 585.64 833.39"
+*ImageableArea A4.bl: "0 0 595 842"
+*ImageableArea B5: "9.64 14.17 506.27 720.00"
+*ImageableArea 4X6: "9.64 14.17 278.36 423.50"
+*ImageableArea 4X6.bl: "0 0 288 432"
+*ImageableArea 4X8: "9.64 14.17 278.36 567.50"
+*ImageableArea 4X8.bl: "0 0 288 576"
+*ImageableArea 5X7: "9.64 14.17 350.36 495.50"
+*ImageableArea 5X7.bl: "0 0 360 504"
+*ImageableArea 8X10: "9.64 14.17 566.36 711.50"
+*ImageableArea 8X10.bl: "0 0 576 720"
+*ImageableArea l: "9.64 14.17 242.65 351.50"
+*ImageableArea l.bl: "0 0 252 360"
+*ImageableArea 2l: "9.64 14.17 350.36 496.06"
+*ImageableArea 2l.bl: "0 0 360 505"
+*ImageableArea postcard: "9.64 14.17 273.83 411.02"
+*ImageableArea postcard.bl: "0 0 283 420"
+*ImageableArea postdbl: "9.64 14.17 557.29 411.02"
+*ImageableArea envelop10p: "9.64 106.02 287.35 675.50"
+*ImageableArea envelopdlp: "9.64 106.02 302.17 615.12"
+*ImageableArea envj4p: "9.64 106.02 288.00 657.64"
+*ImageableArea envj6p: "9.64 106.02 268.16 530.08"
+*ImageableArea businesscard: "9.64 14.17 146.27 249.45"
+*ImageableArea businesscard.bl: "0 0 156 258"
+*ImageableArea wide: "9.64 14.17 278.36 503.49"
+*ImageableArea wide.bl: "0 0 288 512"
+
+*DefaultPaperDimension: A4
+*PaperDimension Letter: "612 792"
+*PaperDimension Letter.bl: "613 793"
+*PaperDimension Legal: "612 1008"
+*PaperDimension A5: "420 595"
+*PaperDimension A4: "595 842"
+*PaperDimension A4.bl: "596 843"
+*PaperDimension B5: "516 729"
+*PaperDimension 4X6: "288 432"
+*PaperDimension 4X6.bl: "289 433"
+*PaperDimension 4X8: "288 576"
+*PaperDimension 4X8.bl: "289 577"
+*PaperDimension 5X7: "360 504"
+*PaperDimension 5X7.bl: "361 505"
+*PaperDimension 8X10: "576 720"
+*PaperDimension 8X10.bl: "577 721"
+*PaperDimension l: "252 360"
+*PaperDimension l.bl: "253 361"
+*PaperDimension 2l: "360 505"
+*PaperDimension 2l.bl: "361 506"
+*PaperDimension postcard: "283 420"
+*PaperDimension postcard.bl: "284 421"
+*PaperDimension postdbl: "567 420"
+*PaperDimension envelop10p: "297 684"
+*PaperDimension envelopdlp: "312 624"
+*PaperDimension envj4p: "298 666"
+*PaperDimension envj6p: "278 539"
+*PaperDimension businesscard: "156 258"
+*PaperDimension businesscard.bl: "157 259"
+*PaperDimension wide: "288 512"
+*PaperDimension wide.bl: "289 513"
+
+*OpenUI *Duplex/Automatic Duplex Printing: PickOne
+*DefaultDuplex: None
+*Duplex None/OFF: "<</Duplex false>>setpagedevice"
+*Duplex DuplexNoTumble/ON (Long Side Stapling): "<</Duplex true/Tumble false>>setpagedevice"
+*Duplex DuplexTumble/ON (Short Side Stapling): "<</Duplex true/Tumble true>>setpagedevice"
+*CloseUI: *Duplex
+
+*UIConstraints: *InputSlot cassette *PageSize Legal
+*UIConstraints: *PageSize Legal *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 4X6
+*UIConstraints: *PageSize 4X6 *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 4X6.bl
+*UIConstraints: *PageSize 4X6.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 4X8
+*UIConstraints: *PageSize 4X8 *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 4X8.bl
+*UIConstraints: *PageSize 4X8.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 5X7
+*UIConstraints: *PageSize 5X7 *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 5X7.bl
+*UIConstraints: *PageSize 5X7.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 8X10
+*UIConstraints: *PageSize 8X10 *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 8X10.bl
+*UIConstraints: *PageSize 8X10.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize l
+*UIConstraints: *PageSize l *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize l.bl
+*UIConstraints: *PageSize l.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 2l
+*UIConstraints: *PageSize 2l *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize 2l.bl
+*UIConstraints: *PageSize 2l.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize postcard
+*UIConstraints: *PageSize postcard *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize postcard.bl
+*UIConstraints: *PageSize postcard.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize postdbl
+*UIConstraints: *PageSize postdbl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize envelop10p
+*UIConstraints: *PageSize envelop10p *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize envelopdlp
+*UIConstraints: *PageSize envelopdlp *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize envj4p
+*UIConstraints: *PageSize envj4p *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize envj6p
+*UIConstraints: *PageSize envj6p *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize businesscard
+*UIConstraints: *PageSize businesscard *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize businesscard.bl
+*UIConstraints: *PageSize businesscard.bl *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize wide
+*UIConstraints: *PageSize wide *InputSlot cassette
+*UIConstraints: *InputSlot cassette *PageSize wide.bl
+*UIConstraints: *PageSize wide.bl *InputSlot cassette
+*UIConstraints: *InputSlot continuous *PageSize Legal
+*UIConstraints: *PageSize Legal *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 4X6
+*UIConstraints: *PageSize 4X6 *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 4X6.bl
+*UIConstraints: *PageSize 4X6.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 4X8
+*UIConstraints: *PageSize 4X8 *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 4X8.bl
+*UIConstraints: *PageSize 4X8.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 5X7
+*UIConstraints: *PageSize 5X7 *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 5X7.bl
+*UIConstraints: *PageSize 5X7.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 8X10
+*UIConstraints: *PageSize 8X10 *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 8X10.bl
+*UIConstraints: *PageSize 8X10.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize l
+*UIConstraints: *PageSize l *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize l.bl
+*UIConstraints: *PageSize l.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 2l
+*UIConstraints: *PageSize 2l *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize 2l.bl
+*UIConstraints: *PageSize 2l.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize postcard
+*UIConstraints: *PageSize postcard *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize postcard.bl
+*UIConstraints: *PageSize postcard.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize postdbl
+*UIConstraints: *PageSize postdbl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize envelop10p
+*UIConstraints: *PageSize envelop10p *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize envelopdlp
+*UIConstraints: *PageSize envelopdlp *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize envj4p
+*UIConstraints: *PageSize envj4p *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize envj6p
+*UIConstraints: *PageSize envj6p *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize businesscard
+*UIConstraints: *PageSize businesscard *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize businesscard.bl
+*UIConstraints: *PageSize businesscard.bl *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize wide
+*UIConstraints: *PageSize wide *InputSlot continuous
+*UIConstraints: *InputSlot continuous *PageSize wide.bl
+*UIConstraints: *PageSize wide.bl *InputSlot continuous
+
+*UIConstraints: *Duplex *MediaType glossygold
+*UIConstraints: *MediaType glossygold *Duplex
+*UIConstraints: *Duplex *MediaType prophoto2
+*UIConstraints: *MediaType prophoto2 *Duplex
+*UIConstraints: *Duplex *MediaType proplatinum
+*UIConstraints: *MediaType proplatinum *Duplex
+*UIConstraints: *Duplex *MediaType semigloss
+*UIConstraints: *MediaType semigloss *Duplex
+*UIConstraints: *Duplex *MediaType glossypaper
+*UIConstraints: *MediaType glossypaper *Duplex
+*UIConstraints: *Duplex *MediaType matte
+*UIConstraints: *MediaType matte *Duplex
+*UIConstraints: *Duplex *MediaType highres
+*UIConstraints: *MediaType highres *Duplex
+*UIConstraints: *Duplex *MediaType ijpostcard
+*UIConstraints: *MediaType ijpostcard *Duplex
+*UIConstraints: *Duplex *MediaType glossypost
+*UIConstraints: *MediaType glossypost *Duplex
+*UIConstraints: *Duplex *MediaType prophotopost
+*UIConstraints: *MediaType prophotopost *Duplex
+*UIConstraints: *Duplex *MediaType tshirt
+*UIConstraints: *MediaType tshirt *Duplex
+*UIConstraints: *Duplex *MediaType envelope
+*UIConstraints: *MediaType envelope *Duplex
+*UIConstraints: *Duplex *MediaType otherphoto
+*UIConstraints: *MediaType otherphoto *Duplex
+
+*UIConstraints: *Duplex *PageSize Legal
+*UIConstraints: *PageSize Legal *Duplex
+*UIConstraints: *Duplex *PageSize 4X6
+*UIConstraints: *PageSize 4X6 *Duplex
+*UIConstraints: *Duplex *PageSize 4X6.bl
+*UIConstraints: *PageSize 4X6.bl *Duplex
+*UIConstraints: *Duplex *PageSize 4X8
+*UIConstraints: *PageSize 4X8 *Duplex
+*UIConstraints: *Duplex *PageSize 4X8.bl
+*UIConstraints: *PageSize 4X8.bl *Duplex
+*UIConstraints: *Duplex *PageSize 5X7
+*UIConstraints: *PageSize 5X7 *Duplex
+*UIConstraints: *Duplex *PageSize 5X7.bl
+*UIConstraints: *PageSize 5X7.bl *Duplex
+*UIConstraints: *Duplex *PageSize 8X10
+*UIConstraints: *PageSize 8X10 *Duplex
+*UIConstraints: *Duplex *PageSize 8X10.bl
+*UIConstraints: *PageSize 8X10.bl *Duplex
+*UIConstraints: *Duplex *PageSize l
+*UIConstraints: *PageSize l *Duplex
+*UIConstraints: *Duplex *PageSize l.bl
+*UIConstraints: *PageSize l.bl *Duplex
+*UIConstraints: *Duplex *PageSize 2l
+*UIConstraints: *PageSize 2l *Duplex
+*UIConstraints: *Duplex *PageSize 2l.bl
+*UIConstraints: *PageSize 2l.bl *Duplex
+*UIConstraints: *Duplex *PageSize postdbl
+*UIConstraints: *PageSize postdbl *Duplex
+*UIConstraints: *Duplex *PageSize envelop10p
+*UIConstraints: *PageSize envelop10p *Duplex
+*UIConstraints: *Duplex *PageSize envelopdlp
+*UIConstraints: *PageSize envelopdlp *Duplex
+*UIConstraints: *Duplex *PageSize envj4p
+*UIConstraints: *PageSize envj4p *Duplex
+*UIConstraints: *Duplex *PageSize envj6p
+*UIConstraints: *PageSize envj6p *Duplex
+*UIConstraints: *Duplex *PageSize businesscard
+*UIConstraints: *PageSize businesscard *Duplex
+*UIConstraints: *Duplex *PageSize businesscard.bl
+*UIConstraints: *PageSize businesscard.bl *Duplex
+*UIConstraints: *Duplex *PageSize wide
+*UIConstraints: *PageSize wide *Duplex
+*UIConstraints: *Duplex *PageSize wide.bl
+*UIConstraints: *PageSize wide.bl *Duplex
+
+*UIConstraints: *MediaType glossygold *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType glossygold
+*UIConstraints: *MediaType glossygold *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType glossygold
+*UIConstraints: *MediaType prophoto2 *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType prophoto2
+*UIConstraints: *MediaType prophoto2 *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType prophoto2
+*UIConstraints: *MediaType proplatinum *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType proplatinum
+*UIConstraints: *MediaType proplatinum *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType proplatinum
+*UIConstraints: *MediaType semigloss *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType semigloss
+*UIConstraints: *MediaType semigloss *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType semigloss
+*UIConstraints: *MediaType glossypaper *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType glossypaper
+*UIConstraints: *MediaType glossypaper *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType glossypaper
+*UIConstraints: *MediaType matte *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType matte
+*UIConstraints: *MediaType matte *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType matte
+*UIConstraints: *MediaType highres *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType highres
+*UIConstraints: *MediaType highres *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType highres
+*UIConstraints: *MediaType postcardaddress *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType postcardaddress
+*UIConstraints: *MediaType postcardaddress *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType postcardaddress
+*UIConstraints: *MediaType ijpostcard *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType ijpostcard
+*UIConstraints: *MediaType ijpostcard *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType ijpostcard
+*UIConstraints: *MediaType glossypost *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType glossypost
+*UIConstraints: *MediaType glossypost *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType glossypost
+*UIConstraints: *MediaType prophotopost *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType prophotopost
+*UIConstraints: *MediaType prophotopost *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType prophotopost
+*UIConstraints: *MediaType postcard *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType postcard
+*UIConstraints: *MediaType postcard *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType postcard
+*UIConstraints: *MediaType tshirt *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType tshirt
+*UIConstraints: *MediaType tshirt *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType tshirt
+*UIConstraints: *MediaType envelope *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType envelope
+*UIConstraints: *MediaType envelope *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType envelope
+*UIConstraints: *MediaType otherphoto *InputSlot cassette
+*UIConstraints: *InputSlot cassette *MediaType otherphoto
+*UIConstraints: *MediaType otherphoto *InputSlot continuous
+*UIConstraints: *InputSlot continuous *MediaType otherphoto
+
+*UIConstraints: *MediaType highres *PageSize Letter.bl
+*UIConstraints: *PageSize Letter.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize A4.bl
+*UIConstraints: *PageSize A4.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize 4X6.bl
+*UIConstraints: *PageSize 4X6.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize 4X8.bl
+*UIConstraints: *PageSize 4X8.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize 5X7.bl
+*UIConstraints: *PageSize 5X7.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize 8X10.bl
+*UIConstraints: *PageSize 8X10.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize l.bl
+*UIConstraints: *PageSize l.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize 2l.bl
+*UIConstraints: *PageSize 2l.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize postcard.bl
+*UIConstraints: *PageSize postcard.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize businesscard.bl
+*UIConstraints: *PageSize businesscard.bl *MediaType highres
+*UIConstraints: *MediaType highres *PageSize wide.bl
+*UIConstraints: *PageSize wide.bl *MediaType highres
+*UIConstraints: *MediaType tshirt *PageSize Letter.bl
+*UIConstraints: *PageSize Letter.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize A4.bl
+*UIConstraints: *PageSize A4.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize 4X6.bl
+*UIConstraints: *PageSize 4X6.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize 4X8.bl
+*UIConstraints: *PageSize 4X8.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize 5X7.bl
+*UIConstraints: *PageSize 5X7.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize 8X10.bl
+*UIConstraints: *PageSize 8X10.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize l.bl
+*UIConstraints: *PageSize l.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize 2l.bl
+*UIConstraints: *PageSize 2l.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize postcard.bl
+*UIConstraints: *PageSize postcard.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize businesscard.bl
+*UIConstraints: *PageSize businesscard.bl *MediaType tshirt
+*UIConstraints: *MediaType tshirt *PageSize wide.bl
+*UIConstraints: *PageSize wide.bl *MediaType tshirt
+*UIConstraints: *MediaType envelope *PageSize Letter.bl
+*UIConstraints: *PageSize Letter.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize A4.bl
+*UIConstraints: *PageSize A4.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize 4X6.bl
+*UIConstraints: *PageSize 4X6.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize 4X8.bl
+*UIConstraints: *PageSize 4X8.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize 5X7.bl
+*UIConstraints: *PageSize 5X7.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize 8X10.bl
+*UIConstraints: *PageSize 8X10.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize l.bl
+*UIConstraints: *PageSize l.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize 2l.bl
+*UIConstraints: *PageSize 2l.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize postcard.bl
+*UIConstraints: *PageSize postcard.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize businesscard.bl
+*UIConstraints: *PageSize businesscard.bl *MediaType envelope
+*UIConstraints: *MediaType envelope *PageSize wide.bl
+*UIConstraints: *PageSize wide.bl *MediaType envelope
+
+*DefaultFont: Courier
+*Font Courier: Standard "(001.001)" Standard ROM
+
+*%CNPpdToOptKey PageSize --papersize
+*%CNPpdToOptKey MediaType --media
+*%CNPpdToOptKey InputSlot --paperload
+*%CNPpdToOptKey CNCartridge --cartridge
+*%CNPpdToOptKey CNQuality --quality
+*%CNPpdToOptKey CNHalftoning --halftoning
+*%CNPpdToOptKey CNRenderIntent --renderintent
+*%CNPpdToOptKey CNGamma --gamma
+*%CNPpdToOptKey CNBalanceC --balance_c
+*%CNPpdToOptKey CNBalanceM --balance_m
+*%CNPpdToOptKey CNBalanceY --balance_y
+*%CNPpdToOptKey CNDensity --density
+*%CNPpdToOptKey CNGrayscale --grayscale
+*%CNPpdToOptKey CNCopies --copies
+*%CNPpdToOptKey Duplex --duplex
+*%CNPpdToOptKey CNStapleSide --stapleside
+*%CNPpdToOptKey CNContrast --contrast
+*%CNPpdToOptKey CNExtension --extension
+
+
+*%
+*% internalversion : 3.20.01.001
+*%

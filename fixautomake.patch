@@ -1,0 +1,268 @@
+diff -Naur backend/configure.in backend/configure.in
+--- backend/configure.in	2009-04-06 11:49:22.000000000 +0200
++++ backend/configure.in	2013-03-07 01:56:38.155344352 +0100
+@@ -1,7 +1,8 @@
+-AC_INIT(src/cnij_backend_common.c)
+-AM_INIT_AUTOMAKE(backend, 3.20-1)
++AC_INIT([backend], [3.20-1])
++AC_CONFIG_SRCDIR([src/cnij_backend_common.c])
++AM_INIT_AUTOMAKE
+ 
+-AM_CONFIG_HEADER(config.h)
++AM_CONFIG_HEADERS([config.h])
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+diff -Naur backendnet/configure.in backendnet/configure.in
+--- backendnet/configure.in	2009-04-06 11:49:22.000000000 +0200
++++ backendnet/configure.in	2013-03-07 01:56:39.178534040 +0100
+@@ -1,7 +1,9 @@
+-AC_INIT(backend/cnijnetlm.c)
+-AM_INIT_AUTOMAKE(backendnet, 3.10-1)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_INIT([backendnet], [3.10-1])
++AC_CONFIG_SRCDIR([backend/cnijnetlm.c])
++AM_INIT_AUTOMAKE
++
++AM_CONFIG_HEADERS([config.h])
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+diff -Naur cngpij/configure.in cngpij/configure.in
+--- cngpij/configure.in	2009-04-06 11:49:22.000000000 +0200
++++ cngpij/configure.in	2013-03-07 01:56:40.021748996 +0100
+@@ -1,7 +1,8 @@
+-AC_INIT(cngpij/bjcups.c)
+-AM_INIT_AUTOMAKE(cngpij, 3.20-1)
+ 
+-AM_CONFIG_HEADER(config.h)
++
++AC_INIT([cngpij], [3.20-1])
++AC_CONFIG_SRCDIR([cngpij/bjcups.c])
++
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+@@ -10,6 +11,9 @@
+ 
+ AC_DEFINE_UNQUOTED(PROG_PATH, "$enable_progpath")
+ AC_SUBST(PROG_PATH)
++AM_INIT_AUTOMAKE
++
++AM_CONFIG_HEADERS([config.h])
+ 
+ 
+ # Checks for programs.
+diff -Naur cngpijmon/configure.in cngpijmon/configure.in
+--- cngpijmon/configure.in	2009-04-24 08:12:49.000000000 +0200
++++ cngpijmon/configure.in	2013-03-07 02:44:59.692192279 +0100
+@@ -1,28 +1,27 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
+-AC_ARG_PROGRAM
++
++if test "${program_suffix}" = "NONE"; then
++  program_suffix="mp640"
++  program_transform_name="s,\$\$,${program_suffix},;"
++fi
++AC_INIT([cngpijmon${program_suffix}], [3.20-1])
++AC_CONFIG_SRCDIR([configure.ac])
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+ fi
++AC_ARG_PROGRAM
+ 
+ AC_DEFINE_UNQUOTED(PROG_PATH, "$enable_progpath")
+ AC_SUBST(PROG_PATH)
+ 
+-if test "${program_suffix}" = "NONE"; then
+-  program_suffix="mp640"
+-  program_transform_name="s,\$\$,${program_suffix},;"
+-fi
+-
+-
+-AM_INIT_AUTOMAKE(cngpijmon${program_suffix}, 3.20-1)
+-AM_CONFIG_HEADER(config.h)
++AM_INIT_AUTOMAKE
++AM_CONFIG_HEADERS([config.h])
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
+ AM_PATH_GTK_2_0(2.0.0, ,
+diff -Naur cngpijmon/src/Makefile.am cngpijmon/src/Makefile.am
+--- cngpijmon/src/Makefile.am	2009-04-24 08:12:49.000000000 +0200
++++ cngpijmon/src/Makefile.am	2013-03-07 02:36:32.733181920 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	-DUSE_LIB_GLASE	\
+ 	@GTK_CFLAGS@
+ 
+diff -Naur cnijfilter/configure.in cnijfilter/configure.in
+--- cnijfilter/configure.in	2009-03-26 06:11:05.000000000 +0100
++++ cnijfilter/configure.in	2013-03-07 02:44:58.379042825 +0100
+@@ -1,11 +1,15 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(configure.in)
+ 
+ if test "${program_suffix}" = "NONE"; then
+   program_suffix="mp640"
+   program_transform_name="s,\$\$,${program_suffix},;"
+ fi
+ 
++AC_INIT([cif${program_suffix}], [3.20-1])
++AC_CONFIG_SRCDIR([configure.ac])
++
++
++
+ AC_ARG_ENABLE(libpath)
+ if test "${enable_libpath}" = ""; then
+   enable_libpath="/usr/lib/bjlib"
+@@ -24,8 +28,8 @@
+ AC_SUBST(XBINPATH)
+ 
+ 
+-AM_INIT_AUTOMAKE(cif${program_suffix}, 3.20-1)
+-AM_CONFIG_HEADER(config.h)
++AM_INIT_AUTOMAKE
++AM_CONFIG_HEADERS([config.h])
+ 
+ dnl Checks for programs.
+ AC_ISC_POSIX
+@@ -42,7 +46,6 @@
+ AC_SUBST(CNCL_LIB_ID)
+ 
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ 
+ dnl Checks for libraries.
+ 
+diff -Naur lgmon/configure.in lgmon/configure.in
+--- lgmon/configure.in	2009-04-24 08:19:35.000000000 +0200
++++ lgmon/configure.in	2013-03-07 03:07:30.426391828 +0100
+@@ -1,15 +1,16 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
+-AC_ARG_PROGRAM
++
+ 
+ if test "${program_suffix}" = "NONE"; then
+   program_suffix="mp640"
+   program_transform_name="s,\$\$,${program_suffix},;"
+ fi
+-
+-AM_INIT_AUTOMAKE(lgmon{program_suffix}, 3.20-1)
+-AM_CONFIG_HEADER(config.h)
++AC_INIT([lgmon${program_suffix}], [3.20-1])
++AC_ARG_PROGRAM
++AC_CONFIG_SRCDIR([configure.ac])
++AM_INIT_AUTOMAKE
++AM_CONFIG_HEADERS([config.h])
+ dnl AM_MAINTAINER_MODE
+ 
+ AC_DEFINE_UNQUOTED(PACKAGE_PRINTER_MODEL, "${program_suffix}")
+@@ -37,7 +38,6 @@
+ AC_SUBST(CNCL_LIB_ID)
+ 
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AC_PROG_RANLIB
+ 
+diff -Naur libs/configure.in libs/configure.in
+--- libs/configure.in	2009-04-06 11:49:22.000000000 +0200
++++ libs/configure.in	2013-03-07 01:56:35.709021121 +0100
+@@ -1,7 +1,10 @@
+-AC_INIT(paramlist/paramlist.h)
+-AM_INIT_AUTOMAKE(buftool, 1.0.0)
+ 
+-AM_CONFIG_HEADER(config.h)
++
++AC_INIT([buftool], [1.0.0])
++AC_CONFIG_SRCDIR([paramlist/paramlist.h])
++AM_INIT_AUTOMAKE
++
++AM_CONFIG_HEADERS([config.h])
+ 
+ # Checks for programs.
+ AC_PROG_CXX
+diff -Naur ppd/configure.in ppd/configure.in
+--- ppd/configure.in	2009-04-28 12:08:04.000000000 +0200
++++ ppd/configure.in	2013-03-07 02:00:38.358305487 +0100
+@@ -1,9 +1,14 @@
+-AC_INIT(canonmp250.ppd)
+-AM_INIT_AUTOMAKE(canonppd, 1.0.0, no-define)
+ 
+ if test "${program_suffix}" = "NONE"; then
+ 	program_suffix="mp640"
+ fi
++
++
++AC_INIT([canonppd], [1.0.0], no-define)
++AC_CONFIG_SRCDIR([canonmp250.ppd])
++AM_INIT_AUTOMAKE
++
++
+ PPD_SUFFIX=$program_suffix
+ AC_SUBST(PPD_SUFFIX)
+ 
+diff -Naur printui/configure.in printui/configure.in
+--- printui/configure.in	2009-04-06 13:06:02.000000000 +0200
++++ printui/configure.in	2013-03-07 02:45:08.564283240 +0100
+@@ -1,15 +1,18 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
+-AC_ARG_PROGRAM
+-
+ if test "${program_suffix}" = "NONE"; then
+   program_suffix="mp640"
+   program_transform_name="s,\$\$,${program_suffix},;"
+ fi
+ 
+-AM_INIT_AUTOMAKE(printui${program_suffix}, 3.20-1)
+-AM_CONFIG_HEADER(config.h)
++AC_INIT(printui${program_suffix}, 3.20-1)
++AC_CONFIG_SRCDIR([configure.ac])
++AC_ARG_PROGRAM
++
++
++
++AM_INIT_AUTOMAKE
++AM_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+ AC_DEFINE_UNQUOTED(PACKAGE_PRINTER_MODEL, "${program_suffix}")
+@@ -35,7 +38,6 @@
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
+ AM_PATH_GTK_2_0(2.6.0, ,
+diff -Naur pstocanonij/configure.in pstocanonij/configure.in
+--- pstocanonij/configure.in	2009-04-06 11:49:22.000000000 +0200
++++ pstocanonij/configure.in	2013-03-07 02:03:08.020662711 +0100
+@@ -1,7 +1,8 @@
+-AC_INIT(filter/pstocanonij.c)
+-AM_INIT_AUTOMAKE(pstocanonij, 1.0.0)
++AC_INIT([pstocanonij], [1.0.0])
++AC_CONFIG_SRCDIR([filter/pstocanonij.c])
++AM_INIT_AUTOMAKE
+ 
+-AM_CONFIG_HEADER(config.h)
++AM_CONFIG_HEADERS([config.h])
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then

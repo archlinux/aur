@@ -1,0 +1,17 @@
+#stolen from lib32-cnijfilter-mp560
+
+post_install() {
+	if [ -x /sbin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+}
+post_upgrade() {
+	if [ -x /sbin/ldconfig ]; then
+                /sbin/ldconfig
+        fi
+}
+post_remove() {
+        if [ -x /sbin/ldconfig ]; then
+                /sbin/ldconfig
+        fi
+}
