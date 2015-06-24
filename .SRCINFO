@@ -1,7 +1,7 @@
 pkgbase = blueproximity
 	pkgdesc = A proximity detector for your mobile phone via bluetooth.
 	pkgver = 1.2.5
-	pkgrel = 6
+	pkgrel = 7
 	url = http://sourceforge.net/projects/blueproximity/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = blueproximity
 	depends = python2
 	depends = librsvg
 	options = emptydirs
-	source = http://colocrossing.dl.sourceforge.net/sourceforge/blueproximity/blueproximity-1.2.5.tar.gz
+	source = http://download.sourceforge.net/sourceforge/blueproximity/blueproximity-1.2.5.tar.gz
 	source = blueproximity.desktop
 	source = blueproximity.xpm
 	source = blueproximity-1.2.5.orig.patch
