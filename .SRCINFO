@@ -1,0 +1,20 @@
+pkgbase = arch-konqueror-search
+	pkgdesc = Arch search engines for konqueror (AUR, Pkgs, BBS, Wiki)
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://archlinux.org
+	arch = any
+	license = GPL
+	depends = kdebase-konqueror>=4.3
+	conflicts = arch-konqueror-search-adslgr
+	source = arpkg.desktop
+	source = arwiki.desktop
+	source = aur.desktop
+	source = arforum.desktop
+	md5sums = c56c5541e64948c676c9e0a985c02691
+	md5sums = ea2f29a2a06f735aa64ab97b41d109a8
+	md5sums = 626910e3b9baba01d5dced284c368945
+	md5sums = ff728a24de1038d1db888a02fd7fd7b3
+
+pkgname = arch-konqueror-search
+

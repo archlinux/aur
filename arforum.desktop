@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=ISO 8859-7
+Hidden=false
+Keys=arfrm
+Name=Arch Forum
+Query=http://bbs.archlinux.org/search.php?action=search&keywords=\{@}&author=&forum=-1&search_in=all&sort_by=0&sort_dir=DESC&show_as=topics&search=Submit
+ServiceTypes=SearchProvider
+Type=Service

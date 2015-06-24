@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=ISO 8859-7
+Hidden=false
+Keys=arpkg
+Name=Arch Packages
+Query=http://archlinux.org/packages/search/?q=\\{@}
+ServiceTypes=SearchProvider
+Type=Service

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=ISO 8859-7
+Hidden=false
+Keys=aur
+Name=AUR
+Query=http://aur.archlinux.org/packages.php?K=\\{@}
+ServiceTypes=SearchProvider
+Type=Service
