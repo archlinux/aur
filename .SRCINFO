@@ -8,6 +8,7 @@ pkgbase = tlauncher
 	arch = i686
 	license = GPLv3
 	depends = jre8-openjdk
+	noextract = TLauncher.jar
 	source = TLauncher.jar::http://tlauncher.ru/download/jar
 	source = tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddEZIeUdaVzFoQWc
 	md5sums = 708614e9f3492bbad2490ea1725d5691

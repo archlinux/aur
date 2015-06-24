@@ -14,6 +14,7 @@ backup=()
 install='tlauncher.install'
 source=("TLauncher.jar::http://tlauncher.ru/download/jar"
         "tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddEZIeUdaVzFoQWc")
+noextract=('TLauncher.jar')
 md5sums=('708614e9f3492bbad2490ea1725d5691'
          'dec61181650419e28df05736c30a8a49')
 
