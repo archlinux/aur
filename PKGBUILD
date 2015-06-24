@@ -7,7 +7,7 @@
 pkgname=chromium-minimum
 _pkgname=chromium
 pkgver=43.0.2357.130
-pkgrel=1
+pkgrel=2
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kdeutils-kwalletmanager: for storing passwords in KWallet')
+conflicts='chromium'
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
