@@ -20,7 +20,8 @@ build() {
   sed -i '/doc/d' CMakeLists.txt
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release  
+          -DCMAKE_BUILD_TYPE=Release  \
+          -DKDE4_ENABLE_FPIC=TRUE
           
   make
 }
