@@ -1,6 +1,6 @@
 # Maintainer: Albert Berger < nbdspcl at gmail dot com>
 pkgname=regd
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Registry daemon, information cache and secure credential storage."
 arch=('any')
@@ -16,14 +16,16 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}::https://github.com/nbdsp/regd/archive/v0.4.2.tar.gz")
+source=("${pkgname}::https://github.com/nbdsp/regd/archive/v0.5.0.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
 
 package() {
+	username="$(id | sed -e 's/[^(]*(\([^)]*\)).*/\1/')"
 	cd "${pkgname}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
 	install -Dm644 "data/${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
+	install -Dm600 "data/${pkgname}.data" "$pkgdir/${HOME}/.config/regd/data/${pkgname}.data"
 }
