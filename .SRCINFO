@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-yawp
+	pkgdesc = Colorful weather plasmoid
+	pkgver = 0.4.5
+	pkgrel = 4
+	url = http://www.kde-look.org/content/show.php/yaWP+(Yet+Another+Weather+Plasmoid)?content=94106
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = gettext
+	conflicts = yawp-weather-plasmoid
+	source = http://downloads.sourceforge.net/yawp/yawp-0.4.5.tar.bz2
+	sha256sums = 913e95b77694ca95961be7ff5aa179284f698b18fe22b5947017034970caa4c7
+
+pkgname = kdeplasma-applets-yawp
+
