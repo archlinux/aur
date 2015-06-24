@@ -8,6 +8,11 @@
       <command>chromium-dev %s</command>
       <icon-name>chromium-dev</icon-name>
       <run-in-terminal>false</run-in-terminal>
+      <netscape-remote>false</netscape-remote>
+      <!--
+      <tab-command>false</tab-command>
+      <win-command>false</win-command>
+      -->
     </web-browser>
   </web-browsers>
 </default-apps>
