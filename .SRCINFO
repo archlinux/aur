@@ -1,7 +1,7 @@
 pkgbase = quelcom
 	pkgdesc = Quelcom provides assorted tools to perform simple editing operations on MP3 and WAV audio files. These include fading, check-and-clean, informational extraction and lossless cutting and joining without reencoding.
-	pkgver = 0.4.0-13
-	pkgrel = 14
+	pkgver = 0.4.0
+	pkgrel = 13
 	url = http://packages.ubuntu.com/trusty/sound/quelcom
 	arch = i686
 	arch = x86_64
