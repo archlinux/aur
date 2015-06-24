@@ -3,7 +3,7 @@
 _number_of_bits=16
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.24
-pkgrel=7
+pkgrel=8
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their dsPIC and PIC24 microcontroller families"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -67,16 +67,16 @@ package() {
   mv unpacked.vfs/compiler/programfileslinux/* unpacked.vfs/compiler/programfiles/
   mv unpacked.vfs/compiler/programfiles/*License.txt unpacked.vfs/compiler/programfiles/docs/.
 
-  mkdir -p "$pkgdir"/opt/$pkgname
+  mkdir -p "$pkgdir/opt/$pkgname"
   mv unpacked.vfs/compiler/programfiles/* "$pkgdir"/opt/$pkgname/.
 
   msg2 "Making executables executable"
-  find "$pkgdir"/opt/$pkgname/bin -type f -exec /bin/sh -c "file {} | grep -q executable && chmod +x {}" \;
+  find "$pkgdir/opt/$pkgname/bin" -type f -exec /bin/sh -c "file {} | grep -q executable && chmod +x {}" \;
 
   mkdir -p "$pkgdir/etc/profile.d"
   echo "export PATH="'$PATH'":/opt/${pkgname}/bin" > "$pkgdir/etc/profile.d/${pkgname}.sh"
   echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT=/opt/${pkgname}" >> "$pkgdir/etc/profile.d/${pkgname}.sh" 
  
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  ln -s /opt/$pkgname/docs/*icense.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/opt/$pkgname/docs/MPLAB_XC16_Compiler_License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
