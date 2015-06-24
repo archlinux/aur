@@ -1,0 +1,33 @@
+pkgbase = cinepaint-oyranos
+	pkgdesc = Oyranos enabled version of photo editing application.
+	pkgver = 0.25.2
+	pkgrel = 1
+	url = http://www.cinepaint.org
+	install = cinepaint.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	license = MIT
+	makedepends = python2
+	makedepends = gutenprint>=5.2.9
+	makedepends = git
+	depends = gtk2
+	depends = openexr
+	depends = lcms
+	depends = libxpm
+	depends = fltk
+	depends = ftgl
+	depends = libxxf86vm
+	depends = oyranos>=0.9.0
+	optdepends = python2: for python plug-ins
+	optdepends = gutenprint: for print plug-ins
+	optdepends = ghostscript: for pdf plug-ins
+	provides = cinepaint
+	conflicts = cinepaint
+	options = !libtool
+	source = https://github.com/milankni/cinepaint-oyranos/archive/release-0.25.2.tar.gz
+	md5sums = 23c365599a1ce76ad75b5a2c98d2d070
+
+pkgname = cinepaint-oyranos
+

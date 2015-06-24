@@ -1,0 +1,13 @@
+post_install() {
+  update-desktop-database -q
+  echo "==> ICC Examin plugin must be compiled _after_ CinePaint is installed."
+}
+
+post_upgrade() {
+  update-desktop-database -q
+  echo "==> If ICC Examin plugin fails, recompile it from AUR."
+}
+
+post_remove() {
+  update-desktop-database -q
+}
