@@ -1,0 +1,7 @@
+/var/log/jetty/*.log {
+    copytruncate
+    weekly
+    rotate 52
+    compress
+    missingok
+}

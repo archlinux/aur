@@ -1,0 +1,17 @@
+#JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-7-openjdk/jre}
+#JAVA=$JAVA_HOME/bin/java
+#JAVA_OPTIONS=
+
+#JETTY_ARGS=
+JETTY_PORT=8080
+JETTY_USER=jetty
+JETTY_HOME=/usr/share/jetty
+JETTY_RUN=/run/jetty
+JETTY_LOGS=/var/log/jetty
+JETTY_CONSOLE=$JETTY_LOGS/console.log
+
+# Autodetected variables:
+#JETTY_BASE=$JETTY_HOME
+#JETTY_PID=$JETTY_RUN/jetty.pid
+#JETTY_STATE=$JETTY_RUN/jetty.state
+#JETTY_CONF=$JETTY_BASE/etc/jetty.conf
