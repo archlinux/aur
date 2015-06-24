@@ -12,7 +12,7 @@ install=ycm-generator.install
 makedepends=('git')
 optdepends=('cmake' 'autoconf' 'automake') 
 provides=('ycm-generator-git' 'ycm-generator')
-source=("git://github.com/ssfdust/YCM-Generator.git")
+source=("git://github.com/rdnetto/YCM-Generator.git")
 md5sums=('SKIP')
 
 pkgver() {
