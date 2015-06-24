@@ -1,0 +1,14 @@
+pkgbase = gutaur
+	pkgdesc = An AUR helper. PKGBUILD at https://github.com/gutenye/gutaur/tree/master/misc/aur
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/gutenye/gutaur
+	arch = any
+	license = MIT
+	source = gutaur-1.0.3.tar.gz::https://github.com/gutenye/gutaur/archive/v1.0.3.tar.gz
+	source = https://github.com/gutenye/gutaur/releases/download/v1.0.0/gutaur-check-linux-amd64-v1.0.3.tar.gz
+	md5sums = e6e2a5735f4550339e939a075963e79f
+	md5sums = fbf65249fe89e3d023a6be3e4aec633c
+
+pkgname = gutaur
+
