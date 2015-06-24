@@ -6,13 +6,13 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=2.7.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix"
 arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL')
-depends=(
+depends=("$_pkgbasename"
       'lib32-alsa-lib' 'lib32-fontconfig'
       'lib32-gnutls' 'lib32-sdl' 'lib32-libva'
       'lib32-libass' 'lib32-libbluray' 'lib32-fribidi'
