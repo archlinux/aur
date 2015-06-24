@@ -1,0 +1,8 @@
+#
+# Parameters to be passed to ftpd
+#
+FTPD_ARGS="-D"
+
+# Neeed for openrc newnet
+#current openrc4arch packages are compiled with oldnet
+#rc_need=\"!net\" 

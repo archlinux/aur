@@ -1,0 +1,27 @@
+#!/usr/bin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+FTPD_BINARY="/usr/bin/ftpd"
+FTPD_PIDFILE="/run/ftpd.pid"
+
+depend() {
+    use logger dns
+    need net
+}
+
+start() {
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start --exec "${FTPD_BINARY}" \
+        --pidfile "${FTPD_PIDFILE}" \
+        -- ${FTPD_ARGS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --exec "${FTPD_BINARY}" \
+        --pidfile "${FTPD_PIDFILE}" --quiet
+    eend $?
+}
+
