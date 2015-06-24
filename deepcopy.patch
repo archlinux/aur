@@ -1,0 +1,16 @@
+diff --git a/projekte/amoeba.py b/projekte/amoeba.py
+index da504b4..3068470 100644
+--- a/projekte/amoeba.py
++++ b/projekte/amoeba.py
+@@ -71,9 +71,9 @@ def amoeba(var,scale,func,ftolerance=1.e-4,xtolerance=1.e-4,itmax=500,data=None)
+     # first set up the simplex
+ 
+     simplex = [0]*(nvar+1)  # set the initial simplex
+-    simplex[0] = var[:]
++    simplex[0] = var[:]*1
+     for i in range(nvar):
+-        simplex[i+1] = var[:]
++        simplex[i+1] = var[:]*1
+         simplex[i+1][i] += scale[i]
+ 
+     fvalue = []
