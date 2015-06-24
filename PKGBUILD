@@ -6,7 +6,7 @@
 
 pkgname=hdjmod
 pkgver=1.28
-pkgrel=12
+pkgrel=13
 pkgdesc="Hercules DJ kernel module"
 arch=('i686' 'x86_64')
 url="http://ts.hercules.com/eng/"
@@ -16,7 +16,7 @@ makedepends=('rpmextract' 'linux-headers')
 optdepends=('hdjcpl: Control Panel for the Hercules DJ series hardware settings')
 install=hdjmod.install
 
-source=('ftp://ftp.hercules.com/pub/webupdate/DJCSeries/Hercules_DJSeries_Linux.tgz'
+source=('ftp://ftp.hercules.com/pub/webupdate/DJCSeries/Legacy/Hercules_DJSeries_Linux.tgz'
 	'hdjmod.diff'
 	'kernel_2.6.31_fix.patch'
 	'kernel_2.6.35_fix.diff'
