@@ -1,0 +1,14 @@
+post_install() {
+	update-desktop-database -q
+	echo "Use YACReader to read your comics."
+	echo "Use YACReaderLibrary to manage your digital comic library."
+	echo "For cross-platform reading, have a closer look at YACReaderLibrary's server mode."
+}
+
+post_remove() {
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	update-desktop-database -q
+}
