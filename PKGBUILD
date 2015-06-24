@@ -57,7 +57,7 @@ pkgname=(linux-lts318-ck linux-lts318-ck-headers)
 _kernelname=-lts318-ck
 _srcname=linux-3.18
 pkgver=3.18.16
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -285,7 +285,7 @@ package_linux-lts318-ck() {
 	true && install=${install}.pkg
 
 	sed \
-		-e  "s/KERNEL_NAME=.*/KERNEL_NAME=-ck/g" \
+		-e  "s/KERNEL_NAME=.*/KERNEL_NAME=-lts318-ck/g" \
 		-e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
 		-i "${startdir}/${install}"
 
