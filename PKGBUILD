@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://weidu.org"
 license=('GPL2')
 source=(http://www.weidu.org/~thebigg/WeiDU-Linux-$pkgver.zip)
-md5sums=('af186def723bd4cc5f8f6fb2cd8b0c99')
+md5sums=('af186def723bd4cc5f8f6fb2cd8b0c98')
 options=('!strip')
 
 package() {
