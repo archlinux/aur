@@ -2,7 +2,7 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-continuous-bin
-pkgver=45.0.2432.0.r334321
+pkgver=45.0.2441.0.r335862
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Continuous, auto-tested Snapshot builds)"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ install=$pkgname.install
 source=('chromium-continuous-bin'
         'chromium-continuous-bin.desktop'
         'LICENSE')
-md5sums=('c0febff6875a5c700507d752647f8f4f'
-         '6203259f7a8fe2fa55b64005a202828d'
+md5sums=('6203259f7a8fe2fa55b64005a202828d'
+         '3f2bfd12b55b7153b60ad904207599dd'
          '537e0b52077bf0a616d0a0c8a79bc9d5')
 
 [[ $CARCH = x86_64 ]] && _64="_x64"
