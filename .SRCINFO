@@ -1,6 +1,6 @@
 pkgbase = distro-info
 	pkgdesc = provides information about the distributions' releases
-	pkgver = 0.13
+	pkgver = 0.14
 	pkgrel = 1
 	url = http://packages.debian.org/sid/distro-info
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = distro-info
 	license = MIT
 	makedepends = shunit2
 	makedepends = perl
-	makedepends = python-distribute
-	makedepends = python2-distribute
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	makedepends = python-pylint
 	depends = distro-info-data>=0.21
 	provides = python-distro-info
@@ -19,8 +19,8 @@ pkgbase = distro-info
 	conflicts = python2-distro-info
 	conflicts = perl-distro-info
 	options = !emptydirs
-	source = http://ftp.debian.org/debian/pool/main/d/distro-info/distro-info_0.13.tar.xz
-	sha256sums = f4d458563d2efdb0249aad0b7ab25ee8368653f4543f4dd22fb2bd2d740d5fb7
+	source = http://ftp.debian.org/debian/pool/main/d/distro-info/distro-info_0.14.tar.xz
+	sha256sums = 73b7912107157cdad96a52b10a050292c9bdb049c52fb3a70b6dbf21a4965204
 
 pkgname = distro-info
 
