@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://kmidimon.sourceforge.net/"
 license=('GPL')
 depends=('kdelibs' 'drumstick')
+conflicts=('kmidimon')
 
 if [[ `uname -m` = 'x86_64' ]]; then
         _arch='amd64'
