@@ -2,7 +2,7 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=45.0.2432.0.r334343
+pkgver=45.0.2441.0.r335899
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Snapshot builds)"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ install=$pkgname.install
 source=('chromium-snapshot-bin'
         'chromium-snapshot-bin.desktop'
         'LICENSE')
-md5sums=('1ac561e11601b7229942bede39fcfb54'
-         '65607114be4390c9ecc90fc133157d3c'
+md5sums=('65607114be4390c9ecc90fc133157d3c'
+         '793b3dca6ae19d15a830e7de7e1f6fd3'
          '537e0b52077bf0a616d0a0c8a79bc9d5')
 
 [[ $CARCH = x86_64 ]] && _64="_x64"
