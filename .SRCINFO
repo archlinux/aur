@@ -1,7 +1,7 @@
 pkgbase = scangearmp
-	pkgdesc = Canon IJ Scanner Driver
+	pkgdesc = Canon IJ Scanner Driver for MP250, MP270, MP490, MP550, MP560, and MP640 series
 	pkgver = 1.40
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.canon-europe.com/support/pixma_software/
 	arch = i686
 	arch = x86_64
@@ -36,10 +36,57 @@ pkgname = scangearmp-mpseries-common
 	depends_x86_64 = lib32-libusb-compat
 	depends_x86_64 = lib32-gimp
 
-pkgname = scangearmp-mp550
+pkgname = scangearmp-mp250series
+	pkgdesc = Canon IJ Scanner Driver (For MP250 series)
+	install = scangearmp-mp250.install
+	depends = scangearmp-common=1.40
+	provides = scangearmp-mp250
+	conflicts = scangearmp-mp250
+	depends_i686 = gtk2>=2.6
+	depends_x86_64 = lib32-gtk2>=2.6
+
+pkgname = scangearmp-mp270series
+	pkgdesc = Canon IJ Scanner Driver (For MP270 series)
+	install = scangearmp-mp270.install
+	depends = scangearmp-common=1.40
+	provides = scangearmp-mp270
+	conflicts = scangearmp-mp270
+	depends_i686 = gtk2>=2.6
+	depends_x86_64 = lib32-gtk2>=2.6
+
+pkgname = scangearmp-mp490series
+	pkgdesc = Canon IJ Scanner Driver (For MP490 series)
+	install = scangearmp-mp490.install
+	depends = scangearmp-common=1.40
+	provides = scangearmp-mp490
+	conflicts = scangearmp-mp490
+	depends_i686 = gtk2>=2.6
+	depends_x86_64 = lib32-gtk2>=2.6
+
+pkgname = scangearmp-mp550series
 	pkgdesc = Canon IJ Scanner Driver (For MP550 series)
 	install = scangearmp-mp550.install
 	depends = scangearmp-common=1.40
+	provides = scangearmp-mp550
+	conflicts = scangearmp-mp550
+	depends_i686 = gtk2>=2.6
+	depends_x86_64 = lib32-gtk2>=2.6
+
+pkgname = scangearmp-mp560series
+	pkgdesc = Canon IJ Scanner Driver (For MP560 series)
+	install = scangearmp-mp560.install
+	depends = scangearmp-common=1.40
+	provides = scangearmp-mp560
+	conflicts = scangearmp-mp560
+	depends_i686 = gtk2>=2.6
+	depends_x86_64 = lib32-gtk2>=2.6
+
+pkgname = scangearmp-mp640series
+	pkgdesc = Canon IJ Scanner Driver (For MP640 series)
+	install = scangearmp-mp640.install
+	depends = scangearmp-common=1.40
+	provides = scangearmp-mp640
+	conflicts = scangearmp-mp640
 	depends_i686 = gtk2>=2.6
 	depends_x86_64 = lib32-gtk2>=2.6
 

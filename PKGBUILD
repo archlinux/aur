@@ -3,14 +3,19 @@
 
 pkgbase='scangearmp'
 pkgname=('scangearmp-mpseries-common'
-         'scangearmp-mp550')
+         'scangearmp-mp250series'
+         'scangearmp-mp270series'
+         'scangearmp-mp490series'
+         'scangearmp-mp550series'
+         'scangearmp-mp560series'
+         'scangearmp-mp640series')
 _pkgname=scangearmp
 
 pkgver=1.40
-pkgrel=6
+pkgrel=7
 _pkgreview=1
 
-pkgdesc="Canon IJ Scanner Driver"
+pkgdesc="Canon IJ Scanner Driver for MP250, MP270, MP490, MP550, MP560, and MP640 series"
 url="http://www.canon-europe.com/support/pixma_software/"
 
 arch=('i686' 'x86_64')
@@ -29,20 +34,23 @@ source=("http://files.canon-europe.com/files/soft37281/Software/Linux_Scangear_S
 sha512sums=('257f6ffece2e43c5db7b4d73ac962ddce9256b652e980b64dead2d38fe15d1b101a4f91c87b7fce1e0154fcb7fd6fc59962d4ca9abd4a20f765845aa938d8b8a'
             'dd5bc73edff4f8a3452058e6f635815e6697a996cf0f3bf8a6515594af22ad730333f80a4f1b8113d36549ce8a627b92eb5e36778fc72def6852d01ef5e0930b')
 
-build() {
-  cd ${srcdir}
-  tar xzf ${_pkgname}-source-${pkgver}-${_pkgreview}.tar.gz
-  cd ${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}
+prepare() {
+  cd "${srcdir}"
+  tar xzf "${_pkgname}-source-${pkgver}-${_pkgreview}.tar.gz"
+  cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}"
 
-  export CC="gcc -m32"
-  
   patch -p1 -i ../mychanges.patch
 
   for libname in "libgimp-2.0.so" "libgimpmath-2.0.so" "libgimpconfig-2.0.so" "libgimpcolor-2.0.so" "libgimpbase-2.0.so"; do
-    ln -s /usr/lib32/${libname} com/libs_bin/${libname}
+    ln -fs /usr/lib32/${libname} com/libs_bin/${libname}
   done
+}
 
-  cd scangearmp
+build() {
+  cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}/scangearmp"
+
+  export CC="gcc -m32"
+
   ./autogen.sh --prefix=/usr --libdir=/usr/lib32
   if [ -x /usr/bin/libtool ]; then
     rm libtool
@@ -82,24 +90,97 @@ package_scangearmp-mpseries-common() {
   install -D LICENSE-scangearmp-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-scangearmp-${pkgver}EN.txt
 }
 
-package_scangearmp-mp550() {
-  pkgdesc="Canon IJ Scanner Driver (For MP550 series)"
-  install=scangearmp-mp550.install
+scangearmp-mpverseries-packager() {
+  local mpid="$1"
+
+  cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}"
+
+  install -d ${pkgdir}/usr/lib32/bjlib
+  for libname in ${mpid}/libs_bin/*.so.*; do
+    install -s -m 755 ${libname} ${pkgdir}/usr/lib32
+  done
+  for auxname in ${mpid}/*.{tbl,DAT}; do
+    install -m 644 ${auxname} ${pkgdir}/usr/lib32/bjlib
+  done
+
+  install -D LICENSE-scangearmp-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-scangearmp-${pkgver}EN.txt
+}
+
+package_scangearmp-mp250series() {
+  pkgdesc="Canon IJ Scanner Driver (For MP250 series)"
+  install="scangearmp-mp250.install"
+  conflicts=("scangearmp-mp250")
+  provides=("scangearmp-mp250")
 
   depends_x86_64=('lib32-gtk2>=2.6')
   depends_i686=('gtk2>=2.6')
   depends=("${_pkgname}-common=${pkgver}")
 
-  cd ${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}
+  scangearmp-mpverseries-packager "356"
+}
 
-  install -d ${pkgdir}/usr/lib32/bjlib
-  for libname in "libcncpmsimg359.so.1.4.0" "libcncpmslld359c.so.1.04.1" "libcncpmslld359.so.1.4.0"; do
-    install -s -m 755 359/libs_bin/${libname} ${pkgdir}/usr/lib32
-  done
-  for auxname in "cnc173dd.tbl" "cnc_3590.tbl" "CNC550.DAT" "CNC550P.DAT"; do
-    install -m 644 359/${auxname} ${pkgdir}/usr/lib32/bjlib
-  done
+package_scangearmp-mp270series() {
+  pkgdesc="Canon IJ Scanner Driver (For MP270 series)"
+  install="scangearmp-mp270.install"
+  conflicts=("scangearmp-mp270")
+  provides=("scangearmp-mp270")
 
-  install -D LICENSE-scangearmp-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-scangearmp-${pkgver}EN.txt
+  depends_x86_64=('lib32-gtk2>=2.6')
+  depends_i686=('gtk2>=2.6')
+  depends=("${_pkgname}-common=${pkgver}")
+
+  scangearmp-mpverseries-packager "357"
+}
+
+package_scangearmp-mp490series() {
+  pkgdesc="Canon IJ Scanner Driver (For MP490 series)"
+  install="scangearmp-mp490.install"
+  conflicts=("scangearmp-mp490")
+  provides=("scangearmp-mp490")
+
+  depends_x86_64=('lib32-gtk2>=2.6')
+  depends_i686=('gtk2>=2.6')
+  depends=("${_pkgname}-common=${pkgver}")
+
+  scangearmp-mpverseries-packager "358"
+}
+
+package_scangearmp-mp550series() {
+  pkgdesc="Canon IJ Scanner Driver (For MP550 series)"
+  install="scangearmp-mp550.install"
+  conflicts=("scangearmp-mp550")
+  provides=("scangearmp-mp550")
+
+  depends_x86_64=('lib32-gtk2>=2.6')
+  depends_i686=('gtk2>=2.6')
+  depends=("${_pkgname}-common=${pkgver}")
+
+  scangearmp-mpverseries-packager "359"
+}
+
+package_scangearmp-mp560series() {
+  pkgdesc="Canon IJ Scanner Driver (For MP560 series)"
+  install="scangearmp-mp560.install"
+  conflicts=("scangearmp-mp560")
+  provides=("scangearmp-mp560")
+
+  depends_x86_64=('lib32-gtk2>=2.6')
+  depends_i686=('gtk2>=2.6')
+  depends=("${_pkgname}-common=${pkgver}")
+
+  scangearmp-mpverseries-packager "360"
+}
+
+package_scangearmp-mp640series() {
+  pkgdesc="Canon IJ Scanner Driver (For MP640 series)"
+  install="scangearmp-mp640.install"
+  conflicts=("scangearmp-mp640")
+  provides=("scangearmp-mp640")
+
+  depends_x86_64=('lib32-gtk2>=2.6')
+  depends_i686=('gtk2>=2.6')
+  depends=("${_pkgname}-common=${pkgver}")
+
+  scangearmp-mpverseries-packager "362"
 }
 
