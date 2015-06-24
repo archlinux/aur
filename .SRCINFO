@@ -1,13 +1,19 @@
 pkgbase = conky-top
 	pkgdesc = A Top conky-lua for ArchLinux
-	pkgver = 1.5
-	pkgrel = 3
+	pkgver = 1.7
+	pkgrel = 1
 	url = http://alexiobash.com/conky-top-monitor-di-sistema-a-pannello/
+	install = conky-top.install
 	arch = any
 	license = GPL
 	depends = conky-lua
-	source = http://mirror.alexiobash.com/alexiobash/project/conky-top/conky-top-1.5.tar.gz
-	md5sums = 612c6548655ebdfe170c8b28da05973c
+	depends = perl-mail-imapclient
+	depends = perl-io-socket-ssl
+	backup = etc/conky/conky-top.conf
+	backup = usr/share/conkytop/gmail.pl
+	backup = usr/share/conkytop/update.pl
+	source = conky-top::git+http://git.alexiobash.com/git/conky-top
+	md5sums = SKIP
 
 pkgname = conky-top
 
