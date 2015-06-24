@@ -1,0 +1,22 @@
+pkgbase = symboleditor
+	pkgdesc = Symbol editor for KXStitch
+	pkgver = 1.5.0
+	pkgrel = 2
+	url = http://kxstitch.sourceforge.net/
+	install = symboleditor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = doxygen
+	makedepends = patch
+	depends = kdebase-runtime
+	depends = imagemagick
+	source = http://www-ftp.lip6.fr/pub/X11/kde/stable/symboleditor/1.5.0/src/SymbolEditor-1.5.0-1.tar.bz2
+	source = symboleditor.install
+	md5sums = 20f27055e5dd53e1dc4837d7e6f16b69
+	md5sums = 5b554364ee8db32e0bb1e881bf0bca34
+
+pkgname = symboleditor
+
