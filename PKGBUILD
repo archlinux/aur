@@ -8,8 +8,8 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=0           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=0   # Use bundled clang compiler (needs build). NOTE: if use this option , _use_clang need set to 1
+_use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
+_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , _use_clang need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 
