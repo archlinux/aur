@@ -6,7 +6,7 @@
 
 pkgname=apache25
 pkgver=2.5.r27203.e4f56ef
-pkgrel=1
+pkgrel=2
 pkgdesc='A high performance Unix-based HTTP server'
 arch=('i686' 'x86_64')
 url='http://www.apache.org/dist/httpd'
@@ -15,7 +15,7 @@ conflicts=('apache')
 license=('APACHE')
 backup=(etc/httpd/conf/httpd.conf)
 depends=('zlib' 'apr-util' 'pcre' 'systemd')
-makedepends=('openssl')
+makedepends=('openssl' 'python2')
 install=httpd.install
 source=(
 	httpd::git://git.apache.org/httpd.git
@@ -63,6 +63,7 @@ prepare() {
 	ln -s "${srcdir}/apr-util-1.5.4" srclib/apr-util
 
 	sed -i '1 s/python/python2/' srclib/apr/build/gen-build.py
+	sed -i 's/python/python2/g' srclib/apr/build/buildcheck.sh
 }
 
 build() {
