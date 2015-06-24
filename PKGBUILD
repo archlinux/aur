@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=43.0.2357.125
-pkgrel=3
+pkgver=43.0.2357.130
+pkgrel=1
 _launcher_ver=2
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
@@ -27,6 +27,8 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         inox.desktop
+        0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
+        0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
         chromium-widevine.patch
         disable-autofill-download-manager.patch
         disable-google-url-tracker.patch
@@ -41,9 +43,11 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         launcher-branding.patch
         disable-missing-key-warning.patch)
         
-sha256sums=('af1774d093f90f9ccfd7def3b2b3a8caa109274ac28d4bec0285e50f8a5a5405'
+sha256sums=('62fb55439396a5d49ba53d4377e8d2554c14c2e8a6255f07909ccee8f248002e'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
+            '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
+            '8fb428244be7b50268a2848a34405c5551232e5c77f9e553cfdd3103979748d2'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
             '4ed267ac792c7dbd5e1353018e05debfe31b95d3d003e8509137059fc593b8fb'
             '5c0ae89a5384dd2c89fc8c8e369158a62f6e981bfce7a3cb4d2fec5f5a29d589'
@@ -58,11 +62,6 @@ sha256sums=('af1774d093f90f9ccfd7def3b2b3a8caa109274ac28d4bec0285e50f8a5a5405'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385')
 
-# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
-# more information.
-
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
 # instructions on how to build the toolchain from source don't work that well
 # (at least not from within the Chromium 39 source tree).
@@ -75,6 +74,12 @@ fi
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
+  # https://code.google.com/p/chromium/issues/detail?id=490240
+  patch -Np1 -i ../0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
+
+  # https://code.google.com/p/chromium/issues/detail?id=490260
+  patch -Np1 -i ../0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
+  
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
   #   libwidevinecdmadapter.so
@@ -130,9 +135,6 @@ build() {
   export -n CFLAGS CXXFLAGS
 
   local _chromium_conf=(
-    -Dgoogle_api_key=$_google_api_key
-    -Dgoogle_default_client_id=$_google_default_client_id
-    -Dgoogle_default_client_secret=$_google_default_client_secret
     -Dwerror=
     -Dclang=0
     -Dpython_ver=2.7
