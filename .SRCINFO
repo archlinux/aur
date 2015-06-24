@@ -1,0 +1,29 @@
+pkgbase = makehuman-svn
+	pkgdesc = Parametrical modeling program for creating human bodies
+	pkgver = 5231
+	pkgrel = 1
+	url = http://www.makehuman.org/
+	install = makehuman.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = python2
+	depends = python2-pyqt
+	depends = python2-opengl
+	depends = python2-numpy
+	conflicts = makehuman
+	conflicts = makehuman-nightly
+	source = makehuman.desktop
+	source = makehuman.sh
+	source = makehuman.png
+	source = makehuman.install
+	source = makehuman-svn::svn+http://makehuman.googlecode.com/svn/trunk/
+	sha256sums = c9f7042d0b1c0e94a1b0ae208b4b76420b08e53c3a186ec999c707acba5f571b
+	sha256sums = 0a929a27a50439595dff3e17fa1c943d9cd9683745d6b2b0ec9603e21fefcf71
+	sha256sums = d48711c8446b110b30622facc4da6afb2410a8f319a2fb638f41ec06cfdba87e
+	sha256sums = 375998dcda6186d2361b7754ce93463397fa69cdd047a8f977f08a41f8923573
+	sha256sums = SKIP
+
+pkgname = makehuman-svn
+
