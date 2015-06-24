@@ -2,7 +2,7 @@
 
 pkgname=yaourt-gui
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A bash GUI for yaourt"
 arch=('any')
 url="http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/"
