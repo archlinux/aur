@@ -1,40 +1,40 @@
-# Maintainer:  Patrick McCarty <pnorcks at gmail dot com>
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Contributor: Patrick McCarty <pnorcks at gmail dot com>
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.32
+pkgver=1.33
 pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
-url="http://joeyh.name/code/pristine-tar/"
+url="https://packages.debian.org/sid/pristine-tar"
 license=('GPL')
 depends=('perl' 'xdelta')
 conflicts=('pristine-tar-git')
 source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.gz
         0002-Use-posix-tar-format-by-default.patch
         0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
-        0004-Remove-all-timestamps-from-extended-PAX-headers.patch
-        0010-workaround-for-some-broken-pristine-tar-branche.patch)
-sha256sums=('1df928c89fa3adb72ac1fcbc28253b392a7692b6f5a77c2855933253a4598d57'
-            'a41617db19c85b18b9b157b2cb3e523f5484472b434cc9f69717499e268e7fcf'
-            'c8848744d934eebe9d672f92f57b05929edc13f608835c7da367479ce1bdd992'
-            'a6ddb2602d536fa1f4a2e6f748ad8bac2aa49d8f533e3b5993f2f77716bcdb73'
-            'b7a3713c327fd68e49818ad38d5f550870095eebd094a5bd85dd59e815fde9a1')
+        0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch)
+sha256sums=('7d87cfe6b957e100e5cd87dca0835af299b4e03f8cb24990f01bbf0f065197b4'
+            '09b7e2fba6f53ad1ac85d6000393835aedb8785ddcfd176f043f6301e267c614'
+            'd470d888fba8c32c20602a2e90219893d15074cf447c5920b37fa57fe5d38692'
+            '0d2cbbeeb8c5fbba193b4ac39a33de800515811f6858e26a8874ed3bce6f394c')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  # three patches used in the Tizen tools package (improvements for POSIX tar support)
-  patch -Np1 -i "$srcdir"/0002-Use-posix-tar-format-by-default.patch
-  patch -Np1 -i "$srcdir"/0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
-  patch -Np1 -i "$srcdir"/0004-Remove-all-timestamps-from-extended-PAX-headers.patch
+  # patches used in the Tizen tools package
+  # (improvements for POSIX tar support)
+  # available in the pristine-tar package at download.tizen.org/tools
+  patch -p1 < ../0002-Use-posix-tar-format-by-default.patch
+  patch -p1 < ../0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
 
   # extra patch for Tizen compat
-  patch -Np1 -i "$srcdir"/0010-workaround-for-some-broken-pristine-tar-branche.patch
+  patch -p1 < ../0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   export PATH=/usr/bin/core_perl:$PATH
 
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make install DESTDIR=$pkgdir PREFIX=/usr INSTALLSITESCRIPT=/usr/bin
   install -d $pkgdir/usr/share/doc/pristine-tar

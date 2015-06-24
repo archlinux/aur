@@ -12,7 +12,7 @@ Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/pristine-bz2 b/pristine-bz2
-index dbbe319..112d49e 100755
+index 411e990..8fc694e 100755
 --- a/pristine-bz2
 +++ b/pristine-bz2
 @@ -263,6 +263,10 @@ sub genbz2 {

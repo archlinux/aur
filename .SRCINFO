@@ -1,24 +1,22 @@
 pkgbase = pristine-tar
 	pkgdesc = Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout.
-	pkgver = 1.32
+	pkgver = 1.33
 	pkgrel = 1
-	url = http://joeyh.name/code/pristine-tar/
+	url = https://packages.debian.org/sid/pristine-tar
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = perl
 	depends = xdelta
 	conflicts = pristine-tar-git
-	source = http://ftp.debian.org/debian/pool/main/p/pristine-tar/pristine-tar_1.32.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/p/pristine-tar/pristine-tar_1.33.tar.gz
 	source = 0002-Use-posix-tar-format-by-default.patch
 	source = 0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
-	source = 0004-Remove-all-timestamps-from-extended-PAX-headers.patch
-	source = 0010-workaround-for-some-broken-pristine-tar-branche.patch
-	sha256sums = 1df928c89fa3adb72ac1fcbc28253b392a7692b6f5a77c2855933253a4598d57
-	sha256sums = a41617db19c85b18b9b157b2cb3e523f5484472b434cc9f69717499e268e7fcf
-	sha256sums = c8848744d934eebe9d672f92f57b05929edc13f608835c7da367479ce1bdd992
-	sha256sums = a6ddb2602d536fa1f4a2e6f748ad8bac2aa49d8f533e3b5993f2f77716bcdb73
-	sha256sums = b7a3713c327fd68e49818ad38d5f550870095eebd094a5bd85dd59e815fde9a1
+	source = 0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch
+	sha256sums = 7d87cfe6b957e100e5cd87dca0835af299b4e03f8cb24990f01bbf0f065197b4
+	sha256sums = 09b7e2fba6f53ad1ac85d6000393835aedb8785ddcfd176f043f6301e267c614
+	sha256sums = d470d888fba8c32c20602a2e90219893d15074cf447c5920b37fa57fe5d38692
+	sha256sums = 0d2cbbeeb8c5fbba193b4ac39a33de800515811f6858e26a8874ed3bce6f394c
 
 pkgname = pristine-tar
 

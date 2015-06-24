@@ -15,10 +15,10 @@ Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
  1 file changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/pristine-tar b/pristine-tar
-index 1c321d4..f1fae98 100755
+index 0bf44e8..d36e51b 100755
 --- a/pristine-tar
 +++ b/pristine-tar
-@@ -396,12 +396,10 @@ sub gentar {
+@@ -417,12 +417,10 @@ sub gentar {
  
  	my @try;
  	push @try, sub { recreatetarball($delta->{manifest}, getcwd,
@@ -33,7 +33,7 @@ index 1c321d4..f1fae98 100755
  
  	my $ok;
  	foreach my $variant (@try) {
-@@ -511,7 +509,8 @@ sub gendelta {
+@@ -532,7 +530,8 @@ sub gendelta {
  		if ($#out == 0 && -d $out[0]) {
  			$sourcedir=$out[0];
  		}
@@ -43,7 +43,7 @@ index 1c321d4..f1fae98 100755
  	}
  	else {
  		$recreatetarball=$opts{recreatetarball};
-@@ -778,7 +777,7 @@ sub commit {
+@@ -800,7 +799,7 @@ sub commit {
  	my ($sourcedir, $id)=export($upstream);
  	genmanifest($tarball, "$tempdir/manifest");
  	my $recreatetarball=recreatetarball("$tempdir/manifest", $sourcedir,
