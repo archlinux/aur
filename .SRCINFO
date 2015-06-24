@@ -1,0 +1,22 @@
+pkgbase = mygui-git
+	pkgdesc = A library for creating Graphical User Interfaces for games and 3D applications
+	pkgver = 3.2.1.20140829
+	pkgrel = 1
+	url = http://mygui.info/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = ttf-dejavu
+	depends = boost-libs
+	depends = ogre
+	depends = ois
+	optdepends = mygui-docs: documentation
+	provides = mygui
+	conflicts = mygui
+	conflicts = mygui-svn
+
+pkgname = mygui-git
+
