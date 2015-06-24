@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=6.1.0
+Version=1.0
 Name=Tracktion 6
 Comment=Audio and MIDI workstation
 Exec=/usr/bin/Tracktion6 %u
