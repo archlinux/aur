@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('dnf' 'python')
 makedepends=('cmake')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver-1.tar.gz")
-md5sums=('1d2b27bdc7f787229f0535a12901bb26')
+md5sums=('b6cab618273e323110d582d64836c43a')
 
 prepare() {
 	cd "$pkgname-$pkgname-$pkgver-1"
