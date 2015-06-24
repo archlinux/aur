@@ -1,3 +1,5 @@
+# Maintainer: Joel <aullidolunar at(@@) gmai1 (.dot.) c0m>
+
 _pkgname=xchm
 pkgname=${_pkgname}-wx3
 pkgver=1.23
