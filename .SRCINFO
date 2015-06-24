@@ -1,0 +1,20 @@
+pkgbase = yacreader-backend-p7zip
+	pkgdesc = a subset of shared object files from p7zip 9.20.1 for use with YACReader
+	pkgver = 9.20.1
+	pkgrel = 2
+	url = http://p7zip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = yasm
+	makedepends = nasm
+	makedepends = wxgtk2.8
+	depends = gcc-libs
+	depends = bash
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/p7zip/p7zip/9.20.1/p7zip_9.20.1_src_all.tar.bz2
+	sha256sums = 49557e7ffca08100f9fc687f4dfc5aea703ca207640c76d9dee7b66f03cb4782
+
+pkgname = yacreader-backend-p7zip
+
