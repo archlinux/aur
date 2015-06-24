@@ -2,7 +2,7 @@
 # Maintainer: Zoe <chp321@gmail.com>
 pkgname=quelcom
 pkgver=0.4.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Quelcom provides assorted tools to perform simple editing operations on MP3 and WAV audio files. These include fading, check-and-clean, informational extraction and lossless cutting and joining without reencoding."
 license=('GPL')
 url="http://packages.ubuntu.com/trusty/sound/quelcom"
@@ -18,7 +18,7 @@ elif [[ `uname -m` = 'i686' ]]; then
 fi
 
 
-build() {
+package() {
     cd $srcdir
 
     bsdtar xf "${pkgname}_${pkgver}-${pkgrel}_${_arch}.deb" || return 1
