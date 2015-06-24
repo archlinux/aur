@@ -1,0 +1,20 @@
+pkgbase = python-pyejdb
+	pkgdesc = Python binding for EJDB database engine
+	pkgver = 1.0.16
+	pkgrel = 3
+	url = https://github.com/Softmotions/ejdb-python
+	arch = any
+	license = LGPL2
+	provides = python-pyejdb=1.0.16
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyejdb/pyejdb-1.0.16.tar.gz
+	md5sums = 5f5856a21ee5af334ed0cf78f6542089
+
+pkgname = python-pyejdb
+	depends = python
+	depends = libejdb
+
+pkgname = python2-pyejdb
+	depends = python2
+	depends = libejdb
+
