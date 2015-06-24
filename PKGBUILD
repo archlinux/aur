@@ -4,7 +4,7 @@
 
 _pkgname=pioneer
 pkgname=$_pkgname-bin
-pkgver=20141231
+pkgver=20150623
 pkgrel=1
 pkgdesc="A freeform single player space adventure in the spirit of Frontier: Elite II."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://pioneerspacesim.net/"
 license=('GPL')
 conflicts=('pioneer' 'pioneer-git')
 provides=('pioneer')
-depends=('libsigc++' 'libvorbis' 'sdl2_image' 'freetype2')
+depends=('libsigc++' 'libvorbis' 'sdl2_image' 'freetype2' 'libpng12')
 optdepends=('libtxc_dxtn: may prevent crashes on ATI hardware')
 [ "$CARCH" = "i686" ] && _carch_bits=32
 [ "$CARCH" = "x86_64" ] && _carch_bits=64
@@ -36,5 +36,6 @@ package() {
 md5sums=('46e51941124eb3cf1af9233820223478'
          '1f05200234c41b4320f59de80534669c'
          '9e61ce70a75f6b9ad0fd5cab5d0b7420')
-md5sums_i686=('2ab07cf7dc359c4fb0c8878ed784ee39')
-md5sums_x86_64=('e31e97662c093ef114f6a6d682ee9355')
+md5sums_i686=('aaa95985052c71c81e227abfa12fd9d2')
+md5sums_x86_64=('1c0dde9b054ad8691759fd877579721b')
+
