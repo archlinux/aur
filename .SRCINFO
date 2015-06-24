@@ -1,13 +1,14 @@
 pkgbase = xchm-wx3
 	pkgdesc = A cross-platform GUI front-end to chmlib (wxWidgets 3.0 version)
 	pkgver = 1.23
-	pkgrel = 0
+	pkgrel = 1
 	url = http://xchm.sourceforge.net/index.html
 	install = xchm.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = wxgtk
 	depends = chmlib
 	provides = xchm
 	conflicts = xchm
