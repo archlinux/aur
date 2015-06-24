@@ -1,6 +1,6 @@
 pkgbase = gist
 	pkgdesc = Potentially the best command line gister
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/defunkt/gist
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gist
 	depends = ruby
 	optdepends = xclip: put pasted gist's url into X selection automagically
 	optdepends = xsel: put pasted gist's url into X selection automagically
-	source = gist-4.3.0.tar.gz::https://github.com/defunkt/gist/archive/v4.3.0.tar.gz
-	sha512sums = ffd09abbb6764722e8ed1eb6758c8a64e64a106133e5f2741d726e582ebb404306a23557fbb316d5d3d1f82c59ae1ecad8d628aade4a9b520a63e9d9e804dc5c
+	source = gist-4.4.0.tar.gz::https://github.com/defunkt/gist/archive/v4.4.0.tar.gz
+	sha512sums = e59f77d5461f8e9540294f13467feccd3b8f1840758d579a31aff700c4dd421d25d49305210c21f5165bdc966f7b5e2497f021789173b02157603299f05bcea4
 
 pkgname = gist
 
