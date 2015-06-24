@@ -1,0 +1,23 @@
+Make the flex scanner accept values of the fields spanning
+several lines using the folding technique of RFC-822 (i.e. using
+a space in the beginning of the continuation lines.  This does
+not yet make libvc completely RFC-2425-compliant, because the
+continuation sequence "\n " is still contained in the
+output (i.e. not eaten up).  At any rate, rolo should now be able
+to read vCard files containing folded lines (closes: #442944).
+
+ -- Rafael Laboissiere <rafael@debian.org>  Tue, 01 Jul 2008 17:10:33 +0200
+
+Index: libvc-003.dfsg.1/src/vc_scan.l
+===================================================================
+--- libvc-003.dfsg.1.orig/src/vc_scan.l	2008-07-01 17:28:46.000000000 +0200
++++ libvc-003.dfsg.1/src/vc_scan.l	2008-07-01 17:28:54.000000000 +0200
+@@ -67,7 +67,7 @@
+ 
+ <SC_VALUE>
+ {
+-{VALUE-CHAR}*             { yylval = yytext; return TOK_VALUE; }
++({VALUE-CHAR}|"\n ")*     { yylval = yytext; return TOK_VALUE; }
+ "\n"                      { yylval = NULL; BEGIN(INITIAL); return yytext[0]; }
+ }
+ 

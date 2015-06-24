@@ -1,0 +1,25 @@
+Change lex scanning variables, complying with VCard-2
+
+ -- Rafael Laboissiere <rafael@debian.org>  Tue, 01 Jul 2008 17:10:33 +0200
+
+Index: libvc-003.dfsg.1/src/vc_scan.l
+===================================================================
+--- libvc-003.dfsg.1.orig/src/vc_scan.l	2008-07-01 17:20:04.000000000 +0200
++++ libvc-003.dfsg.1/src/vc_scan.l	2008-07-01 17:20:10.000000000 +0200
+@@ -49,6 +49,7 @@
+ NON-ASCII       [\x80-\xFF]
+ SAFE-CHAR       {WSP}|\x21|[\x23-\x2B]|[\x2D-\x39]|[\x3C-\x7E]|{NON-ASCII}
+ VALUE-CHAR      {WSP}|{VCHAR}|{NON-ASCII}
++NAME-CHAR       [\x21-\x2B\x2D\x2F-\x39\x3C\x3E-\x5A\x5C\x5E-\x7E]
+
+ %option noyywrap
+ %x SC_VALUE SC_PARAM SC_PARAM_VALUE
+@@ -60,7 +61,7 @@
+ "\n"                      { yylval = NULL; return yytext[0]; }
+ "."                       { yylval = NULL; return yytext[0]; }
+ ({ALPHA}|{DIGIT}|-)+/"."  { yylval = yytext; return TOK_GROUP; }
+-({ALPHA}|{DIGIT}|-)+      { yylval = yytext; return TOK_NAME; }
++{NAME-CHAR}+              { yylval = yytext; return TOK_NAME; }
+ ";"                       { yylval = NULL; BEGIN(SC_PARAM); return yytext[0]; }
+ ":"                       { yylval = NULL; BEGIN(SC_VALUE); return yytext[0]; }
+

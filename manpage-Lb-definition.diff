@@ -1,0 +1,16 @@
+Adds definition for the libvc library (.Lb macro) and avoids nroff warnings
+
+ -- Rafael Laboissiere <rafael@debian.org>  Tue, 01 Jul 2008 17:10:33 +0200
+
+Index: libvc-003.dfsg.1/doc/vc.3
+===================================================================
+--- libvc-003.dfsg.1.orig/doc/vc.3	2008-07-01 17:20:46.000000000 +0200
++++ libvc-003.dfsg.1/doc/vc.3	2008-07-01 17:20:54.000000000 +0200
+@@ -44,6 +44,7 @@
+ .Nm get_val_struct_part
+ .Nd vCard library
+ .Sh LIBRARY
++.ds str-Lb-libvc         vCard\~library (libvc, \-lvc)
+ .Lb libvc
+ .Sh SYNOPSIS
+ .In vc.h
