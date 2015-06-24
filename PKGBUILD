@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sunrise-commander
-pkgver=6r459
+pkgver=6r463
 pkgrel=1
 pkgdesc="A two panel filemanager for emacs"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('emacs' 'avfs' 'fuse')
 optdepends=('zip: support for zip files' 'unzip: support for zip files')
 source=(http://www.emacswiki.org/emacs/download/sunrise-commander.el)
-md5sums=('6c5fab0a8141a1fc00a89c8f40a35e77')
+md5sums=('efc3dd4773a11193d25e00a0cc606afa')
 
 package() {
   cd $srcdir

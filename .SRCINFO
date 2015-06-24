@@ -1,6 +1,6 @@
 pkgbase = sunrise-commander
 	pkgdesc = A two panel filemanager for emacs
-	pkgver = 6r459
+	pkgver = 6r463
 	pkgrel = 1
 	url = http://www.emacswiki.org/emacs/Sunrise_Commander
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = sunrise-commander
 	optdepends = zip: support for zip files
 	optdepends = unzip: support for zip files
 	source = http://www.emacswiki.org/emacs/download/sunrise-commander.el
-	md5sums = 6c5fab0a8141a1fc00a89c8f40a35e77
+	md5sums = efc3dd4773a11193d25e00a0cc606afa
 
 pkgname = sunrise-commander
 
