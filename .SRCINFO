@@ -1,0 +1,21 @@
+pkgbase = kdeplasma-applets-eyasdp
+	pkgdesc = Enhanced yaSDP(yet another ShutDown plasmoid)
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php?content=146530
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = plasmoid
+	license = GPL3
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	conflicts = eyasdp
+	conflicts = kdeplasma-addons-applets-eyasdp
+	replaces = kdeplasma-addons-applets-eyasdp
+	source = http://kde-look.org/CONTENT/content-files/146530-eyasdp-1.2.0.tar.bz2
+	sha256sums = 50c250c27150aaa3ac70d20e776754f983f201fbe5017c59634697d05a29d522
+
+pkgname = kdeplasma-applets-eyasdp
+
