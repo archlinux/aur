@@ -1,0 +1,23 @@
+_svc="mysql"
+_rlvl="default"
+
+post_install() {
+	conf1='basedir = /usr'
+	conf2='pid-file = /var/run/mysqld/mysqld.pid'
+	conf3='user = mysql'
+	file="/etc/mysql/my.cnf"
+	echo "	==>  $file requires $conf1"
+	echo "	==>  $file requires $conf2"
+	echo "	==>  $file requires $conf3"
+	_cmd="rc-update add ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}

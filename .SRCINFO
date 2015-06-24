@@ -1,0 +1,70 @@
+pkgbase = openrc-devel
+	pkgdesc = OpenRC init scripts
+	pkgver = 20150613
+	pkgrel = 1
+	url = https://github.com/manjaro/packages-openrc
+	arch = any
+	groups = openrc-devel
+	license = GPL2
+	conflicts = openrc
+	conflicts = openrc-git
+	conflicts = openrc-arch-services-git
+	conflicts = initscripts
+	conflicts = systemd-sysvcompat
+	source = git-daemon.confd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-vcs/git/files/git-daemon.confd
+	source = git-daemon.initd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-vcs/git/files/git-daemon-r1.initd
+	source = mysql.confd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-db/mysql-init-scripts/files/conf.d-2.0
+	source = mysql.initd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-db/mysql-init-scripts/files/init.d-2.0
+	source = svn.confd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-vcs/subversion/files/svnserve.confd
+	source = svn.initd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-vcs/subversion/files/svnserve.initd3
+	source = postgresql.confd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-db/postgresql/files/postgresql.confd
+	source = postgresql.initd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-db/postgresql/files/postgresql.init-9.3
+	source = php-fpm.initd::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/php/files/php-fpm-r4.init
+	sha256sums = 9bf02170dcf73e930a992adf44326ed7c27159d41a503ca4d9371861ee5030c9
+	sha256sums = 421e68201619bfbf7535d8b1a0030390b7ffab998e025f7cbd7e879c677c2819
+	sha256sums = 6cd8551b8ac0dded54f42c2cc9cd55fbc4776d1a541e13d7d571cefd906cb3f4
+	sha256sums = 1c89b70714bac5edece71ecc113a35350fc96ef977be2e0f44d6b46adbbb6c30
+	sha256sums = 45f2dc1a718aed885559e71d98112e670c92bd6b4f19c5cf593eced6cd2bbd97
+	sha256sums = b5bd2a3b09c5e84d385e5d873ad9e3061a6e05dcf59276d6a38a5b86f180eb77
+	sha256sums = 57c1ad0b14e8458024c713dd8cc2390023b95c27ba4cbd637333b1020f11f398
+	sha256sums = 6a22c5d3bcacbe21f03663a318131fb692aa321abd4db36c3a013a7964685143
+	sha256sums = 37e34461babfb5881169f9729fbdde7d4aba533f123e2c480fe25ac3b863d3e7
+
+pkgname = git-openrc
+	pkgdesc = OpenRC git-daemon init script
+	install = git.install
+	depends = git
+	depends = openrc-core
+	backup = etc/conf.d/git-daemon
+
+pkgname = mysql-openrc
+	pkgdesc = OpenRC mysql init script
+	install = mysql.install
+	depends = mysql
+	depends = openrc-core
+	optdepends = bind-openrc: bind initscript
+	backup = etc/conf.d/mysql
+
+pkgname = postgresql-openrc
+	pkgdesc = OpenRC postgresql init script
+	install = postgresql.install
+	depends = postgresql
+	depends = openrc-core
+	backup = etc/conf.d/postgresql
+
+pkgname = subversion-openrc
+	pkgdesc = OpenRC svnserve init script
+	install = subversion.install
+	depends = subversion
+	depends = openrc-core
+	backup = etc/conf.d/svn
+
+pkgname = php-fpm-openrc
+	pkgdesc = OpenRC php-fpm init script
+	install = php-fpm.install
+	depends = php-fpm
+	depends = openrc-core
+	optdepends = apache-openrc: apache initscript
+	optdepends = lighttp-openrc: lighttp initscript
+	optdepends = nginx-openrc: nginx initscript
+
