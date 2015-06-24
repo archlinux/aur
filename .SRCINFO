@@ -1,0 +1,12 @@
+pkgbase = gututils
+	pkgdesc = Guten's cmdline utils. PKGBUILD at https://github.com/gutenye/gututils/tree/master/misc/aur
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/gutenye/gututils
+	arch = any
+	license = MIT
+	source = https://github.com/gutenye/gututils/archive/v1.0.2.tar.gz
+	md5sums = 8b99947620b75b373ec19e10a59acd98
+
+pkgname = gututils
+
