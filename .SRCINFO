@@ -1,6 +1,6 @@
 pkgbase = xdg-app
 	pkgdesc = An application deployment framework for desktop apps
-	pkgver = 0.3.1
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/alexlarsson/xdg-app
 	install = xdg-app.install
@@ -9,8 +9,8 @@ pkgbase = xdg-app
 	license = GPL2
 	depends = ostree
 	depends = libseccomp
-	source = https://github.com/alexlarsson/xdg-app/releases/download/0.3.1/xdg-app-0.3.1.tar.xz
-	sha256sums = 745fceedf27e364142b6fb909263b2a63d081263237dd23bca03668fd2c08ac1
+	source = https://github.com/alexlarsson/xdg-app/releases/download/0.3.4/xdg-app-0.3.4.tar.xz
+	sha256sums = fc16e219502a5b299f70a85706f2c4ccc5529cc7999161bc17bc72e129563ab0
 
 pkgname = xdg-app
 
