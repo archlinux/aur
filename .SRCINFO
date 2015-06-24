@@ -1,0 +1,17 @@
+pkgbase = makefontpkg
+	pkgdesc = Tool for creating packages from TrueType and OpenType fonts
+	pkgver = 20150624
+	pkgrel = 1
+	url = http://github.com/misterdanb/makefontpkg
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = git
+	depends = python3
+	options = !strip
+	options = !emptydirs
+	source = makefontpkg::git://github.com/misterdanb/makefontpkg.git
+	md5sums = SKIP
+
+pkgname = makefontpkg
+
