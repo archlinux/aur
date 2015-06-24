@@ -1,0 +1,21 @@
+pkgbase = x2godesktopsharing
+	pkgdesc = x2godesktopsharing is an X2Go add-on tool that allows a user to grant other X2go users access to the current session (shadow session support).
+	pkgver = 3.1.1.2
+	pkgrel = 2
+	url = http://www.x2go.org/
+	install = x2godesktopsharing.install
+	arch = i686
+	arch = x86_64
+	groups = x2go
+	groups = alts
+	license = GPL
+	depends = x2goserver>=4.0.1
+	depends = qt4>=4.5
+	options = !strip
+	source = sharetray.cpp.patch2
+	source = http://code.x2go.org/releases/source/x2godesktopsharing/x2godesktopsharing-3.1.1.2.tar.gz
+	md5sums = 83c1d72798534d60a2fcc2d21713cd83
+	md5sums = bd48394f5a4eaa55559622f21a5e0a79
+
+pkgname = x2godesktopsharing
+

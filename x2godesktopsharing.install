@@ -1,0 +1,26 @@
+post_install()
+{
+  # setup x2godesktopsharing group
+  if ! getent group x2godesktopsharing >/dev/null; then
+    groupadd -K GID_MIN=800 -K GID_MAX=999 x2godesktopsharing
+    echo "  ==> Group x2godesktopsharing created."
+    echo "      Adding users to x2godesktopsharing ('gpasswd -a \$USER x2godesktopsharing')"
+    echo "      will allow them to access their current local desktop remotely (shadowing)."
+  fi
+}
+
+post_upgrade()
+{
+  post_install
+  warning
+}
+
+warning()
+{
+  # Check if the originally used "x2godesktopshare" still exists and propose migration.
+  # The sys user should take care about (delete) the obsolete group manually.
+  if getent group x2godesktopshare >/dev/null; then
+    echo "      The obsolete group x2godesktopshare exists. Pls migrate users to the group"
+    echo "      x2godesktopsharing instead and remove this obsolete one."
+  fi
+}
