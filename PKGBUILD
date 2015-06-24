@@ -2,14 +2,15 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.3.r31.ga9cb445
-_last_release="0.7.3-1"
+pkgver=0.7.4.r0.g42efdbf
+_last_release="0.7.4-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
-depends=('libunwind' 'gc' 'llvm' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
+depends=('libunwind' 'gc-static' 'llvm' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
+checkdepends=('libyaml' 'libxml2' 'gmp' 'git')
 optdepends=('libyaml: For YAML support'
             'gmp: For BigInt support'
             'libxml2: For XML support')
@@ -48,6 +49,15 @@ build() {
        CRYSTAL_CONFIG_PATH="libs:/usr/lib/crystal"
 }
 
+check() {
+  cd "$srcdir/${pkgname/-git/}"
+
+  if [ "$CARCH" = "x86_64" ]; then
+    make spec CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
+              CRYSTAL_CONFIG_VERSION="$pkgver"
+  fi
+}
+
 package() {
   cd "$srcdir/${pkgname/-git/}"
   # /usr/bin/crystal compiled executable
@@ -63,5 +73,5 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 sha256sums=('SKIP')
-sha256sums_i686=('567dca0ed596ac7801362613251a00580c17a8abdc8a98cd5b0553cd30119ece')
-sha256sums_x86_64=('f5621d8140398b02c159c5f2dbd88f31541891d9d3a4317374a2dc8f20d7c147')
+sha256sums_i686=('326d4c1522446df082325ded964da3990f404c14632e3b1993a6f60f36b3a606')
+sha256sums_x86_64=('9ae57248752df2ac9dbae623a646e85c03e53c80f2087a134abe801408e039fd')
