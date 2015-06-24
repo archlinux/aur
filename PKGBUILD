@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-dvc-bzr
 pkgver=591
-pkgrel=4
+pkgrel=5
 pkgdesc="Common Emacs front-end for a number of distributed version control systems (currently arch, bazaar, git, mercurial, monotone)"
 arch=('any')
 url="http://download.gna.org/dvc/"
@@ -21,7 +21,7 @@ pkgver() {
 }
 prepare() {
   cd "$srcdir"/dvc
-  patch -p2 < $srcdir/texinfo5.patch
+  patch -Np2 < $srcdir/texinfo5.patch || true
 }
 
 build() {
