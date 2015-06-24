@@ -1,0 +1,220 @@
+ ***************************CHANGE LOG********************
+
+** 1.48
+1) Fix accounts for Forthnet and Voipbuster providers
+2) Clean up
+
+** 1.45
+
+1) Fix local variable bug ( bug #3002071 )
+2) Fix Betamax login page url
+
+** 1.44
+
+1) Code clean up
+2) Pennytel support
+3) Fix connection bugs for betamax sites
+
+** 1.42
+
+1) Code clean up
+2) Support Forthnet Greek ISP
+3) Compatible with PyQt4-4.5
+4) Drop support for Yahoo provider
+
+**1.40
+
+1) Code has been re-written for betamax sites due to compatibility issues
+2) Code clean up
+
+**1.39
+
+1) Fixed bug with addressbook initialization
+
+**1.38 
+
+1) Improved control for message report
+2) Tray icon has been re-written
+3) Added voipcheap support
+4) Added -v option when running Gui. Verbose output
+5) Fix feedback when sending a message.
+6) Remember Me checkbox is now by default checked. 
+7) Check for updates when the program starts.
+8) Compatibility fixed for both kde3+kde4 kaddressbook. Needs more testing though
+
+**1.37
+
+1) Added JustVoip support
+2) Small bugfixes
+3) Updated for python2.5 support
+
+**1.36
+Major fixes in this version
+
+Since betamax change the way users login to their site I had to re-write most of the code so you should except some problems
+
+So the changes are
+
+1) Betamax accounts do not need to login anymore. You just fill all the info (username,password,number,text) and then click the Send button
+2) Because of the above change ,credits left wont be available (for now) for betamax sites
+3) Some code cleenup
+4) Fixed install script
+5) Donate tab on About menu
+
+**1.35
+
+1) Fixed myinserts module
+
+**1.34
+
+1)Wrong Credits Left Indication after message sent fixed
+2)Added WebcallDirect Support (Beta)
+3)Modular application. Application is splitted into multiple files. Now 
+its much faster and can be maintained more easily 
+
+**1.32
+Beta support for Yahoo SMS Service
+http://everywhere.yahoo.com/sms/sendsms
+
+
+**1.31
+
+One small fix. This fix enables .deb package to work great with ubuntu 
+
+**1.30
+
+code fixes
+
+**1.29
+Ignore robots.txt file on otenet
+
+**1.28
+
+1) Improved addressbook code. Faster code. Contacts are stored in memory not in file
+2) Account manager for multiple accounts
+3) Bug fixes
+a) Fixed login check control to above Betamaxes pop up mesages
+b) Fixed credits left function
+4) Tray Icon informing you about login status and sms report
+5) Update options. Notifies you if there is update or not 
+
+**1.24
+1) One main interface. Main and Addressbook are now on program
+2) Support for
+	a) Voipbusterpro
+	b) LowrateVoip
+	c) 12voip
+	d) Freevoip
+3) Messages left and Credits left now appear on Gui and on cmd tool. User wont be able to send sms if the credits are <0.05 or messages left are 0 ( for otenet )
+4) Gui for Addressbook now is loaded as module
+5) Kaddressbook code fixed. Now works fine for users who doesnt have Kaddressbook installed. The program will try to find std.vcf file . If not the Addressbook wont show anything but it wont crash like the previous version
+6) Fixed Gui interface
+
+
+
+**1.22
+
+1) New impoved main code
+2) Gui and main code now they are two different files
+3) Added verbose option on command line interface. No information is displayed when running on No-verbose mode
+4) Bux fixes
+5) Text length message check on commanline tool
+6) Fixes on temporary create and delete files
+7) Fixed installed script
+
+** 1.20
+
+1) New Addressbook code
+Details:
+a) Now there is no need of having both first and last name on addressbook and also a contact might not have a cell phone 
+b) Better Gui
+c) Unicode support fixed
+
+2) Main code fixes
+3) Command line program fixes
+
+
+
+** 1.18
+
+1) Sms can now run from command line too
+2) Code modification for Gentoo Ebuilds
+3) Bug Fixes and code spelling errors
+4) Name changed to pysmssend
+5) Fixed icon transparency
+6) Pkgbuild available
+7) Ebuild availabe
+8) Addressbook marked as Beta Version
+
+
+
+**1.1
+
+I'd like to thank Ioannis  for supporting,debugging and developing the program
+
+
+1) Remember me Option
+2) New Interface
+3) Fixed Code
+
+
+
+**1.09
+
+Latest version of the program
+
+Stable version
+
+1) Fixed Code
+2) Icons Added
+3) Fixed Interface
+
+
+** 1.08beta
+
+1) Supports Voipdiscount ( need feedback )
+2) Fixed spelling mistakes
+
+	
+
+** 1.07
+	
+	Alpha version for voipdiscount support
+
+** 1.06
+
+1) Read contacts from address book
+The program assumes you have your contacts stored on ~/.kde/share/apps/kabc/std.vcf
+
+2) Inserts the Selected Number from the addressbook on Number field
+
+** 1.05 beta
+
+1) First Attemp co-operating with kaddressbook
+
+** 1.04
+
+1) Support for OTEnet Web2SMS
+
+** 1.03
+
+1) Password now appears with *
+2) Login feedback fixed
+3) Message length  can now be checked by pressing the button "Check Characters"
+4) Final Check of message length before sending the sms
+5) Smaller size
+
+
+** 1.02
+
+Second and Stable version of the Program
+
+Fixes:
+
+1) Feedback on loggin
+2) Feedback if the sms sent or not
+3) Correct the Message if it is bigger than 160 characters
+
+** 0.8
+
+First Version of the program. The program didnt send any feedback back. It was just for testing

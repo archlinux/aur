@@ -1,0 +1,18 @@
+pkgbase = pysmssend
+	pkgdesc = Application for sending SMS over the Internet
+	pkgver = 1.48
+	pkgrel = 4
+	url = http://pysmssend.silverarrow.org/
+	changelog = pysmssend.changelog
+	arch = any
+	license = GPL3
+	makedepends = patch
+	depends = python2-pyqt4
+	depends = python2-mechanize
+	source = http://pysmssend.silverarrow.org/files/pysmssend-1.48.tar.gz
+	source = pysmssend-desktop.diff
+	md5sums = 6f646a4267151bfae623895d9c12cdd2
+	md5sums = 605cff59b56682b9589e4af50bea0fdd
+
+pkgname = pysmssend
+

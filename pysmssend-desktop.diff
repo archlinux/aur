@@ -1,0 +1,14 @@
+--- pysmssend.desktop.old	2008-04-03 22:33:44.000000000 +0200
++++ pysmssend.desktop		2008-09-26 14:34:51.000000000 +0200
+@@ -3,2 +3,4 @@
+ Comment=Send SMS over the Internet
++Comment[cs]=Posílej SMS po Internetu
++Comment[gr]=Εφαρμογή για την αποστολη μηνηματών μέσω του Internet
+ Exec=pysmssend
+@@ -7,5 +9,2 @@
+ Type=Application
+-Encoding=UTF-8
+-Categories=Application;Network;
+-
+-
++Categories=Network;
