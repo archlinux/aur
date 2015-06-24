@@ -1,0 +1,31 @@
+pkgbase = eudev-systemdcompat
+	pkgdesc = systemd client libraries without udev; systemd compatibility package
+	pkgver = 221
+	pkgrel = 2
+	url = http://www.freedesktop.org/wiki/Software/systemd
+	arch = i686
+	arch = x86_64
+	groups = eudev-base
+	license = GPL2
+	depends = glib2
+	depends = glibc
+	depends = libgcrypt
+	depends = xz
+	depends = eudev>=3.1.2
+	optdepends = upower-pm-utils: pm-utils support
+	provides = libsystemd=221
+	provides = systemd=221
+	provides = systemd-tools=221
+	provides = libsystemd.so
+	provides = libsystemd-daemon.so
+	provides = libsystemd-id128.so
+	provides = libsystemd-journal.so
+	provides = libsystemd-login.so
+	conflicts = systemd
+	conflicts = systemd-tools
+	conflicts = libsystemd
+	conflicts = openrc-systemdcompat
+	replaces = openrc-systemdcompat
+
+pkgname = eudev-systemdcompat
+
