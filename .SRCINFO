@@ -1,0 +1,21 @@
+pkgbase = shadowsocks-go
+	pkgdesc = go port of shadowsocks. USAGE located at https://github.com/SaberSalv/aur/tree/master/shadowsocks-go
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/shadowsocks/shadowsocks-go
+	arch = i686
+	arch = x86_64
+	license = Unkown
+	provides = shadowsocks
+	conflicts = shadowsocks
+	source = http://dl.chenyufei.info/shadowsocks/1.1.4/shadowsocks-local-linux32-1.1.4.gz
+	source = http://dl.chenyufei.info/shadowsocks/1.1.4/shadowsocks-server-linux32-1.1.4.gz
+	source = shadowsocks@.service
+	source = shadowsocks-server@.service
+	md5sums = ea399d49b433e8cae687215a468b17d3
+	md5sums = 6986def625555ed7fe62b40a85396e4e
+	md5sums = d26ab75cfad5f9cabfccbcbb9801950a
+	md5sums = b69a7bc69bd9138e3d092ced44a102a3
+
+pkgname = shadowsocks-go
+

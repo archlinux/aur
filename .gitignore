@@ -1,0 +1,9 @@
+src
+pkg
+*.tar.*
+*.tgz
+*.gem
+*.ttf
+*.dfont
+*.ttc
+*.deb
