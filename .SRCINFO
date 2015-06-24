@@ -1,0 +1,25 @@
+pkgbase = mutt-hg
+	pkgdesc = A small but very powerful text-based mail client
+	pkgver = r6454.17a4f92e4a95
+	pkgrel = 1
+	url = http://www.mutt.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = gnupg
+	makedepends = libxslt
+	depends = gdbm
+	depends = libidn
+	depends = mime-types
+	depends = zlib
+	depends = gpgme
+	depends = ncurses
+	provides = mutt
+	conflicts = mutt
+	options = !strip
+	source = hg+http://dev.mutt.org/hg/mutt#branch=default
+	md5sums = SKIP
+
+pkgname = mutt-hg
+
