@@ -1,0 +1,24 @@
+pkgbase = php-apache25
+	pkgdesc = Apache 2.5 SAPI for PHP
+	pkgver = 5.6.10
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	license = PHP
+	checkdepends = procps-ng
+	makedepends = apache=2.5
+	makedepends = zlib
+	makedepends = pcre
+	makedepends = libxml2
+	makedepends = openssl
+	makedepends = xz
+	depends = php
+	depends = apache=2.5
+	source = http://www.php.net/distributions/php-5.6.10.tar.xz
+	source = apache.conf
+	md5sums = 4631ef265253d2f496b3574d297f26ed
+	md5sums = dec2cbaad64e3abf4f0ec70e1de4e8e9
+
+pkgname = php-apache25
+
