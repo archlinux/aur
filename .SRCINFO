@@ -1,0 +1,24 @@
+pkgbase = python-selection
+	pkgdesc = API to extract content from HTML & XML documents
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/selection
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.python.org/packages/source/s/selection/selection-0.0.9.tar.gz
+	sha256sums = 2e89d6eea792447a7c23da77b81fd7df84526791f64cbff4a50edf363697759e
+
+pkgname = python-selection
+	depends = python
+	depends = python-lxml
+	depends = python-six
+	depends = python-weblib
+
+pkgname = python2-selection
+	depends = python2
+	depends = python2-lxml
+	depends = python2-six
+	depends = python2-weblib
+
