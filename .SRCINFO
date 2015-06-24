@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-common
 	pkgdesc = Canon IJ Printer Driver (Common Package)
 	pkgver = 3.20
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.canon-europe.com/support/pixma_software/
 	install = cnijfilter-common.install
 	arch = i686
@@ -18,6 +18,14 @@ pkgbase = cnijfilter-common
 	sha512sums = 28a82d08d3b8a233b89a17e0e029510fc5b3cede97300eb71a9af03c9a15cca4355167d8706e66c34eb47b6c98202a80d73f80626803c9ff6fa41bdd8c87f235
 	sha512sums = f1f8cc44d7892eb50b44e0fe9d5be877fa5d8f8783aedf494d739eee20c147befac4f4776959f42cdb9cfd9f766522635fc2aae2626fdaf0c4465226a66dcc0e
 	sha512sums = 05eaef447a3145fe735ae856d86375144b368c378e86bf642db084a1f16eb474e0c1cf8df592620db76b6b99ff6dcd16b15c6c74f5ee9e00a3703c0bf104bf66
+	depends_i686 = libcups
+	depends_i686 = popt
+	makedepends_i686 = gcc
+	makedepends_i686 = popt
+	depends_x86_64 = lib32-libcups
+	depends_x86_64 = lib32-popt
+	makedepends_x86_64 = gcc-multilib
+	makedepends_x86_64 = lib32-popt
 
 pkgname = cnijfilter-common
 

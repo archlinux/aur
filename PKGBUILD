@@ -7,7 +7,7 @@ pkgname=('cnijfilter-common')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=9
+pkgrel=10
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -17,14 +17,14 @@ arch=('i686' 'x86_64')
 license=('custom')
 
 conflicts=('lib32-cnijfilter320')
-if [ "${CARCH}" = 'x86_64' ]; then
-  makedepends=('gcc-multilib' 'lib32-popt')
-  depends=('lib32-libcups' 'lib32-popt')
-elif [ "${CARCH}" = 'i686' ]; then
-  makedepends=('gcc' 'popt')
-  depends=('libcups' 'popt')
-fi
-makedepends+=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
+
+makedepends_x86_64=('gcc-multilib' 'lib32-popt')
+depends_x86_64=('lib32-libcups' 'lib32-popt')
+
+makedepends_i686=('gcc' 'popt')
+depends_i686=('libcups' 'popt')
+
+makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
 
 install=cnijfilter-common.install
   
