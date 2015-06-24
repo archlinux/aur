@@ -1,0 +1,12 @@
+pkgbase = vegeta
+	pkgdesc = a versatile HTTP load testing tool
+	pkgver = 5.7.1
+	pkgrel = 1
+	url = https://github.com/tsenart/vegeta/releases
+	arch = x86_64
+	license = MIT
+	source = https://github.com/tsenart/vegeta/releases/download/v5.7.1/vegeta-v5.7.1-linux-amd64.tar.gz
+	md5sums = 938a2b34ca838482e23cab9ae81d1ce1
+
+pkgname = vegeta
+
