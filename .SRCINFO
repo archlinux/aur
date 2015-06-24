@@ -5,14 +5,13 @@ pkgbase = lib32-schroedinger
 	url = http://www.diracvideo.org/
 	arch = x86_64
 	license = GPL2
-	license = LGPL2
+	license = LGPL2.1
 	license = MPL
 	license = MIT
 	makedepends = gcc-multilib
 	depends = lib32-orc
 	depends = lib32-gcc-libs
 	depends = schroedinger
-	options = !libtool
 	source = http://www.diracvideo.org/download/schroedinger/schroedinger-1.0.11.tar.gz
 	md5sums = da6af08e564ca1157348fb8d92efc891
 
