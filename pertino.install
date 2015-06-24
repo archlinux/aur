@@ -4,13 +4,31 @@ post_install() {
     echo "To authenticate, run: pertino -u <username> -p <password>"
 }
 
+pre_upgrade() {
+    rm -rf /tmp/pertino-upgrade
+    mkdir -p /tmp/pertino-upgrade
+    chmod 700 /tmp/pertino-upgrade
+    if [ -f /usr/share/pgateway/conf/client.conf ]
+    then
+        cp --preserve=all /usr/share/pgateway/conf/client.conf /tmp/pertino-upgrade/client.conf
+    fi
+}
+
 post_upgrade() {
     systemctl daemon-reload
+    systemctl stop pgateway || true
+    if [ -f /tmp/pertino-upgrade/client.conf  ]
+    then
+        cp --preserve=all /tmp/pertino-upgrade/client.conf /usr/share/pgateway/conf/client.conf
+    fi
+    rm -rf /tmp/pertino-upgrade
+    systemctl start pgateway
 }
 
 pre_remove() {
     systemctl stop pgateway
     systemctl disable pgateway
-    rm -f /usr/share/pertino/.1
-    rm -f /usr/share/pertino/tunnel-store.txt
+    rm -f /usr/share/pgateway/.1
+    rm -f /usr/share/pgateway/tunnel-store.txt
+    rm -rf /usr/share/pgateway/conf/client.conf
 }
