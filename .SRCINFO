@@ -1,0 +1,16 @@
+pkgbase = fplll-git
+	pkgdesc = Implementations of the floating-point LLL reduction algorithm for euclidean lattices
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://perso.ens-lyon.fr/damien.stehle/fplll/
+	arch = any
+	license = LGPL
+	depends = gmp>=4.2.0
+	depends = mpfr>=2.3.0
+	provides = fplll libfplll
+	conflicts = fplll libfplll
+	source = git+https://github.com/dstehle/fplll.git
+	md5sums = SKIP
+
+pkgname = fplll-git
+
