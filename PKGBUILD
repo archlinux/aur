@@ -7,8 +7,10 @@ pkgdesc='http client/server for asyncio'
 arch=('any')
 url="http://pypi.python.org/pypi/$_name"
 license=('Apache')
-depends=('python>=3.4' 'cython' 'python-chardet')
+depends=('python>=3.4' 'python-chardet')
 makedepends=('python-setuptools')
+makedepends_i686=('cython')
+makedepends_x86_64=('cython')
 source=("https://pypi.python.org/packages/source/a/$_name/$_name-$pkgver.tar.gz")
 md5sums=('4215059cbf33dd42c0b99e06b1229029')
 
