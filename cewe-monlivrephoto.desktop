@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CeWe Mon livre photos
+Comment=Offline client for cewe.de service - Version française
+Exec=cewe-monlivrephoto
+Icon=cewe-monlivrephoto
+StartupNotify=true
+Categories=Graphics;Photography;

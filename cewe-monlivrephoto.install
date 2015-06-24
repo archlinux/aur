@@ -1,0 +1,18 @@
+post_install() {
+  echo '--------------------------------------------------'
+  echo 'You *MUST* read and agree to the license stored in'
+  echo '/usr/share/cewe-monlivrephoto/EULA.txt before'
+  echo 'you start using it'
+  echo '--------------------------------------------------'
+
+  chmod 775 /usr/share/cewe-monlivrephoto
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
