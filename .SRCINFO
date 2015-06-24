@@ -1,0 +1,14 @@
+pkgbase = codeclimate
+	pkgdesc = Command line interface for the Code Climate analysis platform. It allows you to run Code Climate engines on your local machine inside of Docker containers. Make sure that your current user belongs to docker group and that docker is running.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/codeclimate/codeclimate
+	arch = any
+	groups = codeclimate
+	license = MIT
+	depends = docker
+	source = https://github.com/codeclimate/codeclimate/archive/v0.0.7.tar.gz
+	sha512sums = 6c61221102233595f6fdb2e9e642a0dc475a0c03834a9397820f08fa3ffaf7ad74c676924dbe6304493ae6828222f35edd8f6479f3ade8d6aa53edbae12fd071
+
+pkgname = codeclimate
+
