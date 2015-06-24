@@ -1,8 +1,8 @@
 # Maintainer: alexiobash < me (at) alexiobash (dot) com >
 
 pkgname=conky-lua-arch
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="A conky-lua for ArchLinux"
 arch=('any')
 url="http://alexiobash.com/conky-lua-arch/"
