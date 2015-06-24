@@ -1,0 +1,20 @@
+pkgbase = pacmind
+	pkgdesc = A gtkdialog frontend gui for the package manager, inspired to yaourt-gui
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://www.xfce-italia.it/index.php?topic=636.0
+	install = pacmind.install
+	arch = any
+	license = GPL
+	depends = gtkdialog
+	depends = zenity
+	depends = yaourt
+	depends = xterm
+	depends = sudo
+	optdepends = aurvote: Tool to vote for favorite AUR packages
+	optdepends = yaourt-gui: A bash GUI for yaourt
+	source = pacmind::git+http://git.alexiobash.com/git/pacmind
+	md5sums = SKIP
+
+pkgname = pacmind
+

@@ -1,0 +1,7 @@
+pkgname="yaourt-gui"
+
+post_install() {
+	echo
+	echo "==> PACMIND and YAOURT-GUI will soon be a single package "
+	echo 
+}
