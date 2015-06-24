@@ -1,0 +1,20 @@
+pkgbase = nuclide-server
+	pkgdesc = Server-side functionality required by Nuclide to support remote file editing.
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = http://nuclide.io
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = python2
+	noextract = nuclide-server-0.0.21.tgz
+	source = http://registry.npmjs.org/nuclide-server/-/nuclide-server-0.0.21.tgz
+	source = LICENSE-0.0.21::https://github.com/facebook/nuclide/raw/v0.0.21/LICENSE
+	sha256sums = faf3ce725d5c016bf6b90823a0bd76a9ad3e4d2fa3de2ad1cb5f1d9e7f69626a
+	sha256sums = 5c048a02821e17560bd70882074b3301c98ed3c03793ef1d030ebf1a50ac3355
+
+pkgname = nuclide-server
+
