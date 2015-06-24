@@ -1,16 +1,17 @@
 # Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Artem A Klevtsov <unikum.pm [at the] gmail [dot] com>
 
-pkgbase='scangearmp-mp550'
-pkgname=('scangearmp-common' 'scangearmp-mp550')
+pkgbase='scangearmp'
+pkgname=('scangearmp-mpseries-common'
+         'scangearmp-mp550')
 _pkgname=scangearmp
 
 pkgver=1.40
-pkgrel=5
+pkgrel=6
 _pkgreview=1
 
-pkgdesc="Canon Scanner Driver (For Multifunction MP550 series)"
-url="http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP550.aspx"
+pkgdesc="Canon IJ Scanner Driver"
+url="http://www.canon-europe.com/support/pixma_software/"
 
 arch=('i686' 'x86_64')
 license=('custom')
@@ -52,9 +53,12 @@ build() {
   make
 }
 
-package_scangearmp-common() {
+package_scangearmp-mpseries-common() {
   pkgdesc="Canon IJ Scanner Driver (Common Package)"
   install=scangearmp-common.install
+
+  conflicts=('scangearmp-common')
+  provides=('scangearmp-common=1.40')
 
   depends_x86_64=('lib32-libusb-compat' 'lib32-gimp')
   depends_i686=('libusb-compat' 'gimp')
@@ -79,6 +83,7 @@ package_scangearmp-common() {
 }
 
 package_scangearmp-mp550() {
+  pkgdesc="Canon IJ Scanner Driver (For MP550 series)"
   install=scangearmp-mp550.install
 
   depends_x86_64=('lib32-gtk2>=2.6')

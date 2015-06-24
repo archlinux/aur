@@ -1,8 +1,8 @@
-pkgbase = scangearmp-mp550
-	pkgdesc = Canon Scanner Driver (For Multifunction MP550 series)
+pkgbase = scangearmp
+	pkgdesc = Canon IJ Scanner Driver
 	pkgver = 1.40
-	pkgrel = 5
-	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP550.aspx
+	pkgrel = 6
+	url = http://www.canon-europe.com/support/pixma_software/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -25,16 +25,19 @@ pkgbase = scangearmp-mp550
 	makedepends_x86_64 = lib32-gimp
 	makedepends_x86_64 = lib32-libusb-compat
 
-pkgname = scangearmp-common
+pkgname = scangearmp-mpseries-common
 	pkgdesc = Canon IJ Scanner Driver (Common Package)
 	install = scangearmp-common.install
 	depends = sane
+	provides = scangearmp-common=1.40
+	conflicts = scangearmp-common
 	depends_i686 = libusb-compat
 	depends_i686 = gimp
 	depends_x86_64 = lib32-libusb-compat
 	depends_x86_64 = lib32-gimp
 
 pkgname = scangearmp-mp550
+	pkgdesc = Canon IJ Scanner Driver (For MP550 series)
 	install = scangearmp-mp550.install
 	depends = scangearmp-common=1.40
 	depends_i686 = gtk2>=2.6
