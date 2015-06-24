@@ -1,7 +1,7 @@
 pkgbase = nodejs-pageres
 	pkgdesc = Get screenshots of websites in different resolutions
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/sindresorhus/pageres-cli
 	arch = i686

@@ -3,7 +3,7 @@
 
 pkgname=nodejs-pageres
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Get screenshots of websites in different resolutions"
 arch=('i686' 'x86_64')
@@ -28,5 +28,5 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
 
-  npm install --user root -g --prefix "${pkgdir}/usr" "${pkgname/nodejs-/}-cli@${pkgver}"
+  npm install --user root -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname/nodejs-/}-cli-${pkgver}.tgz"
 }
