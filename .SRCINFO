@@ -1,0 +1,19 @@
+pkgbase = sollya
+	pkgdesc = A tool environment and a library for safe floating-point code development
+	pkgver = 4.1
+	pkgrel = 1
+	url = http://sollya.gforge.inria.fr/
+	arch = any
+	license = CeCILL-C
+	depends = gmp
+	depends = mpfr
+	depends = mpfi
+	depends = libxml2
+	depends = libfplll
+	depends = gnuplot
+	optdepends = gnuplot: for using the plot and externalplot commands
+	source = https://gforge.inria.fr/frs/download.php/33150/sollya-4.1.tar.bz2
+	md5sums = 8bf144cb2fdcb8728226571f00310185
+
+pkgname = sollya
+
