@@ -68,6 +68,7 @@ makedepends=(
   'cblas'
   'gsl'
   'clang'
+  'llvm'  # FIXME needed because of the dirty buld-time patch below
   'readline'
   'zlib'
 )
