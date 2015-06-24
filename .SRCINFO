@@ -1,0 +1,15 @@
+pkgbase = sportstracker-bin
+	pkgdesc = Application for people which want to record their sporting activities ; stand-alone version with its own java
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = http://www.saring.de/sportstracker/
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	provides = sportstracker
+	conflicts = sportstracker
+	source = http://freefr.dl.sourceforge.net/project/sportstracker/SportsTracker/SportsTracker%207.1.0/Ubuntu-64bit/sportstracker-7.1.0.deb
+	md5sums = 3307b8e528bc27f7a1b26643a0436db8
+
+pkgname = sportstracker-bin
+
