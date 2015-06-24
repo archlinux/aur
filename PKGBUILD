@@ -1,6 +1,6 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ source=("https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz")
 source_i686=("https://github.com/atom/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-ia32.zip")
 source_x86_64=("https://github.com/atom/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip")
 
-sha256sums=('0532e1ce1d32bf671d2ad362d60ab22b94f02f65ba4a6334ce6f7e556fe290a4')
+sha256sums=('c695efe8d40f1088af89263eab201f90805c83d171abf6932c7fcc8ae38653ba')
 sha256sums_i686=('b7fcfad602f7e7b4cdf5c279d66ff077b176c1cb9fc0ee56697a185988634ed6')
 sha256sums_x86_64=('f78a609c23bb35fa564ad8d6ed62cd2a92213a4e5ab8103a069a953177ad44b9')
 
@@ -38,8 +38,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/"
   cp -R "${srcdir}/electron-${_electron_version}" "${pkgdir}/tmp"
   mv "${pkgdir}/tmp" "${pkgdir}/usr/share/${pkgname}"
-  touch "${pkgdir}/usr/share/${pkgname}/resources/app/node_modules/hangupsjs/cookies.json"
-  chmod 777 "${pkgdir}/usr/share/${pkgname}/resources/app/node_modules/hangupsjs/cookies.json"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname}"
