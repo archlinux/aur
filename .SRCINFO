@@ -1,8 +1,9 @@
 pkgbase = scanmem
 	pkgdesc = Memory scanner designed to isolate the address of an arbitrary variable in an executing process
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/scanmem/scanmem
+	install = scanmem.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -10,8 +11,8 @@ pkgbase = scanmem
 	depends = pygtk
 	depends = python-gobject
 	depends = polkit
-	source = scanmem-0.15.1.tar.gz::https://github.com/scanmem/scanmem/archive/v0.15.1.tar.gz
-	sha512sums = a78ea7bc4a0f3ee068a7b9de3efb3a3db734ae2280bd6a270be947cc6a8254ff715e65ff007a8593be04030b9d29d420dd1564fd57349fc61a4f99da004b10e4
+	source = scanmem-0.15.2.tar.gz::https://github.com/scanmem/scanmem/archive/v0.15.2.tar.gz
+	sha512sums = 9d1211b10b30962e35821895d7dd7d5a179e64b3f539b6dd2585a3f6b0ade7cd092fe377454b2582ec66e2c7a7676f8c7f04e8aff5c9e6e449a9eb6fb0498501
 
 pkgname = scanmem
 
