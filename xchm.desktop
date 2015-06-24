@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Xchm
+Comment=Views CHM files
+Comment[es]=Visor de archivos CHM
+Exec=xchm %f
+Terminal=false
+Type=Application
+Icon=xchm-48
+Categories=Viewer;Utility;
+MimeType=application/x-chm;
+StartupNotify=true
