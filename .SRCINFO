@@ -1,7 +1,7 @@
 pkgbase = bzr-builddeb
 	pkgdesc = bzr plugin for Debian package management
-	pkgver = 2.8.8
-	pkgrel = 2
+	pkgver = 2.8.9
+	pkgrel = 1
 	url = http://jameswestby.net/bzr/builddeb/user_manual
 	arch = any
 	license = GPL2
@@ -18,8 +18,8 @@ pkgbase = bzr-builddeb
 	optdepends = python2-pyliblzma: lzma bindings
 	optdepends = distro-info: for the merge-upstream command
 	options = !emptydirs
-	source = http://ftp.debian.org/debian/pool/main/b/bzr-builddeb/bzr-builddeb_2.8.8.tar.xz
-	md5sums = 5a63dabec6731a38dc95ccbdb1c02723
+	source = http://ftp.debian.org/debian/pool/main/b/bzr-builddeb/bzr-builddeb_2.8.9.tar.xz
+	md5sums = 431b6306e00e6005bb1d911ef4976603
 
 pkgname = bzr-builddeb
 

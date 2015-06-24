@@ -1,8 +1,8 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=bzr-builddeb
 _python=python2
-pkgver=2.8.8
-pkgrel=2
+pkgver=2.8.9
+pkgrel=1
 pkgdesc="bzr plugin for Debian package management"
 arch=('any')
 url="http://jameswestby.net/bzr/builddeb/user_manual"
@@ -17,7 +17,7 @@ makedepends=()
 conflicts=()
 options=(!emptydirs)
 source=("http://ftp.debian.org/debian/pool/main/b/$pkgname/${pkgname}_$pkgver.tar.xz")
-md5sums=('5a63dabec6731a38dc95ccbdb1c02723')
+md5sums=('431b6306e00e6005bb1d911ef4976603')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
