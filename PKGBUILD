@@ -19,7 +19,7 @@ build() {
   # doc build errors prevent success
   sed -i '/doc/d' CMakeLists.txt
 
-  cmake . -fPIC  -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release  
           
   make
