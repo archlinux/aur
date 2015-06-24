@@ -1,6 +1,6 @@
 pkgbase = 0xdbe-eap
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity
-	pkgver = 141.191
+	pkgver = 142.2675.6
 	pkgrel = 1
 	url = http://www.jetbrains.com/dbe/
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = 0xdbe-eap
 	depends = giflib
 	backup = usr/share/0xdbe/bin/0xdbe.vmoptions
 	backup = usr/share/0xdbe/bin/0xdbe64.vmoptions
-	source = http://download.jetbrains.com/dbe/0xdbe-141.191.tar.gz
+	source = http://download.jetbrains.com/dbe/0xdbe-142.2675.6.tar.gz
 	source = 0xdbe.sh
 	source = 0xdbe.desktop
-	md5sums = 773aa8e4c00ddee2173de78f48fda337
+	md5sums = 4d45c8133cea079d059c3ca48b87e4a8
 	md5sums = 864c5bb6071568a1a9f26573e090207b
 	md5sums = e520ed91c5c0578cc93df0cd7e03166b
 

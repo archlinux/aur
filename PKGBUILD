@@ -1,8 +1,8 @@
 # Maintainer: Duru Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=0xdbe-eap
 _pkgname=0xdbe
-pkgver=141.191
-_buildver=141.191
+pkgver=142.2675.6
+_buildver=142.2675.6
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64') # not 'any' because of fsnotifier
@@ -13,7 +13,7 @@ depends=('java-environment' 'giflib')
 source=("http://download.jetbrains.com/dbe/${_pkgname}-${_buildver}.tar.gz" \
         "${_pkgname}.sh" \
         "${_pkgname}.desktop")
-md5sums=('773aa8e4c00ddee2173de78f48fda337'
+md5sums=('4d45c8133cea079d059c3ca48b87e4a8'
          '864c5bb6071568a1a9f26573e090207b'
          'e520ed91c5c0578cc93df0cd7e03166b')
 package() {
