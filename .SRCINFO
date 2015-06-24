@@ -1,0 +1,17 @@
+pkgbase = retroarch
+	pkgdesc = Simple frontend for the libretro API. Stable version.
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = http://themaister.net/retroarch.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = libretro-super-git: A collection of many libretro implementations.
+	provides = retroarch-git
+	conflicts = retroarch-git
+	backup = etc/retroarch.cfg
+	source = https://github.com/libretro/RetroArch/archive/1.0.0.3-beta.tar.gz
+	md5sums = 3d3ebf02c7b19bc8c02329ec827349f9
+
+pkgname = retroarch
+
