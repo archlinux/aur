@@ -1,0 +1,20 @@
+pkgbase = nordlicht-git
+	pkgdesc = Creates colorful moviebarcodes from video files, comes with a shared C library
+	pkgver = 20150624
+	pkgrel = 1
+	url = http://github.com/nordlicht/nordlicht
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = help2man
+	depends = ffmpeg
+	depends = popt
+	provides = nordlicht
+	conflicts = nordlicht
+	source = git+https://github.com/nordlicht/nordlicht
+	sha1sums = SKIP
+
+pkgname = nordlicht-git
+
