@@ -22,9 +22,8 @@ check() {
   cd $srcdir/weblib-$pkgver 
   python3 setup.py check
   
-  cd $srcdir/weblib-$pkgver 
+  cd $srcdir/weblib2-$pkgver 
   python2 setup.py check  
-
 }
 
 package_python-weblib() {
