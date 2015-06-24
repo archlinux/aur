@@ -5,7 +5,7 @@ pkgname=('cnijfilter-mp550')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=9
+pkgrel=10
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (For Multifunction MP550 series)"
@@ -14,14 +14,14 @@ url="http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifu
 arch=('i686' 'x86_64')
 license=('custom')
 
-if [ "${CARCH}" = 'x86_64' ]; then
-  makedepends=('gcc-multilib' 'lib32-popt')
-  depends=('lib32-gtk2' 'lib32-libxml2' "${_pkgname}-common=${pkgver}")
-elif [ "${CARCH}" = 'i686' ]; then
-  makedepends=('gcc' 'popt')
-  depends=('gtk2' 'libxml2' "${_pkgname}-common=${pkgver}")
-fi
-makedepends+=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
+makedepends_x86_64=('gcc-multilib' 'lib32-popt')
+depends_x86_64=('lib32-gtk2' 'lib32-libxml2')
+
+makedepends_i686=('gcc' 'popt')
+depends_i686=('gtk2' 'libxml2')
+
+makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
+depends=("${_pkgname}-common=${pkgver}")
 
 install=cnijfilter-mp550.install
 
