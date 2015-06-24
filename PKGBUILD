@@ -1,15 +1,16 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 pkgname=debhelper-python2
 _pkgname=python-defaults
-pkgver=2.7.5
-pkgrel=3
-_pkgrel=5
+pkgver=2.7.9
+pkgrel=1
+_pkgrel=1
 pkgdesc="debhelper scripts for Python 2: pyversions, python2.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python"
 license=('custom:MIT')
 groups=()
-depends=('debhelper' 'python2')
+# dh_python2 calls dh_python2 from debhelper-python (Python 3)
+depends=('debhelper' 'python2' 'debhelper-python')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -20,11 +21,12 @@ backup=()
 options=()
 install=
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz makefile_supported.patch)
-md5sums=('066c3b10e9f1ede9187eea6fd1f851d5'
+md5sums=('8e24223ea104fe178162180fa62f6625'
          'ba61b80b7461b85283b6695e1bf6a768')
 
 prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  #cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-debian"
   for file in {dh_python2,pyclean,pycompile,debian/pyversions.py}; do
     sed -i -e '1s|/usr/bin/python$|/usr/bin/python2|' $file
   done
@@ -33,12 +35,14 @@ prepare() {
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  #cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-debian"
   make -k check_versions
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  #cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-debian"
   make DESTDIR="$pkgdir/" install
   mv $pkgdir/usr/local/bin $pkgdir/usr/bin
   mv $pkgdir/usr/local/share $pkgdir/usr/share

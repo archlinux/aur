@@ -1,15 +1,16 @@
 pkgbase = debhelper-python2
 	pkgdesc = debhelper scripts for Python 2: pyversions, python2.pm
-	pkgver = 2.7.5
-	pkgrel = 3
+	pkgver = 2.7.9
+	pkgrel = 1
 	url = http://packages.debian.org/sid/python
 	arch = any
 	license = custom:MIT
 	depends = debhelper
 	depends = python2
-	source = http://ftp.debian.org/debian/pool/main/p/python-defaults/python-defaults_2.7.5-5.tar.gz
+	depends = debhelper-python
+	source = http://ftp.debian.org/debian/pool/main/p/python-defaults/python-defaults_2.7.9-1.tar.gz
 	source = makefile_supported.patch
-	md5sums = 066c3b10e9f1ede9187eea6fd1f851d5
+	md5sums = 8e24223ea104fe178162180fa62f6625
 	md5sums = ba61b80b7461b85283b6695e1bf6a768
 
 pkgname = debhelper-python2
