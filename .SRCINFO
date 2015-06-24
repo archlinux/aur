@@ -15,7 +15,7 @@ pkgbase = ycm-generator-git
 	optdepends = automake
 	provides = ycm-generator-git
 	provides = ycm-generator
-	source = git://github.com/ssfdust/YCM-Generator.git
+	source = git://github.com/rdnetto/YCM-Generator.git
 	md5sums = SKIP
 
 pkgname = ycm-generator-git
