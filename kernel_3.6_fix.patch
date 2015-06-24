@@ -1,0 +1,53 @@
+--- device.c.orig	2009-01-27 15:25:50.000000000 +0100
++++ device.c		2012-10-16 21:52:40.000000000 +0100
+@@ -2393,6 +2393,13 @@
+ 	/* Try to allocate a netlink socket minimizing the risk of collision, 
+ 	 *  by starting at the max unit number and counting down */
+ 	for (unit=MAX_LINKS-1;unit>MIN_NETLINK_UNIT;unit--) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++		nl_sk = netlink_kernel_create(
++									&init_net,
++									unit,
++									THIS_MODULE,
++									NULL);
++#else
+ 		nl_sk = netlink_kernel_create(
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,24)
+ 									&init_net,
+@@ -2404,6 +2411,7 @@
+ 									NULL,
+ #endif
+ 									THIS_MODULE);
++#endif
+ 		if (nl_sk!=NULL) {
+ 			netlink_unit = unit;
+ 			return 0;
+@@ -2469,6 +2477,20 @@
+ 		return NULL;
+ 	}
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++	nlh = nlmsg_put(skb, target_pid, seq, t, size, flags);
++	if(!nlh) {
++		if (skb) {
++			kfree_skb(skb);
++		}
++		return NULL;
++	}
++	data             = nlmsg_data(nlh);
++	if (size > 0) {
++		memcpy(data, payload, size);
++	}
++	return skb;
++#else
+ 	nlh              = NLMSG_PUT(skb, target_pid, seq, t, size);
+ 	nlh->nlmsg_flags = flags;
+ 	data             = NLMSG_DATA(nlh);
+@@ -2482,6 +2504,7 @@
+ 		kfree_skb(skb);
+ 	}
+ 	return NULL;
++#endif
+ }
+ 
+ int register_for_netlink(struct snd_hdj_chip* chip, 

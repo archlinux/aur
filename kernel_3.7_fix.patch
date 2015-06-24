@@ -1,0 +1,12 @@
+--- device.c.orig	2013-02-03 12:07:06.165824608 +0100
++++ device.c	2013-02-03 12:07:45.498944856 +0100
+@@ -2399,7 +2399,9 @@
+ 		nl_sk = netlink_kernel_create(
+ 									&init_net,
+ 									unit,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0)
+ 									THIS_MODULE,
++#endif
+ 									NULL);
+ #else
+ 		nl_sk = netlink_kernel_create(

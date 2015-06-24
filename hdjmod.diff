@@ -1,0 +1,13 @@
+--- src/hdjmod-1.28/Makefile	2009-01-27 15:25:50.000000000 +0100
++++ Makefile	2009-04-03 18:21:39.000000000 +0200
+@@ -54,8 +54,8 @@
+ endif
+ 
+ install:
+-	install -d $(INSTALLDIR)
+-	install -c $(TARGET).ko $(INSTALLDIR)
++	install -d $(DESTDIR)$(INSTALLDIR)
++	install -c $(TARGET).ko $(DESTDIR)$(INSTALLDIR)
+ 	
+ uninstall:
+ 	rm -f $(INSTALLDIR)/$(TARGET).ko

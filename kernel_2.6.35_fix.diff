@@ -1,0 +1,420 @@
+--- bulk.c	2009-01-27 15:25:50.000000000 +0100
++++ bulkpatched.c	2010-08-19 00:11:40.802050414 +0200
+@@ -312,7 +312,7 @@ int firmware_send_bulk(struct usb_hdjbul
+ 	/*indicate that a bulk output request is in progress.*/
+ 	atomic_inc(&ubulk->bulk_out_command_in_progress);
+ 
+-	/* Since we allocated our buffer with usb_buffer_alloc, do a copy- surely less of a penalty than using
++	/* Since we allocated our buffer with usb_alloc_coherent, do a copy- surely less of a penalty than using
+  	 *  a kmalloc buffer which DMA setup for it, especially with our small buffer sizes */
+ 	memcpy(ubulk->bulk_out_buffer,buffer,buffer_size);
+ 
+@@ -461,8 +461,8 @@ int send_vendor_request(int chip_index,
+ 				(void *)chip);
+ 
+ 	chip->ctrl_urb->setup_dma = chip->ctl_req_dma;
+-	/* NOTE: transfer_dma setup above in call to usb_buffer_alloc() */
+-	chip->ctrl_urb->transfer_flags = URB_NO_SETUP_DMA_MAP | URB_NO_TRANSFER_DMA_MAP;
++	/* NOTE: transfer_dma setup above in call to usb_alloc_coherent() */
++	chip->ctrl_urb->transfer_flags = URB_NO_TRANSFER_DMA_MAP;
+ 
+ 	ret = hdjbulk_submit_urb(chip, chip->ctrl_urb, GFP_KERNEL);
+ 	if (ret!=0) {
+@@ -553,7 +553,7 @@ int usb_set_report(struct usb_hdjbulk *u
+ 				output_control_callback,
+ 				&ubulk->output_control_completion);
+ 	ubulk->output_control_urb->setup_dma = ubulk->output_control_dma;
+-	ubulk->output_control_urb->transfer_flags = URB_NO_SETUP_DMA_MAP | URB_NO_TRANSFER_DMA_MAP;
++	ubulk->output_control_urb->transfer_flags = URB_NO_TRANSFER_DMA_MAP;
+ 	if ((rc =  hdjbulk_submit_urb(ubulk->chip,ubulk->output_control_urb, GFP_KERNEL))!=0) {
+ 		printk(KERN_WARNING"%s hdjbulk_submit_urb() failed, rc:%d\n",__FUNCTION__,rc);
+ 	} else {
+@@ -2675,7 +2675,7 @@ static void uninit_output_control_state(
+ {
+ 	if (ubulk->chip->product_code!=DJCONTROLSTEEL_PRODUCT_CODE) {
+ 		if (ubulk->output_control_ctl_req!=NULL && ubulk->control_interface!=NULL) {
+-			usb_buffer_free(interface_to_usbdev(ubulk->control_interface),
++			usb_free_coherent(interface_to_usbdev(ubulk->control_interface),
+ 					sizeof(*(ubulk->output_control_ctl_req)),
+ 					ubulk->output_control_ctl_req,
+ 					ubulk->output_control_dma);
+@@ -2684,7 +2684,7 @@ static void uninit_output_control_state(
+ 
+ 		if (ubulk->output_control_buffer!=NULL && ubulk->control_interface!=NULL &&
+ 		    ubulk->output_control_urb!=NULL) {
+-			usb_buffer_free(interface_to_usbdev(ubulk->control_interface),
++			usb_free_coherent(interface_to_usbdev(ubulk->control_interface),
+ 					ubulk->output_control_urb->transfer_buffer_length,
+ 					ubulk->output_control_buffer,
+ 					ubulk->output_control_urb->transfer_dma);
+@@ -2712,7 +2712,7 @@ void kill_bulk_urbs(struct usb_hdjbulk *
+ 		usb_kill_urb(ubulk->bulk_out_urb);
+ 		if (free_urbs!=0) {
+ 			if (ubulk->bulk_out_buffer!=NULL) {
+-				usb_buffer_free(ubulk->chip->dev, ubulk->bulk_out_size,
++				usb_free_coherent(ubulk->chip->dev, ubulk->bulk_out_size,
+ 						ubulk->bulk_out_urb->transfer_buffer,
+ 						ubulk->bulk_out_urb->transfer_dma);
+ 				ubulk->bulk_out_buffer = NULL;
+@@ -3065,11 +3065,11 @@ int hdj_create_bulk_interface(struct snd
+ 	init_MUTEX(&ubulk->bulk_out_buffer_mutex);
+ 	
+ 	ubulk->bulk_out_buffer =
+-		usb_buffer_alloc(ubulk->chip->dev, ubulk->bulk_out_size,
++		usb_alloc_coherent(ubulk->chip->dev, ubulk->bulk_out_size,
+ 			GFP_KERNEL, &ubulk->bulk_out_urb->transfer_dma);
+ 
+ 	if (ubulk->bulk_out_buffer==NULL) {
+-		printk(KERN_WARNING"%s() usb_buffer_alloc() failed\n",__FUNCTION__);
++		printk(KERN_WARNING"%s() usb_alloc_coherent() failed\n",__FUNCTION__);
+ 
+ 		retval = -ENOMEM;
+ 		goto hdj_create_bulk_interface_error;
+@@ -3609,12 +3609,12 @@ static int init_output_control_state(str
+ 	 *  control state */
+ 	if (ubulk->chip->product_code != DJCONTROLSTEEL_PRODUCT_CODE) {	
+ 		/* allocate memory for setup packet for our control requests */
+-		ubulk->output_control_ctl_req = usb_buffer_alloc(interface_to_usbdev(ubulk->control_interface), 
++		ubulk->output_control_ctl_req = usb_alloc_coherent(interface_to_usbdev(ubulk->control_interface), 
+ 						 		sizeof(*(ubulk->output_control_ctl_req)),
+ 						 		GFP_KERNEL, 
+ 								 &ubulk->output_control_dma);
+ 		if (ubulk->output_control_ctl_req==NULL) {
+-			printk(KERN_WARNING"%s() usb_buffer_alloc failed (ctl req)\n",__FUNCTION__);
++			printk(KERN_WARNING"%s() usb_alloc_coherent failed (ctl req)\n",__FUNCTION__);
+ 			ret = -ENOMEM;
+ 			goto hdjbulk_init_output_control_state_error;
+ 		} else {
+@@ -3628,7 +3628,7 @@ static int init_output_control_state(str
+ 			goto hdjbulk_init_output_control_state_error;
+ 		}
+ 
+-		ubulk->output_control_buffer = usb_buffer_alloc(interface_to_usbdev(ubulk->control_interface),
++		ubulk->output_control_buffer = usb_alloc_coherent(interface_to_usbdev(ubulk->control_interface),
+ 								ubulk->output_control_buffer_size, 
+ 								GFP_KERNEL,
+ 								&ubulk->output_control_urb->transfer_dma);
+@@ -3773,10 +3773,10 @@ static int init_continuous_reader(struct
+ 		}
+ 
+ 		ep[i]->max_transfer = ubulk->continuous_reader_packet_size;
+-		buffer = usb_buffer_alloc(ubulk->chip->dev, ep[i]->max_transfer,
++		buffer = usb_alloc_coherent(ubulk->chip->dev, ep[i]->max_transfer,
+ 					GFP_KERNEL, &ep[i]->urb->transfer_dma);
+ 		if (!buffer) {
+-			printk(KERN_WARNING"%s() usb_buffer_alloc() failed\n",__FUNCTION__);
++			printk(KERN_WARNING"%s() usb_alloc_coherent() failed\n",__FUNCTION__);
+ 			
+ 			ret = -ENOMEM;
+ 			goto init_continuous_reader_error;
+@@ -4250,7 +4250,7 @@ void hdjbulk_in_endpoint_delete(struct h
+ {
+ 	if (ep->urb) {
+ 		if (ep->urb->transfer_buffer) {
+-			usb_buffer_free(ep->ubulk->chip->dev, ep->max_transfer,
++			usb_free_coherent(ep->ubulk->chip->dev, ep->max_transfer,
+ 					ep->urb->transfer_buffer,
+ 					ep->urb->transfer_dma);
+ 		}
+--- bulk.h	2009-01-27 15:25:50.000000000 +0100
++++ bulkpatched.h	2010-08-19 00:12:41.552050469 +0200
+@@ -21,6 +21,8 @@
+ *
+ */
+ 
++#include "/usr/src/linux-2.6.35-ARCH/include/linux/slab.h"
++
+ #if !defined(_BULK_H_)
+ #define _BULK_H_
+ 
+--- device.c	2010-08-19 00:05:54.875385619 +0200
++++ devicepatched.c	2010-08-19 00:11:57.452050579 +0200
+@@ -1559,7 +1559,7 @@ static int snd_hdj_chip_free(struct snd_
+ 
+ 	if(chip->ctrl_req_buffer != NULL)
+ 	{
+-		usb_buffer_free(chip->dev,
++		usb_free_coherent(chip->dev,
+ 				chip->ctrl_urb->transfer_buffer_length,
+ 				chip->ctrl_req_buffer,
+ 				chip->ctrl_urb->transfer_dma);
+@@ -1575,7 +1575,7 @@ static int snd_hdj_chip_free(struct snd_
+ 	
+ 	if(chip->ctl_req != NULL)
+ 	{
+-		usb_buffer_free(chip->dev,
++		usb_free_coherent(chip->dev,
+ 			sizeof(*(chip->ctl_req)),
+ 			chip->ctl_req,
+ 			chip->ctl_req_dma);
+@@ -1727,12 +1727,12 @@ static int snd_hdj_chip_create(struct us
+ 	}
+ 
+ 	/* allocate memory for setup packet for our control requests */
+-	chip->ctl_req = usb_buffer_alloc(chip->dev, 
++	chip->ctl_req = usb_alloc_coherent(chip->dev, 
+ 					 sizeof(*(chip->ctl_req)),
+ 					 GFP_KERNEL, 
+ 					 &chip->ctl_req_dma);
+ 	if(chip->ctl_req == NULL) {
+-		printk(KERN_WARNING"snd_hdj_chip_create(): usb_buffer_alloc() failed for setup DMA\n");
++		printk(KERN_WARNING"snd_hdj_chip_create(): usb_alloc_coherent() failed for setup DMA\n");
+ 		return err;
+ 	}
+ 	
+@@ -1742,12 +1742,12 @@ static int snd_hdj_chip_create(struct us
+ 
+ 	chip->ctrl_req_buffer_len =  sizeof(u16);
+ 	chip->ctrl_urb->transfer_buffer_length = chip->ctrl_req_buffer_len;
+-	chip->ctrl_req_buffer = usb_buffer_alloc(chip->dev, 
++	chip->ctrl_req_buffer = usb_alloc_coherent(chip->dev, 
+ 						 chip->ctrl_urb->transfer_buffer_length,
+ 						 GFP_KERNEL, 
+ 						 &chip->ctrl_urb->transfer_dma);
+ 	if (chip->ctrl_req_buffer == NULL) {
+-		printk(KERN_WARNING"snd_hdj_chip_create(): usb_buffer_alloc() failed\n");
++		printk(KERN_WARNING"snd_hdj_chip_create(): usb_alloc_coherent() failed\n");
+ 		return err;
+ 	}
+ 
+--- midi.c	2009-01-27 15:25:50.000000000 +0100
++++ midipatched.c	2010-08-19 00:12:10.072050470 +0200
+@@ -367,7 +367,7 @@ static void snd_hdjmidi_in_endpoint_dele
+ {
+ 	if (ep->urb) {
+ 		if (ep->urb->transfer_buffer) {
+-			usb_buffer_free(ep->umidi->chip->dev,
++			usb_free_coherent(ep->umidi->chip->dev,
+ 					ep->urb->transfer_buffer_length,
+ 					ep->urb->transfer_buffer,
+ 					ep->urb->transfer_dma);
+@@ -503,10 +503,10 @@ static int snd_hdjmidi_in_endpoint_creat
+ 		pipe = usb_rcvbulkpipe(umidi->chip->dev, ep_info->in_ep);
+ 	}
+ 	length = usb_maxpacket(umidi->chip->dev, pipe, 0);
+-	buffer = usb_buffer_alloc(umidi->chip->dev, length, GFP_KERNEL,
++	buffer = usb_alloc_coherent(umidi->chip->dev, length, GFP_KERNEL,
+ 				  &ep->urb->transfer_dma);
+ 	if (!buffer) {
+-		snd_printk(KERN_WARNING"%s() usb_buffer_alloc failed\n",__FUNCTION__);
++		snd_printk(KERN_WARNING"%s() usb_alloc_coherent failed\n",__FUNCTION__);
+ 		snd_hdjmidi_in_endpoint_delete(ep);
+ 		return -ENOMEM;
+ 	}
+@@ -536,7 +536,7 @@ static void snd_hdjmidi_out_endpoint_del
+ #endif
+ 	if (ep->urb) {
+ 		if (ep->urb->transfer_buffer) {
+-			usb_buffer_free(ep->umidi->chip->dev, ep->max_transfer,
++			usb_free_coherent(ep->umidi->chip->dev, ep->max_transfer,
+ 					ep->urb->transfer_buffer,
+ 					ep->urb->transfer_dma);
+ 		}
+@@ -544,27 +544,27 @@ static void snd_hdjmidi_out_endpoint_del
+ 	}
+ 	if (ep->urb_led) {
+ 		if (ep->urb_led->transfer_buffer) {
+-			usb_buffer_free(ep->umidi->chip->dev, ep->max_transfer,
++			usb_free_coherent(ep->umidi->chip->dev, ep->max_transfer,
+ 					ep->urb_led->transfer_buffer,
+ 					ep->urb_led->transfer_dma);
+ 		}
+ 		usb_free_urb(ep->urb_led);	
+ 	}
+ 	if (ep->ctrl_req_led) {
+-		usb_buffer_free(ep->umidi->chip->dev, sizeof(*(ep->ctrl_req_led)),
++		usb_free_coherent(ep->umidi->chip->dev, sizeof(*(ep->ctrl_req_led)),
+ 						ep->ctrl_req_led, ep->ctrl_req_led_dma);
+ 	}
+ 	if (ep->controller_state) {
+ 		if (ep->controller_state->output_control_ctl_urb &&
+ 			 ep->controller_state->output_control_ctl_urb->transfer_buffer &&
+ 			 ep->controller_state->output_control_ctl_urb->transfer_dma) {
+-			usb_buffer_free(ep->umidi->chip->dev, ep->max_transfer,
++			usb_free_coherent(ep->umidi->chip->dev, ep->max_transfer,
+ 					ep->controller_state->output_control_ctl_urb->transfer_buffer,
+ 					ep->controller_state->output_control_ctl_urb->transfer_dma);
+ 		}
+ 		if (ep->controller_state->output_control_ctl_req &&
+ 			 ep->controller_state->output_control_ctl_dma) {
+-			usb_buffer_free(ep->umidi->chip->dev, 
++			usb_free_coherent(ep->umidi->chip->dev, 
+ 					sizeof(*(ep->controller_state->output_control_ctl_req)),
+ 					ep->controller_state->output_control_ctl_req,
+ 					ep->controller_state->output_control_ctl_dma);
+@@ -573,7 +573,7 @@ static void snd_hdjmidi_out_endpoint_del
+ 			usb_free_urb(ep->controller_state->output_control_ctl_urb);
+ 		}
+ 		if (ep->controller_state->ctl_req) {
+-			usb_buffer_free(ep->umidi->chip->dev, 
++			usb_free_coherent(ep->umidi->chip->dev, 
+ 					sizeof(*(ep->controller_state->ctl_req)),
+ 					ep->controller_state->ctl_req,
+ 					ep->controller_state->ctl_req_dma);
+@@ -584,14 +584,14 @@ static void snd_hdjmidi_out_endpoint_del
+ 		}
+ 		if (ep->controller_state->urb_kt) {
+ 			if (ep->controller_state->urb_kt->transfer_buffer) {
+-				usb_buffer_free(ep->umidi->chip->dev, ep->max_transfer,
++				usb_free_coherent(ep->umidi->chip->dev, ep->max_transfer,
+ 						ep->controller_state->urb_kt->transfer_buffer,
+ 						ep->controller_state->urb_kt->transfer_dma);
+ 			}
+ 			usb_free_urb(ep->controller_state->urb_kt);
+ 		}
+ 		if (ep->controller_state->ctl_req_kt) {
+-			usb_buffer_free(ep->umidi->chip->dev, 
++			usb_free_coherent(ep->umidi->chip->dev, 
+ 					sizeof(*(ep->controller_state->ctl_req_kt)),
+ 					ep->controller_state->ctl_req_kt,
+ 					ep->controller_state->ctl_req_dma_kt);
+@@ -666,12 +666,12 @@ static int controller_output_init(struct
+ 		controller_state->is_weltrend = is_mp3_weltrend(ep->umidi->chip->usb_id);
+ 	}
+ 	
+-	controller_state->ctl_req = usb_buffer_alloc(ep->umidi->chip->dev, 
++	controller_state->ctl_req = usb_alloc_coherent(ep->umidi->chip->dev, 
+ 							sizeof(*(controller_state->ctl_req)),
+ 							GFP_KERNEL, 
+ 							&controller_state->ctl_req_dma);
+ 	if (controller_state->ctl_req==NULL) {
+-		snd_printk(KERN_WARNING"%s() usb_buffer_alloc() failed for setup DMA\n",__FUNCTION__);
++		snd_printk(KERN_WARNING"%s() usb_alloc_coherent() failed for setup DMA\n",__FUNCTION__);
+ 		return -ENOMEM;
+ 	}
+ 	
+@@ -679,12 +679,12 @@ static int controller_output_init(struct
+ 	 *  mouse setting or setting LEDs */
+ 	init_MUTEX(&controller_state->output_control_ctl_mutex);
+ 	init_completion(&controller_state->output_control_ctl_completion);
+-	controller_state->output_control_ctl_req = usb_buffer_alloc(ep->umidi->chip->dev, 
++	controller_state->output_control_ctl_req = usb_alloc_coherent(ep->umidi->chip->dev, 
+ 							sizeof(*(controller_state->output_control_ctl_req)),
+ 							GFP_KERNEL, 
+ 							&controller_state->output_control_ctl_dma);
+ 	if (controller_state->output_control_ctl_req==NULL) {
+-		snd_printk(KERN_WARNING"%s() usb_buffer_alloc() failed for general setup DMA\n",
++		snd_printk(KERN_WARNING"%s() usb_alloc_coherent() failed for general setup DMA\n",
+ 				__FUNCTION__);
+ 		return -ENOMEM;
+ 	}
+@@ -700,10 +700,10 @@ static int controller_output_init(struct
+ 	max_transfer = usb_maxpacket(ep->umidi->chip->dev, 
+ 					controller_state->output_control_ctl_pipe, 1);
+ 	
+-	buffer = usb_buffer_alloc(ep->umidi->chip->dev, max_transfer,
++	buffer = usb_alloc_coherent(ep->umidi->chip->dev, max_transfer,
+ 				  GFP_KERNEL, &controller_state->output_control_ctl_urb->transfer_dma);
+ 	if (buffer==NULL) {
+-		snd_printk(KERN_WARNING"%s() usb_buffer_alloc failed (general URB buffer)\n",
++		snd_printk(KERN_WARNING"%s() usb_alloc_coherent failed (general URB buffer)\n",
+ 					__FUNCTION__);
+ 		return -ENOMEM;	
+ 	}
+@@ -726,8 +726,8 @@ static int controller_output_init(struct
+ 	controller_state->output_control_ctl_req->wIndex = cpu_to_le16(ep->umidi->iface->cur_altsetting->desc.bInterfaceNumber);
+ 	controller_state->output_control_ctl_req->wLength = cpu_to_le16(DJ_MP3_HID_OUTPUT_REPORT_LEN);
+ 	controller_state->output_control_ctl_urb->setup_dma = controller_state->output_control_ctl_dma;
+-	/* NOTE: transfer_dma setup above in call to usb_buffer_alloc() */
+-	controller_state->output_control_ctl_urb->transfer_flags = URB_NO_SETUP_DMA_MAP | URB_NO_TRANSFER_DMA_MAP;
++	/* NOTE: transfer_dma setup above in call to usb_alloc_coherent() */
++	controller_state->output_control_ctl_urb->transfer_flags = URB_NO_TRANSFER_DMA_MAP;
+ 	
+ 	return 0;
+ }
+@@ -772,12 +772,12 @@ static int snd_hdjmidi_out_endpoint_crea
+ 	}
+ 	
+ 	if (ep->umidi->chip->caps.leds_hid_controlled) {
+-		ep->ctrl_req_led = usb_buffer_alloc(ep->umidi->chip->dev, 
++		ep->ctrl_req_led = usb_alloc_coherent(ep->umidi->chip->dev, 
+ 								sizeof(*(ep->ctrl_req_led)),
+ 								GFP_KERNEL, 
+ 								&ep->ctrl_req_led_dma);
+ 		if (ep->ctrl_req_led==NULL) {
+-			snd_printk(KERN_WARNING"%s() usb_buffer_alloc() failed for setup DMA\n",__FUNCTION__);
++			snd_printk(KERN_WARNING"%s() usb_alloc_coherent() failed for setup DMA\n",__FUNCTION__);
+ 			return -ENOMEM;
+ 		}
+ 	}
+@@ -806,18 +806,18 @@ static int snd_hdjmidi_out_endpoint_crea
+ 		pipe = usb_sndctrlpipe(umidi->chip->dev, 0);
+ 	}
+ 	ep->max_transfer = usb_maxpacket(umidi->chip->dev, pipe, 1);
+-	buffer = usb_buffer_alloc(umidi->chip->dev, ep->max_transfer,
++	buffer = usb_alloc_coherent(umidi->chip->dev, ep->max_transfer,
+ 				  GFP_KERNEL, &ep->urb->transfer_dma);
+ 	if (!buffer) {
+-		snd_printk(KERN_WARNING"%s() usb_buffer_alloc() failed\n",__FUNCTION__);
++		snd_printk(KERN_WARNING"%s() usb_alloc_coherent() failed\n",__FUNCTION__);
+ 		snd_hdjmidi_out_endpoint_delete(ep);
+ 		return -ENOMEM;
+ 	}
+ 	
+-	buffer_led = usb_buffer_alloc(umidi->chip->dev, ep->max_transfer,
++	buffer_led = usb_alloc_coherent(umidi->chip->dev, ep->max_transfer,
+ 				  GFP_KERNEL, &ep->urb_led->transfer_dma);
+ 	if (!buffer_led) {
+-		snd_printk(KERN_WARNING"%s() usb_buffer_alloc() failed for LED buffer\n",
++		snd_printk(KERN_WARNING"%s() usb_alloc_coherent() failed for LED buffer\n",
+ 					__FUNCTION__);
+ 		snd_hdjmidi_out_endpoint_delete(ep);
+ 		return -ENOMEM;
+@@ -853,8 +853,8 @@ static int snd_hdjmidi_out_endpoint_crea
+ 		ep->controller_state->ctl_req->wIndex = cpu_to_le16(umidi->iface->cur_altsetting->desc.bInterfaceNumber);
+ 		ep->controller_state->ctl_req->wLength = cpu_to_le16(DJ_MP3_HID_OUTPUT_REPORT_LEN);
+ 		ep->urb->setup_dma = ep->controller_state->ctl_req_dma;
+-		/* NOTE: transfer_dma setup above in call to usb_buffer_alloc() */
+-		ep->urb->transfer_flags = URB_NO_SETUP_DMA_MAP | URB_NO_TRANSFER_DMA_MAP;
++		/* NOTE: transfer_dma setup above in call to usb_alloc_coherent() */
++		ep->urb->transfer_flags = URB_NO_TRANSFER_DMA_MAP;
+ 	}
+ 	
+ 	if (ep->umidi->chip->caps.leds_hid_controlled) {
+@@ -874,8 +874,8 @@ static int snd_hdjmidi_out_endpoint_crea
+ 		ep->ctrl_req_led->wIndex = cpu_to_le16(umidi->iface->cur_altsetting->desc.bInterfaceNumber);
+ 		ep->ctrl_req_led->wLength = cpu_to_le16(DJ_MP3_HID_OUTPUT_REPORT_LEN);
+ 		ep->urb_led->setup_dma = ep->ctrl_req_led_dma;
+-		/* NOTE: transfer_dma setup above in call to usb_buffer_alloc() */
+-		ep->urb_led->transfer_flags = URB_NO_SETUP_DMA_MAP | URB_NO_TRANSFER_DMA_MAP;
++		/* NOTE: transfer_dma setup above in call to usb_alloc_coherent() */
++		ep->urb_led->transfer_flags = URB_NO_TRANSFER_DMA_MAP;
+ 	}
+ 	
+ 	if (ep->umidi->chip->caps.leds_bulk_controlled) {
+@@ -913,20 +913,20 @@ static int snd_hdjmidi_out_endpoint_crea
+ 			return -ENOMEM;
+ 		}
+ 
+-		buffer = usb_buffer_alloc(umidi->chip->dev, ep->max_transfer,
++		buffer = usb_alloc_coherent(umidi->chip->dev, ep->max_transfer,
+ 				  GFP_KERNEL, &ep->controller_state->urb_kt->transfer_dma);
+ 		if (!buffer) {
+-			snd_printk(KERN_WARNING"%s() usb_buffer_alloc() for wq failed\n",__FUNCTION__);
++			snd_printk(KERN_WARNING"%s() usb_alloc_coherent() for wq failed\n",__FUNCTION__);
+ 			snd_hdjmidi_out_endpoint_delete(ep);
+ 			return -ENOMEM;
+ 		}
+ 
+-		ep->controller_state->ctl_req_kt = usb_buffer_alloc(umidi->chip->dev, 
++		ep->controller_state->ctl_req_kt = usb_alloc_coherent(umidi->chip->dev, 
+ 							sizeof(*(ep->controller_state->ctl_req_kt)),
+ 							GFP_KERNEL, 
+ 							&ep->controller_state->ctl_req_dma_kt);
+ 		if (!ep->controller_state->ctl_req_kt) {
+-			snd_printk(KERN_WARNING"%s() usb_buffer_alloc() failed for setup DMA for wq\n",__FUNCTION__);
++			snd_printk(KERN_WARNING"%s() usb_alloc_coherent() failed for setup DMA for wq\n",__FUNCTION__);
+ 			snd_hdjmidi_out_endpoint_delete(ep);
+ 			return -ENOMEM;
+ 		}
+@@ -946,8 +946,8 @@ static int snd_hdjmidi_out_endpoint_crea
+ 		ep->controller_state->ctl_req_kt->wIndex = cpu_to_le16(umidi->iface->cur_altsetting->desc.bInterfaceNumber);
+ 		ep->controller_state->ctl_req_kt->wLength = cpu_to_le16(DJ_MP3_HID_OUTPUT_REPORT_LEN);
+ 		ep->controller_state->urb_kt->setup_dma = ep->controller_state->ctl_req_dma_kt;
+-		/* NOTE: transfer_dma setup above in call to usb_buffer_alloc() */
+-		ep->controller_state->urb_kt->transfer_flags = URB_NO_SETUP_DMA_MAP | URB_NO_TRANSFER_DMA_MAP;
++		/* NOTE: transfer_dma setup above in call to usb_alloc_coherent() */
++		ep->controller_state->urb_kt->transfer_flags = URB_NO_TRANSFER_DMA_MAP;
+ 	
+ 		init_completion(&ep->controller_state->ctl_req_completion_kt);
+ 		init_completion(&ep->controller_state->mp3w_kthread_started);

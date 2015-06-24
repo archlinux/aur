@@ -1,0 +1,20 @@
+--- device.c.orig	2009-10-27 19:52:01.000000000 -0400
++++ device.c	2009-10-27 19:53:32.000000000 -0400
+@@ -1660,12 +1660,11 @@
+ 		/* let the kernel option override custom id */
+ 		strncpy(card_id,id[idx],sizeof(card_id)-1);
+ 	}
+-	card = snd_card_new(index[idx], card_id/*id[idx]*/, THIS_MODULE, 0);
+-	if (card == NULL) {
+-		snd_printk(KERN_WARNING "snd_hdj_chip_create(): cannot create card instance %d\n", idx);
+-		return -ENOMEM;
+-	}
+-	
++	err = snd_card_create(index[idx], card_id/*id[idx]*/, THIS_MODULE, 0, &card);
++        if (err < 0) {
++          snd_printk(KERN_WARNING "snd_hdj_chip_create(): cannot create card instance %d\n", idx);
++          return err;
++        }
+ 	/* save the index, so people who have the card can reference the chip */
+ 	card->private_data = (void*)(unsigned long)idx;
+ 

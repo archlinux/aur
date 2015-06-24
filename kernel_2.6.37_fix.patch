@@ -1,0 +1,96 @@
+--- bulk.c.orig	2011-01-31 20:42:56.463333356 +0100
++++ bulk.c	2011-02-02 18:35:12.453333307 +0100
+@@ -34,6 +34,7 @@
+ #include <linux/usb.h>
+ #include <linux/delay.h>
+ #include <linux/version.h>	/* For LINUX_VERSION_CODE */
++#include <linux/semaphore.h>
+ #if ( LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,24) )
+ #include <sound/driver.h>
+ #endif
+@@ -3062,7 +3063,7 @@ int hdj_create_bulk_interface(struct snd
+ 		goto hdj_create_bulk_interface_error;
+ 	}
+ 	/* allocate the buffer for bulk_out_urb */
+-	init_MUTEX(&ubulk->bulk_out_buffer_mutex);
++	sema_init(&ubulk->bulk_out_buffer_mutex,1);
+ 	
+ 	ubulk->bulk_out_buffer =
+ 		usb_alloc_coherent(ubulk->chip->dev, ubulk->bulk_out_size,
+@@ -3601,7 +3602,7 @@ static int init_output_control_state(str
+ 		return -EINVAL;
+ 	}
+ 
+-	init_MUTEX(&ubulk->output_control_mutex);
++	sema_init(&ubulk->output_control_mutex,1);
+ 	init_completion(&ubulk->output_control_completion);
+ 
+ 	/* Every product here except the Steel targets HID.  Since the steel does not target HID, we don't
+@@ -3855,7 +3856,7 @@ int hdjbulk_init_dj_console(struct usb_h
+ 	u16 value = 0;
+ 	struct hdj_console_context *dc = ((struct hdj_console_context *)ubulk->device_context);
+ 
+-	init_MUTEX(&dc->device_config_mutex);
++	sema_init(&dc->device_config_mutex,1);
+ 	
+ 	ret = hdjbulk_init_common_context(ubulk,&ubulk->hdj_common);
+ 	if (ret!=0) {
+@@ -4133,7 +4134,7 @@ int hdjbulk_init_dj_steel(struct usb_hdj
+ 
+ 	spin_lock_init(&dc->bulk_buffer_lock);
+ 	init_completion(&dc->bulk_request_completion);
+-	init_MUTEX(&dc->bulk_request_mutex);
++	sema_init(&dc->bulk_request_mutex,1);
+ 
+ 	if ((ret = init_continuous_reader(ubulk))!=0) {
+ 		printk(KERN_WARNING"%s() init_continuous_reader() failed, rc:%d\n",
+
+--- device.c.orig	2011-01-31 20:42:56.470000023 +0100
++++ device.c	2011-02-02 18:37:06.129999924 +0100
+@@ -66,7 +66,7 @@ MODULE_PARM_DESC(index, "Index value for
+ module_param_array(id, charp, NULL, 0444);
+ MODULE_PARM_DESC(id, "ID string for the Hercules DJ Series adapter.");
+ 
+-static DECLARE_MUTEX(register_mutex);
++static DEFINE_SEMAPHORE(register_mutex);
+ static struct snd_hdj_chip *usb_chip[SNDRV_CARDS];
+ 
+ /* reference count for the socket */
+@@ -1681,7 +1681,7 @@ static int snd_hdj_chip_create(struct us
+ 	chip->card = card;
+ 	chip->product_code = product_code;
+ 
+-	init_MUTEX(&chip->vendor_request_mutex);
++	sema_init(&chip->vendor_request_mutex,1);
+ 
+ 	/* initialise the atomic variables */
+ 	atomic_set(&chip->locked_io, 0);
+@@ -1696,7 +1696,7 @@ static int snd_hdj_chip_create(struct us
+ 	INIT_LIST_HEAD(&chip->bulk_list);
+ 	chip->usb_id = USB_ID(le16_to_cpu(dev->descriptor.idVendor),
+ 			      le16_to_cpu(dev->descriptor.idProduct));
+-	init_MUTEX(&chip->netlink_list_mutex);
++	sema_init(&chip->netlink_list_mutex,1);
+ 	INIT_LIST_HEAD(&chip->netlink_registered_processes);
+ 	
+ 	/* fill in DJ capabilities for this device */
+
+--- midi.c.orig	2011-01-31 20:42:56.470000023 +0100
++++ midi.c	2011-02-02 18:38:31.653333225 +0100
+@@ -34,6 +34,7 @@
+ #include <linux/module.h>
+ #include <linux/usb.h>
+ #include <linux/kthread.h>
++#include <linux/semaphore.h>
+ #include <asm/byteorder.h>
+ #include <asm/atomic.h>
+ #if ( LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,24) )
+@@ -677,7 +678,7 @@ static int controller_output_init(struct
+ 	
+ 	/* this buffer and URB below are for general control requests, like changing the
+ 	 *  mouse setting or setting LEDs */
+-	init_MUTEX(&controller_state->output_control_ctl_mutex);
++	sema_init(&controller_state->output_control_ctl_mutex, 1);
+ 	init_completion(&controller_state->output_control_ctl_completion);
+ 	controller_state->output_control_ctl_req = usb_alloc_coherent(ep->umidi->chip->dev, 
+ 							sizeof(*(controller_state->output_control_ctl_req)),

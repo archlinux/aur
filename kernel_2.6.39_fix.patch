@@ -1,0 +1,11 @@
+--- midi.c.orig	2009-01-27 15:25:50.000000000 +0100
++++ midi.c	2011-05-30 21:47:18.000000000 +0200
+@@ -60,7 +60,7 @@
+ 
+ unsigned long channel_list_initialized = 0;
+ struct midi_channel_elem channel_list[NUM_MIDI_CHANNELS];
+-spinlock_t channel_list_lock = SPIN_LOCK_UNLOCKED;
++DEFINE_SPINLOCK(channel_list_lock);
+ 
+ static struct usb_protocol_ops snd_hdjmidi_standard_ops = {
+ 	.input = snd_hdjmidi_standard_input,

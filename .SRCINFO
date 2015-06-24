@@ -1,0 +1,36 @@
+pkgbase = hdjmod
+	pkgdesc = Hercules DJ kernel module
+	pkgver = 1.28
+	pkgrel = 12
+	url = http://ts.hercules.com/eng/
+	install = hdjmod.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = rpmextract
+	makedepends = linux-headers
+	depends = linux>=3.16
+	optdepends = hdjcpl: Control Panel for the Hercules DJ series hardware settings
+	source = ftp://ftp.hercules.com/pub/webupdate/DJCSeries/Hercules_DJSeries_Linux.tgz
+	source = hdjmod.diff
+	source = kernel_2.6.31_fix.patch
+	source = kernel_2.6.35_fix.diff
+	source = dj_console_mp3_e2.patch
+	source = kernel_2.6.37_fix.patch
+	source = kernel_2.6.39_fix.patch
+	source = kernel_3.6_fix.patch
+	source = kernel_3.7_fix.patch
+	source = kernel_3.16_fix.patch
+	md5sums = 498cf0ff144f20106718932ab22571ce
+	md5sums = 464f8a8eda9d4c2ec83cf1c43e5dbee3
+	md5sums = 405a57365935fa003514ac2370325de1
+	md5sums = 359c33f8e21a7ce5425d5409919f8252
+	md5sums = f9e6f12c5f59c7bdb44d813cd42c9b27
+	md5sums = 132528f078a26775ca8c7c4c3ebfe748
+	md5sums = 9cc3e1cb4c7877ebf09e389e67b19182
+	md5sums = 8bf580fcfe06f48ce8247272b55633ce
+	md5sums = f40801f32abc47088a54c8893aa27e75
+	md5sums = 03b1ec1382d9d79a78cc79525cae06e4
+
+pkgname = hdjmod
+

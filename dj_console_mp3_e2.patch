@@ -1,0 +1,29 @@
+--- device.c.orig	2010-12-12 16:34:17.866666668 +0100
++++ device.c	2011-01-09 12:17:06.000000000 +0100
+@@ -1828,6 +1828,8 @@ static int usbid_to_product_code(u32 usb
+ 		return DJCONTROLLER_PRODUCT_CODE;
+ 	} else if (usbid == USB_ID(USB_HDJ_VENDOR_ID,   DJ_CONTROL_MP3W_PID)) {
+ 		return DJCONTROLLER_PRODUCT_CODE;
++	} else if (usbid == USB_ID(USB_HDJ_VENDOR_ID,   DJ_CONTROL_MP3E2_PID)) {
++		return DJCONTROLSTEEL_PRODUCT_CODE;
+ 	} else {
+ 		return DJCONSOLE_PRODUCT_UNKNOWN;
+ 	}
+@@ -1860,6 +1862,7 @@ static int hdj_probe(struct usb_interfac
+ 		(le16_to_cpu(usb_dev->descriptor.idProduct)!=DJ_CONSOLE_RMX_PID)&&
+ 		(le16_to_cpu(usb_dev->descriptor.idProduct)!=DJ_CONTROL_MP3_PID)&&
+ 		(le16_to_cpu(usb_dev->descriptor.idProduct)!=DJ_CONTROL_MP3W_PID)&&
++		(le16_to_cpu(usb_dev->descriptor.idProduct)!=DJ_CONTROL_MP3E2_PID)&&
+ 		(le16_to_cpu(usb_dev->descriptor.idProduct)!=DJ_CONSOLE_STEEL_PID))
+ 	{
+ 		printk(KERN_INFO"hdj_probe() unsupported device, idVendor%lx, idProduct:%lx\n",
+--- device.h.orig	2009-01-27 15:25:50.000000000 +0100
++++ device.h	2011-01-09 12:19:22.000000000 +0100
+@@ -38,6 +38,7 @@ extern int					netlink_unit;
+ #define DJ_CONSOLE_RMX_PID		0xb101
+ #define DJ_CONTROL_MP3_PID		0xd000
+ #define DJ_CONTROL_MP3W_PID		0xd001
++#define DJ_CONTROL_MP3E2_PID	0xb105
+ #define DJ_CONSOLE_STEEL_PID	0xb102
+ 
+ #define DJ_BULK_IFNUM			0
