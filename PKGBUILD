@@ -8,34 +8,24 @@ pkgdesc='Script to install various redistributable runtime libraries in Wine.'
 url='http://wiki.winehq.org/winetricks'
 license=('LGPL')
 arch=('any')
-depends=('wine' 'cabextract' 'unzip' 'xorg-xmessage' 'wget')
+depends=('wine' 'curl' 'cabextract' 'unrar' 'unzip' 'p7zip')
 makedepends=('git')
-optdepends=('zenity: GUI for GNOME desktop'
-            'kdebase-kdialog: GUI for KDE desktop')
+optdepends=('zenity: For the GTK3 GUI.'
+            'kdebase-kdialog: For the KDE GUI (less capable).'
+            'sudo: For automatically mounting ISO images.'
+            'xdg-utils: For opening manual download pages.'
+            'perl: For installing Steam.')
 conflicts=('winetricks' 'bin32-winetricks')
-replaces=('bin32-winetricks' 'winetricks')
 provides=('winetricks')
-source=("https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
-        "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.1")
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname::git+https://github.com/Winetricks/winetricks.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    awk 'BEGIN {
-           FS = "[ /^]+"
-           while ("git ls-remote https://github.com/Winetricks/winetricks | sort -Vk2" | getline) {
-               if (!sha)
-                   sha = substr($0, 1, 7)
-               tag = $3
-           }
-           while ("curl -s https://github.com/Winetricks/winetricks/releases/tag/" tag | getline)
-               if ($3 ~ "commits")
-                   com = $2
-           printf com ? "%s.r%s.g%s\n" : "%s\n", tag, com, sha
-       }'
+    cd "$pkgname"
+    git describe --long --tags | sed -r 's/-([0-9]+)-/.r\1./'
 }
 
 package() {
-  install -Dm755 ${srcdir}/winetricks ${pkgdir}/usr/bin/winetricks
-  install -Dm755 ${srcdir}/winetricks.1 ${pkgdir}/usr/share/man/man1/winetricks.1
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
 }
