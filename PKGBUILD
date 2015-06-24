@@ -23,10 +23,6 @@ pkgver() {
     )
 }
 
-prepare() {
-    cd "$pkgname"
-}
-
 build() {
     cd "$pkgname"
     [[ -d build ]] || mkdir build
