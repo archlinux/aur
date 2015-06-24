@@ -2,12 +2,12 @@
 
 pkgname=nvidia-think
 pkgver=352.21
-_extramodules=extramodules-4.0-think
+_extramodules=extramodules-4.1-think
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-think kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-think>=4.0.5' "nvidia-utils>=352.21" 'libgl')
+depends=('linux-think>=4.1' "nvidia-utils>=352.21" 'libgl')
 makedepends=('linux-headers>=3.19')
 license=('custom')
 install=nvidia.install

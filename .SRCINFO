@@ -8,7 +8,7 @@ pkgbase = nvidia-think
 	arch = x86_64
 	license = custom
 	makedepends = linux-headers>=3.19
-	depends = linux-think>=4.0.5
+	depends = linux-think>=4.1
 	depends = nvidia-utils>=352.21
 	depends = libgl
 	options = !strip
