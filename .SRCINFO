@@ -1,0 +1,23 @@
+pkgbase = kdeplasma-applets-networkmanagement
+	pkgdesc = KDE control panel and widget network connections
+	pkgver = 0.9.0.12
+	pkgrel = 1
+	epoch = 1
+	url = https://projects.kde.org/projects/extragear/base/networkmanagement
+	install = kdeplasma-applets-networkmanagement.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = python2
+	makedepends = automoc4
+	depends = kdebase-workspace>=4.11.0
+	depends = networkmanager
+	optdepends = mobile-broadband-provider-info: Database of mobile broadband service providers
+	optdepends = openconnect: Cisco AnyConnect compatible VPN client
+	conflicts = kdeplasma-applets-plasma-nm
+	source = http://download.kde.org/unstable/networkmanagement/0.9.0.12/src/networkmanagement-0.9.0.12.tar.xz
+	md5sums = 3a2b0b8f3545727cf0ded82e82a936b8
+
+pkgname = kdeplasma-applets-networkmanagement
+
