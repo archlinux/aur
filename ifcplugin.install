@@ -1,0 +1,13 @@
+
+post_install() {
+  # Add VIDs and PIDs to CCID Boundle
+  cd /etc/update_ccid_boundle
+  bash ./update_ccid_boundle.sh
+}
+
+
+post_upgrade() {
+  # Add VIDs and PIDs to CCID Boundle
+  cd /etc/update_ccid_boundle
+  bash ./update_ccid_boundle.sh
+}

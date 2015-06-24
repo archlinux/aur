@@ -1,0 +1,17 @@
+pkgbase = ifcplugin
+	pkgdesc = Crypto Interface Web Browser Plugin for https://gosuslugi.ru
+	pkgver = 2.0.5.7
+	pkgrel = 4
+	url = https://esia.gosuslugi.ru
+	install = ifcplugin.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = pcsc-tools
+	depends = glibc
+	depends = acsccid
+	source = https://esia.gosuslugi.ru/sia-web/htdocs/plugin/IFCPlugin-x86_64.deb
+	sha512sums = 2bd547bea60c703018821942d8d496d4e36bf4e580ea517fa7ef7596faa4f944e7f31ce641ad5da21baad17ed82f5b373118860dd8a258b5cb7243ae36f3df3c
+
+pkgname = ifcplugin
+
