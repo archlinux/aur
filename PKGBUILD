@@ -2,7 +2,7 @@
 # Contributor: Christoph Grabo <asaaki at mannaz dot cc>
 
 pkgname=arangodb
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=1
 
 pkgdesc="A distributed open-source database with a flexible data model for documents, graphs, and key-values."
@@ -19,7 +19,7 @@ arch=("i686" "x86_64")
 install=arangodb.install
 source=( "https://www.arangodb.com/repositories/Source/ArangoDB-${pkgver}.tar.bz2"
          'arangodb.service')
-sha256sums=('717e51cfbb9a2455241c48e1329391e600a89b7ae7f8ab52cd0de7e0109ff0d0'
+sha256sums=('cd20043e425f02af6a643439261f79328d8b256d1a9d88f8f59e8a0d8b7545f4'
             '8b244e30c69dac28c12fa080b4ee7c4256977e8a8a6ffa342432ae48e35a9b12')
 
 build() {
