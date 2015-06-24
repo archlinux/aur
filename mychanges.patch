@@ -1,0 +1,131 @@
+diff -aur scangearmp-source-1.40-1/scangearmp/backend/Makefile.am scangearmp-source-1.40-1.new/scangearmp/backend/Makefile.am
+--- scangearmp-source-1.40-1/scangearmp/backend/Makefile.am	2009-04-28 11:08:03.000000000 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/backend/Makefile.am	2013-07-26 23:58:57.413152731 +0430
+@@ -17,7 +17,7 @@
+ 	libcnnet.h canon_mfp_debug.h
+ 
+ libsane_canon_mfp_la_CFLAGS = -DV_MAJOR=$(BACKEND_V_MAJOR) -DV_MINOR=$(BACKEND_V_MINOR)
+-libsane_canon_mfp_la_LIBADD = $(LIBLTDL) -lusb -ldl -lcncpnet -lpthread
++libsane_canon_mfp_la_LIBADD = $(LIBLTDL) -L../../com/libs_bin/ -lusb -ldl -lcncpnet -lpthread
+ libsane_canon_mfp_la_LDFLAGS = -version-info $(BACKEND_V_MAJOR):$(BACKEND_V_MINOR):$(BACKEND_V_REV)
+ 
+ EXTRA_DIST = \
+diff -aur scangearmp-source-1.40-1/scangearmp/etc/80-canon_mfp.rules scangearmp-source-1.40-1.new/scangearmp/etc/80-canon_mfp.rules
+--- scangearmp-source-1.40-1/scangearmp/etc/80-canon_mfp.rules	2009-04-28 11:08:03.000000000 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/etc/80-canon_mfp.rules	2013-07-27 00:00:25.729820028 +0430
+@@ -7,48 +7,48 @@
+ 
+ LABEL="canon_mfp_start"
+ # Canon MP160
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1714", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1714", MODE="666"
+ # Canon MP510
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1717", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1717", MODE="666"
+ # Canon MP600
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1718", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1718", MODE="666"
+ 
+ # Canon MP140 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="172b", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="172b", MODE="666"
+ # Canon MP210 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1721", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1721", MODE="666"
+ # Canon MP520 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1724", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1724", MODE="666"
+ # Canon MP610 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1725", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1725", MODE="666"
+ 
+ #MP190 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1734", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1734", MODE="666"
+ #MP240 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1732", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1732", MODE="666"
+ #MP540 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1730", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1730", MODE="666"
+ #MP630 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="172e", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="172e", MODE="666"
+ 
+ #MX320 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1736", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1736", MODE="666"
+ #MX330 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1737", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1737", MODE="666"
+ #MX860 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1735", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="1735", MODE="666"
+ 
+ #MP250 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173a", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="173a", MODE="666"
+ #MP270 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173b", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="173b", MODE="666"
+ #MP490 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173c", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="173c", MODE="666"
+ #MP550 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173d", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="173d", MODE="666"
+ #MP560 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173e", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="173e", MODE="666"
+ #MP640 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173f", MODE="666"
++ATTR{idVendor}=="04a9", ATTR{idProduct}=="173f", MODE="666"
+ 
+ LABEL="canon_mfp_end"
+diff -aur scangearmp-source-1.40-1/scangearmp/src/file_control.c scangearmp-source-1.40-1.new/scangearmp/src/file_control.c
+--- scangearmp-source-1.40-1/scangearmp/src/file_control.c	2009-04-28 11:08:03.000000000 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/file_control.c	2013-07-26 23:58:57.413152731 +0430
+@@ -32,6 +32,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff -aur scangearmp-source-1.40-1/scangearmp/src/scanfile.c scangearmp-source-1.40-1.new/scangearmp/src/scanfile.c
+--- scangearmp-source-1.40-1/scangearmp/src/scanfile.c	2009-04-28 11:08:03.000000000 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/scanfile.c	2013-07-26 23:58:57.413152731 +0430
+@@ -34,9 +34,11 @@
+ //#include <sys/types.h>
+ //#include <unistd.h>
+ #include <limits.h>
++#include <string.h>
++#include <png.h>
++#include <zlib.h>
+ 
+ #include "cnmsfunc.h"
+-#include "png.h"
+ #include "errors.h"
+ #include "w1.h"
+ #include "file_control.h"
+@@ -382,7 +384,7 @@
+ 
+ void write_data_for_png( png_structp png_ptr, png_bytep data, png_size_t length )
+ {
+-	FileControlWriteFile( *( (int *)png_ptr->io_ptr ), (CNMSLPSTR)data, length );
++	FileControlWriteFile( *( (int *)png_get_io_ptr (png_ptr) ), (CNMSLPSTR)data, length );
+ 
+ 	return;
+ }
+diff -aur scangearmp-source-1.40-1/scangearmp/src/scanflow.c scangearmp-source-1.40-1.new/scangearmp/src/scanflow.c
+--- scangearmp-source-1.40-1/scangearmp/src/scanflow.c	2009-09-18 08:40:52.000000000 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/scanflow.c	2013-07-26 23:58:57.416486068 +0430
+@@ -38,6 +38,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <gtk/gtk.h>
+ #include <sane/sane.h>

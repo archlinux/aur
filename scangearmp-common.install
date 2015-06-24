@@ -1,0 +1,31 @@
+post_install() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+	_gimp2dir1=/usr/lib/gimp/2.0/plug-ins
+	_gimp2dir2=/opt/gnome/lib/gimp/2.0/plug-ins
+	# make symbolic link for gimp-plug-in
+	if [ -d ${_gimp2dir1} ]; then
+	  ln -fs /usr/bin/scangearmp ${_gimp2dir1}/scangearmp
+	elif [ -d ${_gimp2dir2} ]; then
+	  ln -fs /usr/bin/scangearmp ${_gimp2dir2}/scangearmp
+	fi
+}
+post_upgrade() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+}
+post_remove() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+	_gimp2dir1=/usr/lib/gimp/2.0/plug-ins
+	_gimp2dir2=/opt/gnome/lib/gimp/2.0/plug-ins
+	
+	# remove symbolic link for gimp-plug-in
+	rm -f ${_gimp2dir1}/scangearmp
+	rm -f ${_gimp2dir2}/scangearmp
+	# remove sgmp_setting files
+	rm -f /tmp/canon_sgmp_setting*.*
+}

@@ -1,0 +1,20 @@
+post_install() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+}
+post_upgrade() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+}
+post_remove() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+	for LIBS in "libcncpmsimg359.so" "libcncpmslld359c.so" "libcncpmslld359.so"; do
+	  if [ -h /usr/lib32/${LIBS} ]; then
+	    rm -f /usr/lib32/${LIBS}
+	  fi
+	done
+}

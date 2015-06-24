@@ -1,0 +1,42 @@
+pkgbase = scangearmp-mp550
+	pkgdesc = Canon Scanner Driver (For Multifunction MP550 series)
+	pkgver = 1.40
+	pkgrel = 5
+	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP550.aspx
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf>=2.59
+	makedepends = automake>=1.10
+	makedepends = tar
+	makedepends = make
+	makedepends = sane
+	conflicts = lib32-cnijfilter320
+	source = http://files.canon-europe.com/files/soft37281/Software/Linux_Scangear_Source_Files.tar
+	source = mychanges.patch
+	sha512sums = 257f6ffece2e43c5db7b4d73ac962ddce9256b652e980b64dead2d38fe15d1b101a4f91c87b7fce1e0154fcb7fd6fc59962d4ca9abd4a20f765845aa938d8b8a
+	sha512sums = dd5bc73edff4f8a3452058e6f635815e6697a996cf0f3bf8a6515594af22ad730333f80a4f1b8113d36549ce8a627b92eb5e36778fc72def6852d01ef5e0930b
+	makedepends_i686 = gcc
+	makedepends_i686 = libtool
+	makedepends_i686 = gimp
+	makedepends_i686 = libusb-compat
+	makedepends_x86_64 = gcc-multilib
+	makedepends_x86_64 = libtool-multilib
+	makedepends_x86_64 = lib32-gimp
+	makedepends_x86_64 = lib32-libusb-compat
+
+pkgname = scangearmp-common
+	pkgdesc = Canon IJ Scanner Driver (Common Package)
+	install = scangearmp-common.install
+	depends = sane
+	depends_i686 = libusb-compat
+	depends_i686 = gimp
+	depends_x86_64 = lib32-libusb-compat
+	depends_x86_64 = lib32-gimp
+
+pkgname = scangearmp-mp550
+	install = scangearmp-mp550.install
+	depends = scangearmp-common=1.40
+	depends_i686 = gtk2>=2.6
+	depends_x86_64 = lib32-gtk2>=2.6
+
