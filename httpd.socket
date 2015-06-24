@@ -1,0 +1,8 @@
+[Unit]
+Description=HTTP Socket
+
+[Socket]
+ListenStream=80
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,7 @@
+post_install() {
+	systemd-tmpfiles --create httpd.conf
+}
+
+post_upgrade() {
+	systemd-tmpfiles --create httpd.conf
+}

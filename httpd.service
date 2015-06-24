@@ -1,0 +1,14 @@
+[Unit]
+Description=Apache 2.5 Web Server
+After=network.target remote-fs.target nss-lookup.target httpd.socket
+Requires=httpd.socket
+
+[Service]
+Type=notify
+User=http
+ExecStart=/usr/bin/httpd -DFOREGROUND
+PrivateTmp=true
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
