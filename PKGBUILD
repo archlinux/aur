@@ -2,7 +2,7 @@
 # Contributor: Eduardo Robles Elvira <edulix AT gmail DOT com>
 # Contributor: Jon Nordby <jononor@gmail.com>
 pkgname=obs-build-git
-pkgver=2.0_407.g1eead7d
+pkgver=2.5.0_325.g402588e
 pkgrel=1
 pkgdesc="Building part of the OpenSUSE Build Service, osc-build - git version"
 url="http://build.opensuse.org"

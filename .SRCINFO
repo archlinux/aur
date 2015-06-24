@@ -1,6 +1,6 @@
 pkgbase = obs-build-git
 	pkgdesc = Building part of the OpenSUSE Build Service, osc-build - git version
-	pkgver = 2.0_407.g1eead7d
+	pkgver = 2.5.0_325.g402588e
 	pkgrel = 1
 	url = http://build.opensuse.org
 	arch = any
