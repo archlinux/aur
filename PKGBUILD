@@ -19,7 +19,7 @@ source=(http://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm')
 sha256sums=('a736a1d648ff7ae742b86ff278b2eeb53c61c875037d44f863b1abc78ffdf7b5'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
-            'b45a7d833ee206b9e3d680c935fe5fa7a4b1ddd8a80e304d776e61f9874487af'
+            '6442ec9f0690f743da697a2a65b0784017de501e7f39d5de0879153fbf85dc7a'
             'ad59415f8ac2c623f9c61453caf70bf75b6b14db2f09807e4ea339a2dc740be9')
 
 package() {
