@@ -1,8 +1,7 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
-pkgname=acousticbrainz-client-git
-_pkgname=acousticbrainz-client
+pkgname=acousticbrainz-client
 _python=python
-pkgver=0.1.r2.g366bdd1
+pkgver=0.1
 pkgrel=1
 pkgdesc="client to upload data to an acousticbrainz server"
 arch=('any')
@@ -10,31 +9,23 @@ url="http://acousticbrainz.org/"
 license=('GPL3')
 depends=('essentia-acousticbrainz' 'python-requests')
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-options=()
-source=("git+https://github.com/MTG/$_pkgname.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
+conflicts=('acousticbrainz-client-git')
+source=("https://github.com/MTG/$pkgname/archive/${pkgver}.tar.gz")
+sha256sums=('cc5b40591ecf54fb5f3c185fc0e9f350a6a29e9e38ba81a0175641e2e570caba')
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   # we have that in essentia-acousticbrainz
   sed -i -e "/streaming_extractor_music/d" setup.py
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   $_python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   $_python setup.py install --root="$pkgdir/" --optimize=1
 }
 
