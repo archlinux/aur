@@ -10,6 +10,7 @@ pkgbase = nuclide-server
 	makedepends = git
 	depends = nodejs
 	depends = python2
+	depends = watchman
 	noextract = nuclide-server-0.0.21.tgz
 	source = http://registry.npmjs.org/nuclide-server/-/nuclide-server-0.0.21.tgz
 	source = LICENSE-0.0.21::https://github.com/facebook/nuclide/raw/v0.0.21/LICENSE

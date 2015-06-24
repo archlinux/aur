@@ -7,7 +7,7 @@ pkgdesc="Server-side functionality required by Nuclide to support remote file ed
 arch=('i686' 'x86_64')
 url="http://nuclide.io"
 license=('CUSTOM')
-depends=('nodejs' 'python2')
+depends=('nodejs' 'python2' 'watchman')
 makedepends=('npm' 'git')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
         LICENSE-$pkgver::https://github.com/facebook/nuclide/raw/v$pkgver/LICENSE)
