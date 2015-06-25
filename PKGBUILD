@@ -7,13 +7,14 @@
 
 pkgname=atom-editor
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
 license=('MIT')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 makedepends=('git' 'npm')
+conflicts=('atom-editor-bin' 'atom-editor-git')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
         'atom-python.patch')
 sha256sums=('87f254bcc306445c5e8873e9151aa376842a1b097c00caca34bb64a6394103c4'
