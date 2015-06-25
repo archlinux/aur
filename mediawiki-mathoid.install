@@ -1,0 +1,5 @@
+function post_install {
+    echo " >> You can start/enable mathoid.service now."
+    echo " >> To configure port and interface (recommended to choose localhost) edit"
+    echo " >> the /usr/share/webapps/mediawiki/services/mathoid/config.yaml file."
+}

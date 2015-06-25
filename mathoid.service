@@ -1,0 +1,12 @@
+[Unit]
+Description=Mathoid Server
+After=network.target
+
+[Service]
+User=nobody
+Type=Simple
+ExecStart=/usr/bin/node /usr/share/webapps/mediawiki/services/mathoid/server.js
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

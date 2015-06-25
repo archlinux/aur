@@ -1,0 +1,22 @@
+pkgbase = mediawiki-mathoid-git
+	pkgdesc = Service for creating MathMl and SVGs.
+	pkgver = 0.2.4.r1713.g1706720
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Mathoid
+	install = mediawiki-mathoid.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	optdepends = mediawiki-math: Extension that can use Mathoid.
+	provides = mediawiki-mathoid
+	conflicts = mediawiki-mathoid
+	backup = usr/share/webapps/mediawiki/services/mathoid/config.yaml
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/services/mathoid
+	source = mathoid.service
+	sha256sums = SKIP
+	sha256sums = 09b0d397d7fd7045aa8c9c0ff44a60a3ee4428faef27eab25dd3f8484504206a
+
+pkgname = mediawiki-mathoid-git
+
