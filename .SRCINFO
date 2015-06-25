@@ -1,0 +1,14 @@
+pkgbase = bashate
+	pkgdesc = A pep8 equivalent for bash scripts
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/openstack-dev/bashate
+	arch = any
+	license = Apache
+	makedepends = setuptools
+	depends = python
+	source = http://pypi.python.org/packages/source/b/bashate/bashate-0.2.0.tar.gz
+	md5sums = 809b2eb1d7a5aea83f6ef64eefdcfef6
+
+pkgname = bashate
+
