@@ -1,0 +1,17 @@
+pkgbase = perl-http-cookiejar
+	pkgdesc = A minimalist HTTP user agent cookie jar
+	pkgver = 0.006
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTTP-CookieJar
+	arch = any
+	license = Apache 2.0
+	depends = perl
+	depends = perl-http-date
+	depends = perl-time-mock
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.006.tar.gz
+	sha1sums = 46aa70384ab71292dec7e783518fb6d5474d74b0
+
+pkgname = perl-http-cookiejar
+
