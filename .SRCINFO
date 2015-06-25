@@ -1,0 +1,15 @@
+pkgbase = jinstall-git
+	pkgdesc = Automated file installer
+	pkgver = r7.eaaebaf
+	pkgrel = 1
+	url = https://joel.porquet.org/wiki/hacking/jinstall/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = pdmenu
+	source = jinstall-git::git+https://joel.porquet.org/cgit/cgit.cgi/jinstall.git/
+	md5sums = SKIP
+
+pkgname = jinstall-git
+
