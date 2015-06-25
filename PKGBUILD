@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=racket-git
-pkgver=6.2.0.4.r20150624.9931d5e
+pkgver=6.2.0.5.r20150625.290020c
 pkgrel=1
 pkgdesc="Minimal Racket installation, without useless DrRacket, from git"
 arch=('i686' 'x86_64')
