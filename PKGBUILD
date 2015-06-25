@@ -12,9 +12,9 @@
 
 pkgbase=linux-libre-lts-grsec   # Build kernel with lts-grsec localname
 _pkgbasever=3.14-gnu
-_pkgver=3.14.44-gnu
+_pkgver=3.14.45-gnu
 _grsecver=3.1
-_timestamp=201506082249
+_timestamp=201506232103
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -57,9 +57,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community_grsecurity.patch.sig")
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            '684af3ce9116a1e3f099c1fe4a85b13105777637def19db0c0100cbf9952a0cd'
+            'da3c8b1a1104e23e2bcb8b4649fc86cae6c9bd32760e176b37142708982e3c67'
             'SKIP'
-            'e58c9fbd28e8b7932f342022061cc09f344675ed5aae9275172d84bac5bd68de'
+            '98b7a7e5429568df64abf6871f0c37831e661c0b08622dce6c4636decc6760ce'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
