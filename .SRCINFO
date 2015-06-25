@@ -1,0 +1,20 @@
+pkgbase = paxd-git
+	pkgdesc = PaX exception daemon
+	pkgver = 10.r4.g2e45708
+	pkgrel = 1
+	url = https://github.com/thestinger/paxd/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = paxd
+	conflicts = paxd
+	backup = etc/paxd.conf
+	source = git://github.com/thestinger/paxd
+	source = 10-enable-pax.conf
+	md5sums = SKIP
+	md5sums = a40677d2cd39ada4c2560927c67e0ea2
+
+pkgname = paxd-git
+
