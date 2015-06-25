@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-gtk3-bzr
-pkgver=r14202
+pkgver=r14219
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
@@ -10,9 +10,9 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('aspell' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'imagemagick'
 	 'desktop-file-utils' 'gdl>=3.8.0.25' 'gtkmm3' 'python2'
-	 'popt' 'dbus-glib' 'libcdr' 'libvisio')
+	 'popt' 'dbus-glib' 'libcdr' 'libvisio' 'python2')
 optdepends=('python2-numpy: some extensions'
-            'python-lxml: some extensions and filters'
+            'python2-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
  	    'gtkspell3: for spelling'
 	    'ruby: for simplepath extension')
@@ -40,7 +40,7 @@ prepare() {
   sed -i 's|python -c |python2 -c|g' share/extensions/uniconv*.py
   sed -i 's|"python"|"python2"|g' src/main.cpp
   sed -i '1s|pytho\>n|python2|' share/extensions/ink2canvas/svg.py
-  sed -i '1s|python\>|python2|' share/extensions/ink2canvas/canvas.py
+  sed -i '1s|pytho\>n|python2|' share/extensions/ink2canvas/canvas.py
 }
 
 build() {
