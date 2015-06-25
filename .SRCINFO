@@ -1,0 +1,16 @@
+pkgbase = usbview2
+	pkgdesc = USB Viewer
+	pkgver = 0.4a
+	pkgrel = 1
+	url = http://usbview2.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = gtk2
+	depends = libusb-compat
+	source = http://downloads.sourceforge.net/project/usbview2/usbview2/v0_4a/usbview2-v0_4a.tar.gz
+	md5sums = 42f4e7ee90088e433050b7738a3df145
+
+pkgname = usbview2
+
