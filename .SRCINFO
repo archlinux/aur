@@ -1,6 +1,6 @@
 pkgbase = pyhn
 	pkgdesc = Hacker News command line client
-	pkgver = 0.2.7
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/pyhn/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pyhn
 	makedepends = python2-urwid
 	makedepends = python2-beautifulsoup4
 	makedepends = python2-isit
-	source = http://pypi.python.org/packages/source/p/pyhn/pyhn-0.2.7.tar.gz
-	md5sums = 402823eae417be5f6e5f481a35e74a55
+	source = http://pypi.python.org/packages/source/p/pyhn/pyhn-0.3.4.tar.gz
+	md5sums = 2c4cd60c17a0a5e3933470d2dfda77ad
 
 pkgname = pyhn
 	pkgdesc = Hacker News command line client (Python3.x)
