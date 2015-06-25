@@ -105,7 +105,6 @@ _package() {
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
-  provides=("linux=${_basekernel}")
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
@@ -154,10 +153,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  provides=("linux-headers=${_basekernel}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -275,11 +270,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  provides=("linux-docs=${_basekernel}")
 
   cd "${srcdir}/${_srcname}"
 
