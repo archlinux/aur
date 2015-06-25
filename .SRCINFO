@@ -1,8 +1,8 @@
 pkgbase = asciiportal-git
 	pkgdesc = Text based puzzle game inspired by the popular video game.
-	pkgver = 20110531
+	pkgver = 20150625
 	pkgrel = 1
-	url = http://cymonsgames.com/asciiportal/
+	url = https://github.com/cymonsgames/ASCIIpOrtal
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,6 +14,8 @@ pkgbase = asciiportal-git
 	provides = asciiportal
 	conflicts = asciiportal
 	conflicts = asciiportal-mod
+	source = git://github.com/cymonsgames/ASCIIpOrtal.git
+	md5sums = SKIP
 
 pkgname = asciiportal-git
 
