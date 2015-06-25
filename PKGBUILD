@@ -6,7 +6,7 @@ _extname=Scribunto
 _basepkgname=scribunto
 
 pkgname=mediawiki-$_basepkgname-git
-pkgver=r812.1a0221b
+pkgver=r813.670c49b
 pkgrel=1
 pkgdesc="An extension to support script enabled content (e.g. lua)."
 source=("git+https://gerrit.wikimedia.org/r/mediawiki/extensions/$_extname")
@@ -30,6 +30,6 @@ package() {
   # Target extension directory of MediaWiki:
   _extdir="$pkgdir/usr/share/webapps/mediawiki/extensions"
   mkdir -p "$_extdir"
-  rm -r $_extname/.git
   mv $_extname "$_extdir/"
+  rm -r $_extdir/$_extname/.git
 }
