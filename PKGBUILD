@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=micropython
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, unix version."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('readline' 'libffi')
 makedepends=('python')
 source=(https://github.com/micropython/micropython/archive/v$pkgver.tar.gz)
-md5sums=('bc84f9f2ae2ef782b490a6afc3a2a666')
+md5sums=('77c76aa236f0720b70a0fe593f72172c')
 
 build() {
   cd "$pkgname-$pkgver/unix"
