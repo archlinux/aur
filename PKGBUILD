@@ -25,7 +25,7 @@ package() {
 	username="$(id | sed -e 's/[^(]*(\([^)]*\)).*/\1/')"
 	cd "${pkgname}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
-	install -Dm644 "data/${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
-	install -Dm600 "data/${pkgname}.data" "$pkgdir/${HOME}/.config/regd/data/${pkgname}.data"
+	install -Dm644 -o $username "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
+	install -Dm644 -o $username "data/${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
+	install -Dm600 -o $username "data/${pkgname}.data" "$pkgdir/${HOME}/.config/${pkgname}/data/${pkgname}.data"
 }
