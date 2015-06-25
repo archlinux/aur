@@ -1,0 +1,22 @@
+pkgbase = perl-devel-findperl
+	pkgdesc = Find the path to your perl
+	pkgver = 0.014
+	pkgrel = 1
+	url = https://metacpan.org/release/Devel-FindPerl
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-io>=0
+	checkdepends = perl-test-simple>=0
+	checkdepends = perl-pathtools>=0
+	depends = perl>=5.6
+	depends = perl-scalar-list-utils>=0
+	depends = perl-exporter>=5.57
+	depends = perl-pathtools>=0
+	depends = perl-carp>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Devel-FindPerl-0.014.tar.gz
+	sha256sums = 01959448f4bfdc6fedbda1e80db810ad6e31b667a171d782031ae5fa742b495b
+
+pkgname = perl-devel-findperl
+
