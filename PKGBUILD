@@ -12,9 +12,9 @@
 
 pkgbase=linux-libre-grsec-knock   # Build kernel with -grsec-knock localname
 _pkgbasever=4.0-gnu
-_pkgver=4.0.5-gnu
+_pkgver=4.0.6-gnu
 _grsecver=3.1
-_timestamp=201506171322
+_timestamp=201506232104
 _knockpatchver=3.18_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -55,9 +55,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community_grsecurity.patch.sig")
 sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
-            '5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172'
+            '5cfcee748701771bb2ad46887c6b912fedfffe84bba42ad9e051be54f03a63c9'
             'SKIP'
-            '388b5fed2daa7bc00631fca068ea1543f586ce284cb77dd132a11cde14e44427'
+            'fda2ca98134d13c60fc9acc1be5e901d516d0e32975f1c8fb3c7eaedea828209'
             'SKIP'
             '93a1610c203ea4c187ac5b50dce105fac86df914b1406e1d85df5857d36201c9'
             'SKIP'
