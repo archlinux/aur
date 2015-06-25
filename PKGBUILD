@@ -1,9 +1,9 @@
 # Maintainer: Dis McCarthy <aurarch@sigkill.net>
 # Contributor: Stephan Conrad <stephan.conrad@gmail.com
 pkgname=kimchi
-_gitname=kimchi-1.4.1
-pkgver=1.4.1
-pkgrel=6
+_gitname=kimchi-1.5.0
+pkgver=1.5.0
+pkgrel=2
 
 pkgdesc="HTML5 management for KVM"
 
@@ -40,6 +40,7 @@ depends=('python2-cherrypy'
   'novnc'
   'sudo'
   'python2-functools32'
+  'python2-configobj'
 )
 
 
@@ -50,18 +51,20 @@ backup=('etc/kimchi/kimchi.conf')
 
 #Git: "git+git://github.com/kimchi-project/kimchi.git#tag=${pkgver}"
 source=(
- "https://github.com/kimchi-project/kimchi/archive/1.4.1.tar.gz"
+ "https://github.com/kimchi-project/kimchi/archive/1.5.0.tar.gz"
  "python2.patch"
  "proxy.patch"
  "kimchid.service"
  "arch_support.patch"
+ "psutil.patch"
 )
 
-md5sums=('92be5f41bd08a7a769880767bf03a435'
+md5sums=('b71bbd4bec3d8207b40acb6a6c176ab4'
          '1106f1f362e0b7f01409242486b2c495'
          'd8b6bfc1b210cc819dac46931aaecd7f'
          '356d68fd7735c826c36cbde651ebd675'
-         '3cfc5d399b56f9bdec6a53244fa3d591')
+         '3cfc5d399b56f9bdec6a53244fa3d591'
+         '0a5317842eca14116336f4c656f66301')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -71,6 +74,8 @@ build() {
   patch -p1 -i ../proxy.patch
   msg "Patching for Arch support"
   patch -p1 -i ../arch_support.patch
+  msg "Patching for psutil problems"
+  patch -p1 -i ../psutil.patch
   #./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var PYTHON=/usr/bin/python3
   PYTHON=/usr/bin/python2.7 ./autogen.sh --system
   make
