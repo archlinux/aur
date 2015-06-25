@@ -3,9 +3,9 @@
 # Upstream name of extension:
 _extname=ExternalLinks
 # Variant valid as package name without suffix and prefix
-_extpkgname=externallinks
+_basepkgname=externallinks
 
-pkgname=mediawiki-$_extpkgname-git
+pkgname=mediawiki-$_basepkgname-git
 pkgver=v1.23.r0.b30200f
 pkgrel=1
 pkgdesc="An extension for listing and validating external links"
