@@ -1,0 +1,21 @@
+pkgbase = yaourt-gui-manjaro
+	pkgdesc = A bash GUI for yaourt - Manjaro theming
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = http://www.alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/
+	arch = any
+	license = GPL
+	depends = yaourt
+	depends = sudo
+	depends = xdg-utils
+	depends = desktop-file-utils
+	optdepends = pacmind
+	optdepends = pacman-color
+	optdepends = aurvote
+	provides = yaourt-gui
+	conflicts = yaourt-gui
+	source = https://www.dropbox.com/s/u7h8yi7n4rqimp6/yaourt-gui-manjaro-1.1.5.tar.gz
+	sha256sums = e5beb0a3dfc2eb73b29b142f78a88abf4ca25178f809fb18d0c9ee865050c7c4
+
+pkgname = yaourt-gui-manjaro
+
