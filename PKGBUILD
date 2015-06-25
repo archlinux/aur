@@ -1,5 +1,5 @@
 pkgname="mcabber-module-external-editor"
-pkgver=13.7eabded
+pkgver=19.2f34ecd
 pkgdesc="Write multiline messages in mcabber using editor"
 pkgrel=1
 url="https://github.com/kovetskiy/mcabber-external-editor"
@@ -17,7 +17,6 @@ pkgver() {
 build() {
     cd "$srcdir/mcabber-external-editor"
 
-    cmake .
     make
 }
 
