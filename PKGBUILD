@@ -9,6 +9,7 @@ url="http://whatsapp-desktop.com/"
 license=('MIT')
 depends=('libxtst' 'gtk2' 'libnotify' 'alsa-lib' 'gconf' 'gcc-libs' 'nss')
 makedepends=('npm')
+conflicts=('whatsapp-desktop' 'whatsapp-desktop-bin')
 optdepends=()
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
