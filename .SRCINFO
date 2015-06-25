@@ -1,5 +1,5 @@
 pkgbase = linux-xps13-alt
-	pkgver = 4.0.5
+	pkgver = 4.0.6
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-xps13-alt
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.6.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -42,20 +42,20 @@ pkgname = linux-xps13-alt
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-xps13-alt=4.0.5
+	provides = kernel26-xps13-alt=4.0.6
 	conflicts = kernel26-xps13-alt
 	replaces = kernel26-xps13-alt
 	backup = etc/mkinitcpio.d/linux-xps13-alt.preset
 
 pkgname = linux-xps13-alt-headers
 	pkgdesc = Header files and scripts for building modules for Linux-xps13-alt kernel
-	provides = kernel26-xps13-alt-headers=4.0.5
+	provides = kernel26-xps13-alt-headers=4.0.6
 	conflicts = kernel26-xps13-alt-headers
 	replaces = kernel26-xps13-alt-headers
 
 pkgname = linux-xps13-alt-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-xps13-alt kernel
-	provides = kernel26-xps13-alt-docs=4.0.5
+	provides = kernel26-xps13-alt-docs=4.0.6
 	conflicts = kernel26-xps13-alt-docs
 	replaces = kernel26-xps13-alt-docs
 

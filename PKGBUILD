@@ -13,7 +13,7 @@
 
 pkgbase=linux-xps13-alt     # Build kernel with a different name
 _srcname=linux-4.0
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
