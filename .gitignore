@@ -1,0 +1,5 @@
+pkg/
+src/
+visual-pdf-diff/
+*.pkg.tar.xz
+*~
