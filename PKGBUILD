@@ -3,7 +3,7 @@
 
 pkgname=scanbd
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scanner button daemon looking for scanner button pressed"
 arch=('i686' 'x86_64')
 url="http://scanbd.sourceforge.net/"
@@ -54,6 +54,6 @@ package() {
   sed -i 's@\(        group   = \)lp$@\1scanner@'   "${pkgdir}/etc/scanbd/scanbd.conf"
   sed -i 's@/var\(/run/scanbd.pid\)@\1@'            "${pkgdir}/etc/scanbd/scanbd.conf"
   sed -i 's@\(debug-level =\)7$@\1 2@'              "${pkgdir}/etc/scanbd/scanbd.conf"
-  sed -i 's@\(SANE_CONFIG_DIR=\)/usr/local\(/etc/scanbd\)@\1\2/sane.d@'  "${pkgdir}/etc/scanbd/scanbd.conf"
+  sed -i 's@\(SANE_CONFIG_DIR=\)\(/etc/scanbd\)@\1\2/sane.d@'  "${pkgdir}/etc/scanbd/scanbd.conf"
 }
 
