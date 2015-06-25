@@ -1,0 +1,19 @@
+pkgbase = perl-crypt-tea_pp
+	pkgdesc = Pure Perl Implementation of the Tiny Encryption Algorithm
+	pkgver = 0.0308
+	pkgrel = 1
+	url = https://metacpan.org/release/Crypt-TEA_PP
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl>=5.10
+	depends = perl>=5.10
+	depends = perl-scalar-list-utils>=1.38
+	depends = perl-carp>=1.3301
+	depends = perl-scalar-util-numeric>=0.40
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAHIY/Crypt-TEA_PP-0.0308.tar.gz
+	sha256sums = 12b4d8760cec36b94963432b38556d0256a1097d7d585fc4c07cacecf423fced
+
+pkgname = perl-crypt-tea_pp
+
