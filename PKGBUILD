@@ -2,14 +2,14 @@
 
 pkgname=fwupdate-git
 pkgver=0.4.r97
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides user access to read the EFI System Resource Table (ESRT) - Git version"
 url="https://github.com/rhinstaller/fwupdate"
 license=("GPL2")
 arch=("i686" "x86_64")
 provides=("fwupdate" "fwupdate-git")
 conflicts=("fwupdate")
-depends=("efivar")
+depends=("efivar>=0.20")
 makedepends=("git" "pesign" "gnu-efi-libs" "gettext" "popt" "pkgconfig")
 source=("fwupdate::git+https://github.com/rhinstaller/fwupdate")
 md5sums=('SKIP')
