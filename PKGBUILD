@@ -7,7 +7,7 @@ _pkgname=libx264
 pkgname=lib32-$_pkgname
 _pkgbase=x264
 pkgver=144.20150223
-pkgrel=1
+pkgrel=2
 pkgdesc='Free library for encoding H264/AVC video streams (32 bit)'
 arch=('x86_64')
 url='http://www.videolan.org/developers/x264.html'
@@ -29,7 +29,8 @@ pkgver() {
 build() {
     cd ${srcdir}/${_pkgbase}
     ./configure --prefix=/usr --libdir=/usr/lib32 --host=i686-linux-gnu \
-	--enable-shared
+	--enable-shared \
+	--enable-pic
 
     make
 }
