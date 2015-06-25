@@ -1,0 +1,19 @@
+pkgbase = gittify
+	pkgdesc = Customized bash environment, making git folders more friendly.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/momeni/gittify
+	install = gittify.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = git>=1.7.11
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = gawk
+	source = https://github.com/momeni/gittify/archive/v1.0.0.tar.gz
+	sha512sums = 10d789459e86f110f3f75d7217fb168438c245da68ad7f895535b36caf1fc8f7d53e0478061b312d875e58911121b8e15d4823e73e98b659490f3cdc1a15687f
+
+pkgname = gittify
+
