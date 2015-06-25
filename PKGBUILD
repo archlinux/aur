@@ -34,7 +34,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'input_mt_get_slot_by_key.patch')
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
+            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
             'SKIP'
             'bd84b917fdd0b167e6cb3c3f0e59a773bc43a22d5fbee197ab2d4ba078093630'
             '1897de88b48bbafb4912a140b772e70ebaad6ec1348e25972be200743224efca'
