@@ -1,7 +1,7 @@
 pkgbase = whatsapp-desktop
-	pkgdesc = Simple & beautiful desktop client for WhatsApp
+	pkgdesc = Simple & beautiful (Unofficial) desktop client for WhatsApp
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = http://whatsapp-desktop.com/
 	arch = i686
 	arch = x86_64

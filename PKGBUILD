@@ -2,8 +2,8 @@
 pkgname=whatsapp-desktop
 _pkgname=WhatsApp-Desktop
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="Simple & beautiful desktop client for WhatsApp"
+pkgrel=4
+pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
 arch=('i686' 'x86_64')
 url="http://whatsapp-desktop.com/"
 license=('MIT')
