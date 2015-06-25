@@ -1,0 +1,13 @@
+pkgbase = cidrmerge
+	pkgdesc = CIDR merging with white listing
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://cidrmerge.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://downloads.sourceforge.net/project/cidrmerge/cidrmerge/cidrmerge-1.5.3/cidrmerge-1.5.3.tar.gz
+	md5sums = d273347b639d11fcb65873c3c3362057
+
+pkgname = cidrmerge
+
