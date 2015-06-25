@@ -1,0 +1,16 @@
+pkgbase = open-fuse-iso
+	pkgdesc = Automatic userspace mounting/unmounting of image files through the open-iso script
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://forum.manjaro.org/index.php?topic=9306.0
+	install = open-fuse-iso.install
+	arch = any
+	license = GPL
+	makedepends = binutils
+	depends = fuseiso
+	depends = libnotify
+	source = https://www.dropbox.com/s/o1okqgx1apgqp8i/open-fuse-iso
+	source = https://www.dropbox.com/s/wkd70lo3at67oiv/open-fuse-iso.desktop
+
+pkgname = open-fuse-iso
+
