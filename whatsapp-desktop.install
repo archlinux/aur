@@ -1,9 +1,11 @@
-
 post_install() {
-    /opt/WhatsAppForDesktop/after-install.sh
+    ln -sf /opt/WhatsAppForDesktop/UnofficialWhatsApp /usr/bin/whatsappfordesktop
+    desktop-file-install /opt/WhatsAppForDesktop/whatsappfordesktop.desktop
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
 
 post_remove() {
-    rm -f /usr/local/bin/whatsappfordesktop
+    rm -f /usr/bin/whatsappfordesktop
     rm -f /usr/share/applications/whatsappfordesktop.desktop
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
