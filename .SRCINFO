@@ -1,0 +1,35 @@
+pkgbase = ring-daemon-git
+	pkgdesc = SIP/IAX2 compatible softphone for Linux, based on a DHT (formerly known as SFLphone)
+	pkgver = 20150623
+	pkgrel = 1
+	url = http://ring.cx
+	arch = i686
+	arch = x86_64
+	groups = ring
+	license = GPL3
+	makedepends = git
+	makedepends = boost
+	depends = opendht-git
+	depends = yaml-cpp
+	depends = alsa-lib
+	depends = libpulse
+	depends = jack
+	depends = libsamplerate
+	depends = libsndfile
+	depends = dbus-c++
+	depends = ffmpeg
+	depends = udev
+	depends = gnutls
+	depends = expat
+	depends = gsm
+	depends = speex
+	depends = speexdsp
+	depends = opus
+	depends = libupnp
+	provides = ring-daemon
+	conflicts = ring-daemon
+	source = git+https://gerrit-ring.savoirfairelinux.com/ring-daemon
+	md5sums = SKIP
+
+pkgname = ring-daemon-git
+
