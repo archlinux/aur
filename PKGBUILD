@@ -1,4 +1,4 @@
-# Maintainer: Austin Haedicke	<austin.haedicke@gmail.com>
+# Maintainer: Austin Haedicke 	<ausitn.haedicke@gmail.com>
 #				<gtbjj on #archlinux irc>
 
 _pkgname=phoronix-test-suite
@@ -9,19 +9,22 @@ pkgdesc="The most comprehensive testing and benchmarking platform available for 
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.phoronix-test-suite.com/"
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'python' 'ruby')
+depends=('ruby' 'python')
 makedepends=('git')
-optdepends=('php' 'php-gtk' 'php-curl' 'php-gd')
-source=("https://github.com/phoronix-test-suite/phoronix-test-suite.git")
+optdepends=('php')
+install=$pkgname.install
+source=("git://github.com/phoronix-test-suite/phoronix-test-suite.git")
 md5sums=('SKIP')
 
+
 pkgver() {
-  cd $_pkgname
-  git describe --always | sed -e 's|-|.|g'
+    cd $_pkgname
+    git describe --always | sed -e 's|-|.|g'
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  mkdir -p $pkgdir/usr/bin
-  ./install-sh ${pkgdir}/usr
+    cd ${srcdir}/$_pkgname
+    mkdir -p ${pkgdir}/usr/bin
+    ./install-sh ${pkgdir}/usr 
 }
+
