@@ -1,0 +1,18 @@
+pkgbase = adsf
+	pkgdesc = A tiny web server that you can launch instantly in any directory.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://stoneship.org/software/adsf/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby-rack
+	provides = ruby-adsf
+	conflicts = ruby-adsf
+	noextract = adsf-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/adsf-1.2.0.gem
+	sha256sums = a92d7310c3c27418ee5f6126df9cd20a95d3e4c277c1f7f24a4cc7102e720b62
+
+pkgname = adsf
+
