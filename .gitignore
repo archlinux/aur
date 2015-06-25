@@ -1,0 +1,7 @@
+pkg/
+src/
+Cura/
+CuraEngine/
+Uranium/
+*.pkg.tar.xz
+cura.log
