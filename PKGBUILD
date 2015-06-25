@@ -10,14 +10,9 @@ url="http://mrbayes.csit.fsu.edu"
 depends=('readline')
 optdepends=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
 source=(http://downloads.sourceforge.net/mrbayes/${pkgname}-${pkgver}.tar.gz)
-md5sums=('cbd21bf0497429dd9a912c28ce78812a')
+md5sums=('a85a63e5382bc7ea36b1ce1c2138ee6e')
 
 build() {
-  #MrBayes requires specific LDFLAGS and CFLAGS specified in the makefile. Thus we unset our own.
-  #unset LDFLAGS
-  #unset CFLAGS
-  #unset CCFLAGS
-
   cd ${srcdir}/src
   autoconf
   #Build with beagle-lib support if available:

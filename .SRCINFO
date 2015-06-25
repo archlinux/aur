@@ -9,7 +9,7 @@ pkgbase = mrbayes
 	depends = readline
 	optdepends = beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep
 	source = http://downloads.sourceforge.net/mrbayes/mrbayes-3.2.5.tar.gz
-	md5sums = cbd21bf0497429dd9a912c28ce78812a
+	md5sums = a85a63e5382bc7ea36b1ce1c2138ee6e
 
 pkgname = mrbayes
 
