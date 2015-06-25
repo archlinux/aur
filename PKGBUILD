@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-lts-knock # Build stock -lts-knock kernel
 _pkgbasever=3.14-gnu
-_pkgver=3.14.44-gnu
+_pkgver=3.14.45-gnu
 _knockpatchver=3.16_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -52,7 +52,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community.patch.sig")
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            '684af3ce9116a1e3f099c1fe4a85b13105777637def19db0c0100cbf9952a0cd'
+            'da3c8b1a1104e23e2bcb8b4649fc86cae6c9bd32760e176b37142708982e3c67'
             'SKIP'
             '70cbe962aa01989ffa83490bb0765d6e4c781f6133dc8d768d84bd6716ac0209'
             'SKIP'
