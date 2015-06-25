@@ -2,14 +2,14 @@ pkgbase = quirky
 	pkgdesc = Destined to be a real IRC client for both light and heavyweight IRC users.
 	pkgver = 1
 	pkgrel = 1
-	url = https://github.com/solus-project/quirky
+	url = https://gitlab.com/ufee1dead/quirky
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = vala
 	depends = gtk3<=3.14
-	source = https://github.com/solus-project/quirky/archive/v1.tar.gz
-	sha256sums = 4ed61bdfac171cd61eb9976ad9d1afc7024bccd84a62a981054b3dc2aaa9da21
+	source = https://gitlab.com/ufee1dead/quirky/repository/archive.tar.gz?ref=v1
+	sha256sums = 3f14ab8ade68e04a7fe7fb19d23050d437941bb626ee32f9f81482c73a143eb7
 
 pkgname = quirky
 
