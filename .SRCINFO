@@ -1,0 +1,14 @@
+pkgbase = vncrack
+	pkgdesc = Online/Offline VNC password cracker.
+	pkgver = 1.21
+	pkgrel = 2
+	url = http://phenoelit-us.org/vncrack
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = vncrack
+	source = vncrack.tar.gz::http://www.phenoelit.org/vncrack/vncrack_src-1.21.tar.gz
+	md5sums = 4e19a6f4311b1fd99274f587ca51e920
+
+pkgname = vncrack
+
