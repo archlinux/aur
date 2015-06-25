@@ -4,13 +4,13 @@
 pkgname=python2-deepin-ui
 pkgver=1.1.20141229194712
 _srcdirname=deepin-ui-1.1+20141229194712~5a86faec50
-pkgrel=1
+pkgrel=2
 pkgdesc='UI toolkit for Linux Deepin'
 arch=('i686' 'x86_64')
 url="https://gitcafe.com/Deepin/deepin-ui"
 license=('GPL3')
 groups=('deepin')
-depends=('python2-deepin-utils' 'python2-deepin-gsettings' 'deepin-pygtk'
+depends=('python2-deepin-utils' 'python2-deepin-gsettings' 'pygtk'
          'python2-scipy' 'glib2' 'python2-cairo' 'python2-imaging'
          'python2-xlib' 'pywebkitgtk' 'libsoup')
 makedepends=('deepin-gettext-tools' 'python2-setuptools' 'webkitgtk')
