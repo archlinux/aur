@@ -25,8 +25,8 @@ pkgver() {
 }
 
 prepare() {
+	local file
 	cd "${srcdir}/${_pkgname}"
-	patch -p1 -i ../scrollback.patch # http://st.suckless.org/patches/st-scrollback.diff
 	sed \
 		-e '/char font/s/= .*/= "Fixed:pixelsize=13:style=SemiCondensed";/' \
 		-e '/char worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|";/' \
@@ -39,6 +39,13 @@ prepare() {
 		-e 's/_BSD_SOURCE/_DEFAULT_SOURCE/' \
 		-i config.mk
 	sed '/@tic/d' -i Makefile
+	for file in "${source[@]}"; do
+		if [[ "$file" != *.diff ]]; then
+			continue
+		fi
+		# add all patches present in source array
+		patch -Np1 <"$SRCDEST/$file"
+	done
 }
 
 build() {
