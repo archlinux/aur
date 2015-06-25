@@ -1,0 +1,16 @@
+pkgbase = vim-iptables
+	pkgdesc = iptables-save/restore syntax highlighter
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1425
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = iptables.tar.bz2::http://www.vim.org/scripts/download_script.php?src_id=21999
+	source = ftdetect.vim
+	md5sums = deeeb182206177786f40bf60a78c8d43
+	md5sums = 7e9ef051f5a11e3382d0a1c378d0df00
+
+pkgname = vim-iptables
+
