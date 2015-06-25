@@ -1,0 +1,23 @@
+pkgbase = coq
+	pkgdesc = Formal proof management system. Full version that includes CoqIDE.
+	pkgver = 8.4pl6
+	pkgrel = 1
+	url = http://coq.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml-findlib
+	makedepends = lablgtk2
+	depends = gtk2
+	depends = ocaml
+	depends = camlp5-transitional
+	depends = gtksourceview2
+	optdepends = coq-doc
+	options = !emptydirs
+	source = http://coq.inria.fr/distrib/V8.4pl6/files/coq-8.4pl6.tar.gz
+	md5sums = 2334a98b64578cb81d2b4127e327b368
+	sha1sums = c89525295659a805661ef91da24ecfb94e226953
+	sha256sums = a540a231a9970a49353ca039f3544616ff86a208966ab1c593779ae13c91ebd6
+
+pkgname = coq
+
