@@ -1,0 +1,35 @@
+diff -r 46d1182d45be mcabber/mcabber/compl.c
+--- a/mcabber/mcabber/compl.c	Sun Feb 15 17:07:05 2015 +0100
++++ b/mcabber/mcabber/compl.c	Thu Jun 25 17:02:54 2015 +0600
+@@ -47,8 +47,6 @@
+   GList *next;          // pointer to next completion to try
+ } compl;
+ 
+-typedef GSList *(*compl_handler_t) (void); // XXX userdata? *dynlist?
+-
+ // Category structure
+ typedef struct {
+   guint flags;
+@@ -94,7 +92,7 @@
+   return compl;
+ }
+ 
+-static inline void register_builtin_cat(guint c, compl_handler_t dynamic) {
++void register_builtin_cat(guint c, compl_handler_t dynamic) {
+   Categories[c-1].flags   = COMPL_CAT_BUILTIN | COMPL_CAT_ACTIVE;
+   Categories[c-1].words   = NULL;
+   Categories[c-1].dynamic = dynamic;
+diff -r 46d1182d45be mcabber/mcabber/compl.h
+--- a/mcabber/mcabber/compl.h	Sun Feb 15 17:07:05 2015 +0100
++++ b/mcabber/mcabber/compl.h	Thu Jun 25 17:02:54 2015 +0600
+@@ -43,6 +43,10 @@
+ void  compl_del_category(guint id);
+ #endif
+ 
++typedef GSList *(*compl_handler_t) (void); // XXX userdata? *dynlist?
++
++void register_builtin_cat(guint c, compl_handler_t dynamic);
++
+ void    compl_add_category_word(guint categ, const gchar *command);
+ void    compl_del_category_word(guint categ, const gchar *word);
+ GSList *compl_get_category_list(guint categ, guint *dynlist);
