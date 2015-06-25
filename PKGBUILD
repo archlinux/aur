@@ -6,7 +6,7 @@
 # https://github.com/sjug/arch
 
 pkgname=atom-editor
-pkgver=0.211.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
@@ -16,10 +16,10 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nod
 makedepends=('git' 'npm')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
         'atom-python.patch')
-sha256sums=('70479303f11430827959ce8848975b30dabcaad8e83f6120801df82fb9314dc7'
+sha256sums=('87f254bcc306445c5e8873e9151aa376842a1b097c00caca34bb64a6394103c4'
             '9a1f4e2efa7c0b2fb053d27979b0231f75f1f0d928e06413ddebeadd5d7ed46c')
 
-_getref='1a3441a503874c67085221b8e227bb01216dd282'
+_getref='38745761e2b67d613d7104808a5c8f50b0abf474'
 _gitbranch='master'
 
 prepare() {
