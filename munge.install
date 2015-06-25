@@ -14,9 +14,9 @@ post_install() {
   passwd -l munge &>/dev/null
 
   # create munge key
-  if [ ! -e /etc/munge/munge.key -a -c /dev/urandom ]; then
+  if [ ! -e /etc/munge/munge.key ] && [ -c /dev/urandom ]; then
     echo -e "\e[34;1m==>\e[39;1m Creating random munge key : /etc/munge/munge.key\e[0m"
-    dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key 2>/dev/null
+    dd if=/dev/urandom bs=1 count=1024 of=/etc/munge/munge.key
     chmod 0400 /etc/munge/munge.key
   else
     if [ -c /dev/urandom ]; then

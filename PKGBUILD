@@ -6,21 +6,21 @@ pkgver=0.5.11
 pkgrel=4
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/munge/"
+url="https://github.com/dun/munge/wiki"
 license=('GPL3' 'LGPL3')
 depends=('openssl')
 optdepends=("zlib: zlib compression support"
 			"bzip2: bzip2 compression support")
 install=$pkgname.install
-source=("http://munge.googlecode.com/files/$pkgname-$pkgver.tar.bz2"
+source=("https://github.com/dun/munge/archive/$pkgname-$pkgver.tar.gz"
         "arch_munge.init"
         "munged-tmpfiles.conf")
-md5sums=('bd8fca8d5f4c1fcbef1816482d49ee01'
+md5sums=('0b00f0a352f9619f205d41a31a2f3f80'
          '668942f323275199d35db5a534d9a80e'
          'b6e6a73c8a678777645ffcdb4b3e9d27')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
   ./configure \
     --prefix=/usr \
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
