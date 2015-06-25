@@ -7,7 +7,7 @@ pkgdesc="Simple & beautiful desktop client for WhatsApp"
 arch=('i686' 'x86_64')
 url="http://whatsapp-desktop.com/"
 license=('MIT')
-depends=()
+depends=('libxtst' 'gtk2' 'libnotify' 'alsa-lib' 'gconf' 'gcc-libs' 'nss')
 makedepends=('npm')
 optdepends=()
 [ "$CARCH" = "i686" ]   && _platform=linux32
