@@ -1,0 +1,19 @@
+pkgbase = mediawiki-scribunto-git
+	pkgdesc = An extension to support script enabled content (e.g. lua).
+	pkgver = r812.1a0221b
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:Scribunto
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	optdepends = lib32-glibc: When using the 32-bit version of included lua binaries
+	optdepends = mediawiki-codeeditor-git: Code editor with scribunto support (diabled by default)
+	provides = mediawiki-
+	conflicts = mediawiki-
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto
+	md5sums = SKIP
+
+pkgname = mediawiki-scribunto-git
+
