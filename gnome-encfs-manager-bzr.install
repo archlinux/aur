@@ -1,0 +1,20 @@
+pkgname=gencfsm
+
+post_install() {
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+  for icons in hicolor ubuntu-mono-light ubuntu-mono-dark Mint-X; do
+    if [ -e "/usr/share/icons/\$icons/index.theme" ]; then
+      gtk-update-icon-cache /usr/share/icons/\$icons 2>/dev/null
+    fi
+  done
+}
+
+pre_upgrade() {
+  if [ -f /usr/share/gconf/schemas/${pkgname}.schemas ]; then
+    gconfpkg --uninstall ${pkgname}
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
