@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('any')
 url='https://github.com/IntelOrca/OpenRCT2'
@@ -32,6 +32,9 @@ package() {
   # Move documentation to /usr/share/doc/openrct2/.
   install -d "$pkgdir/usr/share/doc/openrct2"
   mv "$pkgdir/usr/share/openrct2/"*.txt "$pkgdir/usr/share/doc/openrct2"
+
+  # changelog.txt needs to be symlinked as the executable reads it.
+  ln -sf /usr/share/doc/openrct2/changelog.txt "$pkgdir/usr/share/openrct2/changelog.txt"
 
   # Use root certificates from ArchLinux instead of the ones bundled with
   # OpenRCT2.
