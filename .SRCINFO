@@ -1,0 +1,19 @@
+pkgbase = perl-crypt-xtea_pp
+	pkgdesc = Pure Perl Implementation of the eXtended Tiny Encryption Algorithm
+	pkgver = 0.0106
+	pkgrel = 1
+	url = https://metacpan.org/release/Crypt-XTEA_PP
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl>=5.10
+	depends = perl>=5.10
+	depends = perl-carp>=1.3301
+	depends = perl-scalar-list-utils>=1.38
+	depends = perl-scalar-util-numeric>=0.40
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAHIY/Crypt-XTEA_PP-0.0106.tar.gz
+	sha256sums = b42d85386080b460bdb72a0b3636641f855795b91b5d22052d8818c09aabd9a1
+
+pkgname = perl-crypt-xtea_pp
+
