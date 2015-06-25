@@ -1,13 +1,13 @@
 pkgbase = sddm-acidhub-theme
 	pkgdesc = A hazardous style SDDM theme.
 	pkgver = 0.2
-	pkgrel = 1
-	url = https://www.craft.net.br/
+	pkgrel = 2
+	url = https://acidhub.click/
 	install = sddm-acidhub-theme.install
 	arch = any
 	license = GPL3
 	depends = sddm
-	source = http://web.craft.net.br/downloads/acidhub-0.2.tar.gz
+	source = http://acidhub.click/downloads/acidhub-0.2.tar.gz
 	source = sddm-acidhub-theme.install
 	sha512sums = c4bd4689efacaa17e7c7a67418420e123e963f909f20846b4f0b0f20a4810efd38a36595568f33c4dd49b0d8ddf44d65ac3d64b1c43242259d8139a40f1a1f00
 	sha512sums = fc57feb3cc1ecc7caf187efb0521dea9854f7c4bdeb15c3d960334ea9bf13f1230e1a39a5dccb56fa0f08b840f13607b9d366f7f5b2cb3f96cee921bb7877b8d

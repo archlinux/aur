@@ -1,12 +1,12 @@
-# Maintainer: AcidHub <acidhub@craft.net.br>
+# Maintainer: Acidhub <contact@acidhub.click>
 
 _themename=acidhub
 pkgname=sddm-${_themename}-theme
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A hazardous style SDDM theme.'
 arch=('any')
-url='https://www.craft.net.br/'
+url='https://acidhub.click/'
 license=('GPL3')
 
 depends=('sddm')
@@ -14,7 +14,7 @@ depends=('sddm')
 install=${pkgname}.install
 
 source=(
-	"http://web.craft.net.br/downloads/${_themename}-${pkgver}.tar.gz"
+	"http://acidhub.click/downloads/${_themename}-${pkgver}.tar.gz"
 	"${pkgname}.install"
 )
 sha512sums=('c4bd4689efacaa17e7c7a67418420e123e963f909f20846b4f0b0f20a4810efd38a36595568f33c4dd49b0d8ddf44d65ac3d64b1c43242259d8139a40f1a1f00'
