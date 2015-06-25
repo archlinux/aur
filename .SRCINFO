@@ -1,6 +1,6 @@
 pkgbase = netctl-gui
 	pkgdesc = Qt4/Qt5 GUI for netctl. Also provides a widget for KDE
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = http://arcanis.name/projects/netctl-gui
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = netctl-gui
 	makedepends = extra-cmake-modules
 	makedepends = plasma-framework
 	makedepends = qt5-tools
-	source = https://github.com/arcan1s/netctl-gui/releases/download/V.1.4.5/netctl-gui-1.4.5-src.tar.xz
-	md5sums = 9c1ddad6163290ed3fb52c3d233e1ee3
+	source = https://github.com/arcan1s/netctl-gui/releases/download/V.1.4.6/netctl-gui-1.4.6-src.tar.xz
+	md5sums = aed674e4c465d849c2044f9464c2671c
 
 pkgname = libnetctlgui
 	pkgdesc = Qt5 library which interacts with netctl. A part of netctl-gui
@@ -26,7 +26,7 @@ pkgname = libnetctlgui
 pkgname = netctlgui-helper
 	pkgdesc = Helper daemon for netctl-gui. A part of netctl-gui
 	install = netctlgui-helper.install
-	depends = libnetctlgui=1.4.5
+	depends = libnetctlgui=1.4.6
 	provides = netctlgui-helper-qt4
 	conflicts = netctlgui-helper-qt4
 	backup = etc/netctl-gui.conf
@@ -35,7 +35,7 @@ pkgname = netctlgui-helper
 pkgname = netctl-gui
 	pkgdesc = Qt5 graphical front-end for netctl. A part of netctl-gui
 	install = netctl-gui.install
-	depends = libnetctlgui=1.4.5
+	depends = libnetctlgui=1.4.6
 	depends = xdg-utils
 	optdepends = plasma-netctl-gui: KF5 widget
 	optdepends = netctlgui-helper: DBus helper daemon
