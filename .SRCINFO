@@ -1,0 +1,21 @@
+pkgbase = mediawiki-math-git
+	pkgdesc = An extension for math typesetting with texvc support.
+	pkgver = r851.2ba9c21
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:Math
+	install = mediawiki-math-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = ocaml
+	depends = mediawiki
+	depends = texvc
+	provides = mediawiki-math
+	conflicts = mediawiki-math
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Math
+	sha256sums = SKIP
+
+pkgname = mediawiki-math-git
+

@@ -1,0 +1,8 @@
+post_install() {
+  echo " >> texvc is required  when using the MW_MATH_PNG mode"
+  echo " >> (see Documentation of Math extension). This is the default and"
+  echo " >> '\$wgTexvc' needs to point to /usr/bin/texvc."
+  echo " >> Alternatives: Deactivate MW_MATH_PNG or compile ../extension/Math/math"
+  echo " >> via make."
+
+}
