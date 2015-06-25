@@ -1,0 +1,16 @@
+pkgbase = vim-jp-ctags
+	pkgdesc = Vim-jp fork of ctags.
+	pkgver = 0.r823.3c49059
+	pkgrel = 1
+	url = https://github.com/vim-jp/ctags
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = ctags
+	conflicts = ctags
+	source = ctags::git+https://github.com/vim-jp/ctags.git
+	md5sums = SKIP
+
+pkgname = vim-jp-ctags
+
