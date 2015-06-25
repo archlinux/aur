@@ -32,6 +32,7 @@ prepare() {
 		-e '/char worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|";/' \
 		-e '/int defaultcs/s/= .*/= 1;/' \
 		-i config.def.h
+	sed '/@tic/d' -i Makefile
 }
 
 build() {
@@ -41,9 +42,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	export TERMINFO="${pkgdir}/usr/share/terminfo"
-	install -d "$TERMINFO"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+	tic -s -o "${pkgdir}/usr/share/terminfo" st.info
 }
