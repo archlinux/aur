@@ -1,0 +1,32 @@
+# Maintainer: mar77i <mar77i at mar77i dot ch>
+pkgname="opennic-git"
+pkgver=20150507
+pkgrel=3
+pkgdesc="opennic DNS service"
+arch=(any)
+url="https://github.com/mar77i/opennic"
+license=(MIT)
+depends=(curl)
+makedepends=(git)
+provides=(opennic)
+conflicts=(opennic)
+source=("git://github.com/mar77i/opennic")
+sha1sums=(SKIP)
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	:
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm755 opennic.sh "$pkgdir/usr/bin/opennic"
+	install -Dm644 "opennic.service" "$pkgdir/usr/lib/systemd/system/opennic.service"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
