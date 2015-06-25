@@ -1,8 +1,8 @@
 # Maintainer: Sander Boom <sanderboom@gmail.com>
 
-pkgname=whatsapp-desktop
+pkgname=whatsapp-desktop-bin
 pkgver=1.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Unofficial WhatsApp for Desktop"
 arch=('i686' 'x86_64')
 url="http://whatsapp-desktop.com/"
