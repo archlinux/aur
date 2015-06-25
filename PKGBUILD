@@ -1,7 +1,7 @@
 # Maintainer: Brent Carmer <bcarmer@gmail.com>
 pkgname=cryptol
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc="A domain-specific language for specifying cryptographic algorithms."
 url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
@@ -19,11 +19,11 @@ backup=()
 
 if test "$CARCH" == x86_64; then
     MYARCH=64
-    md5sums=('9039d1d59aab38d9277339437629754a')
+    md5sums=('645ef1d70ee5ec4a22198952b2110916')
 
 else
     MYARCH=32
-    md5sums=('43898ef233ee9f9a7fdf4c6dcb20865e')
+    md5sums=('d8df335049bc9725abaaa90b5386ef8a')
 
 fi
 
