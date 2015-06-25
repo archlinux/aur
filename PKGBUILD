@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=2.3.4.r1866.g76a9a5f
+pkgver=2.3.5.2.r1957.gcda8dd6
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -22,6 +22,7 @@ pkgver() {
 } 
 
 prepare() {
+  rm -rf $_pkgname3
   cp -a $_pkgname2 $_pkgname3
 
   cd $_pkgname2
