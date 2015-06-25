@@ -29,6 +29,10 @@ package() {
   mv "$pkgdir/usr/share/openrct2/"{Data,data}
   mv "$pkgdir/usr/share/openrct2/data/"{Language,language}
 
+  # Move documentation to /usr/share/doc/openrct2/.
+  install -d "$pkgdir/usr/share/doc/openrct2"
+  mv "$pkgdir/usr/share/openrct2/"*.txt "$pkgdir/usr/share/doc/openrct2"
+
   # ArchLinux-specific stuff (launcher, .desktop file and icon).
   install -Dm755 openrct2 "$pkgdir/usr/bin/openrct2"
   install -Dm644 openrct2.desktop "$pkgdir/usr/share/applications/openrct2.desktop"
