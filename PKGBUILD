@@ -30,8 +30,8 @@ package() {
   # Target extension directory of MediaWiki:
   _extdir="$pkgdir/usr/share/webapps/mediawiki/extensions"
   mkdir -p "$_extdir"
-  rm -r $_extname/.git
   mv $_extname "$_extdir/"
+  rm -r $_extdir/$_extname/.git
 }
 
 build() {
