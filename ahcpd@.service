@@ -1,0 +1,12 @@
+[Unit]
+Description=Ad-Hoc Configuration Protocol for interface %i
+Documentation=man:ahcpd(8) http://www.pps.univ-paris-diderot.fr/~jch/software/ahcp/
+After=network.target babeld.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/ahcpd -D -I /var/run/ahcpd-%i.pid -c /etc/ahcpd.conf %i
+PIDFile=/var/run/ahcpd-%i.pid
+
+[Install]
+WantedBy=multi-user.target

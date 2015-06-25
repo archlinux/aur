@@ -1,0 +1,19 @@
+pkgbase = ahcpd
+	pkgdesc = The Ad-Hoc Configuration Protocol daemon
+	pkgver = 0.53
+	pkgrel = 5
+	url = http://www.pps.univ-paris-diderot.fr/~jch/software/ahcp/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash
+	backup = etc/ahcpd.conf
+	source = http://www.pps.univ-paris-diderot.fr/~jch/software/files/ahcpd-0.53.tar.gz
+	source = ahcpd.conf
+	source = ahcpd@.service
+	md5sums = a1a610bf20965aa522cd766bf3d5829a
+	md5sums = a18e5f236d3100a0d94b4c73bef5c193
+	md5sums = d0c133f83f2f49e2adcf8df420f845d4
+
+pkgname = ahcpd
+
