@@ -1,0 +1,15 @@
+pkgbase = deluge-gtk-graceful-kill
+	pkgdesc = Systemd service to gracefully close deluge before shutdown/restart, avoiding a lock.
+	pkgver = d1.3_v1
+	pkgrel = 2
+	url = https://forum.manjaro.org/index.php?topic=13035.0
+	install = deluge-gtk-graceful-kill.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = systemd
+	depends = deluge
+	source = https://www.dropbox.com/s/s3nhyh708syobqj/deluge-gtk-graceful-kill.tar.xz
+
+pkgname = deluge-gtk-graceful-kill
+
