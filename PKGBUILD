@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.0
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
+            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
             'SKIP'
             'abbd00d37fda3c52e4d008fb6667118ee6606608d40a9c4b3cff29f189f526a2'
             'b8032dc8850d8ce3f5f00e0cec8ee999e63fc3f81589a2a6337ec87294f0f543'
