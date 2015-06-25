@@ -1,0 +1,18 @@
+pkgbase = ctags-fishman-git
+	pkgdesc = fishman's fork of ctags.
+	pkgver = 0.r1821.58b6cea
+	pkgrel = 1
+	url = https://github.com/fishman/ctags
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = ctags
+	conflicts = ctags
+	options = staticlibs
+	options = !emptydirs
+	source = ctags::git+https://github.com/fishman/ctags.git
+	md5sums = SKIP
+
+pkgname = ctags-fishman-git
+
