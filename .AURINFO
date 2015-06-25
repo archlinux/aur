@@ -1,0 +1,19 @@
+pkgbase = cudaminer-cuda55
+	pkgdesc = CUDA accelerated mining application for scrypt coins. Stable 2013-12-18 build (introduction of CUDA 5.5 toolkit).
+	pkgver = 20131218
+	pkgrel = 4
+	url = https://bitcointalk.org/index.php?topic=167229.0
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	depends = cuda5.5
+	depends = curl
+	depends = jansson
+	provides = cudaminer
+	conflicts = cudaminer
+	source = https://www.dropbox.com/s/nrwz51tiu1xsoz6/cudaminer-git-built-2013-12-18.tar.xz
+	backup = etc/cudaminer.conf
+
+pkgname = cudaminer-cuda55
+
