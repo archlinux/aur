@@ -1,0 +1,17 @@
+pkgbase = mediawiki-templatesandbox-git
+	pkgdesc = An extension to develop templates in testing environment.
+	pkgver = r276.7fb2fc9
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:TemplateSandbox
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	optdepends = mediawiki-scribunto-git: Supported scripting extension.
+	provides = mediawiki-templatesandbox
+	conflicts = mediawiki-templatesandbox
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/TemplateSandbox
+	md5sums = SKIP
+
+pkgname = mediawiki-templatesandbox-git
+
