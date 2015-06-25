@@ -39,8 +39,8 @@ prepare() {
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
   sed -i 's|python -c |python2 -c|g' share/extensions/uniconv*.py
   sed -i 's|"python"|"python2"|g' src/main.cpp
-  sed -i '1s|pytho\>n|python2|' share/extensions/ink2canvas/svg.py
-  sed -i '1s|pytho\>n|python2|' share/extensions/ink2canvas/canvas.py
+  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
+  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
 }
 
 build() {
