@@ -41,6 +41,9 @@ prepare() {
 	sed '/@tic/d' -i Makefile
 	for file in "${source[@]}"; do
 		if [[ "$file" != *.diff ]]; then
+			# add config.h if present in source array
+			# Note: this supersedes the above sed to config.def.h
+			[[ "$file" == "config.h" ]] && cp "$SRCDEST/$file" .
 			continue
 		fi
 		# add all patches present in source array
