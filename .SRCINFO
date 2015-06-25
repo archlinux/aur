@@ -1,0 +1,20 @@
+pkgbase = python2-meep
+	pkgdesc = Python binding for MEEP (FDTD solver by MIT)
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://launchpad.net/python-meep
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-matplotlib
+	depends = meep
+	depends = openmpi
+	depends = swig
+	source = https://launchpad.net/python-meep/1.4/1.4/+download/python-meep-1.4.2.tar
+	md5sums = f8913542d18b0dda92ebc64f0a10ce56
+
+pkgname = python2-meep
+
