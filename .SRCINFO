@@ -1,0 +1,15 @@
+pkgbase = cnijfilter-common-i386
+	pkgdesc = Canon IJ Printer Driver (Common package) i386
+	pkgver = 3.40
+	pkgrel = 2
+	url = http://support-au.canon.com.au/contents/AU/EN/0100300801.html
+	arch = i686
+	license = custom
+	depends = libcups
+	depends = popt
+	conflicts = cnijfilter-common
+	source = https://www.dropbox.com/s/wnfwkbuvx024agh/cnijfilter-common-3.40-1.i386.tar.gz
+	md5sums = c4680f87933d109f7a5139701ae6af27
+
+pkgname = cnijfilter-common-i386
+
