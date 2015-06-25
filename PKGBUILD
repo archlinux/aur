@@ -7,7 +7,7 @@ _basepkgname=math
 
 pkgname=mediawiki-$_basepkgname-git
 pkgver=r851.2ba9c21
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension for math typesetting with texvc support."
 install=mediawiki-math-git.install
 source=("git+https://gerrit.wikimedia.org/r/mediawiki/extensions/$_extname")
@@ -28,7 +28,7 @@ pkgver() {
 
 package() {
   # Target extension directory of MediaWiki:
-  _extdir="$pkgdir/usr/share/webapps/mediawiki/extensions/$_extname"
+  _extdir="$pkgdir/usr/share/webapps/mediawiki/extensions"
   mkdir -p "$_extdir"
   rm -r $_extname/.git
   mv $_extname "$_extdir/"
