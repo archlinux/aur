@@ -7,7 +7,7 @@ _basepkgname=mathoid
 
 pkgname=mediawiki-$_basepkgname-git
 pkgver=0.2.4.r1713.g1706720
-pkgrel=1
+pkgrel=2
 pkgdesc="Service for creating MathMl and SVGs."
 install="mediawiki-mathoid.install"
 source=("git+https://gerrit.wikimedia.org/r/mediawiki/services/$_basepkgname"
@@ -32,9 +32,10 @@ pkgver() {
 package() {
   # Target service directory of MediaWiki:
   _extdir="$pkgdir/usr/share/webapps/mediawiki/services"
-  mkdir -p "$_extdir"
+  mkdir -p "$_extdir" "$pkgdir/usr/lib/systemd/system"
   mv $_basepkgname "$_extdir/"
   rm -r $_extdir/$_basepkgname/.git
+  cp -a mathoid.service "$pkgdir/usr/lib/systemd/system/mathoid.service"
 }
 
 build() {
