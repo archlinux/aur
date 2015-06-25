@@ -3,7 +3,7 @@
 pkgname=kimchi
 _gitname=kimchi-1.5.0
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="HTML5 management for KVM"
 
@@ -64,7 +64,7 @@ md5sums=('b71bbd4bec3d8207b40acb6a6c176ab4'
          'd8b6bfc1b210cc819dac46931aaecd7f'
          '356d68fd7735c826c36cbde651ebd675'
          '3cfc5d399b56f9bdec6a53244fa3d591'
-         '0a5317842eca14116336f4c656f66301')
+         '6d10caef40d2a30aafc950a168b4d675')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
