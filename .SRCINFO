@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-ue-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (ultimate version)
-	pkgver = 15.142.2670.3
-	pkgrel = 2
+	pkgver = 15.0.0.142.2670.3
+	pkgrel = 3
 	epoch = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
