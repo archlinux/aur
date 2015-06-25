@@ -1,0 +1,19 @@
+pkgbase = termite-git
+	pkgdesc = A simple VTE-based terminal
+	pkgver = 10
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/thestinger/termite/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = vte3-ng
+	provides = termite
+	conflicts = termite
+	backup = etc/xdg/termite/config
+	source = git://github.com/thestinger/termite
+	md5sums = SKIP
+
+pkgname = termite-git
+
