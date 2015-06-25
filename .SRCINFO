@@ -1,0 +1,18 @@
+pkgbase = spectrascan
+	pkgdesc = Loads images from scanned curves and exports the pixel coordinates of the curve in csv format
+	pkgver = 0008
+	pkgrel = 1
+	url = http://spectrascan.sourceforge.net/
+	install = spectrascan.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	source = http://downloads.sourceforge.net/sourceforge/spectrascan/SpectraScan.0008.tar.bz2
+	source = spectrascan.desktop
+	sha256sums = d65cee089f674987a35936b78e6ac7c416192e98ca52f4584606cf2ccc5ef564
+	sha256sums = 473a23c69a2c3bb69328feb667c8e85a4ff1eb4acd563d5b5349f197bd61be86
+
+pkgname = spectrascan
+

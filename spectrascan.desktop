@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=false
+Name=SpectraScan
+Type=Application
+Icon=/usr/share/pixmaps/spectrascan.svg
+Exec=/usr/bin/spectrascan %f
+Comment=An application for 2D plotting
+Categories=Science;X-Plotting;
