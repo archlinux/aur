@@ -1,0 +1,15 @@
+pkgbase = polyenum-git
+	pkgdesc = Set of enumerators of multiple types of polyominoes (snake, tree, etc.)
+	pkgver = 0.1_1
+	pkgrel = 2
+	url = https://bitbucket.org/ablondin/polyenum
+	arch = any
+	license = GPL3
+	makedepends = sed
+	depends = python2
+	depends = cython2
+	source = git+https://bitbucket.org/ablondin/polyenum
+	sha256sums = SKIP
+
+pkgname = polyenum-git
+
