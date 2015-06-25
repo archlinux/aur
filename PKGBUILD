@@ -12,8 +12,8 @@ depends=('qt5-declarative-git' 'qt5-wayland-git')
 makedepends=('git' 'gdb' 'extra-cmake-modules')
 options=('debug')
 
-_gitroot="git://github.com/papyros/greenisland.git"
-_gitbranch=feature/window_manager
+_gitroot="git://github.com/greenisland/greenisland.git"
+_gitbranch=master
 _gitname=greenisland
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')

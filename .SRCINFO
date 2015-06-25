@@ -15,7 +15,7 @@ pkgbase = greenisland-papyros-git
 	depends = qt5-declarative-git
 	depends = qt5-wayland-git
 	options = debug
-	source = greenisland::git://github.com/papyros/greenisland.git#branch=feature/window_manager
+	source = greenisland::git://github.com/greenisland/greenisland.git#branch=master
 	md5sums = SKIP
 
 pkgname = greenisland-papyros-git
