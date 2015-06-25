@@ -1,6 +1,6 @@
 pkgbase = mixxx-git
 	pkgdesc = Digital DJ mixing software. Development branch from git with cpu optimization enabled
-	pkgver = 20131229.9fc75b5
+	pkgver = release.1.12.0.beta1.r747.gab53f56
 	pkgrel = 1
 	url = http://www.mixxx.org/
 	arch = i686
