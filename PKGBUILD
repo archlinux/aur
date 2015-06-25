@@ -33,6 +33,10 @@ package() {
   install -d "$pkgdir/usr/share/doc/openrct2"
   mv "$pkgdir/usr/share/openrct2/"*.txt "$pkgdir/usr/share/doc/openrct2"
 
+  # Use root certificates from ArchLinux instead of the ones bundled with
+  # OpenRCT2.
+  ln -sf /etc/ssl/certs/ca-certificates.crt "$pkgdir/usr/share/openrct2/curl-ca-bundle.crt"
+
   # ArchLinux-specific stuff (launcher, .desktop file and icon).
   install -Dm755 openrct2 "$pkgdir/usr/bin/openrct2"
   install -Dm644 openrct2.desktop "$pkgdir/usr/share/applications/openrct2.desktop"
