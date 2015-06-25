@@ -1,0 +1,19 @@
+pkgbase = bricscad-legacy
+	pkgdesc = BricsCad is a CAD program with Autodesk DWG compatibility.
+	pkgver = 13.2.17
+	pkgrel = 1
+	url = https://www.bricsys.com
+	arch = any
+	license = commercial
+	noextract = bricscadv13.2.17.tar.gz
+	source = bricscadv13.2.17.tar.gz::https://copy.com/OiQ2c4w7MJgQREeh/bricscadv13.2.17.tar.gz?download=1
+	source = bricscad_simple_logo.png::https://copy.com/gtABrL8xpsb8yl3H/bricscad_simple_logo.png?download=1
+	source = bricscad.desktop::https://copy.com/P8g06DHcgUhnu86o/bricscad.desktop?download=1
+	source = bricscad13::https://copy.com/I0TrmpazRUFyXY7G/bricscad13?download=1
+	md5sums = 2ca6f4b512b9e9ac51e54d53c9edfb25
+	md5sums = c24313275d36fa6db16d92d530862739
+	md5sums = aa602524fb3687cbf1fab63ee6ea7077
+	md5sums = b90151309e0ea94b1f1cee9e6960418c
+
+pkgname = bricscad-legacy
+
