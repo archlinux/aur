@@ -2,7 +2,7 @@
 # Contributor: Dmitry Chusovitin <dchusovitin@gmail.com>
  
 pkgname='yandex-disk'
-pkgver=0.1.5.870
+pkgver=0.1.5.905
 pkgrel=1
 pkgdesc='Yandex.Disk keeps your files with you at all times.'
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ source=("http://repo.yandex.ru/yandex-disk/deb/pool/main/y/yandex-disk/yandex-di
         "yandex-disk.install"
         "yandex-disk.service")
  
-md5sums=('b72408bf7701d8fc9b43129e4b945686'
+md5sums=('ef20b3fb147c4be4b6085d72c5b70567'
          '5ad775bd895526c6b1f335c6d71dbdfa'
          '682610854f31ae387a35268ff2fcb867')
  
 [ "$CARCH" = "x86_64" ] && 
-md5sums=('b6bbf0e9279afdc49a0ca9c6a39f3bdf'
+md5sums=('6edca3196ab3c2c98199143fdf67d830'
          '5ad775bd895526c6b1f335c6d71dbdfa'
          '682610854f31ae387a35268ff2fcb867')
  
