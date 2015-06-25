@@ -1,0 +1,19 @@
+pkgbase = pyclewn2
+	pkgdesc = A python2 version of gdb support for vim
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://pyclewn.sourceforge.net/
+	install = pyclewn2.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = python2-trollius
+	depends = python2-pdb-clone
+	depends = gvim>=7.4
+	depends = gdb
+	source = https://pypi.python.org/packages/source/p/pyclewn/pyclewn-2.1.tar.gz
+	sha256sums = 4e6dccb6afa07e34202cc8cba4fc63a53d432b2dbc3f1a08c1945bbdd2a2a855
+
+pkgname = pyclewn2
+
