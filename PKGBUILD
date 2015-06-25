@@ -3,7 +3,7 @@
 _pkgbase="u8glib-git"
 #pkgname=('libu8gwpi-git' 'libu8gsdl-git')
 pkgname=('u8glib-git')
-pkgver=910f4eb
+pkgver=e7cd227
 pkgrel=1
 pkgdesc="Universal Graphics Library for 8 Bit Embedded Systems"
 arch=( 'i686' 'x86_64' 'armv5tel' 'armv7l' )
@@ -13,7 +13,7 @@ depends=('wiringpi-git')
 makedepends=('wiringpi-git')
 #conflicts=('libu8gwpi-git' 'libu8gsdl-git')
 
-source=("${_pkgbase}::git+https://github.com/yhfudev/u8glib.git"
+source=("${_pkgbase}::git+https://github.com/olikraus/u8glib.git"
     )
 md5sums=('SKIP'
     )
