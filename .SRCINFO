@@ -1,0 +1,18 @@
+pkgbase = svtget
+	pkgdesc = A free software tool to make local cache files of SVT Play web streams
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://svtget.se/
+	arch = any
+	license = GPL3
+	depends = curl
+	depends = rtmpdump
+	depends = ffmpeg
+	optdepends = mplayer: playing output with mplayer
+	optdepends = vlc: playing output with vlc
+	optdepends = avconv: alternative to ffmpeg
+	source = https://raw.github.com/mmn/svtget/master/bash/svtget
+	md5sums = 351c38b343c49a303e1b9380349ac86a
+
+pkgname = svtget
+
