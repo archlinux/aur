@@ -1,0 +1,6 @@
+*.sign
+*.patch.gz
+*.xz
+*.last
+*.install.pkg
+*.gz
