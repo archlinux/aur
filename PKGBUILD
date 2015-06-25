@@ -1,4 +1,5 @@
-# Maintainer: Austin Haedicke <gtbb on irc #archlinux>
+# Maintainer: Austin Haedicke	<austin.haedicke@gmail.com>
+#				<gtbjj on #archlinux irc>
 
 _pkgname=phoronix-test-suite
 pkgname=phoronix-test-suite-git
@@ -23,5 +24,4 @@ package() {
   cd $srcdir/$_pkgname
   mkdir -p $pkgdir/usr/bin
   ./install-sh ${pkgdir}/usr
-#  xdg-icon-resource forceupdate
 }
