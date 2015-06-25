@@ -8,10 +8,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts             # Build kernel with a different name
 _srcname=linux-3.18
-_pkgver=3.18.13
-_rtpatchver=rt10
+_pkgver=3.18.16
+_rtpatchver=rt13
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,7 +19,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar."{xz,sign}
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${_pkgver}."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
+        #"https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -29,9 +30,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar."{xz,sign}
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            'd9191eb7fa47e95c81945e561cdf35bb12fcdd2bbf12f37f60533cbf57be429c'
+            'f60602c8de2ae7b1507c538b6af65d5b933727a06f56075898ff64fdcf650313'
             'SKIP'
-            '4852137491341a3f1d976cf5b17c038fdc74b167d555195aacd61094b02ce741'
+            '55f8e8c6239b1bcfb129ae5884a24fe0467ea5cfdccb5020189ac0b0129f64c3'
             'SKIP'
             '579b174b2239b52ab4b0ffb48aca79f4c26a8544bdfdf2bf4e816d17300414d6'
             '3e1e9a5fe6d48a0f14faafd749827bee1541dad62392ebd0e288ab3006282ddd'
