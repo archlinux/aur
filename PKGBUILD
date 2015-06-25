@@ -28,8 +28,7 @@ pkgver() {
 build()
 {
     cd $srcdir/$_gitname
-    make ncursesFM
-    make clean
+    make
 }
 
 package() {
