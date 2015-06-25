@@ -3,19 +3,20 @@
 # % Trigger: 1433756367 %
 
 pkgname=('vdev-git' 'vdev-libudev-compat-git')
-pkgver=r479.33c6877
-pkgrel=2
+pkgver=r514.3aaf0e3
+pkgrel=1
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
 arch=( 'x86_64' 'i686' )
 license=( 'custom:ISC' )
 conflicts=( 'vdev' )
 provides=( 'vdev' )
-makedepends=( 'libpstat' 'fskit' )
-backup=( etc/vdev )
+makedepends=( 'libpstat' 'fskit' 'squashfs-tools' )
 
-source=( "${pkgname}::git+${url}" )
-sha1sums=( 'SKIP' )
+source=(
+	"${pkgname}::git+${url}"
+	'hwdb-makefile.patch'
+)
 
 pkgver() {
 	cd "${pkgname}"
@@ -26,6 +27,11 @@ pkgver() {
 	else
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	fi
+}
+
+prepare() {
+	cd "${pkgname}"
+	patch -p0 < ../hwdb-makefile.patch
 }
 
 build() {
@@ -51,16 +57,17 @@ package_vdev-git() {
 	rmdir etc/init.d
 
 	# Config files
-	backup+=( etc/vdev/actions/* )
-	backup+=( etc/vdev/* )
+	backup+=( etc/vdev/actions/*.act )
+	backup+=( etc/vdev/*.conf )
 }
 
 package_vdev-libudev-compat-git() {
-	provides=( "libudev=${_udevver}" 'libgudev-1.0.so' 'libudev.so' )
-	conflicts=( "libudev=${_udevver}" 'libgudev-1.0.so'  'libudev.so'	)
+	provides=( "libudev" 'libudev.so' )
+	conflicts=( "libudev" 'libudev.so'	)
 
 	cd vdev-git
 	make LIBDIR="${pkgdir}/usr/lib" INCLUDEDIR="${pkgdir}/usr/include" -C libudev-compat install
 }
 
-# vim: noet 
+sha1sums=('SKIP'
+          '149abf0fc1dcf60e8af1a15384815c84aeaad21a')

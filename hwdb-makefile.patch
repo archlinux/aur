@@ -1,0 +1,11 @@
+--- hwdb/Makefile	2015-06-25 12:00:44.309092951 +0300
++++ hwdb/Makefile.new	2015-06-25 12:47:24.448160126 +0300
+@@ -14,7 +14,7 @@
+ 	@echo "Generating hardware database"
+ 	@mkdir -p "$@.dir"
+ 	$(BUILD_HWDB)/gen_database.sh -o "$@.dir" $(BUILD_HWDB)/input/*.hwdb
+-	mksquashfs -force-uid 0 -force-gid 0 "$@.dir" "$@"
++	mksquashfs "$@.dir" "$@" -force-uid 0 -force-gid 0 
+ 
+ $(BUILD_HWDB)/input/%.hwdb: udev/%.hwdb
+ 	@mkdir -p "$(shell dirname "$@")"
