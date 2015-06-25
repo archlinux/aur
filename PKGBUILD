@@ -6,8 +6,8 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-_mptcpv=0.89
-pkgver=0.89.433305.dcdf730
+_mptcpv=0.90
+pkgver=0.90.485855.ee70e6c
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
@@ -19,38 +19,12 @@ source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
-        '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
-        '0003-module-remove-MODULE_GENERIC_TABLE.patch'
-        '0006-genksyms-fix-typeof-handling.patch')
+        'change-default-console-loglevel.patch')
 md5sums=('SKIP'
-         '26c75761ed3f43481903d8eae27b2e07'
-         'eeecccd0aa8954f223f15b1e9d60c64c'
+         'ed1d392d9feb77674e7a71c3eda060e6'
+         '554fb1479cf95995c9291ae56041d900'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         '6839ddec74a5300beff1709a81b0e4f3'
-         '706549e8a05f33f7fc697f28c0ca71d2'
-         'd23fc66be93ebce698bd7da844789de1'
-         '16a161979f846b049e90daea907c35dd')
-sha1sums=('SKIP'
-          '21474e05541b5c8f3c61613b6396cfef62e8dcc2'
-          'dbd24ca9e26f6991f88a8754d8088c9bdd9317d8'
-          'f541138900003e47594e8c6155669ca4f76d2551'
-          '8ebe788390bcbe370e4b18e3623fb23d0860a174'
-          '7aca14ad105ab4c33dd7cb658d36ac2aa88cb795'
-          '62960fd899ba84915fa649fcb207a2a07b19e76d'
-          'c9b57d94a9798359bdbea72f588d18d0f7fbe099'
-          'f7d9ac9e04f8d2b3acbffdfdcf9a23941f41fa97')
-sha256sums=('SKIP'
-            'd71de8a99289dfc7c9cc94220809701d8e1b2041d020b7d2e9a2990af36704fc'
-            '4fd71198246d7ead9ae38381aa9840b81e56f9b1e075dd904fb841fdf5c2c4e3'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
-            '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
-            '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7')
+         '92562f0a5d8cc0e5972ab58523dbe0a4')
 
 _kernelname=${pkgbase#linux}
 
@@ -70,17 +44,6 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
-  patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-
-  # Fix atkbd aliases
-  patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
-  patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
-
-  # Fix generation of symbol CRCs
-  # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
-  patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
@@ -97,10 +60,6 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-}
-
-build() {
-  cd "${srcdir}/${_srcname}"
 
   # get kernel version
   make prepare
@@ -115,6 +74,10 @@ build() {
 
   # rewrite configuration
   yes "" | make config >/dev/null
+}
+
+build() {
+  cd "${srcdir}/${_srcname}"
 
   # save configuration for later reuse
   if [ "${CARCH}" = "x86_64" ]; then
@@ -122,12 +85,6 @@ build() {
   else
     cat .config > "${startdir}/config.last"
   fi
-
-  ####################
-  # stop here
-  # this is useful to configure the kernel
-  #msg "Stopping build"; return 1
-  ####################
 
   # build!
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
@@ -196,7 +153,6 @@ _package() {
 }
 
 _package-headers() {
-  cd "${srcdir}/${_srcname}"
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
@@ -205,6 +161,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
+  cd "${srcdir}/${_srcname}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -288,7 +245,8 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-  cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
+  # removed in 3.17 series
+  # cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
   # copy in Kconfig files
   for i in $(find . -name "Kconfig*"); do
@@ -316,13 +274,14 @@ _package-headers() {
 }
 
 _package-docs() {
-  cd "${srcdir}/${_srcname}"
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
   
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   provides=("linux-docs=${_basekernel}")
+
+  cd "${srcdir}/${_srcname}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
