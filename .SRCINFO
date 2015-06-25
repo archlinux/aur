@@ -1,0 +1,14 @@
+pkgbase = oggted
+	pkgdesc = command line ogg vorbis tag editor
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://github.com/muennich/oggted/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = taglib
+	source = https://github.com/downloads/muennich/oggted/oggted-0.1.tar.gz
+	md5sums = 48156123922b18eb3326abb640dc495b
+
+pkgname = oggted
+
