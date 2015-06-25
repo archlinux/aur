@@ -1,0 +1,20 @@
+pkgbase = gpaste-git
+	pkgdesc = Clipboard management system with a GNOME Shell extension
+	pkgver = 3.16.2.1+11+g7b41300
+	pkgrel = 1
+	url = https://github.com/Keruspe/GPaste
+	install = gpaste-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = intltool
+	makedepends = vala
+	makedepends = appdata-tools
+	depends = gnome-shell
+	provides = gpaste=3.16.2.1+11+g7b41300
+	source = git://github.com/Keruspe/GPaste.git#branch=gpaste-3.16
+	md5sums = SKIP
+
+pkgname = gpaste-git
+
