@@ -14,7 +14,7 @@ url="http://saaghar.pozh.org"
 arch=('any')
 license=('GPL3')
  
-depends=('qt5-base>=5.3.1')
+depends=('qt5-base>=5.3.1' 'qt5-multimedia')
 makedepends=('git')
 source=('git://github.com/srazi/Saaghar.git')
 md5sums=('SKIP')
