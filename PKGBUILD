@@ -11,7 +11,7 @@ arch=( 'x86_64' 'i686' )
 license=( 'custom:ISC' )
 conflicts=( 'vdev' )
 provides=( 'vdev' )
-makedepends=( 'libpstat' 'fskit' 'squashfs-tools' )
+makedepends=( 'libpstat' 'fskit' 'squashfs-tools' 'dash' )
 
 source=(
 	"${pkgname}::git+${url}"
