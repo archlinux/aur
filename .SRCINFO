@@ -1,21 +1,16 @@
 pkgbase = whatsapp-desktop
-	pkgdesc = Unofficial WhatsApp for Desktop
+	pkgdesc = Simple & beautiful desktop client for WhatsApp
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 1
 	url = http://whatsapp-desktop.com/
-	install = whatsapp-desktop.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = tar
-	depends = libsystemd
-	depends = desktop-file-utils
-	depends = gtk-update-icon-cache
-	options = !strip
-	source_i686 = https://github.com/Aluxian/WhatsApp-Desktop/releases/download/v1.1.0/UnofficialWhatsApp_linux32.deb
-	sha256sums_i686 = 2d95b8d669395a81f3315aa397ab809a2aded01537765f47a67bbc087d520382
-	source_x86_64 = https://github.com/Aluxian/WhatsApp-Desktop/releases/download/v1.1.0/UnofficialWhatsApp_linux64.deb
-	sha256sums_x86_64 = d49509aa61e5b1d5dc8eba66ba8333b2d3c700081424778579238998e010583f
+	makedepends = npm
+	source = https://github.com/Aluxian/WhatsApp-Desktop/archive/v1.1.0.tar.gz
+	source = whatsapp-desktop.desktop
+	sha256sums = d74035490b04f3cd898362d555c4ac547fc2697b1c34b73e827faf1b54ca5ea8
+	sha256sums = f62f69eb7276a4f3c5632e9100192d0a4311064406be18dafb445ecf8a669eb1
 
 pkgname = whatsapp-desktop
 
