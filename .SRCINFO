@@ -1,7 +1,7 @@
 pkgbase = rwhoisd
 	pkgdesc = RWhois (Referral Whois) is a Directory Services protocol which extends and enhances the Whois concept in a hierarchical and scalable fashion.
 	pkgver = 1.5.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.arin.net/rwhois/
 	arch = x86_64
 	arch = i686
