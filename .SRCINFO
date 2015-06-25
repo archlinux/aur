@@ -1,5 +1,5 @@
 pkgbase = linux-libre
-	pkgver = 4.0.5_gnu
+	pkgver = 4.0.6_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-libre
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.6-gnu/patch-4.0-gnu-4.0.6-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.6-gnu/patch-4.0-gnu-4.0.6-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -28,9 +28,10 @@ pkgbase = linux-libre
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig
 	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
 	sha256sums = SKIP
-	sha256sums = 5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172
+	sha256sums = 5cfcee748701771bb2ad46887c6b912fedfffe84bba42ad9e051be54f03a63c9
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -44,6 +45,7 @@ pkgbase = linux-libre
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22
+	sha256sums = SKIP
 
 pkgname = linux-libre
 	pkgdesc = The Linux-libre kernel and modules
@@ -53,7 +55,7 @@ pkgname = linux-libre
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=4.0.5
+	provides = linux=4.0.6
 	conflicts = linux
 	conflicts = kernel26
 	conflicts = kernel26-libre
@@ -66,7 +68,7 @@ pkgname = linux-libre
 
 pkgname = linux-libre-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre kernel
-	provides = linux-headers=4.0.5
+	provides = linux-headers=4.0.6
 	conflicts = linux-headers
 	conflicts = kernel26-headers
 	conflicts = kernel26-libre-headers
@@ -76,7 +78,7 @@ pkgname = linux-libre-headers
 
 pkgname = linux-libre-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre kernel
-	provides = linux-docs=4.0.5
+	provides = linux-docs=4.0.6
 	conflicts = linux-docs
 	conflicts = kernel26-docs
 	conflicts = kernel26-libre-docs
