@@ -32,6 +32,12 @@ prepare() {
 		-e '/char worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|";/' \
 		-e '/int defaultcs/s/= .*/= 1;/' \
 		-i config.def.h
+	sed \
+		-e 's/CPPFLAGS =/CPPFLAGS +=/g' \
+		-e 's/CFLAGS =/CFLAGS +=/g' \
+		-e 's/LDFLAGS =/LDFLAGS +=/g' \
+		-e 's/_BSD_SOURCE/_DEFAULT_SOURCE/' \
+		-i config.mk
 	sed '/@tic/d' -i Makefile
 }
 
