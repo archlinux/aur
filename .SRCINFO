@@ -1,0 +1,30 @@
+pkgbase = freetype2-git
+	pkgdesc = TrueType font rendering library (from git)
+	pkgver = 2.6+6+g5931268-1
+	pkgrel = 1
+	url = http://freetype.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = zlib
+	depends = bzip2
+	depends = sh
+	depends = libpng
+	depends = harfbuzz
+	provides = freetype2=2.6+6+g5931268-1
+	provides = libfreetype.so
+	conflicts = freetype2
+	source = git://git.sv.gnu.org/freetype/freetype2.git
+	source = 0001-Enable-table-validation-modules.patch
+	source = 0002-Enable-subpixel-rendering.patch
+	source = 0003-Enable-subpixel-hinting.patch
+	source = 0004-Add-env-var-to-turn-off-subpixel-hinting.patch
+	sha1sums = SKIP
+	sha1sums = ccc9aaf53621a6e752b01db9e054aa63eb56f9b6
+	sha1sums = a9e78bc59ed06f3e11efc33e54fd7695899862a5
+	sha1sums = 3b69ac9f198ee3e4459e2466d3cb0f0b07cc3837
+	sha1sums = 7517bf45c066d036e3ec729b17c8fa221e4e81a0
+
+pkgname = freetype2-git
+
