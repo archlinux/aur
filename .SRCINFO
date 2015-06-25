@@ -1,0 +1,20 @@
+pkgbase = libmaxminddb-git
+	pkgdesc = C library for the MaxMind DB file format
+	pkgver = r869.cbae1a2
+	pkgrel = 1
+	url = https://github.com/maxmind/libmaxminddb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	options = !libtool
+	source = libmaxminddb::git+https://github.com/maxmind/libmaxminddb.git
+	source = libtap::git+https://github.com/zorgnax/libtap.git
+	source = MaxMind-DB::git+https://github.com/maxmind/MaxMind-DB.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libmaxminddb-git
+
