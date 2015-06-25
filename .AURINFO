@@ -1,0 +1,13 @@
+pkgbase = flux-menu
+	pkgdesc = A fluxbox menu generator
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://salixos.ingk.se/index.php?page=tips_fluxbox&lang=en
+	arch = any
+	license = GPL
+	depends = fluxbox
+	depends = python2
+	source = https://www.dropbox.com/s/1xo02md3qhai17n/flux-menu-0.2-1.tar.xz
+
+pkgname = flux-menu
+
