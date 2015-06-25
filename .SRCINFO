@@ -1,6 +1,6 @@
 pkgbase = minipro-git
 	pkgdesc = Open source programming utility for autoelectric.cn Minipro TL866
-	pkgver = 0.0.1.r0.g60dda45
+	pkgver = 0.0.1.r14.gb730b4c
 	pkgrel = 1
 	url = https://github.com/vdudouyt/minipro
 	arch = i686
