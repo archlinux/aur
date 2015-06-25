@@ -1,0 +1,16 @@
+pkgbase = mediawiki-usermerge-git
+	pkgdesc = An extension for merging and deleting users.
+	pkgver = r672.3033e6d
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:UserMerge
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-usermerge
+	conflicts = mediawiki-usermerge
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge
+	md5sums = SKIP
+
+pkgname = mediawiki-usermerge-git
+
