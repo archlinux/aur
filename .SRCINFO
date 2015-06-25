@@ -1,0 +1,15 @@
+pkgbase = bdsync
+	pkgdesc = Fast block device synchronizing tool
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://bdsync.rolf-fokkens.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	depends = zlib
+	source = https://github.com/TargetHolding/bdsync/archive/0.8.tar.gz
+	md5sums = 2c0139a71e0ee1cf0413afaab5c33263
+
+pkgname = bdsync
+
