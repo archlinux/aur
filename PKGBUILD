@@ -1,7 +1,7 @@
  # Maintainer: saxonbeta <saxonbeta at gmail dot com>
 pkgname=whatsapp-desktop-git
 _pkgname=WhatsApp-Desktop
-pkgver=1.1.0
+pkgver=20150625
 pkgrel=1
 pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
 arch=('i686' 'x86_64')
@@ -17,6 +17,11 @@ source=(git+https://github.com/Aluxian/WhatsApp-Desktop.git
 	'whatsapp-desktop.desktop')
 sha256sums=('SKIP'
             'f62f69eb7276a4f3c5632e9100192d0a4311064406be18dafb445ecf8a669eb1')
+
+pkgver() {
+    cd "$srcdir/$_pkgname-$pkgver/"
+    (git log -1 --format='%cd.%h' --date=short | tr -d -)
+}
 
 	    
 prepare() {
