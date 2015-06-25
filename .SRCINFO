@@ -1,0 +1,15 @@
+pkgbase = glc-scripts
+	pkgdesc = GLC OpenGL capture scripts - mp4 conversion (glccnv), 30/60 fps Alsa/Pulse capture (glcr30/glcr60/glcr30p/glcr60p)
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/GLC
+	arch = any
+	license = GPL2
+	depends = glc
+	depends = ffmpeg
+	optdepends = glc-pulseaudio-git
+	source = https://www.dropbox.com/s/ldmqgk2945vo2ep/glc-scripts.tar.xz
+	md5sums = 090d2bfe1c668563cd6cbf8904854fed
+
+pkgname = glc-scripts
+
