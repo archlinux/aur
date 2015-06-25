@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-portaudio
+	pkgdesc = A free, cross-platform, open source, audio I/O library. (mingw-w64)
+	pkgver = 19_20140130
+	pkgrel = 2
+	url = http://www.portaudio.com
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	options = !libtool
+	options = !strip
+	options = !buildflags
+	options = !makeflags
+	options = staticlibs
+	source = http://www.portaudio.com/archives/pa_stable_v19_20140130.tgz
+	source = fix_static_linking.patch
+	md5sums = 7f220406902af9dca009668e198cbd23
+	md5sums = b1cf5d6c8283c9b59956188a4f165172
+
+pkgname = mingw-w64-portaudio
+

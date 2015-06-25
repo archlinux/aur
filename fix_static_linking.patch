@@ -1,0 +1,11 @@
+diff -aur portaudio/configure.in portaudio.new/configure.in
+--- portaudio/configure.in	2014-01-16 12:49:33.000000000 -0500
++++ portaudio.new/configure.in	2014-03-21 01:27:21.773766353 -0400
+@@ -287,7 +287,6 @@
+ 
+         PADLL="portaudio.dll"
+         THREAD_CFLAGS="-mthreads"
+-        SHARED_FLAGS="-shared"
+         CFLAGS="$CFLAGS -I\$(top_srcdir)/src/os/win -DPA_USE_WMME=0 -DPA_USE_ASIO=0 -DPA_USE_WDMKS=0 -DPA_USE_DS=0 -DPA_USE_WASAPI=0"
+ 
+         if [[ "x$with_directx" = "xyes" ]]; then
