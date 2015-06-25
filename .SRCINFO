@@ -1,0 +1,18 @@
+pkgbase = backupninja-git
+	pkgdesc = A centralized way to configure and schedule many different backup utilities
+	pkgver = 1.0.1.r59.g41c3544
+	pkgrel = 1
+	url = https://labs.riseup.net/code/projects/backupninja
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	optdepends = rdiff-backup: rdiff backups
+	optdepends = gzip
+	optdepends = hwinfo
+	optdepends = duplicity: duplicity backups
+	source = git+https://labs.riseup.net/code/backupninja.git
+	md5sums = SKIP
+
+pkgname = backupninja-git
+
