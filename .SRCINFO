@@ -1,0 +1,15 @@
+pkgbase = phylobayes-mpi
+	pkgdesc = phylogenetic reconstruction using infinite mixtures
+	pkgver = 1.5a
+	pkgrel = 1
+	url = http://megasun.bch.umontreal.ca/People/lartillot/www/index.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openmpi
+	conflicts = phylobayes
+	source = http://megasun.bch.umontreal.ca/People/lartillot/www/pb_mpi1.5a.tar.gz
+	md5sums = bbb2b9193329a7b2253160b817f9fc87
+
+pkgname = phylobayes-mpi
+
