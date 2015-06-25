@@ -1,0 +1,18 @@
+pkgbase = batman-alfred-json-git
+	pkgdesc = Simple alfred client with JSON output
+	pkgver = 88
+	pkgrel = 1
+	url = https://github.com/tcatm/alfred-json
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = jansson
+	depends = zlib
+	optdepends = batman-alfred: Local alfred server
+	source = git://github.com/tcatm/alfred-json
+	md5sums = SKIP
+
+pkgname = batman-alfred-json-git
+
