@@ -1,0 +1,23 @@
+pkgbase = fwupdate-git
+	pkgdesc = Provides user access to read the EFI System Resource Table (ESRT) - Git version
+	pkgver = 0.4.r97
+	pkgrel = 1
+	url = https://github.com/rhinstaller/fwupdate
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = pesign
+	makedepends = gnu-efi-libs
+	makedepends = gettext
+	makedepends = popt
+	makedepends = pkgconfig
+	depends = efivar
+	provides = fwupdate
+	provides = fwupdate-git
+	conflicts = fwupdate
+	source = fwupdate::git+https://github.com/rhinstaller/fwupdate
+	md5sums = SKIP
+
+pkgname = fwupdate-git
+
