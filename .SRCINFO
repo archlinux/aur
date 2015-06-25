@@ -1,0 +1,15 @@
+pkgbase = id3ted
+	pkgdesc = command line id3 tag editor
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://muennich.github.com/id3ted/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = file
+	depends = taglib
+	source = http://muennich.github.com/id3ted/release/id3ted-1.0.tar.gz
+	sha1sums = 53055883b15319cad495f8ec353883d926d647d4
+
+pkgname = id3ted
+
