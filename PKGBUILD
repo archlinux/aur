@@ -1,8 +1,8 @@
-# Maintainer: Souvik Banerjee <souvik1997@gmail.com>
+# Maintainer: Simon Désaulniers <rostydela@gmail.com>
 _gemname=showterm
 pkgname=$_gemname
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to make screen casts of your terminal really easily. Integrates with showterm.io for awesome sharability."
 arch=(any)
 url="http://showterm.io/"
