@@ -1,3 +1,4 @@
+# Maintainer: Simon Désaulniers <rostydela@gmail.com>
 pkgname='polyenum-git'
 pkgver='0.1_1'
 pkgrel=2
