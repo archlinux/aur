@@ -1,0 +1,26 @@
+--- a/Makefile	2011-12-18 21:28:20.784339431 +0100
++++ b/Makefile  2011-12-18 21:29:07.699390803 +0100
+@@ -33,11 +33,11 @@ clean:
+ 	rm -f *.o upnpd
+ 
+ install: upnpd
+-	install -d $(DESTDIR)/etc/linuxigd
+-	install etc/gatedesc.xml $(DESTDIR)/etc/linuxigd
+-	install etc/gateconnSCPD.xml  $(DESTDIR)/etc/linuxigd
+-	install etc/gateicfgSCPD.xml $(DESTDIR)/etc/linuxigd
+-	install etc/dummy.xml $(DESTDIR)/etc/linuxigd
++	install -m700 -d $(DESTDIR)/etc/linuxigd
++	install -m600 etc/gatedesc.xml $(DESTDIR)/etc/linuxigd
++	install -m600 etc/gateconnSCPD.xml  $(DESTDIR)/etc/linuxigd
++	install -m600 etc/gateicfgSCPD.xml $(DESTDIR)/etc/linuxigd
++	install -m600 etc/dummy.xml $(DESTDIR)/etc/linuxigd
+ 	install -d $(DESTDIR)$(PREFIX)
+ 	install -d $(DESTDIR)$(PREFIX)/sbin
+ 	install upnpd $(DESTDIR)$(PREFIX)/sbin
+@@ -45,5 +45,5 @@ install: upnpd
+ 	install -d $(DESTDIR)$(PREFIX)/share/man/man8
+ 	install upnpd.8 $(DESTDIR)$(PREFIX)/share/man/man8
+ 	install -d $(DESTDIR)/etc
+-	if [ ! -f $(DESTDIR)/etc/upnpd.conf ]; then install etc/upnpd.conf $(DESTDIR)/etc; fi
++	if [ ! -f $(DESTDIR)/etc/upnpd.conf ]; then install -m600 etc/upnpd.conf $(DESTDIR)/etc; fi
+ 

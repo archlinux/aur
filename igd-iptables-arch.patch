@@ -1,0 +1,12 @@
+diff -ur linuxigd-1.0/etc/upnpd.conf linuxigd-1.0-new/etc/upnpd.conf
+--- linuxigd-1.0/etc/upnpd.conf	2006-08-16 15:19:30.000000000 -0300
++++ linuxigd-1.0-new/etc/upnpd.conf	2007-08-04 18:57:57.000000000 -0300
+@@ -5,7 +5,7 @@
+ # The full path and name of the iptables executable,
+ # (enclosed in quotes).
+ #
+-iptables_location = "/sbin/iptables"
++iptables_location = "/usr/sbin/iptables"
+ 
+ #
+ # Daemon debug level. Messages are logged via syslog to debug.

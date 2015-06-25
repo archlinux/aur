@@ -1,0 +1,19 @@
+# This service relies on a netcfg profile that adds a multicast route to the internal interface e.g.:
+# ...
+# IP=static
+# ADDR=192.168.0.1
+# ROUTES=('224.0.0.0/4 via 192.168.0.1')
+# ...
+# Adjust the interface names in ExecStart below to match your external and internal interfaces.
+
+[Unit]
+Description=Linux Internet Gateway Device
+Requires=network.service
+After=network.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/upnpd
+ExecStart=/usr/sbin/upnpd -f $EXTERNAL_INTERFACE $INTERNAL_INTERFACE
+
+[Install]
+WantedBy=multi-user.target

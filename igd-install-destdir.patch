@@ -1,0 +1,29 @@
+diff -u linuxigd-1.0/Makefile linuxigd-1.0-new/Makefile
+--- linuxigd-1.0/Makefile	2006-05-23 19:16:36.000000000 -0300
++++ linuxigd-1.0-new/Makefile	2007-08-04 18:49:15.000000000 -0300
+@@ -33,11 +33,17 @@
+ 	rm -f *.o upnpd
+ 
+ install: upnpd
+-	install -d /etc/linuxigd
+-	install etc/gatedesc.xml /etc/linuxigd
+-	install etc/gateconnSCPD.xml  /etc/linuxigd
+-	install etc/gateicfgSCPD.xml /etc/linuxigd
+-	install etc/dummy.xml /etc/linuxigd
+-	install upnpd $(PREFIX)/sbin
+-	install upnpd.8 $(PREFIX)/share/man/man8
+-	if [ ! -f /etc/upnpd.conf ]; then install etc/upnpd.conf /etc; fi
++	install -d $(DESTDIR)/etc/linuxigd
++	install etc/gatedesc.xml $(DESTDIR)/etc/linuxigd
++	install etc/gateconnSCPD.xml  $(DESTDIR)/etc/linuxigd
++	install etc/gateicfgSCPD.xml $(DESTDIR)/etc/linuxigd
++	install etc/dummy.xml $(DESTDIR)/etc/linuxigd
++	install -d $(DESTDIR)$(PREFIX)
++	install -d $(DESTDIR)$(PREFIX)/sbin
++	install upnpd $(DESTDIR)$(PREFIX)/sbin
++	install -d $(DESTDIR)$(PREFIX)/share/man
++	install -d $(DESTDIR)$(PREFIX)/share/man/man8
++	install upnpd.8 $(DESTDIR)$(PREFIX)/share/man/man8
++	install -d $(DESTDIR)/etc
++	if [ ! -f $(DESTDIR)/etc/upnpd.conf ]; then install etc/upnpd.conf $(DESTDIR)/etc; fi
++
