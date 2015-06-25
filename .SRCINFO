@@ -1,0 +1,15 @@
+pkgbase = hunspell-pt_pt
+	pkgdesc = Portuguese (European, post-orthographic agreement) hunspell dictionaries
+	pkgver = 20150418
+	pkgrel = 1
+	url = http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/
+	arch = any
+	license = GPL
+	license = LGPL
+	license = MPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/hunspell-pt_PT-20150418.tar.gz
+	md5sums = 27b19be9c318156339a8cfb217f17476
+
+pkgname = hunspell-pt_pt
+
