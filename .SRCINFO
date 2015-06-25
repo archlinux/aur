@@ -1,7 +1,7 @@
 pkgbase = scid_vs_pc
 	pkgdesc = Shane's Chess Information Database
 	pkgver = 4.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scidvspc.sourceforge.net/
 	install = scid_vs_pc.install
 	arch = i686
