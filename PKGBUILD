@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="phylogenetic reconstruction using infinite mixtures"
 arch=('i686' 'x86_64')
 url="http://megasun.bch.umontreal.ca/People/lartillot/www/index.htm"
-license=('GPL2')
+license=('custom')
 conflicts=(phylobayes-mpi)
 depends=('gcc-libs')
 source=("http://megasun.bch.umontreal.ca/People/lartillot/www/${pkgname}${pkgver}.tar.gz")
@@ -21,9 +21,11 @@ build() {
 package() {
   cd $srcdir/${pkgname}${pkgver}/data
 
-  mkdir -p $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/licenses/$pkgname
 
   find -mindepth 1 -maxdepth 1 -type f -printf '%P\n' | while read file ; do
     cp $file $pkgdir/usr/bin
   done
+
+  echo 'unknown' > $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
