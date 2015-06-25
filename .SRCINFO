@@ -1,0 +1,13 @@
+pkgbase = etcd-ca-git
+	pkgdesc = A simple certificate manager written in Go. Easy to use with limited capability.
+	pkgver = r101.31fef42
+	pkgrel = 1
+	url = https://github.com/coreos/etcd-ca
+	arch = any
+	license = Apache
+	makedepends = go
+	source = etcd-ca-git::git+https://github.com/coreos/etcd-ca.git
+	sha256sums = SKIP
+
+pkgname = etcd-ca-git
+
