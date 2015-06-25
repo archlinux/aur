@@ -1,0 +1,16 @@
+pkgbase = libreoffice-extension-pagination
+	pkgdesc = A little macro that adds a 'Insert / Page number...' dialog to writer. It eases the way you can add page numbers to a document.
+	pkgver = 1.3.10
+	pkgrel = 3
+	url = http://extensions.services.openoffice.org/project/pagination
+	arch = any
+	groups = libreoffice-extensions
+	license = Opensource
+	makedepends = unzip
+	depends = libreoffice
+	noextract = pagination-1.3.10.oxt
+	source = http://downloads.sourceforge.net/project/aoo-extensions/374/17/pagination-1.3.10.oxt
+	md5sums = 3273007fc21e97c56de335c700615190
+
+pkgname = libreoffice-extension-pagination
+
