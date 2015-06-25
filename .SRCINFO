@@ -1,0 +1,16 @@
+pkgbase = libreoffice-extension-minicorrector
+	pkgdesc = Performs global search and replace throughout the document in the list of rules.
+	pkgver = 2.1.2
+	pkgrel = 3
+	url = http://extensions.services.openoffice.org/project/minicorrector
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	makedepends = unzip
+	depends = libreoffice
+	noextract = minicorrector-2.1.2.oxt
+	source = http://downloads.sourceforge.net/project/aoo-extensions/2305/14/minicorrector-2.1.2.oxt
+	md5sums = bf9eb8d695bfc1286e8c75589485b1eb
+
+pkgname = libreoffice-extension-minicorrector
+
