@@ -1,0 +1,14 @@
+pkgbase = sig2dot
+	pkgdesc = Generates a graph of all of the signature relationships in a GPG/PGP keyring
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://www.chaosreigns.com/code/sig2dot/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://www.chaosreigns.com/code/sig2dot/sig2dot.pl
+	md5sums = f8714bb139dcdbeb81485c33e2234f21
+
+pkgname = sig2dot
+
