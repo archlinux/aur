@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pae     # Build stock -pae kernel
 _pkgbasever=4.0-gnu
-_pkgver=4.0.5-gnu
+_pkgver=4.0.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -41,7 +41,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch')
 sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
-            '5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172'
+            '5cfcee748701771bb2ad46887c6b912fedfffe84bba42ad9e051be54f03a63c9'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
