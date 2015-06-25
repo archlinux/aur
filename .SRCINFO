@@ -1,0 +1,19 @@
+pkgbase = asciiportal-git
+	pkgdesc = Text based puzzle game inspired by the popular video game.
+	pkgver = 20110531
+	pkgrel = 1
+	url = http://cymonsgames.com/asciiportal/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl
+	depends = sdl_mixer
+	depends = pdcurses
+	depends = yaml-cpp
+	provides = asciiportal
+	conflicts = asciiportal
+	conflicts = asciiportal-mod
+
+pkgname = asciiportal-git
+
