@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 228946 2015-01-12 18:45:53Z anatolik $
+# $Id: PKGBUILD 231230 2015-02-10 18:55:25Z anatolik $
 # Maintainer (Arch): Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer (Arch): Thomas Baechler <thomas@archlinux.org>
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-manpages
-_pkgver=3.18-gnu
+_pkgver=3.19-gnu
 
 _srcname=linux-${_pkgver%-*}
 _archpkgver=${_pkgver%-*}
@@ -20,7 +20,7 @@ replaces=('kernel26-manpages' 'kernel26-libre-manpages' 'linux-manpages')
 conflicts=('kernel26-manpages' 'kernel26-libre-manpages' 'linux-manpages')
 provides=('kernel26-manpages' 'kernel26-libre-manpages' "linux-manpages=${_archpkgver}")
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz")
-sha256sums=('0f347d8eba8a6878246b94b3559eb0371d96a3f43de2f134513e274de11a60cf')
+sha256sums=('2a60ec99ae498e7cdafac63ecca1c0ca07643eaa6c9a1a83f19e4daa3e75b9d9')
 
 build() {
   cd "${srcdir}/${_srcname}"

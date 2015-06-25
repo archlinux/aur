@@ -1,6 +1,6 @@
 pkgbase = linux-libre-manpages
 	pkgdesc = Kernel hackers manual - Section 9 manpages that comes with the Linux-libre kernel
-	pkgver = 3.18_gnu
+	pkgver = 3.19_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = any
@@ -9,15 +9,15 @@ pkgbase = linux-libre-manpages
 	makedepends = docbook-xsl
 	provides = kernel26-manpages
 	provides = kernel26-libre-manpages
-	provides = linux-manpages=3.18
+	provides = linux-manpages=3.19
 	conflicts = kernel26-manpages
 	conflicts = kernel26-libre-manpages
 	conflicts = linux-manpages
 	replaces = kernel26-manpages
 	replaces = kernel26-libre-manpages
 	replaces = linux-manpages
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18-gnu/linux-libre-3.18-gnu.tar.xz
-	sha256sums = 0f347d8eba8a6878246b94b3559eb0371d96a3f43de2f134513e274de11a60cf
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.19-gnu/linux-libre-3.19-gnu.tar.xz
+	sha256sums = 2a60ec99ae498e7cdafac63ecca1c0ca07643eaa6c9a1a83f19e4daa3e75b9d9
 
 pkgname = linux-libre-manpages
 
