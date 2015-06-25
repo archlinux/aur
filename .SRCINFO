@@ -1,6 +1,6 @@
 pkgbase = ring-gnome-client-git
 	pkgdesc = The GNOME client for Ring (formerly known as SFLphone)
-	pkgver = 20150526
+	pkgver = 20150622
 	pkgrel = 1
 	url = http://ring.cx
 	arch = i686
