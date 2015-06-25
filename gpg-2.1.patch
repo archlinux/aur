@@ -1,0 +1,42 @@
+diff -ru src/pius-2.1.1/libpius/signer.py src/pius-2.1.1/libpius/signer.py
+--- src/pius-2.1.1/libpius/signer.py	2015-04-08 09:13:03.000000000 +0200
++++ src/pius-2.1.1/libpius/signer.py	2015-04-15 15:29:46.571607243 +0200
+@@ -608,7 +607,7 @@
+     # Since we're here, we also handle the highly unlikely case where the
+     # verified cached passphrase doesn't work.
+     #
+-    while True:
++    while False:
+       line = gpg.stdout.readline()
+       debug('Got %s' % line)
+       if 'BAD_PASSPHRASE' in line:
+diff -ru src/pius-2.1.1/pius src/pius-2.1.1/pius
+--- src/pius-2.1.1/pius	2015-04-08 09:13:03.000000000 +0200
++++ src/pius-2.1.1/pius	2015-04-15 15:46:09.377315953 +0200
+@@ -180,7 +180,7 @@
+            '       %prog [options] -A -r <keyring_path> -s <signer_keyid>')
+   parser = OptionParser(usage=usage, version='%%prog %s' % VERSION,
+                         option_class=MyOption)
+-  parser.set_defaults(mode=MODE_CACHE_PASSPHRASE,
++  parser.set_defaults(mode=MODE_AGENT,
+                       gpg_path=DEFAULT_GPG_PATH,
+                       out_dir=DEFAULT_OUT_DIR,
+                       tmp_dir=DEFAULT_TMP_DIR,
+@@ -192,7 +192,7 @@
+   parser.add_option('-a', '--use-agent', action='store_const', const=MODE_AGENT,
+                     dest='mode',
+                     help='Use pgp-agent instead of letting gpg prompt the'
+-                         ' user for every UID. [default: false]')
++                         ' user for every UID. [default: true]')
+   parser.add_option('-A', '--all-keys', action='store_true', dest='all_keys',
+                     help='Sign all keys on the keyring. Requires -r.')
+   parser.add_option('-b', '--gpg-path', dest='gpg_path', metavar='PATH',
+@@ -244,7 +244,7 @@
+                     const=MODE_CACHE_PASSPHRASE, dest='mode',
+                     help='Cache private key passphrase in memory and provide'
+                          ' it to gpg instead of letting gpg prompt the user'
+-                         ' for every UID. [default: true]')
++                         ' for every UID. [default: false]')
+   parser.add_option('-P', '--mail-port', dest='mail_port', metavar='PORT',
+                     nargs=1, type='int',
+                     help='Port of SMTP server. [default: %default]')

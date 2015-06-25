@@ -1,0 +1,9 @@
+post_install() {
+  echo "See /usr/share/doc/pius/README for documentation."
+  echo "Note that on Arch, the gpg-agent mode is used by default"
+  echo "(instead of the upstream 'cache_passphrase' default mode)"
+}
+
+post_upgrade() {
+  post_install
+}
