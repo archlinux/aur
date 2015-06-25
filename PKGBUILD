@@ -2,12 +2,12 @@
 #Contributor: Ricardo Honorato Z.
 pkgname=vmd
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('tcsh' 'perl' 'libxi' 'tcl' 'libxinerama' 'mesa-libgl' 'glu')
+depends=('tcsh' 'perl' 'libxi' 'tcl' 'libxinerama' 'libgl' 'glu')
 makedepends=('make')
 optdepends=('netcdf: MMTK and AMBER 9 trajectories support'
             'openbabel: additional file formats support'
