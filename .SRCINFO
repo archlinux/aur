@@ -1,0 +1,31 @@
+pkgbase = kmscon-git
+	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS)
+	pkgver = 8.15.g3b6fb0f
+	pkgrel = 1
+	epoch = 2
+	url = https://github.com/dvdhrm/kmscon
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = linux-api-headers
+	depends = systemd
+	depends = libdrm
+	depends = mesa
+	depends = libegl
+	depends = libgbm
+	depends = libgles
+	depends = pango
+	depends = libxkbcommon
+	depends = xkeyboard-config
+	depends = libtsm
+	provides = kmscon
+	conflicts = kmscon
+	options = !libtool
+	source = git://people.freedesktop.org/~dvdhrm/kmscon
+	md5sums = SKIP
+
+pkgname = kmscon-git
+
