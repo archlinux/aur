@@ -12,7 +12,7 @@ source=("http://www.tbi.univie.ac.at/~wash/RNAz/RNAz-$pkgver.tar.gz")
 md5sums=('748dec1d1de7e73d7f42290e51c14052')
 
 build() {
-  cd "$srcdir/RNAz-$pkgver"
+  cd $srcdir/RNAz-$pkgver
 
   ./configure --prefix=/usr --disable-static
 
@@ -20,15 +20,15 @@ build() {
 }
 
 check() {
-   cd "$srcdir/RNAz-$pkgver"
+   cd $srcdir/RNAz-$pkgver
 
    make check
 }
 
 package() {
-  cd "$srcdir/RNAz-$pkgver"
+  cd $srcdir/RNAz-$pkgver
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR=$pkgdir install
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
