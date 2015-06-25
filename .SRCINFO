@@ -1,0 +1,19 @@
+pkgbase = playpen-git
+	pkgdesc = A secure application sandbox using namespaces, cgroups and seccomp
+	pkgver = 5.7.g15789f4
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/thestinger/playpen/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libseccomp
+	depends = systemd
+	provides = playpen
+	conflicts = playpen
+	source = git://github.com/thestinger/playpen
+	md5sums = SKIP
+
+pkgname = playpen-git
+
