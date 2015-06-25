@@ -1,7 +1,7 @@
 pkgbase = gvim-checkpath
 	pkgdesc = Gvim wrapper for autodetect permissions/root, open multi files in tabs, based on geany-checkpath
 	pkgver = 3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://acidhub.click/GVim
 	arch = any
 	license = GPL
