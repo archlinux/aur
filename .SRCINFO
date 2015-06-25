@@ -1,0 +1,22 @@
+pkgbase = phoronix-test-suite-git
+	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
+	pkgver = v5.8.1.1.ge6fbee9
+	pkgrel = 1
+	url = http://www.phoronix-test-suite.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = python
+	depends = ruby
+	optdepends = php
+	optdepends = php-gtk
+	optdepends = php-curl
+	optdepends = php-gd
+	source = https://github.com/phoronix-test-suite/phoronix-test-suite.git
+	md5sums = SKIP
+
+pkgname = phoronix-test-suite-git
+

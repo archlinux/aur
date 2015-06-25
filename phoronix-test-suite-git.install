@@ -1,0 +1,4 @@
+To Complete the Installation:
+
+Update your icons:
+	$ xdg-icon-resource forceupdate
