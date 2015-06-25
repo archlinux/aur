@@ -1,6 +1,6 @@
 pkgbase = liteide-git
 	pkgdesc = IDE for editing and building projects written in the Go programming language - git variant.
-	pkgver = r1307.f5de5dc-1
+	pkgver = r1307.f5de5dc
 	pkgrel = 1
 	url = https://github.com/visualfc/liteide
 	arch = any
