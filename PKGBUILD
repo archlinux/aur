@@ -1,7 +1,7 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
 
 pkgname=mixxx-git
-pkgver=20131229.9fc75b5
+pkgver=release.1.12.0.beta1.r747.gab53f56
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Development branch from git with cpu optimization enabled"
 arch=('i686' 'x86_64')
