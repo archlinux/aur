@@ -3,7 +3,7 @@
 _pkgbase="ucglib-git"
 #pkgname=('libucgsdl-git' 'libucgwpi-git')
 pkgname=('ucglib-git')
-pkgver=59e157e
+pkgver=e7cd227
 pkgrel=1
 pkgdesc="Color graphics library for embedded systems"
 arch=( 'i686' 'x86_64' 'armv5tel' 'armv7l' )
