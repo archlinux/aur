@@ -11,7 +11,7 @@ license=('GPL2')
 depends_i686=('alsa-lib' 'libgl')
 depends_x86_64=('lib32-alsa-lib' 'lib32-libgl' 'lib32-alsa-lib')
 source=("reicast-${pkgver/_/-}.tar.gz::https://github.com/reicast/reicast-emulator/archive/${pkgver/_/-}.tar.gz")
-sah256sums=('')
+sha256sums=('f2ff9695ab04cedfee3446af5c6ab98b7e2d08f55726dde757fdfbbe88df8355')
 
 build () {
   cd reicast-emulator-${pkgver/_/-}/shell/lin86
@@ -27,4 +27,3 @@ package () {
 }
 
 # vim: ts=2 sw=2 et:
-sha256sums=('f2ff9695ab04cedfee3446af5c6ab98b7e2d08f55726dde757fdfbbe88df8355')
