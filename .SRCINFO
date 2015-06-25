@@ -1,0 +1,18 @@
+pkgbase = jpass-web-git
+	pkgdesc = JPass password manager - web application
+	pkgver = r13.62e6c07
+	pkgrel = 1
+	url = https://joel.porquet.org/wiki/hacking/jpass-web/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = jpass-git
+	depends = python
+	depends = python-bottle
+	depends = python-flup-hg
+	backup = etc/webapps/jpass/jpassrc
+	source = jpass-web-git::git+https://joel.porquet.org/cgit/cgit.cgi/jpass-web.git/
+	md5sums = SKIP
+
+pkgname = jpass-web-git
+
