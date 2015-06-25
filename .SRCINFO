@@ -1,0 +1,16 @@
+pkgbase = mediawiki-externallinks-git
+	pkgdesc = An extension for listing and validating external links
+	pkgver = v1.23.r0.b30200f
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:ExternalLinks
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-
+	conflicts = mediawiki-
+	source = ExternalLinks::git+https://github.com/roman-1983/mediawiki-ExternalLinks
+	md5sums = SKIP
+
+pkgname = mediawiki-externallinks-git
+
