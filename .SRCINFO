@@ -1,0 +1,15 @@
+pkgbase = jpass-git
+	pkgdesc = JPass password manager
+	pkgver = r16.4d491bc
+	pkgrel = 1
+	url = https://joel.porquet.org/wiki/hacking/jpass/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-configobj
+	source = jpass-git::git+https://joel.porquet.org/cgit/cgit.cgi/jpass.git/
+	md5sums = SKIP
+
+pkgname = jpass-git
+
