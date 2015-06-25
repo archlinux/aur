@@ -1,0 +1,12 @@
+--- a/Makefile.in	2014-09-23 16:50:30.336402163 +0200
++++ b/Makefile.in	2013-06-28 18:04:10.000000000 +0200
+@@ -12,7 +12,7 @@
+ includedir = @includedir@
+ 
+ SHELL = /bin/sh
+-MKINSTALLDIRS = ${SHELL} mkinstalldirs 
++MKINSTALLDIRS = mkdir -p
+ SHCC = ${CC} -fPIC 
+ INSPECT = inspectsocks
+ SAVE = saveme
+

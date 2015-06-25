@@ -1,0 +1,20 @@
+pkgbase = tsocks-ipv6
+	pkgdesc = Transparent SOCKS proxying library, with IPv6 support
+	pkgver = 1.8beta6
+	pkgrel = 1
+	url = https://github.com/Elysion-tcfa/tsocks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = tsocks
+	source = https://github.com/Elysion-tcfa/tsocks/archive/be36c83a7326c75123fa019a4cb53792ecd8f689.tar.gz
+	source = fix-mkinstalldirs.patch
+	md5sums = 170e2115c29544b9ffd553dd78f63d6b
+	md5sums = b85f664abe7e6afdb908c94fbfd17602
+	sha1sums = 52625a176ed9e7beb76d8666e88122da538156ac
+	sha1sums = cf226b90eca8d3cc69cf4016c4f3ab2c0a88de57
+	sha256sums = 76c4ac3cde166b3b84653e6788203bdcea2a313edb13c7aefaf9c69a64c76ea8
+	sha256sums = 0fcdd40b820b9ee2da2625f80ed5badd4326825a1cc89dc9596f202e405a0699
+
+pkgname = tsocks-ipv6
+
