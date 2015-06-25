@@ -13,7 +13,7 @@ depends=('wiringpi-git')
 makedepends=('wiringpi-git')
 #conflicts=('libucgsdl-git' 'libucgwpi-git')
 
-source=("${_pkgbase}::git+https://github.com/yhfudev/ucglib.git"
+source=("${_pkgbase}::git+https://github.com/olikraus/u8glib.git"
     )
 md5sums=('SKIP'
     )
