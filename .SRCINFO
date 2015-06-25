@@ -1,0 +1,12 @@
+pkgbase = mcabber-module-slack-completion
+	pkgdesc = Provides username autocompletion with @
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/seletskiy/mcabber-slack-completion
+	arch = any
+	license = GPL
+	source = git+https://github.com/seletskiy/mcabber-slack-completion
+	md5sums = SKIP
+
+pkgname = mcabber-module-slack-completion
+
