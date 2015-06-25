@@ -1,0 +1,14 @@
+pkgbase = rsvndump
+	pkgdesc = Remote Subversion repository dump.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://rsvndump.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = subversion
+	source = http://prdownloads.sourceforge.net/rsvndump/rsvndump-0.6.tar.bz2
+	md5sums = d613a1d7cdab62f225271e18db098dbe
+
+pkgname = rsvndump
+
