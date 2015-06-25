@@ -1,0 +1,18 @@
+pkgbase = ats2-postiats
+	pkgdesc = Statically typed programming language
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.ats-lang.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = gmp
+	optdepends = gmp
+	options = staticlibs
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-0.2.0/ATS2-Postiats-0.2.0.tgz
+	sha256sums = 455e269f5d56f0f92f8aa83d47e8e221135d1fe57f03f4afd9d1a07ab1ad3dfe
+
+pkgname = ats2-postiats
+
