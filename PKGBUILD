@@ -1,14 +1,14 @@
-# Maintainer: AcidHub <acidhub@craft.net.br>
+# Maintainer: Acidhub <contact@acidhub.click>
 
 pkgname=nullidentdmod-git
-pkgver=20150610.22.c3f0e54
+pkgver=20150624.24.d8ec051
 pkgrel=1
 pkgdesc="Minimal identd server with customizable userid"
 conflicts=('oidentd' 'nullidentd' 'pindetd' 'nullidentdmod')
 arch=('any')
-url="http://web.craft.net.br/NullidentdMod/"
+url="http://acidhub.click/NullidentdMod/"
 license=('GPL')
-source=("git+https://github.com/BlackXT/${pkgname%-*}")
+source=("git+https://github.com/Acidhub/${pkgname%-*}")
 sha1sums=('SKIP')
 
 pkgver() {
