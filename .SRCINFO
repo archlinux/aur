@@ -1,0 +1,24 @@
+pkgbase = perl-dist-zilla-plugin-minimumperl
+	pkgdesc = Detects the minimum version of Perl required for your dist
+	pkgver = 1.006
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugin-MinimumPerl
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl>=5.6
+	checkdepends = perl-file-temp>=0
+	checkdepends = perl-test-simple>=0.88
+	checkdepends = perl-pathtools>=0
+	checkdepends = perl-io>=0
+	depends = perl>=5.6
+	depends = perl-perl-minimumversion>=1.26
+	depends = perl-moosex-types-perl>=0.101340
+	depends = perl-dist-zilla>=5.006
+	depends = perl-moose>=1.03
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/A/AP/APOCAL/Dist-Zilla-Plugin-MinimumPerl-1.006.tar.gz
+	sha256sums = 52646bf65f5fd5ce0b1fa64b318946151bb9a5a05525eb27e74e6c99a4254e34
+
+pkgname = perl-dist-zilla-plugin-minimumperl
+
