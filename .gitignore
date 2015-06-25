@@ -1,0 +1,5 @@
+*.tar.gz
+pkg/
+src/
+kimchi*.tar.xz
+kimchi*.tar.xz.sig
