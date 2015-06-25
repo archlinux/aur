@@ -1,8 +1,8 @@
-# Maintainer:  Acidhub <acidhub@craft.net.br>
+# Maintainer:  Acidhub <contact@acidhub.click>
 
 pkgname=mount-gtk
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple graphical front end for udisks and mount in GTK3"
 arch=('i686' 'x86_64')
 url="http://mount-gtk.sourceforge.net/"

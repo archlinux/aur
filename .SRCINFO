@@ -1,7 +1,7 @@
 pkgbase = mount-gtk
 	pkgdesc = A simple graphical front end for udisks and mount in GTK3
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mount-gtk.sourceforge.net/
 	arch = i686
 	arch = x86_64
