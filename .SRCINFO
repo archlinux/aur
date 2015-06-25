@@ -1,0 +1,13 @@
+pkgbase = git-test-git
+	pkgdesc = Git extension to conveniently test all distinct versions.
+	pkgver = r7.e71d22f
+	pkgrel = 1
+	url = https://github.com/spotify/git-test
+	arch = any
+	license = Apache
+	depends = git
+	source = git-test::git+https://github.com/spotify/git-test.git
+	md5sums = SKIP
+
+pkgname = git-test-git
+
