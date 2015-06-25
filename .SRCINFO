@@ -1,7 +1,7 @@
 pkgbase = plex-media-server
 	pkgdesc = Plex Media Server
 	pkgver = 0.9.12.4.1192
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plex.tv/
 	install = plex-media-server.install
 	arch = arm
@@ -9,6 +9,7 @@ pkgbase = plex-media-server
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = prelink
 	depends = systemd
 	conflicts = plexmediaserver
 	conflicts = plexmediaserver-plexpass

@@ -9,12 +9,13 @@
 pkgname=plex-media-server
 pkgver=0.9.12.4.1192
 _pkgsum=9a47d21
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 depends=('systemd')
+makedepends=('prelink')
 replaces=('plexmediaserver')
 conflicts=('plexmediaserver' 'plexmediaserver-plexpass')
 backup=('etc/conf.d/plexmediaserver')
@@ -39,6 +40,9 @@ prepare() {
     mkdir -p usr/lib/plexmediaserver
     tar -xf package.tgz -C usr/lib/plexmediaserver/
   fi
+
+  #Fix for SELinux and Grsecurity
+  execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*
 }
 
 package() {
