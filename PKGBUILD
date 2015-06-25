@@ -1,12 +1,12 @@
 pkgname=cairo-dock-plug-ins-extras-git
-pkgver=3.4.0.r5.g429fe72 
+pkgver=3.4.0.r22.g6beef4f 
 pkgrel=1 
 pkgbranch=cairo-dock-plug-ins-extras 
 pkgdesc="Extra plugins for cairo-dock, git version" 
 arch=('i686' 'x86_64') 
 url="http://www.glx-dock.org" 
 license=('GPL') 
-depends=('cairo-dock-plugins-git' 'python' 'python-dbus') 
+depends=('cairo-dock-plug-ins-git' 'python' 'python-dbus') 
 optdepends=('python2-dbus'
 	'vala' 
 	'python-sgmllib: Google'
