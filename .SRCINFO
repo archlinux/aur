@@ -1,0 +1,15 @@
+pkgbase = pidgin-gtalksharedstatus
+	pkgdesc = Adds Google Shared Status compatibility that permits to set the status for all the resources connected. This allows to go Invisible on GTalk.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://www.siorarina.net/gtalk-shared-status/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = libpurple
+	source = http://www.siorarina.net/gss/src/gtalk-shared-status-0.2.5.src.tar.gz
+	md5sums = 651444f5e7e8f35aaa108c471d571030
+
+pkgname = pidgin-gtalksharedstatus
+
