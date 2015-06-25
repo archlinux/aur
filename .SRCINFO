@@ -14,9 +14,7 @@ pkgbase = st-git
 	provides = st
 	conflicts = st
 	source = git://git.suckless.org/st
-	source = scrollback.patch
 	sha1sums = SKIP
-	sha1sums = 2e10ac47eb020d50c7f861f3923bb4152255a027
 
 pkgname = st-git
 

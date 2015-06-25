@@ -11,10 +11,8 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-source=('git://git.suckless.org/st'
-        'scrollback.patch')
-sha1sums=('SKIP'
-          '2e10ac47eb020d50c7f861f3923bb4152255a027')
+source=('git://git.suckless.org/st')
+sha1sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
