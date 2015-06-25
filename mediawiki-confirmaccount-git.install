@@ -1,0 +1,5 @@
+post_install() {
+  echo " >> ConfirmAccount requires extra sql tables. Therefore running"
+  echo " >> 'php update.php' from /usr/share/webapps/mediawiki/maintenance may"
+  echo " >> be required."
+}

@@ -1,0 +1,17 @@
+pkgbase = mediawiki-confirmaccount-git
+	pkgdesc = An extension for controlled account registration.
+	pkgver = r1554.7fa2b67
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:ConfirmAccount
+	install = mediawiki-confirmaccount-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-confirmaccount
+	conflicts = mediawiki-confirmaccount
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmAccount
+	md5sums = SKIP
+
+pkgname = mediawiki-confirmaccount-git
+
