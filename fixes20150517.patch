@@ -1,0 +1,71 @@
+diff -ur a/casetta/pictures.py b/casetta/pictures.py
+--- a/casetta/pictures.py	2007-07-28 21:59:19.000000000 +0100
++++ b/casetta/pictures.py	2015-05-17 15:12:39.734798195 +0100
+@@ -48,7 +48,7 @@
+ # $Source: $
+ __date__ = "$Date: $"
+ 
+-import Image
++from PIL import Image
+ 
+ # Constants:
+ ORANGE = (255, 128, 0)
+diff -ur a/casetta/pil.py b/casetta/pil.py
+--- a/casetta/pil.py	2007-07-28 21:59:19.000000000 +0100
++++ b/casetta/pil.py	2015-05-17 15:15:06.389306198 +0100
+@@ -45,7 +45,7 @@
+ # $Source: $
+ __date__ = "$Date: $"
+ 
+-import Image
++from PIL import Image
+ import os
+ import pictures
+ import data as datacls
+diff -ur a/casetta_cli/casetta_cli.py b/casetta_cli/casetta_cli.py
+--- a/casetta_cli/casetta_cli.py	2007-07-28 21:59:19.000000000 +0100
++++ b/casetta_cli/casetta_cli.py	2015-05-17 15:19:51.915102480 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ ############################################################################
+diff -ur a/casetta_cli/launcher/casetta b/casetta_cli/launcher/casetta
+--- a/casetta_cli/launcher/casetta	2007-07-28 21:59:19.000000000 +0100
++++ b/casetta_cli/launcher/casetta	2015-05-17 15:19:41.371924388 +0100
+@@ -52,4 +52,4 @@
+ 
+ #Bash script for running the python script in /usr/share/casetta_cli
+ 
+-python /usr/share/casetta_cli/casetta_cli.py "$@"
++python2 /usr/share/casetta_cli/casetta_cli.py "$@"
+diff -ur a/gasetta/applications/gasetta.desktop b/gasetta/applications/gasetta.desktop
+--- a/gasetta/applications/gasetta.desktop	2007-07-28 21:59:19.000000000 +0100
++++ b/gasetta/applications/gasetta.desktop	2015-05-17 15:12:11.398548571 +0100
+@@ -10,6 +10,6 @@
+ Terminal=false
+ X-MultipleArgs=false
+ Type=Application
+-Icon=/usr/share/gasetta/gasetta.svg
++Icon=gasetta
+ Categories=Development;
+ MimeType=text/newcat;text/ctf;text/cat;application/x-g1r;application/x-fxi;application/x-fxb;application/x-fxd;application/x-fxm;application/x-cafix;application/x-cas;application/x-casemul;image/png;image/bmp;image/jpeg;image/gif
+diff -ur a/gasetta/gasetta.py b/gasetta/gasetta.py
+--- a/gasetta/gasetta.py	2007-07-28 21:59:19.000000000 +0100
++++ b/gasetta/gasetta.py	2015-05-17 15:20:31.584518366 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ ############################################################################
+diff -ur a/gasetta/launcher/gasetta b/gasetta/launcher/gasetta
+--- a/gasetta/launcher/gasetta	2007-07-28 21:59:19.000000000 +0100
++++ b/gasetta/launcher/gasetta	2015-05-17 15:20:21.348002430 +0100
+@@ -62,4 +62,4 @@
+     param="$@"
+ fi
+ 
+-cd /usr/share/gasetta && python ./gasetta.py "$param"
++cd /usr/share/gasetta && python2 ./gasetta.py "$param"
