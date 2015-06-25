@@ -1,0 +1,13 @@
+pkgbase = pcal
+	pkgdesc = Pcal is a calendar-generation program which produces nice-looking PostScript output
+	pkgver = 4.11.0
+	pkgrel = 3
+	url = http://pcal.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://downloads.sourceforge.net/project/pcal/pcal/pcal-4.11.0/pcal-4.11.0.tgz
+	md5sums = 0ed7e9bec81fe3bdd62f8af283bef704
+
+pkgname = pcal
+
