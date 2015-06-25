@@ -1,11 +1,10 @@
 pkgbase = openrct2
 	pkgdesc = Open source clone of RollerCoaster Tycoon 2
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IntelOrca/OpenRCT2
 	install = openrct2.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = wine
 	depends = gtk-update-icon-cache
