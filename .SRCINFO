@@ -1,0 +1,22 @@
+pkgbase = libgit2-git
+	pkgdesc = A linkable library for Git
+	pkgver = 0.21.0.r65.g9b87998
+	pkgrel = 1
+	epoch = 2
+	url = http://libgit2.github.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python2
+	makedepends = git
+	depends = zlib
+	depends = openssl
+	depends = libssh2
+	provides = libgit2
+	conflicts = libgit2
+	source = git://github.com/libgit2/libgit2.git
+	md5sums = SKIP
+
+pkgname = libgit2-git
+
