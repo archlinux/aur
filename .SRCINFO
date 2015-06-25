@@ -1,0 +1,13 @@
+pkgbase = ca_multi
+	pkgdesc = The canada multilingual keymap
+	pkgver = 1.2
+	pkgrel = 4
+	url = http://stellaire.ca/
+	arch = any
+	groups = system
+	license = GPL
+	source = ca_multi.map::https://gist.githubusercontent.com/sim590/fce9586bc9fbe6e88dcd/raw/9fe0f7d855f342e2bad1cada7240a8af7b1a741f/ca_multi.map
+	sha256sums = b739a806ca59b1f76fc42a9f9be87437a936491468a12a9f6dd722e597b2b382
+
+pkgname = ca_multi
+
