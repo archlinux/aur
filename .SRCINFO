@@ -5,6 +5,7 @@ pkgbase = webcamoid-git
 	url = https://github.com/hipersayanX/webcamoid
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = GPL
 	makedepends = git
 	makedepends = qt5-tools
