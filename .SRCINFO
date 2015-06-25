@@ -1,0 +1,16 @@
+pkgbase = sidewinderd
+	pkgdesc = Sidewinder daemon - Linux support for Microsoft Sidewinder X4 / X6 keyboards
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://cevel.net/projects/sidewinderd/
+	install = sidewinderd.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = libconfig
+	depends = tinyxml2
+	source = sidewinderd::https://github.com/tolga9009/sidewinderd/archive/0.2.1.tar.gz
+	md5sums = 43e9b51710090aef939cb1095aa58c4a
+
+pkgname = sidewinderd
+
