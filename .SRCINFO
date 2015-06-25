@@ -1,0 +1,21 @@
+pkgbase = pdf2img-c
+	pkgdesc = Easily convert PDF to multiple image formats with a single click. C version of pdf2img.
+	pkgver = 90.9b4c3e1
+	pkgrel = 1
+	url = https://github.com/wifiextender/pdf2png
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = gcc
+	depends = gtk3
+	depends = glibc
+	depends = ghostscript
+	conflicts = pdf2img
+	conflicts = pdf2img-git
+	replaces = pdf2img
+	source = git+https://github.com/wifiextender/pdf2png.git
+	md5sums = SKIP
+
+pkgname = pdf2img-c
+
