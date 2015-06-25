@@ -1,0 +1,19 @@
+pkgbase = mediawiki-codeeditor-git
+	pkgdesc = An extension adding web based editor for css, js and lua.
+	pkgver = r256.a7f5ae2
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:CodeEditor
+	arch = any
+	license = GPL
+	license = GPL2
+	license = LGPL
+	license = MPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-codeeditor
+	conflicts = mediawiki-codeeditor
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeEditor
+	md5sums = SKIP
+
+pkgname = mediawiki-codeeditor-git
+
