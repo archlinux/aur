@@ -1,0 +1,14 @@
+pkgbase = c_count
+	pkgdesc = Counts lines, statements, other simple measures of C/C++ source programs.
+	pkgver = 7.12
+	pkgrel = 1
+	url = http://invisible-island.net/c_count/
+	arch = i686
+	arch = x86_64
+	license = custom
+	conflicts = sloccount
+	source = ftp://invisible-island.net/c_count/c_count-7.12.tgz
+	md5sums = 09dca0f2fc524faa1f0a4573a982f703
+
+pkgname = c_count
+
