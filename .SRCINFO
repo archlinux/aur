@@ -1,0 +1,16 @@
+pkgbase = usermount-git
+	pkgdesc = Simple C program to automatically mount removable drives using UDisks2 and D-Bus.
+	pkgver = 20150108
+	pkgrel = 1
+	url = https://github.com/tom5760/usermount
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = udisks2
+	depends = libnotify
+	source = git://github.com/tom5760/usermount.git
+	md5sums = SKIP
+
+pkgname = usermount-git
+
