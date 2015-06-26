@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BGBilling ${_vermajor}
+Comment=BGBilling Client ${pkgver}
+Exec=bgbilling${_versuf}.sh
+Icon=bgbillingclient${_versuf}.png
+Type=Application
+Terminal=false
+Categories=Office;
