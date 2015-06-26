@@ -1,0 +1,27 @@
+pkgbase = cdo
+	pkgdesc = CDO is a collection of command line Operators to manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available.
+	pkgver = 1.6.9
+	pkgrel = 1
+	url = https://code.zmaw.de/projects/cdo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = netcdf
+	makedepends = hdf5
+	makedepends = proj
+	makedepends = szip
+	makedepends = grib_api
+	makedepends = udunits
+	makedepends = fftw
+	depends = netcdf
+	depends = hdf5
+	depends = proj
+	depends = szip
+	depends = grib_api
+	depends = udunits
+	depends = fftw
+	source = https://code.zmaw.de/attachments/download/10198/cdo-1.6.9.tar.gz
+	md5sums = bf0997bf20e812f35e10188a930e24e2
+
+pkgname = cdo
+
