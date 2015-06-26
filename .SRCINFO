@@ -1,0 +1,14 @@
+pkgbase = cdb
+	pkgdesc = A fast, reliable, simple package for creating and reading constant databases
+	pkgver = 0.75
+	pkgrel = 4
+	url = http://cr.yp.to/cdb.html
+	arch = i686
+	arch = x86_64
+	license = public-domain
+	conflicts = tinycdb
+	source = http://cr.yp.to/cdb/cdb-0.75.tar.gz
+	md5sums = 81fed54d0bde51b147dd6c20cdb92d51
+
+pkgname = cdb
+
