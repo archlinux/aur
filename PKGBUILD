@@ -1,17 +1,22 @@
 _pkgname=backupninja
 pkgname=$_pkgname-git
 pkgver=1.0.1.r59.g41c3544
-pkgrel=1
+pkgrel=2
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
 url="https://labs.riseup.net/code/projects/backupninja"
 license=('GPL')
 depends=('bash')
 makedepends=('git')
-optdepends=('rdiff-backup: rdiff backups' 'gzip' 'hwinfo' 'duplicity: duplicity
-backups')
+optdepends=('rdiff-backup: rdiff backups'
+            'gzip: compress backups'
+            'hwinfo: geting hardware information'
+            'mariadb-clients: mysql backups'
+            'rsync: secure and reliable remote syncronisation tool'
+            'duplicity: duplicity backups')
 source=('git+https://labs.riseup.net/code/backupninja.git')
 md5sums=('SKIP')
+backup=('etc/backupninja.conf')
 pkgver() {
     cd $_pkgname
     git describe --long | sed 's/^backupninja-//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -27,6 +32,11 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     make DESTDIR="$pkgdir" install
+    chmod a-x $pkgdir/usr/lib/$_pkgname/parseini
+    chmod a-x $pkgdir/usr/lib/$_pkgname/vserver
+    mkdir -p "$pkgdir/usr/share/doc/$_pkgname/examples"
+    install -Dm644 $pkgdir/usr/share/$_pkgname/example.* $pkgdir/usr/share/doc/$_pkgname/examples
+    rm $pkgdir/usr/share/$_pkgname/example.*
 }
 
 # vim:set ts=2 sw=2 et:
