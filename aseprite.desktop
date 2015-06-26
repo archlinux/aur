@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Aseprite
+Comment=Pixel-art paint program
+Exec=aseprite
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics
+Icon=aseprite
