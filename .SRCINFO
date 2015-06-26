@@ -1,0 +1,17 @@
+pkgbase = python2-gevent-websocket
+	pkgdesc = Websocket handler for the gevent pywsgi server, a Python network library.
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/gevent-websocket
+	arch = any
+	license = Apache
+	makedepends = cython2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-gevent
+	optdepends = python2-ujson: Ultra-fast JSON encoder and decoder for Python.
+	source = https://pypi.python.org/packages/source/g/gevent-websocket/gevent-websocket-0.9.5.tar.gz
+	md5sums = 03a8473b9a61426b0ef6094319141389
+
+pkgname = python2-gevent-websocket
+
