@@ -4,7 +4,7 @@
 pkgname=vim-hexman
 pkgver=0.7.3
 _scriptid=21365
-pkgrel=1
+pkgrel=2
 pkgdesc="Simpler Hex viewing and editing"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=666"
