@@ -1,0 +1,20 @@
+pkgbase = codeviz
+	pkgdesc = A call graph generation utility for C/C++
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = http://www.csn.ul.ie/~mel/projects/codeviz/
+	install = codeviz.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	depends = graphviz
+	noextract = gcc-4.6.4.tar.gz
+	options = !buildflags
+	source = http://www.csn.ul.ie/~mel/projects/codeviz/codeviz-1.0.12.tar.gz
+	source = ftp://ftp.gnu.org/pub/gnu/gcc/gcc-4.6.4/gcc-4.6.4.tar.gz
+	md5sums = 31bb56aeccc8eefb24f23073bf523c48
+	md5sums = a8f15fc233589924ccd8cc8140b0ca3c
+
+pkgname = codeviz
+
