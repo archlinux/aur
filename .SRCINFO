@@ -1,0 +1,16 @@
+pkgbase = xbl
+	pkgdesc = A 3D tetris/blockout game
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = http://perso.univ-lyon1.fr/thierry.excoffier/XBL/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	makedepends = autoconf
+	depends = libxext
+	source = http://perso.univ-lyon1.fr/thierry.excoffier/XBL/xbl-1.1.6.tar.gz
+	sha1sums = 05b368c20fd16a99346540a5352a011b56926ef3
+
+pkgname = xbl
+
