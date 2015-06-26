@@ -1,0 +1,13 @@
+pkgbase = kerf-git
+	pkgdesc = a columnar tick database written in C and speaks JSON and SQL
+	pkgver = 20150625
+	pkgrel = 1
+	url = https://github.com/kevinlawler/kona
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	source = git://github.com/kevinlawler/kerf.git
+	md5sums = SKIP
+
+pkgname = kerf-git
+
