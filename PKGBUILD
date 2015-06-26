@@ -1,5 +1,6 @@
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Original Core Repo Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Original Core Repo Maintainer: Tom Gundersen <teg@jklm.no>
+# Modifications to revert 743970d Maintainer: James Harvey <jamespharvey20@gmail.com>
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
