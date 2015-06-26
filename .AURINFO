@@ -1,0 +1,18 @@
+pkgbase = aseprite-git
+	pkgdesc = Create animated sprites and pixel art
+	pkgver = r2497.bd3fcd3
+	pkgrel = 1
+	url = http://www.aseprite.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = allegro
+	provides = aseprite
+	conflicts = aseprite
+	source = aseprite-git::git+https://github.com/aseprite/aseprite.git
+	source = aseprite.desktop
+
+pkgname = aseprite-git
+
