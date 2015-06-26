@@ -1,0 +1,13 @@
+pkgbase = thrax
+	pkgdesc = tool from OpenGrm to compile grammars into weighted finite-state transducers
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.opengrm.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = openfst
+	source = http://openfst.cs.nyu.edu/twiki/pub/GRM/ThraxDownload/thrax-1.1.0.tar.gz
+
+pkgname = thrax
+
