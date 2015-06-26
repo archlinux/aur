@@ -11,7 +11,7 @@ depends=('vala' 'gtk3' 'glib2' 'pango' 'cairo' 'gdk-pixbuf2')
 makedepends=('git' 'autoconf')
 conflicts=('quirky')
 provides=('quirky')
-source=("$pkgname::git+https://github.com/evolve-os/quirky.git#branch=master")
+source=("$pkgname::git+https://gitlab.com/ufee1dead/quirky.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
