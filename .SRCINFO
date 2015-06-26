@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-protobuf
+	pkgdesc = Protocol Buffers - Google's data interchange format
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = protobuf
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.bz2
+	md5sums = 11aaac2d704eef8efd1867a807865d85
+
+pkgname = mingw-w64-protobuf
+
