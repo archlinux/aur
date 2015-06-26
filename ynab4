@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export WINEARCH=win64 WINEPREFIX="$HOME/.ynab4/wine"
+
+if [ ! -d "$HOME"/.ynab4 ] ; then
+	mkdir -p "$HOME"/.ynab4/wine || exit 1
+	wine /usr/share/ynab4/Setup.exe || exit1
+	winetricks corefonts || exit 1
+fi
+
+wine "$HOME"/.ynab4/wine/drive_c/Program\ Files\ \(x86\)/YNAB\ 4/YNAB\ 4.exe
