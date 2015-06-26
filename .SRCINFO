@@ -1,0 +1,14 @@
+pkgbase = tbb-boost-git
+	pkgdesc = Parallel implementation of boostexter's scored text classifier
+	pkgver = 20110215
+	pkgrel = 1
+	url = http://github.com/benob/tbb-boost
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc>=4.4
+	depends = intel-tbb
+
+pkgname = tbb-boost-git
+
