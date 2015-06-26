@@ -1,0 +1,15 @@
+pkgbase = macaon-data
+	pkgdesc = Language files for the macaon Natural Language Processing tools
+	pkgver = 15
+	pkgrel = 2
+	url = http://macaon.lif.univ-mrs.fr/
+	arch = any
+	license = GPL
+	depends = macaon
+
+pkgname = macaon-fr
+
+pkgname = macaon-en
+
+pkgname = macaon-fr-oral
+
