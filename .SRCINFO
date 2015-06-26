@@ -1,6 +1,6 @@
 pkgbase = termite-git
 	pkgdesc = A simple VTE-based terminal
-	pkgver = 10
+	pkgver = 10.13.geb1628c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/thestinger/termite/
@@ -9,6 +9,7 @@ pkgbase = termite-git
 	license = LGPL
 	makedepends = git
 	depends = vte3-ng
+	depends = xdg-utils
 	provides = termite
 	conflicts = termite
 	backup = etc/xdg/termite/config
