@@ -1,0 +1,21 @@
+pkgbase = blueberry
+	pkgdesc = A Bluetooth configuration tool
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/linuxmint/blueberry
+	install = blueberry.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-gobject
+	depends = gtk3
+	depends = gnome-bluetooth>=3.14
+	depends = wmctrl
+	depends = rfkill
+	conflicts = cinnamon-bluetooth
+	replaces = cinnamon-bluetooth
+	source = https://github.com/linuxmint/blueberry/archive/1.0.8.tar.gz
+	md5sums = f9b3a587d5e51c4c80f72b4780218077
+
+pkgname = blueberry
+
