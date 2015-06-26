@@ -1,0 +1,17 @@
+pkgbase = fry-git
+	pkgdesc = A simple ruby version manager for fish
+	pkgver = 20140701
+	pkgrel = 2
+	url = https://github.com/terlar/fry
+	install = fry-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fish
+	provides = fry
+	conflicts = fry
+	source = git+https://github.com/terlar/fry.git
+	md5sums = SKIP
+
+pkgname = fry-git
+
