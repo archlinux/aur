@@ -7,8 +7,8 @@ pkgdesc="C++ library and tools for LC/MS data management and analyses"
 arch=('i686' 'x86_64')
 url="http://open-ms.sourceforge.net/"
 license=('BSD')
-depends=('boost' 'libsvm' 'glpk' 'xerces-c' 'qtwebkit' 'eigen')
-makedepends=('cmake')
+depends=('boost-libs' 'libsvm' 'glpk' 'xerces-c' 'qtwebkit' 'eigen')
+makedepends=('cmake' 'boost')
 optdepends=('dot2tex: Create package documentation during compilation'
 	    'texlive-core: Create package documentation during compilation'
 	    'texlive-latexextra: Create package documentation during compilation'
