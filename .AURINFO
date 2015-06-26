@@ -1,0 +1,15 @@
+pkgbase = cmuclmtk-svn
+	pkgdesc = Language model tools for CMU Sphinx (svn version)
+	pkgver = r12596
+	pkgrel = 1
+	url = http://cmusphinx.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	provides = cmuclmtk
+	conflicts = cmuclmtk
+	source = cmuclmtk-svn::svn+https://svn.code.sf.net/p/cmusphinx/code/trunk/cmuclmtk/
+
+pkgname = cmuclmtk-svn
+
