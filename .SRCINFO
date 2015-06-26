@@ -1,0 +1,15 @@
+pkgbase = hermetic-git
+	pkgdesc = a python-like language with hindley-milner-like type system, which is compiled to c
+	pkgver = 20150624
+	pkgrel = 1
+	url = https://github.com/alehander42/hermetic
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = gcc
+	source = git://github.com/alehander42/hermetic.git
+	md5sums = SKIP
+
+pkgname = hermetic-git
+
