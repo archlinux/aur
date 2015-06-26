@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 
 package() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 	install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
 	install -Dm644 "${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
 }
