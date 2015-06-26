@@ -22,7 +22,9 @@ build() {
   sed -i '/doc/d' CMakeLists.txt
   
   # Compile code with -fPIC (build code with Position Independent Code)
-  sed -i '/-DQT_STRICT_ITERATORS/ a ADD_DEFINITIONS(-fPIC)' CMakeLists.txt
+  #sed -i '/-DQT_STRICT_ITERATORS/ a ADD_DEFINITIONS(-fPIC)' CMakeLists.txt
+  sed -i '/CMAKE_MINIMUM_REQUIRED/ a SET(CMAKE_CXX_FLAGS "-fPIC")' CMakeLists.txt
+  
   
   #sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
   
