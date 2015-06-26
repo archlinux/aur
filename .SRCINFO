@@ -1,7 +1,7 @@
 pkgbase = bgbillingclient51
 	pkgdesc = Client for billing system BGBilling 5.1
-	pkgver = 5.1.695
-	pkgrel = 2
+	pkgver = 5.1.698
+	pkgrel = 1
 	url = http://bgbilling.ru
 	install = bgbillingclient.install
 	arch = i686

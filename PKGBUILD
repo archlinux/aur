@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingclient51
-pkgver=5.1.695
-pkgrel=2
+pkgver=5.1.698
+pkgrel=1
 pkgdesc='Client for billing system BGBilling 5.1'
 arch=('i686' 'x86_64')
 url='http://bgbilling.ru'
@@ -51,26 +51,41 @@ pkgver() {
 }
 
 package() {
-	# unzip distributive
+	msg2 "unzip distributive"
 	unzip -o ./${_achivename}_${_vermajor}_${_verbuild}.zip
-	# create structure
+
+	msg2 "create structure"
 	mkdir $pkgdir/opt
 	mv ${_achivename} $pkgdir/opt/${_dstdirname}${_versuf}
-	# remove win files
+
+	msg2 "remove win files"
 	rm -f $pkgdir/opt/${_dstdirname}${_versuf}/*.{bat,exe,ini}
-	# rename launch scripts (add suffix) and chmod
+
+	msg2 "rename launch scripts (add suffix) and chmod"
 	rename .sh ${_versuf}.sh $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
 	chmod +x $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
-	# patch env in launch script
-	sed -i "s/BGBILLING_DIR=\./BGBILLING_DIR=\$\{BGBILLING_DIR_${_versuf}\}/" $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
-	# patch var in files
+
+	msg2 "patch env in launch script"
+	sed -i "s/BGBILLING_DIR=\./BGBILLING_DIR=\$\{BGBILLING_DIR_${_versuf}\}/" $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+
+	msg2 "patch JAVA_HOME in launch script"
+	sed -i "s|\${JAVA_HOME}\/bin\/java|java|" $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+
+	msg2 "patch var in files"
 	_patch_var_file bgbillingclient{_versuf}.desktop
 	_patch_var_file bgbillingclient{_versuf}.sh
-	# rename var in files
+
+	msg2 "rename var in files"
 	_rename_var_file $srcdir/bgbillingclient{_versuf}.png
 	_rename_var_file $srcdir/bgbillingclient{_versuf}.desktop
 	_rename_var_file $srcdir/bgbillingclient{_versuf}.sh
-	# file
+
+	msg2 "copy file"
 	mkdir -p $pkgdir/usr/share/{applications,pixmaps}
 	install    -m644 $srcdir/bgbillingclient${_versuf}.png $pkgdir/usr/share/pixmaps/
 	install    -m644 $srcdir/bgbillingclient${_versuf}.desktop $pkgdir/usr/share/applications/
