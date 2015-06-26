@@ -1,7 +1,7 @@
 pkgbase = 0xdbe-eap
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity
 	pkgver = 142.2675.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/dbe/
 	arch = i686
 	arch = x86_64

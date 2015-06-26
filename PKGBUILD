@@ -3,7 +3,7 @@ pkgname=0xdbe-eap
 _pkgname=0xdbe
 pkgver=142.2675.6
 _buildver=142.2675.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64') # not 'any' because of fsnotifier
 url="http://www.jetbrains.com/dbe/"
@@ -35,5 +35,7 @@ package() {
   install -D -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D -m644 "$srcdir/0xDBE-$_buildver/bin/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
-  install -D -m644 "$srcdir/0xDBE-$_buildver/license/0xDBE_Preview_license.txt" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.txt"
+  
+  install -d -m755 "$pkgdir/usr/share/licenses/${_pkgname}"
+  install -D -m644 "$srcdir"/0xDBE-${_buildver}/license/* "$pkgdir"/usr/share/licenses/${_pkgname}
 }
