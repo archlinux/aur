@@ -22,7 +22,7 @@ build() {
   # Compile code with -fPIC (build code with Position Independent Code)
   sed -i '49iADD_DEFINITIONS(-fPIC)' CMakeLists.txt
   
-  sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")'
+  sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")' CMakeLists.txt
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release
