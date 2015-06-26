@@ -7,7 +7,8 @@
 pkgname=hdf5-fortran-openmpi
 _pkgname=hdf5
 pkgver=1.8.15
-pkgrel=1
+_patch=patch1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data"
 url="http://www.hdfgroup.org/HDF5/"
@@ -16,11 +17,11 @@ depends=('zlib' 'sh' 'gcc-libs' 'openmpi')
 makedepends=('time' 'gcc-fortran')
 conflicts=('hdf5')
 provides=('hdf5')
-source=(ftp://ftp.hdfgroup.org/HDF5/current/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
-sha1sums=('78d9b0c940c3600fd5b9105ecc778c33b87c4a58')
+source=(ftp://ftp.hdfgroup.org/HDF5/current/src/${_pkgname}-${pkgver/_/-}-${_patch}.tar.bz2)
+sha1sums=('82ed248e5d0293bc1dba4c13c9b2880a26643ee0')
 
 build() {
-  cd "$srcdir/${_pkgname}-${pkgver/_/-}"
+  cd "$srcdir/${_pkgname}-${pkgver/_/-}-${_patch}"
   export CFLAGS="${CFLAGS/O2/O0}"
   export CXXFLAGS="${CFLAGS}"
   ./configure \
@@ -45,12 +46,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver/_/-}"
+  cd "$srcdir/${_pkgname}-${pkgver/_/-}-${_patch}"
 
   make -j1 DESTDIR="${pkgdir}" install
 
   install -d -m755 "$pkgdir/usr/share/licenses/${pkgname}"
-  install -m644 "$srcdir/${_pkgname}-${pkgver/_/-}/COPYING" \
+  install -m644 "$srcdir/${_pkgname}-${pkgver/_/-}-${_patch}/COPYING" \
           "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" 
 }
-
