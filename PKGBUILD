@@ -1,8 +1,8 @@
 # Maintainer: zoe <chp321@gmail.com>
 
 pkgname=bikexperience
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.5
+pkgrel=1
 pkgdesc="Software for outdoor training planning and gpx-track-management"
 arch=('any')
 url="http://www.bikexperience.de/"

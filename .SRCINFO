@@ -1,7 +1,7 @@
 pkgbase = bikexperience
 	pkgdesc = Software for outdoor training planning and gpx-track-management
-	pkgver = 5.0.0
-	pkgrel = 2
+	pkgver = 5.0.5
+	pkgrel = 1
 	url = http://www.bikexperience.de/
 	arch = any
 	license = GPL
