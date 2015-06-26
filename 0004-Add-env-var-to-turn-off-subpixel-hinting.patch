@@ -1,4 +1,4 @@
-From d03029736ac69256ca3fe5d302bebcf5e22d8844 Mon Sep 17 00:00:00 2001
+From 649f2e555fbed9d883892d7939a6c493ad716af7 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:33:22 +0200
 Subject: [PATCH 4/4] Add env var to turn off subpixel hinting

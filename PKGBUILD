@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=freetype2-git
-pkgver=2.6+6+g5931268-1
+pkgver=2.6+17+g649f2e5-1
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
@@ -18,10 +18,10 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         0003-Enable-subpixel-hinting.patch
         0004-Add-env-var-to-turn-off-subpixel-hinting.patch)
 sha1sums=('SKIP'
-          'ccc9aaf53621a6e752b01db9e054aa63eb56f9b6'
-          'a9e78bc59ed06f3e11efc33e54fd7695899862a5'
-          '3b69ac9f198ee3e4459e2466d3cb0f0b07cc3837'
-          '7517bf45c066d036e3ec729b17c8fa221e4e81a0')
+          '731fe15f4db20127ed457b0d164f4ff57597c813'
+          'c0ec37c3b332f09dbafeff874fe658306510b3c1'
+          '69caf19093a272e7c780ad8ae91dcd965de7a846'
+          '0a75db92c93c7a1576052348174fa510740d079f')
 
 provides=("freetype2=$pkgver" libfreetype.so)
 conflicts=("freetype2")

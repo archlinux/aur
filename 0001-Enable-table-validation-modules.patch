@@ -1,4 +1,4 @@
-From 5c55ed25694e95a7ff6f3c231b3b5bcde233af30 Mon Sep 17 00:00:00 2001
+From 44c1d099a53b9152b69042bf08320147e9255b94 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:40:29 +0200
 Subject: [PATCH 1/4] Enable table validation modules
@@ -8,7 +8,7 @@ Subject: [PATCH 1/4] Enable table validation modules
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index 3d70a7c..862fe34 100644
+index 2984e51..a5db21d 100644
 --- a/modules.cfg
 +++ b/modules.cfg
 @@ -110,7 +110,7 @@ RASTER_MODULES += smooth
