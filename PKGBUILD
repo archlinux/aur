@@ -1,10 +1,38 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.01.01
-_pkgver=10.01.p01
+pkgver=10.01.02
+_pkgver=10.01.p02
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
-depends=('cmake>=2.8.2' 'xerces-c' 'qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-enginio' 'qt5-graphicaleffects' 'qt5-imageformats' 'qt5-location'  'qt5-multimedia'  'qt5-quick1' 'qt5-quickcontrols' 'qt5-script' 'qt5-sensors' 'qt5-serialport' 'qt5-svg' 'qt5-tools' 'qt5-translations' 'qt5-wayland' 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'glu' 'soxt' 'mesa' 'clhep')
+depends=('cmake>=2.8.2'
+         'xerces-c'
+         'qt5-base'
+         'qt5-connectivity'
+         'qt5-declarative'
+         'qt5-enginio'
+         'qt5-graphicaleffects'
+         'qt5-imageformats'
+         'qt5-location'
+         'qt5-multimedia'
+         'qt5-quick1'
+         'qt5-quickcontrols'
+         'qt5-script'
+         'qt5-sensors'
+         'qt5-serialport'
+         'qt5-svg'
+         'qt5-tools'
+         'qt5-translations'
+         'qt5-wayland'
+         'qt5-webchannel'
+         'qt5-webengine'
+         'qt5-webkit'
+         'qt5-websockets'
+         'qt5-x11extras'
+         'qt5-xmlpatterns'
+         'glu'
+         'soxt'
+         'mesa'
+         'clhep')
 replaces=('geant4-deb')
 optdepends=('java-environment: for histogram visualizations and
 analysis'
@@ -27,7 +55,7 @@ install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
   "Geant4InterfaceOptions.patch"
   "${pkgname}.install")
-md5sums=('145c91d167a3fda2ad811a468dd8221c'
+md5sums=('6a7c088f684262d9f792dcaaf1cd55d1'
          'cc428f31958c6e036cb01c0220b3fd83'
          'c3652d79011cd3fab2e1081e22f9f513')
 
