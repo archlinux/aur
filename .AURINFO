@@ -1,0 +1,15 @@
+pkgbase = sdvt-git
+	pkgdesc = simple desktop virtual terminal
+	pkgver = 0.9.2.gc83c
+	pkgrel = 2
+	url = https://github.com/darkbarker/sdvt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vte290
+	source = git+https://github.com/darkbarker/sdvt.git
+	md5sums = SKIP
+
+pkgname = sdvt-git
+
