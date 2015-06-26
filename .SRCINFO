@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-gfsm
+	pkgdesc = A weighted finite state transducer (WFST) library and associated command line tools. (mingw-w64)
+	pkgver = 0.0.15.1
+	pkgrel = 4
+	url = http://kaskade.dwds.de/~moocow/mirror/projects/gfsm/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-glib2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://kaskade.dwds.de/~moocow/mirror/projects/gfsm/gfsm-0.0.15-1.tar.gz
+	source = getdelim.patch
+	md5sums = e13ca735ee146d242b33d4de74fb6157
+	md5sums = 46825b464058f1ab72b3361d29123716
+
+pkgname = mingw-w64-gfsm
+
