@@ -1,0 +1,16 @@
+pkgbase = clockutils
+	pkgdesc = A lightweight c++ library for commonly needed tasks. Optimized for simplicity and speed.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://clockwork-origins.de/en/clockUtils
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	depends = gcc-libs>=4.8.2
+	depends = glibc
+	source = http://clockwork-origins.de/clockUtils/downloads/clockutils-0.4.0-src.zip
+	sha256sums = 8d3e2cc98bb762df37f62700cfa81bbd4b51212f4d992a22bcca852eaee5f1aa
+
+pkgname = clockutils
+
