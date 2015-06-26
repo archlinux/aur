@@ -4,7 +4,7 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1496.988e4c4
+pkgver=1501.b74129b
 pkgrel=1
 pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, LLVM JIT, bytecode, BNF macros, many advanced modules & bindings and much more!'
 url='http://www.daovm.net/'
@@ -114,6 +114,8 @@ build() {
   #   wrap/dao_sdl.h:18:16: fatal error: SDL.h: No such file or directory
   #   #include"SDL.h"
   #mv "DaoSDL/"              "$_basename/modules/"
+  # FIXME https://github.com/daokoder/dao/issues/418
+  rm -rf "$_basename/modules/web/html/"
   cd "$_basename"
 
   # order matters when using gcc
@@ -157,9 +159,6 @@ EOF
   # FIXME will be fixed in upstream soon
   #sed -i -r '/regex/s|^[ #]+||' modules/makefile.dao
   sed -i -r '/regex/s|(.*)|#\1|' modules/makefile.dao
-
-  # FIXME will be fixed in upstream soon
-  sed -i -r '/image/s|(.*)|#\1|' modules/makefile.dao
 
   # https://github.com/daokoder/DaoSDL/issues/2
   #sed -i -r 's|(#include) *"(SDL[^"]+)"|\1 <SDL2/\2>|' \
