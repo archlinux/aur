@@ -1,6 +1,6 @@
 pkgbase = geant4
 	pkgdesc = A simulation toolkit for particle physics interactions.
-	pkgver = 10.01.01
+	pkgver = 10.01.02
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4.install
@@ -50,10 +50,10 @@ pkgbase = geant4
 	optdepends = geant4-saiddata: Data files from evaluated cross-sections in SAID data-base
 	replaces = geant4-deb
 	options = !emptydirs
-	source = http://geant4.cern.ch/support/source/geant4.10.01.p01.tar.gz
+	source = http://geant4.cern.ch/support/source/geant4.10.01.p02.tar.gz
 	source = Geant4InterfaceOptions.patch
 	source = geant4.install
-	md5sums = 145c91d167a3fda2ad811a468dd8221c
+	md5sums = 6a7c088f684262d9f792dcaaf1cd55d1
 	md5sums = cc428f31958c6e036cb01c0220b3fd83
 	md5sums = c3652d79011cd3fab2e1081e22f9f513
 
