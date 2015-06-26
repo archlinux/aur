@@ -1,0 +1,13 @@
+pkgbase = icsiboost-svn
+	pkgdesc = Adaboost with decision stumps, compatible with boostexter
+	pkgver = 172
+	pkgrel = 1
+	url = http://code.google.com/p/icsiboost/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = pcre
+
+pkgname = icsiboost-svn
+
