@@ -1,0 +1,31 @@
+pkgbase = sxemacs-git
+	pkgdesc = A derivation of xemacs - git checkout
+	pkgver = 22.1.15.173.g9706bca
+	pkgrel = 1
+	url = http://www.sxemacs.org/
+	install = sxemacs.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = texinfo
+	depends = libao
+	depends = gpm
+	depends = libtiff
+	depends = libltdl
+	depends = jack
+	depends = libmad
+	depends = desktop-file-utils
+	depends = compface
+	depends = libpulse
+	depends = libxaw
+	depends = postgresql-libs
+	provides = sxemacs
+	conflicts = sxemacs
+	conflicts = xemacs
+	options = !libtool
+	source = git+http://git.sxemacs.org/sxemacs
+	md5sums = SKIP
+
+pkgname = sxemacs-git
+
