@@ -1,0 +1,29 @@
+pkgbase = burp-backup14
+	pkgdesc = Burp is a backup and restore program. Built from 1.4.x stable candidate releases
+	pkgver = 1.4.38
+	pkgrel = 1
+	url = http://burp.grke.org/
+	install = burp.install
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	depends = librsync
+	depends = openssl
+	backup = etc/burp/burp.conf
+	backup = etc/burp/burp-server.conf
+	backup = etc/burp/CA.cnf
+	backup = etc/burp/notify_script
+	backup = etc/burp/ssl_extra_checks_script
+	backup = etc/burp/summary_script
+	backup = etc/burp/timer_script
+	backup = etc/cron.d/burp
+	backup = etc/logrotate.d/burp
+	source = http://downloads.sourceforge.net/project/burp/burp-1.4.38/burp-1.4.38.tar.bz2
+	source = burp.install
+	source = burp.service
+	sha256sums = 5292c3d46b5efb49b816f720e825985cde8772f55bc85aae6bb516382704713e
+	sha256sums = ce030820046da1372949f9cc5a5123c6dcc1bda73acd18b6c02f96db1402e0c9
+	sha256sums = fe6ad8f3bf94132437aa05958337f6729a2daf92daecdb237cfa8bb7f63233fc
+
+pkgname = burp-backup14
+
