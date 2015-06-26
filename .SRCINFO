@@ -1,0 +1,13 @@
+pkgbase = icsiboost
+	pkgdesc = Open-source implementation of Boostexter (Adaboost based classifier)
+	pkgver = 160
+	pkgrel = 1
+	url = http://code.google.com/p/icsiboost/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	provides = icsiboost
+
+pkgname = icsiboost
+
