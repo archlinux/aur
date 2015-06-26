@@ -7,13 +7,13 @@ _basepkgname=mathoid
 
 pkgname=mediawiki-$_basepkgname-git
 pkgver=0.2.4.r1713.g1706720
-pkgrel=3
+pkgrel=4
 pkgdesc="Service for creating MathMl and SVGs."
 install="mediawiki-mathoid.install"
 source=("git+https://gerrit.wikimedia.org/r/mediawiki/services/$_basepkgname"
         "mathoid.service")
 sha256sums=('SKIP'
-            '09b0d397d7fd7045aa8c9c0ff44a60a3ee4428faef27eab25dd3f8484504206a')
+            '8a7d362ac475319356412c09dd4067bc46006940c86fa7c259b4f55e95ad040b')
 arch=("any")
 url="https://www.mediawiki.org/wiki/$_extname"
 license=("GPL")
