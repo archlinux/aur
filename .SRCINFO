@@ -1,0 +1,24 @@
+pkgbase = terminator-trunk
+	pkgdesc = Terminal emulator that supports tabs and grids (trunk developmental version)
+	pkgver = 1568
+	pkgrel = 1
+	url = http://gnometerminator.blogspot.fr/p/introduction.html
+	install = terminator.install
+	arch = any
+	license = GPL2
+	makedepends = bzr
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = intltool
+	depends = vte
+	depends = pygtk
+	depends = xdg-utils
+	depends = python2-notify
+	depends = python2-keybinder2
+	provides = terminator
+	conflicts = terminator
+	source = terminator::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk
+	md5sums = SKIP
+
+pkgname = terminator-trunk
+
