@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec java $OSBUDDY_VMARGS -jar /usr/share/osbuddy/OSBuddy.jar $@

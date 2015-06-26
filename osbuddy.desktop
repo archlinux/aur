@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OSBuddy
+GenericName=OSBuddy
+Comment=An OldSchool RuneScape toolkit
+Exec=osbuddy
+Icon=/usr/share/pixmaps/osbuddy.png
+Terminal=false
+Type=Application
+Categories=Game;

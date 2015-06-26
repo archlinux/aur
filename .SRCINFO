@@ -1,0 +1,30 @@
+pkgbase = osbuddy
+	pkgdesc = Launcher for the OldSchool RuneScape toolkit
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://rsbuddy.com/osbuddy
+	install = osbuddy.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	noextract = http://cdn.rsbuddy.com/live/f/loader/OSBuddy.jar
+	noextract = osbuddy
+	noextract = osbuddy.desktop
+	noextract = osbuddy.png
+	noextract = osbuddy.install
+	noextract = LICENSE
+	source = http://cdn.rsbuddy.com/live/f/loader/OSBuddy.jar
+	source = osbuddy
+	source = osbuddy.desktop
+	source = osbuddy.png
+	source = osbuddy.install
+	source = LICENSE
+	md5sums = da02981df73693e96d17ecc0b977b041
+	md5sums = c4cfc33a6e67e67d5a618d309f04f679
+	md5sums = 96ee5f2ec6e827516b9e557c08729cde
+	md5sums = 5edc1b9aef7d753402180df474bb391f
+	md5sums = 72577c1b6eca8aebfeee9ca14db7a8f6
+	md5sums = ef50529b59e1b789bae48bea7e0e7bf2
+
+pkgname = osbuddy
+
