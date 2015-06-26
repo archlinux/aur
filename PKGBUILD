@@ -3,14 +3,14 @@
 pkgname=topmenu-mozilla-git
 _gitname=topmenu-mozilla
 pkgver=2015.01.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox/Thunderbird Javascript module for TopMenu."
-url="https://gitorious.org/topmenu"
+url="https://git.javispedro.com/cgit/topmenu-gtk.git/about/"
 arch=('any')
 license=('LGPL3')
 depends=('topmenu-gtk-git')
 makedepends=('git' 'zip')
-source=("git+http://gitorious.org/topmenu/$_gitname.git")
+source=("git+http://git.javispedro.com/cgit/$_gitname.git")
 sha1sums=('SKIP')
 
 pkgver() {
