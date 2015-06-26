@@ -1,9 +1,9 @@
-# Maintainer: Nabobalis <nabil dot freij at gmail dot com>
-# Contributor: Nabobalis <nabil dot freij at gmail dot com>
+# Maintainer: Nabobalis <nabil.freij@gmail.com>
+# Contributor: Nabobalis <nabil.freij@gmail.com>
 pkgname=python2-ginga-git
 _gitname=ginga
-pkgver=20150421
-pkgrel=2
+pkgver=20150626
+pkgrel=1
 pkgdesc="	A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('i686' 'x86_64')
 url="http://ejeschke.github.io/ginga/"
