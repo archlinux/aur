@@ -1,0 +1,27 @@
+pkgbase = beets-git
+	pkgdesc = Flexible music library manager and tagger - git version
+	pkgver = 1.3.11.r31.ga0ff517
+	pkgrel = 1
+	url = http://beets.radbox.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2-munkres
+	depends = mutagen
+	depends = python2-setuptools
+	depends = python2-unidecode
+	depends = python2-musicbrainzngs
+	depends = python2-yaml
+	depends = python2-enum34
+	depends = python2-jellyfish
+	optdepends = python2-pyacoustid: acoustic fingerprinting
+	optdepends = python2-flask: web interface
+	optdepends = gstreamer0.10-python: BPD audio player plugin
+	optdepends = python2-pylast: lastgenre plugin
+	provides = beets
+	conflicts = beets
+	source = git://github.com/sampsyo/beets.git
+	md5sums = SKIP
+
+pkgname = beets-git
+
