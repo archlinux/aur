@@ -1,0 +1,13 @@
+pkgbase = mpeg_lib
+	pkgdesc = C library for decoding MPEG-1 video streams (legacy)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://www.gerg.ca/software/mpeglib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://fossies.org/unix/misc/old/mpeg_lib-1.3.1.tar.gz
+	md5sums = 9d803be0073f42acf87d5fbb339a183b
+
+pkgname = mpeg_lib
+
