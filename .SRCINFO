@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-noscript-dev
 	pkgdesc = Allows JavaScript, Java (and other plugins) only for trusted domains of your choice.
-	pkgver = 2.6.9.26rc3
+	pkgver = 2.6.9.27rc1
 	pkgrel = 1
 	url = https://noscript.net
 	arch = any
 	license = GPL
 	depends = firefox
 	conflicts = firefox-noscript
-	source = https://secure.informaction.com/download/betas/noscript-2.6.9.26rc3.xpi
-	sha256sums = 730df1c6f18e7b6981a4e03a78425e22836ec86d784ec01b6a912571c8f28bfc
+	source = https://secure.informaction.com/download/betas/noscript-2.6.9.27rc1.xpi
+	sha256sums = b4baa166fe09bf0bdea63170719c8b7b38551c8650b41b1b209385affdd87e10
 
 pkgname = firefox-extension-noscript-dev
 
