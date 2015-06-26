@@ -1,0 +1,13 @@
+pkgbase = setuid-sandbox-git
+	pkgdesc = A suid helper to let a process willingly drop privileges on Linux.
+	pkgver = 20130211
+	pkgrel = 1
+	url = https://code.google.com/p/setuid-sandbox/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = libcap
+
+pkgname = setuid-sandbox-git
+
