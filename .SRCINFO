@@ -6,19 +6,19 @@ pkgbase = indicator-sound
 	install = indicator-sound.install
 	arch = i686
 	arch = x86_64
-	groups = pantheon
-	groups = pantheon-unstable
 	license = GPL
 	makedepends = intltool
 	makedepends = vala
 	depends = ido
 	depends = libdbusmenu-gtk3
-	depends = libgee
+	depends = libgee06
 	depends = libindicator-gtk3
 	depends = libpulse
 	depends = libnotify
 	source = https://launchpad.net/indicator-sound/12.10/12.10.1/+download/indicator-sound-12.10.1.tar.gz
+	source = http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz
 	sha256sums = d3ae4e8a9e2bac6f9098e617364aba1ddca15ee118d5aa89ae85d0a1f3371af6
+	sha256sums = 7830a7bf49b86f92558ad4bc1499db4e0c8680b0aa31d046262d8169b0bafcd2
 
 pkgname = indicator-sound
 
