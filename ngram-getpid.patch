@@ -1,0 +1,12 @@
+*** opengrm-ngram-1.0.3/src/include/ngram/ngram-randgen.h	2012-02-13 15:45:55.000000000 +0100
+--- src/opengrm-ngram-1.0.3/src/include/ngram/ngram-randgen.h	2012-06-24 22:49:53.475956501 +0200
+***************
+*** 35,40 ****
+--- 35,41 ----
+  
+  #include <fst/fst.h>
+  #include <fst/randgen.h>
++ #include <unistd.h>
+  
+  namespace ngram {
+  
