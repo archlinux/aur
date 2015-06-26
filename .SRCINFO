@@ -1,0 +1,15 @@
+pkgbase = ad3
+	pkgdesc = Alternating directions dual decomposition approximate MAP decoder
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www.ark.cs.cmu.edu/AD3/
+	arch = x86_64
+	license = LGPL
+	depends = eigen
+	options = staticlibs
+	options = !makeflags
+	source = http://www.cs.cmu.edu/~afm/AD3/AD3-2.0.2.tar.gz
+	md5sums = 57d54349b00888f44a7fd0a3296a2d12
+
+pkgname = ad3
+
