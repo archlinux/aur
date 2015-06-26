@@ -1,0 +1,13 @@
+pkgbase = ppd-oki-c610
+	pkgdesc = Printer driver for Oki C610 (C610cdn; C610dn; C610dtn; C610n/ C710/ C711)
+	pkgver = 2012
+	pkgrel = 2
+	url = http://my.okidata.com/pp-C610dn.nsf?opendatabase
+	install = oki-c610.install
+	arch = any
+	license = GPL
+	depends = cups
+	source = ftp://ftp2.okidata.com/pub/drivers/linux/SFP/color/desktop/C610PS.tar
+
+pkgname = ppd-oki-c610
+

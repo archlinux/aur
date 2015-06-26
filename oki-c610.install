@@ -1,0 +1,12 @@
+post_install() {
+  systemctl reload-or-restart cups
+}
+
+post_upgrade() {
+  systemctl reload-or-restart cups
+}
+
+post_remove() {
+  systemctl reload-or-restart cups
+}
+
