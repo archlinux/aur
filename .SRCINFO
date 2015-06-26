@@ -1,0 +1,13 @@
+pkgbase = ttf-sil-scheherazade
+	pkgdesc = OpenType Arabic font from SIL
+	pkgver = 2.020
+	pkgrel = 2
+	url = http://scripts.sil.org/ArabicFonts
+	install = ttf-sil-scheherazade.install
+	arch = any
+	license = custom:OFL
+	source = http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=Scheherazade-2.020.zip&filename=Scheherazade-2.020.zip
+	sha256sums = d8bb12997507937347efba4e59550a9655350563d1df662f0651e04ba916aff1
+
+pkgname = ttf-sil-scheherazade
+
