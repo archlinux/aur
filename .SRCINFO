@@ -1,0 +1,16 @@
+pkgbase = macaon
+	pkgdesc = A natural language processing (NLP) toolchain that can work on ambiguous inputs (word lattices).
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://macaon.lif.univ-mrs.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = libxml2
+	depends = gfsm
+	source = http://macaon.lif.univ-mrs.fr//uploads/macaon/packages/sources/macaon-5.0.0.tar.gz
+	md5sums = e656b0a4fa3b51140b437ee9ef46f136
+
+pkgname = macaon
+
