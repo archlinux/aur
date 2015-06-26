@@ -1,7 +1,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=jd-gui
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A standalone graphical utility that displays Java source codes of .class files'
 arch=('any')
@@ -29,6 +29,6 @@ package() {
   chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
 
-md5sums=('0309bb3aaf57b734a4f6d67d2ecfe4df')
-sha1sums=('e6ffeb063d668c66c8a490345291139091d642e9')
-sha256sums=('1463e736da3d2f4c7b2cf7a8d0374f3956f770ca1254069510efcb7a60409826')
+md5sums=('1ef1bc18eb6d69dbf8108dc042914750')
+sha1sums=('56523462ad870c7cd384b64c5c7c9ec263ce524c')
+sha256sums=('50dd66ed3a81b009af1296ed05d6c77dd7df74e0535734a856e7bbfd31b1fb68')
