@@ -1,0 +1,13 @@
+pkgbase = rnnlm
+	pkgdesc = Recurrent neural network language model
+	pkgver = 0.4b
+	pkgrel = 1
+	url = http://rnnlm.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	source = https://f25ea9ccb7d3346ce6891573d543960492b92c30.googledrive.com/host/0ByxdPXuxLPS5RFM5dVNvWVhTd0U/rnnlm-0.4b.tgz
+
+pkgname = rnnlm
+
