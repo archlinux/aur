@@ -1,0 +1,14 @@
+pkgbase = python2-omnijson
+	pkgdesc = Selects the best installed JSON implementation available to Python.
+	pkgver = 0.1.2
+	pkgrel = 6
+	url = http://pypi.python.org/pypi/omnijson
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-simplejson
+	source = https://pypi.python.org/packages/source/o/omnijson/omnijson-0.1.2.tar.gz
+	md5sums = 47c51c2e34275d7ad40ae6c826b7f001
+
+pkgname = python2-omnijson
+
