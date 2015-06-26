@@ -20,7 +20,7 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 install=octave.install
 options=('!emptydirs' '!makeflags')
-_appver="4.0.0-rc3"
+_appver="4.1.0+"
 provides=("octave=$_appver")
 _hgroot=http://www.octave.org/hg/
 _hgrepo=octave
