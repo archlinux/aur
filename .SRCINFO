@@ -1,0 +1,27 @@
+pkgbase = osdlyrics-pedrohlc
+	pkgdesc = A lyric show compatible with various media players + experimental ViewLyrics source + bug fixes
+	pkgver = 0.4.4
+	pkgrel = 0
+	url = http://code.google.com/p/osd-lyrics/
+	install = osdlyrics-pedrohlc.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	depends = gtk2
+	depends = dbus-glib
+	depends = curl
+	depends = libnotify
+	depends = libmpd
+	depends = xmms2
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = osdlyrics
+	conflicts = osdlyrics
+	conflicts = osdlyrics-git
+	conflicts = osdlyrics-abiehaf
+	source = osdlyrics::git+git://github.com/PedroHLC/osdlyrics.git#branch=master
+	md5sums = SKIP
+
+pkgname = osdlyrics-pedrohlc
+
