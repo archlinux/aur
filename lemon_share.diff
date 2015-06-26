@@ -1,0 +1,31 @@
+--- lemon.c.orig	2015-02-28 12:20:16.196573438 +0100
++++ lemon.c	2015-02-28 12:20:16.199906775 +0100
+@@ -3099,6 +3099,10 @@
+     tpltname = pathsearch(lemp->argv0,templatename,0);
+   }
+   if( tpltname==0 ){
++    sprintf(buf,"/usr/share/lemon/%s",templatename);
++    tpltname = buf;
++  }
++  if( tpltname==0 ){
+     fprintf(stderr,"Can't find the parser driver template file \"%s\".\n",
+     templatename);
+     lemp->errorcnt++;
+@@ -3106,9 +3110,14 @@
+   }
+   in = fopen(tpltname,"rb");
+   if( in==0 ){
+-    fprintf(stderr,"Can't open the template file \"%s\".\n",templatename);
+-    lemp->errorcnt++;
+-    return 0;
++      sprintf(buf,"/usr/share/lemon/%s",templatename);
++      tpltname = buf;
++      in = fopen(tpltname,"rb");
++    if( in==0 ){
++      fprintf(stderr,"Can't open the template file \"%s\".\n",tpltname);
++      lemp->errorcnt++;
++      return 0;
++    }
+   }
+   return in;
+ }

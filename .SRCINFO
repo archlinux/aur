@@ -1,0 +1,20 @@
+pkgbase = lemon
+	pkgdesc = The LALR Parser Generator used in sqlite.
+	pkgver = 1.69
+	pkgrel = 4
+	url = http://www.hwaci.com/sw/lemon/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = lemon.c::http://www.sqlite.org/src/raw/tool/lemon.c?name=680980c7935bfa1edec20c804c9e5ba4b1dd96f5
+	source = lempar.c::http://www.sqlite.org/src/raw/tool/lempar.c?name=01ca97f87610d1dac6d8cd96ab109ab1130e76dc
+	source = lemon_share.diff
+	source = license.txt
+	sha256sums = 5dce8ffd620c9d6daca2c4718da5c8d436542dcf68b05b4b8f30c9f3a198b7b0
+	sha256sums = 71f0880d170e600435b9f705dc5f4ac3bd8d7b23d009ae82664226e88d1a41ad
+	sha256sums = 6d09900e476262287c137e990db48283c37ab747df0d562eb4e486b490ea9e61
+	sha256sums = 6b5ff92682dfbdfef6b66f7ab7a6455c081b0260f6e6d3a6669bf99ffb5333e6
+
+pkgname = lemon
+
