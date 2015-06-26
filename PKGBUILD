@@ -2,7 +2,7 @@
 
 pkgname=texturecache
 _pkgname=texturecache.py
-pkgver=1.9.5
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Utility to manage the XBMC/Kodi texture cache and more."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('xbmc-texturecache')
 replaces=('xbmc-texturecache')
 install=readme.install
 source=("https://github.com/MilhouseVH/${_pkgname/%%.py}/archive/$pkgver.tar.gz")
-sha256sums=('0e7b38a363e4f0d3f045fdc6cbc1c9c466b4bb75c51a00069f86207d9f393fef')
+sha256sums=('ea26f971ecc71d9f080022f099d9522eb593eeaecd76790b346e7cd2f71ecd14')
 
 package() {
 	cd "$_pkgname-$pkgver"
