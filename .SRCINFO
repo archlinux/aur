@@ -1,0 +1,16 @@
+pkgbase = openlat-git
+	pkgdesc = Toolkit for manipulating word lattices built on top of openfst
+	pkgver = 20120524
+	pkgrel = 1
+	url = https://github.com/benob/openlat
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	depends = openfst
+	optdepends = boost: support for gz/bz2 input filters
+
+pkgname = openlat-git
+
