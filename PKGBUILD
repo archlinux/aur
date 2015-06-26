@@ -22,18 +22,18 @@ build() {
   # Compile code with -fPIC (build code with Position Independent Code)
   sed -i '49iADD_DEFINITIONS(-fPIC)' CMakeLists.txt
   
-  sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")' CMakeLists.txt
-
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release
+  #sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")' CMakeLists.txt
+  
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
           
   make
 }
  
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+  cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
 }
- 
+
 # vim:set ts=2 sw=2 et:
