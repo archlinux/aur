@@ -15,6 +15,8 @@ md5sums=('581d29ff9a0aabf4aeb6beeb40f589b0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  
+  sed -i '/PROJECT/ a set(CMAKE_INCLUDE_CURRENT_DIR ON)' CMakeLists.txt
 
   # doc build errors prevent success
   sed -i '/doc/d' CMakeLists.txt
