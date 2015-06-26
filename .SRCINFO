@@ -1,0 +1,13 @@
+pkgbase = blws-binaries-git
+	pkgdesc = Provides binaries.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = unknown
+	conflicts = blws-all-in-one-full-git
+	conflicts = blws-all-in-one-optimised-git
+	source = git://github.com/SnowyClaw/blws-binaries-git.git
+	md5sums = SKIP
+
+pkgname = blws-binaries-git
+
