@@ -22,7 +22,8 @@ build() {
   # Compile code with -fPIC (build code with Position Independent Code)
   sed -i '49iADD_DEFINITIONS(-fPIC)' CMakeLists.txt
   
-  sed -i 's/OPTION(STATIC_DRUMSTICK\ \"Build\ drumstick\ static\ library\"\ OFF)/OPTION(STATIC_DRUMSTICK\ \"Build\ drumstick\ static\ library\"\ ON)' CMakeLists.txt
+  #sed -i 's/OPTION(STATIC_DRUMSTICK\ \"Build\ drumstick\ static\ library\"\ OFF)/OPTION(STATIC_DRUMSTICK\ \"Build\ drumstick\ static\ library\"\ ON)/' CMakeLists.txt
+  sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
   
   #sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")' CMakeLists.txt
   
