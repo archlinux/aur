@@ -1,11 +1,11 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-jozoor
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Arabic fonts designed by Jozoor Team, working on Linux, Mac and Windows"
 arch=('any')
 url="http://jozoor.com/"
-#license=('CCPL')
+license=('CCPL:by-sa')
 install=font.install
 source=(http://download1250.mediafire.com/2k6gh8nj2bgg/xcvmc8nbjjrzsh7/Jozoor_Font.zip
 	https://dl.dropboxusercontent.com/u/34057974/Free_Jozoor_Fonts/Flat_Font_Jozoor.zip)
