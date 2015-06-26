@@ -1,0 +1,12 @@
+pkgbase = wapiti-crf
+	pkgdesc = A simple and fast discriminative sequence labelling toolkit
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://wapiti.limsi.fr/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://github.com/Jekub/Wapiti/archive/v1.5.0.tar.gz
+
+pkgname = wapiti-crf
+
