@@ -1,0 +1,17 @@
+pkgbase = phing
+	pkgdesc = PHP project build system based on Apache Ant.
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = http://www.phing.info/
+	install = phing.install
+	arch = any
+	license = LGPL
+	makedepends = php-pear
+	depends = php
+	source = http://pear.phing.info/get/phing-2.11.0.tgz
+	source = phing.install
+	sha256sums = f7fbd82d1c47e7de753df34e675cf705ef24247c44c94b7ea6354767c028d5ba
+	sha256sums = d6b73432293ff2dfe9ae4866d77b68c05721b0ffd3bd332bc58678f624c03f4b
+
+pkgname = phing
+
