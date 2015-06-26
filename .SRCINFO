@@ -10,8 +10,10 @@ pkgbase = kmidimon
 	makedepends = automoc4
 	depends = kdelibs
 	depends = drumstick
-	source = http://downloads.sourceforge.net/kmidimon/kmidimon-0.7.5.tar.bz2
+	source = http://downloads.sourceforge.net/kmidimon/kmidimon-0.7.5.tar.bz2 drumstick.tar.gz
+	source = drumstick.tar.gz
 	md5sums = 581d29ff9a0aabf4aeb6beeb40f589b0
+	md5sums = e55595ace976c90d45b55ea4f3a3da38
 
 pkgname = kmidimon
 

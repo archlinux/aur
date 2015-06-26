@@ -10,13 +10,15 @@ url="http://kmidimon.sourceforge.net/"
 license=('GPL')
 depends=('kdelibs' 'drumstick')
 makedepends=('cmake' 'automoc4')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('581d29ff9a0aabf4aeb6beeb40f589b0')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2 drumstick.tar.gz" "drumstick.tar.gz")
+md5sums=('581d29ff9a0aabf4aeb6beeb40f589b0' 'e55595ace976c90d45b55ea4f3a3da38')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  
-  sed -i '/KDE4Defaults/ a INCLUDE(${QT_USE_FILE})\n MESSAGE("QT_USE_FILE: ${QT_USE_FILE}")' CMakeLists.txt
+  #cp -R $srcdir/kmidimon-0.7.4/drumstick ./
+  tar -xf drumstick.tar.gz
+    
+  #sed -i '/KDE4Defaults/ a INCLUDE(${QT_USE_FILE})\n MESSAGE("QT_USE_FILE: ${QT_USE_FILE}")' CMakeLists.txt
 
   # doc build errors prevent success
   sed -i '/doc/d' CMakeLists.txt
@@ -26,7 +28,7 @@ build() {
   sed -i '/CMAKE_MINIMUM_REQUIRED/ a SET(CMAKE_CXX_FLAGS "-fPIC")' CMakeLists.txt
   
   #sed -i 's/OPTION(ENABLE_PCH       "Enable precompiled headers" OFF)/OPTION(ENABLE_PCH       "Enable precompiled headers" ON)/' CMakeLists.txt
-  #sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
+  sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
   
   #sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")' CMakeLists.txt
   
