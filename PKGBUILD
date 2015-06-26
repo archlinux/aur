@@ -5,7 +5,7 @@ pkgname=deepin-vte
 _pkgname=vte
 pkgver=0.28.2
 _srcdirname=vte-0.28.2
-pkgrel=8
+pkgrel=9
 epoch=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK2 - with several patches"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 url="https://developer.gnome.org/vte/"
 groups=('deepin-extra')
 depends=('gtk2')
-makedepends=('deepin-pygtk' 'intltool' 'gobject-introspection' 'pygobject2-devel')
+makedepends=('pygtk' 'intltool' 'gobject-introspection' 'pygobject2-devel')
 provides=('vte=0.28.2' 'deepin-vte-plus')
 conflicts=('vte' 'deepin-vte-plus')
 replaces=('deepin-vte-plus')
