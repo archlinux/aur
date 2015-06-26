@@ -1,0 +1,12 @@
+pkgbase = blws-configuration-optimised-git
+	pkgdesc = Provides optimised configuration.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = unknown
+	conflicts = blws-all-in-one-git
+	source = git://github.com/SnowyClaw/blws-configuration-optimised-git.git
+	md5sums = SKIP
+
+pkgname = blws-configuration-optimised-git
+
