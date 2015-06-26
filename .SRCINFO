@@ -1,6 +1,6 @@
 pkgbase = archiso-git
 	pkgdesc = Arch Linux livecd/liveusb generation scripts
-	pkgver = 21.3.gdc845b3
+	pkgver = 21.6.gf1a445a
 	pkgrel = 1
 	url = http://archlinux.org
 	arch = any

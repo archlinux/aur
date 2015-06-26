@@ -3,7 +3,7 @@
 
 _pkgname=archiso
 pkgname="${_pkgname}-git"
-pkgver=21.3.gdc845b3
+pkgver=21.6.gf1a445a
 pkgrel=1
 pkgdesc="Arch Linux livecd/liveusb generation scripts"
 arch=('any')
