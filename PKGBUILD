@@ -4,7 +4,7 @@
 pkgname=deepin-screenshot
 pkgver=3.0.20150508154858
 _srcdirname=deepin-screenshot-3.0+20150508154858~a5ed48140f
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy-to-use screenshot tool for linuxdeepin desktop environment"
 arch=('any')
 url="https://gitcafe.com/Deepin/deepin-screenshot"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  depends=('deepin-menu' 'deepin-qml-widgets' 'deepin-pygtk'
+  depends=('deepin-menu' 'deepin-qml-widgets' 'pygtk'
            'python2' 'python2-pyqt5' 'python2-wnck' 'xpybutil')
 
   cd "${_srcdirname}"
