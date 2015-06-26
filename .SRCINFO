@@ -1,0 +1,22 @@
+pkgbase = packetbeat
+	pkgdesc = An open source network packet analyzer that ships data to Elasticsearch.
+	pkgver = 1.0.0_beta1
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats/packetbeat
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	depends = libpcap
+	optdepends = elasticsearch: for running standalone installation
+	options = !strip
+	options = docs
+	source = https://github.com/elastic/packetbeat/archive/v1.0.0.Beta1.tar.gz
+	source = https://github.com/fiorix/go-daemon/archive/8e415298196f6e605ce29cbcc4d8237dc24fd756.zip
+	source = packetbeat.service
+	sha256sums = a119a2976ac7c7577d7ee2750d0608354e51cd73edbc5529a6ec2c5b67fd6a7b
+	sha256sums = 750d0ff53dc7521d1316b38074c8ada3f91d581a318fd21829499f3e40f174a3
+	sha256sums = 09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64
+
+pkgname = packetbeat
+
