@@ -1,6 +1,6 @@
 pkgbase = dreamfall-chapters-hib
 	pkgdesc = Dreamfall Chapters, humble bundle version
-	pkgver = r20150519+d83319
+	pkgver = r20150625+dfbfd0
 	pkgrel = 1
 	epoch = 1
 	url = http://redthreadgames.com/
@@ -9,10 +9,10 @@ pkgbase = dreamfall-chapters-hib
 	makedepends = unzip
 	depends = glu
 	depends = gtk2
-	source = hib://DreamfallChaptersLinux2.0.2.tar.gz
+	source = hib://Dreamfall_Chapters_Linux.tar.gz
 	source = dreamfallchapters.desktop
 	source = dreamfallchapters.png
-	md5sums = d833198dca265c7b54fd88088b0b659b
+	md5sums = dfbfd0641dacaa9bd32ad760c2d6f675
 	md5sums = 1223c964a9d19b4960df9772d5a816e2
 	md5sums = e69bb78abe79f0bd82fa6584428f8be8
 

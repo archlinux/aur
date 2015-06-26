@@ -1,7 +1,7 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 
 pkgname=dreamfall-chapters-hib
-pkgver=r20150519+d83319
+pkgver=r20150625+dfbfd0
 pkgrel=1
 epoch=1
 pkgdesc="Dreamfall Chapters, humble bundle version"
@@ -12,10 +12,10 @@ depends=(glu gtk2)
 makedepends=(unzip)
 
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
-source=(hib://DreamfallChaptersLinux2.0.2.tar.gz
+source=(hib://Dreamfall_Chapters_Linux.tar.gz
         dreamfallchapters.desktop
         dreamfallchapters.png)
-md5sums=(d833198dca265c7b54fd88088b0b659b
+md5sums=(dfbfd0641dacaa9bd32ad760c2d6f675
          1223c964a9d19b4960df9772d5a816e2
          e69bb78abe79f0bd82fa6584428f8be8)
 
