@@ -1,0 +1,14 @@
+pkgbase = gfsm
+	pkgdesc = A weighted finite state transducer (WFST) library and associated command line tools.
+	pkgver = 0.0.15.1
+	pkgrel = 1
+	url = http://kaskade.dwds.de/~moocow/mirror/projects/gfsm/
+	install = 
+	changelog = 
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://kaskade.dwds.de/~moocow/mirror/projects/gfsm/gfsm-0.0.15-1.tar.gz
+
+pkgname = gfsm
+
