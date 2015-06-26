@@ -1,0 +1,11 @@
+# arg 1:  the new package version
+post_install() {
+  echo
+  echo "After the install you must relog and configured BGCashcheckServer:"
+  echo "http://bgbilling.ru/v6.0/doc/ch35.html"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+}
