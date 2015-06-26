@@ -3,7 +3,7 @@
 
 pkgname=kmidimon
 pkgver=0.7.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A MIDI monitor for Linux using ALSA sequencer"
 arch=('i686' 'x86_64')
 url="http://kmidimon.sourceforge.net/"
@@ -21,6 +21,8 @@ build() {
   
   # Compile code with -fPIC (build code with Position Independent Code)
   sed -i '49iADD_DEFINITIONS(-fPIC)' CMakeLists.txt
+  
+  sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")'
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release
