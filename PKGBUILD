@@ -10,7 +10,7 @@ url="http://kmidimon.sourceforge.net/"
 license=('GPL')
 depends=('kdelibs' 'drumstick')
 makedepends=('cmake' 'automoc4')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2" "drumstick.tar.gz" "drumstick.tar.gz")
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2" "drumstick.tar.gz")
 md5sums=('581d29ff9a0aabf4aeb6beeb40f589b0' 'e55595ace976c90d45b55ea4f3a3da38')
 
 build() {
