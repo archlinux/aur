@@ -1,0 +1,15 @@
+pkgbase = tracemonkey-hg
+	pkgdesc = Firefox's javascript engine with JIT native code compilation.
+	pkgver = 62188
+	pkgrel = 1
+	url = https://wiki.mozilla.org/JavaScript:TraceMonkey
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = autoconf2.13
+	makedepends = yasm
+	makedepends = zip
+
+pkgname = tracemonkey-hg
+
