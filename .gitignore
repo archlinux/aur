@@ -1,4 +1,5 @@
 eslint-*.tgz
 nodejs-eslint-*-any.pkg.tar.xz
+nodejs-eslint-*.src.tar.gz
 pkg
 src
