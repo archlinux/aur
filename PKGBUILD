@@ -52,5 +52,5 @@ package() {
 
   install -d -m755 "$pkgdir/usr/share/licenses/${pkgname}"
   install -m644 "$srcdir/${_pkgname}-${pkgver/_/-}-${_patch}/COPYING" \
-          "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" 
+          "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
