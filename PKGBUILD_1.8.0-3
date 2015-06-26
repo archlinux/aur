@@ -4,8 +4,8 @@
 
 _name=owncloudclient
 pkgname=owncloud-client-qt5
-pkgver=1.8.3
-pkgrel=1
+pkgver=1.8.0
+pkgrel=3
 pkgdesc='ownCloud client based on mirall built with Qt 5'
 arch=(i686 x86_64)
 url='http://owncloud.org/'
@@ -17,19 +17,17 @@ optdepends=('python2-nautilus: integration with Nautilus'
 conflicts=('owncloud-client')
 install=$pkgname.install
 backup=('etc/ownCloud/sync-exclude.lst')
-source=("https://download.owncloud.com/desktop/stable/$_name-$pkgver.tar.xz")
-md5sums=('f1d933a0f7e327a74688c3c356ac8a92')
+source=("https://download.owncloud.com/desktop/stable/$_name-$pkgver.tar.bz2")
+md5sums=('c292c94609ff7df39d7a29f8e404d9e3')
 
 prepare() {
-  cd $srcdir/$_name-$pkgver
   mkdir -p build
-
 }
 
 build() {
-  cd $srcdir/$_name-$pkgver/build
+  cd build
 
-  cmake .. \
+  cmake ../$_name-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
@@ -40,6 +38,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_name-$pkgver/build
+  cd build
   make DESTDIR="$pkgdir" install
 }
