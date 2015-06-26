@@ -3,16 +3,16 @@
 pkgname=topmenu-qt-git
 _gitname=topmenu-qt
 pkgver=2015.02.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt4 module for Topmenu."
-url="https://gitorious.org/topmenu"
+url="https://git.javispedro.com/cgit/topmenu-gtk.git/about/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt4' 'topmenu-gtk-git')
 makedepends=('qt4-private-headers-dev')
 groups=('mate-extra')
 options=(!libtool)
-source=("git+http://gitorious.org/topmenu/$_gitname.git")
+source=("git+http://git.javispedro.com/cgit/$_gitname.git")
 sha1sums=('SKIP')
 
 pkgver() {
