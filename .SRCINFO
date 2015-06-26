@@ -1,0 +1,14 @@
+pkgbase = log4cplus
+	pkgdesc = A C++ logger very close to Java's log4j
+	pkgver = 1.2.0rc2
+	pkgrel = 1
+	url = http://log4cplus.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/log4cplus/log4cplus-1.2.0-rc2.tar.xz
+	sha256sums = b4cebe31af5c6dffcf511e17e8838c6f537bb673b3d0264d37c0514baf43189d
+
+pkgname = log4cplus
+
