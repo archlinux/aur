@@ -1,0 +1,15 @@
+pkgbase = mitlm
+	pkgdesc = Tools for efficient iterative estimation of statistical n-gram language models
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = https://code.google.com/p/mitlm/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = gcc-fortran
+	source = https://mitlm.googlecode.com/files/mitlm-0.4.1.tar.gz
+	md5sums = f4b07068df48445bfc21800086a549c2
+
+pkgname = mitlm
+
