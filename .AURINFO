@@ -1,0 +1,15 @@
+pkgbase = turboparser
+	pkgdesc = Dependency parser with linear programming
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.ark.cs.cmu.edu/TurboParser/
+	arch = x86_64
+	license = LGPL
+	depends = eigen
+	depends = ad3
+	depends = google-glog
+	depends = google-gflags
+	source = http://www.cs.cmu.edu/~afm/TurboParser/TurboParser-2.2.0.tar.gz
+
+pkgname = turboparser
+
