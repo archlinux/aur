@@ -3,7 +3,7 @@
 # % Trigger: 1433756367 %
 
 pkgname=('vdev-git' 'vdev-libudev-compat-git')
-pkgver=r514.3aaf0e3
+pkgver=r517.76da69c
 pkgrel=1
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
@@ -13,10 +13,7 @@ conflicts=( 'vdev' )
 provides=( 'vdev' )
 makedepends=( 'libpstat' 'fskit' 'squashfs-tools' 'dash' )
 
-source=(
-	"${pkgname}::git+${url}"
-	'hwdb-makefile.patch'
-)
+source=( "${pkgname}::git+${url}" )
 
 pkgver() {
 	cd "${pkgname}"
@@ -27,11 +24,6 @@ pkgver() {
 	else
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	fi
-}
-
-prepare() {
-	cd "${pkgname}"
-	patch -p0 < ../hwdb-makefile.patch
 }
 
 build() {
@@ -69,5 +61,4 @@ package_vdev-libudev-compat-git() {
 	make LIBDIR="${pkgdir}/usr/lib" INCLUDEDIR="${pkgdir}/usr/include" -C libudev-compat install
 }
 
-sha1sums=('SKIP'
-          '149abf0fc1dcf60e8af1a15384815c84aeaad21a')
+sha1sums=( 'SKIP' )
