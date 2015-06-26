@@ -10,8 +10,10 @@ pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
 license=('GPL')
-depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject' 'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
-makedepends=('intltool' 'python-sphinx' 'boost' 'itstool')
+depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject'
+         'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
+makedepends=('intltool' 'python-sphinx' 'boost' 'itstool' 'libgda-postgres'
+             'libgda-mysql')
 install=$pkgname.install
 changelog=$pkgname.changelog
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/1.28/$pkgname-$pkgver.tar.xz)
