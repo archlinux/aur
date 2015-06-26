@@ -3,12 +3,13 @@ _npmname=typescript
 _npmver=1.4.1
 pkgname=nodejs-typescript
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TypeScript is a language for application scale JavaScript development."
 arch=('any')
 url="http://typescriptlang.org/"
 license=('Apache')
 depends=('nodejs')
+makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$pkgver.tgz)
 package() {
