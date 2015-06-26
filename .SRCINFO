@@ -1,0 +1,13 @@
+pkgbase = discretize4crf-svn
+	pkgdesc = Discretize continuous attributes for machine learning software with the mdlpc algorithm.
+	pkgver = 17
+	pkgrel = 1
+	url = https://gforge.inria.fr/projects/discretize4crf/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = gcc
+
+pkgname = discretize4crf-svn
+
