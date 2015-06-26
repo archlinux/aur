@@ -1,13 +1,13 @@
 # Maintainer: Albert Berger < nbdspcl at gmail dot com>
 pkgname=regd
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Registry daemon, information cache and secure credential storage."
 arch=('any')
 url="https://github.com/nbdsp/regd"
 license=('GPL')
 groups=()
-depends=('python3')
+depends=('python>=3.3')
 optdepends=()
 makedepends=()
 provides=("${pkgname}")
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}::https://github.com/nbdsp/regd/archive/v0.5.0.tar.gz")
+source=("${pkgname}::https://github.com/nbdsp/regd/archive/v0.5.1.tar.gz")
 noextract=()
 md5sums=('SKIP')
 

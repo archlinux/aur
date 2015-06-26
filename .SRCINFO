@@ -1,14 +1,14 @@
 pkgbase = regd
 	pkgdesc = Registry daemon, information cache and secure credential storage.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/nbdsp/regd
 	arch = any
 	license = GPL
-	depends = python3
+	depends = python>=3.3
 	provides = regd
 	conflicts = regd
-	source = regd::https://github.com/nbdsp/regd/archive/v0.5.0.tar.gz
+	source = regd::https://github.com/nbdsp/regd/archive/v0.5.1.tar.gz
 	md5sums = SKIP
 
 pkgname = regd
