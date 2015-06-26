@@ -1,0 +1,16 @@
+pkgbase = macaviz
+	pkgdesc = Graphical frontend for macaon NLP tools
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://macaon.lif.univ-mrs.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = macaon
+	depends = graphviz
+	depends = gtkmm
+	source = http://macaon.lif.univ-mrs.fr//uploads/macaon/packages/maca_view/macaviz-1.0.1.tar.gz
+	md5sums = f61ca97644c95044916c4e64d0f4a70e
+
+pkgname = macaviz
+
