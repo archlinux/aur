@@ -1,6 +1,6 @@
 pkgbase = janusvr
 	pkgdesc = JanusVR is a 3D VR internet browser
-	pkgver = 42.7
+	pkgver = 42.11
 	pkgrel = 1
 	url = http://www.dgp.toronto.edu/~mccrae/projects/firebox/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = janusvr
 	depends = sqlite
 	depends = dbus-glib
 	depends = qt5-multimedia
-	source = janusvr42.7.gz::http://www.dgp.toronto.edu/~mccrae/projects/firebox/downloads/janusvr_linux.tar.gz
+	source = janusvr42.11.gz::http://www.dgp.toronto.edu/~mccrae/projects/firebox/downloads/janusvr_linux.tar.gz
 	source = janusvr.sh
 	source = http://www.dgp.toronto.edu/~mccrae/projects/firebox/img/janus_logo5.jpg
 	source = janusvr.desktop
