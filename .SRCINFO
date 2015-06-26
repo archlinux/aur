@@ -1,0 +1,16 @@
+pkgbase = python2-pynliner
+	pkgdesc = Python CSS-to-inline-styles conversion tool for HTML using BeautifulSoup and cssutils.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pynliner
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-beautifulsoup4
+	depends = python2-cssutils
+	source = https://pypi.python.org/packages/source/p/pynliner/pynliner-0.5.2.tar.gz
+	md5sums = 5a0b85aa5448c8f8d14fb58e5ab1c3c1
+
+pkgname = python2-pynliner
+
