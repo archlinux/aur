@@ -1,0 +1,18 @@
+post_install() {
+	echo 'To install/update this extension in Thunderbird:'
+	echo ' 1) Go to Add-ons Manager (Tools > Add-ons)'
+	echo ' 2) Click the settings-button next to the search bar'
+	echo ' 3) "Install Add-on From File..."'
+	echo ' 4) Navigate to /usr/lib/thunderbird/extensions/'
+	echo ' 5) Open and install exchangecalendar-VERSION.xpi'
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo 'To remove this extension from Thunderbird:'
+	echo ' 1) Go to Add-ons Manager (Tools > Add-ons)'
+	echo ' 2) Click "Remove" on the Exchange EWS Provider extension'
+}

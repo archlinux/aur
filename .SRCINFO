@@ -1,0 +1,18 @@
+pkgbase = thunderbird-exchangecalendar-git
+	pkgdesc = Synchronize calendar, tasks and contacts with Exchange EWS.
+	pkgver = r1305.30332f5
+	pkgrel = 1
+	url = https://github.com/Ericsson/exchangecalendar
+	install = thunderbird-exchangecalendar-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = thunderbird
+	optdepends = lightning: Calendar and tasks support
+	provides = thunderbird-exchangecalendar
+	source = git+https://github.com/Ericsson/exchangecalendar.git
+	sha256sums = SKIP
+
+pkgname = thunderbird-exchangecalendar-git
+
