@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
          'xerces-c'
+	 # qt group
          'qt5-base'
          'qt5-connectivity'
          'qt5-declarative'
