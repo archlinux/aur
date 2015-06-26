@@ -1,6 +1,6 @@
 # Maintainer: Albert Berger < nbdspcl at gmail dot com>
 pkgname=pacliner
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Archlinux package management helper."
 arch=('any')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}::https://github.com/nbdsp/pacliner/archive/v0.1.1.tar.gz")
+source=("${pkgname}::https://github.com/nbdsp/pacliner/archive/v0.1.2.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
