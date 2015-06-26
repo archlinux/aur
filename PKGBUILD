@@ -1,6 +1,6 @@
 pkgname=phototonic
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Image Viewer and Organizer"
 arch=('i686' 'x86_64')
 url="http://oferkv.github.io/phototonic/"
