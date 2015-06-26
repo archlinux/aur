@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-timer-git
+	pkgdesc = A simple timer extension for gnome-shell
+	pkgver = 20121103
+	pkgrel = 1
+	url = http://github.com/olebowle/gnome-shell-timer
+	install = gnome-shell-extension-timer-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	depends = python2
+	source = git://github.com/olebowle/gnome-shell-timer.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-timer-git
+
