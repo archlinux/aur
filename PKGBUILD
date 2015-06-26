@@ -16,7 +16,7 @@ md5sums=('581d29ff9a0aabf4aeb6beeb40f589b0' 'e55595ace976c90d45b55ea4f3a3da38')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   #cp -R $srcdir/kmidimon-0.7.4/drumstick ./
-  tar -xf drumstick.tar.gz
+  tar -xf ../drumstick.tar.gz
     
   #sed -i '/KDE4Defaults/ a INCLUDE(${QT_USE_FILE})\n MESSAGE("QT_USE_FILE: ${QT_USE_FILE}")' CMakeLists.txt
 
