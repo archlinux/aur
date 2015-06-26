@@ -1,0 +1,13 @@
+[Unit]
+Description=Ogar Server
+After=network.target
+
+[Service]
+Type=simple
+User=ogar
+Group=ogar
+WorkingDirectory=/usr/share/ogar
+ExecStart=/usr/bin/node /usr/share/ogar/src/index.js
+
+[Install]
+WantedBy=multi-user.target
