@@ -1,7 +1,7 @@
 pkgbase = pacmind
 	pkgdesc = A gtkdialog frontend gui for the package manager, inspired to yaourt-gui
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xfce-italia.it/index.php?topic=636.0
 	install = pacmind.install
 	arch = any

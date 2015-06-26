@@ -2,7 +2,7 @@
 
 pkgname=pacmind
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A gtkdialog frontend gui for the package manager, inspired to yaourt-gui"
 arch=('any')
 url="http://www.xfce-italia.it/index.php?topic=636.0"
