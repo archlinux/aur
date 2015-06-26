@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/nbdsp/pacliner"
 license=('GPL')
 groups=()
-depends=('bash','perl')
+depends=('bash' 'perl')
 optdepends=('pacgraph: package information'
 	    'expack: package information')
 makedepends=('git')
