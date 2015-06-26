@@ -16,7 +16,7 @@ md5sums=('581d29ff9a0aabf4aeb6beeb40f589b0')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  sed -i '/KDE4Defaults/ a INCLUDE(${QT_USE_FILE})' CMakeLists.txt
+  sed -i '/KDE4Defaults/ a INCLUDE(${QT_USE_FILE})\n MESSAGE("QT_USE_FILE: ${QT_USE_FILE}")' CMakeLists.txt
 
   # doc build errors prevent success
   sed -i '/doc/d' CMakeLists.txt
@@ -25,7 +25,7 @@ build() {
   #sed -i '/-DQT_STRICT_ITERATORS/ a ADD_DEFINITIONS(-fPIC)' CMakeLists.txt
   sed -i '/CMAKE_MINIMUM_REQUIRED/ a SET(CMAKE_CXX_FLAGS "-fPIC")' CMakeLists.txt
   
-  sed -i 's/OPTION(ENABLE_PCH       "Enable precompiled headers" OFF)/OPTION(ENABLE_PCH       "Enable precompiled headers" ON)/' CMakeLists.txt
+  #sed -i 's/OPTION(ENABLE_PCH       "Enable precompiled headers" OFF)/OPTION(ENABLE_PCH       "Enable precompiled headers" ON)/' CMakeLists.txt
   #sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
   
   #sed -i '/INCLUDE_DIRECTORIES/ a INCLUDE_DIRECTORIES("/usr/include/drumstick/")' CMakeLists.txt
