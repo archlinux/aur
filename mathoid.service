@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=nobody
-Type=Simple
+Type=simple
 ExecStart=/usr/bin/node /usr/share/webapps/mediawiki/services/mathoid/server.js
 PrivateTmp=true
 
