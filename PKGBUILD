@@ -36,7 +36,8 @@ build() {
 #make ARCH=um oldconfig
 #return 1
 
-  make ARCH=um vmlinux modules KCFLAGS=-fPIC
+  #make ARCH=um vmlinux modules KCFLAGS=-fPIC
+  make ARCH=um vmlinux modules KCFLAGS="-fPIC -D__used='__attribute__((__used__))'"
 }
 
 package_linux-usermode() {
