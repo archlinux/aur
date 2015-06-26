@@ -1,0 +1,16 @@
+pkgbase = macaon-git
+	pkgdesc = natural language processing (NLP) toolchain that can work word lattices.
+	pkgver = 20130219
+	pkgrel = 2
+	url = http://macaon.lif.univ-mrs.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pkg-config
+	depends = glib2
+	depends = libxml2
+	depends = gfsm>=0.0.10
+
+pkgname = macaon-git
+
