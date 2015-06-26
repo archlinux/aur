@@ -5,7 +5,35 @@
                               http://www.fmod.org
 ===============================================================================
 
-09/06/15 1.06.04 - Studio API patch release (build 64800)
+24/06/15 1.06.05 - Studio API patch release (build 65161)
+----------------------------------------------------
+
+Features:
+* Studio API   - Added FMOD_STUDIO_LOAD_BANK_DECOMPRESS_SAMPLES flag to
+                 force bank sample data to decompress into memory, saving
+                 CPU on low end platforms.
+* Studio API   - Improved responsiveness when reducing steal oldest polyphony
+                 over live update.
+* Studio API   - Studio profiling now includes nested instance information.
+* UE4          - Exposed beat and marker callbacks as Blueprint events.
+
+Fixes:
+* Studio API   - Fixed Scatterer sounds having incorrect volume when min and
+                 max scatter distances are equal. Introduced in 1.06.00.
+* Studio API   - Fixed FMOD_STUDIO_TIMELINE_BEAT_PROPERTIES position to
+                 return the beat position, rather than the tempo marker 
+                 position.
+* Studio API   - Fix deadlock in studio when removing an output device that 
+                 runs at a different sample rate to the system.
+* Studio API   - Fix deadlock in studio when removing certain USB headsets.
+* LowLevel API - Fixed rare case of DSP mixer not responding momentarily if 
+                 output mode was switched during playback.
+* LowLevel API - Fix declaration of DSP.getMeteringInfo in C# wrapper.
+
+Notes:
+* UE4          - Now built against Unreal 4.8
+
+09/06/15 1.06.04 - Studio API patch release
 ----------------------------------------------------
 
 Features:
