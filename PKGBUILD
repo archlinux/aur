@@ -2,7 +2,7 @@
 pkgname=haskell-stack
 _pkgname=stack
 pkgver='0.1.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64' 'i686')
 url="https://www.github.com/commercialhaskell/stack"
@@ -28,6 +28,7 @@ package() {
   install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack" 
   STACK_MAN_DIR=usr/share/man/man1
   install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack" 
+  gzip $STACK_MAN_DIR/stack.1
   install -Dm755 $STACK_MAN_DIR/stack.1.gz "$pkgdir/$STACK_MAN_DIR/stack.1.gz" 
 }
 
