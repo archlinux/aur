@@ -17,20 +17,20 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (3.19 and 4.0 kernel patch)
+# Contributor: kolasa (3.19, 4.0 & 4.1 kernel patch)
 
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=30
+pkgrel=31
 pkgdesc="AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.1' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'netkit-bsd-finger' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'netkit-bsd-finger' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -72,16 +72,16 @@ source=(
     catalyst-hook.service
     3.5-do_mmap.patch
     arch-fglrx-3.7.patch
-    arch-fglrx-3.8.patch
     gentoo_linux-3.10-proc.diff
     foutrelis_3.10_fix_for_legacy.patch
     lano1106_fglrx_intel_iommu.patch
     lano1106_kcl_agp_13_4.patch
-    arch_3.13_kernel_acpi_node.patch
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     kolasa-3.19-get_cpu_var.patch
-    kolasa_4.0-cr4-strn.patch)
+    kolasa_4.0-cr4-strn.patch
+    kolasa_4.1_remove-IRQF_DISABLED.patch
+    arch-fglrx-acpi_handle.patch)
 
 md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 '769d233666d4353f514b5d7ff035f6b6'
@@ -97,16 +97,16 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'a64e2eae5addc6d670911ccf94b8cda4'
 	 'a450e2e3db61994b09e9d99d95bee837'
 	 'ff60c162b46e21e9810a722718023451'
-	 '52a79bddac813f19f72fcb32acebb1b9'
 	 '5872d95907a93ada44982e355e91e59d'
 	 '5d6b5ae55adfb4909e042f50400a4e2d'
 	 '5184b94a2a40216a67996999481dd9ee'
 	 'c5156eddf81c8a1719b160d05a2e8d67'
-	 '25e7c640aeafb08bb5593b647c69cf9b'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '3aa45013515b724a71bbd8e01f98ad99'
-	 'dee3df1c5d3ed87363f4304da917fc00')
+	 'dee3df1c5d3ed87363f4304da917fc00'
+	 '81a9e38dee025151cccb7e5db2362cfb'
+	 '645422762125052a0f13ecd03d7bf9dd')
 
 
 build() {
@@ -263,18 +263,18 @@ package() {
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../3.5-do_mmap.patch
       patch -Np1 -i ../arch-fglrx-3.7.patch
-      patch -Np1 -i ../arch-fglrx-3.8.patch
       patch -Np0 -i ../gentoo_linux-3.10-proc.diff
       patch -l -Np1 -i ../foutrelis_3.10_fix_for_legacy.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-      patch -Np1 -i ../arch_3.13_kernel_acpi_node.patch
       patch -Np1 -i ../cold-fglrx-3.14-current_euid.patch
       patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
 #      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
+      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
+      patch -Np1 -i ../arch-fglrx-acpi_handle.patch
 
     # Prepare modules source files
       _archdir=x86_64

@@ -1,14 +1,14 @@
 pkgbase = catalyst-total-hd234k
 	pkgdesc = AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 30
+	pkgrel = 31
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = linux>=3.0
-	depends = linux<4.1
+	depends = linux<4.2
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.13.0
@@ -69,16 +69,16 @@ pkgbase = catalyst-total-hd234k
 	source = catalyst-hook.service
 	source = 3.5-do_mmap.patch
 	source = arch-fglrx-3.7.patch
-	source = arch-fglrx-3.8.patch
 	source = gentoo_linux-3.10-proc.diff
 	source = foutrelis_3.10_fix_for_legacy.patch
 	source = lano1106_fglrx_intel_iommu.patch
 	source = lano1106_kcl_agp_13_4.patch
-	source = arch_3.13_kernel_acpi_node.patch
 	source = cold-fglrx-3.14-current_euid.patch
 	source = fglrx_gpl_symbol.patch
 	source = kolasa-3.19-get_cpu_var.patch
 	source = kolasa_4.0-cr4-strn.patch
+	source = kolasa_4.1_remove-IRQF_DISABLED.patch
+	source = arch-fglrx-acpi_handle.patch
 	md5sums = c07fd1332abe4c742a9a0d0e0d0a90de
 	md5sums = 769d233666d4353f514b5d7ff035f6b6
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
@@ -93,16 +93,16 @@ pkgbase = catalyst-total-hd234k
 	md5sums = a64e2eae5addc6d670911ccf94b8cda4
 	md5sums = a450e2e3db61994b09e9d99d95bee837
 	md5sums = ff60c162b46e21e9810a722718023451
-	md5sums = 52a79bddac813f19f72fcb32acebb1b9
 	md5sums = 5872d95907a93ada44982e355e91e59d
 	md5sums = 5d6b5ae55adfb4909e042f50400a4e2d
 	md5sums = 5184b94a2a40216a67996999481dd9ee
 	md5sums = c5156eddf81c8a1719b160d05a2e8d67
-	md5sums = 25e7c640aeafb08bb5593b647c69cf9b
 	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
 	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
 	md5sums = 3aa45013515b724a71bbd8e01f98ad99
 	md5sums = dee3df1c5d3ed87363f4304da917fc00
+	md5sums = 81a9e38dee025151cccb7e5db2362cfb
+	md5sums = 645422762125052a0f13ecd03d7bf9dd
 
 pkgname = catalyst-total-hd234k
 
