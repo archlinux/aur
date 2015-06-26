@@ -1,0 +1,16 @@
+pkgbase = latex-wrapfig
+	pkgdesc = Produces figures which text can flow around.
+	pkgver = 3.6
+	pkgrel = 2
+	url = http://tug.ctan.org/tex-archive/macros/latex/contrib/wrapfig/
+	install = latex-wrapfig.install
+	arch = i686
+	arch = x86_64
+	license = custom:latex
+	depends = texlive-core
+	conflicts = texlive-latexextra
+	source = http://mirrors.ctan.org/macros/latex/contrib/wrapfig/wrapfig.sty
+	md5sums = 3701aebf80ccdef248c0c20dd062fea9
+
+pkgname = latex-wrapfig
+
