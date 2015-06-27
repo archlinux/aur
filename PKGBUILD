@@ -2,8 +2,8 @@
 # Contributor: fnord0 <fnord0 AT riseup DOT net>
 pkgname=('yara' 'python-yara')
 pkgbase='yara'
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="a tool aimed at helping malware researchers to identify and classify malware samples"
 arch=('i686' 'x86_64')
 url="http://plusvic.github.io/yara/"
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('openssl')
 makedepends=('automake' 'libtool' 'autoconf' 'flex' 'bison')
 source=("https://github.com/plusvic/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('f763f4d5b71caf5aef20995d128e1e16f176746dd2fade1f3991a7a81e050ba8c0d9aa1d96bb4dc754e5f0a44fa799d620c5f4797bcd3205fad77f9c493c5532')
+sha512sums=('27286107882c70de6f2c227d5307fbaa97437f8bbb221d4f0fcb17c4935f65ef01e772c18a14eb814727ca1854f5e3f9f219771706d9f4a748ae9433f475d669')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
