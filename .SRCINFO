@@ -1,0 +1,20 @@
+pkgbase = lugaru
+	pkgdesc = A third-persion action game featuring a unique close-range combat system
+	pkgver = 1.0c
+	pkgrel = 3
+	url = http://www.wolfire.com/lugaru
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = openal
+	depends = sdl
+	source = lugaru-1.0c.zip::http://cdn.wolfire.com/games/lugaru/lugaru-linux-x86-1.0c.bin
+	source = lugaru.launcher
+	source = lugaru.desktop
+	sha256sums = ad330c9f5496a1fc54fb3640723420a80dfee9da47a71ef7a34a38848c885ade
+	sha256sums = c8a8bb5be74806f7c7aeef5839a7de549dbabb95edd4394063d7ad6572d88e04
+	sha256sums = 306df52e81c544ed8884f52d4c6392c9d0de8d82ea3c68a53d7d3d924d1780d9
+
+pkgname = lugaru
+

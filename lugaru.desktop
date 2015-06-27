@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Lugaru
+GenericName=Lugaru
+Comment=Lugaru
+Exec=/usr/bin/lugaru
+Icon=/usr/share/pixmaps/lugaru.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+
