@@ -1,0 +1,14 @@
+pkgbase = geosteiner
+	pkgdesc = Compute Euclidean and Rectilinear Steiner Trees
+	pkgver = 3.1
+	pkgrel = 3
+	url = http://www.diku.dk/hjemmesider/ansatte/martinz/geosteiner/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.cs.sunysb.edu/~algorith/implement/geosteiner/distrib/geosteiner-3.1.tar.gz
+	md5sums = 89bf30c923aa2bc61c04906c52cb6780
+
+pkgname = geosteiner
+
