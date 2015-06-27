@@ -1,0 +1,11 @@
+[Unit]
+Description=Update the pacman mirrorlist.
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/update-pacman-mirrorlist
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=yes
+Type=oneshot

@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+#TODO: Comment and document!
+
+temp_mirrorlist_file="$(mktemp)"
+cleanup()
+{
+	rm "$temp_mirrorlist_file"
+}
+trap cleanup EXIT
+
+#TODO: Proper, GNU style, command line argument handling.
+#Use settings from the configuration file first.
+source '/etc/update-pacman-mirrorlist' || true
+set +u
+#Prefer settings from the command line arguments.
+if [ -n "$1" ]; then
+	mirrorlist_file="$1"
+fi
+if [ -n "$2" ]; then
+	mirrorlist_url="$2"
+fi
+#Fall back to defaults if the settings are not defined in the configuration file or command line arguments.
+if [ -z "$mirrorlist_file" ]; then
+	mirrorlist_file='/etc/pacman.d/mirrorlist'
+fi
+if [ -z "$mirrorlist_url" ]; then
+	mirrorlist_url='https://www.archlinux.org/mirrorlist/?use_mirror_status=on'
+fi
+set -u
+
+echo "Downloading new mirrorlist from $mirrorlist_url to $mirrorlist_file."
+#TODO: Retry download in a more intelligent manner as to not overload the server.
+curl -fLC - --retry 3 --retry-delay 3 "$mirrorlist_url" -o "$temp_mirrorlist_file"
+
+#TODO: Better sanity checking.
+if [[ $(diff <(head -n 2 "$temp_mirrorlist_file") <(echo -e '##\n## Arch Linux repository mirrorlist')) ]]; then
+	echo -e 'The downloaded mirrorlist file does not contain the following two lines, so it might be invalid.\n##\n## Arch Linux repository mirrorlist' >&2
+	exit 1;
+fi
+
+#TODO: Only uncomment if necessary.
+sed '/^#\S/ s|#||' -i "$temp_mirrorlist_file"
+
+#TODO: These last commands are the only ones that need to run as root; privileges should be dropped until now.
+if [ -e "$mirrorlist_file" ]; then
+	cat "$mirrorlist_file" > "$mirrorlist_file.backup"
+fi
+cat "$temp_mirrorlist_file" > "$mirrorlist_file"
+
+while [ -e /var/lib/pacman/db.lck ]; do
+	set +e
+	inotifywait -e delete_self /var/lib/pacman/db.lck
+	set -e
+done
+pacman -Syy
