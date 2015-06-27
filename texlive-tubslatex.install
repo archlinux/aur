@@ -1,0 +1,15 @@
+post_install() {
+  mktexlsr
+  sudo updmap-sys --nomkmap --nohash --enable Map=NexusProSans.map
+  sudo updmap-sys --nomkmap --nohash --enable Map=NexusProSerif.map
+  sudo updmap-sys
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  mktexlsr
+  sudo updmap-sys
+}

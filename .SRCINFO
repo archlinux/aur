@@ -1,0 +1,13 @@
+pkgbase = texlive-tubslatex
+	pkgdesc = LaTeX-Templates for the Corporate Design of TU Braunschweig
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://http://tubslatex.ejoerns.de
+	install = texlive-tubslatex.install
+	arch = any
+	depends = texlive-core
+	source = http://tubslatex.ejoerns.de/1.1.0/tubslatex_1.1.0.tds.zip
+	md5sums = 8ced666ae466f63997854119ca592fe0
+
+pkgname = texlive-tubslatex
+
