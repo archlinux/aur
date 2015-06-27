@@ -1,0 +1,14 @@
+pkgbase = html-4-docs
+	pkgdesc = HTML 4.01 Specification
+	pkgver = 4.01.19991224
+	pkgrel = 1
+	url = http://www.w3.org/TR/html4/
+	arch = any
+	license = W3C
+	noextract = html40.tgz
+	options = docs
+	source = http://www.w3.org/TR/1999/REC-html401-19991224/html40.tgz
+	md5sums = 1ed76627ba80816079649f67023ec7ab
+
+pkgname = html-4-docs
+
