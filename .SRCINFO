@@ -1,0 +1,15 @@
+pkgbase = xhtml-modularization-1-docs
+	pkgdesc = XHTML Modularization Documentation
+	pkgver = 1.1.20100729
+	pkgrel = 1
+	url = http://www.w3.org/TR/xhtml-modularization/
+	arch = any
+	license = W3C
+	replaces = xhtml-modularization-docs
+	options = docs
+	options = !strip
+	source = http://www.w3.org/TR/2010/REC-xhtml-modularization-20100729/xhtml-modularization.tgz
+	md5sums = cf4cadea4da93d20f9689fc468a80e2f
+
+pkgname = xhtml-modularization-1-docs
+
