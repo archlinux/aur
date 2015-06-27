@@ -1,0 +1,28 @@
+pkgbase = ledger
+	pkgdesc = A double-entry accounting system with a command-line reporting interface.
+	pkgver = 3.1
+	pkgrel = 2
+	url = http://www.ledger-cli.org
+	install = ledger.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	makedepends = texinfo
+	makedepends = texlive-plainextra
+	makedepends = icu>=55
+	depends = boost>=1.49
+	depends = mpfr>=2.4.0
+	depends = pcre
+	depends = expat
+	depends = libedit
+	options = !libtool
+	source = ledger-3.1.tar.gz::https://github.com/ledger/ledger/archive/v3.1.tar.gz
+	source = ledger_git.diff
+	md5sums = f4389aae3ba96eb5590784db7fa614ca
+	md5sums = 8b7c6a5727d8ccc0e60851da7df9fbbb
+
+pkgname = ledger
+
