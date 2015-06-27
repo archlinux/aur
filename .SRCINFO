@@ -1,7 +1,7 @@
 pkgbase = conky-top
 	pkgdesc = A Top conky-lua for ArchLinux
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alexiobash.com/conky-top-monitor-di-sistema-a-pannello/
 	install = conky-top.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = conky-top
 	depends = conky-lua
 	depends = perl-mail-imapclient
 	depends = perl-io-socket-ssl
+	depends = git
 	backup = etc/conky/conky-top.conf
 	backup = usr/share/conkytop/gmail.pl
 	backup = usr/share/conkytop/update.pl
