@@ -1,0 +1,14 @@
+pkgbase = huhfa
+	pkgdesc = A Framework For Facet Classification
+	pkgver = 0.0
+	pkgrel = 1
+	url = http://comopt.ifi.uni-heidelberg.de/people/hildenbrandt/HUHFA/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = huhfa-0.0.zip::http://comopt.ifi.uni-heidelberg.de/people/hildenbrandt/HUHFA//HUHFA.zip
+	md5sums = 080ce9c8d0ed89d72962378d20f19a59
+
+pkgname = huhfa
+
