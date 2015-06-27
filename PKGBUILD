@@ -3,7 +3,7 @@
 # Based on the PKGBUILD for R
 
 pkgname=r-mkl
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics, set up to use Intel's MKL"
 arch=('i686' 'x86_64')
@@ -66,7 +66,7 @@ build() {
     LDFLAGS="${LDFLAGS} -L${_icclibpath}"
     
     
-    if [ $_CC = "icc" ]; then
+    if [ "$_CC" = "icc" ]; then
         export CC="icc"
         export CXX="icpc"
         export AR="xiar"
