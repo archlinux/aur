@@ -8,7 +8,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-4.1-samus/archive/1.1.tar.gz"
+source=("https://github.com/raphael/linux-4.1-samus/archive/v1.1.tar.gz"
         "config"
         "linux.preset"
         )
