@@ -1,0 +1,15 @@
+pkgbase = lib32-tinyxml
+	pkgdesc = A simple, small, C++ XML parser that can be easily integrated into other programs (32 bit)
+	pkgver = 2.6.2
+	pkgrel = 5
+	url = http://www.grinninglizard.com/tinyxml/
+	arch = x86_64
+	license = zlib
+	makedepends = gcc-multilib
+	depends = lib32-gcc-libs
+	depends = tinyxml
+	source = http://downloads.sourceforge.net/tinyxml/tinyxml_2_6_2.tar.gz
+	md5sums = c1b864c96804a10526540c664ade67f0
+
+pkgname = lib32-tinyxml
+
