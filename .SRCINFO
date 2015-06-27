@@ -1,0 +1,28 @@
+pkgbase = photivo-hg
+	pkgdesc = Free and open source photo processor
+	pkgver = 1113.66a8c1082d88
+	pkgrel = 1
+	url = http://photivo.org/
+	install = photivo.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	makedepends = gimp
+	depends = exiv2
+	depends = qt4
+	depends = lcms2
+	depends = fftw
+	depends = graphicsmagick
+	depends = lensfun
+	depends = liblqr
+	depends = shared-mime-info
+	optdepends = gimp: Gimp plugins
+	optdepends = python2: Gimp to Photivo plugin
+	provides = photivo
+	conflicts = photivo
+	source = hg+https://code.google.com/p/photivo/
+	md5sums = SKIP
+
+pkgname = photivo-hg
+
