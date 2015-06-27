@@ -1,0 +1,20 @@
+pkgbase = zbar-git
+	pkgdesc = Application and library for reading bar codes from various sources
+	pkgver = iPhoneSDK.1.3.1.r10.g453a338
+	pkgrel = 1
+	url = http://zbar.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = LGPL
+	depends = v4l-utils
+	depends = autoconf
+	conflicts = zbar-gtk
+	conflicts = zbar-qt
+	conflicts = zbar
+	source = zbar-git::git://github.com/vbmithr/ZBar#branch=neon
+	md5sums = SKIP
+
+pkgname = zbar-git
+
