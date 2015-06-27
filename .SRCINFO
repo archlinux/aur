@@ -1,0 +1,14 @@
+pkgbase = emacs-dart-mode-git
+	pkgdesc = Major mode for Dart
+	pkgver = 0.13.r5.gbf82220
+	pkgrel = 1
+	url = https://github.com/nex3/dart-mode
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	depends = flycheck
+
+pkgname = emacs-dart-mode-git
+
