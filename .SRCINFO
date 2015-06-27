@@ -1,0 +1,15 @@
+pkgbase = markv
+	pkgdesc = Takes ASCII text and returns nonsense.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://homepages.ihug.co.nz/~trmusson/programs.html#markov
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = http://homepages.ihug.co.nz/~trmusson/stuff/markv-1.1.0.tar.gz
+	md5sums = 5caf578b30b4edb9841709346dfbb6ea
+	sha1sums = 52ec97857894e72b8e8fd6a80496f29088fd173d
+	sha256sums = 4205195104b3d71447dd4dac3d8e20fce4b299750c54591f93e1c4abcfa5bcff
+
+pkgname = markv
+
