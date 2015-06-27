@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AnalyseSI
+Comment=Merise modeling tool
+Comment[fr]=Outil de modélisation Merise
+Exec=analysesi
+Icon=/usr/share/pixmaps/analysesi.svg
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Development;
