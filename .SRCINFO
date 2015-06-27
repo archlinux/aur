@@ -1,0 +1,31 @@
+pkgbase = osc2midi-utils-git
+	pkgdesc = Utilities and GTK frontend for OSC2MIDI (git version)
+	pkgver = 79.556a779
+	pkgrel = 1
+	url = https://bitbucket.org/agraef/osc2midi-utils/
+	install = osc2midi-utils.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = osc2midi
+	depends = pure
+	depends = pure-avahi
+	depends = pure-ffi
+	depends = pure-liblo
+	depends = pure-sockets
+	depends = pure-tk
+	depends = pure-xml
+	depends = gnocl
+	depends = gnocl-builder
+	depends = gnocl-gconf
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = touchosc-editor
+	provides = osc2midi-utils
+	conflicts = osc2midi-utils
+	source = osc2midi-utils-git::git+https://bitbucket.org/agraef/osc2midi-utils
+	md5sums = SKIP
+
+pkgname = osc2midi-utils-git
+
