@@ -1,0 +1,22 @@
+pkgbase = openj-core-git
+	pkgdesc = Modern, high-level, general-purpose, high-performance programming language (core)
+	pkgver = 701.62.g18fd23b
+	pkgrel = 2
+	epoch = 1
+	url = http://www.jsoftware.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = readline
+	provides = openj-core
+	source = j::git+https://github.com/openj/core.git
+	source = j.vim::http://www.jsoftware.com/jwiki/Guides/Syntax%20Coloring?action=AttachFile&do=get&target=j.vim.txt
+	source = j.xml::http://www.jsoftware.com/jwiki/Guides/Syntax%20Coloring?action=AttachFile&do=get&target=j.xml.txt
+	sha512sums = SKIP
+	sha512sums = b6edc847a409a29807e1765a5f77d60b0ad57744e89959047123b3be234545318c4a7086524dad8390451766e7c4a90dd7abfeecafd7a7e0cec5cba89af08a53
+	sha512sums = 34c9daa59f540d769eeb3b27cc42daf8d87c9249fb19847f853ac78c3188a9512606ebc1944f666a685374f1f501b5778f24c0eab9e8ac42a32f157ee70c8dd9
+
+pkgname = openj-core-git
+
