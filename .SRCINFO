@@ -1,0 +1,24 @@
+pkgbase = lib32-vogl-git
+	pkgdesc = An OpenGL debugger
+	pkgver = 418.b3a52c2
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/vogl
+	install = vogl.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = lib32-qt5-base
+	depends = lib32-libjpeg-turbo
+	depends = lib32-tinyxml
+	depends = lib32-libunwind
+	depends = lib32-sdl2
+	optdepends = steam: trace games from Steam
+	source = git+https://github.com/ValveSoftware/vogl.git
+	source = vogl.sh
+	md5sums = SKIP
+	md5sums = c9e00b04f42f293c10cfe3622911d345
+
+pkgname = lib32-vogl-git
+
