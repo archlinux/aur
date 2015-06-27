@@ -1,22 +1,22 @@
 # Maintainer: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum-git
-pkgver=r386.35b2755
+pkgver=r436.1f9f7da
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
 url="https://github.com/valum-framework/valum"
 license=("LGPL3")
 depends=("vala"
-	 "glib2"
-	 "libsoup"
-	 "libgee06"
-	 "ctpl"
-	 "fcgi"
-	 "libmemcached"
-	 "memcached"
-	 "luajit")
+		 "glib2>=2.32"
+		 "libsoup>=2.38"
+		 "libgee06>=0.6.4"
+		 "ctpl>=0.3.3"
+		 "fcgi")
+optdepends=("libmemcached"
+			"memcached"
+			"luajit")
 makedepends=("git"
-	     "python")
+			 "python")
 provides=("valum")
 source=("git://github.com/antono/valum.git")
 md5sums=("SKIP")
@@ -30,7 +30,11 @@ pkgver() {
 
 build() {
 	cd "valum"
-	./waf configure --prefix=/usr
+	if [[ -n $(pacman -Ql glib2 | grep gthread) ]]; then
+		./waf configure --enable-threading --prefix=/usr
+	else 
+		./waf configure --prefix=/usr
+	fi
 	./waf build
 }
 
