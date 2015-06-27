@@ -1,0 +1,19 @@
+pkgbase = asteroid-git
+	pkgdesc = A modern version of the arcade classic Asteroids
+	pkgver = 1.2.1.4.g0e37197
+	pkgrel = 1
+	url = http://chazomaticus.github.io/asteroid/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	depends = freeglut
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = sdl_mixer
+	source = asteroid::git+https://github.com/chazomaticus/asteroid.git
+	sha256sums = SKIP
+
+pkgname = asteroid-git
+
