@@ -42,7 +42,7 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     autoconf
-    ./configure --prefix=/usr/ --with-omniORB  --with-cppruntime --with-lapack='-llapack -lblas'
+    ./configure --prefix=/usr/ --without-omc --with-omniORB  --with-cppruntime --with-lapack='-llapack -lblas'
     make
 }
 
