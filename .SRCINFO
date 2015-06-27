@@ -1,0 +1,20 @@
+pkgbase = oculus-wine-wrapper-git
+	pkgdesc = A wrapper to allow you to run Oculus Rift Windows games in Wine
+	pkgver = 0.5.0.1.r0.ebfb6b3
+	pkgrel = 2
+	url = https://jspenguin.org
+	arch = x86_64
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-binutils
+	depends = oculus-rift-sdk>=0.5.0.1
+	depends = wine
+	optdepends = oculus-udev: Rules to let users access the Oculus Rift
+	optdepends = wine-unity3d-git: Wine with a patch allowing the -force-opengl flag of unity to work
+	conflicts = oculus-wine-wrapper
+	options = !emptydirs
+	source = oculus-wine-wrapper::git+https://github.com/feilen/oculus-wine-wrapper.git
+	sha256sums = SKIP
+
+pkgname = oculus-wine-wrapper-git
+
