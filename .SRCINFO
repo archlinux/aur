@@ -1,0 +1,25 @@
+pkgbase = pcp
+	pkgdesc = System performance and analysis framework
+	pkgver = 3.10.4
+	pkgrel = 1
+	url = http://pcp.io
+	install = pcp.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python
+	depends = nss
+	depends = qt4
+	depends = avahi
+	depends = systemtap
+	depends = procps-ng
+	optdepends = libmicrohttpd: support for pmwebd
+	source = ftp://ftp.pcp.io/projects/pcp/download/pcp-3.10.4.src.tar.gz
+	source = pcp.install
+	source = pcp.tmpfiles
+	sha256sums = 0215380d2ddb01865f659bbf36ed06020d5865152d430a6b6fc45eda67cc22ba
+	sha256sums = 590d816edc87dd03e3700d7637f57ca81d24d63802f32f772709e0c33a4ca0b5
+	sha256sums = 48ce114e95ab640bfe6c6c9608c96c22a75b65ccb38dfa89bfa2b12621845f20
+
+pkgname = pcp
+
