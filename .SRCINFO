@@ -1,0 +1,22 @@
+pkgbase = oracle-instantclient-basic
+	pkgdesc = Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)
+	pkgver = 12.1.0.2.0
+	pkgrel = 2
+	url = http://www.oracle.com/technetwork/database/features/instant-client/
+	arch = i686
+	arch = x86_64
+	license = custom:OTN
+	depends = gcc-libs
+	depends = libaio
+	replaces = instantclient-basic
+	replaces = instantclient-basiclite
+	options = !strip
+	source = LICENSE
+	source = oracle.sh
+	md5sums = 2d62e22e4f2d7e6d220fafde0f692a7d
+	md5sums = 784005aa31cb56bb2303179d98fccd8e
+	sha256sums = f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2
+	sha256sums = 36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9
+
+pkgname = oracle-instantclient-basic
+
