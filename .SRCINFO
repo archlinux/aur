@@ -1,0 +1,18 @@
+pkgbase = ogremeshy-bin
+	pkgdesc = Ogre Meshy is a tool for viewing OGRE mesh files.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ogremeshy/
+	arch = x86_64
+	license = GPL3
+	depends = ogre
+	depends = wxgtk
+	provides = ogremeshy
+	conflicts = ogremeshy
+	source = http://sourceforge.net/projects/ogremeshy/files/1.5%20%28Ogre%201.9.0%29/OgreMeshy.1.5b.Kubuntu64__Ogre_1.9.0.tar.bz2
+	source = ogremeshy.desktop
+	md5sums = fc311f4b09a8090b75fb163da7e5638d
+	md5sums = a8ec805fc905323d24532d841b442c1c
+
+pkgname = ogremeshy-bin
+
