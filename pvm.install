@@ -1,0 +1,25 @@
+post_install() {
+  echo "-----------------------------------------------"
+  echo "Environment variables have changed. Either log"
+  echo "out and back in or source /etc/profile before"
+  echo "using pvm!"
+  echo ""
+  echo "NOTE: To enable other computers to invoke the"
+  echo "      PVM daemon on your machine, add the"
+  echo "         source /etc/profile.d/pvm3.sh"
+  echo "      command to your .bashrc"
+  echo "-----------------------------------------------"
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

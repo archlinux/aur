@@ -1,0 +1,17 @@
+pkgbase = pvm
+	pkgdesc = Parallel Virtual Machine
+	pkgver = 3.4.6
+	pkgrel = 5
+	url = http://www.csm.ornl.gov/pvm/
+	install = pvm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.netlib.org/pvm3/pvm3.4.6.tgz
+	source = pvm.profile
+	sha512sums = a8ddb8fc944bbe64d185eeffba0e020f28af4c8175a446511deca55d7c4f5cf62884c8c5dcb03dd9700bcc48368c8dab353e45656094d139385d88fdf34dd78a
+	sha512sums = 8c7a612abd0f9f132900a2e4839d9ac2cbcae88cc3d835b82cdad25c3dddcf03f98542afb4d15ac4360523ce6f36057e1269af28694eebf1621cf5b35d0ca920
+
+pkgname = pvm
+
