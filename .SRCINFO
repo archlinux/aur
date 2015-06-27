@@ -1,7 +1,7 @@
 pkgbase = vim-fortran
 	pkgdesc = Additional indentation rules for Fortran 95 and Fortran 90
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org/scripts/script.php?script_id=2299
 	install = vimdoc.install
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = vim-fortran
 	groups = vim-plugins
 	license = custom
 	depends = vim
-	source = vim-fortran::http://www.vim.org/scripts/download_script.php?src_id=15717
-	md5sums = 2dd6ae6ff44facee2f673b898482679b
+	source = fortran.vim::http://www.vim.org/scripts/download_script.php?src_id=15717
+	sha256sums = d3c67714ed9248397b513366126e1dc61f6bd2081c96849a8ea5f0a0282662f9
 
 pkgname = vim-fortran
 
