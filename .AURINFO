@@ -1,0 +1,17 @@
+pkgbase = shotcut-bin
+	pkgdesc = A free, open source, cross-platform video editor.
+	pkgver = 141101
+	pkgrel = 1
+	url = http://www.mltframework.org/bin/view/Shotcut/WebHome
+	install = shotcut-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = jack
+	depends = libexif
+	depends = desktop-file-utils
+	provides = shotcut
+	source = https://github.com/mltframework/shotcut/releases/download/v14.09/shotcut-debian7-x86-140903.tar.bz2
+
+pkgname = shotcut-bin
+
