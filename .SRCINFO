@@ -1,0 +1,23 @@
+pkgbase = dontmove-hib
+	pkgdesc = Ninjas, failure, ludonarrative dissonance and player investment manipulation
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://www.steverichey.com/portfolio/dont-move/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = dontmove.sh
+	source = dontmove.desktop
+	source = dontmove.png::http://media.slidedb.com/images/games/1/25/24384/am_Official_HD_Icon_Faded_512.png
+	md5sums = c649e1c3160c6c452d39ad1ca05deb48
+	md5sums = a598147fb87e07dc86db2b3394666f03
+	md5sums = 204247c9c25b68b3c50bcfb68e16e93b
+	source_i686 = hib://DontMove_v1-3_Linux-32.tar
+	md5sums_i686 = 5e5aee1e2ca9a4b9bd15a47981982867
+	source_x86_64 = hib://DontMove_v1-3_Linux-64.tar
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-gcc-libs
+	md5sums_x86_64 = ae78a7b9c5c4442733ee87f64855b495
+
+pkgname = dontmove-hib
+

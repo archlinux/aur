@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Don't Move
+Comment=Ninjas, failure, ludonarrative dissonance and player investment manipulation
+Exec=dontmove
+Icon=dontmove
+Terminal=false
+StartupNotify=false
+Categories=Game
