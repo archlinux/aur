@@ -1,6 +1,6 @@
 pkgbase = systemd-kill-fix
 	pkgver = 221
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -117,7 +117,7 @@ pkgname = libsystemd-kill-fix
 	provides = libsystemd-login.so=221
 	provides = libudev.so=221
 	provides = libsystemd=221
-	conflicts = libsystemd=221
+	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-kill-fix
 	pkgdesc = sysvinit compat for systemd (with kill fix)
@@ -126,5 +126,5 @@ pkgname = systemd-sysvcompat-kill-fix
 	depends = systemd
 	provides = systemd-sysvcompat=221
 	conflicts = sysvinit,
-	conflicts = systemd-sysvcompat=221
+	conflicts = systemd-sysvcompat
 
