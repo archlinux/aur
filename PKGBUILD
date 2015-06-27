@@ -9,7 +9,7 @@ license=('LGPL2.1')
 depends=('gcc-libs>=4.8.2' 'glibc')
 makedepends=('cmake')
 source=(http://clockwork-origins.de/clockUtils/downloads/$pkgname-$pkgver-src.zip)
-sha256sums=('8d3e2cc98bb762df37f62700cfa81bbd4b51212f4d992a22bcca852eaee5f1aa')
+sha256sums=('74d6771389601434a427872908b798f35b76b3e116e8ee3eca0f82a055733e13')
 
 build() {
 	cd "$pkgname-$pkgver-src"
