@@ -1,0 +1,37 @@
+Streets of Rage Remake for Linux
+Date: 2014-02-08
+
+This is the x86 version of the game, no x86_64 port has been made.
+
+Dependencies
+============
+
+alsa
+libpng12
+sdl_mixer
+smpeg
+zlib
+
+Mods
+====
+
+Mods can be installed in the 'mod/games' of the SORR_SESSION folder.  All files
+and folders need to be lower case. Since a lot of mods are distributed with
+various case rules, two scripts are provided to ease the renaming process:
+
+* renamelower FILES
+
+Ex: renamelower mod/games/mymod/*
+
+* renamelowerrec FOLDERS
+
+Ex: renamelowerrec mod/games
+
+Links
+=====
+
+Home Page:         http://www.bombergames.net
+Linux information: http://sorr.forumotion.net/t148-sor-v5-for-linux-debian-download-links
+Download link:     http://www.soronline.net/sorr_downloads.htm
+Patch information: http://sorr.forumotion.net/t27-downloads-streets-of-rage-remake-ports
+                   http://www.soronline.net/changelog.txt

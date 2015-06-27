@@ -1,0 +1,30 @@
+pkgbase = streetsofrageremake
+	pkgdesc = A remake of the classic Streets of Rage 1, 2 and 3 by Sega
+	pkgver = 5.1
+	pkgrel = 2
+	url = http://sorr.forumotion.net/t148-sor-v5-for-linux-debian-download-links
+	install = sorr.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-alsa-lib
+	depends = lib32-libpng12
+	depends = lib32-sdl_mixer
+	depends = lib32-smpeg
+	depends = lib32-zlib
+	options = !strip
+	source = http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz
+	source = http://www.soronline.net/downloads/SORRv051_REV030.zip
+	source = Readme.linux
+	source = sorr-wrapper
+	source = renamelower
+	source = renamelowerrec
+	sha1sums = 5c719296ab1cbc222897fba00453a18e495ee8c4
+	sha1sums = 35323ee18ef7f010934501f3eae038710959399e
+	sha1sums = 37e4ce2bfbf9b593d0c9a62c3dfada1b3190a123
+	sha1sums = f53dc4b099a5c70020596327e3a572ad0812e34a
+	sha1sums = 545d34c1885b172afebad77349493025071a87ed
+	sha1sums = 968775da5d7d296040b53efa4e822270efa460c6
+
+pkgname = streetsofrageremake
+
