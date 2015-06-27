@@ -1,0 +1,17 @@
+pkgbase = ydpd-git
+	pkgdesc = A front-end to YDP Collins Dictionary written in Qt4
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/travnick/ydpd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	depends = libydpdict
+	options = strip
+	source = git://github.com/travnick/ydpd.git
+	md5sums = SKIP
+
+pkgname = ydpd-git
+
