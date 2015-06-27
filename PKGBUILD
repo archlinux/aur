@@ -11,6 +11,7 @@ options=('docs')
 source=("http://www.w3.org/TR/1999/REC-html401-19991224/html40.tgz")
 md5sums=('1ed76627ba80816079649f67023ec7ab')
 noextract=("html40.tgz")
+replaces=('html4-doc')
 
 build() {
   cd "$srcdir"
