@@ -1,0 +1,9 @@
+# This line enables HRTF and is the bare minimum for using it. Note that if you
+# are not using a sample rate of 44100Hz HRTF will be disabled.
+hrtf = true
+
+# Below are some alternate tables to use with HRTF, uncomment to use them. They
+# the '%r' variable and automatically select sample rate from common 
+# pre-generated tables.
+
+# hrtf_tables = "/usr/share/openal/hrtfs/CIAIR-%r.mhr"

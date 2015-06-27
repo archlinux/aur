@@ -1,0 +1,19 @@
+pkgbase = openal-hrtf
+	pkgdesc = Enable binaural audio globally in 3d applications
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Gaming
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = openal>=1.14
+	noextract = data02.tgz
+	source = http://kcat.strangesoft.net/openal-releases/openal-soft-1.15.1.tar.bz2
+	source = http://www.sp.m.is.nagoya-u.ac.jp/HRTF/archive/data02.tgz
+	source = alsoftrc
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = openal-hrtf
+
