@@ -1,7 +1,7 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
-pkgver=1.9.3.dev.r413.g8762871
-pkgrel=5
+pkgver=1.9.3.dev.r415.gc674c6b
+pkgrel=1
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -14,11 +14,19 @@ makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn')
 
-source=($pkgname::git+https://github.com/OpenModelica/OpenModelica) 
-md5sums=('SKIP')
+#source=($pkgname::git+https://github.com/OpenModelica/OpenModelica) 
+#md5sums=('SKIP')
+
+source=() 
+md5sums=()
 
 prepare() {
     # clone all submodules
+    mkdir -p "$srcdir/$pkgname"
+    if [ ! -d "$srcdir/$pkgname/.git" ]; then
+        git clone https://github.com/OpenModelica/OpenModelica "$srcdir/$pkgname"
+        echo "***** CLONING COMPLETED!!!!! ****"
+    fi
     cd "$srcdir/$pkgname"
     sed -i 's,../,https://github.com/OpenModelica/,g' .gitmodules
     git submodule sync

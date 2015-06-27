@@ -1,7 +1,7 @@
 pkgbase = openmodelica-git
 	pkgdesc = The Open Source Modelica Suite
-	pkgver = 1.9.3.dev.r413.g8762871
-	pkgrel = 5
+	pkgver = 1.9.3.dev.r415.gc674c6b
+	pkgrel = 1
 	url = https://openmodelica.org
 	arch = i686
 	arch = x86_64
@@ -38,8 +38,6 @@ pkgbase = openmodelica-git
 	provides = openmodelica
 	conflicts = openmodelica
 	conflicts = openmodelica-svn
-	source = openmodelica-git::git+https://github.com/OpenModelica/OpenModelica
-	md5sums = SKIP
 
 pkgname = openmodelica-git
 
