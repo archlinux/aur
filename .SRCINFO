@@ -1,0 +1,16 @@
+pkgbase = xhtml-1-doc
+	pkgdesc = XHTML 1.1 Documentation
+	pkgver = 1.1.20101123
+	pkgrel = 2
+	url = http://www.w3.org/TR/xhtml11
+	arch = any
+	license = W3C
+	depends = xhtml-modularization-1-docs
+	replaces = xhtml11-doc
+	options = docs
+	options = !strip
+	source = http://www.w3.org/TR/2010/REC-xhtml11-20101123/xhtml11.tgz
+	md5sums = 56366fb9ff58b79a2de71f127b9baf76
+
+pkgname = xhtml-1-doc
+
