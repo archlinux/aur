@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-taskbar
+	pkgdesc = GNOME Shell Extension TaskBar
+	pkgver = 291.c8686e9
+	pkgrel = 1
+	url = https://github.com/zpydr/gnome-shell-extension-taskbar
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/zpydr/gnome-shell-extension-taskbar.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-taskbar
+
