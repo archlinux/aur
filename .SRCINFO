@@ -1,0 +1,13 @@
+pkgbase = emacs-let-alist
+	pkgdesc = Easily let-bind values of an assoc-list by their names
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://elpa.gnu.org/packages/let-alist.html
+	arch = any
+	makedepends = emacs
+	depends = emacs
+	source = let-alist.el::http://elpa.gnu.org/packages/let-alist-1.0.4.el
+	md5sums = 83d165daee025ab3872c39ab31577ee5
+
+pkgname = emacs-let-alist
+
