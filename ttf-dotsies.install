@@ -1,0 +1,20 @@
+post_install() {
+  ln -sfT /etc/fonts/conf.avail/21-dotsies.conf /etc/fonts/conf.d/21-dotsies.conf
+  fc-cache -fs
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
+
+post_upgrade() {
+  ln -sfT /etc/fonts/conf.avail/21-dotsies.conf /etc/fonts/conf.d/21-dotsies.conf
+  fc-cache -fs
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
+
+post_remove() {
+  rm -f /etc/fonts/conf.d/21-dotsies.conf
+  fc-cache -fs
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}

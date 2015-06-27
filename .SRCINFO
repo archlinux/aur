@@ -1,0 +1,29 @@
+pkgbase = ttf-dotsies
+	pkgdesc = Dotsies is a font that uses dots instead of letters. Dotsies is optimized for reading. The letters in each word smoosh together, so words look like shapes.
+	pkgver = 1.0
+	pkgrel = 9
+	url = http://dotsies.org/
+	install = ttf-dotsies.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	source = http://dotsies.org/Dotsies.ttf
+	source = http://dotsies.org/Dotsies%20Training%20Wheels.ttf
+	source = http://dotsies.org/Dotsies%20Wide.ttf
+	source = http://dotsies.org/Dotsies%20Context.ttf
+	source = http://dotsies.org/Dotsies%20Striped.ttf
+	source = http://dotsies.org/Dotsies%20Roman.ttf
+	source = 21-dotsies.conf
+	md5sums = c747d6f74958bc94460d1ff5a08d4584
+	md5sums = 10412f34d8d7bfb8feb46c2f13233e61
+	md5sums = 542d9c7a221821fbb9ed6b4526bb681e
+	md5sums = 3f4e47182a011a999fea23a800c4920a
+	md5sums = 457c56bef89d7a245cab89834c91f652
+	md5sums = cf6fd2aefa299c0ae15b310f0cefef54
+	md5sums = a5ee21dde968e45ea7bf7a74b192d391
+
+pkgname = ttf-dotsies
+
