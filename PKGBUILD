@@ -1,6 +1,6 @@
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 
-pkgname=xhtml-1-doc
+pkgname=xhtml-1-docs
 _version=20101123
 pkgver=1.1.${_version}
 pkgrel=2
