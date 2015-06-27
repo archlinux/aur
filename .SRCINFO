@@ -1,0 +1,30 @@
+pkgbase = lightspark-git
+	pkgdesc = An open source flash player implementation
+	pkgver = 0.7.2.r118.g2c35822
+	pkgrel = 1
+	url = http://lightspark.sourceforge.net
+	install = lightspark-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = nasm
+	makedepends = llvm
+	makedepends = boost
+	depends = gtk2
+	depends = boost-libs
+	depends = glew
+	depends = libsigc++
+	depends = libxml++
+	depends = ffmpeg
+	depends = curl
+	depends = desktop-file-utils
+	optdepends = gnash-gtk: Gnash fallback support
+	provides = lightspark
+	conflicts = lightspark
+	source = lightspark::git+https://github.com/lightspark/lightspark.git
+	md5sums = SKIP
+
+pkgname = lightspark-git
+
