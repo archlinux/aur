@@ -1,0 +1,17 @@
+pkgbase = blender-ac3d
+	pkgdesc = AC3D (.ac) File format import/export within blender
+	pkgver = 20131105
+	pkgrel = 3
+	url = https://github.com/majic79/Blender-AC3D
+	install = blender-ac3d.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = blender
+	source = git://github.com/majic79/Blender-AC3D.git
+	md5sums = SKIP
+
+pkgname = blender-ac3d
+
