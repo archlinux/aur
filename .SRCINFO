@@ -1,0 +1,19 @@
+pkgbase = etc-update
+	pkgdesc = CLI to interactively merge *.pacnew in /etc
+	pkgver = 13723
+	pkgrel = 9
+	url = http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=4#doc_chap2
+	arch = any
+	license = GPL
+	makedepends = diffutils
+	makedepends = patch
+	depends = diffutils
+	source = etc-update-arch_port.patch
+	source = etc-update.gentoo
+	source = etc-update.conf
+	md5sums = e1ae7d15f9ee7ad276c7d486cd597a34
+	md5sums = 85b9025638ead2d9db9322bb22c53d75
+	md5sums = a36bb6f6363a429a0cedd8bcab235fff
+
+pkgname = etc-update
+
