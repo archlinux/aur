@@ -1,0 +1,14 @@
+pkgbase = iouyap
+	pkgdesc = Bridge IOU to UDP, TAP and Ethernet. GNS3 tool.
+	pkgver = 0.95
+	pkgrel = 1
+	url = https://github.com/GNS3/iouyap
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = iniparser
+	source = iouyap-0.95.tar.gz::https://github.com/GNS3/iouyap/archive/0.95.tar.gz
+	md5sums = bcb103e450be1ddc3c3f4c31119652a4
+
+pkgname = iouyap
+
