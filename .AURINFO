@@ -1,0 +1,19 @@
+pkgbase = clingo
+	pkgdesc = Grounding tools for (disjunctive) logic programs.
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = http://potassco.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	groups = potassco
+	license = GPL3
+	makedepends = bison
+	makedepends = re2c
+	makedepends = scons
+	source = http://downloads.sourceforge.net/project/potassco/clingo/4.5.0/clingo-4.5.0-source.tar.gz
+	sha1sums = 18a56ce1ba8553090707293fbca34332b30d17fd
+
+pkgname = clingo
+
