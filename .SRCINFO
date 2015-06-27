@@ -1,0 +1,17 @@
+pkgbase = perl-tk-codetext
+	pkgdesc = Tk-CodeText perl module (a TextUndo widget with syntax highlighting capabilities)
+	pkgver = 0.3.4
+	pkgrel = 4
+	url = http://search.cpan.org/~hanje/Tk-CodeText/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-tk
+	depends = perl-syntax-highlight-perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HANJE/Tk-CodeText-0.3.4.tar.gz
+	md5sums = 321bda6595d122f22f4392dfce24d378
+
+pkgname = perl-tk-codetext
+
