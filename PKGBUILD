@@ -1,7 +1,7 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=nut-monitor-git
-pkgver=2.7.2.signed.r135.g6b22588
+pkgver=2.7.3.r17.g90b526b
 pkgrel=1
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
