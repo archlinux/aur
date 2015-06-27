@@ -1,7 +1,7 @@
 pkgbase = mrbayes
 	pkgdesc = A program for the Bayesian estimation of phylogeny
 	pkgver = 3.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mrbayes.csit.fsu.edu
 	arch = i686
 	arch = x86_64

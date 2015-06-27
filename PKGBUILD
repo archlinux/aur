@@ -2,7 +2,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 pkgname=mrbayes
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for the Bayesian estimation of phylogeny"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ source=(http://downloads.sourceforge.net/mrbayes/${pkgname}-${pkgver}.tar.gz)
 md5sums=('a85a63e5382bc7ea36b1ce1c2138ee6e')
 
 build() {
-  cd ${srcdir}/src
+  cd ${srcdir}/${pkgname}_${pkgver}/src
   autoconf
   #Build with beagle-lib support if available:
   if [ -f /usr/lib/libhmsbeagle.so ]
@@ -27,5 +27,6 @@ build() {
   make
 }
 package() {
-  install -D -m755 ${srcdir}/src/mb ${pkgdir}/usr/bin/mb
+  install -D -m755 ${srcdir}/${pkgname}_${pkgver}/src/mb ${pkgdir}/usr/bin/mb
+  install -D -m644 ${srcdir}/${pkgname}_${pkgver}/documentation/commref_mb3.2.txt "$pkgdir/usr/share/doc/$pkgname/commref.txt"
 }
