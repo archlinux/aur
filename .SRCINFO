@@ -1,0 +1,17 @@
+pkgbase = python-feedgenerator
+	pkgdesc = Standalone version of django.utils.feedgenerator (python3).
+	pkgver = 1.7
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/feedgenerator
+	arch = any
+	license = GPL
+	makedepends = python-distribute
+	depends = python
+	depends = python-pytz
+	depends = python-six
+	source = https://pypi.python.org/packages/source/f/feedgenerator/feedgenerator-1.7.tar.gz
+	md5sums = 92978492871342ad64e8ae0ccfcf200c
+	sha256sums = 5d6b0b10134ac392be0c0c3a39c0e1d7e9c17cc7894590f75981e3f497a4a60f
+
+pkgname = python-feedgenerator
+
