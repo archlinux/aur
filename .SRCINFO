@@ -1,0 +1,18 @@
+pkgbase = libgamecommon-git
+	pkgdesc = Common routines used by most Camoto libraries
+	pkgver = 20120611
+	pkgrel = 1
+	url = http://www.shikadi.net/camoto
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = boost
+	provides = libgamecommon
+	conflicts = libgamecommon
+
+pkgname = libgamecommon-git
+
