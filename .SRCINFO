@@ -1,0 +1,15 @@
+pkgbase = perl-universal-does
+	pkgdesc = Provides UNIVERSAL::DOES() method for older perls
+	pkgver = 0.005
+	pkgrel = 1
+	url = http://search.cpan.org/~gfuji/UNIVERSAL-DOES/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/UNIVERSAL-DOES-0.005.tar.gz
+	md5sums = a621145924f1fbf48d63a8ae59e9203f
+
+pkgname = perl-universal-does
+
