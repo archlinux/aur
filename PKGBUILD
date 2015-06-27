@@ -12,9 +12,9 @@ depends=("vala"
 		 "libgee06>=0.6.4"
 		 "ctpl>=0.3.3"
 		 "fcgi")
-optdepends=("libmemcached"
-			"memcached"
-			"luajit")
+optdepends=("libmemcached: For memcached cache storage."
+			"memcached: For memcached cache storage."
+			"luajit: For an embedded Lua VM.")
 makedepends=("git"
 			 "python")
 provides=("valum")

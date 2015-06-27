@@ -14,9 +14,9 @@ pkgbase = valum-git
 	depends = libgee06>=0.6.4
 	depends = ctpl>=0.3.3
 	depends = fcgi
-	optdepends = libmemcached
-	optdepends = memcached
-	optdepends = luajit
+	optdepends = libmemcached: For memcached cache storage.
+	optdepends = memcached: For memcached cache storage.
+	optdepends = luajit: For an embedded Lua VM.
 	provides = valum
 	source = git://github.com/antono/valum.git
 	md5sums = SKIP
