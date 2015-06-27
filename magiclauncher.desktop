@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MagicLauncher
+GenericName=MagicLauncher
+Comment=A Minecraft launcher packed with features.
+Exec=magiclauncher
+Icon=/usr/share/pixmaps/magiclauncher.png
+Terminal=false
+Type=Application
+Categories=Game;
