@@ -9,7 +9,7 @@ license=('Apache')
 depends=('nodejs' 'npm' 'git' 'systemd')
 conflicts=('ogar')
 source=('git+https://github.com/vram4/Ogar.git' 'ogar.service')
-sha1sums=('SKIP' '17e04c0c5872f64ed05bf0f6844ee276210d7bda')
+sha256sums=('SKIP' 'f41103fe9323c16d8677f436a23bcd06e76988172ea82c345366bceff01f6cb8')
 install="${pkgname}.install"
 backup=('usr/share/ogar/gameserver.ini')
 
