@@ -9,6 +9,7 @@ pkgdesc='An open source network packet analyzer that ships data to Elasticsearch
 arch=('i686' 'x86_64')
 url='https://www.elastic.co/products/beats/packetbeat'
 license=('APACHE')
+backup=('etc/packetbeat/packetbeat.yml')
 depends=('libpcap')
 makedepends=('go')
 optdepends=('elasticsearch: for running standalone installation')
