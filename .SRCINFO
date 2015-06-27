@@ -1,0 +1,16 @@
+pkgbase = perl-xml-xupdate-libxml
+	pkgdesc = XML-XUpdate-LibXML perl module (simple implementation of XUpdate format)
+	pkgver = 0.6.0
+	pkgrel = 4
+	url = http://search.cpan.org/dist/XML-XUpdate-LibXML/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-xml-libxml-iterator
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PA/PAJAS/XML-XUpdate-LibXML-0.6.0.tar.gz
+	md5sums = feee3db4ab0a0520d9b1f17b50f74693
+
+pkgname = perl-xml-xupdate-libxml
+
