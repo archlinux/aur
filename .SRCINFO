@@ -1,0 +1,13 @@
+pkgbase = blktap-git
+	pkgdesc = Blktap Userspace Tools + Library
+	pkgver = 20130311
+	pkgrel = 1
+	url = http://github.com/xen-org/blktap
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	md5sums = SKIP
+
+pkgname = blktap-git
+
