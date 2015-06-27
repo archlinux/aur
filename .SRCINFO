@@ -1,0 +1,15 @@
+pkgbase = python-ftfy-git
+	pkgdesc = Fixes some problems with Unicode text after the fact
+	pkgver = r194.7f025a2
+	pkgrel = 1
+	url = https://github.com/LuminosoInsight/python-ftfy
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/LuminosoInsight/python-ftfy.git
+	sha256sums = SKIP
+
+pkgname = python-ftfy-git
+
