@@ -1,7 +1,7 @@
 pkgbase = qemu-user-static
 	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked.
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.qemu.org/Index.html
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 pkgname=qemu-user-static
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked."
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -79,12 +79,13 @@ create_binfmts() {
   for fmt in $fmts ; do
     eval "magic=\"\$${fmt}_magic\" mask=\"\$${fmt}_mask\""
     cat >> "${pkgdir}/var/lib/binfmts/qemu-$fmt" << EOF
-package qemu-user-static
-interpreter /usr/bin/qemu-$fmt-static
-credentials yes
-offset 0
-magic $magic
-mask $mask
+qemu-user-static
+magic
+0
+$magic
+$mask
+/usr/bin/qemu-$fmt-static
+yes
 EOF
   done
 }
