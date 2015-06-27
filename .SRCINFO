@@ -1,0 +1,20 @@
+pkgbase = libgamegraphics-git
+	pkgdesc = Access and modify images, sprites and animations from many different games
+	pkgver = 20120611
+	pkgrel = 1
+	url = http://www.shikadi.net/camoto
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = boost
+	depends = libgamecommon
+	depends = png++
+	provides = libgamegraphics
+	conflicts = libgamegraphics
+
+pkgname = libgamegraphics-git
+
