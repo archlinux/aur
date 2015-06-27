@@ -1,0 +1,16 @@
+pkgbase = hashcat
+	pkgdesc = A multithreaded cross platform hash cracker.
+	pkgver = 0.50
+	pkgrel = 1
+	url = https://hashcat.net/hashcat/
+	install = hashcat.install
+	arch = i686
+	arch = x86_64
+	license = custom:proprietary
+	source = https://hashcat.net/files/hashcat-0.50.7z
+	source = hashcat.install
+	md5sums = 53a9b867b34c30b51b2f1c70477bdbd8
+	md5sums = a34b6cb45bae5dc353d123072fcce7ec
+
+pkgname = hashcat
+
