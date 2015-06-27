@@ -1,0 +1,17 @@
+pkgbase = hgflow
+	pkgdesc = Git flow branching model for mercurial
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://bitbucket.org/yujiewu/hgflow
+	install = hgflow.install
+	arch = any
+	license = GPL2
+	makedepends = mercurial
+	depends = mercurial
+	source = https://bitbucket.org/yujiewu/hgflow/downloads/hgflow-v0.9.8.tar.bz2
+	source = hgflow.install
+	sha512sums = 9f52b39ecc083f93a9f9d81b58e1e1d7db37dfe2c8a02147d3c34fab2ce6ce4a8519692d715f28797ac964743842bfe9c0ebb05bbc4a58c3327329f431090870
+	sha512sums = 1ec8f7f086115f1fb295694ee39bfacda112da01024130420c31989f94d16e95a49f6b849e09ef639dfe0987bc223fc234187dcd4857532db082bfa5a830f7ef
+
+pkgname = hgflow
+

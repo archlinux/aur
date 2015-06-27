@@ -1,0 +1,12 @@
+post_install() {
+ echo ">>please add the following in your ~/.hgrc:"
+ echo ""
+ echo "[extensions]"
+ echo "hgflow ="
+ echo ""
+}
+
+post_upgrade() {
+   post_install
+}
+
