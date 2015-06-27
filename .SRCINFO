@@ -1,0 +1,17 @@
+pkgbase = gkeyring
+	pkgdesc = A small Python tool for shell access to GNOME keyring. It provides simple querying for and creating of keyring items.
+	pkgver = 0.3
+	pkgrel = 2
+	url = https://github.com/kparal/gkeyring
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = python2
+	depends = python2-gnomekeyring
+	depends = python2-distribute
+	options = !emptydirs
+	source = https://github.com/kparal/gkeyring/archive/v0.3.tar.gz
+	md5sums = d7de1937cd4542ef7fe7ddbf6e9b3b02
+
+pkgname = gkeyring
+
