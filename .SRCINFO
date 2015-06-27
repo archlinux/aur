@@ -1,0 +1,15 @@
+pkgbase = horse-game
+	pkgdesc = My Little Pony adventure game
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://www.equidev.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = horse-game.png
+	source = horse-game.desktop
+	md5sums = a26d293bb88b4711ac7c16f143cc0367
+	md5sums = e1850f743f0f101b0197c2162fa16ec7
+
+pkgname = horse-game
+
