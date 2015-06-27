@@ -2,4 +2,5 @@ lbzip2
 pkg
 src
 *.log
-*.tar.xz
+*.pkg.tar.xz
+*.src.tar.gz
