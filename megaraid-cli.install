@@ -1,0 +1,3 @@
+post_install() {
+  echo "You must agree with the LSI license to use this package. If not, remove it"
+}

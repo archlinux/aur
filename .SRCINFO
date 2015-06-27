@@ -1,0 +1,19 @@
+pkgbase = megaraid-cli
+	pkgdesc = CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards.
+	pkgver = 8.07.14
+	pkgrel = 1
+	url = http://www.lsi.com
+	install = megaraid-cli.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	source = passeula.html::http://www.lsi.com/magic.axd?x=e&file=http%3A//www.lsi.com/downloads/Public/RAID%2520Controllers/MegaRAID%2520Common%2520Files/8.07.14_MegaCLI.zip
+	source = http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/8.07.14_MegaCLI.zip
+	source = LICENSE
+	md5sums = 350e9c94d15031eaba6bf07e7b241dae
+	md5sums = bf53eeb0e8ccc09c34f52d7035940c62
+	md5sums = 7fc9029354d93a8d49ffba765908b0c4
+
+pkgname = megaraid-cli
+
