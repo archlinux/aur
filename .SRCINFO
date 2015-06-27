@@ -1,0 +1,15 @@
+pkgbase = perl-pml
+	pkgdesc = PML Markup Lanuage
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = http://search.cpan.org/~pjones/PML/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PJ/PJONES/PML-0.4.1.tar.gz
+	md5sums = f1ee993f8a08916413e96bdd5d71e0f3
+
+pkgname = perl-pml
+
