@@ -1,0 +1,22 @@
+pkgbase = xkeyboard-config-rub
+	pkgdesc = X keyboard configuration files with russian bepo layout patch
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/XKeyboardConfig
+	arch = any
+	license = custom
+	makedepends = intltool
+	depends = xorg-xkbcomp
+	provides = xkeyboard-config
+	provides = xkbdata
+	conflicts = xkeyboard-config
+	conflicts = xkbdata
+	replaces = xkeyboard-config
+	replaces = xkbdata
+	source = http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config-2.5.tar.bz2
+	source = russian_bepo.patch
+	sha256sums = 0f50579d34e56d817a1bf7ff26582984dd7262209e9e74862237cfae5a7a2961
+	sha256sums = f3eaa89367d6b97baf547387b5863f60152a907d9a168b5a379c0b57df0c9ebb
+
+pkgname = xkeyboard-config-rub
+
