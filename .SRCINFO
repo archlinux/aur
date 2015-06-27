@@ -1,0 +1,19 @@
+pkgbase = libgamearchive-git
+	pkgdesc = Manipulate the archive files used by many games to store their data
+	pkgver = 20120611
+	pkgrel = 1
+	url = http://www.shikadi.net/camoto
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = boost
+	depends = libgamecommon
+	provides = libgamearchive
+	conflicts = libgamearchive
+
+pkgname = libgamearchive-git
+
