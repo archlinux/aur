@@ -1,0 +1,20 @@
+post_install() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo "If your backlight is very dim, please check /etc/modprobe.d/nvidia_bl.conf"
+  echo ""
+}
+
+post_upgrade() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo "If your backlight is very dim, please check /etc/modprobe.d/nvidia_bl.conf"
+  echo ""
+}
+
+
+post_remove() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo ""
+}
