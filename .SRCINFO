@@ -1,0 +1,21 @@
+pkgbase = magnum-plugins-git
+	pkgdesc = Plugins for Magnum graphics engine (Git version)
+	pkgver = snapshot.2015.05.r22.g8b68e4b
+	pkgrel = 1
+	url = http://mosra.cz/blog/magnum.php
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = magnum-git
+	depends = libpng
+	depends = libjpeg
+	depends = freetype2
+	provides = magnum-plugins
+	conflicts = magnum-plugins
+	source = git+git://github.com/mosra/magnum-plugins.git
+	sha1sums = SKIP
+
+pkgname = magnum-plugins-git
+
