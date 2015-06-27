@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://libnjb.sourceforge.net/"
 license=('BSD')
 depends=('libusb-compat' 'ncurses' 'zlib')
-makedepends=('pkgconfig' 'doxygen')
+makedepends=('doxygen')
 source=(http://downloads.sourceforge.net/sourceforge/libnjb/$pkgname-$pkgver.tar.gz
         45-libnjb.rules)
 md5sums=('73f25f3297abe316dd0abec921781d50' 
