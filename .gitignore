@@ -1,0 +1,5 @@
+*.gz
+*.xz
+visit-install*
+/pkg
+/src
