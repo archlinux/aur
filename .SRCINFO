@@ -1,0 +1,16 @@
+pkgbase = quarry-git
+	pkgdesc = Quarry is a multi-purpose GUI for several board games, at present Go, Amazons and Othello.
+	pkgver = 20120330
+	pkgrel = 1
+	url = http://gitorious.org/quarry
+	install = quarry.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xmlto
+	depends = librsvg>=2.5
+	source = quarry.cfg
+	sha1sums = 9d6d07f955f642f7feb69b90c971da9229eb1e2c
+
+pkgname = quarry-git
+

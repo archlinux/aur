@@ -1,0 +1,8 @@
+post_install() {
+	echo '===> NOTICE:
+     To play against the computer, you will need to install additional software.
+     E.g. to play go, install the gnugo package from extra and add the engine to
+     quarry using the preferences dialog (gnugo --mode gtp --quiet). See
+     http://download.gna.org/quarry/help/en/quarry.html for more information on
+     this subject.'
+}
