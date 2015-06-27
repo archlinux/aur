@@ -1,0 +1,38 @@
+pkgbase = seeks-git
+	pkgdesc = A social decentralized internet overlay for collaborative searches
+	pkgver = r2033.1168b3a
+	pkgrel = 1
+	url = https://github.com/beniz/seeks
+	install = seeks.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = AGPL3
+	license = LGPL
+	license = BSD
+	makedepends = pkg-config
+	makedepends = docbook-xml
+	makedepends = docbook2x
+	depends = curl
+	depends = libevent>=2.0
+	depends = libxml2
+	depends = opencv
+	depends = protobuf
+	depends = icu
+	depends = tokyotyrant
+	depends = tokyocabinet
+	conflicts = seeks
+	source = seeks-git::git+git://github.com/beniz/seeks
+	source = seeks.conf.d
+	source = seeks.rc.d
+	source = conf.patch
+	source = seeks.logrotate
+	sha1sums = SKIP
+	sha1sums = ea881740b7a216db6d9a18b674d33dc3c04c79e1
+	sha1sums = 67bface679402b9f75fd0c30062237bdc88083a5
+	sha1sums = bd8992bb30db818610760a5b7314210284b989a9
+	sha1sums = 28e156c5d1a4b45c54309b084d04556b84817053
+
+pkgname = seeks-git
+
