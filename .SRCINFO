@@ -1,0 +1,19 @@
+pkgbase = libgamemusic-git
+	pkgdesc = Read, write and convert music files, with a focus on file formats used by DOS games
+	pkgver = 20120611
+	pkgrel = 1
+	url = http://www.shikadi.net/camoto
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = boost
+	depends = libgamecommon
+	provides = libgamemusic
+	conflicts = libgamemusic
+
+pkgname = libgamemusic-git
+
