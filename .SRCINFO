@@ -1,0 +1,18 @@
+pkgbase = rst2html5-git
+	pkgdesc = RestructuredText to HTML5 + bootstrap css
+	pkgver = 0.2.6.r135.980c360
+	pkgrel = 1
+	url = https://marianoguerra.github.com/rst2html5
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-docutils
+	depends = python2-setuptools
+	provides = rst2html5
+	conflicts = rst2html5
+	source = git+https://github.com/marianoguerra/rst2html5
+	md5sums = SKIP
+
+pkgname = rst2html5-git
+
