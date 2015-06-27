@@ -7,7 +7,7 @@
 
 pkgname=libqtelegram-ae-git
 epoch=1
-pkgver=4.1.r0.g9c7b204
+pkgver=4.1.r24.ge093ef7
 pkgrel=1
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'i686')
