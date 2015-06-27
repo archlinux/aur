@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Kiwix
+GenericName= Offline reader for Web content
+GenericName[es]=Lector de contenido web sin conexión
+Comment=It's especially intended to make Wikipedia available offline.
+Comment[es]=Está especialmente concebido para acceder a la Wikipedia sin conexión.
+Exec=kiwix
+Icon=kiwix
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Education;

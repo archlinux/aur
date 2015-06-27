@@ -1,0 +1,14 @@
+post_remove() {
+  echo
+  echo " WARNING:"
+  echo "You may have huge files under the ~/.www.kiwix.org folder (e.g. the wikipedia)."
+  echo "Please consider if you want to leave them there."
+  echo
+  if expr match $LANG es >/dev/null ; then
+    echo " ADVERTENCIA:"
+    echo "Es posible que tengas archivos enormes bajo la carpeta ~/.www.kiwix.org (por ejemplo, la wikipedia)"
+    echo "Por favor, considera si quieres dejarlos donde estan."
+    echo
+  fi
+  }
+  
