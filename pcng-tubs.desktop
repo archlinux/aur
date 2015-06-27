@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Papercut NG (TUBS)
+Comment=TU Braunschweig printing client 
+Exec=pcng-tubs
+Icon=pcng-tubs
+Terminal=false
+StartupNotify=false
+Categories=Office;

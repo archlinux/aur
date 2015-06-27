@@ -1,0 +1,23 @@
+pkgbase = pcng-tubs
+	pkgdesc = TU Braunschweig printing client (Papercut NG, preconfigured)
+	pkgver = 14.0
+	pkgrel = 1
+	url = https://doku.rz.tu-bs.de/doku.php?id=drucken:installation_druck-client_linux_eb_mb
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = java-environment
+	depends = sh
+	optdepends = cups: printing support
+	noextract = GITZ_drucken_linux.zip
+	source = http://gitz-dl.tu-bs.de/software/pcng/GITZ_drucken_linux.zip
+	source = pcng-tubs.desktop
+	source = pcng-tubs.png
+	source = pcng-tubs
+	md5sums = 5ce4d1baf9499531e3eb0cec9d61c94d
+	md5sums = 9a1945d32cede42e3464dabce8796c75
+	md5sums = d7d02bbc52bf60dd8456a8d7354160c0
+	md5sums = 5adbdafb5cb2dbf5b903a42ec508bd2c
+
+pkgname = pcng-tubs
+
