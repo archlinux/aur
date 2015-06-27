@@ -18,6 +18,10 @@ pkgbase = microchip-libraries-for-applications-legacy
 	source = LICENSE
 	md5sums = d3d6597c7aebe122325dd491b41022d6
 	md5sums = dd2eec20ed33d2924fa301cea78467fa
+	source_x86_64 = fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-fakeroot
+	md5sums_x86_64 = SKIP
 
 pkgname = microchip-libraries-for-applications-legacy
 

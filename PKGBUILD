@@ -2,25 +2,25 @@
 
 pkgname=microchip-libraries-for-applications-legacy
 pkgver=v2013_06_15
-pkgrel=2
+pkgrel=3
 pkgdesc="Microchip Libraries for Applications (Legacy)"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
 license=('custom')
 optdepends=('java-runtime: Graphics and TCP/IP utilities support')
 makedepends=('fakechroot')
-[ $CARCH = x86_64 ] && depends+=('lib32-glibc' 'lib32-fakeroot')
+depends_x86_64=('lib32-glibc' 'lib32-fakeroot')
 options=(!strip libtool staticlibs emptydirs !zipman)
 install=$pkgname.install
 _instdir=/opt/microchip_solutions
 _installer=${pkgname//-legacy/}-${pkgver//_/-}-linux-installer.run
 source=(http://ww1.microchip.com/downloads/en/softwarelibrary/$_installer
         LICENSE)
-[ $CARCH = x86_64 ] && source+=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
+source_x86_64=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
 md5sums=('d3d6597c7aebe122325dd491b41022d6'
          'dd2eec20ed33d2924fa301cea78467fa')
-[ $CARCH = x86_64 ] && md5sums+=('SKIP')
+md5sums_x86_64=('SKIP')
 
 package() {
   cd "$srcdir"
