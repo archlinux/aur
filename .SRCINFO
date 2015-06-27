@@ -1,0 +1,15 @@
+pkgbase = perl-syntax-highlight-perl
+	pkgdesc = Syntax-Highlight-Perl perl module (highlighting of Perl Syntactical Structures)
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://search.cpan.org/~johnsca/Syntax-Highlight-Perl/
+	arch = any
+	license = GPL
+	license = Artistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOHNSCA/Syntax-Highlight-Perl-1.0.tar.gz
+	md5sums = bb207d9fff5298dddd3e6295c23a5f87
+
+pkgname = perl-syntax-highlight-perl
+
