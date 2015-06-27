@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment[en_US]=Interactive application to generate and view random fractal planets and terrain with oceans, mountains, icecaps and rivers, then export them to POV-Ray format or Blender.
+Comment=Interactive application to generate and view random fractal planets and terrain with oceans, mountains, icecaps and rivers, then export them to POV-Ray format or Blender.
+Exec=fracplanet
+GenericName[en_US]=Fractal planet and terrain generator\s
+GenericName=Fractal planet and terrain generator\s
+Icon=fracplanet
+Name[en_US]=Fracplanet
+Name=Fracplanet
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Science;
+X-KDE-SubstituteUID=false

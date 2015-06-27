@@ -1,0 +1,20 @@
+pkgbase = fracplanet
+	pkgdesc = Fractal planet and terrain generator
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = http://sourceforge.net/projects/fracplanet/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = boost
+	depends = qt4
+	depends = mesa
+	source = http://ufpr.dl.sourceforge.net/project/fracplanet/fracplanet/0.4.0/fracplanet-0.4.0.tar.gz
+	source = fracplanet.png
+	source = fracplanet.desktop
+	md5sums = 270a0712c62adf58461cd5e7f7474aa0
+	md5sums = 5a473c1795840bbc6e4e1fa85627daed
+	md5sums = 49f4349bbcb693c0bae6c1f24a91f077
+
+pkgname = fracplanet
+
