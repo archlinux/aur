@@ -1,0 +1,6 @@
+nut-*.tar.gz
+pkg
+src
+*.log
+*.pkg.tar.xz
+*.src.tar.gz
