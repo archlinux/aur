@@ -1,11 +1,11 @@
 # Maintainer: aggraef@gmail.com
 # Contributor: x@safe-mail.net where x stands for jbjunk
 pkgname=osc2midi-git
-pkgver=180.99490b8
+pkgver=183.273cbc8
 pkgrel=1
 pkgdesc="OSC2MIDI is a highly configurable OSC to jack MIDI (and back) bridge for linux (git version)"
 arch=('x86_64' 'i686')
-url="http://sourceforge.net/projects/osc2midi/"
+url="https://github.com/ssj71/OSC2MIDI"
 license=('GPL')
 depends=('jack' 'liblo')
 makedepends=('cmake')
