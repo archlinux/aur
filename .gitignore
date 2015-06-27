@@ -1,0 +1,5 @@
+*.gz
+*.xz
+x2goclient/
+/pkg
+/src
