@@ -1,0 +1,17 @@
+pkgbase = oracle-instantclient-odbc
+	pkgdesc = Additional libraries for enabling ODBC applications with Instant Client
+	pkgver = 12.1.0.2.0
+	pkgrel = 2
+	url = http://www.oracle.com/technetwork/database/features/instant-client/
+	arch = i686
+	arch = x86_64
+	license = custom:OTN
+	depends = oracle-instantclient-basic=12.1.0.2.0
+	replaces = instantclient-odbc
+	options = !strip
+	source = LICENSE
+	md5sums = 2d62e22e4f2d7e6d220fafde0f692a7d
+	sha256sums = f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2
+
+pkgname = oracle-instantclient-odbc
+
