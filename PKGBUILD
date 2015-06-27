@@ -18,7 +18,7 @@ pkgver() {
   cd $_pkgname
 
   local _ver=$(awk -F '=' '/Version/ {print $2}' archlinux/metadata.desktop)
-  printf "$_ver.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
