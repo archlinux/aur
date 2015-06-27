@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas 
 
 pkgname=kile-frameworks-git
-pkgver=r2794.95ba610
+pkgver=r2859.e769f66
 pkgrel=1
 pkgdesc='A user friendly TeX/LaTeX frontend for KDE'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(kinit ktexteditor okular-frameworks-git)
 makedepends=(extra-cmake-modules git kdoctools python)
 conflicts=(kile)
 provides=(kile)
-source=("git://anongit.kde.org/kile.git#branch=frameworks")
+source=("git://anongit.kde.org/kile.git")
 sha256sums=('SKIP')
 
 pkgver() {
