@@ -1,0 +1,16 @@
+pkgbase = vimprobable2
+	pkgdesc = Web browser that behaves like Vimperator
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/vimprobable/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libwebkit
+	depends = gtk2
+	depends = libsoup
+	source = http://downloads.sourceforge.net/sourceforge/vimprobable/Releases/vimprobable2_1.4.2.tar.bz2
+	md5sums = 4b7b757043e448e9284942b38dcc43cf
+
+pkgname = vimprobable2
+
