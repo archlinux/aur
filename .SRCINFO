@@ -1,0 +1,22 @@
+pkgbase = tokyocabinet-git
+	pkgdesc = a modern implementation of DBM
+	pkgver = 1.4.48.r15.gd303368
+	pkgrel = 1
+	url = http://fallabs.com/tokyocabinet/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = LGPL
+	makedepends = gcc>=3.1
+	makedepends = make
+	makedepends = pkgconfig
+	makedepends = git
+	depends = zlib
+	depends = bzip2
+	provides = tokyocabinet=1.4.48
+	conflicts = tokyocabinet
+	source = tokyocabinet-git::git+git://github.com/Incubaid/tokyocabinet
+	md5sums = SKIP
+
+pkgname = tokyocabinet-git
+
