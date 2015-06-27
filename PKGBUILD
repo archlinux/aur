@@ -6,7 +6,7 @@ pkgdesc='Tutanota end-to-end encrypted email client webapp'
 url='https://tutanota.de'
 arch=('any')
 license=('GPL3')
-makedepends=('npm' 'nodejs-gulp' 'git')
+makedepends=('npm' 'nodejs-gulp')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz")
 
 # Set to any value to install a symlink 
