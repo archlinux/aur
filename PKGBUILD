@@ -2,18 +2,18 @@
 
 pkgbase=linux-samus4
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url="https://github.com/raphael/linux-4.1-samus"
+url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-4.1-samus/archive/1.0.tar.gz"
+source=("https://github.com/raphael/linux-4.1-samus/archive/1.1.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-4.1-samus-1.0/build/linux/
+_linuxsrc=linux-4.1-samus-1.1/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
