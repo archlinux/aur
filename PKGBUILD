@@ -1,10 +1,10 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 modname=gdspy
 pkgname=python-${modname}
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Gdspy is a Python module for creating GDSII stream files, usually CAD layouts."
-url="http://gdspy.sourceforge.net/"
+url="https://github.com/heitzmann/gdspy"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('python' 'python-numpy')
@@ -13,8 +13,8 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("http://downloads.sourceforge.net/project/${modname}/${modname}/${modname}-${pkgver}/${modname}-${pkgver}.zip")
-md5sums=('8f69f47a27476e0f099f241d6bb12143')
+source=("https://github.com/heitzmann/${modname}/archive/v${pkgver}.tar.gz")
+md5sums=('a222705b2b6151bd1e4ed15e29998a4e')
 
 build() {
   cd "${srcdir}/${modname}-${pkgver}"
