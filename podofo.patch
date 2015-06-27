@@ -1,0 +1,22 @@
+--- graphicproducer.cpp	2011-11-08 21:18:42.000000000 +0100
++++ graphicproducer2.cpp	2011-11-08 21:22:23.000000000 +0100
+@@ -24,13 +24,13 @@
+ #include <QList>
+ 
+ // Users of podofo >= 0.9.0, uncomment the next line, comment the following podofo includes...
+-//#include <podofo/podofo-base.h>
++#include <podofo/podofo-base.h>
+ /*PODOFO is *definitely* not a serious library regarding compatibility*/
+-#include <podofo/PdfDictionary.h>
+-#include <podofo/PdfObject.h>
+-#include <podofo/PdfParser.h>
+-#include <podofo/PdfStream.h>
+-#include <podofo/PdfVecObjects.h>
++//#include <podofo/PdfDictionary.h>
++//#include <podofo/PdfObject.h>
++//#include <podofo/PdfParser.h>
++//#include <podofo/PdfStream.h>
++//#include <podofo/PdfVecObjects.h>
+ 
+ #include "vectorpath.h"
+ #include <cstdlib>

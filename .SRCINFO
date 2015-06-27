@@ -1,0 +1,16 @@
+pkgbase = qadastre2osm-git
+	pkgdesc = Generate OpenStreetMap files from the french cadastre through its PDF export
+	pkgver = 20130303
+	pkgrel = 1
+	url = http://gitorious.org/qadastre/qadastre2osm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt4
+	depends = podofo
+	source = podofo.patch
+	md5sums = 90f8c050cb13408405da0b9b354d3392
+
+pkgname = qadastre2osm-git
+
