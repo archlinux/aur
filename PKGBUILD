@@ -14,7 +14,7 @@ provides=('pycharm')
 source=(http://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
         'pycharm-community.desktop' )
 sha256sums=('a951141777a6581dfe7df0344abcb07406f43577913e56daf1010d6840b46127'
-            '446134e5ef3012a6f19549d63fb3e18f07cdd00b39cd67fec99af9338a594f1e')
+            '5ce44b5bee632258749ee7d0df0fd08af446d43715f9ef50cb6889b88232de41')
 
 package() {
   cd $srcdir
