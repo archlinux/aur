@@ -1,0 +1,35 @@
+.TH MINMAD 1 "JANUARY 2012"
+.SH NAME
+minmad \- minimal mp3 mplayer
+.SH SYNOPSIS
+.B minmad
+.RI " filename"
+.SH DESCRIPTION
+.B minmad
+is a minimal commandline mp3 player using libmad 
+and employs vim-like keyboard shortcuts.
+.SH KEY BINDINGS
+.IP \fBp\fR\ |\ \fBSpace\fR
+Toggle play
+.IP [\fI0-9\fR]+\fBh\fR
+Rewind by a multiple of ten seconds
+.IP [\fI0-9\fR]+\fBl\fR
+Forward by a multiple of ten seconds
+.IP [\fI0-9\fR]+\fBj\fR
+Fast forward by a multiple of 60 seconds
+.IP [\fI0-9\fR]+\fBk\fR
+Fast rewind by a multiple of 60 seconds
+.IP [\fI0-9\fR]+\fBJ\fR
+Fast forward by a multiple of 600 seconds
+.IP [\fI0-9\fR]+\fBK\fR
+Fast rewind by a multiple of 600 seconds
+.IP [\fI0-9\fR]+\fB%\fR
+Jump to specified percent of mp3, defaults to the beginning
+.TP
+.B i
+Display paused status, position (percent and time), and filename
+.TP
+.B q
+Quit program
+.SH AUTHOR
+Ali Gholami Rudi <aligrudi at gmail dot com>

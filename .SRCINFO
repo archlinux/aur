@@ -1,0 +1,23 @@
+pkgbase = minmad-git
+	pkgdesc = A small libmad/oss mp3 player.
+	pkgver = 0.r20.ddc0a28
+	pkgrel = 2
+	url = http://repo.or.cz/w/minmad.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	optdepends = oss: sound support
+	provides = minmad
+	conflicts = minmad
+	source = minmad-git::git://repo.or.cz/minmad.git
+	source = minmad.1
+	md5sums = SKIP
+	md5sums = 28f040400e36b02e4c5427f0ef22e951
+	sha1sums = SKIP
+	sha1sums = e72a159f2e4c658d2e401d997f9268b1dca8eb27
+	sha256sums = SKIP
+	sha256sums = cdc648eb6a35faea3fc1f61adaaa8093fd6b532119b48181d9d58272fad27314
+
+pkgname = minmad-git
+
