@@ -1,0 +1,15 @@
+pkgbase = socnetv
+	pkgdesc = Social Networks Analysis and Visualisation
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://socnetv.sourceforge.net/
+	arch = any
+	license = GPL3
+	depends = qt5-base
+	provides = socnetv
+	conflicts = socnetv-git
+	source = http://downloads.sourceforge.net/socnetv/SocNetV-1.9.tar.gz
+	md5sums = 288d27b1841237e2c9e1d57bd42ddda3
+
+pkgname = socnetv
+
