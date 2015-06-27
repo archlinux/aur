@@ -4,8 +4,8 @@
 
 _pkgname=fdroidserver
 pkgname=${_pkgname}-git
-pkgver=r2871.c91fca7
-pkgrel=3
+pkgver=r3104.af692dd
+pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$_pkgname"
 license=('GPL3')
@@ -32,6 +32,8 @@ optdepends=(
      'wordpress: Web repository plugin'
      )
 arch=('any')
+provides=('fdroidserver')
+conflicts=('fdroidserver')
 options=(!emptydirs)
 source=("git+https://gitlab.com/fdroid/fdroidserver.git")
 sha256sums=('SKIP')
