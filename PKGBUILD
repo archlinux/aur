@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=kodi-addon-pulsar-yify-mc
-pkgver=3.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='YiFy provider for pulsar'
 classname=script.pulsar.yify-mc
@@ -18,5 +18,5 @@ package() {
   mkdir -p ${pkgdir}/${installpath}
   cp -r ${srcdir}/${classname}-${pkgver} ${pkgdir}/${installpath}/${classname}
 }
-
-md5sums=('80913c8f170f21027232a7f27473891a')
+	
+md5sums=('eabb9c96cdc3e8d7213ce455ffabaa71')
