@@ -1,0 +1,17 @@
+pkgbase = ptpst-git
+	pkgdesc = A small tool to interact with pb instances
+	pkgver = 0.r67.ef065a9
+	pkgrel = 1
+	url = https://github.com/HalosGhost/ptpst
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = tup
+	makedepends = clang
+	depends = curl
+	source = git+https://github.com/HalosGhost/ptpst.git
+	sha256sums = SKIP
+
+pkgname = ptpst-git
+
