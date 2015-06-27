@@ -1,0 +1,16 @@
+pkgbase = rtee
+	pkgdesc = Rotating tee
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jecxjo/rtee
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	source = https://commentedcode.org/pub/rtee/rtee-0.1.1.tar.gz
+	source = https://commentedcode.org/pub/rtee/rtee-0.1.1.tar.gz.asc
+	sha256sums = 8b62617c3eb9b938a466be0af52d0c8ac5e6c582cef93e9334ca3a4f78b02d33
+	sha256sums = SKIP
+
+pkgname = rtee
+
