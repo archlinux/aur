@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-chipmunk6
+	pkgdesc = A high-performance 2D rigid body physics library (mingw-w64)
+	pkgver = 6.2.2
+	pkgrel = 1
+	url = http://chipmunk-physics.net/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	conflicts = mingw-w64-chipmunk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://files.slembcke.net/chipmunk/release/Chipmunk-6.x/Chipmunk-6.2.2.tgz
+	sha256sums = 790cf62d65820610ab352052bf2c76436600197337b1511be5f4423dc46ecdeb
+
+pkgname = mingw-w64-chipmunk6
+
