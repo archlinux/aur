@@ -1,6 +1,6 @@
 pkgbase = roboptim-core-plugin-ipopt-git
 	pkgdesc = Ipopt interface for RobOptim Core
-	pkgver = v2.0.r77.gbca3914
+	pkgver = 3.1.r1.g24b0a48
 	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686
