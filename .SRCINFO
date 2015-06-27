@@ -1,18 +1,18 @@
 pkgbase = backintime
-	pkgver = 1.1.4
-	pkgrel = 3
+	pkgver = 1.1.6
+	pkgrel = 1
 	url = https://launchpad.net/backintime
 	arch = any
 	license = GPL
 	makedepends = python
-	source = https://launchpadlibrarian.net/200955618/backintime-1.1.4.tar.gz
-	source = https://launchpadlibrarian.net/200955619/backintime-1.1.4.tar.gz.asc
-	sha256sums = 434fc1fb6d9ac20d7b04c791e39bf9e077773c696e18f2bf1aa8f3e7fb59a770
+	source = https://launchpadlibrarian.net/210130362/backintime-1.1.6.tar.gz
+	source = https://launchpadlibrarian.net/210130363/backintime-1.1.6.tar.gz.asc
+	sha256sums = 2f86187d3ec237e97ad9d1d620cffab2cf7dea0410d663d8ae359504cd0edc13
 	sha256sums = SKIP
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. QT4 GUI version.
-	depends = backintime-cli=1.1.4
+	depends = backintime-cli=1.1.6
 	depends = xorg-xdpyinfo
 	depends = python-pyqt4
 	depends = libnotify
