@@ -1,6 +1,6 @@
 pkgbase = osc2midi-utils-git
 	pkgdesc = Utilities and GTK frontend for OSC2MIDI (git version)
-	pkgver = 79.556a779
+	pkgver = 80.c6e9546
 	pkgrel = 1
 	url = https://bitbucket.org/agraef/osc2midi-utils/
 	install = osc2midi-utils.install
