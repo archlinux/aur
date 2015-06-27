@@ -2,12 +2,12 @@
 
 pkgname=yaourt-gui
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A bash GUI for yaourt"
 arch=('any')
 url="http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/"
 license=('GPL')
-depends=('yaourt' 'sudo' 'lsb-release' )
+depends=('yaourt' 'sudo' 'lsb-release' 'git')
 optdepends=(
     'aurvote: Tool to vote for favorite AUR packages'
 )
