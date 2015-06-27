@@ -1,4 +1,4 @@
-# Maintainer:  dacoit <dacoit at shazzlemail.com>
+# Maintainer:  dacoit <dacoit at tuta.io>
 # Contributor: xjpvictor Huang <ke [AT] xjpvictor [DOT] info>
 # Contributor: uuwe
 pkgname=openswan
