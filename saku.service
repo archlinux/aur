@@ -1,0 +1,14 @@
+[Unit]
+Description=saku Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/saku -v
+# ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+User=_shingetsu
+Group=_shingetsu
+
+[Install]
+WantedBy=multi-user.target

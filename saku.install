@@ -1,0 +1,37 @@
+_user=_shingetsu
+
+post_install() {
+    if ! getent group $_user >/dev/null; then
+        groupadd --system $_user
+    fi
+    if ! getent passwd $_user >/dev/null; then
+        useradd --system -c 'saku daemon user' -g $_user -d / -s /bin/bash $_user
+    fi
+
+    for dir in /var/saku /var/cache/saku /var/log/saku
+    do
+        if ! test -d $dir
+        then
+            mkdir -p $dir
+            chown ${_user}:${_user} $dir
+        fi
+    done
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    cat <<__EOC__
+Directories and saku daemon user are not deleted.
+To remove saku completely, remove directory '/var/log/saku', '/var/saku' and
+'/var/cache/saku', then delete user '$_user' and group '$_user'.
+__EOC__
+    # if getent passwd $_user >/dev/null; then
+    #     userdel $_user
+    # fi
+    # if getent group $_user >/dev/null; then
+    #     groupdel $_user
+    # fi
+}

@@ -1,0 +1,55 @@
+When running saku as a system daemon (by systemd for example), the default
+directories provided by config.py do not indicate valid places (for example,
+./log for writing logs).
+There can be some options for solving this problem:
+
+* Do not "install", copy all files into one directory (like /opt/saku)
+* Provide default config file /etc/saku/saku.ini and set directories in that
+* Patch config.py and change the default directories
+
+Providing default /etc/saku/saku.ini seems to be the easiest way, but there is no
+use leaving the invalid pathes so I chose the third.
+
+By applying this patch saku gets to use these directories:
+
+* /var/saku
+* /var/cache/saku
+* /var/log/saku
+* /usr/share/saku/{file,template}
+
+--- saku-4.2.0.old/shingetsu/config.py	2014-06-17 09:38:09.000000000 +0900
++++ saku-4.2.0.new/shingetsu/config.py	2014-08-12 02:15:01.633045490 +0900
+@@ -74,21 +74,21 @@
+ dat_port = _get_value(_extconf, 'Network', 'dat_port', 8001, 'int')
+ max_connection = _get_value(_extconf, 'Network', 'max_connection', 20, 'int')
+ 
+-docroot = _get_value(_extconf, 'Path', 'docroot', './www', 'path')
+-log_dir = _get_value(_extconf, 'Path', 'log_dir', './log', 'path')
+-run_dir = _get_value(_extconf, 'Path', 'run_dir', '../run', 'path')
+-file_dir = _get_value(_extconf, 'Path', 'file_dir', '../file', 'path')
+-cache_dir = _get_value(_extconf, 'Path', 'cache_dir', '../cache', 'path')
++docroot = _get_value(_extconf, 'Path', 'docroot', '/usr/share/saku/www', 'path')
++log_dir = _get_value(_extconf, 'Path', 'log_dir', '/var/log/saku', 'path')
++run_dir = _get_value(_extconf, 'Path', 'run_dir', '/var/saku/run', 'path')
++file_dir = _get_value(_extconf, 'Path', 'file_dir', '/usr/share/saku/file', 'path')
++cache_dir = _get_value(_extconf, 'Path', 'cache_dir', '/var/cache/saku', 'path')
+ template_dir = _get_value(_extconf, 'Path', 'template_dir',
+-                          '../template', 'path')
++                          '/usr/share/saku/template', 'path')
+ spam_list = _get_value(_extconf, 'Path', 'spam_list',
+-                       '../file/spam.txt', 'path')
++                       '/usr/share/saku/file/spam.txt', 'path')
+ initnode_list = _get_value(_extconf, 'Path', 'initnode_list',
+-                       '../file/initnode.txt', 'path')
++                           '/usr/share/saku/file/initnode.txt', 'path')
+ node_allow = _get_value(_extconf, 'Path', 'node_allow',
+-                        '../file/node_allow.txt', 'path')
++                        '/usr/share/saku/file/node_allow.txt', 'path')
+ node_deny = _get_value(_extconf, 'Path', 'node_deny',
+-                        '../file/node_deny.txt', 'path')
++                       '/usr/share/saku/file/node_deny.txt', 'path')
+ apache_docroot = _get_value(_extconf, 'Path', 'apache_docroot',
+                        '/var/local/www/shingetsu', 'path')
+ archive_dir = _get_value(_extconf, 'Path', 'archive_dir',
+
+Diff finished.  Tue Aug 12 02:16:06 2014

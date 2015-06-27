@@ -1,0 +1,21 @@
+pkgbase = saku
+	pkgdesc = A clone of P2P anonymous BBS shinGETsu
+	pkgver = 4.5.1
+	pkgrel = 1
+	url = http://shingetsu.info/saku
+	install = saku.install
+	arch = any
+	license = 2-clause BSD license
+	depends = python
+	depends = python-jinja
+	depends = python-markupsafe
+	optdepends = python-pillow: Python Imaging Library
+	source = saku-4.5.1.tgz::https://github.com/shingetsu/saku/archive/release-4.5.1.tar.gz
+	source = saku.service
+	source = defaultpath.patch
+	md5sums = 1b9710bbadaeda6f06b28aa481aec833
+	md5sums = 405694a84e66e6043bb61188d5e766ac
+	md5sums = ec52d30651c50038e1b9ca2800b9e363
+
+pkgname = saku
+
