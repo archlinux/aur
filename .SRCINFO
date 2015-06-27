@@ -1,0 +1,22 @@
+pkgbase = pysnip-git
+	pkgdesc = PySnip is an open-source Python server implementation for the voxel-based game 'Ace of Spades'.
+	pkgver = r1752.d094fb8
+	pkgrel = 1
+	url = https://github.com/NateShoffner/pysnip
+	arch = any
+	makedepends = git
+	depends = python2-twisted
+	depends = cython2
+	depends = python2-jinja
+	depends = python2-pillow
+	depends = python2-pygeoip
+	depends = python2-crypto
+	depends = python2-pyasn1
+	provides = pysnip
+	source = pysnip-git::git://github.com/NateShoffner/pysnip.git
+	source = pysnip
+	sha256sums = SKIP
+	sha256sums = 7d4ec23421f4ab95dd5f5f563d5b7535b2840228c9abfcd4d72ca467bc42b38a
+
+pkgname = pysnip-git
+

@@ -1,0 +1,5 @@
+#! /usr/bin/sh
+
+cd /usr/share/pysnip
+
+sh run_server.sh "$@"
