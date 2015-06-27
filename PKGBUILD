@@ -17,7 +17,7 @@ sha512sums=('a6d06630c85d5ad7f059bba142ced830302f7a159f7ed856b9b49b3dcf5808ac523
 prepare() {
 	cd "$pkgname-$pkgver"
 
-	patch -p1 < ../../rand_long.patch # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=777862
+	patch -p1 < ../rand_long.patch # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=777862
 }
 
 build() {
