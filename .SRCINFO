@@ -1,0 +1,14 @@
+pkgbase = python-ws4py
+	pkgdesc = WebSocket client and server library for Python.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/ws4py
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/w/ws4py/ws4py-0.3.4.tar.gz
+	md5sums = 6b47e33cbd13f5c134b04f2a44a480ad
+
+pkgname = python-ws4py
+
