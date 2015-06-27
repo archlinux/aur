@@ -1,0 +1,22 @@
+pkgbase = plexreport-git
+	pkgdesc = Scripts to generate a weekly email of new additions to Plex.
+	pkgver = r127.8f2d346
+	pkgrel = 1
+	url = https://github.com/bstascavage/plexReport
+	install = plexreport.install
+	arch = any
+	license = custom
+	depends = plex-media-server
+	depends = ruby-bundler
+	depends = ruby-mime-types-1
+	depends = ruby-mail
+	depends = ruby-httparty
+	depends = ruby-highline
+	depends = ruby-multi_xml
+	depends = ruby-i18n
+	backup = etc/plexReport/config.yaml
+	source = plexreport-git::git+https://github.com/Sonic-Y3k/plexReport.git
+	sha256sums = SKIP
+
+pkgname = plexreport-git
+

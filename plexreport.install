@@ -1,0 +1,21 @@
+post_install() {
+  echo "----------------------------------------------------------------------"
+  echo " "
+  echo "Please run 'sudo -u plex /usr/bin/plexreport-setup' for initial setup." 
+  echo "After that make shure that the config file is read only by the plex user,"
+  echo "as it contains you mail password. (e.g. 'chmod 700 /etc/plexReport/config.yaml')"
+  echo " "
+  echo "And don't forget to add a crontab to the plex user."
+  echo " "
+  echo "e.g. enter 'sudo -u plex crontab -e' into terminal"
+  echo "     and insert '59 23 * * 0 /usr/bin/plexreport'"
+  echo "----------------------------------------------------------------------"
+}
+
+post_remove() {
+  echo "----------------------------------------------------------------------"
+  echo " "
+  echo "Don't forget to remove the plex-user crontab."
+  echo " "
+  echo "----------------------------------------------------------------------"
+}
