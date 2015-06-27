@@ -1,0 +1,14 @@
+pkgbase = texlive-tikz-dsp
+	pkgdesc = A LaTeX package for drawing DSP diagrams using pgf/tikz
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.texample.net/tikz/examples/fir-filter/
+	install = texlive-tikz-dsp.install
+	arch = any
+	license = CCPL
+	depends = texlive-core
+	source = http://www.texample.net/media/tikz/examples/zip/tikz-dsp.zip
+	md5sums = 8ced666ae466f63997854119ca592fe0
+
+pkgname = texlive-tikz-dsp
+
