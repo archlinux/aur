@@ -1,0 +1,16 @@
+pkgbase = stag-graph-git
+	pkgdesc = streaming bar graphs, for stats and stuff
+	pkgver = 107.76c7b36
+	pkgrel = 1
+	url = https://github.com/seenaburns/stag
+	arch = i686
+	arch = x86_64
+	depends = ncurses
+	provides = stag-graph
+	conflicts = stag-graph
+	conflicts = stag-git
+	source = stag-graph::git+https://github.com/seenaburns/stag
+	sha256sums = SKIP
+
+pkgname = stag-graph-git
+
