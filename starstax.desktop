@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=StarStaX
+Comment=StarStaX is a freeware program to create star trails.
+Exec=starstax
+Terminal=false
+Type=Application
+Categories=Graphics

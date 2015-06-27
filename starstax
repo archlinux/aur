@@ -1,0 +1,4 @@
+#! /usr/bin/sh
+
+/opt/starstax/startStarStaXLinux.sh "$@"
+
