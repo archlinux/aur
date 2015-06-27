@@ -13,7 +13,7 @@ backup=('etc/packetbeat/packetbeat.yml')
 depends=('libpcap')
 makedepends=('go')
 optdepends=('elasticsearch: for running standalone installation')
-options=('!strip' 'docs')
+options=('!strip')
 source=("https://github.com/elastic/$pkgname/archive/v$_pkgver.tar.gz"
         'packetbeat.service')
 sha256sums=('a119a2976ac7c7577d7ee2750d0608354e51cd73edbc5529a6ec2c5b67fd6a7b'
