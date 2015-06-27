@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=kodi-addon-pulsar-eztv-mc
-pkgver=3.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='EZTV provider for pulsar'
 classname=script.pulsar.eztv-mc
@@ -19,4 +19,4 @@ package() {
   cp -r ${srcdir}/${classname}-${pkgver} ${pkgdir}/${installpath}/${classname}
 }
 
-md5sums=('3e46a4462f1573a5b878faa899438cbb')
+md5sums=('b4d5a346f6152531aac6c58656f3f6a9')
