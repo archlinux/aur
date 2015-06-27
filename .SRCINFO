@@ -1,0 +1,18 @@
+pkgbase = pynomo
+	pkgdesc = a package for creating nomographs
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = http://pynomo.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-pillow
+	depends = python2-pyx
+	depends = python2-numpy
+	depends = python2-scipy
+	source = http://downloads.sourceforge.net/project/pynomo/pynomo/0.2.2/PyNomo-0.2.2.tar.gz
+	md5sums = d7a61e58dbbb8f256cd2808de02746f2
+
+pkgname = pynomo
+
