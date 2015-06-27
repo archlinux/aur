@@ -1,0 +1,14 @@
+pkgbase = porta
+	pkgdesc = POlyhedron Representation Transformation Algorithm
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://typo.zib.de/opt-long_projects/Software/Porta/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://typo.zib.de/opt-long_projects/Software/Porta/porta-1.4.1/porta-1.4.1.tgz
+	md5sums = 585179bf19d214ed364663a5d17bd5fc
+
+pkgname = porta
+
