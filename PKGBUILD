@@ -2,7 +2,7 @@
 _pkgname=moony.lv2
 pkgname=moony-lv2
 pkgver=0.1.1_rc1
-pkgrel=2
+pkgrel=1
 pkgdesc="Realtime Lua as programmable glue in LV2"
 arch=('i686' 'x86_64')
 url='http://open-music-kontrollers.ch/lv2/moony'
