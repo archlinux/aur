@@ -1,0 +1,17 @@
+pkgbase = fishnpitch-git
+	pkgdesc = a JACK MIDI real-time tuner
+	pkgver = 2010.01.28.4168095
+	pkgrel = 1
+	url = https://github.com/leethargo/fishnpitch
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = jack-audio-connection-kit
+	depends = jack-audio-connection-kit
+	provides = fishnpitch
+	conflicts = fishnpitch
+	source = fishnpitch-git::git://github.com/leethargo/fishnpitch.git
+	md5sums = SKIP
+
+pkgname = fishnpitch-git
+
