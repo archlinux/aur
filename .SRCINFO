@@ -1,0 +1,15 @@
+pkgbase = ansible-docs-git
+	pkgdesc = Ansible HTML documentation
+	pkgver = 20150107
+	pkgrel = 1
+	url = https://github.com/ansible/ansible
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-sphinx
+	options = !strip
+	source = git://github.com/ansible/ansible.git
+	md5sums = SKIP
+
+pkgname = ansible-docs-git
+
