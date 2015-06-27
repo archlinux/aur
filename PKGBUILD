@@ -1,14 +1,14 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=decox
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Decreasing continuous exponentials; toy decompression planner'
 url='http://fenua.org/gaetan/src/'
 license=('ISC')
 arch=('i686' 'x86_64' 'armv7h')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha1sums=('d9312e846841c050fc63584b5cf69e5953b30746')
+sha1sums=('5991f6bd37f22b0fa4d6913048c44b1b6c16e7b9')
 
 build() {
 	cd "${srcdir}"
