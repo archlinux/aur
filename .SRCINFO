@@ -1,0 +1,16 @@
+pkgbase = netrik
+	pkgdesc = The ANTRIK Internet Viewer/Browser/Explorer/Navigator/whatever.
+	pkgver = 1.16.1
+	pkgrel = 2
+	url = http://netrik.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = readline
+	source = http://downloads.sourceforge.net/netrik/netrik-1.16.1.tar.gz
+	md5sums = 73e4603491d185b0580a8fad83518f42
+	sha1sums = 1331e47e8a1a19d572f0c2d58d581183089f38c2
+	sha256sums = 3e742d9ef866c12075e7771148e39a6892d0dcdf70f43aecafa09e0ed925b78a
+
+pkgname = netrik
+
