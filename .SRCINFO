@@ -1,0 +1,27 @@
+pkgbase = fish-irssi-git
+	pkgdesc = irssi FiSH plugin
+	pkgver = 168.b05763c
+	pkgrel = 1
+	url = https://github.com/falsovsky/FiSH-irssi
+	install = fish-irssi-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = irssi
+	depends = openssl
+	depends = glib
+	provides = fish-irssi
+	conflicts = fish-irssi
+	source = http://irssi.org/files/irssi-0.8.17.tar.bz2
+	source = fish-irssi-git::git://github.com/falsovsky/FiSH-irssi
+	md5sums = ecf64be47978d89a742b435a81cb47db
+	md5sums = SKIP
+	sha1sums = 3bdee9a1c1f3e99673143c275d2c40275136664a
+	sha1sums = SKIP
+	sha256sums = 3c9600cad2edf58f1d012febc1a0ba844274df6e331c01a9e935467705166807
+	sha256sums = SKIP
+
+pkgname = fish-irssi-git
+
