@@ -1,0 +1,19 @@
+pkgbase = cl-dpans3r-info
+	pkgdesc = The draft ANSI Common Lisp standard (dpANS3R) in Texinfo format
+	pkgver = 1.05
+	pkgrel = 2
+	url = http://www.phys.au.dk/~harder/dpans.html
+	install = cl-dpans3r-info.install
+	arch = any
+	license = GPL2
+	makedepends = emacs
+	makedepends = texinfo-legacy
+	source = http://www.phys.au.dk/~harder/dpans2texi-1.05.tar.gz
+	source = http://quimby.gnus.org/circus/cl/dpANS3.tar.gz
+	source = http://quimby.gnus.org/circus/cl/dpANS3R.tar.gz
+	sha256sums = c84da02ce39eb7100ea7bcf40ad51502ee5c43eb0cd4747594ecf9a6fde9288f
+	sha256sums = 246ec5da4b051e83051f9f3bdc05a44178fa34b8c704eb85a3b5ecc0c3906295
+	sha256sums = 622e2577e79dbea26d6ad63f936979d6b6fe6f47e30d4efa2109a39c3f2b4473
+
+pkgname = cl-dpans3r-info
+

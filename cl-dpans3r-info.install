@@ -1,0 +1,17 @@
+infodir=usr/share/info
+filelist=(ansicl ansicl-1 ansicl-2 ansicl-3 ansicl-4 ansicl-5 ansicl-6 ansicl-7
+          ansicl-8 ansicl-9 ansicl-10)
+
+post_install() {
+    [ -x usr/bin/install-info ] || return 0
+    for file in ${filelist[@]}; do
+        install-info $infodir/$file.gz $infodir/dir 2> /dev/null
+    done
+}
+
+pre_remove() {
+    [ -x usr/bin/install-info ] || return 0
+    for file in ${filelist[@]}; do
+        install-info --delete $infodir/$file.gz $infodir/dir 2> /dev/null
+    done
+}
