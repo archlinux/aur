@@ -1,0 +1,14 @@
+pkgbase = pyopl
+	pkgdesc = Python wrapper around DOSBox OPL synth
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/PyOPL
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = python2
+	source = http://pypi.python.org/packages/source/P/PyOPL/PyOPL-1.2.tar.gz
+	md5sums = 8304ea949b6dea14a4c05f371b8f4cf9
+
+pkgname = pyopl
+
