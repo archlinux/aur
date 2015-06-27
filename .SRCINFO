@@ -1,0 +1,24 @@
+pkgbase = tred
+	pkgdesc = Tree editor TrEd
+	pkgver = 2.5049
+	pkgrel = 1
+	url = http://ufal.mff.cuni.cz/tred/
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-tk
+	depends = perl-file-which
+	depends = perl-tie-ixhash
+	depends = perl-tk-codetext
+	depends = perl-xml-libxslt
+	depends = perl-xml-libxml-iterator
+	depends = perl-xml-sax-writer
+	depends = perl-xml-writer
+	depends = perl-io-string
+	depends = perl-treex-pml
+	depends = perl-readonly
+	source = http://ufal.mff.cuni.cz/tred/tred-current.tar.gz
+	md5sums = 1782ccd5fa72b3a47f6bfb35076a86f6
+
+pkgname = tred
+
