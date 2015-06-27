@@ -8,13 +8,13 @@ pkgdesc="A conflict-driven nogood learning answer set solver."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="http://potassco.sourceforge.net/"
 license=('GPL3')
-depends=()
+depends=('clang')
 source=("http://downloads.sourceforge.net/project/potassco/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
 sha1sums=(bcfbd98a842f3f70a2d0e49f382cc2392ddad7ba)
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure.sh --prefix='/usr'
+    ./configure.sh --prefix='/usr' CXX=clang++
     cd build/release
     make
 }
