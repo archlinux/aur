@@ -12,9 +12,12 @@ url="http://http://tubslatex.ejoerns.de"
 arch=('any')
 install=texlive-tubslatex.install
 source=(http://tubslatex.ejoerns.de/1.1.0/tubslatex_1.1.0.tds.zip)
-md5sums=('8ced666ae466f63997854119ca592fe0')
+md5sums=('3768f97ff43dc5cdf5faa52d42b18dd5')
 
 package()
 {
-  cp "$srcdir/*" "$pkgdir/usr/share/texmf-dist/"
+  mkdir -p "$pkgdir/usr/share/texmf-dist/"
+  cp -R "$srcdir/fonts" "$pkgdir/usr/share/texmf-dist/"
+  cp -R "$srcdir/doc" "$pkgdir/usr/share/texmf-dist/"
+  cp -R "$srcdir/tex" "$pkgdir/usr/share/texmf-dist/"
 }
