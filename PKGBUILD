@@ -1,7 +1,7 @@
 # Maintainer: José Luis Lafuente <jl@lafuente.me>
 # Original maintainer: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 pkgname=watchman
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=0
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -14,7 +14,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/watchman/archive/v${pkgver}.tar.gz")
-sha256sums=('7ef7edb3cff99d6580630d65aedaae350308ed1ad71f30718ae7bf968b61140c')
+sha256sums=('c8bd6b496f5d86b13c91368bf3b01346282f565c8af4f8e2f7bb6b74a48c4793')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
