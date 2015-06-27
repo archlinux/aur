@@ -1,0 +1,21 @@
+pkgbase = magnum-examples-git
+	pkgdesc = Examples for Magnum OpenGL graphics engine (Git version)
+	pkgver = snapshot.2015.05.r30.gb27164a
+	pkgrel = 1
+	url = http://mosra.cz/blog/magnum.php
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = magnum-git
+	depends = magnum-plugins-git
+	depends = magnum-integration-git
+	depends = bullet
+	provides = magnum-examples
+	conflicts = magnum-examples
+	source = git+git://github.com/mosra/magnum-examples.git
+	sha1sums = SKIP
+
+pkgname = magnum-examples-git
+
