@@ -1,0 +1,12 @@
+diff -urN rubber-bzr/Makefile.in rubber-bzr-build/Makefile.in
+--- rubber-bzr/Makefile.in	2010-12-08 13:29:17.000000000 +0100
++++ rubber-bzr-build/Makefile.in	2010-12-08 13:33:15.000000000 +0100
+@@ -2,7 +2,7 @@
+ # As part of Rubber, it is covered by the GPL (see COPYING for details).
+ # (c) Emmanuel Beffara, 2002
+ 
+-prefix = @prefix@
++prefix = ${DESTDIR}@prefix@
+ bindir = @bindir@
+ moddir = @moddir@
+ mandir = @mandir@
