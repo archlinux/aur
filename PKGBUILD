@@ -10,7 +10,7 @@ url="https://github.com/Aseman-Land/TelegramQML"
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
          'qt5-webengine' 'qt5-imageformats' 'qt5-graphicaleffects' 
-         'qt5-quickcontrols')
+         'qt5-quickcontrols' 'libqtelegram-ae>=1:4.1')
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/TelegramQML.git")
 md5sums=('SKIP')

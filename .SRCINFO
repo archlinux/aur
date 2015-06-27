@@ -15,6 +15,7 @@ pkgbase = telegramqml-git
 	depends = qt5-imageformats
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
+	depends = libqtelegram-ae>=1:4.1
 	provides = telegramqml
 	conflicts = telegramqml
 	source = telegramqml-git::git+https://github.com/Aseman-Land/TelegramQML.git
