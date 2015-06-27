@@ -1,0 +1,19 @@
+pkgbase = lib32-swh-plugins
+	pkgdesc = Steve Harris' LADSPA plug-ins suite
+	pkgver = 0.4.15
+	pkgrel = 6
+	url = http://plugin.org.uk/
+	install = lib32-swh-plugins.install
+	arch = x86_64
+	license = GPL
+	makedepends = lib32-libxml2
+	makedepends = perl-xml-parser
+	depends = lib32-fftw
+	depends = lib32-ladspa
+	source = http://plugin.org.uk/releases/0.4.15/swh-plugins-0.4.15.tar.gz
+	source = mbeq_crash_fix.patch
+	md5sums = 2fbdccef2462ea553901acd429fa3573
+	md5sums = a60422c8dea95bee6f9adcdc70dff7e0
+
+pkgname = lib32-swh-plugins
+

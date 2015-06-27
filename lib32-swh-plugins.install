@@ -1,0 +1,9 @@
+## arg 1:  the new package version
+pre_install() {
+	true
+}
+
+## arg 1:  the new package version
+post_install() {
+	echo "To use the 32-bit plugins, set LADSPA_PATH to '/usr/lib/ladspa:/usr/lib32/ladspa'"
+}
