@@ -1,0 +1,18 @@
+pkgbase = sputnik
+	pkgdesc = Simple and practical RSS reader.
+	pkgver = 1.0.7
+	pkgrel = 4
+	url = http://sputnik.szwacz.com
+	arch = x86_64
+	license = GPLv3
+	depends = alsa-lib
+	depends = gconf
+	depends = gdk-pixbuf2
+	depends = libpng
+	depends = nss
+	options = !strip
+	source = sputnik.run::http://sputnik.szwacz.com/downloads/Sputnik-v1.0.7.run
+	md5sums = 5c32ff4eae9f20fc054efdfee79f12ef
+
+pkgname = sputnik
+
