@@ -1,0 +1,15 @@
+pkgbase = perl-xml-nodefilter
+	pkgdesc = XML-NodeFilter perl module (generic XML::NodeFilter class)
+	pkgver = 0.01
+	pkgrel = 4
+	url = http://search.cpan.org/dist/XML-NodeFilter/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHISH/XML-NodeFilter-0.01.tar.gz
+	md5sums = a585cd03435fc51ead427aa2c82b40a3
+
+pkgname = perl-xml-nodefilter
+
