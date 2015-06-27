@@ -1,0 +1,39 @@
+pkgbase = dolphin-emu-osvr-git
+	pkgdesc = A GameCube / Wii / Triforce emulator, with OSVR cross-HMD support
+	pkgver = 4.0.2.r6333.58c706e
+	pkgrel = 1
+	url = http://www.dolphin-emu.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-base
+	depends = bluez-libs
+	depends = ffmpeg
+	depends = libao
+	depends = mbedtls
+	depends = miniupnpc
+	depends = portaudio
+	depends = sdl2
+	depends = sfml
+	depends = soundtouch
+	depends = xdg-utils
+	depends = wxgtk
+	depends = osvr-core-git
+	depends = osvr-libfunctionality-git
+	optdepends = pulseaudio: PulseAudio backend
+	options = !emptydirs
+	source = dolphin-emu::git+https://github.com/feilen/dolphin.git#branch=osvr
+	sha256sums = SKIP
+
+pkgname = dolphin-emu-osvr-git
+	provides = dolphin-emu
+	conflicts = dolphin-emu
+
+pkgname = dolphin-emu-osvr-cli-git
+	depends = dolphin-emu-git
+
+pkgname = dolphin-emu-osvr-qt-git
+	depends = dolphin-emu-git
+	depends = qt5-base
+
