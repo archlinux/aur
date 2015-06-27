@@ -1,0 +1,5 @@
+lbzip2
+pkg
+src
+*.log
+*.tar.xz
