@@ -1,0 +1,16 @@
+pkgbase = qmagneto-bzr
+	pkgdesc = French TV guide with record function
+	pkgver = r228
+	pkgrel = 2
+	url = https://launchpad.net/qmagneto
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = qt4
+	replaces = qmagneto
+	source = bzr+lp:qmagneto
+	md5sums = SKIP
+
+pkgname = qmagneto-bzr
+
