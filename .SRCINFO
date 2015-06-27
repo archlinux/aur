@@ -1,0 +1,16 @@
+pkgbase = jack-keyboard
+	pkgdesc = A virtual MIDI keyboard for JACK.
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://jack-keyboard.sourceforge.net/
+	install = jack-keyboard.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = lash
+	source = http://downloads.sourceforge.net/project/jack-keyboard/jack-keyboard/2.7.1/jack-keyboard-2.7.1.tar.gz
+	md5sums = b89c9ac03e850ad1aa8b33ff62ea06a8
+
+pkgname = jack-keyboard
+
