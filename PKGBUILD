@@ -1,11 +1,11 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
-pkgver=1.9.3.dev.r335.g8c5d48e
-pkgrel=4
+pkgver=1.9.3.dev.r413.g8762871
+pkgrel=5
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
-license=('GPL3')
+license=('OSMC-PL')
 
 depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'qtwebkit' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'ipopt' 'qjson' 'suitesparse' 'boost-libs')
 
@@ -22,7 +22,7 @@ prepare() {
     cd "$srcdir/$pkgname"
     sed -i 's,../,https://github.com/OpenModelica/,g' .gitmodules
     git submodule sync
-    git submodule update --init --recursive --depth 1
+    git submodule update --init --recursive
 }
 
 pkgver() {
@@ -43,11 +43,23 @@ build() {
 #   make test
 #}
 
-package() {
-    mkdir -p ${pkgdir}/usr/
-    cd "$srcdir/$pkgname"
-    cp -r build/bin/ ${pkgdir}/usr/bin/
-    cp -r build/include/ ${pkgdir}/usr/include/
-    cp -r build/lib/ ${pkgdir}/usr/lib/
-    cp -r build/share/ ${pkgdir}/usr/share/
+#package() {
+#    mkdir -p ${pkgdir}/usr/
+#    cd "$srcdir/$pkgname"
+#    cp -r build/bin/ ${pkgdir}/usr/bin/
+#    cp -r build/include/ ${pkgdir}/usr/include/
+#    cp -r build/lib/ ${pkgdir}/usr/lib/
+#    cp -r build/share/ ${pkgdir}/usr/share/
+#}
+
+package() {  
+    cd "$srcdir/$pkgname"   
+    make install DESTDIR=${pkgdir}
+    
+    install -D -m644 "OMEdit/OMEdit/OMEditGUI/Resources/icons/omedit.ico" "${pkgdir}/usr/share/openmodelica/icons/omedit.ico"
+    install -D -m644 "OMNotebook/OMNotebook/OMNotebookGUI/Resources/OMNotebook_icon.ico" "${pkgdir}/usr/share/openmodelica/icons/omnotebook.ico"
+    install -D -m644 "OMOptim/OMOptim/GUI/Resources/omoptim.ico" "${pkgdir}/usr/share/openmodelica/icons/omoptim.ico"
+    install -D -m644 "OMShell/OMShell/OMShellGUI/Resources/omshell.ico" "${pkgdir}/usr/share/openmodelica/icons/omshell.ico"
+    install -D -m644 "OMPlot/OMPlot/OMPlotGUI/Resources/icons/omplot.ico" "${pkgdir}/usr/share/openmodelica/icons/omplot.ico"
+    install -D -m644 "OMCompiler/COPYING" "${pkgdir}/usr/share/licenses/openmodelica/LICENSE"
 }

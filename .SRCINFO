@@ -1,11 +1,11 @@
 pkgbase = openmodelica-git
 	pkgdesc = The Open Source Modelica Suite
-	pkgver = 1.9.3.dev.r335.g8c5d48e
-	pkgrel = 4
+	pkgver = 1.9.3.dev.r413.g8762871
+	pkgrel = 5
 	url = https://openmodelica.org
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = OSMC-PL
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
