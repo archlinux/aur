@@ -1,0 +1,21 @@
+pkgbase = tbo-git
+	pkgdesc = Gnome easy and fun comic editor
+	pkgver = 1.0+r253.8d5c99b
+	pkgrel = 1
+	url = https://github.com/danigm/tbo
+	arch = any
+	license = GPL
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = intltool
+	makedepends = automake
+	makedepends = gcc
+	depends = gtk3
+	depends = cairo
+	depends = librsvg
+	depends = git
+	source = tbo-git::git+https://github.com/danigm/tbo
+	md5sums = SKIP
+
+pkgname = tbo-git
+
