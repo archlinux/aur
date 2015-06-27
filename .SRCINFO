@@ -1,0 +1,16 @@
+pkgbase = osdark-rfx-blue
+	pkgdesc = Blue icon theme for xfce
+	pkgver = 20120211
+	pkgrel = 1
+	url = http://xfce-look.org/content/show.php/OSDark+RFX?content=139893
+	arch = any
+	license = GPL
+	source = https://dl.dropbox.com/u/72894581/OSDark-blue-20120211.tar.bz2
+	source = http://xfce-look.org/CONTENT/content-files/139892-OSDark-dist-20120211.tar.bz2
+	source = index.theme
+	md5sums = 3691d5e9ab59d34faff04e5d2f2679a2
+	md5sums = dfe1720c7e5c2a750a7d38afc395bac3
+	md5sums = a6099a4db4d844df6e94d6f7a63bc14b
+
+pkgname = osdark-rfx-blue
+
