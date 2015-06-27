@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-plugin-ipopt-git
 _name="roboptim-core-plugin-ipopt"
-pkgver=v2.0.r77.gbca3914
+pkgver=3.1.r1.g24b0a48
 pkgrel=1
 pkgdesc="Ipopt interface for RobOptim Core"
 arch=('i686' 'x86_64')
@@ -25,7 +25,9 @@ _builddir="${_name}-build"
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --match="v*.*" --long \
+    | sed -r 's/([^-]*-g)/r\1/;s/-/./g' \
+    | sed -r 's/^.{1}//'
 }
 
 # Build the project
