@@ -1,0 +1,16 @@
+pkgbase = socnetv-git
+	pkgdesc = Social Networks Analysis and Visualisation (Development version)
+	pkgver = 1.6.r112.g4279da4
+	pkgrel = 1
+	url = http://socnetv.sourceforge.net/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = socnetv-git
+	conflicts = socnetv
+	source = socnetv::git://git.code.sf.net/p/socnetv/git#branch=develop
+	md5sums = SKIP
+
+pkgname = socnetv-git
+
