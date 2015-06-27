@@ -3,7 +3,7 @@
 _pkgname=gencfsm
 _pkgmajver=1.8
 pkgname=gnome-encfs-manager
-pkgver=1.8.13
+pkgver=1.8.14
 pkgrel=1
 pkgdesc="An easy to use manager and mounter for encfs stashes"
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('30caf0c9a6da97a143033cd78933b49f7704655f65dd9cde9a03d0a8432b01e6')
+sha256sums=('95c43db9ca1b356c450447a9f95f208a0ffe9fdff470acb6d51f2d4d102c3953')
