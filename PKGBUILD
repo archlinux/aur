@@ -1,7 +1,7 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
@@ -13,11 +13,13 @@ _electron_version=0.28.1
 _platform=ia32
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 
-source=("https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz")
+source=("https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz"
+        "yakyak.desktop")
 source_i686=("https://github.com/atom/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-ia32.zip")
 source_x86_64=("https://github.com/atom/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip")
 
-sha256sums=('c695efe8d40f1088af89263eab201f90805c83d171abf6932c7fcc8ae38653ba')
+sha256sums=('c695efe8d40f1088af89263eab201f90805c83d171abf6932c7fcc8ae38653ba'
+            'ba537052daca0bacd1f957792c24150eade47bba296423a7a7d48e92f3946587')
 sha256sums_i686=('b7fcfad602f7e7b4cdf5c279d66ff077b176c1cb9fc0ee56697a185988634ed6')
 sha256sums_x86_64=('f78a609c23bb35fa564ad8d6ed62cd2a92213a4e5ab8103a069a953177ad44b9')
 
@@ -41,4 +43,8 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname}"
+
+  install -Dm644 "${srcdir}/yakyak.desktop" "${pkgdir}/usr/share/applications/yakyak.desktop"
+
+  install -Dm644 "${srcdir}/yakyak-${pkgver}/src/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/yakyak.png"
 }
