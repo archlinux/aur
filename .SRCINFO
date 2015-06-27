@@ -1,0 +1,21 @@
+pkgbase = demlo
+	pkgdesc = A dynamic and extensible music library organizer
+	pkgver = 1.7
+	pkgrel = 3
+	url = http://ambrevar.bitbucket.org/demlo/
+	arch = any
+	license = MIT
+	depends = ffmpeg
+	depends = lua
+	depends = lua-dkjson
+	depends = lua-filesystem
+	depends = lua-llthreads2
+	depends = lua-penlight
+	depends = lua-socket
+	depends = slnunicode-git
+	optdepends = chromaprint: Internet tagging
+	source = https://bitbucket.org/ambrevar/demlo/get/v1.7.tar.bz2
+	sha1sums = 3c9d3a9c666374fbd211c450cbe5ed9394cd3cc3
+
+pkgname = demlo
+
