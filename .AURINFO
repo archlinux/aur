@@ -1,0 +1,17 @@
+pkgbase = opam
+	pkgdesc = OCaml Package Manager
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://opam.ocaml.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = ocaml
+	depends = aspcud
+	source = https://github.com/ocaml/opam/releases/download/1.2.2/opam-full-1.2.2.tar.gz
+	sha1sums = 415ff0506378ab8dfa428fcd0aff3aa28337d93b
+
+pkgname = opam
+
