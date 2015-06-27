@@ -1,0 +1,20 @@
+pkgbase = playgsf
+	pkgdesc = Simple command line player for gsf files based on a winamp plugin
+	pkgver = 0.7.1
+	pkgrel = 4
+	url = http://projects.raphnet.net/#playgsf
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = unknown
+	makedepends = libsndfile
+	makedepends = libsamplerate
+	depends = libao
+	depends = zlib
+	source = fixes.patch
+	source = http://projects.raphnet.net/playgsf/playgsf-0.7.1.tar.gz
+	md5sums = 126f8c82b1af1dfe4195dc9a240dd251
+	md5sums = b68de49a511c3a9bfd051ebf3325b1ef
+
+pkgname = playgsf
+

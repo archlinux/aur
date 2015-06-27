@@ -1,0 +1,54 @@
+diff a/VBA/GBA.cpp b/VBA/GBA.cpp
+--- a/VBA/GBA.cpp
++++ b/VBA/GBA.cpp
+@@ -1049,17 +1049,17 @@ int CPULoadRom(const char *szFile)
+       return 0;
+     }
+   } else*/
+-  int i;
++  long i;
+   if(cpuIsMultiBoot)
+   {
+ 	  rom = (u8 *)malloc(0x200);
+ 	  loadedsize=0;
+-	  i = (int)utilLoad(szFile,utilIsGBAImage,whereToLoad,size);
++	  i = (long)utilLoad(szFile,utilIsGBAImage,whereToLoad,size);
+   }
+   else
+   {
+ 	  rom = utilLoad(szFile,utilIsGBAImage,whereToLoad,size);
+-	  i = (int) rom;
++	  i = (long) rom;
+   }
+ 
+   //loadedsize = sizeof(*rom);
+diff a/VBA/Util.cpp b/VBA/Util.cpp
+--- a/VBA/Util.cpp
++++ b/VBA/Util.cpp
+@@ -917,7 +917,7 @@ bool utilIsGSF(const char * file)
+   
+ 
+   if(strlen(file) > 4) {
+-    char *p = strrchr(file,'.');
++    const char *p = strrchr(file,'.');
+ 
+ 	if(p != NULL) {
+ 	  if(_stricmp(p, ".gsf") == 0)
+@@ -934,7 +934,7 @@ bool utilIsGBAImage(const char * file)
+ {
+   cpuIsMultiBoot = false;
+   if(strlen(file) > 4) {
+-    char * p = strrchr(file,'.');
++    const char * p = strrchr(file,'.');
+ 
+     if(p != NULL) {
+       //if(_stricmp(p, ".gba") == 0)
+@@ -1484,7 +1484,7 @@ void utilWriteData(gzFile gzFile, variable_desc *data)
+ 
+ gzFile utilGzOpen(const char *file, const char *mode)
+ {
+-  utilGzWriteFunc = (int (ZEXPORT *)(void *,void * const, unsigned int))gzwrite;
++  utilGzWriteFunc = (int (ZEXPORT *)(gzFile, void * const, unsigned int))gzwrite;
+   utilGzReadFunc = gzread;
+   utilGzCloseFunc = gzclose;
+ 
