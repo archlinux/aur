@@ -1,0 +1,16 @@
+pkgbase = fig2pstricks
+	pkgdesc = A fig-to-pstricks converter.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://freecode.com/projects/fig2pstricks
+	arch = any
+	license = GPLv2
+	optdepends = xfig
+	optdepends = texlive-pstricks
+	source = http://econ.korea.ac.kr/~chirokhan/fig2pstricks/fig2pstricks-0.7.2.tar.gz
+	md5sums = cd01b5a758018340f1339a55147d7e91
+	sha1sums = 1fd78e8fa1fe7a38a61545c8514f03fb96c37c36
+	sha256sums = a4f266c6a648114dea9d6a4d9299a1a66dbb95b78da0557c7973eefdf30d4515
+
+pkgname = fig2pstricks
+
