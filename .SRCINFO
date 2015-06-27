@@ -1,0 +1,18 @@
+pkgbase = lbzip2-git
+	pkgdesc = A parallel, SMP-based, bzip2-compatible compression utility
+	pkgver = 2.2.r92.g9aa5ad4
+	pkgrel = 3
+	url = http://lbzip2.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = perl
+	makedepends = gnulib
+	depends = glibc
+	provides = lbzip2
+	conflicts = lbzip2
+	source = lbzip2::git+https://github.com/kjn/lbzip2.git#branch=master
+	sha256sums = SKIP
+
+pkgname = lbzip2-git
+
