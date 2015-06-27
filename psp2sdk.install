@@ -1,0 +1,11 @@
+#!/bin/sh
+
+post_install()
+{
+    echo "----------------------------------------------------------------"
+    echo "Make sure /opt/psp2sdk/bin is added to your PATH"
+    echo ""
+    echo "More info here:"
+    echo "https://github.com/173210/psp2sdk"
+    echo "----------------------------------------------------------------"
+}
