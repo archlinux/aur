@@ -9,6 +9,7 @@ url="http://gyazo.com/"
 license=('GPL')
 groups=(multimedia)
 depends=('ruby' 'xclip' 'imagemagick')
+conflicts=('gyazo-git')
 source=("https://github.com/gyazo/Gyazo-for-Linux/archive/master.zip")
 sha256sums=('58567d7c2a77bae20551c66d203385b64037df7599f431c92f66e3aafe4a6b3f')
 
