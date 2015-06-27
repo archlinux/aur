@@ -1,0 +1,17 @@
+pkgbase = neatrefer-git
+	pkgdesc = A small refer clone for managing bibliographic references.
+	pkgver = 0.r2.47e4061
+	pkgrel = 3
+	url = http://litcave.rudi.ir/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = neatroff-git
+	provides = neatrefer
+	conflicts = neatrefer
+	source = neatrefer-git::git://repo.or.cz/neatrefer.git
+	md5sums = SKIP
+
+pkgname = neatrefer-git
+
