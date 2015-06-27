@@ -1,7 +1,7 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=moony.lv2
 pkgname=moony-lv2
-pkgver=0.1.0_beta1
+pkgver=0.1.1_rc1
 pkgrel=2
 pkgdesc="Realtime Lua as programmable glue in LV2"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('d9f81ee23108925a4f706088d75216ca')
+md5sums=('e846aecd3f01367c8aed131c06566878')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
