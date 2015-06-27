@@ -1,0 +1,4 @@
+
+post_install() {
+	echo "Please edit /etc/lispd.conf to reflect your LISP network configuration."
+}

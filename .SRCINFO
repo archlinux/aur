@@ -1,0 +1,26 @@
+pkgbase = lispmob
+	pkgdesc = Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://lispmob.org
+	install = lispmob.install
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	license = GPL2
+	makedepends = git
+	makedepends = gengetopt
+	depends = openssl
+	depends = confuse
+	depends = libcap
+	provides = lispd-systemd-unit
+	backup = etc/lispd.conf
+	source = lispmob::git://github.com/LISPmob/lispmob.git#tag=0.4.1
+	source = lispd.service
+	md5sums = SKIP
+	md5sums = cbb2f15b491945face7a7052c0e92d31
+	sha512sums = SKIP
+	sha512sums = 0c22467f626e2146fafe0901e3570e3b7780901a02183cda3403de5a9ab236dde8e5f96f5f194a2bc683cfbb78325a14e7408aa7a710698d9ace61178454ffec
+
+pkgname = lispmob
+
