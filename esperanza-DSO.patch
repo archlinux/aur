@@ -1,0 +1,12 @@
+--- esperanza-build/src/ui/ui.pro	2012-10-06 02:43:07.000000000 +0200
++++ esperanza-build/src/ui/ui.pro	2012-10-06 13:59:45.419124986 +0200
+@@ -24,6 +24,9 @@ win32 {
+ 
+ LIBS += $$COMPONENTS
+ 
++# DSO LINKER PATCH
++LIBS += -lboost_signals -lX11
++
+ PRE_TARGETDEPS = $$COMPONENTS
+ 
+ # Target

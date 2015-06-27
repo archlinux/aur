@@ -1,0 +1,25 @@
+pkgbase = esperanza-git
+	pkgdesc = Esperanza is a XMMS2 client written in C++/Qt4 and aims to be fully featured and easy to use
+	pkgver = r402.1b81dc2
+	pkgrel = 1
+	url = http://wiki.xmms2.xmms.se/index.php/Client:Esperanza
+	arch = i686
+	arch = x86_64
+	groups = xmms2
+	license = GPL
+	makedepends = boost
+	makedepends = git
+	depends = xmms2
+	depends = qt4
+	provides = esperanza
+	conflicts = esperanza
+	replaces = esperanza
+	source = esperanza-git::git+git://git.xmms.se/xmms2/esperanza.git
+	source = esperanza.desktop
+	source = esperanza-DSO.patch
+	md5sums = SKIP
+	md5sums = 5ae5e46cc596c20f3bf0dbffe9ebef8e
+	md5sums = 45733bfd31298fed60ec5181e76cd27f
+
+pkgname = esperanza-git
+

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Qt;KDE;Multimedia;Application;AudioVideo;Player;
+Comment=QT4 klient pro XMMS2
+Comment[cs]=QT4 klient pro XMMS2
+Encoding=UTF-8
+Exec='/usr/bin/esperanza'
+GenericName=QT4 client for XMMS2
+GenericName[cs]=QT4 klient pro XMMS2
+Icon=/usr/share/icons/hicolor/128x128/apps/esperanza.png
+MimeType=
+Name=Esperanza
+Name[cs]=Esperanza
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-StartupNotify=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=
