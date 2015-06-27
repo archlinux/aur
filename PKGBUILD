@@ -4,8 +4,8 @@
 
 pkgname=pandoc-static
 _pkgname=pandoc
-pkgver=1.14
-pkgrel=2
+pkgver=1.14.0.4
+pkgrel=1
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
 license=('GPL')
@@ -20,7 +20,7 @@ optdepends=('texlive-most: for PDF creation')
 options=(strip !makeflags !distcc !emptydirs)
 source=(https://repo.parabola.nu/other/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.xz{,.sig})
 validpgpkeys=('49F707A1CB366C580E625B3C456032D717A4CD9C')
-sha512sums=('275b5ba41d46dc4058e986ab0fdfb9078062cde1fed7938fa4d97422f09379d24e02d7ac2037d1ac6bd6d7aa4bcc180d72ecb84cb6aa28f16bb9dd91b065e204'
+sha512sums=('08858612065a2eaeed263543a126fd5a23a7a73a8a51f36573e72ca14507e65ae7f5a79b6f272e6f04f210589e45f20a50ab8699d9964c8ea08dabf74c1a8b9c'
             'SKIP')
 
 declare -gA _flags
