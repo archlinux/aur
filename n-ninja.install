@@ -1,0 +1,12 @@
+post_install() {
+   echo 'n-ninja uses the variable $BROWSER to open the game.'
+   echo "This variable must be set in order for the game to run."
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    post_install $1
+}
