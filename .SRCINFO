@@ -1,0 +1,18 @@
+pkgbase = neatmkfn-git
+	pkgdesc = Creates font description files for neatroff. It used to be called mktrfn.
+	pkgver = 0.r67.10cc844
+	pkgrel = 3
+	url = http://litcave.rudi.ir/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = gsfonts
+	provides = neatmkfn
+	conflicts = neatmkfn
+	replaces = mktrfn
+	source = neatmkfn-git::git://repo.or.cz/neatmkfn.git
+	md5sums = SKIP
+
+pkgname = neatmkfn-git
+
