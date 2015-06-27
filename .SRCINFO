@@ -1,0 +1,14 @@
+pkgbase = direnv
+	pkgdesc = a shell extension that manages your environment
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = http://direnv.net
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	source = direnv.tar.gz::https://github.com/zimbatm/direnv/archive/v2.6.1.tar.gz
+	sha256sums = b80396cebae596ea8e48ff1a52ac1337368fc729f0731036b9b44b3e531cda7e
+
+pkgname = direnv
+
