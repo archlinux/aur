@@ -1,0 +1,16 @@
+post_install() {
+  update-desktop-database -q
+  echo "Privacy Policy: https://spideroak.com/privacy_policy"
+  echo "Law Enforcement Policy: https://spideroak.com/law_enforcement/"
+  echo " "
+  echo "To use SpiderOak from CLI:"
+  echo "https://spideroak.com/faq/questions/67/how_can_i_use_spideroak_from_the_commandline/"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}

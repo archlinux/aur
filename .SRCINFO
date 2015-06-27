@@ -1,0 +1,18 @@
+pkgbase = spideroak
+	pkgdesc = Secure file backup, sync and sharing client
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://spideroak.com/
+	install = spideroak.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = desktop-file-utils
+	provides = spideroak
+	conflicts = spideroak-beta
+	options = !strip
+	source = terms.txt
+	sha256sums = 4819c8d923ab19e552e877b87adf1d45aca6adcb5dffcb238d7819501e6e6737
+
+pkgname = spideroak
+
