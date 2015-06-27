@@ -1,7 +1,7 @@
 pkgbase = lbzip2-git
 	pkgdesc = A parallel, SMP-based, bzip2-compatible compression utility
-	pkgver = 2.2.r92.g9aa5ad4
-	pkgrel = 3
+	pkgver = 2.5.r19.gce96731
+	pkgrel = 1
 	url = http://lbzip2.org/
 	arch = i686
 	arch = x86_64

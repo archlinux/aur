@@ -3,8 +3,8 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=lbzip2-git
-pkgver=2.2.r92.g9aa5ad4
-pkgrel=3
+pkgver=2.5.r19.gce96731
+pkgrel=1
 pkgdesc="A parallel, SMP-based, bzip2-compatible compression utility"
 arch=('i686' 'x86_64')
 url="http://lbzip2.org/"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
