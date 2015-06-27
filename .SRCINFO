@@ -1,0 +1,32 @@
+pkgbase = lugaruhd-hg
+	pkgdesc = An open-source third-persion action game featuring a unique close-range combat system
+	pkgver = 550.2aac6aa9913f
+	pkgrel = 2
+	url = https://bitbucket.org/osslugaru/lugaru
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = CCPL:cc-by-sa
+	license = custom
+	makedepends = mercurial
+	makedepends = gcc-libs
+	makedepends = sdl
+	makedepends = openal
+	makedepends = cmake
+	makedepends = libjpeg
+	makedepends = libpng
+	makedepends = libvorbis
+	depends = sdl
+	depends = openal
+	depends = libjpeg
+	depends = libpng
+	depends = libvorbis
+	source = lugaru::hg+https://bitbucket.org/osslugaru/lugaru
+	source = lugaru.launcher
+	source = lugaru.desktop
+	sha256sums = SKIP
+	sha256sums = f0868d415e18d5199b2c99980cfdf89311a1214c010206c98d7cf7f1e50c1096
+	sha256sums = aa7e7615d5c9d8f7bf02265bb392cadfa6e479d2fc2ff4f8972de4a0769bd6d5
+
+pkgname = lugaruhd-hg
+
