@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url=('http://www.r-project.org/')
 #provides=('r=3.1.2')
-provides=("r=${pkgver}")
+provides=("r=${pkgver}","r-mkl=${pkgver}")
 conflicts=('r')
 depends=('intel-mkl' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
          'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
@@ -28,11 +28,11 @@ source=("http://cran.r-project.org/src/base/R-${pkgver%%.*}/R-${pkgver}.tar.gz"
 	'r.png'
 	'R.conf')
 
-md5sums=('66fa17ad457d7e618191aa0f52fc402e'
+md5sums=('c2aac8b40f84e08e7f8c9068de9239a3'
          '44ca875140b148543148b7749c7d6f5e'
          '00659f39e90627fe87f1645df5d4e3a7'
          '1dfa62c812aed9642f6e4ac34999b9fe')
-sha512sums=('c6041c854251d51dd936d3a3632c2958a0437c58488f93e5ba810e957fb7f2276e3fe4f615fb4705f2fc5a66aa50a828b54b5e4e7b4358c7fd465c71531b9828'
+sha512sums=('8ae44a8edc5e41e271c5a7b9da7058dba354172e237d56345810e140524b96442d1dea8988956adb89106cbd42ca7ea1eb2159651e28a81b3a45fc98b8e62f86'
             '1a90aed5411d72dd3e7708db0cb92c518e656e1a510ece02ad934131e05b8e683b4a36da8d37198263dc19fb2f3f19656c19c01f9b67974f0d7755974076d0b7'
             '55ed6e819dcbb231d842d825134b84d1a24db177558d5dad9369d57fd21d0239d6433c4311531171a101ca3c7c0685493e9cc6c1fe9e4e0df59f2331cff150ba'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
