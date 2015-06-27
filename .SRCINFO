@@ -10,6 +10,7 @@ pkgbase = ogar-git
 	depends = npm
 	depends = git
 	depends = systemd
+	conflicts= ogar
 	backup = usr/share/ogar/gameserver.ini
 	source = git+https://github.com/vram4/Ogar.git
 	source = ogar.service

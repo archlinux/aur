@@ -7,6 +7,7 @@ arch=(any)
 url="https://github.com/vram4/Ogar"
 license=('Apache')
 depends=('nodejs' 'npm' 'git' 'systemd')
+conflicts=('ogar')
 source=('git+https://github.com/vram4/Ogar.git' 'ogar.service')
 sha1sums=('SKIP' '17e04c0c5872f64ed05bf0f6844ee276210d7bda')
 install="${pkgname}.install"
