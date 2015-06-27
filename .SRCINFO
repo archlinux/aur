@@ -1,0 +1,23 @@
+pkgbase = perl-treex-pml
+	pkgdesc = Perl implementation for the Prague Markup Language (PML)
+	pkgver = 2.17
+	pkgrel = 1
+	url = http://search.cpan.org/~choroba/Treex-PML/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-xml-compacttree
+	depends = perl-pml
+	depends = perl-file-sharedir
+	depends = perl-universal-does
+	depends = perl-uri
+	depends = perl-xml-libxml
+	depends = perl-libwww
+	depends = perl-xml-writer
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOROBA/Treex-PML-2.17.tar.gz
+	md5sums = 29299c2afe2c4cc8351242edf8fe86d0
+
+pkgname = perl-treex-pml
+
