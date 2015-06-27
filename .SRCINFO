@@ -1,0 +1,25 @@
+pkgbase = camoto-studio-git
+	pkgdesc = Examine and edit DOS games
+	pkgver = 20120611
+	pkgrel = 1
+	url = http://www.shikadi.net/camoto
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = boost
+	depends = png++
+	depends = libgamecommon
+	depends = libgamearchive
+	depends = libgamegraphics
+	depends = libgamemaps
+	depends = libgamemusic
+	depends = wxgtk
+	provides = camoto-studio
+	conflicts = camoto-studio
+
+pkgname = camoto-studio-git
+
