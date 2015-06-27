@@ -2,25 +2,25 @@
 
 pkgname=microchip-libraries-for-applications
 pkgver=v2014_07_22
-pkgrel=1
+pkgrel=2
 pkgdesc="Microchip Libraries for Applications (Current)"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
 license=('custom')
 optdepends=('java-runtime: Graphics utilities support')
 makedepends=('fakechroot')
-[ $CARCH = x86_64 ] && depends+=('lib32-glibc' 'lib32-fakeroot')
+depends_x86_64=('lib32-glibc' 'lib32-fakeroot')
 options=(!strip libtool staticlibs emptydirs !zipman)
 install=$pkgname.install
 _instdir=/opt/microchip/mla
 _installer=mla_${pkgver}_linux_installer.run
 source=(http://ww1.microchip.com/downloads/en/softwarelibrary/$_installer
         LICENSE)
-[ $CARCH = x86_64 ] && source+=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
+source_x86_64=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
 md5sums=('3a829a4d57ed0d6794e5ccd18995b863'
          'a79e3095ffcc446517b27707c8a60d7b')
-[ $CARCH = x86_64 ] && md5sums+=('SKIP')
+md5sums_x86_64=('SKIP')
 
 package() {
   cd "$srcdir"
