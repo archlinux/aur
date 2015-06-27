@@ -1,0 +1,24 @@
+pkgbase = opam-git
+	pkgdesc = OCaml Package Manager
+	pkgver = 1.1.0.484.g692cf53
+	pkgrel = 1
+	url = https://opam.ocaml.org
+	install = opam-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = curl
+	depends = ocaml
+	depends = aspcud
+	provides = opam
+	conflicts = opam
+	source = opam-git::git+git://github.com/ocaml/opam
+	source = opam-git.install
+	md5sums = SKIP
+	md5sums = e26e35d3f858c0b5474b778821f9d2e8
+
+pkgname = opam-git
+
