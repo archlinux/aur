@@ -1,0 +1,19 @@
+pkgbase = neateqn-git
+	pkgdesc = An eqn preprocessor for neatroff.
+	pkgver = 0.r63.86b970b
+	pkgrel = 1
+	url = http://litcave.rudi.ir/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = neatroff-git
+	provides = neateqn
+	conflicts = neateqn
+	source = neateqn-git::git://repo.or.cz/neateqn.git
+	source = http://litcave.rudi.ir/neateqn.pdf
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = neateqn-git
+
