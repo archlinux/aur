@@ -1,0 +1,16 @@
+pkgbase = multiblend
+	pkgdesc = Image blender for the seamless blending of panoramic images similar to enblend
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://horman.net/multiblend/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
+	source = http://horman.net/multiblend/multiblend0.6.2.tar.gz
+	md5sums = 3a2afe6aa55d6ee155029605dbc41751
+
+pkgname = multiblend
+
