@@ -1,0 +1,28 @@
+pkgbase = gns3-server
+	pkgdesc = GNS3 network simulator. Server package.
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://github.com/GNS3/gns3-server
+	install = gns3-server.install
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-netifaces
+	depends = python-jsonschema
+	depends = python-dateutil
+	depends = python-aiohttp
+	depends = python-jinja
+	depends = python-raven
+	optdepends = dynamips: Cisco router emulator.
+	optdepends = vboxwrapper: VirtualBox wrapper for GNS3.
+	optdepends = iouyap: Bridge IOU to UDP, TAP and Ethernet.
+	optdepends = qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.
+	optdepends = vpcs: Simple PC emulation for basic network operations.
+	optdepends = gns3-gui: graphical user interface for GNS3 server.
+	source = gns3-server-1.3.7.tar.gz::https://github.com/GNS3/gns3-server/archive/v1.3.7.tar.gz
+	source = gns3-server@.service
+	md5sums = 4549f94aeea503b2b431471c34da3a5c
+	md5sums = f602390385890dab14f68e5e0a8cac2d
+
+pkgname = gns3-server
+

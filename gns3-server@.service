@@ -1,0 +1,10 @@
+[Unit]
+Description=gns3 server for %i
+After=network.target
+
+[Service]
+User=%i
+ExecStart=/usr/bin/gns3server
+
+[Install]
+WantedBy=multi-user.target

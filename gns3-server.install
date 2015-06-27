@@ -1,0 +1,13 @@
+post_install() {
+cat << EOF
+	To enable and start gns3-server execute the following,
+	replacing 'USER' with your username:
+
+		systemctl enable gns3-server@USER
+		systemctl start gns3-server@USER
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
