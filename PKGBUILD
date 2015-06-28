@@ -4,7 +4,7 @@
 pkgname="python2-oslo-messaging-kilo"
 _pkgname="oslo.messaging"
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Messaging API"
 arch=("any")
 url="https://pypi.python.org/pypi/oslo.messaging/"
@@ -16,7 +16,7 @@ depends=(
   "python2-eventlet>=0.13.0"
   "python2-iso8601>=0.1.9"
   "python2-kombu>=2.4.8"
-  "python2-oslo-config>=1.2.0"
+  "python2-oslo-config-kilo"
   "python2-six>=1.6.0"
   "python2-stevedore-kilo"
   "python2-yaml>=3.1.0"
