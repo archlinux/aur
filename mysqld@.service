@@ -1,0 +1,11 @@
+[Unit]
+Description=MySQL Server instance %i
+ConditionFileNotEmpty=/etc/mysql/%i.cnf
+
+[Service]
+User=mysql
+ExecStart=/usr/sbin/mysqld --defaults-extra-file=/etc/mysql/%i.cnf --user=mysql
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

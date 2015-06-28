@@ -1,0 +1,13 @@
+--- Makefile.in.orig	2010-05-28 20:03:46.507224494 +0200
++++ Makefile.in	2010-05-28 20:04:05.737221909 +0200
+@@ -1126,10 +1126,8 @@
+ #
+ 
+ abi_check:	$(API_PREPROCESSOR_HEADER)
+-	$(MAKE) abi_headers="$^" do_abi_check
+ 
+ abi_check_all:	$(TEST_PREPROCESSOR_HEADER)
+-	$(MAKE) abi_headers="$^" do_abi_check
+ 
+ do_abi_check:
+ 	set -ex; \
