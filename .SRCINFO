@@ -1,0 +1,23 @@
+pkgbase = darkhttpd-git
+	pkgdesc = A small, static webserver - git checkout
+	pkgver = 0.r283.g32158f9
+	pkgrel = 1
+	url = http://dmr.ath.cx/net/darkhttpd/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = darkhttpd
+	conflicts = darkhttpd
+	source = git+http://unix4lyfe.org/git/darkhttpd
+	source = darkhttpd.service
+	source = darkhttpd.socket
+	source = http://www.eworm.de/download/linux/darkhttpd-get-version-string-from-git.patch
+	sha256sums = SKIP
+	sha256sums = c0c8885682aca80474986080b5426f73dbf37237d02e3fc9035ac72ba74cdb1b
+	sha256sums = 3a5ad507b72c0c37e3255a70a5dcd8c8c79b728efd07a2dc2f6786f9b9cc3c1b
+	sha256sums = b5be5a3a4bbd27aa2f197167e01e89866f196057ab077c209658f41d036b9815
+
+pkgname = darkhttpd-git
+

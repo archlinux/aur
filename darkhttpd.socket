@@ -1,0 +1,9 @@
+[Unit]
+Conflicts=darkhttpd.service
+
+[Socket]
+ListenStream=80
+Accept=no
+
+[Install]
+WantedBy=sockets.target
