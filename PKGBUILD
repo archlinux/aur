@@ -3,7 +3,7 @@
 pkgbase=netctl-gui
 pkgname=('libnetctlgui' 'netctlgui-helper' 'netctl-gui'
          'plasma5-applet-netctl-gui')
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="Qt4/Qt5 GUI for netctl. Also provides a widget for KDE"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://arcanis.name/projects/netctl-gui"
 license=('GPL3')
 makedepends=('cmake' 'extra-cmake-modules' 'plasma-framework' 'qt5-tools')
 source=("https://github.com/arcan1s/netctl-gui/releases/download/V.${pkgver}/${pkgbase}-${pkgver}-src.tar.xz")
-md5sums=('aed674e4c465d849c2044f9464c2671c')
+md5sums=('9723d9358412b212880c93e931f26b73')
 
 prepare() {
   rm -rf "${srcdir}/build-"{plasmoid,qt5}
