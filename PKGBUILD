@@ -2,7 +2,7 @@
 
 pkgname="python2-oslo-policy-kilo"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Policy"
 arch=("any")
 url="https://pypi.python.org/pypi/oslo.policy"
@@ -18,7 +18,7 @@ build() {
 }
 
 package_python2-oslo-policy-kilo() {
-  depends=('python2-oslo-config>=1.2.0' 'python2-oslo-i18n-kilo>=1.3.0' 'python2-oslo-serialization-kilo>=1.4.0')
+  depends=('python2-oslo-config-kilo' 'python2-oslo-i18n-kilo>=1.3.0' 'python2-oslo-serialization-kilo>=1.4.0')
   cd "${srcdir}/oslo.policy-${pkgver}/"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
