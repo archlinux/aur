@@ -1,0 +1,15 @@
+pkgbase = asterisk-g72x
+	pkgdesc = G.729 and G.723.1 codecs for Asterisk open source PBX
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://asterisk.hosting.lv/
+	arch = i686
+	arch = x86_64
+	license = IPP
+	depends = asterisk
+	depends = bcg729
+	source = http://asterisk.hosting.lv/src/asterisk-g72x-1.3.tar.bz2
+	sha256sums = fcfe8f909dab520b15f923ad67856ae81face5ddd5cbea5450fe2b4422e27e15
+
+pkgname = asterisk-g72x
+
