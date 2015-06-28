@@ -1,0 +1,20 @@
+infodir=usr/share/info
+filelist=(fftw.info fftw.info-1  fftw.info-2  fftw.info-3  fftw.info-4  fftw.info-5)
+
+post_install() {
+	[ -x usr/bin/install-info ] || return 0
+	install-info $infodir/fftw.info.gz $infodir/dir 2> /dev/null
+}
+
+post_upgrade() {
+	pre_remove $1
+	post_install $1
+}
+
+pre_remove() {
+	[ -x usr/bin/install-info ] || return 0
+	for file in ${filelist[@]}; do
+		install-info --delete $infodir/$file.gz $infodir/dir 2> /dev/null
+	done
+}
+
