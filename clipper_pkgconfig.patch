@@ -1,0 +1,11 @@
+ 
+--- clipper.pc.in_orig	2013-07-08 23:17:43.516902581 -0700
++++ clipper.pc.in	2013-07-08 23:19:59.883104039 -0700
+@@ -7,6 +7,5 @@
+ Description: crystallographic automation and complex data manipulation libraries
+ Version: @VERSION@
+ Requires: @CLIPPER_REQUIRES@
+-Libs: -L${libdir} @CLIPPER_LIBS@
+-Libs.private: @FFTW_LIBS@ -lm @PTHREAD_LIBS@
++Libs: -L${libdir} @CLIPPER_LIBS@ @FFTW_LIBS@ -lm @PTHREAD_LIBS@
+ Cflags: -I${includedir} @PTHREAD_CFLAGS@
