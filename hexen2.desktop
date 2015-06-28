@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hexen 2
+Comment=Hexen II
+Exec=hexen2
+Icon=hexen2.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;

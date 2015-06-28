@@ -1,0 +1,28 @@
+pkgbase = hexen2
+	pkgdesc = Hammer of Thyrion: A cross-platform port of Raven Software's Hexen II source based on an older linux port, Anvil of Thyrion
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = http://uhexen2.sourceforge.net/
+	install = hexen2.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = nasm
+	depends = gtk2
+	depends = libmad
+	depends = libvorbis
+	depends = sdl>=1.2.4
+	provides = hexenworld
+	source = http://downloads.sourceforge.net/uhexen2/hexen2source-1.5.6.tgz
+	source = http://downloads.sourceforge.net/uhexen2/hexen2source-gamecode-1.5.6.tgz
+	source = http://downloads.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
+	source = hexen2.desktop
+	source = hexen2.sh
+	md5sums = 8e48a9845423fd35d31c171911efb495
+	md5sums = e2e7463eb16461955c3cacee6c844937
+	md5sums = 9ac598a80765daa0862893bd0aac765a
+	md5sums = 2a2aa35969de221fcee88b3d2187e76e
+	md5sums = cd519dc631152951026a5348e23547f4
+
+pkgname = hexen2
+
