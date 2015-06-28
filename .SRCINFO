@@ -1,0 +1,17 @@
+pkgbase = agentsmith
+	pkgdesc = Monitor log files for break-in attempts
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://www.guengel.ch/myapps/agentsmith
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = openssl
+	depends = pcre
+	source = http://www.guengel.ch/myapps/agentsmith/downloads/agentsmith-0.2.tar.gz
+	sha256sums = 38f56dbf017f6cb260c4abf55f422fe540e95a4058f589a88f6314183e1d8435
+
+pkgname = agentsmith
+
