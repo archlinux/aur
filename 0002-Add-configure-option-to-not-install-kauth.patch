@@ -1,4 +1,4 @@
-From eccd483fd8b81051d170bb98989c65cd14efa57c Mon Sep 17 00:00:00 2001
+From fcaf7fb25f7f804df8e631f170559383c8ae635e Mon Sep 17 00:00:00 2001
 From: Ben Kaduk <kaduk@mit.edu>
 Date: Thu, 8 Nov 2012 18:40:57 -0500
 Subject: [PATCH 2/3] Add configure option to not install kauth
@@ -25,7 +25,7 @@ Tested-by: BuildBot <buildbot@rampaginggeek.com>
  2 files changed, 73 insertions(+), 52 deletions(-)
 
 diff --git a/acinclude.m4 b/acinclude.m4
-index c9ada2c..b372539 100644
+index 79df95a..dda9798 100644
 --- a/acinclude.m4
 +++ b/acinclude.m4
 @@ -159,6 +159,14 @@ AC_ARG_ENABLE([transarc-paths],
@@ -43,7 +43,7 @@ index c9ada2c..b372539 100644
  dnl Optimization and debugging flags.
  AC_ARG_ENABLE([strip-binaries],
      [AS_HELP_STRING([--disable-strip-binaries],
-@@ -1456,6 +1464,13 @@ else
+@@ -1459,6 +1467,13 @@ else
  fi
  AC_SUBST(BUILD_LOGIN)
  
@@ -190,5 +190,5 @@ index dd1452e..ad24e66 100644
  #
  # Misc. targets
 -- 
-2.3.5
+2.4.4
 
