@@ -1,17 +1,17 @@
 pkgbase = python-lasso
 	pkgdesc = Lightweight module to define serializable, schema-validated classes
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/aperezdc/python-lasso
 	arch = any
 	license = custom:MIT
 	depends = python-schema
 	depends = python-delorean
-	source = https://pypi.python.org/packages/source/l/lasso/lasso-0.0.1.tar.gz
+	source = https://pypi.python.org/packages/source/l/lasso/lasso-0.0.2.tar.gz
 	source = COPYING
-	md5sums = 9ee235bd60ec54dc027330bcf0717abd
+	md5sums = 915022691be5d972ebc35c4adab9d734
 	md5sums = 0e0f33b93b6e3cbb30bfde284d35a516
-	sha512sums = 3eeace2373e6dbd8c67a0ef25ccf0aa7a7bce510ca403892d2cce1b7a6f9b72d067917c71c51e7e5ba1646be901a3b3ae635fe86dd65ce8747c5d52d88430eda
+	sha512sums = 171a22d380b4fa415d25c3ea73fd1e9681d5c23c7a25bd31e635ba849e42f0ed10d94e5d466c19b95b7d11a858ef97f39971d25df9937d818d0192ddfe3e2d90
 	sha512sums = aa09f964180fbd1db3337ba82af84787ff57ab57d17e665dfab69f70834600f5ae18bce92e7c65036fc7d13015dd3107528cacf08886ee9a3e3bf3916e8e2efe
 
 pkgname = python-lasso
