@@ -1,0 +1,6 @@
+#!ipxe
+
+set next-server-port 80
+
+dhcp &&
+chain http://${next-server}:${next-server-port}/default.ipxe
