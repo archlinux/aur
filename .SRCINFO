@@ -1,0 +1,19 @@
+pkgbase = opensees
+	pkgdesc = OpenSees, a software framework for developing applications to simulate the performance of structural and geotechnical systems subjected to earthquakes
+	pkgver = 2.4.5
+	pkgrel = 1
+	url = http://opensees.berkeley.edu/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = svn
+	depends = tk>=8.6
+	depends = openssl
+	depends = libpng
+	depends = mesa
+	depends = lapack
+	source = Makefile.def
+	md5sums = 51bd92d2ef7acf6777c4ad48c8fa7cb3
+
+pkgname = opensees
+
