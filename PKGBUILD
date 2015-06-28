@@ -22,9 +22,9 @@ optdepends=('bitcoin-daemon: Connect to BitCoin network')
 install=
 source=("run-armory.sh" "http://github.com/etotheipi/BitcoinArmory/archive/v$_pkgver.tar.gz" 
 "armory.desktop")
-sha256sums=('baa1d335273af1f1f4d12dd68f066035e5b4485b215172690c307877ac62168c'
-            '0efcf179a4ea0c2e8f873378d5f171efefe720cb91ba2208223871bc1b83ac71'
-            '9625e81c0d914176689ce40779e5b49376dc85efb84827ef4b006920d5726680')
+sha512sums=('385a035f4b24559f199b5ab59d16a94285c5a486129c1493a445b6d266c9dff85253bef439c4d615e1b3326f5224bda84b47dc9bb2b355125d9fd1ac4a1a49c9'
+            '0e1428302f82649cfd7ee1c06ca4700d70ae6ca79baf808e45cd788de3638f544c568d32318e6d42ea5d521322653f80a514576eeb7748cde1bfc58b1317452e'
+            '95801e8d471225e45b3c77e11cb002fd433254914c64120ca9222f9bcb9d8dbef1f10f3cd6e41015a8f0541cd2b3453627a1865216e84f5848698bf5c31ed70a')
 
 build() {
     cd $srcdir/BitcoinArmory-$_pkgver/
