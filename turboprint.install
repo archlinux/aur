@@ -1,0 +1,37 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+# arg 1:  the new package version
+post_install() {
+  if [ -x /usr/bin/update-desktop-database ]; then /usr/bin/update-desktop-database -q; fi
+  if [ -x /usr/bin/kbuildsycoca4 ]; then /usr/bin/kbuildsycoca4 &>/dev/null; fi
+  echo "TurboPrint 30 day trial version has been installed."
+  echo
+  echo "If you have a TurboPrint key for the full version, you may install it as root:"
+  echo "  # tpsetup --install turboprint.tpkey"
+  echo
+  echo "To set up printers in TurboPrint, run tpsetup or xptsetup as root."
+  echo
+  echo "To configure your system to start TurboPrint automatically:"
+  echo "1. Run the following command as root: systemctl enable tprintdaemon"
+  echo "2. Run the following command as root: systemctl start tprintdaemon"
+  echo
+  echo "Additional steps for each user:"
+  echo "1. Run /usr/share/turboprint/lib/pipeutility to create /var/spool/turboprint/USERNAME"
+  echo "2. Run /usr/lib/turboprint/95turboprint_monitor to create .desktop startup entries"
+  echo "3. Log out and log back in"
+  echo
+  echo "For additional information, see the TurboPrint documentation located at"
+  echo "/usr/share/turboprint/doc."
+}
+
+# arg 1:  the old package version
+post_remove() {
+  if [ -x /usr/bin/update-desktop-database ]; then /usr/bin/update-desktop-database -q; fi
+  if [ -x /usr/bin/kbuildsycoca4 ]; then /usr/bin/kbuildsycoca4 &>/dev/null; fi
+}
+
+# vim:set ts=2 sw=2 et:

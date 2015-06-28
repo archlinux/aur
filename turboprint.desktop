@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=turboprint
+Icon=tpicon.png
+StartupNotify=true
+Comment=Setup & configure TurboPrint printers
+Terminal=0
+Name=TurboPrint Control
+Categories=System;Settings;

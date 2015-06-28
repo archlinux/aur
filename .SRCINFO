@@ -1,0 +1,30 @@
+pkgbase = turboprint
+	pkgdesc = High-quality printer driver system for Linux
+	pkgver = 2.36
+	pkgrel = 1
+	url = http://www.turboprint.info/
+	install = turboprint.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = pacman>=4.2
+	depends = cups
+	depends = ghostscript
+	optdepends = gimp: For GIMP plugin
+	optdepends = kdelibs: For KDE applet
+	optdepends = gnome-panel-bonobo: For GNOME applet
+	optdepends = libgnomeui: For GNOME applet
+	optdepends = firefox: For browsing help
+	source = turboprint.desktop
+	source = turboprint-monitor.desktop
+	source = tprintdaemon.service
+	md5sums = e3c504b2c1b7deb01d03fde710b117d7
+	md5sums = 60a1754b2abd30e75e51acd9576cda43
+	md5sums = 4965b03fdb3c57282f74b0d79a66c6ef
+	source_i686 = http://www.turboprint.info/tp2/turboprint-2.36-1.i586.tgz
+	md5sums_i686 = 1660c78094a80fa1693b15e4b003c3bb
+	source_x86_64 = http://www.turboprint.info/tp2/turboprint-2.36-1.x86_64.tgz
+	md5sums_x86_64 = 0376d2d028529fb04c94c7288f51e2cb
+
+pkgname = turboprint
+

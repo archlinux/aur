@@ -1,0 +1,10 @@
+[Unit]
+Description=TurboPrintDaemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tprintdaemon
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

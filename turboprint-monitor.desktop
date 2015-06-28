@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=turboprint-monitor
+Icon=tpmonitor.png
+StartupNotify=false
+Comment=Monitor TurboPrint printers
+Terminal=0
+Name=TurboPrint Monitor
+Categories=System;Settings;
