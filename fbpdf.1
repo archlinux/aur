@@ -1,0 +1,84 @@
+.TH FBPDF 1 "JUNE 2012"
+.SH NAME
+fbpdf \- framebuffer PDF viewer
+.SH SYNOPSIS
+.B fbpdf
+.RI [ options ] " filename"
+.SH DESCRIPTION
+.B fbpdf
+is a small framebuffer PDF viewer which uses the MuPDF
+backend. \fBfbpdf\fP brings high-quality PDF viewing to the
+console with vim keyboard shortcuts.
+.SH OPTIONS
+.IP "\fB\-r\fP [\fI0-9\fP]"
+Rotate specified number of degrees
+.IP "\fB\-z\fP [\fI0-9\fP]"
+Zoom by a multiple of ten
+.IP "\fB\-p\fP [\fI0-9\fP]"
+Go to specified page
+.SH KEY BINDINGS
+.TP 
+.B h
+Scroll to the left
+.TP
+.B l
+Scroll to the right
+.TP
+.B j
+Scroll down
+.TP
+.B k
+Scroll up
+.TP
+.B ^d
+Scroll half a page down
+.IP \fB^u\fP\ |\ \fBBackspace\fP
+Scroll half a page up
+.TP
+.B ^f
+Go to next page
+.TP
+.B ^b
+Go to previous page
+.TP
+.B H
+Go to the top/current column of page
+.TP
+.B M
+Go to the middle/current column of page
+.TP
+.B L
+Go to the bottom/current column of page
+.IP [\fI0-9\fP]+\fBJ\fP
+Go forward by specified number of pages, default one
+.IP [\fI0-9\fP]+\fBK\fP
+Go backward by specified number of pages, default one
+.IP [\fI0-9\fP]+\fBG\fP
+Go to specified page, default to the end
+.IP \fBm\fP+[\fIa-z\fP]
+Mark page for snap back.
+.IP \fB'\fP+[\fIa-z\fP]
+Pop back to marked page.
+.IP \fB`\fP+[\fIa-z\fP]
+Pop back to marked page and position.
+.IP [\fI0-9\fP]+\fBr\fP
+Rotate specified number of degrees
+.IP [\fI0-9\fP]+\fBz\fP
+Zoom by a multiple of ten
+.TP
+.B ^[
+Clear numerical prefix
+.TP
+.B i
+Display file information
+.TP
+.B e
+Reload file
+.TP
+.B ^l
+Redraw screen
+.TP
+.B q
+Quit program
+.SH AUTHOR
+Ali Gholami Rudi <aligrudi at gmail dot com>
