@@ -1,0 +1,23 @@
+pkgbase = mod_perl
+	pkgdesc = Apache module that embeds the Perl interpreter within the server
+	pkgver = 2.0.9
+	pkgrel = 3
+	url = http://perl.apache.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = perl<5.22
+	depends = apache
+	depends = db
+	depends = apr-util
+	depends = perl-linux-pid
+	options = !emptydirs
+	source = http://apache.org/dist/perl/mod_perl-2.0.9.tar.gz
+	source = http://apache.org/dist/perl/mod_perl-2.0.9.tar.gz.asc
+	source = undefined_symbol.patch::http://pkgs.fedoraproject.org/cgit/mod_perl.git/plain/mod_perl-2.0.4-inline.patch?h=f22
+	sha256sums = 0260f26ab771c1c95fadc67544b3400e420bb30b8a77565d2d02ad05498ef52b
+	sha256sums = SKIP
+	sha256sums = 08cd008e25d3eee44f477c744f50e574e2cb9853556d268ba06e8b3cb33341e4
+
+pkgname = mod_perl
+
