@@ -1,0 +1,46 @@
+pkgbase = ros-indigo-robot-localization
+	pkgdesc = ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://ros.org/wiki/robot_localization
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf2-ros
+	makedepends = ros-indigo-geographic-msgs
+	makedepends = ros-indigo-diagnostic-updater
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-diagnostic-msgs
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf2-geometry-msgs
+	makedepends = ros-indigo-nav-msgs
+	makedepends = ros-indigo-tf2
+	makedepends = eigen3
+	depends = ros-indigo-tf2-ros
+	depends = ros-indigo-geographic-msgs
+	depends = ros-indigo-diagnostic-updater
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-diagnostic-msgs
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-cmake-modules
+	depends = ros-indigo-tf2-geometry-msgs
+	depends = ros-indigo-nav-msgs
+	depends = ros-indigo-tf2
+	depends = eigen3
+	source = robot_localization::git+https://github.com/cra-ros-pkg/robot_localization-release.git#tag=release/indigo/robot_localization/2.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-robot-localization
+
