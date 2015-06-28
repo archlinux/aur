@@ -1,0 +1,18 @@
+pkgbase = nthash-git
+	pkgdesc = Generate NT Hash - git checkout
+	pkgver = 0.1.5.r0.g14083ae
+	pkgrel = 1
+	url = https://github.com/eworm-de/nthash
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = markdown
+	depends = nettle
+	provides = nthash
+	conflicts = nthash
+	source = git://github.com/eworm-de/nthash.git
+	sha256sums = SKIP
+
+pkgname = nthash-git
+
