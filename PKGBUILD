@@ -5,7 +5,6 @@ pkgver=0.r250.3d7ca84
 pkgrel=3
 pkgdesc="A small linux framebuffer virtual terminal."
 arch=('i686' 'x86_64')
-#url="http://litcave.rudi.ir/"
 url="http://repo.or.cz/w/fbpad.git"
 license=('custom:BSD')
 groups=()
@@ -18,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=$pkgname.install
-source=($pkgname::git://repo.or.cz/fbpad.git
+source=("$pkgname::git://repo.or.cz/fbpad.git"
         'config.h'
         'fbpad-256.info'
         'LICENSE')
@@ -54,20 +53,16 @@ build() {
 
 package() {
   cd $srcdir/$pkgname
-
-  install -Dm755 $srcdir/$pkgname/fbpad  $pkgdir/usr/bin/fbpad
+  install -Dm755 $srcdir/$pkgname/fbpad $pkgdir/usr/bin/fbpad
   install -Dm644 $srcdir/$pkgname/README $pkgdir/usr/share/doc/$pkgname/README
-  install -Dm644 $srcdir/LICENSE         $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
+  install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   ## Compile terminfo
-  mkdir -p  $pkgdir/usr/share/terminfo
-  tic -x -o $pkgdir/usr/share/terminfo   $srcdir/fbpad-256.info
-
+  mkdir -p $pkgdir/usr/share/terminfo
+  tic -x -o $pkgdir/usr/share/terminfo $srcdir/fbpad-256.info
   ## Setup fonts
-  ft2tf /usr/share/fonts/TTF/DejaVuSansMono.ttf:6         >$srcdir/font.ttf
+  ft2tf /usr/share/fonts/TTF/DejaVuSansMono.ttf:6 >$srcdir/font.ttf
   ft2tf /usr/share/fonts/TTF/DejaVuSansMono-Oblique.ttf:6 >$srcdir/fonti.ttf
-  ft2tf /usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf:6    >$srcdir/fontb.ttf
-
+  ft2tf /usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf:6 >$srcdir/fontb.ttf
   ## Install fonts
   install -Dm644 $srcdir/font.ttf  $pkgdir/usr/share/$pkgname/font.ttf
   install -Dm644 $srcdir/fonti.ttf $pkgdir/usr/share/$pkgname/fonti.ttf
