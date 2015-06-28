@@ -1,7 +1,7 @@
 pkgbase = python2-oslo-messaging-kilo
 	pkgdesc = Oslo Messaging API
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/oslo.messaging/
 	arch = any
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = python2-oslo-messaging-kilo
 	depends = python2-eventlet>=0.13.0
 	depends = python2-iso8601>=0.1.9
 	depends = python2-kombu>=2.4.8
-	depends = python2-oslo-config>=1.2.0
+	depends = python2-oslo-config-kilo
 	depends = python2-six>=1.6.0
 	depends = python2-stevedore-kilo
 	depends = python2-yaml>=3.1.0

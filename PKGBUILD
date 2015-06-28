@@ -3,7 +3,7 @@
 pkgname="python2-oslo-messaging-kilo"
 _pkgname="oslo.messaging"
 pkgver=1.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Oslo Messaging API"
 arch=("any")
 url="https://pypi.python.org/pypi/oslo.messaging/"
