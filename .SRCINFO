@@ -1,12 +1,13 @@
 pkgbase = python-btrfs-sxbackup
 	pkgdesc = Btrfs snapshot backup utility
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/btrfs-sxbackup
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = btrfs-progs
+	depends = python-setuptools
 	source = http://pypi.python.org/packages/source/b/btrfs-sxbackup/btrfs-sxbackup-0.5.8.tar.gz
 	md5sums = 22688774801bbc651e4440aa23b17607
 
