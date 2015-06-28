@@ -1,0 +1,70 @@
+diff -Naur FreeImage.orig/Source/LibWebP/src/dsp/dsp.upsampling_mips_dsp_r2.c FreeImage/Source/LibWebP/src/dsp/dsp.upsampling_mips_dsp_r2.c
+--- FreeImage.orig/Source/LibWebP/src/dsp/dsp.upsampling_mips_dsp_r2.c	2015-06-28 16:49:39.320546812 +0200
++++ FreeImage/Source/LibWebP/src/dsp/dsp.upsampling_mips_dsp_r2.c	2015-06-28 16:50:14.189740757 +0200
+@@ -21,33 +21,6 @@
+ 
+ #if !defined(WEBP_YUV_USE_TABLE)
+ 
+-#define YUV_TO_RGB(Y, U, V, R, G, B) do {                                      \
+-    const int t1 = kYScale * Y;                                                \
+-    const int t2 = kVToG * V;                                                  \
+-    R = kVToR * V;                                                             \
+-    G = kUToG * U;                                                             \
+-    B = kUToB * U;                                                             \
+-    R = t1 + R;                                                                \
+-    G = t1 - G;                                                                \
+-    B = t1 + B;                                                                \
+-    R = R + kRCst;                                                             \
+-    G = G - t2 + kGCst;                                                        \
+-    B = B + kBCst;                                                             \
+-    __asm__ volatile (                                                         \
+-      "shll_s.w         %["#R"],      %["#R"],        9              \n\t"     \
+-      "shll_s.w         %["#G"],      %["#G"],        9              \n\t"     \
+-      "shll_s.w         %["#B"],      %["#B"],        9              \n\t"     \
+-      "precrqu_s.qb.ph  %["#R"],      %["#R"],        $zero          \n\t"     \
+-      "precrqu_s.qb.ph  %["#G"],      %["#G"],        $zero          \n\t"     \
+-      "precrqu_s.qb.ph  %["#B"],      %["#B"],        $zero          \n\t"     \
+-      "srl              %["#R"],      %["#R"],        24             \n\t"     \
+-      "srl              %["#G"],      %["#G"],        24             \n\t"     \
+-      "srl              %["#B"],      %["#B"],        24             \n\t"     \
+-      : [R]"+r"(R), [G]"+r"(G), [B]"+r"(B)                                     \
+-      :                                                                        \
+-    );                                                                         \
+-  } while (0)
+-
+ static WEBP_INLINE void YuvToRgb(int y, int u, int v, uint8_t* const rgb) {
+   int r, g, b;
+   YUV_TO_RGB(y, u, v, r, g, b);
+diff -Naur FreeImage.orig/Source/LibWebP/src/dsp/dsp.yuv_mips_dsp_r2.c FreeImage/Source/LibWebP/src/dsp/dsp.yuv_mips_dsp_r2.c
+--- FreeImage.orig/Source/LibWebP/src/dsp/dsp.yuv_mips_dsp_r2.c	2015-06-28 16:49:39.320546812 +0200
++++ FreeImage/Source/LibWebP/src/dsp/dsp.yuv_mips_dsp_r2.c	2015-06-28 16:50:59.357137570 +0200
+@@ -35,29 +35,6 @@
+   "addu             %[temp2],   %[temp2],       %[temp3]        \n\t"          \
+   "addu             %[temp4],   %[temp4],       %[t_con_8]      \n\t"          \
+ 
+-#define ROW_FUNC_PART_2(R, G, B, K)                                            \
+-  "addu             %[temp5],   %[temp0],       %[temp1]        \n\t"          \
+-  "subu             %[temp6],   %[temp0],       %[temp2]        \n\t"          \
+-  "addu             %[temp7],   %[temp0],       %[temp4]        \n\t"          \
+-".if "#K"                                                       \n\t"          \
+-  "lbu              %[temp0],   1(%[y])                         \n\t"          \
+-".endif                                                         \n\t"          \
+-  "shll_s.w         %[temp5],   %[temp5],       9               \n\t"          \
+-  "shll_s.w         %[temp6],   %[temp6],       9               \n\t"          \
+-".if "#K"                                                       \n\t"          \
+-  "mul              %[temp0],   %[t_con_5],     %[temp0]        \n\t"          \
+-".endif                                                         \n\t"          \
+-  "shll_s.w         %[temp7],   %[temp7],       9               \n\t"          \
+-  "precrqu_s.qb.ph  %[temp5],   %[temp5],       $zero           \n\t"          \
+-  "precrqu_s.qb.ph  %[temp6],   %[temp6],       $zero           \n\t"          \
+-  "precrqu_s.qb.ph  %[temp7],   %[temp7],       $zero           \n\t"          \
+-  "srl              %[temp5],   %[temp5],       24              \n\t"          \
+-  "srl              %[temp6],   %[temp6],       24              \n\t"          \
+-  "srl              %[temp7],   %[temp7],       24              \n\t"          \
+-  "sb               %[temp5],   "#R"(%[dst])                    \n\t"          \
+-  "sb               %[temp6],   "#G"(%[dst])                    \n\t"          \
+-  "sb               %[temp7],   "#B"(%[dst])                    \n\t"          \
+-
+ #define ASM_CLOBBER_LIST()                                                     \
+   : [temp0]"=&r"(temp0), [temp1]"=&r"(temp1), [temp2]"=&r"(temp2),             \
+     [temp3]"=&r"(temp3), [temp4]"=&r"(temp4), [temp5]"=&r"(temp5),             \

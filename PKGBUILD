@@ -8,15 +8,23 @@
 
 pkgname=lib32-freeimage
 pkgver=3.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('x86_64')
 license=('GPL' 'custom:FIPL')
 url="http://freeimage.sourceforge.net"
 depends=('freeimage' 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
-source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
-sha1sums=('6752c83798c2f81dee71a2e8bb11657068672669')
+source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip"
+        'gcc5.patch')
+sha1sums=('6752c83798c2f81dee71a2e8bb11657068672669'
+	  'cd4342306e55b86947ae5872495abf675edefd73')
+
+prepare()
+{
+  cd FreeImage
+  patch -p1 -i ../gcc5.patch
+}
 
 build()
 {
