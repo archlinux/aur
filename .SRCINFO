@@ -1,6 +1,6 @@
 pkgbase = php7
-	pkgver = 7.0.0alpha1
-	pkgrel = 3
+	pkgver = 7.0.0alpha2
+	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = php7
 	makedepends = db
 	makedepends = gmp
 	makedepends = systemd
-	source = https://downloads.php.net/~ab/php-7.0.0alpha1.tar.xz
+	source = https://downloads.php.net/~ab/php-7.0.0alpha2.tar.xz
 	source = php.ini.patch
 	source = apache.conf
 	source = php-fpm.service

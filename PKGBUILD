@@ -19,8 +19,8 @@ pkgname=('php7'
          'php7-tidy'
          'php7-xsl')
 
-pkgver=7.0.0alpha1
-pkgrel=3
+pkgver=7.0.0alpha2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
