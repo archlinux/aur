@@ -1,0 +1,14 @@
+pkgbase = fbvis-git
+	pkgdesc = A small framebuffer image viewer, it does not use external libraries.
+	pkgver = 0.r13.2284d60
+	pkgrel = 1
+	url = http://repo.or.cz/w/fbvis.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	source = fbvis-git::git+git://repo.or.cz/fbvis.git
+	md5sums = SKIP
+
+pkgname = fbvis-git
+
