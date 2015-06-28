@@ -1,0 +1,21 @@
+pkgbase = terminol-git
+	pkgdesc = A simple terminal emulator.
+	pkgver = 20150423.c86a7cd
+	pkgrel = 1
+	url = https://github.com/bagnose/terminol
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pango
+	depends = xcb-util
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = libxkbcommon
+	provides = terminol-git
+	conflicts = terminol-git
+	source = terminol-git::git+https://github.com/bagnose/terminol.git
+	md5sums = SKIP
+
+pkgname = terminol-git
+
