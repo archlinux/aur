@@ -1,0 +1,12 @@
+diff -rup luxrender-lux-d0b0e20c47cc/cmake/Dependencies.cmake luxrender-lux-d0b0e20c47cc.new/cmake/Dependencies.cmake
+--- luxrender-lux-d0b0e20c47cc/cmake/Dependencies.cmake	2013-11-04 22:25:45.000000000 +0100
++++ luxrender-lux-d0b0e20c47cc.new/cmake/Dependencies.cmake	2013-12-05 19:43:23.414625854 +0100
+@@ -156,7 +156,7 @@ IF(MSVC AND BOOST_python_LIBRARYDIR)
+ 	SET(BOOST_LIBRARYDIR "${BOOST_python_LIBRARYDIR}")
+ ENDIF(MSVC AND BOOST_python_LIBRARYDIR)
+ 
+-FIND_PACKAGE(Boost ${Boost_MINIMUM_VERSION} COMPONENTS python REQUIRED)
++FIND_PACKAGE(Boost ${Boost_MINIMUM_VERSION} COMPONENTS python3 REQUIRED)
+ 
+ IF(MSVC AND BOOST_python_LIBRARYDIR)
+ 	SET(BOOST_LIBRARYDIR "${_boost_libdir}")
