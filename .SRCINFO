@@ -1,7 +1,7 @@
 pkgbase = horizon-kilo
 	pkgdesc = Openstack dashboard
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.launchpad.net/horizon/
 	install = horizon.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = horizon-kilo
 	depends = python2-kombu>=2.5.0
 	depends = python2-netaddr>=0.7.12
 	depends = python2-oslo-concurrency-kilo
-	depends = python2-oslo-config>=1.9.3
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-i18n-kilo
 	depends = python2-oslo-serialization-kilo
 	depends = python2-oslo-utils-kilo

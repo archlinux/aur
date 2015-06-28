@@ -2,7 +2,7 @@
 
 pkgname="horizon-kilo"
 pkgver=2015.1.0
-pkgrel=1
+pkgrel=2
 install=horizon.install
 pkgdesc="Openstack dashboard"
 arch=("i686" "x86_64")
@@ -24,7 +24,7 @@ depends=('python2-pbr>=0.6'
          'python2-kombu>=2.5.0'
          'python2-netaddr>=0.7.12'
          'python2-oslo-concurrency-kilo'
-         'python2-oslo-config>=1.9.3'
+         'python2-oslo-config-kilo'
          'python2-oslo-i18n-kilo'
          'python2-oslo-serialization-kilo'
          'python2-oslo-utils-kilo'
