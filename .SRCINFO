@@ -1,0 +1,24 @@
+pkgbase = emacspeak-git
+	pkgdesc = Emacs extension that provides spoken output
+	pkgver = r10930.29aded1
+	pkgrel = 1
+	url = http://emacspeak.sourceforge.net/
+	install = emacspeak-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = git
+	depends = emacs
+	depends = tcl>=8.6
+	depends = tcl<8.7
+	depends = tclx
+	depends = espeak
+	optdepends = eflite: software speech via the FLite TTS engine
+	provides = emacspeak
+	conflicts = emacspeak
+	source = emacspeak-git::git://github.com/tvraman/emacspeak.git
+	md5sums = SKIP
+
+pkgname = emacspeak-git
+
