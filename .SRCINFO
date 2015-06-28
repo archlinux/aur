@@ -1,0 +1,15 @@
+pkgbase = newsqueak
+	pkgdesc = A Unix implementation of Newsqueak.
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.herpolhode.com/rob/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.herpolhode.com/rob/newsqueak.tar.gz
+	md5sums = 3562d4a1a55cc7984c5b1559155c2322
+	sha1sums = 085cc8248be5b6145f57b8517e0f22469e5047c1
+	sha256sums = 875552bc8fcca2606b3c617a7bc298ecbb2529d42f28a16ced544b66be98d72f
+
+pkgname = newsqueak
+
