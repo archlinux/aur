@@ -1,32 +1,31 @@
 # Maintainer: Daniel Sandman <revoltism@gmail.com>
+# Co-Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=pachist-git
+_gitname=pachist
 pkgver=0
 pkgrel=1
 pkgdesc="A small bash program to show the installed package history in Arch Linux."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/Almehdi/pachist"
 license=('GPL3')
 makedepends=('git')
-conflicts=('pachist')
 provides=('pachist')
-source=("$pkgname"::'git+https://github.com/Almehdi/pachist.git#branch=master')
-md5sums=('SKIP')
+conflicts=('pachist')
+source=('git://github.com/Almehdi/pachist.git')
+sha256sums=('SKIP')
 
 pkgver() {
-     cd "$srcdir/$pkgname"
-	 echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-build() {
-     cd "$srcdir/$pkgname"
-     gzip pachist.8
+  cd "${srcdir}/${_gitname}"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-     cd "$srcdir/$pkgname"
-     install -D -m755 pachist "$pkgdir/usr/bin/pachist"
-     install -D -m644 pachist.8.gz "$pkgdir/usr/share/man/man8/pachist.8.gz"
-     install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
-     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "${srcdir}/${_gitname}"
+
+  install -D -m755 pachist -t "${pkgdir}/usr/bin"
+  install -D -m644 pachist.8 -t "${pkgdir}/usr/share/man/man8"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README"
 }
+
+# vim:set ts=2 sw=2 et:
