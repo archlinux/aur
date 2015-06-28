@@ -1,0 +1,15 @@
+pkgbase = foo-wm-git
+	pkgdesc = A minimal window manager that organizes windows in a tree data structure, provides a socket to send commands to.
+	pkgver = 0.r272.a9df24b
+	pkgrel = 3
+	url = https://github.com/mil/foo-wm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	conflicts = foo-wm
+	source = foo-wm-git::git+https://github.com/mil/foo-wm.git
+	md5sums = SKIP
+
+pkgname = foo-wm-git
+
