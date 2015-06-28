@@ -1,0 +1,59 @@
+diff --git a/herrie/src/dbus.c b/herrie/src/dbus.c
+index 640cd6b..b5c63c5 100644
+--- a/herrie/src/dbus.c
++++ b/herrie/src/dbus.c
+@@ -74,6 +74,7 @@ typedef struct {
+ 
+ GMutex *dbus_mtx;
+ static DBusServer *ds = NULL;
++extern GString *str_song;
+ 
+ /**
+  * @brief DBus bus name used by this application.
+@@ -176,6 +177,20 @@ dbus_server_volume_up(DBusServer *self, GError **error)
+ 	return (TRUE);
+ }
+ 
++/**
++ * @brief DBus event to retrieve the currently playing song.
++ */
++static gboolean
++dbus_server_get_song(DBusServer *self, gchar **song, GError **error)
++{
++	gui_lock();
++	/* It is the caller's responsibility to free this. */
++	*song = g_strdup(str_song->str);
++	gui_unlock();
++
++	return (TRUE);
++}
++
+ #include <dbus_binding.h>
+ 
+ /**
+diff --git a/herrie/src/dbus.xml b/herrie/src/dbus.xml
+index 139e6b5..71f2272 100644
+--- a/herrie/src/dbus.xml
++++ b/herrie/src/dbus.xml
+@@ -7,5 +7,8 @@
+ 		<method name="stop"/>
+ 		<method name="volumeDown"/>
+ 		<method name="volumeUp"/>
++		<method name="getSong">
++			<arg type="s" name="song" direction="out"/>
++		</method>
+ 	</interface>
+ </node>
+diff --git a/herrie/src/gui_playq.c b/herrie/src/gui_playq.c
+index 4f1a43c..4c6ed84 100644
+--- a/herrie/src/gui_playq.c
++++ b/herrie/src/gui_playq.c
+@@ -51,7 +51,7 @@ static const char *str_status = NULL;
+  * @brief Buffer containing a string representation of the artist and
+  *        title of the current song.
+  */
+-static GString *str_song;
++GString *str_song;
+ /**
+  * @brief Window object of the status bar at the top of the screen.
+  */
