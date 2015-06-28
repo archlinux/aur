@@ -1,0 +1,24 @@
+pkgbase = parmetis3
+	pkgdesc = A parallel graph partitioning library
+	pkgver = 3.2.0
+	pkgrel = 3
+	url = http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openmpi
+	provides = metis4
+	conflicts = metis4
+	source = http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/ParMetis-3.2.0.tar.gz
+	source = cmake.tar.gz
+	source = idxtype.h
+	source = parmetis-idxtype.diff
+	source = metis-idxtype.diff
+	md5sums = d97fea8c8776e1f9340ff90d9992e929
+	md5sums = 40fee35e3718a064948b355324bfb9a4
+	md5sums = d9c5658f5868f747f5d0a5b44d314220
+	md5sums = 3ce21d0b403b702887d6496e0230f744
+	md5sums = 57a76a09ad66b05eb9abe4474c5ac9b3
+
+pkgname = parmetis3
+
