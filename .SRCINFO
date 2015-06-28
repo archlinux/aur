@@ -1,0 +1,18 @@
+pkgbase = photoname
+	pkgdesc = Rename JPEG photo files based on shoot date
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://hub.darcs.net/dino/photoname
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	makedepends = cabal-install
+	depends = gmp
+	depends = libexif
+	options = strip
+	source = http://hackage.haskell.org/package/photoname-3.1/photoname-3.1.tar.gz
+	sha256sums = 37935445c01a19e9a6505b7d660ddf01543af14ddc26eb5d2689fb4bdd778434
+
+pkgname = photoname
+
