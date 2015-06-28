@@ -1,7 +1,7 @@
 pkgbase = neutron-vpnaas-kilo
 	pkgdesc = Neutron VPN as a Service service
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/neutron
 	install = neutron-vpnaas.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = neutron-vpnaas-kilo
 	depends = python2-alembic>=0.7.2
 	depends = python2-six>=1.9.0
 	depends = python2-oslo-concurrency-kilo
-	depends = python2-oslo-config>=1.9.3
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-db-kilo
 	depends = python2-oslo-log-kilo
 	depends = python2-oslo-messaging-kilo

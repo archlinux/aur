@@ -2,7 +2,7 @@
 
 pkgname=neutron-vpnaas-kilo
 pkgver=2015.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Neutron VPN as a Service service"
 arch=(any)
 install=neutron-vpnaas.install
@@ -17,7 +17,7 @@ depends=('python2-pbr>=0.6'
          'python2-alembic>=0.7.2'
          'python2-six>=1.9.0'
          'python2-oslo-concurrency-kilo'
-         'python2-oslo-config>=1.9.3'
+         'python2-oslo-config-kilo'
          'python2-oslo-db-kilo'
          'python2-oslo-log-kilo'
          'python2-oslo-messaging-kilo'
