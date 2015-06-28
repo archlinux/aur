@@ -1,0 +1,15 @@
+pkgbase = 4dtris
+	pkgdesc = A tetris game extended to 4 dimensions
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://launchpad.net/4dtris
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = freeglut
+	depends = sdl_ttf
+	source = http://launchpad.net/4dtris/0.4/0.4.3/+download/4dtris_0.4.3.orig.tar.gz
+	md5sums = 5c473e87ead71d382eee2fbb5bc6d853
+
+pkgname = 4dtris
+
