@@ -1,0 +1,22 @@
+pkgbase = eficas
+	pkgdesc = ASter Command FIle Editor. Editor of Code_Aster's command files.
+	pkgver = 7.4.0
+	pkgrel = 1
+	url = http://www.code-aster.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = desktop-file-utils
+	makedepends = gcc-fortran
+	depends = python2
+	depends = python2-pyqt
+	depends = python2-numpy
+	source = http://www.code-aster.org/FICHIERS/aster-full-src-11.6.0-1.noarch.tar.gz
+	source = eficas.png
+	source = eficas.desktop
+	md5sums = e48db35defbb1e431b8a686b856f4596
+	md5sums = 246438dfb94a62aff24fcd7b05f5a7d7
+	md5sums = 0315674d3dd04af7f2125576d651a94b
+
+pkgname = eficas
+
