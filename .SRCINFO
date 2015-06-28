@@ -1,0 +1,17 @@
+pkgbase = quantlib-git
+	pkgdesc = A free/open-source library for quantitative finance.
+	pkgver = 20130919
+	pkgrel = 1
+	url = http://quantlib.org
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = BSD
+	makedepends = git
+	depends = boost
+	depends = boost-libs
+	provides = quantlib
+	conflicts = quantlib
+
+pkgname = quantlib-git
+
