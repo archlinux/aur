@@ -1,0 +1,20 @@
+pkgbase = epic5
+	pkgdesc = Enhanced Programmable ircII Client
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = http://www.epicsol.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libarchive
+	depends = ncurses
+	depends = openssl
+	depends = perl
+	depends = tcl
+	source = http://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/epic5-1.1.10.tar.gz
+	md5sums = fe7b72a3bb2f2ac1dd388e646aec422a
+	sha1sums = 779d92be3b987f43d034324601138633394c254f
+	sha256sums = a21e36de45962ec6dab241b0148cb0275b670083d2aaacfa9e694026b8256b59
+
+pkgname = epic5
+
