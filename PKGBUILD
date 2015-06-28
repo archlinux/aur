@@ -1,6 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=opencollada
 pkgver=20140108
+_commit=f99d59e73e56
 pkgrel=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
@@ -9,7 +10,7 @@ license=('GPL')
 depends=('libxml2' 'pcre')
 makedepends=('git' 'cmake')
 source=('opencollada.conf'
-        'git://github.com/KhronosGroup/OpenCOLLADA.git')
+        "git://github.com/KhronosGroup/OpenCOLLADA.git#commit=$_commit")
 md5sums=('5f7e9d79ab86756648b648ee5ed6ce1d'
          'SKIP')
 
