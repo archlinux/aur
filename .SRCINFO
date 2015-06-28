@@ -1,0 +1,15 @@
+pkgbase = ref2bib
+	pkgdesc = Convert refer databases to bibtex files.
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://litcave.rudi.ir/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	optdepends = texlive-bin
+	optdepends = neatrefer
+	source = http://litcave.rudi.ir/ref2bib-0.1.tar.gz
+	md5sums = e9341ce75c0f9aa3ca6f11166879d367
+
+pkgname = ref2bib
+
