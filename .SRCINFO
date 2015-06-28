@@ -1,0 +1,14 @@
+pkgbase = xcursor-entis
+	pkgdesc = Entis cursor theme
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.entis-design.com/cursors/
+	arch = any
+	license = GPL
+	makedepends = p7zip
+	depends = libxcursor
+	source = http://www.entis-design.com/data/entis_cursors_x11_others.7z
+	sha256sums = 72c0f02aaf2892d5e2edcf32fbea6455566050a0e9927d75580f0c3cfd804c5f
+
+pkgname = xcursor-entis
+
