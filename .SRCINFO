@@ -1,0 +1,23 @@
+pkgbase = mkinitcpio-ykfde
+	pkgdesc = Full disk encryption with Yubikey (Yubico key)
+	pkgver = 0.5.2
+	pkgrel = 2
+	url = https://github.com/eworm-de/mkinitcpio-ykfde
+	install = mkinitcpio-ykfde.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	depends = yubikey-personalization
+	depends = cryptsetup
+	depends = iniparser
+	depends = libarchive
+	conflicts = mkinitcpio-ykfde-git
+	backup = etc/ykfde.conf
+	source = http://www.eworm.de/download/mkinitcpio-ykfde/mkinitcpio-ykfde-0.5.2.tar.xz
+	source = http://www.eworm.de/download/mkinitcpio-ykfde/mkinitcpio-ykfde-0.5.2.tar.xz.asc
+	sha256sums = 8bb8519a19dcdb7ac1c11eeecd7e5ff2685b509083701a1b928f857ae70a20ac
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-ykfde
+
