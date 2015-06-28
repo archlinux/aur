@@ -1,0 +1,22 @@
+pkgbase = cplay-git
+	pkgdesc = A curses front-end for various audio players.
+	pkgver = 1.50pre7.r9.g5d3556b
+	pkgrel = 1
+	url = https://github.com/holizz/cplay
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = ncurses
+	depends = python2
+	optdepends = mpg321
+	optdepends = mpg123
+	optdepends = vorbis-tools
+	optdepends = speex
+	conflicts = cplay
+	backup = etc/cplayrc
+	source = cplay-git::git+https://github.com/holizz/cplay.git
+	md5sums = SKIP
+
+pkgname = cplay-git
+
