@@ -1,0 +1,10 @@
+[mysql-proxy]
+
+# address and port to listen on
+proxy-address = localhost:4040
+
+# address and port to connect to
+proxy-backend-addresses = localhost:3306
+
+# log to syslog
+log-use-syslog = true

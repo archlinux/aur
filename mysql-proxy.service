@@ -1,0 +1,10 @@
+[Unit]
+Description=MySQL proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mysql-proxy --defaults-file=/etc/mysql/proxy.cnf
+
+[Install]
+WantedBy=multi-user.target

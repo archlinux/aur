@@ -1,0 +1,24 @@
+pkgbase = mysql-proxy
+	pkgdesc = Monitors, analyzes and transformations communication between the MySQL client and server
+	pkgver = 0.8.5
+	pkgrel = 4
+	url = http://dev.mysql.com/downloads/mysql-proxy/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libmysqlclient
+	depends = lua51
+	depends = glib2
+	depends = libevent
+	backup = etc/mysql/proxy.cnf
+	source = http://dev.mysql.com/get/Downloads/MySQL-Proxy/mysql-proxy-0.8.5.tar.gz
+	source = mysql-proxy-0.8.5.tar.gz.asc
+	source = mysql-proxy.service
+	source = proxy.cnf
+	sha256sums = e5bac3df8bca2eed41cdbf09439264b34c77339cfe1eda506b0d76eaa2d2b2d5
+	sha256sums = SKIP
+	sha256sums = c3fa54b83b3c2dd6c50a7f86286c88c51a061c8497640c0199fd61f3ce506f50
+	sha256sums = 95170a086c5da94c8b1362fd5cd1ad3c9e75abe950faed362d0bd3710894ac94
+
+pkgname = mysql-proxy
+
