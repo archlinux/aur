@@ -1,0 +1,29 @@
+pkgbase = hed-git
+	pkgdesc = Fast hexadecimal editor
+	pkgver = 0.5.r486.g44165a6
+	pkgrel = 1
+	url = http://repo.or.cz/w/hed.git
+	install = echo.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = hed-git::git://repo.or.cz/hed.git
+	source = config.h
+	source = libhed_config.h
+	source = term.c
+	md5sums = SKIP
+	md5sums = 4ffceab7d450a05725620726d2221764
+	md5sums = 6d028b0e51a8db5e4559336e65819729
+	md5sums = 9b9a96aaf02d2105017fd6346e293ff8
+	sha1sums = SKIP
+	sha1sums = e5a1eea38f3bc86fa97d76cf0d844d5a22cef0cb
+	sha1sums = b56277f1e2234933738c7ff753bdb01e13b879ab
+	sha1sums = 961239d4f14a932fd00bc0f923d5ce2daf396ec6
+	sha256sums = SKIP
+	sha256sums = bc228fce426d79a69d5a6e7ae937e0e9d0d934afaf4ea712bf6a19d00a5deac4
+	sha256sums = 59125dbeb12e94a2c527eb77c2eebaca684c80c4d9e1ffae8f90aff7b4622386
+	sha256sums = 8e1d29f12e8582c55c43e28c85b585e4076a88f78aab37d8f6713b9d64e1206b
+
+pkgname = hed-git
+
