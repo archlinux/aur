@@ -1,0 +1,136 @@
+--- cpudetect.c
++++ cpudetect.c
+@@ -1,14 +1,7 @@
+ //----------------------------------------------------------------------------
+-#include <intrin.h>
++#include <stdint.h>
+ #include "cpudetect.h"
+ 
+-#if !defined (uint32_t)
+-   typedef unsigned __int8  uint8_t;
+-   typedef          __int32 int32_t;
+-   typedef unsigned __int64 uint64_t;
+-   typedef unsigned __int32 uint32_t;
+-#endif
+-
+ //----------------------------------------------------------------------------
+ 
+ #if defined (__GNUC__) && !defined (_xgetbv)
+--- ppsearch.c
++++ ppsearch.c
+@@ -59,7 +59,9 @@
+ //
+ 
+ #include <stdio.h>
+-#include <io.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
+ #include <string.h>
+ #include <time.h>
+ #include <math.h>
+@@ -75,7 +77,6 @@
+ 
+ #if defined __GNUC__ // gcc compiler
+    #include <stdint.h>
+-   #include <intrin.h>
+    #include <immintrin.h>
+ 
+     static int _bsr64(uint64_t data) {
+@@ -1011,7 +1013,7 @@
+    divisorList->count = 0;
+    divisorList->divisor = 0;
+ 
+-   sprintf (filename, "factor2n-1/%u.txt", polynomialDegree);
++   sprintf (filename, "/usr/share/ppsearch/factor2n-1/%u.txt", polynomialDegree);
+    fp = fopen (filename, "r");
+    if (!fp)
+       {
+@@ -1970,10 +1972,10 @@
+       {
+       char *position = argv [argc];
+       
+-      if (strnicmp (position, "search=", 7) == 0)
++      if (strncasecmp (position, "search=", 7) == 0)
+          targetCount = atoi (position + 7);
+       
+-      else if (strnicmp (position, "poly=x", 6) == 0)
++      else if (strncasecmp (position, "poly=x", 6) == 0)
+          {
+          int degree;
+          polynomial = IntegerZero;
+@@ -2023,7 +2025,7 @@
+          }
+       
+       // this polynomial entry mode handles only polynomials
+-      else if (strnicmp (position, "poly=", 5) == 0)
++      else if (strncasecmp (position, "poly=", 5) == 0)
+          {
+          int degree;
+          scanDigits (position + 5, &polynomial, 0);
+@@ -2035,41 +2037,41 @@
+                logError ("bits= conflicts with poly=x^...\n");
+          }
+       
+-      else if (stricmp (position, "verbose") == 0)
++      else if (strcasecmp (position, "verbose") == 0)
+          verbose++;
+       
+-      else if (stricmp (position, "loop") == 0)
++      else if (strcasecmp (position, "loop") == 0)
+          loopMode = 1;
+       
+-      else if (strnicmp (position, "maxbits=", 8) == 0)
++      else if (strncasecmp (position, "maxbits=", 8) == 0)
+          maxbits = strtoul (position + 8, NULL, 10);
+       
+-      else if (stricmp (position, "binary") == 0)
++      else if (strcasecmp (position, "binary") == 0)
+          displayMode = 'b';
+       
+-      else if (stricmp (position, "octal") == 0)
++      else if (strcasecmp (position, "octal") == 0)
+          displayMode = 'o';
+       
+-      else if (stricmp (position, "hex") == 0)
++      else if (strcasecmp (position, "hex") == 0)
+          displayMode = 'h';
+ 
+-      else if (stricmp (position, "latex") == 0)
++      else if (strcasecmp (position, "latex") == 0)
+          displayMode = 'l';
+       
+-      else if (strnicmp (position, "weight=", 7) == 0)
++      else if (strncasecmp (position, "weight=", 7) == 0)
+          {
+          polynomialWeight = atol (position + 7);
+          if (polynomialWeight < 3) logError ("minumum weight is 3");
+          if (polynomialWeight % 2 != 1) logError ("weight must be odd, otherwise a factor of x+1 will be present");
+          }
+       
+-      else if (strnicmp (position, "bits=", 5) == 0)
++      else if (strncasecmp (position, "bits=", 5) == 0)
+          polynomialDegree = atol (position + 5);
+             
+-      else if (stricmp (position, "testprimitivity") == 0)
++      else if (strcasecmp (position, "testprimitivity") == 0)
+          testPrimitivity = 1;
+             
+-      else if (strnicmp (position, "bma=", 4) == 0)
++      else if (strncasecmp (position, "bma=", 4) == 0)
+          {
+          int bitno = 0;
+ 
+@@ -2097,7 +2099,11 @@
+ 
+          stream = fopen (position + 1, "r");
+          if (!stream) logError ("failed to open response file \"%s\"", position + 1);
+-         mallocSize = _filelength (fileno (stream)) + 3;
++         {
++             struct stat buf;
++             if (fstat(fileno (stream), &buf)) logError ("failed to open response file \"%s\"", position + 1);
++             mallocSize = buf.st_size + 3;
++         }
+          buffer = malloc (mallocSize);
+          if (!buffer) logError ("out of memory");
+          stream = fopen (position + 1, "r");
