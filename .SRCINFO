@@ -1,0 +1,17 @@
+pkgbase = unco-git
+	pkgdesc = Undo any command.
+	pkgver = 0.2.0.4.g1f7d412
+	pkgrel = 1
+	url = https://github.com/kazuho/unco
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = unco
+	conflicts = unco
+	source = unco-git::git+https://github.com/kazuho/unco
+	md5sums = SKIP
+
+pkgname = unco-git
+
