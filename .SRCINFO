@@ -1,0 +1,80 @@
+pkgbase = grub2-git
+	pkgdesc = GNU GRand Unified Bootloader: the ultimate package (git snapshot)
+	pkgver = 2.02+beta2+467+g7a21030
+	pkgrel = 1
+	url = http://gnu.org/software/grub/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = xorriso
+	makedepends = git
+	makedepends = python2
+	makedepends = bdf-unifont
+	source = grub::git://git.savannah.gnu.org/grub.git#branch=master
+	source = grub-extras::git://git.savannah.nongnu.org/grub-extras.git
+	source = archlinux_grub_mkconfig_fixes.patch
+	source = grub-doc.install
+	source = grub-notice.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 729168cd3df5b21cc613bf74a1f923bcf79ad3db99c1eb81e9be31aaf3211891
+	sha256sums = 2723edf8401e45fc85fa94b57273ae5c9cf65d9ec531ddc616f3f3d87643e571
+	sha256sums = 1b0da01d4ad2b9eefb1331f41d4c88f7fd85c7eb10605579f40953248e466b17
+
+pkgname = grub2-x86_64-efi-git
+	pkgdesc = GNU GRand Unified Bootloader: x86-64 EFI modules (git snapshot)
+	provides = 
+	provides = grub2-efi-x86_64
+	provides = grub2-modules
+	provides = grub2-modules-git=2.02+beta2+467+g7a21030
+	conflicts = 
+	conflicts = grub2-efi-x86_64
+
+pkgname = grub2-i386-pc-git
+	pkgdesc = GNU GRand Unified Bootloader: i386 BIOS modules (git snapshot)
+	provides = 
+	provides = grub2-bios
+	provides = grub2-modules
+	provides = grub2-modules-git=2.02+beta2+467+g7a21030
+	conflicts = 
+	conflicts = grub2-bios
+
+pkgname = grub2-i386-efi-git
+	pkgdesc = GNU GRand Unified Bootloader: i386 EFI modules (git snapshot)
+	provides = grub2-efi-i386
+	provides = grub2-modules
+	provides = grub2-modules-git=2.02+beta2+467+g7a21030
+	conflicts = grub2-efi-i386
+
+pkgname = grub2-i386-qemu-git
+	pkgdesc = GNU GRand Unified Bootloader: i386 QEMU ROM modules (git snapshot)
+
+pkgname = grub2-emu-git
+	pkgdesc = GNU GRand Unified Bootloader: emulator (git snapshot)
+	depends = 
+	depends = sdl
+	depends = device-mapper
+	provides = 
+	provides = grub2-emu
+	conflicts = 
+	conflicts = grub-emu
+	conflicts = grub2-emu
+
+pkgname = grub2-common-git
+	pkgdesc = GNU GRand Unified Bootloader: common utilities (git snapshot)
+	install = grub-notice.install
+	depends = 
+	depends = device-mapper
+	optdepends = fuse: for grub-mount
+	optdepends = freetype2: for grub-mkfont
+	optdepends = os-prober: for detecting other OSes in grub-mkconfig
+	optdepends = efibootmgr: for grub-install EFI support
+	provides = grub-common
+	conflicts = grub-common
+	backup = etc/default/grub
+
+pkgname = grub2-doc-git
+	pkgdesc = GNU GRand Unified Bootloader: documentation (git snapshot)
+	install = grub-doc.install
+	arch = any
+

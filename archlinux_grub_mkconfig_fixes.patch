@@ -1,0 +1,131 @@
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+index d1fae49..ab13ca9 100644
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -219,6 +219,8 @@ export GRUB_DEFAULT \
+   GRUB_THEME \
+   GRUB_GFXPAYLOAD_LINUX \
+   GRUB_DISABLE_OS_PROBER \
++  GRUB_COLOR_NORMAL \
++  GRUB_COLOR_HIGHLIGHT \
+   GRUB_INIT_TUNE \
+   GRUB_SAVEDEFAULT \
+   GRUB_ENABLE_CRYPTODISK \
+diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
+index 29ef865..3651f31 100644
+--- a/util/grub-mkconfig_lib.in
++++ b/util/grub-mkconfig_lib.in
+@@ -248,6 +248,10 @@ version_test_gt ()
+     *.old:*.old) ;;
+     *.old:*) version_test_gt_a="`echo "$version_test_gt_a" | sed -e 's/\.old$//'`" ; version_test_gt_cmp=gt ;;
+     *:*.old) version_test_gt_b="`echo "$version_test_gt_b" | sed -e 's/\.old$//'`" ; version_test_gt_cmp=ge ;;
++
++    *-lts:*-lts) ;;
++    *-lts:*) version_test_gt_a="`echo -n "$version_test_gt_a" | sed -e 's/-lts$//'`" ; version_test_gt_cmp=gt ;;
++    *:*-lts) version_test_gt_b="`echo -n "$version_test_gt_b" | sed -e 's/-lts$//'`" ; version_test_gt_cmp=ge ;;
+   esac
+   version_test_numeric "$version_test_gt_a" "$version_test_gt_cmp" "$version_test_gt_b"
+   return "$?"
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index ce2ec81..315fb8d 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -125,6 +125,14 @@ cat <<EOF
+ 
+ EOF
+ 
++if [ x$GRUB_COLOR_NORMAL != x ] && [ x$GRUB_COLOR_HIGHLIGHT != x ] ; then
++    cat << EOF
++set menu_color_normal=$GRUB_COLOR_NORMAL
++set menu_color_highlight=$GRUB_COLOR_HIGHLIGHT
++
++EOF
++fi
++
+ serial=0;
+ gfxterm=0;
+ for x in ${GRUB_TERMINAL_INPUT} ${GRUB_TERMINAL_OUTPUT}; do
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index a2a84dc..73f4cb0 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -81,6 +81,8 @@ linux_entry ()
+       case $type in
+ 	  recovery)
+ 	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
++	  fallback)
++	      title="$(gettext_printf "%s, with Linux %s (Fallback initramfs)" "${os}" "${version}")" ;;
+ 	  *)
+ 	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
+       esac
+@@ -94,7 +96,7 @@ linux_entry ()
+   else
+       echo "menuentry '$(echo "$os" | grub_quote)' ${CLASS} \$menuentry_id_option 'gnulinux-simple-$boot_device_id' {" | sed "s/^/$submenu_indentation/"
+   fi      
+-  if [ x$type != xrecovery ] ; then
++  if [ x$type != xrecovery ] && [ x$type != xfallback ] ; then
+       save_default_entry | grub_add_tab
+   fi
+ 
+@@ -126,7 +128,8 @@ linux_entry ()
+     fi
+     printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
+   fi
+-  message="$(gettext_printf "Loading Linux %s ..." ${version})"
++
++  message="$(gettext_printf "Loading Linux %s ..." "${version}")"
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+@@ -186,7 +189,22 @@ while [ "x$list" != "x" ] ; do
+   alt_version=`echo $version | sed -e "s,\.old$,,g"`
+   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
++  if test -e "/etc/arch-release" ; then
++    if echo "${basename}" | grep -q 'vmlinuz-linux' ; then
++      version="`echo "${basename}" | sed -e 's,vmlinuz-linux,,g'`"
++
++      if [ "x${version}" = "x" ] ; then
++        version="core repo kernel"
++      else
++        version="`echo "${version}" | sed -e 's,-,,g'`"
++        version="${version} kernel"
++      fi
++    fi
++  fi
++
+   initrd=
++  initrd_arch="`echo "${basename}" | sed -e 's,vmlinuz,initramfs,g'`"
++
+   for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
+ 	   "initrd-${version}" "initramfs-${version}.img" \
+ 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+@@ -194,7 +212,8 @@ while [ "x$list" != "x" ] ; do
+ 	   "initramfs-genkernel-${version}" \
+ 	   "initramfs-genkernel-${alt_version}" \
+ 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
+-	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
++	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}" \
++	   "${initrd_arch}.img" ; do
+     if test -e "${dirname}/${i}" ; then
+       initrd="$i"
+       break
+@@ -238,6 +257,18 @@ while [ "x$list" != "x" ] ; do
+ 
+   linux_entry "${OS}" "${version}" advanced \
+               "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++
++  if test -e "/etc/arch-release" ; then
++    for i in "${initrd_arch}-fallback.img" "initramfs-${version}-fallback.img" ; do
++      if test -e "${dirname}/${i}" ; then
++        initrd="${i}"
++        linux_entry "${OS}" "${version}" fallback \
++                    "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++        break
++      fi
++    done
++  fi
++
+   if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
+     linux_entry "${OS}" "${version}" recovery \
+                 "single ${GRUB_CMDLINE_LINUX}"
