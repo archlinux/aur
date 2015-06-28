@@ -1,0 +1,57 @@
+.TH dns_flood_detector 1 "Tuesday, September 2, 2003" "GNU/Linux" ""
+.SH NAME
+dns_flood_detector \- a tool to detect abusive usage levels on high traffic nameservers.
+.SH SYNOPSIS
+
+.B dns_flood_detector
+[-i <IFNAME>] [-t N] [-a N] [-w N] [-x N] [-bdvh]
+
+.SH DESCRIPTION
+.B dns_flood_detector
+was developed to detect abusive usage levels on high traffic nameservers and to enable quick response in halting the use of ones nameserver to facilitate spam. DNS Flood Detector uses libpcap (in non-promiscuous mode) to monitor incoming dns queries to a nameserver. The tool may be run in one of two modes, either daemon mode or "bindsnap" mode. In daemon mode, the tool will alarm via syslog. In bindsnap mode, the user is able to get near-real-time stats on usage to aid in more detailed troubleshooting.
+
+.SH OPTIONS
+.TP
+.I -i <IFNAME> 
+specify ethernet device name to listen on
+.TP
+.I -t N
+alarm at >N queries per second
+.TP
+.I -a N
+reset alarm after N seconds
+.TP
+.I -w N
+calculate stats every N seconds
+.TP
+.I -x N
+create N buckets 
+.TP
+.I -b
+run in foreground in bindsnap mode
+.TP
+.I -d
+run in background in daemon mode
+.TP
+.I -v
+verbose output - use again for more verbosity
+.TP
+.I -h
+display help information
+
+.SH EXAMPLE
+.B /dns_flood_detector -v -v -b -t10
+
+[15:14:56] source [192.168.1.45] - 0 qps tcp : 24 qps udp [8 qps A] [16 qps PTR]
+
+[15:14:56] source [10.0.24.2] - 0 qps tcp : 15 qps udp [15 qps A]
+
+[15:15:06] source [192.168.1.45] - 0 qps tcp : 24 qps udp [8 qps A] [16 qps PTR]
+
+[15:15:06] source [10.0.24.2] - 0 qps tcp : 15 qps udp [14 qps A]
+
+[15:15:16] source [192.168.1.45] - 0 qps tcp : 23 qps udp [7 qps A] [15 qps PTR] 
+.SH AUTHOR
+Dennis Opacki
+.B <dopacki@adotout.com> http://www.adotout.com/dnsflood.html
+

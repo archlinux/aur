@@ -1,0 +1,16 @@
+pkgbase = dnsflood
+	pkgdesc = Detect abusive usage levels on high traffic nameservers and enable quick response
+	pkgver = 1.20
+	pkgrel = 1
+	url = http://www.adotout.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	source = http://www.adotout.com/dnsflood-1.20.tgz
+	source = dns_flood_detector.1
+	md5sums = 0bca7082210d8cb15ece64a661c7330c
+	md5sums = 6f3bd91201bee4755f5bf73e300df099
+
+pkgname = dnsflood
+
