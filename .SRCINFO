@@ -1,0 +1,14 @@
+pkgbase = fbvnc-git
+	pkgdesc = A small framebuffer vnc viewer.
+	pkgver = 0.r40.d1a3369
+	pkgrel = 1
+	url = http://repo.or.cz/w/fbvnc.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	source = fbvnc-git::git+git://repo.or.cz/fbvnc.git
+	md5sums = SKIP
+
+pkgname = fbvnc-git
+
