@@ -1,0 +1,22 @@
+pkgbase = dvd-slideshow
+	pkgdesc = Scripts for creating slideshow DVDs with menus, audio, and fancy effects
+	pkgver = 0.8.4
+	pkgrel = 3
+	url = http://dvd-slideshow.sourceforge.net
+	install = dvd-slideshow.install
+	arch = any
+	license = GPL
+	depends = bc
+	depends = cdrkit
+	depends = dvdauthor
+	depends = jhead
+	depends = netpbm
+	depends = sox
+	depends = toolame
+	depends = transcode
+	depends = vorbis-tools
+	source = http://downloads.sourceforge.net/dvd-slideshow/dvd-slideshow-0.8.4-1.tar.gz
+	sha256sums = 484f71614ab45205f6133829c431b9a631cb0251de9b97993a9361648d0607e7
+
+pkgname = dvd-slideshow
+
