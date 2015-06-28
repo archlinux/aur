@@ -1,0 +1,30 @@
+pkgbase = barnowl
+	pkgdesc = A curses-based client, it supports AOL Instant Messenger, MIT Zephyr, Jabber, IRC, and Twitter.
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://barnowl.mit.edu/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = zip
+	depends = glib-perl
+	depends = perl-authen-sasl
+	depends = perl-digest-sha1
+	depends = perl-io-socket-ssl
+	depends = perl-class-accessor
+	depends = perl-net-dns
+	depends = perl-par
+	depends = perl-json
+	depends = perl-net-twitter-lite
+	depends = perl-text-autoformat
+	depends = perl-anyevent
+	depends = perl-anyevent-irc
+	depends = zephyr
+	conflicts = mit-barnowl
+	source = http://barnowl.mit.edu/dist/barnowl-1.9-src.tgz
+	sha1sums = 5ff6ff46e5945b68a3d5cb2f541558790f984126
+	sha256sums = 7586299c2c2c028afd2a6457c4de3bdd230ae33443fc00097c081c96a3c693d2
+
+pkgname = barnowl
+
