@@ -1,0 +1,20 @@
+pkgbase = journal-notify-git
+	pkgdesc = Notify about journal log entries - git checkout
+	pkgver = 0.0.8.r7.gd187bd3
+	pkgrel = 1
+	url = https://github.com/eworm-de/journal-notify
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = markdown
+	depends = libnotify
+	depends = systemd
+	depends = gnome-icon-theme
+	provides = journal-notify
+	conflicts = journal-notify
+	source = git://github.com/eworm-de/journal-notify.git
+	sha256sums = SKIP
+
+pkgname = journal-notify-git
+
