@@ -1,0 +1,15 @@
+pkgbase = xaric-git
+	pkgdesc = An IRC client similar to ircII, BotchX, or ircII EPIC.
+	pkgver = 20100001
+	pkgrel = 1
+	url = https://github.com/laeos/xaric
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	conflicts = xaric
+	source = xaric-git::git+https://github.com/laeos/xaric.git
+	md5sums = SKIP
+
+pkgname = xaric-git
+
