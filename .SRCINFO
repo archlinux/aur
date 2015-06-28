@@ -1,0 +1,15 @@
+pkgbase = ff-git
+	pkgdesc = Fuzzy-completion for finding files.
+	pkgver = 0.6.r5.ge3b7901
+	pkgrel = 1
+	url = https://github.com/silentbicycle/ff
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	optdepends = emacs: Emacs wrapper for fuzzy-find.
+	source = ff-git::git+https://github.com/silentbicycle/ff
+	md5sums = SKIP
+
+pkgname = ff-git
+
