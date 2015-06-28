@@ -1,0 +1,8 @@
+post_install() {
+	echo ' > Configuration files for apache and lighttpd have been installed'
+	echo ' > with this package.'
+	echo ' > For apache make sure mod_alias and either of mod_fastcgi and'
+	echo ' > mod_fcgid is loaded.'
+	echo ' > For lighttpd just include the config file conf.d/cqrlogo.conf'
+	echo ' > in main configuration.'
+}
