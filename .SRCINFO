@@ -1,0 +1,14 @@
+pkgbase = v6shell-git
+	pkgdesc = V6 Thompson Shell Port
+	pkgver = 20140410.r13.g5698178
+	pkgrel = 1
+	url = https://github.com/JNeitzel/v6shell
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = v6shell-git::git://github.com/JNeitzel/v6shell.git
+	md5sums = SKIP
+
+pkgname = v6shell-git
+
