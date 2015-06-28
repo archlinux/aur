@@ -1,0 +1,24 @@
+pkgbase = librecad-git
+	pkgdesc = A 2D CAD drawing tool based on the community edition of QCad.
+	pkgver = 2.0.6_66_g9b058e0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/librecad/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	depends = boost
+	depends = muparser
+	provides = librecad
+	conflicts = librecad
+	replaces = librecad-svn
+	replaces = caduntu
+	replaces = caduntu-svn
+	source = LibreCAD::git://github.com/LibreCAD/LibreCAD.git
+	source = librecad.desktop
+	md5sums = SKIP
+	md5sums = 19dcb83a3fcdb3752439095b118ac6d3
+
+pkgname = librecad-git
+
