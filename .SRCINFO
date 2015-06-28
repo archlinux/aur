@@ -1,0 +1,21 @@
+pkgbase = py3status-modules
+	pkgdesc = Collection of modules for py3status
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tablet-mode/py3status-modules
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python>=3.2
+	depends = py3status>=1.1
+	optdepends = python-mpd2>=0.4.6: MPD status module
+	optdepends = upower>=0.99.0: battery status module
+	optdepends = python-dbus>=1.2.0: battery status module
+	conflicts = py3status-modules
+	source = https://github.com/tablet-mode/py3status-modules/archive/0.2.0.tar.gz
+	md5sums = cd2355ef8627b567104dba739040b448
+	sha256sums = a4058f805d96898a947b8e470480e12586c09d83c61ed6f11f4adbceb76fae37
+	sha512sums = 4c3fe5416e9654b49064090564e7ee0dcce06d4fd69d644fd35bb945c5dea1d92bc3860096fa05836e5010d9ceeba41cbe1f17b2d75797dceee09aace8f5c7e3
+
+pkgname = py3status-modules
+
