@@ -1,7 +1,7 @@
 pkgbase = keystone-kilo
 	pkgdesc = OpenStack Identity
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/keystone/
 	arch = any
 	license = Apache
@@ -39,7 +39,7 @@ pkgname = python2-keystone-kilo
 	depends = python2-keystoneclient-kilo
 	depends = python2-keystonemiddleware-kilo
 	depends = python2-oslo-concurrency-kilo
-	depends = python2-oslo-config
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-messaging-kilo
 	depends = python2-oslo-db-kilo
 	depends = python2-oslo-i18n-kilo

@@ -3,7 +3,7 @@
 pkgbase=keystone-kilo
 pkgname=('keystone-kilo' 'python2-keystone-kilo')
 pkgver=2015.1.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://launchpad.net/keystone/"
 license=('Apache')
@@ -64,7 +64,7 @@ package_python2-keystone-kilo() {
            'python2-keystoneclient-kilo'
            'python2-keystonemiddleware-kilo'
            'python2-oslo-concurrency-kilo'
-           'python2-oslo-config'
+           'python2-oslo-config-kilo'
            'python2-oslo-messaging-kilo'
            'python2-oslo-db-kilo'
            'python2-oslo-i18n-kilo'
