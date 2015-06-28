@@ -1,0 +1,16 @@
+pkgbase = 9wm
+	pkgdesc = Window manager modeled after Plan 9's 8 1/2
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://woozle.org/neale/src/9wm/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxext
+	depends = libxau
+	depends = libxdmcp
+	source = http://woozle.org/neale/g.cgi/x11/9wm/snapshot/9wm-1.3.1.tar.gz
+	sha256sums = d6dc8daa2d880077e4a6bb535d23d03b51dd7f5aee58315e000c1e739cb01bda
+
+pkgname = 9wm
+
