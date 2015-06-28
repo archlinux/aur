@@ -2,14 +2,14 @@
 
 pkgname=("python2-openstackclient-kilo")
 pkgver="1.0.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Command-Line Client"
 arch=("any")
 url="https://launchpad.net/python-openstackclient"
 depends=("python2-babel>=1.3"
              "python2-cliff-kilo"
              "python2-cliff-tablib>=1.0"
-             "python2-oslo-config>=1.9.3"
+             "python2-oslo-config-kilo"
              "python2-oslo-i18n-kilo"
              "python2-oslo-serialization-kilo"
              "python2-oslo-utils-kilo"
