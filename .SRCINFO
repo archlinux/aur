@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-uuid-msgs
+	pkgdesc = ROS - ROS messages for universally unique identifiers.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://ros.org/wiki/uuid_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	source = uuid_msgs::git+https://github.com/ros-geographic-info/unique_identifier-release.git#tag=release/indigo/uuid_msgs/1.0.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-uuid-msgs
+
