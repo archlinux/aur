@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=(
 options=(!emptydirs)
 source=("http://qutebrowser.org/releases/v$pkgver/qutebrowser-${pkgver}.tar.gz"
         'qutebrowser.install')
-sha256sums=('5bce4602342f2e8c54ca3e1b0c337c1242657d7505923417d295585351498738'
+sha256sums=('01c2cce71813c36a00591a7bd625f4fcf610f91229ce67b712fdf124fde151ec'
             '4a88871e91f894890ce96feb620e4174c686db12e4fa91b5a7306454dc96bf67')
 install=qutebrowser.install
 
