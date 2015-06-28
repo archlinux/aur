@@ -1,0 +1,4 @@
+post_install() {
+    echo "Don't forget to change ISO_LOCATION on /etc/default/grml-rescueboot"
+    echo 'to "/opt/grml/"'
+}

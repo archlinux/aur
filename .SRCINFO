@@ -1,0 +1,16 @@
+pkgbase = grml-iso
+	pkgdesc = add the grml ISO image to the grub2 boot menu
+	pkgver = 2014.11
+	pkgrel = 1
+	url = http://wiki.grml.org/doku.php?id=rescueboot
+	install = grml-iso.install
+	arch = any
+	license = GPL
+	depends = grub
+	depends = grml-rescueboot>=0.4.5
+	noextract = grml64-full_2014.11.iso
+	source = http://download.grml.org/grml64-full_2014.11.iso
+	md5sums = 51ca23d8335732150f31c021eafc6513
+
+pkgname = grml-iso
+
