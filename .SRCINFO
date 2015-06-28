@@ -1,0 +1,18 @@
+pkgbase = haskell-fast-tags
+	pkgdesc = Fast incremental vi tags.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/fast-tags
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-containers
+	makedepends = haskell-text
+	depends = gmp
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/fast-tags/0.0.5/fast-tags-0.0.5.tar.gz
+	md5sums = 11949c9081b4034565f011495e502b2b
+
+pkgname = haskell-fast-tags
+
