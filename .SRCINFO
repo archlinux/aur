@@ -1,0 +1,27 @@
+pkgbase = tin
+	pkgdesc = A threaded NNTP and spool based UseNet newsreader.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://www.tin.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = ispell
+	depends = perl
+	depends = gnupg
+	depends = dante
+	depends = icu
+	depends = libidn
+	conflicts = tin-unstable
+	source = ftp://ftp.tin.org/pub/news/clients/tin/stable/tin-2.2.1.tar.gz
+	source = LICENSE
+	md5sums = 31ca384c33b5d7b58065cfa0a5b23a35
+	md5sums = 22de35b1bdc6f0df87c93ae794198b21
+	sha1sums = 9ef12345ed1cfb482138c5c54a7f73dfb91b9039
+	sha1sums = 07e1217ee68bb20f0ad2670e84116a0d67243063
+	sha256sums = cf588884bbe4711498b807311e53d82a1b6ca343f4c85e53001c90e8c0e456ac
+	sha256sums = 5ccb431a94c2d2f093b8f93325075e5ad886772ba2a452478120b86ce71c0683
+
+pkgname = tin
+
