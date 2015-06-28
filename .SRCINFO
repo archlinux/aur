@@ -1,0 +1,21 @@
+pkgbase = udev-block-notify-git
+	pkgdesc = Notify about udev block events - git checkout
+	pkgver = 0.7.3.r0.g542058e
+	pkgrel = 1
+	url = https://github.com/eworm-de/udev-block-notify
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = markdown
+	depends = libnotify
+	depends = udev
+	depends = gnome-icon-theme
+	depends = gnome-icon-theme-extras
+	provides = udev-block-notify
+	conflicts = udev-block-notify
+	source = git://github.com/eworm-de/udev-block-notify.git
+	sha256sums = SKIP
+
+pkgname = udev-block-notify-git
+
