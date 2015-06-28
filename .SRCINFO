@@ -1,0 +1,16 @@
+pkgbase = minmix
+	pkgdesc = A small OSS mixer.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://litcave.rudi.ir
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	optdepends = oss: sound mixing
+	source = http://litcave.rudi.ir/minmix-0.3.tar.gz
+	md5sums = df1f654bf8864c75a5ca1e48803f57a2
+	sha1sums = f9b966d2d2faed31dac6f3b6ebbf6e5700358ceb
+	sha256sums = 3b84d3f5421fa003883c5773fc8589e4998ca8422434e1d01ca9d5eec8b7f3ee
+
+pkgname = minmix
+
