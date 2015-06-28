@@ -1,10 +1,9 @@
-# Maintainer: François Magimel <magimel.francois@gmail.com>
-# Contributor: James Bulmer <nekinie@gmail.com>
+# Maintainer: Erhan SAHIN <erhan@ssahin.net>
 
 pkgname="python2-oslo-messaging-kilo"
 _pkgname="oslo.messaging"
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Oslo Messaging API"
 arch=("any")
 url="https://pypi.python.org/pypi/oslo.messaging/"
