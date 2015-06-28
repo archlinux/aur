@@ -1,0 +1,17 @@
+pkgbase = drawterm-hg
+	pkgdesc = Terminal emulation program for connecting to Plan 9 CPU servers.
+	pkgver = 112.b4e2f62f737e
+	pkgrel = 2
+	url = http://swtch.com/drawterm
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = make
+	makedepends = gcc
+	makedepends = mercurial
+	depends = xorg-server
+	source = drawterm-hg::hg+https://bitbucket.org/rsc/drawterm
+	md5sums = SKIP
+
+pkgname = drawterm-hg
+
