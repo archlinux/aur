@@ -2,7 +2,7 @@
 
 pkgname=("python2-glance-store-kilo")
 pkgver="0.4.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Glance backend store-drivers Library"
 arch=("any")
 url="https://github.com/openstack/glance_store"
@@ -10,7 +10,7 @@ license=("Apache")
 makedepends=("python2-setuptools" )
 source=("https://pypi.python.org/packages/source/g/glance_store/glance_store-${pkgver}.tar.gz")
 sha256sums=('cd15e9f9a08dc8d3eeaa452682c8e53423f848eaadf064c0ee8068583aa31154')
-depends=("python2-oslo-config>=1.6.0"
+depends=("python2-oslo-config-kilo"
          "python2-oslo-i18n-kilo"
          "python2-oslo-serialization-kilo"
          "python2-oslo-utils-kilo"
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-    depends=("python2-oslo-config>=1.6.0"
+    depends=("python2-oslo-config-kilo"
     	     "python2-oslo-i18n-kilo"
     	     "python2-oslo-serialization-kilo"
     	     "python2-oslo-utils-kilo"
