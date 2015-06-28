@@ -1,0 +1,20 @@
+pkgbase = sandy-git
+	pkgdesc = An ncurses text editor with an easy-to-read, hackable C source.
+	pkgver = 0.4.r109.gb6e956c
+	pkgrel = 2
+	url = http://tools.suckless.org/sandy
+	arch = i686
+	arch = x86_64
+	license = custom:MIT/X
+	makedepends = git
+	depends = ncurses
+	provides = sandy
+	provides = sandy-hg
+	conflicts = sandy
+	conflicts = sandy-hg
+	source = sandy-git::git+http://git.suckless.org/sandy
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = sandy-git
+
