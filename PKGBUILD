@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.6.11.1
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
 install=openafs-modules.install
-sha256sums=('ae1a87faec8ee273f7d4baa69d1346f798415b38de72888decde011405423dc7')
+sha256sums=('c47ffaa24bf2373264e330a624acafb5f509f4b00d63394b96e9bab131bf5802')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
