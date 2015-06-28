@@ -1,0 +1,20 @@
+pkgbase = climm
+	pkgdesc = A small, text mode ICQ client.
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://climm.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = tcl
+	depends = gnutls
+	depends = libotr
+	depends = iksemel
+	conflicts = climm-svn
+	source = http://www.climm.org/source/climm-0.7.1.tgz
+	md5sums = 37e9692fe778230630aceee2f9feecbf
+	sha1sums = d4220f6d58714ecd312f9dea6015d9ca8e1661d7
+	sha256sums = 6212ada46947f0572fb6734b920a2cfd91b6a632cbd044d87476791a318af052
+
+pkgname = climm
+
