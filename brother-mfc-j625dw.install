@@ -1,0 +1,12 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+	/opt/brother/Printers/mfcj625dw/cupswrapper/cupswrappermfcj625dw >/dev/null
+	if [ "$?" -eq 0 ]; then
+		printf "\033[1m\033[32m\x3d\x3d\x3e\033\1330m Done. The printer should be visible now via the CUPS-webinterface (http://localhost:631)\n"
+	else
+		printf "\033[1m\032[32m\x3d\x3d\x3e\033\1330m Something went wrong...\n"
+	fi
+}

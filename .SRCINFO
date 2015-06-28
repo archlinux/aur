@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j625dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J625DW
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-j625dw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = http://pub.brother.com/pub/com/bsc/linux/dlf/mfcj625dwlpr-3.0.0-1.i386.deb
+	source = http://pub.brother.com/pub/com/bsc/linux/dlf/mfcj625dwcupswrapper-3.0.0-1.i386.deb
+	md5sums = 35b9436ddceb9480e750529b4a4573ff
+	md5sums = a4a35a5ad3cfd3bb016941afff79425e
+
+pkgname = brother-mfc-j625dw
+
