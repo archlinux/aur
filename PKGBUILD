@@ -2,7 +2,7 @@
 
 pkgname=perl-x11-xcb
 _cpanname=X11-XCB
-pkgver=0.12
+pkgver=0.14
 pkgrel=1
 pkgdesc="Perl bindings for libxcb"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('libxau' 'libxdmcp' 'perl-mouse' 'perl-mousex-nativetraits' 'perl-try-t
 		'perl-xml-simple' 'perl-xml-descent')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('283d9bdc5b8be55bd4efbb539b716791')
+md5sums=('0dca275913fef5d044e413c8048fe7a3')
 
 build() {
   cd  "$srcdir/$_cpanname-$pkgver"
