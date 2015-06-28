@@ -2,7 +2,7 @@
 
 pkgname=cinder-kilo
 pkgver=2015.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack Block Storage Service"
 arch=(any)
 install=cinder.install
@@ -19,7 +19,7 @@ depends=('python2-pbr>=0.6'
          'python2-kombu>=2.5.0'
          'python2-lxml>=2.3'
          'python2-netaddr>=0.7.12'
-         'python2-oslo-config>=1.9.3'
+         'python2-oslo-config-kilo'
          'python2-oslo-concurrency-kilo'
          'python2-oslo-context-kilo'
          'python2-oslo-db-kilo'

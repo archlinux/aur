@@ -1,7 +1,7 @@
 pkgbase = cinder-kilo
 	pkgdesc = OpenStack Block Storage Service
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/cinder
 	install = cinder.install
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = cinder-kilo
 	depends = python2-kombu>=2.5.0
 	depends = python2-lxml>=2.3
 	depends = python2-netaddr>=0.7.12
-	depends = python2-oslo-config>=1.9.3
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-concurrency-kilo
 	depends = python2-oslo-context-kilo
 	depends = python2-oslo-db-kilo
