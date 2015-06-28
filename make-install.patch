@@ -1,0 +1,18 @@
+--- THE-3.3RC1/Makefile.in	2011-07-11 10:55:57.000000000 +0000
++++ THE-3.3RC1-new/Makefile.in	2012-05-01 10:33:15.038067291 +0000
+@@ -285,14 +285,13 @@
+ 
+ uninstall: un$(BASE_INSTALL)
+ 
+-installbase: $(THEBIN) the the.man THE_Help.txt installrpm installdoc
++installbase: $(THEBIN) the.man THE_Help.txt installrpm installdoc
+ 
+ uninstallbase: uninstallrpm uninstalldoc
+ 
+ installrpm: $(THEBIN)
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 755 -c ./$(THEBIN) $(DESTDIR)$(bindir)/$(THEBIN)
+-	$(INSTALL) -m 755 -c ./the $(DESTDIR)$(bindir)/the
+ 
+ uninstallrpm: $(THEBIN)
+ 	-rm -f $(DESTDIR)$(bindir)/$(THEBIN)
