@@ -1,0 +1,25 @@
+pkgbase = opera-legacy
+	pkgdesc = Fast and secure web browser and Internet suite - legacy (pre blink) version
+	pkgver = 12.16.1860
+	pkgrel = 3
+	url = http://www.opera.com/browser/
+	install = opera.install
+	arch = i686
+	arch = x86_64
+	license = custom:opera
+	depends = gcc-libs
+	depends = libxt
+	depends = freetype2
+	depends = libxext
+	depends = glib2
+	depends = ttf-font
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = gstreamer0.10-base-plugins: HTML5 Video support
+	optdepends = gstreamer0.10-good: HTML5 Video support
+	options = !strip
+	options = !zipman
+
+pkgname = opera-legacy
+
