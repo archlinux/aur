@@ -1,0 +1,34 @@
+pkgbase = rspamd
+	pkgdesc = Fast, free and open-source spam filtering system.
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = http://rspamd.com
+	install = rspamd.install
+	arch = x86_64
+	arch = i686
+	arch = mips64el
+	license = BSD
+	makedepends = cmake
+	makedepends = pkgconfig
+	depends = libevent
+	depends = glib2
+	depends = gmime
+	depends = lua
+	depends = sqlite
+	backup = etc/rspamd/logging.inc
+	backup = etc/rspamd/options.inc
+	backup = etc/rspamd/composites.conf
+	backup = etc/rspamd/surbl-whitelist.inc
+	backup = etc/rspamd/worker-normal.inc
+	backup = etc/rspamd/worker-controller.inc
+	backup = etc/rspamd/modules.conf
+	backup = etc/rspamd/rspamd.conf
+	backup = etc/rspamd/common.conf
+	backup = etc/rspamd/2tld.inc
+	backup = etc/rspamd/statistic.conf
+	backup = etc/rspamd/metrics.conf
+	source = https://www.rspamd.com/downloads/rspamd-0.9.8.tar.xz
+	sha256sums = aba4d96014ed1b961f6a9add427f279d404f58f8264817b50b4178fcf1824b58
+
+pkgname = rspamd
+
