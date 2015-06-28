@@ -1,0 +1,13 @@
+pkgbase = 4suite
+	pkgdesc = A platform for XML processing and knowledge-management
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://foursuite.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://downloads.sourceforge.net/sourceforge/foursuite/4Suite-XML-1.0.2.tar.bz2
+	md5sums = b3e976a666899113d58f333518205968
+
+pkgname = 4suite
+
