@@ -1,0 +1,34 @@
+# -*- mode: sh; -*-
+infodir=usr/share/info
+filelist=(mu-guile.info.gz mu4e.info.gz)
+
+install_info() {
+    [ -x usr/bin/install-info ] || return 0
+    if [ -f $infodir/mu-guile.info.gz ]; then install-info $infodir/mu-guile.info.gz $infodir/dir 2> /dev/null; fi
+    if [ -f $infodir/mu4e.info.gz ]; then install-info $infodir/mu4e.info.gz $infodir/dir 2> /dev/null; fi
+}
+
+post_install() {
+    install_info
+    echo ''
+    echo 'Set the default maildir: "export MAILDIR=~/YourMaildir"'
+    echo 'If MAILDIR is empty, mu will use ~/Mail by default'
+    echo 'You can also specify a maildir with the --maildir option'
+    echo ''
+    echo 'First run: "mu index" (it may take a while if you have lots of mail)'
+    echo 'Sample cron entry: "0 12 * * * mu index" (add the --maildir option if needed)'
+    echo ''
+}
+
+post_upgrade() {
+    install_info
+    echo ''
+    echo 'You might need to execute "mu index --rebuild" after the upgrade'
+    echo ''
+}
+
+pre_remove() {
+    [ -x usr/bin/install-info ] || return 0
+    if [ -f $infodir/mu-guile.info.gz ]; then install-info --delete $infodir/mu-guile.info.gz $infodir/dir 2> /dev/null; fi
+    if [ -f $infodir/mu4e.info.gz ]; then install-info --delete $infodir/mu4e.info.gz $infodir/dir 2> /dev/null; fi
+}
