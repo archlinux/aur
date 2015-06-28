@@ -1,0 +1,21 @@
+post_install() {
+
+if [ -x /usr/bin/update-desktop-database ]; then
+	/usr/bin/update-desktop-database &> /dev/null
+fi
+
+if [ -x /usr/bin/gtk-update-icon-cache ]; then
+	/usr/bin/gtk-update-icon-cache --quiet /usr/share/icons/hicolor || :
+fi
+
+update-mime-database /usr/share/mime >/dev/null 2>&1
+  
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
