@@ -1,0 +1,27 @@
+pkgbase = ranger-git
+	pkgdesc = A simple, vim-like file manager.
+	pkgver = 1.6.1.105.g1538e80
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/ranger
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	optdepends = atool: for previews of archives
+	optdepends = file: for determining file types
+	optdepends = highlight: for syntax highlighting of code
+	optdepends = libcaca: for ASCII-art image previews
+	optdepends = mediainfo: for viewing information about media files
+	optdepends = perl-image-exiftool: for viewing information about media files
+	optdepends = poppler: for pdf previews
+	optdepends = python-chardet: in case of encoding detection problems
+	optdepends = sudo: to use the "run as root"-feature
+	optdepends = transmission-cli: for viewing bittorrent information
+	optdepends = w3m: for previews of images and html pages
+	provides = ranger
+	conflicts = ranger
+	source = ranger::git+git://git.sv.gnu.org/ranger.git
+	md5sums = SKIP
+
+pkgname = ranger-git
+
