@@ -3,16 +3,16 @@
 
 pkgname=perl-sub-name
 _cpanname="Sub-Name"
-pkgver=0.05
-pkgrel=5
+pkgver=0.14
+pkgrel=1
 pkgdesc="(re)name a sub"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.5.0')
+depends=('glibc')
 url="http://search.cpan.org/dist/$_cpanname"
-source=("http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/$_cpanname-$pkgver.tar.gz")
-md5sums=('26077202597620e4a6068c8087f3e09f')
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
+md5sums=('211ca38767145b6c362da3b821a5abca')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
