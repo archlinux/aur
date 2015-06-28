@@ -4,10 +4,10 @@ pkgname=linux-xps13
 true && pkgname=(linux-xps13 linux-xps13-headers)
 _kernelname=-xps13
 _srcname=linux-4.0
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/gunzy83/linux-xps13-archlinux"
+url="https://github.com/gunzy83/linux-xps13-aur"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'xps13.patch')
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
+            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
             'SKIP'
             'e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1'
             '5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be'
@@ -94,8 +94,7 @@ build() {
 }
 
 package_linux-xps13() {
-  _Kpkgdesc='Arch Linux kernel patched for the Dell XPS13 Ultrabook.'
-  pkgdesc="${_Kpkgdesc}"
+  pkgdesc='Linux Kernel and modules with the multitouch patches for the Cypress PS2 Trackpad found in the Dell XPS 13 Ultrabook.'
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux-xps13=${pkgver}")
@@ -158,8 +157,7 @@ package_linux-xps13() {
 }
 
 package_linux-xps13-headers() {
-  _Hpkgdesc='Header files for linux-xps13.'
-  pkgdesc="${_Hpkgdesc}"
+  pkgdesc='Header files for linux-xps13.'
   depends=('linux-xps13')
   provides=("linux-xps13-headers=${pkgver}" "linux-headers=${pkgver}")
   conflicts=("kernel26-xps13-headers")
@@ -277,6 +275,3 @@ package_linux-xps13-headers() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
-
-# Global pkgdesc and depends are here so that they will be picked up by AUR
-pkgdesc='Linux Kernel and modules with the multitouch patches for the Cypress PS2 Trackpad found in the Dell XPS 13 Ultrabook.'
