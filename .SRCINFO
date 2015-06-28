@@ -1,0 +1,18 @@
+pkgbase = diakonos-git
+	pkgdesc = A Linux console text editor for the masses.
+	pkgver = 0.9.1.r61.gc0eadfe
+	pkgrel = 1
+	url = http://diakonos.pist0s.ca/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ruby
+	depends = ruby-curses
+	provides = diakonos
+	conflicts = diakonos
+	source = diakonos-git::git+https://github.com/Pistos/diakonos.git
+	md5sums = SKIP
+
+pkgname = diakonos-git
+
