@@ -2,13 +2,13 @@
 
 pkgbase=linux-samus4
 pkgver=4.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-4.1-samus/archive/v1.1.tar.gz"
+source=("https://github.com/raphael/linux-4.1-samus/archive/v4.1-3.tar.gz"
         "config"
         "linux.preset"
         )
@@ -240,6 +240,6 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('79a1aeb601615a85663d16b829fc1cab'
-         '17b16a18aa071b32fd8bb1f4b61414ad'
+md5sums=('9f58b7e2c330b8eed89cc5e1be79ad17'
+         'cff6a41fe5af94bb613fb42c39043df2'
          '5aae464a8085b2f3adcdcaff29853d04')
