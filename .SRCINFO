@@ -8,11 +8,14 @@ pkgbase = whatmp3-git
 	depends = python
 	depends = mktorrent
 	depends = flac
-	depends = lame
-	depends = ffmpeg
 	optdepends = vorbis-tools: OGG Vorbis support
+	optdepends = lame: MP3 support
 	optdepends = neroaacenc: AAC support
 	optdepends = neroaactag: AAC support
+	optdepends = mp3gain: ReplayGain support
+	optdepends = vorbisgain: ReplayGain support
+	optdepends = aacgain: ReplayGain support
+	optdepends = sox: dither support
 	provides = whatmp3=3.6
 	conflicts = whatmp3
 	source = git+https://github.com/RecursiveForest/whatmp3.git

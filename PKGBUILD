@@ -9,10 +9,15 @@ arch=('any')
 license=('MIT')
 provides=('whatmp3=3.6')
 conflicts=('whatmp3')
-depends=('python' 'mktorrent' 'flac' 'lame' 'ffmpeg')
+depends=('python' 'mktorrent' 'flac')
 optdepends=('vorbis-tools: OGG Vorbis support'
+            'lame: MP3 support'
             'neroaacenc: AAC support'
-            'neroaactag: AAC support')
+            'neroaactag: AAC support'
+            'mp3gain: ReplayGain support'
+            'vorbisgain: ReplayGain support'
+            'aacgain: ReplayGain support'
+            'sox: dither support')
 source=('git+https://github.com/RecursiveForest/whatmp3.git')
 sha256sums=('SKIP')
 
