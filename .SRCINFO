@@ -1,0 +1,37 @@
+pkgbase = luxrays-hg
+	pkgdesc = Accelerate the ray intersection process by using GPUs
+	pkgver = 2448.3cf5d87f54f4
+	pkgrel = 1
+	url = http://www.luxrender.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = cmake
+	makedepends = boost
+	makedepends = mesa
+	makedepends = opencl-headers
+	makedepends = glew
+	makedepends = freeglut
+	depends = freetype2
+	depends = libcl
+	depends = libgl
+	depends = libpng
+	depends = openimageio
+	depends = embree
+	optdepends = opencl-nvidia: OpenCL support for nVidia GPUs
+	optdepends = amdapp-sdk: OpenCL support for AMD GPUs
+	optdepends = intel-opencl-runtime: OpenCL support for Intel CPUs
+	optdepends = glew: demos (SmallLuxGPU etc.)
+	optdepends = freeglut: demos (SmallLuxGPU etc.)
+	optdepends = boost-libs: demos (SmallLuxGPU etc.)
+	provides = luxrays
+	conflicts = luxrays
+	options = staticlibs
+	source = luxrays::hg+https://bitbucket.org/luxrender/luxrays
+	source = force_python3.diff
+	md5sums = SKIP
+	md5sums = 3bfb5594a709d1ea772866d66904b8fd
+
+pkgname = luxrays-hg
+
