@@ -11,7 +11,7 @@ license=('GPL')
 depends=('fuse' 'gtkmm' 'linux-headers')
 options=('!emptydirs')
 install=$pkgname.install
-source=('vmware-patch' 'vmware-unpatch' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
+source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
         # Workstation 11.1.0 / Player (Pro) 7.1.0
         'vmnet-11.1.0-3.19.patch'
         # Workstation 10.0.6 / Player (Plus) 6.0.6
@@ -32,8 +32,8 @@ source=('vmware-patch' 'vmware-unpatch' 'common-functions.sh' 'vmware.service' '
 
 package() {
     # Patch scripts
-    install -Dm755 vmware-patch "$pkgdir"/usr/bin/vmware-patch
-    install -m755 vmware-unpatch "$pkgdir"/usr/bin/
+    install -Dm755 vmware-patch.sh "$pkgdir"/usr/bin/vmware-patch
+    install -m755 vmware-unpatch.sh "$pkgdir"/usr/bin/vmware-unpatch
 
     # Common functions
     install -Dm755 common-functions.sh "$pkgdir"/usr/share/vmware-patch/common-functions.sh
