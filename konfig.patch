@@ -1,0 +1,7 @@
+diff -aur usr_old/bin/Konfig usr_new/bin/Konfig
+--- usr_old/bin/Konfig	2013-04-22 12:30:07.224711849 +0200
++++ usr_new/bin/Konfig	2013-04-22 12:30:24.364711981 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-exec /usr/bin/cli /usr/lib/Konfig/Konfig.exe "$@"
++exec /usr/bin/mono /usr/lib/Konfig/Konfig.exe "$@"
