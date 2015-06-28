@@ -2,14 +2,14 @@
 
 pkgname=("python2-keystoneclient-kilo")
 pkgver="1.3.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Client Library for OpenStack Identity"
 arch=("any")
 url="https://launchpad.net/python-keystoneclient"
 depends=("python2-babel>=1.3"
              "python2-iso8601>=0.1.9"
              "python2-netaddr>=0.7.12"
-             "python2-oslo-config>=1.9.3"
+             "python2-oslo-config-kilo"
              "python2-oslo-i18n-kilo>=1.5.0"
              "python2-oslo-serialization-kilo>=1.4.0"
              "python2-oslo-utils-kilo>=1.4.0"
