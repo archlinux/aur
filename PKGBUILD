@@ -3,9 +3,9 @@
 
 pkgname=armory
 _pkgname=BitcoinArmory
-pkgver=0.93.1 
-_pkgver=0.93.1 
-pkgrel=3
+pkgver=0.93.2 
+_pkgver=0.93.2
+pkgrel=1
 pkgdesc="Python-Based Bitcoin Software"
 arch=('i686' 'x86_64')
 url="https://github.com/etotheipi/BitcoinArmory"
@@ -22,8 +22,9 @@ optdepends=('bitcoin-daemon: Connect to BitCoin network')
 install=
 source=("run-armory.sh" "http://github.com/etotheipi/BitcoinArmory/archive/v$_pkgver.tar.gz" 
 "armory.desktop")
-sha256sums=('baa1d335273af1f1f4d12dd68f066035e5b4485b215172690c307877ac62168c' '39f07b3a8bddd3ed6259b730b9ca87a7756ef5f52edb14bff868a57c90aaa8d3'
-'9625e81c0d914176689ce40779e5b49376dc85efb84827ef4b006920d5726680')
+sha256sums=('baa1d335273af1f1f4d12dd68f066035e5b4485b215172690c307877ac62168c'
+            '0efcf179a4ea0c2e8f873378d5f171efefe720cb91ba2208223871bc1b83ac71'
+            '9625e81c0d914176689ce40779e5b49376dc85efb84827ef4b006920d5726680')
 
 build() {
     cd $srcdir/BitcoinArmory-$_pkgver/
