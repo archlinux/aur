@@ -1,0 +1,16 @@
+pkgbase = ircii-current
+	pkgdesc = IRC and ICB client that runs under most UNIX platforms.
+	pkgver = 20141122
+	pkgrel = 2
+	url = http://www.eterna.com.au/ircii/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = lftp
+	depends = ncurses
+	conflicts = ircii
+	source = http://ircii.warped.com/ircii-current.tar.bz2
+	md5sums = SKIP
+
+pkgname = ircii-current
+
