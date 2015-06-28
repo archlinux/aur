@@ -1,0 +1,15 @@
+pkgbase = uno
+	pkgdesc = A simple tool for source code analysis, for ANSI-C programs.
+	pkgver = 2.13
+	pkgrel = 2
+	url = http://spinroot.com/uno/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.spinroot.com/uno/uno_v213.tar.gz
+	md5sums = 96ef927107462b2b22da3adc4cae71c6
+	sha1sums = 299b810cb213a23d81c2abb24a6b13e6eec3617d
+	sha256sums = c688a5f7c68ba4b7c0907c6c2603703535c37b99b2a3927a391bd48c43d7bcbe
+
+pkgname = uno
+
