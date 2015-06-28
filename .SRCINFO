@@ -1,0 +1,20 @@
+pkgbase = haskell-pointful
+	pkgdesc = Pointful refactoring tool
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/pointful
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-containers
+	makedepends = haskell-haskell-src
+	makedepends = haskell-mtl
+	makedepends = haskell-syb
+	depends = gmp
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/pointful/1.0.2/pointful-1.0.2.tar.gz
+	md5sums = 928f8ff8fed3950d66dfa152a81ce974
+
+pkgname = haskell-pointful
+
