@@ -1,6 +1,6 @@
 pkgbase = tlocate
 	pkgdesc = mlocate rewritten using only GNU coreutils, sudo and bash with proper btrfs subvolume handling, semi-arbitrary filtering and other improvements
-	pkgver = r19.d5604f9
+	pkgver = r20.e38ab52
 	pkgrel = 1
 	url = https://github.com/crossroads1112/tlocate
 	arch = any
