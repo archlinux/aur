@@ -1,0 +1,18 @@
+pkgbase = netlink-notify
+	pkgdesc = Notify about netlink changes
+	pkgver = 0.7.2
+	pkgrel = 2
+	url = https://github.com/eworm-de/netlink-notify
+	install = netlink-notify.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	depends = libnotify
+	source = http://www.eworm.de/download/netlink-notify/netlink-notify-0.7.2.tar.xz
+	source = http://www.eworm.de/download/netlink-notify/netlink-notify-0.7.2.tar.xz.asc
+	sha256sums = a52ade374b93ca787928a06c548bf00b7e7aca40b9d9965b666a55b3ce7fea31
+	sha256sums = SKIP
+
+pkgname = netlink-notify
+
