@@ -1,0 +1,13 @@
+pkgbase = hall
+	pkgdesc = Real-time chat & texting for business teams
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://hall.com/
+	arch = x86_64
+	license = custom:proprietary
+	depends = qt5-webkit>=5.2.1
+	source = https://hall.com/desktop/Hall_0.5.8_amd64.deb
+	sha256sums = 227a31c1ee85104832601a52bed316107a11ab06616bdd463b720d35438e212d
+
+pkgname = hall
+
