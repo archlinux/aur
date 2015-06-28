@@ -2,13 +2,13 @@
 pkgname=realmd-git
 _pkgname=realmd
 pkgver=0.15.1.r2.g40f9583
-pkgrel=2
+pkgrel=3
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms"
 arch=(i686 x86_64)
 url="http://freedesktop.org/software/realmd/"
 license=(GPL3)
-depends=(adcli dbus krb5 openldap polkit)
-makedepends=(docbook-xsl intltool packagekit python2 xmlto)
+depends=(adcli dbus krb5 openldap packagekit polkit)
+makedepends=(docbook-xsl intltool python2 xmlto)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://anongit.freedesktop.org/realmd/$_pkgname")
