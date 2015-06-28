@@ -2,27 +2,28 @@
 
 pkgname=kdbus-git
 _pkgname=kdbus
-pkgver=2131.db51839
-pkgrel=2
+pkgver=3170.77d052a
+pkgrel=1
 pkgdesc="kdbus kernel module"
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/d-bus/"
+url="https://github.com/systemd/kdbus"
 depends=( 'dkms' )
 provides=("kdbus")
 conflicts=("kdbus")
 license=('LGPL2.1')
 install="kdbus-git.install"
 options=(!strip)
-source=( "git+https://code.google.com/p/d-bus/" "dkms.conf" )
-md5sums=('SKIP' 'a36446ca25771bfd800dc03aaddef968')
+source=( "git+$url" "dkms.conf" )
+sha256sums=('SKIP'
+            '61f173310aa99f2f3a4a11590207afe8815a283b8ebfa691626d871425bd8a70')
 
 pkgver() {
-  cd "$srcdir/d-bus"
+  cd "$srcdir/kdbus"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "$srcdir/d-bus"
+  cd "$srcdir/kdbus"
   rm -fr test
   install -Dm 644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgname}-$pkgver/dkms.conf"
   cp -r * "${pkgdir}/usr/src/${_pkgname}-$pkgver"/
