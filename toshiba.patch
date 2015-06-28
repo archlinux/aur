@@ -1,0 +1,24 @@
+diff -ruN a/plugins/power/gsd-backlight-linux.c b/plugins/power/gsd-backlight-linux.c
+--- a/plugins/power/gsd-backlight-linux.c	2015-05-04 22:32:57.000000000 +0900
++++ b/plugins/power/gsd-backlight-linux.c	2015-05-17 11:48:55.000000000 +0900
+@@ -66,16 +66,16 @@
+ 			*type = GSD_BACKLIGHT_TYPE_FIRMWARE;
+ 		goto out;
+ 	}
+-	path = gsd_backlight_helper_get_type (devices, "platform");
++	path = gsd_backlight_helper_get_type (devices, "raw");
+ 	if (path != NULL) {
+ 		if (type)
+-			*type = GSD_BACKLIGHT_TYPE_PLATFORM;
++			*type = GSD_BACKLIGHT_TYPE_RAW;
+ 		goto out;
+ 	}
+-	path = gsd_backlight_helper_get_type (devices, "raw");
++	path = gsd_backlight_helper_get_type (devices, "platform");
+ 	if (path != NULL) {
+ 		if (type)
+-			*type = GSD_BACKLIGHT_TYPE_RAW;
++			*type = GSD_BACKLIGHT_TYPE_PLATFORM;
+ 		goto out;
+ 	}
+ out:
