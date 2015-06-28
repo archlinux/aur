@@ -1,0 +1,23 @@
+pkgbase = ympd-git
+	pkgdesc = A standalone MPD Web GUI
+	pkgver = 1.2.3.r34.g7b05dc1
+	pkgrel = 1
+	url = http://www.ympd.org
+	install = ympd.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libmpdclient
+	optdepends = openssl: SSL support in libwebsockets webserver
+	provides = ympd
+	conflicts = ympd
+	backup = etc/default/ympd
+	source = git+https://github.com/notandy/ympd.git
+	sha1sums = SKIP
+
+pkgname = ympd-git
+

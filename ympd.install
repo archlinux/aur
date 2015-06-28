@@ -1,0 +1,5 @@
+post_upgrade(){
+    if [ -e "/etc/conf.d/ympd" ]; then
+        echo "WARNING: ympd config file /etc/cond.d/ympd should be moved to /etc/default/ympd"
+    fi
+}
