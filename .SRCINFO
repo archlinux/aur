@@ -1,0 +1,20 @@
+pkgbase = netlink-notify-git
+	pkgdesc = Notify about netlink changes - git checkout
+	pkgver = 0.6.3.r3.gdde8c75
+	pkgrel = 1
+	url = https://github.com/eworm-de/netlink-notify
+	install = netlink-notify.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = markdown
+	depends = libnotify
+	provides = netlink-notify
+	conflicts = netlink-notify
+	source = git://github.com/eworm-de/netlink-notify.git
+	sha256sums = SKIP
+
+pkgname = netlink-notify-git
+
