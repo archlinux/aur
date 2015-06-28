@@ -1,0 +1,22 @@
+pkgbase = bitchx12-git
+	pkgdesc = An IRC (Internet Relay Chat) client.
+	pkgver = 0+213_3143706
+	pkgrel = 1
+	url = https://github.com/BitchX/BitchX1.2
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cpio
+	depends = openssl
+	provides = bitchx
+	conflicts = ircii-pana
+	conflicts = bitchx-svn
+	conflicts = bitchx-git
+	conflicts = bitchx11-git
+	conflicts = bitchx13-git
+	source = bitchx12-git::git+https://github.com/BitchX/BitchX1.2.git
+	md5sums = SKIP
+
+pkgname = bitchx12-git
+
