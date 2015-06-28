@@ -1,0 +1,15 @@
+pkgbase = 04b_21
+	pkgdesc = Symbol font from urbanfonts.com
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.urbanfonts.com/fonts/04b_21.htm
+	install = 04b_21.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = 04b_21.zip::http://www.urbanfonts.com/download.php?fid=8330&file=04b_21.zip
+	md5sums = 59fbc7f2dc53baa8b71034e8364ba910
+
+pkgname = 04b_21
+
