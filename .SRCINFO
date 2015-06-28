@@ -1,0 +1,16 @@
+pkgbase = keysnail-git
+	pkgdesc = An add-on that provides comfortable browsing experience for Emacs users, but its target users are not limited to.
+	pkgver = 0.r1134.0cba175
+	pkgrel = 1
+	url = https://github.com/mooz/keysnail
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = firefox>=3.5
+	provides = keysnail
+	conflicts = keysnail
+	source = keysnail-git::git+https://github.com/mooz/keysnail.git
+	md5sums = SKIP
+
+pkgname = keysnail-git
+
