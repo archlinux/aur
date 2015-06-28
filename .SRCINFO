@@ -1,0 +1,22 @@
+pkgbase = bitcoin-scrypt-git-qt
+	pkgdesc = Bitcoin Scrypt is a decentralised currency and using the Scrypt algorithm - Qt
+	pkgver = 20140107.2ba1ffc
+	pkgrel = 1
+	url = http://bitcoinscrypt.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	depends = boost-libs
+	depends = qt4
+	depends = miniupnpc
+	depends = qrencode
+	provides = bitcoin-scrypt-qt
+	source = bitcoin-scrypt::git://github.com/Omega6/Bitcoin-Scrypt.git
+	sha256sums = SKIP
+
+pkgname = bitcoin-scrypt-git-qt
+
