@@ -1,0 +1,15 @@
+pkgbase = ctcs
+	pkgdesc = CTorrent Control Server (CTCS), an interface for monitoring and managing Enhanced CTorrent clients.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://www.rahul.net/dholmes/ctorrent/ctcs.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.rahul.net/dholmes/ctorrent/ctcs-1.4.1.tar.gz
+	md5sums = 7dfe725e558eb75258a2199f2aa9fdbc
+	sha1sums = 228090d17dbf00d32129f6a2fbc874314f525998
+	sha256sums = 9614e88d07c6b128677d4d2638a4a05ae00812ec5157ae0788012abed3172355
+
+pkgname = ctcs
+
