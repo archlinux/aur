@@ -1,0 +1,30 @@
+--- configure.ac	2014-09-12 11:56:38.000000000 +0200
++++ configure.ac.new	2014-09-26 12:30:06.449528612 +0200
+@@ -21,17 +21,19 @@
+ AC_SEARCH_LIBS([cos], [m], [], [AC_MSG_ERROR([need math library])])
+ 
+ AC_LANG_PUSH([C++])
+-AC_CHECK_LIB(mmdb2, MMDB_CCIF_Init, :,
+-             AC_MSG_ERROR([mmdb2 library not found.]))
+-AC_CHECK_HEADER(mmdb2/mmdb_manager.h, :,
+-                AC_MSG_ERROR([mmdb2 headers not found.]))
++# AC_CHECK_LIB(mmdb2, MMDB_CCIF_Init, :,
++#              AC_MSG_ERROR([mmdb2 library not found.]))
++# AC_CHECK_HEADER(mmdb2/mmdb_manager.h, :,
++#                 AC_MSG_ERROR([mmdb2 headers not found.]))
++PKG_CHECK_MODULES(MMDB, mmdb2)
+ AC_LANG_POP([C++])
+ 
+ if test "x$enable_superpose" != xno && test "x$enable_ccp4" = xyes; then
+-  AC_CHECK_LIB(ccp4c, ccp4_banner, :,
+-               AC_MSG_ERROR([ccp4c library not found.]))
+-  AC_CHECK_HEADER(ccp4/ccp4_general.h, :,
+-                  AC_MSG_ERROR([libccp4 headers not found.]))
++#   AC_CHECK_LIB(ccp4c, ccp4_banner, :,
++#                AC_MSG_ERROR([ccp4c library not found.]))
++#   AC_CHECK_HEADER(ccp4/ccp4_general.h, :,
++#                   AC_MSG_ERROR([libccp4 headers not found.]))
++  PKG_CHECK_MODULES(CCP4, libccp4c > 6.4)
+ fi
+ 
+ AM_CONDITIONAL([BUILD_SUPERPOSE], [test "x$enable_ccp4" != xno])
