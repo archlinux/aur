@@ -1,0 +1,15 @@
+pkgbase = retail-git
+	pkgdesc = tail with regular expressions
+	pkgver = r39.a4f54bb
+	pkgrel = 1
+	url = https://github.com/mwh/retail
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	conflicts = retail
+	source = retail-git::git+https://github.com/mwh/retail
+	md5sums = SKIP
+
+pkgname = retail-git
+
