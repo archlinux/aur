@@ -4,7 +4,7 @@
 pkgname=hexen2
 pkgver=1.5.6
 _gamecodever=1.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Hammer of Thyrion: A cross-platform port of Raven Software's Hexen II source based on an older linux port, Anvil of Thyrion"
 arch=('i686' 'x86_64')
 url="http://uhexen2.sourceforge.net/"
@@ -18,12 +18,11 @@ source=(http://downloads.sourceforge.net/uhexen2/hexen2source-${pkgver}.tgz \
 	      http://downloads.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz \
 	      hexen2.desktop \
 	      hexen2.sh)
-md5sums=('8e48a9845423fd35d31c171911efb495'
-         'e2e7463eb16461955c3cacee6c844937'
-         '9ac598a80765daa0862893bd0aac765a'
-         '2a2aa35969de221fcee88b3d2187e76e'
-         'cd519dc631152951026a5348e23547f4')
-
+sha256sums=('4cf9a32aeb521076c2a6ee0d6a14d98ba27706403360a01e93b4754eb9d7619d'
+            '1b7934f2d22fff1b43621e6476cf34466cc943ffba2ee0b20f44f21aa972768a'
+            '49462cdf984deee7350d03c7d192d1c34d682647ffc9d06de4308e0a7c71c4d9'
+            'f3130b7aa64ffb0c041429ea4f8c32de338fd892f16b9f89dd470d6cc7f757cf'
+            'c592f675cc04fba0d6c3608d41dc1aed7923e66c49e9ee598ff7f77f7218c812')
 build() {
 
   cd $srcdir/hexen2source-$pkgver
