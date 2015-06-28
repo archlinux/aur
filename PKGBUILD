@@ -2,7 +2,7 @@
 
 pkgname=glance-kilo
 pkgver=2015.1.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://launchpad.net/glance"
 license=('Apache')
@@ -21,7 +21,7 @@ depends=('python2-pbr>=0.6'
          'python2-crypto>=2.6'
          'python2-iso8601>=0.1.9'
          'python2-ordereddict'
-         'python2-oslo-config>=1.9.3'
+         'python2-oslo-config-kilo'
          'python2-oslo-concurrency-kilo'
          'python2-oslo-context-kilo'
          'python2-oslo-utils-kilo'

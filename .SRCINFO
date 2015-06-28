@@ -1,7 +1,7 @@
 pkgbase = glance-kilo
 	pkgdesc = OpenStack image registry and delivery service
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/glance
 	arch = any
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = glance-kilo
 	depends = python2-crypto>=2.6
 	depends = python2-iso8601>=0.1.9
 	depends = python2-ordereddict
-	depends = python2-oslo-config>=1.9.3
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-concurrency-kilo
 	depends = python2-oslo-context-kilo
 	depends = python2-oslo-utils-kilo
