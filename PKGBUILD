@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=datovka-git
-pkgver=4.1.2
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government"
 arch=('i686' 'x86_64')
