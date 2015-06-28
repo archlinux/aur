@@ -2,7 +2,7 @@
 
 pkgname="xfce4-hotcorner-plugin"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides an easy way to set up hot corners in the Xfce desktop environment"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -12,7 +12,7 @@ depends=('xfce4-panel' 'libwnck')
 makedepends=('cmake' 'xfce4-dev-tools' 'git')
 install="${pkgname}.install"
 source=("https://github.com/brianhsu/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4cc7e8598fb2b80a5280e0561cf116c3610c1b6e5521d429965d58e75ddf38f1')
+sha256sums=('23cd5c29e5c6361407555509ff92e23794bd54a5ef7f1b9dafcd43a15235cb63')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
