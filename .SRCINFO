@@ -1,0 +1,14 @@
+pkgbase = vimchant
+	pkgdesc = Fast on-the-fly spell-checker based on Enchant for vim
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2345
+	install = vimchant.install
+	arch = any
+	license = custom
+	depends = vim>=7.1.040
+	source = vimchant.vba::http://www.vim.org/scripts/download_script.php?src_id=9199
+	md5sums = e700eeb200ed0140c06b39c4ab3d082b
+
+pkgname = vimchant
+
