@@ -4,7 +4,7 @@
 _author="Daniel P. Berrange"
 _perlmod="sys-virt"
 pkgname=perl-${_perlmod}
-pkgver=1.2.11
+pkgver=1.2.14
 pkgrel=1
 pkgdesc="Represent and manage a libvirt hypervisor connection"
 arch=('any')
@@ -14,6 +14,7 @@ depends=('perl>=5.10.0')
 makedepends=('perl-test-pod-coverage' 'perl-xml-xpath' 'libvirt')
 options=(!emptydirs)
 source=("http://www.cpan.org/authors/id/D/DA/DANBERR/Sys-Virt-${pkgver}.tar.gz")
+md5sums=('092f7156ad2435d61869003b0d43adf6')
 
 build() {
   cd "${srcdir}/Sys-Virt-${pkgver}"
@@ -37,4 +38,3 @@ package() {
   find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -empty \) | xargs rm -vf
 }
 
-md5sums=('366672f8ac4abd2cc814a32fb10fa929')
