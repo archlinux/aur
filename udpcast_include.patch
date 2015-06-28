@@ -1,0 +1,11 @@
+--- a/console.h	2013-02-21 16:12:39.418426558 +0100
++++ b/console.h	2013-02-21 16:12:26.998596846 +0100
+@@ -6,6 +6,8 @@
+ #include <winbase.h>
+ #endif /* __MINGW32__ */
+ 
++#include <sys/select.h>
++
+ #define prepareConsole udpc_prepareConsole
+ #define getConsoleFd udpc_getConsoleFd
+ #define restoreConsole udpc_restoreConsole
