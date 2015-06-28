@@ -1,0 +1,20 @@
+pkgbase = hothasktags
+	pkgdesc = Generates ctags for Haskell, incorporating import lists and qualified imports
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/hothasktags
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-containers
+	makedepends = haskell-cpphs
+	makedepends = haskell-filepath
+	makedepends = haskell-haskell-src-exts
+	depends = gmp
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/hothasktags/0.3.1/hothasktags-0.3.1.tar.gz
+	md5sums = e4cde70444b03fc8e69cd4d326680351
+
+pkgname = hothasktags
+
