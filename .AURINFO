@@ -1,0 +1,23 @@
+pkgbase = offerings-to-cthulhu-qt
+	pkgdesc = Offerings to Cthulhu (QT)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://cthulhu.tk/
+	install = offerings-to-cthulhu-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	depends = boost-libs
+	depends = qt4
+	depends = miniupnpc
+	depends = qrencode
+	conflicts = offerings-qt
+	source = https://github.com/thegreatoldone/offerings/archive/67bad1c7ad3f0126a49a5a5166bd744c1b085cad.zip
+	source = offerings-to-cthulhu-qt.desktop
+
+pkgname = offerings-to-cthulhu-qt
+

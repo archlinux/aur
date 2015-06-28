@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Offerings to Cthulhu
+Comment=Promises of Dreamland; Offerings to Cthulhu!
+Exec=/usr/bin/offerings-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/offerings128.png
+MimeType=x-scheme-handler/offerings;
+Categories=Office;
