@@ -1,0 +1,20 @@
+pkgbase = ppcoin-daemon
+	pkgdesc = P2P Long-Term Energy-Efficient Crypto-Currency (daemon)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://www.ppcoin.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	depends = boost-libs
+	depends = miniupnpc
+	depends = openssl
+	source = http://downloads.sourceforge.net/project/ppcoin/0.4.0/ppcoin-0.4.0-linux.tar.gz
+	sha256sums = 561076e8d4e82085d577eb717b9f8b52571556fea2b8181fa8eb6039218d3f06
+
+pkgname = ppcoin-daemon
+
