@@ -1,0 +1,20 @@
+pkgbase = mpd-notification
+	pkgdesc = Notify about tracks played by mpd
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = https://github.com/eworm-de/mpd-notification
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	depends = ffmpeg
+	depends = libnotify
+	depends = libmpdclient
+	depends = gnome-icon-theme
+	source = http://www.eworm.de/download/mpd-notification/mpd-notification-0.6.0.tar.xz
+	source = http://www.eworm.de/download/mpd-notification/mpd-notification-0.6.0.tar.xz.asc
+	sha256sums = bcf443fa4a2ea525e63c2ff2f285be66fae0ee7c7032d5be9922410ba1a93477
+	sha256sums = SKIP
+
+pkgname = mpd-notification
+
