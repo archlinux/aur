@@ -1,0 +1,18 @@
+pkgbase = java-masterpassword
+	pkgdesc = A stateless password management solution.
+	pkgver = 0.0
+	pkgrel = 20150628
+	url = http://masterpasswordapp.com/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	noextract = masterpassword-gui.jar
+	source = http://masterpasswordapp.com/masterpassword-gui.jar
+	source = masterpassword.desktop
+	source = masterpassword.png
+	md5sums = a749b816ea14f61ea3ae41b3691d7f07
+	md5sums = 60b233ffe691953248930e866600dd56
+	md5sums = a6f72aca863785f8021305fe417675d2
+
+pkgname = java-masterpassword
+
