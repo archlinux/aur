@@ -2,7 +2,7 @@
 # Contributor: aleiphoenix <aleiphoenix@gmail.com>
 
 pkgname=librabbitmq-c
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A RabbitMQ(amqp) library written in C-language"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,12 +11,12 @@ depends=('popt' 'openssl')
 makedepends=('cmake' 'doxygen' 'xmlto')
 url=https://github.com/alanxz/rabbitmq-c
 source=("${pkgname}-${pkgver}.zip::https://github.com/alanxz/rabbitmq-c/archive/v${pkgver}.zip")
-md5sums=('6df52ff7bf56b1012732f510f8961ca1')
+md5sums=('32fd027ac01c2271615bee3e66afa00e')
 options=(!libtool)
 
 build() {
   cd ${pkgname:3}-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_EXAMPLES=OFF -DBUILD_TOOLS=ON -DBUILD_TOOLS_DOCS=ON -DBUILD_TESTS=OFF -DENABLE_SSL_SUPPORT=ON -DBUILD_API_DOCS=OFF .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_EXAMPLES=OFF -DBUILD_TOOLS=ON -DBUILD_TOOLS_DOCS=ON -DBUILD_TESTS=OFF -DENABLE_SSL_SUPPORT=ON -DBUILD_API_DOCS=ON .
 }
 
 package() {
