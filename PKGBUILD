@@ -2,13 +2,13 @@
 pkgname=clipper
 pkgver=2.1.20140911
 _url=http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of object-oriented libraries for the organisation of crystallographic data"
 arch=('i686' 'x86_64')
 url="http://www.ysbl.york.ac.uk/~cowtan/clipper/clipper.html"
 license=('LGPL')
 makedepends=('gcc-fortran')
-depends=('ccp4-libs' 'mmdb2' 'fftw2-float' 'ssmlib')
+depends=('libccp4' 'mmdb2' 'fftw2-float' 'libssm')
 source=(ftp://ftp.ccp4.ac.uk/opensource/$pkgname-$pkgver.tar.gz
         ${_url}/clipper_test_contrib.cpp.patch
         clipper_pkgconfig.patch)
