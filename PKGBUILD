@@ -3,7 +3,7 @@
 pkgname=perl-anyevent-snmp
 _cpanname='AnyEvent-SNMP'
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Adaptor to integrate Net::SNMP into AnyEvent"
 arch=('any')
 url='http://search.cpan.org/perldoc?AnyEvent::SNMP'
