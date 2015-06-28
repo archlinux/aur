@@ -1,13 +1,13 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=realmd
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms"
 arch=(i686 x86_64)
 url="http://freedesktop.org/software/realmd/"
 license=(GPL3)
-depends=(adcli dbus krb5 openldap polkit)
-makedepends=(docbook-xsl intltool packagekit python2 xmlto)
+depends=(adcli dbus krb5 openldap packagekit polkit)
+makedepends=(docbook-xsl intltool python2 xmlto)
 source=("http://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
         "http://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
 sha256sums=('dbe872ea290d093e9c99d4db9b56e63083a2d24775f0be71d86109d51eb8f7bc'
