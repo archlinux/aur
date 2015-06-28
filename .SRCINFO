@@ -1,0 +1,18 @@
+pkgbase = ttf-droid-sans-mono-dotted-powerline-git
+	pkgdesc = Droid Sans Mono Dotted for Powerline
+	pkgver = r78.97dc451
+	pkgrel = 1
+	url = https://github.com/powerline/fonts
+	install = ttf-droid-sans-mono-dotted-powerline-git.install
+	arch = any
+	license = custom:Apache License, Version 2.0
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = powerline-fonts
+	conflicts = powerline-fonts-git
+	source = git://github.com/powerline/fonts.git
+	md5sums = SKIP
+
+pkgname = ttf-droid-sans-mono-dotted-powerline-git
+
