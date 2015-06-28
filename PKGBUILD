@@ -1,5 +1,5 @@
 pkgname=xcursor-ize-vision
-pkgver=0.git
+pkgver=0.0.git
 pkgrel=1
 pkgdesc="a couple of X cursor that similar to Windows 7 cursor."
 url='https://github.com/izmntuk/xcursor-ize-vision'
@@ -16,8 +16,8 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	./makexmc.sh
-	rm -r original-cursors-png makexmc.sh
+	./build.sh
+	rm -r original-cursors-png build.sh
 }
 
 package() {
