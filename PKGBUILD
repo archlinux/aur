@@ -27,16 +27,16 @@ pkgver() {
 build() {
     cd "$srcdir/$_gitname/tools"
     mkdir -p build && pushd build
-    cmake "$srcdir/$_gitname/tools"                                 \
-        -DCMAKE_INSTALL_PREFIX=/opt/psp2sdk                         \
+    cmake "$srcdir/$_gitname/tools"                                         \
+        -DCMAKE_INSTALL_PREFIX=/opt/psp2sdk                                 \
         -DCMAKE_BUILD_TYPE=Release
     make
 
     cd "$srcdir/$_gitname/src"
     mkdir -p build && pushd build
-    cmake "$srcdir/$_gitname/src"                                   \
-        -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-psp2.cmake    \
-        -DCMAKE_INSTALL_PREFIX=/opt/psp2sdk                         \
+    cmake "$srcdir/$_gitname/src"                                           \
+        -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-arm-none-eabi-psp2.cmake  \
+        -DCMAKE_INSTALL_PREFIX=/opt/psp2sdk                                 \
         -DCMAKE_BUILD_TYPE=Release
     make
 }
