@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Reduce
+GenericName=Reduce Algebra System
+Comment=A portable general-purpose computer algebra system
+Icon=reduce-algebra
+Type=Application
+Categories=Education;Science;Math;
+Exec=reduce
+Terminal=true

@@ -1,0 +1,30 @@
+pkgbase = reduce-algebra-svn
+	pkgdesc = A portable general-purpose computer algebra system
+	pkgver = 20130708
+	pkgrel = 1
+	url = http://reduce-algebra.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = BSD
+	makedepends = subversion
+	makedepends = texlive-htmlxml
+	makedepends = imagemagick
+	depends = ncurses
+	depends = libxext
+	depends = libxrandr
+	depends = libxft
+	depends = freetype2
+	depends = expat
+	depends = libx11
+	depends = libxcursor
+	conflicts = reduce-algebra
+	source = reduce.desktop
+	source = reduce
+	source = csl
+	md5sums = fe457bdd9feec1bbc86b9128fce723ec
+	md5sums = 62cf22ea23b900a28c344105cc6639ca
+	md5sums = 6c1ad93314ba801b657b75db450eb324
+
+pkgname = reduce-algebra-svn
+
