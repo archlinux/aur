@@ -1,0 +1,25 @@
+post_install() {
+  echo "For Vim in terminal please ensure that you are using a base16 terminal theme:"
+  echo ""
+  echo "  https://github.com/chriskempson/base16-xresources"
+  echo "  https://github.com/chriskempson/base16-gnome-terminal"
+  echo "  https://github.com/chriskempson/base16-xfce4-terminal"
+  echo ""
+  echo ""
+  echo "To use the dark theme ensure set background=dark is present in your ~/.vimrc file."
+  echo "Otherwise Vim will use the light variation by default."
+  echo ""
+  echo ""
+  echo "If you use a terminal theme designed to keep the 16 ANSI colors intact"
+  echo "(a \"256\" variation) and have successfully modified your 256 colorspace with"
+  echo "base16-shell you'll need to add the following to your ~/.vimrc before the" 
+  echo "colorsheme declaration:"
+  echo ""
+  echo "  let base16colorspace=256"
+  echo ""
+  echo "This will cause Vim to access the colors in the modified 256 colorspace."
+  echo "Please do not enable this simply because you have a 256 color terminal as"
+  echo "this will cause colors to be displayed incorrectly."
+  /bin/true
+}
+

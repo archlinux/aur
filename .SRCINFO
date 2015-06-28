@@ -1,0 +1,16 @@
+pkgbase = vim-base16-git
+	pkgdesc = Base16 for Vim
+	pkgver = 0.r59.1ce4b84
+	pkgrel = 1
+	url = https://github.com/chriskempson/base16-vim
+	install = vim-base16-git.install
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim
+	source = vim-base16-git::git+https://github.com/chriskempson/base16-vim.git
+	md5sums = SKIP
+
+pkgname = vim-base16-git
+
