@@ -1,0 +1,20 @@
+pkgbase = ofxparse-git
+	pkgdesc = Ofxparse is a parser for Open Financial Exchange (.ofx) format files.
+	pkgver = 0
+	pkgrel = 3
+	url = https://github.com/jseutter/ofxparse
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python2>=2.7.6
+	depends = python2-nose
+	depends = python2-coverage
+	depends = python2-beautifulsoup4
+	provides = ofxparse
+	conflicts = ofxparse
+	source = ofxparse::git://github.com/jseutter/ofxparse.git
+	md5sums = SKIP
+
+pkgname = ofxparse-git
+
