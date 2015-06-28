@@ -1,0 +1,9 @@
+post_install(){
+  echo "==> To use fbpad, read /usr/share/doc/fbpad-git/README."
+  echo "==> Edit config.h in fbpad's PKGBUILD directory and"
+  echo "    rebuild package if you want to change settings."
+  echo "==> Add 'export TERM=fbpad-256' to your shell rc for"
+  echo "    256-color support."
+  echo "==> Add 'export NCURSES_NO_UTF8_ACS=1' to your shell rc"
+  echo "    if you are using dvtm."
+}
