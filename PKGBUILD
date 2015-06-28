@@ -10,8 +10,8 @@
 
 _pkgname=angband
 pkgname=angband-ncurses
-pkgver=3.5.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
 url="http://rephial.org/"
@@ -19,14 +19,17 @@ license=('GPL2' 'custom')
 depends=('ncurses')
 makedepends=('python-docutils'
 			 #'texlive-core' #Uncomment if you want a pdf manual. That's quite the dependency, don't you think?
-			)
+			'autoconf' 'automake')
 conflicts=('angband' 'angband-git')
-source=("http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('3b9a324551cfd48b101f197a8441f135')
+source=( "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
+#  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-v${pkgver}.tar.gz"
+)
+
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -44,6 +47,8 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   rm -f "${pkgdir}/usr/share/${_pkgname}/*/delete.me"
-  rm -R "${pkgdir}"/usr/share/angband/xtra/{graf,icon,sound}
+  rm -R "${pkgdir}"/usr/share/angband/{icons,sounds}
   install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
+
+md5sums=('a47ba8ccb4f378a7471cafbf5dce640c')
