@@ -1,0 +1,23 @@
+pkgbase = med-salome
+	pkgdesc = MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = http://www.code-aster.org/outils/med/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-fortran
+	makedepends = coreutils
+	depends = hdf5
+	optdepends = tk
+	optdepends = python2
+	provides = med={pkgver}
+	conflicts = med_fichier
+	conflicts = med
+	replaces = med_fichier
+	replaces = med
+	source = http://files.salome-platform.org/Salome/other/med-3.0.7.tar.gz
+	md5sums = 8467068e8de471718b3f8d34c926d7be
+
+pkgname = med-salome
+
