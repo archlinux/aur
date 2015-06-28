@@ -1,7 +1,7 @@
 pkgbase = neutron-kilo
 	pkgdesc = A virtual network service for Openstack
 	pkgver = 2015.1.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://launchpad.net/neutron
 	arch = any
 	license = Apache
@@ -70,7 +70,7 @@ pkgname = python2-neutron-kilo
 	depends = python2-six>=1.9.0
 	depends = python2-stevedore-kilo
 	depends = python2-oslo-concurrency-kilo
-	depends = python2-oslo-config>=1.9.3
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-context-kilo
 	depends = python2-oslo-db-kilo
 	depends = python2-oslo-i18n-kilo

@@ -39,7 +39,7 @@ pkgname=('python2-neutron-kilo'
          'neutron-plugin-sriovnic-agent-kilo')
 
 pkgver=2015.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A virtual network service for Openstack"
 arch=(any)
 url="https://launchpad.net/neutron"
