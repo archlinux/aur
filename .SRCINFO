@@ -1,0 +1,23 @@
+pkgbase = yubico-pam-git
+	pkgdesc = Yubico YubiKey PAM module - git checkout
+	pkgver = 2.19.r12.g11326d0
+	pkgrel = 1
+	url = https://github.com/Yubico/yubico-pam
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = perl-net-ldap-server
+	makedepends = git
+	depends = pam
+	depends = yubico-c-client
+	depends = yubikey-personalization
+	depends = json-c
+	provides = pam_yubico
+	provides = yubico-pam
+	conflicts = pam_yubico
+	conflicts = yubico-pam
+	source = git://github.com/Yubico/yubico-pam.git
+	sha256sums = SKIP
+
+pkgname = yubico-pam-git
+
