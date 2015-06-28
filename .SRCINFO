@@ -1,0 +1,15 @@
+pkgbase = agrep-git
+	pkgdesc = Approximate GREP for fast fuzzy string searching.
+	pkgver = r25.27d72ca
+	pkgrel = 1
+	url = https://github.com/Wikinaut/agrep
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = unzip
+	source = agrep-git::git+https://github.com/Wikinaut/agrep
+	md5sums = SKIP
+
+pkgname = agrep-git
+
