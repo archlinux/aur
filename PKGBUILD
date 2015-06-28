@@ -13,7 +13,7 @@ source=("https://github.com/raphael/linux-4.1-samus/archive/v4.1-3.tar.gz"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-4.1-samus-1.1/build/linux/
+_linuxsrc=linux-4.1-samus-v4.1-3/build/linux
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
