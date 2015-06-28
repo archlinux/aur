@@ -1,0 +1,21 @@
+pkgbase = libykneomgr-git
+	pkgdesc = Yubico YubiKey NEO Manager C Library - git checkout
+	pkgver = 0.1.7.r4.g42351a9
+	pkgrel = 1
+	url = https://github.com/Yubico/libykneomgr
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gengetopt
+	makedepends = help2man
+	depends = pcsclite
+	depends = ccid
+	depends = libzip
+	provides = libykneomgr
+	conflicts = libykneomgr
+	source = git://github.com/Yubico/libykneomgr.git
+	sha256sums = SKIP
+
+pkgname = libykneomgr-git
+
