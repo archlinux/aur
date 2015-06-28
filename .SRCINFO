@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-unique-id
+	pkgdesc = ROS - ROS Python and C++ interfaces for universally unique identifiers.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://ros.org/wiki/unique_id
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-uuid-msgs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-uuid-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-roscpp
+	source = unique_id::git+https://github.com/ros-geographic-info/unique_identifier-release.git#tag=release/indigo/unique_id/1.0.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-unique-id
+
