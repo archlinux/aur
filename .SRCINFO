@@ -1,0 +1,19 @@
+pkgbase = epix
+	pkgdesc = ePiX - Utilities for creating mathematically accurate figures
+	pkgver = 1.2.14
+	pkgrel = 1
+	url = http://mathcs.holycross.edu/~ahwang/epix/ePiX.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghostscript
+	depends = texlive-latexextra
+	depends = texlive-pictures
+	depends = texlive-pstricks
+	source = http://mathcs.holycross.edu/~ahwang/epix/epix-1.2.14.tar.gz
+	md5sums = 3bf176a18a8cac7c128ba47a6cde6f93
+	sha1sums = 254c34f3eabc87c0c8c97e43664c76f44b997d8c
+	sha256sums = 0f44987455641aedda59c6604a5a3b8c46b6a62afc8051e67436df497270eb06
+
+pkgname = epix
+
