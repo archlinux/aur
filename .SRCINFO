@@ -1,0 +1,18 @@
+pkgbase = idutils-git
+	pkgdesc = ID database utilities to navigate tokens in source code.
+	pkgver = 20130707
+	pkgrel = 1
+	url = http://www.gnu.org/software/idutils
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = GPL
+	makedepends = git
+	makedepends = gperf
+	makedepends = help2man
+	makedepends = rsync
+	makedepends = texinfo
+	options = !buildflags
+
+pkgname = idutils-git
+
