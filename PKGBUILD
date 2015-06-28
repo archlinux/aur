@@ -6,7 +6,7 @@ pkgname=perl-net-dbus-git
 _pkgname=perl-net-dbus
 _gitname=net-dbus
 pkgver=1.0.0.r19.g407b780
-pkgrel=1
+pkgrel=2
 pkgdesc="Binding for DBus messaging protocol"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Net-DBus"
@@ -16,7 +16,7 @@ makedepends=('git')
 options=('!emptydirs')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("git://gitorious.org/$_gitname/$_gitname.git")
+source=("git+https://gitorious.org/$_gitname/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
