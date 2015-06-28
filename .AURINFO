@@ -1,0 +1,12 @@
+pkgbase = freedink-data
+	pkgdesc = Free game data for GNU freedink
+	pkgver = 1.08.20140901
+	pkgrel = 1
+	url = http://www.freedink.org/
+	arch = any
+	license = GPL
+	license = custom
+	source = ftp://ftp.gnu.org/gnu/freedink/freedink-data-1.08.20140901.tar.gz
+
+pkgname = freedink-data
+
