@@ -1,0 +1,13 @@
+pkgbase = ruby-build
+	pkgdesc = Compile and install Ruby
+	pkgver = 20150519
+	pkgrel = 1
+	url = http://github.com/sstephenson/ruby-build
+	arch = any
+	license = MIT
+	optdepends = git: install ruby from git
+	source = http://github.com/sstephenson/ruby-build/tarball/v20150519
+	md5sums = fc4bd4ef358235ab6f2befb23251f399
+
+pkgname = ruby-build
+
