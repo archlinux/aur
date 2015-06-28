@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-mist-redmond
+	pkgdesc = Mist like theme for gtk2/3 with colors from Redmond theme.
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://gnome-look.org/content/show.php/Mist-Redmond?content=155580
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	source = gtk-theme-mist-redmond-1.2.zip::http://gnome-look.org/CONTENT/content-files/155580-gtk3.8-theme_Mist-Redmond.zip
+	sha256sums = c1d91fcdc52a4ff52fff3b1530ddbde37572fbb703fcc35dbade58f963e03f6e
+
+pkgname = gtk-theme-mist-redmond
+
