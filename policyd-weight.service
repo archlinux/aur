@@ -1,0 +1,15 @@
+[Unit]
+Description=policyd-weight is a Perl policy daemon for the Postfix MTA (2.1 and later) intended to eliminate forged envelope senders and HELOs (i.e. in bogus mails).
+Before=postfix.service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/policyd-weight start
+ExecReload=/usr/bin/policyd-weight reload
+ExecStop=/usr/bin/policyd-weight stop
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+diff -aur orig/policyd-weight patched/policyd-weight
+--- orig/policyd-weight	2015-03-03 04:53:40.415093217 +0100
++++ patched/policyd-weight	2015-03-03 04:54:01.759230011 +0100
+@@ -3588,7 +3588,7 @@
+             my    ($id, $bf, $qc, $anc, $nsc, $arc, $qb) = 
+             unpack('n   n    n    n     n     n     a*', $buf);
+ 
+-            my ($dn, $offset) = dn_expand(\$qb, 0);
++            my ($dn, $offset) = Net::DNS::Packet::dn_expand(\$qb, 0);
+ 
+             if(($id && $anc) && ($id == $oid) && ($query eq $dn))
+             {

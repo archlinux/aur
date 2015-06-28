@@ -1,0 +1,15 @@
+post_install() {
+  groupadd -r polw
+  useradd -r -g polw -s /bin/false -c "policyd-weight User" polw
+
+  echo "Adjust your smtpd_recipient_restrictions in /etc/postfix/main.cf to match the minimal requirements."
+  echo "For more information see http://policyd-weight.org/howto.html"
+}
+
+pre_remove() {
+  systemctl stop policyd-weight
+}
+
+post_remove() {
+  userdel polw
+}
