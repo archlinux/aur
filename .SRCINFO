@@ -1,0 +1,23 @@
+pkgbase = yubikey-personalization-gui-git
+	pkgdesc = Yubico YubiKey Personalization GUI - git checkout
+	pkgver = 3.1.21.r0.gf76aa60
+	pkgrel = 1
+	url = https://github.com/Yubico/yubikey-personalization-gui
+	install = yubikey-personalization-gui.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = imagemagick
+	depends = yubikey-personalization
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	provides = yubikey-personalization-gui
+	provides = yubikey-personalization-tool
+	conflicts = yubikey-personalization-gui
+	conflicts = yubikey-personalization-tool
+	source = git://github.com/Yubico/yubikey-personalization-gui.git
+	sha256sums = SKIP
+
+pkgname = yubikey-personalization-gui-git
+
