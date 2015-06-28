@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PPCoin
+Comment=PPCoin P2P Cryptocurrency
+Comment[fr]=PPCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=PPCoin, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/ppcoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/ppcoin256.png
+MimeType=x-scheme-handler/ppcoin;
+Categories=Office;
