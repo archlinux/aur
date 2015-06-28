@@ -15,13 +15,13 @@ if test "$CARCH" == x86_64; then
 fi
 install="brother-mfc-${_model}.install"
 _revision=1
-source=("http://pub.brother.com/pub/com/bsc/linux/dlf/mfc${_model}lpr-${pkgver}-${_revision}.i386.deb"
-    "http://pub.brother.com/pub/com/bsc/linux/dlf/mfc${_model}cupswrapper-${pkgver}-${_revision}.i386.deb")
+source=("http://www.brother.com/pub/bsc/linux/dlf/mfc${_model}lpr-${pkgver}-${_revision}.i386.deb"
+   "http://www.brother.com/pub/bsc/linux/dlf/mfc${_model}cupswrapper-${pkgver}-${_revision}.i386.deb")
 
 md5sums=('35b9436ddceb9480e750529b4a4573ff'
          'a4a35a5ad3cfd3bb016941afff79425e')
 
-build() {
+package() {
     deb2targz *.deb >/dev/null || return 1
     rm -f *.deb || return 1
     cd $srcdir || return 1
