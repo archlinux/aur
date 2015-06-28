@@ -1,0 +1,17 @@
+pkgbase = bib2ref
+	pkgdesc = Create refer databases from bibtex files.
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://litcave.rudi.ir/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	optdepends = texlive-bin
+	optdepends = neatrefer
+	source = http://litcave.rudi.ir/bib2ref-0.1.tar.gz
+	md5sums = 55f088593061826bf4473adc16b61cdc
+	sha1sums = 87bd52117ba8068a034125f3684b734e512b3f32
+	sha256sums = 7f352c24c707f710d08ab85c99e05b8488e5f43eed6b45c2a454c184db63d587
+
+pkgname = bib2ref
+
