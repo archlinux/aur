@@ -1,0 +1,21 @@
+pkgbase = yubico-c-git
+	pkgdesc = Yubico YubiKey C library - git checkout
+	pkgver = 1.13.r2.g167cb06
+	pkgrel = 1
+	url = https://github.com/Yubico/yubico-c
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = asciidoc
+	depends = curl
+	depends = libusb
+	provides = libyubikey
+	provides = yubico-c
+	conflicts = libyubikey
+	conflicts = yubico-c
+	source = git://github.com/Yubico/yubico-c.git
+	sha256sums = SKIP
+
+pkgname = yubico-c-git
+
