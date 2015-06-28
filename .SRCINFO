@@ -1,0 +1,18 @@
+pkgbase = hocrconverter-git
+	pkgdesc = Python script to create PDFs and plain text from hOCR documents
+	pkgver = 20150121
+	pkgrel = 2
+	url = http://github.com/tristelune1/HocrConverter
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-schema
+	depends = python-docopt
+	depends = python-reportlab
+	depends = python-pillow
+	source = git://github.com/tristelune1/HocrConverter.git
+	md5sums = SKIP
+
+pkgname = hocrconverter-git
+
