@@ -1,0 +1,13 @@
+pkgbase = microcom
+	pkgdesc = terminal emulator
+	pkgver = 2014.09.0
+	pkgrel = 1
+	url = http://git.pengutronix.de/?p=tools/microcom.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git://git.pengutronix.de/git/tools/microcom.git#tag=v2014.09.0
+	md5sums = SKIP
+
+pkgname = microcom
+
