@@ -1,0 +1,13 @@
+--- ScrollZ/Makefile.in
++++ Makefile.in
+@@ -121,8 +121,8 @@
+ LN = @LN@
+ CP = cp
+ MV = mv
+-INSTALL = ./bsdinstall -c -m 755
+-INSTALL_DATA = ./bsdinstall -c -m 644
++INSTALL = install -c -m 755
++INSTALL_DATA = install -c -m 644
+ 
+ VERSION = @VERSION@
+ 

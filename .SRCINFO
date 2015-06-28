@@ -1,0 +1,24 @@
+pkgbase = scrollz-git
+	pkgdesc = An advanced IRC client based on ircII client.
+	pkgver = 2.2.3.r36.gc97e764
+	pkgrel = 1
+	url = https://github.com/ScrollZ/ScrollZ
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = ncurses
+	depends = openssl
+	provides = scrollz
+	conflicts = scrollz
+	source = scrollz-git::git+git://github.com/ScrollZ/ScrollZ.git
+	source = makefile.diff
+	md5sums = SKIP
+	md5sums = 08ffe17576bc23bdb791ea3e502ef633
+	sha1sums = SKIP
+	sha1sums = 00124cf382288b304a094e8084311b6f46130ed2
+	sha256sums = SKIP
+	sha256sums = d31c99074e27dcdad369c93cdd175af64cf7e564dbe976c9e2bc6ebf4b8048f3
+
+pkgname = scrollz-git
+
