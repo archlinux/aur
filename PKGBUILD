@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=0.18.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Container Cluster Manager for Docker"
 depends=('glibc')
@@ -12,7 +12,7 @@ source=("https://github.com/GoogleCloudPlatform/kubernetes/archive/v$pkgver.tar.
 url="http://kubernetes.io/"
 license="APACHE"
 install=kubernetes.install
-sha256sums=('3859334c1eb14b819523fd0fd2792ff0fe7392e4db4ff445d08beeed3754c425'
+sha256sums=('1f7161939f3daef8ec8b2af7a2ed10bbdb88c08ce0afb76926c44de5edacc4d2'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
 build() {
