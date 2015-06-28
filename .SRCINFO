@@ -1,0 +1,19 @@
+pkgbase = smatch-git
+	pkgdesc = A static analysis tool for C.
+	pkgver = 0.5.0.r3044.50291fa
+	pkgrel = 1
+	url = http://smatch.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom: OSL
+	makedepends = git
+	makedepends = llvm
+	source = smatch-git::git+git://repo.or.cz/smatch.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 6aab00ce8d50d27993f0e2a32bbb0242
+	sha1sums = SKIP
+	sha1sums = 287b284f25f6d6f3088dab4d4cdd05c2dc97749f
+
+pkgname = smatch-git
+
