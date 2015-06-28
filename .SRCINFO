@@ -1,0 +1,14 @@
+pkgbase = zerofree
+	pkgdesc = Scans for non-zero free blocks in an ext2 filesystem and fills them with zeroes
+	pkgver = 1.0.3
+	pkgrel = 3
+	url = http://intgat.tigress.co.uk/rmy/uml/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = e2fsprogs
+	source = http://intgat.tigress.co.uk/rmy/uml/zerofree-1.0.3.tgz
+	sha256sums = 3acfda860be0f0ddcb5c982ff3b4475b1ee8cc35a90ae2a910e93261dbe0ccf6
+
+pkgname = zerofree
+
