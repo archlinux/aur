@@ -2,13 +2,13 @@
 
 pkgname=populate-git
 pkgver=20.daa13fb
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple game, written in vala"
 arch=('any')
 url="https://github.com/alsoijw/populate"
 license=('GPL3')
-depends=('libgee' 'gtk3')
-makedepends=('vala')
+depends=('gtk3' 'libgee')
+makedepends=('git' 'vala')
 source=(${pkgname}::git+"${url}.git")
 md5sums=('SKIP')
 
