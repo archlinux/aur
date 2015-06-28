@@ -1,0 +1,14 @@
+pkgbase = undervolt
+	pkgdesc = A program to undervolt AMD 14h Family processors (E350 at least).
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/undervolt/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/undervolt/undervolt-0.4.tgz
+	sha256sums = c8e9306edbcf41551a63153cab1d8c8432ee305a4ec7961c3cd5101421cddf4c
+
+pkgname = undervolt
+
