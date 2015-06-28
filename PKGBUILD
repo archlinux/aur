@@ -2,17 +2,14 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-sqlite
 _amalgamationver=3080900
-pkgver=3.8.9
+pkgver=3.8.10.2
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=(any)
 groups=(mingw-w64)
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-configure mingw-w64-pdcurses mingw-w64-readline)
-options=(!buildflags !strip staticlibs !emptydirs)
-conflicts=(mingw-w64-sqlite3)
-provides=("mingw-w64-sqlite3=$pkgver")
-replaces=(mingw-w64-sqlite3)
+options=(!buildflags !strip staticlibs)
 license=('custom:Public Domain')
 url="http://www.sqlite.org/"
 source=("http://www.sqlite.org/2015/sqlite-autoconf-$_amalgamationver.tar.gz")
@@ -39,10 +36,11 @@ package() {
   for _arch in ${_architectures}; do
     pushd build-${_arch}
     make DESTDIR="${pkgdir}" install
-    find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \;
-    find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
-    rm -rf "${pkgdir}/usr/${_arch}/share"
+    rm -r "${pkgdir}/usr/${_arch}/share"
+    rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     popd
   done
 }
+
