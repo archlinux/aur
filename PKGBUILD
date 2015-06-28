@@ -1,4 +1,5 @@
 # Maintainer: Caspar Friedrich <c.s.w.friedrich@gmail.com>
+# Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
 pkgname=vertx
 pkgver=3.0.0
