@@ -1,0 +1,8 @@
+post_install() {
+    echo ">>> Renamed to Edit to avoid conflict with vi package."
+}
+
+post_upgrade() {
+    post_install
+}  
+
