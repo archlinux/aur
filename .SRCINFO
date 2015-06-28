@@ -1,0 +1,21 @@
+pkgbase = open-axiom
+	pkgdesc = open source platform for symbolic, algebraic, and numerical computations
+	pkgver = 1.4.2
+	pkgrel = 5
+	url = http://www.open-axiom.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = sbcl
+	makedepends = texlive-core
+	depends = qt4
+	depends = libxpm
+	options = !strip
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/open-axiom/1.4.2/open-axiom-1.4.2.tar.bz2
+	source = LICENSE
+	md5sums = 521850b13eaefdf4662823da16c97897
+	md5sums = eec8e6188dcdf22d27683c197cea75e8
+
+pkgname = open-axiom
+
