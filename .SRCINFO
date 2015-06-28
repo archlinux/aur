@@ -1,7 +1,7 @@
 pkgbase = neutron-lbaas-kilo
 	pkgdesc = Neutron Load Balance as a Service service
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/neutron
 	install = neutron-lbaas.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = neutron-lbaas-kilo
 	depends = python2-sqlalchemy-kilo
 	depends = python2-alembic>=0.7.2
 	depends = python2-six>=1.9.0
-	depends = python2-oslo-config>=1.9.3
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-db-kilo
 	depends = python2-oslo-log-kilo
 	depends = python2-oslo-messaging-kilo
