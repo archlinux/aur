@@ -1,0 +1,18 @@
+pkgbase = perl-canary-stability
+	pkgdesc = CPAN/Canary-Stability - canary to check perl compatability for schmorp's modules
+	pkgver = 2006
+	pkgrel = 1
+	url = https://metacpan.org/release/Canary-Stability
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-anyevent>=5
+	depends = perl-common-sense
+	depends = perl-guard>=0.5
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Canary-Stability-2006.tar.gz
+	md5sums = 570ffd5fd8a399b6ba392c8451c8f5ab
+
+pkgname = perl-canary-stability
+
