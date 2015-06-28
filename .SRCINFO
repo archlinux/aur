@@ -1,0 +1,14 @@
+pkgbase = mphconv
+	pkgdesc = Converts miles to minutes, given miles and MPH
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://tweakdeveloper.github.io/mphconv
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = https://github.com/tweakdeveloper/mphconv/archive/0.0.3.tar.gz
+	sha256sums = be0c8e7ead3cf1d187a3287dccaf494331b831ba9c6610198301e440c59a7705
+
+pkgname = mphconv
+
