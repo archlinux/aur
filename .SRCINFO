@@ -1,6 +1,6 @@
 pkgbase = python2-guessit
 	pkgdesc = A library for guessing information from video files.
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/guessit
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-guessit
 	depends = python2-babelfish
 	depends = python2-stevedore
 	conflicts = python2-guessit-git
-	source = http://pypi.python.org/packages/source/g/guessit/guessit-0.10.2.tar.gz
-	md5sums = e4b8ad0f74fdd18e2264532051cdf54d
+	source = http://pypi.python.org/packages/source/g/guessit/guessit-0.10.3.tar.gz
+	md5sums = 11e658f9b0473d61d681579c03c196c3
 
 pkgname = python2-guessit
 
