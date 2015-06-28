@@ -1,0 +1,23 @@
+pkgbase = bino-git
+	pkgdesc = Stereoscopic 3D video player with multi-display support.
+	pkgver = 1.6.1.r8.gec826e6
+	pkgrel = 1
+	url = http://bino3d.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = ffmpeg>=20110724
+	depends = freealut
+	depends = freeglut
+	depends = glew
+	depends = libass
+	depends = qt5-base
+	optdepends = lirc: for infrared remote control
+	provides = bino
+	conflicts = bino
+	source = bino-git::git+http://git.savannah.gnu.org/r/bino.git
+	md5sums = SKIP
+
+pkgname = bino-git
+
