@@ -1,0 +1,14 @@
+pkgbase = irivermanager
+	pkgdesc = Simple program written in Qt, which helps managing music on iriver players
+	pkgver = 220810
+	pkgrel = 1
+	url = http://irivermanager.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://downloads.sourceforge.net/sourceforge/irivermanager/irivermanager-220810.tar.gz
+	sha256sums = 5fda840c24c0b45ce092e6cf5cc51e1b8a60a8294c6794bb6ff80c8b0ba39729
+
+pkgname = irivermanager
+
