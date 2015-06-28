@@ -1,7 +1,7 @@
 pkgbase = freedink-dfarc
 	pkgdesc = Frontend and .dmod installer for GNU FreeDink
 	pkgver = 3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedink.org/
 	install = freedink-dfarc.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = freedink-dfarc
 	depends = wxgtk>=2.8
 	depends = xdg-utils
 	source = http://ftp.gnu.org/gnu/freedink/dfarc-3.12.tar.gz
-	md5sums = 1c24ba41cf1ef532415f13a04f279099
+	sha256sums = 222a84cc91967abce4d86fb4ed8ba43455b818aecdb8487b0fe52d76ade29a83
 
 pkgname = freedink-dfarc
 
