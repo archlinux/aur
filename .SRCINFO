@@ -1,0 +1,17 @@
+pkgbase = texturepacker
+	pkgdesc = Sprite sheet creator and image optimizer
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = http://www.texturepacker.com
+	install = texturepacker.install
+	arch = x86_64
+	license = custom:texturepacker
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	source = http://www.codeandweb.com/download/texturepacker/3.7.1/TexturePacker-3.7.1-ubuntu64.deb
+	md5sums = 9f75c5786602dc3942fdce2e3fe7a763
+
+pkgname = texturepacker
+
