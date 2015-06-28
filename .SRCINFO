@@ -1,0 +1,16 @@
+pkgbase = quintet
+	pkgdesc = A multi-platform Helm Simulator
+	pkgver = 14.7
+	pkgrel = 1
+	url = http://quintet.us
+	arch = x86_64
+	license = custom
+	depends = lib32-glu
+	depends = lib32-libxcursor
+	source = http://www.quintet.us/files/quintet-linux.zip
+	source = quintet
+	sha256sums = 4fba003c04ab7cbf1688a5b71e230db1402b00346dc02a458b62e5910da272fe
+	sha256sums = 2fbadcb58ef9f687fa6d3eb080316699819a843700e4a757938711f83d620bd6
+
+pkgname = quintet
+
