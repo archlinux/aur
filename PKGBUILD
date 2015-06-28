@@ -2,20 +2,21 @@
 
 _hkgname=GLUtil
 pkgname=haskell-glutil
-pkgver=0.7.4
+pkgver=0.8.6
 pkgrel=1
 
 pkgdesc="Helpers for working with shaders, buffer objects, and textures in OpenGL."
 
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD3')
-arch=('i686' 'x86_64')
-depends=('ghc' 'haskell-cpphs' 'haskell-juicypixels>=3' 'haskell-linear>=1.1.3'
-         'haskell-opengl>=2.9' 'haskell-openglraw>=1.1' 'haskell-vector>=0.7')
-options=('strip' 'staticlibs')
+arch=('any')
+depends=('ghc' 'haskell-juicypixels>=3' 'haskell-linear>=1.1.3'
+         'haskell-opengl>=2.9.2' 'haskell-opengl<2.13'
+         'haskell-openglraw>=1.1' 'haskell-vector>=0.7')
+options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install="${pkgname}.install"
-sha512sums=('0af7a026a98d96114ffad30b82588dc03e8c92d1f99a3dd241144b36db905d8d6dc96dd608c27da4ae82b5cafc833041c94270c52f2458cfc4c32cbe9f1eefff')
+sha512sums=('8d2be003aa6a624dd0d56214d25a230494b57707af0d5ddd1a1e9cfb3b91303a8f195ef8e81980bc4cfa014e0fa828ad550217ca555c6c53ad4731a008059601')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
