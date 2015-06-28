@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Terracoin
+Comment=Terracoin P2P Cryptocurrency
+Comment[fr]=Terracoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Terracoin, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/terracoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/terracoin256.png
+MimeType=x-scheme-handler/terracoin;
+Categories=Office;
