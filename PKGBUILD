@@ -26,17 +26,17 @@ sha1sums=('085cc8248be5b6145f57b8517e0f22469e5047c1')
 sha256sums=('875552bc8fcca2606b3c617a7bc298ecbb2529d42f28a16ced544b66be98d72f')
 
 build() {
-	cd "$srcdir"
-	make
+  cd "$srcdir"
+  make
 }
 
 check() {
-	cd "$srcdir"
-	make -k check
+  cd "$srcdir"
+  make -k check
 }
 
 package() {
-	cd "$srcdir"
+  cd "$srcdir"
   mkdir -p $pkgdir/usr/{bin,share/doc/$pkgname}
   install -Dm 755 $srcdir/squint/squint $pkgdir/usr/bin/squint
   install -Dm 644 $srcdir/doc/language.ps $pkgdir/usr/share/doc/$pknamek/language.ps
