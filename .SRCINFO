@@ -1,0 +1,19 @@
+pkgbase = iview
+	pkgdesc = Alternative frontend for ABC TV's Iview service
+	pkgver = 386+gf0981c8
+	pkgrel = 1
+	url = https://github.com/vadmium/python-iview
+	arch = any
+	license = GPL3
+	makedepends = python3
+	depends = python3
+	optdepends = python-socks: Proxy support
+	optdepends = python-gobject: GTK frontend
+	optdepends = gtk3: GTK frontend
+	optdepends = rtmpdump: News 24 live stream
+	provides = python-iview
+	source = https://github.com/vadmium/python-iview/tarball/f0981c8
+	md5sums = 41913acfdedf39d386b7c49c7c897cf1
+
+pkgname = iview
+
