@@ -1,0 +1,12 @@
+pkgbase = vim-repl-git
+	pkgdesc = Minimalistic REPL plugin for Vim
+	pkgver = 20131113
+	pkgrel = 1
+	url = https://github.com/khorser/vim-repl
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = vim-vimproc
+
+pkgname = vim-repl-git
+
