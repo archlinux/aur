@@ -6,15 +6,15 @@
 
 pkgname=bind-rl
 _pkgname=bind
-_pkgver=9.10.2
-pkgver=9.10.2
+_pkgver=9.10.2-P1
+pkgver=9.10.2.P1
 pkgrel=1
 pkgdesc='The ISC BIND nameserver with Response Rate Limiting(RRL) enabled.'
 url='http://www.isc.org/software/bind/'
 license=('custom:ISC')
 arch=('i686' 'x86_64')
 options=('!emptydirs')
-depends=('openssl' 'krb5' 'libxml2' 'libcap')
+depends=('glibc' 'libxml2' 'libcap' 'openssl' 'geoip' 'bind-tools')
 conflicts=('bind')
 provides=('dns-server')
 backup=('etc/named.conf'
@@ -34,10 +34,10 @@ source=("http://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'localhost.ip6.zone'
         '127.0.0.zone'
         'empty.zone')
-sha1sums=('4ddb2670976c06af7e86352616383958d82c51ce'
+sha1sums=('1c25e0d3faeac4c78ef338e7a6f1145f53d973f3'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
-          '6bebf4ff8ca4482a83f4d3dbf176d9bffd89eefa'
+          '9537f4835a1f736788d0733c7996a10db2d4eee4'
           'c017aae379c32c7cb1aa1ad84776b83e3a5c139f'
           'cb2e81b4cbf9efafb3e81e3752f0154e779cc7ec'
           '6704303a6ed431a29b1d8fe7b12decd4d1f2f50f'
@@ -63,6 +63,10 @@ build() {
     --sbindir=/usr/bin \
     --localstatedir=/var \
     --disable-static \
+    --with-python=/usr/bin/python \
+    --with-geoip \
+    --with-ipv6 \
+    --with-idn \
     --with-openssl \
     --with-libxml2 \
     --with-libtool \
@@ -73,9 +77,11 @@ build() {
 package() {
   pushd "bind-$_pkgver"
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  make DESTDIR="$pkgdir" install
-  popd
+  for _d in bin/{check,confgen,named,rndc}; do
+    (cd "$_d" && make DESTDIR="$pkgdir" install)
+  done
 
+  cd "$srcdir"
   install -D -m644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   install -D -m644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
 
