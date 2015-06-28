@@ -1,7 +1,7 @@
 # Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=teeworlds-ddnet
-pkgver=7.7.2
+pkgver=7.7.3
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=(teeworlds-ddnet.png) # PNG converted from DDNet.ico from https://github.
 source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.gz")
 source_x86_64=("$url/downloads/DDNet-$pkgver-linux_x86_64.tar.gz")
 md5sums=('41465eb3a4ecf2e7f7afe5a5f0c84386')
-md5sums_i686=('3ca897060da49e0d3f77a6db78272f91')
-md5sums_x86_64=('4c5afee09c27097949f9d3e836764053')
+md5sums_i686=('a52413b7939e672421c32f5b4bfe836e')
+md5sums_x86_64=('c443fa382900da6d0f7fb6697edbd780')
 
 # Check hashs manually (replace $pkgver):
 # curl -sL http://ddnet.tw/downloads/md5sums | grep -E DDNet-$pkgver-linux
