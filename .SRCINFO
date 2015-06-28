@@ -1,0 +1,27 @@
+pkgbase = paccache
+	pkgdesc = serve pacman cache and redirect via avahi service
+	pkgver = 0.1.14
+	pkgrel = 2
+	url = https://github.com/eworm-de/paccache
+	install = paccache.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	depends = avahi
+	depends = curl
+	depends = iniparser
+	depends = darkhttpd
+	depends = libmicrohttpd
+	depends = nss-mdns
+	conflicts = pacserve
+	replaces = pacserve
+	backup = etc/pacredir.conf
+	backup = etc/pacman.d/paccache
+	source = http://www.eworm.de/download/paccache/paccache-0.1.14.tar.xz
+	source = http://www.eworm.de/download/paccache/paccache-0.1.14.tar.xz.asc
+	sha256sums = b6ebbbc9d2ce12798a1e6ad4bc448a95b47787a2c4d4e42e0fa677908a74fd83
+	sha256sums = SKIP
+
+pkgname = paccache
+
