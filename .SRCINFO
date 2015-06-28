@@ -1,0 +1,21 @@
+pkgbase = python-rrdtool
+	pkgver = 1.4.7
+	pkgrel = 4
+	url = https://github.com/pbanaszkiewicz/python-rrdtool
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2
+	makedepends = rrdtool
+	makedepends = cairo
+	makedepends = pango
+	makedepends = libxml2
+	makedepends = glib2
+	source = https://pypi.python.org/packages/source/p/python-rrdtool/python-rrdtool-1.4.7.tar.gz
+	md5sums = 7112a594ccd7759d59eaebf061ddacbd
+
+pkgname = python2-rrdtool
+	pkgdesc = Working Python2 RRDTool binding
+	depends = python2
+	depends = rrdtool
+
