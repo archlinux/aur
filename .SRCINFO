@@ -1,0 +1,14 @@
+pkgbase = mmdb2
+	pkgdesc = A C++ toolkit for working with macromolecular coordinate files
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://launchpad.net/mmdb
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	conflicts = mmdb
+	source = ftp://ftp.ccp4.ac.uk/opensource/mmdb2-2.0.1.tar.gz
+	sha256sums = 6df04205747ae35cd62edc9649ab0187f902a56fb16f355cbdbdc7ca3e14b6bd
+
+pkgname = mmdb2
+
