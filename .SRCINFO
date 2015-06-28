@@ -1,0 +1,15 @@
+pkgbase = xcur2png
+	pkgdesc = Convert X cursors to PNG images
+	pkgver = 0.7.1
+	pkgrel = 3
+	url = http://cli-apps.org/content/show.php/xcur2png?content=86010
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = libxcursor
+	source = xcur2png-0.7.1.tar.gz::http://cli-apps.org/CONTENT/content-files/86010-xcur2png-0.7.1.tar.gz
+	sha256sums = bc6a062fdb48615a7159ed56ef3d2011168cd8a9decaf1d8a4e316d3064132c9
+
+pkgname = xcur2png
+
