@@ -1,0 +1,25 @@
+pkgbase = freedink
+	pkgdesc = A free and enhanced version of the Dink Smallwood game engine
+	pkgver = 1.08.20121209
+	pkgrel = 2
+	url = http://www.freedink.org/
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL3
+	depends = fontconfig
+	depends = freedink-data
+	depends = sdl_gfx
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	optdepends = timidity++: MIDI-music support
+	conflicts = freedink-git
+	conflicts = freedink-engine
+	replaces = freedink-git
+	replaces = freedink-engine
+	source = http://ftp.gnu.org/gnu/freedink/freedink-1.08.20121209.tar.gz
+	md5sums = c63fe38ab68158ded2a8039cbec2c8e3
+
+pkgname = freedink
+
