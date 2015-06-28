@@ -2,7 +2,7 @@
 
 pkgname="python2-keystonemiddleware-kilo"
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Middleware for OpenStack Identity"
 arch=("i686" "x86_64")
 url="https://pypi.python.org/pypi/keystonemiddleware/"
@@ -13,7 +13,7 @@ depends=(
   "python2-babel"
   "python2-iso8601"
   "python2-netaddr"
-  "python2-oslo-config"
+  "python2-oslo-config-kilo"
   "python2-pbr"
   "python2-keystoneclient"
   "python2-requests"
