@@ -1,0 +1,22 @@
+pkgbase = notmuchfs-git
+	pkgdesc = A virtual maildir file system for notmuch queries.
+	pkgver = 0.r9.1f34bc6
+	pkgrel = 1
+	url = https://github.com/tsto/notmuchfs
+	install = notmuchfs-git.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = notmuch
+	depends = fuse
+	optdepends = mutt
+	conflicts = notmuchfs
+	source = notmuchfs-git::git+https://github.com/tsto/notmuchfs.git
+	md5sums = SKIP
+	md5sums = 56beb2adc61118dd872c09e362f5a4d2
+	sha1sums = SKIP
+	sha1sums = cc0b10e49d84d6ebe3630b9979f8a76f015f277e
+
+pkgname = notmuchfs-git
+

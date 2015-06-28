@@ -1,0 +1,7 @@
+post_install(){
+  echo "==> Read README.md and README.MUTT.md"
+  echo "        (/usr/share/doc/notmuchfs-git)"
+  echo "    More info: http://notmuchmail.org/notmuch-mutt/"
+  echo "               https://github.com/tsto/notmuchfs"
+}
+
