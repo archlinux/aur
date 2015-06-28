@@ -1,0 +1,6 @@
+post_install() {
+  echo "==> See the hearse man page for instructions on"
+  echo "==> setting it up, all commands must be run as root."
+}
+
+# vim:set ts=2 sw=2 et:

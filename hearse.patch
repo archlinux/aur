@@ -1,0 +1,41 @@
+# Unofficial patch by PJ Weisberg
+# Source: <http://bugs-debian.org/cgi-bin/bugreport.cgi?bugs=290937>
+
+--- /usr/bin/hearse	2009-12-22 05:53:41.000000000 -0800
++++ hearse	2011-09-22 13:25:01.519938706 -0700
+@@ -757,26 +757,6 @@
+ 	return;
+     }
+ 
+-    # The 4 version numbers are stored by Nethack as 4 unsigned longs
+-    # in host byte order at the start of the file.  I don't want to
+-    # read them in host order, though, because that would mask byte sex
+-    # differences between platforms.
+-    #
+-    # If the platform's longs aren't 4 bytes, though, I've got a
+-    # separate problem.  I need to read the right number of bytes
+-    # else I'll only get part of the version data, and what I do get
+-    # will end up in the wrong places.  I test for this using Perl
+-    # 5.6's 'L!' pack format (and just hope for the best for earlier
+-    # versions).  I haven't actually written the code to deal with
+-    # this case yet (it needs special handling because there's no
+-    # format to read a native-sized long but with a specific byte
+-    # order), I just detect it and choke.
+-
+-    my $ulong_size = eval { length pack 'L!', 0 } || 4;	# punt for Perl < 5.6
+-    if ($ulong_size != 4) {
+-	xdie "size of unsigned long is $ulong_size rather than 4\n";
+-    }
+-
+     # struct version_info {
+     #     unsigned long   incarnation;    /* actual version number */
+     #     unsigned long   feature_set;    /* bitmask of config settings */
+@@ -784,7 +764,7 @@
+     #     unsigned long   struct_sizes;   /* size of key structs */
+     # };
+ 
+-    @version = unpack 'V' x HEADER_VERSION_COUNT, $data;
++    @version = unpack 'L!<' x HEADER_VERSION_COUNT, $data;
+     if (@version != HEADER_VERSION_COUNT) {
+ 	xwarn "$open_spec is too short (", length($data), ")\n";
+ 	return;
