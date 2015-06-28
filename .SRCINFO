@@ -1,0 +1,20 @@
+pkgbase = kdesudo-frameworks-bzr
+	pkgdesc = A SUdo frontend for KDE. KF5 Frameworks branch. (BZR version)
+	pkgver = 70
+	pkgrel = 1
+	url = https://launchpad.net/kdesudo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = mercurial
+	makedepends = python
+	depends = kdelibs4support
+	depends = sudo
+	conflicts = kdesudo
+	source = kdesudo::bzr+lp:~kubuntu-kdesudo/kdesudo/frameworks
+	sha1sums = SKIP
+
+pkgname = kdesudo-frameworks-bzr
+
