@@ -1,0 +1,15 @@
+pkgbase = utmp-git
+	pkgdesc = A small program which updates the utmp record of the current tty.
+	pkgver = 0.r6.f9178df
+	pkgrel = 1
+	url = http://git.suckless.org/utmp/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	conflicts = utmp
+	source = utmp-git::git+git://git.suckless.org/utmp
+	md5sums = SKIP
+
+pkgname = utmp-git
+
