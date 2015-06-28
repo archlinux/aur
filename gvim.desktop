@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vi IMproved
+Comment=Powerful text editor with scripting functions and macro recorder
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+Exec=gvim -f %F
+Icon=gvim
+Type=Application
+Terminal=false
+X-XClassHintResName=VIM
+Categories=Utility;TextEditor;
