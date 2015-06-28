@@ -3,9 +3,9 @@
 # Contributor: mde <mde@fleegix.org>
 
 _npmname=jake
-_npmver=0.7.3
-pkgname=nodejs-jake # All lowercase
-pkgver=0.7.3
+_npmver=8.0.12
+pkgname=nodejs-jake
+pkgver=$_npmver
 pkgrel=1
 pkgdesc="JavaScript build tool, similar to Make or Rake"
 arch=(any)
@@ -15,7 +15,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('e5321b99bce65798a5408d7586fb803581cf70f4')
+sha256sums=('24aae8741604b463347cf1792ed3ce2991c76d7a981aa7e0e8ccfa118b89bec0')
 
 package() {
   cd "$srcdir"
