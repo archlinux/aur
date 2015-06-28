@@ -39,7 +39,7 @@ pkgname=('python2-neutron-kilo'
          'neutron-plugin-sriovnic-agent-kilo')
 
 pkgver=2015.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual network service for Openstack"
 arch=(any)
 url="https://launchpad.net/neutron"
@@ -114,7 +114,7 @@ package_python2-neutron-kilo() {
            'python2-six>=1.9.0'
            'python2-stevedore-kilo'
            'python2-oslo-concurrency-kilo'
-           'python2-oslo-config>=1.9.3'
+           'python2-oslo-config-kilo'
            'python2-oslo-context-kilo'
            'python2-oslo-db-kilo'
            'python2-oslo-i18n-kilo'
