@@ -1,0 +1,16 @@
+pkgbase = qt-lua
+	pkgdesc = Lua scripting API for Qt applications
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.nongnu.org/libqtlua/
+	arch = any
+	license = LGPL
+	depends = qt5-base
+	depends = lua
+	source = http://download.savannah.gnu.org/releases/libqtlua/libqtlua-2.0.tar.gz
+	source = lua53.patch
+	sha1sums = 2553c8c30c2154143fe47278e91d3d26719b06e2
+	sha1sums = 674da42a462ab1957a4571611d948cc222ad1faa
+
+pkgname = qt-lua
+
