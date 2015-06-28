@@ -1,0 +1,32 @@
+--- ../gimp-deskew-plugin/autogen.sh	2012-05-23 16:25:29.061601683 +0930
++++ autogen.sh	2012-05-23 16:48:42.028349067 +0930
+@@ -67,20 +67,29 @@
+    ACLOCAL=aclocal-1.7
+ elif (automake-1.8 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.8
+    ACLOCAL=aclocal-1.8
+ elif (automake-1.9 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.9
+    ACLOCAL=aclocal-1.9
+ elif (automake-1.11 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.11
+    ACLOCAL=aclocal-1.11
++elif (automake-1.12 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.12
++   ACLOCAL=aclocal-1.12
++elif (automake-1.13 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.13
++   ACLOCAL=aclocal-1.13
++elif (automake-1.14 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.14
++   ACLOCAL=aclocal-1.14
+ elif (automake-1.6 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.6
+    ACLOCAL=aclocal-1.6
+ else
+     echo
+     echo "  You must have automake 1.6 or newer installed to compile $PROJECT."
+     echo "  Download the appropriate package for your distribution,"
+     echo "  or get the source tarball at ftp://ftp.gnu.org/pub/gnu/automake/"
+     DIE=1
+ fi
