@@ -1,0 +1,17 @@
+pkgbase = libmpq-git
+	pkgdesc = A library for reading MPQ files (archives used by Blizzard) which can be easily used in applications.
+	pkgver = 0.4.2.r76.g707e6f7
+	pkgrel = 1
+	url = https://github.com/ge0rg/libmpq
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = zlib
+	conflicts = libmpq
+	options = !libtool
+	source = libmpq-git::git+https://github.com/ge0rg/libmpq.git
+	md5sums = SKIP
+
+pkgname = libmpq-git
+
