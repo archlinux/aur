@@ -2,16 +2,15 @@
 
 pkgname=jugglinglab
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An application for creating and animating juggling patterns."
 arch=('any')
 url="http://jugglinglab.sourceforge.net/"
 license=('GPL')
-depends=('bash' 'java-runtime')
+depends=('bash' 'java-environment')
 makedepends=('gzip' 'sed')
 source=(http://downloads.sourceforge.net/project/jugglinglab/Juggling%20Lab/JugglingLab-${pkgver}_other.tar.gz)
-md5sums=('752a399833f0c78c2a2517ef6fffc46b')
-
+sha256sums=('ad0e4b9e4d11729e15a34873caaccb43ca8a538f598b4b4c3e69b464f523a459')
 package() {
 
    cd $startdir/src/JugglingLab
