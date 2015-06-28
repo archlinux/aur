@@ -32,7 +32,7 @@ makedepends=('apache' 'imap' 'postgresql-libs' 'libldap' 'postfix'
 source=("https://downloads.php.net/~ab/php-${pkgver}.tar.xz"
         'php.ini.patch' 'apache.conf'
         'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('bd56863c6412a7c302adfb80983b3e5e'
+md5sums=('050a0353e9999ec7b472aa73b58f1cfe'
          '6d87a7a54ff51f634ff91f0b390dab20'
          '0677a10d2e721472d6fccb470356b322'
          'cc2940f5312ba42e7aa1ddfab74b84c4'
