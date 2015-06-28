@@ -1,0 +1,17 @@
+pkgbase = glulxe-term
+	pkgdesc = Glulxe is an interpreter for the Glulx virtual machine.
+	pkgver = 052
+	pkgrel = 1
+	url = http://www.eblong.com/zarf/glulx/
+	arch = i686
+	arch = x86_64
+	groups = inform
+	license = BSD
+	depends = ncurses
+	source = http://www.ifarchive.org/if-archive/programming/glulx/interpreters/glulxe/glulxe-052.tar.gz
+	source = http://www.ifarchive.org/if-archive/programming/glk/implementations/glktermw-104.tar.gz
+	md5sums = 8e3b25accb5d051db60930e9898754b1
+	md5sums = 050aeb964140f7e11f555e06a23ccb1d
+
+pkgname = glulxe-term
+
