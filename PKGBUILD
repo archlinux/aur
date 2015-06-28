@@ -33,7 +33,7 @@ source=("https://downloads.php.net/~ab/php-${pkgver}.tar.xz"
         'php.ini.patch' 'apache.conf'
         'php-fpm.service' 'php-fpm.tmpfiles')
 md5sums=('050a0353e9999ec7b472aa73b58f1cfe'
-         '6d87a7a54ff51f634ff91f0b390dab20'
+         'd84cb6f3aa24003f326880bc7a4bdd6c'
          '0677a10d2e721472d6fccb470356b322'
          'cc2940f5312ba42e7aa1ddfab74b84c4'
          'c60343df74f8e1afb13b084d5c0e47ed')

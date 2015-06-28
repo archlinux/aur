@@ -36,7 +36,7 @@
  ;
  ; ... or under UNIX:
  ;
-@@ -864,42 +864,42 @@
+@@ -864,41 +864,41 @@
  ; extension folders as well as the separate PECL DLL download (PHP 5+).
  ; Be sure to appropriately set the extension_dir directive.
  ;
@@ -52,7 +52,6 @@
 -;extension=php_ldap.dll
 -;extension=php_mbstring.dll
 -;extension=php_exif.dll      ; Must be after mbstring as it depends on it
--;extension=php_mysql.dll
 -;extension=php_mysqli.dll
 -;extension=php_oci8_12c.dll  ; Use with Oracle Database 12c Instant Client
 -;extension=php_openssl.dll
@@ -76,10 +75,9 @@
 +;extension=php_interbase.so
 +;extension=php_ldap.so
 +;extension=php_mbstring.so
-+;extension=php_exif.so      ; Must be after mbstring as it depends on it
-+;extension=php_mysql.so
++;extension=php_exif.so       ; Must be after mbstring as it depends on it
 +;extension=php_mysqli.so
-+;extension=php_oci8_12c.so  ; Use with Oracle Database 12c Instant Client
++;extension=php_oci8_12c.so   ; Use with Oracle Database 12c Instant Client
 +;extension=php_openssl.so
 +;extension=php_pdo_firebird.so
 +;extension=php_pdo_mysql.so
