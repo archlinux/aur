@@ -1,0 +1,17 @@
+pkgbase = nullshell-git
+	pkgdesc = do nothing but print keep alive characters, can be used for login shell - git checkout
+	pkgver = 0.0.6.r0.g967686e
+	pkgrel = 1
+	url = https://github.com/eworm-de/nullshell
+	install = nullshell.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	makedepends = git
+	conflicts = nullshell
+	source = git://github.com/eworm-de/nullshell.git
+	sha256sums = SKIP
+
+pkgname = nullshell-git
+
