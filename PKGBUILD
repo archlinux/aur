@@ -10,7 +10,7 @@ url="http://radiotray.wordpress.com/"
 license=(GPL)
 depends=('gstreamer0.10-base-plugins' 'gstreamer0.10-python' 'pygtk' \
 'python2-notify' 'python2-xdg' 'python2-dbus' 'gstreamer0.10-good-plugins' \
-'python2-gobject' 'python2-lxml' 'libappindicator-gtk2')
+'python2-gobject' 'python2-lxml')
 optdepends=('gstreamer0.10-bad-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-ffmpeg') 
 makedepends=(python2)
 provides=(radiotray)
