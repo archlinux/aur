@@ -1,0 +1,12 @@
+[Unit]
+Description=Offerings Daemon
+After=network.target 
+
+[Service]
+User=%i
+Group=users
+Type=simple
+ExecStart=/usr/bin/offeringd
+
+[Install]
+WantedBy=multi-user.target

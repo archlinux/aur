@@ -1,0 +1,22 @@
+pkgbase = offerings-to-cthulhu-daemon
+	pkgdesc = Offerings to Cthulhu (daemon)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://cthulhu.tk/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	depends = boost-libs
+	depends = miniupnpc
+	depends = openssl
+	source = https://github.com/thegreatoldone/offerings/archive/67bad1c7ad3f0126a49a5a5166bd744c1b085cad.zip
+	source = offeringd@.service
+	sha256sums = 6da2bbb1cfabe70029c5aab659ef08b91dd923cd89a6bc1e0ad3ab8ef7ae23f8
+	sha256sums = 3e6507cbef08ecae830418fcb4a8a93fb038a598e2a387f7389b0b756c3521b9
+
+pkgname = offerings-to-cthulhu-daemon
+
