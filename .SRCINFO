@@ -1,0 +1,16 @@
+pkgbase = praetorian
+	pkgdesc = A ssh praetorian (bouncer, minder or whatever) ; it's just a cool restricted command script.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://github.com/vdemeester/praetorian
+	arch = any
+	license = GPLv3
+	depends = openssh
+	depends = coreutils
+	provides = praetorian
+	conflicts = praetorian
+	source = http://github.com/vdemeester/praetorian/tarball/0.1.1
+	md5sums = c8cac0a2a334f4733ba7fab61dfc0670
+
+pkgname = praetorian
+
