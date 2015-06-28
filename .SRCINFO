@@ -1,5 +1,5 @@
 pkgbase = compton-conf
-	pkgdesc = Configuration manager for X compositor compton
+	pkgdesc = A graphical configuration tool for Compton X composite manager. Qt4 UI.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/lxde/compton-conf
@@ -7,14 +7,16 @@ pkgbase = compton-conf
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
-	makedepends = cmake>=2.8.6
+	makedepends = cmake
 	depends = qt4
 	depends = libconfig
-	optdepends = compton: The actual compositor to configure
-	optdepends = compton-git: The actual compositor to configure (git-version)
+	optdepends = compton-git: for bleeding-edge compton features
+	provides = compton-conf=0.1.0
 	conflicts = compton-conf-git
-	source = https://github.com/lxde/compton-conf/archive/0.1.0.tar.gz
-	md5sums = 767ace41462d947f161d13edfee61f8b
+	source = compton-conf-0.1.0.tar.gz::https://github.com/lxde/compton-conf/archive/0.1.0.tar.gz
+	source = desktop_entry.patch
+	sha512sums = 863b7a90ba369fa91f943e4b03cec079457ce2f216d79987e7f695274a8249e15677f88bd169cf5bb1aff5f821342b150aa68e139d034321cf35542bd393b77a
+	sha512sums = 793ccb1c39852e5b939a71f651de17ad68e251a1a40d54feceb3cdfc24686ff75b61dd73cd4b1a794bee8e2c15cc09839c1b6c58f15a5d68b999c125455bc23a
 
 pkgname = compton-conf
 

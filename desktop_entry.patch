@@ -1,0 +1,9 @@
+--- a/compton-conf.desktop	2014-05-07 00:08:13.000000000 -0500
++++ b/compton-conf.desktop	2015-06-28 11:14:05.551079418 -0500
+@@ -6,4 +6,4 @@ Comment=Configure Compton window effects
+ TryExec=compton-conf
+ Exec=compton-conf
+ Icon=preferences-desktop-display
+-Categories=Settings;DesktopSettings;Qt;LXQt;
++Categories=Settings;DesktopSettings;Qt;X-LXQt;
+\ No newline at end of file
