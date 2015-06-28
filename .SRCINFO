@@ -1,6 +1,6 @@
 pkgbase = perl-alpm
 	pkgdesc = ArchLinux Package Manager backend library.
-	pkgver = 3.03
+	pkgver = 3.05
 	pkgrel = 1
 	url = https://metacpan.org/release/ALPM
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = perl-alpm
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/ALPM-3.03.tar.gz
-	md5sums = d6ad3fc10ff9a470db4a4992a3ec7c3a
+	source = http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/ALPM-3.05.tar.gz
+	md5sums = 61b9476864416ec394ed24eabe158fcb
 
 pkgname = perl-alpm
 

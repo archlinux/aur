@@ -1,7 +1,7 @@
 # Maintainer: Justin Davis (juster) <jrcd83@gmail.com>
 
 pkgname=perl-alpm
-pkgver=3.03
+pkgver=3.05
 pkgrel=1
 pkgdesc='ArchLinux Package Manager backend library.'
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ options=(!emptydirs)
 depends=(perl)
 url=https://metacpan.org/release/ALPM
 source=("http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/ALPM-$pkgver.tar.gz")
-_ddir=ALPM-3.03
-md5sums=('d6ad3fc10ff9a470db4a4992a3ec7c3a')
+_ddir=ALPM-3.05
+md5sums=('61b9476864416ec394ed24eabe158fcb')
 
 build()
 (
