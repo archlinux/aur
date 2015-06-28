@@ -1,7 +1,7 @@
 pkgbase = nova-kilo
 	pkgdesc = OpenStack cloud computing fabric controller
 	pkgver = 2015.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/nova
 	install = nova.install
 	arch = any
@@ -37,8 +37,7 @@ pkgbase = nova-kilo
 	depends = websockify>=0.6.0
 	depends = websockify<0.7
 	depends = python2-oslo-concurrency-kilo
-	depends = python2-oslo-config>=1.9.3
-	depends = python2-oslo-config<1.10.0
+	depends = python2-oslo-config-kilo
 	depends = python2-oslo-context-kilo
 	depends = python2-oslo-log-kilo
 	depends = python2-oslo-serialization-kilo
