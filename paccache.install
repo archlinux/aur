@@ -1,0 +1,24 @@
+post_install() {
+	echo " > First make sure multicast-DNS works! Then enable services pacserve,"
+	echo " > pacdbserve and pacredir, open TCP ports 7078 and 7079 and add this to"
+	echo " > your repository definitions in pacman.conf:"
+	echo " > Include = /etc/pacman.d/paccache"
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	if systemctl -q is-active pacredir; then
+		systemctl restart pacredir
+	fi
+}
+
+pre_remove() {
+	for SERVICE in pacredir pacserve pacdbserve; do
+		if systemctl -q is-active ${SERVICE}; then
+			systemctl stop ${SERVICE}
+		fi
+		if systemctl -q is-enabled ${SERVICE}; then
+			systemctl disable ${SERVICE}
+		fi
+	done
+}

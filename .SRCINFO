@@ -1,0 +1,28 @@
+pkgbase = paccache-git
+	pkgdesc = serve pacman cache and redirect via avahi service - git checkout
+	pkgver = 0.1.10.r0.g599b626
+	pkgrel = 1
+	url = https://github.com/eworm-de/paccache
+	install = paccache.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = markdown
+	depends = avahi
+	depends = curl
+	depends = iniparser
+	depends = darkhttpd
+	depends = libmicrohttpd
+	depends = nss-mdns
+	provides = paccache
+	conflicts = pacserve
+	conflicts = paccache
+	replaces = pacserve
+	backup = etc/pacredir.conf
+	backup = etc/pacman.d/paccache
+	source = git://github.com/eworm-de/paccache.git
+	sha256sums = SKIP
+
+pkgname = paccache-git
+
