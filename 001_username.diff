@@ -1,0 +1,41 @@
+## 001_username.dpatch by Kevin Coyner <kcoyner@debian.org>
+##
+## DP: Username fix.  Original diff from Martin Wickman <martin@wickman.com>
+## DP: mailcheck gets confused if username contains an @-sign. This simple
+## DP: patch fixes this. I also noticed that some pop3 servers don't understand
+## DP: the LAST command. Patch uses STAT information in this case.
+## DP: See Debian bug #272749
+
+--- mailcheck-1.91.2/mailcheck.c~	2001-05-11 22:38:50.000000000 +0200
++++ mailcheck-1.91.2/mailcheck.c	2004-09-21 21:08:17.000000000 +0200
+@@ -188,7 +188,7 @@
+   else
+     strcpy (box, "INBOX");
+   /* determine username -- look for user@hostname, else use USER */
+-  p = strchr (h, '@');
++  p = strrchr (h, '@');
+   if (p)
+     {
+       *p = '\0';
+@@ -283,7 +283,7 @@
+   fgets (buf, BUF_SIZE, fp);
+   if (buf[0] != '+')
+     {
+-      fprintf (stderr, "mailcheck: Error Receiving Stats '%s@%s:%d'\n",
++      fprintf (stderr, "mailcheck: Error Receiving STAT '%s@%s:%d'\n",
+ 	       user, hostname, port);
+       return 1;
+     }
+@@ -298,9 +298,9 @@
+   fgets (buf, BUF_SIZE, fp);
+   if (buf[0] != '+')
+     {
+-      fprintf (stderr, "mailcheck: Error Receiving Stats '%s@%s:%d'\n",
+-	       user, hostname, port);
+-      return 1;
++      /* Server does not support LAST. Assume total as new */
++      *new_p = total;
++      *cur_p = 0;
+     }
+   else
+     {

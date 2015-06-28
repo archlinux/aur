@@ -1,0 +1,5 @@
+2010-30-11 Omar Campagne Polaino <ocampagne at gmail com>
+
+	* mailcheck-1.91.2-1:
+	First AUR upload
+	Debian patches converted from dpatch to quilt

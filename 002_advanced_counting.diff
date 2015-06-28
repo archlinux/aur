@@ -1,0 +1,983 @@
+## 002_advanced_counting.dpatch by Tomas Hoger <thoger@pobox.sk>
+##
+## DP: Advanced mail counting, brief mode, maildir handling fixes,
+## DP: possibility to specify alternate config file.
+
+diff -ruN mailcheck-1.91.1/mailcheck.1 mailcheck-1.91.1+2/mailcheck.1
+--- mailcheck-1.91.1/mailcheck.1	2001-05-11 22:46:07.000000000 +0200
++++ mailcheck-1.91.1+2/mailcheck.1	2005-07-02 16:31:01.000000000 +0200
+@@ -1,91 +1,85 @@
+-.TH MAILCHECK 1 
++.TH MAILCHECK 1 "2 July 2005"
++
+ .SH NAME
+-mailcheck \- Check multiple mailboxes and/or Maildirs for mail
++mailcheck \- Check multiple mailboxes and/or Maildirs for new mail
++
+ .SH SYNOPSIS
+-.B mailcheck
+-.I "[-l]"
+-.SH "DESCRIPTION"
+-.B mailcheck
+-is a simple, configurable tool that allows multiple mailboxes to be
+-checked for the existence of mail.  For local mail, it supports both
+-the traditional mbox format and the newer Maildir (qmail) format.
+-Mail can also be checked for on remote servers using either the POP3 or
+-IMAP protocol.
+-.PP
+-Typically, one would invoke
+-.BR mailcheck
+-in /etc/profile or a user-specific login script.
+-E-mail junkies may also find it useful to invoke
+-.BR mailcheck
+-occasionally to check for new mail in alternate mailboxes.
+-.PP
+-The author uses 
+-.BR mailcheck
+-to keep track of messages arriving in mailboxes corresponding
+-to several mailing lists he subscribes to.
++\fBmailcheck\fP [-lbcsh] [-f rcfile]
++
++.SH DESCRIPTION
++\fBmailcheck\fP is a simple, configurable tool that allows multiple
++mailboxes to be checked for the existence of mail.  For local mail, it
++supports both the traditional mbox format and the newer Maildir format.  Mail
++can also be checked for on remote servers using either the POP3 or IMAP
++protocol.
++.PP
++Typically, one would invoke \fBmailcheck\fP in /etc/profile or a
++user-specific login script.  E-mail junkies may also find it useful to
++invoke \fBmailcheck\fP occasionally to check for new mail in alternate
++mailboxes.
++.PP
++The author uses \fBmailcheck\fP to keep track of messages arriving in
++mailboxes corresponding to several mailing lists he subscribes to.
++
+ .SH OPTIONS
+ .TP
+-.B \-l
+-Runs
+-.B mailcheck
+-in login mode.  If a
+-.B ~/.hushlogin
+-file exists, mailcheck will exit silently.  This option is intended
+-to be used on systems that invoke mailcheck from a global login script
+-such as
+-.B /etc/profile.
++\fB\-l\fP
++Runs \fBmailcheck\fP in login mode.  If a \fI~/.hushlogin\fP file exists,
++mailcheck will exit silently.  This option is intended to be used on
++systems that invoke mailcheck from a global login script such as
++\fI/etc/profile\fP.
++.TP
++\fB\-b\fP
++Brief mode.  Produces less verbose output.  If mailbox or Maildir is inside
++user's home direcory, only relative path is printed to output.
++.TP
++\fB\-c\fP
++Use more advanced counting method.  While counting mails, \fBmailcheck\fP
++looks inside mboxes and Maildirs and count new and unread messages
++separately.  If mbox/maildir does not contain any new or unread mail, it's
++excluded from report.  Produced output contains more valuable information, but
++this method is more time-consuming.
++.TP
++\fB\-s\fP
++Print "no mail" summary.  If no new mail message is found, print at least "no
++mail message" at the end.  Only makes sense in combination with \fB\-c\fP.
++.TP
++\fB\-f\fP
++Specify alternative rc file location.  If provided, default locations (see
++\fBFILES\fP) are not checked.
++.TP
++\fB\-h\fP
++Print short usage information.
++
+ .SH CONFIGURATION
+-.PP
+-Configuring
+-.B mailcheck
+-is simple.  Upon startup,
+-.B mailcheck
+-looks for a file called
+-.B .mailcheckrc
+-in the user's home directory.  If that file does not exist, the
+-default configuration file
+-.B /etc/mailcheckrc
++Configuring \fBmailcheck\fP is simple.  Upon startup, \fBmailcheck\fP looks
++for a file called \fB.mailcheckrc\fP in the user's home directory.  If that
++file does not exist, the default configuration file \fB/etc/mailcheckrc\fP
+ is used instead.
+ .PP
+-Lines beginning with a hash sign (
+-.B #
+-) are treated as comments and will not be processed.
+-Lines beginning with
+-.B pop3:
+-or
+-.B imap:
+-are parsed like URLs and used to connect to network mail servers.
+-All other lines
+-are treated as pathnames to mailbox files or Maildir directories.
+-.PP
+-Environment variables in the format
+-.B $(NAME)
+-will be expanded inline.  For example:
+-.TP
+-.B /var/spool/mail/$(USER)
+-Will check the user's mailbox in
+-.B /var/spool/mail.
+-.TP
+-.B $(HOME)/Mailbox
+-Will check the default Maildir used by qmail installations.
+-.PP
+-When connecting to POP3 or IMAP servers, the account password is not
+-stored in the mailcheckrc file.  Instead, the
+-.B .netrc
+-file in the user's home directory is used.  This file, originally
+-intended for use with
+-.IR ftp (1)
+-and later used by
+-.IR fetchmail (1),
+-should be readable only by the user owning it.  It stores
+-server/user/password combinations in the form:
+-
+-machine
+-.I servername
+-login
+-.I username
+-password
+-.I password
++Lines beginning with a hash sign (\fB#\fP) are treated as comments and will
++not be processed.  Lines beginning with \fBpop3:\fP or \fBimap:\fP are
++parsed like URLs and used to connect to network mail servers.  All other
++lines are treated as pathnames to mailbox files or Maildir directories.
++.PP
++Environment variables in the format \fB$(NAME)\fP will be expanded inline.
++For example: 
++.TP
++\fB/var/spool/mail/$(USER)\fP 
++Will check the user's mailbox in \fB/var/spool/mail\fP.
++.TP
++\fB$(HOME)/Mailbox\fP
++Will check the default mailbox used by qmail installations.
++.PP
++When connecting to POP3 or IMAP servers, the account password is not stored
++in the mailcheckrc file.  Instead, the \fB.netrc\fP file in the user's home
++directory is used.  This file, originally intended for use with
++\fIftp\fP(1) and later used by \fIfetchmail\fP(1), should be readable only
++by the user owning it.  It stores server/user/password combinations in the
++form:
++
++machine \fIservername\fP login \fIusername\fP password \fIpassword\fP
++
+ .SH FILES
+ .TP
+ .B /etc/mailcheckrc
+@@ -99,10 +93,9 @@
+ be used.
+ .TP
+ .B ~/.netrc
+-This tells
+-.B mailcheck
+-what password to use for a given server/user combination when checking
+-POP3 or IMAP mail.
++This tells \fBmailcheck\fP what password to use for a given server/user
++combination when checking POP3 or IMAP mail.
++
+ .SH COPYRIGHT
+ Copyright (C) 1996, 1997, 1998, 2001, Jefferson E. Noxon.
+ .PP
+@@ -119,14 +112,22 @@
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .PP
+-On Debian GNU/Linux see /usr/doc/copyright/GPL
++On Debian GNU/Linux see /usr/share/common-licenses/GPL
++
+ .SH AUTHOR
+ Mailcheck was written for Debian GNU/Linux by Jefferson E. Noxon
+ <jeff@planetfall.com>.
++
+ .SH ACKNOWLEDGEMENTS
+ POP3 and IMAP support was added by Rob Funk <rfunk@funknet.net>.
++.PP
++Several enhancements by Tomas Hoger <thoger@pobox.sk>.
++
+ .SH BUGS
+ It is probably not a good idea to store passwords in a .netrc file.
++.PP
++No SSL/TLS support for POP3 and IMAP.
++
+ .SH SEE ALSO
+-biff(1), mail(1), fetchmail(1), netrc(5), ftp(1)
++netrc(5), mbox(5), maildir(5), login(1), fetchmail(1)
+ 
+diff -ruN mailcheck-1.91.1/mailcheck.c mailcheck-1.91.1+2/mailcheck.c
+--- mailcheck-1.91.1/mailcheck.c	2001-05-11 22:38:50.000000000 +0200
++++ mailcheck-1.91.1+2/mailcheck.c	2005-10-27 21:14:58.000000000 +0200
+@@ -1,6 +1,8 @@
+ /* mailcheck.c
+  *
+  * Copyright 1996, 1997, 1998, 2001 Jefferson E. Noxon <jeff@planetfall.com>
++ *           2001 Rob Funk <rfunk@funknet.net>
++ *           2003, 2005 Tomas Hoger <thoger@pobox.sk>
+  *
+  * This file may be copied under the terms of the GNU Public License
+  * version 2, incorporated herein by reference.
+@@ -8,6 +10,11 @@
+ 
+ /* Command line parameters:
+  * -l: login mode; program exits quietly if ~/.hushlogin exists.
++ * -b: brief mode; less verbose output mode
++ * -c: use more advanced counting method
++ * -s: print "no mail" summary if needed
++ * -f: specify alternative rc file location
++ * -h: print usage
+  */
+ 
+ #include <stdlib.h>
+@@ -25,25 +32,69 @@
+ 
+ #include "netrc.h"
+ 
++#define BUF_SIZE (2048)
++
+ extern int sock_connect (char *hostname, int port);
+ 
++
+ /* Global variables */
+ char *Homedir;			/* Home directory pathname */
+-int Login_mode;			/* TRUE if the '-l' switch is set */
+-
+-#define BUF_SIZE (2048)
++unsigned short have_mail= 0;	/* Any mail found? */
++struct {
++  unsigned short login_mode;		/* see '-l' option */
++  unsigned short brief_mode;		/* see '-b' option */
++  unsigned short advanced_count;	/* see '-c' option */
++  unsigned short show_summary;		/* see '-s' option */
++  char *rcfile_path;			/* see '-f' option */
++} Options= {0, 0, 0, 0, NULL};
++  
++
++/* Print usage information. */
++void 
++print_usage(void)
++{
++  printf("Usage: mailcheck [-bchls] [-f rcfile]\n"
++         "\n"
++         "Options:\n"
++         "  -b  - brief output mode\n"
++         "  -c  - use more advanced counting method for mboxes and maildirs\n"
++         "  -l  - login mode, honor ~/.hushlogin file\n"
++         "  -s  - show \"no mail\" summary, if no new mail was found\n"
++         "  -f  - specify alternative rcfile location\n"
++         "  -h  - show this help screen\n"
++         "\n");
++}
+ 
+-/* Open an rc file.  Return NULL if we can't find one. */
++/* Open an rc file.  Exit with error message, if attempt to open rcfile failed.
++ * Otherwise, return valid FILE* .
++ */
+ FILE *
+ open_rcfile (void)
+ {
+   char namebuf[256];
++  FILE *rcfile;
+ 
+-  snprintf (namebuf, sizeof (namebuf), "%s/.mailcheckrc", Homedir);
+-  if (!access (namebuf, R_OK))
+-    return fopen (namebuf, "r");
+-
+-  return fopen ("/etc/mailcheckrc", "r");
++  /* if rcfile path was provided, do not try default locations */
++  if (Options.rcfile_path != NULL) {
++    if ((rcfile= fopen(Options.rcfile_path, "r")) == NULL) {
++      fprintf(stderr, "error: couldn't open rcfile '%s'\n",
++	  Options.rcfile_path);
++      exit(1);
++    }
++  }
++  else {
++    snprintf(namebuf, sizeof (namebuf), "%s/.mailcheckrc", Homedir);
++    
++    if ((rcfile= fopen(namebuf, "r")) == NULL) {
++      if ((rcfile= fopen("/etc/mailcheckrc", "r")) == NULL) {
++        fprintf (stderr, "mailcheck: couldn't open /etc/mailcheckrc "
++            "nor %s/.mailcheckrc\n", Homedir);
++	exit(1);
++      }
++    }
++  }
++  
++  return rcfile;
+ }
+ 
+ 
+@@ -88,6 +139,44 @@
+   return expand_envstr (path);
+ }
+ 
++/* Should entry in maildir be ignored? */
++inline int
++ignore_maildir_entry(const char *dir, const struct dirent *entry) {
++  char fname[BUF_SIZE];
++  struct stat filestat;
++  
++  /* *all* dotfiles should be ignored in maildir, not only . and .. ! */
++  if (entry->d_name[0] == '.')
++    return 1;
++
++  /* also count only regular files
++   * use dirent's d_type if possible, otherwise stat file (which is much
++   * slower) */
++#ifdef _DIRENT_HAVE_D_TYPE
++  if (entry->d_type != DT_UNKNOWN) {
++    if (entry->d_type != DT_REG)
++      return 1;
++  }
++  else {
++#endif /* _DIRENT_HAVE_D_TYPE */
++    snprintf(fname, sizeof(fname), "%s/%s", dir, entry->d_name);
++    fname[sizeof(fname) - 1]= '\0';
++
++    if (stat(fname, &filestat) != 0) {
++      fprintf(stderr, "mailcheck: failed to stat file: %s\n", fname);
++      return 1;
++    }
++    
++    if (!S_ISREG(filestat.st_mode))
++      return 1;
++#ifdef _DIRENT_HAVE_D_TYPE
++  }
++#endif /* _DIRENT_HAVE_D_TYPE */
++
++  return 0;
++}
++
++/* Count files in subdir of maildir (new/cur/tmp). */
+ int
+ count_entries (char *path)
+ {
+@@ -95,17 +184,22 @@
+   struct dirent *entry;
+   int count = 0;
+ 
+-  mdir = opendir (path);
+-  if (!mdir)
++  if ((mdir= opendir(path)) == NULL)
+     return -1;
+ 
+-  while ((entry = readdir (mdir)))
+-    ++count;
++  while ((entry = readdir (mdir))) {
++    if (ignore_maildir_entry(path, entry)) 
++      continue;
++    
++    count++;
++  }
+ 
+-  return count - 2;
+-}
++  closedir(mdir);
+ 
++  return count;
++}
+ 
++/* Get password for given account on given host from ~/.netrc file. */
+ char *
+ getpw (char *host, char *account)
+ {
+@@ -227,6 +321,124 @@
+   return (port);
+ }
+ 
++/* Count mails in unix mbox. */
++int
++check_mbox(const char *path, int *new, int *read, int *unread)
++{
++  char linebuf[BUF_SIZE];
++  FILE *mbox;
++  int linelen;
++  unsigned short in_header= 0;	/* do we parse mail header or mail body? */
++
++  if ((mbox= fopen(path, "r")) == NULL) {
++    fprintf(stderr, "mailcheck: unable to open mbox %s\n", path);
++    return -1;
++  }
++
++  *new= 0;
++  *read= 0;
++  *unread= 0;
++  
++  while (fgets(linebuf, sizeof(linebuf), mbox)) {
++    if (!in_header) {
++      if (strncmp(linebuf, "From ", 5) == 0) { /* 5 == strlen("From ") */
++	in_header= 1;
++	(*new)++;
++      }
++    }
++    else {
++      if (linebuf[0] == '\n') {
++	in_header= 0;
++      }
++      else if (strncmp(linebuf, "Status: ", 8) == 0) { /* 8 == strlen("Status: ") */
++	linelen= strlen(linebuf);
++	
++	if (linelen >= 10  && 
++	    ((linebuf[8] == 'R'  &&  linebuf[9] == 'O')  ||
++	     (linebuf[8] == 'O'  &&  linebuf[9] == 'R'))) {
++	  (*new)--;
++	  (*read)++;
++	}
++	else if (linelen >= 9  &&  linebuf[8] == 'O') {
++	  (*new)--;
++	  (*unread)++;
++	}
++      }
++    }
++  }
++
++  fclose(mbox);
++
++  return 0;
++}
++
++/* Count mails in maildir.  Slightely modified original Jeff's version.  Just
++ * counts files in maildir/new and maildir/cur. */
++int
++check_maildir_old(const char *path, int *new, int *cur)
++{
++  char dir[BUF_SIZE];
++
++  snprintf(dir, sizeof(dir), "%s/new", path);
++  *new= count_entries(dir);
++  snprintf(dir, sizeof(dir), "%s/cur", path);
++  *cur= count_entries(dir);
++  
++  if (*new == -1  ||  *cur == -1)
++    return -1;
++  else
++    return 0;
++}
++
++/* Count mails in maildir.  Newer, more sophisticated, but also more time
++ * consuming version. */
++int
++check_maildir(const char *path, int *new, int *read, int *unread) {
++  char dir[BUF_SIZE];
++  DIR *mdir;
++  struct dirent *entry;
++  char *pos;
++
++  /* new mail - standard way */
++  snprintf(dir, sizeof(dir), "%s/new", path);
++  *new= count_entries(dir);
++  if (*new == -1)
++    return -1;
++  
++  /* older mail - check also mail status */
++  snprintf(dir, sizeof(dir), "%s/cur", path);
++  if ((mdir= opendir(dir)) == NULL)
++    return -1;
++
++  *read= 0;
++  *unread= 0;
++  while ((entry = readdir (mdir))) {
++    if (ignore_maildir_entry(dir, entry)) 
++      continue;
++
++    if ((pos= strchr(entry->d_name, ':')) == NULL) {
++      (*unread)++;
++    } 
++    else if (*(pos + 1) != '2') {
++      fprintf(stderr, "mailcheck: ooops, unsupported experimental info "
++	  "semantics on %s/%s\n", dir, entry->d_name);
++      continue;
++    }
++    else if (strchr(pos, 'S') == NULL) {
++      					/* search for seen ('S') flag */
++      (*unread)++;
++    }
++    else {
++      (*read)++;
++    }
++  }
++
++  closedir(mdir);
++  
++  return 0;
++}
++  
++/* Count mails in pop3 mailbox. */
+ int
+ check_pop3 (char *path, int *new_p, int *cur_p)
+ {
+@@ -314,6 +526,7 @@
+   return 0;
+ }
+ 
++/* Count mails in imap mailbox. */
+ int
+ check_imap (char *path, int *new_p, int *cur_p)
+ {
+@@ -330,13 +543,15 @@
+   port = getnetinfo (path, hostname, box, user, pass);
+   if (port == 0)
+     {
+-      fprintf (stderr, "mailcheck: Unable to get login information for %s\n", path);
++      fprintf (stderr, "mailcheck: Unable to get login information for %s\n",
++	  path);
+       return 1;
+     }
+ 
+   if ((fd = sock_connect (hostname, port)) == -1)
+     {
+-      fprintf (stderr, "mailcheck: Not Connected To Server '%s:%d'\n", hostname, port);
++      fprintf (stderr, "mailcheck: Not Connected To Server '%s:%d'\n",
++	  hostname, port);
+       return 1;
+     }
+ 
+@@ -397,103 +612,243 @@
+   return 0;
+ }
+ 
+-
++/* Check for mail in given mail path (could be mbox, maildir, pop3 or imap). */
+ void
+ check_for_mail (char *tmppath)
+ {
+   struct stat st;
+-  char *mailpath = expand_envstr (tmppath);
+-  char maildir[BUF_SIZE];
+-  int new = 0, cur = 0;
+-  int retval = 1;
+-
+-  if (!stat (mailpath, &st))
+-    {
+-      /* Is it a maildir? */
+-      if (S_ISDIR (st.st_mode))
+-	{
+-	  sprintf (maildir, "%s/cur", mailpath);
+-	  cur = count_entries (maildir);
+-	  sprintf (maildir, "%s/new", mailpath);
+-	  new = count_entries (maildir);
+-
+-	  if ((cur < 0) || (new < 0))
+-	    {
+-	      fprintf (stderr,
+-		       "mailcheck: %s is not a valid maildir -- skipping.\n",
+-		       mailpath);
+-	      return;
+-	    }
+-
+-	  if (cur && new)
+-	    {
+-	      printf ("You have %d new and %d saved messages in %s\n",
+-		      new, cur, mailpath);
+-	      return;
+-	    }
+-
+-	  if (cur)
+-	    {
+-	      printf ("You have %d saved messages in %s\n", cur, mailpath);
+-	      return;
+-	    }
+-
+-	  if (new)
+-	    {
+-	      printf ("You have %d new messages in %s\n", new, mailpath);
+-	      return;
+-	    }
++  char *mailpath;
++  int brief_name_offset= 0;
+ 
++  /* expand environment variables in path specifier */
++  mailpath= expand_envstr (tmppath);
++  
++  /* in brief mode, print relative paths for mailboxes/maildirs inside home
++   * directory */
++  if (Options.brief_mode  &&  
++      strncmp(mailpath, Homedir, strlen(Homedir)) == 0) {
++    brief_name_offset= strlen(Homedir) + 1;
++  }
++
++  if (!stat (mailpath, &st)) {
++    /* Is it regular file? (if yes, it should be mailbox ;) */
++    if (S_ISREG (st.st_mode)) {
++      /* Use advanced counting? */
++      if (!Options.advanced_count) {
++	if (st.st_size != 0) {
++	  if (!Options.brief_mode) {
++	    printf ("You have %smail in %s\n",
++		(st.st_mtime > st.st_atime) ? "new " : "", mailpath);
++	  } else {
++	    printf ("%s: %smail message(s)\n", mailpath + brief_name_offset,
++		(st.st_mtime > st.st_atime) ? "new " : "contains saved ");
++	  }
++	  have_mail= 1;
+ 	}
++      } else { /* advanced count */
++	int new, read, unread;
++	if (check_mbox(mailpath, &new, &read, &unread) == -1)
++	  return;
+ 
+-      /* It's an mbox. */
+-      else if (st.st_size != 0)
+-	printf ("You have %smail in %s\n",
+-		(st.st_mtime > st.st_atime) ? "new " : "", mailpath);
++	if (!Options.brief_mode) {
++	  if (new > 0  &&  unread > 0) {
++	    printf("You have %d new and %d unread messages in %s\n",
++		new, unread, mailpath);
++	    have_mail= 1;
++	  } else if (new > 0) {
++	    printf("You have %d new messages in %s\n",
++		new, mailpath);
++	    have_mail= 1;
++	  } else if (unread > 0) {
++	    printf("You have %d unread messages in %s\n",
++		unread, mailpath);
++	    have_mail= 1;
++	  }
++	}
++	else {
++	  if (new > 0  &&  unread > 0) {
++	    printf("%s: %d new and %d unread message(s)\n",
++		mailpath + brief_name_offset, new, unread);
++	    have_mail= 1;
++	  } else if (new > 0) {
++	    printf("%s: %d new message(s)\n",
++		mailpath + brief_name_offset, new);
++	    have_mail= 1;
++	  } else if (unread > 0) {
++	    printf("%s: no new mail, %d unread message(s)\n",
++		mailpath + brief_name_offset, unread);
++	    have_mail= 1;
++	  }
++	}
++      }
+     }
+-  else
+-    {
+-      /* Is it POP3 or IMAP? */
+-      if (!strncmp (mailpath, "pop3:", 5))
+-	retval = check_pop3 (mailpath, &new, &cur);
+-      else if (!strncmp (mailpath, "imap:", 5))
+-	retval = check_imap (mailpath, &new, &cur);
+ 
+-      if (!retval)
+-	{
+-	  if (cur && new)
++    /* Is it directory? (if yes, it should be maildir ;) */
++    /* for maildir specification, see: http://cr.yp.to/proto/maildir.html */
++    else if (S_ISDIR (st.st_mode)) {
++      if (!Options.advanced_count) { /* use old counting method */
++	int new, cur;
++
++	if (check_maildir_old(mailpath, &new, &cur) == -1) {
++	  fprintf (stderr, 
++	      "mailcheck: %s is not a valid maildir -- skipping.\n", mailpath);
++	  return;
++	}
++	
++	if (!Options.brief_mode) { /* traditional output */
++	  if (cur > 0  &&  new > 0) {
+ 	    printf ("You have %d new and %d saved messages in %s\n",
+-		    new, cur, mailpath);
+-	  else if (cur)
+-	    printf ("You have %d saved messages in %s\n", cur, mailpath);
+-	  else if (new)
++		new, cur, mailpath);
++	    have_mail= 1;
++	  } else if (new > 0) {
+ 	    printf ("You have %d new messages in %s\n", new, mailpath);
++	    have_mail= 1;
++	  } else if (cur > 0) {
++	    printf ("You have %d saved messages in %s\n", cur, mailpath);
++	    have_mail= 1;
++	  }
++	} else { /* brief output */
++	  if (cur > 0  &&  new > 0) {
++	    printf ("%s: %d new and %d saved message(s)\n",
++		mailpath + brief_name_offset, new, cur);
++	    have_mail= 1;
++	  } else if (new > 0) {
++	    printf ("%s: %d new message(s)\n",
++		mailpath + brief_name_offset, new);
++	    have_mail= 1;
++	  } else if (cur > 0) {
++	    printf ("%s: %d saved message(s)\n",
++		mailpath + brief_name_offset, cur);
++	    have_mail= 1;
++	  }
+ 	}
+-    }
+-
++      } 
++      else {	/* new counting method */
++	int new, read, unread;
++
++	if (check_maildir(mailpath, &new, &read, &unread) == -1) {
++	  fprintf (stderr, 
++	      "mailcheck: %s is not a valid maildir -- skipping.\n", mailpath);
++	  return;
++	}
++	
++	if (!Options.brief_mode) {
++	  if (new > 0  &&  unread > 0) {
++	    printf("You have %d new and %d unread messages in %s\n",
++		new, unread, mailpath);
++	    have_mail= 1;
++	  } else if (new > 0) {
++	    printf("You have %d new messages in %s\n",
++		new, mailpath);
++	    have_mail= 1;
++	  } else if (unread > 0) {
++	    printf("You have %d unread messages in %s\n",
++		unread, mailpath);
++	    have_mail= 1;
++	  }
++	}
++	else {
++	  if (new > 0  &&  unread > 0) {
++	    printf("%s: %d new and %d unread message(s)\n",
++		mailpath + brief_name_offset, new, unread);
++	    have_mail= 1;
++	  } else if (new > 0) {
++	    printf("%s: %d new message(s)\n",
++		mailpath + brief_name_offset, new);
++	    have_mail= 1;
++	  } else if (unread > 0) {
++	    printf("%s: no new mail, %d unread message(s)\n",
++		mailpath + brief_name_offset, unread);
++	    have_mail= 1;
++	  }
++	}
++      }
++    } else {
++      fprintf(stderr, "mailcheck: error, %s is not mbox or maildir\n",
++	  mailpath);
++    }
++  }
++  else if (strncmp(mailpath, "pop3:", 5) == 0  ||
++           strncmp(mailpath, "imap:", 5) == 0) {
++    int retval= 1;
++    int new= 0, cur= 0;
++    
++    /* Is it POP3 or IMAP? */
++    if (!strncmp (mailpath, "pop3:", 5))
++      retval = check_pop3 (mailpath, &new, &cur);
++    else
++      retval = check_imap (mailpath, &new, &cur);
++
++    if (retval)
++      return;
++    
++    if (!Options.brief_mode) { /* traditional output */
++      if (cur > 0  &&  new > 0) {
++	printf ("You have %d new and %d saved messages in %s\n",
++	    new, cur, mailpath);
++	have_mail= 1;
++      } else if (new > 0) {
++	printf ("You have %d new messages in %s\n", new, mailpath);
++	have_mail= 1;
++      } else if (cur > 0) {
++	printf ("You have %d saved messages in %s\n", cur, mailpath);
++	have_mail= 1;
++      }
++    } else { /* brief output */
++      if (cur > 0  &&  new > 0) {
++	printf ("%s: %d new and %d saved message(s)\n",
++	    mailpath + brief_name_offset, new, cur);
++	have_mail= 1;
++      } else if (new > 0) {
++	printf ("%s: %d new message(s)\n",
++	    mailpath + brief_name_offset, new);
++	have_mail= 1;
++      } else if (cur > 0) {
++	printf ("%s: %d saved message(s)\n",
++	    mailpath + brief_name_offset, cur);
++	have_mail= 1;
++      }
++    }
++  }
++  else {
++    fprintf(stderr, "mailcheck: invalid line '%s' in rc-file\n", mailpath);
++  }
+ }
+ 
+ /* Process command-line options */
+ void
+ process_options (int argc, char *argv[])
+ {
+-  int result;
+-
+-  while (1)
++  int opt;
++  
++  while ((opt= getopt(argc, argv, "bchlsf:")) != -1)
+     {
+-      result = getopt (argc, argv, "l");
+-
+-      switch (result)
++      switch (opt)
+ 	{
+-	case EOF:
+-	  return;
++	case 'b':
++	  Options.brief_mode= 1;
++	  break;
++	case 'c':
++	  Options.advanced_count= 1;
++	  break;
++	case 'h':
++	  print_usage();
++	  exit(0);
++	  break;
+ 	case 'l':
+-	  Login_mode = 1;
++	  Options.login_mode= 1;
++	  break;
++	case 's':
++	  Options.show_summary= 1;
++	  break;
++	case 'f':
++	  Options.rcfile_path= optarg;
+ 	  break;
+ 	}
+     }
+ }
+ 
++/* main */
+ int
+ main (int argc, char *argv[])
+ {
+@@ -501,43 +856,53 @@
+   FILE *rcfile;
+   struct stat st;
+ 
+-  Homedir = getenv ("HOME");
+-  if (!Homedir)
+-    {
+-      fprintf (stderr, "%s: couldn't read environment variable HOME.\n",
+-	       argv[0]);
+-      return 1;
+-    }
++  ptr= getenv ("HOME");
++  if (!ptr) {
++    fprintf (stderr, "mailcheck: couldn't read environment variable HOME.\n");
++    return 1;
++  } else {
++    Homedir= strdup(ptr);
++  }
+ 
+   process_options (argc, argv);
+ 
+-  if (Login_mode)
++  if (Options.login_mode)
+     {
+-      /* If we can stat .hushlogin successfully, we should exit. */
++      /* If we can stat .hushlogin successfully and it is regular file, we
++       * should exit. */
+       snprintf (buf, sizeof (buf), "%s/.hushlogin", Homedir);
+-      if (!stat (buf, &st))
++      if (!stat (buf, &st)  &&  S_ISREG(st.st_mode))
+ 	return 0;
+     }
+ 
+-  rcfile = open_rcfile ();
+-  if (!rcfile)
+-    {
+-      fprintf (stderr, "%s: couldn't open /etc/mailcheckrc "
+-	       "or %s/.mailcheckrc.\n", argv[0], Homedir);
+-      return 1;
+-    }
++  rcfile= open_rcfile();
+ 
+   while (fgets (buf, sizeof (buf), rcfile))
+     {
+       /* eliminate newline */
+       ptr = strchr (buf, '\n');
+       if (ptr)
+-	*ptr = 0;
++	*ptr = '\0';
+ 
+       /* If it's not a blank line or comment, look for mail in it */
+       if (strlen (buf) && (*buf != '#'))
+ 	check_for_mail (buf);
+     }
+ 
++  if (Options.show_summary  &&  !have_mail) {
++    if (Options.brief_mode) {
++      printf("no new mail\n");
++    }
++    else {
++      printf("No new mail.\n");
++    }
++  }
++  
++  fclose(rcfile);
++  free(Homedir);
++
+   return 0;
+ }
++
++/* vim:set ts=8 sw=2: */
++
+diff -ruN mailcheck-1.91.1/mailcheckrc mailcheck-1.91.1+2/mailcheckrc
+--- mailcheck-1.91.1/mailcheckrc	2001-05-11 21:58:56.000000000 +0200
++++ mailcheck-1.91.1+2/mailcheckrc	2005-06-30 21:48:17.000000000 +0200
+@@ -10,6 +10,9 @@
+ 
+ # If you're using qmail's Maildir feature, you'll probably want to
+ # enable this line:
++#$(HOME)/Maildir/
++
++# For qmail's mbox file in user's home directory:
+ #$(HOME)/Mailbox
+ 
+ # Mailcheck also supports remote POP3 and IMAP mailboxes.  Most users
+@@ -19,11 +22,15 @@
+ # If you have a remote POP3 mailbox, use a line like the following
+ # if your username is the same there as here.
+ #pop3://servername
++#
+ # If your POP3 username is different there than here:
+ #pop3://username@servernameint
++#
+ # In either case, you need to put an entry in $HOME/.netrc for the password.
+ # .netrc is in the form:
++#
+ #   machine mail.example.com login rmf1 password MyPasWrd
++#
+ # where mail.example.com, rmf1, and MyPasWrd are the values for your account,
+ # and machine, login, and password are literal text in the file.
+ 
+diff -ruN mailcheck-1.91.1/netrc.c mailcheck-1.91.1+2/netrc.c
+--- mailcheck-1.91.1/netrc.c	2001-05-11 22:16:25.000000000 +0200
++++ mailcheck-1.91.1+2/netrc.c	2005-06-30 21:36:54.000000000 +0200
+@@ -228,8 +228,8 @@
+ 			     premature_token);
+ #else
+ 	      fprintf (stderr,
+-		       _
+-		       ("mailcheck: %s:%d: warning: found \"%s\" before any host names\n"),
++		       _("mailcheck: %s:%d: warning: found \"%s\" before any "
++			 "host names\n"),
+ 		       file, ln, premature_token);
+ #endif
+ 	      premature_token = NULL;
+@@ -269,8 +269,8 @@
+ 	      else
+ 		{
+ 		  fprintf (stderr,
+-			   _("mailcheck: %s:%d: warning: unknown token \"%s\"\n"), file,
+-			   ln, tok);
++			   _("mailcheck: %s:%d: warning: unknown token "
++			     "\"%s\"\n"), file, ln, tok);
+ 		}
+ 	    }
+ 	}

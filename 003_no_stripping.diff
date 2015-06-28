@@ -1,0 +1,16 @@
+## 003_no_stripping.dpatch by Kevin Coyner <kcoyner@debian.org>
+##
+## DP: Remove stripping (-s) from the Makefile. Closes Debian bug #437550.
+
+diff -urNad mailcheck-1.91.2~/Makefile mailcheck-1.91.2/Makefile
+--- mailcheck-1.91.2~/Makefile	2007-01-28 15:54:04.000000000 -0500
++++ mailcheck-1.91.2/Makefile	2007-08-14 13:00:50.000000000 -0400
+@@ -4,7 +4,7 @@
+ 	$(CC) -Wall -O0 mailcheck.c netrc.c socket.c -g -o mailcheck
+ 
+ mailcheck: mailcheck.c netrc.c netrc.h socket.c
+-	$(CC) -Wall -O2 mailcheck.c netrc.c socket.c -s -o mailcheck
++	$(CC) -Wall -O2 mailcheck.c netrc.c socket.c -o mailcheck
+ 
+ install: mailcheck
+ 	install mailcheck $(prefix)/usr/bin
