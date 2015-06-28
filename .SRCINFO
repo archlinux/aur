@@ -1,0 +1,17 @@
+pkgbase = python2-oslo-config-kilo
+	pkgdesc = parsing command line arguments and .ini style configuration files
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.config/1.9.3
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	makedepends = python2
+	provides = python2-oslo-config
+	source = https://pypi.python.org/packages/source/o/oslo.config/oslo.config-1.9.3.tar.gz
+	md5sums = 109da1307ea8c65440accccbc59cf9a5
+
+pkgname = python2-oslo-config-kilo
+	depends = python2
+	depends = python2-setuptools
+
