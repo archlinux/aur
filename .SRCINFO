@@ -1,0 +1,16 @@
+pkgbase = evolus-pencil-svn
+	pkgdesc = Sketching and GUI prototyping tool
+	pkgver = 354
+	pkgrel = 1
+	url = http://code.google.com/p/evoluspencil/
+	arch = any
+	license = GPL2
+	makedepends = subversion
+	depends = firefox
+	provides = pencil
+	conflicts = pencil
+	source = pencil::svn+http://evoluspencil.googlecode.com/svn/branches/pencil-2.0
+	md5sums = SKIP
+
+pkgname = evolus-pencil-svn
+
