@@ -1,0 +1,27 @@
+## Description: GetPlatformDefaultConfigFilePath is not a known symbol. As it is defined as inline just inline it manually.
+## Origin/Author: Christoph Korn
+## Bug: https://code.google.com/p/wxlauncher/issues/detail?id=93
+Index: diaspora-1.0.4/Diaspora/wxlauncher/code/apis/PlatformProfileManagerShared.cpp
+===================================================================
+--- diaspora-1.0.4.orig/Diaspora/wxlauncher/code/apis/PlatformProfileManagerShared.cpp	2013-02-14 18:53:15.000000000 +0100
++++ diaspora-1.0.4/Diaspora/wxlauncher/code/apis/PlatformProfileManagerShared.cpp	2013-02-15 19:24:08.319338488 +0100
+@@ -39,8 +39,10 @@
+ 
+ 	wxString cmdLineString;
+ #if IS_LINUX // write to folder in home dir
+-	extern wxFileName GetPlatformDefaultConfigFilePath();
+-	cmdLineString += GetPlatformDefaultConfigFilePath().GetFullPath().c_str();
++	wxFileName path;
++	path.AssignHomeDir();
++	path.AppendDir(_T(".fs2_open"));
++	cmdLineString += path.GetFullPath().c_str();
+ #else
+ 	cmdLineString += tcPath.c_str();
+ 	cmdLineString += wxFileName::GetPathSeparator();
+@@ -117,4 +119,4 @@
+ 	}
+ 
+ 	return ProMan::NoError;
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=wxlauncher
+GenericName=wxlauncher for OpenSCP
+Exec=wxlauncher
+Icon=wxlauncher
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true
