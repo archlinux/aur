@@ -1,0 +1,19 @@
+pkgbase = funnelweb
+	pkgdesc = A powerful literate-programming macro preprocessor.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://www.ross.net/funnelweb/
+	install = funnelweb.install
+	arch = any
+	license = GPLv2
+	source = http://www.ross.net/funnelweb/download/funnelweb_v320/funnelweb_v320_source.tar.gz
+	source = funnelweb.install
+	md5sums = 5846515b9d24c9b40a23da8afc857a2c
+	md5sums = aa285f8379d9d62b469591e0a2dd0bd7
+	sha1sums = 4e361f6fc3dbb4c1021ccb80eaf0b66a7dfd460e
+	sha1sums = a04275545e245ac5e884d9c0ec32908988a58e33
+	sha256sums = 8f13cb6fd3f4d2563bb41bd13509550db14bd78a68da2a42cb4bbd2481f6107f
+	sha256sums = 93b550ff61543e6628a858cb28d70c7a850da8aa4fbfc7172830eae70fc78014
+
+pkgname = funnelweb
+
