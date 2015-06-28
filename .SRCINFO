@@ -1,0 +1,15 @@
+pkgbase = fernflower-git
+	pkgdesc = An analytical decompiler for Java
+	pkgver = r207.e4e7240
+	pkgrel = 1
+	url = https://github.com/fesh0r/fernflower
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = apache-ant
+	depends = java-runtime
+	source = git+https://github.com/fesh0r/fernflower
+	sha256sums = SKIP
+
+pkgname = fernflower-git
+
