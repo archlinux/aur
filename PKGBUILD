@@ -4,7 +4,7 @@ pkgbase=netctl-gui-qt4
 _pkgbase=netctl-gui
 pkgname=('libnetctlgui-qt4' 'netctlgui-helper-qt4' 'netctl-gui-qt4'
          'kdeplasma-applets-netctl-gui')
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="Qt4 GUI for netctl. Also provides a widget for KDE4"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://arcanis.name/projects/netctl-gui"
 license=('GPL3')
 makedepends=('automoc4' 'cmake' 'kdelibs')
 source=("https://github.com/arcan1s/netctl-gui/releases/download/V.${pkgver}/${_pkgbase}-${pkgver}-src.tar.xz")
-md5sums=('aed674e4c465d849c2044f9464c2671c')
+md5sums=('9723d9358412b212880c93e931f26b73')
 
 
 prepare() {
