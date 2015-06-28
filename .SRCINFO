@@ -1,0 +1,21 @@
+pkgbase = yubico-c-client-git
+	pkgdesc = Yubico YubiKey client C library - git checkout
+	pkgver = 2.14.r1.ga022697
+	pkgrel = 1
+	url = https://github.com/Yubico/yubico-c-client
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = help2man
+	depends = curl
+	depends = yubico-c
+	provides = ykclient
+	provides = yubico-c-client
+	conflicts = ykclient
+	conflicts = yubico-c-client
+	source = git://github.com/Yubico/yubico-c-client.git
+	sha256sums = SKIP
+
+pkgname = yubico-c-client-git
+
