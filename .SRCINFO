@@ -1,0 +1,18 @@
+pkgbase = xbanish-git
+	pkgdesc = Banish the mouse cursor when typing, show it again when the mouse moves.
+	pkgver = 1.3.r0.g5c0aed7
+	pkgrel = 1
+	url = https://github.com/jcs/xbanish
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libxfixes
+	depends = libxi
+	provides = xbanish
+	conflicts = xbanish
+	source = xbanish-git::git+https://github.com/jcs/xbanish.git
+	md5sums = SKIP
+
+pkgname = xbanish-git
+
