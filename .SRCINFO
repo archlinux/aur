@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-geographic-msgs
+	pkgdesc = ROS - ROS messages for Geographic Information Systems.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://wiki.ros.org/geographic_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-uuid-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-uuid-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-geometry-msgs
+	source = geographic_msgs::git+https://github.com/ros-geographic-info/geographic_info-release.git#tag=release/indigo/geographic_msgs/0.4.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-geographic-msgs
+
