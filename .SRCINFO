@@ -1,0 +1,30 @@
+pkgbase = salome-kernel
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module
+	pkgver = 7.5.1
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	makedepends = python2-sphinx
+	makedepends = git
+	makedepends = swig2
+	depends = python2
+	depends = python2-numpy
+	depends = boost-libs
+	depends = omniorb416
+	depends = omniorbpy36
+	depends = omninotify-omniorb416
+	depends = hdf5
+	depends = graphviz
+	depends = libxml2
+	depends = cppunit
+	depends = lapack
+	source = salome-kernel.profile
+	source = http://files.salome-platform.org/Salome/Salome7.5.1/src7.5.1.tar.gz
+	md5sums = 0190508dd75e07f6b8f6230660477c11
+	md5sums = 19fd3c3acad84fb3b3c70c007e5c2500
+
+pkgname = salome-kernel
+
