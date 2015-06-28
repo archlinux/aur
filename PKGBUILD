@@ -1,6 +1,6 @@
 # Maintainer: Albert Berger < nbdspcl at gmail dot com>
 pkgname=regd
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Registry daemon, information cache and secure credential storage."
 arch=('any')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}::https://github.com/nbdsp/regd/archive/v0.5.1.tar.gz")
+source=("${pkgname}::https://github.com/nbdsp/regd/archive/v0.5.2.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
