@@ -1,0 +1,15 @@
+pkgbase = vim-tomorrow-theme-git
+	pkgdesc = Tomorrow Theme for Vim
+	pkgver = v1.0.r20.g5d66e71
+	pkgrel = 1
+	url = https://github.com/chriskempson/vim-tomorrow-theme
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = vim-tomorrow-theme-git::git+https://github.com/chriskempson/vim-tomorrow-theme.git
+	md5sums = SKIP
+
+pkgname = vim-tomorrow-theme-git
+
