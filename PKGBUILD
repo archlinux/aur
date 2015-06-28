@@ -1,7 +1,7 @@
 # Contributor: AaronP <aaronbpaden at that google place>
 
 pkgname=ycurses-git
-pkgver=20111229
+pkgver=20150727
 pkgrel=2
 conflicts=('ycurses')
 pkgdesc="Curses bindings for the D Programming Language"

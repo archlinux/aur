@@ -1,6 +1,6 @@
 pkgbase = ycurses-git
 	pkgdesc = Curses bindings for the D Programming Language
-	pkgver = 20111229
+	pkgver = 20150727
 	pkgrel = 2
 	url = http://code.google.com/p/ycurses/
 	arch = any
