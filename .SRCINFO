@@ -1,6 +1,6 @@
 pkgbase = notepadqq-bin
 	pkgdesc = A Linux clone of Notepad++
-	pkgver = 0.46.0
+	pkgver = 0.50.1
 	pkgrel = 1
 	url = http://notepadqq.altervista.org/wp/
 	install = notepadqq-bin.install
@@ -12,15 +12,15 @@ pkgbase = notepadqq-bin
 	depends = desktop-file-utils
 	optdepends = notepadqq-common: Common UI libs
 	optdepends = notepadqq-gtk: enables GTK style on startup
-	provides = notepadqq=0.46.0
+	provides = notepadqq=0.50.1
 	conflicts = notepadqq-git
 	conflicts = notepadqq
 	options = !strip
-	source_i686 = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.46.0-0~utopic1_i386.deb
-	md5sums_i686 = 22510e23dfc296f8fd18132145c00a1d
-	source_x86_64 = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.46.0-0~utopic1_amd64.deb
+	source_i686 = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.1-0~vivid1_i386.deb
+	md5sums_i686 = 1b1b2efe79c7d3e0789d12e2b87aa21f
+	source_x86_64 = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.1-0~vivid1_amd64.deb
 	depends_x86_64 = gcc-libs-multilib
-	md5sums_x86_64 = 60d53acd548c32fc7a71144ae523e100
+	md5sums_x86_64 = 16a04cece23b9dd49746d62189daa97c
 
 pkgname = notepadqq-bin
 

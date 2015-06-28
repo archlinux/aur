@@ -2,8 +2,8 @@
 # Contributor: Zom <zom[at]eevul[dot]org>
 
 pkgname=notepadqq-bin
-pkgver=0.46.0
-_pkgver=0.46.0-0~utopic1
+pkgver=0.50.1
+_pkgver=0.50.1-0~vivid1
 pkgrel=1
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ provides=("notepadqq=${pkgver}")
 conflicts=('notepadqq-git' 'notepadqq')
 install=${pkgname}.install
 
-md5sums_i686=('22510e23dfc296f8fd18132145c00a1d')
-md5sums_x86_64=('60d53acd548c32fc7a71144ae523e100')
+md5sums_i686=('1b1b2efe79c7d3e0789d12e2b87aa21f')
+md5sums_x86_64=('16a04cece23b9dd49746d62189daa97c')
 source_i686=("http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_${_pkgver}_i386.deb")
 source_x86_64=("http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_${_pkgver}_amd64.deb")
 
