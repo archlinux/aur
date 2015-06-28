@@ -2,7 +2,7 @@
 
 pkgname=notepadqq-git
 _pkgname=notepadqq
-pkgver=0.46.0.r1.g54c9d6f
+pkgver=0.50.1.r0.gc116e6c
 pkgrel=1
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
