@@ -1,0 +1,20 @@
+pkgbase = sbt-extras-git
+	pkgdesc = An alternative script for running sbt
+	pkgver = 20140505
+	pkgrel = 1
+	url = https://github.com/paulp/sbt-extras
+	arch = any
+	license = BSD
+	license = custom
+	license = Apache
+	makedepends = git
+	makedepends = wget
+	depends = java-runtime-headless
+	depends = bash
+	provides = sbt
+	conflicts = sbt
+	source = sbt-extras::git://github.com/paulp/sbt-extras.git
+	sha256sums = SKIP
+
+pkgname = sbt-extras-git
+
