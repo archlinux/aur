@@ -1,0 +1,15 @@
+pkgbase = prezto-prompt-rumpelsepp-git
+	pkgdesc = My personal prezto theme
+	pkgver = r7.6b08a94
+	pkgrel = 1
+	url = https://gitlab.sevenbyte.org/rumpelsepp/prezto-prompt-rumpelsepp
+	arch = any
+	license = MIT
+	depends = prezto-git
+	provides = prompt-rumpelsepp-setup
+	conflicts = prompt-rumpelsepp-setup
+	source = prezto-prompt-rumpelsepp-git::git+https://gitlab.sevenbyte.org/rumpelsepp/prezto-prompt-rumpelsepp.git
+	md5sums = SKIP
+
+pkgname = prezto-prompt-rumpelsepp-git
+
