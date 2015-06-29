@@ -1,12 +1,12 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 # Contributor: C. Dominik Bódi  dominik.bodi at gmx dot de
 pkgname=debhelper-python
-_pkgname=python3-defaults
-_pkgname2=dh-python
 pkgver=3.4.2
-_pkgver2=1.20141111
-pkgrel=2
+pkgrel=3
+_pkgname=python3-defaults
 _pkgrel=2
+_pkgname2=dh-python
+_pkgver2=1.20150628
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python3"
@@ -21,7 +21,7 @@ options=()
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
 http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver2.orig.tar.xz)
 sha256sums=('96ef5763cae104c181fcf530f84a16537b5727ebc41f1ae6482ce18775556bcf'
-            '726bd70f10d26adb3d2b2b24627ea592ce6508b516dee97319dc303b950a5c1e')
+            '2900b2cea6d5f443624f22ba5c134c34fddc888ce842689f48161189c04e2026')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
