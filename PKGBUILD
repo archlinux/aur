@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='ttf-monoid-git'
 pkgdesc='Open Source coding font'
-pkgver=r200.39641b8
+pkgver=r240.2da34c4
 pkgrel=1
 arch=('any')
 license=('custom:MIT')
@@ -22,22 +22,23 @@ pkgver () {
 }
 
 prepare () {
-	cd "${pkgname}"
+	cd "${pkgname}/Scripts"
 	patch -p1 < "${srcdir}/fontbuilder-python3.patch"
 }
 
 build () {
 	cd "${pkgname}"
-	python3 -c 'import fontbuilder; fontbuilder.build("_regular", "Source", "Monoid.sfdir");'
-	python3 -c 'import fontbuilder; fontbuilder.build("_oblique", "Source", "Monoid-Oblique.sfdir");'
+	export PYTHONPATH="$(pwd)/Scripts"
+	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid.sfdir");'
+	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Bold.sfdir");'
+	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Oblique.sfdir");'
+	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Retina.sfdir");'
 }
 
 package () {
 	cd "${pkgname}"
-	install -Dm644 _regular/Monoid.ttf \
-		"${pkgdir}/usr/share/fonts/TTF/Monoid.ttf"
-	install -Dm644 _oblique/Monoid.ttf \
-		"${pkgdir}/usr/share/fonts/TTF/Monoid-Oblique.ttf"
+	install -m755 -d "${pkgdir}/usr/share/fonts/TTF"
+	install -m644 -t "${pkgdir}/usr/share/fonts/TTF" _build/*.ttf
 	install -Dm644 Readme.md \
 		"${pkgdir}/usr/share/licenses/${pkgname}/README.md"
 }
