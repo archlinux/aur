@@ -1,0 +1,14 @@
+pkgbase = vim-scala-git
+	pkgdesc = Vim support files for the Scala programming language, from the official Scala Github repository
+	pkgver = 20150130
+	pkgrel = 2
+	url = https://github.com/scala/scala-tool-support/tree/master/tool-support/vim
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim-runtime
+	provides = vim-scala-svn
+	conflicts = vim-scala-svn
+
+pkgname = vim-scala-git
+
