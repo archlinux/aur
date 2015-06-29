@@ -53,7 +53,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 
 md5sums=('7dc8a526b3eb83e6eb5bbc9d2215b501'
          '5de9759477995d9940c056e56ed9d3f1'
-         'b3b6e3015f93b9256bb780b4c257e857'
+         'b469993feb8ac2655a4a1604c32ec792'
          '0e2728f1e35b25ca679427fcb57315d8'
          'c25f3982217fe390d68ed9003a5988ed'
          '9666bf713645af11dd65b3ac5cbb42d9'
