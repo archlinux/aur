@@ -1,0 +1,17 @@
+pkgbase = blivet-gui
+	pkgdesc = GUI tool for storage configuration
+	pkgver = 0.2.3.1
+	pkgrel = 1
+	url = http://github.com/vojtechtrefny/blivet-gui
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-blivet
+	depends = python2-cairo
+	depends = python2-gobject
+	depends = urlgrabber
+	source = blivet-gui-0.2.3.1.tar.gz::http://github.com/vojtechtrefny/blivet-gui/archive/0.2.3-1.tar.gz
+	sha256sums = cca0bf30c98df832587bb055ef585848d98de1dcf3e6b86f995d9561faa973a7
+
+pkgname = blivet-gui
+
