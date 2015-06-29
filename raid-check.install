@@ -1,0 +1,5 @@
+post_install() {
+  echo ":: You need to edit /etc/cron.d/raid-check and set when you want the cronjob to run"
+  echo "   You need to edit /etc/conf.d/raid-check set ENABLED=yes and specify your CHECK_DEVS"
+  echo "   See https://wiki.archlinux.org/index.php/Software_RAID_and_LVM#Data_Scrubbing for more info"
+}
