@@ -9,7 +9,7 @@ pkgbase = tegrarcm
 	depends = crypto++
 	depends = libusb
 	source = tegrarcm-1.6.zip::https://github.com/NVIDIA/tegrarcm/archive/v1.6.zip
-	sha1sums = bad9aeed48dab24c7176ce07b1684be29887543d
+	sha1sums = 7b87d05a19b841693e198444a962dd9476b9a7df
 
 pkgname = tegrarcm
 

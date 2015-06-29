@@ -9,7 +9,7 @@ url='https://github.com/NVIDIA/tegrarcm'
 license=(custom)
 depends=(crypto++ libusb)
 source=(tegrarcm-$pkgver.zip::https://github.com/NVIDIA/tegrarcm/archive/v$pkgver.zip)
-sha1sums=('bad9aeed48dab24c7176ce07b1684be29887543d')
+sha1sums=('7b87d05a19b841693e198444a962dd9476b9a7df')
 
 build() {
   cd tegrarcm-$pkgver
