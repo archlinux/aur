@@ -10,7 +10,7 @@
 
 pkgname=popcorntime-bin
 pkgver=0.3.7.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('x86_64' 'i686')
 url="http://popcorntime.io/"
