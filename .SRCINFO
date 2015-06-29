@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-fancytasks
+	pkgdesc = Plasmoid providing fancy visualization of tasks, launchers and jobs for those who need full power of task manager and fresh look
+	pkgver = 1.1.2
+	pkgrel = 3
+	url = http://www.kde-look.org/content/show.php/Fancy+Tasks?content=99737
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = kdebase-lib
+	depends = kdebase-workspace
+	conflicts = fancytasks-plasmoid
+	source = https://opendesktop.org/CONTENT/content-files/99737-fancytasks-1.1.2.tar.bz2
+	md5sums = 0ffe30331739972d88126dd828c0ea22
+
+pkgname = kdeplasma-applets-fancytasks
+
