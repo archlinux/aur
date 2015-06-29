@@ -1,7 +1,7 @@
 pkgbase = vhba-module-lts318-ck
 	pkgdesc = Kernel module that emulates SCSI devices. For linux-lts38-ck.
 	pkgver = 20140928
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cdemu.sourceforge.net/
 	install = vhba-module-lts318-ck.install
 	arch = i686

@@ -6,7 +6,7 @@
 _pkgname=vhba-module
 pkgname=vhba-module-lts318-ck
 pkgver=20140928
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module that emulates SCSI devices. For linux-lts38-ck."
 arch=('i686' 'x86_64')
 url="http://cdemu.sourceforge.net/"
