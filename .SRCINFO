@@ -1,0 +1,22 @@
+pkgbase = gdbm183
+	pkgdesc = GNU database library
+	pkgver = 1.8.3
+	pkgrel = 10
+	url = http://www.gnu.org/software/gdbm/gdbm.html
+	install = gdbm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = sh
+	options = !libtool
+	options = !makeflags
+	source = ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.8.3.tar.gz
+	source = gdbm-1.8.3-zeroheaders.patch
+	source = gdbm-1.8.3-fhs.patch
+	md5sums = 1d1b1d5c0245b1c00aff92da751e9aa1
+	md5sums = a2ed344be9258775bd718074cf2e4ec6
+	md5sums = 66a7c235416c136dc89efc7d03352514
+
+pkgname = gdbm183
+

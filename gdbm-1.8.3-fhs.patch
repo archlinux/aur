@@ -1,0 +1,138 @@
+diff -up gdbm-1.8.3/Makefile.in.fhs gdbm-1.8.3/Makefile.in
+--- gdbm-1.8.3/Makefile.in.fhs	2002-10-08 18:09:12.000000000 +0200
++++ gdbm-1.8.3/Makefile.in	2010-03-10 15:41:01.516025096 +0100
+@@ -1,7 +1,7 @@
+ #### Start of system configuration section. ####
+ 
+ srcdir = @srcdir@
+-top_builddir = .
++top_builddir = @top_builddir@
+ VPATH = @srcdir@
+ 
+ CC = @CC@
+@@ -14,17 +14,13 @@ INSTALL = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DATA = @INSTALL_DATA@
+ 
+-# File ownership and group
+-BINOWN = bin
+-BINGRP = bin
+-
+ MAKEINFO = makeinfo
+ TEXI2DVI = texi2dvi
+ 
+-DEFS =
++DEFS = @DEFS@
+ 
+ # Where the system [n]dbm routines are...
+-LIBS = @LIBS@ -lc
++LIBS = @LIBS@
+ 
+ CFLAGS = @CFLAGS@
+ LDFLAGS = @LDFLAGS@
+@@ -32,16 +28,17 @@ LDFLAGS = @LDFLAGS@
+ # Common prefix for installation directories
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-binprefix = $(exec_prefix)
+-manprefix = $(prefix)
++datarootdir = @datarootdir@
+ 
+ # Directory in which to put libgdbm.a.
+ libdir = @libdir@
+ # The include directory for gdbm.h and dbm.h.
+ includedir = @includedir@
++pkgincludedir = $(includedir)/gdbm
+ # Info and man directories.
+ infodir = @infodir@
+-man3dir = @mandir@/man3
++mandir = @mandir@
++man3dir = $(mandir)/man3
+ manext = 3
+ 
+ #### End of system configuration section. ####
+@@ -57,7 +54,7 @@ manext = 3
+ 
+ SHELL = /bin/sh
+ 
+-PROGS = libgdbm.la testgdbm testdbm testndbm tndbm tdbm conv2gdbm
++PROGS = libgdbm.la testgdbm testdbm testndbm conv2gdbm
+ 
+ DBM_CF = dbminit.c delete.c fetch.c store.c seq.c close.c
+ 
+@@ -127,26 +124,17 @@ all: libgdbm.la libgdbm_compat.la
+ progs: $(PROGS)
+ 
+ install: libgdbm.la gdbm.h gdbm.info
+-	$(srcdir)/mkinstalldirs $(INSTALL_ROOT)$(libdir) \
+-		$(INSTALL_ROOT)$(includedir) $(INSTALL_ROOT)$(man3dir) \
+-		$(INSTALL_ROOT)$(infodir)
+-	$(LIBTOOL) $(INSTALL) -c libgdbm.la $(INSTALL_ROOT)$(libdir)/libgdbm.la
+-	$(INSTALL_DATA) -o $(BINOWN) -g $(BINGRP) gdbm.h \
+-		$(INSTALL_ROOT)$(includedir)/gdbm.h
+-	$(INSTALL_DATA) -o $(BINOWN) -g $(BINGRP) $(srcdir)/gdbm.3 \
+-		$(INSTALL_ROOT)$(man3dir)/gdbm.3
+-	$(INSTALL_DATA) -o $(BINOWN) -g $(BINGRP) $(srcdir)/gdbm.info \
+-		$(INSTALL_ROOT)$(infodir)/gdbm.info
++	$(srcdir)/mkinstalldirs $(libdir) $(pkgincludedir) $(man3dir) $(infodir)
++	$(LIBTOOL) install install libgdbm.la $(libdir)/libgdbm.la
++	$(INSTALL_DATA) gdbm.h $(pkgincludedir)/gdbm.h
++	$(INSTALL_DATA) $(srcdir)/gdbm.3 $(man3dir)/gdbm.3
++	$(INSTALL_DATA) $(srcdir)/gdbm.info $(infodir)/gdbm.info
+ 
+ install-compat:
+-	$(srcdir)/mkinstalldirs $(INSTALL_ROOT)$(libdir) \
+-		$(INSTALL_ROOT)$(includedir)
+-	$(LIBTOOL) $(INSTALL) -c libgdbm_compat.la \
+-		$(INSTALL_ROOT)$(libdir)/libgdbm_compat.la
+-	$(INSTALL_DATA) -o $(BINOWN) -g $(BINGRP) $(srcdir)/dbm.h \
+-		$(INSTALL_ROOT)$(includedir)/dbm.h
+-	$(INSTALL_DATA) -o $(BINOWN) -g $(BINGRP) $(srcdir)/ndbm.h \
+-		$(INSTALL_ROOT)$(includedir)/ndbm.h
++	$(srcdir)/mkinstalldirs $(libdir) $(pkgincludedir)
++	$(LIBTOOL) install install libgdbm_compat.la $(libdir)/libgdbm_compat.la
++	$(INSTALL_DATA) $(srcdir)/dbm.h $(pkgincludedir)/dbm.h
++	$(INSTALL_DATA) $(srcdir)/ndbm.h $(pkgincludedir)/ndbm.h
+ 
+ #libgdbm.a: $(OBJS) gdbm.h
+ #	rm -f libgdbm.a
+@@ -161,7 +149,7 @@ libgdbm.la: $(LOBJS) gdbm.h
+ libgdbm_compat.la: $(C_LOBJS) gdbm.h
+ 	rm -f libgdbm_compat.la
+ 	$(LIBTOOL) --mode=link $(CC) -o libgdbm_compat.la -rpath $(libdir) \
+-		-version-info $(SHLIB_VER) $(C_LOBJS)
++		-version-info $(SHLIB_VER) $(C_LOBJS) -lgdbm
+ 
+ gdbm.h:	gdbm.proto gdbmerrno.h gdbm.proto2
+ 	rm -f gdbm.h
+@@ -172,10 +160,10 @@ gdbm.h:	gdbm.proto gdbmerrno.h gdbm.prot
+ 	chmod -w gdbm.h
+ 
+ testgdbm: testgdbm.o libgdbm.la @LIBOBJS@
+-	$(LIBTOOL) $(CC) $(LDFLAGS) -o testgdbm testgdbm.o libgdbm.la @LIBOBJS@
++	$(LIBTOOL) link $(CC) $(LDFLAGS) -o testgdbm testgdbm.o libgdbm.la @LIBOBJS@
+ 
+ testdbm: testdbm.o libgdbm.la libgdbm_compat.la
+-	$(LIBTOOL) $(CC) $(LDFLAGS) -o testdbm testdbm.o libgdbm.la libgdbm_compat.la
++	$(LIBTOOL) link $(CC) $(LDFLAGS) -o testdbm testdbm.o $(LIBS) libgdbm_compat.la
+ 
+ tdbm: testdbm.o
+ 	$(CC) $(LDFLAGS) -o tdbm testdbm.o $(LIBS)
+@@ -184,7 +172,7 @@ testndbm.o: testndbm.c
+ 	$(CC) -c -I. -I$(srcdir) $(CFLAGS) $(DEFS) -DGNU $(srcdir)/testndbm.c
+ 
+ testndbm: testndbm.o libgdbm.la libgdbm_compat.la
+-	$(LIBTOOL) $(CC) $(LDFLAGS) -o testndbm testndbm.o libgdbm.la libgdbm_compat.la
++	$(LIBTOOL) link $(CC) $(LDFLAGS) -o testndbm testndbm.o libgdbm_compat.la
+ 
+ tndbm.o: testndbm.c
+ 	cp $(srcdir)/testndbm.c ./tndbm.c
+@@ -195,7 +183,7 @@ tndbm: tndbm.o
+ 	$(CC) $(LDFLAGS) -o tndbm tndbm.o $(LIBS)
+ 
+ conv2gdbm: conv2gdbm.o libgdbm.la @LIBOBJS@
+-	$(LIBTOOL) $(CC) $(LDFLAGS) -o conv2gdbm conv2gdbm.o $(LIBS) libgdbm.la @LIBOBJS@
++	$(LIBTOOL) link $(CC) $(LDFLAGS) -o conv2gdbm conv2gdbm.o $(LIBS) libgdbm_compat.la @LIBOBJS@
+ 
+ lintgdbm: 
+ 	lint $(DEFS) $(LFLAGS) $(DBM_CF) $(NDBM_CF) $(GDBM_CF) testgdbm.c
