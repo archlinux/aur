@@ -1,0 +1,24 @@
+pkgbase = grubinvaders
+	pkgdesc = multi boot compliant game for i386 and compatible x86_64
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://www.erikyyy.de/invaders/
+	install = grubinvaders.install
+	arch = any
+	license = GPL2
+	makedepends = gcc
+	source = http://www.erikyyy.de/invaders/invaders-1.0.0.tar.gz
+	source = 0001-gcc_binutils_bugfix.patch
+	source = 0002-reboot-on-esc.patch
+	source = 0003-no-stack-protector.patch
+	source = 0004-x86_64_envfix.patch
+	source = grub
+	sha256sums = 304c8b0f82eaec54b07250b0f39886e1d9fa23c48075213bf87c8f375781a845
+	sha256sums = c0c15db81101b6ffce3c6d142e207358155eac37970ddd3b31d4ebe42b703515
+	sha256sums = 36ff7d4a546b9e1f15f62683120f7b7428d14a5ef15b4923e8179cd0ffcc9b99
+	sha256sums = 46819946a00a81f8b8346a52778dd1c4f35ebc6ae82937e3eebde7b25dc4b3f4
+	sha256sums = a21caf867c156a664779a40f5139ca895f4d7915a22a7a792dffc0976a8c8c5b
+	sha256sums = fc36e67c91515aa619ca9616f517116d5cfd1f257fc142703a5ff01ec5dcfdab
+
+pkgname = grubinvaders
+

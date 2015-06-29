@@ -1,0 +1,38 @@
+Reboot the machine when the ESC key is pressed (taken from memtest86_3.5-2).
+
+--- invaders-1.0.0.orig/game.c
++++ invaders-1.0.0/game.c
+@@ -2,6 +2,7 @@
+ #include "keyboard.h"
+ #include "sound.h"
+ #include "delay.h"
++#include "io.h"
+ 
+ struct shot_t {
+   int8 x,y; // x==-1 -> inactive shot
+@@ -19,6 +20,13 @@
+ 
+ static bool gameover, winner;
+ 
++inline void reboot()
++{
++  /* tell the BIOS to do a warm start */
++  *((unsigned short *)0x472) = 0x1234;
++  outb(0xfe,0x64);
++};
++
+ void resetgame()
+ {
+   gameover=false;
+@@ -120,6 +128,11 @@
+       break;
+     case 'x':
+       return;
++    case '@':
++      if (pressed) {
++        reboot();
++      }
++      break;
+     };
+   };
+ };

@@ -1,0 +1,13 @@
+diff --git a/compile.sh b/compile.sh
+index cf379e5..cc6119d 100755
+--- a/compile.sh
++++ b/compile.sh
+@@ -3,7 +3,7 @@
+ set -e
+ set -v
+ 
+-CFLAGS="-fno-builtin -nostdinc -O2 -I. -Wall -Werror"
++CFLAGS="-fno-builtin -fno-stack-protector -nostdinc -O2 -I. -Wall -Werror"
+ LDFLAGS="-nostdlib -Wl,-N -Wl,-Ttext -Wl,100000 -Wl,--build-id=none"
+ gcc $CFLAGS -c keyboard.c
+ gcc $CFLAGS -c delay.c
