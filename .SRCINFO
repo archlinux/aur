@@ -1,0 +1,16 @@
+pkgbase = virt-what
+	pkgdesc = A small program that prints out a list of facts about a virtual machine
+	pkgver = 1.15
+	pkgrel = 2
+	url = http://people.redhat.com/~rjones/virt-what/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dmidecode
+	source = http://people.redhat.com/~rjones/virt-what/files/virt-what-1.15.tar.gz
+	source = http://people.redhat.com/~rjones/virt-what/files/virt-what-1.15.tar.gz.sig
+	sha256sums = 7ab9220d4682eadf9139c6afe62d33ebd273fff69e49054279caba5514937c41
+	sha256sums = SKIP
+
+pkgname = virt-what
+
