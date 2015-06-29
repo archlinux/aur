@@ -1,0 +1,13 @@
+# wwwoffle init script for systemd.
+# Taken from https://build.opensuse.org/package/show/server:proxy/wwwoffle
+# Thanks to "jaro3" for pointing this out.
+[Unit]
+Description=The wwwoffle proxy server
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/wwwoffled -d -c /etc/wwwoffle/wwwoffle.conf
+ExecReload=/usr/bin/wwwoffle -config -c /etc/wwwoffle/wwwoffle.conf
+
+[Install]
+WantedBy=multi-user.target

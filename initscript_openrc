@@ -1,0 +1,29 @@
+#!/usr/bin/openrc-run
+# OpenRC wwwoffle script
+
+## The WWWOFFLE_ARGS environment variable should be set within /etc/conf.d/wwwoffle!
+
+_DAEMON="/usr/sbin/wwwoffled"
+_DAEMON_ARGS=(
+              ${WWWOFFLE_ARGS}
+             )
+
+depend() {
+  use logger dns
+}
+
+start() {
+  ebegin "Starting $(basename "${_DAEMON}"): Executing ${_DAEMON} ${_DAEMON_ARGS[@]}"
+  
+  start-stop-daemon --start --quiet --exec "${_DAEMON}" -- "${_DAEMON_ARGS[@]}"
+  
+  eend "$?"
+}
+
+stop() {
+  ebegin "Stopping $(basename "${_DAEMON}")"
+  
+  start-stop-daemon --stop --quiet --exec "${_DAEMON}"
+  
+  eend "$?"
+}

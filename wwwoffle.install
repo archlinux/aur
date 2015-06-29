@@ -1,0 +1,40 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "ATTENTION WWWOFFLE:"
+  echo "-------------------"
+  echo "init-scripts were installed for:"
+  echo "  * sysvinit ('/etc/rc.d/wwwoffle'),"
+  echo "  * openrc ('/etc/init.d/wwwoffle') and"
+  echo "  * systemd ('/usr/lib/systemd/system/wwwoffle.service')."
+  echo "Which one will be used depends on your init system you use."
+  echo ""
+  echo "In order to define the options passed to wwwoffle during startup"
+  echo "(including which configuration file to use), edit"
+  echo "  * the file '/etc/conf.d/wwwoffle' when using sysvinit or openrc,"
+  echo "  * the file '/usr/lib/systemd/system/wwwoffle.service' when using"
+  echo "    systemd."
+  echo "-------------------"
+  echo "Set bind-ipv4 = none in wwwoffle.conf if you get ipv4 related warnings."
+  echo "-------------------"
+  if [ ! `grep wwwoffle /etc/group` ]; then
+    echo ">>> Adding group wwwoffle."
+    groupadd wwwoffle &> /dev/null;
+  fi
+  id wwwoffle &> /dev/null || \
+    (echo ">>> Adding user wwwoffle." && useradd -g wwwoffle wwwoffle)
+  chown -R wwwoffle:wwwoffle /var/spool/wwwoffle /etc/wwwoffle
+}
+
+pre_remove() {
+  echo ">>> Removing user wwwoffle."
+  userdel wwwoffle &> /dev/null
+  echo ">>> Removing group wwwoffle."
+  groupdel wwwoffle &> /dev/null
+}
+
+op=$1
+shift
+$op $*
