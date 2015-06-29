@@ -1,0 +1,118 @@
+* This software was written by Mark Brukhartz at Lachman Associates,
+* Inc..  Additional code was written by a large cast of people.  
+*
+* Licensing and (re)distribution
+* ------------------------------
+*
+* THE SUMMARY INFORMATION BELOW WAS WRITTEN FOR THE BENEFIT OF 
+* SOFTWARE DISTRIBUTORS
+*
+* Because of historical reasons, different parts of this software
+* package are covered by different licenses.  However:
+*
+* A) This software package as a whole may be re-distributed by any
+*    method that satisfies the conditions of both the Perl "Artistic
+*    License" and the GNU Library General Public License.
+*
+* B) According to the theory.html file of the Sunsite Archive
+*    Maintainers, this implies that the correct LSM template field
+*    is:
+*
+*          Copying-policy: LGPL
+* 
+* C) This software package can also be re-distributed under
+*    particular conditions that are _weaker_ than the Perl "Artistic
+*    License" combined with the GNU Library General Public License.
+*    Redistribution need only satisfy all four license notices below.
+*
+* Disclaimer: I am not a lawyer, and neither are the Sunsite Archive
+* Maintainers.
+*
+* END OF SUMMARY INFORMATION
+*
+* ------------------------------------------------------------------ 
+*
+* License notice 1, covering part of this software package.
+*
+* [Covers the original 1985 afio code]
+* 
+* Copyright (c) 1985 Lachman Associates, Inc..
+*
+* This software was written by Mark Brukhartz at Lachman Associates,
+* Inc.. It may be distributed within the following restrictions:
+*	(1) It may not be sold at a profit.
+*	(2) This credit and notice must remain intact.
+* This software may be distributed with other software by a commercial
+* vendor, provided that it is included at no additional charge.
+*
+*
+* [Note: it is believed that condition 5 of the Perl "Artistic
+* License" implies the intent of restriction (1) above.]
+*
+* --------
+*
+* ** License notice 2, covering part of this software package.
+*
+* [Covers the tempnam function]
+*
+* Copyright:	Copyright (c) 1989 by Monty Walls.
+*		Not derived from licensed software.
+*
+*		Permission to copy and/or distribute granted under the
+*		following conditions:
+*
+*		1). This notice must remain intact.
+*		2). The author is not responsible for the consequences of use
+*			this software, no matter how awful, even if they
+*			arise from defects in it.
+*		3). Altered version must not be represented as being the
+*			original software.
+*
+* --------
+*
+* ** License notice 3, covering part of this software package.
+*
+* [Covers the contents of the gnu.fnmatch.tar.gz file]
+*
+*  Copyright (C) 1991, 1992, 1993 Free Software Foundation, Inc.
+*
+*  This library is free software; you can redistribute it and/or
+*  modify it under the terms of the GNU Library General Public License as
+*  published by the Free Software Foundation; either version 2 of the
+*  License, or (at your option) any later version.
+*  
+*  This library is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+*  Library General Public License for more details.
+*  
+*  You should have received a copy of the GNU Library General Public
+*  License along with this library; see the file COPYING.LIB.  If
+*  not, write to the Free Software Foundation, Inc., 675 Mass Ave,
+*  Cambridge, MA 02139, USA.  
+*
+* --------
+*
+* ** License notice 4, covering part of this software package.
+*
+* [Covers the remainder of this software package]
+*
+* Additional code was written by a large cast of people.
+*
+* All additional code may be redistributed under the conditions of
+* license notice 1.
+*
+* Note that the authors of the additional code retain the right to
+* allow for the re-distribution of their code under weaker (and less
+* exotic) conditions.
+*
+* --------
+*
+* ** WARRANTY NOTICE
+*
+* THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
+* IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+*
+*
+* [End of licensing and redistribution section] 
