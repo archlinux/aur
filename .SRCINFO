@@ -1,0 +1,17 @@
+pkgbase = syncthing-cli-git
+	pkgdesc = Official command line client for syncthing
+	pkgver = r32.144a17a
+	pkgrel = 1
+	url = https://github.com/syncthing/syncthing-cli
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = godep
+	depends = syncthing
+	source = syncthing-cli::git+https://github.com/syncthing/syncthing-cli.git
+	sha256sums = SKIP
+
+pkgname = syncthing-cli-git
+
