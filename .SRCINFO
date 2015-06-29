@@ -1,0 +1,45 @@
+pkgbase = shutter-bzr
+	pkgdesc = A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch
+	pkgver = 1272
+	pkgrel = 3
+	url = http://shutter-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	depends = gconf-perl
+	depends = gnome-perl
+	depends = imagemagick
+	depends = libxml-perl
+	depends = perl-gnome2-wnck
+	depends = perl-gtk2-imageview
+	depends = perl-locale-gettext
+	depends = perl-net-dbus
+	depends = perl-www-mechanize
+	depends = perl-x11-protocol
+	depends = perl-xml-simple
+	depends = perl-libwww>=6.0
+	depends = perl-gtk2-unique
+	depends = perl-proc-processtable
+	depends = perl-file-which
+	depends = perl-file-copy-recursive
+	depends = perl-proc-simple
+	depends = perl-sort-naturally
+	depends = perl-json
+	optdepends = gnome-web-photo: web screenshot support
+	optdepends = perl-exiftool: read and write EXIF data
+	optdepends = nautilus-sendto: integration in Nautilus
+	optdepends = perl-goo-canvas: editing screenshots
+	optdepends = perl-net-dbus-glib: Ubuntu One support
+	optdepends = perl-gtk2-appindicator: AppIndicators support
+	optdepends = perl-net-dropbox-api: Dropbox upload support
+	optdepends = perl-path-class: Dropbox upload support
+	optdepends = perl-lwp-protocol-https: Dropbox upload support
+	optdepends = bc: 3D Rotate and 3D Reflection plugins support
+	provides = gscrot
+	provides = shutter
+	conflicts = shutter
+	replaces = gscrot
+
+pkgname = shutter-bzr
+
