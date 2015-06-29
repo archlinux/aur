@@ -1,0 +1,31 @@
+pkgbase = cnoor-git
+	pkgdesc = A simple framebuffer holy Quran viewer.
+	pkgver = r93.458780d
+	pkgrel = 1
+	url = http://litcave.rudi.ir/
+	install = cnoor-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	optdepends = ttf-sil-scheherazade: quran font
+	optdepends = ttf-dejavu: reader font
+	source = cnoor-git::git+git://repo.or.cz/cnoor.git
+	source = cnoor.1
+	source = config.h
+	source = http://tanzil.net/trans/en.ahmedali
+	md5sums = SKIP
+	md5sums = c5e914abff7843191998a5a3da0c386d
+	md5sums = ab0e8455b71c4042c8acbdbafba5d8e0
+	md5sums = 4440b64e31448eee1e65f3ad09439dac
+	sha1sums = SKIP
+	sha1sums = 8a232ff84fe36112e0d58aa06f6978f63c81c1dc
+	sha1sums = 3ae09c097c17155be2ac80af24314f685bdd275a
+	sha1sums = 039ef775054904e89278a6d5f27ae04d80d41ffa
+	sha256sums = SKIP
+	sha256sums = d87c5c5c4585f09f3af7a39e8ebb75f7b9a673e95966f56249b17cfcba1d6bba
+	sha256sums = 624cd5c1a4202695682ecccc338273d74d51029179319bc28ddbd7e9f76e4987
+	sha256sums = 4fdc3e02ab16c6f6d841416c4b86cc1ad950a2c0436f5c92637db67c813ed62d
+
+pkgname = cnoor-git
+

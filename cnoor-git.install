@@ -1,0 +1,11 @@
+post_install() {
+  echo "==> You have to download Arabic Quran text file:                "
+  echo "    \"http://tanzil.info/download\"                             "
+  echo "    By default, its path is \"\$HOME/.quran/quran-simple.txt\". "
+  echo "==> Note: The path to the Arabic Quran text file is absolute.   "
+  echo "==> If you want to change the Quran text file location and/or other settings: "
+  echo "    * Edit config.h                    "
+  echo "    * $ updpkgsums                     "
+  echo "    * Rebuild and install the package. "
+}
+

@@ -1,0 +1,52 @@
+.TH CNOOR 1 "NOVEMBER 2011"
+.SH NAME
+cnoor \- framebuffer holy Quran viewer
+.SH SYNOPSIS
+.B cnoor
+.RI " surat number"
+.SH DESCRIPTION
+.B cnoor
+is a fast and simple Quran viewer for the linux
+framebuffer (optionally for X11 using GTK+), and 
+uses vim keyboard shortcuts.
+.SH OPTIONS
+.IP "\fB\-h\fR
+Display brief usage information and quit
+.SH KEY BINDINGS
+.TP 
+.B j
+Scroll down
+.TP
+.B k
+Scroll up
+.TP
+.B ^f
+Scroll down a screenful
+.TP
+.B ^b
+Scroll up a screenful
+.IP [\fI0-9\fR]+\fBG\fR
+Go to the specified ayat, default to the end
+.IP [\fI0-9\fR]+\fB%\fR
+Jump to specified percent of surat
+.IP \fBm\fR+[\fIa-z\fR]
+Mark position for snap back.
+.IP \fB'\fR+[\fIa-z\fR]
+Pop back to marked position.
+.TP
+.B i
+Display surat information
+.TP
+.B ^l
+Redraw screen
+.TP
+.B q
+Quit program
+.SH CUSTOMIZATION
+.B cnoor
+is customized by editing the supplied config.h and (re)compiling
+the source code. The absolute path to the Arabic Quran text must 
+be set in order to run \fBcnoor\fR, but it is optional to supply 
+a translation.
+.SH AUTHOR
+Ali Gholami Rudi <aligrudi at gmail dot com>
