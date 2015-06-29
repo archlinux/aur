@@ -1,0 +1,21 @@
+pkgbase = mtop
+	pkgdesc = MySQL top (monitor and examine slow queries)
+	pkgver = 0.6.6
+	pkgrel = 3
+	url = http://mtop.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-dbi
+	depends = libmysqlclient
+	depends = perl-dbd-mysql
+	depends = perl-curses
+	backup = etc/mtoprc
+	source = http://downloads.sourceforge.net/project/mtop/mtop/v0.6.6/mtop-0.6.6.tar.gz
+	source = mtoprc
+	sha256sums = 2e7fc09511d2d0f130da1f52bf85fcfeea0be2cc3aa3d93b88498605c0281d74
+	sha256sums = 88709b23b3edfb5ec52a88af76cfad422c1fd0f6d9c773b8c9a2516de2b2ecc5
+
+pkgname = mtop
+
