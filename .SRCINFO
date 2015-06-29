@@ -1,0 +1,17 @@
+pkgbase = conky-cli
+	pkgdesc = Conky command line, without X11 dependencies
+	pkgver = 1.9.0
+	pkgrel = 2
+	url = http://conky.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	depends = wireless_tools
+	provides = conky
+	conflicts = conky
+	source = http://downloads.sourceforge.net/conky/conky-1.9.0.tar.gz
+	md5sums = 1c8e715a2784d4d799f5fc0213e76d0f
+
+pkgname = conky-cli
+
