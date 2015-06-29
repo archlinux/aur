@@ -1,0 +1,17 @@
+pkgbase = perl-cgi-ssi
+	pkgdesc = CGI-SSI (Server Side Includes) for Perl
+	pkgver = 0.92
+	pkgrel = 3
+	url = http://search.cpan.org/~james/CGI-SSI-0.92/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-cgi
+	depends = perl-html-simpleparse
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAMES/CGI-SSI-0.92.tar.gz
+	sha256sums = 162ba39a723b09cff925e5e61604e3614bdb19363f2bb434cf33187e6b472e2c
+
+pkgname = perl-cgi-ssi
+
