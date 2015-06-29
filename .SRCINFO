@@ -1,7 +1,7 @@
 pkgbase = zarafa-server-arm
 	pkgdesc = Open Source Groupware Solution
 	pkgver = 7.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.zarafa.com/
 	install = install
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = zarafa-server-arm
 	source = zarafa-gateway.service
 	md5sums = 7dc8a526b3eb83e6eb5bbc9d2215b501
 	md5sums = 5de9759477995d9940c056e56ed9d3f1
-	md5sums = 150803125cf52655f87a960e0f779f5b
+	md5sums = b3b6e3015f93b9256bb780b4c257e857
 	md5sums = 0e2728f1e35b25ca679427fcb57315d8
 	md5sums = c25f3982217fe390d68ed9003a5988ed
 	md5sums = 9666bf713645af11dd65b3ac5cbb42d9
