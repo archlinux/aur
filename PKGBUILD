@@ -3,16 +3,16 @@
 
 _pkgbase=libbluray
 pkgname=lib32-${_pkgbase}
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback (32 bit)"
 arch=('x86_64')
 url="http://www.videolan.org/developers/libbluray.html"
 license=('LGPL2.1')
 depends=("$_pkgbase" 'lib32-libxml2' 'lib32-freetype2' 'lib32-fontconfig')
-makedepends=('gcc-multilib')
+makedepends=('gcc-multilib' 'apache-ant')
 source=(ftp://ftp.videolan.org/pub/videolan/$_pkgbase/$pkgver/$_pkgbase-$pkgver.tar.bz2)
-sha512sums=('2bf73398003e5a6b12ffdf44ec5716c18da4a176328b4eac52adb3337d09fcb4e5b553362cb67d70506fb0b2cd60e2e59ccc398104630554f41f0b095fc4703f')
+sha512sums=('6618e01a567f0dc5d21302fc771d4155589c81703028b76f6090a2d12ef1c7e9d08d9c79312a7c8b2ca0d6c63ce980195f0866509a4f8f05f64ed6650c7f78dc')
 
 build() {
   export CC='gcc -m32'
