@@ -1,0 +1,16 @@
+pkgbase = libmnl-git
+	pkgdesc = Library for minimalistic netlink - git checkout
+	pkgver = 1.0.3.r11.g050d592
+	pkgrel = 1
+	url = http://www.netfilter.org/projects/libmnl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = libmnl
+	conflicts = libmnl
+	source = git://git.netfilter.org/libmnl.git
+	sha256sums = SKIP
+
+pkgname = libmnl-git
+
