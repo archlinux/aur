@@ -1,0 +1,37 @@
+.TH "MP3val" 1
+
+.SH NAME
+MP3val \- A program for MPEG audio stream validation
+
+.SH SYNOPSIS
+.B mp3val
+[\-l <log_file>] [\-f] [\-si] [\-p] [\-v] <files to validate>
+
+.SH DESCRIPTION
+MP3val is a small, high-speed tool for MPEG audio files validation and (optionally) fixing problems. It was primarily designed for verification of MPEG 1 Layer III (MP3) files, but supports also other MPEG versions and layers. It can be useful for finding corrupted files (e.g. incompletely downloaded).
+
+.SH OPTIONS
+.TP
+.B \-l <log_file>
+Log file name. If this argument is missing, all the information will be written to stdout.
+
+.TP
+.B \-f
+Try to fix errors.
+
+.TP
+.B \-si
+Suppress INFO messages.
+
+.TP
+.B \-p
+Pipe mode (receive input file names from stdin). Intended for interaction with frontends. <files to validate> is ignored in this case.
+
+.TP
+.B \-v
+Print version and exit
+
+.SH AUTHOR
+Alexey Kuznetsov (ring0) and Eugen Tikhonov (jetsys), <mp3val at ring0 dot pp dot ru>
+.PP
+Manpage first version compiled by Sandro Tosi, <matrixhasu@gmail.com>

@@ -1,0 +1,18 @@
+pkgbase = mp3val
+	pkgdesc = A tool for validating and repairing MPEG audio streams
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = http://mp3val.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/mp3val/mp3val-0.1.8-src.tar.gz
+	source = mp3val-0.1.8.diff
+	source = mp3val.1
+	md5sums = dc8adad909d0b8734ed22029b2de2cb4
+	md5sums = a1171f5aeb95f5a06cf0d147c5d3921a
+	md5sums = 0195e80d4ea32855fd15fe76e3855acd
+
+pkgname = mp3val
+
