@@ -1,0 +1,150 @@
+diff -upr Gtk2-Notify-0.05.orig/lib/Gtk2/Notify.pm Gtk2-Notify-0.05/lib/Gtk2/Notify.pm
+--- Gtk2-Notify-0.05.orig/lib/Gtk2/Notify.pm	2008-11-11 23:47:33.000000000 -0700
++++ Gtk2-Notify-0.05/lib/Gtk2/Notify.pm	2013-02-22 06:43:03.000000000 -0700
+@@ -47,7 +47,7 @@ Version 0.04
+ 
+     use Gtk2::Notify -init, "app_name";
+ 
+-    my $notification = Gtk2::Notify->new($summary, $message, $icon, $attach_widget);
++    my $notification = Gtk2::Notify->new($summary, $message, $icon);
+     $notification->show;
+ 
+ =head1 INITIALISATION
+diff -upr Gtk2-Notify-0.05.orig/t/notification.t Gtk2-Notify-0.05/t/notification.t
+--- Gtk2-Notify-0.05.orig/t/notification.t	2006-08-27 13:11:57.000000000 -0600
++++ Gtk2-Notify-0.05/t/notification.t	2013-02-22 06:49:35.000000000 -0700
+@@ -2,20 +2,18 @@
+ 
+ use strict;
+ use warnings;
+-use Gtk2::TestHelper tests => 35;
++use Gtk2::TestHelper tests => 31;
+ use Test::Exception;
+ use Gtk2::Notify -init, $0;
+ 
+ ginterfaces_ok('Gtk2::Notify');
+ 
+-my $w = Gtk2::Window->new;
+-my $n = Gtk2::Notify->new('foo', 'bar', '', $w);
++my $n = Gtk2::Notify->new('foo', 'bar', '');
+ 
+ isa_ok($n, 'Gtk2::Notify');
+ 
+ my @methods = qw(
+         add_action
+-        attach_to_widget
+         clear_actions
+         clear_hints
+         close
+@@ -46,16 +44,6 @@ lives_ok(sub {
+         }, 42);
+ }, 'add_action');
+ 
+-{
+-    my $nw = Gtk2::Window->new;
+-    lives_ok(sub {
+-            $n->attach_to_widget($nw);
+-    }, 'attach_to_widget');
+-    lives_ok(sub {
+-            $n->attach_to_widget($w);
+-    }, 'attach_to_widget');
+-}
+-
+ lives_ok(sub {
+         $n->clear_actions;
+ }, 'clear_actions with existing actions');
+@@ -96,12 +84,6 @@ lives_ok(sub {
+ }, 'set_urgency');
+ 
+ lives_ok(sub {
+-        $n->close;
+-}, 'close before show');
+-
+-$w->show_all;
+-
+-lives_ok(sub {
+         $n->show;
+ }, 'show');
+ 
+diff -upr Gtk2-Notify-0.05.orig/xs/Notify.xs Gtk2-Notify-0.05/xs/Notify.xs
+--- Gtk2-Notify-0.05.orig/xs/Notify.xs	2007-10-04 06:11:13.000000000 -0600
++++ Gtk2-Notify-0.05/xs/Notify.xs	2013-02-22 06:47:46.000000000 -0700
+@@ -21,8 +21,7 @@ PROTOTYPES: DISABLE
+     my $notification = Gtk2::Notify->new(
+             $summary,
+             $message,
+-            $icon,
+-            $attach_widget
++            $icon
+     );
+     $notification->show;
+ 
+@@ -86,26 +85,12 @@ notify_get_server_info (class, OUTLIST c
+ MODULE = Gtk2::Notify	PACKAGE = Gtk2::Notify	PREFIX = notify_notification_
+ 
+ NotifyNotification *
+-notify_notification_new (class, summary, body=NULL, icon=NULL, attach=NULL)
++notify_notification_new (class, summary, body=NULL, icon=NULL)
+ 		const gchar *summary
+ 		const gchar *body
+ 		const gchar *icon
+-		GtkWidget_ornull *attach
+ 	C_ARGS:
+-		summary, body, icon, attach
+-
+-#if GTK_CHECK_VERSION (2, 9, 2)
+-
+-NotifyNotification *
+-notify_notification_new_with_status_icon (class, summary, body=NULL, icon=NULL, status_icon=NULL)
+-		const gchar *summary
+-		const gchar *body
+-		const gchar *icon
+-		GtkStatusIcon *status_icon
+-	C_ARGS:
+-		summary, body, icon, status_icon
+-
+-#endif
++		summary, body, icon
+ 
+ gboolean
+ notify_notification_update (notification, summary, message=NULL, icon=NULL)
+@@ -114,27 +99,6 @@ notify_notification_update (notification
+ 		const gchar *message
+ 		const gchar *icon
+ 
+-void
+-notify_notification_attach_to_widget (notification, attach)
+-		NotifyNotification *notification
+-		GtkWidget *attach
+-
+-#if GTK_CHECK_VERSION (2, 9, 2)
+-
+-void
+-notify_notification_attach_to_status_icon (notification, status_icon)
+-		NotifyNotification *notification
+-		GtkStatusIcon *status_icon
+-
+-#endif
+-
+-void
+-notify_notification_set_geometry_hints (notification, screen, x, y)
+-		NotifyNotification *notification
+-		GdkScreen *screen
+-		gint x
+-		gint y
+-
+ NO_OUTPUT gboolean
+ notify_notification_show (notification)
+ 		NotifyNotification *notification
+@@ -168,6 +132,11 @@ notify_notification_set_icon_from_pixbuf
+ 		GdkPixbuf *icon
+ 
+ void
++notify_notification_set_image_from_pixbuf (notification, image)
++		NotifyNotification *notification
++		GdkPixbuf *image
++
++void
+ set_hint (notification, key, value)
+ 		NotifyNotification *notification
+ 		const gchar *key
