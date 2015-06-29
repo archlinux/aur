@@ -1,0 +1,13 @@
+pkgbase = stardict-de-cz
+	pkgdesc = GNU/FDL German-Czech dictionary for StarDict
+	pkgver = 20150101
+	pkgrel = 1
+	url = http://slovnik.hrach.eu/
+	arch = any
+	license = FDL
+	depends = stardict
+	source = http://dl.cihar.com/slovnik/stable/stardict-german-czech-20150101.tar.gz
+	md5sums = a275fc6960e00303877a0c159411958e
+
+pkgname = stardict-de-cz
+
