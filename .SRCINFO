@@ -1,0 +1,19 @@
+pkgbase = ruby-pcap
+	pkgdesc = Ruby bindings for libpcap
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://www.goto.info.waseda.ac.jp/~fukusima/ruby/pcap-e.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ruby
+	depends = libpcap
+	source = http://www.goto.info.waseda.ac.jp/~fukusima/ruby/ruby-pcap-0.6.tar.gz
+	source = ruby-pcap-no-warnings.patch
+	source = ruby-1.9.patch
+	md5sums = bf8024831bfbbf0cfbf7c7ca27c1b16a
+	md5sums = 6ce5f0a0846731723ada2c535589c336
+	md5sums = 3466b4c5d284ba3c8fa44dd679a4b60f
+
+pkgname = ruby-pcap
+

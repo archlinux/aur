@@ -1,0 +1,86 @@
+diff -Naur pcap-old/ip_packet.c pcap/ip_packet.c
+--- pcap-old/ip_packet.c	2011-01-13 16:11:06.683333336 -0200
++++ pcap/ip_packet.c	2011-01-13 16:11:24.533333337 -0200
+@@ -168,7 +168,7 @@
+ 
+     switch(TYPE(val)) {
+     case T_STRING:
+-	hname = RSTRING(val)->ptr;
++	hname = RSTRING_PTR(val);
+ 	hent = gethostbyname(hname);
+ 	if (hent == NULL) {
+ 	    extern int h_errno;
+@@ -285,11 +285,11 @@
+     struct in_addr addr;
+     int i;
+ 
+-    if (RSTRING(str)->len != sizeof addr) {
++    if (RSTRING_LEN(str) != sizeof addr) {
+ 	rb_raise(rb_eArgError, "dump format error (IPAddress)");
+     }
+     for (i = 0; i < sizeof addr; i++) {
+-	((char *)&addr)[i] = RSTRING(str)->ptr[i];
++	((char *)&addr)[i] = RSTRING_PTR(str)[i];
+     }	
+     return new_ipaddr(&addr);
+ }
+diff -Naur pcap-old/packet.c pcap/packet.c
+--- pcap-old/packet.c	2011-01-13 16:11:06.683333336 -0200
++++ pcap/packet.c	2011-01-13 16:11:24.533333337 -0200
+@@ -147,7 +147,7 @@
+ 
+     DEBUG_PRINT("packet_load");
+ 
+-    str_ptr = RSTRING(str)->ptr;
++    str_ptr = RSTRING_PTR(str);
+     hdr = (struct packet_object_header *)str_ptr;
+     version = hdr->version;
+     if (version == PACKET_MARSHAL_VERSION) {
+@@ -175,7 +175,7 @@
+ 	memcpy(pkt->data, str_ptr + sizeof(*hdr), caplen);
+ 	if (PKTFLAG_TEST(pkt, POH_UDATA)) {
+ 	    int l = sizeof(*hdr) + caplen;
+-	    VALUE ustr = rb_str_substr(str, l, RSTRING(str)->len - l);
++	    VALUE ustr = rb_str_substr(str, l, RSTRING_LEN(str) - l);
+ 	    pkt->udata = rb_funcall(mMarshal, id_load, 1, ustr);
+ 	} else {
+ 	    pkt->udata = Qnil;
+diff -Naur pcap-old/Pcap.c pcap/Pcap.c
+--- pcap-old/Pcap.c	2011-01-13 16:11:06.683333336 -0200
++++ pcap/Pcap.c	2011-01-13 16:11:38.216666670 -0200
+@@ -145,7 +145,7 @@
+ 
+     /* device */
+     Check_SafeStr(v_device);
+-    device = RSTRING(v_device)->ptr;
++    device = RSTRING_PTR(v_device);
+     /* snaplen */
+     if (rs >= 2) {
+ 	Check_Type(v_snaplen, T_FIXNUM);
+@@ -201,7 +201,7 @@
+ 
+     /* open offline */
+     Check_SafeStr(fname);
+-    pcap = pcap_open_offline(RSTRING(fname)->ptr, pcap_errbuf);
++    pcap = pcap_open_offline(RSTRING_PTR(fname), pcap_errbuf);
+     if (pcap == NULL) {
+ 	rb_raise(ePcapError, "%s", pcap_errbuf);
+     }
+@@ -362,7 +362,7 @@
+ 	filter = f->expr;
+     } else {
+ 	Check_Type(vfilter, T_STRING);
+-	filter = RSTRING(vfilter)->ptr;
++	filter = RSTRING_PTR(vfilter);
+     }
+     opt = RTEST(optimize);
+ 
+@@ -474,7 +474,7 @@
+     GetCapture(v_cap, cap);
+     Check_SafeStr(v_fname);
+ 
+-    pcap_dumper = pcap_dump_open(cap->pcap, RSTRING(v_fname)->ptr);
++    pcap_dumper = pcap_dump_open(cap->pcap, RSTRING_PTR(v_fname));
+     if (pcap_dumper == NULL) {
+ 	rb_raise(ePcapError, "dumper_open: %s", pcap_geterr(cap->pcap));
+     }
