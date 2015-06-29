@@ -1,0 +1,13 @@
+[Unit]
+Description=PS3 Media Server
+After=syslog.target network.target rpcbind.service
+
+[Service]
+User=%i
+Group=users
+WorkingDirectory=/opt/pms/
+Type=simple
+ExecStart=/opt/pms/PMS.sh
+
+[Install]
+WantedBy=multi-user.target

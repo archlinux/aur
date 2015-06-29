@@ -1,0 +1,27 @@
+pkgbase = pms
+	pkgdesc = DLNA compliant Upnp Media Server for the PS3, written in Java.
+	pkgver = 1.90.1
+	pkgrel = 2
+	url = http://www.ps3mediaserver.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = unzip
+	depends = mplayer
+	depends = ffmpeg
+	depends = java-runtime
+	depends = mencoder
+	depends = libmediainfo
+	depends = tsmuxer
+	optdepends = vlc: Internet video/audio support
+	backup = opt/pms/PMS.conf
+	backup = opt/pms/WEB.conf
+	source = http://sourceforge.net/projects/ps3mediaserver/files/pms-1.90.1-generic-linux-unix.tar.gz
+	source = pms.desktop
+	source = pms.service
+	sha256sums = e90b20e548f66514c66524634f8458d9d133846fa1fc2fcabdbab19907047311
+	sha256sums = 9fb77fef43221f6b9fa2cd8043e67d4cf61fd1181be28c0ac9bd33b4e6aa6bd5
+	sha256sums = 918809ca188072a41e34d719eb9b3f20eb04b4cd53d7d6b80b6ab9d328e22e5c
+
+pkgname = pms
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=PS3 Media Server
+Comment=Java DLNA compliant UPnP Media Server for the PS3
+Exec=ps3mediaserver
+Icon=pms.png
+Terminal=false
+Type=Application
+Categories=Java;Network;
