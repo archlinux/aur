@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-beautify
+	pkgdesc = GIMP Beautify is a set of GIMP plug-ins for quickly and easily beautify photo
+	pkgver = 20121117
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/hejiann/beautify
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gimp
+
+pkgname = gimp-plugin-beautify
+
