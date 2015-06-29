@@ -1,0 +1,15 @@
+pkgbase = emacs-scala-mode-git
+	pkgdesc = Scala-mode for emacs, from the official Scala Github repository
+	pkgver = 20150424
+	pkgrel = 1
+	url = https://github.com/scala/scala-tool-support/tree/master/tool-support/emacs
+	install = install.sh
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = emacs
+	provides = emacs-scala-mode
+	conflicts = emacs-scala-mode
+
+pkgname = emacs-scala-mode-git
+
