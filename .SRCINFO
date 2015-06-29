@@ -1,0 +1,17 @@
+pkgbase = linopen
+	pkgdesc = Intelligent and suckless replacement for xdg-open
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://cloudef.eu
+	arch = any
+	license = WTFPL
+	provides = xdg-utils
+	conflicts = xdg-utils
+	backup = etc/linopen.conf
+	source = open
+	source = linopen.conf
+	md5sums = 15a6b084258db3a5d15eda3e65295445
+	md5sums = 37eef2ae627bb018b0638d6fefde7780
+
+pkgname = linopen
+
