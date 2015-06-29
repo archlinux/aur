@@ -1,0 +1,7 @@
+post_install() {
+  echo "Please add 'growsfs' to the HOOKS array in /etc/mkinitcpio.conf, after 'filesystems'."
+}
+
+post_upgrade() {
+  true
+}

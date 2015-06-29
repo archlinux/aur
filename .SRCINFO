@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-growrootfs
+	pkgdesc = mkinitcpio hook to autoscale the rootfs to the size of the partition
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://github.com/GregSutcliffe/aur-projects/tree/master/mkinitcpio-growrootfs
+	install = mkinitcpio-growrootfs.install
+	arch = any
+	license = GPL3
+	depends = util-linux
+	depends = e2fsprogs
+	source = growpart
+	source = growfs-hook
+	source = growfs-install
+	sha256sums = 0cd5e003e6fd4eb82e9bc5ef95f0b0739f554c15fcdcb885c8c4454bec3e3710
+	sha256sums = 88483b66ef88c6c13a6bd776740af6c94481e8860d12f11d01f00323946c25e2
+	sha256sums = 656083022534ea34e10926bd63a7efad5a56dbaa5fcb569c2df0201b57a4cd39
+
+pkgname = mkinitcpio-growrootfs
+
