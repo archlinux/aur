@@ -1,0 +1,32 @@
+pkgbase = vigra-git
+	pkgdesc = Computer vision library
+	pkgver = 3863.e360aa3
+	pkgrel = 1
+	url = http://hci.iwr.uni-heidelberg.de/vigra/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	checkdepends = python2-nose
+	makedepends = git
+	makedepends = cmake
+	makedepends = fftw
+	makedepends = python2-numpy
+	makedepends = boost
+	depends = libpng
+	depends = libtiff
+	depends = openexr
+	depends = hdf5
+	optdepends = python2: vigra-config
+	optdepends = boost-libs: python interface
+	optdepends = python2: python interface
+	optdepends = fftw: python interface
+	provides = vigra
+	provides = vigra-hg
+	conflicts = vigra
+	conflicts = vigra-hg
+	replaces = vigra-hg
+	source = git+git://github.com/ukoethe/vigra.git
+	md5sums = SKIP
+
+pkgname = vigra-git
+
