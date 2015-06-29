@@ -1,0 +1,12 @@
+[Unit]
+Description=Autocommit of changes in /etc directory
+Documentation=man:etckeeper(8)
+DefaultDependencies=no
+Conflicts=shutdown.target
+After=local-fs.target time-sync.target
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/etckeeper-autocommit
+IOSchedulingClass=idle

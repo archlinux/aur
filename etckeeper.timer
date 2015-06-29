@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily autocommit of changes in /etc directory
+Documentation=man:etckeeper(8)
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=multi-user.target
