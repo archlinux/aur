@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Omnitux
+Comment=Educational game based on multimedia elements
+Comment[fr]=Un jeu d'éducation basé sur des éléments multimédias
+Exec=omnitux
+Icon=omnitux.svg
+Terminal=false
+Categories=Game;KidsGame

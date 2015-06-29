@@ -1,0 +1,19 @@
+pkgbase = omnitux
+	pkgdesc = Educational game based on multimedia elements
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = http://omnitux.sourceforge.net/
+	arch = any
+	license = GPL3
+	license = custom
+	depends = pygtk
+	depends = python2-pygame
+	source = http://downloads.sourceforge.net/omnitux/omnitux-1.2.1.tar.bz2
+	source = omnitux.desktop
+	source = omnitux.sh
+	md5sums = e0c4da272baaa4f09b90cc060f7b605c
+	md5sums = f3e3a6f39925f9449c467f78d030a69a
+	md5sums = cce915823d01fc9eb169cf9c1983db25
+
+pkgname = omnitux
+
