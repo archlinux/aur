@@ -1,0 +1,23 @@
+--- snapshot_old.c	2000-10-26 23:00:27.000000000 +0200
++++ snapshot.c	2012-07-29 20:40:19.000000000 +0200
+@@ -30,6 +30,11 @@
+ static int write_png( int message, const void *data );
+ #endif
+ 
++/* starting with libpng15, png.h no longer #includes zlib.h */
++#ifndef Z_BEST_COMPRESSION
++#define Z_BEST_COMPRESSION 9
++#endif
++
+ #ifdef HAVE_LIBTIFF
+ #include <tiffio.h>
+ static int write_tiff( int message, const void *data );
+@@ -250,7 +255,7 @@
+ 			return -1;
+ 		png_write_s = png_create_write_struct( PNG_LIBPNG_VER_STRING, NULL, NULL, NULL );
+ 		png_info_s = png_create_info_struct( png_write_s );
+-		if (setjmp( png_write_s->jmpbuf )) {
++		if (setjmp(png_jmpbuf(png_write_s))) {
+ 			/* Error writing file */
+ 			png_destroy_write_struct( &png_write_s, &png_info_s );
+ 			fclose( png_fp );

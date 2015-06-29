@@ -1,0 +1,20 @@
+pkgbase = lightspeed
+	pkgdesc = Illustrate the effects of special relativity on the appearance of moving objects.
+	pkgver = 1.2a
+	pkgrel = 4
+	url = http://lightspeed.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	depends = gtkglarea1
+	depends = libpng
+	depends = libgl
+	depends = libtiff
+	source = http://downloads.sourceforge.net/sourceforge/lightspeed/lightspeed-1.2a.tar.gz
+	source = libpng.patch
+	md5sums = d6162f8b200db8ebfade791a71a439c0
+	md5sums = 44e7e5d9de2a838ffc87b24e207e0507
+
+pkgname = lightspeed
+
