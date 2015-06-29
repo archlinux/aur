@@ -1,0 +1,16 @@
+pkgbase = ttf-campus_relief
+	pkgdesc = Campus Relief Truetype Font by imagex
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dafont.com/campus_relief
+	install = ttf-campus_relief.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	noextract = ?f=campus_relief
+	source = http://img.dafont.com/dl/?f=campus_relief
+	md5sums = 77da495a53c0737cf5e48f87a14a704b
+
+pkgname = ttf-campus_relief
+
