@@ -23,20 +23,20 @@ pkgname=('roccat-tools-common'
          'roccat-tools-savu'
          'roccat-tools-tyon')
 pkgbase=roccat-tools
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear=0.9.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev')
+depends=('libgaminggear=0.10.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
         'udev-compilation-error-fix.patch')
 
-md5sums=('3450bb0fb771f33d159ffff7a4860ab6'
+md5sums=('056ca3872c10c9cbb859517f235e7f0f'
          '414d6306796c659a3adc86ef213e3569')
 
 build() {
