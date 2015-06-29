@@ -1,0 +1,17 @@
+pkgbase = racer-cg
+	pkgdesc = Highly realistic 3D car simulator using OpenGL, CG version (for newer video cards)
+	pkgver = 0.8.44
+	pkgrel = 1
+	url = http://racer.nl/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = wine
+	optdepends = racer-cg-cars: Additional cars for Racer (CG version)
+	source = http://www.tracciontrasera.net/descargas/racer/beta/racer0.8.44.7z
+	source = racer-cg
+	md5sums = 39c723641e1a01ede76ecd4d92d3c4b2
+	md5sums = c978a5d34c6b52e1f8d67cd637761d13
+
+pkgname = racer-cg
+
