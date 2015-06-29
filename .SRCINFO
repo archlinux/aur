@@ -1,0 +1,48 @@
+pkgbase = lvm2-git
+	pkgver = 2.02.120.r33.g43224f2
+	pkgrel = 1
+	url = http://sourceware.org/lvm2/
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = systemd
+	makedepends = thin-provisioning-tools
+	source = git://git.fedorahosted.org/git/lvm2.git
+	source = lvm2_install
+	source = lvm2_hook
+	source = sd-lvm2_install
+	source = 11-dm-initramfs.rules
+	source = lvm2-make-sockets-static.patch
+	sha1sums = SKIP
+	sha1sums = 40ef991650555b904e73bcc3f344d736722e27ca
+	sha1sums = ff0fdf0a3005a41acd4b36865056109effc3474b
+	sha1sums = 86c18852409dc03f38bdd734ac3e7b54bed9c4ce
+	sha1sums = f6a554eea9557c3c236df2943bb6e7e723945c41
+	sha1sums = b084512af42f2e16cdccd8b7ee4de27b574d1f94
+
+pkgname = lvm2-git
+	pkgdesc = Logical Volume Manager 2 utilities - git checkout
+	install = lvm2.install
+	depends = bash
+	depends = device-mapper-git>=2.02.120.r33.g43224f2
+	depends = systemd
+	depends = readline
+	depends = thin-provisioning-tools
+	provides = lvm2=2.02.120.r33.g43224f2
+	conflicts = lvm
+	conflicts = mkinitcpio<0.7
+	conflicts = lvm2
+	options = !makeflags
+	backup = etc/lvm/lvm.conf
+
+pkgname = device-mapper-git
+	pkgdesc = Device mapper userspace library and tools - git checkout
+	url = http://sourceware.org/dm/
+	depends = glibc
+	depends = systemd
+	provides = device-mapper=2.02.120.r33.g43224f2
+	conflicts = device-mapper
+

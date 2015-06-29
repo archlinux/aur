@@ -1,0 +1,25 @@
+post_upgrade() {
+  if [ $(vercmp $2 2.02.98-2) -lt 0 ]; then
+    echo "Changes to the lvm2 package:"
+    echo " + Activating lvm in mkinitcpio now requires both the 'udev' and 'lvm2' hooks."
+    echo " + LVM volumes are automatically activated by udev (full hotplug support)."
+    echo " + You MUST have use_lvmetad = 1 in /etc/lvm/lvm.conf (the default)."
+    echo " + If you uncomment auto_activation_volume_list in /etc/lvm/lvm.conf, only the"
+    echo "   volumes listed there will be activated (default: it is commented out)."
+    if [ -f /etc/lvm/lvm.conf.pacnew ]; then
+        echo "WARNING: /etc/lvm/lvm.conf.pacnew exists. You MUST merge the required changes"
+        echo "         into /etc/lvm/lvm.conf or LVM will fail to work."
+    fi
+  fi
+
+  if [ $(vercmp $2 2.02.106-2) -lt 0 ]; then
+    if [ -L /etc/systemd/system/sysinit.target.wants/lvm-monitoring.service ]; then
+      echo "rm /etc/systemd/system/sysinit.target.wants/lvm-monitoring.service"
+      rm /etc/systemd/system/sysinit.target.wants/lvm-monitoring.service
+      echo "ln -s /usr/lib/systemd/system/lvm2-monitor.service /etc/systemd/system/sysinit.target.wants/lvm2-monitor.service"
+      ln -s /usr/lib/systemd/system/lvm2-monitor.service /etc/systemd/system/sysinit.target.wants/lvm2-monitor.service
+    fi
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
