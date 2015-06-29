@@ -45,3 +45,5 @@ package() {
         cp -r docs/ $pkgdir/usr/share/doc/$pkgname/
     fi
 }
+md5sums=('40e58de68b9291908187890de82ab539'
+         '9f06bbc1eb35031a09f25b47e7d145eb')

@@ -11,6 +11,8 @@ pkgbase = crate
 	backup = etc/crate/logging.yml
 	source = https://cdn.crate.io/downloads/releases/crate-0.49.3.tar.gz
 	source = crate.service
+	md5sums = 40e58de68b9291908187890de82ab539
+	md5sums = 9f06bbc1eb35031a09f25b47e7d145eb
 
 pkgname = crate
 
