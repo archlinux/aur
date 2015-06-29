@@ -1,0 +1,34 @@
+--- a/check_ipmi_sensor	2014-10-24 21:01:02.757595862 +0200
++++ b/check_ipmi_sensor	2014-10-24 21:10:04.548108407 +0200
+@@ -356,9 +356,8 @@ MAIN: {
+ 
+ 	my @basecmd; #variable for command to call ipmi
+ 	if( !(defined $ipmi_host) ){
+-		$abort_text= $abort_text . " -H <hostname>"
++		$ipmi_host = 'localhost';
+ 	}
+-	else{
+ 		if( $ipmi_host eq 'localhost' ){
+ 			@basecmd = ('sudo', $IPMICOMMAND);
+ 		}
+@@ -373,7 +372,6 @@ MAIN: {
+ 				$abort_text = $abort_text . " -f <FreeIPMI config file> or -U <username> -P <password> -L <privilege level>";
+ 			}
+ 		}
+-	}
+ 	if( $abort_text ne ""){
+ 		print STDOUT "Error: " . $abort_text . " missing.";
+ 		print STDOUT get_usage();
+@@ -414,10 +412,9 @@ MAIN: {
+ 		push @getstatus, '--output-sensor-state', '--ignore-not-available-sensors';
+ 	}
+ 	#if not stated otherwise we use protocol lan version 2 per default
+-	if(!defined($lanVersion)){
+-		$lanVersion = 'LAN_2_0';
++	if(defined($lanVersion)){
++		push @getstatus, "--driver-type=$lanVersion";
+ 	}
+-	push @getstatus, "--driver-type=$lanVersion";
+ 
+ ################################################################################
+ 	#execute status command and redirect stdout and stderr to ipmioutput

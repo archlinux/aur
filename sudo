@@ -1,0 +1,1 @@
+nagios ALL = NOPASSWD: /usr/sbin/ipmi-sensors
