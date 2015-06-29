@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv-git
-pkgver=0.10.5.r2.g36bd7e1
+pkgver=0.10.5.r45.g7716f72
 pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ provides=('ocserv')
 conflicts=('ocserv')
 makedepends=('git')
 depends=('autogen' 'libpcl' 'gnutls' 'http-parser' 'libnl' 'libsystemd' 'pam' 'protobuf-c' 'talloc' 'libseccomp' 'freeradius-client')
-makedepends=('freeradius')
+makedepends=('freeradius' 'gperf' 'autogen')
 backup=('etc/ocserv.config' 'etc/ocserv-passwd')
 source=("$pkgname::git://git.infradead.org/ocserv.git")
 md5sums=('SKIP')
