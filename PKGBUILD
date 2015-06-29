@@ -1,7 +1,7 @@
 # Maintainer: codl <codl@codl.fr>
 pkgname='urn-git'
-pkgver=r82.0513661
-pkgrel=2
+pkgver=r88.08b5277
+pkgrel=1
 pkgdesc='Split timer for speedrunning'
 url='https://github.com/3snowp7im/urn'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ build() {
 package () {
     echo $srcdir
     cd "$srcdir/urn"
-    install -D urn-gtk "$pkgdir/usr/bin/urn"
+    install -D urn-gtk "$pkgdir/usr/bin/urn-gtk"
     install -D -m 644 urn.desktop "$pkgdir/usr/share/applications/urn.desktop"
     install -D -m 644 urn-gtk.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/urn-gtk.gschema.xml"
     mkdir -p "$pkgdir/usr/share/urn/themes"
