@@ -1,0 +1,17 @@
+pkgbase = gtkman
+	pkgdesc = Simple GTK+2 manual page viewer
+	pkgver = 0.7.2
+	pkgrel = 4
+	url = https://github.com/gapan/gtkman
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = txt2tags
+	makedepends = intltool
+	depends = python2
+	depends = gtk2
+	source = http://people.salixos.org/gapan/gtkman/gtkman-0.7.2.tar.xz
+	sha256sums = 0c383bae00eff086b1fc5b3cac2e144fbb09d1f724e1ee155602d953cfa2a113
+
+pkgname = gtkman
+
