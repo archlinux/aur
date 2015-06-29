@@ -1,7 +1,7 @@
 pkgbase = kanla
 	pkgdesc = small-scale alerting daemon
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kanla.zekjur.net/
 	arch = any
 	license = bsd
@@ -18,9 +18,7 @@ pkgbase = kanla
 	backup = etc/kanla/default.cfg
 	backup = etc/kanla/default.d/http-example.cfg
 	source = http://kanla.zekjur.net/downloads/kanla-1.5.tar.gz
-	source = kanla.service
 	md5sums = dbecd47dabd36149e59bf06b1b71cbd3
-	md5sums = 600d68ad8d099722fa6b905c14bdd90b
 
 pkgname = kanla
 
