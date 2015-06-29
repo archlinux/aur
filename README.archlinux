@@ -1,0 +1,57 @@
+If you are going to use apache, you can
+edit the file /etc/httpd/conf/extra/httpd-davical.conf in your apache
+config if you want to have a vhost other than "localhost".
+
+Add the following in /etc/httpd/conf/httpd.conf at the end:
+
+Include conf/extra/httpd-davical.conf
+
+Also make sure to uncomment the following in /etc/php/php.ini:
+extension=gettext.so
+extension=iconv.so
+extension=pdo_pgsql.so
+extension=pgsql.so
+
+Restart apache: sudo apachectl restart
+
+Rename /etc/davical/localhost-conf.php to xxx-conf.php if you named your
+vhost in httpd-davical.conf xxx and edit the file to your needs
+
+If you are installing postgresql for the first time start
+it first: sudo rc.d start postgresql
+This will create /var/lib/postgres/data/pg_hba.conf
+
+Now edit this file to add the following
+at the end:
+
+local   davical davical_dba trust
+local   davical davical_app trust
+
+Restart postgresql: sudo rc.d restart postgresql
+
+Then create the davical database: first become root, then become user
+postgres. For example:
+
+sudo su
+su - postgres
+
+Then, you are ready to execute
+/srv/http/davical/dba/create-database.sh
+as the user postgres.
+
+IMPORTANT!
+Write down the password for
+the admin user that is displayed
+
+Logout of postgres user and root user after you have written down
+the admin user and password using:
+
+logout
+logout
+
+Use your browser to navigate to http://localhost/davical or the vhost
+you have edited in httpd-davical.conf
+
+Login using admin and the password that you written down above.
+
+More info about install and config: http://davical.org

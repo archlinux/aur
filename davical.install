@@ -1,0 +1,13 @@
+post_install() {
+  echo "Please read /usr/share/doc/davical/README.archlinux"
+  echo "for first-time setup installation instructions"
+}
+
+post_upgrade() {
+    echo "Upgrading..."
+	echo "Please run the following:"
+	echo ""
+	echo "sudo su"
+	echo "su - postgres"
+	echo "/usr/share/webapps/davical/dba/update-davical-database"
+}
