@@ -1,6 +1,6 @@
 pkgbase = retroshare-svn
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
-	pkgver = 8541
+	pkgver = 8571
 	pkgrel = 1
 	url = http://retroshare.sourceforge.net/
 	install = retroshare.install
@@ -17,8 +17,6 @@ pkgbase = retroshare-svn
 	depends = libxss
 	depends = libmicrohttpd
 	depends = sqlcipher
-	depends = libssh
-	depends = protobuf
 	provides = retroshare
 	conflicts = retroshare
 	source = svn://svn.code.sf.net/p/retroshare/code/trunk

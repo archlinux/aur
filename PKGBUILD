@@ -14,24 +14,27 @@ _build_voip=false
 _svnmod=trunk
 
 pkgname=retroshare-svn
-pkgver=8541
+pkgver=8571
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
+
 depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('subversion')
 provides=('retroshare')
 conflicts=('retroshare')
+
 install='retroshare.install'
+
 source=('svn://svn.code.sf.net/p/retroshare/code/'$_svnmod
 		'retroshare.install')
+
 sha256sums=('SKIP'
-			'47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1')
+            '47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1')
 
 # Add missing dependencies if needed
-[[ $_build_nogui == true ]] && depends=(${depends[@]} 'libssh' 'protobuf')
 [[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'opencv')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
 
@@ -84,6 +87,7 @@ build() {
 	make
 	# i'm not 100% sure if this step is required
 	# it will download/update some JavaScript files
+	msg "Updating webui files..."
 	cd webui
 	make
 	cd ..
@@ -98,7 +102,7 @@ build() {
 
 	if [[ "$_build_voip" == "true" ]] ; then
 		msg "Compiling VOIP plugin..."
-		cd "plugins/VOIP"
+		cd plugins/VOIP
 		$_qmake
 		make
 		cd ../..
@@ -106,7 +110,7 @@ build() {
 
 	if [[ "$_build_feedreader" == "true" ]] ; then
 		msg "Compiling FeedReader plugin..."
-		cd "plugins/FeedReader"
+		cd plugins/FeedReader
 		$_qmake
 		make
 		cd ../..
@@ -114,9 +118,7 @@ build() {
 
 	if [[ "$_build_nogui" == "true" ]]; then
 		msg "Compiling retroshare-nogui..."
-		cd rsctrl/src
-		make
-		cd ../../retroshare-nogui/src
+		cd retroshare-nogui/src
 		$_qmake
 		make
 	fi
