@@ -1,0 +1,19 @@
+pkgbase = uuterm-svn
+	pkgdesc = A portable VT100-like terminal emulator with minimal code and memory footprint and maximal Unicode support.
+	pkgver = 80
+	pkgrel = 3
+	url = http://www.etalabs.net/uuterm.html
+	install = uuterm.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = subversion
+	depends = libx11
+	depends = ncurses
+	provides = uuterm
+	conflicts = uuterm
+	source = uuterm::svn+svn://svn.mplayerhq.hu/uuterm/trunk/
+	md5sums = SKIP
+
+pkgname = uuterm-svn
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+post_install() {
+  echo "--"
+  echo "-- make sure the following environment variables are set for running uuterm:"
+  echo "--    TERM=uuterm"
+  echo "--    UUTERM_FONT=/usr/share/fonts/ucf/ytty.ucf"
+  echo "--"
+  echo "-- uuterm can be run as uuterm-x11 or uuterm-fb"
+  echo "--"
+}
+
