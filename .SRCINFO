@@ -9,6 +9,7 @@ pkgbase = todoman
 	depends = python-icalendar
 	depends = python-urwid
 	depends = python-xdg
+	depends = python-atomicwrites
 	source = 1.2.1.tar.gz::https://git.barrera.io/hobarrera/todoman/repository/archive.tar.gz?ref=v1.2.1
 	md5sums = 63347d4d4dfce90d2eec546894caf66e
 
