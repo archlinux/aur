@@ -1,0 +1,12 @@
+pkgbase = wren-git
+	pkgdesc = Wren is a small, fast, class-based concurrent scripting language
+	pkgver = 0
+	pkgrel = 1
+	url = http://munificent.github.io/wren/
+	arch = i686
+	arch = x86_64
+	source = git://github.com/munificent/wren.git
+	md5sums = SKIP
+
+pkgname = wren-git
+
