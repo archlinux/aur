@@ -1,0 +1,13 @@
+pkgbase = check_multi
+	pkgdesc = multi purpose nagios wrapper plugin to display multiple lines of plugin output
+	pkgver = 0.26
+	pkgrel = 4
+	url = http://my-plugin.de/wiki/projects/check_multi/start
+	arch = any
+	license = GPL
+	depends = nagios-plugins
+	source = http://my-plugin.de/check_multi/check_multi-stable-0.26.tar.gz
+	sha256sums = 346cc4134d61c380475bd77217f226f4e0cb35819950a1cb3087f1afdbacf8cf
+
+pkgname = check_multi
+
