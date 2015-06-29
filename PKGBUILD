@@ -10,7 +10,7 @@ pkgdesc="Extensible records for Haskell with lenses using modern GHC features."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('MIT')
 arch=('any')
-depends=('ghc')
+depends=('ghc' 'haskell-base>=4.7' 'haskell-base<5' 'haskell-ghc-prim')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install="${pkgname}.install"
