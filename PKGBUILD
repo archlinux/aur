@@ -11,9 +11,15 @@ url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD3')
 arch=('any')
 depends=('ghc' 'haskell-cpphs'
+         'haskell-array'
+         'haskell-base>=4.2' 'haskell-base<5'
+         'haskell-bytestring'
+         'haskell-containers>=0.5'
+         'haskell-directory' 'haskell-filepath'
          'haskell-juicypixels>=3' 'haskell-linear>=1.1.3'
          'haskell-opengl>=2.9.2' 'haskell-opengl<2.13'
-         'haskell-openglraw>=1.1' 'haskell-vector>=0.7')
+         'haskell-openglraw>=1.1' 'haskell-transformers>=0.3'
+         'haskell-vector>=0.7')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install="${pkgname}.install"
