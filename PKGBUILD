@@ -10,17 +10,12 @@ url="https://github.com/sciunto/VideoMaker"
 license=('GPL3')
 depends=('python' 'texlive-core' 'texlive-bin' 'mencoder' 'ffmpeg' 'python-pillow')
 makedepends=('python-setuptools')
-source=(https://source.sciunto.org/videomaker/VideoMaker-${pkgver}.tar.bz2)
-md5sums=("1d02ea2a6cc7ca4381df15322ee61843")
-
-build() {
-  cd "${srcdir}/"
-  python setup.py build
-}
+source=(https://pypi.python.org/packages/source/V/VideoMaker/VideoMaker-${pkgver}.tar.gz)
+sha256sums=('400d06b316057fefd5a650e7f9a5b8e33c120976e95650d501cb33a9d17bd69e')
 
 package() {
-  cd "${srcdir}/"
-  python setup.py install --root="${pkgdir}"
+  cd "${srcdir}/VideoMaker-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

@@ -12,8 +12,8 @@ pkgbase = videomaker
 	depends = mencoder
 	depends = ffmpeg
 	depends = python-pillow
-	source = https://source.sciunto.org/videomaker/VideoMaker-0.2.tar.bz2
-	md5sums = 1d02ea2a6cc7ca4381df15322ee61843
+	source = https://pypi.python.org/packages/source/V/VideoMaker/VideoMaker-0.2.tar.gz
+	sha256sums = 400d06b316057fefd5a650e7f9a5b8e33c120976e95650d501cb33a9d17bd69e
 
 pkgname = videomaker
 
