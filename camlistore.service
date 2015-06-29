@@ -1,0 +1,10 @@
+[Unit]
+Description=Camlistore Server
+After=network.target
+
+[Service]
+User=camlistore
+ExecStart=/usr/bin/camlistored --openbrowser=false
+
+[Install]
+WantedBy=multi-user.target
