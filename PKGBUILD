@@ -9,9 +9,17 @@ url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD3')
 arch=('any')
 makedepends=()
-depends=('ghc' 'haskell-cereal>=0.4.1.1' 'haskell-cereal<0.5'
+depends=('ghc'
+         'haskell-base>=4.5' 'haskell-base<5'
+         'haskell-binary>=0.5.1' 'haskell-binary<0.8'
+         'haskell-bytestring>=0.9' 'haskell-bytestring<0.11'
+         'haskell-cereal>=0.3.5' 'haskell-cereal<0.5'
+         'haskell-containers>=0.3' 'haskell-containers<1'
+         'haskell-ghc-prim'
          'haskell-mtl>=2.0' 'haskell-mtl<2.3'
          'haskell-text>=0.2' 'haskell-text<1.3'
+         'haskell-time>=1.2' 'haskell-time<1.6'
+         'haskell-transformers>=0.2' 'haskell-transformers<0.5'
          'haskell-transformers-compat>=0.3' 'haskell-transformers-compat<1'
          'haskell-void>=0.6' 'haskell-void<1')
 options=('strip')
