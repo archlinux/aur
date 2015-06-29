@@ -1,0 +1,3 @@
+post_install(){
+  echo "Users wanting to play trigger should be on group games."
+}

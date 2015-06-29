@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=6.0.1
+Name=Trigger
+Comment=Fast-paced 3D single-player rally racing game
+Exec=trigger
+Icon=trigger
+Terminal=false
+Categories=Game;ActionGame;
