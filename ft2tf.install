@@ -1,0 +1,4 @@
+post_install(){
+  echo '>>> To use ft2tf, read /usr/share/doc/ft2tf/README'
+}
+
