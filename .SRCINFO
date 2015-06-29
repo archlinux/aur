@@ -1,0 +1,19 @@
+pkgbase = open-iscsi-git
+	pkgdesc = iSCSI userland tools - git checkout
+	pkgver = 2.0.873.r128.g8da14e6
+	pkgrel = 1
+	url = http://www.open-iscsi.org/
+	install = open-iscsi.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = open-iscsi
+	conflicts = open-iscsi
+	options = docs
+	backup = etc/iscsi/iscsid.conf
+	backup = etc/iscsi/initiatorname.iscsi
+	source = git://github.com/mikechristie/open-iscsi.git
+	sha256sums = SKIP
+
+pkgname = open-iscsi-git
+
