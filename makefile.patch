@@ -1,0 +1,48 @@
+--- makefile.old	2015-02-20 11:28:57.770418000 +0100
++++ makefile	2015-02-20 11:32:19.723672891 +0100
+@@ -5,15 +5,15 @@
+ #CC=gcc
+ 
+ # Compiler options
+-OPTS=-g
+-OPTS=-O0
++#OPTS=-g
++#OPTS=-O0
+ #OPTS=-O2
+ 
+ UNAME = $(shell uname)
+ 
+ ifeq ($(UNAME), Linux)
+ CXX       = g++
+-CPPFLAGS += $(OPTS) -Wall -pedantic
++CPPFLAGS += $(OPTS) -Wall -pedantic $(CFLAGS) -fpic
+ endif
+ 
+ #######################################
+@@ -44,13 +44,15 @@
+ 
+ GLUI_LIB = lib/libglui.a
+ 
++GLUI_LIB_SHARED = lib/libglui.so.2
++
+ GLUI_EXAMPLES = bin/example1 bin/example2 bin/example3 bin/example4 bin/example5 bin/example6
+ 
+ GLUI_TOOLS = bin/ppm2array
+ 
+ .PHONY: all setup examples tools clean depend doc doc-pdf doc-dist dist
+ 
+-all: setup $(GLUI_LIB) examples tools
++all: setup $(GLUI_LIB) $(GLUI_LIB_SHARED) examples tools
+ 
+ setup:
+ 	mkdir -p bin
+@@ -69,6 +71,9 @@
+ $(GLUI_LIB): $(GLUI_OBJS)
+ 	ar -r $(GLUI_LIB) $(GLUI_OBJS)
+ 
++$(GLUI_LIB_SHARED): $(GLUI_OBJS)
++	$(CXX) -shared -o $@ $<
++
+ .cpp.o:
+ 	$(CXX) $(CPPFLAGS) -c $<
+ 
