@@ -1,0 +1,21 @@
+pkgbase = python2-blivet
+	pkgdesc = a python module for management of a system storage configuration
+	pkgver = 0.75
+	pkgrel = 2
+	url = http://fedoraproject.org/wiki/Blivet
+	arch = any
+	license = LGPL2.1
+	depends = python2
+	depends = python2-six
+	depends = python2-pyparted
+	depends = python2-pykickstart
+	depends = python2-pyblock
+	depends = python2-cryptsetup
+	depends = python2-pyudev
+	depends = multipath-tools
+	depends = mdadm
+	source = python2-blivet-0.75.tar.gz::https://github.com/dwlehman/blivet/archive/blivet-0.75.tar.gz
+	sha256sums = 731fffd8d2a59d08f140e863c1cb6e2c514fe54646be7f63621844e67acb0015
+
+pkgname = python2-blivet
+
