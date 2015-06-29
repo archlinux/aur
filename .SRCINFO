@@ -1,0 +1,32 @@
+pkgbase = docker-experimental-git
+	pkgdesc = Pack, ship and run any application as a lightweight container (Experimental)
+	pkgver = 1.8.0.dev.40a41ff
+	pkgrel = 1
+	url = https://github.com/docker/docker
+	install = docker.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = btrfs-progs
+	depends = bridge-utils
+	depends = iproute2
+	depends = device-mapper
+	depends = sqlite
+	depends = systemd
+	provides = docker
+	conflicts = docker
+	options = !strip
+	backup = etc/sysctl.d/docker.conf
+	source = git+https://github.com/docker/docker.git
+	source = docker.service
+	source = docker.install
+	source = docker.conf
+	md5sums = SKIP
+	md5sums = 3f7ccab915fb1942f06e18946c2811d2
+	md5sums = 1a8e60447794b3c4f87a2272cc9f144f
+	md5sums = 9bce988683771fb8262197f2d8196202
+
+pkgname = docker-experimental-git
+
