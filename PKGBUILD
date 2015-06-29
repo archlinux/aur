@@ -1,6 +1,6 @@
 pkgname='perl-unix-syslog'
 pkgver='1.1'
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Interface to syslog functions in a C-library"
 arch=('any')
 license=('PerlArtistic' 'GPL')

@@ -1,7 +1,7 @@
 pkgbase = perl-unix-syslog
 	pkgdesc = Interface to syslog functions in a C-library
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://search.cpan.org/dist/Unix-Syslog
 	arch = any
 	license = PerlArtistic
