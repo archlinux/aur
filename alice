@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-ARCH=`uname -m`
-
-if [ ${ARCH} == 'x86_64' ]; then
-  export PATH="/usr/lib32/jvm/default/bin/:$PATH"
-fi
-
 cd /opt/alice/
 ./run-alice
 cd -
