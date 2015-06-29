@@ -1,0 +1,16 @@
+pkgbase = akemi-git
+	pkgdesc = The cutest X windows manipulation tool around!
+	pkgver = r40.7d166b7
+	pkgrel = 1
+	url = https://github.com/6c37/akemi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libxcb
+	depends = fuse
+	source = akemi-git::git+https://github.com/6c37/akemi
+	md5sums = SKIP
+
+pkgname = akemi-git
+
