@@ -1,0 +1,14 @@
+pkgbase = osavul-git
+	pkgdesc = A standalone server browser for Unvanquished.
+	pkgver = 0.20130506
+	pkgrel = 1
+	url = http://www.unvanquished.net
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = qt4>=4.7
+
+pkgname = osavul-git
+
