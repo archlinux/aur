@@ -1,0 +1,25 @@
+pkgbase = xfvnc-git
+	pkgdesc = A simple graphical VNC client - git checkout
+	pkgver = 0.r100.g31c1e02
+	pkgrel = 4
+	url = http://spurint.org/projects/xfvnc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = xfce4-dev-tools
+	makedepends = git
+	makedepends = autoconf
+	depends = libxfce4ui
+	depends = gtk-vnc
+	provides = xfvnc
+	conflicts = xfvnc
+	source = git://git.xfce.org/apps/xfvnc
+	source = 0001-autoconf.patch
+	source = 0002-compile-against-libxfce4ui.patch
+	sha256sums = SKIP
+	sha256sums = a9266304c782fa4d73527fe5367081e1f4da7850a305fd9adc06f98db4ea0dda
+	sha256sums = 5ded010bf5f684901a55fcbb9620d2a191fc130f857be3606e62add3a4f7779b
+
+pkgname = xfvnc-git
+

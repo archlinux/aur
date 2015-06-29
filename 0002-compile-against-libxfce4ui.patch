@@ -1,0 +1,62 @@
+From acf09ceea694ba046816c46cada28f661bdf4d7e Mon Sep 17 00:00:00 2001
+From: Christian Hesse <eworm@leda.eworm.de>
+Date: Fri, 6 Mar 2015 14:09:37 +0100
+Subject: [PATCH 1/1] compile against libxfce4ui
+
+---
+ configure.ac.in   |  2 +-
+ xfvnc/Makefile.am |  4 +--
+ xfvnc/main.c      |  2 +-
+ 4 files changed, 5 insertions(+), 95 deletions(-)
+ delete mode 100644 po/xfvnc.pot
+
+diff --git a/configure.ac.in b/configure.ac.in
+index 03e0471..9cfdc45 100644
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -53,7 +53,7 @@ dnl XDT_CHECK_LIBX11_REQUIRE
+ dnl required
+ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.4.0])
+-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.4.0])
++XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.10.0])
+ XDT_CHECK_PACKAGE([LIBGLADE], [libglade-2.0], [2.6.0])
+ XDT_CHECK_PACKAGE([GTK_VNC], [gtk-vnc-1.0], [0.2.0])
+ 
+diff --git a/xfvnc/Makefile.am b/xfvnc/Makefile.am
+index bad6c7c..212a3d6 100644
+--- a/xfvnc/Makefile.am
++++ b/xfvnc/Makefile.am
+@@ -7,14 +7,14 @@ xfvnc_SOURCES = \
+ xfvnc_CFLAGS = \
+ 	-DLOCALEDIR=\"$(localedir)\" \
+ 	$(LIBXFCE4UTIL_CFLAGS) \
+-	$(LIBXFCEGUI4_CFLAGS) \
++	$(LIBXFCE4UI_CFLAGS) \
+ 	$(GTK_CFLAGS) \
+ 	$(LIBGLADE_CFLAGS) \
+ 	$(GTK_VNC_CFLAGS)
+ 
+ xfvnc_LDADD = \
+ 	$(LIBXFCE4UTIL_LIBS) \
+-	$(LIBXFCEGUI4_LIBS) \
++	$(LIBXFCE4UI_LIBS) \
+ 	$(GTK_LIBS) \
+ 	$(LIBGLADE_LIBS) \
+ 	$(GTK_VNC_LIBS)
+diff --git a/xfvnc/main.c b/xfvnc/main.c
+index fdbe950..4270e11 100644
+--- a/xfvnc/main.c
++++ b/xfvnc/main.c
+@@ -33,7 +33,7 @@
+ #include <glade/glade.h>
+ 
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ 
+ #include <vncdisplay.h>
+ 
+-- 
+2.3.1
+
