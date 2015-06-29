@@ -1,0 +1,19 @@
+pkgbase = libetpan-git
+	pkgdesc = A portable middleware for email access - git checkout
+	pkgver = 1.4.1.r0.gc2b2d0f
+	pkgrel = 1
+	url = http://www.etpan.org/libetpan.html
+	arch = i686
+	arch = x86_64
+	license = custom:etpan
+	makedepends = git
+	depends = libsasl
+	depends = curl
+	depends = expat
+	provides = libetpan
+	conflicts = libetpan
+	source = git://github.com/dinhviethoa/libetpan.git
+	sha256sums = SKIP
+
+pkgname = libetpan-git
+
