@@ -1,0 +1,13 @@
+pkgbase = connect
+	pkgdesc = makes socket connection using SOCKS4/5 and HTTP tunnel.
+	pkgver = 1.101
+	pkgrel = 4
+	url = https://bitbucket.org/gotoh/connect
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/c/connect-proxy/connect-proxy_1.101.orig.tar.gz
+	sha256sums = 1f013eee728b1751a7bdb19c5301549e4e865ba2cac79083bbeb932fb8ae8d7f
+
+pkgname = connect
+
