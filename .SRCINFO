@@ -1,0 +1,16 @@
+pkgbase = perl-authen-simple-passwd
+	pkgdesc = Authen-Simple-Passwd for Perl
+	pkgver = 0.6
+	pkgrel = 3
+	url = http://search.cpan.org/~chansen/Authen-Simple-Passwd-0.6/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-authen-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/Authen-Simple-Passwd-0.6.tar.gz
+	sha256sums = cf55bc36259edf0fd6af9ad2bac81b31dc5b56a162c660590ecb969c7c1674b2
+
+pkgname = perl-authen-simple-passwd
+
