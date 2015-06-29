@@ -5,9 +5,9 @@ _author="Daniel P. Berrange"
 _perlmod="sys-virt"
 pkgname=perl-${_perlmod}
 pkgver=1.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Represent and manage a libvirt hypervisor connection"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Sys-Virt/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
