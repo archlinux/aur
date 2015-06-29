@@ -1,0 +1,22 @@
+pkgbase = bnbd-git
+	pkgdesc = an alternative NBD (network block device) server implementation - git checkout
+	pkgver = 1.0.0.r39.g83a64d6
+	pkgrel = 1
+	url = http://code.belo.io/bnbd/
+	arch = x86_64
+	arch = i686
+	license = 2-clause BSD
+	makedepends = git
+	depends = libaio
+	depends = pcre
+	depends = nbd
+	provides = bnbd
+	conflicts = bnbd
+	backup = etc/bnbd/bnbd-server.conf
+	source = git+https://bitbucket.org/belczyk/bnbd.git
+	source = bnbd.service
+	sha256sums = SKIP
+	sha256sums = f96735e1b885873787ce88e932c2d7413e19a034aab7c64b369661cc69c88774
+
+pkgname = bnbd-git
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=alternative Network Block Device Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/bnbd-server
+
+[Install]
+WantedBy=multi-user.target
