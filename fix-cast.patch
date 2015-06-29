@@ -1,0 +1,25 @@
+From d17fd8b7b503fd5d247fe75432ad192414fa2bdd Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 7 Jan 2014 08:16:48 +0100
+Subject: [PATCH 1/1] fix cast
+
+---
+ src/spiceqxl_display.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/spiceqxl_display.c b/src/spiceqxl_display.c
+index a3a8978..7646efc 100644
+--- a/src/spiceqxl_display.c
++++ b/src/spiceqxl_display.c
+@@ -350,6 +350,6 @@ void qxl_add_spice_display_interface(qxl_screen_t *qxl)
+ 
+ void spiceqxl_display_monitors_config(qxl_screen_t *qxl)
+ {
+-    spice_qxl_monitors_config_async(&qxl->display_sin, (QXLPHYSICAL)qxl->monitors_config,
+-                                    MEMSLOT_GROUP, 0);
++    spice_qxl_monitors_config_async(&qxl->display_sin,
++		    (QXLPHYSICAL)(uintptr_t)qxl->monitors_config, MEMSLOT_GROUP, 0);
+ }
+-- 
+1.8.5.2
+
