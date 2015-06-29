@@ -1,0 +1,18 @@
+pkgbase = easy-rsa-git
+	pkgdesc = An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) - git checkout
+	pkgver = 3.0.0.rc2.r2.g171834d
+	pkgrel = 1
+	url = https://github.com/OpenVPN/easy-rsa
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = openssl
+	provides = easy-rsa
+	conflicts = easy-rsa
+	conflicts = openvpn
+	source = git://github.com/OpenVPN/easy-rsa.git
+	sha256sums = SKIP
+
+pkgname = easy-rsa-git
+
