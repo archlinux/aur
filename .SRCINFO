@@ -1,0 +1,23 @@
+pkgbase = tuxcmd-git
+	pkgdesc = A GTK2 file manager with two panels - git checkout
+	pkgver = 0.6.78.r5.ged0d989
+	pkgrel = 1
+	url = http://tuxcmd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = fpc
+	makedepends = git
+	depends = gtk2
+	optdepends = gnome-vfs
+	provides = tuxcmd
+	conflicts = tuxcmd
+	options = !docs
+	options = !emptydirs
+	source = git://git.bzatek.net/tuxcmd/
+	source = tuxcmd.desktop
+	sha256sums = SKIP
+	sha256sums = 729d0ed4de75213f356fa56ef081b03b1c27c1f5cc697eb92d2de43c1e3ba73c
+
+pkgname = tuxcmd-git
+
