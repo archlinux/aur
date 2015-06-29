@@ -1,0 +1,15 @@
+post_install() {
+  echo ">>> Source the colorscheme in your .muttrc (choose *ONE*):"
+  echo "    * /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-dark-16.muttrc"
+  echo "    * /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-dark-256.muttrc"
+  echo "    * /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-light-16.muttrc"
+  echo "    * /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-light-256.muttrc"
+  echo ""
+  echo ">>> Example:"
+  echo "    source /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-dark-256.muttrc"
+}
+
+post_upgrade() {
+  post_install
+}  
+

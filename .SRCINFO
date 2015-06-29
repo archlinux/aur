@@ -1,0 +1,17 @@
+pkgbase = mutt-solarized-git
+	pkgdesc = Solarized Colorscheme for Mutt.
+	pkgver = r12.3b23c55
+	pkgrel = 1
+	url = http://ethanschoonover.com/solarized
+	install = mutt-solarized-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mutt
+	provides = mutt-solarized
+	conflicts = mutt-solarized
+	source = mutt-solarized-git::git+https://github.com/altercation/mutt-colors-solarized.git
+	md5sums = SKIP
+
+pkgname = mutt-solarized-git
+
