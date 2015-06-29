@@ -1,7 +1,7 @@
 # Contributor: Tim Besard <tim.besard@gmail.com>
 # Maintainer: Jose Riha <jose 1711 gmail com>
 pkgname=osmosis
-pkgver=0.43.1
+pkgver=0.44.1
 pkgrel=1
 pkgdesc="Command line Java application for processing OSM data."
 arch=('any')
@@ -9,15 +9,11 @@ url="http://wiki.openstreetmap.org/wiki/Osmosis"
 license=('GPL')
 depends=('java-runtime')
 source=(http://bretth.dev.openstreetmap.org/$pkgname-build/$pkgname-$pkgver.tgz) 
-md5sums=('e4a4cdecdc464ec669ec71f8439d59c6')
-
-build() {
-true
-}
+md5sums=('c16586e100a48d3b9962f074b0e7e635')
 
 package() {
   cd "$srcdir"
-  rm osmosis-0.43.1.tgz
+  rm ${pkgname}-${pkgver}.tgz
   mkdir -p $pkgdir/usr/share/$pkgname
   cp -a * $pkgdir/usr/share/$pkgname/  
   chmod +x $pkgdir/usr/share/$pkgname/bin/$pkgname
