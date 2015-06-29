@@ -1,0 +1,22 @@
+pkgbase = toolsched
+	pkgdesc = Simple scripts for automatically starting commands as either SCHED_BATCH, SCHED_ISO or SCHED_IDLEPRIO.
+	pkgver = 0.17
+	pkgrel = 2
+	url = http://ck.kolivas.org/apps/toolsched/
+	arch = any
+	license = GPL
+	depends = bash
+	depends = schedtool
+	source = http://ck.kolivas.org/apps/toolsched/toolsched-0.17/readme.txt
+	source = http://ck.kolivas.org/apps/toolsched/toolsched-0.17/toolsched.b
+	source = http://ck.kolivas.org/apps/toolsched/toolsched-0.17/toolsched.d
+	source = http://ck.kolivas.org/apps/toolsched/toolsched-0.17/toolsched.i
+	source = http://ck.kolivas.org/apps/toolsched/toolsched-0.17/toolsched.n
+	md5sums = 5e30f33e0661cb33bb425f838e5cc86d
+	md5sums = ca134b67aed53862cf969c99c83a449f
+	md5sums = 158b0317d00d6d45600f2521adff7fd6
+	md5sums = 43a877963bdeb1691296f0619ba6fc1e
+	md5sums = fb95943b0133795e674c437b58003f0b
+
+pkgname = toolsched
+
