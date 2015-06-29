@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=osc2midi-utils-git
-pkgver=82.10f3fc8
+pkgver=84.fac10bf
 pkgrel=1
 pkgdesc="Utilities and GTK frontend for OSC2MIDI (git version)"
 arch=('x86_64' 'i686')
@@ -28,10 +28,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make install prefix=/usr DESTDIR="$pkgdir"
-  # icon
-  install -Dm644 osc2midi.png $pkgdir/usr/share/icons/hicolor/128x128/apps/osc2midi.png
-  # menu item
-  install -Dm644 gosc2midi.desktop $pkgdir/usr/share/applications/gosc2midi.desktop
   # documentation and examples
   install -Dm644 README.md $pkgdir/usr/share/doc/osc2midi-utils/README.md
   install -dm755 $pkgdir/usr/share/doc/osc2midi-utils/examples

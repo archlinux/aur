@@ -1,6 +1,4 @@
 post_install() {
-  echo "Updating icon cache..."
-  gtk-update-icon-cache -q /usr/share/icons/hicolor > /dev/null
   echo "Updating desktop database..."
   update-desktop-database -q > /dev/null
 }
