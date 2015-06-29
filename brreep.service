@@ -1,0 +1,12 @@
+[Unit]
+Description=Beep glide on poweron/poweroff
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash -c 'for i in $(seq 100  50 1500); do beep -f $i -l 25; done'
+ExecStop=/bin/bash -c 'for i in $(seq 1500 -50 100); do beep -f $i -l 25; done'
+
+[Install]
+WantedBy=multi-user.target
+

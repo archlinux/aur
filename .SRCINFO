@@ -1,0 +1,13 @@
+pkgbase = brreep
+	pkgdesc = Beep glide on poweron/poweroff
+	pkgver = 1
+	pkgrel = 1
+	url = http://127.1.2.7/nowhere
+	arch = any
+	license = GPL
+	depends = beep
+	source = brreep.service
+	md5sums = e29f234043ef6779ad06526e878d5cf5
+
+pkgname = brreep
+
