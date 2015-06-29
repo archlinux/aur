@@ -1,0 +1,27 @@
+pkgbase = haskell-aosd
+	pkgdesc = Bindings to libaosd, a library for Cairo-based on-screen displays
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/aosd
+	install = haskell-aosd.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-x11
+	depends = haskell-bindings-dsl>=1.0.11
+	depends = haskell-cairo>=0.12
+	depends = haskell-colour
+	depends = haskell-monad-control
+	depends = haskell-pango>=0.12
+	depends = haskell-transformers
+	depends = libaosd
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/aosd/0.2.1/aosd-0.2.1.tar.gz
+	source = haskell-aosd.patch
+	md5sums = fc63d1e99278a7807225feab46c22900
+	md5sums = 7f3e8aaa61345b80d148105759cbe2c8
+
+pkgname = haskell-aosd
+
