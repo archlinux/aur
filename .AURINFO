@@ -1,0 +1,12 @@
+pkgbase = racer-nocg-cars
+	pkgdesc = Meta package that installs or additional cars for Racer, the free simulator. Non-CG version (for older video cards)
+	pkgver = 0.8.44
+	pkgrel = 1
+	url = http://racer.nl/
+	arch = any
+	license = custom
+	depends = racer-nocg
+	depends = racer-nocg-car-69-chevrolet-camaro-z28
+
+pkgname = racer-nocg-cars
+
