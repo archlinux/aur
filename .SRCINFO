@@ -1,0 +1,44 @@
+pkgbase = remmina-git
+	pkgdesc = A remote desktop client written in GTK+ - git checkout
+	pkgver = 1.2.0.rcgit.3.r2.g91fd9fd
+	pkgrel = 1
+	url = http://sourceforge.net/projects/remmina/
+	install = remmina.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = avahi
+	makedepends = libxkbfile
+	makedepends = freerdp-git
+	makedepends = telepathy-glib
+	depends = gtk2
+	depends = zlib
+	depends = libjpeg
+	depends = libssh
+	depends = libunique
+	depends = avahi
+	depends = vte3
+	depends = libgcrypt
+	depends = libxdmcp
+	depends = libgnome-keyring
+	depends = libvncserver
+	optdepends = avahi
+	optdepends = libxkbfile
+	optdepends = freerdp-git
+	optdepends = telepathy-glib
+	provides = remmina
+	provides = grdc
+	provides = grdc=1.2.0.rcgit.3.r2.g91fd9fd
+	provides = remmina-plugins
+	conflicts = remmina
+	conflicts = grdc
+	replaces = remmina-plugins
+	source = remmina::git://github.com/FreeRDP/Remmina#branch=next
+	sha256sums = SKIP
+
+pkgname = remmina-git
+
