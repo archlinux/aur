@@ -1,0 +1,24 @@
+pkgbase = perl-dancer
+	pkgdesc = A minimal-effort oriented web application framework
+	pkgver = 1.3138
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dancer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-module-runtime
+	depends = perl-http-body>=1.07
+	depends = perl-http-server-simple-psgi>=0.11
+	depends = perl-libwww
+	depends = perl-mime-types
+	depends = perl-try-tiny>=0.09
+	depends = perl-uri>=1.59
+	depends = perl-xml-libxml
+	optdepends = perl-yaml: YAML configuration files
+	optdepends = perl-template-toolkit: Template Toolkit rendering
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/Dancer-1.3138.tar.gz
+	md5sums = e6a479822947193443c5be0f4314563a
+
+pkgname = perl-dancer
+
