@@ -1,0 +1,11 @@
+[Unit]
+Description=Advanced TFTP Daemon
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/atftpd
+ExecStart=/usr/bin/atftpd $ATFTPD_ARGS
+
+[Install]
+WantedBy=multi-user.target

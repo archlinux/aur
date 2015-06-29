@@ -1,0 +1,22 @@
+pkgbase = atftp-git
+	pkgdesc = a client/server implementation of the TFTP protocol - git checkout
+	pkgver = 0.7.1.r1.gf9dbb96
+	pkgrel = 1
+	url = http://sourceforge.net/projects/atftp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pcre
+	depends = readline
+	provides = atftp
+	conflicts = atftp
+	backup = etc/conf.d/atftpd
+	source = atftp::git://git.code.sf.net/p/atftp/code
+	source = atftpd.conf
+	source = atftpd.service
+	sha256sums = SKIP
+	sha256sums = 100225ede793b9c01d0c5bcb9c2cc1933552609d3a9439b9bd03dfa0b269143e
+	sha256sums = 77e7e40d5d0749d18ddeed434ed2cc0d9c6d56609d9c106da78499e1b03c1c35
+
+pkgname = atftp-git
+
