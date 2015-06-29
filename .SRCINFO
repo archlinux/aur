@@ -1,7 +1,7 @@
 pkgbase = perl-audio-scan
 	pkgdesc = Fast C metadata and tag reader for all common audio file formats
 	pkgver = 0.93
-	pkgrel = 7
+	pkgrel = 8
 	url = http://search.cpan.org/dist/Audio-Scan
 	arch = i686
 	arch = x86_64
