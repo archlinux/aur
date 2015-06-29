@@ -1,0 +1,16 @@
+pkgbase = u9fs-hg
+	pkgdesc = Serve 9P from Unix.
+	pkgver = r11.87c2a420d556
+	pkgrel = 1
+	url = http://code.google.com/p/u9fs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	provides = u9fs
+	conflicts = u9fs
+	source = u9fs-hg::hg+https://bitbucket.org/plan9-from-bell-labs/u9fs
+	md5sums = SKIP
+
+pkgname = u9fs-hg
+
