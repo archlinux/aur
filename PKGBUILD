@@ -23,8 +23,6 @@ install=
 source=("$pkgname::git://repo.or.cz/ctxt.git")
 noextract=()
 md5sums=('SKIP')
-sha1sums=('SKIP')
-sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
