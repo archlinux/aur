@@ -1,0 +1,16 @@
+pkgbase = ruby-rgen
+	pkgdesc = Ruby Modelling and Generator Framework
+	pkgver = 0.6.5
+	pkgrel = 3
+	url = http://ruby-gen.org
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	makedepends = binutils
+	depends = ruby
+	noextract = rgen-0.6.5.gem
+	source = https://rubygems.org/downloads/rgen-0.6.5.gem
+	sha256sums = bdaeb9ba57ff6150b407b3fefcc8fbe0bae74d509431c7f15517090fe74037e1
+
+pkgname = ruby-rgen
+
