@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Sphaerica
+Comment=Interactive spherical geometry software
+Exec=/usr/bin/sphaerica
+Icon=sphaerica.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Education;

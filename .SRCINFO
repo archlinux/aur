@@ -1,0 +1,20 @@
+pkgbase = sphaerica
+	pkgdesc = Interactive spherical geometry software
+	pkgver = 0.9alpha_2013051LATEST
+	pkgrel = 1
+	url = http://sphaerica.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/sphaerica/sphaerica-2013-05-1-LATEST.jar
+	source = sphaerica
+	source = sphaerica.desktop
+	source = sphaerica.png
+	md5sums = c63d19b8ce922434ff2bc3376cdae956
+	md5sums = f82878d3dd9d3db9e0ece4dbe0ff171c
+	md5sums = f44c514c91a4afca7c3062a18455d851
+	md5sums = cf88954c32e6df1edc0e644ed26858c8
+
+pkgname = sphaerica
+
