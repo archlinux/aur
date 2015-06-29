@@ -1,0 +1,13 @@
+pkgbase = ntfsfixboot
+	pkgdesc = Fix NTFS boot sector
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://sourceforge.net/projects/ntfsfixboot/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://sourceforge.net/projects/ntfsfixboot/files/ntfsfixboot/ntfsfixboot-1.0.tar.bz2
+	sha256sums = 88776b669ea77f1d9ab30ae38d4480c0f929768bb3901b2e47cc9b3618b4b6cb
+
+pkgname = ntfsfixboot
+
