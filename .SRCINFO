@@ -1,0 +1,14 @@
+pkgbase = gtk-engines-clearlooks-colors
+	pkgdesc = Modified Clearloks GTK themes that go with the gnome-colors icon theme
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = http://www.eworm.de/
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	optdepends = gnome-colors-icon-theme
+	source = http://gnome-colors.googlecode.com/svn/trunk/gnome-colors/Palette.svg
+	sha256sums = 61c090e07aa674fd29dfbc069ba9a947c2b9dad1a42b50f51dbfb37a06c73d5b
+
+pkgname = gtk-engines-clearlooks-colors
+
