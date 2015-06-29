@@ -1,0 +1,12 @@
+pkgbase = git-now-git
+	pkgdesc = A temporary commit tool for git
+	pkgver = 20131020
+	pkgrel = 1
+	url = https://github.com/iwata/git-now
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = git
+
+pkgname = git-now-git
+
