@@ -1,0 +1,21 @@
+pkgbase = python2-pymc
+	pkgdesc = Markov chain Monte Carlo for Python
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/pymc-devs/pymc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-fortran
+	source = https://pypi.python.org/packages/source/p/pymc/pymc-2.3.3.tar.gz
+	md5sums = 99645bf558a41376be0e687ccf90a39f
+
+pkgname = python2-pymc
+	depends = python2-numpy
+	optdepends = python2-scipy
+	optdepends = python2-matplotlib
+	optdepends = python2-pytables
+	optdepends = ipython2
+	optdepends = pydot
+	optdepends = python2-nose
+
