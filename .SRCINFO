@@ -1,0 +1,14 @@
+pkgbase = ired
+	pkgdesc = Minimalistic hex editor
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://radare.org/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = sh
+	source = http://radare.org/get/ired-0.5.tar.gz
+	sha512sums = 15ab268cbf28ec4520eb1fd225088dee71bf3e889208df8bdc26025ac41fc3994838606ca230cac847152c391a6e79f51c28074b624bbe0dc872444e71a21cc2
+
+pkgname = ired
+
