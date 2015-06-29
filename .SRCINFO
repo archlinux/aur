@@ -1,6 +1,6 @@
 pkgbase = unvanquished-git
 	pkgdesc = A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Bleeding edge version.
-	pkgver = v0.37.0.2.g54b34da
+	pkgver = v0.40.0.4.g449a475
 	pkgrel = 1
 	url = http://www.unvanquished.net
 	install = unvanquished.install
