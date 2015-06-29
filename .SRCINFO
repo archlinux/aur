@@ -1,0 +1,16 @@
+pkgbase = nwcc
+	pkgdesc = A small C compiler for Unix systems.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://nwcc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://downloads.sourceforge.net/nwcc/nwcc_0.8.3.tar.gz
+	md5sums = 39511d2cb182925273a4493195236eae
+	sha1sums = 2ab1825dc1f8bd5258204bab19e8fafad93fef26
+	sha256sums = e64b16c663f2f845d6436342722d29a5e32d03602971de2d521281a18188b065
+
+pkgname = nwcc
+
