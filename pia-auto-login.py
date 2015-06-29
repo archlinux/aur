@@ -10,7 +10,9 @@ class Props(object):
 	_openvpn_conf_dir='/etc/openvpn'
 	_login_config='/etc/private-internet-access/login.conf'
 	_system_connection_conf='/etc/private-internet-access/system-connection-example'
+	_connman_connection_conf='/etc/private-internet-access/connman-config-example.config'
 	_nm_conf_dir='/etc/NetworkManager/system-connections'
+	_cm_conf_dir='/var/lib/connman-vpn'
 	
 	@property
 	def openvpn_conf_dir(self):
@@ -28,6 +30,14 @@ class Props(object):
 	def nm_conf_dir (self):
 		return self._nm_conf_dir
 
+	@property
+	def cm_conf_dir (self):
+		return self._cm_conf_dir
+	
+	@property
+	def connman_connection_conf (self):
+		return self._connman_connection_conf
+	
 # Checks if script has root permissions only.
 def hasproperpermissions(filepath):
 	st = os.stat(filepath)
@@ -125,7 +135,39 @@ def nm_autologin(id, filename, enable):
 			except IOError:
 				print ("Failed to write config file for " + id)
 				pass
+
+def cm_autologin(id, filename, enable):
+	if (enable):
+		# Creates dictionary to hold replacement values
+		re_dict = {}
+	
+		re_dict["##id##"] = id
+		re_dict["##filename##"] = filename		
+		# Retrieves remote address from OpenVPN configuration
+		re_dict["##remote##"] = get_remote_address(filename)
+	
+		try:
+			p = pathlib.Path(props.connman_connection_conf)
+			with p.open() as f:
+				content = f.read()
+	
+		except IOError:
+			print('Connman template missing from ' + props.connman_connection_conf)
 			
+		else:
+			cm_conf = props.cm_conf_dir + "/" + re.sub(' ','_',id) + ".config"
+	
+			try:
+				#Opens Connman Configurations and replaces options from the "re_dict" dictionary
+				with open(cm_conf,"w") as f:
+					f.write(multiple_replace(re_dict,content))
+	
+				os.chmod(cm_conf,0o600)
+				os.chown(cm_conf,0,0)
+			except IOError:
+				#No Connman Manager installed?
+				pass		
+
 # Gets remote address from OpenVPn files
 def get_remote_address(filename):
 	p = pathlib.Path(filename)
@@ -176,6 +218,6 @@ if __name__ == "__main__":
 			else:
 				print ("Disablig auto-logins for " + id + " remote server...")
 			
-		openvpn_autologin(id, filename, args.auto_login)
-		
+		openvpn_autologin(id, filename, args.auto_login)	
 		nm_autologin(id, filename, args.auto_login)
+		cm_autologin(id, filename, args.auto_login)
