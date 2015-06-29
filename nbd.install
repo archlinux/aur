@@ -1,0 +1,13 @@
+post_install() {
+	getent group "nbd" &>/dev/null || groupadd -r -g 44 nbd 1>/dev/null
+	getent passwd "nbd" &>/dev/null || useradd -r -u 44 -g nbd -d "/var/empty" -s "/bin/false" nbd 1>/dev/null
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	getent passwd "nbd" &>/dev/null && userdel nbd 1>/dev/null
+	getent group "nbd" &>/dev/null && groupdel nbd 1>/dev/null
+}
