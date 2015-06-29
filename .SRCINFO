@@ -1,0 +1,16 @@
+pkgbase = unpaper-git
+	pkgdesc = Post-processing tool for scanned sheets of paper.
+	pkgver = 6.r194.ef2120b
+	pkgrel = 1
+	url = https://github.com/Flameeyes/unpaper
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ffmpeg
+	conflicts = unpaper
+	source = unpaper-git::git://github.com/Flameeyes/unpaper.git
+	md5sums = SKIP
+
+pkgname = unpaper-git
+
