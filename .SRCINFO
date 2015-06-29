@@ -1,12 +1,13 @@
 pkgbase = lib32-libbluray
 	pkgdesc = Library to access Blu-Ray disks for video playback (32 bit)
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.videolan.org/developers/libbluray.html
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = gcc-multilib
 	makedepends = apache-ant
+	makedepends = java-environment
 	depends = libbluray
 	depends = lib32-libxml2
 	depends = lib32-freetype2
