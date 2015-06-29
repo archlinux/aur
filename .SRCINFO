@@ -1,0 +1,19 @@
+pkgbase = fontview-git
+	pkgdesc = A simple font viewer.
+	pkgver = r181.0a9e036
+	pkgrel = 1
+	url = https://github.com/khaledhosny/fontview
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = gtk2
+	depends = cairo
+	depends = freetype2
+	depends = harfbuzz
+	depends = intltool
+	source = fontview-git::git://github.com/khaledhosny/fontview.git
+	md5sums = SKIP
+
+pkgname = fontview-git
+
