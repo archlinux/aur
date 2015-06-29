@@ -1,0 +1,30 @@
+diff --git a/PNG/t/10png.t b/PNG/t/10png.t
+index bc109d7..e6b372e 100644
+--- a/PNG/t/10png.t
++++ b/PNG/t/10png.t
+@@ -10,7 +10,7 @@ my $debug_writes = 1;
+ 
+ init_log("testout/t102png.log",1);
+ 
+-plan tests => 249;
++plan tests => 248;
+ 
+ # this loads Imager::File::PNG too
+ ok($Imager::formats{"png"}, "must have png format");
+@@ -180,16 +180,6 @@ EOS
+   is($im->errstr, "IHDR: CRC error", "check error message");
+ }
+ 
+-SKIP:
+-{ # ignoring "benign" errors
+-  $png_feat{"benign-errors"}
+-      or skip "libpng not configured for benign error support", 1;
+-  my $im = Imager->new;
+-  ok($im->read(file => "testimg/badcrc.png", type => "png",
+-	       png_ignore_benign_errors => 1),
+-     "read bad crc with png_ignore_benign_errors");
+-}
+-
+ { # write error reporting
+   my $im = test_image();
+   ok(!$im->write(type => "png", callback => limited_write(1), buffered => 0),
