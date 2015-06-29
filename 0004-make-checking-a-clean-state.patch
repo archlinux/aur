@@ -1,0 +1,26 @@
+From aa645b7441c68dde8c355b2fe16aef1d81635009 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 16 Jun 2015 10:47:52 +0200
+Subject: [PATCH 4/4] make checking a clean state
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ check_md_raid | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/check_md_raid b/check_md_raid
+index 3e2d55f..8ea23d3 100644
+--- a/check_md_raid
++++ b/check_md_raid
+@@ -117,7 +117,7 @@ def test_raid(verbosity):
+             if "State :" in line:
+                 state = line.split(":")[-1][1:-1]
+ 		state = state.strip()
+-        re_clean = re.compile('^clean(, no-errors)?$')
++        re_clean = re.compile('^clean(, (checking|no-errors))?$')
+         if not re_clean.match(state) and state != "active":
+             arrays_not_ok += 1
+             raidlevel = detailed_output[3].split()[-1]
+-- 
+2.4.3
+

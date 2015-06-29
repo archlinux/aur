@@ -1,0 +1,26 @@
+pkgbase = check_md_raid
+	pkgdesc = Linux Software RAID Monitoring Plugin for Nagios
+	pkgver = 0.7.2
+	pkgrel = 8
+	url = http://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/Linux-Software-Raid-Plugin-for-32-2Dbit-and-64-2Dbit-systems/details
+	arch = any
+	license = GPL
+	depends = nagios
+	depends = python2
+	depends = mdadm
+	optdepends = sudo: check with non-root user
+	source = check_md_raid-0.7.2.py::http://exchange.nagios.org/components/com_mtree/attachment.php?link_id=782&cf_id=24
+	source = 0001-use-python2.patch
+	source = 0002-strip-whitespace-from-state.patch
+	source = 0003-use-sudo-when-running-as-non-root-user.patch
+	source = 0004-make-checking-a-clean-state.patch
+	source = sudo
+	sha256sums = b85f0a77215870839cb18a74d9e38b594eaeda5c44ddc88aff8d2c2246f506f7
+	sha256sums = 9721c32d4b8124f2db54f41574008018a605567e50a59eb9ffcd98e99ba8db98
+	sha256sums = 527d98535f4cda98a468ea69f6a3cfb3a53e27ecbd2affc553985be70e29125a
+	sha256sums = 6267ecf8aff1da308216675f94e9e91f91349ed3b1054b8c8c1dc4d08ef632ad
+	sha256sums = 542d756357f4e8afd16962015428efccabb9f4410c873556a2b8d6e0cc37ca69
+	sha256sums = 4ffbd86b293665cd39a468257e3bf3fe35ce3cd429d7df576ef330762ad727d7
+
+pkgname = check_md_raid
+

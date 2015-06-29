@@ -1,0 +1,25 @@
+From dd3ebab3c41069ddd9420606fdbfe044fd11342a Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Wed, 30 Oct 2013 09:56:19 +0100
+Subject: [PATCH 2/4] strip whitespace from state
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ check_md_raid | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/check_md_raid b/check_md_raid
+index 999553f..c29b6a2 100644
+--- a/check_md_raid
++++ b/check_md_raid
+@@ -109,6 +109,7 @@ def test_raid(verbosity):
+         for line in detailed_output:
+             if "State :" in line:
+                 state = line.split(":")[-1][1:-1]
++		state = state.strip()
+         re_clean = re.compile('^clean(, no-errors)?$')
+         if not re_clean.match(state) and state != "active":
+             arrays_not_ok += 1
+-- 
+2.4.3
+

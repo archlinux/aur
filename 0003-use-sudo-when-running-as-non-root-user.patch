@@ -1,0 +1,56 @@
+From cbbd2fb720e0974b3fea0fc2e1da297e72d07b34 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Wed, 30 Oct 2013 10:06:52 +0100
+Subject: [PATCH 3/4] use sudo when running as non-root user
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ check_md_raid | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/check_md_raid b/check_md_raid
+index c29b6a2..3e2d55f 100644
+--- a/check_md_raid
++++ b/check_md_raid
+@@ -34,7 +34,8 @@ CRITICAL = 2
+ UNKNOWN  = 3
+ 
+ # Full path to the mdadm utility check on the Raid state
+-BIN    = "/sbin/mdadm"
++MDADM    = "/usr/bin/mdadm"
++SUDO     = "/usr/bin/sudo"
+ 
+ def end(status, message):
+     """exits the plugin with first arg as the return code and the second
+@@ -53,16 +54,22 @@ def end(status, message):
+         print "UNKNOWN: %s" % message
+         sys.exit(UNKNOWN)
+ 
++if not os.path.exists(MDADM):
++    end(UNKNOWN, "Raid utility '%s' cannot be found" % MDADM)
+ 
+-if os.geteuid() != 0:
+-    end(UNKNOWN, "You must be root to run this plugin")
++if not os.access(MDADM, os.X_OK):
++    end(UNKNOWN, "Raid utility '%s' is not executable" % MDADM)
+ 
+-if not os.path.exists(BIN):
+-    end(UNKNOWN, "Raid utility '%s' cannot be found" % BIN)
++if os.geteuid() != 0:
++    if not os.path.exists(SUDO):
++        end(UNKNOWN, "sudo is required if not running as root")
+ 
+-if not os.access(BIN, os.X_OK):
+-    end(UNKNOWN, "Raid utility '%s' is not executable" % BIN)
++    if not os.access(SUDO, os.X_OK):
++        end(UNKNOWN, "sudo is not executable")
+ 
++    BIN = "%s %s" % (SUDO, MDADM)
++else:
++    BIN = MDADM
+ 
+ def find_arrays(verbosity):
+     """finds all MD arrays on local machine using mdadm and returns a list of 
+-- 
+2.4.3
+
