@@ -13,8 +13,8 @@ pkgbase = mingw-w64-sqlite
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://www.sqlite.org/2015/sqlite-autoconf-3080900.tar.gz
-	sha1sums = db70dee268700b312cbaa5b3e5cf8454e1c8b7b9
+	source = http://www.sqlite.org/2015/sqlite-autoconf-3081002.tar.gz
+	sha1sums = c2f2c17d3dc4c4e179d35cc04e4420636d48a152
 
 pkgname = mingw-w64-sqlite
 

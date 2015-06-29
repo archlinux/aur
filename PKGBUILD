@@ -1,7 +1,7 @@
 # Contributor: napa3um <napa3um@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-sqlite
-_amalgamationver=3080900
+_amalgamationver=3081002
 pkgver=3.8.10.2
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
@@ -13,9 +13,15 @@ options=(!buildflags !strip staticlibs)
 license=('custom:Public Domain')
 url="http://www.sqlite.org/"
 source=("http://www.sqlite.org/2015/sqlite-autoconf-$_amalgamationver.tar.gz")
-sha1sums=('db70dee268700b312cbaa5b3e5cf8454e1c8b7b9')
+sha1sums=('c2f2c17d3dc4c4e179d35cc04e4420636d48a152')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/sqlite-autoconf-${_amalgamationver}"
+  sed -i "s|sqlite3.\$(OBJEXT)|\$(top_builddir)/libsqlite3.la|g" Makefile.am
+  autoreconf -vfi
+}
 
 build() {
   cd "${srcdir}/sqlite-autoconf-${_amalgamationver}"
