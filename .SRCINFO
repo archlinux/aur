@@ -1,0 +1,29 @@
+pkgbase = freerdp-git
+	pkgdesc = Free RDP client - git checkout
+	pkgver = 1.2.0.beta1.r1514.gb7e2430
+	pkgrel = 1
+	url = http://www.freerdp.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = krb5
+	makedepends = cmake
+	makedepends = damageproto
+	depends = openssl
+	depends = libxcursor
+	depends = libcups
+	depends = alsa-lib
+	depends = libxext
+	depends = libxdamage
+	depends = ffmpeg
+	depends = libxkbfile
+	depends = libxinerama
+	depends = libxv
+	provides = freerdp
+	conflicts = freerdp
+	source = freerdp::git://github.com/FreeRDP/FreeRDP.git
+	sha256sums = SKIP
+
+pkgname = freerdp-git
+
