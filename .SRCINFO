@@ -1,0 +1,26 @@
+pkgbase = lua-crypto
+	pkgdesc = Lua frontend to the OpenSSL cryptographic library
+	pkgver = 0.3.2
+	pkgrel = 3
+	url = http://mkottman.github.io/luacrypto/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	source = luacrypto-0.3.2.tar.gz::https://github.com/mkottman/luacrypto/archive/0.3.2.tar.gz
+	sha256sums = 63c5d7e2539779039114335b9a8f149d63382c4db298d69e70488a0108143bb4
+
+pkgname = lua-crypto
+	depends = openssl
+	depends = lua
+
+pkgname = lua51-crypto
+	depends = openssl
+	depends = lua51
+
+pkgname = lua52-crypto
+	depends = openssl
+	depends = lua51
+
