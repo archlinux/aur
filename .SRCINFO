@@ -1,0 +1,15 @@
+pkgbase = dhcpcd-hook-ntpdate
+	pkgdesc = Hook for dhcpcd to sync time as soon as connection is up
+	pkgver = 0.2.0.r2.gc19d363
+	pkgrel = 1
+	url = https://github.com/eworm-de/dhcpcd-hook-ntpdate
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ntp
+	depends = dhcpcd
+	source = git://github.com/eworm-de/dhcpcd-hook-ntpdate.git
+	sha256sums = SKIP
+
+pkgname = dhcpcd-hook-ntpdate
+
