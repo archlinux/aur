@@ -10,7 +10,9 @@ pkgdesc="Using Data.Vinyl records to carry GLSL uniform parameters and vertex da
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD3')
 arch=('any')
-depends=('ghc' 'haskell-glutil>=0.6.4' 'haskell-linear>=1.1.3'
+depends=('ghc' 'haskell-base>=4.6' 'haskell-base<5'
+         'haskell-containers>=0.5'
+         'haskell-glutil>=0.6.4' 'haskell-linear>=1.1.3'
          'haskell-opengl>=2.8' 'haskell-tagged>=0.4'
          'haskell-transformers>=0.3' 'haskell-vector>=0.10'
          'haskell-vinyl>=0.5.1' 'haskell-vinyl<0.6')
