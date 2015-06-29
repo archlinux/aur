@@ -1,0 +1,24 @@
+pkgbase = networkmanager-vpnc-git
+	pkgdesc = NetworkManager VPN plugin for vpnc - git checkout
+	pkgver = 0.9.8.0.r49.g8a5bacf
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	install = networkmanager-vpnc.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = libnm-gtk
+	depends = vpnc
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = libsecret
+	optdepends = network-manager-applet: GNOME frontends to NetWorkmanager
+	provides = networkmanager-vpnc
+	conflicts = networkmanager-vpnc
+	source = git://git.gnome.org/network-manager-vpnc
+	sha256sums = SKIP
+
+pkgname = networkmanager-vpnc-git
+
