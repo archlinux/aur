@@ -4,7 +4,7 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 
 pkgname=whatpulse
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('i686' 'x86_64')
@@ -19,9 +19,9 @@ optdepends=(
 source=('whatpulse.desktop')
 sha256sums=('9ad42960f0a8b538f1d98fea1ced9b2a97ef59aadca50d0382efdb71434572b7')
 source_i686=("http://www.whatpulse.org/files/whatpulse-linux-32bit-$pkgver.tar.gz")
-sha256sums_i686=('4961fc8360ef924538c1b74f86dfe5ee3a13b474d9bb6421b4312aa465afa74a')
+sha256sums_i686=('249975a06e9dee515df0415d35bbaa02dcc6481ec11ad2d91fbabcbb213c8602')
 source_x86_64=("http://www.whatpulse.org/files/whatpulse-linux-64bit-$pkgver.tar.gz")
-sha256sums_x86_64=('7ac2fb2a79c789c6de9ad8aab72538c1be540de1b5c49fa0128425b793c0884c')
+sha256sums_x86_64=('d84cf61827c41929980147ea7e3ecfa799bf3aae904bc3b930c843c02ef58773')
 
 package() {
     cd $srcdir/
