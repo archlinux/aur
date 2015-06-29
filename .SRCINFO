@@ -1,0 +1,18 @@
+pkgbase = python-tinkerer
+	pkgdesc = Sphinx-based blogging engine
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://tinkerer.me/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-babel
+	depends = python-sphinx
+	depends = python-jinja
+	depends = python-pyquery
+	source = https://pypi.python.org/packages/source/T/Tinkerer/Tinkerer-1.5.zip
+	md5sums = 4424d70a262b1848c9a8553723ad159f
+
+pkgname = python-tinkerer
+
