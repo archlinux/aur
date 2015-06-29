@@ -1,0 +1,13 @@
+[Unit]
+Description=MediaMVP tftp boot server
+ConditionFileIsExecutable=/usr/bin/mvptftp
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mvptftp
+
+TimeoutSec=0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

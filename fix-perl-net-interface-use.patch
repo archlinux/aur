@@ -1,0 +1,21 @@
+--- mvpboot	2013-06-05 23:07:17.285948746 +0200
++++ mvpboot-fixed	2011-10-22 18:25:36.000000000 +0200
+@@ -88,7 +88,8 @@
+ my $if = Net::Interface->new($opts{i}) or die "$!\n";
+ my $ifaddr = scalar($if->address) or die "No IP address found for ".$opts{i}."\n";
+ my $local_addr = net2quad($ifaddr);
+-my $local_hwaddr = unpack('H*', scalar $if->hwaddress);
++my $info = $if->info();
++my $local_hwaddr = unpack('H*', $info->{'mac'});
+ 
+ daemonise($opts{p});
+ 
+@@ -97,7 +98,7 @@
+ 	Proto => 'udp',
+ ) or log_die "Failed to bind socket: $!\n";
+ 
+-syslog 'info', "MediaMVP UDP listener running on $local_addr:$MVP_PORT(".mac_bin2hex(scalar $if->hwaddress).")";
++syslog 'info', "MediaMVP UDP listener running on $local_addr:$MVP_PORT(".$if->mac_bin2hex($info->{'mac'}).")";
+ 
+ my $data;
+ while (1) {

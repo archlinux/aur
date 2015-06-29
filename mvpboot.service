@@ -1,0 +1,11 @@
+[Unit]
+Description=Respond to boot request packets from Hauppauge MediaMVP
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/mvpboot
+
+[Install]
+WantedBy=multi-user.target
+ 

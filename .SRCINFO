@@ -1,0 +1,26 @@
+pkgbase = mvpboot
+	pkgdesc = Respond to boot request packets from Hauppauge MediaMVP
+	pkgver = 0.01
+	pkgrel = 6
+	url = http://mvpmc.wikispaces.com/mvpboot
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = perl-net-interface
+	depends = perl-io-socket
+	optdepends = atftpd: tftp booting support
+	provides = mvpboot
+	noextract = mvpboot
+	source = http://mvpmc.wikispaces.com/file/view/mvpboot/30989151/mvpboot
+	source = fix-perl-net-interface-use.patch
+	source = mvpboot.service
+	source = mvptftp
+	source = mvptftp.service
+	md5sums = 2661beb243f81645344fe89acb97517d
+	md5sums = 5ab5f9917a65c74a288a5d4bffd68fe4
+	md5sums = cdc0e37925b598221795972f392e1186
+	md5sums = 8eff12f2c09d918a6aad7c45650ceeb5
+	md5sums = 48c70b270bf8b1e8e5d942219b65be23
+
+pkgname = mvpboot
+
