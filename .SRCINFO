@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-archlogo
+	pkgdesc = Add colored Arch Linux ASCII art logo to early boot process
+	pkgver = 0.2.0.r7.g002175a
+	pkgrel = 1
+	url = https://github.com/eworm-de/mkinitcpio-archlogo
+	install = mkinitcpio-archlogo.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mkinitcpio
+	backup = etc/archlogo.conf
+	source = git://github.com/eworm-de/mkinitcpio-archlogo.git
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-archlogo
+
