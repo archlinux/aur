@@ -1,0 +1,19 @@
+pkgbase = virt-backup-git
+	pkgdesc = Perl script to backup qemu machines
+	pkgver = 20120419.9
+	pkgrel = 2
+	url = https://github.com/syndicut/virt-backup
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = perl-sys-virt
+	depends = perl-xml-simple
+	depends = libvirt
+	depends = qemu
+	optdepends = lvm2: for LVM snapshots
+	source = git://github.com/syndicut/virt-backup
+	md5sums = SKIP
+
+pkgname = virt-backup-git
+
