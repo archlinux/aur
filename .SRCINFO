@@ -1,0 +1,13 @@
+pkgbase = trisquel-icon-theme
+	pkgdesc = Trisquel GNU/Linux icon theme, based on Gnome Brave icon theme
+	pkgver = 7.0_4
+	pkgrel = 1
+	url = http://trisquel.info
+	arch = any
+	license = GPL
+	depends = gnome-colors-icon-theme
+	source = http://archive.trisquel.info/trisquel/pool/main/t/trisquel-icon-theme/trisquel-icon-theme_7.0-4.tar.gz
+	md5sums = 743e6142f42022cdb81f9a62df7c46fc
+
+pkgname = trisquel-icon-theme
+
