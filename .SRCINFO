@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 221
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = systemd-selinux
 	makedepends = acl
 	makedepends = cryptsetup
 	makedepends = docbook-xsl
+	makedepends = gperf
 	makedepends = lz4
 	makedepends = xz
 	makedepends = pam-selinux
@@ -39,7 +40,7 @@ pkgbase = systemd-selinux
 	source = splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a
 	md5sums = SKIP
 	md5sums = 90ea67a7bb237502094914622a39e281
-	md5sums = 8516a7bd65157d0115c113118c10c3f3
+	md5sums = 976c5511b6493715e381f43f16cdb151
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
 	md5sums = 20ead378f5d6df4b2a3e670301510a7d
 	md5sums = ddaef54f68f6c86c6c07835fc668f62a
@@ -78,7 +79,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=221
 	provides = udev=221
-	provides = systemd=221-1
+	provides = systemd=221-2
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -123,15 +124,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=221-1
+	provides = libsystemd=221-2
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=221-1
-	provides = selinux-systemd-sysvcompat=221-1
+	provides = systemd-sysvcompat=221-2
+	provides = selinux-systemd-sysvcompat=221-2
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat

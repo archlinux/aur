@@ -7,11 +7,11 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=221
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'lz4' 'xz' 'pam-selinux'
+makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python' 'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
@@ -28,7 +28,7 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a')
 md5sums=('SKIP'
          '90ea67a7bb237502094914622a39e281'
-         '8516a7bd65157d0115c113118c10c3f3'
+         '976c5511b6493715e381f43f16cdb151'
          'bde43090d4ac0ef048e3eaee8202a407'
          '20ead378f5d6df4b2a3e670301510a7d'
          'ddaef54f68f6c86c6c07835fc668f62a'
@@ -37,7 +37,25 @@ md5sums=('SKIP'
 prepare() {
   cd "${pkgname/-selinux}"
 
-  # 'git cherry-pick -n' upstream fixes here
+  # pam_systemd: Properly check kdbus availability
+  # https://github.com/systemd/systemd/commit/c5d452bb228e
+  git cherry-pick -n c5d452bb228e
+
+  # udevd: suppress warning if we don't find cgroup
+  # https://github.com/systemd/systemd/commit/11b9fb15be96
+  git cherry-pick -n 11b9fb15be96
+
+  # core: fix reversed dependency check in unit_check_unneeded
+  # https://github.com/systemd/systemd/commit/084918ba41ac
+  git cherry-pick -n 084918ba41ac
+
+  # rules: remove all power management from udev
+  # https://github.com/systemd/systemd/commit/e2452eef02a8
+  git cherry-pick -n e2452eef02a8
+
+  # logind: fix delayed execution regression
+  # https://github.com/systemd/systemd/commit/418b22b88f79
+  git cherry-pick -n 418b22b88f79
 
   ./autogen.sh
 }
