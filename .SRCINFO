@@ -1,0 +1,15 @@
+pkgbase = python-evelink
+	pkgdesc = Python bindings for the EVE API.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/eve-val/evelink
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-six
+	source = git+https://github.com/eve-val/evelink.git#tag=0.7.0
+	sha256sums = SKIP
+
+pkgname = python-evelink
+
