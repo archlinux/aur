@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=fieldhint
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.0.g249e606
+pkgver=v2.0.g73d2dc5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,23 +13,22 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
 build() {
-  cd "${_gitname}"
+  cd "${_plug}"
   ./autogen.sh
   ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
