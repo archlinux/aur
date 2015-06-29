@@ -2,18 +2,18 @@
 
 pkgname=ncursesfm-git
 _gitname=ncursesFM
-pkgver=0.r215.3474a7e
+pkgver=0.r219.dc1b8bb
 pkgrel=1
 pkgdesc="A FileManager written in c and ncurses library."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
 license=('GPL')
-depends=('ncurses' 'libconfig' 'libarchive' 'libcups' 'openssl' 'libx11')
+depends=('ncurses' 'libconfig' 'libarchive' 'libcups' 'libx11')
 optdepends=('fuseiso: for fuse archive/iso mounting support'
             'xdg-utils: xdg-open support')
-#depends=('git') -> libcups, openssl and libx11 are optional build dep.
+#depends=('git') -> libcups and libx11 are optional build dep.
 #                   If compiled without them, the program will run just fine;
-#                   but that would disable xdg-open, sha/md5sum and printing support.
+#                   but that would disable xdg-open and printing support.
 makedepends=('git')
 source=("git://github.com/FedeDP/${_gitname}.git")
 backup=('etc/default/ncursesFM.conf')
