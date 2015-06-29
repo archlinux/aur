@@ -14,6 +14,7 @@ source=("https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-$pkgver
 md5sums=('a0b58defc5ad0c7e1baeb932f62d08dd')
 
 prepare() {
+  rm -rf SQLAlchemy2-$pkgver
   cp -a SQLAlchemy-$pkgver SQLAlchemy2-$pkgver
 }
 
