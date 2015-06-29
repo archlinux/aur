@@ -10,7 +10,8 @@ pkgdesc="Helpers for working with shaders, buffer objects, and textures in OpenG
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD3')
 arch=('any')
-depends=('ghc' 'haskell-juicypixels>=3' 'haskell-linear>=1.1.3'
+depends=('ghc' 'haskell-cpphs'
+         'haskell-juicypixels>=3' 'haskell-linear>=1.1.3'
          'haskell-opengl>=2.9.2' 'haskell-opengl<2.13'
          'haskell-openglraw>=1.1' 'haskell-vector>=0.7')
 options=('strip')
