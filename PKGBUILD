@@ -2,14 +2,27 @@
 
 _hkgname=linear
 pkgname=haskell-linear
-pkgver=1.17.1
+pkgver=1.18.1.1
 pkgrel=1
 pkgdesc="Linear Algebra"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
-arch=('i686' 'x86_64')
+arch=('any')
 makedepends=()
-depends=('ghc' 'haskell-adjunctions<5' 'haskell-binary<0.8' 'haskell-bytes<1' 'haskell-cereal<0.5' 'haskell-containers=0.4.0.0' 'haskell-deepseq=1.1.0.2' 'haskell-distributive<1' 'haskell-hashable<1.3' 'haskell-lens<5' 'haskell-reflection<2' 'haskell-semigroupoids<5' 'haskell-semigroups<1' 'haskell-tagged<1' 'haskell-template-haskell' 'haskell-transformers=0.2.2.0' 'haskell-transformers-compat<1' 'haskell-unordered-containers<0.3' 'haskell-vector<0.11' 'haskell-void<1')
+depends=('ghc' 'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
+         'haskell-cereal>=0.4.1.1' 'haskell-cereal<0.5'
+         'haskell-distributive>=0.2.2' 'haskell-distributive<1'
+         'haskell-hashable>=1.1' 'haskell-hashable<1.3'
+         'haskell-lens>=4.0' 'haskell-lens<5'
+         'haskell-reflection>=1.3.2' 'haskell-reflection<2'
+         'haskell-semigroupoids>=3.0' 'haskell-semigroupoids<6'
+         'haskell-semigroups>=0.9' 'haskell-semigroups<1'
+         'haskell-tagged>=0.4.4' 'haskell-tagged<1'
+         'haskell-template-haskell>=2.7' 'haskell-template-haskell<3.0'
+         'haskell-transformers-compat>=0.4' 'haskell-transformers-compat<1'
+         'haskell-unordered-containers>=0.2.3' 'haskell-unordered-containers<0.3'
+         'haskell-vector>=0.10.0' 'haskell-vector<0.11'
+         'haskell-void>=0.6' 'haskell-void<1')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
