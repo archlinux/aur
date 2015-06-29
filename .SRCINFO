@@ -1,0 +1,22 @@
+pkgbase = oath-toolkit-git
+	pkgdesc = OATH one-time password toolkit - git checkout
+	pkgver = 2.4.0.r7.ge9d90cd
+	pkgrel = 1
+	url = http://www.nongnu.org/oath-toolkit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = help2man
+	makedepends = gengetopt
+	makedepends = datefudge
+	depends = glibc
+	depends = pam
+	depends = xmlsec
+	provides = oath-toolkit
+	conflicts = oath-toolkit
+	options = !libtool
+	source = git://git.sv.gnu.org/oath-toolkit.git
+	sha256sums = SKIP
+
+pkgname = oath-toolkit-git
+
