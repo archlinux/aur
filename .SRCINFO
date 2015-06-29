@@ -1,0 +1,17 @@
+pkgbase = perl-html-simpleparse
+	pkgdesc = Perl/CPAN Module HTML::SimpleParse - a bare-bones HTML parser.
+	pkgver = 0.12
+	pkgrel = 3
+	url = http://search.cpan.org/dist/HTML-SimpleParse/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	provides = html-simpleparse
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/HTML-SimpleParse-0.12.tar.gz
+	sha256sums = c103a19cf99801489ce23e4da86a5f9df79f032f1f1c71b8130d0d3ff96e6304
+
+pkgname = perl-html-simpleparse
+
