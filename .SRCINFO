@@ -1,0 +1,17 @@
+pkgbase = gitflow-avh
+	pkgdesc = Extend git with Vincent Driessen's branching model. The AVH Edition adds more functionality.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/petervanderdoes/gitflow/
+	arch = any
+	license = BSD,
+	license = LGPL
+	depends = git
+	provides = gitflow
+	conflicts = gitflow
+	conflicts = gitflow-git
+	source = https://github.com/petervanderdoes/gitflow/archive/1.8.0.tar.gz
+	md5sums = 78a0cac73a35a09b68e09817fe4a3448
+
+pkgname = gitflow-avh
+
