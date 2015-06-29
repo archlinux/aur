@@ -1,0 +1,14 @@
+pkgbase = racer-cg-car-64-austin-mini
+	pkgdesc = 1964 Austin Mini MK1 car model for Racer (CG version) by Harey
+	pkgver = BETA
+	pkgrel = 1
+	url = http://www.racedepartment.com/threads/1964-austin-mini-beta.62339/
+	arch = any
+	license = custom
+	makedepends = unrar
+	depends = racer-cg
+	source = https://yq2m2a.dm2301.livefilestore.com/y2p7VP4mNtsGxmVg6I8HmJXdA3Rp2y-pJGNJ71ovREujKvgfDzj2B8Fz7kBPrAldB0fvWWZUtBfV1UEf2KSMXINMjV9p6gOG75qqhbX8_oveyE/austin_mini.rar
+	noextract = austin_mini.rar
+
+pkgname = racer-cg-car-64-austin-mini
+
