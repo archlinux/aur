@@ -1,0 +1,16 @@
+pkgbase = perl-geo-distance
+	pkgdesc = Geo::Distance - Perl interface to calculate geo distance from latitude and longitude
+	pkgver = 0.20
+	pkgrel = 3
+	url = http://search.cpan.org/~bluefeet/Geo-Distance-0.20/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BL/BLUEFEET/Geo-Distance-0.20.tar.gz
+	sha256sums = 514c5b16ea064fa6f3f41d83672477a6dc3b9c31494d9e1b4f084ef750f9c58a
+
+pkgname = perl-geo-distance
+
