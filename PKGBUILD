@@ -15,7 +15,7 @@ _build_voip=false
 
 pkgname=retroshare
 pkgver=0.6.0.RC2
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -128,6 +128,15 @@ package() {
 			"${_srcdir}/retroshare-nogui/src/retroshare-nogui" \
 			"${pkgdir}/usr/bin/${pkgname}-nogui"
 	fi
+
+    # Webui files
+	install -d -m 655 "${pkgdir}/usr/share/RetroShare/webfiles/"
+	for _file in $(ls "${_srcdir}/libresapi/src/webfiles/"); do
+		install -D -m 644 \
+			"${_srcdir}/libresapi/src/webfiles/${_file}" \
+			"${pkgdir}/usr/share/RetroShare/webfiles/"
+	done
+
 
 	# Plugins
 	if [[ "$_build_linkscloud" == "true" ]] ; then
