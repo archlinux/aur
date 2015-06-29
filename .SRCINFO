@@ -1,0 +1,22 @@
+pkgbase = yii
+	pkgdesc = A high-performance component-based PHP framework best for Web 2.0 development.
+	pkgver = 1.1.16
+	pkgrel = 1
+	url = http://www.yiiframework.com/
+	install = yii.install
+	arch = any
+	license = BSD
+	depends = php
+	optdepends = php-sqlite: using SQLite database
+	optdepends = php-pgsql: using PostgreSQL database
+	optdepends = php-memcache: Memcache support
+	optdepends = php-apc: APC support
+	optdepends = php-mcrypt: required by encrypt and decrypt methods
+	optdepends = php-gd: GD support
+	optdepends = yii-docs: developer documentation
+	options = !strip
+	source = https://github.com/yiisoft/yii/archive/1.1.16.tar.gz
+	sha256sums = 5603b0cb73eeb26f39a4bc029e7c469422facb96bdf78943aecbdd5b019e5095
+
+pkgname = yii
+
