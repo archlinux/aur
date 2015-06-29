@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kronometer-frameworks-git
-pkgver=1.5.2.r274.6225d13
+pkgver=1.5.2.r289.e92a6e8
 pkgrel=1
-pkgdesc="A stopwatch application for KDE KF5 Frameworks branch (GIT version)"
+pkgdesc="A stopwatch application for KDE. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.digikam.org/sharedlibs'
 license=('GPL' 'LGPL' 'FDL')
-depends=('kio' 'hicolor-icon-theme')
+depends=('kxmlgui' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
 conflicts=('kronometer')
 source=('git://anongit.kde.org/kronometer.git#branch=frameworks')
@@ -17,7 +17,7 @@ install=kronometer-frameworks-git.install
 pkgver() {
   cd kronometer
   _ver="$(cat src/main.cpp | grep '// version' | cut -d '"' -f2)"
-  echo -e "${_ver// /.}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo -e "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare(){
