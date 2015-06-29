@@ -1,0 +1,12 @@
+[Unit]
+Description=Crate
+After=network.target
+
+[Service]
+User=crate
+ExecStart=/usr/share/crate/bin/crate -Des.path.conf=/etc/crate -Des.config=/etc/crate/crate.yml -Des.path.home=/usr/share/crate -Des.path.logs=/var/log/crate -Des.path.work=/var/lib/crate
+Environment=CRATE_MIN_MEM=256m
+Environment=CRATE_MAX_MEM=1g
+
+[Install]
+WantedBy=multi-user.target
