@@ -1,0 +1,12 @@
+pkgbase = trigger-data
+	pkgdesc = Data component of trigger
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/trigger-rally/
+	arch = any
+	license = GPL2
+	source = http://sourceforge.net/projects/trigger-rally/files/trigger-0.6.2/trigger-rally-0.6.2-data.tar.bz2
+	sha512sums = 93eeff5b68e1b2ac5b95b2eef97a5d9cad17a2323f4073360855d2e87bcf759ed35e3ae0309798fa16e46a333123195435c58a4c273d52a8f3801857bfdf6fd4
+
+pkgname = trigger-data
+
