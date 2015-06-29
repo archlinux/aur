@@ -10,6 +10,7 @@ license=('custom:BSD3')
 arch=('any')
 makedepends=()
 depends=('ghc' 'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
+         'haskell-bytes>=0.15' 'haskell-bytes<1'
          'haskell-cereal>=0.4.1.1' 'haskell-cereal<0.5'
          'haskell-distributive>=0.2.2' 'haskell-distributive<1'
          'haskell-hashable>=1.1' 'haskell-hashable<1.3'

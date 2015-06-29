@@ -4,12 +4,13 @@ pkgbase = haskell-linear
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/linear
 	install = haskell-linear.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom:BSD3
 	depends = ghc
 	depends = haskell-adjunctions>=4.0
 	depends = haskell-adjunctions<5
+	depends = haskell-bytes>=0.15
+	depends = haskell-bytes<1
 	depends = haskell-cereal>=0.4.1.1
 	depends = haskell-cereal<0.5
 	depends = haskell-distributive>=0.2.2
@@ -38,7 +39,7 @@ pkgbase = haskell-linear
 	depends = haskell-void<1
 	options = strip
 	source = http://hackage.haskell.org/packages/archive/linear/1.18.1.1/linear-1.18.1.1.tar.gz
-	sha512sums = b60dd3d259a7cdbdb912c790a1d6af0ed287feb8bce99dfdd12810667ba47abb80dc4d0d4d0db8a57a334812fc814521016a23734421178b7e1d5dddf090b4b3
+	sha512sums = c10515ab07a93a3e567987769ad0ecac89e29161d2e38392042bf6e99317f93fa8be9129bdcfb63370161593305ad5bdf495b6bc8fee6ed9eaa3d05b338d8d68
 
 pkgname = haskell-linear
 
