@@ -1,0 +1,20 @@
+pkgbase = soxt
+	pkgdesc = A high-level 3D graphics toolkit on top of OpenGL.
+	pkgver = 1.3.0
+	pkgrel = 4
+	url = http://www.coin3d.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = doxygen
+	makedepends = coin
+	depends = coin
+	depends = libxi
+	depends = libxmu
+	depends = libxpm
+	depends = lesstif
+	source = https://bitbucket.org/Coin3D/coin/downloads/SoXt-1.3.0.tar.gz
+	sha256sums = f5443aadafe8e2222b9b5a23d1f228bb0f3e7d98949b8ea8676171b7ea5bf013
+
+pkgname = soxt
+
