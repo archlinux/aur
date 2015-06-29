@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[en_US]=WorldEditor (WED) is a CAD-like graphic editor that lets you create custom airport layouts. It is designed for X-Plane, and works with apt.dat version 850 and higher.
 Comment=WorldEditor (WED) is a CAD-like graphic editor that lets you create custom airport layouts. It is designed for X-Plane, and works with apt.dat version 850 and higher.
-Exec=LD_PRELOAD=libcurl.so.3 WED
+Exec=WED
 GenericName[en_US]=Airport Layout Creator
 GenericName=Airport Layout Creator
 Icon=WorldEditor

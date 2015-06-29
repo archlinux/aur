@@ -12,6 +12,4 @@ NOTICE: WED looks for this specific directory structure and specific directory n
 
 Click "Choose X-Plane folder". Select the working directory for the X-Plane folder.
 '
-echo "To execute this application from terminal use the following command \"LD_PRELOAD=libcurl.so.3 WED\""
-echo
 }
