@@ -1,7 +1,7 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=gpsprune_dev_bin
-pkgver=16
+pkgver=18
 pkgrel=1
 pkgdesc="a java application for viewing, editing and converting coordinate data from GPS systems (dev version for testing purposes)"
 arch=('i686' 'x86_64')
@@ -11,16 +11,12 @@ depends=('java-runtime')
 optdepends=('java3d' 'povray' 'exiftool' 'gpsbabel' 'gnuplot')
 source=("http://activityworkshop.net/software/gpsprune/gpsprune_${pkgver}_test.jar" "http://activityworkshop.net/software/gpsprune/prunelogo.png" "gpsprune.desktop")
 install='gpsprune.install'
-md5sums=('1ef0d8d13019e639bc3bcf0ef5cd9c91'
+md5sums=('b4a3f28e2404282cd073d362e29278c8'
          '0dce06ef7eec27ecff78eb0a83c0b123'
          'a5e0406c09addef4320ce0c6beff0968')
 conflicts=(gpsprune_bin gpsprune)
 noextract=("gpsprune_${pkgver}_test.jar")
 replaces=(prune_dev_bin)
-
-build() {
-return 0
-}
 
 package() {
 cd $srcdir

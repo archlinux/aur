@@ -1,6 +1,6 @@
 pkgbase = gpsprune_dev_bin
 	pkgdesc = a java application for viewing, editing and converting coordinate data from GPS systems (dev version for testing purposes)
-	pkgver = 16
+	pkgver = 18
 	pkgrel = 1
 	url = http://sourceforge.net/projects/prune-gps/
 	install = gpsprune.install
@@ -16,11 +16,11 @@ pkgbase = gpsprune_dev_bin
 	conflicts = gpsprune_bin
 	conflicts = gpsprune
 	replaces = prune_dev_bin
-	noextract = gpsprune_16_test.jar
-	source = http://activityworkshop.net/software/gpsprune/gpsprune_16_test.jar
+	noextract = gpsprune_18_test.jar
+	source = http://activityworkshop.net/software/gpsprune/gpsprune_18_test.jar
 	source = http://activityworkshop.net/software/gpsprune/prunelogo.png
 	source = gpsprune.desktop
-	md5sums = 1ef0d8d13019e639bc3bcf0ef5cd9c91
+	md5sums = b4a3f28e2404282cd073d362e29278c8
 	md5sums = 0dce06ef7eec27ecff78eb0a83c0b123
 	md5sums = a5e0406c09addef4320ce0c6beff0968
 
