@@ -1,0 +1,19 @@
+pkgbase = smtp-git
+	pkgdesc = A simple smtp mail sender.
+	pkgver = 0.r19.e7d79c1
+	pkgrel = 1
+	url = http://repo.or.cz/w/smtp.git
+	install = smtp-git.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = polarssl
+	conflicts = smtp
+	source = smtp-git::git://repo.or.cz/smtp.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = smtp-git
+

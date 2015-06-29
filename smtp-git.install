@@ -1,0 +1,5 @@
+post_install() {
+  echo ">>> To use smtp, config.h should have been changed to match your settings."
+  echo "    It's changeable via sed command inside PKGBUILD file.                 "
+}
+
