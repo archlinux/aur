@@ -11,7 +11,7 @@
 _pkgname=angband
 pkgname=angband-ncurses
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
 url="http://rephial.org/"
@@ -21,15 +21,16 @@ makedepends=('python-docutils'
 			 #'texlive-core' #Uncomment if you want a pdf manual. That's quite the dependency, don't you think?
 			'autoconf' 'automake')
 conflicts=('angband' 'angband-git')
-source=( "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
-#  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-v${pkgver}.tar.gz"
+source=(
+  #"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
+  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-v${pkgver}.tar.gz"
 )
 
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  ./autogen.sh
+ # ./autogen.sh
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -51,4 +52,4 @@ package() {
   install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
-md5sums=('a47ba8ccb4f378a7471cafbf5dce640c')
+md5sums=('3813f95f46166ff383923eaba462b194')
