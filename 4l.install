@@ -1,0 +1,6 @@
+
+post_install() {
+  echo "Don't forget to edit /etc/lightscribe.rc"
+}
+
+
