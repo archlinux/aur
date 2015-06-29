@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Unison (2.32)
+Comment=File synchronisation tool for X11
+TryExec=unison-232-x11
+Exec=unison-232-x11
+Terminal=false
+Type=Application
+Categories=GTK;Application;Network;
+Icon=unison-232.png
+StartupNotify=true
+NoDisplay=false

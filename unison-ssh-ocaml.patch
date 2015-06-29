@@ -1,0 +1,25 @@
+Index: src/terminal.ml
+===================================================================
+--- src/terminal.ml	(révision 463)
++++ src/terminal.ml	(copie de travail)
+@@ -191,7 +191,6 @@
+             exit 127
+           end
+       | childPid ->
+-          Unix.close slaveFd;
+           (Some masterFd, childPid)
+       end
+ 
+Index: src/update.mli
+===================================================================
+--- src/update.mli	(révision 463)
++++ src/update.mli	(copie de travail)
+@@ -1,7 +1,7 @@
+ (* Unison file synchronizer: src/update.mli *)
+ (* Copyright 1999-2009, Benjamin C. Pierce (see COPYING for details) *)
+ 
+-module NameMap : Map.S with type key = Name.t
++module NameMap : MyMap.S with type key = Name.t
+ 
+ type archive =
+     ArchiveDir of Props.t * archive NameMap.t

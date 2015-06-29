@@ -1,0 +1,24 @@
+pkgbase = unison-232-compat
+	pkgdesc = File-synchronization tool (legacy 2.32 version). Compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!)
+	pkgver = 2.32.52
+	pkgrel = 1
+	url = http://www.cis.upenn.edu/~bcpierce/unison
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = lablgtk2
+	makedepends = imagemagick
+	makedepends = gtk2
+	optdepends = gtk2: for the GTK2 frontend
+	provides = unison-232=2.32.52
+	options = !makeflags
+	source = http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.32.52/unison-2.32.52.tar.gz
+	source = unison-ssh-ocaml.patch
+	source = unison-232.desktop
+	md5sums = 0701f095c1721776a0454b94607eda48
+	md5sums = 81a28349471434c75a4206d07ad21eb1
+	md5sums = 2ab7bb57623e786936d892ddc228c2f8
+
+pkgname = unison-232-compat
+
