@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Aurora
+GenericName=Web Browser
+Icon=firefox-aurora-icon
+Type=Application
+Categories=Application;Network;
+Encoding=UTF-8
+Exec=firefox-aurora %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;
+
