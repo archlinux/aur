@@ -1,0 +1,16 @@
+pkgbase = dhcpcd-hook-pdnsd
+	pkgdesc = Hook for dhcpcd to add domain name servers to pdnsd (dns caching proxy)
+	pkgver = 0.2.0.r2.g596c6be
+	pkgrel = 1
+	url = https://github.com/eworm-de/dhcpcd-hook-pdnsd
+	install = dhcpcd-hook-pdnsd.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pdnsd
+	depends = dhcpcd
+	source = git://github.com/eworm-de/dhcpcd-hook-pdnsd.git
+	sha256sums = SKIP
+
+pkgname = dhcpcd-hook-pdnsd
+

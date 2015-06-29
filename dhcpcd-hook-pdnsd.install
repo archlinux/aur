@@ -1,0 +1,8 @@
+post_install() {
+	cat<<EOF
+ > You should add an empty server definition to your pdnsd.conf. Please
+ > Take a look at /etc/pdnsd.conf.dhcpcd-hook!
+ > You need to add 'nohook resolv.conf' to your dhcpcd.conf and make
+ > shure your resolv.conf contains an entry to 127.0.0.1!
+EOF
+}
