@@ -1,0 +1,47 @@
+diff -Naur bdfedit1.3~/bdfedit bdfedit1.3/bdfedit
+--- bdfedit1.3~/bdfedit	2009-01-06 21:28:12.000000000 -0600
++++ bdfedit1.3/bdfedit	2009-01-06 21:28:17.000000000 -0600
+@@ -1,8 +1,8 @@
+-#!/opt/local/bin/wish -f
++#!/usr/bin/wish -f
+ #Fix the path above.
+ 
+ #Fix the path below.
+-source /home/fine/tcl/completion.tcl
++source /usr/share/bdfedit/completion.tcl
+ 
+ # TTD
+ # BACKUP FILE BEFORE SAVE!!!!
+@@ -2128,7 +2128,7 @@
+ 
+ proc readrc {} {
+   global env default
+-  set rcfile $env(HOME)/.bdfeditrc
++  set rcfile /etc/bdfeditrc
+   if [file exists $rcfile] {
+     if [catch "source $rcfile" err] {
+       showmess "Error reading rc file ($rcfile):\n$err"
+diff -Naur bdfedit1.3~/bdfedit.samprc bdfedit1.3/bdfedit.samprc
+--- bdfedit1.3~/bdfedit.samprc	2009-01-06 21:28:12.000000000 -0600
++++ bdfedit1.3/bdfedit.samprc	2009-01-06 21:28:35.000000000 -0600
+@@ -1,9 +1,8 @@
+ #
+-# SAMPLE .bdfeditrc
+-# edit as desired and place in $HOME/.bdfeditrc
++# set your authoring credits
+ #
+ set default(COMMENT) {
+- Copyright (c) 2000, Your Name Here
++ Copyright (c) 2008, Your Name Here
+ 
+  License to copy and distribute for both commercial and
+  non-commercial use is herby granted, provided this notice
+@@ -17,7 +16,7 @@
+  written by Thomas A. Fine
+ }
+ #
+-# the following values are used when a new font is created
++# set the default values to be used for new fonts
+ #
+ set default(FOUNDRY) Fine
+ set default(WIDTH) 9
