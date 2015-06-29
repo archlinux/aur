@@ -1,0 +1,15 @@
+pkgbase = gitfiles-git
+	pkgdesc = Provides support for browsing Git repositories inside Acme.
+	pkgver = 0.1.r2.e2d9fbd
+	pkgrel = 1
+	url = https://github.com/mariusae/gitfiles
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = plan9port
+	source = gitfiles-git::git+https://github.com/mariusae/gitfiles.git
+	md5sums = SKIP
+
+pkgname = gitfiles-git
+
