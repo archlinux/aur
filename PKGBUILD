@@ -1,7 +1,7 @@
 # Maintainer: Xentec <artificial.i7 at gmail dot com>
 
 pkgname=cppformat-git
-pkgver=1.1.0.r202.g8949a2e
+pkgver=1.1.0.r244.g7859f81
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -42,10 +42,8 @@ package() {
 	cd "$pkgname"
 
 	install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 format.h "${pkgdir}/usr/include/format.h"
 
 	cd build
-
-	install -D -m755 libformat.so "$pkgdir/usr/lib/libformat.so"
+	make DESTDIR="$pkgdir" install
 }
 
