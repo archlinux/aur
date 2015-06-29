@@ -5,7 +5,7 @@
 
 pkgname=gimagereader
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical frontend to tesseract-ocr"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gimagereader/"
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=(
   "http://sourceforge.net/projects/gimagereader/files/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 )
-sha256sums=('e37e995cb357cea25698e8aa2932437890957cc24b665b45c2579f5233ee5df6')
+sha256sums=('461ae7fac1dc0e0b85f30a8237ddd2684ee77061645d3f77747d0079f5093638')
 
 build() {
   cd "$pkgname-$pkgver"
