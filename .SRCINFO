@@ -1,0 +1,15 @@
+pkgbase = ce
+	pkgdesc = (Chet's Editor), a small, fast, emacs-like text editor.
+	pkgver = 4.6
+	pkgrel = 1
+	url = http://tiswww.case.edu/php/chet/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://tiswww.case.edu/php/chet/dist/ce-4.6.tar.gz
+	md5sums = ea886c3867900729dc883757c307d99b
+	sha1sums = 94d7ef6db3e9baf60205e922038d040380b67879
+	sha256sums = 76e1659c76b1bbc6bbc32451585034c8ca7d2a782e61f229a330cde887708d54
+
+pkgname = ce
+
