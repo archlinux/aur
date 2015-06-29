@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   cd "$_src_dir"
+sed -i  "135i    \$self->{guess}{extra_cflags} .= ' -DPERL_IMPLICIT_SYS' if \$Config::Config{ccflags} =~ /-DPERL_IMPLICIT_SYS/;" lib/ExtUtils/CppGuess.pm
   /usr/bin/perl Makefile.PL
   make
 }
