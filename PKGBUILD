@@ -3,7 +3,7 @@
 
 pkgname=scalasca
 _version=2.2
-_patch=.1
+_patch=.2
 pkgver=${_version}${_patch}
 pkgrel=0
 pkgdesc="Tool for measuring and analyzing runtime behavior of parallel programs."
@@ -14,7 +14,7 @@ depends=('openmpi')
 makedepends=('python2' 'cube-perf' 'scorep' 'openmpi')
 install=scalasca.install
 source=(http://apps.fz-juelich.de/scalasca/releases/$pkgname/$_version/dist/$pkgname-$pkgver.tar.gz)
-sha1sums=('316778462f502705277497bd6e2ea02d9cbe9b90')
+sha1sums=('9e8d9e3438f4e78431d3424d5ad07d0e76689b62')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
