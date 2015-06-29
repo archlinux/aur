@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-readline
 	pkgdesc = MinGW port of readline for editing typed command lines (mingw-w64)
 	pkgver = 6.3.008
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
 	arch = any
 	license = GPL
