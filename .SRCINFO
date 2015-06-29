@@ -1,7 +1,7 @@
 pkgbase = conky-cli
 	pkgdesc = Conky command line, without X11 dependencies
 	pkgver = 1.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://conky.sourceforge.net/
 	arch = i686
 	arch = x86_64

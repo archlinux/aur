@@ -6,7 +6,7 @@
 _pkgname=conky
 pkgname=conky-cli
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Conky command line, without X11 dependencies"
 url="http://conky.sourceforge.net/"
 license=('BSD' 'GPL')
@@ -30,6 +30,7 @@ build() {
       --disable-hddtemp \
       --disable-portmon \
       --enable-wlan \
+      --enable-weather-xoap \
 
   make
 }
