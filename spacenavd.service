@@ -1,0 +1,11 @@
+[Unit]
+Description=Userspace Daemon of the spacenav driver.
+
+[Service]
+Type=forking
+PIDFile=/var/run/spnavd.pid
+ExecStart=/usr/bin/spacenavd
+
+[Install]
+WantedBy=multi-user.target
+
