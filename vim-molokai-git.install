@@ -1,0 +1,14 @@
+post_install() {
+  echo ">>> By default, it has a dark gray background based on the version created by Hamish Stuart Macpherson for the E editor."
+  echo "    256-Color terminals are also supported, though there are some differences with the Gui version."
+  echo "    Only the dark gray background style is supported on terminal vim at this time."
+  echo "    If you prefer the scheme to match the original monokai background color, put this in your .vimrc file: "
+  echo "    let g:molokai_original = 1"
+  echo ""
+  echo ">>> There is also an alternative scheme under development for color terminals which attempts to bring the 256 color version "
+  echo "    as close as possible to the the default (dark) GUI version."
+  echo "    To access, add this to your .vimrc:"
+  echo "    let g:rehash256 = 1"
+  /bin/true
+}
+

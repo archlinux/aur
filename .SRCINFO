@@ -1,0 +1,17 @@
+pkgbase = vim-molokai-git
+	pkgdesc = Port of the TextMate's monokai colorscheme for Vim.
+	pkgver = r43.db8ce13
+	pkgrel = 1
+	url = https://github.com/tomasr/molokai
+	install = vim-molokai-git.install
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim
+	provides = vim-molokai
+	source = vim-molokai-git::git+https://github.com/tomasr/molokai.git
+	md5sums = SKIP
+
+pkgname = vim-molokai-git
+
