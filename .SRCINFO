@@ -1,0 +1,17 @@
+pkgbase = perl-authen-simple-ldap
+	pkgdesc = Authen-Simple-LDAP for Perl
+	pkgver = 0.3
+	pkgrel = 3
+	url = http://search.cpan.org/~chansen/Authen-Simple-LDAP-0.3/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-ldap
+	depends = perl-authen-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/Authen-Simple-LDAP-0.3.tar.gz
+	sha256sums = 9c79d515240d927ecf848587b5c2bb91564e390278b7386f6f77d3d6bf8aa881
+
+pkgname = perl-authen-simple-ldap
+
