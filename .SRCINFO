@@ -1,0 +1,27 @@
+pkgbase = openspades
+	pkgdesc = A clone of Voxlap Ace of Spades 0.75
+	pkgver = 0.0.12
+	pkgrel = 2
+	url = https://sites.google.com/a/yvt.jp/openspades/
+	install = openspades.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = unzip
+	makedepends = wget
+	depends = curl
+	depends = desktop-file-utils
+	depends = glew
+	depends = hicolor-icon-theme
+	depends = mesa
+	depends = openal
+	depends = sdl2
+	depends = sdl2_image
+	source = https://github.com/yvt/openspades/archive/v0.0.12.tar.gz
+	md5sums = 4f459b9e6c6243d2dd8983eb3752b4e4
+
+pkgname = openspades
+
