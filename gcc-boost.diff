@@ -1,6 +1,6 @@
 diff -rupN ./zarafa-7.2.0/configure ./o/configure
---- ./zarafa-7.2.0/configure<-->2015-03-05 15:52:48.000000000 +0000
-+++ ./o/configure<----->2015-06-29 17:28:49.090847091 +0000
+--- zarafa-7.2.0.old/configure<-->2015-03-05 15:52:48.000000000 +0000
++++ zarafa-7.2.0/configure<----->2015-06-29 17:28:49.090847091 +0000
 @@ -19810,7 +19810,8 @@ fi
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $boost_cv_lib_version" >&5
  $as_echo "$boost_cv_lib_version" >&6; }
