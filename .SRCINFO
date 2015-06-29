@@ -1,5 +1,5 @@
 pkgbase = grub2-themes-dharma
-	pkgdesc = Chakra Dharma Grub2-theme.
+	pkgdesc = Chakra Dharma GRUB theme.
 	pkgver = 1.6
 	pkgrel = 1
 	url = http://chakra-project.org

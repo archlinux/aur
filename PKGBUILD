@@ -3,7 +3,7 @@
 pkgname=grub2-themes-dharma
 pkgver=1.6
 pkgrel=1
-pkgdesc="Chakra Dharma Grub2-theme."
+pkgdesc="Chakra Dharma GRUB theme."
 url="http://chakra-project.org"
 arch=('any')
 license=('CC-BY-ND')
