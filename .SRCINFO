@@ -1,0 +1,21 @@
+pkgbase = tuxcmd-modules-git
+	pkgdesc = Modules for Tux Commander - git checkout
+	pkgver = 0.6.74.r10.gbc2840a
+	pkgrel = 1
+	url = http://tuxcmd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = sharutils
+	depends = tuxcmd
+	optdepends = gvfs: for gvfs module
+	provides = tuxcmd-modules
+	conflicts = tuxcmd-modules
+	options = !docs
+	options = !emptydirs
+	source = git://git.bzatek.net/tuxcmd-modules/
+	sha256sums = SKIP
+
+pkgname = tuxcmd-modules-git
+
