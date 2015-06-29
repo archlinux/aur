@@ -3,14 +3,16 @@
 
 pkgname=khal-git
 _gitname=khal
-pkgver=0.6.0.r2.g0e7045c
+pkgver=0.5.1.dev53+ng56cb1f0
 pkgrel=1
 pkgdesc="Command line CalDav client"
 license=("MIT")
 url="http://lostpackets.de/khal/"
 depends=('python-urwid' 'python-xdg' 'vdirsyncer' 'python-dateutil'
-         'python-configobj' 'python-tzlocal' 'python-icalendar' 'sqlite')
-makedepends=('python-setuptools' 'git' 'python-sphinxcontrib-newsfeed')
+         'python-configobj' 'python-tzlocal' 'python-icalendar'
+         'sqlite')
+makedepends=('python-setuptools' 'python-setuptools_scm'
+             'python-pkginfo' 'git' 'python-sphinxcontrib-newsfeed')
 optdepends=('python-setproctitle: Display a clearer name in your process list')
 # I keep here python depencies...
 # python2-click, python2-icalendar come with the python2-vdirsyncer dependancy
@@ -30,13 +32,8 @@ arch=('any')
 options=(!emptydirs)
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
-  MAJOR=`sed -n "s/MAJOR\s\?=\s\?\(\d*\)/\1/p" version.py`
-  MINOR=`sed -n "s/MINOR\s\?=\s\?\(\d*\)/\1/p" version.py`
-  PATCH=`sed -n "s/PATCH\s\?=\s\?\(\d*\)/\1/p" version.py`
-  GITVER=`git describe --always --dirty --tags | cut -d- -f2- | sed -r 's/([^-]*-g)/r\1/;s/-/./g'`
-
-  echo "${MAJOR}.${MINOR}.${PATCH}.${GITVER}"
+  cd "$srcdir/${_gitname}/"
+  python -c 'import setuptools_scm; print(setuptools_scm.get_version())'
 }
 
 build(){
