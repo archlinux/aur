@@ -1,9 +1,9 @@
-# Maintainer: Thomas Bächler <me a nek0 net>
+# Maintainer: Stanislaw Datskevich <me a nek0 net>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn-pkcs11
-pkgver=2.3.6
-pkgrel=3
+pkgver=2.3.7
+pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) with smartcard support"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -11,7 +11,7 @@ depends=('openssl' 'lzo' 'iproute2' 'pkcs11-helper-1.11')
 license=('custom')
 install=openvpn.install
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz)
-sha256sums=('7baed2ff39c12e1a1a289ec0b46fcc49ff094ca58b8d8d5f29b36ac649ee5b26')
+sha256sums=('1f02a4cd6aeb6250ca9311560875b10ce8957a3c9101a8005bd1e17e5b03146e')
 
 build() {
   cd "${srcdir}"/openvpn-$pkgver
