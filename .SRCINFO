@@ -1,0 +1,13 @@
+pkgbase = emacs-color-theme-xoria256
+	pkgdesc = Emacs port of Dmitriy Zotikov's xoria256 vim theme
+	pkgver = 20130429
+	pkgrel = 1
+	url = https://github.com/pat-rondon/color-theme-xoria256
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = emacs
+	depends = emacs-color-theme
+
+pkgname = emacs-color-theme-xoria256
+
