@@ -1,0 +1,13 @@
+pkgbase = sleepshell
+	pkgdesc = Sleep Dummy Shell - a simple do-nothing, sleep-forever program that can be used as a login shell
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = http://www.mariovaldez.net/software/sleepshell/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.mariovaldez.net/software/sleepshell/files/sleepshell_0.0.2.tar.gz
+	sha256sums = 6a5ca129cc01971341bcfe86ebb9ba750f6d004a7a2262b8685e7a036b30fac0
+
+pkgname = sleepshell
+
