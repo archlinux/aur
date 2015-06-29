@@ -1,0 +1,5 @@
+This piece of software, 'pdf-zip', a wrapper around pdftk to combine two pdf documents into one while taking pages alternating from one and the other source document, is allowed to be modified, distributed, copied unter the following conditions:
+
+* Not allowed to be used for any military use.
+* When copying or modifiying, always include this license. Any modified version has to follow this license.
+
