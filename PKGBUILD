@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-audio-scan'
 pkgver='0.93'
-pkgrel="7"
+pkgrel="8"
 pkgdesc="Fast C metadata and tag reader for all common audio file formats"
 arch=('i686' 'x86_64' 'arm')
 license=('PerlArtistic' 'GPL')
