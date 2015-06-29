@@ -1,0 +1,17 @@
+pkgbase = git-ftp
+	pkgdesc = Git powered FTP client written as shell script
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/git-ftp/git-ftp
+	arch = any
+	license = GPL
+	makedepends = ruby-ronn
+	depends = curl
+	depends = git
+	source = https://github.com/git-ftp/git-ftp/archive/1.0.2.tar.gz
+	source = git-ftp-0.9.0-Replace-pandoc-with-ronn.patch
+	md5sums = bb48c82f402a643fa117d209b377db76
+	md5sums = 12463b49d14f3133bed635002a33fa68
+
+pkgname = git-ftp
+

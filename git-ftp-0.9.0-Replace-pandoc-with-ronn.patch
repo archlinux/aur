@@ -1,0 +1,14 @@
+diff -rupN a/man/Makefile b/man/Makefile
+--- a/man/Makefile	2013-12-01 14:58:57.000000000 +0100
++++ b/man/Makefile	2014-02-12 14:11:19.190068857 +0100
+@@ -9,9 +9,7 @@ all:
+ 	@echo "       make clean"
+ man:
+ 	install -d -m 0755 man1
+-	pandoc -s \
+-		-w man git-ftp.1.md \
+-		-o  $(MAN_FILE)
++	ronn -r --pipe git-ftp.1.md > $(MAN_FILE)
+ html:
+ 	pandoc -s -S --toc \
+ 		-c git-ftp.css git-ftp.1.md \
