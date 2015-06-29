@@ -1,0 +1,16 @@
+pkgbase = perl-html-qrcode
+	pkgdesc = HTML-QRCode for Perl
+	pkgver = 0.01
+	pkgrel = 3
+	url = http://search.cpan.org/~hide/HTML-QRCode-0.01/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-text-qrcode
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HIDE/HTML-QRCode-0.01.tar.gz
+	sha256sums = 26e23ae91f4ed816a3f45c5784ba69c44f6406a68897313517d797a407b3b22f
+
+pkgname = perl-html-qrcode
+
