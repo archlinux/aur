@@ -1,0 +1,17 @@
+diff -ru iproute2-3.10.0.orig/ip/iplink.c iproute2-3.10.0/ip/iplink.c
+--- iproute2-3.10.0.orig/ip/iplink.c	2013-08-08 13:53:33.000000000 -0700
++++ iproute2-3.10.0/ip/iplink.c	2013-08-08 13:55:03.179865309 -0700
+@@ -467,11 +467,11 @@
+ 			addattr_l(&req->n, sizeof(*req), IFLA_NUM_RX_QUEUES,
+ 				  &numrxqueues, 4);
+ 		} else {
++			if (matches(*argv, "help") == 0)
++				usage();
+ 			if (strcmp(*argv, "dev") == 0) {
+ 				NEXT_ARG();
+ 			}
+-			if (matches(*argv, "help") == 0)
+-				usage();
+ 			if (*dev)
+ 				duparg2("dev", *argv);
+ 			*dev = *argv;
