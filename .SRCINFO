@@ -1,0 +1,13 @@
+pkgbase = xfwm4-themes-curvish
+	pkgdesc = Popular 'Curve' window decorations, modified to support theme colors
+	pkgver = 0.0.3
+	pkgrel = 3
+	url = http://www.eworm.de/
+	arch = any
+	license = GPL
+	depends = xfwm4
+	source = http://www.eworm.de/download/xfwm4-themes-curvish/xfwm4-themes-curvish-0.0.3.tar.bz2
+	sha256sums = 9dd7db51c13728588079653d37072d70abeb4121a6470074aa73637dec6d800d
+
+pkgname = xfwm4-themes-curvish
+
