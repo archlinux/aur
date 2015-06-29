@@ -1,0 +1,14 @@
+pkgbase = cfget
+	pkgdesc = Read values from configuration files
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://www.enricozini.org/sw/cfget/
+	arch = any
+	license = GPL
+	depends = python
+	provides = cfget
+	source = git+https://anonscm.debian.org/git/users/enrico/cfget.git#tag=debian/0.19-1
+	sha1sums = SKIP
+
+pkgname = cfget
+

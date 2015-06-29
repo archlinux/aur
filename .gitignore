@@ -1,0 +1,5 @@
+*.gz
+*.tar
+cfget/
+pkg/
+src/
