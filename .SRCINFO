@@ -1,0 +1,23 @@
+pkgbase = haskell-vinyl-gl
+	pkgdesc = Using Data.Vinyl records to carry GLSL uniform parameters and vertex data enables library code to reflect over the types of the data to facilitate interaction between Haskell and GLSL. See the examples directory in the repository.
+	pkgver = 0.3.0.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/vinyl-gl
+	install = haskell-vinyl-gl.install
+	arch = any
+	license = BSD3
+	depends = ghc
+	depends = haskell-glutil>=0.6.4
+	depends = haskell-linear>=1.1.3
+	depends = haskell-opengl>=2.8
+	depends = haskell-tagged>=0.4
+	depends = haskell-transformers>=0.3
+	depends = haskell-vector>=0.10
+	depends = haskell-vinyl>=0.5.1
+	depends = haskell-vinyl<0.6
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/vinyl-gl/0.3.0.1/vinyl-gl-0.3.0.1.tar.gz
+	sha512sums = b2661c76d331532be8698a0e6e02fadb2d358d85177f01c44320283be4f82cfa73d723166dfdf73406a5d671ac5a3c488cc060c8d5d1970985d8a9ba4aff0d91
+
+pkgname = haskell-vinyl-gl
+
