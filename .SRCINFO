@@ -1,0 +1,15 @@
+pkgbase = dhcpcd-hook-openvpn
+	pkgdesc = Hook for dhcpcd to send SIGUSR1 to openvpn and reestablish connection
+	pkgver = 0.2.0.r2.gdf48c35
+	pkgrel = 1
+	url = https://github.com/eworm-de/dhcpcd-hook-openvpn
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = openvpn
+	depends = dhcpcd
+	source = git://github.com/eworm-de/dhcpcd-hook-openvpn.git
+	sha256sums = SKIP
+
+pkgname = dhcpcd-hook-openvpn
+
