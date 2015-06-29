@@ -1,0 +1,14 @@
+pkgbase = words-ru
+	pkgdesc = A wordlist of russian words for /usr/share/dict/.
+	pkgver = 20130218
+	pkgrel = 1
+	url = http://www.winedt.org/Dict/
+	arch = any
+	license = custom:copyright
+	source = http://www.winedt.org/Dict/unicode/ru.zip
+	source = copyright::http://www.winedt.org/Dict/ru.txt
+	md5sums = b6bb9cfcf20a923c1e6e4bc280201764
+	md5sums = 0b02ff27dd7b302f26ba41b5b13a0b57
+
+pkgname = words-ru
+
