@@ -1,0 +1,17 @@
+pkgbase = racer-cg-cars
+	pkgdesc = Meta package that installs or additional cars for Racer, the free simulator. CG version (for newer video cards)
+	pkgver = 0.8.44
+	pkgrel = 2
+	url = http://racer.nl/
+	arch = any
+	license = custom
+	depends = racer-cg
+	depends = racer-cg-car-00-mazda-rx7-rz
+	depends = racer-cg-car-28-bentley-blower
+	depends = racer-cg-car-64-austin-mini
+	depends = racer-cg-car-69-chevrolet-camaro-z28
+	depends = racer-cg-car-87-dodge-omni-america
+	depends = racer-cg-car-90-renault-clio-i
+
+pkgname = racer-cg-cars
+
