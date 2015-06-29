@@ -1,0 +1,18 @@
+pkgbase = perl-imager-qrcode
+	pkgdesc = Imager-QRCode for Perl
+	pkgver = 0.034
+	pkgrel = 3
+	url = http://search.cpan.org/~kurihara/Imager-QRCode-0.034/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-imager
+	depends = qrencode
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KU/KURIHARA/Imager-QRCode-0.034.tar.gz
+	sha256sums = ed370829552dcdf17a073bc477a1cb5782731d500d63f415bf4886152047d475
+
+pkgname = perl-imager-qrcode
+
