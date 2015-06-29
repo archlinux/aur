@@ -1,6 +1,6 @@
 pkgbase = pantheon-files-bzr
 	pkgdesc = The Pantheon File Manager
-	pkgver = r1807
+	pkgver = r1871
 	pkgrel = 1
 	url = https://launchpad.net/pantheon-files
 	install = pantheon-files.install

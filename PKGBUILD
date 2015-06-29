@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-files-bzr
-pkgver=r1807
+pkgver=r1871
 pkgrel=1
 pkgdesc='The Pantheon File Manager'
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
     -DCMAKE_SKIP_RPATH='TRUE' \
     -DGSETTINGS_COMPILE='FALSE'
   make
