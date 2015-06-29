@@ -1,0 +1,15 @@
+pkgbase = scmxx
+	pkgdesc = A tool for exchange data with some Siemens mobile phone
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = http://www.hendrik-sattler.de/scmxx/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = perl-image-size
+	source = http://downloads.sourceforge.net/project/scmxx/scmxx/0.9.0/scmxx-0.9.0.tar.bz2
+	md5sums = 9ed8fe297b39ed1c4d3606e40620835e
+
+pkgname = scmxx
+
