@@ -15,6 +15,7 @@ source=(https://launchpad.net/python-weather-api/trunk/$pkgver/+download/$_pkgna
 md5sums=('75bf8257f32f2d36169d57d92566cdb1')
 
 prepare() {
+  rm -rf ${_pkgname}2-$pkgver
   cp -a $_pkgname-$pkgver ${_pkgname}2-$pkgver 
 
   #cd ${_pkgname}2-$pkgver
