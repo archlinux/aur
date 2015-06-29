@@ -1,0 +1,16 @@
+pkgbase = blink1-git
+	pkgdesc = software for blink(1) USB RGB LED - git checkout
+	pkgver = 1.83.r63.g1ec7826
+	pkgrel = 1
+	url = http://rzl.so/wiki/RZLblink
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = blink1
+	conflicts = blink1
+	source = git+https://github.com/todbot/blink1.git
+	sha256sums = SKIP
+
+pkgname = blink1-git
+
