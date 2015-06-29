@@ -2,7 +2,7 @@
 
 _plug=d2vsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=beta7.4.g2859cb6
+pkgver=beta7.8.gc160a97
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,22 +13,23 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/dwbuiten/${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
 build() {
-  cd "${_gitname}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
+  cd "${_plug}"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   make install
   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }

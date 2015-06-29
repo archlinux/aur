@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-d2vsource-git
 	pkgdesc = Plugin for Vapoursynth: d2vsource (GIT version)
-	pkgver = beta7.4.g2859cb6
+	pkgver = beta7.8.gc160a97
 	pkgrel = 1
 	url = https://github.com/dwbuiten/d2vsource
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vapoursynth-plugin-d2vsource-git
 	provides = vapoursynth-plugin-d2vsource
 	conflicts = vapoursynth-plugin-d2vsource
 	source = git+https://github.com/dwbuiten/d2vsource.git
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = vapoursynth-plugin-d2vsource-git
 
