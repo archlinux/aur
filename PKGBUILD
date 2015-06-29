@@ -1,4 +1,4 @@
-# Maintainer: Archer <NAME at gmx dot com>
+# Maintainer: Archer777 <NAME at gmx dot com>
 # Contributor: Army
 # Contributor: Dave Reisner <d@falconindy.com>
 # Contributor: Karol Cichy <slothck@gmail.com>
