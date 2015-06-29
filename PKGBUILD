@@ -14,7 +14,7 @@ _build_voip=false
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.0-rc2
+pkgver=0.6.0.RC2
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -27,11 +27,12 @@ conflicts=('retroshare')
 
 install="${pkgname}.install"
 
-source=(http://sourceforge.net/projects/retroshare/files/RetroShare/${pkgver}/retroshare_0.6.0.RC2~8551.tar.gz \
+source=(#http://sourceforge.net/projects/retroshare/files/RetroShare/${pkgver}/retroshare_0.6.0.RC2~8551.tar.gz \
+		http://downloads.sourceforge.net/project/retroshare/RetroShare/0.6.0-rc2/retroshare_0.6.0.RC2~8551_src.tgz \
 		${pkgname}.install \
 		${pkgname}.desktop)
 
-sha256sums=('772b0d7916137e81fc0f5ea14f0a8fa70d3d7acb701ca0b0c1c66018f2255650'
+sha256sums=('2320676da905de6c48b01eda611811965277ffa1d5ddbb387aa8f0414c2de050'
             '4b50547648612e9091536205402a4da9ddea9c18c0f71e5d6cd30b2226f206d9'
             '70be00968f2477e368f75393f193e76f366fff2dadab869c855e92048060cf29')
 
@@ -39,7 +40,7 @@ sha256sums=('772b0d7916137e81fc0f5ea14f0a8fa70d3d7acb701ca0b0c1c66018f2255650'
 [[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'openvc')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
 
-_rssrcdir="retroshare-0.6.0/src"
+_rssrcdir="retroshare06-0.6.0/src"
 
 build() {
 	local _srcdir="${srcdir}/$_rssrcdir"
@@ -55,21 +56,27 @@ build() {
 	$_qmake
 	make
 
+	msg "Compiling pegmarkdown..."
+	cd "${_srcdir}/supportlibs/pegmarkdown"
+	$_qmake
+	make
+
+
 	msg "Compiling libretroshare..."
 	cd "${_srcdir}/libretroshare/src"
 	$_qmake
 	make
 
 	msg "Compiling libresapi..."
-	cd libresapi/src
+	cd "${_srcdir}/libresapi/src"
 	$_qmake
 	make
+
 	# i'm not 100% sure if this step is required
 	# it will download/update some JavaScript files
 	msg "Updating webui files..."
-	cd webui
+	cd "${_srcdir}/libresapi/src/webui/"
 	make
-	cd ../../..
 
 	msg "Compiling retroshare-gui..."
 	cd "${_srcdir}/retroshare-gui/src"
@@ -141,7 +148,7 @@ package() {
 
 	# Icons
 	install -D -m 644 \
-		"${_srcdir}/retroshare-gui/src/gui/images/retrosharelogo2.png" \
+		"${_srcdir}/retroshare-gui/src/gui/images/logo/logo_512.png" \
 		"${pkgdir}/usr/share/pixmaps/retroshare.png"
 
 	# Desktop File
