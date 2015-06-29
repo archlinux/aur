@@ -1,7 +1,7 @@
 # Maintainer: codl <codl@codl.fr>
 pkgname='urn-git'
 pkgver=r88.08b5277
-pkgrel=1
+pkgrel=2
 pkgdesc='Split timer for speedrunning'
 url='https://github.com/3snowp7im/urn'
 arch=('i686' 'x86_64')
@@ -13,8 +13,11 @@ makedepends=('imagemagick' 'vim')
 install='urn-git.install'
 
 source=('git+https://github.com/3snowp7im/urn.git'
-        'git+https://github.com/3snowp7im/urn-themes.git')
-sha1sums=('SKIP' 'SKIP')
+        'git+https://github.com/3snowp7im/urn-themes.git'
+        'urn.desktop')
+sha1sums=('SKIP'
+          'SKIP'
+          '05622115481d0b1485c69ad08ca7f494ea575781')
 
 pkgver() {
     cd "$SRCDEST/urn"
@@ -38,10 +41,9 @@ build() {
 }
 
 package () {
-    echo $srcdir
+    install -D -m 644 urn.desktop "$pkgdir/usr/share/applications/urn.desktop"
     cd "$srcdir/urn"
     install -D urn-gtk "$pkgdir/usr/bin/urn-gtk"
-    install -D -m 644 urn.desktop "$pkgdir/usr/share/applications/urn.desktop"
     install -D -m 644 urn-gtk.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/urn-gtk.gschema.xml"
     mkdir -p "$pkgdir/usr/share/urn/themes"
     rsync -a themes/ "$pkgdir/usr/share/urn/themes/"

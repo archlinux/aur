@@ -1,6 +1,6 @@
 pkgbase = urn-git
 	pkgdesc = Split timer for speedrunning
-	pkgver = r82.0513661
+	pkgver = r88.08b5277
 	pkgrel = 2
 	url = https://github.com/3snowp7im/urn
 	install = urn-git.install
@@ -14,8 +14,10 @@ pkgbase = urn-git
 	depends = hicolor-icon-theme
 	source = git+https://github.com/3snowp7im/urn.git
 	source = git+https://github.com/3snowp7im/urn-themes.git
+	source = urn.desktop
 	sha1sums = SKIP
 	sha1sums = SKIP
+	sha1sums = 05622115481d0b1485c69ad08ca7f494ea575781
 
 pkgname = urn-git
 
