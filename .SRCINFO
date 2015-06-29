@@ -1,0 +1,28 @@
+pkgbase = jngl
+	pkgdesc = One of the easiest 2D game libraries for C++ and Python
+	pkgver = 0.9.2
+	pkgrel = 3
+	url = http://jngl.watteimdocht.de/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = scons
+	makedepends = git
+	depends = boost
+	depends = freetype2
+	depends = fontconfig
+	depends = glib2
+	depends = libjpeg6
+	depends = libpng12
+	depends = libvorbis
+	depends = libxext
+	depends = libxxf86vm
+	depends = mesa
+	depends = openal
+	depends = python2
+	source = python27.patch
+	md5sums = 58ec66f99186c5e491a4657559f203d1
+	sha1sums = 61c55403238c7c7d95de87bb720230f47fd75a62
+
+pkgname = jngl
+

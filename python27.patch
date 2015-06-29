@@ -1,0 +1,11 @@
+--- SConstruct_old	2011-05-16 20:49:44.192374630 +0200
++++ SConstruct	2011-05-16 20:48:34.254626319 +0200
+@@ -110,7 +110,7 @@
+ 		env.ParseConfig("pkg-config --cflags --libs jngl.pc")
+ 		env.Append(CPPPATH="/usr/include/python2.7",
+ 		           LIBPATH=Split(". ./lib ./python"),
+-		           LIBS=Split("python2.7 boost_python-py27"))
++		           LIBS=Split("python2.7 boost_python"))
+ 		env.SharedLibrary(target="python/jngl.so",
+ 		                  source="python/main.cpp")
+ 
