@@ -1,0 +1,167 @@
+#!/usr/bin/python2
+### PicoSpeaker
+### Written by Kyle
+### A small program that speaks text on its command line or standard input using SVox Pico and Sox
+### Speech rate, pitch, volume and language can be specified, and output can be saved to many file formats
+### This program is free and unencumbered software released into the public domain. See UNLICENSE for details.
+### SVox Pico and Sox are covered by their own open source licenses and copyrights,
+### and are therefore not covered by the UNLICENSE included with PicoSpeaker.
+
+from sys import argv, stdin, stderr, exit
+from subprocess import call, Popen
+from os import environ as env, remove
+from time import sleep
+
+# help and version tuples
+version = (
+  'PicoSpeaker 0.6.2',
+  'Written by Kyle',
+  'This program is free and unencumbered software released into the public domain.',
+  'See the included UNLICENSE file for details.')
+help = (
+  'Usage:',
+  argv[0] + ' [options] <text>',
+  '',
+  'Options:',
+  '-l|--language <language>	Language to speak: (default is en-US)',
+  '-v|--volume <number>	Output volume: (default is 1.0)',
+  '-r|--rate <number>	Rate of speech from -90 to 9900: (default is 0)',
+  '-p|--pitch <number>	Voice pitch from -79 to 39: (default is 0)',
+  '-o|--output <file>	Output to the specified file: (default is sound card output)',
+  '-c|--compress|-q|--quality <number>	Compression/quality level of output file, depends on file type',
+  '	This option causes an error if no output file is specified.',
+  '-t|--type <type>	Save output file as <type>. Only needed if saving with a nonstandard extension.',
+  '	This option causes an error if no output file is specified.',
+  '-V|--version	Print version information',
+  '-h|--help|-u|--usage	Print this help message')
+
+# Spoken text is stored in this temp file; unfortunately, pico2wave doesn't pipe
+temp = '/tmp/picospeaker-' + env['USER'] + '.wav'
+
+def parse ():
+  'Parse the command line and return settings and text to be spoken in a dictionary object'
+  settings = {} #Voice parameters and command line options, the object returned by the function
+
+  # The parser loop, which populates the settings object and handles usage and version options
+  skip = False #set True to skip the next item in the sequence.
+  for opt in range(1,len(argv)):
+    if skip:
+      skip = False
+      continue
+    if ( argv[opt] == '-V' ) or ( argv[opt] == '--version' ):
+      for line in version: stderr.write(line + '\n')
+      exit(0)
+    elif ( argv[opt] == '-h' ) or ( argv[opt] == '--help' ) \
+    or ( argv[opt] == '-u' ) or ( argv[opt] == '--usage' ):
+      for line in version: stderr.write(line + '\n')
+      stderr.write('\n')
+      for line in help: stderr.write(line + '\n')
+      exit(0)
+    elif ( argv[opt] == '-l' ) or ( argv[opt] == '--language' ):
+      languages = ('en-US', 'en-GB', 'de-DE', 'es-ES', 'fr-FR', 'it-IT')
+      if ( argv[opt+1] in languages ):
+        settings['language'] = argv[opt+1]
+      else:
+        stderr.write('Language ' + argv[opt+1] + ' is currently not available.\n')
+        stderr.write('Available languages are ' + ', '.join(languages[:-1]) + ' and ' + languages[-1] + '.\n')
+        exit(1)
+      skip = True
+      continue
+    elif ( argv[opt] == '-p' ) or ( argv[opt] == '--pitch' ):
+      try:
+        if ( int(argv[opt+1]) in range(-79, 40) ):
+          settings['pitch'] = argv[opt+1]
+        else: raise ValueError
+      except ValueError:
+          stderr.write('Pitch must be a whole number from -79 to 39.\n')
+          exit(1)
+      skip = True
+      continue
+    elif ( argv[opt] == '-r' ) or ( argv[opt] == '--rate' ):
+      try:
+        if ( int(argv[opt+1]) in range(-90, 9901) ):
+          settings['rate'] = argv[opt+1]
+        else: raise ValueError
+      except ValueError:
+          stderr.write('Rate must be a whole number from -90 to 9900.\n')
+          exit(1)
+      skip = True
+      continue
+    elif ( argv[opt] == '-v' ) or ( argv[opt] == '--volume' ):
+      try:
+        float(argv[opt+1])
+      except ValueError:
+        stderr.write('Volume must be a number.\n')
+        exit(1)
+      settings['volume'] = argv[opt+1]
+      skip = True
+      continue
+    elif ( argv[opt] == '-o' ) or ( argv[opt] == '--output' ):
+      # TODO: Check for settings['filetype'] if output file extension would be unrecognized by Sox: may not be possible here
+      settings['output'] = argv[opt+1]
+      skip = True
+      continue
+    elif ( argv[opt] == '-c' ) or ( argv[opt] == '--compress' ) \
+    or ( argv[opt] == '-q' ) or ( argv[opt] == '--quality' ):
+      try:
+        float(argv[opt+1]) #must be a number
+      except ValueError:
+        stderr.write('Compression/quality level must be a number.\n')
+        exit(1)
+      settings['compression'] = argv[opt+1]
+      skip = True
+      continue
+    elif ( argv[opt] == '-t' ) or ( argv[opt] == '--type' ):
+      settings['filetype'] = argv[opt+1]
+      skip = True
+      continue
+    else:
+      # First, die with an error if compression and/or type are set but no output file is specified
+      if ( ( 'compression' in settings ) or ( 'filetype' in settings ) ) and ( 'output' not in settings ):
+        stderr.write('You must specify the output file.\n')
+        exit(1)
+      # Now the text can be added to the settings object and the loop can be broken
+      settings['text'] = ' '.join(argv[opt:])
+      break
+  return settings
+
+def tts():
+  'convert text to speech data and store it in a temporary file using the pico2wave utility from SVox Pico'
+  command = ['pico2wave', '-w', temp]
+  if ( 'language' in settings ): command += ['-l', settings['language']]
+  command += ['--', settings['text']]
+  try:
+    call(command)
+  except OSError:
+    stderr.write('FIXME: text is too large.\n')
+    exit(1)
+
+def speaker():
+  'speaks the text, or saves it if an output file was specified on the command line'
+  command = ['/usr/bin/play', '-q']
+  if ( 'volume' in settings ): command += ['-v', settings['volume']]
+  command.append(temp)
+  if ( 'output' in settings ):
+    command[0] = '/usr/bin/sox'
+    del command[1]
+    if ( 'filetype' in settings ): command += ['-t', settings['filetype']]
+    if ( 'compression' in settings ): command += ['-C', settings['compression']]
+    command.append(settings['output'])
+  if ( 'pitch' in settings ): command += ['gain', '-0.15', 'pitch', str(float(settings['pitch'])*100)]
+  if ( 'rate' in settings ): command += ['gain', '-0.1', 'tempo', '-s', str(1+float(settings['rate'])/100)]
+  speak = Popen(command)
+  sleep(0.1) # the temp file should be open by now
+  # The temp file can be removed as soon as it is opened in case PicoSpeaker is killed while speaking
+  remove(temp)
+  speak.wait() # Don't leave this function until the command is completed
+
+try:
+  settings = parse()
+  if ( 'text' not in settings ):
+    settings['text'] = stdin.read()
+  tts()
+  speaker()
+except KeyboardInterrupt:
+  stderr.write('Keyboard interrupt received. Cleaning up.\n')
+  try: remove(temp) # The temp file may not have been removed yet
+  except OSError: pass # The file doesn't exist and therefore doesn't need to be removed
