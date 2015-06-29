@@ -1,0 +1,4 @@
+post_install(){
+  echo ">>> More info on llx: \"/usr/share/doc/llx/README\"."
+}
+

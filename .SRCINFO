@@ -1,0 +1,16 @@
+pkgbase = llx
+	pkgdesc = Reads commands from standard input and executes them in parallel.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://litcave.rudi.ir/
+	install = llx.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	source = http://litcave.rudi.ir/llx.tar.gz
+	md5sums = 309ebeb8c986e3a74b21f87a25d3d659
+	sha1sums = e3f9477e24c919a80429ffe3ecd093b4a221bfc5
+	sha256sums = 66ca85353ac3f2284b432e8e11e1617d1d5ed36bb2b4a26b75212e0c37b5f0db
+
+pkgname = llx
+
