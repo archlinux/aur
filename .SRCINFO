@@ -1,0 +1,50 @@
+pkgbase = unvanquished-git
+	pkgdesc = A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Bleeding edge version.
+	pkgver = v0.37.0.2.g54b34da
+	pkgrel = 1
+	url = http://www.unvanquished.net
+	install = unvanquished.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = unvanquished-data
+	depends = zlib
+	depends = gmp
+	depends = nettle
+	depends = geoip
+	depends = curl
+	depends = sdl2
+	depends = glew
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = libwebp>=0.2.0
+	depends = freetype2
+	depends = openal
+	depends = libogg
+	depends = libvorbis
+	depends = speex
+	depends = libtheora
+	depends = opusfile
+	depends = ncurses
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	provides = unvanquished
+	conflicts = unvanquished
+	options = emptydirs
+	options = !strip
+	backup = etc/conf.d/unvanquished.conf
+	backup = etc/unvanquished/server.cfg
+	backup = etc/unvanquished/maprotation.cfg
+	source = unvanquished-git::git+https://github.com/Unvanquished/Unvanquished.git#branch=master
+	source = unvanquished.install
+	source = https://dl.unvanquished.net/deps/linux32-3.tar.bz2
+	md5sums = SKIP
+	md5sums = a5246cf3bed53798ddc4d95c6b8c1b37
+	md5sums = 64aa86d0d0d469c1f2272377e06322a1
+
+pkgname = unvanquished-git
+
