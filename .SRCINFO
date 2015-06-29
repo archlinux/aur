@@ -1,0 +1,17 @@
+pkgbase = cjots
+	pkgdesc = A console note taker program written in Perl for Linux using Perl's Curses library. Inspired by Kjots.
+	pkgver = 0.95
+	pkgrel = 2
+	url = http://cjots.sourceforge.net
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-curses
+	depends = perl-curses-ui
+	source = http://downloads.sourceforge.net/sourceforge/cjots/cjots-0.95.tar.gz
+	md5sums = fa035118192ce408eda37457c2bdf639
+	sha1sums = c49e3edcd9c6b859fc3290ff6694bb37c58c38bd
+	sha256sums = 415024e8e2b1a69fc491271dedc158cb93dc50442958d4aa20ec3cd47da94f4e
+
+pkgname = cjots
+
