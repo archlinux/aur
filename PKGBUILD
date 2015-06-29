@@ -3,7 +3,7 @@
 
 pkgname='sile-git'
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.2_53_g4d132dc
+pkgver=0.9.2_132_g4bb5a58
 _branch='master'
 pkgrel=1
 arch='any'
@@ -15,6 +15,7 @@ source=("git://github.com/simoncozens/${pkgname%-git}.git#branch=${_branch}")
 sha512sums=('SKIP')
 depends=('lua-lpeg'
          'lua-expat'
+         'lua-luafilesystem'
          'harfbuzz')
 
 pkgver() {
