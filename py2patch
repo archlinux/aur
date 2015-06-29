@@ -1,0 +1,8 @@
+--- customise.py	2010-11-23 16:23:25.000000000 +0200
++++ customise (copy).py	2011-02-15 15:45:19.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ _app_name = "Orta Configurator"
+ _version = "0.1"
+ _bugs = "Please report all bugs to <valiant.wing@gmail.com>."

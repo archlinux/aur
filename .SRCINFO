@@ -1,0 +1,18 @@
+pkgbase = gtk-theme-divergenceiv-a-new-hope
+	pkgdesc = A GTK2 theme with colors black, gray and white.
+	pkgver = 0.7.9
+	pkgrel = 4
+	url = http://jurialmunkey.deviantart.com/art/Divergence-IV-quot-A-New-Hope-quot-183377193
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	optdepends = python2: Requried for using customizer script.
+	source = http://fc06.deviantart.net/fs71/f/2011/185/3/5/divergence_iv_____a_new_hope___by_jurialmunkey-d316eqx.zip
+	source = py2patch
+	source = a-new-hope-customize
+	md5sums = 8686e029d9d5fb2f754962ded8ffafa8
+	md5sums = 9f3e7f8c7511b963177093de7b98ee89
+	md5sums = 6604f03aca90d3c411737093d8bb2f14
+
+pkgname = gtk-theme-divergenceiv-a-new-hope
+
