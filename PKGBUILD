@@ -5,7 +5,7 @@ pkgname=zarafa-server-arm
 pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Groupware Solution"
 arch=('any')
 url="http://www.zarafa.com/"
@@ -44,6 +44,7 @@ optdepends=('zarafa-webapp'
 install=('install')
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/zarafa-${pkgver}.tar.gz"
 	"arm.diff"
+	"gcc-boost.diff"
 	"zarafa-server.service"
 	"zarafa-ical.service"
 	"zarafa-dagent.service"
@@ -52,6 +53,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 
 md5sums=('7dc8a526b3eb83e6eb5bbc9d2215b501'
          '5de9759477995d9940c056e56ed9d3f1'
+         '3782f4351095a85987cb8b1245d91c74'
          '0e2728f1e35b25ca679427fcb57315d8'
          'c25f3982217fe390d68ed9003a5988ed'
          '9666bf713645af11dd65b3ac5cbb42d9'
@@ -63,6 +65,10 @@ build() {
   
   # https://forums.zarafa.com/showthread.php?8651-Raspberry-P
   patch -p1 <${srcdir}/arm.diff
+
+  # https://github.com/PowerDNS/pdns/issues/2198#
+  # https://groups.google.com/forum/#!topic/gearman/ymZMY0FnUKc
+  patch -p1 <${srcdir}/gcc-boost.diff
 
   msg "Starting build..."
   CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr \
