@@ -1,0 +1,30 @@
+post_install() {
+  echo ""
+  echo "===================================================="
+  echo ""
+  echo "This package includes a bunch of web libraries, mostly"
+  echo "written by Andrew McMillan, and mostly used by PHP things"
+  echo "that he wrote."
+  echo ""
+  echo "They are supposed to be fairly lightweight, and they are"
+  echo "intended to simplify things rather than complexify them."
+  echo ""
+  echo "To use them, you will need to add the path into your PHP"
+  echo "application.  The recommended way is to do this inside"
+  echo "the Apache virtual host, like so:"
+  echo ""
+  echo "  php_value include_path ../inc:/usr/share/awl/inc"
+  echo ""
+  echo "Which would include your applications inc directory"
+  echo "first, allowing it to override any AWL functionality"
+  echo "it wanted to."
+  echo ""
+  echo "Alternatively, add /usr/share/awl/inc under include_path"
+  echo "in your php.ini file for global availability"
+  echo "===================================================="
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

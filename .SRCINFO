@@ -1,0 +1,15 @@
+pkgbase = awl
+	pkgdesc = Andrew's php Web Libraries
+	pkgver = 0.55
+	pkgrel = 1
+	url = https://gitlab.com/davical-project/awl/
+	install = awl.install
+	arch = any
+	license = GPL2
+	depends = php
+	depends = make
+	source = awl.tar.gz::https://gitlab.com/davical-project/awl/repository/archive.tar.gz?ref=r0.55
+	sha256sums = 69d8f51e8aefdfb6b5a0fc3e5e32f8b8d650c489079c8ebac5a6b65f2ad3ec89
+
+pkgname = awl
+
