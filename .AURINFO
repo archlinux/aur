@@ -1,0 +1,14 @@
+pkgbase = racer-cg-car-28-bentley-blower
+	pkgdesc = 1928 Bentley Blower 4.5l car model for Racer (CG version) by Harey
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://hareysblog.blogspot.de/2013/09/lost-dazed-but-not-confused.html
+	arch = any
+	license = custom
+	makedepends = unrar
+	depends = racer-cg
+	source = https://9yrxtq.by3301.livefilestore.com/y2pnNlOwwhGqh2kwYuusDbA41iKsaERq17ZX-qNnFKDN-XBpwNOS1gxhZgRpj-0-wiiYccfFdGSWE1PD1FfTkQ2TCiX3e_EEo-_EWsY8kqKkzc//bentley_blower.rar
+	noextract = bentley_blower.rar
+
+pkgname = racer-cg-car-28-bentley-blower
+
