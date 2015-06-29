@@ -11,7 +11,7 @@ sha256sums=('be0c8e7ead3cf1d187a3287dccaf494331b831ba9c6610198301e440c59a7705')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --enable-nls
+  ./configure --prefix=/usr
   make
 }
 
