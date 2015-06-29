@@ -1,6 +1,6 @@
 pkgbase = linux-lts318-ck
 	pkgver = 3.18.17
-	pkgrel = 2
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = linux-lts318-ck
 	source = libata003.patch
 	sha256sums = becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd
 	sha256sums = SKIP
-	sha256sums = f60602c8de2ae7b1507c538b6af65d5b933727a06f56075898ff64fdcf650313
+	sha256sums = 190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8
 	sha256sums = SKIP
 	sha256sums = e603c2752c160c124ae54dba8a4a9820d86912e5685b3bf6cd99705d7b147552
 	sha256sums = 7ea49a31d2e0391c78588f07a8f0e0262535f5981b22d6a7fe0c1697f9dda282
