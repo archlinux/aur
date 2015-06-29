@@ -1,0 +1,54 @@
+diff -rupN graphthing-1.3.2_orig/src/fancyfileselection.cc graphthing-1.3.2/src/fancyfileselection.cc
+--- graphthing-1.3.2_orig/src/fancyfileselection.cc	2006-09-11 03:32:12.000000000 +0200
++++ graphthing-1.3.2/src/fancyfileselection.cc	2012-09-29 10:14:50.147565457 +0200
+@@ -27,7 +27,7 @@ FancyFileSelection::FancyFileSelection (
+ 		: wxFileDialog (parent, title, wxT(""), wxT(""), wxT("*.*"), style)
+ {
+ 	if (style & wxOPEN)
+-		style |= wxHIDE_READONLY;
++		style |= wxFD_DEFAULT_STYLE;
+ 	else if (style & wxSAVE)
+ 		style |= wxOVERWRITE_PROMPT;
+ 	SetStyle (style);
+diff -rupN graphthing-1.3.2_orig/src/gt-bison.y graphthing-1.3.2/src/gt-bison.y
+--- graphthing-1.3.2_orig/src/gt-bison.y	2006-09-11 03:32:12.000000000 +0200
++++ graphthing-1.3.2/src/gt-bison.y	2012-09-29 10:15:10.410433971 +0200
+@@ -18,7 +18,7 @@ Edge *e;
+ 
+ extern char *yy_gt_text;
+ 
+-int yy_gt_error (char *s);
++int yy_gt_error (const char *s);
+ int yy_gt_lex (void);
+ %}
+ 
+@@ -132,7 +132,7 @@ edge_property:
+ 
+ %%
+ 
+-int yy_gt_error (char *s)
++int yy_gt_error (const char *s)
+ {
+ 	fprintf (stderr, "gt-parse: %s in line %i, at symbol \"%s\"\n",
+ 					s, gt_lineno, yy_gt_text);
+diff -rupN graphthing-1.3.2_orig/src/lang-bison.y graphthing-1.3.2/src/lang-bison.y
+--- graphthing-1.3.2_orig/src/lang-bison.y	2006-09-11 03:32:12.000000000 +0200
++++ graphthing-1.3.2/src/lang-bison.y	2012-09-29 10:15:29.009983780 +0200
+@@ -15,7 +15,7 @@ int lang_lineno = 1;
+ 
+ std::stack<PhraseBlock *> pbs;
+ 
+-int yy_lang_error (char *s);
++int yy_lang_error (const char *s);
+ int yy_lang_lex (void);
+ %}
+ 
+@@ -121,7 +121,7 @@ phrase:
+ 
+ extern char *yy_lang_text;
+ 
+-int yy_lang_error (char *s)
++int yy_lang_error (const char *s)
+ {
+ 	fprintf (stderr, "lang-parse: %s in line %i, at symbol \"%s\"\n",
+ 			s, lang_lineno, yy_lang_text);

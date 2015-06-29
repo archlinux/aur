@@ -1,0 +1,20 @@
+pkgbase = graphthing
+	pkgdesc = A tool that allows you to create, manipulate and study graphs
+	pkgver = 1.3.2
+	pkgrel = 4
+	url = http://graph.seul.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wxgtk
+	depends = libpng12
+	depends = libjpeg7
+	source = http://graph.seul.org/graphthing-1.3.2.tar.gz
+	source = stuff.patch
+	md5sums = 486df5c84ec85ff8470d6304c1a69c98
+	md5sums = 82fd31e240984e9aef34258e545a08d2
+	sha1sums = e9cb8e238ac510be881de8eb8ad1078725019627
+	sha1sums = 5394f5b93607da337a2b737bc38a6b0174d67d84
+
+pkgname = graphthing
+
