@@ -26,7 +26,7 @@ depends=('ghc' 'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
-sha512sums=('b60dd3d259a7cdbdb912c790a1d6af0ed287feb8bce99dfdd12810667ba47abb80dc4d0d4d0db8a57a334812fc814521016a23734421178b7e1d5dddf090b4b3')
+sha512sums=('c10515ab07a93a3e567987769ad0ecac89e29161d2e38392042bf6e99317f93fa8be9129bdcfb63370161593305ad5bdf495b6bc8fee6ed9eaa3d05b338d8d68')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
