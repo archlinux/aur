@@ -1,0 +1,16 @@
+--- Makefile	2012-01-19 20:33:02.000000000 +0100
++++ Makefile_new	2012-01-31 23:03:49.022922219 +0100
+@@ -14,13 +14,11 @@
+ all: compile build
+ 
+ clean:
+-	clear
+ 	rm -R $(SRC)/*.o $(SRC)/algebra/*.o $(SRC)/geometry/*.o $(SRC)/graphics/*.o $(SRC)/io/*.o $(BIN)/*
+ 
+ include $(OS).mk
+ 
+ compile:
+-	clear
+ 	@echo "Compile $(TARGET) version $(VERSION) ($(STATUS)) for $(OS) platform"
+ 	@echo "(If you want to change it, modify make/platform file)"
+ 	@echo ""

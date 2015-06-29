@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Geomspace
+Comment=A browser for geometric (i.e. Euclidean, Riemann, Minkowski) spaces
+Exec=/usr/bin/geomspace
+Icon=geomspace.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Science;
