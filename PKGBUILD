@@ -6,13 +6,19 @@ pkgver=1.18.1.1
 pkgrel=1
 pkgdesc="Linear Algebra"
 url="http://hackage.haskell.org/package/${_hkgname}"
-license=('custom:BSD3')
+license=('BSD3')
 arch=('any')
 makedepends=()
-depends=('ghc' 'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
+depends=('ghc'
+         'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
+         'haskell-base>=4.6' 'haskell-base<5'
+         'haskell-binary>=0.5' 'haskell-binary<0.8'
          'haskell-bytes>=0.15' 'haskell-bytes<1'
          'haskell-cereal>=0.4.1.1' 'haskell-cereal<0.5'
+         'haskell-containers>=0.4' 'haskell-containers<0.6'
+         'haskell-deepseq>=1.1' 'haskell-deepseq<1.5'
          'haskell-distributive>=0.2.2' 'haskell-distributive<1'
+         'haskell-ghc-prim'
          'haskell-hashable>=1.1' 'haskell-hashable<1.3'
          'haskell-lens>=4.0' 'haskell-lens<5'
          'haskell-reflection>=1.3.2' 'haskell-reflection<2'
@@ -20,6 +26,7 @@ depends=('ghc' 'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
          'haskell-semigroups>=0.9' 'haskell-semigroups<1'
          'haskell-tagged>=0.4.4' 'haskell-tagged<1'
          'haskell-template-haskell>=2.7' 'haskell-template-haskell<3.0'
+         'haskell-transformers>=0.2' 'haskell-transformers<0.5'
          'haskell-transformers-compat>=0.4' 'haskell-transformers-compat<1'
          'haskell-unordered-containers>=0.2.3' 'haskell-unordered-containers<0.3'
          'haskell-vector>=0.10.0' 'haskell-vector<0.11'
