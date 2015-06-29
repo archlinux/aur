@@ -1,0 +1,15 @@
+pkgbase = lib32-opus
+	pkgdesc = Codec designed for interactive speech and audio transmission over the Internet
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.opus-codec.org/
+	arch = x86_64
+	license = custom
+	depends = lib32-glibc
+	optdepends = opus: building software with library
+	options = !libtool
+	source = http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz
+	sha256sums = b9727015a58affcf3db527322bf8c4d2fcf39f5f6b8f15dbceca20206cbe1d95
+
+pkgname = lib32-opus
+
