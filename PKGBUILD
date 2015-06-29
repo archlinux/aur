@@ -1,4 +1,5 @@
-# Maintainer: stqn
+# Maintainer: sehraf
+# Contributor: stqn
 # Contributor: JHeaton <jheaton at archlinux dot us>
 # Contributor: Tristero <tristero at online dot de>
 # Contributor: funkyou
@@ -7,36 +8,38 @@
 _build_nogui=true
 
 # Set this to true to build and install the plugins
-_build_linkscloud=true
 _build_feedreader=true
-_build_voip=true
+_build_voip=false
 
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.5.5c
-pkgrel=2
+pkgver=0.6.0-rc2
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
-license=('LGPL' 'GPL')
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss')
+license=('GPL' 'LGPL')
+
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+provides=('retroshare')
+conflicts=('retroshare')
+
 install="${pkgname}.install"
 
-source=(http://sourceforge.net/projects/retroshare/files/RetroShare/${pkgver}/retroshare_0.5.5-0.7068.tar.gz \
-	${pkgname}.install \
-	${pkgname}.desktop)
+source=(http://sourceforge.net/projects/retroshare/files/RetroShare/${pkgver}/retroshare_0.6.0.RC2~8551.tar.gz \
+		${pkgname}.install \
+		${pkgname}.desktop)
 
 sha256sums=('772b0d7916137e81fc0f5ea14f0a8fa70d3d7acb701ca0b0c1c66018f2255650'
             '4b50547648612e9091536205402a4da9ddea9c18c0f71e5d6cd30b2226f206d9'
             '70be00968f2477e368f75393f193e76f366fff2dadab869c855e92048060cf29')
 
 # Add missing dependencies if needed
-[[ $_build_nogui == true ]] && depends=(${depends[@]} 'libssh' 'protobuf')
-[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex')
+[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'openvc')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
 
-_rssrcdir="retroshare-0.5.5/src"
+_rssrcdir="retroshare-0.6.0/src"
 
 build() {
 	local _srcdir="${srcdir}/$_rssrcdir"
@@ -57,6 +60,17 @@ build() {
 	$_qmake
 	make
 
+	msg "Compiling libresapi..."
+	cd libresapi/src
+	$_qmake
+	make
+	# i'm not 100% sure if this step is required
+	# it will download/update some JavaScript files
+	msg "Updating webui files..."
+	cd webui
+	make
+	cd ../../..
+
 	msg "Compiling retroshare-gui..."
 	cd "${_srcdir}/retroshare-gui/src"
 	$_qmake
@@ -65,7 +79,6 @@ build() {
 	if [[ "$_build_voip" == "true" ]] ; then
 		msg "Compiling VOIP plugin..."
 		cd "${_srcdir}/plugins/VOIP"
-		#sed -i 's/lessThan.*/true {/' VOIP.pro
 		$_qmake
 		make
 	fi
@@ -86,10 +99,7 @@ build() {
 
 	if [[ $_build_nogui == "true" ]] ; then
 		msg "Compiling retroshare-nogui..."
-		cd "${_srcdir}/rsctrl/src"
-		make
 		cd "${_srcdir}/retroshare-nogui/src"
-		#sed -i 's/pkg-config --atleast-version 0.5.4 libssh/pkg-config --atleast-version 0.5 libssh/' retroshare-nogui.pro
 		$_qmake
 		make
 	fi
