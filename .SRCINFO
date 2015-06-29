@@ -1,0 +1,19 @@
+pkgbase = gnuradio-gsm-git
+	pkgdesc = Gnuradio blocks and tools for receiving GSM transmissions
+	pkgver = 20150627
+	pkgrel = 1
+	url = https://github.com/ptrkrysik/gr-gsm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	depends = gnuradio-osmosdr
+	depends = python2-scipy
+	source = git+https://github.com/ptrkrysik/gr-gsm.git
+	md5sums = SKIP
+
+pkgname = gnuradio-gsm-git
+
