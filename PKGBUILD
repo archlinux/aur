@@ -2,17 +2,17 @@
 # Contributor: Mladen Pejakovic <pejakm@autistici.org>
 
 pkgname=kamerka
-pkgver=0.10
+pkgver=0.12
 pkgdesc="Take photos using your webcam and shiny animated QML interface (KDE4 app)"
-pkgrel=2
+pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
 url="http://dos1.github.io/kamerka/"
 license=('GPL')
 makedepends=('cmake' 'automoc4')
 depends=('kdelibs' 'qt4' 'v4l-utils' 'qimageblitz')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dos1/kamerka/archive/${pkgver}.tar.gz")
-sha256sums=('8331021ab5420362f32803bae7329449a756f4839993305a1271390de3ef4df8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dos1/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('8390a98476b34b658a0b5d4a26875ec3a76aeece64782b2dde2e32175d8a88d6')
 
 build(){
   cd ${srcdir}/${pkgname}-${pkgver}
