@@ -1,0 +1,14 @@
+pkgbase = smbclient-stub
+	pkgdesc = Stub .so for smbclient painless removal
+	pkgver = 0.01
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = coreutils
+	provides = smbclient
+	conflicts = smbclient
+	replaces = smbclient
+
+pkgname = smbclient-stub
+
