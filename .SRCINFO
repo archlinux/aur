@@ -1,0 +1,22 @@
+pkgbase = python-plaintable
+	pkgdesc = A simple library to build plain text tables
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rumpelsepp/plaintable
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/p/plaintable/plaintable-0.1.1.tar.gz
+	md5sums = dc416d957ffdc64db5c979f7cb9b54b6
+
+pkgname = python-plaintable
+	depends = python
+	provides = python-plaintable
+	conflicts = python-plaintable-git
+
+pkgname = python2-plaintable
+	depends = python2
+	provides = python2-plaintable
+	conflicts = python2-plaintable-git
+
