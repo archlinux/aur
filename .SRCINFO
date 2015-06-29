@@ -1,0 +1,17 @@
+pkgbase = s3fuse
+	pkgdesc = FUSE driver for Amazon S3 buckets
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://code.google.com/p/s3fuse/
+	arch = x86
+	arch = x86_64
+	license = Apache
+	makedepends = subversion
+	makedepends = boost
+	depends = boost-libs
+	depends = fuse
+	depends = curl
+	depends = libxml2
+
+pkgname = s3fuse
+
