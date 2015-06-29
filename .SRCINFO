@@ -1,0 +1,19 @@
+pkgbase = putty-git
+	pkgdesc = A terminal integrated SSH/Telnet client - git checkout
+	pkgver = 0.63.r301.g35fde00
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/putty/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = perl
+	makedepends = halibut
+	depends = gtk2
+	provides = putty
+	conflicts = putty
+	source = git://git.tartarus.org/simon/putty.git
+	sha256sums = SKIP
+
+pkgname = putty-git
+
