@@ -1,0 +1,45 @@
+post_upgrade() {
+    chown -R darkstar:darkstar /var/lib/darkstar
+}
+
+post_install() {
+    getent passwd darkstar &>/dev/null || useradd -r darkstar -d /var/lib/darkstar -c 'Darkstar Server' -s /bin/false >/dev/null
+    chown -R darkstar:darkstar /var/lib/darkstar
+
+    cat << 'EOF'
+
+User and group named darkstar has been created.
+It is recommended to use the systemd services included to start darkstar.
+
+You may need to setup the database for darkstar:
+>> mysql --user=root --password=<password>
+>> CREATE USER 'darkstar'@'localhost' IDENTIFIED BY '<password>';
+>> CREATE DATABASE dspdb;
+>> USE dspdb;
+>> GRANT ALL PRIVILEGES ON dspdb.* TO 'darkstar'@'localhost';
+>> GRANT SUPER ON *.* TO 'darkstar'@'localhost';
+
+Populate the databases:
+>> for f in /var/lib/darkstar/sql/*.sql; do
+>>    mysql --user=darkstar --password=<password> dspdb < "$f" && echo "Imported: $f"
+>> done
+
+After this you need to setup the ZoneIP (localhost):
+>> mysql --user=darkstar -password=<password> dspdb
+>> UPDATE zone_settings SET zoneip = '16777343';
+
+Modify mysql_login and mysql_password to match yours in /var/lib/darkstar/{search,login,map}_darkstar.conf.
+
+If you want to backup your server, then backup your mariadb database and the /var/lib/darkstar directory.
+
+For more information see:
+https://wiki.dspt.info/index.php?title=Building_the_Server
+
+EOF
+}
+
+post_remove() {
+    getent passwd darkstar &>/dev/null && userdel darkstar >/dev/null
+    getent passwd darkstar &>/dev/null && groupdel darkstar >/dev/null
+    true
+}

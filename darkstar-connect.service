@@ -1,0 +1,14 @@
+[Unit]
+Description=Final Fantasy XI server emulator (connect)
+After=network.target nss-lookup.target
+
+[Service]
+User=darkstar
+Group=darkstar
+PIDFile=/run/darkstar-connect.pid
+WorkingDirectory=/var/lib/darkstar
+ExecStart=/usr/bin/dsconnect
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

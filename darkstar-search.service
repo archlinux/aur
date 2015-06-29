@@ -1,0 +1,14 @@
+[Unit]
+Description=Final Fantasy XI server emulator (search)
+After=network.target nss-lookup.target
+
+[Service]
+User=darkstar
+Group=darkstar
+PIDFile=/run/darkstar-search.pid
+WorkingDirectory=/var/lib/darkstar
+ExecStart=/usr/bin/dssearch
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
