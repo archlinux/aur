@@ -1,0 +1,16 @@
+pkgbase = perl-module-starter
+	pkgdesc = a simple starter kit for any module
+	pkgver = 1.62
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Module-Starter
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-path-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/Module-Starter-1.62.tar.gz
+	sha256sums = ff08a7b9690f54709b7c0bc8bbb6df26209e4c7a7e6194f0697c5bbeb71ee5c3
+
+pkgname = perl-module-starter
+
