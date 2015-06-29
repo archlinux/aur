@@ -5,7 +5,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-rt
-pkgver=1.7.45
+pkgver=1.7.46
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,7 +14,7 @@ source=(http://prdownloads.sourceforge.net/wine/wine-$_pkgbasever.tar.bz2{,.sign
         30-win32-aliases.conf
         wine-rt-101107.patch)
 
-sha256sums=('a30cef1ee4ceaee4b6c9c2ad96df3b8a8847278246e7727624db314c68adaa23'
+sha256sums=('9ab4046cc676de3054f9f2560e7d757b25324f72dd9a9cfed0d4aa48cc87350b'
             'SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             'cd8c48c9e5111b6acb47120da0272bc7afe3acc1f021443c81bb75d5d40ba4cc')
