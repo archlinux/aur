@@ -1,0 +1,19 @@
+pkgbase = thin-provisioning-tools-git
+	pkgdesc = A suite of tools for manipulating the metadata of the dm-thin device-mapper target - git checkout
+	pkgver = 0.4.0.r0.g39990e6
+	pkgrel = 1
+	url = https://github.com/jthornber/thin-provisioning-tools
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = git
+	depends = expat
+	depends = gcc-libs
+	provides = thin-provisioning-tools
+	conflicts = thin-provisioning-tools
+	source = git://github.com/jthornber/thin-provisioning-tools.git
+	sha256sums = SKIP
+
+pkgname = thin-provisioning-tools-git
+
