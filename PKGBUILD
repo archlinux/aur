@@ -2,7 +2,7 @@
 
 _plug=d2vsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=beta7.8.gc160a97
+pkgver=beta7.10.ge4a2d98
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${_plug}"
   ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-cxxflags="${CXXFLAGS}" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
