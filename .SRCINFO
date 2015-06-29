@@ -1,0 +1,15 @@
+pkgbase = pidgin-sound
+	pkgdesc = A plugin that adds sounds for some sound notifications to pidgin (e.g. 'Incoming Filetransfer' or 'Authentication requested')
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://pidgin-sound.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = pidgin
+	source = http://launchpad.net/pidgin-advanced-sound-notification/trunk/1.2.1/+download/pidgin-advanced-sound-notification-1.2.1.tar.gz
+	md5sums = 542de11129bcf893f1626185f780c16f
+
+pkgname = pidgin-sound
+
