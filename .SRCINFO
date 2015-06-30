@@ -1,0 +1,13 @@
+pkgbase = wifigw
+	pkgdesc = Login to VUT wifi network
+	pkgver = 20120909
+	pkgrel = 1
+	url = https://github.com/seberm/wifigw
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = bash
+	depends = curl
+
+pkgname = wifigw
+
