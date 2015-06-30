@@ -1,25 +1,29 @@
 # Maintainer: Morris Jobke <hey AT morrisjobke DOT de>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+
 pkgname=blackfire-agent
 pkgver=0.26.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Blackfire Profiler - Fire up your PHP Apps Performance'
 arch=('i686' 'x86_64')
 url='https://blackfire.io'
 license='custom'
 install='blackfire-agent.install'
-source=('blackfire-agent.service' 'blackfire-agent.install')
-source_i686=("http://packages.blackfire.io/binaries/blackfire-agent/$pkgver/blackfire-agent-linux_386")
-source_x86_64=("http://packages.blackfire.io/binaries/blackfire-agent/$pkgver/blackfire-agent-linux_amd64")
-md5sums=('048b509f1d16fb5c7321d6645a4dcf24'
-         '36fd826f62db627c45b8c99061ec179f')
-md5sums_i686=('1b9679bf4a0fb66383196f086f1c5c24')
-md5sums_x86_64=('3baf0b0f12faff124f41d5a8757e2426')
+depends=('glibc')
+
+source=('blackfire-agent.service')
+source_i686=("blackfire-agent-${pkgver}_i686::http://packages.blackfire.io/binaries/blackfire-agent/$pkgver/blackfire-agent-linux_386")
+source_x86_64=("blackfire-agent-${pkgver}_x86_64::http://packages.blackfire.io/binaries/blackfire-agent/$pkgver/blackfire-agent-linux_amd64")
+
+sha256sums=('aec343bca2f712d0dd22ccb43128d479e0280847e9573c2f37c183478f1ebcf6')
+sha256sums_i686=('115d7464d0477657c42cfa8bfb5a2b07dd2b3a35604afed3581eb9649da86ed7')
+sha256sums_x86_64=('1e84f6afb282cb3459a1056c5da0aa77f92d2d6dfd411b7d6a9caba90d5f351e')
 
 package(){
-  install -dm 755 ${pkgdir}/etc/blackfire
-  chown 487:487 ${pkgdir}/etc/blackfire
-  install -dm 755 ${pkgdir}/var/log/blackfire
+  install -dm 755 "$pkgdir"/etc/blackfire
+  chown 487:487 "$pkgdir"/etc/blackfire
+  install -dm 755 "$pkgdir"/var/log/blackfire
 
-  install -Dm 755 blackfire-agent.service ${pkgdir}/usr/lib/systemd/system/blackfire-agent.service
-  install -Dm 755 blackfire-agent-linux_* ${pkgdir}/usr/bin/blackfire-agent
+  install -Dm 755 blackfire-agent.service "$pkgdir"/usr/lib/systemd/system/blackfire-agent.service
+  install -Dm 755 blackfire-agent-${pkgver}_$CARCH "$pkgdir"/usr/bin/blackfire-agent
 }
