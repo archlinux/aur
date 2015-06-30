@@ -1,0 +1,12 @@
+[Unit]
+Description=SABnzbd binary newsreader
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c "python2 /usr/share/sabnzbd/SABnzbd.py -l0"
+User=sabnzbd
+Group=sabnzbd
+
+[Install]
+WantedBy=multi-user.target
