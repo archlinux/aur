@@ -1,0 +1,17 @@
+pkgbase = ppp-hook-pdnsd
+	pkgdesc = Hook for ppp to add domain name servers to pdnsd (dns caching proxy)
+	pkgver = 0.0.4
+	pkgrel = 2
+	url = http://www.eworm.de/
+	install = ppp-hook-pdnsd.install
+	arch = any
+	license = GPL
+	depends = pdnsd
+	depends = ppp
+	source = ip-up.sh
+	source = ip-down.sh
+	sha256sums = 24f2523e57a704db74e383b62e1574ac620ae568f5ae10f2facee80cc0728614
+	sha256sums = 55c808b63c4ba176237724705a51412fd2cc52d58dedfbea77921bea04586165
+
+pkgname = ppp-hook-pdnsd
+

@@ -1,0 +1,7 @@
+post_install() {
+	cat<<EOF
+ > Make shure your /etc/resolv.conf does not get overwritten!
+ > You can do so by setting USEPEERDNS=0 und /etc/ppp/ip-up
+ > before the scripts in /etc/ppp/ip-up.d/ are run.
+EOF
+}
