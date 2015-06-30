@@ -1,0 +1,34 @@
+pkgbase = gq-git
+	pkgdesc = interactive graphical LDAP browser - git version
+	pkgver = 0.r1143.g76e1dea
+	pkgrel = 5
+	url = http://sourceforge.net/projects/gqclient
+	install = gq.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = git
+	makedepends = gnome-common
+	depends = libxml2
+	depends = gtk2
+	depends = libgnome-keyring
+	depends = libglade
+	depends = libldap
+	depends = libgpg-error
+	depends = libgcrypt
+	depends = krb5
+	depends = gnome-icon-theme
+	provides = gq
+	conflicts = gq
+	source = gqclient::git://git.code.sf.net/p/gqclient/code
+	source = http://www.eworm.de/download/linux/gq-glib.patch
+	source = http://www.eworm.de/download/linux/gq-autogen.patch
+	source = http://www.eworm.de/download/linux/gq-pane.patch
+	sha256sums = SKIP
+	sha256sums = 3bdd9115c0717073decf1ee36bd784fe33e850224aca7c7f13a17463e45f0d53
+	sha256sums = 59e6958736951642dfa60d212df1db163adfe36343fae9a9eb4c076c57d8e758
+	sha256sums = 0b444deca182ed960d19e0200f6af8a675a25644cac80db1a228046c3d54fb5c
+
+pkgname = gq-git
+
