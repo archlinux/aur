@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=moonscript
-pkgver=0.3.1
+pkgver=0.3.2
 _luaver=5.3
 pkgrel=1
 pkgdesc='Dynamic scripting language that compiles into Lua'
