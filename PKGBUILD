@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rødseth <xyproto@archlinux.org>
 
 pkgname=aurtic
-pkgver=0.3
+pkgver=0.31
 pkgrel=1
 pkgdesc='Download and extract source packages from AUR'
 arch=('x86_64' 'i686')
