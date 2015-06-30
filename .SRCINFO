@@ -1,6 +1,6 @@
 pkgbase = owncloud-client-git
 	pkgdesc = ownCloud client based on mirall
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = http://owncloud.org/
 	install = owncloud-client-git.install

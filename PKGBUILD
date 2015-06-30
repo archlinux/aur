@@ -2,10 +2,10 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=1.8.1
+_version=1.8.3
 
 pkgname=owncloud-client-git
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="ownCloud client based on mirall"
 arch=('i686' 'x86_64')
