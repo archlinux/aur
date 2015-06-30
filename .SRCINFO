@@ -1,0 +1,29 @@
+pkgbase = beaker
+	pkgdesc = Common files for beaker and client tools for beaker job maintenance.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://fedorahosted.org/beaker
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = python2
+	makedepends = docutils
+	makedepends = python2-distribute
+	makedepends = python-kobo
+	makedepends = python2-krbv
+	makedepends = python2-lxml
+	makedepends = python2-sphinx
+	depends = python2
+	depends = krb5
+	depends = python2-distribute
+	depends = python-kobo
+	depends = python2-krbv
+	depends = python2-lxml
+	depends = python2-sphinx
+	source = http://beaker-project.org/releases/beaker-0.9.1.tar.gz
+	source = arch-python2.patch
+	sha1sums = cca0d7449551c75f070d298224c9a51a1692ce30
+	sha1sums = 2ebc72e1c325714133b69e55ca0d49c9f22b0a2f
+
+pkgname = beaker
+
