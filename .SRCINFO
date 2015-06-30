@@ -1,0 +1,18 @@
+pkgbase = zennode
+	pkgdesc = A node builder for Doom WAD files
+	pkgver = 1.2.1
+	pkgrel = 8
+	url = http://www.mrousseau.org/programs/ZenNode
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	source = http://www.mrousseau.org/programs/ZenNode/archives/zennode-1.2.1.zip
+	source = makefile.diff
+	source = compare.diff
+	md5sums = 36d5082b48ef1e4f638a38ba1034d058
+	md5sums = 6662c600aa37f1fbd3184f360726f960
+	md5sums = da184744ea4b386324abd3aef3c1cb8b
+
+pkgname = zennode
+

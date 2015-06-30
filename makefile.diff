@@ -1,0 +1,11 @@
+--- ZenNode-1.2.1/src/ZenNode/makefile.orig	2007-12-25 17:57:44.000000000 +0100
++++ ZenNode-1.2.1/src/ZenNode/makefile	2007-12-25 17:57:52.000000000 +0100
+@@ -1,7 +1,7 @@
+ # ZenNode makefile for Linux
+ 
+ CC       = g++
+-CFLAGS  += -g -O -fstrength-reduce -fno-rtti
++CFLAGS  += -fstrength-reduce -fno-rtti
+ CFLAGS  += -fomit-frame-pointer -foptimize-sibling-calls
+ #CFLAGS  += -fbranch-probabilities
+ #CFLAGS  += -fprofile-arcs
