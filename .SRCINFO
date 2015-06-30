@@ -1,0 +1,19 @@
+pkgbase = openbsc
+	pkgdesc = Free software implementations for the GSM/G3PP protocol stacks
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = http://openbsc.osmocom.org
+	arch = any
+	license = GPL
+	depends = libdbi
+	depends = libdbi-drivers
+	depends = ortp
+	depends = libosmocore
+	depends = libosmo-abis
+	depends = libosmo-netif
+	optdepends = libosmo-sccp: for building BSC NAT
+	source = git://git.osmocom.org/openbsc.git#tag=0.14.0
+	sha256sums = SKIP
+
+pkgname = openbsc
+
