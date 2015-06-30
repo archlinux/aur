@@ -1,12 +1,12 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vaguedenoiser
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.4.gce7f18d
+pkgver=r2.1.g49ebde1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171723"
+url='http://forum.doom9.org/showthread.php?t=171723'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
