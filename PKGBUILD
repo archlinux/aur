@@ -3,7 +3,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.00
+pkgver=3.05
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -26,12 +26,12 @@ instdir=/opt/microchip/mplabx
 installer_tar=MPLABX-v$pkgver-linux-installer.tar
 installer_sh=MPLABX-v$pkgver-linux-installer.sh
 installer=MPLABX-v$pkgver-linux-installer.run
-installer2=MPLABCOMM-linux-installer.run
+installer2=MPLABCOMM-v$pkgver-linux-installer.run
 source=(http://ww1.microchip.com/downloads/en/DeviceDoc/$installer_tar
         LICENSE)
 [ $CARCH = x86_64 ] && source+=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
-md5sums=('7fd1e76f6355bd7627895f34251aa9ac'
+md5sums=('cd9f5108ef6f4fdfbfabd89007748012'
          'a34a85b2600a26f1c558bcd14c2444bd')
 [ $CARCH = x86_64 ] && md5sums+=('92b9a1dc8fa0534048790731a7bf2fc5')
 
