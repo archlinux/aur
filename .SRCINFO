@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-deblock-git
 	pkgdesc = Plugin for Vapoursynth: deblock (GIT version)
-	pkgver = r3.10.g0961114
+	pkgver = r4.1.gee7c2dd
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=170975
 	arch = i686
