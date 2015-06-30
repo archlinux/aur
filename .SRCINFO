@@ -1,0 +1,16 @@
+pkgbase = superderpy-git
+	pkgdesc = A My Little Pony themed arcade game with famous Derpy Hooves as main hero. Development version.
+	pkgver = v0.1a.70.g30bb72b
+	pkgrel = 1
+	url = http://superderpy.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = cmake
+	depends = allegro
+	conflicts = superderpy
+	source = git://github.com/dos1/SuperDerpy
+	sha256sums = SKIP
+
+pkgname = superderpy-git
+
