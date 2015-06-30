@@ -1,0 +1,20 @@
+pkgbase = sockso
+	pkgdesc = A free open source Personal Music Server for everyone.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://sockso.pu-gh.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = http://sockso.googlecode.com/files/sockso-1.5.3.zip
+	source = sockso
+	source = sockso.desktop
+	source = sockso.png
+	md5sums = 8ec802be2d8cfcbb107b374f7eb23ba3
+	md5sums = c41319ca107174cbb8f1fa4315570123
+	md5sums = de125a1492ca8f3a6ce5334a81d33229
+	md5sums = 16da5e24b73441a98fdd409adb656f43
+
+pkgname = sockso
+

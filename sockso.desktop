@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=sockso
+Comment=Personal Music Server
+Exec=sockso
+Icon=/usr/share/icons/sockso.png
+Terminal=false
+Type=Application
+Categories=Network;
