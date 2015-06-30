@@ -1,0 +1,19 @@
+pkgbase = yate
+	pkgdesc = Next-generation telephony engine
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = http://yate.null.ro
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = speex
+	depends = gsm
+	depends = postgresql-libs
+	depends = libmysqlclient
+	depends = alsa-lib
+	options = !makeflags
+	source = http://yate.null.ro/tarballs/yate5/yate-5.5.0-1.tar.gz
+	sha256sums = a9fc472df082e92d578efa3de54689e10ee1a24fdd67a9cc928db7c2e1568676
+
+pkgname = yate
+
