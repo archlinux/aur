@@ -1,0 +1,14 @@
+pkgbase = libosmo-sccp
+	pkgdesc = Osmocom library for SCCP
+	pkgver = 0.0.6.3
+	pkgrel = 1
+	url = http://openbsc.osmocom.org
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = libosmocore
+	source = git://git.osmocom.org/libosmo-sccp.git#tag=0.0.6.3
+	sha256sums = SKIP
+
+pkgname = libosmo-sccp
+
