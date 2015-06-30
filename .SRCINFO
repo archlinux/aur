@@ -1,0 +1,20 @@
+pkgbase = frequensea-git
+	pkgdesc = Visualizing the frequency spectrum
+	pkgver = 3707384
+	pkgrel = 1
+	url = https://github.com/fdb/frequensea/
+	arch = any
+	license = MIT
+	depends = rtl-sdr
+	depends = glew
+	depends = glfw
+	depends = lua
+	depends = fftw
+	depends = libpng
+	depends = openal
+	provides = frequensea
+	source = git+https://github.com/fdb/frequensea/
+	sha1sums = SKIP
+
+pkgname = frequensea-git
+
