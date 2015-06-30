@@ -1,0 +1,10 @@
+--- Makefile.orig	2008-07-19 20:48:29.000000000 +0200
++++ Makefile	2008-07-19 20:48:33.000000000 +0200
+@@ -1,6 +1,6 @@
+ # Linux Makefile for project cleanwad
+ SRCDIR=..
+-CFLAGS=-D__LINUX__ -g3
++CFLAGS+=-D__LINUX__
+ CC=cc
+ OBJS=\
+ 	wadopt.o \

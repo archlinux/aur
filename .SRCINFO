@@ -1,0 +1,18 @@
+pkgbase = cleanwad
+	pkgdesc = An utility to clean Doom/Heretic/Hexen/Strife WAD files and sort directory entries by type
+	pkgver = 1.54
+	pkgrel = 3
+	url = http://www.martinhowe.net/gaming/downloads.php
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = unzip
+	source = http://www.martinhowe.net/gaming/public/cleanwad.zip
+	source = LICENSE
+	source = Makefile.diff
+	md5sums = a184a41c009c6f0c0ed16bbbba031069
+	md5sums = 50c924b20833a66b45a9fbf01049473d
+	md5sums = 51c57127c9fb8437a79ce3e500199daa
+
+pkgname = cleanwad
+
