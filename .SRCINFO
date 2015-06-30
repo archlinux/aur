@@ -1,0 +1,16 @@
+pkgbase = titan-git
+	pkgdesc = TTCN3 test automation platform
+	pkgver = v5.3.pl0.33.g92265d0
+	pkgrel = 1
+	url = https://projects.eclipse.org/projects/tools.titan
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = eclipse
+	depends = openssl
+	depends = jdk7-openjdk
+	source = git+https://github.com/eclipse/titan.core
+	md5sums = SKIP
+
+pkgname = titan-git
+
