@@ -1,0 +1,19 @@
+pkgbase = zbar-desktop
+	pkgdesc = Scan QR-Code from context menu
+	pkgver = 0.0.5
+	pkgrel = 2
+	url = http://www.eworm.de/
+	install = zbar-desktop.install
+	arch = any
+	license = GPL
+	depends = zenity
+	depends = zbar
+	source = zbarscan
+	source = zbarscan.desktop
+	source = zbarscan.png
+	sha256sums = 66496965e8e986fe1ce36049128806bce9bf00d38507f62587a9fb1f5189206f
+	sha256sums = 58ab07e2e0f40b67fd6a9d05dacc7077d2164ab3cfecaa3f9506c47b01cc9234
+	sha256sums = eb35679d7c4ada4dda4e34ecb176a5717092b850e5ff3bb874997b7d0fc6de33
+
+pkgname = zbar-desktop
+
