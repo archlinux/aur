@@ -1,0 +1,35 @@
+pkgbase = xastir-cvs
+	pkgdesc = X Amateur Station Tracking and Information Reporting
+	pkgver = 20130206
+	pkgrel = 1
+	url = http://www.xastir.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cvs
+	makedepends = autoconf
+	makedepends = automake
+	depends = gv
+	depends = gpsman
+	depends = gpsmanshp
+	depends = libpng
+	depends = libxml2
+	depends = lesstif
+	depends = shapelib
+	depends = curl
+	depends = libax25
+	depends = gdal
+	depends = imagemagick
+	depends = pcre
+	optdepends = festival: sound support
+	source = xastir-cvs.desktop
+	source = xastir-cvs.png
+	source = README
+	source = http://downloads.sourceforge.net/xastir/xastir-sounds.tgz
+	md5sums = 68b7ac2954b975a36eba1d89d61d8da3
+	md5sums = 315f926326c3aef27ce7c60d944737f1
+	md5sums = 720136bf7086091bde488a5aa1df9cfd
+	md5sums = 4201e7079cb5b2bd8a7c34dccfa3f2bb
+
+pkgname = xastir-cvs
+

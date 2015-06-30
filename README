@@ -1,0 +1,53 @@
+February 2011;  Mike WB2FKO   (mph@sportscliche.com)
+
+This xastir-cvs PKGBUILD installs the most up-to-date (often called`bleeding edge' ) version of xastir from the CVS repositories on sourceforge.net.  Arch packaging standards require that the installation be placed in /usr/share/xastir, not /usr/local/share/xastir as stated in the xastir documentation.  There will also be a .xastir folder in the home directory.
+
+Sound
+======
+To enable the speech feature, you must have the festival package installed (you will also need a speaker package such as festival-en or festival-english) before building xastir.   Festival must be running before xastir is started for speech to function properly.  I was able to start it on the command line with
+
+$festival --server
+
+or you can write a simple script to automate the sequential starting process.  There may be problems if other programs such as a media player are accessing sound simultaneously.  The PKGBUILD automatically downloads an 850 kB bundle of .wav files located at:
+
+http://downloads.sourceforge.net/xastir/xastir-sounds.tgz
+
+and places them here:
+
+/usr/share/xastir/sounds/
+
+These are audio alarm recordings of a North American English speaker dating from 2003.  The audio play command `play' in the configure menu may not work; try `aplay' instead. 
+
+Patching xastir 2.0.0 for the ABS
+===========================
+As of October 2010, the most current `stable' release was xastir 2.0.0.  This was an important release because the developers migrated from defunct Tiger Maps to Open Street Maps (OSM).  xastir-2.0.0 can be built from source using the usual process of 
+
+./configure
+make
+sudo make install
+
+It is not, however, compatible with the Arch Build System (ABS) unless the makefile is patched.  A patch is needed to fix errors in the destination directories.  Tom Russo provided a patch to accomplish this:
+
+-- Makefile.am	8 Sep 2010 18:13:26 -0000	1.57
++++ Makefile.am	9 Nov 2010 01:48:13 -0000	1.58
+@@ -72,10 +72,10 @@
+ # documentation is FHS compliant.
+ 
+ install-exec-hook:
+-	-rm -rf ${pkgdatadir}/doc
++	-rm -rf $(DESTDIR)${pkgdatadir}/doc
+ 
+ install-data-hook:
+-	cd $(mapdir) && \
++	cd $(DESTDIR)$(mapdir) && \
+ 	rm -f CC_OpenStreetMap.png && \
+ 	$(LN_S) CC_OpenStreetMap_logo.png CC_OpenStreetMap.png
+
+To use the patch, create an empty file (named fixdestdir.patch here), paste in the above text, and place it somewhere in your home directory.  The patch is called with a line that is added to a standard PKGBUILD at the top of the build command:
+
+patch < $path-to-patch-file/fixdestdir.patch
+
+Note that this patch is NOT necessary if xastir is built from CVS.  The developers fixed the problem in a subsequent CVS release. 
+
+
+
