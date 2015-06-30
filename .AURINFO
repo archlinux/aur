@@ -1,0 +1,23 @@
+pkgbase = noisemodeler-git
+	pkgdesc = An in-game procedural terrain and content generation framework
+	pkgver = 0.1.17.g32982da
+	pkgrel = 1
+	url = http://www.noisemodeler.org
+	install = noisemodeler.install
+	arch = i686
+	arch = x86_64
+	license = zlib
+	license = LGPL
+	makedepends = git
+	makedepends = boost
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	depends = mesa
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	source = noisemodeler-git::git://github.com/noisemodeler/noisemodeler.git
+
+pkgname = noisemodeler-git
+
