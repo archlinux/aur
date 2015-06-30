@@ -10,7 +10,9 @@ pkgbase = titan-git
 	depends = openssl
 	depends = jdk7-openjdk
 	source = git+https://github.com/eclipse/titan.core
+	source = titan.profile
 	md5sums = SKIP
+	md5sums = ecccd5d48359f5f0bdd81c8cc036e806
 
 pkgname = titan-git
 

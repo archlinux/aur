@@ -9,8 +9,10 @@ url="https://projects.eclipse.org/projects/tools.titan"
 license=('eclipse')
 groups=('devel')
 depends=('openssl' 'jdk7-openjdk')
-source=(git+https://github.com/eclipse/titan.core)
-md5sums=('SKIP')
+source=(git+https://github.com/eclipse/titan.core
+        titan.profile)
+md5sums=('SKIP'
+         'ecccd5d48359f5f0bdd81c8cc036e806')
 
 pkgver() {
     cd $_pkgname
@@ -34,4 +36,7 @@ package() {
         HELPDIR=$pkgdir/usr/share/doc/titan/html \
         DEMODIR=$pkgdir/usr/share/doc/titan/demo \
         install
+
+    install -D $srcdir/titan.profile \
+        $pkgdir/etc/profile.d/titan.sh
 }
