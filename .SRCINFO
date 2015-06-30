@@ -1,0 +1,22 @@
+pkgbase = firestr-git
+	pkgdesc = The grass computing platform
+	pkgver = 7f47d2b
+	pkgrel = 1
+	url = https://github.com/mempko/firestr
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = qt5-base
+	makedepends = qt5-multimedia
+	makedepends = boost
+	makedepends = botan-1.10
+	makedepends = opus
+	makedepends = snappy
+	makedepends = openssl
+	makedepends = gmp
+	provides = firestr
+	source = firestr-git::git+https://github.com/mempko/firestr
+	sha1sums = SKIP
+
+pkgname = firestr-git
+
