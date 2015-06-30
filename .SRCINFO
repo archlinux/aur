@@ -1,0 +1,20 @@
+pkgbase = giggle-git
+	pkgdesc = A graphical frontend for the git directory tracker - git checkout
+	pkgver = 0.5.r289.g44490f7
+	pkgrel = 1
+	url = http://live.gnome.org/giggle
+	install = giggle.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = gtksourceview3
+	depends = vte3
+	provides = giggle
+	conflicts = giggle
+	options = !libtool
+	source = git://git.gnome.org/giggle
+	sha256sums = SKIP
+
+pkgname = giggle-git
+
