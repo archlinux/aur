@@ -1,0 +1,15 @@
+pkgbase = perl-supergenpass
+	pkgdesc = Perl implementation of Super Gen Pass script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.jrsaathoff.com/supergenpass.html
+	arch = any
+	license = custom
+	depends = perl
+	provides = supergenpass
+	conflicts = bash-supergenpass
+	source = http://www.jrsaathoff.com/files/sgp.txt
+	md5sums = d466c9963cbe624fd19acebfd962fcd0
+
+pkgname = perl-supergenpass
+
