@@ -1,0 +1,16 @@
+pkgbase = openhab-addons
+	pkgdesc = openHAB automation addons
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://www.openhab.org/
+	arch = any
+	license = EPL
+	makedepends = unzip
+	depends = java-runtime>=7
+	depends = openhab-runtime=1.7.0
+	noextract = distribution-1.7.0-addons.zip
+	source = https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-addons.zip
+	md5sums = e2340abbb14fc6c22e0d884a431dc5de
+
+pkgname = openhab-addons
+
