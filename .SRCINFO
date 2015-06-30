@@ -1,0 +1,15 @@
+pkgbase = vix-git
+	pkgdesc = Visual Interface heXadecimal dump
+	pkgver = de9bdcb
+	pkgrel = 1
+	url = http://actinid.org/vix/
+	arch = any
+	license = unknown
+	makedepends = libtool
+	makedepends = autoconf
+	depends = sdl
+	source = git+https://github.com/BatchDrake/vix
+	sha1sums = SKIP
+
+pkgname = vix-git
+
