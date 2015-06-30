@@ -1,0 +1,14 @@
+pkgbase = gsieve
+	pkgdesc = Sieve script editor for Gnome, easy to use.
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://gsieve.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnome-python
+	source = http://downloads.sourceforge.net/gsieve/gsieve-0.2.tar.gz
+	sha256sums = ac0fa9406ef1bc7c7f4421ec38a87fb4566388da5bdc50163b3b0b401b197f81
+
+pkgname = gsieve
+
