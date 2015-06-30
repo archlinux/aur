@@ -1,0 +1,17 @@
+pkgbase = sl-patched
+	pkgdesc = SL (Steam Locomotive) runs across your terminal when you type "sl" as you meant to type "ls".; patched long version
+	pkgver = 3.03
+	pkgrel = 5
+	url = http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = ncurses
+	conflicts = sl
+	source = http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/sl/sl.tar
+	source = http://www.izumix.org.uk/sl/sl5-1.patch
+	md5sums = cc06b159f78f86bfd2d4e0e16330fbae
+	md5sums = 97a346188edb4d048021a1e1699fee77
+
+pkgname = sl-patched
+
