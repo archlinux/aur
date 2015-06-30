@@ -2,7 +2,7 @@
 pkgname=whatsapp-desktop
 _pkgname=WhatsApp-Desktop
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
 arch=('i686' 'x86_64')
 url="http://whatsapp-desktop.com/"
@@ -22,19 +22,19 @@ sha256sums=('d74035490b04f3cd898362d555c4ac547fc2697b1c34b73e827faf1b54ca5ea8'
 
 	    
 prepare() {
-cd $srcdir/$_pkgname-$pkgver
+cd "${srcdir}/${_pkgname}-${pkgver}"
 npm install gulp
 npm install
 
 }
 
 build() {
-  cd $srcdir/$_pkgname-$pkgver
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   node_modules/.bin/gulp build:$_platform
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   _bpath="${srcdir}/${_pkgname}-${pkgver}/build/WhatsApp/${_platform}"
   
   #License
@@ -43,8 +43,11 @@ package() {
 		"${pkgdir}/usr/share/licenses/${pkgname}/"
 
   #Program
-  install -d $pkgdir/usr/lib/$pkgname
-  install -Dm755 $_bpath/{nw.pak,libffmpegsumo.so,WhatsApp,icudtl.dat} $pkgdir/usr/lib/$pkgname
+  install -d "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm755 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm755 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm755 "${_bpath}/WhatsApp" "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm755 "${_bpath}/icudtl.dat" "${pkgdir}/usr/lib/${pkgname}"
   install -d $pkgdir/usr/bin
   ln -s "/usr/lib/${pkgname}/WhatsApp" "${pkgdir}/usr/bin/WhatsApp"
   
@@ -53,7 +56,7 @@ package() {
 		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   #Icon
-  install -Dm644 $srcdir/$_pkgname-$pkgver/assets-linux/icons/256/whatsappfordesktop.png \
-		$pkgdir/usr/share/pixmaps/$pkgname.png
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets-linux/icons/256/whatsappfordesktop.png" \
+		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   
 }
