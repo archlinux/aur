@@ -1,0 +1,17 @@
+pkgbase = lwan-git
+	pkgdesc = Experimental, scalable, high performance HTTP server
+	pkgver = c048585
+	pkgrel = 1
+	url = https://lwan.ws/
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = jemalloc
+	depends = luajit
+	depends = libmariadbclient
+	provides = lwan
+	source = git+https://github.com/lpereira/lwan/
+	sha1sums = SKIP
+
+pkgname = lwan-git
+
