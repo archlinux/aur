@@ -1,0 +1,15 @@
+pkgbase = memtest86+-pxe-git
+	pkgdesc = An advanced memory diagnostic tool as a PXE NBP - git checkout
+	pkgver = 0.r22.g96cc317
+	pkgrel = 1
+	url = http://www.ipxe.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = memtest86+-pxe
+	conflicts = memtest86+-pxe
+	source = memtest86-pxe::git://git.ipxe.org/people/mcb30/memtest.git#branch=pxe501
+	sha256sums = SKIP
+
+pkgname = memtest86+-pxe-git
+
