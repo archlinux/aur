@@ -1,0 +1,190 @@
+From: Russ Allbery <rra@stanford.edu>
+Subject: [PATCH] Fixes and improvements to mkchroot.sh
+
+Debian wants libnss_compat* in addition to libnss_files* for UID lookups
+to work properly, and doesn't have a libnss1_files*.  With multiarch,
+these libraries have also been moved into a subdirectory of /lib.
+
+Create the /dev/null device in the chroot, needed by sftp-server.  Create
+the /dev/log device in the chroot, for one less step.
+
+Update the code to copy over libraries to be able to parse the new output
+from ldd.
+
+Update file paths for Debian.
+
+Add better error handling.
+
+Warn that /etc/passwd is being copied into the chroot jail and that the
+user may wish to edit out some users and remove any sensitive
+information.  (Debian Bug#366655)
+
+Thanks to proctor mcduff for his contributions.
+
+Signed-off-by: Russ Allbery <rra@stanford.edu>
+
+---
+ mkchroot.sh |  105 +++++++++++++++++++++++++++++++++++++++++++++-------------
+ 1 files changed, 81 insertions(+), 24 deletions(-)
+
+diff --git a/mkchroot.sh b/mkchroot.sh
+index 9e17d5d..25f3a7d 100755
+--- a/mkchroot.sh
++++ b/mkchroot.sh
+@@ -1,13 +1,13 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ #####################################################################
+ #####################################################################
+ ##
+ ## mkchroot.sh - set up a chroot jail.
+ ##
+-## This script is written to work for Red Hat 8/9 systems, but may work on
+-## other systems.  Or, it may not...  In fact, it may not work at all.  Use at
+-## your own risk.  :)
++## This script is written to work for Red Hat 8/9 systems and adapted to work
++## on Debian systems, but may work on other systems.  Or, it may not...  In
++## fact, it may not work at all.  Use at your own risk.  :)
+ ##
+ 
+ fail() {
+@@ -96,9 +96,9 @@ fi
+ # copy SSH files
+ 
+ scp_path="/usr/bin/scp"
+-sftp_server_path="/usr/libexec/openssh/sftp-server"
++sftp_server_path="/usr/lib/openssh/sftp-server"
+ rssh_path="/usr/bin/rssh"
+-chroot_helper_path="/usr/libexec/rssh_chroot_helper"
++chroot_helper_path="/usr/lib/rssh/rssh_chroot_helper"
+ 
+ for jail_path in `dirname "$jail_dir$scp_path"` `dirname "$jail_dir$sftp_server_path"` `dirname "$jail_dir$chroot_helper_path"`; do
+ 
+@@ -125,19 +125,56 @@ cp "$chroot_helper_path" "$jail_dir$chroot_helper_path" || \
+ #
+ # identify and copy libraries needed in the jail
+ #
++# Sample ldd output:
++#
++#   linux-gate.so.1 =>  (0xffffe000)
++#   libresolv.so.2 => /lib/i686/cmov/libresolv.so.2 (0xb7ef2000)
++#   libcrypto.so.0.9.8 => /usr/lib/i686/cmov/libcrypto.so.0.9.8 (0xb7da8000)
++#   libutil.so.1 => /lib/i686/cmov/libutil.so.1 (0xb7da3000)
++#   libz.so.1 => /usr/lib/libz.so.1 (0xb7d8e000)
++#   libnsl.so.1 => /lib/i686/cmov/libnsl.so.1 (0xb7d76000)
++#   libcrypt.so.1 => /lib/i686/cmov/libcrypt.so.1 (0xb7d44000)
++#   libgssapi_krb5.so.2 => /usr/lib/libgssapi_krb5.so.2 (0xb7d1b000)
++#   libkrb5.so.3 => /usr/lib/libkrb5.so.3 (0xb7c8d000)
++#   libk5crypto.so.3 => /usr/lib/libk5crypto.so.3 (0xb7c69000)
++#   libcom_err.so.2 => /lib/libcom_err.so.2 (0xb7c66000)
++#   libc.so.6 => /lib/i686/cmov/libc.so.6 (0xb7b19000)
++#   libdl.so.2 => /lib/i686/cmov/libdl.so.2 (0xb7b15000)
++#   libkrb5support.so.0 => /usr/lib/libkrb5support.so.0 (0xb7b0d000)
++#   libkeyutils.so.1 => /lib/libkeyutils.so.1 (0xb7b09000)
++#   /lib/ld-linux.so.2 (0xb7f13000)
++#
++# either the first or the third column may contain a path
++#
+ 
+-for prog in $scp_path $sftp_server_path $rssh_path $chroot_helper_path; do
++for prog in $scp_path $sftp_server_path $rssh_path $chroot_helper_path \
++            /lib/libnss_compat* /lib/libnss_files* /lib/*/libnss_comat* \
++            /lib/*/libnss_files*; do
++	if [ ! -f "$prog" ] ; then
++		continue
++	fi
+ 	echo "Copying libraries for $prog."
+-	libs=`ldd $prog | tr -s ' ' | cut -d' ' -f3`
++	libs=`ldd $prog | awk '$1 ~ /^\// {print $1} $3 ~ /^\// {print $3}'`
+ 	for lib in $libs; do
+-		mkdir -p "$jail_dir$(dirname $lib)"
++		mkdir -p "$jail_dir$(dirname $lib)" || \
++			fail "Error creating $(dirname $lib). Exiting" 6
+ 		echo -e "\t$lib"
+-		cp "$lib" "$jail_dir$lib"
++		cp "$lib" "$jail_dir$lib" || \
++			fail "Error copying $lib. Exiting" 6
+ 	done
+ done
+ 
++# On Debian with multiarch, the libnss files are in /lib/<triplet>, where
++# <triplet> is the relevant architecture triplet.  Just copy everything
++# that's installed, since we're not sure which ones we'll need.
+ echo "copying name service resolution libraries..."
+-tar -cf - /lib/libnss_files* /lib/libnss1_files* | tar -C "$jail_dir" -xvf - |sed 's/^/\t/'
++if [ -n "$(find /lib -maxdepth 1 -name 'libnss*_' -print -quit)" ] ; then
++    tar -cf - /lib/libnss_compat* /lib/libnss*_files* \
++        | tar -C "$jail_dir" -xvf - | sed 's/^/\t/'
++else
++    tar -cf - /lib/*/libnss_compat* /lib/*/libnss*_files* \
++        | tar -C "$jail_dir" -xvf - | sed 's/^/\t/'
++fi
+ 
+ #####################################################################
+ #
+@@ -145,29 +182,49 @@ tar -cf - /lib/libnss_files* /lib/libnss1_files* | tar -C "$jail_dir" -xvf - |se
+ #
+ 
+ echo "Setting up /etc in the chroot jail"
+-mkdir -p "$jail_dir/etc"
+-cp /etc/nsswitch.conf "$jail_dir/etc/"
+-cp /etc/passwd "$jail_dir/etc/"
+-cp /etc/ld.* "$jail_dir/etc/"
+-
+-echo -e "Chroot jail configuration completed."
+-echo -e "\nNOTE: if you are not using the passwd file for authentication,"
+-echo -e "you may need to copy some of the /lib/libnss_* files into the jail.\n"
+-
++mkdir -p "$jail_dir/etc" || fail "Error creating /etc. Exiting" 7
++cp /etc/nsswitch.conf "$jail_dir/etc/" || \
++	fail "Error copying /etc/nsswitch.conf. Exiting" 7
++cp /etc/passwd "$jail_dir/etc/" || \
++	fail "Error copying /etc/passwd. Exiting" 7
++cp -r /etc/ld.* "$jail_dir/etc/" || \
++	fail "Error copying /etc/ld.*. Exiting" 7
++echo -e "\nWARNING: Copying /etc/passwd into the chroot jail.  You may wish"
++echo -e "to edit out unnecessary users and remove any sensitive information"
++echo -e "from it."
+ 
+ #####################################################################
+ #
+-# set up /dev/log
++# set up /dev
+ #
+ 
+ mkdir -p "$jail_dir/dev"
++if [ `whoami` = "root" ]; then
++	cp -a /dev/log "$jail_dir/dev" || \
++		fail "Error creating /dev/log. Exiting" 8
++	cp -a /dev/null "$jail_dir/dev" || \
++		fail "Error creating /dev/null. Exiting" 8
++	cp -a /dev/zero "$jail_dir/dev" || \
++		fail "Error creating /dev/zero. Exiting" 8
++else
++	echo -e "NOT creating /dev/null and /dev/log in the chroot jail. \c"
++	echo -e "You are not root.\n"
++fi
++
++echo -e "Chroot jail configuration completed.\n"
++
++echo -e "NOTE: if you are not using the passwd file for authentication,"
++echo -e "you may need to copy some of the /lib/libnss_* files into the jail.\n"
++
++echo -e "NOTE: if you are using any programs other than scp and sftp, you will"
++echo -e "need to copy the server binaries and any libraries they depend on"
++echo -e "into the chroot manually.  Use ldd on the binary to find the needed"
++echo -e "libraries.\n"
+ 
+ echo -e "NOTE: you must MANUALLY edit your syslog rc script to start syslogd"
+ echo -e "with appropriate options to log to $jail_dir/dev/log.  In most cases,"
+ echo -e "you will need to start syslog as:\n"
+-echo -e "   /sbin/syslogd -a $jail_dir/dev/log\n"
++echo -e "   /sbin/syslogd -a $jail_dir/dev/log\n\n"
+ 
+ echo -e "NOTE: we make no guarantee that ANY of this will work for you... \c"
+ echo -e "if it\ndoesn't, you're on your own.  Sorry!\n"
+-
+-
+-- 
+tg: (05d6ee0..) fixes/mkchroot (depends on: upstream)

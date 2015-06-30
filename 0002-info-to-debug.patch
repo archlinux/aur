@@ -1,0 +1,108 @@
+From: Russ Allbery <rra@stanford.edu>
+Subject: [PATCH] Lower priority of syslog messages to debug
+
+Lower priority of all of the routine syslog messages from info to debug
+to cut down on log noise.
+
+Signed-off-by: Russ Allbery <rra@stanford.edu>
+
+---
+ rsshconf.c |   20 ++++++++++----------
+ 1 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/rsshconf.c b/rsshconf.c
+index 3dcb2cf..a69f556 100644
+--- a/rsshconf.c
++++ b/rsshconf.c
+@@ -438,7 +438,7 @@ int process_allow_scp( ShellOptions_t *opts,
+ 		return FALSE;
+ 	}
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("allowing scp to all users");
+ 	}
+ 	opts->shell_flags |= RSSH_ALLOW_SCP;
+@@ -465,7 +465,7 @@ int process_allow_sftp( ShellOptions_t *opts,
+ 		return FALSE;
+ 	}
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("allowing sftp to all users");
+ 	}
+ 	opts->shell_flags |= RSSH_ALLOW_SFTP;
+@@ -493,7 +493,7 @@ int process_allow_cvs( ShellOptions_t *opts,
+ 		return FALSE;
+ 	}
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("allowing cvs to all users");
+ 	}
+ 	opts->shell_flags |= RSSH_ALLOW_CVS;
+@@ -520,7 +520,7 @@ int process_allow_rdist( ShellOptions_t *opts,
+ 				lineno);
+ 		return FALSE;
+ 	}
+-	log_set_priority(LOG_INFO);
++	log_set_priority(LOG_DEBUG);
+ 	if (log){
+ 		log_msg("allowing rdist to all users");
+ 		opts->shell_flags |= RSSH_ALLOW_RDIST;
+@@ -549,7 +549,7 @@ int process_allow_rsync( ShellOptions_t *opts,
+ 		return FALSE;
+ 	}
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("allowing rsync to all users");
+ 	}
+ 	opts->shell_flags |= RSSH_ALLOW_RSYNC;
+@@ -585,7 +585,7 @@ int process_chroot_path( ShellOptions_t *opts,
+ 	/* get rid of any old value for chroot path, assign new one */
+ 	if ( opts->chroot_path ) free(opts->chroot_path);
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("chrooting all users to %s", temp);
+ 	}
+ 	/* we must not free temp, since opts points to it */
+@@ -783,7 +783,7 @@ int process_log_facility( ShellOptions_t *opts,
+ 		return FALSE;
+ 	}
+ 	if ( facname ){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		if (log) log_msg("setting log facility to %s", facname);
+ 		log_set_facility(fac);
+ 		return TRUE;
+@@ -828,7 +828,7 @@ int process_umask( ShellOptions_t *opts,
+ 		return FALSE;
+ 	}
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("setting umask to %#o", mask);
+ 	}
+ 	opts->rssh_umask = mask;
+@@ -889,7 +889,7 @@ int process_user( ShellOptions_t *opts,
+ 	 */
+ 	if ( (strcmp(user, username)) ) return TRUE;
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("line %d: configuring user %s", lineno, user);
+ 	}
+ 	if ( !(len = eat_colon(temp + pos)) ){
+@@ -970,7 +970,7 @@ cleanup:
+ 		tmpmask = 077;
+ 	} 
+ 	if (log){
+-		log_set_priority(LOG_INFO);
++		log_set_priority(LOG_DEBUG);
+ 		log_msg("setting %s's umask to %#o", user, tmpmask);
+ 	}
+ 	opts->rssh_umask = tmpmask;
+-- 
+tg: (05d6ee0..) fixes/info-to-debug (depends on: upstream)

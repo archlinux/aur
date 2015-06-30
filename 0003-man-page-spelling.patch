@@ -1,0 +1,26 @@
+From: Russ Allbery <rra@debian.org>
+Subject: [PATCH] Fix spelling errors in manual pages
+
+Fix spelling errors such as seperate for separate.
+
+Signed-off-by: Russ Allbery <rra@debian.org>
+
+---
+ rssh.1 |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/rssh.1 b/rssh.1
+index caa2636..8a6898e 100644
+--- a/rssh.1
++++ b/rssh.1
+@@ -148,7 +148,7 @@ programs other than what are absolutely necessary to provide the service you
+ are trying to provide.  This prevents them from running standard system
+ commands.
+ .P
+-Then, make sure the user's files inside the jail are on a seperate filesystem
++Then, make sure the user's files inside the jail are on a separate filesystem
+ from your system's executables.  If possible in your environment, make sure
+ you mount this filesystem using the
+ .IR noexec " and " nosuid
+-- 
+tg: (05d6ee0..) fixes/man-page-spelling (depends on: upstream)

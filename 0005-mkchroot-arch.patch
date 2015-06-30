@@ -1,0 +1,29 @@
+--- a/mkchroot.sh	2012-08-06 08:00:53.806524961 +0200
++++ b/mkchroot.sh	2012-08-03 11:00:39.000000000 +0200
+@@ -96,7 +96,7 @@ fi
+ # copy SSH files
+ 
+ scp_path="/usr/bin/scp"
+-sftp_server_path="/usr/lib/openssh/sftp-server"
++sftp_server_path="/usr/lib/ssh/sftp-server"
+ rssh_path="/usr/bin/rssh"
+ chroot_helper_path="/usr/lib/rssh/rssh_chroot_helper"
+ 
+@@ -159,7 +159,7 @@ for prog in $scp_path $sftp_server_path
+ 		mkdir -p "$jail_dir$(dirname $lib)" || \
+ 			fail "Error creating $(dirname $lib). Exiting" 6
+ 		echo -e "\t$lib"
+-		cp "$lib" "$jail_dir$lib" || \
++		cp -f "$lib" "$jail_dir$lib" || \
+ 			fail "Error copying $lib. Exiting" 6
+ 	done
+ done
+@@ -168,7 +168,7 @@ done
+ # <triplet> is the relevant architecture triplet.  Just copy everything
+ # that's installed, since we're not sure which ones we'll need.
+ echo "copying name service resolution libraries..."
+-if [ -n "$(find /lib -maxdepth 1 -name 'libnss*_' -print -quit)" ] ; then
++if [ -n "$(find /lib/ -maxdepth 1 -name 'libnss*' -print -quit)" ] ; then
+     tar -cf - /lib/libnss_compat* /lib/libnss*_files* \
+         | tar -C "$jail_dir" -xvf - | sed 's/^/\t/'
+ else

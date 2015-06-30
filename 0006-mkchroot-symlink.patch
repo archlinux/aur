@@ -1,0 +1,12 @@
+--- a/mkchroot.sh	2014-10-07 15:41:21.168017698 +0200
++++ b/mkchroot.sh	2014-10-07 15:47:19.483758137 +0200
+@@ -111,6 +111,9 @@ for jail_path in `dirname "$jail_dir$scp
+ 
+ done
+ 
++ln -fst "${jail_dir}" "usr/lib" || \
++	fail "Error creating /lib symlink. Exiting." 5
++
+ cp "$scp_path" "$jail_dir$scp_path" || \
+ 	fail "Error copying $scp_path. Exiting." 5
+ cp "$sftp_server_path" "$jail_dir$sftp_server_path" || \
