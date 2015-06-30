@@ -1,0 +1,14 @@
+pkgbase = qmk-tools
+	pkgdesc = Mikrokopter Tools (like Kopter-Tool)
+	pkgver = 1.3.0
+	pkgrel = 5
+	url = http://mikrokopter.de/ucwiki/QMK-Tools
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = qwt
+	source = QMK-Tools-v1.3.0.tgz::http://svn.mikrokopter.de/mikrowebsvn/filedetails.php?repname=Projects&path=%2FQMK-Groundstation%2FRelease%2FQMK-Tools-v1.3.0.tgz
+	sha256sums = ad93051f994f70de1e41b80cc9a280838a4fcd67b7468ecaa7cea8969bf6f451
+
+pkgname = qmk-tools
+
