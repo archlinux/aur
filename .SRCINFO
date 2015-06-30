@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bilateral-git
 	pkgdesc = Plugin for Vapoursynth: bilateral (GIT version)
-	pkgver = r3.0.gdf53c02
+	pkgver = r3.6.g5c246c0
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171306
 	arch = i686

@@ -2,7 +2,7 @@
 
 _plug=bilateral
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.0.gdf53c02
+pkgver=r3.6.g5c246c0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,9 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --gcc --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
