@@ -1,0 +1,26 @@
+pkgbase = brscan-skey
+	pkgdesc = Brother scan-key-tool
+	pkgver = 0.2.4_1
+	pkgrel = 8
+	url = http://support.brother.com/g/s/id/linux/en
+	install = brscan-skey.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	optdepends = sane: for all default scanning scripts
+	optdepends = sendmail: for default "Scan to email" script
+	optdepends = gimp: for default "Scan to image" script
+	optdepends = cuneiform: for default "Scan to OCR" script
+	source = brscan-skey.service
+	source = brscan-skey-user.service
+	source = LICENSE.html
+	md5sums = 82ba4e7cf73306b17f144731f6484ad0
+	md5sums = da65d820642f760115428769d2639db9
+	md5sums = bd06a5d28abb3b3a3a6a263567cbb78b
+	source_i686 = http://www.brother.com/pub/bsc/linux/dlf/brscan-skey-0.2.4-1.i386.rpm
+	md5sums_i686 = c6bc7a501f424541130a1b9a38b76493
+	source_x86_64 = http://www.brother.com/pub/bsc/linux/dlf/brscan-skey-0.2.4-1.x86_64.rpm
+	md5sums_x86_64 = 9ad29a0ef9f8f4d6f742fb4293ee08a6
+
+pkgname = brscan-skey
+

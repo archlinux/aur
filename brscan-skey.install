@@ -1,0 +1,50 @@
+post_install() {
+    local pkgver=${1%-*}
+
+    getent group brscan-skey &> /dev/null || groupadd -g 289 brscan-skey
+    getent passwd brscan-skey &> /dev/null || useradd -c "Brother scan-key-tool user" -u 289 -g brscan-skey -d /srv/brscan-skey -s /bin/false brscan-skey
+
+    # Earlier relases had / as home
+    [ $(eval echo ~brscan-skey) = /srv/brscan-skey ] || usermod -d /srv/brscan-skey brscan-skey
+
+    # Brother's install script
+    /opt/brother/scanner/brscan-skey/brscan-skey-${pkgver//_/-}.sh 0
+
+    echo "Start automatically by running one of the following:"
+    echo "  # systemctl enable brscan-skey.service         # System-wide"
+    echo "  $ systemctl --user enable brscan-skey.service  # Per-user"
+}
+
+pre_upgrade() {
+    local oldpkgver=${2%-*}
+
+    local brbase=brscan-skey-${oldpkgver//_/-}.sh
+    # Older Brother install scripts stored differently
+    local oldbr=/usr/local/Brother/sane/$brbase
+    local newbr=/opt/brother/scanner/brscan-skey/$brbase
+
+    if [ -x $newbr ]; then
+        $newbr R
+    elif [ -x $oldbr ]; then
+        $oldbr R
+    fi
+}
+
+post_upgrade() {
+    local newpkgver=${1%-*}
+
+    post_install "$newpkgver"
+}
+
+pre_remove() {
+    local pkgver=${1%-*}
+
+    # Allow to fail since earlier releases did not have a brscan-skey.service file
+    systemctl stop brscan-skey.service || true
+
+    getent passwd brscan-skey &> /dev/null && userdel brscan-skey
+    getent group brscan-skey &> /dev/null && groupdel brscan-skey
+
+    # Brother's uninstall script
+    /opt/brother/scanner/brscan-skey/brscan-skey-${pkgver//_/-}.sh R 
+}

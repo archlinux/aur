@@ -1,0 +1,10 @@
+[Unit]
+Description=Brother scan-key-tool
+
+[Service]
+Type=forking
+ExecStart=/opt/brother/scanner/brscan-skey/brscan-skey
+ExecStop=/opt/brother/scanner/brscan-skey/brscan-skey --terminate
+
+[Install]
+WantedBy=default.target
