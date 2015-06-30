@@ -5,7 +5,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.0
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 _toipatch=tuxonice-for-linux-4.0.5-2015-06-17.patch
 arch=('i686' 'x86_64')
@@ -21,6 +21,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        '0001-block-loop-convert-to-per-device-workqueue.patch'
+        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'linux.install'
         'change-default-console-loglevel.patch'
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
@@ -28,11 +30,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
+            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
             'SKIP'
             'a33ac3308e9bcafd99ab6a51a4429fcb0122b8ffcdb2e7115b52d20f0adb81fc'
             'cc070af025151db516145d111d6c5c081b933fc9cbbbda394a19d4ea60dd83b7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
+            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
             'a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '9296692f3e2143039a781404ba761ff43bd4e51f9d1bd4ac295357e98ebbec80')
@@ -51,6 +55,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Fix deadlock with stacked loop devices (FS#45129)
+  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
+  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
