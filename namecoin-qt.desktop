@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=namecoin-qt %u
+GenericName[en_US]=Namecoin is a decentralized open source information registration and transfer system based on the Bitcoin cryptocurrency.\s
+GenericName=Namecoin is a decentralized open source information registration and transfer system based on the Bitcoin cryptocurrency.\s
+Icon=exec
+MimeType=
+Name[en_US]=Namecoin
+Name=Namecoin
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
