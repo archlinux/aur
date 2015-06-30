@@ -1,0 +1,17 @@
+pkgbase = openbr-git
+	pkgdesc = A communal biometrics framework supporting the development of open algorithms and reproducible evaluations.
+	pkgver = 20140903
+	pkgrel = 2
+	url = http://openbiometrics.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-svg
+	depends = opencv
+	provides = openbr
+	source = git+https://github.com/biometrics/openbr.git
+
+pkgname = openbr-git
+
