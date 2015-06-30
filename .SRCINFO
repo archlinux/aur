@@ -1,0 +1,45 @@
+pkgbase = dwarffortress-spacefox
+	pkgdesc = A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack. Does not replace other dwarffortress packages.
+	pkgver = 0.40.24
+	pkgrel = 2
+	url = http://www.bay12forums.com/smf/index.php?topic=129219.0
+	install = dwarffortress-sf.install
+	arch = i686
+	arch = x86_64
+	license = custom:dwarffortress-sf
+	makedepends = unrar
+	makedepends = unzip
+	makedepends = git
+	makedepends = gcc-multilib
+	depends = gcc-libs
+	depends = glew
+	depends = glu
+	depends = gtk2
+	depends = libsndfile
+	depends = libxdamage
+	depends = ncurses
+	depends = openal
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = cmake
+	backup = opt/df_linux-sf/data/init/colors.txt
+	backup = opt/df_linux-sf/data/init/init.txt
+	backup = opt/df_linux-sf/data/init/d_init.txt
+	backup = opt/df_linux-sf/data/init/interface.txt
+	source = http://www.bay12games.com/dwarves/df_40_24_linux.tar.bz2
+	source = git://github.com/fricy/Spacefox.git#tag=40.24
+	source = git://github.com/svenstaro/dwarf_fortress_unfuck.git
+	source = dwarffortress-sf
+	source = dwarffortress-sf.desktop
+	source = dwarffortress-sf.png
+	source = LICENSE-sf
+	md5sums = 2804697e63b1bb9f6d0513a6fe42f7dc
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 53c9d5bfcb35281c81b78fea23da0698
+	md5sums = 60de2d654998220f426bbe41f2e57471
+	md5sums = b1d51f82400073af9bb179e34a9209d0
+	md5sums = 531f90ee12c6752762b64418a100a991
+
+pkgname = dwarffortress-spacefox
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dwarf Fortress Spacefox
+GenericName=Dwarf Fortress Spacefox
+Comment=A single-player fantasy game. Spacefox's graphics version.
+Exec=dwarffortress-sf
+Icon=/usr/share/pixmaps/dwarffortress-sf.png
+Terminal=false
+Type=Application
+Categories=Game;
