@@ -1,7 +1,7 @@
 pkgbase = linux-mainline
 	pkgver = 4.1
 	pkgrel = 1
-	url = https://imasheep.hurrdurr.org/
+	url = https://kernel.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
