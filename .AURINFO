@@ -1,0 +1,14 @@
+pkgbase = gascop-git
+	pkgdesc = A lightweight POCSAG decoder for rtl-sdr devices
+	pkgver = b5af31c
+	pkgrel = 1
+	url = https://github.com/yuvadm/gascop/
+	arch = any
+	license = BSD
+	depends = rtl-sdr
+	provides = gascop
+	source = git+https://github.com/yuvadm/gascop/
+	sha1sums = SKIP
+
+pkgname = gascop-git
+
