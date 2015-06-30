@@ -1,7 +1,7 @@
 # Maintainer: aggraef@gmail.com
 # Contributor: x@safe-mail.net where x stands for jbjunk
 pkgname=osc2midi-git
-pkgver=185.58ac3dd
+pkgver=188.d95a240
 pkgrel=1
 pkgdesc="OSC2MIDI is a highly configurable OSC to jack MIDI (and back) bridge for linux (git version)"
 arch=('x86_64' 'i686')
