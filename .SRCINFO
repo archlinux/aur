@@ -1,0 +1,15 @@
+pkgbase = emacs-guess-style
+	pkgdesc = Automatic setting of code style variables
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://nschum.de/src/emacs/guess-style/
+	install = emacs-guess-style.install
+	arch = any
+	license = GPL3
+	makedepends = emacs
+	optdepends = emacs
+	source = https://github.com/nschum/guess-style/archive/master.zip
+	md5sums = SKIP
+
+pkgname = emacs-guess-style
+
