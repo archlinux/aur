@@ -1,0 +1,14 @@
+pkgbase = emacs-flex-mode
+	pkgdesc = Emacs major mode for flex
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.emacswiki.org/emacs/FlexMode
+	arch = any
+	license = GPL
+	makedepends = emacs
+	optdepends = emacs
+	source = http://ftp.sunet.se/pub/gnu/emacs-lisp/incoming/flex-mode.el
+	sha1sums = a63c956e21a42849c1f5277dcdf1538e21846322
+
+pkgname = emacs-flex-mode
+
