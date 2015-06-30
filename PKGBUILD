@@ -2,11 +2,11 @@
 
 _plug=sangnommod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.1.5.gb17bb98
+pkgver=v0.1.fix.2.g61674a9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://homeofvapoursynthevolution.github.io/"
+url='http://homeofvapoursynthevolution.github.io'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --gcc --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
