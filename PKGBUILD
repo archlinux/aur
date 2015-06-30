@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-json-any'
-pkgver='1.38'
+pkgver='1.39'
 pkgrel='1'
 pkgdesc="Wrapper Class for the various JSON classes."
 arch=('any')
@@ -10,9 +10,9 @@ options=('!emptydirs')
 depends=('perl-json>=2.02' 'perl-json-xs>=2.3' 'perl-yaml-syck' 'perl-namespace-clean')
 makedepends=('perl-test-fatal' 'perl-test-requires' 'perl-test-warnings>=0.009' 'perl-test-without-module')
 url='http://search.cpan.org/dist/JSON-Any'
-source=("http://cpan.metacpan.org/authors/id/E/ET/ETHER/JSON-Any-${pkgver}.tar.gz")
-md5sums=('8f86b73f560a964d022e9198dc13110e')
-sha512sums=('ad847fe9b8787c467536873d7f5061a74d4d6d5488ba053dca1c677c98e69349027ab1734601e8334f1c1c20ee0952754d2562a00694bbd0eb65dee8c333f4d4')
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/JSON-Any-${pkgver}.tar.gz")
+md5sums=('5d353625730e8a995bdee29560a2159b')
+sha512sums=('a4e9494ef650fe6f0144fddad49962e717470390b5783ab7bed6ef1c34fa7aa3d4f8699b9967ec8ca8813f43ee8c1d594e5af4d4962929791aa95b470104cd9b')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
