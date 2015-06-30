@@ -1,0 +1,14 @@
+pkgbase = salarm-git
+	pkgdesc = Scheduler written in C++, with General public license version 3 used.
+	pkgver = 20110525
+	pkgrel = 1
+	url = http://salarm.seberm.com
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = qt
+	depends = phonon
+
+pkgname = salarm-git
+
