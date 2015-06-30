@@ -5,12 +5,12 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.4.0.dev.5181.g98c144b
+pkgver=0.4.0.dev.5710.gaf6f214
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
-license=('GPL')
+license=('MIT')
 makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf')
 # Needed if building the documentation
 #makedepends+=('python2-sphinx' 'python2-sphinx_rtd_theme' 'python-pip' 'texlive-langcjk' 'texlive-latexextra')
@@ -107,6 +107,9 @@ package_julia-git() {
 
   # Remove doc files
   rm -r $pkgdir/usr/share/doc/julia
+
+  # Install license
+  install -Dm644 "$_pkgbase"/LICENSE.md "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE.md"
 }
 
 package_julia-git-docs() {

@@ -1,11 +1,11 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
-	pkgver = 0.4.0.dev.5181.g98c144b
+	pkgver = 0.4.0.dev.5710.gaf6f214
 	pkgrel = 1
 	url = http://julialang.org
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = gcc-fortran
 	makedepends = arpack
 	makedepends = fftw
