@@ -1,0 +1,15 @@
+pkgbase = fake-ms-fonts
+	pkgdesc = Aliases for Core TTF Fonts from Microsoft
+	pkgver = 0.0.2
+	pkgrel = 3
+	url = http://www.eworm.de/
+	arch = any
+	license = GPL
+	depends = fontconfig
+	provides = ttf-ms-fonts
+	conflicts = ttf-ms-fonts
+	source = 56-fake-ms-fonts.conf
+	sha256sums = 4ee68a34a667496b534292830094dac8df4d92fc644c06b89e4e1ac5a5cc5fc6
+
+pkgname = fake-ms-fonts
+
