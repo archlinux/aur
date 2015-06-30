@@ -1,0 +1,16 @@
+pkgbase = freecad-dxf
+	pkgdesc = make FreeCAD import DXF files
+	pkgver = 0.r18.gd61a030
+	pkgrel = 1
+	url = https://github.com/yorikvanhavre/Draft-dxf-importer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = freecad
+	depends = python2
+	source = freecad-dxf::git://github.com/yorikvanhavre/Draft-dxf-importer.git
+	sha256sums = SKIP
+
+pkgname = freecad-dxf
+
