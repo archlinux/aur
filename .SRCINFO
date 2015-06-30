@@ -1,0 +1,36 @@
+pkgbase = i3-wm-iconpatch
+	pkgdesc = An improved dynamic tiling window manager (with titlebar icon patch)
+	pkgver = 4.10.2
+	pkgrel = 1
+	url = http://i3wm.org/
+	arch = i686
+	arch = x86_64
+	groups = i3
+	license = BSD
+	makedepends = bison
+	makedepends = flex
+	makedepends = pkg-config
+	depends = xcb-util-cursor
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = libev
+	depends = yajl
+	depends = startup-notification
+	depends = pango
+	depends = libxkbcommon-x11
+	optdepends = dmenu: As menu.
+	optdepends = i3lock: For locking your screen.
+	optdepends = i3status: To display systeminformation with a bar.
+	provides = i3-wm
+	conflicts = i3-wm
+	options = docs
+	options = !strip
+	source = http://i3wm.org/downloads/i3-4.10.2.tar.bz2
+	source = http://i3wm.org/downloads/i3-4.10.2.tar.bz2.asc
+	source = iconsupport.patch
+	sha1sums = dc50d112645b9838d05e5864dc09a160c4cec8a1
+	sha1sums = SKIP
+	sha1sums = 054a91ad3d83cfc01e2d02c90fda524f49616ebd
+
+pkgname = i3-wm-iconpatch
+
