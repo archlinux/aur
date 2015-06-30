@@ -1,0 +1,43 @@
+pkgbase = freecad-git
+	pkgdesc = A general purpose 3D CAD modeler - git checkout
+	pkgver = 0.14.1.r896.gaeabffe
+	pkgrel = 1
+	url = http://www.freecadweb.org/
+	install = freecad.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = boost
+	makedepends = eigen
+	makedepends = gcc-fortran
+	makedepends = swig
+	makedepends = desktop-file-utils
+	makedepends = cmake
+	makedepends = coin
+	makedepends = python2-pyside-tools
+	depends = boost-libs
+	depends = curl
+	depends = opencascade>=6.6.0
+	depends = python2-pivy
+	depends = xerces-c
+	depends = libspnav
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	depends = python2-matplotlib
+	depends = python2-shiboken
+	depends = python2-pyside
+	depends = qtwebkit
+	optdepends = freecad-dxf: import DXF files
+	optdepends = pycollada-git: create, edit and load COLLADA documents
+	provides = freecad
+	conflicts = freecad
+	source = freecad::git://git.code.sf.net/p/free-cad/code
+	source = freecad.desktop
+	source = freecad.xml
+	sha256sums = SKIP
+	sha256sums = 886688f1f3624fafe92710890bda7504d1e0181c2c5239b313066eb412a78e0f
+	sha256sums = 248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a
+
+pkgname = freecad-git
+
