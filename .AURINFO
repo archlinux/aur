@@ -1,0 +1,16 @@
+pkgbase = lm4tools-git
+	pkgdesc = A set of tools which enable multi-platform development on the TI Stellaris Launchpad boards
+	pkgver = a565880
+	pkgrel = 1
+	url = https://github.com/utzig/lm4tools
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = libusb
+	provides = lm4tools
+	source = git+https://github.com/utzig/lm4tools.git
+
+pkgname = lm4tools-git
+
