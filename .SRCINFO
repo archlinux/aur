@@ -1,0 +1,16 @@
+pkgbase = streamcz-dl
+	pkgdesc = Downloads video from Stream.cz
+	pkgver = 3
+	pkgrel = 1
+	url = http://xpisar.wz.cz/streamcz-dl
+	arch = any
+	license = GPLv3
+	depends = bash
+	depends = grep
+	depends = wget
+	depends = sed
+	source = http://xpisar.wz.cz/streamcz-dl/streamcz-dl-3
+	md5sums = 90ddc414ee2fe2a2bffdbdb13ae6425a
+
+pkgname = streamcz-dl
+
