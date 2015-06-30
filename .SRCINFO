@@ -1,0 +1,16 @@
+pkgbase = python2-javabridge
+	pkgdesc = Python wrapper for the Java Native Interface.
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/CellProfiler/python-javabridge
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython2
+	depends = jdk7-openjdk
+	depends = python2-numpy
+	source = https://github.com/CellProfiler/python-javabridge/archive/1.0.11.tar.gz
+	sha256sums = 9f0f92b451c758c9acd622b08a27173aa73a9271d93779def4da75925f78fbab
+
+pkgname = python2-javabridge
+
