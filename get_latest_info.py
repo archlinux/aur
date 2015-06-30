@@ -89,6 +89,7 @@ if url is None:
     sys.exit(3)
 
 
+version = version.replace("-", "_")
 url = parsed_args.url_prefix + url
 
 if not parsed_args.pkgbuild:
