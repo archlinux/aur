@@ -1,0 +1,18 @@
+pkgbase = rkt
+	pkgdesc = App container runtime
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/coreos/rkt
+	arch = x86_64
+	license = apache
+	makedepends = cpio
+	makedepends = go
+	makedepends = squashfs-tools
+	provides = rkt
+	conflicts = rocket
+	replaces = rocket
+	source = https://github.com/coreos/rkt/archive/v0.5.6.tar.gz
+	sha256sums = bae39568c9e980245b13309ba89eac1f31ba8e29d7ccf3e0f85b75c34ae57a7d
+
+pkgname = rkt
+
