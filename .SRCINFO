@@ -1,0 +1,15 @@
+pkgbase = python-dg-git
+	pkgdesc = A programming language running on CPython VM
+	pkgver = da8831f
+	pkgrel = 1
+	url = https://github.com/pyos/dg/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-dg
+	source = git+https://github.com/pyos/dg/
+	sha1sums = SKIP
+
+pkgname = python-dg-git
+
