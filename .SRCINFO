@@ -1,0 +1,22 @@
+pkgbase = qtile-python3-git
+	pkgdesc = Python3 full-featured, pure-Python tiling window manager. (git version)
+	pkgver = 1998.9713e17
+	pkgrel = 2
+	url = http://www.qtile.org
+	install = qtile-python3-git.install
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = pango
+	depends = python-xcffib>=0.1.10
+	depends = python-cairocffi
+	optdepends = python-setproctitle: change the process name to qtile
+	provides = qtile
+	conflicts = qtile
+	source = git://github.com/qtile/qtile.git
+	md5sums = SKIP
+
+pkgname = qtile-python3-git
+
