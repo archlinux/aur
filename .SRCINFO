@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bm3d-git
 	pkgdesc = Plugin for Vapoursynth: bm3d (GIT version)
-	pkgver = r3.4.g8636c68
+	pkgver = r3.12.ga61c56a
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=172172
 	arch = i686

@@ -2,11 +2,11 @@
 
 _plug=bm3d
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.4.g8636c68
+pkgver=r3.12.ga61c56a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=172172"
+url='http://forum.doom9.org/showthread.php?t=172172'
 license=('GPL')
 depends=('vapoursynth' 'fftw')
 makedepends=('git')
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
