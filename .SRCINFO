@@ -1,0 +1,61 @@
+pkgbase = adminer-skins
+	pkgdesc = Adminer skins
+	pkgver = 20150316
+	pkgrel = 1
+	url = http://www.adminer.org
+	arch = any
+	license = Apache License, Version 2.0
+	depends = adminer
+	provides = adminer-skin
+	conflicts = adminer-skin
+	source = hever.css::https://raw.github.com/vrana/adminer/master/designs/hever/adminer.css
+	source = brade.css::https://raw.github.com/vrana/adminer/master/designs/brade/adminer.css
+	source = haeckel.css::https://raw.github.com/vrana/adminer/master/designs/haeckel/adminer.css
+	source = pokorny.css::https://raw.github.com/vrana/adminer/master/designs/pokorny/adminer.css
+	source = paranoiq.css::https://raw.github.com/vrana/adminer/master/designs/paranoiq/adminer.css
+	source = bueltge.css::https://raw.github.com/vrana/adminer/master/designs/bueltge/adminer.css
+	source = konya.css::https://raw.github.com/vrana/adminer/master/designs/konya/adminer.css
+	source = ng9.css::https://raw.github.com/vrana/adminer/master/designs/ng9/adminer.css
+	source = pilot.css::https://raw.github.com/vrana/adminer/master/designs/pilot/adminer.css
+	source = kahi.css::https://raw.github.com/vrana/adminer/master/designs/kahi/adminer.css
+	source = cvicebni-ubor.css::https://raw.github.com/vrana/adminer/master/designs/cvicebni-ubor/adminer.css
+	source = jukin.css::https://raw.github.com/vrana/adminer/master/designs/jukin/adminer.css
+	md5sums = cd9f03ca11aa47f5e43ccb675588007c
+	md5sums = 9da6b73dfa3bb538b253676e14c50d1e
+	md5sums = aa4a8849f110f89a56c12dc4b1b48e7e
+	md5sums = 0c01f846113983d30254abba6dac7584
+	md5sums = aa030a380ca2dca615d01856a333e4d8
+	md5sums = 091b443d5a728c4745c1ae95760e0cca
+	md5sums = 0596554c5535bc792edb051e5dcd15c0
+	md5sums = 6c69bf9a12232832d99cf508f2eb8b7f
+	md5sums = 0429c1df7811e6730e5e5e81f6a3dc10
+	md5sums = 379d27d158530d478dc68e144c3004c4
+	md5sums = 34227ef300208595674f421639dace53
+	md5sums = f1857afe4b6f71dfbc354a9535f63ec5
+
+pkgname = adminer-skins
+
+pkgname = adminer-skins-hever
+
+pkgname = adminer-skins-brade
+
+pkgname = adminer-skins-haeckel
+
+pkgname = adminer-skins-pokorny
+
+pkgname = adminer-skins-paranoiq
+
+pkgname = adminer-skins-bueltge
+
+pkgname = adminer-skins-konya
+
+pkgname = adminer-skins-ng9
+
+pkgname = adminer-skins-pilot
+
+pkgname = adminer-skins-kahi
+
+pkgname = adminer-skins-cvicebni-ubor
+
+pkgname = adminer-skins-jukin
+
