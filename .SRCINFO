@@ -1,0 +1,22 @@
+pkgbase = gcstatistic
+	pkgdesc = Geocaching statistics tool
+	pkgver = 2.0.0b7
+	pkgrel = 1
+	url = http://www.macdefender.org/products/GCStatistic/
+	install = gcstatistic.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	source = http://www.macdefender.org/downloads/software/beta/GCStatistic2.0.0b7L.zip
+	source = gcstatistic.png::http://macdefender.org/products/GCStatistic/index_files/ic64_gcstatistic.png
+	source = gcstatistic.desktop
+	source = gcstatistic
+	sha256sums = 029c62841c8df2935dcd784dcb45d7b75304aa5a1850afb5842d9731f5839e1f
+	sha256sums = 11ed02bacb65fd7f7048f7e1e8613cf020a896a5c89476bc14f97a34c451f925
+	sha256sums = 1ae76c1cc8bf75f5d65a56f730caa9fe504a447b67c9549fae2465db03b4213f
+	sha256sums = b5bb81bbac97846571a6d34c2e0fdb90633d1f53870d9ec693272c719bd9bf13
+	depends_i686 = gcc-libs
+
+pkgname = gcstatistic
+

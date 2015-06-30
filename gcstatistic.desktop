@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=gcstatistic
+Type=Application
+Categories=Office;
+Exec=gcstatistic
+Name=GCStatistic
+GenericName=GCStatistic
+Comment=Geocaching Statistics Tool
