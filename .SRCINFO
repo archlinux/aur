@@ -1,0 +1,16 @@
+pkgbase = vim-perlomni-git
+	pkgdesc = perl omnicompletion for vim (including base class function compleltions .. etc)
+	pkgver = 2.5
+	pkgrel = 2
+	url = https://github.com/c9s/perlomni.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = git+https://github.com/c9s/perlomni.vim
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 3c5991a7e0696f045904ea61828754fe
+
+pkgname = vim-perlomni-git
+
