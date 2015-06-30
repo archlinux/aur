@@ -1,0 +1,14 @@
+pkgbase = xtrace-git
+	pkgdesc = Xtrace fakes an X server and forwards all connections to a real X server, displaying the communication between the clients and the server in a human readable form
+	pkgver = 210.0ab52b0
+	pkgrel = 1
+	url = http://xtrace.alioth.debian.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = git://git.debian.org/xtrace/xtrace.git
+	md5sums = SKIP
+
+pkgname = xtrace-git
+
