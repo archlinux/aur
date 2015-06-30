@@ -1,21 +1,21 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=tophat
-pkgver=2.0.14
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="fast splice junction mapper for RNA-Seq reads"
 arch=('x86_64' 'i686')
 url="http://ccb.jhu.edu/software/tophat/index.shtml"
 license=('PerlArtistic')
 depends=('boost-libs' 'bowtie2' 'python2')
-makedepends=('boost' 'clang')
+makedepends=('boost')
 source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz")
-md5sums=('509f72082c98f116131e976681578a9f')
+md5sums=('1ace6e96fa692af6ed885bad5fe7c4d7')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
-  sed -e 's|-Wall -Wno-strict-aliasing -g -gdwarf-2 -Wuninitialized||' \
+  sed -e 's|-gdwarf-2||' \
       -e '/define.*esyscmd/d' \
       -e 's/svnversion/Unversioned directory/' \
       -i configure.ac
