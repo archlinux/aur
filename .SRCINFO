@@ -1,0 +1,14 @@
+pkgbase = bash-supergenpass
+	pkgdesc = Bash implementation of Super Gen Pass script
+	pkgver = 20130529
+	pkgrel = 1
+	url = http://github.com/lanzz/bash-supergenpass
+	arch = any
+	license = custom
+	depends = bash
+	depends = openssl
+	provides = supergenpass
+	conflicts = perl-supergenpass
+
+pkgname = bash-supergenpass
+
