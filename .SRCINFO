@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-retinex-git
 	pkgdesc = Plugin for Vapoursynth: retinex (GIT version)
-	pkgver = r3.1.gbd7710b
+	pkgver = r3.10.gef42e59
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171307
 	arch = i686
