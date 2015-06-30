@@ -2,11 +2,11 @@
 
 _plug=eedi2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.0.g6e71879
+pkgver=r6.2.g9a61fe0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171136"
+url='http://forum.doom9.org/showthread.php?t=171136'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
