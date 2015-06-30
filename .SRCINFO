@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-tcanny-git
 	pkgdesc = Plugin for Vapoursynth: tcanny (GIT version)
-	pkgver = r2.1.g0861e87
+	pkgver = r2.6.g312739d
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171136
 	arch = i686
