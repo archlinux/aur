@@ -1,0 +1,16 @@
+pkgbase = labyrus-git
+	pkgdesc = Network game written with OpenGL and Qt. 3D Maze. Beta.
+	pkgver = 20130424
+	pkgrel = 1
+	url = https://gitorious.org/labyrus/labyrus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = icu
+	depends = qt5-base
+	optdepends = qt5-imageformats: for supporting more image formats
+
+pkgname = labyrus-git
+
