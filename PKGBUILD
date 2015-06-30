@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdradmin-am
 pkgver=3.6.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Web user interface for VDR"
 url="http://andreas.vdr-developer.org/vdradmin-am"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('perl-authen-sasl: Required for AutoTimer email notification'
             'perl-digest-hmac: Required for AutoTimer email notification and CRAM-MD5 authentication'
             'perl-io-socket-inet6: Required for IPv6 support'
             'perl-io-socket-ssl: Required for SSL support (https)')
-makedepends=('perl-authen-sasl' 'perl-digest-hmac' 'perl-io-socket-inet6' 'perl-io-socket-ssl')
+makedepends=('perl-authen-sasl' 'perl-cgi' 'perl-digest-hmac' 'perl-io-socket-inet6' 'perl-io-socket-ssl')
 source=("http://andreas.vdr-developer.org/vdradmin-am/download/$pkgname-$pkgver.tar.bz2"
         'fix-install.sh.diff'
         'vdradmin-am.service')
