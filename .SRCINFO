@@ -1,0 +1,15 @@
+pkgbase = ruby-cheat
+	pkgdesc = Cheat Sheets
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://cheat.errtheblog.com/
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	noextract = cheat-1.3.0.gem
+	source = http://gems.rubyforge.org/gems/cheat-1.3.0.gem
+	sha256sums = d9556a5988ac29ecb601f25880925e8f6d5b13dff36323821050e276936c2209
+
+pkgname = ruby-cheat
+
