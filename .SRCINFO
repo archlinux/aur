@@ -1,0 +1,27 @@
+pkgbase = ttf-exljbris
+	pkgdesc = A collection of free opentype fonts by Jos Buivenga. Includes Delicious, Diavlo, Fontin, Fontin Sans and Tallys
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://www.exljbris.com/
+	install = exljbris.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.exljbris.com/dl/delicious-123.zip
+	source = http://www.exljbris.com/dl/Diavlo_II_37b2.zip
+	source = http://www.exljbris.com/dl/fontin_pc.zip
+	source = http://www.exljbris.com/dl/FontinSans_49.zip
+	source = http://www.exljbris.com/dl/tallys_15b2.zip
+	source = exljbris-font-licence.txt
+	sha256sums = e9d5ce8e7c8dbf521727bddfbbe1e947fb28f5a0143ee7f5287f45e5beb70ed2
+	sha256sums = 863acd293fb186eebdbf77cba2739f26626874c848bedb9b7577e07e5996a3d3
+	sha256sums = ddbb4ba57d0ab7d1af9d511de8e68d0fab9beec0c03eaf9c968f180b96100aa7
+	sha256sums = 8b04ea509ec5fa8ddf921c94ba1824130071d16b7f83b09bc257b9311ff65a6e
+	sha256sums = c0b951253e07557590b3dc2c7ffea19d553b3f5bf34d45f80b4114d90e527bad
+	sha256sums = ea29b01be55f6498af65c3553fb84d67babd881ac382697ba4d6a2e7ff1af5b0
+
+pkgname = ttf-exljbris
+
