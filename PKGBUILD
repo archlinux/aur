@@ -1,7 +1,6 @@
 # Maintainer: Tilman Blumenbach <tilman AT ax86 DOT net>
 
 pkgname=keepass-plugin-rpc
-pkgver=1.4.6
 pkgrel=1
 pkgdesc="RPC plugin for Keepass (used by the KeeFox addon for Firefox)"
 arch=(i686 x86_64)
@@ -10,7 +9,6 @@ license=('GPL')
 depends=(keepass)
 makedepends=(unzip)
 install="${pkgname}.install"
-source=("keefox.zip::https://addons.mozilla.org/firefox/downloads/file/293246/keefox-1.4.6-fx+tb-linux.xpi?src=external-kforg-download")
 noextract=(keefox.zip)
 
 prepare() {
@@ -28,5 +26,12 @@ package() {
 _amo_id=306880
 _amo_os=Linux
 _amo_url_prefix="keefox.zip::"
-md5sums=('0875496fc1526033e56e4e095ed53cbb')
-sha384sums=('9060c8aeec8af79494043fccd26184f77fff58bc929cfe96e97f9e3c8971c496fff5511588985f508c11d48cd8cd47d7')
+#@
+#@ --------------------------------------------
+#@ Lines below automatically added by update_pkgbuild.sh.
+pkgver='1.4.8.1_signed'
+source=('keefox.zip::https://addons.mozilla.org/firefox/downloads/file/318702/keefox-1.4.8-tb+fx-linux.xpi?src=api')
+#@ --------------------------------------------
+#@
+md5sums=('d5f6670c9bb3179b1ad87fd7cb170669')
+sha384sums=('4111b1346b90b4533a95df3bad0846f1948c5c8985c3304461b5172eb6da9a8a6a1c634dc46cbbd470b05e5f9c6fe517')
