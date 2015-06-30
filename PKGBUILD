@@ -18,6 +18,6 @@ sha256sums_i686=('ae16e662855f70bddb32e7b4d5aa99fde30d55f49f0dcd6c8c2c2f59213340
 sha256sums_x86_64=('4d097c586d725181b17543ce4a4adf95db42056502b5a2f315c74b9f98230bb9')
 
 package(){
-  install -Dm 644 blackfire.ini ${pkgdir}/etc/php/conf.d/blackfire.ini
-  install -Dm 755 blackfire.so-${pkgver}_56_$CARCH ${pkgdir}/usr/lib/php/modules/blackfire.so
+  install -Dm 644 blackfire.ini "$pkgdir"/etc/php/conf.d/blackfire.ini
+  install -Dm 755 blackfire.so-${pkgver}_56_$CARCH "$pkgdir"/usr/lib/php/modules/blackfire.so
 }
