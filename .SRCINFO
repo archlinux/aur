@@ -1,0 +1,13 @@
+pkgbase = ntimed-git
+	pkgdesc = Network time synchronization software, NTPD replacement
+	pkgver = f3810d7
+	pkgrel = 1
+	url = https://github.com/bsdphk/Ntimed/
+	arch = any
+	license = BSD
+	provides = ntimed
+	source = git+https://github.com/bsdphk/Ntimed/
+	sha1sums = SKIP
+
+pkgname = ntimed-git
+
