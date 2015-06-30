@@ -1,0 +1,16 @@
+pkgbase = ttf-technical
+	pkgdesc = A technical font used by architects and engineers
+	pkgver = 1
+	pkgrel = 3
+	url = http://eknp.com/
+	install = ttf.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://eknp.com/fonts/zip/t/technical.zip
+	sha256sums = a9014a8b2e2de52610bd44d6f923be2c648e31fc1f5d989d02373bc3984ae016
+
+pkgname = ttf-technical
+
