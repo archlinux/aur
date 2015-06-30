@@ -1,6 +1,6 @@
 pkgbase = dbeaver
 	pkgdesc = A free universal database tool for developers and database administrators
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = http://dbeaver.jkiss.org/
 	install = dbeaver.install
@@ -15,10 +15,10 @@ pkgbase = dbeaver
 	source = dbeaver.install
 	sha256sums = cf1e850dcb3544507eeb59b8d2e84b67cd25b546e3eaf03a0ab27ca841361478
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_i686 = http://dbeaver.jkiss.org/files/dbeaver-3.4.1-linux.gtk.x86.zip
-	sha256sums_i686 = b4b29b806f9aebc703d27f1e02eb0fada1819e2b3f59cd348b937b45f11c9854
-	source_x86_64 = http://dbeaver.jkiss.org/files/dbeaver-3.4.1-linux.gtk.x86_64.zip
-	sha256sums_x86_64 = eb4f9fd65cde495b6cb58e8ed99f6fa024555910c51546c8530a20839f2b6fb6
+	source_i686 = http://dbeaver.jkiss.org/files/dbeaver-3.4.2-linux.gtk.x86.zip
+	sha256sums_i686 = fcff5444adef58facfb72823bd0658f72fcd9c8d6df0d8e0416e522754ef30e0
+	source_x86_64 = http://dbeaver.jkiss.org/files/dbeaver-3.4.2-linux.gtk.x86_64.zip
+	sha256sums_x86_64 = ee7b044c4654c42498e71a553654019a0ed75ec046a25875c2c6556256bcfd3f
 
 pkgname = dbeaver
 
