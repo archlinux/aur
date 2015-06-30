@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=intel-xdk-iot
-pkgver=1912
+pkgver=2170
 pkgrel=1
 _rpmver=2.0-0
 pkgdesc='JavaScript on-board app and HTML5 companion app development'
@@ -17,11 +17,11 @@ md5sums=('251ae4edbe9fbd775dc1910f9df4e481')
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
   _carch='i486'
-  md5sums+=('68bd15cd8c2696668d28b5ae458a33e5')
+  md5sums+=('f4d01f37c36068d453c2555835b757eb')
 elif [ "${CARCH}" == 'x86_64' ]; then
   _arch='64'
   _carch='x86_64'
-  md5sums+=('56ad1a58ff4b44fa43c0b9817410aacc')
+  md5sums+=('c51ab3923a20b0a4491b08fe90666aa4')
 fi
 
 _base="iot_web_linux${_arch}"
