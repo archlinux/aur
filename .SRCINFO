@@ -1,0 +1,22 @@
+pkgbase = calendar-indicator
+	pkgdesc = An indicator for google calendar.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://www.atareao.es/tag/calendar-indicator/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2-distutils-extra
+	makedepends = python2-polib
+	depends = python
+	depends = shared-mime-info
+	depends = python-beautifulsoup4
+	depends = python-jinja
+	depends = python-requests
+	provides = calendar-indicator
+	conflicts = calendar-indicator-bzr
+	source = https://launchpad.net/~atareao/+archive/ubuntu/atareao/+files/calendar-indicator_0.3.1-0extras14.04.3.tar.gz
+	sha256sums = b63678f1dd11a0fbed852bdf49ce2ea8596ec8bc2498e2f0efbfe1116813913d
+
+pkgname = calendar-indicator
+
