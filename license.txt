@@ -1,0 +1,27 @@
+-- Terms and Conditions
+
+  Mona Font comes with ABSOLUTELY NO WARRANTY.
+  Mona Font is in public domain.
+
+
+-- Acknowledgements
+
+We thank to:
+
+  Yasuyuki Furukawa (the original author of Shinonome Font, Kochi Gothic, mkbold, and mkitalic)
+  /efont/ Project
+  NAGAO Sadakazu (mkbold)
+  Toshiyuki Imamura and HANATAKA Shinya ({K12,K14,K16}-2000)
+  Katsuya Odajima (a16rk)
+  Hiroki Kano (bit2bdf, Kochi-CID)
+  Anonymous 18th in Ni-Channel BBS (omaemona, oremona, monak14-ext, lots of fixes)
+  Anonymous 638th in Ni-Channel BBS (AA patch)
+  Yukihiro Nakai (RPM spec file for RedHat)
+  Many people who tested Mona Font in Macintosh and Windows NT.
+  Lots of Ni-Channelers and text art wizards!
+
+-- Links
+
+  Monafont Homepage: http://monafont.sourceforge.net/
+
+  Author: s42335@users.sourceforge.net
