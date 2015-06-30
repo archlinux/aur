@@ -1,0 +1,19 @@
+## Type:       yes/no
+## Default:    no
+# Switch on/off debug messages (script & C code)
+DEBUG="no"
+
+## Type:       yes/no
+## Default:    yes
+# All the messages go to syslog and stderr (script & C code)
+USE_SYSLOG="yes"
+
+## Type:       string. Driver names separated by space
+## Default:    list of default drivers
+# All supported drivers listed here are loaded when service starts
+SUPPORTED_DRIVERS="fcoe bnx2fc"
+
+## Type:       string. Command options to fcoeman
+## Default:    none
+# Add command options to fcoeman
+FCOEMON_OPTS=""

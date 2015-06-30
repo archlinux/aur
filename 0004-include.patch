@@ -1,0 +1,26 @@
+diff --git a/fcoe-utils/fcoeadm_display.c b/fcoe-utils/fcoeadm_display.c
+index 287e370..2d38116 100644
+--- a/fcoe-utils/fcoeadm_display.c
++++ b/fcoe-utils/fcoeadm_display.c
+@@ -38,7 +38,7 @@
+ #include "net_types.h"
+ #include "fc_types.h"
+ #include "fc_scsi.h"
+-#include "hbaapi.h"
++#include <hbaapi.h>
+ #include "fcoeadm_display.h"
+ #include "fcoe_utils.h"
+ #include "fcoemon_utils.h"
+diff --git a/fcoe-utils/fcoemon.c b/fcoe-utils/fcoemon.c
+index a5babfa..cd58900 100644
+--- a/fcoe-utils/fcoemon.c
++++ b/fcoe-utils/fcoemon.c
+@@ -60,7 +60,7 @@
+ #include "fcoemon.h"
+ #include "fcoe_clif.h"
+ #include "fcoe_utils.h"
+-#include "hbaapi.h"
++#include <hbaapi.h>
+ #include "strarr.h"
+ 
+ #include "fip.h"

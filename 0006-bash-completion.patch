@@ -1,0 +1,13 @@
+diff --git a/fcoe-utils/Makefile.am b/fcoe-utils/Makefile.am
+index efc2c64..4d51ad0 100644
+--- a/fcoe-utils/Makefile.am
++++ b/fcoe-utils/Makefile.am
+@@ -72,7 +72,7 @@ init_d_SCRIPTS = etc/initd/fcoe
+ 
+ dist_noinst_DATA = README COPYING INSTALL CONFIGURE QUICKSTART fcoe-utils.spec etc/config
+ 
+-bashcompletiondir = $(sysconfdir)/bash_completion.d
++bashcompletiondir = /usr/share/bash-completion/completions/bash_completion.d
+ dist_bashcompletion_DATA = contrib/bash_completion/fcoeadm contrib/bash_completion/fcoemon
+ 
+ install-data-hook:

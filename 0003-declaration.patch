@@ -1,0 +1,63 @@
+diff --git a/libHBAAPI/hbaapi.h b/libHBAAPI/hbaapi.h
+index 58098e0..952a02c 100644
+--- a/libHBAAPI/hbaapi.h
++++ b/libHBAAPI/hbaapi.h
+@@ -523,17 +523,17 @@ typedef void *	HBA_CALLBACKHANDLE;
+ #define HBA_EVENT_LINK_UNKNOWN		0x500
+ #define HBA_EVENT_LINK_INCIDENT		0x501
+ 
+-HBA_API HBA_UINT32 HBA_GetVersion();
++HBA_API HBA_UINT32 HBA_GetVersion(void);
+ 
+ /*
+  * Make sure HBA_LoadLibrary returns before any other threads
+  * make calls to the library
+  */
+-HBA_API HBA_STATUS HBA_LoadLibrary();
++HBA_API HBA_STATUS HBA_LoadLibrary(void);
+ 
+-HBA_API HBA_STATUS HBA_FreeLibrary();
++HBA_API HBA_STATUS HBA_FreeLibrary(void);
+ 
+-HBA_API HBA_UINT32 HBA_GetNumberOfAdapters();
++HBA_API HBA_UINT32 HBA_GetNumberOfAdapters(void);
+ 
+ HBA_API HBA_STATUS HBA_GetAdapterName(
+     HBA_UINT32		adapterindex,
+@@ -602,7 +602,7 @@ HBA_API HBA_STATUS HBA_SendCTPassThru(
+     HBA_UINT32		RspBufferSize
+     );
+ 
+-HBA_API void HBA_RefreshAdapterConfiguration();
++HBA_API void HBA_RefreshAdapterConfiguration(void);
+ 
+ HBA_API HBA_STATUS HBA_GetEventBuffer(
+     HBA_HANDLE		handle,
+diff --git a/libHBAAPI/vendorhbaapi.h b/libHBAAPI/vendorhbaapi.h
+index ca27045..6e14636 100644
+--- a/libHBAAPI/vendorhbaapi.h
++++ b/libHBAAPI/vendorhbaapi.h
+@@ -44,10 +44,10 @@ extern "C" {
+ 
+ 
+ /* 6.10.1 HBA Library Function Table */
+-typedef HBA_UINT32	(* HBAGetVersionFunc)();
+-typedef HBA_STATUS	(* HBALoadLibraryFunc)();
+-typedef HBA_STATUS	(* HBAFreeLibraryFunc)();
+-typedef HBA_UINT32	(* HBAGetNumberOfAdaptersFunc)();
++typedef HBA_UINT32	(* HBAGetVersionFunc)(void);
++typedef HBA_STATUS	(* HBALoadLibraryFunc)(void);
++typedef HBA_STATUS	(* HBAFreeLibraryFunc)(void);
++typedef HBA_UINT32	(* HBAGetNumberOfAdaptersFunc)(void);
+ typedef HBA_STATUS	(* HBAGetAdapterNameFunc)(HBA_UINT32, char *);
+ /*
+  * Open Adapter.... the vendor function is limmited to 16 bits,
+@@ -72,7 +72,7 @@ typedef HBA_STATUS	(* HBAGetPortAttributesByWWNFunc)
+ typedef HBA_STATUS	(* HBASendCTPassThruV2Func)
+     (HBA_HANDLE, HBA_WWN, void *, HBA_UINT32, void *, HBA_UINT32 *);
+ typedef void		(* HBARefreshInformationFunc)(HBA_HANDLE);
+-typedef void		(* HBARefreshAdapterConfigurationFunc) ();
++typedef void		(* HBARefreshAdapterConfigurationFunc) (void);
+ typedef void		(* HBAResetStatisticsFunc)(HBA_HANDLE, HBA_UINT32);
+ typedef HBA_STATUS	(* HBAGetFcpTargetMappingV2Func)
+     (HBA_HANDLE, HBA_WWN, HBA_FCPTARGETMAPPINGV2 *);

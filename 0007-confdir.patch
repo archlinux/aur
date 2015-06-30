@@ -1,0 +1,13 @@
+diff --git a/fcoe-utils/etc/systemd/fcoe.service b/fcoe-utils/etc/systemd/fcoe.service
+index 5e5c8a2..144c466 100644
+--- a/fcoe-utils/etc/systemd/fcoe.service
++++ b/fcoe-utils/etc/systemd/fcoe.service
+@@ -4,7 +4,7 @@ After=syslog.target network.target
+ 
+ [Service]
+ Type=simple
+-EnvironmentFile=/etc/sysconfig/fcoe
++EnvironmentFile=/etc/conf.d/fcoe
+ ExecStartPre=/sbin/modprobe -qa $SUPPORTED_DRIVERS
+ ExecStart=/usr/sbin/fcoemon $FCOEMON_OPTS
+ 

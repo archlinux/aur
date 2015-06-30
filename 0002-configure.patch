@@ -1,0 +1,28 @@
+diff --git a/libhbalinux/configure.ac b/libhbalinux/configure.ac
+index 3a8ae4c..1249e47 100644
+--- a/libhbalinux/configure.ac
++++ b/libhbalinux/configure.ac
+@@ -12,6 +12,7 @@ AC_SUBST(PCIACCESS_LIBS)
+ 
+ PKG_CHECK_MODULES(HBAAPI, HBAAPI)
+ AC_SUBST(HBAAPI_CFLAGS)
++AC_SUBST(HBAAPI_LIBS)
+ 
+ AC_CONFIG_FILES([Makefile libhbalinux.spec libhbalinux.pc])
+ AC_OUTPUT
+diff --git a/fcoe-utils/configure.ac b/fcoe-utils/configure.ac
+index 423361b..1a6fb64 100644
+--- a/fcoe-utils/configure.ac
++++ b/fcoe-utils/configure.ac
+@@ -13,9 +13,11 @@ AC_SUBST([HBAAPI_LIBS])
+ 
+ PKG_CHECK_MODULES([LLDPAD], [lldpad >= 0.9.46])
+ AC_SUBST([LLDPAD_CFLAGS])
++AC_SUBST([LLDPAD_LIBS])
+ 
+ PKG_CHECK_MODULES([LIBHBALINUX], [libhbalinux >= 1.0.17])
+ AC_SUBST([LIBHBALINUX_CFLAGS])
++AC_SUBST([LIBHBALINUX_LIBS])
+ 
+ AC_CONFIG_FILES([Makefile fcoe-utils.spec include/fcoe_utils_version.h])
+ AC_OUTPUT

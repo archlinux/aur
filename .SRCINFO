@@ -1,0 +1,46 @@
+pkgbase = open-fcoe
+	pkgdesc = Fibre Channel over Ethernet implementation for Linux
+	pkgver = 3.19
+	pkgrel = 1
+	url = http://www.open-fcoe.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libpciaccess
+	makedepends = open-lldp
+	source = http://ftp-osl.osuosl.org/pub/open-fcoe/open-fcoe-3.19.tar.gz
+	source = http://ftp-osl.osuosl.org/pub/open-fcoe/open-fcoe-3.19.tar.gz.sig
+	source = config
+	source = 0002-configure.patch
+	source = 0003-declaration.patch
+	source = 0004-include.patch
+	source = 0005-makefile.patch
+	source = 0006-bash-completion.patch
+	source = 0007-confdir.patch
+	sha256sums = 68383cee4840148bcefc372840783ecbb3fcb45eabee0501ba103749894e7e50
+	sha256sums = SKIP
+	sha256sums = 91fceebb455997dea11feda863a9c9f68b7b9fab85b7dbaa24b6b9daef49a716
+	sha256sums = 12fb3e94657d801dc1af67c6ec0aed8919e85a66db5411b17bcc61846b4990cf
+	sha256sums = 1a49ba2a371b6e78e6640a848059ee19c5f87d46124281ad40fd24070add4d3f
+	sha256sums = 1d9c325efaf6bdca22ff1927c885ca393cca14723acf6946176be475cb914746
+	sha256sums = ff3d290ae4d09a18b1775e0f5747f9187f66b2a8a155db5547c927c22b195717
+	sha256sums = 441bf7080d98d5d1089c36c34b1796fd84fe5065137385381d88b0f7838f470f
+	sha256sums = bcd8fca39f2a3433188de70d7f5bc919eb57f0ec2d154e08f260dab46aea7a52
+
+pkgname = libhbaapi
+	pkgdesc = Fibre Channel over Ethernet implementation for Linux - libhbaapi
+	backup = etc/hba.conf
+
+pkgname = libhbalinux
+	pkgdesc = Fibre Channel over Ethernet implementation for Linux - libhbalinux
+	depends = libhbaapi
+	depends = libpciaccess
+
+pkgname = fcoe-utils
+	pkgdesc = Fibre Channel over Ethernet implementation for Linux - utils
+	depends = open-lldp
+	depends = libhbaapi
+	depends = libhbalinux
+	optdepends = bash-completion: command completion in bash
+	backup = etc/conf.d/fcoe
+
