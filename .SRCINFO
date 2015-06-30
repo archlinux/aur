@@ -1,0 +1,17 @@
+pkgbase = lua-luainspect-git
+	pkgdesc = A tool that does Lua code analysis
+	pkgver = 2012.03.30.gca39880
+	pkgrel = 1
+	url = http://github.com/davidm/lua-inspect
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = lua>=5.1
+	provides = lua-luainspect
+	conflicts = lua-luainspect
+	source = git+http://github.com/davidm/lua-inspect.git
+	sha1sums = SKIP
+
+pkgname = lua-luainspect-git
+
