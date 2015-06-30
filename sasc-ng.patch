@@ -1,0 +1,16 @@
+diff -Nur a/drivers/media/dvb/dvb-core/dvbdev.c b/drivers/media/dvb/dvb-core/dvbdev.c
+--- a/drivers/media/dvb/dvb-core/dvbdev.c
++++ b/drivers/media/dvb/dvb-core/dvbdev.c
+@@ -83,8 +83,11 @@ static int dvb_device_open(struct inode *inode, struct file *file)
+ 			file->f_op = old_fops;
+ 			goto fail;
+ 		}
+-		if(file->f_op->open)
++		if(file->f_op->open) {
++			mutex_unlock(&dvbdev_mutex);
+ 			err = file->f_op->open(inode,file);
++			mutex_lock(&dvbdev_mutex);
++		}
+ 		if (err) {
+ 			fops_put(file->f_op);
+ 			file->f_op = fops_get(old_fops);

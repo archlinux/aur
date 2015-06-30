@@ -1,0 +1,20 @@
+pkgbase = sascng-linux3-dkms
+	pkgdesc = Sasc-ng linux3 patch - dkms package
+	pkgver = 3.6
+	pkgrel = 3
+	url = http://www.kernel.org
+	arch = any
+	license = GPL
+	depends = linux-headers
+	depends = dkms
+	provides = sascng-linux3-patch
+	conflicts = sascng-linux3-patch
+	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.6.tar.bz2
+	source = dkms.conf
+	source = sasc-ng.patch
+	sha256sums = 88ae0a20fd39ecae79db0ce8f9397922fae33c8b06a54ed2c883c861126c9771
+	sha256sums = 9d9a742c25a18ad5b7911baa34f9e01bdc32fa3e8f6658b8822ade7d3faefb47
+	sha256sums = 2c858dfab1feb50429586cd4d263be2ce4f850051ce6ebe3c2ea2e6c87ef9105
+
+pkgname = sascng-linux3-dkms
+
