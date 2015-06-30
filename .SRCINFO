@@ -1,0 +1,19 @@
+pkgbase = gr-op25-git
+	pkgdesc = Software-defined analyzer for APCO P25 signals
+	pkgver = 2051a96
+	pkgrel = 1
+	url = http://op25.osmocom.org/trac/wiki/
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = gnuradio
+	depends = boost
+	depends = libpcap
+	depends = gnuradio-osmosdr
+	depends = itpp
+	provides = gr-gsm
+	source = git://op25.osmocom.org/op25.git
+	sha1sums = SKIP
+
+pkgname = gr-op25-git
+
