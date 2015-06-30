@@ -1,0 +1,15 @@
+pkgbase = python2-krbv
+	pkgdesc = Python extension module for Kerberos 5
+	pkgver = 1.0.90
+	pkgrel = 4
+	url = https://fedorahosted.org/python-krbV/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = krb5
+	options = !libtool
+	source = https://fedorahosted.org/python-krbV/attachment/wiki/Releases/python-krbV-1.0.90.tar.bz2?format=raw
+	md5sums = 14208ade8e7de39392ed9c429a577a8b
+
+pkgname = python2-krbv
+
