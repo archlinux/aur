@@ -1,0 +1,13 @@
+post_install() {
+	echo " > To make the system actually use this NSS module, add it to the list"
+	echo " > of hosts modules in /etc/nsswitch.conf:"
+	echo
+	echo "hosts: files gw_name dns"
+}
+
+post_remove() {
+	if grep -q "gw_name" /etc/nsswitch.conf; then
+		echo " > Removing gw_name from /etc/nsswitch.conf."
+		sed -i "s/ gw_name\( ?\)/\1/" /etc/nsswitch.conf
+	fi
+}

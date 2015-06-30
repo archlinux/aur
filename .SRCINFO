@@ -1,0 +1,17 @@
+pkgbase = libnss-gw-name-git
+	pkgdesc = Name Service Switch (NSS) module that resolves the name gateway.localhost to the IP of the current default gateway - git checkout
+	pkgver = 0.3.1.r1.g521d539
+	pkgrel = 1
+	url = http://www.joachim-breitner.de/projects#libnss-gw-name
+	install = libnss-gw-name-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = libnss-gw-name
+	conflicts = libnss-gw-name
+	source = git://git.nomeata.de/libnss-gw-name.git
+	sha256sums = SKIP
+
+pkgname = libnss-gw-name-git
+
