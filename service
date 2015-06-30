@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodic Command Scheduler
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/crond -n -f /etc/crontab
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

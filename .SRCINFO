@@ -1,0 +1,18 @@
+pkgbase = scron-git
+	pkgdesc = Suckless cron daemon - git checkout
+	pkgver = r152.56a6538
+	pkgrel = 1
+	url = http://git.2f30.org/scron
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	makedepends = git
+	provides = cron
+	conflicts = cron
+	source = git://git.2f30.org/scron
+	source = service
+	md5sums = SKIP
+	md5sums = 03f689593cce17a451def6b5a9661e6e
+
+pkgname = scron-git
+
