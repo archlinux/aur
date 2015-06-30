@@ -1,0 +1,12 @@
+pkgbase = pfclient
+	pkgdesc = Planefinder.net sharing client
+	pkgver = 2.1.23
+	pkgrel = 1
+	url = http://planefinder.net/
+	arch = any
+	license = unknown
+	depends = nodejs
+	source = http://clientfiles.planefinder.net/pfclient-2.1.23.tgz
+
+pkgname = pfclient
+
