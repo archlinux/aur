@@ -1,0 +1,22 @@
+pkgbase = open-lldp
+	pkgdesc = Open Link Layer Discovery Protocol - LLDP Agent Daemon
+	pkgver = 0.9.46
+	pkgrel = 5
+	url = http://www.open-lldp.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libnl1
+	depends = libconfig
+	optdepends = bash-completion: command completion in bash
+	source = http://ftp-osl.osuosl.org/pub/open-lldp/open-lldp-0.9.46.tar.gz
+	source = http://ftp-osl.osuosl.org/pub/open-lldp/open-lldp-0.9.46.tar.gz.sig
+	source = configure.patch
+	source = makefile.patch
+	sha256sums = c7b4abc970bf4cc12617b8124de0b440e69fc2a9f680973d2c313301802def14
+	sha256sums = SKIP
+	sha256sums = 3459d8d8b37c188d3a837fc9fb91d9680294c22f1cf6a27cd66b3b3b89667971
+	sha256sums = fa43952bf89146f6d584a56f593f4268926cbc60a20bb8972e134a1506f8db13
+
+pkgname = open-lldp
+

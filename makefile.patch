@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 893fa45..2ae4f8a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -128,7 +128,7 @@ install-data-local: lldpad.init
+ 	$(MKDIR_P) $(DESTDIR)/etc/init.d
+ 	$(INSTALL_SCRIPT) lldpad.init $(DESTDIR)/etc/init.d/lldpad
+ 
+-BASH_COMPLETION_DIR=/etc/bash_completion.d/
++BASH_COMPLETION_DIR=/usr/share/bash-completion/completions/
+ 
+ install-data-hook:
+ 	/sbin/chkconfig --add lldpad || true
