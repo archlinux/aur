@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kipi-plugins-frameworks-git
-pkgver=5.0.0.r10442.a077aeb
+pkgver=5.0.0.r10470.1b3d666
 pkgrel=1
 pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam, Gwenview, and KPhotoalbum. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
@@ -9,8 +9,9 @@ url='http://www.digikam.org/sharedlibs'
 license=('GPL' 'LGPL' 'FDL')
 depends=('libkdcraw-frameworks-git' 'libkexiv2-frameworks-git' 'libkipi-frameworks-git' 'threadweaver')
 optdepends=('libkvkontakte-frameworks-git: VKontakte.ru Exporter plugin'
+            'libmediawiki-frameworks-git: MediaWiki plugin'
             'hugin: Panaorama plugin')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'libkvkontakte-frameworks-git' 'libmediawiki-frameworks-git' )
 conflicts=('kipi-plugins')
 source=('git://anongit.kde.org/kipi-plugins#branch=frameworks')
 sha1sums=('SKIP')
