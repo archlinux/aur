@@ -6,7 +6,7 @@ pkgdesc="Python bindings for RobOptim"
 arch=('i686' 'x86_64')
 url="http://roboptim.net/"
 license=('(L)GPL2')
-depends=('boost>=1.41' 'eigen3' 'python2' 'python2-numpy' 'roboptim-core-git')
+depends=('boost>=1.41' 'eigen3' 'python2' 'python2-numpy' 'python2-futures' 'roboptim-core-git')
 optdepends=('python2-matplotlib: visualization')
 makedepends=('git' 'cmake>=2.8' 'doxygen')
 provides=('roboptim-core-python')

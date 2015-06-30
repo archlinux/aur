@@ -13,6 +13,7 @@ pkgbase = roboptim-core-python-git
 	depends = eigen3
 	depends = python2
 	depends = python2-numpy
+	depends = python2-futures
 	depends = roboptim-core-git
 	optdepends = python2-matplotlib: visualization
 	provides = roboptim-core-python
