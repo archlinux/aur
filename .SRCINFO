@@ -1,0 +1,16 @@
+pkgbase = hardlinkpy-hg
+	pkgdesc = a tool to hardlink together identical files in order to save space
+	pkgver = 0.1be1ba7ea389
+	pkgrel = 1
+	url = https://code.google.com/p/hardlinkpy/
+	arch = any
+	license = GPL2
+	makedepends = mercurial
+	depends = python2
+	provides = hardlinkpy
+	conflicts = hardlinkpy
+	source = hg+https://code.google.com/p/hardlinkpy/
+	sha256sums = SKIP
+
+pkgname = hardlinkpy-hg
+
