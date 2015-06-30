@@ -1,0 +1,28 @@
+pkgbase = gnuplot-notk
+	pkgdesc = Plotting package which outputs to X11, files and others. Without wxgtk/qt.
+	pkgver = 5.0.0
+	pkgrel = 2
+	url = http://www.gnuplot.info
+	install = gnuplot.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = emacs
+	makedepends = texinfo
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
+	depends = readline
+	depends = gd
+	depends = cairo
+	depends = libjpeg
+	depends = lua
+	depends = gnutls
+	provides = gnuplot
+	conflicts = gnuplot
+	conflicts = gnuplot-nox
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.0.0.tar.gz
+	sha1sums = ca5163e3cb466b4aeb878f1173b0fe624367f08a
+
+pkgname = gnuplot-notk
+
