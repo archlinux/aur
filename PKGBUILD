@@ -2,8 +2,8 @@
 # Contributor: dryes <joswiseman@gmail>
 # Contributor: Revelation60, Lucky <https://aur.archlinux.org/packages.php?ID=13691>
 # Contributor: Gordin <9ordin @t gmail dot com>
-_develop=true
-#_develop=false
+#_develop=true
+_develop=false
 pkgname='sabnzbd-git'
 true && pkgname="sabnzbd-$($_develop && echo develop-)git"
 _gitname='sabnzbd'

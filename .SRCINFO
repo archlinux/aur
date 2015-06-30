@@ -1,4 +1,4 @@
-pkgbase = sabnzbd-develop-git
+pkgbase = sabnzbd-git
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support.
 	pkgver = 0.7.20.r0.g1df2943
 	pkgrel = 1
@@ -25,10 +25,10 @@ pkgbase = sabnzbd-develop-git
 	provides = sabnzbd
 	conflicts = sabnzbd
 	conflicts = sabnzbd-bzr
-	conflicts = sabnzbd-git
+	conflicts = sabnzbd-develop-git
 	replaces = sabnzbd-bzr
 	backup = etc/conf.d/sabnzbd
-	source = git://github.com/sabnzbd/sabnzbd.git#branch=develop
+	source = git://github.com/sabnzbd/sabnzbd.git
 	source = sabnzbd.sh
 	source = sabnzbd.init
 	source = sabnzbd.confd
@@ -49,5 +49,5 @@ pkgbase = sabnzbd-develop-git
 	sha1sums = fd607d2431583320a8233cced780ed98aa074c4e
 	sha1sums = fd35834076158e6d6455e89572fd2840c0b44675
 
-pkgname = sabnzbd-develop-git
+pkgname = sabnzbd-git
 
