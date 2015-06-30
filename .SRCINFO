@@ -1,0 +1,13 @@
+pkgbase = glvis
+	pkgdesc = A PVS (Potentially Visible Set) builder specially designed to be used with OpenGL ports of the DOOM game engine.
+	pkgver = 1.6
+	pkgrel = 2
+	url = http://vavoom-engine.com/glvis.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/vavoom/glvis-1.6.tar.gz
+	md5sums = d75dff784e3b5cb193a5cd6011ce812e
+
+pkgname = glvis
+
