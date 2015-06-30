@@ -1,0 +1,15 @@
+pkgbase = lastfmlib
+	pkgdesc = A library that provides an implementation of the Last.fm protocol
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://code.google.com/p/lastfmlib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = curl
+	options = !libtool
+	source = http://lastfmlib.googlecode.com/files/lastfmlib-0.4.0.tar.gz
+	md5sums = f6f00882c15b8cc703718d22e1b1871f
+
+pkgname = lastfmlib
+
