@@ -1,7 +1,7 @@
 pkgbase = notifyconf
 	pkgdesc = GUI for configuring notify-osd-customizable
-	pkgver = 7
-	pkgrel = 4
+	pkgver = 22
+	pkgrel = 1
 	url = https://launchpad.net/notifyconf
 	arch = i686
 	arch = x86_64

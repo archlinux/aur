@@ -4,8 +4,8 @@
 # Contributor: dieghen89 <dieghen89@gmail.com>
 
 pkgname=notifyconf
-pkgver=7
-pkgrel=4
+pkgver=22
+pkgrel=1
 pkgdesc="GUI for configuring notify-osd-customizable"
 url="https://launchpad.net/notifyconf"
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ package() {
   install -D -m 644 not.png "$pkgdir/usr/share/notifyosdconf/not.png"
   install -D -m 644 default.def "$pkgdir/usr/share/notifyosdconf/default.def"
   install -D -m 644 "$srcdir/notifyconf.desktop" "$pkgdir/usr/share/applications/notifyconf.desktop"
-  install -D -m 755 NotifyOSDConfiguration "$pkgdir/usr/bin/notifyconf"
+  install -D -m 755 notifyosdconf "$pkgdir/usr/bin/notifyconf"
 }
 
 md5sums=('06b1fbde2b18edbe3e152797063a9306')
