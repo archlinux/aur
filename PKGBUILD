@@ -8,7 +8,7 @@ url="http://roboptim.net/"
 license=('(L)GPL2')
 depends=('eigen3' 'boost>=1.41' 'libltdl' 'log4cxx>=0.10')
 optdepends=()
-makedepends=('git' 'cmake' 'doxygen' 'texlive-bin')
+makedepends=('git' 'cmake' 'doxygen' 'texlive-core')
 provides=('roboptim-core')
 conflicts=('roboptim-core')
 

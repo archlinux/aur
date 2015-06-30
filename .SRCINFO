@@ -9,7 +9,7 @@ pkgbase = roboptim-core-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = texlive-bin
+	makedepends = texlive-core
 	depends = eigen3
 	depends = boost>=1.41
 	depends = libltdl
