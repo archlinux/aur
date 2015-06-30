@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-chkeymap
+	pkgdesc = Set keymap and timezone for main system inside initrd
+	pkgver = 0.1.0.r2.g8c1a568
+	pkgrel = 1
+	url = https://github.com/eworm-de/mkinitcpio-chkeymap
+	install = mkinitcpio-chkeymap.install
+	arch = any
+	license = GPL
+	makedepends = git
+	backup = etc/X11/xorg.conf.d/00-keyboard.conf
+	source = git://github.com/eworm-de/mkinitcpio-chkeymap.git
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-chkeymap
+
