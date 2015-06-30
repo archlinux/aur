@@ -1,0 +1,15 @@
+pkgbase = vim-better-whitespace
+	pkgdesc = Vim plugin: Better whitespace highlighting for Vim
+	pkgver = 0.r71.gff3dedc
+	pkgrel = 1
+	url = https://github.com/ntpeters/vim-better-whitespace
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim
+	conflicts = vim-trailing-whitespace
+	source = git://github.com/ntpeters/vim-better-whitespace.git
+	sha256sums = SKIP
+
+pkgname = vim-better-whitespace
+
