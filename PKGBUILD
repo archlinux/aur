@@ -5,7 +5,7 @@
 # Contributor: Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
 
 pkgname=cyrus-imapd-ldap
-pkgver=2.5.1
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='LDAP support (via ptloader) for Cyrus IMAP mail server'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='http://www.cyrusimap.org/'
 license=('custom')
 depends=('cyrus-imapd>=2.5' 'libldap')
 source=("ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-${pkgver}.tar.gz")
-sha256sums=('264284a75e5a2567f01b058befc302d2e3b53d8fb7dd4d9988e8310dce305ec9')
+sha256sums=('9ea6fcedf4a2b560cfcdffe90e65c31ba6007dee3c79425e5445988990acb3d8')
 
 build() {
     cd "${srcdir}/cyrus-imapd-${pkgver}"
