@@ -4,7 +4,7 @@
 
 pkgname=cv
 pkgdesc="Shows running coreutils basic commands and displays stats"
-pkgver=0.6
+pkgver=0.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('ncurses')
@@ -12,7 +12,7 @@ makedepends=('gcc' 'make')
 url="https://github.com/Xfennec/cv"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/Xfennec/$pkgname/tar.gz/v$pkgver)
-sha256sums=('4291ab2f0c507df9eb694bf956ed65dc12bae3c492b795235142b5b87e2e2239')
+sha256sums=('c8ab81b09f6026cbfdc94c9453d4a0fad7ea5e1e34efd1c1559f88f7398cf4ee')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
