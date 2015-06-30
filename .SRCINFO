@@ -1,0 +1,31 @@
+pkgbase = squeezelite-git
+	pkgdesc = Lightweight headless squeezebox emulator - git checkout
+	pkgver = 1.8.r0.g8b8dfe6
+	pkgrel = 1
+	url = http://code.google.com/p/squeezelite/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = git
+	makedepends = alsa-lib
+	makedepends = faad2
+	makedepends = flac
+	makedepends = libmad
+	makedepends = libvorbis
+	makedepends = mpg123
+	makedepends = portaudio
+	depends = alsa-lib
+	optdepends = faad2: Support for decoding AAC
+	optdepends = flac: Support for decoding FLAC
+	optdepends = libmad: Support for decoding MP3
+	optdepends = libvorbis: Support for decoding Ogg Vorbis
+	optdepends = mpg123: Support for decoding MP3
+	optdepends = portaudio: Use of binary using portaudio for output
+	provides = squeezelite
+	conflicts = squeezelite
+	source = git+https://code.google.com/p/squeezelite/
+	sha256sums = SKIP
+
+pkgname = squeezelite-git
+
