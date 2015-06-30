@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-ctmf-git
 	pkgdesc = Plugin for Vapoursynth: ctmf (GIT version)
-	pkgver = r2.5.g1884ce7
+	pkgver = r2.7.gc18ed2a
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171213
 	arch = i686

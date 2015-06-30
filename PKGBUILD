@@ -2,11 +2,11 @@
 
 _plug=ctmf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.5.g1884ce7
+pkgver=r2.7.gc18ed2a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171213"
+url='http://forum.doom9.org/showthread.php?t=171213'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
