@@ -1,4 +1,4 @@
-pkgbase = lua51-penlight
+pkgbase = lua51-luapenlight
 	pkgdesc = Lua libraries focusing on input data handling
 	pkgver = 1.3.2
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = lua51-penlight
 	source = lua-penlight-1.3.2.tar.gz::https://github.com/stevedonovan/penlight/archive/1.3.2.tar.gz
 	md5sums = 0315a39834bb6fab07741ec04ede1bf4
 
-pkgname = lua51-penlight
+pkgname = lua51-luapenlight
 

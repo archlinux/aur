@@ -4,7 +4,7 @@
 # Contributor: Laszlo Papp <djszapi at archlinux us>
 # Contributor: Donald Ephraim Curtis <dcurtis@gmail.com>
 
-pkgname=('lua51-penlight')
+pkgname=('lua51-luapenlight')
 _pkgname=('lua-penlight')
 pkgver=1.3.2
 pkgrel=1
@@ -26,11 +26,13 @@ package() {
 	cd Penlight-$pkgver
 	install -dm755 "$pkgdir/usr/share/lua/5.1/pl"
 	install -m644 lua/pl/* "$pkgdir/usr/share/lua/5.1/pl"
+
 	# copy docs
 	install -dm755 "$pkgdir/usr/share/doc/$_pkgname/"{,manual,examples}
 	install -m644 CONTRIBUTING.md CHANGES.md README.md "$pkgdir/usr/share/doc/$_pkgname"
 	install -m644 doc/manual/* "$pkgdir/usr/share/doc/$_pkgname/manual"
 	install -m644 examples/* "$pkgdir/usr/share/doc/$_pkgname/examples"
+
 	# copy license
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
