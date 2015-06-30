@@ -1,20 +1,19 @@
 pkgbase = blackfire-agent
 	pkgdesc = Blackfire Profiler - Fire up your PHP Apps Performance
 	pkgver = 0.26.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blackfire.io
 	install = blackfire-agent.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = glibc
 	source = blackfire-agent.service
-	source = blackfire-agent.install
-	md5sums = 048b509f1d16fb5c7321d6645a4dcf24
-	md5sums = 36fd826f62db627c45b8c99061ec179f
-	source_i686 = http://packages.blackfire.io/binaries/blackfire-agent/0.26.4/blackfire-agent-linux_386
-	md5sums_i686 = 1b9679bf4a0fb66383196f086f1c5c24
-	source_x86_64 = http://packages.blackfire.io/binaries/blackfire-agent/0.26.4/blackfire-agent-linux_amd64
-	md5sums_x86_64 = 3baf0b0f12faff124f41d5a8757e2426
+	sha256sums = aec343bca2f712d0dd22ccb43128d479e0280847e9573c2f37c183478f1ebcf6
+	source_i686 = blackfire-agent-0.26.4_i686::http://packages.blackfire.io/binaries/blackfire-agent/0.26.4/blackfire-agent-linux_386
+	sha256sums_i686 = 115d7464d0477657c42cfa8bfb5a2b07dd2b3a35604afed3581eb9649da86ed7
+	source_x86_64 = blackfire-agent-0.26.4_x86_64::http://packages.blackfire.io/binaries/blackfire-agent/0.26.4/blackfire-agent-linux_amd64
+	sha256sums_x86_64 = 1e84f6afb282cb3459a1056c5da0aa77f92d2d6dfd411b7d6a9caba90d5f351e
 
 pkgname = blackfire-agent
 
