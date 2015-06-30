@@ -3,12 +3,12 @@
 
 pkgname=percol
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds flavor of interactive filtering to the traditional pipe concept of UNIX shell"
 arch=('any')
-depends=('python')
-makedepends=('python-setuptools')
-optdepends=('python-cmigemo')
+depends=('python2')
+makedepends=('python2-setuptools')
+optdepends=('python2-cmigemo')
 url="https://github.com/mooz/percol"
 license=('MIT')
 options=(!emptydirs)
@@ -21,12 +21,12 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   msg 'Building...'
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   msg 'Installing...'
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
