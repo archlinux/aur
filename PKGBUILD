@@ -13,11 +13,11 @@ options=('!strip' '!emptydirs')
 _gourl=github.com/bemasher/rtlamr
 
 build() {
-  GOPATH="$srcdir" go get -v -x ${_gourl}/...
+  GOPATH="$srcdir" go get -v ${_gourl}/...
 }
 
 check() {
-  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}/...
+  GOPATH="$srcdir" go test -v ${_gourl}/...
 }
 
 package() {
