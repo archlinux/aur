@@ -2,11 +2,11 @@
 
 _plug=delogo
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.2.9.g9a5129b
+pkgver=v0.3.7.gfde8a60
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171252"
+url='http://forum.doom9.org/showthread.php?t=171252'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --gcc --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
