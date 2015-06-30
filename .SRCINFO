@@ -1,0 +1,17 @@
+pkgbase = vlna
+	pkgdesc = TeX and LaTeX utility to add the ~ by Czech typesetting conventions
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://petr.olsak.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	conflicts = texlive-bin
+	source = ftp://math.feld.cvut.cz/pub/olsak/vlna/vlna-1.5.tar.gz
+	source = LICENSE
+	md5sums = 82f975d59692e159794cc6a717e0f75d
+	md5sums = 51eec77b6812a9b6c0c0d6cb0bf3ced6
+
+pkgname = vlna
+
