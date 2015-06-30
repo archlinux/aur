@@ -1,0 +1,17 @@
+pkgbase = dyndns
+	pkgdesc = dyndns (Dynamic DNS) syncing shell script with systemd script
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://john.piasetzki.name/projects/dyndns
+	arch = any
+	license = unknown
+	depends = curl
+	source = http://john.piasetzki.name/projects/dyndns/dyndns-1.0.1
+	source = dyndns.service
+	source = dyndnsd
+	md5sums = 17312c8594295c723f8d4021b282f168
+	md5sums = bdb2511c0e00fa8a346dfce72887e7a7
+	md5sums = 2fc56497ed300dc095e65ecfd0391512
+
+pkgname = dyndns
+

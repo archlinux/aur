@@ -1,0 +1,13 @@
+[Unit]
+Description=Dyndns Service
+After=network.target
+
+[Service]
+Type=forking
+User=nobody
+EnvironmentFile=/etc/conf.d/dyndnsd
+ExecStart=/usr/bin/dyndns -D -u ${username} -p ${password} ${host}
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
