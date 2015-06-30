@@ -1,0 +1,13 @@
+pkgbase = libpasori
+	pkgdesc = SONY RC-S320 USB FeliCa NFC RFID Card Reader/Writer(PaSoRi).
+	pkgver = 0.2
+	pkgrel = 0
+	url = http://libpasori.osdn.jp
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://osdn.jp/frs/redir.php?m=jaist&f=%2Flibpasori%2F20457%2Flibpasori02.tar.bz2
+	md5sums = c23f2a3ae3d699bcd7a269dbd64120fb
+
+pkgname = libpasori
+
