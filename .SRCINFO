@@ -1,15 +1,15 @@
 pkgbase = blackfire-cli
 	pkgdesc = Blackfire Profiler - Fire up your PHP Apps Performance
-	pkgver = 0.25.3
+	pkgver = 0.26.4
 	pkgrel = 1
 	url = https://blackfire.io
 	arch = i686
 	arch = x86_64
 	license = custom
-	source_i686 = http://packages.blackfire.io/binaries/blackfire-agent/0.25.3/blackfire-cli-linux_386
-	sha512sums_i686 = b87117f3bbdcdd55d7910278f0c74144fc802764d5782ed18ae93d14115e24d87ae669c0979ebf33df4350cc5bc02f48d7074e1b192130a959f22393296ced51
-	source_x86_64 = http://packages.blackfire.io/binaries/blackfire-agent/0.25.3/blackfire-cli-linux_amd64
-	sha512sums_x86_64 = 759a55aa7edd84a59831d7ecf5dca4ceea2747759cf332c5b0e5d482861d4e027aca5da3e79fcb7ecdbea9830a1eaa87a4c63c843dcf793c414550d3289b64e6
+	source_i686 = blackfire-cli-0.26.4_i686::http://packages.blackfire.io/binaries/blackfire-agent/0.26.4/blackfire-cli-linux_386
+	sha256sums_i686 = a1e474c57426abc56012707ec48453e57fe77a353d25c15b6ec19939ce406a1b
+	source_x86_64 = blackfire-cli-0.26.4_x86_64::http://packages.blackfire.io/binaries/blackfire-agent/0.26.4/blackfire-cli-linux_amd64
+	sha256sums_x86_64 = e854395b8ab0f217f3c2858f04ae81a3db7e72a97536a3176926d98c9ec11aee
 
 pkgname = blackfire-cli
 
