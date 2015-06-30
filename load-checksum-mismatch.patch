@@ -1,0 +1,11 @@
+--- a/load.c	2011-03-06 18:24:15.000000000 -0500
++++ b/load.c	2013-05-21 11:26:54.363938429 -0400
+@@ -573,7 +573,7 @@
+ {
+ 	static struct swap_reader handle;
+ 	static unsigned char orig_checksum[16], checksum[16];
+-	static char csum_buf[48];
++	static char csum_buf[49];
+ 	int error = 0, test_mode = (verify || test);
+ 
+ 	error = read_page(fd, header, start);

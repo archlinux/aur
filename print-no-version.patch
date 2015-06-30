@@ -1,0 +1,28 @@
+--- a/resume.c
++++ b/resume.c
+@@ -444,8 +444,8 @@ int main(int argc, char *argv[])
+ 
+ 	mem_size = 2 * page_size + buffer_size;
+ #ifdef CONFIG_ENCRYPT
+-	printf("%s: libgcrypt version: %s\n", my_name,
+-		gcry_check_version(NULL));
++	/* printf("%s: libgcrypt version: %s\n", my_name,
++		gcry_check_version(NULL)); */
+ 	gcry_control(GCRYCTL_INIT_SECMEM, page_size, 0);
+ 	mem_size += page_size;
+ #endif
+diff --git a/suspend.c b/suspend.c
+index 479ce58..d782cd6 100644
+--- a/suspend.c
++++ b/suspend.c
+@@ -2342,8 +2342,8 @@ int main(int argc, char *argv[])
+ #endif
+ #ifdef CONFIG_ENCRYPT
+ 	if (do_encrypt) {
+-		printf("%s: libgcrypt version: %s\n", my_name,
+-			gcry_check_version(NULL));
++		/* printf("%s: libgcrypt version: %s\n", my_name,
++			gcry_check_version(NULL)); */
+ 		gcry_control(GCRYCTL_INIT_SECMEM, page_size, 0);
+ 		ret = gcry_cipher_open(&cipher_handle, IMAGE_CIPHER,
+ 				GCRY_CIPHER_MODE_CFB, GCRY_CIPHER_SECURE);

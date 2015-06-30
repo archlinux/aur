@@ -1,0 +1,14 @@
+# vim:set ft=sh:
+
+build () {
+    add_binary /usr/lib/suspend/resume
+    add_file /etc/suspend.conf
+    add_runscript
+}
+
+help () {
+	cat <<HELPEOF
+  This hook initializes support for resuming from Disk.
+  Supports uswsusp.
+HELPEOF
+}

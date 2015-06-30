@@ -1,0 +1,29 @@
+--- a/wlcsv2c.pl
++++ b/wlcsv2c.pl
+@@ -2,21 +2,21 @@
+ # Rodolfo Garcia kix_at_kix.es
+ # suspend database management v1.0
+ 
+-use Switch;
++use feature qw(switch);
+ 
+-switch ($#ARGV) {
+-  case 0 {
++given ($#ARGV) {
++  when (0) {
+     my $fin = $ARGV[0];
+     open(INF, "<$fin") or die "Could not open input file\n";
+     open(OUF, ">&STDOUT") or die "Could not open output file\n";
+   }
+-  case 1 {
++  when (1) {
+     my $fin = $ARGV[0];
+     my $fout = $ARGV[1];
+     open(INF, "<$fin") or die "Could not open input file\n";
+     open(OUF, ">$fout") or die "Could not open output file\n";
+   }
+-  else {
++  default {
+     my $msg = $0 . " <input-file> [output-file]";
+     die $msg;
+   }

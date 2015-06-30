@@ -1,0 +1,17 @@
+post_install() {
+	cat << EOF
+==> The new Software Suspend does not use kernel parameters
+==> to determine the suspend partition, instead it consults
+==> /etc/suspend.conf when booting.
+==> You MUST edit this file before you update your initrd.
+==> Point the "resume device" variable to your swap partition.
+
+==> You will need to update your mkinitcpio.conf file to
+==> include the hook uresume.  Replace your 'resume' hook
+==> with 'uresume'.  If you do not have a resume hook the
+==> uresume hook must go before filesystems but after block.
+==> Do not get this wrong.  Then rebuild the ramdisk with
+==> '# mkinitcpio -p linux' (or what else needed for the
+==> kernel you use)
+EOF
+}
