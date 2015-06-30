@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-uname
+	pkgdesc = Add uname output to early boot process
+	pkgver = 0.1.0.r6.g606252e
+	pkgrel = 1
+	url = https://github.com/eworm-de/mkinitcpio-uname
+	install = mkinitcpio-uname.install
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git://github.com/eworm-de/mkinitcpio-uname.git
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-uname
+
