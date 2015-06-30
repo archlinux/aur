@@ -1,0 +1,19 @@
+--- src/openhab-runtime/start.sh	2015-05-25 21:28:50.000000000 +0200
++++ src/openhab-runtime/start2.sh	2015-06-30 21:30:48.788034088 +0200
+@@ -5,10 +5,6 @@
+ # set path to eclipse folder. If local folder, use '.'; otherwise, use /path/to/eclipse/
+ eclipsehome="server";
+ 
+-# set ports for HTTP(S) server
+-HTTP_PORT=8080
+-HTTPS_PORT=8443
+-
+ # get path to equinox jar inside $eclipsehome folder
+ cp=$(find $eclipsehome -name "org.eclipse.equinox.launcher_*.jar" | sort | tail -1);
+ 
+@@ -30,4 +26,5 @@
+ 	-Dfelix.fileinstall.active.level=4 \
+ 	-Djava.awt.headless=true \
+ 	-jar $cp $* \
++	$OPENHAB_OPTIONS \
+ 	-console

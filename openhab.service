@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenHAB runtime
+After=syslog.target network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/openhab
+ExecStart=/opt/openhab-runtime/start.sh
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

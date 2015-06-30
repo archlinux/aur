@@ -1,0 +1,6 @@
+
+# set ports for HTTP(S) server
+HTTP_PORT=8080
+HTTPS_PORT=8443
+
+OPENHAB_OPTIONS=
