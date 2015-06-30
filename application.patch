@@ -1,0 +1,8 @@
+--- ./application	2013-10-22 16:18:15.971018176 +0200
++++ application.patched	2013-10-22 16:44:33.859134638 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: UTF-8 -*-
+ 
+ import wsgiref.simple_server

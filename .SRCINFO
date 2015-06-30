@@ -1,0 +1,17 @@
+pkgbase = selftest-git
+	pkgdesc = Tool for testing and educationg people
+	pkgver = v1.0.r9.g54a0022
+	pkgrel = 1
+	url = http://www.fedorahosted.org/selftest
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = python2
+	provides = selftest
+	source = selftest::git+https://git.fedorahosted.org/git/selftest.git
+	source = application.patch
+	md5sums = SKIP
+	md5sums = 816ede0c70e8d7daf6d61e9cde11eadc
+
+pkgname = selftest-git
+
