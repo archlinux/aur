@@ -49,7 +49,7 @@ package() {
   done
 
   install -d $pkgdir/usr/include/bam
-  install -Dm644 $srcdir/$pkgname-$pkgver/*.h $pkgdir/usr/include/bam
+  install -Dm644 *.h $pkgdir/usr/include/bam
 
   install -Dm644 libbam.a $pkgdir/usr/lib/libbam.a
 
