@@ -1,0 +1,14 @@
+pkgbase = ttsdecker
+	pkgdesc = Deck building Tool for Tabletop Simulator
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Splizard
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = bash
+
+pkgname = ttsdecker
+
