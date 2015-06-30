@@ -1,0 +1,21 @@
+post_update() {
+	if getent group ladvd &>/dev/null; then
+		usermod -R ladvd ladvd >/dev/null
+		groupdel ladvd >/dev/null
+	fi
+}
+
+post_install() {
+	if ! getent passwd ladvd &>/dev/null; then
+		useradd -r -u 142 -d /run/ladvd -s /bin/false ladvd >/dev/null
+	fi
+}
+
+post_remove() {
+	if getent passwd ladvd &>/dev/null; then
+		userdel ladvd >/dev/null
+	fi
+	if getent group ladvd &>/dev/null; then
+		groupdel ladvd >/dev/null
+	fi
+}

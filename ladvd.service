@@ -1,0 +1,13 @@
+# To modify this unit, copy it to /etc/systemd/system and edit there
+# This way a list of interfaces which ladvd should utilize can be supplied.
+
+[Unit]
+Description=uses CDP / LLDP frames to inform switches about connected hosts
+Documentation=man:ladvd(8) man:ladvdc(8)
+Requires=network.target
+
+[Service]
+ExecStart=/usr/sbin/ladvd -f -a -z
+
+[Install]
+WantedBy=multi-user.target

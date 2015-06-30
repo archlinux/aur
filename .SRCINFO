@@ -1,0 +1,18 @@
+pkgbase = ladvd
+	pkgdesc = LLDP daemon for Unix
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://ladvd.googlecode.com/
+	install = ladvd.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = pciutils
+	depends = libcap-ng
+	depends = libpcap
+	depends = libevent
+	source = ladvd-1.1.0.tar.gz::https://github.com/sspans/ladvd/archive/v1.1.0.tar.gz
+	sha256sums = 6db4b3270d90469e7081695f62ed13b88ac15bd41b8467c81eec5d035742ae57
+
+pkgname = ladvd
+
