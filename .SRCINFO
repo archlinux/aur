@@ -1,0 +1,23 @@
+pkgbase = libcgroup
+	pkgdesc = Library that abstracts the control group file system in Linux
+	pkgver = 0.41
+	pkgrel = 2
+	url = http://libcg.sourceforge.net
+	install = libcgroup.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	options = !emptydirs
+	options = !libtool
+	backup = etc/cgconfig.conf
+	backup = etc/cgrules.conf
+	backup = etc/cgsnapshot_blacklist.conf
+	source = http://downloads.sourceforge.net/libcg/libcgroup-0.41.tar.bz2
+	source = cgconfig.service
+	source = cgrules.service
+	sha256sums = e4e38bdc7ef70645ce33740ddcca051248d56b53283c0dc6d404e17706f6fb51
+	sha256sums = 808fc354abf36d7b6673dad790be275309ac57a2606d1be3732b9b3aeb5885eb
+	sha256sums = 6b1340ff6717f55e5e57dacc72accc0bfaed7e50ef31439271b6ddc893cbf671
+
+pkgname = libcgroup
+

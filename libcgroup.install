@@ -1,0 +1,11 @@
+post_install() {
+  getent group cgred &>/dev/null || groupadd -r -g 160 cgred >/dev/null
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent group cgred &>/dev/null && groupdel cgred >/dev/null
+}
