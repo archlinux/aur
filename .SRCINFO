@@ -1,0 +1,15 @@
+pkgbase = materialos-icon-theme-git
+	pkgdesc = A community driven material design icon pack
+	pkgver = 0.r33.91eeeb4
+	pkgrel = 1
+	url = https://github.com/materialos/Linux-Icon-Pack
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	provides = materialos-icon-theme
+	conflicts = materialos-icon-theme
+	source = git+https://github.com/materialos/Linux-Icon-Pack.git
+	sha256sums = SKIP
+
+pkgname = materialos-icon-theme-git
+
