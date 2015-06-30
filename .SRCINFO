@@ -1,0 +1,15 @@
+pkgbase = contour-shuttle-git
+	pkgdesc = a key input driver wrapper for the Contour-ShuttlePROv2, a Jog/Shutlle device designed for A/V editing
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dasimmet
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	depends = libxtst
+	depends = bash
+
+pkgname = contour-shuttle-git
+
