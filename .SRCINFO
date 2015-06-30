@@ -1,0 +1,21 @@
+pkgbase = linphone-git
+	pkgdesc = Linphone is an internet phone or Voice Over IP phone (VoIP).
+	pkgver = 3.7.0.r1376.gbe7413c
+	pkgrel = 1
+	url = http://www.linphone.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk2
+	depends = mediastreamer-git
+	depends = libexosip2
+	depends = belle-sip-git
+	provides = linphone
+	conflicts = linphone
+	options = !libtool
+	source = git://git.linphone.org/linphone.git
+	sha256sums = SKIP
+
+pkgname = linphone-git
+
