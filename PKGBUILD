@@ -2,7 +2,7 @@
 
 _pkgname=onics
 pkgname=onics-git
-pkgver=507.9b6fb90
+pkgver=545.6ec68b6
 pkgrel=1
 pkgdesc="A command line tool suite to capture, dissect, manipulate and send network data."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('glibc' 'libpcap')
 makedepends=('git' 'make')
 conflicts=('onics')
 provides=('onics')
-source=('git://gitorious.org/catlib/catlib.git#branch=master'
-        'git://gitorious.org/onics/onics.git#branch=master')
+source=('git+https://gitorious.org/catlib/catlib.git#branch=master'
+        'git+https://gitorious.org/onics/onics.git#branch=master')
 md5sums=('SKIP' 'SKIP')
 
 
@@ -39,4 +39,8 @@ package() {
   # Move man pages to /usr/share
   mkdir -p "$pkgdir/usr/share"
   mv "$pkgdir/usr/man" "$pkgdir/usr/share"
+
+  # Rename pgrep to pkgrep to avoid conflict with package procps-ng
+  mv "$pkgdir/usr/bin/pgrep" "$pkgdir/usr/bin/pkgrep"
+  mv "$pkgdir/usr/share/man/man1/pgrep.1" "$pkgdir/usr/share/man/man1/pkgrep.1"
 }
