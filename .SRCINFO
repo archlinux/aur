@@ -1,7 +1,7 @@
 pkgbase = nvidia-lts-ck
 	pkgdesc = NVIDIA drivers for linux-lts-ck
 	pkgver = 352.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia-lts-ck.install
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = nvidia-lts-ck
 	provides = nvidia
 	options = !strip
 	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/352.21/NVIDIA-Linux-x86-352.21.run
-	md5sums_i686 = 0e009686400c522209eaa8ab835ff81f
+	md5sums_i686 = c91760a04f658845722380f6c7fd4709
 	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.21/NVIDIA-Linux-x86_64-352.21-no-compat32.run
-	md5sums_x86_64 = eb5ad6a07dc03e0a19d5f6fa069c494b
+	md5sums_x86_64 = 4eea308a1b04553f720f82fd2fac79d3
 
 pkgname = nvidia-lts-ck
 
