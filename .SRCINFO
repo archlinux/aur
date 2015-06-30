@@ -1,0 +1,19 @@
+pkgbase = adminer-editor
+	pkgdesc = Database data editing tool written in PHP
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.adminer.org/en/editor/
+	install = adminer-editor.install
+	arch = any
+	license = Apache License, Version 2.0
+	depends = php
+	optdepends = mariadb
+	optdepends = apache
+	optdepends = postgresql
+	optdepends = sqlite
+	optdepends = sqlite2
+	source = http://downloads.sourceforge.net/adminer/editor-4.2.1.php
+	md5sums = 4bad913d9a3d2d665692d2e32a190d2e
+
+pkgname = adminer-editor
+
