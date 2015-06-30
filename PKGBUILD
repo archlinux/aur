@@ -1,0 +1,37 @@
+# Maintainer: Christian Hesse <mail@eworm.de>
+# Contributor: Florian Pritz <bluewind@xinu.at>
+# Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+
+pkgname=vimpager-git
+pkgver=1.8.3.r0.gaf707ef
+pkgrel=1
+pkgdesc='A vim-based script to use as a PAGER - git checkout'
+arch=('any')
+url='https://github.com/rkitover/vimpager'
+license=('custom:vim')
+depends=('vim')
+conflicts=('vimpager')
+provides=('vimpager')
+backup=('etc/vimpagerrc')
+source=('git://github.com/rkitover/vimpager.git')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd vimpager/
+
+	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+	else
+		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+	fi
+}
+
+package() {
+	cd vimpager/
+
+	make PREFIX="/usr" SYSCONFDIR="/etc" DESTDIR="${pkgdir}" install
+
+	ln -s "/usr/share/licenses/vim/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+}
+
