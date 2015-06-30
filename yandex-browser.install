@@ -20,6 +20,13 @@ fi
 # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
 update-desktop-database > /dev/null 2>&1 || true
 
+chmod 4755 /opt/yandex/browser-beta/yandex_browser-sandbox
+#chown root:root /opt/yandex/browser-beta/yandex_browser-sandbox
+	
+  cat << EOF
+==> NOTE: After install run chmod 4755 /opt/yandex/browser-beta/yandex_browser-sandbox as root.
+
+EOF
 }
 
 post_upgrade() {
@@ -44,6 +51,13 @@ fi
 # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
 update-desktop-database > /dev/null 2>&1 || true
 
+chmod 4755 /opt/yandex/browser-beta/yandex_browser-sandbox
+#chown root:root /opt/yandex/browser-beta/yandex_browser-sandbox
+
+  cat << EOF
+==> NOTE: After install run chmod 4755 /opt/yandex/browser-beta/yandex_browser-sandbox as root.
+
+EOF
 }
 
 
