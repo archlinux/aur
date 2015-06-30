@@ -66,7 +66,7 @@ pkgbase=linux-bfs
 pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
 _srcname=linux-4.0
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
@@ -95,7 +95,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfs.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64')
+        'config' 'config.x86_64'
+        '0004-block-loop-convert-to-per-device-workqueue.patch'
+        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch')
         
 prepare() {
     cd ${_srcname}
@@ -103,6 +105,14 @@ prepare() {
      ### Add upstream patch
          msg "Add upstream patch"
          patch -Np1 -i "${srcdir}/patch-${pkgver}"
+         
+     ### Fix deadlock with stacked loop devices (FS#45129)
+     # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+         msg "Fix deadlock with stacked loop devices (FS#45129)"
+         for p in "${srcdir}"/000{4,5}-block*.patch; do
+         msg " $p"
+         patch -Np1 -i "$p"
+         done
     
      ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
      # remove this when a Kconfig knob is made available by upstream
@@ -482,7 +492,7 @@ package_linux-bfs-docs() {
 
 sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995'
             'SKIP'
-            'fc0a1d7e0d09c189066b3df2bf8a8ea7f9a7e84526ef9bef7e894ada9a198877f1bfdfa250f06a10d4208dcee54890182d824f953a873a055e92383307529f53'
+            '94c9ae61d665bdb06b2558b4e473777c13cb77e00c4b6cab326d10372f64bb8a9550f8bc2e2d3e1bf2a4ddf2adf1f3546a93e727aeb6b8792057017276dd9683'
             'SKIP'
             '576f7383bc4ade80a9180859d235d5d9c273a927ffbd4b36e0d7abd223b5998d628ce2a061025c5506ecf21b57dd10cb08bf9ef40e26f7203f84c01466d98d3a'
             '60622801e4f092b81af821a44bee47bba5a1cbecf66795a0c30774ee537a933bad0f7103157c273ab173d68268c3adc2962d7d47e29693cdeadf071ef64d2e2a'
@@ -497,7 +507,9 @@ sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f
             '84a7c3b96959cb2dd7687b968ba4522b62919529e2c0e166c0369e6cf77ff0e7ee387ca22a0980fc37dd100812205ab2c17b6c4d5dda51958ac1e66693f22925'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '46ea93989d6e2fa43a6ea83c280a526d3c2744054e2c3bea180c74ba13fa683151c675378a4b0ebe463188f02807136228efcd9f31128505750861e3aad9af5e'
-            'db8e523aa6578bedd468fa94c163852edeed7dbee80b4068d93b7e3e294c9fd5faad91da00b4f1ac200a364f30416e30db0617426169a3e88ba334c27b8e7014')
+            'db8e523aa6578bedd468fa94c163852edeed7dbee80b4068d93b7e3e294c9fd5faad91da00b4f1ac200a364f30416e30db0617426169a3e88ba334c27b8e7014'
+            '412d17407ecb6dffe036094a33531edb8df0c9a6e6a1aebe113733db066c8530a87710c5d51bbf5310a9a39cacc95cecf938d2e7e63903605c45c06d73b975d7'
+            '68f8c2bd38baf91ac5058cda03f11b2388b3de1fd5064d8c15317354877be1ec56c92fa2f535b7e0868472a5c94fbfa225481fa0990664a786ab358bc010af3a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
