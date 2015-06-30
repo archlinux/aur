@@ -1,0 +1,15 @@
+pkgbase = mediaextract-git
+	pkgdesc = Extracts media files (AVI, Ogg, Wave, PNG, ...) that are embedded within other files.
+	pkgver = r110.ceb8c01
+	pkgrel = 1
+	url = http://panzi.github.com/mediaextract/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = git://github.com/panzi/mediaextract.git
+	md5sums = SKIP
+
+pkgname = mediaextract-git
+
