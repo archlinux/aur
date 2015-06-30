@@ -20,10 +20,6 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  chmod +x "${_plug}/configure"
-}
-
 build() {
   cd "${_plug}"
   ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
