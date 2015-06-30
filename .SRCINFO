@@ -1,0 +1,20 @@
+pkgbase = rkt-git
+	pkgdesc = App container runtime
+	pkgver = 0.5.6.r22.g2440b4a
+	pkgrel = 1
+	url = https://github.com/coreos/rkt
+	arch = x86_64
+	license = apache
+	makedepends = cpio
+	makedepends = go
+	makedepends = squashfs-tools
+	provides = rkt
+	conflicts = rocket
+	conflicts = rkt
+	replaces = rocket
+	replaces = rkt
+	source = rkt-git::git+https://github.com/coreos/rkt
+	md5sums = SKIP
+
+pkgname = rkt-git
+
