@@ -1,0 +1,16 @@
+pkgbase = rebar3-git
+	pkgdesc = A sophisticated build-tool for Erlang projects that follows OTP principles.
+	pkgver = 2671.c88a6d3
+	pkgrel = 1
+	url = https://github.com/rebar/rebar3
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = erlang-nox
+	provides = rebar3
+	conflicts = rebar3
+	source = rebar3::git://github.com/rebar/rebar3.git
+	sha256sums = SKIP
+
+pkgname = rebar3-git
+

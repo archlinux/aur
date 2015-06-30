@@ -1,0 +1,6 @@
+pkg/
+src/
+rebar3/
+
+*.tar.gz
+*.tar.xz
