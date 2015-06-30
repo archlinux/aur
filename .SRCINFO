@@ -1,0 +1,14 @@
+pkgbase = rust-src
+	pkgdesc = Rust source files
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://rust-lang.org
+	arch = any
+	license = MIT
+	license = Apache
+	options = !strip
+	source = https://static.rust-lang.org/dist/rustc-1.1.0-src.tar.gz
+	sha1sums = a9913667b60ebf8dc558baa14ab1a59ceb4f76ef
+
+pkgname = rust-src
+
