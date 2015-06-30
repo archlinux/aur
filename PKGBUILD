@@ -15,7 +15,7 @@ options=('staticlibs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/samtools/samtools/archive/$pkgver.tar.gz
         makefile-system-htslib.patch)
 md5sums=('2748356ef392c0694ca1142de37cf2aa'
-         '05b136769fff4ab6c0962877390e96d8')
+         '00f3b0b730f37cd7c8ff12376a9a0c6a')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -30,19 +30,19 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  make
+  make HTSDIR=/usr/include HTSLIB= BGZIP= LDLIBS=-lhts
 }
 
 check() {
   cd $srcdir/$pkgname-$pkgver
 
-  make check
+  make HTSDIR=/usr/include HTSLIB= BGZIP= LDLIBS=-lhts check
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
 
-  make DESTDIR=$pkgdir prefix=/usr install
+  make HTSDIR=/usr/include HTSLIB= BGZIP= LDLIBS=-lhts DESTDIR=$pkgdir prefix=/usr install
 
   for file in misc/*.lua ; do
     install -Dm755 $file $pkgdir/usr/bin/$(basename $file)

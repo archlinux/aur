@@ -14,7 +14,7 @@ pkgbase = samtools
 	source = samtools-1.2.tar.gz::https://github.com/samtools/samtools/archive/1.2.tar.gz
 	source = makefile-system-htslib.patch
 	md5sums = 2748356ef392c0694ca1142de37cf2aa
-	md5sums = 05b136769fff4ab6c0962877390e96d8
+	md5sums = 00f3b0b730f37cd7c8ff12376a9a0c6a
 
 pkgname = samtools
 
