@@ -63,7 +63,7 @@ pkgbase=linux-uksm-ck
 pkgname=('linux-uksm-ck' 'linux-uksm-ck-headers' 'linux-uksm-ck-docs')
 _kernelname=-uksm-ck
 _srcname=linux-4.0
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kerneldedup.org/"
@@ -94,7 +94,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-uksm-ck.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64')
+        'config' 'config.x86_64'
+        '0004-block-loop-convert-to-per-device-workqueue.patch'
+        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch')
         
 prepare() {
     cd ${_srcname}
@@ -102,6 +104,14 @@ prepare() {
     ### Add upstream patch
         msg "Add upstream patch"
         patch -Np1 -i "${srcdir}/patch-${pkgver}"
+        
+    ### Fix deadlock with stacked loop devices (FS#45129)
+    # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+        msg "Fix deadlock with stacked loop devices (FS#45129)"
+        for p in "${srcdir}"/000{4,5}-block*.patch; do
+        msg " $p"
+        patch -Np1 -i "$p"
+        done
         
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
      # remove this when a Kconfig knob is made available by upstream
@@ -480,7 +490,7 @@ package_linux-uksm-ck-docs() {
 
 sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995'
             'SKIP'
-            'fc0a1d7e0d09c189066b3df2bf8a8ea7f9a7e84526ef9bef7e894ada9a198877f1bfdfa250f06a10d4208dcee54890182d824f953a873a055e92383307529f53'
+            '94c9ae61d665bdb06b2558b4e473777c13cb77e00c4b6cab326d10372f64bb8a9550f8bc2e2d3e1bf2a4ddf2adf1f3546a93e727aeb6b8792057017276dd9683'
             'SKIP'
             'ce46c47a1685f5014f4ada55b9ee6292255a383f83c04ac84ae922d16fef0687ebf09e7a6b211f23c6d1156312ef812c950805979893792f3e19b6c643d2fb81'
             '97f392e0bed2e6622aed7eb344f0ed499bb58ee118e62e28b67080df6ef02c7b874596e70d7db970a2f58f9f94faa3406c8a29eb5f6871ddc8d290ecd6aaf0b5'
@@ -494,7 +504,9 @@ sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f
             'af8f425ac196a3282903539171b76b0c0063630c54dc64b843f80b77651c41225b871b7ecd3679919338eb790b9032b6a4c78f7be1995eccad5d14ef4b59f8f5'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '970d05bb0c49bdeca68551d9a24c2fcc50186859ae2932293d7103b63ea9e73b71dc02457ebd7211b772fa943e93086d3ecfa5576f9e6c4d8f27e787b5f6a3ef'
-            'be36094607718a14ce1a6ed2892db0edc581b252b503ef1d8e9b145102f9db51b08ad6171cddaec2894c62de73e04e25a916f39760e00e9a7c3d6a9b1d3ff66f')
+            'be36094607718a14ce1a6ed2892db0edc581b252b503ef1d8e9b145102f9db51b08ad6171cddaec2894c62de73e04e25a916f39760e00e9a7c3d6a9b1d3ff66f'
+            '412d17407ecb6dffe036094a33531edb8df0c9a6e6a1aebe113733db066c8530a87710c5d51bbf5310a9a39cacc95cecf938d2e7e63903605c45c06d73b975d7'
+            '68f8c2bd38baf91ac5058cda03f11b2388b3de1fd5064d8c15317354877be1ec56c92fa2f535b7e0868472a5c94fbfa225481fa0990664a786ab358bc010af3a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
