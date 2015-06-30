@@ -1,0 +1,28 @@
+pkgbase = gitg-git
+	pkgdesc = A GIT repository viewer based on GTK+ - git checkout
+	pkgver = 3.16.1.r6.gec1042d
+	pkgrel = 1
+	url = https://git.gnome.org/browse/gitg/
+	install = gitg-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	depends = gtksourceview3
+	depends = git
+	depends = desktop-file-utils
+	depends = libgit2-glib
+	depends = libgee
+	depends = webkit2gtk
+	depends = libpeas
+	depends = gtkspell3
+	provides = gitg
+	conflicts = gitg
+	source = git://git.gnome.org/gitg
+	sha256sums = SKIP
+
+pkgname = gitg-git
+
