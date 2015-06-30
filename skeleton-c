@@ -1,0 +1,19 @@
+/*
+ * (C) 2015 by Christian Hesse <mail@eworm.de>
+ *
+ * This software may be used and distributed according to the terms
+ * of the GNU General Public License, incorporated herein by reference.
+ *
+ * This is an example code skeleton provided by vim-skeleton.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv) {
+	/* your code goes here */
+
+	return EXIT_SUCCESS;
+}
+
+// vim: set syntax=c:

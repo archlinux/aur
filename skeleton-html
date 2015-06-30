@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Title</title>
+
+<!-- (C) 2015 by Christian Hesse <mail@eworm.de>
+
+ This software may be used and distributed according to the terms
+ of the GNU General Public License, incorporated herein by reference.
+
+ This is an example code skeleton provided by vim-skeleton. //-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="Description">
+<meta name="author" content="Author">
+<meta name="keywords" content="Keywords">
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+<style type="text/css">
+body { text-align: center; font-family: sans-serif; }
+h1 { text-align: center; }
+img { border: 0px; }
+p { text-indent: 10px; }
+</style>
+
+</head>
+
+<body>
+	<!-- Your markup here //-->
+</body>
+</html>

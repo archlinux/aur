@@ -1,0 +1,17 @@
+#!/usr/bin/perl -w
+#
+# (C) 2015 by Christian Hesse <mail@eworm.de>
+#
+# This software may be used and distributed according to the terms
+# of the GNU General Public License, incorporated herein by reference.
+#
+# This is an example code skeleton provided by vim-skeleton.
+
+use strict;
+use warnings;
+
+# your code goes here
+
+exit 0;
+
+# vim: set syntax=perl:

@@ -1,0 +1,17 @@
+/*
+ * (C) 2015 by Christian Hesse <mail@eworm.de>
+ *
+ * This software may be used and distributed according to the terms
+ * of the GNU General Public License, incorporated herein by reference.
+ *
+ * This is an example code skeleton provided by vim-skeleton.
+ */
+
+#ifndef _SKELETON_H
+#define _SKELETON_H
+
+/* your code goes here */
+
+#endif /* _SKELETON_H */
+
+// vim: set syntax=c:

@@ -1,0 +1,4 @@
+post_install() {
+	echo " > Now place your skeleton file to /usr/share/vim/vimfiles/xtr/skeleton"
+	echo " > or ~/.vim/xtr/skeleton!"
+}
