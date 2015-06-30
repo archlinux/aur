@@ -1,7 +1,7 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 
 pkgname=snd-gtk-alsa-cvs
-pkgver=15.6
+pkgver=15.7
 pkgrel=1
 pkgdesc="A sound editor with Alsa and GTK GUI. CVS version"
 arch=('i686' 'x86_64')
@@ -14,12 +14,6 @@ conflicts=('snd-ls' 'snd')
 
 _cvsroot=":pserver:snd.cvs.sourceforge.net:/cvsroot/snd"
 _cvsmod="cvs-snd"
-
-#pkgver() {
-#ver="$(cvs -z3 -d "$_cvsroot" log -h snd.h | sed -n 4p | sed -e 's/head\: //')"
-#printf "15r%s" ${ver}
-#}
-
 
 build() {
   cd "$srcdir"
