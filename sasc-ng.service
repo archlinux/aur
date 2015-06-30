@@ -1,0 +1,11 @@
+[Unit]
+Description=SASC NG
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/sasc-ng
+ExecStartPre=/sbin/modprobe dvbloopback $DVBLOOPBACK_ARGS
+ExecStart=/usr/sbin/sasc-ng $SASCNG_ARGS --cam-dir $CAMDIR -l $LOGDIR/sasc-ng.log -b 16M --sid-allpid --sid-nocache --cam-budget
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+/var/log/sasc-ng.log {
+	copytruncate
+	daily
+	size 10M
+	missingok
+	rotate 2
+	compress
+	notifempty
+}

@@ -1,0 +1,120 @@
+Only in sc/contrib/sasc-ng: config.mak
+diff -ru sc/contrib/sasc-ng/dvbloopback/module/dvblb_forward.c sc-build/contrib/sasc-ng/dvbloopback/module/dvblb_forward.c
+--- sc/contrib/sasc-ng/dvbloopback/module/dvblb_forward.c	2011-04-27 09:36:37.197065902 +0300
++++ sc-build/contrib/sasc-ng/dvbloopback/module/dvblb_forward.c	2011-04-27 09:42:23.640415717 +0300
+@@ -166,9 +166,9 @@
+ 	struct file *ftmp = find_forwardmap(lbdev, f->private_data);
+ 	if (!ftmp || IS_ERR(ftmp))
+ 		return -EFAULT;
+-	if (lbdev->forward_dev->fops &&lbdev->forward_dev->fops->ioctl)
+-		return lbdev->forward_dev->fops->ioctl(
+-		           ftmp->f_dentry->d_inode, ftmp, cmd, arg);
++	if (lbdev->forward_dev->fops &&lbdev->forward_dev->fops->unlocked_ioctl)
++		return lbdev->forward_dev->fops->unlocked_ioctl(
++		           ftmp, cmd, arg);
+ 	return -EFAULT;
+ }
+ 
+diff -ru sc/contrib/sasc-ng/dvbloopback/module/dvb_loopback.c sc-build/contrib/sasc-ng/dvbloopback/module/dvb_loopback.c
+--- sc/contrib/sasc-ng/dvbloopback/module/dvb_loopback.c	2011-04-27 09:36:37.197065902 +0300
++++ sc-build/contrib/sasc-ng/dvbloopback/module/dvb_loopback.c	2011-04-27 09:41:54.984751422 +0300
+@@ -118,9 +118,9 @@
+ /* This is a copy of dvb_usercopy.  We need to do this because it isn't exported
+    by dvbdev
+ */
+-static int dvblb_usercopy(struct inode *inode, struct file *file,
++static int dvblb_usercopy(struct file *file,
+ 		     unsigned int cmd, unsigned long arg,
+-		     int (*func)(struct inode *inode, struct file *file,
++		     int (*func)(struct file *file,
+ 		     unsigned int cmd, void *arg))
+ {
+ 	char    sbuf[128];
+@@ -180,7 +180,7 @@
+ 	}
+ 
+ 	/* call driver */
+-	if ((err = func(inode, file, cmd, parg)) == -ENOIOCTLCMD)
++	if ((err = func(file, cmd, parg)) == -ENOIOCTLCMD)
+ 		err = -EINVAL;
+ 
+ 	if (err < 0)
+@@ -663,7 +663,7 @@
+    dvb_generic_ioctl) which is called by dvblb_ioctl for device-0.  It is
+    used to forward ioctl commands back to the userspace application
+ */
+-static int dvblb_looped_ioctl(struct inode *inode, struct file *f,
++static int dvblb_looped_ioctl(struct file *f,
+ 	unsigned int cmd, void *parg)
+ {
+ 	int ret;
+@@ -692,7 +692,7 @@
+ 	return ret;
+ }
+ 
+-static int dvblb_ioctl(struct inode *inode, struct file *f,
++static int dvblb_ioctl(struct file *f,
+ 	unsigned int cmd, unsigned long arg)
+ {
+ 	void * parg = (void *)arg;
+@@ -722,8 +722,7 @@
+ 		/* This is the looped device */
+ 		if (lbdev->forward_dev)
+ 			return dvblb_forward_ioctl(lbdev, f, cmd, arg);
+-
+-		return dvblb_usercopy (inode, f, cmd, arg,
++			return dvblb_usercopy (f, cmd, arg,
+ 		                       dvbdev->kernel_ioctl);
+ 	}
+ 	/* This is the userspace control device */
+@@ -978,7 +977,7 @@
+ 	.write		= dvblb_write,
+ 	.poll		= dvblb_poll,
+ 	.mmap		= dvblb_mmap,
+-	.ioctl		= dvblb_ioctl,
++	.unlocked_ioctl	= dvblb_ioctl,
+ };
+ 
+ static struct dvb_device dvbdev_looped = {
+@@ -998,7 +997,7 @@
+ 	.write		= dvblb_write,
+ 	.poll		= dvblb_poll,
+ 	.mmap		= dvblb_mmap,
+-	.ioctl		= dvblb_ioctl,
++        .unlocked_ioctl = dvblb_ioctl,
+ };
+ 
+ static struct dvb_device dvbdev_userspace = {
+diff -ru sc/contrib/sasc-ng/Makefile sc-build/contrib/sasc-ng/Makefile
+--- sc/contrib/sasc-ng/Makefile	2011-04-27 09:36:37.193734235 +0300
++++ sc-build/contrib/sasc-ng/Makefile	2011-04-27 09:44:40.072162363 +0300
+@@ -8,7 +8,7 @@
+ 
+ CC       ?= gcc
+ CXX      ?= g++
+-CXXFLAGS ?= -Wall -D__user= -Werror 
++CXXFLAGS ?= -Wall -D__user= 
+ CFLAGS   ?= -Wall -D__user= 
+ 
+ ifdef DVB_DIR
+@@ -57,7 +57,7 @@
+ INC_DEPS := $(shell ls $(LBDIR)/*.h) dvbloopback/module/dvbloopback.h
+ INC_DEPS_LB := $(shell ls dvblb_plugins/*.h)
+ 
+-LIBS = -lpthread -lcrypto -lcrypt
++LIBS = -lpthread -lcrypto -lcrypt -lv4l1
+ 
+ all: $(TOOL) libscanwrap.so
+ 
+diff -ru sc/contrib/sasc-ng/sc/dvbdevice.cpp sc-build/contrib/sasc-ng/sc/dvbdevice.cpp
+--- sc/contrib/sasc-ng/sc/dvbdevice.cpp	2011-04-27 09:36:37.207060903 +0300
++++ sc-build/contrib/sasc-ng/sc/dvbdevice.cpp	2011-04-27 09:42:51.956250022 +0300
+@@ -10,7 +10,7 @@
+ #include "include/vdr/dvbdevice.h"
+ #include <errno.h>
+ #include <limits.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <linux/dvb/audio.h>
+ #include <linux/dvb/dmx.h>
+ #include <linux/dvb/frontend.h>
