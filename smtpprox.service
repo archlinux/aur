@@ -1,0 +1,10 @@
+[Unit]
+Description=SMTP proxy in perl
+After=network.target
+
+[Service]
+User=nobody
+ExecStart=/usr/bin/smtpprox 127.0.0.1:10025 127.0.0.1:10026
+
+[Install]
+WantedBy=multi-user.target

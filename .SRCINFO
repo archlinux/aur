@@ -1,0 +1,17 @@
+pkgbase = smtpprox
+	pkgdesc = Simple efficient SMTP proxy in perl
+	pkgver = 1.2
+	pkgrel = 7
+	url = http://bent.latency.net/smtpprox/
+	arch = any
+	license = GPL
+	depends = perl
+	source = http://bent.latency.net/smtpprox/smtpprox-1.2.tar.gz
+	source = smtpprox-tmpname-and-xforward.patch
+	source = smtpprox.service
+	sha256sums = 5c993a63fd5aa9e4580f023f6435f44c47e38823e6cd66435b3dedc206cc55fa
+	sha256sums = 913490c0a4d0dd23476d1c7059a49b9a059f0768b668faae81327159f78e277d
+	sha256sums = 6a3dc880118effcaaa982be48f25ffd5dbd75a5ac9c621611a2f047b0b3356fd
+
+pkgname = smtpprox
+
