@@ -10,7 +10,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-lts318       # Build kernel with a different name
 _srcname=linux-3.18
-pkgver=3.18.16
+pkgver=3.18.17
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,10 +29,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            'f60602c8de2ae7b1507c538b6af65d5b933727a06f56075898ff64fdcf650313'
+            '190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8'
             'SKIP'
-            'd3794c8b2cd11b71914b41f7a4e861369d4fa3c29fdd9e1d677ff0c2167eeb52'
-            'df7886f5d57f8f85e89987066dfa5c316e922dc0b22e6e6ad01331333db52377'
+            'c9821d2a786b569233833c3074c7bb4e9c0d50ab903a9b9aeb8784d95c87a52d'
+            '781d5cb410935f3f904a539ecdb0b49f2d87c95a0f05c665b19b97a9d14dd40e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
