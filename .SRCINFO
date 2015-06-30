@@ -1,0 +1,13 @@
+pkgbase = urxvt-safe-paste
+	pkgdesc = Open editor when pasted text from clipboard contains newlines
+	pkgver = 1.21d424d
+	pkgrel = 1
+	url = https://github.com/seletskiy/urxvt-safe-paste
+	arch = any
+	makedepends = git
+	depends = rxvt-unicode
+	source = git+https://github.com/seletskiy/urxvt-safe-paste
+	sha1sums = SKIP
+
+pkgname = urxvt-safe-paste
+
