@@ -4,7 +4,7 @@
 
 pkgname=mysql-proxy
 pkgver=0.8.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Monitors, analyzes and transformations communication between the MySQL client and server'
 arch=('i686' 'x86_64')
 url='http://dev.mysql.com/downloads/mysql-proxy/'
@@ -19,7 +19,7 @@ source=("http://dev.mysql.com/get/Downloads/MySQL-Proxy/${pkgname}-${pkgver}.tar
 	'proxy.cnf')
 sha256sums=('e5bac3df8bca2eed41cdbf09439264b34c77339cfe1eda506b0d76eaa2d2b2d5'
             'SKIP'
-            'c3fa54b83b3c2dd6c50a7f86286c88c51a061c8497640c0199fd61f3ce506f50'
+            '197099f1b064fd36f8051909d3a20684575b2296a9b24886538e5286d9410e4b'
             '95170a086c5da94c8b1362fd5cd1ad3c9e75abe950faed362d0bd3710894ac94')
 
 build() {
