@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=v5.3.pl0.33.g92265d0
+pkgver=5.3.0.1.g80585b4
 pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    git describe --long | sed 's/-/./g'
+    git describe --tags | sed 's/-/./g'
 }
 
 build() {
