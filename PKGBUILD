@@ -2,7 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=0.93.r1.g71d0f5a
+pkgver=0.93.r33.g8f56a5e
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
@@ -11,30 +11,33 @@ license=(GPL3)
 depends=(boost-libs qt5-base libsigrok4dsl-git libsigrokdecode)
 makedepends=(boost cmake)
 source=(git://github.com/DreamSourceLab/DSView
-        0001-Fix-compilation-error.patch
-        0002-Instead-of-polluting-bin-use-usr-share-path-for-reso.patch
+        0001-Fix-compilation-error-found-at-Linux-Arch.patch
+        0002-Use-usr-share-for-resource-files-bin-folder-is-for-b.patch
+        0003-Fix-compile-error.patch
         udev.rules
         dsview.desktop)
-md5sums=('SKIP'
-         '1e65dd1e0a3154296f37429ff2f6e817'
-         'da765c96fbe56910e32755995ec3616a'
-         '9a0a3d388369283019d7f0efa8d0c8a6'
-         '095886809795b40d663bfe4b79395811')
+sha1sums=('SKIP'
+          'e5ae41c0157e8e318866be7785ff9bee3198d387'
+          '0fe0fb09ce13383c26c39f016d23a37a9af82bef'
+          '64fb34f100c4a94ab497581a871f006012727b5c'
+          '3f926508405a6546d31a819cc0909d312f0f0cdc'
+          '2354eb8d1140e8e3ce523122a52a5d07fa80f739')
 install=dsview.install
 
 pkgver() {
-  cd "$srcdir/DSView"
+  cd DSView
   git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/DSView"
-  patch -p1 < "$srcdir/0001-Fix-compilation-error.patch"
-  patch -p1 < "$srcdir/0002-Instead-of-polluting-bin-use-usr-share-path-for-reso.patch"
+  cd DSView
+  patch -p1 < "$srcdir/0001-Fix-compilation-error-found-at-Linux-Arch.patch"
+  patch -p1 < "$srcdir/0002-Use-usr-share-for-resource-files-bin-folder-is-for-b.patch"
+  patch -p1 < "$srcdir/0003-Fix-compile-error.patch"
 }
 
 build() {
-  cd "$srcdir/DSView/DSView"
+  cd DSView/DSView
 
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_SKIP_RPATH=1 .
 
@@ -43,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/DSView/DSView"
+  cd DSView/DSView
 
   make DESTDIR="$pkgdir" install
 

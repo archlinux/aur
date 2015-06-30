@@ -1,7 +1,7 @@
-From a55609ad36a768a8e70c242719b050902c99c2d2 Mon Sep 17 00:00:00 2001
+From 5270c97b76674d6f19fd14758d443cfda44c0036 Mon Sep 17 00:00:00 2001
 From: Anatol Pomozov <anatol.pomozov@gmail.com>
 Date: Fri, 15 May 2015 16:04:00 -0700
-Subject: [PATCH 1/2] Fix compilation error
+Subject: [PATCH 1/4] Fix compilation error found at Linux Arch
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -27,5 +27,5 @@ index 32d3897..c3c7440 100644
  	const char *const *annotations = (char**)pda->ann_text;
  	while(*annotations) {
 -- 
-2.4.1
+2.4.4
 
