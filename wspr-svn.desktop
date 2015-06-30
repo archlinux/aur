@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=WSPR
+Name[en_US]=WSPR
+Comment=Weak Signal Propagation Reporter
+Comment[en_US]=Weak Signal Propagation Reporter
+Encoding=UTF-8
+Exec=wspr
+Icon=wspr-svn.png
+MimeType=text
+StartupNotify=true
+Terminal=
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

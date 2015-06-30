@@ -1,0 +1,18 @@
+--- padevsub.c.orig	2015-01-17 14:27:48.000000000 -0500
++++ padevsub.c	2015-01-17 14:30:28.000000000 -0500
+@@ -99,8 +99,14 @@
+       //outerr[i] = Pa_IsFormatSupported(NULL,&outputParameters,SAMPLE_RATE);
+       outerr[i] = 0;
+     }
+-    fprintf(fp,"%2d  %3d  %3d  %6d  %6d  %s\n",i,nchin[i],nchout[i],inerr[i],
++    if (pdi->name == NULL) {
++	fprintf(stderr, "Bad Joe. BAD BAD BAD\n");
++        fprintf(fp,"%2d  %3d  %3d  %6d  %6d  %s\n",i,nchin[i],nchout[i],inerr[i],
++	   outerr[i],"{NULL}");
++    } else {
++        fprintf(fp,"%2d  %3d  %3d  %6d  %6d  %s\n",i,nchin[i],nchout[i],inerr[i],
+ 	   outerr[i],pdi->name);
++    }
+   }
+   fclose(fp);
+   return 0;
