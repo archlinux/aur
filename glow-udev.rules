@@ -1,0 +1,8 @@
+# udev rules for Glow. This makes Glow devices accessible to members of the
+# 'usb' group. Modify as necessary for your distro.
+
+# LUFA test VID/PID (alpha/unreleased firmware only)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2040", TAG+="uaccess"
+
+# Production VID/PID via MCS Electronics (beta and later)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0a85", TAG+="uaccess"

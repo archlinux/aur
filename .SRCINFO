@@ -1,0 +1,16 @@
+pkgbase = antumbra-beta
+	pkgdesc = Cross-platform glow protocol library for the Antumbra. Includes antumbractl.
+	pkgver = 0.1.1.beta.r0.g09338d6
+	pkgrel = 1
+	url = https://github.com/TeamAntumbra/libantumbra
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	depends = libusb
+	source = antumbra-beta::git+https://github.com/TeamAntumbra/libantumbra.git#tag=0.1.1-beta
+	source = glow-udev.rules
+	sha256sums = SKIP
+	sha256sums = 58d51d2cf4b0df88dd6aa332fc5d63552ac1582af19d549cfcd30a3dcfe6389c
+
+pkgname = antumbra-beta
+
