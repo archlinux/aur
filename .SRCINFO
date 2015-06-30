@@ -1,0 +1,14 @@
+pkgbase = patchelfmod
+	pkgdesc = A small utility to modify the dynamic linker and RPATH of ELF executables forked from the original
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://github.com/darealshinji/patchelfmod
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = http://github.com/darealshinji/patchelfmod/archive/0.16.tar.gz
+	md5sums = 731f122d43665e321b7578a77da5be0a
+
+pkgname = patchelfmod
+
