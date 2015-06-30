@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-randommac
+	pkgdesc = Initialize network device with random mac address
+	pkgver = 0.1.0.r1.g9141f2a
+	pkgrel = 1
+	url = https://github.com/eworm-de/mkinitcpio-randommac
+	install = mkinitcpio-randommac.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = macchanger
+	source = git://github.com/eworm-de/mkinitcpio-randommac.git
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-randommac
+
