@@ -1,0 +1,16 @@
+pkgbase = iptckwed-git
+	pkgdesc = IPTC keyword editor
+	pkgver = r4.4360c75
+	pkgrel = 1
+	url = https://github.com/muennich/iptckwed
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = exiv2
+	depends = gcc-libs-multilib
+	source = git://github.com/muennich/iptckwed.git
+	md5sums = SKIP
+
+pkgname = iptckwed-git
+
