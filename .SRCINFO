@@ -1,0 +1,15 @@
+pkgbase = libreboot
+	pkgdesc = A free BIOS/UEFI replacement for your computer
+	pkgver = 20150208
+	pkgrel = 2
+	url = http://libreboot.org
+	arch = x86_64
+	arch = i686
+	arch = armv7l
+	license = GPL
+	provides = libreboot
+	source = http://www.mirrorservice.org/sites/libreboot.org/release/20150208/libreboot_bin.tar.xz
+	sha256sums = 21649115f15b49657e8232337ed996aed5ef5a6e48412fbf834b83f996472f01
+
+pkgname = libreboot
+
