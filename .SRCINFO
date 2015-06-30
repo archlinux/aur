@@ -1,0 +1,43 @@
+pkgbase = haskell-wai-app-static
+	pkgdesc = WAI application for static serving
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/wai-app-static
+	install = haskell-wai-app-static.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = haskell-base64-bytestring>=0.1
+	depends = haskell-blaze-builder>=0.2.1.4
+	depends = haskell-blaze-html>=0.5
+	depends = haskell-blaze-markup>=0.5.1
+	depends = haskell-byteable
+	depends = haskell-bytestring
+	depends = haskell-containers
+	depends = haskell-cryptohash-conduit
+	depends = haskell-cryptohash>=0.11
+	depends = haskell-directory
+	depends = haskell-file-embed>=0.0.3.1
+	depends = haskell-http-date
+	depends = haskell-http-types>=0.7
+	depends = haskell-mime-types<0.2
+	depends = haskell-old-locale
+	depends = haskell-system-fileio>=0.3
+	depends = haskell-filepath
+	depends = haskell-template-haskell
+	depends = haskell-text
+	depends = haskell-time
+	depends = haskell-transformers
+	depends = haskell-unix-compat>=0.2
+	depends = haskell-unordered-containers>=0.2
+	depends = haskell-wai
+	depends = haskell-wai-extra
+	depends = haskell-warp
+	depends = haskell-optparse-applicative
+	depends = haskell-zlib
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/wai-app-static/3.1.0/wai-app-static-3.1.0.tar.gz
+	md5sums = 950ec3abafa151c979fba2840faeea86
+
+pkgname = haskell-wai-app-static
+
