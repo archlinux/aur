@@ -1,0 +1,22 @@
+pkgbase = qlivebittorrent-git
+	pkgdesc = Simple bittorrent client with very interesting live feature
+	pkgver = 20140909
+	pkgrel = 1
+	url = https://github.com/vtyulb/QLiveBittorrent
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = wget
+	makedepends = unzip
+	makedepends = fuse
+	makedepends = geoip
+	makedepends = libtorrent-rasterbar
+	makedepends = qt5-base
+	makedepends = boost
+	depends = qt5-base
+	depends = boost-libs
+	depends = libtorrent-rasterbar
+	depends = ncurses
+
+pkgname = qlivebittorrent-git
+
