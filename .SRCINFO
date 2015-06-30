@@ -1,7 +1,7 @@
 pkgbase = yandex-tank
 	pkgdesc = Performance measurement tool
-	pkgver = 1.7.10
-	pkgrel = 1
+	pkgver = 1.7.13
+	pkgrel = 0
 	url = https://github.com/yandex/yandex-tank
 	arch = any
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = yandex-tank
 	depends = python2-ipaddr
 	depends = python2-progressbar
 	depends = phantom-engine-git
-	source = http://ppa.launchpad.net/yandex-load/main/ubuntu/pool/main/y/yandextank/yandextank_1.7.10.tar.gz
-	sha256sums = 5c2d9d948e1583183a623f430bf0b5327baca4fcbc9d7893f230b364a7aedc70
+	source = http://ppa.launchpad.net/yandex-load/main/ubuntu/pool/main/y/yandextank/yandextank_1.7.13.tar.gz
+	sha256sums = 62e2063a16fc94e8f880f89065b1c938df1d05949ab449c4915a9a58a005d35a
 
 pkgname = yandex-tank
 
