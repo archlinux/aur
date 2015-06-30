@@ -1,0 +1,14 @@
+pkgbase = honeybadger-git
+	pkgdesc = TCP attack inquisitor and 0-day catcher devices
+	pkgver = 0718a8f
+	pkgrel = 1
+	url = http://github.com/david415/honeybadger
+	arch = any
+	license = GPL
+	makedepends = go
+	provides = honeybadger
+	source = git+https://github.com/david415/honeybadger
+	sha1sums = SKIP
+
+pkgname = honeybadger-git
+
