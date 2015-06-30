@@ -1,0 +1,15 @@
+pkgbase = rinetd
+	pkgdesc = internet redirection server
+	pkgver = 0.62
+	pkgrel = 2
+	url = http://www.boutell.com/rinetd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.boutell.com/rinetd/http/rinetd.tar.gz
+	source = rinetd.service
+	md5sums = 28c78bac648971724c46f1a921154c4f
+	md5sums = 44bae2fd01ece120e9434be438e261ff
+
+pkgname = rinetd
+

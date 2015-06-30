@@ -1,0 +1,12 @@
+[Unit]
+Description=ritned daemon
+
+[Service]
+Type=forking
+PIDFile=/var/run/rinetd.pid
+ExecStart=/usr/bin/rinetd
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
