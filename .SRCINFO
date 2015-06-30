@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-dfttest-git
 	pkgdesc = Plugin for Vapoursynth: dfttest (GIT version)
-	pkgver = r2.0.g1fe8a2c
+	pkgver = r3.1.gcfebcbb
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171678
 	arch = i686
