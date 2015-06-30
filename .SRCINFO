@@ -1,0 +1,24 @@
+pkgbase = system-storage-manager-git
+	pkgdesc = System Storage Manager (ssm) provides easy to use command line interface to manage your storage using various technologies like lvm, btrfs, encrypted volumes and possibly more - git checkout
+	pkgver = 0.3.r1.g83f908a
+	pkgrel = 1
+	url = http://sourceforge.net/p/storagemanager/home/Home/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = lvm2
+	depends = e2fsprogs
+	depends = xfsprogs
+	depends = cryptsetup
+	depends = btrfs-progs
+	depends = device-mapper
+	depends = dmraid
+	provides = storagemanager
+	conflicts = storagemanager
+	source = system-storage-manager::git://git.code.sf.net/p/storagemanager/code
+	sha256sums = SKIP
+
+pkgname = system-storage-manager-git
+
