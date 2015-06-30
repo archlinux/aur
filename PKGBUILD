@@ -24,11 +24,11 @@ source=(
   "$_pkgname-smtp@.service"
 )
 md5sums=('bdeb5656e0931d1b211b52aa0f9e31f5'
-         '877e07e9d8a2ddea3dd1d27644e77565'
-         '26f37032d32b33b02388778d1d41601f'
-         '2b9e475d3ba8d144b5fbf6f32162e3ac'
-         '5d19076f812ba58be414955a7880d9d2'
-         '0f7f88dd6c36fa69ea6635f27aa7d29b')
+         'cf357f9859b6f24210d07ccce7313879'
+         'd21981c2877a578555bcd61c0c6bc718'
+         'a8a07564d971bc1df3cc786cda27c333'
+         '2c1d5788aff53e89600f037b523cab69'
+         '8e57104285979856653f99e5564b613d')
 noextract=("$_pkgname-$pkgver.gem")
 
 package() {

@@ -3,8 +3,8 @@ Description=Mailcatcher Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/mailcatcher --ip localhost --foreground --verbose
-KillSignal=SIGKILL
+ExecStart=/usr/bin/mailcatcher --ip localhost --http-port 1080 --smtp-port 1025 --foreground --verbose
+ExecStop=/usr/bin/curl --silent --get --request DELETE localhost:1080
 
 [Install]
 WantedBy=multi-user.target

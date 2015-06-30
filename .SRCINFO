@@ -26,11 +26,11 @@ pkgbase = ruby-mailcatcher
 	source = mailcatcher-smtp.socket
 	source = mailcatcher-smtp@.service
 	md5sums = bdeb5656e0931d1b211b52aa0f9e31f5
-	md5sums = 877e07e9d8a2ddea3dd1d27644e77565
-	md5sums = 26f37032d32b33b02388778d1d41601f
-	md5sums = 2b9e475d3ba8d144b5fbf6f32162e3ac
-	md5sums = 5d19076f812ba58be414955a7880d9d2
-	md5sums = 0f7f88dd6c36fa69ea6635f27aa7d29b
+	md5sums = cf357f9859b6f24210d07ccce7313879
+	md5sums = d21981c2877a578555bcd61c0c6bc718
+	md5sums = a8a07564d971bc1df3cc786cda27c333
+	md5sums = 2c1d5788aff53e89600f037b523cab69
+	md5sums = 8e57104285979856653f99e5564b613d
 
 pkgname = ruby-mailcatcher
 
