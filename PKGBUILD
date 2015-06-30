@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('createrepo_c: for local plugin'
             'snapper: for snapper plugin'
             'tracer:  for tracer plugin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver-1.tar.gz")
-md5sums=('2a6a1af9401db50c81ccf7dc49a30007')
+md5sums=('44d1349a728be5d736994ffc13bbce3a')
 
 prepare() {
 	cd "$pkgname-$pkgname-$pkgver-1"
