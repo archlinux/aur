@@ -1,0 +1,12 @@
+pkgbase = liblightstone-git
+	pkgdesc = Driver for the Lightstone Biometrics USB Widget that ships with the Journey to Wild Divine video game
+	pkgver = 20121116
+	pkgrel = 2
+	url = http://liblightstone.nonpolynomial.com/
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = libusb>=1.0
+
+pkgname = liblightstone-git
+
