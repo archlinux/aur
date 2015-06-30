@@ -1,0 +1,21 @@
+pkgbase = sieve-connect
+	pkgdesc = Client for the MANAGESIEVE protocol
+	pkgver = 0.87
+	pkgrel = 3
+	url = http://people.spodhuis.org/phil.pennock/software/
+	arch = any
+	license = GPL
+	depends = perl-authen-sasl
+	depends = perl-io-socket-inet6
+	depends = perl-io-socket-ssl
+	depends = perl-net-dns
+	depends = perl-term-readkey
+	optdepends = perl-term-readline
+	provides = sieve-connect
+	source = http://people.spodhuis.org/phil.pennock/software/sieve-connect-0.87.tar.bz2
+	source = http://people.spodhuis.org/phil.pennock/software/sieve-connect-0.87.tar.bz2.asc
+	sha256sums = e3de80ab34994de0277fc7bf53b7c08e82db1a1f2762ddac4311d8191cea6c49
+	sha256sums = SKIP
+
+pkgname = sieve-connect
+
