@@ -1,0 +1,16 @@
+pkgbase = coffee-script
+	pkgdesc = CoffeeScript is a little language that compiles into JavaScript.
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = http://coffeescript.org
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = nodejs-mkdirp
+	depends = underscorejs
+	optdepends = nodejs-profile: to load coffee-script in node
+	source = https://github.com/jashkenas/coffeescript/archive/1.9.3.tar.gz
+	sha256sums = 8c8faeeee21ed3cdde727fcc08ed6062d9d0233679317f026160aee8bfa85060
+
+pkgname = coffee-script
+
