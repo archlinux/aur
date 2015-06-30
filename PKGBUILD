@@ -3,20 +3,24 @@
 # Contributor: gem2arch 0.1
 pkgname=ruby-net-ssh
 pkgver=2.9.2
-_pkgname="net-ssh"
-pkgrel=1
-pkgdesc="Net::SSH: a pure-Ruby implementation of the SSH2 client protocol."
+_gemname=${pkgname#ruby-}
+pkgrel=2
+pkgdesc="A pure-Ruby implementation of the SSH2 client protocol."
 arch=(any)
-url="https://rubygems.org/gems/net-ssh"
+url="https://rubygems.org/gems/${_gemname}"
 license=("GPL")
 depends=('ruby')
-source=(https://rubygems.org/downloads/$_pkgname-$pkgver.gem)
-
-noextract=($_pkgname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
 
 package() {
-  cd $srcdir
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" ${_pkgname}-$pkgver.gem
+  cd "$srcdir"
+
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  HOME="/tmp" GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install \
+    --no-user-install --ignore-dependencies \
+    -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
 md5sums=('ac7574a89e2b422468d98f5387ceb41e')
