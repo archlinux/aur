@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
-	pkgver = 32.0.1899.0
-	pkgrel = 2
+	pkgver = 32.0.1910.0
+	pkgrel = 1
 	url = http://www.opera.com/browser/
 	install = opera.install
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = opera-developer
 	depends = desktop-file-utils
 	optdepends = ffmpeg: HTML5 H264 and mp3 playback
 	options = !strip
-	source_x86_64 = http://get.geo.opera.com/pub/opera-developer/32.0.1899.0/linux/opera-developer_32.0.1899.0_amd64.deb
-	sha256sums_x86_64 = 06b1b2f93c74c1437f12ab1f22d5bfd789608bb338c0d44dfa3f46d1ff66609b
-	source_i686 = http://get.geo.opera.com/pub/opera-developer/32.0.1899.0/linux/opera-developer_32.0.1899.0_i386.deb
-	sha256sums_i686 = de318e774c26cdaf2e16635dc2d7413590c620fa65c71ed0cd531e9b2d706231
+	source_x86_64 = http://get.geo.opera.com/pub/opera-developer/32.0.1910.0/linux/opera-developer_32.0.1910.0_amd64.deb
+	sha256sums_x86_64 = c9f3ca6b8b07bbc586dd4f09f56658daa7d3c640b71e057c1df486c3e33df429
+	source_i686 = http://get.geo.opera.com/pub/opera-developer/32.0.1910.0/linux/opera-developer_32.0.1910.0_i386.deb
+	sha256sums_i686 = 2277fff8c0cd99ae2ac4f979726a0ea32cd12929a10926bce25c79bdaee9097d
 
 pkgname = opera-developer
 
