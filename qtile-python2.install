@@ -1,0 +1,12 @@
+post_install() {
+  echo ">>> Qtile Example Config at"
+  echo ">>> /usr/share/doc/qtile/default_config.py"
+}
+
+post_upgrade() {
+  echo ">>> Qtile Example Config at"
+  echo ">>> /usr/share/doc/qtile/default_config.py"
+  echo ">>> Since qtile 0.9 qtile.spawn() doesn't use a shell anymore so redirects like > don't work"
+}
+
+# vim:set ts=2 sw=2 et:
