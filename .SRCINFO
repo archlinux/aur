@@ -1,0 +1,17 @@
+pkgbase = httpfs2
+	pkgdesc = FUSE-based file system.
+	pkgver = 0.1.5
+	pkgrel = 3
+	url = http://httpfs.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = dpkg
+	depends = fuse
+	depends = openssl
+	source = http://downloads.sourceforge.net/project/httpfs/httpfs2/httpfs2-0.1.5.tar.gz
+	sha256sums = 01cb4bb38deb344f540da6f1464dc7edbdeb51213ad810b8c9c282c1e17e0fc1
+
+pkgname = httpfs2
+
