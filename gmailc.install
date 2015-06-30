@@ -1,0 +1,9 @@
+post_install() {
+	echo "Write this config to ~/.config/gmailc.conf"
+  echo "username USER"
+  echo "password PASS"
+}
+
+post_remove() {
+	echo "Remove ~/.config/gmailc.conf"
+}

@@ -1,0 +1,17 @@
+pkgbase = gmailc
+	pkgdesc = A minimalist gmail checker written in C based on curl
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/NickHu/gmailc
+	install = gmailc.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = curl
+	depends = libxml2
+	source = https://github.com/NickHu/gmailc/archive/0.3.tar.gz
+	md5sums = cb83ad385e0ac955e033fd4a30bc51c5
+
+pkgname = gmailc
+
