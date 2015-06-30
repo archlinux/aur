@@ -1,0 +1,21 @@
+pkgbase = php-pam
+	pkgdesc = This extension provides PAM (Pluggable Authentication Modules) integration in PHP.
+	pkgver = 1.0.3
+	pkgrel = 3
+	url = http://pecl.php.net/package/PAM
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = autoconf
+	depends = php
+	depends = pam
+	depends = php-pear
+	source = http://pecl.php.net/get/pam-1.0.3.tgz
+	source = pam.ini
+	source = php
+	md5sums = 2dfd378a76021245050333cd4d49ed96
+	md5sums = 9582d5f0476e486f2c3084940f1abd86
+	md5sums = 5fb207f61ff94b0cc7a2dcc1e3c1c388
+
+pkgname = php-pam
+
