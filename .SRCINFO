@@ -1,0 +1,33 @@
+pkgbase = freshplayerplugin-git
+	pkgdesc = PPAPI-host NPAPI-plugin adapter.
+	pkgver = v0.2.4.r92.g96ba6ad
+	pkgrel = 1
+	url = https://github.com/i-rinat/freshplayerplugin
+	install = freshplayerplugin-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ragel
+	makedepends = git
+	depends = pango
+	depends = alsa-lib
+	depends = freetype2
+	depends = libconfig
+	depends = libevent
+	depends = gtk2
+	depends = libgl
+	depends = v4l-utils
+	optdepends = chromium-pepper-flash: for the necessary Pepper plugin
+	optdepends = chromium-pepper-flash-standalone: for the necessary Pepper plugin
+	optdepends = google-chrome: for the necessary Pepper plugin
+	optdepends = google-chrome-beta: for the necessary Pepper plugin
+	optdepends = google-chrome-dev: for the necessary Pepper plugin
+	conflicts = freshplayerplugin
+	source = freshplayerplugin-git::git+https://github.com/i-rinat/freshplayerplugin
+	source = freshplayerplugin-git.install
+	sha1sums = SKIP
+	sha1sums = 331a3b3877249eaf1c3db917bde1dea6c4d374ab
+
+pkgname = freshplayerplugin-git
+
