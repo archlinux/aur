@@ -1,0 +1,47 @@
+--- Config.py.orig	2009-11-16 14:54:26.000000000 +0100
++++ Config.py	2009-11-16 15:18:59.000000000 +0100
+@@ -5,12 +5,15 @@
+ from QtUtil import *
+ from PyQt4.QtCore import *
+ from PyQt4.QtGui import *
+-import getpass
++import os
+ 
+ try:
+-    _dbname = getpass.getuser() or "typer"
+-    if '.' not in _dbname:
+-        _dbname += '.db'
++    _dbpath = os.path.join(os.environ.get("XDG_DATA_HOME",
++        os.path.join(os.environ.get("HOME"), ".local", "share")),
++        "Amphetype")
++    if not os.path.exists(_dbpath):
++        os.makedirs(_dbpath)
++    _dbname = os.path.join(_dbpath, "typer.db")
+ except:
+     _dbname = "typer.db"
+ 
+--- Amphetype.py.orig	2009-11-16 14:39:31.000000000 +0100
++++ Amphetype.py	2009-11-16 14:53:48.000000000 +0100
+@@ -1,4 +1,4 @@
+-
++#!/usr/bin/env python2
+ from __future__ import with_statement, division
+ 
+ import os
+@@ -29,7 +29,6 @@
+ from PyQt4.QtCore import *
+ from PyQt4.QtGui import *
+ 
+-QApplication.setStyle('cleanlooks')
+ 
+ 
+ class TyperWindow(QMainWindow):
+@@ -88,7 +87,7 @@
+     def __init__(self, *args):
+         html = "about.html file missing!"
+         try:
+-            html = open("about.html", "r").read()
++            html = open(os.path.join(sys.path[0], "about.html"), "r").read()
+         except:
+             pass
+         super(AboutWidget, self).__init__(*args)

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=amphetype
+GenericName=Touch Typing Tutor
+Terminal=false
+Name=Amphetype
+Categories=Qt;Education;

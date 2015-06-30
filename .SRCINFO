@@ -1,0 +1,20 @@
+pkgbase = amphetype-svn
+	pkgdesc = A layout-agnostic typing program aimed at people who don't need an on-screen keyboard
+	pkgver = 27
+	pkgrel = 7
+	url = http://code.google.com/p/amphetype/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-pyqt4
+	depends = sqlite3
+	provides = amphetype
+	conflicts = amphetype
+	source = amphetype.desktop
+	source = amphetype.patch
+	md5sums = fa29364a99caa1c68332dc8f65e6df8d
+	md5sums = d54433a7a254e1284c93485d48fbbac5
+
+pkgname = amphetype-svn
+
