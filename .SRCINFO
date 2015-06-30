@@ -1,0 +1,16 @@
+pkgbase = bsp
+	pkgdesc = The most popular nodebuilder for DOOM
+	pkgver = 5.2
+	pkgrel = 7
+	url = http://games.moria.org.uk/doom/bsp/
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-sa
+	depends = pygtk
+	depends = librsvg
+	depends = glibc
+	source = http://games.moria.org.uk/doom/bsp/download/bsp-5.2.tar.bz2
+	md5sums = 6f29fc0d5ca0512c34482843b0a1fcb3
+
+pkgname = bsp
+
