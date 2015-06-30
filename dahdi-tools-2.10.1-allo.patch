@@ -1,0 +1,16 @@
+diff -Nur dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Hardware/PCI.pm dahdi-tools-2.10.0.1-allo/xpp/perl_modules/Dahdi/Hardware/PCI.pm
+--- dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Hardware/PCI.pm	2014-09-22 20:40:36.000000000 +0200
++++ dahdi-tools-2.10.0.1-allo/xpp/perl_modules/Dahdi/Hardware/PCI.pm	2015-02-10 14:45:54.047761228 +0100
+@@ -42,6 +42,12 @@
+ 	'd161:0205'		=> { DRIVER => 'wct4xxp', DESCRIPTION => 'Wildcard TE205P ' },
+ 	'd161:0210'		=> { DRIVER => 'wct4xxp', DESCRIPTION => 'Wildcard TE210P ' },
+ 	'd161:1820'		=> { DRIVER => 'wct4xxp', DESCRIPTION => 'Wildcard TE820 (5th Gen)' },
++#/*CEM:*/	
++	'1d21:1280'		=> { DRIVER => 'allo4xxp', DESCRIPTION => 'Allocard 2aCP8e (2nd Gen)' },
++	'1d21:1240'		=> { DRIVER => 'allo4xxp', DESCRIPTION => 'Allocard 2aCP4e (2nd Gen)' },
++	'1d21:1241'             => { DRIVER => 'allo4xxp', DESCRIPTION => 'Allocard 2aCP4 (2nd Gen)' },
++	'1d21:1220'		=> { DRIVER => 'allo4xxp', DESCRIPTION => 'Allocard 2aCP2e (2nd Gen)' },
++	'1d21:1210'		=> { DRIVER => 'allo4xxp', DESCRIPTION => 'Allocard 2aCP1e (2nd Gen)' },
+ 
+ 	# from wctdm24xxp
+ 	'd161:2400'		=> { DRIVER => 'wctdm24xxp', DESCRIPTION => 'Wildcard TDM2400P' },

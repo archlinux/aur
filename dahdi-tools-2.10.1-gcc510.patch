@@ -1,0 +1,12 @@
+diff -Nur dahdi-tools-2.10.1/xpp/mpptalk.c dahdi-tools-2.10.1-gcc510/xpp/mpptalk.c
+--- dahdi-tools-2.10.1/xpp/mpptalk.c	2015-02-09 21:19:34.000000000 +0100
++++ dahdi-tools-2.10.1-gcc510/xpp/mpptalk.c	2015-06-03 11:49:23.683333319 +0200
+@@ -512,7 +512,7 @@
+ 
+ 	assert(astribank != NULL);
+ 	xtalk_dev = astribank->xtalk_dev;
+-	if(!astribank->burn_state == BURN_STATE_STARTED) {
++	if(!(astribank->burn_state == BURN_STATE_STARTED)) {
+ 		ERR("Tried to send a segment while burn_state=%d\n",
+ 				astribank->burn_state);
+ 		return -EINVAL;

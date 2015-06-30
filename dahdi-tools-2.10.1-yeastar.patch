@@ -1,0 +1,12 @@
+diff -Nur dahdi-tools-2.10.0.1/modules.sample dahdi-tools-2.10.0.1-yeastar/modules.sample
+--- dahdi-tools-2.10.0.1/modules.sample	2014-09-22 20:40:36.000000000 +0200
++++ dahdi-tools-2.10.0.1-yeastar/modules.sample	2015-02-10 15:22:59.000000000 +0100
+@@ -61,3 +61,8 @@
+ # Xorcom Astribank Devices
+ xpp_usb
+ 
++# Yeastar TDM1600 : UP to 16 analog ports
++ystdm16xx
++# Yeastar TDM800 : UP to 8 analog ports
++ystdm8xx
++

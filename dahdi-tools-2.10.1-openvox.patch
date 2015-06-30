@@ -1,0 +1,59 @@
+diff -Nur dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Chans.pm dahdi-tools-2.10.0.1-openvox/xpp/perl_modules/Dahdi/Chans.pm
+--- dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Chans.pm	2014-09-22 20:40:36.000000000 +0200
++++ dahdi-tools-2.10.0.1-openvox/xpp/perl_modules/Dahdi/Chans.pm	2015-02-10 11:57:44.552502811 +0100
+@@ -154,6 +154,9 @@
+ 		# AP40[124]: Aligera AP40X cards
+ 		# APE40[124]: Aligera APE40X cards
+ 		$type = "PRI";
++	} elsif ($fqn =~ m{\b(D115|D130)/.*}) { 
++		# D115: OpenVox opvxd115 
++		$type = "PRI";
+ 	} elsif ($fqn =~ m{\b(WCBRI|B4|ZTHFC\d*|ztqoz\d*)/.*}) {
+ 		# WCBRI: The Digium Hx8 series cards with BRI module.
+ 		# B4: The Digium wcb4xxp DAHDI driver
+@@ -198,7 +201,7 @@
+ 	my $num = $self->num;
+ 	my $type;
+ 
+-	if($fqn =~ m:WCTDM/|WRTDM/|OPVXA1200/:) {
++	if($fqn =~ m:WCTDM/|WRTDM/|OPVXA1200/|OPVXA24XX/:) {
+ 		my %maybe;
+ 
+ 		undef %maybe;
+diff -Nur dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Hardware/PCI.pm dahdi-tools-2.10.0.1-openvox/xpp/perl_modules/Dahdi/Hardware/PCI.pm
+--- dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Hardware/PCI.pm	2014-09-22 20:40:36.000000000 +0200
++++ dahdi-tools-2.10.0.1-openvox/xpp/perl_modules/Dahdi/Hardware/PCI.pm	2015-02-10 11:57:44.552502811 +0100
+@@ -43,6 +43,21 @@
+ 	'd161:0210'		=> { DRIVER => 'wct4xxp', DESCRIPTION => 'Wildcard TE210P ' },
+ 	'd161:1820'		=> { DRIVER => 'wct4xxp', DESCRIPTION => 'Wildcard TE820 (5th Gen)' },
+ 
++	# from opvxd115 
++
++ 	'1b74:0115'             => { DRIVER => 'opvxd115', DESCRIPTION => 'OpenVox D115P/D115E '  }, 
++	'1b74:d130'             => { DRIVER  => 'opvxd115', DESCRIPTION  => 'OpenVox D130P/D130E ' }, 
++	# openvox asterisk D-serial E1/T1 card
++	'1b74:d430'		 => { DRIVER => 'wct4xxp', DESCRIPTION => 'OpenVox D430E(3rd Gen) Quad-port E1/T1 card' },
++	'1b74:1420'		 => { DRIVER => 'wct4xxp', DESCRIPTION => 'OpenVox D420P(2nd Gen) Quad-port E1/T1 card' },
++	'1b74:d410'		 => { DRIVER => 'wct4xxp', DESCRIPTION => 'OpenVox D410E(2nd Gen) Quad-port E1/T1 card' },
++	'1b74:d230'		 => { DRIVER => 'wct4xxp', DESCRIPTION => 'OpenVox D230E Dual-port  E1/T1 card' },
++	'1b74:d210'		 => { DRIVER => 'wct4xxp', DESCRIPTION => 'OpenVox D210E Dual-port  E1/T1 card' },
++	# from opvxa24xx
++       	'1b74:2410'     => { DRIVER => 'opvxa24xx', DESCRIPTION => 'OpenVox A2410P' },
++ 	'1b74:1610'     => { DRIVER => 'opvxa24xx', DESCRIPTION => 'OpenVox A1610P' },
++   	'1b74:0810'     => { DRIVER => 'opvxa24xx', DESCRIPTION => 'OpenVox A810P' },
++
+ 	# from wctdm24xxp
+ 	'd161:2400'		=> { DRIVER => 'wctdm24xxp', DESCRIPTION => 'Wildcard TDM2400P' },
+ 	'd161:0800'		=> { DRIVER => 'wctdm24xxp', DESCRIPTION => 'Wildcard TDM800P' },
+diff -Nur dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Span.pm dahdi-tools-2.10.0.1-openvox/xpp/perl_modules/Dahdi/Span.pm
+--- dahdi-tools-2.10.0.1/xpp/perl_modules/Dahdi/Span.pm	2014-09-22 20:40:36.000000000 +0200
++++ dahdi-tools-2.10.0.1-openvox/xpp/perl_modules/Dahdi/Span.pm	2015-02-10 11:57:44.552502811 +0100
+@@ -149,6 +149,8 @@
+ 		'T[248]XXP \(PCI\) Card ',         # wct4xxp
+ 		'WCTE43X \(PCI\) Card ',           # wcte43xp
+ 		'WCTE23X \(PCI\) Card ',           # wcte43xp
++		'D115 \(E1|T1\) Card ',       # opvxd115
++		'D130 \(E1|T1\) Card ',       # opvxd130
+ 		'R[24]T1 \(PCI\) Card',            # rxt1
+ 		'Rhino R1T1 (E1)/PRA Card',        # r1t1
+ 		'Rhino R1T1 (T1)/PRI Card',        # r1t1
