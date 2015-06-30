@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.0
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,7 +83,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch")
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
+            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
             'SKIP'
             '8fb75c36b16d7c4895c720949b8d217f84d225da25f4db81c0da00920b925843'
             '7e82bbe1ed937acfbd351ff75a0420777f4bfd64d0c7f3e041f41f28221a75f1'
@@ -107,12 +107,12 @@ prepare() {
 
 	# add upstream patch
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
-	
+
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-	
+
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
