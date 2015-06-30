@@ -1,0 +1,30 @@
+Slump is relesed under the GPL with two optional requests added to the license:
+
+Copyright 2000 David Chess; Copyright 2005 Sam Trenholme
+
+Slump is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2, or (at your option) any later
+version.
+
+Slump is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License
+along with Slump; see the file GPL.  If not, write to the Free
+Software Foundation, 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
+
+Additionally, while not required for redistribution of this program, 
+the following requests are made when making a derived version of 
+this program:
+
+* Slump's code is partly derived from the Doom map generator 
+  called SLIGE, by David Chess.  Please inform David Chess of 
+  any derived version that you make.  His email address is at 
+  the domain "theogeny.com" with the name "chess" placed before 
+  the at symbol.
+
+* Please do not call any derivative of this program SLIGE.
