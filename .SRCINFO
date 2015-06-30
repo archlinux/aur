@@ -1,0 +1,15 @@
+pkgbase = freefonts
+	pkgdesc = A set of free Type1 fonts
+	pkgver = 0.10
+	pkgrel = 3
+	url = http://www.gimp.org/
+	install = freefonts.install
+	arch = any
+	license = custom
+	makedepends = fontconfig
+	makedepends = xorg-font-utils
+	source = ftp://ftp.gimp.org/pub/gimp/fonts/freefonts-0.10.tar.gz
+	sha256sums = 1babf159f79221c2fd6778d49b4740907e63bd4febeeac0a597760d2b5d71608
+
+pkgname = freefonts
+
