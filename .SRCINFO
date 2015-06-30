@@ -8,6 +8,7 @@ pkgbase = superderpy-git
 	license = GPL2+
 	makedepends = cmake
 	depends = allegro
+	provides = superderpy
 	conflicts = superderpy
 	source = git://github.com/dos1/SuperDerpy
 	sha256sums = SKIP

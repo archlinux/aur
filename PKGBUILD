@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url='http://superderpy.com/'
 license=('GPL2+')
 conflicts=('superderpy')
+provides=('superderpy')
 depends=('allegro')
 makedepends=('cmake')
 source=(git://github.com/dos1/SuperDerpy)
