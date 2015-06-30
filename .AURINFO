@@ -1,0 +1,15 @@
+pkgbase = ctstream
+	pkgdesc = Get URLs of Czech Television video streams for specific entry page
+	pkgver = 19
+	pkgrel = 1
+	url = http://xpisar.wz.cz/ctstream
+	arch = any
+	license = GPLv3
+	depends = perl
+	depends = perl-libwww
+	depends = perl-xml-xpath
+	depends = perl-json
+	source = http://xpisar.wz.cz/ctstream/ctstream-19
+
+pkgname = ctstream
+
