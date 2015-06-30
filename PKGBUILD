@@ -1,12 +1,12 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=gnomato
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A timer for Pomodoro Technique"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/gnomato/"
 license=('GPL3')
-depends=('gtkmm3' 'libnotify' 'boost-libs')
+depends=('gtkmm3' 'libnotify' 'boost-libs' 'python2')
 makedepends=('intltool' 'gettext' 'boost')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diegorubin/gnomato/archive/${pkgver}.tar.gz")
