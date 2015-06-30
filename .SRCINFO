@@ -1,0 +1,15 @@
+pkgbase = gst-rpicamsrc-git
+	pkgdesc = GStreamer element to access the RaspberryPI Camera.
+	pkgver = r65.a1f5588
+	pkgrel = 1
+	url = https://github.com/thaytan/gst-rpicamsrc
+	arch = armv6h
+	license = LGPL
+	depends = gst-plugins-base
+	depends = raspberrypi-firmware-tools
+	options = !libtool
+	source = git+https://github.com/thaytan/gst-rpicamsrc.git
+	md5sums = SKIP
+
+pkgname = gst-rpicamsrc-git
+
