@@ -1,0 +1,18 @@
+pkgbase = ortp-git
+	pkgdesc = oRTP is a LGPL licensed C library implementing the RTP protocol (rfc3550)
+	pkgver = 0.22.0.r276.gfbe5a32
+	pkgrel = 1
+	url = http://www.linphone.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	depends = openssl
+	depends = libsrtp
+	provides = ortp
+	conflicts = ortp
+	options = !libtool
+	source = git://git.linphone.org/ortp.git
+	sha256sums = SKIP
+
+pkgname = ortp-git
+
