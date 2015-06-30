@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-addgrain-git
 	pkgdesc = Plugin for Vapoursynth: addgrain (GIT version)
-	pkgver = r4.4.gcd00e83
+	pkgver = r5.1.g1d55bf1
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171073
 	arch = i686
