@@ -1,0 +1,15 @@
+pkgbase = loggerhead-wsgi
+	pkgdesc = Loggerhead (bzr web interface) wsgi script
+	pkgver = 0.0.1
+	pkgrel = 3
+	url = http://blog.projectfondue.com/2009/11/26/loggerhead-and-mod-wsgi
+	arch = any
+	license = GPL
+	depends = mod_wsgi2
+	depends = loggerhead
+	depends = python2-paste-deploy
+	source = loggerhead.wsgi
+	sha256sums = 89219c91a00571e583bc5baf123dc37c867c2f1af7f02b6cbd03b1cf6cc7e937
+
+pkgname = loggerhead-wsgi
+
