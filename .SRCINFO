@@ -1,0 +1,16 @@
+pkgbase = puush
+	pkgdesc = A bash script to upload to and delete from puush.me
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/NickHu/puush-linux
+	install = puush.install
+	arch = any
+	license = MIT
+	depends = curl
+	depends = bash
+	optdepends = scrot: screenshot tool
+	source = https://github.com/NickHu/puush-linux/archive/v1.2.tar.gz
+	md5sums = cbcbed1b7dc21691d02b81393af52f0c
+
+pkgname = puush
+

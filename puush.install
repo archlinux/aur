@@ -1,0 +1,3 @@
+post_install() {
+	echo "Set the variable PUUSH_API_KEY in /usr/bin/puush or with 'export PUUSH_API_KEY=\"apiKeyHere\"'"
+}
