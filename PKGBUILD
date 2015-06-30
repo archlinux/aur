@@ -2,12 +2,11 @@
 # Contributor: dryes <joswiseman@gmail>
 # Contributor: Revelation60, Lucky <https://aur.archlinux.org/packages.php?ID=13691>
 # Contributor: Gordin <9ordin @t gmail dot com>
-#_develop=true
-_develop=false
-pkgname='sabnzbd-git'
-true && pkgname="sabnzbd-$($_develop && echo develop-)git"
+_develop=true
+#_develop=false
+pkgname="sabnzbd-git"
 _gitname='sabnzbd'
-pkgver=0.7.20.r0.g1df2943
+pkgver=1
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support.'
 arch=('any')
@@ -21,12 +20,9 @@ optdepends=("xdg-utils: registration of .nzb files"
 backup=('etc/conf.d/sabnzbd')
 install=sabnzbd.install
 conflicts=('sabnzbd' 'sabnzbd-bzr' 'sabnzbd-develop-git')
-true && conflicts=('sabnzbd' 'sabnzbd-bzr' "sabnzbd-$( ! $_develop && echo develop-)git")
 
 provides=('sabnzbd')
 replaces=('sabnzbd-bzr')
-source=('git://github.com/sabnzbd/sabnzbd.git' 'sabnzbd.sh' 'sabnzbd.init' 'sabnzbd.confd' 'sabnzbd.desktop' 'addnzb.sh' 'nzb-2.png' 'sab2_64.png' 'x-nzb.xml' 'sabnzbd.service')
-true && \
 source=("git://github.com/sabnzbd/sabnzbd.git$( $_develop && echo \#branch=develop)"
         'sabnzbd.sh'
         'sabnzbd.init'
