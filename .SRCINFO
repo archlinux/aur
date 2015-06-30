@@ -1,0 +1,13 @@
+pkgbase = titulky_com_downloader
+	pkgdesc = Downloads subtitles from titulky.com
+	pkgver = 20130119
+	pkgrel = 1
+	url = https://gitorious.org/titulky_com_downloader
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = python
+
+pkgname = titulky_com_downloader
+
