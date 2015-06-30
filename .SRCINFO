@@ -1,0 +1,16 @@
+pkgbase = pam_captcha
+	pkgdesc = A Visual text-based CAPTCHA challenge module for PAM/SSH Logins
+	pkgver = 1.5
+	pkgrel = 7
+	url = http://www.semicomplete.com/projects/pam_captcha/
+	install = pam_captcha.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = pam
+	depends = figlet
+	source = http://semicomplete.googlecode.com/files/pam_captcha-1.5.tar.gz
+	sha256sums = 30b629fae019b5a0a746c5235597048a5e896c9cd9f5e47f8a0cf75d633c5317
+
+pkgname = pam_captcha
+

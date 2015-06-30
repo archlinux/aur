@@ -1,0 +1,21 @@
+post_install() {
+/bin/cat << EndOfMessage
+==>
+==> You need to add the following line to your /etc/pam.d/sshd
+==> auth	requisite	pam_captcha.so		math randomstring
+==>
+==> You also need to enable the following option in your /etc/ssh/sshd_config
+==> ChallengeResponseAuthentication yes
+==> 
+==> Restart your SSHD with '/etc/rc.d/sshd restart'
+==>
+EndOfMessage
+}
+post_upgrade() {
+post_install
+}
+
+op=$1
+shift
+$op "$@"
+
