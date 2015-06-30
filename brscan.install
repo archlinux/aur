@@ -1,0 +1,5 @@
+post_install() {
+  echo "sudo /usr/share/brother/sane/setupSaneScan -i"
+  echo "to complete the installation"
+}
+

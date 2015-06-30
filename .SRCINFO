@@ -1,0 +1,18 @@
+pkgbase = brscan
+	pkgdesc = SANE drivers from Brother for USB scanners
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brscan.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = sane
+	depends = libusb-compat
+	source = http://www.brother.com/pub/bsc/linux/dlf/brscan-0.2.4-0.x86_64.rpm
+	source = scanner-license.txt
+	md5sums = f1b3e42fab7bf9ad157428edfd4aa589
+	md5sums = 1bd5f896f3e97fe6d53a85b4d5a4ea79
+
+pkgname = brscan
+
