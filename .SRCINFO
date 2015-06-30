@@ -1,0 +1,18 @@
+pkgbase = bond-git
+	pkgdesc = A cross-platform framework for working with schematized data
+	pkgver = 7a14f45
+	pkgrel = 1
+	url = https://github.com/microsoft/bond/
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = boost
+	makedepends = ghc
+	makedepends = cabal-install
+	makedepends = rapidjson-git
+	provides = bond
+	source = bond-git::git+https://github.com/microsoft/bond/
+	sha1sums = SKIP
+
+pkgname = bond-git
+
