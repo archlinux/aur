@@ -2,12 +2,12 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
 
 pkgname=scrabble3d
-pkgver=3.1.0_29
+pkgver=3.1.2_1
 pkgrel=1
 pkgdesc="Highly customizable Scrabble game (classic, SuperScrabble, 3D games)"
 depends=(gtk2)
 arch=('i686' 'x86_64')
-if [ ${CARCH} = 'i686' ]
+if [ "${CARCH}" = 'i686' ]
 	then
 	_arch=i386
 	else
@@ -18,10 +18,10 @@ license=('GPL')
 
 source=(http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/Scrabble3D-${_arch}.deb)
 
-if [ ${CARCH} = 'i686' ]; then
-  md5sums=('e448a5373622c0f21cd470098e5a783b')
+if [  "${CARCH}" = 'i686' ]; then
+md5sums=('1c6c864ec1f9d26abd08c04af3d5a811')
 else
-  md5sums=('643bdf9c38471e2116c6687540765b0c')
+md5sums=('1591c94eb804b61d5f502cfa58dc0859')
 fi
 
 package() {
