@@ -1,6 +1,6 @@
 pkgbase = freshplayerplugin-git
 	pkgdesc = PPAPI-host NPAPI-plugin adapter.
-	pkgver = v0.2.4.r92.g96ba6ad
+	pkgver = v0.3.0.r42.gca0219a
 	pkgrel = 1
 	url = https://github.com/i-rinat/freshplayerplugin
 	install = freshplayerplugin-git.install
