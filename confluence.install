@@ -1,14 +1,14 @@
 post_install() {
-	if ! getent passwd confluence > /dev/null; then
-		useradd -r confluence
-	fi
-	chown -R confluence:confluence '/opt/atlassian-confluence'
+  if ! getent passwd confluence > /dev/null; then
+    useradd -r confluence
+  fi
+  chown -R confluence:confluence '/opt/atlassian-confluence'
 
-	echo "Define your Confluence Home directory, by setting the confluence.home property to a directory of your choosing in /opt/atlassian-confluence/confluence/WEB-INF/classes/confluence-init.properties"
-	echo "e. g. confluence.home=/opt/atlassian-confluence"
+  echo "Define your Confluence Home directory, by setting the confluence.home property to a directory of your choosing in /opt/atlassian-confluence/confluence/WEB-INF/classes/confluence-init.properties"
+  echo "e. g. confluence.home=/opt/atlassian-confluence"
 }
 
 post_upgrade() {
-	chown -R confluence:confluence '/opt/atlassian-confluence'
-	echo "Restart confluence to complete upgrade"
+  chown -R confluence:confluence '/opt/atlassian-confluence'
+  echo "Restart confluence to complete upgrade"
 }
