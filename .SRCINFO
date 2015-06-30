@@ -1,0 +1,18 @@
+pkgbase = gitosis-git
+	pkgdesc = Software for hosting git repositories - git checkout
+	pkgver = 0.2.r49.gdedb3dc
+	pkgrel = 2
+	url = https://github.com/tv42/gitosis
+	install = gitosis.install
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = python2-distribute
+	depends = git
+	provides = gitosis
+	conflicts = gitosis
+	source = git://github.com/tv42/gitosis.git
+	sha1sums = SKIP
+
+pkgname = gitosis-git
+

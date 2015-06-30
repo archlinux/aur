@@ -1,0 +1,22 @@
+post_install() {
+	groupadd -r git &> /dev/null
+	useradd -r -m -k /dev/null -g git -d /srv/gitosis -s /bin/sh git &> /dev/null
+	mkdir -p /srv/gitosis
+	chmod 0700 /srv/gitosis
+
+	echo " > Example config files are installed in:"
+	echo " > /usr/share/doc/gitosis"
+	echo " >"
+	echo " > You can get more information from:"
+	echo " > https://wiki.archlinux.org/index.php/Gitosis"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	userdel git &> /dev/null
+	groupdel git &> /dev/null
+}
+
