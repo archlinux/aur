@@ -2,11 +2,11 @@
 
 _plug=yadifmod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.3.gff545ec
+pkgver=r8.1.g2fbfe3b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171028"
+url='http://forum.doom9.org/showthread.php?t=171028'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -22,11 +22,14 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
 package(){
-  make -C "${_plug}" install
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  cd "${_plug}"
+  make install
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }

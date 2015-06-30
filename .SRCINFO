@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-yadifmod-git
 	pkgdesc = Plugin for Vapoursynth: yadifmod (GIT Version)
-	pkgver = r7.3.gff545ec
+	pkgver = r8.1.g2fbfe3b
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171028
 	arch = i686
