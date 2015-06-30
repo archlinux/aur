@@ -1,0 +1,18 @@
+TEXT='
+If you want to access wwwsqldesign interface by your apache, run following command as root:\n
+echo "Include conf/extra/httpd-wwwsqldesigner.conf" >> /etc/httpd/conf/httpd.conf\n
+
+And restart your apache running "/etc/rc.d/httpd restart"\n\n
+
+After you can browse wwwsqldesigner on http://localhost/wwwsqldesigner\n';
+
+post_install() {
+	
+	echo -e $TEXT;
+}	
+
+
+post_upgrade() {
+	
+	echo -e $TEXT;
+}

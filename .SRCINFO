@@ -1,0 +1,15 @@
+pkgbase = wwwsqldesigner
+	pkgdesc = Visual web-based SQL modelling tool
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://code.google.com/p/wwwsqldesigner/
+	install = wwwsqldesigner.install
+	arch = any
+	license = BSD
+	makedepends = subversion
+	optdepends = apache
+	source = http://wwwsqldesigner.googlecode.com/files/wwwsqldesigner-2.7.zip
+	sha1sums = 3bc7a0a96be57a9c137f511b547759822aba8a13
+
+pkgname = wwwsqldesigner
+
