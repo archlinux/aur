@@ -1,0 +1,8 @@
+post_install() {
+    echo ">>> 'freehex2other.py' 'gen_config.py' 'hex2bin' 'hexinfo' 'mergehex' are now available."
+    echo ">>> The prog executable is available as 'psoc-prog'"
+}
+
+post_upgrade() {
+    post_install
+}

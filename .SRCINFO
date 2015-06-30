@@ -1,0 +1,18 @@
+pkgbase = psoc-programmer-git
+	pkgdesc = tools to manipulate hex files and program a PSoC5 via FX2 USB interface
+	pkgver = 16.e6ec123
+	pkgrel = 3
+	url = https://github.com/kiml/PSOC_programmer
+	install = psoc-programmer.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	optdepends = fx2lptool-git: Change your FX2LP VID:PID to 04b4:f131
+	provides = psoc-programmer
+	conflicts = psoc-programmer
+	source = psoc-programmer-git::git+https://github.com/lowfatcomputing/PSOC_programmer.git#branch=getopt-include
+	md5sums = SKIP
+
+pkgname = psoc-programmer-git
+
