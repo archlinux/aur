@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libsigrok4dsl-git
-pkgver=r66.71d0f5a
+pkgver=0.93.r33.g8f56a5e
 pkgrel=1
 pkgdesc='A library which provides the basic API for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
@@ -14,7 +14,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd DSView
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {

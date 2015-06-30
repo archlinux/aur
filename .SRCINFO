@@ -1,6 +1,6 @@
 pkgbase = libsigrok4dsl-git
 	pkgdesc = A library which provides the basic API for DreamSourceLab hardware
-	pkgver = r66.71d0f5a
+	pkgver = 0.93.r33.g8f56a5e
 	pkgrel = 1
 	url = https://github.com/DreamSourceLab/DSView
 	arch = i686
