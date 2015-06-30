@@ -1,0 +1,16 @@
+pkgbase = otf-texgyre
+	pkgdesc = High quality open source opentype font collection resembling Helvetica, Times, Palatino, Courier, Gothic, Bookman, Schoolbook, and Chancery.
+	pkgver = 2.005
+	pkgrel = 2
+	url = http://www.gust.org.pl/projects/e-foundry/tex-gyre
+	install = otf-texgyre.install
+	arch = any
+	license = custom:GUST Font License
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg-2.005otf.zip
+	md5sums = 3774af603b5a13d374bf4668967bff57
+
+pkgname = otf-texgyre
+
