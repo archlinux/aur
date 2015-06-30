@@ -3,7 +3,7 @@
 # Contributor: Gordin <9ordin @t gmail dot com>
 
 pkgname=android-sdk
-pkgver=24.2.0
+pkgver=24.3.3
 pkgrel=1
 pkgdesc='Google Android SDK'
 arch=('x86_64' 'i686')
@@ -23,7 +23,7 @@ source=("https://dl-ssl.google.com/android/repository/tools_r${pkgver%.0}-linux.
         "$pkgname.csh"
         "$pkgname.conf"
         'license.html')
-sha1sums=('4dd9d54af10eb999efe606899d3007cb6b1eaa78'
+sha1sums=('c2c6f6236cbee34c80ec6b5f9f6b7bf0bc5919cb'
           '6497b745f05fc412490f74c66e10b9c5f15e6330'
           'e834f53e13d5926ec7be3fd775fa80aa6f328eb6'
           '78f8574e651c9bf8b7515ecb30c7ef93edbc4a96'
