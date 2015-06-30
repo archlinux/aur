@@ -1,0 +1,14 @@
+pkgbase = python-wpull
+	pkgdesc = Wget-compatible web downloader and crawler
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/chfoo/wpull
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = http://pypi.python.org/packages/source/w/wpull/wpull-1.2.1.tar.gz
+	sha256sums = c2491df6dd51548e598f4551032f5c8fde57006fed035832cdf9a19e732d2a9c
+
+pkgname = python-wpull
+
