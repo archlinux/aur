@@ -1,0 +1,14 @@
+pkgbase = xconvers
+	pkgdesc = Xconvers is a client for the amateur radio convers system
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://xconvers.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk
+	source = ftp://ftp5.gwdg.de/pub/linux/slackware/slackware-11.0/extra/source/ham/xconvers/xconvers-0.8.3.tar.bz2
+	sha256sums = ad07ffb920b66445c9e46e8025e1ca58a62b01122d748351019af10d78e78f3a
+
+pkgname = xconvers
+
