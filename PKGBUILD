@@ -2,15 +2,16 @@
 pkgname=whatsapp-desktop
 _pkgname=WhatsApp-Desktop
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
 arch=('i686' 'x86_64')
 url="http://whatsapp-desktop.com/"
 license=('MIT')
-depends=('libxtst' 'gtk2' 'libnotify' 'alsa-lib' 'gconf' 'gcc-libs' 'nss')
+depends=('libxtst' 'gtk2' 'libnotify' 'alsa-lib' 'gconf' 'nss')
 makedepends=('npm')
 conflicts=('whatsapp-desktop-git' 'whatsapp-desktop-bin')
 optdepends=()
+options=('!strip')
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 
@@ -43,7 +44,7 @@ package() {
 
   #Program
   install -d $pkgdir/usr/lib/$pkgname
-  install -Dm644 $_bpath/{nw.pak,libffmpegsumo.so,WhatsApp} $pkgdir/usr/lib/$pkgname
+  install -Dm755 $_bpath/{nw.pak,libffmpegsumo.so,WhatsApp,icudtl.dat} $pkgdir/usr/lib/$pkgname
   install -d $pkgdir/usr/bin
   ln -s "/usr/lib/${pkgname}/WhatsApp" "${pkgdir}/usr/bin/WhatsApp"
   
