@@ -3,8 +3,8 @@
 
 _gitname=poldi
 pkgname=${_gitname}-git
-pkgver=0.4.1
-pkgrel=8
+pkgver=r121.49a1cab
+pkgrel=1
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=poldi.git"
@@ -19,6 +19,11 @@ conflicts=("poldi")
 source=("${_gitname}::git://git.gnupg.org/${_gitname}/"
 	# "poldi-arch.patch"
 	"poldi.logrotate")
+
+pkgver() {
+	cd "${srcdir}/${_gitname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "$srcdir/${_gitname}"
