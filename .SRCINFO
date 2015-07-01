@@ -1,0 +1,22 @@
+pkgbase = seascope
+	pkgdesc = A multi-platform multi-language source code browsing tool
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://code.google.com/p/seascope/
+	arch = any
+	license = BSD
+	makedepends = gendesk
+	depends = python2-qscintilla
+	depends = ctags
+	optdepends = idutils: backend for C, lex, yacc, limited support for C++, Java
+	optdepends = cscope: backend for all languages supported by ctags
+	optdepends = global: backend for C, C++, Yacc, Java, PHP
+	optdepends = graphviz: generate class graphs
+	provides = seascope
+	conflicts = seascope
+	options = !emptydirs
+	source = http://seascope.googlecode.com/files/seascope-0.8.tar.gz
+	md5sums = 133b4e5628a8c2340fb00d7c4e41b547
+
+pkgname = seascope
+
