@@ -1,0 +1,756 @@
+diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/mooedit.py
+--- pida.orig/pida/editors/mooedit/mooedit.py	2012-03-10 02:57:31.000000000 -0800
++++ pida/pida/editors/mooedit/mooedit.py	2012-03-10 02:58:19.000000000 -0800
+@@ -15,28 +15,7 @@
+ import re
+ from gtk import gdk
+ 
+-
+-# UGLY UGLY workarround as suggested by muntyan_
+-# this will be changed someday when therue will be a correct 
+-# api for this.
+-
+-from pida.core.environment import home, workspace_name
+-
+-SYS_DATA = os.environ.get("XDG_DATA_DIRS", 
+-                          "/usr/share:/usr/local/share")
+-
+-MOO_DATA_DIRS=os.pathsep.join((
+-                str(home()/'moo'),
+-                os.path.join(os.path.dirname(__file__), "shared"),
+-                os.pathsep.join([os.path.join(x, "moo") 
+-                                for x in SYS_DATA.split(os.pathsep)]),
+-                "/usr/share/moo",
+-                "/usr/local/share/moo",
+-                "/usr/share/pida",
+-                "/usr/local/share/pida",
+-                ))
+-
+-os.environ['MOO_DATA_DIRS'] = MOO_DATA_DIRS
++from pida.core.environment import workspace_name
+ 
+ def _load_pix(fn):
+     #XXX: not zip save
+@@ -68,7 +47,6 @@
+ from pida.services.buffer import view as buffer_view
+ 
+ 
+-
+ # locale
+ from pida.core.locale import Locale
+ locale = Locale('mooedit')
+@@ -147,7 +125,7 @@
+     icon_name = 'package_utilities'
+     
+     def create_ui(self):
+-        prefs = self.svc._editor_instance.prefs_page()
++        prefs = moo.PrefsPage()
+         prefs.emit('init')
+         prefs.show()
+         vbox = gtk.VBox()
+@@ -255,15 +233,16 @@
+ 
+     def set_editor(self, editor):
+         self.editor = editor
+-        self.editor.props.buffer.connect('changed', self.on_changed)
+-        self.add(self.editor)
+-        self.editor.show()
++	self.editor_view = editor.get_view()
++        self.editor_view.props.buffer.connect('changed', self.on_changed)
++        self.add(self.editor_view)
++        self.editor_view.show()
+ 
+     def on_changed(self, textbuffer):
+         #FIXME: this doesn't work, nor does connect_after work correctly. 
+         # this is always one changed event to late. as the markers line position 
+         # is updated after this event :(
+-        self.editor.props.buffer.do_changed(textbuffer)
++        self.editor_view.props.buffer.do_changed(textbuffer)
+         for lm in self.line_markers:
+             lm.update(lm._moo_marker.get_line()+1)
+         return True
+@@ -282,7 +261,7 @@
+             # should be deleted
+             if marker in self.line_markers and hasattr(marker, '_moo_marker'):
+                 marker._moo_marker.props.visible = False
+-                self.editor.props.buffer.delete_line_mark(marker._moo_marker)
++                self.editor_view.props.buffer.delete_line_mark(marker._moo_marker)
+                 self.line_markers.remove(marker)
+                 return 
+ 
+@@ -293,14 +272,14 @@
+             lm.props.visible = True
+             marker._moo_marker = lm
+ 
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         if marker not in self.line_markers:
+             self.line_markers.append(marker)
+             buf.add_line_mark(marker._moo_marker, 
+                 min(max(0, int(marker.line)-1),buf.get_line_count()))
+             marker._moo_marker.props.visible = True
+         else:
+-            self.editor.props.buffer.move_line_mark(marker._moo_marker, 
++            self.editor_view.props.buffer.move_line_mark(marker._moo_marker, 
+                 min(max(0, int(marker.line)-1),buf.get_line_count()))
+ 
+ 
+@@ -440,7 +419,6 @@
+         # ne need to disconnect the accelerator as our text widget are 
+         # handeling the shortcuts
+         act.disconnect_accelerator()
+-        act.opt.add_notify(self.on_completer_change)
+ 
+         act = self.create_action(
+             'mooedit_complete_toggle',
+@@ -452,7 +430,6 @@
+             '<Control>space',
+         )
+         act.disconnect_accelerator()
+-        act.opt.add_notify(self.on_completer_change)
+ 
+         act = self.create_action(
+             'mooedit_completer_next',
+@@ -464,7 +441,6 @@
+             'Down',
+         )
+         act.disconnect_accelerator()
+-        act.opt.add_notify(self.on_completer_change)
+ 
+         act = self.create_action(
+             'mooedit_completer_prev',
+@@ -476,7 +452,6 @@
+             'Up',
+         )
+         act.disconnect_accelerator()
+-        act.opt.add_notify(self.on_completer_change)
+ 
+         act = self.create_action(
+             'mooedit_completer_accept',
+@@ -488,7 +463,6 @@
+             'Tab',
+         )
+         act.disconnect_accelerator()
+-        act.opt.add_notify(self.on_completer_change)
+ 
+     def on_completer_change(self, *args):
+         self.svc._update_keyvals()
+@@ -499,35 +473,35 @@
+ 
+     def on_save_as(self, action):
+         # open in current filebrowser path
+-        moo.utils.prefs_new_key_string('Editor/last_dir')
+-        moo.utils.prefs_set_string('Editor/last_dir', 
++        moo.prefs_new_key_string('Editor/last_dir')
++        moo.prefs_set_string('Editor/last_dir', 
+             self.svc.boss.cmd('filemanager', 'get_browsed_path'))
+-        self.svc._current.editor.save_as()
++	self.svc._current.editor.save_as(None)
+ 
+     def on_reload(self, action):
+         self.svc.reload_document(self.svc._current.document)
+ 
+     def on_find(self, action):
+-        self.svc._current.editor.emit('find-interactive')
++        self.svc._current.editor_view.emit('find-interactive')
+ 
+     def on_find_next(self, action):
+-        self.svc._current.editor.emit('find-next-interactive')
++        self.svc._current.editor_view.emit('find-next-interactive')
+ 
+     def on_find_prev(self, action):
+-        self.svc._current.editor.emit('find-prev-interactive')
++        self.svc._current.editor_view.emit('find-prev-interactive')
+ 
+     def on_replace(self, action):
+-        self.svc._current.editor.emit('replace-interactive')
++        self.svc._current.editor_view.emit('replace-interactive')
+ 
+     def on_find_word_next(self, action):
+-        self.svc._current.editor.emit('find-word-at-cursor', True)
++        self.svc._current.editor_view.emit('find-word-at-cursor', True)
+ 
+     def on_find_word_prev(self, action):
+-        self.svc._current.editor.emit('find-word-at-cursor', False)
++        self.svc._current.editor_view.emit('find-word-at-cursor', False)
+ 
+     def on_goto(self, action):
+         cl = self.svc.get_current_line()
+-        self.svc._current.editor.emit('goto-line-interactive')
++        self.svc._current.editor_view.emit('goto-line-interactive')
+         nl = self.svc.get_current_line()
+         if cl != nl:
+             self.svc.boss.get_service('buffer').emit('document-goto', 
+@@ -537,10 +511,10 @@
+         self.svc.boss.editor.goto_last_edit()
+ 
+     def on_comment(self, action):
+-        self.svc._current.editor.emit('comment')
++        self.svc._current.editor.comment_selection()
+ 
+     def on_uncomment(self, action):
+-        self.svc._current.editor.emit('uncomment')
++        self.svc._current.editor.uncomment_selection()
+ 
+ class PidaMooInput(object):
+     """
+@@ -551,13 +525,14 @@
+         self.svc = svc
+         self.editor = editor
+         self.document = document
++	self.editor_view = editor.get_view()
+         self.completer_window = PidaCompleterWindow(type_=gtk.WINDOW_POPUP,
+             show_input=False)
+         self.completer = self.completer_window.widget
+         self.completer.show_all()
+         self.completer.connect("user-accept", self.accept)
+         self.completer.connect("suggestion-selected", self.suggestion_selected)
+-        self.editor.connect("cursor-moved", self.on_cursor_moved)
++        self.editor_view.connect("cursor-moved", self.on_cursor_moved)
+         self.model = SuggestionsList()
+         self.completer.set_model(self.model)
+         
+@@ -571,26 +546,26 @@
+         self.completer_end = None
+         self.show_auto = False
+         self._task = None
+-
++	
+         # db stuff for the autocompleter
+         self.list_matcher = re.compile("""\w{3,100}""")
+         self.list_cache = {}
+         self.list_all = set()
+ 
+-        editor.connect("key-press-event", self.on_keypress)
+-        editor.connect("focus-out-event", self.on_do_hide)
+-        editor.get_toplevel().connect("focus-out-event", self.on_do_hide)
++        self.editor_view.connect("key-press-event", self.on_keypress)
++        self.editor_view.connect("focus-out-event", self.on_do_hide)
++        self.editor_view.get_toplevel().connect("focus-out-event", self.on_do_hide)
+         #editor.connect_after("key-press-event", self.on_after_keypress)
+ 
+     def disconnect(self):
+-        self.editor.disconnect_by_func(self.on_keypress)
+-        self.editor.disconnect_by_func(self.on_do_hide)
++        #self.editor_view.disconnect_by_func(self.on_keypress)
++        #self.editor_view.disconnect_by_func(self.on_do_hide)
+         #try:
+         #    self.editor.get_toplevel().disconnect_by_func(self.on_do_hide)
+         #except ValueError: pass
+         self.completer.disconnect_by_func(self.accept)
+         self.completer.disconnect_by_func(self.suggestion_selected)
+-        self.editor.disconnect_by_func(self.on_cursor_moved)
++        #self.editor_view.disconnect_by_func(self.on_cursor_moved)
+ 
+ 
+     #def on_
+@@ -694,15 +669,15 @@
+         self.completer_end = buf.create_mark('completer_end', 
+                         buf.get_iter_at_offset(cpos))
+ 
+-        rec = self.editor.get_iter_location(
+-                self.editor.props.buffer.get_iter_at_offset(
++        rec = self.editor_view.get_iter_location(
++                self.editor.get_buffer().get_iter_at_offset(
+                     buf.props.cursor_position))
+-        pos = self.editor.buffer_to_window_coords(gtk.TEXT_WINDOW_WIDGET,
++        pos = self.editor_view.buffer_to_window_coords(gtk.TEXT_WINDOW_WIDGET,
+             rec.x, rec.y + rec.height)
+ 
+         #tw = self.editor.window.get_toplevel()
+         #abspos = tw.get_position()
+-        abspos = self.editor.window.get_origin()
++        abspos = self.editor_view.window.get_origin()
+         rpos = (pos[0]+abspos[0], pos[1]+abspos[1])
+         #self.completer_window.show_all()
+         #self.completer_window.move(rpos[0],rpos[1])
+@@ -712,7 +687,7 @@
+         #self.completer_window.window.set_focus_on_map(False)
+         #self.completer_window.window.set_skip_taskbar_hint(True)
+         #self.completer_window.window.set_skip_pager_hint(True)
+-        self.editor.grab_focus()
++        self.editor_view.grab_focus()
+         #if not self.completer_added:
+             #self.editor.add_child_in_window(self.completer, 
+             #                           gtk.TEXT_WINDOW_TOP, 
+@@ -765,13 +740,13 @@
+         return buf.get_text(i1, i2)
+ 
+     def _delete_typed(self):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         i1 = buf.get_iter_at_mark(self.completer_pos)
+         i2 = buf.get_iter_at_mark(self.completer_start)
+         buf.delete(i1, i2)
+         
+     def _insert_typed(self, text):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         i1 = buf.get_iter_at_mark(self.completer_pos)
+         buf.insert(i1, text)
+         buf.move_mark(self.completer_start, i1)
+@@ -784,7 +759,7 @@
+         self._replace_typed(self._get_typed() + char)
+ 
+     def _replace_typed(self, text):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         i1 = buf.get_iter_at_mark(self.completer_pos)
+         i2 = buf.get_iter_at_mark(self.completer_start)
+         buf.delete(i1, i2)
+@@ -793,13 +768,13 @@
+         buf.move_mark(self.completer_start, i1)
+ 
+     def _get_suggested(self):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         i1 = buf.get_iter_at_mark(self.completer_start)
+         i2 = buf.get_iter_at_mark(self.completer_end)
+         return buf.get_text(i1, i2)
+ 
+     def _delete_suggested(self):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         if not self.completer_start or not self.completer_end:
+             return
+         i1 = buf.get_iter_at_mark(self.completer_start)
+@@ -807,7 +782,7 @@
+         buf.delete(i1, i2)
+ 
+     def d(self):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         if self.completer_start:
+             print "cur", buf.props.cursor_position
+             print "pos", buf.get_iter_at_mark(self.completer_pos).get_offset()
+@@ -816,7 +791,7 @@
+ 
+ 
+     def _replace_suggested(self, text, mark=True):
+-        buf = self.editor.props.buffer
++        buf = self.editor.get_buffer()
+         i1 = buf.get_iter_at_mark(self.completer_start)
+         i2 = buf.get_iter_at_mark(self.completer_end)
+         buf.delete(i1, i2)
+@@ -895,8 +870,8 @@
+         # if we are in show_auto mode, the completion window
+         # is delayed until we have the first visible item.
+         if not self.completer_visible and self.show_auto and \
+-           self.editor.get_toplevel().has_toplevel_focus() and \
+-           self.editor.is_focus():
++           self.editor_view.get_toplevel().has_toplevel_focus() and \
++           self.editor_view.is_focus():
+             if len(self.completer.model):
+                 self.completer_window.show()
+ 
+@@ -963,7 +938,7 @@
+         # and the code later should be a extra function
+         # but doesn't work as this super function returns True
+         # and stops the processing of connect_after functions
+-        modified = self.editor.do_key_press_event(editor, event)
++        modified = self.editor_view.do_key_press_event(self.editor_view, event)
+         #print modified, repr(event.string)
+         #self.d()
+         #if self.completer_start:
+@@ -1056,8 +1031,7 @@
+ class MooeditEventsConfig(EventsConfig):
+ 
+     def subscribe_all_foreign(self):
+-        self.subscribe_foreign('editor', 'marker-changed',
+-            self.marker_changed)
++        #self.subscribe_foreign('editor', 'marker-changed', self.marker_changed)
+         self.subscribe_foreign('buffer', 'document-typchanged',
+             self.doctype_changed)
+ 
+@@ -1066,8 +1040,7 @@
+ 
+     def doctype_changed(self, document):
+         if document.doctype and getattr(document, 'editor', None):
+-            document.editor.set_lang(MAPPINGS.get(document.doctype.internal, 
+-                                                  None))
++            document.editor.props.lang=MAPPINGS.get(document.doctype.internal, None)
+ 
+ # Service class
+ class Mooedit(EditorService):
+@@ -1081,27 +1054,17 @@
+     events_config = MooeditEventsConfig
+     
+     def pre_start(self):
++	# Horrible hack
++	self._called_once = False
+         # mooedit is able to open empty documents
+         self._last_modified = None
+         self._docwin = None
+         self.features.publish('new_file')
+         
+         try:
+-            self.script_path = os.path.join(pida_home, 'pida_mooedit.rc')
+-            self._state_path = os.path.join(pida_home, 'pida_mooedit.state')
+-            try:
+-                moo.utils.prefs_load(sys_files=None, file_rc=self.script_path, file_state=self._state_path)
+-            except gobject.GError:
+-                pass
+-            # if a workspace specific rc file exists, load it and make it the current one
+-            if os.path.exists(os.path.join(pida_home, 'pida_mooedit.%s.rc' %workspace_name())):
+-                self.script_path = os.path.join(pida_home, 'pida_mooedit.%s.rc' %workspace_name())
+-                try:
+-                    moo.utils.prefs_load(sys_files=None, file_rc=self.script_path, file_state=None)
+-                except gobject.GError:
+-                    pass
+-            self._editor_instance = moo.edit.create_editor_instance()
+-            moo.edit.plugin_read_dirs()
++	    self._editor_instance = moo.Editor.create_instance()
++	    self._app_instance = moo.App()
++	    self._app_instance.emit('load-session')
+             self._documents = {}
+             self._current = None
+             self._main = MooeditMain(self)
+@@ -1125,6 +1088,8 @@
+             return False
+ 
+     def start(self):
++	if self._called_once:
++		return True
+         # we only disable the buttons if no document is loaded
+         # session may already have loaded docs
+         if not len(self._documents):
+@@ -1132,10 +1097,12 @@
+         self.get_action('mooedit_last_edit').set_sensitive(False)
+         self._update_keyvals()
+         self.boss.get_service('editor').emit('started')
++	# It seems to start twice no matter what medit is installed
++	self._called_once = True
+ 
+         # build a mapping table
+-        build_mapping(moo.edit.lang_mgr_default(), 
+-                      self.boss.get_service('language').doctypes)
++        #build_mapping(moo.edit.lang_mgr_default(), 
++        #              self.boss.get_service('language').doctypes)
+ 
+         return True
+ 
+@@ -1147,7 +1114,8 @@
+                 view.update_marker(marker)
+ 
+     def save_moo_state(self):
+-        moo.utils.prefs_save(self.script_path, self._state_path)
++	self._app_instance.emit('save-session')
++        #moo.utils.prefs_save(self.script_path, self._state_path)
+ 
+     def show_preferences(self, visible):
+         if visible:
+@@ -1194,15 +1162,15 @@
+ 
+     def _update_keyvals(self):
+         self.key_toggle = gtk.accelerator_parse(
+-            self.get_keyboard_options()['mooedit_complete_toggle'].value)
++            self.actions._defaults['mooedit_complete_toggle'])
+         self.key_close = gtk.accelerator_parse(
+-            self.get_keyboard_options()['mooedit_completer_close'].value)
++            self.actions._defaults['mooedit_completer_close'])
+         self.key_next = gtk.accelerator_parse(
+-            self.get_keyboard_options()['mooedit_completer_next'].value)
++            self.actions._defaults['mooedit_completer_next'])
+         self.key_prev = gtk.accelerator_parse(
+-            self.get_keyboard_options()['mooedit_completer_prev'].value)
++            self.actions._defaults['mooedit_completer_prev'])
+         self.key_accept = gtk.accelerator_parse(
+-            self.get_keyboard_options()['mooedit_completer_accept'].value)
++            self.actions._defaults['mooedit_completer_accept'])
+ 
+     def open(self, document):
+         """Open a document"""
+@@ -1253,32 +1221,25 @@
+ 
+     def save(self):
+         """Save the current document"""
+-        # man, medit resets the language on save
+-        olang = self._current.editor.props.buffer.get_lang()
+         self._current.editor.save()
+-        self._current.editor.set_lang(olang)
+-        gcall(self._current.editor.set_lang, olang)
+         self.boss.cmd('buffer', 'current_file_saved')
+ 
+     def save_as(self):
+         """Save the current document"""
+-        olang = self._current.editor.props.buffer.get_lang()
+-        self._current.editor.save_as()
+-        self._current.editor.set_lang(olang)
+-        gcall(self._current.editor.set_lang, olang)
++	self._current.editor.save_as(None)
+         self.boss.cmd('buffer', 'current_file_saved')
+ 
+     def cut(self):
+         """Cut to the clipboard"""
+-        self._current.editor.emit('cut-clipboard')
++        self._current.editor_view.emit('cut-clipboard')
+ 
+     def copy(self):
+         """Copy to the clipboard"""
+-        self._current.editor.emit('copy-clipboard')
++        self._current.editor_view.emit('copy-clipboard')
+ 
+     def paste(self):
+         """Paste from the clipboard"""
+-        self._current.editor.emit('paste-clipboard')
++        self._current.editor_view.emit('paste-clipboard')
+ 
+     def undo(self):
+         self._current.editor.undo()
+@@ -1294,7 +1255,7 @@
+ 
+     def goto_line(self, line):
+         """Goto a line"""
+-        self._current.editor.move_cursor(line-1, 0, False, True)
++        self._current.editor_view.move_cursor(line-1, 0, False, True)
+         self.boss.get_service('buffer').emit('document-goto', 
+                                         document=self._current.document, line=line-1)
+ 
+@@ -1311,7 +1272,7 @@
+ 
+     def grab_focus(self):
+         if self._current is not None:
+-            self._current.editor.grab_focus()
++            self._current.editor_view.grab_focus()
+ 
+     def _changed_page(self, notebook, page, page_num):
+         self._current = self._embed.get_nth_page(page_num)
+@@ -1321,39 +1282,19 @@
+         """
+         Reloads a document from disc
+         """
+-        # TODO: moo does no export reload functionality, so this really sucks
+-        view = self._documents[document.unique_id]
+-        buf = document.editor.get_buffer()
+-        last_line = buf.get_iter_at_offset(buf.props.cursor_position)\
+-                       .get_line()
+-
+-        document.editor.disconnect_by_func(self._buffer_status_changed)
+-        document.editor.disconnect_by_func(self._buffer_renamed)
+-        document.editor.get_buffer().disconnect_by_func(self._buffer_changed)
+-        closing = document.editor.close()
+-        if closing:
+-            label = document.editor._label
+-            view.remove(document.editor)
+-            editor = self._editor_instance.create_doc(document.filename)
+-            editor._label = label
+-            editor.inputter = PidaMooInput(self, editor, document)
+-            document.editor = editor
+-            view.set_editor(editor)
+-            gcall(editor.move_cursor, last_line, 0, False, True)
+-        document.editor.connect("doc_status_changed", self._buffer_status_changed, view)
+-        document.editor.connect("filename-changed", self._buffer_renamed, view)
+-        document.editor.get_buffer().connect("changed", self._buffer_changed, view)
++	document.editor.reload()
+         document.editor.emit("doc_status_changed")
+ 
+     def _load_file(self, document):
+         try:
+             if document is None:
+-                editor = self._editor_instance.new_doc()
++                editor = self._editor_instance.create_doc()
+             else:
+                 editor = self._editor_instance.create_doc(document.filename)
+             document.editor = editor
++	    self._editor_view = editor.get_view()
+             editor.inputter = PidaMooInput(self, editor, document)
+-            editor.props.show_line_marks = True
++            self._editor_view.props.show_line_marks = True
+             editor.props.enable_bookmarks = False
+             #FIXME: this should be implemented but needs some code and a pref
+             #editor.props.enable_folding = True
+@@ -1379,7 +1320,7 @@
+ 
+     def _buffer_status_changed(self, buffer, view):
+         status = view.editor.get_status()
+-        if moo.edit.EDIT_MODIFIED & status == moo.edit.EDIT_MODIFIED:
++        if moo.EDIT_STATUS_MODIFIED & status == moo.EDIT_STATUS_MODIFIED:
+             if not self._current.editor.can_redo():
+                 self.get_action('redo').set_sensitive(False)
+             if not view._star:
+@@ -1392,11 +1333,11 @@
+                 self.get_action('undo').set_sensitive(True)
+                 self.get_action('save').set_sensitive(True)
+ 
+-        if moo.edit.EDIT_CLEAN & status == moo.edit.EDIT_CLEAN:
++        if moo.EDIT_STATUS_CLEAN & status == moo.EDIT_STATUS_CLEAN:
+             status = 0
+-        if moo.edit.EDIT_NEW & status == moo.edit.EDIT_NEW:
++        if moo.EDIT_STATUS_NEW & status == moo.EDIT_STATUS_NEW:
+             status = 0
+-        if moo.edit.EDIT_CHANGED_ON_DISK & status == moo.edit.EDIT_CHANGED_ON_DISK:
++        if moo.EDIT_STATUS_MODIFIED_ON_DISK & status == moo.EDIT_STATUS_MODIFIED_ON_DISK:
+             if not view._exclam:
+                 s = view.editor._label._markup
+                 if view._star:
+@@ -1426,8 +1367,8 @@
+         view.editor._label.set_markup(ns)
+         view.editor._label._markup(ns)
+ 
+-    def _buffer_renamed(self, buffer, new_name, view):
+-        view.document.filename = new_name
++    def _buffer_renamed(self, buffer, view):
++        view.document.filename = buffer.get_filename()
+         ns = self._get_document_title(view.document)
+         view.editor._label.set_markup(ns)
+         view.editor._label._markup = ns
+@@ -1584,7 +1525,7 @@
+         buf.place_cursor(itr)
+         if scroll:
+             itr = buf.get_iter_at_offset(position)
+-            self._current.editor.scroll_to_iter(itr, 0.05, use_align=True)
++            self._current.editor_view.scroll_to_iter(itr, 0.05, use_align=True)
+ 
+     def do_doc_destroy(self, *args):
+         if self._docwin:
+@@ -1592,18 +1533,18 @@
+             self._docwin = None
+ 
+     def on_doc_destroy(self, *args):
+-        self._current.editor.props.buffer.disconnect(self._editor_mi)
++        self._current.editor_view.props.buffer.disconnect(self._editor_mi)
+ 
+ 
+     def show_documentation(self):
+-        buf = self._current.editor.props.buffer
+-        rec = self._current.editor.get_iter_location(
++        buf = self._current.editor.get_buffer()
++        rec = self._current.editor_view.get_iter_location(
+                 buf.get_iter_at_offset(
+                     buf.props.cursor_position))
+-        pos = self._current.editor.buffer_to_window_coords(
++        pos = self._current.editor_view.buffer_to_window_coords(
+             gtk.TEXT_WINDOW_WIDGET,
+             rec.x, rec.y)
+-        abspos = self._current.editor.window.get_origin()
++        abspos = self._current.editor_view.window.get_origin()
+         rpos = (pos[0]+abspos[0], pos[1]+abspos[1])
+         dm = self.boss.get_service('language').get_documentator(
+             self._current.document)
+@@ -1625,7 +1566,7 @@
+                              quick=True)
+             return
+         pd.connect("destroy-event", self.on_doc_destroy)
+-        self._current.editor.props.buffer.connect(
++        self._current.editor_view.props.buffer.connect(
+             'cursor-moved', self.do_doc_destroy)
+         pd.move(rpos[0], rpos[1] + rec.height)
+         self._docwin = pd
+@@ -1654,5 +1595,10 @@
+ 
+ 
+ 
++# Required Service attribute for service loading
++Service = Mooedit
++
++
++
+ # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
+ 
+diff -ru pida.orig/pida/ui/paneds.py pida/pida/ui/paneds.py
+--- pida.orig/pida/ui/paneds.py	2012-03-10 02:57:31.000000000 -0800
++++ pida/pida/ui/paneds.py	2012-03-10 02:58:34.000000000 -0800
+@@ -9,7 +9,7 @@
+ # Don't import moo twice from different locations when the full editor is
+ # being used.
+ try:
+-    import moo
++    import notmoo
+     from moo.utils import BigPaned, PaneLabel, PaneParams, Paned, Pane
+     from moo.utils import PANE_POS_BOTTOM, PANE_POS_TOP, PANE_POS_RIGHT, PANE_POS_LEFT
+     version = moo.version.split('.')
+@@ -21,8 +21,8 @@
+         use_old = True
+ 
+ except ImportError:
+-    from pida.ui.moo_stub import BigPaned, PaneLabel, PaneParams, Paned, Pane
+-    from pida.ui.moo_stub import PANE_POS_BOTTOM, PANE_POS_TOP, PANE_POS_RIGHT, PANE_POS_LEFT
++    from pida.ui.moo_stub import InternalBigPaned, InternalPaneLabel, InternalPaneParams, InternalPaned, InternalPane
++    from pida.ui.moo_stub import INTERNAL_PANE_POS_BOTTOM, INTERNAL_PANE_POS_TOP, INTERNAL_PANE_POS_RIGHT, INTERNAL_PANE_POS_LEFT
+     use_old = False
+ 
+ from pygtkhelpers.utils import gsignal
+@@ -34,17 +34,17 @@
+ PANE_PLUGIN = 'Plugin'
+ 
+ POS_MAP = {
+-    PANE_TERMINAL: PANE_POS_BOTTOM,
+-    PANE_BUFFER: PANE_POS_LEFT,
+-    PANE_PLUGIN: PANE_POS_RIGHT,
++    PANE_TERMINAL: INTERNAL_PANE_POS_BOTTOM,
++    PANE_BUFFER: INTERNAL_PANE_POS_LEFT,
++    PANE_PLUGIN: INTERNAL_PANE_POS_RIGHT,
+ }
+ 
+-class PidaPaned(BigPaned):
++class PidaPaned(InternalBigPaned):
+ 
+     gsignal('pane-attachment-changed', gobject.TYPE_PYOBJECT, bool)
+ 
+     def __init__(self):
+-        BigPaned.__init__(self)
++        InternalBigPaned.__init__(self)
+         self._fullscreen = False
+         self._fullscreen_vis = {}
+         self.set_property('enable-detaching', True)
+@@ -62,8 +62,8 @@
+ 
+     def get_all_pos(self, every=False):
+         if every:
+-            return [PANE_POS_TOP, PANE_POS_BOTTOM, PANE_POS_LEFT, PANE_POS_RIGHT]
+-        return [PANE_POS_TOP, PANE_POS_LEFT, PANE_POS_RIGHT]
++            return [INTERNAL_PANE_POS_TOP, INTERNAL_PANE_POS_BOTTOM, INTERNAL_PANE_POS_LEFT, INTERNAL_PANE_POS_RIGHT]
++        return [INTERNAL_PANE_POS_TOP, INTERNAL_PANE_POS_LEFT, INTERNAL_PANE_POS_RIGHT]
+ 
+     def get_all_paneds(self, every=False):
+         for pos in self.get_all_pos(every):
+@@ -100,7 +100,7 @@
+             self.add_child(view.get_toplevel())
+         else:
+             POS = POS_MAP[name]
+-            lab = PaneLabel(view.icon_name, None, view.label_text)
++            lab = InternalPaneLabel(view.icon_name, None, view.label_text)
+             if use_old:
+                 pane = self.insert_pane(view.get_toplevel(), lab, POS, POS)
+             else:
+@@ -127,7 +127,7 @@
+             self.show_all()
+ 
+     def __contains__(self, item):
+-        if not isinstance(item, Pane):
++        if not isinstance(item, InternalPane):
+             item = item.pane
+         for paned in self.get_all_paneds(True):
+             for pane in paned.list_panes():
+@@ -146,7 +146,7 @@
+ 
+     def detach_view(self, view, size=(400,300)):
+         paned, pos = self.find_pane(view.get_toplevel())
+-        dparam = PaneParams(keep_on_top=True, detached=True)
++        dparam = InternalPaneParams(keep_on_top=True, detached=True)
+         paned.set_params(dparam)
+         paned.detach()
+         self._center_on_parent(view, size)
+@@ -248,7 +248,7 @@
+             mbuttons = None
+             is_top = oparam.keep_on_top
+ 
+-        nparam = PaneParams(keep_on_top=is_top, 
++        nparam = InternalPaneParams(keep_on_top=is_top, 
+                             detached=kwargs.get('detached', oparam.detached),
+                             window_position=kwargs.get('window_position', oparam.window_position),
+                             maximized=kwargs.get('maximized', oparam.maximized))
+@@ -257,11 +257,11 @@
+     def get_focus_pane(self):
+         if self.get_toplevel().is_active():
+             last_pane = getattr(self, 'focus_child', None)
+-            if not isinstance(last_pane, Paned):
++            if not isinstance(last_pane, InternalPaned):
+                 return
+             while True:
+                 child_pane = getattr(last_pane, 'focus_child', None)
+-                if isinstance(child_pane, Paned):
++                if isinstance(child_pane, InternalPaned):
+                     last_pane = child_pane
+                 else:
+                     return last_pane.get_open_pane()

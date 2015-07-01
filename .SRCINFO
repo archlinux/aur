@@ -1,0 +1,30 @@
+pkgbase = pida-hg
+	pkgdesc = Python Integrated Development Application
+	pkgver = 2921.be90809a5d81
+	pkgrel = 1
+	url = http://pidsoff.appspot.com/pida
+	install = pida.install
+	arch = any
+	license = custom
+	makedepends = mercurial
+	makedepends = python2-distribute
+	depends = vte
+	depends = python2-simplejson
+	depends = python2-pygtkhelpers
+	depends = dbus-python
+	depends = python2-logbook
+	depends = python2-notify
+	depends = python2-py
+	optdepends = python2-anyvc: version control integration
+	optdepends = python2-apipkg: version control integration
+	provides = pida
+	conflicts = pida
+	source = hg+https://bitbucket.org/aafshar/pida-main
+	source = pida.desktop
+	source = nodrm.patch
+	md5sums = SKIP
+	md5sums = 0216466cf5f64238c90b5e07df71ce3a
+	md5sums = 479c24a04069112f610667f9746011d4
+
+pkgname = pida-hg
+
