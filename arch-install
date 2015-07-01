@@ -1,0 +1,13 @@
+# Maintainer: Denys Popov <besisland@besisland.name>
+# rukbi install file
+
+post_install() {
+    printf "\n"
+    printf "==> You have to run '/usr/share/X11/xkb/rukbi/install/install' as root in order to patch the xkeyboard-config.\n"
+    printf "==> If the xkeyboard-config package were reinstalled, run this script again.\n"
+    printf "\n"
+}
+
+post_upgrade() {
+    post_install
+}
