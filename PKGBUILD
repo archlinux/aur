@@ -3,8 +3,8 @@
 # Contributor: Iven Hsu <ivenvd AT gmail>
 
 pkgname=compiz-bzr
-pkgver=3953
-pkgrel=2
+pkgver=3958
+pkgrel=1
 _bzrname=compiz
 _bzrbranch=0.9.12
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
@@ -19,15 +19,13 @@ optdepends=(
 conflicts=('compiz-core' 'compiz')
 provides=("compiz=$_bzrbranch")
 replaces=('compiz-core-bzr')
-source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/#revision=3953"
+source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/#revision=3958"
         "set-gwd-default.patch"
         "focus-prevention-disable.patch"
-        "metacity-3_16.patch"
         "client-frame-api.patch")
 sha256sums=('SKIP'
             '3aa6cb70f357b3d34d51735f4b5bcb0479086d7c7336de4bd8157569d6c52c08'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
-            '97d4f62ec373ec80a8eff151a497005912050898be447b204846ce90c368fa61'
             '4cb451857a2e6deef15dd04e68ca8bd1d898344b6a175fa1a9f2fb0c11b119d7')
 install='compiz-bzr.install'
 
@@ -50,9 +48,6 @@ prepare() {
 
   # Fix Python build directory with CMake 3.2
   sed -i 's/${PY_BUILD_DIR}/lib/g' compizconfig/ccsm/CMakeLists.txt
-
-  # Metacity 3.16 compatibility
-  patch -Np1 -i "${srcdir}/metacity-3_16.patch"
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -Np1 -i "${srcdir}/client-frame-api.patch"
