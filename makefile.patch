@@ -1,0 +1,11 @@
+--- Makefile.orig	2010-09-30 02:25:18.746464856 -0400
++++ Makefile	2010-09-30 02:14:41.177176380 -0400
+@@ -1,6 +1,6 @@
+ #Customisable stuff here
+-LINUX32_COMPILER = i686-pc-linux-gnu-gcc
+-LINUX64_COMPILER = x86_64-pc-linux-gnu-gcc
++LINUX32_COMPILER = gcc
++LINUX64_COMPILER = gcc
+ WIN32_COMPILER = /usr/bin/i586-mingw32-gcc
+ WIN32_WINDRES = i586-mingw32-windres
+ #LINUX_ARM_COMPILER = arm-pc-linux-gnu-gcc
