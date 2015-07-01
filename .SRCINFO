@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-iasip
+	pkgdesc = It's Always Sunny In Philadelphia fortune cookie file
+	pkgver = 1
+	pkgrel = 2
+	url = http://dl.dropbox.com
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = iasip
+	md5sums = 8edff282ff81cbaa24363c0ea353f624
+
+pkgname = fortune-mod-iasip
+
