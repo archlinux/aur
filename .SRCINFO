@@ -1,0 +1,20 @@
+pkgbase = mmsap
+	pkgdesc = Comfortable SAP player based on ASAP library
+	pkgver = 3.2.5
+	pkgrel = 3
+	url = http://mmsap.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = libglade
+	makedepends = asap
+	makedepends = dbus-glib
+	depends = gtkmm3
+	depends = alsa-lib
+	conflicts = mmsap2
+	source = http://downloads.sourceforge.net/mmsap/mmsap_3.2.5.tar.bz2
+	md5sums = ad585f4d16ba268a0d0c52f36d128983
+
+pkgname = mmsap
+
