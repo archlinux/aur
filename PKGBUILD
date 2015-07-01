@@ -3,7 +3,7 @@
 _pkgbase=opus
 pkgname=lib32-$_pkgbase
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet"
 arch=('x86_64')
 url="http://www.opus-codec.org/"
