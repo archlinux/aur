@@ -1,0 +1,11 @@
+--- runsnakerun/runsnake.py	2013-10-25 15:55:49.000000000 +0200
++++ runsnakerun/runsnake.py	2014-06-06 00:51:54.291448727 +0200
+@@ -2,6 +2,8 @@
+ """The main script for the RunSnakeRun profile viewer"""
+ 
++import wxversion
++wxversion.select("2.8")
+ import wx, sys, os, logging, traceback
+ log = logging.getLogger( __name__ )
+ import ConfigParser
+ try:
