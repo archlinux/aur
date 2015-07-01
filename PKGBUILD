@@ -3,8 +3,7 @@
 
 pkgname=unifi-controller-beta
 pkgver=4.6.6
-_pkg=bec4a09
-pkgrel=1
+pkgrel=2
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('any')
 url='http://www.ubnt.com/'
@@ -14,7 +13,7 @@ conflicts=('unifi-controller')
 # needed to not break configuration accross upgrades
 backup=('opt/unifi/data/system.properties')
 install=unifi.install
-source=("UniFi-$pkgver.zip::http://dl.ubnt.com/unifi/$pkgver-$_pkg/UniFi.unix.zip"
+source=("UniFi-$pkgver.zip::http://dl.ubnt.com/unifi/$pkgver/UniFi.unix.zip"
         'unifi.service')
 md5sums=('96bb01cad7710775f5512f659eed7baa'
          '04934ee4be43b6f80db610d140edf49f')
