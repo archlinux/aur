@@ -4,6 +4,7 @@
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
+_pkgname=systemd
 pkgver=221
 pkgrel=2
 arch=('i686' 'x86_64')
@@ -27,7 +28,7 @@ md5sums=('SKIP'
          'ddaef54f68f6c86c6c07835fc668f62a')
 
 prepare() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   # pam_systemd: Properly check kdbus availability
   # https://github.com/systemd/systemd/commit/c5d452bb228e
@@ -61,7 +62,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
@@ -119,7 +120,7 @@ package_systemd-kill-fix() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "$pkgname" DESTDIR="$pkgdir" install
+  make -C "$_pkgname" DESTDIR="$pkgdir" install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -129,7 +130,7 @@ package_systemd-kill-fix() {
   rm -r "$pkgdir/usr/lib/rpm"
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "$pkgname/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "$_pkgname/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
