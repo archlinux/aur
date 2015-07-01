@@ -1,0 +1,16 @@
+pkgbase = i4oled-gui-git
+	pkgdesc = A showcase of graphical user interface for setting OLEDs on Wacom Intuos4 tablets
+	pkgver = 20140916
+	pkgrel = 1
+	url = https://github.com/PrzemoF/i4oled-gui
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	depends = gtk3
+	depends = dconf
+	source = i4oled-gui-git::git+https://github.com/PrzemoF/i4oled-gui.git
+
+pkgname = i4oled-gui-git
+
