@@ -1,0 +1,18 @@
+pkgbase = systemd-xorg-launch-helper-git
+	pkgdesc = A wrapper in C to make X.Org function as a proper systemd unit
+	pkgver = 28
+	pkgrel = 1
+	url = https://github.com/sofar/xorg-launch-helper
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = systemd
+	depends = xorg-server
+	provides = xorg-launch-helper
+	conflicts = xorg-launch-helper
+	source = git+https://github.com/sofar/xorg-launch-helper.git
+	sha256sums = SKIP
+
+pkgname = systemd-xorg-launch-helper-git
+
