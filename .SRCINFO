@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-aoe
+	pkgdesc = mkinitcpio hook to boot from an ATA over Ethernet (AoE) target
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = aoetools
+	source = initcpio-install-aoe
+	source = initcpio-hook-aoe
+	sha256sums = 126d70a1c6e6685d1a0b65ac003851ce5a5612812ae99aceea54a646448ca644
+	sha256sums = 7cb71358243feeaaffd0e11d9fa5ee2042d86f26aa26c9a081921a9e0472c942
+
+pkgname = mkinitcpio-aoe
+

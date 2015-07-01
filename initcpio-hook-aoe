@@ -1,0 +1,83 @@
+# vim: set ft=sh:
+run_hook() {
+    local i net_mac bootif_mac bootif_dev 
+    local net_iflist iface root_dev shelf slot dev root_found
+
+    # calculate bootif_dev from boot MAC address
+    if [ -n "${BOOTIF}" ]; then
+        bootif_mac=${BOOTIF#01-}
+        bootif_mac=${bootif_mac//-/:}
+        for i in /sys/class/net/*/address; do
+            read net_mac < ${i}
+            if [ "${bootif_mac}" == "${net_mac}" ]; then
+                bootif_dev=${i#/sys/class/net/}
+                bootif_dev=${bootif_dev%/address}
+                break
+            fi
+        done
+    fi
+
+    # calculate aoe_iflist for module load
+    if [ -z "${aoe_iflist}" ]; then
+        aoe_iflist=${bootif_dev}
+    fi
+
+    # calculate net_iflist with interfaces to bring up
+    net_iflist=${aoe_iflist//,/ }
+    if [ -z "${net_iflist}" ]; then
+        net_iflist=`ls /sys/class/net`
+    fi
+
+    # set discover timeout
+    aoe_discover_timeout=${aoe_discover_timeout:-10}
+
+    # setup network
+    msg ":: Bringing up network interfaces: ${net_iflist}"
+    for iface in ${net_iflist}; do
+        ifconfig "${iface}" up
+    done
+
+    # calculate shelf and slot of AoE device
+    root_dev=${root#/dev/etherd/}
+    shelf=${root_dev%.*}
+    shelf=${shelf#e}
+    slot=${root_dev#e*.}
+    slot=${slot%p*}
+
+    # load module
+    modprobe aoe ${aoe_iflist:+aoe_iflist=${aoe_iflist}}
+
+    # search for root device
+    echo -n "Searching for AoE root device."
+    root_found=false
+    for i in `seq ${aoe_discover_timeout}`; do
+        for dev in /dev/etherd/e[0-9]*; do
+            if [ "${dev}" == "${root}" ]; then
+                root_found=true
+                break
+            fi
+        done
+
+        if $root_found; then
+            break
+        else
+            echo -n "."
+            sleep 1
+            aoe-discover
+        fi
+    done
+    echo
+
+    if ! $root_found; then
+        err "Unable to mount root filesystem over AoE."
+        echo "You are being dropped to a recovery shell"
+        echo "    Type 'exit' to try and continue booting"
+        launch_interactive_shell
+        msg "Trying to continue (this will most likely fail) ..."
+    else
+        msg ":: Found AoE device: e${shelf}.${slot}"
+    fi
+    set +x
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
