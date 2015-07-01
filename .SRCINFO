@@ -1,0 +1,18 @@
+pkgbase = unshake
+	pkgdesc = Sharpens photos which are blurred, poorly focused or shaken
+	pkgver = 1.5r1
+	pkgrel = 3
+	url = http://www.unshake.co.uk/
+	install = unshake.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = http://www.zen147963.zen.co.uk/Unshake/Unshake15r1.zip
+	source = unshake.sh
+	source = LICENSE
+	md5sums = 7082391e5862217f70f747552ea9138a
+	md5sums = 70761d25da1fcd9de1c89d84b836384c
+	md5sums = 784de31896415c2f6a09862c83831a56
+
+pkgname = unshake
+

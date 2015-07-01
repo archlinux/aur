@@ -1,0 +1,6 @@
+
+pre_install() {
+  echo "You have to read license located in /usr/share/licenses/unshake before using unshake."
+}
+
+# vim:set ts=2 sw=2 et:
