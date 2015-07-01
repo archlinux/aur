@@ -1,6 +1,6 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 pkgname=vivacious-colors
-pkgver=1.1a
+pkgver=1.2
 pkgrel=1
 pkgdesc="A vivid and modern GTK icon theme. Featuring a completely NEW set of application icons (Re-designed by RAVEfinity based on Plasma-Next, Flattr and Emerald)."
 arch=('any')
@@ -9,8 +9,8 @@ license=('custom:cc-by-sa-3.0' 'GPL2')
 groups=('x11')
 options=('!strip' '!zipman' 'libtool' 'staticlibs')
 install=update-icon-cache.install
-source=($pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAemEzQVo5aHJneU0)
-md5sums=('d9b76c5f1f2b1816ee54abc9791c4af0')
+source=($pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAVkFvdUdQME9YU00)
+md5sums=('732cf287c42baf61d001f6722f5e569c')
 
 package() {
  mkdir -p $pkgdir/usr/share/icons/
