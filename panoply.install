@@ -1,11 +1,6 @@
 post_install() {
-    if [ -x /usr/bin/xdg-icon-resource ] ; then
-        xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-    fi
-
-    if [ -x update-desktop-database ] ; then
-        update-desktop-database -q
-    fi
+    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+    update-desktop-database -q
 }
 
 post_upgrade() {
