@@ -3,7 +3,7 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=142.2670.3
+_buildver=142.2887.3
 _pkgver=15.0.0
 _eap="True"
 epoch=2
