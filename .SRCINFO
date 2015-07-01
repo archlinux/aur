@@ -1,0 +1,15 @@
+pkgbase = bash-completion-pandoc-git
+	pkgdesc = Bash completion support for Pandoc
+	pkgver = 1.2.r26.gbb2b1a3
+	pkgrel = 2
+	url = https://github.com/dsanson/pandoc-completion
+	arch = any
+	license = custom
+	makedepends = git
+	depends = bash
+	provides = bash-completion-pandoc
+	source = bash-completion-pandoc-git::git://github.com/dsanson/pandoc-completion.git
+	md5sums = SKIP
+
+pkgname = bash-completion-pandoc-git
+
