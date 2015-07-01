@@ -1,0 +1,20 @@
+pkgbase = yspave
+	pkgdesc = Simple scrypt-based CLI password manager
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://dev.yaki-syndicate.de
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	depends = python-crypto
+	depends = python-scrypt
+	depends = python-xdg
+	optdepends = xsel: access to X selection
+	optdepends = words: Random word generator as per XKCD 936
+	source = https://github.com/creshal/yspave/archive/0.0.10.tar.gz
+	sha512sums = 3c8aad72dacf799fc5a45a49d6fe00cc7c14bbbb7e7670df46480d683cdbda1d7155c2c6be8973a816a4bf408c12b7b6f6d121a3203e7274f22fca4ec6b9c231
+
+pkgname = yspave
+
