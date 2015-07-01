@@ -1,0 +1,16 @@
+pkgbase = hzs_reminder
+	pkgdesc = Birthday Reminder
+	pkgver = 2012.9.30
+	pkgrel = 2
+	url = https://sourceforge.net/p/hzsreminder/wiki/Home/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://downloads.sourceforge.net/project/hzsreminder/2012-09-30/hzs_reminder_source.tar.gz
+	source = reminder.qrc
+	md5sums = eca7764677674c63378248d8dab2ae3c
+	md5sums = 44dba43700114f5eae700ad855aa19ef
+
+pkgname = hzs_reminder
+
