@@ -1,0 +1,16 @@
+pkgbase = immix
+	pkgdesc = Aligns and merges a set of similar images in order to decrease their noise
+	pkgver = 1.3_2
+	pkgrel = 2
+	url = http://immix.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = fftw
+	depends = qt4
+	depends = exiv2
+	source = http://downloads.sourceforge.net/sourceforge/immix/immix-1.3-2.tar.gz
+	md5sums = 05fd352475a0ba6e663ac50e365336c6
+
+pkgname = immix
+
