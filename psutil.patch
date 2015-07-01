@@ -29,3 +29,17 @@ index 477e126..0a73230 100644
          recv_bytes = 0
          sent_bytes = 0
          for key in set(netinfo.nics() +
+
+diff --git a/src/kimchi/osinfo.py b/src/kimchi/osinfo.py
+index 78eb828..21dbb6c 100644
+--- a/src/kimchi/osinfo.py
++++ b/src/kimchi/osinfo.py
+@@ -186,7 +186,7 @@ def lookup(distro, version):
+     arch = _get_arch()
+ 
+     # Setting maxMemory of the VM, which will be equal total Host memory in Kib
+-    params['max_memory'] = psutil.TOTAL_PHYMEM >> 10
++    params['max_memory'] = psutil.virtual_memory().total >> 10
+ 
+     # set up arch to ppc64 instead of ppc64le due to libvirt compatibility
+     if params["arch"] == "ppc64le":
