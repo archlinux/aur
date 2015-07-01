@@ -1,40 +1,45 @@
 # Contributro: Peter Lewis <prlewis@letterboxes.org>
 # Maintainer: Olivier Mehani <shtrom-arch@ssji.net>
 
-pkgname=poldi
+_gitname=poldi
+pkgname=${_gitname}-git
 pkgver=0.4.1
 pkgrel=8
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
-url="http://www.g10code.com/p-poldi.html"
+url="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=poldi.git"
 license="GPL"
 depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam')
-makedepends=()
+makedepends=('git' 'autoconf' 'automake')
 optdepends=('logrotate: To avoid giant logfiles')
 options=()
 backup=("etc/poldi/poldi.conf" "etc/pam.d/system-auth-poldi")
 install=poldi.install
-source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2"
-	"poldi-arch.patch"
+conflicts=("poldi")
+source=("${_gitname}::git://git.gnupg.org/${_gitname}/"
+	# "poldi-arch.patch"
 	"poldi.logrotate")
 
 prepare() {
-	sed -i \
-		-e 's!\(#define GNUPG_DEFAULT_SCD\).*!\1 "/usr/lib/gnupg/scdaemon"!' \
-		$srcdir/poldi-0.4.1/config.h.in
+  cd "$srcdir/${_gitname}"
+  # sed -i \
+  # 	-e 's!\(#define GNUPG_DEFAULT_SCD\).*!\1 "/usr/lib/gnupg/scdaemon"!' \
+  # 	$srcdir/${_gitname}/config.h.in
+  # Note sure how this file should be generated...
+  sed -i /version.texi/d doc/poldi.texi
+  # patch -p1 < ../poldi-arch.patch
+  ./autogen.sh
 }
 
 build() {
-
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < ../poldi-arch.patch
+  cd "$srcdir/${_gitname}"
 
   ./configure --prefix=/usr --with-pam-module-directory=/usr/lib/security --sysconfdir=/etc
   make CFLAGS+=-lgpg-error
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_gitname}"
 
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-conf-skeleton
@@ -56,6 +61,5 @@ package() {
 
   rm "$pkgdir/usr/share/info/dir"
 }
-md5sums=('197986f9ba6aec9a91ee4610f4c6be8b'
-         'a4187baaacc764d20909345865668280'
+md5sums=('SKIP'
          '57009cc5211088396d2521fc1997792b')

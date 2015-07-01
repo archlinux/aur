@@ -1,25 +1,27 @@
-pkgbase = poldi
+pkgbase = poldi-git
 	pkgdesc = PAM module for authentication using a smartcard
 	pkgver = 0.4.1
 	pkgrel = 8
-	url = http://www.g10code.com/p-poldi.html
+	url = http://git.gnupg.org/cgi-bin/gitweb.cgi?p=poldi.git
 	install = poldi.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
 	depends = libgcrypt
 	depends = libgpg-error
 	depends = libksba
 	depends = pam
 	optdepends = logrotate: To avoid giant logfiles
+	conflicts = poldi
 	backup = etc/poldi/poldi.conf
 	backup = etc/pam.d/system-auth-poldi
-	source = ftp://ftp.gnupg.org/gcrypt/alpha/poldi/poldi-0.4.1.tar.bz2
-	source = poldi-arch.patch
+	source = poldi::git://git.gnupg.org/poldi/
 	source = poldi.logrotate
-	md5sums = 197986f9ba6aec9a91ee4610f4c6be8b
-	md5sums = a4187baaacc764d20909345865668280
+	md5sums = SKIP
 	md5sums = 57009cc5211088396d2521fc1997792b
 
-pkgname = poldi
+pkgname = poldi-git
 
