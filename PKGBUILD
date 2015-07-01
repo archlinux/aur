@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -10,17 +10,17 @@ depends=('python')
 optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
-sha256sums=('88aff6f0fdd2c87523eb1044787287883a0692e94574644260065823ea5a5dfc'
+sha256sums=('c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92'
             '6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b'
-            'c09bf706dd14b6c89441e204c05656562066029e97a44f9176a9ed29408c40c0'
-            'f7062497a64d27aed797c088c7250028d0754963ccd3e8c8c1aff6898092045a'
-            '445eaad874754485741fa717842a479c57d9725e81f023f8f6f970349cd2a3b5')
+            '0ee7b31d6a36379adbe402b3db565ce95111443d6d2fd0e6a3ccd4d8a39681c7'
+            '9dc895351f55f744329a12a43a300b76dd9cabfa45f9fd0450a4329a09c6930d'
+            '55c0935a10a4d036a20fdbe7c690fd1e454802418d4a3d88c4454b99a3260693')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
         "https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh"
 		"source.tar.gz"
-		"pia-auto-login.py"
-		"pia-auto-login.py.8.gz")
+		"pia"
+		"pia.8.gz")
 		
 noextract=("openvpn.zip")
 
@@ -71,6 +71,6 @@ package() {
 
   install -Dm 600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
   install -m 755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
-  install -m 755 pia-auto-login.py "${pkgdir}/usr/bin"
-  install -m 644 pia-auto-login.py.8.gz "${pkgdir}/usr/share/man/man8"
+  install -m 755 pia "${pkgdir}/usr/bin"
+  install -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8"
 }
