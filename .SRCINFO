@@ -1,0 +1,17 @@
+pkgbase = gunrc
+	pkgdesc = GunRC - GTK Universal Network Remote Control
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/maccyber/gunrc
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = pygtk
+	depends = python-gobject
+	source = git+https://github.com/maccyber/gunrc.git
+	md5sums = SKIP
+
+pkgname = gunrc
+
