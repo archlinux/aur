@@ -1,0 +1,13 @@
+pkgbase = systemd-emergency-keyboard-git
+	pkgdesc = Load keyboard drivers before entering systemd's Emergency mode
+	pkgver = v0.2.r0.ge7aec09
+	pkgrel = 1
+	url = https://github.com/ackalker/systemd-emergency-keyboard
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/ackalker/systemd-emergency-keyboard.git
+	md5sums = SKIP
+
+pkgname = systemd-emergency-keyboard-git
+
