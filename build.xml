@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!-- Configuration of the Ant build system to generate a Jar file -->
+<project name="TestMain" default="CreateJar">
+	<target name="CreateJar" description="Create Jar file" depends="build">
+		<jar jarfile="javaclient.jar" basedir="bin" includes="**/*.class" />
+	</target>
+	<target name="build" description="Compile the Java IB-TWS client">
+		<mkdir dir="bin"/>
+		<javac srcdir="source/JavaClient" destdir="bin"/>
+	</target>
+</project>
