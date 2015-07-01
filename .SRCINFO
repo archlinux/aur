@@ -1,0 +1,11 @@
+pkgbase = tar-libarchive
+	pkgdesc = Dummy package providing tar using libarchive’s implementation instead of GNU’s
+	pkgver = 99
+	pkgrel = 1
+	arch = any
+	depends = libarchive
+	provides = tar
+	conflicts = tar
+
+pkgname = tar-libarchive
+
