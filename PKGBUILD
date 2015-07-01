@@ -2,7 +2,7 @@
 
 pkgname=rbdyn-git
 _name=rbdyn
-pkgver=20150219
+pkgver=20150701
 pkgver() {
   date +%Y%m%d
 }
@@ -11,8 +11,8 @@ pkgdesc="A set of classes and functions to model the dynamics of rigid body syst
 arch=('i686' 'x86_64')
 url="https://github.com/jorisv/RBDyn"
 license=('GPLv3')
-depends=('eigen3' 'python2')
-makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost')
+depends=('eigen3' 'python2' 'eigen3topython')
+makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost' 'python2-pybindgen')
 provides=('rbdyn')
 source=("${_name}::git+https://github.com/bchretien/RBDyn")
 md5sums=('SKIP')
