@@ -1,0 +1,16 @@
+pkgbase = python-path-and-address
+	pkgdesc = Functions for server CLI applications used by humans.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/joeyespo/path-and-address
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	options = !emptydirs
+	source = python-path-and-address::git://github.com/joeyespo/path-and-address
+	md5sums = SKIP
+
+pkgname = python-path-and-address
+
