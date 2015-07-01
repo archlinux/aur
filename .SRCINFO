@@ -1,0 +1,17 @@
+pkgbase = eic
+	pkgdesc = Extensible Interactive C, Improved
+	pkgver = 4.4.3
+	pkgrel = 2
+	url = http://sourceforge.net/projects/eic/
+	arch = i686
+	arch = x86_64
+	license = custom:Artistic
+	options = !makeflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/eic/EiCsrc-4.4.3.tar.gz
+	source = eic.profile
+	md5sums = bf7f3873a4bff32cbcd86c246c90e359
+	md5sums = 8639c10091c3576e803e8789b25a4819
+
+pkgname = eic
+
