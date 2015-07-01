@@ -2,7 +2,7 @@
 
 pkgname=spacevecalg-git
 _name=spacevecalg
-pkgver=20150621
+pkgver=20150701
 pkgver() {
   date +%Y%m%d
 }
@@ -11,9 +11,8 @@ pkgdesc="Implementation of spatial vector algebra with the Eigen 3 linear algebr
 arch=('i686' 'x86_64')
 url="https://github.com/jorisv/SpaceVecAlg"
 license=('GPLv3')
-depends=('eigen3' 'python2')
-makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost'
-             'python2-pybindgen' 'eigen3topython')
+depends=('eigen3' 'python2' 'eigen3topython')
+makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost' 'python2-pybindgen')
 provides=('spacevecalg')
 source=("${_name}::git+https://github.com/jorisv/SpaceVecAlg")
 md5sums=('SKIP')
@@ -36,11 +35,11 @@ build()
   make
 }
 
-#check()
-#{
-#  cd ${srcdir}/build
-#  make test
-#}
+check()
+{
+  cd ${srcdir}/build
+  make test
+}
 
 package()
 {
