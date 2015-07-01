@@ -1,0 +1,37 @@
+pkgbase = nuvolaplayer
+	pkgdesc = Integrated Google Music, Grooveshark, 8tracks and Hype Machine player.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://nuvolaplayer.fenryxo.cz
+	install = nuvola.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = scour
+	depends = json-glib
+	depends = intltool
+	depends = gtk3
+	depends = webkitgtk
+	depends = python2
+	depends = libnotify
+	depends = libx11
+	depends = libunique
+	depends = libgee06
+	depends = libsoup
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	optdepends = gnome-shell-extension-mediaplayer-git: Gnome Shell integration
+	optdepends = tsocks: Socks proxy support
+	optdepends = lib32-flashplugin: Flash plugin support on 64-bit systems.
+	provides = nuvola
+	conflicts = google-musc-frame-bzr
+	replaces = google-music-frame-bzr
+	replaces = nuvola-bzr
+	replaces = nuvola-bzr-stable
+	replaces = nuvolaplayer-beta
+	source = https://launchpad.net/nuvola-player/2.5.x/2.5.0/+download/nuvolaplayer-2.5.tar.gz
+
+pkgname = nuvolaplayer
+
