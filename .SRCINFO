@@ -1,0 +1,17 @@
+pkgbase = ttf-ancient-fonts
+	pkgdesc = Unicode Fonts for Ancient Scripts
+	pkgver = 2.57
+	pkgrel = 1
+	url = http://users.teilar.gr/~g1951d/
+	install = ttf-ancient-fonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ttf-ancient-fonts_2.57.orig.tar.gz
+	source = license
+	md5sums = ee28043d8454f31c6bffc84e55acd823
+	md5sums = 91258f5635a1c122f522a1330cd61bbf
+
+pkgname = ttf-ancient-fonts
+
