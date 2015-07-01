@@ -1,0 +1,13 @@
+pkgbase = asap2
+	pkgdesc = ASAP - Another Slight Atari Player library (ver 2.x)
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://asap.sourceforge.net
+	arch = i686 x86_64
+	license = GPL
+	conflicts = asap
+	source = http://downloads.sourceforge.net/asap/asap-2.1.2.tar.gz
+	md5sums = 8509335f45a405088626cd58a6808f5c
+
+pkgname = asap2
+
