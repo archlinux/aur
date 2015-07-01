@@ -1,0 +1,14 @@
+pkgbase = termsql-git
+	pkgdesc = Convert text from a file or from stdin into SQL table and query it instantly. Uses sqlite as backend. The idea is to make SQL into a tool on the command line or in scripts.
+	pkgver = r56.52673c7
+	pkgrel = 1
+	url = http://mathema.tician.de/software/pyopencl
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python2
+	source = git+https://github.com/tobimensch/termsql.git
+	md5sums = SKIP
+
+pkgname = termsql-git
+
