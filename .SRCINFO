@@ -1,0 +1,44 @@
+pkgbase = qemu-minimal
+	pkgver = 2.3.0
+	pkgrel = 3
+	url = http://wiki.qemu.org/Index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = libjpeg
+	makedepends = glib2
+	makedepends = util-linux
+	makedepends = curl
+	makedepends = libsasl
+	makedepends = seabios
+	makedepends = libcap-ng
+	makedepends = libaio
+	makedepends = libseccomp
+	makedepends = python2
+	conflicts = qemu
+	options = !strip
+	source = http://wiki.qemu.org/download/qemu-2.3.0.tar.bz2
+	source = CVE-2015-3456.patch
+	source = 65-kvm.rules
+	md5sums = 2fab3ea4460de9b57192e5b8b311f221
+	md5sums = 5e8a68940c4e0267e795a6ddd144e00e
+	md5sums = 33ab286a20242dda7743a900f369d68a
+
+pkgname = qemu-minimal
+	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server.
+	install = qemu.install
+	depends = libjpeg
+	depends = glib2
+	depends = util-linux
+	depends = curl
+	depends = libsasl
+	depends = seabios
+	depends = libcap-ng
+	depends = libaio
+	depends = libseccomp
+	depends = libssh2>=1.5.0
+	optdepends = samba: for SMB Server support
+	replaces = qemu-kvm
+	backup = etc/qemu/target-x86_64.conf
+
