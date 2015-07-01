@@ -1,0 +1,25 @@
+pkgbase = livegrep-git
+	pkgdesc = Interactively grep source code
+	pkgver = 577.a449e49
+	pkgrel = 1
+	url = https://github.com/nelhage/livegrep
+	install = livegrep-git.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = boost
+	makedepends = sparsehash
+	depends = nodejs
+	depends = libgit2
+	depends = google-gflags
+	depends = json-c
+	provides = livegrep
+	conflicts = livegrep
+	source = git://github.com/nelhage/livegrep
+	source = https://re2.googlecode.com/files/re2-20130802.tgz
+	md5sums = SKIP
+	md5sums = e5e52f0f9b8705d29161a896fb459c55
+
+pkgname = livegrep-git
+

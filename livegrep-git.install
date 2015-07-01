@@ -1,0 +1,32 @@
+post_install() {
+cat <<"EOF"
+==> To deploy the web application:
+
+==> Setup app directory, copy files
+
+    $ mkdir /path/to/webapps/livegrep
+    $ cd /path/to/webapps/livegrep
+    $ cp -a /usr/lib/livegrep-git/* .
+    $ mkdir web/log
+
+==> Install Node.js dependency modules
+
+    $ npm install
+
+==> Configure the web application, see web/config.js for options
+
+    $ ${EDITOR:-vi} web/config.local.js
+
+==> Run the indexer
+
+    $ node web/index.js
+
+==> Start the codesearch server
+
+    $ node web/cs_server.js &
+
+==> Start the application server
+
+    $ node web/web_server.js
+EOF
+}
