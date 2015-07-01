@@ -1,0 +1,17 @@
+pkgbase = morpheus
+	pkgdesc = A mass spectrometry–based proteomics database search algorithm
+	pkgver = 142
+	pkgrel = 1
+	url = http://sourceforge.net/projects/morpheus-ms/
+	arch = any
+	license = MIT
+	depends = mono
+	source = http://sourceforge.net/projects/morpheus-ms/files/revision%20142/Morpheus%20%28Linux%29.tar.gz/download
+	source = morpheus_cl
+	source = morpheus
+	md5sums = a999454c980aebf6ea440d914dca9726
+	md5sums = d772495a3c9104c94e3273ca36fbac38
+	md5sums = da3b2649a397cbbc0e6803160247cc30
+
+pkgname = morpheus
+
