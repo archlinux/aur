@@ -1,7 +1,7 @@
 pkgbase = ttf-cm-unicode
 	pkgdesc = Computer Modern Unicode ttf fonts
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://canopus.iacp.dvo.ru/~panov/cm-unicode/
 	install = ttf.install
 	arch = any
