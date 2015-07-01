@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Qftp
+GenericName=FTP QT-client
+GenericName[es]=Cliente QT para FTP
+GenericName[fr]=Client QT pour FTP
+Comment=Download and upload files via FTP
+Comment[es]=Descarga y sube archivos via FTP
+Comment[fr]=Transférer des fichiers via FTP
+Exec=qftp
+Terminal=false
+Icon=qftp.png
+Type=Application
+Categories=Network;FileTransfer;
