@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-entourage-ari_gold
+	pkgdesc = Ari Gold (Entourage) [HBO] fortune cookie file
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.arigoldquotes.com
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = entourage-ari
+	md5sums = c810f6bcead74d23e43236cc50c05841
+
+pkgname = fortune-mod-entourage-ari_gold
+
