@@ -3,7 +3,7 @@
 
 pkgname=sailcut
 pkgver=1.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Sail design and plotting software" 
 arch=(any)
 url="http://www.sailcut.com/" 

@@ -1,8 +1,8 @@
 pkgbase = sailcut
 	pkgdesc = Sail design and plotting software
 	pkgver = 1.3.5
-	pkgrel = 2
-	url = http://www.sailcut.com/Sailcut_CAD
+	pkgrel = 3
+	url = http://www.sailcut.com/
 	arch = any
 	license = GPL
 	makedepends = cmake
