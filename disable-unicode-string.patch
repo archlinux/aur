@@ -1,0 +1,11 @@
+--- Makefile.PL.orig	2014-11-23 00:24:04.564354673 +0200
++++ Makefile.PL	2014-11-23 00:24:09.974335774 +0200
+@@ -232,7 +232,7 @@
+      'Lingua::Preferred' => '0.2.4',
+      'Term::ProgressBar' => 2.03,
+      'Compress::Zlib' => 0,
+-     'Unicode::String' => 0,
++#     'Unicode::String' => 0,
+     );
+ 
+ # And Log::TraceMessages is 'suggested' but we don't warn about that.
