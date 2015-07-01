@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+
+<!-- This file is part of air-video-server -->
+
+<service-group>
+  <name replace-wildcards="yes">%h</name>
+
+  <service>
+    <type>_airvideoserver._tcp</type>
+    <port>45631</port>
+  </service>
+</service-group>

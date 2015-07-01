@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Air Video Server
+Icon=
+Comment=
+Exec=/usr/bin/air-video-server
+Terminal=false
+Type=Application
+Categories=
+X-GNOME-Autostart-enabled=true

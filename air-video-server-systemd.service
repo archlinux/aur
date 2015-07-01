@@ -1,0 +1,10 @@
+[Unit]
+Description=Air Video Server
+After=network.target
+
+[Service]
+PIDFile=/var/run/air-video-server.pid
+ExecStart=/usr/bin/air-video-server
+
+[Install]
+WantedBy=multi-user.target

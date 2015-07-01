@@ -1,0 +1,66 @@
+post_install() {
+  cat << END_OF_MESSAGE
+---------------------------
+Necessary additional setup:
+---------------------------
+1. To manually start the server:
+
+Copy /usr/share/air-video-server/air-video-server.properties to 
+~/.air-video-server/air-video-server.properties and add your
+video folders (see Properties file section below). 
+
+Then run "air-video-server" from the command line.
+
+2. To autostart the server upon logging into your GNOME account:
+
+GNOME 2.x:
+To start the server every time you logon to your GNOME account, go to 
+Preferences -> Startup Applications -> Startup Programs tab and enable
+Air Video Server.
+
+GNOME 3.0 to 3.10:
+Run "gnome-session-properties" from the command line, go to Startup Programs 
+tab and enable Air Video Server.
+
+GNOME 3.12 up:
+Copy /usr/share/air-video-server/air-video-server.desktop to 
+~/.config/autostart folder.
+
+3. To autostart the server as a daemon upon bootup (requires 'root' access):
+
+initscripts: 
+Add air-video-server to your /etc/rc.conf DAEMONS=() line.
+
+systemd: 
+run "systemctl enable air-video-server.service" from the command line.
+
+The properties will be read from /etc/conf.d/air-video-server.
+
+---------------
+Properties file
+---------------
+The folders format is: <label1>:<path1>,<label2>:<path2>,…,<labelN>:<pathN>
+Leave the other options as they are.
+
+END_OF_MESSAGE
+}
+
+post_upgrade() {
+  cat << UPGRADE_MESSAGE
+------------------------------
+Important Upgrade Information:
+------------------------------
+If the Air Video client app shows that certain media files are 'invalid', 
+your thumbnail cache has been corrupted due to a dependency package 
+version incompatibility.
+
+The solution is to clear out the thumbnail cache. Run the following at
+the command line:
+
+rm -rv ~/.air-video-server
+
+Note: You will need to login as 'root' and run the above command if the
+server is started as a daemon.
+
+UPGRADE_MESSAGE
+}
