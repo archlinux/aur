@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wolfenstein 3D
+Comment=Cult 1992 first person shooter
+Exec=/opt/wolfenstein3d/runme
+Icon=wolfenstein3d.png
+Type=Application
+Terminal=false
+Categories=Game;
