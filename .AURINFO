@@ -1,0 +1,11 @@
+pkgbase = pywu
+	pkgdesc = A simple python script for fetching data from Weather Underground's API
+	pkgver = 20141003
+	pkgrel = 1
+	url = https://github.com/dh4/pywu
+	arch = any
+	license = BSD
+	depends = python
+
+pkgname = pywu
+
