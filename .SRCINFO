@@ -1,0 +1,16 @@
+pkgbase = alsa-ladspa-bridge-git
+	pkgdesc = an alsa-plugin that utiliizes LADSPA
+	pkgver = 0.0.108.05e0f73
+	pkgrel = 1
+	url = https://github.com/iem-projects/alsa-ladspa-bridge
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = alsa-lib
+	depends = ladspa
+	source = git+https://github.com/iem-projects/alsa-ladspa-bridge.git
+	md5sums = SKIP
+
+pkgname = alsa-ladspa-bridge-git
+
