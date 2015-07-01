@@ -1,0 +1,16 @@
+pkgbase = gst-debug-viewer-git
+	pkgdesc = View and analyze GStreamer debug log files
+	pkgver = 0.0.310.75c8605
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/~cymacs/gst-debug-viewer/
+	install = gst-debug-viewer-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = hicolor-icon-theme
+	source = git://people.freedesktop.org/~cymacs/gst-debug-viewer
+	md5sums = SKIP
+
+pkgname = gst-debug-viewer-git
+
