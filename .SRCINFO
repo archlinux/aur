@@ -1,0 +1,14 @@
+pkgbase = m210
+	pkgdesc = M210 provides tools and an userspace device driver for Pegasus Tablet Mobile NoteTakers (or IRISnotes or MVPen or LogiPen or Yifang or Ritmix DP-305I\DP-205BT) Linux. It allows to fetching notes and converting them to SVG.
+	pkgver = 0.8
+	pkgrel = 5
+	url = http://tjjr.fi/software/m210/
+	install = m210.install
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	source = https://launchpad.net/m210/trunk/0.8/+download/m210-0.8.tar.gz
+	md5sums = c72c4de5a91df1c1dca58beadfac22b7
+
+pkgname = m210
+
