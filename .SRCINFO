@@ -1,0 +1,19 @@
+pkgbase = chromiumos-ui-service
+	pkgdesc = Chromium OS user interface (systemd service)
+	pkgver = 0.1
+	pkgrel = 5
+	url = http://www.chromium.org/chromium-os
+	install = chromiumos-ui-service.install
+	arch = any
+	license = GPL
+	depends = chromiumos-ui-session
+	depends = xorg-xinit
+	depends = matchbox-window-manager
+	optdepends = xterm: emergency terminal (use with Ctrl-Alt-X)
+	source = chromiumos-ui.service
+	source = chromiumos-ui@.service
+	md5sums = b1167ebbc97cf83fc67b7174baf5d40f
+	md5sums = a34f170ee773f750abf1275eac119bdb
+
+pkgname = chromiumos-ui-service
+

@@ -1,0 +1,15 @@
+[Unit]
+Description=Chromium OS UI on %I
+Conflicts=getty@%i.service
+After=systemd-user-sessions.service getty@%i.service plymouth-quit.service
+
+[Service]
+ExecStart=/usr/bin/runuser -l chronos -c "/usr/bin/startx /usr/bin/chromiumos-ui-session --login"
+ExecStop=/usr/bin/runuser -l chronos -c "/usr/bin/pkill -f chromiumos-ui/chrome"
+StandardInput=tty
+StandardOutput=tty
+TTYPath=/dev/%I
+Restart=always
+
+[Install]
+WantedBy=graphical.target
