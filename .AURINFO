@@ -1,0 +1,12 @@
+pkgbase = pia-launch
+	pkgdesc = A simple wrapper for OpenVPN for use with Private Internet Access
+	pkgver = 20141003
+	pkgrel = 1
+	url = https://github.com/dh4/pia-launch
+	arch = any
+	license = BSD
+	depends = openvpn
+	source = https://www.privateinternetaccess.com/openvpn/openvpn-ip.zip
+
+pkgname = pia-launch
+
