@@ -1,0 +1,15 @@
+pkgbase = torrent-mount
+	pkgdesc = Mount a torrent (or magnet link) as a filesystem in real time using torrent-stream and fuse. AKA MAD SCIENCE!
+	pkgver = 1.0.8
+	pkgrel = 2
+	url = https://github.com/mafintosh/torrent-mount
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = fuse
+	depends = python2
+	source = https://github.com/mafintosh/torrent-mount/archive/v1.0.8.tar.gz
+	md5sums = 8184176bfa6fbf255b52f3f3bba2fd58
+
+pkgname = torrent-mount
+
