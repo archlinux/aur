@@ -1,0 +1,19 @@
+pkgbase = vim-unimpaired-git
+	pkgdesc = Complementary pairs of mappings for various common operations.
+	pkgver = 20141014
+	pkgrel = 1
+	url = https://github.com/tpope/vim-unimpaired
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-unimpaired
+	conflicts = vim-unimpaired
+	source = git+https://github.com/tpope/vim-unimpaired.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vim-unimpaired-git
+
