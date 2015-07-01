@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=opencollada
-pkgver=20140108
-_commit=f99d59e73e56
+pkgver=20150702
+_commit=0496c15
 pkgrel=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
