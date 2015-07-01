@@ -1,0 +1,19 @@
+pkgbase = perl-minimumversion-fast
+	pkgdesc = Find a minimum required version of perl for Perl code
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Perl-MinimumVersion-Fast
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	makedepends = perl-module-build-xsutil
+	depends = perl>=5.8.5
+	depends = perl-compiler-lexer>=0.11
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Perl-MinimumVersion-Fast-0.17.tar.gz
+	md5sums = f0f5e86e8e1c1000bfdd740c2919535c
+
+pkgname = perl-minimumversion-fast
+
