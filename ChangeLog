@@ -1,0 +1,68 @@
+2013-01-07  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 4.0.3-1:
+        Bugfix upstream release.
+
+2013-01-07  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 4.0.2-1:
+        Bugfix upstream release.
+
+2012-09-13  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 4.0.1-1:
+        Major upstream update, supporting the new web page structure as of
+        september 2012 and with a lot of new functionality.
+
+2011-05-11  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 3.0-1:
+        Major upstream update, supporting the new web page structure and
+        with new functionality.
+
+2011-01-29  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 2.2.1-1:
+        Bugfix upstream release.
+
+2011-01-28  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 2.2-1:
+        Upstream update, supporting audio content.
+
+2011-01-07  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 2.1.1-1:
+        Bugfix upstream release.
+
+2010-11-17  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 2.1-1:
+        Upstream update, supporting some videos that were formerly
+        unsupported.
+
+2010-04-10  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 2.0-1:
+        New upstream release, with support for the new content delivery
+        system used by RTVE as of Spring 2010.
+
+2010-02-21  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 1.1-2:
+        More sanitized PKGBUILD.
+
+2010-02-20  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 1.1-1:
+        New upstream release, with "TVE A la Carta" support.
+
+2010-02-20  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 1.0-2:
+        Now using upstream tarball.
+
+2010-02-20  Luis Miguel García-Cuevas González  <luismiguelgcg@gmail.com>
+
+        * rtve-mediateca-dl 1.0-1:
+        First upstream release.

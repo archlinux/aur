@@ -1,0 +1,15 @@
+pkgbase = rtve-mediateca-dl
+	pkgdesc = Download a video file from the "mediateca" and "TVE A la Carta" of RTVE.
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = http://sgcg.es/articulos/2010/02/20/bajar-videos-de-la-mediateca-de-rtve/
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	depends = wget
+	source = http://www.sgcg.es/software/rtve-mediateca-dl/rtve-mediateca-dl-4.0.3.tar.gz
+	md5sums = 556f4ad732aa9285702c1f20635eb489
+	sha256sums = 443f82c53c331e24a633ae4e699e76f73201062eccfbb1548b8e1cbde0250edc
+
+pkgname = rtve-mediateca-dl
+
