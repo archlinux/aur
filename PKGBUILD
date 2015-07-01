@@ -12,7 +12,7 @@ install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver//./_}_all_platforms.zip" "https://github.com/PTNobel/TripleA/archive/master.zip" "triplea")
 sha256sums=('4201612de9970ca19baaf04e45b967ee57993b91ce77e3015a1908d13b46a1b2'
-            'c1199447596534f80dbacee93ca10b41a19c3c09224fb5440b19e16902494014'
+            '36e716f54faeb1e29580602c9607ac5472c24282ba67b7b4cce0e83bd09d1220'
             '4fdd7ad0c1a802a3142e800dc1f354a246586d8bb75b8c17b6dc948b5cf35f05')
 
 package() {
