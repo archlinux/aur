@@ -1,0 +1,23 @@
+post_install() {
+  echo "Sample configuration"
+  echo ""
+  echo "http {"
+  echo "  ..."
+  echo "  passenger_root /gems/passenger-3.0.11/;"
+  echo "  passenger_ruby /usr/bin/ruby;"
+  echo "  ..."
+  echo "  server {"
+  echo "    ..."
+  echo "    location /topsecret {"
+  echo "      passenger_enabled on;"
+  echo "      auth_gss on;"
+  echo "      auth_gss_realm LOCALDOMAIN;"
+  echo "      auth_gss_keytab /etc/krb5.keytab;"
+  echo "      auth_gss_service_name HTTP;"
+  echo "      root /www/rails_app/public;"
+  echo "    }"
+  echo "    ..."
+  echo "  }"
+  echo "}"
+}
+#vim:set ts=2 sw=2 et:

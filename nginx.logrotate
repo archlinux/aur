@@ -1,0 +1,7 @@
+/var/log/nginx/*log {
+	create 640 http log
+	compress
+	postrotate
+	nginx -s reopen
+	endscript
+}
