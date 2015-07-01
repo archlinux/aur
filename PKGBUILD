@@ -42,5 +42,5 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
-  install -Dm644 "${srcdir}/${_realname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/mingw-w64-${_realname}/COPYING"
+  install -Dm644 "${srcdir}/${_realname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/mingw-w64-${_realname}/LICENSE"
 }
