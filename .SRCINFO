@@ -1,6 +1,6 @@
 pkgbase = chromiumos-ui-tts-git
 	pkgdesc = Chromium OS UI ChromeVox text-to-speech, with accessibility support
-	pkgver = 440.2714077
+	pkgver = 491.d01fbdc
 	pkgrel = 1
 	url = http://www.chromium.org/chromium-os
 	arch = arm
