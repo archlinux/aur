@@ -1,0 +1,16 @@
+pkgbase = mathsat-5
+	pkgdesc = MathSAT 5 is an efficient SMT solver supporting a wide range of theories and functionalities
+	pkgver = 5.2.10
+	pkgrel = 3
+	url = http://mathsat.fbk.eu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	options = staticlibs
+	source = mathsat-5-5.2.10.tar.gz::http://mathsat.fbk.eu/download.php?file=mathsat-5.2.10-linux-.tar.gz
+	md5sums = 124503e736ebb0240606fd370d6c5651
+
+pkgname = mathsat-5
+
