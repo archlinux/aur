@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=pelican
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A tool to generate a static blog, with restructured text (or markdown) input files."
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('python-markdown:       for Markdown support'
             'ghp-import:            for uploading through gh-pages'
             'python-typogrify:      for typographical enhancements')
 source=("http://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('af9a3deafb4683a109a5c44e6d6138aa')
+md5sums=('6ccd8eeabf4de0608ff1307a9293034a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
