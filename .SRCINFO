@@ -1,0 +1,35 @@
+pkgbase = emby-server-git
+	pkgdesc = Emby Server is a home media server built using other popular open source technologies.
+	pkgver = r6210.0334458
+	pkgrel = 1
+	url = http://emby.media
+	install = emby-server.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	makedepends = imagemagick
+	depends = mono
+	depends = libmediainfo
+	depends = sqlite
+	depends = ffmpeg
+	depends = imagemagick
+	provides = emby-server
+	conflicts = emby-server
+	conflicts = emby-server-beta
+	conflicts = mediabrowser-server-beta
+	conflicts = mediabrowser-server
+	conflicts = mediabrowser-server-git
+	backup = etc/conf.d/emby-server
+	source = git+https://github.com/MediaBrowser/MediaBrowser#branch=dev
+	source = emby-server.service
+	source = emby-server
+	source = emby-server.conf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = emby-server-git
+

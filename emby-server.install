@@ -1,0 +1,54 @@
+#! /bin/bash
+
+post_install() {
+  getent group emby >/dev/null || groupadd emby
+  getent passwd emby >/dev/null || useradd -c 'Emby Server' -g emby -d /var/lib/emby-server -r -M emby -s /bin/false
+  if [ ! -d /var/lib/emby-server ]; then
+    mkdir /var/lib/emby-server;
+    chown -R emby:emby /var/lib/emby-server
+  fi
+  if [ ! $? -eq 0 ]
+    then
+    echo "WARNING COULDN'T CREATE EMBY USERID, MAKE SURE I HAVE PERMISSON TO DO THAT!"
+      exit 1
+  fi
+  
+  systemctl --system daemon-reload
+  echo "Fixing file permissions...Please be patient."
+  cat <<EOF
+
+Emby Server is a home media server built using other popular open-source technologies.
+
+If you would like to report a bug, please post to the forums at www.emby.media/community.
+
+Emby uses the system's mono, ffmpeg, and ffprobe binaries. If any of those binaries are in a non-standard location, please create a custom environment file using /etc/conf.d/emby-server as a template. You will then need to edit the systemd service file to point to the custom environment file.
+
+For more information on how to customize systemd files, please refer to https://wiki.archlinux.org/index.php/Systemd#Editing_provided_unit_files
+
+To start the server, run systemctl start emby-server.service.
+
+Enjoy the show!
+
+EOF
+}
+
+post_upgrade() {
+  getent group emby >/dev/null || groupadd emby
+  getent passwd emby >/dev/null || useradd -c 'Emby Server' -g emby -b /var/lib/emby-server -r -M emby -s /bin/false
+  if [ ! -d /var/lib/emby-server ]; then
+    mkdir /var/lib/emby-server
+    chown -R emby:emby /var/lib/emby-server
+    echo "The old installation will be in /var/lib/mediabrowser-server."
+  fi
+  systemctl --system daemon-reload
+}
+
+post_remove() {
+  cat <<EOF
+  To remove the MediaBrowser Server database, please delete
+  /var/lib/emby-server.
+  
+  Also, you should probably remove the emby user and
+  and group from your system.
+EOF
+}
