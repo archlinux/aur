@@ -2,7 +2,7 @@
 # Contributor: Mike Redd <mredd@0tue0.com>
 
 pkgname=fortune-mod-archer
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="Archer FXNetwork fortune cookie file"
 url="http://www.tvfanatic.com/quotes/shows/archer/"

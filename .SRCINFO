@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-archer
 	pkgdesc = Archer FXNetwork fortune cookie file
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = http://www.tvfanatic.com/quotes/shows/archer/
 	arch = any
