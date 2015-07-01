@@ -1,0 +1,15 @@
+pkgbase = mmsap2
+	pkgdesc = mmSAP - comfortable SAP player based on ASAP library (GTK2)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://mmsap.sourceforge.net
+	arch = i686 x86_64
+	license = GPL
+	makedepends = cmake gtkmm dbus dbus-glib libglade
+	depends = asap2
+	conflicts = mmsap
+	source = http://downloads.sourceforge.net/mmsap/mmsap2_2.1.1.tar.gz
+	md5sums = c52bf517fdfe82b3f57987b874ef0fb6
+
+pkgname = mmsap2
+
