@@ -1,0 +1,10 @@
+post_install() {
+  cat <<MSG
+>>> To activate the extension:
+    - In Chromium, browse to chrome://extensions
+    - On the Extensions page, enable Developer mode by ticking the box
+    - Click the button "Load unpacked extension..."
+    - Navigate to /usr/share/chromium/extensions/chromium-ext-chromiumos-tts
+    - Click on Open
+MSG
+}

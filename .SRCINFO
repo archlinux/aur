@@ -1,0 +1,22 @@
+pkgbase = chromium-ext-chromiumos-tts-git
+	pkgdesc = Chromium OS text-to-speech as a Chromium extension
+	pkgver = r479.4e1622e
+	pkgrel = 1
+	url = http://www.chromium.org/chromium-os
+	install = chromium-ext-chromiumos-tts.install
+	arch = arm
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = unzip
+	depends = chromium
+	provides = chromium-ext-chromiumos-tts
+	conflicts = chromium-ext-chromiumos-tts
+	options = !strip
+	source = chromiumos-platform-assets::git+https://chromium.googlesource.com/chromiumos/platform/assets
+	source = 0001-Add-missing-Dutch-voice.patch
+	md5sums = SKIP
+	md5sums = b43d30ad8f0c863841925b34920f0d28
+
+pkgname = chromium-ext-chromiumos-tts-git
+

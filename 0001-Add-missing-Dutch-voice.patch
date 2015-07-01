@@ -1,0 +1,37 @@
+From 3d80556ded3b271578993f76b7ebe7e1c8af972b Mon Sep 17 00:00:00 2001
+From: Alain Kalker <a.c.kalker@gmail.com>
+Date: Wed, 29 Oct 2014 20:49:13 +0100
+Subject: [PATCH] Add missing Dutch voice
+
+---
+ speech_synthesis/patts/manifest.json | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/speech_synthesis/patts/manifest.json b/speech_synthesis/patts/manifest.json
+index 81299bb..3d889f4 100644
+--- a/speech_synthesis/patts/manifest.json
++++ b/speech_synthesis/patts/manifest.json
+@@ -14,6 +14,7 @@
+       "voice_data_hmm_fr-FR_2.js",
+       "voice_data_hmm_it-IT_2.js",
+       "voice_data_hmm_ko-KR_2.js",
++      "voice_data_hmm_nl-NL_2.js",
+       "voice_data_hmm_pt-BR_2.js",
+       "tts_controller.js",
+       "tts_main.js"
+@@ -82,6 +83,12 @@
+         "event_types": [ "start", "word", "end", "error" ]
+       },
+       {
++        "voice_name": "Chrome OS Dutch",
++        "lang": "nl-NL",
++        "gender": "female",
++        "event_types": [ "start", "word", "end", "error" ]
++      },
++      {
+         "voice_name": "Chrome OS Brazilian Portuguese",
+         "lang": "pt-BR",
+         "gender": "female",
+-- 
+2.1.2
+
