@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-archer
+	pkgdesc = Archer FXNetwork fortune cookie file
+	pkgver = 4.1
+	pkgrel = 1
+	url = http://www.tvfanatic.com/quotes/shows/archer/
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = archer
+	md5sums = 4208b03f67ac8f2d2272f67882f21b49
+
+pkgname = fortune-mod-archer
+
