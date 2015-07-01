@@ -1,7 +1,7 @@
 # Mantainer: Victor <vicgua@outlook.com>
 
 pkgname=edis
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="a simple cross-platform IDE for C"
 arch=('any')
@@ -14,12 +14,14 @@ optdepends=('ctags: symbol tree support'
 conflicts=(edis-git edis-c edis-c-git)
 replaces=(edis-c)
 install=$pkgname.install
-source=("https://github.com/centaurialpha/$pkgname/archive/v${pkgver}.tar.gz"
-        "$pkgname.png"
-        "$pkgname.desktop")
-md5sums=('44c6f647a2812d4128ed533284a41318'
+source=("https://github.com/centaurialpha/${pkgname}/archive/v${pkgver}.tar.gz"
+        "${pkgname}.png"
+        "${pkgname}.desktop"
+        "${pkgname}.install")
+md5sums=('f8496a18ed9192b8160c54d9795d80c0'
          'b62bba84e3be425a165f78f4261de1c7'
-         '4657b48c3efce21a9e5f8804d4892431')
+         '4657b48c3efce21a9e5f8804d4892431'
+         '8e11ccf0a7ad5af5b4751c560d9e56ed')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
