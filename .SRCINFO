@@ -1,0 +1,24 @@
+pkgbase = lush2-svn
+	pkgdesc = An object-oriented programming language designed for researchers, experimenters, and engineers interested in large-scale numerical and graphic applications.
+	pkgver = 2.0.1.r925
+	pkgrel = 1
+	url = http://lush.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = subversion
+	makedepends = texlive-core
+	depends = libxft
+	depends = gperftools
+	optdepends = gsl
+	optdepends = lapack
+	optdepends = sdl
+	optdepends = opencv
+	optdepends = alsa-lib
+	provides = lush2
+	conflicts = lush2
+	source = svn+http://svn.code.sf.net/p/lush/code/lush2
+	sha256sums = SKIP
+
+pkgname = lush2-svn
+
