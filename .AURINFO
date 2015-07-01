@@ -1,0 +1,16 @@
+pkgbase = intuos4-led
+	pkgdesc = Command line tool to set the Wacom Intuos4 tablet’s LED displays
+	pkgver = 0.003
+	pkgrel = 1
+	url = http://braindump.kargulus.de/?p=432
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = libusb
+	depends = imagemagick
+	source = http://braindump.kargulus.de/wp-content/uploads/intuos4-led-0.003.tar.gz
+
+pkgname = intuos4-led
+
