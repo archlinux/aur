@@ -6,6 +6,7 @@ pkgbase = youtube-viewer-git
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = perl-module-build
 	depends = perl>=5.16.0
 	depends = perl-data-dump
 	depends = perl-json
