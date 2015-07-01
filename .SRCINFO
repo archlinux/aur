@@ -20,6 +20,7 @@ pkgbase = zandronum2
 	source = http://zandronum.com/downloads/zandronum2.0-linux-x86_64.tar.bz2
 	source = LICENSE.txt
 	md5sums = e7121d49b963e8297535fd3f03334892
+	md5sums = 58c2c8b15c886b838dc2ed5186361507
 
 pkgname = zandronum2
 
