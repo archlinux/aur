@@ -1,6 +1,6 @@
 pkgbase = notepadqq-git
 	pkgdesc = A Linux clone of Notepad++
-	pkgver = 0.46.0.r1.g54c9d6f
+	pkgver = 0.50.1.r0.gc116e6c
 	pkgrel = 1
 	url = http://notepadqq.altervista.org/wp/
 	install = notepadqq.install
