@@ -1,8 +1,8 @@
 pkgbase = scrabble3d
 	pkgdesc = Highly customizable Scrabble game (classic, SuperScrabble, 3D games)
 	pkgver = 3.1.2_1
-	pkgrel = 1
-	url = http://scrabble.game-server.cc/wiki
+	pkgrel = 2
+	url = http://scrabble.sourceforge.net/wiki/
 	arch = i686
 	arch = x86_64
 	license = GPL

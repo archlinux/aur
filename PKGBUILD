@@ -3,7 +3,7 @@
 
 pkgname=scrabble3d
 pkgver=3.1.2_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly customizable Scrabble game (classic, SuperScrabble, 3D games)"
 depends=(gtk2)
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ if [ "${CARCH}" = 'i686' ]
 	else
 	_arch=x86_64
 fi
-url="http://scrabble.game-server.cc/wiki"
+url="http://scrabble.sourceforge.net/wiki/"
 license=('GPL')
 
 source=(http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/Scrabble3D-${_arch}.deb)
