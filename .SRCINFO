@@ -1,0 +1,14 @@
+pkgbase = gjitenkai-git
+	pkgdesc = Rewrited and enchanced gjiten - a Gnome Japanese Dictionary
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gtk3
+	source = git://github.com/odrevet/gjitenkai.git
+	md5sums = SKIP
+
+pkgname = gjitenkai-git
+
