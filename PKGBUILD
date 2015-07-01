@@ -1,8 +1,8 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=xorg-rendercheck
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Suite of tests for the render extension"
 url="http://xorg.freedesktop.org/"
 license=('custom')
@@ -22,4 +22,6 @@ package() {
 	cd "${srcdir}/rendercheck-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
-md5sums=('8ad09f646dc168ad3b50f8198f98b652' 'e13db45c31eda44e35280f0edd3857b6')
+
+md5sums=('92ddef6d01f02529521af103f9b9bf60'
+         'e317bac4cbb0a70d18f6951f661d55c0')
