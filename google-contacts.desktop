@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Google Contacts
+Name[de]=Google-Kontakte
+Exec=xdg-open https://mail.google.com/mail/u/0/#contacts
+Icon=evolution-contacts
+Terminal=false
+Type=Application
+Categories=Office;ContactManagement;
+StartupNotify=true

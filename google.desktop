@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Google Search
+Name[de]=Google-Suche
+Exec=xdg-open https://google.com/
+Icon=google
+Terminal=false
+Type=Application
+Categories=Utility;Network;
+StartupNotify=true

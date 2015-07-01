@@ -1,0 +1,13 @@
+post_install() {
+  post_upgrade $1
+  echo 'To launch Google Calendar from the GNOME Shell panel, make it your default calendar handler with'
+  echo 'xdg-mime default google-calendar.desktop text/calendar'
+}
+
+post_upgrade() {
+  update-desktop-database -q
+}
+
+post_remove() {
+  post_upgrade $1
+}

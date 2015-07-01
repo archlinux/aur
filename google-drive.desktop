@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Google Drive
+Exec=xdg-open https://drive.google.com/
+Icon=google-drive
+Terminal=false
+Type=Application
+Categories=Office;FileTools;FileManager;
+StartupNotify=true

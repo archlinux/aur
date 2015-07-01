@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Google Calendar
+Name[de]=Google-Kalendar
+Exec=xdg-open https://www.google.com/calendar/render
+Icon=vcalendar
+Terminal=false
+Type=Application
+Categories=Office;Calendar;
+StartupNotify=true
+MimeType=text/calendar;

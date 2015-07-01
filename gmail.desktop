@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GMail
+Exec=xdg-open https://mail.google.com/
+Icon=gmail
+Terminal=false
+Type=Application
+Categories=Office;Email;
+StartupNotify=true

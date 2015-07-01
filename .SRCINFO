@@ -1,0 +1,36 @@
+pkgbase = google-desktop-links
+	pkgdesc = provides links to Google pages as desktop files
+	pkgver = 4
+	pkgrel = 1
+	url = http://google.com/
+	install = google-desktop-links.install
+	arch = any
+	license = GPL
+	depends = xdg-utils
+	source = google.desktop
+	source = google-maps.desktop
+	source = gmail.desktop
+	source = google-calendar.desktop
+	source = google-contacts.desktop
+	source = google-drive.desktop
+	source = google-keep.desktop
+	source = google.png
+	source = google-maps.png
+	source = gmail.png
+	source = google-drive.png
+	source = google-keep.png
+	md5sums = 4046843170152bd93926bdd720ebae35
+	md5sums = 830730ca79b8baaf12467b17500b39a5
+	md5sums = 9c4f9894bc9e3892f6f1b60fb3501ba8
+	md5sums = 4b451df8ac7034080581870a91ba3de9
+	md5sums = b166c242b56cee102eed4cffb2d417e5
+	md5sums = d8c1f8f928dea2624beed185e492bd1d
+	md5sums = bd18adf71c81c5c86006fa209ebeddef
+	md5sums = 9a3fabe9dcbd39d640dbcf9d787f10f1
+	md5sums = 54100858071e06f1fe6b9c6236b435f6
+	md5sums = f4018d18cf21b424b752de3f9aa8b37f
+	md5sums = 15df9cda226a334391f42a87e260eb2a
+	md5sums = 080e2df934aa787008f18506bbe7f1ae
+
+pkgname = google-desktop-links
+
