@@ -16,7 +16,8 @@ source=("http://www.pberndt.com/raw/Programme/Linux/brightd/_download/$pkgname-$
 
 md5sums=('42f1572c51162bf583d6436c3b36cc17'
          'f5d5c7ed5c48d2dbe408986d5f6249fb'
-         'a4717b49eb0494de57d19a3a574462ec')
+         'a4717b49eb0494de57d19a3a574462ec'
+         '549926dcb3c43e0e6fe45025806d0782')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
