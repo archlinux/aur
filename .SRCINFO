@@ -1,0 +1,16 @@
+pkgbase = newick-utils
+	pkgdesc = The Newick Utilities are a suite of Unix shell tools for processing phylogenetic trees. Functions include re-rooting, extracting subtrees, trimming, pruning, condensing, drawing (ASCII graphics or SVG).
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://cegg.unige.ch/newick_utils
+	arch = any
+	license = BSD
+	makedepends = automake
+	makedepends = autoconf
+	depends = libxml2
+	optdepends = guile
+	source = http://cegg.unige.ch/pub/newick-utils-1.5.0.tar.gz
+	md5sums = 5f65b0fe30bf9389297616358f01fac7
+
+pkgname = newick-utils
+
