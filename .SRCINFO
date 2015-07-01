@@ -1,0 +1,22 @@
+pkgbase = prisonarchitect-hib
+	pkgdesc = Prison construction and management simulation (Humble Bundle version)
+	pkgver = alpha34a
+	pkgrel = 1
+	url = http://www.introversion.co.uk/prisonarchitect/
+	install = desktop.install
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = libgl
+	depends = glu
+	provides = prisonarchitect
+	conflicts = prisonarchitect
+	source = hib://prisonarchitect-alpha34a-linux.tar.gz
+	source = prisonarchitect.png::http://www.introversion.co.uk/prisonarchitect/images/tier/tier_icon250.png
+	source = prisonarchitect.desktop
+	md5sums = ad71f58a428f0698472046a21d49b365
+	md5sums = d8df107c67e1474fabf56cbd90b174ed
+	md5sums = 9e6cf081869d3e0949fe803a01907d50
+
+pkgname = prisonarchitect-hib
+

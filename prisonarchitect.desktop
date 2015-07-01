@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Prison Architect
+Comment=Prison construction and management simulation
+Exec=prisonarchitect
+Terminal=false
+Type=Application
+Icon=prisonarchitect
+Categories=Game;Simulation;
