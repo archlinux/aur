@@ -1,0 +1,17 @@
+pkgbase = pacc-git
+	pkgdesc = A compiler-compiler
+	pkgver = 0.0.47.g60d76a2
+	pkgrel = 1
+	url = http://paccrat.org/
+	install = pacc-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = texinfo
+	depends = glibc
+	source = git://paccrat.org/pacc
+	md5sums = SKIP
+
+pkgname = pacc-git
+
