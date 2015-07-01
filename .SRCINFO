@@ -1,0 +1,15 @@
+pkgbase = ttf-cm-unicode
+	pkgdesc = Computer Modern Unicode ttf fonts
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://canopus.iacp.dvo.ru/~panov/cm-unicode/
+	install = ttf.install
+	arch = any
+	license = custom:OFL1.1
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://downloads.sourceforge.net/project/cm-unicode/cm-unicode/0.7.0/cm-unicode-0.7.0-ttf.tar.xz
+	md5sums = 8dc72a959ced139847f4160ff9413fd8
+
+pkgname = ttf-cm-unicode
+
