@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Chromium OS UI (Login manager)
+Exec=chromiumos-ui-session --login
+Type=Application

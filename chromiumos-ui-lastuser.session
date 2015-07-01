@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Chromium OS UI (Last logged-in user)
+Exec=chromiumos-ui-session --login --lastuser
+Type=Application
