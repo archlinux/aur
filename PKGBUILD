@@ -18,7 +18,7 @@ install=zandronum.install
 
 if [ "$CARCH" == "i686" ];then
     source=(
-        "http://zandronum.com/downloads/${pkgname}${pkgver}-linux-x86.tar.bz2"
+        "http://zandronum.com/downloads/zandronum${pkgver}-linux-x86.tar.bz2"
         "LICENSE.txt"
     )
     md5sums=(
@@ -30,7 +30,7 @@ fi
 
 if [ "$CARCH" == "x86_64" ]; then
     source=(
-        "http://zandronum.com/downloads/${pkgname}${pkgver}-linux-x86_64.tar.bz2"
+        "http://zandronum.com/downloads/zandronum${pkgver}-linux-x86_64.tar.bz2"
         "LICENSE.txt"
     )
     md5sums=(
@@ -74,7 +74,7 @@ package(){
 #  ln -s "/usr/lib/libcrypto.so" "$pkgdir/usr/share/zandronum/lib/libcrypto.so.0.9.8"
 #  ln -s "/usr/lib/libssl.so" "$pkgdir/usr/share/zandronum/lib/libssl.so.0.9.8"
 
-  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/zandronum/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
