@@ -1,8 +1,9 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 # Contributor: Ray Donnelly <mingw.android@gmail.com>
+# Contributor: Dr-Shadow <kerdiles.robin@gmail.com>
 
 pkgname=mingw-w64-python
-pkgver=3.4.2
+pkgver=3.4.3
 _pybasever=3.4
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
@@ -13,15 +14,17 @@ depends=('mingw-w64-crt'
          'mingw-w64-expat'
 	 'mingw-w64-bzip2'
 	 'mingw-w64-gdbm'
-	 'mingw-w64-openssl'
 	 'mingw-w64-libffi'
-	 'mingw-w64-zlib')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' "python>=${pkgver}" 'wine')
+	 'mingw-w64-openssl'
+	 'mingw-w64-readline'
+	 'mingw-w64-zlib'
+	 'mingw-w64-xz')
+makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'patches.tar.gz')
-sha1sums=('0727d8a8498733baabe6f51632b9bab0cbaa9ada'
-          '72f1405420d4d756c90eee77f630c50e52234a21')
+sha1sums=('7ca5cd664598bea96eec105aa6453223bb6b4456'
+          'f4b0b6f86eb86be2d4c03de80f8bce2091b14193')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -35,13 +38,16 @@ prepare() {
     patch -Np1 -i $PATCH
   done
 
-  # run PGEN through wine
-  sed -i "s|\\\$(PGEN) \\\$(GRAMMAR_INPUT)|wine \\\$(PGEN) \\\$(GRAMMAR_INPUT)|g" Makefile.pre.in
-
   autoreconf -vfi
 
-  # FS#23997
-  sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
+  touch Include/graminit.h
+  touch Python/graminit.c
+  touch Parser/Python.asdl
+  touch Parser/asdl.py
+  touch Parser/asdl_c.py
+  touch Include/Python-ast.h
+  touch Python/Python-ast.c
+  echo \"\" > Parser/pgen.stamp
 
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
@@ -55,12 +61,8 @@ build() {
   unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    export LIBFFI_INCLUDEDIR=`${_arch}-pkg-config libffi --cflags-only-I | sed "s|\-I||g"`
-    ../configure \
-      --prefix=/usr/${_arch} \
-      --host=${_arch} \
-      --build=$CHOST \
-      --enable-shared \
+    # export LIBFFI_INCLUDEDIR=`${_arch}-pkg-config libffi --cflags-only-I | sed "s|\-I||g"`
+    ${_arch}-configure \
       --with-threads \
       --with-computed-gotos \
       --with-system-expat \
