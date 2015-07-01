@@ -1,0 +1,12 @@
+pkgbase = spnegohelp-git
+	pkgdesc = SPNEGO helper for Apache2 mod_auth_gss_krb5 and Nginx mod-auth-kerb
+	pkgver = 20120130
+	pkgrel = 2
+	url = https://github.com/petRUShka/spnegohelp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = spnegohelp
+
+pkgname = spnegohelp-git
+
