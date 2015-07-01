@@ -1,0 +1,17 @@
+pkgbase = mupen64plus-qt
+	pkgdesc = A basic launcher for Mupen64Plus
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/dh4/mupen64plus-qt
+	install = mupen64plus-qt.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qt5-base
+	depends = quazip
+	depends = mupen64plus
+	source = https://github.com/dh4/mupen64plus-qt/archive/1.7.tar.gz
+	sha256sums = dee1118584a0a5f0c1cf2951a491cfc3527f0cf9149f446b99037a51504138af
+
+pkgname = mupen64plus-qt
+
