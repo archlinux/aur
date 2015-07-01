@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-python
+	pkgdesc = Next generation of the python high-level scripting language (mingw-w64)
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	makedepends = python>=3.4.2
+	makedepends = wine
+	depends = mingw-w64-crt
+	depends = mingw-w64-expat
+	depends = mingw-w64-bzip2
+	depends = mingw-w64-gdbm
+	depends = mingw-w64-openssl
+	depends = mingw-w64-libffi
+	depends = mingw-w64-zlib
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.python.org/ftp/python/3.4.2/Python-3.4.2.tar.xz
+	source = patches.tar.gz
+	sha1sums = 0727d8a8498733baabe6f51632b9bab0cbaa9ada
+	sha1sums = 72f1405420d4d756c90eee77f630c50e52234a21
+
+pkgname = mingw-w64-python
+
