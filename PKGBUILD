@@ -11,7 +11,7 @@ url="http://zandronum.com/"
 license=('custom')
 conflicts=('zandronum-hg', 'zandronum')
 #makedepends=('cmake' 'mercurial' 'yasm' 'mesa') # Not sure if it needs yasm.
-depends=('sdl' 'gtk2' 'libjpeg6-turbo' 'glu' 'openssl')
+depends=('sdl' 'gtk2' 'libjpeg6-turbo' 'glu' 'openssl' 'fluidsynth')
 optdepends=('timidity++: midi support'
             'freedoom: free IWAD')
 install=zandronum.install
