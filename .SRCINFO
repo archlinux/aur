@@ -1,0 +1,30 @@
+pkgbase = dropbox-gtk2
+	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily (GTK2 version)
+	pkgver = 2.10.52
+	pkgrel = 1
+	url = https://www.dropbox.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = dbus-glib
+	depends = gtk2
+	depends = libsm
+	provides = dropbox
+	conflicts = dropbox
+	conflicts = dropbox-experimental
+	options = !strip
+	options = !upx
+	source = dropbox.png
+	source = dropbox.desktop
+	source = dropbox.service
+	source = dropbox@.service
+	source = TERMS
+	source = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.-2.10.52.tar.gz
+	sha1sums = 64073af76a2bbc7dba4a6886b82af0bb3e71a2a0
+	sha1sums = d5ad720762b9052a4fd6af839038318b37d5fd39
+	sha1sums = 169d929772ed3e74cdc68b948d69b44a1775db0c
+	sha1sums = 0019b370924494390b071ed6e607e5f70c88fc12
+	sha1sums = 46ba3146324c0ca0209ac76eaaddd74d9fec94ac
+
+pkgname = dropbox-gtk2
+
