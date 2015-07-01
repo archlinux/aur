@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Chromium OS UI (Login manager)
+Exec=chromiumos-ui --login
+Terminal=false
+Icon=/usr/lib/chromiumos-ui/product_logo_48.png
+Type=Application
+Categories=Application;Network;WebBrowser;

@@ -1,0 +1,30 @@
+pkgbase = chromiumos-ui-bin
+	pkgdesc = Chromium OS user interface (prebuilt binary)
+	pkgver = LKGR
+	pkgrel = 3
+	url = http://www.chromium.org/chromium-os
+	install = chromiumos-ui.install
+	arch = x86_64
+	license = BSD
+	depends = chromium
+	depends = libudev.so.0
+	optdepends = chromiumos-ui-tts: ChromeVox text-to-speech, with accessibility support
+	provides = chromiumos-ui
+	conflicts = chromiumos-ui
+	options = !strip
+	backup = etc/chromiumos-ui/default
+	source = chrome-linux-252451.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_ChromiumOS/252451/chrome-linux.zip
+	source = chromiumos-ui.default
+	source = chromiumos-ui.desktop
+	source = chromiumos-ui.sh
+	source = chromiumos-ui-lastuser.desktop
+	source = chromiumos-ui-login.desktop
+	md5sums = SKIP
+	md5sums = 001a472621cace5c2e140df95c632af1
+	md5sums = 0aa55e3947e85e3774bba3da274e09f8
+	md5sums = 806bd9b2c2f8d80ddf74c49f8a778853
+	md5sums = bfd688d7d6e340df8e9296c8c40eb3a5
+	md5sums = 3c1772e39cdd805fe3052e4938371afe
+
+pkgname = chromiumos-ui-bin
+
