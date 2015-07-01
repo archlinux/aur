@@ -1,0 +1,15 @@
+pkgbase = vala-dbus-binding-tool-git
+	pkgdesc = Creates gobject interfaces out of DBus XML specifications.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/freesmartphone/vala-dbus-binding-tool
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = vala
+	depends = dbus
+	source = vala-dbus-binding-tool-git::git+https://github.com/freesmartphone/vala-dbus-binding-tool.git
+	md5sums = SKIP
+
+pkgname = vala-dbus-binding-tool-git
+
