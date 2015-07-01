@@ -1,0 +1,16 @@
+pkgbase = perl-smart-comments
+	pkgdesc = Comments that do more than just sit there
+	pkgver = 1.000005
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Smart-Comments
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Smart-Comments-1.000005.tar.gz
+	md5sums = 17f7fb5d43c9b8295e89344be4c40826
+
+pkgname = perl-smart-comments
+
