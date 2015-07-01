@@ -2,7 +2,7 @@
 
 _pkgname=glportal
 pkgname=${_pkgname}-git
-pkgver=v0.0.5.605.gd5e4d47
+pkgver=32cc39f
 pkgrel=1
 pkgdesc="OpenGL puzzle game inspired by portal."
 arch=('i686' 'x86_64')
@@ -12,20 +12,31 @@ depends=('glew' 'assimp' 'sdl2' 'sdl2_mixer' 'tinyxml')
 makedepends=('git' 'cmake' 'unittestpp')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/${_pkgname}/${_pkgname}.git")
-md5sums=('SKIP')
+source=("git://github.com/${_pkgname}/${_pkgname}.git"
+        "git://github.com/${_pkgname}/${_pkgname}_data.git")
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
+  cd "${srcdir}/${_pkgname}"
   echo $(git describe --always | sed 's/-/./g')
 }
 
-build() {
-  cd $srcdir/$_pkgname
+prepare() {
+  cd "${srcdir}/${_pkgname}"
 
-  mkdir build && cd build
+  git submodule init
+  git config submodule.data.url "${srcdir}/${_pkgname}_data"
+  git submodule update
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  [[ -d build ]] || mkdir build
+  cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  make all tests
 }
 
 check() {
