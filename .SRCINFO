@@ -1,0 +1,17 @@
+pkgbase = vim-autoswap-git
+	pkgdesc = Please Vim, stop with these swap file messages. Just switch to the correct window!
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/gioele/vim-autoswap
+	arch = any
+	groups = vim-plugins
+	license = custom
+	makedepends = git
+	depends = wmctrl
+	provides = vim-autoswap
+	conflicts = vim-autoswap
+	source = vim-autoswap-git::git+https://github.com/gioele/vim-autoswap.git
+	md5sums = SKIP
+
+pkgname = vim-autoswap-git
+
