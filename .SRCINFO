@@ -1,0 +1,17 @@
+pkgbase = shen-sbcl
+	pkgdesc = A portable functional programming language (SBCL port)
+	pkgver = 16.p1.7
+	pkgrel = 1
+	url = http://www.shenlanguage.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = sbcl
+	depends = zlib
+	provides = shen
+	options = !strip
+	source = http://shenlanguage.org/Download/Shen.zip
+	md5sums = 820885321cca784fdbc2fadbbbaec6e7
+
+pkgname = shen-sbcl
+
