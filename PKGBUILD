@@ -1,3 +1,4 @@
+# Maintainer: Rob Cornish <jrmcornish AT gmail DOT com>
 pkgname=brscan-skey
 pkgver=0.2.4_1
 pkgrel=9
@@ -21,7 +22,7 @@ source=('brscan-skey.service' 'brscan-skey-user.service' 'LICENSE.html')
 md5sums=('82ba4e7cf73306b17f144731f6484ad0' 'da65d820642f760115428769d2639db9' 'bd06a5d28abb3b3a3a6a263567cbb78b')
 
 package() {
-    cp -R "$srcdir"/opt "$pkgdir"
+    cp -r "$srcdir"/opt "$pkgdir"
 
     install -d -m755 "$pkgdir"/usr/lib/systemd/system
     install -D -m644 "$srcdir"/brscan-skey.service "$pkgdir"/usr/lib/systemd/system
