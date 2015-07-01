@@ -5,7 +5,7 @@
 
 pkgname=dropbox-gtk2
 pkgver=2.10.52
-pkgrel=1
+pkgrel=2
 pkgdesc='A free service that lets you bring your photos, docs, and videos anywhere and share them easily (GTK2 version)'
 arch=('i686' 'x86_64')
 url='https://www.dropbox.com/'
@@ -31,11 +31,12 @@ sha1sums=(
   '46ba3146324c0ca0209ac76eaaddd74d9fec94ac'
 )
 
+_arch='x86_64'
+
 if [ "${CARCH}" == 'i686' ]; then
   _arch='x86'
   sha1sums+=('8a600f3a1171d00ce15cbbf5ab1c35a2a8bd18eb')
-elif [ "${CARCH}" == 'x86_64' ]; then
-  _arch='x86_64'
+else
   sha1sums+=('0811b6f344e308a68b3c36421dc27f5db8948e15')
 fi
 
