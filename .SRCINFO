@@ -1,0 +1,16 @@
+pkgbase = iscan-plugin-esdip
+	pkgdesc = This package adds some image processing options to the 'epkowa' backend. Included are: - skew correction - autocropping
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = avasys
+	makedepends = deb2targz
+	depends = iscan
+	depends = iscan-data
+	source = http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/57/72/573f35de6884fbd0f405a1e9ffc8eb9a9b126160/iscan-plugin-esdip_1.0.0-5.ltdl7_i386.deb
+	md5sums = e3553d8c6fb6bea35c2baef251193e22
+
+pkgname = iscan-plugin-esdip
+
