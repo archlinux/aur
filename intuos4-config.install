@@ -1,0 +1,20 @@
+﻿post_install() {
+  echo "Don't forget to add you user to tty group:"
+  echo "  sudo usermod -a -G tty \$USER"
+  echo "and copy settings to home directory:"
+  echo "  mkdir ~/.intuos4/"
+  echo "  cp -r /share/intuos4/* ~/.intuos4/"
+}
+
+post_upgrade() {
+  echo "Don't forget to add you user to tty group:"
+  echo "  sudo usermod -a -G tty \$USER"
+  echo "and copy settings to home directory:"
+  echo "  mkdir ~/.intuos4/"
+  echo "  cp -r /share/intuos4/* ~/.intuos4/"
+}
+
+
+post_remove() {
+  echo ""
+}
