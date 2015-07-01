@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=osc2midi-utils-git
-pkgver=84.fac10bf
+pkgver=89.1214bf2
 pkgrel=1
 pkgdesc="Utilities and GTK frontend for OSC2MIDI (git version)"
 arch=('x86_64' 'i686')
