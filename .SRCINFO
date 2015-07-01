@@ -1,0 +1,16 @@
+pkgbase = apache-ant-cpptasks
+	pkgdesc = C/C++, FORTRAN and MIDL tasks for Apache Ant.
+	pkgver = 1.0b5
+	pkgrel = 2
+	url = http://ant-contrib.sourceforge.net/cpptasks/index.html
+	arch = any
+	license = APACHE
+	makedepends = apache-ant
+	depends = java-runtime
+	depends = apache-ant
+	depends = xerces2-java
+	source = http://sourceforge.net/projects/ant-contrib/files/ant-contrib/cpptasks-1.0-beta5/cpptasks-1.0b5.tar.gz
+	md5sums = 7f0f7732acd0c82f7efb228f667ec79a
+
+pkgname = apache-ant-cpptasks
+
