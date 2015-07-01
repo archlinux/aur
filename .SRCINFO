@@ -1,0 +1,19 @@
+pkgbase = gnome-mousetrap
+	pkgdesc = a standalone GNOME application that allows users with physical impairments to move a mouse cursor
+	pkgver = 3.17.1
+	pkgrel = 2
+	url = https://wiki.gnome.org/Projects/MouseTrap
+	arch = any
+	license = GPL2
+	makedepends = gnome-common
+	depends = python2
+	depends = python2-yaml
+	depends = opencv
+	depends = python2-xlib
+	depends = python2-numpy
+	options = !emptydirs
+	source = https://github.com/GNOME/mousetrap/archive/MOUSETRAP_3_17_1.tar.gz
+	md5sums = 8d829608e31cc60916360716c10d06b1
+
+pkgname = gnome-mousetrap
+
