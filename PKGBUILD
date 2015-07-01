@@ -1,7 +1,7 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=panoply
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='NetCDF, HDF and GRIB Data Viewer by NASA GISS'
 arch=('any')
 url='http://www.giss.nasa.gov/tools/panoply/'
@@ -20,18 +20,27 @@ changelog=
 source=('http://www.giss.nasa.gov/tools/panoply/PanoplyJ.zip'
         'LICENSES'
         'panoply-script.patch'
-        'panoply.png'
+        'panoply16.png'
+        'panoply32.png'
+        'panoply48.png'
+        'panoply64.png'
+        'panoply128.png'
         'panoply.desktop')
 noextract=()
 sha1sums=('9db14286bc7e561f063d354aae93ffe9775bb8f9'
           'a83855747414873269e21aaff1a53d13ab5de304'
           '707208d062922b5426303238870e0dd269257697'
-          'ef7c4bbe22f18b61a1f215cc43d76e975f0abf17'
+          '97c70755c7d87217556de5b2f1012b3be0d375fb'
+          'c36f0b5d423d626255be0f2d2cbf3eba72618a36'
+          '7becea40d14b5d89a8c4662b84ebe0578a53b1a4'
+          '2347bd0a4644781a86950fa740d8621437049b69'
+          '6151a1fe4a0a19e7b0145f1f58724b72bc38e8e6'
           '39c9a58c25d8f764c928e9dfe75f4f73bb9198f0')
 
 prepare() {
     cd ${srcdir}/PanoplyJ
     patch -uN -i ../panoply-script.patch || return 1
+    unzip -px jars/Panoply.jar gov/nasa/giss/panoply/about/panoply4.png > ../panoply192.png
 }
 
 package() {
@@ -39,8 +48,11 @@ package() {
     install -d -m755 ${pkgdir}/usr/share/java/panoply
     install -Dm644 ${srcdir}/PanoplyJ/jars/*.jar ${pkgdir}/usr/share/java/panoply
     install -Dm755 ${srcdir}/PanoplyJ/panoply.sh ${pkgdir}/usr/bin/panoply
-    install -d -m755 ${pkgdir}/usr/share/icons/hicolor/48x48/apps
-    install -Dm644 ${srcdir}/panoply.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps
-    install -d -m755 ${pkgdir}/usr/share/applications
-    install -Dm644 ${srcdir}/panoply.desktop ${pkgdir}/usr/share/applications
+    install -Dm644 ${srcdir}/panoply16.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/panoply.png
+    install -Dm644 ${srcdir}/panoply32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/panoply.png
+    install -Dm644 ${srcdir}/panoply48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/panoply.png
+    install -Dm644 ${srcdir}/panoply64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/panoply.png
+    install -Dm644 ${srcdir}/panoply128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/panoply.png
+    install -Dm644 ${srcdir}/panoply192.png ${pkgdir}/usr/share/icons/hicolor/192x192/apps/panoply.png
+    install -Dm644 ${srcdir}/panoply.desktop ${pkgdir}/usr/share/applications/panoply.desktop
 }
