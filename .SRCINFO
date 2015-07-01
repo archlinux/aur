@@ -1,0 +1,15 @@
+pkgbase = katahdin
+	pkgdesc = A programming language where the syntax and semantics are mutable at runtime
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.chrisseaton.com/katahdin/
+	arch = any
+	license = BSD
+	depends = mono
+	depends = gtk2
+	optdepends = gtk-sharp-2: for the debugger
+	source = http://www.chrisseaton.com/katahdin/katahdin-0.2.tar.gz
+	md5sums = d79e6505307ef6855bad1baea75efcae
+
+pkgname = katahdin
+
