@@ -1,11 +1,12 @@
 pkgbase = zarafa-server-arm
 	pkgdesc = Open Source Groupware Solution
 	pkgver = 7.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.zarafa.com/
 	install = install
 	arch = any
 	license = AGPL3
+	makedepends = gcc<5.0.0
 	depends = zarafa-libical>=7.2.0
 	depends = zarafa-libvmime>=7.2.0
 	depends = bison
@@ -39,7 +40,6 @@ pkgbase = zarafa-server-arm
 	optdepends = z-push
 	source = zarafa-7.2.0.tar.gz::http://download.zarafa.com/community/final/7.2/7.2.0-48204/sourcecode/zarafa-7.2.0.tar.gz
 	source = arm.diff
-	source = gcc-boost.diff
 	source = zarafa-server.service
 	source = zarafa-ical.service
 	source = zarafa-dagent.service
@@ -47,7 +47,6 @@ pkgbase = zarafa-server-arm
 	source = zarafa-gateway.service
 	md5sums = 7dc8a526b3eb83e6eb5bbc9d2215b501
 	md5sums = 5de9759477995d9940c056e56ed9d3f1
-	md5sums = b469993feb8ac2655a4a1604c32ec792
 	md5sums = 0e2728f1e35b25ca679427fcb57315d8
 	md5sums = c25f3982217fe390d68ed9003a5988ed
 	md5sums = 9666bf713645af11dd65b3ac5cbb42d9
