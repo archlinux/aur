@@ -5,8 +5,8 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.0
-pkgver=4.0.6
-pkgrel=1
+pkgver=4.0.7
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,14 +21,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
+        '0001-block-loop-convert-to-per-device-workqueue.patch'
+        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'change-default-console-loglevel.patch')
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
+            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
             'SKIP'
             'abbd00d37fda3c52e4d008fb6667118ee6606608d40a9c4b3cff29f189f526a2'
             'b8032dc8850d8ce3f5f00e0cec8ee999e63fc3f81589a2a6337ec87294f0f543'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
+            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
+            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -45,6 +49,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Fix deadlock with stacked loop devices (FS#45129)
+  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
+  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
