@@ -1,0 +1,19 @@
+pkgbase = chromiumos-ui-tts-git
+	pkgdesc = Chromium OS UI ChromeVox text-to-speech, with accessibility support
+	pkgver = 440.2714077
+	pkgrel = 1
+	url = http://www.chromium.org/chromium-os
+	arch = arm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = chromiumos-ui
+	provides = chromiumos-ui-tts
+	conflicts = chromiumos-ui-tts
+	options = !strip
+	source = chromeos-assets::git+https://chromium.googlesource.com/chromiumos/platform/assets
+	md5sums = SKIP
+
+pkgname = chromiumos-ui-tts-git
+
