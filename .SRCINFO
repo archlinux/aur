@@ -1,0 +1,13 @@
+pkgbase = ibrowse-git
+	pkgdesc = Erlang HTTP client
+	pkgver = 20101026
+	pkgrel = 1
+	url = http://github.com/cmullaparthi/ibrowse
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = erlang
+
+pkgname = ibrowse-git
+
