@@ -1,0 +1,15 @@
+pkgbase = otf-libertine-git
+	pkgdesc = a fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion
+	pkgver = 20150701
+	pkgrel = 1
+	url = https://github.com/khaledhosny/libertine
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = libertine::git+https://github.com/khaledhosny/libertine.git#branch=master
+	md5sums = SKIP
+
+pkgname = otf-libertine-git
+
