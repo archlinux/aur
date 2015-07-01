@@ -1,0 +1,18 @@
+pkgbase = iscan-plugin-gt-s80
+	pkgdesc = iscan plugin for Epson GT-S50 and GT-S80 scanner.
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	install = gt-s80.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	depends = iscan
+	depends = iscan-data
+	optdepends = iscan-plugin-esdip: provides auto-crop and deskew function
+	source = http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/79/56/4ba44418d108b168a9416282fb7fab4eea801e8d//esci-interpreter-gt-s80_0.2.1-1_i386.deb
+	md5sums = 678c3ca4a1ae769fff9cbf466646cd86
+
+pkgname = iscan-plugin-gt-s80
+

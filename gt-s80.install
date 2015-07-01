@@ -1,0 +1,9 @@
+post_install() {
+    echo "Running iscan-registry to register plugins and firmware with iscan"
+    iscan-registry --add interpreter usb 04b8:0137 /usr/lib/iscan/libesint86 /usr/share/iscan/esfw86.bin
+}
+
+pre_remove() {
+    echo "Unregistering gt-s50 plugins/firmware"
+    iscan-registry --remove interpreter usb 04b8:0137 /usr/lib/iscan/libesint86 /usr/share/iscan/esfw86.bin
+}
