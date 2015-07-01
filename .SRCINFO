@@ -1,0 +1,16 @@
+pkgbase = liveroot
+	pkgdesc = Initcpio hooks for non persistent boot
+	pkgver = 21
+	pkgrel = 1
+	url = https://github.com/bluerider/liveroot.git
+	install = liveroot.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = util-linux
+	depends = rsync
+	source = git+https://github.com/bluerider/liveroot.git
+	sha256sums = SKIP
+
+pkgname = liveroot
+

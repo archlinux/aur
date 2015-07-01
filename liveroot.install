@@ -1,0 +1,13 @@
+post_install() {
+  cat <<EOF
+See templates at /usr/share/liveroot/ for examples of how to activate liveroot.
+Add zram btrfs ext2 overlay to modules array in /etc/mkinitcpio.conf
+Add oroot to hooks array in /etc/mkinitcpio.conf
+Add either oroot=raw,oroot=live or oroot=compresssed to kernel cmdline
+oroot=compressed, oroot=raw, and oroot=live now feature a script called overlay_flush. Use this to flush the upper overlay onto the lower backing disk.
+EOF
+}
+
+post_upgrade() {
+ mkinitcpio -p linux
+}
