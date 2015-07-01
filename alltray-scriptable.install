@@ -1,0 +1,10 @@
+post_install() {
+  echo ">> To make alltrays running a command close or undock gracefully,"
+  echo ">> tocuh /etc/alltray/<command>/{close, undock}. Remember to delete it after."
+  echo ">> Basically this just makes it so you don't have to click the tray."
+}
+
+op=$1
+shift
+
+$op $*

@@ -1,0 +1,20 @@
+pkgbase = alltray-scriptable
+	pkgdesc = Drops any app in the tray and waits for a signal to close it
+	pkgver = 0.70
+	pkgrel = 5
+	url = http://alltray.sourceforge.net
+	install = alltray-scriptable.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	provides = alltray
+	conflicts = alltray
+	replaces = alltray
+	source = http://downloads.sourceforge.net/sourceforge/alltray/alltray-0.70.tar.gz
+	source = signal.patch
+	md5sums = 675a0a60f22fae04da787095ef0bd7d9
+	md5sums = b7aa418a5f82d1d69eb752868d9c86af
+
+pkgname = alltray-scriptable
+

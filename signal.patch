@@ -1,0 +1,30 @@
+--- main.c.orig	2007-12-28 16:13:26.000000000 -0500
++++ main.c	2008-12-26 18:29:49.000000000 -0500
+@@ -329,6 +329,18 @@
+ 
+ }
+ 
++static gboolean signal_check(gpointer user_data)
++{
++  win_struct *win= (win_struct*) user_data;
++  if (g_file_test(g_strconcat("/etc/alltray/", win->command_only, "/close", NULL), G_FILE_TEST_EXISTS)) {
++    destroy_all_and_exit (win, TRUE);
++  } else if (g_file_test(g_strconcat("/etc/alltray/", win->command_only, "/undock", NULL), G_FILE_TEST_EXISTS)) {
++    destroy_all_and_exit (win, FALSE);
++  }
++
++  return TRUE;
++}
++
+ int
+ main (int argc, char *argv[])
+ {
+@@ -530,7 +542,7 @@
+   if (win->shortcut_key != 0 && win->shortcut_modifier != 0)
+     shortcut_init (win);
+ 
+-
++  g_timeout_add(1000, signal_check, (gpointer) win);
+   gtk_main ();
+ 
+   return 0;
