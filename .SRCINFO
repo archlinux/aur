@@ -1,7 +1,7 @@
 pkgbase = brightd
 	pkgdesc = Automatically dims screen when there is no user input (like a macbook :-).
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.pberndt.com/Programme/Linux/brightd/
 	install = brightd.install
 	arch = i686
