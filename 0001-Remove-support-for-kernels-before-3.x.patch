@@ -1,0 +1,81 @@
+From d6c3e82f5723079436ac497004373b41002b9777 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?D=C4=81vis?= <davispuh@gmail.com>
+Date: Wed, 1 Jul 2015 01:44:10 +0300
+Subject: [PATCH 1/2] Remove support for kernels before 3.x
+
+---
+ inc/linux_64mpa/Makefile.def | 26 ++------------------------
+ osm/linux/install.sh         | 12 ++----------
+ 2 files changed, 4 insertions(+), 34 deletions(-)
+
+diff --git a/inc/linux_64mpa/Makefile.def b/inc/linux_64mpa/Makefile.def
+index b91c5ea..e1f4723 100755
+--- a/inc/linux_64mpa/Makefile.def
++++ b/inc/linux_64mpa/Makefile.def
+@@ -93,15 +93,9 @@ ifeq ($(KERNEL_VER),)
+ $(error Cannot find kernel version. Check $(KERNELDIR)/include/linux/version.h.)
+ endif
+ 
+-ifneq ($(MAJOR), 3)
+-ifneq ($(KERNEL_VER), 2.6)
+-ifneq ($(KERNEL_VER), 2.4)
+-$(error Only kernel 2.4/2.6/3.x is supported but you use $(KERNEL_VER))
++ifeq ($(MAJOR), 2)
++$(error Only kernels 3.x and above is supported but you use $(KERNEL_VER))
+ endif
+-endif
+-endif
+-
+-ifneq ($(KERNEL_VER), 2.4)
+ 
+ TARGET := $(TARGETNAME).ko
+ 
+@@ -134,22 +128,6 @@ $(CURDIR)/.build/Makefile:
+ 	@echo '$$(addprefix $$(obj)/,$$(TARGETMODS)): $$(obj)/%.o: $$(HPT_LIB)/%.o' >>$@
+ 	@echo '	@cp -f $$< $$@' >>$@
+ 
+-else # for kernel 2.4 modules
+-
+-HPT_LIB := $(HPT_LIB)-regparm0
+-_TARGETMODS := $(addprefix $(HPT_LIB)/,$(TARGETMODS))
+-
+-VPATH := .. $(HPT_ROOT)/osm/linux
+-TARGET := $(TARGETNAME).o
+-
+-C_INCLUDES += -I$(HPT_ROOT)/osm/linux -I$(KERNELDIR)/include -I$(KERNELDIR)/drivers/scsi
+-
+-$(TARGET): $(TARGETOBJS) $(_TARGETMODS)
+-	@echo $(if $V,,[LD] $@)
+-	$(if $V,,@)$(CROSS_COMPILE)$(LD) -r -o $@ $^
+-
+-endif # KERNEL_VER
+-
+ endif # KMOD
+ 
+ wrong_target:
+diff --git a/osm/linux/install.sh b/osm/linux/install.sh
+index 4dff2e9..cab1a01 100644
+--- a/osm/linux/install.sh
++++ b/osm/linux/install.sh
+@@ -5,16 +5,8 @@ if test "${TARGETNAME-set}" = set; then echo "TARGETNAME is not set"; exit 1; fi
+ 
+ PWD=`pwd`
+ 
+-case ${KERNEL_VER} in
+-	2.4 )
+-	OBJ=o
+-	MODVER=`modinfo -f%{kernel_version} ${PWD}/${TARGETNAME}.${OBJ}`
+-	;;
+-	2.6 | 3.* )
+-	OBJ=ko
+-	MODVER=`modinfo -F vermagic ${PWD}/${TARGETNAME}.${OBJ} | cut -d' ' -f1`
+-	;;
+-esac
++OBJ=ko
++MODVER=`modinfo -F vermagic ${PWD}/${TARGETNAME}.${OBJ} | cut -d' ' -f1`
+ 
+ if test "${MODVER}" = "" ; then
+ 	echo "Can not get kernel version from ${TARGETNAME}.${OBJ}."
+-- 
+2.4.5
+

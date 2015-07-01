@@ -1,0 +1,21 @@
+pkgbase = rr276x
+	pkgdesc = Kernel module for HighPoint RocketRAID 276x (2760/2760A) SAS/SATA HBA/RAID cards
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://www.highpoint-tech.com/USA_new/series_rr276x-rr274x_configuration.htm
+	install = rr276x.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = linux-headers
+	depends = linux
+	conflicts = $pkgname-dkms
+	source = http://www.highpoint-tech.com/BIOS_Driver/RR276x/linux/RR276x_Linux_Src_v1.1.3_14_02_12.tar.gz
+	source = 0001-Remove-support-for-kernels-before-3.x.patch
+	source = 0002-Remove-__DATE__-and-__TIME__-macros.patch
+	sha256sums = fefde4b1e0ee0b49f9871585269067e269b6cefe07d248766a5bb8b59521f611
+	sha256sums = 9e892fc9b022aed5d252f47cef49df914292b6a6b3fbb2c2ced58923edc04cff
+	sha256sums = cd97a05219f3e4d9edd2e1d0d6c07371b52676ebc0821584b9fcc6b4b953f00a
+
+pkgname = rr276x
+
