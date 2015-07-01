@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-python2
+	pkgdesc = A high-level scripting language (mingw-w64)
+	pkgver = 2.7.9
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	makedepends = python2>=2.7.9
+	makedepends = wine
+	depends = mingw-w64-crt
+	depends = mingw-w64-expat
+	depends = mingw-w64-bzip2
+	depends = mingw-w64-gdbm
+	depends = mingw-w64-openssl
+	depends = mingw-w64-libffi
+	depends = mingw-w64-zlib
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.python.org/ftp/python/2.7.9/Python-2.7.9.tar.xz
+	source = patches.tar.gz
+	sha1sums = 3172f6e957713c2d9fca462cc16068222fd1b9d3
+	sha1sums = c02170ef8291c56d4ab4978363761eb985da4ea3
+
+pkgname = mingw-w64-python2
+
