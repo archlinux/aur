@@ -1,7 +1,7 @@
 # Maintainer: Roman Titov <titovroman@gmail.com>
 
 pkgname=pgmodeler
-pkgver=0.8.1_alpha1
+pkgver=0.8.1_beta1
 pkgrel=1
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
@@ -20,7 +20,7 @@ source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'pgmodeler_logo.png'
         'pgmodeler_dbm.png'
         'pgmodeler.desktop')
-sha1sums=('b84a198c8c60a936c2cf95c398ee5151d3c6d8b7'
+sha1sums=('f5ba63542fa747a8cec2c12fb1912c70eca7aa79'
           'f11a0b25b747ab0438d4a3fb47af2caa953e3997'
           '01eab1f1a3c0d163289e9b26855775cc5622acab'
           'c5bb090a1cbb784cd2ec9e1449cac02af2ba6538'
@@ -32,8 +32,9 @@ install='pgmodeler.install'
 build() {
 	cd "$srcdir/$pkgname-${pkgver//_/-}"
 
-        # Debug is needed to get the full dummy and xml2object plugins
-	qmake CONFIG+=release pgmodeler.pro
+        # release is needed to get the full dummy and xml2object plugins
+	#qmake CONFIG+=release pgmodeler.pro
+	qmake pgmodeler.pro
  	make
 }
 
@@ -43,7 +44,7 @@ package() {
 	buildir="$srcdir/$pkgname-${pkgver//_/-}"
 
 	msg2 "Creating required dirs"
-	mkdir -p "$pkgdir"/{etc/$pkgname,usr/{bin,share/{applications,icons/hicolor/64x64/{apps,mimetypes},licenses/$pkgname,$pkgname}},opt/$pkgname}
+	mkdir -p "$pkgdir"/{etc/$pkgname,usr/{bin,share/{applications,icons/hicolor/64x64/{apps,mimetypes},licenses/$pkgname,$pkgname}}}
 
 	msg2 "Moving stuff in place"
 	cp -R "$buildir"/conf/*.conf "$pkgdir/etc/$pkgname/"
@@ -62,7 +63,9 @@ package() {
 	install -m644 "$srcdir/pgmodeler_logo.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/pgmodeler.png"
 	#install -m644 "$srcdir/pgmodeler_dbm.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/TODO_REGISTER_MIME_ICON.png"
 	install -m644 "$srcdir/pgmodeler.desktop" "$pkgdir/usr/share/applications"
+	# Create an empty plugin directory to get rid of error during startup
+	mkdir -p "$pkgdir/usr/local/lib/pgmodeler/plugins/"
 
-	msg2 "Removing redundant files"
-	rm -rf "$pkgdir/opt/$pkgname/"{conf,LICENSE,pgmodeler.vars}
+#	msg2 "Removing redundant files"
+#	rm -rf "$pkgdir/opt/$pkgname/"{conf,LICENSE,pgmodeler.vars}
 }
