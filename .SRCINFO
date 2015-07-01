@@ -7,6 +7,7 @@ pkgbase = nes-git
 	license = MIT
 	makedepends = go
 	makedepends = git
+	makedepends = mercurial
 	options = !strip
 	options = !emptydirs
 	source = nes-git::git+https://github.com/fogleman/nes.git
