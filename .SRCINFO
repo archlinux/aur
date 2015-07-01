@@ -1,0 +1,19 @@
+pkgbase = vim-vala-git
+	pkgdesc = Support for vala and genie languages
+	pkgver = r2.a23aa5a
+	pkgrel = 1
+	url = https://github.com/fishman/vim-vala
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	provides = vim-vala
+	conflicts = vim-vala
+	source = vim-vala-git::git://github.com/fishman/vim-vala.git
+	source = ftdetect.vim
+	md5sums = SKIP
+	md5sums = 2d3d99be37cc170d747d33ae86bf10b4
+
+pkgname = vim-vala-git
+
