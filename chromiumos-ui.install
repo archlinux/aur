@@ -1,7 +1,20 @@
 post_install() {
-	# chrome-sandbox isn't included in the prebuilt package, so symlink
-    # it from an existing Chromium installation
-    ln -sf /usr/lib/chromium/chrome-sandbox /usr/lib/chromiumos-ui/
+    update-desktop-database -q
+    # chrome-sandbox and icudtl.dat aren't included in the prebuilt package,
+    # so symlink them from an existing Chrome installation
+    ln -sf /opt/google/chrome/{chrome-sandbox,icudtl.dat} /usr/lib/chromiumos-ui/
+    cat <<MSG
+>>> To use some of the features of the Chromium OS UI, Google API keys
+    are required. These keys cannot be redistributed and must be created
+    by the user.
+    For help on generating these keys, see:
+       https://www.chromium.org/developers/how-tos/api-keys
+    To use the Google API keys with Chromium OS UI, create a file named
+       .googleapikeys
+    in your home directory.
+    For information about the format of this file, see:
+       https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/building-chromium-browser/chrome-api-keys-in-the-chroot
+MSG
 }
 
 post_upgrade() {
@@ -9,5 +22,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    rm -f /usr/lib/chromiumos-ui/chrome-sandbox
+    update-desktop-database -q
+    rm -f /usr/lib/chromiumos-ui/{chrome-sandbox,icudtl.dat}
 }
