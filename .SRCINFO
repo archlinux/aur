@@ -1,6 +1,6 @@
 pkgbase = waf
 	pkgdesc = General-purpose build system modelled after Scons
-	pkgver = 1.8.12
+	pkgver = 1.8.13
 	pkgrel = 1
 	url = http://waf.io/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = waf
 	makedepends = unzip
 	depends = python
 	provides = python-waf
-	source = https://waf.io/waf-1.8.12.tar.bz2
-	md5sums = e61a2bc3fa27286852d6c93c61979615
-	sha256sums = e25494a191bcc487d270fff1483a62073b19a86e74966cb27fb6cec540f9a0de
+	source = https://waf.io/waf-1.8.13.tar.bz2
+	md5sums = 4665a0190dff45507de0adf434a3173c
+	sha256sums = b54fc9a90988694d2764c3d094517d34933e5acfcb28d5acf52cca401f81d881
 
 pkgname = waf
 
