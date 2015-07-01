@@ -1,0 +1,16 @@
+pkgbase = vkaudiofs-git
+	pkgdesc = FUSE virtual file system for VK (VKontakte) audio records
+	pkgver = r15.2508468
+	pkgrel = 1
+	url = https://github.com/mindcollapse/vkaudiofs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	depends = fuse
+	depends = json-c
+	source = vkaudiofs-git::git+https://github.com/mindcollapse/vkaudiofs.git
+
+pkgname = vkaudiofs-git
+
