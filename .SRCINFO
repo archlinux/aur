@@ -1,0 +1,18 @@
+pkgbase = ntrig_calib-bzr
+	pkgdesc = Calibration tool for touchscreens based on N-Trig technology (Unofficial)
+	pkgver = 2
+	pkgrel = 1
+	epoch = 1
+	url = https://code.launchpad.net/~rafi-seas/+junk/ntrig_calib
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = libusb-compat
+	provides = ntrig_calib
+	conflicts = ntrig_calib
+	source = ntrig_calib::bzr+http://bazaar.launchpad.net/~rafi-seas/%2Bjunk/ntrig_calib/
+	md5sums = SKIP
+
+pkgname = ntrig_calib-bzr
+
