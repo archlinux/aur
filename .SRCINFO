@@ -2,14 +2,14 @@
 # Tue Jun 30 16:59:19 UTC 2015
 pkgbase = plus-dm
 	pkgdesc = DM choise at startx
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 0
 	url = https://github.com/papajoker/plus-dm
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = pacman
-	optdepends = kdialog: KDE dialog box
+	optdepends = kdebase-kdialog: KDE dialog box
 	optdepends = zenity: GTK dialog box
 	source = plus-dm::git+http://github.com/papajoker/plus-dm#branch=master
 	md5sums = SKIP
