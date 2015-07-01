@@ -1,0 +1,34 @@
+pkgbase = virtualbox-modules-e531
+	pkgver = 4.3.28
+	pkgrel = 4
+	url = http://virtualbox.org
+	arch = i686
+	arch = x86_64
+	groups = ThinkPad-E531
+	license = GPL
+	makedepends = linux-e531>=4.1
+	makedepends = linux-e531<4.2
+	makedepends = linux-e531-headers>=4.1
+	makedepends = linux-e531-headers<4.2
+	makedepends = virtualbox-host-dkms>=4.3.28
+	makedepends = virtualbox-guest-dkms>=4.3.28
+
+pkgname = virtualbox-host-modules-e531
+	pkgdesc = Host kernel modules for VirtualBox
+	install = virtualbox-host-modules-e531.install
+	depends = linux-e531>=4.1
+	depends = linux-e531<4.2
+	provides = virtualbox-host-modules=4.3.28
+	conflicts = virtualbox-modules-e531
+	replaces = virtualbox-modules-e531
+
+pkgname = virtualbox-guest-modules-e531
+	pkgdesc = Guest kernel modules for VirtualBox
+	install = virtualbox-host-modules-e531.install
+	license = GPL
+	depends = linux-e531>=4.1
+	depends = linux-e531<4.2
+	provides = virtualbox-guest-modules=4.3.28
+	conflicts = virtualbox-modules-e531
+	replaces = virtualbox-modules-e531
+
