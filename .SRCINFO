@@ -1,0 +1,18 @@
+pkgbase = dkms-awdev
+	pkgdesc = Driver for cubieboard flash from LiveSuit
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://dl.cubieboard.org/software/tools/livesuit/
+	install = dkms-awdev.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = linux-headers
+	depends = unzip
+	options = !strip
+	source = https://dl.dropboxusercontent.com/u/59700321/packages_sources/awdev-0.4.tar.gz
+	md5sums = 19affcf9b59ffb11b7f3cb2dfb997832
+
+pkgname = dkms-awdev
+
