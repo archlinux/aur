@@ -1,0 +1,24 @@
+diff --git a/gazebo/gui/TimePanel.cc b/gazebo/gui/TimePanel.cc
+--- a/gazebo/gui/TimePanel.cc
++++ b/gazebo/gui/TimePanel.cc
+@@ -178,7 +178,7 @@
+ }
+ 
+ /////////////////////////////////////////////////
+-void TimePanel::OnFullScreen(bool & /*_value*/)
++void TimePanel::OnFullScreen(bool /*_value*/)
+ {
+   /*if (_value)
+     this->hide();
+diff --git a/gazebo/gui/TimePanel.hh b/gazebo/gui/TimePanel.hh
+--- a/gazebo/gui/TimePanel.hh
++++ b/gazebo/gui/TimePanel.hh
+@@ -66,7 +66,7 @@
+       /// \brief Called when the GUI enters/leaves full-screen mode.
+       /// \param[in] _value True when entering full screen, false when
+       /// leaving.
+-      private: void OnFullScreen(bool &_value);
++      private: void OnFullScreen(bool _value);
+ 
+       /// \brief Called when a world stats message is received.
+       /// \param[in] _msg World statistics message.

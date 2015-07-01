@@ -1,0 +1,164 @@
+diff -r 59fe735eb3442e86d6277dfbd984103939405dca -r 48cbb03cc128623f8c1aaad8746bf8bf5f08b1f9 cmake/SearchForStuff.cmake
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -122,7 +122,7 @@
+   set(SimTK_INSTALL_DIR ${SimTK_INSTALL_PREFIX})
+   #list(APPEND CMAKE_MODULE_PATH ${SimTK_INSTALL_PREFIX}/share/cmake)
+   find_package(Simbody)
+-  if (SIMBODY_FOUND)
++  if (Simbody_FOUND)
+     set (HAVE_SIMBODY TRUE)
+   else()
+     BUILD_WARNING ("Simbody not found, for simbody physics engine option, please install libsimbody-dev.")
+@@ -379,6 +379,10 @@
+     add_definitions( -DLIBBULLET_VERSION=0.0 )
+     BUILD_WARNING ("Bullet > 2.82 not found, for bullet physics engine option, please install libbullet2.82-dev.")
+   endif()
++  
++  if (BULLET_VERSION VERSION_GREATER 2.82)
++    add_definitions( -DLIBBULLET_VERSION_GT_282 )
++  endif()
+ 
+ else (PKG_CONFIG_FOUND)
+   set (BUILD_GAZEBO OFF CACHE INTERNAL "Build Gazebo" FORCE)
+diff -r 59fe735eb3442e86d6277dfbd984103939405dca -r 48cbb03cc128623f8c1aaad8746bf8bf5f08b1f9 gazebo/physics/bullet/BulletHinge2Joint.cc
+--- a/gazebo/physics/bullet/BulletHinge2Joint.cc
++++ b/gazebo/physics/bullet/BulletHinge2Joint.cc
+@@ -211,8 +211,12 @@
+     return math::Angle();
+   }
+ 
+-  btRotationalLimitMotor *motor =
+-    this->bulletHinge2->getRotationalLimitMotor(_index);
++#ifndef LIBBULLET_VERSION_GT_282
++  btRotationalLimitMotor *motor;
++#else
++  btRotationalLimitMotor2 *motor;
++#endif
++  motor = this->bulletHinge2->getRotationalLimitMotor(_index);
+   if (motor)
+     return motor->m_hiLimit;
+ 
+@@ -229,8 +233,12 @@
+     return math::Angle(0.0);
+   }
+ 
+-  btRotationalLimitMotor *motor =
+-    this->bulletHinge2->getRotationalLimitMotor(_index);
++#ifndef LIBBULLET_VERSION_GT_282
++  btRotationalLimitMotor *motor;
++#else
++  btRotationalLimitMotor2 *motor;
++#endif
++  motor = this->bulletHinge2->getRotationalLimitMotor(_index);
+   if (motor)
+     return motor->m_loLimit;
+ 
+diff -r 59fe735eb3442e86d6277dfbd984103939405dca -r 48cbb03cc128623f8c1aaad8746bf8bf5f08b1f9 gazebo/physics/bullet/BulletHingeJoint.cc
+--- a/gazebo/physics/bullet/BulletHingeJoint.cc
++++ b/gazebo/physics/bullet/BulletHingeJoint.cc
+@@ -104,7 +104,11 @@
+   // If both links exist, then create a joint between the two links.
+   if (bulletChildLink && bulletParentLink)
+   {
++#ifdef LIBBULLET_VERSION_GT_282
++    this->bulletHinge = new btHingeAccumulatedAngleConstraint(
++#else
+     this->bulletHinge = new btHingeConstraint(
++#endif
+         *(bulletChildLink->GetBulletLink()),
+         *(bulletParentLink->GetBulletLink()),
+         BulletTypes::ConvertVector3(pivotChild),
+@@ -116,7 +120,11 @@
+   // and the world.
+   else if (bulletChildLink)
+   {
++#ifdef LIBBULLET_VERSION_GT_282
++    this->bulletHinge = new btHingeAccumulatedAngleConstraint(
++#else
+     this->bulletHinge = new btHingeConstraint(
++#endif
+         *(bulletChildLink->GetBulletLink()),
+         BulletTypes::ConvertVector3(pivotChild),
+         BulletTypes::ConvertVector3(axisChild));
+@@ -125,7 +133,11 @@
+   // and the world.
+   else if (bulletParentLink)
+   {
++#ifdef LIBBULLET_VERSION_GT_282
++    this->bulletHinge = new btHingeAccumulatedAngleConstraint(
++#else
+     this->bulletHinge = new btHingeConstraint(
++#endif
+         *(bulletParentLink->GetBulletLink()),
+         BulletTypes::ConvertVector3(pivotParent),
+         BulletTypes::ConvertVector3(axisParent));
+@@ -148,7 +160,7 @@
+ 
+   // Set angleOffset based on hinge angle at joint creation.
+   // GetAngleImpl will report angles relative to this offset.
+-  this->angleOffset = this->bulletHinge->getHingeAngle();
++  this->angleOffset = this->GetAngleImpl(0).Radian();
+ 
+   // Apply joint angle limits here.
+   // TODO: velocity and effort limits.
+@@ -209,7 +221,21 @@
+ {
+   math::Angle result;
+   if (this->bulletHinge)
+-    result = this->bulletHinge->getHingeAngle() - this->angleOffset;
++  {
++#ifdef LIBBULLET_VERSION_GT_282
++    btHingeAccumulatedAngleConstraint* hinge =
++      static_cast<btHingeAccumulatedAngleConstraint*>(this->bulletHinge);
++    if (hinge)
++    {
++      result = hinge->getAccumulatedHingeAngle();
++    }
++    else
++#endif
++    {
++      result = this->bulletHinge->getHingeAngle();
++    }
++    result -= this->angleOffset;
++  }
+   return result;
+ }
+ 
+diff -r 59fe735eb3442e86d6277dfbd984103939405dca -r 48cbb03cc128623f8c1aaad8746bf8bf5f08b1f9 test/integration/joint_revolute.cc
+--- a/test/integration/joint_revolute.cc
++++ b/test/integration/joint_revolute.cc
+@@ -16,6 +16,7 @@
+ */
+ 
+ #include "ServerFixture.hh"
++#include "gazebo/gazebo_config.h"
+ #include "gazebo/physics/physics.hh"
+ #include "SimplePendulumIntegrator.hh"
+ #include "helper_physics_generator.hh"
+@@ -99,12 +100,15 @@
+ ////////////////////////////////////////////////////////////
+ void JointTestRevolute::WrapAngle(const std::string &_physicsEngine)
+ {
+-  /// \TODO: bullet hinge angles are wrapped (#1074)
++#ifndef LIBBULLET_VERSION_GT_282
++  /// bullet hinge angles are wrapped for 2.82 and less
+   if (_physicsEngine == "bullet")
+   {
+-    gzerr << "Aborting test for bullet, see issues #1074.\n";
++    gzerr << "Aborting test for bullet, angle wrapping requires bullet 2.83"
++          << std::endl;
+     return;
+   }
++#endif
+ 
+   // Load an empty world
+   Load("worlds/empty.world", true, _physicsEngine);
+@@ -127,6 +131,7 @@
+     ASSERT_TRUE(joint != NULL);
+ 
+     // set velocity to 2 pi rad/s and step forward 1.5 seconds.
++    // angle should reach 3 pi rad.
+     double vel = 2*M_PI;
+     unsigned int stepSize = 50;
+     unsigned int stepCount = 30;
