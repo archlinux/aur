@@ -1,0 +1,210 @@
+Intel Property License (IPL)
+
+INTEL SOFTWARE TOOLS LICENSE AGREEMENT
+
+DO NOT download, access, copy, or otherwise use the Software (as defined below)
+that may be provided or otherwise made available by Intel Corporation ("Intel")
+to you (in your individual capacity), your employer or other entity for whose
+benefit you act ("Licensee") until you have carefully read and unless you accept
+the following terms and conditions.  By downloading, copying, accessing, or
+otherwise using the Software, Licensee agrees to be legally bound by the terms
+and conditions of this Software Tools License Agreement ("Agreement"). If you do
+not agree to these terms and conditions, please do not continue to download,
+copy, access or otherwise use the Software.
+
+Intel may make available to Licensee certain software tools in binary format
+solely for configuration purposes, including those software tools and any
+associated documentation listed in Exhibit A of this Agreement ("Software"),
+subject to the terms and conditions of this Agreement.
+
+LICENSE
+
+Subject to the terms and conditions of this Agreement, Intel grants to Licensee,
+during the term of this Agreement, a non-exclusive, personal, non- transferable,
+non-sublicensable, revocable, royalty-free license:
+
+  a) under Intel's copyrights to reproduce the Software internally solely for
+     the purposes of configuring Licensee products containing Intel
+     microprocessors; and
+  b) under Intel's Licensed Patent Claims to reproduce internally and use the
+     Software internally.
+
+For purposes of this Agreement Intel's "Licensed Patent Claims" means the claims
+of Intel's patents that are necessarily and directly infringed by the
+reproduction of the Software that is authorized in subsection (a) above, when
+that Software is in its unmodified form as delivered by Intel to Licensee and
+not modified or combined with anything else.  Licensed Patent Claims are only
+those claims that Intel can license without paying, or getting the consent of, a
+third party.
+
+All rights, title and interest in and to the Software and Documentation are and
+will remain the exclusive property of Intel. Licensee will not and will not
+allow any third party to use, reproduce, modify, create derivative works of,
+disassemble, decompile, or reverse engineer the Software or otherwise attempt to
+derive the Software's source code.
+
+The consideration under this Agreement is only for the licenses that Intel
+expressly grants to Licensee in subsections (a) and (b) above.  Any other rights
+including, but not limited to, additional patent rights, will require an
+additional license and additional consideration.  Nothing in this Agreement
+requires or will be treated to require Intel to grant any additional license.
+Licensee acknowledges that an essential basis of the bargain in this Agreement
+is that Intel grants Licensee no licenses or other rights including, but not
+limited to, patent, copyright, trademark, trade name, service mark or other
+intellectual property licenses or rights with respect to the Software, by
+implication, estoppel or otherwise, except for the licenses expressly granted in
+subsections (a) and (b) above.  Specifically, except for the licenses that Intel
+expressly grants to Licensee in subsections (a) and (b) above, Intel grants no
+licenses or other rights, expressly or by implication, estoppel or otherwise,
+to: (i) make, use, sell, offer for sale, or import modifications of the
+Software; (ii) sell or offer to sell the Software; (iii) combine the Software or
+modified versions of the Software with other items or to use any such
+combination; or (iv) any claims of any patents, patent applications, or other
+patent rights of Intel other than the Licensed Patent Claims. Licensee
+acknowledges that there are significant uses of the Software in its original,
+unmodified and uncombined form.  The consideration for the license in this
+Agreement reflects Intel's continuing right to assert patent claims against any
+modifications (including, without limitation, error corrections and bug fixes)
+of, or combinations with, the Software that Licensee or third parties make that
+infringe any Intel patent claim.
+
+Except as expressly permitted under subsections (a) and (b) above, Licensee will
+not allow the Software to be accessed or used by third parties. Notwithstanding
+the foregoing, Licensee's authorized consultants and subcontractors may access
+the Software to the extent such access is required for them to perform services
+on Licensee's behalf consistent with the license granted to Licensee under this
+Agreement, provided Licensee first requires those consultants and subcontractors
+to sign written agreements obligating them to observe the same restrictions
+concerning the Software as are contained in this Agreement, and further provided
+that Licensee will be fully liable to Intel for the actions and inaction of
+those consultants and subcontractors.
+
+Upon reasonable advance notice, Intel will have the right to inspect or have an
+independent auditor inspect Licensee's facilities and records during normal
+business hours to verify Licensee's compliance with the terms and conditions of
+this Agreement.
+
+CONFIDENTIALITY
+
+Licensee will not disclose the terms or existence of this Agreement or use
+Intel's name in any publications, advertisements, or other announcements without
+Intel's prior written consent.  Licensee does not have any rights to use any
+Intel trademarks, brands or logos.
+
+OWNERSHIP OF SOFTWARE AND COPYRIGHTS
+
+Title to all copies of the Software remains with Intel or its suppliers. The
+Software is copyrighted and protected by the laws of the United States and other
+countries, and international treaty provisions. Licensee shall include all
+copyright notices for the Software in all copies, and Licensee shall not cover,
+alter or otherwise obscure such copyright notices. Intel may make changes to the
+Software, or to items referenced therein, at any time and without notice, but is
+not obligated to support or update the Software.
+
+LIMITED MEDIA WARRANTY
+
+If the Software has been delivered by Intel on physical media, Intel warrants
+the media to be free from material physical defects for a period of ninety (90)
+days after delivery by Intel. If such a defect is found, return the media to
+Intel for replacement or alternate delivery of the Software as Intel may select.
+
+EXCLUSION OF OTHER WARRANTIES
+
+EXCEPT AS PROVIDED ABOVE, THE SOFTWARE IS PROVIDED "AS IS" WITHOUT ANY EXPRESS
+OR IMPLIED WARRANTY OF ANY KIND, INCLUDING WARRANTIES OF MERCHANTABILITY,
+NONINFRINGEMENT, OR FITNESS FOR A PARTICULAR PURPOSE.  Intel does not warrant or
+assume responsibility for the accuracy or completeness of any information, text,
+graphics, links or other items contained within the Software.
+
+LIMITATION OF LIABILITY
+
+IN NO EVENT WILL INTEL OR ITS AFFILIATES OR THEIR RESPECTIVE SUPPLIERS BE LIABLE
+FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, LOST PROFITS,
+BUSINESS INTERRUPTION OR LOST DATA, OR INDIRECT, INCIDENTAL, SPECIAL,
+CONSEQUENTIAL, OR PUNITIVE DAMAGES) IN RELATION TO OR ARISING OUT OF THIS
+AGREEMENT OR THE USE OF OR INABILITY TO USE THE SOFTWARE, IRRESPECTIVE OF
+WHETHER INTEL HAS ADVANCE NOTICE OF THE POSSIBILITY OF SUCH DAMAGES AND
+REGARDLESS OF THE THEORY OF LIABILITY (WHETHER BASED IN TORT, CONTRACT, STRICT
+LIABILITY, OR OTHERWISE).
+
+TERMINATION OF THIS AGREEMENT
+
+Intel may terminate this Agreement at any time in its sole discretion, on notice
+to Licensee. Upon termination of this Agreement, Licensee will immediately
+destroy the Software or return all copies of the Software to Intel, and all
+licenses granted to Licensee under this Agreement will immediately terminate.
+
+GOVERNING LAW AND JURISDICTION
+
+All matters arising out of or related to this Agreement, including without
+limitation all matters connected with its performance, shall be construed,
+interpreted, applied and governed in all respects in accordance with the laws of
+the United States of America and the State of Delaware, without reference to
+conflict of laws principles.  The provisions of the United Nations Convention on
+Contracts for the International Sale of Goods will not apply to this Agreement.
+All disputes and litigation arising out of or related to this Agreement,
+including without limitation matters connected with its performance, will be
+subject to the exclusive jurisdiction of the courts of the State of Delaware or
+of the federal courts sitting therein. Each party hereby irrevocably submits to
+the personal jurisdiction of such courts and irrevocably waives all objections
+to such venue.
+
+EXPORT
+
+Licensee acknowledges that the Software and all related technical information or
+materials is subject to export controls under the laws and regulations of the
+United States and any other applicable governments. Licensee agrees to comply
+with these laws and regulations governing export, re-export, import, transfer,
+distribution, and use of the Software and all related technical information or
+materials. In particular, but without limitation, the Software and all related
+technical information or materials may not be exported or re-exported (a) into
+any U.S. embargoed countries or (b) to any person or entity listed on a denial
+order published by the U.S. government or any other applicable governments. By
+using the Software and all related technical information or materials, Licensee
+represents and warrants that Licensee is not located in any such country or on
+any such list. Licensee also agrees that Licensee will not use the Software and
+all related technical information or materials for any purposes prohibited by
+the U.S. government or other applicable governments' laws, including, without
+limitation, the development, design, manufacture or production of nuclear,
+missile, chemical or biological weapons. Licensee confirms that the Software and
+all related technical information or materials will not be re-exported or sold
+to a third party who is known or suspected to be involved in activities
+including, without limitation, the development, design, manufacture, or
+production of nuclear, missile, chemical or biological weapons. Licensee agrees
+that Software and all related technical information or materials subject to
+control under defense laws and regulations (e.g., the International Traffic in
+Arms Regulations (ITAR)) must not be transferred to non-U.S. persons, whether
+located in the U.S. or abroad, without a government license. Licensee will
+indemnify Intel against any loss related to Licensee's failure to conform to
+these requirements.
+
+GOVERNMENT RESTRICTED RIGHTS
+
+The Software is provided with "RESTRICTED RIGHTS." Use, duplication, or
+disclosure by the Government is subject to restrictions as set forth in
+FAR52.227-14 and DFAR252.227-7013 et seq. or their successors. Use of the
+Software by the Government constitutes acknowledgment of Intel's proprietary
+rights therein. Contractor or Manufacturer is Intel Corporation, 2200 Mission
+College Blvd., Santa Clara, CA, USA 95052.
+
+GENERAL
+
+This Agreement, including the attached Exhibit, constitutes the entire agreement
+between the parties with respect to the subject matter of this Agreement and
+merges and supersedes all prior and contemporaneous agreements, understandings,
+negotiations, and discussions, whether oral or written, implied or express, with
+respect to the subject matter of this Agreement.  Licensee may not assign any
+rights or delegate any obligations under this Agreement, in whole or in part and
+whether by contract, operation of law, merger, consolidation, sale of all or
+substantially all of Licensee's outstanding shares or assets, change in control,
+or on any other basis, without the prior written consent of Intel. Any attempt
+by Licensee to assign any rights or delegate any obligations under this
+Agreement without Intel's prior written consent will be null and void.  For
+purposes of this Agreement, the acquisition, merger, consolidation, change in
+control, or sale of all or substantially all of the outstanding shares or assets
+of Licensee or any similar transaction or any assignment by operation of law
+shall be deemed an assignment by Licensee that requires Intel's written consent.
+Intel may freely assign any rights or delegate any obligations under this
+Agreement, in whole or in part, without Licensee's consent. Subject to the
+foregoing, this Agreement will bind and inure to the benefit of the respective
+parties and their permitted successors and assigns.
