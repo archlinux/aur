@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;StrategyGame;
+Name=Spacecom
+Icon=spacecom
+Exec=spacecom
+Terminal=false

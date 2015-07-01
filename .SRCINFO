@@ -1,0 +1,27 @@
+pkgbase = spacecom-hib
+	pkgdesc = a strategic-to-the-bone, starfleet command game in which deception, smart movement, and choices to battle decide victory or defeat
+	pkgver = 0.9.1035
+	pkgrel = 1
+	url = http://www.11bitstudios.com/games/18/spacecom
+	install = desktop.install
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = hib://spacecomLinux0.9.1035.zip
+	source = spacecom.desktop
+	md5sums = a89515caa9e79a36b1769fbecc71e3d8
+	md5sums = 9ca589494af9804f2e3c35d6aecbe5db
+	depends_i686 = glu
+	depends_i686 = libxcursor
+	depends_i686 = alsa-lib
+	depends_i686 = gcc-libs
+	optdepends_i686 = alsa-plugins: PulseAudio support
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-libxcursor
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-gcc-libs
+	optdepends_x86_64 = lib32-alsa-plugins: PulseAudio support
+	optdepends_x86_64 = lib32-libpulse: PulseAudio support
+
+pkgname = spacecom-hib
+
