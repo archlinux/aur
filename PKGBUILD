@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/torrentcheck/"
 license=('Public Domain')
 depends=()
-makedepends=()
+makedepends=(unzip)
 
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.zip")
 md5sums=('ba12ae767888837fe3e70fb025d554c2')

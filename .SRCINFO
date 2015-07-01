@@ -6,6 +6,7 @@ pkgbase = torrentcheck
 	arch = i686
 	arch = x86_64
 	license = Public Domain
+	makedepends = unzip
 	source = http://downloads.sourceforge.net/torrentcheck/torrentcheck-1.00.zip
 	md5sums = ba12ae767888837fe3e70fb025d554c2
 
