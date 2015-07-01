@@ -1,0 +1,11 @@
+post_install() {
+	echo "Configuration directory \"\${XDG_CONFIG_HOME:-\$HOME/.config}/setroot\" will be created upon first invocation of \"setroot --store <opts>\"."
+}
+
+post_upgrade() {
+	post_install;
+}
+
+post_remove() {
+	echo "Configuration directory \"\${XDG_CONFIG_HOME:-\$HOME/.config}/setroot\" will need to be manually removed."
+}
