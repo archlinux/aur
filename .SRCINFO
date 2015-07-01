@@ -1,0 +1,15 @@
+pkgbase = mipsel-linux-gcc3
+	pkgdesc = mipsel-linux GNU (cross) Compiler Collection
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://www.gnu.org/software/gcc/
+	depends = glibc
+	depends = mipsel-linux-binutils
+	provides = mipsel-linux-gcc3
+	conflicts = mipsel-linux-gcc3-initial
+	options = NOSTRIP
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-3.3.4/gcc-3.3.4.tar.bz2
+	md5sums = a1c267b34f05c8660b24251865614d8b
+
+pkgname = mipsel-linux-gcc3
+
