@@ -1,0 +1,25 @@
+pkgbase = etude-bzr
+	pkgdesc = xmms2 client written in pygtk
+	pkgver = 148
+	pkgrel = 4
+	url = http://launchpad.net/etude
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bzr
+	makedepends = pyrex
+	depends = pygtk
+	depends = pygoocanvas
+	depends = python2-notify
+	depends = python2-setuptools
+	depends = pyxdg
+	depends = xmms2
+	depends = libvisual
+	depends = libvisual-plugins
+	depends = dbus-python
+	depends = python2-gtkglext
+	source = etude::bzr+http://bazaar.launchpad.net/~szentandrasii/etude/default/
+	md5sums = SKIP
+
+pkgname = etude-bzr
+
