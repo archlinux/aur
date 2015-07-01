@@ -1,0 +1,49 @@
+pkgbase = linux-e531
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = http://www.hurrdurr.org/
+	arch = x86_64
+	groups = ThinkPad-E531
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.1.xz
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
+	sha256sums = 48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad
+	sha256sums = d47fc8f9e5a5b10b92b4d91b8915900b5fa3789049a899e59284c74ebbe17756
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-e531
+	pkgdesc = The Linux kernel and modules for ThinkPad E531(i5-3230m GT740M ver)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-e531=4.1.1
+	conflicts = kernel26-e531
+	replaces = kernel26-e531
+	backup = etc/mkinitcpio.d/linux-e531.preset
+
+pkgname = linux-e531-headers
+	pkgdesc = Header files and scripts for building modules for Linux-e531 kernel
+	provides = kernel26-e531-headers=4.1.1
+	conflicts = kernel26-e531-headers
+	replaces = kernel26-e531-headers
+
+pkgname = linux-e531-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-e531 kernel
+	provides = kernel26-e531-docs=4.1.1
+	conflicts = kernel26-e531-docs
+	replaces = kernel26-e531-docs
+
