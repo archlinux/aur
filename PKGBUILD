@@ -2,7 +2,7 @@
 
 pkgname=pgmodeler
 pkgver=0.8.1_beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
 url="http://www.pgmodeler.com.br/"
