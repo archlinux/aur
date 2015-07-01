@@ -1,0 +1,13 @@
+pkgbase = neotoma-git
+	pkgdesc = Erlang library and packrat parser-generator for parsing expression grammars
+	pkgver = 20110529
+	pkgrel = 1
+	url = http://github.com/seancribbs/neotoma/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = erlang
+
+pkgname = neotoma-git
+
