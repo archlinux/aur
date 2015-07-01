@@ -1,0 +1,16 @@
+pkgbase = go-tool
+	pkgdesc = Small shell command for changing directories quickly
+	pkgver = 41
+	pkgrel = 1
+	url = http://code.google.com/p/go-tool/
+	install = go-tool.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = subversion
+	depends = python2
+	provides = go-tool
+	md5sums = c2e58c71c15d3ddd5eba6ab577aa88f4
+
+pkgname = go-tool
+
