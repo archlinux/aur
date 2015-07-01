@@ -1,10 +1,11 @@
 pkgbase = perl-io-stty
 	pkgdesc = lib/IO/Stty.pm
 	pkgver = 0.30.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://search.cpan.org/dist/IO-Stty/
 	arch = any
 	license = PerlArtistic
+	makedepends = perl-module-build
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Stty-0.03.tar.gz

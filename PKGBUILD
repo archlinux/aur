@@ -4,7 +4,7 @@
 
 pkgname=perl-io-stty
 pkgver=0.30.0
-pkgrel=5
+pkgrel=6
 pkgdesc="lib/IO/Stty.pm"
 arch=('any')
 url="http://search.cpan.org/dist/IO-Stty/"
@@ -13,6 +13,7 @@ source=('http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Stty-0.03.tar.gz')
 md5sums=('936386b3996613678d8b6a7f0b044f67')
 sha256sums=('6929528db85e89d23a9761f400b5b6555ad5a9eba5208b65992399c8bd809152')
 depends=('perl')
+makedepends=('perl-module-build')
 options=(!emptydirs)
 
 build() {
