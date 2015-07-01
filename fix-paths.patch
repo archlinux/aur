@@ -1,0 +1,33 @@
+diff -uprN freespeech-vr.orig/freespeech.py freespeech-vr/freespeech.py
+--- freespeech-vr.orig/freespeech.py	2013-11-06 01:58:51.342161535 +0100
++++ freespeech-vr/freespeech.py	2013-11-06 02:17:00.516072433 +0100
+@@ -34,16 +34,15 @@ from send_key import *
+ 
+ """ global variables """
+ appname = 'FreeSpeech'
+-refdir = 'lm'
++refdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lm')
+ 
+ # hmmm, where to put files? How about XDG_CONFIG_HOME?
+ # This will work on most Linux
+-if os.environ.has_key('XDG_CONFIG_HOME'):
++if os.environ.get('XDG_CONFIG_HOME'):
+     confhome = os.environ['XDG_CONFIG_HOME']
+-    confdir  = os.path.join(confhome, appname)
+ else:
+-    # todo: determine suitable writable location for other os
+-    confdir = refdir
++    confhome = os.path.join(os.environ['HOME'], '.config')
++confdir  = os.path.join(confhome, appname)
+ 
+ # reference files written by this application
+ lang_ref= os.path.join(confdir, 'freespeech.ref.txt')
+@@ -294,7 +293,7 @@ If new commands don't work click the lea
+             self.err('Trouble writing ' + vocab)
+         # update the idngram\
+         # http://www.speech.cs.cmu.edu/SLM/toolkit_documentation.html#text2idngram
+-        if subprocess.call('text2idngram -vocab ' + vocab + \
++        if subprocess.call('text2idngram -temp /tmp -vocab ' + vocab + \
+             ' -n 3 < ' + lang_ref + ' > ' + idngram, shell=True):
+             self.err('Trouble writing ' + idngram)
+         

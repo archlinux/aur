@@ -1,0 +1,24 @@
+pkgbase = freespeech-vr
+	pkgdesc = Free streaming voice recognition with dynamic language learning
+	pkgver = 0.120
+	pkgrel = 1
+	url = https://code.google.com/p/freespeech-vr/
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = pygtk
+	depends = python2-xlib
+	depends = python2-simplejson
+	depends = gstreamer0.10-python
+	depends = pocketsphinx
+	depends = cmu-sml-toolkit
+	options = !emptydirs
+	source = https://freespeech-vr.googlecode.com/files/freespeech-vr_r120.zip
+	source = setup.py.in
+	source = fix-paths.patch
+	md5sums = 033aeddcaf3b21c693016f6017260480
+	md5sums = 68061c33e5bff6d8b1aed4d433ce555c
+	md5sums = 1a7a33b9a68c648f77fe66ee5e17bc25
+
+pkgname = freespeech-vr
+

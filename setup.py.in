@@ -1,0 +1,9 @@
+from distutils.core import setup
+setup(name='freespeech-vr',
+	version='@PKGVER@',
+	packages=['freespeech-vr'],
+	package_dir={'freespeech-vr': ''},
+	package_data={'freespeech-vr': ['FreeSpeech.png', 'custom.dic', 'lm/*']},
+	data_files=[('share/pixmaps', ['FreeSpeech.png']),
+				('share/applications', ['FreeSpeech.desktop'])]
+	)
