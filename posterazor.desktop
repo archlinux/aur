@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PosteRazor
+Comment=Make your own poster!
+Exec=posterazor
+Icon=/usr/share/icons/posterazor.xpm
+Terminal=false
+Type=Application
+Categories=Application;Graphics;

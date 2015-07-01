@@ -1,0 +1,19 @@
+pkgbase = posterazor-qt5
+	pkgdesc = PosteRazor cuts a raster image or PDF document into pieces which can be printed and assembled to a poster - QT5 version
+	pkgver = 1.9.5
+	pkgrel = 1
+	url = https://github.com/aportale/posterazor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = poppler-qt5
+	conflicts = posterazor
+	source = https://github.com/aportale/posterazor/archive/master.zip
+	source = posterazor.desktop
+	source = posterazor.xpm
+	sha256sums = a9d59b4e4e2f1df9cdf0ce35cd5bc21389c793186d493793fa0382818eaec457
+	sha256sums = d393b99b5cc9122c3050fdf195e128d654557dbfa24ca911dc138178a18e528d
+	sha256sums = dd23560b60950add8aec451d127e33f6c5a81824db4ed729bd7fc0f21f9f373d
+
+pkgname = posterazor-qt5
+
