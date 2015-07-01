@@ -1,0 +1,15 @@
+post_install() {
+  echo "Sample configuration"
+  echo ""
+  echo "LoadModule spnego_module /usr/pkg/lib/httpd/mod_spnego.so"
+  echo ""
+  echo "<Directory "/my/spnego/dir">"
+  echo "AuthType SPNEGO"
+  echo "SPNEGOAuth On"
+  echo "SPNEGOAuthSaveDelegatedCred On"
+  echo "SPNEGOAuthKrb5AcceptorIdentity /etc/krb5.keytab.www"
+  echo "SPNEGOUseDisplayName off"
+  echo "Require valid-user"
+  echo "</Directory>"
+}
+#vim:set ts=2 sw=2 et:

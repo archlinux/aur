@@ -1,0 +1,16 @@
+pkgbase = mod_spnego-git
+	pkgdesc = HTTP Negotiate\Kerberos support for apache2.
+	pkgver = 20120124
+	pkgrel = 5
+	url = https://github.com/lha/mod_spnego
+	install = mod_spnego-git.install
+	arch = i386
+	arch = x86_64
+	license = Open source
+	makedepends = git
+	depends = apache>=2.0
+	depends = heimdal
+	provides = mod_spnego
+
+pkgname = mod_spnego-git
+
