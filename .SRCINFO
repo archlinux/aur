@@ -1,0 +1,13 @@
+pkgbase = xcursor-ater-red
+	pkgdesc = Ater Red cursor theme.
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 2
+	url = http://xfce-look.org/content/show.php/ATER+Red+Mouse+Theme?content=108211
+	arch = any
+	license = GPL
+	source = http://xfce-look.org/CONTENT/content-files/108211-ATER-Red-Mouse-Theme.tar.gz
+	md5sums = b88bca7024717eff04008cc2be6fd50c
+
+pkgname = xcursor-ater-red
+
