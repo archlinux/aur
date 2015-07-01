@@ -1,0 +1,18 @@
+pkgbase = pyobd
+	pkgdesc = An OBD-II compliant car diagnostic tool
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://www.obdtester.com/pyobd
+	install = pyobd.install
+	arch = any
+	license = GPL
+	depends = wxpython
+	depends = python2-pyserial
+	depends = hicolor-icon-theme
+	source = http://www.obdtester.com/download/pyobd_0.9.3.tar.gz
+	source = pyobd.png
+	sha256sums = f3004db4000e2bc166aae3b4342c98aa62f74f3372c5829472af0ee56c5e110c
+	sha256sums = 14d0d90dcda38c339dc8397f004923075f6d4fce37b7c8539021f4a77b3a86fd
+
+pkgname = pyobd
+
