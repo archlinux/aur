@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ironclad Tactics
+Comment=a fast-paced, card-based tactics game set in an alternate history Civil War – with steam-powered military robots!
+Exec=ironcladtactics
+Terminal=false
+Type=Application
+Icon=ironclad
+Categories=Game;CardGame;StrategyGame;
