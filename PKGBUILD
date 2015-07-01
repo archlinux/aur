@@ -1,6 +1,6 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=moneyguru
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Personal finance management application"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt4')
 makedepends=(
 )
 source=(http://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz)
-md5sums=('c4f1b9d21d22306a4124135356de4548')
+md5sums=('a6334b84e609542e05b3ff9b4801cd3b')
 
 build() {
   cd "$srcdir"
@@ -26,7 +26,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   cp "debian/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
   
-  python package.py
+  python package.py --arch-pkg
   cd "build/${pkgname}-arch"
   
   mkdir -p "$pkgdir/usr/share/${pkgname}"
