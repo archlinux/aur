@@ -10,6 +10,7 @@ pkgbase = panoply
 	depends = java-environment>=7
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
+	conflicts = panoply-nodesktop
 	source = http://www.giss.nasa.gov/tools/panoply/PanoplyJ.zip
 	source = LICENSES
 	source = panoply-script.patch

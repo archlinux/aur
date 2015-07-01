@@ -13,7 +13,7 @@ depends=('java-environment>=7'
 makedepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(panoply-nodesktop)
 replaces=()
 backup=()
 options=()
