@@ -1,0 +1,16 @@
+pkgbase = taskunifier
+	pkgdesc = A task management software based on the well-known GTD (getting things done) methodology.
+	pkgver = 4.3.4
+	pkgrel = 1
+	url = http://www.taskunifier.com/
+	arch = any
+	license = BSD
+	depends = java-environment
+	depends = bash
+	source = http://downloads.sourceforge.net/project/taskunifier/binaries/TaskUnifier_4_3_4/TaskUnifier_4_3_4_linux.tar.gz
+	source = taskunifier.desktop
+	md5sums = aa006b36108e8a71dfa6a690b9cd7f5c
+	md5sums = f25858686360b4b15c45445fb1666944
+
+pkgname = taskunifier
+

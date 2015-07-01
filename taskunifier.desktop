@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TaskUnifier
+GenericName=TaskUnifier
+Comment=Task management software
+Exec=/usr/bin/TaskUnifier.sh
+Icon=/opt/TaskUnifier/resources/icon.ico
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Office;
