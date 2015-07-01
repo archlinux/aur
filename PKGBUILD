@@ -1,6 +1,7 @@
+# Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname="burp-backup14"
 _pkgname="burp"
-pkgver=1.4.38
+pkgver=1.4.40
 pkgrel=1
 pkgdesc="Burp is a backup and restore program. Built from 1.4.x stable candidate releases"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ source=(
     "$_pkgname.install"
     "$_pkgname.service"
 )
-sha256sums=('5292c3d46b5efb49b816f720e825985cde8772f55bc85aae6bb516382704713e'
+sha256sums=('4108eb45e14740de990d918a2adbb661d88f90de48d6e2e3a6b54fd12b16fa5e'
             'ce030820046da1372949f9cc5a5123c6dcc1bda73acd18b6c02f96db1402e0c9'
             'fe6ad8f3bf94132437aa05958337f6729a2daf92daecdb237cfa8bb7f63233fc')
 
