@@ -1,0 +1,13 @@
+pkgbase = python2-squaremap
+	pkgdesc = Hierarchic data-visualisation control for wxPython
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://launchpad.net/squaremap
+	arch = any
+	license = GPL
+	depends = wxpython
+	source = https://pypi.python.org/packages/source/S/SquareMap/SquareMap-1.0.4.tar.gz
+	md5sums = e36a453baddb97c19af6f79d5ba51f38
+
+pkgname = python2-squaremap
+
