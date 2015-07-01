@@ -43,23 +43,23 @@ fi
 source+=("https://dl.dropboxusercontent.com/u/17/dropbox-lnx.${_arch}-${pkgver}.tar.gz")
 
 package() {
-	install -d "${pkgdir}/opt"
-	cp -R "${srcdir}/.dropbox-dist/dropbox-lnx.${_arch}-${pkgver}" "${pkgdir}/opt/dropbox"
+  install -d "${pkgdir}/opt"
+  cp -R "${srcdir}/.dropbox-dist/dropbox-lnx.${_arch}-${pkgver}" "${pkgdir}/opt/dropbox"
 
-	find "${pkgdir}/opt/dropbox/" -type f -exec chmod 644 {} \;
-	chmod 755 "${pkgdir}/opt/dropbox/dropboxd"
-	chmod 755 "${pkgdir}/opt/dropbox/dropbox"
+  find "${pkgdir}/opt/dropbox/" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}/opt/dropbox/dropboxd"
+  chmod 755 "${pkgdir}/opt/dropbox/dropbox"
 
-	install -d "${pkgdir}/usr/bin"
-	ln -s "/opt/dropbox/dropbox" "${pkgdir}/usr/bin/dropbox"
-	ln -s "/opt/dropbox/dropboxd" "${pkgdir}/usr/bin/dropboxd"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/dropbox/dropbox" "${pkgdir}/usr/bin/dropbox"
+  ln -s "/opt/dropbox/dropboxd" "${pkgdir}/usr/bin/dropboxd"
 
-	install -Dm644 "${srcdir}/dropbox.desktop" "${pkgdir}/usr/share/applications/dropbox.desktop"
-	install -Dm644 "${srcdir}/dropbox.png" "${pkgdir}/usr/share/pixmaps/dropbox.png"
-	install -Dm644 "${srcdir}/dropbox.service" "${pkgdir}/usr/lib/systemd/user/dropbox.service"
-	install -Dm644 "${srcdir}/dropbox@.service" "${pkgdir}/usr/lib/systemd/system/dropbox@.service"
+  install -Dm644 "${srcdir}/dropbox.desktop" "${pkgdir}/usr/share/applications/dropbox.desktop"
+  install -Dm644 "${srcdir}/dropbox.png" "${pkgdir}/usr/share/pixmaps/dropbox.png"
+  install -Dm644 "${srcdir}/dropbox.service" "${pkgdir}/usr/lib/systemd/user/dropbox.service"
+  install -Dm644 "${srcdir}/dropbox@.service" "${pkgdir}/usr/lib/systemd/system/dropbox@.service"
   install -Dm644 "${srcdir}/TERMS" "${pkgdir}/usr/share/licenses/$pkgname/TERMS"
 
-	rm -f "${pkgdir}/opt/dropbox/library.zip"
-	ln -s dropbox "${pkgdir}/opt/dropbox/library.zip"
+  rm -f "${pkgdir}/opt/dropbox/library.zip"
+  ln -s dropbox "${pkgdir}/opt/dropbox/library.zip"
 }
