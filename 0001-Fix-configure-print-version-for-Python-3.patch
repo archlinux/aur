@@ -1,0 +1,25 @@
+From ca17768dcb40c9aef47a1fa2a8e759d2ffc115c1 Mon Sep 17 00:00:00 2001
+From: Clemens Buchacher <drizzd@aon.at>
+Date: Wed, 01 Jul 2015 22:20:11 +0200
+Subject: [PATCH] Fix configure print version for Python 3
+
+---
+ src/configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/configure b/src/configure
+index 41ad429..f495cb3 100644
+--- a/src/configure
++++ b/src/configure
+@@ -1737,7 +1737,7 @@ AX_PYTHON_MODULE(sympy, fatal)
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking checking for SymPy version" >&5
+ $as_echo_n "checking checking for SymPy version... " >&6; }
+ min_sympy_version='0.7.5'
+-version=`$PYTHON -c "import sympy; print sympy.__version__" 2>/dev/null`
++version=`$PYTHON -c "import sympy; print(sympy.__version__)" 2>/dev/null`
+ if test $? -eq 0; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $version" >&5
+ $as_echo "$version" >&6; }
+-- 
+2.4.2
+
