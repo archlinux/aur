@@ -1,0 +1,25 @@
+--- libmpcdec-1.2.6-orig/configure.ac	2007-04-17 21:05:32.000000000 +0200
++++ libmpcdec-1.2.6/configure.ac	2015-07-01 11:41:55.141218610 +0200
+@@ -5,6 +5,7 @@
+ AM_CONFIG_HEADER(include/config.h)
+ 
+ AM_PROG_LIBTOOL
++AC_PROG_CXX
+ 
+ CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -fPIC"
+
+@@ -58,10 +58,10 @@
+ 	ac_cv_c_int64_t=int64_t
+ fi
+ 
+-AC_FUNC_MEMCMP
+-if test "x$ac_cv_func_memcmp_working" = "xno" ; then
+-	AC_MSG_ERROR([working memcmp is not available.])
+-fi
++dnl AC_FUNC_MEMCMP
++dnl if test "x$ac_cv_func_memcmp_working" = "xno" ; then
++dnl	AC_MSG_ERROR([working memcmp is not available.])
++dnl fi
+ 
+ AC_CHECK_FUNCS([memmove memset], [],
+         AC_MSG_ERROR([memset or memmove is missing.]))

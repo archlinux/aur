@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libmpcdec
+	pkgdesc = Musepack decoding library (mingw-w64)
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = http://www.musepack.net/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://files.musepack.net/source/libmpcdec-1.2.6.tar.bz2
+	source = libmpcdec-fix-cross-compile.patch
+	sha1sums = 32139ff5cb43a18f7c99637da76703c63a55485a
+	sha1sums = f96d29a91255e18d2cfc35afd353bdccd4b35061
+
+pkgname = mingw-w64-libmpcdec
+
