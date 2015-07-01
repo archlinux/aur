@@ -1,16 +1,16 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=duperemove
-pkgver=0.09.3
-pkgrel=2
+pkgver=0.09.4
+pkgrel=1
 pkgdesc="Btrfs extent deduplication utility"
 arch=('any')
 url="https://github.com/markfasheh/duperemove"
 license=('GPL')
 depends=('glib2' 'sqlite')
 conflicts=('duperemove-git')
-source=(https://github.com/markfasheh/duperemove/archive/v0.09.3.tar.gz)
-sha512sums=('fe2a19088ec9ac3dda35da8b9580ddcc1c3b49e60824f2c1bbf8c013756c060b4c9663d1977bb6622c4de19754fd4a1011cc09ef3c785c2b4b218e0c9fb15b87')
+source=(https://github.com/markfasheh/duperemove/archive/v$pkgver.tar.gz)
+sha512sums=('dff728a34bdf8df71aa13b7f9c8ffae8ce643337f4dafacb3ceeb778d326b1885f63ae03215c6d714c4fcd7b2f26b03e47d7ad3a42eca3f2d5de5b596b653bf1')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
