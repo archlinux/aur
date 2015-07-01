@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Mini Metro
+Exec=minimetro
+Icon=minimetro
+Type=Application
+Categories=Game;StrategyGame;Simulation;
