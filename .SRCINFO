@@ -1,4 +1,4 @@
-pkgbase = python-path-and-address
+pkgbase = python-path-and-address-git
 	pkgdesc = Functions for server CLI applications used by humans.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,8 +9,8 @@ pkgbase = python-path-and-address
 	makedepends = git
 	depends = python
 	options = !emptydirs
-	source = python-path-and-address::git://github.com/joeyespo/path-and-address
+	source = python-path-and-address-git::git://github.com/joeyespo/path-and-address
 	md5sums = SKIP
 
-pkgname = python-path-and-address
+pkgname = python-path-and-address-git
 

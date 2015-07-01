@@ -1,6 +1,6 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
-pkgname=python-path-and-address
 pkgver=1.0.0
+pkgname=python-path-and-address-git
 pkgrel=1
 pkgdesc="Functions for server CLI applications used by humans."
 arch=('any')
@@ -14,7 +14,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  grep -Po "(?<=version=').*(?=',)" setup.py
+  grep -Po "(?<=version=').*(?=',)" setup.py | tr '\n' '.'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
