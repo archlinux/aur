@@ -1,0 +1,16 @@
+pkgbase = xweston-git
+	pkgdesc = Use X display managers and window managers with Xwayland and weston
+	pkgver = 0.7.1.r0.gf9d9003
+	pkgrel = 1
+	url = https://github.com/ackalker/Xweston
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = weston
+	depends = xorg-server-xwayland
+	provides = xweston
+	conflicts = xweston
+	source = git://github.com/ackalker/Xweston
+
+pkgname = xweston-git
+
