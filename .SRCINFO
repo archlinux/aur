@@ -1,0 +1,26 @@
+pkgbase = gsdjvu
+	pkgdesc = Very efficient way of converting PostScript and PDF documents into DjVu
+	pkgver = 1.7
+	pkgrel = 4
+	url = http://djvu.sourceforge.net/gsdjvu.html
+	arch = i686
+	arch = x86_64
+	license = custom:unredistributable
+	depends = libcups>=1.3.9-3
+	depends = cairo
+	depends = libpng12>=1.2.6
+	depends = zlib>=1.2.1
+	optdepends = djvulibre
+	noextract = ghostscript-9.14.tar.bz2
+	noextract = ghostscript-fonts-std-8.11.tar.gz
+	options = !libtool
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/djvu/gsdjvu-1.7.tar.gz
+	source = http://downloads.ghostscript.com/public/ghostscript-9.14.tar.bz2
+	source = http://downloads.sourceforge.net/ghostscript/ghostscript-fonts-std-8.11.tar.gz
+	md5sums = e0e278b6a99cde6634a2f5f4ee7a7eca
+	md5sums = 75f2e8ab8891d052ade9b64eb4eb5294
+	md5sums = 6865682b095f8c4500c54b285ff05ef6
+
+pkgname = gsdjvu
+
