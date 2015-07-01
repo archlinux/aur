@@ -1,0 +1,17 @@
+pkgbase = freeguide
+	pkgdesc = A free TV guide program written in Java
+	pkgver = 0.11.1
+	pkgrel = 2
+	url = http://freeguide-tv.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = apache-ant
+	makedepends = java-environment
+	depends = java-runtime
+	depends = xmltv
+	source = http://downloads.sourceforge.net/freeguide-tv/freeguide-0.11.1.tar.gz
+	md5sums = ee924fab9b81ea84456ce9800ed06a9c
+
+pkgname = freeguide
+
