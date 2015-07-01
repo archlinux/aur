@@ -1,18 +1,28 @@
 pkgbase = conky-cli
-	pkgdesc = Conky command line, without X11 dependencies
-	pkgver = 1.9.0
-	pkgrel = 4
+	pkgdesc = Lightweight system monitor for X, without X11 dependencies
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = http://conky.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	depends = ncurses
+	makedepends = cmake
+	makedepends = docbook2x
+	makedepends = docbook-xml
+	makedepends = man-db
+	depends = curl
+	depends = lua
 	depends = wireless_tools
+	depends = libxml2
 	provides = conky
 	conflicts = conky
-	source = http://downloads.sourceforge.net/project/conky/conky/1.9.0/conky-1.9.0.tar.gz
-	md5sums = 1c8e715a2784d4d799f5fc0213e76d0f
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.0.tar.gz
+	source = ascii.patch
+	source = lua53.patch
+	md5sums = cdc0298e5f257829d574ae8114170d9b
+	md5sums = d5b765cb7400d2fdca88b6c86aa8eec1
+	md5sums = 44cdadfe92266e99698e5424b7c6e265
 
 pkgname = conky-cli
 
