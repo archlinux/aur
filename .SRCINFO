@@ -1,8 +1,8 @@
 pkgbase = dwm-rinne-git
 	pkgdesc = dwm window manager with a built-in MPD client and more, based on dwm 6.0
-	pkgver = 6.24.r17.9adafc9
+	pkgver = 6.25.r8.935a8da
 	pkgrel = 1
-	url = https://github.com/2ion/dwm
+	url = https://2ion.github.io/dwm
 	arch = x86_64
 	arch = i686
 	license = MIT

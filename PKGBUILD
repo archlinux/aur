@@ -1,10 +1,10 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=dwm-rinne-git
-pkgver=6.24.r17.9adafc9
+pkgver=6.25.r8.935a8da
 pkgrel=1
 pkgdesc="dwm window manager with a built-in MPD client and more, based on dwm 6.0"
 arch=('x86_64' 'i686')
-url="https://github.com/2ion/dwm"
+url="https://2ion.github.io/dwm"
 license=('MIT')
 depends=('libx11' 'libxinerama' 'pango' 'libnotify' 'libmpdclient')
 optdepends=(\
