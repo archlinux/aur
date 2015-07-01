@@ -1,0 +1,14 @@
+pkgbase = sdx
+	pkgdesc = A utility for making and unpacking starkits.
+	pkgver = 20080224
+	pkgrel = 4
+	url = http://equi4.com/starkit/sdx.html
+	arch = any
+	license = MIT
+	depends = tclkit
+	options = !strip
+	source = http://equi4.com/pub/sk/sdx.kit
+	md5sums = f11522239e4f30e20ebda62282b3f34a
+
+pkgname = sdx
+
