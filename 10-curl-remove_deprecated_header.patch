@@ -1,0 +1,10 @@
+--- src/http.c.orig	2012-05-10 10:28:52.000000000 +0200
++++ src/http.c	2012-05-10 10:29:14.000000000 +0200
+@@ -21,7 +21,6 @@
+ #include <string.h>
+ #include <gtk/gtk.h>
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #include "http.h"
+ #include "callbacks.h"

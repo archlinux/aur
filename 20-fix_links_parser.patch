@@ -1,0 +1,45 @@
+--- src/parselinks.c.orig	2012-06-15 21:23:19.000000000 +0200
++++ src/parselinks.c	2012-06-15 21:23:21.000000000 +0200
+@@ -83,10 +83,17 @@
+ 	{
+ 		curlink = g_new0(link_t, 1);
+ 		//if not found
+-		if ((pos=strstr(pos, " <a href=\"http://"))==NULL)
++		if ((pos=strstr(pos, " <a href=\"/out.php?u=http\%3A\%2F\%2F"))==NULL)
+ 			break;
+-		else
+-			pos+=sizeof(gchar)*10;
++		else {
++			pos+=sizeof(gchar)*21;
++			if (g_strstr_len(pos,75,"clicks.cgi") != NULL) {
++				if ((pos=strstr(pos, "HTML%3Dhttp\%3A\%2F\%2F"))==NULL)
++					break;
++				else
++					pos+=sizeof(gchar)*7;
++			}
++		}
+ 
+ 		end=strstr(pos, "\"");
+ 		
+@@ -97,10 +104,10 @@
+ 		pos=end;
+ 		
+ 		//get the description of that link
+-		if ((pos=strstr(pos, "</a> - "))==NULL)
++		if ((pos=strstr(pos, " - "))==NULL)
+ 			break;
+ 		else
+-			pos+=7;
++			pos+=3;
+ 		if((end=strstr(pos, "</li>"))==NULL)
+ 		{
+ 			curdesc=g_string_new("");
+@@ -111,7 +118,7 @@
+ 		g_free (tmp);
+ 
+ 		if (g_strstr_len(curdesc->str, 10, " tube ") == NULL) {
+-			curlink->url=g_string_new(cururl->str);
++			curlink->url=g_string_new(g_uri_unescape_string(cururl->str,NULL));
+ 			curlink->desc=g_string_new(curdesc->str);
+ 			links=g_list_append(links, curlink);
+ 		} else {

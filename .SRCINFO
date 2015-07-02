@@ -1,0 +1,22 @@
+pkgbase = gnaughty
+	pkgdesc = A program to automatically download adult content from internet directories (gtk2)
+	pkgver = 1.2.5
+	pkgrel = 3
+	url = http://gnaughty.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = pkgconfig>=0.9
+	depends = gconf>=2
+	depends = libglade>=2
+	depends = curl
+	source = http://downloads.sourceforge.net/gnaughty/gnaughty-1.2.5.tar.gz
+	source = 10-curl-remove_deprecated_header.patch
+	source = 20-fix_links_parser.patch
+	sha256sums = f9773837cb79290117678aa5eaf4ae288e28cff5b25f64e0d0d87b15019e9c53
+	sha256sums = 4e50f2c6f8895ecfd827e75faa722f394bbe4b881d1c0cd266738f2265da7de6
+	sha256sums = be4616577e8282ed56e424ed1c7956183449d854c8faec2fd7262a1d7b3293ea
+
+pkgname = gnaughty
+
