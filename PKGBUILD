@@ -1,17 +1,14 @@
 # $Id$
-# Maintainer: Allan McRae <allan@archlinux.org>
-
-# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
-# NOTE: libtool requires rebuilt with each new gcc version
+# Maintainer: Ruben Van Boxem <vanboxem.ruben@gmail.com>
+# Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=('gcc49')
 _pkgver=4.9
-_pkgver_minor=2
+_pkgver_minor=3
 pkgver=${_pkgver}.${_pkgver_minor}
 _islver=0.12.2
 _cloogver=0.18.1
-pkgrel=4
-_snapshot=4.9-20150304
+pkgrel=1
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -19,20 +16,14 @@ url="http://gcc.gnu.org"
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
-md5sums=('863bb9d2a9551c9b7447cfc8b7cc7498'
+md5sums=('6f831b4d251872736e8e9cc09746f327'
          'e039bfcfb6c2ab039b8ee69bf883e824'
          'e34fca0540d840e5d0f6427e98c92252')
 
-if [ -n "${_snapshot}" ]; then
-  _basedir=gcc-${_snapshot}
-else
-  _basedir=gcc-${pkgver}
-fi
-
+_basedir=gcc-${pkgver}
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
@@ -108,7 +99,7 @@ package()
   $(ls "$pkgdir"/usr/lib/gcc/$CHOST/lib* &> /dev/null) && mv "$pkgdir"/usr/lib/gcc/$CHOST/lib* "$pkgdir/usr/lib/gcc/$CHOST/$pkgver/"
   
   # Install Runtime Library Exception
-  install -Dm644 ${srcdir}/gcc-${_snapshot}/COPYING.RUNTIME \
+  install -Dm644 ${srcdir}/gcc-${pkgver}/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
 
   # create symlinks
