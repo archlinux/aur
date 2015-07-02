@@ -10,7 +10,7 @@
 
 pkgname=puppet3
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="http://puppetlabs.com/puppet/puppet-open-source"
