@@ -1,0 +1,17 @@
+pkgbase = python2-oslo-config-liberty
+	pkgdesc = parsing command line arguments and .ini style configuration files
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.config/1.12.1
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	makedepends = python2
+	provides = python2-oslo-config
+	source = https://pypi.python.org/packages/source/o/oslo.config/oslo.config-1.12.1.tar.gz
+	md5sums = b20e00b2a5ec129a3b58d84308f381ae
+
+pkgname = python2-oslo-config-liberty
+	depends = python2
+	depends = python2-setuptools
+
