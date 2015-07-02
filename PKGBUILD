@@ -1,6 +1,6 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname='vlmcsd-svn'
-pkgver=svn779
+pkgver=svn785
 pkgrel=1
 pkgdesc="KMS activation using vlmcs."
 arch=('any')
@@ -8,10 +8,10 @@ url="http://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-
 license='unknown'
 depends=('glibc')
 makedepends=('clang' 'p7zip')
-source=('vlmcsd.7z::http://rghost.net/download/6yHcSRfhr/23e19b2eab61a6d0ae4b6292aed65dd0a23ffa6a/vlmcsd-svn779-2015-05-11-Hotbird64-source-only.7z'
+source=('vlmcsd.7z::http://plasmon.rghost.ru/download/8HRGm5Qdl/8ef51bbd691046bd76ab18bebffd67afa445e5e4/vlmcsd-svn785-2015-06-29-Hotbird64-Source-Only.7z'
         'vlmcsd.service')
 install='vlmcsd.install'
-sha256sums=("84472710907758656afc784d9476811ef78e477cf4ab4ce9818b7e1350640c95"
+sha256sums=("ae99cf5c403cd191086c4693723a4a42ca484ce350c0b045c62e9c9a10b0ad24"
             "bcaff9edeb0b215535d1d273283c5c5b79cbb652c5a1dfab6798e8b2a671ae7a")
 noextract=('vlmcsd.7z')
 
