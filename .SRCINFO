@@ -1,0 +1,24 @@
+pkgbase = perl-file-trash-freedesktop
+	pkgdesc = freedesktop.org trash specification
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Trash-FreeDesktop
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-file-slurp-tiny
+	checkdepends = perl-file-chdir
+	checkdepends = perl-test-exception
+	depends = perl-file-remove
+	depends = perl-log-any
+	depends = perl-file-homedir
+	depends = perl-sys-filesystem
+	depends = perl-sys-filesystem-mountpoint
+	depends = perl-file-moreutil
+	depends = perl-list-moreutils
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/File-Trash-FreeDesktop-0.17.tar.gz
+	sha512sums = fec17a927da6c2d5240206315c565a3de8c7a7f98ff2535f1423d7ce5407ce062462ddfa4df7650b22a5805461950949599b44d3389cbbe44e7f12d61eb00600
+
+pkgname = perl-file-trash-freedesktop
+
