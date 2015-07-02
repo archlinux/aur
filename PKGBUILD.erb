@@ -16,7 +16,7 @@ build() {
   mkdir -p "${srcdir}/go/src/github.com/asciinema"
   ln -nfs "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/go/src/github.com/asciinema/asciinema"
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  GOPATH="${srcdir}/go" make
+  GOPATH="${srcdir}/go" go build -o bin/asciinema
 }
 
 package() {
