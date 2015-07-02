@@ -1,0 +1,11 @@
+--- Makefile.orig	2011-12-04 13:17:58.000000000 +0100
++++ Makefile	2011-12-04 13:20:32.000000000 +0100
+@@ -133,7 +133,7 @@
+ DIRS=`ls -1F | grep / | sed -e 's/\///'`
+ 
+ # Runtime path to install:
+-VIMRUNTIME=~/.vim
++VIMRUNTIME=$(DESTDIR)/usr/share/vim/vimfiles
+ 
+ # Other Files to be added:
+ FILES=`ls -1 | grep '.vim$$'`
