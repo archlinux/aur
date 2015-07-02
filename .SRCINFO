@@ -1,0 +1,26 @@
+pkgbase = python2-novaclient-liberty
+	pkgdesc = Python client library for Nova
+	pkgver = 2.26.0
+	pkgrel = 1
+	url = https://github.com/openstack/python-novaclient
+	arch = any
+	license = Apache
+	makedepends = python2-pip
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/python-novaclient/python-novaclient-2.26.0.tar.gz
+	sha256sums = 725e28e981422e051352a76947dfab05838ee687f3c73a6524d64be8af8a900f
+
+pkgname = python2-novaclient-liberty
+	depends = python2-pbr>=0.11
+	depends = python2-argparse
+	depends = python2-iso8601>=0.1.9
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-serialization-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-prettytable>=0.7
+	depends = python2-requests>=2.5.2
+	depends = python2-simplejson>=2.2.0
+	depends = python2-six>=1.9.0
+	depends = python2-babel>=1.3
+	depends = python2-keystoneclient-liberty
+
