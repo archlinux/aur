@@ -1,0 +1,21 @@
+pkgbase = massif-visualizer-git
+	pkgdesc = Massif data visualization tool
+	pkgver = 337.f88d73c
+	pkgrel = 2
+	url = https://projects.kde.org/projects/extragear/sdk/massif-visualizer
+	install = massif-visualizer.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = kgraphviewer
+	provides = massif-visualizer
+	conflicts = massif-visualizer
+	source = git+git://anongit.kde.org/massif-visualizer
+	md5sums = SKIP
+
+pkgname = massif-visualizer-git
+
