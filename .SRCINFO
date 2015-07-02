@@ -1,0 +1,15 @@
+pkgbase = auto-complete-clang-async-bin
+	pkgdesc = emacs-clang-complete-async is an emacs extension to complete C and C++ code, it uses libclang to parse the source code on the fly and provides completion candidates to auto-complete (binary only)
+	pkgver = 20140918
+	pkgrel = 1
+	url = https://github.com/Golevka/emacs-clang-complete-async
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = clang
+	source = git+https://github.com/Golevka/emacs-clang-complete-async.git
+	md5sums = SKIP
+
+pkgname = auto-complete-clang-async-bin
+
