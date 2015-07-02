@@ -1,0 +1,20 @@
+pkgbase = arandr-git
+	pkgdesc = Provide a simple visual front end for XRandR 1.2.
+	pkgver = 20130304
+	pkgrel = 3
+	url = http://christian.amsuess.com/tools/arandr/
+	install = arandr-git.install
+	arch = any
+	license = GPL3
+	makedepends = docutils
+	makedepends = git
+	depends = pygtk
+	depends = desktop-file-utils
+	depends = xorg-xrandr
+	provides = arandr
+	conflicts = arandr
+	source = git://anonscm.debian.org/arandr/arandr.git
+	md5sums = SKIP
+
+pkgname = arandr-git
+
