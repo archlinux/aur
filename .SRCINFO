@@ -1,0 +1,15 @@
+pkgbase = ruby-jiffy
+	pkgdesc = A streaming-based JSON formatter in Ruby.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/badeball/jiffy
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = jiffy-1.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jiffy-1.1.1.gem
+	sha1sums = db1977720742bdd09c6a0b6e2e1ec0e1156d4ea5
+
+pkgname = ruby-jiffy
+
