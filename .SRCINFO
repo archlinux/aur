@@ -1,0 +1,19 @@
+pkgbase = openexr_viewers
+	pkgdesc = exrdisplay and playexr OpenEXR image viewers
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.openexr.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = nvidia-cg-toolkit
+	depends = fltk
+	depends = freeglut
+	depends = libgl
+	depends = openexr
+	optdepends = nvidia-cg-toolkit: for playexr
+	source = http://download.savannah.nongnu.org/releases/openexr/openexr_viewers-2.2.0.tar.gz
+	md5sums = 62604daecfefddbb57f701d61ca37d7d
+
+pkgname = openexr_viewers
+
