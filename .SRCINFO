@@ -1,0 +1,15 @@
+pkgbase = libodb
+	pkgdesc = The ODB common runtime library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.codesynthesis.com/products/odb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	options = !libtool
+	source = http://www.codesynthesis.com/download/odb/2.4/libodb-2.4.0.tar.bz2
+	md5sums = ae3842876f4f30c78e9d71fcf945ff7a
+
+pkgname = libodb
+
