@@ -1,0 +1,10 @@
+post_install() {
+  post_upgrade
+  passwd -l transmission &>/dev/null
+}
+
+post_upgrade() {
+  # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
+  getent group transmission >/dev/null || groupadd -g 169 transmission
+  getent passwd transmission >/dev/null || useradd -c 'Transmission BitTorrent Client' -u 169 -g transmission -b '/var/lib' -m -s /bin/false transmission
+}

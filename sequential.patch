@@ -1,0 +1,643 @@
+Patch works against Transmission 2.83 and 2.84
+Some parts inspired by https://github.com/midenok/transmission-patches
+diff --git a/cli/cli.c b/cli/cli.c
+index ac2cf52..e550860 100644
+--- a/cli/cli.c
++++ b/cli/cli.c
+@@ -93,6 +93,8 @@ static const struct tr_option options[] =
+   { 'v', "verify",               "Verify the specified torrent", "v",  0, NULL        },
+   { 'V', "version",              "Show version number and exit", "V", 0, NULL },
+   { 'w', "download-dir",         "Where to save downloaded data", "w",  1, "<path>"    },
++  { 500, "sequential-download",  "Download pieces sequentialy", "seq",  0, NULL    },
++  { 501, "random-download",      "Download pieces randomly (default)", "rnd",  0, NULL    },
+   { 0, NULL, NULL, NULL, 0, NULL }
+ };
+ 
+@@ -471,7 +473,12 @@ parseCommandLine (tr_variant * d, int argc, const char ** argv)
+             if (torrentPath == NULL)
+               torrentPath = optarg;
+             break;
+-
++          case 500:
++            tr_variantDictAddBool (d, TR_KEY_sequentialDownload, false);
++            break;
++          case 501:
++            tr_variantDictAddBool (d, TR_KEY_sequentialDownload, false);
++            break;
+           default:
+             return 1;
+         }
+diff --git a/daemon/remote.c b/daemon/remote.c
+index 5206ea9..b1bc1b2 100644
+--- a/daemon/remote.c
++++ b/daemon/remote.c
+@@ -309,6 +309,8 @@ static tr_option opts[] =
+     { 'y', "lpd",                    "Enable local peer discovery (LPD)", "y",  0, NULL },
+     { 'Y', "no-lpd",                 "Disable local peer discovery (LPD)", "Y",  0, NULL },
+     { 941, "peer-info",              "List the current torrent(s)' peers", "pi",  0, NULL },
++    { 500, "sequential-download",    "Download pieces sequentialy", "seq",  0, NULL    },
++    { 501, "random-download",        "Download pieces randomly (default)", "rnd",  0, NULL    },
+     {   0, NULL,                     NULL, NULL, 0, NULL }
+ };
+ 
+@@ -413,6 +415,8 @@ getOptMode (int val)
+       case 952: /* no-seedratio */
+       case 984: /* honor-session */
+       case 985: /* no-honor-session */
++      case 500: /* sequential-download */
++      case 501: /* random-download */
+         return MODE_TORRENT_SET;
+ 
+       case 920: /* session-info */
+@@ -717,6 +721,7 @@ static const tr_quark details_keys[] = {
+     TR_KEY_secondsSeeding,
+     TR_KEY_seedRatioMode,
+     TR_KEY_seedRatioLimit,
++    TR_KEY_sequentialDownload,
+     TR_KEY_sizeWhenDone,
+     TR_KEY_startDate,
+     TR_KEY_status,
+@@ -902,6 +907,8 @@ printDetails (tr_variant * top)
+                 printf ("  Percent Done: %s%%\n", buf);
+             }
+ 
++            if (tr_variantDictFindBool (t, TR_KEY_sequentialDownload, &boolVal))
++                printf ("  Sequential download: %s\n", (boolVal ? "Yes" : "No"));
+             if (tr_variantDictFindInt (t, TR_KEY_eta, &i))
+                 printf ("  ETA: %s\n", tr_strltime (buf, i, sizeof (buf)));
+             if (tr_variantDictFindInt (t, TR_KEY_rateDownload, &i))
+@@ -2164,6 +2171,10 @@ processArgs (const char * rpcurl, int argc, const char ** argv)
+                           break;
+                 case 985: tr_variantDictAddBool (args, TR_KEY_honorsSessionLimits, false);
+                           break;
++                case 500: tr_variantDictAddBool (args, TR_KEY_sequentialDownload, true);
++                          break;
++                case 501: tr_variantDictAddBool (args, TR_KEY_sequentialDownload, false);
++                          break;
+                 default:  assert ("unhandled value" && 0);
+                           break;
+             }
+diff --git a/gtk/details.c b/gtk/details.c
+index a8b9c2e..a22099c 100644
+--- a/gtk/details.c
++++ b/gtk/details.c
+@@ -36,6 +36,7 @@ struct DetailsImpl
+ {
+   GtkWidget * dialog;
+ 
++  GtkWidget * sequential_check;
+   GtkWidget * honor_limits_check;
+   GtkWidget * up_limited_check;
+   GtkWidget * up_limit_sping;
+@@ -49,6 +50,7 @@ struct DetailsImpl
+   GtkWidget * idle_spin;
+   GtkWidget * max_peers_spin;
+ 
++  gulong sequential_check_tag;
+   gulong honor_limits_check_tag;
+   gulong up_limited_check_tag;
+   gulong down_limited_check_tag;
+@@ -186,6 +188,20 @@ refreshOptions (struct DetailsImpl * di, tr_torrent ** torrents, int n)
+   ****  Options Page
+   ***/
+ 
++  /* sequential_check */
++  if (n)
++    {
++      int i;
++      const bool baseline = tr_torrentGetSequentialDownload (torrents[0]);
++
++      for (i=1; i<n; ++i)
++        if (baseline != tr_torrentGetSequentialDownload (torrents[i]))
++          break;
++
++      if (i == n)
++        set_togglebutton_if_different (di->sequential_check, di->sequential_check_tag, baseline);
++    }
++
+   /* honor_limits_check */
+   if (n)
+     {
+@@ -444,6 +460,12 @@ max_peers_spun_cb (GtkSpinButton * s, struct DetailsImpl * di)
+ }
+ 
+ static void
++sequential_toggled_cb (GtkToggleButton * tb, gpointer d)
++{
++  torrent_set_bool (d, TR_KEY_sequentialDownload, gtk_toggle_button_get_active (tb));
++}
++
++static void
+ onPriorityChanged (GtkComboBox * combo_box, struct DetailsImpl * di)
+ {
+   const tr_priority_t priority = gtr_priority_combo_get_value (combo_box);
+@@ -504,6 +526,11 @@ options_page_new (struct DetailsImpl * d)
+   t = hig_workarea_create ();
+   hig_workarea_add_section_title (t, &row, _("Speed"));
+ 
++  tb = hig_workarea_add_wide_checkbutton (t, &row, _("Sequential download"), 0);
++  d->sequential_check = tb;
++  tag = g_signal_connect (tb, "toggled", G_CALLBACK (sequential_toggled_cb), d);
++  d->sequential_check_tag = tag;
++
+   tb = hig_workarea_add_wide_checkbutton (t, &row, _("Honor global _limits"), 0);
+   d->honor_limits_check = tb;
+   tag = g_signal_connect (tb, "toggled", G_CALLBACK (global_speed_toggled_cb), d);
+diff --git a/libtransmission/peer-mgr.c b/libtransmission/peer-mgr.c
+index 376fd19..d62b380 100644
+--- a/libtransmission/peer-mgr.c
++++ b/libtransmission/peer-mgr.c
+@@ -1021,7 +1021,7 @@ pieceListSort (tr_swarm * s, enum piece_sort_state state)
+ static void
+ assertWeightedPiecesAreSorted (Torrent * t)
+ {
+-    if (!t->endgame)
++    if (!t->endgame && !t->tor->sequentialOrder)
+     {
+         int i;
+         setComparePieceByWeightTorrent (t);
+@@ -1127,7 +1127,10 @@ pieceListRebuild (tr_swarm * s)
+       s->pieces = pieces;
+       s->pieceCount = pieceCount;
+ 
+-      pieceListSort (s, PIECES_SORTED_BY_WEIGHT);
++      if(s->tor->sequentialDownload)
++            pieceListSort (s, PIECES_SORTED_BY_INDEX);
++      else
++            pieceListSort (s, PIECES_SORTED_BY_WEIGHT);
+ 
+       /* cleanup */
+       tr_free (pool);
+@@ -1165,6 +1168,9 @@ pieceListResortPiece (tr_swarm * s, struct weighted_piece * p)
+   if (p == NULL)
+     return;
+ 
++  if(s->tor->sequentialDownload)
++      return;
++
+   /* is the torrent already sorted? */
+   pos = p - s->pieces;
+   setComparePieceByWeightTorrent (s);
+@@ -1344,9 +1350,17 @@ tr_peerMgrGetNextRequests (tr_torrent           * tor,
+   if (s->pieces == NULL)
+     pieceListRebuild (s);
+ 
+-  if (s->pieceSortState != PIECES_SORTED_BY_WEIGHT)
+-    pieceListSort (s, PIECES_SORTED_BY_WEIGHT);
+-
++  if (tor->sequentialDownload)
++    {
++        if (s->pieceSortState != PIECES_SORTED_BY_INDEX)
++            pieceListSort (s, PIECES_SORTED_BY_INDEX);
++    }
++  else
++    {
++        if (s->pieceSortState != PIECES_SORTED_BY_WEIGHT)
++            pieceListSort (s, PIECES_SORTED_BY_WEIGHT);
++    }
++
+   assertReplicationCountIsExact (s);
+   assertWeightedPiecesAreSorted (s);
+ 
+@@ -1431,7 +1445,7 @@ tr_peerMgrGetNextRequests (tr_torrent           * tor,
+   /* In most cases we've just changed the weights of a small number of pieces.
+    * So rather than qsort ()ing the entire array, it's faster to apply an
+    * adaptive insertion sort algorithm. */
+-  if (got > 0)
++  if (got > 0 && !tor->sequentialDownload)
+     {
+       /* not enough requests || last piece modified */
+       if (i == s->pieceCount)
+diff --git a/libtransmission/quark.c b/libtransmission/quark.c
+index e24d50d..5b8eb43 100644
+--- a/libtransmission/quark.c
++++ b/libtransmission/quark.c
+@@ -315,6 +315,7 @@ static const struct tr_key_struct my_static[] =
+   { "seedRatioMode", 13 },
+   { "seederCount", 11 },
+   { "seeding-time-seconds", 20 },
++  { "sequential", 10  },
+   { "session-count", 13 },
+   { "sessionCount", 12 },
+   { "show-backup-trackers", 20 },
+diff --git a/libtransmission/quark.h b/libtransmission/quark.h
+index 2e3a9fb..a764786 100644
+--- a/libtransmission/quark.h
++++ b/libtransmission/quark.h
+@@ -313,6 +313,7 @@ enum
+   TR_KEY_seedRatioMode,
+   TR_KEY_seederCount,
+   TR_KEY_seeding_time_seconds,
++  TR_KEY_sequentialDownload,
+   TR_KEY_session_count,
+   TR_KEY_sessionCount,
+   TR_KEY_show_backup_trackers,
+diff --git a/libtransmission/resume.c b/libtransmission/resume.c
+index f8df285..9c0f7fc 100644
+--- a/libtransmission/resume.c
++++ b/libtransmission/resume.c
+@@ -673,6 +673,7 @@ tr_torrentSaveResume (tr_torrent * tor)
+   tr_variantDictAddInt (&top, TR_KEY_max_peers, tor->maxConnectedPeers);
+   tr_variantDictAddInt (&top, TR_KEY_bandwidth_priority, tr_torrentGetPriority (tor));
+   tr_variantDictAddBool (&top, TR_KEY_paused, !tor->isRunning && !tor->isQueued);
++  tr_variantDictAddBool (&top, TR_KEY_sequentialDownload, tor->sequentialDownload);
+   savePeers (&top, tor);
+   if (tr_torrentHasMetadata (tor))
+     {
+@@ -822,6 +823,13 @@ loadFromFile (tr_torrent * tor, uint64_t fieldsToLoad)
+       fieldsLoaded |= TR_FR_BANDWIDTH_PRIORITY;
+     }
+ 
++  if ((fieldsToLoad & TR_FR_SEQUENTIAL)
++      && tr_variantDictFindBool (&top, TR_KEY_sequentialDownload, &boolVal))
++    {
++      tor->sequentialDownload = boolVal;
++      fieldsLoaded |= TR_FR_SEQUENTIAL;
++    }
++
+   if (fieldsToLoad & TR_FR_PEERS)
+     fieldsLoaded |= loadPeers (&top, tor);
+ 
+diff --git a/libtransmission/resume.h b/libtransmission/resume.h
+index 49bc44b..7f43536 100644
+--- a/libtransmission/resume.h
++++ b/libtransmission/resume.h
+@@ -38,6 +38,7 @@ enum
+   TR_FR_TIME_DOWNLOADING    = (1 << 19),
+   TR_FR_FILENAMES           = (1 << 20),
+   TR_FR_NAME                = (1 << 21),
++  TR_FR_SEQUENTIAL          = (1 << 22),
+ };
+ 
+ /**
+diff --git a/libtransmission/rpcimpl.c b/libtransmission/rpcimpl.c
+index 3fa61f5..6f3b3de 100644
+--- a/libtransmission/rpcimpl.c
++++ b/libtransmission/rpcimpl.c
+@@ -819,6 +819,10 @@ addField (tr_torrent       * const tor,
+         tr_variantDictAddInt (d, key, tr_torrentGetRatioMode (tor));
+         break;
+ 
++      case TR_KEY_sequentialDownload:
++        tr_variantDictAddBool (d, key, tr_torrentGetSequentialDownload (tor));
++        break;
++
+       case TR_KEY_sizeWhenDone:
+         tr_variantDictAddInt (d, key, st->sizeWhenDone);
+         break;
+@@ -1316,6 +1320,9 @@ torrentSet (tr_session               * session,
+       if (tr_variantDictFindInt (args_in, TR_KEY_queuePosition, &tmp))
+         tr_torrentSetQueuePosition (tor, tmp);
+ 
++      if (tr_variantDictFindBool (args_in, TR_KEY_sequentialDownload, &boolVal))
++        tr_torrentSetSequentialDownload (tor, boolVal);
++
+       if (!errmsg && tr_variantDictFindList (args_in, TR_KEY_trackerAdd, &trackers))
+         errmsg = addTrackerUrls (tor, trackers);
+ 
+diff --git a/libtransmission/torrent.c b/libtransmission/torrent.c
+index 4042baa..c66725b 100644
+--- a/libtransmission/torrent.c
++++ b/libtransmission/torrent.c
+@@ -888,6 +888,8 @@ torrentInit (tr_torrent * tor, const tr_ctor * ctor)
+ 
+   tor->finishedSeedingByIdle = false;
+ 
++  tor->sequentialDownload = false;
++
+   tr_peerMgrAddTorrent (session->peerMgr, tor);
+ 
+   assert (!tor->downloadedCur);
+@@ -2406,6 +2408,28 @@ tr_torrentSetPriority (tr_torrent * tor, tr_priority_t priority)
+     }
+ }
+ 
++bool
++tr_torrentGetSequentialDownload (const tr_torrent * tor)
++{
++  assert (tr_isTorrent (tor));
++
++  return tor->sequentialDownload;
++}
++
++void
++tr_torrentSetSequentialDownload (tr_torrent * tor, bool sequential)
++{
++  assert (tr_isTorrent (tor));
++
++
++  if (tor->sequentialDownload != sequential)
++    {
++      tor->sequentialDownload = sequential;
++
++      tr_torrentSetDirty (tor);
++    }
++}
++
+ /***
+ ****
+ ***/
+diff --git a/libtransmission/torrent.h b/libtransmission/torrent.h
+index a023417..d86175f 100644
+--- a/libtransmission/torrent.h
++++ b/libtransmission/torrent.h
+@@ -272,6 +272,8 @@ struct tr_torrent
+     uint16_t                   idleLimitMinutes;
+     tr_idlelimit               idleLimitMode;
+     bool                       finishedSeedingByIdle;
++
++    bool                       sequentialDownload;
+ };
+ 
+ static inline tr_torrent*
+diff --git a/libtransmission/transmission.h b/libtransmission/transmission.h
+index 39b00c4..67e3d38 100644
+--- a/libtransmission/transmission.h
++++ b/libtransmission/transmission.h
+@@ -690,6 +690,9 @@ bool       tr_sessionGetDeleteSource (const tr_session *);
+ tr_priority_t   tr_torrentGetPriority (const tr_torrent *);
+ void            tr_torrentSetPriority (tr_torrent *, tr_priority_t);
+ 
++bool       tr_torrentGetSequentialDownload (const tr_torrent *);
++void       tr_torrentSetSequentialDownload (tr_torrent *, bool);
++
+ /***
+ ****
+ ****  Torrent Queueing
+diff --git a/po/en_AU.po b/po/en_AU.po
+index 69e30e8..5c35df9 100644
+--- a/po/en_AU.po
++++ b/po/en_AU.po
+@@ -279,6 +279,10 @@ msgstr "Stop seeding if idle for N minutes:"
+ msgid "Speed"
+ msgstr "Speed"
+ 
++#: ../gtk/details.c
++msgid "Sequential download"
++msgstr "Sequential download"
++
+ #: ../gtk/details.c:480
+ msgid "Honor global _limits"
+ msgstr "Honour global _limits"
+diff --git a/po/en_CA.po b/po/en_CA.po
+index 24a66d5..b8a59f9 100644
+--- a/po/en_CA.po
++++ b/po/en_CA.po
+@@ -279,6 +279,10 @@ msgstr "Stop seeding if idle for N minutes:"
+ msgid "Speed"
+ msgstr "Speed"
+ 
++#: ../gtk/details.c
++msgid "Sequential download"
++msgstr "Sequential download"
++
+ #: ../gtk/details.c:480
+ msgid "Honor global _limits"
+ msgstr "Honour global _limits"
+diff --git a/po/en_GB.po b/po/en_GB.po
+index 4faefe9..5fb72e0 100644
+--- a/po/en_GB.po
++++ b/po/en_GB.po
+@@ -279,6 +279,10 @@ msgstr "Stop seeding if idle for N minutes:"
+ msgid "Speed"
+ msgstr "Speed"
+ 
++#: ../gtk/details.c
++msgid "Sequential download"
++msgstr "Sequential download"
++
+ #: ../gtk/details.c:480
+ msgid "Honor global _limits"
+ msgstr "Honour global _limits"
+diff --git a/po/es.po b/po/es.po
+index 86c4cf0..612cf72 100644
+--- a/po/es.po
++++ b/po/es.po
+@@ -285,6 +285,10 @@ msgstr "Dejar de compartir si se está inactivo por N minutos:"
+ msgid "Speed"
+ msgstr "Velocidad"
+ 
++#: ../gtk/details.c
++msgid "Sequential download"
++msgstr "Descarga secuencial"
++
+ #: ../gtk/details.c:480
+ msgid "Honor global _limits"
+ msgstr "Satisfacer _límites globales"
+diff --git a/po/fr.po b/po/fr.po
+index 75da4e6..ad9ce5f 100644
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -285,6 +285,10 @@ msgstr "Arrêter de partager si inactif depuis N minutes :"
+ msgid "Speed"
+ msgstr "Vitesse"
+ 
++#: ../gtk/details.c
++msgid "Sequential download"
++msgstr "Téléchargement séquentiel"
++
+ #: ../gtk/details.c:480
+ msgid "Honor global _limits"
+ msgstr "Respecter les _limites globales"
+diff --git a/qt/details.cc b/qt/details.cc
+index 66eb7ca..e714a78 100644
+--- a/qt/details.cc
++++ b/qt/details.cc
+@@ -763,6 +763,12 @@ Details :: refresh ()
+       const Torrent * tor;
+       const Torrent * baseline = *torrents.begin ();
+ 
++      // mySequentialCheck
++      uniform = true;
++      baselineFlag = baseline->sequentialDownload ();
++      foreach (tor, torrents) if (baselineFlag != tor->sequentialDownload ()) { uniform = false; break; }
++      mySequentialCheck->setChecked (uniform && baselineFlag);
++
+       // mySessionLimitCheck
+       uniform = true;
+       baselineFlag = baseline->honorsSessionLimits ();
+@@ -985,6 +991,12 @@ Details :: onShowBackupTrackersToggled (bool val)
+ }
+ 
+ void
++Details :: onSequentialToggled (bool val)
++{
++  mySession.torrentSet (myIds, TR_KEY_sequentialDownload, val);
++  getNewData ();
++}
++void
+ Details :: onHonorsSessionLimitsToggled (bool val)
+ {
+   mySession.torrentSet (myIds, TR_KEY_honorsSessionLimits, val);
+@@ -1162,6 +1174,11 @@ Details :: createOptionsTab ()
+   HIG * hig = new HIG (this);
+   hig->addSectionTitle (tr ("Speed"));
+ 
++  c = new QCheckBox (tr ("Sequential download"));
++  mySequentialCheck = c;
++  hig->addWideControl (c);
++  connect (c, SIGNAL (clicked (bool)), this, SLOT (onSequentialToggled (bool)));
++
+   c = new QCheckBox (tr ("Honor global &limits"));
+   mySessionLimitCheck = c;
+   hig->addWideControl (c);
+diff --git a/qt/details.h b/qt/details.h
+index 617801c..ac1d46b 100644
+--- a/qt/details.h
++++ b/qt/details.h
+@@ -86,6 +86,7 @@ class Details: public QDialog
+     QLabel * myETALabel;
+     QLabel * myLastActivityLabel;
+ 
++    QCheckBox * mySequentialCheck;
+     QCheckBox * mySessionLimitCheck;
+     QCheckBox * mySingleDownCheck;
+     QCheckBox * mySingleUpCheck;
+@@ -140,6 +141,7 @@ class Details: public QDialog
+     void onFileWantedChanged (const QSet<int>& fileIndices, bool);
+     void onPathEdited (const QString& oldpath, const QString& newname);
+     void onOpenRequested (const QString& path);
++    void onSequentialToggled (bool);
+     void onHonorsSessionLimitsToggled (bool);
+     void onDownloadLimitedToggled (bool);
+     void onSpinBoxEditingFinished ();
+diff --git a/qt/torrent.cc b/qt/torrent.cc
+index 7fd8a3d..79c1b66 100644
+--- a/qt/torrent.cc
++++ b/qt/torrent.cc
+@@ -97,6 +97,7 @@ Torrent :: myProperties[] =
+   { DOWN_LIMITED, TR_KEY_downloadLimited, QVariant::Bool, STAT_EXTRA },
+   { UP_LIMIT, TR_KEY_uploadLimit, QVariant::Int, STAT_EXTRA }, /* KB/s */
+   { UP_LIMITED, TR_KEY_uploadLimited, QVariant::Bool, STAT_EXTRA },
++  { SEQUENTIAL_DOWNLOAD, TR_KEY_sequentialDownload, QVariant::Bool, STAT_EXTRA },
+   { HONORS_SESSION_LIMITS, TR_KEY_honorsSessionLimits, QVariant::Bool, STAT_EXTRA },
+   { PEER_LIMIT, TR_KEY_peer_limit, QVariant::Int, STAT_EXTRA },
+   { HASH_STRING, TR_KEY_hashString, QVariant::String, INFO },
+diff --git a/qt/torrent.h b/qt/torrent.h
+index 85f1b28..d5687b2 100644
+--- a/qt/torrent.h
++++ b/qt/torrent.h
+@@ -165,6 +165,7 @@ class Torrent: public QObject
+       DOWN_LIMITED,
+       UP_LIMIT,
+       UP_LIMITED,
++      SEQUENTIAL_DOWNLOAD,
+       HONORS_SESSION_LIMITS,
+       PEER_LIMIT,
+       HASH_STRING,
+@@ -300,6 +301,7 @@ class Torrent: public QObject
+     Speed downloadLimit () const { return Speed::fromKBps (getInt (DOWN_LIMIT)); }
+     bool uploadIsLimited () const { return getBool (UP_LIMITED); }
+     bool downloadIsLimited () const { return getBool (DOWN_LIMITED); }
++    bool sequentialDownload () const { return getBool (SEQUENTIAL_DOWNLOAD); }
+     bool honorsSessionLimits () const { return getBool (HONORS_SESSION_LIMITS); }
+     int peerLimit () const { return getInt (PEER_LIMIT); }
+     double seedRatioLimit () const { return getDouble (SEED_RATIO_LIMIT); }
+diff --git a/web/index.html b/web/index.html
+index 326baaf..d77a0ab 100755
+--- a/web/index.html
++++ b/web/index.html
+@@ -205,7 +205,8 @@
+ 					<div class="row"><div class="key">Uploaded:</div><div class="value" id="inspector-info-uploaded">&nbsp;</div></div>
+ 					<div class="row"><div class="key">Downloaded:</div><div class="value" id="inspector-info-downloaded">&nbsp;</div></div>
+ 					<div class="row"><div class="key">State:</div><div class="value" id="inspector-info-state">&nbsp;</div></div>
+-					<div class="row"><div class="key">Running Time:</div><div class="value" id="inspector-info-running-time">&nbsp;</div></div>
++					<div class="row"><div class="key">Sequential download:</div><div class="value" id="inspector-info-sequential-download">&nbsp;</div></div>
++                                        <div class="row"><div class="key">Running Time:</div><div class="value" id="inspector-info-running-time">&nbsp;</div></div>
+ 					<div class="row"><div class="key">Remaining Time:</div><div class="value" id="inspector-info-remaining-time">&nbsp;</div></div>
+ 					<div class="row"><div class="key">Last Activity:</div><div class="value" id="inspector-info-last-activity">&nbsp;</div></div>
+ 					<div class="row"><div class="key">Error:</div><div class="value" id="inspector-info-error">&nbsp;</div></div>
+@@ -413,6 +414,9 @@
+ 				<li id="context_resume_selected" class="disabled context_resume_selected">Resume</li>
+ 				<li id="context_resume_now_selected" class="disabled context_resume_selected">Resume Now</li>
+ 				<li class="separator"></li>
++				<li id="context_sequential_download">Download sequentially</li>
++				<li id="context_random_download">Download randomly</li>
++				<li class="separator"></li>
+ 				<li id="context_move_top">Move to Top</li>
+ 				<li id="context_move_up">Move Up</li>
+ 				<li id="context_move_down">Move Down</li>
+diff --git a/web/javascript/inspector.js b/web/javascript/inspector.js
+index ab226f8..dc79241 100644
+--- a/web/javascript/inspector.js
++++ b/web/javascript/inspector.js
+@@ -188,6 +188,26 @@ function Inspector(controller) {
+         setTextContent(e.availability_lb, str);
+ 
+         //
++        //  sequential_lb
++        //
++
++        if(torrents.length < 1)
++            str = none;
++        else {
++            str = torrents[0].getSequential();
++            for(i=0; t=torrents[i]; ++i) {
++                if(str != t.getSequential()) {
++                    str = mixed;
++                    break;
++                }
++            }
++        }
++        if(typeof str == "boolean")
++            setTextContent(e.sequential_lb, str?"Yes":"No");
++        else
++            setTextContent(e.sequential_lb, str || none);
++
++        //
+         //  downloaded_lb
+         //
+ 
+@@ -778,6 +798,7 @@ function Inspector(controller) {
+         data.elements.downloaded_lb     = $('#inspector-info-downloaded')[0];
+         data.elements.uploaded_lb       = $('#inspector-info-uploaded')[0];
+         data.elements.state_lb          = $('#inspector-info-state')[0];
++        data.elements.sequential_lb     = $('#inspector-info-sequential-download')[0];
+         data.elements.running_time_lb   = $('#inspector-info-running-time')[0];
+         data.elements.remaining_time_lb = $('#inspector-info-remaining-time')[0];
+         data.elements.last_activity_lb  = $('#inspector-info-last-activity')[0];
+diff --git a/web/javascript/torrent.js b/web/javascript/torrent.js
+index 17b093b..f904f27 100644
+--- a/web/javascript/torrent.js
++++ b/web/javascript/torrent.js
+@@ -104,6 +104,7 @@ Torrent.Fields.StatsExtra = [
+ 	'haveUnchecked',
+ 	'haveValid',
+ 	'peers',
++	'sequential',
+ 	'startDate',
+ 	'trackerStats'
+ ];
+@@ -242,6 +243,7 @@ Torrent.prototype =
+ 	getRecheckProgress: function() { return this.fields.recheckProgress; },
+ 	getSeedRatioLimit: function() { return this.fields.seedRatioLimit; },
+ 	getSeedRatioMode: function() { return this.fields.seedRatioMode; },
++	getSequential: function() { return this.fields.sequential; },
+ 	getSizeWhenDone: function() { return this.fields.sizeWhenDone; },
+ 	getStartDate: function() { return this.fields.startDate; },
+ 	getStatus: function() { return this.fields.status; },
+diff --git a/web/javascript/transmission.js b/web/javascript/transmission.js
+index bd317db..2aea612 100644
+--- a/web/javascript/transmission.js
++++ b/web/javascript/transmission.js
+@@ -183,6 +183,8 @@ Transmission.prototype =
+ 			context_pause_selected:       function() { tr.stopSelectedTorrents(); },
+ 			context_resume_selected:      function() { tr.startSelectedTorrents(false); },
+ 			context_resume_now_selected:  function() { tr.startSelectedTorrents(true); },
++			context_sequential_download:  function() { tr.sequentialSelectedTorrents(true); },
++			context_random_download:      function() { tr.sequentialSelectedTorrents(false); },
+ 			context_move:                 function() { tr.moveSelectedTorrents(false); },
+ 			context_remove:               function() { tr.removeSelectedTorrents(); },
+ 			context_removedata:           function() { tr.removeSelectedTorrentsAndData(); },
+@@ -1185,6 +1187,11 @@ Transmission.prototype =
+ 		                                 this.refreshTorrents, this);
+ 	},
+ 
++	sequentialSelectedTorrents: function(seq) {
++		this.remote.sendTorrentSetRequests('torrent-set', this.getSelectedTorrentIds(),
++		                                 { sequential: seq }, this.refreshTorrents, this);
++	},
++
+ 	/***
+ 	****
+ 	***/
