@@ -1,0 +1,17 @@
+pkgbase = perl-xml-xbel
+	pkgdesc = OOP for reading and writing XBEL documents
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://search.cpan.org/dist/XML-XBEL/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl-xml-libxml
+	depends = perl-timedate
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AS/ASCOPE/XML-XBEL-1.4.tar.gz
+	sha256sums = 94c489f49fdb561fc96d9f76f9cf40892f44831628bfbc86b916bbe0ed356a89
+
+pkgname = perl-xml-xbel
+
