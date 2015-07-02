@@ -1,0 +1,19 @@
+pkgbase = perl-ppix-utilities
+	pkgdesc = Extensions to PPI
+	pkgver = 1.001000
+	pkgrel = 3
+	url = http://search.cpan.org/dist/PPIx-Utilities/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	makedepends = perl-extutils-makemaker
+	depends = perl-ppi
+	depends = perl-readonly-xs
+	depends = perl-exception-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EL/ELLIOTJS/PPIx-Utilities-1.001000.tar.gz
+	sha256sums = 03a483386fd6a2c808f09778d44db06b02c3140fb24ba4bf12f851f46d3bcb9b
+
+pkgname = perl-ppix-utilities
+
