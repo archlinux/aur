@@ -1,0 +1,16 @@
+pkgbase = ceemedia
+	pkgdesc = CeeMedia is a program for cataloging your movie collection.
+	pkgver = 0.5.4
+	pkgrel = 4.1
+	url = http://ceemedia.sosdg.org/index.html
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = python>=2.3
+	depends = pygtk>=2.6
+	depends = libglade>=2.5
+	source = ceemedia-bzr::bzr+http://bazaar.launchpad.net/~vcs-imports/ceemedia/stable/#revision=revno:113
+	sha256sums = SKIP
+
+pkgname = ceemedia
+
