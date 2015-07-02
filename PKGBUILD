@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="A dependency injection library for C++"
 arch=('x86_64' 'i686')
-url="sites.google.com/site/fruitlib/home"
+url="https://github.com/google/fruit/releases"
 license=('Apache')
 groups=()
 depends=('gcc-libs>=4.8')
