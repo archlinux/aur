@@ -1,0 +1,18 @@
+pkgbase = freeblocks
+	pkgdesc = Tetris Attack-like puzzle game
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://github.com/dorkster/freeblocks
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	source = https://github.com/dorkster/freeblocks/archive/v0.5.tar.gz
+	sha256sums = 8da72ccf7bcba585fcd8b65943f590f51aff06286f3ed920a13c0c90fb392e06
+
+pkgname = freeblocks
+
