@@ -1,6 +1,6 @@
 pkgbase = python-nikola
 	pkgdesc = A modular, fast, simple, static website generator.
-	pkgver = 7.5.1
+	pkgver = 7.6.0
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-nikola
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.5.1.tar.gz
-	md5sums = b064411ca587d1bda89748288ef7c2ee
+	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.6.0.tar.gz
+	md5sums = eabe0c1efd552fb9f9e6dc0f64270619
 
 pkgname = python-nikola
 	depends = python
