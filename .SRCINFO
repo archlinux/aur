@@ -12,7 +12,7 @@ pkgbase = chromiumos-ui-session
 	source = chromiumos-ui-session.sh
 	md5sums = 141fb7abef51fee459d193300003611a
 	md5sums = 512a7421e124b24cb3e822d0b637b4bc
-	md5sums = 1b8dda2e9b4657313a7c14a0cdb8791f
+	md5sums = 9fdd31dafaa424137527143782a84863
 
 pkgname = chromiumos-ui-session
 
