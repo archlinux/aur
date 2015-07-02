@@ -1,0 +1,16 @@
+pkgbase = perl-uri-magnet
+	pkgdesc = Magnet URI scheme
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/URI-magnet/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GA/GARU/URI-magnet-0.03.tar.gz
+	sha256sums = 02ecc4c54bda97b6f95b50826b4d0a5de29b0dd621a2e7d94367dff8c9a81259
+
+pkgname = perl-uri-magnet
+
