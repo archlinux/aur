@@ -1,0 +1,30 @@
+pkgbase = dvdstyler
+	pkgdesc = Cross-platform DVD authoring application
+	pkgver = 2.9.2
+	pkgrel = 2
+	url = http://www.dvdstyler.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = flex
+	depends = cdrkit
+	depends = dvdauthor
+	depends = dvd+rw-tools
+	depends = zip
+	depends = xmlto
+	depends = wxgtk
+	depends = wxsvg>=1.5.4
+	depends = mjpegtools
+	depends = libgnomeui
+	depends = libexif
+	optdepends = dvdisaster: ECC support
+	optdepends = xine-ui: DVD preview player
+	optdepends = vlc: DVD preview player
+	optdepends = smplayer: DVD preview player
+	options = !makeflags
+	source = http://downloads.sourceforge.net/dvdstyler/2.9.2/DVDStyler-2.9.2.tar.bz2
+	sha1sums = b4cf2296ecadec23931f2b8879f8256f7a35d168
+
+pkgname = dvdstyler
+
