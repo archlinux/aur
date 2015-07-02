@@ -1,0 +1,19 @@
+pkgbase = zeromq3
+	pkgdesc = Fast messaging system built on sockets, C and C++ bindings. aka 0MQ, ZMQ.
+	pkgver = 3.2.5
+	pkgrel = 1
+	url = http://www.zeromq.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2
+	depends = gcc-libs
+	depends = util-linux
+	conflicts = zeromq
+	source = http://download.zeromq.org/zeromq-3.2.5.tar.gz
+	source = https://raw.githubusercontent.com/zeromq/cppzmq/1f05e0d11/zmq.hpp
+	md5sums = d4189c152fbdc45b376a30bd643f67fd
+	md5sums = 6a7b5e04ff4a55c75683aa9fa7ec8e5e
+
+pkgname = zeromq3
+
