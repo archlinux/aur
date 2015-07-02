@@ -1,0 +1,15 @@
+pkgbase = libcutl
+	pkgdesc = A C++ utility library
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://www.codesynthesis.com/projects/libcutl/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	options = !libtool
+	source = http://www.codesynthesis.com/download/libcutl/1.9/libcutl-1.9.0.tar.bz2
+	md5sums = 54cf1f421a520e79dd06c436a8b968d3
+
+pkgname = libcutl
+
