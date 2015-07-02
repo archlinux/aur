@@ -2,7 +2,7 @@
 
 pkgname=clutter-gst
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer bindings for clutter"
 arch=(i686 x86_64)
 url="http://www.clutter-project.org/"
@@ -32,6 +32,9 @@ check() {
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
+
+  # https://bugzilla.gnome.org/show_bug.cgi?id=746883
+  rm -rf "${pkgdir}"/usr/lib/gstreamer-1.0
 }
 
 # vim:set ts=2 sw=2 et:
