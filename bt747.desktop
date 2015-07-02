@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BT747
+GenericName=GPS Tool
+GenericName[hu]=GPS eszköz
+X-GNOME-FullName=BT747 GPS Tool
+X-GNOME-FullName[hu]=BT747 GPS eszköz
+Comment=The swiss army knife for MTK loggers
+Comment[hu]=A svájcibicska MTK rögzítőkhöz
+Exec=bt747
+Icon=bt747
+Categories=Java;Utility;Map;

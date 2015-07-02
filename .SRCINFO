@@ -1,0 +1,18 @@
+pkgbase = bt747
+	pkgdesc = The swiss army knife for MTK loggers
+	pkgver = 2.1.3
+	pkgrel = 2
+	url = http://bt747.org/
+	arch = any
+	license = GPL
+	makedepends = imagemagick
+	depends = java-rxtx
+	source = http://downloads.sourceforge.net/bt747/BT747_2.1.3_full.zip
+	source = http://www.bt747.org/icon/bt747_128x128.gif
+	source = bt747.desktop
+	md5sums = 7c78102f060933b041f102b98290b39b
+	md5sums = 01a6c5989735d18d57756f51c41305ba
+	md5sums = 8d0c25cbbfca16dfd102f2d43d54bd85
+
+pkgname = bt747
+
