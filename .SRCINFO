@@ -1,0 +1,15 @@
+pkgbase = tecoc
+	pkgdesc = Text Editor and COrrector implementation by Tom Almy
+	pkgver = 0398
+	pkgrel = 1
+	url = http://almy.us/teco.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	provides = teco
+	source = http://almy.us/files/tecoclinux0398.tar.gz
+	sha256sums = 9bc2f550ccec87af768c52138225a439687f41d2a9d2da74e2919983323912ba
+
+pkgname = tecoc
+
