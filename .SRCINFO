@@ -1,6 +1,6 @@
 pkgbase = qt5-quickcontrols-git
 	pkgdesc = A cross-platform application and UI framework (QtQuick)
-	pkgver = v5.5.0.beta1.24.g686f6a7
+	pkgver = v5.5.0.rc1.9.gd48cd2c
 	pkgrel = 1
 	url = https://qt-project.org/
 	arch = i686
