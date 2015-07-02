@@ -1,0 +1,24 @@
+pkgbase = python2-oslo-db-liberty
+	pkgdesc = Oslo Database library
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.db
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	provides = python2-oslo-db
+	source = https://pypi.python.org/packages/source/o/oslo.db/oslo.db-1.12.0.tar.gz
+	sha256sums = 11cc4b3e6d66f893dd109dcc7c5c8c5f3f15a7b1377de4ec8eca4d2e93c5007d
+
+pkgname = python2-oslo-db-liberty
+	depends = python2-sqlalchemy-openstack
+	depends = python2-alembic>=0.7.2
+	depends = python2-babel>=1.3
+	depends = python2-oslo-utils-liberty
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-six>=1.9.0
+	depends = python2-iso8601>=0.1.9
+	depends = python2-stevedore-openstack
+	depends = python2-pbr>=0.6
+
