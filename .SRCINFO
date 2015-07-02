@@ -1,0 +1,18 @@
+pkgbase = libodb-oracle
+	pkgdesc = The ODB Oracle runtime library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.codesynthesis.com/products/odb/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libodb
+	depends = oracle-instantclient-sqlplus
+	depends = oracle-instantclient-sdk
+	depends = unixodbc
+	options = !libtool
+	source = http://www.codesynthesis.com/download/odb/2.4/libodb-oracle-2.4.0.tar.bz2
+	md5sums = 7be266404a7512d2ec196b0148fad6bb
+
+pkgname = libodb-oracle
+
