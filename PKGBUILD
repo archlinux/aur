@@ -4,13 +4,15 @@ pkgver=982.d00d833
 pkgrel=1
 pkgdesc="An OCR Engine that was developed at HP Labs between 1985 and 1995"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/tesseract-ocr/"
+url="https://github.com/tesseract-ocr/tesseract"
 license=('Apache')
 depends=('gcc-libs' 'libtiff' 'libpng' 'leptonica' 'giflib')
-makedepends=('git')
+optdepends=('pango: text2image' 'icu: text2image')
+makedepends=('git' 'pango' 'icu')
 provides=('tesseract')
 conflicts=('tesseract')
 options=('!libtool')
+install=tesseract.install
 source=('tesseract::git+https://github.com/tesseract-ocr/tesseract.git')
 md5sums=('SKIP')
 
@@ -25,11 +27,12 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr
   make
+  make training
 }
 
 package() {
   cd "$srcdir/tesseract"
 
   make DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir" install-langs
+  make DESTDIR="$pkgdir" training-install
 }
