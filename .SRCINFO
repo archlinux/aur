@@ -1,0 +1,20 @@
+pkgbase = octaforge-git
+	pkgdesc = A 3D Game Engine, with Lua scripting, an easy to use in-game editor and more
+	pkgver = 2638.e6b257a
+	pkgrel = 1
+	url = http://octaforge.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = zlib
+	depends = luajit
+	options = !buildflags
+	source = octaforge::git+https://github.com/OctaForge/OF-Engine.git
+	md5sums = SKIP
+
+pkgname = octaforge-git
+
