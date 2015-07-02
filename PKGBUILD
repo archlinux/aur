@@ -15,7 +15,7 @@ pkgdesc="Server automation framework and application"
 arch=('any')
 url="http://puppetlabs.com/puppet/puppet-open-source"
 license=('APACHE')
-depends=('facter' 'hiera')
+depends=('facter2' 'hiera')
 optdepends=('ruby-shadow: user password management'
             'logrotate')
 provides=('puppet')
