@@ -3,7 +3,7 @@
 
 pkgname=fatelf-utils
 _pkgname=fatelf
-pkgver=108.0a4566740a98
+pkgver=111.5e7e594b70fa
 pkgrel=1
 pkgdesc='Utils for FatELF - Universal Binaries for Linux'
 arch=('i686' 'x86_64')
