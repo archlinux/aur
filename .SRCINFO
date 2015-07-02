@@ -1,0 +1,15 @@
+pkgbase = vimpal
+	pkgdesc = A file browser for VIM
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://vimpal.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-tools
+	source = http://sourceforge.net/projects/vimpal/files/vimpal_1.6.0.tar.gz
+	md5sums = f8e24e7e302beb9395c46f052fd5bbfc
+
+pkgname = vimpal
+
