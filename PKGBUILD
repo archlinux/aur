@@ -5,7 +5,7 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=libwebp-git
-pkgver=v0.4.0.62.g9a463c4
+pkgver=v0.4.1.530.g39216e5
 pkgrel=1
 pkgdesc="WebP library and conversion tools"
 arch=(x86_64 i686)
@@ -17,8 +17,18 @@ conflicts=('libwebp')
 provides=('libwebp')
 
 _gitname='libwebp'
-source=("git+http://git.chromium.org/webm/libwebp.git" "gl.patch")
-sha256sums=("SKIP" "2a4771968cd01568487d9ef0427a495cded6b7fac8cc123e8f0d6ade25eab28d")
+
+source=(
+  "git+https://chromium.googlesource.com/webm/libwebp"
+  "0001-fix-gcc-5.1-error-where-c-14-string-literals-are-det.patch"
+  "0002-add-libgl-to-LD-line.patch"
+)
+
+sha256sums=(
+  "SKIP"
+  "921596773f784832cf7c6fd5988b4272baa209cc959f658a894c9b1fdc5225df"
+  "c5390acae9739f9c5c8a47677194c7f24d317bee6003d4fa1886f93fab1226ad"
+)
 
 pkgver() {
   cd $_gitname
@@ -28,7 +38,8 @@ pkgver() {
 build() {
   cd $_gitname
   
-  patch -p1 < ../../gl.patch
+  git am ../0001-fix-gcc-5.1-error-where-c-14-string-literals-are-det.patch
+  git am ../0002-add-libgl-to-LD-line.patch
 
   ./autogen.sh 
   ./configure --prefix=/usr \
