@@ -2,7 +2,7 @@
 
 pkgname=yandex-browser
 pkgver=15.7.2357.2271_1.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="The web browser from Yandex (beta version!).
  It's browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=('x86_64')
