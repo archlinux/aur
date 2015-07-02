@@ -1,0 +1,28 @@
+diff -u -r -N pidgin-musictracker-0.4.22/src/Makefile.in pidgin-musictracker-0.4.22-makefile/src/Makefile.in
+--- pidgin-musictracker-0.4.22/src/Makefile.in	2010-10-10 22:02:43.000000000 +0200
++++ pidgin-musictracker-0.4.22-makefile/src/Makefile.in	2015-02-15 00:53:06.269459588 +0100
+@@ -92,7 +92,7 @@
+ 	filter.lo preferences.lo amarok.lo lastfm.lo exaile.lo \
+ 	audacious.lo xmmsctrl.lo mpd.lo libmpdclient.lo rhythmbox.lo \
+ 	banshee.lo vagalume.lo quodlibet.lo squeezecenter.lo listen.lo \
+-	xmms2.lo mpris.lo dbusbird.lo moc.lo lastfm_ws.lo
++	xmms2.lo mpris.lo mpris2.lo dbusbird.lo moc.lo lastfm_ws.lo
+ musictracker_la_OBJECTS = $(am_musictracker_la_OBJECTS)
+ musictracker_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+@@ -284,6 +284,7 @@
+ 						  listen.c \
+ 						  xmms2.c \
+ 						  mpris.c \
++              mpris2.c \
+ 						  dbusbird.c \
+ 						  moc.c \
+ 						  lastfm_ws.c
+@@ -408,6 +409,7 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mpd.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mpris.Plo@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mpris2.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/musictracker.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/preferences.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quodlibet.Plo@am__quote@
