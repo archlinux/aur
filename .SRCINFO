@@ -11,7 +11,8 @@ pkgbase = vapoursynth-plugin-fluxsmooth-git
 	provides = vapoursynth-plugin-fluxsmooth
 	conflicts = vapoursynth-plugin-fluxsmooth
 	source = fluxsmooth::git+https://github.com/dubhater/vapoursynth-fluxsmooth.git
-	md5sums = SKIP
+	sha1sums = SKIP
+	makedepends_x86_64 = yasm
 
 pkgname = vapoursynth-plugin-fluxsmooth-git
 

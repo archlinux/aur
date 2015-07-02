@@ -10,26 +10,34 @@ url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
+makedepends_x86_64=('yasm')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
-  cd "${_gitname}"
+prepare() {
+  cd "${_plug}"
+
+  export LDFLAGS="${LDFLAGS},-z,noexecstack"
+
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+}
+
+build() {
+  cd "${_plug}"
+  ./configure --prefix=/usr \
+              --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
