@@ -1,0 +1,18 @@
+pkgbase = perl-term-progressbar-quiet
+	pkgdesc = Provide a progress meter if run interactively
+	pkgver = 0.31
+	pkgrel = 2
+	url = https://metacpan.org/release/Term-ProgressBar-Quiet
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-simple
+	depends = perl-io-interactive
+	depends = perl-term-progressbar
+	depends = perl-test-mockobject
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/L/LB/LBROCARD/Term-ProgressBar-Quiet-0.31.tar.gz
+	sha512sums = f48502ac57d236678159e7b6efd70007bb9ea7b27da7d933c53ccfeab562c6e88c291cd002fc65af8ccc98ff8843a5221048276351491cb324f548bf3cdf3934
+
+pkgname = perl-term-progressbar-quiet
+
