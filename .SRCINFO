@@ -1,0 +1,16 @@
+pkgbase = python2-yenc
+	pkgdesc = yEnc encoding/decoding module for python2
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = http://www.golug.it/yenc.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	conflicts = python-yenc
+	replaces = python-yenc
+	source = http://bitbucket.org/dual75/yenc/get/0.4.0.tar.bz2
+	md5sums = 60e1a535b0e0c865c2cc4e7ddf18d9a4
+
+pkgname = python2-yenc
+
