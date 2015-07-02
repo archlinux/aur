@@ -1,24 +1,24 @@
 # Maintainer: Amir Mohammadi <183.amir@gmail.com>
 pkgname=gahshomar
-pkgver=4.3.3
-pkgrel=2
+pkgver=4.3.4
+pkgrel=1
 pkgdesc="A Persian (Jalali/Farsi) calendar"
-arch=('any')
+arch=(i686 x86_64)
 url="https://gahshomar.github.io/gahshomar/"
 license=('GPL3')
 replaces=('persian-calendar')
 conflicts=('persian-calendar')
-depends=('python-gobject' 'jcal-git' 'libpeas' 'gtk3' 'gsettings-desktop-schemas' 'yelp')
-makedepends=('intltool' 'yelp-tools' 'gnome-common') # 'gobject-introspection'
+depends=('python-gobject' 'jcal-git' 'libpeas')
+# makedepends=('intltool' 'yelp-tools' 'gnome-common') # 'gobject-introspection'
 optdepends=('libappindicator-gtk3: for the app indicator plugin'
 			'gnome-shell: for the gnome-shell extension')
 install=gahshomar.install
-source=($pkgname-$pkgver.tar.gz::https://github.com/Gahshomar/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('2a2dd73e35c993a4d333befb225bc638')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Gahshomar/gahshomar/releases/download/v$pkgver/gahshomar-$pkgver.tar.gz)
+md5sums=('592715282d04f163de3aecbf1763787a')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-	./autogen.sh --prefix=/usr --disable-schemas-compile
+	./configure --prefix=/usr --disable-schemas-compile
 	make
 }
 
