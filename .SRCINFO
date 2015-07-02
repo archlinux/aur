@@ -1,0 +1,18 @@
+pkgbase = perl-gtk2-ex-mplayerembed
+	pkgdesc = a widget to embed the MPlayer media player into GTK+ applications
+	pkgver = 0.02
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Gtk2-Ex-MPlayerEmbed/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = gtk2-perl
+	depends = mplayer
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GB/GBROWN/Gtk2-Ex-MPlayerEmbed-0.02.tar.gz
+	sha256sums = bf6459def11b0ad221a896a238a81dd6b60d688ad30c7cc4ec7b7265dd9221a2
+
+pkgname = perl-gtk2-ex-mplayerembed
+
