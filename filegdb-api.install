@@ -1,0 +1,5 @@
+post_install() {
+	sbin/ldconfig
+	echo "## Please see the ESRI license agreements installed to /usr/share/licenses/filegdb-api"
+	echo "## See license agreements userrestrictions.txt and E204_E300.pdf"
+}
