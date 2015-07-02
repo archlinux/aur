@@ -1,0 +1,22 @@
+diff -Nru skdet-1.0/src/skdet.c skdet-1.0-fixed/src/skdet.c
+--- skdet-1.0/src/skdet.c	2005-01-04 22:12:23.000000000 -0500
++++ skdet-1.0-fixed/src/skdet.c	2010-03-14 14:01:58.000000000 -0400
+@@ -2,6 +2,7 @@
+ 
+ #include <stdio.h>
+ #include <unistd.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ 
+ int main(int argc, char *argv[])
+diff -Nru skdet-1.0/src/usage.c skdet-1.0-fixed/src/usage.c
+--- skdet-1.0/src/usage.c	2005-01-04 22:10:54.000000000 -0500
++++ skdet-1.0-fixed/src/usage.c	2010-03-14 14:02:12.000000000 -0400
+@@ -1,6 +1,7 @@
+ /* usage.c - print usage information */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "../include/skdet.h"
+ 
+ void usage(char *prog)
