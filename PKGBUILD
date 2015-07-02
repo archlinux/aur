@@ -29,7 +29,7 @@ prepare() {
 #       -i KNLMeansCL/src/KNLMeansCL.h
 
   echo "all:
-	g++ -o "lib${_plug}.so" -std=c++11 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS/,--as-needed/} "$(pkg-config --cflags vapoursynth)" -fPIC -shared -lOpenCL KNLMeansCL/src/KNLMeansCL.cpp" > Makefile
+	g++ -o lib${_plug}.so ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} "$(pkg-config --cflags vapoursynth)" KNLMeansCL/src/KNLMeansCL.cpp -std=c++11 -fPIC -shared -lOpenCL" > Makefile
 }
 
 build() {
