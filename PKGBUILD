@@ -2,7 +2,7 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=papyros-settings-git
-pkgver=0.0.1.r1.g585dda2
+pkgver=0.0.1.r3.g56fa0a4
 pkgrel=1
 pkgdesc="The file settings for Papyros"
 arch=("i686" "x86_64")

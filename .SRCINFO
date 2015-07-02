@@ -1,6 +1,6 @@
 pkgbase = papyros-settings-git
 	pkgdesc = The file settings for Papyros
-	pkgver = 0.0.1.r1.g585dda2
+	pkgver = 0.0.1.r3.g56fa0a4
 	pkgrel = 1
 	url = https://github.com/papyros/settings-app
 	arch = i686
