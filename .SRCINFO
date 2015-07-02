@@ -1,0 +1,441 @@
+pkgbase = tesseract-data-git
+	pkgdesc = Trained language data for tesseract OCR Engine
+	pkgver = 3.074c372
+	pkgrel = 1
+	url = https://github.com/tesseract-ocr/tessdata
+	arch = i686
+	arch = x86_64
+	groups = tesseract-data-git
+	license = Apache
+	depends = tesseract
+	source = tessdata::git+https://github.com/tesseract-ocr/tessdata.git
+	md5sums = SKIP
+
+pkgname = tesseract-data-afr-git
+	provides = tesseract-data-afr
+	conflicts = tesseract-data-afr
+
+pkgname = tesseract-data-amh-git
+	provides = tesseract-data-amh
+	conflicts = tesseract-data-amh
+
+pkgname = tesseract-data-ara-git
+	provides = tesseract-data-ara
+	conflicts = tesseract-data-ara
+
+pkgname = tesseract-data-asm-git
+	provides = tesseract-data-asm
+	conflicts = tesseract-data-asm
+
+pkgname = tesseract-data-aze_cyrl-git
+	provides = tesseract-data-aze_cyrl
+	conflicts = tesseract-data-aze_cyrl
+
+pkgname = tesseract-data-aze-git
+	provides = tesseract-data-aze
+	conflicts = tesseract-data-aze
+
+pkgname = tesseract-data-bel-git
+	provides = tesseract-data-bel
+	conflicts = tesseract-data-bel
+
+pkgname = tesseract-data-ben-git
+	provides = tesseract-data-ben
+	conflicts = tesseract-data-ben
+
+pkgname = tesseract-data-bod-git
+	provides = tesseract-data-bod
+	conflicts = tesseract-data-bod
+
+pkgname = tesseract-data-bos-git
+	provides = tesseract-data-bos
+	conflicts = tesseract-data-bos
+
+pkgname = tesseract-data-bul-git
+	provides = tesseract-data-bul
+	conflicts = tesseract-data-bul
+
+pkgname = tesseract-data-cat-git
+	provides = tesseract-data-cat
+	conflicts = tesseract-data-cat
+
+pkgname = tesseract-data-ceb-git
+	provides = tesseract-data-ceb
+	conflicts = tesseract-data-ceb
+
+pkgname = tesseract-data-ces-git
+	provides = tesseract-data-ces
+	conflicts = tesseract-data-ces
+
+pkgname = tesseract-data-chi_sim-git
+	provides = tesseract-data-chi_sim
+	conflicts = tesseract-data-chi_sim
+
+pkgname = tesseract-data-chi_tra-git
+	provides = tesseract-data-chi_tra
+	conflicts = tesseract-data-chi_tra
+
+pkgname = tesseract-data-chr-git
+	provides = tesseract-data-chr
+	conflicts = tesseract-data-chr
+
+pkgname = tesseract-data-cym-git
+	provides = tesseract-data-cym
+	conflicts = tesseract-data-cym
+
+pkgname = tesseract-data-dan_frak-git
+	provides = tesseract-data-dan_frak
+	conflicts = tesseract-data-dan_frak
+
+pkgname = tesseract-data-dan-git
+	provides = tesseract-data-dan
+	conflicts = tesseract-data-dan
+
+pkgname = tesseract-data-deu_frak-git
+	provides = tesseract-data-deu_frak
+	conflicts = tesseract-data-deu_frak
+
+pkgname = tesseract-data-deu-git
+	provides = tesseract-data-deu
+	conflicts = tesseract-data-deu
+
+pkgname = tesseract-data-dzo-git
+	provides = tesseract-data-dzo
+	conflicts = tesseract-data-dzo
+
+pkgname = tesseract-data-ell-git
+	provides = tesseract-data-ell
+	conflicts = tesseract-data-ell
+
+pkgname = tesseract-data-eng-git
+	provides = tesseract-data-eng
+	conflicts = tesseract-data-eng
+
+pkgname = tesseract-data-enm-git
+	provides = tesseract-data-enm
+	conflicts = tesseract-data-enm
+
+pkgname = tesseract-data-epo-git
+	provides = tesseract-data-epo
+	conflicts = tesseract-data-epo
+
+pkgname = tesseract-data-equ-git
+	provides = tesseract-data-equ
+	conflicts = tesseract-data-equ
+
+pkgname = tesseract-data-est-git
+	provides = tesseract-data-est
+	conflicts = tesseract-data-est
+
+pkgname = tesseract-data-eus-git
+	provides = tesseract-data-eus
+	conflicts = tesseract-data-eus
+
+pkgname = tesseract-data-fas-git
+	provides = tesseract-data-fas
+	conflicts = tesseract-data-fas
+
+pkgname = tesseract-data-fin-git
+	provides = tesseract-data-fin
+	conflicts = tesseract-data-fin
+
+pkgname = tesseract-data-fra-git
+	provides = tesseract-data-fra
+	conflicts = tesseract-data-fra
+
+pkgname = tesseract-data-frk-git
+	provides = tesseract-data-frk
+	conflicts = tesseract-data-frk
+
+pkgname = tesseract-data-frm-git
+	provides = tesseract-data-frm
+	conflicts = tesseract-data-frm
+
+pkgname = tesseract-data-gle-git
+	provides = tesseract-data-gle
+	conflicts = tesseract-data-gle
+
+pkgname = tesseract-data-glg-git
+	provides = tesseract-data-glg
+	conflicts = tesseract-data-glg
+
+pkgname = tesseract-data-grc-git
+	provides = tesseract-data-grc
+	conflicts = tesseract-data-grc
+
+pkgname = tesseract-data-guj-git
+	provides = tesseract-data-guj
+	conflicts = tesseract-data-guj
+
+pkgname = tesseract-data-hat-git
+	provides = tesseract-data-hat
+	conflicts = tesseract-data-hat
+
+pkgname = tesseract-data-heb-git
+	provides = tesseract-data-heb
+	conflicts = tesseract-data-heb
+
+pkgname = tesseract-data-hin-git
+	provides = tesseract-data-hin
+	conflicts = tesseract-data-hin
+
+pkgname = tesseract-data-hrv-git
+	provides = tesseract-data-hrv
+	conflicts = tesseract-data-hrv
+
+pkgname = tesseract-data-hun-git
+	provides = tesseract-data-hun
+	conflicts = tesseract-data-hun
+
+pkgname = tesseract-data-iku-git
+	provides = tesseract-data-iku
+	conflicts = tesseract-data-iku
+
+pkgname = tesseract-data-ind-git
+	provides = tesseract-data-ind
+	conflicts = tesseract-data-ind
+
+pkgname = tesseract-data-isl-git
+	provides = tesseract-data-isl
+	conflicts = tesseract-data-isl
+
+pkgname = tesseract-data-ita_old-git
+	provides = tesseract-data-ita_old
+	conflicts = tesseract-data-ita_old
+
+pkgname = tesseract-data-ita-git
+	provides = tesseract-data-ita
+	conflicts = tesseract-data-ita
+
+pkgname = tesseract-data-jav-git
+	provides = tesseract-data-jav
+	conflicts = tesseract-data-jav
+
+pkgname = tesseract-data-jpn-git
+	provides = tesseract-data-jpn
+	conflicts = tesseract-data-jpn
+
+pkgname = tesseract-data-kan-git
+	provides = tesseract-data-kan
+	conflicts = tesseract-data-kan
+
+pkgname = tesseract-data-kat_old-git
+	provides = tesseract-data-kat_old
+	conflicts = tesseract-data-kat_old
+
+pkgname = tesseract-data-kat-git
+	provides = tesseract-data-kat
+	conflicts = tesseract-data-kat
+
+pkgname = tesseract-data-kaz-git
+	provides = tesseract-data-kaz
+	conflicts = tesseract-data-kaz
+
+pkgname = tesseract-data-khm-git
+	provides = tesseract-data-khm
+	conflicts = tesseract-data-khm
+
+pkgname = tesseract-data-kir-git
+	provides = tesseract-data-kir
+	conflicts = tesseract-data-kir
+
+pkgname = tesseract-data-kor-git
+	provides = tesseract-data-kor
+	conflicts = tesseract-data-kor
+
+pkgname = tesseract-data-kur-git
+	provides = tesseract-data-kur
+	conflicts = tesseract-data-kur
+
+pkgname = tesseract-data-lao-git
+	provides = tesseract-data-lao
+	conflicts = tesseract-data-lao
+
+pkgname = tesseract-data-lat-git
+	provides = tesseract-data-lat
+	conflicts = tesseract-data-lat
+
+pkgname = tesseract-data-lav-git
+	provides = tesseract-data-lav
+	conflicts = tesseract-data-lav
+
+pkgname = tesseract-data-lit-git
+	provides = tesseract-data-lit
+	conflicts = tesseract-data-lit
+
+pkgname = tesseract-data-mal-git
+	provides = tesseract-data-mal
+	conflicts = tesseract-data-mal
+
+pkgname = tesseract-data-mar-git
+	provides = tesseract-data-mar
+	conflicts = tesseract-data-mar
+
+pkgname = tesseract-data-mkd-git
+	provides = tesseract-data-mkd
+	conflicts = tesseract-data-mkd
+
+pkgname = tesseract-data-mlt-git
+	provides = tesseract-data-mlt
+	conflicts = tesseract-data-mlt
+
+pkgname = tesseract-data-msa-git
+	provides = tesseract-data-msa
+	conflicts = tesseract-data-msa
+
+pkgname = tesseract-data-mya-git
+	provides = tesseract-data-mya
+	conflicts = tesseract-data-mya
+
+pkgname = tesseract-data-nep-git
+	provides = tesseract-data-nep
+	conflicts = tesseract-data-nep
+
+pkgname = tesseract-data-nld-git
+	provides = tesseract-data-nld
+	conflicts = tesseract-data-nld
+
+pkgname = tesseract-data-nor-git
+	provides = tesseract-data-nor
+	conflicts = tesseract-data-nor
+
+pkgname = tesseract-data-ori-git
+	provides = tesseract-data-ori
+	conflicts = tesseract-data-ori
+
+pkgname = tesseract-data-osd-git
+	provides = tesseract-data-osd
+	conflicts = tesseract-data-osd
+
+pkgname = tesseract-data-pan-git
+	provides = tesseract-data-pan
+	conflicts = tesseract-data-pan
+
+pkgname = tesseract-data-pol-git
+	provides = tesseract-data-pol
+	conflicts = tesseract-data-pol
+
+pkgname = tesseract-data-por-git
+	provides = tesseract-data-por
+	conflicts = tesseract-data-por
+
+pkgname = tesseract-data-pus-git
+	provides = tesseract-data-pus
+	conflicts = tesseract-data-pus
+
+pkgname = tesseract-data-ron-git
+	provides = tesseract-data-ron
+	conflicts = tesseract-data-ron
+
+pkgname = tesseract-data-rus-git
+	provides = tesseract-data-rus
+	conflicts = tesseract-data-rus
+
+pkgname = tesseract-data-san-git
+	provides = tesseract-data-san
+	conflicts = tesseract-data-san
+
+pkgname = tesseract-data-sin-git
+	provides = tesseract-data-sin
+	conflicts = tesseract-data-sin
+
+pkgname = tesseract-data-slk_frak-git
+	provides = tesseract-data-slk_frak
+	conflicts = tesseract-data-slk_frak
+
+pkgname = tesseract-data-slk-git
+	provides = tesseract-data-slk
+	conflicts = tesseract-data-slk
+
+pkgname = tesseract-data-slv-git
+	provides = tesseract-data-slv
+	conflicts = tesseract-data-slv
+
+pkgname = tesseract-data-spa_old-git
+	provides = tesseract-data-spa_old
+	conflicts = tesseract-data-spa_old
+
+pkgname = tesseract-data-spa-git
+	provides = tesseract-data-spa
+	conflicts = tesseract-data-spa
+
+pkgname = tesseract-data-sqi-git
+	provides = tesseract-data-sqi
+	conflicts = tesseract-data-sqi
+
+pkgname = tesseract-data-srp_latn-git
+	provides = tesseract-data-srp_latn
+	conflicts = tesseract-data-srp_latn
+
+pkgname = tesseract-data-srp-git
+	provides = tesseract-data-srp
+	conflicts = tesseract-data-srp
+
+pkgname = tesseract-data-swa-git
+	provides = tesseract-data-swa
+	conflicts = tesseract-data-swa
+
+pkgname = tesseract-data-swe-git
+	provides = tesseract-data-swe
+	conflicts = tesseract-data-swe
+
+pkgname = tesseract-data-syr-git
+	provides = tesseract-data-syr
+	conflicts = tesseract-data-syr
+
+pkgname = tesseract-data-tam-git
+	provides = tesseract-data-tam
+	conflicts = tesseract-data-tam
+
+pkgname = tesseract-data-tel-git
+	provides = tesseract-data-tel
+	conflicts = tesseract-data-tel
+
+pkgname = tesseract-data-tgk-git
+	provides = tesseract-data-tgk
+	conflicts = tesseract-data-tgk
+
+pkgname = tesseract-data-tgl-git
+	provides = tesseract-data-tgl
+	conflicts = tesseract-data-tgl
+
+pkgname = tesseract-data-tha-git
+	provides = tesseract-data-tha
+	conflicts = tesseract-data-tha
+
+pkgname = tesseract-data-tir-git
+	provides = tesseract-data-tir
+	conflicts = tesseract-data-tir
+
+pkgname = tesseract-data-tur-git
+	provides = tesseract-data-tur
+	conflicts = tesseract-data-tur
+
+pkgname = tesseract-data-uig-git
+	provides = tesseract-data-uig
+	conflicts = tesseract-data-uig
+
+pkgname = tesseract-data-ukr-git
+	provides = tesseract-data-ukr
+	conflicts = tesseract-data-ukr
+
+pkgname = tesseract-data-urd-git
+	provides = tesseract-data-urd
+	conflicts = tesseract-data-urd
+
+pkgname = tesseract-data-uzb_cyrl-git
+	provides = tesseract-data-uzb_cyrl
+	conflicts = tesseract-data-uzb_cyrl
+
+pkgname = tesseract-data-uzb-git
+	provides = tesseract-data-uzb
+	conflicts = tesseract-data-uzb
+
+pkgname = tesseract-data-vie-git
+	provides = tesseract-data-vie
+	conflicts = tesseract-data-vie
+
+pkgname = tesseract-data-yid-git
+	provides = tesseract-data-yid
+	conflicts = tesseract-data-yid
+
