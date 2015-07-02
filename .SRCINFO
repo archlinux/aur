@@ -1,0 +1,16 @@
+pkgbase = libodb-boost
+	pkgdesc = The ODB boost profile library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.codesynthesis.com/products/odb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libodb
+	depends = boost-libs
+	options = !libtool
+	source = http://www.codesynthesis.com/download/odb/2.4/libodb-boost-2.4.0.tar.bz2
+	md5sums = 6b0127619cab3244ae838780db890b9d
+
+pkgname = libodb-boost
+
