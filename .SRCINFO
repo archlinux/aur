@@ -1,0 +1,16 @@
+pkgbase = gdm-control
+	pkgdesc = a small cli tool which gives you the ability to change the standard behaviour of GDM-2.20 after end of your current session
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = http://openbox.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = libxau
+	depends = gdm-old<2.21
+	source = http://www.icculus.org/openbox/releases/openbox-3.5.2.tar.gz
+	sha256sums = 128fb4ef11f83f6edb1685cfc04f44a16a5322082fc519f9d7cac84fc658af33
+
+pkgname = gdm-control
+
