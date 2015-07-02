@@ -50,8 +50,6 @@ sha256sums=('376519ad8ee97bfc19d79218b57abfb7fab96789c29999fa387ff7801619d4d9'
 
 build() {
     cd $srcdir
-    # BSDtar sets too many execute bits. Stop this from happening.
-    find -type f -exec chmod -x {} \;
     # Allegro gives us jpgalleg now... but the name in the makefile is wrong!
     sed -i "s/jpgal/jpgalleg/" makefile
     # -mwindows most definitely not supported by gcc and not what we want.
