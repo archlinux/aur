@@ -1,0 +1,14 @@
+pkgbase = errut
+	pkgdesc = Set of simple error handling utilities in C++.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://research.edm.uhasselt.be/~jori/page/index.php?n=Misc.ErrUt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = cmake
+	source = http://research.edm.uhasselt.be/jori/errut/errut-1.0.1.tar.bz2
+	md5sums = c8a7253f71a659434d835869f95c2428
+
+pkgname = errut
+
