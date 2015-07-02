@@ -1,0 +1,18 @@
+pkgbase = tau
+	pkgdesc = Profiling and tracing toolkit for Fortran, C, C++, Java and Python programs
+	pkgver = 2.23.1
+	pkgrel = 1
+	url = http://www.cs.uoregon.edu/research/tau/home.php
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc
+	optdepends = java-runtime: for ParaProf and other GUI utilities
+	options = staticlibs
+	source = http://tau.uoregon.edu/tau.tgz
+	source = tau.sh
+	md5sums = SKIP
+	md5sums = 52fa5f1687fe0ad889aa411d1b5b9982
+
+pkgname = tau
+
