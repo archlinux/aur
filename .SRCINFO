@@ -1,0 +1,20 @@
+pkgbase = wt-classes
+	pkgdesc = Utility classes used by Wt applications
+	pkgver = 1.4.1
+	pkgrel = 3
+	url = https://bitbucket.org/starius/wt-classes
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-docutils
+	makedepends = doxygen
+	makedepends = cmake
+	depends = wt
+	depends = python
+	depends = pango
+	options = !emptydirs
+	source = https://bitbucket.org/starius/wt-classes/downloads/wt-classes-1.4.1.tar.gz
+	md5sums = fb9284cf7dd36a9041ff7721c824a1e7
+
+pkgname = wt-classes
+
