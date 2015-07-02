@@ -1,0 +1,16 @@
+pkgbase = perl-test-taint
+	pkgdesc = Tools to test taintedness
+	pkgver = 1.06
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Test-Taint/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic2
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Taint-1.06.tar.gz
+	sha256sums = 721b51ca91d248ea5ff4f99ca49c05a080e6f0fc9f7983e96121b7775ab93107
+
+pkgname = perl-test-taint
+
