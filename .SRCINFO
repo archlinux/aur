@@ -1,0 +1,19 @@
+pkgbase = alien_package_converter
+	pkgdesc = Alien is a program that converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
+	pkgver = 8.93
+	pkgrel = 1
+	url = http://joeyh.name/code/alien/
+	arch = any
+	license = GPL2
+	makedepends = perl>=5.004
+	depends = perl>=5.004
+	optdepends = debhelper>=3
+	optdepends = rpm
+	optdepends = dpkg
+	optdepends = bzip2
+	options = !emptydirs
+	source = http://ftp.de.debian.org/debian/pool/main/a/alien/alien_8.93.tar.gz
+	sha256sums = deb4e0c590ea7c44f2bc806b2c4cde6abbef32017ae6d06ee30539ae28faf896
+
+pkgname = alien_package_converter
+
