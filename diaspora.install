@@ -19,7 +19,6 @@ post_install() {
 post_upgrade() {
   _chown
   echo "Read the upgrade instructions at https://wiki.archlinux.org/index.php/Diaspora"
-  echo "Make sure to update /etc/webapps/diaspora/secret_token.rb instructed in https://github.com/diaspora/diaspora/blob/develop/Changelog.md#rails-4---manual-action-required"
 }
 
 ## arg 1:  the old package version

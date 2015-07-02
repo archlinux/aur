@@ -2,8 +2,8 @@
 pkgbase=diaspora-git
 _projectname=diaspora
 pkgname=('diaspora-mysql-git' 'diaspora-postgresql-git')
-pkgver=0.5.0.1.r380.gb0de392
-pkgrel=2
+pkgver=0.5.1.2.r271.g1cd2562
+pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head)"
 arch=('i686' 'x86_64')
 url="http://diasporafoundation.org"
@@ -76,6 +76,7 @@ _package() {
       $_srcdir/config/defaults.yml
   sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \
          -e "s|#rails_environment: 'production'|rails_environment: 'production'|" \
+         -e "s|#listen: 'unix:tmp/diaspora.sock'|listen: '/run/diaspora/diaspora.sock'|" \
       $_srcdir/config/diaspora.yml.example
   sed -i -e "s|<<: \*postgresql|<<: *$_db|" \
          -e "s|#<<: \*mysql||" \
@@ -99,7 +100,7 @@ _package() {
   install -Dm644 $_srcdir/.gemrc $pkgdir/usr/share/webapps/$_projectname/.gemrc
   install -Dm640 $_srcdir/config/initializers/secret_token.rb $pkgdir/etc/webapps/$_projectname/secret_token.rb
   install -Dm644 $srcdir/$_projectname.service $pkgdir/usr/lib/systemd/system/$_projectname.service
-  install -Dm644 $srcdir/$_projectname.tmpfiles.d.conf $pkgdir/usr/lib/tmpfiles.d/$pkgbase.conf
+  install -Dm644 $srcdir/$_projectname.tmpfiles.d.conf $pkgdir/usr/lib/tmpfiles.d/$_projectname.conf
   install -Dm644 $srcdir/$_projectname.bashrc  $pkgdir/usr/share/webapps/$_projectname/.bashrc
   install -Dm644 $srcdir/$_projectname.bash_profile $pkgdir/usr/share/webapps/$_projectname/.bash_profile
 
@@ -123,7 +124,6 @@ _package() {
 
   msg "Create symlinks"
   install -dm755 $pkgdir/var/log/$_projectname
-  install -dm755 $pkgdir/tmp/$_projectname
   install -dm755 $pkgdir/var/lib/$_projectname/uploads
   rm -Rf $pkgdir/usr/share/webapps/$_projectname/log \
          $pkgdir/usr/share/webapps/$_projectname/tmp \
@@ -153,8 +153,8 @@ package_diaspora-postgresql-git() {
 }
 
 sha256sums=('SKIP'
-            'e619b842b16fce0006e9273ad299058e4e2e2c81b9694055c2acd5c745985f1c'
+            'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'ecc9b0ca36fd277a5d9b2fa2df11feef877ffb2b2ac4c6012e23db28ced05ee6'
-            '26ae975338c5ab3fc506bd7bdb13d1b9f853ac0b9d8e591babf63c22a502d3be'
+            '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
             '86ea685b6989ce855e6371dbb4de615e2b8d939643676e8e4e07326bc5220c87'
             '29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715')
