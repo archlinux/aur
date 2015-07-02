@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 163
+	pkgver = 163.a
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
@@ -25,7 +25,7 @@ pkgbase = hydrus
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=11309c732d16bfac39f2240f7059e46bc63f2ef2
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=1e162828f4b8c6d6790b7ab9b0fb2438ddbd3a29
 	source = paths-in-opt.patch
 	source = running-the-server.patch
 	source = cython-workarounds.patch

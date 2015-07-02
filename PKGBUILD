@@ -13,7 +13,7 @@ $build_cython || options=(!strip)  # Don't strip libs because there aren't any; 
 DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
-pkgver=163
+pkgver=163.a
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -26,7 +26,7 @@ makedepends=(git)
 $build_cython && makedepends+=(cython2 parallel)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding')
-source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=11309c732d16bfac39f2240f7059e46bc63f2ef2"
+source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=1e162828f4b8c6d6790b7ab9b0fb2438ddbd3a29"
         paths-in-opt.patch
         running-the-server.patch
         cython-workarounds.patch
