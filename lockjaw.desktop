@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LockJaw
+Comment=Tetromino Game
+Icon=lockjaw.xpm
+Exec=lockjaw
+Terminal=false
+Type=Application
+Categories=Application;Game
+StartupNotify=true
+Encoding=UTF-8
