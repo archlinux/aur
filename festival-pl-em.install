@@ -1,0 +1,24 @@
+# vim: set ft=sh:
+post_install() {
+cat <<EOF
+>>> Polski głos żeński dla programu festival..
+>>>
+>>> Aby dowiedzieć się więcej uruchom:
+>>>   festival-pl --help
+>>>
+>>> Treści licencji znajdziesz tutaj:
+>>>   Moduł głosu: /usr/share/licenses/festival-pl-em/cstr_pl_em_diphone
+>>>   festival-pl: /usr/share/licenses/festival-pl-em/festival-pl-skrypt
+>>> Jeżeli nie zgadzasz się z warunkami licencji, odinstaluj program,.
+>>>
+>>> W celu przetestowania modułu uruchom festival i wpisz:
+>>>   (voice_cstr_pl_em_diphone)
+>>>   (SayText "Wpisz tutaj tekst")
+>>> ctrl+d = opuszczenie programu
+EOF
+}
+
+op=$1
+shift
+
+$op $*
