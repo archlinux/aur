@@ -1,0 +1,24 @@
+pkgbase = heli-x6
+	pkgdesc = Latest Professional R/C helicopter flight simulator from Heli x
+	pkgver = 6.0.1614
+	pkgrel = 1
+	url = http://www.heli-x.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = java-environment-common
+	depends = lib32-libxcursor
+	depends = lib32-libxrandr
+	depends = bash
+	depends = lib32-libxxf86vm
+	options = !strip
+	source = heli-x6
+	source = heli-x6.desktop
+	source = http://www.heli-x.info/1614/HELI-X6.tar.gz
+	md5sums = b6bc5595d0dd2b3715b5a78f3b58feda
+	md5sums = 1a42b994dee957dfd17e5db2f4cec098
+	md5sums = 9e0f57f74ce37f9a80013c0fb5de82bc
+
+pkgname = heli-x6
+

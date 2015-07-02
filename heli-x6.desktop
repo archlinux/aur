@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=6.0.1608
+Type=Application
+Name=Heli X6
+Comment=Professional R/C helicopter flight simulator
+Exec=/usr/bin/heli-x6
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/heli-x6.png
+Categories=Game;
+Terminal=false
+StartupNotify=false
