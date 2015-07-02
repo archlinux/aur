@@ -1,0 +1,16 @@
+pkgbase = ppd-xerox-colorqube9300
+	pkgdesc = Printer driver for Xerox ColorQube 9301/9302/9303
+	pkgver = 5.371.0.0
+	pkgrel = 1
+	url = http://www.support.xerox.com/support/colorqube-9300-series/support/enus.html
+	arch = any
+	license = custom
+	makedepends = unrar
+	depends = cups
+	source = http://download.support.xerox.com/pub/drivers/CQ930X/drivers/win7/en_GB/CQ930X_PPD_en-US.exe
+	source = LICENSE
+	sha256sums = 76251f5756b07f5cf789a479c99192051e9bc546f4da09a17947bd27ef5aef57
+	sha256sums = af5852333e592a9782140397763e15cd1959f7248e74f6d3aa4c0f48120c2a6e
+
+pkgname = ppd-xerox-colorqube9300
+
