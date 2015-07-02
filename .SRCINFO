@@ -1,0 +1,14 @@
+pkgbase = crackpkcs12
+	pkgdesc = A tool to audit PKCS12 files passwords
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = http://crackpkcs12.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = http://download.sourceforge.net/project/crackpkcs12/0.2.9/crackpkcs12-0.2.9.tar.gz
+	md5sums = 6094f08b4fa9944a052f5f0a5a6c2e5d
+
+pkgname = crackpkcs12
+
