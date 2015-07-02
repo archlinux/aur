@@ -1,0 +1,14 @@
+pkgbase = python2-django-pyscss-liberty
+	pkgdesc = Makes it easier to use PySCSS in Django
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/django-pyscss
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2-pyscss-liberty
+	source = https://pypi.python.org/packages/source/d/django-pyscss/django-pyscss-2.0.2.tar.gz
+	sha256sums = 0f4844f8fd3f69f4d428a616fdcf2b650a24862dd81443ae3fba14980c7b0615
+
+pkgname = python2-django-pyscss-liberty
+
