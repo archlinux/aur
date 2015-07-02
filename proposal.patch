@@ -54,24 +54,23 @@
  			alarm(waitSeconds);
  			return;
 
-
---- a/brightd.c 2015-06-30 23:20:50.636205206 +0000
-+++ b/brightd.c 2015-06-30 23:34:15.452916469 +0000
+--- a/brightd.c	2015-06-30 23:20:50.636205206 +0000
++++ b/brightd.c	2015-06-30 23:34:15.452916469 +0000
 @@ -121,7 +121,7 @@
  /*
   * Write an debug message to the console
   */
 -inline void info(char *str) { /*{{{*/
 +void info(char *str) { /*{{{*/
-    if(verbose == 1 && daemonize == 0) {
-        printf("%s\n", str);
-    }
+ 	if(verbose == 1 && daemonize == 0) {
+ 		printf("%s\n", str);
+ 	}
 @@ -307,7 +307,7 @@
  /*
   * Event source filter
   */
 -inline char isEventFileValid(char *file) { /* {{{ */
 +char isEventFileValid(char *file) { /* {{{ */
-    if(*((char*)&eventSourceFilter) == 0) {
-        return 1;
-    }            
+ 	if(*((char*)&eventSourceFilter) == 0) {
+ 		return 1;
+ 	}

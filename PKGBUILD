@@ -5,7 +5,7 @@
 
 pkgname=brightd
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Automatically dims screen when there is no user input (like a macbook :-).'
 arch=('i686' 'x86_64')
 license=('GPL2')
