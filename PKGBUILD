@@ -1,0 +1,32 @@
+# Maintainer: Matthias Rabault <matthias.rabault@mailoo.org>
+
+pkgname=msvpwn-git
+pkgver=0
+pkgrel=1
+pkgdesc="Bypass Windows' authentication via binary patching"
+arch=('i686', 'x86_64')
+url="https://bitbucket.org/mrabault/msvpwn"
+license=('MIT')
+depends=('openssl')
+makedepends=('git')
+provides=('msvpwn')
+source=("$pkgname::git+https://bitbucket.org/mrabault/msvpwn.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe | sed -r 's/([^-]*-g)/r\1/;s/-/./g' | sed -r 's/v//g'
+}
+
+build() {
+  cd "$pkgname"
+  make
+}
+
+package() {
+  cd "$pkgname"
+  make PREFIX="$pkgdir"/usr install
+  mkdir -p "$pkgdir"/usr/share/licenses/msvpwn
+  install -m 755 LICENSE "$pkgdir"/usr/share/licenses/msvpwn/LICENSE
+}
+

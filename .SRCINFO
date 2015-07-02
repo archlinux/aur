@@ -1,0 +1,16 @@
+pkgbase = msvpwn-git
+	pkgdesc = Bypass Windows' authentication via binary patching
+	pkgver = 0
+	pkgrel = 1
+	url = https://bitbucket.org/mrabault/msvpwn
+	arch = i686,
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssl
+	provides = msvpwn
+	source = msvpwn-git::git+https://bitbucket.org/mrabault/msvpwn.git
+	md5sums = SKIP
+
+pkgname = msvpwn-git
+
