@@ -1,0 +1,16 @@
+pkgbase = perl-sys-filesystem
+	pkgdesc = Retrieve list of filesystems and their properties
+	pkgver = 1.406
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sys-Filesystem/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-module-pluggable
+	depends = perl-params-util
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RE/REHSACK/Sys-Filesystem-1.406.tar.gz
+	sha256sums = 9a1d43326226f8aea3359849383784840ef930e5c4efafa4cbd5764d2c7a6afb
+
+pkgname = perl-sys-filesystem
+
