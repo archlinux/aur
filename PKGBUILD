@@ -11,6 +11,7 @@ license=('custom')
 options=(!strip)
 depends=('gconf' 'alsa-lib'  'cairo' 'libcap' 'libcups' 'libdbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs'  'gdk-pixbuf2' 'glib2'  'gtk2' 'nspr'  'nss'  'pango'  'libx11' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi'  'libxkbfile' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'ca-certificates'  'curl' 'ld-lsb' 'xdg-utils' 'wget' 'libudev.so.0')
 makedepends=('xz')
+conflicts=('yandex-browser-beta')
 install='yandex-browser.install'
 source=("$pkgname.deb::http://browser.yandex.ru/download/?beta=1&os=linux&x64=1&package=deb&full=1")
 md5sums=('SKIP')
