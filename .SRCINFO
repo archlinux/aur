@@ -1,0 +1,14 @@
+pkgbase = vtclock
+	pkgdesc = Text-mode full-screen digital clock
+	pkgver = 20050220
+	pkgrel = 2
+	url = http://webonastick.com/vtclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://webonastick.com/vtclock/vtclock-2005-02-20.tar.gz
+	sha1sums = aabc321bd46ceb9015ee5cd84b526487d63f2dc1
+
+pkgname = vtclock
+
