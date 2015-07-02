@@ -1,33 +1,34 @@
-# Maintainer: Stefan Husmann <stefan.husmann@t-online.de>
+# Maintainer:  Ivy Foster <joyfulgirl@archlinux.us>
+# Contributor: Stefan Husmann <stefan.husmann@t-online.de>
 # Contributor: Peter Simons <simons@cryp.to>
 # Contributor: Just Lest <just.lest@gmail.com>
 # Contributor: Daniel White <daniel@whitehouse.id.au>
 
 pkgname=emacs-magit-git
-pkgver=1.2.0.2280.gef0311d
+_gitname="magit"
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
-url="http://github.com/magit/magit"
+url="http://github.com/${_gitname}/${_gitname}"
 license=('GPL3')
-depends=('emacs' 'git' 'emacs-git-modes-git')
-makedepends=('automake' 'autoconf' 'ed')
+depends=('emacs' 'git' 'emacs-dash=2.10.0')
+makedepends=('ed')
 provides=('emacs-magit')
-conflicts=('emacs-magit')
 install="${pkgname}.install"
-_gitname="magit"
-source=('git+https://github.com/magit/magit.git')
+source=("git+https://github.com/${_gitname}/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd "$_gitname"
   # Git tag
   echo $(git describe --tags|sed 's/-/./g')
 }
 
 build() {
   cd "$_gitname"
-  make EFLAGS="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/git-modes" lisp docs
+  make LOAD_PATH="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/dash -L ${srcdir}/${_gitname}/lisp" \
+       lisp docs
 }
 
 package() {
