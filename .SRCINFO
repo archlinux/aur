@@ -1,0 +1,17 @@
+pkgbase = psillyd
+	pkgdesc = Psilly game server
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/acerix/psilly-server
+	install = psillyd.install
+	arch = any
+	license = MIT
+	makedepends = cargo-bin
+	source = https://github.com/acerix/psilly-server/archive/0.0.1.tar.gz
+	source = psillyd.install
+	sha256sums = 03690927d2d7149cd766518920e9060264e21e874444a19af424cc73a7e9904f
+	sha256sums = 63e597c54751a4ef8c39d2dd769893b6329c2fc02b5ad253dc404cd310bab573
+
+pkgname = psillyd
+	backup = etc/psillyd.toml
+

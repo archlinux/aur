@@ -1,0 +1,5 @@
+post_install(){
+  groupadd -g 420 psillyd &>/dev/null
+  useradd -u 420 -g 420 -d /var/lib/psillyd -s /bin/false psillyd &>/dev/null
+}
+
