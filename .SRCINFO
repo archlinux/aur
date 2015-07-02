@@ -1,0 +1,16 @@
+pkgbase = pydefrag-bzr
+	pkgdesc = The defragmenter is written using a simple combination of filefrag (a readily available fragmentation checker for Linux) and atomic copy. Inspired by Gentoo's fragcheck.pl and Con Kolivas's defrag script. (pfbh branch)
+	pkgver = 122
+	pkgrel = 4
+	url = https://code.launchpad.net/~brywilharris/pyfragtools/pfbh
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = python2
+	depends = rsync
+	optdepends = psyco27-svn: JIT compiler for Python 2.7 (development version)
+	source = bzr+http://bazaar.launchpad.net/~brywilharris/pyfragtools/pfbh/
+	md5sums = SKIP
+
+pkgname = pydefrag-bzr
+
