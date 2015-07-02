@@ -1,0 +1,14 @@
+pkgbase = tvdb_api
+	pkgdesc = easy to use interface to thetvdb.com
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://github.com/dbr/tvdb_api
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://github.com/dbr/tvdb_api/tarball/1.9
+	md5sums = b3f9c1a809967f3a14a694ac530fd3eb
+
+pkgname = tvdb_api
+
