@@ -7,12 +7,12 @@
 
 pkgname=freshplayerplugin-git
 pkgver=v0.3.0.r42.gca0219a
-pkgrel=1
+pkgrel=2
 pkgdesc='PPAPI-host NPAPI-plugin adapter.'
 arch=( 'i686' 'x86_64' )
 url='https://github.com/i-rinat/freshplayerplugin'
 license=( 'MIT' )
-depends=( 'pango' 'alsa-lib' 'freetype2' 'libconfig' 'libevent' 'gtk2' 'libgl' 'v4l-utils' )
+depends=( 'pango' 'alsa-lib' 'freetype2' 'libconfig' 'libevent' 'gtk2' 'libgl' 'v4l-utils' 'ffmpeg' )
 makedepends=( 'cmake' 'ragel' 'git' )
 conflicts=( 'freshplayerplugin' )
 source=( "${pkgname}::git+${url}" "${pkgname}.install" )
