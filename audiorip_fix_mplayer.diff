@@ -1,0 +1,11 @@
+--- mp4tools	2010-10-18 01:45:43.000000000 +0200
++++ mp4tools	2010-12-19 11:18:22.751055457 +0100
+@@ -182,7 +182,7 @@
+ {
+ 	[ -n "$3" ] && AF="-af $3"
+ 	green "Ripping Audio"
+-	mplayer "$1" -benchmark -vo null -ao "pcm:fast:file=$2" $AF $MSG
++	mplayer "$1" -benchmark -vc null -vo null -ao "pcm:fast:file=$2" $AF $MSG
+ }
+ 
+ #aacenc <infile> <outfile>
