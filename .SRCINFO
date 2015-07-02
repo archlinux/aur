@@ -1,0 +1,20 @@
+pkgbase = flv2x264
+	pkgdesc = flv to avi converter
+	pkgver = 0.2.a1
+	pkgrel = 1
+	url = https://github.com/3ed/flv2x264
+	arch = any
+	license = GPL2
+	depends = ffmpeg
+	depends = bash
+	optdepends = libx264: h264 support
+	optdepends = libtheora: ogg/theora support
+	optdepends = libvpx: vp8 support
+	optdepends = faac: aac support
+	optdepends = libvorbis: ogg/vorbis support
+	optdepends = lame: mp3 support
+	source = flv2x264-0.2.a1.tar.gz::https://github.com/3ed/flv2x264/archive/v0.2.a1.tar.gz
+	sha256sums = 14f7e252d6c0234f7d508d3bbb21a43e99fdb60c1294ee2203c1ab1bea6f71d0
+
+pkgname = flv2x264
+
