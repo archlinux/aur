@@ -22,7 +22,7 @@ pkgname = python-nikola
 	depends = python-mako
 	depends = python-unidecode
 	depends = python-lxml
-	depends = python-yapsy=1.10.423
+	depends = python-yapsy=1.11.223
 	depends = python-pyrss2gen
 	depends = python-dateutil
 	depends = python-logbook
@@ -52,7 +52,7 @@ pkgname = python2-nikola
 	depends = python2-mako
 	depends = python2-unidecode
 	depends = python2-lxml
-	depends = python2-yapsy=1.10.423
+	depends = python2-yapsy=1.11.223
 	depends = python2-pyrss2gen
 	depends = python2-dateutil
 	depends = python2-logbook
