@@ -14,6 +14,8 @@ note() {
 _update() {
 	msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
+    msg_blue "Updating icon cache..."
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor/
 }
 
 post_install() {
