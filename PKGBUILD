@@ -3,12 +3,12 @@
 
 pkgname=puppetserver
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
 license=("APACHE")
-depends=("ruby" "puppet" "java-environment" "logrotate" "jruby")
+depends=("ruby" "puppet" "java-environment" "logrotate" "jruby" "facter2")
 backup=('etc/default/puppetserver'
         'etc/logrotate.d/puppetserver'
         'etc/puppetlabs/puppetserver/bootstrap.cfg'

@@ -1,7 +1,7 @@
 pkgbase = puppetserver
 	pkgdesc = Server automation framework and application
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
 	install = puppetserver.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = puppetserver
 	depends = java-environment
 	depends = logrotate
 	depends = jruby
+	depends = facter2
 	backup = etc/default/puppetserver
 	backup = etc/logrotate.d/puppetserver
 	backup = etc/puppetlabs/puppetserver/bootstrap.cfg
