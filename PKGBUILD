@@ -8,8 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171379'
 license=('GPL')
-depends=('vapoursynth')
-makedepends=('git')
+depends=('vapoursynth' 'libcl')
+makedepends=('git' 'opencl-headers')
 source=("https://dl.dropboxusercontent.com/u/6596386/vapoursynth-plugins/KNLMeansCL_v${pkgver}.zip"
         'patch_h.patch::http://sl1pkn07.wtf/paste/view/raw/67987544'
         'patch_cpp.patch::http://sl1pkn07.wtf/paste/view/raw/1c9d055d')
