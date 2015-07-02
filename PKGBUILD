@@ -56,6 +56,8 @@ build() {
     sed -i "s/jpgal/jpgalleg/" makefile
     # -mwindows most definitely not supported by gcc and not what we want.
     sed -i "s/-mwindows//" makefile
+    # In addition, I need an -lm otherwise cos is undefined
+    sed -i "s/LINUXLDLIBS :=/LINUXLDLIBS := -lm/" makefile
     make linux
 }
 
