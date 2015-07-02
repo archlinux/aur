@@ -1,0 +1,13 @@
+pkgbase = mxk
+	pkgdesc = evdev/uinput input mangling server
+	pkgver = 1.10
+	pkgrel = 2
+	url = http://welz.org.za/projects/mxk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://welz.org.za/projects/mxk/mxk-1.10.tar.gz
+	sha256sums = 4709fe6e02ac9a19931d799fa2b2259aae5c8ed64129eb559e9cdfc3c71dc886
+
+pkgname = mxk
+
