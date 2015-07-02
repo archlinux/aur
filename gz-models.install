@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+>> I.  Autoload:
+>>     1. Edit this file: "~/.config/gzdoom/zdoom.ini"
+>>     2. And put this: "Path=GZ-Models.pk3"; below that:
+>>       a) for globally usage: "[Global.Autoload]"
+>>       b) per game (eg. only for doom2): "[Doom2.Autoload]"
+>> II. Manually as gzdoom argument eg:
+>>     gzdoom -iwad doom2.wad -file GZ-Models.pk3
+EOF
+}
