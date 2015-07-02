@@ -9,7 +9,17 @@ url="http://www.pineight.com/lj"
 license=('GPL')
 depends=('allegro' 'dumb')
 install=
-source=(http://www.pineight.com/lj/lj$pkgver-src.zip \
+
+# WARNING!!! This is not the original URL of the Lockjaw source code!
+# The original website has removed its copy of the Lockjaw, so I was forced to use alternative means.
+# I can make no personal guarantees as to the integrity of the file.
+# I did however verify that the sha256sum matches the copy I have before it was taken down.
+# That sha256sum is the one listed in this PKGBUILD.
+# I also did verify that diff -ru on the extracted contents showed no changes.
+# Unfortunately I realize that these claims aren't really verifiable by an outside party,
+# at least without access to the original sources.
+# Alas, this is the best I am able to offer you for the time being...
+source=(https://sites.google.com/site/xaelous/40l/lj${pkgver}-src.zip \
 lj.dat \
 sound.dat \
 ljbg.jpg \
