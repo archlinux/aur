@@ -1,0 +1,21 @@
+pkgbase = perl-b-c
+	pkgdesc = Perl compiler's C backend
+	pkgver = 1.52
+	pkgrel = 1
+	url = http://search.cpan.org/dist/B-C/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-ipc-run
+	depends = perl-opcodes
+	depends = perl-b-flags
+	depends = perl-time-hires
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/B-C-1.52.tar.gz
+	source = 01-cc_runtime_DESTDIR_fix.patch
+	sha256sums = 072b4b9e39431ad8ef5173557c26ade97f985cf150f6580a20f42dd9fc3651a7
+	sha256sums = 51ad82da600c68f19858efb1f61883750a10048d3a86924ec65521d1edcd9353
+
+pkgname = perl-b-c
+

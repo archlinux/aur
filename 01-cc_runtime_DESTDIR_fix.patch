@@ -1,0 +1,11 @@
+--- B-C-1.52/Makefile.PL	2014-08-21 22:13:08.000000000 +0000
++++ B-C-1.52-fixed/Makefile.PL	2014-09-12 17:16:27.913133878 +0000
+@@ -387,7 +387,7 @@
+ ccinc_install :: $(PERL_INC)/cc_runtime.h
+ 
+ $(PERL_INC)/cc_runtime.h : cc_runtime.h
+-	$(NOECHO) $(CP) cc_runtime.h $@
++	$(NOECHO) install -Dm644 cc_runtime.h "$(DESTDIR)/$@"
+ ';
+     }
+     $result
