@@ -1,0 +1,15 @@
+pkgbase = jpegoptim
+	pkgdesc = Jpeg optimisation utility
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://www.kokkonen.net/tjko/projects.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = libjpeg
+	source = http://www.kokkonen.net/tjko/src/jpegoptim-1.4.3.tar.gz
+	md5sums = 52987700d1db3a3002ec32b1d0dac489
+
+pkgname = jpegoptim
+
