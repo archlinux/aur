@@ -1,0 +1,18 @@
+pkgbase = pgrouting
+	pkgdesc = Adds routing functionality to PostGIS/PostgreSQL
+	pkgver = 2.0.0
+	pkgrel = 8
+	url = http://pgrouting.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake>=2.8.8
+	makedepends = boost
+	depends = postgis>=1.5
+	depends = gcc-libs
+	depends = cgal
+	source = pgrouting-2.0.0::git://github.com/pgRouting/pgrouting.git
+	md5sums = SKIP
+
+pkgname = pgrouting
+
