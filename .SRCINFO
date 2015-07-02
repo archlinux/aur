@@ -1,0 +1,21 @@
+pkgbase = python-pyspatialite
+	pkgdesc = An interface to the SQLite 3.x embedded relational database engine with spatialite extensions.
+	pkgver = 3.0.1
+	pkgrel = 12
+	url = https://pypi.python.org/pypi/pyspatialite
+	changelog = python2-pyspatialite.changelog
+	arch = any
+	license = ZLIB
+	license = LIBPNG
+	depends = python2
+	depends = libspatialite
+	conflicts = $pkgname<=$pkgver-4
+	replaces = $pkgname<=$pkgver-4
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyspatialite/pyspatialite-3.0.1-alpha-0.tar.gz
+	source = setup.cfg
+	md5sums = 8ef12ad13a8aa67c2314426c64660a0a
+	md5sums = 23e4f6ab7946bc54d660cf701743d418
+
+pkgname = python2-pyspatialite
+
