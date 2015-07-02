@@ -1,0 +1,15 @@
+pkgbase = python2-cliff-tablib-liberty
+	pkgdesc = tablib formatters for cliff
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://github.com/dreamhost/cliff-tablib
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/c/cliff-tablib/cliff-tablib-1.1.tar.gz
+	sha256sums = 4a8ed81f6678e76d0e0497f2708d0fe5d2b83ec442a03f982aaa711a08c74139
+
+pkgname = python2-cliff-tablib-liberty
+	depends = python2-cliff-liberty
+	depends = python2-tablib
+
