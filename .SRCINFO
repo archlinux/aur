@@ -1,0 +1,20 @@
+pkgbase = libpano13-hg
+	pkgdesc = Basic library to calculate panoramical pictures - core functions of the panotools
+	pkgver = 826.7339b1014e88
+	pkgrel = 1
+	url = http://panotools.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = cmake
+	depends = libpng
+	depends = libtiff
+	provides = libpano13
+	conflicts = libpano13
+	options = !libtool
+	source = hg+http://hg.code.sf.net/p/panotools/libpano13
+	md5sums = SKIP
+
+pkgname = libpano13-hg
+
