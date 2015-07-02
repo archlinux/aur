@@ -1,6 +1,6 @@
 pkgbase = skul-git
 	pkgdesc = Create, format and mount loopback-based, encrypted LUKS containers
-	pkgver = 0.28.8e58846
+	pkgver = 0.35.ac4b333
 	pkgrel = 1
 	url = https://github.com/gavinhungry/skul
 	arch = any
