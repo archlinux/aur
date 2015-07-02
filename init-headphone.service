@@ -1,0 +1,11 @@
+[Unit]
+Description=Reactivate headphones after sleep
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/init-headphone
+
+[Install]
+WantedBy=suspend.target
+

@@ -1,0 +1,344 @@
+#!/usr/bin/env python
+
+from __future__ import (print_function, unicode_literals)
+import subprocess
+import os
+import sys
+import ctypes
+import locale
+
+__all__ = ["init_headphone", "set_mute", "set_effect"]
+
+VERSION = "0.6"
+SUPPORTED_SYSTEM_PRODUCT_NAMES = [
+    "W230SS",  # Clevo W230SS
+    "Mythlogic Chaos 1313-A",  # Mythlogic Chaos 1313-A
+    "HUMA H3",  # MONSTER HUMA H3
+    "M4",  # Eurocom M4
+    "W230SD",  # Clevo W230SD
+]
+SUPPORTED_I2C_BUS_NAMES = ["SMBus I801 adapter at f040"]
+I2C_CLASS_PATH = "/sys/class/i2c-dev"
+DEV_BASE_PATH = "/dev"
+CMDLINE_PATH = "/proc/cmdline"
+KERNEL_PARAMETER = "acpi_enforce_resources=lax"
+MODULES_PATH = "/proc/modules"
+REQUIRED_MODULES = ["i2c_dev", "i2c_i801"]
+DMIDECODE_EXECUTABLE = "dmidecode"
+DEVICE_ADDRESS = 0x73
+DATA_INIT = [
+    [0x0a, 0x41],
+    # Read 0x04
+    [0x04, 0xee],
+    # Read 0x09
+    [0x09, 0xff],
+    [0x00, 0x86],
+    [0x04, 0xee],
+    [0x05, 0x03],
+    [0x07, 0x40],
+    [0x08, 0x84],
+    [0x09, 0xff],
+    [0x00, 0x82],
+]
+DATA_EFFECT_0 = [
+    [0x00, 0x86],
+    [0x04, 0x11],
+    [0x05, 0x02],
+    [0x07, 0x22],
+    [0x08, 0x82],
+    [0x09, 0x22],
+    [0x00, 0x82],
+]
+DATA_EFFECT_1 = [
+    [0x00, 0x86],
+    [0x04, 0xee],
+    [0x05, 0x03],
+    [0x07, 0x40],
+    [0x08, 0x84],
+    [0x09, 0xff],
+    [0x00, 0x82],
+]
+DATA_EFFECT_2 = [
+    [0x00, 0x86],
+    [0x04, 0xaa],
+    [0x05, 0x23],
+    [0x07, 0x40],
+    [0x08, 0x84],
+    [0x09, 0x00],
+    [0x00, 0x82],
+]
+DATA_EFFECT_3 = [
+    [0x00, 0x86],
+    [0x04, 0xaa],
+    [0x05, 0x22],
+    [0x07, 0x33],
+    [0x08, 0x84],
+    [0x09, 0x00],
+    [0x00, 0x82],
+]
+DATA_EFFECT_4 = [
+    [0x00, 0x86],
+    [0x04, 0x88],
+    [0x05, 0x03],
+    [0x07, 0x23],
+    [0x08, 0x82],
+    [0x09, 0x22],
+    [0x00, 0x82],
+]
+DATA_EFFECT_5 = [
+    [0x00, 0x86],
+    [0x04, 0xaa],
+    [0x05, 0x23],
+    [0x07, 0x41],
+    [0x08, 0x84],
+    [0x09, 0x00],
+    [0x00, 0x82],
+]
+DATA_EFFECT_6 = [
+    [0x00, 0x86],
+    [0x04, 0xaa],
+    [0x05, 0x02],
+    [0x07, 0x43],
+    [0x08, 0x82],
+    [0x09, 0x00],
+    [0x00, 0x82],
+]
+DATA_MUTE = [
+    [0x0a, 0x41],
+    # Read 0x04
+    [0x04, 0xee],
+    # Read 0x09
+    [0x09, 0xff],
+    # Read 0x00
+    [0x00, 0x86],
+]
+DATA_UNMUTE = [
+    # Read 0x00
+    [0x00, 0x82],
+]
+DATA_RECOVERY = [
+    # CMD   Data0
+    [0x0a, 0x41],
+    # Read 0x04
+    [0x04, 0xee],
+    # Read 0x09
+    [0x09, 0xff],
+    [0x0b, 0x82],
+    [0x0b, 0x92],
+]
+I2C_SLAVE = 0x0703
+I2C_SMBUS = 0x0720
+I2C_SMBUS_BLOCK_MAX = 32
+I2C_SMBUS_WRITE = 0
+I2C_SMBUS_BYTE_DATA = 2
+
+
+def dbg_warn(msg):
+    print("Warning: %s" % msg, file=sys.stderr)
+
+
+def dbg_err(msg):
+    print("Error: %s" % msg, file=sys.stderr)
+
+
+class i2c_smbus_data(ctypes.Union):
+    _fields_ = [("byte", ctypes.c_ubyte),
+                ("word", ctypes.c_ushort),
+                ("block", ctypes.c_ubyte * (I2C_SMBUS_BLOCK_MAX + 2))]
+
+
+class i2c_smbus_ioctl_data(ctypes.Structure):
+    _fields_ = [("read_write", ctypes.c_ubyte),
+                ("command", ctypes.c_ubyte),
+                ("size", ctypes.c_uint),
+                ("data", ctypes.POINTER(i2c_smbus_data))]
+
+
+class SMBus:
+    def __init__(self, _file):
+        try:
+            self._fd = os.open(_file, os.O_RDWR)
+        except Exception as e:
+            dbg_err("Can't open file (%s)" % _file)
+            raise e
+        self._libc = ctypes.cdll.LoadLibrary("libc.so.6")
+        self._address = 0
+    
+    def write_byte_data(self, address, command, value):
+        if address != self._address:
+            err = self._libc.ioctl(self._fd, I2C_SLAVE, address)
+            if err != 0:
+                dbg_err("Can't set I2C slave address")
+                raise RuntimeError("Can't set I2C slave address")
+            self._address = address
+        data = i2c_smbus_data()
+        data.byte = value
+        args = i2c_smbus_ioctl_data()
+        args.read_write = I2C_SMBUS_WRITE
+        args.command = command
+        args.size = I2C_SMBUS_BYTE_DATA
+        args.data = ctypes.pointer(data)
+        if self._libc.ioctl(self._fd, I2C_SMBUS, ctypes.byref(args)) != 0:
+            dbg_err("Can't transfer data on I2C bus")
+            raise RuntimeError("Can't transfer data on I2C bus")
+    
+    def close(self):
+        os.close(self._fd)
+
+
+def get_system_product_name():
+    try:
+        name = subprocess.check_output([DMIDECODE_EXECUTABLE, "-s",
+                                       "system-product-name"])
+        return name.strip().decode(locale.getpreferredencoding())
+    except subprocess.CalledProcessError as e:
+        dbg_err("dmidecode returned non-zero exit status")
+        raise e
+    except Exception as e:
+        dbg_err("dmidecode not found")
+        raise e
+
+
+def check_system_product_name():
+    system_product_name = get_system_product_name()
+    if system_product_name not in SUPPORTED_SYSTEM_PRODUCT_NAMES:
+        dbg_err("Unsupported system (%s)" % system_product_name)
+        raise RuntimeError("Unsupported system")
+
+
+def check_root():
+    if os.geteuid() != 0:
+        dbg_warn("This program needs root privileges")
+
+
+def check_cmdline():
+    try:
+        cmdline_file = open(CMDLINE_PATH, "r")
+    except:
+        dbg_warn("Can't open file (%s)" % CMDLINE_PATH)
+        return
+    cmdline_parameters = cmdline_file.read().split()
+    cmdline_file.close()
+    if KERNEL_PARAMETER not in cmdline_parameters:
+        dbg_warn("Kernel parameter is missing (%s)" % KERNEL_PARAMETER)
+
+
+def check_modules():
+    try:
+        modules_file = open(MODULES_PATH, "r")
+    except:
+        dbg_warn("Can't open file (%s)")
+        return
+    loaded_modules = [line.split()[0] for line in modules_file.readlines()]
+    for required_module in REQUIRED_MODULES:
+        if required_module not in loaded_modules:
+            dbg_warn("Module is not loaded (%s)" % required_module)
+
+
+def get_i2c_busses():
+    busses = []
+    try:
+        i2c_directories = os.listdir(I2C_CLASS_PATH)
+    except Exception as e:
+        dbg_err("Can't list directory (%s)" % I2C_CLASS_PATH)
+        raise e
+    for i2c_dev in i2c_directories:
+        _file = os.path.join(I2C_CLASS_PATH, i2c_dev, "name")
+        try:
+            with open(_file) as name_file:
+                i2c_dev_name = name_file.read().strip()
+        except Exception as e:
+            dbg_warn("Can't open file (%s)" % _file)
+            continue
+        busses.append((i2c_dev_name, i2c_dev))
+    return busses
+
+
+def get_bus():
+    check_root()
+    check_system_product_name()
+    check_cmdline()
+    check_modules()
+    i2c_busses = get_i2c_busses()
+    selected_i2c_dev = None
+    for i2c_bus_name, i2c_dev in i2c_busses:
+        if i2c_bus_name in SUPPORTED_I2C_BUS_NAMES:
+            selected_i2c_dev = i2c_dev
+    if selected_i2c_dev is None:
+        dbg_err("Can't find i2c bus")
+        raise RuntimeError("Can't find i2c bus")
+    i2c_dev_file = os.path.join(DEV_BASE_PATH, selected_i2c_dev)
+    i2c_bus = SMBus(i2c_dev_file)
+    return i2c_bus
+
+
+def write_data(data):
+    i2c_bus = get_bus()
+    for device_cmd, device_data in data:
+        i2c_bus.write_byte_data(DEVICE_ADDRESS, device_cmd, device_data)
+    i2c_bus.close()
+
+
+def init_headphone():
+    write_data(DATA_INIT)
+
+
+def set_mute(b):
+    if b:
+        write_data(DATA_MUTE)
+    else:
+        write_data(DATA_UNMUTE)
+
+
+def set_effect(i):
+    if i == 0:
+        write_data(DATA_EFFECT_0)
+    elif i == 1:
+        write_data(DATA_EFFECT_1)
+    elif i == 2:
+        write_data(DATA_EFFECT_2)
+    elif i == 3:
+        write_data(DATA_EFFECT_3)
+    elif i == 4:
+        write_data(DATA_EFFECT_4)
+    elif i == 5:
+        write_data(DATA_EFFECT_5)
+    elif i == 6:
+        write_data(DATA_EFFECT_6)
+    else:
+        dbg_err("Invalid effect")
+        raise ValueError("Invalid effect")
+
+
+def print_help(executable):
+    print("Version: %s" % VERSION)
+    for cmd in ("[init]", "effect0", "effect1", "effect2", "effect3", "effect4",
+                "effect5", "effect6", "mute", "unmute", "--help"):
+        print("usage: %s %s" % (executable, cmd))
+
+
+def main(argv):
+    executable = os.path.basename(argv[0])
+    if len(argv) == 1 or len(argv) == 2 and argv[1] == "init":
+        init_headphone()
+    elif len(argv) == 2 and argv[1] in ("effect0", "effect1", "effect2", "effect3",
+                                        "effect4", "effect5", "effect6"):
+        effect_index = int(argv[1][len("effect"):])
+        set_effect(effect_index)
+    elif len(argv) == 2 and argv[1] == "mute":
+        set_mute(True)
+    elif len(argv) == 2 and argv[1] == "unmute":
+        set_mute(False)
+    elif len(argv) == 2 and argv[1] == "--help":
+        print_help(executable)
+    else:
+        print_help(executable)
+        raise RuntimeError("Invalid arguments")
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except Exception as e:
+        dbg_err("Operation failed")
+        exit(1)

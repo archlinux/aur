@@ -1,0 +1,11 @@
+post_install() {
+ echo ">>> Please enable the service unit via 'systemctl enable init-headphone.service' "
+ echo ">>> Also add 'acpi_enforce_resources=lax' to kernel bootargs and reboot"
+}
+post_upgrade() {
+ post_install
+}
+post_remove() {
+ systemctl disable init-headphone.service
+}
+
