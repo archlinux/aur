@@ -1,6 +1,6 @@
 pkgbase = gobject-introspection-git
 	pkgdesc = GObject Introspection
-	pkgver = 1.41.4.3.g3701b32
+	pkgver = 1.45.2.3354.fb91f7e
 	pkgrel = 1
 	epoch = 1
 	url = http://live.gnome.org/GObjectIntrospection/
@@ -20,15 +20,19 @@ pkgbase = gobject-introspection-git
 	depends = glib2-git
 	depends = python2
 	depends = python2-mako
-	provides = gobject-introspection=1.41.4
+	provides = gobject-introspection=
+	provides = gobject-introspection-runtime=
 	conflicts = gobject-introspection
 	conflicts = gobject-introspection-svn
+	conflicts = gobject-introspection-runtime
 	replaces = gobject-introspection-svn
 	options = !makeflags
 	options = docs
 	options = !libtool
 	options = strip
 	options = debug
+	source = git+git://git.gnome.org/gobject-introspection
+	md5sums = SKIP
 
 pkgname = gobject-introspection-git
 
