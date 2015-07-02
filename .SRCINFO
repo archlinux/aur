@@ -20,8 +20,8 @@ pkgbase = gobject-introspection-git
 	depends = glib2-git
 	depends = python2
 	depends = python2-mako
-	provides = gobject-introspection=
-	provides = gobject-introspection-runtime=
+	provides = gobject-introspection=1.45.2.3354.fb91f7e
+	provides = gobject-introspection-runtime=1.45.2.3354.fb91f7e
 	conflicts = gobject-introspection
 	conflicts = gobject-introspection-svn
 	conflicts = gobject-introspection-runtime

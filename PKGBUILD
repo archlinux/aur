@@ -14,7 +14,7 @@ url="http://live.gnome.org/GObjectIntrospection/"
 depends=("glib2-git" 'python2' 'python2-mako')
 makedepends=('git' 'pkgconfig' 'autoconf' 'gtk-doc' 'gnome-common-git'
   'bison' 'cairo' 'mesa' 'flex')
-provides=("gobject-introspection=${_realver}" "gobject-introspection-runtime=${_realver}")
+provides=("gobject-introspection=${pkgver}" "gobject-introspection-runtime=${pkgver}")
 conflicts=('gobject-introspection' 'gobject-introspection-svn' "gobject-introspection-runtime")
 replaces=('gobject-introspection-svn')
 options=(!makeflags docs !libtool strip debug)
