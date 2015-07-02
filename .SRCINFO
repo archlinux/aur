@@ -1,0 +1,23 @@
+pkgbase = tomatoapp-bzr
+	pkgdesc = A simple pomodoro app designed for Elementary OS.
+	pkgver = r62
+	pkgrel = 1
+	url = https://launchpad.net/tomatoapp
+	install = tomatoapp.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = bzr
+	makedepends = cmake
+	depends = gtk3
+	depends = libnotify
+	depends = granite
+	depends = libunity
+	provides = tomatoapp-bzr
+	conflicts = tomatoapp-bzr
+	source = bzr+lp:tomatoapp
+	sha256sums = SKIP
+
+pkgname = tomatoapp-bzr
+
