@@ -1,7 +1,7 @@
 # Maintainer: Arthur Vuillard <arthur@hashbang.fr>
 pkgname=tidy-html5
 name=tidy-html5
-pkgver=4.9.36
+pkgver=5.0.0.RC1
 pkgrel=1
 pkgdesc="A tool to tidy down your HTML5 code to a clean style"
 url="https://github.com/htacg/tidy-html5"
@@ -10,9 +10,9 @@ arch=('i686' 'x86_64')
 depends=()
 makedepends=('git' 'cmake')
 provides=('tidy5')
-conflicts=('tidy-html5-git')
+conflicts=('tidy-html5-git' 'tidyhtml')
 source=(https://github.com/htacg/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('65bb2d576cf6c6f0dd06228274bfa4fb')
+md5sums=('fa1e7629daf53122c63f438cd99a9856')
 
 build() {
   cd "$srcdir/$name-$pkgver/build/cmake"
