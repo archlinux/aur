@@ -1,0 +1,17 @@
+pkgbase = libpedsim
+	pkgdesc = A Microscopic Pedestrian Crowd Simulation System
+	pkgver = 2.3
+	pkgrel = 2
+	url = http://pedsim.silmaril.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=2.8
+	depends = gcc-libs
+	source = http://pedsim.silmaril.org/dist/libpedsim/20140211-libpedsim-2-3-src.tar.gz
+	source = libpedsim.CMakeLists
+	md5sums = 6c33004b0a3c7e5270347f9515ba33a3
+	md5sums = 264590a8e55e2f7e10885cf33935b740
+
+pkgname = libpedsim
+

@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.8)
+
+project (libpedsim)
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(pedsim SHARED ped_obstacle.cpp ped_vector.cpp ped_waypoint.cpp ped_agent.cpp ped_scene.cpp ped_tree.cpp)
+install(TARGETS pedsim DESTINATION lib)
+install(FILES ped_includes.h DESTINATION include RENAME pedsim.h)
+install(FILES ped_agent.h ped_obstacle.h ped_scene.h ped_tree.h ped_vector.h ped_waypoint.h DESTINATION include)
+install(FILES examples/example.cpp DESTINATION share/doc/libpedsim)
