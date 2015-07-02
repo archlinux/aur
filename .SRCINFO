@@ -1,0 +1,15 @@
+pkgbase = ape2mp3
+	pkgdesc = converts ape-image to mp3-tracks
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://sourceforge.net/projects/ape2mp3/
+	arch = any
+	license = GPL
+	depends = mac-port
+	depends = lame
+	depends = bchunk
+	source = http://downloads.sf.net/ape2mp3/ape2mp3
+	md5sums = 30c5003a3a5abe461d8821d4aec1e8a4
+
+pkgname = ape2mp3
+
