@@ -1,0 +1,62 @@
+pkgbase = keystone-liberty
+	pkgdesc = OpenStack Identity
+	pkgver = 8.0.0.0b1
+	pkgrel = 1
+	url = https://launchpad.net/keystone/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://launchpad.net/keystone/liberty/liberty-1/+download/keystone-8.0.0.0b1.tar.gz
+	source = keystone.service
+	md5sums = 31523f3b4003aecb13ecafd838fda0e5
+	md5sums = 4af52db88c8a5ca56ae26aefcd1c4828
+
+pkgname = keystone-liberty
+	pkgdesc = OpenStack Identity - Daemon
+	install = keystone.install
+	depends = python2-keystone-liberty
+	conflicts = keystone
+	conflicts = keystone-havana
+	conflicts = keystone-icehouse
+	conflicts = keystone-kilo
+	backup = etc/keystone/keystone.conf
+
+pkgname = python2-keystone-liberty
+	pkgdesc = OpenStack Identity - Python library
+	depends = python2-pbr>=0.11
+	depends = python2-webob>=1.2.3
+	depends = python2-eventlet>=0.17.3
+	depends = python2-greenlet>=0.3.2
+	depends = python2-paste-deploy>=1.5.0
+	depends = python2-paste
+	depends = python2-routes>=1.12.3
+	depends = python2-cryptography>=0.8.2
+	depends = python2-six>=1.9.0
+	depends = python2-sqlalchemy-openstack
+	depends = python2-migrate-openstack
+	depends = python2-stevedore-openstack
+	depends = python2-passlib
+	depends = python2-keystoneclient-liberty
+	depends = python2-keystonemiddleware-liberty
+	depends = python2-oslo-concurrency-liberty
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-messaging-liberty
+	depends = python2-oslo-db-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-log-liberty
+	depends = python2-oslo-middleware-liberty
+	depends = python2-oslo-policy-liberty
+	depends = python2-oslo-serialization-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-oauthlib>=0.6
+	depends = python2-pysaml2>=2.4.0
+	depends = python2-dogpile-cache>=0.5.3
+	depends = python2-jsonschema
+	depends = python2-pycadf>=0.8.0
+	depends = python2-msgpack>=0.4.0
+	depends = python2-debtcollector
+	conflicts = python2-keystone
+	conflicts = python2-keystone-havana
+	conflicts = python2-keystone-icehouse
+	conflicts = python2-keystone-kilo
+
