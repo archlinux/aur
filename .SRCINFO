@@ -1,0 +1,20 @@
+pkgbase = perl-x11-aosd
+	pkgdesc = libaosd binding for Cairo powered on screen display
+	pkgver = 0.03
+	pkgrel = 5
+	url = http://search.cpan.org/dist/X11-Aosd/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = libaosd
+	depends = gtk2-perl
+	depends = perl-extutils-depends
+	depends = perl-extutils-pkgconfig
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JR/JRED/X11-Aosd-0.03.tar.gz
+	sha256sums = 7cbf1d75704d5a7104f8fd3c5369a2ed70b73758fd8a2715813366625c902e33
+
+pkgname = perl-x11-aosd
+
