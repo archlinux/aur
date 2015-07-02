@@ -1,7 +1,7 @@
 pkgbase = lockjaw
 	pkgdesc = Free and highly customizable implementation of Tetris
 	pkgver = 046
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.pineight.com/lj
 	arch = i686
 	arch = x86_64

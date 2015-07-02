@@ -2,7 +2,7 @@
 
 pkgname=lockjaw
 pkgver=046
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and highly customizable implementation of Tetris"
 arch=('i686' 'x86_64')
 url="http://www.pineight.com/lj"
