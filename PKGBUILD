@@ -13,7 +13,7 @@ $build_cython || options=(!strip)  # Don't strip libs because there aren't any; 
 DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
-pkgver=162
+pkgver=163
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -26,7 +26,7 @@ makedepends=(git)
 $build_cython && makedepends+=(cython2 parallel)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding')
-source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=f28324102eb20ea70e35d318eac13b558f8fccbe"
+source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=11309c732d16bfac39f2240f7059e46bc63f2ef2"
         paths-in-opt.patch
         running-the-server.patch
         cython-workarounds.patch
@@ -34,9 +34,9 @@ source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '153b428e6e39e3db5960285df8c7735cc259d73de55b17abe3b5b91ad1bfc550'
+            'f0ce34feda340f307ec4ec149547a69d0bdecafc61f6efe322c42ef0f98a3a29'
             'b4cd358402ac8f225fe77a60aeb89dde88ba8ad050c5b04f11c1ffd44242e9d8'
-            '7cedc90b8faba4d47c004cc0209e18a8a9362adb9ace6a151a561561f4514023'
+            'd75842ea2f622e98cfe56d6d8785b2285399fa59bbde330b876c8c61a91cc4f6'
             'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
             'ac7254e3cdb359ebae302655b72b9f74b85d9e817c326fa28173791b3fb4f114'
             '9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2')
