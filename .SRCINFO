@@ -1,13 +1,13 @@
 pkgbase = puppetserver
 	pkgdesc = Server automation framework and application
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
 	install = puppetserver.install
 	arch = any
 	license = APACHE
 	depends = ruby
-	depends = puppet
+	depends = puppet>=4
 	depends = java-environment
 	depends = logrotate
 	depends = jruby
