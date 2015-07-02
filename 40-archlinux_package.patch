@@ -1,0 +1,28 @@
+diff -Naur orig/Makefile patch/Makefile
+--- orig/Makefile	2013-04-20 13:49:52.000000000 +0000
++++ patch/Makefile	2013-04-20 13:51:06.000000000 +0000
+@@ -27,7 +27,6 @@
+ 		
+ install:
+ 	make -C src install
+-	ldconfig
+ 	mkdir -p $(DESTDIR)$(doc_dir)
+ 	install -m 644 README* $(DESTDIR)$(doc_dir)
+ 	make -C utils install
+diff -Naur orig/src/Makefile patch/src/Makefile
+--- orig/src/Makefile	2013-04-20 05:31:14.000000000 +0000
++++ patch/src/Makefile	2013-04-20 13:53:36.000000000 +0000
+@@ -70,10 +70,12 @@
+ 	rm -f *~ *.o *.so *.exe milena milena.h milena.pc milena_cyrillic.h
+ 
+ install:	milena
++	install -dm 0755 $(DESTDIR)$(prefix)/{bin,include}
++	install -dm 0755 $(DESTDIR)$(LIBDIR)/pkgconfig
+ 	install -m 0755 milena $(DESTDIR)$(prefix)/bin
+ 	install -m 0755 libmilena.so libmilena_mbrola.so $(DESTDIR)$(LIBDIR)
+ 	install -m 0644 milena.h milena_mbrola.h $(DESTDIR)$(prefix)/include/
+-	if [ -d $(LIBDIR)/pkgconfig ] ; then install -m 0644 milena.pc $(DESTDIR)$(LIBDIR)/pkgconfig; fi
++	if [ -d $(LIBDIR)/pkgconfig ] ; then install -m 0644 milena.pc $(DESTDIR)$(LIBDIR)/pkgconfig/milena.pc; fi
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(prefix)/bin/milena

@@ -1,0 +1,20 @@
+--- orig/Makefile	2013-04-20 05:31:14.000000000 +0000
++++ patch/Makefile	2013-04-20 13:46:26.000000000 +0000
+@@ -1,5 +1,4 @@
+-
+-export prefix=/usr/local
++export prefix ?= /usr/local
+ export milena_dir=$(prefix)/share/milena
+ export doc_dir=$(prefix)/share/doc/milena
+ export speechd_dir=$(shell ./find_speechd)
+@@ -31,8 +30,8 @@
+ install:
+ 	make -C src install
+ 	ldconfig
+-	mkdir -p $(doc_dir)
+-	install -m 644 README* $(doc_dir)
++	mkdir -p $(DESTDIR)$(doc_dir)
++	install -m 644 README* $(DESTDIR)$(doc_dir)
+ 	make -C data install
+ 	make -C utils install
+ 

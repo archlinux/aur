@@ -1,0 +1,32 @@
+--- orig/Makefile	2013-04-20 13:49:21.000000000 +0000
++++ patch/Makefile	2013-04-20 13:48:51.000000000 +0000
+@@ -10,7 +10,6 @@
+ 
+ all: config.dat
+ 	make -C src all
+-	make -C data all
+ 	make -C utils all
+ 
+ milena.exe: config.dat
+@@ -24,7 +23,6 @@
+ clean:
+ 	rm -f config.dat
+ 	make -C src clean
+-	make -C data clean
+ 	make -C utils clean
+ 		
+ install:
+@@ -32,7 +30,6 @@
+ 	ldconfig
+ 	mkdir -p $(DESTDIR)$(doc_dir)
+ 	install -m 644 README* $(DESTDIR)$(doc_dir)
+-	make -C data install
+ 	make -C utils install
+ 
+ uninstall:
+@@ -40,5 +37,4 @@
+ 	if [ -d $(doc_dir) ] ; then rmdir --ignore-fail-on-non-empty $(doc_dir);fi
+ 	make -C src uninstall
+ 	ldconfig
+-	make -C data uninstall
+ 	make -C utils uninstall
