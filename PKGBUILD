@@ -15,8 +15,8 @@ md5sums=('d7cb53880767c1ff6f81e4d171dcd312'
          'e0f051555da4ea09a5d105ec9f2433c8')
 
 build() {
-  cd ${srcdir}/$pkgname-$_pkgver
-  patch -Np0 -i ${srcdir}/patch
+  cd "${srcdir}/$pkgname-$_pkgver"
+  patch -Np0 -i "${srcdir}/patch"
   rm -rf build
   mkdir build
   cd build
@@ -26,6 +26,6 @@ build() {
 }
   
 package() {
-  cd ${srcdir}/$pkgname-$_pkgver/build
-  make DESTDIR=${pkgdir} install || return 1
+  cd "${srcdir}/$pkgname-$_pkgver/build"
+  make DESTDIR="${pkgdir}" install || return 1
 }
