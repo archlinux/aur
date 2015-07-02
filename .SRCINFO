@@ -1,0 +1,24 @@
+pkgbase = python2-glance-store-liberty
+	pkgdesc = OpenStack Glance backend store-drivers Library
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/openstack/glance_store
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-serialization-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-oslo-concurrency-liberty
+	depends = python2-stevedore-openstack
+	depends = python2-enum34
+	depends = python2-cinderclient-liberty
+	depends = python2-eventlet>=0.17.3
+	depends = python2-six>=1.9.0
+	depends = python2-jsonschema>=2.0.0
+	source = https://pypi.python.org/packages/source/g/glance_store/glance_store-0.6.0.tar.gz
+	sha256sums = 249c99818f7ebd1b3aea6c96a66e4e17351a1d9befaef885dada0483be6ee818
+
+pkgname = python2-glance-store-liberty
+
