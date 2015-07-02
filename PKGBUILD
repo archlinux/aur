@@ -9,13 +9,13 @@
 
 pkgname=texlipse
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A plugin that adds LaTeX support to the Eclipse IDE"
 url="http://texlipse.sourceforge.net/"
 depends=('eclipse>=3.3' 'texlive-core')
 arch=('any')
-source=("http://downloads.sourceforge.net/texlipse/texlipse_${pkgver}%20src.zip")
 license=('EPL')
+source=("http://downloads.sourceforge.net/texlipse/texlipse_${pkgver}%20src.zip")
 md5sums=('db3de591e25d0ee3fbd03ce7d119fd15')
 
 prepare() {
@@ -27,8 +27,7 @@ prepare() {
 }
 
 package() {
-  _dest=${pkgdir}/usr/share/eclipse/dropins/eclipse 
-  # somehow eclipse does not recognize this plugin if put under dropins/texlipse/eclipse
+  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse 
 
   # Features
   find features -type f | while read _feature ; do
