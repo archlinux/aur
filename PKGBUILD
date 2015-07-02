@@ -1,14 +1,14 @@
 # Maintainer: Patrick Darwinkel <patrick@darwinkel.net>
 pkgname=ogar-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully functional open source Agar.io server implementation, written in Node.js."
 arch=(any)
-url="https://github.com/vram4/Ogar"
+url="https://github.com/forairan/Ogar"
 license=('Apache')
 depends=('nodejs' 'npm' 'git' 'systemd')
 conflicts=('ogar')
-source=('git+https://github.com/vram4/Ogar.git' 'ogar.service')
+source=('git+https://github.com/forairan/Ogar.git' 'ogar.service')
 sha256sums=('SKIP' 'f41103fe9323c16d8677f436a23bcd06e76988172ea82c345366bceff01f6cb8')
 install="${pkgname}.install"
 backup=('usr/share/ogar/gameserver.ini')
