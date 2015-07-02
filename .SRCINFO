@@ -1,14 +1,16 @@
 pkgbase = asciinema
 	pkgdesc = Record and share your terminal sessions, the right way
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asciinema.org/
 	arch = x86_64
 	arch = i686
 	arch = arm
 	license = GPLv3
-	source = https://github.com/asciinema/asciinema/releases/download/v1.1.1/asciinema-1.1.1-linux-amd64.tar.gz
-	sha1sums = 4edfb204e8e92245b0154b57b61f4502eec00157
+	makedepends = make
+	makedepends = go
+	source = https://github.com/asciinema/asciinema/archive/v1.1.1.tar.gz
+	sha1sums = c07d84bd0df57cae873bacec1a5c41b9ea5786bc
 
 pkgname = asciinema
 
