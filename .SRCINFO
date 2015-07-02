@@ -1,0 +1,12 @@
+pkgbase = xcursor-transparent-theme
+	pkgdesc = Completely transparent theme for hiding the X11 cursor
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://downloads.yoctoproject.org/releases/matchbox/utils/xcursor-transparent-readme.txt
+	arch = any
+	license = GPL
+	source = http://downloads.yoctoproject.org/releases/matchbox/utils/xcursor-transparent-theme-0.1.1.tar.gz
+	sha1sums = eab5e65ccab0c6fd4a8e974926127e1e151a6c83
+
+pkgname = xcursor-transparent-theme
+
