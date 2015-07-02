@@ -1,0 +1,14 @@
+pkgbase = python2-suds-jurko
+	pkgdesc = Lightweight SOAP client (Jurko's fork)
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://bitbucket.org/jurko/suds
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	source = http://pypi.python.org/packages/source/s/suds-jurko/suds-jurko-0.6.tar.bz2
+	md5sums = 1309e9bc2454aa3434041f0a24ae4e11
+
+pkgname = python2-suds-jurko
+
