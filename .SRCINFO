@@ -13,7 +13,7 @@ pkgbase = stepmania-git
 	depends = ffmpeg
 	depends = glew
 	depends = jack
-	provides = stepmania
+	provides = stepmania=5
 	conflicts = stepmania
 	replaces = sm-ssc-hg
 	source = git+https://github.com/stepmania/stepmania.git

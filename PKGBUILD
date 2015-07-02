@@ -8,14 +8,14 @@
 pkgname=stepmania-git
 _shortname=stepmania
 pkgver=v5.0.9.r10.g398fb88
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
 arch=('i686' 'x86_64')
 url="http://www.stepmania.com/"
 license=('MIT')
 depends=('gtk2' 'libmad' 'ffmpeg' 'glew' 'jack')
 makedepends=('git')
-provides=('stepmania')
+provides=('stepmania=5')
 conflicts=('stepmania')
 replaces=('sm-ssc-hg')
 install="$pkgname.install"
