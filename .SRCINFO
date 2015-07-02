@@ -1,0 +1,25 @@
+pkgbase = python2-oslo-concurrency-liberty
+	pkgdesc = Oslo Concurrency Library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/openstack/oslo.concurrency
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	provides = python2-oslo-concurrency
+	source = https://pypi.python.org/packages/source/o/oslo.concurrency/oslo.concurrency-2.1.0.tar.gz
+	sha256sums = 22df39a4df14cb323de444e3f00ae3189da11b9faca8b77b6e1551e1e65105d6
+
+pkgname = python2-oslo-concurrency-liberty
+	depends = python2
+	depends = python2-pbr>=0.11
+	depends = python2-babel>=1.3
+	depends = python2-iso8601>=0.1.9
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-posix_ipc
+	depends = python2-six>=1.9.0
+	depends = python2-fasteners>=0.7
+	depends = python2-retrying
+
