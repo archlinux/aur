@@ -1,0 +1,18 @@
+pkgbase = multipath-tools-git
+	pkgdesc = Tools to drive the Device Mapper multipathing driver (contains kpartx)
+	pkgver = 1389.90dd15d
+	pkgrel = 1
+	url = http://christophe.varoqui.free.fr/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = setconf
+	depends = libaio
+	depends = device-mapper
+	conflicts = multipath-tools
+	source = multipath-tools-git::git+http://git.opensvc.com/multipath-tools/.git
+	options = !emptydirs
+
+pkgname = multipath-tools-git
+
