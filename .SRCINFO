@@ -1,0 +1,19 @@
+pkgbase = gtk-theme-zukiwi-bzr
+	pkgdesc = A theme for GTK3, GTK2, Metacity, xfwm4 and Unity.
+	pkgver = v3.14.r71
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Zukitwo?content=140562
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	optdepends = gnome-themes-standard: Required for the GTK3 theme
+	optdepends = ttf-droid: Font family for the Gnome Shell theme
+	provides = gtk-theme-zukiwi
+	conflicts = gtk-theme-zukiwi
+	source = zukitwo-3.14::bzr+http://bazaar.launchpad.net/~lassekongo83/zukitwo/3.14/
+	sha1sums = SKIP
+
+pkgname = gtk-theme-zukiwi-bzr
+
