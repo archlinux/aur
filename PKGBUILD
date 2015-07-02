@@ -40,7 +40,7 @@ build() {
 package_phonon-qt4-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt4"
   depends=('gst-plugins-base' 'libpulse')
-  optdepends=('pulseaudio: PulseAudio support')
+  optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support')
   provides=('phonon-backend' 'phonon-qt4-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
@@ -53,7 +53,7 @@ package_phonon-qt4-gstreamer() {
 package_phonon-qt5-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt5"
   depends=('gst-plugins-base' 'libpulse')
-  optdepends=('pulseaudio: PulseAudio support')
+  optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support')
   provides=('phonon-qt5-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
