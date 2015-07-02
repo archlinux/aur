@@ -1,0 +1,18 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DSP configuration
+Name[es]=Configuración del DSP
+Name[fr]=Configuration DSP
+Name[it]=Configurazione DSP
+Name[pl_PL]=Konfiguracja DSP
+Comment=Utility to manage emu10k1/2 patch loader
+Comment[es]=Utilidad para gestionar emu10k1/2 cargadora de parches
+Comment[fr]=Utilitaire permettant de gérer emu10k1/2 correctifs chargeuse
+Comment[it]=Utilità per la gestione emu10k1/2 cerotto caricatore
+Comment[pl_PL]=Narzędzie do zarządzania ładowarką łatek w emu10k1/2
+Icon=audio-card
+Exec=qlo10k1
+Terminal=false
+Type=Application
+X-MultipleArgs=false
+Categories=QT;AudioVideo;Audio;

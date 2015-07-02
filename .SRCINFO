@@ -1,0 +1,17 @@
+pkgbase = alsa-tools-emu10k1-gui
+	pkgdesc = a GUI utility to manage emu10k1/2 patch loader
+	pkgver = 1.0.29
+	pkgrel = 1
+	url = http://alsa-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-tools
+	depends = qt3
+	source = ftp://ftp.alsa-project.org/pub/tools/alsa-tools-1.0.29.tar.bz2
+	source = qlo10k1.desktop
+	sha256sums = 94abf0ab5a73f0710c70d4fb3dc1003af5bae2d2ed721d59d245b41ad0f2fbd1
+	sha256sums = d58a3e1215edd6ecbf1853c15a397e6240d1700c2a749536136a95535e11d7a3
+
+pkgname = alsa-tools-emu10k1-gui
+
