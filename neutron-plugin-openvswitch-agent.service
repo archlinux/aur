@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron openvswitch plugin agent
+
+[Service]
+ExecStart=/usr/bin/neutron-openvswitch-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini --log-file=/var/log/neutron/openvswitch-agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,260 @@
+pkgbase = neutron-liberty
+	pkgdesc = A virtual network service for Openstack
+	pkgver = 7.0.0.0b1
+	pkgrel = 1
+	url = https://launchpad.net/neutron
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	makedepends = python2-oslosphinx-liberty
+	depends = python2
+	depends = python2-setuptools
+	source = https://launchpad.net/neutron/liberty/liberty-1/+download/neutron-7.0.0.0b1.tar.gz
+	source = neutron-dhcp-agent.service
+	source = neutron-l3-agent.service
+	source = neutron-metadata-agent.service
+	source = neutron-metering-agent.service
+	source = neutron-bigswitch-agent.service
+	source = neutron-plugin-ibm-agent.service
+	source = neutron-plugin-linuxbridge-agent.service
+	source = neutron-plugin-mlnx-agent.service
+	source = neutron-plugin-nec-agent.service
+	source = neutron-plugin-oneconvergence-agent.service
+	source = neutron-plugin-openvswitch-agent.service
+	source = neutron-plugin-ryu-agent.service
+	source = neutron-plugin-vpn-agent.service
+	source = neutron-server-default
+	source = neutron-server.service
+	source = neutron_sudoers
+	source = neutron.plugin.openvswitch.install
+	md5sums = 0ac2c59efe56c5535b8edbc1a8305151
+	md5sums = c59c436057efbb2317487a0822aa97e7
+	md5sums = ca5d870e84ca2cce40bab18bf770870f
+	md5sums = 1ab745acf0da636c4484803969229714
+	md5sums = ef5a00d81ecea910fb29706e3181fc80
+	md5sums = e0a25a272eaeb3b4f79404c2d2cd1379
+	md5sums = c954b9a3163fddac1623ec50ba7bfc98
+	md5sums = 31ed220677df34466ca25fb1d64e9df0
+	md5sums = 926c8fe2ec3fd79955ed8f74109fceea
+	md5sums = 50bc95405d91d73a583c508a0446e38c
+	md5sums = de6e4e853477f3116b515fa9e80b306f
+	md5sums = f40d35da4256957eb0dd6e0ce6a4c696
+	md5sums = 50946c6024c5043c7046968e6eb9b698
+	md5sums = 9f2af5aef38b58a6b11f715059aecb95
+	md5sums = 91d4643e9c29210cc82ec8c8c512675d
+	md5sums = 7c710afee7078e7a52d3708acd158c26
+	md5sums = 2cfc83f85ae2f8bc790e280da721262d
+	md5sums = fd68f680bfa312a0a17c705924cfe662
+
+pkgname = python2-neutron-liberty
+	pkgdesc = A virtual network service for Openstack - Python library
+	depends = python2-pbr>=0.11
+	depends = python2-paste
+	depends = python2-paste-deploy>=1.5.0
+	depends = python2-routes>=1.12.3
+	depends = python2-debtcollector>=0.3.0
+	depends = python2-eventlet>=0.17.3
+	depends = python2-greenlet>=0.3.2
+	depends = python2-httplib2>=0.7.5
+	depends = python2-requests>=2.5.2
+	depends = python2-jinja>=2.6
+	depends = python2-keystonemiddleware-liberty
+	depends = python2-netaddr>=0.7.12
+	depends = python2-neutronclient-liberty
+	depends = python2-retrying>=1.2.3
+	depends = python2-sqlalchemy-openstack
+	depends = python2-webob>=1.2.3
+	depends = python2-keystoneclient-liberty
+	depends = python2-alembic>=0.7.2
+	depends = python2-six>=1.9.0
+	depends = python2-stevedore-openstack
+	depends = python2-oslo-concurrency-liberty
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-context-liberty
+	depends = python2-oslo-db-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-log-liberty
+	depends = python2-oslo-messaging-liberty
+	depends = python2-oslo-middleware-liberty
+	depends = python2-oslo-policy-liberty
+	depends = python2-oslo-rootwrap-liberty
+	depends = python2-oslo-serialization-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-novaclient-liberty
+
+pkgname = neutron-liberty
+	pkgdesc = A virtual network service for Openstack - Server
+	install = neutron.install
+	depends = python2-neutron-liberty
+	optdepends = neutron-plugin-openvswitch-liberty
+	backup = etc/neutron/api-paste.ini
+	backup = etc/neutron/neutron.conf
+
+pkgname = neutron-dhcp-agent-liberty
+	pkgdesc = A virtual network service for Openstack - DHCP agent
+	depends = neutron-liberty
+	depends = dnsmasq
+	depends = neutron-metadata-agent-liberty
+	backup = etc/neutron/dhcp_agent.ini
+
+pkgname = neutron-l3-agent-liberty
+	pkgdesc = A virtual network service for Openstack - l3 agent
+	depends = neutron-liberty
+	depends = neutron-metadata-agent-liberty
+	backup = etc/neutron/l3_agent.ini
+
+pkgname = neutron-metadata-agent-liberty
+	pkgdesc = A virtual network service for Openstack - metadata agent
+	depends = neutron-liberty
+	backup = etc/neutron/metadata_agent.ini
+
+pkgname = neutron-metering-agent-liberty
+	pkgdesc = A virtual network service for Openstack - metering agent
+	depends = neutron-liberty
+
+pkgname = neutron-plugin-bigswitch-liberty
+	pkgdesc = A virtual network service for Openstack - BigSwitch agent
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/bigswitch/restproxy.ini
+
+pkgname = neutron-plugin-bigswitch-agent-liberty
+	pkgdesc = A virtual network service for Openstack - BigSwitch plugin agent
+	depends = neutron-plugin-bigswitch-liberty
+
+pkgname = neutron-plugin-brocade-liberty
+	pkgdesc = A virtual network service for Openstack - Brocade plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/brocade/brocade.ini
+
+pkgname = neutron-plugin-cisco-liberty
+	pkgdesc = A virtual network service for Openstack - Cisco plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/cisco/cisco_plugins.ini
+
+pkgname = neutron-plugin-cisco-agent-liberty
+	pkgdesc = A virtual network service for Openstack - Cisco plugin agent
+	depends = neutron-plugin-cisco-liberty
+
+pkgname = neutron-plugin-embrane-liberty
+	pkgdesc = A virtual network service for Openstack - embrane plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/embrane/heleos_conf.ini
+
+pkgname = neutron-plugin-hyperv-agent-liberty
+	pkgdesc = A virtual network service for Openstack - Hyper-V plugin agent
+	depends = neutron-liberty
+
+pkgname = neutron-plugin-ibm-liberty
+	pkgdesc = A virtual network service for Openstack - IBM SDN plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/ibm/sdnve_neutron_plugin.ini
+
+pkgname = neutron-plugin-ibm-agent-liberty
+	pkgdesc = A virtual network service for Openstack - IBM SDN plugin agent
+	depends = neutron-plugin-ibm-liberty
+
+pkgname = neutron-plugin-linuxbridge-liberty
+	pkgdesc = A virtual network service for Openstack - linuxbridge plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
+
+pkgname = neutron-plugin-linuxbridge-agent-liberty
+	pkgdesc = A virtual network service for Openstack - linuxbridge plugin agent
+	depends = bridge-utils
+	depends = neutron-plugin-linuxbridge-liberty
+
+pkgname = neutron-plugin-metaplugin-liberty
+	pkgdesc = A virtual network service for Openstack - Metaplug in plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/metaplugin/metaplugin.ini
+
+pkgname = neutron-plugin-midonet-liberty
+	pkgdesc = A virtual network service for Openstack - Midonet plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/midonet/midonet.ini
+
+pkgname = neutron-plugin-ml2-liberty
+	pkgdesc = A virtual network service for Openstack - ML2 plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/ml2/ml2_conf.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_arista.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_brocade.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_brocade_fi_ni.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_cisco.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_fslsdn.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_ofa.ini
+	backup = etc/neutron/plugins/ml2/ml2_conf_sriov.ini
+
+pkgname = neutron-plugin-mlnx-liberty
+	pkgdesc = A virtual network service for Openstack - MLNX plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/mlnx/mlnx_conf.ini
+
+pkgname = neutron-plugin-mlnx-agent-liberty
+	pkgdesc = A virtual network service for Openstack - MLNX plugin agent
+	depends = neutron-plugin-mlnx-liberty
+
+pkgname = neutron-plugin-nec-liberty
+	pkgdesc = A virtual network service for Openstack - NEC plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/nec/nec.ini
+
+pkgname = neutron-plugin-nec-agent-liberty
+	pkgdesc = A virtual network service for Openstack - NEC plugin agent
+	depends = neutron-plugin-nec-liberty
+
+pkgname = neutron-plugin-nuage-liberty
+	pkgdesc = A virtual network service for Openstack - Nuage plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/nuage/nuage_plugin.ini
+
+pkgname = neutron-plugin-oneconvergence-liberty
+	pkgdesc = A virtual network service for Openstack - One Convergence plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/oneconvergence/nvsdplugin.ini
+
+pkgname = neutron-plugin-oneconvergence-agent-liberty
+	pkgdesc = A virtual network service for Openstack - One Convergence plugin agent
+	depends = neutron-plugin-oneconvergence-liberty
+
+pkgname = neutron-plugin-opencontrail-liberty
+	pkgdesc = A virtual network service for Openstack - OpenContrail plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/opencontrail/contrailplugin.ini
+
+pkgname = neutron-plugin-openvswitch-liberty
+	pkgdesc = A virtual network service for Openstack - Open vSwitch plugin
+	install = neutron.plugin.openvswitch.install
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini
+
+pkgname = neutron-plugin-openvswitch-agent-liberty
+	pkgdesc = A virtual network service for Openstack - Open vSwitch plugin agent
+	depends = openvswitch
+	depends = neutron-liberty
+	depends = neutron-plugin-openvswitch-liberty
+
+pkgname = neutron-plugin-ovsvapp-liberty
+	pkgdesc = A virtual network service for Openstack - OVSvApp plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/ovsvapp/ovsvapp_agent.ini
+
+pkgname = neutron-plugin-ovsvapp-agent-liberty
+	pkgdesc = A virtual network service for Openstack - OVSvApp plugin agent
+	depends = neutron-plugin-ovsvapp-liberty
+
+pkgname = neutron-plugin-plumgrid-liberty
+	pkgdesc = A virtual network service for Openstack - PLUMgrid plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/plumgrid/plumgrid.ini
+
+pkgname = neutron-plugin-vmware-liberty
+	pkgdesc = A virtual network service for Openstack - VMware plugin
+	depends = neutron-liberty
+	backup = etc/neutron/plugins/vmware/nsx.ini
+
+pkgname = neutron-plugin-sriovnic-agent-liberty
+	pkgdesc = A virtual network service for Openstack - SR-IOV plugin agent
+	depends = neutron-liberty
+

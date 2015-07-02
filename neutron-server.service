@@ -1,0 +1,10 @@
+[Unit]
+Description=Neutron server
+
+[Service]
+EnvironmentFile=/etc/default/neutron-server
+ExecStart=/usr/bin/neutron-server --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini --log-file=/var/log/neutron/server.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target

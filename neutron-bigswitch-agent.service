@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron BigSwitch Plugin agent
+
+[Service]
+ExecStart=/usr/bin/neutron-restproxy-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/plugins/restporxy.ini --log-file=/var/log/neutron/bigswitch-agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target

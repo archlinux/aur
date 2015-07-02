@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron NEC plugin agent
+
+[Service]
+ExecStart=/usr/bin/neutron-nec-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/plugins/nec/nec.ini --log-file=/var/log/neutron/nec-agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target
