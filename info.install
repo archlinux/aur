@@ -1,0 +1,15 @@
+post_install() {
+  cat <<EOF
+ This program generate pipe menu, to do that, must have one of
+ '*-applications.menu' files inside /etc/xdg/menus/ folder.
+
+ You can search packages that contain this file. To do that:
+   1. install 'pkgfile' from repo
+   2. run: pkgfile -v -g '/etc/xdg/menus/*-applications.menu'
+
+ To add app menu, put it into your ~/.config/openbox/menu.xml:
+   <menu id="xdg-apps" label="Applications"
+     execute="openbox-xdgmenu path-to-your-applications.menu" />
+EOF
+}
+# vim:set ts=2 sw=2 et:

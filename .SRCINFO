@@ -1,0 +1,15 @@
+pkgbase = openbox-xdgmenu
+	pkgdesc = fast xdg-menu converter to xml-pipe-menu
+	pkgver = 0.3
+	pkgrel = 2
+	url = https://launchpad.net/openbox-xdgmenu/
+	install = info.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gnome-menus2
+	source = http://launchpad.net/openbox-xdgmenu/trunk/0.3/+download/openbox-xdgmenu-0.3.tar.gz
+	sha256sums = 824e099928aab2fb628f0fa4870ef7bba10b95581e47c2d8fa216709a0f399b3
+
+pkgname = openbox-xdgmenu
+
