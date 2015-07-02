@@ -1,4 +1,5 @@
 # MAINTAINER WANTED
+# Maintainer: micsproul at large search corporation's mail service.
 # Source Available: https://github.com/michaelsproul/rust-nightly-archlinux
 pkgname=rust-nightly-bin
 pkgver=1.3.0_2015.07.02
