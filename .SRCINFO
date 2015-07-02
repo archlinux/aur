@@ -1,0 +1,17 @@
+pkgbase = hexchat-otr-git
+	pkgdesc = OTR support for hexchat
+	pkgver = r25.g2845436
+	pkgrel = 1
+	url = https://github.com/TingPing/hexchat-otr
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gnome-common
+	depends = hexchat
+	depends = libotr>=4.1.0
+	source = hexchat-otr-git::git+https://github.com/TingPing/hexchat-otr
+	md5sums = SKIP
+
+pkgname = hexchat-otr-git
+
