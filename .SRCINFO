@@ -1,0 +1,15 @@
+pkgbase = pear-net-ldap2
+	pkgdesc = Object oriented interface for searching and manipulating LDAP-entries
+	pkgver = 2.1.0
+	pkgrel = 2
+	url = http://pear.php.net/package/Net_LDAP2
+	arch = any
+	license = PHP
+	makedepends = php-pear
+	depends = php-ldap
+	noextract = Net_LDAP2-2.1.0.tgz
+	source = http://download.pear.php.net/package/Net_LDAP2-2.1.0.tgz
+	md5sums = d2297dc542e25f7cc998865504a14c4d
+
+pkgname = pear-net-ldap2
+
