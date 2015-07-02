@@ -1,0 +1,16 @@
+pkgbase = python2-seqmagick
+	pkgdesc = An imagemagick-like frontend to Biopython SeqIO
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://seqmagick.readthedocs.org
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-biopython
+	conflicts = python-seqmagick
+	options = !emptydirs
+	source = python2-seqmagick.tar.gz::https://github.com/fhcrc/seqmagick/archive/0.6.0.tar.gz
+	sha256sums = 4239f7e0478a4a81fd11d4e76994735192c86085090a42d7dc345790904998d3
+
+pkgname = python2-seqmagick
+
