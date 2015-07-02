@@ -1,0 +1,64 @@
+pkgbase = poc
+	pkgdesc = poc includes mp3cue, a mp3 CUE cutter, and mp3cut, a mp3 command-line editing and streaming tool
+	pkgver = 0.4.1
+	pkgrel = 7
+	url = http://www.bl0rg.net/software/poc/
+	arch = i686
+	arch = x86_64
+	groups = poc
+	license = custom
+	makedepends = flex
+	makedepends = bison
+	depends = glibc
+	source = http://www.bl0rg.net/software/poc/poc-0.4.1.tar.gz
+	source = patch-x86_64.diff
+	sha256sums = a8f8be5281b80f9bb1dd0d330ec59e608d557351f6e6ad5b3d14932f7b952d29
+	sha256sums = 1f02a2d2db9bc2d00beeef4099df3276bc80e603c5b5aa45969d8d25f919c2b4
+
+pkgname = poc
+	pkgdesc = a mp3 command-line editing and streaming tools (metapackage)
+	depends = mp3cue
+	depends = mp3cut
+	depends = mp3length
+	depends = pob-2250
+	depends = pob-3119
+	depends = pob-fec
+	depends = poc-2250
+	depends = poc-3119
+	depends = poc-fec
+	depends = poc-http
+	depends = pogg-http
+
+pkgname = mp3cue
+	pkgdesc = cut a MP3 file according to a CUE file
+
+pkgname = mp3cut
+	pkgdesc = cut and assemble MP3 files
+
+pkgname = mp3length
+	pkgdesc = show the length of a MP3 file
+
+pkgname = pob-2250
+	pkgdesc = receive RTP RFC 2250 MP3 streams
+
+pkgname = pob-3119
+	pkgdesc = receive RTP RFC 3119 MP3 streams
+
+pkgname = pob-fec
+	pkgdesc = receive FEC MP3 streams
+
+pkgname = poc-2250
+	pkgdesc = send RTP RFC 2250 MP3 streams
+
+pkgname = poc-3119
+	pkgdesc = send RTP RFC 3119 MP3 streams
+
+pkgname = poc-fec
+	pkgdesc = send FEC MP3 streams
+
+pkgname = poc-http
+	pkgdesc = send HTTP MP3 streams
+
+pkgname = pogg-http
+	pkgdesc = send HTTP OGG streams
+
