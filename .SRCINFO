@@ -1,0 +1,15 @@
+pkgbase = bash-completion-xmms2
+	pkgdesc = bash-completion for xmms2
+	pkgver = 20051023
+	pkgrel = 2
+	url = http://aspellfr.free.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL2 or later
+	depends = bash-completion
+	depends = xmms2
+	source = http://aspellfr.free.fr/xmms2/xmms2_completion
+	md5sums = d9e716f0038a48b486fddaa30609f2ca
+
+pkgname = bash-completion-xmms2
+
