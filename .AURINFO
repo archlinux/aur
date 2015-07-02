@@ -1,0 +1,15 @@
+pkgbase = amrnb
+	pkgdesc = 3GPP Adaptive Multi-Rate Floating-point (AMR) Speech Codec
+	pkgver = 11.0.0.0
+	pkgrel = 2
+	url = http://www.penguin.cz/~utx/amr
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	depends = glibc
+	source = http://www.penguin.cz/~utx/ftp/amr/amrnb-11.0.0.0.tar.bz2
+	options = !libtool
+
+pkgname = amrnb
+
