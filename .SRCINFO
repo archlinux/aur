@@ -1,0 +1,16 @@
+pkgbase = perl-unix-pid
+	pkgdesc = Perl extension for getting PID info.
+	pkgver = 0.23
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Unix-PID/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DM/DMUEY/Unix-PID-0.23.tar.gz
+	sha256sums = f52617b55ecd4a2c93379228721c47cf129cf9ba94a62ac22409b6f0f5b2b4a8
+
+pkgname = perl-unix-pid
+
