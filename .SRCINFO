@@ -1,0 +1,17 @@
+pkgbase = perl-b-flags
+	pkgdesc = Friendlier flags for B
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/release/B-Flags
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/B-Flags-0.11.tar.gz
+	sha512sums = daa1d1fa878be18458643458b00da1a715ed0ca3d5ec6e0a6a8ddace53f85e9a51da39590144bf366910b031a1251740c13fa9e5a5515be77878ec98dec742bf
+
+pkgname = perl-b-flags
+
