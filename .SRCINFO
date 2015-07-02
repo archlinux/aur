@@ -1,13 +1,13 @@
 pkgbase = thunderbird-quicktext
 	pkgdesc = Quicktext is an extension for Thunderbird that lets you create templates that can be easily inserted into your own emails
 	pkgver = 0.9.11.5
-	pkgrel = 0
+	pkgrel = 1
 	url = http://extensions.hesslow.se/extension/4/quicktext
 	arch = any
 	license = AGPL
 	depends = thunderbird
 	source = http://extensions.hesslow.se/download/24/quicktext_0.9.11.5.xpi
-	sha256sums = 81560f2623994642848993a3f4343a14d7bcf069509deee13fc8fc84884861d9
+	sha256sums = 7443f67ff5369ca79d7a4f9a45fff37d2cf6f816b0fdf8d7484fe9cf69295664
 
 pkgname = thunderbird-quicktext
 
