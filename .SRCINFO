@@ -1,0 +1,14 @@
+pkgbase = bzr-bisect-bzr
+	pkgdesc = Bazaar plugin to find a bug using binary search
+	pkgver = 84
+	pkgrel = 1
+	url = https://launchpad.net/bzr-bisect/
+	arch = any
+	license = GPL
+	makedepends = bzr
+	makedepends = python2
+	depends = python2
+	depends = bzr
+
+pkgname = bzr-bisect-bzr
+
