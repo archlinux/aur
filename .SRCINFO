@@ -1,0 +1,16 @@
+pkgbase = texlive-usenix
+	pkgdesc = TeX Live - LaTeX package for USENIX conferences
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.usenix.org
+	install = texlive.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://www.usenix.org/events/samples/usenix.sty
+	source = http://www.usenix.org/events/samples/template.la
+	sha256sums = 2f60e059b2bb7f75d67c9ecd1fe3ba494e5f342a44079678f5b7da569ce97157
+	sha256sums = 6f5de8be9143ce91ce99b508025d67624479b42ebdd6fd5afe715d4fda666677
+
+pkgname = texlive-usenix
+
