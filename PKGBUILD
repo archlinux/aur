@@ -1,6 +1,6 @@
 # Maintainer: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum-git
-pkgver=r436.1f9f7da
+pkgver=r445.ea78943
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
@@ -30,11 +30,7 @@ pkgver() {
 
 build() {
 	cd "valum"
-	if [[ -n $(pacman -Ql glib2 | grep gthread) ]]; then
-		./waf configure --enable-threading --prefix=/usr
-	else 
-		./waf configure --prefix=/usr
-	fi
+	./waf configure --prefix=/usr
 	./waf build
 }
 
