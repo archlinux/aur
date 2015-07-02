@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=wobbly-git
-pkgver=r4.2.g8f9b54d
+pkgver=r53.b949628
 pkgrel=1
 pkgdesc="IVTC assistant for VapourSynth, similar to Yatta. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ install=wobbly-git.install
 
 pkgver() {
   cd wobbly
-  echo "$(git describe --long --tags | tr - .)"
+  #echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -30,7 +31,7 @@ prepare() {
 build() {
   cd wobbly
   ./configure --prefix=/usr
-  make --trace
+  make
 }
 
 package() {
