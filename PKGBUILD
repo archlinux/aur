@@ -54,6 +54,8 @@ build() {
     find -type f -exec chmod -x {} \;
     # Allegro gives us jpgalleg now... but the name in the makefile is wrong!
     sed -i "s/jpgal/jpgalleg/" makefile
+    # -mwindows most definitely not supported by gcc and not what we want.
+    sed -i "s/-mwindows//" makefile
     make linux
 }
 
