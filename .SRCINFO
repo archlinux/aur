@@ -1,0 +1,15 @@
+pkgbase = lsdbus
+	pkgdesc = A message bus scanner.
+	pkgver = 0.1
+	pkgrel = 5
+	url = http://pbbuttons.berlios.de/projects/lsdbus/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = dbus-glib
+	depends = dbus-glib
+	source = ftp://ftp.berlios.de/pub/pbbuttons/lsdbus-0.1.tgz
+	md5sums = ea1c8366a8a7d617d18f97f56ce8b34e
+
+pkgname = lsdbus
+
