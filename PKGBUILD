@@ -42,7 +42,7 @@ package_konqueror-frameworks-git() {
 	conflicts=(kdebase-konqueror konqueror)
 	provides=(konqueror)
 	install=$pkgbase.install
-	cd $srcdir/build/konqueror
+	cd build/konqueror
 	make DESTDIR="$pkgdir" install
 }
 
@@ -51,7 +51,7 @@ package_kdepasswd-frameworks-git() {
 	depends=(kwidgetsaddons kdesu)
         conflicts=(kdebase-kdepasswd kdepasswd)
         provides=(kdepasswd)
-	cd $srcdir/build/kdepasswd
+	cd build/kdepasswd
 	make DESTDIR="$pkgdir" install
 }
 
@@ -60,7 +60,7 @@ package_kdialog-frameworks-git() {
 	depends=(kdelibs4support)
         conflicts=(kdebase-kdialog kdialog)
         provides=(kdialog)
-	cd $srcdir/build/kdialog
+	cd build/kdialog
 	make DESTDIR="$pkgdir" install
 }
 
@@ -71,7 +71,7 @@ package_kfind-frameworks-git() {
         provides=(kfind)
 	url="http://kde.org/applications/utilities/kfind/"
 	install=$pkgbase.install
-	cd $srcdir/build/kfind
+	cd build/kfind
 	make DESTDIR="$pkgdir" install
 }
 
@@ -82,7 +82,7 @@ package_keditbookmarks-frameworks-git() {
         provides=(keditbookmarks)
         url="http://www.kde.org/"
 	install=$pkgbase.install
-        cd $srcdir/build/keditbookmarks
+        cd build/keditbookmarks
         make DESTDIR="$pkgdir" install
 }
 
@@ -90,7 +90,7 @@ package_libkonq-frameworks-git() {
 	pkgdesc='KDE libraries for the basic desktop applications'
 	depends=(kdelibs4support)
 	conflicts=(kdebase-lib)
-	cd $srcdir/build/lib
+	cd build/lib
 	make DESTDIR="$pkgdir" install
 }
 
@@ -100,7 +100,7 @@ package_konq-plugins-frameworks-git() {
         conflicts=(kdebase-konq-plugins konq-plugins)
         provides=(konq-plugins)
         install=$pkgbase.install
-        cd $srcdir/build/konq-plugins
+        cd build/konq-plugins
         make DESTDIR="$pkgdir" install
 }
 
