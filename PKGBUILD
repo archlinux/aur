@@ -2,7 +2,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=mosh-sshagent-git
-pkgver=20150210
+pkgver=20150702
 pkgrel=1
 pkgdesc="Mobile shell with support for ssh-agent-forwarding and out-of-band"
 arch=('i686' 'x86_64' 'arm')
@@ -14,7 +14,7 @@ optdepends=('perl-io-socket-ip: for IPv6 support'
             'vte-mosh-fix: to work properly in vte'
             'vte3-mosh-fix: to work properly in vte3')
 conflicts=('mosh' 'mosh-git')
-source=('git+https://github.com/kevinr/mosh.git#branch=kevinr-ssh-agent-forwarding')
+source=('git+https://github.com/rinne/mosh.git#branch=ssh-agent-forwarding-ng')
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,5 +32,6 @@ build() {
 package() {
   cd "${srcdir}/mosh"
   make DESTDIR="${pkgdir}" install
-  rmdir "${pkgdir}/usr/etc"
+  install -Dm644 "conf/bash-completion/completions/mosh" \
+    "$pkgdir/usr/share/bash-completion/completions/mosh"
 }

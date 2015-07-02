@@ -1,6 +1,6 @@
 pkgbase = mosh-sshagent-git
 	pkgdesc = Mobile shell with support for ssh-agent-forwarding and out-of-band
-	pkgver = 20150210
+	pkgver = 20150702
 	pkgrel = 1
 	url = http://mosh.mit.edu/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = mosh-sshagent-git
 	optdepends = vte3-mosh-fix: to work properly in vte3
 	conflicts = mosh
 	conflicts = mosh-git
-	source = git+https://github.com/kevinr/mosh.git#branch=kevinr-ssh-agent-forwarding
+	source = git+https://github.com/rinne/mosh.git#branch=ssh-agent-forwarding-ng
 	md5sums = SKIP
 
 pkgname = mosh-sshagent-git
