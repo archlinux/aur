@@ -1,0 +1,17 @@
+pkgbase = perl-net-mpd
+	pkgdesc = a lightweight replacment for Audio::MPD
+	pkgver = 0.05
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Net-MPD/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-harness>=3.29
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AB/ABERNDT/Net-MPD-0.05.tar.gz
+	sha256sums = 38d631633ad6380ec0790aedc31d20f0ec2a268809af71eb9041fb93eaec5989
+
+pkgname = perl-net-mpd
+
