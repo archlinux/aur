@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
 	pkgver = 5.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org/
 	arch = i686
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = aarch64-linux-gnu-gcc
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = ftp://gcc.gnu.org/pub/gcc/snapshots/5-20150616/gcc-5-20150616.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/snapshots/5-20150630/gcc-5-20150630.tar.bz2
 	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
-	sha256sums = 7d24ae045743dac384fc11692ef6fff5fd001ce0c10fa6ba128cd34110caf0de
+	sha256sums = b20a8b7e05caaf7c688440c76e5344bc728262ec68efc39c774073bf5e69a757
 	sha256sums = 1f20561843eb9f6ae2076800bc45f3680ff7696520257cd5734ccfb843464cae
 
 pkgname = aarch64-linux-gnu-gcc
