@@ -8,15 +8,16 @@ license=('GPL')
 groups=('psp')
 makedepends=('psp-gcc-base' 'psp-binutils' 'psp-sdk-base')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("ftp://sourceware.org/pub/newlib/newlib-$pkgver.tar.gz")
-md5sums=('e5488f545c46287d360e68a801d470e8')
+source=("ftp://sourceware.org/pub/newlib/newlib-$pkgver.tar.gz"
+        "https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/newlib-$pkgver-PSP.patch")
+md5sums=('e5488f545c46287d360e68a801d470e8'
+         'SKIP')
 
 prepare ()
 {
   cd "$srcdir/newlib-$pkgver"
   rm -rf newlib/libc/sys/psp/
-  wget -c https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/newlib-$pkgver-PSP.patch
-  patch -p1 -i newlib-$pkgver-PSP.patch
+  patch -p1 -i "$srcdir"/newlib-$pkgver-PSP.patch
 }
 
 build()
