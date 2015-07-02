@@ -2,7 +2,7 @@
 # Tue Jun 30 16:59:19 UTC 2015
 pkgbase = test-aur4
 	pkgdesc = test of aur4 with github
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 0
 	url = https://github.com/papajoker/plus-dm
 	arch = any
