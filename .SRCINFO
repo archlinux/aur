@@ -1,0 +1,15 @@
+pkgbase = perl-x11-protocol-other
+	pkgdesc = Extra extransions for perl-x11-protocol
+	pkgver = 29
+	pkgrel = 1
+	url = http://search.cpan.org/dist/X11-Protocol-Other/
+	arch = any
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl-x11-protocol
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/X11-Protocol-Other-29.tar.gz
+	sha256sums = 04e96a3f068eca498b7e91fe0abe24173b4152c91b556e21d84d4a802cffbd5f
+
+pkgname = perl-x11-protocol-other
+
