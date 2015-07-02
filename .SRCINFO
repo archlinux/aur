@@ -1,0 +1,22 @@
+pkgbase = lwks
+	pkgdesc = Lightworks is a professional video editing suite
+	pkgver = 12.0.2
+	pkgrel = 1
+	url = http://www.lwks.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = portaudio
+	depends = libgl
+	depends = glu
+	depends = ffmpeg-compat
+	depends = libedit
+	depends = nvidia-cg-toolkit
+	optdepends = nvidia-utils: only for nVidia users
+	provides = lightworks
+	conflicts = lightworks
+	source = http://www.lwks.com/dmpub/lwks-12.0.2-amd64.deb
+	sha256sums = a6daf4ad7043d4dc9a0fcf78e572572ef85528ebe91dad72d700f466e01d37bc
+
+pkgname = lwks
+
