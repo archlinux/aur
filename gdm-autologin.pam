@@ -1,0 +1,16 @@
+#%PAM-1.0
+# mirrors system-auth / system(-local)-login
+# except for the authentication method, which is:
+# always permit login (from gdm package)
+auth      requisite  pam_nologin.so
+auth      requisite  pam_succeed_if.so uid >= 1000 quiet
+auth      requisite  pam_succeed_if.so user notingroup root quiet
+auth      required   pam_env.so
+auth      required   pam_tally.so file=/var/log/faillog onerr=succeed
+auth      required   pam_shells.so
+auth      required   pam_permit.so
+-auth     optional   pam_gnome_keyring.so
+account   include    system-local-login
+password  include    system-local-login
+session   include    system-local-login
+-session  optional   pam_gnome_keyring.so auto_start

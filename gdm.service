@@ -1,0 +1,15 @@
+[Unit]
+Description=Gnome Display Manager
+Conflicts=getty@tty7.service
+After=systemd-user-sessions.service getty@tty1.service
+
+[Service]
+ExecStart=/usr/bin/gdm --nodaemon
+ExecReload=/usr/bin/gdm-safe-restart
+ExecStop=/usr/bin/gdm-stop
+IgnoreSIGPIPE=no
+RestartSec=1s
+TimeoutStopSec=5s
+
+[Install]
+Alias=display-manager.service

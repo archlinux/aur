@@ -1,0 +1,28 @@
+Debian #562126; enable gdmchooser to work with netbase default setting
+net.ipv6.bindv6only=1
+
+diff -Naur gdm-2.20.10/gui/gdmchooser.c gdm-2.20.10/gui/gdmchooser.c
+--- gdm-2.20.10/gui/gdmchooser.c	2009-03-19 00:29:11.000000000 -0430
++++ gdm-2.20.10/gui/gdmchooser.c	2010-02-09 20:10:08.000000000 -0430
+@@ -1121,6 +1121,7 @@
+ {
+ 	static XdmcpHeader header;
+ 	gint sockopts = 1;
++	int ipv6_only_flag = 0;
+ 
+ 	/* Open socket for communication */
+ #ifdef ENABLE_IPV6
+@@ -1140,6 +1141,13 @@
+ 		gdm_common_fail_exit ("Could not set socket options!");
+ 	}
+ 
++	if (have_ipv6) {
++		if (setsockopt (sockfd, IPPROTO_IPV6, IPV6_V6ONLY,
++			(char*)&ipv6_only_flag, sizeof(ipv6_only_flag)) < 0) {
++			gdm_common_fail_exit ("Could not set socket options!");
++            }
++	}
++
+ 	/* Assemble XDMCP BROADCAST_QUERY packet in static buffer */
+ 	header.opcode  = (CARD16) BROADCAST_QUERY;
+ 	header.length  = 1;

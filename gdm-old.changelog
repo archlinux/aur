@@ -1,0 +1,29 @@
+2014-10-30 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-9.2 :
+	* add AUR3 metapackage feature support
+	* rework install script
+
+2013-06-04 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-9.1 :
+	* fix: paths in defaults.conf (see pkgrel=9)
+
+2013-06-04 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-9 :
+	* fix: /usr/sbin is deprecated (forced by package: filesystem)
+
+2013-04-30 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-8.2 :
+	* no longer depends on tcp_wrappers
+	* no longer support for sysvinit
+
+2012-12-21 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-8.1 :
+	* add ChangeLog
+	* fix auto-adding "install" by makepkg
+	* fix warning about directory permissions
+
+2012-12-19 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-8 :
+	* fix compatybility with plymouth service
+	* rewrite pam modules
+	* make "install" lighter

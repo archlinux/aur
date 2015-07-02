@@ -1,0 +1,74 @@
+pkgname=gdm-old
+
+post_install() {
+  printf -- "==> %s...\n" "Creating user and group: gdm"
+  getent group  gdm &> /dev/null || groupadd -g 120 gdm
+  getent passwd gdm &> /dev/null || useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+  passwd -l gdm > /dev/null
+  chown root:gdm /var/lib/gdm > /dev/null
+  chmod 1770 /var/lib/gdm > /dev/null
+
+  printf -- "==> %s...\n" "Updating icon cache"
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+  printf -- "==> %s...\n" "Refreshing systemd cache"
+  systemctl --system daemon-reload
+
+  if systemctl is-enabled gdm.service &> /dev/null; then
+    printf -- "==> %s...\n" "Reenabling gdm.service"
+    systemctl reenable gdm.service 2>&1
+  else
+    # Arch-way = you decide
+    printf -- ">\n> %s\n>   %s\n>\n" \
+      "If you want use GDM-old as default DM, run this command:" \
+      "# sudo systemctl enable -f gdm.service"
+  fi
+}
+
+post_upgrade() {
+  printf -- "==> %s...\n" "Refreshing systemd cache"
+  systemctl --system daemon-reload
+
+  local i
+  for i in gdm.service gdm-old.service; do
+    if systemctl is-active "$i" &> /dev/null; then
+      printf -- "==> %s...\n" "Reloading $i (using: gdm-safe-restart)"
+      systemctl reload "$i" 2>&1
+      printf -- ">\n> %s\n>\n" \
+        "You must relogin if you want use the new gdm version"
+      break
+    fi
+  done
+}
+
+post_remove() {
+  printf -- "==> %s...\n" "Updating icon cache"
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+  printf -- "==> %s...\n" "Removing user and group: gdm"
+  local i=""
+  if getent passwd gdm &> /dev/null; then
+    userdel gdm || i="sudo userdel gdm"
+  fi
+  if getent group gdm &> /dev/null; then
+    groupdel gdm || i+="${i:+" && "}sudo groupdel gdm"
+  fi
+  if [ -n "$i" ]; then
+    printf -- ">\n> %s\n> %s\n>   %s\n>\n" \
+      "Can't remove user/group currently used by" \
+      "gdm process... Stop gdm and retry manually:" \
+      "# $i"
+  fi
+
+  printf -- "==> %s...\n" "Refreshing systemd cache"
+  systemctl --system daemon-reload
+
+  # We can't use it anymore, this remove dead link
+  local i
+  for i in gdm.service gdm-old.service; do
+    if systemctl is-enabled "$i" &> /dev/null; then
+      printf -- "==> %s...\n" "Disabling $i"
+      systemctl disable "$i" 2>&1
+    fi
+  done
+}

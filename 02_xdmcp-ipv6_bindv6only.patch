@@ -1,0 +1,29 @@
+Debian #563406
+
+Index: gdm-2.20.10/daemon/gdm-xdmcp-manager.c
+===================================================================
+--- gdm-2.20.10.orig/daemon/gdm-xdmcp-manager.c	2010-02-28 13:57:47.685002928 +0100
++++ gdm-2.20.10/daemon/gdm-xdmcp-manager.c	2010-02-28 14:01:54.697504018 +0100
+@@ -398,6 +398,7 @@ static int
+ create_socket (struct addrinfo *ai)
+ {
+ 	int sock;
++	int zero = 0;
+ 
+ 	sock = socket (ai->ai_family, ai->ai_socktype, ai->ai_protocol);
+ 	if (sock < 0) {
+@@ -405,6 +406,14 @@ create_socket (struct addrinfo *ai)
+ 		return sock;
+ 	}
+ 
++	if (ai->ai_family == AF_INET6) {
++		if (setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, &zero, sizeof zero) < 0) {
++			gdm_error("setsockopt(IPV6_V6ONLY): %s\n", g_strerror(errno));
++			close(sock);
++			return -1;
++		}
++	}
++
+ 	if (bind (sock, ai->ai_addr, ai->ai_addrlen) < 0) {
+ 		gdm_error ("bind: %s", g_strerror (errno));
+ 		close (sock);

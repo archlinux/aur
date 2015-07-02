@@ -1,0 +1,7 @@
+2012-12-21 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-8.1 :
+	* add ChangeLog
+
+2012-12-19 Krzysztof AS <krzysztof1987@gmail.com>
+	* 2.20.11-8 :
+	* remove gdm.install from gdm-old-faces

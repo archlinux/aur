@@ -1,0 +1,72 @@
+diff -Naur b/config/Init.in a/config/Init.in
+--- b/config/Init.in	2010-06-03 01:06:25.000000000 +0000
++++ a/config/Init.in	2012-12-08 10:57:07.000000000 +0000
+@@ -22,18 +22,28 @@
+   echo "$OUTPUT"
+ }
+ 
+-sysresources=/etc/X11/Xresources
++archsysresources="/etc/X11/xinit/.Xresources"
++sysresources="/etc/X11/Xresources"
+ 
+ # merge in defaults
++if [ -f "$archsysresources" ]; then
++    xrdb -merge "$archsysresources"
++fi
++
+ if [ -f "$sysresources" ]; then
+     xrdb -merge "$sysresources"
+ fi
+ 
+-sysmodmap=/etc/X11/Xmodmap
++archsysmodmap="/etc/X11/xinit/.Xmodmap"
++sysmodmap="/etc/X11/Xmodmap"
+ 
+ XMODMAP=`gdmwhich xmodmap`
+ if [ "x$XMODMAP" != "x" ] ; then
+   if [ "x$GDM_PARENT_DISPLAY" = "x" ]; then
++    if [ -f "$archsysmodmap" ]; then
++      $XMODMAP "$archsysmodmap"
++    fi
++
+     if [ -f $sysmodmap ]; then
+       $XMODMAP $sysmodmap
+     fi
+diff -Naur b/config/Xsession.in a/config/Xsession.in
+--- b/config/Xsession.in	2010-06-03 01:06:25.000000000 +0000
++++ a/config/Xsession.in	2012-12-08 10:52:18.000000000 +0000
+@@ -85,16 +85,16 @@
+ usermodmap="$HOME/.Xmodmap"
+ userxkbmap="$HOME/.Xkbmap"
+ 
+-sysresources=/etc/X11/Xresources 
+-sysmodmap=/etc/X11/Xmodmap 
+-sysxkbmap=/etc/X11/Xkbmap
++sysresources="/etc/X11/Xresources"
++sysmodmap="/etc/X11/Xmodmap"
++sysxkbmap="/etc/X11/Xkbmap"
+ 
+-rh6sysresources=/etc/X11/xinit/Xresources 
+-rh6sysmodmap=/etc/X11/xinit/Xmodmap 
++archsysresources="/etc/X11/xinit/.Xresources"
++archsysmodmap="/etc/X11/xinit/.Xmodmap"
+ 
+ # merge in defaults
+-if [ -f "$rh6sysresources" ]; then
+-    xrdb -merge "$rh6sysresources"
++if [ -f "$archsysresources" ]; then
++    xrdb -merge "$archsysresources"
+ fi
+ 
+ if [ -f "$sysresources" ]; then
+@@ -131,8 +131,8 @@
+ 
+ # xkb and xmodmap don't play nice together
+ if [ -z "$XKB_IN_USE" ]; then
+-    if [ -f "$rh6sysmodmap" ]; then
+-       xmodmap "$rh6sysmodmap"
++    if [ -f "$archsysmodmap" ]; then
++       xmodmap "$archsysmodmap"
+     fi
+ 
+     if [ -f "$sysmodmap" ]; then
