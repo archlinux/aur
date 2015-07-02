@@ -1,0 +1,23 @@
+post_install() {
+  getent group nova &>/dev/null || groupadd nova >/dev/null
+  getent passwd nova &>/dev/null || useradd  -d /var/lib/nova -g nova -s /bin/false nova >/dev/null
+
+  chmod 755 /etc/nova
+  chown -R nova:nova /etc/nova
+  chown root:root /etc/nova/rootwrap.conf
+  chown -R root:root /etc/nova/rootwrap.d
+  chown nova:nova /var/lib/nova
+  chown nova /var/log/nova
+  chown root:root /etc/sudoers.d/nova_sudoers
+  chmod 440 /etc/sudoers.d/nova_sudoers
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  getent passwd nova &>/dev/null && userdel nova >/dev/null
+  getent group nova &>/dev/null && groupdel nova >/dev/null
+  true
+}
