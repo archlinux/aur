@@ -1,0 +1,14 @@
+pkgbase = eclipse-windowbuilder
+	pkgdesc = WindowBuilder plugins (SWT Designer and Swing Designer) for Eclipse IDE
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://projects.eclipse.org/projects/tools.windowbuilder
+	arch = any
+	license = EPL
+	makedepends = unzip
+	depends = eclipse>=4.4
+	source = http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/WB_v1.8.0_UpdateSite_for_Eclipse4.4.zip
+	md5sums = 80f78b3bc2b046b6f00c5adfa0887268
+
+pkgname = eclipse-windowbuilder
+
