@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-daydreamer-game">
+    <comment>DayDreamer Interactive fiction story</comment>
+    <comment xml:lang="en">DayDreamer Interactive fiction story</comment>
+    <comment xml:lang="pl">Plik DayDreamer fikcji interaktywnej</comment>
+    <icon name="application-x-daydreamer-game"/>
+    <glob pattern="*.ddg"/>
+  </mime-type>
+  <mime-type type="application/x-daydreamer-zip">
+    <comment>DayDreamer Zipped Interactive fiction story</comment>
+    <comment xml:lang="en">DayDreamer Zipped Interactive fiction story</comment>
+    <comment xml:lang="pl">Plik ZIP DayDreamer fikcji interaktywnej</comment>
+    <icon name="application-x-daydreamer-game"/>
+    <magic priority="50">
+      <match value="PK\03" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.ddz"/>
+  </mime-type>
+  <mime-type type="application/x-daydreamer-save">
+    <comment>Game saves DayDreamer Interactive fiction story</comment>
+    <comment xml:lang="en">Game saves DayDreamer Interactive fiction story</comment>
+    <comment xml:lang="pl">Zapis stanu gry DayDreamer fikcji interaktywnej</comment>
+    <icon name="application-x-daydreamer-save"/>
+    <magic priority="50">
+      <match value="dds\0\0\0" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.dds"/>
+  </mime-type>
+</mime-info>

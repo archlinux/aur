@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Day Dreamer
+Comment=Day Dreamer is interactive fiction player written in java
+Exec=daydreamer %f
+Icon=daydreamer
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
+MimeType=application/x-daydreamer-game; application/x-daydreamer-zip
