@@ -1,6 +1,5 @@
 # Maintainer: SaultDon <sault.don gmail>
 _pkgname=pyspatialite
-pkgbase=python-$_pkgname
 pkgname=python2-$_pkgname
 pkgver=3.0.1
 pkgrel=12

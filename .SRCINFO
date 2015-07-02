@@ -1,4 +1,4 @@
-pkgbase = python-pyspatialite
+pkgbase = python2-pyspatialite
 	pkgdesc = An interface to the SQLite 3.x embedded relational database engine with spatialite extensions.
 	pkgver = 3.0.1
 	pkgrel = 12
