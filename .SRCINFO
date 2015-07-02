@@ -1,0 +1,12 @@
+pkgbase = xcursor-semi-transparent
+	pkgdesc = Semi-transparent Cursors Theme
+	pkgver = 2008.01.30
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Semi-transparent+Cursors?content=74499
+	arch = any
+	license = GPL
+	source = http://gnome-look.org/CONTENT/content-files/74499-semi-transparent.tar.gz
+	md5sums = 1c78eb5aa97153432b9ee19f5fe65e92
+
+pkgname = xcursor-semi-transparent
+
