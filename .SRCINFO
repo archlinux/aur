@@ -1,0 +1,19 @@
+pkgbase = perl-eval-closure
+	pkgdesc = safely and cleanly create closures via string eval
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://metacpan.org/release/Eval-Closure
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-output
+	depends = perl-try-tiny
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DO/DOY/Eval-Closure-0.12.tar.gz
+	sha512sums = 070296c6cad3fc52adbc9827f707cd52ba14eef845d3acc91bd15e12aed8cbb5a9f4baf74500c1e31b9005a12436dc289b5f1191c959dea162043948517c82e2
+
+pkgname = perl-eval-closure
+
