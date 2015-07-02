@@ -1,0 +1,19 @@
+pkgbase = openipmi
+	pkgdesc = An open code base to allow access to platform information using Intelligent Platform Management Interface (IPMI).
+	pkgver = 2.0.21
+	pkgrel = 1
+	url = http://sourceforge.net/projects/openipmi/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = popt
+	depends = net-snmp
+	depends = glib
+	depends = glib2
+	depends = tcl
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/openipmi/OpenIPMI%202.0%20Library/OpenIPMI-2.0.21.tar.gz
+	sha256sums = 37b844d02119b94b31e2bb2bd8062ffdf6cd3eb4bc75fa6c47184e8b14fe95b8
+
+pkgname = openipmi
+
