@@ -1,0 +1,22 @@
+pkgname=gentoo-bashrc
+
+post_install() {
+  cat << _EOF 
+
+==> IMPORTANT!!!
+==> To prevent overwriting your existing .bashrc, the file
+==> was installed to /usr/share/gentoo-bashrc/bashrc
+==> 
+==> Please examine that file, adding your own important
+==> settings and local variables to it before replacing your
+==> existing bashrc.   Gentoo's bashrc also includes a
+==> color scheme for root, so you may consider copying it to
+==> /root/.bashrc after also copying any local variables there
+==> to the new .bashrc
+
+_EOF
+}
+
+post_upgrade() {
+  post_install $1
+}

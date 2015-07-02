@@ -1,0 +1,14 @@
+pkgbase = gentoo-bashrc
+	pkgdesc = This is Gentoo's BASHRC file, which has very nice color schemes.
+	pkgver = 2013.0
+	pkgrel = 1
+	url = http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html
+	install = gentoo-bashrc.install
+	arch = any
+	license = GPL
+	optdepends = bash: Shell needed to make use of this package
+	source = gentoo-bashrc-2013.0
+	md5sums = 3149b49f29fc9dceb660c4a87b40e8cf
+
+pkgname = gentoo-bashrc
+
