@@ -1,0 +1,15 @@
+pkgbase = pluma-plugins
+	pkgver = 1.8.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/cygwinports/pluma-plugins
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pluma
+	depends = mate-common
+	source = pluma-plugins-1.8.0.tar.gz::https://github.com/cygwinports/pluma-plugins/archive/1.8.0.tar.gz
+	sha256sums = d27bd9e7aa05d0bd23812d6087646880019f15d26cb94fc3e857c3806f228fe9
+
+pkgname = pluma-plugins
+
