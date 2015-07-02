@@ -1,0 +1,14 @@
+pkgbase = milena-mplayer
+	pkgdesc = Simple frontend for mplayer and Milena speech synthesizer
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://milena.polip.com/
+	arch = any
+	license = GPL
+	depends = milena
+	depends = mplayer
+	source = milena_mplayer.sh
+	sha256sums = 025cc95f048a2d658962e124af800c1eae45e212640c35e3ce74bcd961a3d998
+
+pkgname = milena-mplayer
+
