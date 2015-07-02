@@ -1,0 +1,26 @@
+pkgbase = python2-neutronclient-liberty
+	pkgdesc = Python client library for Neutron
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/openstack/python-neutronclient
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/python-neutronclient/python-neutronclient-2.6.0.tar.gz
+	sha256sums = ce72506c0720825edcb0e93b643340e044f1de9235d398fe1c45d851971020df
+
+pkgname = python2-neutronclient-liberty
+	depends = python2-pbr>=0.11
+	depends = python2-argparse
+	depends = python2-cliff-liberty
+	depends = python2-iso8601>=0.1.9
+	depends = python2-netaddr>=0.7.12
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-serialization-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-requests>=2.5.2
+	depends = python2-keystoneclient-liberty
+	depends = python2-simplejson>=2.2.0
+	depends = python2-six>=1.9.0
+	depends = python2-babel>=1.3
+
