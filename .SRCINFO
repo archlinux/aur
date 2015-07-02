@@ -1,0 +1,19 @@
+pkgbase = perl-www-mixcloud
+	pkgdesc = Perl wrapper for the Mixcloud API
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Mixcloud/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl-datetime-format-atom
+	depends = perl-json
+	depends = perl-libwww
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AJ/AJCT/WWW-Mixcloud-0.01.tar.gz
+	sha256sums = 01f3954e29bdd51799e56a0c73875620a5337c90af7ea39a0b9701104a14b35a
+
+pkgname = perl-www-mixcloud
+
