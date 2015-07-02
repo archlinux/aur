@@ -1,0 +1,14 @@
+pkgbase = libx32-tcl
+	pkgdesc = The Tcl scripting language (x32 ABI runtime)
+	pkgver = 8.6.4
+	pkgrel = 1.1
+	url = http://tcl.sourceforge.net/
+	arch = x86_64
+	license = custom
+	depends = tcl
+	depends = libx32-zlib
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.4-src.tar.gz
+	md5sums = d7cbb91f1ded1919370a30edd1534304
+
+pkgname = libx32-tcl
+
