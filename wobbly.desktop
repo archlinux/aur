@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Wobbly
+GenericName=IVTC assistant for VapourSynth
+Comment=IVTC assistant for VapourSynth
+Type=Application
+Exec=wobbly
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;
