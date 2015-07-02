@@ -1,0 +1,18 @@
+pkgbase = perl-x-osd
+	pkgdesc = Perl extension to the X On Screen Display library (xosd)
+	pkgver = 0.7
+	pkgrel = 6
+	url = http://search.cpan.org/dist/X-Osd/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = xosd
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GO/GOZER/X-Osd-0.7.tar.gz
+	sha256sums = e3bafe11cd51ad9b1e3d1df18516f9bb1ba462f981483b922f2b627b08190391
+
+pkgname = perl-x-osd
+
