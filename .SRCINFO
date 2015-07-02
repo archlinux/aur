@@ -1,0 +1,16 @@
+pkgbase = python2-oslo-versionedobjects-liberty
+	pkgdesc = Oslo Versioned Objects library
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.versionedobjects/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-six
+	source = https://pypi.python.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-0.4.0.tar.gz
+	md5sums = 662485aac5c5854dccf9d58b9c05fecb
+
+pkgname = python2-oslo-versionedobjects-liberty
+
