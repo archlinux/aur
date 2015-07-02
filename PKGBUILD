@@ -2,14 +2,12 @@
 
 pkgname=tint2-git
 _pkgname=tint2
-pkgrel=1
+pkgrel=2
 pkgver=v0.12.rc6.r18.g47a7013
-pkgdesc="Tint2 git official release"
+pkgdesc="Git official release"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/o9000/tint2"
 license=('GPL')
-#depends=('libxcomposite' 'libxinerama' 'libxrandr' 'pango' 'imlib2' 'startup-notification' 'librsvg' 'gtk2')
-#makedepends=('cmake' 'pkg-config')
 depends=('gtk2' 'imlib2' 'startup-notification')
 makedepends=('cmake')
 options=('!libtool')
@@ -24,12 +22,8 @@ pkgver() {
 }
 
 build() {
- # migrated to /usr/bin/python2 
- #sed -i 's/\#\!\/usr\/bin\/env python/\#\!\/usr\/bin\/env python2/g' "$srcdir/$_pkgname/src/tint2conf/tintwizard.py"
  cd "$srcdir/$_pkgname"
  cmake . -DCMAKE_INSTALL_PREFIX=/usr 
- # enabled by default 
- # -DENABLE_TINT2CONF=1
  make
 }
 
