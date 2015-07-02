@@ -1,0 +1,17 @@
+pkgbase = php-magickwand
+	pkgdesc = ImageMagick MagickWand API support for PHP
+	pkgver = 1.0.9_2
+	pkgrel = 1
+	url = http://www.magickwand.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = imagemagick
+	depends = php
+	source = http://www.magickwand.org/download/php/MagickWandForPHP-1.0.9-2.tar.gz
+	source = magickwand.ini
+	md5sums = 76190a585a9f6b90c9884ebd150c64b3
+	md5sums = c9c4d87fe86686f3755083c3dfa29d2c
+
+pkgname = php-magickwand
+
