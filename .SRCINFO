@@ -1,0 +1,16 @@
+pkgbase = libodb-sqlite
+	pkgdesc = The ODB SQLite runtime library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.codesynthesis.com/products/odb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libodb
+	depends = sqlite
+	options = !libtool
+	source = http://www.codesynthesis.com/download/odb/2.4/libodb-sqlite-2.4.0.tar.bz2
+	md5sums = 4415627849cd7d9f5dac7a160b245d4c
+
+pkgname = libodb-sqlite
+
