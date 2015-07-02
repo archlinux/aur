@@ -1,0 +1,16 @@
+pkgbase = perl-string-urandom
+	pkgdesc = An alternative to using /dev/random
+	pkgver = 0.16
+	pkgrel = 3
+	url = http://search.cpan.org/dist/String-Urandom/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker
+	depends = perl-params-validate
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MB/MBROOKS/String-Urandom-0.16.tar.gz
+	sha256sums = c1dc53e8483a77f3b5fa0c41ad843699420d46411ffb0b30bc4c70dd863b5139
+
+pkgname = perl-string-urandom
+
