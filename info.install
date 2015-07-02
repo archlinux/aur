@@ -1,0 +1,13 @@
+post_install() {
+  cat << EOF
+>> For Firefox:     /usr/share/themes/SlicknesS/userChrome.css
+>> For Thunderbird: /usr/share/themes/SlicknesS/thunderbird/userChrome.css
+>> Changelog:       /usr/share/themes/SlicknesS/changelog.txt
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+# vim:set ts=2 sw=2 et:
