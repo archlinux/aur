@@ -1,0 +1,28 @@
+pkgbase = puppetserver
+	pkgdesc = Server automation framework and application
+	pkgver = 2.1.1
+	pkgrel = 3
+	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
+	install = puppetserver.install
+	arch = any
+	license = APACHE
+	depends = ruby
+	depends = puppet
+	depends = java-environment
+	depends = logrotate
+	depends = jruby
+	backup = etc/default/puppetserver
+	backup = etc/logrotate.d/puppetserver
+	backup = etc/puppetlabs/puppetserver/bootstrap.cfg
+	backup = etc/puppetlabs/puppetserver/conf.d/ca.conf
+	backup = etc/puppetlabs/puppetserver/conf.d/global.conf
+	backup = etc/puppetlabs/puppetserver/conf.d/puppetserver.conf
+	backup = etc/puppetlabs/puppetserver/conf.d/web-routes.conf
+	backup = etc/puppetlabs/puppetserver/conf.d/webserver.conf
+	backup = etc/puppetlabs/puppetserver/logback.xml
+	backup = etc/puppetlabs/puppetserver/request-logging.xml
+	source = http://pkgbuild.com/~jsteel/arch/puppet/puppetserver-2.1.1.tar.gz
+	md5sums = d88cc2815ae198eaf794af73856e197f
+
+pkgname = puppetserver
+
