@@ -1,0 +1,24 @@
+pkgbase = napi-bash
+	pkgdesc = Lightweight, easy and fast polish subtitle downloader from the napiprojekt.pl
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://3ed.github.io/napi-bash/
+	arch = any
+	license = GPL
+	depends = bash>=4.1
+	depends = curl
+	depends = p7zip
+	depends = coreutils
+	depends = findutils
+	optdepends = notification-daemon: dla wersji GUI/GTK
+	optdepends = dos2unix: konwertowanie znaku konca linii dos/unix
+	optdepends = subotage: konwertowanie formatów (nie wymagane dla detekcji)
+	optdepends = ffmpeg: detektor FPS dla subotage
+	optdepends = mediainfo: detektor FPS dla subotage
+	optdepends = mplayer: detektor FPS dla subotage
+	optdepends = bc: kalkulator dla ffmpeg
+	source = napi-bash-1.0.0.tar.gz::https://github.com/3ed/napi-bash/archive/v1.0.0.tar.gz
+	sha256sums = 695b2d39a82fa1ad348cbae2ba0cb5425a9a59934ac718635f8455ba0903e26b
+
+pkgname = napi-bash
+
