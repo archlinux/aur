@@ -1,0 +1,3 @@
+post_install() {
+  systemd-tmpfiles --create proftpd.conf
+}
