@@ -1,0 +1,61 @@
+2015-07-02 SaultDon <sault.don gmail>
+    * 2.0-1
+    * updated to latest release
+
+2015-03-10 SaultDon <sault.don gmail>
+    * 1.11.2-1
+    * updated version number to latest release
+
+2015-01-15 SaultDon <sault.don gmail>
+    * 1.11.1-2
+    * added openjpeg2 support and as a dependency
+
+2014-10-02 SaultDon <sault.don gmail>
+    * 1.11.1-1
+    * updated to stable release
+
+2014-07-31 SaultDon <sault.don gmail>
+    * 1.11.0-5
+    * added more dependencies for webp, mysql, pcre support and more
+
+2014-06-28 SaultDon <sault.don gmail>
+    * 1.11.0-4
+    * switched to svn for backported patches
+
+2014-05-29 SaultDon <sault.don gmail>
+    * 1.11.0-3
+    * added json-c patch to compile against json-c >= 0.12
+
+2014-05-07 SaultDon <sault.don gmail>
+    * updated PKGBUILD 1.11.0-2
+    * removed Java and MDB reference (was my testing package, uploaded by accident)
+    * added libkml-git as a dependency to enable KMZ support    
+
+2014-04-27 SaultDon <sault.don gmail>
+    * updated to 1.11.0-1
+    * json-c added as a dependency
+
+2014-01-17 SaultDon <sault.don gmail>
+    * updated to 1.10.1-7
+    * second patch for http://trac.osgeo.org/gdal/ticket/5191
+
+2014-01-11 SaultDon <sault.don gmail>
+	* updated to 1.10.1-6
+	* patch for http://trac.osgeo.org/gdal/ticket/5333
+
+2014-01-10 SaultDon <sault.don gmail>
+	* updated to 1.10.1-4
+	* added more patches! (ie, http://trac.osgeo.org/gdal/ticket/5270)
+
+2013-09-14 SaultDon <sault.don gmail>
+    * updated to 1.10.1-2
+    * added prepare() into PKGBUILD
+    * added patches for http://trac.osgeo.org/gdal/ticket/5191
+
+2013-09-14 SaultDon <sault.don gmail>
+	* updated to 1.10.1
+
+2013-09-13 SaultDon <sault.don gmail>
+	* renamed to gdal-filegdb to avoid conflict with gdal package
+	* compiling with r/w filegdb-support
+	* depends on filegdb-api package in AUR
