@@ -1,0 +1,16 @@
+pkgbase = pysztaki-svn
+	pkgdesc = Translator script for console using the szotar.sztaki.hu database
+	pkgver = 9
+	pkgrel = 3
+	url = http://code.google.com/p/pysztaki/
+	arch = any
+	license = BSD
+	makedepends = subversion
+	depends = python2-beautifulsoup3
+	source = pysztaki::svn+http://pysztaki.googlecode.com/svn/trunk/
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 73c04eba22d5814ff62c1b2dc8f446c5
+
+pkgname = pysztaki-svn
+
