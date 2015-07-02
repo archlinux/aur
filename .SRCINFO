@@ -1,0 +1,20 @@
+pkgbase = perl-shell-perl
+	pkgdesc = A read-eval-print loop in Perl
+	pkgver = 0.0023
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Shell-Perl/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	makedepends = perl-extutils-makemaker
+	depends = perl-class-accessor
+	depends = perl-file-homedir
+	depends = perl-path-class
+	depends = perl-file-slurp
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Shell-Perl-0.0023.tgz
+	sha256sums = 9ccdf053f9d924c052850a832d8e6062ea903c7c91df1d3ac6c53980fa40288c
+
+pkgname = perl-shell-perl
+
