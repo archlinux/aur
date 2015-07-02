@@ -1,0 +1,15 @@
+pkgbase = perl-getopt-std-strict
+	pkgdesc = Getopt::Std is nice but it could be even easier to use...
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Getopt-Std-Strict/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/Getopt-Std-Strict-1.01.tar.gz
+	sha256sums = c64586d314948361dfb1e7626811365cd581bc76c5214df8dbf1367505f1e00e
+
+pkgname = perl-getopt-std-strict
+
