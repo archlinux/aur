@@ -1,0 +1,18 @@
+pkgbase = heaptrack-git
+	pkgdesc = A heap memory profiler
+	pkgver = 1
+	pkgrel = 1
+	url = http://milianw.de/tag/heaptrack
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = libunwind
+	depends = elfutils
+	depends = boost-libs
+	source = git+git://anongit.kde.org/heaptrack
+	md5sums = SKIP
+
+pkgname = heaptrack-git
+
