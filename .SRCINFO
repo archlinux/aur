@@ -1,0 +1,16 @@
+pkgbase = libodb-pgsql
+	pkgdesc = The ODB PostreSQL runtime library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.codesynthesis.com/products/odb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libodb
+	depends = postgresql-libs
+	options = !libtool
+	source = http://www.codesynthesis.com/download/odb/2.4/libodb-pgsql-2.4.0.tar.bz2
+	md5sums = 7c71a2f9df1faaeb586ce354b647e907
+
+pkgname = libodb-pgsql
+
