@@ -1,0 +1,22 @@
+pkgbase = tesseract-svn
+	pkgdesc = An OCR Engine that was developed at HP Labs between 1985 and 1995
+	pkgver = 837
+	pkgrel = 1
+	url = http://code.google.com/p/tesseract-ocr/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = subversion
+	depends = gcc-libs
+	depends = libtiff
+	depends = libpng
+	depends = leptonica
+	depends = giflib
+	provides = tesseract
+	conflicts = tesseract
+	options = !libtool
+	source = tesseract::svn+http://tesseract-ocr.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = tesseract-svn
+
