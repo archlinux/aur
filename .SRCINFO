@@ -1,15 +1,15 @@
 pkgbase = libreoffice-extension-languagetool
 	pkgdesc = An Open Source style and grammar checker (30 languages)
-	pkgver = 2.9.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://www.languagetool.org/
 	arch = any
 	groups = libreoffice-extensions
 	license = LGPL
 	depends = libreoffice
-	noextract = LanguageTool-2.9.1.oxt
-	source = http://www.languagetool.org/download/LanguageTool-2.9.1.oxt
-	sha512sums = a3c848218aa65bb8b84e78a8d4374e28988736addc55de10307a9d6c8b8762081cf2736892a3d7adf714376a4508a80f3e52844540551fde6497596cb56e5099
+	noextract = LanguageTool-3.0.oxt
+	source = http://www.languagetool.org/download/LanguageTool-3.0.oxt
+	sha512sums = 4462f4c1fd8eefdf2d8868e602b6286879b545f10ba6e915dc588d6145407912d40c718c3e680b1643b51533b48630461ffec2d59df74edb532443c965df35f0
 
 pkgname = libreoffice-extension-languagetool
 
