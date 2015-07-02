@@ -1,0 +1,20 @@
+(c) 3ED <krzysztof1987@gmail.com>
+Description: Upgrade to use latest eyed3...
+
+--- mixramp-tag.orig	2010-04-20 14:46:27.000000000 +0000
++++ mixramp-tag	2014-02-24 14:00:15.000000000 +0000
+@@ -117,10 +117,10 @@
+           ;;
+       (mp3)
+       "$TAGGER" \
+-          --set-encoding=utf8 \
+-          --set-user-text-frame=mixramp_start:"$MIXRAMP_START" \
+-          --set-user-text-frame=mixramp_end:"$MIXRAMP_END" \
+-          --set-user-text-frame=mixramp_ref:"$MIXRAMP_REF" \
++          --encoding=utf8 \
++          --user-text-frame=mixramp_start:"$MIXRAMP_START" \
++          --user-text-frame=mixramp_end:"$MIXRAMP_END" \
++          --user-text-frame=mixramp_ref:"$MIXRAMP_REF" \
+           "$FILE" > /dev/null || exit 14 
+           ;;
+   esac

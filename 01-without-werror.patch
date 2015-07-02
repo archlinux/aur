@@ -1,0 +1,12 @@
+(c) 3ED <krzysztof1987@gmail.com>
+Description: Do not treat warnings as errors...
+
+--- Makefile.orig	2014-02-23 20:27:30.000000000 +0000
++++ Makefile	2014-02-23 20:08:52.000000000 +0000
+@@ -1,5 +1,5 @@
+ CC = gcc
+-CFLAGS = -std=c99 -Wall -Wextra -Werror -g -O
++CFLAGS = -std=c99 -Wall -Wextra -g -O
+ INCLUDES = 
+ LIBS = -laudiofile -lm
+ SRCS = mixramp.c gain_analysis.c

@@ -1,0 +1,38 @@
+(c) 3ED <krzysztof1987@gmail.com>
+Description: Don't append but replace mixramp tags...
+
+--- mixramp-tag.orig	2014-02-25 09:14:24.000000000 +0000
++++ mixramp-tag	2014-02-25 09:18:04.000000000 +0000
+@@ -129,12 +129,26 @@
+           "$FILE" > /dev/null || exit 14 
+           ;;
+       (ogg)
+-       "$TAGGER" \
+-          --tag "MIXRAMP_START=$MIXRAMP_START" \
+-          --tag "MIXRAMP_END=$MIXRAMP_END" \
+-          --tag "MIXRAMP_REF=$MIXRAMP_REF" \
+-          -a "$FILE" || exit 14
+-          ;;
++        OGGTAGS=$(mktemp) || exit 14
++
++        #dump tags to file
++        "$TAGGER" -c "$OGGTAGS" "$FILE" || exit 14
++
++        #remove old mixramp tags
++        sed '/^MIXRAMP_\(START\|END\|REF\)=.*$/d' -i "$OGGTAGS"
++
++        #add new mixramp tags
++        cat >> "$OGGTAGS" <<EOF
++MIXRAMP_START=$MIXRAMP_START
++MIXRAMP_END=$MIXRAMP_END
++MIXRAMP_REF=$MIXRAMP_REF
++EOF
++
++        #overwrite ogg tags
++        "$TAGGER" -c "$OGGTAGS" -w "$FILE" || exit 14
++
++        rm -f "$OGGTAGS"
++        ;;
+   esac
+   
+ done

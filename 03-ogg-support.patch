@@ -1,0 +1,46 @@
+(c) sekret <aur.archlinux.org>
+Description: Add ogg support...
+
+--- mixramp-tag.orig	2014-02-25 09:13:31.000000000 +0000
++++ mixramp-tag	2014-02-25 09:14:24.000000000 +0000
+@@ -1,12 +1,12 @@
+ #!/bin/sh
+ # A script to add mixramp tags for audio files that support metadata.
+-# Currently supports FLAC.
++# Currently supports FLAC, OGG and MP3
+ NAME="${0##*/}"
+ ANALYZER="${NAME%%-tag}"
+ 
+ usage() {
+     echo "usage: $NAME <audio_file> ..."
+-    echo "<audio_file>s should end in .flac or .mp3"
++    echo "<audio_file>s should end in .flac, .ogg or .mp3"
+ }
+ 
+ # Check args.
+@@ -31,6 +31,11 @@
+       DUMPER=mpg123
+       DUMPFLAGS="--quiet --wav -"
+       ;;
++      (ogg)
++      TAGGER=vorbiscomment
++      DUMPER=oggdec
++      DUMPFLAGS="--quiet -o -"
++      ;;
+       (*)
+       echo "$NAME: file type of $FILE not recognized."
+       usage
+@@ -123,6 +128,13 @@
+           --user-text-frame=mixramp_ref:"$MIXRAMP_REF" \
+           "$FILE" > /dev/null || exit 14 
+           ;;
++      (ogg)
++       "$TAGGER" \
++          --tag "MIXRAMP_START=$MIXRAMP_START" \
++          --tag "MIXRAMP_END=$MIXRAMP_END" \
++          --tag "MIXRAMP_REF=$MIXRAMP_REF" \
++          -a "$FILE" || exit 14
++          ;;
+   esac
+   
+ done
