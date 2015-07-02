@@ -1,0 +1,20 @@
+pkgbase = perl-file-moreutil
+	pkgdesc = File-related utilities
+	pkgver = 0.59
+	pkgrel = 2
+	url = https://metacpan.org/release/File-MoreUtil
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-file-slurp-tiny
+	checkdepends = perl-file-chdir
+	depends = perl-rinci
+	provides = perl-sharyanto-file-util
+	conflicts = perl-sharyanto-file-util
+	replaces = perl-sharyanto-file-util
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/File-MoreUtil-0.59.tar.gz
+	sha512sums = b3af675f48216f8cced9f35ec63a5148cc610dde94e4408a9b3f60ad8662452d9d1bc0a5b5e68dd10b8e1377973e16243c7dfe667a82428326b8e369ac9af3af
+
+pkgname = perl-file-moreutil
+
