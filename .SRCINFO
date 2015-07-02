@@ -1,0 +1,21 @@
+pkgbase = piuio-git
+	pkgdesc = Kernel driver for the PIUIO arcade input device
+	pkgver = 0.3.1.r0.gb8bdcb5
+	pkgrel = 2
+	url = https://github.com/djpohly/piuio
+	install = piuio.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = kmod
+	makedepends = linux-headers
+	provides = piuio
+	conflicts = piuio
+	source = git+https://github.com/djpohly/piuio.git
+	sha256sums = SKIP
+
+pkgname = piuio-git
+	depends = linux>=4.0
+	depends = linux<4.1
+

@@ -1,0 +1,14 @@
+KERNEL_VERSION=
+
+post_install() {
+	echo ">>> Updating module dependencies. Please wait..."
+	depmod "$(< "/usr/lib/modules/extramodules-$KERNEL_VERSION/version")"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
