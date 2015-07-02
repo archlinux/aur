@@ -1,0 +1,19 @@
+pkgbase = perl-test-corpus-audio-mpd
+	pkgdesc = automate launching of fake mdp for testing purposes
+	pkgver = 1.120990
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Corpus-Audio-MPD
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl-file-sharedir>=1.00
+	depends = perl-file-sharedir-pathclass
+	depends = perl-path-class
+	depends = perl-readonly
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JQ/JQUELIN/Test-Corpus-Audio-MPD-1.120990.tar.gz
+	sha256sums = dedba59ad19b19890b94cc6da3b9f61c768a98891c49d3e4cbefeb11c7e91805
+
+pkgname = perl-test-corpus-audio-mpd
+
