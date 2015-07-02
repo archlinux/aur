@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Milena GTK+
+GenericName=GUI for Milena
+GenericName[pl_PL]=GUI dla Milena
+Comment=Screen reader for Milena speech synthesizer
+Comment[pl_PL]=Czytnik ekranu dla syntezatora mowy Milena
+Icon=milena-gtk.png
+Exec=milena-gtk
+Terminal=false
+Type=Application
+Categories=GTK;AudioVideo;

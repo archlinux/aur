@@ -1,0 +1,17 @@
+--- milena_gtk.py.orig	2010-12-04 17:10:48.685378764 +0100
++++ milena_gtk.py	2010-12-04 17:29:58.273490930 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python2
+ #coding: utf-8
+ 
+ import sys,os,xml,re,htmlentitydefs,subprocess,signal,pickle,string
+@@ -49,7 +49,7 @@
+ 			else:
+ 				self.config[a]=False
+ 		self.config['keybindings']={}
+-		self.config['string_icon_path']=os.path.dirname(sys.argv[0])+'/milena_tray1.png'
++		self.config['string_icon_path']='/usr/share/pixmaps/milena-gtk.png'
+ 		for a in self.keysig:
+ 			self.config['keybindings'][a]=''
+ 		self.config['keybindings']['activate']='<Ctrl><Alt>x'

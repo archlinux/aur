@@ -1,0 +1,18 @@
+pkgbase = milena-gtk
+	pkgdesc = Gtk2 gui Milena speech synthesizer (screen reader, etc)
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://milena.polip.com/
+	arch = any
+	license = GPL
+	depends = milena
+	depends = python2-xlib
+	source = http://tts.polip.com/files/milena_gtk-0.2.tar.gz
+	source = milena-gtk.desktop
+	source = 01-python2+iconpath.patch
+	sha256sums = 31732eaaa5ea3b3f4a0012098092928f261a90745c4e7f4e8c3808f318339c15
+	sha256sums = 7e606231725d305e8fd5f49ed489df28fc2293d4d509cdb91f8a7b93a8c33513
+	sha256sums = e3aac040cd31af92e5135be1bf451a68fab7c71ec871b4a75a70133a0ec0ed1b
+
+pkgname = milena-gtk
+
