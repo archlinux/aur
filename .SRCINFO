@@ -1,0 +1,23 @@
+pkgbase = xevdevserver
+	pkgdesc = Captures keyboard/mouse events, sends them to given X display. Useful for multiseat.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://research.edm.uhasselt.be/~jori/page/index.php?n=Misc.XevdevServer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libstdc++5
+	depends = errut
+	depends = libx11
+	depends = libxtst
+	depends = libxext
+	depends = ncurses
+	depends = libxau
+	depends = libxdmcp
+	depends = glibc
+	source = http://research.edm.uhasselt.be/~jori/page/uploads/Misc/xevdevserver-2.1.0.tar.gz
+	md5sums = 855c238b87c17ed1406065ef6d51e91d
+
+pkgname = xevdevserver
+
