@@ -1,0 +1,18 @@
+pkgbase = bcfg2
+	pkgdesc = Configuration management tool.
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = http://bcfg2.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-lxml
+	depends = python2-lockfile
+	depends = python2-daemon
+	source = ftp://ftp.mcs.anl.gov/pub/bcfg/bcfg2-1.3.6.tar.gz
+	md5sums = 07065402dc1ae4525894fdb148c1b668
+
+pkgname = bcfg2
+
