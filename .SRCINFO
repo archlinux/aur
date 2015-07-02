@@ -1,0 +1,18 @@
+pkgbase = perl-cairo-gobject
+	pkgdesc = Integrate Cairo into the Glib type system
+	pkgver = 1.004
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Cairo-GObject/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
+	depends = glib-perl
+	depends = cairo-perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Cairo-GObject-1.004.tar.gz
+	sha256sums = 3bb9d40e802e51f56f1364abc553758152131803c12d85ba6e14bad6813409d5
+
+pkgname = perl-cairo-gobject
+
