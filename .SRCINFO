@@ -1,0 +1,17 @@
+pkgbase = python2-oslo-policy-liberty
+	pkgdesc = Oslo Policy
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.policy
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	provides = python2-oslo-policy
+	source = https://pypi.python.org/packages/source/o/oslo.policy/oslo.policy-0.6.0.tar.gz
+	sha256sums = 49fd7746ad87253112673178050083fa66e78b51a4f9a063b4366f9d0c6a4df8
+
+pkgname = python2-oslo-policy-liberty
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-serialization-liberty
+
