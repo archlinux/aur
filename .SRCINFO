@@ -1,0 +1,14 @@
+pkgbase = towave
+	pkgdesc = Generates wave files from chiptunes
+	pkgver = 3
+	pkgrel = 1
+	url = http://icesoldier.me/towave.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libgme
+	source = http://icesoldier.me/filedump/towave-rel3-src.tar.gz
+	sha256sums = 88cbec348316d17b87e4854767dd40a4418beaaf4ff94370a66ff49ae07a6621
+
+pkgname = towave
+
