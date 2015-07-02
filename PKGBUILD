@@ -3,16 +3,18 @@
 pkgname=tint2-git
 _pkgname=tint2
 pkgrel=1
-pkgver=v0.12.rc6.r8.ge7cfa35
+pkgver=v0.12.rc6.r18.g47a7013
 pkgdesc="Tint2 git official release"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/o9000/tint2"
 license=('GPL')
-depends=('libxcomposite' 'libxinerama' 'libxrandr' 'pango' 'imlib2' 'startup-notification' 'librsvg' 'gtk2')
-makedepends=('cmake' 'pkg-config')
+#depends=('libxcomposite' 'libxinerama' 'libxrandr' 'pango' 'imlib2' 'startup-notification' 'librsvg' 'gtk2')
+#makedepends=('cmake' 'pkg-config')
+depends=('gtk2' 'imlib2' 'startup-notification')
+makedepends=('cmake')
 options=('!libtool')
 provides=('tint2')
-conflicts=('tint2' 'tint' 'tint2-svn' 'tint2-beta')
+conflicts=('tint2' 'tint' 'tint2-svn')
 source="git+https://gitlab.com/o9000/tint2.git"
 md5sums=('SKIP')
 
