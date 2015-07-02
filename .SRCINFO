@@ -1,0 +1,19 @@
+pkgbase = perl-class-load-xs
+	pkgdesc = XS implementation of parts of Class::Load
+	pkgver = 0.09
+	pkgrel = 2
+	url = https://metacpan.org/release/Class-Load-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic2
+	checkdepends = perl-module-implementation
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-requires
+	depends = perl-class-load
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.09.tar.gz
+	sha512sums = 9b24637cf7b035ba369f05e42c0bd5a8590e001f2395b46df078635a50bb3df58ad57850be0010d092ae2530d9a545bbcc5f0055f6ae7f166c93905c022d469d
+
+pkgname = perl-class-load-xs
+
