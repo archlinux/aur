@@ -1,0 +1,17 @@
+pkgbase = openbox-gnome-places
+	pkgdesc = Dynamically generates a menu for the Openbox3-Windowmanager that tries to resemble the Gnome2 Places-Menu.
+	pkgver = 0.2.1.1
+	pkgrel = 1
+	url = http://3ed.jogger.pl/2008/10/12/openbox-gnome-places/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = gettext
+	depends = openbox
+	backup = etc/openbox-gnome-places.conf
+	source = http://csk.pl/~kas/dl/openbox-gnome-places/openbox-gnome-places-0.2.1.1.tar.xz
+	sha256sums = b9408f96cf188116d154d1afbf7b43d2818af5dbcb02a50732f593754a058eba
+
+pkgname = openbox-gnome-places
+
