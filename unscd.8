@@ -1,0 +1,31 @@
+.TH UNSCD "8" "October 2010" "unscd - nscd which does not hang" "User Commands"
+.SH NAME
+unscd \- nscd which does not hang
+.SH SYNOPSIS
+.B unscd
+[\fIOPTION\fR...]
+.SH DESCRIPTION
+Micro Name Service Cache Daemon
+.TP
+\fB\-d\fR, \-\-debug
+Do not daemonize; log to stderr
+.HP
+\fB\-f\fR, \-\-config\-file File to read configuration from
+.TP
+\fB\-i\fR, \-\-invalidate
+Invalidate cache
+.TP
+\fB\-K\fR, \-\-shutdown
+Shut the server down
+.TP
+\fB\-t\fR, \-\-nthreads
+Serve N requests in parallel
+.TP
+\fB\-V\fR, \-\-version
+Version
+.SH FILES
+.B /etc/unscd.conf
+.SH AUTHOR
+unscd was written by Denys Vlasenko and is licensed under the GPL version 2.
+.TP
+This manpage was written by Don Armstrong <don@debian.org> and updated to Archlinux by Sebastien Luttringer <seblu+arch@seblu.net>
