@@ -1,7 +1,8 @@
 pkgbase = simple-text
 	pkgdesc = A not so simple text and code editor written in Vala (Still in development)
-	pkgver = 0.9.9
-	pkgrel = 4
+	pkgver = 0.9.5
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/badwolfie/simple-text
 	install = simple-text.install
 	arch = i686
@@ -10,14 +11,13 @@ pkgbase = simple-text
 	makedepends = vala
 	makedepends = git
 	makedepends = intltool
-	depends = gtk3
+	depends = gtk3>=3.16
 	depends = gtksourceview3
 	depends = libgee
 	depends = vte3
-	depends = libcap
 	depends = dconf
 	options = !emptydirs
-	source = simple-text-0.9.9::git+https://github.com/badwolfie/simple-text.git
+	source = simple-text-0.9.5::git+https://github.com/badwolfie/simple-text.git
 	md5sums = SKIP
 
 pkgname = simple-text
