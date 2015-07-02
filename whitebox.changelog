@@ -1,0 +1,175 @@
+2015-07-02 SaultDon <sault.don gmail>
+    * Version 3.2.3-1
+
+2014-09-19 SaultDon <sault.don gmail>
+    * Version 3.2.1-1
+    -Added the Retrieve SRTM DEM Data tool. This tool will download SRTM DEM tiles from
+     the USGS FTP site, import the tiles into Whitebox GAT, and optionally fill 
+     missing data holes and mosaic the tiles.
+    -Added Hex-binning tool.
+    -Added a tool for isolating ground return points from LiDAR LAS files.
+    -Added a tool for separating large LiDAR LAS files into smaller tiles of 
+     shapefile points.
+    -Added a Lee filter (Sigma filter) tool.
+    -Added Interior Point tool.
+    -Added CreateRectangularGridTool for creating a vector grid of polygons based on 
+     a rectangular grid.
+    -Added Single-part to Multi-part and Multi-part to Single-part tools.
+    -Added List Unique Values tool to list all of the unique values in a categorical 
+     field contained within a vector's attribute table. It will also report category
+     frequency.
+    -Added a fast depression breaching tool. Depression breaching is a far superior 
+     method for pre-processing a DEM for hydrological analysis (e.g. mapping 
+     watersheds). One of the reasons that people continue to fill depressions instead 
+     of breaching is that filling is computationally much more efficient than 
+     breaching. Well this tool is just about as fast as Whitebox's depression filling 
+     tool. So now you have no excuse. This should be your default tool for hydrological
+     processing of DEMs. Its result is not as good as the optimal breaching tool but
+     it is far more efficient and still much better than filling. Please breach.
+    -Added the tool BurnStreamAtRoads, which will carve a stream path through road
+     embankments at the site of road/stream crossings.
+    -Added a Minimum Interpolation tool for shapefile point inputs similar to the 
+     Minimum Interpolation (LiDAR) tool.
+    -Added the ability to update individual scripts from the source code repository. 
+     This way, if you modify the code for a tool and break it, you can always 
+     revert it back to the source on the main trunk. There's also now a menu entry 
+     that will update all scripts for which there are newer versions within the 
+     code repository and new scripts.
+    -Added a Flood Order tool; details in tool's help.
+    -Added a polygonize tool for converting polylines into polygons.
+    -Updated the centroid (vector) tool with the option to handle multi-part polyline 
+     and polygon features as a single entity or to extract centroids for each part, 
+     as well as, the ability to extract centroids for groups of points.
+    -Created a convenience tool, Feature Selection, for opening the feature selection 
+     tab within the attribute table dialog after selecting a vector layer. If the 
+     layer is not currently displayed, it will be. The reason I added this tool is 
+     because many people search for feature selection in the toolbox rather than 
+     in the attribute table dialog.
+    -The Hillshade tool will now automatically calculate an appropriate z conversion 
+     value when it detects that the DEM is in geographic coordinates with XY units 
+     of degrees. I also fixed the Slope, Aspect, and all the Curvature tools to do 
+     this as well.
+
+2014-09-11 SaultDon <sault.don gmail>
+    * Version 3.2.0-2
+    - updated java dependency to jre version 8
+    - whitebox.sh updated to use java 8 when launching jar file
+
+2014-06-01 SaultDon <sault.don gmail>
+    * Version 3.2.0 (May 03, 2014)
+    - updated to release 3.2.0
+    - http://whiteboxgeospatial.wordpress.com/2014/05/03/whitebox-gat-v-3-2-0/ for more info
+    - now requires jdk-devel or jre-devel version 8 from the AUR
+
+2014-03-01 SaultDon <sault.don gmail>
+    * Version 3.1.3 (February 23, 2014)
+    -saultdon, sed LICENSE from ReleaseNotes
+    -Embedded vector selection by attributes into the attribute table window.
+    -Added MergeTableWithCSV tool for appending data contained within a comma separated values (CSV) file to a shapefile's attribute table.
+    -Added MergeTables tool for appending one shapefile's attribute table to another in a one-to-one or many-to-one relation.
+    -Added several new functions to the attribute table such as the ability to save selected features to the clipboard, filters, changing field names, etc. This release sees significant improvements in the handling of attributes.
+    -Added scroll zooming and improved natural zooming. This is one feature that once you experience it, you can never go back. I have to wonder why I didn't implement it earlier.
+    -Added the GeasyTools add-on by Marc Vis and Jan Seibert. This add-on allows provides some common tools for hydrological analysis including the MDInf (i.e. multiple direction D-infinity) flow accumulation algorithm.
+    -Added Plot Variogram tool.
+    -Added Stream long profile tool.
+    -Added Distance to Outlet tool for stream-network analysis.
+    -Added a tool for importing CSV files to vector points.
+    -Moved the log directory out of the Resources folder to a higher level. This should make finding logs easier for users.
+    -Added check for updates and automatic downloading of latest version.
+    -Fixed a minor bug with the ImportArcASCIIGrid tool that offset each row by one.
+
+2014-01-02 SaultDon <sault.don gmail>
+    * Version 3.1.0 (December 16, 2013)
+	-saultdon, updated whitebox.sh launcher and re-referenced license in source()
+	-Added the Create TIN and Rasterize TIN tools.
+	-Added support for import of tiled GeoTIFF files.
+	-Added ShowGeoTiffTags tool for viewing the tags within a GeoTiff file.
+	-Modified the AddLayer method so that it accepts non-native format geospatial layers and automatically calls the appropriate data import tool.
+	-Added an 'Export Layer' quick link to the various export data tools from the Layers menu and pop-up menu.
+	-Added ImportSRTM tool to import shuttle radar topography mission DEMs.
+	-Moved all of the entries in the File menu that were related to maps to the Cartographic menu and made the corresponding change to the order of the icons in the toolbar. This should make it more obvious that when you first launch the program, you typically need to add data layers rather open a map. Previously people were frequently confusing maps with data layers.
+	-Fixed a bug with Nearest Neighbour LiDAR interpolation.
+	-Modified the LiDAR IDW interpolation tool so that the maximum scan angle deviation can be specified by the user.
+	-A raster's NoData value can now be updated directly from its layer properties.
+	-Added ImportSagaGrid and ExportSagaGrid tools.
+	-Added ImportGenericMultibandData tool to convert ENVI style BIL, BSQ and BIP raster files. I was only able to get a .bsq file for testing so if you have access to a small .bip and/or .bil file please forward them to me.
+	-Added ImportDEM tool for imported the USGS/CDED ASCII DEM files.
+	-Fixed a bug with the Depression Filling (Planchon and Darboux) tool that affected DEMs with irregular shapes (i.e. areas of NoData around the edges).
+
+2013-11-29 SaultDon <sault.don gmail>
+    * Version 3.0.8-1 (November 27, 2013)
+        -Added the TraceDownslopeFlowpath tool.
+        -Fixed a bug with the FD8 and Dinf flow accumulation tools that allowed for stack overflow errors if the DEM was large or contained a very long flow path.
+        -Fixed a bug in the generate data functionality of the data base viewer/scripter.
+        -Added Depth-In-Sink tool.
+        -Modified the Difference From Mean Elevation tool to use an integral image. This speeds up the performance with large neighbourhoods dramatically. In fact, it will take the same time to run regardless of the size of the neighbourhood.
+        -Added the Multi-scale Elevation Residual Index (MERI) tool for performing multi-scale landscape position analysis on a DEM.
+        -Modified the Hillshade tool so that it only requires two passes instead of three.
+        -Modified the Dissolve tool so that it can dissolve based on an attribute.
+        -Added CreateHexagonalVectorGrid tool.
+        -Added RescaleImageValueRange tool.
+        -Added ThickenRasterLine tool.
+        -Added FindStraightSegments tool.
+        -Other minor bug fixes, particularly related to the newly added multi-feature  selection.
+        -Improved error logging for all plug-in tools.
+
+2013-10-29 SaultDon <sault.don gmail>
+	* Version 3.0.7-1 (Oct. 28, 2013)
+        -Added preliminary support for multi-feature selection.
+        -Fixed error in Find Tie Points tool.
+        -Made the link to Whitebox tutorials in the Help accessible from the menu.
+        -Other minor bug fixes and version changes
+
+2013-10-19 SaultDon <sault.don gmail>
+	* 3.0.6-1 :
+	new upstream release
+	Whitebox GAT 3.0.5 'Iguazu'
+		-Added ImportWellKnownText tool.
+		-Fixed a bug in the RenameFile script
+		-Re-wrote the IDW LiDAR interpolation tool to remove an edge effect at tile 
+		 boundaries and to reduce a surface texturing artifact that can appear in some 
+		 LiDAR datasets associated with a scan angle patterning at flight-line overlaps.
+		-Updated Groovy to version 2.1.8
+		-Added Correct Vignetting tool.
+		-Added image de-striping tool.
+		-Added Find Flightline Edge Points tool.
+		-Added Find Tie-points tool
+		-Added the ability to delete recently digitized nodes.
+		-Fixed a bug that allowed for the outlines of polygons under other polygons to 
+		 show through.
+
+2013-10-05 SaultDon <sault.don gmail>
+        * 3.0.5-2 :
+        applied write permissions to to required files and folders in /opt/whitebox/resources
+		- Hoping that one day this folder will be part of the users home dir instead...
+
+2013-09-20 SaultDon <sault.don gmail>
+	* 3.0.5-1 :
+	new upstream release
+	Whitebox GAT 3.0.5 'Iguazu'
+		-Added Dissolve tool.
+		-Added VectorCleaning tool.
+		-Added IntersectionDensity tool.
+		-Added AverageOverlay tool.
+		-Added ExtendVectorLine tool.
+		-Added Medoid tool.
+		-Added FindSaddlePoint tool.
+		-Improved the usability of the Raster Calculator.
+
+2013-09-18 SaultDon <sault.don gmail>
+
+	* 3.0.4-1 :
+	new upstream release
+	Whitebox GAT 3.0 'Iguazu' (Sept. 5, 2013)
+		-Improved support for scripting, including syntax highlighting and auto-completion.
+		 There have been considerable improvements made to the Whitebox scripter.
+		-Scripts can now be added as plugin tools, with integration in the tools panel.
+		-Added Rename File tool, a Python script plugin.
+		-Added Sink tool, a Python script plugin.
+		-Added user-defined weights filter, a Groovy script plugin.
+		-Added scripting examples in all 300+ plugin tool help files (this took quite a 
+		 lot of time!).
+		-The version of Jython (python for java) included in the library has been updated
+		 to the stand alone version. This has increased the distribution size by 2 MB.
+		-Added a quick-link to all displayed data layers in the file selection components
+		 of tool dialogs.
