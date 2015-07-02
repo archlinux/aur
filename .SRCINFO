@@ -1,0 +1,14 @@
+pkgbase = mkpwd
+	pkgdesc = Command line password generator
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.o-schroeder.de/projects/mkpwd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = http://www.o-schroeder.de/download/mkpwd/mkpwd-1.6.tar.gz
+	sha256sums = 6db5032fa6e2bc3ebd499ebf2b94f8df5b3ce64760d84fda7101e951bfb5c88a
+
+pkgname = mkpwd
+
