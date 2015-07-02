@@ -11,10 +11,10 @@ pkgbase = vapoursynth-plugin-knlmeanscl
 	depends = vapoursynth
 	depends = libcl
 	source = https://dl.dropboxusercontent.com/u/6596386/vapoursynth-plugins/KNLMeansCL_v0.5.6.zip
-	source = patch_h.patch::http://sl1pkn07.wtf/paste/view/raw/1cc6a876
+	source = patch_h.patch::http://sl1pkn07.wtf/paste/view/raw/200696c6
 	source = patch_cpp.patch::http://sl1pkn07.wtf/paste/view/raw/00c87ed0
 	sha1sums = f65272737926d6227596eec6ca02918c943633c5
-	sha1sums = 8289b220a70a0fd9e64a835a9b412b69d44bd6f9
+	sha1sums = c36e70bc1b2fe98e07c5c4afe8007b2c2a71676e
 	sha1sums = ac7f7b3c5cd13ed348c823e36b85670f3d5f4393
 
 pkgname = vapoursynth-plugin-knlmeanscl

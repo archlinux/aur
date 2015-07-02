@@ -11,10 +11,10 @@ license=('GPL')
 depends=('vapoursynth' 'libcl')
 makedepends=('git' 'opencl-headers')
 source=("https://dl.dropboxusercontent.com/u/6596386/vapoursynth-plugins/KNLMeansCL_v${pkgver}.zip"
-        'patch_h.patch::http://sl1pkn07.wtf/paste/view/raw/1cc6a876'
+        'patch_h.patch::http://sl1pkn07.wtf/paste/view/raw/200696c6'
         'patch_cpp.patch::http://sl1pkn07.wtf/paste/view/raw/00c87ed0')
 sha1sums=('f65272737926d6227596eec6ca02918c943633c5'
-          '8289b220a70a0fd9e64a835a9b412b69d44bd6f9'
+          'c36e70bc1b2fe98e07c5c4afe8007b2c2a71676e'
           'ac7f7b3c5cd13ed348c823e36b85670f3d5f4393')
 
 prepare() {
