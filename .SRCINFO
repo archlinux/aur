@@ -1,0 +1,14 @@
+pkgbase = milena-basewords
+	pkgdesc = Milena is a Polish speech synthesizer for Linux (basewords)
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = http://milena.polip.com/
+	arch = any
+	license = GPL
+	source = http://tts.polip.com/files/milena-basewords-0.2.10.tar.gz
+	source = makefile.patch
+	sha256sums = 73125fe8446becd83974f442e8f95048e2c635d23dea7b5efbf3cd09ea501eb6
+	sha256sums = b08e6909bb51003d37fdd5598d1ff4657edae4feec35ad74f588263f7456a435
+
+pkgname = milena-basewords
+

@@ -1,0 +1,16 @@
+--- Makefile.orig	2011-04-18 16:33:55.213561221 +0200
++++ Makefile	2011-04-18 16:36:40.829455739 +0200
+@@ -1,8 +1,11 @@
+-export prefix=/usr/local
++DESTDIR ?=
++export prefix=$(DESTDIR)/usr
+ export milena_dir=$(prefix)/share/milena-words
+ 
++default:
+ install:
+-	zcat pl_basewords.dat.gz > $(milena_dir)/pl_basewords.dat
++	install -dm 755 "$(milena_dir)/"
++	zcat pl_basewords.dat.gz > "$(milena_dir)/pl_basewords.dat"
+ 
+ uninstall:
+ 	rm -r $(milena_dir)/pl_basewords.dat
