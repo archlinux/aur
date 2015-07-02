@@ -1,0 +1,27 @@
+pkgbase = python2-keystonemiddleware-liberty
+	pkgdesc = Middleware for OpenStack Identity
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/keystonemiddleware/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-babel
+	depends = python2-oslo-config-liberty
+	depends = python2-oslo-context-liberty
+	depends = python2-oslo-i18n-liberty
+	depends = python2-oslo-serialization-liberty
+	depends = python2-oslo-utils-liberty
+	depends = python2-pbr>=0.6
+	depends = python2-pycadf>=0.8.0
+	depends = python2-keystoneclient-liberty
+	depends = python2-requests>=2.2.0
+	depends = python2-six>=1.9.0
+	depends = python2-webob>=1.2.3
+	source = https://pypi.python.org/packages/source/k/keystonemiddleware/keystonemiddleware-1.6.1.tar.gz
+	md5sums = d4534279089d8782152adee31e331d9a
+
+pkgname = python2-keystonemiddleware-liberty
+
