@@ -1,0 +1,17 @@
+pkgbase = facter2
+	pkgdesc = Collect and display system facts
+	pkgver = 2.4.4
+	pkgrel = 1
+	url = http://puppetlabs.com/facter
+	arch = any
+	license = APACHE
+	depends = ruby
+	depends = inetutils
+	depends = net-tools
+	provides = facter
+	conflicts = facter
+	source = http://downloads.puppetlabs.com/facter/facter-2.4.4.tar.gz
+	md5sums = 97e5daae4c9571013506867f1ba8da0a
+
+pkgname = facter2
+
