@@ -1,0 +1,17 @@
+pkgbase = teletype-svn
+	pkgdesc = Serial emulator based on tinyserial
+	pkgver = r582
+	pkgrel = 1
+	url = http://www.clifford.at/tools.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = subversion
+	depends = readline
+	provides = teletype
+	conflicts = teletype
+	source = teletype::svn+http://svn.clifford.at/tools/trunk
+	sha256sums = SKIP
+
+pkgname = teletype-svn
+
