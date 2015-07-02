@@ -8,6 +8,7 @@ pkgbase = plus-dm
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = xorg-xinit 
 	depends = pacman
 	optdepends = kdebase-kdialog: KDE dialog box
 	optdepends = zenity: GTK dialog box

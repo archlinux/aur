@@ -6,7 +6,7 @@ pkgdesc="DM choise at startx"
 arch=('any')
 url="https://github.com/papajoker/plus-dm"
 license=('GPL')
-depends=('pacman')
+depends=('xorg-xinit' 'pacman')
 makedepends=('git')
 optdepends=('kdebase-kdialog: KDE dialog box'
         'zenity: GTK dialog box')
