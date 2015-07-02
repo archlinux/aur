@@ -1,0 +1,9 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2012-07-01 07:31:25.000000000 +0000
++++ b/Makefile	2012-07-04 09:20:56.000000000 +0000
+@@ -1,4 +1,4 @@
+-export prefix=/usr/local
++export prefix ?= /usr/local
+ export milena_dir=$(prefix)/share/milena
+ 
+ all:
