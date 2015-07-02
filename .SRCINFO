@@ -1,0 +1,21 @@
+pkgbase = stormbaancoureur
+	pkgdesc = An arcade-style car game based on physics
+	pkgver = 2.1.6
+	pkgrel = 2
+	url = http://www.stolk.org/stormbaancoureur/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ode
+	makedepends = plib
+	makedepends = mesa
+	depends = alsa-lib
+	depends = freeglut
+	depends = glu
+	source = http://www.stolk.org/stormbaancoureur/download/stormbaancoureur-2.1.6.tar.gz
+	source = stormbaancoureur.desktop
+	sha256sums = c6bd67695734fd430ce8e8d744710531ed4dae1bc78d5cd0529af930144e7903
+	sha256sums = 061782e3defbc500d008af342543c4f7ddc873786c5c34ad173a2d39811e1c7c
+
+pkgname = stormbaancoureur
+

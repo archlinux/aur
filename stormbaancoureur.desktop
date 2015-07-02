@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Stormbaan Coureur
+GenericName=Car Game
+Exec=stormbaancoureur
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Game;ArcadeGame;
