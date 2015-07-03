@@ -14,11 +14,10 @@ makedepends=('git')
 conflits=()
 provides=('cjson')
 options=('!libtool')
-source=()
-md5sums=()
+source=('git://github.com/chefpeyo/cJSON.git')
+md5sums=(SKIP)
 
-_gitroot="git://github.com/chefpeyo/cJSON.git"
-_gitname="cjson"
+_gitname="cJSON"
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -29,34 +28,18 @@ pkgver() {
 }
 
 build() {
-	cd $srcdir
-
-	if [ $NOEXTRACT -eq 0 ]; then
-		msg "Connecting to $_gitroot GIT server...."
-		if [ -d $_gitname/.git ]; then
-			(cd $_gitname && git pull origin)
-		else
-			git clone $_gitroot $_gitname
-		fi
-
-		msg "GIT checkout done or server timeout"
-		msg "Starting make..."
-
-	fi
-	cp -r $_gitname $_gitname-build
-	cd $_gitname-build
-}
-
-package() {
-	cd $_gitname-build
+	cd $_gitname
 
 	./autogen.sh --prefix=/usr
 	make || return 1
+}
+
+package() {
+	cd $_gitname
+
 	make DESTDIR=$pkgdir install || return 1
 
-# install license files
-	install -Dm644 $srcdir/$_gitname-build/COPYING \
+	# install license files
+	install -Dm644 $srcdir/$_gitname/COPYING \
 		$pkgdir/usr/share/licenses/$pkgname/COPYING
-
-	rm -r $startdir/src/$_gitname-build
 }
