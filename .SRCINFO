@@ -1,6 +1,6 @@
 pkgbase = perl-defhash
 	pkgdesc = Define things according to a specification, using hashes
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://metacpan.org/release/DefHash
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-defhash
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/DefHash-1.0.9.tar.gz
-	sha512sums = 4dc6981d92380ec455b092fa159cf379fc569f83694a8682d0442e745fdf1ae16a8428419e8a75195a57fc49a0bf449d1a3f0419a060b06953be5f65f9aa9f22
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/DefHash-1.0.10.tar.gz
+	sha512sums = d10409cba34f522a8f2c5e4bdf881146c8ee6dff35d2536cdb2764f18533d2fcaa1d55a9b2b7b60e1050241a09d0a4ccca563e510573fad725876ad99e22416e
 
 pkgname = perl-defhash
 
