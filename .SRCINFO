@@ -1,0 +1,25 @@
+pkgbase = libgcpp-svn
+	pkgdesc = The GNU C preprocessor internals. A shared object (so) library.
+	pkgver = 215421
+	pkgrel = 1
+	url = https://gcc.gnu.org/onlinedocs/cppinternals/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = subversion
+	makedepends = gcc
+	depends = glibc
+	source = gcc/include::svn://gcc.gnu.org/svn/gcc/trunk/include
+	source = gcc/libiberty::svn://gcc.gnu.org/svn/gcc/trunk/libiberty
+	source = gcc/libcpp::svn://gcc.gnu.org/svn/gcc/trunk/libcpp
+	source = make-so.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 98a96f0138b6590d2c04ac203244b03bb55a496bacde1bac0f66e8a58f72761bb5953129e2c03d013209ab1d6867d28b75924477fe6407976f0a282d35a3f11a
+
+pkgname = libgcpp-svn
+

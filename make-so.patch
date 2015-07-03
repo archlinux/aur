@@ -1,0 +1,33 @@
+diff -u -r 0/libcpp/Makefile.in 1/libcpp/Makefile.in
+--- 0/Makefile.in	2014-09-15 16:24:51.000000000 +0300
++++ 1/Makefile.in	2014-09-15 19:19:33.130393400 +0300
+@@ -91,15 +91,14 @@
+ 	expr.c files.c identifiers.c init.c lex.c line-map.c macro.c \
+ 	mkdeps.c pch.c symtab.c traditional.c
+ 
+-all: libcpp.a $(USED_CATALOGS)
++all: libcpp.so $(USED_CATALOGS)
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c .gmo .o .obj .po .pox
+ 
+-libcpp.a: $(libcpp_a_OBJS)
+-	-rm -f libcpp.a
+-	$(AR) $(ARFLAGS) libcpp.a $(libcpp_a_OBJS)
+-	$(RANLIB) libcpp.a
++libcpp.so: $(libcpp_a_OBJS)
++	-rm -f libcpp.so
++	$(CC) -shared -o libcpp.so $(LDFLAGS) $(libcpp_a_OBJS) -L../libiberty -liberty -lc
+ 
+ # Rules to rebuild the configuration
+ 
+@@ -172,7 +171,7 @@
+ 	-rm -f *.o
+ 
+ clean: mostlyclean
+-	-rm -rf libcpp.a $(srcdir)/autom4te.cache
++	-rm -rf libcpp.so $(srcdir)/autom4te.cache
+ 
+ distclean: clean
+ 	-rm -f config.h stamp-h1 config.status config.cache config.log \
+Only in 1/libcpp: Makefile.in~
