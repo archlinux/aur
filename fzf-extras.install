@@ -2,10 +2,6 @@ post_install() {
   printf "%b\n" "$fzfin"
 }
 
-post_upgrade() {
-  printf "%b\n" "$fzfup"
-}
-
 read -d '' fzfin <<'EOF'
 fzf-extras
 ==========
@@ -14,25 +10,4 @@ Add the following to your shell config:
 
     . /etc/profile.d/fzf-extras.bash # when bash
     . /etc/profile.d/fzf-extras.zsh # when zsh
-EOF
-
-read -d '' fzfup <<'EOF'
-fzf-extras
-==========
-
-Bash Users: Potentially Breaking Update (2015-05-09)
-----------------------------------------------------
-
-To ensure zsh compatibility, Bash keybindings are now
-installed to:
-
-    /etc/profile.d/fzf-extras.bash
-
-Formerly, Bash keybindings were installed as:
-
-    /etc/profile.d/fzf-extras.sh
-
-Bash users' config may be broken by this update if bashrc sources
-/etc/profile.d/fzf-extra.sh, as that file is now absent. Consult with
-your local config.
 EOF
