@@ -1,0 +1,33 @@
+pkgbase = popcorntime-experimental-git
+	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch. Experimental branch
+	pkgver = 0.3.7.r559.g96c362f
+	pkgrel = 1
+	url = http://popcorntime.io
+	install = popcorntime.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs-grunt-cli
+	makedepends = nodejs-bower
+	makedepends = npm
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = ttf-liberation
+	depends = libxtst
+	depends = libnotify
+	optdepends = net-tools: vpn.ht client
+	provides = popcorntime
+	conflicts = popcorntime
+	options = !strip
+	source = popcorntime.install
+	source = git+https://git.popcorntime.io/popcorntime/desktop.git#branch=nw12
+	source = popcorntime.desktop
+	md5sums = efe872f41ed74a706308b4015e4fd82f
+	md5sums = SKIP
+	md5sums = 9608f35f4cc083a0c36b0f4ef275ab10
+
+pkgname = popcorntime-experimental-git
+
