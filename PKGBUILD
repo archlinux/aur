@@ -2,10 +2,11 @@
 _pkgbase=chromiumos-ui
 pkgname=$_pkgbase-bin
 pkgver=325086
-# Uncomment line below and comment line below that to build latest version
-#_pkgver=$(curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_ChromiumOS_Full/LAST_CHANGE)
+# Older version (working sign-in without the need for Google API keys)
 _pkgver=325086
-pkgrel=1
+# LKGR (Last Known Good Revision, *requires* Google API keys for sign-in to work)
+#_pkgver=$(curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_ChromiumOS_Full/LAST_CHANGE)
+pkgrel=2
 pkgdesc="Chromium OS user interface (prebuilt binary)"
 arch=('x86_64')
 url="http://www.chromium.org/chromium-os"
