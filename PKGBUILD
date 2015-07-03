@@ -36,6 +36,7 @@ prepare() {
 package() {
     prefix=${pkgdir}/opt/${pkgname}
     bash ${srcdir}/Anaconda3-${pkgver}-Linux-${_pkgarch}.sh -b -p $prefix
+    [ "$BREAK_EARLY" = 1 ] && exit 1
     cd $prefix
     patch -p1 < $srcdir/conda_install.patch
     CONDA_INSTALL="$prefix/pkgs/conda-${_condaver}-py34_0/lib/python3.4/site-packages/conda/install.py"
