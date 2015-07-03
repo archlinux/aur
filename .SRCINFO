@@ -1,0 +1,18 @@
+pkgbase = ocaml-bin_prot
+	pkgdesc = A binary protocol generator
+	pkgver = 112.35.00
+	pkgrel = 1
+	url = https://github.com/janestreet/bin_prot
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/bin_prot-112.35.00.tar.gz
+	md5sums = c6f5f10c475d80eac8b0f3d39b33c6ab
+
+pkgname = ocaml-bin_prot
+
