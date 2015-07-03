@@ -1,0 +1,17 @@
+pkgbase = ocaml-xmlm
+	pkgdesc = OCaml xml manipulation module
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://erratique.ch/software/xmlm/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = opam
+	depends = ocaml
+	options = !strip
+	options = staticlibs
+	source = http://erratique.ch/software/xmlm/releases/xmlm-1.2.0.tbz
+	md5sums = 7e6d3363c2395d84274f1b480e4b6003
+
+pkgname = ocaml-xmlm
+
