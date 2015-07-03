@@ -1,0 +1,18 @@
+pkgbase = mp
+	pkgdesc = A text editor for programmers.
+	pkgver = 5.2.9
+	pkgrel = 1
+	url = http://triptico.com/software/mp.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk3
+	makedepends = qt4
+	optdepends = gtk3: gtk frontend
+	optdepends = qt4: qt frontend
+	options = !emptydirs
+	source = http://triptico.com/download/mp/mp-5.2.9.tar.gz
+	sha256sums = a30403f4b0c07905733168e914d488f48fb449bb95f67a5254d9ca9ecb6b795d
+
+pkgname = mp
+
