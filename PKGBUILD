@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=uacpid
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Userspace Advanced Configuration and Power Interface event daemon"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('ghc' 'cabal-install')
 options=('strip')
 source=("http://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-md5sums=('b97df893764606fa361631a8b73bde0c')
+md5sums=('f25850b9c828b8d8f27d15b2fbad1c06')
 
 
 # PKGBUILD functions
