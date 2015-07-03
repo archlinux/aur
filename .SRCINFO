@@ -1,6 +1,6 @@
 pkgbase = aurora-pl
 	pkgdesc = Firefox Aurora Developer Edition (Polish l10n)
-	pkgver = 40.0a2
+	pkgver = 41.0a2
 	pkgrel = 1
 	url = http://www.mozilla.org/en_US/firefox/aurora/
 	install = aurora-pl.install
@@ -27,7 +27,7 @@ pkgbase = aurora-pl
 	provides = firefox-aurora
 	conflicts = firefox-aurora
 	source = aurora-pl.desktop
-	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n//firefox-40.0a2.pl.linux-.tar.bz2
+	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n//firefox-41.0a2.pl.linux-.tar.bz2
 	md5sums = 663176661ce817e40b4217c5e107df42
 	md5sums = 1fbf95734ceb475ac2ac6ab085fc1961
 
