@@ -1,4 +1,7 @@
-# Maintainer: Thomas Dziedzic <gostrc@gmail.com>
+# Maintainer: Tom Richards <tom@tomrichards.net>
+# https://github.com/t-richards/aur-ruby-jemalloc
+#
+# Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
