@@ -2,7 +2,7 @@
 
 pkgname=keybase
 pkgdesc='CLI tool for GPG with keybase.io'
-pkgver=0.7.9
+pkgver=0.8.3
 pkgrel=1
 arch=('any')
 url='http://keybase.io/'
@@ -11,7 +11,7 @@ depends=('gnupg' 'nodejs')
 makedepends=('npm')
 
 source=("https://github.com/keybase/node-client/archive/v${pkgver}.tar.gz")
-sha1sums=('bb65999fdebfc2c1461c697d7c07b5235f2a206e')
+sha1sums=('7e388fbddd3b7230977aaf26d3914dacc4f95bfd')
 
 build() {
     cd "${srcdir}/node-client-${pkgver}"
