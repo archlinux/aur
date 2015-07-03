@@ -1,0 +1,29 @@
+pkgbase = gplugin-hg
+	pkgdesc = GObject based library that implements a reusable plugin system
+	pkgver = 993.307728b2f727
+	pkgrel = 1
+	url = https://guifications.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = mercurial
+	makedepends = cmake
+	makedepends = gobject-introspection
+	makedepends = gtk3
+	makedepends = python-gobject
+	makedepends = lua-lgi
+	makedepends = libxslt
+	makedepends = help2man
+	depends = glib2
+	depends = gobject-introspection-runtime
+	optdepends = gtk3: for GTK+ support
+	optdepends = python-gobject: for Python support
+	optdepends = lua-lgi: for Lua support
+	provides = gplugin=0.0.23
+	conflicts = gplugin
+	source = gplugin::hg+https://bitbucket.org/gplugin/main#branch=develop
+	sha256sums = SKIP
+
+pkgname = gplugin-hg
+
