@@ -1,6 +1,6 @@
 pkgbase = libxcm-git
 	pkgdesc = A library containing the a reference implementation of the net-color specs. (GIT version)
-	pkgver = 0.5.3.17.gad12c37
+	pkgver = 0.5.3.32.g7afcecb
 	pkgrel = 1
 	url = http://www.oyranos.org/libxcm/
 	arch = i686

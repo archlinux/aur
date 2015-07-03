@@ -1,6 +1,6 @@
 
 pkgname=libxcm-git
-pkgver=0.5.3.17.gad12c37
+pkgver=0.5.3.32.g7afcecb
 pkgrel=1
 pkgdesc="A library containing the a reference implementation of the net-color specs. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,6 +19,12 @@ pkgver() {
   echo "$(git describe --long --tags | sed 's|libXcm-||g' | tr - .)"
 }
 
+prepare() {
+  cd libxcm
+
+  autoreconf -f
+}
+
 build() {
   cd libxcm
   LDFLAGS+=" -lm" ./configure --prefix=/usr
@@ -27,6 +33,6 @@ build() {
 
 package() {
   make -C libxcm DESTDIR="${pkgdir}" install
-  install -Dm644 libxcm/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 libxcm/docs/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
