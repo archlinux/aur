@@ -1,9 +1,9 @@
-# Maintainer: speps <speps at aur dot archlinux dot org>
-# Contributor: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
+# Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
+# Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=mp
 pkgver=5.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A text editor for programmers."
 arch=(i686 x86_64)
 url="http://triptico.com/software/mp.html"

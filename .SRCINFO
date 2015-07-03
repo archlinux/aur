@@ -1,7 +1,7 @@
 pkgbase = mp
 	pkgdesc = A text editor for programmers.
 	pkgver = 5.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://triptico.com/software/mp.html
 	arch = i686
 	arch = x86_64
