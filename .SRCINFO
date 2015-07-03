@@ -1,0 +1,14 @@
+pkgbase = azardi
+	pkgdesc = The AZARDI book reader by Infogrid Pacific Pte Ltd.
+	pkgver = 25.0
+	pkgrel = 1
+	url = http://azardi.infogridpacific.com/
+	install = _.install
+	arch = x86_64
+	arch = i686
+	license = custom:azardi
+	makedepends = deb2targz
+	source = https://azardi-download.s3.amazonaws.com/AZARDI_25.0_20131113_.deb
+
+pkgname = azardi
+
