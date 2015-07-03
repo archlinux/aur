@@ -16,6 +16,6 @@ noextract=(${source[@]%%::*})
 
 package() {
   pushd "$srcdir"
-  install -Dm644 "${_bcc}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}.xpi"
+  install -Dm644 "${_bcc}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/{cc138c46-ac77-4397-afc0-6cb6a13b7242}.xpi"
   popd
 }
