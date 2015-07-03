@@ -1,0 +1,5 @@
+enigmail-nightly-all.xpi
+pkg/
+src/
+*.pkg.tar
+get_plugin_version.sh
