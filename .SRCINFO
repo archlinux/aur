@@ -1,0 +1,19 @@
+pkgbase = yafaray-blender-exporter-git
+	pkgdesc = Blender exporter for YafaRay
+	pkgver = 499.d382b1f
+	pkgrel = 1
+	url = http://www.yafaray.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = perl
+	depends = blender
+	depends = yafaray-git
+	provides = yafaray-blender-exporter
+	conflicts = yafaray-blender-exporter
+	source = exporter::git+git://github.com/DavidBluecame/Blender-Exporter.git#branch=experimental
+	md5sums = SKIP
+
+pkgname = yafaray-blender-exporter-git
+
