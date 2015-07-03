@@ -30,7 +30,6 @@ package_python-nikola-git() {
            'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
            'python-yapsy' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
            'python-blinker' 'python-natsort')
-  depends+=('python-nikola-doc-git')
   optdepends=('python-requests: for theme and plugin installation, and various web services'
               'python-markdown: for Markdown support'
               'python-jinja: for Jinja2 themes'
@@ -55,7 +54,6 @@ package_python2-nikola-git() {
            'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
            'python2-yapsy' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
            'python2-blinker' 'python2-natsort')
-  depends+=('python-nikola-doc-git')
   optdepends=('python2-requests: for theme and plugin installation, and various web services'
               'python2-markdown: for Markdown support'
               'python2-jinja: for Jinja2 themes'
