@@ -1,0 +1,16 @@
+pkgbase = ocaml-react
+	pkgdesc = An OCaml module for functional reactive programming
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://erratique.ch/software/react
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-findlib
+	makedepends = opam
+	depends = ocaml
+	source = http://erratique.ch/software/react/releases/react-1.2.0.tbz
+	md5sums = f071a1308b6cad131c55cda8677823c3
+
+pkgname = ocaml-react
+
