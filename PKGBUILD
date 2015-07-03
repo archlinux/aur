@@ -7,18 +7,18 @@
 
 pkgname=libpaper
 pkgver=1.1.24
-pkgrel=7
+pkgrel=8
 pkgdesc='Library for handling paper characteristics'
 arch=('x86_64' 'i686')
 url='http://packages.debian.org/unstable/source/libpaper'
 license=('GPL')
 depends=('sh')
 backup=('etc/papersize')
-source=("http://ftp.de.debian.org/debian/pool/main/libp/$pkgname/${pkgname}_$pkgver+nmu2.tar.gz")
-sha256sums=('c5bdd6d9dff179699160675dbb61651d9b3158f6da27558fdaba00e7c427ba96')
+source=("http://ftp.de.debian.org/debian/pool/main/libp/$pkgname/${pkgname}_$pkgver+nmu4.tar.gz")
+md5sums=('155d2e589e2f4ef163de8fbbc5d3dd1e')
 
 build() {
-  cd "$pkgname-$pkgver+nmu2"
+  cd "$pkgname-$pkgver+nmu4"
 
   ./configure \
     --prefix=/usr \
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver+nmu2"
+  cd "$pkgname-$pkgver+nmu4"
   make DESTDIR="$pkgdir" install
   
   # add systemwide default papersize read by many office applications
