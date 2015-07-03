@@ -5,7 +5,7 @@ pkgver=0.99.451
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=('i686' 'x86_64')
 url="http://www.rstudio.com/"
@@ -13,7 +13,6 @@ license=('AGPL')
 depends=('r>=2.11.1' 'boost-libs>=1.50' qt5-base qt5-webkit pango shared-mime-info mathjax pandoc clang)
 makedepends=('cmake>=2.8' 'boost>=1.50' java-environment apache-ant openssl pam)
 conflicts=('rstudio-desktop-bin' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
-replaces=('rstudio-desktop-bin' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
 install=rstudio-desktop.install
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
