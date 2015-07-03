@@ -8,14 +8,14 @@ pkgdesc='Psilly game server'
 arch=('any')
 url='https://github.com/acerix/psilly-server'
 license=('MIT')
-makedepends=('rust' 'cargo-bin')
+makedepends=('cargo-bin' 'rust')
 install=psillyd.install
 source=(
   "$url/archive/$pkgver.tar.gz"
   psillyd.install
 )
-sha256sums=('03690927d2d7149cd766518920e9060264e21e874444a19af424cc73a7e9904f'
-            '63e597c54751a4ef8c39d2dd769893b6329c2fc02b5ad253dc404cd310bab573')
+sha256sums=('SKIP'
+            '23ee0bd7eb12a27affc9e3b709aa8d90549181fdb62b77c11b77b02c468119a1')
 
 build() {
   cd "$_gitname-$pkgver"
