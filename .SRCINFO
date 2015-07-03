@@ -1,0 +1,18 @@
+pkgbase = ocaml-fieldslib
+	pkgdesc = OCaml record fields as first class values
+	pkgver = 109.20.03
+	pkgrel = 1
+	url = https://github.com/janestreet/fieldslib
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/109.20.00/individual/fieldslib-109.20.03.tar.gz
+	md5sums = 9e18d16c61a4e4a38e8e33b6f6f00ddf
+
+pkgname = ocaml-fieldslib
+
