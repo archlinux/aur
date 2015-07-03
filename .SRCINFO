@@ -1,0 +1,13 @@
+pkgbase = python-u-msgpack
+	pkgdesc = Lightweight msgpack serializer and deserializer written in pure Python
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/vsergeev/u-msgpack-python
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/u/u-msgpack-python/u-msgpack-python-2.1.tar.gz
+	md5sums = 2ccadbf06c7e70bbdb58e920d045d50c
+
+pkgname = python-u-msgpack
+
