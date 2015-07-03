@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=yafaray-git
-pkgver=513.ff262af
+pkgver=535.f7c293a
 pkgrel=1
 pkgdesc="A free open-source raytracing engine"
 arch=('i686' 'x86_64')

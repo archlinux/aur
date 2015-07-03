@@ -1,6 +1,6 @@
 pkgbase = yafaray-git
 	pkgdesc = A free open-source raytracing engine
-	pkgver = 513.ff262af
+	pkgver = 535.f7c293a
 	pkgrel = 1
 	url = http://www.yafaray.org/
 	arch = i686
