@@ -1,0 +1,22 @@
+pkgbase = modutils
+	pkgdesc = modutils
+	pkgver = 2.4.27
+	pkgrel = 2
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	groups = core
+	license = GPL
+	makedepends = gcc>=4
+	makedepends = binutils
+	makedepends = bison
+	makedepends = flex
+	depends = glibc
+	conflicts = module-init-tools
+	source = http://www.kernel.org/pub/linux/utils/kernel/modutils/v2.4/modutils-2.4.27.tar.gz
+	source = http://englanders.cc/pub/linux/patches/notmine/modutils-gcc40.patch
+	md5sums = 51aa91627a2803df5873beae59d2f785
+	md5sums = 05191fe3364ad37c4519b249c97ac76d
+
+pkgname = modutils
+
