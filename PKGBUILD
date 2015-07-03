@@ -3,7 +3,7 @@
 _qt='quicktext'
 pkgname=thunderbird-${_qt}
 pkgver='0.9.11.5'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Quicktext is an extension for Thunderbird that lets you create templates that can be easily inserted into your own emails'
 arch=('any')
 _url='http://extensions.hesslow.se/'
@@ -17,6 +17,6 @@ noextract=(${source[@]%%::*})
 
 package() {
   pushd "$srcdir"
-  install -Dm644 "${_qt}-${pkgver}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/${_qt}.xpi"
+  install -Dm644 "${_qt}-${pkgver}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/{8845E3B3-E8FB-40E2-95E9-EC40294818C4}.xpi"
   popd
 }
