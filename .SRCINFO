@@ -1,0 +1,14 @@
+pkgbase = cnijfilter-ip110
+	pkgdesc = IJ Printer driver for Canon PIXMA iP110
+	pkgver = 5.00
+	pkgrel = 1
+	url = http://canon.driversdown.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary to Canon
+	depends = cups
+	source = http://gdlp01.c-wss.com/gds/3/0100006263/01/cnijfilter2-source-5.00-1.tar.gz
+	md5sums = a1bff9ce40526337a6580d3c4d8aeaed
+
+pkgname = cnijfilter-ip110
+
