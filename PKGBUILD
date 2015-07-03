@@ -4,7 +4,7 @@ _bcc='usebccinstead'
 _bcc2='use-bcc-instead'
 pkgname=thunderbird-${_bcc}
 pkgver='3.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Before the sending occurs it looks for recipients addressed using either TO or CC. When found, it will take action based upon the user-specified options that have been set'
 arch=('any')
 url=https://addons.mozilla.org/en-US/thunderbird/addon/${_bcc2}
@@ -16,6 +16,6 @@ noextract=(${source[@]%%::*})
 
 package() {
   pushd "$srcdir"
-  install -Dm644 "${_bcc}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/${_bcc}.xpi"
+  install -Dm644 "${_bcc}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}.xpi"
   popd
 }
