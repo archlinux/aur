@@ -1,0 +1,26 @@
+pkgbase = steamworlddig
+	pkgdesc = A platform mining adventure with strong Metroidvanian influences.
+	pkgver = 1.10
+	pkgrel = 2
+	epoch = 1393468453
+	url = http://steamworldgames.com/dig/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	source = hib://SteamWorldDig_linux_1393468453.tar.gz
+	sha512sums = 949ab0a7deef14a4ce28d18c40e63d4ac444fa2c53a5b2ed63af118ccfee3e9a7d4bd2d5900036da57bb0bc7db81cbe50aa6ea4e7682abe7c33fb4b53a53c9cb
+	depends_x86_64 = lib32-glew
+	depends_x86_64 = lib32-libogg
+	depends_x86_64 = lib32-libpng
+	depends_x86_64 = lib32-libvorbis
+	depends_x86_64 = lib32-openal
+	depends_x86_64 = lib32-sdl
+	depends_i686 = glew
+	depends_i686 = libogg
+	depends_i686 = libpng
+	depends_i686 = libvorbis
+	depends_i686 = openal
+	depends_i686 = sdl
+
+pkgname = steamworlddig
+
