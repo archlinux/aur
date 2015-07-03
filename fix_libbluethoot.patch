@@ -1,0 +1,25 @@
+From f6ea62965b27392212895be20c7d865291a249f6 Mon Sep 17 00:00:00 2001
+From: valdar <valdar@email.it>
+Date: Sun, 8 Jul 2012 15:36:49 +0000
+Subject: [PATCH] Added -llibthool on wmdemo.
+
+---
+ wmdemo/Makefile.in | 2 +-
+ 1 file modificato, 1 inserzione(+). 1 rimozione(-)
+
+diff --git a/wmdemo/Makefile.in b/wmdemo/Makefile.in
+index 56aed58..1eccc02 100644
+--- a/wmdemo/Makefile.in
++++ b/wmdemo/Makefile.in
+@@ -8,7 +8,7 @@ SOURCES = wmdemo.c
+ 
+ CFLAGS += -I@top_builddir@/libcwiid
+ LDFLAGS += -L@top_builddir@/libcwiid
+-LDLIBS += -lcwiid
++LDLIBS += -lcwiid -lbluetooth
+ INST_DIR = @bindir@
+ 
+ include $(COMMON)/include/app.mak
+-- 
+1.7.11.1
+

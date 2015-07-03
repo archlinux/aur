@@ -1,0 +1,23 @@
+pkgbase = cwiid-git
+	pkgdesc = Cwiid-git is the bleeding edge version of a wiimote's driver and utility tools
+	pkgver = 20130619
+	pkgrel = 2
+	url = http://github.com/abstrakraft/cwiid
+	install = cwiid.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = bluez4
+	depends = gtk2
+	depends = python2
+	provides = cwiid
+	provides = cwiid-svn
+	conflicts = cwiid
+	conflicts = cwiid-svn
+	source = fix_libbluethoot.patch
+	md5sums = d92745847f5ba534c2914be1d2b36092
+
+pkgname = cwiid-git
+

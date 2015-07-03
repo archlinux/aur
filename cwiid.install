@@ -1,0 +1,16 @@
+# arg 1:  the new package version
+post_install() {
+echo -e "Note:"
+echo -e "\033[1;31m==> In order to use wminput you have to load the uinput kernel module:\033[0m"
+echo -e "\033[1;31m==> modprobe uinput (as root)\033[0m"
+echo -e "\033[1;31m==> and you have to assign correct right acces to /dev/uinput\033[0m"
+echo -e "\033[1;31m==> PLEAS READ THE DOC FILE /usr/share/doc/cwiid/wminput\033[0m"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+$op $*
