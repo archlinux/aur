@@ -1,0 +1,15 @@
+pkgbase = nodejs-vows
+	pkgdesc = Asynchronous BDD & continuous integration for node.js.
+	pkgver = 0.8.1
+	pkgrel = 3
+	url = http://vowsjs.org
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = vows-0.8.1.tgz
+	source = http://registry.npmjs.org/vows/-/vows-0.8.1.tgz
+	sha256sums = 25c5eaaffa7daf403d4973f128bf9a6da45dd0ec9670eb4281b7451a8d3547d9
+
+pkgname = nodejs-vows
+
