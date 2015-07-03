@@ -4,15 +4,15 @@ pkgname=perl-x11-aosd
 _lastauthor=J/JR/JRED
 _pkgname=X11-Aosd
 pkgver=0.03
-pkgrel=5
+pkgrel=6
 pkgdesc="libaosd binding for Cairo powered on screen display"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('libaosd' 'gtk2-perl' 'perl-extutils-depends' 'perl-extutils-pkgconfig')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+url="https://metacpan.org/release/${_pkgname}/"
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('7cbf1d75704d5a7104f8fd3c5369a2ed70b73758fd8a2715813366625c902e33')
 
 build() {
