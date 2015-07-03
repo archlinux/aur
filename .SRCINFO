@@ -1,0 +1,17 @@
+pkgbase = zeitgeist-explorer
+	pkgdesc = Graphical interface to monitor and inspect Zeitgeist's log at a low level
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://launchpad.net/zeitgeist-explorer
+	install = zeitgeist-explorer.install
+	arch = any
+	license = LGPL
+	makedepends = python2-distutils-extra
+	depends = gtk3
+	depends = python2-gobject
+	depends = zeitgeist
+	source = https://launchpad.net/zeitgeist-explorer/0.x/0.2/+download/zeitgeist-explorer-0.2.tar.gz
+	md5sums = 8521b2c8ecc3f0d425e6806dcb2fde59
+
+pkgname = zeitgeist-explorer
+
