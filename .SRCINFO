@@ -1,0 +1,18 @@
+pkgbase = thebridge
+	pkgdesc = A 2D logic puzzle game that plays with physics and perspective.
+	pkgver = 1
+	pkgrel = 2
+	epoch = 1410196636
+	url = http://thebridgeisblackandwhite.com/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	source = hib://TheBridgeLinux_1410196636.zip
+	sha512sums = 72c6ddee3ecdf6218cc1a10fb83226c4ec504966a13530b5975475f2554cea24bf55849b7b98c3f04512a54e978b5677115a61597585bc4036cc73f1b9a5112c
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-libxcursor
+	depends_i686 = glu
+	depends_i686 = libxcursor
+
+pkgname = thebridge
+
