@@ -1,0 +1,74 @@
+From eb905e0394045b84699511da402643f0fb53d923 Mon Sep 17 00:00:00 2001
+From: Kamal Mostafa <kamal@whence.com>
+Date: Thu, 17 Dec 2009 09:32:52 -0800
+Subject: [PATCH] Fix g_thread_create_posix_impl() crash for sched policy != SCHED_OTHER
+
+Capture the initial scheduling policy along with the initial priority,
+and create new threads using that policy, since the priority will not
+be valid otherwise.
+
+Fixes https://bugzilla.gnome.org/show_bug.cgi?id=599079 .
+---
+ gthread/gthread-posix.c |   19 +++++++++++++++----
+ 1 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/gthread/gthread-posix.c b/gthread/gthread-posix.c
+index 9188f84..3528591 100644
+--- a/gthread/gthread-posix.c
++++ b/gthread/gthread-posix.c
+@@ -99,7 +99,8 @@ static gboolean posix_check_cmd_prio_warned = FALSE;
+ 
+ #if defined (POSIX_MIN_PRIORITY) && defined (POSIX_MAX_PRIORITY)
+ # define HAVE_PRIORITIES 1
+-static gint priority_normal_value;
++static gint initial_sched_priority;
++static gint initial_sched_policy;
+ # ifdef __FreeBSD__
+    /* FreeBSD threads use different priority values from the POSIX_
+     * defines so we just set them here. The corresponding macros
+@@ -112,7 +113,7 @@ static gint priority_normal_value;
+ #  define PRIORITY_LOW_VALUE      POSIX_MIN_PRIORITY
+ #  define PRIORITY_URGENT_VALUE   POSIX_MAX_PRIORITY
+ # endif /* !__FreeBSD__ */
+-# define PRIORITY_NORMAL_VALUE    priority_normal_value
++# define PRIORITY_NORMAL_VALUE    initial_sched_priority
+ #endif /* POSIX_MIN_PRIORITY && POSIX_MAX_PRIORITY */
+ 
+ static gulong g_thread_min_stack_size = 0;
+@@ -135,13 +136,18 @@ g_thread_impl_init(void)
+ #ifdef HAVE_PRIORITIES
+ # ifdef G_THREADS_IMPL_POSIX
+   {
++    /* Record the initial (current) scheduling policy and priority value.
++     * The priority value will be used as the "normal" priority when
++     * generating the g_thread_priority_map[] array, which will only be
++     * relevant to this scheduling policy. */
+     struct sched_param sched;
+     int policy;
+     posix_check_cmd (pthread_getschedparam (pthread_self(), &policy, &sched));
+-    priority_normal_value = sched.sched_priority;
++    initial_sched_policy = policy;
++    initial_sched_priority = sched.sched_priority;
+   }
+ # else /* G_THREADS_IMPL_DCE */
+-  posix_check_cmd (priority_normal_value =
++  posix_check_cmd (initial_sched_priority =
+ 		   pthread_getprio (*(pthread_t*)thread,
+ 				    g_thread_priority_map [priority]));
+ # endif
+@@ -342,7 +348,12 @@ g_thread_create_posix_impl (GThreadFunc thread_func,
+ #ifdef HAVE_PRIORITIES
+ # ifdef G_THREADS_IMPL_POSIX
+   {
++    /* Set the new thread's scheduling policy to match that recorded at
++     * init time, since the g_thread_priority_map[] scheduling priority
++     * values are only relevant to that scheduling policy. */
+     struct sched_param sched;
++    posix_check_cmd_prio
++      (pthread_attr_setschedpolicy (&attr, initial_sched_policy));
+     posix_check_cmd (pthread_attr_getschedparam (&attr, &sched));
+     sched.sched_priority = g_thread_priority_map [priority];
+     posix_check_cmd_prio (pthread_attr_setschedparam (&attr, &sched));
+-- 
+1.6.3.3
+

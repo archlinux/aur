@@ -1,0 +1,29 @@
+pkgbase = glib2-sched-policy
+	pkgdesc = Common C routines used by GTK+ and other libs. Patched to allow a multithreaded process to have a real time scheduling policy.
+	pkgver = 2.30.0
+	pkgrel = 1
+	url = http://www.gtk.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkgconfig
+	makedepends = python2
+	depends = pcre
+	depends = libffi
+	optdepends = python2: for gdbus-codegen
+	provides = glib2=2.30.0
+	conflicts = glib2
+	options = !libtool
+	options = !docs
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/GNOME/sources/glib/2.30/glib-2.30.0.tar.xz
+	source = glib2.sh
+	source = glib2.csh
+	source = sched-policy.patch
+	sha256sums = d64c00b43409eabb89aad78501fcb1a992b002b314a4414a9bd069585cb7cdc1
+	sha256sums = 9456872cdedcc639fb679448d74b85b0facf81033e27157d2861b991823b5a2a
+	sha256sums = 8d5626ffa361304ad3696493c0ef041d0ab10c857f6ef32116b3e2878ecf89e3
+	sha256sums = 1869628f31724adc6145d7d0fc48147acce7e5b01d57ef1b0d483617a4eefd18
+
+pkgname = glib2-sched-policy
+
