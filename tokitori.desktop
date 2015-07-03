@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Toki Tori
+Exec=/usr/bin/tokitori
+Icon=tokitori
+Type=Application
+Categories=Game;

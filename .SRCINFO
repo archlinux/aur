@@ -1,0 +1,19 @@
+pkgbase = tokitori-hb
+	pkgdesc = A highly entertaining puzzle platformer (Humble Bundle copy required)
+	pkgver = 20130705
+	pkgrel = 2
+	url = http://www.tokitori.com/
+	arch = i686
+	arch = x86_64
+	groups = humblebundleandroid
+	license = custom:commercial
+	depends = libgl
+	depends = libxft
+	options = !strip
+	source = hib://TokiTori-Linux-2013-07-05.sh
+	source = tokitori.desktop
+	sha512sums = 30634d628becf70c284b5c890291a259ab106d748949e3fdbf75b48311e4c9cbd148f87afe8ab573c010d088a5a4310eb233df36887c660fdcf5815ba26f8fd5
+	sha512sums = 8725a11103f30faf0bf4290f4e7fb18861aaaa9544b822851a32177846e947155de68bb53a715901d6dff7b16d3858bf77e7414c4e83dd0f8a8b163e08860896
+
+pkgname = tokitori-hb
+
