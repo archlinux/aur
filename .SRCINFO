@@ -1,0 +1,16 @@
+pkgbase = libcsptr-git
+	pkgdesc = A smart pointers library for the C programming language
+	pkgver = v2.0.1.r0.gff405f2
+	pkgrel = 1
+	url = http://github.com/Snaipe/libcsptr.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = libcsptr
+	conflicts = libcsptr
+	source = libcsptr-git::git://github.com/Snaipe/libcsptr.git
+	md5sums = SKIP
+
+pkgname = libcsptr-git
+
