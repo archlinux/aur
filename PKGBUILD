@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-ethereum-serpent
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Serpent compiler, installed as a Python module"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ url="https://www.ethereum.org"
 license=('WTFPL')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/e/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('f57b94d8f1a7d42b38de748440b83eaa')
-sha256sums=('ca5248d260d62f909fcc696466b0523d1e21a7e60dcbee425e9cafe9eef01b87')
+md5sums=('732b2bb5b277eaf60e059817b1289584')
+sha256sums=('6f8808982f24dd0e9c11b2982eca4aa47073b3434c48d4cf41a7267f57885e9e')
 
 prepare() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
