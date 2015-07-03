@@ -1,0 +1,14 @@
+pkgbase = python-pdfrw
+	pkgdesc = Convert restructured text to PDF via reportlab.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/pmaupin/pdfrw
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	noextract = pdfrw-0.2-py2.py3-none-any.whl
+	source = https://pypi.python.org/packages/py2.py3/p/pdfrw/pdfrw-0.2-py2.py3-none-any.whl
+	md5sums = 06af2f23253e5199cd4f5993385a5327
+
+pkgname = python-pdfrw
+
