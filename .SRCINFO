@@ -1,0 +1,17 @@
+pkgbase = thebardstale-hib
+	pkgdesc = An action adventure starring a bard who, not entirely voluntarily, goes on the quest to save a princess
+	pkgver = 1385084953
+	pkgrel = 2
+	url = http://www.ubi.com/UK/Games/Info.aspx?pId=1960
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = hib://TheBardsTale_linux_1385084953.tar.gz
+	source = thebardstale.desktop
+	source = bardstale.png
+	sha512sums = edd355eed91543745e86a4d24747cbffc893d581dbc64e10bfbc5d0deed03657d780be25ee141f308262a0b7a68198e0d6e0b3ad4f107ff1065a5b5b2e21799c
+	sha512sums = 19aa0d314d128ac3c1af5fe123dd224da416b5150576da9e608aa63379fae077ab2e38a9ad9cfdb4656772e12a25867598736c064a1e253517aace694a496c9e
+	sha512sums = 89e84bf8fbee3a33df2e240a69b01583e102c9621781c3167edb7bb8bc9487b4518831e25cc8ef1006c58a9939b274cc4ac8c7d6363be80817dbe198c32f552a
+
+pkgname = thebardstale-hib
+

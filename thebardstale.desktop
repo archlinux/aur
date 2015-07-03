@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=The Bard's Tale
+GenericName=The Bard's Tale
+Comment=An action adventure starring a bard
+Icon=/opt/thebardstale/bardstale.png
+Exec=/usr/bin/thebardstale
+Categories=Game;
+Path=/opt/thebardstale
