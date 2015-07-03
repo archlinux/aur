@@ -1,0 +1,12 @@
+[Unit]
+Description=A revolutionary new kind of application performance management
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mackerel-agent
+ExecStop=/usr/bin/kill -s QUIT $MAINPID
+PIDFile=/run/mackerel-agent.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
