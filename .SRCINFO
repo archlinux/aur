@@ -1,0 +1,14 @@
+pkgbase = shadowrun-returns
+	pkgdesc = a science fantasy turn based tactical role-playing game
+	pkgver = 1.2.7
+	pkgrel = 1
+	epoch = 1407103200
+	url = http://harebrained-schemes.com/shadowrun/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = hib://shadowrun-returns-linux1.2.7.tar.gz
+	sha512sums = 89ebd6efeff124c2307156523c6e8aaad64757818ad1ab9d5c2ab75591f766529e128a246c5cc9461d928ed30f12bcba2df0c076ef2e76ca9f822a3e6f5c2914
+
+pkgname = shadowrun-returns
+
