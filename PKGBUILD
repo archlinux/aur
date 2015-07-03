@@ -4,7 +4,7 @@
 
 pkgname=pandoc-static
 _pkgname=pandoc
-pkgver=1.14.0.4
+pkgver=1.15.0.3
 pkgrel=1
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
@@ -20,7 +20,7 @@ optdepends=('texlive-most: for PDF creation')
 options=(strip !makeflags !distcc !emptydirs)
 source=(https://repo.parabola.nu/other/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.xz{,.sig})
 validpgpkeys=('49F707A1CB366C580E625B3C456032D717A4CD9C')
-sha512sums=('08858612065a2eaeed263543a126fd5a23a7a73a8a51f36573e72ca14507e65ae7f5a79b6f272e6f04f210589e45f20a50ab8699d9964c8ea08dabf74c1a8b9c'
+sha512sums=('d1fc2c702df09108b960fc1067207169481add4f58cae86521511e72e9504121bc37d47fa3bc2272a381e2a1716cf745245821051cbb44d3351a214c72855513'
             'SKIP')
 
 declare -gA _flags
@@ -107,9 +107,8 @@ package() {
 
   msg2 "Installing pandoc..."
   cd ${_pkgname}-${pkgver}
-  cabal copy --destdir="${pkgdir}/"
-  install -Dm644 {,"$pkgdir"/usr/share/}man/man1/pandoc.1
-  install -Dm644 {,"$pkgdir"/usr/share/}man/man5/pandoc_markdown.5
+  install -Dm755 dist/build/pandoc/pandoc "$pkgdir"/usr/bin/pandoc
+  install -Dm644 man/pandoc.1 "$pkgdir"/usr/share/man/man1/pandoc.1
 
   msg2 "Installing pandoc-citeproc..."
   cd ../pandoc-citeproc-*
