@@ -4,7 +4,7 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1501.b74129b
+pkgver=1508.e53df7a
 pkgrel=1
 pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, LLVM JIT, bytecode, BNF macros, many advanced modules & bindings and much more!'
 url='http://www.daovm.net/'
@@ -105,8 +105,7 @@ build() {
   mv "DaoGenomeTools/"      "$_basename/modules/"
   # FIXME not getting compiled
   mv "DaoGObject/"          "$_basename/modules/"
-  # FIXME randgen issue 2015-06-18 20:14:35 CEST
-  #mv "DaoGraphics/"         "$_basename/modules/"
+  mv "DaoGraphics/"         "$_basename/modules/"
   mv "DaoGSL/"              "$_basename/modules/"
   mv "DaoOpenGL/"           "$_basename/modules/"
   mv "DaoSQL/"              "$_basename/modules/"
@@ -114,8 +113,6 @@ build() {
   #   wrap/dao_sdl.h:18:16: fatal error: SDL.h: No such file or directory
   #   #include"SDL.h"
   #mv "DaoSDL/"              "$_basename/modules/"
-  # FIXME https://github.com/daokoder/dao/issues/418
-  rm -rf "$_basename/modules/web/html/"
   cd "$_basename"
 
   # order matters when using gcc
@@ -156,11 +153,7 @@ EOF
   sed -i -r 's|(#include) *"mysql.h"|\1 <mysql/mysql.h>|' \
     modules/DaoSQL/DaoMySQL/daoMySQL.h
 
-  # FIXME will be fixed in upstream soon
-  #sed -i -r '/regex/s|^[ #]+||' modules/makefile.dao
-  sed -i -r '/regex/s|(.*)|#\1|' modules/makefile.dao
-
-  # https://github.com/daokoder/DaoSDL/issues/2
+  # FIXME https://github.com/daokoder/DaoSDL/issues/2
   #sed -i -r 's|(#include) *"(SDL[^"]+)"|\1 <SDL2/\2>|' \
   #  modules/DaoSDL/wrap/dao_sdl.h
 
