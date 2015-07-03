@@ -11,8 +11,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('libxss' 'perl-inline-c')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/X11-IdleTime/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+url="https://metacpan.org/release/${_pkgname}"
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('d8fddc078e7981ee31b7608c653645cb20f016bdddc7c550b4d527efd3624748')
 
 build() {

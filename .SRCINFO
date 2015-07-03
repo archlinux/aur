@@ -2,7 +2,7 @@ pkgbase = perl-x11-idletime
 	pkgdesc = Get the idle time of X11
 	pkgver = 0.09
 	pkgrel = 2
-	url = http://search.cpan.org/dist/X11-IdleTime/
+	url = https://metacpan.org/release/X11-IdleTime
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
@@ -11,7 +11,7 @@ pkgbase = perl-x11-idletime
 	depends = libxss
 	depends = perl-inline-c
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AW/AWENDT/X11-IdleTime-0.09.tar.gz
+	source = https://cpan.metacpan.org/authors/id/A/AW/AWENDT/X11-IdleTime-0.09.tar.gz
 	sha256sums = d8fddc078e7981ee31b7608c653645cb20f016bdddc7c550b4d527efd3624748
 
 pkgname = perl-x11-idletime
