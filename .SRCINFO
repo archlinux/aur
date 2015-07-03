@@ -1,0 +1,19 @@
+pkgbase = ocaml-pa_ounit
+	pkgdesc = OCaml inline testing
+	pkgver = 112.35.00
+	pkgrel = 1
+	url = https://github.com/janestreet/pa_ounit
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-ounit
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/pa_ounit-112.35.00.tar.gz
+	md5sums = 889ff0300916a0bf1902f6efb7610a9c
+
+pkgname = ocaml-pa_ounit
+
