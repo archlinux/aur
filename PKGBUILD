@@ -3,7 +3,7 @@
 # Contributors: L42y, aeosynth, Dan Serban, Kalipath, py_crash , ravicious
 
 pkgname=aurora-pl
-pkgver=40.0a2
+pkgver=41.0a2
 pkgrel=1
 pkgdesc="Firefox Aurora Developer Edition (Polish l10n)"
 url=http://www.mozilla.org/en_US/firefox/aurora/
