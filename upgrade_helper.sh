@@ -51,4 +51,7 @@ grep CONDA_INSTALL= installer_sh_x86_64.patch
 grep PYTHON= installer_sh_x86_64.patch
 echo "Update _pythonver and _condaver in PKGBUILD"
 read
+
+echo "upgrading srcinfo"
+mksrcinfo
 echo "Done"
