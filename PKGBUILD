@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 130580 2015-04-03 18:10:17Z anatolik $
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: tocer <tocer.deng@gmail.com>
