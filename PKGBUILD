@@ -11,6 +11,7 @@ arch=('any')
 url='http://metacpan.org/pod/URI::Find'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-uri>=1.00')
+makedepends=('perl-module-build')
 options=('!emptydirs')
 md5sums=('a32b1b2e6467b92ee1629f0d4da3c24c')
 source=("http://cpan.metacpan.org/authors/id/M/MS/MSCHWERN/${_cpanname}-${pkgver}.tar.gz")
