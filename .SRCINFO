@@ -1,0 +1,16 @@
+pkgbase = ocaml-res
+	pkgdesc = Library for automatically resizing contiguous memory (arrays and strings)
+	pkgver = 4.0.7
+	pkgrel = 1
+	url = http://mmottl.github.io/res/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml-findlib
+	depends = ocaml
+	options = !strip
+	source = https://github.com/mmottl/res/archive/v4.0.7.tar.gz
+	md5sums = 4c5f30d1fcaced42df03c858b2be5c3a
+
+pkgname = ocaml-res
+
