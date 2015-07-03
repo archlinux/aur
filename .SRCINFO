@@ -1,0 +1,13 @@
+pkgbase = ittledew
+	pkgdesc = A 2D adventure in the style of classic Zelda games
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.ittledew.com/
+	arch = x86
+	arch = x86_64
+	license = custom:commercial
+	source = hib://ittledew_Linux_1.4.zip
+	sha512sums = e5e792a20a02bff33d351ea378ff10356ebf1c6d23df8ded0d6750d5173ab6cc652473c37cbb6aa0c83f5372b9c24608f0d32e22da0a04ad465c81e1ba01096e
+
+pkgname = ittledew
+
