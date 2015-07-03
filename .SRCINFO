@@ -1,0 +1,34 @@
+pkgbase = ogre-2.0
+	pkgdesc = Scene-oriented, flexible 3D engine written in C++
+	pkgver = 2.0.0RC1
+	pkgrel = 1
+	url = http://ogre3d.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	makedepends = mesa
+	makedepends = mercurial
+	depends = boost-libs
+	depends = freeimage
+	depends = freetype2
+	depends = libxaw
+	depends = libxrandr
+	depends = nvidia-cg-toolkit
+	depends = zziplib
+	depends = ois
+	depends = glu
+	depends = tinyxml
+	source = hg+http://bitbucket.org/sinbad/ogre#tag=v2-0-0RC1
+	sha512sums = SKIP
+
+pkgname = ogre-2.0
+	optdepends = cppunit: unit testing
+	optdepends = intel-tbb: better threading support
+	optdepends = poco: portability
+	optdepends = boost: for developing using ogre
+
