@@ -1,8 +1,8 @@
 pkgbase = perl-opcodes
 	pkgdesc = Opcodes perl module
 	pkgver = 0.14
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Opcodes/
+	pkgrel = 2
+	url = https://metacpan.org/release/Opcodes
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
@@ -10,7 +10,7 @@ pkgbase = perl-opcodes
 	makedepends = perl-extutils-makemaker
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Opcodes-0.14.tar.gz
+	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Opcodes-0.14.tar.gz
 	sha256sums = 7f7365447e4d1c5b87b43091448f0488e67c9f036b26c022a5409cd73d343893
 
 pkgname = perl-opcodes

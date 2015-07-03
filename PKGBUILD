@@ -4,15 +4,15 @@ pkgname=perl-opcodes
 _lastauthor=R/RU/RURBAN
 _pkgname=Opcodes
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Opcodes perl module"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+url="https://metacpan.org/release/${_pkgname}"
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('7f7365447e4d1c5b87b43091448f0488e67c9f036b26c022a5409cd73d343893')
 
 build() {
