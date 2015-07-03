@@ -9,7 +9,7 @@ arch=('any')
 url="http://acidhub.click/NullidentdMod/"
 license=('GPL')
 source=("https://github.com/Acidhub/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d7f6553df72b593aaf1fcbdb489bf4a2a6e93caeff56d0c0182316c14bd0049e')
+sha256sums=('262d5e27f8a4bc7186b603681ffd8c0e257c810e9777d5ace7cae3b4c8b82aee')
 
 build() {
     cd "$pkgname-$pkgver"
