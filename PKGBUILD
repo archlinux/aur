@@ -4,7 +4,7 @@
 
 pkgname=pandoc-static
 _pkgname=pandoc
-pkgver=1.15.0.3
+pkgver=1.15.0.4
 pkgrel=1
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
@@ -20,8 +20,6 @@ optdepends=('texlive-most: for PDF creation')
 options=(strip !makeflags !distcc !emptydirs)
 source=(https://repo.parabola.nu/other/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.xz{,.sig})
 validpgpkeys=('49F707A1CB366C580E625B3C456032D717A4CD9C')
-sha512sums=('d1fc2c702df09108b960fc1067207169481add4f58cae86521511e72e9504121bc37d47fa3bc2272a381e2a1716cf745245821051cbb44d3351a214c72855513'
-            'SKIP')
 
 declare -gA _flags
 _flags[pandoc]='https make-pandoc-man-pages'
@@ -125,3 +123,5 @@ package() {
   cp -rv "${srcdir}"/build/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
   mv -v        "${pkgdir}"/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
 }
+sha512sums=('411625d868d524fa52dc2a1ea0654fee55a4126ed085912a1d1230cd40bfc06b124f16044b72a81fb25d4f396e5c7729dc3c11db3f7f35c7ce8241c0b87d3a53'
+            'SKIP')
