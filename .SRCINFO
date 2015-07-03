@@ -1,7 +1,7 @@
 pkgbase = perl-cairo-gobject
 	pkgdesc = Integrate Cairo into the Glib type system
 	pkgver = 1.004
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Cairo-GObject/
 	arch = i686
 	arch = x86_64
