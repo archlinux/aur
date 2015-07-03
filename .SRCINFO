@@ -1,7 +1,7 @@
 pkgbase = flightradar24
 	pkgdesc = Feeder software for Flightradar24.com
 	pkgver = 1.0.13
-	pkgrel = 3
+	pkgrel = 4
 	url = http://forum.flightradar24.com/threads/7563-Flightradar24-decoder-feeder-BETA-testing-%28Win-RPi-Linux-OSX%29
 	arch = x86_64
 	arch = i686
