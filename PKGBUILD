@@ -10,9 +10,9 @@ pkgname="${_name}-${_channel}"
 pkgname=firefox-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build'
 url='http://www.mozilla.org/projects/firefox'
-pkgver=41.0a1.20150514
-_version=41.0a1
-pkgrel=2
+pkgver=42.0a1.20150703
+_version=42.0a1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_version}.en-US.linux"
@@ -28,7 +28,7 @@ sha512sums_x86_64=("${_srcsum_x86_64}" 'SKIP')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib')
 
 pkgver() {
-	echo "${_version}.$(head -n1 ${_file}.txt | cut -c -8)"
+	echo "${_version}.$(date +%Y%m%d)"
 }
 
 package() {
