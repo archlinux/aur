@@ -1,0 +1,15 @@
+pkgbase = metalslug3
+	pkgdesc = Very hard sidescrolling platformer/shooter
+	pkgver = 2014_06_09
+	pkgrel = 2
+	url = http://www.snkplaymore.co.jp/us/games/steam/metalslug3/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	depends = sdl2
+	depends = sdl2_mixer
+	source = hib://MetalSlug3-Linux-2014-06-09.sh
+	sha512sums = af2a94bf49cf9ad515d98c08ea61248d7f53529f369d7002de567be4d6a0afe465906c4a3d0b8a30b968db76e22a90c585671e7105aee4205a2597239d111ccc
+
+pkgname = metalslug3
+
