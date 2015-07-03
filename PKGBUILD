@@ -1,8 +1,8 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-xvidcore
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc='XviD is an open source MPEG-4 video codec (mingw-w64)'
 arch=('any')
 url='http://www.xvid.org/'
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'nasm' 'yasm')
 options=(!buildflags !strip staticlibs)
 source=(http://downloads.xvid.org/downloads/xvidcore-${pkgver}.tar.bz2)
-md5sums=('f0a77572ac4694038e8519726b2883d9')
+md5sums=('5e68b84e3286b7bbaa95ddc34f0fcace')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
