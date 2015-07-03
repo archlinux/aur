@@ -1,0 +1,17 @@
+pkgbase = citip-git
+	pkgdesc = Information Theoretic Inequality Prover (CLI)
+	pkgver = 2015_05_09..6d5860d
+	pkgrel = 1
+	url = https://github.com/coldfix/Citip
+	arch = any
+	license = GPL3
+	makedepends = glpk
+	makedepends = bison
+	makedepends = flex
+	depends = glpk
+	provides = citip
+	source = citip::git+git://github.com/coldfix/citip
+	md5sums = SKIP
+
+pkgname = citip-git
+
