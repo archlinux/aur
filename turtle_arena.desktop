@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Name=Turtle Arena
+Type=Application
+Categories=Game
+Icon=/usr/share/pixmaps/turtle_arena.png
+Path=/usr/bin
+Exec=turtle_arena.sh

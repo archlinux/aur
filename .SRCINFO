@@ -1,0 +1,27 @@
+pkgbase = turtle_arena-bin
+	pkgdesc = Free and open source cross-platform third-person action game using a modified version of the ioquake3 engine.
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = http://ztm.x10hosting.com/ta/index.htm
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = sdl
+	depends = xdg-utils
+	depends = libtheora
+	depends = libvorbis
+	provides = turtlearena
+	provides = turtlearena-server
+	source = turtle_arena.png
+	source = turtle_arena.desktop
+	source = turtle_arena-server.sh
+	source = turtle_arena.sh
+	source = http://turtlearena.googlecode.com/files/turtlearena-0.6.1-0.zip
+	md5sums = 4c1a6aa909a97416b74e46dec7f5a55e
+	md5sums = 6c72d6ef50651bba651035e763d74caf
+	md5sums = 4144e04874db29f8b7fc0f3b2d796d29
+	md5sums = 93fc0812f750061014519a752b6f1ec6
+	md5sums = b169e54f729c837c11840148fb281b49
+
+pkgname = turtle_arena-bin
+
