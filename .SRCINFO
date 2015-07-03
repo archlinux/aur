@@ -1,0 +1,14 @@
+pkgbase = python2-template-toolkit-svn
+	pkgdesc = Python port of the Perl Template Toolkit
+	pkgver = 170
+	pkgrel = 1
+	url = http://www.template-toolkit.org/python/
+	arch = any
+	license = Artistic2.0
+	makedepends = subversion
+	depends = licenses
+	depends = python2
+	options = !emptydirs
+
+pkgname = python2-template-toolkit-svn
+
