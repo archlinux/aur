@@ -1,8 +1,8 @@
 # Maintainer : Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=0.0.1.r5.gba5483c9
-pkgrel=5
+pkgver=0.0.1.r7.g9dcb0c112b94050603b6e46c19a6fa0c2ddd61d5
+pkgrel=7
 arch=(x86_64 i686)
 license=('GPLv3')
 pkgdesc="SkypeWeb Plugin for Pidgin"
