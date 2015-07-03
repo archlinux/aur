@@ -1,0 +1,17 @@
+pkgbase = tme
+	pkgdesc = The Machine Emulator, or tme, provides a general-purpose framework for computer emulation.
+	pkgver = 0.10beta_6
+	pkgrel = 1
+	url = http://phabrics.com
+	install = tme.install
+	arch = any
+	license = GPL3
+	depends = libltdl
+	depends = libnftnl
+	depends = gtk3
+	depends = libpcap
+	source = http://phabrics.com/tme-0.10beta_6.tar.xz
+	md5sums = efee6edc5e86455747a35cf785215245
+
+pkgname = tme
+
