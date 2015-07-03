@@ -1,0 +1,17 @@
+pkgbase = snakefood-hg
+	pkgdesc = Generate dependency graphs from Python code
+	pkgver = 286
+	pkgrel = 2
+	url = http://furius.ca/snakefood/
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	depends = python2-six
+	optdepends = graphviz: generate dependency graphs
+	provides = snakefood
+	conflicts = snakefood
+	source = hg+https://bitbucket.org/blais/snakefood
+	md5sums = SKIP
+
+pkgname = snakefood-hg
+
