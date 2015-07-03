@@ -1,0 +1,36 @@
+diff -Naur gnome-break-timer-1.1.orig/configure.ac gnome-break-timer-1.1/configure.ac
+--- gnome-break-timer-1.1.orig/configure.ac	2013-12-21 09:51:58.000000000 +0100
++++ gnome-break-timer-1.1/configure.ac	2014-08-12 03:21:59.287028456 +0200
+@@ -34,7 +34,7 @@
+ PKG_CHECK_MODULES([CFG_CORE], [
+ 	glib-2.0 >= $GLIB_REQUIRED
+ 	gobject-2.0 >= $GLIB_REQUIRED
+-	gee-1.0 >= 0.6.2
++	gee-0.8 >= 0.6.2
+ 	gio-2.0 >= 2.30.0
+ 	gio-unix-2.0 >= 2.30.0
+ 	gtk+-3.0 >= $GTK_REQUIRED
+diff -Naur gnome-break-timer-1.1.orig/helper/helper.am gnome-break-timer-1.1/helper/helper.am
+--- gnome-break-timer-1.1.orig/helper/helper.am	2013-12-21 09:51:58.000000000 +0100
++++ gnome-break-timer-1.1/helper/helper.am	2014-08-12 03:22:36.244602895 +0200
+@@ -22,7 +22,7 @@
+ 	--pkg gtk+-3.0 \
+ 	--pkg gio-2.0 \
+ 	--pkg gio-unix-2.0 \
+-	--pkg gee-1.0 \
++	--pkg gee-0.8 \
+ 	--pkg json-glib-1.0 \
+ 	--pkg libcanberra \
+ 	--pkg libcanberra-gtk \
+diff -Naur gnome-break-timer-1.1.orig/settings/settings.am gnome-break-timer-1.1/settings/settings.am
+--- gnome-break-timer-1.1.orig/settings/settings.am	2013-12-21 09:51:58.000000000 +0100
++++ gnome-break-timer-1.1/settings/settings.am	2014-08-12 03:22:17.104132723 +0200
+@@ -20,7 +20,7 @@
+ 	--pkg gtk+-3.0 \
+ 	--pkg gio-2.0 \
+ 	--pkg gio-unix-2.0 \
+-	--pkg gee-1.0 \
++	--pkg gee-0.8 \
+ 	--pkg config \
+ 	--pkg common \
+ 	--pkg gd-1.0
