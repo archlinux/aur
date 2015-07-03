@@ -1,0 +1,16 @@
+pkgbase = rohc
+	pkgdesc = RObust Header Compression (ROHC) library
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://rohc-lib.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = libpcap
+	depends = glibc
+	options = !libtool
+	source = https://launchpad.net/rohc/rohc-1.7.x/1.7.0/+download/rohc-1.7.0.tar.xz
+	md5sums = a7b376fdc75be41f3f1cba91a9a57046
+
+pkgname = rohc
+
