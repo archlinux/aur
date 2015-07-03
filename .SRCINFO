@@ -1,0 +1,21 @@
+pkgbase = nvidia-96xx-utils
+	pkgdesc = NVIDIA drivers utilities and libraries, 96xx branch.
+	pkgver = 96.43.23
+	pkgrel = 6
+	url = http://www.nvidia.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = xorg-server<1.12.99
+	depends = mesa
+	optdepends = gtk2: nvidia-settings
+	optdepends = pangox-compat: nvidia-settings
+	optdepends = pkgconfig: nvidia-xconfig
+	provides = libgl
+	conflicts = libgl
+	options = !strip
+	source = http://download.nvidia.com/XFree86/Linux-/96.43.23/NVIDIA-Linux--96.43.23-pkg0.run
+	md5sums = ca0bc6ae3b37cb259f3a906b4dc4670b
+
+pkgname = nvidia-96xx-utils
+
