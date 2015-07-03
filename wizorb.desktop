@@ -1,12 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Icon=/opt/wizorb/wizorb.png
-Exec=wizorb
+Name=Wizorb
+Comment=Block-breaking game set in a fantasy world
+Icon=/opt/wizorb/data/Wizorb.bmp
+Exec=/usr/bin/wizorb
 Terminal=false
 StartupNotify=false
-
-Name=Wizorb
-Comment=An all-new block-breaking game set in a fantasy world.
-
-Categories=Game;ArcadeGame;
+Categories=Game;
