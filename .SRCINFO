@@ -1,0 +1,16 @@
+pkgbase = openoffice-extension-languagetool
+	pkgdesc = An Open Source proof­reading soft­ware for English, French, German, Polish, and more than 20 other languages (Apache OpenOffice extension)
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://languagetool.org
+	arch = any
+	groups = openoffice-extensions
+	license = LGPL2.1
+	makedepends = maven
+	depends = openoffice
+	depends = java-environment
+	source = https://github.com/languagetool-org/languagetool/archive/v2.9.tar.gz
+	md5sums = e29732413b497a6e94088d4ebe057a8c
+
+pkgname = openoffice-extension-languagetool
+
