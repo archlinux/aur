@@ -1,8 +1,8 @@
 pkgbase = perl-linux-inotify2
 	pkgdesc = scalable directory/file change notification
 	pkgver = 1.22
-	pkgrel = 5
-	url = http://search.cpan.org/dist/Linux-Inotify2/
+	pkgrel = 6
+	url = https://metacpan.org/release/Linux-Inotify2
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
@@ -10,7 +10,7 @@ pkgbase = perl-linux-inotify2
 	makedepends = perl-extutils-makemaker
 	depends = perl-common-sense
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Linux-Inotify2-1.22.tar.gz
+	source = https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Linux-Inotify2-1.22.tar.gz
 	sha256sums = bc9d253f4079935a78b9c071721a5da5c4cb51fb79874e7a28cc4cd5d13521d1
 
 pkgname = perl-linux-inotify2
