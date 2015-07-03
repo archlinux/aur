@@ -1,6 +1,6 @@
 pkgbase = python-objgraph
 	pkgdesc = Draws Python object reference graphs with graphviz
-	pkgver = 1.8.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://mg.pov.lt/objgraph
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-objgraph
 	makedepends = python-setuptools
 	optdepends = graphviz: generate images of reference graphs
 	optdepends = xdot: interactively view object graphs
-	source = http://pypi.python.org/packages/source/o/objgraph/objgraph-1.8.1.tar.gz
-	sha256sums = b4d4628adf39176beeb881fc575832256756bf0d73c1746b2b3529fd309b1a67
+	source = http://pypi.python.org/packages/source/o/objgraph/objgraph-2.0.0.tar.gz
+	sha256sums = ef28c01b5bce17bbc463c792a6709bac3cf698cd222e911be3f522ac9b38c9bc
 
 pkgname = python-objgraph
 
