@@ -1,0 +1,13 @@
+pkgbase = fourier-motzkin
+	pkgdesc = The FM library allows to project systems of linear inequalities.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://web.cse.ohio-state.edu/~pouchet/software/fm
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	source = http://web.cse.ohio-state.edu/~pouchet/software/fm/download/fm-0.5.0.tar.gz
+	md5sums = 0e63380d59931f19643c03ce45c9b76c
+
+pkgname = fourier-motzkin
+
