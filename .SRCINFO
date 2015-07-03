@@ -1,0 +1,17 @@
+pkgbase = firebird-odbc
+	pkgdesc = An ODBC Driver for Firebird RDBMS
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www.firebirdsql.org/en/odbc-driver/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = unixodbc
+	depends = libfbclient
+	source = 2.0.2.153.tar.gz::http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb-Source-2.0.2.153.gz/download
+	source = license.html::http://www.firebirdsql.org/en/initial-developer-s-public-license-version-1-0/
+	sha512sums = 956ccf724a56b8c49b6405f6868f6d93349fd7a5abac10a34003adbb6bb15148e608d10eb3c9f8288da8859079ad920277b419f1cfccf8bec797de84c567b5c0
+	sha512sums = 39e8f78c1cbe52d45b730ea40d2cb02320c00aa6a94682e78cbcd779ce50a2aa0538278647bd7d922646d78a7a529dfe31358e7d4f790533b9b745c8cae01df3
+
+pkgname = firebird-odbc
+
