@@ -1,0 +1,13 @@
+Index: gdo/Makefile
+===================================================================
+--- gdo.orig/Makefile	2011-10-09 15:50:53.760602651 +0200
++++ gdo/Makefile	2011-10-11 18:47:57.013045759 +0200
+@@ -26,7 +26,7 @@
+ ifdef FT2_LIB
+ FT2_FLAG = -DHAVE_FREETYPE
+ endif
+-CFLAGS = $(CINCLUDES) -W -Wall -Wno-unused \
++CFLAGS = $(CINCLUDES) -fPIC -W -Wall -Wno-unused \
+ 	$(JPEG_FLAG) $(FT2_FLAG) $(SAFETY_FLAG)
+ 
+ OCAMLCFLAGS=-labels -unsafe
