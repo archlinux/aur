@@ -1,0 +1,17 @@
+# arg 1:  the new package version
+post_install() {
+cat << EOF
+Note:
+==> for using this lib in your projects include wiiuse.h and link against libwiiuse.so
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+$op $*

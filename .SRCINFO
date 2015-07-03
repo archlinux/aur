@@ -1,0 +1,16 @@
+pkgbase = wiiuse
+	pkgdesc = Library written in C that connects with several Nintendo Wii remotes
+	pkgver = 0.14.0
+	pkgrel = 5
+	url = https://github.com/rpavlik/wiiuse
+	install = wiiuse.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bluez-libs
+	depends = cmake
+	source = git+https://github.com/rpavlik/wiiuse.git#tag=0.14.0
+	md5sums = SKIP
+
+pkgname = wiiuse
+
