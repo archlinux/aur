@@ -1,0 +1,9 @@
+[Unit]
+Description=Wesnoth-devel Server Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/wesnothd-devel
+
+[Install]
+WantedBy=multi-user.target

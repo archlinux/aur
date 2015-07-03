@@ -1,0 +1,39 @@
+pkgbase = wesnoth-devel
+	pkgdesc = development version of a turn-based strategy game on a fantasy world
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://www.wesnoth.org/
+	install = wesnoth-devel.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost>=1.56.0
+	makedepends = scons>=0.98.3
+	depends = pango>=1.14.8
+	depends = sdl_ttf>=2.0.8
+	depends = sdl_net>=1.2.7
+	depends = sdl_mixer>=1.2.7
+	depends = sdl_image>=1.2.7
+	depends = fribidi>=0.10.9
+	depends = dbus-core
+	depends = python2
+	depends = boost-libs
+	depends = lua
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-1.13.0.tar.bz2
+	source = wesnoth-devel.desktop
+	source = wesnoth_editor-devel.desktop
+	source = wesnoth-devel-icon.xpm
+	source = wesnoth-devel_editor-icon.xpm
+	source = wesnothd-devel.tmpfiles.conf
+	source = wesnothd-devel.service
+	md5sums = 9c076f960ba85d71b34757e9520e3571
+	md5sums = a906eae5d541a51de77038469b1f794b
+	md5sums = b9de9e7ee16f757aa406466657c274a9
+	md5sums = b73f4fdefd3e7daa158cce278f11be64
+	md5sums = 931e7443fe37b2862ca59f65ded74a0b
+	md5sums = ffc4b6c06dcd187855710ed96a55fc8f
+	md5sums = 959aea3af36e7b2a1be6bf4537ec54b7
+
+pkgname = wesnoth-devel
+

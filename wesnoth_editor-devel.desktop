@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Game;StrategyGame;
+Comment=A map editor for Battle for Wesnoth maps
+Comment[en_US]=A map editor for Battle for Wesnoth maps
+Exec[$e]=wesnoth-devel -e
+GenericName=Map Editor
+GenericName[en_US]=Map Editor
+Icon=wesnoth-devel_editor-icon.xpm
+MimeType=
+Name=Battle for Wesnoth Map Editor
+Name[en_US]=Battle for Wesnoth Map Editor
+Path[$e]=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
