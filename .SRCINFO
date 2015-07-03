@@ -1,0 +1,17 @@
+pkgbase = pidgin-espeak-git
+	pkgdesc = espeak plugin for the pidgin IM
+	pkgver = 2013_08_06..4d107bb
+	pkgrel = 1
+	url = https://github.com/coldfix/pidgin-tts
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = pidgin
+	depends = espeak
+	provides = pidgin-tts
+	conflicts = pidgin-tts
+	source = pidgin-tts::git+git://github.com/coldfix/pidgin-tts
+	md5sums = SKIP
+
+pkgname = pidgin-espeak-git
+
