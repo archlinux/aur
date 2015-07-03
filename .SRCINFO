@@ -1,0 +1,14 @@
+pkgbase = ciso
+	pkgdesc = PSP Iso Compressor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://ciso.tenshu.fr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = http://downloads.sourceforge.net/sourceforge/ciso/ciso-1.0.0.tar.gz
+	md5sums = 6091333f30fd61852d7d629b937aee34
+
+pkgname = ciso
+
