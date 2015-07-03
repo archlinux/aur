@@ -1,0 +1,16 @@
+pkgbase = linux-dash
+	pkgdesc = A drop-in, low-overhead monitoring web dashboard for a linux machine.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/afaqurk/linux-dash
+	arch = any
+	license = MIT
+	depends = php
+	optdepends = apache: webserver can host linux-dash
+	optdepends = nginx: webserver can host linux-dash
+	optdepends = node: linux-dash now works with node.js
+	source = https://github.com/afaqurk/linux-dash/archive/1.5.tar.gz
+	sha256sums = 0091ff80ebbcfa4802ab55da07fa5bcaa5bdc118ddd924469dc8f177c4865989
+
+pkgname = linux-dash
+
