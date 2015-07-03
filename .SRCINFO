@@ -1,7 +1,7 @@
 pkgbase = doxyparse
 	pkgdesc = Parses source code and dumps the dependencies between the code elements.
 	pkgver = 1.5.9_20090622
-	pkgrel = 2
+	pkgrel = 3
 	url = http://analizo.org
 	arch = any
 	groups = analizo

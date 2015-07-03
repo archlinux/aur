@@ -4,7 +4,7 @@ pkgname=doxyparse
 _actual_ver=1.5.9
 _extra_ver=20090622
 pkgver=${_actual_ver}_${_extra_ver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Parses source code and dumps the dependencies between the code elements."
 groups=('analizo')
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('8095af5f6ba616864be6389b4245ab7a3a3723298635831c4f714468d6768cf86a3
 build(){
   cd "${srcdir}"
 
-  git clone git://gitorious.org/analizo/doxyparse.git
+  git clone https://gitlab.com/analizo/doxyparse.git
   cp "${srcdir}/qtools.patch" doxyparse
   cd doxyparse
   git apply qtools.patch
