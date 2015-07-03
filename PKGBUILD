@@ -2,7 +2,7 @@
 _pkgbase=chromiumos-ui-tts
 pkgname=$_pkgbase-git
 pkgver=491.d01fbdc
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium OS UI ChromeVox text-to-speech, with accessibility support"
 arch=('arm' 'i686' 'x86_64')
 url="http://www.chromium.org/chromium-os"
@@ -41,6 +41,8 @@ package() {
 
   # Speech synthesis component extension code
   install -D speech_synthesis/patts/manifest.json \
+          "$pkgdir/usr/share/$_gitname"/speech_synthesis/patts/
+  install -D speech_synthesis/patts/manifest_guest.json \
           "$pkgdir/usr/share/$_gitname"/speech_synthesis/patts/
   install -D speech_synthesis/patts/tts_main.js \
           "$pkgdir/usr/share/$_gitname"/speech_synthesis/patts/
