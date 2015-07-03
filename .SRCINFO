@@ -1,0 +1,13 @@
+pkgbase = taoframework
+	pkgdesc = A collection of bindings to facilitate cross-platform game-related development utilizing the .NET platform
+	pkgver = 2.1.0
+	pkgrel = 3
+	url = http://sourceforge.net/projects/taoframework/
+	arch = any
+	license = MIT
+	depends = mono
+	source = http://downloads.sourceforge.net/taoframework/taoframework-2.1.0.tar.gz
+	md5sums = a48240aabbb46194a2c347ec262588e2
+
+pkgname = taoframework
+
