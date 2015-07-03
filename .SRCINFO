@@ -1,0 +1,16 @@
+pkgbase = linux-dash-git
+	pkgdesc = A drop-in, low-overhead monitoring web dashboard for a linux machine.
+	pkgver = r585.f6d5aac
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/afaqurk/linux-dash
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = linux-dash
+	conflicts = linux-dash
+	source = git://github.com/afaqurk/linux-dash.git
+	md5sums = SKIP
+
+pkgname = linux-dash-git
+
