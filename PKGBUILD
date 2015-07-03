@@ -3,7 +3,7 @@
 _sh='shrunked'
 pkgname=thunderbird-${_sh}
 pkgver='4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Shrunked makes a smaller copy of your photos for emailing or upload. When it detects a JPEG image (such as a photo), you'll be asked if you want to resize it."
 arch=('any')
 url=https://addons.mozilla.org/en-US/thunderbird/addon/${_sh}-image-resizer
@@ -15,6 +15,6 @@ noextract=(${source[@]%%::*})
 
 package() {
   pushd "$srcdir"
-  install -Dm644 "${_sh}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/${_sh}.xpi"
+  install -Dm644 "${_sh}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/${_sh}@darktrojan.net.xpi"
   popd
 }

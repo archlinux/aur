@@ -1,7 +1,7 @@
 pkgbase = thunderbird-shrunked
 	pkgdesc = Shrunked makes a smaller copy of your photos for emailing or upload. When it detects a JPEG image (such as a photo), you'll be asked if you want to resize it.
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/en-US/thunderbird/addon/shrunked-image-resizer
 	arch = any
 	license = MPL
