@@ -1,0 +1,25 @@
+pkgbase = luftrausers
+	pkgdesc = Air combat game with many different planes and missions
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1395159852
+	url = http://www.luftrausers.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = flac
+	depends = freetype2
+	depends = jsoncpp
+	depends = libogg
+	depends = sdl2
+	depends = sfml
+	depends = libsndfile
+	depends = libvorbis
+	depends = zlib
+	source = hib://LUFTRAUSER_LINUX_1395159852.zip
+	source = luftrausers.png
+	sha512sums = 4961cc3f0e26c8f6792b1cbb39e1857acb538e20c2784867629b6dce3e9d7a70a547c6ed35813f09a7db25d86f74709185279f063cbae88f37117f9a0998f9bf
+	sha512sums = fe169a7195d338c8fad524ea14b4e84b33f5b549e6bd40f6e8f1bb8cb4ac85854a6ce707ab82305337ee26ee1b89868f2e39fff6f7de75cd181306332cc845fe
+
+pkgname = luftrausers
+
