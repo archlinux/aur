@@ -5,17 +5,19 @@ pkgbase = flightradar24
 	url = http://forum.flightradar24.com/threads/7563-Flightradar24-decoder-feeder-BETA-testing-%28Win-RPi-Linux-OSX%29
 	arch = x86_64
 	arch = i686
-	arch = armv6l
-	arch = armv7l
+	arch = armv6h
+	arch = armv7h
 	license = unknown
+	depends = zlib
+	depends = gcc-libs
 	source_x86_64 = http://feed.flightradar24.com/linux/fr24feed_1.0.13-2_amd64.tgz
 	sha256sums_x86_64 = 71a43fd6de5e033af59ca989b85e7c724d3aace26eb11b629dab4088a3321f6c
 	source_i686 = http://feed.flightradar24.com/linux/fr24feed_1.0.13-2_i386.tgz
 	sha256sums_i686 = d5a59d2837a65334ab8ff760c749b4da5f721030f8b441dc28a5f4c20a56e2f9
-	source_armv6l = http://feed.flightradar24.com/raspberry-pi/fr24feed_1.0.13-2_armv6l.tgz
-	sha256sums_armv6l = dddd8feaa5c603acf81ab00aca7dd71f4a4cec46c83cf02eaab050e1f67501ed
-	source_armv7l = http://feed.flightradar24.com/raspberry-pi/fr24feed_1.0.13-2_armv7l.tgz
-	sha256sums_armv7l = ab54ce2ff14bceca43e28bec387d0309f8e64fe7853a6cbc6a1cb85110696ef1
+	source_armv6h = http://feed.flightradar24.com/raspberry-pi/fr24feed_1.0.13-2_armv6l.tgz
+	sha256sums_armv6h = dddd8feaa5c603acf81ab00aca7dd71f4a4cec46c83cf02eaab050e1f67501ed
+	source_armv7h = http://feed.flightradar24.com/raspberry-pi/fr24feed_1.0.13-2_armv7l.tgz
+	sha256sums_armv7h = ab54ce2ff14bceca43e28bec387d0309f8e64fe7853a6cbc6a1cb85110696ef1
 
 pkgname = flightradar24
 
