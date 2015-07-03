@@ -1,0 +1,21 @@
+pkgbase = knyttunderground
+	pkgdesc = A 2D platform game featuring a quirky story and a huge world to explore
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.knyttunderground.com
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	depends = freetype2
+	depends = libogg
+	depends = openal
+	depends = libpng12
+	depends = python2
+	depends = libvorbis
+	source = file://Ripstone-2c4f2-KnyttUnderground1.2.164bit.tar.gz
+	source = knyttunderground.png
+	sha512sums = 33a5e1b73a0cc2382378c902b60ff34a73b5609acde7a0f9e301ae64f87de628689fca22feb78c6323dd86f20768a50e2a5aed7de852caa816d62a06f71a3a9d
+	sha512sums = e026fc0d9f3cbbea8f089c48f914f479f791655d996205d6b71e0a6fe2d0511fcc62ade276f912f7576342e7e537993e0ac5da0afe85c9efb78f42dc571a8ae7
+
+pkgname = knyttunderground
+
