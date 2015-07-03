@@ -1,0 +1,15 @@
+pkgbase = libgse
+	pkgdesc = Generic Stream Encapsulation library
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://launchpad.net/libgse
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = libpcap
+	options = !libtool
+	source = https://launchpad.net/libgse/1.0.x/1.0.1/+download/gse-1.0.1.tar.gz
+	md5sums = c9252083da16b356be8587d63d938df5
+
+pkgname = libgse
+
