@@ -1,0 +1,20 @@
+pkgbase = ocaml-textutils
+	pkgdesc = Text output utilities
+	pkgver = 112.17.00
+	pkgrel = 1
+	url = https://github.com/janestreet/textutils
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-core
+	depends = ocaml-pa_ounit
+	depends = ocaml-sexplib
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.17/files/textutils-112.17.00.tar.gz
+	md5sums = 170dc582e4c6e80d4c9e8c7367adbfa2
+
+pkgname = ocaml-textutils
+
