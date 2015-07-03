@@ -1,0 +1,19 @@
+pkgbase = java-swing-joxy-git
+	pkgdesc = Java Swing Look and Feel theme integrated with KDE Oxygen
+	pkgver = 432.4dec02d
+	pkgrel = 1
+	url = http://joxy.denvelop.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime
+	depends = qt4
+	depends = oxygen-icons
+	depends = kdelibs
+	source = joxy::git+https://github.com/Joxy-LAF/joxy-oxygen.git
+	md5sums = SKIP
+
+pkgname = java-swing-joxy-git
+
