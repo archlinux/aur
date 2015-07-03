@@ -1,6 +1,6 @@
 pkgbase = xfwm4-git
 	pkgdesc = Xfce window manager - git checkout
-	pkgver = 4.10.0.r132.g34327bc
+	pkgver = 4.12.0.r79.g1600b1b
 	pkgrel = 1
 	url = http://git.xfce.org/xfce/xfwm4
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = xfwm4-git
 	license = GPL2
 	makedepends = git
 	makedepends = intltool
+	makedepends = xfce4-dev-tools
+	makedepends = exo
 	depends = libxfce4ui
 	depends = libwnck
 	depends = libdrm

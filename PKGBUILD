@@ -3,7 +3,7 @@
 # Contributor: cute.tec@gmail.com
 
 pkgname=xfwm4-git
-pkgver=4.10.0.r132.g34327bc
+pkgver=4.12.0.r79.g1600b1b
 pkgrel=1
 pkgdesc='Xfce window manager - git checkout'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 url='http://git.xfce.org/xfce/xfwm4'
 groups=('xfce4')
 depends=('libxfce4ui' 'libwnck' 'libdrm' 'hicolor-icon-theme')
-makedepends=('git' 'intltool')
+makedepends=('git' 'intltool' 'xfce4-dev-tools' 'exo')
 provides=('xfwm4')
 conflicts=('xfwm4')
 source=('git://git.xfce.org/xfce/xfwm4')
@@ -21,9 +21,14 @@ pkgver() {
 	cd xfwm4/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
