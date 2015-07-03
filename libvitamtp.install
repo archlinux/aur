@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# arg 1:  the new package version
+post_install() {
+  getent group vitamtp >/dev/null 2>&1 ||  groupadd --system vitamtp &>/dev/null
+
+  echo "NOTE: To use qcma as normal user you have to add yourself into vitamtp group"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install "$1"
+}
