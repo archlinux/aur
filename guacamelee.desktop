@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Guacamelee!
+GenericName=Guacamelee!
+Comment=A dia de los muertos-themed platform fighter
+Icon=/opt/guacamelee/Guacamelee.png
+Exec=/usr/bin/guacamelee
+Categories=Game;
+Path=/opt/guacamelee/
