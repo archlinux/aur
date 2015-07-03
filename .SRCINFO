@@ -1,0 +1,24 @@
+pkgbase = strikesuitzero-hib
+	pkgdesc = A space flight combat game
+	pkgver = 1389211698
+	pkgrel = 3
+	url = http://strikesuitzero.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	options = !strip
+	source = hib://StrikeSuitZero_linux_1389211698.zip
+	source = strikesuitzero.desktop
+	source = strikesuitzero.png
+	sha512sums = 9c18adeb0547eff9b88fbb4c5f93bf03713e06eea368d300acf69ee829076ee9213e97d6c52eb9e7ef1dc70b36ed044d2e2536639df73992a27fe491694ceb89
+	sha512sums = ab9162b063057d1f0304fe2e2d008fdc5136400b417c6bc43de84aea4cab9d0d972056b898f9316d7bfa447b0894069dd73ee3b0aa64beda4776dc1dc087eaf7
+	sha512sums = 25c636f99943133445966353f6cab11eaf36e4909505b53ba1087d72911e19e74efade0c7a8c3e3b43f0beca3d795b188f549434aed8e09b1c774f1fe7ee87e1
+	depends_i686 = libfmod
+	depends_i686 = sdl2
+	optdepends_i686 = libpulse: For sound on systems using pulse
+	depends_x86_64 = lib32-libfmod
+	depends_x86_64 = lib32-sdl2
+	optdepends_x86_64 = lib32-libpulse: For sound on systems using pulse
+
+pkgname = strikesuitzero-hib
+

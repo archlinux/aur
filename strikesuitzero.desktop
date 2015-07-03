@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Strike Suit Zero
+GenericName=Strike Suit Zero
+Comment=A space combat game
+Icon=strikesuitzero
+Exec=/usr/bin/strikesuitzero
+Categories=Game;
+Path=/opt/strikesuitzero
