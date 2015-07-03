@@ -1,0 +1,25 @@
+pkgbase = monaco
+	pkgdesc = Assemble a crack team of thieves and execute the perfect crime
+	pkgver = 20140507
+	pkgrel = 1
+	url = http://www.monacoismine.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = glibc
+	depends = sdl2
+	depends = libgl
+	depends = zlib
+	depends = gcc-libs
+	depends = libx11
+	depends = libxext
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	source = monaco.desktop
+	source = Monaco-Linux-2014-05-07.sh::hib://Monaco-Linux-2014-05-07.sh
+	sha256sums = fe1a128a845747b230c55be6a15b5c2c77459f74a120668fe1b1c6f593c932cd
+	sha256sums = f1f5aeb6b6792cf0f2d75f2cb1fdadbf998ceb4b7cc0df30813bff576cc9d6c3
+
+pkgname = monaco
+
