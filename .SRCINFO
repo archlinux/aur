@@ -1,0 +1,13 @@
+pkgbase = racethesun
+	pkgdesc = Hurtle towards the sunset at breakneck speed in a futile race against time.
+	pkgver = 1.441
+	pkgrel = 1
+	url = http://flippfly.com/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	source = hib://RaceTheSunLINUX_1.441.zip
+	sha512sums = e642dc8d4f89949345e552aadb36b448f358dd261cd952c1d059d16010890ef5e10d03b176196c833468dcc1c5b1b50f80930d2e230613d716bbf91e3e791e80
+
+pkgname = racethesun
+
