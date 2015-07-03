@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-amodem
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Audio Modem Communication Library"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/romanz/amodem"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/a/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('c03ed52401b0501fc775466eed713a08')
-sha256sums=('a3ba8fc29230d40e0077040561e47b2626a375ca2a42e31aed1401187ae2c421')
+md5sums=('84b4973c8e6ab0383e56f9ba37d0a7e3')
+sha256sums=('00a4c19fb8a9e6dff9459a2cb021c0adc5c669ac1658685f2388457c409931c6')
 
 prepare() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
