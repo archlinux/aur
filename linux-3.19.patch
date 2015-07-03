@@ -1,0 +1,21 @@
+diff -Naur nv.orig/nv.c nv/nv.c
+--- nv.orig/nv.c	2013-11-27 23:47:09.000000000 +0100
++++ nv/nv.c	2015-04-16 13:24:47.058286851 +0200
+@@ -2746,7 +2746,7 @@
+     unsigned long i_arg
+ )
+ {
+-    return nv_kern_ioctl(file->f_dentry->d_inode, file, cmd, i_arg);
++    return nv_kern_ioctl(file->f_path.dentry->d_inode, file, cmd, i_arg);
+ }
+ 
+ long nv_kern_compat_ioctl(
+@@ -2755,7 +2755,7 @@
+     unsigned long i_arg
+ )
+ {
+-    return nv_kern_ioctl(file->f_dentry->d_inode, file, cmd, i_arg);
++    return nv_kern_ioctl(file->f_path.dentry->d_inode, file, cmd, i_arg);
+ }
+ 
+ /*

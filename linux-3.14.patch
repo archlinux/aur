@@ -1,0 +1,132 @@
+diff -pur 1/conftest.sh 2/conftest.sh
+--- 1/conftest.sh	2013-11-28 03:16:46.000000000 +0400
++++ 2/conftest.sh	2014-04-10 09:51:13.880164860 +0400
+@@ -992,61 +992,6 @@ compile_test() {
+             fi
+         ;;
+ 
+-        acpi_os_wait_events_complete)
+-            #
+-            # Determine if the acpi_os_wait_events_complete() function
+-            # is present and how many arguments it takes.
+-            #
+-            echo "$CONFTEST_PREAMBLE
+-            #include <linux/acpi.h>
+-            void conftest_acpi_os_wait_events_complete(void) {
+-                acpi_os_wait_events_complete(NULL, NULL);
+-            }" > conftest$$.c
+-
+-            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
+-            rm -f conftest$$.c
+-
+-            if [ -f conftest$$.o ]; then
+-                rm -f conftest$$.o
+-                echo "#undef NV_ACPI_OS_WAIT_EVENTS_COMPLETE_PRESENT" >> conftest.h
+-                return
+-            fi
+-
+-            echo "$CONFTEST_PREAMBLE
+-            #include <linux/acpi.h>
+-            void conftest_acpi_os_wait_events_complete(void) {
+-                acpi_os_wait_events_complete(NULL);
+-            }" > conftest$$.c
+-
+-            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
+-            rm -f conftest$$.c
+-
+-            if [ -f conftest$$.o ]; then
+-                rm -f conftest$$.o
+-                echo "#define NV_ACPI_OS_WAIT_EVENTS_COMPLETE_PRESENT" >> conftest.h
+-                echo "#define NV_ACPI_OS_WAIT_EVENTS_COMPLETE_ARGUMENT_COUNT 1" >> conftest.h
+-                return
+-            fi
+-
+-            echo "$CONFTEST_PREAMBLE
+-            #include <linux/acpi.h>
+-            void conftest_acpi_os_wait_events_complete(void) {
+-                acpi_os_wait_events_complete();
+-            }" > conftest$$.c
+-
+-            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
+-            rm -f conftest$$.c
+-
+-            if [ -f conftest$$.o ]; then
+-                rm -f conftest$$.o
+-                echo "#define NV_ACPI_OS_WAIT_EVENTS_COMPLETE_PRESENT" >> conftest.h
+-                echo "#define NV_ACPI_OS_WAIT_EVENTS_COMPLETE_ARGUMENT_COUNT 0" >> conftest.h
+-                return
+-            else
+-                echo "#error acpi_os_wait_events_complete() conftest failed!" >> conftest.h
+-            fi
+-        ;;
+-
+         ioremap_cache)
+             #
+             # Determine if the ioremap_cache() function is present.
+diff -pur 1/Makefile.kbuild 2/Makefile.kbuild
+--- 1/Makefile.kbuild	2013-11-28 03:16:46.000000000 +0400
++++ 2/Makefile.kbuild	2014-04-10 09:50:35.116646401 +0400
+@@ -163,7 +163,6 @@ COMPILE_TESTS = \
+ 	ioremap_wc \
+ 	proc_dir_entry \
+ 	acpi_walk_namespace \
+-	acpi_os_wait_events_complete \
+ 	agp_memory \
+ 	scatterlist \
+ 	file_operations \
+diff -pur 1/nvacpi.c 2/nvacpi.c
+--- 1/nvacpi.c	2013-11-28 03:16:46.000000000 +0400
++++ 2/nvacpi.c	2014-04-10 10:30:55.538227542 +0400
+@@ -14,6 +14,10 @@
+ #include "os-interface.h"
+ #include "nv-linux.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 13, 0) && defined(ACPI_HANDLE)
++#define DEVICE_ACPI_HANDLE(a) ACPI_HANDLE(a)
++#endif
++
+ #if defined(NV_LINUX_ACPI_EVENTS_SUPPORTED)
+ 
+ /*
+@@ -259,8 +263,6 @@ static int nv_acpi_remove(struct acpi_de
+ 
+     if (pNvAcpiObject->notify_handler_installed)
+     {
+-        NV_ACPI_OS_WAIT_EVENTS_COMPLETE();
+-
+         // remove event notifier
+         status = acpi_remove_notify_handler(device->handle, ACPI_DEVICE_NOTIFY, nv_acpi_event);
+     }
+diff -pur 1/nv-linux.h 2/nv-linux.h
+--- 1/nv-linux.h	2013-11-28 03:16:46.000000000 +0400
++++ 2/nv-linux.h	2014-04-10 10:21:08.848753758 +0400
+@@ -206,8 +206,7 @@ extern int nv_pat_mode;
+ #endif
+ 
+ #if defined(CONFIG_ACPI) 
+-#include <acpi/acpi.h>
+-#include <acpi/acpi_drivers.h>
++#include <linux/acpi.h>
+ #if defined(NV_ACPI_DEVICE_OPS_HAS_MATCH) || defined(ACPI_VIDEO_HID)
+ #define NV_LINUX_ACPI_EVENTS_SUPPORTED 1
+ #endif
+@@ -225,19 +224,6 @@ extern int nv_pat_mode;
+ #error "NV_ACPI_WALK_NAMESPACE_ARGUMENT_COUNT value unrecognized!"
+ #endif
+ 
+-#if defined(NV_LINUX_ACPI_EVENTS_SUPPORTED)
+-#if defined(KERNEL_2_4) || \
+-  (NV_ACPI_OS_WAIT_EVENTS_COMPLETE_ARGUMENT_COUNT == 1)
+-#define NV_ACPI_OS_WAIT_EVENTS_COMPLETE() \
+-    acpi_os_wait_events_complete(NULL)
+-#elif (NV_ACPI_OS_WAIT_EVENTS_COMPLETE_ARGUMENT_COUNT == 0)
+-#define NV_ACPI_OS_WAIT_EVENTS_COMPLETE() \
+-    acpi_os_wait_events_complete()
+-#else
+-#error "NV_ACPI_OS_WAIT_EVENTS_COMPLETE_ARGUMENT_COUNT value unrecognized!"
+-#endif
+-#endif
+-
+ #if defined(CONFIG_PREEMPT_RT)
+ typedef atomic_spinlock_t         nv_spinlock_t;
+ #define NV_SPIN_LOCK_INIT(lock)   atomic_spin_lock_init(lock)
