@@ -3,14 +3,14 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-qt-git')
-pkgver=4.0.2.r5827.2916aed
+pkgver=4.0.2.r6930.c53e7f2
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
 url='http://www.dolphin-emu.org/'
 license=('GPL2')
-depends=('bluez-libs' 'ffmpeg' 'libao' 'mbedtls' 'miniupnpc' 'portaudio'
-         'sdl2' 'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
+depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'miniupnpc' 'portaudio' 'sdl2'
+         'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
 makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
@@ -36,7 +36,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_CXX_FLAGS='-fno-inline-functions -fpermissive' \
     -DENABLE_LTO='TRUE' \
-    -DENABLE_QT='TRUE'
+    -DENABLE_QT='TRUE' \
+    -DUSE_SHARED_ENET='TRUE'
   make
 }
 
