@@ -1,0 +1,18 @@
+pkgbase = bittorrent2player
+	pkgdesc = Transfers data from the BitTorrent network to another protocol (currently HTTP) which is more suitable for media players.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.beroal.in.ua/prg/bittorrent2player/
+	install = _.install
+	arch = any
+	license = LGPL
+	depends = python2
+	depends = python2-distribute
+	depends = libtorrent-rasterbar>=0.15.7
+	depends = desktop-file-utils
+	backup = etc/bittorrent2player/logging.conf
+	source = http://www.beroal.in.ua/prg/bittorrent2player/src/bittorrent2player-1.5.tar.gz
+	sha512sums = c6a79ef8229e23beb20d74ca29d2ef12fa01a15fb6fba20a6b41551f56360df6eb3359c9ae368580f39da82f1418a818acc5da03b6ee3c0d224050df2c9522b1
+
+pkgname = bittorrent2player
+
