@@ -1,0 +1,33 @@
+pkgbase = minecraft-server
+	pkgdesc = Minecraft server unit files, script, and jar
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = http://minecraft.net/
+	install = minecraft-server.install
+	arch = any
+	license = custom
+	depends = java-runtime-headless
+	depends = systemd
+	depends = screen
+	depends = expect
+	conflicts = minecraft-server-systemd
+	conflicts = minecraft-canary
+	noextract = minecraft_server.1.8.6.jar
+	options = !strip
+	options = emptydirs
+	backup = etc/conf.d/minecraft
+	source = https://s3.amazonaws.com/Minecraft.Download/versions/1.8.6/minecraft_server.1.8.6.jar
+	source = minecraftd
+	source = minecraftd-diag
+	source = minecraftd.service
+	source = minecraftctl
+	source = conf.minecraft
+	sha256sums = 7fc66b2b54f0f4d65fdd6d6484a50f432c144ef02072d3435d5660f120f58e0d
+	sha256sums = 043101c29d4b4f9092cb93ef52168cfe3d16d49ff573136f4fbb45071a38a5d1
+	sha256sums = de03317d02668bb71ec160fff497c7fbfe8b03ffff2950c6a0bcfb39f69cd214
+	sha256sums = 6eb4c085b8377712671445b891a3a2cf2a17cf7a7bea66be456a980c2b620e23
+	sha256sums = 472e06e1bd63838e88ace0bd2f971f72f2efd9e541cc0956599a44c324fd49ac
+	sha256sums = 738e10185df160d190a5f4f0226de110d67ba023877e4999a6d3ef41c9918ed6
+
+pkgname = minecraft-server
+

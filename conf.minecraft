@@ -1,0 +1,37 @@
+# MINECRAFT SERVER LAUNCH CONFIGS
+# not to be confused with server.properties.
+
+# Server root directory
+_SRVDIR=/srv/minecraft
+
+# World directory (relative to SRVDIR)
+# Ensure that this matches what is in your server.properties, 
+#      or else the wrong folder will be backed up!
+WORLD=world
+
+# Maximum RAM usage (change to suit your needs)
+MAXHEAP=1024M
+
+# Minimum RAM usage (change to suit your needs)
+MINHEAP=512M
+
+# Number of concurrent threads (no more than the number of logical processors in your system)
+THREADS=1
+
+# Where to store backup files
+BACKUPPATH=/srv/minecraft/backup
+
+# What to say to the server when backup starts
+BACKUPSTARTMSG="WORLD BACKUP STARTING. Server going read-only..."
+
+# What to say when to the server when backup ends
+BACKUPENDMSG="WORLD BACKUP ENDED. Server going read-write..."
+
+## Only change these if you know what you're doing
+
+# Server JAR file
+SERVERJAR=minecraft_server.jar
+SERVICE=${SERVERJAR}
+
+# User to run server under
+MCUSER=minecraft

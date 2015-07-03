@@ -1,0 +1,33 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  getent group "minecraft" &>/dev/null || groupadd -r minecraft 1>/dev/null
+  getent passwd "minecraft" &>/dev/null && usermod -s "/usr/bin/nologin" minecraft &>/dev/null || useradd -r -g minecraft -d "/srv/minecraft" -s "/usr/bin/nologin" minecraft 1>/dev/null
+  touch /srv/minecraft/server.log
+  chown -R minecraft:minecraft "/srv/minecraft" 1>/dev/null
+  ln -s /srv/minecraft/server.log /var/log/minecraft.log &>/dev/null
+  # Removes old data from previous version
+  cat << EOF
+==> World data is stored under /srv/minecraft
+==> The server runs as "minecraft", not root
+==> You can access the server's console as root with:
+      $ screen -r minecraft
+==> The systemd service is called "minecraftd.service"
+==> Calling "stop" or "restart" with systemctl will gracefully exit the server, saving world data
+==> Modify /etc/conf.d/minecraft to change the invocation of the server if you wish
+==> A script at /usr/bin/minecraftctl is also provided. See the wiki for details on its usage.
+==> For the server to start you have to accept the EULA in /srv/minecraft/eula.txt
+ 
+EOF
+}
+
+post_remove() {
+  if getent passwd "minecraft" >/dev/null; then
+    userdel minecraft >/dev/null
+  fi
+  if getent group "minecraft" >/dev/null; then
+    groupdel minecraft >/dev/null
+  fi
+}

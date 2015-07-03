@@ -1,0 +1,14 @@
+[Unit]
+Description=Minecraft server daemon
+After=network.target
+
+[Service]
+User=minecraft
+Group=minecraft
+ExecStart=/usr/bin/minecraftd
+Type=oneshot
+RemainAfterExit=yes
+ExecStop=/usr/bin/screen -S minecraft -X stuff 'say Server Shutting Down in 5 Seconds\n' ; /usr/bin/sleep 5 ; /usr/bin/screen -S minecraft -X stuff 'stop\n' ; /usr/bin/expect -c "exec screen -x minecraft ; wait ; exit"
+
+[Install]
+WantedBy=multi-user.target
