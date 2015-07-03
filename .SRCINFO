@@ -1,0 +1,17 @@
+pkgbase = ocaml-pipebang
+	pkgdesc = OCaml syntax extension to transform x |! f into f x
+	pkgver = 110.01.00
+	pkgrel = 1
+	url = https://github.com/janestreet/pipebang
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/110.01.00/individual/pipebang-110.01.00.tar.gz
+	md5sums = 09094ac5a5ccdf7f8b7a6115ce228a40
+
+pkgname = ocaml-pipebang
+
