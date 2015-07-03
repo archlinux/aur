@@ -1,0 +1,17 @@
+pkgbase = ttf-atarismall
+	pkgdesc = A very small 4x8 font, originally desinged for the Atari 800 terminal emulator
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://gnu.ethz.ch/linuks.mine.nu/atari/
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://gnu.ethz.ch/linuks.mine.nu/atari/AtariSmall.ttf
+	source = LICENSE
+	md5sums = c6438c0c44cd78dd94d81fe19501981d
+	md5sums = d2d5d458e30a7143ec17383fee8f3b44
+
+pkgname = ttf-atarismall
+
