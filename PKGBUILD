@@ -1,6 +1,6 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 pkgname=steamkit
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A .NET library designed to interoperate with Valve's Steam network. It aims to provide a simple, yet extensible, interface to perform various actions on the network."
 arch=('any')
@@ -9,7 +9,7 @@ license=('LGPL2.1')
 depends=('mono' 'protobuf-net')
 options=('!strip')
 source=("https://github.com/SteamRE/SteamKit/archive/SteamKit_${pkgver}.tar.gz")
-md5sums=('4c2fe9cc8725e3b080b33c366e558784')
+md5sums=('b5da732511cbfbbc702a73a8a8dddfb3')
 
 build() {
   cd "${srcdir}/SteamKit-SteamKit_${pkgver}/SteamKit2/SteamKit2"
