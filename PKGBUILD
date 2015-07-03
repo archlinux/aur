@@ -3,7 +3,7 @@
 pkgname=perl-b-flags
 _lastauthor=R/RU/RURBAN
 _pkgname=B-Flags
-pkgver=0.11
+pkgver=0.13
 pkgrel=1
 pkgdesc="Friendlier flags for B"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('perl')
 makedepends=('perl-extutils-makemaker')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('daa1d1fa878be18458643458b00da1a715ed0ca3d5ec6e0a6a8ddace53f85e9a51da39590144bf366910b031a1251740c13fa9e5a5515be77878ec98dec742bf')
+sha512sums=('cffbb657db1682f77bdc4ed6a3e79a755b4ecf78e1e32b0bf3436265ed07fe8c49b68cca15d70dacb2f999b3aed32c2acccf525b819f234316b850ce44e13cf7')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
