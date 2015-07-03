@@ -1,0 +1,29 @@
+diff -Naur nv.orig/nv.c nv/nv.c
+--- nv.orig/nv.c	2015-04-16 12:42:44.787122000 +0200
++++ nv/nv.c	2015-04-16 13:17:17.516780874 +0200
+@@ -726,8 +726,13 @@
+     unsigned long cr0 = read_cr0();
+     write_cr0(((cr0 & (0xdfffffff)) | 0x40000000));
+     wbinvd();
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,0,0)
++    *cr4 = __read_cr4();
++    if (*cr4 & 0x80) __write_cr4(*cr4 & ~0x80);
++#else
+     *cr4 = read_cr4();
+     if (*cr4 & 0x80) write_cr4(*cr4 & ~0x80);
++#endif
+     __flush_tlb();
+ }
+ 
+@@ -737,7 +742,11 @@
+     wbinvd();
+     __flush_tlb();
+     write_cr0((cr0 & 0x9fffffff));
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,0,0)
++    if (cr4 & 0x80) __write_cr4(cr4);
++#else
+     if (cr4 & 0x80) write_cr4(cr4);
++#endif
+ }
+ 
+ static int __determine_pat_mode()

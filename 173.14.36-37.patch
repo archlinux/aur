@@ -1,0 +1,81 @@
+diff -pur 173.14.36/conftest.sh 173.14.37/conftest.sh
+--- 173.14.36/conftest.sh	2012-09-11 23:36:21.000000000 +0400
++++ 173.14.37/conftest.sh	2013-03-07 05:17:45.000000000 +0400
+@@ -127,6 +127,7 @@ build_cflags() {
+         if [ "$ARCH" = "i386" -o "$ARCH" = "x86_64" ]; then
+             MACH_CFLAGS="$MACH_CFLAGS -I$HEADERS/asm-x86/mach-default"
+             MACH_CFLAGS="$MACH_CFLAGS -I$SOURCES/arch/x86/include/asm/mach-default"
++            MACH_CFLAGS="$MACH_CFLAGS -I$HEADERS/arch/x86/include/uapi"
+         fi
+         if [ "$XEN_PRESENT" != "0" ]; then
+             MACH_CFLAGS="-I$HEADERS/asm-$ARCH/mach-xen $MACH_CFLAGS"
+@@ -136,16 +137,21 @@ build_cflags() {
+         if [ "$ARCH" = "i386" -o "$ARCH" = "x86_64" ]; then
+             MACH_CFLAGS="$MACH_CFLAGS -I$HEADERS/asm-x86/mach-default"
+             MACH_CFLAGS="$MACH_CFLAGS -I$SOURCES/arch/x86/include/asm/mach-default"
++            MACH_CFLAGS="$MACH_CFLAGS -I$HEADERS/arch/x86/include/uapi"
+         fi
+         if [ "$XEN_PRESENT" != "0" ]; then
+             MACH_CFLAGS="-I$HEADERS/asm/mach-xen $MACH_CFLAGS"
+         fi
+     fi
+ 
+-    CFLAGS="$BASE_CFLAGS $MACH_CFLAGS $OUTPUT_CFLAGS -I$HEADERS $AUTOCONF_CFLAGS"
++    CFLAGS="$BASE_CFLAGS $MACH_CFLAGS $OUTPUT_CFLAGS $AUTOCONF_CFLAGS"
++    CFLAGS="$CFLAGS -I$HEADERS -I$HEADERS/uapi -I$OUTPUT/include/generated/uapi"
+ 
+     if [ "$ARCH" = "i386" -o "$ARCH" = "x86_64" ]; then
+-        CFLAGS="$CFLAGS -I$SOURCES/arch/x86/include -I$OUTPUT/arch/x86/include/generated"
++        CFLAGS="$CFLAGS -I$SOURCES/arch/x86/include"
++        CFLAGS="$CFLAGS -I$SOURCES/arch/x86/include/uapi"
++        CFLAGS="$CFLAGS -I$OUTPUT/arch/x86/include/generated"
++        CFLAGS="$CFLAGS -I$OUTPUT/arch/x86/include/generated/uapi"
+     fi
+     if [ -n "$BUILD_PARAMS" ]; then
+         CFLAGS="$CFLAGS -D$BUILD_PARAMS"
+@@ -1453,7 +1459,8 @@ case "$6" in
+         FILE="linux/version.h"
+         SELECTED_MAKEFILE=""
+ 
+-        if [ -f $HEADERS/$FILE -o -f $OUTPUT/include/$FILE ]; then
++        if [ -f $HEADERS/$FILE -o -f $OUTPUT/include/$FILE -o \
++             -f $OUTPUT/include/generated/uapi/$FILE ]; then
+             #
+             # We are either looking at a configured kernel source
+             # tree or at headers shipped for a specific kernel.
+diff -pur 173.14.36/nv.c 173.14.37/nv.c
+--- 173.14.36/nv.c	2012-09-11 23:36:21.000000000 +0400
++++ 173.14.37/nv.c	2013-03-07 05:17:44.000000000 +0400
+@@ -2607,9 +2607,8 @@ int nv_kern_mmap(
+         NV_PRINT_AT(NV_DBG_MEMINFO, at);
+         nv_vm_list_page_count(&at->page_table[i], pages);
+ 
+-        /* prevent the swapper from swapping it out */
+-        /* mark the memory i/o so the buffers aren't dumped on core dumps */
+         vma->vm_flags |= (VM_IO | VM_LOCKED | VM_RESERVED);
++        vma->vm_flags |= (VM_DONTEXPAND | VM_DONTDUMP);
+     }
+ 
+     NV_VMA_FILE(vma) = file;
+diff -pur 173.14.36/nv-linux.h 173.14.37/nv-linux.h
+--- 173.14.36/nv-linux.h	2012-09-11 23:36:21.000000000 +0400
++++ 173.14.37/nv-linux.h	2013-03-07 05:17:45.000000000 +0400
+@@ -64,6 +64,18 @@
+ #include <linux/module.h>
+ #include <linux/kmod.h>
+ 
++#include <linux/mm.h>
++
++#if !defined(VM_RESERVED)
++#define VM_RESERVED    0x00000000
++#endif
++#if !defined(VM_DONTEXPAND)
++#define VM_DONTEXPAND  0x00000000
++#endif
++#if !defined(VM_DONTDUMP)
++#define VM_DONTDUMP    0x00000000
++#endif
++
+ #include <linux/init.h>             /* module_init, module_exit         */
+ #include <linux/types.h>            /* pic_t, size_t, __u32, etc        */
+ #include <linux/errno.h>            /* error codes                      */

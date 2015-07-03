@@ -1,0 +1,30 @@
+diff -Naur nv.orig/conftest.sh nv/conftest.sh
+--- nv.orig/conftest.sh	2015-01-02 18:00:53.161897000 +0100
++++ nv/conftest.sh	2015-01-02 18:01:32.256140348 +0100
+@@ -944,7 +944,7 @@
+             # and how many arguments it takes.
+             #
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi.h>
++            #include <linux/acpi.h>
+             void conftest_acpi_walk_namespace(void) {
+                 acpi_walk_namespace();
+             }" > conftest$$.c
+@@ -959,7 +959,7 @@
+             fi
+ 
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi.h>
++            #include <linux/acpi.h>
+             void conftest_acpi_walk_namespace(void) {
+                 acpi_walk_namespace(0, NULL, 0, NULL, NULL, NULL, NULL);
+             }" > conftest$$.c
+@@ -975,7 +975,7 @@
+             fi
+ 
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi.h>
++            #include <linux/acpi.h>
+             void conftest_acpi_walk_namespace(void) {
+                 acpi_walk_namespace(0, NULL, 0, NULL, NULL, NULL);
+             }" > conftest$$.c

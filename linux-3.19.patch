@@ -1,0 +1,30 @@
+diff -Naur nv.orig/nv.c nv/nv.c
+--- nv.orig/nv.c	2015-04-16 12:41:01.287814000 +0200
++++ nv/nv.c	2015-04-16 12:42:44.787122184 +0200
+@@ -2298,7 +2298,7 @@
+ 
+     nvl = NVL_FROM_FILEP(file);
+ 
+-    if (NV_IS_CONTROL_DEVICE(file->f_dentry->d_inode))
++    if (NV_IS_CONTROL_DEVICE(file->f_path.dentry->d_inode))
+         return nv_kern_ctl_poll(file, wait);
+ 
+     nvfp = NV_GET_NVFP(file);
+@@ -2493,7 +2493,7 @@
+     unsigned long i_arg
+ )
+ {
+-    return nv_kern_ioctl(file->f_dentry->d_inode, file, cmd, i_arg);
++    return nv_kern_ioctl(file->f_path.dentry->d_inode, file, cmd, i_arg);
+ }
+ 
+ long nv_kern_compat_ioctl(
+@@ -2502,7 +2502,7 @@
+     unsigned long i_arg
+ )
+ {
+-    return nv_kern_ioctl(file->f_dentry->d_inode, file, cmd, i_arg);
++    return nv_kern_ioctl(file->f_path.dentry->d_inode, file, cmd, i_arg);
+ }
+ 
+ /*
