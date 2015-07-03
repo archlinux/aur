@@ -1,0 +1,153 @@
+pkgbase = xorg-server1.12
+	pkgver = 1.12.4
+	pkgrel = 5
+	url = http://xorg.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = pixman
+	makedepends = libx11
+	makedepends = mesa
+	makedepends = libgl
+	makedepends = xf86driproto
+	makedepends = xcmiscproto
+	makedepends = xtrans
+	makedepends = bigreqsproto
+	makedepends = randrproto
+	makedepends = inputproto
+	makedepends = fontsproto
+	makedepends = videoproto
+	makedepends = compositeproto
+	makedepends = recordproto
+	makedepends = scrnsaverproto
+	makedepends = resourceproto
+	makedepends = xineramaproto
+	makedepends = libxkbfile
+	makedepends = libxfont
+	makedepends = renderproto
+	makedepends = libpciaccess
+	makedepends = libxv
+	makedepends = xf86dgaproto
+	makedepends = libxmu
+	makedepends = libxrender
+	makedepends = libxi
+	makedepends = dmxproto
+	makedepends = libxaw
+	makedepends = libdmx
+	makedepends = libxtst
+	makedepends = libxres
+	makedepends = xorg-xkbcomp
+	makedepends = xorg-util-macros
+	makedepends = xorg-font-util
+	makedepends = glproto
+	makedepends = dri2proto
+	makedepends = libgcrypt
+	options = !libtool
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.12.4.tar.bz2
+	source = autoconfig-nvidia.patch
+	source = autoconfig-sis.patch
+	source = xvfb-run
+	source = xvfb-run.1
+	source = 10-quirks.conf
+	source = 0001-sdksyms.sh-Make-sdksyms.sh-work-with-gcc5.patch
+	sha256sums = 8ac07c35306ba3fb3c0972722dd4e919303039eca1d40ac7862560e0b2c94cf7
+	sha256sums = f1e94a4284672f93d47d51ac5fd19731058761a5ab9de471b5fdfa226ab62b56
+	sha256sums = d027776fac1f7675b0a9ee817502290b1c45f9c09b0f0a6bb058c35f92361e84
+	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
+	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
+	sha256sums = 94612f5c0d34a3b7152915c2e285c7b462e9d8e38d3539bd551a339498eac166
+	sha256sums = b4a4fbddebfa614d1a97e77dde98748682ee331fbf7be394480050670d6203aa
+
+pkgname = xorg-server1.12
+	pkgdesc = Xorg X server
+	depends = libxdmcp
+	depends = libxfont
+	depends = libpciaccess
+	depends = libdrm
+	depends = pixman
+	depends = libgcrypt
+	depends = libxau
+	depends = xorg-server1.12-common
+	depends = xf86-input-evdev1.12
+	provides = xorg-server=1.12.4
+	provides = X-ABI-VIDEODRV_VERSION=12
+	provides = X-ABI-XINPUT_VERSION=16
+	provides = X-ABI-EXTENSION_VERSION=6.0
+	provides = x-server=1.12.4
+	conflicts = xorg-server
+	backup = etc/X11/xorg.conf.d/10-evdev.conf
+	backup = etc/X11/xorg.conf.d/10-quirks.conf
+
+pkgname = xorg-server1.12-xephyr
+	pkgdesc = A nested X server that runs as an X application
+	depends = libxfont
+	depends = libgl
+	depends = libgcrypt
+	depends = libxv
+	depends = pixman
+	depends = xorg-server1.12-common
+	provides = xorg-server-xephyr=1.12.4
+	conflicts = xorg-server-xephyr
+
+pkgname = xorg-server1.12-xdmx
+	pkgdesc = Distributed Multihead X Server and utilities
+	depends = libxfont
+	depends = libxi
+	depends = libgcrypt
+	depends = libxaw
+	depends = libxrender
+	depends = libdmx
+	depends = libxfixes
+	depends = pixman
+	depends = xorg-server1.12-common
+	provides = xorg-server-xdmx=1.12.4
+	conflicts = xorg-server-xdmx
+
+pkgname = xorg-server1.12-xvfb
+	pkgdesc = Virtual framebuffer X server
+	depends = libxfont
+	depends = libxdmcp
+	depends = libxau
+	depends = libgcrypt
+	depends = pixman
+	depends = xorg-server1.12-common
+	provides = xorg-server-xvfb=1.12.4
+	conflicts = xorg-server-xvfb
+
+pkgname = xorg-server1.12-xnest
+	pkgdesc = A nested X server that runs as an X application
+	depends = libxfont
+	depends = libxext
+	depends = libgcrypt
+	depends = pixman
+	depends = xorg-server1.12-common
+	provides = xorg-server-xnest=1.12.4
+	conflicts = xorg-server-xnest
+
+pkgname = xorg-server1.12-common
+	pkgdesc = Xorg server common files
+	depends = xkeyboard-config
+	depends = xorg-xkbcomp
+	depends = xorg-setxkbmap
+	depends = xorg-fonts-misc
+	provides = xorg-server-common=1.12.4
+	conflicts = xorg-server-common
+
+pkgname = xorg-server1.12-devel
+	pkgdesc = Development files for the X.Org X server
+	depends = xproto
+	depends = randrproto
+	depends = renderproto
+	depends = xextproto
+	depends = inputproto
+	depends = kbproto
+	depends = fontsproto
+	depends = pixman
+	depends = videoproto
+	depends = dri2proto
+	depends = xineramaproto
+	depends = libpciaccess
+	depends = xorg-util-macros
+	provides = xorg-server-devel=1.12.4
+	conflicts = xorg-server-devel
+
