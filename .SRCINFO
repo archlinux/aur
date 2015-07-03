@@ -1,0 +1,15 @@
+pkgbase = gtk-bluecurve-engine
+	pkgdesc = Original Bluecurve engine from Red Hat's artwork package.
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://fedoraproject.org/wiki/Design
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = pkgconfig
+	source = http://ftp.gnome.org/pub/gnome/teams/art.gnome.org/archive/themes/gtk2/GTK2-Wonderland-Engine-1.0.tar.bz2
+	md5sums = 0c6a5bbba6ab18984269c7ecbfcebf16
+
+pkgname = gtk-bluecurve-engine
+
