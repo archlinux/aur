@@ -1,0 +1,14 @@
+pkgbase = mutantblobsattack
+	pkgdesc = Tales From Space: Mutant Blobs Attack is a game where a blob eats stuff to grow bigger.
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1414459118
+	url = http://mutantblobsattack.com/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	source = hib://MutantBlobsAttack_linux_1414459118.sh
+	sha512sums = 8f38e75dafdab49ea6ad6d2d0783e030cab1d03d51a06d5f067d7439d77ac74c617edcf496c43deb4056667393167f8feb83f4736c01360807d22056f2f366d0
+
+pkgname = mutantblobsattack
+
