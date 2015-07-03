@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,9 +13,9 @@ sdl2-jstest: sdl2-jstest.c
+ 	$(CC) -o $@ $< -std=c99 -Wall `pkg-config --cflags --libs sdl2` -lcurses
+ 
+ sdl-jstest.1: sdl-jstest.xml
+-	docbook2x-man --to-stdout $< > $@
++	docbook2man --to-stdout $< > $@
+ 
+ sdl2-jstest.1: sdl2-jstest.xml
+-	docbook2x-man --to-stdout $< > $@
++	docbook2man --to-stdout $< > $@
+ 
+ # EOF #
