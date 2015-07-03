@@ -1,0 +1,19 @@
+pkgbase = qcma
+	pkgdesc = Content Manager Assistant for the PS Vita
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/codestation/qcma
+	install = qcma.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = libvitamtp>=2.5.5
+	depends = ffmpeg
+	depends = libnotify
+	source = qcma-0.3.9.tar.gz::https://github.com/codestation/qcma/archive/v0.3.9.tar.gz
+	sha256sums = 46cdc03c9b1ad1ce7905dc194166291a917aee0deb38099f998914076e88c30d
+
+pkgname = qcma
+
