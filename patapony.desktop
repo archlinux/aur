@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PataPony
+GenericName=Pata Pony
+Comment=A game where you are a brunch of Pinkie Pies clones and you need to help all fo them by repeating sertain melodies by pessing predefined buttons
+Version=1.0
+Type=Application
+Terminal=false
+Icon=patapony
+Exec=/usr/bin/patapony
+Categories=Game;

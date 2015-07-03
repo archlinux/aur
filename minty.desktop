@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Minty Fresh Adventures
+GenericName=Pony Project Plataforming4: Minty Fresh Adventures
+Comment=A plataform game where you Minty Fresh a pony need to run across a sideview level
+Version=1.0
+Type=Application
+Terminal=false
+Icon=minuette
+Exec=/usr/bin/minty
+Categories=Game;

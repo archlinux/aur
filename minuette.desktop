@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Minuette VS Lazyness
+GenericName=Pony Project Playaform 4: Minuette VS Lazyness
+Comment=A plataform game where you Minuette a Crystal pony need to run across a sideview level againt the time
+Version=1.0
+Type=Application
+Terminal=false
+Icon=minuette
+Exec=/usr/bin/minuette
+Categories=Game;
