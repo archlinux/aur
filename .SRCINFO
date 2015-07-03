@@ -1,0 +1,20 @@
+pkgbase = nvidia-173xx-utils
+	pkgdesc = NVIDIA drivers utilities and libraries, 173xx branch.
+	pkgver = 173.14.39
+	pkgrel = 4
+	url = http://www.nvidia.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = xorg-server<1.15.99
+	depends = mesa
+	optdepends = gtk2: nvidia-settings
+	optdepends = pkgconfig: nvidia-xconfig
+	provides = libgl
+	conflicts = libgl
+	options = !strip
+	source = http://us.download.nvidia.com/XFree86/Linux-/173.14.39/NVIDIA-Linux--173.14.39-pkg0.run
+	md5sums = 5b423543428554ef33a200fbbe3cb9fc
+
+pkgname = nvidia-173xx-utils
+
