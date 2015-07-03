@@ -1,0 +1,15 @@
+pkgbase = roundcube-twofactor-git
+	pkgdesc = Adds two-factor authentication through Google Authenticator.
+	pkgver = r48.a2d33ef
+	pkgrel = 1
+	url = https://github.com/alexandregz/twofactor_gauthenticator
+	install = roundcube-twofactor-git.install
+	arch = any
+	license = GPLv2
+	depends = roundcubemail>=0.9.5
+	backup = usr/share/webapps/roundcubemail/plugins/twofactor_gauthenticator/config.inc.php
+	source = roundcube-twofactor-git::git+https://github.com/alexandregz/twofactor_gauthenticator.git
+	sha512sums = SKIP
+
+pkgname = roundcube-twofactor-git
+
