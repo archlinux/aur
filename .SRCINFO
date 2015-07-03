@@ -9,10 +9,10 @@ pkgbase = pony-platforming-project
 	depends = java-environment>=6
 	provides = pony-plataforming-project
 	provides = PPP4
-	provides = pony-plataforming-project
+	provides = pony-plataform-project
 	replaces = pony-plataforming-project
 	replaces = PPP4
-	replaces = pony-plataforming-project
+	replaces = pony-plataform-project
 	source = minuette.swf::http://www.dragon-mango.com/ponygame/tardy/PPP4.swf
 	source = minty.swf::http://www.dragon-mango.com/ponygame/Minty/intro.swf
 	source = colgate.swf::http://www.dragon-mango.com/ponygame/colgate.swf

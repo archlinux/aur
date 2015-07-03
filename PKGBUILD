@@ -9,8 +9,8 @@ url="http://www.dragon-mango.com/ponygame"
 license=("custom:freeware")
 depends=("flashplayer-standalone>=10"
 	"java-environment>=6")
-provides=("pony-plataforming-project" "PPP4" "pony-plataforming-project")
-replaces=("pony-plataforming-project" "PPP4" "pony-plataforming-project")
+provides=("pony-plataforming-project" "PPP4" "pony-plataform-project")
+replaces=("pony-plataforming-project" "PPP4" "pony-plataform-project")
 source=("minuette.swf::http://www.dragon-mango.com/ponygame/tardy/PPP4.swf"
 "minty.swf::http://www.dragon-mango.com/ponygame/Minty/intro.swf"
 "colgate.swf::http://www.dragon-mango.com/ponygame/colgate.swf"
