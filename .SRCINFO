@@ -1,0 +1,26 @@
+pkgbase = yafaray-git
+	pkgdesc = A free open-source raytracing engine
+	pkgver = 513.ff262af
+	pkgrel = 1
+	url = http://www.yafaray.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt4
+	makedepends = swig
+	makedepends = python
+	depends = libxml2
+	depends = openexr
+	depends = libjpeg
+	optdepends = qt4: QT GUI
+	optdepends = python: Python bindings
+	optdepends = yafaray-blender-exporter-git: Exporter for Blender
+	provides = yafaray
+	conflicts = yafaray
+	source = yafaray::git+git://github.com/YafaRay/Core.git
+	md5sums = SKIP
+
+pkgname = yafaray-git
+
