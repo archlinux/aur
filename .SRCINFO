@@ -1,7 +1,7 @@
 pkgbase = thunderbird-sieve
 	pkgdesc = This Extension implements the ManageSieve protocol for securely managing Sieve Script on a remote IMAP server
 	pkgver = 0.2.3g
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thsmi/sieve
 	arch = any
 	license = AGPL
