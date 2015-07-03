@@ -4,7 +4,7 @@ pkgbase=python-nikola-git
 _pyname=nikola
 _gitname=nikola
 pkgname=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
-pkgver=7.6.0.r0.g6f2b78f
+pkgver=7.6.0.r6.gd015f82
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -35,7 +35,7 @@ package_python-nikola-git() {
               'python-markdown: for Markdown support'
               'python-jinja: for Jinja2 themes'
               'python-pyphen>=0.9.1: for hyphenation'
-              'python-pygal==1.7.0: for SVG graph plotting'
+              'python-pygal=1.7.0: for SVG graph plotting'
               'python-typogrify>=2.0.4: for typographical enhancements'
               'python-webassets: for bundling assets'
               'ipython-notebook: for ipynb support'
@@ -60,7 +60,7 @@ package_python2-nikola-git() {
               'python2-markdown: for Markdown support'
               'python2-jinja: for Jinja2 themes'
               'python2-pyphen>=0.9.1: for hyphenation'
-              'python2-pygal==1.7.0: for SVG graph plotting'
+              'python2-pygal=1.7.0: for SVG graph plotting'
               'python2-typogrify>=2.0.4: for typographical enhancements'
               'python2-webassets: for bundling assets'
               'ipython2-notebook: for ipynb support'
