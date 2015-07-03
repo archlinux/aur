@@ -1,0 +1,18 @@
+pkgbase = ocaml-enumerate
+	pkgdesc = Text output utilities
+	pkgver = 111.08.00
+	pkgrel = 2
+	url = https://github.com/janestreet/enumerate
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/111.08.00/individual/enumerate-111.08.00.tar.gz
+	md5sums = 2cb0ad1f4a7fc4c9fe1bf6d294be10ce
+
+pkgname = ocaml-enumerate
+
