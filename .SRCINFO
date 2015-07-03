@@ -1,0 +1,20 @@
+pkgbase = openbve
+	pkgdesc = Free-as-in-freedom train simulator placed in the public domain
+	pkgver = 1.4.3
+	pkgrel = 2
+	url = http://odakyufan.zxq.net/openbve/
+	arch = any
+	license = custom:public domain
+	depends = mono
+	depends = taoframework
+	depends = sdl
+	depends = openal
+	source = http://pkgbuild.com/~bgyorgy/sources/openbve-1.4.3.tar.gz
+	source = openbve.sh
+	source = openbve.desktop
+	md5sums = ea665ae920add94157b1f49e8e685c56
+	md5sums = fec92946f773f56588a71de310847ce0
+	md5sums = acb0dd3ea602910181b8cdb8375c794e
+
+pkgname = openbve
+

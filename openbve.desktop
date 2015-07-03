@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OpenBVE
+Categories=Game;Simulation;
+Comment=Train/railway simulator compatible with 'BVE Trainsim' routes
+Comment[hu]=A „BVE Trainsim” útvonalaival kompatibilis vonatszimulátor
+Terminal=false
+TryExec=openbve
+Exec=openbve
+Icon=openbve
