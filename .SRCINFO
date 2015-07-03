@@ -1,0 +1,17 @@
+pkgbase = ocaml-type_conv
+	pkgdesc = Support library for preprocessor type conversions
+	pkgver = 112.01.01
+	pkgrel = 1
+	url = https://github.com/janestreet/type_conv
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.01.00/individual/type_conv-112.01.01.tar.gz
+	md5sums = f43b3196efdbfafe8db3c2c6cd3413fc
+
+pkgname = ocaml-type_conv
+
