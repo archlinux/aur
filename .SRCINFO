@@ -1,0 +1,21 @@
+pkgbase = ocaml-pa_test
+	pkgdesc = Quotation expander for assertions.
+	pkgver = 112.24.00
+	pkgrel = 1
+	url = https://github.com/janestreet/pa_test
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-comparelib
+	depends = ocaml-herelib
+	depends = ocaml-sexplib
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.24/files/pa_test-112.24.tar.gz
+	md5sums = 1b0e52b9f76a47258bba734577ee56e7
+
+pkgname = ocaml-pa_test
+
