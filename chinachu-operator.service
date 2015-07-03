@@ -1,0 +1,15 @@
+[Unit]
+Description=Chinachu Task Operator Service
+
+[Service]
+User=chinachu
+PermissionsStartOnly=true
+
+ExecStart=/var/lib/chinachu/chinachu service operator execute
+ExecStartPost=-/bin/bash -c "echo $MAINPID > /var/run/chinachu-operator.pid"
+
+ExecStop=/bin/kill -QUIT $MAINPID
+ExecStopPost=/usr/bin/rm -f -- /var/run/chinachu-operator.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+pkgbase = chinachu-git
+	pkgdesc = A open source EPG digital video recorder system for Linux.
+	pkgver = r763.6145795
+	pkgrel = 1
+	url = https://github.com/kanreisa/Chinachu/
+	install = chinachu-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = yasm
+	makedepends = wget
+	provides = chinachu
+	conflicts = chinachu
+	source = chinachu-git::git+https://github.com/kanreisa/chinachu.git
+	source = chinachu-operator.service
+	source = chinachu-wui.service
+	sha1sums = SKIP
+	sha1sums = 0956f415e780460731053695ed26c6773de93717
+	sha1sums = 2ae927ee97a44b7cd6c7f6f1688bb22f2a0024c7
+
+pkgname = chinachu-git
+

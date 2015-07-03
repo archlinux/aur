@@ -1,0 +1,16 @@
+[Unit]
+Description=Chinachu WebUI Server Service
+After=network.target
+
+[Service]
+User=chinachu
+PermissionsStartOnly=true
+
+ExecStart=/var/lib/chinachu/chinachu service wui execute
+ExecStartPost=-/bin/bash -c "echo $MAINPID > /var/run/chinachu-wui.pid"
+
+ExecStop=/bin/kill -QUIT $MAINPID
+ExecStopPost=/usr/bin/rm -f -- /var/run/chinachu-wui.pid
+
+[Install]
+WantedBy=multi-user.target

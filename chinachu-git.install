@@ -1,0 +1,38 @@
+
+## arg 1:  the new package version
+post_install() {
+  getent group chinachu &>/dev/null || groupadd chinachu >/dev/null
+  getent passwd chinachu &>/dev/null || useradd -g chinachu -d /var/lib/chinachu -c 'chinachu' -s /bin/false chinachu >/dev/null
+
+  unlink /var/lib/chinachu/usr/bin/avconv
+  unlink /var/lib/chinachu/usr/bin/avprobe
+  ln -s /var/lib/chinachu/usr/bin/ffmpeg /var/lib/chinachu/usr/bin/avconv
+  ln -s /var/lib/chinachu/usr/bin/ffprobe /var/lib/chinachu/usr/bin/avprobe
+
+  unlink /var/lib/chinachu/.nave/node
+  unlink /var/lib/chinachu/.nave/npm
+  ln -s "/var/lib/chinachu/.nave/installed/$(ls /var/lib/chinachu/.nave/installed)/bin/node" /var/lib/chinachu/.nave/node
+  ln -s "/var/lib/chinachu/.nave/installed/$(ls /var/lib/chinachu/.nave/installed)/bin/npm" /var/lib/chinachu/.nave/npm
+
+  chown -R chinachu: /var/lib/chinachu
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  getent group chinachu &>/dev/null || groupadd chinachu >/dev/null
+  getent passwd chinachu &>/dev/null || useradd -g chinachu -d /var/lib/chinachu -c 'chinachu' -s /bin/false chinachu >/dev/null
+
+  unlink /var/lib/chinachu/usr/bin/avconv
+  unlink /var/lib/chinachu/usr/bin/avprobe
+  ln -s /var/lib/chinachu/usr/bin/ffmpeg /var/lib/chinachu/usr/bin/avconv
+  ln -s /var/lib/chinachu/usr/bin/ffprobe /var/lib/chinachu/usr/bin/avprobe
+
+  unlink /var/lib/chinachu/.nave/node
+  unlink /var/lib/chinachu/.nave/npm
+  ln -s "/var/lib/chinachu/.nave/installed/$(ls /var/lib/chinachu/.nave/installed)/bin/node" /var/lib/chinachu/.nave/node
+  ln -s "/var/lib/chinachu/.nave/installed/$(ls /var/lib/chinachu/.nave/installed)/bin/npm" /var/lib/chinachu/.nave/npm
+
+  chown -R chinachu: /var/lib/chinachu
+}
+
