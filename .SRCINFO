@@ -1,0 +1,16 @@
+pkgbase = ja2-stracciatella-git
+	pkgdesc = Jagged Alliance 2 Stracciatella project with a goal of improving JA2
+	pkgver = 7404.12d8987
+	pkgrel = 1
+	url = https://bitbucket.org/gennady/ja2-stracciatella
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = sdl
+	depends = gcc-libs
+	source = git+https://bitbucket.org/gennady/ja2-stracciatella.git
+	md5sums = SKIP
+
+pkgname = ja2-stracciatella-git
+
