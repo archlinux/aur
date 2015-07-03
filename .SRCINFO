@@ -1,0 +1,33 @@
+pkgbase = lib32-libpulse-git
+	pkgdesc = A featureful, general-purpose sound server (32-bit client libraries)
+	pkgver = v5.0.52.g43b6a67
+	pkgrel = 1
+	url = http://pulseaudio.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = gcc-multilib
+	makedepends = libtool-multilib
+	makedepends = intltool
+	makedepends = lib32-glib2
+	makedepends = lib32-speex
+	makedepends = lib32-gtk2
+	depends = lib32-dbus-core
+	depends = lib32-json-c
+	depends = lib32-libasyncns
+	depends = lib32-libcap
+	depends = lib32-libxtst
+	depends = lib32-libsm
+	depends = lib32-libsndfile
+	depends = pulseaudio-git
+	optdepends = lib32-alsa-plugins: ALSA support
+	provides = lib32-pulseaudio=v5.0.52.g43b6a67
+	conflicts = lib32-pulseaudio
+	conflicts = lib32-libpulse
+	replaces = lib32-pulseaudio
+	options = !emptydirs
+	options = !libtool
+
+pkgname = lib32-libpulse-git
+
