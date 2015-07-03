@@ -1,0 +1,20 @@
+pkgbase = ocaml-custom_printf
+	pkgdesc = Extension for printf format strings
+	pkgver = 112.24.00
+	pkgrel = 1
+	url = https://github.com/janestreet/custom_printf
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-pa_ounit
+	depends = ocaml-sexplib
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.24/files/custom_printf-112.24.tar.gz
+	md5sums = cfee86dc1876a0d89e01612164c28aa8
+
+pkgname = ocaml-custom_printf
+
