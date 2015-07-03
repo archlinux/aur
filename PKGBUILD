@@ -1,6 +1,6 @@
 pkgname=python-slixmpp-git
 _pkgbase=slixmpp
-pkgver=r1795.225e07e
+pkgver=r1873.d0ad257
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)"
 arch=(any)
@@ -9,6 +9,7 @@ license=('MIT')
 depends=('python>=3.4' 'python-aiodns')
 provides=('python-slixmpp')
 makedepends=('git')
+optdepends=('cython')
 options=(!emptydirs)
 
 source="git://git.poez.io/slixmpp"
