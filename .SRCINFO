@@ -1,0 +1,18 @@
+pkgbase = symphony
+	pkgdesc = A musical top down shooter
+	pkgver = 2014.07.15
+	pkgrel = 1
+	epoch = 1405375200
+	url = http://www.symphonygame.com/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	makedepends = unzip
+	depends = sdl2
+	depends = libfmod
+	conflicts = symphony-nomusic
+	source = hib://Symphony-Linux-2014-07-15.sh
+	sha512sums = c8e193db4fa7d1976f5bf40753320e733ab2b17473b9d3d980edd0533fe88fecaf1d36d35f4ff58aa223409fc86fc2f3f86a1f4137a91d32a3648d86e739b09b
+
+pkgname = symphony
+
