@@ -1,0 +1,17 @@
+pkgbase = ocaml-herelib
+	pkgdesc = OCaml syntax extension for inserting the current location
+	pkgver = 112.35.00
+	pkgrel = 1
+	url = https://github.com/janestreet/herelib
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/herelib-112.35.00.tar.gz
+	md5sums = b534bc00f643b664135346e6b8d69da0
+
+pkgname = ocaml-herelib
+
