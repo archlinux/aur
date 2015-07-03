@@ -9,7 +9,7 @@ url="https://www.atlassian.com/software/confluence"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('java-runtime-jre=8')
-optdepends=('mysql-connector: connect to MySQL'
+optdepends=('mysql-connector-java: connect to MySQL'
             'libcups: used by bin/config.sh'
             'fontconfig: used by bin/config.sh')
 backup=('etc/conf.d/confluence'
