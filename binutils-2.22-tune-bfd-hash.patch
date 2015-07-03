@@ -1,0 +1,19 @@
+commit a8c9fe1ae3d7d90f0d5f0cd6b81a58f25b429255
+Author: Bertram Felgenhauer <int-e@gmx.de>
+Date:   Fri May 16 22:45:20 2008 +0200
+
+    tune bfd hash to use less memory. it's still fast.
+
+diff --git a/bfd/hash.c b/bfd/hash.c
+index 5edccac..90b5069 100644
+--- a/bfd/hash.c
++++ b/bfd/hash.c
+@@ -299,7 +299,7 @@ SUBSUBSECTION
+ */
+ 
+ /* The default number of entries to use when creating a hash table.  */
+-#define DEFAULT_SIZE 4051
++#define DEFAULT_SIZE 31
+ 
+ /* The following function returns a nearest prime number which is
+    greater than N, and near a power of two.  Copied from libiberty.
