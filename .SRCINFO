@@ -1,0 +1,16 @@
+pkgbase = ocp-build
+	pkgdesc = A build system for OCaml applications
+	pkgver = 1.99.9_beta
+	pkgrel = 1
+	url = http://www.typerex.org/ocp-build.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ocaml
+	source = http://www.typerex.org/pub/ocp-build/ocp-build.1.99.9-beta.tar.gz
+	source = destdir.patch
+	md5sums = 756bfe6337160693ec52119b400a12c2
+	md5sums = 5693506e95d1eff4decdbfaa8fa0e18f
+
+pkgname = ocp-build
+
