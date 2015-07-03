@@ -1,6 +1,6 @@
 pkgbase = perl-www-youtube-download
 	pkgdesc = Very simple YouTube video download interface
-	pkgver = 0.57
+	pkgver = 0.58
 	pkgrel = 1
 	url = https://metacpan.org/release/WWW-YouTube-Download
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = perl-www-youtube-download
 	depends = perl-uri
 	depends = perl-xml-treepp
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/WWW-YouTube-Download-0.57.tar.gz
-	sha256sums = d7468c8ee784377ae856865e8b6c97f7932be34b7f62355f8b4ec03e5142c781
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/WWW-YouTube-Download-0.58.tar.gz
+	sha256sums = d2064a6eb528becbff0a9eadd2878930d0a7749448296753958988f9f5436cd6
 
 pkgname = perl-www-youtube-download
 
