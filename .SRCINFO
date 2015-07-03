@@ -1,0 +1,13 @@
+pkgbase = mpreal-hg
+	pkgdesc = Multiple precision floating point (MPFR) arithmetic library for C++
+	pkgver = r112.248da9fd5d83
+	pkgrel = 1
+	url = http://www.holoborodko.com/pavel/mpfr/
+	arch = any
+	license = GPL3
+	depends = mpfr
+	source = mpreal::hg+https://bitbucket.org/advanpix/mpreal
+	sha512sums = SKIP
+
+pkgname = mpreal-hg
+
