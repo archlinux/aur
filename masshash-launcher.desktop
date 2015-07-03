@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MassHash
+Comment=Set of file hashing tools
+Exec=masshash-launcher
+Icon=masshash-launcher
+Terminal=false
+Type=Application
+StartupNotify=true

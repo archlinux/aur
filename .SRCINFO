@@ -1,0 +1,22 @@
+pkgbase = masshash
+	pkgdesc = A set of file hashing tools (cli & gtk+ gui)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://jdleicher.github.io/MassHash
+	arch = any
+	license = GPL3
+	source = https://github.com/jdleicher/MassHash/archive/1.0.1.tar.gz
+	source = masshash-launcher.desktop
+	md5sums = c1dcf72a7316b230c495d2c70b8a4860
+	md5sums = 5dd1c93f1e636c24fe1d9d42eeaf0568
+
+pkgname = masshash
+	depends = python
+
+pkgname = masshash-launcher
+	install = masshash-launcher.install
+	depends = masshash
+	depends = python-gobject
+	depends = gtk3
+	depends = hicolor-icon-theme
+
