@@ -1,0 +1,13 @@
+pkgbase = unibilium
+	pkgdesc = a terminfo parsing library
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/mauke/unibilium/
+	arch = x86_64
+	arch = i686
+	license = LGPLv3
+	source = https://github.com/mauke/unibilium/archive/v1.1.4.tar.gz
+	md5sums = 89c1e26f846b394065dd1287ef07b07a
+
+pkgname = unibilium
+
