@@ -1,6 +1,6 @@
 pkgbase = ipxe-git
 	pkgdesc = iPXE open source boot firmware - git checkout
-	pkgver = 1.0.0.r1947.gd8a618e
+	pkgver = 1.0.0.r1952.g38afcc5
 	pkgrel = 1
 	url = http://www.ipxe.org/
 	install = ipxe.install

@@ -1,11 +1,11 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r1947.gd8a618e
+pkgver=1.0.0.r1952.g38afcc5
 pkgrel=1
-pkgdesc="iPXE open source boot firmware - git checkout"
+pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
-url="http://www.ipxe.org/"
+url='http://www.ipxe.org/'
 license=('GPL')
 makedepends=('git' 'syslinux' 'libisoburn' 'mtools' 'xz')
 provides=('ipxe')
@@ -25,9 +25,14 @@ pkgver() {
 	cd ipxe/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
