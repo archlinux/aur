@@ -1,0 +1,15 @@
+pkgbase = pdf2book
+	pkgdesc = Rearranges the pages in a PDF to be printed as a book (or booklet). Print double-sided in "short-edge" mode.
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.documentroot.net/linux/linux-buecher-broschueren-drucken
+	arch = any
+	license = custom
+	depends = psutils
+	source = pdf2book
+	source = LICENSE
+	sha512sums = 49f32407f6511cac4070ec07259d2c25622b7856d29b3fb9c6de697f79df0df6b111cde2e4fe485869603299690f08493b926a378ffd9e00bd82a76f17bab89c
+	sha512sums = dc2e70c3e8bc5d135b694bad786258ef29437d23ce5919039ae5848a0aa29b0a336d1a501f58e348202b47cf031081d2a3ed391b17532d24f9b8a05008c60a17
+
+pkgname = pdf2book
+
