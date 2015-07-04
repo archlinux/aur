@@ -5,7 +5,7 @@
 
 _pkgname=qt5-quickcontrols
 pkgname=$_pkgname-git
-pkgver=v5.5.0.rc1.9.gd48cd2c
+pkgver=v5.5.0.11.g56dfb59
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtQuick)"
 arch=("i686" "x86_64")
