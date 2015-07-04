@@ -5,9 +5,9 @@
 
 pkgbase=linux-grsec-lts
 _srcname=linux-3.14
-_pkgver=3.14.45
+_pkgver=3.14.46
 _grsecver=3.1
-_timestamp=201506232103
+_timestamp=201506300711
 _grsec_patch="grsecurity-$_grsecver-$_pkgver-$_timestamp.patch"
 pkgver=$_pkgver.$_timestamp
 pkgrel=1
@@ -31,12 +31,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         '0006-genksyms-fix-typeof-handling.patch'
+        'gcc5_buildfixes.diff'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            'a652bc01594f6cea4885ca55c6a6b8b19289ee7c05f927c885411537d70cd7af'
+            '06bda2457a41d28c7b782739e85bd9074b29cb2bf28fd9d18a0b797c958175ad'
             'SKIP'
-            'fe8e9132ff7d6c5234b63460ba0505d05f19a4cc35b440136f57af6bf2a98eb8'
+            '941899472dde0238f742977b2d088192819514a55e9940b15def6fc2fc815876'
             'SKIP'
             '6652a150cdedc8e0fe972a9484cd5deda88c0e6a3e6cb0f30b9e51bd19486a13'
             'ad8b0de3bcbb00d1ffc120094319793454f841ec4d448b9336fb605f19b01707'
@@ -45,7 +46,8 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7')
+            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
+            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -59,6 +61,12 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${_pkgver}"
+
+  # buildfixes for gcc5
+  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
+  # https://lkml.org/lkml/2014/11/9/27
+  # https://lkml.org/lkml/2014/12/14/55
+  patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
