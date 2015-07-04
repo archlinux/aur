@@ -1,6 +1,6 @@
 pkgbase = private-internet-access-vpn
 	pkgdesc = Installs VPN profiles for Private Internet Access Service
-	pkgver = 1.5
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://www.privateinternetaccess.com/
 	arch = any
@@ -10,16 +10,17 @@ pkgbase = private-internet-access-vpn
 	optdepends = connman: Enables PIA for Connman
 	optdepends = openvpn: Allows running configurations from command-line
 	noextract = openvpn.zip
+	noextract = pia.8.gz
 	source = https://www.privateinternetaccess.com/openvpn/openvpn.zip
 	source = https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh
 	source = source.tar.gz
-	source = pia
 	source = pia.8.gz
+	source = git+https://github.com/flamusdiu/python-pia.git#tag=v2.0
 	sha256sums = c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92
 	sha256sums = 6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b
-	sha256sums = 0ee7b31d6a36379adbe402b3db565ce95111443d6d2fd0e6a3ccd4d8a39681c7
-	sha256sums = 9dc895351f55f744329a12a43a300b76dd9cabfa45f9fd0450a4329a09c6930d
-	sha256sums = 55c0935a10a4d036a20fdbe7c690fd1e454802418d4a3d88c4454b99a3260693
+	sha256sums = 604fec9bb019a79c582cf581bac960109cea87bf0a5d7dc242fe8210efbe9cd5
+	sha256sums = f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab
+	sha256sums = SKIP
 
 pkgname = private-internet-access-vpn
 

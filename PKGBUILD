@@ -1,6 +1,6 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=1.5
+pkgver=2.0
 pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
@@ -12,17 +12,19 @@ optdepends=('networkmanager: Enables PIA for Network Manager'
             'openvpn: Allows running configurations from command-line')
 sha256sums=('c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92'
             '6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b'
-            '0ee7b31d6a36379adbe402b3db565ce95111443d6d2fd0e6a3ccd4d8a39681c7'
-            '9dc895351f55f744329a12a43a300b76dd9cabfa45f9fd0450a4329a09c6930d'
-            '55c0935a10a4d036a20fdbe7c690fd1e454802418d4a3d88c4454b99a3260693')
+            '604fec9bb019a79c582cf581bac960109cea87bf0a5d7dc242fe8210efbe9cd5'
+            'f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab'
+            'SKIP')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
         "https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh"
-		"source.tar.gz"
-		"pia"
-		"pia.8.gz")
+	"source.tar.gz"
+	"pia.8.gz"
+	"git+https://github.com/flamusdiu/python-pia.git#tag=v2.0")
 		
-noextract=("openvpn.zip")
+noextract=("openvpn.zip"
+           "pia.8.gz")
+
 
 prepare() {
   cd "${srcdir}"
@@ -71,6 +73,8 @@ package() {
 
   install -Dm 600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
   install -m 755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
-  install -m 755 pia "${pkgdir}/usr/bin"
   install -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8"
+
+  cd "python-pia"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
