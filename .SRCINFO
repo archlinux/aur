@@ -1,0 +1,18 @@
+pkgbase = capstone-git
+	pkgdesc = A lightweight multi-platform, multi-architecture disassembly framework.
+	pkgver = 20150622.2353.a5540d8
+	pkgrel = 1
+	url = http://www.capstone-engine.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	optdepends = python: for python3 bindings
+	optdepends = python2: for python2 bindings
+	provides = capstone
+	conflicts = capstone
+	source = capstone-git::git://github.com/aquynh/capstone.git#branch=next
+	md5sums = SKIP
+
+pkgname = capstone-git
+
