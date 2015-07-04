@@ -1,7 +1,7 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nccmp
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="nccmp compares two NetCDF files bitwise or with a user defined tolerance"
 arch=(i686 x86_64)
 url="http://nccmp.sourceforge.net/"
@@ -13,7 +13,7 @@ md5sums=('d75a34542c5665999d611bd95ab7fdee')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --program-transform-name='s/info/desc/'
   make
 }
 
