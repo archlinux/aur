@@ -1,0 +1,40 @@
+pkgbase = ros-indigo-camera1394
+	pkgdesc = ROS - ROS driver for devices supporting the IEEE 1394 Digital Camera (IIDC) protocol.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://ros.org/wiki/camera1394
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-diagnostic-updater
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-camera-info-manager
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-driver-base
+	makedepends = boost
+	makedepends = libdc1394
+	depends = ros-indigo-tf
+	depends = ros-indigo-diagnostic-updater
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-camera-info-manager
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = boost
+	depends = libdc1394
+	source = camera1394::git+https://github.com/ros-drivers-gbp/camera1394-release.git#tag=release/indigo/camera1394/1.10.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-camera1394
+
