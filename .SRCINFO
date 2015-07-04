@@ -1,0 +1,13 @@
+pkgbase = xcursor-chameleon-skyblue
+	pkgdesc = Chameleon X Cursor Theme (skyblue flavour)
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://www.kde-look.org/content/show.php?content=38459
+	arch = any
+	license = GPL
+	depends = libxcursor
+	source = http://www.egregorion.net/works/chameleon/Chameleon-SkyBlue-0.5.tar.bz2
+	md5sums = 419dedab04bca3a729e14083710b6810
+
+pkgname = xcursor-chameleon-skyblue
+
