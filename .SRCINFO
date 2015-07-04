@@ -1,0 +1,21 @@
+pkgbase = kmod-git
+	pkgdesc = interface to kernel module operations
+	pkgver = 19.33
+	pkgrel = 1
+	url = http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gtk-doc
+	depends = glibc
+	depends = zlib
+	provides = kmod=19.33
+	conflicts = kmod
+	source = git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+	source = depmod-search.conf
+	md5sums = SKIP
+	md5sums = 4b8cbcbc54b9029c99fd730e257d4436
+
+pkgname = kmod-git
+
