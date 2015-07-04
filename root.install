@@ -1,0 +1,25 @@
+post_install() {
+  update-desktop-database >/dev/null
+
+  update-mime-database /usr/share/mime >/dev/null
+
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+pre_remove() {
+  # leave for pre 5.30.03-3
+  if [[ $(vercmp $1 5.30.03-3) == -1 ]]; then
+    cat etc/ld.so.conf | grep -v '/usr/lib/root' >/tmp/.pacroot
+    mv /tmp/.pacroot etc/ld.so.conf
+    chmod 644 etc/ld.so.conf
+    sbin/ldconfig -r .
+  fi
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
