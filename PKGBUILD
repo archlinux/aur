@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-luigi
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
@@ -16,8 +16,8 @@ url="https://github.com/spotify/luigi"
 license=('Apache')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/l/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('a147bba0bb1999b5856f4910bf15a9c0')
-sha256sums=('a43d81514a0fcaa057f23c223066f2e2256cc361d6d0cc56c86f02aac84692c9')
+md5sums=('948a6574e4d4e1d1d8b8a355ca0cdaf7')
+sha256sums=('69f0e75c305da8c8de4a538011b80136ee4f5e3d449f4de9b17d94b3cc9b7f7e')
 provides=('luigi' 'python2-luigi')
 conflicts=('luigi')
 
