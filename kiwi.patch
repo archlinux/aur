@@ -1,0 +1,194 @@
+diff --git a/config.example.js b/config.example.js
+index d1f21e7..ad64d34 100644
+--- a/config.example.js
++++ b/config.example.js
+@@ -6,7 +6,7 @@ conf.group = "";
+ 
+ 
+ // Log file location
+-conf.log = "kiwi.log";
++conf.log = "/var/log/kiwi/kiwiirc.log";
+ 
+ 
+ 
+@@ -53,7 +53,7 @@ conf.identd = {
+ 
+ 
+ // Where the client files are
+-conf.public_http = "client/";
++conf.public_http = "/var/lib/kiwiirc/";
+ 
+ // Transports available to the client.
+ // Behind an Apache reverse proxy? Uncomment the below - Apache does not support websockets!
+@@ -105,7 +105,7 @@ conf.client_plugins = [
+ 
+ 
+ // Directory to find the server modules
+-conf.module_dir = "../server_modules/";
++conf.module_dir = "/usr/lib/kiwiirc/server_modules/";
+ 
+ // Which modules to load
+ conf.modules = [];
+diff --git a/kiwi b/kiwi
+index 3ac269e..dca2dcc 100755
+--- a/kiwi
++++ b/kiwi
+@@ -1,11 +1,6 @@
+ #!/bin/sh
+-basedir=`dirname "$0"`
+ 
+-case `uname` in
+-    *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
+-esac
+-
+-node $basedir/server/helpers/launcher.js "$@"
++node /usr/share/kiwiirc/server/helpers/launcher.js "$@"
+ ret=$?
+ 
+ exit $ret
+diff --git a/server/helpers/launcher.js b/server/helpers/launcher.js
+index b4d8ec3..18e74f2 100644
+--- a/server/helpers/launcher.js
++++ b/server/helpers/launcher.js
+@@ -1,5 +1,5 @@
+ var kiwi_app = '../kiwi.js';
+-var pidfile = '../../kiwiirc.pid';
++var pidfile = '/run/kiwiirc/kiwiirc.pid';
+ var pidfile_arg;
+ 
+ // Check if a pidfile has been set as an argument
+@@ -16,6 +16,13 @@ if (process.argv.indexOf('-p') > -1) {
+     }
+ }
+ 
++try {
++    process.setgid('kiwiirc');
++    process.setuid('kiwiirc');
++} catch (e) {
++    console.error('Cannot switch to user kiwiirc. Try running as root.')
++    process.exit();
++}
+ 
+ var daemon = require('daemonize2').setup({
+     main: kiwi_app,
+diff --git a/server/httphandler.js b/server/httphandler.js
+index d89ecad..5c9b78c 100644
+--- a/server/httphandler.js
++++ b/server/httphandler.js
+@@ -14,7 +14,7 @@ var cached_available_locales = null;
+ 
+ 
+ var HttpHandler = function (config) {
+-    var public_http = config.public_http || 'client/';
++    var public_http = config.public_http || global.config.public_http  || 'client/';
+     this.file_server = new node_static.Server(public_http);
+ 
+     if (!cached_available_locales) {
+diff --git a/server/settingsgenerator.js b/server/settingsgenerator.js
+index 6f70be1..f420819 100644
+--- a/server/settingsgenerator.js
++++ b/server/settingsgenerator.js
+@@ -112,7 +112,7 @@ function addThemes() {
+     return (config.get().client_themes || ['relaxed']).reduce(function (prom, theme) {
+         return prom.then(function (themes) {
+             return new Promise(function readThemeInfo(resolve, reject) {
+-                fs.readFile(__dirname + '/../client/assets/themes/' + theme.toLowerCase() + '/theme.json', function (err, theme_json) {
++                fs.readFile(global.config.public_http + '/assets/themes/' + theme.toLowerCase() + '/theme.json', function (err, theme_json) {
+                     var theme;
+                     if (err) {
+                         return reject(err);
+@@ -134,7 +134,7 @@ function addThemes() {
+ 
+ function addTranslations() {
+     return new Promise(function (resolve, reject) {
+-        fs.readFile(__dirname + '/../client/src/translations/translations.json', function readTranslations(err, translations) {
++        fs.readFile(global.config.public_http + '/src/translations/translations.json', function readTranslations(err, translations) {
+             if (err) {
+                 return reject(err);
+             }
+@@ -145,7 +145,7 @@ function addTranslations() {
+                 return reject(e);
+             }
+ 
+-            fs.readdir(__dirname + '/../client/src/translations/', function readTranslationFile(err, pofiles) {
++            fs.readdir(global.config.public_http + '/src/translations/', function readTranslationFile(err, pofiles) {
+                 var trans = [];
+ 
+                 if (err) {
+diff --git a/server_modules/control.js b/server_modules/control.js
+index c1e5517..3fb3ef7 100644
+--- a/server_modules/control.js
++++ b/server_modules/control.js
+@@ -5,8 +5,8 @@
+  */
+ 
+ var net                = require('net'),
+-    kiwiModules        = require('../server/modules'),
+-    ControlInterface   = require('../server/controlinterface.js'),
++    kiwiModules        = require('/usr/share/kiwiirc/server/modules'),
++    ControlInterface   = require('/usr/share/kiwiirc/server/controlinterface.js'),
+     _                  = require('lodash'),
+     winston            = require('winston');
+ 
+diff --git a/server_modules/dnsbl.js b/server_modules/dnsbl.js
+index 1a2c718..54a4300 100644
+--- a/server_modules/dnsbl.js
++++ b/server_modules/dnsbl.js
+@@ -5,7 +5,7 @@
+  */
+ 
+ var dns = require('dns'),
+-    kiwiModules = require('../server/modules');
++    kiwiModules = require('/usr/share/kiwiirc/server/modules');
+ 
+ 
+ // The available DNS zones to check against
+diff --git a/server_modules/example.js b/server_modules/example.js
+index d880c19..575dc5f 100644
+--- a/server_modules/example.js
++++ b/server_modules/example.js
+@@ -1,4 +1,4 @@
+-var kiwiModules = require('../server/modules');
++var kiwiModules = require('/usr/share/kiwiirc/server/modules');
+ 
+ var module = new kiwiModules.Module('Example Module');
+ 
+diff --git a/server_modules/proxychecker.js b/server_modules/proxychecker.js
+index 660defc..7fb96e6 100644
+--- a/server_modules/proxychecker.js
++++ b/server_modules/proxychecker.js
+@@ -5,7 +5,7 @@
+  */
+ 
+ var util = require('util'),
+-    kiwiModules = require('../server/modules');
++    kiwiModules = require('/usr/share/kiwiirc/server/modules');
+ 
+ 
+ var module = new kiwiModules.Module('proxychecker');
+diff --git a/server_modules/stats.js b/server_modules/stats.js
+index 736ba17..a9de440 100644
+--- a/server_modules/stats.js
++++ b/server_modules/stats.js
+@@ -4,7 +4,7 @@
+  * Retreive stats for internal kiwi events. Handy for graphing
+  */
+ 
+-var kiwiModules = require('../server/modules'),
++var kiwiModules = require('/usr/share/kiwiirc/server/modules'),
+     fs = require('fs');
+ 
+ 
+diff --git a/server_modules/web_agent_debugger.js b/server_modules/web_agent_debugger.js
+index 2358508..ef85e9f 100644
+--- a/server_modules/web_agent_debugger.js
++++ b/server_modules/web_agent_debugger.js
+@@ -6,7 +6,7 @@
+  */
+ 
+ 
+-var kiwiModules = require('../server/modules'),
++var kiwiModules = require('/usr/share/kiwiirc/server/modules'),
+ 	agent = require('webkit-devtools-agent');
+ 
+ 
