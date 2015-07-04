@@ -1,0 +1,18 @@
+pkgbase = zsxd-git
+	pkgdesc = Free and opensource, amateur Zelda game with humoristic characters.
+	pkgver = 563.c01c249
+	pkgrel = 1
+	url = http://www.zelda-solarus.com/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = zip
+	depends = solarus-git
+	provides = zsxd
+	conflicts = zsxd
+	source = zsxd-git::git://github.com/christopho/zsxd.git#branch=master
+	md5sums = SKIP
+
+pkgname = zsxd-git
+
