@@ -1,0 +1,66 @@
+--- configure.orig	2013-05-31 10:03:41.211303192 +0200
++++ configure	2013-05-31 10:04:37.696190014 +0200
+@@ -18940,62 +18940,9 @@
+   jasper_ok=0
+ fi
+ 
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for opj_image_create in -lopenjpeg" >&5
+-$as_echo_n "checking for opj_image_create in -lopenjpeg... " >&6; }
+-if test "${ac_cv_lib_openjpeg_opj_image_create+set}" = set; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lopenjpeg  $LIBS"
+-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char opj_image_create ();
+-int
+-main ()
+-{
+-return opj_image_create ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_lib_openjpeg_opj_image_create=yes
+-else
+-  ac_cv_lib_openjpeg_opj_image_create=no
+-fi
+-rm -f core conftest.err conftest.$ac_objext \
+-    conftest$ac_exeext conftest.$ac_ext
+-LIBS=$ac_check_lib_save_LIBS
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_openjpeg_opj_image_create" >&5
+-$as_echo "$ac_cv_lib_openjpeg_opj_image_create" >&6; }
+-if test "x$ac_cv_lib_openjpeg_opj_image_create" = x""yes; then :
+-  openjpeg_ok=1
+-else
+-  openjpeg_ok=0
+-fi
+-
+-
+     jpeg_ok=0
+ 
+-    # prefer openjpeg over jasper
+-	if test $openjpeg_ok -eq 1
+-	then
+-	  jpeg_ok=1
+-      LIB_OPENJPEG='-lopenjpeg -lm'
+-      LIBS="$LIB_OPENJPEG $LIBS"
+-
+-$as_echo "#define HAVE_LIBOPENJPEG 1" >>confdefs.h
+-
+-
+-    elif test $jasper_ok -eq 1
++    if test $jasper_ok -eq 1
+     then
+       jpeg_ok=1
+       LIB_JASPER='-ljasper'
