@@ -1,0 +1,15 @@
+pkgbase = pacmirror-git
+	pkgdesc = Update the pacman mirror list using reflector
+	pkgver = auto
+	pkgrel = 1
+	url = https://github.com/awarrenlove/pacmirror
+	arch = any
+	license = MIT
+	depends = python3
+	depends = reflector
+	provides = pacmirror
+	source = git://github.com/awarrenlove/pacmirror.git
+	md5sums = SKIP
+
+pkgname = pacmirror-git
+
