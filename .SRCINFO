@@ -1,0 +1,16 @@
+pkgbase = neotool
+	pkgdesc = Provide a friendly GUI frontend to some common management tasks for Openmoko smartphones.
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://wiki.openmoko.org/wiki/NeoTool
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb
+	depends = dfu-util
+	depends = zenity
+	source = http://users.on.net/~antisol/neotool
+	md5sums = fe9361a3d42142adc54e9137cb7af6ac
+
+pkgname = neotool
+
