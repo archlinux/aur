@@ -1,0 +1,19 @@
+pkgbase = gdx-setup
+	pkgdesc = Libgdx project setup
+	pkgver = 20150704
+	pkgrel = 11
+	url = http://libgdx.badlogicgames.com
+	arch = any
+	license = APACHE2
+	depends = java-environment
+	source = http://libgdx.badlogicgames.com/nightlies/dist/gdx-setup.jar
+	source = gdx-setup
+	source = gdx-setup.desktop
+	source = http://libgdx.badlogicgames.com/img/features_hover.png
+	md5sums = SKIP
+	md5sums = 2c7c983f8fa177e78a7e19cf94236899
+	md5sums = ff0443d3594a1ae79ab59ef2fa41005b
+	md5sums = a391aeb480342564c076cd9217536884
+
+pkgname = gdx-setup
+

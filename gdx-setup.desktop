@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Libgdx Project Setup
+GenericName=Libgdx Project Setup
+Exec=gdx-setup %U
+Terminal=false
+Icon=gdx-setup
+Type=Application
+Categories=Development;
