@@ -1,0 +1,14 @@
+pkgbase = mkpassword-git
+	pkgdesc = A simple secure password generator.
+	pkgver = 2.0.1
+	pkgrel = 2
+	url = http://dev.0x7be.de/mkpassword.html
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python>=3.0
+	source = git://github.com/dsohler/mkpassword.git#branch=master
+	md5sums = SKIP
+
+pkgname = mkpassword-git
+
