@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 _ecmwfname=bufrdc
 pkgname=libbufr-ecmwf
-pkgver=000403
+pkgver=000405
 pkgrel=1
 pkgdesc="ECMWF WMO FM-94 BUFR encode/decode library"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=()
 makedepends=(rsync gcc-fortran)
 options=('staticlibs')
 source=(https://software.ecmwf.int/wiki/download/attachments/35752466/${_ecmwfname}_${pkgver}.tar.gz)
-md5sums=('a64b82478cd03ab41f3a029ff5ce1dcb')
+md5sums=('bd5feb691bad173bd695b1a9c0386ff2')
 
 build() {
   cd ${srcdir}/${_ecmwfname}_${pkgver}
