@@ -1,0 +1,30 @@
+pkgbase = pandoc-static
+	pkgdesc = Conversion between markup formats (no Haskell libraries)
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://johnmacfarlane.net/pandoc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	makedepends = sh
+	makedepends = cabal-install
+	makedepends = alex
+	makedepends = happy
+	depends = icu>=54
+	depends = icu<55
+	depends = gmp
+	depends = libffi
+	depends = zlib
+	optdepends = texlive-most: for PDF creation
+	provides = pandoc
+	replaces = pandoc
+	options = strip
+	options = !makeflags
+	options = !distcc
+	options = !emptydirs
+	source = https://repo.parabolagnulinux.org/other/pandoc-static/pandoc-static-1.13.1.tar.xz
+	md5sums = dd2667b233b5f97b2841ae09895c2ac2
+
+pkgname = pandoc-static
+
