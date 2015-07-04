@@ -1,0 +1,18 @@
+pkgbase = zsdx-git
+	pkgdesc = A free 2D Zelda fangame.
+	pkgver = 1799.29ffb12
+	pkgrel = 1
+	url = http://www.zelda-solarus.com/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = zip
+	depends = solarus-git
+	provides = zsdx
+	conflicts = zsdx
+	source = zsdx-git::git://github.com/christopho/zsdx.git#branch=master
+	md5sums = SKIP
+
+pkgname = zsdx-git
+
