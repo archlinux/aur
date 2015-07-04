@@ -1,14 +1,13 @@
 # Maintainer: Ian Hernandez <ihernandezs@openmailbox.org>
 
 pkgname=simple-text
-pkgver=0.9.5
-pkgrel=2
-epoch=1
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A not so simple text and code editor written in Vala (Still in development)"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/badwolfie/$pkgname"
-depends=('gtk3>=3.16' 'gtksourceview3' 'libgee' 'vte3' 'dconf')
+depends=('gtk3' 'gtksourceview3' 'libgee' 'vte3' 'dconf')
 makedepends=('vala' 'git' 'intltool')
 options=('!emptydirs')
 source=("$pkgname-$pkgver::git+$url.git")
