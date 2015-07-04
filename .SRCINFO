@@ -10,7 +10,7 @@ pkgbase = perl-rinci
 	depends = perl-sah
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Rinci-1.1.77.tar.gz
-	sha512sums = 92ce6ad0ee3ebf79eec348acb25d897cd520838437e996c95843e7b984edad269681449240e3e72e6fba0587516334c8042b3c4c3ed77ef6761be407335170ed
+	sha512sums = 859555c9727cef72422d10f5cd4d9418dd8c1720859ed6df4d5d752105ee4f59d13e20539cdd629a3a36906968c66c9867800e9c2d61013a596ad736ca85ee05
 
 pkgname = perl-rinci
 
