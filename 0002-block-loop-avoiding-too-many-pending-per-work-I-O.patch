@@ -1,0 +1,52 @@
+From 02a6b08b2706501fb0fe6ff2df2f7d8377f2f69b Mon Sep 17 00:00:00 2001
+From: Ming Lei <ming.lei@canonical.com>
+Date: Tue, 5 May 2015 19:49:55 +0800
+Subject: [PATCH 2/2] block: loop: avoiding too many pending per work I/O
+
+If there are too many pending per work I/O, too many
+high priority work thread can be generated so that
+system performance can be effected.
+
+This patch limits the max_active parameter of workqueue as 16.
+
+This patch fixes Fedora 22 live booting performance
+regression when it is booted from squashfs over dm
+based on loop, and looks the following reasons are
+related with the problem:
+
+- not like other filesyststems(such as ext4), squashfs
+is a bit special, and I observed that increasing I/O jobs
+to access file in squashfs only improve I/O performance a
+little, but it can make big difference for ext4
+
+- nested loop: both squashfs.img and ext3fs.img are mounted
+as loop block, and ext3fs.img is inside the squashfs
+
+- during booting, lots of tasks may run concurrently
+
+Fixes: b5dd2f6047ca108001328aac0e8588edd15f1778
+Cc: stable@vger.kernel.org (v4.0)
+Cc: Justin M. Forbes <jforbes@fedoraproject.org>
+Signed-off-by: Ming Lei <ming.lei@canonical.com>
+Acked-by: Tejun Heo <tj@kernel.org>
+Signed-off-by: Jens Axboe <axboe@fb.com>
+---
+ drivers/block/loop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/block/loop.c b/drivers/block/loop.c
+index fec06d5..daaaf70 100644
+--- a/drivers/block/loop.c
++++ b/drivers/block/loop.c
+@@ -777,7 +777,7 @@ static int loop_set_fd(struct loop_device *lo, fmode_t mode,
+ 		goto out_putf;
+ 	error = -ENOMEM;
+ 	lo->wq = alloc_workqueue("kloopd%d",
+-			WQ_MEM_RECLAIM | WQ_HIGHPRI | WQ_UNBOUND, 0,
++			WQ_MEM_RECLAIM | WQ_HIGHPRI | WQ_UNBOUND, 16,
+ 			lo->lo_number);
+ 	if (!lo->wq)
+ 		goto out_putf;
+-- 
+2.4.5
+
