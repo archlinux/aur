@@ -1,0 +1,15 @@
+pkgbase = maliit-framework-git
+	pkgdesc = Maliit Input Methods - Framework
+	pkgver = 20120704
+	pkgrel = 1
+	url = http://maliit.org
+	install = maliit-framework.install
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = qt
+	provides = maliit-framework
+	conflicts = maliit-framework
+
+pkgname = maliit-framework-git
+
