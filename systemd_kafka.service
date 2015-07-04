@@ -1,0 +1,34 @@
+[Unit]
+Description=Kafka publish-subscribe messaging system
+Requires=zookeeper@kafka.service
+After=network.target zookeeper@kafka.service
+
+[Service]
+User=kafka
+Group=kafka
+SyslogIdentifier=kafka
+ExecStart=/usr/bin/java \
+  -Xmx1G -Xms1G -server \
+  -XX:+UseCompressedOops \
+  -XX:+UseParNewGC \
+  -XX:+UseConcMarkSweepGC \
+  -XX:+CMSClassUnloadingEnabled \
+  -XX:+CMSScavengeBeforeRemark \
+  -XX:+DisableExplicitGC \
+  -Djava.awt.headless=true \
+  -Xloggc:/var/log/kafka/kafkaServer-gc.log \
+  -verbose:gc \
+  -XX:+PrintGCDetails \
+  -XX:+PrintGCDateStamps \
+  -XX:+PrintGCTimeStamps \
+  -Dcom.sun.management.jmxremote \
+  -Dcom.sun.management.jmxremote.authenticate=false \
+  -Dcom.sun.management.jmxremote.ssl=false \
+  -Dkafka.logs.dir=/var/log/kafka \
+  -Dlog4j.configuration=file:/etc/kafka/log4j.properties \
+  -cp /usr/share/java/kafka/* \
+  kafka.Kafka \
+  /etc/kafka/server.properties
+
+[Install]
+WantedBy=multi-user.target
