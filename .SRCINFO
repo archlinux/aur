@@ -1,0 +1,41 @@
+pkgbase = dwarffortress-obsidian
+	pkgdesc = A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Obsidian tileset.
+	pkgver = 0.34.11
+	pkgrel = 1
+	url = http://mayday.w.staszic.waw.pl/df.php
+	install = dwarffortress-obsidian.install
+	arch = i686
+	arch = x86_64
+	license = custom:dwarffortress
+	makedepends = unzip
+	makedepends = git
+	depends = gtk2
+	depends = glu
+	depends = sdl_image
+	depends = libsndfile
+	depends = openal
+	depends = sdl_ttf
+	depends = glew
+	provides = dwarffortress
+	conflicts = dwarffortress
+	noextract = dfg_34_11_win.zip
+	noextract = df_34_11_linux.tar.bz2
+	backup = opt/df_linux/data/init/colors.txt
+	backup = opt/df_linux/data/init/init.txt
+	backup = opt/df_linux/data/init/d_init.txt
+	backup = opt/df_linux/data/init/interface.txt
+	source = http://www.bay12games.com/dwarves/df_34_11_linux.tar.bz2
+	source = obsidian.zip::http://dffd.wimbli.com/download.php?id=7728&f=%5B16x16%5D+Obsidian+%28v.0.8%29.zip
+	source = git://github.com/svenstaro/dwarf_fortress_unfuck.git
+	source = dwarffortress
+	source = dwarffortress.desktop
+	source = dwarffortress.png
+	md5sums = 33e26a93e5914f7545fa1aaa53706eeb
+	md5sums = c3556f60ab81e2d4d586184ec7605cd6
+	md5sums = SKIP
+	md5sums = c19aacc31e8df354827db352fecfd200
+	md5sums = c8984d1eea6e409ecf339d6ee9e91e42
+	md5sums = b1d51f82400073af9bb179e34a9209d0
+
+pkgname = dwarffortress-obsidian
+
