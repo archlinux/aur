@@ -22,8 +22,7 @@ _filename=firefox-${pkgver}.pl.linux-${CARCH}
 source=(aurora-pl.desktop
 	"${_baseurl}/${_filename}.tar.bz2")
 _md5=$(wget -qO- ${_baseurl}/${_filename}.checksums | awk -F' ' '$2 == "md5" && $4 == "'"${_filename}.tar.bz2"'" { print $1 } ')
-md5sums=('06f2fd52506049264b0adeffea479934'
-	 '997312a2209229748b0e3518cf51becb'
+md5sums=('663176661ce817e40b4217c5e107df42'
          ${_md5})
 package()
 {
@@ -31,7 +30,8 @@ package()
   mv firefox firefox-aurora
   mv firefox-aurora "${pkgdir}"/opt/
   ln -s /opt/firefox-aurora/firefox "${pkgdir}"/usr/bin/firefox-aurora
-  install -m644 "${startdir}"/{aurora-pl.desktop} "${pkgdir}"/usr/share/applications/
+  install -m644 "${startdir}"/aurora-pl.desktop "${pkgdir}"/usr/share/applications/
   install -m644 "${pkgdir}"/opt/firefox-aurora/browser/icons/mozicon128.png "${pkgdir}"/usr/share/pixmaps/firefox-aurora-icon.png
 }
+
 
