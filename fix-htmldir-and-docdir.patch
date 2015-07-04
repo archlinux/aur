@@ -1,0 +1,25 @@
+--- src/ldap-account-manager-4.2.1/Makefile.in	2013-06-17 21:09:37.000000000 +0200
++++ Makefile.in.modified	2013-07-31 18:45:48.246058432 +0200
+@@ -24,7 +24,8 @@
+ sysconfdir=@sysconfdir@
+ localstatedir=@localstatedir@
+ mandir=@mandir@
+-htmldir=@prefix@/html
++docdir=@docdir@
++htmldir=@htmldir@
+ web_root=@WEB_ROOT@
+ 
+ srcdir=@srcdir@
+@@ -73,9 +74,9 @@
+ 		(cd $(DESTDIR)$(sysconfdir) ; $(TAR) xf -) ; \
+ 	$(LN_S) $(sysconfdir) ${LIST3} ; \
+ 	(cd $(srcdir) ; $(TAR) cf - $(LIST1)) | $(TAR) xf - ; \
+-	[ -d $(DESTDIR)$(prefix)/docs ]  ||  \
+-		$(MKDIR) -p $(DESTDIR)$(prefix)/docs  ||  exit 1 ; \
+-	(cd $(srcdir) ; $(COPY) $(DOCS) $(DESTDIR)$(prefix)/docs) ; \
++	[ -d $(DESTDIR)$(docdir) ]  ||  \
++		$(MKDIR) -p $(DESTDIR)$(docdir)  ||  exit 1 ; \
++	(cd $(srcdir) ; $(COPY) $(DOCS) $(DESTDIR)$(docdir)) ; \
+ 	$(PERL) -pi -e "s~/usr/bin/perl~$(PERL)~" \
+ 		$(DESTDIR)$(web_root)/lib/lamdaemon.pl ; \
+ 	cd $${HERE} ; \

@@ -1,0 +1,17 @@
+--- src/ldap-account-manager-4.2.1/configure.ac	2013-06-17 21:09:37.000000000 +0200
++++ configure.ac.modified	2013-07-31 18:07:19.182647332 +0200
+@@ -116,13 +116,7 @@
+ 		fi
+ 	],
+ 	[
+-# We search these paths before $PATH to find a more up-to-date/capable
+-# version of perl than the system installed one.
+-		TestPath="/opt/bin"
+-		TestPath="${TestPath}${PATH_SEPARATOR}/opt/sfw/bin"
+-		TestPath="${TestPath}${PATH_SEPARATOR}/usr/local/bin"
+-		TestPath="${TestPath}${PATH_SEPARATOR}$PATH"
+-		AC_PATH_PROGS(perl_path, perl5 perl, , $TestPath)
++		AC_PATH_PROGS(perl_path, perl5 perl)
+ 	]
+ )
+ 
