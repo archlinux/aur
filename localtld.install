@@ -1,0 +1,13 @@
+
+post_install() {
+  if ` grep -q localtld /etc/nsswitch.conf `; then
+    echo localtld is already configured
+  else
+    sed -i 's/ dns / localtld dns /' /etc/nsswitch.conf
+  fi
+}
+
+post_remove() {
+  sed -i 's/localtld//' /etc/nsswitch.conf
+}
+
