@@ -1,0 +1,17 @@
+pkgbase = ttf-roboto
+	pkgdesc = Google's Android 5 system font.
+	pkgver = 20140702
+	pkgrel = 3
+	epoch = 3
+	url = http://www.google.com/design/spec/style/typography.html#typography-roboto
+	install = ttf-roboto.install
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = RobotoTTF-20140702-3.zip::http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0B08MbvYZK1iNZGNoWmJqVEhQYTQ/RobotoTTF.zip
+	sha384sums = f9d2e69bc5ea4f91d8f30f822e67d4554a4e113936cab2fe8f21b8ed293cfc1cc6d9dc617b22f61be3377e2aaeb3b95d
+
+pkgname = ttf-roboto
+
