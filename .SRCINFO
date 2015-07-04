@@ -1,0 +1,19 @@
+pkgbase = python2-bufr
+	pkgdesc = Generic Python BUFR file reader based on ECMWF BUFR library
+	pkgver = 0.2.5
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/python-bufr/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2-numpy
+	makedepends = libbufr-ecmwf
+	depends = python2
+	options = !emptydirs
+	source = http://python-bufr.googlecode.com/files/python-bufr-0.2-5.tar.gz
+	md5sums = db8c5c5198b166e38c76aa8e78972cd1
+	sha1sums = 9bfb2f9ed5af15721506f18621ac3c57d2410500
+	sha256sums = 883f3e1aa8a2900b17c216fc2ce04154b40ee297f7bc1dbbd6794d95ad244101
+
+pkgname = python2-bufr
+
