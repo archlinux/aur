@@ -1,3 +1,13 @@
+From ef351de79cf719e538eae3a13aec7ad599f53290 Mon Sep 17 00:00:00 2001
+From: ChucklesTheBeard <ChucklesTheBeard+git@gmail.com>
+Date: Fri, 3 Jul 2015 23:53:05 -0400
+Subject: [PATCH] a
+
+---
+ Tests/Core/Meta.cs         | 2 ++
+ Tests/Core/Types/Module.cs | 4 +++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
 diff --git a/Tests/Core/Meta.cs b/Tests/Core/Meta.cs
 index f2916be..b7b5504 100644
 --- a/Tests/Core/Meta.cs
@@ -19,10 +29,10 @@ index f2916be..b7b5504 100644
          {
              Version version = CKAN.Meta.ReleaseNumber();
 diff --git a/Tests/Core/Types/Module.cs b/Tests/Core/Types/Module.cs
-index f640e77..2b00c54 100644
+index c11cd1c..2545ab7 100644
 --- a/Tests/Core/Types/Module.cs
 +++ b/Tests/Core/Types/Module.cs
-@@ -84,6 +84,7 @@ namespace Tests.Core.Types
+@@ -86,6 +86,7 @@ namespace Tests.Core.Types
          }
  
          [Test]
@@ -30,7 +40,7 @@ index f640e77..2b00c54 100644
          public void IsSpecSupported()
          {
              if (CKAN.Meta.ReleaseNumber() == null)
-@@ -111,6 +112,7 @@ namespace Tests.Core.Types
+@@ -113,6 +114,7 @@ namespace Tests.Core.Types
          }
  
          [Test]
@@ -38,10 +48,13 @@ index f640e77..2b00c54 100644
          public void FutureModule()
          {
              if (CKAN.Meta.ReleaseNumber() == null)
-@@ -146,4 +148,4 @@ namespace Tests.Core.Types
-             Assert.AreEqual("GPL-3.0", mod.license[0].ToString());
+@@ -175,4 +177,4 @@ namespace Tests.Core.Types
+             Assert.IsNull(mod.resources.repository);
          }
      }
 -}
 \ No newline at end of file
 +}
+-- 
+2.4.5
+
