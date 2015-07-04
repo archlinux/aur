@@ -1,0 +1,53 @@
+.TH mar 1 "2013-08-25" 2.0.2
+.SH NAME
+mar - An intuitive syntax mass file renamer
+
+.SH SYNOPSIS
+.B mar
+.RB [\| -h \|]
+.RB [\| -n \|]
+.RB [\| -q \|]
+.RB [\| -b \|]
+.RB [\| \-s
+.IR N \|]
+.RB [\| -v \|]
+.IR mask
+.IR files
+
+.SH DESCRIPTION
+mar is a versy simple and intuitive file renaming tool with a very easy to learn syntax.
+
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show inline parameters help
+.TP
+\fB\-n\fR, \fB\-\-no\-colors\fR
+don't use colored output. Otherwise ANSI color codes will be used.
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+don’t print status messages
+.TP
+\fB\-b\fR, \fB\-\-backup\fR
+create a CSV file containing old and new file names for easy recovery
+.TP
+\fB\-s\fR \fIN\fR, \fB\-\-start-with\fR=\fIN\fR
+by default numbering starts with 1. This sets starting number to N instead.
+.TP
+.TP
+\fB\-v\fR, \fB\-\-verboses\fR
+print additional runtime informations for debugging
+
+.SH USAGE
+\fImask\fR is a string containing every characters you want (please desist from using slashes. It MIGHT work for moving files, but I wouldn’t rely on it …) plus the string \fB%s\fR (… and right now you’ll not be able to use a literal %s, sorry). On file processing \fB%s\fR will be replaced with the current file’s number.
+
+\fIfiles\fR parameter is a list of files.
+
+.SH FULL DOCUMENTATION
+The full documentation of \fBmar\fR is available online at <http://dev.0x7be.de/mar.html>. In case of differences the documentation available online is to be looked upon as the more current version.
+
+.SH AUTHOR
+Dirk Sohler, <spam@0x7be.de>
+
+.SH SEE ALSO
+mycron(5), crontab(1)
