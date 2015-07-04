@@ -12,15 +12,19 @@ optdepends=('networkmanager: Enables PIA for Network Manager'
             'openvpn: Allows running configurations from command-line')
 sha256sums=('c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92'
             '6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b'
-            '604fec9bb019a79c582cf581bac960109cea87bf0a5d7dc242fe8210efbe9cd5'
+            '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
+            '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
+            '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
             'f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab'
             'SKIP')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
         "https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh"
-	"source.tar.gz"
+	"login-example.conf"
+	"restart.conf"
+	"vpn.sh"
 	"pia.8.gz"
-	"git+https://github.com/flamusdiu/python-pia.git#tag=v2.0")
+	"git+https://github.com/flamusdiu/python-pia.git#tag=v2.0.1")
 		
 noextract=("openvpn.zip"
            "pia.8.gz")
@@ -65,14 +69,17 @@ prepare() {
 package() {
   cd "${srcdir}"
   
-  cp -R {etc/,usr/} "${pkgdir}"
-
-  install -dm 600 "${pkgdir}/etc/openvpn/"
-  install -dm 755 "${pkgdir}/usr/bin/"
+  install -dm 755 "${pkgdir}/usr/lib/system/systemd/system-sleep"
+  install -dm 755 "${pkgdir}/usr/lib/system/openvpn@.service.d"
+  install -dm 600 "${pkgdir}/etc/openvpn"
+  install -dm 755 "${pkgdir}/etc/private-internet-access"
+  install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/usr/share/man/man8"
 
   install -Dm 600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
   install -m 755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
+  install -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
+  install -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
   install -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8"
 
   cd "python-pia"
