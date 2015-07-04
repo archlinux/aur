@@ -1,0 +1,19 @@
+post_install() {
+    getent group willie &>/dev/null || groupadd -r willie >/dev/null
+    getent passwd willie &>/dev/null || useradd -r -g willie -d / -s /bin/false -c willie willie >/dev/null
+    chown willie:willie /var/log/willie/ -R
+    systemd-tmpfiles --create willie.conf
+    true
+}
+
+post_upgrade() {
+    systemd-tmpfiles --create willie.conf
+    systemctl daemon-reload
+}
+
+post_remove() {
+    getent passwd willie &>/dev/null && userdel willie >/dev/null
+    getent group willie &>/dev/null && groupdel willie >/dev/null
+    true
+}
+    

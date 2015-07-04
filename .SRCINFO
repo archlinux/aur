@@ -1,0 +1,23 @@
+pkgbase = willie
+	pkgdesc = A modular IRC bot written in Python.
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = http://willie.dftba.net/
+	install = willie.install
+	arch = any
+	license = custom:Eiffel Forum License, version 2
+	makedepends = python-sphinx
+	makedepends = python-setuptools
+	depends = python
+	optdepends = mysql-python: bucket module
+	optdepends = python-feedparser: nws and rss modules
+	optdepends = python-pytz: remind module
+	optdepends = python-lxml: xkcd module
+	optdepends = python-pyenchant: spellchek module
+	optdepends = python-praw-git: reddit module
+	optdepends = python-pygeoip: geoip module
+	source = https://github.com/embolalia/willie/archive/v5.3.0.tar.gz
+	md5sums = b63290fb02b72e190a887ca349aed5db
+
+pkgname = willie
+
