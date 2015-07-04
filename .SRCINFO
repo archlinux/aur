@@ -1,0 +1,25 @@
+pkgbase = zfs-lts318-ck-git
+	pkgdesc = Kernel modules for the Zettabyte File System for linux-lts318-ck.
+	pkgver = 0.6.4.2_r0_g44b5ec8_3.18.17_1
+	pkgrel = 1
+	url = http://zfsonlinux.org/
+	install = zfs.install
+	arch = i686
+	arch = x86_64
+	groups = archzfs-lts318-ck-git
+	license = CDDL
+	makedepends = git
+	makedepends = linux-lts318-ck-headers=3.18.17-1
+	depends = spl-lts318-ck-git
+	depends = zfs-utils-lts318-ck-git=0.6.4.2_r0_g44b5ec8_3.18.17_1
+	depends = linux-lts318-ck=3.18.17-1
+	provides = zfs
+	provides = zfs-git
+	conflicts = zfs
+	conflicts = zfs-lts
+	replaces = zfs
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=44b5ec8f
+	md5sums = SKIP
+
+pkgname = zfs-lts318-ck-git
+
