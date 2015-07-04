@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /opt/jcryptool/JCrypTool /usr/bin/jcryptool
+}
+
+post_remove() {
+	rm /usr/bin/jcryptool
+}

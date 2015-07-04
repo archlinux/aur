@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=jcryptool
+Name=JCrypTool
+Icon=jcryptool
+GenericName=Crypthography e-learning platform
+Terminal=false
+Categories=Education;
+Version=1.0
