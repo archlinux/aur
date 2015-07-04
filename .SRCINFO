@@ -1,0 +1,14 @@
+pkgbase = python2-pyspectral
+	pkgdesc = Passive sensor on a meteorological satellite relative spectral response
+	pkgver = 210b386
+	pkgrel = 2
+	url = https://pyspectral.readthedocs.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	source = git://github.com/adybbroe/pyspectral.git
+	md5sums = SKIP
+
+pkgname = python2-pyspectral
+
