@@ -1,0 +1,17 @@
+pkgbase = obrowse-git
+	pkgdesc = Openbox pipemenu file browser with icons and various filtering options.
+	pkgver = 3.1.3
+	pkgrel = 2
+	url = http://dev.0x7be.de/obrowse.html
+	install = obrowse.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python>=3.0
+	source = git://github.com/dsohler/obrowse.git#branch=master
+	source = obrowse.install
+	sha256sums = SKIP
+	sha256sums = 8296d5579f15b30ae5d6ed30bf2d6aca2bca1c52c6b8b6020cafc8775408cda3
+
+pkgname = obrowse-git
+
