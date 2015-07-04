@@ -1,0 +1,15 @@
+pkgbase = gctpc
+	pkgdesc = GCTPC is a software library for geolocation written by the USGS
+	pkgver = 20
+	pkgrel = 2
+	url = http://www.nco.ncep.noaa.gov/pmb/codes/nwprod/util/sorc/wgrib2.cd/grib2/gctpc/announce.txt
+	arch = i686
+	arch = x86_64
+	license = public_domain
+	depends = libdap
+	source = http://www.nco.ncep.noaa.gov/pmb/codes/nwprod/util/sorc/wgrib2.cd/grib2/gctpc20.tar.Z
+	source = Makefile
+	options = staticlibs
+
+pkgname = gctpc
+
