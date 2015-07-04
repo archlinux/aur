@@ -1,7 +1,7 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 _pkgname=mpdris
 pkgname=${_pkgname}-git
-pkgver=20110110
+pkgver=r31.304f83b
 pkgrel=1
 pkgdesc="An implementation of the XMMS2 media player interface MPRIS as a client for MPD"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ backup=(etc/mpDris.conf)
 source=("mpris::git://ayeon.org/mpris.git")
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/mpris"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -31,4 +31,5 @@ package() {
   python2 setup.py install --root=$pkgdir
   install -m 0644 -D $srcdir/mpris/mpDris/mpDris.conf $pkgdir/etc/mpDris.conf
 }
+
 md5sums=('SKIP')
