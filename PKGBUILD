@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-rollbar
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="Logs exceptions and other data to Rollbar"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/rollbar/pyrollbar"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/r/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('cdea1cdb7e0543b5ffafaf36199c26a3')
-sha256sums=('68e00a8bbc3563c7f959e8e5355c12772aba375cb8574d24bf86abaf85e236c0')
+md5sums=('c720f71753d6d48c6018633683634451')
+sha256sums=('d23811fdf83146128f88cca7b3101a805a9d62c165be6b2414a61a3dfb835834')
 provides=('pyrollbar' 'python2-rollbar' 'rollbar')
 conflicts=('pyrollbar' 'rollbar')
 
