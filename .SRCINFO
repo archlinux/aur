@@ -1,0 +1,15 @@
+pkgbase = afraid-dyndns-uv
+	pkgdesc = FreeDNS.afraid.org dynamic DNS client written in perl, modified by ultraviolet.
+	pkgver = 1
+	pkgrel = 3
+	url = http://goo.gl/ybNjv
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-libwww
+	depends = perl-xml-simple
+	source = afraid-dyndns-uv
+	md5sums = d75d2639ea500e78d232e4824476eabb
+
+pkgname = afraid-dyndns-uv
+

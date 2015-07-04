@@ -1,0 +1,180 @@
+#!/usr/bin/perl
+
+#
+#   afraid-dyndns - a Dynamic DNS client for the afraid.org free service
+#   Copyright (C) 2009 Erick Calder
+#   Copyright (C) 2012 ultraviolet
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+$|++;
+$\ = $/;
+
+use LWP::Simple;
+use XML::Simple;
+# use Data::Dumper;
+use Getopt::Long;
+
+Getopt::Long::Configure("no_ignore_case");
+$args{"quiet"} = "Suppresses normal output";
+$args{"help"} = "Display syntax";
+GetOptions(\%ARGV, keys %args);
+
+if ($ARGV{help}) { # output of afraid-dyndns-uv --help
+	echo("Syntax: $0 [--quiet] [--help] [hostname]");
+	echo("    quiet: supresses all output");
+	echo("    help: displays syntax");
+	echo("    hostname: indicates that only the specified name should be refreshed");
+	exit;
+	}
+
+# afraid.org listing of urls
+
+$afraid = "http://freedns.afraid.org/api/?action=getdyndns&sha=%s&style=xml";
+$CACHEDIR = "/var/cache/afraid-dyndns/IP"; # set cache directory
+$HASH = "<your_hash>"; # account hash for authentication
+($ME = $0) =~ s|.*/||; # set $ME/$0 to our PID
+$hostname = shift;
+
+echo("Original script by Erick Calder, this fork by ultraviolet");
+echo("License: GPL");
+
+#
+# get external and cached IP addresses
+#
+
+
+$extip = get("http://api.externalip.net/ip/"); # Fetch current IP from whatismyip
+die "Failed to get IP" unless $extip; # If IP wasn't acquired, go poof
+$intip = readfile($CACHEDIR);	# internal address (cached)
+chomp $intip;
+
+echo("Read $intip as cached IP, $extip is the new one, if applicable");
+
+#
+# when these differ modify the DNS and cache the address
+#
+
+if ($extip eq $intip) {   # check if the new IP and the current IP are the same
+	echo("No change in address!");
+} else {
+	echo("Address changed: $intip => $extip");
+
+	$xml = get(sprintf($afraid, $HASH));   
+	die "Failed fetching update head!" unless $xml;
+	$o = XMLin($xml);
+	writefile($CACHEDIR, $extip);
+	}
+
+exit;
+
+#
+#   Syntax:
+#       readfile [file-name = $_]
+#       <scalar> = readfile [file-name = $_]
+#       <list> = readfile [file-name = $_]
+#   Synopsis:
+#       returns the contents of a given file.  if called in a void
+#       context, this function sets $_; if called in a scalar context
+#       the contents are returned as a single string with embedded
+#       newlines; and if called in a list context the content comes
+#       back as separate lines.
+#
+
+sub readfile {
+    my $f = shift || $_;
+    local $_ if defined wantarray();
+    -f $f || return;
+    open(F, $f) || warn($!) && return;
+    wantarray() && (@_ = <F>) || (local $/ = undef, $_ = <F>);
+    close(F);
+    wantarray() ? @_ : $_;
+    }
+
+#
+#   Syntax:
+#       writefile <file-name> [content = $_]
+#   Synopsis:
+#       writes a string to a file, returns success/failure
+#
+
+sub writefile($@) {
+    my $fn = shift;
+    local $_ = shift || $_ || return;
+
+    print ">> writefile(): $fn" if $::DEBUG;
+
+    mkpath(path2fn($fn));
+    open(OUT, "> $fn") || warn(qq|writefile("> $fn"): "$!"|) && return;
+    print OUT;
+    close(OUT) || return;
+    return 1;
+    }
+
+#
+#   could've used system("mkdir -p") but
+#   that won't work on Win32 systems
+#
+
+sub mkpath {
+    local $_ = shift;
+    my @d = split m(/);
+    my $d = "";
+    my $mkpath = 0;
+
+    for (@d) {
+        $d .= "$_/";
+        next if -d $d;  # skip if it already exists
+        print "- $d" if $::DEBUG > 1;
+        mkdir($d) || warn(qq/mkdir("$d"): "$!"/) && return;
+        $mkpath = 1;
+        }
+
+    return 1;
+    }
+
+#
+#   splits a path into directory, filename and extension
+#   e.g. ($dir, $fn, $ext) = path2fn($path)
+#
+
+sub path2fn {
+    my $path = shift;
+    my ($dir, $fn, $ext);
+
+    @x = split(/\//, $path);
+    $fn = pop @x;
+    $dir = join("/", @x);
+    @x = split(/\./, $fn);
+    if (@x > 1) {
+        $ext = pop @x;
+        $fn = join(".", @x);
+        }
+
+    return ($dir, $fn, $ext);
+    }
+
+#
+#	output functions
+#
+
+sub debug {
+	print shift if $ARGV{debug} && !$ARGV{quiet};
+	}
+
+sub echo {
+	print shift || $_ unless $ARGV{quiet};
+	}
