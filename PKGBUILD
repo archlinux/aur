@@ -2,14 +2,14 @@
 
 _name=girl
 pkgname=$_name-git
-pkgver=1.0.0.10.g8628aa8
+pkgver=6.0.0.r139.ccd7d72
 pkgrel=1
-pkgdesc="Locate Internet Radio Stations for GNOME"
+pkgdesc="GNOME Internet Radio Locator"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Girl"
 license=('GPL')
-depends=('streamripper' 'totem' 'libgnomeui' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('gnome-common' 'intltool' 'git')
+depends=('streamripper' 'totem' 'libgnomeui' 'desktop-file-utils')
+makedepends=('gtk-doc' 'gnome-common' 'intltool' 'git')
 options=(!libtool)
 install=$_name.install
 provides=($_name)
@@ -19,7 +19,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"
-  git describe --tags | sed -e 's/GIRL_//;s/_/./g;s/-/./g'
+  v=$(git describe --tags | sed 's/GIRL_//g;s/_/./g')
+  l=$(git rev-list --count HEAD)
+  p=$(git rev-parse --short HEAD)
+  printf "$v.r$l.$p"
 }
 
 build() {
