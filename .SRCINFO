@@ -1,0 +1,15 @@
+pkgbase = maliit-plugins-git
+	pkgdesc = Maliit Input Methods - Plugins
+	pkgver = 20120704
+	pkgrel = 1
+	url = http://maliit.org
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = qt
+	depends = maliit-framework
+	provides = maliit-plugins
+	conflicts = maliit-plugins
+
+pkgname = maliit-plugins-git
+
