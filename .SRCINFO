@@ -1,0 +1,16 @@
+pkgbase = sloc-git
+	pkgdesc = Simply counts source lines of code
+	pkgver = 20140117
+	pkgrel = 1
+	url = http://bytbox.net/hacks/sloc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = go
+	optdepends = perl-datetime
+	optdepends = perl-json
+	optdepends = perl-switch
+	optdepends = gnuplot
+
+pkgname = sloc-git
+
