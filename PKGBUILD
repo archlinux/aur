@@ -4,14 +4,14 @@
 
 _name=gnome-commander
 pkgname=$_name-git
-pkgver=1.4.0.24.g7ee4460
+pkgver=1.4.0.202.g1e29392
 pkgrel=1
-pkgdesc="A graphical two-pane filemanager for GNOME"
+pkgdesc="Graphical two-pane filemanager for GNOME"
 arch=('i686' 'x86_64')
 url="http://gcmd.github.io/"
 license=('GPL')
-depends=('libgnomeui' 'exiv2' 'taglib' 'libgsf' 'python2' 'poppler' 'libunique')
-makedepends=('perlxml' 'gnome-doc-utils' 'chmlib' 'gnome-common' 'intltool')
+depends=('libgnomeui' 'gnome-vfs' 'gconf' 'python2' 'libsm' 'libunique')
+makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool' 'gnome-common' 'git')
 options=(!libtool)
 install=$_name.install
 provides=($_name)
@@ -20,33 +20,31 @@ source=(git://git.gnome.org/$_name)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_name"
+  cd $_name
   git describe --tags | sed -e 's/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_name"
+  cd $_name
   
-  # python2 fix
-  for file in doc/*/gnome-commander.xml; do
-    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
+  # Python 2 fix
+  for f in doc/*/gnome-commander.xml; do
+      sed -i 's:env python:env python2:' "$f"
   done
-  export PYTHON=python2
+  export PYTHON=python2 #force python2 on configure procedures
 
-  export CFLAGS="$CFLAGS -fno-strict-aliasing"
   ./autogen.sh --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
-    --localstatedir=/var --disable-scrollkeeper --enable-python
+              --localstatedir=/var --disable-scrollkeeper --enable-python
 
   make
 }
 
 package() {
-  cd "$srcdir/$_name"
+  cd $_name
 
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir" install
-
-  mkdir -p "$pkgdir"/usr/share/gconf/schemas
-  gconf-merge-schema "$pkgdir"/usr/share/gconf/schemas/${pkgname}.schemas \
-    "$pkgdir"/etc/gconf/schemas/*.schemas
-  rm -f "$pkgdir"/etc/gconf/schemas/*.schemas
+  install -d "$pkgdir/usr/share/gconf/schemas"
+  gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/$_name.schemas" \
+    --domain "$_name" "$pkgdir/etc/gconf/schemas/"*.schemas
+  rm -rf "$pkgdir/etc/gconf/schemas/"
 }

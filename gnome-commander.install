@@ -1,4 +1,4 @@
-pkgname=gnome-commander-git
+pkgname=gnome-commander
 
 post_install() {
   usr/sbin/gconfpkg --install ${pkgname}
