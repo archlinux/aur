@@ -1,0 +1,16 @@
+pkgbase = gimp-plugin-refocusit
+	pkgdesc = Iterative refocus plug-in for GIMP
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://refocus-it.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gimp
+	depends = perl-xml-parser
+	conflicts = gimp-plugin-exif-browser
+	source = http://netcologne.dl.sourceforge.net/project/refocus-it/refocus-it/2.0.0/refocus-it-2.0.0.tar.gz
+	md5sums = 7a874598e48029e754c631c899055788
+
+pkgname = gimp-plugin-refocusit
+
