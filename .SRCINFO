@@ -1,0 +1,14 @@
+pkgbase = python-libsass
+	pkgdesc = Python binding for libsass CSS compiler
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://dahlia.kr/libsass-python/
+	arch = any
+	license = LGPL
+	makedepends = libsass
+	depends = python
+	source = https://pypi.python.org/packages/source/l/libsass/libsass-0.7.0.tar.gz
+	md5sums = 809e4f66bd54eeb46342d7462ce961e6
+
+pkgname = python-libsass
+
