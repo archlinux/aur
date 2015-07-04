@@ -3,7 +3,7 @@
 pkgname=8085-simulator
 pkgver=2.0
 pkgrel=1
-pkgdesc="Jubin's 8085 Simulator with Training Kit"
+pkgdesc="Jubin's 8085 Simulator with Training Kit, written in Java"
 arch=('any')
 url="https://8085simulator.codeplex.com"
 license=('GPL2')
