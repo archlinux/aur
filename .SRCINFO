@@ -1,5 +1,5 @@
 pkgbase = vapoursynth-plugin-knlmeanscl
-	pkgdesc = Plugin for Vapoursynth: knlmeanscl (GIT version)
+	pkgdesc = Plugin for Vapoursynth: knlmeanscl
 	pkgver = 0.5.6
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171379

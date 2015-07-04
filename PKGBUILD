@@ -4,7 +4,7 @@ _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.5.6
 pkgrel=1
-pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171379'
 license=('GPL')
@@ -22,11 +22,11 @@ prepare() {
   patch -d KNLMeansCL -p0 -i ../patch_h.patch
   patch -d KNLMeansCL -p0 -i ../patch_cpp.patch
 
-#   rm -fr KNLMeansCL/src/VapourSynth.h
-#   rm -fr KNLMeansCL/src/VSHelper.h
-#   sed -e 's|"VapourSynth.h"|<vapoursynth/VapourSynth.h>|g' \
-#       -e 's|"VSHelper.h"|<vapoursynth/VapourSynth.h>|g' \
-#       -i KNLMeansCL/src/KNLMeansCL.h
+  rm -fr KNLMeansCL/src/VapourSynth.h
+  rm -fr KNLMeansCL/src/VSHelper.h
+  sed -e 's|"VapourSynth.h"|<vapoursynth/VapourSynth.h>|g' \
+      -e 's|"VSHelper.h"|<vapoursynth/VSHelper.h>|g' \
+      -i KNLMeansCL/src/KNLMeansCL.h
 
   echo "all:
 	g++ -o lib${_plug}.so ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} "$(pkg-config --cflags vapoursynth)" KNLMeansCL/src/KNLMeansCL.cpp -std=c++11 -fPIC -shared -lOpenCL" > Makefile
