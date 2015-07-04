@@ -15,7 +15,7 @@ pkgver=0.40.24
 _dfver=40_24
 _sfver=40.24
 _df_unfuck=dwarf_fortress_unfuck
-pkgrel=2
+pkgrel=3
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
 url="http://www.bay12forums.com/smf/index.php?topic=129219.0"
