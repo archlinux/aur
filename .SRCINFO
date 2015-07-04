@@ -1,6 +1,6 @@
 pkgbase = phototonic
 	pkgdesc = Image Viewer and Organizer
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = http://oferkv.github.io/phototonic/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = phototonic
 	optdepends = qt5-imageformats: TIFF and TGA support
 	optdepends = qt5-svg: SVG support
 	provides = phototonic
-	source = https://github.com/oferkv/phototonic/archive/b95a6e735ed808e2fe4eae58cf0e81ae0c0916e4.tar.gz
-	md5sums = 5955368342fb0e3f146b62a7551d412d
+	source = https://github.com/oferkv/phototonic/archive/c9427078ea5335a76e006c1924f50fbd2ef458a5.tar.gz
+	md5sums = 57d22dbbb49d0e7953715ba80be377e0
 
 pkgname = phototonic
 
