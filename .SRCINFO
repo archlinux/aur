@@ -1,0 +1,17 @@
+pkgbase = libbufr-ecmwf
+	pkgdesc = ECMWF WMO FM-94 BUFR encode/decode library
+	pkgver = 000403
+	pkgrel = 1
+	url = https://software.ecmwf.int/wiki/display/BUFR/BUFRDC+Home
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = Apache
+	makedepends = rsync
+	makedepends = gcc-fortran
+	options = staticlibs
+	source = https://software.ecmwf.int/wiki/download/attachments/35752466/bufrdc_000403.tar.gz
+	md5sums = a64b82478cd03ab41f3a029ff5ce1dcb
+
+pkgname = libbufr-ecmwf
+
