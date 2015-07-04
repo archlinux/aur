@@ -1,0 +1,18 @@
+pkgbase = localdns
+	pkgdesc = A DNS for local development
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jweslley/localdns
+	install = localdns.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/jweslley/localdns/archive/v0.1.0.tar.gz
+	md5sums = e040cd45d1ca14d554e1be1d0a39d2ed
+
+pkgname = localdns
+

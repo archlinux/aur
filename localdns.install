@@ -1,0 +1,5 @@
+
+post_install() {
+  echo -e "\nAppend the line above to your '/etc/resolv.conf' file:"
+  echo -e "\n    nameserver 127.0.0.1\n"
+}
