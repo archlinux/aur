@@ -11,7 +11,7 @@ url="https://github.com/pfactum/${pkgname}"
 license=('GPL')
 makedepends=('make' 'gcc')
 optdepends=("linux-pf: Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
-            "linux-uksm Linux Kernel and modules with the UKSM patchset featuring the v1.2.4 and BFQ scheduler"
+            "linux-uksm: Linux Kernel and modules with the UKSM patchset featuring the v1.2.4 and BFQ scheduler"
             "linux-uksm-ck: Linux Kernel and modules with the UKSM patchset featuring the v1.2.4. and the ck1 patchset featuring the Brain Fuck Scheduler")
 replaces=('uksmstat')
 conflicts=('uksmstat')
