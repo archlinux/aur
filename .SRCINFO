@@ -1,0 +1,15 @@
+pkgbase = udevedu-git
+	pkgdesc = Udev event dispatcher for unprivileged users
+	pkgver = 0.r13.26a521f
+	pkgrel = 1
+	url = https://github.com/xiaq/udevedu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python-pyudev
+	source = udevedu-git::git+https://github.com/xiaq/udevedu.git
+	sha256sums = SKIP
+
+pkgname = udevedu-git
+
