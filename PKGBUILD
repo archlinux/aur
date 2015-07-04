@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 source=(salome-kernel.profile http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz)
 
+# _source=kernel
 _source=KERNEL_SRC_${pkgver}
 _installdir=/opt/salome/kernel
 
