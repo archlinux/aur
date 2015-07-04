@@ -1,4 +1,4 @@
-pkgbase = python-pipman
+pkgbase = pipman-git
 	pkgdesc = Generate PKGBUILD from pip packages
 	pkgver = 0.5.1.r5.gca7315b
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = python-pipman
 	source = git+https://github.com/sollidsnake/pipman
 	md5sums = SKIP
 
-pkgname = python-pipman
+pkgname = pipman-git
 
