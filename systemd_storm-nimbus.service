@@ -1,0 +1,13 @@
+[Unit]
+Description=Storm Nimbus master node
+Requires=zookeeper@storm.service
+After=network.target zookeeper@storm.service
+
+[Service]
+User=storm
+Group=storm
+SuccessExitStatus=143
+ExecStart=/usr/bin/storm nimbus
+
+[Install]
+WantedBy=multi-user.target

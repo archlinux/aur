@@ -1,0 +1,13 @@
+[Unit]
+Description=Storm UI daemon
+Requires=storm-nimbus.service
+After=network.target storm-nimbus.service
+
+[Service]
+User=storm
+Group=storm
+SuccessExitStatus=143
+ExecStart=/usr/bin/storm ui
+
+[Install]
+WantedBy=multi-user.target
