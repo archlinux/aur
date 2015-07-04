@@ -1,0 +1,15 @@
+pkgbase = grib2ctl
+	pkgdesc = Takes GRIB files and makes GrADS control files
+	pkgver = 0.9.13
+	pkgrel = 1
+	url = http://www.cpc.ncep.noaa.gov/products/wesley/grib2ctl.html
+	arch = any
+	license = custom:NWS
+	depends = perl
+	source = ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib.scripts/grib2ctl.pl
+	source = NWS_license.txt
+	md5sums = 56c14e322311d48ebaa67e32a991a883
+	md5sums = 64f9f7f5ad383df409986d8a67d2fa78
+
+pkgname = grib2ctl
+
