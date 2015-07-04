@@ -1,0 +1,14 @@
+pkgbase = fusepak
+	pkgdesc = Mount PACK and WAD files via FUSE.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://fusepak.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	depends = fuse
+	source = http://downloads.sourceforge.net/project/fusepak/fusepak/0.5/fusepak-0.5.tar.gz
+	md5sums = 7be66f6f9bdbef20d821784ad476039b
+
+pkgname = fusepak
+
