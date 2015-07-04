@@ -1,0 +1,23 @@
+pkgbase = netmap
+	pkgdesc = Netmap is a framework for high speed network packet I/O.
+	pkgver = 3.18
+	pkgrel = 1
+	url = http://info.iet.unipi.it/~luigi/netmap
+	install = netmap.install
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = sed
+	makedepends = gzip
+	makedepends = linux-headers
+	makedepends = abs
+	makedepends = pacman
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	depends = linux
+	depends = glibc
+	source = netmap.install
+	md5sums = 047aa5adec4c52ddbf86d12dbf300f71
+
+pkgname = netmap
+
