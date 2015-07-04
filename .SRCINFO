@@ -1,0 +1,19 @@
+pkgbase = pgpdump-git
+	pkgdesc = Dumps information (Used Keys, moduli, r, s, ...) from a OpenPGP compatible file.
+	pkgver = v0.28.r14.ga65eb20
+	pkgrel = 2
+	epoch = 1
+	url = http://www.mew.org/~kazu/proj/pgpdump/en/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bzip2
+	depends = zlib
+	provides = pgpdump
+	conflicts = pgpdump
+	source = pgpdump::git+https://github.com/kazu-yamamoto/pgpdump.git
+	sha384sums = SKIP
+
+pkgname = pgpdump-git
+
