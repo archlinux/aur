@@ -7,7 +7,7 @@
 pkgname=paraview-salome
 pkgver=4.2.0
 pkgrel=1
-pkgdesc='Parallel Visualization Application using VTK - This version is built to be linked against salome-paravis'
+pkgdesc='Parallel Visualization Application using VTK - This version is built to be linked against salome modules'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
