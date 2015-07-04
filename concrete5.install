@@ -1,0 +1,50 @@
+post_install() {
+  echo ''
+  echo 'concrete5 was installed to /usr/share/webapps/concrete5'
+  echo 'Please make sure that the mysqli extension is enabled in /etc/php/php.ini.'
+  echo ''
+}
+
+pre_remove() {
+  if [ -d "/usr/share/webapps/concrete5_backup" ]; then 
+    echo ''
+    echo 'There is already a concrete5 backup directory in place.'
+    echo 'It will be replaced in favor of the concrete5 installation which is currently'
+    echo '  being uninstalled.'
+    rm -rf /usr/share/webapps/concrete5_backup
+  fi
+
+  mv /usr/share/webapps/concrete5 /usr/share/webapps/concrete5_backup
+  echo ''
+  echo 'Your concrete5 installation was backed up to /usr/share/webapps/concrete5_backup.'
+  echo 'To permanently remove concrete5, delete that directory and its contents.'
+  echo ''
+}
+
+post_remove() {
+  # Nothing needs to be done, so do a noop, as otherwise will get an error
+  :
+}
+
+pre_upgrade() {
+  oldpkgver=${2%-*}
+
+  # Move the old installation temporarily
+  mv /usr/share/webapps/concrete5 /usr/share/webapps/concrete$oldpkgver
+}
+
+post_upgrade() {
+  newpkgver=${1%-*}
+  oldpkgver=${2%-*}
+
+  # Apply the newest concrete5 update into /usr/share/webapps/concrete5/updates
+  mv /usr/share/webapps/concrete5 /usr/share/webapps/concrete$newpkgver
+  mv /usr/share/webapps/concrete$oldpkgver /usr/share/webapps/concrete5
+  mv /usr/share/webapps/concrete$newpkgver /usr/share/webapps/concrete5/updates
+
+  echo ''
+  echo 'The latest concrete5 update was placed in /usr/share/webapps/concrete5/updates.'
+  echo 'Go to Dashboard -> System & Settings -> Backup & Restore -> Update concrete5'
+  echo '  to finish the update process.'
+  echo ''
+}

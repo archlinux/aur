@@ -1,0 +1,20 @@
+pkgbase = concrete5
+	pkgdesc = A PHP-based open source content management system
+	pkgver = 5.7.4.2
+	pkgrel = 1
+	url = http://www.concrete5.org/
+	install = concrete5.install
+	arch = any
+	license = MIT
+	depends = php
+	depends = mysql
+	optdepends = apache: Web server to run concrete5
+	optdepends = nginx: Web server to run concrete5
+	optdepends = cherokee: Web server to run concrete5
+	optdepends = lighttpd: Web server to run concrete5
+	options = !strip
+	source = http://www.concrete5.org/releases/concrete5.7.4.2.zip
+	sha256sums = 22b29f6d7bd6c821777505abe4c84df17312566540dcd91465130ed88de593f1
+
+pkgname = concrete5
+
