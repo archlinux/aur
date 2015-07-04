@@ -1,0 +1,27 @@
+pkgbase = grads
+	pkgdesc = The Grid Analysis and Display System (GrADS) is an interactive desktop tool that is used for easy access, manipulation, and visualization of earth science data. The format of the data may be either binary, GRIB, NetCDF, or HDF-SDS (Scientific Data Sets).
+	pkgver = 2.1.a3
+	pkgrel = 1
+	url = http://www.iges.org/grads
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = shapelib
+	makedepends = g2clib
+	makedepends = gadap
+	depends = netcdf
+	depends = udunits
+	depends = cairo
+	depends = libdap
+	depends = jasper
+	depends = libgeotiff
+	depends = hdf4-nonetcdf
+	provides = grads
+	conflicts = grads
+	source = ftp://cola.gmu.edu/grads/2.1/grads-2.1.a3-src.tar.gz
+	source = time_unit.patch
+	md5sums = 57f097ddea5cb6189bbac511b52b12dd
+	md5sums = 4267574ffb319dfef225a923fa7d6975
+
+pkgname = grads
+

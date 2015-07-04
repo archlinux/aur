@@ -1,0 +1,19 @@
+--- src/gasdf.c	2012-07-26 20:08:34.000000000 +0200
++++ src/gasdf.c.new	2013-05-17 15:18:32.374475989 +0200
+@@ -846,6 +846,7 @@
+ 	    gaprnt(0,"gadsdf: Memory Allocation Error for trunc_units\n");
+ 	    goto err2;
+ 	  }
++	  if ( time_units[trunc_point] == 's' ) trunc_point --;
+ 	  strncpy(trunc_units, time_units, trunc_point) ;
+ 	  trunc_units[trunc_point] = '\0' ;
+ 	  istart = 1 ;
+@@ -944,7 +945,7 @@
+ 		}
+ 	      }
+ 	    } 
+-	    else if (compare_units("seconds", trunc_units) == Success) {
++	    else if (compare_units("second", trunc_units) == Success) {
+ 	      if (incrfactor < 60.0) {
+ 		gaprnt(0, "gadsdf: Time unit has too small an increment (min. 1 minute).\n") ;
+ 		goto err2;
