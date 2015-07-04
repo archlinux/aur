@@ -1,0 +1,13 @@
+pkgbase = b2sum
+	pkgdesc = Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file. STDIN not supported (yet?).
+	pkgver = 20150531
+	pkgrel = 1
+	url = https://blake2.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://blake2.net/blake2_code_20150531.zip
+	sha384sums = 14dad3b898c69ee0891bf72a970ca331dd121940a16780a5ec72e789d4bcf239299e36091dfb357c5aba10bf57c3cbd6
+
+pkgname = b2sum
+
