@@ -7,7 +7,7 @@
 _pkgname="liferea"
 
 pkgname="${_pkgname}-unstable"
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc="A desktop news aggregator for online news feeds and weblogs - Unstable"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ provides=('liferea')
 conflicts=('liferea' 'liferea-git')
 install="${pkgname}.install"
 source=("https://github.com/lwindolf/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('16b6a0cdddb13870d095ca55c1f00bf370e74248f29f21cb2c7ee90781ae42df')
+sha256sums=('25d4c2cd0fa9aa0deaa33c2b9ccd9b7a9e48a2b20848398c2249c6ae72bb6907')
 
 build() {
     cd "${_pkgname}-${pkgver}"
