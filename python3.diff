@@ -1,0 +1,29 @@
+diff -rupN a/build/unix/makepchinput.py b/build/unix/makepchinput.py
+--- a/build/unix/makepchinput.py	2015-06-03 12:58:19.191951304 -0400
++++ b/build/unix/makepchinput.py	2015-06-03 13:42:58.475269705 -0400
+@@ -12,7 +12,6 @@ import sys
+ import os
+ import glob
+ import shutil
+-from sets import Set
+ 
+ #-------------------------------------------------------------------------------
+ def removeFiles(filesList):
+@@ -410,7 +410,7 @@ def writeFiles(contentFileNamePairs):
+ #-------------------------------------------------------------------------------
+ def printModulesMessageOnScreen(selModules):
+    modulesList = sorted(list(selModules))
+-   print "\nGenerating PCH for %s\n" %" ".join(modulesList)
++   print("\nGenerating PCH for %s\n" %" ".join(modulesList))
+ 
+ #-------------------------------------------------------------------------------
+ def makePCHInput():
+@@ -439,7 +438,7 @@ def makePCHInput():
+ 
+    # Loop over the dictionaries, ROOT modules
+    dictNames = getDictNames(modules)
+-   selModules = Set([])
++   selModules = set([])
+    allIncPathsList = []
+    for dictName in dictNames:
+       dirName = getDirName(dictName)
