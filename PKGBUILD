@@ -1,16 +1,16 @@
 # Maintainer: superlex
 # Contributor: Jorge Barroso <jorge.barroso.11@gmail.com>
 
-# We're getting this from Debian Sid
+# We're getting this from Debian Experimental
 
 _debname=iceweasel
-_debver=38.0.1
-_debrel=5
+_debver=39.0
+_debrel=1
 _debrepo=http://ftp.de.debian.org/debian/pool/main/i/
  
 pkgname=iceweasel-bin
 pkgver=${_debver}.deb${_debrel}
-pkgrel=2
+pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
 url=("https://packages.debian.org/sid/iceweasel")
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha1sums=('f4cccfc4c9fe9f29d2fcc470a2365aa6ba56003a')
+    sha1sums=('bc6b84b4004c3e803387224f9ab1d28167fca3c5')
 else
     _debarch=i386
-    sha1sums=('1cb632ec4c4f94125becdb1d3b5e6152b09bb8ed')
+    sha1sums=('dc45580d46dd6fe6cc415ca11495d0930f1c09c2')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
