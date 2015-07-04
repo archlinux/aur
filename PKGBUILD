@@ -7,7 +7,7 @@
 # https://store.uberent.com/download/pa
 
 pkgname=planetary-annihilation
-pkgver=76766
+pkgver=82834
 pkgrel=1
 pkgdesc="RTS gameplay in a way that's never been seen before."
 group=("games")
@@ -20,11 +20,13 @@ options=("!libtool" "!strip")
 source=(PA_Linux_${pkgver}.tar.bz2::https://manual-download-required
         PA.desktop
         PA.png
-        content.json
-        uifix.js
         PA.sh)
 noextract=(PA_Linux_${pkgver}.tar.bz2)
 PKGEXT=".pkg.tar"
+md5sums=('259e654c7b51cb9d13165ae1539d27a1'
+         '16b2acc35fe4cd6fa06aff57b4a6fdc4'
+         '463f4e99f44ff6ce9c09e383767a6b1d'
+         '2f62773702cc5fcee03b160296738b29')
 
 package() {
   # Game itself
@@ -44,18 +46,4 @@ package() {
     "$pkgdir/usr/share/icons"
   install -m644 "$srcdir/PA.desktop" "$pkgdir/usr/share/applications"
   install -m644 "$srcdir/PA.png" "$pkgdir/usr/share/icons"
-
-  ### QUIRKS ###
-  cd "$pkgdir/opt/PA"
-
-  # Workaround for "black screen" issue
-  rm media/shaders/content.json
-  install -m644 "$srcdir/content.json" media/shaders
 }
-
-md5sums=('3e425249efda33574bc67b677cb1de9b'
-         '16b2acc35fe4cd6fa06aff57b4a6fdc4'
-         '463f4e99f44ff6ce9c09e383767a6b1d'
-         'd77de6676e68c1c355fe858a0522cae0'
-         'f37053bfa07d40911c0c0a4404a54614'
-         '2f62773702cc5fcee03b160296738b29')
