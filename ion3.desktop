@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Ion3 Session
+Name[fr]=Session Ion3
+Comment=Use this session to run Ion3 as your window manager
+Comment[fr]=Utilisez cette session pour exécuter Ion3 comme gestionnaire de fenêtres 
+Exec=ion3
+Icon=
+Type=Application
