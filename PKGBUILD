@@ -7,7 +7,7 @@ pkgname=(
 	psf-unifont
 	unifont-utils
 )
-pkgver=7.0.06
+pkgver=8.0.01
 pkgrel=1
 epoch=
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
@@ -34,7 +34,7 @@ source=(
 	ttf.install
 )
 noextract=()
-sha512sums=('c53f47d11673c8856a7efd410819c845bc25273f4ddc1a535d59253342b319d53b8336ef97b5ec01cbbf3d2596ab7138c4a03d1302bfda70a3f7e1796f412447'
+sha512sums=('171b8caff9d2f821fa0759a55d102edcaf23be592c0619c8148c95aac353834bf096591710e9dedf18aa6c1dde051d1caee5c7b2b3a0d302ae9ab64bcfd731a5'
             'SKIP'
             'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
             '4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
@@ -59,11 +59,6 @@ if [[ -z "$_use_precompiled" ]]; then
 	_wanted ttf-unifont && makedepends+=(fontforge)
 	_wanted psf-unifont && makedepends+=(bdf2psf)
 fi
-
-prepare() {
-	msg2 "Patching out U+202F"
-	sed -i -e 's/^202F:.*/202F:00000000000000000000000000000000/' "$srcdir/unifont-$pkgver/font/plane00/nonprinting.hex"
-}
 
 build() {
 	cd "$srcdir/unifont-$pkgver"
