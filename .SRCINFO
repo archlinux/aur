@@ -1,0 +1,16 @@
+pkgbase = python2-pycoast
+	pkgdesc = Writing of coastlines, borders and rivers to images in Python
+	pkgver = 0.5.2
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/pycoast
+	arch = any
+	license = GPL3
+	depends = python2
+	options = !emptydirs
+	source = https://pycoast.googlecode.com/files/pycoast-0.5.2.tar.gz
+	source = http://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.3.zip
+	md5sums = eb11a3cef098b5cedccd9cca0df86b4b
+	md5sums = 4ead17caa77743c9c644c5ae32b455d2
+
+pkgname = python2-pycoast
+
