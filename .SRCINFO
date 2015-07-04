@@ -1,0 +1,34 @@
+pkgbase = firefox-aurora-pl
+	pkgdesc = Firefox Aurora Developer Edition (Polish l10n)
+	pkgver = 41.0a2
+	pkgrel = 1
+	url = https://www.mozilla.org/en-US/firefox/developer/all/
+	install = firefox-aurora-pl.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = wget
+	depends = gtk2
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libvpx
+	depends = libevent
+	depends = nss>=3.14.1
+	depends = hunspell
+	provides = firefox-aurora
+	conflicts = firefox-aurora
+	source = firefox-aurora-pl.desktop
+	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n//firefox-41.0a2.pl.linux-.tar.bz2
+	md5sums = 663176661ce817e40b4217c5e107df42
+
+pkgname = firefox-aurora-pl
+
