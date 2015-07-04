@@ -1,6 +1,6 @@
 pkgbase = phototonic-git
 	pkgdesc = Image Viewer and Organizer
-	pkgver = 1.5.53.g6a5608a
+	pkgver = 1.6.6.gc942707
 	pkgrel = 1
 	url = http://oferkv.github.io/phototonic/
 	arch = i686

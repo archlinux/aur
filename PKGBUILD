@@ -1,5 +1,5 @@
 pkgname=phototonic-git
-pkgver=1.5.53.g6a5608a
+pkgver=1.6.6.gc942707
 pkgrel=1
 pkgdesc="Image Viewer and Organizer"
 arch=('i686' 'x86_64')
