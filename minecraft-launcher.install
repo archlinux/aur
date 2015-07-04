@@ -1,0 +1,10 @@
+post_install() {
+    echo ">>> PACKAGE NOTES"
+    echo ">>> ::::::::::::::"
+    echo ">>> This is the full version of the game, you need a valid account to play it."
+    echo ">>> To create an account, connect to http://www.minecraft.net/ and buy the full"
+    echo ">>> game. You should then be able to log in and play."
+    echo ">>> ::::::::::::::"
+    echo ">>> The game will auto update and store the updated binary and game configuration"
+    echo ">>> in ~/.minecraft"
+}

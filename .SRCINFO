@@ -1,0 +1,25 @@
+pkgbase = minecraft-launcher
+	pkgdesc = Launcher for Minecraft, a game about building with blocks in an infinite world.
+	pkgver = latest
+	pkgrel = 4
+	url = http://www.minecraft.net/
+	install = minecraft-launcher.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = xorg-server-utils
+	depends = openal
+	conflicts = minecraft
+	source = minecraft-launcher
+	source = https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
+	source = minecraft.desktop
+	source = minecraft.png
+	source = minecraft-launcher.install
+	md5sums = 90cbd7a01441784bd0cdcb7c99a41265
+	md5sums = 85273e24404cc6865805f951487b8a1e
+	md5sums = d43c7f36641f561d6506e06ba4782bd3
+	md5sums = b2c25797bf513a5ee215dd90b4b828e3
+	md5sums = a9cdf3f04808232fb6e9bb5c6d094815
+
+pkgname = minecraft-launcher
+
