@@ -1,0 +1,16 @@
+pkgbase = html2ps
+	pkgdesc = An HTML to PostScript converter written in Perl.
+	pkgver = 1.0b7
+	pkgrel = 7
+	url = http://user.it.uu.se/~jan/html2ps.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ghostscript
+	depends = perl
+	depends = texlive-bin
+	source = http://user.it.uu.se/~jan/html2ps-1.0b7.tar.gz
+	sha384sums = e1c95370257b22f408848914b56703334ee0f1ef7683b045bbef67142a7577fc5a8c3fba0790fd90a380dcdf4f5c5eb7
+
+pkgname = html2ps
+
