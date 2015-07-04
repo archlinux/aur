@@ -1,0 +1,14 @@
+pkgbase = python-pipman
+	pkgdesc = Generate PKGBUILD from pip packages
+	pkgver = 0.5.1.r5.gca7315b
+	pkgrel = 1
+	url = http://github.com/sollidsnake/pipman
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pip
+	source = git+https://github.com/sollidsnake/pipman
+	md5sums = SKIP
+
+pkgname = python-pipman
+
