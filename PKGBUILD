@@ -6,8 +6,8 @@ pkgdesc="ExtUtils::CppGuess - guess C++ compiler and flags"
 arch=('any')
 url="https://metacpan.org/release/ExtUtils-CppGuess/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'perl-capture-tiny')
-makedepends=()
+depends=('perl' 'perl-capture-tiny')
+makedepends=('perl-module-build')
 provides=()
 conflicts=()
 replaces=()
