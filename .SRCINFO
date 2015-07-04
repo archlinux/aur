@@ -1,0 +1,14 @@
+pkgbase = python-py-gfm
+	pkgdesc = Github-Flavored Markdown for Python-Markdown
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/google/py-gfm
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-markdown
+	source = https://github.com/google/py-gfm/archive/0.1.1.tar.gz
+	sha1sums = dceb1ce680a9375b5335a113d0c6b66a09c513b5
+
+pkgname = python-py-gfm
+
