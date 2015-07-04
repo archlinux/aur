@@ -1,0 +1,14 @@
+pkgbase = python2-pyorbital
+	pkgdesc = Computing orbital parameters from tle files, and making diverse astronomical computations
+	pkgver = v0.3.2
+	pkgrel = 2
+	url = http://pyorbital.readthedocs.org
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = python2
+	source = git://github.com/mraspaud/pyorbital.git
+	md5sums = SKIP
+
+pkgname = python2-pyorbital
+
