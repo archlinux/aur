@@ -1,0 +1,18 @@
+pkgbase = docli-git
+	pkgdesc = command line utility for managing digitalocean infrastructure
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://kbknapp.github.io/docli-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	provides = docli
+	conflicts = docli-bin
+	source = git://github.com/kbknapp/docli-rs.git
+	sha256sums = SKIP
+
+pkgname = docli-git
+
