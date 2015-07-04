@@ -1,0 +1,15 @@
+pkgbase = docli-bin
+	pkgdesc = A command line utility for managing DigitalOcean infrastructure
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://kbknapp.github.io/docli-rs
+	arch = x86_64
+	license = MIT
+	provides = docli
+	conflicts = docli-git
+	replaces = docli-git
+	source = http://wod.twentyfives.net/bin/docli/docli-0.1.0--linux.tar.gz
+	sha256sums = c2a3715fa2237a7bb7f5101cf13364c48093ef529c52421da61d89cf5fcb6ab7
+
+pkgname = docli-bin
+
