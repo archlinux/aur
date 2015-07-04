@@ -1,7 +1,7 @@
 pkgbase = clearlooks-phenix-gtk-theme
 	pkgdesc = GTK3 theme visually close to Clearlooks
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpfleury/clearlooks-phenix
 	arch = any
 	license = GPL3
