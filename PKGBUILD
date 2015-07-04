@@ -1,18 +1,19 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=wgetpkg
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.0.1
+pkgrel=1
 pkgdesc="Downloads AUR packages with wget"
 arch=('any')
-depends=('wget')
+depends=('perl' 'wget')
 url="https://github.com/atweiden/wgetpkg"
 license=('UNLICENSE')
-source=(wgetpkg)
-sha256sums=('8a74204727bd752f0bfd90a8eb5f567456c148d3540ae86632c66c762e9bf63d')
-provides=('wgetpkg')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
+sha256sums=('69c43a20d879cac724a25d05ac27240702b581c4192307d920d79cb94b117b50')
 
 package() {
-  msg 'Installing executable...'
-  install -D -m755 "$srcdir/wgetpkg" "${pkgdir}/usr/bin/wgetpkg"
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Installing...'
+  install -Dm 755 wgetpkg.pl "$pkgdir/usr/bin/wgetpkg"
 }
