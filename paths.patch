@@ -1,0 +1,50 @@
+diff -Naur decoders-4.1.5.org/src/CUSTOMIZE decoders-4.1.5/src/CUSTOMIZE
+--- decoders-4.1.5.org/src/CUSTOMIZE	2007-02-09 19:51:09.000000000 +0100
++++ decoders-4.1.5/src/CUSTOMIZE	2007-04-04 11:41:30.000000000 +0200
+@@ -27,17 +27,21 @@
+ #
+ #
+ # netCDF header file and library references:
++CPP_NETCDF=-I/usr/include
++LD_NETCDF='-L/usr/lib -lnetcdf'
+ #CPP_NETCDF=/home/rkambic/netcdf/include
+ #LD_NETCDF='-L/home/rkambic/netcdf/lib -lnetcdf'
+ #
+ # udunits header file and library references:
++CPP_UDUNITS=-I/usr/include
++LD_UDUNITS='-L/usr/lib -ludunits'
+ #CPP_UDUNITS=-I/home/rkambic/udunits/include
+ #LD_UDUNITS='-L/home/rkambic/udunits/lib -ludunits'
+ #
+ # On Linux and BSD systems:
+ #
+ # Type of C compiler:
+-CC=gcc
++CC="gcc -fPIC"
+ #
+ # Installation prefix:
+ # prefix=/usr/local/unidata
+diff -Naur decoders-4.1.5.org/src/configure decoders-4.1.5/src/configure
+--- decoders-4.1.5.org/src/configure	2004-03-19 21:01:39.000000000 +0100
++++ decoders-4.1.5/src/configure	2007-04-04 11:41:45.000000000 +0200
+@@ -3449,7 +3449,7 @@
+ fi
+ case "$LD_UDUNITS" in
+     '') ;;
+-    *)  LD_UDUNITS="$LD_UDUNITS -ludport";;
++    *)  LD_UDUNITS="$LD_UDUNITS";;
+ esac
+ echo "$as_me:$LINENO: result: $LD_UDUNITS" >&5
+ echo "${ECHO_T}$LD_UDUNITS" >&6
+diff -Naur decoders-4.1.5.org/src/port/acsite.m4 decoders-4.1.5/src/port/acsite.m4
+--- decoders-4.1.5.org/src/port/acsite.m4	2004-03-12 22:19:29.000000000 +0100
++++ decoders-4.1.5/src/port/acsite.m4	2007-04-04 11:41:30.000000000 +0200
+@@ -1997,7 +1997,7 @@
+     udunits, -L/usr/local/unidata/lib -ludunits)dnl
+ case "$LD_UDUNITS" in
+     '') ;;
+-    *)  LD_UDUNITS="$LD_UDUNITS -ludport";;
++    *)  LD_UDUNITS="$LD_UDUNITS ";;
+ esac
+ AC_MSG_RESULT($LD_UDUNITS) 
+ ])

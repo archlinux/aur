@@ -1,0 +1,18 @@
+pkgbase = unidata-decoders
+	pkgdesc = Unidata various data format decoders
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://www.unidata.ucar.edu/software/decoders
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	depends = netcdf
+	depends = udunits
+	source = ftp://ftp.unidata.ucar.edu/pub/decoders/decoders-5.0.1.tar.gz
+	source = paths.patch
+	md5sums = 52af852784986fea2454ffbd25d788ef
+	md5sums = 250ea5e3976cce836e682f11c89ab7e0
+
+pkgname = unidata-decoders
+
