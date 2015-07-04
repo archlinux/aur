@@ -1,0 +1,25 @@
+From e0d58c13239837b7b0ef44a13852c8ca1fa09440 Mon Sep 17 00:00:00 2001
+From: Joakim Hernberg <jhernberg@alchemy.lu>
+Date: Sat, 4 Jul 2015 10:50:24 +0200
+Subject: [PATCH] remove duplicate variable declaration
+
+---
+ python-inet_diag/inet_diag.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/python-inet_diag/inet_diag.c b/python-inet_diag/inet_diag.c
+index 7a209e0..7d78b13 100644
+--- a/python-inet_diag/inet_diag.c
++++ b/python-inet_diag/inet_diag.c
+@@ -103,8 +103,6 @@ static const int default_states = SS_ALL & ~((1 << SS_LISTEN) |
+ 
+ static const int listen_states = (1<<SS_LISTEN) | (1<<SS_CLOSE);
+ 
+-static const int listen_states = (1<<SS_LISTEN) | (1<<SS_CLOSE);
+-
+ static const char *tmr_name[] = {
+ 	"off",
+ 	"on",
+-- 
+2.4.5
+
