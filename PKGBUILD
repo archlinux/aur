@@ -1,15 +1,15 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=quake3-edawn
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A Quake III Arena mod with numerous improvements"
 arch=('any')
 url="http://edawn-mod.org/"
-license=('unknown')
+license=('custom')
 depends=('quake3')
-source=("http://edawn-mod.org/binaries/edawn-$pkgver-1.zip")
-sha256sums=('c72bcc13fd5f887c59afd42995fb2f6091b16ac4c4f4b41b9745aaa018fe4d34')
+source=("http://edawn-mod.org/binaries/edawn-$pkgver.zip")
+sha256sums=('5fe22b2b777608719f5e05c34d50e98dffb616ace38397296c0b953040625d16')
 
 package() {
   # Engines other than quake3e may have problems loading files
@@ -22,6 +22,8 @@ package() {
   cd "$srcdir"
   mkdir -p "$pkgdir/opt/quake3"
   cp -dR edawn "$pkgdir/opt/quake3"
+
+  install -D -m 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
