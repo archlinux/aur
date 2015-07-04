@@ -6,7 +6,7 @@ pkgname=aurora-pl
 pkgver=41.0a2
 pkgrel=1
 pkgdesc="Firefox Aurora Developer Edition (Polish l10n)"
-url=http://www.mozilla.org/en_US/firefox/aurora/
+url=https://www.mozilla.org/en-US/firefox/developer/all/
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 depends=('gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 
@@ -22,8 +22,8 @@ _filename=firefox-${pkgver}.pl.linux-${CARCH}
 source=(aurora-pl.desktop
 	"${_baseurl}/${_filename}.tar.bz2")
 _md5=$(wget -qO- ${_baseurl}/${_filename}.checksums | awk -F' ' '$2 == "md5" && $4 == "'"${_filename}.tar.bz2"'" { print $1 } ')
-md5sums=('663176661ce817e40b4217c5e107df42'
-         '1fbf95734ceb475ac2ac6ab085fc1961'
+md5sums=('06f2fd52506049264b0adeffea479934'
+	 '997312a2209229748b0e3518cf51becb'
          ${_md5})
 package()
 {
