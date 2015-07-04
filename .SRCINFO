@@ -1,0 +1,17 @@
+pkgbase = katcli-git
+	pkgdesc = command line interface for kickasstorrents
+	pkgver = r14.7577b6e
+	pkgrel = 1
+	url = http://github.com/wpbirney/katcli
+	install = katcli-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = katcli
+	conflicts = katcli
+	source = git://github.com/wpbirney/katcli
+	md5sums = SKIP
+
+pkgname = katcli-git
+
