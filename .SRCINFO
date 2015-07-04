@@ -1,0 +1,25 @@
+pkgbase = arduino-pinoccio
+	pkgdesc = Arduino libraries for the Pinoccio
+	pkgver = 2014111401
+	pkgrel = 1
+	url = https://pinocc.io
+	arch = any
+	license = BSD
+	depends = arduino
+	source = git+https://github.com/Pinoccio/firmware-pinoccio.git#tag=2014111401
+	source = git+https://github.com/Pinoccio/core-pinoccio.git
+	source = git+https://github.com/Pinoccio/library-bitlash.git
+	source = git+https://github.com/Pinoccio/library-gainspan-s2w.git
+	source = git+https://github.com/quartzjer/js0n.git
+	source = git+https://github.com/Pinoccio/library-atmel-lwm.git
+	source = git+https://github.com/Pinoccio/library-pinoccio.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = arduino-pinoccio
+
