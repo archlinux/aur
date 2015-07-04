@@ -1,7 +1,7 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=('ekstertera')
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc=("GUI client for Yandex.Disk")
 arch=('i686' 'x86_64')
