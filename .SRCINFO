@@ -1,0 +1,17 @@
+pkgbase = stats-tools
+	pkgdesc = A set of command-line statistics tools
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jweslley/stats-tools
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/jweslley/stats-tools/archive/v0.0.1.tar.gz
+	md5sums = c1549f30e942ea3674fa0d98cd5abdda
+
+pkgname = stats-tools
+
