@@ -24,14 +24,14 @@ pkgver(){
 }
 
 prepare() {
-	cd "$srcdir"
-	tar -xpJf data.tar.xz
+  cd "$srcdir"
+  tar -xpJf data.tar.xz
 }
 
 package() {
   mkdir -p "$pkgdir"/usr/lib/pepperflashplugin-nonfree/
   ln -s /usr/lib/PepperFlash/libpepflashplayer.so "$pkgdir"/usr/lib/pepperflashplugin-nonfree/libpepflashplayer.so
-	cd "$srcdir"
-	cp -r opt usr "$pkgdir"
+  cd "$srcdir"
+  cp -r opt usr "$pkgdir"
 }
 
