@@ -1,0 +1,17 @@
+pkgbase = quackle
+	pkgdesc = Free crossword game (Scrabble-like) artificial intelligence and analysis tool
+	pkgver = 0.98
+	pkgrel = 1
+	url = http://people.csail.mit.edu/jasonkb/quackle
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt4
+	depends = qt4
+	source = https://github.com/quackle/quackle/archive/v0.98.tar.gz
+	source = Quackle.in
+	sha256sums = 2ad9b782054a9a466c7a56049003d721c952870abf87490bda7f1e66f8a4e353
+	sha256sums = fabaf321b3ec645ba9561c00202d1a31577b4086014ddb609c06905a6152035a
+
+pkgname = quackle
+
