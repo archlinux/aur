@@ -1,0 +1,7 @@
+post_install() {
+	echo 'Don’t forget to enable/start mycron with systemctl. See https://dev.0x7be.de/mycron.html for setup instructions and configuration examples.' | fold -sw 70
+}
+
+pre_upgrade() {
+	echo "Please note that ${1} is incompatible to versions prior to 2.9 because mycron is a fully-featured daemon/service now and no longer only a wrapper script. The multi-crontab-functionality and some other parts got removed due to general feature cleaning! If you’re already running a higher version it’s all fine." | fold -sw 70
+}

@@ -1,0 +1,33 @@
+.TH mycron.conf 5 "" "" "MYCRON CONFIGURATION FILE FORMAT"
+.SH NAME
+mycron.conf \- configuration files syntax and usage explaination
+
+.SH DESCRIPTION
+\fBmycron\fRs configuration is always user controlled and defaults to the most useful/common values.
+
+.SH LOCATION
+The configuration file has to be stored at \fB${HOME}/.config/mycron/mycron.conf\fR for \fBmycron\fR to recognize it.
+
+.SH EXAMPLE
+Currently there can only the used editor be set. By default the environment variable \fB$VISUAL\fR will be used. Change that in the configuration file as needed.
+.PP
+.nf
+.RS
+[default]
+editor = vim
+.RE
+.fi
+.PP
+The example changes the crontab editing program to \fBvim\fR and makes mycron using it for editing the crontab instead of \fB$VISUAL\fR. Maybe you need to add the \fBDISPLAY\fB environment variable to run GUI tools for editing the crontab.
+.PP
+You can always manually edit the crontab by opening \fB${HOME}/.config/mycron/mycron.crontab\fR in an editor of your choice.
+
+.SH FUTURE
+It is planned to extend the functionality of the configuration file.
+
+.SH AUTHOR
+Dirk Sohler, <spam@0x7be.de>
+
+.SH SEE ALSO
+.BR mycron (1),
+.BR mycron.crontab (5)

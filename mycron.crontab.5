@@ -1,0 +1,55 @@
+.TH mycron 5 "" "" "MYCRON FILE FORMAT"
+.SH NAME
+mycron \- special crontab syntax explaination
+
+.SH DESCRIPTION
+\fBmycron\fRs crontab syntax differs from the usual crontab syntax a lot. Of course you have the date/time part and the command, but the definitions are ISO 8601 valid using a dot (\fB.\fR) as wildcard character.
+
+.SH LOCATION
+The crontab has to be stored at \fB${HOME}/.config/mycron/mycron.crontab\fR for \fBmycron\fR to recognize it. Use \fBmycron -e\fR for creating and editing it in the correct location.
+
+.SH SYNTAX
+.TP
+\fBDate/Time format\fR
+ISO 8601 specifies day/time notation with time zone. Because \fBmycron\fR is only exact to the minute, seconds and time zone are omitted. Set the date with \fBYYYY-MM-DD\fRT\fBHH:MM\fR where \fBYYYY\fR is the year, \fBMM\fR is the month, \fBDD\fR is the day, \fBHH\fR is the hour in 24h format and \fBMM\fR is the minute. For every single digit you can input a \fB.\fR (a single colon) as wildcard.
+.TP
+\fBDay of the week\fR
+ISO 8601 specifies Monday as first day of the week and Sunday as last day of the week, therefore \fBMonday is 1\fR, \fBThursday is 2\fR, ..., \fBSunday is 7\fR. If you use \fB.\fR (a single colon), \fBmycron\fR interprets it as "every day".
+.TP
+\fBCommand\fR
+The last of the three blocks is the command block. Here you can use whatever you want. Please desist from using non-ASCII characters like German umlauts, other special symbols, etc. It will not break mycron or it's validity check, but fails on mycron actually executed by your cron daemon.
+.TP
+\fBComments\fR
+Comments are indicated by using \fB#\fR in the beginning of a line. It might work in most cases but you should not rely on comments after some actual crontab entries. (End-of-line comments)
+
+.SH EXAMPLES
+.TP
+\fB....-..-..T..:.. . command\fR
+This line executes the command every minute at every day.
+.TP
+\fB....-..-..T18:57 7 command\fR
+Here the command gets executed every Sunday at 18:57 o'clock.
+.TP
+\fB....-..-..T07:38 1267 command\fR
+When given multiple digits for the day, the command gets executed on all of the days. Here on Mondays, Tuesdays, Saturdays and Sundays at 07:38 o'clock.
+.TP
+\fB2013-05-..T..:00 4 command\fR
+This very specific line results in execution of the given command on every full hour at every Friday in May 2013.
+.TP
+\fB....-12-..T14:.. . command\fR
+The command will be executed every minute from 14:00 to 14:59 o'clock on everyday in every December.
+.TP
+\fB2018-01-14T10:45 2 command\fR
+Because 2018-01-14 is a Sunday (7) this command will \fBnever\fR be executed :)
+
+.SH FILES
+.TP
+\fBVim syntax file\fR
+/usr/share/doc/mycron/crontab.vim
+
+.SH AUTHOR
+Dirk Sohler, <spam@0x7be.de>
+
+.SH SEE ALSO
+.BR mycron (1),
+.BR mycron.conf (5)

@@ -1,0 +1,11 @@
+[Unit]
+Description=mycron for %i
+Wants=multi-user.target
+
+[Service]
+User=%i
+Restart=always
+ExecStart=/usr/bin/mycron
+
+[Install]
+WantedBy=multi-user.target

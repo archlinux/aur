@@ -1,0 +1,25 @@
+pkgbase = mycron-git
+	pkgdesc = A standards compliant and convenient cron service.
+	pkgver = 3.0
+	pkgrel = 2
+	url = https://dev.0x7be.de/mycron.html
+	install = mycron.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python>=3.0
+	source = git://github.com/dsohler/mycron.git#branch=master
+	source = mycron.install
+	source = mycron.1
+	source = mycron.conf.5
+	source = mycron.crontab.5
+	source = mycron@.service
+	sha256sums = SKIP
+	sha256sums = ca698f40789a69f29ba16e058ae7232a13012c770294d95303babc1ba8d649ae
+	sha256sums = 06e35678ce416e96f8aca6a9a54bdb89a899a4202d36b5b5580a3c91e03b879a
+	sha256sums = 9f1673a4d60758fab889c9256afc74ba0fc6adc7775c69fedfd093d301b15fa0
+	sha256sums = db6f060502d86bfe0cbc209da9bc255db4a213a444e98ac54977765b7c19dd9d
+	sha256sums = 6299cd75c07916b5066c164dad59cdd4b1ad8c85fc4b629a8bf3a7587b8d3e02
+
+pkgname = mycron-git
+

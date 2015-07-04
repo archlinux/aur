@@ -1,0 +1,44 @@
+.TH mycron 1 "2014-06-29" 3.0
+.SH NAME
+mycron - A standards compliant and convenient alternative cronjob system.
+
+.SH SYNOPSIS
+.B mycron
+.RB [\| -h \|]
+.RB [\| -e \|]
+.RB [\| -l \|]
+.RB [\| -c \|]
+.RB [\| -o \|]
+
+.SH DESCRIPTION
+mycron is an alternative cron service/daemon. You need to start the systemd service unit or create a init.d file by yourself or simply start mycron manually for each user and run it in the background.
+.PP
+mycron then replaces your regular crontab setup. It allows you to set up cronjobs in a completely new, but very convenient and standards compliant way and becomes your command center for managing, creating, editing and checking cronjobs.
+
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show inline parameters help
+.TP
+\fB\-e\fR, \fB\-\-edit\fR
+edit crontab (either the default crontab or the one specified by \fB\-u\fR)
+.TP
+\fB\-c\fR, \fB\-\-check\fR
+check the crontab for validity and show all lines that are invalid
+.TP
+\fB\-o\fR, \fB\-\-once\fR
+only run once instead of continuous running
+
+.SH BUGS
+Please desist from using non-ASCII characters like German umlauts, other special symbols, etc. It will not break mycron or it's validity check, but fails on mycron actually executed by your cron daemon.
+
+.SH FULL DOCUMENTATION
+The full documentation of \fBmycron\fR is available online at <http://dev.0x7be.de/mycron.html>. In case of differences the documentation available online is to be looked upon as the more current version.
+
+.SH AUTHOR
+Dirk Sohler, <spam@0x7be.de>
+
+.SH SEE ALSO
+.BR mycron.crontab (5),
+.BR mycron.conf (5),
+.BR systemctl (1)
