@@ -8,7 +8,7 @@
 pkgname=nvidia-rt-lts
 pkgver=352.21
 _extramodules=extramodules-3.18-rt-lts
-pkgrel=1
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-rt-lts."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
