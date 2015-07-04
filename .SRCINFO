@@ -1,0 +1,16 @@
+pkgbase = procker
+	pkgdesc = Process management tool for Procfile-based applications
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = https://github.com/jweslley/procker
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/jweslley/procker/archive/v0.1.1.tar.gz
+	md5sums = ba60ee6e5cd784ea131928db402b366f
+
+pkgname = procker
+
