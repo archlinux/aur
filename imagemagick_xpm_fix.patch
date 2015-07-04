@@ -1,0 +1,8 @@
+--- share/metview/icons/fix_last_line	2013-05-21 11:48:31.762669289 +0200
++++ share/metview/icons/fix_last_line	2013-05-21 11:47:39.427685317 +0200
+@@ -11,4 +11,5 @@
+ 
+ sed -e 's/"};/"\
+ };/' $1 > fixed.xpm
+
++sed -i fixed.xpm -e 's/white/#FFFFFF/' -e 's/snow1/#FFFAFA/'

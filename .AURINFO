@@ -1,0 +1,24 @@
+pkgbase = metview
+	pkgdesc = ECMWF interactive meteorological application
+	pkgver = 4.4.10
+	pkgrel = 1
+	url = https://software.ecmwf.int/wiki/display/METV/Metview
+	install = 
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = APACHE
+	depends = magics++>=2.22
+	depends = mksh
+	depends = openmotif
+	depends = netcdf-cxx-legacy
+	depends = grib_api
+	depends = qtwebkit
+	depends = libxpm
+	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-4.4.10.tar.gz
+	source = imagemagick_xpm_fix.patch
+	md5sums = 13327f8ed5a344b42948f83fb2c44eb9
+	md5sums = 4ab00461ee0fe6d76081eaa89ffe9963
+
+pkgname = metview
+
