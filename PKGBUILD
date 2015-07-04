@@ -22,7 +22,7 @@ url="http://www.bay12forums.com/smf/index.php?topic=129219.0"
 install="dwarffortress-sf.install"
 license=('custom:dwarffortress-sf')
 depends=(gcc-libs glew glu gtk2 libsndfile libxdamage ncurses openal sdl_image sdl_ttf cmake)
-makedepends=(unrar unzip git gcc-multilib)
+makedepends=(unrar unzip git)
 if [[ $CARCH == 'x86_64' ]]; then
   depends=(gcc-libs-multilib lib32-glew lib32-glu lib32-gtk2 lib32-libsndfile lib32-libxdamage lib32-ncurses lib32-openal lib32-sdl_image lib32-sdl_ttf)
   optdepends=('lib32-nvidia-utils: If you have nvidia graphics'
