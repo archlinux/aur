@@ -1,0 +1,44 @@
+pkgbase = paraview-salome
+	pkgdesc = Parallel Visualization Application using VTK - This version is built to be linked against salome-paravis
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://www.paraview.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = eigen3
+	depends = qtwebkit
+	depends = openmpi
+	depends = python2
+	depends = ffmpeg-compat
+	depends = boost
+	depends = libcgns-paraview
+	depends = expat
+	depends = freetype2
+	depends = hdf5
+	depends = libjpeg
+	depends = libxml2
+	depends = libtheora
+	depends = libpng
+	depends = libtiff
+	depends = zlib
+	depends = protobuf
+	optdepends = python2-matplotlib: Needed to support equation rendering using MathText markup language
+	optdepends = python2-numpy: Needed for using some filters such as "Python Calculator"
+	provides = paraview=4.2.0
+	options = staticlibs
+	source = http://paraview.org/files/v4.2/ParaView-v4.2.0-source.tar.gz
+	source = paraview-salome.png
+	source = paraview-salome.desktop
+	source = patch-uint.diff
+	source = patch-salome.diff
+	md5sums = 77cf0e3804eb7bb91d2d94b10bd470f4
+	md5sums = db623002bc71a257ddfdd0c9c7b14c3f
+	md5sums = e3ba22be644f91da7018f429c3b7dd39
+	md5sums = fbe1655d27b78fcb03d756be0810e4e9
+	md5sums = 3e4c48633eb337c42653f51e6112f347
+
+pkgname = paraview-salome
+
