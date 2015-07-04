@@ -6,8 +6,9 @@ pkgbase = perl-module-build-withxspp
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	depends = perl>=5.10.0
+	depends = perl
 	depends = perl-extutils-cppguess
+	depends = perl-extutils-xspp
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Module-Build-WithXSpp-0.14.tar.gz
 	md5sums = f3d6ad08127f62eed9baef131870f450

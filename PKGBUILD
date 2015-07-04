@@ -6,7 +6,7 @@ pkgdesc="Module::Build::WithXSpp - XS++ enhanced flavour of Module::Build"
 arch=('any')
 url="https://metacpan.org/release/Module-Build-WithXSpp/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'perl-extutils-cppguess')
+depends=('perl' 'perl-extutils-cppguess' 'perl-extutils-xspp')
 makedepends=()
 provides=()
 conflicts=()
