@@ -1,3 +1,4 @@
+# Maintainer: Benjamin Chrétien <chretien+aur [at] lirmm [dot] fr>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Rasi <rasi@xssn.at>
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
@@ -5,7 +6,7 @@
 
 pkgname=rofi-git
 _gitname=rofi
-pkgver=r414.c549c4f
+pkgver=0.15.5.r37.g5c9ad80
 pkgrel=1
 pkgdesc="Popup window switcher roughly based on superswitcher, requiring only xlib and xft. DaveDavenport's fork"
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -34,4 +35,11 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make install install-man DESTDIR="$pkgdir"
+
+  # Install examples to /usr/share/rofi
+  install -m 755 -d "$pkgdir/usr/share/rofi/"
+  for example in `find "Examples" -type f -name "*.sh"`
+  do
+    install -m 755 "$example" "$pkgdir/usr/share/rofi/$(basename $example)"
+  done
 }
