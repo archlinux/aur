@@ -1,0 +1,25 @@
+pkgbase = pkgfile-git
+	pkgdesc = a pacman .files metadata explorer
+	pkgver = 15.7.g7ace342
+	pkgrel = 1
+	url = http://github.com/falconindy/pkgfile
+	install = pkgfile.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = perl
+	depends = libarchive
+	depends = curl
+	depends = pcre
+	depends = pacman
+	provides = pkgfile
+	provides = nosr
+	conflicts = pkgfile
+	conflicts = nosr
+	replaces = nosr-git
+	source = git://github.com/falconindy/pkgfile
+	md5sums = SKIP
+
+pkgname = pkgfile-git
+
