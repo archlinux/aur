@@ -36,9 +36,9 @@ source=(
 noextract=()
 sha512sums=('c53f47d11673c8856a7efd410819c845bc25273f4ddc1a535d59253342b319d53b8336ef97b5ec01cbbf3d2596ab7138c4a03d1302bfda70a3f7e1796f412447'
             'SKIP'
-            'd5f31a8f218f3f2b70ee74dddd0c1c1ad21fe38659fc3880fe8749e3e694a2cc7fea69361ec28aa8d5602fb57e7416f0669a2bb165703232e6f02922838e5437'
+            'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
             '4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
-            'ebd43afce78a08d4e868e84bd60f89c896e984c31edca7da29ceddc867565f3b7d1d373515ccd288037e6ce18e650677702649a2bc2d2d26f5ab5a5f976a1f6e')
+            '408162c01ed2a0591ab81e1810db0c258a3b5db072ce7ea40924491797ddd0f15162b3ec01cfaa9e7adb901226610090cd5927738a1360ddadd572f7e732c0eb')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')
 
 # _use_precompiled=1
@@ -63,8 +63,6 @@ fi
 prepare() {
 	msg2 "Patching out U+202F"
 	sed -i -e 's/^202F:.*/202F:00000000000000000000000000000000/' "$srcdir/unifont-$pkgver/font/plane00/nonprinting.hex"
-	msg2 "Restoring the old hex2sfd"
-	cp "$srcdir/unifont-$pkgver/src/hex2sfd-old" "$srcdir/unifont-$pkgver/src/hex2sfd"
 }
 
 build() {
