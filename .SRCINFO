@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-xrandr-indicator-git
+	pkgdesc = Replace the GTK+ based indicator from gnome-settings-daemon with a native one. Lets the user rotate the laptop monitor and open display preferences quickly.
+	pkgver = 20110502
+	pkgrel = 1
+	url = http://live.gnome.org/GnomeShell/Extensions
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = gnome-shell-extension-common-git
+	conflicts = gnome-shell-extensions-git
+
+pkgname = gnome-shell-extension-xrandr-indicator-git
+
