@@ -1,12 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Wilson Birney <wpbirney@gmail.com>
 _gitname=katcli
 pkgname=katcli-git
 pkgver=r14.7577b6e
