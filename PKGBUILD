@@ -12,9 +12,9 @@
 
 pkgbase=linux-libre-grsec-knock   # Build kernel with -grsec-knock localname
 _pkgbasever=4.0-gnu
-_pkgver=4.0.6-gnu
+_pkgver=4.0.7-gnu
 _grsecver=3.1
-_timestamp=201506232104
+_timestamp=201506300712
 _knockpatchver=3.18_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -55,9 +55,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community_grsecurity.patch.sig")
 sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
-            '5cfcee748701771bb2ad46887c6b912fedfffe84bba42ad9e051be54f03a63c9'
+            'c106ac1baa327ba39fc479c6b7b5c3a9f0a523ecc4db2a0be6a1f6f700d5cc53'
             'SKIP'
-            'fda2ca98134d13c60fc9acc1be5e901d516d0e32975f1c8fb3c7eaedea828209'
+            '3193fb68e1ff99465d7f6c40845c83d6de6e367b1dd69be3e56c712885b01566'
             'SKIP'
             '93a1610c203ea4c187ac5b50dce105fac86df914b1406e1d85df5857d36201c9'
             'SKIP'
@@ -162,7 +162,7 @@ _package() {
               'systemd-knock: to use system and service manager with TCP Stealth support'
               'openssh-knock: to use SSH with TCP Stealth support')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
@@ -228,7 +228,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  conflicts=("${_replacesoldkernels[@]/%/-headers}")
   replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -348,7 +348,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  conflicts=("${_replacesoldkernels[@]/%/-docs}")
   replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
 
   cd "${srcdir}/${_srcname}"
