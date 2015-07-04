@@ -1,0 +1,14 @@
+pkgbase = perl-sah
+	pkgdesc = Schema for data structures
+	pkgver = 0.9.37
+	pkgrel = 1
+	url = https://metacpan.org/release/Sah
+	arch = any
+	license = PerlArtistic
+	depends = perl-defhash
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Sah-0.9.37.tar.gz
+	sha512sums = 210a3fc87710b084eb9e570a885c203aaeb9417946689aa0612d7d3279d7c06dd1d0c8442ed68729ffe5e336e709d70cd36db6c8bb6ecc1ba651a4622b633050
+
+pkgname = perl-sah
+
