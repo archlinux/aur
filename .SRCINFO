@@ -1,0 +1,20 @@
+pkgbase = uksmtools
+	pkgdesc = Small set of tools to control UKSM
+	pkgver = 20140911
+	pkgrel = 1
+	url = https://github.com/pfactum/uksmtools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	optdepends = linux-pf: Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3
+	optdepends = linux-uksm Linux Kernel and modules with the UKSM patchset featuring the v1.2.4 and BFQ scheduler
+	optdepends = linux-uksm-ck: Linux Kernel and modules with the UKSM patchset featuring the v1.2.4. and the ck1 patchset featuring the Brain Fuck Scheduler
+	conflicts = uksmstat
+	replaces = uksmstat
+	source = uksmtools-20140911.tar.gz::https://github.com/pfactum/uksmtools/archive/cc76f9f5496d5b5afc1377cce7cc029a3d72e7e9.tar.gz
+	sha256sums = 2d2d59f2aacbe8d873d924b1ee3c83342be22bab0bf3663d5ae56f9757010e54
+
+pkgname = uksmtools
+
