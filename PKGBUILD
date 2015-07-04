@@ -1,4 +1,4 @@
-# Maintainer: Samantha Baldwin <sbaldwin 'at' ednos 'dot' net>
+# Maintainer: Samantha Baldwin <fuhsaz 'plus' aur 'at' cryptic 'dot' li>
 
 pkgname=fusepak
 pkgver=0.5
