@@ -1,0 +1,17 @@
+pkgbase = ncview
+	pkgdesc = A visual browser for netCDF format files
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://meteora.ucsd.edu/~pierce/ncview_home_page.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = netcdf
+	depends = udunits
+	depends = netpbm
+	depends = libxaw
+	source = ftp://cirrus.ucsd.edu/pub/ncview/ncview-2.1.5.tar.gz
+	md5sums = e1f170283cb84d33a7e42747c76fccd7
+
+pkgname = ncview
+
