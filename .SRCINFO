@@ -1,6 +1,6 @@
 pkgbase = parallel-netcdf
 	pkgdesc = Parallel-NetCDF is a library providing high-performance I/O while still maintaining file-format compatibility with Unidata's NetCDF.
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://trac.mcs.anl.gov/projects/parallel-netcdf
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = parallel-netcdf
 	makedepends = gcc-fortran
 	depends = openmpi
 	options = staticlibs
-	source = http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/parallel-netcdf-1.6.0.tar.gz
-	md5sums = 4893a50ddcd487a312c64383bdeb2631
+	source = http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/parallel-netcdf-1.6.1.tar.gz
+	md5sums = d857e467e60789316a0da1d2a8866a58
 
 pkgname = parallel-netcdf
 

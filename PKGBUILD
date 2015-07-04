@@ -1,6 +1,6 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=parallel-netcdf
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Parallel-NetCDF is a library providing high-performance I/O while still maintaining file-format compatibility with Unidata's NetCDF."
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ groups=(science)
 depends=(openmpi)
 makedepends=(gcc-fortran)
 source=(http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/${pkgname}-${pkgver}.tar.gz)
-md5sums=('4893a50ddcd487a312c64383bdeb2631')
+md5sums=('d857e467e60789316a0da1d2a8866a58')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
