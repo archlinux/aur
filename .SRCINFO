@@ -1,0 +1,19 @@
+pkgbase = radare2-bindings-git
+	pkgdesc = Language bindings for radare2 (git version)
+	pkgver = 20150603.484.a938e31
+	pkgrel = 1
+	url = https://radare.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = valabind-git
+	makedepends = radare2-git>=*
+	depends = radare2-git
+	provides = r2-bindings
+	conflicts = r2-bindings
+	source = radare2-bindings-git::git://github.com/radare/radare2-bindings.git
+	md5sums = SKIP
+
+pkgname = radare2-bindings-git
+
