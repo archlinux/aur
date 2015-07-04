@@ -1,6 +1,6 @@
 pkgbase = qt5-xmlpatterns-git
 	pkgdesc = A cross-platform application and UI framework (QtXmlPatterns)
-	pkgver = v5.5.0.rc1.3.g69c5390
+	pkgver = v5.5.0.3.g69c5390
 	pkgrel = 1
 	url = https://qt-project.org/
 	arch = i686
