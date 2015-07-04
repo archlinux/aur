@@ -1,0 +1,20 @@
+pkgbase = cower
+	pkgdesc = A simple AUR agent with a pretentious name
+	pkgver = 12
+	pkgrel = 2
+	url = http://github.com/falconindy/cower
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = perl
+	depends = curl
+	depends = openssl
+	depends = pacman
+	depends = yajl
+	source = http://code.falconindy.com/archive/cower/cower-12.tar.gz
+	source = http://code.falconindy.com/archive/cower/cower-12.tar.gz.sig
+	md5sums = e13a22c4e2595a95cf10fa4370fb0eee
+	md5sums = SKIP
+
+pkgname = cower
+
