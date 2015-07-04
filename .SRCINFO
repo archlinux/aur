@@ -1,0 +1,20 @@
+pkgbase = kdeplasma-applets-hdaps-monitor
+	pkgdesc = A small plasmoid to display the state of your harddisk protected with the hdapsd
+	pkgver = 0.3
+	pkgrel = 7
+	url = http://kde-look.org/content/show.php/HDAPS+monitor?content=103481
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = hdapsd
+	conflicts = plasma-hdaps-monitor-plasmoid
+	replaces = plasma-hdaps-monitor-plasmoid
+	source = http://kde-look.org/CONTENT/content-files/103481-hdaps_monitor-0.3.tar.gz
+	sha512sums = 2fe1b57c751c68396d6a5d893e4746268cb3919a5a816ba0c38154164d12c282f5e2b043e5df1faaad5850a8fdf12a53e4eb07045dae0142c53d56ce99549ee4
+
+pkgname = kdeplasma-applets-hdaps-monitor
+
