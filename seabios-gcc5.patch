@@ -1,0 +1,48 @@
+--- a/seabios-dir-remote/src/kbd.c
++++ b/seabios-dir-remote/src/kbd.c
+@@ -11,7 +11,7 @@
+ #include "hw/ps2port.h" // ps2_kbd_command
+ #include "hw/usb-hid.h" // usb_kbd_command
+ #include "output.h" // debug_enter
+-#include "stacks.h" // stack_hop
++#include "stacks.h" // yield
+ #include "string.h" // memset
+ #include "util.h" // kbd_init
+ 
+@@ -117,8 +117,8 @@ static int
+ kbd_command(int command, u8 *param)
+ {
+     if (usb_kbd_active())
+-        return stack_hop(command, (u32)param, usb_kbd_command);
+-    return stack_hop(command, (u32)param, ps2_kbd_command);
++        return usb_kbd_command(command, param);
++    return ps2_kbd_command(command, param);
+ }
+ 
+ // read keyboard input
+diff --git a/src/mouse.c b/src/mouse.c
+index 83e499d..6d1f5b7 100644
+--- a/seabios-dir-remote/src/mouse.c
++++ b/seabios-dir-remote/src/mouse.c
+@@ -10,7 +10,7 @@
+ #include "hw/ps2port.h" // ps2_mouse_command
+ #include "hw/usb-hid.h" // usb_mouse_command
+ #include "output.h" // dprintf
+-#include "stacks.h" // stack_hop
++#include "stacks.h" // stack_hop_back
+ #include "util.h" // mouse_init
+ 
+ void
+@@ -27,8 +27,8 @@ static int
+ mouse_command(int command, u8 *param)
+ {
+     if (usb_mouse_active())
+-        return stack_hop(command, (u32)param, usb_mouse_command);
+-    return stack_hop(command, (u32)param, ps2_mouse_command);
++        return usb_mouse_command(command, param);
++    return ps2_mouse_command(command, param);
+ }
+ 
+ #define RET_SUCCESS      0x00
+
+--
