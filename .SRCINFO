@@ -1,0 +1,21 @@
+pkgbase = thermald-git
+	pkgdesc = The Linux Thermal Daemon program from 01.org
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/01org/thermal_daemon
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dbus-glib>=0.94
+	depends = libxml2>=2.4
+	provides = thermald
+	conflicts = thermald
+	backup = etc/thermald/thermal-conf.xml
+	source = thermald::git://github.com/01org/thermal_daemon.git
+	source = modules-load-msr.conf
+	md5sums = SKIP
+	md5sums = 3f8abd21c1be92e631fd9f557c61355b
+
+pkgname = thermald-git
+
