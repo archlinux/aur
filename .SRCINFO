@@ -1,7 +1,7 @@
 pkgbase = dwarffortress-spacefox
 	pkgdesc = A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack. Does not replace other dwarffortress packages.
 	pkgver = 0.40.24
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bay12forums.com/smf/index.php?topic=129219.0
 	install = dwarffortress-sf.install
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = dwarffortress-spacefox
 	makedepends = unrar
 	makedepends = unzip
 	makedepends = git
-	makedepends = gcc-multilib
 	depends = gcc-libs
 	depends = glew
 	depends = glu
