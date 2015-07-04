@@ -1,0 +1,23 @@
+pkgbase = gmt
+	pkgdesc = Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
+	pkgver = 5.1.2
+	pkgrel = 1
+	url = http://gmt.soest.hawaii.edu/
+	install = gmt.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = gdal
+	depends = fftw
+	optdepends = ghostscript
+	optdepends = python-sphynx
+	optdepends = python2-sphynx
+	optdepends = gmt-coast
+	optdepends = gmt-dcw
+	conflicts = gmt4
+	source = ftp://ftp.soest.hawaii.edu/gmt/gmt-5.1.2-src.tar.bz2
+	md5sums = 66212f2f237843a448fa9c0ec6cfb86d
+
+pkgname = gmt
+
