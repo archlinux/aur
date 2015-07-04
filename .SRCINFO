@@ -1,0 +1,15 @@
+pkgbase = dswitcher-git
+	pkgdesc = Dmenu-based window switcher for EWHM-compliant X11 window managers
+	pkgver = 10
+	pkgrel = 2
+	url = https://github.com/Antithesisx/dswitcher
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = wmctrl
+	depends = dmenu
+	source = git://github.com/Antithesisx/dswitcher.git
+	md5sums = SKIP
+
+pkgname = dswitcher-git
+
