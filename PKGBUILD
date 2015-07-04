@@ -9,7 +9,7 @@ url="http://valentinaproject.bitbucket.org"
 license=('GPL3')
 source=('hg+https://bitbucket.org/dismine/valentina')
 depends=('qt5-svg')
-makedepends=('mercurial')
+makedepends=('mercurial' 'imagemagick')
 md5sums=('SKIP')
 
 pkgver() {
