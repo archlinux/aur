@@ -32,21 +32,6 @@ prepare(){
 
   # patch taken from salome distro
   patch -Np1 -i "${srcdir}/patch-salome.diff"
-
-  # see http://www.paraview.org/pipermail/paraview/2014-February/030517.html
-  #patch -Np1 -i "${srcdir}/patch-mpi4py.diff"
-
-  # necessary to compile with local tiff
-  #patch -Np1 -i "${srcdir}/patch-local-tiff.diff"
-
-  # doesn't use local glext.h
-  #patch -Np1 -i "${srcdir}/patch-no-local-glext.h.diff"
-  
-  # Fix rescale over time in colo map editor: http://review.source.kitware.com/#/c/14052/
-  #patch -Np1 -i "${srcdir}/patch-rescale-over-time.diff"
-  
-  # patch to solve uint conversion to int
-  #patch -Np1 -i "${srcdir}/freetype-uint.diff"
 }
 
 build() {
