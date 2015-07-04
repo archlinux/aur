@@ -5,7 +5,6 @@ post_install() {
 }
 pre_upgrade() {
 #	${HS_DIR}/unregister.sh
-	echo ""
 }
 post_upgrade() {
 	${HS_DIR}/register.sh
