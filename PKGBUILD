@@ -17,7 +17,7 @@ pkgbase=linux-lts-tresor    # Build stock -lts kernel with TRESOR patches
 _srcname=linux-3.14
 pkgname=linux-lts-tresor # placeholder
 pkgdesc="Linux longterm stable kernel and modules with integrated TRESOR"
-pkgver=3.14.45
+pkgver=3.14.46
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www1.informatik.uni-erlangen.de/tresor"
@@ -50,7 +50,7 @@ source_x86_64+=("http://www1.informatik.uni-erlangen.de/filepool/projects/tresor
 
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            'a652bc01594f6cea4885ca55c6a6b8b19289ee7c05f927c885411537d70cd7af'
+            '06bda2457a41d28c7b782739e85bd9074b29cb2bf28fd9d18a0b797c958175ad'
             'SKIP'
             '4e99472f8281b485a9ef3468de13e909597c9d921706b306fbb26960941d595e'
             '145a66ef4f702ed516a57d846dd00b5acac7b5cc1eff86d1e7ee6bd5a66040b2'
@@ -64,10 +64,10 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'd6fcbd0ea7a5a4c42d326286b60bbd5b1d476b8a6752046fa28133e05351c1fe'
             '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
 sha256sums_i686=('9a286a85c16ca5b6a02419af1aedbfe6e8b89bcabdcb32670ead3f26c09eadfd'
-                 'c37ffc3d12b6763707a4fa9984453535d60dc04eb1bf1cffc5b9304410fd22ea'
+                 '51f52f65c8b932f04e4ed89b1be5cc9313ac2ff3dd5d4e3962166c67c424c696'
                  'SKIP')
 sha256sums_x86_64=('54009b369b95a77ab13f6dd7cdbe22b0785b6314cae3a6c39190b48f4c4b12ce'
-                   '9db1161de0940baac8043a1340946d695d6078dd79fd049933a6150e3e2ef78b'
+                   '052871ccf9769ac3404c2ff36e4cf02a5487bc2160e3f8e9acdf66aea88df1e9'
                    'SKIP')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
