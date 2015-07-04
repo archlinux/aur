@@ -1,0 +1,18 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: FIX: patch needed for tests to build.
+Last-Updated: 2011-10-24
+Forwarded: no
+
+Index: gadap-2.0/test/test.cc
+===================================================================
+--- gadap-2.0.orig/test/test.cc	2011-10-24 15:23:24.000000000 +0100
++++ gadap-2.0/test/test.cc	2011-10-24 15:37:03.000000000 +0100
+@@ -9,6 +9,8 @@
+ #include "gadap.h"
+ #include <iostream>
+ #include <string>
++#include <stdlib.h>
++#include <string.h>
+ 
+ using namespace std;
+ 

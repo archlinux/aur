@@ -1,0 +1,22 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description:  FIX: dap-config no longer prints 'libdap', which breaks configure
+Last-Updated: 2011-10-24
+Forwarded: no
+
+Index: gadap-2.0/m4/libdap.m4
+===================================================================
+--- gadap-2.0.orig/m4/libdap.m4	2008-07-25 21:43:24.000000000 +0100
++++ gadap-2.0/m4/libdap.m4	2011-10-24 11:58:03.000000000 +0100
+@@ -37,9 +37,9 @@
+   if test "$DAP_CONFIG" = "no" ; then
+      dap_no=yes
+   else
+-     dap_config_major_version=`$DAP_CONFIG --version | sed 's/^libdap \([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$/\1/'`
+-     dap_config_minor_version=`$DAP_CONFIG --version | sed 's/^libdap \([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$/\2/'`
+-     dap_config_micro_version=`$DAP_CONFIG --version | sed 's/^libdap \([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$/\2/'`
++     dap_config_major_version=`$DAP_CONFIG --version | sed 's/^\([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$/\1/'`
++     dap_config_minor_version=`$DAP_CONFIG --version | sed 's/^\([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$/\2/'`
++     dap_config_micro_version=`$DAP_CONFIG --version | sed 's/^\([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$/\2/'`
+      dap_min_major_version=`echo $dap_min_version | sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+      dap_min_minor_version=`echo $dap_min_version | sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+      dap_min_micro_version=`echo $dap_min_version | sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`

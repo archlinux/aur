@@ -1,0 +1,815 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: FIX: libdap  now requires the namespace 'libdap'
+Last-Updated: 2011-10-24
+Forwarded: no
+
+Index: gadap-2.0/src/gaBaseTypes.h
+===================================================================
+--- gadap-2.0.orig/src/gaBaseTypes.h	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaBaseTypes.h	2011-10-24 12:43:19.000000000 +0100
+@@ -32,7 +32,7 @@
+  */
+ 
+ 
+-class gaStr: public Str {
++class gaStr: public libdap::Str {
+ public:
+   gaStr(const string &n = "");
+   virtual ~gaStr();
+@@ -46,7 +46,7 @@
+   string * publicval;
+ };
+ 
+-class gaUrl: public Url {
++class gaUrl: public libdap::Url {
+ public:
+   gaUrl(const string &n = "");
+   virtual ~gaUrl();
+Index: gadap-2.0/src/gaTypeFactory.h
+===================================================================
+--- gadap-2.0.orig/src/gaTypeFactory.h	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaTypeFactory.h	2011-10-24 13:00:26.000000000 +0100
+@@ -49,26 +49,26 @@
+ 
+     @author James Gallagher
+     @see DDS */
+-class gaTypeFactory: public BaseTypeFactory {
++class gaTypeFactory: public libdap::BaseTypeFactory {
+ public:
+     gaTypeFactory() {} 
+     virtual ~gaTypeFactory() {}
+ 
+-    virtual Byte *NewByte(const string &n = "") const;
+-    virtual Int16 *NewInt16(const string &n = "") const;
+-    virtual UInt16 *NewUInt16(const string &n = "") const;
+-    virtual Int32 *NewInt32(const string &n = "") const;
+-    virtual UInt32 *NewUInt32(const string &n = "") const;
+-    virtual Float32 *NewFloat32(const string &n = "") const;
+-    virtual Float64 *NewFloat64(const string &n = "") const;
++    virtual libdap::Byte *NewByte(const string &n = "") const;
++    virtual libdap::Int16 *NewInt16(const string &n = "") const;
++    virtual libdap::UInt16 *NewUInt16(const string &n = "") const;
++    virtual libdap::Int32 *NewInt32(const string &n = "") const;
++    virtual libdap::UInt32 *NewUInt32(const string &n = "") const;
++    virtual libdap::Float32 *NewFloat32(const string &n = "") const;
++    virtual libdap::Float64 *NewFloat64(const string &n = "") const;
+ 
+-    virtual Str *NewStr(const string &n = "") const;
+-    virtual Url *NewUrl(const string &n = "") const;
++    virtual libdap::Str *NewStr(const string &n = "") const;
++    virtual libdap::Url *NewUrl(const string &n = "") const;
+ 
+-    virtual Array *NewArray(const string &n = "", BaseType *v = 0) const;
+-    virtual Structure *NewStructure(const string &n = "") const;
+-    virtual Sequence *NewSequence(const string &n = "") const;
+-    virtual Grid *NewGrid(const string &n = "") const;
++    virtual libdap::Array *NewArray(const string &n = "", libdap::BaseType *v = 0) const;
++    virtual libdap::Structure *NewStructure(const string &n = "") const;
++    virtual libdap::Sequence *NewSequence(const string &n = "") const;
++    virtual libdap::Grid *NewGrid(const string &n = "") const;
+ };
+ 
+ #endif // nc_type_factory_h
+Index: gadap-2.0/src/gaBaseTypes.cc
+===================================================================
+--- gadap-2.0.orig/src/gaBaseTypes.cc	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaBaseTypes.cc	2011-10-24 13:04:48.000000000 +0100
+@@ -47,7 +47,7 @@
+   if (publicval) delete publicval;
+ }
+ 
+-BaseType *gaStr::ptr_duplicate() {
++libdap::BaseType *gaStr::ptr_duplicate() {
+   return new gaStr(*this); 
+ } 
+ bool gaStr::read(const string &dataset) {
+@@ -71,7 +71,7 @@
+   if (publicval) delete publicval;
+ }
+ 
+-BaseType *gaUrl::ptr_duplicate() {
++libdap::BaseType *gaUrl::ptr_duplicate() {
+   return new gaUrl(*this); 
+ } 
+ 
+@@ -91,9 +91,9 @@
+  *  declare and define them here.
+  */
+ 
+-class gaArray: public Array {
++class gaArray: public libdap::Array {
+ public:
+-  gaArray(const string &n = "", BaseType *v = 0)  : Array(n, v) {}
++  gaArray(const string &n = "", libdap::BaseType *v = 0)  : Array(n, v) {}
+   virtual ~gaArray() {}
+   virtual BaseType *ptr_duplicate() {
+     return new gaArray(*this); 
+@@ -104,7 +104,7 @@
+ };
+ 
+ 
+-class gaByte: public Byte {
++class gaByte: public libdap::Byte {
+ public:
+   gaByte(const string &n = "")  : Byte(n) {}
+   virtual ~gaByte() {}
+@@ -117,7 +117,7 @@
+ };
+ 
+ 
+-class gaFloat32: public Float32 {
++class gaFloat32: public libdap::Float32 {
+ public:
+   gaFloat32(const string &n = "")  : Float32(n) {}
+   virtual ~gaFloat32() {}
+@@ -130,7 +130,7 @@
+ };
+ 
+ 
+-class gaFloat64: public Float64 {
++class gaFloat64: public libdap::Float64 {
+ public:
+   gaFloat64(const string &n = "")  : Float64(n) {}
+   virtual ~gaFloat64() {}
+@@ -143,7 +143,7 @@
+ };
+ 
+ 
+-class gaGrid: public Grid {
++class gaGrid: public libdap::Grid {
+ public:
+   gaGrid(const string &n = "")  : Grid(n) {}
+   virtual ~gaGrid() {}
+@@ -156,7 +156,7 @@
+ };
+ 
+ 
+-class gaInt16: public Int16 {
++class gaInt16: public libdap::Int16 {
+ public:
+   gaInt16(const string &n = "")  : Int16(n) {}
+   virtual ~gaInt16() {}
+@@ -169,7 +169,7 @@
+ };
+ 
+ 
+-class gaInt32: public Int32 {
++class gaInt32: public libdap::Int32 {
+ public:
+   gaInt32(const string &n = "")  : Int32(n) {}
+   virtual ~gaInt32() {}
+@@ -182,7 +182,7 @@
+ };
+ 
+ #if 0
+-class gaList: public List {
++class gaList: public libdap::List {
+ public:
+   gaList(const string &n = "", BaseType *v = 0)  : List(n, v) {}
+   virtual ~gaList() {}
+@@ -195,7 +195,7 @@
+ };
+ #endif
+ 
+-class gaSequence: public Sequence {
++class gaSequence: public libdap::Sequence {
+ public:
+   gaSequence(const string &n = "")  : Sequence(n) {}
+   virtual ~gaSequence() {}
+@@ -208,7 +208,7 @@
+ };
+ 
+ 
+-class gaStructure: public Structure {
++class gaStructure: public libdap::Structure {
+ public:
+   gaStructure(const string &n = "")  : Structure(n) {}
+   virtual ~gaStructure() {}
+@@ -221,7 +221,7 @@
+ };
+ 
+ 
+-class gaUInt16: public UInt16 {
++class gaUInt16: public libdap::UInt16 {
+ 
+ public:
+   gaUInt16(const string &n = "")  : UInt16(n) {}
+@@ -235,7 +235,7 @@
+ };
+ 
+ 
+-class gaUInt32: public UInt32 {
++class gaUInt32: public libdap::UInt32 {
+ public:
+   gaUInt32(const string &n = "")  : UInt32(n) {}
+   virtual ~gaUInt32() {}
+@@ -247,81 +247,81 @@
+   }
+ };
+ 
+-Byte *
++libdap::Byte *
+ gaTypeFactory::NewByte(const string &n ) const 
+ { 
+     return new gaByte(n);
+ }
+ 
+-Int16 *
++libdap::Int16 *
+ gaTypeFactory::NewInt16(const string &n ) const 
+ { 
+     return new gaInt16(n); 
+ }
+ 
+-UInt16 *
++libdap::UInt16 *
+ gaTypeFactory::NewUInt16(const string &n ) const 
+ { 
+     return new gaUInt16(n);
+ }
+ 
+-Int32 *
++libdap::Int32 *
+ gaTypeFactory::NewInt32(const string &n ) const 
+ { 
+     DBG(cerr << "Inside gaTypeFactory::NewInt32" << endl);
+     return new gaInt32(n);
+ }
+ 
+-UInt32 *
++libdap::UInt32 *
+ gaTypeFactory::NewUInt32(const string &n ) const 
+ { 
+     return new gaUInt32(n);
+ }
+ 
+-Float32 *
++libdap::Float32 *
+ gaTypeFactory::NewFloat32(const string &n ) const 
+ { 
+     return new gaFloat32(n);
+ }
+ 
+-Float64 *
++libdap::Float64 *
+ gaTypeFactory::NewFloat64(const string &n ) const 
+ { 
+     return new gaFloat64(n);
+ }
+ 
+-Str *
++libdap::Str *
+ gaTypeFactory::NewStr(const string &n ) const 
+ { 
+     return new gaStr(n);
+ }
+ 
+-Url *
++libdap::Url *
+ gaTypeFactory::NewUrl(const string &n ) const 
+ { 
+     return new gaUrl(n);
+ }
+ 
+-Array *
+-gaTypeFactory::NewArray(const string &n , BaseType *v) const 
++libdap::Array *
++gaTypeFactory::NewArray(const string &n , libdap::BaseType *v) const 
+ { 
+     return new gaArray(n, v);
+ }
+ 
+-Structure *
++libdap::Structure *
+ gaTypeFactory::NewStructure(const string &n ) const 
+ { 
+     return new gaStructure(n);
+ }
+ 
+-Sequence *
++libdap::Sequence *
+ gaTypeFactory::NewSequence(const string &n ) const 
+ { 
+     DBG(cerr << "Inside gaTypeFactory::NewSequence" << endl);
+     return new gaSequence(n);
+ }
+ 
+-Grid *
++libdap::Grid *
+ gaTypeFactory::NewGrid(const string &n ) const 
+ { 
+     return new gaGrid(n);
+Index: gadap-2.0/src/gaConnect.cc
+===================================================================
+--- gadap-2.0.orig/src/gaConnect.cc	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaConnect.cc	2011-10-24 14:16:04.000000000 +0100
+@@ -21,10 +21,12 @@
+ #include <strstream>
+ #include <algorithm>
+ 
++#include <string.h>
++
+ gaConnect::gaConnect(string name, string uname, string password) 
+     : Connect(name, uname, password), d_dds(0) {
+ 
+-  BaseTypeFactory factory;
++  libdap::BaseTypeFactory factory;
+   d_dds.set_factory(&factory); // to avoid seg faults
+ 
+   url = name;
+@@ -113,8 +115,8 @@
+   // initialize 2D array of attributes, with one extra element for globals
+   attributes = vector<vector<gadap_attrib > >(variables.size() + 1);
+ 
+-  AttrTable *table;
+-  AttrTable::Attr_iter p = d_das.var_begin();
++  libdap::AttrTable *table;
++  libdap::AttrTable::Attr_iter p = d_das.var_begin();
+   while (p != d_das.var_end()) {
+     parseAttrTable(d_das.get_table(p), d_das.get_name(p), variables.size());
+     p++;
+@@ -122,7 +124,7 @@
+     
+ }
+ 
+-void gaConnect::parseAttrTable(AttrTable *table, string base_name, int varindex) {
++void gaConnect::parseAttrTable(libdap::AttrTable *table, string base_name, int varindex) {
+   // variables.size() is index used for global variables in attributes array
+   string new_base_name;
+   if (varindex == variables.size()) {
+@@ -144,7 +146,7 @@
+   gadap_attrib next;
+   string attr_name;
+   string attr_value;
+-  AttrTable::Attr_iter p = table->attr_begin();
++  libdap::AttrTable::Attr_iter p = table->attr_begin();
+   while (p != table->attr_end()) {
+     attr_name = new_base_name + table->get_name(p);
+     if (table->is_container(p)) {
+@@ -355,7 +357,7 @@
+ gaReports *
+ gaConnect::getReports(GADAP_STN_QUERY *query) {
+ 
+-  BaseTypeFactory factory;
++  libdap::BaseTypeFactory factory;
+ 
+   if (query == NULL) {
+     return NULL;
+@@ -366,7 +368,7 @@
+  
+   // send request
+   // Where is request_dds deleted? jhrg
+-  DataDDS *request_dds = new DataDDS(&factory);
++  libdap::DataDDS *request_dds = new libdap::DataDDS(&factory);
+   //Changed to new call. jhrg
+   request_data(*request_dds, string(query->constraint));
+ 
+Index: gadap-2.0/src/gaConnect.h
+===================================================================
+--- gadap-2.0.orig/src/gaConnect.h	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaConnect.h	2011-10-24 13:28:11.000000000 +0100
+@@ -29,10 +29,10 @@
+   string value;
+ } gadap_attrib;
+ 
+-class gaConnect: public Connect {
++class gaConnect: public libdap::Connect {
+ 
+- DAS d_das;
+- DDS d_dds;
++ libdap::DAS d_das;
++ libdap::DDS d_dds;
+ 
+  public:
+ 
+@@ -128,7 +128,7 @@
+ 
+   // Helper functions
+   void buildAttrList();
+-  void parseAttrTable(AttrTable *table, string base_name, int varindex);
++  void parseAttrTable(libdap::AttrTable *table, string base_name, int varindex);
+   int convertGlobalIndex(int varIndex);
+     
+   // Data members
+Index: gadap-2.0/src/gaReports.cc
+===================================================================
+--- gadap-2.0.orig/src/gaReports.cc	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaReports.cc	2011-10-24 14:52:56.000000000 +0100
+@@ -12,6 +12,7 @@
+  */
+ 
+ #include <iostream>
++#include <string.h>
+ #include "gaReports.h"
+ #include "gaUtils.h"
+ #include "Grid.h"
+@@ -22,7 +23,7 @@
+ 
+ using namespace std;
+ 
+-gaReports::gaReports(DDS *_data, string _url) :
++gaReports::gaReports(libdap::DDS *_data, string _url) :
+   data(_data), url(_url) { 
+ 
+   parseVars(variables, *data, numIVars);
+@@ -98,7 +99,7 @@
+     return 0;
+   }
+ 
+-  Sequence *levels = getLevels(rpt_index);
++  libdap::Sequence *levels = getLevels(rpt_index);
+   if (levels == NULL) {
+     return errval(GADAP_ERR_INDEX_OUT_OF_RANGE);
+   } else {
+@@ -109,7 +110,7 @@
+ int gaReports::getVarDbl(int rpt_index, int lev_index, int var_index, int array_index,
+ 			 double *value) {
+ 
+-  BaseType * var = getVarPtr(rpt_index, lev_index, var_index);
++  libdap::BaseType * var = getVarPtr(rpt_index, lev_index, var_index);
+   if (!var) {
+     return errval(GADAP_ERR_INDEX_OUT_OF_RANGE);
+   }
+@@ -125,7 +126,7 @@
+ 
+   char * buf = NULL;
+ 
+-  if (var->type() == dods_str_c || var->type() == dods_url_c) {
++  if (var->type() == libdap::dods_str_c || var->type() == libdap::dods_url_c) {
+     // could try to parse string into float here if we wanted (for JGOFS?)
+     return errval(GADAP_ERR_BAD_VARIABLE_TYPE);
+   } else {
+@@ -137,26 +138,26 @@
+   // the current DAP menagerie)
+   switch (var->type()) {
+ 
+-  case dods_byte_c:
+-    (*value) = (double)(*((dods_byte *)buf));
++  case libdap::dods_byte_c:
++    (*value) = (double)(*((libdap::dods_byte *)buf));
+     break;
+-  case dods_int16_c:
+-    (*value) = (double)(*((dods_int16 *)buf));
++  case libdap::dods_int16_c:
++    (*value) = (double)(*((libdap::dods_int16 *)buf));
+     break;
+-  case dods_uint16_c:
+-    (*value) = (double)(*((dods_uint16 *)buf));
++  case libdap::dods_uint16_c:
++    (*value) = (double)(*((libdap::dods_uint16 *)buf));
+     break;
+-  case dods_int32_c:
+-    (*value) = (double)(*((dods_int32*)buf));
++  case libdap::dods_int32_c:
++    (*value) = (double)(*((libdap::dods_int32*)buf));
+     break;
+-  case dods_uint32_c:
+-    (*value) = (double)(*((dods_uint32 *)buf));
++  case libdap::dods_uint32_c:
++    (*value) = (double)(*((libdap::dods_uint32 *)buf));
+     break;
+-  case dods_float32_c:
+-    (*value) = (double)(*((dods_float32 *)buf));
++  case libdap::dods_float32_c:
++    (*value) = (double)(*((libdap::dods_float32 *)buf));
+     break;
+-  case dods_float64_c:
+-    (*value) = (double)(*((dods_float64 *)buf));
++  case libdap::dods_float64_c:
++    (*value) = (double)(*((libdap::dods_float64 *)buf));
+     break;
+   default:
+     return errval(GADAP_ERR_BAD_VARIABLE_TYPE);
+@@ -171,7 +172,7 @@
+ const char * 
+ gaReports::getVarStr(int rpt_index, int lev_index, int var_index, int array_index) {
+ 
+-  BaseType * var = getVarPtr(rpt_index, lev_index, var_index);
++  libdap::BaseType * var = getVarPtr(rpt_index, lev_index, var_index);
+   if (!var) {
+     return NULL;
+   }
+@@ -185,7 +186,7 @@
+     return NULL;
+   }
+  
+-  if (var->type() == dods_str_c) {
++  if (var->type() == libdap::dods_str_c) {
+     //     gaStr * strVar = dynamic_cast<gaStr *>(var);
+     //     return strVar->getStringVal()->c_str();
+ 
+@@ -204,7 +205,7 @@
+     free(buf);
+     return str;
+ 
+-  } else if (var->type() == dods_url_c) {
++  } else if (var->type() == libdap::dods_url_c) {
+     //     gaUrl * urlVar = dynamic_cast<gaUrl *>(var);
+     //     return urlVar->getStringVal()->c_str();
+ 
+@@ -235,7 +236,7 @@
+ 
+  
+ /** Returns the BaseType object at the requested indices */
+-BaseType * 
++libdap::BaseType * 
+ gaReports::getVarPtr(int rpt_index, int lev_index, int var_index) {
+   if (var_index < 0 || var_index > variables.size() - 1 || 
+       rpt_index < 0 || rpt_index > reports->number_of_rows() - 1) {
+@@ -246,7 +247,7 @@
+     return reports->var_value(rpt_index, var_index);
+ 
+   } else { // multi-level
+-    Sequence *levels = getLevels(rpt_index);
++    libdap::Sequence *levels = getLevels(rpt_index);
+     if (var_index >= numIVars && 
+ 	(lev_index < 0 || lev_index > levels->number_of_rows() - 1)) {
+       return NULL;
+@@ -257,11 +258,11 @@
+ }
+ 
+ /** Returns the inner sequence for the report collection, if any */
+-Sequence *gaReports::getLevels(int rpt_index) {
++libdap::Sequence *gaReports::getLevels(int rpt_index) {
+   if (rpt_index < 0 || rpt_index > reports->number_of_rows() - 1) {
+     return NULL;
+   } else {
+-    return dynamic_cast<Sequence*>(reports->var_value(rpt_index, levels->name()));
++    return dynamic_cast<libdap::Sequence*>(reports->var_value(rpt_index, levels->name()));
+   }
+ }
+ 
+@@ -270,17 +271,17 @@
+  * the main array for a grid. Multi-dimensional arrays are treated as
+  * 1-D vectors using the Vector->var(index) interface. This routine is
+  * a no-op for non-array variables.  */
+-BaseType * gaReports::unpackArray(BaseType * var, int array_index) {
++libdap::BaseType * gaReports::unpackArray(libdap::BaseType * var, int array_index) {
+ 
+   // extract the main array out of a grid
+-  if (var->type() == dods_grid_c) {
+-    Grid * grid = dynamic_cast<Grid *>(var);
++  if (var->type() == libdap::dods_grid_c) {
++    libdap::Grid * grid = dynamic_cast<libdap::Grid *>(var);
+     var = grid->array_var();
+   }
+ 
+   // extract the requested element from an array
+-  if (var->type() == dods_array_c) {
+-    Array * array = dynamic_cast<Array *>(var);
++  if (var->type() == libdap::dods_array_c) {
++    libdap::Array * array = dynamic_cast<libdap::Array *>(var);
+     if (array_index >= 0 || array_index < array->length()) {
+       var = array->var(array_index);
+     }
+Index: gadap-2.0/src/gaReports.h
+===================================================================
+--- gadap-2.0.orig/src/gaReports.h	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaReports.h	2011-10-24 13:27:13.000000000 +0100
+@@ -23,7 +23,7 @@
+ 
+  public: 
+   
+-  gaReports(DDS *_data, string url);
++  gaReports(libdap::DDS *_data, string url);
+ 
+   ~gaReports();
+ 
+@@ -69,17 +69,17 @@
+   
+  private:
+ 
+-  BaseType * unpackArray(BaseType * var, int array_index);
++  libdap::BaseType * unpackArray(libdap::BaseType * var, int array_index);
+   
+-  BaseType * getVarPtr(int rpt_index, int lev_index, int var_index);
++  libdap::BaseType * getVarPtr(int rpt_index, int lev_index, int var_index);
+     
+-  Sequence *getLevels(int rpt_index);
++  libdap::Sequence *getLevels(int rpt_index);
+   
+   GADAP_DATASET dataset;
+   string url;
+   vector<gadap_varinfo> variables;
+-  DDS *data;
+-  Sequence *reports, *levels;
++  libdap::DDS *data;
++  libdap::Sequence *reports, *levels;
+   bool hasLevels;
+   GADAP_STN_QUERY *query;
+   int stidIndex, timeIndex, latIndex, lonIndex, levIndex;
+Index: gadap-2.0/src/gaTypeFactory.cc
+===================================================================
+--- gadap-2.0.orig/src/gaTypeFactory.cc	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaTypeFactory.cc	2011-10-24 13:01:04.000000000 +0100
+@@ -45,7 +45,7 @@
+ #include "gaTypeFactory.h"
+ #include "debug.h"
+ 
+-Byte *
++libdap::Byte *
+ gaTypeFactory::NewByte(const string &n ) const 
+ { 
+     return new gaByte(n);
+Index: gadap-2.0/src/gaUtils.cc
+===================================================================
+--- gadap-2.0.orig/src/gaUtils.cc	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaUtils.cc	2011-10-24 15:09:22.000000000 +0100
+@@ -23,30 +23,30 @@
+ #include <BaseType.h>
+ #include <strstream>
+ 
+-Sequence * findOuterSequence(DDS &dds) {
+-  BaseType * cur = NULL;
+-  DDS::Vars_iter p0 = dds.var_begin();
++libdap::Sequence * findOuterSequence(libdap::DDS &dds) {
++  libdap::BaseType * cur = NULL;
++  libdap::DDS::Vars_iter p0 = dds.var_begin();
+   while (p0 != dds.var_end()) {
+     cur = *p0;
+     // cout << "top level: " << cur->name() << endl;
+-    if (cur->type() == dods_sequence_c) {
+-      return dynamic_cast<Sequence *>(cur);
++    if (cur->type() == libdap::dods_sequence_c) {
++      return dynamic_cast<libdap::Sequence *>(cur);
+     }
+     ++p0; // Added jhrg (I didn't see any prev code to incr the iter/Pix
+   }
+   return NULL;
+ }
+ 
+-Sequence * findInnerSequence(Sequence * outer) {
+-  BaseType * cur = NULL;
++libdap::Sequence * findInnerSequence(libdap::Sequence * outer) {
++  libdap::BaseType * cur = NULL;
+   // Pix p0 = outer->first_var();
+-  Constructor::Vars_iter p0 = outer->var_begin();
++  libdap::Constructor::Vars_iter p0 = outer->var_begin();
+   while (p0 != outer->var_end()) {
+     // cur = outer->var(p0);
+     cur = *p0;
+     // cout << "top level: " << cur->name() << endl;
+-    if (cur->type() == dods_sequence_c) {
+-      return dynamic_cast<Sequence *>(cur);
++    if (cur->type() == libdap::dods_sequence_c) {
++      return dynamic_cast<libdap::Sequence *>(cur);
+     }
+     // outer->next_var(p0);
+     ++p0;
+@@ -57,8 +57,8 @@
+ /** Used by parseVars */
+ void parseSingleVar(vector<gadap_varinfo> &variables, 
+ 		   string base_name, 
+-		   BaseType * var) {
+-  Array * array;
++		   libdap::BaseType * var) {
++  libdap::Array * array;
+   gadap_varinfo info;
+   info.name = var->name();
+   info.longname = base_name + var->name();
+@@ -66,18 +66,18 @@
+   info.type = GADAP_DBL_TYPE;
+ 
+   // get main array out of grid
+-  if (var->type() == dods_grid_c) {
+-    Grid * grid = dynamic_cast<Grid *>(var);
++  if (var->type() == libdap::dods_grid_c) {
++    libdap::Grid * grid = dynamic_cast<libdap::Grid *>(var);
+     var = grid->array_var();
+   }
+     
+   switch (var->type()) {
+-  case dods_array_c:
+-    array = dynamic_cast<Array *>(var);
++  case libdap::dods_array_c:
++    array = dynamic_cast<libdap::Array *>(var);
+     info.length = array->length();
+     break;
+-  case dods_str_c:
+-  case dods_url_c:
++  case libdap::dods_str_c:
++  case libdap::dods_url_c:
+     info.type = GADAP_STR_TYPE;
+     break;
+   }
+@@ -88,20 +88,20 @@
+ /** Used by parseVars */
+ int parseStructure(vector<gadap_varinfo> &variables, 
+ 		   string base_name, 
+-		   Structure * structure) {
+-  BaseType *var;
++		   libdap::Structure * structure) {
++  libdap::BaseType *var;
+   gadap_varinfo info;
+   base_name = base_name + structure->name() + ".";
+   // Pix p = structure->first_var();
+-  Constructor::Vars_iter p = structure->var_begin();
++  libdap::Constructor::Vars_iter p = structure->var_begin();
+     int numVars = 0;
+     while (p != structure->var_end()) {
+     var = *p;      
+ 
+-    if (var->type() == dods_structure_c) {
++    if (var->type() == libdap::dods_structure_c) {
+       numVars += parseStructure(variables, base_name, 
+-				dynamic_cast<Structure *>(var));
+-    } else if (var->type() == dods_sequence_c) {
++				dynamic_cast<libdap::Structure *>(var));
++    } else if (var->type() == libdap::dods_sequence_c) {
+       // skip
+     } else {
+       parseSingleVar(variables, base_name, var);
+@@ -117,18 +117,18 @@
+ /** Used by parseVars */
+ int parseSequence(vector<gadap_varinfo> &variables, 
+ 		  string base_name, 
+-		  Sequence * sequence) {
+-  BaseType *var;
++		  libdap::Sequence * sequence) {
++  libdap::BaseType *var;
+   base_name = base_name + sequence->name() + ".";
+   // Pix p = sequence->first_var();
+-  Constructor::Vars_iter p = sequence->var_begin();
++  libdap::Constructor::Vars_iter p = sequence->var_begin();
+   int numVars = 0;
+   while (p != sequence->var_end()) {
+     var = *p;      
+-    if (var->type() == dods_structure_c) {
++    if (var->type() == libdap::dods_structure_c) {
+       numVars += parseStructure(variables, base_name, 
+-				dynamic_cast<Structure *>(var));
+-    } else if (var->type() == dods_sequence_c) {
++				dynamic_cast<libdap::Structure *>(var));
++    } else if (var->type() == libdap::dods_sequence_c) {
+       // do nothing
+     } else {
+       parseSingleVar(variables, base_name, var);
+@@ -147,12 +147,12 @@
+  *    second.  The number of outer-level variables is returned in
+  *    numIVars.  Used by both gaConnect and gaReports.
+  */
+-void parseVars(vector<gadap_varinfo> &variables, DDS &dds, int &numIVars) {
++void parseVars(vector<gadap_varinfo> &variables, libdap::DDS &dds, int &numIVars) {
+ 
+-  Sequence * outer = findOuterSequence(dds);
++  libdap::Sequence * outer = findOuterSequence(dds);
+   if (outer) {
+     numIVars = parseSequence(variables, "", outer);
+-    Sequence * inner = findInnerSequence(outer);
++    libdap::Sequence * inner = findInnerSequence(outer);
+     if (inner) {
+       parseSequence(variables, outer->name() + ".", inner);
+     }
+Index: gadap-2.0/src/gaUtils.h
+===================================================================
+--- gadap-2.0.orig/src/gaUtils.h	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gaUtils.h	2011-10-24 13:05:42.000000000 +0100
+@@ -31,15 +31,15 @@
+ } gadap_varinfo;
+ 
+ /** Generates a vector of gadap_varinfo structures from a DAP DDS object. */
+-void parseVars(vector<gadap_varinfo> &variables, DDS &dds, int &numIVars);
++void parseVars(vector<gadap_varinfo> &variables, libdap::DDS &dds, int &numIVars);
+ 
+ /** Finds the first occurence of a Sequence variable at the outermost
+     level of a DAP DDS. */
+-Sequence * findOuterSequence(DDS &dds);
++libdap::Sequence * findOuterSequence(libdap::DDS &dds);
+ 
+ /** Finds the first occurence of a Sequence variable nested inside
+     another Sequence variable. */
+-Sequence * findInnerSequence(Sequence * outer);
++libdap::Sequence * findInnerSequence(libdap::Sequence * outer);
+ 
+ /** Strips inital and final quotation marks (") from the string given */
+ string &removeQuotes(string &input);
+Index: gadap-2.0/src/gadap.cc
+===================================================================
+--- gadap-2.0.orig/src/gadap.cc	2011-10-24 12:40:41.000000000 +0100
++++ gadap-2.0/src/gadap.cc	2011-10-24 15:19:47.000000000 +0100
+@@ -19,6 +19,7 @@
+ // #include "Connections.h"
+ #include "Connections.cc"
+ 
++#include <string.h>
+ #include <vector>
+ 
+ /** Static data */
+@@ -67,7 +68,7 @@
+     *d_handle = datasets.add_connect(newDataset);
+     numDatasets++;
+     return GADAP_SUCCESS;
+-  } catch (const Error& error) {
++  } catch (const  libdap::Error& error) {
+     cerr << "DAP error: " << error.get_error_message() << endl;
+     *d_handle = -1;
+     return errval(GADAP_ERR_DAP_ERROR);
+@@ -362,7 +363,7 @@
+     *r_handle = nextFree;
+     return GADAP_SUCCESS;
+     
+-  } catch (const Error& error) {
++  } catch (const libdap::Error& error) {
+     cout << "DAP error: " << error.get_error_message() << endl;
+     *r_handle = -1;
+     return errval(GADAP_ERR_DAP_ERROR);

@@ -1,0 +1,23 @@
+pkgbase = gadap
+	pkgdesc = OPeNDAP access of in situ data.
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://www.iges.org/grads/gadoc/supplibs.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libdap
+	options = staticlibs
+	source = ftp://cola.gmu.edu/grads/Supplibs/2.1/src/gadap-2.0.tar.gz
+	source = libdap-conf.patch
+	source = libdap-namespace.patch
+	source = test-errors.patch
+	source = pkg-config.patch
+	md5sums = 16cfb95bfe14b17c9cb417c5149deefc
+	md5sums = 9975884b3e84c32bb3413d0ffe71b797
+	md5sums = 966b08788bd1cc8318e8c75c472e4897
+	md5sums = 202fc565ed5e842530c42681f4ebf095
+	md5sums = cf1a7feea0678440543fcabe348f1209
+
+pkgname = gadap
+

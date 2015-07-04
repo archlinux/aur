@@ -1,0 +1,81 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: Add gadap.pc pkg-config file to gadap
+Last-Updated: 2011-10-25
+Forwwarded: no
+
+Index: gadap-2.0/configure.ac
+===================================================================
+--- gadap-2.0.orig/configure.ac	2011-10-24 16:50:06.000000000 +0100
++++ gadap-2.0/configure.ac	2011-10-25 11:34:15.000000000 +0100
+@@ -38,6 +38,7 @@
+ AC_CONFIG_FILES([Makefile
+ 		 src/Makefile
+ 		 test/Makefile
++		 gadap.pc
+ 		])
+ AC_CONFIG_FILES([gadap-config], [chmod 755 gadap-config])
+ AC_OUTPUT
+Index: gadap-2.0/gadap.pc.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gadap-2.0/gadap.pc.in	2011-10-25 11:54:31.000000000 +0100
+@@ -0,0 +1,13 @@
++prefix=@prefix@
++exec_prefix=${prefix}
++libdir=@libdir@
++includedir=${prefix}/include
++ccompiler=gcc
++cppcompiler=g++
++
++Name: @PACKAGE_NAME@
++Description: 
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lgadap
++Libs.private:   -lpthread
++Requires: libdapclient libdapserver
+Index: gadap-2.0/gadap-config.in
+===================================================================
+--- gadap-2.0.orig/gadap-config.in	2011-10-25 12:37:21.000000000 +0100
++++ gadap-2.0/gadap-config.in	2011-10-25 12:37:37.000000000 +0100
+@@ -2,11 +2,7 @@
+ #
+ # Borrowed the idea for this script (and some code) from nc-dap which in
+ # turn took it from libcurl.
+-#
+-prefix=@prefix@
+-exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
+-includedir=${prefix}/include
++# This version now derives out of the pkg-config file (preferred)
+ 
+ usage()
+ {
+@@ -46,23 +42,23 @@
+ 	;;
+ 
+     --cc)
+-	echo "@CC@"
++	pkg-config --variable=cc gadap
+ 	;;
+ 
+     --cxx)
+-	echo "@CXX@"
++	pkg-config --variable=cxx gadap
+ 	;;
+ 
+     --cflags)
+-	echo "-I${includedir}/@PACKAGE_NAME@"
++	pkg-config --cflags gadap
+ 	;;
+ 
+     --libs)
+-       	echo "-L${libdir} -lgadap @LIBS@"
++       	pkg-config --libs gadap
+        	;;
+ 
+     --prefix)
+-       	echo "${prefix}"
++	pkg-config --variable=prefix gadap
+        	;;
+ 
+     --version)
