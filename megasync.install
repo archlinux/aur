@@ -1,0 +1,20 @@
+# megasync.install
+
+
+post_install() {
+	update-desktop-database -q
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+	update-desktop-database -q
+	rm /usr/lib/libcrypto++.so.10
+        rn /usr/lib/libcryptopp.so.6
+        rm /usr/lib/libcrypto.so.10
+        rm /usr/lib/libssl.so.10
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
