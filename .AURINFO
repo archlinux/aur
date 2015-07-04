@@ -1,0 +1,15 @@
+pkgbase = sysbench
+	pkgdesc = Benchmark tool for evaluating OS parameters that are important for a system running a database under intensive load.
+	pkgver = 0.4.12
+	pkgrel = 4
+	url = http://sysbench.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxslt
+	depends = libtool
+	depends = mariadb-clients
+	source = http://pkgs.fedoraproject.org/repo/pkgs/sysbench/sysbench-0.4.12.tar.gz/3a6d54fdd3fe002328e4458206392b9d/sysbench-0.4.12.tar.gz
+
+pkgname = sysbench
+
