@@ -45,11 +45,15 @@ _use_current=
 # https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
 _BFQ_enable_=
 
+
+_enable_uksm=
+_uksmvernel="0.1.2.3"
+
 # Enable haswell performance patch introduced with linux 4.0 by LunarG
-_haswell_performance_enable=y
+_haswell_performance_enable=
 
 # Enable libata patch in order to reduce power consumption on haswell and broadwell systems (Matthew Garrett)
-_libata_enable=y
+_libata_enable=
 
 ### Do no edit below this line unless you know what you're doing
 
@@ -57,7 +61,7 @@ pkgname=(linux-lts318-ck linux-lts318-ck-headers)
 _kernelname=-lts318-ck
 _srcname=linux-3.18
 pkgver=3.18.17
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -79,11 +83,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.18.patch"
         "${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.18.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.18.0.patch"
-        "haswell-performance.patch::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/patch/?id=944115934436b1ff6cf773a9e9123858ea9ef3da"
-        "libata001.patch"
-        "libata002.patch"
-        "libata003.patch")
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.18.0.patch")
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
@@ -92,17 +92,29 @@ sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'e603c2752c160c124ae54dba8a4a9820d86912e5685b3bf6cd99705d7b147552'
             '7ea49a31d2e0391c78588f07a8f0e0262535f5981b22d6a7fe0c1697f9dda282'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
-            'edd8e259b4a44d6900e1b5e89aa1845260131ac9b17d2bd60ae67957dd19e89a'
-            '173552f1b246c3e188af47842b19165ad7dd67c1bbe098fc2ada4877fcdb8046'
+            '3744173e9d77866c38e4b732f5e1d7b67bd98839104f3bb743dcc7f987e183ba'
+            '9e8a46a588e724f2cf7d2d139d8fbceadaa075109ca9a855f948990188c88a73'
             '255120397f3fa5c10078f5266139c23a4635aeb6df0ea1fa16e4a5fd923d20f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '75a43175fb6f289215669a7aff23a86459bcf966303a24b4013a42da53fad035'
             '68045bcff777bc175e9f17ba46e0a8b13450c4546c6c9db3d9b9e2ed31af812d'
-            'cda196f911af55f8c26e711040a66637aed03df9dfdc149aaf7fdbecf1bb19da'
-            '89471fa9d8671c031f96b15b29c7a3b9f7d82171ab97b29a29638b1c8a052cff'
-            '1fbed1c8355363636b8c492c42703ac32a28ca10ef82d150f2bdef20b27215a7'
-            'bbd16086fd0ffb23549f4256dff4d0452a007b89b150fcf080972a20ff1266c2'
-            '58ac21cb7cae40b55928326fc267bf72988e190ed2193e438d5a494d5506c623')
+            'cda196f911af55f8c26e711040a66637aed03df9dfdc149aaf7fdbecf1bb19da')
+if [ -n "$_enable_uksm" ]; then
+	source+=("http://kerneldedup.org/download/uksm/${_uksmvernel}/uksm-${_uksmvernel}-for-v3.18.patch")
+	sha256sums+=('8f810dd873e37d6144f70b440880f4fac9fb0f58bf0486bb6e873e38a74c010f')
+fi
+if [ -n "_haswell_performance_enable" ]; then
+	source+=("haswell-performance.patch::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/patch/?id=944115934436b1ff6cf773a9e9123858ea9ef3da")
+	sha256sums+=('89471fa9d8671c031f96b15b29c7a3b9f7d82171ab97b29a29638b1c8a052cff')
+fi
+if [ -n "-_libata_enable" ]; then
+	source+=("libata001.patch"
+			 "libata002.patch"
+			 "libata003.patch")
+	sha256sums+=('1fbed1c8355363636b8c492c42703ac32a28ca10ef82d150f2bdef20b27215a7'
+				 'bbd16086fd0ffb23549f4256dff4d0452a007b89b150fcf080972a20ff1266c2'
+				 '58ac21cb7cae40b55928326fc267bf72988e190ed2193e438d5a494d5506c623')
+fi
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -135,17 +147,22 @@ prepare() {
 		patch -Np1 -i "$p"
 	done
 	
+	if [ -n "$_enable_uksm" ]; then
+		msg "Patching source with UKSM patch"
+		patch -Np1 -i "${srcdir}/uksm-${_uksmvernel}-for-v3.18.patch"
+	fi
+	
 	if [ -n "$_haswell_performance_enable" ]; then
-                msg "Patching source with haswell performance patch by LunarG"
-                patch -Np1 -i ${srcdir}/haswell-performance.patch
-        fi
+		msg "Patching source with haswell performance patch by LunarG"
+		patch -Np1 -i ${srcdir}/haswell-performance.patch
+	fi
         
-        if [ -n "$_libata_enable" ]; then
-                msg "Patching source with libata patch by Matthew Garrett"
-                patch -Np1 -i ${srcdir}/libata001.patch
-                patch -Np1 -i ${srcdir}/libata002.patch
-                patch -Np1 -i ${srcdir}/libata003.patch
-        fi
+	if [ -n "$_libata_enable" ]; then
+		msg "Patching source with libata patch by Matthew Garrett"
+		patch -Np1 -i ${srcdir}/libata001.patch
+		patch -Np1 -i ${srcdir}/libata002.patch
+		patch -Np1 -i ${srcdir}/libata003.patch
+	fi
 
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
@@ -164,6 +181,12 @@ prepare() {
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
 			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
 			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+	fi
+	
+	if [ -n "$_enable_uksm" ]; then
+		msg "Patching config for UKSM"
+		sed -i -e '/CONFIG_KSM=y/a CONFIG_UKSM=y' \
+			-i -e '/CONFIG_KSM=y/a # CONFIG_KSM_LEGACY is not set/' .config
 	fi
 
 	### Optionally use running kernel's config
