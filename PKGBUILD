@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts             # Build kernel with a different name
 _srcname=linux-3.18
-_pkgver=3.18.16
-_rtpatchver=rt13
+_pkgver=3.18.17
+_rtpatchver=rt14
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -30,12 +30,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar."{xz,sign}
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            'f60602c8de2ae7b1507c538b6af65d5b933727a06f56075898ff64fdcf650313'
+            '190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8'
             'SKIP'
-            '55f8e8c6239b1bcfb129ae5884a24fe0467ea5cfdccb5020189ac0b0129f64c3'
+            '1e93fa3e05a23d9b4b8c89074898c7f45844611d94cc85c6ef88ac4394816a18'
             'SKIP'
-            '579b174b2239b52ab4b0ffb48aca79f4c26a8544bdfdf2bf4e816d17300414d6'
-            '3e1e9a5fe6d48a0f14faafd749827bee1541dad62392ebd0e288ab3006282ddd'
+            '3c876bd83489e56e62629fc09ce85391bef5ef94cb2feab7751841c221c000c6'
+            '49202f4733bd9de254083a85d0a17390f78e68fc6e4bea9e91bfce7e8167349e'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
