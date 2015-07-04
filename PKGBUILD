@@ -4,8 +4,8 @@
 
 pkgname=mono-git
 _pkgname=mono
-pkgver=3.12.0.r8.gde2f33f
-pkgrel=2
+pkgver=3.2.3.r8387.g5d93b2a
+pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL' 'custom:MITX11')
@@ -16,15 +16,9 @@ options=('!makeflags')
 provides=('monodoc' 'mono=3.12.0')
 conflicts=('monodoc' 'mono')
 source=(git://github.com/mono/mono.git
-        mono.binfmt.d
-        sgen_fix.patch
-	build_fix.patch
-	Microsoft.Portable.Common.targets)
+        mono.binfmt.d)
 md5sums=('SKIP'
-         'b9ef8a65fea497acf176cca16c1e2402'
-         '8a700b94bff7a913f920e95890d2fb4c'
-         '30a5af1a4ff50b98f9e73cc2ae554115'
-        'acbffadb0ac233c494b40dd5e79209a5')
+         'b9ef8a65fea497acf176cca16c1e2402')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -34,9 +28,6 @@ pkgver() {
 build() {
   cd "${srcdir}"/${_pkgname}
 
-  #patch -p1 < ../build_fix.patch  
-  #cp ../Microsoft.Portable.Common.targets mcs/tools/xbuild/targets/
-
   # build mono
   ./autogen.sh --prefix=/usr \
     --sysconfdir=/etc \
@@ -44,7 +35,6 @@ build() {
     --sbindir=/usr/bin \
     --disable-quiet-build \
     --disable-system-aot \
-    --disable-static \
     --with-mcs-docs=no
   make
 
