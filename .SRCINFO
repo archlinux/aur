@@ -1,0 +1,17 @@
+pkgbase = g2clib
+	pkgdesc = GRIB2 encoder/decoder (C version)
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2
+	arch = i686
+	arch = x86_64
+	license = custom:NWS
+	provides = g2clib
+	options = staticlibs
+	source = http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2/g2clib-1.4.0.tar
+	source = NWS_license.txt
+	md5sums = f0cbab4ebbaec6d8dd15da1a36c93675
+	md5sums = 64f9f7f5ad383df409986d8a67d2fa78
+
+pkgname = g2clib
+
