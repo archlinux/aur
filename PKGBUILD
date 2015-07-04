@@ -1,6 +1,6 @@
 # Maintainer: adorableGNU <adorablegnu@hushmail.com>
 pkgname=pybristol
-pkgver=1.0.29
+pkgver=1.0.32
 pkgrel=1
 pkgdesc='GUI for bristol, based on python3 and tkinter'
 arch=('any')
