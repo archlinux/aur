@@ -1,0 +1,14 @@
+post_install() {
+  fc-cache /usr/share/fonts/TTF
+  echo "Font cache refreshed."
+}
+
+post_upgrade() {
+  fc-cache /usr/share/fonts/TTF
+  echo "Font cache refreshed."
+}
+
+post_remove() {
+  fc-cache /usr/share/fonts/TTF
+  echo "Font cache refreshed."
+}
