@@ -1,0 +1,26 @@
+pkgbase = tortoisehg-hg
+	pkgdesc = Mercurial GUI front end
+	pkgver = 3.4.1.17796
+	pkgrel = 1
+	url = http://tortoisehg.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = setuptools
+	depends = python2
+	depends = mercurial
+	depends = python2-pyqt>=4.6
+	depends = python2-qscintilla
+	optdepends = python2-iniparse: ini file support
+	optdepends = python2-pygments: syntax highlighting
+	optdepends = python2-nautilus: Python binding for Nautilus components
+	provides = tortoisehg
+	conflicts = tortoisehg
+	source = hg+https://bitbucket.org/tortoisehg/thg#branch=stable
+	source = config.py
+	md5sums = SKIP
+	md5sums = 2e04ba5fdcb361cd68e9ef7ed4c987a5
+
+pkgname = tortoisehg-hg
+
