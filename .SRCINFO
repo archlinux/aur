@@ -1,0 +1,17 @@
+pkgbase = gdx-texturepacker
+	pkgdesc = The gdx-texturepacker is a GUI for the awesome texture packer that comes with every libgdx distribution
+	pkgver = 3.2.0
+	pkgrel = 2
+	url = https://code.google.com/p/libgdx-texturepacker-gui/
+	arch = any
+	license = APACHE2
+	depends = java-environment
+	source = https://libgdx-texturepacker-gui.googlecode.com/files/gdx-texturepacker-3.2.0.zip
+	source = gdx-texturepacker.desktop
+	source = gdx-texturepacker
+	md5sums = 08afc2e883dc867a446eeec3a4890c16
+	md5sums = 0d45d18964c9aa6e19149a88713e86a1
+	md5sums = f498b86370e97a057ef188f87e1b011a
+
+pkgname = gdx-texturepacker
+

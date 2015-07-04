@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Libgdx Texture Packer
+GenericName=Libgdx Texture Packer
+Exec=gdx-texturepacker %U
+Terminal=false
+Icon=java
+Type=Application
+Categories=Developer
