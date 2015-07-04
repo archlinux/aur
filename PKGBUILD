@@ -1,6 +1,6 @@
 # Maintainer: adorableGNU <adorablegnu@hushmail.com>
 pkgname=pybristol
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 pkgdesc='GUI for bristol, based on python3 and tkinter'
 arch=('any')
@@ -26,5 +26,5 @@ package() {
   install -D -m755 $srcdir/pyBristol/pyBristol $pkgdir/usr/bin/pyBristol
   install -D -m644 $srcdir/pyBristol/pyBristol.desktop $pkgdir/usr/share/applications/pyBristol.desktop
   install -D -m644 $srcdir/pyBristol/icon/pyBristol.svg $pkgdir/usr/share/pixmaps/pyBristol.svg
-  install -D -m644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 $srcdir/pyBristol/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 } 
