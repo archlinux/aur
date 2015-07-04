@@ -1,0 +1,11 @@
+[Unit]
+Description=Inadyn DNS service updater
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/inadyn --background --input_file /etc/inadyn.conf
+
+[Install]
+WantedBy=multi-user.target
+

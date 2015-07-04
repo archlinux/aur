@@ -1,0 +1,21 @@
+pkgbase = inadyn-opendns
+	pkgdesc = Simple dynamic DNS client with SSL support
+	pkgver = 1.99
+	pkgrel = 6
+	url = https://support.opendns.com/entries/24889200-Dynamic-IP-Addresses-Technical-Detail-and-FAQ
+	install = inadyn-opendns.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = curl
+	provides = inadyn
+	conflicts = inadyn
+	backup = etc/inadyn.conf
+	source = http://d295hzzivaok4k.cloudfront.net/wp-content/uploads/2014/01/inadyn.source.v1.99.zip
+	source = inadyn.service
+	sha256sums = 0360fbe8fd4bd184d015d577361ef2a93226648a2bb7b60546b385025eceaf88
+	sha256sums = 993180c3452f34e66f2b420f9b5e28fdcb4ed5fb4c28a6b51afbb5c025991cb7
+
+pkgname = inadyn-opendns
+

@@ -1,0 +1,17 @@
+post_install() {
+/bin/true
+echo Please remember to change the /etc/inadyn.conf file for your settings.
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
