@@ -1,0 +1,23 @@
+# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
+
+pkgname=iioutils
+pkgver=0.2
+pkgrel=1
+pkgdesc="The Industrial I/O equivalent to pciutils" 
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('sysfsutils')
+url="http://sourceforge.net/projects/iioutils/"
+source=("http://sourceforge.net/projects/iioutils/files/iioutils/iioutils-${pkgver}.tar.gz")
+md5sums=('8a88b711d3d6a7fedd75af833c5470cb')
+
+build() {
+  cd "${pkgname}"
+  ./configure --prefix="/usr"
+  make
+}
+
+package() {
+  cd "${pkgname}"
+  make PREFIX="/usr" DESTDIR="${pkgdir}" install
+}
