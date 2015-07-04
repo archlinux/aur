@@ -1,0 +1,13 @@
+pkgbase = cgd
+	pkgdesc = A daemon that can serve a CGI script over HTTP or FastCGI.
+	pkgver = 20130907
+	pkgrel = 1
+	url = https://github.com/uriel/cgd
+	arch = any
+	license = MIT
+	license = CC0
+	license = Public Domain
+	makedepends = go
+
+pkgname = cgd
+
