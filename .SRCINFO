@@ -1,6 +1,6 @@
 pkgbase = emos
 	pkgdesc = ECMWF Interpolation Library
-	pkgver = 4.0.3
+	pkgver = 4.0.7
 	pkgrel = 2
 	url = https://software.ecmwf.int/wiki/display/EMOS/Emoslib
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = emos
 	makedepends = git
 	makedepends = cmake
 	options = staticlibs
-	source = https://software.ecmwf.int/wiki/download/attachments/3473472/libemos-4.0.3-Source.tar.gz
-	md5sums = b77391eb6ea904903e86013056602ec7
+	source = https://software.ecmwf.int/wiki/download/attachments/3473472/libemos-4.0.7-Source.tar.gz
+	md5sums = c1f764d8ff43db861d7611e01f977f6c
 
 pkgname = emos
 
