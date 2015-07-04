@@ -1,0 +1,22 @@
+pkgbase = wgrib2
+	pkgdesc = A program to manipulate, inventory and decode GRIB-2 files
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www.cpc.noaa.gov/products/wesley/wgrib2/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = g2clib
+	makedepends = gctpc
+	depends = netcdf
+	depends = jasper
+	depends = libpng
+	depends = libmariadbclient
+	depends = proj
+	source = ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v2.0.2
+	source = wgrib2.patch
+	md5sums = d423ff205f9c61b9ad8f6c0cd99f70b9
+	md5sums = 88cf8f897294b6db3f8f53ca1a847cd8
+
+pkgname = wgrib2
+
