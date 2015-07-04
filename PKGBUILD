@@ -34,10 +34,10 @@ source=("ftp://root.cern.ch/root/root_v${pkgver}.source.tar.gz"
         'root.sh'
         'rootd'
         'root.xml')
-md5sums=('1c4bb094a555e71daf6897401218d36c'
-         '0e883ad44f99da9bc7c23bc102800b62'
-		 'efd06bfa230cc2194b38e0c8939e72af'
-		 'e2cf69b204192b5889ceb5b4dedc66f7')
+md5sums=('292a0b95063053699b3273bd50515b0a'
+		 '0e883ad44f99da9bc7c23bc102800b62'
+  'efd06bfa230cc2194b38e0c8939e72af'
+		   'e2cf69b204192b5889ceb5b4dedc66f7')
 
 build() {
   cd root
