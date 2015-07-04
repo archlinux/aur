@@ -7,7 +7,7 @@
 # Contributor: jordi Cerdan (jcerdan) <jcerdan@tecob.com>
 
 pkgname=pommed-light
-pkgver=1.47lw
+pkgver=1.49lw
 pkgrel=1
 pkgdesc="Handles the hotkeys of Apple MacBook (Pro) laptops - lightweight edition"
 arch=('i686' 'x86_64')
@@ -15,12 +15,12 @@ url="https://github.com/bytbox/pommed-light"
 license=('GPL2')
 install=$pkgname.install
 makedepends=('pkgconfig')
-depends=('alsa-lib' 'confuse' 'audiofile' 'pciutils')
+depends=('alsa-lib' 'pciutils' 'confuse' 'audiofile')
 conflicts=('pommed')
 optdepends=('eject: disc ejection support')
 source=(https://github.com/bytbox/${pkgname}/archive/v${pkgver}.tar.gz pommed.service)
 dfname="${pkgname}-${pkgver}"
-md5sums=('36b21b215b17577c561439bc76fd00ef'
+md5sums=('9e53911931f78906520a11a3b364225a'
          'fd5be6c0aa9ac4a0b1b628a23361b4cf')
 
 build() {
