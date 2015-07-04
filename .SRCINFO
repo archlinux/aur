@@ -1,0 +1,21 @@
+pkgbase = ohcount
+	pkgdesc = A source-lines of code counter.
+	pkgver = 3.0.0
+	pkgrel = 3
+	url = http://labs.ohloh.net/ohcount
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ragel>=6.3
+	makedepends = bash
+	makedepends = gcc>=4.1.2
+	makedepends = swig
+	makedepends = ruby
+	makedepends = rake
+	makedepends = gperf
+	depends = pcre
+	source = https://github.com/blackducksw/ohcount/tarball/3.0.0
+	md5sums = 85e46186adfbd0c9db1d9a9c9a7efd39
+
+pkgname = ohcount
+
