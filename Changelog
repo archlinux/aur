@@ -1,0 +1,23 @@
+2015-05-15  Graziano Giuliani <graziano.giuliani@gmail.com>
+
+	1.1.24-1
+	* new upstream release
+
+2013-11-18  Graziano Giuliani <graziano.giuliani@gmail.com>
+
+	1.1.18-1
+	* new upstream release
+	* new maintainer
+
+
+2013-05-02  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	1.1.16-1:
+	* new upstream release
+	* new maintainer
+	* updated PKGBUILD
+	* changed homepage and download URLs
+	* added Changelog
+	* added README.txt file
+	* added testing scripts and html man pages - commented out by default
+

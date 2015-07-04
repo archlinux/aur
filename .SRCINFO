@@ -1,0 +1,16 @@
+pkgbase = drm_tools
+	pkgdesc = Collection of small command line tools that are sometimes helpful in specific instances.
+	pkgver = 1.1.24
+	pkgrel = 1
+	url = http://drmtools.sourceforge.net/
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pcre
+	conflicts = libextractor
+	source = http://sourceforge.net/projects/drmtools/files/drm_tools-1.1.24.tar.gz
+	md5sums = 0e790163f06262329b1ad4979d0a3d9b
+
+pkgname = drm_tools
+
