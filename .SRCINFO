@@ -1,6 +1,6 @@
 pkgbase = pandoc-static
 	pkgdesc = Conversion between markup formats (no Haskell libraries)
-	pkgver = 1.13.1
+	pkgver = 1.15.0.4
 	pkgrel = 1
 	url = http://johnmacfarlane.net/pandoc/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = pandoc-static
 	makedepends = cabal-install
 	makedepends = alex
 	makedepends = happy
-	depends = icu>=54
-	depends = icu<55
+	depends = icu>=55
+	depends = icu<56
 	depends = gmp
 	depends = libffi
 	depends = zlib
@@ -23,8 +23,10 @@ pkgbase = pandoc-static
 	options = !makeflags
 	options = !distcc
 	options = !emptydirs
-	source = https://repo.parabolagnulinux.org/other/pandoc-static/pandoc-static-1.13.1.tar.xz
-	md5sums = dd2667b233b5f97b2841ae09895c2ac2
+	source = https://repo.parabola.nu/other/pandoc-static/pandoc-static-1.15.0.4-1.tar.xz
+	source = https://repo.parabola.nu/other/pandoc-static/pandoc-static-1.15.0.4-1.tar.xz.sig
+	sha512sums = 411625d868d524fa52dc2a1ea0654fee55a4126ed085912a1d1230cd40bfc06b124f16044b72a81fb25d4f396e5c7729dc3c11db3f7f35c7ce8241c0b87d3a53
+	sha512sums = SKIP
 
 pkgname = pandoc-static
 
