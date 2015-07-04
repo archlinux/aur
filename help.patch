@@ -1,0 +1,41 @@
+--- apply_replaygain.pl	2007-12-31 14:55:39.000000000 +0100
++++ apply_replaygain.pl.new	2011-01-05 18:31:38.112189683 +0100
+@@ -43,7 +43,7 @@ use Getopt::Long;
+ our $metaflaccmd = "metaflac";
+ 
+ # Depending on your application, you may not require --preserve-modtime
+-our @flacargs = qw ( --preserve-modtime --add-replay-gain );
++our @flacargs = qw ( --add-replay-gain );
+ 
+ #-------------------- End User-changeable options ---------------------
+ 
+@@ -66,7 +66,7 @@ GetOptions( \%Options,
+ #$d_info     = 0;
+ #$d_debug    = 0;
+ 
+-showusage() unless ( scalar @ARGV <= 1 );
++showusage() if ( scalar @ARGV <= 0 );
+ 
+ # Use current directory if no dir specified on command-line
+ @ARGV = ('.') unless @ARGV;
+@@ -147,7 +147,19 @@ sub process_dirs {
+ }
+ 
+ sub showusage {
+-    print "Usage goes here\n";
++print "flacgain [options] [directory]
++    
++Options:
++    --processall        Default behaviour is if all files in the directory
++                        have ReplayGain information (specifically, the
++                        REPLAY_ALBUM_GAIN tag) then the directory is skipped.
++                        This option recalculates ReplayGain information
++                        for all directories.
++    --info              Output information (directories processed, etc.)
++    --debug             Output debugging information
++
++directory is the directory to scan for flac files. If omitted, the
++current directory is processed.\n";
+     exit 1;
+ }
+ 
