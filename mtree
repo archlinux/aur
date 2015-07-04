@@ -1,0 +1,8 @@
+#mtree v1.0
+. type=dir
+mtree ignore optional
+mtree.sig ignore optional
+/set type=file mode=644
+.SRCINFO sha256digest=ae65737841da467e53e4e4f01bd29aabfc6a2128fb3908286bfc640db6509a5b
+PKGBUILD sha256digest=a4e224ba8be1fb8498bc861920770a53f85975a1c010a8df685529498be2246a
+..
