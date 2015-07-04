@@ -6,7 +6,7 @@
 
 pkgname=rofi
 pkgver=0.15.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Popup window switcher roughly based on superswitcher, requiring only xlib and xft. DaveDavenport's fork"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
@@ -29,4 +29,11 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make install install-man DESTDIR="$pkgdir"
+
+  # Install examples to /usr/share/rofi
+  install -m 755 -d "$pkgdir/usr/share/rofi/"
+  for example in `find "Examples" -type f -name "*.sh"`
+  do
+    install -m 755 "$example" "$pkgdir/usr/share/rofi/$(basename $example)"
+  done
 }
