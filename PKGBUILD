@@ -4,56 +4,57 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-bld       # Build kernel with a different name
-pkgname=linux-bld
-true && pkgname=('linux-bld' 'linux-bld-headers')
-_srcname=linux-3.19
-pkgdesc="Linux Kernel and modules with BLD patches"
-pkgver=3.19.8
+_srcname=linux-4.1
+pkgname=(linux-bld linux-bld-headers)
+_kernelname=-bld
+pkgver=4.1.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=( 'kmod' 'inetutils' 'bc')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.19.0-v7r7"
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8"
+_BLDpatch="BLD-4.1.patch"
+source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.19.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.19.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.19.0.patch"
-        'https://raw.githubusercontent.com/rmullick/bld-patches/0b001f0a2dc84dc2eaa77267ea305aeb80a372e5/BLD-3.19.patch'
+	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch"
+	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch"
+	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch"
+        "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
+        "0001-block-loop-convert-to-per-device-workqueue.patch"
+        "0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch"
         )
 
-sha256sums=('be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c'
-            '2e4f01c2ce7ccb2ffee1722724df0a2c2ad6ba5fa74218aa816bda19f3ddcf5d'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+            'SKIP'
+            '48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad'
+            'SKIP'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
-            'd62c7bcd14b73601437c2d2d728cff310abfd844375908cd4e4f14d18ae8c98a'
-            '8be96ce82a5949255c5eb1eed0b2dae1bffcfba0e5074c4ea1d3d36f36ff8504'
+            'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
+            '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'fac4a507a7a16948a0069be784624f87effeb0b7992507104c7db81c190c93e2'
-            '621d4877d992f353ec6d9f977377552077aeebe85c47e65716e99d699af5cb11'
-            '1509740239a2f5b623bc05b3b9efbfd4e2fa75029503e0770a274f7e7c59d79f'
-            '374ea733d46183ef3cd2b047a2cb425345a91e84605d6885d0b357e7bea013c9')
-
-_kernelname=${pkgbase#linux}
+            'b0648f9fca9b155c3a7195008acd6fb8f1a644c6a8743050f3ee96e1245b88d9'
+            'f1389d30e08cc1fab638407289743d15efcde4dac63f9e3052b0df9c0880ef57'
+            'fd7f55a254217e1b57558a6288cc2aab28f7c62d7d0b8db09b598382d5bce618'
+            '6b068476a99fa7b5902f20e379f28b0f72e7d8edb6b751b6b28d3d51bcb0e08b'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81')
 
 # Running with a 1000 HZ tick rate (vs the ARCH 300) is reported to solve the
 # issues with the bfs/linux 3.1x and suspend. For more see:
 # http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1378756529345#c5266548105449573343
 _1k_HZ_ticks=y
-
-# NUMA is optimized for multi-socket motherboards.
-# A single multi-core CPU actually runs slower with NUMA enabled.
-# See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=y
 
 # Alternative I/O scheduler by Paolo.
 # Set this if you want it enabled globally i.e. for all devices in your system
@@ -77,19 +78,24 @@ prepare() {
   #msg2 "Applying latest fixes from stable queue, if needed"
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # Fix deadlock with stacked loop devices (FS#45129)
+  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
+  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+
   msg2 "set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)"
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   msg2 "BLD patches"
-  patch -Np1 -i "${srcdir}/BLD-3.19.patch"
+  patch -Np1 -i "${srcdir}/${_BLDpatch}"
 
   msg2 "Patch source to enable more gcc CPU optimizatons via the make nconfig"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   msg "Patching source with BFQ patches"
-  for p in $(ls ${srcdir}/000{1,2,3}-block*.patch); do
+  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
       patch -Np1 -i "$p"
   done
 
@@ -106,22 +112,19 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  msg2 "Optionally disable NUMA since >99% of users have mono-socket systems."
-  # For more, see: https://bugs.archlinux.org/task/31187
-  if [ -n "$_NUMAdisable" ]; then
-    if [ "${CARCH}" = "x86_64" ]; then
-      msg "Disabling NUMA from kernel config..."
-      sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-        -i -e '/CONFIG_AMD_NUMA=y/d' \
-        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-        -i -e '/CONFIG_NODES_SHIFT=6/d' \
-        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-        -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-        -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-    fi
+  msg2 "The Barbershop Load Distribution algorithm is not suitable for NUMA."
+  if [ "${CARCH}" = "x86_64" ]; then
+    msg "Disabling NUMA from kernel config..."
+    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+      -i -e '/CONFIG_AMD_NUMA=y/d' \
+      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+      -i -e '/CONFIG_NODES_SHIFT=6/d' \
+      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+      -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
 
   ### Optionally enable BFQ as the default I/O scheduler
@@ -140,15 +143,14 @@ prepare() {
         -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
   fi
 
+  ### Add CONFIG_BLD=y directly in .config
+  echo "CONFIG_BLD=y" >> .config
+
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-}
-
-build() {
-  cd "${srcdir}/${_srcname}"
 
   # get kernel version
   make prepare
@@ -167,26 +169,16 @@ build() {
 
   # rewrite configuration
   yes "" | make config >/dev/null
+}
 
-  # save configuration for later reuse
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat .config > "${startdir}/config.x86_64.last"
-  else
-    cat .config > "${startdir}/config.last"
-  fi
+build() {
+  cd "${srcdir}/${_srcname}"
 
-  ####################
-  # stop here
-  # this is useful to configure the kernel
-  #msg "Stopping build"; return 1
-  ####################
-
-  # build!
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 package_linux-bld() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with BLD patches"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -248,7 +240,7 @@ package_linux-bld() {
 }
 
 package_linux-bld-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel BLD"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   provides=("kernel26${_kernelname}-headers=${pkgver}")
   conflicts=("kernel26${_kernelname}-headers")
   replaces=("kernel26${_kernelname}-headers")
@@ -367,7 +359,7 @@ package_linux-bld-headers() {
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-#package_linux-bld-docs() {
+#_package-linux-bld-docs() {
 #  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 #  provides=("kernel26${_kernelname}-docs=${pkgver}")
 #  conflicts=("kernel26${_kernelname}-docs")
@@ -391,8 +383,5 @@ package_linux-bld-headers() {
 #    _package${_p#${pkgbase}}
 #  }"
 #done
-
-# AUR catch this description
-pkgdesc="Linux Kernel and modules with BLD patches"
 
 # vim:set ts=8 sts=2 sw=2 et:
