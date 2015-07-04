@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-lts318-ck-git
 	pkgdesc = Kernel module support files for the Zettabyte File System.
-	pkgver = 0.6.4.2_r0_g44b5ec8_3.18.17_1
+	pkgver = 0.6.4.2_r0_g44b5ec8_3.18.17_2
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = zfs-utils-lts318-ck-git
 	groups = archzfs-lts318-ck-git
 	license = CDDL
 	makedepends = git
-	depends = spl-git
+	depends = spl-lts318-ck-git
 	provides = zfs-utils
 	conflicts = zfs-utils
 	conflicts = zfs-utils-lts

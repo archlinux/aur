@@ -8,11 +8,11 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-utils-lts318-ck-git"
-pkgver=0.6.4.2_r0_g44b5ec8_3.18.17_1
+pkgver=0.6.4.2_r0_g44b5ec8_3.18.17_2
 pkgrel=1
 license=('CDDL')
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-git")
+depends=("spl-lts318-ck-git")
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
