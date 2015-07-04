@@ -1,6 +1,6 @@
 # Maintainer: Jesse Nazario <jessenzr@gmail.com>
 _pkgbasename=pipman
-pkgname=python-$_pkgbasename
+pkgname=$_pkgbasename-git
 pkgrel=1
 pkgver=0.5.1.r5.gca7315b
 pkgdesc="Generate PKGBUILD from pip packages"
