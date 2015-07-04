@@ -8,8 +8,8 @@ arch=(i686 x86_64)
 license=(MIT)
 url='https://github.com/etsy/Hound'
 makedepends=(go)
-source=(https://github.com/etsy/Hound/archive/v$pkgver.zip)
-sha1sums=('beb2067dcbd102ee7a001d8e7394f9877518d4d4')
+source=($pkgname-$pkgver.zip::https://github.com/etsy/Hound/archive/v$pkgver.zip)
+sha1sums=('0cd7a363aa1b6f56733c2909e63a08c60032d07c')
 
 build() {
   cd Hound-$pkgver

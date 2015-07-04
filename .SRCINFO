@@ -7,8 +7,8 @@ pkgbase = hound
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/etsy/Hound/archive/v0.2.0.zip
-	sha1sums = beb2067dcbd102ee7a001d8e7394f9877518d4d4
+	source = hound-0.2.0.zip::https://github.com/etsy/Hound/archive/v0.2.0.zip
+	sha1sums = 0cd7a363aa1b6f56733c2909e63a08c60032d07c
 
 pkgname = hound
 
