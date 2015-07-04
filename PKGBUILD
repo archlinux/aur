@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
-# Maintainer:  Frank Schäffer <frank.schaeffer@o2online.de>
+# Maintainer:  Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nco
-pkgver=4.4.8
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
@@ -11,7 +11,7 @@ makedepends=('antlr2')
 arch=('i686' 'x86_64')
 options=('!libtool')
 source=(http://nco.sourceforge.net/src/${pkgname}-${pkgver}.tar.gz)
-md5sums=('842a118251da3875e7e2ab2cb0ec77fe')
+md5sums=('cc387b92e796a778bddefab79cda0a34')
 
 build() {
     cd "$srcdir"/$pkgname-$pkgver
