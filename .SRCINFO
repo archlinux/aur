@@ -1,0 +1,21 @@
+pkgbase = spl-utils-lts318-ck-git
+	pkgdesc = Solaris Porting Layer kernel module support files.
+	pkgver = 0.6.4.2_r0_g04974ca_3.18.17_1
+	pkgrel = 1
+	url = http://zfsonlinux.org/
+	arch = i686
+	arch = x86_64
+	groups = archzfs-lts318-ck-git
+	license = GPL
+	makedepends = git
+	provides = spl-utils
+	conflicts = spl-utils
+	conflicts = spl-utils-lts
+	replaces = spl-utils
+	source = git+https://github.com/zfsonlinux/spl.git#commit=04974ca1
+	source = spl-utils.hostid
+	md5sums = SKIP
+	md5sums = a54f0041a9e15b050f25c463f1db7449
+
+pkgname = spl-utils-lts318-ck-git
+
