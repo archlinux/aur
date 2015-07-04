@@ -150,7 +150,7 @@ _package() {
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
@@ -207,7 +207,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  conflicts=("${_replacesoldkernels[@]/%/-headers}")
   replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -327,7 +327,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  conflicts=("${_replacesoldkernels[@]/%/-docs}")
   replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
 
   cd "${srcdir}/${_srcname}"

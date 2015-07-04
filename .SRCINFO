@@ -60,7 +60,6 @@ pkgname = linux-libre-rt
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux-rt=4.0.5_rt4
-	conflicts = linux-rt
 	conflicts = kernel26-rt
 	conflicts = kernel26-libre-rt
 	replaces = linux-rt
@@ -71,7 +70,6 @@ pkgname = linux-libre-rt
 pkgname = linux-libre-rt-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-rt kernel
 	provides = linux-rt-headers=4.0.5_rt4
-	conflicts = linux-rt-headers
 	conflicts = kernel26-rt-headers
 	conflicts = kernel26-libre-rt-headers
 	replaces = linux-rt-headers
@@ -81,7 +79,6 @@ pkgname = linux-libre-rt-headers
 pkgname = linux-libre-rt-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-rt kernel
 	provides = linux-rt-docs=4.0.5_rt4
-	conflicts = linux-rt-docs
 	conflicts = kernel26-rt-docs
 	conflicts = kernel26-libre-rt-docs
 	replaces = linux-rt-docs
