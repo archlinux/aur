@@ -1,10 +1,11 @@
 # Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
 # Contributor: tritonas00 <tritonas00@gmail.com>
 
-pkgname=rigsofrods-git
-pkgver=LATEST
 _pkgname=rigsofrods
-_gitname=rigs_of_rods
+_gitname=rigs-of-rods
+
+pkgname=$_pkgname-git
+pkgver=LATEST
 pkgrel=3
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
@@ -15,7 +16,7 @@ makedepends=('boost' 'cmake' 'git')
 replaces=('rigsofrods-hg')
 conflicts=('rigsofrods' 'rigsofrods-hg')
 provides=('rigsofrods')
-source=("git+https://github.com/RigsOfRods/rigs-of-rods.git"
+source=("git+https://github.com/RigsOfRods/$_gitname.git"
         "plugins.cfg"
         "rigsofrods.png"
         "RoRConfig.desktop"
@@ -28,7 +29,7 @@ sha512sums=('SKIP'
 )
 
 build() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/$_gitname"
 
   export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:/opt/MyGUI-OGRE1.8/lib/pkgconfig:/opt/Caelum-OGRE1.8/lib/pkgconfig:/opt/PagedGeometry-OGRE1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
   export LD_LIBRARY_PATH="/opt/OGRE-1.8/lib:/opt/MyGUI-OGRE1.8/lib:/opt/Caelum-OGRE1.8/lib:/opt/PagedGeometry-OGRE1.8/lib:$LD_LIBRARY_PATH"
@@ -59,11 +60,11 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/opt/${_pkgname}"
-  cp -r $srcdir/${_gitname}/bin/* "$pkgdir/opt/${_pkgname}/"
+  mkdir -p "$pkgdir/opt/$_pkgname"
+  cp -r $srcdir/$_gitname/bin/* "$pkgdir/opt/$_pkgname/"
 
   install -Dm755 rigsofrods.png "$pkgdir/usr/share/pixmaps/rigsofrods.png"
   install -Dm755 RoR.desktop "$pkgdir/usr/share/applications/RoR.desktop"
   install -Dm755 RoRConfig.desktop "$pkgdir/usr/share/applications/RoRConfig.desktop"
-  install -Dm755 plugins.cfg "$pkgdir/opt/${_pkgname}/plugins.cfg"
+  install -Dm755 plugins.cfg "$pkgdir/opt/$_pkgname/plugins.cfg"
 }
