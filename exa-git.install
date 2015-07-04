@@ -1,0 +1,7 @@
+pre_install() {
+    echo "You must have one of cargo-bin, cargo-git, or rust-nightly-bin for exa to compile!"
+}
+pre_upgrade() {
+    echo "You must have one of cargo-bin, cargo-git, or rust-nightly-bin for exa to compile!"
+}
+
