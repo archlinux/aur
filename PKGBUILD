@@ -1,6 +1,14 @@
-# Original Core Repo Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Original Core Repo Maintainer: Tom Gundersen <teg@jklm.no>
-# Modifications to revert 743970d Maintainer: James Harvey <jamespharvey20@gmail.com>
+# Original Core Repo
+# ==================
+# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Maintainer: Tom Gundersen <teg@jklm.no>
+
+# Modifications to revert commit 743970d
+# ======================================
+# Maintainer: James Harvey <jamespharvey20@gmail.com>
+#    * This PKGBUILD as closely as possible matches core's systemd 221-2
+#    * splash-arch.bmp is omitted, because it is over AUR4's 250k file size limit
+#    * All namcap warnings and errors are identical
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
