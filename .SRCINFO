@@ -1,0 +1,18 @@
+pkgbase = formido
+	pkgdesc = Alien killing game using weapons and power-ups
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = http://www.mhgames.org/oldies/formido/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	depends = sdl_image
+	noextract = formido-music.tar.bz2
+	source = http://noe.falzon.free.fr/prog/formido-1.0.1.tar.gz
+	source = formido-music.tar.bz2::http://www.mhgames.org/download.php?formido-music.tar.bz2
+	md5sums = f1556282eddc2edcbfc4fdc62d7b2ba4
+	md5sums = 8d344651a3bcfd1d809dab1bcec2b7ee
+
+pkgname = formido
+
