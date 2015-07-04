@@ -1,0 +1,21 @@
+pkgbase = cdparanoia-overread
+	pkgdesc = Compact Disc Digital Audio extraction tool patched for lead-out overread support
+	pkgver = 10.2
+	pkgrel = 1
+	url = http://www.xiph.org/paranoia/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = cdparanoia
+	conflicts = cdparanoia
+	options = !makeflags
+	source = http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
+	source = gcc.patch
+	source = overread.patch
+	md5sums = b304bbe8ab63373924a744eac9ebc652
+	md5sums = 12da14958d2b84c6719fe69890436445
+	md5sums = 6016c653227b895939c3757fea002972
+
+pkgname = cdparanoia-overread
+
