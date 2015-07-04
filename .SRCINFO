@@ -1,0 +1,16 @@
+pkgbase = thinkpad-helix-utils
+	pkgdesc = Useful tools for the Lenovo ThinkPad Helix
+	pkgver = v2.7.r13.gb950c1a
+	pkgrel = 1
+	url = https://github.com/ultravioletnanokitty/thinkpad-helix-utils
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = xorg-xinput
+	depends = xorg-xrandr
+	source = thinkpad-helix-utils::git://github.com/ultravioletnanokitty/thinkpad-helix-utils.git
+	md5sums = SKIP
+
+pkgname = thinkpad-helix-utils
+
