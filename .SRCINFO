@@ -1,0 +1,23 @@
+pkgbase = icli
+	pkgdesc = Icinga Command Line Interface
+	pkgver = 0.48
+	pkgrel = 2
+	url = http://finalrewind.org/projects/App-Icli/
+	arch = any
+	license = custom:WTFPL
+	makedepends = perl-test-compile
+	makedepends = perl-test-pod
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-datetime-timezone
+	depends = perl-list-moreutils
+	depends = perl-term-size
+	optdepends = icinga
+	options = !emptydirs
+	source = http://finalrewind.org/projects/App-Icli/App-Icli-0.48.tar.gz
+	source = http://finalrewind.org/projects/App-Icli/App-Icli-0.48.tar.gz.asc
+	md5sums = bc8a49aa80784553cd880ecafe059597
+	md5sums = bc0f6763c990f8cf8fb99bf8758c86c6
+
+pkgname = icli
+
