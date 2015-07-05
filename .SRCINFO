@@ -1,6 +1,6 @@
 pkgbase = mpd-light
-	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi
-	pkgver = 0.19.9
+	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, libsamplerate, libsoxr, smbclient
+	pkgver = 0.19.10
 	pkgrel = 1
 	url = http://www.musicpd.org/
 	install = mpd.install
@@ -20,14 +20,14 @@ pkgbase = mpd-light
 	depends = icu
 	depends = libupnp
 	depends = libnfs
-	provides = mpd=0.19.9
+	provides = mpd=0.19.10
 	conflicts = mpd
 	replaces = mpd
 	backup = etc/mpd.conf
-	source = http://www.musicpd.org/download/mpd/0.19/mpd-0.19.9.tar.xz
+	source = http://www.musicpd.org/download/mpd/0.19/mpd-0.19.10.tar.xz
 	source = mpd.tmpfile
 	source = mpd.conf
-	sha1sums = 6683bee5f132eda318c5a61ec14b2df8d9164d60
+	sha1sums = 4635b33223d3f1e67eed41f6350ef75515153213
 	sha1sums = f4d5922abb69abb739542d8e93f4dfd748acdad7
 	sha1sums = fd581b976f4931abf9b849224dcb38a73af14af0
 
