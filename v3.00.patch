@@ -1,0 +1,40 @@
+--- src/cnijfilter-common-3.00/cnijfilter/src/bjfoption.c	2012-06-19 21:10:21.000000000 +0200
++++ src-patched/cnijfilter-common-3.00/cnijfilter/src/bjfoption.c	2012-06-19 21:11:17.000000000 +0200
+@@ -1332,37 +1332,6 @@
+ 		}
+ 	}
+ 
+-	/* Ver.3.00 */
+-	if (formattype >= CND_FORMATTYPE_8){
+-		/* Confirm combination of MediaSupply and PaperSize */
+-		if ((confirm_return_code = CNCL_ConfirmSupplySize( &uidb.nominfo, (void *)bjlibdir, uidb.lpdbTop, uidb.dbsize)) == 1){
+-			/* SupplySize returned OK with these parameters */
+-		} else if (confirm_return_code == 0){
+-			/* SupplySize returned NG with these parameters */
+-			fprintf(stderr, "Error: inappropriate papersize selection\n");
+-			goto onError;
+-		} else {
+-			/* Internal error */
+-			fprintf(stderr, "Error: INTERNAL ERROR\n");
+-			goto onError;
+-		}
+-		
+-		/* Confirm combination of PaperSize and Duplex */
+-		if( duplex_support ){
+-			if ((confirm_return_code = CNCL_ConfirmSizeDuplex( &uidb.nominfo, (void *)bjlibdir, uidb.lpdbTop, uidb.dbsize)) == 1){
+-				/* SizeDuplex returned OK with these parameters */
+-			} else if (confirm_return_code == 0){
+-				/* SizeDuplex returned NG with these parameters */
+-				fprintf(stderr, "Error: inappropriate duplex selection\n");
+-				goto onError;
+-			} else {
+-				/* Internal error */
+-				fprintf(stderr, "Error: INTERNAL ERROR\n");
+-				goto onError;
+-			}
+-		}
+-	}
+-
+ 	/* Prepare bjdevice structure, to handover main routine */
+ 	bjdevice->bjfltModelID			= uidb.ModelID;
+ 	bjdevice->bjfltMediaType		= GetCurrentnValue(uidb.lpdbTop, uidb.dbsize, CNCL_MEDIATYPE);

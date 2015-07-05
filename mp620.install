@@ -1,0 +1,26 @@
+# arg 1:  the new package version
+post_install() {
+  echo -n "Restarting the CUPS daemon... "
+  systemctl restart cups.service > /dev/null && echo "done"
+  echo "Please select the following driver during CUPS configuration :
+  Canon MP620-630 series Ver.3.00"
+}
+
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  echo -n "Restarting the CUPS daemon... "
+  systemctl restart cups.service > /dev/null && echo "done"
+}
+
+
+# arg 1:  the old package version
+post_remove() {
+  echo -n "Restarting the CUPS daemon... "
+  systemctl restart cups.service > /dev/null && echo "done"
+}
+
+op=$1
+shift
+$op $*

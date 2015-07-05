@@ -1,0 +1,10 @@
+--- src/cnijfilter-common-3.00/cnijfilter/configure.in	2008-03-18 10:51:07.000000000 +0100
++++ src-patched/cnijfilter-common-3.00/cnijfilter/configure.in	2012-06-04 13:32:03.000000000 +0200
+@@ -33,6 +33,7 @@
+ case "${program_suffix}" in
+   ip3600) CNCL_LIB_ID=333;;
+   ip4600) CNCL_LIB_ID=334;;
++  mp610) CNCL_LIB_ID=327;;
+   mp630) CNCL_LIB_ID=336;;
+   mp540) CNCL_LIB_ID=338;;
+   mp240) CNCL_LIB_ID=341;;

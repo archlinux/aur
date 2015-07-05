@@ -1,0 +1,7 @@
+
+#mp610
+ATTR{idVendor}=="04a9", ATTR{idProduct}=="1725", MODE:="0660", GROUP:="lp", ENV{libsane_matched}:="yes"
+
+#mp620
+ATTR{idVendor}=="04a9", ATTR{idProduct}=="172f", MODE:="0660", GROUP:="lp", ENV{libsane_matched}:="yes"
+

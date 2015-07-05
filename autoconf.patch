@@ -1,0 +1,77 @@
+--- cngpij/cngpij/bjcups.c	2012-07-31 05:22:51.613991808 -0400
++++ bjcups.c	 2012-07-31 05:23:14.780658321 -0400
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+ 
+ --- backend/configure.in	2010-02-23 07:57:49.000000000 +0400
++++ configure.in	2013-01-12 17:57:23.186495527 +0400
+@@ -1,7 +1,7 @@
+ AC_INIT(src/cnij_backend_common.c)
+ AM_INIT_AUTOMAKE(backend, 3.40-1)
+ 
+-AM_CONFIG_HEADER(config.h)
++#AC_CONFIG_HEADERS(config.h)
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+ 
+--- cngpij/configure.in	2010-02-23 07:57:49.000000000 +0400
++++ configure.in	2013-01-12 17:55:19.960473398 +0400
+@@ -1,7 +1,7 @@
+ AC_INIT(cngpij/bjcups.c)
+ AM_INIT_AUTOMAKE(cngpij, 3.40-1)
+ 
+-AM_CONFIG_HEADER(config.h)
++#AC_CONFIG_HEADERS(config.h)
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+ 
+--- cnijfilter/configure.in	2010-03-09 14:51:24.000000000 +0400
++++ configure.in	2013-01-12 17:55:42.657021362 +0400
+@@ -25,7 +25,7 @@
+ 
+ 
+ AM_INIT_AUTOMAKE(cif${program_suffix}, 3.00-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ 
+ dnl Checks for programs.
+ AC_ISC_POSIX
+@@ -47,7 +47,6 @@
+ AC_SUBST(ARC)
+ 
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ 
+ dnl Checks for libraries.
+ 
+--- libs/configure.in	2010-02-23 07:57:49.000000000 +0400
++++ configure.in	2013-01-12 17:54:56.233930669 +0400
+@@ -1,7 +1,7 @@
+ AC_INIT(paramlist/paramlist.h)
+ AM_INIT_AUTOMAKE(buftool, 1.0.0)
+ 
+-AM_CONFIG_HEADER(config.h)
++#AC_CONFIG_HEADERS(config.h)
+ 
+ # Checks for programs.
+ AC_PROG_CXX
+ 
+--- pstocanonij/configure.in	2010-02-23 07:57:49.000000000 +0400
++++ configure.in	2013-01-12 17:56:03.480245771 +0400
+@@ -1,7 +1,7 @@
+ AC_INIT(filter/pstocanonij.c)
+ AM_INIT_AUTOMAKE(pstocanonij, 1.0.0)
+ 
+-AM_CONFIG_HEADER(config.h)
++#AC_CONFIG_HEADERS(config.h)
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then

@@ -1,0 +1,11 @@
+--- src/ppdMP620-630en-1.5/canonmp620-630en.ppd.orig	2012-06-19 21:42:06.000000000 +0200
++++ src/ppdMP620-630en-1.5/canonmp620-630en.ppd	2012-06-19 21:42:28.000000000 +0200
+@@ -29,7 +29,7 @@
+ *LanguageVersion: English
+ *Manufacturer: "Canon"
+ *ModelName: "Canon MP620-630 series"
+-*NickName: "Canon MP620-630 series Ver.2.80en"
++*NickName: "Canon MP620-630 series Ver.3.00"
+ *PCFileName: "CNMP620.PPD"
+ *Product: "(mp610)"
+ *PSVersion: "(3010.000) 550"
