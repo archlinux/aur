@@ -1,10 +1,9 @@
 pkgbase = haskell-stack
 	pkgdesc = The Haskell Tool Stack
 	pkgver = 0.1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.github.com/commercialhaskell/stack
 	arch = x86_64
-	arch = i686
 	license = BSD3
 	depends = libtinfo
 	optdepends = docker: Use Docker images to build your project in a temporary container

@@ -2,9 +2,9 @@
 pkgname=haskell-stack
 _pkgname=stack
 pkgver='0.1.1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="The Haskell Tool Stack"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://www.github.com/commercialhaskell/stack"
 license=('BSD3')
 depends=('libtinfo')
@@ -15,9 +15,6 @@ conflicts=('haskell-stack-git')
 if [ "${CARCH}" = 'x86_64' ]; then
     _arch='x86_64'
     sha1sums=('62109910c250cc895ae20c1501c310fd6ff23418')
-elif [ "${CARCH}" = 'i686' ]; then
-    _arch='i686'
-    sha1sums=('1a0270381c7dcd2e866dd04f74520fb234392511')
 fi
 source=("https://s3.amazonaws.com/download.fpcomplete.com/archlinux/${_pkgname}_${pkgver}-${_arch}.tar.gz")
 # install=
