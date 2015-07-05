@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-fr
 	pkgdesc = French language package for Iceweasel
-	pkgver = 38.0.1.deb5
+	pkgver = 39.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=38.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fr_38.0.1-5_all.deb
-	sha256sums = 417dc4f372f02dae50fa1defa75c4d534c1b372b5f35c3ad5d8c0b9a407aa4eb
+	depends = iceweasel>=39.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fr_39.0-1_all.deb
+	sha256sums = 998c77d6e21075019cc74c57c08af2f97ae6be7fae4ae5764dd6d71afed61501
 
 pkgname = iceweasel-i18n-fr
 
