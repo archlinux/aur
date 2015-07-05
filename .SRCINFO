@@ -1,0 +1,20 @@
+pkgbase = perl-travel-status-de-vrr
+	pkgdesc = Interface to the efa.vrr.de departure monitor
+	pkgver = 1.09
+	pkgrel = 2
+	url = http://finalrewind.org/projects/Travel-Status-DE-VRR/
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-file-slurp
+	makedepends = perl-test-pod
+	depends = perl-class-accessor
+	depends = perl-libwww
+	depends = perl-xml-libxml
+	options = !emptydirs
+	source = http://finalrewind.org/projects/Travel-Status-DE-VRR/Travel-Status-DE-VRR-1.09.tar.gz
+	source = http://finalrewind.org/projects/Travel-Status-DE-VRR/Travel-Status-DE-VRR-1.09.tar.gz.asc
+	md5sums = 7812d07707890167392de6196a5e4a3e
+	md5sums = ce82bee86e30c8a40b32ee6a364b135c
+
+pkgname = perl-travel-status-de-vrr
+
