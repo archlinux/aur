@@ -1,0 +1,18 @@
+pkgbase = sundtek-ffmpeg-plugin
+	pkgdesc = Sundtek driver plugin to use analog TV with tvheadend
+	pkgver = 0.8.r15563.ge9b8523
+	pkgrel = 1
+	epoch = 1
+	url = http://sundtek.de/support/buildffmpeg.sh
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = lame
+	makedepends = yasm
+	depends = sundtek
+	source = git://source.ffmpeg.org/ffmpeg.git#commit=e9b8523d52ca84d5012168db24fec2d50e73cf22
+	sha256sums = SKIP
+
+pkgname = sundtek-ffmpeg-plugin
+
