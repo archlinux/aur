@@ -1,0 +1,13 @@
+pkgbase = blws-important-git
+	pkgdesc = Provides the license and readme files.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = unknown
+	conflicts = blws-all-in-one-optimised-git
+	conflicts = blws-all-in-one-full-git
+	source = git://github.com/SnowyClaw/blws-important-git.git
+	md5sums = SKIP
+
+pkgname = blws-important-git
+
