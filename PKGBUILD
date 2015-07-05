@@ -14,10 +14,10 @@
 
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
-_basekernel=4.0
-_paxver=test13
-pkgver=${_basekernel}.4
-pkgrel=2
+_basekernel=4.1
+_paxver=test1
+pkgver=${_basekernel}.1
+pkgrel=1
 arch=(x86_64)
 url='http://grsecurity.net/~paxguy1/'
 license=(GPL2)
@@ -279,9 +279,9 @@ package_linux-pax-headers() {
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
-            'c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9'
-            '8c3d811ec50618a33ac15fadb0c80493399ec412b5cb09fe70f3b32f0b2e75a6'
-            '5d95766f5c35a49bc4a605a98ee04e63b9d1580d513fe45f5e5d351a17f19c13'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+            '48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad'
+            '888185ba93c917e0a843180856621016630d0ecc9c2778b4c837143f5c394431'
+            '4966c3b5441b4e3aa94080b700ef04dafb01340de76a37de99292d5919980da1'
             'c048941d45cdaa9b93916b88952e1b745a48a477f45aceb6ae5433161ff719c3'
             '92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a')
