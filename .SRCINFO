@@ -1,0 +1,14 @@
+pkgbase = tacacs-plus
+	pkgdesc = TACACS+ Daemon
+	pkgver = 4.0.4.28
+	pkgrel = 1
+	url = http://www.shrubbery.net/tac_plus
+	arch = i686
+	arch = x86_64
+	license = Custom
+	optdepends = tcp_wrappers
+	source = ftp://ftp.shrubbery.net/pub/tac_plus/tacacs-F4.0.4.28.tar.gz
+	md5sums = c8aba0d8f57cab784f1a43499f562b86
+
+pkgname = tacacs-plus
+
