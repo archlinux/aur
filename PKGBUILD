@@ -13,7 +13,7 @@ optdepends=('python-pyalsaaudio: Used by example applications.')
 conflicts=('pyspotify-git')
 provides=('pyspotify')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ce47484df6011ad9a3eeb37368f30880')
+md5sums=('bec42d3d6b2faff3f6e10ce9949d4789')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
