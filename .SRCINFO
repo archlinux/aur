@@ -1,7 +1,7 @@
 pkgbase = dooble-qt4
 	pkgdesc = A safe WebKit Web browser
-	pkgver = 1.52
-	pkgrel = 3
+	pkgver = 1.53
+	pkgrel = 1
 	url = http://dooble.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = dooble-qt4
 	makedepends = sed
 	makedepends = coreutils
 	depends = qtwebkit
-	depends = libspoton=0.22
-	depends = dooble-common=1.52
-	source = dooble-1.52.tar.gz::http://downloads.sourceforge.net/project/dooble/Version%201.52/Dooble-Source.tar.gz?r=
-	sha256sums = 407091a7dbd9d6969f0450a97e0fa9a153ea7773ae1af599a5226e7bc7467173
+	depends = libspoton=2015.06.17
+	depends = dooble-common=1.53
+	source = dooble-1.53.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%201.53/Dooble_Source.d.tar.gz?r=
+	sha256sums = 9764eba0471227fdf48121879ec6cb62073f7460f8249d776762b6394713abe3
 
 pkgname = dooble-qt4
 
