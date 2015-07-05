@@ -13,12 +13,11 @@ md5sums=('8a88b711d3d6a7fedd75af833c5470cb')
 
 build() {
   cd "${pkgname}"
-  ./configure --prefix="/usr"
+  ./configure --prefix="/usr" --sbindir="/usr/bin"
   make
 }
 
 package() {
   cd "${pkgname}"
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
