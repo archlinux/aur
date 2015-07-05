@@ -1,0 +1,335 @@
+From acc72078ea6db95174726ebc6f720abf96baca7c Mon Sep 17 00:00:00 2001
+From: Sean Davis <smd.seandavis@gmail.com>
+Date: Wed, 28 Aug 2013 19:14:00 -0400
+Subject: [PATCH] shimmer-layouts update
+
+---
+ gmbrc.default           |   10 ++++++++
+ gmusicbrowser.pl        |    6 ++--
+ gmusicbrowser_layout.pm |   15 +++++++++++-
+ gmusicbrowser_list.pm   |   34 ++++++++++++++++++++++-----
+ layouts/songtree.layout |   59 +++++++++++++++++++++++++++++++++++++++++++++---
+ plugins/fetch_cover.pm  |    4 ++-
+ 6 files changed, 114 insertions(+), 14 deletions(-)
+
+Index: gmusicbrowser/gmbrc.default
+===================================================================
+--- gmusicbrowser.orig/gmbrc.default
++++ gmusicbrowser/gmbrc.default
+@@ -10,8 +10,17 @@
+ PLUGIN_LYRICS: 1
+ PLUGIN_FETCHCOVER: 1
+ PLUGIN_AUTOSAVE: 1
++PLUGIN_ARTISTINFO: 1
+ PLUGIN_MPRIS2: 1
+ 
++UseTray: 0
++
++Layout: Shimmer Desktop
++IconTheme: elementary
++LayoutT: Shimmer Traytip
++LayoutF: Shimmer Party
++
++
+ # default player layout
+ #Layout: Small player
+ # default browser layout
+Index: gmusicbrowser/gmusicbrowser.pl
+===================================================================
+--- gmusicbrowser.orig/gmusicbrowser.pl
++++ gmusicbrowser/gmusicbrowser.pl
+@@ -616,9 +616,9 @@ our @cMenuAA=
+ (	{ label => _"Lock",	code => sub { ToggleLock($_[0]{lockfield}); }, check => sub { $::TogLock && $::TogLock eq $_[0]{lockfield}}, mode => 'P',
+ 	  test	=> sub { $_[0]{field} eq $_[0]{lockfield} || $_[0]{gid} == Songs::Get_gid($::SongID,$_[0]{lockfield}); },
+ 	},
+-	{ label => _"Lookup in AMG",	code => sub { AMGLookup( $_[0]{mainfield}, $_[0]{aaname} ); },
+-	  test => sub { $_[0]{mainfield} =~m/^album$|^artist$|^title$/; },
+-	},
++	#{ label => _"Lookup in AMG",	code => sub { AMGLookup( $_[0]{mainfield}, $_[0]{aaname} ); },
++	#  test => sub { $_[0]{mainfield} =~m/^album$|^artist$|^title$/; },
++	#},
+ 	{ label => _"Filter",		code => sub { Select(filter => Songs::MakeFilterFromGID($_[0]{field},$_[0]{gid})); },	stockicon => 'gmb-filter', mode => 'P' },
+ 	{ label => \&SongsSubMenuTitle,		submenu => \&SongsSubMenu, },
+ 	{ label => sub {$_[0]{mode} eq 'P' ? _"Display Songs" : _"Filter"},	code => \&FilterOnAA,
+Index: gmusicbrowser/gmusicbrowser_layout.pm
+===================================================================
+--- gmusicbrowser.orig/gmusicbrowser_layout.pm
++++ gmusicbrowser/gmusicbrowser_layout.pm
+@@ -7,6 +7,7 @@
+ 
+ use strict;
+ use warnings;
++use utf8;
+ 
+ package Layout;
+ 
+@@ -256,6 +257,7 @@ our %Widgets=
+ 	{	class	=> 'Layout::Label',
+ 		group	=> 'Play',
+ 		minsize	=> 20,
++		options => 'showcover',
+ 		markup	=> '<b><big>%S</big></b>%V',
+ 		markup_empty => '<b><big>&lt;'._("Playlist Empty").'&gt;</big></b>',
+ 		click1	=> \&PopupSongsFromAlbum,
+@@ -279,6 +281,10 @@ our %Widgets=
+ 		dragsrc => [::DRAG_ARTIST,\&DragCurrentArtist],
+ 		cursor	=> 'hand2',
+ 	},
++	ArtistBreadcrumb =>
++	{	parent	=> 'Artist',
++		click1	=> sub { my $ID=::GetSelID($_[0]); ::PopupAA( 'album', format=> ::__x( _"<big><b>{album}</b></big>\n{year}  /  {songs}", album => "%a", year => "%y", songs => "%s"), from=> Songs::Get_gid($ID,'artists')) if defined $ID; },
++	},
+ 	Album =>
+ 	{	class	=> 'Layout::Label',
+ 		group	=> 'Play',
+@@ -289,6 +295,10 @@ our %Widgets=
+ 		dragsrc => [::DRAG_ALBUM,\&DragCurrentAlbum],
+ 		cursor	=> 'hand2',
+ 	},
++	AlbumBreadcrumb =>
++	{	parent	=> 'Album',
++		click1	=> \&PopupSongsFromAlbum,
++	},
+ 	Year =>
+ 	{	class	=> 'Layout::Label',
+ 		group	=> 'Play',
+@@ -383,6 +393,7 @@ our %Widgets=
+ 		group	=> 'Play',
+ 		aa	=> 'album',
+ 		oldopt1 => 'maxsize',
++		options	=> 'showcover',
+ 		schange	=> sub { my $key=(defined $_[1])? Songs::Get_gid($_[1],'album') : undef ; $_[0]->set($key); },
+ 		click1	=> \&PopupSongsFromAlbum,
+ 		click3	=> sub { my $ID=::GetSelID($_[0]); ::PopupAAContextMenu({self =>$_[0], field=>'album', ID=>$ID, gid=>Songs::Get_gid($ID,'album'), mode => 'P'}) if defined $ID; },
+@@ -399,6 +410,7 @@ our %Widgets=
+ 		oldopt1 => 'maxsize',
+ 		schange	=> sub { my $key=(defined $_[1])? Songs::Get_gid($_[1],'artists') : undef ;$_[0]->set($key); },
+ 		click1	=> sub { ::PopupAA('artist'); },
++		click3	=> sub { my $ID=::GetSelID($_[0]); ::PopupAAContextMenu({self =>$_[0], field=>'artist', ID=>$ID, gid=>Songs::Get_gid($ID,'artist'), mode => 'P'}) if defined $ID; },
+ 		event	=> 'Picture_artist',
+ 		update	=> \&Layout::AAPicture::Changed,
+ 		noinit	=> 1,
+@@ -1663,7 +1675,7 @@ use base 'Gtk2::Window';
+ sub new
+ {	my ($class,$layout,%options)=@_;
+ 	my @original_args=@_;
+-	my $fallback=delete $options{fallback} || 'Lists, Library & Context';
++	my $fallback=delete $options{fallback} || 'Shimmer Desktop';
+ 	my $opt0={};
+ 	if (my $opt= $layout=~m/^[^(]+\(.*=/)
+ 	{	($layout,$opt0)= $layout=~m/^([^(]+)\((.*)\)$/; #separate layout id and options
+Index: gmusicbrowser/gmusicbrowser_list.pm
+===================================================================
+--- gmusicbrowser.orig/gmusicbrowser_list.pm
++++ gmusicbrowser/gmusicbrowser_list.pm
+@@ -195,8 +195,8 @@ sub Update
+ 	if (!$array)	{ $tip=$text=_"error"; }
+ 	else		{ $text.= ::CalcListLength($array,$self->{format}); }
+ 	my $format= $self->{size} ? '<span size="'.$self->{size}.'">%s</span>' : '%s';
+-	$self->child->set_markup_with_format($format,$text);
+-	$self->set_tooltip_text($tip);
++	if ($self->{mode} eq "filter") { $self->child->set_markup_with_format($format,$text); $self->set_tooltip_text($tip); }
++	else	{	$self->child->set_markup_with_format($format,$tip); $self->set_tooltip_text($text); }
+ 	$self->{needupdate}=0;
+ }
+ 
+@@ -223,7 +223,7 @@ sub filter_Update
+ {	my $self=shift;
+ 	my $filter=::GetFilter($self);
+ 	my $array=$filter->filter;
+-	return _("Filter : "), $array, $filter->explain;
++	return _("Filter : "), $array, ("Filter: ".$filter->explain);
+ }
+ 
+ ### list functions
+@@ -242,7 +242,7 @@ sub list_SongArray_changed
+ sub list_Update
+ {	my $self=shift;
+ 	my $array=::GetSongArray($self) || return;
+-	return _("Listed : "), $array,  ::__n('%d song','%d songs',scalar@$array);
++	return _("Listed : "), $array,  ::__n('%d song listed','%d songs listed',scalar@$array);
+ }
+ 
+ ### selected functions
+@@ -1584,6 +1584,7 @@ our %Pages=
+ our @MenuMarkupOptions=
+ (	"%a",
+ 	"<b>%a</b>%Y\n<small>%s <small>%l</small></small>",
++	"<b>%a</b>%Y\n<small>%x / %s / <small>%l</small></small>",
+ 	"<b>%a</b>%Y\n<small>%b</small>",
+ 	"<b>%a</b>%Y\n<small>%b</small>\n<small>%s <small>%l</small></small>",
+ 	"<b>%y %a</b>",
+@@ -1600,6 +1601,7 @@ my @mpicsize_menu=
+ 	_("medium size")	=> 64,
+ 	_("big size")		=> 96,
+ 	_("huge size")		=> 128,
++	_("giant size")		=> 256,
+ );
+ my @buttstats_menu=
+ (	_("number of songs")	=> 'count',
+@@ -3350,7 +3352,7 @@ sub new
+ 		my $BAlblist=::NewIconButton('gmb-playlist',undef,undef,'none');
+ 		$BAlblist->signal_connect(button_press_event => \&AlbumListButton_press_cb);
+ 		$BAlblist->set_tooltip_text(_"Choose Album From this Artist");
+-		$buttonbox->pack_start($BAlblist, ::FALSE, ::FALSE, 0);
++		$buttonbox->pack_start($_, ::FALSE, ::FALSE, 0) for $BAlblist;
+ 	}
+ 
+ 	my $drgsrc=$aa eq 'album' ? ::DRAG_ALBUM : ::DRAG_ARTIST;
+@@ -4690,6 +4692,16 @@ sub button_press_cb
+ 		else	{ $self->{pressed}=1; }
+ 		return 0;
+ 	}
++	if ($but==2)
++	{	my ($i,$j,$key)=$self->coord_to_index($event->get_coords);
++		if (defined $key && !exists $self->{selected}{$key})
++		{	$self->key_selected($event,$i,$j);
++		}
++		my $menu = ::ChooseSongsFromA($key);
++		my $event = Gtk2->get_current_event;
++		$menu->show_all;
++		$menu->popup(undef,undef,undef,undef,$event->button,$event->time);
++	}
+ 	if ($but==3)
+ 	{	my ($i,$j,$key)=$self->coord_to_index($event->get_coords);
+ 		if (defined $key && !exists $self->{selected}{$key})
+@@ -5613,7 +5625,7 @@ sub new
+ 	my $default= $::Options{"DefaultOptions_$name"} || {};
+ 
+ 	%$opt=( @DefaultOptions, %$default, %$opt );
+-	$self->{$_}=$opt->{$_} for qw/headclick songxpad songypad no_typeahead grouping/;
++	$self->{$_}=$opt->{$_} for qw/headclick songxpad songypad no_typeahead grouping showbb/;
+ 
+ 	#create widgets used to draw the songtree as a treeview, would be nice to do without but it's not possible currently
+ 	$self->{stylewidget}=Gtk2::TreeView->new;
+@@ -5676,6 +5688,16 @@ sub new
+ 	$self->AddColumn($_) for split / +/,$opt->{cols};
+ 	unless ($self->{cells}) { $self->AddColumn('title'); } #to ensure there is at least 1 column
+ 
++	if ($self->{showbb}) { # show queue actions in QueueList if option showbb is set
++		my $qactions = Layout::NewWidget("QueueActions");
++		my $clearb = ::NewIconButton('gtk-clear',"",\&::ClearQueue,"none","Clear Queue");
++		my $shuffleb = ::NewIconButton('gmb-shuffle',"",\&::ShuffleQueue,"none","Shuffle Queue");
++		my $bbox = Gtk2::HBox->new(0,0);
++		$bbox->pack_start($qactions,0,0,0);
++		$bbox->pack_end($clearb,0,0,0);
++		$bbox->pack_end($shuffleb,0,0,0);
++		$vbox->pack_end($bbox,0,0,0);
++	}
+ 	$self->{selected}='';
+ 	$self->{lastclick}=$self->{startgrow}=-1;
+ 	$self->set_head_columns;
+Index: gmusicbrowser/layouts/songtree.layout
+===================================================================
+--- gmusicbrowser.orig/layouts/songtree.layout
++++ gmusicbrowser/layouts/songtree.layout
+@@ -1,6 +1,37 @@
+ #SongTree Group & Columns definitions
+ #####################################
+ 
++{Group Compact}
++title=Compact
++head=pic:h
++tail=25
++vcollapse=head
++vmin=pic:y+pic:h+25
++title:	text(markup='<b><big>'.pesc($album).'</big></b>'. if($year,'\n'.pesc($year)) . '\n'.pesc($artist),pad=2,x=pic:w)
++pic:	aapic(y=title:y,picsize=picsize,ypad=2,xpad=1,aa='album')
++picsize : OptionNumber(default=50,min=20,max=1000,step=10)
++
++{Group discleft}
++title=disc on the left side
++head=3
++left=width
++vcollapse=head+title:h+line:h+2
++title:	text(markup='<b><big>'.pesc($title).'</big></b>'.if(!$_expanded,'<big><b>»</b></big>'),pad=2,w=left))
++width:	OptionNumber(default=15,min=10,max=100,step=1)
++line: line(x1=1,y1=1,x2=$_w,y2=1,color='#ccc',width=1)
++
++{Group artistalbum_breadcrumbs}
++title=album and artist breadcrumbs
++head=title:h
++tail=25
++vcollapse=head
++vmin=pic:y+pic:h+25
++left=pic:w+2
++title:	text(markup='<b><big>'.pesc($album).'</big></b>'. if($year,'  <big><b>«</b></big>  '.pesc($year)) . '  <big><b>«</b></big>  '.pesc($artist),pad=2)
++pic:	+aapic(y=title:h+title:y,picsize=picsize,ypad=2,xpad=1,aa='album')
++picsize : OptionNumber(default=100,min=20,max=1000,step=10)
++picstars : picture(file=ratingpic($rating_avrg),x=(picsize/2)-(picstars:w/2),y=pic:y+pic:h,hide=$rating_avrg==50 || picsize < 80)
++
+ {Group pic}
+ title= _"with picture"
+ head=title:h
+@@ -33,6 +64,14 @@ pic:	aapic(y=title:y + title:h +2, picsi
+ width:	OptionNumber(default=200,min=20,max=1000,step=10)
+ picsize : OptionNumber(default=100,min=20,max=1000,step=10)
+ 
++{Column RhythmboxQueue}
++menutitle = _"Rhythmbox 2nd queue column"
++title = _"Queue"
++hreq=text:h
++width=200
++sort= title:i
++text : text(markup=pesc($title).'\n<small>by <i>'.pesc($artist).'</i>\non <i>'.pesc($album).'</i></small>',pad=2)
++
+ {Column testtitleandprogress}
+ title= _"Title & progress"
+ sort=album:i title:i
+@@ -42,6 +81,20 @@ hreq=text:h
+ progress: pbar( fill=$progress, hide=!$playing,y=1,h=-2)
+ text: text(markup=playmarkup(pesc($title)))
+ 
++{Column queuenumber}
++menutitle = Queue-Item Number
++title = #
++width = 20
++text: text(markup=$queued, x=-text:w)
++
++{Column playandqueueandtrack}
++menutitle = Playing/Queue Icon or Track
++title = #
++width = 20
++sort = track
++ico:	icon(pad=2,icon=$playicon, hide= !$playing && !$queued)
++text:	text(markup=pesc($track.' '.$queued), hide= $playing || $queued)
++
+ {Column playandqueue}
+ menutitle = _"Playing and queue icons"
+ width = 20
+@@ -82,9 +135,9 @@ title = _"Rating"
+ menutitle = _"Rating (picture)"
+ sort = rating
+ width=100
+-#hreq = pic:h
+-#pic : picture(file=ratingpic($rating),init_file=ratingpic(0))
+-pic : picture(file=ratingpic($rating),h=$_h,w=$_w,resize='ratio',init_file=ratingpic(0))
++hreq = pic:h
++pic : picture(file=ratingpic($rating),init_file=ratingpic(0),x=pic:w)
++#pic : picture(file=ratingpic($rating),h=$_h,w=$_w,resize='ratio',init_file=ratingpic(0))
+ 
+ {Column right_aligned_folder}
+ menutitle = _"Folder (right-aligned)"
+Index: gmusicbrowser/plugins/fetch_cover.pm
+===================================================================
+--- gmusicbrowser.orig/plugins/fetch_cover.pm
++++ gmusicbrowser/plugins/fetch_cover.pm
+@@ -46,15 +46,17 @@ my %Sites=
+ );
+ 
+ my %menuitem=
+-(	label => _"Search for a picture on internet",					#label of the menu item
++(	label => _"Search Picture",					#label of the menu item
+ 	code => sub { Fetch($_[0]{mainfield},$_[0]{gid},$_[0]{ID}); },			#when menu item selected
+ 	test => sub {$_[0]{mainfield} eq 'album' || $_[0]{mainfield} eq 'artist'},	#the menu item is displayed if returns true
++	stockicon => 'gtk-find',
+ );
+ my %fpane_menuitem=
+ (	label=> _"Search for a picture on internet",
+ 	code => sub { Fetch($_[0]{field},$_[0]{gidlist}[0]); },
+ 	onlyone=> 'gidlist',	#menu item is hidden if more than one album/artist is selected
+ 	istrue => 'aa',		#menu item is hidden for non artist/album (aa) FPanes
++	stockicon => 'gtk-find',
+ );
+ 
+ ::SetDefaultOptions(OPT, USEFILE => 1, COVERFILE => 'cover', PictureSite_artist => 'googlei', PictureSite_album => 'googlei');
