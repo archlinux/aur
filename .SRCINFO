@@ -1,7 +1,7 @@
 pkgbase = csync2
 	pkgdesc = Asynchronous cluster syncronisation tool based on librsync and inspired by Unison
-	pkgver = 1.34
-	pkgrel = 4
+	pkgver = 2.0
+	pkgrel = 1
 	url = http://oss.linbit.com/csync2/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,8 @@ pkgbase = csync2
 	depends = libgpg-error
 	depends = gnutls
 	depends = libtasn1
-	backup = etc/csync2.cfg
-	source = http://oss.linbit.com/csync2/csync2-1.34.tar.gz
-	md5sums = efc8a3548996b79cef2ad76af5e93cd8
+	source = http://oss.linbit.com/csync2/csync2-2.0.tar.gz
+	sha256sums = 11cb37380fb185bce0c22b804fec9b01c385d9d83cc528cfd48d748453834fa2
 
 pkgname = csync2
 
