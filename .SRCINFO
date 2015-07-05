@@ -1,0 +1,19 @@
+pkgbase = paxctld
+	pkgdesc = PaX flags maintenance daemon
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://grsecurity.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	backup = etc/paxctld.conf
+	source = http://grsecurity.net/paxctld/paxctld_1.0.orig.tar.gz
+	source = http://grsecurity.net/paxctld/paxctld_1.0.orig.tar.gz.sig
+	source = paxctld.service
+	sha256sums = 94b319e0c506fe42bd610247a8997758d7409d92fd94dd28621d7641006b6ed0
+	sha256sums = SKIP
+	sha256sums = bedd98fa6bd95ff00af420e6ca1811f792825d9fb9078218e16b78653ad74cff
+
+pkgname = paxctld
+

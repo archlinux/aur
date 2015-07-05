@@ -1,0 +1,9 @@
+[Unit]
+Description=PaX flags maintenance daemon (paxctld)
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/paxctld -d
+
+[Install]
+WantedBy=multi-user.target
