@@ -1,0 +1,16 @@
+post_install () {
+	echo "bashmarks-git has been installed, don't forget to add the following line"
+	echo "to either ~/.bashrc or ~/.bash_profile to enable bashmarks."
+    echo 
+	echo "source /usr/share/bashmarks/bashmarks.sh"
+    echo
+}
+
+post_remove () {
+	echo "bashmarks-git has been removed, don't forget to remove the following line"
+    echo "from either ~/.bashrc or ~/.bash_profile"
+    echo
+	echo "source /usr/share/bashmarks/bashmarks.sh"
+    echo
+}
+
