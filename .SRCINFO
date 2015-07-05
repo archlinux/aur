@@ -1,0 +1,13 @@
+pkgbase = popa3d
+	pkgdesc = tiny POP3 daemon designed with security as the primary goal
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.openwall.com/popa3d/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://www.openwall.com/popa3d/popa3d-1.0.3.tar.gz
+	md5sums = aa754b86537660d47e5a65eda58be668
+
+pkgname = popa3d
+
