@@ -1,0 +1,15 @@
+pkgbase = perl-linux-lvm
+	pkgdesc = Perl extension for accessing Logical Volume Manager (LVM) data structures in Linux.
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://search.cpan.org/~raymor/-0.17/
+	arch = any
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/R/RA/RAYMOR/Linux-LVM-0.17.tar.gz
+	md5sums = 3ea9aafa7dbbe01c00d0ac70ae44b42b
+
+pkgname = perl-linux-lvm
+
