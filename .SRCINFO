@@ -1,0 +1,32 @@
+pkgbase = frescobaldi
+	pkgdesc = A LilyPond sheet music text editor.
+	pkgver = 2.18.1
+	pkgrel = 2
+	url = http://www.frescobaldi.org/
+	install = frescobaldi.install
+	arch = any
+	license = GPL
+	depends = hyphen
+	depends = poppler
+	depends = python>=3.2
+	depends = python-ly>=0.9
+	depends = python-poppler-qt4
+	depends = python-pyqt4>=4.8.3
+	depends = qt4>=4.7
+	depends = tango-icon-theme
+	optdepends = lilypond: Music engraving (recommended)
+	optdepends = python-pygame-hg: MIDI playback (alternate engine)
+	optdepends = portmidi: MIDI playback (fallback engine)
+	optdepends = hyphen-de: German hyphenation rules
+	optdepends = hyphen-en: English hyphenation rules
+	optdepends = hyphen-es: Spanish hyphenation rules
+	optdepends = hyphen-fr: French hyphenation rules
+	optdepends = hyphen-hu: Hungarian hyphenation rules
+	optdepends = hyphen-it: Italian hyphenation rules
+	optdepends = hyphen-nl: Dutch hyphenation rules
+	optdepends = hyphen-ro: Romanian hyphenation rules
+	source = https://github.com/wbsoft/frescobaldi/releases/download/v2.18.1/frescobaldi-2.18.1.tar.gz
+	md5sums = 3cf2aae0d74717d5a7aff089fe46bc8c
+
+pkgname = frescobaldi
+
