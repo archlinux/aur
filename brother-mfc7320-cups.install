@@ -1,0 +1,20 @@
+MODEL=MFC7320
+
+post_install() {
+  /usr/share/brother/cupswrapper/cupswrapperMFC7320-2.0.2 -i&
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  /usr/share/brother/cupswrapper/cupswrapperMFC7320-2.0.2 -e
+}
+
+
+op=$1
+shift
+
+$op "$@"
+

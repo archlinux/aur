@@ -1,0 +1,130 @@
+diff -Nurp orig/usr/local/Brother/cupswrapper/cupswrapperMFC7320-2.0.2 arch/usr/local/Brother/cupswrapper/cupswrapperMFC7320-2.0.2
+--- orig/usr/local/Brother/cupswrapper/cupswrapperMFC7320-2.0.2	2008-01-25 03:29:48.000000000 +0100
++++ arch/usr/local/Brother/cupswrapper/cupswrapperMFC7320-2.0.2	2013-03-24 16:26:59.028971284 +0100
+@@ -22,27 +22,17 @@ if [ "$1" = '-e' ]; then
+   lpadmin -x MFC7320
+   rm -f /usr/share/cups/model/MFC7320.ppd
+   rm -f /usr/lib/cups/filter/brlpdwrapperMFC7320
+-  rm -f /usr/lib64/cups/filter/brlpdwrapperMFC7320
+-  rm -f /usr/local/Brother/cupswrapper/brcupsconfig3
++  rm -f /usr/lib32/cups/filter/brlpdwrapperMFC7320
++  rm -f /usr/share/brother/cupswrapper/brcupsconfig3
+   if [ -f /usr/share/ppd/MFC7320.ppd ];then
+   rm -f /usr/share/ppd/MFC7320.ppd
+   fi
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
++  systemctl restart org.cups.cupsd.service
+   exit 0 
+ fi
+ if [ "$1" = "-r" ]; then
+   lpadmin -x MFC7320
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
++  systemctl restart org.cups.cupsd.service
+   exit 0 
+ fi
+ if [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+@@ -54,7 +44,7 @@ if [ "$1" = "help" ] || [ "$1" = "-h" ];
+ fi
+ mkdir -p /usr/lib/cups/filter
+ 
+-if [ -e "/usr/local/Brother/lpd/filterMFC7320" ]; then
++if [ -e "/usr/share/brother/lpd/filterMFC7320" ]; then
+   :
+ else
+   echo "ERROR : Brother LPD filter is not installed."
+@@ -340,14 +330,14 @@ if [ -e '/usr/share/ppd' ];then
+ fi
+ 
+ brotherlpdwrapper=/usr/lib/cups/filter/brlpdwrapperMFC7320
+-brotherlpdwrapper64=/usr/lib64/cups/filter/brlpdwrapperMFC7320
++brotherlpdwrapper32=/usr/lib32/cups/filter/brlpdwrapperMFC7320
+ rm -f  $brotherlpdwrapper
+ 
+ 
+ cat <<!ENDOFWFILTER! >$brotherlpdwrapper
+ #! /bin/sh
+ #
+-# Brother Print filter  >>  $brotherlpdwrapper
++# Brother Print filter
+ # Copyright (C) 2005 Brother. Industries, Ltd.
+ #                                    Ver1.00
+ 
+@@ -473,25 +463,25 @@ else
+ fi
+ 
+ 
+-if [ -e "/usr/local/Brother/lpd/filter\$PRINTER" ]; then
++if [ -e "/usr/share/brother/lpd/filter\$PRINTER" ]; then
+        :
+ else
+-    echo "ERROR: /usr/local/Brother/lpd/filter\$PRINTER does not exist"   >>\$LOGFILE
++    echo "ERROR: /usr/share/brother/lpd/filter\$PRINTER does not exist"   >>\$LOGFILE
+     errorcode=30
+     exit $errorcode
+ fi
+ 
+-if [ -e "/usr/local/Brother/cupswrapper/brcupsconfig3" ]; then
++if [ -e "/usr/share/brother/cupswrapper/brcupsconfig3" ]; then
+   if [ \$DEBUG = 0 ]; then
+-     /usr/local/Brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD 0 "\$options" >> /dev/null
++     /usr/share/brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD 0 "\$options" >> /dev/null
+   else
+-     /usr/local/Brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD \$LOGCLEVEL "\$options" >>\$LOGFILE
++     /usr/share/brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD \$LOGCLEVEL "\$options" >>\$LOGFILE
+   fi
+ fi
+ 
+ 
+ if [ \$DEBUG -le 2 ]; then
+-    cat    \$INPUT_TEMP_PS | /usr/local/Brother/lpd/filter\$PRINTER
++    cat    \$INPUT_TEMP_PS | /usr/share/brother/lpd/filter\$PRINTER
+ fi
+ 
+ if [ \$DEBUG -ge 2 ];  then
+@@ -509,24 +499,13 @@ exit \$errorcode
+ 
+ 
+ chmod 755 $brotherlpdwrapper
+-if [ -e /usr/lib64/cups/filter ]; then
+-   cp $brotherlpdwrapper  $brotherlpdwrapper64
++if [ -e /usr/lib32/cups/filter ]; then
++   cp $brotherlpdwrapper  $brotherlpdwrapper32
+ fi
+ 
+-chmod a+w /usr/local/Brother/inf/brMFC7320rc
+-chmod a+w /usr/local/Brother/inf
+-if [ -e /etc/init.d/lpd ]; then
+-   /etc/init.d/lpd stop
+-fi
+-if [  -e /etc/init.d/lprng ]; then
+-   /etc/init.d/lprng stop
+-fi
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
++chmod a+w /usr/share/brother/inf/brMFC7320rc
++chmod a+w /usr/share/brother/inf
++systemctl restart org.cups.cupsd.service
+ sleep 2s
+ port2=`lpinfo -v | grep -i 'usb://Brother/MFC-7320' | head -1`
+ if [ "$port2" = '' ];then
+@@ -537,4 +516,5 @@ if [ "$port" = '' ];then
+ 	port=usb:/dev/usb/lp0
+ fi
+ lpadmin -p MFC7320 -E -v $port -P /usr/share/cups/model/MFC7320.ppd
+-  exit 0 
++exit 0
++

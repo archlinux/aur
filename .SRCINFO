@@ -1,0 +1,21 @@
+pkgbase = brother-mfc7320-cups
+	pkgdesc = Brother MFC-7320 CUPS printer driver
+	pkgver = 2.0.2
+	pkgrel = 5
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#MFC-7320
+	install = brother-mfc7320-cups.install
+	arch = i686
+	arch = x86_64
+	groups = brother-mfc7320
+	license = custom:Brother
+	license = GPL
+	makedepends = rpmextract
+	depends = cups
+	depends = brother-mfc7320-lpr
+	source = brother-mfc7320-cups.patch
+	source = http://download.brother.com/welcome/dlf006226/cupswrapperMFC7320-2.0.2-1.i386.rpm
+	md5sums = 307d2f7872d7a7ce72ef1d4b8856ccfb
+	md5sums = 2af7dcc7ad8e35e05a8f868d4c9803ad
+
+pkgname = brother-mfc7320-cups
+
