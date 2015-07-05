@@ -1,7 +1,7 @@
 # Maintainer: Ian Hernandez <ihernandezs@openmailbox.org>
 
 pkgname=simple-text
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A not so simple text and code editor written in Vala (Still in development)"
 arch=('i686' 'x86_64')
