@@ -1,0 +1,18 @@
+pkgbase = ympd
+	pkgdesc = A standalone MPD Web GUI
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://www.ympd.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libmpdclient
+	optdepends = openssl: SSL support in libwebsockets webserver
+	source = https://github.com/notandy/ympd/archive/v1.2.3.tar.gz
+	sha256sums = 092c26c51166d1d1f025cd06742981783dea7e42bfe4f73f10c4418fc003de94
+
+pkgname = ympd
+
