@@ -1,0 +1,23 @@
+pkgbase = ha-pacemaker-crmsh
+	pkgdesc = Pacemaker Configuration Shell - The original shell from SUSE
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://savannah.nongnu.org/projects/crmsh/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ha-pacemaker-git
+	makedepends = python2
+	depends = ha-glue
+	depends = ha-heartbeat
+	depends = libxslt
+	depends = ha-pacemaker-git
+	depends = python2
+	options = !libtool
+	options = docs
+	options = strip
+	source = http://download.savannah.gnu.org/releases/crmsh/crmsh-1.2.6.tar.bz2
+	md5sums = b3cdfc87ad04b65e367b1f462b31208b
+
+pkgname = ha-pacemaker-crmsh
+
