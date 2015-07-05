@@ -1,0 +1,45 @@
+pkgbase = syslog-ng-nosystemd
+	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = http://www.balabit.com/network-security/syslog-ng/
+	arch = i686
+	arch = x86_64
+	groups = eudev-base
+	license = GPL2
+	license = LGPL2.1
+	makedepends = flex
+	makedepends = pkg-config
+	makedepends = python2
+	makedepends = libxslt
+	depends = awk
+	depends = eventlog
+	depends = glib2
+	depends = libcap
+	depends = libdbi
+	depends = pcre
+	depends = udev
+	optdepends = logrotate: for rotating log files
+	optdepends = syslog-ng-openrc: syslog-ng openrc initscript
+	provides = syslog-ng=3.6.2
+	conflicts = syslog-ng
+	conflicts = syslog-ng-eudev
+	replaces = syslog-ng
+	replaces = syslog-ng-eudev
+	backup = etc/syslog-ng/scl.conf
+	backup = etc/syslog-ng/syslog-ng.conf
+	backup = etc/conf.d/syslog-ng
+	backup = etc/logrotate.d/syslog-ng
+	source = http://www.balabit.com/downloads/files/syslog-ng/sources/3.6.2/source/syslog-ng_3.6.2.tar.gz
+	source = syslog-ng.conf
+	source = syslog-ng.conf.d
+	source = syslog-ng.logrotate
+	source = syslog-ng.rc
+	sha1sums = 36eeaf920383ee8cb1c17d945205b7562f9fbbb2
+	sha1sums = 3e7ec4f3f68265aaa98f37338f801c5c22b85c17
+	sha1sums = eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd
+	sha1sums = 949128fe3d7f77a7aab99048061f885bc758000c
+	sha1sums = 94af81a84e3add6653755122cdd5080694de059d
+
+pkgname = syslog-ng-nosystemd
+
