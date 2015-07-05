@@ -13,8 +13,8 @@ provides=('hunspell-fr')
 conflicts=('hunspell-fr')
 source=(http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v${pkgver}.zip
         LICENSE)
-md5sums=('697fc4c3d61a029694fbe13a84ed37cd'
-         '815ca599c9df247a0c7f619bab123dad')
+sha256sums=('604664c075140b889040a41575e211569eb4eece2ec0cf670ceb9f2a09024731'
+            'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
 
 package() {
   cd "${srcdir}"
