@@ -1,0 +1,22 @@
+pkgbase = qastrocam-g2-svn
+	pkgdesc = Linux modified webcam capture software for astronomy.
+	pkgver = 800
+	pkgrel = 1
+	url = http://sourceforge.net/projects/qastrocam-g2/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	makedepends = subversion
+	depends = qt4
+	depends = libjpeg-turbo
+	depends = cfitsio
+	depends = libusb
+	optdepends = sdl
+	provides = qastrocam-g2
+	conflicts = qastrocam-g2
+	source = qastrocam-g2::svn://svn.code.sf.net/p/qastrocam-g2/svn/trunk
+	sha1sums = SKIP
+
+pkgname = qastrocam-g2-svn
+
