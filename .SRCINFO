@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ca
 	pkgdesc = Catalan language pack for Iceweasel
-	pkgver = 38.0.1.deb5
+	pkgver = 39.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=38.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ca_38.0.1-5_all.deb
-	sha256sums = d74104d42c2a347f062b793347785c2184c47b4b14afe90ea442b15b1d1df331
+	depends = iceweasel>=39.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ca_39.0-1_all.deb
+	sha256sums = f96ce9e887c69ca3dcd027ba8118258e39d99cea215113e3477e8c73dd80ae37
 
 pkgname = iceweasel-i18n-ca
 
