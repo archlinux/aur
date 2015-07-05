@@ -1,0 +1,123 @@
+linux-pax-flags(8)          System Manager's Manual         linux-pax-flags(8)
+
+
+
+NAME
+       linux-pax-flags - Configure PaX flags for several binaries
+
+SYNOPSIS
+       linux-pax-flags [options] [filter]
+
+DESCRIPTION
+       linux-pax-flags  is  written  to configure PaX flags for a set of bina‐
+       ries.  It is intended to ease the usage of PaX (linux-pax)  or  grsecu‐
+       rity (linux-grsec, linux-grsec-lts) enabled kernel on Arch Linux.
+
+       PaX flags for a set of binaries are collected in YAML format configura‐
+       tion files. By  default,  every  .conf  file  from  /etc/pax-flags  and
+       /usr/share/linux-pax-flags  is  read. See the CONFIGURATION section for
+       the file format.
+
+       Root privileges are needed. If you  set  a  value  to  $PAX_FLAGS_SUDO,
+       linux-pax-flags will be called with sudo.
+
+OPTIONS
+       -c, --config  <path>
+              Override  default  configuration  paths. Requires one path argu‐
+              ment. Can contain globs (escape them in  some  shells  (zsh  for
+              example)).
+
+       -h, --help
+              Displays a short usage message and option summary.
+
+       -p, --prepend
+              Do not actually change anything.
+
+       -x, --xattr
+              Sets the PaX flags through setfattr, underlying filesystems need
+              xattr support.
+
+       -y, --yes
+              Non-interactive mode. Assume yes on any question.
+
+FILES
+       /etc/pax-flags/*.conf
+              Files for overriding the standard flag set and path pattern con‐
+              figuration.
+
+       /usr/share/linux-pax-flags/*.conf
+              The shipped configuration.
+
+CONFIGURATION
+       There  are  simple configuration entries and complex ones. Complex con‐
+       figuration for a certain flag set and path pattern overrides simple. To
+       override a simple entry with a complex one, the flag sets and path pat‐
+       terns have to match exactly.
+
+   Simple entries
+       Simple configuration entries just set the PaX flags for a set of  bina‐
+       ries. The format is as follows:
+
+       PSmXER:
+         - /usr/bin/ruby
+         - /usr/bin/glx*
+
+       PSmXER  is the set of flags. Every letter represents a PaX flag. Upper‐
+       case enables the flag, lowercase disables it. See  paxctl(1)  for  more
+       details.   This   example   disables   MPROTECT  on  /usr/bin/ruby  and
+       /usr/bin/glx*.
+
+   Complex entries
+       With complex entries it is possible to stop a daemon before setting the
+       flags and starting it afterwards. The format is as follows:
+
+       PSmXER:
+         - /usr/sbin/clamd:
+           type: systemd
+
+       This  would  stop  clamd, disable MPROTECT for the binary and start the
+       daemon again. The type option values correspond to presets  of  status,
+       start,  stop actions. Currently there exists only "systemd". By default
+       the systemd unit file would be "clamd" in this case or the basename  of
+       the path in general.
+
+       PSmXEr:
+         - /usr/lib/polkit-1/polkitd:
+           type: systemd
+           systemd_name: polkit
+
+       The  systemd_name  option  can be used to configure a differing systemd
+       unit name.
+
+       PSmXEr:
+         - /usr/lib/firefox/firefox:
+           status: "pidof firefox"
+           start: "firefox &"
+           stop: "killall firefox"
+
+       This would configure custom actions for status, start and stop.
+
+       PSmXER:
+         - /usr/bin/ruby:
+           skip: true
+
+       This would override a simple entry for the same flag set and path  pat‐
+       tern and cause it to be skipped.
+
+       PSmXER:
+         - /usr/lib32/skype/skype:
+           header: create
+
+       This  would cause paxctl to not convert the old binary header, but cre‐
+       ate a new one. See paxctl(1) for more details.
+
+AUTHOR
+       henning mueller <henning@orgizm.net>
+
+SEE ALSO
+       - paxctl(1)
+       - http://www.yaml.org
+
+
+
+2013-02-18                                                  linux-pax-flags(8)
