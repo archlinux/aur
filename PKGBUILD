@@ -2,7 +2,7 @@
 
 pkgname=pyspotify
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python Spotify library"
 arch=('any')
 url="http://pyspotify.mopidy.com/"
