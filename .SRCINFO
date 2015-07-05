@@ -1,0 +1,14 @@
+pkgbase = python2-editdist
+	pkgdesc = A Python module to calculate the Levenshtein edit distance between two strings.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://code.google.com/p/py-editdist/
+	arch = i686
+	arch = x86_64
+	license = custom:ISC/BSD
+	depends = python2
+	source = http://py-editdist.googlecode.com/files/py-editdist-0.3.tar.gz
+	sha256sums = 17c5bd2852cd4eab27482a419a73b07deda0b09e40b8057d6fafba53eca7c5e9
+
+pkgname = python2-editdist
+
