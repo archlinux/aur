@@ -1,0 +1,15 @@
+pkgbase = libdvbpsi8
+	pkgdesc = Provides libdvbpsi.so.8 (Older version of libdvbpsi)
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = http://developers.videolan.org/libdvbpsi/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	source = http://download.videolan.org/libdvbpsi/1.0.0/libdvbpsi-1.0.0.tar.bz2
+	md5sums = SKIP
+
+pkgname = libdvbpsi8
+
