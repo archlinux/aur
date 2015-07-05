@@ -1,0 +1,16 @@
+--- a/03-libv4l.patch
++++ b/03-libv4l.patch
+@@ -423,13 +423,4 @@
+  #include <sys/ioctl.h>
+  #include <sys/mman.h>
+  #include <errno.h>
+---- a/uvcvideo.h
+-+++ b/uvcvideo.h
+-@@ -2,7 +2,6 @@
+- #define _USB_VIDEO_H_
+- 
+- #include <linux/kernel.h>
+--#include <linux/videodev.h>
+- 
+- #include "uvc_compat.h"
+  
