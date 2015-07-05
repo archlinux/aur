@@ -1,0 +1,19 @@
+pkgbase = mspdebug
+	pkgdesc = A free debugger and firmware downloader for the MSP430/CC430 MCU family
+	pkgver = 0.23
+	pkgrel = 1
+	url = http://mspdebug.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb
+	depends = readline
+	depends = libusb-compat
+	conflicts = mspdebug-git
+	source = http://downloads.sourceforge.net/project/mspdebug/mspdebug-0.23.tar.gz
+	source = 82-eZ430.rules
+	md5sums = 639d3be539b1954fbd39aaab0515ec47
+	md5sums = 40f337b67e1b35f4061822e96b284a0c
+
+pkgname = mspdebug
+
