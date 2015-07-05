@@ -1,0 +1,20 @@
+pkgbase = zeya-git
+	pkgdesc = Zeya is a media player that lets you bring your music to any computer with a web browser.
+	pkgver = 20150130
+	pkgrel = 1
+	url = http://web.psung.name/zeya/
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = python2
+	depends = vorbis-tools
+	depends = python2-tagpy
+	depends = boost
+	optdepends = flac: Flac decoders.
+	optdepends = mpg123: MP3 decoders.
+	optdepends = faad2: M4A decoders.
+	source = zeya.run
+	md5sums = 50317c1d4675b37943d44678cc726887
+
+pkgname = zeya-git
+
