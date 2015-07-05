@@ -1,0 +1,60 @@
+pkgbase = fusioninventory-agent
+	pkgdesc = FusionInventory Agent is an application for keeping track of the hardware and software
+	pkgver = 2.3.16
+	pkgrel = 1
+	url = http://fusioninventory.org
+	arch = any
+	license = GPL
+	makedepends = perl-http-proxy
+	makedepends = perl-http-server-simple
+	makedepends = perl-io-socket-ssl
+	makedepends = perl-io-captureoutput
+	makedepends = perl-ipc-run
+	makedepends = perl-test-compile
+	makedepends = perl-test-deep
+	makedepends = perl-test-exception
+	makedepends = perl-test-mockmodule
+	makedepends = perl-test-nowarnings
+	makedepends = perl-lwp-protocol-https
+	makedepends = perl-test-mockobject
+	makedepends = perl-json
+	makedepends = perl-net-snmp
+	makedepends = perl-poe-component-client-ping
+	depends = perl>=5.8
+	depends = perl-file-which
+	depends = perl-libwww>=5.8
+	depends = perl-net-ip
+	depends = perl-text-template
+	depends = perl-universal-require
+	depends = perl-xml-treepp>=0.26
+	optdepends = perl-compress-zlib: message compression
+	optdepends = perl-http-daemon: web interface
+	optdepends = perl-io-socket-ssl>=1.14: HTTPS support
+	optdepends = perl-lwp-protocol-https: HTTPS support
+	optdepends = perl-proc-daemon: daemon mode
+	optdepends = perl-proc-pid-file: daemon mode
+	optdepends = perl-parse-edid: Inventory EDID data parsing
+	optdepends = perl-net-cups-cups16>=0.60: Inventory printers detection
+	optdepends = dmidecode: Inventory DMI data retrieval
+	optdepends = pciutils: Inventory PCI bus scanning (lspci)
+	optdepends = hdparm: Inventory additional disk drive info retrieval
+	optdepends = read-edid: Inventory EDID data access
+	optdepends = openssh: Inventory host SSH public key retrieval (ssh-keyscan)
+	optdepends = perl-archive-extract: Deploy
+	optdepends = perl-file-copy-recursive: Deploy
+	optdepends = perl-json: Deploy
+	optdepends = perl-uri: Deploy
+	optdepends = perl-poe-component-client-ping: Deploy
+	optdepends = perl-net-snmp: Network inventory
+	optdepends = perl-crypt-des: Network inventory SNMPv3 support
+	optdepends = nmap: Network discovery
+	optdepends = perl-net-write: Wake on Lan ethernet method support
+	source = http://forge.fusioninventory.org/attachments/download/1771/FusionInventory-Agent-2.3.16.tar.gz
+	source = fusioninventory-agent.service
+	source = fusioninventory-agent.config
+	md5sums = 89467ae101a89544a6fbade2e7a879fe
+	md5sums = cd0d59b266a41977f51d9e99ecca8cd5
+	md5sums = 7cce12647a737aadcdd79dee4575aff3
+
+pkgname = fusioninventory-agent
+
