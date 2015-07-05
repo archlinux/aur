@@ -1,4 +1,4 @@
-# Maintainer: Brent Saner <bts (at) phreewifi (dot) org>
+# Maintainer: Brent Saner <r00t (at) square-r00t (dot) net>
 # Contributor: TJ Vanderpoel <tj@rubyists.com>
 
 ## MAINTAINER NOTE BEGIN
@@ -68,7 +68,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 
 pkgname='freeswitch'
-pkgver='1.4.18'
+pkgver='1.4.20'
 pkgrel='1'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686'
