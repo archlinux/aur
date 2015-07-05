@@ -2,10 +2,10 @@
 # Contributor: Giuliano Schneider <gs93@gmx.net>
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
-_eclipse_name=luna
-_eclipse_release=SR2
+_eclipse_name=mars
+_eclipse_release=R
 pkgname=eclipse-jee
-pkgver=4.4.2
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Eclipse IDE for Java EE Developers"
 arch=('i686' 'x86_64')
@@ -15,25 +15,23 @@ depends=('java-environment>=6' 'gtk2' 'webkitgtk2')
 provides=("eclipse=${pkgver}")
 conflicts=('eclipse')
 install="${pkgname}.install"
-sha256sums=('3c6af9a3586ea7b8ca5e3b2c5c1842bfa4dcc6e68ebb2052edad0a07902e2d29'
-            '9fdf02d827e5f3b44146a0532c463ef44d0bf3aa57d0be4f2acccc38a170915b'
-            '4eb2189c96fcfa340886b049b34dc3636d7b2bfa865140dc72edb61455d900c3'
-            '4a86578ebbe8adddf731b6bef31c05277ea792cb22d733b6a5c0a25f65546caf'
-            'da103fe3b9d8c6cc1316b2b45347697bf6561230e81286b78cf142b64b1d89a5')
-if [ "$CARCH" = 'x86_64' ]; then
-  sha256sums[0]='d66cc43c6f064a277f7c61d58fa982e4f95c2addba3d2b4c14c829d2291cb78e'
-  _arch="-${CARCH}"
-fi
-source=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk${_arch}.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk${_arch}.tar.gz&r=1"
-        "eclipse.sh"
+source=("eclipse.sh"
         "eclipse.desktop"
         "eclipse.ini.patch"
         "eclipse.svg")
+source_i686=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk.tar.gz&r=1")
+source_x86_64=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk-${CARCH}.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk-${CARCH}.tar.gz&r=1")
+sha256sums=('9fdf02d827e5f3b44146a0532c463ef44d0bf3aa57d0be4f2acccc38a170915b'
+            '4eb2189c96fcfa340886b049b34dc3636d7b2bfa865140dc72edb61455d900c3'
+            'efe21d1774a8f8233c73e7aa5e19a93dcfba44ebaba64b63d774a2d373c0d4a1'
+            'da103fe3b9d8c6cc1316b2b45347697bf6561230e81286b78cf142b64b1d89a5')
+sha256sums_i686=('33b1de6fc8d0207a7120fba799c45fc4b1308dc41729a73c2b512c2a12128bd2')
+sha256sums_x86_64=('84468e35cf67ee55fbf411d316d0685a691d440ac30fc7b154d9a087852ff126')
 # prevent package compression
 PKGEXT=".pkg.tar"
 
 build() {
-  patch -p1 -i "eclipse.ini.patch"
+  patch -p0 -i "eclipse.ini.patch"
 }
 
 package() {
