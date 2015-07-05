@@ -1,0 +1,35 @@
+# arg 1:  the new package version
+post_install() {
+	display_help
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	display_help
+}
+
+display_help() {
+	cat << EOF
+
+Ensure that the device permissions are correct. Update udev or add the following
+line to /etc/fstab (if it does not already exist):
+
+	none /proc/bus/usb usbfs defaults,devmode=0666 0 0
+
+TO TEST THAT THE CAMERA IS WORKING:
+1. Connect the QSI camera to AC power and connect the USB cable from the camera to
+an available USB port on the computer. Use usbview or lsusb to verify proper USB
+installation.
+
+2. Confirm that all libraries are loaded and the system is properly configured.
+
+3. Run qsiapitest.
+
+qsiapitest first displays the version of the api. If there is a QSI camera
+connected to the system, it will execute a series of command to exercise the
+camera. See the qsiapitest.cpp source code for further details.
+EOF
+	# TODO: cat the licence too?
+}
+
