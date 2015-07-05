@@ -1,0 +1,17 @@
+pkgbase = astroavibrowser
+	pkgdesc = A small tool for astronomy video sequences editing.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/astroavibrowser/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc
+	makedepends = cmake
+	depends = ffmpeg
+	depends = qt4
+	source = http://sourceforge.net/projects/astroavibrowser/files/Releases/astroavibrowser_0.4_src.tar.gz
+	sha1sums = f4e1953cdb1a96bdce613db51e6774ffe67047db
+
+pkgname = astroavibrowser
+
