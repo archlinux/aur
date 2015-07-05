@@ -1,0 +1,12 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 3b1e28a..56ce8bb 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -226,7 +226,6 @@ hamlib-static: $(dl_fldigi_OBJECTS)
+ endif
+ endif
+ 
+-TESTS = $(srcdir)/../scripts/tests/config-h.sh $(srcdir)/../scripts/tests/cr.sh
+ 
+ if HAVE_ASCIIDOC
+ $(builddir)/../doc/guide.html: $(builddir)/../doc/guide.txt

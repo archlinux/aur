@@ -1,0 +1,24 @@
+pkgbase = dl-fldigi-git
+	pkgdesc = Tracking Program for UK HAB Launches by James Coxon
+	pkgver = DL3.1.r245.g501f869
+	pkgrel = 2
+	url = https://github.com/jamescoxon/dl-fldigi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	depends = libsamplerate
+	depends = libpng
+	optdepends = pulseaudio: pulseaudio support
+	optdepends = xmlrpc-c-abyss: XML-RPC control
+	optdepends = hamlib: rig control through hamlib
+	optdepends = portaudio: PortAudio support
+	optdepends = libsndfile: sound file support
+	provides = dl-fldigi
+	source = git+https://github.com/jamescoxon/dl-fldigi.git
+	source = tests-remove.patch
+	md5sums = SKIP
+	md5sums = 52f9d57f01db48e35c2e8a1d28d70fd4
+
+pkgname = dl-fldigi-git
+
