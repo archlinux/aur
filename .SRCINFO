@@ -1,0 +1,16 @@
+pkgbase = universal-ctags-git
+	pkgdesc = A maintained ctags implementation with support for more languages
+	pkgver = 20150705
+	pkgrel = 1
+	url = https://github.com/universal-ctags/ctags/tree/master
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = ctags
+	conflicts = ctags
+	source = universal-ctags-git::git+https://github.com/universal-ctags/ctags.git
+	md5sums = SKIP
+
+pkgname = universal-ctags-git
+
