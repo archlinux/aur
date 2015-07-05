@@ -1,0 +1,15 @@
+pkgbase = perl-event-rpc
+	pkgdesc = Event based transparent Client/Server RPC framework.
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://search.cpan.org/~jred/Event-RPC-1.05
+	arch = any
+	license = GPL PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/J/JR/JRED/Event-RPC-1.05.tar.gz
+	md5sums = fd6e257b922dea322f72efae8a756592
+
+pkgname = perl-event-rpc
+
