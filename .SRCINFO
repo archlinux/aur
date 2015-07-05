@@ -1,0 +1,20 @@
+pkgbase = g15macro
+	pkgdesc = A simple Macro recording/playback app for G15Daemon.
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = http://www.g15tools.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = g15daemon
+	depends = libxtst
+	options = !libtool
+	source = http://downloads.sourceforge.net/g15daemon/g15macro-1.0.3.tar.bz2
+	source = g15macro-1.0.3-Makefile.am.patch
+	source = g15macro-1.0.3-configure.in.patch
+	sha256sums = 2645118330e61208d67026a5a212c342f556971945c43d14c60809b7748be2d6
+	sha256sums = 2c4d8825bf69d30894960547121b86d7a603283caa72eb1f81b400742061a6ed
+	sha256sums = 85e6a7fc0e3aef2bfed36049c074d92b7fdd5b3a2eefaacb8c93b62a725c6d73
+
+pkgname = g15macro
+
