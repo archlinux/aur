@@ -2,7 +2,7 @@
 
 pkgname=iioutils
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Industrial I/O equivalent to pciutils" 
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -20,4 +20,5 @@ build() {
 package() {
   cd "${pkgname}"
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
+  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
