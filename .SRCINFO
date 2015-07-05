@@ -1,0 +1,18 @@
+pkgbase = system-config-lvm
+	pkgdesc = A utility for graphical configuration of Logical Volumes
+	pkgver = 1.1.18
+	pkgrel = 4
+	url = http://fedoraproject.org/wiki/SystemConfig/lvm
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = gnome-python
+	depends = pygtk
+	depends = lvm2
+	depends = gksu
+	source = http://kojipkgs.fedoraproject.org/packages/system-config-lvm/1.1.18/1.fc19/src/system-config-lvm-1.1.18-1.fc19.src.rpm
+	sha256sums = fa04b869afa5b690b040e02e70c1d23e79d25481fac4f95d74c8f98d9158bbe6
+
+pkgname = system-config-lvm
+
