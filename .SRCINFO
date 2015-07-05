@@ -1,0 +1,17 @@
+pkgbase = ruby-gnomecanvas
+	pkgdesc = Ruby GnomeCanvas bindings.
+	pkgver = 0.90.5
+	pkgrel = 1
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ruby-pkgconfig
+	depends = libgnomecanvas
+	depends = ruby-gtk2
+	depends = ruby-libart
+	source = http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.90.5.tar.gz
+	sha256sums = 4017da5fe9dc090c7ca26a0e02901bb66a7579475619f97bc1b7d7774d19945f
+
+pkgname = ruby-gnomecanvas
+
