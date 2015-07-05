@@ -1,0 +1,19 @@
+pkgbase = zephyr
+	pkgdesc = An enterprise-scale, distributed real-time messaging and notification system
+	pkgver = 3.1.2
+	pkgrel = 3
+	url = http://zephyr.1ts.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = e2fsprogs
+	depends = libx11
+	depends = c-ares
+	options = !libtool
+	source = https://github.com/zephyr-im/zephyr/archive/release/3.1.2.tar.gz
+	md5sums = 858a6c01a8bcb9aec92eaf163f06d266
+	sha1sums = ad6fd11c81e2422696c46153dc1a63e5f8c0eb72
+	sha256sums = 741fb62b1a8bcd3642b164ec1da2d725b6da6313e38b0eed55e03101bccc3e0c
+
+pkgname = zephyr
+
