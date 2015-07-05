@@ -1,0 +1,112 @@
+.TH linux-pax-flags 8 "" 2013-02-18
+.SH NAME
+\fBlinux-pax-flags\fR \- Configure PaX flags for several binaries
+.SH SYNOPSIS
+\fBlinux-pax-flags\fR [options] [filter]
+.SH DESCRIPTION
+\fBlinux-pax-flags\fR is written to configure PaX flags for a set of binaries.
+It is intended to ease the usage of PaX (linux-pax) or grsecurity (linux-grsec,
+linux-grsec-lts) enabled kernel on Arch Linux.
+.P
+PaX flags for a set of binaries are collected in YAML format configuration
+files. By default, every .conf file from /etc/pax-flags and
+/usr/share/linux-pax-flags is read. See the CONFIGURATION section for the file
+format.
+.P
+Root privileges are needed. If you set a value to $PAX_FLAGS_SUDO,
+\fBlinux-pax-flags\fR will be called with sudo.
+.SH OPTIONS
+.TP
+\-c, \-\-config  <path>
+Override default configuration paths. Requires one path argument. Can contain
+globs (escape them in some shells (zsh for example)).
+.TP
+\-h, \-\-help
+Displays a short usage message and option summary.
+.TP
+\-p, \-\-prepend
+Do not actually change anything.
+.TP
+\-x, \-\-xattr
+Sets the PaX flags through setfattr, underlying filesystems need xattr support.
+.TP
+\-y, \-\-yes
+Non-interactive mode. Assume yes on any question.
+.SH FILES
+.TP
+/etc/pax-flags/*.conf
+Files for overriding the standard flag set and path pattern configuration.
+.TP
+/usr/share/linux-pax-flags/*.conf
+The shipped configuration.
+.SH CONFIGURATION
+There are \fBsimple\fR configuration entries and \fBcomplex\fR ones. Complex
+configuration for a certain flag set and path pattern overrides simple. To
+override a simple entry with a complex one, the flag sets and path patterns have
+to match exactly.
+.SS "Simple entries"
+Simple configuration entries just set the PaX flags for a set of binaries. The
+format is as follows:
+.P
+PSmXER:
+.br
+  \- /usr/bin/ruby
+  \- /usr/bin/glx*
+.P
+\fBPSmXER\fR is the set of flags. Every letter represents a PaX flag. Uppercase
+enables the flag, lowercase disables it. See paxctl(1) for more details. This
+example disables MPROTECT on /usr/bin/ruby and /usr/bin/glx*.
+.SS "Complex entries"
+With complex entries it is possible to stop a daemon before setting the flags
+and starting it afterwards. The format is as follows:
+.P
+PSmXER:
+.br
+  \- /usr/sbin/clamd:
+    type: systemd
+.P
+This would stop clamd, disable MPROTECT for the binary and start the daemon
+again. The \fBtype\fR option values correspond to presets of status, start, stop
+actions. Currently there exists only "systemd". By default the systemd unit file
+would be "clamd" in this case or the basename of the path in general.
+.P
+PSmXEr:
+.br
+  \- /usr/lib/polkit-1/polkitd:
+    type: systemd
+    systemd_name: polkit
+.P
+The \fBsystemd_name\fR option can be used to configure a differing systemd unit
+name.
+.P
+PSmXEr:
+.br
+  \- /usr/lib/firefox/firefox:
+    status: "pidof firefox"
+    start: "firefox &"
+    stop: "killall firefox"
+.P
+This would configure custom actions for \fBstatus\fR, \fBstart\fR and
+\fBstop\fR.
+.P
+PSmXER:
+.br
+  \- /usr/bin/ruby:
+    skip: true
+.P
+This would override a simple entry for the same flag set and path pattern and
+cause it to be skipped.
+.P
+PSmXER:
+.br
+  \- /usr/lib32/skype/skype:
+    header: create
+.P
+This would cause paxctl to not convert the old binary header, but create a new
+one. See paxctl(1) for more details.
+.SH AUTHOR
+henning mueller <henning@orgizm.net>
+.SH SEE ALSO
+\- paxctl(1)
+.br
+\- http://www.yaml.org
