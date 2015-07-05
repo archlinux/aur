@@ -1,0 +1,14 @@
+pkgbase = squidview
+	pkgdesc = Is an interactive console program which monitors and displays squid logs in a nice fashion.
+	pkgver = 0.81
+	pkgrel = 1
+	url = http://www.rillion.net/squidview/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = squid
+	source = http://www.rillion.net/squidview/squidview-0.81.tar.gz
+	sha256sums = 8c23585ef6bf02724cb51685e255fca260d42237a4ee344a64936e508f7cb148
+
+pkgname = squidview
+
