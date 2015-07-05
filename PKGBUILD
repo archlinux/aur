@@ -2,7 +2,7 @@
 
 pkgname=mopidy-somafm
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mopidy extension for playing music from SomaFM"
 arch=('any')
 url="http://www.mopidy.com"
@@ -15,7 +15,7 @@ depends=(
 makedepends=('python2')
 provides=('mopidy-somafm')
 source=("https://github.com/AlexandrePTJ/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e9c9b2eab0282ca93f81abd5f7c5bbae')
+md5sums=('fd131b348bfdaaf5715be68a7e1dcdcb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
