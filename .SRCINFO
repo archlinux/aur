@@ -1,0 +1,15 @@
+pkgbase = thcrut
+	pkgdesc = Network discovery and OS Fingerprinting tool
+	pkgver = 1.2.5
+	pkgrel = 3
+	url = http://thc.org/thc-rut/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = pcre
+	depends = libpcap
+	source = http://freeworld.thc.org/releases/thcrut-1.2.5.tar.gz
+	md5sums = dd942ad5db7701725038721981077585
+
+pkgname = thcrut
+
