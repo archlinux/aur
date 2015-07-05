@@ -1,0 +1,15 @@
+pkgbase = astrofocuser
+	pkgdesc = A tool to help star focusing in astrophotogaphy using FWHM method
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/astrofocuser/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	depends = qt4
+	source = http://sourceforge.net/projects/astrofocuser/files/release/astrofocuser_1.1.3_src.tar.gz
+	sha1sums = 1fc947e0874e7673b7aa9671d1f9be1c9ee67130
+
+pkgname = astrofocuser
+
