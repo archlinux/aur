@@ -1,0 +1,25 @@
+pkgbase = lib32-eudev-git
+	pkgdesc = The userspace dev tools (udev) forked by Gentoo (32-bit)
+	pkgver = 20150619
+	pkgrel = 1
+	url = https://github.com/gentoo/eudev
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-multilib
+	makedepends = lib32-util-linux
+	makedepends = gobject-introspection
+	makedepends = gperf
+	depends = lib32-glib2
+	depends = eudev-git
+	conflicts = lib32-systemd
+	replaces = lib32-systemd
+	options = !makeflags
+	options = !libtool
+	source = git://github.com/gentoo/eudev.git
+	md5sums = SKIP
+
+pkgname = lib32-eudev-git
+	provides = 
+	provides = lib32-systemd=
+
