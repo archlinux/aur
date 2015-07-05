@@ -1,0 +1,10 @@
+[Unit]
+Description=PGPool-II Middleware Between PostgreSQL Servers And PostgreSQL Database Clients
+After=syslog.target network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/pgpool-ii
+ExecStart=/usr/bin/pgpool $OPTS 
+
+[Install]
+WantedBy=multi-user.target

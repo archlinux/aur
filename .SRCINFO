@@ -1,0 +1,21 @@
+pkgbase = pgpool-ii
+	pkgdesc = pgpool-II is a connection pool server for PostgreSQL.
+	pkgver = 3.2.5
+	pkgrel = 1
+	url = http://www.pgpool.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = postgresql-libs
+	replaces = pgpool
+	options = !libtool
+	backup = etc/conf.d/pgpool-ii
+	source = http://www.pgpool.net/download.php?f=pgpool-II-3.2.5.tar.gz
+	source = pgpool-ii.service
+	source = pgpool-ii.conf.d
+	sha256sums = aecac952fd3d292584c9aa359d72f89b144c29f45c9f848cb030e46215a814f7
+	sha256sums = 6c797a94c1648890a613e201c2ce2e3e2b602103daecc009ebf189578e8e15a0
+	sha256sums = 9d0c12d735595424fad799499d50bc4da8b7f1e7ffc2c21317f8824559bb7aea
+
+pkgname = pgpool-ii
+
