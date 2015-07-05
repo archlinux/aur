@@ -1,0 +1,19 @@
+pkgbase = libx264-142
+	pkgdesc = Library for encoding H264/AVC video streams (older version)
+	pkgver = 142.20140826
+	pkgrel = 1
+	epoch = 1
+	url = http://www.videolan.org/developers/x264.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	makedepends = git
+	makedepends = ffmpeg
+	depends = glibc
+	provides = libx264.so.142
+	source = git://git.videolan.org/x264.git#commit=021c0dc6c95c
+	md5sums = SKIP
+
+pkgname = libx264-142
+
