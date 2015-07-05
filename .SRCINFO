@@ -1,0 +1,17 @@
+pkgbase = bastet
+	pkgdesc = Tetris(r) clone with 'bastard' block-choosing AI
+	pkgver = 0.43.1
+	pkgrel = 1
+	url = http://fph.altervista.org/prog/bastet.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = boost-libs
+	depends = ncurses
+	backup = var/games/bastet.scores2
+	source = https://github.com/fph/bastet/archive/0.43.1.zip
+	md5sums = 8d0a325d0c94fbb921d6a46f574f3a87
+
+pkgname = bastet
+
