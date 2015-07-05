@@ -2,15 +2,15 @@
 
 pkgname=python-pytest-localserver
 _pkgname=pytest-localserver
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='pytest plugin to test server connections locally.'
 arch=('i686' 'x86_64')
-url='http://bitbucket.org/basti/pytest-localserver/'
+url="https://pypi.python.org/pypi/$_pkgname"
 license=('MIT')
 depends=('python-pytest')
-source=("https://bitbucket.org/basti/${_pkgname}/downloads/${_pkgname}-$pkgver.tar.gz")
-md5sums=('44507e8db3456bffbe9d645135facb58')
+source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.zip")
+md5sums=('f233e9701798e1d6430c4f8a67c8a8b3')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
