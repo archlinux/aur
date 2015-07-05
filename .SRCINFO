@@ -1,0 +1,13 @@
+pkgbase = lrexlib-pcre5.1
+	pkgdesc = PCRE Library for Lua 5.1
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = http://rrthomas.github.com/lrexlib/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks5.1
+	depends = lua51
+
+pkgname = lrexlib-pcre5.1
+
