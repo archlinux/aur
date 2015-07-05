@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart Sundtek MediaTV Pro driver after resume
+Requisite=sundtek.service
+After=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart sundtek.service
+
+[Install]
+WantedBy=sleep.target
