@@ -12,6 +12,7 @@ license=('GPL')
 depends=('sharutils')
 source=(http://loop-aes.sourceforge.net/${pkgname}/${pkgname}-v${pkgver}.tar.bz2{,.sign})
 sha384sums=('SKIP' 'SKIP') # We use GPG for verification instead.
+#validpgpkeys=('12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
