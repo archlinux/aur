@@ -1,0 +1,19 @@
+pkgbase = ttf-urdufonts
+	pkgdesc = Urdu fonts (Jameel Noori Nastaleeq (+kasheeda), Nafees Web Naskh, PDMS Saleem Quran Font) and font configuration to set Jameel Noori Nastaleeq as default font for Urdu
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://urdu.ca
+	install = ttf-urdufonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://urdu.ca/UrduFonts.zip
+	source = 90-fonts-urdu.conf
+	source = LICENSE
+	md5sums = 0229941c51a67acb3669c783cd384379
+	md5sums = e5792695a520f78fdf555d5d802ba996
+	md5sums = 3566d27995e9761c29148be747fcf1b5
+
+pkgname = ttf-urdufonts
+
