@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-sk
 	pkgdesc = Slovakian language package for Iceweasel
-	pkgver = 38.0.1.deb5
+	pkgver = 39.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=38.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-sk_38.0.1-5_all.deb
-	sha256sums = c268ce836ff370e83fd0dc5d06fbc06b27cbd212126adeab602adccf32d64571
+	depends = iceweasel>=39.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-sk_39.0-1_all.deb
+	sha256sums = ef2b3391e02d7446508d46fdc252800dc9d632025717ded1d5cceba4dc66e83b
 
 pkgname = iceweasel-i18n-sk
 
