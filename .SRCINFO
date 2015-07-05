@@ -1,0 +1,15 @@
+pkgbase = libconcord
+	pkgdesc = A library for programming Logitech(R) Harmony(TM) remote controls.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.phildev.net/harmony/index.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libusb-compat
+	depends = libzip
+	source = http://downloads.sourceforge.net/project/concordance/concordance/1.2/concordance-1.2.tar.bz2
+	sha256sums = ce9f23dfcd9bb1de79edd07231062c5e5d5fdefb3dd88ae6da7fb25b8d782434
+
+pkgname = libconcord
+
