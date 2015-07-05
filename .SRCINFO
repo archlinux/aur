@@ -1,0 +1,16 @@
+pkgbase = gallery2
+	pkgdesc = Open source web based photo album organizer.
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://galleryproject.org/
+	install = gallery2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = php
+	depends = mariadb
+	source = http://downloads.sourceforge.net/gallery/gallery-2.3.2-full.zip
+	sha512sums = 601b67822e633214258484ed87ca4d088babe3d04895f192fcbed94733eef93509d651cdc17fe670705100ba17435daa772f1aaee4965627ed583789afaae6f7
+
+pkgname = gallery2
+

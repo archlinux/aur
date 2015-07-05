@@ -1,0 +1,5 @@
+post_install() {
+	echo -e "Please see the documentation at http://codex.gallery2.org/"
+	echo -e "for installation and configuration details."
+}
+
