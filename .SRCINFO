@@ -1,7 +1,7 @@
 pkgbase = blws-binaries-git
 	pkgdesc = Provides binaries.
 	pkgver = 0.0.1
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	license = unknown
 	conflicts = blws-all-in-one-full-git
