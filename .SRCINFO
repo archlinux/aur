@@ -10,6 +10,7 @@ pkgbase = unclutter-xfixes-git
 	makedepends = asciidoc
 	depends = libxi
 	depends = libx11
+	depends = libxfixes
 	depends = libev
 	provides = unclutter
 	conflicts = unclutter

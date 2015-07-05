@@ -10,7 +10,7 @@ license=('MIT')
 provides=('unclutter')
 conflicts=('unclutter' 'unclutter-patched')
 #groups=
-depends=('libxi' 'libx11' 'libev')
+depends=('libxi' 'libx11' 'libxfixes' 'libev')
 makedepends=('git' 'asciidoc')
 source=('git://github.com/Airblader/unclutter-xfixes#branch=master')
 sha1sums=('SKIP')
