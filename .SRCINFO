@@ -1,0 +1,12 @@
+pkgbase = xvba-sdk
+	pkgdesc = XvBA SDK
+	pkgver = 0.74.404001
+	pkgrel = 2
+	url = http://developer.amd.com/
+	arch = any
+	license = custom
+	source = http://developer.amd.com/wordpress/media/2012/10/xvba-sdk-0.74-404001.tar.gz
+	sha256sums = 731a2c489f2fb5d7318c1976061b26c1057a696f46d09dcf55fbada97fed17eb
+
+pkgname = xvba-sdk
+
