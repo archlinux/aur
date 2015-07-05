@@ -1,0 +1,17 @@
+pkgbase = kmailpt
+	pkgdesc = KMail Power Tools
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://jice.free.fr/kmailpt/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl-mime-tools
+	options = !libtool
+	source = http://jice.free.fr/kmailpt/kmailpt-0.3.tar.bz2
+	source = Makefile
+	md5sums = c8cff48f33223262d25440a0db01bd10
+	md5sums = 23e464c03778228badb091c4dd6ffe73
+
+pkgname = kmailpt
+
