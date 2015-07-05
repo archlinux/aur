@@ -1,0 +1,30 @@
+pkgbase = spot-on
+	pkgdesc = An exploratory research project investigating a variety of communications protocols
+	pkgver = 2015.06.17
+	pkgrel = 1
+	url = http://spot-on.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:3-clause BSD
+	makedepends = qt5-base
+	makedepends = geoip>=1.5.1
+	makedepends = libgcrypt>=1.5
+	makedepends = openssl>=0.9.8
+	makedepends = lksctp-tools
+	makedepends = qt5-multimedia
+	makedepends = qt5-tools
+	makedepends = make
+	makedepends = gcc
+	depends = qt5-base
+	depends = geoip>=1.5.1
+	depends = libgcrypt>=1.5
+	depends = openssl>=0.9.8
+	depends = lksctp-tools
+	depends = qt5-multimedia
+	depends = libspoton=2015.06.17
+	depends = libntru
+	source = Spot-On-2015.06.17.tar.gz::http://downloads.sourceforge.net/project/spot-on/Version%202015.06.17/Spot-On.tar.gz?r=
+	sha256sums = bc4b1feb7197497b6e46a7e0d0a54b355be08a65d77df93cd468a2095f517fe5
+
+pkgname = spot-on
+
