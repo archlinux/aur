@@ -1,0 +1,11 @@
+post_install() {
+cat << EOF
+Note that you may need to add yourself to the input group:
+
+sudo gpasswd -a <Yourusername> input
+
+The config file is:
+
+/usr/share/X11/xorg.conf.d/10-mtrack.conf
+EOF
+}
