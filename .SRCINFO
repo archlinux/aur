@@ -1,0 +1,16 @@
+pkgbase = ruby-libglade
+	pkgdesc = Ruby libglade2 bindings.
+	pkgver = 0.90.5
+	pkgrel = 1
+	url = http://ruby-gnome2.sourceforge.jp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ruby-pkgconfig
+	depends = ruby-gtk2
+	depends = libglade
+	source = http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.90.5.tar.gz
+	md5sums = 58ee234ef8b121b11de8a245c61cd4a9
+
+pkgname = ruby-libglade
+
