@@ -1,0 +1,15 @@
+pkgbase = python2-stem-git
+	pkgdesc = A controller library for Tor
+	pkgver = 1.4.1.r34.g63c08cc
+	pkgrel = 1
+	epoch = 1
+	url = https://stem.torproject.org/
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = python2
+	source = git+https://git.torproject.org/stem.git
+	sha256sums = SKIP
+
+pkgname = python2-stem-git
+
