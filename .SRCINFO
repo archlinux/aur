@@ -1,0 +1,17 @@
+pkgbase = sispread
+	pkgdesc = Simulation of Infectious Spreading
+	pkgver = 2005.10.04
+	pkgrel = 1
+	url = http://sispread.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://prdownloads.sourceforge.net/sispread/sispread-2005-10-04.tar.bz2
+	source = http://prdownloads.sourceforge.net/sispread/manual_sispread-2005-10-04.pdf
+	source = http://prdownloads.sourceforge.net/sispread/quickcardsispread-2005-10-04.pdf
+	md5sums = b5efbf2feb7def01c662b0630c330dbe
+	md5sums = 435fafa71788d5855a3719071846ab42
+	md5sums = 0eb6d2fcc55d7c1ef1e9077d2a2c810b
+
+pkgname = sispread
+
