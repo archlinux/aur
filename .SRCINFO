@@ -1,0 +1,18 @@
+pkgbase = gtksourceview3-lolcode
+	pkgdesc = lolcode syntax highlight support in gtksourceview3 for gedit 3 and others
+	pkgver = 0.1.r2.gf80e35e
+	pkgrel = 1
+	url = http://lolcode.org/
+	changelog = .CHANGELOG
+	arch = any
+	license = MIT
+	depends = gtksourceview3
+	optdepends = lci-git: lolcode commandline interpreter
+	optdepends = gedit: gtksourceview3 editor
+	provides = gtksourceview3-lolcode
+	conflicts = gtksourceview3-lolcode
+	source = git+https://github.com/Lucki/gtksourceview3-lolcode.git
+	sha512sums = SKIP
+
+pkgname = gtksourceview3-lolcode
+
