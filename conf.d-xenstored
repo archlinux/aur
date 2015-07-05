@@ -1,0 +1,2 @@
+#XENSTORED_ARGS=" -T /var/log/xen/xenstored-trace.log"
+XENDOM0_NAME="Domain-0"

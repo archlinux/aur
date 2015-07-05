@@ -1,0 +1,11 @@
+--- a/xen/common/symbols.c	2015-01-12 17:53:24.000000000 +0100
++++ b/xen/common/symbols.c	2015-05-24 18:47:56.186578687 +0200
+@@ -19,7 +19,7 @@
+ #include <xen/spinlock.h>
+ 
+ #ifdef SYMBOLS_ORIGIN
+-extern const unsigned int symbols_offsets[1];
++extern const unsigned int symbols_offsets[];
+ #define symbols_address(n) (SYMBOLS_ORIGIN + symbols_offsets[n])
+ #else
+ extern const unsigned long symbols_addresses[];

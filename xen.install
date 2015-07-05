@@ -1,0 +1,73 @@
+install_msg() {
+    cat << __EOF__
+===> IMPORTANT NOTICES:
+
+In order to complete the installation, and enable Xen,
+at the very least you must:
+1. Edit your GRUB2 config files as specified at
+    https://wiki.archlinux.org/index.php/Xen#Bootloader_Configuration
+2. Issue the following commands to allow you to create and start VMs:
+    systemctl enable xenstored.service
+    systemctl enable xenconsoled.service
+3. If you want some domains to automatically start up/shutdown, run the following:
+    systemctl enable xendomains.service
+4. xen 4.4 no longer includes the xend daemon or the xm binary
+
+For more information refer to the Wiki:
+    https://wiki.archlinux.org/index.php/Xen
+
+__EOF__
+
+}
+
+upgrade_msg() {
+    cat << __EOF__
+
+Note: If you are upgrading from one of the previous 4.2 xen builds, and are having issues
+      with graphics card passthrough, the default device model used has changed and the 
+      newer model can sometimes have issues. To resolve, add (or change ) the following
+      line into your domain config file:
+         device_model_version = "qemu-xen-traditional"
+
+      Also remember to rebuild your grub configuration if upgrading from a non-xen 4.4.1
+           install.
+
+      xen 4.4 no longer includes the xend daemon or the xm toolset by default, however
+      this build does enable it.
+
+      This install is now using a new version of the 09_xen file, used when generating
+      a new grub.cfg file. The new version inherits the default linux kernel command
+      line settings; to use the old method, uncomment the 'XEN_LINUX_CMDLINE_OVERRIDE'
+      option in /etc/xen/grub.conf and change the '0' to '1'
+__EOF__
+
+}
+
+post_install() {
+    install_msg
+    upgrade_msg
+}
+
+post_upgrade() {
+    upgrade_msg
+}
+
+pre_remove() {
+   systemctl stop xendomains.service
+   systemctl stop xenconsoled.service
+   systemctl stop xenstored.service
+
+   systemctl disable xendomains.service
+   systemctl disable xenconsoled.service
+   systemctl disable xenstored.service
+}
+
+post_remove() {
+    cat << __EOF__
+===> IMPORTANT NOTICE:
+
+In order to finish removing Xen, you will need to modify
+your bootloader configuration files to load your Linux
+kernel instead of Xen kernel.
+__EOF__
+}

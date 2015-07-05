@@ -1,0 +1,28 @@
+--- a/seabios-dir-remote/src/kbd.c
++++ b/seabios-dir-remote/src/kbd.c
+@@ -117,8 +117,8 @@ static int
+ kbd_command(int command, u8 *param)
+ {
+     if (usb_kbd_active())
+-        return stack_hop(command, (u32)param, usb_kbd_command);
+-    return stack_hop(command, (u32)param, ps2_kbd_command);
++        return usb_kbd_command(command, param);
++    return ps2_kbd_command(command, param);
+ }
+ 
+ // read keyboard input
+--- a/seabios-dir-remote/src/mouse.c
++++ b/seabios-dir-remote/src/mouse.c
+@@ -27,8 +27,8 @@ static int
+ mouse_command(int command, u8 *param)
+ {
+     if (usb_mouse_active())
+-        return stack_hop(command, (u32)param, usb_mouse_command);
+-    return stack_hop(command, (u32)param, ps2_mouse_command);
++        return usb_mouse_command(command, param);
++    return ps2_mouse_command(command, param);
+ }
+ 
+ #define RET_SUCCESS      0x00
+
+--

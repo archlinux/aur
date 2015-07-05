@@ -1,0 +1,21 @@
+--- a/tools/qemu-xen-traditional/xen-setup	2013-12-19 09:19:49.000000000 -0600
++++ b/tools/qemu-xen-traditional/xen-setup	2014-06-18 19:07:28.018807657 -0500
+@@ -18,7 +18,7 @@
+ 	XEN_SCRIPT_DIR="/etc/xen/scripts"
+ fi
+ 
+-${QEMU_ROOT:-.}/configure --disable-gfx-check --disable-curses --disable-slirp "$@" --prefix=${PREFIX}
++${QEMU_ROOT:-.}/configure --disable-gfx-check --disable-curses --disable-slirp "$@" --prefix=${PREFIX} --disable-bluez
+ 
+ if [ "x$XEN_ROOT" != x ]; then
+ 	echo "XEN_ROOT=$XEN_ROOT" >>config-host.mak
+--- a/tools/Makefile	2014-03-10 05:43:57.000000000 -0500
++++ b/tools/Makefile.new	2014-06-18 20:07:56.707835949 -0500
+@@ -203,6 +203,7 @@
+ 		--disable-kvm \
+ 		--disable-docs \
+ 		--disable-guest-agent \
++		--disable-bluez \
+ 		--python=$(PYTHON) \
+ 		$(IOEMU_CONFIGURE_CROSS); \
+ 	$(MAKE) all

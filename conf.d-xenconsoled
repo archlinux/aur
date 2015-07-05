@@ -1,0 +1,14 @@
+# No logging (default)
+#XENCONSOLED_LOG=none
+# Log guest console output only
+#XENCONSOLED_LOG=guest
+# Log hypervisor messages only
+#XENCONSOLED_LOG=hv
+# Log both guest console output and hypervisor messages
+XENCONSOLED_LOG=all
+
+# Location to store guest & hypervisor logs
+XENCONSOLED_LOG_DIR=/var/log/xen/console
+
+#XENCONSOLED_ARGS=
+

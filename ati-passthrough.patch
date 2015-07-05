@@ -1,0 +1,415 @@
+--- xen-4.3.1/tools/qemu-xen-traditional/hw/pass-through.c	Thu Sep  6 11:05:30 2012
++++ xen-4.3.1-new/tools/qemu-xen-traditional/hw/pass-through.c	Sat Nov 24 08:27:07 2012
+@@ -1438,9 +1438,17 @@ static void pt_ioport_map(PCIDevice *d, 
+     if (e_phys != -1)
+     {
+         /* Create new mapping */
+-        ret = xc_domain_ioport_mapping(xc_handle, domid, e_phys,
+-                    assigned_device->bases[i].access.pio_base, e_size,
+-                    DPCI_ADD_MAPPING);
++        if ( vga_skip_ioport_map(d) ) 
++        {
++            assigned_device->bases[i].e_physbase = -1;
++        }
++        else
++        {
++            ret = xc_domain_ioport_mapping(xc_handle, domid, e_phys,
++                   assigned_device->bases[i].access.pio_base, e_size,
++                   DPCI_ADD_MAPPING);
++        }
++
+         if ( ret != 0 )
+         {
+             PT_LOG("Error: create new mapping failed!\n");
+--- xen-4.3.1/tools/qemu-xen-traditional/hw/pass-through.h	Thu Sep  6 11:05:30 2012
++++ xen-4.3.1-new/tools/qemu-xen-traditional/hw/pass-through.h	Sat Nov 24 08:27:07 2012
+@@ -419,6 +419,11 @@ int pt_pci_host_write(struct pci_dev *pc
+ void intel_pch_init(PCIBus *bus);
+ int register_vga_regions(struct pt_dev *real_device);
+ int unregister_vga_regions(struct pt_dev *real_device);
++int vga_skip_ioport_map(PCIDevice *d);
++int igd_register_vga_regions(struct pt_dev *real_device);
++int igd_unregister_vga_regions(struct pt_dev *real_device);
++int ati_register_vga_regions(struct pt_dev *real_device);
++int ati_unregister_vga_regions(struct pt_dev *real_device);
+ int setup_vga_pt(struct pt_dev *real_device);
+ PCIBus *intel_pci_bridge_init(PCIBus *bus, int devfn, uint16_t vid,
+            uint16_t did, const char *name, uint16_t revision);
+--- xen-4.3.1/tools/qemu-xen-traditional/hw/pci.h	Thu Sep  6 11:05:30 2012
++++ xen-4.3.1-new/tools/qemu-xen-traditional/hw/pci.h	Sat Nov 24 08:27:07 2012
+@@ -54,6 +54,8 @@ extern target_phys_addr_t pci_mem_base;
+ 
+ #define PCI_VENDOR_ID_CIRRUS             0x1013
+ 
++#define PCI_VENDOR_ID_ATI                0x1002
++
+ #define PCI_VENDOR_ID_IBM                0x1014
+ #define PCI_DEVICE_ID_IBM_OPENPIC2       0xffff
+ 
+--- xen-4.3.1/tools/qemu-xen-traditional/hw/pt-graphics.c	Thu Sep  6 11:05:30 2012
++++ xen-4.3.1-new/tools/qemu-xen-traditional/hw/pt-graphics.c	Sat Nov 24 08:28:10 2012
+@@ -13,6 +13,207 @@
+ 
+ extern int gfx_passthru;
+ extern int igd_passthru;
++/*********************************/
++/*   Code for ATI GFX Passthru   */
++/*********************************/
++/* ATI VBIOS Working Mechanism 
++ *
++ * Generally there are three memory resources (two MMIO and one PIO) 
++ * associated with modern ATI gfx. VBIOS uses special tricks to figure out 
++ * BARs, instead of using regular PCI config space read.
++ *
++ *  (1) VBIOS relies on I/O port 0x3C3 to retrieve PIO BAR 
++ *  (2) VBIOS maintains a shadow copy of PCI configure space. It retries the 
++ *      MMIO BARs from this shadow copy via sending I/O requests to first two 
++ *      registers of PIO (MMINDEX and MMDATA). The workflow is like this: 
++ *      MMINDEX (register 0) is written with an index value, specifying the 
++ *      register VBIOS wanting to access. Then the shadowed data can be 
++ *      read/written from MMDATA (register 1). For two MMIO BARs, the index 
++ *      values are 0x4010 and 0x4014 respectively. 
++ *
++ */
++
++#define ATI_BAR1_INDEX        0  //MMIO BAR1
++#define ATI_BAR2_INDEX        1  //MMIO BAR2
++#define ATI_BAR5_INDEX        4  //PIO BAR == BAR5
++
++#define ATI_BAR1_MMINDEX      0x4010  //data written to MMINDEX for MMIO BAR1
++#define ATI_BAR2_MMINDEX      0x4014  //data written to MMINDEX FOR MMIO BAR2
++
++struct ati_gfx_info {
++    int initialized;            /* initialized already? */
++
++    /* PIO */
++    uint32_t host_pio_base;     /* host base addr of PIO */
++    uint32_t guest_pio_base;    /* guest base addr of PIO */
++    uint32_t pio_size;          /* PIO size */
++
++    /* MMIO */
++    uint32_t guest_mmio_base1;  /* guest base addr of MMIO 1 */
++    uint32_t guest_mmio_base2;  /* guest base addr of MMIO 2 */
++
++    /* PIO MMINDEX access recording */
++    uint32_t pre_mmindex_data;       /* previous data written to MMINDEX */
++};
++
++static struct ati_gfx_info gfx_info;
++
++/* Convert guest PIO port to host PIO port */
++static uint16_t gport_to_hport(uint16_t gport)
++{
++    return (gport - gfx_info.guest_pio_base) + gfx_info.host_pio_base;
++}
++
++/* Read host PIO port */
++static uint32_t ati_hw_in(uint16_t hport)
++{
++    unsigned val;
++
++    //iopl(3);
++    asm volatile ("in %1,%0":"=a"(val):"Nd"(hport));
++    //iopl(0);
++
++    return val;
++}
++
++/* Write data to host PIO */
++static void ati_hw_out(uint16_t hport, uint32_t data)
++{
++    //iopl(3);
++    asm volatile ("out %1, %0"::"Nd"(hport),"a"(data));
++    //iopl(0);
++}
++
++static uint32_t ati_io_regs_read(void *opaque, uint32_t addr)
++{
++    uint32_t val;
++
++    val = ati_hw_in(gport_to_hport(addr));
++
++    /* tweak the value if VBIOS is reading MMIO BAR1 and BAR2 */
++    if ( addr == (gfx_info.guest_pio_base + 4) )
++    {
++        switch ( gfx_info.pre_mmindex_data )
++        {
++        case ATI_BAR1_MMINDEX:
++            val = gfx_info.guest_mmio_base1 | (val & 0x0000000f);
++            break;
++        case ATI_BAR2_MMINDEX:
++            val = gfx_info.guest_mmio_base2 | (val & 0x0000000f);
++            break;
++        default:
++            break;
++        }
++    }
++
++    return val;
++}
++
++static void ati_io_regs_write(void *opaque, uint32_t addr, uint32_t val)
++{
++    ati_hw_out(gport_to_hport(addr), val);
++
++    /* book keeping */
++    if ( addr == gfx_info.guest_pio_base )
++        gfx_info.pre_mmindex_data = val;
++}
++
++static void ati_gfx_init(struct pt_dev *assigned)
++{
++    PCIDevice *dev = (PCIDevice *)&assigned->dev;
++
++    register_ioport_read(dev->io_regions[ATI_BAR5_INDEX].addr, 
++      dev->io_regions[ATI_BAR5_INDEX].size, 4, ati_io_regs_read, assigned);
++
++    register_ioport_write(dev->io_regions[ATI_BAR5_INDEX].addr, 
++      dev->io_regions[ATI_BAR5_INDEX].size, 4, ati_io_regs_write, assigned);
++            
++    /* initialize IO registers */
++    gfx_info.guest_pio_base = dev->io_regions[ATI_BAR5_INDEX].addr;
++    gfx_info.pio_size = dev->io_regions[ATI_BAR5_INDEX].size;
++    gfx_info.host_pio_base = assigned->bases[ATI_BAR5_INDEX].access.pio_base;
++
++    gfx_info.guest_mmio_base1 = dev->io_regions[ATI_BAR1_INDEX].addr;
++    gfx_info.guest_mmio_base2 = dev->io_regions[ATI_BAR2_INDEX].addr;
++    gfx_info.initialized = 1;
++
++    PT_LOG("guest_pio_bar = 0x%x, host_pio_bar = 0x%x, pio_size=0x%x "
++           "guest_mmio_bar1=0x%x, guest_mmio_bar2=0x%x\n", 
++           gfx_info.guest_pio_base, gfx_info.host_pio_base, gfx_info.pio_size, 
++           gfx_info.guest_mmio_base1, gfx_info.guest_mmio_base2);
++}
++
++static uint32_t ati_legacy_io_read(void *opaque, uint32_t addr)
++{
++    struct pt_dev *assigned_device = opaque;
++    PCIDevice *dev = (PCIDevice *)&assigned_device->dev;
++    uint32_t val = 0xFF;
++
++    switch( addr )
++    {
++    case 0x3c3:
++        val = dev->io_regions[ATI_BAR5_INDEX].addr >> 8;
++        /* Intercept GFX IO registers. This supposes to happen in 
++         * ati_register_vga_regions(). But we cannot get guest phys IO BAR 
++         * over there. */
++        if ( !gfx_info.initialized )
++            ati_gfx_init(assigned_device);
++        break;
++    default:
++        PT_LOG("ERROR: port 0x%x I/O read not handled\n", addr);
++        break;
++    }
++
++    return val;
++}
++
++static void ati_legacy_io_write(void *opaque, uint32_t addr, uint32_t val)
++{
++    PT_LOG("ERROR: port 0x%x I/O write not handled\n", addr);
++}
++
++int ati_register_vga_regions(struct pt_dev *real_device)
++{
++    PCIDevice *dev = (PCIDevice *)&real_device->dev;
++    int ret = 0;
++
++    /* We need to intercept VBIOS accesses to port 0x3C3, which returns 
++     * device port I/O BAR. For the rest of legacy I/O ports, we allow direct
++     * accesses.
++     */
++    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C0,
++            0x3C0, 0x3, DPCI_ADD_MAPPING);
++    
++    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C4,
++            0x3C4, 0x1C, DPCI_ADD_MAPPING);
++
++    register_ioport_read(0x3c3, 1, 1, ati_legacy_io_read, real_device);
++    register_ioport_write(0x3c3, 1, 1, ati_legacy_io_write, real_device);
++
++    /* initialized on the first port 0x3C3 access in ati_gfx_init */
++    gfx_info.initialized = 0;
++
++    return ret;
++}
++
++int ati_unregister_vga_regions(struct pt_dev *real_device)
++{
++    int ret = 0;
++
++    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C0,
++            0x3C0, 0x3, DPCI_REMOVE_MAPPING);
++    
++    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C4,
++            0x3C4, 0x1C, DPCI_REMOVE_MAPPING);
++
++    gfx_info.initialized = 0;
++
++    return ret;
++}
++
++/*********************************/
++/*  Code for Intel IGD Passthru  */
++/*********************************/
+ 
+ static uint32_t igd_guest_opregion = 0;
+ 
+@@ -176,6 +377,77 @@ read_default:
+    return pci_default_read_config(pci_dev, config_addr, len);
+ }
+ 
++int igd_register_vga_regions(struct pt_dev *real_device)
++{
++    u32 vendor_id, igd_opregion;
++    int ret = 0;
++    
++    /* legacy I/O ports 0x3C0 -- 0x3E0 */
++    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C0,
++            0x3C0, 0x20, DPCI_ADD_MAPPING);
++
++    /* 1:1 map ASL Storage register value */
++    vendor_id = pt_pci_host_read(real_device->pci_dev, PCI_VENDOR_ID, 2);
++    igd_opregion = pt_pci_host_read(real_device->pci_dev, PCI_INTEL_OPREGION, 4);
++    if ( (vendor_id == PCI_VENDOR_ID_INTEL) && igd_opregion )
++    {
++        ret |= xc_domain_memory_mapping(xc_handle, domid,
++                igd_opregion >> XC_PAGE_SHIFT,
++                igd_opregion >> XC_PAGE_SHIFT,
++                2,
++                DPCI_ADD_MAPPING);
++        PT_LOG("register_vga: igd_opregion = %x\n", igd_opregion);
++    }
++
++    return ret;
++}
++
++int igd_unregister_vga_regions(struct pt_dev *real_device)
++{
++    u32 vendor_id, igd_opregion;
++    int ret = 0;
++
++    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C0,
++            0x3C0, 0x20, DPCI_REMOVE_MAPPING);
++
++    vendor_id = pt_pci_host_read(real_device->pci_dev, PCI_VENDOR_ID, 2);
++    igd_opregion = pt_pci_host_read(real_device->pci_dev, PCI_INTEL_OPREGION, 4);
++    if ( (vendor_id == PCI_VENDOR_ID_INTEL) && igd_opregion )
++    {
++        ret |= xc_domain_memory_mapping(xc_handle, domid,
++                igd_opregion >> XC_PAGE_SHIFT,
++                igd_opregion >> XC_PAGE_SHIFT,
++                2,
++                DPCI_REMOVE_MAPPING);
++    }
++
++    return ret;
++}
++/*********************************/
++/* Generic Code for GFX Passthru */
++/*********************************/
++/* This function decides whether I/O port map should be skipped */
++int vga_skip_ioport_map(PCIDevice *d)
++{
++    struct pt_dev *dev = (struct pt_dev *)d;
++    int skip = 0;
++
++    if ( !gfx_passthru || dev->pci_dev->device_class != 0x0300 )
++        return 0;
++
++    switch( dev->pci_dev->vendor_id ) 
++    {
++    case PCI_VENDOR_ID_ATI:
++    case PCI_VENDOR_ID_AMD:
++        skip = 1;
++        break;
++    default:
++        skip = 0;
++        break;
++    }
++        
++    return skip;
++}
+ /*
+  * register VGA resources for the domain with assigned gfx
+  */
+@@ -187,18 +459,33 @@ int register_vga_regions(struct pt_dev *
+     if ( !gfx_passthru || real_device->pci_dev->device_class != 0x0300 )
+         return ret;
+ 
++    /* legacy I/O ports 0x3B0 - 0x3BC */
+     ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3B0,
+             0x3B0, 0xC, DPCI_ADD_MAPPING);
+ 
+-    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C0,
+-            0x3C0, 0x20, DPCI_ADD_MAPPING);
+-
++    /* legacy video MMIO range 0xA0000 - 0xBFFFF */
+     ret |= xc_domain_memory_mapping(xc_handle, domid,
+             0xa0000 >> XC_PAGE_SHIFT,
+             0xa0000 >> XC_PAGE_SHIFT,
+             0x20,
+             DPCI_ADD_MAPPING);
+ 
++    /* Other VGA regions are vendor specific */
++    switch( real_device->pci_dev->vendor_id ) 
++    {
++    case PCI_VENDOR_ID_INTEL:
++	    ret = igd_register_vga_regions(real_device);
++	    break;
++    case PCI_VENDOR_ID_ATI:
++    case PCI_VENDOR_ID_AMD:
++	    ret = ati_register_vga_regions(real_device);
++	    break;
++    default:
++	    PT_LOG("gfx card wasn't supported by Xen passthru!\n");
++	    ret = 1;
++	    break;
++    }
++
+     if ( ret != 0 )
+         PT_LOG("VGA region mapping failed\n");
+ 
+@@ -216,26 +503,31 @@ int unregister_vga_regions(struct pt_dev
+     if ( !gfx_passthru || real_device->pci_dev->device_class != 0x0300 )
+         return ret;
+ 
++    /* legacy I/O ports 0x3B0 - 0x3BC */
+     ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3B0,
+             0x3B0, 0xC, DPCI_REMOVE_MAPPING);
+ 
+-    ret |= xc_domain_ioport_mapping(xc_handle, domid, 0x3C0,
+-            0x3C0, 0x20, DPCI_REMOVE_MAPPING);
+-
++    /* legacy video MMIO range 0xA0000 - 0xBFFFF */
+     ret |= xc_domain_memory_mapping(xc_handle, domid,
+             0xa0000 >> XC_PAGE_SHIFT,
+             0xa0000 >> XC_PAGE_SHIFT,
+             20,
+             DPCI_REMOVE_MAPPING);
+ 
+-    vendor_id = pt_pci_host_read(real_device->pci_dev, PCI_VENDOR_ID, 2);
+-    if ( (vendor_id == PCI_VENDOR_ID_INTEL) && igd_guest_opregion )
++    /* Other VGA regions are vendor specific */
++    switch( real_device->pci_dev->vendor_id ) 
+     {
+-        ret |= xc_domain_memory_mapping(xc_handle, domid,
+-                igd_guest_opregion >> XC_PAGE_SHIFT,
+-                igd_guest_opregion >> XC_PAGE_SHIFT,
+-                2,
+-                DPCI_REMOVE_MAPPING);
++    case PCI_VENDOR_ID_INTEL:
++	    ret = igd_unregister_vga_regions(real_device);
++	    break;
++    case PCI_VENDOR_ID_ATI:
++    case PCI_VENDOR_ID_AMD:
++	    ret = ati_unregister_vga_regions(real_device);
++	    break;
++    default:
++	    PT_LOG("gfx card wasn't supported by Xen passthru!\n");
++	    ret = 1;
++	    break;
+     }
+ 
+     if ( ret != 0 )

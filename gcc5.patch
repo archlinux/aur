@@ -1,0 +1,10 @@
+--- a/tools/firmware/Makefile	2015-07-04 19:12:25.128440156 -0500
++++ b/tools/firmware/Makefile	2015-07-04 19:14:17.614028900 -0500
+@@ -23,6 +23,7 @@
+ 
+ seabios-dir:
+ 	GIT=$(GIT) $(XEN_ROOT)/scripts/git-checkout.sh $(SEABIOS_UPSTREAM_URL) $(SEABIOS_UPSTREAM_TAG) seabios-dir
++	patch -Np1 -i seabios-gcc5.patch
+ 	cp seabios-config seabios-dir/.config;
+ 
+ .PHONY: all

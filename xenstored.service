@@ -1,0 +1,21 @@
+[Unit]
+Description=Xenstored - daemon managing xenstore file system
+Requires=proc-xen.mount var-lib-xenstored.mount systemd-tmpfiles-setup.service
+After=proc-xen.mount var-lib-xenstored.mount systemd-tmpfiles-setup.service
+Before=libvirtd.service libvirt-guests.service
+RefuseManualStop=true
+ConditionPathExists=/proc/xen
+
+[Service]
+Type=forking
+Environment=XENSTORED_ARGS=
+Environment=XENDOM0_NAME=Domain-0
+EnvironmentFile=-/etc/conf.d/xenstored
+PIDFile=/run/xenstored.pid
+ExecStartPre=/usr/bin/grep -q control_d /proc/xen/capabilities
+ExecStart=/usr/bin/xenstored --pid-file /run/xenstored.pid $XENSTORED_ARGS
+ExecStartPost=/usr/bin/xenstore-write "/local/domain/0/name" "$XENDOM0_NAME"
+ExecStartPost=/usr/bin/xenstore-write "/local/domain/0/domid" 0
+
+[Install]
+WantedBy=multi-user.target
