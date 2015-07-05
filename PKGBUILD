@@ -1,7 +1,7 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=tmpfiles-config
-pkgver=2012.12.01
+pkgver=2015.07.05
 pkgrel=1
 pkgdesc="Config files for arch-tmpfiles (for systems without Systemd)"
 url="https://bitbucket.org/TZ86/initscripts-fork/overview"
@@ -9,20 +9,23 @@ arch=('any')
 license=('GPL2')
 depends=('initscripts-fork')
 source=('console.conf'
+        'etc.conf'
         'lock.conf'
         'system.conf'
         'tmp.conf'
         'x11.conf')
 md5sums=('2ac8d268c295fa3bfa016c258c8bbd22'
+         'ffb27e42febed75899b236829611dc9b'
          '98cbb8684d804979979a3706d27952d4'
-         'f87c2c1284e0a1322c2103d92299b371'
+         '7fd5eaadd4b6854cbac7df7c9ab5a953'
          'd074de44700c5db7e3d48b089ba0eca8'
-         'ab432e2a2a1b3f519b56e0fd03201a67')
+         '2f4f6212f844540f33647bc4ec88d39a')
 
 package() {
   install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
 
   install -m644 "console.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "etc.conf" "$pkgdir/usr/lib/tmpfiles.d"
   install -m644 "lock.conf" "$pkgdir/usr/lib/tmpfiles.d"
   install -m644 "system.conf" "$pkgdir/usr/lib/tmpfiles.d"
   install -m644 "tmp.conf" "$pkgdir/usr/lib/tmpfiles.d"
