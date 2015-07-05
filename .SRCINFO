@@ -14,7 +14,9 @@ pkgbase = breeze-git
 	optdepends = breeze-kde4-git: Breeze widget style for KDE4 applications
 	optdepends = oxygen-icons: fallback icon theme
 	provides = breeze
+	provides = breeze-icons
 	conflicts = breeze
+	conflicts = breeze-icons
 	source = git://anongit.kde.org/breeze.git
 	md5sums = SKIP
 
