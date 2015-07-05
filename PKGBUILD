@@ -27,4 +27,5 @@ package() {
   cd "$srcdir/$_gitname"
   install -Dm755 po4a-bulk-gettextize.sh "$pkgdir/usr/bin/po4a-bulk-gettextize"
   install -Dm755 po4a-bulk-translate.sh "$pkgdir/usr/bin/po4a-bulk-translate"
+  install -Dm755 po4a-bulk-updatepo.sh "$pkgdir/usr/bin/po4a-bulk-updatepo"
 }
