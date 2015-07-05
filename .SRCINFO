@@ -1,23 +1,21 @@
 pkgbase = tmpfiles-config
 	pkgdesc = Config files for arch-tmpfiles (for systems without Systemd)
-	pkgver = 2015.07.05
+	pkgver = 2012.12.01
 	pkgrel = 1
 	url = https://bitbucket.org/TZ86/initscripts-fork/overview
 	arch = any
 	license = GPL2
 	depends = initscripts-fork
 	source = console.conf
-	source = etc.conf
 	source = lock.conf
 	source = system.conf
 	source = tmp.conf
 	source = x11.conf
 	md5sums = 2ac8d268c295fa3bfa016c258c8bbd22
-	md5sums = ffb27e42febed75899b236829611dc9b
 	md5sums = 98cbb8684d804979979a3706d27952d4
-	md5sums = 7fd5eaadd4b6854cbac7df7c9ab5a953
+	md5sums = f87c2c1284e0a1322c2103d92299b371
 	md5sums = d074de44700c5db7e3d48b089ba0eca8
-	md5sums = 2f4f6212f844540f33647bc4ec88d39a
+	md5sums = ab432e2a2a1b3f519b56e0fd03201a67
 
 pkgname = tmpfiles-config
 
