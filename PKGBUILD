@@ -30,8 +30,8 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.0
-_minor=6
+__basekernel=4.1
+_minor=1
 pkgver=${__basekernel}.${_minor}
 pkgrel=1
 lqxrel=1
@@ -57,14 +57,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux-lqx.preset")
 
-sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995'
+sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'f94240759dd6ff9a2014c7af4d49867e76833cd37b4699be7de4df222df8368e38d16168a98acee0654668425f5a789d4dbf37b6ce0e1d170deb07b2cb3d976a'
-            'f9eed65a4a539aceb8951a64f1ed66cb4764c414162b6b352b5fe6415f15571edde00c68527eebdfbb79be5566a51383fce2c3b1c671fca1ac0fb44cf63d6601'
-            'f772e3e8df86706bf701c9cbab0d7a9ce0cfadeb20c4ac0abd744d3d5605470a2e8c6a56f2047157202e4f096abb0e9c9d79cbae3a728e3113566ff314db6592'
-            '18e2e5ce12c589fcdf0d6049df12243e2db21da1ce41713c573f1302502c12418449c0babe2058f1d495d984e36adc5c15b6ae8698362e4899e8f34ecdc3eb86'
+            'ba7454ba04d56a89fe32f8eeb48941f0f1e245d5730e4aa9e6459453b54978ff31bebd223e9541a09fb19b66c1e7ce1ff4ec3d45e59a27a9b1c35fc871f6c614'
+            'aea53ed94dc0334635d45c30a201770f970bbad1c0c6963d1f8ed135f39bc86eaec1fd337bcf92e07dac0eebaccd2f2759d1c59e2973519fe590277947f94a93'
+            'df722423f49db6c96c5f3ccd1b707fdb9051498694b955109cdfe21cf42b738a65b2c7dd1a96f2563d40582d8992bd6d2e629d190adf6493cce067d679e84733'
+            'c184d7dcc9aa180cb20adc9ddc2fc494d26f5763e7011d051ac8f822e4c5cb43edbfb7cbef246faa640c33ce8decb1984ff9df7dfec9f5350a8d541331be5a1a'
             'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
-
+            
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
              )
