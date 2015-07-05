@@ -1,0 +1,10 @@
+[Unit]
+Description=Transmission RSS daemon.
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/transmission-rss -f
+
+[Install]
+WantedBy=multi-user.target
