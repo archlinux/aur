@@ -1,0 +1,15 @@
+pkgbase = dterm
+	pkgdesc = Simple serial terminal emulator
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://www.knossos.net.nz/resources/free-software/dterm/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	optdepends = lrzsz: for X/Y/ZMODEM file transfer functionality
+	source = http://www.knossos.net.nz/downloads/dterm-0.3.tgz
+	md5sums = 4044341cf3b8e12559f8f25c9e428042
+
+pkgname = dterm
+
