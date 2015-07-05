@@ -4,13 +4,14 @@
 
 pkgname=nvidia-lqx
 pkgver=352.21
-_extramodules=extramodules-4.0-lqx
-pkgrel=1
+_extramodules=extramodules-4.1-lqx
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-lqx"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.0' 'linux-lqx<4.1' "nvidia-libgl" "nvidia-utils=${pkgver}")
-conflicts=('nvidia-173xx-lqx')
+depends=('linux-lqx>=4.1' 'linux-lqx<4.2' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-lqx-headers>=4.1' 'linux-lqx-headers<4.2')
+conflicts=('nvidia-304xx-lqx' 'nvidia-340xx-lqx')
 license=('custom')
 install=nvidia-lqx.install
 options=(!strip)
