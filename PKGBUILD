@@ -6,9 +6,9 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.19.9
+pkgver=0.19.10
 pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi'
+pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, libsamplerate, libsoxr, smbclient'
 url='http://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ replaces=('mpd')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('6683bee5f132eda318c5a61ec14b2df8d9164d60'
+sha1sums=('4635b33223d3f1e67eed41f6350ef75515153213'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
@@ -56,7 +56,7 @@ package() {
 
 	install -Dm644 ../mpd.conf "${pkgdir}"/etc/mpd.conf
 	install -Dm644 ../mpd.tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
-	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd/playlists
+	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd{,/playlists}
 
 	install -Dm644 "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
 	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
