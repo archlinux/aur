@@ -17,8 +17,8 @@ conflicts=('cataclysm-dda' 'cataclysm-dda-git' 'cataclysm-dda-ncurses-bin')
 install='cataclysm-dda-ncurses.install'
 source=("https://github.com/CleverRaven/Cataclysm-DDA/archive/${pkgver}.tar.gz"
        'clang36.patch::https://github.com/narc0tiq/Cataclysm-DDA/commit/2e12a15fdbb32b5941d597e3cc774030445d483a.patch')
-md5sums=('805132ab7651ba93e5247ced7fe1fc97'
-         '4b57e948da3daae3753a23200482c497')
+sha256sums=('69e947824626fffb505ca4ec44187ec94bba32c1e5957ba5c771b3445f958af6'
+            '806cbb61ad27b112e4343112ab6281178f490f8d3041da5c510af9ae6dea7578')
 
 prepare() {
   #We need to "patch" cataclysm for it to build with clang>=3.6.
