@@ -16,6 +16,7 @@ sha1sums=('816de09566d37b1dd5c6813be56c2c02a9765244')
 build() {
   cd $srcdir/SFCGAL-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DSFCGAL_BUILD_VIEWER=1 \
         -DSFCGAL_BUILD_EXAMPLES=1 \
         -DSFCGAL_BUILD_TEST=1 .
