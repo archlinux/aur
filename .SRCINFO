@@ -1,0 +1,15 @@
+pkgbase = atpdec
+	pkgdesc = a command line NOAA POES weather satellite image software decoder
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://atpdec.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libsndfile
+	depends = libpng
+	source = http://downloads.sourceforge.net/project/atpdec/atpdec%20sources/1.7/atpdec-1.7.tar.gz
+	md5sums = 7b800eb8366c7271c99da3f70cda812b
+
+pkgname = atpdec
+
