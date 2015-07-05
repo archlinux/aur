@@ -1,0 +1,17 @@
+pkgbase = brightness-git
+	pkgdesc = Brightness Controller - allows you to control brightness of primary and secondary display
+	pkgver = 20140522
+	pkgrel = 1
+	url = http://github.com/lordamit/Brightness
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python2
+	depends = wxpython
+	depends = wxgtk
+	depends = python2-pyside
+	source = brightness.run
+	md5sums = 6a99d9ba7e08f57d3614c63654cadcb8
+
+pkgname = brightness-git
+
