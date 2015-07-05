@@ -2,8 +2,8 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 _lang=hi-in
-_debver=38.0.1
-_debrel=5
+_debver=39.0
+_debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-hi-in
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-sha256sums=('23f062b42f93663aefc2db4bbde3a66c616c9af91ebcffe8c2b7e8144185ef98')
+sha256sums=('a383cf3b9c7f130a96344c5d82333811d883e9a1bf8c02509be412c937dcd062')
