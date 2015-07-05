@@ -1,0 +1,54 @@
+diff -Nurp orig/usr/local/Brother/inf/brMFC7320func arch/usr/local/Brother/inf/brMFC7320func
+--- orig/usr/local/Brother/inf/brMFC7320func	2008-01-25 03:29:39.000000000 +0100
++++ arch/usr/local/Brother/inf/brMFC7320func	2013-03-24 15:48:07.930231805 +0100
+@@ -24,3 +24,5 @@ Copies={"1-999"}
+ Sleep={PrinterDefault,"1-99"}
+ Toner Save Mode={ON,OFF}
+ 
++[psconvert2]
++pstops=/usr/bin/pstops
+diff -Nurp orig/usr/local/Brother/inf/setupPrintcap arch/usr/local/Brother/inf/setupPrintcap
+--- orig/usr/local/Brother/inf/setupPrintcap	2008-01-25 03:29:39.000000000 +0100
++++ arch/usr/local/Brother/inf/setupPrintcap	2013-03-24 16:01:38.558718458 +0100
+@@ -32,7 +32,7 @@ case "$2" in
+ 	if [ ! -d $SPOOLER_NAME ]; then
+ 	        mkdir $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown root $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
+ 
+@@ -46,7 +46,7 @@ ${BRPRINTER_NAME}:\\
+         :sd=/var/spool/lpd/$BRPRINTER_NAME:\\
+         :sh:\\
+         :lp=$DEVICE_IF:\\
+-        :if=/usr/local/Brother/lpd/filter$BRPRINTER_NAME:
++        :if=/usr/share/brother/lpd/filter$BRPRINTER_NAME:
+ EOF
+ 	;;
+ 	-e)
+diff -Nurp orig/usr/local/Brother/lpd/filterMFC7320 arch/usr/local/Brother/lpd/filterMFC7320
+--- orig/usr/local/Brother/lpd/filterMFC7320	2008-01-25 03:29:39.000000000 +0100
++++ arch/usr/local/Brother/lpd/filterMFC7320	2013-03-24 15:42:21.750493330 +0100
+@@ -21,7 +21,7 @@
+ PRINTER="MFC7320"
+ PRINTER_TMP=$(echo $PRINTER | sed -e 's/ //g' -e 's/-//g')
+ 
+-BR_PRT_PATH=/usr/local/Brother
++BR_PRT_PATH=/usr/share/brother
+ RCFILE=`eval echo $BR_PRT_PATH/inf/brPRINTERrc | eval sed 's/PRINTER/"$PRINTER_TMP"/'`
+ PAPER_INF=$BR_PRT_PATH/inf/paperinf
+ PSCONV=$BR_PRT_PATH/lpd/psconvert2
+diff -Nurp orig/usr/local/Brother/lpd/psconvert2 arch/usr/local/Brother/lpd/psconvert2
+--- orig/usr/local/Brother/lpd/psconvert2	2008-01-25 03:29:39.000000000 +0100
++++ arch/usr/local/Brother/lpd/psconvert2	2013-03-24 15:34:44.838794851 +0100
+@@ -45,7 +45,7 @@ PRINTABLEAREA=`sed -n '/PrintableArea/p'
+ PRINTABLEAREA=`echo $PRINTABLEAREA | sed -e 's/ //g' -e 's/PrintableArea=//'`
+ 
+ #---
+-PSTOPS='/usr/sbin/pstops'
++PSTOPS='/usr/bin/pstops'
+ if ! [ -f $PSTOPS ];then
+   PSTOPS=`grep 'pstops=' $FUNC_FILE | head -1 | sed s/'pstops='//`
+ fi

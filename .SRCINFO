@@ -1,0 +1,21 @@
+pkgbase = brother-mfc7320-lpr
+	pkgdesc = Brother MFC-7320 LPR printer driver
+	pkgver = 2.0.2
+	pkgrel = 4
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#MFC-7320
+	install = brother-mfc7320-lpr.install
+	arch = i686
+	arch = x86_64
+	groups = brother-mfc7320
+	license = custom:Brother
+	license = GPL
+	makedepends = rpmextract
+	depends = ghostscript
+	depends = psutils
+	source = brother-mfc7320-lpr.patch
+	source = http://download.brother.com/welcome/dlf006224/brmfc7320lpr-2.0.2-1.i386.rpm
+	md5sums = 920e044d410f5a5b728330757d522dbf
+	md5sums = 928a98e474421e72cf31d279424ca7fe
+
+pkgname = brother-mfc7320-lpr
+
