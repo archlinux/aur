@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=tuna
+Exec=gksu tuna -g
+Icon=/usr/share/tuna/img/tuna.png
+Terminal=false
+StartupNotify=true
+Categories=GTK;System;

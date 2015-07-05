@@ -1,0 +1,20 @@
+--- tuna/tuna/tuna_gui.py.orig	2014-08-13 10:46:50.926023405 -0400
++++ tuna/tuna/tuna_gui.py	2014-08-13 10:47:54.006026784 -0400
+@@ -83,15 +83,13 @@
+ 		self.show()
+ 		self.timer = gobject.timeout_add(2500, self.refresh)
+ 		try:
+-			self.icon = gtk.status_icon_new_from_stock(gtk.STOCK_PREFERENCES)
++			self.icon = gtk.status_icon_new_from_file("/usr/share/tuna/img/tuna.png")
+ 			self.icon.connect("activate", self.on_status_icon_activate)
+ 			self.icon.connect("popup-menu", self.on_status_icon_popup_menu)
+ 		except AttributeError:
+ 			# Old pygtk2
+ 			pass
+-		pixbuf = self.window.render_icon(gtk.STOCK_PREFERENCES,
+-						 gtk.ICON_SIZE_SMALL_TOOLBAR)
+-		self.window.set_icon(pixbuf)
++		self.window.set_icon_from_file("/usr/share/tuna/img/tuna.png")
+ 
+ 	def on_status_icon_activate(self, status_icon):
+ 		if self.window.is_active():
