@@ -1,0 +1,18 @@
+pkgbase = silc-client
+	pkgdesc = A Secure Internet Live Conferencing client
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = http://silcnet.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	depends = silc-toolkit
+	depends = glib2
+	depends = ncurses
+	depends = pcre
+	source = https://downloads.sourceforge.net/project/silc/silc/client/sources/silc-client-1.1.11.tar.gz
+	backup = etc/silc.conf
+
+pkgname = silc-client
+
