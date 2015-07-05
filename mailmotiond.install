@@ -1,0 +1,33 @@
+post_install() {
+	echo
+	echo "Becareful, you must edit /etc/mailmotiond/mailmotiond.conf"
+	echo
+
+	# Create directories
+
+	# mkdir -p "$pkgdir/var/log/mailmotiond/"
+
+	# Fixing right
+
+	chmod 644 "$pkgdir/etc/mailmotiond/mailmotiond.conf"
+	chmod 755 "$pkgdir/var/log/mailmotiond"
+	chmod 755 "$pkgdir/var/log/mailmotiond/errors.log"
+	chmod 755 "$pkgdir/usr/bin/mailmotiond"
+
+	# Fixing membership
+
+	chown -R vismais: "/var/log/mailmotiond"
+	chown vismais: "/etc/mailmotiond/mailmotiond.conf"
+
+	true
+}
+
+post_upgrade() {
+    chown -R vismais: "/var/log/mailmotiond"
+
+    true
+}
+
+post_remove() {
+	true
+}
