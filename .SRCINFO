@@ -1,0 +1,15 @@
+pkgbase = asleap
+	pkgdesc = Actively recover LEAP/PPTP passwords.
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://www.willhackforsushi.com/Asleap.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	depends = libpcap
+	source = http://www.willhackforsushi.com/code/asleap/2.2/asleap-2.2.tgz
+	md5sums = a1d06729fb2addcc5b09bfc14f9b3173
+
+pkgname = asleap
+
