@@ -1,0 +1,20 @@
+pkgbase = ttf-win7-fonts
+	pkgdesc = Microsoft Windows 7 TrueType Fonts
+	pkgver = 7.1
+	pkgrel = 8
+	url = http://www.microsoft.com
+	install = ttf-win7-fonts.install
+	arch = any
+	license = custom
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	provides = ttf-vista-fonts
+	provides = ttf-ms-fonts
+	provides = ttf-font
+	conflicts = ttf-vista-fonts
+	conflicts = ttf-ms-fonts
+
+pkgname = ttf-win7-fonts
+
