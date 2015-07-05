@@ -1,0 +1,4 @@
+post_install() {
+	echo "> Now you can configure kernel parameters in /etc/sysctl.conf"
+}
+
