@@ -1,0 +1,19 @@
+post_install() {
+  echo "inserting /opt/lib/libmediaclient.so in /etc/ld.so.preload"
+  echo "/opt/lib/libmediaclient.so" >> /etc/ld.so.preload
+
+  systemctl enable sundtek-restart.service
+}
+
+pre_remove() {
+  if [ -e /etc/ld.so.preload ]; then
+    echo "removing /opt/lib/libmediaclient.so from /etc/ld.so.preload"
+    sed -i 's#/opt/lib/libmediaclient.so##' /etc/ld.so.preload
+  fi
+
+  systemctl disable sundtek-restart.service
+}
+
+post_upgrade() {
+  systemctl --system daemon-reload
+}

@@ -1,0 +1,24 @@
+pkgbase = sundtek
+	pkgdesc = Driver for Sundtek MediaTV Pro
+	pkgver = 141118.145034
+	pkgrel = 1
+	url = http://www.sundtek.com/
+	install = sundtek.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	backup = etc/sundtek.conf
+	source = http://www.sundtek.de/media/sundtek_installer_141118.145034.sh
+	source = sundtek.conf
+	source = sundtek.rules
+	source = sundtek.service
+	source = sundtek-restart.service
+	sha256sums = 9637527e6954c4ce2d28c7a1583088cf677cea84a806ee2ab2aee7bce193b731
+	sha256sums = 9460c259a46b46787ca76a3e9b2fa9e3ca308d86c8bd19c73c63821e26f17f8a
+	sha256sums = 25d285416ca8b050fdd6fb21b70d448500e402767f87ce19a85520eb005da589
+	sha256sums = c8c928d5ff8f1ee48ab2eb5c287c172e33c15b4a7d7ec7a0f993e701351c3f9d
+	sha256sums = 5192c1283b2c117188d265d29f360ff99baeb87bfb703961f9d6d6e692c800db
+
+pkgname = sundtek
+
