@@ -1,0 +1,19 @@
+pkgbase = open-phd-guiding-svn
+	pkgdesc = Linux port of PHD Guiding, autoguiding for telescopes
+	pkgver = 658
+	pkgrel = 1
+	url = http://code.google.com/p/open-phd-guiding/
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = cmake
+	makedepends = subversion
+	depends = wxgtk
+	depends = v4l-utils
+	depends = zlib
+	depends = cfitsio
+	source = open-phd-guiding::svn+http://open-phd-guiding.googlecode.com/svn/branches/openphd1
+	sha1sums = SKIP
+
+pkgname = open-phd-guiding-svn
+
