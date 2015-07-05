@@ -17,9 +17,13 @@ pkgver() {
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-build() {
+prepare() {
   cd "$srcdir/valentina"
   find . -iname '*.png' -exec convert -strip {} {} \;
+}
+
+build() {
+  cd "$srcdir/valentina"
   qmake PREFIX=/usr PREFIX_LIB=/usr/lib Valentina.pro -r \
   	CONFIG+=noDebugSymbols CONFIG+=no_ccache
   make
