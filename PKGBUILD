@@ -2,13 +2,13 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 _lang=ach
-_debver=38.0.1
-_debrel=5
+_debver=39.0
+_debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-ach
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Acholi language pack for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-md5sums=('37106f9ddc704bcc7414e111b30b062a')
+sha256sums=('e6c2ac5772f6bc3d0008c776106978a68e50c1e5c6e2316d33b9d4349585fea1')
