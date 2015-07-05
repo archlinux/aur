@@ -1,0 +1,23 @@
+pkgbase = ha-pacemaker-git
+	pkgdesc = Pacemaker is an cluster resource manager
+	pkgver = Pacemaker.1.1.7.4159.g622f276
+	pkgrel = 2
+	url = http://linux-ha.org/wiki/Pacemaker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libqb
+	makedepends = corosync
+	depends = libxslt
+	depends = libqb
+	depends = corosync
+	options = !libtool
+	options = docs
+	options = strip
+	source = git://github.com/ClusterLabs/pacemaker.git
+	source = pacemaker.service
+	md5sums = SKIP
+	md5sums = 32b94b2ed9a8b4062cebc042cd402ce3
+
+pkgname = ha-pacemaker-git
+

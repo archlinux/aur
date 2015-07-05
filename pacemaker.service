@@ -1,0 +1,12 @@
+[Unit]
+Description=Pacemaker Cluster Resource Manager
+ConditionKernelCommandLine=!nocluster
+Requires=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pacemakerd
+ExecStop=/usr/bin/pacemakerd -S
+
+[Install]
+WantedBy=multi-user.target
