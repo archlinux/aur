@@ -1,6 +1,6 @@
-diff -u -r openresolv-3.6.1/configure openresolv-3.6.1-arch/configure
---- openresolv-3.6.1/configure	2014-10-28 23:03:14.000000000 +0100
-+++ openresolv-3.6.1-arch/configure	2015-01-01 12:20:34.805786238 +0100
+diff -u -r openresolv-3.7.0/configure openresolv-3.7.0-arch/configure
+--- openresolv-3.7.0/configure	2015-05-01 20:11:09.000000000 +0200
++++ openresolv-3.7.0-arch/configure	2015-05-08 00:31:41.584051126 +0200
 @@ -7,6 +7,7 @@
  HOST=
  TARGET=
@@ -78,7 +78,7 @@ diff -u -r openresolv-3.6.1/configure openresolv-3.6.1-arch/configure
  		echo "yes"
  	else
  		echo "no"
-@@ -203,11 +208,13 @@
+@@ -215,11 +220,13 @@
  echo "RCDIR=		$RCDIR" >>$CONFIG_MK
  # Work around bug in the dash shell as "echo 'foo \1'" does bad things
  printf "%s\n" "RESTARTCMD=	$RESTARTCMD" >>$CONFIG_MK
@@ -93,9 +93,9 @@ diff -u -r openresolv-3.6.1/configure openresolv-3.6.1-arch/configure
 +echo "   VARDIR =		$VARDIR"
  echo "   MANDIR =		$MANDIR"
  echo
-diff -u -r openresolv-3.6.1/dnsmasq.in openresolv-3.6.1-arch/dnsmasq.in
---- openresolv-3.6.1/dnsmasq.in	2014-10-28 23:03:14.000000000 +0100
-+++ openresolv-3.6.1-arch/dnsmasq.in	2015-01-01 12:22:47.265204837 +0100
+diff -u -r openresolv-3.7.0/dnsmasq.in openresolv-3.7.0-arch/dnsmasq.in
+--- openresolv-3.7.0/dnsmasq.in	2015-05-01 20:11:09.000000000 +0200
++++ openresolv-3.7.0-arch/dnsmasq.in	2015-05-08 00:31:41.584051126 +0200
 @@ -33,11 +33,12 @@
  NL="
  "
@@ -120,10 +120,10 @@ diff -u -r openresolv-3.6.1/dnsmasq.in openresolv-3.6.1-arch/dnsmasq.in
  	fi
  	# Send even if empty so old servers are cleared
  	if $dbus_ex; then
-diff -u -r openresolv-3.6.1/Makefile openresolv-3.6.1-arch/Makefile
---- openresolv-3.6.1/Makefile	2014-10-28 23:03:14.000000000 +0100
-+++ openresolv-3.6.1-arch/Makefile	2015-01-01 12:20:34.862452655 +0100
-@@ -10,11 +10,13 @@
+diff -u -r openresolv-3.7.0/Makefile openresolv-3.7.0-arch/Makefile
+--- openresolv-3.7.0/Makefile	2015-05-01 20:11:09.000000000 +0200
++++ openresolv-3.7.0-arch/Makefile	2015-05-08 00:33:56.200147440 +0200
+@@ -9,11 +9,13 @@
  SBINDIR?=	/sbin
  SYSCONFDIR?=	/etc
  LIBEXECDIR?=	/libexec/resolvconf
@@ -138,7 +138,7 @@ diff -u -r openresolv-3.6.1/Makefile openresolv-3.6.1-arch/Makefile
  
  INSTALL?=	install
  SED?=		sed
-@@ -32,17 +34,19 @@
+@@ -31,9 +33,11 @@
  SED_SBINDIR=		-e 's:@SBINDIR@:${SBINDIR}:g'
  SED_SYSCONFDIR=		-e 's:@SYSCONFDIR@:${SYSCONFDIR}:g'
  SED_LIBEXECDIR=		-e 's:@LIBEXECDIR@:${LIBEXECDIR}:g'
@@ -148,8 +148,9 @@ diff -u -r openresolv-3.6.1/Makefile openresolv-3.6.1-arch/Makefile
  SED_RESTARTCMD=		-e 's:@RESTARTCMD \(.*\)@:${RESTARTCMD}:g'
 +SED_RELOADCMD=		-e 's:@RELOADCMD \([^ ]*\) \(.*\)@:${RELOADCMD}:g'
  
- .SUFFIXES: .in
- 
+ DISTPREFIX?=	${PKG}-${VERSION}
+ DISTFILEGZ?=	${DISTPREFIX}.tar.gz
+@@ -45,8 +49,8 @@
  all: ${TARGET}
  
  .in:
@@ -160,10 +161,10 @@ diff -u -r openresolv-3.6.1/Makefile openresolv-3.6.1-arch/Makefile
  		$< > $@
  
  clean:
-diff -u -r openresolv-3.6.1/resolvconf.8.in openresolv-3.6.1-arch/resolvconf.8.in
---- openresolv-3.6.1/resolvconf.8.in	2014-10-28 23:03:14.000000000 +0100
-+++ openresolv-3.6.1-arch/resolvconf.8.in	2015-01-01 12:20:34.882452568 +0100
-@@ -124,7 +124,7 @@
+diff -u -r openresolv-3.7.0/resolvconf.8.in openresolv-3.7.0-arch/resolvconf.8.in
+--- openresolv-3.7.0/resolvconf.8.in	2015-05-01 20:11:09.000000000 +0200
++++ openresolv-3.7.0-arch/resolvconf.8.in	2015-05-08 00:31:41.620717637 +0200
+@@ -135,7 +135,7 @@
  This only needs to be called if the initial system boot sequence does not
  automatically clean it out; for example the state directory is moved
  somewhere other than
@@ -172,9 +173,9 @@ diff -u -r openresolv-3.6.1/resolvconf.8.in openresolv-3.6.1-arch/resolvconf.8.i
  If used, it should only be called once as early in the system boot sequence
  as possible and before
  .Nm
-diff -u -r openresolv-3.6.1/resolvconf.conf.5.in openresolv-3.6.1-arch/resolvconf.conf.5.in
---- openresolv-3.6.1/resolvconf.conf.5.in	2014-10-28 23:03:14.000000000 +0100
-+++ openresolv-3.6.1-arch/resolvconf.conf.5.in	2015-01-01 12:20:34.882452568 +0100
+diff -u -r openresolv-3.7.0/resolvconf.conf.5.in openresolv-3.7.0-arch/resolvconf.conf.5.in
+--- openresolv-3.7.0/resolvconf.conf.5.in	2015-05-01 20:11:09.000000000 +0200
++++ openresolv-3.7.0-arch/resolvconf.conf.5.in	2015-05-08 00:31:41.620717637 +0200
 @@ -281,6 +281,8 @@
  Command to restart the dnsmasq service.
  .It Sy dnsmasq_pid
@@ -193,9 +194,9 @@ diff -u -r openresolv-3.6.1/resolvconf.conf.5.in openresolv-3.6.1-arch/resolvcon
  .El
  .Sh SEE ALSO
  .Xr resolv.conf 5 ,
-diff -u -r openresolv-3.6.1/unbound.in openresolv-3.6.1-arch/unbound.in
---- openresolv-3.6.1/unbound.in	2014-10-28 23:03:14.000000000 +0100
-+++ openresolv-3.6.1-arch/unbound.in	2015-01-01 12:20:34.882452568 +0100
+diff -u -r openresolv-3.7.0/unbound.in openresolv-3.7.0-arch/unbound.in
+--- openresolv-3.7.0/unbound.in	2015-05-01 20:11:09.000000000 +0200
++++ openresolv-3.7.0-arch/unbound.in	2015-05-08 00:31:41.620717637 +0200
 @@ -35,9 +35,10 @@
  NL="
  "
