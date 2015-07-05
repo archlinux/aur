@@ -2,7 +2,7 @@
 
 pkgname=python2-inet_diag
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Python module to interface with inet_diag"
 url="git://git.kernel.org/pub/scm/libs/python/python-inet_diag/python-inet_diag.git"
@@ -13,13 +13,13 @@ depends=('python2')
 makedepends=('git')
 
 source=("$pkgname::git://git.kernel.org/pub/scm/libs/python/python-inet_diag/python-inet_diag.git"
-        'remove-duplicate-variable-declaration.patch')
+        '0001-copy-paste-fixes.patch')
 sha256sums=('SKIP'
-            'ef229b85eeb8cc47dece0d9039ea6aad4032e3eaf4cda1ef5b5a531f9dd37b36')
+            'c07e7cf6497c164b8372e8a4ccd7a4990a0736078344af408c3ec92cc888ca70')
 
 prepare() {
   cd $pkgname
-  patch -p1 -i "${srcdir}/remove-duplicate-variable-declaration.patch"
+  patch -p1 -i "${srcdir}/0001-copy-paste-fixes.patch"
   sed -i '1s/python/python2/' psk.py
   sed -i '1s/python/python2/' pss.py
 }
