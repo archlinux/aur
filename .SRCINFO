@@ -1,0 +1,19 @@
+pkgbase = python-fake-factory
+	pkgdesc = Generates fake data for you.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://www.joke2k.net/faker/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/fake-factory/fake-factory-0.5.2.tar.gz
+	sha256sums = 37b121776d0ee180440fb3133baff8c97dbaaafdb3fc9a659ac6db498abcbc27
+
+pkgname = python-fake-factory
+	depends = python
+
+pkgname = python2-fake-factory
+	depends = python2
+
