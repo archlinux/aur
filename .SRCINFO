@@ -1,6 +1,6 @@
 pkgbase = rspamd
 	pkgdesc = Fast, free and open-source spam filtering system.
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = http://rspamd.com
 	install = rspamd.install
@@ -27,8 +27,8 @@ pkgbase = rspamd
 	backup = etc/rspamd/2tld.inc
 	backup = etc/rspamd/statistic.conf
 	backup = etc/rspamd/metrics.conf
-	source = https://www.rspamd.com/downloads/rspamd-0.9.8.tar.xz
-	sha256sums = aba4d96014ed1b961f6a9add427f279d404f58f8264817b50b4178fcf1824b58
+	source = https://www.rspamd.com/downloads/rspamd-0.9.9.tar.xz
+	sha256sums = bb4e6d7f69376f8d9fcd4b5a84cc9973a3551eb3e430e7c10b1bd9094db7c211
 
 pkgname = rspamd
 
