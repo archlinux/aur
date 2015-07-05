@@ -1,0 +1,14 @@
+pkgbase = atlc
+	pkgdesc = A CAD package used for analysing and desiging electrical transmission lines of arbitrary cross section. Also for the design of directonal couplers.
+	pkgver = 4.6.1
+	pkgrel = 3
+	url = http://atlc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sh
+	source = http://downloads.sourceforge.net/project/atlc/atlc/atlc-4.6.1/atlc-4.6.1.tar.bz2
+	md5sums = 2e8e0f3cd85c07b19107799d262d3444
+
+pkgname = atlc
+
