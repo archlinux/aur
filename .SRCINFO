@@ -1,0 +1,20 @@
+pkgbase = mysql-utilities-beta
+	pkgdesc = A collection of command-line utilities that are used for maintaining and administering MySQL servers
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://dev.mysql.com/downloads/tools/utilities/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-sphinx>=1.0
+	depends = python2-jinja>=2.1
+	provides = mysql-utilities
+	provides = python2-mysql-connector
+	conflicts = mysql-utilities
+	conflicts = python2-mysql-connector
+	options = !emptydirs
+	source = http://cdn.mysql.com/Downloads/MySQLGUITools/mysql-utilities-1.4.2.tar.gz
+	md5sums = e4866f431fe10932080507956130b31d
+
+pkgname = mysql-utilities-beta
+
