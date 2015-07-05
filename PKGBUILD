@@ -1,25 +1,25 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=libspoton
-pkgver=0.22
-pkgrel=2
+pkgver=2015.06.17
+pkgrel=1
 pkgdesc='Binding library for Spot-On'
 url='http://spot-on.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('custom:3-clause BSD')
 depends=('sqlite' 'libgcrypt>=1.5' 'libntru')
 makedepends=('sqlite' 'libgcrypt>=1.5' 'make' 'gcc' 'coreutils')
-source=("https://github.com/textbrowser/spot-on/archive/v${pkgver}.tar.gz")
-sha256sums=('b6c2015274e9fca2f887f1f9638f8d6c50514987b9081c5e86044246da32ce80')
+source=("Spot-On-${pkgver}.tar.gz::http://downloads.sourceforge.net/project/spot-on/Version%20${pkgver}/Spot-On.tar.gz?r=")
+sha256sums=('bc4b1feb7197497b6e46a7e0d0a54b355be08a65d77df93cd468a2095f517fe5')
 
 
 build() {
-    cd "$srcdir/spot-on-${pkgver}/libSpotOn"
+    cd "$srcdir/spot-on.d/libSpotOn"
     make
 }
 
 package () {
-    cd "$srcdir/spot-on-${pkgver}/libSpotOn"
+    cd "$srcdir/spot-on.d/libSpotOn"
     install -dm755 -- "$pkgdir/usr/lib"
     install -m755 -- libspoton.so "$pkgdir/usr/lib/libspoton.so"
     install -dm755 -- "$pkgdir/usr/include"
