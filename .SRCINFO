@@ -1,0 +1,13 @@
+pkgbase = log4j
+	pkgdesc = Logging library for Java
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://logging.apache.org/log4j/
+	arch = any
+	license = APACHE
+	depends = java-runtime
+	source = https://archive.apache.org/dist/logging/log4j/2.3/apache-log4j-2.3-bin.tar.gz
+	sha256sums = a0118cccd0fa930705319b2ea031732f2eb6ce8802e3f696a294e3d3eec8c4aa
+
+pkgname = log4j
+
