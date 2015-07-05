@@ -1,0 +1,18 @@
+pkgbase = pygist-git
+	pkgdesc = Python command line interface with gist.github.com
+	pkgver = v1.1.r8.g159976c
+	pkgrel = 1
+	url = http://github.com/mattikus/pygist
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	optdepends = git: utilizes git-config to gather user information for github
+	optdepends = xclip: will yank pastes to clipboard automagically
+	provides = pygist
+	conflicts = pygist
+	source = pygist-git::git+https://github.com/mattikus/pygist.git
+	sha256sums = SKIP
+
+pkgname = pygist-git
+
