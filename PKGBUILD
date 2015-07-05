@@ -1,7 +1,7 @@
 # Maintainer: SnowyClaw <bowser5543@gmail.com>
 pkgname=blws-all-in-one-optimised-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides optimised binaries, configuration, and themes."
 arch=('any')
 license=('unknown')
