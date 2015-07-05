@@ -1,0 +1,19 @@
+pkgbase = rune-hov
+	pkgdesc = Hack and slay game based on Norse mythology
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://www.lokigames.com/products/rune/
+	install = rune-hov.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = ossp: sound support when not using OSS natively
+	source = rune-hov.desktop
+	source = http://icculus.org/~ravage/rune/rune-107-fix.tar.bz2
+	source = rhov108upd_linux.zip::http://www.rune-library.com/e107/request.php?15
+	sha256sums = 9a30a55dcbfc960c7aee8c9742b928a9fcd3a926dc9e192a43597c5f5673ea65
+	sha256sums = dd31076f171616f7146b8241eedae60a3b0aef7313a64ef07fd8e53d1df20b79
+	sha256sums = f38d5d6e463db92bb9a66a27a51480d7c143be139d9234458b9e17beff8fb341
+
+pkgname = rune-hov
+
