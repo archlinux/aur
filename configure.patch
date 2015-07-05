@@ -1,0 +1,22 @@
+--- oaCapture-0.1.0/configure.ac	2014-11-08 15:24:56.000000000 +0100
++++ /tmp/configure.ac	2015-01-10 01:13:29.877970581 +0100
+@@ -29,8 +29,8 @@
+ if ! `$PKG_CONFIG --atleast-version=4.8.0 QtCore`; then
+ AC_MSG_ERROR([Qt >= 4.8.0 is required.])
+ fi
+-AC_CHECK_PROGS(MOC, [moc-qt5 moc-qt4 moc])
+-AC_CHECK_PROGS(UIC, [uic-qt5 uic-qt4 uic])
++AC_CHECK_PROGS(MOC, [moc-qt4])
++AC_CHECK_PROGS(UIC, [uic-qt4])
+ AC_CHECK_PROGS(RCC, [rcc])
+ if test -z "$MOC" || test -z "$UIC" || test -z "$RCC"; then
+ AC_MSG_ERROR([Qt utility programs moc, uic, and rcc are required.])
+@@ -104,7 +104,7 @@
+ 
+ FFMPEG_LIBS="\$(top_builddir)/ext/ffmpeg/libavformat/libavformat.a \
+                \$(top_builddir)/ext/ffmpeg/libavcodec/libavcodec.a \
+-               \$(top_builddir)/ext/ffmpeg/libavutil/libavutil.a"
++               \$(top_builddir)/ext/ffmpeg/libavutil/libavutil.a -lva"
+ 
+ AC_ARG_WITH(ffmpeg-extra-configure, 
+   AC_HELP_STRING([--with-ffmpeg-extra-configure="xxx"],
