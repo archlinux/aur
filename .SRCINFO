@@ -1,0 +1,22 @@
+pkgbase = shim-git
+	pkgdesc = wedge this HTTP proxy between your browser and Tor
+	pkgver = 0.1.0.r23.ge506733
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/nmathewson/shim/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = libevent
+	optdepends = tor
+	backup = etc/conf.d/shim
+	source = git://github.com/nmathewson/shim.git
+	source = shim.conf
+	source = shim.service
+	sha256sums = SKIP
+	sha256sums = d4a0af79f6e1494bf8630c09654d15b9791ef10d7337141a969962ecf5041e67
+	sha256sums = 054d6c62ec97debe7cb282601a4db47f18e0fffb2dc63a14c5b80bdb130b350c
+
+pkgname = shim-git
+

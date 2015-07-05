@@ -1,0 +1,9 @@
+[Unit]
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/shim
+ExecStart=/usr/bin/shim -l $SHIM_HOST -p $SHIM_PORT $SHIM_SOCKS_PROXY
+
+[Install]
+WantedBy=multi-user.target
