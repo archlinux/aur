@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/towerfall-ascension"
+
+"$gogdir"/start.sh
