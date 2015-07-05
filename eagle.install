@@ -1,0 +1,21 @@
+update() {
+	update-desktop-database /usr/share/applications
+	update-mime-database    /usr/share/mime
+}
+
+## arg 1:  the new package version
+post_install() {
+	update
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	update
+}
+
+## arg 1:  the old package version
+post_remove() {
+	update
+}
+
