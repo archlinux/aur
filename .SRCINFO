@@ -1,0 +1,25 @@
+pkgbase = mudlet-git
+	pkgdesc = Mudlet git development branch - is a quality MUD client, designed to take mudding to a new level.
+	pkgver = 20150130
+	pkgrel = 2
+	url = http://www.mudlet.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = git
+	makedepends = qt5-tools
+	depends = glu
+	depends = hunspell
+	depends = libzip
+	depends = lua51
+	depends = lua51-filesystem
+	depends = lua51-sql-sqlite
+	depends = luazip5.1
+	depends = lrexlib-pcre5.1
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = yajl
+
+pkgname = mudlet-git
+
