@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='lib32-eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
-pkgver=20140913
+pkgver=20150619
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/gentoo/eudev"
@@ -43,7 +43,7 @@ build() {
               --sysconfdir=/etc \
               --libdir=/usr/lib32 \
               --sbindir=/usr/bin \
-              --with-modprobe=/usr/bin/modprobe \
+	      --disable-kmod \
               --enable-gudev \
               --enable-introspection \
               --disable-manpages
