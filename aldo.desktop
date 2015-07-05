@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Aldo
+Name[en_US]=Aldo
+Comment=Morse Code Testing/Trainer
+Comment[en_US]=Morse Code Testing/Trainer
+Encoding=UTF-8
+Exec=aldo
+Icon=hamradio.png
+MimeType=text
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
