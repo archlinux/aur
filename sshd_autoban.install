@@ -1,0 +1,32 @@
+post_install() {
+	echo
+	echo "Becareful, you must edit /etc/sshd_autoban/sshd_autoban.json"
+	echo
+
+	# Create directories
+
+	# mkdir -p "$pkgdir/var/log/sshd_autoban/"
+
+	# Fixing right
+
+	chmod 644 "$pkgdir/etc/sshd_autoban/sshd_autoban.json"
+	chmod 755 "$pkgdir/var/log/sshd_autoban"
+	chmod 755 "$pkgdir/var/log/sshd_autoban/errors.log"
+	chmod 755 "$pkgdir/usr/bin/sshd_autoban"
+
+	# Fixing membership
+
+	chown -R root: "/var/log/sshd_autoban"
+	chown root: "/etc/sshd_autoban/sshd_autoban.json"
+
+	true
+}
+
+post_upgrade() {
+    echo "Reload systemctl"
+    systemctl daemon-reload
+}
+
+post_remove() {
+	true
+}
