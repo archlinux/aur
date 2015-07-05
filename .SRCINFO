@@ -1,0 +1,15 @@
+pkgbase = qnetctl-git
+	pkgdesc = A Qt GUI for netctl
+	pkgver = 20140422
+	pkgrel = 1
+	url = https://github.com/luebking/qnetctl/
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL2
+	makedepends = git
+	depends = qt4
+	provides = qnetctl
+
+pkgname = qnetctl-git
+
