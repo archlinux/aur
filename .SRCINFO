@@ -1,0 +1,15 @@
+pkgbase = schaeublepong
+	pkgdesc = sdlpong with Wolfgang Schäuble theme used on CCC Bremen partys.
+	pkgver = 0.3
+	pkgrel = 3
+	url = http://ccchb.de/wiki/Sch%C3%A4uble-Pong
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = sdl_image
+	source = http://arsch.orgizm.net/source/schaeuble-sdlpong-0.3.tar.gz
+	md5sums = dff47860f9b4a0ef28a4428809369ff3
+
+pkgname = schaeublepong
+
