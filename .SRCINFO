@@ -1,0 +1,18 @@
+pkgbase = python-comedi
+	pkgdesc = An object-oriented interface for the Comedi drivers
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/${_pyname}
+	arch = x86
+	arch = i686
+	license = GPL2
+	depends = python
+	depends = cython
+	depends = python-numpy
+	depends = comedilib
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pycomedi/pycomedi-0.7.tar.gz
+	md5sums = 3f059133e24fef637ef40abda19f7ae8
+
+pkgname = python-comedi
+
