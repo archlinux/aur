@@ -2,14 +2,14 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 _lang=ar
-_debver=38.0.1
-_debrel=5
+_debver=39.0
+_debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-ar
 pkgver=$_debver.deb$_debrel
 pkgrel=1
-pkgdesc="Arabic language package for Iceweasel"
+pkgdesc="Azerbaijani language pack for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
 license=('MPL' 'GPL' 'LGPL')
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-sha256sums=('1fec5ebeb5ca41a494c1c9b2d0ef72516bc019119ecabda1e2e38eab7676dca7')
+sha256sums=('1e3459eb7bdb94b5363d6c22fceb27affad3cfbd40bbfe9faba1fb87a1fc4dae')
