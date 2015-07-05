@@ -1,1 +1,11 @@
-CrashPlan*.tgz
+*
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
+!install.vars
