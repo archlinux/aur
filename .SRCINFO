@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-cy
 	pkgdesc = Welsh language pack for Iceweasel
-	pkgver = 38.0.1.deb5
+	pkgver = 39.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=38.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-cy_38.0.1-5_all.deb
-	sha256sums = 48878b32463a1834caab502f6368acc65c7fc544c653069c519c90bd9a82acfa
+	depends = iceweasel>=39.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-cy_39.0-1_all.deb
+	sha256sums = 8c6bec5bafc13d828c3ea4b7b47635e60b77a1846d681530c8416803e20ba86b
 
 pkgname = iceweasel-i18n-cy
 
