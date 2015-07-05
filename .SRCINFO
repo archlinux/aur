@@ -1,0 +1,18 @@
+pkgbase = clion
+	pkgdesc = C/C++ IDE. Free 30-day trial.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.jetbrains.com/clion
+	arch = x86_64
+	license = custom
+	optdepends = gdb: native debugger
+	optdepends = cmake: native build system
+	optdepends = gcc: GNU compiler
+	optdepends = clang: LLVM compiler
+	optdepends = biicode: C/C++ dependency manager
+	options = !strip
+	source = https://download.jetbrains.com/cpp/clion-1.0.4.tar.gz
+	sha256sums = 9511c98e4eae7ae3830a859e59774e884d30b8708900c6ec3f5e7efb054ce5b3
+
+pkgname = clion
+
