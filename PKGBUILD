@@ -1,11 +1,11 @@
 # Maintainer: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=remarkable
-pkgver=1.41
+pkgver=1.62
 pkgrel=1
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('i686' 'x86_64')
-url="http://remarkableapp.net"
+url="http://remarkableapp.github.io"
 license=('MIT')
 depends=('python'
          'python-cairo'
@@ -18,9 +18,9 @@ depends=('python'
 makedepends=('python')
 options=('!emptydirs' '!strip')
 install="${pkgname}.install"
-source=("${pkgname}_${pkgver}_all.deb::http://remarkableapp.net/files/${pkgname}_${pkgver}_all.deb"
+source=("${pkgname}_${pkgver}_all.deb::http://remarkableapp.github.io/files/${pkgname}_${pkgver}_all.deb"
         "${pkgname}.install")
-md5sums=('f4f0a2f3a9746b5c195a9c903e362e0e'
+md5sums=('4caa1f953cc05010bf255f34dcce8c1f'
          '4230de2876e8789bcd5a7cdc84b2a30b')
 
 package() {
