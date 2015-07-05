@@ -1,0 +1,30 @@
+pkgbase = gmusicbrowser-shimmer-git
+	pkgdesc = An open-source jukebox for large collections of mp3/ogg/flac/mpc/ape files, written in perl with shimmer layout
+	pkgver = 20110405
+	pkgrel = 1
+	url = http://gmusicbrowser.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gtk2-perl
+	optdepends = alsa-utils: enables the ALSA backend
+	optdepends = flac123: flac support for the ALSA backend
+	optdepends = mpg321: mp3 support for the ALSA backend
+	optdepends = vorbis-tools: vorbis support for the ALSA backend
+	optdepends = mplayer: enables the mplayer backend
+	optdepends = perl-gstreamer: enables the gstreamer backend
+	optdepends = gstreamer0.10-base: vorbis supportfor the gstreamer backend
+	optdepends = gstreamer0.10-good-plugins: flac support for the gstreamer backend
+	optdepends = gstreamer0.10-ugly-plugins: mp3 support for the gstreamer backend
+	optdepends = perl-gtk2-trayicon: tray icon support
+	optdepends = perl-gtk2-mozembed: web-based plugins support
+	optdepends = perl-gtk2-webkit: alternative web-based plugin support
+	optdepends = perl-locale-gettext: localization support
+	optdepends = perl-net-dbus: control gmusicbrowser through dbus and gnome hotkeys
+	optdepends = perl-gnome2-wnck: titlebar plugin support
+	conflicts = gmusicbrowser
+	conflicts = gmusicbrowser-devel
+
+pkgname = gmusicbrowser-shimmer-git
+
