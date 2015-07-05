@@ -1,0 +1,12 @@
+pkgbase = rune-hov-expansion
+	pkgdesc = Multiplayer expansion pack for Rune
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://www.lokigames.com/products/hov/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = rune
+
+pkgname = rune-hov-expansion
+
