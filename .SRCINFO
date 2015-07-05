@@ -1,0 +1,13 @@
+pkgbase = fspcc
+	pkgdesc = An FSP compiler and LTS analysis tool
+	pkgver = 1.8
+	pkgrel = 2
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	optdepends = graphviz: visualizing compiled LTS
+	optdepends = xv: visualizing compiled LTS
+
+pkgname = fspcc
+
