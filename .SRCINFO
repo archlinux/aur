@@ -1,0 +1,21 @@
+pkgbase = ekgping
+	pkgdesc = Electrocardiograph-like graphical and audible ping
+	pkgver = 1.31
+	pkgrel = 2
+	url = http://finalrewind.org/projects/ekgping/
+	arch = any
+	license = custom:WTFPL
+	makedepends = perl-test-compile
+	makedepends = perl-test-pod
+	depends = perl-file-sharedir
+	depends = perl-ipc-run
+	depends = perl-sdl
+	depends = perl-term-size
+	options = !emptydirs
+	source = http://finalrewind.org/projects/ekgping/ekgping-1.31.tar.gz
+	source = http://finalrewind.org/projects/ekgping/ekgping-1.31.tar.gz.asc
+	md5sums = 0e215c7cbdbef81a5e6d1cfca87bd85c
+	md5sums = 7f25046292e283d6c2ee55e2386a0c44
+
+pkgname = ekgping
+
