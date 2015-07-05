@@ -1,0 +1,13 @@
+pkgbase = duty
+	pkgdesc = Make random duty in LaTeX
+	pkgver = 0.2
+	pkgrel = 4
+	url = https://github.com/Chipsterjulien/duty
+	arch = any
+	license = GPL
+	depends = python
+	source = duty-0.2.tar.gz
+	md5sums = 6e2020cf12d1f0efaa4274360a04322c
+
+pkgname = duty
+
