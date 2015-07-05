@@ -1,0 +1,14 @@
+pkgbase = perl-geo-ipfree
+	pkgdesc = Look up country of IP Address. This module make this off-line and the DB of IPs is free & small.
+	pkgver = 1.141670
+	pkgrel = 1
+	url = http://search.cpan.org/~bricas/Geo-IPfree
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/Geo-IPfree-1.141670.tar.gz
+	sha256sums = 7b67b200e0af839e6a7784ea309975d1c7ebf68fae56d5d7160193e2f360a772
+
+pkgname = perl-geo-ipfree
+
