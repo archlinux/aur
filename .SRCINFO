@@ -1,0 +1,12 @@
+pkgbase = xcursor-pulse-glass
+	pkgdesc = Pulse Glass cursor theme
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://xfce-look.org/content/show.php/Pulse+Glass?content=124442
+	arch = any
+	license = GPL
+	source = http://xfce-look.org/CONTENT/content-files/124442-Pulse-Glass.tar.gz
+	md5sums = 9691f12afcbb3a41332f14b6cbdd7353
+
+pkgname = xcursor-pulse-glass
+
