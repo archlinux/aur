@@ -1,0 +1,17 @@
+pkgbase = python-alembic
+	pkgdesc = Lightweight dababase migration tool for usage with SQLAlchemy
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://bitbucket.org/zzzeek/alembic
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	depends = python-mako
+	depends = python-sqlalchemy
+	provides = python-alembic
+	source = https://pypi.python.org/packages/source/a/alembic/alembic-0.7.6.tar.gz
+	sha256sums = 864fa461265d6c97bcefee603e9ef0b6385bda9063d41b3db3e010abbba5ef61
+
+pkgname = python-alembic
+
