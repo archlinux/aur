@@ -1,0 +1,25 @@
+_CLUSTER_USER=hacluster
+_CLUSTER_GROUP=haclient
+_DGID=666
+_DUID=666
+
+pre_install() {
+
+	getent group ${_CLUSTER_GROUP} >/dev/null || groupadd -r -g ${_DGID} ${_CLUSTER_GROUP}
+	getent passwd ${_CLUSTER_USER} >/dev/null || useradd -r -g ${_CLUSTER_GROUP} -u ${_DUID} -d /var/lib/heartbeat/cores/hacluster -s /sbin/nologin -c "cluster user" ${_CLUSTER_USER}
+
+}
+
+post_install() {
+
+	echo -e "\nNow you must install ha-resourceagent, ha-heartbeat and ha-pacemaker\n"
+
+}
+
+post_remove() {
+
+	echo -e "\nDeleting user ${_CLUSTER_USER} and group ${_CLUSTER_GROUP} "
+	userdel ${_CLUSTER_USER}
+	groupdel ${_CLUSTER_GROUP}
+
+}
