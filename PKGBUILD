@@ -6,7 +6,7 @@
 
 pkgname=rofi-git
 _gitname=rofi
-pkgver=0.15.5.r37.g5c9ad80
+pkgver=0.15.5.r38.g9b83c61
 pkgrel=1
 pkgdesc="Popup window switcher roughly based on superswitcher, requiring only xlib and xft. DaveDavenport's fork"
 arch=('i686' 'x86_64')
@@ -36,10 +36,7 @@ package() {
   cd "$srcdir/$_gitname"
   make install install-man DESTDIR="$pkgdir"
 
-  # Install examples to /usr/share/rofi
-  install -m 755 -d "$pkgdir/usr/share/rofi/"
-  for example in `find "Examples" -type f -name "*.sh"`
-  do
-    install -m 755 "$example" "$pkgdir/usr/share/rofi/$(basename $example)"
-  done
+  # Install examples to /usr/share/doc/rofi/examples
+  install -dm755 "$pkgdir/usr/share/doc/rofi/examples"
+  install -Dm755 Examples/*.sh "$pkgdir/usr/share/doc/rofi/examples"
 }

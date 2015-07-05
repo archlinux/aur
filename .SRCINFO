@@ -1,6 +1,6 @@
 pkgbase = rofi-git
 	pkgdesc = Popup window switcher roughly based on superswitcher, requiring only xlib and xft. DaveDavenport's fork
-	pkgver = 0.15.5.r37.g5c9ad80
+	pkgver = 0.15.5.r38.g9b83c61
 	pkgrel = 1
 	url = https://davedavenport.github.io/rofi/
 	arch = i686
