@@ -1,0 +1,14 @@
+post_install() {
+  echo "========================"
+  echo "Getting Started with SU2"
+  echo "========================"
+  echo ""
+  echo "checkout the SU2 TestCases:"
+  echo "git clone git://github.com/su2code/TestCases.git"
+  echo ""
+  echo "Then visit https://github.com/su2code/SU2/wiki/Quick-Start"
+}
+
+post_upgrade() {
+  post_install $1
+}

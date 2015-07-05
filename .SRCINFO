@@ -1,0 +1,23 @@
+pkgbase = su2
+	pkgdesc = open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems
+	pkgver = 3.2.9
+	pkgrel = 3
+	url = http://su2.stanford.edu/index.html
+	install = su2.install
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = lapack
+	depends = jsoncpp
+	depends = libcgns-paraview
+	depends = zlib
+	depends = openmpi
+	depends = bzip2
+	depends = hdf5-openmpi
+	source = git+https://github.com/su2code/SU2#tag=v3.2.9
+	source = configure.ac.patch
+	sha256sums = SKIP
+	sha256sums = 5f6de8db5c15fa1a1e60dae5bb640ab2d4a17e62934689ee97073199439daa47
+
+pkgname = su2
+
