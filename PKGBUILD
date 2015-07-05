@@ -1,6 +1,6 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
@@ -24,7 +24,7 @@ source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 	"restart.conf"
 	"vpn.sh"
 	"pia.8.gz"
-	"git+https://github.com/flamusdiu/python-pia.git#tag=v2.1")
+	"git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}")
 		
 noextract=("openvpn.zip"
            "pia.8.gz")
