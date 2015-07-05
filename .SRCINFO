@@ -1,0 +1,22 @@
+pkgbase = motion-mmal
+	pkgdesc = Special version for PI camera. A software motion detector which grabs images from video4linux devices and/or from webcams
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.lavrsen.dk/twiki/bin/view/Motion/WebHome
+	install = motion.install
+	arch = armv6h
+	license = GPL
+	depends = libjpeg6
+	depends = ffmpeg-compat
+	depends = libmariadbclient
+	depends = postgresql-libs
+	backup = etc/motion.conf
+	source = https://www.dropbox.com/s/xdfcxm5hu71s97d/motion-mmal.tar.gz
+	source = motion.service
+	source = motion.tmpfiles
+	md5sums = 55f5a112d86ae5e4c09672ba04e3091f
+	md5sums = b5b589f8f39939b7a1802cbd9dbe2e1a
+	md5sums = f863f8c025f7f025b2178def8418decd
+
+pkgname = motion-mmal
+
