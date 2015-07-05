@@ -1,16 +1,17 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=tiddlywiki
 pkgver=5.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Personal wiki where everything is in one html-file'
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 url='http://www.tiddlywiki.com/'
 license=('BSD')
 depends=('xdg-utils')
 source=('http://www.tiddlywiki.com/empty.html'
         'tiddlywiki.py')
-sha256sums=('e46433f77d69cf7ee0849499f92a31be1703c09f3898c15fe12bd230a3a4b8af'
+sha256sums=('358a86bba47deec636142ceaa0a6a3231bd8f250a96d90435617dccb05bd13c9'
             'de87f833dec4d1bf7c352b89bbab55d6974ea69026cb42269d59fec65e727625')
 
 build() {
@@ -23,5 +24,3 @@ package() {
   install -Dm644 empty.html "$pkgdir/usr/share/tiddlywiki/empty.html"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
-# vim:set ts=2 sw=2 et:
