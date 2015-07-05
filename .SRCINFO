@@ -1,0 +1,13 @@
+pkgbase = kdeplasma-theme-amakage
+	pkgdesc = Translucent theme for KDE 4. This will be the successor of Xenon
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Amakage?content=150285
+	arch = any
+	license = CCPL
+	depends = kdebase-workspace
+	source = http://kde-look.org/CONTENT/content-files/150285-Amakage.tar.xz
+	sha1sums = 56ff08123e3fdf55d40ff51e93b8ca4428741049
+
+pkgname = kdeplasma-theme-amakage
+
