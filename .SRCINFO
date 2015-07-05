@@ -1,0 +1,19 @@
+pkgbase = astroavibrowser-svn
+	pkgdesc = A small tool for astronomy video sequences editing.
+	pkgver = 142
+	pkgrel = 1
+	url = http://sourceforge.net/projects/astroavibrowser/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	makedepends = subversion
+	depends = ffmpeg
+	depends = qt4
+	provides = astroavibrowser
+	conflicts = astroavibrowser
+	source = astroavibrowser::svn://svn.code.sf.net/p/astroavibrowser/code/trunk
+	sha1sums = SKIP
+
+pkgname = astroavibrowser-svn
+
