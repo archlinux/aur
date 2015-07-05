@@ -3,19 +3,22 @@
 pkgname=jpexs-decompiler-git
 _pkgname=jpexs-decompiler
 _github_addr=jindrapetrik/jpexs-decompiler
-pkgver=20150629
+pkgver=20150705
 pkgrel=1
 pkgdesc="Opensource flash SWF decompiler and editor"
 arch=("any")
 url="https://www.free-decompiler.com/flash/"
 license=('GPL3')
 makedepends=('git' 'apache-ant' 'java-environment=8' 'python')
-depends=('java-runtime=8' 'bash') # bash for ffdec.sh
+depends=('java-runtime=8' 'bash' 'java-openjfx') # bash for ffdec.sh
 source=(
     "${_pkgname}"::"git+https://github.com/$_github_addr"
     'put_version_into_build_xml.py'
 )
-md5sums=('SKIP' 'SKIP')
+md5sums=(
+    'SKIP'
+    '7f20d8a7ae9e6fc17e9ac45d31802499'
+)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
