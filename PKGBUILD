@@ -1,7 +1,7 @@
 # Maintainer: SnowyClaw <bowser5543@gmail.com>
 pkgname=blws-all-in-one-full-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides binaries, configuration, and themes."
 arch=('any')
 license=('unknown')
