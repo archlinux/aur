@@ -1,0 +1,17 @@
+pkgbase = rune
+	pkgdesc = Hack and slay game based on Norse mythology
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://www.lokigames.com/products/rune/
+	install = rune.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = ossp: sound support when not using OSS natively
+	source = rune.desktop
+	source = http://icculus.org/~ravage/rune/rune-107-fix.tar.bz2
+	sha256sums = dfd474bc0c2933a71ba1a90a94d795967f39eb7c530b03f96495b580ae0e74b8
+	sha256sums = dd31076f171616f7146b8241eedae60a3b0aef7313a64ef07fd8e53d1df20b79
+
+pkgname = rune
+
