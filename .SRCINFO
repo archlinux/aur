@@ -1,0 +1,14 @@
+pkgbase = lua51-sql-sqlite
+	pkgdesc = SQLite module for Lua 5.1
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://www.keplerproject.org/luasql/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks5.1
+	depends = lua51
+	depends = sqlite
+
+pkgname = lua51-sql-sqlite
+
