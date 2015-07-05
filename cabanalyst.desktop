@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=CabAnalyst
+Name[en_US]=CabAnalyst
+Comment=Cabrillo log editor
+Comment[en_US]=Cabrillo log editor
+Encoding=UTF-8
+Exec=cabanalyst
+Icon=cabanalyst.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

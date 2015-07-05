@@ -1,0 +1,22 @@
+pkgbase = cabanalyst
+	pkgdesc = Ham radio contesting - Cabrillo log editor
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://hamsoftware.org/old_index.html
+	install = cabanalyst.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = http://www.hamsoftware.org/cabanalyst_v1.0.tgz
+	source = cabanalyst.desktop
+	source = cabanalyst.png
+	md5sums = 60672327a5eaa6f597c24f8bce2cdff6
+	md5sums = 942b749b8ba86b43011389601a82bf76
+	md5sums = 0c5fc02db4577b3b1ffcc23e5c7a2b8e
+	sha256sums = 7df96eb87d248d73b364012e8d10885c98e29f6645a9155934f7f2f6cca64d5e
+	sha256sums = a8af24312399aff52d91dad72704b50b73443ab95320679a64e378e57db69e88
+	sha256sums = ae4886c24e08425d7a9d6c31290924f8b328d0b2fe59b3d0c0e94ecf4d62b039
+
+pkgname = cabanalyst
+
