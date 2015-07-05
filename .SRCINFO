@@ -1,0 +1,19 @@
+pkgbase = mudlet
+	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = http://sourceforge.net/projects/mudlet/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = lua
+	depends = qscintilla
+	depends = qt4
+	source = http://downloads.sourceforge.net/project/mudlet/mudlet-1.1.1-src.tar.gz
+	source = mudlet.patch
+	md5sums = 0710ec2c9c146633ef8b659a1183b612
+	md5sums = c2055054ded3fc98c8cc5a954256f16c
+
+pkgname = mudlet
+

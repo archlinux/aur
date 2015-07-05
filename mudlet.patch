@@ -1,0 +1,10 @@
+--- src/mudlet/src/src.pro	2010-03-18 10:07:12.000000000 -0500
++++ src/mudlet/src/src.pro	2013-02-07 12:19:44.157244831 -0600
+@@ -6,6 +6,7 @@
+ LIBLUA = -llua5.1
+ !exists(/usr/lib/liblua5.1.a):LIBLUA = -llua
+ unix:LIBS += -lpcre \
++    -lz \
+     $$LIBLUA
+ win32:LIBS += -Lc:\lua-5.1.4 \
+     -llua51 \
