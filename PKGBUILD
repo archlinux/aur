@@ -1,16 +1,16 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=dooble-common
-pkgver=1.52
-pkgrel=2
+pkgver=1.53
+pkgrel=1
 pkgdesc='Common files for package variants for Dooble'
 url='http://dooble.sourceforge.net/'
 arch=('any')
 license=('custom:3-clause BSD')
 depends=()
 makedepends=('qtchooser')
-source=("dooble-${pkgver}.tar.gz::http://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble-Source.tar.gz?r=")
-sha256sums=('407091a7dbd9d6969f0450a97e0fa9a153ea7773ae1af599a5226e7bc7467173')
+source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble_Source.d.tar.gz?r=")
+sha256sums=('9764eba0471227fdf48121879ec6cb62073f7460f8249d776762b6394713abe3')
 
 
 build()
