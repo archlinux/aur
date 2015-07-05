@@ -1,0 +1,21 @@
+pkgbase = fwknop
+	pkgdesc = FireWall KNock OPerator: Single Packet Authorization and Port Knocking
+	pkgver = 2.6.6
+	pkgrel = 1
+	url = https://www.cipherdyne.org/fwknop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gpgme
+	depends = iptables
+	depends = libpcap
+	options = !libtool
+	backup = etc/fwknop/access.conf
+	backup = etc/fwknop/fwknopd.conf
+	source = https://www.cipherdyne.org/fwknop/download/fwknop-2.6.6.tar.bz2
+	source = fwknopd.service
+	sha256sums = c35dfa35e4b8b534b2164482b51de916a0696a4ff04f002346a55f3f33c7211a
+	sha256sums = 68bd1f59be36be5666d563f7ec561a8213c7de14ff92b77d6e38de9062331969
+
+pkgname = fwknop
+
