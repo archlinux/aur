@@ -1,7 +1,7 @@
 # Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
 
 pkgname=opsu
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
@@ -21,45 +21,45 @@ sha512sums=('SKIP'
 
 pkgver()
 {
-  cd ${srcdir}/${pkgname}
-  git describe --tags | sed 's/-.*//'
+	cd ${srcdir}/${pkgname}
+	git describe --tags | sed 's/-.*//'
 }
 
 prepare()
 {
-  # generate .desktop-file
-  gendesk -n -f --pkgname ${pkgname} --pkgdesc "$pkgdesc" --name "opsu!" --exec "${pkgname}" --categories "Game"
+	# generate .desktop-file
+	gendesk -n -f --pkgname ${pkgname} --pkgdesc "$pkgdesc" --name "opsu!" --exec "${pkgname}" --categories "Game"
 
-  # update .CHANGELOG
-  # git -C ${srcdir}/${pkgname} log --graph -10 0.1.0..${pkgver} > ${startdir}/.CHANGELOG
+	# update .CHANGELOG
+	# git -C ${srcdir}/${pkgname} log --graph -10 0.1.0..${pkgver} > ${startdir}/.CHANGELOG
 
-  # check for openjdk
-  if [[ ! $(archlinux-java get | sed -r 's/.*(.{7})/\1/') == "openjdk" ]]; then
-    msg "OpenJDK not found, using OracleJDK"
+	# check for openjdk
+	if [[ ! $(archlinux-java get | sed -r 's/.*(.{7})/\1/') == "openjdk" ]]; then
+		msg "OpenJDK not found, using OracleJDK"
 
-    # cut patch
-    sed -e '4q' ${srcdir}/pom.patch > ${srcdir}/pom2.patch
+		# cut patch
+		sed -e '4q' ${srcdir}/pom.patch > ${srcdir}/pom2.patch
 
-    # patch pom.xml
-    patch ${srcdir}/${pkgname}/pom.xml ${srcdir}/pom2.patch
-  else
-    msg "OpenJDK found, using systempath"
+		# patch pom.xml
+		patch ${srcdir}/${pkgname}/pom.xml ${srcdir}/pom2.patch
+	else
+		msg "OpenJDK found, using systempath"
 
-    # patch pom.xml
-    patch ${srcdir}/${pkgname}/pom.xml ${srcdir}/pom.patch
-  fi
+		# patch pom.xml
+		patch ${srcdir}/${pkgname}/pom.xml ${srcdir}/pom.patch
+	fi
 }
 
 build()
 {
-  cd ${srcdir}/${pkgname}
-  mvn install -Djar
+	cd ${srcdir}/${pkgname}
+	mvn install -Djar
 }
 
 package()
 {
-  install -Dm644 ${srcdir}/${pkgname}/target/${pkgname}-${pkgver}-runnable.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
-  install -Dm644 ${srcdir}/${pkgname}/res/logo.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-  install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -Dm755 ${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+	install -Dm644 ${srcdir}/${pkgname}/target/${pkgname}-${pkgver}-runnable.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
+	install -Dm644 ${srcdir}/${pkgname}/res/logo.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+	install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+	install -Dm755 ${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 }
