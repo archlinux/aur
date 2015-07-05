@@ -1,13 +1,13 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=bokken-hg
 pkgver=1.8.4.a6e0bf349180
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for radare2 and pyew"
 url="http://inguma.eu/projects/bokken"
 arch=('any')
 license=('GPL2')
-depends=('pygtk' 'pygtksourceview2' 'python2-pillow' 'graphviz' 'r2-bindings')
+depends=('pygtk' 'pygtksourceview2' 'python2-pillow' 'graphviz' 'radare2-bindings')
 makedepends=('mercurial')
 provides=('bokken')
 conflicts=("bokken")
