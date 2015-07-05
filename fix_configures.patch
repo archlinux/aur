@@ -1,0 +1,144 @@
+diff -Naur a/backend/configure.in b/backend/configure.in
+--- a/backend/configure.in  2010-02-23 04:57:49.000000000 +0100
++++ b/backend/configure.in  2013-01-12 19:23:48.586029365 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(src/cnij_backend_common.c)
+ AM_INIT_AUTOMAKE(backend, 3.80-1)
+
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+diff -Naur a/backendnet/configure.in b/backendnet/configure.in
+--- a/backendnet/configure.in  2010-03-10 03:16:28.000000000 +0100
++++ b/backendnet/configure.in  2013-01-12 19:24:07.482056898 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(backend/cnijnetlm.c)
+ AM_INIT_AUTOMAKE(backendnet, 3.80-1)
+
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+diff -Naur a/cngpij/configure.in b/cngpij/configure.in
+--- a/cngpij/configure.in  2010-02-23 04:57:49.000000000 +0100
++++ b/cngpij/configure.in  2013-01-12 19:20:06.640325648 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(cngpij/bjcups.c)
+ AM_INIT_AUTOMAKE(cngpij, 3.80-1)
+
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+diff -Naur a/cngpijmon/cnijnpr/config.h.in b/cngpijmon/cnijnpr/config.h.in
+--- a/cngpijmon/cnijnpr/config.h.in  1970-01-01 01:00:00.000000000 +0100
++++ b/cngpijmon/cnijnpr/config.h.in  2013-01-12 19:40:34.119812703 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur a/cngpijmon/cnijnpr/configure.in b/cngpijmon/cnijnpr/configure.in
+--- a/cngpijmon/cnijnpr/configure.in  2010-03-11 02:33:21.000000000 +0100
++++ b/cngpijmon/cnijnpr/configure.in  2013-01-12 19:40:29.216635732 +0100
+@@ -1,8 +1,7 @@
+ AC_INIT(configure.in)
+ AM_INIT_AUTOMAKE(cnijnpr, 3.80-1)
+
+-AM_CONFIG_HEADER(config.h)
+-
++AC_CONFIG_HEADERS(config.h)
+
+ AC_ARG_ENABLE(libpath)
+ if test "${enable_libpath}" = "" ; then
+diff -Naur a/cngpijmon/configure.in b/cngpijmon/configure.in
+--- a/cngpijmon/configure.in  2010-03-11 02:33:21.000000000 +0100
++++ b/cngpijmon/configure.in  2013-01-12 19:09:22.964507680 +0100
+@@ -18,11 +18,10 @@
+
+
+ AM_INIT_AUTOMAKE(cngpijmon${program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+
+ AM_PATH_GTK_2_0(2.0.0, ,
+diff -Naur a/cngpijmon/src/config.h.in b/cngpijmon/src/config.h.in
+--- a/cngpijmon/src/config.h.in  1970-01-01 01:00:00.000000000 +0100
++++ b/cngpijmon/src/config.h.in  2013-01-12 19:09:33.604073946 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur a/cnijfilter/configure.in b/cnijfilter/configure.in
+--- a/cnijfilter/configure.in  2010-03-09 11:51:24.000000000 +0100
++++ b/cnijfilter/configure.in  2013-01-12 18:43:57.922171960 +0100
+@@ -25,7 +25,7 @@
+
+
+ AM_INIT_AUTOMAKE(cif${program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+
+ dnl Checks for programs.
+ AC_ISC_POSIX
+@@ -47,7 +47,6 @@
+ AC_SUBST(ARC)
+
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+
+ dnl Checks for libraries.
+
+diff -Naur a/lgmon/configure.in b/lgmon/configure.in
+--- a/lgmon/configure.in  2010-03-11 02:18:24.000000000 +0100
++++ b/lgmon/configure.in  2013-01-12 19:00:44.964847295 +0100
+@@ -9,7 +9,7 @@
+ fi
+
+ AM_INIT_AUTOMAKE(lgmon{program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ dnl AM_MAINTAINER_MODE
+
+ AC_DEFINE_UNQUOTED(PACKAGE_PRINTER_MODEL, "${program_suffix}")
+@@ -41,7 +41,6 @@
+ AC_SUBST(ARC)
+
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AC_PROG_RANLIB
+
+diff -Naur a/lgmon/src/config.h.in b/lgmon/src/config.h.in
+--- a/lgmon/src/config.h.in  1970-01-01 01:00:00.000000000 +0100
++++ b/lgmon/src/config.h.in  2013-01-12 19:02:58.769639063 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur a/libs/configure.in b/libs/configure.in
+--- a/libs/configure.in  2010-02-23 04:57:49.000000000 +0100
++++ b/libs/configure.in  2013-01-12 19:14:08.053329533 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(paramlist/paramlist.h)
+ AM_INIT_AUTOMAKE(buftool, 1.0.0)
+
+-AM_CONFIG_HEADER(config.h)
+-
+ # Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_CC
+diff -Naur a/pstocanonij/configure.in b/pstocanonij/configure.in
+--- a/pstocanonij/configure.in  2010-02-23 04:57:49.000000000 +0100
++++ b/pstocanonij/configure.in  2013-01-12 19:23:21.666941082 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(filter/pstocanonij.c)
+ AM_INIT_AUTOMAKE(pstocanonij, 1.0.0)
+
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
