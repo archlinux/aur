@@ -1,0 +1,20 @@
+pkgbase = smoothscan-git
+	pkgdesc = A tool to convert scanned text into a vectorized output form.
+	pkgver = 4.0fe04ed
+	pkgrel = 2
+	url = https://natecraun.net/projects/smoothscan/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = leptonica
+	depends = libharu
+	depends = potrace
+	depends = fontforge
+	depends = python2
+	provides = smoothscan
+	source = git://github.com/ncraun/smoothscan.git
+	md5sums = SKIP
+
+pkgname = smoothscan-git
+
