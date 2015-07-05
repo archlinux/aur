@@ -1,13 +1,14 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>s
+# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 
 _pkgname=vim-monokai
 pkgname=${_pkgname}-git
 pkgver=r18.148c0d5
-pkgrel=1
+pkgrel=2
 pkgdesc='A port of the Monokai color scheme for Vim. Color scheme by sickill.'
 arch=('any')
 url='https://github.com/sickill/vim-monokai'
 license=('unknown')
+groups=('vim-plugins')
 
 optdepends=(
 	'vim-python3: for vim with Python 3 interpreter support'
