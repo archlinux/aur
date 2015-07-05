@@ -1,0 +1,21 @@
+pkgbase = arsch-keyring
+	pkgdesc = The arsch repository keyring.
+	pkgver = 20120607
+	pkgrel = 1
+	url = http://arsch.orgizm.net
+	install = arsch-keyring.install
+	arch = any
+	license = GPL
+	conflicts = arsch
+	replaces = arsch
+	source = arsch-keyring.install
+	source = arsch.gpg
+	source = arsch-trusted
+	source = arsch-revoked
+	md5sums = 2706dfb779a4ff4d35ec055a71ab21ea
+	md5sums = caaaa07f5322ed807465c707c47fe9d7
+	md5sums = f06139bb5ab592082192bfd129caa019
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
+
+pkgname = arsch-keyring
+
