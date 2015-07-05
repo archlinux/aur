@@ -1,0 +1,15 @@
+pkgbase = kindness-stable-git
+	pkgdesc = Some cool stuff for awesome wm
+	pkgver = 0.1.31.g149960c
+	pkgrel = 1
+	url = https://github.com/kindlycat/kindness.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = awesome
+	conflicts = kindness-git
+	source = kindness-stable-git::git+http://github.com/kindlycat/kindness.git#branch=stable
+	md5sums = SKIP
+
+pkgname = kindness-stable-git
+
