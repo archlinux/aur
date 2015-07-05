@@ -13,7 +13,7 @@ conflicts=('crawl' 'stone-soup' 'stone-soup-tile' 'stone-soup-git')
 license=('custom')
 install=stone-soup-ncurses.install
 source=("https://github.com/crawl/crawl/archive/$pkgver.tar.gz")
-md5sums=('262d973b56cc0d4ad2351dd370be2ef1')
+sha256sums=('dc169a03a261de4faa8d5f565fd635651b03ded5e16ad39d3cad981fc21bcf0f')
 
 
 package() {
