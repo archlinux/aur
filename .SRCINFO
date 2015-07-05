@@ -1,0 +1,22 @@
+pkgbase = dvbcut
+	pkgdesc = Qt3 application for cutting parts out of DVB streams
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = http://dvbcut.sourceforge.net/
+	install = dvbcut.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = qt3
+	depends = libao
+	depends = libmad
+	depends = a52dec
+	optdepends = mplayer: for video playback inside of DVBCUT
+	source = http://www.mr511.de/dvbcut/dvbcut-0.6.1.tar.gz
+	source = dvbcut-0.6.1-unistd.patch
+	sha256sums = 053941abfd4cf8cfe0c86c78a1c22c9a6bf218cd9ae5158f8ec9181d7996ab2c
+	sha256sums = 8a7640e985efdc05920f59ce84c4639efbe8fafede4ab339178a8ea1f2d6bf62
+
+pkgname = dvbcut
+
