@@ -1,0 +1,14 @@
+pkgbase = fxload-libusb
+	pkgdesc = fxload from the libusb examples
+	pkgver = 1.0.19
+	pkgrel = 1
+	url = http://libusb.info/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libusb
+	source = http://downloads.sourceforge.net/libusb/libusb-1.0.19.tar.bz2
+	md5sums = f9e2bb5879968467e5ca756cb4e1fa7e
+
+pkgname = fxload-libusb
+
