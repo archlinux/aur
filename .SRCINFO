@@ -1,0 +1,12 @@
+pkgbase = sowing
+	pkgdesc = Tools for documenting and improving portability
+	pkgver = 1.1.17
+	pkgrel = 2
+	url = http://www.cs.uiuc.edu/~wgropp/projects/software/sowing
+	arch = any
+	license = GPL
+	source = http://ftp.mcs.anl.gov/pub/sowing/sowing.tar.gz
+	sha256sums = fb6d76c02c9691c8abe652498283ef5d260cb2ec4d0ec7afaa7623aaa7de8bb8
+
+pkgname = sowing
+
