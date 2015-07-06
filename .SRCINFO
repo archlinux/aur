@@ -1,0 +1,16 @@
+pkgbase = vim-nginx
+	pkgdesc = Nginx syntax highlight for vim (now included in extra/nginx)
+	pkgver = 1.6.0
+	pkgrel = 2
+	epoch = 2
+	url = http://nginx.org
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	conflicts = nginx
+	source = http://nginx.org/download/nginx-1.6.0.tar.gz
+	sha256sums = 943ad757a1c3e8b3df2d5c4ddacc508861922e36fa10ea6f8e3a348fc9abfc1a
+
+pkgname = vim-nginx
+
