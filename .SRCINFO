@@ -1,14 +1,18 @@
-pkgbase = creddump-svn
+pkgbase = creddump-git
 	pkgdesc = Extracts credentials from Windows registry hives.
-	pkgver = 2
+	pkgver = r10.3df4a14
 	pkgrel = 1
-	url = https://code.google.com/p/creddump
+	url = https://github.com/Neohapsis/creddump7
 	arch = any
-	license = BSD
-	makedepends = svn
+	license = GPL3
+	makedepends = git
 	depends = python2
-	source = svn+http://creddump.googlecode.com/svn/trunk
+	depends = python2-crypto
+	provides = creddump=0.3
+	conflicts = creddump
+	replaces = creddump
+	source = creddump::git+https://github.com/Neohapsis/creddump7.git
 	md5sums = SKIP
 
-pkgname = creddump-svn
+pkgname = creddump-git
 
