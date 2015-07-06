@@ -1,0 +1,17 @@
+pkgbase = atomicparsley-largefile-hg
+	pkgdesc = Program for iTunes-style metadata manipulation with >4GB MPEG4 files
+	pkgver = r110.3c31f225a823
+	pkgrel = 1
+	url = https://bitbucket.org/wez/atomicparsley/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = zlib
+	provides = atomicparsley
+	conflicts = atomicparsley
+	source = hg+https://bitbucket.org/wez/atomicparsley
+	sha256sums = SKIP
+
+pkgname = atomicparsley-largefile-hg
+
