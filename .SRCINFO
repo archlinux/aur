@@ -1,0 +1,16 @@
+pkgbase = dino
+	pkgdesc = A MIDI sequencer for GNU/Linux.
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://dino.nongnu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libglademm
+	depends = libxml++
+	depends = lash
+	source = http://download.savannah.nongnu.org/releases-noredirect/dino/dino-0.2.8.tar.gz
+	md5sums = 299d72ec0dbf66eb207bedf0bc19f9ee
+
+pkgname = dino
+
