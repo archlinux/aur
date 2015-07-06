@@ -1,0 +1,17 @@
+pkgbase = gtk-theme-egtk
+	pkgdesc = The official elementary GTK theme designed to be smooth, attractive, fast, and usable. Lastest version from Launchpad.
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://launchpad.net/egtk
+	arch = any
+	license = GPLv2
+	depends = gtk-engine-murrine
+	depends = gtk-engine-unico
+	provides = gtk-theme-elementary-bzr
+	conflicts = elementary-gtk-theme
+	conflicts = elementary-gtk-theme-bzr
+	source = https://launchpad.net/egtk/4.x/4.0.3/+download/elementary.tar.gz
+	md5sums = ddd7a10fa56acfc85b53350f28ed521c
+
+pkgname = gtk-theme-egtk
+
