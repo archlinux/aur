@@ -28,6 +28,7 @@ build() {
 
 package() {
   cd $srcdir/$pkgname$pkgver
+  mkdir -p $pkgdir/usr/{bin,lib/jove,share/{jove,man/man1}}
   make JOVEHOME=$pkgdir/usr MANDIR=$pkgdir/usr/share/man/man1 install
   install -D -m644 $srcdir/license $pkgdir/usr/share/licenses/jove/license
 }
