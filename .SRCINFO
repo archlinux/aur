@@ -1,0 +1,17 @@
+pkgbase = yudit
+	pkgdesc = A free Unicode plain-text editor for Unix-like systems.
+	pkgver = 2.9.6
+	pkgrel = 1
+	url = http://www.yudit.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	optdepends = hunspell: spell checking
+	source = http://yudit.org/download/yudit-2.9.6.tar.gz
+	md5sums = be9ca4253204579c26ac1860cba1220f
+	sha1sums = 904f41815a657efe58cb80ccdbc855e4fd926c13
+	sha256sums = ded0b47742fce92aedb6403e8e758162abc73395f9c5a3268ceb2093fbfdf906
+
+pkgname = yudit
+
