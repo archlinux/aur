@@ -1,0 +1,4 @@
+85c85
+<             glShaderSource = (void (*)(GLuint, GLsizei, const GLchar**, const GLint*))glShaderSourceARB;
+---
+>             glShaderSource = (void (*)(GLuint, GLsizei, const GLchar* const*, const GLint*))glShaderSourceARB;

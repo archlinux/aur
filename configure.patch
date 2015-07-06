@@ -1,0 +1,54 @@
+82,92c82,83
+<     select yn in "Yes" "No"; do
+<         case $yn in
+<             Yes)
+<                 mkdir -p "$SUGGEST"
+<                 DEST="$SUGGEST"
+<                 break
+<                 ;;
+<             No) break
+<                 ;;
+<         esac
+<     done
+---
+>     mkdir -p "$SUGGEST"
+>     DEST="$SUGGEST"
+97,108c88
+<     select yn in "Yes" "No"; do
+<         case $yn in
+<             Yes)
+<                 rm -f CMakeCache.txt
+<                 break
+<                 ;;
+<             No)
+<                 echo "Aborted configuration."
+<                 exit 1
+<                 ;;
+<         esac
+<         done
+---
+>     rm -f CMakeCache.txt
+113,128c93,98
+<     select yn in "Yes" "No"; do
+<         case $yn in
+<             Yes)
+<                 cd "$DEP"
+<                 cmake -D "CMAKE_BUILD_TYPE:STRING=$TYPE" \
+<                     -C "CMakeConfig/configurations/$PLAT.txt" \
+<                     -C "CMakeConfig/configurations/common.txt" \
+< 		    -G "$GEN" . || exit 1
+<                 make || exit 1
+<                 break
+<                 ;;
+<             No)
+<                 exit 1
+<                 ;;
+<         esac
+<         done
+---
+>     cd "$DEP"
+>     cmake -D "CMAKE_BUILD_TYPE:STRING=$TYPE" \
+>       -C "CMakeConfig/configurations/$PLAT.txt" \
+>       -C "CMakeConfig/configurations/common.txt" \
+>       -G "$GEN" . || exit 1
+>     make || exit 1
