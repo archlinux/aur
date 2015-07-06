@@ -1,0 +1,22 @@
+pkgbase = lib32-libx11-nokeyboardgrab
+	pkgdesc = Core X11 protocol client library
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://www.x.org/wiki/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = inputproto
+	makedepends = xextproto
+	makedepends = xtrans
+	depends = lib32-libxcb
+	depends = libx11
+	provides = lib32-libx11=1.6.3
+	conflicts = lib32-libx11
+	source = http://www.x.org/releases/individual/lib/libX11-1.6.3.tar.bz2
+	source = http://www.x.org/releases/individual/lib/libX11-1.6.3.tar.bz2.sig
+	sha256sums = cf31a7c39f2f52e8ebd0db95640384e63451f9b014eed2bb7f5de03e8adc8111
+	sha256sums = SKIP
+
+pkgname = lib32-libx11-nokeyboardgrab
+
