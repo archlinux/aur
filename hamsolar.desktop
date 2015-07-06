@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Hamsolar
+Name[en_US]=Hamsolar
+Comment=Display current solar indices
+Comment[en_US]=Dispaly current solar indices
+Encoding=UTF-8
+Exec=hamsolar
+Icon=hamsolar.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

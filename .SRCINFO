@@ -1,0 +1,22 @@
+pkgbase = hamsolar
+	pkgdesc = Small desktop display of the current solar indices
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://hamsoftware.org/old_index.html
+	install = hamsolar.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qtwebkit
+	source = http://www.hamsoftware.org/hamsolar-1.0.tgz
+	source = hamsolar.desktop
+	source = hamsolar.png
+	md5sums = f1aa47eec8c50166adc9de967f0f54bf
+	md5sums = 101c1b24bd092666027bd9b22870c9e3
+	md5sums = 71ae22b4607e5394cb1476d4c92ab46c
+	sha256sums = 44e0797440a09899c62985833d9ed4e0968d6a4b7112ed22ce696ffc2fb0d802
+	sha256sums = daf614290310b264d31956db586a00a90cf516c1377fb0baa3ac838a37dbe786
+	sha256sums = 4e890fabc1995f7d86038553fa3667967101d86d2b884b66b6695c795b849ec2
+
+pkgname = hamsolar
+
