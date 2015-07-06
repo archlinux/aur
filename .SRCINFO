@@ -1,0 +1,16 @@
+pkgbase = ytalk
+	pkgdesc = A multi-user chat program that works exactly like UNIX's talk.
+	pkgver = 3.3.0
+	pkgrel = 2
+	url = http://packages.debian.org/sid/ytalk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://ftp.debian.org/debian/pool/main/y/ytalk/ytalk_3.3.0.orig.tar.gz
+	md5sums = c043a8d854638b293a3b645d8600aa38
+	sha1sums = 7a988cc6f7ef1ca7499aa54e73ed6db4e7416bc6
+	sha256sums = 6ecb34f71f723a7b96f90e411c78dff2735c08dc4228c765f7fdbf8ca48572b4
+
+pkgname = ytalk
+
