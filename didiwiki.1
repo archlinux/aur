@@ -1,0 +1,39 @@
+.\" didiwiki.1
+.\" Copyright 2005 Hanna M. Wallach
+.TH DIDIWIKI 1 "January 15, 2005" ""
+.SH NAME
+didiwiki \- simple wiki implementation with built-in webserver
+.SH SYNOPSIS
+.B didiwiki
+.RI [ options ]
+.SH OPTIONS
+.TP
+\fB\-h\fR \fIdirectory\fR, \fB\--home\fR=\fIdirectory\fR
+By default
+.B didiwiki
+stores its pages in \fI~/.didiwiki\fR. You can override this by
+specifying an alternative directory.
+.TP
+\fB\-p\fR \fIport\fR, \fB\--port\fR=\fIport\fR
+By default
+.B didiwiki
+will listen on port \fI8000\fR. You can override this by specifying an
+alternative port.
+.SH DESCRIPTION
+.B didiwiki
+is aimed at those who need a quick and lightweight wiki for personal
+use, such as notes, "to do" lists, etc. It is written in C, and has
+very low system requirements (binary size of ~25k stripped). This
+makes it particularly useful for handhelds.
+.B didiwiki
+does not require installation of a separate webserver, scripting
+language, or database.
+
+The appearance of the wiki pages may be altered by placing a
+styles.css in \fI~/.didiwiki\fR or in the directory specified using
+the \fB--home\fR option.
+
+.SH AUTHOR
+.B didiwiki
+was written by Matthew Allum <mallum@o-hand.com>.
+

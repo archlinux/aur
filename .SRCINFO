@@ -1,0 +1,15 @@
+pkgbase = didiwiki
+	pkgdesc = Simple wiki implementation with built-in webserver
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.c2.com/cgi/wiki?DidiWiki
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.us.debian.org/debian/pool/main/d/didiwiki/didiwiki_0.5.orig.tar.gz
+	source = didiwiki.1
+	md5sums = 94d5fb06d091804b31658481f23b120f
+	md5sums = cd9a8ee1ae5473d334e1208a57afcb6b
+
+pkgname = didiwiki
+
