@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=PyQso
+Name[en_US]=PyQso
+Comment=Sign QSO data logger
+Comment[en_US]=QSO data logger
+Encoding=UTF-8
+Exec=/usr/bin/pyqso
+Icon=pyqso
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
