@@ -1,0 +1,5 @@
+libvos/
+pkg/
+rescached/
+src/
+*.xz
