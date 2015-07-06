@@ -1,0 +1,6 @@
+post_install(){
+  echo "==> To use tdq, read /usr/share/doc/tdq/README."
+  echo "==> Edit tdq.c in tdq's src directory and run"
+  echo "    'makepkg -efi' if you want to change settings."
+}
+

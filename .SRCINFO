@@ -1,0 +1,16 @@
+pkgbase = tdq
+	pkgdesc = A fast dictionary lookup program.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://litcave.rudi.ir
+	install = tdq.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://litcave.rudi.ir/tdq.tar.gz
+	md5sums = 66476065dcb062b84edecfef18ad5df5
+	sha1sums = 13561100d912900cd6cd3b320c5f4c46b3a723a9
+	sha256sums = a74c2e6cb48aafaeabac6cd76def92b464c90ce37f5523f0398506f102ebe44d
+
+pkgname = tdq
+
