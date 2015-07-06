@@ -1,0 +1,18 @@
+pkgbase = wepcrackgui
+	pkgdesc = Wepcrack is a mono gui for aircrack, aireplay and other related wep cracking tools
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/wepcrackgui
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mono
+	depends = aircrack-ng
+	depends = gtk-sharp-2
+	depends = mdk3
+	depends = gksu
+	source = http://downloads.sourceforge.net/project/$pkgname/$pkgrealver/WepCrack0.9.2.tar.gz
+	md5sums = 3cb67697a2fbdf268e4bc098691aa0ff
+
+pkgname = wepcrackgui
+
