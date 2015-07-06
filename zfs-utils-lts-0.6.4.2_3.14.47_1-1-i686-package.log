@@ -1,0 +1,654 @@
+Making install in include
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include'
+Making install in linux
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/linux'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/linux'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/linux'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/linux'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/linux'
+Making install in sys
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys'
+Making install in fm
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm'
+Making install in fs
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm/fs'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm/fs'
+make[5]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys/fm/fs'
+ /usr/bin/install -c -m 644 ../../../../include/sys/fm/fs/zfs.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys/fm/fs'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm/fs'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm/fs'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm'
+make[5]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys/fm'
+ /usr/bin/install -c -m 644 ../../../include/sys/fm/protocol.h ../../../include/sys/fm/util.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys/fm'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fm'
+Making install in fs
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fs'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fs'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys/fs'
+ /usr/bin/install -c -m 644 ../../../include/sys/fs/zfs.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys/fs'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fs'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys/fs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys'
+ /usr/bin/install -c -m 644 ../../include/sys/arc.h ../../include/sys/arc_impl.h ../../include/sys/avl.h ../../include/sys/avl_impl.h ../../include/sys/blkptr.h ../../include/sys/bplist.h ../../include/sys/bpobj.h ../../include/sys/bptree.h ../../include/sys/dbuf.h ../../include/sys/ddt.h ../../include/sys/dmu.h ../../include/sys/dmu_impl.h ../../include/sys/dmu_objset.h ../../include/sys/dmu_send.h ../../include/sys/dmu_traverse.h ../../include/sys/dmu_tx.h ../../include/sys/dmu_zfetch.h ../../include/sys/dnode.h ../../include/sys/dsl_bookmark.h ../../include/sys/dsl_dataset.h ../../include/sys/dsl_deadlist.h ../../include/sys/dsl_deleg.h ../../include/sys/dsl_destroy.h ../../include/sys/dsl_dir.h ../../include/sys/dsl_pool.h ../../include/sys/dsl_prop.h ../../include/sys/dsl_scan.h ../../include/sys/dsl_synctask.h ../../include/sys/dsl_userhold.h ../../include/sys/efi_partition.h ../../include/sys/metaslab.h ../../include/sys/metaslab_impl.h ../../include/sys/nvpair.h ../../include/sys/nvpair_impl.h ../../include/sys/range_tree.h ../../include/sys/refcount.h ../../include/sys/rrwlock.h ../../include/sys/sa.h ../../include/sys/sa_impl.h ../../include/sys/sdt.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys'
+ /usr/bin/install -c -m 644 ../../include/sys/spa_boot.h ../../include/sys/space_map.h ../../include/sys/space_reftree.h ../../include/sys/spa.h ../../include/sys/spa_impl.h ../../include/sys/trace.h ../../include/sys/trace_acl.h ../../include/sys/trace_arc.h ../../include/sys/trace_dbgmsg.h ../../include/sys/trace_dbuf.h ../../include/sys/trace_dmu.h ../../include/sys/trace_dnode.h ../../include/sys/trace_txg.h ../../include/sys/trace_zil.h ../../include/sys/trace_zrlock.h ../../include/sys/txg.h ../../include/sys/txg_impl.h ../../include/sys/u8_textprep_data.h ../../include/sys/u8_textprep.h ../../include/sys/uberblock.h ../../include/sys/uberblock_impl.h ../../include/sys/uio_impl.h ../../include/sys/unique.h ../../include/sys/uuid.h ../../include/sys/vdev_disk.h ../../include/sys/vdev_file.h ../../include/sys/vdev.h ../../include/sys/vdev_impl.h ../../include/sys/xvattr.h ../../include/sys/zap.h ../../include/sys/zap_impl.h ../../include/sys/zap_leaf.h ../../include/sys/zfeature.h ../../include/sys/zfs_acl.h ../../include/sys/zfs_context.h ../../include/sys/zfs_ctldir.h ../../include/sys/zfs_debug.h ../../include/sys/zfs_delay.h ../../include/sys/zfs_dir.h ../../include/sys/zfs_fuid.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys'
+ /usr/bin/install -c -m 644 ../../include/sys/zfs_rlock.h ../../include/sys/zfs_sa.h ../../include/sys/zfs_stat.h ../../include/sys/zfs_vfsops.h ../../include/sys/zfs_vnops.h ../../include/sys/zfs_znode.h ../../include/sys/zil.h ../../include/sys/zil_impl.h ../../include/sys/zio_checksum.h ../../include/sys/zio_compress.h ../../include/sys/zio.h ../../include/sys/zio_impl.h ../../include/sys/zrlock.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs/sys'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include/sys'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs'
+ /usr/bin/install -c -m 644 ../include/zfeature_common.h ../include/zfs_comutil.h ../include/zfs_deleg.h ../include/zfs_fletcher.h ../include/zfs_namecheck.h ../include/zfs_prop.h ../include/zpios-ctl.h ../include/libnvpair.h ../include/libuutil_common.h ../include/libuutil.h ../include/libuutil_impl.h ../include/libzfs.h ../include/libzfs_core.h ../include/libzfs_impl.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libzfs'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/include'
+Making install in rpm
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm'
+Making install in generic
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/generic'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/generic'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/generic'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/generic'
+Making install in redhat
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/redhat'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/redhat'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/redhat'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm/redhat'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/rpm'
+Making install in dracut
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut'
+Making install in 90zfs
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut/90zfs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut/90zfs'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/dracut/modules.d/90zfs'
+ /usr/bin/install -c ../../dracut/90zfs/export-zfs.sh ../../dracut/90zfs/module-setup.sh ../../dracut/90zfs/mount-zfs.sh ../../dracut/90zfs/parse-zfs.sh '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/dracut/modules.d/90zfs'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut/90zfs'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut/90zfs'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/dracut'
+Making install in udev
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev'
+Making install in rules.d
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev/rules.d'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev/rules.d'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/lib/udev/rules.d'
+ /usr/bin/install -c -m 644 ../../udev/rules.d/69-vdev.rules ../../udev/rules.d/60-zvol.rules ../../udev/rules.d/90-zfs.rules '/build/zfs-utils-lts/pkg/zfs-utils-lts/lib/udev/rules.d'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev/rules.d'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev/rules.d'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/udev'
+Making install in etc
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc'
+Making install in zfs
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/zfs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/zfs'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs'
+ /usr/bin/install -c -m 644 vdev_id.conf.alias.example vdev_id.conf.sas_direct.example vdev_id.conf.sas_switch.example vdev_id.conf.multipath.example '/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/zfs'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/zfs'
+Making install in systemd
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd'
+Making install in system
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd/system'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd/system'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/systemd/system-preset'
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/systemd/system'
+ /usr/bin/install -c -m 644 ../../../etc/systemd/system/zed.service ../../../etc/systemd/system/zfs-import-cache.service ../../../etc/systemd/system/zfs-import-scan.service ../../../etc/systemd/system/zfs-mount.service ../../../etc/systemd/system/zfs-share.service ../../../etc/systemd/system/zfs.target '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/systemd/system'
+ /usr/bin/install -c -m 644 ../../../etc/systemd/system/50-zfs.preset '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/systemd/system-preset'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd/system'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd/system'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/systemd'
+Making install in init.d
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/init.d'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/init.d'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/init.d'
+ /usr/bin/install -c zfs '/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/init.d'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/init.d'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/init.d'
+Making install in modules-load.d
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/modules-load.d'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/modules-load.d'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/modules-load.d'
+ /usr/bin/install -c -m 644 ../../etc/modules-load.d/zfs.conf '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/modules-load.d'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/modules-load.d'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc/modules-load.d'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/etc'
+Making install in man
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man'
+Making install in man1
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man1'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man1'
+make[3]: Nothing to be done for 'install-exec-am'.
+/usr/bin/install -c -d -m 0755 "/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man1"
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man1'
+ /usr/bin/install -c -m 644 zhack.1 zpios.1 ztest.1 '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man1'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man1'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man1'
+Making install in man5
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man5'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man5'
+make[3]: Nothing to be done for 'install-exec-am'.
+/usr/bin/install -c -d -m 0755 "/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man5"
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man5'
+ /usr/bin/install -c -m 644 vdev_id.conf.5 zpool-features.5 zfs-module-parameters.5 zfs-events.5 '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man5'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man5'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man5'
+Making install in man8
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man8'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man8'
+make[3]: Nothing to be done for 'install-exec-am'.
+/usr/bin/install -c -d -m 0755 "/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man8"
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man8'
+ /usr/bin/install -c -m 644 fsck.zfs.8 mount.zfs.8 vdev_id.8 zdb.8 zfs.8 zinject.8 zpool.8 zstreamdump.8 zed.8 '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/man/man8'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man8'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man/man8'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/man'
+Making install in scripts
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts'
+Making install in zpool-config
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpool-config'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpool-config'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs/zpool-config'
+ /usr/bin/install -c ../../scripts/zpool-config/dm0-raid0.sh ../../scripts/zpool-config/file-raid0.sh ../../scripts/zpool-config/file-raid10.sh ../../scripts/zpool-config/file-raidz2.sh ../../scripts/zpool-config/file-raidz.sh ../../scripts/zpool-config/hda-raid0.sh ../../scripts/zpool-config/lo-raid0.sh ../../scripts/zpool-config/lo-raid10.sh ../../scripts/zpool-config/lo-raidz2.sh ../../scripts/zpool-config/lo-raidz.sh ../../scripts/zpool-config/lo-faulty-raid0.sh ../../scripts/zpool-config/lo-faulty-raid10.sh ../../scripts/zpool-config/lo-faulty-raidz.sh ../../scripts/zpool-config/lo-faulty-raidz2.sh ../../scripts/zpool-config/lo-faulty-raidz3.sh ../../scripts/zpool-config/md0-raid10.sh ../../scripts/zpool-config/md0-raid5.sh ../../scripts/zpool-config/ram0-raid0.sh ../../scripts/zpool-config/scsi_debug-noraid.sh ../../scripts/zpool-config/scsi_debug-raid0.sh ../../scripts/zpool-config/scsi_debug-raid10.sh ../../scripts/zpool-config/scsi_debug-raidz.sh ../../scripts/zpool-config/scsi_debug-raidz2.sh ../../scripts/zpool-config/scsi_debug-raidz3.sh ../../scripts/zpool-config/sda-raid0.sh ../../scripts/zpool-config/zpool-raid0.sh ../../scripts/zpool-config/zpool-raid10.sh ../../scripts/zpool-config/zpool-raidz.sh '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs/zpool-config'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpool-config'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpool-config'
+Making install in zpios-test
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-test'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-test'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs/zpios-test'
+ /usr/bin/install -c ../../scripts/zpios-test/16th-8192rc-4rs-1cs-4off.sh ../../scripts/zpios-test/1th-16rc-4rs-1cs-4off.sh ../../scripts/zpios-test/1x256th-65536rc-4rs-1cs-4off.sh ../../scripts/zpios-test/256th-65536rc-4rs-1cs-4off.sh ../../scripts/zpios-test/4th-1024rc-4rs-1cs-4off.sh ../../scripts/zpios-test/large.sh ../../scripts/zpios-test/large-thread-survey.sh ../../scripts/zpios-test/medium.sh ../../scripts/zpios-test/small.sh ../../scripts/zpios-test/tiny.sh ../../scripts/zpios-test/lustre.sh '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs/zpios-test'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-test'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-test'
+Making install in zpios-profile
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-profile'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-profile'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs/zpios-profile'
+ /usr/bin/install -c ../../scripts/zpios-profile/zpios-profile-disk.sh ../../scripts/zpios-profile/zpios-profile-pids.sh ../../scripts/zpios-profile/zpios-profile-post.sh ../../scripts/zpios-profile/zpios-profile-pre.sh ../../scripts/zpios-profile/zpios-profile.sh '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs/zpios-profile'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-profile'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts/zpios-profile'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs'
+ /usr/bin/install -c ../scripts/common.sh ../scripts/zconfig.sh ../scripts/zfault.sh ../scripts/zimport.sh ../scripts/zfs.sh ../scripts/zpool-create.sh ../scripts/zpios.sh ../scripts/zpios-sanity.sh ../scripts/zpios-survey.sh ../scripts/smb.sh '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/zfs'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/scripts'
+Making install in lib
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib'
+Making install in libspl
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl'
+Making install in include
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include'
+Making install in ia32
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32'
+Making install in sys
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32/sys'
+make[6]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32/sys'
+make[6]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/ia32/sys'
+ /usr/bin/install -c -m 644 ../../../../../lib/libspl/include/ia32/sys/asm_linkage.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/ia32/sys'
+make[6]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32/sys'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32/sys'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32'
+make[6]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32'
+make[6]: Nothing to be done for 'install-exec-am'.
+make[6]: Nothing to be done for 'install-data-am'.
+make[6]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/ia32'
+Making install in rpc
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/rpc'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/rpc'
+make[5]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/rpc'
+ /usr/bin/install -c -m 644 ../../../../lib/libspl/include/rpc/types.h ../../../../lib/libspl/include/rpc/xdr.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/rpc'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/rpc'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/rpc'
+Making install in sys
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys'
+Making install in dktp
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/dktp'
+make[6]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/dktp'
+make[6]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys/dktp'
+ /usr/bin/install -c -m 644 ../../../../../lib/libspl/include/sys/dktp/fdisk.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys/dktp'
+make[6]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/dktp'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/dktp'
+Making install in sysevent
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/sysevent'
+make[6]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/sysevent'
+make[6]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys/sysevent'
+ /usr/bin/install -c -m 644 ../../../../../lib/libspl/include/sys/sysevent/eventdefs.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys/sysevent'
+make[6]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/sysevent'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys/sysevent'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys'
+make[6]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys'
+make[6]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys'
+ /usr/bin/install -c -m 644 ../../../../lib/libspl/include/sys/acl.h ../../../../lib/libspl/include/sys/acl_impl.h ../../../../lib/libspl/include/sys/bitmap.h ../../../../lib/libspl/include/sys/byteorder.h ../../../../lib/libspl/include/sys/callb.h ../../../../lib/libspl/include/sys/cmn_err.h ../../../../lib/libspl/include/sys/compress.h ../../../../lib/libspl/include/sys/cred.h ../../../../lib/libspl/include/sys/debug.h ../../../../lib/libspl/include/sys/dkio.h ../../../../lib/libspl/include/sys/dklabel.h ../../../../lib/libspl/include/sys/feature_tests.h ../../../../lib/libspl/include/sys/file.h ../../../../lib/libspl/include/sys/frame.h ../../../../lib/libspl/include/sys/int_limits.h ../../../../lib/libspl/include/sys/int_types.h ../../../../lib/libspl/include/sys/inttypes.h ../../../../lib/libspl/include/sys/isa_defs.h ../../../../lib/libspl/include/sys/kmem.h ../../../../lib/libspl/include/sys/kstat.h ../../../../lib/libspl/include/sys/list.h ../../../../lib/libspl/include/sys/list_impl.h ../../../../lib/libspl/include/sys/mhd.h ../../../../lib/libspl/include/sys/mkdev.h ../../../../lib/libspl/include/sys/mntent.h ../../../../lib/libspl/include/sys/mnttab.h ../../../../lib/libspl/include/sys/mount.h ../../../../lib/libspl/include/sys/note.h ../../../../lib/libspl/include/sys/param.h ../../../../lib/libspl/include/sys/priv.h ../../../../lib/libspl/include/sys/processor.h ../../../../lib/libspl/include/sys/stack.h ../../../../lib/libspl/include/sys/stat.h ../../../../lib/libspl/include/sys/stropts.h ../../../../lib/libspl/include/sys/sunddi.h ../../../../lib/libspl/include/sys/sysevent.h ../../../../lib/libspl/include/sys/sysmacros.h ../../../../lib/libspl/include/sys/systeminfo.h ../../../../lib/libspl/include/sys/systm.h ../../../../lib/libspl/include/sys/time.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys'
+ /usr/bin/install -c -m 644 ../../../../lib/libspl/include/sys/types32.h ../../../../lib/libspl/include/sys/types.h ../../../../lib/libspl/include/sys/tzfile.h ../../../../lib/libspl/include/sys/uio.h ../../../../lib/libspl/include/sys/va_list.h ../../../../lib/libspl/include/sys/varargs.h ../../../../lib/libspl/include/sys/vnode.h ../../../../lib/libspl/include/sys/vtoc.h ../../../../lib/libspl/include/sys/zone.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl/sys'
+make[6]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/sys'
+Making install in util
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/util'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/util'
+make[5]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl'
+ /usr/bin/install -c -m 644 ../../../../lib/libspl/include/util/sscanf.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/util'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include/util'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include'
+make[5]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include'
+make[5]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl'
+ /usr/bin/install -c -m 644 ../../../lib/libspl/include/assert.h ../../../lib/libspl/include/atomic.h ../../../lib/libspl/include/attr.h ../../../lib/libspl/include/devid.h ../../../lib/libspl/include/libdevinfo.h ../../../lib/libspl/include/libgen.h ../../../lib/libspl/include/libshare.h ../../../lib/libspl/include/limits.h ../../../lib/libspl/include/locale.h ../../../lib/libspl/include/note.h ../../../lib/libspl/include/priv.h ../../../lib/libspl/include/statcommon.h ../../../lib/libspl/include/stdio.h ../../../lib/libspl/include/stdlib.h ../../../lib/libspl/include/string.h ../../../lib/libspl/include/strings.h ../../../lib/libspl/include/stropts.h ../../../lib/libspl/include/synch.h ../../../lib/libspl/include/thread.h ../../../lib/libspl/include/tzfile.h ../../../lib/libspl/include/ucred.h ../../../lib/libspl/include/umem.h ../../../lib/libspl/include/unistd.h ../../../lib/libspl/include/zone.h '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/include/libspl'
+make[5]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include'
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/include'
+Making install in asm-i386
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/asm-i386'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/asm-i386'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/asm-i386'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl/asm-i386'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl'
+make[4]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libspl'
+Making install in libavl
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libavl'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libavl'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libavl'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libavl'
+Making install in libefi
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libefi'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libefi'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libefi'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libefi'
+Making install in libshare
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libshare'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libshare'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libshare'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libshare'
+Making install in libunicode
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libunicode'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libunicode'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libunicode'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libunicode'
+Making install in libuutil
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+ /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c   libuutil.la '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+libtool: warning: remember to run 'libtool --finish /usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil'
+Making install in libnvpair
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+ /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c   libnvpair.la '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+libtool: warning: relinking 'libnvpair.la'
+libtool: warning: remember to run 'libtool --finish /usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair'
+Making install in libzpool
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+ /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c   libzpool.la '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+libtool: warning: relinking 'libzpool.la'
+libtool: warning: remember to run 'libtool --finish /usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool'
+Making install in libzfs_core
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+ /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c   libzfs_core.la '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+libtool: warning: relinking 'libzfs_core.la'
+libtool: warning: remember to run 'libtool --finish /usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core'
+Making install in libzfs
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs'
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/pkgconfig'
+ /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c   libzfs.la '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib'
+ /usr/bin/install -c -m 644 ../../lib/libzfs/libzfs.pc ../../lib/libzfs/libzfs_core.pc '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/share/pkgconfig'
+libtool: warning: relinking 'libzfs.la'
+libtool: warning: remember to run 'libtool --finish /usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib'
+Making install in cmd
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd'
+Making install in zfs
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zfs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zfs'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zfs '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zfs'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zfs'
+Making install in zpool
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpool'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpool'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zpool '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpool'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpool'
+Making install in zdb
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zdb'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zdb'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zdb '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zdb'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zdb'
+Making install in zhack
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zhack'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zhack'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zhack '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zhack'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zhack'
+Making install in zinject
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zinject'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zinject'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zinject '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zinject'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zinject'
+Making install in zstreamdump
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zstreamdump'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zstreamdump'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zstreamdump '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zstreamdump'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zstreamdump'
+Making install in ztest
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/ztest'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/ztest'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c ztest '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/ztest'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/ztest'
+Making install in zpios
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpios'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpios'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zpios '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpios'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zpios'
+Making install in mount_zfs
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/mount_zfs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/mount_zfs'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c mount.zfs '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/mount_zfs'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/mount_zfs'
+Making install in fsck_zfs
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/fsck_zfs'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/fsck_zfs'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+ /usr/bin/install -c fsck.zfs '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/fsck_zfs'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/fsck_zfs'
+Making install in zvol_id
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zvol_id'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zvol_id'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/lib/udev'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zvol_id '/build/zfs-utils-lts/pkg/zfs-utils-lts/lib/udev'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zvol_id'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zvol_id'
+Making install in vdev_id
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/vdev_id'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/vdev_id'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/lib/udev'
+ /usr/bin/install -c vdev_id '/build/zfs-utils-lts/pkg/zfs-utils-lts/lib/udev'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/vdev_id'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/vdev_id'
+Making install in arcstat
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arcstat'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arcstat'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+ /usr/bin/install -c arcstat.py '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arcstat'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arcstat'
+Making install in dbufstat
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/dbufstat'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/dbufstat'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+ /usr/bin/install -c dbufstat.py '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/dbufstat'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/dbufstat'
+Making install in zed
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zed'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zed'
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/zfs-0.6.4.2/zfs/zed.d'
+ /usr/bin/install -c ../../cmd/zed/zed.d/all-debug.sh ../../cmd/zed/zed.d/all-syslog.sh ../../cmd/zed/zed.d/checksum-email.sh ../../cmd/zed/zed.d/checksum-spare.sh ../../cmd/zed/zed.d/data-email.sh ../../cmd/zed/zed.d/generic-email.sh ../../cmd/zed/zed.d/io-email.sh ../../cmd/zed/zed.d/io-spare.sh ../../cmd/zed/zed.d/resilver.finish-email.sh ../../cmd/zed/zed.d/scrub.finish-email.sh '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/lib/zfs-0.6.4.2/zfs/zed.d'
+/usr/bin/mkdir -p "/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs/zed.d"
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs/zed.d'
+for f in all-syslog.sh checksum-email.sh checksum-spare.sh data-email.sh io-email.sh io-spare.sh resilver.finish-email.sh scrub.finish-email.sh; do \
+  test -f "/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs/zed.d/${f}" -o \
+       -L "/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs/zed.d/${f}" || \
+    ln -s "/usr/lib/zfs-0.6.4.2/zfs/zed.d/${f}" "/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs/zed.d"; \
+done
+ /usr/bin/install -c -m 644 ../../cmd/zed/zed.d/zed.rc '/build/zfs-utils-lts/pkg/zfs-utils-lts/etc/zfs/zed.d'
+  /bin/sh ../../libtool --silent  --mode=install /usr/bin/install -c zed '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+libtool: warning: '../../lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs/libzfs.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libzpool/libzpool.la' has not been installed in '/usr/lib'
+libtool: warning: '../../lib/libzfs_core/libzfs_core.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libnvpair/libnvpair.la' has not been installed in '/usr/lib'
+libtool: warning: '/build/zfs-utils-lts/src/zfs-0.6.4.2/lib/libuutil/libuutil.la' has not been installed in '/usr/lib'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zed'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/zed'
+Making install in arc_summary
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arc_summary'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arc_summary'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+ /usr/bin/install -c arc_summary.py '/build/zfs-utils-lts/pkg/zfs-utils-lts/usr/bin'
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arc_summary'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd/arc_summary'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/cmd'
+Making install in contrib
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib'
+Making install in bash_completion.d
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib/bash_completion.d'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib/bash_completion.d'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib/bash_completion.d'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib/bash_completion.d'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib'
+make[3]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib'
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2/contrib'
+make[1]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2'
+make[2]: Entering directory '/build/zfs-utils-lts/src/zfs-0.6.4.2'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2'
+make[1]: Leaving directory '/build/zfs-utils-lts/src/zfs-0.6.4.2'
