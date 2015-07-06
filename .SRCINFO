@@ -1,6 +1,6 @@
 pkgbase = bgcashcheckserver60
 	pkgdesc = BGCashcheckServer 6.0 for billing system BGBilling 6.0
-	pkgver = 6.0.345
+	pkgver = 6.0.350
 	pkgrel = 1
 	url = http://bgbilling.ru
 	install = bgcashcheckserver.install

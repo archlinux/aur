@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgcashcheckserver60
-pkgver=6.0.345
+pkgver=6.0.350
 pkgrel=1
 pkgdesc='BGCashcheckServer 6.0 for billing system BGBilling 6.0'
 arch=('i686' 'x86_64')
@@ -49,24 +49,32 @@ pkgver() {
 }
 
 package() {
-	# unzip distributive
+	msg2 "unzip distributive"
 	unzip -o ./${_achivename}_${_vermajor}_${_verbuild}.zip
-	# create structure
+
+	msg2 "create structure"
 	mkdir $pkgdir/opt
 	mv ${_achivename} $pkgdir/opt/${_dstdirname}${_versuf}
-	# remove win files
+
+	msg2 "remove win files"
 	rm -f $pkgdir/opt/${_dstdirname}${_versuf}/*.{bat,exe,ini}
-	# rename launch scripts (add suffix) and chmod
+
+	msg2 "rename launch scripts (add suffix) and chmod"
 	rename .sh ${_versuf}.sh $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
 	chmod +x $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
-	# patch	./server.sh in launch script
+
+	msg2 "patch	./server.sh in launch script"
 	sed -i "s/\.\/server\.sh/\.\/server${_versuf}\.sh/" $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
-	# patch env in launch script
+
+	msg2 "patch env in launch script"
 	sed -i "s/#BGCASHCHECK_SERVER_DIR=\/opt\/BGCashcheckServer/BGCASHCHECK_SERVER_DIR=\$\{BGCASHCHECK_SERVER_DIR_${_versuf}\}/" $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
-	# patch var in files
+
+	msg2 "patch var in files"
 	_patch_var_file bgcashcheckserver{_versuf}.sh
-	# rename var in files
+
+	msg2 "rename var in files"
 	_rename_var_file $srcdir/bgcashcheckserver{_versuf}.sh
-	# file
+
+	msg2 "copy file"
 	install -D -m755 $srcdir/bgcashcheckserver${_versuf}.sh $pkgdir/etc/profile.d/bgcashcheckserver${_versuf}.sh
 }
