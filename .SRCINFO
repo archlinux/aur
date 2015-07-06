@@ -1,0 +1,15 @@
+pkgbase = pyjack
+	pkgdesc = Jack audio client module for python
+	pkgver = 0.5.2
+	pkgrel = 4
+	url = http://sourceforge.net/projects/py-jack/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = python2-numpy
+	source = http://downloads.sourceforge.net/py-jack/pyjack-0.5.2.tar.gz
+	md5sums = 74a08e527b567e26460e8ff74f56d658
+
+pkgname = pyjack
+
