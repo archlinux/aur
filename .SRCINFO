@@ -12,6 +12,9 @@ pkgbase = kildclient-git
 	depends = gtkspell3
 	depends = perl-locale-gettext
 	depends = perl-json
+	provides = kildclient=3.0.1
+	conflicts = kildclient
+	replaces = kildclient
 	source = kildclient::git+http://git.code.sf.net/p/kildclient/git
 	md5sums = SKIP
 

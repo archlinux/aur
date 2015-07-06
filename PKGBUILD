@@ -7,8 +7,12 @@ pkgrel=1
 pkgdesc="A powerful MUD client written for GTK+ and support for Perl."
 
 arch=('i686' 'x86_64')
-license=('GPL')
 url="http://kildclient.sourceforge.net"
+license=('GPL')
+
+replaces=('kildclient')
+conflicts=('kildclient')
+provides=('kildclient=3.0.1')
 
 makedepends=('git')
 depends=('gtk3' 'libglade' 'gtkspell3' 'perl-locale-gettext' 'perl-json')
