@@ -1,0 +1,13 @@
+pkgbase = tnote
+	pkgdesc = A small note taking program for the terminal
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = http://sourceforge.net/projects/tnote/
+	arch = any
+	license = GPL3
+	depends = python2
+	source = http://downloads.sourceforge.net/sourceforge/tnote/tnote-0.2.1.tar.gz
+	md5sums = 17b43996a7889c6f84cd2072c485c1a4
+
+pkgname = tnote
+
