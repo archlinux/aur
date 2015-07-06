@@ -1,18 +1,20 @@
 pkgbase = nvidia-bfq-304xx
 	pkgdesc = NVIDIA 304xx drivers for linux-bfq.
 	pkgver = 304.125
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.nvidia.com/
 	install = nvidia-bfq-304xx.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-bfq-headers>=4.0
-	makedepends = linux-bfq-headers<4.1
-	depends = linux-bfq>=4.0
-	depends = linux-bfq<4.1
+	makedepends = linux-bfq-headers>=4.1
+	makedepends = linux-bfq-headers<4.2
+	depends = linux-bfq>=4.1
+	depends = linux-bfq<4.2
 	depends = nvidia-304xx-libgl
 	depends = nvidia-304xx-utils=304.125
+	conflicts = nvidia-bfq
+	conflicts = nvidia-bfq-340xx
 	options = !strip
 	source = nv-drm.patch
 	source = nvidia-3.19.patch
