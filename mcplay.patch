@@ -1,0 +1,35 @@
+--- mcplay.c	2002-06-08 17:36:21.000000000 +0200
++++ mcplay.c	2014-07-30 10:56:15.125433444 +0200
+@@ -42,14 +42,14 @@
+ static ScreenData *data;
+ static MixerData *mixer;
+ static PlayerData *player;
+-static SocketData *socket;
++static SocketData *mc_socket;
+ static GMainLoop *main_loop;
+ 
+ 
+ gint process_str( const char *cmd )
+ {
+    gchar **c;
+-   gint r, i;
++   guint r, i;
+    screen_mode mode;
+    
+    r = 0;
+@@ -555,13 +555,13 @@
+ #endif /* HAVE_LIRC */
+ 
+    if( useRemote )
+-      socket = socket_new_server(rcport, (GIOFunc)process_socket);
++      mc_socket = socket_new_server(rcport, (GIOFunc)process_socket);
+    
+    /* now the great moment has come ... */
+    g_main_run(main_loop);
+    
+    if( useRemote )
+-      socket_free(socket);
++      socket_free(mc_socket);
+ 
+ #ifdef HAVE_LIRC
+    lirc_freeconfig(lconf);

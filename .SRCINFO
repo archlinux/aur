@@ -1,0 +1,31 @@
+pkgbase = mcplay
+	pkgdesc = A ncurses audio player.
+	pkgver = 0.3j
+	pkgrel = 3
+	url = http://www.yahuxo.de/mcplay/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = glib
+	depends = ncurses
+	depends = mpg123
+	depends = sox
+	source = http://www.yahuxo.de/mcplay/mcplay-0.3j.tar.gz
+	source = mcplay.patch
+	source = remote.patch
+	source = config.patch
+	md5sums = 5d898c11da789d8beaa3fbdd2a21e238
+	md5sums = b4b865df9897e76442dcc7182d05fe6e
+	md5sums = 7307195fe0513472156f55dfa50247d7
+	md5sums = 4fd0d31cceb27ed9dae890afd8d90ab5
+	sha1sums = 42baed9a8627e304205a24d5486e7ffb066b4d51
+	sha1sums = b941265146f274f3177d5924f548da8c4176801a
+	sha1sums = 207b97de49626f29ee671944e6ab052b190006b8
+	sha1sums = 3e37c55d2534938e40c528a1e428bf56d2a0dfd2
+	sha256sums = d4840896dc78a1721b6f66112c0d7adfb7d81168d7a03aa6bd314484437e821e
+	sha256sums = e6a7db4f6b75ef99a1b1e36a814899b4e280a6648b02f0a2e82d5a43b853e862
+	sha256sums = 61d782dc8478e016409f74d3e303ea46fbce0e62acfd9bf6f5027ab572eb6c16
+	sha256sums = 1def176b32a44eeb9fa334c9d1b4ae1abe239aa850e9d979eb9af820edaf958c
+
+pkgname = mcplay
+

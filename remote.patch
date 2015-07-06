@@ -1,0 +1,24 @@
+--- remote.c	2002-06-07 15:14:30.000000000 +0200
++++ remote.c	2014-07-30 10:54:39.691534519 +0200
+@@ -19,7 +19,7 @@
+ #endif
+ 
+ static gint rcport = DEF_PORT;
+-static SocketData *socket = NULL;
++static SocketData *mc_socket = NULL;
+ 
+ void print_help(void)
+ {
+@@ -90,9 +90,9 @@
+       strcat(cmd, argv[i]);
+    }
+    
+-   socket = socket_new_client(hostname, rcport);
+-   socket_write(socket, cmd, strlen(cmd)+1);
+-   socket_free(socket);
++   mc_socket = socket_new_client(hostname, rcport);
++   socket_write(mc_socket, cmd, strlen(cmd)+1);
++   socket_free(mc_socket);
+    
+    return 0;
+ }

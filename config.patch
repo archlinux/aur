@@ -1,0 +1,11 @@
+--- config.h	2014-07-30 11:08:33.744294365 +0200
++++ config.h	2014-07-30 11:09:19.337277029 +0200
+@@ -16,7 +16,7 @@
+ #define RETSIGTYPE int
+ 
+ /* Define to `unsigned' if <sys/types.h> doesn't define.  */
+-#define size_t unsigned
++//#define size_t unsigned
+ 
+ /* Define if you have the ANSI C header files.  */
+ /* #undef STDC_HEADERS */
