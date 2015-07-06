@@ -1,0 +1,20 @@
+pkgbase = vim-easytree-git
+	pkgdesc = easybuffer.vim - is a simple tree file manager for vim, highly inspired by NERDTree
+	pkgver = 20140804
+	pkgrel = 1.2
+	url = http://www.vim.org/scripts/script.php?script_id=4252
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	depends = git
+	provides = vim-easytree
+	conflicts = vim-easytree
+	replaces = vim-easytree
+	source = git+https://github.com/vim-scripts/easytree.vim.git
+	sha256sums = SKIP
+
+pkgname = vim-easytree-git
+
