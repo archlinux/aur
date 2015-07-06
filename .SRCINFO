@@ -1,0 +1,26 @@
+pkgbase = kroc-devel-git
+	pkgdesc = Kent Retargetable occam Compiler. An occam-pi compiler.
+	pkgver = 20150215
+	pkgrel = 1
+	url = http://projects.cs.kent.ac.uk/projects/kroc/trac/wiki
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = libxslt
+	optdepends = mariadb
+	optdepends = libplayer
+	optdepends = libpng
+	optdepends = sdl
+	optdepends = sdl_sound
+	optdepends = freeglut
+	optdepends = libxmu
+	optdepends = mesa
+	conflicts = kroc-git
+	conflicts = kroc-svn
+	source = kroc-devel-git::git://github.com/concurrency/kroc#branch=master
+	md5sums = SKIP
+
+pkgname = kroc-devel-git
+
