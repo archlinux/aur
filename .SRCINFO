@@ -1,0 +1,37 @@
+pkgbase = xfhell
+	pkgdesc = Ham Radio - GTK+ app - de/en-codes Hellschreiber signals.
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://www.qsl.net/5b4az/pkg/xfhell/xfhell.html
+	install = xfhell.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gtk2
+	depends = alsa-lib
+	depends = desktop-file-utils
+	source = http://www.qsl.net/5b4az/pkg/xfhell/xfhell-3.1.tar.bz2
+	source = diff.autogen.sh
+	source = diff.Makefile.am
+	source = xfhell.desktop
+	source = xdemorse.png
+	source = xfhell.1
+	md5sums = 25ed5f477ba38f0c296734ec4e82ff99
+	md5sums = ad6b0e6dd69c1d0efd01efef63ace093
+	md5sums = f5b10bc9c510cb359b6cb626d628aab9
+	md5sums = 9a3568a6dbdd2bfb90aa76adf2dc531f
+	md5sums = edcd3f301ec8ea95453d40534beb6ede
+	md5sums = f1b4aee1d96afc2a5aa2aed475914ce4
+	sha256sums = 819b319b83813fef48198dbfa0c8bbcb269aabe3b84ce0d3f4cd98b81c533451
+	sha256sums = cc38902be0fc1026cc027cd0fdab7e78bbfb336df36b90b8f25060775636924a
+	sha256sums = 2484d70e867515fbe49fff2463a1ef8ecee02f1feb36ef4deec8fd24fcea0f7b
+	sha256sums = a4bdba7b601bace48e15bd2dc6f0daadd8a10511242cbb2fdc17bf78a19647b5
+	sha256sums = 857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d
+	sha256sums = e98727d5dd44ef65854b0735f45e7fbee19102d182b872bbd56b048d45a1f4a4
+
+pkgname = xfhell
+
