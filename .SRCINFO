@@ -1,0 +1,14 @@
+pkgbase = zboy
+	pkgdesc = a multiplatform GameBoy emulator started as a way to learn about microprocessors, assembly language, memory addressing, etc.
+	pkgver = 0.53
+	pkgrel = 1
+	url = http://zboy.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl
+	source = http://downloads.sourceforge.net/project/zboy/zBoy%20v0.53/zboy-0.53.tar.gz
+	md5sums = 2737fefda68a90ab4dc5adbb20c69e91
+
+pkgname = zboy
+
