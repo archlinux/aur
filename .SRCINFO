@@ -1,0 +1,15 @@
+pkgbase = ndenv
+	pkgdesc = node.js version manager based on rbenv
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/riywo/ndenv
+	install = ndenv.install
+	arch = any
+	license = MIT
+	optdepends = node-build
+	noextract = v0.4.0
+	source = https://github.com/riywo/ndenv/tarball/v0.4.0
+	md5sums = 23d771641452a224ae5527fb2c4f916d
+
+pkgname = ndenv
+

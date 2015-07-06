@@ -1,0 +1,10 @@
+post_install() {
+  echo 'Your shell must be initialized before ndenv will function correctly.'
+  echo 'Run the following, and consider adding it to your ~/.bashrc:'
+  echo '    eval "$(ndenv init -)"'
+}
+
+post_remove() {
+  echo 'Remove the following from your ~/.bashrc, if present:'
+  echo '    eval "$(ndenv init -)"'
+}
