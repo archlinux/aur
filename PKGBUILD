@@ -1,11 +1,10 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Roman Lapin <lampus.lapin@gmail>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
-# Contributor: dorphell <dorphell@archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Maintainer: dorphell <dorphell@archlinux.org>
+# Committer: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gdsl
-pkgver=1.8
+pkgver=1.6
 pkgrel=1
 pkgdesc="A collection of routines for generic data structures manipulation"
 arch=('i686' 'x86_64')
@@ -14,8 +13,8 @@ license=('GPL')
 depends=('bash')
 options=('!libtool')
 source=("http://download.gna.org/gdsl/$pkgname-${pkgver}.tar.gz")
-md5sums=('9130067fbabdd1d73c92de9be73c62e8')
-sha1sums=('8bfd53a74df6773e13492640328a57426268a092')
+md5sums=('8e242affa5421bfb9b18d27edb990bec')
+sha1sums=('2436424d28bef8e0e2ddd559563bf1aa6e8cb701')
 
 build() {
   cd ${pkgname}-${pkgver}
