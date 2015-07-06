@@ -1,0 +1,18 @@
+pkgbase = vitunes-git
+	pkgdesc = A curses-based playlist manager and media player with vim-like keybindings.
+	pkgver = 2.3.r164.gfa9ff4c
+	pkgrel = 1
+	url = https://github.com/ryanflannery/vitunes
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = ncurses
+	depends = mplayer
+	depends = taglib
+	optdepends = gstreamer0.10: gstreamer backend
+	source = vitunes-git::git+https://github.com/ryanflannery/vitunes.git
+	md5sums = SKIP
+
+pkgname = vitunes-git
+
