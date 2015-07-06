@@ -1,0 +1,17 @@
+pkgbase = python2-pyhdf
+	pkgdesc = Python bindings for the HDF library (NetCDF disabled).
+	pkgver = 0.8.3
+	pkgrel = 3
+	url = http://pysclint.sourceforge.net/pyhdf
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = hdf4-nonetcdf
+	depends = python2
+	depends = python2-numpy
+	depends = libjpeg
+	source = http://downloads.sourceforge.net/pysclint/pyhdf-0.8.3.tar.gz
+	md5sums = d0d010b8d77c0d2934e02d4cba351971
+
+pkgname = python2-pyhdf
+
