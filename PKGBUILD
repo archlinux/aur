@@ -4,7 +4,7 @@
 
 pkgname=qt4pas
 pkgver=2.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Free Pascal Qt4 Binding Library"
 arch=('i686' 'x86_64')
 url="http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html"

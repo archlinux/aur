@@ -1,7 +1,7 @@
 pkgbase = qt4pas
 	pkgdesc = Free Pascal Qt4 Binding Library
 	pkgver = 2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html
 	arch = i686
 	arch = x86_64
