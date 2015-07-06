@@ -1,0 +1,15 @@
+pkgbase = ruby-youtube-g
+	pkgdesc = Ruby gem youtube-g which implements Youtube GData API
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://rubyforge.org/projects/youtube-g/
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	noextract = youtube-g-0.5.0.gem
+	source = http://gems.rubyforge.org/gems/youtube-g-0.5.0.gem
+	md5sums = 4d14c30d0fbeb1401fbd1cde41fd013e
+
+pkgname = ruby-youtube-g
+
