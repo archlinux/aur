@@ -4,7 +4,7 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1508.e53df7a
+pkgver=1515.67e6061
 pkgrel=1
 pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, LLVM JIT, bytecode, BNF macros, many advanced modules & bindings and much more!'
 url='http://www.daovm.net/'
