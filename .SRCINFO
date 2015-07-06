@@ -1,0 +1,20 @@
+pkgbase = webkitgtk-sharp-git
+	pkgdesc = C-sharp bindings for WebKitGTK+ 3.0 using GObject Introspection
+	pkgver = r4.4aff0e6
+	pkgrel = 1
+	url = https://github.com/xDarkice/webkitgtk-sharp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = mono
+	depends = gtk-sharp-git
+	depends = soup-sharp-git
+	provides = webkitgtk-sharp
+	conflicts = webkitgtk-sharp
+	options = !libtool
+	source = webkitgtk-sharp::git://github.com/xDarkice/webkitgtk-sharp.git
+	md5sums = SKIP
+
+pkgname = webkitgtk-sharp-git
+
