@@ -1,0 +1,15 @@
+pkgbase = pythoncard
+	pkgdesc = PythonCard is a GUI construction kit for building cross-platform desktop applications on Windows, Mac OS X, and Linux, using the Python language.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://pythoncard.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python>=2.3
+	depends = wxpython
+	source = http://prdownloads.sourceforge.net/sourceforge/pythoncard/PythonCard-0.8.2.tar.gz
+	md5sums = 109913b19baba90aff5c95949e5aa1ff
+
+pkgname = pythoncard
+
