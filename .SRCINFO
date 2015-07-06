@@ -1,6 +1,6 @@
 pkgbase = gnome-catgen-git
 	pkgdesc = A Gnome 3.12 and 3.14 application-overview folder configuration tool
-	pkgver = 20150411.r57.1ab320c
+	pkgver = 20150705.r59.4dda683
 	pkgrel = 1
 	url = https://github.com/prurigro/gnome-catgen
 	arch = any
