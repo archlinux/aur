@@ -1,0 +1,25 @@
+pkgbase = gtkmmorse
+	pkgdesc = GUI Morse code tutor (based on ALDO) - Koch & Classic training modes.
+	pkgver = 0.9.28
+	pkgrel = 1
+	url = http://gtkmmorse.nongnu.org/
+	install = gtkmmorse.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	depends = libao
+	depends = gtkmm
+	depends = gconfmm
+	depends = desktop-file-utils
+	source = gtkmmorse::git://git.sv.gnu.org/gtkmmorse.git
+	source = gtkmmorse.desktop
+	md5sums = SKIP
+	md5sums = f502a07fa34399d9e1ec662bb8236743
+	sha256sums = SKIP
+	sha256sums = 8db6b4d36e6db1251d5b0e8a2a8d92ab35df8bd7794979c6b56e746b477b820d
+
+pkgname = gtkmmorse
+

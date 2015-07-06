@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GtkMMorse
+Comment=Morse Code Testing/Trainer
+Exec=gtkmmorse
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
