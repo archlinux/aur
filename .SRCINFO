@@ -1,0 +1,13 @@
+pkgbase = python2-pysvmlight-hg
+	pkgdesc = A Python binding to the SVMlight support vector machine library by Thorsten Joachims
+	pkgver = 20130415
+	pkgrel = 1
+	url = https://bitbucket.org/wcauchois/pysvmlight
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = mercurial
+	depends = python2
+
+pkgname = python2-pysvmlight-hg
+
