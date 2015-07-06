@@ -1,0 +1,16 @@
+pkgbase = libsodium-git
+	pkgdesc = P(ortable|ackageable) NaCl-based crypto library (git version)
+	pkgver = 1.0.2.r65.g6ab4589
+	pkgrel = 1
+	url = https://github.com/jedisct1/libsodium
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	provides = libsodium
+	conflicts = libsodium
+	source = libsodium-git::git+https://github.com/jedisct1/libsodium.git
+	md5sums = SKIP
+
+pkgname = libsodium-git
+
