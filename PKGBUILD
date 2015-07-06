@@ -1,7 +1,7 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=salome-kernel
-pkgver=7.5.1
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
@@ -9,21 +9,23 @@ depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omni
 makedepends=('doxygen' 'python2-sphinx' 'git' 'swig2')
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=(salome-kernel.profile http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz)
+source=(salome-kernel.profile)
 
-# _source=kernel
-_source=KERNEL_SRC_${pkgver}
+# "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz"
+#_source=KERNEL_SRC_${pkgver}
+
+_source=kernel
 _installdir=/opt/salome/kernel
 
 prepare() {
-#  msg "Connecting to git server..."
-#  if [[ -d ${_source} ]] ; then
-#     rm -rf ${_source}
-#  fi
-#  git clone git://git.salome-platform.org/modules/${_source}.git
+  msg "Connecting to git server..."
+  if [[ -d ${_source} ]] ; then
+     rm -rf ${_source}
+  fi
+  git clone git://git.salome-platform.org/modules/${_source}.git
   cd ${_source}
-#  git checkout V7_5_1
-#  msg "GIT checkout done or server timeout"
+  git checkout V7_6_0
+  msg "GIT checkout done or server timeout"
 
   sed -e 's|INSTALL(CODE "FILE(TIMESTAMP \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_name}\\"            py_time)")|INSTALL(CODE "IF(EXISTS \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_we}.py\\") \\n  FILE(TIMESTAMP \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_we}.py\\" py_time) \\n ELSE()\\n  SET(py_time 0) \\n ENDIF() ")|' -i salome_adm/cmake_files/SalomeMacros.cmake
 
@@ -91,5 +93,4 @@ package() {
   install -D -m755 "$srcdir/$pkgname.profile" \
                    "$pkgdir/etc/salome/profile.d/$pkgname.sh"
 }
-md5sums=('0190508dd75e07f6b8f6230660477c11'
-         '19fd3c3acad84fb3b3c70c007e5c2500')
+md5sums=('0190508dd75e07f6b8f6230660477c11')
