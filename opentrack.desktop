@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Opentrack
+Exec=/opt/opentrack/opentrack.bin
+Icon=/opt/opentrack/clientfiles/cute-octopus-vector-material_15-1831.jpg
+Terminal=false
+StartupNotify=true
+
