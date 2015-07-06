@@ -1,0 +1,16 @@
+pkgbase = dehtml
+	pkgdesc = Removes HTML constructs.
+	pkgver = 1.8
+	pkgrel = 3
+	url = http://www.moria.de/~michael/dehtml/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = dehtml
+	source = http://www.moria.de/~michael/dehtml/dehtml-1.8.tar.gz
+	md5sums = b60f88997c702fa682631787c7b15e2c
+	sha1sums = c931493a4f50b65b0d129f51de025f07784669fb
+	sha256sums = a00e86643b0aa73861e9d8d619a80370f0f99519d34ce12459fab77f5f6b5bde
+
+pkgname = dehtml
+
