@@ -1,0 +1,17 @@
+pkgbase = ttf-antinoou
+	pkgdesc = A standard font for Coptic.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://www.evertype.com/fonts/coptic/
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.evertype.com/fonts/coptic/AntinoouFont.zip
+	md5sums = 30f9ec32a81b3ae3aa7c9a72fa613e39
+	sha1sums = 5b7da0df69c5c8c5831fcb58e9706d36e4b11462
+	sha256sums = d7f961ff2ab5b6c707e4f0a24e8302c7a61c2e2ab2e9880c94a8deb6f5aeff69
+
+pkgname = ttf-antinoou
+
