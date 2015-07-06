@@ -1,0 +1,20 @@
+pkgbase = eggdrop
+	pkgdesc = The world's most popular Open Source IRC bot.
+	pkgver = 1.6.21
+	pkgrel = 5
+	url = http://www.eggheads.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sh
+	depends = tcl>=8.3
+	depends = zlib
+	options = !makeflags
+	backup = etc/eggdrop.conf
+	source = http://ftp.eggheads.org/pub/eggdrop/source/1.6/eggdrop1.6.21.tar.bz2
+	source = dlopen.c
+	sha256sums = 75bd5573a609eac3940c0b6ca8251c3f38ea5d54b520e1cad93c650b4bc21754
+	sha256sums = d1758f84a69173a852e598fa55e69df0d73b8b62c6993b0ba04aa21d539213e6
+
+pkgname = eggdrop
+
