@@ -1,0 +1,20 @@
+pkgbase = soup-sharp-git
+	pkgdesc = C-sharp Bindings for libsoup2.4
+	pkgver = r4.ee413bb
+	pkgrel = 1
+	url = https://github.com/xDarkice/soup-sharp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = mono
+	depends = gtk-sharp-git
+	depends = libsoup
+	provides = soup-sharp
+	conflicts = soup-sharp
+	options = !libtool
+	source = soup-sharp::git://github.com/xDarkice/soup-sharp.git
+	md5sums = SKIP
+
+pkgname = soup-sharp-git
+
