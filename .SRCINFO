@@ -1,0 +1,19 @@
+pkgbase = flareget
+	pkgdesc = A full featured, advanced, multi-threaded, multisegment download manager and accelerator.
+	pkgver = 4.2.92
+	pkgrel = 1
+	url = http://flareget.com
+	install = flareget.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = glibc>=2.13
+	depends = qt4>=4.8.1
+	depends = libmetalink
+	noextract = flareget-4.2-92..rpm
+	backup = etc/opt/chrome/native-messaging-hosts/com.flareget.flareget.json
+	source = http://www.flareget.com/files/flareget/rpm//flareget_4.2-92_(stable)_rpm.tar.gz
+
+pkgname = flareget
+
