@@ -1,0 +1,20 @@
+pkgbase = fleet-git
+	pkgdesc = A distributed init system (git version)
+	pkgver = 0.3.2.r1003.g1c8dc88
+	pkgrel = 1
+	url = https://github.com/coreos/fleet
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = fleet
+	conflicts = fleet
+	backup = etc/fleet/fleet.conf
+	source = fleet-git::git+https://github.com/coreos/fleet
+	source = fleet.service
+	md5sums = SKIP
+	md5sums = 09b751feeec2c7ae4544bbc212466e37
+
+pkgname = fleet-git
+
