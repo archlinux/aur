@@ -20,12 +20,12 @@ source=('kildclient::git+http://git.code.sf.net/p/kildclient/git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "kildclient"
+  cd "${srcdir}/kildclient"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "kildclient"
+  cd "${srcdir}/kildclient"
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -37,6 +37,6 @@ build() {
 }
 
 package() {
-  cd "kildclient"
+  cd "${srcdir}/kildclient"
   make DESTDIR="${pkgdir}/" install
 }
