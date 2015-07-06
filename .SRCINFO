@@ -1,23 +1,18 @@
 pkgbase = wizorb-hib
 	pkgdesc = A retro-RPG themed breakout style game (Humble Bundle version)
-	pkgver = 1.1
-	pkgrel = 4
+	pkgver = 06232015
+	pkgrel = 1
 	url = http://www.wizorb.com
 	arch = i686
 	arch = x86_64
 	license = custom:commercial
-	depends = mono
-	depends = openal
+	depends = glibc
 	options = !strip
 	options = !upx
-	source = wizorb.sh
+	source = hib://wizorb-06232015-bin
 	source = wizorb.desktop
-	sha512sums = 7ab7d83b7c99eafaee614832efa30b4f399eb0c62c47791ec9b3169eafe1195d4fdc9283c54190cf8aee916ec046b2557297d3c5000e732566ddf0f2efd8c8bb
-	sha512sums = 654dec6278d19d25440e74e7c850f3ab6f06c9af5ad39a7bf7dd8179234e1a3e763364e84aae7daab118db6b1a11d590bbe2621ff05fc7be40069f94bb97f331
-	source_i686 = hib://wizorb-32bit.tar.gz
-	sha512sums_i686 = b5997e9575c7339667c756d62893d0f20e264ca2cfda6383a3fa4a9ba2a40bfaaf943db5ebff4e73ae7f21624a83e3cfe7f7557b349e7b502282d00cf6959b91
-	source_x86_64 = hib://wizorb-64bit.tar.gz
-	sha512sums_x86_64 = c2ac71e97361e5b2eeaf547987a6de56df4663caf5b6d510b2db5a881ba5873ecb9ad4ba40c3dd8b91eebde5af5da60cdf16141c62fe009f0f43a88f15af7a05
+	sha512sums = 556ec725522545ab5b99ef2f21a4e4572b50537ddf551e340801874db3fff8fc042362b511de779c8e6425a6c079de31788e03b01766aba5485b900cc34086ea
+	sha512sums = d5d30b3c9e39de446a4d5be9781c4001557b1b66e96fa85331fbc8cc5b58ecea82c18c734b6fed97d2fdd78798d473c759a05d1f986c2b81deb49b5cec2e4ffb
 
 pkgname = wizorb-hib
 

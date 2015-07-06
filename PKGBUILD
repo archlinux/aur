@@ -12,7 +12,7 @@ depends=('glibc')
 arch=('i686' 'x86_64')
 options=('!strip' '!upx')
 source=(
-  "$_pkgname-06232015-bin"
+  "hib://$_pkgname-06232015-bin"
   "$_pkgname.desktop"
 )
 sha512sums=(
