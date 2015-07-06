@@ -1,0 +1,20 @@
+pkgbase = bgs-git
+	pkgdesc = simple background setter based on imlib2
+	pkgver = 0.6.r2.gd455737
+	pkgrel = 2
+	url = https://github.com/Gottox/bgs
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = libunistring
+	depends = imlib2
+	depends = libxinerama
+	provides = bgs
+	conflicts = bgs
+	source = bgs::git+https://github.com/Gottox/bgs.git
+	sha256sums = SKIP
+
+pkgname = bgs-git
+
