@@ -1,0 +1,18 @@
+pkgbase = heliwm
+	pkgdesc = Highly Essential Light Itsy-bitsy Window Manager.
+	pkgver = 1.13
+	pkgrel = 2
+	url = http://www.cc.rim.or.jp/~hok/heliwm/
+	install = heliwm.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = imake
+	depends = libxext
+	source = http://www.cc.rim.or.jp/~hok/heliwm/heliwm-1.13.tar.gz
+	md5sums = c3245228bf6351d4db6d85e198962ad1
+	sha1sums = 93b19419040971a1cd981c9cb0592a5ad1f17c13
+	sha256sums = 134b826789b4873619bb8d334c20ddf4e92954ebe933a145a5c5a2ccdccf954d
+
+pkgname = heliwm
+

@@ -1,0 +1,13 @@
+post_install() {
+  echo ">> Copy /user/share/heliwm/heliwmrc to ~/.config/heliwm/heliwmrc"
+  echo ">> Note this location is different to the man page ~/.heliwmrc"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
