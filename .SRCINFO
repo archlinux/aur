@@ -1,0 +1,21 @@
+pkgbase = tuxedo-wmi
+	pkgdesc = A reverse engineering driver for the Clevo P15SM/P17SM/P150SM/P157SM/P170SM/P177SM backlight keyboard, by Christoph Jaeger
+	pkgver = 1.5.1
+	pkgrel = 2
+	url = http://www.linux-onlineshop.de/forum/index.php?page=Thread&threadID=26&s=82130b57e71bd5b6ea569abc1424025c6f8d412d
+	install = tuxedo-wmi.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	conflicts = clevo_wmi-git
+	conflicts = clevo-wmi-dkms
+	conflicts = clevo-wmi
+	conflicts = clevo-wmi-dkms
+	conflicts = tuxedo-wmi-dkms
+	replaces = clevo-wmi
+	source = tuxedo-wmi-1.5.1.src.tar.gz::http://www.linux-onlineshop.de/forum/index.php?page=Attachment&attachmentID=424&h=3df4c21145314ceaeadd7986662b2a5b01d1094f&s=5196669c65535d86e616f839936c42a5166a40a0
+	md5sums = c5bf0f815f394baf4fabe2c78d9483cc
+
+pkgname = tuxedo-wmi
+
