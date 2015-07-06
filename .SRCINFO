@@ -1,0 +1,15 @@
+pkgbase = midimon
+	pkgdesc = Basic MIDI monitor, works w/ JACK or ALSA MIDI drivers
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://midimon.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libglademm
+	depends = lash
+	source = http://downloads.sourceforge.net/midimon/midimon-0.3.tar.gz
+	md5sums = dcfd9d135768438f67fab0322a2636f4
+
+pkgname = midimon
+
