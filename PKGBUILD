@@ -2,7 +2,7 @@
 
 pkgname=spellutils
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities to spell-check selectively"
 arch=('i686' 'x86_64')
 url="http://home.worldonline.dk/~byrial/spellutils/"
@@ -16,5 +16,9 @@ build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr
   make || return 1
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install || return 1
 }
