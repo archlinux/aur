@@ -1,6 +1,6 @@
 pkgbase = qgo2-git
 	pkgdesc = Go client and full featured SGF editor; svn-snapshot of the next major version
-	pkgver = 2.1.0.2015.06.07.397c01d
+	pkgver = 2.1.0.2015.07.04.051f17f
 	pkgrel = 1
 	url = https://github.com/pzorin/qgo
 	install = qgo2.install
