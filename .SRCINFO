@@ -1,0 +1,15 @@
+pkgbase = mopag-git
+	pkgdesc = Small pager for monsterwm which displays the number of desktops and number of windows on each desktop in a thin bar (last git pull)
+	pkgver = 20121101
+	pkgrel = 1
+	url = https://github.com/c00kiemon5ter/mopag
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = libx11
+	provides = mopag
+	conflicts = mopag
+
+pkgname = mopag-git
+
