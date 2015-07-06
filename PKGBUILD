@@ -5,7 +5,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gdsl
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A collection of routines for generic data structures manipulation"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ license=('GPL')
 depends=('bash')
 options=('!libtool')
 source=("http://download.gna.org/gdsl/$pkgname-${pkgver}.tar.gz")
-md5sums=('56cdaa3235b58f8b16a32dfc93ae7dde')
-sha1sums=('1eb7571bc045c98a99ff36be516dfd79c288b10c')
+md5sums=('9130067fbabdd1d73c92de9be73c62e8')
+sha1sums=('8bfd53a74df6773e13492640328a57426268a092')
 
 build() {
   cd ${pkgname}-${pkgver}
