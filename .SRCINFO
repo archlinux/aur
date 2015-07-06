@@ -1,0 +1,14 @@
+pkgbase = jackmeter
+	pkgdesc = A basic console based DPM (Digital Peak Meter) for JACK.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.aelius.com/njh/jackmeter
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	source = http://www.aelius.com/njh/jackmeter/jackmeter-0.4.tar.gz
+	md5sums = f8915a1dd8ba448c3b9d62b30d107a22
+
+pkgname = jackmeter
+
