@@ -1,0 +1,16 @@
+pkgbase = soundtank
+	pkgdesc = Hosts LADSPA plugins in realtime objects
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://soundtank.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = libxml2
+	depends = popt
+	source = http://downloads.sourceforge.net/soundtank/soundtank-1.0.2.tar.gz
+	md5sums = f2ac3809f26a1ff371e26d1c1e91f62b
+
+pkgname = soundtank
+
