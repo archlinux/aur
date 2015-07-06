@@ -1,0 +1,12 @@
+# This unit requires 'Coolbits' option adjusted in X configuration
+# Refer to wiki https://wiki.archlinux.org/index.php/NVIDIA
+
+# GPU clock in MHz
+nvclk=360
+# Memory clock in MHz
+memclk=640
+# Fanspeed. Value between 10 and 100 or 'auto' if supported by device
+fanspeed=20
+# Fanspeed to apply when stopping service
+fanspeed_default=70
+

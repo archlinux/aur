@@ -1,0 +1,19 @@
+pkgbase = systemd-nvclock-unit
+	pkgdesc = Apply nvclock fanspeed, GPU and memory clock settings with systemd
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd
+	install = systemd-nvclock-unit.install
+	arch = any
+	license = GPL
+	depends = nvclock
+	depends = systemd
+	source = nvclock.service
+	source = nvclock
+	source = systemd-nvclock-unit.install
+	md5sums = b275050a8d6bed8f60ce9a9558abaef5
+	md5sums = 4f74d99af0b51abae018ffa6153d3ae1
+	md5sums = fbb9b2c438e21527aea857dc9744b214
+
+pkgname = systemd-nvclock-unit
+

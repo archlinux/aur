@@ -1,0 +1,20 @@
+post_install() {
+cat << EOF
+
+==> Change nvclk, memclk and fanspeed in /etc/conf.d/nvclock
+
+==> To apply nvclock settings use this commands as root :
+	systemctl start nvclock.service
+
+==> To enable it on boot :
+	systemctl enable nvclock.service
+
+==> To reset settings to device defaults
+	systemctl stop nvclock.service
+
+EOF
+}
+post_upgrade() {
+	post_install
+}
+

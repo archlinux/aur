@@ -1,0 +1,15 @@
+[Unit]
+Description=nvclock daemon
+After=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/conf.d/nvclock
+ExecStart=/usr/bin/nvclock -n ${nvclk} -m ${memclk} -F ${fanspeed} -f
+ExecReload=/usr/bin/nvclock -n ${nvclk} -m ${memclk} -F ${fanspeed} -f
+ExecStop=/usr/bin/nvclock -r -F ${fanspeed_default} -f
+
+[Install]
+WantedBy=multi-user.target
+
