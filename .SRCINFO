@@ -1,0 +1,15 @@
+pkgbase = loopdub
+	pkgdesc = A cross-platform audio application for live loop manipulation.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://loopdub.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = sdl
+	source = http://sourceforge.net/projects/loopdub/files/loopdub/loopdub-0.4/loopdub-0.4.tar.gz
+	md5sums = 63b3c40753fda27c27cfa945686d2a40
+
+pkgname = loopdub
+
