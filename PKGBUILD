@@ -1,31 +1,34 @@
-# $Id$
+#
+# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
+#
+# Based on the linux package by:
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.1
-_patchname=patch-4.1-rc8
-pkgver=4.1
+_patchname=patch-4.2-rc1
+pkgver=4.2rc1
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://kernel.org/"
+url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v3.x/testing/${_patchname}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        )
+        'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
-            '514aa8a9d03d2419c8084725fcdb2b5b4ce07966f5bd6a51224a5f7a5f8c3694'
-            'b268b03a042e3f604a12a80c6e24c42006e4d9bf4a6d9b3201eb006942718128'
+            '54288846931fc3c53f376f22d1c767034a3023b45885d4ffcf6f646782575c1c'
+            'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
+            '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -38,7 +41,11 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  #patch -p1 -i "${srcdir}/${_patchname}"
+  # add upstream patch
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # add mainline patch
+  patch -p1 -i "${srcdir}/${_patchname}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
