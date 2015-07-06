@@ -1,0 +1,17 @@
+pkgbase = efmb
+	pkgdesc = Endless Forms Most Beautiful is a crazy platformer with braincrashing mechanics
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.locomalito.com/efmb.php
+	arch = x86_64
+	arch = i686
+	license = CCPL
+	source = http://www.locomalito.com/juegos/EFMB_linux.zip
+	source = efmb.png
+	source = efmb.desktop
+	md5sums = a286f67fab9d7ce041e5ce19fb71c40f
+	md5sums = 70f0c70dc0d0263dbafcd747a9301ec5
+	md5sums = 99dce59d073c2496e6ae5604fef74ef4
+
+pkgname = efmb
+
