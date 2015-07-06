@@ -1,0 +1,16 @@
+pkgbase = libpseudo
+	pkgdesc = A generic library providing simple thread-safe messaging between threads.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://libpseudo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc>=2.8
+	source = http://downloads.sourceforge.net/libpseudo/libpseudo-1.2.0.tar.gz
+	md5sums = 64c0cc54abb6d01f52352045b39eb41e
+	sha1sums = b24efd699e4129e7c8745162dbfe829b185f96c7
+	sha256sums = 16989214510a4c4fa869d78165761c04629189540cff59fac8cc67372ae07734
+
+pkgname = libpseudo
+
