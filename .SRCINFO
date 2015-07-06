@@ -1,0 +1,13 @@
+pkgbase = securecopytools
+	pkgdesc = cp and mv with checksum (crc) verification
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://www.ijntema.com/unrestricted/wiki/index.php/Main_Page#Secure_Copy_Tools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/project/crcsum/securecopytools-1.0.6.tar.gz
+	sha256sums = 1dbc2f62db0284f33afdcc90f5f329c290bde7e6c701f3f4f120453ff5005e3b
+
+pkgname = securecopytools
+
