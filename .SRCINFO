@@ -1,0 +1,17 @@
+pkgbase = ttf-ifao-n-copte
+	pkgdesc = A Coptic font
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://www.evertype.com/fonts/coptic/
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.ifao.egnet.net/uploads/polices/IfaoNCopte.zip
+	md5sums = 9aab3b9b4aef693ad11c90319a1e0757
+	sha1sums = cc74809d77b03dac024e737967bae10a86ccfc01
+	sha256sums = 891f2adefa23ec444831a33c34bf3a03ecd43d39230398cda8b687d14072b53b
+
+pkgname = ttf-ifao-n-copte
+
