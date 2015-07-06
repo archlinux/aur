@@ -1,0 +1,11 @@
+--- StrictWarnings.pm	2013-11-08 20:43:41.000000000 -0700
++++ StrictWarnings.pm	2015-01-01 11:03:03.899039317 -0700
+@@ -68,7 +68,7 @@
+ 		my $first = $doc->find_first(
+ 			sub {
+ 				return $_[1]->isa('PPI::Statement')
+-					or $_[1]->isa('PPI::Structure');
++					|| $_[1]->isa('PPI::Structure');
+ 			}
+ 		);
+ 		$replace = "use strict;\nuse warnings;\n";
