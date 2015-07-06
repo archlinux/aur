@@ -1,0 +1,17 @@
+pkgbase = randrctl-git
+	pkgdesc = Lightweight profile based screen manager for X
+	pkgver = r28.7297e20
+	pkgrel = 1
+	url = http://github.com/edio/randrctl
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = xorg-xrandr
+	optdepends = bash-completion
+	provides = randrctl
+	conflicts = randrctl
+	source = git+https://github.com/edio/randrctl.git
+
+pkgname = randrctl-git
+
