@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PLCash
+Comment=A personal finance program
+Exec=plcash
+Icon=plcash
+Terminal=false
+Categories=Office;Finance;
