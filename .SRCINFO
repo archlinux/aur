@@ -1,0 +1,13 @@
+pkgbase = archlinux-themes-balou
+	pkgdesc = Theme for the Balou splash screen (xfce4)
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.xfce.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://rmartinjak.de/arch/archlinux-themes-balou-1.0.tar.gz
+	md5sums = 26b9430d5619bced1ca49e6f1211113e
+
+pkgname = archlinux-themes-balou
+
