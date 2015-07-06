@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Springseed
+Comment=Simply awesome note taking.
+Exec=/usr/bin/springseed
+Icon=springseed
+Type=Application
+StartupNotify=true
+Categories=Utility
+Terminal=false
+Version=2.0
