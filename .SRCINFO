@@ -1,0 +1,34 @@
+pkgbase = snes9x-git
+	pkgdesc = A GTK+ port of the Snes9x emulator (git version)
+	pkgver = 1.53.r230.gdfc6227
+	pkgrel = 1
+	url = http://www.snes9x.com/
+	install = snes9x-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = nasm
+	makedepends = mesa
+	makedepends = git
+	makedepends = autogen
+	depends = zlib
+	depends = libpng
+	depends = sdl
+	depends = alsa-lib
+	depends = libglade
+	depends = libxv
+	depends = gcc-libs
+	depends = libxext
+	depends = libsm
+	depends = libgl
+	depends = gtk3
+	provides = snes9x
+	provides = snes9x-gtk
+	conflicts = snes9x
+	conflicts = snes9x-gtk
+	source = snes9x-git::git://github.com/snes9xgit/snes9x.git
+	md5sums = SKIP
+
+pkgname = snes9x-git
+
