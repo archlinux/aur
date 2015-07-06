@@ -1,0 +1,14 @@
+pkgbase = fengoffice
+	pkgdesc = OpenGoo is an easy to use Open Source Web Office
+	pkgver = 2.6.3
+	pkgrel = 1
+	url = http://www.fengoffice.com/
+	install = fengoffice.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = php
+	source = http://downloads.sourceforge.net/opengoo/fengoffice/fengoffice_2.6.3/fengoffice_2.6.3.zip
+
+pkgname = fengoffice
+
