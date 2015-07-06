@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=UnixCW
+Comment=CW Suite and Tutor Program
+Exec=xcwcp
+Icon=unixcw
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Categories=Education;AudioVideo;Audio;HamRadio;
+Type=Application
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
