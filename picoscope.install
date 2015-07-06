@@ -1,0 +1,6 @@
+#! /bin/bash
+
+post_install() {
+  update-desktop-database -q
+    groupadd --force --system pico
+}
