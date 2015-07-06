@@ -1,0 +1,16 @@
+pkgbase = libspatialindex-git
+	pkgdesc = C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
+	pkgver = 1.8.5
+	pkgrel = 1
+	url = http://libspatialindex.github.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gtest
+	depends = gcc-libs
+	provides = libspatialindex
+	conflicts = libspatialindex
+
+pkgname = libspatialindex-git
+
