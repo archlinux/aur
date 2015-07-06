@@ -1,7 +1,7 @@
 pkgbase = libebur128
 	pkgdesc = A library that implements the EBU R 128 standard for loudness normalisation.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jiixyj/libebur128
 	arch = i686
 	arch = x86_64
