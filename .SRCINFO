@@ -1,0 +1,13 @@
+pkgbase = vim-syntax-extra-git
+	pkgdesc = Vim syntax highlighting for C, Bison, Flex (git version)
+	pkgver = r10.ge5d52dd
+	pkgrel = 3
+	url = https://github.com/justinmk/vim-syntax-extra
+	arch = any
+	license = unknown
+	makedepends = git
+	source = vim-syntax-extra-git::git+https://github.com/justinmk/vim-syntax-extra
+	md5sums = SKIP
+
+pkgname = vim-syntax-extra-git
+
