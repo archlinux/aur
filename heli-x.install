@@ -1,0 +1,9 @@
+post_install() {
+    if [ -x usr/bin/gtk-update-icon-cache ]; then usr/bin/gtk-update-icon-cache usr/share/icons/hicolor/; fi
+    if [ -x usr/bin/update-desktop-database ]; then usr/bin/update-desktop-database; fi
+}
+
+post_remove() {
+    if [ -x usr/bin/gtk-update-icon-cache ]; then usr/bin/gtk-update-icon-cache usr/share/icons/hicolor/; fi
+    if [ -x usr/bin/update-desktop-database ]; then usr/bin/update-desktop-database; fi
+}

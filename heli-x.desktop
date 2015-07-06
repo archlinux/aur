@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HELI-X
+Comment=HELI-X 5 RC Flight Simulator
+Exec=heli-x
+Icon=heli-x
+Terminal=false
+StartupNotify=false
+Categories=Game;

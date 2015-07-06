@@ -1,0 +1,23 @@
+pkgbase = heli-x
+	pkgdesc = HELI-X RC Flight Simulator
+	pkgver = 5
+	pkgrel = 1
+	url = http://www.heli-x.info
+	install = heli-x.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = java-runtime>=6
+	source = http://www.heli-x.info/1405/HELI-X5.tar.gz
+	source = heli-x.desktop
+	source = heli-x.png
+	source = heli-x.install
+	source = heli-x
+	md5sums = 954c7c4123800c1bc9247294f5b2b791
+	md5sums = a7f340949236c7c4afa3851b313efc4b
+	md5sums = 30af503bd32a62decb15f8ca5e03d90e
+	md5sums = c58fca72b0c1b257196ea6d15e5c11c2
+	md5sums = a359f2c641c60a732e62da8d39a9be55
+
+pkgname = heli-x
+
