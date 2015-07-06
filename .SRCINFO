@@ -1,0 +1,15 @@
+pkgbase = java-jmatio
+	pkgdesc = Matlab's MAT-file I/O in JAVA
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/gradusnikov/jmatio
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = maven
+	depends = java-environment
+	source = git+https://github.com/gradusnikov/jmatio.git
+	sha256sums = SKIP
+
+pkgname = java-jmatio
+
