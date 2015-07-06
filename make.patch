@@ -1,0 +1,70 @@
+From b37445d36f66bbe7f4ad16c41a1dab997a674567 Mon Sep 17 00:00:00 2001
+From: kreon <kreon@fidonode.in>
+Date: Sun, 8 Mar 2015 03:43:36 +0300
+Subject: [PATCH] make patch gnutls 3.3/libtasn1 4.2/gcrypt
+
+---
+ jabberd14/configure.ac       | 13 +++++++------
+ jabberd14/jabberd/mio_tls.cc |  6 +++---
+ 2 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/jabberd14/configure.ac b/jabberd14/configure.ac
+index 1ca14c7..6255199 100644
+--- a/jabberd14/configure.ac
++++ b/jabberd14/configure.ac
+@@ -231,6 +231,7 @@ AC_MSG_CHECKING(for crypt.h)
+ AC_CHECK_HEADER(crypt.h, crypt_header=yes, crypt_header=no)
+ if test "$crypt_header" != "no"; then
+     AC_DEFINE(INCLUDE_CRYPT_H,,[include the crypt.h header file])
++    LIBS="$LIBS -lgcrypt"
+ fi
+ 
+ dnl check for tr1/unordered_map
+@@ -289,12 +290,12 @@ else
+ fi
+ 
+ dnl then check for GnuTLS extra
+-PKG_CHECK_MODULES(GNUTLSEXTRA, gnutls-extra >= 1.4.0, hasgnutlsextra=yes, hasgnutlsextra=no)
+-if test $hasgnutls = "yes" ; then
+-    CPPFLAGS="$CPPFLAGS $GNUTLSEXTRA_CFLAGS"
+-    LDFLAGS="$LDFLAGS $GNUTLSEXTRA_LIBS"
+-    AC_DEFINE(HAVE_GNUTLS_EXTRA,,[if GnuTLS-extra should be compiled in])
+-fi
++#PKG_CHECK_MODULES(GNUTLSEXTRA, gnutls-extra >= 1.4.0, hasgnutlsextra=yes, hasgnutlsextra=no)
++#if test $hasgnutls = "yes" ; then
++#    CPPFLAGS="$CPPFLAGS $GNUTLSEXTRA_CFLAGS"
++#    LDFLAGS="$LDFLAGS $GNUTLSEXTRA_LIBS"
++#    AC_DEFINE(HAVE_GNUTLS_EXTRA,,[if GnuTLS-extra should be compiled in])
++#fi
+ 
+ dnl check for libidn
+ AC_ARG_WITH(libidn, AS_HELP_STRING([--with-libidn=DIR],[Where to find libidn (required)]),
+diff --git a/jabberd14/jabberd/mio_tls.cc b/jabberd14/jabberd/mio_tls.cc
+index 294d84b..b303a21 100644
+--- a/jabberd14/jabberd/mio_tls.cc
++++ b/jabberd14/jabberd/mio_tls.cc
+@@ -43,10 +43,8 @@
+ #include <vector>
+ #include <list>
+ #include <iostream>
+-
+ // Tell gcrypt that we are using libpth - had to move this to a plain C file
+ extern "C" void mio_tls_gcrypt_init();
+-
+ extern const ASN1_ARRAY_TYPE subjectAltName_asn1_tab[];
+ 
+ /**
+@@ -114,7 +112,9 @@ pool mio_tls_pool = NULL;
+  * tree of ASN1 structures
+  */
+ ASN1_TYPE mio_tls_asn1_tree = ASN1_TYPE_EMPTY;
+-
++static inline const char *libtasn1_strerror(int code) {
++	return asn1_strerror(code);
++}
+ /**
+  * close the TLS connection
+  *
+-- 
+2.3.0
+

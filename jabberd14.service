@@ -1,0 +1,14 @@
+[Unit]
+Description=Jabberd14 Jabber server
+
+[Service]
+User=jabberd
+Group=jabberd
+
+ExecStart=/usr/bin/jabberd
+
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
