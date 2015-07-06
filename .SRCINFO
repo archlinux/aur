@@ -1,0 +1,22 @@
+pkgbase = yoump3
+	pkgdesc = Ruby script to convert youtube videos to mp3 - Experimental
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://gplsystems.com
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	makedepends = ruby-parseconfig
+	makedepends = ruby-youtube-g
+	depends = ruby
+	depends = youtube-dl
+	depends = ffmpeg
+	noextract = yoump3
+	noextract = yoump3.conf
+	source = http://gpljobs.com/yoump3
+	source = http://gpljobs.com/yoump3.conf
+	md5sums = 4dd2f745a1d65b4a58c942b46f1ff173
+	md5sums = b9da64394012feeb2f71c543336a1e0d
+
+pkgname = yoump3
+
