@@ -1,0 +1,29 @@
+# arg 1:  the new package version
+post_install() {
+  getent group elog  >/dev/null || usr/sbin/groupadd elog
+  getent passwd elog >/dev/null || usr/sbin/useradd -c "elog Server" \
+    -g elog -d /var/lib/elog -s /bin/false elog
+  usr/bin/passwd -l elog &>/dev/null
+  chown -R elog:elog /etc/elog
+  chown -R elog:elog /var/lib/elog
+  echo ">>> Run systemctl enable elogd if you want"
+  echo ">>> the server to start at system boot-up."
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+ post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  usr/sbin/userdel elog &>/dev/null
+  usr/sbin/groupdel elog &>/dev/null
+  echo ">>> Post-install logbook entries remain after package removal."
+}
+
+op=$1
+shift
+
+$op $*

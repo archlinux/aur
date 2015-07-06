@@ -1,0 +1,11 @@
+[Unit]
+Description=Elog Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/elogd -D -c /etc/elog/elogd.cfg > /dev/null 2>&1
+PIDFile=/run/elogd.pid
+
+[Install]
+WantedBy=multi-user.target
