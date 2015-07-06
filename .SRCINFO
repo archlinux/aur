@@ -1,0 +1,15 @@
+pkgbase = xanalyser
+	pkgdesc = A program to analyse a stereo audio signal.
+	pkgver = 1.32
+	pkgrel = 1
+	url = http://arvin.schnell-web.net/xanalyser
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = lesstif
+	source = http://arvin.schnell-web.net/xanalyser/xanalyser-1.32.tar.bz2
+	md5sums = 400a3035b5a1f893b97e205c6c6ea3fa
+
+pkgname = xanalyser
+
