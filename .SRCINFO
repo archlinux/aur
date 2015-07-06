@@ -1,0 +1,14 @@
+pkgbase = pam-phidgetrfid
+	pkgdesc = A PAM module that interfaces with a Phidget RFID tag scanner, passing IDs scanned by the scanner down the PAM stack as authentication tokens.
+	pkgver = 1.0.6
+	pkgrel = 3
+	url = http://pam-phidgetrfid.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = libphidget
+	source = http://sourceforge.net/projects/pam-phidgetrfid/files/pam-phidgetrfid-1.0.6.tar.gz
+	md5sums = 1848b82a187fde21fc0b109aefbc035b
+
+pkgname = pam-phidgetrfid
+
