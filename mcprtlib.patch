@@ -1,0 +1,20 @@
+--- mcprtlib.h.orig	2005-08-18 14:49:24.000000000 +0200
++++ mcprtlib.h	2014-02-22 21:45:25.117213249 +0100
+@@ -46,17 +46,6 @@
+ 08/10/90   1 nazgul	Initial version
+ */
+ 
+-/* taken from Xm/lib/VaSimple.h
+-   currently no one defines MISSING_STDARG_H */
+- 
+-#ifdef	I_STDARG
+-# include <stdarg.h>
+-# define Va_start(a,b) va_start(a,b)
+-#else
+-# include <varargs.h>
+-# define Va_start(a,b) va_start(a)
+-#endif
+-
+ #define MCFree		0x0010			/* Reminder to MCPrintFree */
+ #define MCCatalog	0x0100			/* Probably came from catalog */
+ #define	MCFmtArg        (0x0001|MCCatalog)	/* Came from format string */

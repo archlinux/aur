@@ -1,0 +1,15 @@
+--- curses.c.orig	2005-08-18 15:20:14.000000000 +0200
++++ curses.c	2014-02-22 21:43:39.530049085 +0100
+@@ -47,11 +47,7 @@
+ #include "s_elm.h"
+ 
+ #include <assert.h>
+-#ifdef I_STDARG
+-# include <stdarg.h>
+-#else
+-# include <varargs.h>
+-#endif
++#include <stdarg.h>
+ 
+ #define S_(sel, str)	catgets(elm_msg_cat, ElmSet, (sel), (str))
+ 
