@@ -1,0 +1,13 @@
+pkgbase = node-build
+	pkgdesc = Compile and install Node or io.js
+	pkgver = 20150606
+	pkgrel = 1
+	url = https://github.com/sindrenm/node-build
+	arch = any
+	license = MIT
+	optdepends = git
+	source = https://github.com/sindrenm/node-build/tarball/v20150606
+	md5sums = cca3290caff851ef0c146c1623e9942c
+
+pkgname = node-build
+
