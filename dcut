@@ -1,0 +1,122 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
+# Copyright (c) 2012 dput authors
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+
+import sys
+import argparse
+
+# A little temporary hack for those of us not using virtualenv
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+import dput.core
+import dput.exceptions
+import dput.profile
+import dput.command
+
+from dput import upload_command
+
+parser = argparse.ArgumentParser(description=' Debian archive command file'
+                                 'upload tool')
+parser.add_argument('-d', '--debug', action='count', default=False,
+                    help="Enable debug messages. Repeat twice to increase the "
+                    "verbosity level")
+parser.add_argument('-f', '--force', action='store_true',
+                    help='Force an upload')
+parser.add_argument('-c', '--config', metavar="FILE", action='store',
+                    default=None, help='Configuration file to parse')
+parser.add_argument('host', metavar="HOST", action='store', default=None,
+                    help="Target host to upload a package", nargs="?")
+parser.add_argument('-m', '--maintainer', metavar="MAINTAINER",
+                    help="Use MAINTAINER (full name and email) for the "
+                    "uploader field and gpg key selection. This has no effect"
+                    " when the 'upload' command is used", action='store')
+parser.add_argument('-k', '--keyid', metavar="KEYID",
+                    help="Use KEYID for signing. Default is to use DEBEMAIL "
+                    " and DEBNAME, or whatever was provided with --maintainer."
+                    " This has no effect when the 'upload' command is used",
+                    action='store')
+parser.add_argument('-O', '--output', metavar="FILENAME",
+                    help="Write  commands  file to FILENAME  instead of "
+                    "uploading.  This option should not be used with "
+                    "the 'upload' command.  FILENAME won't be overwritten if it "
+                    "exists", action='store')
+parser.add_argument('-P', '--passive',
+                    help="Use passive FTP instead of active",
+                    action='store_true')
+parser.add_argument('-s', '--simulate', action='count', default=False,
+                    help="Simulate the upload only. Repeat twice to increase "
+                    "the level of simulation. Provided once runs pre-upload "
+                    "checks, provided twice runs pre-upload checks and network"
+                    " set-up without actually uploading files")
+parser.add_argument('-v', '--version',
+                    help="Print version information and exit",
+                    action='store_true')
+
+args = parser.parse_known_args()
+known = args[0]
+
+if known.host in dput.command.find_commands():
+    known.host = None  # likely a target, not a profile
+
+if known.host:
+    profile = dput.profile.load_profile(known.host)
+else:
+    profile = dput.profile.load_profile(None)
+
+subparsers = parser.add_subparsers(help='Supported commands')
+
+command_registry = dput.command.load_commands(profile)
+
+for command in command_registry:
+    (cmd_name, cmd_purpose) = command.name_and_purpose()
+    command_parser = subparsers.add_parser(cmd_name, help=cmd_purpose)
+    command_parser.set_defaults(command=command)
+    command.register(command_parser)
+
+args = parser.parse_args()
+
+if args.config:
+    dput.core.DPUT_CONFIG_LOCATIONS[args.config] = 1
+
+if args.debug:
+    dput.core._enable_debugging(args.debug)
+
+
+try:
+    upload_command(args)
+except dput.exceptions.DputConfigurationError as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(2)
+except dput.exceptions.DcutError as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(3)
+except dput.exceptions.HookException as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(1)
+except EnvironmentError as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(2)
+except KeyboardInterrupt:
+    sys.exit(0)

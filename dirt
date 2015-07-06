@@ -1,0 +1,194 @@
+#!/usr/bin/env python2
+# D.I.R.T.
+
+# arguments:
+#    --blame target
+#    --hosts
+#    --help-checker
+#    --help-processor
+
+from __future__ import print_function
+
+import os
+import sys
+import json
+import argparse
+
+# A little temporary hack for those of us not using virtualenv
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+
+from dput.hook import hook_docs
+from dput.util import get_configs, load_config, validate_object
+from dput.exceptions import DputConfigurationError
+from dput.profile import get_blame_map, profiles, load_profile
+
+
+parser = argparse.ArgumentParser()
+
+parser = argparse.ArgumentParser(description='dput information retrieval tool')
+subparsers = parser.add_subparsers(help='sub-command help')
+
+parser_hosts = subparsers.add_parser('hosts',
+                        help='print the lists of hosts that dput knows about')
+parser_hosts.set_defaults(command="hosts")
+
+parser_blame = subparsers.add_parser('blame',
+                        help='get information on where dput is finding keys')
+parser_blame.set_defaults(command="blame")
+parser_blame.add_argument('-p', '--profile', metavar='PROFILE_NAME',
+                         help='name of the hook to retrieve information from',
+                         required=True)
+
+parser_list = subparsers.add_parser('list',
+                        help='list all the hooks registered to dput')
+parser_list.set_defaults(command="list")
+
+parser_info = subparsers.add_parser('info',
+                        help='get some help on a hook')
+parser_info.set_defaults(command="info")
+parser_info.add_argument('-H', '--hook', metavar='HOOK_NAME',
+                         help='name of the hook to retrieve information from',
+                         required=True)
+
+#XXX: stubbing for now
+#group.add_argument(
+#    '--remove-hook',
+#    nargs=2,
+#    action='store',
+#    help='Remove a hook from a given profile',
+#    metavar='HOOK'
+#)
+#
+#group.add_argument(
+#    '--add-hook',
+#    nargs=2,
+#    action='store',
+#    help='Add a hook to a given profile',
+#    metavar='HOOK'
+#)
+
+
+args = parser.parse_args()
+
+print("\nWARNING: This command is not completed yet. Interface and behavior "
+      "changes are expected in future releases\n")
+
+
+if args.command == 'blame':
+    if args.profile not in profiles():
+        print("No such target.")
+        sys.exit(1)
+
+    print(json.dumps(get_blame_map(args.profile), sort_keys=True, indent=4))
+    sys.exit(0)
+
+if args.command == 'hosts':
+    default = load_profile(None)
+    print()
+    print("Default method: %s" % (default['method']))
+    print()
+    for config in profiles():
+        obj = load_profile("%s:%s" % (config, config))
+        #                               ^^^^^^ fake arg for others
+        if not "fqdn" in obj:  # likely localhost
+            obj['fqdn'] = 'localhost'
+
+        string = "{name} => {fqdn}  (Upload method: {method})".format(**obj)
+        print(string)
+    print()
+    sys.exit(0)
+
+
+if args.command == 'info':
+    try:
+        docs = hook_docs(args.hook)
+        if docs == "":
+            print("Sorry, the author didn't provide help on this module.")
+            sys.exit(0)
+        print(docs)
+    except DputConfigurationError:
+        print("No such hook '%s'." % (args.hook))
+        sys.exit(1)
+
+
+if args.command == 'list':
+    hook_list = {'pre': {}, 'post': {}}
+    for config in get_configs('hooks'):
+        hook = load_config('hooks', config)
+        validate_object('plugin', hook, "hooks/%s" % (config))
+
+        if 'pre' in hook:
+            hook_list['pre'][config] = hook
+        if 'post' in hook:
+            hook_list['post'][config] = hook
+    for hook_type in hook_list:
+        print("%s-upload hooks:" % (hook_type))
+        for hook in hook_list[hook_type]:
+            print("\t%s: %s" % (hook,
+                                hook_list[hook_type][hook]['description']))
+        print()
+    sys.exit(0)
+
+# Dear lord of all that is holy, the kruft below *needs* to be moved into
+# proper dput config objects. We should really just grab the local foo, and
+# deal with that mess on the fly. Don't put it there until it's factored in
+# nicely.
+#   - PRT
+
+def _read_file(fpath):
+    obj = {}
+    if os.path.exists(fpath):
+        obj = json.load(open(fpath, 'r'))
+    return obj
+
+def _write_file(fpath, obj):
+    d = os.path.dirname(fpath)
+    if not os.path.exists(d):
+        os.makedirs(d)
+    open(fpath, 'w').write(json.dumps(obj, sort_keys=True, indent=4))
+
+#if args.add_hook:
+#    hook, target = args.add_hook
+#    # sanity check target, now.
+#    # sanity check hook, now.
+#    config = os.path.expanduser(
+#        "~/.dput.d/profiles/%s.json" % (target)  # XXX: Do this right.
+#    )
+#    obj = _read_file(config)
+#    if not '+hooks' in obj:
+#        obj['+hooks'] = []
+#    if hook not in obj['+hooks']:
+#        print("Added %s to the config." % (hook))
+#        obj['+hooks'].append(hook)
+#    else:
+#        print("%s is already in the config." % (hook))
+#
+#    _write_file(config, obj)
+#    sys.exit(0)
+
+
+#if args.remove_hook:
+#    hook, target = args.remove_hook
+#    # sanity check target, now.
+#    # sanity check hook, now.
+#    config = os.path.expanduser(
+#        "~/.dput.d/profiles/%s.json" % (target)  # XXX: Do this right.
+#    )
+#    obj = _read_file(config)
+#
+#    if 'hooks' in obj:
+#        if hook in obj['hooks']:
+#            obj['hooks'].remove(hook)
+#
+#    elif '+hooks' in obj:
+#        if hook in obj['+hooks']:
+#            obj['+hooks'].remove(hook)
+#    else:
+#        if not '-hooks' in obj:
+#            obj['-hooks'] = []
+#
+#        obj['-hooks'].append(hook)
+#
+#    _write_file(config, obj)
+#    sys.exit(0)

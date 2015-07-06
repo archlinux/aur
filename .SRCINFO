@@ -1,0 +1,22 @@
+pkgbase = dput-ng
+	pkgdesc = like dput, but better
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://dput-ng.debian.net/
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2-debian
+	provides = dput
+	conflicts = dput
+	source = https://pypi.python.org/packages/source/d/dput/dput-1.6.tar.gz
+	source = dput
+	source = dcut
+	source = dirt
+	sha256sums = dcbbd3876bfac56304021070069a23e7da2e73c2024f68b0efce0cc0523bb683
+	sha256sums = a4c28ed018b8d03249e8e7b94be526f29f659c97f99884d0b84e4236e94125ca
+	sha256sums = a260f48111cecf8332c51f2fd45e1972c364582ff26582a5915456966482ea6f
+	sha256sums = c9b54bea22ff081c08e9fab4a45135783881808323bba8dc002fa0b56915dd1c
+
+pkgname = dput-ng
+

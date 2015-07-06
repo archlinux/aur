@@ -1,0 +1,126 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
+# Copyright (c) 2012 dput authors
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+
+import sys
+import argparse
+
+# A little temporary hack for those of us not using virtualenv
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+import dput.core
+import dput.changes
+import dput.exceptions
+from dput import upload_package
+from dput.profile import parse_overrides
+
+parser = argparse.ArgumentParser(description='Debian package upload tool')
+parser.add_argument('-d', '--debug', action='count', default=False,
+                    help="Enable debug messages. Repeat twice to increase the "
+                    "verbosity level")
+parser.add_argument('-c', '--config', metavar="FILE", action='store',
+                    default=None, help='Configuration file to parse')
+parser.add_argument('-D', '--dinstall', action='store_true',
+                    help='(silently ignored)')
+parser.add_argument('-e', '--delayed', action='store', metavar="DAYS",
+            help='Upload to a delayed queue. Takes an argument from 0 to 15',
+            type=int, choices=range(0, 16))
+parser.add_argument('-F', '--full-upload-log', action='store_true',
+                    help='Write more verbose .upload logs')
+parser.add_argument('-f', '--force', action='store_true',
+                    help='Force an upload')
+parser.add_argument('-l', '--lintian', action='store_true',
+                    help='Run lintian before upload (deprecated)')
+parser.add_argument('-U', '--no-upload-log', action='store_true',
+                    help='Do not write an .upload log after uploading')
+parser.add_argument('-o', '--check-only', action='store_true',
+                    help='Only check the package')
+parser.add_argument('-O', '--override', action='append',
+                    help='override profile key')
+parser.add_argument('-S', '--unset', action='append',
+                    help='override profile key by unsetting its value')
+parser.add_argument('-P', '--passive', action='store_true',
+                    help='Use passive mode for ftp uploads')
+parser.add_argument('-s', '--simulate', action='count', default=False,
+                    help="Simulate the upload only. Repeat twice to increase "
+                    "the level of simulation. Provided once runs pre-upload "
+                    "checks, provided twice runs pre-upload checks and network"
+                    " set-up without actually uploading files")
+parser.add_argument('-u', '--unchecked', action='store_true',
+                    help='Don\'t check GnuPG signature')
+parser.add_argument('-v', '--version', action='store_true',
+                    help='(silently ignored)')
+parser.add_argument('-V', '--check-version', action='store_true',
+                    help='(ignored)')
+parser.add_argument('host', metavar="HOST", action='store', default=None,
+                    help="Target host to upload a package", nargs="?")
+parser.add_argument('changes', metavar="CHANGES-FILE", action='store',
+                    default=None, nargs='+', help="A Debian .changes file")
+args = parser.parse_args()
+
+
+if args.host and args.host.endswith(".changes") and os.path.isfile(args.host):
+    args.changes.insert(0, args.host)
+    args.host = None
+
+
+if args.config:
+    dput.core.DPUT_CONFIG_LOCATIONS[args.config] = 1
+
+if args.debug:
+    dput.core._enable_debugging(args.debug)
+
+try:
+    overrides = []
+    if args.unset:
+        for arg in args.unset:
+            overrides.append("-%s" % (arg))
+    if args.override:
+        for arg in args.override:
+            overrides.append(arg)
+    args.override = parse_overrides(overrides)
+
+    for changes in args.changes:
+        changes = dput.changes.parse_changes_file(
+            changes,
+            os.path.dirname(changes)
+        )
+        upload_package(changes, args)
+        # XXX: avoid only uploading one and breaking due to an UploadException?
+
+except dput.exceptions.DputConfigurationError as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(2)
+except dput.exceptions.UploadException as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(3)
+except dput.exceptions.HookException as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(1)
+except EnvironmentError as e:
+    dput.core.logger.critical(str(e))
+    dput.core.maybe_print_traceback(args.debug, sys.exc_info())
+    sys.exit(2)
+except KeyboardInterrupt:
+    sys.exit(0)
