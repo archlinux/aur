@@ -1,0 +1,28 @@
+--- Makefile.am	2013-12-02 00:01:30.000000000 -0700
++++ Makefile.am	2015-02-18 12:08:19.753899152 -0700
+@@ -34,6 +34,19 @@
+-	if test -f $(HOME)/.$(PACKAGE)rc; then \
+-	  echo Config file exists: $(HOME)/.$(PACKAGE)rc - not copying; \
+-	  else \
+-	  echo Copying $(PACKAGE) config file to $(HOME)/.$(PACKAGE); \
+-	  cp $(srcdir)/default/.$(PACKAGE)rc $(HOME); \
+-	  fi
++	if test -d files/; then \
++ 	  echo "cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/"; \
++ 	  cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/; \
++ 	  echo "cp files/$(PACKAGE).xpm $(DESTDIR)/usr/share/pixmaps/"; \
++ 	  cp files/$(PACKAGE).xpm $(DESTDIR)/usr/share/pixmaps/; \
++ 	fi
++
++	if test -d default/; then \
++ 		if !(test -d $(DESTDIR)/usr/share/doc/$(PACKAGE)); then \
++ 		  echo "mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/"; \
++ 		  mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
++  		  echo "mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/"; \
++ 		  mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/; \
++ 		fi; \
++ 	  echo "cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/"; \
++ 	  cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
++ 	  echo "cp default/$(PACKAGE)rc.example $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/"; \
++ 	  cp default/.$(PACKAGE)rc $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/$(PACKAGE)rc.example; \
++	fi

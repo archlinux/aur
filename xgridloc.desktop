@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xgridloc
+Comment=Maidenhead grid converter & bearing/distance calc.
+Exec=xgridloc
+Icon=xgridloc
+Terminal=false
+Categories=Application;HamRadio;
+StartupNotify=true
