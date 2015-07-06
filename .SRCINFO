@@ -1,0 +1,13 @@
+pkgbase = aspell-he
+	pkgdesc = Hebrew dictionary for aspell
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://aspell.net/
+	arch = any
+	license = GPL
+	depends = aspell>=0.60
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/he/aspell6-he-1.0-0.tar.bz2
+	sha1sums = cd6755053937b9c32995d7fa085cd269489f5484
+
+pkgname = aspell-he
+
