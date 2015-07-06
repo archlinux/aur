@@ -1,0 +1,18 @@
+pkgbase = qemacs-cvs
+	pkgdesc = A very small but powerful UNIX editor.
+	pkgver = 20131223
+	pkgrel = 1
+	url = http://bellard.org/qemacs/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cvs
+	makedepends = texi2html
+	depends = libpng
+	depends = libxv
+	provides = qemacs
+	conflicts = qemacs
+	md5sums = SKIP
+
+pkgname = qemacs-cvs
+
