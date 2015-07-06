@@ -1,0 +1,16 @@
+pkgbase = glnemo2
+	pkgdesc = an interactive visualization 3D program for nbody snapshots.
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://projets.oamp.fr/projects/glnemo2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glu
+	depends = qt5-base
+	noextract = glnemo2_1.8.1.tar.gz
+	source = http://projets.lam.fr/attachments/download/1631/glnemo2_1.8.1.tar.gz
+	md5sums = 9998fe1d9d51fa30cc746613c144598c
+
+pkgname = glnemo2
+
