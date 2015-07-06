@@ -1,0 +1,12 @@
+post_install() {
+	echo "-----------------"
+	echo "Drush is meant to be run from the root directory of your Drupal "
+	echo "install by default. Look at /usr/share/doc/drush/ for the "
+	echo "README, as well as an example drushrc.php config and example "
+	echo "plugin."
+	echo "-----------------"
+	echo "Additionally, if your php.ini settings are too restrictive, "
+  echo "you may have to override some of the settings using drush.ini "
+  echo "in either your home directory (~/.drush.ini) or in "
+  echo "/etc/drush/drush.ini for system-wide changes."
+}
