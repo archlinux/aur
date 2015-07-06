@@ -1,0 +1,26 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+pre_install() {
+	[ -f /etc/greyd/greyd.conf ] && cp -f /etc/greyd/greyd.conf /etc/greyd/greyd.conf.pacsave
+}
+
+## arg 1:  the new package version
+post_install() {
+	grep -q greyd: /etc/passwd || useradd -r -M -d / greyd
+	mkdir -p /var/empty/greyd/ && chown greyd:greyd /var/empty/greyd/
+	mkdir -p /var/lib/greydb/ && chown greyd:greyd /var/lib/greydb/
+	echo "To set up iptables, do: "
+	echo "\tiptables -t nat -N GREYD"
+	echo "\tiptables -t filter -N GREYD"
+	echo "\tiptables -t filter -A INPUT -p tcp --dport 25 -d 127.0.0.1 -j ACCEPT"
+	echo "\tiptables-save > /etc/iptables/iptables.rules"
+	echo "Add a job to crontab:"
+	echo "\t05 * * * * /usr/sbin/greyd-setup -f /etc/greyd/greyd.conf"
+}
+
+post_remove() {
+	echo "Please remove iptables rules and cron jobs"
+}

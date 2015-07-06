@@ -1,0 +1,13 @@
+[Unit]
+Description=Greyd anti-spam daemon
+After=ipset.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/greydctl start
+ExecReload=/usr/bin/greydctl restart
+ExecStop=/usr/bin/greydctl stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

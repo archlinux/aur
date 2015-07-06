@@ -1,0 +1,11 @@
+diff -Naur greyd-0.7.0/src/mod.c greyd-0.7.0-p/src/mod.c
+--- greyd-0.7.0/src/mod.c	2015-03-08 04:32:49.000000000 +0300
++++ greyd-0.7.0-p/src/mod.c	2015-03-10 18:15:20.412646601 +0300
+@@ -24,6 +24,7 @@
+ #include <config.h>
+ 
+ #ifdef HAVE_LTDL_H
++#define lt__PROGRAM__LTX_preloaded_symbols lt_libltdl_LTX_preloaded_symbols
+ # include <ltdl.h>
+ #else
+ # error This module requires ltdl.h.
