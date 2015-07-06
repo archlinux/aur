@@ -1,0 +1,26 @@
+pkgbase = creduce-git
+	pkgdesc = A C program reducer.
+	pkgver = 2.3.0.14.g49782e7
+	pkgrel = 1
+	url = https://github.com/csmith-project/creduce
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	depends = astyle
+	depends = clang
+	depends = delta
+	depends = indent
+	depends = llvm
+	depends = perl-benchmark-timer
+	depends = perl-exporter-lite
+	depends = perl-file-which
+	depends = perl-getopt-tabular
+	depends = perl-regexp-common
+	depends = perl-sys-cpu
+	depends = zlib
+	source = creduce-git::git+https://github.com/csmith-project/creduce.git
+	md5sums = SKIP
+
+pkgname = creduce-git
+
