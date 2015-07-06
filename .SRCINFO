@@ -1,0 +1,13 @@
+pkgbase = xdf
+	pkgdesc = An exquisite version of df, reporting file system disk space usage.
+	pkgver = 1.4.37
+	pkgrel = 1
+	url = http://botao.org/xdf.1.html
+	arch = i686
+	arch = x86_64
+	license = Apache
+	source = http://sourceforge.net/projects/xdf/files/xdf-1.4.37-src.tar.gz
+	md5sums = 592c361ed49a75b11049508ced945838
+
+pkgname = xdf
+
