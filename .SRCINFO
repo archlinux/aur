@@ -1,0 +1,37 @@
+pkgbase = amule-svn
+	pkgdesc = Client for the eD2k and Kad networks
+	pkgver = 2.4.0.r10874
+	pkgrel = 1
+	url = http://amule.org/
+	install = amule.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = crypto++
+	depends = desktop-file-utils
+	depends = gd
+	depends = geoip
+	depends = libupnp
+	depends = wxgtk2.8
+	provides = amule
+	conflicts = amule
+	backup = usr/share/webapps/amps/index.php
+	backup = usr/share/webapps/amps/style.css
+	source = amule::svn+https://amule.googlecode.com/svn/trunk/
+	source = http://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/configure_ignore_gdlib-config_garbage.diff
+	source = http://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/mime-ed2k-protocol.patch
+	source = http://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
+	source = http://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
+	source = http://svgicons.o7a.net/unofficial/amule.png
+	source = https://raw.githubusercontent.com/microcai/gentoo-zh/master/net-p2p/amule-dlp/files/amule-dlp-scanner-header.patch
+	sha256sums = SKIP
+	sha256sums = 505f70995a56d748f853265fba84a1bbdfbb0291195842b69e76370013239a6e
+	sha256sums = 255d99552136712416b3270bb26d2622d1f0d3724891457e4221e67431a0606f
+	sha256sums = 902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c
+	sha256sums = 0904ff6a1dfa298f452332831345feb4aa6575668a8b092b3cc6edfbfed974fe
+	sha256sums = 737873e5f29dabaca6f9ac96b612eda8cba0236b6618e380107ea7d1d7665b78
+	sha256sums = 04db8bbb57834174148c48da4f02832c413a8911eb5ace0ee11190990b875ff9
+
+pkgname = amule-svn
+
