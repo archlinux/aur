@@ -1,0 +1,15 @@
+pkgbase = perl-net-opensoundcontrol
+	pkgdesc = OpenSound Control client and server implementation in Perl
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/~crenz/Net-OpenSoundControl-0.05/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CR/CRENZ/Net-OpenSoundControl-0.05.tar.gz
+	md5sums = 0451efc9feee4d1a3dc04ea043a47af7
+
+pkgname = perl-net-opensoundcontrol
+
