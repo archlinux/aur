@@ -1,0 +1,4 @@
+post_install() {
+    echo 'Edit the configuration in /etc/eggdrop.conf before starting eggdrop.'
+    echo 'Please make sure you edit your config file completely.'
+}

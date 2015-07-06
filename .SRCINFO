@@ -1,0 +1,21 @@
+pkgbase = eggdrop-cvs
+	pkgdesc = The world's most popular Open Source IRC bot (with SASL patch.)
+	pkgver = 20130212
+	pkgrel = 2
+	url = http://www.eggheads.org/
+	install = eggdrop-cvs.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cvs
+	depends = sh
+	depends = tcl>=8.3
+	depends = zlib
+	provides = eggdrop
+	conflicts = eggdrop
+	backup = etc/eggdrop.conf
+	source = https://gist.github.com/grawity/4455067/raw/94f37f43194404c5517afc5396faf383f1c82ab4/preinit-server.patch
+	md5sums = 86cff26774af7a0fcf9b875888a660a5
+
+pkgname = eggdrop-cvs
+
