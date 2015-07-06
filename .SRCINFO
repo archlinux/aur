@@ -1,0 +1,15 @@
+pkgbase = pandoc-bin
+	pkgdesc = Universal markup converter (Binary build from official deb)
+	pkgver = 1.13.2
+	pkgrel = 2
+	url = http://pandoc.org/
+	arch = x86_64
+	license = GPL2
+	depends = gmp
+	depends = zlib
+	optdepends = texlive-most: for PDF creation
+	source_x86_64 = https://github.com/jgm/pandoc/releases/download/1.13.2/pandoc-1.13.2-1-amd64.deb
+	md5sums_x86_64 = 90e22cf8291d7444fb34d0a41c49dcf6
+
+pkgname = pandoc-bin
+
