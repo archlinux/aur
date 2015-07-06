@@ -1,0 +1,38 @@
+.TH WINKEYDAEMON 8
+
+.SH NAME
+winkeydaemon \- morse daemon for the winkey hardware keyer module
+
+.SH SYNOPSIS
+.B winkeydaemon
+.RI [ options ]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B winkeydaemon command.
+.PP
+\fBwinkeydaemon\fP is a program to control the the winkey2 keyer. It provides
+an interface which is compatible to the cwdaemon, which means it can be used
+instead of cwdaemon. Winkeydaemon listens on a udp socket and outputs commands
+to the K1EL keyer on a serial port.
+
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B -n  
+Run in debug mode.
+.TP
+.B -p
+UDP port to be used (default is 6789).
+.TP
+.B -s
+Speed (default is 24 wpm).
+.TP
+.B -d
+Serial device to be used(default is /dev/ttyS0).
+
+.SH AUTHOR
+winkeydaemon was written by Rein Couperus.
+.PP
+This manual page was written by Joop Stakenborg <pa3aba@debian.org>,
+for the Debian project (but may be used by others).
