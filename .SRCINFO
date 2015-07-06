@@ -1,0 +1,18 @@
+pkgbase = demorse
+	pkgdesc = console application for decoding Morse code signals into text.
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://www.qsl.net/5b4az/pkg/morse/demorse/demorse.html
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	depends = alsa-lib
+	source = http://www.qsl.net/5b4az/pkg/morse/demorse/demorse-1.2.tar.bz2
+	md5sums = d4800b759ef4c8ffb6e73d173bcd563b
+	sha256sums = 48228b121f4df3bcd735a7c60871d9bea1c7f066da78c6f74e28694b8300a4ab
+
+pkgname = demorse
+

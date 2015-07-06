@@ -1,0 +1,31 @@
+2015-02-12 not_anonymous
+
+	1.2-3
+	* added # Original Submitter/Submission as this credit was not extent
+
+2015-01-24 not_anonymous
+
+	1.2-2
+	* added prepare() as per author's manual
+	* added makedepends() v/v above change
+
+2014-07-27  Lex Black
+
+	1.2-1:
+	* update to latest version
+	* changed dl location. Official page is down and was mirrored from qsl.net
+
+2013-04-28  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	1.1-1:
+	* new upstream release
+	* removed Makefile patch - upstream switched to autotools
+
+	1.0-1:
+	* new maintainer
+	* new upstream release
+	* added Changelog
+	* added README file
+	* added alsa-lib dependency
+	* corrected CFLAGS
+
