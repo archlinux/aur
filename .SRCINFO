@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libftdi
+	pkgdesc = Library to talk to FTDI chips (mingw-w64)
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://www.intra2net.com/en/developer/libftdi/
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-libusb
+	optdepends = mingw-w64-boost: C++ variant of libftdi (libftdipp) and unit tests
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.2.tar.bz2
+	sha256sums = a6ea795c829219015eb372b03008351cee3fb39f684bff3bf8a4620b558488d6
+
+pkgname = mingw-w64-libftdi
+
