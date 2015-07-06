@@ -1,0 +1,20 @@
+pkgbase = progdoc
+	pkgdesc = A Program Documentation System.
+	pkgver = 1.3b
+	pkgrel = 1
+	url = http://www.progdoc.org/
+	install = progdoc.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = texlive-core
+	depends = gawk
+	depends = nawk
+	optdepends = latex2html
+	source = http://www.progdoc.de/projects/progdoc/ProgDoc_1.3b_src.tgz
+	md5sums = 427d16534eb6fb4226897753a6b62d90
+	sha1sums = 660e41d7c514af49ef741ed2943f249326e841a9
+	sha256sums = a4a8d9266352e498c429430324556174ebf18c1983cab750fba946f7615a462e
+
+pkgname = progdoc
+
