@@ -3,7 +3,7 @@
 pkgname=yadifa
 pkgver=2.1.0
 _buildnr=5055
-pkgrel=2
+pkgrel=3
 pkgdesc="lightweight authoritative Name Server with DNSSEC capabilities"
 arch=('i686' 'x86_64')
 url="http://www.yadifa.eu"
