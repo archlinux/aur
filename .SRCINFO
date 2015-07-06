@@ -1,0 +1,33 @@
+pkgbase = python-hg
+	pkgdesc = Next generation of the python high-level scripting language (hg version)
+	pkgver = 3.4.0.b1.r87577.1fed50c8ea62
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk>=8.6.0
+	makedepends = sqlite
+	makedepends = valgrind
+	makedepends = bluez-libs
+	makedepends = mercurial
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	provides = python=3.4
+	provides = python3
+	provides = python-pip
+	conflicts = python
+	conflicts = python-pip
+	replaces = python3
+	replaces = python-pip
+	source = python-hg::hg+http://hg.python.org/cpython
+	md5sums = SKIP
+
+pkgname = python-hg
+
