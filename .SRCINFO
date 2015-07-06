@@ -1,0 +1,14 @@
+pkgbase = run-mailcap
+	pkgdesc = The mailcap script from Ubuntu repositories
+	pkgver = 3.58
+	pkgrel = 1
+	url = http://packages.ubuntu.com/utopic/mime-support
+	arch = any
+	license = GPL
+	depends = perl
+	conflicts = mime-support
+	source = http://archive.ubuntu.com/ubuntu/pool/main/m/mime-support/mime-support_3.58ubuntu1.tar.gz
+	sha1sums = 85a9a50284e753955d9518bf366143f11529b21d
+
+pkgname = run-mailcap
+
