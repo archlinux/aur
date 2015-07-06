@@ -3,7 +3,7 @@
 
 pkgname=frankenwm-git
 _gitname="FrankenWM"
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Fast dynamic tiling window manager based on monsterwm-xcb"
 url="https://github.com/sulami/FrankenWM"
@@ -13,11 +13,6 @@ depends=('xcb-util-wm' 'xcb-util-keysyms')
 makedepends=('git')
 source=("git+https://github.com/sulami/FrankenWM.git")
 md5sums=("SKIP")
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
   cd "$srcdir/$_gitname"
