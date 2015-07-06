@@ -1,0 +1,13 @@
+pkgbase = git-flow-completion-git
+	pkgdesc = git-flow shell completions
+	pkgver = 0.4.2.2.a467274
+	pkgrel = 1
+	url = http://github.com/bobthecow/git-flow-completion
+	arch = any
+	license = MIT
+	depends = gitflow-git
+	source = git://github.com/bobthecow/git-flow-completion.git
+	md5sums = SKIP
+
+pkgname = git-flow-completion-git
+
