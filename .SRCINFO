@@ -1,0 +1,28 @@
+pkgbase = drafter-git
+	pkgdesc = Snowcrash parser harness
+	pkgver = r139.a3a987e
+	pkgrel = 1
+	url = https://github.com/apiaryio/drafter
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2
+	provides = drafter
+	conflicts = drafter
+	source = git://github.com/apiaryio/drafter.git
+	source = git://github.com/apiaryio/snowcrash.git
+	source = git://github.com/philsquared/Catch.git
+	source = git://github.com/apiaryio/sos.git
+	source = git://github.com/apiaryio/cmdline.git
+	source = git://github.com/apiaryio/markdown-parser.git
+	source = git://github.com/apiaryio/sundown.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = drafter-git
+
