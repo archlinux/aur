@@ -1,0 +1,13 @@
+pkgbase = termpalette-git
+	pkgdesc = Terminal ANSI color palette viewer written in python
+	pkgver = 20130108
+	pkgrel = 1
+	url = https://github.com/sseemayer/TermPalette
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	options = !emptydirs
+
+pkgname = termpalette-git
+
