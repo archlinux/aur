@@ -1,0 +1,16 @@
+pkgbase = python2-pyaudio
+	pkgdesc = Python bindings for PortAudio, the cross-platform audio I/O library
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://people.csail.mit.edu/hubert/pyaudio
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	depends = portaudio
+	replaces = pyaudio
+	source = http://people.csail.mit.edu/hubert/pyaudio/packages/pyaudio-0.2.8.tar.gz
+	md5sums = 5c93a193224cca0183ec434dc558cff5
+
+pkgname = python2-pyaudio
+
