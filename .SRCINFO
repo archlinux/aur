@@ -1,0 +1,12 @@
+pkgbase = eigen-cmake-git
+	pkgdesc = Eigen configuration files for CMake
+	pkgver = r2.d334930
+	pkgrel = 1
+	url = http://github.com/Conte91/eigen-cmake
+	arch = any
+	license = custom:"Beerware"
+	source = git+https://github.com/Conte91/eigen-cmake.git
+	md5sums = SKIP
+
+pkgname = eigen-cmake-git
+
