@@ -1,0 +1,16 @@
+pkgbase = f2fs-tools-git
+	pkgdesc = Tools for Flash-Friendly File System (F2FS)
+	pkgver = 1.1.0.38.g57baa23
+	pkgrel = 1
+	url = http://sourceforge.net/projects/f2fs-tools/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = f2fs-tools
+	conflicts = f2fs-tools
+	source = git://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git
+	md5sums = SKIP
+
+pkgname = f2fs-tools-git
+
