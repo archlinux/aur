@@ -1,0 +1,158 @@
+diff --git a/src/misc/misc.c b/src/misc/misc.c
+index 14b1320..8bd3f59 100644
+--- a/src/misc/misc.c
++++ b/src/misc/misc.c
+@@ -103,25 +103,6 @@ guint8 rbits8(guint8 w)
+ /* ---------------------------------------------------------------------- */
+ 
+ /*
+- * Integer base-2 logarithm
+- */
+-guint log2(guint x)
+-{
+-	int y = 0;
+-
+-	x >>= 1;
+-
+-	while (x) {
+-		x >>= 1;
+-		y++;
+-	}
+-
+-	return y;
+-}
+-
+-/* ---------------------------------------------------------------------- */
+-
+-/*
+  * Gray encoding and decoding (8 bit)
+  */
+ guint8 grayencode(guint8 data)
+diff --git a/src/misc/misc.h b/src/misc/misc.h
+index 083de73..6a9cf30 100644
+--- a/src/misc/misc.h
++++ b/src/misc/misc.h
+@@ -105,25 +105,6 @@ extern inline guint8 rbits8(guint8 w)
+ /* ---------------------------------------------------------------------- */
+ 
+ /*
+- * Integer base-2 logarithm
+- */
+-extern inline guint log2(guint x)
+-{
+-	int y = 0;
+-
+-	x >>= 1;
+-
+-	while (x) {
+-		x >>= 1;
+-		y++;
+-	}
+-
+-	return y;
+-}
+-
+-/* ---------------------------------------------------------------------- */
+-
+-/*
+  * Gray encoding and decoding (8 bit)
+  */
+ extern inline guint8 grayencode(guint8 data)
+diff --git a/src/olivia/mfsk.h b/src/olivia/mfsk.h
+index 288bed3..4d5f28c 100644
+--- a/src/olivia/mfsk.h
++++ b/src/olivia/mfsk.h
+@@ -1960,7 +1960,7 @@ template <class Type=float>
+ 
+    Type *ModulatorOutput;
+ 
+-   RateConverter<Type> RateConverter; // output rate converter
++   RateConverter<Type> xRateConverter; // output rate converter
+ 
+    Type *ConverterOutput;
+ 
+@@ -1982,7 +1982,7 @@ template <class Type=float>
+        Encoder.Free();
+        Modulator.Free();
+        free(ModulatorOutput); ModulatorOutput=0;
+-	   RateConverter.Free();
++	   xRateConverter.Free();
+        free(ConverterOutput); ConverterOutput=0; }
+ 
+    // set default primary parameters
+@@ -2027,8 +2027,8 @@ template <class Type=float>
+        if(ReallocArray(&ModulatorOutput,Modulator.SymbolSepar)<0) goto Error;
+ 
+        // preset the rate converter
+-       RateConverter.OutputRate=OutputSampleRate/SampleRate;
+-	   if(RateConverter.Preset()<0) goto Error;
++       xRateConverter.OutputRate=OutputSampleRate/SampleRate;
++	   if(xRateConverter.Preset()<0) goto Error;
+ 
+        MaxOutputLen=(size_t)ceil(Modulator.SymbolSepar*OutputSampleRate/SampleRate+2);
+        if(ReallocArray(&ConverterOutput,MaxOutputLen)<0) goto Error;
+@@ -2046,7 +2046,7 @@ template <class Type=float>
+ 	   Monitor.Reset();
+        SymbolPtr=0;
+        State=0;
+-	   RateConverter.Reset(); }
++	   xRateConverter.Reset(); }
+ 
+    Type BaudRate(void)
+    { return SampleRate/Modulator.SymbolSepar; }
+@@ -2102,7 +2102,7 @@ template <class Type=float>
+ 	   { Modulator.Send(Encoder.OutputBlock[SymbolPtr]);
+          SymbolPtr+=1; if(SymbolPtr>=SymbolsPerBlock) SymbolPtr=0; }
+        int ModLen=Modulator.Output(ModulatorOutput);
+-	   int ConvLen=RateConverter.Process(ModulatorOutput,ModLen,ConverterOutput);
++	   int ConvLen=xRateConverter.Process(ModulatorOutput,ModLen,ConverterOutput);
+        if(ConvLen<0) return ConvLen;
+        ConvertToS16(ConverterOutput,Buffer,ConvLen);
+ 	   return ConvLen; }
+@@ -2209,7 +2209,7 @@ template <class Type=float>
+ 
+   private:
+ 
+-   RateConverter<Type> RateConverter;
++   RateConverter<Type> xRateConverter;
+ 
+    Seq<Type> InputBuffer;
+ 
+@@ -2267,7 +2267,7 @@ template <class Type=float>
+            DecodePipe[Idx].Free();
+          free(DecodePipe); DecodePipe=0; }
+ 
+-       RateConverter.Free();
++       xRateConverter.Free();
+        InputBuffer.Free();
+        InputProcessor.Free();
+        Demodulator.Free();
+@@ -2305,8 +2305,8 @@ template <class Type=float>
+        BitsPerSymbol=Log2(Tones);
+        Tones=Exp2(BitsPerSymbol);
+ 
+-       RateConverter.OutputRate=SampleRate/InputSampleRate;
+-       if(RateConverter.Preset()<0) goto Error;
++       xRateConverter.OutputRate=SampleRate/InputSampleRate;
++       if(xRateConverter.Preset()<0) goto Error;
+ 
+        Demodulator.BitsPerSymbol=BitsPerSymbol;
+        Demodulator.SymbolLen=Exp2(BitsPerSymbol+7-Log2(Bandwidth/125));
+@@ -2383,7 +2383,7 @@ template <class Type=float>
+    void Reset(void)
+      { size_t Idx;
+ 
+-       RateConverter.Reset();
++       xRateConverter.Reset();
+ 
+        InputBuffer.Clear();
+ 
+@@ -2458,7 +2458,7 @@ template <class Type=float>
+    // process an audio batch: first the input processor, then the demodulator
+    template <class InpType>
+     int Process(InpType *Input, size_t InputLen)
+-     { if(RateConverter.Process(Input, InputLen, InputBuffer)<0) return -1;
++     { if(xRateConverter.Process(Input, InputLen, InputBuffer)<0) return -1;
+        ProcessInputBuffer();
+ 	   return 0; }
+ 

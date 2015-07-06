@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=gMFSK
+Name[en_US]=gMFSK
+Comment=Ham Radio client for Digital modes
+Comment[en_US]=Ham Radio client for Digital modes
+Exec=gmfsk
+Icon=gmfsk
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
