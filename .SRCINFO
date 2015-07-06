@@ -1,0 +1,14 @@
+pkgbase = neatroff_dat
+	pkgdesc = The set of basic troff macros and an output device for neatroff.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://litcave.rudi.ir/
+	arch = any
+	license = Lucent Public License
+	source = http://litcave.rudi.ir/neatroff_dat-0.5.tar.gz
+	md5sums = da45fc94ca4f16d4465a0808dfa21d10
+	sha1sums = ddef3d2da01d0c601efa511c885849bb44934765
+	sha256sums = 4534e91f2f00fc1f14451187b1b063f91cd2d4de8867baead07258e7a1561051
+
+pkgname = neatroff_dat
+
