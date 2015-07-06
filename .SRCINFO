@@ -1,6 +1,6 @@
 pkgbase = sxemacs-git
 	pkgdesc = A derivation of xemacs - git checkout
-	pkgver = 22.1.15.184.g56c8b09
+	pkgver = 22.1.15.185.gf413897
 	pkgrel = 1
 	url = http://www.sxemacs.org/
 	install = sxemacs.install
