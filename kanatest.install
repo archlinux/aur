@@ -1,0 +1,18 @@
+post_install() {
+  cat << EOF
+> If you get garbage instead of kana characters, then go to preferences and select
+> a Japanese friendly font, for example:
+>
+> - FreeSerif or FreeSans (package: ttf-freefont)
+> - AR PL ShanHeiSun Uni  (package: ttf-arphic-uming)
+> - AR PL ZenKai Uni      (package: ttf-arphic-ukai)
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+op=$1
+shift
+$op $*
