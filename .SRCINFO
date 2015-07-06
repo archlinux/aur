@@ -1,0 +1,13 @@
+pkgbase = trinity
+	pkgdesc = A Linux System call fuzz tester
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://codemonkey.org.uk/projects/trinity/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://codemonkey.org.uk/projects/trinity/trinity-1.5.tar.xz
+	md5sums = 79ed682dd0f31fc4bdef4b77919759fa
+
+pkgname = trinity
+
