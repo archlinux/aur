@@ -1,0 +1,165 @@
+.TH gridloc 1 "February 03, 2003" "gridloc" "Linux Reference Manual"
+.RS
+gridloc 0.5-beta User Manual
+.RS
+.IP 1. 4
+Introduction
+.IP 2. 4
+Installation
++ Customization
++ Compilation
+.IP 3. 4
+Operation
+.IP 4. 4
+Keystroke Commands
+.IP 5. 4
+Known bugs and annoyances
+.IP 6. 4
+Files
+.IP 7. 4
+Version History
+.RE
+.IP 1. 4
+Introduction
+gridloc is a ncurses-based console application that accepts as input the Longitude and Latitude of a 'home' position on earth and calculates its Maidenhead Grid Locator, or given the Grid Locator of a position, calculates the Longitude and Latitude. It can also accept the position or grid locator of a second remote point on earth and calculate the bearing and distance from the home location.
+If invoked from an X terminal and if xplanet is installed, it can also display the position of home/remote locations and the great circle path graphically, overlayed on the earth's map. 
+.RE
+.PP
+
+.RS
+gridloc is a software package released under the GNU General Public License and in the form of source-code files in the C programming language, developed on a UP1000 Alpha computer with SuSE Linux 7.0 installed. 
+.RE
+.PP
+
+.RS
+.IP 2. 4
+Installation
+.RE
+.PP
+
+.RS
+Customization
+gridloc is a simple application and it is customized by editing a few entries in the gridloc.h header file. In previous versions, the 'Home' location's position and name were #define'd in the header file but now they have been moved to a configuration file (/etc/.gridlocrc). This file is then copied to the user's home (~) directory as neeed. Now only some #define's for the color scheme of the window remain in the header file but these can be left alone. 
+.RE
+.PP
+
+.RS
+Compilation
+To compile just type make in the gridloc source directory. To test run, type ./gridloc in the gridloc directory to run the binary. Type make install to copy the gridloc binary to /usr/local/bin, this gridloc.html manual to /usr/local/doc and the config file .gridlocrc to the home directory. Type make uninstall to remove these files. Type make clean to remove object files from the source directory and make distclean to remove all but the files included in the source package. 
+.RE
+.PP
+
+.RS
+.IP 3. 4
+Operation
+NOTE: The runtime config file ~/.gridlocrc should be edited before running gridloc! This can be done in you favorite editor and only requires two entries, the 'Home' location's position and its name. Please see the /etc/.gridlocrc file for more details. If you edit the /etc/gridloc file and erase the ~/.gridlocrc file, it will be replaced by the /etc/gridlocrc file.
+.RE
+.PP
+
+.RS
+Start gridloc and enter a position as longitude/latitude in degrees, minutes and seconds of arc, then type 'g' to calculate the grid locator. You may type 'd' to enter the default HOME position from the configuration file. Please note that blank position fields are read as a zero value by default. The 'return' key toggles the East/West and North/South flags ahead of longitude and latitude entries. 
+.RE
+.PP
+
+.RS
+Enter a Maidenhead grid locator (all six characters) and type 'p' or RETURN to calculate the longitude/latitude of the position. Please note that blank or lower case characters in the locator field will produce erroneous results. 
+.RE
+.PP
+
+.RS
+To calculate bearing and distance to a second 'remote' point, enter the longitude/latitude or the grid locator and type 'b'. Both short path and long path bearings (in degrees) and distances (in km) are calculated along a great circle path. If running gridloc in a terminal in X, the 'X' key enables plotting of the home and Remote positions and great circle arc between them using xplanet. 
+.RE
+.PP
+
+.RS
+Navigation between the data entry fields: The TAB key moves input focus to the next (right) field. The 'left' and 'right' arrow keys move the cursor to the previous or next character in a field. Additionally, the 'left' arrow moves the input focus to the Locator field when the cursor is in the Longitude Direction (East/West) field. The 'up' and 'down' arrows move the cursor from the 'Home' row to the 'Remote' row and vice-versa. ESC or 'q' quits gridloc. 
+.RE
+.PP
+
+.RS
+.IP 4. 4
+Keystroke Commands
+<d> Enter the default 'Home' position parameters as specified in the ~/.gridlocrc file into the top row. 
+.RE
+.PP
+
+.RS
+<g> Calculate the Maidenhead Grid Locator of a position, given longitude and latitude. 
+.RE
+.PP
+
+.RS
+<p> Calculate a position's longitude and latitude given a Maidenhead Grid Locator. 
+.RE
+.PP
+
+.RS
+<b> Calculate the bearing and distance to a remote position given its longitude/latitude or grid locator. 
+.RE
+.PP
+
+.RS
+<x> Enable the display of home/remote positions and a Great Circle arc using xplanet. This works if gridloc is started from an X terminal. 
+.RE
+.PP
+
+.RS
+<q> or ESC Quit gridloc. 
+.RE
+.PP
+
+.RS
+Please note that only lower case characters are accepted, to avoid mis-operation when entering grid locator characters in uppercase. 
+.RE
+.PP
+
+.RS
+.IP 5. 4
+Known bugs and annoyances
+I have fixed all bugs I have found. However the validation of input data is not reliable, because of the way ncurses checks entries, for example integer ranges and regular expressions are checked at exit from a field. It is then possible to enter invalid data in a field and do a calculation with erroneous input and output. To be safer, type return after entering data to activate the ncurses validation functions. 
+.RE
+.PP
+
+.RS
+.IP 6. 4
+Files
+gridloc is built from three C source files, a header file and a simple Makefile. Each file is written, as far as I could, so as to be reusable and limited to functions of similar or related functionality. All New Curses display functions are in ncscreen.c. All position/locator calculations are in calculate.c. The main() function and some flag and signal handling functions are in main.c. Some customizable color definitions are in gridloc.h. The 'Home' location's position and name are entered in the ~/.gridlocrc config file, which should be edited by the user. 
+.RE
+.PP
+
+.RS
+.IP 7. 4
+Version History
+Version 0.1_beta is the first public beta release of gridloc after bug-fixing and testing locally. 
+.RE
+.PP
+
+.RS
+Version 0.2_beta incorporates a fix for a silly bug that should have been obvious but got away - keystroke command characters typed in the Grid Locator fields would launch the commands, stopping data entry. 
+.RE
+.PP
+
+.RS
+Version 0.3 has targets in the Makefile to support make install, uninstall, clean and distclean and it also has this HTML format manual. 
+.RE
+.PP
+
+.RS
+Version 0.4 incorporates a fix for a bug that caused incorrect bearing and distance calculations for certain grid locator pairs. 
+.RE
+.PP
+
+.RS
+Version 0.5 From this version on, the 'Home' location's position (Longitude and Latitude) are entered in a runtime config file, /etc/.gridlocrc. This file is then copied to the user's home (~) directory as neeed. This file must be edited to include the desired location's data. 
+.RE
+.PP
+
+.RS
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details: 
+.RE
+.PP
+
+.RS
+Neoklis Kyriazis 31 Jan 2003. 
+.PP
+Last modified: Sat Feb 1 15:03:44 EET 2003
