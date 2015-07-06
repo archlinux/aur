@@ -1,0 +1,20 @@
+pkgbase = vim-bettersearch-git
+	pkgdesc = Provide better search functionality by capturing all matched line
+	pkgver = 20140804
+	pkgrel = 1.2
+	url = http://www.vim.org/scripts/script.php?script_id=4241
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	depends = git
+	provides = vim-bettersearch
+	conflicts = vim-bettersearch
+	replaces = vim-bettersearch
+	source = git+https://github.com/vim-scripts/betterSearch.vim.git
+	sha256sums = SKIP
+
+pkgname = vim-bettersearch-git
+
