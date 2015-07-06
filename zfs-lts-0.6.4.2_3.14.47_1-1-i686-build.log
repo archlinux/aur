@@ -1,0 +1,861 @@
+autoreconf: Entering directory `.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force -I config
+autoreconf: configure.ac: tracing
+autoreconf: running: libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'config'.
+libtoolize: copying file 'config/libtool.m4'
+libtoolize: copying file 'config/ltoptions.m4'
+libtoolize: copying file 'config/ltsugar.m4'
+libtoolize: copying file 'config/ltversion.m4'
+libtoolize: copying file 'config/lt~obsolete.m4'
+autoreconf: running: /usr/bin/autoconf --force
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+Unescaped left brace in regex is deprecated, passed through in regex; marked by <-- HERE in m/\${ <-- HERE ([^ \t=:+{}]+)}/ at /usr/bin/automake line 3936.
+configure.ac:49: installing 'config/compile'
+configure.ac:42: installing 'config/missing'
+cmd/mount_zfs/Makefile.am:14: warning: source file '$(top_srcdir)/cmd/mount_zfs/mount_zfs.c' is in a subdirectory,
+cmd/mount_zfs/Makefile.am:14: but option 'subdir-objects' is disabled
+automake: warning: possible forward-incompatibility.
+automake: At least a source file is in a subdirectory, but the 'subdir-objects'
+automake: automake option hasn't been enabled.  For now, the corresponding output
+automake: object file(s) will be placed in the top-level directory.  However,
+automake: this behaviour will change in future Automake versions: they will
+automake: unconditionally cause object files to be placed in the same subdirectory
+automake: of the corresponding sources.
+automake: You are advised to start using 'subdir-objects' option throughout your
+automake: project, to avoid future incompatibilities.
+cmd/mount_zfs/Makefile.am: installing 'config/depcomp'
+cmd/zdb/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zdb/zdb.c' is in a subdirectory,
+cmd/zdb/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zdb/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zdb/zdb_il.c' is in a subdirectory,
+cmd/zdb/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed_conf.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed_event.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed_exec.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed_file.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed_log.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zed/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zed/zed_strings.c' is in a subdirectory,
+cmd/zed/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zfs/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zfs/zfs_iter.c' is in a subdirectory,
+cmd/zfs/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zfs/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zfs/zfs_main.c' is in a subdirectory,
+cmd/zfs/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zhack/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zhack/zhack.c' is in a subdirectory,
+cmd/zhack/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zinject/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zinject/translate.c' is in a subdirectory,
+cmd/zinject/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zinject/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zinject/zinject.c' is in a subdirectory,
+cmd/zinject/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zpios/Makefile.am:8: warning: source file '$(top_srcdir)/cmd/zpios/zpios_main.c' is in a subdirectory,
+cmd/zpios/Makefile.am:8: but option 'subdir-objects' is disabled
+cmd/zpios/Makefile.am:8: warning: source file '$(top_srcdir)/cmd/zpios/zpios_util.c' is in a subdirectory,
+cmd/zpios/Makefile.am:8: but option 'subdir-objects' is disabled
+cmd/zpool/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zpool/zpool_iter.c' is in a subdirectory,
+cmd/zpool/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zpool/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zpool/zpool_main.c' is in a subdirectory,
+cmd/zpool/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zpool/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zpool/zpool_util.c' is in a subdirectory,
+cmd/zpool/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zpool/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zpool/zpool_vdev.c' is in a subdirectory,
+cmd/zpool/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/zstreamdump/Makefile.am:9: warning: source file '$(top_srcdir)/cmd/zstreamdump/zstreamdump.c' is in a subdirectory,
+cmd/zstreamdump/Makefile.am:9: but option 'subdir-objects' is disabled
+cmd/ztest/Makefile.am:11: warning: source file '$(top_srcdir)/cmd/ztest/ztest.c' is in a subdirectory,
+cmd/ztest/Makefile.am:11: but option 'subdir-objects' is disabled
+cmd/zvol_id/Makefile.am:13: warning: source file '$(top_srcdir)/cmd/zvol_id/zvol_id_main.c' is in a subdirectory,
+cmd/zvol_id/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libavl/Makefile.am:11: warning: source file '$(top_srcdir)/module/avl/avl.c' is in a subdirectory,
+lib/libavl/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libefi/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libefi/rdwr_efi.c' is in a subdirectory,
+lib/libefi/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libnvpair/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libnvpair/libnvpair.c' is in a subdirectory,
+lib/libnvpair/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libnvpair/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libnvpair/nvpair_alloc_system.c' is in a subdirectory,
+lib/libnvpair/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libnvpair/Makefile.am:11: warning: source file '$(top_srcdir)/module/nvpair/nvpair_alloc_fixed.c' is in a subdirectory,
+lib/libnvpair/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libnvpair/Makefile.am:11: warning: source file '$(top_srcdir)/module/nvpair/nvpair.c' is in a subdirectory,
+lib/libnvpair/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libnvpair/Makefile.am:11: warning: source file '$(top_srcdir)/module/nvpair/fnvpair.c' is in a subdirectory,
+lib/libnvpair/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libshare/Makefile.am:9: warning: source file '$(top_srcdir)/lib/libshare/libshare.c' is in a subdirectory,
+lib/libshare/Makefile.am:9: but option 'subdir-objects' is disabled
+lib/libshare/Makefile.am:9: warning: source file '$(top_srcdir)/lib/libshare/nfs.c' is in a subdirectory,
+lib/libshare/Makefile.am:9: but option 'subdir-objects' is disabled
+lib/libshare/Makefile.am:9: warning: source file '$(top_srcdir)/lib/libshare/smb.c' is in a subdirectory,
+lib/libshare/Makefile.am:9: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/getexecname.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/gethrtime.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/gethrestime.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/getmntany.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/list.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/mkdirp.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/strlcat.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/strlcpy.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/strnlen.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/timestamp.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/zone.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/xdr.c' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libspl/Makefile.am:16: warning: source file '$(top_srcdir)/lib/libspl/$(TARGET_ASM_DIR)/atomic.S' is in a subdirectory,
+lib/libspl/Makefile.am:16: but option 'subdir-objects' is disabled
+lib/libunicode/Makefile.am:11: warning: source file '$(top_srcdir)/module/unicode/u8_textprep.c' is in a subdirectory,
+lib/libunicode/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libunicode/Makefile.am:11: warning: source file '$(top_srcdir)/module/unicode/uconv.c' is in a subdirectory,
+lib/libunicode/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_alloc.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_avl.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_dprintf.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_ident.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_list.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_misc.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_open.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_pname.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_string.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libuutil/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libuutil/uu_strtoint.c' is in a subdirectory,
+lib/libuutil/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_changelist.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_config.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_dataset.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_diff.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_fru.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_graph.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_import.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_iter.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_mount.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_pool.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_sendrecv.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_status.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs/Makefile.am:13: warning: source file '$(top_srcdir)/lib/libzfs/libzfs_util.c' is in a subdirectory,
+lib/libzfs/Makefile.am:13: but option 'subdir-objects' is disabled
+lib/libzfs_core/Makefile.am:9: warning: source file '$(top_srcdir)/lib/libzfs_core/libzfs_core.c' is in a subdirectory,
+lib/libzfs_core/Makefile.am:9: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libzpool/kernel.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libzpool/taskq.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/lib/libzpool/util.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zfs_comutil.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zfs_deleg.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zfs_fletcher.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zfs_namecheck.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zfs_prop.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zfs_uio.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zpool_prop.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zcommon/zprop_common.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/arc.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/blkptr.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/bplist.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/bpobj.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/bptree.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dbuf.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dbuf_stats.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/ddt.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/ddt_zap.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_diff.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_object.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_objset.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_send.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_traverse.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_tx.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dmu_zfetch.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dnode.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dnode_sync.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_bookmark.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_dataset.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_deadlist.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_deleg.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_dir.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_pool.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_prop.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_scan.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_synctask.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_destroy.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/dsl_userhold.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/fm.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/gzip.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/lzjb.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/lz4.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/metaslab.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/range_tree.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/refcount.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/rrwlock.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/sa.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/sha256.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa_boot.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa_config.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa_errlog.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa_history.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa_misc.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/spa_stats.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/space_map.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/space_reftree.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/txg.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/trace.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/uberblock.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/unique.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_cache.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_file.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_label.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_mirror.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_missing.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_queue.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_raidz.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/vdev_root.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zap.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zap_leaf.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zap_micro.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfeature.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfeature_common.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfs_byteswap.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfs_debug.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfs_fm.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfs_fuid.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfs_sa.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zfs_znode.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zil.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zio.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zio_checksum.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zio_compress.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zio_inject.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zle.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+lib/libzpool/Makefile.am:11: warning: source file '$(top_srcdir)/module/zfs/zrlock.c' is in a subdirectory,
+lib/libzpool/Makefile.am:11: but option 'subdir-objects' is disabled
+autoreconf: Leaving directory `.'
+checking for gawk... gawk
+checking metadata... META file
+checking build system type... i686-pc-linux-gnu
+checking host system type... i686-pc-linux-gnu
+checking target system type... i686-pc-linux-gnu
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether make supports nested variables... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking whether make sets $(MAKE)... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert i686-pc-linux-gnu file names to i686-pc-linux-gnu format... func_convert_file_noop
+checking how to convert i686-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking how to run the C preprocessor... gcc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking dependency style of gcc... gcc3
+checking zfs author... OpenZFS on Linux
+checking zfs license... CDDL
+checking linux distribution... arch
+checking default package type... tgz
+checking default init directory... /etc/init.d
+checking default init script type... lsb
+checking whether rpm is available... no
+checking whether rpmbuild is available... no
+checking whether spec files are available... yes (rpm/generic/*.spec.in)
+checking whether dpkg is available... no
+checking whether dpkg-buildpackage is available... no
+checking whether alien is available... no
+checking zfs config... kernel
+checking for -Wno-unused-but-set-variable support... yes
+checking kernel source directory... /usr/lib/modules/3.14.47-1-lts/build
+checking kernel build directory... /usr/lib/modules/3.14.47-1-lts/build
+checking kernel source version... 3.14.47-1-lts
+checking kernel file name for module symbols... Module.symvers
+checking spl source directory... /usr/src/spl-0.6.4.2
+checking spl build directory... /usr/src/spl-0.6.4.2/3.14.47-1-lts
+checking spl source version... 0.6.4.2-1
+checking spl file name for module symbols... Module.symvers
+checking whether modules can be built... yes
+checking whether Linux was built with CONFIG_DEBUG_LOCK_ALLOC... no
+checking whether DECLARE_EVENT_CLASS() is available... no
+checking block device operation prototypes... struct block_device
+checking whether block_device_operations.release is void... void
+checking whether kernel defines fmode_t... yes
+checking whether kernel defines KOBJ_NAME_LEN... no
+checking whether blkdev_get() wants 3 args... yes
+checking whether blkdev_get_by_path() is available... yes
+checking whether open_bdev_exclusive() is available... no
+checking whether lookup_bdev() is available... yes
+checking whether invalidate_bdev() wants 1 arg... yes
+checking whether bdev_logical_block_size() is available... yes
+checking whether bdev_physical_block_size() is available... yes
+checking whether bio has bi_iter... yes
+checking whether BIO_RW_FAILFAST is defined... no
+checking whether BIO_RW_FAILFAST_* are defined... no
+checking whether REQ_FAILFAST_MASK is defined... yes
+checking whether bio_end_io_t wants 2 args... yes
+checking whether BIO_RW_SYNC is defined... no
+checking whether BIO_RW_SYNCIO is defined... no
+checking whether REQ_SYNC is defined... yes
+checking whether blk_end_request() is available... yes
+checking whether blk_end_request() is GPL-only... no
+checking whether blk_queue_flush() is available... yes
+checking whether blk_queue_flush() is GPL-only... yes
+checking whether blk_queue_max_hw_sectors() is available... yes
+checking whether blk_queue_max_segments() is available... yes
+checking whether blk_queue_physical_block_size() is available... yes
+checking whether blk_queue_io_opt() is available... yes
+checking whether blk_queue_nonrot() is available... yes
+checking whether blk_queue_discard() is available... yes
+checking whether blk_fetch_request() is available... yes
+checking whether blk_requeue_request() is available... yes
+checking whether blk_rq_bytes() is available... yes
+checking whether blk_rq_bytes() is GPL-only... no
+checking whether blk_rq_pos() is available... yes
+checking whether blk_rq_sectors() is available... yes
+checking whether get_disk_ro() is available... yes
+checking whether get_gendisk() is available... yes
+checking whether rq_is_sync() is available... yes
+checking whether rq_for_each_segment() wants bio_vec *... no
+checking whether rq_for_each_segment() wants bio_vec... yes
+checking whether ql->discard_granularity is available... yes
+checking whether super_block uses const struct xattr_hander... yes
+checking whether xattr_handler->get() wants dentry... yes
+checking whether xattr_handler->set() wants dentry... yes
+checking whether xattr_handler->list() wants dentry... yes
+checking whether inode_owner_or_capable() exists... yes
+checking whether posix_acl_from_xattr() needs user_ns... yes
+checking whether posix_acl_release() is available... yes
+checking whether posix_acl_release() is GPL-only... yes
+checking whether posix_acl_chmod exists... no
+checking whether __posix_acl_chmod exists... yes
+checking whether inode has i_acl and i_default_acl... yes
+checking whether posix_acl_equiv_mode() wants umode_t... yes
+checking whether iops->permission() exists... yes
+checking whether iops->permission() wants nameidata... no
+checking whether iops->check_acl() exists... no
+checking whether iops->check_acl() wants flags... no
+checking whether iops->get_acl() exists... yes
+checking whether current_umask exists... yes
+checking whether sops->show_options() wants dentry... yes
+checking whether file_inode() is available... yes
+checking whether fops->fsync() wants... range
+checking whether sops->evict_inode() exists... yes
+checking whether sops->dirty_inode() wants flags... yes
+checking whether sops->nr_cached_objects() exists... no
+checking whether sops->free_cached_objects() exists... no
+checking whether fops->fallocate() exists... yes
+checking whether iops->fallocate() exists... no
+checking whether iops->create()/mkdir()/mknod() take umode_t... yes
+checking whether iops->lookup() takes struct nameidata... no
+checking whether iops->create() takes struct nameidata... no
+checking whether iops->truncate_range() exists... no
+checking whether dops->d_automount() exists... yes
+checking whether eops->encode_fh() wants inode... yes
+checking whether eops->commit_metadata() exists... yes
+checking whether clear_inode() is available... yes
+checking whether insert_inode_locked() is available... yes
+checking whether d_make_root() is available... yes
+checking whether d_obtain_alias() is available... yes
+checking whether d_prune_aliases() is available... yes
+checking whether d_set_d_op() is available... yes
+checking whether dops->d_revalidate() takes struct nameidata... no
+checking whether dentry uses const struct dentry_operations... yes
+checking whether check_disk_size_change() is available... yes
+checking whether truncate_setsize() is available... yes
+checking whether security_inode_init_security wants 6 args... no
+checking whether security_inode_init_security wants callback... yes
+checking whether mount_nodev() is available... yes
+checking whether super_block has s_shrink... no
+checking whether shrink_control has nid... yes
+checking whether super_block has s_instances list_head... no
+checking whether super_block has s_d_op... yes
+checking whether bdi_setup_and_register() wants 2 args... no
+checking whether bdi_setup_and_register() wants 3 args... yes
+checking whether set_nlink() is available... yes
+checking whether elevator_change() is available... yes
+checking whether sget() wants 5 args... yes
+checking whether lseek_execute() is available... no
+checking whether fops->iterate() is available... yes
+checking whether fops->read/write_iter() are available... no
+checking whether debugging is enabled... no
+checking whether dmu tx validation is enabled... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating dracut/Makefile
+config.status: creating dracut/90zfs/Makefile
+config.status: creating udev/Makefile
+config.status: creating udev/rules.d/Makefile
+config.status: creating etc/Makefile
+config.status: creating etc/init.d/Makefile
+config.status: creating etc/zfs/Makefile
+config.status: creating etc/systemd/Makefile
+config.status: creating etc/systemd/system/Makefile
+config.status: creating etc/modules-load.d/Makefile
+config.status: creating man/Makefile
+config.status: creating man/man1/Makefile
+config.status: creating man/man5/Makefile
+config.status: creating man/man8/Makefile
+config.status: creating lib/Makefile
+config.status: creating lib/libspl/Makefile
+config.status: creating lib/libspl/asm-generic/Makefile
+config.status: creating lib/libspl/asm-i386/Makefile
+config.status: creating lib/libspl/asm-x86_64/Makefile
+config.status: creating lib/libspl/include/Makefile
+config.status: creating lib/libspl/include/ia32/Makefile
+config.status: creating lib/libspl/include/ia32/sys/Makefile
+config.status: creating lib/libspl/include/rpc/Makefile
+config.status: creating lib/libspl/include/sys/Makefile
+config.status: creating lib/libspl/include/sys/sysevent/Makefile
+config.status: creating lib/libspl/include/sys/dktp/Makefile
+config.status: creating lib/libspl/include/util/Makefile
+config.status: creating lib/libavl/Makefile
+config.status: creating lib/libefi/Makefile
+config.status: creating lib/libnvpair/Makefile
+config.status: creating lib/libunicode/Makefile
+config.status: creating lib/libuutil/Makefile
+config.status: creating lib/libzpool/Makefile
+config.status: creating lib/libzfs/libzfs.pc
+config.status: creating lib/libzfs/libzfs_core.pc
+config.status: creating lib/libzfs/Makefile
+config.status: creating lib/libzfs_core/Makefile
+config.status: creating lib/libshare/Makefile
+config.status: creating cmd/Makefile
+config.status: creating cmd/zdb/Makefile
+config.status: creating cmd/zhack/Makefile
+config.status: creating cmd/zfs/Makefile
+config.status: creating cmd/zinject/Makefile
+config.status: creating cmd/zpool/Makefile
+config.status: creating cmd/zstreamdump/Makefile
+config.status: creating cmd/ztest/Makefile
+config.status: creating cmd/zpios/Makefile
+config.status: creating cmd/mount_zfs/Makefile
+config.status: creating cmd/fsck_zfs/Makefile
+config.status: creating cmd/zvol_id/Makefile
+config.status: creating cmd/vdev_id/Makefile
+config.status: creating cmd/arcstat/Makefile
+config.status: creating cmd/dbufstat/Makefile
+config.status: creating cmd/arc_summary/Makefile
+config.status: creating cmd/zed/Makefile
+config.status: creating contrib/Makefile
+config.status: creating contrib/bash_completion.d/Makefile
+config.status: creating module/Makefile
+config.status: creating module/avl/Makefile
+config.status: creating module/nvpair/Makefile
+config.status: creating module/unicode/Makefile
+config.status: creating module/zcommon/Makefile
+config.status: creating module/zfs/Makefile
+config.status: creating module/zpios/Makefile
+config.status: creating include/Makefile
+config.status: creating include/linux/Makefile
+config.status: creating include/sys/Makefile
+config.status: creating include/sys/fs/Makefile
+config.status: creating include/sys/fm/Makefile
+config.status: creating include/sys/fm/fs/Makefile
+config.status: creating scripts/Makefile
+config.status: creating scripts/zpios-profile/Makefile
+config.status: creating scripts/zpios-test/Makefile
+config.status: creating scripts/zpool-config/Makefile
+config.status: creating scripts/common.sh
+config.status: creating rpm/Makefile
+config.status: creating rpm/redhat/Makefile
+config.status: creating rpm/redhat/zfs.spec
+config.status: creating rpm/redhat/zfs-kmod.spec
+config.status: creating rpm/redhat/zfs-dkms.spec
+config.status: creating rpm/generic/Makefile
+config.status: creating rpm/generic/zfs.spec
+config.status: creating rpm/generic/zfs-kmod.spec
+config.status: creating rpm/generic/zfs-dkms.spec
+config.status: creating zfs-script-config.sh
+config.status: creating zfs.release
+config.status: creating zfs_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+make  all-recursive
+make[1]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2'
+Making all in include
+make[2]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include'
+Making all in linux
+make[3]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/linux'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/linux'
+Making all in sys
+make[3]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys'
+Making all in fm
+make[4]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fm'
+Making all in fs
+make[5]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fm/fs'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fm/fs'
+make[5]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fm'
+make[5]: Nothing to be done for 'all-am'.
+make[5]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fm'
+make[4]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fm'
+Making all in fs
+make[4]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fs'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys/fs'
+make[4]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys'
+make[3]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include/sys'
+make[3]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/include'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include'
+make[2]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/include'
+Making all in rpm
+make[2]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm'
+Making all in generic
+make[3]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm/generic'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm/generic'
+Making all in redhat
+make[3]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm/redhat'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm/redhat'
+make[3]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm'
+make[2]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/rpm'
+Making all in module
+make[2]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2/module'
+make -C /usr/lib/modules/3.14.47-1-lts/build SUBDIRS=`pwd`  CONFIG_ZFS=m modules
+make[3]: Entering directory '/usr/lib/modules/3.14.47-1-lts/build'
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zfs_deleg.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/../../module/nvpair/nvpair.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/avl/../../module/avl/avl.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/unicode/../../module/unicode/u8_textprep.o
+/build/zfs-lts/src/zfs-0.6.4.2/module/avl/../../module/avl/avl.c: In function 'avl_add':
+/build/zfs-lts/src/zfs-0.6.4.2/module/avl/../../module/avl/avl.c:636:2: warning: 'where' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  avl_insert(tree, new_node, where);
+  ^
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/avl/zavl.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zfs_prop.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/../../module/nvpair/fnvpair.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zprop_common.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/unicode/../../module/unicode/uconv.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/../../module/nvpair/nvpair_alloc_spl.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/../../module/nvpair/nvpair_alloc_fixed.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/arc.o
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/znvpair.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/blkptr.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zfs_namecheck.o
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/unicode/zunicode.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zfs_comutil.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zfs_fletcher.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/bplist.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zpios/../../module/zpios/pios.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zfs_uio.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/../../module/zcommon/zpool_prop.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/bpobj.o
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/zcommon.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dbuf.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dbuf_stats.o
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zpios/zpios.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/bptree.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/ddt.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/ddt_zap.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_diff.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_object.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_objset.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_send.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_traverse.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_tx.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dmu_zfetch.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dnode.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dnode_sync.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_dataset.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_deadlist.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_deleg.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_bookmark.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_dir.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_pool.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_prop.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_scan.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_synctask.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/fm.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/gzip.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/lzjb.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/lz4.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/metaslab.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/range_tree.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/refcount.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/rrwlock.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/sa.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/sha256.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa_boot.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa_config.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa_errlog.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa_history.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa_misc.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/spa_stats.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/space_map.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/space_reftree.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/txg.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/trace.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/uberblock.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/unique.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_cache.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_disk.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_file.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_label.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_mirror.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_missing.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_queue.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_raidz.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/vdev_root.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zap.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zap_leaf.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zap_micro.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfeature.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfeature_common.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_acl.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_byteswap.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_ctldir.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_debug.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_dir.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_fm.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_fuid.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_ioctl.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_log.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_onexit.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_replay.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_rlock.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_sa.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_vfsops.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_vnops.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zfs_znode.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zil.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zio.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zio_checksum.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zio_compress.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zio_inject.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zle.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zpl_ctldir.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zpl_export.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zpl_file.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zpl_inode.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zpl_super.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zpl_xattr.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zrlock.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zvol.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_destroy.o
+  CC [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/dsl_userhold.o
+In file included from /build/zfs-lts/src/zfs-0.6.4.2/include/linux/blkdev_compat.h:32:0,
+                 from /build/zfs-lts/src/zfs-0.6.4.2/include/sys/dmu.h:614,
+                 from /build/zfs-lts/src/zfs-0.6.4.2/include/sys/dbuf.h:30,
+                 from /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zvol.c:38:
+/build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zvol.c: In function 'zvol_request':
+include/linux/blkdev.h:602:26: warning: switch condition has boolean value [-Wswitch-bool]
+ #define rq_data_dir(rq)  (((rq)->cmd_flags & 1) != 0)
+                          ^
+/build/zfs-lts/src/zfs-0.6.4.2/module/zfs/../../module/zfs/zvol.c:767:11: note: in expansion of macro 'rq_data_dir'
+   switch (rq_data_dir(req)) {
+           ^
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/zfs.o
+  Building modules, stage 2.
+  MODPOST 6 modules
+  CC      /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/znvpair.mod.o
+  CC      /build/zfs-lts/src/zfs-0.6.4.2/module/avl/zavl.mod.o
+  CC      /build/zfs-lts/src/zfs-0.6.4.2/module/unicode/zunicode.mod.o
+  CC      /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/zcommon.mod.o
+  CC      /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/zfs.mod.o
+  CC      /build/zfs-lts/src/zfs-0.6.4.2/module/zpios/zpios.mod.o
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/nvpair/znvpair.ko
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/unicode/zunicode.ko
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zcommon/zcommon.ko
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/avl/zavl.ko
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zpios/zpios.ko
+  LD [M]  /build/zfs-lts/src/zfs-0.6.4.2/module/zfs/zfs.ko
+make[3]: Leaving directory '/usr/lib/modules/3.14.47-1-lts/build'
+make[2]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2/module'
+make[2]: Entering directory '/build/zfs-lts/src/zfs-0.6.4.2'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2'
+make[1]: Leaving directory '/build/zfs-lts/src/zfs-0.6.4.2'
