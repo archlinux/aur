@@ -1,0 +1,18 @@
+pkgbase = otf-bellota
+	pkgdesc = Bellota OTF font.
+	pkgver = 20130320
+	pkgrel = 2
+	url = http://www.fontsquirrel.com/fonts/bellota
+	install = bellota.install
+	arch = any
+	license = custom:OFL
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = bellota.zip::http://www.fontsquirrel.com/fonts/download/bellota
+	source = bellota.install
+	sha256sums = SKIP
+	sha256sums = 2059531b2e07e837034ca50e251b705a83684a2849cecf4c2955a333bfeaa2e3
+
+pkgname = otf-bellota
+
