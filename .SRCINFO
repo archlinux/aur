@@ -1,0 +1,19 @@
+pkgbase = vim-tex_nine
+	pkgdesc = A semi-automatic LaTeX ftplugin with lots of firepower.
+	pkgver = 1.3.13
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=3508
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = python2
+	depends = vim
+	optdepends = texlive-bin: compile TeX files
+	source = vim-tex_nine.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=22415
+	md5sums = 3a44ec79b2bb8da015035dc9efc1c2c4
+	sha1sums = 480b76fe9db6081f396f25a7238ac2405d0c1727
+	sha256sums = 3447255bb878d66cc4d87b6fe0f7f604f1e6f0f4b32bb2e33faa10aaa81f5ab3
+
+pkgname = vim-tex_nine
+
