@@ -2,7 +2,7 @@
 # AUR Category: devel
 
 pkgname=ptxdist
-pkgver=2015.06.0
+pkgver=2015.07.0
 pkgrel=1
 pkgdesc="Embedded Linux build system"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="http://www.ptxdist.org"
 license=('GPL')
 depends=('dialog' 'flex' 'bison' 'patch' 'python2')
 source=("http://www.pengutronix.de/software/ptxdist/download/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('508c7b32b72cf80cb1c9e85e191daddd4672c1bdbc189b25f7f2035125fd4e03')
-sha512sums=('6bcbd1c864c4858fad0001d2d94950d64b0a286fa4e9c4c047f8562a3e9a9e60193da5015339c1ce8e85fa9b59da9274538a2aec1f199582acdc2bb6db26308c')
+sha256sums=('7d01cac23276c23b50b91901d9a3acfe42f8b4363f790444a6424988045206f7')
+sha512sums=('a8e5eb66b47b27dc6ed5acf40f4e7451a62015c2101b05de736b4c24d84ef76903bf40541ad6b6dca88af1b5dce94c553dcd3022a18ddd793eacfcd329ed8691')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
