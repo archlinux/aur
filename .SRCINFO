@@ -1,0 +1,16 @@
+pkgbase = gereqi-git
+	pkgdesc = Gereqi media player
+	pkgver = 20100624
+	pkgrel = 1
+	url = http://code.google.com/p/gereqi/
+	arch = any
+	license = GPL
+	depends = python
+	depends = mutagen
+	depends = python-lxml
+	depends = cddb-py
+	depends = pyinotify
+	options = !emptydirs
+
+pkgname = gereqi-git
+
