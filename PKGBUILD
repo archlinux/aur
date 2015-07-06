@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=hop-devel  
-pkgver=3.0.0_pre15
+pkgver=3.0.0_pre16
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A Software Development Kit for the Web"
@@ -14,7 +14,7 @@ provides=('hop')
 install=hop.install
 options=('!makeflags')
 source=(ftp://ftp-sop.inria.fr/indes/fp/Hop/hop-${_pkgver}.tar.gz)
-md5sums=('80fa499bc52f2a410eed21ff58c662e3')
+md5sums=('430adfe1d32a4895626b30da2fb644ad')
 
 build() {
   cd ${srcdir}/hop-${_pkgver%-2}
