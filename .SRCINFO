@@ -1,0 +1,16 @@
+pkgbase = openatrium
+	pkgdesc = Open Atrium is an intranet and project management system based on drupal
+	pkgver = 2.12
+	pkgrel = 1
+	url = http://www.openatrium.com/
+	install = openatrium.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = php
+	backup = srv/http/atrium/.htaccess
+	source = http://ftp.drupal.org/files/projects/openatrium-7.x-2.12-core.tar.gz
+	md5sums = 11018e58a824b6531b49cb096e5c5f87
+
+pkgname = openatrium
+
