@@ -1,0 +1,34 @@
+# Some colored makepkg-like functions
+msg_blue()
+{
+    printf "${BLUE}==>${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+note_blue()
+{
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE${1}:${ALL_OFF} ${2}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
+
+post_install()
+{
+    echo
+    msg_blue "Make sure you have permission to write to your 3D printer device."
+    msg_blue "If not, add your username to uucp group in /etc/group and log out."
+    echo
+    msg_blue "If you are unable to connect to your printer, change baudrate"
+    msg_blue "in File -> Preferences to 115200 (250000 is known to not work quite often)"
+    msg_blue "and restart Cura afterwards. If you see garbage in the ultimaker console"
+    msg_blue "when you connect to the printer try lowering the baudrate even more."
+    msg_blue "Don't forget to restart Cura after each change."
+    echo
+}
+
+post_upgrade()
+{
+    post_install
+}
