@@ -1,0 +1,20 @@
+pkgbase = kochmorse-git
+	pkgdesc = A simple morse tutor using the Koch method - GIT version.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/hmatuschek/kochmorse
+	install = kochmorse.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-svg
+	depends = portaudio
+	depends = libxkbcommon-x11
+	depends = desktop-file-utils
+	provides = kochmorse
+	conflicts = kochmorse
+
+pkgname = kochmorse-git
+
