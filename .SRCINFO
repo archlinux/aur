@@ -5,6 +5,7 @@ pkgbase = upass
 	url = https://github.com/Kwpolska/upass
 	arch = any
 	license = BSD
+	depends = pass
 	depends = python
 	depends = python-setuptools
 	depends = python-urwid

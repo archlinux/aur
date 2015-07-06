@@ -10,7 +10,7 @@ license=('BSD')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('ce41bbe2961dd7d655870149ead54871')
-depends=('python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
+depends=('pass' 'python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
