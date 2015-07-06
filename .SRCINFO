@@ -1,7 +1,7 @@
 pkgbase = spellutils
 	pkgdesc = Utilities to spell-check selectively
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://home.worldonline.dk/~byrial/spellutils/
 	arch = i686
 	arch = x86_64
