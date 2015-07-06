@@ -1,0 +1,16 @@
+pkgbase = perl-audio-madjack
+	pkgdesc = Talk to MadJACK server using Object Oriented Perl.
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/~/Audio-MadJACK-0.04/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-net-liblo
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/Audio-MadJACK-0.04.tar.gz
+	md5sums = 25b30009b48ed9a9d863e78e50440351
+
+pkgname = perl-audio-madjack
+
