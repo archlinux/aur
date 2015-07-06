@@ -1,0 +1,111 @@
+diff -Naur orig/build/te4core.lua new/build/te4core.lua
+--- orig/build/te4core.lua	2014-12-28 02:25:57.000000000 +0100
++++ new/build/te4core.lua	2015-02-04 22:53:57.783178696 +0100
+@@ -119,7 +119,7 @@
+ 
+ 	configuration "linux"
+ 		libdirs {"/opt/SDL-2.0/lib/"}
+-		links { "dl", "SDL2", "SDL2_ttf", "SDL2_image", "png", "openal", "vorbisfile", "GL", "GLU", "m", "pthread" }
++		links { "dl", "SDL2", "SDL2_ttf", "SDL2_image", "png", "openal", "vorbisfile", "GL", "GLU", "m", "pthread", "fontconfig" }
+ 		linkoptions { "-Wl,-E" }
+ 		defines { [[TENGINE_HOME_PATH='".t-engine"']], 'SELFEXE_LINUX' }
+ 		if steamlin64 then steamlin64() end
+diff -Naur orig/premake4.lua new/premake4.lua
+--- orig/premake4.lua	2014-05-19 10:42:14.000000000 +0200
++++ new/premake4.lua	2015-02-04 22:52:19.993180301 +0100
+@@ -30,7 +30,8 @@
+ 		}
+ 	else
+ 		includedirs {
+-			"/opt/SDL-2.0/include/SDL2",
++			"/usr/include/SDL2",
++			"/usr/include/fontconfig",
+ 			"/usr/include/GL",
+ 		}
+ 	end
+diff -Naur orig/src/core_lua.c new/src/core_lua.c
+--- orig/src/core_lua.c	2015-02-03 17:51:52.000000000 +0100
++++ new/src/core_lua.c	2015-02-04 22:51:29.329847799 +0100
+@@ -38,6 +38,7 @@
+ #include <math.h>
+ #include <time.h>
+ #include <locale.h>
++#include <fontconfig.h>
+ 
+ #ifdef __APPLE__
+ #include <libpng/png.h>
+@@ -643,12 +644,69 @@
+ 	auxiliar_setclass(L, "sdl{font}", -1);
+ 
+ 	SDL_RWops *src = PHYSFSRWOPS_openRead(name);
+-	if (!src)
+-	{
+-		return luaL_error(L, "could not load font: %s (%d)", name, size);
++	if (!src) {
++		// FontConfig
++		FcInit(); // Not very efficient, possibly not thread safe. 
++		FcChar8 *filename, *family = NULL, *style = NULL;
++		FcPattern *pattern, *match;
++		FcResult result;
++		
++		// Mapping of family and style.
++		static struct {
++			const char* fontname;
++			const char* fontfamily;
++			const char* fontstyle;
++		} mapping[] = {
++			{"Vera.ttf", "vera", "regular"},
++			{"VeraBd.ttf", "vera", "bold"},
++			{"VeraIt.ttf", "vera", "italic"},
++			{"VeraMono.ttf", "monospace", "regular"},
++			{"VeraMoBd.ttf", "monospace", "bold"},
++			{"DroidSans.ttf", "droidsans", "regular"},
++			{"DroidSansMono.ttf", "droidsansmono", "regular"},
++			{"DroidSans-Bold.ttf", "droidsans", "bold"},
++			{"DroidSerif.ttf", "droidserif", "regular"},
++			{"DroidSerif-Bold.ttf", "droidserif", "bold"},
++			{"DroidSerif-Italic.ttf", "droidserif", "italic"},
++			{"DroidSerif-BoldItalic.ttf", "droidserif", "bold italic"}
++		};
++		const int n_mappings = 12;
++		int i = 0;
++		for (i=0; i<n_mappings; ++i) {
++			if (strcmp(mapping[i].fontname, basename(name)) == 0) {
++				family = mapping[i].fontfamily;
++				style = mapping[i].fontstyle;
++			}
++		}
++		
++		// FontConfig search pattern.
++		pattern = FcPatternBuild(NULL, FC_FAMILY, FcTypeString, family, FC_STYLE, FcTypeString, style, NULL);
++		if (!pattern) {
++			return luaL_error(L, "could not find any fonts");
++		}
++		
++		// FontConfig misc.
++		FcConfigSubstitute(NULL, pattern,FcMatchPattern);
++		FcDefaultSubstitute(pattern);
++		
++		// FontConfig match font.
++		match = FcFontMatch(NULL, pattern, &result);
++		if (FcPatternGetString(match, FC_FILE, 0, &filename) == FcResultTypeMismatch) {
++			FcPatternDestroy(pattern);
++			return luaL_error(L, "could not match font for style '%s', family '%s'\n", style, family);
++		}
++		
++		// Open font.
++		*f = TTF_OpenFont((char *)filename, size);
++		
++		// Cleanup.
++		FcPatternDestroy(match);
++		FcPatternDestroy(pattern);
++		FcFini();
++	}
++	else {
++		*f = TTF_OpenFontRW(src, TRUE, size);
+ 	}
+-
+-	*f = TTF_OpenFontRW(src, TRUE, size);
+ 
+ 	if (!*f)
+ 	{
