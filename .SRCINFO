@@ -1,0 +1,16 @@
+pkgbase = managingnews
+	pkgdesc = Managing News is a robust news and data aggregation engine based on drupal
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.managingnews.com/
+	install = managingnews.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = php
+	backup = srv/http/managingnews/.htaccess
+	source = http://managingnews.com/files/managingnews-1.2.zip
+	md5sums = 62842e781d79f7e692cb9f42bda08778
+
+pkgname = managingnews
+
