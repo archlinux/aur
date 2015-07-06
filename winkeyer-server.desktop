@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Winkeyer-Server
+Comment=CW USB Keyer Access & Control
+Exec=winkeyer_server
+Terminal=false
+Type=Application
+Icon=winkeyer-server.png
+Categories=Utility;Database;HamRadio
+
