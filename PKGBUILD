@@ -8,7 +8,7 @@
 
 pkgname=swi-prolog-devel
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
 url='http://www.swi-prolog.org/'
