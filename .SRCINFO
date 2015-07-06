@@ -1,0 +1,18 @@
+pkgbase = ttf-lato
+	pkgdesc = a sanserif type­face family
+	pkgver = 2.010
+	pkgrel = 1
+	url = http://www.latofonts.com/lato-free-fonts/
+	install = install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = ttf-lato-2.010::http://www.latofonts.com/download/Lato2OFL.zip
+	source = install
+	sha256sums = 367c730f64f4d1731e4d3ef7da2dd27635999e4a2f7cab24cfdcaf42488644a4
+	sha256sums = c98e5a09e552c01b479c22aafa101ea3e3237d3727fcad4629730762bdf4afa1
+
+pkgname = ttf-lato
+
