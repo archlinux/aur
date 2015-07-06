@@ -1,0 +1,31 @@
+From b5ef521cbd9f49add783d0855c27c23a674be045 Mon Sep 17 00:00:00 2001
+From: Jonathan Dieter <jdieter@lesbg.com>
+Date: Mon, 2 Apr 2012 15:01:01 +0300
+Subject: [PATCH 2/3] Fix makefile so it respects environmental CFLAGS
+
+Signed-off-by: Jonathan Dieter <jdieter@lesbg.com>
+---
+ makefile |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index 4b95bd7..5f87cef 100644
+--- a/makefile
++++ b/makefile
+@@ -34,11 +34,12 @@ endif
+ 
+ # compiler flags, default libs to link against
+ MYCFLAGS := -Wall -W -Wno-multichar -Wno-unused-parameter -Wno-unused-function -g -O2 -Iinclude -DBUILDVERSION=$(BUILDVERSION) 
++CFLAGS :=
+ # pull in the machine build name version from OE if it's set
+ ifneq ($(MACHINE),)
+ MYCFLAGS += -DMACHINE=\"$(MACHINE)\"
+ endif
+-HOSTCFLAGS := $(MYCFLAGS) -Isrc
++HOSTCFLAGS := $(MYCFLAGS) $(CFLAGS) -Isrc
+ DEVICECFLAGS := $(MYCFLAGS) $(OECFLAGS) $(TARGET_CC_ARCH) -DPLATFORM_PTHREADS=1
+ CPPFLAGS := -g
+ ASMFLAGS :=
+-- 
+1.7.10
+

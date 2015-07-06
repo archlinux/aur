@@ -1,0 +1,8 @@
+[Unit]
+Description=Novacom WebOS daemon
+
+[Service]
+ExecStart=/usr/bin/novacomd
+
+[Install]
+WantedBy=multi-user.target

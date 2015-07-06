@@ -1,0 +1,34 @@
+From 3bea091f0aa28a337438842ee3a7b492570d127e Mon Sep 17 00:00:00 2001
+From: Jonathan Dieter <jdieter@lesbg.com>
+Date: Mon, 2 Apr 2012 15:04:18 +0300
+Subject: [PATCH 3/3] Remove unused 'err' variable
+
+Signed-off-by: Jonathan Dieter <jdieter@lesbg.com>
+---
+ src/main.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 28874aa..28f636e 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -733,7 +733,6 @@ static int main_loop(void)
+ 			struct active_device *temp_dev;
+ 			/* device */
+ 			if (FD_ISSET(dev->socket, &fds) ) {
+-				int err;
+ 				SOCKET newsocket = accept_socket(dev->socket);
+ 				TRACEL(LOG_TRACE, "data socket %d\n", newsocket);
+ 
+@@ -741,7 +740,7 @@ static int main_loop(void)
+ 
+ 					// Set non-blocking or novacomd will drop offline if the socket fills up
+ 					fcntl(newsocket, F_SETFL, fcntl(newsocket, F_GETFL) | O_NONBLOCK);
+-					err = novacom_register_client(dev, newsocket);
++					novacom_register_client(dev, newsocket);
+ 				}
+ 			}
+ 
+-- 
+1.7.10
+
