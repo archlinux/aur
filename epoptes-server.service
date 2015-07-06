@@ -1,0 +1,14 @@
+# TODO: If this is an LTSP client, then service only should run if EPOPTES=True in lts.conf
+
+[Unit]
+Description=A twisted-based daemon that manages epoptes-client
+After=syslog.target
+
+[Service]
+Type=forking
+PIDFile=/run/epoptes.pid
+ExecStart=/usr/bin/twistd --pidfile /run/epoptes.pid --logfile /var/log/epoptes.log epoptes
+#ExecStart=/usr/bin/twistd --pidfile /run/epoptes.pid --logfile /var/log/epoptes.log /usr/bin/epoptes
+
+[Install]
+WantedBy=multi-user.target
