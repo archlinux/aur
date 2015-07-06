@@ -1,3 +1,4 @@
+# Maintainer balwierz <my user name at the most popular google email service>
 # Contributor:  TDY <tdy@gmx.com>
 # Contributor: lswest <lswest34 : gmail>
 # Contributor: Christoph Zeiler <rabyte : gmail>
