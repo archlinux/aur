@@ -1,0 +1,18 @@
+pkgbase = python2-power-git
+	pkgdesc = A Python module that allows you to get power and battery status of the system
+	pkgver = 20141003
+	pkgrel = 5
+	url = https://github.com/GreatFruitOmsk/Power
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-power-git
+	conflicts = python-power
+	conflicts = python-power-git
+	replaces = python-power
+	replaces = python-power-git
+
+pkgname = python2-power-git
+
