@@ -1,0 +1,17 @@
+pkgbase = python-construct
+	pkgdesc = Python library for declarative building/parsing of data structures.
+	pkgver = 2.5.1
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/construct/construct
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	replaces = construct
+	source = https://pypi.python.org/packages/source/c/construct/construct-2.5.1.tar.gz
+	md5sums = 4881ed2208f6ee226b61e2310f696924
+
+pkgname = python-construct
+
