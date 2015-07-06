@@ -1,0 +1,25 @@
+pkgbase = pydxcluster
+	pkgdesc = Python2 (tk) Ham Radio DX-Cluster GUI
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://sourceforge.net/projects/pydxcluster/
+	install = pydxcluster.install
+	arch = any
+	license = GPL3
+	depends = python2-requests
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/pydxcluster/pyDxCluster_v1_2.tar.gz
+	source = pydxcluster.desktop
+	source = pydxcluster.png
+	source = pydxcluster.1
+	md5sums = 8ee5150a8f10271557b999ab0b1b07ed
+	md5sums = 047de11f8b1f7a2433008d10732341da
+	md5sums = d03076d6792be993b1d52cece985373d
+	md5sums = 26086372612eb51b3acfabefb94f24fe
+	sha256sums = c3f0dbe2c05dee1ebca9ee19f092332654eee9401492186e6a310b840b30f91c
+	sha256sums = b79a160b020a66a2f02d6bda7c5e1772c01c74fce4caa6a3eb5e8eeeb506a83e
+	sha256sums = 797cd5764b045edf71c95f2b874d2705e8296460730e80e2b32311b6705c33a8
+	sha256sums = ddbded75d30034bde6a206ba9e18c17d08bb1aba9edfe9f8934f10595b0d14bd
+
+pkgname = pydxcluster
+

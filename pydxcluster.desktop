@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=pyDxCluster
+Name[en_US]=pyDxCluster
+Comment=Ham Radio DX Cluster GUI
+Comment[en_US]=Ham Radio DX Cluster GUI
+Encoding=UTF-8
+Exec=/usr/bin/pydxcluster
+Icon=pydxcluster.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
