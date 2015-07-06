@@ -1,0 +1,13 @@
+pkgbase = fbsplash-theme-arch-elegant
+	pkgdesc = Simple and elegant theme for Fbsplash
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=125311
+	arch = any
+	license = GPL
+	depends = fbsplash
+	source = fbsplash-theme-arch-elegant-0.2.5.tar.gz::http://opendesktop.org/CONTENT/content-files/125311-arch-elegant.tar.gz
+	md5sums = eb5e384b19e64e1d7ead978bbd14d43c
+
+pkgname = fbsplash-theme-arch-elegant
+
