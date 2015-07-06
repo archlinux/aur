@@ -1,0 +1,16 @@
+pkgbase = perl-audio-jackminimix
+	pkgdesc = Talk to JACK Mini Mixer (jackminimix) using OSC
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/~njh/Audio-JackMiniMix-0.02/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-net-liblo
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/Audio-JackMiniMix-0.02.tar.gz
+	md5sums = 5be760caf3037d663861548977b4b236
+
+pkgname = perl-audio-jackminimix
+
