@@ -1,13 +1,13 @@
 # Maintainer: balwierz <my user name at the most popular google email service>
-pkgbase=cura-bin
-pkgname=cura-bin
+pkgbase=cura
+pkgname=cura
 pkgver=15.06.01
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker. This package contains both the binary Cura engine and the python front-end."
 depends=('python2' 'wxpython' 'python2-opengl' 'python2-pyserial' 'python2-numpy' 'python2-power-git')
-provides=('cura-bin')
-replaces=('cura')
-conflicts=('cura')
+provides=('cura')
+#replaces=('cura')
+#conflicts=('cura')
 url="https://github.com/daid/Cura"
 license=('AGPLv3')
 arch=('x86_64')
