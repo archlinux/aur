@@ -1,0 +1,4 @@
+post_install() {
+  echo '==> To use fbff, read /usr/share/doc/fbff/README'
+}
+

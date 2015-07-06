@@ -1,0 +1,21 @@
+pkgbase = fbff-git
+	pkgdesc = A small ffmpeg-based framebuffer media player.
+	pkgver = 0.70.57b59a0
+	pkgrel = 1
+	epoch = 1
+	url = http://repo.or.cz/w/fbff.git
+	install = fbff-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ffmpeg
+	optdepends = libmpeg3: alternative media backend
+	optdepends = oss: sound support
+	provides = fbff
+	conflicts = fbff
+	source = fbff-git::git+git://repo.or.cz/fbff.git
+	md5sums = SKIP
+
+pkgname = fbff-git
+
