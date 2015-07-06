@@ -1,0 +1,12 @@
+--- yfksubs.pl	2008-01-30 17:00:53.000000000 -0700
++++ yfksubs.pl	2008-02-03 23:04:02.000000000 -0700
+@@ -4890,7 +4890,8 @@
+ 	printw "Updated DB to 0.3.5.\n";
+ }
+ 
+-printw "All up to date!\n";
++printw "All up to date!\n\n";
++printw "Press any key to continue.\n";
+ refresh();
+ 
+ }

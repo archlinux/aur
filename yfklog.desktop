@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=YFKLog
+Name[en_US]=YFKLog
+Comment=Full Featured QSO Logger 
+Comment[en_US]=Full Featured QSO Logger
+Encoding=UTF-8
+Exec=yfk
+Icon=yfklog.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
