@@ -1,0 +1,17 @@
+pkgbase = spacewar
+	pkgdesc = PDP-1 SpaceWar! Game
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://sourceforge.net/projects/pdp1spacewar/
+	arch = i686
+	arch = x86_64
+	groups = users
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = wxgtk
+	source = http://sourceforge.net/projects/pdp1spacewar/files/spacewar.tar.gz/download
+	md5sums = 9f4bc5fdbb6bd9317cdecaffeb31ac1c
+
+pkgname = spacewar
+
