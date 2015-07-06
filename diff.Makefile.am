@@ -1,0 +1,35 @@
+--- Makefile.am	2013-12-02 00:01:31.000000000 -0700
++++ Makefile.am	2015-02-20 00:04:27.779213553 -0700
+@@ -35,9 +35,23 @@
+-	if test -d $(HOME)/.$(PACKAGE); then \
+-	  echo Working directory exists: $(HOME)/.$(PACKAGE) - not copying; \
+-	  else \
+-	  echo Copying $(PACKAGE) working directory to $(HOME)/.$(PACKAGE); \
+-	  cp -r $(srcdir)/.$(PACKAGE) $(HOME); \
+-	  fi
+-	
+-	  echo Installing other/get_tle.sh to $(bindir)
+-	  cp $(srcdir)/other/get_tle.sh $(bindir)
++	if test -d $(srcdir)/.$(PACKAGE); then \
++	  echo Copying .$(PACKAGE) working directory to $(DESTDIR)$(pkgdatadir)/.; \
++	  cp -r $(srcdir)/.$(PACKAGE)/* $(DESTDIR)$(pkgdatadir)/.; \
++	fi
++
++	if test -d files/; then \
++ 	  echo "cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/"; \
++ 	  cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/; \
++ 	  echo "cp files/$(PACKAGE).png $(DESTDIR)/usr/share/pixmaps/"; \
++ 	  cp files/$(PACKAGE).png $(DESTDIR)/usr/share/pixmaps/; \
++ 	fi
++
++	if test -d doc/; then \
++ 		if !(test -d $(DESTDIR)/usr/share/doc/$(PACKAGE)); then \
++ 		  echo "mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/"; \
++ 		  mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
++ 		fi; \
++ 	  echo "cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/"; \
++ 	  cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
++	fi
++
++	  echo Installing other/get_tle.sh to $(DESTDIR)$(bindir)
++	  cp $(srcdir)/other/get_tle.sh $(DESTDIR)$(bindir)	

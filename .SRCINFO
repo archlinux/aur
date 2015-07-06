@@ -1,0 +1,34 @@
+pkgbase = xsatcom
+	pkgdesc = Ham Radio - satellite tracking.
+	pkgver = 2.9
+	pkgrel = 1
+	url = http://www.qsl.net/5b4az/pkg/satellite/xsatcom/xsatcom.html
+	install = xsatcom.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gtk2
+	depends = desktop-file-utils
+	optdepends = xplanet: provides data on great circle map
+	source = http://www.qsl.net/5b4az/pkg/satellite/xsatcom/xsatcom-2.9.tar.bz2
+	source = diff.Makefile.am
+	source = xsatcom.desktop
+	source = xdemorse.png
+	source = xsatcom.1
+	md5sums = c4b41986591d00230c37281b9600a26a
+	md5sums = 9d53a30a57e2308b35f52a815768910c
+	md5sums = da46deb421a73376507b575629df5a48
+	md5sums = edcd3f301ec8ea95453d40534beb6ede
+	md5sums = 49b427b41f3e7354c2502883d7f6801b
+	sha256sums = 806882e8650f0dc6464864e4720aade7138146c8e2d42fba20dbbc6dec51c952
+	sha256sums = 9ed0f048bd2642c77a2c777e576f39fe5580d4b2435441961d55049f520fd114
+	sha256sums = cbbc674993a789a42f7117358fa7b2b959c85376656722db942c40a2ad2eece8
+	sha256sums = 857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d
+	sha256sums = 357c69b07dfe18090998f59d10bbaa3e24b636e177a863c67d83015160b973d2
+
+pkgname = xsatcom
+

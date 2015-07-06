@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xsatcom
+Comment=Satellite data calculation & display.
+Exec=xsatcom
+Icon=xsatcom
+Terminal=false
+Categories=Application;HamRadio;
+StartupNotify=true
