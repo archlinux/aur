@@ -1,0 +1,14 @@
+pkgbase = z88dk-splib2
+	pkgdesc = A small C compiler for the Zilog Z80 with splib2 grafics library.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = http://z88dk.org
+	arch = i686
+	arch = x86_64
+	license = custom:The Clarified Artistic License
+	depends = glibc
+	source = https://dl.dropboxusercontent.com/u/58286032/aur/z88dk-splib2-1.10.1.tar.gz
+	md5sums = 397ffbd6779bc514bdd3f3e6ed8e3086
+
+pkgname = z88dk-splib2
+
