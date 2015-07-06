@@ -1,0 +1,11 @@
+--- a/src/emit/EmitML.sml	2015-07-06 22:38:46.266485633 +0200
++++ b/src/emit/EmitML.sml	2015-07-06 22:39:00.063152051 +0200
+@@ -1532,7 +1532,7 @@
+ fun emit_xML (Ocaml,sigSuffix,structSuffix) p (s,elems_0) =
+  let val _ = emitOcaml := Ocaml
+      val (pcs,elems) = internalize elems_0  (* pcs = pseudo-constrs *)
+-     val path = if p="" then FileSys.getDir() else p
++     val path = Path.concat(FileSys.getDir(), "ML/")
+      val pathPrefix = Path.concat(path, capitalize s)
+      val sigfile = pathPrefix^ sigSuffix
+      val structfile = pathPrefix^ structSuffix
