@@ -1,0 +1,6 @@
+post_install() {
+	echo "Updating udev rules..."
+	udevadm control --reload-rules
+	echo "Edit /etc/intelpwm.conf to suit your needs"
+	echo "Visit http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html for more details"
+}

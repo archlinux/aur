@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+source /etc/intelpwm.conf
+intel_reg_write $REGISTER $PERIOD
+rm /tmp/intelpwm.lock

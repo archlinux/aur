@@ -1,0 +1,16 @@
+pkgbase = intelpwm-udev
+	pkgdesc = UDEV rules for setting backlight PWM frequency on Intel HD Graphics
+	pkgver = 20140803
+	pkgrel = 1
+	url = http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html
+	install = intelpwm-udev.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = intel-gpu-tools
+	source = 99-intelpwm.rules
+	source = intelpwm
+	source = intelpwm.conf
+
+pkgname = intelpwm-udev
+

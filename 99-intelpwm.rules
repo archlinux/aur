@@ -1,0 +1,8 @@
+# Suggested by qwerty12 on https://bbs.archlinux.org/viewtopic.php?pid=1438641#p1438641
+
+KERNEL!="intel_backlight", SUBSYSTEM!="backlight", ACTION!="change", GOTO="backlight_pwm_rules_end"
+
+TEST=="/tmp/intelpwm.lock", ATTR{brightness}!="0", RUN="/usr/bin/intelpwm", GOTO="backlight_pwm_rules_end"
+ATTR{brightness}=="0", RUN="/usr/bin/touch /tmp/intelpwm.lock"
+
+LABEL="backlight_pwm_rules_end"
