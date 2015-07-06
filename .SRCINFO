@@ -1,0 +1,16 @@
+pkgbase = vim-ruby-git
+	pkgdesc = Vim configuration files for Ruby (git version)
+	pkgver = 654.f4c550e
+	pkgrel = 1
+	url = https://github.com/vim-ruby
+	install = vimdoc.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = ruby
+	depends = vim
+	source = git://github.com/vim-ruby/vim-ruby.git
+	md5sums = SKIP
+
+pkgname = vim-ruby-git
+
