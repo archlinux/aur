@@ -1,0 +1,13 @@
+pkgbase = sshgrid-git
+	pkgdesc = Poor-man's grid computing via SSH
+	pkgver = 20110606
+	pkgrel = 1
+	url = https://github.com/sseemayer/SSHGrid
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = openssh
+
+pkgname = sshgrid-git
+
