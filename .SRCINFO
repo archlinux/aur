@@ -1,0 +1,16 @@
+pkgbase = ttf-antipasto
+	pkgdesc = Antipasto is a soft round font and really smart created by Cosimo Lorenzo Pancini. An Arista font collection by Zetafonts.
+	pkgver = 3
+	pkgrel = 1
+	url = http://www.zetafonts.com/collection/104/
+	install = ttf.install
+	arch = any
+	license = custom:free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.fontsy.com/fonts/file/11552_antipasto.zip
+	md5sums = e62359a6a7288e925851a1d6d27ad6ff
+
+pkgname = ttf-antipasto
+
