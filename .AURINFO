@@ -1,0 +1,16 @@
+pkgbase = tsmclient
+	pkgdesc = IBM Tivoli Storage Manager Client
+	pkgver = 7.1.0
+	pkgrel = 1
+	epoch = 
+	url = http://www-03.ibm.com/software/products/en/tivostormana/
+	install = 
+	arch = x86_64
+	license = proprietary
+	makedepends = rpmextract
+	source = ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v710/7.1.0.0-TIV-TSMBAC-LinuxX86.tar
+	source = run.sh
+	source = dsmcad.service
+
+pkgname = tsmclient
+
