@@ -2,8 +2,8 @@
 # Maintainer: Ian Hernandez <ihernandezs@openmailbox.org>
 
 pkgname=markdown-reader
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A document reader for markdown and html files"
 arch=('i686' 'x86_64')
 license=('GPL2')
