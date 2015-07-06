@@ -5,6 +5,7 @@ pkgbase = rocksdb
 	url = http://rocksdb.org
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = BSD
 	checkdepends = python2
 	depends = gperftools

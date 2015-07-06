@@ -4,7 +4,7 @@ pkgname=rocksdb
 pkgver=3.11
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage'
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv6h)
 url='http://rocksdb.org'
 license=(BSD)
 depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
@@ -15,6 +15,9 @@ sha256sums=('8214dde4a06b364e8aa081fb9e553aea302d554c79879fdf24be7c6844bcd675')
 prepare() {
   cd rocksdb-rocksdb-$pkgver
   sed -e 's/\bpython\b/python2/' -i Makefile
+  if [ "$CARCH"  == "armv6h" ]; then
+    sed -e 's/-momit-leaf-frame-pointer//' -i Makefile
+  fi
 }
 
 build() {
