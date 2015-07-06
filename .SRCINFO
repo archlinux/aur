@@ -1,0 +1,16 @@
+pkgbase = libpicoipp
+	pkgdesc = library for picotech oscilloscope software
+	pkgver = 1.1.2_4r21
+	pkgrel = 1
+	url = http://www.picotech.com/linux.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = dpkg
+	depends = gcc-libs
+	options = !strip
+	source = http://labs.picotech.com/debian/pool/main/libp/libpicoipp/libpicoipp_1.1.2-4r21_amd64.deb
+	md5sums = dbe145d37d45c8221b650b2dc52162eb
+
+pkgname = libpicoipp
+
