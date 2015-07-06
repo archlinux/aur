@@ -1,0 +1,13 @@
+pkgbase = z80-asm
+	pkgdesc = Assembler, monitor and disassembler for Z80 series CPUs
+	pkgver = 2.4.pre3
+	pkgrel = 3
+	url = http://wwwhomes.uni-bielefeld.de/achim/z80-asm.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://wwwhomes.uni-bielefeld.de/achim/z80-asm/z80-asm-current.tar.gz
+	md5sums = 7c128ce80c576cbf925aca09524641b6
+
+pkgname = z80-asm
+
