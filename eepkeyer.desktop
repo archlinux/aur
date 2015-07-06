@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=eepKeyer
+Name[en_US]=eepKeyer
+Comment=CW contest keyer
+Comment[en_US]=CW contest keyer
+Encoding=UTF-8
+Exec=eepkeyer
+Icon=eepkeyer.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

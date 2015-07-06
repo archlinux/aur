@@ -1,0 +1,24 @@
+pkgbase = eepkeyer
+	pkgdesc = Ham Radio Contest CW Keyer
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://hamsoftware.org/old_index.html
+	install = eepkeyer.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	optdepends = xlog: logbook
+	optdepends = hamlib: rig interfacing
+	optdepends = cwdaemon: transmitting cw
+	optdepends = winkeydeamon: usb cw xmit
+	optdepends = cabanalyst: cabrillo generation
+	source = http://www.hamsoftware.org/eepkeyer_v1.7.tgz
+	source = eepkeyer.desktop
+	md5sums = 49a908a2380ecd30c0f1fa05d1e5db64
+	md5sums = 0a9b720f7c8dba3b691c8c6c14e199ff
+	sha256sums = 5702726a8a68896820390033c4265c00730690b42dbdd05f1bf55ef4c3bb12b6
+	sha256sums = 2a57de4da7f86c1d158f3fe331d7e0bfe0949f914207af5b3d50613eec44f607
+
+pkgname = eepkeyer
+
