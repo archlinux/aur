@@ -1,0 +1,12 @@
+pkgbase = as6edriver
+	pkgdesc = AS6E scanner driver for Linux
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://as6edriver.sourceforge.net/
+	arch = i686
+	license = GPL
+	source = http://heanet.dl.sourceforge.net/sourceforge/as6edriver/as6edriver-0.5.tar.gz
+	md5sums = 52663aadb38e96efe3fccb444f693321
+
+pkgname = as6edriver
+
