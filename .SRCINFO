@@ -1,0 +1,16 @@
+pkgbase = hftirc-git
+	pkgdesc = Ncurses IRC client.
+	pkgver = 0.231.cc986f7
+	pkgrel = 1
+	url = http://github.com/xorg62/HFTIrc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	source = hftirc-git::git+https://github.com/xorg62/HFTIrc.git
+	md5sums = SKIP
+
+pkgname = hftirc-git
+
