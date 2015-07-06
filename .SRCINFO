@@ -1,6 +1,6 @@
 pkgbase = kissplayer
 	pkgdesc = KISS Player
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = http://sourceforge.net/projects/kissplayer/
 	install = kissplayer.install
@@ -17,9 +17,8 @@ pkgbase = kissplayer
 	depends = fltk
 	depends = libxpm
 	provides = kissplayer
-	conflicts = kissplayer-hg
-	source = http://downloads.sourceforge.net/kissplayer/kissplayer-0.6.3.tar.gz
-	md5sums = 9599480905b8a1b471906fc4fa2c0959
+	source = http://downloads.sourceforge.net/kissplayer/kissplayer-0.6.4.tar.gz
+	md5sums = edb957ebfdc1dac505bfb7746f18638a
 
 pkgname = kissplayer
 

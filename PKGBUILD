@@ -1,7 +1,7 @@
 # Maintainer:  Andre Miranda <andreldm1989 gmail com>
 
 pkgname=kissplayer
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="KISS Player"
 arch=('i686' 'x86_64')
@@ -10,10 +10,9 @@ license=('GPL')
 depends=('fmodex' 'zlib' 'libpng' 'sqlite' 'taglib' 'fltk' 'libxpm' )
 makedepends=('pkgconfig>=0.9.0' 'gettext')
 provides=('kissplayer')
-conflicts=('kissplayer-hg')
 source=(http://downloads.sourceforge.net/kissplayer/$pkgname-$pkgver.tar.gz)
 install=kissplayer.install
-md5sums=('9599480905b8a1b471906fc4fa2c0959')
+md5sums=('edb957ebfdc1dac505bfb7746f18638a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
