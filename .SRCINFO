@@ -1,0 +1,17 @@
+pkgbase = lib32-libtirpc
+	pkgdesc = Transport Independent RPC library (SunRPC replacement) (32-bit)
+	pkgver = 0.3.2
+	pkgrel = 2
+	url = http://libtirpc.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	depends = lib32-krb5
+	depends = libtirpc
+	source = http://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-0.3.2.tar.bz2
+	source = fix_missing_rpc_get_default_domain.patch
+	sha1sums = af9b74d0c4d1499a7b1a43e396e5b7d62180ea65
+	sha1sums = ab3b6a2e0beb255a82dcbf02c915076b8fe43e5a
+
+pkgname = lib32-libtirpc
+
