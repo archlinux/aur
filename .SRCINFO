@@ -1,7 +1,7 @@
 pkgbase = microchip-libraries-for-applications
 	pkgdesc = Microchip Libraries for Applications (Current)
 	pkgver = v2014_07_22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/MLA
 	install = microchip-libraries-for-applications.install
 	arch = i686
