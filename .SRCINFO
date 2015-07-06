@@ -1,0 +1,20 @@
+pkgbase = s4cmd
+	pkgdesc = Super S3 command line tool (git)
+	pkgver = 36.a9f6deb
+	pkgrel = 1
+	url = https://github.com/bloomreach/s4cmd
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-dateutil
+	depends = python2-boto
+	optdepends = gnupg: encrypted file storage
+	provides = s4cmd
+	conflicts = s4cmd
+	source = git+https://github.com/bloomreach/s4cmd.git
+	sha512sums = SKIP
+
+pkgname = s4cmd-git
+
