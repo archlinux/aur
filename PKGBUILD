@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Barker Medvedev <barkdarker@gmail.com>
 pkgname=sdvt-git
 _gitname=sdvt
-pkgver=0.9.2.gc83c
-pkgrel=2
+pkgver=0.9.3.g22a2
+pkgrel=1
 pkgdesc='simple desktop virtual terminal'
 arch=('i686' 'x86_64')
 url='https://github.com/darkbarker/sdvt'
