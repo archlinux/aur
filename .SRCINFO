@@ -1,0 +1,18 @@
+pkgbase = tortosa-git
+	pkgdesc = Terminal emulator based on the vte3 library
+	pkgver = r34.5bc1850
+	pkgrel = 1
+	url = https://github.com/cedlemo/Tortosa
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gtk3
+	depends = vte3
+	provides = tortosa
+	conflicts = tortosa
+	source = tortosa::git+https://github.com/cedlemo/Tortosa.git
+	sha256sums = SKIP
+
+pkgname = tortosa-git
+
