@@ -1,0 +1,34 @@
+--- src/modbus-rtu-private.h	2013-10-07 00:42:53.000000000 +0300
++++ src/modbus-rtu-private.h	2013-12-11 18:00:15.166666606 +0200
+@@ -38,7 +38,9 @@
+ #define _MODBUS_RTU_CHECKSUM_LENGTH    2
+ 
+ #if defined(_WIN32)
++#ifndef ENOTSUP
+ #define ENOTSUP WSAEOPNOTSUPP
++#endif
+ 
+ /* WIN32: struct containing serial handle and a receive buffer */
+ #define PY_BUF_SIZE 512
+--- src/modbus-tcp.h	2013-10-07 00:42:53.000000000 +0300
++++ src/modbus-tcp.h	2013-12-11 18:00:09.863299755 +0200
+@@ -26,11 +26,19 @@
+ #if defined(_WIN32) && !defined(__CYGWIN__)
+ /* Win32 with MinGW, supplement to <errno.h> */
+ #include <winsock2.h>
++#ifndef ECONNRESET
+ #define ECONNRESET   WSAECONNRESET
++#endif
++#ifndef ECONNREFUSED
+ #define ECONNREFUSED WSAECONNREFUSED
++#endif
++#ifndef ETIMEDOUT
+ #define ETIMEDOUT    WSAETIMEDOUT
++#endif
++#ifndef ENOPROTOOPT
+ #define ENOPROTOOPT  WSAENOPROTOOPT
+ #endif
++#endif
+ 
+ #define MODBUS_TCP_DEFAULT_PORT   502
+ #define MODBUS_TCP_SLAVE         0xFF
