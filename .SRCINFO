@@ -1,0 +1,14 @@
+pkgbase = vspcplay
+	pkgdesc = A terminal-based visual SNES sound file (SPC) player and optimisation tool
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://vspcplay.raphnet.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	source = http://vspcplay.raphnet.net/vspcplay-1.3.tar.gz
+	md5sums = 9c80e3eab9c50868a10836b7f778c103
+
+pkgname = vspcplay
+
