@@ -1,0 +1,16 @@
+pkgbase = gdsl
+	pkgdesc = A collection of routines for generic data structures manipulation
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://home.gna.org/gdsl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	options = !libtool
+	source = http://download.gna.org/gdsl/gdsl-1.8.tar.gz
+	md5sums = 9130067fbabdd1d73c92de9be73c62e8
+	sha1sums = 8bfd53a74df6773e13492640328a57426268a092
+
+pkgname = gdsl
+
