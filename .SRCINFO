@@ -1,0 +1,14 @@
+pkgbase = realboy
+	pkgdesc = Complete, Fast, Accurate, Free, Game Boy/Game Boy Color/Super Game Boy Emulator for Linux/Unix.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://realboyemulator.wordpress.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	source = http://downloads.sourceforge.net/project/realboy/realboy-0.2.2.tar.bz2
+	md5sums = c305c1f8d4dd6d8db7707964acf241f9
+
+pkgname = realboy
+
