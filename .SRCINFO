@@ -1,0 +1,33 @@
+pkgbase = ardour-git
+	pkgdesc = A multichannel hard disk recorder and digital audio workstation
+	pkgver = 4.0.r306.gdeeb565
+	pkgrel = 1
+	url = http://ardour.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = boost
+	makedepends = cppunit
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = aubio
+	depends = cwiid
+	depends = gtkmm
+	depends = liblo
+	depends = liblrdf
+	depends = libltc
+	depends = lilv
+	depends = suil
+	depends = rubberband
+	depends = taglib
+	provides = ardour
+	conflicts = ardour
+	source = ardour::git://github.com/Ardour/ardour.git
+	source = ardour.desktop
+	md5sums = SKIP
+	md5sums = 151094720b3cdcce2d66b30915dea536
+
+pkgname = ardour-git
+
