@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=TLF
+Name[en_US]=TLF
+Comment=CT Style Logging Program
+Comment[en_US]=CT Style Logging Program
+Encoding=UTF-8
+Exec=/usr/bin/tlf
+Icon=tlf.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
