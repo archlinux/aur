@@ -1,0 +1,19 @@
+pkgbase = tp_smapi-mainline
+	pkgdesc = Modules for ThinkPad's SMAPI functionality, mainline kernel
+	pkgver = 20140506
+	pkgrel = 1
+	url = https://github.com/evgeni/tp_smapi
+	install = tp_smapi-mainline.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-mainline-headers>=4.2rc1
+	makedepends = linux-mainline-headers<4.3rc1
+	depends = linux-mainline>=4.2rc1
+	depends = linux-mainline<4.3rc1
+	provides = tp_smapi
+	source = https://github.com/evgeni/tp_smapi/archive/8f40fcf3d9a4bfb9c3dae1caa2107ea3a367a609.tar.gz
+	md5sums = 4a4797f73821cb90712a4bbd07e2779d
+
+pkgname = tp_smapi-mainline
+
