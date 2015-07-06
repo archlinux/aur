@@ -1,0 +1,14 @@
+pkgbase = sitracker
+	pkgdesc = Support Incident Tracker (or SiT!) is a web based helpdesk/support ticket system
+	pkgver = 3.67
+	pkgrel = 1
+	url = http://www.sitracker.org/
+	install = sitracker.install
+	arch = any
+	license = GPL
+	depends = php
+	source = http://downloads.sourceforge.net/project/sitracker/stable/3.67/sit_3.67p2.tar.gz
+	md5sums = 27531cc0647236fbd2e2dce52fc9b598
+
+pkgname = sitracker
+
