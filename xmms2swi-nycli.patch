@@ -1,0 +1,55 @@
+diff -Naur xmms2swi/config.ini new/config.ini
+--- xmms2swi/config.ini	2008-08-28 14:40:21.000000000 +0400
++++ new/config.ini	2015-02-01 08:38:37.000000000 +0300
+@@ -3,7 +3,7 @@
+ 
+ [access/core]
+ ;; for XMMS2SWIAccessCheckModule
+-enabled=true
++enabled=false
+ mode=ip
+ 
+ [access/ip]
+@@ -11,9 +11,12 @@
+ filter=127.0.0.1,192.168.1.*
+ 
+ [browser/mount]
+-disk_d=disk,Mp3 on disk d:,/mnt/m2/mp3
+-local=disk,local media,/home/media/mp3
++home=disk,home dir,/home/user
++local=disk,some disk,/mnt/hdd
+ 
+ [browser/core]
+ enabled=true
+-types=mp3,mpc,ogg,wma
+\ No newline at end of file
++types=mp3,mpc,ogg,wma
++
++[core/path]
++xmms_path=tcp://127.0.0.1:9667
+diff -Naur xmms2swi/xmms2.php new/xmms2.php
+--- xmms2swi/xmms2.php	2008-08-18 12:28:52.000000000 +0400
++++ new/xmms2.php	2015-02-01 08:34:25.000000000 +0300
+@@ -25,7 +25,6 @@
+  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+-
+ class XMMS2
+ {
+ 	public function play()
+diff -Naur xmms2swi/xmms2swi.php new/xmms2swi.php
+--- xmms2swi/xmms2swi.php	2008-08-18 12:29:11.000000000 +0400
++++ new/xmms2swi.php	2015-02-01 08:34:25.000000000 +0300
+@@ -81,7 +81,10 @@
+ 	public function __construct(XMMS2SWIConfigInterface $config)
+ 	{
+ 		$this->config = $config;
+-
++		if($this->config->sectionExist('core/path')) {
++		    $xmms_path = $this->config->get('core/path', 'xmms_path');
++		    putenv("XMMS_PATH=$xmms_path");
++		}
+ 		require_once('xmms2.php');
+ 		$this->xmms2 = new XMMS2();
+ 		$this->modules = array();
