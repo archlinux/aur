@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Version=1.4
+Name=block-attack.desktop
+Comment=An open source clone of Tetris Attack based on SDL
+Exec=blockattack
+Terminal=false
+Type=Application
+Icon=blockattack.xpm
+Categories=Application;Games;

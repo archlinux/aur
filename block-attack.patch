@@ -1,0 +1,150 @@
+2,4c2,4
+< #PREF=/usr/local
+< #EXECUTEPATH=/usr/local/bin
+< #INST=/games/blockattack
+---
+> PREF=$(DESTDIR)/usr
+> EXECUTEPATH=/usr/bin
+> INST=/share/games/blockattack
+7,12c7,12
+< #	@echo "Removing old files (if they exists)"
+< #	@rm -f source/code/*.o
+< #	@rm -f ./Game/blockattack
+< #	@rm -f ./Game/starter
+< #	@rm -f ./Game/runme.sh
+< #	@echo "Done deleting files"
+---
+> 	@echo "Removing old files (if they exists)"
+> 	@rm -f source/code/*.o
+> 	@rm -f ./Game/blockattack
+> 	@rm -f ./Game/starter
+> 	@rm -f ./Game/runme.sh
+> 	@echo "Done deleting files"
+24,78c24,74
+< #makeinstall:	
+< #	@echo "Removing old files (if they exists)"
+< #	@rm -f *.o
+< #	@rm -f ./Game/blockattack
+< #	@rm -f ./Game/starter
+< #	@rm -f ./Game/runme.sh
+< #	@echo "Done deleting files"
+< #	@echo "Now compiling..."
+< #	@make -f block.make
+< #	@g++ starter2.cpp -o ./Game/starter
+< #	@echo "Everything has been compiled!"
+< #	@echo "Creating installation dirs..."
+< #	@mkdir -p $(PREF)$(INST)
+< #	@echo "Dir has been created"
+< #	@echo "Now copying files"
+< #	@cp -P -f -r ./Game/* $(PREF)$(INST)
+< #	@echo "Files have been copied"
+< #	@chmod +r $(PREF)$(INST) -R
+< #	@echo "Now creating a runable sh file called runme.sh"
+< #	@touch $(PREF)$(INST)/runme.sh
+< #	@echo "pushd $(PREF)$(INST)" >> $(PREF)$(INST)/runme.sh 
+< #	@echo "./blockattack" >> $(PREF)$(INST)/runme.sh
+< #	@echo "popd" >> $(PREF)$(INST)/runme.sh 
+< #	@echo "File created, now setting +x permission to it"
+< #	@chmod +x $(PREF)$(INST)/runme.sh
+< #	@echo "Mow creating static links to runme.sh"
+< #	@ln -fs $(PREF)$(INST)/runme.sh $(PREF)/bin/blockattack
+< #	@echo "Links have been created"
+< #	@echo "Block Attack - Rise of the Blocks have been installed!"
+< #	@echo "Type 'blockattack' to run the game"
+< 	
+< #install:	
+< #	@echo "Everything must have been compiled"
+< #	@echo "Creating installation dirs..."
+< #	@mkdir -p $(PREF)$(INST)
+< #	@echo "Dir has been created"
+< #	@echo "Now copying files"
+< #	@cp -P -f -r ./Game/* $(PREF)$(INST)
+< #	@cp -P -f ./blockattack.xpm /usr/share/pixmaps
+< #	@cp -P -f ./blockattack.desktop /usr/share/applications
+< #	@echo "Files have been copied, giving all users read permission"
+< #	@chmod +r $(PREF)$(INST) -R
+< #	@echo "Now creating a runable sh file called runme.sh"
+< #	@rm -f $(PREF)$(INST)/runme.sh
+< #	@touch $(PREF)$(INST)/runme.sh
+< #	@echo "pushd $(PREF)$(INST)" >> $(PREF)$(INST)/runme.sh 
+< #	@echo "./blockattack" >> $(PREF)$(INST)/runme.sh
+< #	@echo "popd" >> $(PREF)$(INST)/runme.sh 
+< #	@echo "File created, now setting +x permission to it"
+< #	@chmod +x $(PREF)$(INST)/runme.sh
+< #	@echo "Mow creating static links to runme.sh"
+< #	@ln -fs $(PREF)$(INST)/runme.sh $(PREF)/bin/blockattack
+< #	@echo "Links have been created"
+< #	@echo "Block Attack - Rise of the Blocks have been installed!"
+< #	@echo "Type 'blockattack' to run the game"
+---
+> makeinstall:	
+> 	@echo "Removing old files (if they exists)"
+> 	@rm -f *.o
+> 	@rm -f ./Game/blockattack
+> 	@rm -f ./Game/starter
+> 	@rm -f ./Game/runme.sh
+> 	@echo "Done deleting files"
+> 	@echo "Now compiling..."
+> 	@make -f block.make
+> 	@g++ starter2.cpp -o ./Game/starter
+> 	@echo "Everything has been compiled!"
+> 	@echo "Creating installation dirs..."
+> 	@mkdir -p $(PREF)$(INST)
+> 	@echo "Dir has been created"
+> 	@echo "Now copying files"
+> 	@cp -P -f -r ./Game/* $(PREF)$(INST)
+> 	@echo "Files have been copied"
+> 	@chmod +r $(PREF)$(INST) -R
+> 	@echo "Now creating a runable sh file called runme.sh"
+> 	@touch $(PREF)$(INST)/runme.sh
+> 	@echo "pushd $(PREF)$(INST)" >> $(PREF)$(INST)/runme.sh 
+> 	@echo "./blockattack" >> $(PREF)$(INST)/runme.sh
+> 	@echo "popd" >> $(PREF)$(INST)/runme.sh 
+> 	@echo "File created, now setting +x permission to it"
+> 	@chmod +x $(PREF)$(INST)/runme.sh
+> 	@echo "Mow creating static links to runme.sh"
+> 	@ln -fs $(PREF)$(INST)/runme.sh $(PREF)/bin/blockattack
+> 	@echo "Links have been created"
+> 	@echo "Block Attack - Rise of the Blocks have been installed!"
+> 
+> install:	
+> 	@echo "Everything must have been compiled"
+> 	@echo "Creating installation dirs..."
+> 	@mkdir -p $(PREF)$(INST) $(PREF)/share/pixmaps $(PREF)/share/applications $(PREF)/bin
+> 	@echo "Dir has been created"
+> 	@echo "Now copying files"
+> 	@cp -P -f -r ./Game/* $(PREF)$(INST)
+>  #@cp -P -f ./blockattack.xpm $(PREF)/share/pixmaps
+> 	@cp -P -f ./blockattack.desktop $(PREF)/share/applications
+> 	@echo "Files have been copied, giving all users read permission"
+> 	@chmod +r $(PREF)$(INST) -R
+> 	@echo "Now creating a runable sh file called runme.sh"
+> 	@rm -f $(PREF)$(INST)/runme.sh
+> 	@touch $(PREF)$(INST)/runme.sh
+> 	@echo "pushd $(PREF)$(INST)" >> $(PREF)$(INST)/runme.sh 
+> 	@echo "./blockattack" >> $(PREF)$(INST)/runme.sh
+> 	@echo "popd" >> $(PREF)$(INST)/runme.sh 
+> 	@echo "File created, now setting +x permission to it"
+> 	@echo "#!/bin/bash">$(PREF)/bin/blockattack
+> 	@echo "$(PREF)$(INST)/runme.sh">>$(PREF)/bin/blockattack
+> 	@chmod 755 $(PREF)$(INST)/runme.sh $(PREF)/bin/blockattack
+80,88c76,84
+< #remove:
+< #	@echo "Removing: Block Attack - Rise of the Blocks"
+< #	@rm $(PREF)$(INST) -R
+< #	@echo "Data files has been removed!"
+< #	@echo "Removing links..."
+< #	@rm $(PREF)/bin/blockattack
+< #	@rm /usr/share/pixmaps/blockattack.xpm
+< #	@rm /usr/share/applications/blockattack.desktop
+< #	@echo "All installed files has been removed"
+---
+> remove:
+> 	@echo "Removing: Block Attack - Rise of the Blocks"
+> 	@rm $(PREF)$(INST) -R
+> 	@echo "Data files has been removed!"
+> 	@echo "Removing links..."
+> 	@rm $(PREF)/bin/blockattack
+> 	@rm /usr/share/pixmaps/blockattack.xpm
+> 	@rm /usr/share/applications/blockattack.desktop
+> 	@echo "All installed files has been removed"
