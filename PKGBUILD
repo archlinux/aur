@@ -1,4 +1,5 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+# Contributor:Caleb Maclennan <caleb@alerque.com>
 pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver='0.9.2'
