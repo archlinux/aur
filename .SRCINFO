@@ -6,19 +6,16 @@ pkgbase = upass-git
 	arch = any
 	license = BSD
 	makedepends = git
-	depends = python
-	depends = python-setuptools
-	depends = python-urwid
-	depends = python-pyperclip
-	options = !emptydirs
-	source = git+https://github.com/Kwpolska/upass
-	md5sums = SKIP
-
-pkgname = upass-git
+	depends = pass
 	depends = python
 	depends = python-setuptools
 	depends = python-urwid
 	depends = python-pyperclip
 	provides = upass
 	conflicts = upass
+	options = !emptydirs
+	source = git+https://github.com/Kwpolska/upass
+	md5sums = SKIP
+
+pkgname = upass-git
 

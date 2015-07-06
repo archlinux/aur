@@ -8,20 +8,19 @@ pkgdesc='Console UI for pass (git version)'
 arch=('any')
 url='https://github.com/Kwpolska/upass'
 license=('BSD')
-depends=('python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
-makedepends=('git')
 options=(!emptydirs)
 source=("git+https://github.com/Kwpolska/${_gitname}")
 md5sums=('SKIP')
+depends=('pass' 'python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
+makedepends=('git')
+provides=('upass')
+conflicts=('upass')
 
 prepare() {
   cd "${srcdir}/${_gitname}"
 }
 
 package() {
-  depends=('python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
-  provides=('upass')
-  conflicts=('upass')
   cd "${srcdir}/${_gitname}"
   python3 setup.py install --root="${pkgdir}/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
