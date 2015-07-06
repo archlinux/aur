@@ -1,7 +1,7 @@
 pkgbase = sdvt-git
 	pkgdesc = simple desktop virtual terminal
-	pkgver = 0.9.2.gc83c
-	pkgrel = 2
+	pkgver = 0.9.3.g22a2
+	pkgrel = 1
 	url = https://github.com/darkbarker/sdvt
 	arch = i686
 	arch = x86_64
