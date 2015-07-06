@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=FDLog
+Name[en_US]=FDLog
+Comment=FD Logging with Networked Nodes
+Comment[en_US]=FD Logging with Networked Nodes
+Encoding=UTF-8
+Exec=fdlog
+Icon=fdlog.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false

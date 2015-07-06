@@ -1,0 +1,20 @@
+--- fdlog.py.org	2015-02-05 22:21:10.000000000 -0700
++++ fdlog.py	2015-02-08 12:56:49.766465940 -0700
+@@ -2210 +2210,16 @@
+-    my_addr = socket.gethostbyname(hostname)                # fails on some systems
++    # are we on a Linux system, get the local address the hard way
++    if os.name == "posix":
++        try:
++            my_addr = socket.gethostbyname(socket.gethostname())
++        except:
++            my_addr = ''
++        if not my_addr or my_addr.startswith('127.'):
++            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
++            try:
++                s.connect(('8.8.8.8', 0))
++                my_addr = s.getsockname()[0]
++            except:
++                my_addr = '127.0.0.1'
++    else:
++        my_addr = socket.gethostbyname(hostname)                # fails on some systems
++
