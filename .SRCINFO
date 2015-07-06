@@ -1,0 +1,15 @@
+pkgbase = python-pysox
+	pkgdesc = Python bindings for libsox
+	pkgver = 0.3.6.alpha
+	pkgrel = 1
+	url = http://foo42.de/wiki/pysox/
+	arch = any
+	license = BSD
+	depends = python
+	depends = sox
+	options = !emptydirs
+	source = http://foo42.de/devel/pysox/dist/pysox-0.3.6.alpha.tar.gz
+	md5sums = 08c6eed8ff29f1b6756558cf545fe3be
+
+pkgname = python-pysox
+
