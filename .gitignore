@@ -1,3 +1,4 @@
 zfs/
 *.tar.xz
 *.sig
+*.log
