@@ -1,0 +1,18 @@
+pkgbase = raur-git
+	pkgdesc = A simple AUR helper in Ruby
+	pkgver = 27.21c9303
+	pkgrel = 1
+	url = https://github.com/Boohbah/raur
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pacman
+	depends = ruby
+	optdepends = sudo: package installation support
+	provides = raur
+	conflicts = raur
+	source = git://github.com/Boohbah/raur
+	md5sums = SKIP
+
+pkgname = raur-git
+
