@@ -1,0 +1,14 @@
+pkgbase = autozen
+	pkgdesc = A binural brainwave generator. Cause the user to experience an altered state of consciousness. Wear headphones. Don't use if you suffer for any kind of epilepsy and use at your own risk!
+	pkgver = 2.1
+	pkgrel = 3
+	url = http://www.linuxlabs.com/autozen.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk
+	source = http://www.sourcefiles.org/Miscellaneous/autozen-2.1.tar.gz
+	md5sums = 8d85f8435f3733b9ea835cd0ffd106cc
+
+pkgname = autozen
+
