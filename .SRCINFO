@@ -1,0 +1,16 @@
+pkgbase = jday
+	pkgdesc = Julian Date calculator
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://jday.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/jday/jday/2.4/jday-2.4.tar.gz
+	md5sums = 817af56005d1346677271ed2fab63ef5
+	sha1sums = 46b020ef315eb21b3b0e5192693687ef286cf2e1
+	sha256sums = 3b15f3a1b552ffae7c343bd47bf89e8073da9ef8c2ec6d79b90d56f8c3a06fda
+
+pkgname = jday
+
