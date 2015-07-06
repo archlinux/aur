@@ -1,0 +1,17 @@
+diff -rudp factory-4.0.2.orig/cfCharSetsUtil.h factory-4.0.2/cfCharSetsUtil.h
+--- factory-4.0.2.orig/cfCharSetsUtil.h	2015-07-06 17:20:38.000000000 -0400
++++ factory-4.0.2/cfCharSetsUtil.h	2015-07-06 17:21:31.000000000 -0400
+@@ -69,9 +69,13 @@ sortListCFList (ListCFList& list);
+ void
+ sortCFListByLevel (CFList& list);
+ 
++/*BEGINPUBLIC*/
++
+ CanonicalForm
+ Prem (const CanonicalForm& F, const CanonicalForm& G);
+ 
++/*ENDPUBLIC*/
++
+ CanonicalForm
+ Premb (const CanonicalForm &f, const CFList &L);
+ 
