@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=QLE
+Name[en_US]=QLE
+Comment=QSO logger and log editor
+Comment[en_US]=QSO logger and log editor
+Encoding=UTF-8
+Exec=/usr/bin/qle
+Icon=qle.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
