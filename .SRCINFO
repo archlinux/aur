@@ -1,0 +1,17 @@
+pkgbase = alsa-patch-bay
+	pkgdesc = A graphical patch bay for the ALSA sequencer API and the JACK audio API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://pkl.net/~node/software/alsa-patch-bay/
+	install = alsa-patch-bay.install
+	arch = i686
+	license = GPL
+	depends = fltk
+	depends = jack
+	source = http://pkl.net/~node/software/alsa-patch-bay/alsa-patch-bay-1.0.0.tar.gz
+	source = alsa-patch-bay.patch
+	md5sums = 3aa458f6bee8b83b2cf7330707d72430
+	md5sums = f2b643febf922c93777452e6d809af00
+
+pkgname = alsa-patch-bay
+

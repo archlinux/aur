@@ -1,0 +1,9 @@
+post_install() {
+   ln -s /usr/bin/alsa-patch-bay /usr/bin/jack-patch-bay 
+}
+post_update() {
+post_install
+}
+pre_remove() {
+   rm /usr/bin/jack-patch-bay
+}

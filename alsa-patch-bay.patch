@@ -1,0 +1,78 @@
+diff -ru alsa-patch-bay-1.0.0/src/driver/jack/jack-addr.cpp alsa-patch-bay-1.0.0_patched/src/driver/jack/jack-addr.cpp
+--- alsa-patch-bay-1.0.0/src/driver/jack/jack-addr.cpp	2003-02-07 22:06:25.000000000 +0100
++++ alsa-patch-bay-1.0.0_patched/src/driver/jack/jack-addr.cpp	2010-03-03 20:28:29.000000000 +0100
+@@ -10,6 +10,8 @@
+  */
+ 
+ #include <iostream>
++#include <string.h>
++#include <cstdlib>
+ 
+ #include "jack-addr.h"
+ 
+@@ -56,7 +58,7 @@
+ {
+   char * ptr;
+ 
+-  ptr = strchr (_portName.c_str(), ':');
++  ptr = strchr (const_cast<char *>(_portName.c_str()), ':');
+   ptr++;
+   
+   std::string ports (ptr);
+diff -ru alsa-patch-bay-1.0.0/src/driver/jack/jack-driver.cpp alsa-patch-bay-1.0.0_patched/src/driver/jack/jack-driver.cpp
+--- alsa-patch-bay-1.0.0/src/driver/jack/jack-driver.cpp	2003-02-08 11:50:34.000000000 +0100
++++ alsa-patch-bay-1.0.0_patched/src/driver/jack/jack-driver.cpp	2010-03-03 20:24:02.000000000 +0100
+@@ -12,6 +12,8 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <errno.h>
++#include <string.h>
++#include <stdlib.h>
+ 
+ #include "jack-driver.h"
+ #include "jack-addr.h"
+diff -ru alsa-patch-bay-1.0.0/src/driver.cpp alsa-patch-bay-1.0.0_patched/src/driver.cpp
+--- alsa-patch-bay-1.0.0/src/driver.cpp	2003-01-04 09:42:44.000000000 +0100
++++ alsa-patch-bay-1.0.0_patched/src/driver.cpp	2010-03-03 21:51:51.000000000 +0100
+@@ -15,6 +15,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <fcntl.h>
++#include <cstdlib>
+ 
+ #include "driver.h"
+ 
+diff -ru alsa-patch-bay-1.0.0/src/main.cpp alsa-patch-bay-1.0.0_patched/src/main.cpp
+--- alsa-patch-bay-1.0.0/src/main.cpp	2003-10-21 14:00:31.000000000 +0200
++++ alsa-patch-bay-1.0.0_patched/src/main.cpp	2010-03-03 21:49:39.000000000 +0100
+@@ -102,7 +102,7 @@
+   else
+     driver++;
+   
+-  ptr = strchr (driver, '-');
++  ptr = const_cast<char *>(strchr (driver, '-'));
+   if (ptr)
+     *ptr = '\0';
+   
+diff -ru alsa-patch-bay-1.0.0/src/misc.cpp alsa-patch-bay-1.0.0_patched/src/misc.cpp
+--- alsa-patch-bay-1.0.0/src/misc.cpp	2002-11-25 20:48:10.000000000 +0100
++++ alsa-patch-bay-1.0.0_patched/src/misc.cpp	2010-03-03 21:53:14.000000000 +0100
+@@ -10,6 +10,7 @@
+  */
+ 
+ #include <sstream>
++#include <cstdlib>
+ 
+ #include "misc.h"
+ 
+diff -ru alsa-patch-bay-1.0.0/src/plugins.cpp alsa-patch-bay-1.0.0_patched/src/plugins.cpp
+--- alsa-patch-bay-1.0.0/src/plugins.cpp	2003-01-04 09:43:15.000000000 +0100
++++ alsa-patch-bay-1.0.0_patched/src/plugins.cpp	2010-03-03 23:12:10.000000000 +0100
+@@ -14,6 +14,7 @@
+ #include <dirent.h>
+ #include <errno.h>
+ #include <string.h>
++#include <cstdlib>
+ 
+ #include <iostream>
+ #include <list>
