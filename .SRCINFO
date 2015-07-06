@@ -1,6 +1,6 @@
 pkgbase = cheat-bash-git
 	pkgdesc = A Bash reimplementation of a command line tool to create and view interactive cheatsheets
-	pkgver = 20140917.r29.19f26b8
+	pkgver = 20150619.r30.2590d05
 	pkgrel = 1
 	url = https://github.com/jahendrie/cheat
 	arch = any
