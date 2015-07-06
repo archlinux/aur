@@ -2,12 +2,12 @@
 
 pkgname=whatsapp-desktop-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial WhatsApp for Desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/Aluxian/WhatsApp-Desktop"
 license=('MIT')
-depends=('libsystemd' 'gtk-update-icon-cache' 'gconf' 'gtk2' 'libnotify' 'alsa-lib' 'freetype2' 'libxtst' 'nss')
+depends=('libsystemd' 'desktop-file-utils' 'gtk-update-icon-cache' 'gconf' 'gtk2' 'libnotify' 'alsa-lib' 'freetype2' 'libxtst' 'nss')
 makedepends=('tar')
 install='whatsapp-desktop.install'
 source_i686=("https://github.com/Aluxian/WhatsApp-Desktop/releases/download/v${pkgver}/UnofficialWhatsApp_linux32.deb")

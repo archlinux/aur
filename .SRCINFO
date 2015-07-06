@@ -1,7 +1,7 @@
 pkgbase = whatsapp-desktop-bin
 	pkgdesc = Unofficial WhatsApp for Desktop
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Aluxian/WhatsApp-Desktop
 	install = whatsapp-desktop.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = whatsapp-desktop-bin
 	license = MIT
 	makedepends = tar
 	depends = libsystemd
+	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = gconf
 	depends = gtk2
