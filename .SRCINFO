@@ -1,0 +1,31 @@
+pkgbase = luapdf-git
+	pkgdesc = Micro-PDF framework extensible in lua.
+	pkgver = r143.904d533
+	pkgrel = 1
+	url = https://github.com/karottenreibe/luapdf
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = help2man
+	depends = lua
+	depends = lua-filesystem
+	depends = poppler-glib
+	depends = gtk2
+	depends = libunique
+	optdepends = luajit: just-in-time compilation
+	provides = luapdf
+	conflicts = luapdf
+	backup = etc/xdg/luapdf/binds.lua
+	backup = etc/xdg/luapdf/document.lua
+	backup = etc/xdg/luapdf/globals.lua
+	backup = etc/xdg/luapdf/modes.lua
+	backup = etc/xdg/luapdf/rc.lua
+	backup = etc/xdg/luapdf/theme.lua
+	backup = etc/xdg/luapdf/window.lua
+	source = luapdf-git::git+https://github.com/karottenreibe/luapdf.git
+	md5sums = SKIP
+
+pkgname = luapdf-git
+

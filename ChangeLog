@@ -1,0 +1,9 @@
+2011-11-10  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20111110-1 :
+	Depend on poppler-glib rather than on poppler.
+
+2011-10-18  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20111018-1 :
+	Initial upload.
