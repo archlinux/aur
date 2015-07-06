@@ -1,0 +1,16 @@
+pkgbase = editra-svn
+	pkgdesc = multi-platform text editor with features that aid in code development - from svn
+	pkgver = 78328
+	pkgrel = 1
+	url = http://editra.org/
+	arch = any
+	license = custom
+	depends = wxpython
+	optdepends = setuptools: needed if you want to use plugins
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/Editra
+	source = editra.desktop
+	md5sums = SKIP
+	md5sums = 6082f8d4bf1650af8ce87c6b3d38053b
+
+pkgname = editra-svn
+
