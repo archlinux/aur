@@ -1,0 +1,30 @@
+pkgbase = nginx-hg
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server (hg version)
+	pkgver = r5719.7f425d67f91a
+	pkgrel = 1
+	url = http://nginx.org
+	install = nginx.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = mercurial
+	depends = pcre
+	depends = openssl
+	provides = nginx
+	conflicts = nginx
+	source = nginx-hg::hg+http://hg.nginx.org/nginx/
+	source = service
+	source = logrotate
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/mime.types
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+
+pkgname = nginx-hg
+
