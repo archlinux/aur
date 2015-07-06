@@ -2,12 +2,12 @@
 
 pkgname=microchip-libraries-for-applications
 pkgver=v2014_07_22
-pkgrel=2
+pkgrel=3
 pkgdesc="Microchip Libraries for Applications (Current)"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
 license=('custom')
-optdepends=('java-runtime: Graphics utilities support')
+optdepends=('java-runtime: Graphics and TCP/IP utilities support')
 makedepends=('fakechroot')
 depends_x86_64=('lib32-glibc' 'lib32-fakeroot')
 options=(!strip libtool staticlibs emptydirs !zipman)
@@ -85,4 +85,18 @@ EOF
 java -jar "$_instdir/framework/gfx/utilities/memory_programmer/memory_programmer.jar" "\$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/memory_programmer-current"
+
+  # Microchip MPFS Generator
+  cat << EOF > "$pkgdir/usr/bin/mpfs2-current"
+#!/bin/sh
+java -jar "$_instdir/framework/tcpip/utilities/mpfs2/mpfs2.jar" "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/mpfs2-current"
+
+  # Microchip TCPIP Discoverer
+  cat << EOF > "$pkgdir/usr/bin/tcpip_discoverer-current"
+#!/bin/sh
+java -jar "$_instdir/framework/tcpip/utilities/tcpip_discoverer/tcpip_discoverer.jar"
+EOF
+  chmod 755 "$pkgdir/usr/bin/tcpip_discoverer-current"
 }

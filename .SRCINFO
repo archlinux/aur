@@ -1,14 +1,14 @@
 pkgbase = microchip-libraries-for-applications
 	pkgdesc = Microchip Libraries for Applications (Current)
 	pkgver = v2014_07_22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.microchip.com/MLA
 	install = microchip-libraries-for-applications.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = fakechroot
-	optdepends = java-runtime: Graphics utilities support
+	optdepends = java-runtime: Graphics and TCP/IP utilities support
 	options = !strip
 	options = libtool
 	options = staticlibs
