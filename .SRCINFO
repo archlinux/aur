@@ -1,0 +1,17 @@
+pkgbase = c10t-git
+	pkgdesc = The c10t mapper for Minecraft
+	pkgver = 20120305
+	pkgrel = 1
+	url = http://toolchain.eu/project/c10t
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = git
+	makedepends = cmake
+	depends = libpng
+	depends = boost-libs
+	depends = freetype2
+
+pkgname = c10t-git
+
