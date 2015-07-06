@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/opt/netscape/navigator/navigator %u
+Icon=netscape
+Type=Application
+Terminal=false
+MultipleArgs=false
+Name=Netscape Navigator
+GenericName=Netscape Navigator
+MimeType=text/html
+StartupNotify=false
+Categories=Application;Network;

@@ -1,0 +1,17 @@
+pkgbase = netscape-navigator
+	pkgdesc = Standalone web browser from netscape.com
+	pkgver = 9.0.0.6
+	pkgrel = 5
+	url = http://browser.netscape.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://root--servers.org/ArchLinux/netscape-navigator-9.0.0.6.tar.gz
+	source = netscape-navigator.desktop
+	source = netscape.png
+	md5sums = 60efd0ade838a159ab06a5a446045fe9
+	md5sums = bf88f35d22f5af4c6a716db3f67c42ee
+	md5sums = c24bd2826d3b5d45038064fc83a3995b
+
+pkgname = netscape-navigator
+
