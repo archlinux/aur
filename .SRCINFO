@@ -1,0 +1,15 @@
+pkgbase = jackminimix
+	pkgdesc = A simple mixer for the Jack Audio Connection Kit with an OSC based control interface.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.aelius.com/njh/jackminimix
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = liblo
+	source = http://www.aelius.com/njh/jackminimix/jackminimix-0.2.tar.gz
+	md5sums = 28d7d137f2db50f325459924c78a18c2
+
+pkgname = jackminimix
+
