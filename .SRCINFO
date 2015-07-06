@@ -1,0 +1,20 @@
+pkgbase = ee-editor
+	pkgdesc = EasyEdit, a classic curses text editor. Born in HP-UX, used in FreeBSD.
+	pkgver = 1.5.2
+	pkgrel = 3
+	url = http://www.users.qwest.net/~hmahon/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	source = http://web.archive.org/web/20120716042037/http://mahon.cwx.net/sources/ee-1.5.2.src.tgz
+	source = BSD-2_clause
+	md5sums = 6e32713121f54cd021abf9b6e726a7b5
+	md5sums = 99184c6b857f9d2d49046d2b896f1692
+	sha1sums = da0697f34e407c010754922531b2f94bd7a589f8
+	sha1sums = 14719494c1780f00bd2017bfced9ad73e6f26639
+	sha256sums = e08d7511a48b43ee354042fe3fe7d9cb3431238caedcf4ac729c61a447003918
+	sha256sums = 5b2531f7c9363e2bc2212cc8e20f321793319bf564353b20a189b852a0e562cb
+
+pkgname = ee-editor
+
