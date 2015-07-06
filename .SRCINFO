@@ -1,14 +1,14 @@
 pkgbase = nitrux-icon-theme-kde
 	pkgdesc = The KDE version of the Nitrux OS Icons
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = http://nitrux.in/store/nitrux-for-kde/
 	arch = any
 	license = Creative Commons
 	depends = librsvg
 	options = !strip
-	source = http://nitrux.in/downloads/files/free/nitrux-icon-theme-kde-3.5.2.tar.gz
-	md5sums = 6db02f9027e34217a3aef123c24820a5
+	source = http://nitrux.in/downloads/files/free/nitrux-icon-theme-kde-3.5.3.tar.gz
+	md5sums = f6157a19e14de09cd6f6f11a5db5f018
 
 pkgname = nitrux-icon-theme-kde
 
