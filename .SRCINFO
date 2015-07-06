@@ -1,0 +1,16 @@
+pkgbase = xmms-jack
+	pkgdesc = JACK output plugin for XMMS
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://xmms-jack.sf.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = xmms
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/xmms-jack/xmms-jack-0.19.tar.gz
+	md5sums = 3e3ed2e3ca4a4ca558b43e1b8e3a83d5
+
+pkgname = xmms-jack
+
