@@ -4,7 +4,7 @@
 
 _pkgbasename=libva-intel-driver
 pkgname=lib32-libva-intel-driver
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('lib32-libva>=1.5.1')
 replaces=('lib32-libva-driver-intel')
 source=(http://freedesktop.org/software/vaapi/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.bz2)
-md5sums=('93ba8b1fbe5322d3c3ef47d187f6951e')
+md5sums=('d7678f7c66cbb135cced82ee2af6d8e8')
 
 prepare() {
   cd $_pkgbasename-$pkgver
