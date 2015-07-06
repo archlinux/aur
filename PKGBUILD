@@ -2,26 +2,26 @@
 
 pkgname=go-tool
 _pkgname=go
-_svntrunk=http://$pkgname.googlecode.com/svn/trunk/
-_svnmod=$pkgname-read-only
-pkgver=41
-pkgrel=1
+#_svntrunk=http://$pkgname.googlecode.com/svn/trunk/
+#_svnmod=$pkgname-read-only
+pkgver=1.2.1
+pkgrel=2
 pkgdesc="Small shell command for changing directories quickly"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/$pkgname/"
+url="https://code.google.com/p/$pkgname/"
 license="MIT"
 depends=('python2')
-makedepends=('subversion')
+makedepends=('')
 provides=('go-tool')
-source=()
+source=("https://go-tool.googlecode.com/files/$_pkgname-$pkgver.zip")
 install=go-tool.install
-md5sums=('c2e58c71c15d3ddd5eba6ab577aa88f4')
+md5sums=('a43d5259eca9f59535096bdf6ae51351')
 
 
-build() {
-  cd $srcdir
-  svn co $_svntrunk -r $pkgver $_svnmod
-  cd $_svnmod
+package() {
+  cd $srcdir/go-1.2.1
+  #svn co $_svntrunk -r $pkgver $_svnmod
+  #cd $_svnmod
   sed -i 's/python/python2/' Makefile.py
   sed -i 's/python/python2/' setup.py
   sed -i 's/python/python2/' lib/$_pkgname.py
