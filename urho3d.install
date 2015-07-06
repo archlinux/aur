@@ -1,0 +1,7 @@
+post_install() {
+  echo "You need to export URHO3D_PREFIX_PATH=/usr/share/Urho3D/Resources in order to run samples"
+}
+
+post_upgrade() {
+  post_install
+}
