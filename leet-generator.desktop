@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=leet-generator
+Comment=Converts normal plaintext into 133773}{7
+Exec=leet-generator
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=GTK;Utility;

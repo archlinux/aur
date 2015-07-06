@@ -1,0 +1,16 @@
+pkgbase = leet-generator
+	pkgdesc = Converts plaintext into 133773}{7
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://sourceforge.net/projects/leet-generator
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	source = http://downloads.sourceforge.net/leet-generator/leet-generator-0.2.tar.bz2
+	source = leet-generator.desktop
+	md5sums = 347389fb55a395fa0b60d3625d73b5b1
+	md5sums = 6a2aba42609dae5f4267e90d404269a3
+
+pkgname = leet-generator
+
