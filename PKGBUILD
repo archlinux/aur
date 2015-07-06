@@ -1,7 +1,7 @@
 # Maintainer: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 
 pkgname=gitlab-ci
-pkgver=7.12.1
+pkgver=7.12.2
 pkgrel=1
 pkgdesc="Continuous integration server for gitlabhq | Coordinator"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlab-ci/archive/
 	lighttpd.conf.example
 	)
 install='gitlab-ci.install'
-sha512sums=('13d2b50c9cdc43bfe57f8771bfd1bafab26330b9ff94f62b5596a617777613002df8b92570231836d426950fdc738664222a475abfdbf68479751c2a26ff0c6a'
+sha512sums=('a1197ba30d4bee985554cd54efefd46d278a22071a52cd2c367934f274bc268af5f42960c268792e8aa09f481f40fe6a6da640f69f63cae7c778af2c778bc86c'
 	'30cf8ad2a26f0f6d87cb230c69668f8d7b15329af21985349bbc2c8eb3560ccbc82dd173e65be41aa71246b2426fc123f43d45b103371ce47a56d9ba7bda46bc'
 	'3f202f6c21f380f8fd98b34bc7e6d48a94dcb5339e67e71284ef9589b0381dba73ecccdb4f0c3cefd5786e5326e8220c6650ed350c2ba6ea214be9b1232bf253'
 	'b1585c29e3b17f3ba9ad237a1a612749bbc9bc25ed06f0c5862213440b0608ed34b8fdf8e0dbf0b198dc16593120edf9a467c218bb9aac8ab51cfd2867215873'
