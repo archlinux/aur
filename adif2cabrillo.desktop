@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Adif2Cabrillo
+Name[en_US]=Adif2Cabrillo
+Comment=QSO Log-file Converter
+Comment[en_US]=QSO Log-file Converter
+Exec=adif2cabrillo
+Icon=adif2cabrillo
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
