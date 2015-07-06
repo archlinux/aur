@@ -1,0 +1,14 @@
+pkgbase = drupal8-git
+	pkgdesc = A PHP based content management system - GIT version
+	pkgver = 20110620
+	pkgrel = 1
+	url = http://drupal.org
+	install = drupal8-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = php
+
+pkgname = drupal8-git
+
