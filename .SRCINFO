@@ -1,0 +1,17 @@
+pkgbase = emutools
+	pkgdesc = Utilities to handle GB, GBA, and NES ROM images
+	pkgver = 113001
+	pkgrel = 1
+	url = http://fms.komkon.org/EMUL8/EMUTools.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = zlib
+	depends = zlib
+	source = http://fms.komkon.org/EMUL8/EMUTools-113001.tar.Z
+	source = Makefile
+	md5sums = b714891678e9fbf2cfe96123216db4aa
+	md5sums = 904ef4c188c5d20c4c14e759fb61f131
+
+pkgname = emutools
+
