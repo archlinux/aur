@@ -7,8 +7,10 @@ pkgrel=1
 pkgdesc="Framework for writing cross-platform desktop applications using JavaScript, HTML and CSS."
 
 arch=('arm' 'i686' 'x86_64')
-license=('MIT')
 url="https://github.com/atom/electron"
+license=('MIT')
+
+replaces=('atom-shell')
 
 optdepends=('nodejs')
 depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
