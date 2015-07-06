@@ -1,7 +1,8 @@
-# Maintainer: Gilles Hamel <hamelg at laposte dot net>
+# Maintainer: Justin Dray <justin@dray.be>
+# Contributor: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
 pkgname=${_pkgname}-git
-pkgver=v2.0.2.r282.gc5d3eb5
+pkgver=v2.0.2.r470.g37d7590
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
@@ -36,7 +37,7 @@ build() {
   go run build.go setup
   godep restore
   mkdir -p "$GOPATH/src/github.com/grafana/grafana/"
-  ln -s "$GOPATH/pkg" "${srcdir}/${_pkgname}/src/github.com/grafana/grafana/"
+  ln -s "$GOPATH/pkg" "$GOPATH/src/github.com/grafana/grafana/"
   # build less to css for the frontend 
   npm install
   #grunt
