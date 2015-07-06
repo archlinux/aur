@@ -1,0 +1,16 @@
+pkgbase = prosepoint
+	pkgdesc = A free and open source newspaper content management system based on drupal.
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://www.prosepoint.org/
+	install = prosepoint.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = php
+	backup = srv/http/prosepoint/.htaccess
+	source = http://launchpad.net/prosepoint/trunk/0.32/+download/prosepoint-0.32.tar.gz
+	md5sums = fa0a4b76e53666fe5225a516c523cff3
+
+pkgname = prosepoint
+
