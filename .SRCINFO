@@ -1,0 +1,18 @@
+pkgbase = otf-lintel
+	pkgdesc = A modern san serif typeface with a pure clean line form.
+	pkgver = 3
+	pkgrel = 1
+	url = http://www.thenorthernblock.co.uk/lintel.htm
+	install = otf.install
+	arch = any
+	license = custom:EULA
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.thenorthernblock.co.uk/download/4fe1de01-1c4c-4722-b08c-742dd1768ca6
+	source = http://www.thenorthernblock.co.uk/download/4fe1ddd1-3d70-4fe2-92f7-73fad1768ca6
+	md5sums = 52641d901385c2e675038a5856aee8ad
+	md5sums = 8aeea1aa946dc4cd9dd809d8a30ecec3
+
+pkgname = otf-lintel
+
