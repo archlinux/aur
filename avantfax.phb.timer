@@ -1,0 +1,10 @@
+[Unit]
+Description=AvantFAX phone book hourly maintenance
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=10m
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

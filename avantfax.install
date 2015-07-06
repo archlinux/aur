@@ -1,0 +1,85 @@
+_reload_http() {
+  set -u
+  if systemctl is-active httpd.service >/dev/null; then
+    systemctl reload httpd.service # graceful
+  fi
+  set +u
+}
+
+_start_systemd() {
+  systemctl daemon-reload
+  systemctl enable 'avantfax.phb.timer'
+  systemctl start 'avantfax.phb.timer'
+  systemctl enable 'avantfax.cron.timer'
+  systemctl start 'avantfax.cron.timer'
+}
+
+post_upgrade() {
+  set -u
+  _start_systemd
+  avantfaxsetup.sh 2 build post # updates are applied here from backup copied below
+  set +u
+}
+
+pre_upgrade() {
+  set -u
+  avantfaxsetup.sh 1 preun
+  avantfaxsetup.sh 2 pre # copy backup info to apply update above
+  set +u
+}
+
+pre_install() {
+  :
+}
+
+post_install() {
+  set -u
+  _start_systemd
+  avantfaxsetup.sh 1 build pre post
+  _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
+  _httpinclude="Include conf/extra/httpd-${_opt_AVANTFAX_SERVERNAME}.conf"
+  _httpconf='/etc/httpd/conf/httpd.conf'
+  if ! grep "${_httpinclude}"'$' "${_httpconf}" &>/dev/null; then
+    if [ "${_opt_AUTO_START_HTTP}" -ne 0 ]; then
+      echo "${_httpinclude}" >> "${_httpconf}"
+      _reload_http
+    else
+      echo "# ${_httpinclude}" >> "${_httpconf}"
+      echo "Enable Include ... ${_opt_AVANTFAX_SERVERNAME} in httpd.conf"
+    fi
+  fi
+  set +u
+}
+
+pre_remove() {
+  set -u
+  systemctl stop 'avantfax.phb.timer'
+  systemctl disable 'avantfax.phb.timer'
+  systemctl stop 'avantfax.cron.timer'
+  systemctl disable 'avantfax.cron.timer'
+  _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
+  _httpinclude="Include conf/extra/httpd-${_opt_AVANTFAX_SERVERNAME}.conf"
+  _httpconf='/etc/httpd/conf/httpd.conf'
+  _conftemp='/tmp/avantfax.httpd.conf'
+  if grep "${_httpinclude}"'$' "${_httpconf}" &>/dev/null; then
+    rm -f "${_conftemp}"
+    cp -p "${_httpconf}" "${_conftemp}"
+    grep -v "${_httpinclude}"'$' "${_conftemp}" > "${_httpconf}"
+    rm -f "${_conftemp}"
+    _reload_http
+  fi
+  avantfaxsetup.sh 0 preun
+  cp -p '/usr/bin/avantfaxsetup.sh'{,.password} /tmp
+  set +u
+}
+
+post_remove() {
+  set -u
+  systemctl daemon-reload
+  /tmp/avantfaxsetup.sh 0 postun
+  _opt_SOURCEONLY=1; . '/tmp/avantfaxsetup.sh'; unset _opt_SOURCEONLY
+  # This completely removes your config. Not everyone may want this.
+  rm -rf "/usr/share/webapps/${_opt_AVANTFAX_SERVERNAME}" "/root/avantfaxbackup"
+  rm -f '/tmp/avantfaxsetup.sh'{,.password} '/usr/bin/avantfaxsetup.sh.password'
+  set +u
+}

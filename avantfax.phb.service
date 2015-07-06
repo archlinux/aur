@@ -1,0 +1,11 @@
+[Unit]
+Description=AvantFAX phone book maintenance
+
+[Service]
+Type=oneshot
+ExecStart=/var/www/avantfax/includes/phb.php
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+#User=
+#Group=

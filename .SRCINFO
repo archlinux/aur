@@ -1,0 +1,47 @@
+pkgbase = avantfax
+	pkgdesc = a web-based application for managing faxes on HylaFAX fax servers
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = http://www.avantfax.com/
+	install = avantfax.install
+	arch = any
+	license = GPLv2
+	depends = hylafax
+	depends = sudo
+	depends = ghostscript
+	depends = gsfonts
+	depends = dash
+	depends = php
+	depends = apache
+	depends = php-apache
+	depends = php-pear
+	depends = pear-mail-mime
+	depends = pear-mail-mime-decode
+	depends = pear-net-smtp
+	depends = pear-mdb2>=2.5.0b5-1
+	depends = pear-mdb2-mysql>=1.5.0b4-1
+	depends = html2ps
+	depends = mariadb
+	depends = psutils
+	depends = libtiff
+	depends = libpng
+	depends = imagemagick
+	depends = netpbm
+	depends = giflib
+	optdepends = tesseract: OCR incoming faxes for document keyword searches
+	optdepends = AvantFAX-support: iFax Solutions can help configure your fax system
+	source = http://downloads.sourceforge.net/project/avantfax/avantfax-3.3.3.tgz
+	source = avantfaxsetup.sh
+	source = avantfax.cron.service
+	source = avantfax.cron.timer
+	source = avantfax.phb.service
+	source = avantfax.phb.timer
+	sha256sums = b27deff3953af084d3930878e7377d382d434da43a05388a72251f6352e6133d
+	sha256sums = 615fcba915da20c10614c618dfc6a4d55ed526d2b689947c104102e3cc37e18c
+	sha256sums = 2c633cd03dd234cfbcf6d0530be573e9eaa2b1e92876faa946895bf99bfb3ebc
+	sha256sums = 057be12012e2bd10c8400cac9a2612b9d66ea1535476671f28dbf633c8eb6972
+	sha256sums = 51b4bcf2e26418f8392f765c7d0f363fe3c842ddfbefb8c950f484f4ce4a179a
+	sha256sums = 8a0baba7cfeea3b5e20353677335b923c9333a4d1ab6143b41ca4b2d47449bbd
+
+pkgname = avantfax
+

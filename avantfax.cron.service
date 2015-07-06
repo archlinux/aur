@@ -1,0 +1,11 @@
+[Unit]
+Description=AvantFAX file maintenance
+
+[Service]
+Type=oneshot
+ExecStart=/var/www/avantfax/includes/avantfaxcron.php -t 2
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+#User=
+#Group=

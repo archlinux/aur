@@ -1,0 +1,12 @@
+[Unit]
+Description=AvantFAX file daily maintenance
+
+[Timer]
+OnCalendar=daily
+AccuracySec=2h
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
+
+
