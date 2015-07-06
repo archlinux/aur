@@ -1,0 +1,18 @@
+pkgbase = ttf-akashi
+	pkgdesc = Akashi is a simplified font with a futuristic touch. Angled cut aways lend the shapes a sharper
+	pkgver = 3
+	pkgrel = 1
+	url = http://tenbytwenty.com/?xxxx_posts=akashi
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://tenbytwenty.com/wp-content/uploads/2013/03/akashi1.zip
+	source = LICENSE
+	md5sums = ca2e4a7cda88d13125e9925efa678540
+	md5sums = 95ac5ed4027706b1cf6e1a7667c31bb4
+
+pkgname = ttf-akashi
+
