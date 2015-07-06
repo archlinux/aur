@@ -1,0 +1,24 @@
+diff -aur libtheora-1.2.0alpha1.pristine/configure.ac libtheora-1.2.0alpha1.new/configure.ac
+--- libtheora-1.2.0alpha1.pristine/configure.ac	2010-09-23 22:24:08.000000000 +0200
++++ libtheora-1.2.0alpha1.new/configure.ac	2014-04-09 22:15:16.849919034 +0200
+@@ -464,7 +464,7 @@
+ HAVE_PNG=no
+ if test "x$HAVE_PKG_CONFIG" = "xyes"
+ then
+-  PKG_CHECK_MODULES(PNG, libpng, HAVE_PNG=yes, HAVE_PNG=no)
++  PKG_CHECK_MODULES(PNG, libpng12, HAVE_PNG=yes, HAVE_PNG=no)
+ fi
+ AC_SUBST(PNG_CFLAGS)
+ AC_SUBST(PNG_LIBS)
+diff -aur libtheora-1.2.0alpha1.pristine/examples/Makefile.am libtheora-1.2.0alpha1.new/examples/Makefile.am
+--- libtheora-1.2.0alpha1.pristine/examples/Makefile.am	2010-09-23 22:21:45.000000000 +0200
++++ libtheora-1.2.0alpha1.new/examples/Makefile.am	2014-04-09 22:15:29.279918830 +0200
+@@ -22,7 +22,7 @@
+ 
+ player_example_SOURCES = player_example.c
+ player_example_CFLAGS = $(SDL_CFLAGS) $(OGG_CFLAGS) $(VORBIS_CFLAGS)
+-player_example_LDADD = $(LDADDDEC) $(SDL_LIBS) $(VORBIS_LIBS) $(OSS_LIBS)
++player_example_LDADD = $(LDADDDEC) $(SDL_LIBS) $(VORBIS_LIBS) $(OSS_LIBS) -lm
+ 
+ encoder_example_SOURCES = encoder_example.c
+ EXTRA_encoder_example_SOURCES = getopt.c getopt1.c getopt.h
