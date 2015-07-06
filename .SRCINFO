@@ -1,0 +1,27 @@
+pkgbase = frama-c
+	pkgdesc = Extensible platform dedicated to source-code analysis of C software.
+	pkgver = 20150201
+	pkgrel = 1
+	url = http://frama-c.com
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = lablgtk2
+	makedepends = coq
+	makedepends = graphviz
+	makedepends = ltl2ba
+	makedepends = ocaml
+	depends = gtksourceview2
+	depends = libgnomecanvas
+	depends = zarith
+	optdepends = lablgtk2
+	optdepends = coq
+	optdepends = graphviz
+	optdepends = ltl2ba
+	source = http://frama-c.com/download/frama-c-Sodium-20150201.tar.gz
+	md5sums = 7719bccdd319523da508e818e8e34fee
+	sha1sums = 71c7d9ea6d36a82d78069081f64db7209aa2a40f
+	sha256sums = 5875d86b0c269d348afa4602f0ca7fe6b6856191fdb703d8eb0bc90d4c985a7d
+
+pkgname = frama-c
+
