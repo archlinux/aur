@@ -1,0 +1,25 @@
+pkgbase = gwaei
+	pkgdesc = Japanese-English dictionary program
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = http://gwaei.sourceforge.net/
+	install = gwaei.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	depends = curl
+	depends = dconf
+	depends = gtk3
+	depends = gsettings-desktop-schemas
+	depends = hunspell
+	depends = mecab
+	optdepends = rsync: provide incremental dictionary updates
+	optdepends = ttf-arphic-ukai
+	optdepends = ttf-kanjistrokeorders: show stroke order diagrams
+	source = http://sourceforge.net/projects/gwaei/files/gwaei/3.6.x/gwaei-3.6.2.tar.xz
+	md5sums = 5257b95722d8f935cc47a78c8147716d
+
+pkgname = gwaei
+
