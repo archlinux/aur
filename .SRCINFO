@@ -1,0 +1,16 @@
+pkgbase = pmw
+	pkgdesc = A computer program for high quality music typesetting.
+	pkgver = 4.28
+	pkgrel = 1
+	url = http://www.quercite.com/pmw.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghostscript
+	source = http://www.quercite.com/pmw-4.28.tar.gz
+	md5sums = 7112d2cbb9cb3d71b012879f87ab17e6
+	sha1sums = 30647997034017a679b743d2f7bf41f3f9686f64
+	sha256sums = ecbd2cdeb38fb82c2a482e22119b27cc6959e26b6ae6d318ba366471781dfe13
+
+pkgname = pmw
+
