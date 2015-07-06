@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-qwt-qt5
+	pkgdesc = Qt Widgets for Technical Applications (mingw-w64)
+	pkgver = 6.1.2
+	pkgrel = 1
+	url = http://qwt.sourceforge.net
+	arch = any
+	license = custom:qwt
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-qt5-base
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://downloads.sourceforge.net/qwt/qwt-6.1.2.tar.bz2
+	md5sums = 9c88db1774fa7e3045af063bbde44d7d
+
+pkgname = mingw-w64-qwt-qt5
+
