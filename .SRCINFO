@@ -1,0 +1,15 @@
+pkgbase = aseqview
+	pkgdesc = An ALSA sequencer user-client which works as event viewer.
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://www.alsa-project.org/~tiwai/alsa.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = gtk
+	source = ftp://ftp.suse.com/pub/people/tiwai/aseqview/aseqview-0.2.8.tar.gz
+	md5sums = 5f75e1b6fc5eab6b40ae2c7a74216a7b
+
+pkgname = aseqview
+
