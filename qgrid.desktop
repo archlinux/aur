@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=QGrid
+Name[en_US]=QGrid
+Comment=Maidenhead grid squares calculator
+Comment[en_US]=Maidenhead grid squares calculator
+Exec=qgrid
+Icon=qgrid
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
