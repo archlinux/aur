@@ -1,0 +1,20 @@
+pkgbase = mcrypt
+	pkgdesc = A replacement for the old unix crypt(1).
+	pkgver = 2.6.8
+	pkgrel = 1
+	url = http://mcrypt.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libmcrypt
+	depends = mhash
+	depends = zlib
+	options = !libtool
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/mcrypt/mcrypt-2.6.8.tar.gz
+	md5sums = 97639f8821b10f80943fa17da302607e
+	sha1sums = 8ae0e866714fbbb96a0a6fa9f099089dc93f1d86
+	sha256sums = 5145aa844e54cca89ddab6fb7dd9e5952811d8d787c4f4bf27eb261e6c182098
+
+pkgname = mcrypt
+
