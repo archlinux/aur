@@ -1,0 +1,14 @@
+pkgbase = cmdln
+	pkgdesc = a Python module for easily building good multi-command scripts (an improved cmd.py)
+	pkgver = 97
+	pkgrel = 1.3
+	url = http://code.google.com/p/cmdln/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = subversion
+	depends = python2
+	provides = $pkgname
+
+pkgname = cmdln
+
