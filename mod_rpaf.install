@@ -1,0 +1,13 @@
+post_install() {
+echo ">> Example Configuration
+         LoadModule rpaf_module modules/mod_rpaf.so
+         RPAF_Enable On
+         RPAF_ProxyIPs 127.0.0.1 10.0.0.0/24
+         RPAF_SetHostName On
+         RPAF_SetHTTPS           On
+         RPAF_SetPort            On
+         RPAF_ForbidIfNotProxy   Off"
+
+echo ">> Don't forget to restart apache: systemctl restart apache"
+
+}
