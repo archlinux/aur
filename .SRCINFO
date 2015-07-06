@@ -10,7 +10,9 @@ pkgbase = creddump-git
 	depends = python2-crypto
 	provides = creddump=0.3
 	conflicts = creddump
+	conflicts = creddump-svn
 	replaces = creddump
+	replaces = creddump-svn
 	source = creddump::git+https://github.com/Neohapsis/creddump7.git
 	md5sums = SKIP
 

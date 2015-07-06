@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/Neohapsis/creddump7"
 license=('GPL3')
 
-replaces=('creddump')
-conflicts=('creddump')
+replaces=('creddump' 'creddump-svn')
+conflicts=('creddump' 'creddump-svn')
 provides=('creddump=0.3')
 
 makedepends=('git')
