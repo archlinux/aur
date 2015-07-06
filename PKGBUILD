@@ -3,7 +3,7 @@
 _pkgname=raccoon
 pkgname=$_pkgname-git
 pkgver=20150611.r180.5f08b40
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Google Play desktop client'
 url='http://www.onyxbits.de/raccoon'
@@ -90,7 +90,7 @@ package() {
   printf '%s\n\n%s\n%s\n' \
     '#!/usr/bin/env bash' \
     'unset _JAVA_OPTIONS' \
-    "java -jar -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel /usr/share/$_pkgname/$_pkgname.jar" \
+    'java -jar -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel /usr/share/'"$_pkgname"'/'"$_pkgname"'.jar "$@"' \
       > "$pkgdir/usr/bin/$_pkgname"
   chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
