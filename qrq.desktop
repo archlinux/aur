@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=QRQ
+Comment=Morse Code Trainer
+Exec=qrq
+Icon=qrq
+MimeType=text/plain;
+StartupNotify=true
+Terminal=true
+Type=Application
+Categories=HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
