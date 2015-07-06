@@ -1,0 +1,15 @@
+pkgbase = vidrop
+	pkgdesc = A free video transcoding software written in python, for easy conversion of videos into formats playable on Smarthones, Tablets, MIDs, Portable Media Players, etc.
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = http://vidrop.learnfree.eu/
+	arch = any
+	license = GPL
+	depends = mencoder
+	depends = mplayer
+	depends = pygtk
+	source = http://download.learnfree.eu/vidrop/vidrop-0.6.8-linux.tar.gz
+	md5sums = 2f52d9c24d266745a2e33b14688b44f6
+
+pkgname = vidrop
+
