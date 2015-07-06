@@ -16,22 +16,23 @@ install='nuntius.install'
 
 
 pkgver () {
-	cd "${pkgname}"
-	( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+    cd "${pkgname}"
+    (
+	set -o pipefail
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 
 build () {
-	cd "${pkgname}"
-	./autogen.sh --prefix=/usr --sysconfdir=/etc
-	make
+    cd "${pkgname}"
+    ./autogen.sh --prefix=/usr --sysconfdir=/etc
+    make
 }
 
 
 package () {
-	cd "${pkgname}"
-	make install DESTDIR="${pkgdir}"
+    cd "${pkgname}"
+    make install DESTDIR="${pkgdir}"
 }
