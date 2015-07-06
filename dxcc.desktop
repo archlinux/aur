@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=DXCC
+Name[en_US]=DXCC
+Comment=DXCC Lookup
+Comment[en_US]=DXCC Lookup
+Exec=dxcc -g
+Icon=dxcc
+MimeType=text/plain;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
