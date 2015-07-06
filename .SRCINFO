@@ -1,8 +1,8 @@
 pkgbase = fldigi
 	pkgdesc = Digital Modem Program for Amateur Radio
 	pkgver = 3.22.10
-	pkgrel = 1
-	url = http://w1hkj.com/Fldigi.html
+	pkgrel = 2
+	url = http://w1hkj.com
 	arch = i686
 	arch = x86_64
 	license = GPL
