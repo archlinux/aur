@@ -1,7 +1,7 @@
 # Maintainer: Athemis <alexander.minges[at]googlemail[dot]com>
 # Contributor: sauliusl
 pkgname=bowtie
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Bowtie is an alignment tool for short nucleotide sequences against long templates"
 url="http://bowtie-bio.sf.net"
@@ -10,7 +10,7 @@ license=('PerlArtistic')
 depends=()
 source=("http://downloads.sourceforge.net/bowtie-bio/${pkgname}-${pkgver}-src.zip"
         "makefile_uname.patch")
-sha256sums=('92aacb2d32065ebee433ce76eff673c24ed12591eb6c20e22ad7e4a790c48f72'
+sha256sums=('b1e9ccc825207efd1893d9e33244c681bcb89b9b2b811eb95a9f5a92eab637ae'
             '6b77e333a3ef10e3f787fd2983afd69cdb48e82347fc3316510c2ba5639742a3')
 
 build() {
