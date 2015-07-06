@@ -3,13 +3,13 @@
 
 pkgname=usbmuxd-git
 epoch=1
-pkgver=1.0.8.114.g50cb347
+pkgver=1.1.0.r18.g423fb8c
 pkgrel=2
 pkgdesc="USB Multiplex Daemon"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('glib2' 'libxml2' 'libusbmuxd-git')
+depends=('libusb' 'libplist-git' 'libimobiledevice-git')
 makedepends=('git' 'cmake')
 provides=('usbmuxd')
 conflicts=('usbmuxd')
@@ -25,13 +25,13 @@ sha512sums=('SKIP'
 pkgver() {
 	cd usbmuxd
 
-	git describe --long | sed -r -e 's|^v||' -e 's|-|.|g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd usbmuxd
 
-	./autogen.sh --prefix=/usr
+	./autogen.sh --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
