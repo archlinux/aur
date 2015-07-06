@@ -1,0 +1,16 @@
+pkgbase = madjack
+	pkgdesc = A MPEG Audio Deck for JACK with an OSC based control interface.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.aelius.com/njh/madjack/
+	arch = i686
+	license = GPL
+	depends = jack
+	depends = liblo
+	depends = libmad
+	optdepends = qt: for building the gui (qmadjack)
+	source = http://www.aelius.com/njh/madjack//madjack-0.5.tar.gz
+	md5sums = 7660e3c4863beaba37f92bef083239c7
+
+pkgname = madjack
+
