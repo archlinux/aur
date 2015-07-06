@@ -1,0 +1,15 @@
+pkgbase = vimb-git
+	pkgdesc = Vimb is a lightweight WebKit-based browser
+	pkgver = 2.10.r6.g1a8f7e5
+	pkgrel = 1
+	url = http://fanglingsu.github.io/vimb
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = webkitgtk2
+	conflicts = vimb
+	source = git://github.com/fanglingsu/vimb.git
+	md5sums = SKIP
+
+pkgname = vimb-git
+
