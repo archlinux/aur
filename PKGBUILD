@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='gauche-git'
-pkgver=0.9.4.519.g39d1a65
+pkgver=0.9.4.533.g2b0987e
 pkgrel=1
 pkgdesc="R5RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
