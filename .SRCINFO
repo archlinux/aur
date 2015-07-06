@@ -1,0 +1,18 @@
+pkgbase = xdx
+	pkgdesc = Ham Radio DX-cluster client
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/xdxclusterclient/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	optdepends = hamlib: rig ionterfacing
+	optdepends = gnuplot: graph output
+	optdepends = sox: sound output
+	source = http://downloads.sourceforge.net/project/xdxclusterclient/2.4.3/xdx-2.4.3.tar.gz
+	md5sums = 029febeeb7b23349db828f489e214787
+	sha256sums = fc6e49a2c2a9d7c729acf68e659bf8f5ebd402dc3be0f781bd50b8b76b01427c
+
+pkgname = xdx
+
