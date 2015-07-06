@@ -1,0 +1,14 @@
+pkgbase = pyechonest
+	pkgdesc = Tap into the Echo Nest's Musical Brain for the best music search, information, recommendations and remix tools on the web.
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = http://code.google.com/p/pyechonest
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = https://github.com/echonest/pyechonest/archive/8.0.1.tar.gz
+	md5sums = 3cd9744feffd0fdadbefac5b5c7582b1
+
+pkgname = pyechonest
+
