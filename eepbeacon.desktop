@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=eepBeacon
+Name[en_US]=eepBeacon
+Comment=HF Beacon Assistant
+Comment[en_US]=HF Beacon Assistant
+Encoding=UTF-8
+Exec=eepbeacon
+Icon=eepbeacon.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
