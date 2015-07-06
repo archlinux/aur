@@ -1,0 +1,16 @@
+pkgbase = dav
+	pkgdesc = An ncurses-based console text editor
+	pkgver = 0.8.5
+	pkgrel = 3
+	url = http://dav-text.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	source = http://dav-text.sourceforge.net/files/dav-0.8.5.tar.gz
+	md5sums = 992ddc8a72b2840bdbaaeb243d2b32c3
+	sha1sums = ec43ac1314ea740e909f149203845d5071084d76
+	sha256sums = af3835c31f7fb28815bc9b5fcc76e229d0e389d13b178858d120664af486a9ba
+
+pkgname = dav
+
