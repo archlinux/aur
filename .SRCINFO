@@ -1,0 +1,26 @@
+pkgbase = gpredict-git
+	pkgdesc = Gpredict is a real-time satellite tracking and orbit prediction application.
+	pkgver = v1.3
+	pkgrel = 3
+	url = http://gpredict.oz9aec.net/
+	install = gpredict.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	depends = curl>=7.19
+	depends = goocanvas1>=0.15
+	depends = desktop-file-utils
+	optdepends = hamlib: rig interfacing/control
+	optdepends = libreoffice: read /usr/share/doc/gpredict/um/gredict-user-manual.odt
+	provides = gpredict
+	conflicts = gpredict
+	options = !emptydirs
+	source = gpredict-git::git://gpredict.git.sourceforge.net/gitroot/gpredict/gpredict
+	md5sums = SKIP
+
+pkgname = gpredict-git
+
