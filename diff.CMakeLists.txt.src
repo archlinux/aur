@@ -1,0 +1,5 @@
+--- src/CMakeLists.txt	2014-07-16 19:22:16.000000000 -0600
++++ src/CMakeLists.txt	2014-12-12 20:01:49.669873492 -0700
+@@ -57 +57 @@
+-install(TARGETS tqsllib DESTINATION lib)
++install(TARGETS tqsllib DESTINATION lib/trustedqsl)

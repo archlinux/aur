@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=TrustedQSL
+Name[en_US]=TrustedQSL
+Comment=Sign QSO data for upload to LoTW
+Comment[en_US]=Sign QSO data for upload to LoTW
+Encoding=UTF-8
+Exec=/usr/bin/tqsl %F
+Icon=TrustedQSL.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
