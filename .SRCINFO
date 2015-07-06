@@ -1,0 +1,21 @@
+pkgbase = prismatik-git
+	pkgdesc = A controler for usb driven LED backlights.
+	pkgver = 5.11.2.r0.g46ca39e
+	pkgrel = 1
+	url = https://github.com/woodenshark/Lightpack
+	install = prismatik.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libusb
+	makedepends = pkg-config
+	depends = qt5-serialport
+	depends = libxkbcommon-x11
+	provides = lightpack
+	provides = prismatik
+	source = git://github.com/woodenshark/Lightpack.git
+	sha256sums = SKIP
+
+pkgname = prismatik-git
+
