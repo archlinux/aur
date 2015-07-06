@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/rbock/sqlpp11-connector-sqlite3"
 license=('BSD')
 depends=('sqlpp11')
-makedepends=('cmake git')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/rbock/sqlpp11-connector-sqlite3.git#tag=0.15")
 sha256sums=('SKIP')
 

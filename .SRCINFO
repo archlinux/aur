@@ -5,7 +5,8 @@ pkgbase = sqlpp11-connector-sqlite3
 	url = https://github.com/rbock/sqlpp11-connector-sqlite3
 	arch = any
 	license = BSD
-	makedepends = cmake git
+	makedepends = cmake
+	makedepends = git
 	depends = sqlpp11
 	source = git+https://github.com/rbock/sqlpp11-connector-sqlite3.git#tag=0.15
 	sha256sums = SKIP
