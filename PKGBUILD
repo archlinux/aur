@@ -2,20 +2,23 @@
 # Contributor: Daniel Perez <tuvistavie@gmail.com>
 
 pkgname=electron
-pkgver=0.28.1
+pkgver=0.29.1
 pkgrel=1
 pkgdesc="Framework for writing cross-platform desktop applications using JavaScript, HTML and CSS."
 
-arch=('i686' 'x86_64')
+arch=('arm' 'i686' 'x86_64')
 license=('MIT')
 url="https://github.com/atom/electron"
 
 optdepends=('nodejs')
 depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
-[[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
-[[ $CARCH == 'x86_64' ]] && \
-    sha256sums=('f78a609c23bb35fa564ad8d6ed62cd2a92213a4e5ab8103a069a953177ad44b9') || \
-    sha256sums=('b7fcfad602f7e7b4cdf5c279d66ff077b176c1cb9fc0ee56697a185988634ed6')
+
+case $CARCH in
+  'arm'   ) _arch='arm' ; sha256sums=('e2212d1ce7759c9d40b4214a7c55e58cf7a46c158cf4cfc4afa5dd3a1682ec20');;
+  'ia32'  ) _arch='ia32'; sha256sums=('a77811a948f18900ee747b43e83ed06f8af4e997032e7bc3efc1b635d3464ed2');;
+  'x86_64') _arch='x64' ; sha256sums=('882f3e694f998345f16c1b30dc8795eb743539cd4f3f6432fe55b8fd331bf5b3');;
+esac
+
 source=("electron.zip::https://github.com/atom/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-${_arch}.zip")
 
 package() {
