@@ -1,6 +1,6 @@
-pkgbase = purple-whatsapp-git
+pkgbase = purple-whatsapp
 	pkgdesc = WhatsApp protocol implementation for libpurple (pidgin)
-	pkgver = 0.8.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/davidgfnet/whatsapp-purple
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = purple-whatsapp-git
 	depends = freeimage
 	optdepends = pidgin
 	provides = purple-whatsapp
-	source = git+https://github.com/davidgfnet/whatsapp-purple.git
+	source = git+https://github.com/davidgfnet/whatsapp-purple.git#tag=v0.8.4
 	sha512sums = SKIP
 
-pkgname = purple-whatsapp-git
+pkgname = purple-whatsapp
 

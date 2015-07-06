@@ -1,9 +1,9 @@
-#!/bin/sh
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 
-pkgname=purple-whatsapp-git
-pkgver=0.8.2
+pkgname=purple-whatsapp
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="WhatsApp protocol implementation for libpurple (pidgin)"
 arch=('i686' 'x86_64')
@@ -12,13 +12,8 @@ license=('GPLv2')
 depends=('libpurple' 'freeimage')
 optdepends=('pidgin')
 provides=('purple-whatsapp')
-source=('git+https://github.com/davidgfnet/whatsapp-purple.git')
+source=("git+https://github.com/davidgfnet/whatsapp-purple.git#tag=v${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-  cd "$SRCDEST/whatsapp-purple"
-  git describe --always | sed 's|-|.|g' | cut -d "v" -f2
-}
 
 build() {
   cd "$srcdir/whatsapp-purple"
