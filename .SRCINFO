@@ -1,0 +1,15 @@
+pkgbase = go-bindata-git
+	pkgdesc = Converts any file into managable Go source code - git checkout
+	pkgver = 0.r209.gb6721d7
+	pkgrel = 1
+	url = http://github.com/jteeuwen/go-bindata/
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = go
+	provides = go-bindata-git
+	conflicts = go-bindata
+	sha256sums = SKIP
+
+pkgname = go-bindata-git
+
