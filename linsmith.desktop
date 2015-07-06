@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=linSmith
+Name[en_US]=linSmith
+Comment=Smith Charting program
+Comment[en_US]=Smith Charting program
+Encoding=UTF-8
+Exec=linsmith
+Icon=linsmith.xpm
+MimeType=text/plain
+StartupNotify=true
+Terminal=
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

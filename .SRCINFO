@@ -1,0 +1,23 @@
+pkgbase = linsmith
+	pkgdesc = A Smith Charting program, mainly designed for educational use
+	pkgver = 0.99.28
+	pkgrel = 1
+	url = http://jcoppens.com/soft/linsmith/index.en.php
+	install = linsmith.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = tcl
+	depends = libgnomeui
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/linsmith/linsmith-0.99.28.tar.gz
+	source = linsmith.desktop
+	md5sums = 45375788e636cae80ff53fc722c54ed2
+	md5sums = 2d0246a85ce1aebd359c5c3cabfed7b5
+	sha256sums = 22196edb6e4c72a45a3d0a794a0bb140ab5932a5e59a40e2e9ee143b53c4235d
+	sha256sums = bc74c02dbedc8c80b552e276c770e9ee3f0b231e371ea08a3e0a6921812b1938
+
+pkgname = linsmith
+
