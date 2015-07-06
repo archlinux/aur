@@ -1,0 +1,14 @@
+pkgbase = python2-pyechonest
+	pkgdesc = An open source Python library for the Echo Nest API.
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = https://github.com/echonest/pyechonest
+	arch = any
+	license = custom:BSD3
+	depends = python2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pyechonest/pyechonest-8.0.1.tar.gz
+	md5sums = b097c886dafcf7c5e024818dba5b05d0
+
+pkgname = python2-pyechonest
+
