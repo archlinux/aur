@@ -1,0 +1,21 @@
+pkgbase = chirp
+	pkgdesc = GUI tool for programming ham radios; supports a large number of makes and models
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://chirp.danplanet.com/
+	install = chirp.install
+	arch = any
+	license = GPL
+	depends = python2-lxml
+	depends = python2-pyserial
+	depends = desktop-file-utils
+	depends = pygtk
+	provides = chirp
+	conflicts = chirp-daily
+	options = !emptydirs
+	source = http://chirp.danplanet.com/download/0.4.1/chirp-0.4.1.tar.gz
+	md5sums = a86efa2bb05c33419b36cc9969327c86
+	sha256sums = 8c9d652dc89dbab9e2a1a75c07aa7179ce403de078a4d02814365f89e183319e
+
+pkgname = chirp
+
