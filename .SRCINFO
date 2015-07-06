@@ -1,0 +1,15 @@
+pkgbase = genpo
+	pkgdesc = The GENeral Purpose Organ, which replicates the essential features of any pipe, theatre, or reed organ.
+	pkgver = 0.9.8
+	pkgrel = 2
+	url = http://genpo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = qt4
+	source = http://sourceforge.net/projects/genpo/files/genpo/GENPO-0.9.8/genpo-0.9.8.tar.gz
+	md5sums = 79a6a7eca2fbb681d4ddfa453498372a
+
+pkgname = genpo
+
