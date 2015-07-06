@@ -1,6 +1,6 @@
 pkgbase = vrpn-oculus-git
 	pkgdesc = the Virtual Reality Peripheral Network lib and tools
-	pkgver = 07.30.987.g32789da
+	pkgver = 07.30.1054.g97a604f
 	pkgrel = 1
 	url = http://www.cs.unc.edu/Research/vrpn
 	arch = i686

@@ -2,7 +2,7 @@
 
 pkgname=vrpn-oculus-git
 _gitname=vrpn
-pkgver=07.30.987.g32789da
+pkgver=07.30.1054.g97a604f
 pkgrel=1
 pkgdesc='the Virtual Reality Peripheral Network lib and tools'
 arch=('i686' 'x86_64')
