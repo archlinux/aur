@@ -1,0 +1,163 @@
+ifeq ($(DEBIAN), 1)
+include ../debian/huskymak.cfg
+else
+include ../../huskymak.cfg
+endif
+
+ifeq ($(DEBUG), 1)
+  CFLAGS=$(WARNFLAGS) $(DEBCFLAGS) -I$(INCDIR)
+  LFLAGS=$(DEBLFLAGS)
+else
+  CFLAGS=$(WARNFLAGS) $(OPTCFLAGS) -I$(INCDIR)
+  LFLAGS=$(OPTLFLAGS)
+endif
+
+ifeq ("$(OBJ)", "")
+  OBJ=$(_OBJ)
+endif
+ifeq ("$(EXE)", "")
+  EXE=$(_EXE)
+endif
+
+allmaps = \
+ 1125_866.chs    1125_asc.chs    1125_ibm.chs    1125_is5.chs    1125_koi.chs\
+ 850_asc.chs     850_ibm.chs     850_iso.chs     866_1125.chs    866_asc.chs \
+ 866_ibm.chs     866_is5.chs     866_koi.chs     can_ibm.chs     dut_ibm.chs \
+ fin_ibm.chs     frn_ibm.chs     grm_ibm.chs     ibm_850.chs     ibm_asc.chs \
+ ibm_iso.chs     ibm_mac.chs     ibm_swe.chs     ibm_vt1.chs     is5_1125.chs\
+ is5_866.chs     is5_asc.chs     iso_850.chs     iso_asc.chs     iso_ibm.chs \
+ iso_mac.chs     itl_ibm.chs     koi_1125.chs    koi_866.chs     koi_asc.chs \
+ mac_850.chs     mac_ibm.chs     mac_iso.chs     nor_ibm.chs     prt_ibm.chs \
+ spn_ibm.chs     swe_ibm.chs     swi_ibm.chs     uk_ibm.chs \
+ 850_865.chs  865_866.chs  865_ibm.chs  866_865.chs  iso_865.chs \
+ 865_850.chs  865_asc.chs  865_iso.chs  ibm_865.chs
+
+
+.PHONY: maps
+
+default: makemaps$(EXE) maps
+
+CDEFS=$(ADDCDEFS)
+
+.c$(OBJ):
+	$(CC) $(CFLAGS) $<
+
+makemaps$(EXE): makemaps$(OBJ)
+	$(CC) $(LFLAGS) -o makemaps$(EXE) makemaps$(OBJ)
+
+maps: 	makemaps$(EXE) readmaps.437 readmaps.850 readmaps.866 readmaps.koi readmaps.ukr \
+	readmaps.is1 readmaps.is5 readmaps.865
+
+readmaps.437:
+	-echo "DO NOT WORRY ABOUT WARNINGS ABOUT no matching charset!"
+	./makemaps$(EXE) CP437 $(allmaps)
+	-$(RM) writmaps.437
+	-$(RM) readmaps.437
+	$(MV) writmaps.dat writmaps.437
+	$(MV) readmaps.dat readmaps.437
+
+readmaps.850:
+	./makemaps$(EXE) CP850 $(allmaps)
+	-$(RM) writmaps.850
+	-$(RM) readmaps.850
+	$(MV) writmaps.dat writmaps.850
+	$(MV) readmaps.dat readmaps.850
+
+readmaps.865:
+	./makemaps$(EXE) CP865 $(allmaps)
+	-$(RM) writmaps.865
+	-$(RM) readmaps.865
+	$(MV) writmaps.dat writmaps.865
+	$(MV) readmaps.dat readmaps.865
+
+readmaps.866:
+	./makemaps$(EXE) CP866 $(allmaps)
+	-$(RM) writmaps.866
+	-$(RM) readmaps.866
+	$(MV) writmaps.dat writmaps.866
+	$(MV) readmaps.dat readmaps.866
+
+readmaps.koi:
+	./makemaps$(EXE) KOI8-R $(allmaps)
+	-$(RM) writmaps.koi
+	-$(RM) readmaps.koi
+	$(MV) writmaps.dat writmaps.koi
+	$(MV) readmaps.dat readmaps.koi
+
+readmaps.ukr:
+	./makemaps$(EXE) CP1125 $(allmaps)
+	-$(RM) writmaps.ukr
+	-$(RM) readmaps.ukr
+	$(MV) writmaps.dat writmaps.ukr
+	$(MV) readmaps.dat readmaps.ukr
+
+readmaps.is1:
+	./makemaps$(EXE) LATIN-1 $(allmaps)
+	-$(RM) writmaps.is1
+	-$(RM) readmaps.is1
+	$(MV) writmaps.dat writmaps.is1
+	$(MV) readmaps.dat readmaps.is1
+
+readmaps.is5:
+	./makemaps$(EXE) ISO-5 $(allmaps)
+	-$(RM) writmaps.is5
+	-$(RM) readmaps.is5
+	$(MV) writmaps.dat writmaps.is5
+	$(MV) readmaps.dat readmaps.is5
+
+clean:
+	-$(RM) makemaps$(OBJ)
+
+distclean: clean
+	-$(RM) readmaps.*
+	-$(RM) writmaps.*
+	-$(RM) makemaps$(EXE)
+
+install: maps
+	-$(MKDIR) $(MKDIROPT) $(DESTDIR)$(CFGDIR)
+	-$(MKDIR) $(MKDIROPT) $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.437 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.850 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.865 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.866 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.koi $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.is1 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.is5 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) readmaps.ukr $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.437 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.850 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.865 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.866 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.koi $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.is1 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.is5 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+	$(INSTALL) $(IIOPT) writmaps.ukr $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
+ifeq ($(OSTYPE), UNIX)
+	cd $(DESTDIR)$(CFGDIR) ;\
+	$(LN) $(LNOPT) readmaps.is1 readmaps.dat ;\
+	$(LN) $(LNOPT) writmaps.is1 writmaps.dat
+else
+	$(LN) $(LNOPT) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.437 $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.dat
+	$(LN) $(LNOPT) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.437 $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.dat
+endif
+
+uninstall:
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.437
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.850
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.865
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.866
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.koi
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.is1
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.is5
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.ukr
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.437
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.850
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.865
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.866
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.koi
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.is1
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.is5
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.ukr
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)readmaps.dat
+	-$(RM) $(CFGDIR)$(DIRSEP)msged$(DIRSEP)writmaps.dat
+
