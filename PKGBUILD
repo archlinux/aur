@@ -5,21 +5,21 @@
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
 pkgver=4.3.28
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-depends=('linux-mainline>=4.1rc1' 'linux-mainline<4.2rc1')
-makedepends=('dkms' 'linux-mainline-headers>=4.1rc1' 'linux-mainline-headers<4.2rc1' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver")
+depends=('linux-mainline>=4.2rc1' 'linux-mainline<4.3rc1')
+makedepends=('dkms' 'linux-mainline-headers>=4.2rc1' 'linux-mainline-headers<4.3rc1' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver")
 # remember to also adjust the .install files and the package deps below
-_extramodules=extramodules-4.1-mainline
+_extramodules=extramodules-4.2-mainline
 
 prepare() {
   # dkms need modification to be run as user
   cp -r /var/lib/dkms .
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
 
-  # workaround to patch virtualbox-guest for linux 3.19
+  # workaround to patch virtualbox-guest for linux 3.19<
   # credits: Philip Müller <philm@manjaro.org>
   rm -r $srcdir/dkms/vboxguest/$pkgver/source
   cp -r /usr/src/vboxguest-$pkgver $srcdir/dkms/vboxguest/$pkgver/source
@@ -46,7 +46,7 @@ build() {
 package_virtualbox-host-modules-mainline(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Host kernel modules for VirtualBox running under linux-mainline'
-  depends=('linux-mainline>=4.1rc1' 'linux-mainline<4.2rc1')
+  depends=('linux-mainline>=4.2rc1' 'linux-mainline<4.3rc1')
   provides=("virtualbox-host-modules")
   conflicts=('virtualbox-modules-mainline')
   install=virtualbox-host-modules-mainline.install
@@ -61,7 +61,7 @@ package_virtualbox-guest-modules-mainline(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Guest kernel modules for VirtualBox running under linux-mainline'
   license=('GPL')
-  depends=('linux-mainline>=4.1rc1' 'linux-mainline<4.2rc1')
+  depends=('linux-mainline>=4.2rc1' 'linux-mainline<4.3rc1')
   provides=("virtualbox-guest-modules")
   conflicts=('virtualbox-modules-mainline')
   install=virtualbox-guest-modules-mainline.install
