@@ -1,0 +1,22 @@
+pkgbase = ricochet-git
+	pkgdesc = A peer-to-peer instant messaging system built on Tor hidden services (git version)
+	pkgver = 1.0.4.r40.g666b686
+	pkgrel = 1
+	url = https://ricochet.im/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = qt5-tools
+	depends = tor
+	depends = qt5-translations
+	depends = qt5-quickcontrols
+	depends = qt5-quick1
+	depends = qt5-declarative
+	provides = ricochet
+	conflicts = ricochet
+	source = ricochet-git::git+https://github.com/ricochet-im/ricochet.git
+	md5sums = SKIP
+
+pkgname = ricochet-git
+
