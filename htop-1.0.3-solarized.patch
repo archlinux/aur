@@ -1,0 +1,46 @@
+diff --git a/CRT.c b/CRT.c
+index c0d1b82..f8d5f70 100644
+--- a/CRT.c
++++ b/CRT.c
+@@ -587,7 +587,7 @@ void CRT_setColors(int colorScheme) {
+       CRT_colors[LED_COLOR] = ColorPair(Green,Black);
+       CRT_colors[TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[PROCESS] = A_NORMAL;
+-      CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black);
++      CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black);
+       CRT_colors[PROCESS_MEGABYTES] = ColorPair(Cyan,Black);
+       CRT_colors[PROCESS_BASENAME] = A_BOLD | ColorPair(Cyan,Black);
+@@ -598,7 +598,7 @@ void CRT_setColors(int colorScheme) {
+       CRT_colors[PROCESS_THREAD] = ColorPair(Green,Black);
+       CRT_colors[PROCESS_THREAD_BASENAME] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[BAR_BORDER] = A_BOLD;
+-      CRT_colors[BAR_SHADOW] = A_BOLD | ColorPair(Black,Black);
++      CRT_colors[BAR_SHADOW] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[SWAP] = ColorPair(Red,Black);
+       CRT_colors[GRAPH_1] = A_BOLD | ColorPair(Red,Black);
+       CRT_colors[GRAPH_2] = ColorPair(Red,Black);
+@@ -608,12 +608,12 @@ void CRT_setColors(int colorScheme) {
+       CRT_colors[GRAPH_6] = ColorPair(Cyan,Black);
+       CRT_colors[GRAPH_7] = A_BOLD | ColorPair(Blue,Black);
+       CRT_colors[GRAPH_8] = ColorPair(Blue,Black);
+-      CRT_colors[GRAPH_9] = A_BOLD | ColorPair(Black,Black);
++      CRT_colors[GRAPH_9] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[MEMORY_USED] = ColorPair(Green,Black);
+       CRT_colors[MEMORY_BUFFERS] = ColorPair(Blue,Black);
+       CRT_colors[MEMORY_BUFFERS_TEXT] = A_BOLD | ColorPair(Blue,Black);
+       CRT_colors[MEMORY_CACHE] = ColorPair(Yellow,Black);
+-      CRT_colors[LOAD_AVERAGE_FIFTEEN] = A_BOLD | ColorPair(Black,Black);
++      CRT_colors[LOAD_AVERAGE_FIFTEEN] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[LOAD_AVERAGE_FIVE] = A_NORMAL;
+       CRT_colors[LOAD_AVERAGE_ONE] = A_BOLD;
+       CRT_colors[LOAD] = A_BOLD;
+@@ -627,7 +627,7 @@ void CRT_setColors(int colorScheme) {
+       CRT_colors[CPU_NICE_TEXT] = A_BOLD | ColorPair(Blue,Black);
+       CRT_colors[CPU_NORMAL] = ColorPair(Green,Black);
+       CRT_colors[CPU_KERNEL] = ColorPair(Red,Black);
+-      CRT_colors[CPU_IOWAIT] = A_BOLD | ColorPair(Black, Black);
++      CRT_colors[CPU_IOWAIT] = A_BOLD | ColorPair(Green,Black);
+       CRT_colors[CPU_IRQ] = ColorPair(Yellow,Black);
+       CRT_colors[CPU_SOFTIRQ] = ColorPair(Magenta,Black);
+       CRT_colors[CPU_STEAL] = ColorPair(Cyan,Black);
