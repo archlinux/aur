@@ -1,0 +1,50 @@
+pkgbase = linux-git
+	pkgver = 4.1rc1.r54.g14bc84c
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = linux-firmware
+	makedepends = mkinitcpio
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+	source = config
+	source = config.x86_64
+	source = linux-git.preset
+	md5sums = SKIP
+	md5sums = 9315fa371b7fa61383eceed68daf9c12
+	md5sums = 11a3a522d7e3bc8fb23b672469770018
+	md5sums = ddfc10f687c3aaa029626ade9ed4e307
+
+pkgname = linux-git
+	pkgdesc = The Linux kernel and modules (git version)
+	install = linux-git.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-git=4.1rc1.r54.g14bc84c
+	conflicts = kernel26-git
+	replaces = kernel26-git
+	backup = etc/mkinitcpio.d/linux-git.preset
+
+pkgname = linux-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = kernel26-git-headers=4.1rc1.r54.g14bc84c
+	conflicts = kernel26-git-headers
+	replaces = kernel26-git-headers
+
+pkgname = linux-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = kernel26-git-docs=4.1rc1.r54.g14bc84c
+	conflicts = kernel26-git-docs
+	replaces = kernel26-git-docs
+
