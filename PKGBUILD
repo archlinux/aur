@@ -1,8 +1,8 @@
 # Maintainer: Markus Heidelberg <markus dot heidelberg at web dot de>
 
 pkgname=microchip-libraries-for-applications
-pkgver=v2014_07_22
-pkgrel=3
+pkgver=v2015_05_15
+pkgrel=1
 pkgdesc="Microchip Libraries for Applications (Current)"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
@@ -18,7 +18,7 @@ source=(http://ww1.microchip.com/downloads/en/softwarelibrary/$_installer
         LICENSE)
 source_x86_64=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
-md5sums=('3a829a4d57ed0d6794e5ccd18995b863'
+md5sums=('757939fe1d0dc60b4394f6dc63a9fb30'
          'a79e3095ffcc446517b27707c8a60d7b')
 md5sums_x86_64=('SKIP')
 
@@ -38,13 +38,13 @@ package() {
   # 10x enter: read license
   # 1x y + enter: accept license [y/n]
   # 1x enter: accept installation directory
-  # 9x enter: select components [Y/n]
+  # 10x enter: select components [Y/n]
   # 1x enter: confirm selection [Y/n]
   # 1x enter: start installation [Y/n]
   # 1x enter: continue
   # 1x n + enter: download JRE [Y/n]
   # 1x n + enter: open ReadMe [Y/n]
-  echo -e "\n\n\n\n\n\n\n\n\n\ny\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\nn" > "$pkgdir/inst_input"
+  echo -e "\n\n\n\n\n\n\n\n\n\ny\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\nn" > "$pkgdir/inst_input"
 
   # do not use $pkgdir$_instdir as installation directory because of the fakechroot environment
   echo "#!/bin/bash
