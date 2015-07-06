@@ -1,0 +1,16 @@
+pkgbase = ebumeter
+	pkgdesc = Loudness measurement according to EBU-R128.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://kokkinizita.linuxaudio.org/linuxaudio/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = clxclient
+	depends = jack
+	depends = libpng
+	source = http://kokkinizita.linuxaudio.org/linuxaudio//downloads/ebumeter-0.2.0.tar.bz2
+	md5sums = 8cf935e3412119042dd3bf4bf87b8b72
+
+pkgname = ebumeter
+
