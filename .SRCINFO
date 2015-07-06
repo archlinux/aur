@@ -1,0 +1,13 @@
+pkgbase = etherdump
+	pkgdesc = An extremely small packet sniffer.
+	pkgver = 2.11
+	pkgrel = 1
+	url = http://freshmeat.net/projects/etherdump/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://psydev.syw4e.info/new/etherdump/etherdump-2.11.tar.gz
+	md5sums = 74013efee212baa8860eda10187aed78
+
+pkgname = etherdump
+
