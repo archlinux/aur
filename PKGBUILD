@@ -1,0 +1,22 @@
+# Contributor: realitygaps <realitygaps AT yahoo DOT com>
+pkgname=ruby-parseconfig
+_gemname=parseconfig
+pkgver=0.5.2
+pkgrel=1
+pkgdesc="Ruby gem parse config which allows you to easily manage config files"
+arch=(any)
+url="http://rubyforge.org/projects/parseconfig/"
+license=('MIT')
+depends=('ruby')
+makedepends=('rubygems')
+
+source=("http://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
+noextract=("${_gemname}-$pkgver.gem")
+
+build() {
+cd $srcdir
+export HOME=/tmp
+local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-$pkgver.gem
+}
+md5sums=('12907f53149caceaa64f17689eb21840')

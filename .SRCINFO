@@ -1,0 +1,15 @@
+pkgbase = ruby-parseconfig
+	pkgdesc = Ruby gem parse config which allows you to easily manage config files
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://rubyforge.org/projects/parseconfig/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = parseconfig-0.5.2.gem
+	source = http://rubygems.org/downloads/parseconfig-0.5.2.gem
+	md5sums = 12907f53149caceaa64f17689eb21840
+
+pkgname = ruby-parseconfig
+
