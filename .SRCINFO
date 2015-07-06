@@ -1,0 +1,22 @@
+pkgbase = ptpython
+	pkgdesc = An advanced Python REPL, built on top of the prompt_toolkit library
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/ptpython
+	arch = any
+	license = CUSTOM
+	source = https://pypi.python.org/packages/source/p/ptpython/ptpython-0.8.tar.gz
+	sha256sums = 342d966c6671f9cc57f7dc8eec2595411ad1cca0e3da25e0997f9812431cf4c0
+
+pkgname = ptpython
+	depends = python-prompt_toolkit
+	depends = python-jedi>=0.8.1
+	depends = python-docopt
+	optdepends = ipython: ptipython (ptpython iPython wrapper)
+
+pkgname = ptpython2
+	depends = python2-prompt_toolkit
+	depends = python2-jedi>=0.8.1
+	depends = python2-docopt
+	optdepends = ipython2: ptipython2 (ptpython iPython wrapper)
+
