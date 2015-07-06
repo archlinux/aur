@@ -1,0 +1,16 @@
+pkgbase = dialign
+	pkgdesc = Multiple sequence alignment program
+	pkgver = 2.2.1
+	pkgrel = 3
+	url = http://dialign.gobics.de
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	source = http://dialign.gobics.de/download/dialign_package.tgz
+	source = dialign.patch
+	md5sums = 3ea891efbaac8572f9ff1dc7f1d3c5f8
+	md5sums = 11d16969daf2280e63c0bb333810fa93
+
+pkgname = dialign
+

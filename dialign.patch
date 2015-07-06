@@ -1,0 +1,8 @@
+@@ -293,6 +293,7 @@
+    beg_ali = clock() ; 
+ 
+  strcpy ( dialign_dir , "DIALIGN2_DIR" );
++ setenv(dialign_dir, "/usr/share/dialign/", 1);
+ 
+  if ((par_file = getenv(dialign_dir)) == NULL)
+    {
