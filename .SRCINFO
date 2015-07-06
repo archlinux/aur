@@ -1,0 +1,17 @@
+pkgbase = tiny
+	pkgdesc = Experiments in creating very small Linux ELF executables.
+	pkgver = 20130219
+	pkgrel = 2
+	url = http://www.muppetlabs.com/~breadbox/software/tiny/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nasm
+	options = !strip
+	source = http://www.muppetlabs.com/~breadbox/pub/software/tiny.tar.gz
+	source = tiny.sh
+	md5sums = e535400bd35f3606ae2f5d067989e521
+	md5sums = e393c72f9529e5a1bae15bbd449b4637
+
+pkgname = tiny
+
