@@ -1,0 +1,16 @@
+pkgbase = trinity-git
+	pkgdesc = A Linux System call fuzz tester (git version)
+	pkgver = 1.5.r25.gfb4a1ad
+	pkgrel = 1
+	url = http://codemonkey.org.uk/projects/trinity/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = trinity
+	conflicts = trinity
+	source = git+https://github.com/kernelslacker/trinity.git
+	md5sums = SKIP
+
+pkgname = trinity-git
+
