@@ -1,7 +1,7 @@
 pkgbase = vivaldi
 	pkgdesc = An advanced browser made with the power user in mind.
 	pkgver = 1.0.162.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = x86_64
