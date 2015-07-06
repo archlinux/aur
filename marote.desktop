@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Marote
+Name[en_US]=Marote
+Comment=Elecraft K2 Tranciever Control - Interops with Xlog 
+Comment[en_US]=Elecraft K2 Tranciever Control - Interops with Xlog 
+Encoding=UTF-8
+Exec=marote
+Icon=marote.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
