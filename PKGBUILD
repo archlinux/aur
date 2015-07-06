@@ -30,7 +30,9 @@ package() {
         --destdir="${pkgdir}" \
         --prefix=/usr/
 
-    mv "${pkgdir}/usr/etc/" "${pkgdir}/etc/"
+    install -dm755 "${pkgdir}/usr/share/bash-completion/"
+    mv "${pkgdir}/usr/etc/bash_completion.d/" "${pkgdir}/usr/share/bash-completion/completions/"
+    rmdir "${pkgdir}/usr/etc/"
 
     install -dm755 "${pkgdir}/usr/share/licenses/rust-nightly-bin/"{rust,cargo}
 
