@@ -1,0 +1,23 @@
+pkgbase = xcompmgr-git
+	pkgdesc = The X Composisting Manager fresh from freedesktop.org repositories
+	pkgver = 1.1.7.r0.ge99e569
+	pkgrel = 1
+	url = http://www.freedesktop.org/Software/xapps
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = xorg-util-macros
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrender
+	provides = xcompmgr
+	conflicts = xcompmgr
+	conflicts = xcompmgr-dana
+	replaces = xcompmgr
+	replaces = xcompmgr-dana
+	source = xcompmgr-git::git+git://anongit.freedesktop.org/git/xorg/app/xcompmgr
+	md5sums = SKIP
+
+pkgname = xcompmgr-git
+
