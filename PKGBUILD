@@ -3,14 +3,14 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-qt-git')
-pkgver=4.0.2.r6930.c53e7f2
+pkgver=4.0.2.r6957.009148d
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
 url='http://www.dolphin-emu.org/'
 license=('GPL2')
-depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'miniupnpc' 'portaudio' 'sdl2'
-         'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
+depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'libevdev' 'mbedtls' 'miniupnpc'
+         'portaudio' 'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
 makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
