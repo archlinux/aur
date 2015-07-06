@@ -1,0 +1,17 @@
+pkgbase = lemonpos
+	pkgdesc = An open source Point of Sale software targeted for micro, small and medium businesses.
+	pkgver = 0.9.4
+	pkgrel = rc7
+	url = http://lemonpos.org/
+	install = lemonpos.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	source = http://downloads.sourceforge.net/project/lemonpos/citronic/lemonpos-0.9.4-rc7.tar.bz2
+	md5sums = 4c45982ff54fdc04094a20f2feafc88f
+
+pkgname = lemonpos
+

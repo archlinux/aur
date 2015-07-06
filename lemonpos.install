@@ -1,0 +1,42 @@
+# This is a default template for a post-install scriptlet.  You can
+# remove any functions you don't need (and this header).
+
+# arg 1:  the new package version
+pre_install() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+post_install() {
+  echo "Remember that you need to install either mysql or postgresql for this package"
+  echo "to work. Also make sure to read install the lemonpos database which is at"
+  echo "/usr/share/apps/lemon/lemon_mysql.sql and use:"
+  echo "cat lemon_mysql.sql | mysql -u root to set it up"
+  /bin/true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  /bin/true
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  /bin/true
+}
+
+# arg 1:  the old package version
+post_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+$op $*
