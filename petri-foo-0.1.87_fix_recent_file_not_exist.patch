@@ -1,0 +1,24 @@
+diff -Naur a/gui/bank-ops.c b/gui/bank-ops.c
+--- a/gui/bank-ops.c	2012-08-06 05:33:34.000000000 +0200
++++ b/gui/bank-ops.c	2012-08-07 17:57:28.580145691 +0200
+@@ -393,6 +393,8 @@
+          g_signal_connect_swapped(G_OBJECT(msg), "response",
+                                    G_CALLBACK(gtk_widget_destroy), msg);
+          gtk_widget_show (msg);
++
++         gtk_recent_manager_remove_item(recent_manager, filename, NULL);
+     }
+     else
+     {
+diff -Naur a/libpetrifui/dish_file.c b/libpetrifui/dish_file.c
+--- a/libpetrifui/dish_file.c	2012-08-06 05:33:34.000000000 +0200
++++ b/libpetrifui/dish_file.c	2012-08-07 17:56:09.063909801 +0200
+@@ -1440,7 +1440,7 @@
+ 
+     if (stat(path, &st) != 0)
+     {
+-        msg_log(MSG_ERROR, "file '%s' does not exist\n");
++        msg_log(MSG_ERROR, "file '%s' does not exist\n", path);
+         return -1;
+     }
+ 

@@ -1,0 +1,19 @@
+updatedesktopdtb() {
+	[ -x /usr/bin/update-desktop-database ] \
+		&& update-desktop-database -q
+	[ -x /usr/bin/update-mime-database ] \
+		&& update-mime-database usr/share/mime > /dev/null 2>&1
+}
+
+post_install() {
+	updatedesktopdtb
+}
+
+post_upgrade() {
+	updatedesktopdtb
+}
+
+post_remove() {
+	updatedesktopdtb
+}
+
