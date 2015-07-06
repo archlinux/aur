@@ -1,0 +1,17 @@
+pkgbase = perl-net-liblo
+	pkgdesc = Perl interface for liblo Lightweight OSC library
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/~njh/Net-LibLO-0.06/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = liblo
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/Net-LibLO-0.06.tar.gz
+	md5sums = 851b50ff14b0afeb8c5c9f38289526ed
+
+pkgname = perl-net-liblo
+
