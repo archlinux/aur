@@ -1,0 +1,15 @@
+pkgbase = opensmile
+	pkgdesc = A fast, real-time (audio) feature extraction utility for automatic speech, music and paralinguistic recognition research
+	pkgver = 2.0.rc1
+	pkgrel = 1
+	url = http://opensmile.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = portaudio
+	options = !makeflags
+	source = https://downloads.sourceforge.net/project/opensmile/opensmile-2.0-rc1.tar.gz
+	md5sums = 2d938e86cd9d1a7ad3d24dcb3c721882
+
+pkgname = opensmile
+
