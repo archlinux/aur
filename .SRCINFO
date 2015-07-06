@@ -1,0 +1,17 @@
+pkgbase = suck
+	pkgdesc = Download news from remote NNTP server.
+	pkgver = 4.3.2
+	pkgrel = 3
+	url = http://linux.maruhn.com/sec/sucks.html
+	arch = i686
+	arch = x86_64
+	license = CPL
+	depends = openssl
+	optdepends = perl
+	source = ftp://sunsite.unc.edu/pub/Linux/system/news/transport/suck-4.3.2.tar.gz
+	md5sums = b4de28e7f256ec3c2c388b2c984f30bf
+	sha1sums = 8c48889e407473ab565a3d8ba5cda969862d216a
+	sha256sums = c98dd04d1fe6914867fa509821243d5e63d1159a238f38f6c01e19e266b51788
+
+pkgname = suck
+
