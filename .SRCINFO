@@ -1,0 +1,13 @@
+pkgbase = lotw
+	pkgdesc = The unofficial LOTW users list
+	pkgver = 20150222
+	pkgrel = 1
+	url = http://www.hb9bza.net/lotw-users-list
+	arch = any
+	license = unknown
+	source = http://www.hb9bza.net/lotw/lotw.txt
+	md5sums = 709ba9b6c43c9fe01789cca090002785
+	sha256sums = 7c06c7c0f8c895332248960966495ee00861f8a561f6a7f29090451f0ee5add8
+
+pkgname = lotw
+
