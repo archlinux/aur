@@ -1,0 +1,21 @@
+pkgbase = jalview
+	pkgdesc = Bioinformatics Multiple Alignment Editor
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://www.jalview.org/
+	arch = any
+	license = GPL3
+	makedepends = perl
+	makedepends = wget
+	depends = java-runtime
+	source = http://www.jalview.org/webstart/jalview.jnlp
+	source = logo.gif
+	source = jalview
+	source = jalview.desktop
+	md5sums = 22199389866d5ea6829d5005bed6974c
+	md5sums = e124f66d646560813b1a06b0cff02d3a
+	md5sums = 0ea5c6990bfa050c9c69f24926da3d57
+	md5sums = b3a842500e7ff3cd1324dede69822d21
+
+pkgname = jalview
+

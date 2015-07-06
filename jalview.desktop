@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Jalview
+Comment=A multiple alignment editor
+Exec=jalview
+Icon=/usr/share/pixmaps/jalview.gif
+StartupNotify=true
+Type=Application
+Categories=Education;Science;Bioinformatics;

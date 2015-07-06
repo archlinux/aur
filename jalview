@@ -1,0 +1,12 @@
+#!/bin/sh
+
+progname="jalview"
+mainclass="jalview.bin.Jalview"
+basedir="/usr/share/java/$progname"
+
+# build classpath: all jars in $basedir
+cp=$( ls $basedir/*.jar | xargs echo | sed "s/ /:/g" );
+
+
+# run jar
+"$JAVA_HOME/bin/java" -cp $cp $mainclass
