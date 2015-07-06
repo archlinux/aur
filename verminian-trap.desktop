@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Verminian Trap
+Comment=Your space pod has been forced to land on a planet infested with giant insects from Verminest. Fight with your companions and survive the incoming waves of enemy bugs for as long as you can
+Exec=verminian-trap
+Icon=verminian-trap
+Terminal=false
+Type=Application
+Categories=Game;
