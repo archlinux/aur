@@ -6,7 +6,7 @@ pkgver=1.0
 pkgrel=2
 pkgdesc="Theme for the Balou splash screen (xfce4)"
 
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.xfce.org"
 license=('GPL')
 
