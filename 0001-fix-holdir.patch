@@ -1,0 +1,11 @@
+--- a/src/prekernel/Globals.sml	2014-09-26 11:42:11.653305179 +0200
++++ b/src/prekernel/Globals.sml	2014-09-26 11:42:50.039971664 +0200
+@@ -15,7 +15,7 @@
+  * Installation-specific information.                                        *
+  *---------------------------------------------------------------------------*)
+ 
+-val HOLDIR = Systeml.HOLDIR
++val HOLDIR = "/opt/hol"
+ 
+ (*---------------------------------------------------------------------------*
+  * Version information                                                       *
