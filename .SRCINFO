@@ -1,0 +1,17 @@
+pkgbase = louderbox
+	pkgdesc = A complete 8 band audio processor using the jack audio connection kit.
+	pkgver = 0.1.0
+	pkgrel = 3
+	url = http://nixbit.com/cat/multimedia/audio/louderbox/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = libglade
+	depends = swh-plugins
+	depends = tap-plugins
+	source = http://www.sourcefiles.org/Multimedia/Mixers/louderbox-0.1.0.tar.gz
+	md5sums = d3e0eeeff6282e703c1da38cd696e830
+
+pkgname = louderbox
+
