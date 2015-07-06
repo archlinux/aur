@@ -1,0 +1,11 @@
+--- Makefile	2013-04-18 21:33:44.000000000 +0200
++++ Makefile	2013-06-26 16:25:17.622402991 +0200
+@@ -107,7 +107,7 @@
+ endif
+ 
+ ifeq (1,$(LINUX))
+-    ifeq (x86_64, $(shell uname -p))
++    ifeq (x86_64, $(shell uname -m))
+         BITS=64
+     endif
+ endif
