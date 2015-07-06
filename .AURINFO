@@ -1,0 +1,30 @@
+pkgbase = python2-jq
+	pkgdesc = Python bindings for jq
+	pkgver = 20140923
+	pkgrel = 1
+	url = https://github.com/mwilliamson/jq.py
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python-distribute
+	makedepends = python2-distribute
+	makedepends = cython
+
+pkgname = python2-jq-git
+	depends = python2
+	provides = python2-jq=20140923
+	conflicts = python2-jq
+	replaces = python2-jq
+
+pkgname = python-jq-git
+	depends = python
+	provides = python3-jq=20140923
+	provides = python-jq=20140923
+	conflicts = python3-jq
+	conflicts = python-jq
+	replaces = python3-jq
+	replaces = python-jq
+
