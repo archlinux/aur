@@ -1,0 +1,15 @@
+--- Makefile.am	2013-12-17 15:06:00.000000000 -0700
++++ Makefile.am	2015-01-20 16:42:26.459618573 -0700
+@@ -19 +19 @@
+-	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
++	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/test
+@@ -27 +27,4 @@
+-	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest.sh $(DESTDIR)$(pkgdatadir)
++	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest.sh $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest.pl $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest2.pl $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest3.pl $(DESTDIR)$(pkgdatadir)/test
+@@ -30 +33,2 @@
+-	$(INSTALL_DATA) $(srcdir)/test/cwtest.c $(DESTDIR)$(pkgdatadir)
++	$(INSTALL_DATA) $(srcdir)/test/cwtest.c $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_DATA) $(srcdir)/test/hanging.c $(DESTDIR)$(pkgdatadir)/test

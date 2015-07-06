@@ -1,0 +1,11 @@
+--- test/Makefile.am	2014-01-08 16:25:47.000000000 -0700
++++ test/Makefile.am	2015-01-20 15:35:54.869837971 -0700
+@@ -20 +20 @@
+-noinst_PROGRAMS = cwtest
++bin_PROGRAMS = cwtest
+@@ -25 +25 @@
+-# cwtest_CPPFLAGS =
++cwtest_CPPFLAGS = -I$(top_srcdir)/src/
+@@ -27 +27 @@
+-# cwtest_LDADD =
++cwtest_LDADD = @UNIXCW_LIBS@
