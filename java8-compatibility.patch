@@ -1,0 +1,29 @@
+Description: Rename the MultiHashMap.remove() method to avoid a conflict
+ with the new Map.remove(K, V) method introduced in Java 8
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+Bug-Debian: https://bugs.debian.org/745100
+--- a/java/src/IceInternal/OutgoingConnectionFactory.java
++++ b/java/src/IceInternal/OutgoingConnectionFactory.java
+@@ -29,7 +29,7 @@
+         }
+ 
+         public void
+-        remove(K key, V value)
++        removeKeyValue(K key, V value)
+         {
+             java.util.List<V> list = this.get(key);
+             assert(list != null);
+@@ -622,9 +622,9 @@
+             {
+                 for(Ice.ConnectionI c : cons)
+                 {
+-                    _connections.remove(c.connector(), c);
+-                    _connectionsByEndpoint.remove(c.endpoint(), c);
+-                    _connectionsByEndpoint.remove(c.endpoint().compress(true), c);
++                    _connections.removeKeyValue(c.connector(), c);
++                    _connectionsByEndpoint.removeKeyValue(c.endpoint(), c);
++                    _connectionsByEndpoint.removeKeyValue(c.endpoint().compress(true), c);
+                 }
+             }
+ 

@@ -1,0 +1,35 @@
+--- src/Ice-3.5.1/py/config/Make.rules	2013-10-04 17:48:15.000000000 +0200
++++ Make.rules	2015-02-03 14:14:26.568180344 +0100
+@@ -12,20 +12,20 @@
+ # if it does not exist.
+ #
+ 
+-prefix			?= /opt/Ice-$(VERSION)
++prefix			?= /usr
+ 
+ #
+ # The "root directory" for runpath embedded in executables. Can be unset
+ # to avoid adding a runpath to Ice executables.
+ #
+-embedded_runpath_prefix  ?= /opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)
++#embedded_runpath_prefix  ?= /opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)
+ 
+ #
+ # Define OPTIMIZE as yes if you want to build with optimization.
+ # Otherwise the Ice extension is built with debug information.
+ #
+ 
+-#OPTIMIZE		= yes
++OPTIMIZE		= yes
+ 
+ #
+ # Define LP64 as yes if you want to build in 64 bit mode on a platform
+@@ -44,7 +44,7 @@
+ # to a value like "python2.5". Otherwise, the settings below use the
+ # default Python interpreter found in your PATH.
+ #
+-PYTHON_VERSION	    ?= python$(shell python -c "import sys; import distutils.sysconfig as ds; sys.stdout.write(ds.get_python_version())")
++PYTHON_VERSION	    ?= python2.7
+ 
+ PYTHON_BASE_VERSION ?= $(shell $(PYTHON_VERSION) -c "import sys; import distutils.sysconfig as ds; sys.stdout.write(ds.get_python_version())")
+ 

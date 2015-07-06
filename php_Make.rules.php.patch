@@ -1,0 +1,35 @@
+--- src/Ice-3.5.1/php/config/Make.rules.php	2013-10-04 17:48:15.000000000 +0200
++++ Make.rules.php	2015-02-02 00:34:02.201263541 +0100
+@@ -12,20 +12,20 @@
+ # if it does not exist.
+ #
+ 
+-prefix			?= /opt/Ice-$(VERSION)
++prefix			?= /usr
+ 
+ #
+ # The "root directory" for runpath embedded in executables. Can be unset
+ # to avoid adding a runpath to Ice executables.
+ #
+-embedded_runpath_prefix  ?= /opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)
++#embedded_runpath_prefix  ?= /opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)
+ 
+ #
+ # Define OPTIMIZE as yes if you want to build with optimization.
+ # Otherwise the Ice extension is built with debug information.
+ #
+ 
+-#OPTIMIZE		= yes
++OPTIMIZE		= yes
+ 
+ #
+ # Define LP64 as yes if you want to build in 64 bit mode on a platform
+@@ -54,7 +54,7 @@
+ # PHP_INCLUDE_DIR and PHP_LIB_DIR.
+ #
+ 
+-PHP_HOME		?= /opt/php
++PHP_HOME		?= /usr
+ 
+ #
+ # Verifies the PHP_HOME is valid and attempts to adjust for platform variances

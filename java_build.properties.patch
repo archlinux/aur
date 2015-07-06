@@ -1,0 +1,23 @@
+--- src/Ice-3.5.1/java/config/build.properties	2015-02-01 23:58:21.857968805 +0100
++++ build.properties	2015-02-02 00:08:49.744624149 +0100
+@@ -20,9 +20,9 @@
+ # to build the IceGrid GUI
+ #
+ 
+-jgoodies-common.version = 1.4.0
+-jgoodies-forms.version = 1.6.0
+-jgoodies-looks.version = 2.5.2
++jgoodies-common.version = 1.8.0
++jgoodies-forms.version = 1.8.0
++jgoodies-looks.version = 2.6.0
+ 
+ #
+ # Select an installation base directory. The directory will be created
+@@ -67,3 +67,7 @@
+ #jgoodies.common = /usr/share/java/jgoodies-common-${jgoodies-common.version}.jar
+ #jgoodies.forms  = /usr/share/java/jgoodies-forms-${jgoodies-forms.version}.jar
+ #jgoodies.looks  = /usr/share/java/jgoodies-looks-${jgoodies-looks.version}.jar
++jgoodies.common = /usr/share/java/jgoodies-common/jgoodies-common-${jgoodies-common.version}.jar
++jgoodies.forms  = /usr/share/java/jgoodies-forms/jgoodies-forms-${jgoodies-forms.version}.jar
++jgoodies.looks  = /usr/share/java/jgoodies-looks/jgoodies-looks.jar
++
