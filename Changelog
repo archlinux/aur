@@ -1,0 +1,8 @@
+2015-01-24  not_anonymous
+
+	2.0.0-2
+	* added prepare() and package()
+	* conformed to (newer assignments) $srcdir and $pkgdir
+	* changed url to new/correct location
+	* "restored" the missing diff.Makefile
+
