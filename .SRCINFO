@@ -1,0 +1,14 @@
+pkgbase = pyfluidsynth
+	pkgdesc = Python bindings for FluidSynth
+	pkgver = 1.2.4
+	pkgrel = 3
+	url = http://code.google.com/p/pyfluidsynth
+	arch = any
+	license = LGPL
+	depends = fluidsynth
+	depends = python2-numpy
+	source = http://pypi.python.org/packages/source/p/pyFluidSynth/pyFluidSynth-1.2.4.tar.gz
+	md5sums = 60079310701d0b9298b65a8b6728ffcc
+
+pkgname = pyfluidsynth
+
