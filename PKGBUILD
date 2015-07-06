@@ -2,20 +2,16 @@
 # Contributor: Anonymo <meowdib at gmail dot com>
 
 pkgname=clarity-icon-theme
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Vector icons in 8 colourthemes for GTK"
 arch=('any')
 makedepends=('imagemagick' 'librsvg')
 url="http://gnome-look.org/content/show.php/Clarity?content=135654"
 license=('GPL3')
 options=(!strip !zipman)
-source=(http://load.boenki.org/${pkgname}_${pkgver}.tar.gz
-        $pkgname-rsvg.patch::https://github.com/jcubic/Clarity/commit/eec45bfefd0874b059aaf7926d134cc31ad7fd31.patch
-        $pkgname-huge-icons.patch::https://github.com/jcubic/Clarity/commit/63d2a085b11c5315c10fc115d4bbc4610ba6ed24.patch)
-md5sums=('4f843a762272967b177ebfa18b54fd6e'
-         'ce4559e558d4f19577cfd72bb2aabeb8'
-         '27161dd28fc51bfa0da84aa193444811')
+source=(http://load.boenki.org/${pkgname}_${pkgver}.tar.gz)
+md5sums=('f697ed1b0e18a63c5c99db877749a913')
 
 ##############################################################
 #Put the themes you want to build in _buildtheme array below.#
@@ -33,12 +29,6 @@ md5sums=('4f843a762272967b177ebfa18b54fd6e'
 ##############################################################
 
 _buildtheme=(violaceus lux_violaceus canus dark_canus caeruleus lux_caeruleus viridis luteus)
-
-prepare() {
- cd "${srcdir}/${pkgname}_${pkgver}"
- patch -p1 -i ../$pkgname-rsvg.patch
- patch -p1 -i ../$pkgname-huge-icons.patch
-}
 
 build() {
  for _theme in ${_buildtheme[*]}; do
