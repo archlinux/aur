@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Ebook2CW
+Name[en_US]=Ebook2CW
+Comment=Text to Morse Code Converter
+Comment[en_US]=Text to Morse Code Converter
+Encoding=UTF-8
+Exec=ebook2cwgui
+Icon=eboo2cwgui.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
