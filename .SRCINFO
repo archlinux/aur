@@ -1,0 +1,19 @@
+pkgbase = varrick-git
+	pkgdesc = A convenient template engine to just 'Do the thing!'
+	pkgver = v0.2.0
+	pkgrel = 1
+	url = https://github.com/ztombol/varrick
+	arch = any
+	license = GPL3
+	checkdepends = bats-git
+	makedepends = git
+	makedepends = ruby-ronn
+	depends = bash
+	depends = sed
+	provides = varrick
+	conflicts = varrick
+	source = varrick::git+https://github.com/ztombol/varrick
+	sha512sums = SKIP
+
+pkgname = varrick-git
+
