@@ -1,11 +1,12 @@
 pkgbase = rofi
 	pkgdesc = Popup window switcher roughly based on superswitcher, requiring only xlib and xft. DaveDavenport's fork
 	pkgver = 0.15.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://davedavenport.github.io/rofi/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = pkg-config
 	depends = libx11
 	depends = libxft
 	depends = freetype2

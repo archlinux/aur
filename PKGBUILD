@@ -6,11 +6,12 @@
 
 pkgname=rofi
 pkgver=0.15.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Popup window switcher roughly based on superswitcher, requiring only xlib and xft. DaveDavenport's fork"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
+makedepends=('pkg-config')
 depends=('libx11' 'libxft' 'freetype2' 'libxdg-basedir' 'libxinerama')
 optdepends=('i3-wm: use as a window switcher')
 source=("https://github.com/DaveDavenport/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
