@@ -1,0 +1,14 @@
+pkgbase = vdt
+	pkgdesc = Visual Disk Test performs i/o tests on files, logical volumes, partitions or whole disks.
+	pkgver = 5.4.68
+	pkgrel = 1
+	url = http://budtoolshed.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://sourceforge.net/projects/budtoolshed/files/vdt-5.4.68-src.tar.gz
+	md5sums = 93cd7d24b63ba70d7340a9befb1e6d5f
+
+pkgname = vdt
+
