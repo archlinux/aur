@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xpsk31
+Comment=psk31 engine
+Exec=xpsk31
+Icon=xpsk31
+Terminal=false
+Categories=Application;HamRadio;
+StartupNotify=true
