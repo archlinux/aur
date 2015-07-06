@@ -1,0 +1,18 @@
+pkgbase = perl-tk-fontdialog
+	pkgdesc = Font Dialog Widget
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://metacpan.org/release/Tk-FontDialog
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = tk
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-FontDialog-0.17.tar.gz
+	md5sums = cf3cbf1d2b8311e066279ebafd953a44
+	sha256sums = 898b41e2d041b6724b08a04ca72ac69984d408ae7c0aa11989f7428d616e6f1f
+
+pkgname = perl-tk-fontdialog
+
