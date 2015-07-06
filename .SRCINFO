@@ -1,0 +1,18 @@
+pkgbase = python-hglib
+	pkgdesc = python-hglib is a library with a fast, convenient interface to Mercurial. It uses Mercurial's command server for communication with hg.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-hglib
+	arch = any
+	license = MIT
+	source = https://pypi.python.org/packages/source/p/python-hglib/python-hglib-1.6.tar.gz
+	sha256sums = d3b3d106893dfdfc29492e0a5c9e3c5a98037504a5b4393e7f44c46935cb5f0b
+
+pkgname = python-hglib
+	depends = python
+	depends = mercurial
+
+pkgname = python2-hglib
+	depends = python2
+	depends = mercurial
+
