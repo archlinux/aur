@@ -1,0 +1,84 @@
+--- Singular-3-1-6/factory/NTLconvert.cc.orig	2012-12-19 14:01:16.000000000 -0700
++++ Singular-3-1-6/factory/NTLconvert.cc	2015-01-12 20:00:00.000000000 -0700
+@@ -55,6 +55,63 @@
+ NTL_CLIENT
+ #endif
+ 
++// Needed explicit template instantiations for NTL 8.x.x
++template mat_zz_p::Mat(const mat_zz_p&);
++template mat_zz_pE::Mat(const mat_zz_pE&);
++
++template class Vec<Pair<GF2X, long> >;
++template class Vec<Pair<GF2EX, long> >;
++template class Vec<Pair<zz_pX, long> >;
++template class Vec<Pair<zz_pEX, long> >;
++template class Vec<Pair<ZZ_pX, long> >;
++template class Vec<Pair<ZZ_pEX, long> >;
++template class Vec<Pair<ZZX, long> >;
++template class Vec<Vec<zz_p> >;
++template class Vec<Vec<zz_pE> >;
++template class Vec<zz_p>;
++template class Vec<zz_pEX>;
++
++template long operator==<zz_p>(const vec_zz_p&, const vec_zz_p&);
++
++template void BlockConstruct<Pair<GF2X, long> >(Pair<GF2X, long>* p, long n);
++template void BlockConstruct<Pair<GF2EX, long> >(Pair<GF2EX, long>* p, long n);
++template void BlockConstruct<Pair<zz_pX, long> >(Pair<zz_pX, long>* p, long n);
++template void BlockConstruct<Pair<zz_pEX, long> >(Pair<zz_pEX, long>* p, long n);
++template void BlockConstruct<Pair<ZZ_pX, long> >(Pair<ZZ_pX, long>* p, long n);
++template void BlockConstruct<Pair<ZZ_pEX, long> >(Pair<ZZ_pEX, long>* p, long n);
++template void BlockConstruct<Pair<ZZX, long> >(Pair<ZZX, long>* p, long n);
++template void BlockConstruct<Vec<zz_p> >(Vec<zz_p>* p, long n);
++template void BlockConstruct<Vec<zz_pE> >(Vec<zz_pE>* p, long n);
++template void BlockConstruct<zz_pEX>(zz_pEX* p, long n);
++
++template void BlockConstructFromVec<Pair<GF2X, long> >(Pair<GF2X, long>* p, long n, const Pair<GF2X, long>* q);
++template void BlockConstructFromVec<Pair<GF2EX, long> >(Pair<GF2EX, long>* p, long n, const Pair<GF2EX, long>* q);
++template void BlockConstructFromVec<Pair<zz_pX, long> >(Pair<zz_pX, long>* p, long n, const Pair<zz_pX, long>* q);
++template void BlockConstructFromVec<Pair<zz_pEX, long> >(Pair<zz_pEX, long>* p, long n, const Pair<zz_pEX, long>* q);
++template void BlockConstructFromVec<Pair<ZZ_pX, long> >(Pair<ZZ_pX, long>* p, long n, const Pair<ZZ_pX, long>* q);
++template void BlockConstructFromVec<Pair<ZZ_pEX, long> >(Pair<ZZ_pEX, long>* p, long n, const Pair<ZZ_pEX, long>* q);
++template void BlockConstructFromVec<Pair<ZZX, long> >(Pair<ZZX, long>* p, long n, const Pair<ZZX, long>* q);
++template void BlockConstructFromVec<Vec<zz_p> >(Vec<zz_p>* p, long n, const Vec<zz_p>* q);
++template void BlockConstructFromVec<Vec<zz_pE> >(Vec<zz_pE>* p, long n, const Vec<zz_pE>* q);
++template void BlockConstructFromVec<zz_p>(zz_p* p, long n, const zz_p* q);
++template void BlockConstructFromVec<zz_pE>(zz_pE* p, long n, const zz_pE* q);
++template void BlockConstructFromVec<zz_pEX>(zz_pEX* p, long n, const zz_pEX* q);
++
++template void BlockConstructFromObj<Pair<GF2X, long> >(Pair<GF2X, long>* p, long n, const Pair<GF2X, long>& q);
++template void BlockConstructFromObj<Pair<GF2EX, long> >(Pair<GF2EX, long>* p, long n, const Pair<GF2EX, long>& q);
++template void BlockConstructFromObj<Pair<zz_pX, long> >(Pair<zz_pX, long>* p, long n, const Pair<zz_pX, long>& q);
++template void BlockConstructFromObj<Pair<zz_pEX, long> >(Pair<zz_pEX, long>* p, long n, const Pair<zz_pEX, long>& q);
++template void BlockConstructFromObj<Pair<ZZ_pX, long> >(Pair<ZZ_pX, long>* p, long n, const Pair<ZZ_pX, long>& q);
++template void BlockConstructFromObj<Pair<ZZ_pEX, long> >(Pair<ZZ_pEX, long>* p, long n, const Pair<ZZ_pEX, long>& q);
++template void BlockConstructFromObj<Pair<ZZX, long> >(Pair<ZZX, long>* p, long n, const Pair<ZZX, long>& q);
++template void BlockConstructFromObj<Vec<zz_p> >(Vec<zz_p>* p, long n, const Vec<zz_p>& q);
++template void BlockConstructFromObj<Vec<zz_pE> >(Vec<zz_pE>* p, long n, const Vec<zz_pE>& q);
++template void BlockConstructFromObj<zz_pEX>(zz_pEX* p, long n, const zz_pEX& q);
++
++template SmartPtr<GF2EInfoT> MakeSmart<GF2EInfoT, GF2X>(const GF2X &ptr);
++template SmartPtr<zz_pEInfoT> MakeSmart<zz_pEInfoT, zz_pX>(const zz_pX &ptr);
++template SmartPtr<ZZ_pInfoT> MakeSmart<ZZ_pInfoT, ZZ>(const ZZ &ptr);
++
+ ////////////////////////////////////////////////////////////////////////////////
+ // NAME: convertFacCF2NTLZZpX                                                 //
+ //                                                                            //
+@@ -511,7 +568,7 @@
+   }
+   else
+   {
+-    long sizeofrep= ((long *) a.rep) [1];
++    long sizeofrep= ((long *) &a) [1];
+     bool lessZero= false;
+     if (sizeofrep < 0)
+     {
+@@ -529,7 +586,7 @@
+       cf_stringtemp_l= sizeofrep*sizeof(mp_limb_t)*2;
+       cf_stringtemp= (unsigned char*) Alloc (cf_stringtemp_l);
+     }
+-    int cc= mpn_get_str (cf_stringtemp, 16, (mp_limb_t *) (((long *) (a.rep)) + 2), sizeofrep);
++    int cc= mpn_get_str (cf_stringtemp, 16, (mp_limb_t *) (((long *) &a) + 2), sizeofrep);
+ 
+     char* cf_stringtemp2;
+     if (lessZero)
