@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=eepClock
+Name[en_US]=eepClock
+Comment=UTC Contest Clock
+Comment[en_US]=UTC Contest Clock
+Encoding=UTF-8
+Exec=eepclock
+Icon=eepclock.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
