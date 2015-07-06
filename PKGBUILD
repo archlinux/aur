@@ -2,7 +2,7 @@
 # Contributor: msimav  <mustafa1991 at gmail dot com>
 
 pkgname=nitrux-icon-theme
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="New squared icon set for Linux that sports clean lines, smooth gradients, and simple icon logos"
 url="http://nitrux.in/store/nitrux-icon-theme/"
@@ -11,7 +11,7 @@ license=('custom:Creative Commons')
 source=("http://nitrux.in/downloads/files/free/${pkgname}-${pkgver}.tar.gz")
 depends=('librsvg')
 options=(!strip)
-md5sums=('283b41eacd18495461e9ff1be11bee5f')
+md5sums=('92159c055be19200f288c93626a4902a')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/icons"
