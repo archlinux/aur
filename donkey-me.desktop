@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Donkey Me
+Comment=A Donkey Kong game whit some grafics themes ispired on clasicals movies like Star Wars, Indiana Jones, Alien, etc
+Comment[es]=Clon del Donkey Kong con los varios temas graficos inspirados en peliculas clasicas como Star Wars, Indiana Jones, alien, etc
+Exec=donkey-me
+Icon=donkey-me
+Terminal=false
+Type=Application
+Categories=Game;
