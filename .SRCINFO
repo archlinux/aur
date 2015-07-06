@@ -1,0 +1,17 @@
+pkgbase = ttf-new-athena-unicode
+	pkgdesc = A freeware multilingual font distributed by the American Philological Association.
+	pkgver = 4.05
+	pkgrel = 1
+	url = http://ist-socrates.berkeley.edu/%7Epinax/greekkeys/NAUdownload.html
+	install = ttf.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://ist-socrates.berkeley.edu/%7Epinax/greekkeys/fonts/NAU405.zip
+	md5sums = fd7d0b23c7b1ec8b6fa0d37ca13b6a15
+	sha1sums = 1caf660220980dd4d9f91fc5f0b97b75888d262a
+	sha256sums = 0af642543c3869a26d2a43744c570594481d14fd6b5deffb11140d5f03bb633e
+
+pkgname = ttf-new-athena-unicode
+
