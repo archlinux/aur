@@ -1,0 +1,15 @@
+pkgbase = systemd-kdemodules-git
+	pkgdesc = systemd units to load KDE modules in your custom environment
+	pkgver = 20130310
+	pkgrel = 1
+	url = https://github.com/edio/systemd-kdemodules
+	install = systemd-kdemodules.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = systemd
+	depends = dbus
+	depends = kdebase-runtime
+
+pkgname = systemd-kdemodules-git
+

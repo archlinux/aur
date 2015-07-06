@@ -1,0 +1,18 @@
+post_install() {
+	usage
+}
+post_upgrade() {
+	usage
+}
+
+usage() {
+	echo -n "========================"
+	echo -e "\nAdd to your ~/.xinitrc\n"
+	echo -e "\tkcminit kcmkded"
+	echo -e "\t/usr/lib/systemd/systemd --user &"
+	echo -e "\nAdd to your default target\n"
+	echo -e "\tWants=kcm.target"
+	echo -e "\nEnable kcm modules\n"
+	echo -e "\tsystemctl --user enable kcm@keyboard"
+	echo ""
+}
