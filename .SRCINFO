@@ -1,0 +1,18 @@
+pkgbase = invedit-git
+	pkgdesc = Minecraft Inventory Editor
+	pkgver = 20120305
+	pkgrel = 1
+	url = http://www.minecraftforum.net/topic/14190-invedit/
+	install = invedit.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mono
+	conflicts = invedit
+	source = http://mirror.mcmyadmin.com/copyboy/INVedit/INVedit.zip
+	source = invedit.desktop
+	md5sums = ce1429a56881ba3e2eaa5a64bc25821c
+	md5sums = 8a74dfee530af3181a8c3b0ec50cf4b7
+
+pkgname = invedit-git
+

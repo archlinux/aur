@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Minecraft INVedit
+Comment=Minecraft Inventory Editor
+Type=Application
+Exec=/usr/bin/invedit
+Icon=/usr/share/pixmaps/invedit.png
+Categories=Application;Game
