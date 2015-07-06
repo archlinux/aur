@@ -1,0 +1,16 @@
+pkgbase = echoplay
+	pkgdesc = Uses the echonest api to play and download music and videos
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://freeactive.net/echoplay
+	arch = any
+	license = BSD
+	depends = python
+	depends = pyechonest
+	depends = youtube-dl
+	options = !emptydirs
+	source = echoplay
+	md5sums = c6ff8ae144cd673673a8191b944e3172
+
+pkgname = echoplay
+

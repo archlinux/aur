@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+import commands,sys,urllib,pprint,os
+from pyechonest import artist,config
+config.ECHO_NEST_API_KEY="OHKKQGH5SBDHBWRQI"
+
+usage = """
+Usage:
+
+    echoplay <options> ARTIST
+
+OPTIONS:
+
+	-p Play stream of artists music
+
+	-d Download artists music
+
+	-v Download videos of artist
+
+        -s Find similar artists
+
+"""
+
+def main(argument, band):
+    alist = artist.search_artists(band)
+    if (len(alist) > 0):
+        print band
+        if argument=='-d':
+            for audio in alist[0].audio():
+                url=audio['url']
+                i = url.rfind('/')
+                file = url[i+1:]
+                print "Downloading File:"
+                print url, "->", file
+                urllib.urlretrieve(url, file)
+        if argument=='-p':
+            for audio in alist[0].audio():
+                url=audio['url']
+                print "playing: ",band," - ",audio['title']
+                print os.system("gst-launch-0.10 playbin2 uri=" + url + ">/dev/null")
+        if argument=='-v':
+            for video in alist[0].video():
+                url=video['url']
+                print "Downloading video....",url
+                output = commands.getoutput("youtube-dl -t " + url)
+                print output
+        if argument=='-s':
+            print 'Artists similar to', alist[0].name
+	    for sim in alist[0].similar():
+                print " ", sim.name
+        else:
+	    print "\nERROR: Option not recognised, please use a valid option"
+	    print usage
+    else:
+	print "Sorry, artist not found"
+
+if __name__ == '__main__':
+    import sys
+    try :
+        argument = sys.argv[1]
+        band = sys.argv[2]
+    except :
+        print usage
+        sys.exit(-1)
+    main(argument,band)
