@@ -1,0 +1,14 @@
+pkgbase = ries
+	pkgdesc = Find algebraic equations, given their solution
+	pkgver = 20140304
+	pkgrel = 1
+	url = http://mrob.com/pub/ries/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://mrob.com/pub/ries/src/ries.c.txt
+	source = http://mrob.com/pub/ries/src/msal_math64.c.txt
+	source = http://mrob.com/pub/ries/doc/ries.1.txt
+
+pkgname = ries
+
