@@ -6,7 +6,7 @@
      
 pkgname=med-salome
 _pkgname=med
-pkgver=3.0.7
+pkgver=3.0.8
 pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
@@ -20,7 +20,7 @@ replaces=("med_fichier" "med")
 backup=()
 arch=('i686' 'x86_64')
 source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('8467068e8de471718b3f8d34c926d7be')
+
 
 # _installdir=/opt/${pkgname}
 _installdir=/usr
@@ -29,14 +29,14 @@ _sharedir=${_installdir}/share/${pkgname}
 build() {
   export PYTHON="python2"
 
-  cd ${srcdir}/${_pkgname}-${pkgver}_SRC
+  cd ${srcdir}/${_pkgname}-${pkgver}
  
   ./configure --with-f90=gfortran --prefix=${_installdir}  --with-med_int=int --datadir=${_sharedir}
   make
 }
  
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}_SRC
+  cd ${srcdir}/${_pkgname}-${pkgver}
  
   make DESTDIR=${pkgdir} install
   
@@ -55,3 +55,4 @@ package() {
     sed -e "s|/usr/bin/env python|/usr/bin/env python2|" -i ${_FILE}
   done
 }
+md5sums=('8adb41767474d262abca1ce031d08f47')
