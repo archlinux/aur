@@ -1,0 +1,15 @@
+pkgbase = mesecons-git
+	pkgdesc = Minetest mod that adds digital circuitry, similar to Minecraft's redstone.
+	pkgver = 696.fec43a3
+	pkgrel = 1
+	url = http://mesecons.net/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = minetest
+	provides = mesecons
+	source = mesecons-git::git://github.com/Jeija/minetest-mod-mesecons.git
+	md5sums = SKIP
+
+pkgname = mesecons-git
+
