@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo "for instruction on how to set up pavolume with awesome, check out"
+  echo "  https://github.com/sseemayer/pavolume"
+  echo ""
+  echo "if you want to have blip sounds upon volume change,"
+  echo "  install the ubuntu-sounds package from AUR or "
+  echo "  edit the configuration at /etc/pavolume/pavolume.conf"
+}
+
+# vim:set ts=2 sw=2 et:

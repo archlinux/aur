@@ -1,0 +1,16 @@
+pkgbase = pavolume-git
+	pkgdesc = A simple PulseAudio volume control script with commandline access and notifications using libnotify.
+	pkgver = 20130128
+	pkgrel = 1
+	url = https://github.com/sseemayer/pavolume
+	install = readme.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-docopt
+	depends = python-gobject
+	depends = pulseaudio
+
+pkgname = pavolume-git
+
