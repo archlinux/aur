@@ -1,0 +1,13 @@
+pkgbase = fasttree
+	pkgdesc = Approximately-Maximum-Likelihood Trees for Large Alignments
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = http://www.microbesonline.org/fasttree/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.microbesonline.org/fasttree/FastTree.c
+	md5sums = c7e85689a26cabba241378d4f633c2fa
+
+pkgname = fasttree
+
