@@ -1,0 +1,144 @@
+diff -ru sgi-fonts-orig/Imakefile sgi-fonts/Imakefile
+--- sgi-fonts-orig/Imakefile	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/Imakefile	2006-06-26 22:03:42.000000000 -0400
+@@ -1,11 +1,10 @@
+ XCOMM $Id: Imakefile,v 1.1 1999/12/27 18:09:26 lembree Exp $
+ 
+ XCOMM additional SGI supplied fonts
+-XCOMM Note: we want Scr15 uncompressed
+ 
+ SGIOBJS = \
+     FontObj(intl15) FontObj(Scr10) FontObj(Scr11) \
+-    FontObj(Scr12) FontObj(Scr13) FontObj(Scr14) Scr15.pcf \
++    FontObj(Scr12) FontObj(Scr13) FontObj(Scr14) FontObj(Scr15) \
+     FontObj(Scr16) FontObj(Scr18) FontObj(Scr7) FontObj(Scr8) \
+     FontObj(Scr9) FontObj(ScrB10) FontObj(ScrB11) FontObj(ScrB12) \
+     FontObj(ScrB13) FontObj(ScrB14) FontObj(ScrB15) FontObj(ScrB16) \
+@@ -21,16 +20,12 @@
+ 
+ MakeFonts()
+ 
+-UncompressedFontTarget(9x15)
+-XCOMM SGI wants default fonts uncompressed
+-UncompressedFontTarget(cursor)
+ FontTarget(Scr10)
+ FontTarget(Scr11)
+ FontTarget(Scr12)
+ FontTarget(Scr13)
+ FontTarget(Scr14)
+-XCOMM SGI wants Scr15 font uncompressed
+-UncompressedFontTarget(Scr15)
++FontTarget(Scr15)
+ FontTarget(Scr16)
+ FontTarget(Scr18)
+ FontTarget(Scr7)
+diff -ru sgi-fonts-orig/sgi/intl15.bdf sgi-fonts/sgi/intl15.bdf
+--- sgi-fonts-orig/sgi/intl15.bdf	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/sgi/intl15.bdf	2006-06-26 22:03:42.000000000 -0400
+@@ -1,5 +1,5 @@
+ STARTFONT 2.1
+-FONT --International-Medium-R-Normal--15-150-72-72-M-90-ISO8859-1
++FONT -SGI-International-Medium-R-Normal--15-150-72-72-M-90-ISO8859-1
+ SIZE 15 72 72
+ FONTBOUNDINGBOX 9 15 0 -3
+ STARTPROPERTIES 22
+@@ -7,7 +7,7 @@
+ COMMENT Begin LogicalFontDescription
+ FONTNAME_REGISTRY ""
+ FAMILY_NAME "International"
+-FOUNDRY ""
++FOUNDRY "SGI"
+ WEIGHT_NAME "Medium"
+ SLANT "R"
+ SETWIDTH_NAME "Normal"
+diff -ru sgi-fonts-orig/sgi/iris10.bdf sgi-fonts/sgi/iris10.bdf
+--- sgi-fonts-orig/sgi/iris10.bdf	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/sgi/iris10.bdf	2006-06-26 22:03:42.000000000 -0400
+@@ -1,12 +1,12 @@
+ STARTFONT 2.1
+-FONT --Iris-Medium-R-Normal--10-100-72-72-M-60-ISO8859-1
++FONT -SGI-Iris-Medium-R-Normal--10-100-72-72-M-60-ISO8859-1
+ SIZE 10 72 72
+ FONTBOUNDINGBOX 6 10 0 -2
+ STARTPROPERTIES 22
+ _DEC_DEVICE_FONTNAMES "FM=Iris"
+ FONTNAME_REGISTRY ""
+ FAMILY_NAME "Iris"
+-FOUNDRY ""
++FOUNDRY "SGI"
+ WEIGHT_NAME "Medium"
+ SLANT "R"
+ SETWIDTH_NAME "Normal"
+diff -ru sgi-fonts-orig/sgi/iris12.bdf sgi-fonts/sgi/iris12.bdf
+--- sgi-fonts-orig/sgi/iris12.bdf	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/sgi/iris12.bdf	2006-06-26 22:03:42.000000000 -0400
+@@ -1,12 +1,12 @@
+ STARTFONT 2.1
+-FONT --Iris-Medium-R-Normal--12-120-72-72-M-80-iso8859-1
++FONT -SGI-Iris-Medium-R-Normal--12-120-72-72-M-80-iso8859-1
+ SIZE 12 72 72
+ FONTBOUNDINGBOX 8 12 0 -2
+ STARTPROPERTIES 22
+ _DEC_DEVICE_FONTNAMES "FM=Iris"
+ FONTNAME_REGISTRY ""
+ FAMILY_NAME "Iris"
+-FOUNDRY ""
++FOUNDRY "SGI"
+ WEIGHT_NAME "Medium"
+ SLANT "R"
+ SETWIDTH_NAME "Normal"
+diff -ru sgi-fonts-orig/sgi/iris13.bdf sgi-fonts/sgi/iris13.bdf
+--- sgi-fonts-orig/sgi/iris13.bdf	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/sgi/iris13.bdf	2006-06-26 22:03:42.000000000 -0400
+@@ -1,12 +1,12 @@
+ STARTFONT 2.1
+-FONT --Iris-Medium-R-Normal--13-130-72-72-M-90-ISO8859-1
++FONT -SGI-Iris-Medium-R-Normal--13-130-72-72-M-90-ISO8859-1
+ SIZE 13 72 72
+ FONTBOUNDINGBOX 8 13 0 -2
+ STARTPROPERTIES 22
+ _DEC_DEVICE_FONTNAMES "FM=Iris"
+ FONTNAME_REGISTRY ""
+ FAMILY_NAME "Iris"
+-FOUNDRY ""
++FOUNDRY "SGI"
+ WEIGHT_NAME "Medium"
+ SLANT "R"
+ SETWIDTH_NAME "Normal"
+diff -ru sgi-fonts-orig/sgi/space10.bdf sgi-fonts/sgi/space10.bdf
+--- sgi-fonts-orig/sgi/space10.bdf	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/sgi/space10.bdf	2006-06-26 22:03:42.000000000 -0400
+@@ -1,5 +1,5 @@
+ STARTFONT 2.1
+-FONT --Space-Medium-R-Normal--10-100-72-72-M-60-SGI-FONTSPECIFIC
++FONT -SGI-Space-Medium-R-Normal--10-100-72-72-M-60-SGI-FONTSPECIFIC
+ COMMENT The all-space font
+ SIZE 10 72 72
+ FONTBOUNDINGBOX -3 -3 6 10
+@@ -8,7 +8,7 @@
+ COMMENT Begin LogicalFontDescription
+ FONTNAME_REGISTRY ""
+ FAMILY_NAME "Space"
+-FOUNDRY ""
++FOUNDRY "SGI"
+ WEIGHT_NAME "Medium"
+ SLANT "R"
+ SETWIDTH_NAME "Normal"
+diff -ru sgi-fonts-orig/sgi/type13.bdf sgi-fonts/sgi/type13.bdf
+--- sgi-fonts-orig/sgi/type13.bdf	2006-06-26 22:03:32.000000000 -0400
++++ sgi-fonts/sgi/type13.bdf	2006-06-26 22:03:42.000000000 -0400
+@@ -1,12 +1,12 @@
+ STARTFONT 2.1
+-FONT --Type-Medium-R-Normal--13-130-72-72-M-80-ISO8859-1
++FONT -SGI-Type-Medium-R-Normal--13-130-72-72-M-80-ISO8859-1
+ SIZE 13 72 72
+ FONTBOUNDINGBOX 8 13 0 -3
+ STARTPROPERTIES 23
+ _DEC_DEVICE_FONTNAMES "FM=Type"
+ FONTNAME_REGISTRY ""
+ FAMILY_NAME "Type"
+-FOUNDRY ""
++FOUNDRY "SGI"
+ WEIGHT_NAME "Medium"
+ SLANT "R"
+ SETWIDTH_NAME "Normal"
