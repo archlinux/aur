@@ -1,0 +1,15 @@
+pkgbase = iris
+	pkgdesc = A simple and intuitive interface for reading in images of eyes, comparing them, and verifying their identity.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://projectiris.co.uk/
+	install = iris.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	source = http://projectiris.co.uk/releases/source/iris-0.1.tar.gz
+	md5sums = 21ca4355c657f9a794217d79115e40cd
+
+pkgname = iris
+
