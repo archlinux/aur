@@ -1,0 +1,15 @@
+pkgbase = drandr
+	pkgdesc = a dmenu based XRandR frontend
+	pkgver = 1
+	pkgrel = 1
+	url = https://php.radford.edu/~sdellysse
+	arch = any
+	license = GPL2
+	depends = ruby
+	depends = dmenu
+	depends = xorg-xrandr
+	source = https://php.radford.edu/~sdellysse/drandr.rb
+	md5sums = 20792917a24b06700f85a3ab6d6099ab
+
+pkgname = drandr
+
