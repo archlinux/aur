@@ -1,6 +1,6 @@
 pkgbase = spl-lts
 	pkgdesc = Solaris Porting Layer kernel modules.
-	pkgver = 0.6.4.2_3.14.46_1
+	pkgver = 0.6.4.2_3.14.47_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = spl.install
@@ -8,9 +8,9 @@ pkgbase = spl-lts
 	arch = x86_64
 	groups = archzfs-lts
 	license = GPL
-	makedepends = linux-lts-headers=3.14.46-1
+	makedepends = linux-lts-headers=3.14.47-1
 	depends = spl-utils-lts
-	depends = linux-lts=3.14.46-1
+	depends = linux-lts=3.14.47-1
 	provides = spl
 	conflicts = spl
 	conflicts = spl-git
