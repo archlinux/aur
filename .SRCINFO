@@ -1,0 +1,16 @@
+pkgbase = mgrep
+	pkgdesc = A multiline grep.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/multiline-grep/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = boost-libs
+	source = https://downloads.sourceforge.net/project/multiline-grep/mgrep-1.0.0.tar.gz
+	md5sums = 76a729c879ce95ff19d6ea5ffe165947
+	sha1sums = 570ccb10bad49a1d1cbfd652ede09952b318255f
+	sha256sums = 4e267c8c420b5337d8efde608ff877cfedb9fe8a107583248ca95683468aa7a1
+
+pkgname = mgrep
+
