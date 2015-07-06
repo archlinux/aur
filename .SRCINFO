@@ -1,0 +1,23 @@
+pkgbase = openrocket
+	pkgdesc = A free and open source, fully featured model rocket simulator
+	pkgver = 14.11
+	pkgrel = 2
+	url = http://openrocket.sourceforge.net/
+	install = openrocket.install
+	arch = any
+	license = GPL3
+	depends = java-environment
+	depends = desktop-file-utils
+	noextract = OpenRocket-14.11.jar
+	source = http://switch.dl.sourceforge.net/project/openrocket/openrocket/14.11/OpenRocket-14.11.jar
+	source = openrocket.1
+	source = de_debian.tar.gz
+	md5sums = 407ad771e0eae29eddc28720362063e5
+	md5sums = 54eb3c1641feb1eac7d4e4d9e912434a
+	md5sums = f8edc554065e121767355936727fc88a
+	sha256sums = 8641bc5a348cd9330c24509e45523b7804ce5878173ce576c28c943cc101335f
+	sha256sums = 74ab605cb11161784d4af96d018eb88adf7a2e4a8b1088a64b94b1e8ec5e18d1
+	sha256sums = 62c4e739f82fa53fdae8a41f12bfb2828b77df89c8f48b1a790192a8e773cb98
+
+pkgname = openrocket
+
