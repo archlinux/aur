@@ -1,0 +1,27 @@
+pkgbase = netcfg
+	pkgdesc = Network configuration and profile scripts
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/netcfg/
+	arch = any
+	groups = base
+	license = BSD
+	makedepends = asciidoc
+	depends = coreutils
+	depends = dhcpcd
+	depends = iproute2
+	optdepends = dialog: for the menu based profile and wifi selectors
+	optdepends = wpa_supplicant: for wireless networking support
+	optdepends = ifplugd: for automatic wired connections through net-auto-wired
+	optdepends = wpa_actiond: for automatic wireless connections through net-auto-wireless
+	optdepends = wireless_tools: for interface renaming through net-rename
+	optdepends = ifenslave: for bond connections
+	optdepends = bridge-utils: for bridge connections
+	conflicts = netctl
+	backup = etc/iftab
+	backup = etc/conf.d/netcfg
+	source = https://github.com/GNU-Pony/netcfg/archive/3.2.tar.gz
+	sha256sums = 1c78f046af2d6f3aa13476cac804a05ee14ffef2b5f6b30dbba055400755a08f
+
+pkgname = netcfg
+
