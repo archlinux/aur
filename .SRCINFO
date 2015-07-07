@@ -1,7 +1,7 @@
 pkgbase = haskell-data-hash
 	pkgdesc = Combinators for building fast hashing functions.
 	pkgver = 0.2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/data-hash
 	install = haskell-data-hash.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = haskell-data-hash
 	options = staticlibs
 	source = http://hackage.haskell.org/packages/archive/data-hash/0.2.0.1/data-hash-0.2.0.1.tar.gz
 	sha256sums = 9117dd49013ca28ff188fc71c3595ac3af23d56d301c1f39bac93d44d8c60bbe
+	sha512sums = daea098b9c808396606d90ae70e5156c492463db929b563a6195ee648ad72fc2949ab231ad67758fe0c68991826ea2292109a5d1f46d0cfc27c16e2e2b0666fa
 
 pkgname = haskell-data-hash
 
