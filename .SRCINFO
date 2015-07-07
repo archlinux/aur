@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-greasemonkey
+	pkgdesc = Customize the way a web page displays or behaves, by using small bits of JavaScript.
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.greasespot.net/
+	arch = any
+	license = MPL
+	depends = firefox>=35.0
+	source = https://addons.mozilla.org/firefox/downloads/file/319128/greasemonkey-3.2.xpi
+	sha1sums = 3b9886af34665fa89d9476874e9e561931906f1e
+
+pkgname = firefox-extension-greasemonkey
+
