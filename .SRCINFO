@@ -1,0 +1,19 @@
+pkgbase = eclipse-scala-ide
+	pkgdesc = Scala IDE for Eclipse
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://www.scala-ide.org/
+	arch = any
+	license = custom
+	depends = eclipse>=4.4
+	source = eclipse-scala-ide-4.1.0.zip::http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/update-site.zip
+	source = LICENSE
+	source = scala-ide.desktop
+	source = product.png
+	md5sums = 62940db3f4802d5a85b07e2be8dd9b43
+	md5sums = 58b225f304aaf42c8b8738894a10cb96
+	md5sums = 205ac79eeebb9cc43f9a0c836e60cf82
+	md5sums = c95b1920928f10d2c982afd7f5827a2c
+
+pkgname = eclipse-scala-ide
+
