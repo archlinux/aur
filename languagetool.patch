@@ -1,0 +1,92 @@
+--- langtool.el.orig	2015-02-20 12:28:00.000000000 +0100
++++ langtool.el	2015-04-01 13:02:33.320868605 +0200
+@@ -32,11 +32,6 @@
+ ;; desired. And put the following expression into your ~/.emacs.
+ ;;
+ ;;     (require 'langtool)
+-;;     (setq langtool-language-tool-jar "/path/to/languagetool-commandline.jar")
+-
+-;; If you use old version of LanguageTool, may be:
+-
+-;;     (setq langtool-language-tool-jar "/path/to/LanguageTool.jar")
+ 
+ ;; This setting is optional
+ ;;
+@@ -46,10 +41,6 @@
+ ;;     (global-set-key "\C-x44" 'langtool-show-message-at-point)
+ ;;     (global-set-key "\C-x4c" 'langtool-correct-buffer)
+ ;;
+-;; Currently GNU java version not works.
+-;;
+-;;     (setq langtool-java-bin "/path/to/java")
+-;;
+ ;; Maybe you want to specify your mother tongue.
+ ;;
+ ;;     (setq langtool-mother-tongue "en")
+@@ -102,16 +93,6 @@
+   "Face used for marking error lines."
+   :group 'langtool)
+ 
+-(defcustom langtool-java-bin "java"
+-  "*Executing java command."
+-  :group 'langtool
+-  :type 'file)
+-
+-(defcustom langtool-language-tool-jar nil
+-  "*LanguageTool jar file."
+-  :group 'langtool
+-  :type 'file)
+-
+ (defcustom langtool-default-language nil
+   "*Language name pass to LanguageTool."
+   :group 'langtool
+@@ -246,10 +227,9 @@
+     ;;TODO
+     (when region-p
+       (deactivate-mark))
+-    (let ((command langtool-java-bin)
++    (let ((command "languagetool")
+           args)
+-      (setq args (list "-jar" (expand-file-name langtool-language-tool-jar)
+-                       "-c" (langtool-java-coding-system buffer-file-coding-system)
++      (setq args (list "-c" (langtool-java-coding-system buffer-file-coding-system)
+                        "-l" (or lang langtool-default-language)
+                        "-d" (langtool-disabled-rules)))
+       (when langtool-mother-tongue
+@@ -392,12 +372,6 @@
+      (< (overlay-start ov1) (overlay-start ov2)))))
+ 
+ (defun langtool-check-command ()
+-  (when (or (null langtool-java-bin)
+-            (not (executable-find langtool-java-bin)))
+-    (error "java command is not found"))
+-  (when (or (null langtool-language-tool-jar)
+-            (not (file-readable-p langtool-language-tool-jar)))
+-    (error "langtool jar file is not found"))
+   (when langtool-buffer-process
+     (error "Another process is running")))
+ 
+@@ -547,15 +521,14 @@
+         (kill-buffer pbuf)))))
+ 
+ (defun langtool-available-languages ()
+-  (when (stringp langtool-language-tool-jar)
+-    (let ((dir (expand-file-name "rules" (file-name-directory langtool-language-tool-jar))))
+-      (when (file-directory-p dir)
+-        (remove nil
+-                (mapcar
+-                 (lambda (f)
+-                   (when (file-directory-p f)
+-                     (file-name-nondirectory f)))
+-                 (directory-files dir t "^[^.].$")))))))
++  (let ((dir (expand-file-name "rules" "/usr/share/languagetool/org/languagetool/rules")))
++    (when (file-directory-p dir)
++      (remove nil
++              (mapcar
++               (lambda (f)
++                 (when (file-directory-p f)
++                   (file-name-nondirectory f)))
++               (directory-files dir t "^[^.].$"))))))
+ 
+ ;;FIXME
+ ;; http://java.sun.com/j2se/1.5.0/ja/docs/ja/guide/intl/encoding.doc.html
