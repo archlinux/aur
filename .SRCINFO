@@ -1,7 +1,7 @@
 pkgbase = haskell-equivalence
 	pkgdesc = Tarjan's union-find algorithm for equivalence relation.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/equivalence
 	install = haskell-equivalence.install
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = haskell-equivalence
 	options = staticlibs
 	source = http://hackage.haskell.org/packages/archive/equivalence/0.3.1/equivalence-0.3.1.tar.gz
 	sha256sums = 7a0539546e4fc1a00fb190109be45b0cb4af7047d8c2abaf65b8e401e828207e
+	sha512sums = 5d6f6adc2d31c48520c2120503b4a21e18044dbe75f3dddd5af188213887c714370b09c776c44c2eaabf41226719f6eb6f6bbc04eab558879d61157a67b2549e
 
 pkgname = haskell-equivalence
 

@@ -1,8 +1,8 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 _hkgname=equivalence
 pkgname=haskell-equivalence
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tarjan's union-find algorithm for equivalence relation."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
@@ -15,6 +15,7 @@ options=('strip' 'staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
 sha256sums=('7a0539546e4fc1a00fb190109be45b0cb4af7047d8c2abaf65b8e401e828207e')
+sha512sums=('5d6f6adc2d31c48520c2120503b4a21e18044dbe75f3dddd5af188213887c714370b09c776c44c2eaabf41226719f6eb6f6bbc04eab558879d61157a67b2549e')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O \
