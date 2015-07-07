@@ -1,0 +1,14 @@
+--- lomse_config.h.cmake_orig	2013-04-02 16:54:36.656405089 +0200
++++ lomse_config.h.cmake	2013-04-02 16:54:50.379224261 +0200
+@@ -37,10 +37,8 @@
+ 
+ 
+ //---------------------------------------------------------------------------------------
+-// paths, for test scores and for fonts
++// path for fonts
+ //---------------------------------------------------------------------------------------
+-#define TESTLIB_SCORES_PATH         @TESTLIB_SCORES_PATH@
+-#define TESTLIB_FONTS_PATH          @TESTLIB_FONTS_PATH@
+ #define LOMSE_FONTS_PATH            @LOMSE_FONTS_PATH@
+ 
+ 

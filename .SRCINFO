@@ -1,0 +1,24 @@
+pkgbase = liblomse
+	pkgdesc = A music score renderization/edition library
+	pkgver = 0.14.0
+	pkgrel = 2
+	url = http://www.lenmus.org/en/lomse/intro
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = custom:BSD 2-clause
+	makedepends = bzr
+	makedepends = cmake>=2.8
+	makedepends = unittestpp
+	makedepends = boost>=1.42
+	depends = freetype2>=2.3.5
+	depends = boost-libs>=1.42
+	depends = zlib
+	depends = libpng
+	source = lomse_config.patch
+	source = CMakeLists.patch
+	md5sums = 98f467a21a2926cb72b5abd4a0b07a39
+	md5sums = bc0b1e163fc215680973f1f0f82bcca7
+
+pkgname = liblomse
+
