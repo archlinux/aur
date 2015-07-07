@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-frippery
+	pkgdesc = An unofficial extension pack providing GNOME2 like features for GNOME3.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = http://intgat.tigress.co.uk/rmy/extensions/index.html
+	arch = any
+	license = GPL2
+	depends = gnome-shell
+	source = http://frippery.org/extensions/gnome-shell-frippery-0.10.2.tgz
+	sha256sums = 26f9f89a1ee02204918280a5d12a955c5b26bdd9f3ea8d3ac081cd4882d61ec6
+
+pkgname = gnome-shell-frippery
+
