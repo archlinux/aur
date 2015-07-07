@@ -1,5 +1,5 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org
-# Contributor: Gilles CHAUVIN <gcnweb@gmail.com>
+# Contributor: Gilles CHAUVIN <gcnweb at gmail dot com>
 
 pkgname=xplanet-svn
 _pkgname=xplanet
@@ -10,9 +10,11 @@ url='http://xplanet.sourceforge.net/'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
 makedepends=('subversion')
-depends=('pango' 'libtiff' 'libxss')
-source=("${_pkgname}::svn://svn.code.sf.net/p/xplanet/code/trunk")
-sha1sums=('SKIP')
+depends=('pango' 'giflib' 'libtiff' 'libxss')
+source=("${_pkgname}::svn://svn.code.sf.net/p/xplanet/code/trunk"
+        "giflib.patch")
+sha1sums=('SKIP'
+          'c9fe0f25ddc64c1aaf319d77cb5ddcb64a230667')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -20,6 +22,11 @@ conflicts=("${_pkgname}")
 pkgver() {
         cd "${srcdir}/${_pkgname}"
         svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+}
+
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	patch -p1 <"${srcdir}/giflib.patch"
 }
 
 build() {

@@ -9,12 +9,15 @@ pkgbase = xplanet-svn
 	license = GPL2
 	makedepends = subversion
 	depends = pango
+	depends = giflib
 	depends = libtiff
 	depends = libxss
 	provides = xplanet
 	conflicts = xplanet
 	source = xplanet::svn://svn.code.sf.net/p/xplanet/code/trunk
+	source = giflib.patch
 	sha1sums = SKIP
+	sha1sums = c9fe0f25ddc64c1aaf319d77cb5ddcb64a230667
 
 pkgname = xplanet-svn
 

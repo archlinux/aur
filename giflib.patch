@@ -1,0 +1,29 @@
+--- xplanet/src/libimage/gif.c.orig	2015-07-07 11:38:14.926692910 +0200
++++ xplanet/src/libimage/gif.c	2015-07-07 12:10:07.745836346 +0200
+@@ -179,7 +179,7 @@
+ 	}
+     }
+     
+-    if (DGifCloseFile(GifFile) == GIF_ERROR) {
++    if (DGifCloseFile(GifFile, NULL) == GIF_ERROR) {
+ 	return(0);
+     }
+ 
+@@ -493,7 +493,7 @@
+ static void QuitGifError(GifFileType *GifFile)
+ {
+     fprintf(stderr, "Error writing GIF file\n");
+-    if (GifFile != NULL) EGifCloseFile(GifFile);
++    if (GifFile != NULL) EGifCloseFile(GifFile, NULL);
+ }
+ 
+ int 
+@@ -589,7 +589,7 @@
+ 	Ptr += width;
+     }
+ 
+-    if (EGifCloseFile(GifFile) == GIF_ERROR)
++    if (EGifCloseFile(GifFile, NULL) == GIF_ERROR)
+ 
+     {
+ 	QuitGifError(GifFile);
