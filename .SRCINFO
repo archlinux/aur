@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-pctv
 	pkgdesc = PCTV PVR client addon for Kodi
-	pkgver = 20150331.0a0924e
+	pkgver = 20150701.0a6b235
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.pctv
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-pvr-pctv
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = jsoncpp
-	source = https://github.com/kodi-pvr/pvr.pctv/archive/0a0924eb292296ce8617a5d78c881cbb26318f97.tar.gz
+	source = https://github.com/kodi-pvr/pvr.pctv/archive/0a6b235c12cadc474fbb992bdd5889dad247f3e4.tar.gz
 	source = http://garr.dl.sourceforge.net/project/jsoncpp/jsoncpp/0.5.0/jsoncpp-src-0.5.0.tar.gz
 	source = jsoncpp-cmakelists.patch
 	md5sums = SKIP

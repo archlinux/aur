@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-pctv
 _gitname=pvr.pctv
-pkgver=20150331.0a0924e
-_gitver=0a0924eb292296ce8617a5d78c881cbb26318f97
+pkgver=20150701.0a6b235
+_gitver=0a6b235c12cadc474fbb992bdd5889dad247f3e4
 _jsoncpp_ver=0.5.0
 pkgrel=1
 pkgdesc='PCTV PVR client addon for Kodi'
@@ -50,8 +50,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-src-$_jsoncpp_ver/out/usr/include/jsoncpp" \
     -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-src-$_jsoncpp_ver/out/usr/lib" \
     -DCMAKE_BUILD_TYPE=Release \
