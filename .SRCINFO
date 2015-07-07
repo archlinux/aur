@@ -1,0 +1,14 @@
+pkgbase = openclipart-svg
+	pkgdesc = Collection of 100% license-free, royalty-free, and restriction-free art
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://openclipart.org
+	arch = any
+	license = custom:public domain
+	options = !strip
+	options = !zipman
+	source = http://ftp.osuosl.org/pub/openclipart/downloads/0.18/openclipart-0.18-svgonly.zip
+	md5sums = 0a437997fc0fb85ec77b0753d04c258c
+
+pkgname = openclipart-svg
+
