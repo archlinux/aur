@@ -1,0 +1,33 @@
+pkgbase = lone-tar
+	pkgdesc = a reliable, easy to use, backup and recovery software for Linux supporting tape, optical, FTP, file, ssh, NAS, RDX, RD1000, USB, Samba, REV, and AES
+	pkgver = 4.4.1.2
+	pkgrel = 1
+	url = http://www.cactus.com/
+	install = lone-tar.install
+	arch = i686
+	arch = x86_64
+	license = custom:LoneStarSoftware
+	depends = bash
+	depends = awk
+	depends = ncurses
+	depends = wget
+	depends = lynx
+	depends = cdrkit
+	depends = dvd+rw-tools
+	depends = gzip
+	depends = bzip2
+	depends = rsync
+	depends = openssh
+	depends = mt-st-git
+	depends = words
+	depends = ksh
+	depends = cron
+	options = emptydirs
+	options = !strip
+	source_i686 = ftp://ftp.cactus.com/demos/4412-Linux/lt4412-LNX-EL6.sh.gz
+	md5sums_i686 = d355ef664488d3d9952429ff38f56a33
+	source_x86_64 = ftp://ftp.cactus.com/demos/4412-Linux/lt4412-LNX64-EL6.sh.gz
+	md5sums_x86_64 = c5732935c5331aa0214af4b4f6b14a87
+
+pkgname = lone-tar
+

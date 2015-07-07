@@ -1,0 +1,68 @@
+# $1=new version, $2=old version
+post_upgrade() {
+  set -u
+  # No need to save files that aren't different
+  for _upg1 in '/usr/lone-tar/'*.pacdef; do
+    _upg2="$(dirname "${_upg1}")/$(basename "${_upg1}" ".pacdef").prev"
+    if [ -f "${_upg2}" ] && [ "$(md5sum < "${_upg1}")" = "$(md5sum < "${_upg2}")" ]; then
+      rm -f "${_upg2}"
+    fi
+  done
+  if [ -f '/usr/lone-tar/ltar.cfg.prev' ]; then
+    sh lone-tarinstall.sh pkginstall 'migrate_all_settings' 'determine_flavor' 'link_lonetar_to_fd'
+  else
+    sh lone-tarinstall.sh pkginstall 'determine_flavor' 'link_lonetar_to_fd'
+  fi
+  # Don't harass the user if it's not actually an upgrade
+  if [ "$1" != "$2" -o ! -f '/usr/lone-tar/ltar.dev' ]; then
+    echo '>>>Run lone-tarinstall.sh to finish your upgrade'
+  else
+    ln -sf '/usr/lone-tar/ltmenu' '/usr/bin/ltmenu'
+  fi
+  set +u
+}
+
+# $1=new version, $2=old version
+pre_upgrade() {
+  set -u
+  # Most won't change these files so delete them if unchanged.
+  for _upg1 in '/usr/lone-tar/'*.pacdef; do
+    _upg2="$(dirname "${_upg1}")/$(basename "${_upg1}" ".pacdef")"
+    if [ -f "${_upg2}" ] && [ "$(md5sum < "${_upg1}")" = "$(md5sum < "${_upg2}")" ]; then
+      rm -f "${_upg2}"
+    fi
+  done
+  # Without ltar.cfg they forgot to run ltmenu to do the rest of the import
+  if [ "$1" != "$2" -a -f '/usr/lone-tar/ltar.cfg' ]; then
+    sh lone-tarinstall.sh pkginstall 'save_setup' 'move_ENV'
+  fi
+  set +u
+}
+
+pre_install() {
+  :
+}
+
+post_install() {
+  set -u
+  sh lone-tarinstall.sh pkginstall 'determine_flavor' 'link_lonetar_to_fd' 'linux_setup'
+  echo '>>>Run lone-tarinstall.sh to finish your install'
+  set +u
+}
+
+pre_remove() {
+  set -u
+  #rm '/usr/lone-tar/'{LICENSE,Serial_Number}
+  set +u
+}
+
+post_remove() {
+  set -u
+  if [ -f '/log/exclude.V' ]; then
+    rm -rf /log # might not be safe
+  fi
+  rm -f '/._Lonetar'    # broken code in ltar.cfg produces this
+  rm -f '/dev/lone-tar' # '/usr/lib/'{ansi.vi,.cshrl}
+  rm -f '/usr/lone-tar/'{LICENSE,Serial_Number,ltar.dev}.prev '/usr/lone-tar/LAST_FILE'
+  set +u
+}
