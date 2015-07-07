@@ -1,7 +1,7 @@
 pkgbase = ncbi-blast
 	pkgdesc = finds regions of similarity between biological sequences
-	pkgver = 2.2.30
-	pkgrel = 2
+	pkgver = 2.2.31
+	pkgrel = 1
 	url = http://blast.ncbi.nlm.nih.gov/
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = ncbi-blast
 	conflicts = ncbi-blast+
 	conflicts = cddlib
 	conflicts = proj
-	source = ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.30/ncbi-blast-2.2.30+-src.tar.gz
+	source = ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.31/ncbi-blast-2.2.31+-src.tar.gz
 	source = typeinfo.patch
-	md5sums = f8e9a5eb368173142fe6867208b73715
+	md5sums = f32bd2d2c66205c53c6981f94e1a0d54
 	md5sums = 9c257a762ce4e7418e95a48723832a86
 
 pkgname = ncbi-blast
