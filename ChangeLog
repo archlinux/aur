@@ -1,0 +1,13 @@
+2010-05-24 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	arch field set to 'any'
+	unzip is no more a make dependency
+
+2007-07-04 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD : 
+	Using $srcdir and $pkgdir variables
+	Description shortened
+	Added the arch and license field
+	Source downloading from downloads.sourceforge.net

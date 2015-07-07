@@ -1,0 +1,13 @@
+pkgbase = festival-italian
+	pkgdesc = Italian version of FESTIVAL
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.pd.istc.cnr.it/FESTIVAL/home/default.htm
+	arch = any
+	license = GPL
+	depends = festival
+	source = http://downloads.sourceforge.net/sourceforge/it-festival/Italian-FESTIVAL.zip
+	md5sums = e54ff149497a1b76a3a6b65f62eaab35
+
+pkgname = festival-italian
+
