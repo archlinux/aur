@@ -1,8 +1,8 @@
-# Maintainer: Patryk Szalanski <patryk.szalanski+aur@gmail.com>
+# Maintainer: Jason Edson <jason@oceighty.co>
 
 _name=meld
 pkgname=$_name-dev
-pkgver=3.13.1
+pkgver=3.13.2
 pkgrel=1
 pkgdesc='Visual diff and merge tool'
 arch=('any')
@@ -20,7 +20,7 @@ provides=($_name)
 conflicts=($_name)
 install=meld.install
 options=('!emptydirs')
-source=("http://ftp.gnome.org/pub/GNOME/sources/meld/3.13/meld-3.13.1.tar.xz")
+source=("http://ftp.gnome.org/pub/GNOME/sources/meld/3.13/meld-3.13.2.tar.xz")
 sha256sums=('SKIP')
 
 pkgver() {
