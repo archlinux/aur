@@ -1,8 +1,8 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 _hkgname=data-hash
 pkgname=haskell-data-hash
 pkgver=0.2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Combinators for building fast hashing functions."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
@@ -13,6 +13,7 @@ options=('strip' 'staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
 sha256sums=('9117dd49013ca28ff188fc71c3595ac3af23d56d301c1f39bac93d44d8c60bbe')
+sha512sums=('daea098b9c808396606d90ae70e5156c492463db929b563a6195ee648ad72fc2949ab231ad67758fe0c68991826ea2292109a5d1f46d0cfc27c16e2e2b0666fa')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O \
