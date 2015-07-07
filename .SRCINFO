@@ -1,0 +1,20 @@
+pkgbase = aqemu
+	pkgdesc = QEMU GUI written in Qt4
+	pkgver = 0.8.2
+	pkgrel = 4
+	url = http://sourceforge.net/projects/aqemu/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qemu
+	depends = qt4
+	depends = openssl
+	depends = libvncserver
+	source = http://downloads.sourceforge.net/aqemu/aqemu-0.8.2.tar.bz2
+	source = aqemu.patch
+	md5sums = dcec083f566e0a22df7bfe8e7ca4c593
+	md5sums = 4f18e403b98b825a7582aab7c5c3e871
+
+pkgname = aqemu
+

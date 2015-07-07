@@ -1,0 +1,14 @@
+diff -aur aqemu-0.8.2.pristine/Embedded_Display/vncview.cpp aqemu-0.8.2.new/Embedded_Display/vncview.cpp
+--- aqemu-0.8.2.pristine/Embedded_Display/vncview.cpp	2010-02-26 14:40:40.000000000 +0100
++++ aqemu-0.8.2.new/Embedded_Display/vncview.cpp	2012-02-29 22:50:52.816894769 +0100
+@@ -27,8 +27,8 @@
+     #include <QMessageBox>
+     #include <QInputDialog>
+     #define KMessageBox QMessageBox
+-    #define error(parent, message, caption) \
+-        critical(parent, caption, message)
++/*  #define error(parent, message, caption) \
++        critical(parent, caption, message)*/
+ #else
+     #include "settings.h"
+     #include <KActionCollection>
