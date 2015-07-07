@@ -1,0 +1,21 @@
+pkgbase = nautilus-ideviceinfo-git
+	pkgdesc = Show information about your iOS device
+	pkgver = 0.1.0.74.g93b6551
+	pkgrel = 1
+	url = http://www.libimobiledevice.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = automake
+	depends = libimobiledevice
+	depends = nautilus
+	optdepends = mobile-broadband-provider-info: to show mobile carrier
+	optdepends = libgpod>=0.7.90: to enable detailed audio/video information
+	options = !libtool
+	source = git://git.gnome.org/nautilus-ideviceinfo
+	md5sums = SKIP
+
+pkgname = nautilus-ideviceinfo-git
+
