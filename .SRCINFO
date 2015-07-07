@@ -1,0 +1,17 @@
+pkgbase = vorbis-tools-svn
+	pkgdesc = Extra tools for Ogg-Vorbis
+	pkgver = LATEST
+	pkgrel = 1
+	url = http://www.xiph.org/vorbis
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = subversion
+	depends = libao>=1.0.0
+	depends = libvorbis
+	depends = curl>=7.16.2
+	provides = vorbis-tools=1.4.0
+	conflicts = vorbis-tools
+
+pkgname = vorbis-tools-svn
+
