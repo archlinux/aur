@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Wavesurfer
+Comment=Open source tool for sound visualization and manipulation
+Icon=/usr/lib/wavesurfer/icons/icon48.xpm
+Exec=/usr/lib/wavesurfer/src/app-wavesurfer/wavesurfer.tcl
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;AudioVideoEditing;
+StartupNotify=false

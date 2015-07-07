@@ -1,0 +1,31 @@
+--- src/app-wavesurfer/wavesurfer_orig.tcl	2014-04-19 01:41:31.272298432 +0200
++++ src/app-wavesurfer/wavesurfer.tcl	2014-04-19 02:09:47.186988595 +0200
+@@ -2,6 +2,28 @@
+ # the next line restarts using wish \
+ exec wish8.5 "$0" "$@"
+ 
++# ----------------------------------------------------------
++# fix the wrong behaviour of snack callbacks for tcl >= 8.6
++if {[package vcompare $::tcl_patchLevel 8.6] >= 0} {
++    rename unknown _unknown
++    proc ::unknown {args} {
++        # If the command word has the form "namespace inscope ns cmd"
++        # then concatenate its arguments onto the end and evaluate it.
++    
++        set cmd [lindex $args 0]
++        if {[regexp "^:*namespace\[ \t\n\]+inscope" $cmd] && [llength $cmd] == 4} {
++            #return -code error "You need an {*}"
++            set arglist [lrange $args 1 end]
++            set ret [catch {uplevel 1 ::$cmd $arglist} result opts]
++            dict unset opts -errorinfo
++            dict incr opts -level
++            return -options $opts $result
++        }
++        uplevel 1 [list _unknown {*}$args]
++    }
++}
++# ----------------------------------------------------------
++
+ set RELEASE 1.8.8p4
+ set BUILD @BUILD@
+ #

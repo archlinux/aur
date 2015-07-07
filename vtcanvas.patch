@@ -1,0 +1,16 @@
+see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=720397
+   * Catch the error thrown from 'canvas lower top topmost' when no items with
+     that tag exist yet, that tk versions after 8.5.11-2 now want to barf up.
+     Closes: #720397  Hopefully even correctly, there's been no other feedback.
+
+--- vtcanvas-orig.tcl	2014-03-16 02:59:45.661711286 +0100
++++ src/wsurf/vtcanvas.tcl	2014-03-16 02:55:30.197534490 +0100
+@@ -471,7 +471,7 @@
+   $c coords leftbar $x0 0 $x0 $height
+   $c coords rightbar $x1 0 $x1 $height
+   $c raise top
+-  $c lower top topmost
++  catch {$c lower top topmost}
+   $c raise selbg
+   $c raise sellen
+   $c lower bottom

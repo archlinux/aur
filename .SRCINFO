@@ -1,0 +1,25 @@
+pkgbase = wavesurfer
+	pkgdesc = Open source tool for sound visualization and manipulation
+	pkgver = 1.8.8p4
+	pkgrel = 3
+	url = http://sourceforge.net/projects/wavesurfer/
+	arch = any
+	license = custom
+	depends = tcl>=8.4
+	depends = tk>=8.4
+	depends = snack>=2.2
+	source = http://downloads.sourceforge.net/wavesurfer/wavesurfer-1.8.8p4-src.tgz
+	source = wavesurfer
+	source = wavesurfer.desktop
+	source = vtcanvas.patch
+	source = prefs.patch
+	source = snack-callbacks.patch
+	md5sums = 446f16aecff9cc283cf82636e84feeee
+	md5sums = f875d9c0fcef785ccdf7f4a64e19c52d
+	md5sums = 8a081185545f22d37f34d9de7e0cf303
+	md5sums = b19c250f1fdb5bfb51122e805f612695
+	md5sums = de89341e031a230cfe4387d5bf2b18f7
+	md5sums = a270da18afc012a1e431466f2afef5a8
+
+pkgname = wavesurfer
+
