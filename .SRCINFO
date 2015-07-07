@@ -1,0 +1,23 @@
+pkgbase = font-manager
+	pkgdesc = A simple font management application for GTK+ Desktop Environments
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://fontmanager.github.io/
+	install = font-manager.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = yelp-tools
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = libgee
+	depends = libxml2
+	depends = sqlite
+	depends = gucharmap
+	depends = file-roller
+	source = https://github.com/FontManager/master/releases/download/0.7.2/font-manager-0.7.2.tar.bz2
+	md5sums = 0d845cc3cd369b60da04d78211146937
+
+pkgname = font-manager
+
