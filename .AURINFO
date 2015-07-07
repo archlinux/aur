@@ -1,0 +1,14 @@
+pkgbase = xotcl
+	pkgdesc = Extended Object Tcl
+	pkgver = 1.6.8
+	pkgrel = 3
+	url = http://xotcl.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = tcl
+	depends = gdbm
+	source = http://media.wu-wien.ac.at/download/xotcl-1.6.8.tar.gz
+
+pkgname = xotcl
+
