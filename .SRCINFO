@@ -1,0 +1,15 @@
+pkgbase = pacstats
+	pkgdesc = Statistical charts about pacman activity
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://pacstats.googlecode.com
+	arch = any
+	license = GPL
+	makedepends = gettext
+	depends = pygtk
+	depends = python-matplotlib
+	source = http://pacstats.googlecode.com/files/pacstats-0.1.tar.gz
+	md5sums = d25c7ca918110325a941b85091427ec7
+
+pkgname = pacstats
+
