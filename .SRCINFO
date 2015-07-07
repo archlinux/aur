@@ -1,0 +1,19 @@
+pkgbase = tutka
+	pkgdesc = A free tracker style MIDI sequencer for GNU/Linux.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.nongnu.org/tutka/
+	install = tutka.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	source = http://download.savannah.gnu.org/releases/tutka/tutka-1.0.2.tar.xz
+	md5sums = 5ab447458928353955be0e5fcf9912bb
+
+pkgname = tutka
+
