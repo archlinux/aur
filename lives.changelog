@@ -1,0 +1,177 @@
+2013-12-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated depends array
+
+2013-05-26 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated depends and optdepends arrays
+
+2013-04-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added gtk3 as a dependency instead of gtk2
+
+2012-06-30 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Added pulseaudio as a dependency instead of pulse
+
+2012-06-24 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Added ffmpeg as a dependency
+	Removed libtheora and libvorbis as dependencies (covered by ffmpeg)
+	Removed jack and perl as dependencies (covered by mplayer)
+	Fix added for a correct invoking of the touch command
+
+2012-01-17 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Project URL updated
+	The weed-compat.h patch has been removed
+
+2012-01-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Static libraries enabled again
+
+2012-01-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	makedepends array removed
+	Quotation marks added around srcdir and pkgdir variables
+	Package built without static libraries building
+
+2012-01-05 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+	imake removed from the makedepends array
+
+2011-06-14 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	The previous patch is no more needed and thus not included
+
+2011-06-08 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch to allow compilation on kernel >= 2.6.38
+
+2011-02-21 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	No more patches needed to build the package
+
+2010-11-28 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch for the file frei0r.c
+
+2010-11-03 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch for the file callbacks.c
+
+2010-03-22 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added pulse to the optdepends array
+
+2010-03-10 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	The jack-audio-connection-kit dependency has been renamed to jack
+
+2009-10-27 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	libvis.patch removed
+
+2009-10-18 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Dropped gdk-pixbuf dependency
+	Added a patch for the file libvis.c
+
+2009-08-06 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	The executable symbolic link creation is still needed
+
+2009-07-23 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	No more explicit symbolic linking of the executable
+
+2009-07-08 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	resize.patch is no more needed, it is integrated in the sources
+
+2009-06-29 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch for the "Resize Frames" function
+
+2009-06-01 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	libweed patch not needed anymore
+
+2009-05-01 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Removed commands for directory creation in /usr/share 
+	Added a patch to install libweed
+
+2009-02-06 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added mkvtoolnix to the optdepends array
+
+2008-12-12 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Applying a patch from the author
+	Using $srcdir and $pkgdir variables
+
+2008-12-04 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated depends and optdepends arrays
+
+2008-10-23 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Fixed a dependency name
+
+2008-10-02 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added some optional dependencies
+
+2008-09-23 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Description changed
+	Using optdepends variable instead of lives.install
+
+2008-07-16 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	No libtool options added
+
+2008-03-16 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	License field is not an array anymore
+	Contributor line added
+
+2008-03-08 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	imake, which includes mkdirhier, has been added to the makedepends array
