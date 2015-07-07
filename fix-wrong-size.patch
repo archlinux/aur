@@ -1,0 +1,12 @@
+https://github.com/tDOM/tdom/commit/810c41d310f6b42ef2ced421f9de0474fdc00d9f
+--- generic/domxslt__orig.c	2014-11-10 23:36:04.361988568 +0100
++++ generic/domxslt.c	2014-11-10 23:36:15.188273729 +0100
+@@ -2679,7 +2679,7 @@
+         }
+     }
+     memcpy(a,    b,     size*sizeof(domNode*));
+-    memcpy(posa, posb,  size*sizeof(int*));
++    memcpy(posa, posb,  size*sizeof(int));
+     memcpy(vs,   vstmp, size*sizeof(char*));
+     memcpy(vd,   vdtmp, size*sizeof(double));
+     return 0;

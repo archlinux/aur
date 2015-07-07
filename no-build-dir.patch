@@ -1,0 +1,25 @@
+--- tdomConfig__orig.sh.in	2014-11-11 00:10:47.858195132 +0100
++++ tdomConfig.sh.in	2014-11-11 00:11:56.849076613 +0100
+@@ -31,22 +31,11 @@
+ 
+ #
+ # String to pass to linker to pick up the tDOM library from
+-# its build directory.
+-#
+-TDOM_BUILD_STUB_LIB_SPEC='@PKG_BUILD_STUB_LIB_SPEC@'
+-
+-#
+-# String to pass to linker to pick up the tDOM library from
+ # its installed directory.
+ #
+ TDOM_STUB_LIB_SPEC='@PKG_STUB_LIB_SPEC@'
+ 
+ # String to pass to linker to pick up the TDOM stub library from its
+-# build directory.
+-#
+-TDOM_BUILD_STUB_LIB_PATH='@PKG_BUILD_STUB_LIB_PATH@'
+-
+-# String to pass to linker to pick up the TDOM stub library from its
+ # installed directory.
+ #
+ TDOM_STUB_LIB_PATH='@PKG_STUB_LIB_PATH@'
