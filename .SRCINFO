@@ -1,0 +1,20 @@
+pkgbase = python2-graphcanvas
+	pkgdesc = Interactive Graph (network) Visualization
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/enthought/graphcanvas
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2-networkx
+	depends = python2-enable
+	conflicts = python2-graphcanvas-git
+	conflicts = python-ets-graphcanvas-svn
+	options = !emptydirs
+	source = https://github.com/enthought/graphcanvas/archive/4.0.2.tar.gz
+	source = LICENSE.txt
+	md5sums = f1652f04646b9210300244b4a70079b0
+	md5sums = ae6f5df0e6d4dd4ea3cc20aafb2dd10f
+
+pkgname = python2-graphcanvas
+
