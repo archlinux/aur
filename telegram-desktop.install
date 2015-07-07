@@ -1,0 +1,14 @@
+post_install() {
+
+      echo "Start from the console if it is the first time you install this program: ([user@ArchLinux:~]$ telegram). To generate the .desktop file."
+      echo "Before, delete the old: rm -r ~/.local/share/applications/telegramdesktop.desktop. And rm -r ~/.TelegramDesktop"
+      echo "After Update start Telegram per /opt/telegram/Telegram to get TelegramDesktop"
+      
+}
+
+post_remove()
+{
+      echo "Remove the .desktop: rm -r ~/.local/share/applications/telegramdesktop.desktop. And rm -r ~/.TelegramDesktop"
+}
+
+# vim: ts=2 sw=2 et:

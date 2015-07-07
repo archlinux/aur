@@ -1,0 +1,28 @@
+pkgbase = telegram-desktop
+	pkgdesc = Official desktop version of Telegram messaging app.
+	pkgver = 0.8.38
+	pkgrel = 1
+	url = https://desktop.telegram.org
+	install = telegram-desktop.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = libgcrypt
+	depends = libasyncns
+	depends = libsndfile
+	depends = libsystemd
+	depends = libdbus
+	depends = openal
+	depends = libogg
+	depends = opus
+	depends = opusfile
+	depends = portaudio
+	depends = openssl
+	depends = zlib
+	depends = libexif
+	depends = xz
+	conflicts = telegram-dev
+
+pkgname = telegram-desktop
+
