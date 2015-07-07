@@ -1,0 +1,6 @@
+*.src.tar.*
+*.pkg.tar.*
+src/
+pkg/
+
+protozoa*.zip
