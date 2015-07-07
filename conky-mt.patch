@@ -1,0 +1,28 @@
+--- a/src/conky.c	2012-05-04 00:22:21.000000000 +0300
++++ b/src/conky.c	2015-01-24 22:57:05.018893944 +0200
+@@ -137,6 +137,8 @@
+ #include "conf_cookie.h"
+ #endif
+ 
++#include <X11/extensions/shape.h>
++
+ #ifndef S_ISSOCK
+ #define S_ISSOCK(x)   ((x & S_IFMT) == S_IFSOCK)
+ #endif
+@@ -3492,6 +3494,16 @@
+ 	last_update_time = 0.0;
+ 	next_update_time = get_time();
+ 	info.looped = 0;
++
++  if (own_window &&
++      (( window.type != TYPE_NORMAL ||
++        (TEST_HINT(window.hints, HINT_UNDECORATED))) &&
++        window.type != TYPE_DESKTOP)) {
++    /* set the empty input shape, i.e. make the window "mouse-through" */
++    XShapeCombineRectangles(display, window.window, ShapeInput, 0, 0,
++                        NULL, 0, ShapeSet, Unsorted);
++    }
++
+ 	while (terminate == 0 && (total_run_times == 0 || info.looped < total_run_times)) {
+ 		if(update_interval_bat != NOBATTERY && update_interval_bat != update_interval_old) {
+ 			char buf[max_user_text];

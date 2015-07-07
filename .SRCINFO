@@ -1,0 +1,30 @@
+pkgbase = conky-mt
+	pkgdesc = Mouse-through conky based on /extra/conky package
+	pkgver = 1.9.0
+	pkgrel = 4
+	url = http://conky.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = docbook2x
+	depends = glib2
+	depends = curl
+	depends = lua
+	depends = wireless_tools
+	depends = libxml2
+	depends = libxft
+	depends = libxdamage
+	depends = imlib2
+	provides = conky
+	conflicts = conky
+	options = !emptydirs
+	backup = etc/conky/conky.conf
+	backup = etc/conky/conky_no_x11.conf
+	source = http://downloads.sourceforge.net/project/conky/conky/1.9.0/conky-1.9.0.tar.gz
+	source = conky-mt.patch
+	sha1sums = a8d26d002370c9b877ae77ad3a3bbd2566b38e5d
+	sha1sums = d9b97d64849f96c5b0cdc82506ddc44081f0c210
+
+pkgname = conky-mt
+
