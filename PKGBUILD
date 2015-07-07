@@ -8,8 +8,8 @@ url="http://blast.ncbi.nlm.nih.gov/"
 license=('custom')
 depends=('lzo2' 'pcre' 'python')
 makedepends=('cpio')
-conflicts=('blast' 'blast+-bin' 'ncbi-blast+' 'cddlib' 'proj')
-provides=('blast' 'blast+-bin' 'ncbi-blast+')
+conflicts=('blast' 'blast+' 'blast+-bin' 'ncbi-blast+' 'cddlib' 'proj')
+provides=('blast' 'blast+' 'blast+-bin' 'ncbi-blast+')
 source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/$pkgname-$pkgver+-src.tar.gz"
         'typeinfo.patch')
 md5sums=('f32bd2d2c66205c53c6981f94e1a0d54'
