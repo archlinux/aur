@@ -1,0 +1,39 @@
+pkgbase = atlas-lapack
+	pkgdesc = Complete LAPACK and BLAS implementation using optimised ATLAS routines
+	pkgver = 3.10.2
+	pkgrel = 1
+	url = http://math-atlas.sourceforge.net/
+	install = atlas-lapack.install
+	arch = i686
+	arch = x86_64
+	license = custom:blas
+	license = custom:lapack
+	license = custom:atlas
+	makedepends = binutils
+	makedepends = sed
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	provides = blas
+	provides = lapack=3.5.0
+	provides = cblas
+	conflicts = blas
+	conflicts = lapack
+	conflicts = cblas
+	noextract = lapack-3.5.0.tgz
+	noextract = atlas3.10.2.tar.bz2
+	options = !makeflags
+	source = http://www.netlib.org/lapack/lapack-3.5.0.tgz
+	source = http://downloads.sourceforge.net/math-atlas/atlas3.10.2.tar.bz2
+	source = blas-license.txt
+	source = atlas-license.txt
+	source = makefile.shared.mt
+	source = makefile.shared.st
+	md5sums = b1d3e3e425b2e44a06760ff173104bdf
+	md5sums = a4e21f343dec8f22e7415e339f09f6da
+	md5sums = 38b6acb8ed5691d25863319d30a8b365
+	md5sums = 4903eb06072dfbf94710691ccb6660bf
+	md5sums = 471f0ecdc36ef5e1118309847d142eea
+	md5sums = 6e307b98236ff319ac1c03166ad9164c
+
+pkgname = atlas-lapack
+
