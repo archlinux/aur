@@ -1,0 +1,27 @@
+pkgbase = python-typogrify
+	pkgdesc = Filters to enhance web typography
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/mintchaos/typogrify
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-smartypants
+	makedepends = python2-smartypants
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/typogrify/typogrify-2.0.7.tar.gz
+	md5sums = 63f38f80531996f187d2894cc497ba08
+
+pkgname = python-typogrify
+	depends = python
+	depends = python-setuptools
+	depends = python-smartypants
+
+pkgname = python2-typogrify
+	depends = python2
+	depends = python2-setuptools
+	depends = python-smartypants
+
