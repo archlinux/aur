@@ -1,0 +1,18 @@
+
+post_install() {
+  chgrp -R games /usr/share/games/daggerfall
+  chmod -R g+rw /usr/share/games/daggerfall
+  daggerfall --enable-mod=fixes
+}
+
+post_upgrade() {
+  chgrp -R games /usr/share/games/daggerfall
+  chmod -R g+rw /usr/share/games/daggerfall
+  daggerfall --refresh-mods
+  daggerfall --enable-mod=fixes
+}
+
+post_remove() {
+  daggerfall --refresh-mods
+}
+
