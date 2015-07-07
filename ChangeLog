@@ -1,0 +1,11 @@
+2008-12-26 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Description shortened
+	Source downloading from downloads.sourceforge.net
+	Added x86_64 to the arch array
+
+2008-05-09 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir variables

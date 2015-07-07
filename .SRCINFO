@@ -1,0 +1,21 @@
+pkgbase = scourge
+	pkgdesc = A rogue-like game with a 3d graphical front-end
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = http://scourgeweb.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = sdl_ttf
+	depends = libgl
+	depends = mesa
+	source = http://downloads.sourceforge.net/sourceforge/scourge/scourge-0.21.1.src.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/scourge/scourge-0.21.1.data.tar.gz
+	md5sums = ceda87769cde066e3c49ec0836cf19e2
+	md5sums = 1da547c79244698d62a973a862b13460
+
+pkgname = scourge
+
