@@ -2,7 +2,7 @@
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
 pkgname=fancontrol-gui-git
-pkgver=0.1.r7.gd6de588
+pkgver=0.1.r18.g7dcc6c3
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('any')
