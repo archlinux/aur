@@ -1,0 +1,7 @@
+post_install() {
+  echo "If you have blender installed copy the lumina exporter to your home blender scripts directory"
+}
+
+post_upgrade() {
+  post_upgrade $1
+}

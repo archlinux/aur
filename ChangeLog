@@ -1,0 +1,19 @@
+2009-04-19 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch for the source editor
+
+2008-08-22 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Images directory isn't installed anymore
+	Menu icon is the same as the application one
+	Added a patch for search paths
+
+2008-05-24 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Installing .desktop file with icon
+	luminaexporter.py installed with 644 octal permission mode
+	glew added to the makedepends array
+	Blender added to the optdepends array

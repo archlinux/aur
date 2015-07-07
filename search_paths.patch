@@ -1,0 +1,26 @@
+diff -uNr Lumina-0.4.0_orig/src/item.cpp Lumina-0.4.0/src/item.cpp
+--- Lumina-0.4.0_orig/src/item.cpp	2008-08-04 05:32:03.000000000 +0300
++++ Lumina-0.4.0/src/item.cpp	2008-08-22 21:26:29.000000000 +0300
+@@ -137,6 +137,9 @@
+ 	QStringList paths;
+ 	paths << QString(QFileInfo( QCoreApplication::arguments().at(0) ).absolutePath ()) + "/plugins/";
+ 	paths << QString(QDir::homePath ())+ "/.lumina/plugins/";
++#ifndef _WIN32
++	paths << QString("/usr/share/lumina/plugins/");
++#endif
+ 
+ 	for(int p = 0; p < paths.size(); p++){
+ 
+diff -uNr Lumina-0.4.0_orig/src/script_extender.cpp Lumina-0.4.0/src/script_extender.cpp
+--- Lumina-0.4.0_orig/src/script_extender.cpp	2008-08-03 06:46:00.000000000 +0300
++++ Lumina-0.4.0/src/script_extender.cpp	2008-08-22 21:27:00.000000000 +0300
+@@ -139,6 +139,9 @@
+ 	QStringList paths;
+ 	paths << QString(QFileInfo( QCoreApplication::arguments().at(0) ).absolutePath ()) + "/scripts/";
+ 	paths << QString(QDir::homePath ())+ "/.lumina/scripts/";
++#ifndef _WIN32
++	paths << QString("/usr/share/lumina/scripts/");
++#endif
+ 
+ 	for(int p = 0; p < paths.size(); p++){
+ 

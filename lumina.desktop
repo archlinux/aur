@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Lumina
+Comment=GLSL shaders IDE
+Exec=lumina
+Icon=lumina.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Development;IDE;
