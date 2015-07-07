@@ -1,0 +1,21 @@
+pkgbase = libreoffice-extension-writer2latex-devel
+	pkgdesc = A java program and collection of LibreOffice extensions for converting to and working with LaTeX in LibreOffice (develop release)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://writer2latex.sourceforge.net
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	makedepends = libreoffice-writer
+	depends = libreoffice-common
+	depends = java-runtime-headless
+	provides = libreoffice-extension-writer2latex
+	conflicts = libreoffice-extension-writer2latex
+	conflicts = libreoffice-extension-writer2latex-svn
+	source = http://downloads.sourceforge.net/project/writer2latex/writer2latex/Writer2LaTeX%201.3/writer2latex132alpha.zip
+	source = writer2latex.sh
+	sha256sums = 702358b568897482d8b13f4c309ee02aacb3ea196ef9a8ca9307bf846586c975
+	sha256sums = 964cf8f79d1087e62eff7a93d2e1733cc26941ecc0e7238e49ac5dfbc6b21c8e
+
+pkgname = libreoffice-extension-writer2latex-devel
+
