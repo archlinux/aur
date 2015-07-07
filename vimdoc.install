@@ -1,0 +1,17 @@
+post_install() {
+  echo 'Updating vim help tags.'
+  /usr/bin/vim -u NONE -U NONE \
+    --cmd ":helptags /usr/share/vim/vimfiles/doc" \
+    --cmd ":q" > /dev/null 2>&1
+  echo 'Done updating vim help tags.'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:

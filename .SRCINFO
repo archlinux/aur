@@ -1,0 +1,17 @@
+pkgbase = vim-mark
+	pkgdesc = Highlight several words in different colors simultaneously.
+	pkgver = 2.8.5
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2666
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	source = vim-mark-2.8.5.vmb.gz::http://www.vim.org/scripts/download_script.php?src_id=22582
+	source = license.txt
+	sha256sums = 604b95e176eb3f78daa6d136deb27b1ae66d1120a094201056bc677e3f1e07b7
+	sha256sums = 62743e7d4354d94ef0957dd8aa43983b9244eb3cd820075b18f10b9d37d31c2d
+
+pkgname = vim-mark
+
