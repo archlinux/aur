@@ -1,0 +1,19 @@
+pkgbase = obdevicemenu
+	pkgdesc = An Openbox pipe menu for the management of removable media with Udisks
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://www.sourceforge.net/projects/obdevicemenu/
+	install = obdevicemenu.install
+	arch = any
+	license = GPL2
+	depends = openbox
+	depends = udisks
+	optdepends = notification-daemon: for desktop notifications
+	backup = etc/obdevicemenu.conf
+	source = obdevicemenu.conf
+	source = obdevicemenu
+	md5sums = 8ce46d49d8db1cdab2128f02b96828e8
+	md5sums = f2c54d75a51db6c077eb82e144d23d57
+
+pkgname = obdevicemenu
+

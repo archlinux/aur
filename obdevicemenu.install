@@ -1,0 +1,9 @@
+post_install () {
+  echo
+  echo " * dbus and consolekit/policykit need to be running. If you are not"
+  echo "   using a graphical login manager, put this in ~/.xinitrc:"
+  echo
+  echo "      source /etc/X11/xinit/xinitrc.d/30-dbus"
+  echo "      exec ck-launch-session openbox"
+  echo
+}
