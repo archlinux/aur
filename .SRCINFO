@@ -1,0 +1,13 @@
+pkgbase = libgnutls26
+	pkgdesc = gnutls26 library (shared objects)
+	pkgver = 2.12.23
+	pkgrel = 18
+	url = http://www.gnutls.org/
+	arch = i686
+	arch = x86_64
+	license = LGPLv3
+	source = http://ftp.debian.org/debian/pool/main/g/gnutls26/libgnutls26_2.12.23-18_i386.deb
+	md5sums = 4f36c0f9ca711af91164db3ecdfdb7b2
+
+pkgname = libgnutls26
+
