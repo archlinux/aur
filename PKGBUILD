@@ -1,8 +1,8 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 _hkgname=boxes
 pkgname=haskell-boxes
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A pretty-printing library for laying out text in 2D."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
