@@ -1,0 +1,34 @@
+pkgbase = dogecoin-qt
+	pkgdesc = Cryptocurrency
+	pkgver = 1.8.2
+	pkgrel = 2
+	url = http://dogecoin.com/
+	install = dogecoin.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = qt4
+	makedepends = miniupnpc
+	makedepends = boost-libs
+	makedepends = protobuf
+	makedepends = openssl
+	makedepends = db
+	depends = miniupnpc
+	depends = boost-libs
+	depends = protobuf
+	depends = openssl
+	depends = db
+	provides = dogecoin-qt
+	source = https://github.com/dogecoin/dogecoin/archive/v1.8.2.tar.gz
+	source = dogecoin.desktop
+	source = fixing-boost.patch
+	sha256sums = 87060dfe6d9770f8af17c447120cb6a059bbd84687dfd6a1f0787c9d75d75d9e
+	sha256sums = 04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6
+	sha256sums = 3b335f979bc54d5c8760c84192a3b1224e0fa0d7afaa2fb806c4a3b777c2bded
+
+pkgname = dogecoin-qt
+

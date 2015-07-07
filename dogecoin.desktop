@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DogeCoin
+Comment=DogeCoin P2P Cryptocurrency
+Exec=/usr/bin/dogecoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dogecoin.xpm
+MimeType=x-scheme-handler/dogecoin;
+Categories=Network;

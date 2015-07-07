@@ -1,0 +1,12 @@
+diff -aur dogecoin-1.8.2.pristine/src/rpcrawtransaction.cpp dogecoin-1.8.2.new/src/rpcrawtransaction.cpp
+--- dogecoin-1.8.2.pristine/src/rpcrawtransaction.cpp	2015-01-17 19:22:54.000000000 +0100
++++ dogecoin-1.8.2.new/src/rpcrawtransaction.cpp	2015-05-24 10:57:09.750066113 +0200
+@@ -296,7 +296,7 @@
+             CTxDestination address;
+             if (ExtractDestination(pk, address))
+             {
+-                const CScriptID& hash = boost::get<const CScriptID&>(address);
++                const CScriptID& hash = boost::relaxed_get<const CScriptID&>(address);
+                 CScript redeemScript;
+                 if (pwalletMain->GetCScript(hash, redeemScript))
+                     entry.push_back(Pair("redeemScript", HexStr(redeemScript.begin(), redeemScript.end())));
