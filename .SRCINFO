@@ -1,0 +1,15 @@
+pkgbase = python2-funcsigs
+	pkgdesc = Python function signatures from PEP362 for Python 2.6 and 2.7
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://funcsigs.readthedocs.org
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	options = !libtool
+	source = https://pypi.python.org/packages/source/f/funcsigs/funcsigs-0.4.tar.gz
+	md5sums = fb1d031f284233e09701f6db1281c2a5
+
+pkgname = python2-funcsigs
+
