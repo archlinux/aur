@@ -1,0 +1,17 @@
+pkgbase = python2-etsdevtools
+	pkgdesc = Tools to support Python development
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/enthought/etsdevtools
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2-traitsui
+	conflicts = python2-etsdevtools-git
+	conflicts = python-ets-devtools-svn
+	options = !emptydirs
+	source = https://github.com/enthought/etsdevtools/archive/4.0.2.tar.gz
+	md5sums = 210a0085029bc2e4102f3e29304d9eb1
+
+pkgname = python2-etsdevtools
+
