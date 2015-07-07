@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-j4610dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J4610DW
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-j4610dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj4610dwlpr-3.0.1-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj4610dwcupswrapper-3.0.1-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 79c12a6c7d91ecd1789814d38a20192c
+	md5sums = 8434b9bfa12be737bc020f8b68c2e59b
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-mfc-j4610dw
+
