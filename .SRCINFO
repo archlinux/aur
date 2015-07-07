@@ -1,0 +1,24 @@
+pkgbase = darkice
+	pkgdesc = Live audio streamer. Reads from audio interface, encodes, sends to streaming server.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://code.google.com/p/darkice/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = lame
+	depends = libpulse
+	depends = faac
+	depends = jack
+	depends = twolame
+	depends = opus
+	depends = libsamplerate
+	source = http://darkice.googlecode.com/files/darkice-1.2.tar.gz
+	source = service
+	md5sums = de541ea95a73a50f2f5e700434c22329
+	md5sums = 1c1cde0a5c03a2190a48275c03016eb8
+
+pkgname = darkice
+
