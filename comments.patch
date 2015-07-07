@@ -1,0 +1,11 @@
+--- jacobianelliptic.pas.orig	2012-01-05 15:02:55.000000000 +0100
++++ jacobianelliptic.pas	2012-01-05 15:03:06.000000000 +0100
+@@ -64,7 +64,7 @@
+ Tested at random points with u between 0 and 10, m between
+ 0 and 1.
+ 
+-           Absolute error (* = relative error):
++           Absolute error ( * = relative error ):
+ arithmetic   function   # trials      peak         rms
+    IEEE      phi         10000       9.2e-16*    1.4e-16*
+    IEEE      sn          50000       4.1e-15     4.6e-16

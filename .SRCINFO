@@ -1,0 +1,17 @@
+pkgbase = alglib-fpc
+	pkgdesc = FreePascal version of ALGLIB, a numerical analysis and data processing library
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = http://www.alglib.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fpc
+	options = !strip
+	source = http://www.alglib.net/translator/re/alglib-2.6.0.freepascal.zip
+	source = comments.patch
+	md5sums = 204a2fd5d8fd9a5d6ba3cb190615e667
+	md5sums = 5ec1c728d1aeec7d6b7b4babb65f5584
+
+pkgname = alglib-fpc
+
