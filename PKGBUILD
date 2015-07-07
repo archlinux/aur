@@ -1,8 +1,8 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 _hkgname=STMonadTrans
 pkgname=haskell-stmonadtrans
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A monad transformer version of the ST monad"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
@@ -13,6 +13,7 @@ options=('strip' 'staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
 sha256sums=('d9911c7634c42b94f57ac7c2a6d523f6d7124870b35fc3030cb72109ba3aa315')
+sha512sums=('5395dfac66abcf75593b5c62252b452e4935b85e294a1f9b4a40424b29be76109b89b0cc35eaa15bd448a4d51ae0500bfe72924db854e02e949685fd9180d847')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O \
