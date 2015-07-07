@@ -1,0 +1,19 @@
+pkgbase = ri-li
+	pkgdesc = Drive a toy wood engine in many levels and collect all the coaches to win
+	pkgver = 2.0.1
+	pkgrel = 3
+	url = http://ri-li.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/sourceforge/ri-li/Ri-li-2.0.1.tar.bz2
+	source = ri-li.desktop
+	source = iostream.patch
+	md5sums = 57a2ff50a0c704786da8adf61d78bf52
+	md5sums = ff57f8b04b212af3e6f8c600c3e0c35b
+	md5sums = d953710f48bccf1f4de2f7d316c725fe
+
+pkgname = ri-li
+

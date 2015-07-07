@@ -1,0 +1,23 @@
+2010-12-14 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD : 
+	Applying a new GCC compile patch
+
+2007-05-31 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD : 
+	Using $srcdir and $pkgdir variables
+	Added x86_64 to the arch array
+	Source downloading from downloads.sourceforge.net
+	Applying a GCC 4.3 compile patch
+
+	* ChangeLog :
+	Compliant to ChangeLog.proto format
+
+2007-12-08 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	 Description shortened
+	 Dependencies updated
+	 License and arch field added
+	 .desktop file included
