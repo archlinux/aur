@@ -1,0 +1,16 @@
+pkgbase = monteverdi2
+	pkgdesc = A remote sensing application based on Orfeo Toolbox
+	pkgver = 0.8.1
+	pkgrel = 2
+	url = http://www.orfeo-toolbox.org/otb/monteverdi.html
+	arch = x86_64
+	license = CeCILL
+	depends = orfeo-toolbox
+	depends = qwt5
+	depends = otb-ice
+	provides = monteverdi2
+	source = http://heanet.dl.sourceforge.net/project/orfeo-toolbox/Monteverdi2-0.8.1.tgz
+	md5sums = 0f65c161f299b2f8922f7f68b28f5882
+
+pkgname = monteverdi2
+
