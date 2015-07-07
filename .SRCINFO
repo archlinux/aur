@@ -1,0 +1,14 @@
+pkgbase = wacom-udev
+	pkgdesc = UDEV rules for Wacom devices
+	pkgver = 20140121
+	pkgrel = 1
+	url = http://linuxwacom.sourceforge.net/
+	arch = any
+	license = GPL
+	conflicts = linuxwacom-cvs
+	conflicts = linuxwacom-baboo-cth-ctl
+	source = 10-wacom.rules
+	md5sums = 72a0dfd0fb34e837d8efd27f6f9cfe68
+
+pkgname = wacom-udev
+

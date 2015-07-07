@@ -1,0 +1,172 @@
+# udev rules for wacom tablets.
+#
+# These rules were compiled for the Arch Linux distribution,
+#  (strongly based on rules for Debian GNU/Linux)
+# In our version, names built after information in driver to match
+# information given by xinput --list. We use simpler mapping rules:
+#  1. we convert the device string to lowercase and convert spaces to hyphen
+#  2. we convert string "wacom" to "input/tablet"
+#  3. we convert string "isdv4" to "tpc"
+#  4. we mark bluetooth devices by adding "-bt" at end of non its basic version
+#  5. in case when two ids give the same name (which is a bug we believe) we
+#     change the name by hand. There is one such case: both 0x42 and 0x47 are named
+#     "Wacom Intuos2 4x5". We rename second one to "Wacom Intuos2 4x5a" to avoid
+#     conflicts.
+# We also fixes some missing ids, removed not supported ids and corrected
+# mistakes in original rules file.
+
+KERNEL!="event[0-9]*", GOTO="wacom_end"
+
+# Port specific link for users of multiple tablets of the same type.
+# The ID_PATH variable is set by the "path_id" script in an earlier rule file.
+ATTRS{idVendor}=="056a", ENV{ID_PATH}=="?*", SYMLINK="input/by-path/$env{ID_PATH}-wacom"
+
+# Multiple interface support for stylus and touch devices.
+DRIVERS=="wacom", ATTRS{bInterfaceNumber}=="00", ENV{WACOM_TYPE}="stylus"
+DRIVERS=="wacom", ATTRS{bInterfaceNumber}=="01", ENV{WACOM_TYPE}="touch"
+
+# Type-named links for multiple tablets.  If you want to use multiple
+# tablets of the _same_ type, you will probably need to use the links
+# from /dev/input/by-path to identify which is plugged into what usb
+# port.  For different tablet types though, just pick your links from
+# the list below.
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0000", SYMLINK+="input/tablet-penpartner"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0003", SYMLINK+="input/tablet-cintiq-partner"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0010", SYMLINK+="input/tablet-graphire"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0011", SYMLINK+="input/tablet-graphire2-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0012", SYMLINK+="input/tablet-graphire2-5x7"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0013", SYMLINK+="input/tablet-graphire3"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0014", SYMLINK+="input/tablet-graphire3-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0015", SYMLINK+="input/tablet-graphire4-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0016", SYMLINK+="input/tablet-graphire4-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0017", SYMLINK+="input/tablet-bamboofun-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0018", SYMLINK+="input/tablet-bamboofun-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0019", SYMLINK+="input/tablet-bamboo1-medium"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0020", SYMLINK+="input/tablet-intuos-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0021", SYMLINK+="input/tablet-intuos-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0022", SYMLINK+="input/tablet-intuos-9x12"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0023", SYMLINK+="input/tablet-intuos-12x12"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0024", SYMLINK+="input/tablet-intuos-12x18"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0026", SYMLINK+="input/tablet-intuos5-touch-s"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0027", SYMLINK+="input/tablet-intuos5-touch-m"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0028", SYMLINK+="input/tablet-intuos5-touch-l"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0029", SYMLINK+="input/tablet-intuos5-s"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="002a", SYMLINK+="input/tablet-intuos5-m"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0030", SYMLINK+="input/tablet-pl400"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0031", SYMLINK+="input/tablet-pl500"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0032", SYMLINK+="input/tablet-pl600"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0033", SYMLINK+="input/tablet-pl600sx"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0034", SYMLINK+="input/tablet-pl550"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0035", SYMLINK+="input/tablet-pl800"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0037", SYMLINK+="input/tablet-pl700"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0038", SYMLINK+="input/tablet-pl510"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0039", SYMLINK+="input/tablet-dtu710"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="003f", SYMLINK+="input/tablet-cintiq-21ux"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0041", SYMLINK+="input/tablet-intuos2-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0042", SYMLINK+="input/tablet-intuos2-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0043", SYMLINK+="input/tablet-intuos2-9x12"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0044", SYMLINK+="input/tablet-intuos2-12x12"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0045", SYMLINK+="input/tablet-intuos2-12x18"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0047", SYMLINK+="input/tablet-intuos2-6x8a"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0057", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/tablet-dtk2241"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0059", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/tablet-dth2242"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="005b", SYMLINK+="input/tablet-cintiq-22hdt"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="005d", ENV{WACOM_TYPE}=="touch", SYMLINK+="input/tablet-dth2242-touch"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="005e", SYMLINK+="input/tablet-cintiq-22hdt-touch"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0060", SYMLINK+="input/tablet-volito"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0061", SYMLINK+="input/tablet-penstation2"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0062", SYMLINK+="input/tablet-volito2-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0063", SYMLINK+="input/tablet-volito2-2x3"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0064", SYMLINK+="input/tablet-penpartner2"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0065", SYMLINK+="input/tablet-bamboo"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0069", SYMLINK+="input/tablet-bamboo1"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="006a", SYMLINK+="input/tablet-bamboo1-4x6"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="006b", SYMLINK+="input/tablet-bamboo1-5x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0081", SYMLINK+="input/tablet-graphire-6x8-bt"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0084", SYMLINK="input/tablet-wireless-receiver-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0090", SYMLINK+="input/tablet-tpc-90"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0093", SYMLINK="input/tablet-tpc-93-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0097", SYMLINK="input/tablet-tpc-97-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="009a", SYMLINK="input/tablet-tpc-9a-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="009f", SYMLINK="input/tablet-tpc-9f-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b0", SYMLINK+="input/tablet-intuos3-4x5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b1", SYMLINK+="input/tablet-intuos3-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b2", SYMLINK+="input/tablet-intuos3-9x12"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b3", SYMLINK+="input/tablet-intuos3-12x12"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b4", SYMLINK+="input/tablet-intuos3-12x19"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b5", SYMLINK+="input/tablet-intuos3-6x11"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b7", SYMLINK+="input/tablet-intuos3-4x6"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b8", SYMLINK+="input/tablet-intuos4-4x6"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00b9", SYMLINK+="input/tablet-intuos4-6x9"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00ba", SYMLINK+="input/tablet-intuos4-8x13"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00bb", SYMLINK+="input/tablet-intuos4-12x19"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00bc", SYMLINK+="input/tablet-intuos4-wl"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00bd", SYMLINK+="input/tablet-intuos4-wl-bt"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00c0", SYMLINK+="input/tablet-dtf720"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00c2", SYMLINK+="input/tablet-dtf720a"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00c4", SYMLINK+="input/tablet-dtf521"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00c5", SYMLINK+="input/tablet-cintiq-20wsx"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00c6", SYMLINK+="input/tablet-cintiq-12wx"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00c7", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/tablet-dtu1931"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00cc", SYMLINK+="input/tablet-cintiq-21ux2"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00ce", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/tablet-dtu2231"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d0", SYMLINK="input/tablet-bamboo-2fg-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d1", SYMLINK="input/tablet-bamboo-2fg-4x5-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d2", SYMLINK="input/tablet-bamboo-craft-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d3", SYMLINK="input/tablet-bamboo-2fg-6x8-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d4", SYMLINK+="input/tablet-bamboo-pen"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d5", SYMLINK+="input/tablet-bamboo-pen-6x8"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d6", SYMLINK="input/tablet-bamboopt-2fg-4x5-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d7", SYMLINK="input/tablet-bamboopt-2fg-small-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00d8", SYMLINK="input/tablet-bamboo-comic-2fg-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00da", SYMLINK="input/tablet-bamboo-2fg-4x5-se-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00db", SYMLINK="input/tablet-bamboo-2fg-6x8-se-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00dd", SYMLINK+="input/tablet-bamboo-connect"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00de", SYMLINK="input/tablet-bamboo-16fg-4x5-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00df", SYMLINK="input/tablet-bamboo-16fg-6x8-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00e2", SYMLINK="input/tablet-tpc-e2-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00e3", SYMLINK="input/tablet-tpc-e3-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00e5", SYMLINK="input/tablet-tpc-e5-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00e6", SYMLINK="input/tablet-tpc-e6-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00ec", SYMLINK="input/tablet-tpc-ec-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00ed", SYMLINK="input/tablet-tpc-ed-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00ef", SYMLINK="input/tablet-tpc-ef-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00f0", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/tablet-dtu1631"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00f4", SYMLINK+="input/tablet-cintiq-24hd"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00f6", SYMLINK+="input/tablet-cintiq-24hdt-touch"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00f8", SYMLINK+="input/tablet-cintiq-24hdt"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00fa", SYMLINK+="input/tablet-cintiq-22hd"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00fb", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/tablet-dtu1031"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0100", SYMLINK="input/tablet-tpc-100-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0101", SYMLINK="input/tablet-tpc-101-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="010d", SYMLINK="input/tablet-tpc-10d-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="010e", SYMLINK="input/tablet-tpc-10e-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="010f", SYMLINK="input/tablet-tpc-10f-$env{WACOM_TYPE}"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0300", SYMLINK+="input/tablet-bamboo-one-5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0301", SYMLINK+="input/tablet-bamboo-one-m"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", SYMLINK+="input/tablet-intuos-pt-s"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0303", SYMLINK+="input/tablet-intuos-pt-m"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0304", SYMLINK+="input/tablet-cintiq-13hd"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0307", SYMLINK+="input/tablet-hybrid"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0309", SYMLINK+="input/tablet-hybrid-touch"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", SYMLINK+="input/tablet-intuos-s"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0314", SYMLINK+="input/tablet-intuos-pro-5"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0315", SYMLINK+="input/tablet-intuos-pro-m"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0317", SYMLINK+="input/tablet-intuos-pro-l"
+ATTRS{idVendor}=="056a", ATTRS{idProduct}=="4001", SYMLINK="input/tablet-tpc-4001-$env{WACOM_TYPE}"
+
+# Convenience links for the common case of a single tablet.
+ATTRS{idVendor}=="056a", ENV{WACOM_TYPE}!="touch", SYMLINK+="input/wacom"
+ATTRS{idVendor}=="056a", SYMLINK+="input/wacom-$env{WACOM_TYPE}"
+
+LABEL="wacom_end"
+
+# Match all wacom tablets with a serial ID starting with WACf or FUJ.
+
+ACTION!="add|change", GOTO="second_wacom_end"
+
+ATTRS{id}=="WACf*" ENV{NAME}="Serial Wacom Tablet", ENV{ID_INPUT}="1", ENV{ID_INPUT_TABLET}="1", SYMLINK+="input/wacom"
+ATTRS{id}=="FUJ*" ENV{NAME}="Serial Wacom Tablet", ENV{ID_INPUT}="1", ENV{ID_INPUT_TABLET}="1", SYMLINK+="input/wacom"
+
+LABEL="second_wacom_end"
+
