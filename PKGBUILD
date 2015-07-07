@@ -1,9 +1,8 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
-
 pkgname=mdm-display-manager
 _pkgname=mdm
-pkgver=1.8.3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="The MDM Display Manager"
 arch=('i686' 'x86_64')
@@ -95,13 +94,11 @@ chmod 755 $pkgdir/usr/share/applications/*.*
 rmdir $pkgdir/usr/share/mdm/applications
 
 }
-
-
-
-sha256sums=('912d8f7cfc950a70f68e09db46775687cd9b61a54a9d96b7715cf6eff79ba6ba'
+sha256sums=('f71850c370a99625ce0a8884ac7cff45ba4ba4ce06054ed5c3c9aa6778710dfd'
             '8663192f02fbbcaf9b84a37a44d47af7381c18d4327c576ca7924baca2cc163b'
             'd3dd582eb25bb31f012167069c869d3ce89c1dbd9b5aa7396350d8cf609994a5'
             '479e8fd4d5ef353fec5af776ad05e4f414a92d6f374f9b8f5deef77b9e301bc7'
             'ce9448356c54d8de5b8af5cdef2b5c30b4e6ae970126ce0c4ef295be557bbd2a'
             'bd22d536a7a1b455a8f8a45d7d8cc46156cb4ef5f3bc706dd73c89d503acad6b'
             '7579ed402ee0db60e0c40ddbb7b2c80be0aec4315e45aa525908bef8aa181bd6')
+
