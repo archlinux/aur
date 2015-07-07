@@ -1,0 +1,23 @@
+post_install() {
+  update-mime-database usr/share/mime >/dev/null
+  update-desktop-database -q >/dev/null
+  gtk-update-icon-cache -q -f -t /usr/share/icons/gnome >/dev/null
+  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor >/dev/null
+  niceinfo
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  update-mime-database usr/share/mime >/dev/null
+  update-desktop-database -q >/dev/null
+  gtk-update-icon-cache -q -f -t /usr/share/icons/gnome >/dev/null
+  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor >/dev/null
+}
+
+op=$1
+shift
+
+$op $*
