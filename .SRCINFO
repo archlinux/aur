@@ -1,0 +1,21 @@
+pkgbase = mpn
+	pkgdesc = MPNotifier is a lightweight client for MPD displaying a popup notification each time a new song is played
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://chadok.info/mpn/
+	install = mpn.install
+	arch = any
+	license = GPL2
+	depends = python2-notify
+	depends = python2-mpd
+	depends = pygtk
+	depends = python2-yaml
+	source = http://chadok.info/mpn/MPNotifier-1.1.tar.gz
+	source = http://chadok.info/darcs/mpn/mpnrc
+	source = http://chadok.info/darcs/mpn/COPYING
+	md5sums = b16ab662f5b8eebd1ad8f32b90a3da8f
+	md5sums = e3a696c3e25a6d1a84665d7c09abfda9
+	md5sums = b234ee4d69f5fce4486a80fdaf4a4263
+
+pkgname = mpn
+

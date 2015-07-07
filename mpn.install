@@ -1,0 +1,8 @@
+post_install(){
+  echo "==========================================================="
+  echo "|| An example configuration file has been installed into ||"
+  echo "|| /usr/share/doc/mpn/mpnrc.sample                       ||"
+  echo "|| Copy it to ~/.mpnrc and edit it                       ||"
+  echo "|| For help, have a look at mpn -h                       ||"
+  echo "==========================================================="
+}
