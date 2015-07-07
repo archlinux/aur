@@ -1,0 +1,23 @@
+pkgbase = freemind-unstable
+	pkgdesc = FreeMind is a premier free mind-mapping software written in Java.
+	pkgver = 1.1.0.Beta1
+	pkgrel = 1
+	url = http://freemind.sourceforge.net/wiki/index.php/Main_Page
+	install = freemind-unstable.install
+	arch = any
+	license = GPL
+	makedepends = apache-ant
+	makedepends = java-environment>=7
+	depends = java-runtime
+	depends = desktop-file-utils
+	source = http://download.sourceforge.net/project/freemind/freemind-unstable/1.1.0_Beta1/freemind-src-1.1.0_Beta_1.tar.gz
+	source = freemind-unstable
+	source = freemind-unstable.png
+	source = freemind-unstable.desktop
+	md5sums = 03b15dcebdb1058c28e3fba29326e6d5
+	md5sums = 8fbc1af8866a6c2bf83e881a8940f733
+	md5sums = 92e7ccb968dbe04e0c5acb3352c4847e
+	md5sums = 11d249d6c4443a6fab4740b22c140261
+
+pkgname = freemind-unstable
+

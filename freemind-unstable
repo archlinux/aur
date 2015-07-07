@@ -1,0 +1,4 @@
+#! /bin/sh
+
+cd /usr/share/java/freemind-unstable/dist
+./freemind.sh $@
