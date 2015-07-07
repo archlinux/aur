@@ -1,0 +1,33 @@
+pkgbase = lenmus
+	pkgdesc = A free program to learn music
+	pkgver = 5.3.1
+	pkgrel = 2
+	url = http://lenmus.sourceforge.net/en/phonascus/intro
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = boost
+	makedepends = unittestpp
+	depends = portmidi
+	depends = freetype2
+	depends = wxgtk2.8
+	depends = sqlite3
+	depends = boost-libs
+	depends = liblomse>=0.14.0
+	optdepends = timidity++: for sound without external midi player
+	source = http://downloads.sourceforge.net/lenmus/lenmus_5.3.1.tar.gz
+	source = cmake-boost.patch
+	source = cmake-find.patch
+	source = cmake-wxgtk.patch
+	source = lenmus-src.patch
+	source = lenmus-unittest.patch
+	md5sums = 76e0e24c63246aa43f241f683e181973
+	md5sums = 17ce17d77ed2d065156f535d1438a30f
+	md5sums = 4dfbbbf1a1a34ff8d53767a5f2744ee7
+	md5sums = 923d4c27a992d5a9c0590e3529665a57
+	md5sums = 6593c53701f071271bdb35410df58c06
+	md5sums = c4a3546fd2078c72a3b1306dabfc9d2b
+
+pkgname = lenmus
+

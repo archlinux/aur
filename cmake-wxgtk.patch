@@ -1,0 +1,10 @@
+--- CMakeLists-orig.txt	2015-04-09 21:03:19.194764238 +0200
++++ CMakeLists.txt	2015-04-09 23:13:58.753179132 +0200
+@@ -260,6 +260,7 @@
+ 
+ # Check for wxWidgets
+ # http://docs.wxwidgets.org/2.8/wx_librarieslist.html
++set( wxWidgets_CONFIG_EXECUTABLE "wx-config-2.8" )
+ find_package(wxWidgets REQUIRED) 
+ IF(wxWidgets_FOUND)
+     #include_directories( ${wxWidgets_INCLUDE_DIRS} )

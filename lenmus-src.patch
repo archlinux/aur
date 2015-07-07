@@ -1,0 +1,22 @@
+--- include/lenmus_main_frame.h.orig	2013-04-03 02:39:19.290558529 +0200
++++ include/lenmus_main_frame.h	2013-04-03 02:39:29.833496561 +0200
+@@ -25,7 +25,6 @@
+ #include "lenmus_standard_header.h"
+ #include "lenmus_injectors.h"
+ #include "lenmus_canvas.h"
+-#include "lenmus_test_runner.h"
+ #include "lenmus_dlg_debug.h"
+ #include "lenmus_events.h"
+ #include "lenmus_metronome.h"
+
+--- include/lenmus_test_runner.h.orig	2012-11-30 17:03:57.000000000 +0100
++++ include/lenmus_test_runner.h	2013-04-03 00:29:09.678911430 +0200
+@@ -24,7 +24,7 @@
+ #include <iostream>
+ 
+ #include <UnitTest++.h>
+-#include <TestReporter.h>
++#include <UnitTest++/TestReporter.h>
+ 
+ 
+ 

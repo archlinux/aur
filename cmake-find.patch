@@ -1,0 +1,11 @@
+--- cmake-modules/FindLomse.cmake.orig	2013-06-09 02:08:19.288227029 +0200
++++ cmake-modules/FindLomse.cmake	2013-06-09 02:07:56.305747005 +0200
+@@ -29,7 +29,7 @@
+     )
+ 
+     find_library(LOMSE_LIBRARY
+-       NAMES liblomse liblomse.a
++       NAMES liblomse.so liblomse.a
+        PATHS
+        /usr/lib/
+        /usr/local/lib
