@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=sidef
-pkgver=0.06
+pkgver=0.07
 pkgrel=1
 pkgdesc="A modern object-oriented programming language."
 url="https://github.com/trizen/${pkgname}"
@@ -11,7 +11,7 @@ depends=('perl>=5.14.2' 'perl-data-dump')
 makedepends=('perl-module-build')
 
 source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
-sha256sums=('5a7937659320587652f947fa048ed2441b489f4f65f8690e619e2ed3817cef5f')
+sha256sums=('d244198802f0c38256f11848f8c45eab3272aef54517d9313d97f239c8389b50')
 
 package() {
     cd "$pkgname-$pkgver"
