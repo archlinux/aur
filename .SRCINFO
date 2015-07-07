@@ -1,0 +1,14 @@
+pkgbase = mythes-sv
+	pkgdesc = Swedish thesaurus
+	pkgver = 20101106
+	pkgrel = 8
+	url = http://lexin2.nada.kth.se/synlex.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libmythes
+	source = http://extensions.libreoffice.org/extension-center/swedish-thesaurus-based-on-synlex/releases/1.3/swedishthesaurus.oxt
+	md5sums = e1cc53b9a74f31307e342e88c341202b
+
+pkgname = mythes-sv
+
