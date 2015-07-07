@@ -1,0 +1,15 @@
+pkgbase = libflashsupport-jack
+	pkgdesc = JACK-audio-connection-kit support for Flash
+	pkgver = 20110801
+	pkgrel = 1
+	url = http://sourceforge.net/users/torbenh/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = openssl
+	depends = jack
+	options = !libtool
+
+pkgname = libflashsupport-jack
+
