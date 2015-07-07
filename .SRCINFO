@@ -1,0 +1,15 @@
+pkgbase = ninka
+	pkgdesc = a license identification tool for Source Code
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://ninka.turingmachine.org
+	arch = any
+	license = AGPL3
+	depends = perl
+	source = http://ninka.turingmachine.org/download/ninka-1.1.tar.bz2
+	source = ninka
+	md5sums = 097b736781d4121128af3c1bbd66dd82
+	md5sums = e3cf63e90c3b215a61ba8643f39e02c7
+
+pkgname = ninka
+
