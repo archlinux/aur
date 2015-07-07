@@ -1,0 +1,14 @@
+pkgbase = faenza-crunchbang-icon-theme
+	pkgdesc = Port of the Faenza icon theme for CrunchBang Waldorf.
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://crunchbang.org/
+	arch = any
+	license = GPL3
+	depends = faenza-icon-theme
+	options = emptydirs
+	source = http://dl.dropbox.com/u/69788808/aur/faenza-crunchbang-icon-theme-1.2.tar.gz
+	sha1sums = 85c70c96a7546dda8bde9812ed4311293c6e1d58
+
+pkgname = faenza-crunchbang-icon-theme
+
