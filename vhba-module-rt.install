@@ -1,0 +1,21 @@
+EXTRAMODULES=
+
+_updatemod() {
+  echo "  > Updating module dependencies..."
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  getent group cdemu &>/dev/null || groupadd -r cdemu
+  _updatemod
+}
+
+post_upgrade() {
+  _updatemod
+}
+
+post_remove() {
+  _updatemod
+}
+
+# vim:set ts=2 sw=2 et:

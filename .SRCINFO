@@ -1,0 +1,20 @@
+pkgbase = vhba-module-rt
+	pkgdesc = Kernel module that emulates SCSI devices. For linux-rt
+	pkgver = 20140928
+	pkgrel = 11
+	url = http://cdemu.sourceforge.net/
+	install = vhba-module-rt.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-rt-headers>=4.0
+	makedepends = linux-rt-headers<4.1
+	depends = linux-rt>=4.0
+	depends = linux-rt<4.1
+	depends = vhba-module
+	options = !makeflags
+	source = http://downloads.sourceforge.net/cdemu/vhba-module-20140928.tar.bz2
+	md5sums = 967007230bb028424216d9b35da422c0
+
+pkgname = vhba-module-rt
+
