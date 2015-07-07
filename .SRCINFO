@@ -1,0 +1,15 @@
+pkgbase = python2-pyvisa
+	pkgdesc = A Python package with bindings to the 'Virtual Instrument Software Architecture' library
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://pyvisa.sourceforge.net/
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	makedepends = python2-docutils
+	depends = python2
+	source = https://pypi.python.org/packages/source/P/PyVISA/PyVISA-1.6.3.zip
+	md5sums = 67347d5410dcc6de25af875644ae1e45
+
+pkgname = python2-pyvisa
+
