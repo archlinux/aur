@@ -1,0 +1,16 @@
+pkgbase = fuel
+	pkgdesc = A GUI front-end to Fossil SCM
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://fuel-scm.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base>=5.4.0,
+	depends = qt5-webkit>=5.4.0
+	depends = fossil
+	source = https://fuel-scm.org/files/releases/fuel-1.0.0.tar.gz
+	sha256sums = 034593d16eba9e30a73d1b40bfd4f1a7f9ba438a04dc07cc7bb2cd2202da40fc
+
+pkgname = fuel
+
