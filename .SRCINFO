@@ -1,0 +1,25 @@
+pkgbase = grub-customizer
+	pkgdesc = A graphical grub2 settings manager
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = https://launchpad.net/grub-customizer
+	install = grub-customizer.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gtkmm3
+	depends = openssl
+	depends = hicolor-icon-theme
+	depends = grub-common
+	depends = libarchive
+	optdepends = hwinfo
+	provides = grub-customizer
+	backup = etc/grub-customizer/grub.cfg
+	source = https://launchpad.net/grub-customizer/4.0/4.0.6/+download/grub-customizer_4.0.6.tar.gz
+	source = grub.cfg
+	md5sums = e4d76cd7cb6eb7ec03461e77db43bf34
+	md5sums = f914f23d66341925238fd0d1922d2b85
+
+pkgname = grub-customizer
+
