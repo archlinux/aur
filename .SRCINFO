@@ -1,0 +1,14 @@
+pkgbase = emacs-sml-mode
+	pkgdesc = An SML editing mode for emacs
+	pkgver = 6.7
+	pkgrel = 1
+	url = http://elpa.gnu.org/packages/sml-mode.html
+	install = emacs-sml-mode.install
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = http://elpa.gnu.org/packages/sml-mode-6.7.el
+	sha256sums = 3db9673b7c23e3ee58d8f0e748871700125fa0e44cdf14754a3ed6787aaf2d10
+
+pkgname = emacs-sml-mode
+
