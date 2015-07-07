@@ -1,0 +1,16 @@
+pkgbase = python2-cdecimal
+	pkgdesc = Fast drop-in replacement for decimal.py
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://www.bytereef.org/mpdecimal/index.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	options = !libtool
+	source = http://www.bytereef.org/software/mpdecimal/releases/cdecimal-2.3.tar.gz
+	md5sums = 655f9fd72f7a21688f903900ebea6f56
+
+pkgname = python2-cdecimal
+
