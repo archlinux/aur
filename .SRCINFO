@@ -1,0 +1,18 @@
+pkgbase = vim-hemisu-git
+	pkgdesc = A color scheme with dark and light variants, by Noah Frederick.
+	pkgver = v3.4.4.g37ea6aa
+	pkgrel = 1
+	url = https://github.com/noahfrederick/vim-hemisu.git
+	arch = any
+	groups = vim-plugins
+	license = CCPL:cc-by-nc-3.0
+	makedepends = git
+	depends = vim
+	provides = vim-hemisu
+	conflicts = vim-hemisu
+	source = git+https://github.com/noahfrederick/vim-hemisu.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vim-hemisu-git
+
