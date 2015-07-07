@@ -1,0 +1,17 @@
+pkgbase = taskcoach
+	pkgdesc = A simple open source todo manager to manage personal tasks and todo lists
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://www.taskcoach.org
+	changelog = taskcoach.changelog
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = wxpython2.8
+	depends = curl
+	depends = twisted
+	source = http://downloads.sourceforge.net/sourceforge/taskcoach/TaskCoach-1.4.2.tar.gz
+	md5sums = ef131184e8d7236d80bd07080fe2b014
+
+pkgname = taskcoach
+

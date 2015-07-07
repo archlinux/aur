@@ -1,0 +1,74 @@
+2014-04-01 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Depends array updated
+
+2011-11-18 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+
+2010-10-20 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Depends array modified to correctly require python2
+
+2010-10-20 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Architecture changed to "any"
+	Running setup script with python2
+	Added python (3.x) to the depends array
+
+2009-06-25 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir variables
+
+2009-06-13 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	setup.patch no more needed
+
+2009-06-10 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch for the setup.py script
+
+2009-05-11 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Home site URL updated
+
+2008-11-12 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	taskcoach.desktop is installed from the source archive
+
+2008-10-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	added curl to the dependencies
+	taskcoach.png is installed from the source archive
+
+2008-08-22 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	wxGTK 2.8.8 patch removed
+
+2008-07-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUIULD :
+	added a patch for wxGTK 2.8.8
+
+2008-05-20 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	license changed to GPL3
+
+2008-03-26 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	added x86_64 to the arch array
+	downloading from downloads.sourceforge.net
