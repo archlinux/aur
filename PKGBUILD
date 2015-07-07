@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-njoy
 _gitname=pvr.njoy
-pkgver=20150331.fcd6294
-_gitver=fcd62943f976be1a60786643aaa01ebd98c0964e
+pkgver=20150701.e7f9458
+_gitver=e7f94586827c407ad47cb3adc74ffc25b49ecf09
 pkgrel=1
 pkgdesc='Njoy N7 PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
