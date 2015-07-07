@@ -1,0 +1,15 @@
+pkgbase = shrimp
+	pkgdesc = SHort Read Mapping Package
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://compbio.cs.toronto.edu/shrimp/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	source = shrimp-2.2.3.tar.gz::http://compbio.cs.toronto.edu/shrimp/releases/SHRiMP_2_2_3.src.tar.gz
+	md5sums = c69a5e30f2f81045c5ff84c4e3f318d5
+
+pkgname = shrimp
+
