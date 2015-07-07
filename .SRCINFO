@@ -1,0 +1,17 @@
+pkgbase = proofgeneral
+	pkgdesc = Generic interface for proof assistants.
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://proofgeneral.inf.ed.ac.uk/
+	install = proofgeneral.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = emacs>=24.3
+	source = http://proofgeneral.inf.ed.ac.uk/releases/ProofGeneral-4.2.tgz
+	source = Makefile.patch
+	md5sums = c9f7eac10ed7a04c96b90abcbf964427
+	md5sums = e8a2c065a928f641564174c1342cfa60
+
+pkgname = proofgeneral
+
