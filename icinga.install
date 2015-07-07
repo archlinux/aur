@@ -1,0 +1,22 @@
+# arg 1:  the new package version
+
+post_install() {
+	cat <<EOM
+
+--> Sample config files are installed with .sample extension.
+--> Remember, these are *SAMPLE* config files.  You'll need to read
+--> the documentation for more information on how to actually define
+--> services, hosts, etc. to fit your particular needs.
+--> Remenber to include the the http icinga configuration file in the
+--> /etc/httpd/conf/httpd.conf file.
+
+EOM
+
+}
+
+post_remove() {
+	
+	userdel icinga
+	groupdel icinga
+	
+}

@@ -1,0 +1,22 @@
+pkgbase = icinga
+	pkgdesc = An open source host, service and network monitoring program.
+	pkgver = 1.13.2
+	pkgrel = 1
+	url = http://www.icinga.org
+	install = icinga.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gd
+	depends = freetype2
+	depends = libtool
+	depends = libdbi-drivers
+	depends = openssl
+	optdepends = monitoring-plugins: plugins needed for icinga checks
+	source = https://github.com/Icinga/icinga-core/releases/download/v1.13.2/icinga-1.13.2.tar.gz
+	source = icinga.install
+	md5sums = 2a576e2391ce56426f3924c4053491e2
+	md5sums = 57e5cdb21a148e55cb5ddb55e6e8812d
+
+pkgname = icinga
+
