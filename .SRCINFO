@@ -1,0 +1,16 @@
+pkgbase = python2-bitarray
+	pkgdesc = Efficient arrays of booleans for Python
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/ilanschnell/bitarray
+	arch = i686
+	arch = x86_64
+	license = PSF
+	makedepends = python2-distribute
+	depends = python2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
+	md5sums = 3825184f54f4d93508a28031b4c65d3b
+
+pkgname = python2-bitarray
+
