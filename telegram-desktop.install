@@ -1,14 +1,17 @@
 post_install() {
 
-      echo "Start from the console if it is the first time you install this program: ([user@ArchLinux:~]$ telegram). To generate the .desktop file."
-      echo "Before, delete the old: rm -r ~/.local/share/applications/telegramdesktop.desktop. And rm -r ~/.TelegramDesktop"
-      echo "After Update start Telegram per /opt/telegram/Telegram to get TelegramDesktop"
+      echo "Start from the console at the first run (using "telegram") to generate the .desktop file."
+      echo "After Update start Telegram with "/opt/telegram/Telegram" to get TelegramDesktop"
+      echo "If you see no destkop launcher after update, you can fix it by using"
+      echo "sed 's/Exec=-- %u/Exec=telegram -- %u/' -i ~/.local/share/applications/telegramdesktop.desktop"
       
 }
 
 post_remove()
 {
-      echo "Remove the .desktop: rm -r ~/.local/share/applications/telegramdesktop.desktop. And rm -r ~/.TelegramDesktop"
+      echo "You can remove old data from a terminl doing:"
+      echo "rm -r ~/.local/share/applications/telegramdesktop.desktop"
+      echo "rm -r ~/.TelegramDesktop"
 }
 
 # vim: ts=2 sw=2 et:

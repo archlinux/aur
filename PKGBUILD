@@ -3,37 +3,38 @@
 
 pkgname=telegram-desktop
 pkgver=0.8.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop version of Telegram messaging app."
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
 license=('GPL3')
 depends=('libx11' 'libgcrypt' 'libasyncns' 'libsndfile' 'libsystemd' 'libdbus' 'openal' 'libogg' 'opus' 'opusfile' 'portaudio' 'openssl' 'zlib' 'libexif' 'xz')
 conflicts=('telegram-dev')
+replaces=('telegram-bin')
 install="$pkgname.install"
 
-if [[ $CARCH == "x86_64" ]]; then
-    md5sums=('d01365d05d967185f9f56fca5eadf05b' '0f92054b498f023912e9c26654aa1904')
-    source=("$pkgname-$pkgver.tar.xz"::'https://updates.tdesktop.com/tlinux/tsetup.'$pkgver'.tar.xz' 'telegram')
-    
-elif [[ $CARCH == "i686" ]]; then
-    md5sums=('7cb592bcab97c4e3cf2a4abbed29e4aa' '0f92054b498f023912e9c26654aa1904')
-    source=("$pkgname-$pkgver.tar.xz"::'https://updates.tdesktop.com/tlinux32/tsetup32.'$pkgver'.tar.xz' 'telegram')
-fi
+# Sources
+source=('telegram')
+source_i686=('https://updates.tdesktop.com/tlinux32/tsetup32.'$pkgver'.tar.xz')
+source_x86_64=('https://updates.tdesktop.com/tlinux/tsetup.'$pkgver'.tar.xz')
+# Checksums
+sha256sums=('0f2a6e4c2b9b4ff5f4ddb628728be4cc5a419f79695c0151321a5f234099ee59')
+sha256sums_i686=('1cd1337c5e7cdf235bae06f14d51fd5b9ef17f0bba424258d31c111f1f70d836')
+sha256sums_x86_64=('5b7b15ab555275beda47a198c34baee97cfadc3d88feb664a01aa342ad603ba0')
 
 package() {
 
-    cd "$srcdir/"
-    
-    install -dm755 "$pkgdir/opt/telegram/"
-    install -dm755 "$pkgdir/usr/bin"
+	cd "$srcdir/"
 
-    # Program
-    install -Dm755 "$srcdir/Telegram/Telegram" "$pkgdir/opt/telegram/"
-    install -Dm755 "$srcdir/Telegram/Updater" "$pkgdir/opt/telegram/"
-    
-    # Link to program
-    ln -s /opt/telegram/Telegram $pkgdir/usr/bin/telegram
+	install -dm755 "$pkgdir/opt/telegram/"
+	install -dm755 "$pkgdir/usr/bin"
+
+	# Program
+	install -Dm755 "$srcdir/Telegram/Telegram" "$pkgdir/opt/telegram/"
+	install -Dm755 "$srcdir/Telegram/Updater" "$pkgdir/opt/telegram/"
+
+	# Shell wrapper
+	install -Dm755 "$srcdir/telegram" "$pkgdir/usr/bin"
 
 }
 

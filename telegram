@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /opt/telegram && ./Telegram
+exec /opt/telegram/Telegram $@
