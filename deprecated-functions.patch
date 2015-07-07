@@ -1,0 +1,13 @@
+--- generic/jkSound-orig.h	2014-03-16 02:02:05.079275634 +0100
++++ generic/jkSound.h	2014-03-16 02:03:02.567202228 +0100
+@@ -607,8 +607,8 @@
+ #define TCL_SEEK Tcl_Seek
+ #define TCL_TELL Tcl_Tell
+ #else
+-#define TCL_SEEK Tcl_SeekOld
+-#define TCL_TELL Tcl_TellOld
++#define TCL_SEEK (tclStubsPtr->tcl_SeekOld)
++#define TCL_TELL (tclStubsPtr->tcl_TellOld)
+ #endif
+ 
+ #define SNACK_DB 4.34294481903251830000000 /*  = 10 / ln(10)  */

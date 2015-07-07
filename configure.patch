@@ -1,0 +1,15 @@
+--- configure.orig	2006-09-27 00:26:04.000000000 +0400
++++ unix/configure	2006-09-27 00:27:49.000000000 +0400
+@@ -1467,10 +1467,10 @@
+     exec_prefix=$prefix
+ fi
+ 
+-#SNACK_INSTALL_PATH=${exec_prefix}/lib
++SNACK_INSTALL_PATH=${exec_prefix}/lib
+ #SNACK_HINSTALL_PATH=${exec_prefix}/inc
+ #SNACK_LIB_SPEC="-L${exec_prefix}/lib -lsnack"
+-SNACK_INSTALL_PATH=${libdir}
++#SNACK_INSTALL_PATH=${libdir}
+ SNACK_HINSTALL_PATH=${includedir}
+ SNACK_LIB_SPEC="-L${libdir} -lsnack"
+ 
