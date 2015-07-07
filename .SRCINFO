@@ -1,0 +1,14 @@
+pkgbase = clidoc
+	pkgdesc = Generate man pages and help text from Markdown-formatted docs
+	pkgver = 0.0.1
+	pkgrel = 3
+	url = https://github.com/vinsonchuong/clidoc
+	arch = any
+	license = MIT
+	depends = ruby-ronn
+	depends = xidel
+	source = https://github.com/vinsonchuong/clidoc/archive/v0.0.1.tar.gz
+	md5sums = 46afdf1c2b9f152739f6c8618f29899c
+
+pkgname = clidoc
+
