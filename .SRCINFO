@@ -1,0 +1,13 @@
+pkgbase = python-namedlist
+	pkgdesc = Like namedtuples, but mutable
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/namedlist
+	arch = any
+	license = Apache
+	depends = python
+	source = http://pypi.python.org/packages/source/n/namedlist/namedlist-1.4.tar.gz
+	md5sums = 09eb613c625e73c64a1f84427e1b7170
+
+pkgname = python-namedlist
+
