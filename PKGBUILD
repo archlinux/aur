@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audiodecoder-nosefart
 _gitname=audiodecoder.nosefart
-pkgver=20150309.c77e5a1
-_gitver=c77e5a126a89ed6923d96dce8bce9473685b059d
+pkgver=20150602.936313f
+_gitver=936313f2be5c4936af8a643876363dcea76a8ebe
 pkgrel=1
 pkgdesc='Nosefart decoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
