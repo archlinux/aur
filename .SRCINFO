@@ -1,0 +1,23 @@
+pkgbase = moonshiner
+	pkgdesc = A graphical frontend for Ghostscript's PostScript-to-PDF converter
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://moonshiner.sourceforge.net/
+	install = moonshiner.install
+	arch = any
+	license = GPL3
+	makedepends = python2-distribute
+	depends = pygtk
+	depends = ghostscript
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/moonshiner/moonshiner-1.0.tar.gz
+	source = moonshiner.desktop
+	source = moonshiner.png
+	md5sums = fb3cfa1fda862dd48c49864df908f84f
+	md5sums = 3371ee433a2dff83b1e3771234934eb8
+	md5sums = 52ac50697c126c6addbb71d711cdf8c3
+
+pkgname = moonshiner
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Moonshiner
+GenericName=PS-to-PDF converter
+Icon=moonshiner
+Exec=moonshiner
+Categories=Graphics;Publishing;GTK;
+Comment=Convert PostScript files to PDF documents using a graphical interface
+
