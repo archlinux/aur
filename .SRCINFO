@@ -1,0 +1,22 @@
+pkgbase = python-syutil-git
+	pkgdesc = An utility library common to synapse and sydent
+	pkgver = 0.0.5.r0.ga65b4a2
+	pkgrel = 1
+	url = https://github.com/matrix-org/syutil
+	arch = any
+	license = Apache
+	makedepends = python2-mock
+	makedepends = python2-setuptools_trial
+	makedepends = git
+	source = git://github.com/matrix-org/syutil.git
+	md5sums = SKIP
+
+pkgname = python2-syutil-git
+	depends = python2
+	depends = python2-pyasn1
+	depends = python2-pynacl
+	depends = python2-simplejson
+	depends = python2-frozendict
+	provides = python2-syutil
+	conflicts = python2-syutil
+
