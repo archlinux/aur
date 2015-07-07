@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-audioencoder-lame
 	pkgdesc = Lame MP3 encoder addon for Kodi
-	pkgver = 20150110.3eb59de
-	pkgrel = 2
+	pkgver = 20150601.b283cd5
+	pkgrel = 1
 	url = https://github.com/xbmc/audioencoder.lame
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-audioencoder-lame
 	depends = lame
 	conflicts = kodi-audioencoder-lame-devel
 	replaces = kodi-audioencoder-lame-devel
-	source = https://github.com/xbmc/audioencoder.lame/archive/3eb59de951996659c143faaabacc5f34ee9a0b81.tar.gz
+	source = https://github.com/xbmc/audioencoder.lame/archive/b283cd50cd2f89b7fd7b903c957a6a993e3756d2.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-audioencoder-lame
