@@ -1,0 +1,17 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "ATTENTION HOARD:"
+  echo "----------"
+  echo "You must set LD_PRELOAD to /usr/lib/libhoard.so."
+  echo "You can do this manually, or uncomment the line in"
+  echo "/etc/profile.d/hoard.sh"
+  echo "----------"
+  echo " This package will be renamed to libhoard in the future"
+}
+
+op=$1
+shift
+$op $*
