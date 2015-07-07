@@ -1,0 +1,18 @@
+pkgbase = haskell-geniplate
+	pkgdesc = Use template Haskell to generate Uniplate-like functions
+	pkgver = 0.6.0.5
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/geniplate-0.6.0.5
+	install = haskell-geniplate.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = haskell-mtl
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/geniplate/0.6.0.5/geniplate-0.6.0.5.tar.gz
+	sha256sums = ec6bb3509d4882f6382166735c6dcd87faae60bd58eb70cd7190503c8bf39c05
+
+pkgname = haskell-geniplate
+
