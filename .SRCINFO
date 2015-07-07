@@ -1,0 +1,18 @@
+pkgbase = py3status-git
+	pkgdesc = An extensible i3status replacement/wrapper written in python (development version)
+	pkgver = 2.4.r42.gc4535a4
+	pkgrel = 1
+	url = https://github.com/ultrabug/py3status
+	arch = any
+	license = custom: Simplified BSD
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	optdepends = i3status: for some of the functionality
+	provides = py3status
+	conflicts = py3status
+	source = git+https://github.com/ultrabug/py3status.git
+	md5sums = SKIP
+
+pkgname = py3status-git
+
