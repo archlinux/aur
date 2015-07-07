@@ -1,0 +1,18 @@
+pkgbase = butterfly
+	pkgdesc = A sleek web based terminal emulator
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/butterfly
+	install = 
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tornado
+	depends = python-pyopenssl
+	source = https://pypi.python.org/packages/source/b/butterfly/butterfly-1.5.2.tar.gz
+	source = butterfly.service
+	options = !emptydirs
+
+pkgname = butterfly
+
