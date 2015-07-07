@@ -1,0 +1,21 @@
+pkgbase = libfprint-git
+	pkgdesc = Library for fingerprint readers
+	pkgver = 0.5.1.r13.g35e356f
+	pkgrel = 1
+	epoch = 1
+	url = http://www.freedesktop.org/wiki/Software/fprint/libfprint
+	arch = i686
+	arch = x86_64
+	groups = fprint-git
+	license = LGPL
+	makedepends = git
+	depends = libusb
+	depends = nss
+	depends = gdk-pixbuf2
+	provides = libfprint
+	conflicts = libfprint
+	source = git://anongit.freedesktop.org/libfprint/libfprint.git
+	md5sums = SKIP
+
+pkgname = libfprint-git
+
