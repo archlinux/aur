@@ -1,0 +1,14 @@
+pkgbase = oki-b411-b431
+	pkgdesc = cups driver for the Okidata B411 and B431
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.okidata.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = ftp://ftp2.okidata.com/pub/drivers/linux/SFP/monochrome/desktop/MB400PCLv5.tar
+	sha256sums = 3ab2df56a62e03d0c0f8dcbb09ea7cde757eac3eb9ab1772f5f3c421cbb6c73f
+
+pkgname = oki-b411-b431
+
