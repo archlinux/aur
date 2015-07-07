@@ -1,0 +1,23 @@
+pkgbase = veusz
+	pkgdesc = A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output
+	pkgver = 1.23.1
+	pkgrel = 1
+	url = http://home.gna.org/veusz/
+	install = veusz.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2-pyqt4
+	depends = python2-numpy
+	optdepends = python2-pyfits: for reading files in FITS format
+	optdepends = python2-emf: for EMF export
+	optdepends = python2-dbus: for dbus interface
+	optdepends = python2-pyminuit2: for numerical function minimization
+	optdepends = python2-astropy: for VO table import
+	source = http://download.gna.org/veusz/veusz-1.23.1.tar.gz
+	source = veusz.desktop
+	md5sums = c8ca515659600c1ba529f65c5352f583
+	md5sums = 3823fe5961f3975a4dff2967aadaa14f
+
+pkgname = veusz
+
