@@ -1,0 +1,18 @@
+pkgbase = bbswitch-rt
+	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-rt
+	pkgver = 0.8
+	pkgrel = 5
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch-rt.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-rt-headers>=4.0
+	makedepends = linux-rt-headers<4.1
+	depends = linux-rt>=4.0
+	depends = linux-rt<4.1
+	source = https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
+	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
+
+pkgname = bbswitch-rt
+
