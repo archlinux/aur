@@ -1,21 +1,21 @@
 pkgbase = python-oslo-serialization
 	pkgdesc = Oslo Serialization library
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/openstack/oslo.serialization
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=0.11
 	makedepends = python2-pbr>=0.11
-	source = https://pypi.python.org/packages/source/o/oslo.serialization/oslo.serialization-1.6.0.tar.gz
-	sha256sums = e549ab5228f10dd13e6e1ea1f0dfe62af71de8d7df55665c37e2712ed7801595
+	source = https://pypi.python.org/packages/source/o/oslo.serialization/oslo.serialization-1.7.0.tar.gz
+	sha256sums = 164f32e9ba3ea95530fcfa6367d0d57bc0840834050123496b979fdd703f6412
 
 pkgname = python-oslo-serialization
 	depends = python-babel>=1.3
 	depends = python-six>=1.9.0
 	depends = python-msgpack>=0.4.0
 	depends = python-iso8601>=0.1.9
-	depends = python-oslo-utils>=1.4.0
+	depends = python-oslo-utils>=1.6.0
 	depends = python-pbr>=0.11
 	depends = python-pytz>=2013.6
 
@@ -24,7 +24,7 @@ pkgname = python2-oslo-serialization
 	depends = python2-six>=1.9.0
 	depends = python2-msgpack>=0.4.0
 	depends = python2-iso8601>=0.1.9
-	depends = python2-oslo-utils>=1.4.0
+	depends = python2-oslo-utils>=1.6.0
 	depends = python2-pbr>=0.11
 	depends = python2-pytz>=2013.6
 
