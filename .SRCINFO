@@ -1,0 +1,23 @@
+pkgbase = python2-blockcanvas
+	pkgdesc = Visual Environment for Creating Simulation Experiments
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/enthought/blockcanvas
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-distribute
+	makedepends = gcc
+	depends = python2-codetools
+	depends = python2-apptools
+	depends = python2-chaco
+	depends = python2-etsdevtools
+	depends = python2-scimath
+	conflicts = python2-blockcanvas-git
+	conflicts = python-ets-blockcanvas-svn
+	options = !emptydirs
+	source = https://github.com/enthought/blockcanvas/archive/4.0.3.tar.gz
+	md5sums = 31e722b31a92dea0d68cbc8138db7b59
+
+pkgname = python2-blockcanvas
+
