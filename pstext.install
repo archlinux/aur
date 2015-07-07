@@ -1,0 +1,11 @@
+post_upgrade() {
+	mandb -q
+}
+
+post_remove() {
+	post_upgrade
+}
+
+post_install() {
+	post_upgrade
+}

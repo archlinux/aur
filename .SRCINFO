@@ -1,0 +1,13 @@
+pkgbase = pstext
+	pkgdesc = Convert text to postscript (Dan Judd 1989)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://computer-programming-forum.com/36-postscript/f38cab32dcba8136.htm
+	install = pstext.install
+	arch = i686
+	arch = x86_64
+	source = pstext-1.1.tar.gz
+	sha256sums = a804475998ea7874a7a53c955855080f27db47451f25d54417320c96054ce2a0
+
+pkgname = pstext
+
