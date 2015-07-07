@@ -1,0 +1,24 @@
+pkgbase = gdb-trunk
+	pkgdesc = The GNU Debugger
+	pkgver = r84247.4931af2
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	install = gdb.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = texinfo
+	makedepends = git
+	depends = ncurses
+	depends = expat
+	depends = python2
+	depends = xz
+	depends = guile
+	provides = gdb
+	conflicts = gdb
+	backup = etc/gdb/gdbinit
+	source = git://sourceware.org/git/binutils-gdb.git
+	sha1sums = SKIP
+
+pkgname = gdb-trunk
+
