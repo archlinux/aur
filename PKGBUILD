@@ -4,7 +4,7 @@ pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver='0.9.2'
 _libtexpdf_ver='04ad589e2aaaa6db1147de1f43cf5bc7e7ed327a'
-pkgrel='1'
+pkgrel='2'
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license='custom'
@@ -15,6 +15,7 @@ sha512sums=('20483d10004b874ada9e21ba2abada439e9f7af470252e28ea61b0863282643902b
 
 depends=('lua-lpeg'
          'lua-expat'
+         'lua-filesystem'
          'fontconfig'
          'harfbuzz')
 
