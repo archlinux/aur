@@ -1,7 +1,7 @@
 pkgbase = perl-unicode-string
 	pkgdesc = String of Unicode characters for perl (UCS2/UTF16)
 	pkgver = 2.09
-	pkgrel = 7
+	pkgrel = 8
 	url = http://search.cpan.org/dist/Unicode-String/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = perl-unicode-string
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Unicode-String-2.09.tar.gz
+	source = fix-defined-hash-deprecation-warning.patch
 	md5sums = 553e68e603723bf7c631f8701ab0d678
+	md5sums = 0e8fdf57951ea92d60832fce7514e1d0
 
 pkgname = perl-unicode-string
 
