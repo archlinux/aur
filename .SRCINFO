@@ -1,0 +1,29 @@
+pkgbase = lottanzb
+	pkgdesc = A SABnzbd+ (Usenet binary downloader) GUI front-end written in PyGTK
+	pkgver = 0.6
+	pkgrel = 5
+	url = http://www.lottanzb.org/
+	install = lottanzb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = python2-dbus
+	depends = python2
+	depends = python2-configobj
+	depends = pygtk
+	optdepends = sabnzbd: for local downloading
+	optdepends = par2cmdline: for checking and repairing downloads
+	optdepends = python2-pyopenssl: for SSL encryption and HTTPS remote access
+	optdepends = python2-feedparser: for RSS support
+	optdepends = python2-yenc: for a significantly faster decoding of downloads
+	optdepends = unrar: for automatic extraction of downloads
+	optdepends = unzip: for automatic extraction of ZIP archives
+	optdepends = yelp: for displaying the help content
+	optdepends = intltool: for translation support
+	source = http://launchpad.net/lottanzb/0.6/0.6/+download/lottanzb-0.6.tar.gz
+	md5sums = 25dd324064332c68bc778dfa28b267dd
+	sha1sums = 2594a0f8fcad957b626d3dad4780dfbd3a198c47
+
+pkgname = lottanzb
+
