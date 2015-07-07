@@ -1,0 +1,15 @@
+pkgbase = ruby-insist
+	pkgdesc = A simple block-driven assertion library for both testing and for production code
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jordansissel/ruby-insist
+	arch = any
+	license = apache
+	makedepends = rubygems
+	depends = ruby
+	noextract = insist-1.0.0.gem
+	source = http://gems.rubyforge.org/gems/insist-1.0.0.gem
+	sha256sums = 6f6759eee583dc4e00a6cc3f713cfa7c570572958ba1f5d65595046d795b832f
+
+pkgname = ruby-insist
+
