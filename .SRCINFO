@@ -1,0 +1,15 @@
+pkgbase = exercism-cli
+	pkgdesc = Command line client for exercism.io
+	pkgver = v2.2.0
+	pkgrel = 1
+	url = https://github.com/exercism/cli
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/exercism/cli/releases/download/v2.2.0/exercism-linux-64bit.tgz
+	source = https://raw.githubusercontent.com/exercism/cli/v2.2.0/LICENSE
+	md5sums = ddcde1e2641bc3b72c4b7fced333bf64
+	md5sums = f92fe05e2b91655399f2a8b9d24bfe41
+
+pkgname = exercism-cli
+
