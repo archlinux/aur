@@ -1,6 +1,6 @@
 pkgbase = python-oslo-utils
 	pkgdesc = OpenStack Common Libraries - A library of various low-level utility modules
-	pkgver = 1.5.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/openstack/oslo.utils
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python-oslo-utils
 	makedepends = python2-setuptools
 	makedepends = python-pbr>=0.8
 	makedepends = python2-pbr>=0.8
-	provides = python-oslo-utils=1.5.0
-	source = https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-1.5.0.tar.gz
-	md5sums = bdbd06d47e3200479297bb901a361f6f
+	provides = python-oslo-utils=1.7.0
+	source = https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-1.7.0.tar.gz
+	md5sums = c95d23c6c7c5601f6c56aaba1e20cfbd
 
 pkgname = python-oslo-utils
 	depends = python
@@ -21,7 +21,8 @@ pkgname = python-oslo-utils
 	depends = python-oslo-i18n>=1.5.0
 	depends = python-netaddr>=0.7.12
 	depends = python-netifaces>=0.10.4
-	depends = python-pbr>=0.8
+	depends = python-pbr>=0.11
+	depends = python-debtcollector>=0.3.0
 
 pkgname = python2-oslo-utils
 	depends = python2
@@ -31,5 +32,6 @@ pkgname = python2-oslo-utils
 	depends = python2-oslo-i18n>=1.5.0
 	depends = python2-netaddr>=0.7.12
 	depends = python2-netifaces>=0.10.4
-	depends = python2-pbr>=0.8
+	depends = python2-pbr>=0.11
+	depends = python2-debtcollector>=0.3.0
 
