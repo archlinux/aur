@@ -1,0 +1,13 @@
+pkgbase = ffdiaporama-rsc
+	pkgdesc = Recource-files for ffDiaporama
+	pkgver = 2.1
+	pkgrel = 2
+	url = http://ffdiaporama.tuxfamily.org
+	arch = any
+	license = GPL2
+	makedepends = qt5-base
+	source = http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_rsc_2.1.2014.0209.tar.gz
+	md5sums = 7e4c9da2c28fbb1850e140aee348096f
+
+pkgname = ffdiaporama-rsc
+
