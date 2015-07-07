@@ -1,0 +1,15 @@
+pkgbase = python2-fbx-sdk
+	pkgdesc = Platform and API toolkit to transfer existing content into the FBX format, Python binding.
+	pkgver = 2015.1
+	pkgrel = 1
+	url = http://www.autodesk.com/products/fbx/overview
+	install = python2-fbx-sdk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python2
+	depends = fbx-sdk
+	source = http://images.autodesk.com/adsk/files/fbx20151_fbxpythonsdk_linux.tar.gz
+
+pkgname = python2-fbx-sdk
+
