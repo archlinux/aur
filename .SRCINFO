@@ -1,0 +1,30 @@
+pkgbase = likwid-svn
+	pkgdesc = Lightweight performance tools
+	pkgver = 467M
+	pkgrel = 1
+	url = http://likwid.googlecode.com
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = subversion
+	makedepends = make
+	makedepends = gcc
+	optdepends = perl: for likwid-mpirun and likwid-perfscope
+	optdepends = openmpi: for likwid-mpirun
+	optdepends = gnuplot: for likwid-perfscope
+	optdepends = feedgnuplot-git: for likwid-perfscope
+	provides = likwid-topology
+	provides = likwid-perfctr
+	provides = likwid-pin
+	provides = likwid-bench
+	provides = likwid-mpirun
+	provides = likwid-powermeter
+	provides = likwid-memsweeper
+	provides = likwid-features
+	conflicts = likwid,
+	conflicts = feedgnuplot-git
+	source = likwid-svn::svn+http://likwid.googlecode.com/svn/trunk
+	sha256sums = SKIP
+
+pkgname = likwid-svn
+
