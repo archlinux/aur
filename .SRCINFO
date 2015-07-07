@@ -1,0 +1,32 @@
+pkgbase = domjudge
+	pkgdesc = programming contest jury system
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = http://domjudge.sourceforge.net/
+	install = domjudge.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MIT
+	license = BSD
+	makedepends = boost
+	makedepends = sharutils
+	depends = sudo
+	depends = apache
+	depends = php
+	depends = php-apache
+	depends = mysql
+	depends = curl
+	depends = libxslt
+	source = http://www.domjudge.org/releases/domjudge-3.4.2.tar.gz
+	source = domjudge-submitd.service
+	source = domjudge-judgehostd.service
+	source = genpass.patch
+	md5sums = 0685323b0067280d9ad6b51396a7d7ec
+	md5sums = 669e8f1b19875fae04cb0d6077d4fba2
+	md5sums = 93cd5b10fc2636b664f2c17b4f34436f
+	md5sums = b5367f9669746ec3804aa4da9ae988ba
+
+pkgname = domjudge
+

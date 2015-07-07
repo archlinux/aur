@@ -1,0 +1,11 @@
+--- etc/gendbpasswordsorig	2014-02-14 19:41:50.000000000 +0100
++++ etc/gendbpasswords	2014-02-14 19:42:16.000000000 +0100
+@@ -6,8 +6,6 @@
+ # Exit on any error:
+ set -e
+ 
+-echo "# Format: 'dummy:<db_host>:<db_name>:<user>:<password>'"
+-
+ printf "dummy:localhost:domjudge:domjudge:"
+ 	head -c12 /dev/urandom | base64 | head -c16 | tr '/+' 'Aa'
+ echo

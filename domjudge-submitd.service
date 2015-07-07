@@ -1,0 +1,13 @@
+[Unit]
+Description=Domjudge submit daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/submitdaemon
+Restart=on-failure
+KillSignal=SIGINT
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
+

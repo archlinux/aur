@@ -1,0 +1,58 @@
+post_install() {
+  if ! getent group domjudge >/dev/null; then
+    groupadd --system domjudge
+  fi
+  if ! getent passwd domjudge >/dev/null; then
+    useradd --system -c 'judgehost daemon user' -g domjudge -s /bin/false domjudge
+  fi
+  if ! getent passwd domjudge-run >/dev/null; then
+    useradd -d /fail -c 'judgehost run user' -g nobody -s /bin/false domjudge-run
+  fi
+
+  if [ ! -f /etc/domjudge/dbpasswords.secret ];
+  then
+    /etc/domjudge/gendbpasswords > /etc/domjudge/dbpasswords.secret
+  fi
+  if [ ! -f /etc/domjudge/htpasswd-jury ];
+  then
+    htpasswd -b -c /etc/domjudge/htpasswd-jury domjudge_jury `grep '^dummy:' /etc/domjudge/dbpasswords.secret | cut -d : -f 5`
+  fi
+
+  chown domjudge /var/lib/domjudge/judgings
+  chmod 0711 /var/lib/domjudge/judgings
+
+  chown domjudge /var/{log,run}/domjudge
+  chmod 0700 /var/{log,run}/domjudge
+
+  chown domjudge:http /var/lib/domjudge/submissions
+  chmod 0770 /var/lib/domjudge/submissions
+
+  chown domjudge:http /etc/domjudge/{dbpasswords.secret,htpasswd-jury}
+  chmod 0640 /etc/domjudge/{dbpasswords.secret,htpasswd-jury}
+
+  chown domjudge /etc/domjudge/{domserver-config.php,judgehost-config.php,common-config.php}
+
+  echo "To finish installation procedure, run:"
+  echo "  dj-setup-database -u root -r install"
+  echo "and add"
+  echo "  :/etc/domjudge:/usr/lib/domjudge:/usr/share/domjudge:/var/lib/domjudge"
+  echo "into open_basedir in /etc/php/php.ini"
+}
+
+post_upgrade() {
+  echo "To finish update procedure, run:"
+  echo "  dj-setup-database -u root -r upgrade"
+}
+
+post_remove() {
+  if getent passwd domjudge >/dev/null; then
+    userdel domjudge
+  fi
+  if getent passwd domjudge-run >/dev/null; then
+    userdel domjudge-run
+  fi
+  if getent group domjudge-run >/dev/null; then
+    groupdel domjudge-run
+  fi
+}
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Domjudge judgehost daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/judgedaemon
+Restart=on-failure
+User=domjudge
+KillSignal=SIGINT
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
+
