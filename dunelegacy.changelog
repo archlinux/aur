@@ -1,0 +1,26 @@
+2013-04-12 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir variables
+	Installing icon and .desktop file
+	Updated dependencies array
+	Added a .install file
+
+2013-01-09 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+
+2010-08-18 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added x86_64 to the arch field
+
+2010-05-27 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	No more install file
+	Empty fields purged
+	arch field added
+	Source URL, description and dependencies updated

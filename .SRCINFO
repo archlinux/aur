@@ -1,0 +1,17 @@
+pkgbase = dunelegacy
+	pkgdesc = Updated clone of Westood Studios' Dune2
+	pkgver = 0.96.3
+	pkgrel = 2
+	url = http://dunelegacy.sourceforge.net
+	install = dunelegacy.install
+	changelog = dunelegacy.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/sourceforge/dunelegacy/dunelegacy-0.96.3-src.tar.bz2
+	md5sums = 1ca64c06646aeb537d47f601a49463e9
+
+pkgname = dunelegacy
+
