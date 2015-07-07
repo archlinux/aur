@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo
+  echo "NOTE: if you wish to set user-specific settings, copy all .cfg files from /usr/share/gravit/"
+  echo "to $HOME/.gravit/ - as this is not performed by the application itself."
+  echo
+  echo
+}
