@@ -1,0 +1,21 @@
+pkgbase = zork2
+	pkgdesc = Zork II adventure game (for Infocom's z-code interpreter)
+	pkgver = 1
+	pkgrel = 10
+	url = http://infocom.elsewhere.org/scheyen/
+	arch = any
+	license = custom
+	depends = jzip
+	source = http://infocom.elsewhere.org/scheyen/Download/zork2.zip
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork2/legend.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork2/zork2a.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork2/zork2b.gif
+	source = LICENSE
+	md5sums = ab521209656948516351996263a8ad34
+	md5sums = e7120906257c72be9ff5827ac188a35a
+	md5sums = 5da56d090d53f1bd1a495849745eeae1
+	md5sums = 89a7c478b12b2bd0b16b6534c18bf181
+	md5sums = e1d314b3b784734c1a365a04ffff96c4
+
+pkgname = zork2
+
