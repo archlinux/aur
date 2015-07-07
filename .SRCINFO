@@ -1,6 +1,6 @@
 pkgbase = iojs-git
 	pkgdesc = Evented I/O for V8 JavaScript - Node.js fork
-	pkgver = v2.3.3.6.gfb05c8e
+	pkgver = v2.3.3.10.g84b3915
 	pkgrel = 1
 	url = http://iojs.org/
 	arch = i686
