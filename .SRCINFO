@@ -1,0 +1,28 @@
+pkgbase = mayavi
+	pkgdesc = A 3-dimensional visualizer of scientific data
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = https://github.com/enthought/mayavi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	makedepends = python2-twisted
+	makedepends = xorg-server-xvfb
+	depends = ipython2
+	depends = vtk
+	depends = python2-envisage
+	depends = python2-pyqt4
+	provides = python2-mayavi
+	replaces = python2-mayavi
+	options = !emptydirs
+	source = mayavi-4.4.2.tar.gz::https://github.com/enthought/mayavi/archive/4.4.2.tar.gz
+	source = mayavi.sh
+	source = mayavi.csh
+	md5sums = 2ac30719b2754d13cb20236654554ac4
+	md5sums = 6d36bbfb69010e313292cfee4982487f
+	md5sums = 91eb92abc506a00c29afcb37c9600914
+
+pkgname = mayavi
+
