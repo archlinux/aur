@@ -1,61 +1,32 @@
 pkgbase = zeroc-ice
 	pkgdesc = An object-oriented middleware that provides object-oriented Remote Procedure Call functionality
-	pkgver = 3.5.1
-	pkgrel = 3
+	pkgver = 3.6.0
+	pkgrel = 1
 	url = https://zeroc.com
+	install = ice.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	license = custom:ICE license
+	license = custom:Ice license
 	makedepends = mcpp>=2.7.2
-	makedepends = python2>=2.7.0
-	makedepends = python2<2.8.0
-	makedepends = python>=3.4.0
-	makedepends = python<3.5.0
 	makedepends = php
 	makedepends = bzip2
-	makedepends = proguard>=4.8
-	makedepends = apache-ant
 	makedepends = java-environment
 	makedepends = java-berkeleydb>=5.3
-	depends = python
 	depends = mcpp>=2.7.2
-	source = http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.tar.gz
-	source = https://repo.zeroc.com/nexus/service/local/repositories/thirdparty/content/com/jgoodies/jgoodies-common/1.8.0/jgoodies-common-1.8.0.jar
-	source = https://repo.zeroc.com/nexus/service/local/repositories/thirdparty/content/com/jgoodies/jgoodies-forms/1.8.0/jgoodies-forms-1.8.0.jar
-	source = https://repo.zeroc.com/nexus/service/local/repositories/thirdparty/content/com/jgoodies/jgoodies-looks/2.6.0/jgoodies-looks-2.6.0.jar
-	source = cpp_Make.rules.patch
-	source = python2_Make.rules.patch
-	source = python3_Make.rules.patch
-	source = java_build.properties.patch
-	source = php_Make.rules.php.patch
-	source = java8-compatibility.patch
-	sha256sums = 989e51194c6adadbd156da3288e37bad847b93b3b876502e83033b70493af392
-	sha256sums = bc2336a74aaf7233aae156a1750953941248544247ff0d97fa58d84e3ebf0735
-	sha256sums = a2ae46793814fa6c42dabb561c59336029907a3c03d1b82f977f1ed6a4e5011e
-	sha256sums = 536fb1e76cf49c76ca336368b1d133294bc48358be6fc5160087a60d38599227
-	sha256sums = ad4389c587fe950443b2d0d333fc60c1374bee66b01f6d2903ee1f6c0aa4931e
-	sha256sums = d2204ab885f15e5b94dbcb5a50f73acfd2591056eef74a8a8cf3347d8f709d3f
-	sha256sums = 53a5b87a0d5d0c0a6eca345cdaea0ff01e27bab031ade2ace7f2109ed10868f6
-	sha256sums = 5e39f40bd64305d6363c4336757b26988f3bde4549afa360a6407c440659a156
-	sha256sums = 63030fa037e064535ea5b94652ee03b88af475906759592d26c2fb856c716d05
-	sha256sums = 6c33a6f5622678100f2b22b22cb9ce07d65320f9d6dec828d8fe2d847d9068cd
+	source = ice-3.6.0.tar.gz::https://github.com/zeroc-ice/ice/archive/v3.6.0.tar.gz
+	source = ice-packaging-3.6.0.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v3.6.0.tar.gz
+	sha256sums = 77933580cdc7fade0ebfce517935819e9eef5fc6b9e3f4143b07404daf54e25e
+	sha256sums = f995dbd8ec64d301c3abcf8697b243e1b8b051c799d17acc82a4a2c681834a34
 
 pkgname = zeroc-ice
+	backup = etc/glacier2router.conf
+	backup = etc/icegridnode.conf
+	backup = etc/icegridregistry.conf
 
 pkgname = zeroc-ice-php
 	depends = zeroc-ice
 	depends = php
-
-pkgname = zeroc-ice-python2
-	depends = zeroc-ice
-	depends = python2>=2.7.0
-	depends = python2<2.8.0
-
-pkgname = zeroc-ice-python
-	depends = zeroc-ice
-	depends = python>=3.4.0
-	depends = python<3.5.0
 
 pkgname = zeroc-ice-java
 	arch = any

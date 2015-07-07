@@ -1,0 +1,22 @@
+post_install() {
+  getent group ice >/dev/null || groupadd --system ice &>/dev/null
+  getent passwd ice >/dev/null || useradd --system -g ice -d /var/lib/ice -s /bin/false ice &>/dev/null
+
+  #if type -P systemd-tmpfiles &> /dev/null; then
+  #  systemd-tmpfiles --create ice.conf
+  #fi
+
+  #if [ -d /var/lib/ice ]; then
+    #echo "Ice directory '/var/lib/ice' already exists. If you want to recreate default database then delete the directory and run 'rethinkdb create -d /var/lib/rethinkdb/default'."
+  #fi
+
+  if [ ! -d /var/lib/ice ]; then
+    mkdir -p /var/lib/ice/icegrid/node1
+    mkdir -p /var/lib/ice/icegrid/registry
+  fi
+  chown -R ice:ice /var/lib/ice
+}
+
+post_remove() {
+  echo "Ice data directory '/var/lib/ice' is left untouched. Remove it if you really sure you won't need your data in the future."
+}
