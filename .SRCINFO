@@ -1,0 +1,15 @@
+pkgbase = python2-encore
+	pkgdesc = A collection of core-level utility modules
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/enthought/encore
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	options = !emptydirs
+	source = python2-encore-0.6.0.tar.gz::https://github.com/enthought/encore/archive/0.6.0.tar.gz
+	md5sums = c7935d4d8803a489892ec98e1594d64e
+
+pkgname = python2-encore
+
