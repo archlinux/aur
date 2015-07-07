@@ -1,0 +1,14 @@
+pkgbase = csl
+	pkgdesc = Cube Server Lister
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://cubelister.sourceforge.net/
+	arch = i686
+	license = GPL
+	depends = wxgtk
+	depends = geoip
+	source = http://downloads.sourceforge.net/sourceforge/cubelister/csl-0.8.tar.bz2
+	md5sums = e2acded5cc6cc64efd7d84eb05fbba28
+
+pkgname = csl
+
