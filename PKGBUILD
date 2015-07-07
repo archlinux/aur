@@ -1,8 +1,8 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 
 pkgname=mathcomp
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A mathematical components library for Coq."
 url="http://ssr.msr-inria.inria.fr/"
 arch=('i686' 'x86_64')
