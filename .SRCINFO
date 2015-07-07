@@ -1,0 +1,16 @@
+pkgbase = python2-formlayout
+	pkgdesc = Tiny Python module for creating form dialogs/widgets to edit various type of parameters
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = http://code.google.com/p/formlayout/
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	makedepends = unzip
+	depends = python2-pyqt4
+	options = !emptydirs
+	source = http://formlayout.googlecode.com/files/formlayout-1.0.15.zip
+	md5sums = db2d06281158506bee84732da9888ff0
+
+pkgname = python2-formlayout
+
