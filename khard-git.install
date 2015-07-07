@@ -1,0 +1,9 @@
+post_install() {
+  echo 'A sample and self explanatory configuration file has been put in /etc/skel/khard.conf.'
+  echo 'Copy it to ~/.config/khard/khard.conf and edit it as needed.'
+}
+
+post_upgrade() {
+  echo 'The configuration file has changed.'
+  echo 'Please compare your own version in ~/.config/khard/khard.conf with the new one put in /etc/skel/khard.conf.'
+}

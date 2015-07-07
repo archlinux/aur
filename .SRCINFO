@@ -1,0 +1,23 @@
+pkgbase = khard-git
+	pkgdesc = Console carddav client
+	pkgver = 0.4.0.r0.g00b895c
+	pkgrel = 2
+	url = https://github.com/scheibler/khard/
+	install = khard-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2-configobj
+	depends = python2-vobject
+	depends = python2-argparse
+	depends = python2-caldavclientlibrary-svn
+	optdepends = python2-vdirsyncer: Synchronization of address books with a CalDAV server.
+	provides = khard
+	provides = davcontroller
+	conflicts = khard
+	options = !emptydirs
+	source = khard::git+https://github.com/scheibler/khard.git
+	md5sums = SKIP
+
+pkgname = khard-git
+
