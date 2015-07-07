@@ -1,0 +1,47 @@
+pkgbase = icaclient
+	pkgdesc = Citrix Receiver for Linux (ICAClient)
+	pkgver = 13.1.0.285639
+	pkgrel = 10
+	url = http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top
+	install = citrix-client.install
+	arch = x86_64
+	license = custom:Citrix
+	makedepends = wget
+	depends = alsa-lib
+	depends = libvorbis
+	depends = curl
+	depends = gtk2
+	depends = libpng12
+	depends = libxml2
+	depends = libxaw
+	depends = libxext
+	depends = libxft
+	depends = libxinerama
+	depends = libxmu
+	depends = libxp
+	depends = libxpm
+	depends = libxt
+	depends = ca-certificates
+	depends = nspluginwrapper
+	optdepends = xerces-c: gtk2 configuration manager
+	optdepends = webkitgtk2: gtk2 selfservice/storefront ui
+	conflicts = bin32-citrix-client
+	conflicts = citrix-client
+	options = !strip
+	source = configmgr.desktop
+	source = conncenter.desktop
+	source = selfservice.desktop
+	source = wfica.desktop
+	source = wfica.sh
+	source = wfica_assoc.sh
+	source = icaclient-13.1.0.285639.tar.gz::http://downloads.citrix.com/9819/linuxx64-13.1.0.285639.tar.gz?__gda__=1436307928_1b84d128f260b9d7ee727ebba854e53f
+	md5sums = 71aca6257f259996ac59729604f32978
+	md5sums = a38c3f844a0fefe8017a25bee213b843
+	md5sums = 0e92c33b3fcc99b04269787da2984809
+	md5sums = 1f214f6f456f59afd1a3275580f4240e
+	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
+	md5sums = dca5a1f51449ef35f1441b900d622276
+	md5sums = afa8d0ba96e38f92709c483b54698e12
+
+pkgname = icaclient
+
