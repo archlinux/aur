@@ -1,0 +1,22 @@
+pkgbase = haskell-equivalence
+	pkgdesc = Tarjan's union-find algorithm for equivalence relation.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/equivalence
+	install = haskell-equivalence.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-containers
+	depends = haskell-mtl>=2.0.1
+	depends = haskell-stmonadtrans
+	depends = haskell-transformers>=0.2
+	depends = haskell-transformers-compat>=0.3
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/equivalence/0.3.1/equivalence-0.3.1.tar.gz
+	sha256sums = 7a0539546e4fc1a00fb190109be45b0cb4af7047d8c2abaf65b8e401e828207e
+
+pkgname = haskell-equivalence
+
