@@ -1,11 +1,12 @@
 pkgbase = private-internet-access-vpn
 	pkgdesc = Installs VPN profiles for Private Internet Access Service
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.privateinternetaccess.com/
 	arch = any
 	license = GPL
 	depends = python
+	depends = python-setuptools
 	optdepends = networkmanager: Enables PIA for Network Manager
 	optdepends = connman: Enables PIA for Connman
 	optdepends = openvpn: Allows running configurations from command-line
