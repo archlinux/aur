@@ -1,7 +1,7 @@
 pkgbase = haskell-boxes
 	pkgdesc = A pretty-printing library for laying out text in 2D.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/boxes
 	install = haskell-boxes.install
 	arch = i686
