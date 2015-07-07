@@ -1,0 +1,13 @@
+1,3c1,4
+< INCLUDE_PATH= ../../include
+< LIBS_PATH= ../../lib
+< ELF2HP_PATH=../../elf2hp
+---
+> export HPGCC=/usr/local/hpgcc
+> INCLUDE_PATH= $(HPGCC)/include
+> LIBS_PATH= $(HPGCC)/lib
+> ELF2HP_PATH=$(HPGCC)/bin
+13c14
+< export ELF2HP= elf2hp
+---
+> export ELF2HP= $(ELF2HP_PATH)/elf2hp

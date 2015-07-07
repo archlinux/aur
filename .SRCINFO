@@ -1,0 +1,36 @@
+pkgbase = hpgcc
+	pkgdesc = gcc C Compiler for HP 48,49,50 Calculators
+	pkgver = 2.0_sp2
+	pkgrel = 3
+	url = http://hpcalc.org
+	install = hpgcc.install
+	arch = i686
+	arch = x86_64
+	groups = users
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = doxygen
+	options = !strip
+	options = staticlibs
+	source = http://www.hpcalc.org/hp49/pc/programming/hpgcc-2.0-sp2-linux.tar.bz2
+	source = examples_benchmarks_Makefile.diff
+	source = examples_decnumber_matrix_Makefile.diff
+	source = examples_decnumber_sqrt2_Makefile.diff
+	source = examples_hump_Makefile.diff
+	source = examples_decnumber_Chudnovsky_Makefile.diff
+	source = examples_decnumber_RSA_Makefile.diff
+	source = examples_games_Makefile.diff
+	source = examples_Makefile.diff
+	md5sums = 4dfe57bffc79eaf966a1c2bed06ea502
+	md5sums = fec5f59cf1520a0a5618e37fd16884ee
+	md5sums = 11cd6fb8df17350cd5558031c66ac7e8
+	md5sums = 11cd6fb8df17350cd5558031c66ac7e8
+	md5sums = fec5f59cf1520a0a5618e37fd16884ee
+	md5sums = 9ff5a19476c74769ba91244a259c89f0
+	md5sums = db40758d8c4abd92da59b91fce9de20e
+	md5sums = fec5f59cf1520a0a5618e37fd16884ee
+	md5sums = df3c9cc472541da979618cf7f9b1d001
+
+pkgname = hpgcc
+

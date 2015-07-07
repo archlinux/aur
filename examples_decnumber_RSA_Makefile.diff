@@ -1,0 +1,10 @@
+0a1
+> export HPGCC=/usr/local/hpgcc
+3c4
+< 
+---
+> ELF2HP_PATH=$(HPGCC)/bin
+11c12
+< export ELF2HP=elf2hp
+---
+> export ELF2HP=$(ELF2HP_PATH)/elf2hp

@@ -1,0 +1,15 @@
+post_install() {
+  echo see the README_ARCH_LINUX file.
+  echo The example makefiles have been patched so as
+  echo to not require updates to the path as described
+  echo in the original INSTALL file 
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+
+op=$1
+shift
+$op $*
