@@ -14,6 +14,7 @@ url="http://developer.telldus.se/wiki/TellStickInstallationSource"
 license=('GPL2')
 depends=('libftdi-compat' 'confuse')
 makedepends=('gcc' 'make' 'cmake' 'patch')
+options=('!makeflags')
 backup=('etc/tellstick.conf')
 source=(
     http://download.telldus.se/TellStick/Software/$pkgname/$pkgname-$pkgver.tar.gz
