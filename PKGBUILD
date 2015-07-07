@@ -22,7 +22,7 @@ source=('nv-drm.patch'
 'nvidia-3.19.patch'
 'nvidia-4.0.patch')
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64+=("http://://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301'
          '965a8455b291fdb414a02101a3a9f587'
          'f42bdf589f52d4e6c38baa5bef15eef8')

@@ -70,7 +70,7 @@ pkgbase = nvidia-304xx-ck
 	md5sums = f42bdf589f52d4e6c38baa5bef15eef8
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/304.125/NVIDIA-Linux-x86-304.125.run
 	md5sums_i686 = bc3b0ac291fa998d5109a6f7e94fb2d4
-	source_x86_64 = http://://us.download.nvidia.com/XFree86/Linux-x86_64/304.125/NVIDIA-Linux-x86_64-304.125-no-compat32.run
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/304.125/NVIDIA-Linux-x86_64-304.125-no-compat32.run
 	md5sums_x86_64 = 291d41ccdbcc08f752a38f9e0a7eeea0
 
 pkgname = nvidia-304xx-ck
