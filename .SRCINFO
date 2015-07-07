@@ -1,0 +1,47 @@
+pkgbase = texlive-bin-svn
+	pkgdesc = TeX Live binaries (development version)
+	pkgver = 2016.37788
+	pkgrel = 1
+	url = https://www.tug.org/texlive/
+	install = texlive.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	makedepends = clisp
+	makedepends = ffcall
+	makedepends = subversion
+	depends = cairo
+	depends = pixman
+	depends = graphite
+	depends = t1lib
+	depends = gd
+	depends = poppler
+	depends = libsigsegv
+	depends = zziplib
+	depends = libpng
+	depends = libjpeg
+	depends = freetype2
+	depends = icu
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	optdepends = ed: for texconfig
+	provides = lcdf-typetools
+	provides = kpathsea
+	provides = xindy
+	provides = pdfjam
+	provides = texlive-bin=2016.37788
+	conflicts = pdfjam
+	conflicts = texlive-bin
+	options = !strip
+	source = texlive-bin::svn://tug.org/texlive/trunk/Build/source
+	source = fix-fontforge-encoding.patch
+	md5sums = SKIP
+	md5sums = bfb9716aa00c86c08cd31e5b32edeb98
+	source_i686 = http://downloads.sourceforge.net/project/biblatex-biber/biblatex-biber/1.9/binaries/Linux/biber-linux_x86_32.tar.gz
+	md5sums_i686 = e1af258c7b7fa95d8299696aa3552eb3
+	source_x86_64 = http://downloads.sourceforge.net/project/biblatex-biber/biblatex-biber/1.9/binaries/Linux/biber-linux_x86_64.tar.gz
+	md5sums_x86_64 = 137839688478710ded88909088dee970
+
+pkgname = texlive-bin-svn
+
