@@ -1,0 +1,20 @@
+pkgbase = mpdfav-git
+	pkgdesc = Song playcounts and ratings for MPD
+	pkgver = r36.d408671
+	pkgrel = 1
+	url = https://github.com/vincent-petithory/mpdfav
+	arch = x86_64
+	arch = i686
+	arch = ARM
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = sqlite
+	optdepends = mpd: for mpdfav to have a purpose
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/vincent-petithory/mpdfav.git
+	md5sums = SKIP
+
+pkgname = mpdfav-git
+
