@@ -1,0 +1,20 @@
+pkgbase = gstreamer0.10-gnonlin
+	pkgdesc = A library for creating non-linear video editors
+	pkgver = 0.10.17
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gstreamer0.10-base
+	makedepends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10
+	source = http://gstreamer.freedesktop.org/src/gnonlin/gnonlin-0.10.17.tar.gz
+	md5sums = 3f121bb2e6ae0b2bcb0b7301bd65e806
+
+pkgname = gstreamer0.10-gnonlin
+
