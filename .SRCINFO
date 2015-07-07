@@ -1,0 +1,14 @@
+pkgbase = gno3dtet
+	pkgdesc = Slick top-down 3D Tetris game
+	pkgver = 1.96.1
+	pkgrel = 2
+	url = http://eseb.net/3dtetris.php
+	arch = i686
+	license = GPL
+	depends = libgnomeui
+	depends = librsvg
+	source = ftp://eseb.net/pub/gno3dtet/gno3dtet-1.96.1.tgz
+	md5sums = f298fe3306d5938ef843302a31a19713
+
+pkgname = gno3dtet
+

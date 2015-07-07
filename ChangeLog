@@ -1,0 +1,7 @@
+2009-03-02 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added arch and license array
+	Changed installation directory to /usr
+	Using $srcdir and $pkgdir variables
+	Empty fields removed
