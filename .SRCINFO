@@ -1,0 +1,19 @@
+pkgbase = mopidy-spotify-tunigo
+	pkgdesc = Mopidy extension for providing the browse feature of Spotify
+	pkgver = 0.2.1
+	pkgrel = 3
+	url = https://github.com/trygveaa/mopidy-spotify-tunigo
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = mopidy>=0.19
+	depends = python2-pykka>=1.1
+	depends = mopidy-spotify>=1.2
+	depends = python2-tunigo
+	source = https://pypi.python.org/packages/source/M/Mopidy-Spotify-Tunigo/Mopidy-Spotify-Tunigo-0.2.1.tar.gz
+	md5sums = e36dc110d3ad689663a99d35e5d22b61
+
+pkgname = mopidy-spotify-tunigo
+
