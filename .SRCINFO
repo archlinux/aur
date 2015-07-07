@@ -1,14 +1,18 @@
 pkgbase = python-extras
 	pkgdesc = Useful extra bits for Python - things that shold be in the standard library
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/testing-cabal/extras
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/source/e/extras/extras-0.0.3.tar.gz
 	sha256sums = 7a60d84cb661b477c41a5ea35e931ae93860af8cd259ecc0a38a32ef1ae9ffc0
 
 pkgname = python-extras
 	depends = python
+
+pkgname = python2-extras
+	depends = python2
 
