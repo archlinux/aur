@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-nextpvr
 _gitname=pvr.nextpvr
-pkgver=20150331.1ecbf87
-_gitver=1ecbf87c1e493bb22045632de0ccd2dad9739dae
+pkgver=20150701.8d7b706
+_gitver=8d7b7066a5f8e5ad962233025d7394996e5135a1
 pkgrel=1
 pkgdesc='NextPVR PVR client addon for Kodi'
 arch=('i686' 'x86_64')
