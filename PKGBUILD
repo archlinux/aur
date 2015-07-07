@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-mythtv
 _gitname=pvr.mythtv
-pkgver=20150331.ef9cf41
-_gitver=ef9cf412485b45df76bf26d167bbe318e37b19a9
+pkgver=20150706.30d4e6f
+_gitver=30d4e6fcf404dc58bf3a13bdedc382852e8bbf3a
 pkgrel=1
 pkgdesc='MythTV PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make

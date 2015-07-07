@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-mythtv
 	pkgdesc = MythTV PVR client addon for Kodi
-	pkgver = 20150331.ef9cf41
+	pkgver = 20150706.30d4e6f
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.mythtv
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kodi-devel-pvr-mythtv
 	makedepends = kodi-devel-platform
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
-	source = https://github.com/kodi-pvr/pvr.mythtv/archive/ef9cf412485b45df76bf26d167bbe318e37b19a9.tar.gz
+	source = https://github.com/kodi-pvr/pvr.mythtv/archive/30d4e6fcf404dc58bf3a13bdedc382852e8bbf3a.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-mythtv
