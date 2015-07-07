@@ -1,0 +1,15 @@
+pkgbase = python2-geoclue
+	pkgdesc = A Geoclue python module
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://wiki.gnome.org/Apps/gtg/soc/python_geoclue
+	arch = any
+	license = GPL
+	depends = geoclue
+	depends = dbus-python
+	depends = pygobject
+	source = http://pkgs.fedoraproject.org/repo/pkgs/python-geoclue/python-geoclue-0.1.0.tar.gz/59301671769327e013492dde208e14b8/python-geoclue-0.1.0.tar.gz
+	md5sums = 59301671769327e013492dde208e14b8
+
+pkgname = python2-geoclue
+
