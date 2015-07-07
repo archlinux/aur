@@ -1,0 +1,13 @@
+pkgbase = fbx-sdk
+	pkgdesc = Platform and API toolkit to transfer existing content into the FBX format.
+	pkgver = 2015.1
+	pkgrel = 1
+	url = http://www.autodesk.com/products/fbx/overview
+	install = fbx-sdk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://images.autodesk.com/adsk/files/fbx20151_fbxsdk_linux.tar.gz
+
+pkgname = fbx-sdk
+
