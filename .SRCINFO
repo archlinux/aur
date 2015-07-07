@@ -1,0 +1,19 @@
+pkgbase = otf-cooper-hewitt
+	pkgdesc = Cooper Hewitt font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.cooperhewitt.org/colophon/cooper-hewitt-the-typeface-by-chester-jenkins/
+	install = otf-cooper-hewitt.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://uh8yh30l48rpize52xh0q1o6i.wpengine.netdna-cdn.com/wp-content/uploads/fonts/CooperHewitt-OTF-public.zip
+	source = LICENSE::https://raw.githubusercontent.com/cooperhewitt/cooperhewitt-typeface/master/files/-OFL-FAQ.txt
+	source = otf-cooper-hewitt.install
+	md5sums = cbff2bac99d77efd80f9b17689bcfc8c
+	md5sums = ecad149092c844fd28c1b727871748b6
+	md5sums = da4ec4807849dfb5ad3aa5896912cfe6
+
+pkgname = otf-cooper-hewitt
+
