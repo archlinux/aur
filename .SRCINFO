@@ -1,0 +1,19 @@
+pkgbase = python-pydenticon
+	pkgdesc = Library for generating identicons, port of Sigil with enhancements
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pydenticon/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/pydenticon/pydenticon-0.2.tar.gz
+	md5sums = 5786b139933f0c6dcc6ae6c6e6d58de9
+
+pkgname = python-pydenticon
+	depends = python
+	depends = python-pillow
+
+pkgname = python2-pydenticon
+	depends = python2
+	depends = python2-pillow
+
