@@ -1,0 +1,16 @@
+pkgbase = python2-tunigo
+	pkgdesc = Python API for the browse feature of Spotify
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/trygveaa/python-tunigo
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests
+	source = https://pypi.python.org/packages/source/t/tunigo/tunigo-0.1.3.tar.gz
+	md5sums = a8724b6964d76782cb7156a8b713fdce
+
+pkgname = python2-tunigo
+
