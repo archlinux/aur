@@ -13,8 +13,8 @@ source=('chrome-eula_text.html::https://www.google.com/chrome/intl/en/eula_text.
 source_i686=("google-chrome-stable_${_chromever}_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb")
 source_x86_64=("google-chrome-stable_${_chromever}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
 sha256sums=('b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f')
-sha256sums_i686=('0132929057212f9f14928c69ed948a47f6f69c34adfbf241b33484d68c657a20')
-sha256sums_x86_64=('2e0cfe53ec0edb431d298c4a984cc38b8d220a6e68a23ccdffd6e81b89e1ae92')
+sha256sums_i686=('f6c08da31922530d0415e4acde06b0e24f16bd45b8990d0359659b8661efd7bd')
+sha256sums_x86_64=('bf2d3e3f2d329ca081fbe012f2d8bc8db09cc78bd75988afed759475343a19aa')
 
 pkgver() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevine*.so}
