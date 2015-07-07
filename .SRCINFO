@@ -1,0 +1,36 @@
+pkgbase = cairo-git
+	pkgdesc = Cairo vector graphics library (git version)
+	pkgver = 1.14.2.r6.g7139265
+	pkgrel = 1
+	epoch = 1
+	url = http://cairographics.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	makedepends = mesa-libgl
+	makedepends = librsvg
+	makedepends = gtk2
+	makedepends = poppler-glib
+	makedepends = libspectre
+	makedepends = gtk-doc
+	makedepends = valgrind
+	makedepends = git
+	depends = libpng
+	depends = libxrender
+	depends = libxext
+	depends = fontconfig
+	depends = pixman>=0.28.0
+	depends = glib2
+	depends = mesa
+	depends = libgl
+	depends = lzo
+	provides = cairo=1.14.2.r6.g7139265
+	provides = cairo-xcb=1.14.2.r6.g7139265
+	conflicts = cairo
+	conflicts = cairo-xcb
+	source = git://anongit.freedesktop.org/git/cairo
+	sha1sums = SKIP
+
+pkgname = cairo-git
+
