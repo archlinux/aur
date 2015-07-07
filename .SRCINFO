@@ -1,0 +1,15 @@
+pkgbase = libgcrypt11
+	pkgdesc = gcrypt11 library (current maintained debian version with .so-version 11)
+	pkgver = 1.5.0
+	pkgrel = 5
+	url = https://www.gnu.org/software/libgcrypt/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source_i686 = http://ftp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u3_i386.deb
+	md5sums_i686 = 36e8b3e5c2a361aae823bd5753f84bec
+	source_x86_64 = http://ftp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u3_amd64.deb
+	md5sums_x86_64 = 1f001aec0c9ec9fa785122fedb72bf7f
+
+pkgname = libgcrypt11
+
