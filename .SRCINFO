@@ -1,7 +1,7 @@
 pkgbase = selene-media-encoder-bzr
 	pkgdesc = A simple but powerful audio/video converter for many formats (latest bzr revision)
-	pkgver = r126
-	pkgrel = 2
+	pkgver = r185
+	pkgrel = 1
 	url = http://teejeetech.blogspot.in/p/selene-media-encoder.html
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = selene-media-encoder-bzr
 	depends = libsoup
 	depends = mediainfo
 	depends = vala
+	depends = libav
 	provides = selene-media-encoder
 	conflicts = selene-media-encoder
 	source = selene::bzr+https://code.launchpad.net/~teejee2008/selene/trunk
