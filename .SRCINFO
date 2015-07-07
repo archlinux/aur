@@ -1,7 +1,7 @@
 pkgbase = hoard
 	pkgdesc = Fast scalable and memory-efficient memory allocator
 	pkgver = 3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hoard.org/
 	install = hoard.install
 	arch = i686

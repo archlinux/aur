@@ -1,8 +1,9 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com> # Contributor: Vasco Costa <vasco dot costa at geekslot dot com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
+# Contributor: Vasco Costa <vasco dot costa at geekslot dot com>
 pkgname=hoard
 _pkgname=Hoard
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast scalable and memory-efficient memory allocator"
 arch=('i686' 'x86_64')
 url="http://www.hoard.org/"
