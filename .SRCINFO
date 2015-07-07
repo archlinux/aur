@@ -1,0 +1,16 @@
+pkgbase = netpanzer
+	pkgdesc = An online multiplayer tactical warfare game
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = http://www.netpanzer.org/
+	changelog = netpanzer.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = scons
+	depends = gcc-libs
+	depends = sdl_mixer
+
+pkgname = netpanzer
+

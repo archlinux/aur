@@ -1,0 +1,22 @@
+2012-01-21 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+
+2010-02-23 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Building from a tagged SVN directory for the lack of a source archive
+
+2009-07-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added x86_64 to the arch array
+	Using $srcdir and $pkgdir variables
+	Added a patch to allow compilation under latest GCC versions
+
+2009-04-19 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Build dependency jam renamed to ftjam
