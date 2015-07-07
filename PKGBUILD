@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-icicles
-pkgver=23650 # Taken from icicles.el
+pkgver=23658 # Taken from icicles.el
 pkgrel=1
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')

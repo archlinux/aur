@@ -1,6 +1,6 @@
 pkgbase = emacs-icicles
 	pkgdesc = an emacs library that enhances minibuffer completion
-	pkgver = 23650
+	pkgver = 23658
 	pkgrel = 1
 	url = http://www.emacswiki.org/emacs/Icicles
 	install = icicles.install
