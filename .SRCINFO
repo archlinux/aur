@@ -1,0 +1,19 @@
+pkgbase = into-the-dungeon++
+	pkgdesc = Simple graphical roguelike.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://studio7.guru-gaming.org
+	install = into-the-dungeon.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=3
+	depends = hicolor-icon-theme
+	depends = sdl_image
+	depends = sdl_mixer
+	source = into-the-dungeon++-0.9.2.tar.gz::https://github.com/Th30n/into-the-dungeon/archive/v0.9.2.tar.gz
+	md5sums = a92de69b0dbd1a06a954d7f5e0314c46
+
+pkgname = into-the-dungeon++
+

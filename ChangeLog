@@ -1,0 +1,173 @@
+==============================================================================
+Version Beta 0.9.2, 2014-10-22
+===============================
+# Bugfixes:
+- Fixed game breaking bug when loading boss level.
+==============================================================================
+Version Beta 0.9.1, 2014-10-19
+===============================
+# Misc:
+- Added proper installation for Linux and Windows.
+# Gameplay:
+- Saving and loading is again functional.
+==============================================================================
+Version Beta 0.9, 22.09.2013.
+==============================
+# Disabled features:
+- At the moment highscore tracking, saving and loading the game is disabled
+- Using mouse in game is also disabled
+#Gameplay
+- Chain lightning may now chain on player
+- Changed behaviour and skills of boss
+- Boss monster may now select any of his skills and perform them in one turn
+- Boss's AOE skills are reduced to single missile that deals damage in 2x2 area
+#Graphics
+- Smoother fog of war and line of sight effect
+- New player animations
+- Teleport animation
+#Bugfixes
+- Damage indicators now properly disappear in arrival order after 2 seconds
+#Licensing
+- The game is now licensed under GNU GPL
+#Engine
+- Refactored the game engine design to be entity-system based (instead of OO)
+==============================================================================
+Version Beta 0.8, 15.09.2012.
+==============================
+#Bugfixes & Tweaks
+- Items no longer spawn on ladder tiles
+- Under the hood changes for better performance (saving, menus...)
+- Boss will no longer spawn monsters inside other monsters if there is no room
+
+#Gameplay
+- Criticals ignore armor instead of increasing damage
+- Backstabs are 100% criticals instead of increasing damage
+- Traps can now be disarmed (25% for success)
+- Traps can now be picked up and deployed (one time use only)
+- Unsuccessful disarm destroys the trap
+- Monsters no longer respawn on levels
+==============================================================================
+Version Beta 0.7, 24.02.2012.
+==============================
+#Bugfixes & Tweaks
+- Items no longer spawn on statues (being unable to pick up)
+- Dead Enemies are rendered below everything (so not to obstruct items)
+- No longer able to use scroll of ID on identified item
+- Character Sheet is now properly rendered (minor graphical glitch)
+- Other minor bugfixes
+
+#Graphics
+- New Menu! Still Work in Progress but looks heck of a lot better
+   than the old one. Courtesy of Psiweapon.
+- Exe and Tray bar Icons added!
+- Added the basic particle effects (e.g. on torches)
+- Tweaked certain text pop-ups (like Level Up, damage display)
+- Added the death animation and corpse for the boss
+
+#Interface
+- Mouse support in menu! Left click selects, Right goes back
+- Tutorial tips added to the game (they turn off after some play time)
+
+#Gameplay
+- Traps added!
+- Dead Skeletons now may give free tips if you press Enter on them
+- Items and Monsters now have special properties (e.g. LifeStealing)
+- Item generation tweaks (e.g. greater chance of being unidentified)
+==============================================================================
+Version Beta 0.6, 25.09.2011.
+==============================
+#Bugfixes & Performance:
+- Boss Monster no longer keeps spawning enemies when dead
+- Inventory no longer slows the game down significantly
+- Overall performance improvement
+
+#Gameplay
+- Player's accuracy has been improved (90% instead of 80%)
+- Added toggleable character sheet, with 'c'
+- Bosses now have 2 more spells
+- New monster - ThunderBird
+- Rebalanced monsters to make them more challenging
+
+#Graphics & Interface
+- Item icons are now shown in inventory
+- Prompt windows to prevent accidents (when using spells, saving etc.)
+==============================================================================
+Version Beta 0.5, 18.09.2011.
+==============================
+#Graphics & Gameplay:
+- Tons of new items
+
+#Music:
+- Tons of new sounds (reworked from previous version)
+==============================================================================
+Version Alpha 0.4, 18.08.2011.
+==============================
+#Bugfixes:
+- Bosses now spawn monsters periodically (properly)
+
+#Grapgics:
+- New item graphics
+
+#Music:
+- Added another amazing new piece, also by Luka Fucek
+- Tons of new sounds
+
+#Gameplay:
+- New monster, Skull Golem (it blocks line of sight)
+- Tons of new items
+- New scroll of Confusion
+- Basic mouse control (movement, attacking, picking up items)
+==============================================================================
+Version Alpha 0.3, 02.08.2011.
+==============================
+#Bugfixes:
+- Tons of bugs fixed
+
+#Graphics:
+- Due to popular demand, the game now has 32x32 tiles
+- Fullscreen toggle via ALT + ENTER
+- Added attack animations and art by Psiweapon
+- Maps now have random gimmicks for variety
+- Bosses are 64x64 sprites painstakingly made by Psiweapon
+- HUD Redesign by Psiweapon
+
+#Music:
+- The game now has music made by Luka Fucek
+
+#Gameplay:
+- When no enemy visible the game is 'real-time' (no turn pauses)
+- Boss fights every 5th level
+- Certain map gimmicks block movement and line of sight for tactical uses
+- Added a lot more spells
+- Player can only target enemies (no more suicide fireballs)
+- New mechanic: Backstabs
+- AI now tracks last known position of player
+- New mechanic: Corruption (represented by Candle on HUD)
+==============================================================================
+Version Alpha 0.2, 07.05.2011.
+==============================
+#Bugfixes:
+- Highscore now shows proper dungeon level
+- Fixed a bug preventing animation after loading the game
+- Fixed some major memory leaks
+
+#Graphics:
+- New Corpses for monsters
+
+#Gameplay:
+- Made the game harder (less drops, stronger enemies)
+- The game now has a minimap toggled by TAB
+- Added Fog of War mechanic toggled by F11
+- Damage over Time effects now display HP damage/regen over characters
+- Items are now color coded for your convenience (white<blue<green, cursed=red)
+- When viewing items a new window of an item you already have equipped next to
+  the item you are viewing (for easier comparing which is better)
+- When spawning on a new floor the Dungeon Level is now displayed briefly
+  above the main character
+- HighScore List now has pages (Left & Right Arrow Keys change the pages)
+- Added HelpScreen/Control list toggled by F1
+==============================================================================
+Version Alpha 0.1, 03.05.2011.
+==============================
+Development began: xx.03.2011.
+==============================================================================
