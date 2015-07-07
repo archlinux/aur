@@ -1,0 +1,14 @@
+pkgbase = vcsh
+	pkgdesc = manage config files in HOME via fake bare git repositories
+	pkgver = 1.20141026
+	pkgrel = 1
+	url = https://github.com/RichiH/vcsh
+	arch = any
+	license = GPL
+	depends = git
+	optdepends = myrepos: helps manage a large number of repositories
+	source = https://github.com/RichiH/vcsh/archive/v1.20141026-manpage-static.zip
+	sha256sums = 9d57bc84a780437a816955a7711ac02d23634ea5a673fdc3018b5aa90f3dd706
+
+pkgname = vcsh
+
