@@ -1,0 +1,22 @@
+pkgbase = python2-visvis
+	pkgdesc = A pure Python library for visualization of 1D to 4D data in an object oriented way
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://code.google.com/p/visvis/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2-numpy
+	depends = python2-opengl
+	optdepends = python2-pyqt4: for Qt4 backend
+	optdepends = python2-pyside: for another Qt4 backend
+	optdepends = python2-wxpython: for WxWidgets backend
+	optdepends = pygtk: for GTK backend
+	optdepends = pyfltk: for FLTK backend
+	source = http://visvis.googlecode.com/files/visvis-1.9.zip
+	source = license
+	md5sums = 6b90244c3dd52514f48a57da2cf11a31
+	md5sums = 2dd246a9746e31c0ab2a512bbc114baf
+
+pkgname = python2-visvis
+
