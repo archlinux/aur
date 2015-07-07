@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-hts
 _gitname=pvr.hts
-pkgver=20150330.4bf1a97
-_gitver=4bf1a97af1e5d9f748afda30d92914bc4b1f7621
+pkgver=20150704.d46b745
+_gitver=d46b745dda2b7b357c71f0dd37378f7f501e8cec
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -29,8 +29,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
