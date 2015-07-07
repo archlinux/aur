@@ -1,0 +1,21 @@
+pkgbase = dealer
+	pkgdesc = generate bridge cards game hands for partnerships bidding training or for generating statistics that can be used to design conventions, or win postmortems
+	pkgver = 20040530
+	pkgrel = 4
+	url = http://www.xs4all.nl/~henku/html/dealer/dealer.html
+	install = dealer-4.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://ftp.de.debian.org/debian/pool/main/d/dealer/dealer_0.20040530.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/d/dealer/dealer_0.20040530-4.debian.tar.gz
+	source = dealer-4.diff
+	source = dealer-4.install
+	md5sums = 991c9b73b7ebc1fb87b5e876a7d72797
+	md5sums = 1dad73622956ee5856634b4e038d6b83
+	md5sums = 0eedec9b386a60264522f43b94fc069a
+	md5sums = d6b4b7044e8d483c209ccb48fe67fad8
+
+pkgname = dealer
+

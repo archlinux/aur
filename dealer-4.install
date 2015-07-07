@@ -1,0 +1,14 @@
+post_install() {
+cat << EOF
+
+See html manual in /usr/share/doc/dealer/Manual
+See examples in /usr/share/doc/dealer/Examples
+Use man dealer.dpp for information on creating a pre
+	processor file
+Use man dealer for information on using dealer.
+
+EOF
+}
+post_upgrade() {
+	post_install
+}
