@@ -1,0 +1,36 @@
+pkgbase = cantata-qt4
+	pkgdesc = Qt4 client for the music player daemon (MPD)
+	pkgver = 1.5.2
+	pkgrel = 2
+	url = https://code.google.com/p/cantata/
+	install = cantata-qt4.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt4
+	makedepends = ffmpeg
+	depends = qt4
+	depends = libmtp
+	depends = libcddb
+	depends = libmusicbrainz5
+	depends = mpg123
+	depends = taglib-extras
+	depends = hicolor-icon-theme
+	depends = cdparanoia
+	depends = speex
+	depends = media-player-info
+	depends = udisks2
+	optdepends = perl-uri: dynamic playlist
+	optdepends = mpd: playback
+	optdepends = ffmpeg: ReplayGain support
+	provides = cantata
+	conflicts = cantata
+	conflicts = cantata-svn
+	conflicts = cantata-kde-svn
+	conflicts = cantata-kde
+	source = cantata-qt4-1.5.2.tar.bz2::https://drive.google.com/uc?export=download&id=0Bzghs6gQWi60LV9rM3RMQk85Z1E
+	md5sums = 0b29d30f1b03ecac23eb608309fbeaa1
+
+pkgname = cantata-qt4
+
