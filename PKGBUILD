@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=visual-studio-code
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications"
 arch=('x86_64')
@@ -13,10 +13,9 @@ source=(https://az764295.vo.msecnd.net/public/0.3.0/VSCode-linux-x64.zip
         ${pkgname}.png
         ${pkgname}.desktop
         )
-md5sums=('e8cc55b80fa7947b8c3348f0cb9d0317'
+md5sums=('ebe69eb762e60a1dcb3dd948ed06405e'
          '6dfffd3ebb0f173f5cd13b432fcdb2db'
          '94c9ab66cc24c2683873e07b2a5aada4')
-
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${pkgdir}/opt/${pkgname}"
