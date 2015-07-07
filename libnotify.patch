@@ -1,0 +1,17 @@
+--- gnome-gmail-notifier-0.10.1.orig/src/ggn-icon.c	2010-04-09 11:15:24.000000000 -0700
++++ gnome-gmail-notifier-0.10.1/src/ggn-icon.c	2011-03-18 08:39:23.793321428 -0700
+@@ -566,12 +566,9 @@
+   /* create a new notification. */
+   icon->priv->note = notify_notification_new (icon->priv->title,
+                                               icon->priv->summary,
+-                                              icon->priv->icon_file,
+-                                              NULL);
++                                              icon->priv->icon_file);
+ 
+-  /* attach the notification to our icon. */
+-  notify_notification_attach_to_status_icon (icon->priv->note,
+-                                             icon->priv->icon);
++  /* status icon was removed */
+ 
+   /* set the notification timeout. */
+   notify_notification_set_timeout (icon->priv->note, (4 * 1000));

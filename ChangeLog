@@ -1,0 +1,10 @@
+2011-03-19 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated the dependencies array
+	Added a patch to compile against the new libnotify
+
+2009-06-25 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Description string and depends array updated

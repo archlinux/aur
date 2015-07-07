@@ -1,0 +1,21 @@
+pkgbase = gnome-gmail-notifier
+	pkgdesc = A Gmail Inbox Monitor for the GNOME2 desktop
+	pkgver = 0.10.1
+	pkgrel = 2
+	url = http://notifier.geekysuavo.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gconf
+	depends = libgnome-keyring
+	depends = gstreamer0.10-good-plugins
+	depends = libnotify
+	depends = libsoup
+	source = http://files.geekysuavo.org/notifier/gnome-gmail-notifier-0.10.1.tar.bz2
+	source = libnotify.patch
+	md5sums = 697dea845b968af0f3526bad36f5855a
+	md5sums = 808d1fd8ff9ff5d63c661a3351922ff0
+
+pkgname = gnome-gmail-notifier
+
