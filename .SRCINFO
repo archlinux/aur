@@ -1,6 +1,6 @@
 pkgbase = psi-qt5-git
 	pkgdesc = A jabber client. GIT version
-	pkgver = 0.16_dev_20150604
+	pkgver = 0.16_dev_20150707
 	pkgrel = 1
 	url = http://psi-im.org/
 	arch = i686
