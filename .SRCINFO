@@ -1,0 +1,16 @@
+pkgbase = bubblemon
+	pkgdesc = Bubbling Load Monitoring Applet for the GNOME Panel
+	pkgver = 2.0.15
+	pkgrel = 2
+	url = http://www.nongnu.org/bubblemon/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gnome-panel
+	depends = libgtop
+	source = http://savannah.nongnu.org/download/bubblemon/bubblemon-2.0.15.tar.gz
+	md5sums = c79f04d72961e89e75afcfd38f4f0357
+
+pkgname = bubblemon
+

@@ -1,0 +1,10 @@
+2010-02-11 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added x86_64 to the arch field
+	Added intltool as a make dependency
+
+2008-08-22 encelo <encelo@users.sourceforge.net>
+
+	* PGKBUILD :
+	Using $srcdir and $pkgdir variables
