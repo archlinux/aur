@@ -1,0 +1,16 @@
+pkgbase = ruby-methadone
+	pkgdesc = Provides a lot of small but useful features for developing a command-line app.
+	pkgver = 1.8.0
+	pkgrel = 2
+	url = https://github.com/davetron5000/methadone
+	arch = any
+	license = apache
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-bundler
+	noextract = methadone-1.8.0.gem
+	source = https://rubygems.org/downloads/methadone-1.8.0.gem
+	sha256sums = 739350d8ff576303861ce4f0955273ad16c5055afad0d868c352eed116ac2a70
+
+pkgname = ruby-methadone
+
