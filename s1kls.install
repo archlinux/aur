@@ -1,0 +1,7 @@
+post_install() {
+  chmod +s usr/bin/s1kls
+}
+
+post_upgrade() {
+  post_install "$1"
+}
