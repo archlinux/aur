@@ -1,0 +1,15 @@
+pkgbase = python2-ttfquery
+	pkgdesc = FontTools-based package for querying system fonts
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://ttfquery.sourceforge.net/
+	arch = any
+	license = BSD
+	depends = python2-fonttools
+	depends = python2-numpy
+	options = !libtool
+	source = http://pypi.python.org/packages/source/T/TTFQuery/TTFQuery-1.0.5.tar.gz
+	md5sums = 6e01d38684eb94978fad70eba4c68463
+
+pkgname = python2-ttfquery
+
