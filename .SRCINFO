@@ -1,0 +1,15 @@
+pkgbase = uemacs-git
+	pkgdesc = Micro-emacs version customized by Linus Torvalds
+	pkgver = 20141208.r122
+	pkgrel = 1
+	url = http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = ncurses
+	source = uemacs-git::git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git
+	sha256sums = SKIP
+
+pkgname = uemacs-git
+
