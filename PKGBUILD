@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audiodecoder-snesapu
 _gitname=audiodecoder.snesapu
-pkgver=20150309.9fc775b
-_gitver=9fc775b13279567ac880f076beb9eead88747467
+pkgver=20150602.399d1d3
+_gitver=399d1d3f32fe6f62f5657b8ce67c30229629cb51
 pkgrel=1
 pkgdesc='SPC decoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
