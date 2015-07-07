@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-dvbviewer
 _gitname=pvr.dvbviewer
-pkgver=20150326.bd2c01f
-_gitver=bd2c01f51a80fdc1cf226b783f52911140f4fc82
+pkgver=20150701.ecf820e
+_gitver=ecf820e8909a34cd745d6e84f1c133829d4268e4
 pkgrel=1
 pkgdesc='DVBViewer PVR addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
