@@ -1,0 +1,18 @@
+pkgbase = kraken-git
+	pkgdesc = File sharing with HTTP servers.
+	pkgver = r70.2c5f7ce
+	pkgrel = 1
+	url = https://github.com/vincent-petithory/kraken
+	arch = x86_64
+	arch = i686
+	arch = ARM
+	license = MIT
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/vincent-petithory/kraken.git
+	md5sums = SKIP
+
+pkgname = kraken-git
+
