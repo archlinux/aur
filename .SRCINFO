@@ -1,0 +1,14 @@
+pkgbase = cliaspora
+	pkgdesc = A command-line client for Diaspora*
+	pkgver = 0.1.9.1
+	pkgrel = 1
+	url = http://freeshell.de/~mk/projects/cliaspora.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = openssl
+	source = http://freeshell.de/~mk/download/cliaspora-0.1.9.1.tgz
+	sha1sums = 78eb99d72aea8dcb9d96f2e56ee4ac5e7f85aadf
+
+pkgname = cliaspora
+
