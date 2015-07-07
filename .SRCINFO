@@ -1,6 +1,6 @@
 pkgbase = mopidy-notifier-git
 	pkgdesc = Mopidy extension for showing song changes in notifications.
-	pkgver = 0.r45.df9032f
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/sauberfred/mopidy-notifier
 	arch = any

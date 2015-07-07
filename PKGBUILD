@@ -2,7 +2,7 @@
 
 _pkgname=mopidy-notifier
 pkgname=${_pkgname}-git
-pkgver=0.r45.df9032f
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Mopidy extension for showing song changes in notifications.'
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
