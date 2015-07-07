@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-demo
 _gitname=pvr.demo
-pkgver=20150306.b4b7de1
-_gitver=b4b7de1d2013dd463b9320de28b4aa790e00a786
+pkgver=20150701.92cea88
+_gitver=92cea88906bad3e1e9072ec7f2bd6ca0fbaedf3d
 pkgrel=1
 pkgdesc='Demo PVR addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
