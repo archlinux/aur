@@ -34,7 +34,7 @@ pkgdesc="The GNU Compiler Collection (developmental version)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=('zlib', 'libmpc')
+depends=('zlib' 'libmpc')
 makedepends=('binutils>=2.25' 'libmpc' 'gcc-ada' 'doxygen' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
