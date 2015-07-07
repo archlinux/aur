@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audiodecoder-timidity
 _gitname=audiodecoder.timidity
-pkgver=20150309.bf9ff93
-_gitver=bf9ff93d544ddbdbf1228442e9b7c2ca7a14ef42
+pkgver=20150602.da5eb9a
+_gitver=da5eb9ac6557fc1ea0f48cc044cfd16f4f2a1e0b
 pkgrel=1
 pkgdesc='Timidity decoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
