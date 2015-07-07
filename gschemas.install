@@ -1,0 +1,42 @@
+post_install() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+  instructions_install
+}
+
+post_upgrade() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+  instructions_upgrade
+}
+
+post_remove() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+
+instructions_install() {
+  /bin/cat << EOF
+
+Restart GNOME Shell ([Alt]+[F2], r).
+Active the extension with gnome-tweak-tool.
+Configure with the Weather Settings button.
+For more informations, see https://github.com/jenslody/gnome-shell-extension-openweather
+
+EOF
+}
+
+instructions_upgrade() {
+  /bin/cat << EOF
+
+Just restart GNOME Shell ([Alt]+[F2], r).
+What new ?
+ * Currently, the weather data is fetched from OpenWeatherMap (including
+   forecasts for up to ten days) or forecast.io (including forecasts for
+   up to eight days).
+ * Note: since version 29 this extensions uses coordinates to store the
+   locations and makes the names editable to support multiple
+   weather-providers! If you update from versions prior to 29 to 29 or greater
+   (with forecast.io - support) you have to recreate your locations.
+
+For more informations, see https://github.com/jenslody/gnome-shell-extension-openweather
+
+EOF
+}
