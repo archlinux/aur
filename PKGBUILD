@@ -1,7 +1,7 @@
 # Maintainer: Zoltan Tombol <zoltan (dot) tombol (plus) aur (at) gmail (dot) com>
 
 pkgname=varrick-git
-pkgver=v0.2.0
+pkgver=0.2.0.r0.g20ffcc1
 pkgrel=1
 pkgdesc="A convenient template engine to just 'Do the thing!'"
 arch=(any)
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
