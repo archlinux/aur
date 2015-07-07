@@ -1,0 +1,28 @@
+pkgbase = ffdiaporama
+	pkgdesc = Movie creator from photos and video clips
+	pkgver = 2.1
+	pkgrel = 3
+	url = http://ffdiaporama.tuxfamily.org
+	install = ffdiaporama.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-imageformats
+	depends = ffmpeg
+	depends = exiv2
+	depends = shared-mime-info
+	depends = ffdiaporama-rsc
+	optdepends = ffdiaporama-texturemate: Additional background-images
+	optdepends = ffdiaporama-openclipart: use the openclipart-library
+	conflicts = ffdiaporama-devel
+	source = http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
+	source = cDeviceModelDef.patch
+	source = EncodeVideo2.cpp.patch
+	md5sums = f9f46277153cf49f6947973778516adb
+	md5sums = f4ae4748072a4ade0db2e816fbfa3dbb
+	md5sums = 5924f4a2b48968839722252ad677437d
+
+pkgname = ffdiaporama
+

@@ -1,0 +1,12 @@
+--- src/ffDiaporama/engine/_EncodeVideo.cpp	2014-02-09 03:48:04.000000000 -0600
++++ _EncodeVideo2.cpp	2015-03-27 11:43:47.869064000 -0600
+@@ -412,6 +412,9 @@
+     VideoStream->codec->height              =ImageHeight;
+     VideoStream->codec->pix_fmt             =PIX_FMT_YUV420P;
+     VideoStream->codec->time_base           =VideoFrameRate;
++    #if FFMPEGVERSIONINT>=260
++    VideoStream->time_base                  = VideoFrameRate;   //new ffmpeg 2.6.0!!!!
++    #endif
+     VideoStream->codec->sample_aspect_ratio =PixelAspectRatio;
+     VideoStream->sample_aspect_ratio        =PixelAspectRatio;
+     if ((codec->id!=AV_CODEC_ID_H264)||(!VBR)) {
