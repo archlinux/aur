@@ -1,0 +1,24 @@
+pkgbase = sayonara-player
+	pkgdesc = Linux music player written in C++. It supports all common audio files (like mp3, wav, flac, ogg...). The main focus is on managing your music library.
+	pkgver = 0.6.6
+	pkgrel = 2
+	url = http://sayonara-player.com
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt4
+	depends = curl
+	depends = taglib
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = libnotify
+	optdepends = lame: A high quality MPEG Audio Layer III (MP3) encoder
+	optdepends = gst-plugins-ugly: GStreamer Multimedia Framework Ugly Plugins
+	conflicts = sayonara-player-svn
+	source = ftp://sayonara-player.com/sayonara/sayonara-player-r1042.tar.gz
+	md5sums = 621ccc853d35997173f9f386747b7528
+
+pkgname = sayonara-player
+
