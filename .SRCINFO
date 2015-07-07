@@ -1,0 +1,13 @@
+pkgbase = gitetc
+	pkgdesc = Scripts to help you track changes to your /etc files
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/vinsonchuong/gitetc
+	arch = any
+	license = MIT
+	depends = git
+	source = https://github.com/vinsonchuong/gitetc/archive/v0.0.1.tar.gz
+	md5sums = 91660b0b8aca24640c8b3494cfbf056e
+
+pkgname = gitetc
+
