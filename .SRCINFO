@@ -1,0 +1,18 @@
+pkgbase = eclipse-androidproguardscala
+	pkgdesc = An Eclipse builder for Android projects using Scala
+	pkgver = 0.0.51
+	pkgrel = 1
+	url = https://github.com/banshee/AndroidProguardScala
+	arch = any
+	license = GPL
+	depends = eclipse-scala-ide
+	depends = eclipse-android
+	noextract = com.restphone.androidproguardscala_0.0.51.jar
+	noextract = com.restphone.androidproguardscala.feature_0.0.51.jar
+	source = https://androidproguardscala.s3.amazonaws.com/UpdateSiteForAndroidProguardScala/plugins/com.restphone.androidproguardscala_0.0.51.jar
+	source = https://androidproguardscala.s3.amazonaws.com/UpdateSiteForAndroidProguardScala/features/com.restphone.androidproguardscala.feature_0.0.51.jar
+	md5sums = a33377de365c9d0b7fae2689b840c709
+	md5sums = cf7a9de1c86b9277dc9939afc3f02c40
+
+pkgname = eclipse-androidproguardscala
+
