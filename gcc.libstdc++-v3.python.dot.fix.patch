@@ -1,0 +1,33 @@
+Index: libstdc++-v3/python/Makefile.am
+===================================================================
+--- libstdc++-v3/python/Makefile.am	(revision 225409)
++++ libstdc++-v3/python/Makefile.am	(working copy)
+@@ -45,11 +45,11 @@
+ 	@$(mkdir_p) $(DESTDIR)$(toolexeclibdir)
+ ## We want to install gdb.py as SOMETHING-gdb.py.  SOMETHING is the
+ ## full name of the final library.  We want to ignore symlinks, the
+-## .la file, and any previous -gdb.py file.  This is inherently
+-## fragile, but there does not seem to be a better option, because
+-## libtool hides the real names from us.
++## .la file, any previous -gdb.py file, and libstdc++fs*.  This is
++## inherently fragile, but there does not seem to be a better option,
++## because libtool hides the real names from us.
+ 	@here=`pwd`; cd $(DESTDIR)$(toolexeclibdir); \
+-	  for file in libstdc++*; do \
++	  for file in libstdc++.*; do \
+ 	    case $$file in \
+ 	      *-gdb.py) ;; \
+ 	      *.la) ;; \
+Index: libstdc++-v3/python/Makefile.in
+===================================================================
+--- libstdc++-v3/python/Makefile.in	(revision 225409)
++++ libstdc++-v3/python/Makefile.in	(working copy)
+@@ -547,7 +547,7 @@
+ install-data-local: gdb.py
+ 	@$(mkdir_p) $(DESTDIR)$(toolexeclibdir)
+ 	@here=`pwd`; cd $(DESTDIR)$(toolexeclibdir); \
+-	  for file in libstdc++*; do \
++	  for file in libstdc++.*; do \
+ 	    case $$file in \
+ 	      *-gdb.py) ;; \
+ 	      *.la) ;; \

@@ -1,0 +1,83 @@
+pkgbase = gcc-git
+	pkgdesc = The GNU Compiler Collection (developmental version)
+	pkgver = 6.0.0.r139654.12dcc3b
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils>=2.25
+	makedepends = libmpc
+	makedepends = gcc-ada
+	makedepends = doxygen
+	makedepends = git
+	depends = zlib,
+	depends = libmpc
+	options = !emptydirs
+	source = git://gcc.gnu.org/git/gcc.git
+	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
+	source = pr66035.patch
+	source = gcc.libstdc++-v3.python.dot.fix.patch
+	md5sums = SKIP
+	md5sums = 118d1a379abf7606a3334c98a8411c79
+	md5sums = 5b980076cd5fcbc3aff6014f306282dd
+	md5sums = 7de06deb9ee0c10454219a319e62e4dc
+
+pkgname = gcc-git
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends (developmental version)
+	install = gcc.install
+	groups = base-devel
+	depends = gcc-libs-git=6.0.0.r139654.12dcc3b-1
+	depends = binutils>=2.25
+	depends = libmpc
+	provides = gcc
+	conflicts = gcc
+	options = staticlibs
+
+pkgname = gcc-libs-git
+	pkgdesc = Runtime libraries shipped by GCC (developmental version)
+	install = gcc-libs.install
+	groups = base
+	depends = glibc>=2.21
+	provides = gcc-libs
+	conflicts = gcc-libs
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc-fortran-git
+	pkgdesc = Fortran front-end for GCC (developmental version)
+	install = gcc-fortran.install
+	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	provides = gcc-fortran
+	conflicts = gcc-fortran
+	options = !emptydirs
+
+pkgname = gcc-objc-git
+	pkgdesc = Objective-C front-end for GCC (developmental version)
+	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	provides = gcc-objc
+	conflicts = gcc-objc
+
+pkgname = gcc-ada-git
+	pkgdesc = Ada front-end for GCC (GNAT) (developmental version)
+	install = gcc-ada.install
+	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	provides = gcc-ada
+	conflicts = gcc-ada
+	options = staticlibs
+	options = !emptydirs
+
+pkgname = gcc-go-git
+	pkgdesc = Go front-end for GCC (developmental version)
+	install = gcc-go.install
+	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	provides = gcc-go
+	conflicts = go,
+	conflicts = gcc-go
+	options = !emptydirs
+
