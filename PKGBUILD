@@ -10,9 +10,10 @@ url='http://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin')
 depends=('gcc-libs' 'zlib' 'sh')
-source=("https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz")
+source=("http://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"{,.asc})
         
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
+validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
 options=(staticlibs !strip)
 
 pkgver() {

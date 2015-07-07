@@ -17,7 +17,9 @@ pkgbase = rust-nightly-bin
 	conflicts = cargo-nightly-bin
 	options = staticlibs
 	options = !strip
-	source = https://static.rust-lang.org/dist/rust-nightly--unknown-linux-gnu.tar.gz
+	source = http://static.rust-lang.org/dist/rust-nightly--unknown-linux-gnu.tar.gz
+	source = http://static.rust-lang.org/dist/rust-nightly--unknown-linux-gnu.tar.gz.asc
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rust-nightly-bin
