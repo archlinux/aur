@@ -1,0 +1,15 @@
+pkgbase = peco-git
+	pkgdesc = Simplistic interactive filtering tool.
+	pkgver = 0.2.0.6.g32481b1
+	pkgrel = 1
+	url = https://github.com/peco/peco
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = peco
+	conflicts = peco
+
+pkgname = peco-git
+
