@@ -1,0 +1,17 @@
+--- a/kernel/uvm/uvm_common.c
++++ b/kernel/uvm/uvm_common.c
+@@ -147,9 +147,11 @@ static RM_STATUS uvmSetupGpuProvider(void)
+     RM_STATUS status = RM_OK;
+ 
+ #ifdef NVIDIA_UVM_RM_ENABLED
+-    g_exportedUvmOps.startDevice = uvm_gpu_event_start_device;
+-    g_exportedUvmOps.stopDevice  = uvm_gpu_event_stop_device;
+-    g_exportedUvmOps.isrTopHalf  = uvmnext_isr_top_half;
++    static struct UvmOpsUvmEvents g_exportedUvmOps = {
++      .startDevice = uvm_gpu_event_start_device,
++      .stopDevice  = uvm_gpu_event_stop_device,
++      .isrTopHalf  = uvmnext_isr_top_half,
++    };
+ 
+     // call RM to exchange the function pointers.
+     status = nvUvmInterfaceRegisterUvmCallbacks(&g_exportedUvmOps);
