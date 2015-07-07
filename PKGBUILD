@@ -6,8 +6,8 @@
 
 pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
-pkgver=4.11.20
-_kdever=15.04.2
+pkgver=4.11.21
+_kdever=15.04.3
 pkgrel=1
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ source=("http://download.kde.org/stable/applications/${_kdever}/src/${_pkgname}-
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
 	'khotkeys-qt4.patch')
-sha1sums=('282ccd7d442e8235e2099609a986bd557c59b650'
+sha1sums=('984e09caca204968ee8dacb8c268afbeab11e4a7'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
