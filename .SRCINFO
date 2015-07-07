@@ -1,0 +1,20 @@
+pkgbase = apache-tools
+	pkgdesc = Useful Apache tools - htdigest, htpasswd, ab, htdbm
+	pkgver = 2.4.12
+	pkgrel = 1
+	url = http://httpd.apache.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = apr-util
+	depends = pcre
+	conflicts = apache
+	source = http://www.apache.org/dist/httpd/httpd-2.4.12.tar.bz2
+	source = apache-tools-Makefile.patch
+	sha256sums = ad6d39edfe4621d8cc9a2791f6f8d6876943a9da41ac8533d77407a2e630eae4
+	sha256sums = 2dc48d34773b0c873d10e3542f77a4f7b50d5fb9bd8c52e3bb28b76ff9587f3f
+	sha512sums = f69db14b421f0e1e4861fe4d8b652688d50ca9eb41c622242d11ae55687eb6c2142a8505a8c3fb6f2bd53167be535bc0a77ca1af97e0720930fc7f20f4c1f8e8
+	sha512sums = 6e068e7820e852c788a521ad28c367af4c1c22fded51ede7ae3f840a8a04737cfbe4503c2f3f899c89461d984007e84f80376b5a8a27c7eec8ec0fd78155c22b
+
+pkgname = apache-tools
+
