@@ -7,7 +7,7 @@ _licensefile=LICENSE
 # PKGBUILD options/directives
 pkgname=haskell-geniplate
 pkgver=0.6.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Use template Haskell to generate Uniplate-like functions"
 url="http://hackage.haskell.org/package/geniplate-${pkgver}"
 license=("BSD3")
