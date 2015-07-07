@@ -1,0 +1,22 @@
+pkgbase = insight-toolkit
+	pkgdesc = Insight Segmentation and Registration Toolkit (ITK).
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = http://www.itk.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	depends = fftw
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = zlib
+	depends = libtiff
+	depends = gdcm
+	depends = expat
+	depends = hdf5-cpp-fortran
+	source = http://downloads.sourceforge.net/project/itk/itk/4.8/InsightToolkit-4.8.0.tar.xz
+	sha512sums = 2a16d0b8959be4e06a7fb2fb76b02712642c1fc7fa0f807775b5c3088277c7d386d8ff8cc7315915d5f93d49a441e2473646009c27d109d0211e043b8fac0574
+
+pkgname = insight-toolkit
+
