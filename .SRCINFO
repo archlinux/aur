@@ -1,6 +1,6 @@
 pkgbase = mopidy-moped
 	pkgdesc = Responsive Web client for Mopidy
-	pkgver = 0.4.2
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/martijnboland/moped
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = mopidy-moped
 	makedepends = python2-setuptools
 	depends = python2
 	depends = mopidy>=0.19
-	source = https://pypi.python.org/packages/source/M/Mopidy-Moped/Mopidy-Moped-0.4.2.tar.gz
-	md5sums = b58c1aed8052b3982d11474a4d3918fd
+	source = https://github.com/martijnboland/moped/archive/v0.6.1.tar.gz
+	md5sums = 5636a495f3835b88cd9dbe85b78b4f00
 
 pkgname = mopidy-moped
 
