@@ -1,0 +1,16 @@
+pkgbase = spatialite-tools
+	pkgdesc = Set of CLI tools for spatialite
+	pkgver = 4.2.0
+	pkgrel = 3
+	url = https://www.gaia-gis.it/fossil/spatialite-tools/index
+	arch = i686
+	arch = x86_64
+	license = MPL
+	depends = libspatialite
+	depends = readosm
+	options = !libtool
+	source = http://www.gaia-gis.it/gaia-sins/spatialite-tools-sources/spatialite-tools-4.2.0.tar.gz
+	sha256sums = 890c4cdab5b6b450df4f98341110dd79df20b3cc3af4fecd6e4a06cfc718cdbc
+
+pkgname = spatialite-tools
+
