@@ -1,7 +1,7 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=moonlight-embedded
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Gamestream client for embedded devices"
 arch=('armv6h' 'armv7h')
@@ -14,7 +14,7 @@ optdepends=('raspberrypi-firmware-tools: Raspberry Pi support'
             'imx-vpu: i.MX6 support')
 makedepends=('cmake')
 source=("https://github.com/irtimmer/moonlight-embedded/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('900d6370700f9ff484c3fb68db092569c95a8ef32d7d4fcc5099ae1b2d26fe9f')
+sha256sums=('a9b7f434853e7a5612c22c8f1e57ac0087c24c0c95dc06d38fdf3b7e0d8b16b2')
 
 build() {
   mkdir -p build
