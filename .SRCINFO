@@ -1,0 +1,16 @@
+pkgbase = deal
+	pkgdesc = Bridge hand (deals) generator
+	pkgver = 3.1.9
+	pkgrel = 2
+	url = http://bridge.thomasoandrews.com/deal/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = tcl>=8.5
+	depends = gcc-libs
+	options = docs
+	source = http://bridge.thomasoandrews.com/deal/deal319.zip
+	md5sums = 7ddeb149478fa32aa9f0432092cfd179
+
+pkgname = deal
+
