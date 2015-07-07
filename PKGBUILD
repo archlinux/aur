@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audiodecoder-modplug
 _gitname=audiodecoder.modplug
-pkgver=20150309.c7e8ca8
-_gitver=c7e8ca82cc00def42452308fd3d49ec4e81b0f2b
+pkgver=20150602.5ae7349
+_gitver=5ae7349f39a8e5552c86dfdad339fb18c7e52550
 pkgrel=1
 pkgdesc='Modplug decoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
