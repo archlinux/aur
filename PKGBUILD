@@ -3,12 +3,13 @@
 
 pkgname=hdaps-gl
 pkgver=0.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='ThinkPad HDAPS OpenGL monitor'
 arch=('i686' 'x86_64')
 url='http://hdaps.sourceforge.net'
 license=('GPL')
 depends=('freeglut')
+makedepends=('glu')
 source=("http://downloads.sourceforge.net/sourceforge/hdaps/${pkgname}-${pkgver}.tar.gz")
 md5sums=('e0924c964c70f5b4d8ee8de67108c6a9')
 
