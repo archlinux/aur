@@ -1,0 +1,12 @@
+2011-08-11 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Architecture set to "any"
+
+2009-10-05 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Following the latest PKGBUILD-svn.proto template
+	Removed install file
+	Added the optdepends array
+	Using $srcdir and $pkgdir variables

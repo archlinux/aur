@@ -1,0 +1,16 @@
+pkgbase = globs-svn
+	pkgdesc = GL Open Benchmark Suite
+	pkgver = 50
+	pkgrel = 2
+	url = http://globs.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = subversion
+	makedepends = scons
+	makedepends = gettext
+	depends = pygtk
+	optdepends = python-matplotlib
+	provides = globs
+
+pkgname = globs-svn
+
