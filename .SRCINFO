@@ -1,0 +1,20 @@
+pkgbase = lush
+	pkgdesc = An object-oriented programming language designed for researchers, experimenters, and engineers interested in large-scale numerical and graphic applications.
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = http://lush.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	optdepends = gsl
+	optdepends = lapack
+	optdepends = sdl
+	optdepends = opencv
+	optdepends = alsa-lib
+	optdepends = libxft
+	options = !libtool
+	source = http://downloads.sourceforge.net/lush/lush-1.2.1.tar.gz
+	sha256sums = 1423085ef7c4ed83374333ba7a552e7f5f35add8db0c2478c8b00c96931ad8c9
+
+pkgname = lush
+
