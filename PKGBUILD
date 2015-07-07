@@ -40,7 +40,7 @@ prepare()
     mkdir -p ${gitsrc};
     cd ${gitsrc};
     echo "Cloning influxdb git repo ..."
-    git clone -q git@github.com:influxdb/influxdb;
+    git clone -q https://github.com/influxdb/influxdb;
 
   else 
     echo "Git repository already cloned, skipping"
