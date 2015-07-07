@@ -1,0 +1,14 @@
+pkgbase = python-matrix-angular-sdk
+	pkgdesc = AngularJS services for implementing the Client-Server API on Matrix
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/matrix-org/matrix-angular-sdk
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = python-matrix-angular-sdk-0.6.6.tar.gz::https://github.com/matrix-org/matrix-angular-sdk/archive/v0.6.6.tar.gz
+	md5sums = e806293c402f8cc925d8311f0efc6689
+
+pkgname = python2-matrix-angular-sdk
+	depends = python2
+
