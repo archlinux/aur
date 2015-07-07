@@ -12,7 +12,7 @@ depends=('libusb' 'pcsclite')
 source=(https://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_lnx$_arch-$pkgver.tar.gz)
 [ "$CARCH" = "i686" ] && sha256sums=('387f5780d58c7b019f5c8b10708896ebb94d0f64e2f07a0a740eab54b69f2c52')
 [ "$CARCH" = "x86_64" ] && sha256sums=('ff40443fc746832d37893773c4f16622f857da1629d5ec83a862d2f999b180e1')
-license=('unknown')
+license=('custom')
 
 package() {
   cd $srcdir/ifdokccid_lnx$_arch-$pkgver
