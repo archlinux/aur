@@ -1,0 +1,21 @@
+pkgbase = lib32-polkit
+	pkgdesc = Application development toolkit for controlling system-wide privileges (32-bit)
+	pkgver = 0.112
+	pkgrel = 5
+	url = http://www.freedesktop.org/wiki/Software/polkit
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = intltool
+	makedepends = git
+	depends = polkit
+	depends = lib32-glib2
+	depends = lib32-pam
+	depends = lib32-expat
+	depends = lib32-systemd
+	depends = lib32-js17
+	source = git://anongit.freedesktop.org/polkit#commit=fb5076b7c05d01a532d593a4079a29cf2d63a228
+	sha256sums = SKIP
+
+pkgname = lib32-polkit
+
