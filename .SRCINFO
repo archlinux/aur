@@ -1,0 +1,15 @@
+pkgbase = type1inst
+	pkgdesc = type1inst is a small perl script which generates the fonts.scale file to use any Type 1 PostScript fonts
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = gzip
+	depends = perl
+	source = ftp://sunsite.unc.edu/pub/linux/X11/xutils/type1inst-0.6.1.tar.gz
+	md5sums = 86fd885e9877896c51ae6cbe23d89ccf
+
+pkgname = type1inst
+
