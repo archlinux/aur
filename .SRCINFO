@@ -1,0 +1,17 @@
+pkgbase = tdom-git
+	pkgdesc = A fast XML/DOM/XPath package for Tcl written in C
+	pkgver = 0.8.3.r92.g363cbda
+	pkgrel = 1
+	url = http://tdom.github.com/
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = MPL
+	depends = tcl
+	provides = tdom
+	conflicts = tdom
+	source = git+https://github.com/tDOM/tdom.git
+	md5sums = SKIP
+
+pkgname = tdom-git
+
