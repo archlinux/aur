@@ -1,0 +1,16 @@
+pkgbase = teampass
+	pkgdesc = A Collaborative Passwords Manager
+	pkgver = 2.1.22
+	pkgrel = 2
+	url = http://www.teampass.net/
+	arch = any
+	license = AGPL3
+	depends = mysql
+	depends = php
+	depends = php-mcrypt
+	optdepends = php-ldap: if using LDAP identification
+	source = https://github.com/nilsteampassnet/TeamPass/archive/2.1.22.zip
+	sha256sums = ae9488a673d88d7951ad396b0563d90fd49e94b70690d4bfd75fedcb33d8ed86
+
+pkgname = teampass
+
