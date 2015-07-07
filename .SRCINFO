@@ -1,0 +1,26 @@
+pkgbase = camlistore-git
+	pkgdesc = Camlistore is a set of open source formats, protocols, and software for modeling, storing, searching, sharing and synchronizing data in the post-PC era.
+	pkgver = r4761.0757937
+	pkgrel = 1
+	url = https://camlistore.org/
+	install = camlistore.install
+	arch = x86_64
+	arch = i686
+	arch = ARM
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = sqlite
+	optdepends = mongodb: as indexer database
+	optdepends = postgresql: as indexer database
+	optdepends = mariadb: as indexer database
+	conflicts = camlistore
+	options = !strip
+	options = !emptydirs
+	source = git+https://camlistore.googlesource.com/camlistore
+	source = camlistore.service
+	md5sums = SKIP
+	md5sums = 0ff93108daf98c38c7fc6fdd64d42236
+
+pkgname = camlistore-git
+

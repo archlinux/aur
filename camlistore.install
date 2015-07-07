@@ -1,0 +1,12 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  getent passwd camlistore > /dev/null || useradd -g daemon -b '/var/lib' -m -s /bin/bash camlistore
+  chown -R camlistore:daemon /var/lib/camlistore
+}
+
+pre_remove() {
+  userdel camlistore
+}
