@@ -2,7 +2,7 @@
 
 pkgname=pidgin-facebook-git
 _gitname="purple-facebook"
-pkgver=20150706
+pkgver=20150707
 pkgrel=1
 pkgdesc="A pidgin plugin for Facebook chat, based on the new Facebook Messenger protocol"
 url="https://github.com/jgeboski/purple-facebook/"
@@ -20,7 +20,7 @@ pkgver() {
 
 
 depends=(
-  pidgin json-glib glib zlib
+  pidgin json-glib zlib
 )
 
 
