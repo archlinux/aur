@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=/usr/bin/salome
+Comment=Platform for Pre and Post-Processing for numerical simulation
+Terminal=false
+Name=Salome
+Icon=/usr/share/pixmaps/salome.png
+Categories=Science;Math;

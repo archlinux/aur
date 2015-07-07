@@ -1,0 +1,31 @@
+pkgbase = salome-gui
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - GUI Module
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	makedepends = swig2
+	makedepends = boost
+	makedepends = optipng
+	makedepends = python2-sphinx
+	makedepends = git
+	depends = salome-kernel>=7.6.0
+	depends = salome-kernel<7.7.0
+	depends = qt4
+	depends = python2-pyqt4
+	depends = opencascade>=6.9.0
+	depends = qwt
+	depends = paraview-salome=4.3.1
+	depends = sip
+	source = salome-gui.profile
+	source = salome.desktop
+	source = salome
+	md5sums = 3075efd2833f52d28fa622cd28999c4d
+	md5sums = a102063b779e332914ef0b73843e928a
+	md5sums = c47b2bb9e51120089bd3169c2298abf3
+
+pkgname = salome-gui
+
