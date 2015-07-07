@@ -1,0 +1,14 @@
+post_install() {
+  echo "The package has blacklisted kernel modules 'phonet' and 'cdc_phonet' because"
+  echo "they conflict with Nokia Maemo Flasher-3.12.1 Tool for Harmattan. You may"
+  echo "need to reboot for these changes to take affect."
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo "The Blacklisting of kernel modules 'phonet' and 'cdc_phonet' has been"
+  echo "removed. You may need to reboot for this change to take affect."
+}

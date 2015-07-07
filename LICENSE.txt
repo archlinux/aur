@@ -1,0 +1,271 @@
+THIS LICENSE COVERS THE FOLLOWING COMPONENTS
+
+Changes made in the virtual image to the stock Ubuntu Lucid desktop installation
+MD5 checksums
+Maemo Ubuntu Intrepid Server virtual SDK image
+Maemo Ubuntu Lucid Desktop virtual SDK image (Fremantle PR1.3)
+Maemo Ubuntu Lucid Server virtual SDK image
+Maemo 4.1.2 Diablo kernel patch and new kernel image for USB Networking on Windows,ver 0.4
+Maemo Flasher-3.5 Tool for Fremantle and Diablo, installation package for Windows 7, XP and Vista  (x86, 32-bit)
+Maemo Flasher-3.5 Tool for Fremantle and Diablo, installation package for other than Debian based Linuxes (x86, 32-bit)
+Maemo Flasher-3.5 Tool for Fremantle and Diablo, installation package for Debian based Linuxes (x86, 32-bit)
+Maemo Flasher-3.5 Tool for Fremantle and Diablo, installation package for Mac OS X Leopard and Snow Leopard (x86, 32-bit)
+Maemo Flasher-3.5 Tool for Fremantle and Diablo, installation package for Mac OS X Leopard (PPC, 32-bit)
+Maemo Flasher-3.12.1 Tool for Harmattan, installation package for Windows 7, XP and Vista  (x86, 32-bit)
+Maemo Flasher-3.12.1 Tool for Harmattan, installation package for Debian based Linuxes (x86, 32-bit)
+Maemo Flasher-3.12.1 Tool for Harmattan, installation package for Debian based Linuxes (x86, 64-bit)
+Maemo Flasher-3.12.1 Tool for Harmattan, installation package for Mac OS X (x86, 32-bit)
+Maemo Documentation Toolchain, PreFinal 2
+
+IMPORTANT: READ CAREFULLY BEFORE INSTALLING, DOWNLOADING, OR USING
+THE SOFTWARE
+
+This Software includes some software copyrighted by Nokia Corporation or
+third parties and some Open Source Software in binary form.
+
+The Software copyrighted by Nokia or some third parties is licensed to you
+under the Nokia End-User License Agreement [see below] and distributed to
+you only in binary form.
+
+The Open Source Software is licensed and distributed under GNU General
+Public License (GPL, the GNU lesser General Public License (LGPL, aka. The GNU
+Library General Public License) and/or other copyright licenses, permissions,
+notices or disclaimers containing obligation or permission to provide the
+source code of such software with the binary / executable form delivery of
+the said software. The source code of such software are made available to
+you in accordance with the referred license terms and conditions on this
+page http://www.maemo.org. The exact license terms of GPL, LGPL and said
+certain other licenses, as well as the required copyright and other notices,
+permissions and acknowledgements are reproduced in and delivered to you as
+part of the referred source code.
+
+
+NOKIA CORPORATION END-USER SOFTWARE AGREEMENT
+
+This Software Agreement ("Agreement") is between You (either an
+individual or an entity), the End User, and Nokia Corporation ("Nokia").
+The Agreement authorizes You to use the Software specified in Clause 1
+below, which may be stored on a CD-ROM, sent to You by electronic mail,
+or downloaded from Nokia's Web pages or Servers or from other sources
+under the terms and conditions set forth below. This is an agreement on
+end-user rights and not an agreement for sale. Nokia continues to own
+the copy of the Software and the physical media contained in the sales
+package and any other copy that You are authorized to make pursuant to
+this Agreement.
+
+Read this Agreement carefully before installing, downloading, or using
+the Software.  By clicking on the "I Accept" button while installing,
+downloading, and/or using the Software, You agree to the terms and
+conditions of this Agreement.  If You do not agree to all of the
+terms and conditions of this Agreement, promptly click the "Decline"
+or "I Do Not Accept" button, cancel the installation or downloading,
+or destroy or return the Software and accompanying documentation to
+Nokia. YOU AGREE THAT YOUR USE OF THE SOFTWARE ACKNOWLEDGES THAT YOU
+HAVE READ THIS AGREEMENT, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS
+TERMS AND CONDITIONS.
+
+1. SOFTWARE.
+
+As used in this Agreement, the term "Software" means, collectively:
+(i) the software product identified above (ii) all the contents of the
+disk(s), CD-ROM(s), electronic mail and its file attachments, or other
+media with which this Agreement is provided, including the object code
+form of the software delivered via a CD-ROM, electronic mail, or Web page
+(iii) digital images, stock photographs, clip art, or other artistic
+works ("Stock Files") (iv) related explanatory written materials and
+any other possible documentation related thereto ("Documentation");
+(v) fonts, and (vi) upgrades, modified versions, updates, additions,
+and copies of the Software (collectively "Updates"), if any, licensed
+to You by Nokia under this Agreement.
+
+2. END-USER RIGHTS AND USE.
+
+Nokia grants to You non-exclusive, non-transferable end-user rights
+to install the Software on the local hard disk(s) or other permanent
+storage media of one computer and use the Software on a single computer
+or terminal at a time.
+
+3. LIMITATIONS ON END-USER RIGHTS.
+
+You may not copy, distribute, or make derivative works of the Software
+except as follows:
+
+(a) You may make one copy of the Software on magnetic media as an archival
+backup copy, provided Your archival backup copy is not installed or
+used on any computer. Any other copies You make of the Software are in
+violation of this Agreement.
+
+(b) You may not use, modify, translate, reproduce, or transfer the right
+to use the Software or copy the Software except as expressly provided
+in this Agreement.
+
+(c) You may not resell, sublicense, rent, lease, or lend the Software.
+
+(d) You may not reverse engineer, reverse compile, disassemble, or
+otherwise attempt to discover the source code of the Software (except
+to the extent that this restriction is expressly prohibited by law)
+or create derivative works based on the Software.
+
+(e) Unless stated otherwise in the Documentation, You shall not display,
+modify, reproduce, or distribute any of the Stock Files included with the
+Software. In the event that the Documentation allows You to display the
+Stock Files, You shall not distribute the Stock Files on a stand-alone
+basis, i.e., in circumstances in which the Stock Files constitute the
+primary value of the product being distributed. You should review the
+"Readme" files associated with the Stock Files that You use to ascertain
+what rights You have with respect to such materials. Stock Files may
+not be used in the production of libelous, defamatory, fraudulent,
+infringing, lewd, obscene, or pornographic material or in any otherwise
+illegal manner. You may not register or claim any rights in the Stock
+Files or derivative works thereof.
+
+(f) You agree that You shall only use the Software in a manner that
+complies with all applicable laws in the jurisdiction in which You use
+the Software, including, but not limited to, applicable restrictions
+concerning copyright and other intellectual property rights.
+
+4. COPYRIGHT.
+
+The Software and all rights, without limitation including proprietary
+rights therein, are owned by Nokia and/or its licensors and affiliates and
+are protected by international treaty provisions and all other applicable
+national laws of the country in which it is being used. The structure,
+organization, and code of the Software are the valuable trade secrets and
+confidential information of Nokia and/or its licensors and affiliates. You
+must not copy the Software, except as set forth in clause 3 (Limitations
+On End-User Rights). Any copies which You are permitted to make pursuant
+to this Agreement must contain the same copyright and other proprietary
+notices that appear on the Software.
+
+5. MULTIPLE ENVIRONMENT SOFTWARE / MULTIPLE LANGUAGE SOFTWARE / DUAL
+MEDIA SOFTWARE / MULTIPLE COPIES / UPDATES.
+
+If the Software supports multiple platforms or languages, if You receive
+the Software on multiple media, or if You otherwise receive multiple
+copies of the Software, the number of computers on which all versions
+of the Software are installed shall be one computer. You may not rent,
+lease, sublicense, lend, or transfer versions or copies of the Software
+You do not use. If the Software is an Update to a previous version of
+the Software, You must possess valid end-user rights to such a previous
+version in order to use the Update, and You may use the previous version
+for ninety (90) days after You receive the Update in order to assist
+You in the transition to the Update. After such time You no longer have
+a right to use the previous version, except for the sole purpose of
+enabling You to install the Update.
+
+6. COMMENCEMENT & TERMINATION.
+
+This Agreement is effective from the first date You install the
+Software. You may terminate this Agreement at any time by permanently
+deleting, destroying, and returning, at Your own costs, the Software, all
+backup copies, and all related materials provided by Nokia. Your end-user
+rights automatically and immediately terminate without notice from Nokia
+if You fail to comply with any provision of this Agreement. In such an
+event, You must immediately delete, destroy, or return at Your own cost,
+the Software, all backup copies, and all related material to Nokia.
+
+7. YOU ACKNOWLEDGE THAT THE SOFTWARE IS PROVIDED "AS IS" WITHOUT
+WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, AND TO THE MAXIMUM EXTENT
+PERMITTED BY APPLICABLE LAW NEITHER NOKIA, ITS LICENSORS OR AFFILIATES,
+NOR THE COPYRIGHT HOLDERS MAKE ANY REPRESENTATIONS OR WARRANTIES,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR THAT THE SOFTWARE
+WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS, OR
+OTHER RIGHTS.  THERE IS NO WARRANTY BY NOKIA OR BY ANY OTHER PARTY THAT
+THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR
+THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE.
+YOU ASSUME ALL RESPONSIBILITY AND RISK FOR THE SELECTION OF THE SOFTWARE
+TO ACHIEVE YOUR INTENDED RESULTS AND FOR THE INSTALLATION, USE, AND
+RESULTS OBTAINED FROM IT.
+
+8. NO OTHER OBLIGATIONS.
+
+This Agreement creates no obligations on the part of Nokia other than
+as specifically set forth herein.
+
+9. LIMITATION OF LIABILITY.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
+NOKIA, ITS EMPLOYEES OR LICENSORS OR AFFILIATES BE LIABLE FOR ANY LOST
+PROFITS, REVENUE, SALES, DATA, OR COSTS OF PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES, PROPERTY DAMAGE, PERSONAL INJURY, INTERRUPTION OF BUSINESS,
+LOSS OF BUSINESS INFORMATION, OR FOR ANY SPECIAL, DIRECT, INDIRECT,
+INCIDENTAL, ECONOMIC, COVER, PUNITIVE, SPECIAL, OR CONSEQUENTIAL
+DAMAGES, HOWEVER CAUSED AND WHETHER ARISING UNDER CONTRACT, TORT,
+NEGLIGENCE, OR OTHER THEORY OF LIABILITY ARISING OUT OF THE USE OF
+OR INABILITY TO USE THE SOFTWARE, EVEN IF NOKIA OR ITS LICENSORS OR
+AFFILIATES ARE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. BECAUSE
+SOME COUNTRIES/STATES/JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF
+LIABILITY, BUT MAY ALLOW LIABILITY TO BE LIMITED, IN SUCH CASES, NOKIA,
+ITS EMPLOYEES OR LICENSORS OR AFFILIATES' LIABILITY SHALL BE LIMITED
+TO U.S. $50.  Nothing contained in this Agreement shall prejudice the
+statutory rights of any party dealing as a consumer.  Nothing contained
+in this Agreement limits Nokia's liability to You in the event of death
+or personal injury resulting from Nokia's negligence. Nokia is acting
+on behalf of its employees and licensors or affiliates for the purpose
+of disclaiming, excluding, and/or restricting obligations, warranties,
+and liability as provided in this clause 9, but in no other respects
+and for no other purpose.
+
+10. TECHNICAL SUPPORT.
+
+Nokia has no obligation to furnish You with technical support unless
+separately agreed in writing between You and Nokia.
+
+11. EXPORT CONTROL.
+
+The Software, including technical data, includes cryptographic software
+subject to export controls under the U.S. Export Administration
+Regulations ("EAR") and may be subject to import or export controls in
+other countries. The EAR prohibits the use of the Software and technical
+data by a Government End User, as defined hereafter, without a license
+from the U.S. government. A Government End User is defined in Part
+772 of the EAR as "any foreign central, regional, or local government
+department, agency, or other entity performing governmental functions;
+including governmental research institutions, governmental corporations,
+or their separate business units (as defined in part 772 of the EAR)
+which are engaged in the manufacture or distribution of items or
+services controlled on the Wassenaar Munitions List, and international
+governmental organizations. This term does not include: utilities
+(telecommunications companies and Internet service providers; banks
+and financial institutions; transportation; broadcast or entertainment;
+educational organizations; civil health and medical organizations; retail
+or wholesale firms; and manufacturing or industrial entities not engaged
+in the manufacture or distribution of items or services controlled on
+the Wassenaar Munitions List.)" You agree to strictly comply with all
+applicable import and export regulations and acknowledge that You have
+the responsibility to obtain licenses to export, re-export, transfer, or
+import the Software. You further represent that You are not a Government
+End User as defined above, and You will not transfer the Software to
+any Government End User without a license.
+
+12. NOTICES.
+
+All notices and return of the Software and Documentation should be
+delivered to:
+
+NOKIA CORPORATION 
+P.O. Box 100 
+FIN-00045 
+NOKIA GROUP FINLAND
+
+13.  APPLICABLE LAW & GENERAL PROVISIONS.
+
+This Agreement is governed by the laws of Finland.  All disputes
+arising from or relating to this Agreement shall be settled by a single
+arbitrator appointed by the Central Chamber of Commerce of Finland. The
+arbitration procedure shall take place in Helsinki, Finland in the English
+language. If any part of this Agreement is found void and unenforceable,
+it will not affect the validity of the balance of the Agreement, which
+shall remain valid and enforceable according to its terms. This Agreement
+may only be modified in writing by an authorized officer of Nokia.
+
+This is the entire agreement between Nokia and You relating to the
+Software, and it supersedes any prior representations, discussions,
+undertakings, end-user agreements, communications, or advertising relating
+to the Software.
+
+PLEASE SUBMIT ANY ACCOMPANYING REGISTRATION FORMS TO RECEIVE REGISTRATION
+BENEFITS WHERE APPLICABLE
+
+
