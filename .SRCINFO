@@ -1,0 +1,23 @@
+pkgbase = python2-guiqwt
+	pkgdesc = Python library providing efficient 2D data-plotting features
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://code.google.com/p/guiqwt/
+	arch = i686
+	arch = x86_64
+	license = custom:CeCIL
+	makedepends = python2-distribute
+	makedepends = unzip
+	makedepends = cython2
+	depends = python2-guidata
+	depends = pyqwt
+	depends = python2-scipy
+	depends = python-imaging
+	optdepends = python2-pydicom: for DICOM files I/O features
+	optdepends = spyder: for Sift embedded Python console
+	options = !emptydirs
+	source = http://guiqwt.googlecode.com/files/guiqwt-2.3.1.zip
+	md5sums = 4dbbfa7ca62f5d9222e7c84f8a8995c2
+
+pkgname = python2-guiqwt
+
