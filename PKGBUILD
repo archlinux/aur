@@ -1,3 +1,5 @@
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
+
 # custom variables
 _hkgname=geniplate
 _licensefile=LICENSE
@@ -5,7 +7,7 @@ _licensefile=LICENSE
 # PKGBUILD options/directives
 pkgname=haskell-geniplate
 pkgver=0.6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Use template Haskell to generate Uniplate-like functions"
 url="http://hackage.haskell.org/package/geniplate-${pkgver}"
 license=("BSD3")
@@ -16,6 +18,7 @@ options=('strip' 'staticlibs')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
 sha256sums=('ec6bb3509d4882f6382166735c6dcd87faae60bd58eb70cd7190503c8bf39c05')
+sha512sums=('37127fa364ef0a8c67abbbadc025b932ddc62aaf09e4096548263c140b232b5442889d24f18fbb4ed3ea5eb0643b6afb4634b73471a2ec35b626dcd0c1781987')
 
 # PKGBUILD functions
 build() {
