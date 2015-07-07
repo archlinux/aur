@@ -1,0 +1,17 @@
+pkgbase = otb-ice
+	pkgdesc = ORFEO Toolbox (OTB) is an open source library of image processing algorithms
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = http://www.orfeo-toolbox.org/otb/
+	arch = x86_64
+	arch = i686
+	license = CeCILL
+	makedepends = cmake
+	depends = glfw
+	depends = glew
+	depends = orfeo-toolbox
+	source = http://freefr.dl.sourceforge.net/project/orfeo-toolbox/Ice-0.3.0.tgz
+	md5sums = 6432f1cce1e8f7dfc5566964d229d76a
+
+pkgname = otb-ice
+
