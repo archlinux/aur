@@ -1,0 +1,23 @@
+pkgbase = haskell-filemanip
+	pkgdesc = Expressive file and directory manipulation for Haskell.
+	pkgver = 0.3.6.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/filemanip
+	install = haskell-filemanip.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = sh
+	depends = haskell-bytestring
+	depends = haskell-directory
+	depends = haskell-filepath
+	depends = haskell-mtl
+	depends = haskell-unix-compat
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/filemanip/0.3.6.3/filemanip-0.3.6.3.tar.gz
+	sha256sums = 8836da17baaaf02ca080c9990ece4e0b0c8d6a128f458f8b64fd07b225ca9846
+
+pkgname = haskell-filemanip
+
