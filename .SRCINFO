@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-stalker
 	pkgdesc = Stalker Middleware PVR client addon for Kodi
-	pkgver = 20150429.118b2ef
+	pkgver = 20150701.c9f2ac3
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.stalker
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kodi-devel-pvr-stalker
 	depends = kodi-devel
 	depends = jsoncpp
 	depends = tinyxml
-	source = https://github.com/kodi-pvr/pvr.stalker/archive/118b2efc825931b468fa1af467c4d59222c2a0f0.tar.gz
+	source = https://github.com/kodi-pvr/pvr.stalker/archive/c9f2ac33675e6c47f1e07a658e167c6af3066a6d.tar.gz
 	source = http://garr.dl.sourceforge.net/project/jsoncpp/jsoncpp/0.5.0/jsoncpp-src-0.5.0.tar.gz
 	source = jsoncpp-cmakelists.patch
 	md5sums = SKIP

@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-stalker
 _gitname=pvr.stalker
-pkgver=20150429.118b2ef
-_gitver=118b2efc825931b468fa1af467c4d59222c2a0f0
+pkgver=20150701.c9f2ac3
+_gitver=c9f2ac33675e6c47f1e07a658e167c6af3066a6d
 _jsoncpp_ver=0.5.0
 pkgrel=1
 pkgdesc='Stalker Middleware PVR client addon for Kodi'
@@ -50,8 +50,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-src-$_jsoncpp_ver/out/usr/include/jsoncpp" \
     -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-src-$_jsoncpp_ver/out/usr/lib" \
     -DCMAKE_BUILD_TYPE=Release \
