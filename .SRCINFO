@@ -1,0 +1,15 @@
+pkgbase = ruby-hitimes
+	pkgdesc = Hitimes is a fast, high resolution timer library for recording performance metrics.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/hitimes
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	noextract = hitimes-1.2.1.gem
+	source = http://gems.rubyforge.org/gems/hitimes-1.2.1.gem
+	sha256sums = 1db864ae4d8229b38d17c8a206f26e813c2574fa7c7e1f1bb2ba2d12067fa63b
+
+pkgname = ruby-hitimes
+
