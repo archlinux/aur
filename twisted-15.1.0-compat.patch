@@ -1,0 +1,48 @@
+diff --git a/setup.py b/setup.py
+index ab24159..af03c0a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -47,7 +47,7 @@ setup(
+     description="Reference Synapse Home Server",
+     install_requires=dependencies['requirements'](include_conditional=True).keys(),
+     setup_requires=[
+-        "Twisted==14.0.2", # Here to override setuptools_trial's dependency on Twisted>=2.4.0
++        "Twisted==15.1.0", # Here to override setuptools_trial's dependency on Twisted>=2.4.0
+         "setuptools_trial",
+         "mock"
+     ],
+diff --git a/synapse/http/matrixfederationclient.py b/synapse/http/matrixfederationclient.py
+index 7fa295c..091a9c2 100644
+--- a/synapse/http/matrixfederationclient.py
++++ b/synapse/http/matrixfederationclient.py
+@@ -16,7 +16,7 @@
+ 
+ from twisted.internet import defer, reactor, protocol
+ from twisted.internet.error import DNSLookupError
+-from twisted.web.client import readBody, _AgentBase, _URI, HTTPConnectionPool
++from twisted.web.client import readBody, _AgentBase, URI, HTTPConnectionPool
+ from twisted.web.http_headers import Headers
+ from twisted.web._newclient import ResponseDone
+ 
+@@ -67,7 +67,7 @@ class MatrixFederationHttpAgent(_AgentBase):
+         port = 0
+         fragment = b""
+ 
+-        parsed_URI = _URI(b"http", destination, host, port, path, params,
++        parsed_URI = URI(b"http", destination, host, port, path, params,
+                           query, fragment)
+ 
+         # Set the connection pool key to be the destination.
+diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
+index 8b45741..e4261eb 100644
+--- a/synapse/python_dependencies.py
++++ b/synapse/python_dependencies.py
+@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
+ 
+ REQUIREMENTS = {
+     "syutil>=0.0.7": ["syutil>=0.0.7"],
+-    "Twisted==14.0.2": ["twisted==14.0.2"],
++    "Twisted==15.1.0": ["twisted==15.1.0"],
+     "service_identity>=1.0.0": ["service_identity>=1.0.0"],
+     "pyopenssl>=0.14": ["OpenSSL>=0.14"],
+     "pyyaml": ["yaml"],

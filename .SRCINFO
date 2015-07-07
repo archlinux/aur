@@ -1,0 +1,37 @@
+pkgbase = matrix-synapse-git
+	pkgdesc = Matrix reference homeserver
+	pkgver = 0.9.0.r5.r241.gd70c847
+	pkgrel = 4
+	url = https://github.com/matrix-org/synapse
+	install = synapse.install
+	arch = any
+	license = Apache
+	makedepends = python2-twisted
+	makedepends = python2-mock
+	makedepends = python2-setuptools_trial
+	depends = python2-syutil-git
+	depends = python2-twisted=15.1.0
+	depends = python2-service-identity
+	depends = python2-pyopenssl
+	depends = python2-yaml
+	depends = python2-pyasn1
+	depends = python2-pynacl
+	depends = python2-daemonize
+	depends = python2-py-bcrypt
+	depends = python2-frozendict
+	depends = python2-pillow
+	depends = python2-pydenticon
+	depends = python2-ujson
+	depends = python2-matrix-angular-sdk-git
+	provides = matrix-synapse
+	conflicts = matrix-synapse
+	backup = etc/synapse/log_config.yaml
+	source = git://github.com/matrix-org/synapse.git#branch=develop
+	source = twisted-15.1.0-compat.patch
+	source = sysusers-synapse.conf
+	md5sums = SKIP
+	md5sums = 779f1e18ed0956ec0cf2d4ba5e79bc7b
+	md5sums = dfbffdd307c5559357a2ff51a1906700
+
+pkgname = matrix-synapse-git
+
