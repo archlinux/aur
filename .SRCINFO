@@ -1,0 +1,15 @@
+pkgbase = qtmib
+	pkgdesc = Easy-to-use SNMPv1 and SNMPv2c MIB Browser written in QT4
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://qtmib.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4
+	depends = net-snmp
+	source = http://downloads.sourceforge.net/qtmib/qtmib-1.1.1.tar.bz2
+	md5sums = 1715ae9c88e1f0d355f9a93b3248455e
+
+pkgname = qtmib
+
