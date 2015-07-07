@@ -1,0 +1,16 @@
+post_install() {
+	if ! getent passwd avahi &>/dev/null; then
+		groupadd -r -g 84 avahi
+		useradd -r -u 84 -g avahi -d / -s /bin/nologin -c avahi av
+	fi
+
+	cat <<EOF
+==> The following daemons may be added to DAEMONS in /etc/rc.conf:
+==> avahi-daemon: the mdns responder, you probably want this.
+==>               dbus needs to be running when you start it.
+==> avahi-dnsconfd: daemon used for peer-to-peer automatic dns
+==>                 configuration on dhcp-less networks.
+EOF
+
+	true
+}
