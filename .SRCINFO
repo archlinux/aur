@@ -1,0 +1,17 @@
+pkgbase = python2-pydicom
+	pkgdesc = Pure python package for working with DICOM files
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://www.pydicom.org/
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	options = !emptydirs
+	source = python2-pydicom-0.9.9.tar.gz::https://github.com/darcymason/pydicom/archive/v0.9.9.tar.gz
+	source = license.txt
+	md5sums = 2248b21c63d220d16d32dd98a79f352c
+	md5sums = 12e0f408817638d2f759a59d968858ae
+
+pkgname = python2-pydicom
+
