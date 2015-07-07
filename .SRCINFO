@@ -1,0 +1,22 @@
+pkgbase = libgroove-git
+	pkgdesc = Library that provides decoding and encoding of audio on a playlist.
+	pkgver = 4.3.0.1.gd56306e
+	pkgrel = 1
+	url = https://github.com/andrewrk/libgroove
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = yasm
+	depends = sdl2
+	depends = chromaprint
+	depends = libebur128
+	provides = libgroove
+	conflicts = libgroove
+	options = strip
+	options = ccache
+	source = git+https://github.com/andrewrk/libgroove.git
+	sha256sums = SKIP
+
+pkgname = libgroove-git
+
