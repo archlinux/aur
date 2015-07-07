@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-audioencoder-flac
 	pkgdesc = Flac encoder addon for Kodi
-	pkgver = 20150227.84acb14
-	pkgrel = 2
+	pkgver = 20150601.a5e2d12
+	pkgrel = 1
 	url = https://github.com/xbmc/audioencoder.flac
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kodi-devel-audioencoder-flac
 	depends = libogg
 	conflicts = kodi-audioencoder-flac-devel
 	replaces = kodi-audioencoder-flac-devel
-	source = https://github.com/xbmc/audioencoder.flac/archive/84acb14101b9114472cd20f6a0f8fdefbb376113.tar.gz
+	source = https://github.com/xbmc/audioencoder.flac/archive/a5e2d1262de3b2de567cf0a8207636ebaacb8775.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-audioencoder-flac
