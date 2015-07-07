@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audioencoder-wav
 _gitname=audioencoder.wav
-pkgver=20141102.40aaedf
-_gitver=40aaedfa1cd9c75749c82f6e1bd7c42ef61fdb38
+pkgver=20150601.797c990
+_gitver=797c990eea7851889cd44a597c0392deba9c51c0
 pkgrel=2
 pkgdesc='Wav encoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -32,8 +32,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
