@@ -1,0 +1,19 @@
+pkgbase = i3cat-git
+	pkgdesc = A simple program to combine multiple i3bar JSON inputs into one to forward to i3bar.
+	pkgver = r33.be2ba5d
+	pkgrel = 1
+	url = http://vincent-petithory.github.io/i3cat/
+	arch = x86_64
+	arch = i686
+	arch = ARM
+	license = MIT
+	makedepends = go
+	makedepends = git
+	optdepends = i3-wm: for i3bar
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/vincent-petithory/i3cat.git
+	md5sums = SKIP
+
+pkgname = i3cat-git
+
