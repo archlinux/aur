@@ -1,0 +1,30 @@
+pkgbase = murmur-git
+	pkgdesc = The voice chat application server for Mumble (git version)
+	pkgver = 1.2.5.606.g2c0d37f
+	pkgrel = 1
+	url = http://mumble.sourceforge.net
+	install = murmur.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = boost
+	depends = avahi
+	depends = lsb-release
+	depends = protobuf
+	depends = qt4
+	depends = icu
+	provides = murmur
+	conflicts = murmur
+	conflicts = murmur-static
+	conflicts = murmur-ice
+	backup = etc/murmur.ini
+	source = git://github.com/mumble-voip/mumble.git
+	source = murmur.dbus.conf
+	source = murmur.service
+	md5sums = SKIP
+	md5sums = eddea4cdbd0bde4b960a67e16b5d5478
+	md5sums = d27a9adcd7561859e7b033046729bc0e
+
+pkgname = murmur-git
+

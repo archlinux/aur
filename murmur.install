@@ -1,0 +1,9 @@
+post_install() {
+    getent group murmur > /dev/null || groupadd -g 122 murmur 1>/dev/null
+    getent passwd murmur > /dev/null || useradd -u 122 -d /var/lib/murmur -g murmur -s /bin/false murmur 1>/dev/null
+
+    echo "You might have to reload dbus before launching murmur:"
+    echo "    systemctl reload dbus"
+    echo "Don't forget to set the superuser password:"
+    echo "    murmurd -ini /etc/murmur.ini -supw <your-password>"
+}
