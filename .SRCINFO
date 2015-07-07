@@ -1,0 +1,16 @@
+pkgbase = python2-golem
+	pkgdesc = Ontology language and toolkit for semantic processing of scientific data
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.lexical.org.uk/science/golem/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	noextract = golem-1.0.1.tar.gz
+	options = !libtool
+	source = http://pygolem.googlecode.com/files/golem-1.0.1.tar.gz
+	md5sums = cae7dbcbcf3d0cc81cc89e111b54665f
+
+pkgname = python2-golem
+
