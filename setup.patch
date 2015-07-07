@@ -1,0 +1,11 @@
+--- setup.py.old	2012-11-10 08:31:40.000000000 +0100
++++ setup.py	2012-11-10 08:32:10.000000000 +0100
+@@ -5,7 +5,7 @@
+ if os.name == 'nt':
+     data_files = {'parallel': ['simpleio.dll']}
+ else:
+-    data_files = None
++    data_files = {}
+ 
+ setup (name = "pyparallel",
+     description="Python Parallel Port Extension",
