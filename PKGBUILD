@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-vbox
 _gitname=pvr.vbox
-pkgver=20150422.4449aa5
-_gitver=4449aa556b0d439b531b7b7d823cf863cd0034bf
+pkgver=20150701.2280b56
+_gitver=2280b564f97ac35b89ae1f737074ec74d02e335a
 pkgrel=1
 pkgdesc='Box TV Gateway PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/Jalle19/$_gitname"
 license=('GPL')
 groups=('kodi-devel')
 makedepends=('cmake' 'kodi-devel-platform' 'kodi-devel-libplatform')
-depends=('kodi-devel' 'tinyxml2')
+depends=('kodi-devel')
 source=("https://github.com/Jalle19/$_gitname/archive/$_gitver.tar.gz")
 md5sums=('SKIP')
 
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
