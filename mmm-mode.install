@@ -1,0 +1,33 @@
+post_install() {
+echo "Please put one of the following lines into your .emacs file"
+echo "(require 'mmm-mode)"
+echo "(require 'mmm-auto)"
+echo "Refer to the info-manual for further advice."
+echo "Please put the following line to your .emacs file"
+echo "(setq load-path (cons \"/usr/share/emacs/site-lisp/mmm-mode\" load-path))"
+echo "Adding Info-File"
+install-info /usr/share/info/mmm.info.gz /usr/share/info/dir
+}
+
+pre_remove() {
+  echo "Removing entry in info-file (dir)"
+  install-info --delete /usr/share/info/mmm.info.gz /usr/share/info/dir
+  echo "Please remove the lines concerning mmm-mode from your .emacs"
+  /bin/true
+}
+
+post_upgrade() {
+  echo "Please put one of the following lines into your .emacs file"
+  echo "(require 'mmm-mode)"
+  echo "(require 'mmm-auto)"
+  echo "Refer to the info-manual for further advice."
+  echo "Please put the following line to your .emacs file"
+  echo "(setq load-path (cons \"/usr/share/emacs/site-lisp/mmm-mode\" load-path))"
+  echo "Adding Info-file"
+  install-info /usr/share/info/mmm.info.gz /usr/share/info/dir
+  /bin/true
+}
+
+op=$1
+shift
+$op $*

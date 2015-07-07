@@ -1,0 +1,15 @@
+pkgbase = emacs-mmm-mode
+	pkgdesc = minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = http://mmm-mode.sourceforge.net/
+	install = mmm-mode.install
+	arch = any
+	license = GPL
+	provides = mmm-mode
+	conflicts = mmm-mode
+	source = https://github.com/purcell/mmm-mode/archive/0.5.4.tar.gz
+	sha256sums = db55529ba95f841826bee952e73e55b87d9c191004e7c985a9582eea2cd57c82
+
+pkgname = emacs-mmm-mode
+
