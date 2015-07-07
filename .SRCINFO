@@ -1,0 +1,14 @@
+pkgbase = unnethack
+	pkgdesc = Variant of NetHack. It features more randomness, more levels, more challenges and more fun than vanilla NetHack.
+	pkgver = 5.1.0
+	pkgrel = 2
+	url = http://sourceforge.net/apps/trac/unnethack/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash
+	source = http://sourceforge.net/projects/unnethack/files/unnethack/5.1.0/unnethack-5.1.0-20131208.tar.gz
+	md5sums = 8a5b925aedc3b7379b6adacc0f0b5915
+
+pkgname = unnethack
+
