@@ -1,0 +1,19 @@
+--- /usr/lib/ruby/gems/2.0.0/gems/pleaserun-0.0.4/lib/pleaserun/detector.rb.orig	2014-03-12 01:23:51.195533517 +0100
++++ /usr/lib/ruby/gems/2.0.0/gems/pleaserun-0.0.4/lib/pleaserun/detector.rb	2014-03-12 01:24:55.631851102 +0100
+@@ -17,6 +17,7 @@
+     ["fedora", "18"] => ["systemd", "default"],
+     ["fedora", "19"] => ["systemd", "default"],
+     ["fedora", "20"] => ["systemd", "default"],
++    ["arch", "rolling"] => ["systemd", "default"],
+     ["mac_os_x", "10.9"] => [ "launchd", "10.9"]
+   }
+ 
+@@ -63,6 +64,8 @@
+         return version[/^[0-9]+/]
+       when "mac_os_x"
+         return version[/^[0-9]+\.[0-9]+/]
++      when "arch"
++        return "rolling"
+       # TODO(sissel): Any other edge cases?
+     end
+     return version

@@ -1,0 +1,21 @@
+pkgbase = pleaserun
+	pkgdesc = 0.0.4
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/jordansissel/pleaserun
+	arch = any
+	license = APACHE
+	depends = ruby
+	depends = ruby-cabin
+	depends = ruby-clamp
+	depends = ruby-stud
+	depends = ruby-mustache
+	depends = ruby-insist
+	depends = ruby-ohai
+	source = http://gems.rubyforge.org/gems/pleaserun-0.0.4.gem
+	source = detector.patch
+	sha256sums = 9b2fffeda74271f765ee1ce6a85b446e04a321efdf363f8a9f4519404238bce5
+	sha256sums = 3958e3156dc4c61ab33ffd6f255cf42d6dde97b4d861bf2100df427f0afd1e92
+
+pkgname = pleaserun
+
