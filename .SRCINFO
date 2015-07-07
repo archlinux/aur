@@ -1,0 +1,15 @@
+pkgbase = mt-st-git
+	pkgdesc = Utilities for managing magnetic tape storage devices
+	pkgver = 6.ece9c03
+	pkgrel = 1
+	url = https://github.com/Distrotech/mt-st
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = tar
+	source = mt-st::git://github.com/Distrotech/mt-st.git
+	sha256sums = SKIP
+
+pkgname = mt-st-git
+
