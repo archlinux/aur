@@ -1,0 +1,22 @@
+pkgbase = bti-git
+	pkgdesc = Console client for Twitter and identi.ca
+	pkgver = 034.r7.g1536609
+	pkgrel = 1
+	url = http://gregkh.github.com/bti/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = git
+	depends = curl
+	depends = json-c
+	depends = libxml2
+	depends = liboauth
+	depends = pcre
+	provides = bti
+	conflicts = bti
+	source = bti-git::git://github.com/gregkh/bti.git
+	sha1sums = SKIP
+
+pkgname = bti-git
+
