@@ -1,0 +1,17 @@
+pkgbase = vim-dwm-git
+	pkgdesc = Dynamic Window Manager behaviour for Vim
+	pkgver = 6149e58
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=4186
+	arch = any
+	groups = vim-plugins
+	license = custom
+	makedepends = git
+	depends = vim
+	provides = vim-dwm
+	conflicts = vim-dwm
+	source = git+https://github.com/spolu/dwm.vim.git
+	sha256sums = SKIP
+
+pkgname = vim-dwm-git
+
