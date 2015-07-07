@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-platform
 _gitname=kodi-platform
-pkgver=20150221.68315f0
-_gitver=48bdd985b843353eec5804e4dbab2dc8f2b4b13e
+pkgver=20150504.054a42f
+_gitver=054a42f664af3a6740d49759c081d4929a190671
 pkgrel=1
 pkgdesc='Kodi platform environment for compiling cmake binary addons'
 arch=('i686' 'x86_64')

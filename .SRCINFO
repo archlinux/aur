@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-platform
 	pkgdesc = Kodi platform environment for compiling cmake binary addons
-	pkgver = 20150221.68315f0
+	pkgver = 20150504.054a42f
 	pkgrel = 1
 	url = https://github.com/xbmc/kodi-platform
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kodi-devel-platform
 	depends = tinyxml
 	conflicts = kodi-platform
 	conflicts = kodi-platform-devel
-	source = https://github.com/xbmc/kodi-platform/archive/48bdd985b843353eec5804e4dbab2dc8f2b4b13e.tar.gz
+	source = https://github.com/xbmc/kodi-platform/archive/054a42f664af3a6740d49759c081d4929a190671.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-platform
