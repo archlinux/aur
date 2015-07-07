@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Winpdb
+Comment=A platform independent Python debugger
+Terminal=false
+Icon=/usr/share/icons/winpdb-icon-16.png
+Exec=winpdb
+Categories=Development

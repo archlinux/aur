@@ -1,0 +1,15 @@
+pkgbase = winpdb
+	pkgdesc = A platform independent Python debugger
+	pkgver = 1.4.8
+	pkgrel = 4
+	url = http://www.winpdb.org/
+	arch = any
+	license = GPL
+	depends = wxpython
+	source = http://winpdb.googlecode.com/files/winpdb-1.4.8.tar.gz
+	source = winpdb.desktop
+	md5sums = e28049cc93c1614b9db20960d76b7ea3
+	md5sums = 07bbfecd2587df6e5d2471c0955e5834
+
+pkgname = winpdb
+
