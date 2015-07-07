@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.16.4
+pkgver=3.16.5
 pkgrel=1
 conflicts=(gtk3)
 provides=(gtk3)
@@ -17,7 +17,7 @@ makedepends=(gobject-introspection libcanberra)
 license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
 	settings.ini)
-sha256sums=('1ee5dbd7a4cb81a91eaa1b7ae64ba5a3eab6a3c0a764155583ab96524590fc8e'
+sha256sums=('b87c99d127eb962fc857c246b77a65322cdffd7dcbcf46a83bce2040e0f4bc31'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare() {
@@ -43,7 +43,7 @@ build() {
     sed -i "/gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->browse_files_tree_view), -1);/d" gtk/gtkfilechooserwidget.c
     sed -i "/gtk_tree_view_columns_autosize (GTK_TREE_VIEW (priv->browse_files_tree_view));/a gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->browse_files_tree_view), MODEL_COL_NAME);" gtk/gtkfilechooserwidget.c
 
-    make
+    make -j4
 }
 
 package() {
