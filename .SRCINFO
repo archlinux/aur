@@ -1,0 +1,20 @@
+pkgbase = gcue2tracks
+	pkgdesc = Tool for spliting compressed audio CD image to tracks with filling tags from cue sheet info.
+	pkgver = 0.5.2
+	pkgrel = 3
+	url = http://trac-hg.assembla.com/gCue2tracks/wiki
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gettext
+	depends = pygtk
+	depends = cuetools
+	depends = shntool
+	depends = ffmpeg
+	depends = unzip
+	optdepends = id3v2: For MP3 tagging support
+	source = gcue2tracks-0.5.2.tar.gz::https://www.assembla.com/spaces/gCue2tracks/documents/bgg6jqEgGr4PptacwqEsg8/download/bgg6jqEgGr4PptacwqEsg8
+	sha256sums = 3a46c3e0c26d143bb9d469ea074a257140aa285e777e83d745e5bab5000cad81
+
+pkgname = gcue2tracks
+
