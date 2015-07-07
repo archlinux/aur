@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-iptvsimple
 _gitname=pvr.iptvsimple
-pkgver=20150408.a2e6c6f
-_gitver=a2e6c6f66cf4d7532a211842eed97e236da9cccb
+pkgver=20150701.0e05337
+_gitver=0e05337a304df72358ea3ed4c6ec06c2cfb5ecab
 pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -29,8 +29,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make

@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-iptvsimple
 	pkgdesc = IPTV Simple PVR client addon for Kodi
-	pkgver = 20150408.a2e6c6f
+	pkgver = 20150701.0e05337
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kodi-devel-pvr-iptvsimple
 	depends = zlib
 	conflicts = kodi-addon-pvr-iptvsimple-devel
 	replaces = kodi-addon-pvr-iptvsimple-devel
-	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/a2e6c6f66cf4d7532a211842eed97e236da9cccb.tar.gz
+	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/0e05337a304df72358ea3ed4c6ec06c2cfb5ecab.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-iptvsimple
