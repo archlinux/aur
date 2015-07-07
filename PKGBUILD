@@ -13,13 +13,14 @@ license=(GPL)
 
 build(){
    cd $srcdir/$pkgname-$pkgver
-   qmake-qt4 PREFIX=$pkgdir/usr
+   chmod 644 COPYING
+   qmake-qt4 PREFIX=/usr
    make
 }
 
 package(){
    cd $srcdir/$pkgname-$pkgver
-   make install
+   make INSTALL_ROOT=$pkgdir install
 }
 
 md5sums=('84c1ad90d3132d42b40025c6167fd8f0')
