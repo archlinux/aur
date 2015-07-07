@@ -1,0 +1,14 @@
+pkgbase = omnikey_cardman_x21
+	pkgdesc = Driver for OMNIKEY Cardman 1021, 3021, 3121, 3621, 3821, 4321, 6121, Smart@Link, Smart@Key
+	pkgver = 3.9.0
+	pkgrel = 2
+	url = http://www.hidglobal.com
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = libusb
+	depends = pcsclite
+	source = https://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_lnx-3.9.0.tar.gz
+
+pkgname = omnikey_cardman_x21
+
