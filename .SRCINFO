@@ -12,5 +12,3 @@ pkgbase = python-wrapt
 
 pkgname = python-wrapt
 
-pkgname = python2-wrapt
-
