@@ -1,0 +1,31 @@
+pkgbase = gtkpod1
+	pkgdesc = A platform-independent GUI for Apple's iPod using GTK2 (old version)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://gtkpod.sourceforge.net/
+	install = gtkpod.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = MPL
+	makedepends = intltool
+	depends = awk
+	depends = libgpod>=0.8.0
+	depends = libid3tag
+	depends = flac
+	depends = libvorbis
+	depends = curl
+	depends = libglade
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	optdepends = vorbis-tools: OGG support
+	optdepends = id3v2: mp3 conversion support
+	conflicts = gtkpod
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/gtkpod/gtkpod/gtkpod-1.0.0/gtkpod-1.0.0.tar.gz
+	source = http://mp4v2.googlecode.com/files/mp4v2-1.9.1.tar.bz2
+	md5sums = cadd402dcd1cfbedda0357bf24965a7c
+	md5sums = 986701929ef15b03155ac4fb16444797
+
+pkgname = gtkpod1
+
