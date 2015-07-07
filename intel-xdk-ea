@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cd /opt/intel/XDK_Early_Access && ./xdk.sh

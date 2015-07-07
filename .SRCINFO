@@ -1,0 +1,16 @@
+pkgbase = intel-xdk-ea
+	pkgdesc = Comprehensive, cross-platform HTML5 development environment (pre-release version)
+	pkgver = 2201
+	pkgrel = 1
+	url = https://software.intel.com/en-us/intel-xdk/early-access
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = libudev0
+	source = intel-xdk-ea
+	source = https://download.xdk.intel.com/xdk-ea/xdk-ea_web_linux_master-ea_2201.tgz
+	md5sums = a8cd1ad751fddfe10a82331109967b11
+
+pkgname = intel-xdk-ea
+
