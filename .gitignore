@@ -1,0 +1,6 @@
+*.src.tar.*
+*.pkg.tar.*
+src/
+pkg/
+
+zsh-history-substring-search/
