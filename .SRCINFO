@@ -1,0 +1,29 @@
+pkgbase = telldus-core
+	pkgdesc = TellStick application and library
+	pkgver = 2.1.2
+	pkgrel = 2
+	url = http://developer.telldus.se/wiki/TellStickInstallationSource
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	makedepends = patch
+	depends = libftdi-compat
+	depends = confuse
+	options = !makeflags
+	backup = etc/tellstick.conf
+	source = http://download.telldus.se/TellStick/Software/telldus-core/telldus-core-2.1.2.tar.gz
+	source = arch-fix.patch
+	source = telldusd
+	source = telldus.service
+	md5sums = 9016622b10bc84b275efbffe1874d619
+	md5sums = af219491b12eb43f14346c78d6d87766
+	md5sums = 53a57c8500f95482814e95a7e0226e29
+	md5sums = 2c03c9a95afd4f694f3fed193b8f4811
+
+pkgname = telldus-core
+

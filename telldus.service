@@ -1,0 +1,15 @@
+# Telldusd service unit file
+#
+[Unit]
+Description=Telldus-core service telldusd
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/telldusd
+ExecStop=/bin/kill -HUP $MAINPID
+PIDFile=/var/run/telldusd.pid
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
