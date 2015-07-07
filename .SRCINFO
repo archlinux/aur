@@ -1,7 +1,7 @@
 pkgbase = python-nikola
 	pkgdesc = A modular, fast, simple, static website generator.
 	pkgver = 7.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getnikola.com/
 	arch = any
 	license = MIT
@@ -28,7 +28,8 @@ pkgname = python-nikola
 	depends = python-logbook
 	depends = python-blinker
 	depends = python-natsort
-	optdepends = python-requests: for theme and plugin installation, and various web services
+	depends = python-setuptools
+	depends = python-requests
 	optdepends = python-markdown: for Markdown support
 	optdepends = python-jinja: for Jinja2 themes
 	optdepends = python-pyphen>=0.9.1: for hyphenation
@@ -40,6 +41,8 @@ pkgname = python-nikola
 	optdepends = python-ghp-import>=0.4.1: for uploading to GitHub Pages
 	optdepends = python-micawber: for embedding media in posts
 	optdepends = python-phpserialize: for WordPress imports
+	optdepends = python-ws4py: for nikola auto
+	optdepends = python-watchdog: for nikola auto
 	conflicts = python-nikola-git
 
 pkgname = python2-nikola
@@ -57,7 +60,8 @@ pkgname = python2-nikola
 	depends = python2-logbook
 	depends = python2-blinker
 	depends = python2-natsort
-	optdepends = python2-requests: for theme and plugin installation, and various web services
+	depends = python2-setuptools
+	depends = python2-requests
 	optdepends = python2-markdown: for Markdown support
 	optdepends = python2-jinja: for Jinja2 themes
 	optdepends = python2-pyphen>=0.9.1: for hyphenation
@@ -69,6 +73,8 @@ pkgname = python2-nikola
 	optdepends = python2-ghp-import>=0.4.1: for uploading to GitHub Pages
 	optdepends = python2-micawber: for embedding media in posts
 	optdepends = python2-phpserialize: for WordPress imports
+	optdepends = python2-ws4py: for nikola auto
+	optdepends = python2-watchdog: for nikola auto
 	conflicts = python2-nikola-git
 
 pkgname = python-nikola-doc
