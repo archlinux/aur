@@ -1,0 +1,19 @@
+pkgbase = brother-dcp350c
+	pkgdesc = Brother DCP-350C CUPS driver
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-dcp350c.install
+	changelog = brother-dcp350c.changelog
+	arch = i686
+	license = custom:Brother Industries
+	makedepends = rpmextract
+	source = brother-dcp350c.patch
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcp350clpr-1.0.1-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcp350ccupswrapper-1.0.1-1.i386.rpm
+	md5sums = edba49be34b7a7006f6cf9151ed29365
+	md5sums = 1faa2bc86558bb6150e8affbd265b7dc
+	md5sums = c6118a2d600199b31950bec3f6082643
+
+pkgname = brother-dcp350c
+

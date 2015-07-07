@@ -1,0 +1,117 @@
+diff -ruN old_usr/local/Brother/Printer/dcp350c/cupswrapper/cupswrapperdcp350c usr/local/Brother/Printer/dcp350c/cupswrapper/cupswrapperdcp350c
+--- old_usr/local/Brother/Printer/dcp350c/cupswrapper/cupswrapperdcp350c	2008-01-24 04:04:00.000000000 +0200
++++ usr/local/Brother/Printer/dcp350c/cupswrapper/cupswrapperdcp350c	2008-12-25 01:53:06.000000000 +0200
+@@ -23,6 +23,7 @@
+ device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/FAX/FAX-/'`
+ pcfilename=`echo $printer_name | tr -d '[A-Z]'`
+ device_model="Printer"
++if /bin/false; then
+ if [ "$1" = '-e' ]; then
+   lpadmin -x ${printer_name}
+   rm -f /usr/share/cups/model/br${printer_model}.ppd
+@@ -65,8 +66,8 @@
+ fi
+ rm -f /usr/share/cups/model/br${printer_model}.ppd
+ ppd_file_name=/usr/share/cups/model/br${printer_model}.ppd
+-
+-cat <<ENDOFPPDFILE1 >$ppd_file_name
++fi
++cat <<ENDOFPPDFILE1 >ppd_file
+ *PPD-Adobe: "4.3"
+ 
+ *%================================================
+@@ -256,7 +257,7 @@
+ ENDOFPPDFILE1
+ 
+ if [ $printer_model = "mfc5860cn" ]; then
+-	cat <<ENDOFPPDFILE_2 >>$ppd_file_name
++	cat <<ENDOFPPDFILE_2 >>ppd_file
+ *%=== Media Type ================================
+ *OpenUI *BRInputSlot/Paper Feed: PickOne
+ *OrderDependency: 13 AnySetup *BRInputSlot
+@@ -270,7 +271,7 @@
+ fi
+ 
+ 
+-cat <<ENDOFPPDFILE_END >>$ppd_file_name
++cat <<ENDOFPPDFILE_END >>ppd_file
+ *%=== Media Type ================================
+ *OpenUI *BRColorMediaType/Media Type: PickOne
+ *OrderDependency: 16 AnySetup *BRColorMediaType
+@@ -669,6 +670,7 @@
+ 
+ ENDOFPPDFILE_END
+ 
++if /bin/false; then
+ chmod 644 $ppd_file_name
+ 
+ if [ -d /usr/share/ppd ]
+@@ -690,8 +692,8 @@
+ rm -f  $brotherlpdwrapper
+ #echo 'rm -f /usr/lib/cups/filter/brlpdwrapper${printer_model}'
+ 
+-
+-cat <<!ENDOFWFILTER! >$brotherlpdwrapper
++fi
++cat <<!ENDOFWFILTER! >wrapper
+ #! /bin/sh
+ #
+ # Copyright (C) 2005 Brother. Industries, Ltd.
+@@ -798,25 +800,25 @@
+       cat    > \$INPUT_TEMP_PS
+    fi
+ fi
+-if [ -e "/usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model}" ]; then
++if [ -e "/usr/share/brother/lpd/filter${printer_model}" ]; then
+        :
+ else
+-    echo "ERROR: /usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model} does not exist"   >>\$LOGFILE
++    echo "ERROR: /usr/share/brother/lpd/filter${printer_model} does not exist"   >>\$LOGFILE
+     errorcode=30
+     exit
+ fi
+ 
+ CUPSOPTION=\`echo "\$5 Copies=\$4" | sed -e 's/BrChain/Chain/' -e 's/BrBrightness/Brightness/' -e 's/BrContrast/Contrast/' -e 's/BrHalfCut/HalfCut/' -e 's/BrAutoTapeCut/AutoCut/' -e 's/BrMirror/Mirror/' -e 's/BrHalftonePattern/Halftone/' -e 's/Binary/Binary/' -e 's/Dither/Dither/' -e 's/ErrorDiffusion/ErrorDiffusion/' -e 's/PageSize/media/' -e 's/BrSheets/Sheets/' -e 's/multiple-document-handling/Collate/' -e 's/separate-documents-collated-copies/ON/' -e 's/separate-documents-uncollated-copies/OFF/'\`
+-if [ -e "/usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1" ]; then
++if [ -e "/usr/share/brother/cupswrapper/brcupsconfpt1" ]; then
+   if [ \$DEBUG = 0 ]; then
+-     /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC 0 "\$CUPSOPTION" "${printer_model}">> /dev/null
++     /usr/share/brother/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC 0 "\$CUPSOPTION" "${printer_model}">> /dev/null
+   else
+-     /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC \$LOGCLEVEL "\$CUPSOPTION" "${printer_model}">>\$LOGFILE
++     /usr/share/brother/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC \$LOGCLEVEL "\$CUPSOPTION" "${printer_model}">>\$LOGFILE
+   fi
+ fi
+ 
+ if [ \$DEBUG -lt 10 ]; then
+-    cat    \$INPUT_TEMP_PS | /usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model} "\$\$" "CUPS" "USB"
++    cat    \$INPUT_TEMP_PS | /usr/share/brother/lpd/filter${printer_model} "\$\$" "CUPS" "USB"
+ 
+     if [ \$LOGLEVEL -gt 2 ];  then
+ 	   if [ \$LOGFILE != "/dev/null" ]; then
+@@ -832,6 +834,7 @@
+ 
+ !ENDOFWFILTER!
+ 
++if /bin/false; then
+ chmod 755 $brotherlpdwrapper
+ #if [ -e /usr/lib64/cups/backend ]; then
+ #   cp $brotherlpdwrapper  $brotherlpdwrapper64
+@@ -872,4 +875,4 @@
+ lpadmin -p ${printer_name} -E -v $port -m br${printer_model}.ppd
+ 
+ exit 0
+-
++fi
+diff -ruN old_usr/local/Brother/Printer/dcp350c/lpd/filterdcp350c usr/local/Brother/Printer/dcp350c/lpd/filterdcp350c
+--- old_usr/local/Brother/Printer/dcp350c/lpd/filterdcp350c	2008-01-03 09:45:22.000000000 +0200
++++ usr/local/Brother/Printer/dcp350c/lpd/filterdcp350c	2008-12-25 01:48:13.000000000 +0200
+@@ -21,7 +21,7 @@
+ PRINTER="dcp350c"
+ PRINTER_TMP=$(echo $PRINTER | sed -e 's/ //g' -e 's/-//g')
+ 
+-BR_PRT_PATH=/usr/local/Brother/Printer/${PRINTER}
++BR_PRT_PATH=/usr/share/brother/
+ RCFILE=`eval echo $BR_PRT_PATH/inf/brPRINTERrc | eval sed 's/PRINTER/"$PRINTER_TMP"/'`
+ PAPER_INF=$BR_PRT_PATH/inf/paperinfij2
+ PSCONV=$BR_PRT_PATH/lpd/psconvertij2

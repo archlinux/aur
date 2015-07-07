@@ -1,0 +1,5 @@
+2014-01-06 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:i
+	Source and homesite URLs updated
+	Added a package() function
