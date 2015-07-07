@@ -1,0 +1,25 @@
+pkgbase = transmission-svn-gtk
+	pkgdesc = Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version)
+	pkgver = 14103
+	pkgrel = 1
+	url = http://www.transmissionbt.com/
+	install = transmission-svn-gtk.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = intltool
+	makedepends = subversion
+	depends = curl
+	depends = libevent
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = notification-daemon: Desktop notification support
+	optdepends = transmission-cli: daemon and web support
+	provides = transmission-gtk
+	conflicts = transmission-gtk
+	source = transmission::svn://svn.transmissionbt.com/Transmission/trunk
+	sha1sums = SKIP
+
+pkgname = transmission-svn-gtk
+
