@@ -1,0 +1,15 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  pkgver=${2%-*}
+  if [ x$pkgver != x"2.5.0" ]; then
+    /bin/cat << EOF
+Upgrading from Veracity 1.x requires repositories to be converted to the new
+format. Type 'vv upgrade' at a command prompt to convert all local repositories.
+
+In Veracity 2.5 the working copy code has been overhauled to be faster and more
+reliable. Users must checkout new working copies.
+EOF
+  fi
+}
+# vim:set ts=2 sw=2 et:
