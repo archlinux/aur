@@ -1,0 +1,20 @@
+pkgbase = icinga-web
+	pkgdesc = Icinga New Web Interface.
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://www.icinga.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = php-pear
+	depends = php-xsl
+	depends = php-ldap
+	optdepends = icinga
+	optdepends = icinga2
+	source = https://github.com/Icinga/icinga-web/releases/download/v1.13.0/icinga-web-1.13.0.tar.gz
+	source = nginx.example.conf
+	md5sums = 0a63ae3c2c1d7cdd5f1362373f696578
+	md5sums = b8f56703a0a6a8b05b9fae070d407ce7
+
+pkgname = icinga-web
+
