@@ -2,8 +2,8 @@
 # Contributor: Jonjo McKay <jonjo@jonjomckay.com>
 
 pkgname=libgroove
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='Library that provides decoding and encoding of audio on a playlist.'
 arch=(i686 x86_64)
 url='https://github.com/andrewrk/libgroove'
@@ -13,7 +13,7 @@ makedepends=(cmake yasm)
 conflicts=(libgroove-git)
 options=('strip' ccache)
 source=("https://github.com/andrewrk/libgroove/archive/${pkgver}.tar.gz")
-sha256sums=('82ba73ff44a3359f10899a11522521bdc9256b8bfad082a3fac49915e9f4d70f')
+sha256sums=('76f68896f078a9613d420339ef887ca8293884ad2cd0fbc031d89a6af2993636')
 
 prepare() {
   mkdir "${srcdir}/${pkgname}-${pkgver}/build"
