@@ -1,0 +1,20 @@
+pkgbase = xcftools
+	pkgdesc = Miscellaneous command line tools for use with the open XCF format used by The GIMP
+	pkgver = 1.0.7
+	pkgrel = 3
+	url = http://henning.makholm.net/software
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = perl
+	makedepends = libpng
+	depends = libpng
+	depends = perl
+	optdepends = gimp
+	source = http://henning.makholm.net/xcftools/xcftools-1.0.7.tar.gz
+	source = xcftools.patch
+	md5sums = fd960b6470fb23520fc4b1ade6cf6e25
+	md5sums = 7439f6a8369a12913243ded6c93d31e1
+
+pkgname = xcftools
+
