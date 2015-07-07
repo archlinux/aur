@@ -1,0 +1,22 @@
+pkgbase = ninja-git
+	pkgdesc = Small build system with a focus on speed
+	pkgver = r2019.a88b75d
+	pkgrel = 1
+	epoch = 2
+	url = http://martine.github.com/ninja/
+	install = ninja-git.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = asciidoc
+	makedepends = python2
+	makedepends = re2c
+	depends = gcc-libs
+	optdepends = emacs: for Emacs mode
+	provides = ninja
+	conflicts = ninja
+	source = git://github.com/martine/ninja.git
+	md5sums = SKIP
+
+pkgname = ninja-git
+
