@@ -1,0 +1,13 @@
+pkgbase = isl3890-firmware
+	pkgdesc = 'softmac' firmware for the 3Com 3CRWE154G72 wireless chipset (and others)
+	pkgver = 2.13.25.0
+	pkgrel = 3
+	url = http://wireless.kernel.org/en/users/Drivers/p54/devices
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://daemonizer.de/prism54/prism54-fw/fw-softmac/2.13.25.0.arm
+	sha512sums = efb19bec727c81cf72b529de5528a4cbede46b594c536a5829741e4b5ddcc54770cd0da3f0e787799b6bdeef587895bcc8bf23f8ce070074a6a87f61e7934792
+
+pkgname = isl3890-firmware
+
