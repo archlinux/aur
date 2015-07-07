@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=LCMC
+GenericName=Linux Cluster Management Console
+Exec=/usr/bin/lcmc
+Icon=/usr/share/icons/hicolor/48x48/apps/lcmc.png
+Terminal=false
+Type=Application
+Categories=Java;Network;

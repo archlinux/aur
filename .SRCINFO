@@ -1,0 +1,29 @@
+pkgbase = lcmc
+	pkgdesc = Linux Cluster Management Console
+	pkgver = 1.7.8
+	pkgrel = 1
+	url = http://lcmc.sourceforge.net/
+	install = lcmc.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime-common
+	depends = libxtst
+	depends = bash
+	depends = hicolor-icon-theme
+	noextract = LCMC-1.7.8.jar
+	source = http://downloads.sourceforge.net/project/lcmc/LCMC-1.7.8.jar
+	source = lcmc
+	source = lcmc.png
+	source = lcmc.desktop
+	source = lcmc.install
+	source = Changelog
+	sha1sums = 17b9b404bfa5460e1b6c80b054f8d5efe9208b81
+	sha1sums = acff8d95b9c1b55940e359c3c4c796ac6f3fc0a9
+	sha1sums = 84f8ab9b450c9e51d828435f12e72cfc851af0cf
+	sha1sums = 583f30b90058efb742a9ecc8e7f33e5e98048341
+	sha1sums = e8b239a493dd5e1eb7e3dc5989bb03800e76a38d
+	sha1sums = SKIP
+
+pkgname = lcmc
+
