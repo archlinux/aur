@@ -1,0 +1,115 @@
+diff -ur selene/src/EncoderConfigWindow.vala selene-patched/src/EncoderConfigWindow.vala
+--- selene/src/EncoderConfigWindow.vala	2015-07-06 17:57:07.013212000 -0600
++++ selene-patched/src/EncoderConfigWindow.vala	2015-07-06 18:04:13.128904321 -0600
+@@ -1200,12 +1200,12 @@
+ 	}
+ 	
+ 	private void cmbFileFormat_changed(){
+-		ListStore model;
++		Gtk.ListStore model;
+ 		TreeIter iter;
+ 		
+ 		//populate file extensions ---------------------------
+ 		
+-		model = new ListStore(2, typeof(string), typeof(string));
++		model = new Gtk.ListStore(2, typeof(string), typeof(string));
+ 		cmbFileExtension.set_model(model);
+ 
+ 		switch (format) {
+@@ -1470,7 +1470,7 @@
+ 	}
+ 	
+ 	private void cmbACodec_changed(){
+-		ListStore model;
++		Gtk.ListStore model;
+ 		TreeIter iter;
+ 
+ 		//show & hide options
+@@ -1891,7 +1891,7 @@
+ 	}
+ 
+ 	private void cmbVCodec_changed(){
+-		ListStore model;
++		Gtk.ListStore model;
+ 		TreeIter iter;
+ 		
+ 		//show x264 options
+diff -ur selene/src/MainWindow.vala selene-patched/src/MainWindow.vala
+--- selene/src/MainWindow.vala	2015-07-06 17:57:07.013212000 -0600
++++ selene-patched/src/MainWindow.vala	2015-07-06 18:04:11.072899433 -0600
+@@ -632,7 +632,7 @@
+ 	
+ 	private void cmbScriptFolder_changed(){
+ 		//create empty model
+-		ListStore model = new ListStore(2, typeof(ScriptFile), typeof(string));
++		Gtk.ListStore model = new Gtk.ListStore(2, typeof(ScriptFile), typeof(string));
+ 		cmbScriptFile.set_model(model);
+ 		
+ 		string path = gtk_combobox_get_value(cmbScriptFolder,0,"");
+@@ -721,7 +721,7 @@
+ 			cmbScriptFolder.set_active(-1); 
+ 			
+ 			//add the selected file
+-			ListStore model1 = new ListStore(2, typeof(ScriptFile), typeof(string));
++			Gtk.ListStore model1 = new Gtk.ListStore(2, typeof(ScriptFile), typeof(string));
+ 			cmbScriptFile.set_model(model1);
+ 			ScriptFile sh = new ScriptFile(filePath);
+ 			model1.append(out iter);
+@@ -732,7 +732,7 @@
+ 		}
+ 
+ 		//select file
+-		ListStore model1 = (ListStore) cmbScriptFile.model;
++		Gtk.ListStore model1 = (Gtk.ListStore) cmbScriptFile.model;
+ 		for (bool next = model1.get_iter_first (out iter); next; next = model1.iter_next (ref iter)) {
+ 			ScriptFile sh = new ScriptFile(filePath);
+ 			model1.get (iter, 0, out sh);
+@@ -1213,10 +1213,10 @@
+ 			MediaFile file = App.InputFiles[index];
+ 			
+ 			if (file.crop_detect()){
+-				((ListStore)tvFiles.model).set (iter, InputField.FILE_CROPVAL, file.crop_values_info());
++				((Gtk.ListStore)tvFiles.model).set (iter, InputField.FILE_CROPVAL, file.crop_values_info());
+ 			}
+ 			else{
+-				((ListStore)tvFiles.model).set (iter, InputField.FILE_CROPVAL, _("N/A"));
++				((Gtk.ListStore)tvFiles.model).set (iter, InputField.FILE_CROPVAL, _("N/A"));
+ 			}	
+ 			
+ 			do_events();
+@@ -1341,7 +1341,7 @@
+     }
+ 
+ 	private void refresh_file_list (bool refresh_model){
+-		ListStore inputStore = new ListStore (9, typeof(MediaFile), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (int), typeof (string));
++		Gtk.ListStore inputStore = new Gtk.ListStore (9, typeof(MediaFile), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (int), typeof (string));
+ 		
+ 		TreeIter iter;
+ 		foreach(MediaFile mFile in App.InputFiles) {
+@@ -1381,7 +1381,7 @@
+ 			}
+ 		}
+ 		
+-		ListStore model = (ListStore) tvFiles.model;
++		Gtk.ListStore model = (Gtk.ListStore) tvFiles.model;
+ 		TreeIter iter;
+ 		model.get_iter (out iter, new TreePath.from_string (path));
+ 		model.set (iter, InputField.FILE_CROPVAL, mf.crop_values_info());
+@@ -1651,7 +1651,7 @@
+ 
+ 	public bool update_status(){
+ 		TreeIter iter;
+-		ListStore model = (ListStore)tvFiles.model;
++		Gtk.ListStore model = (Gtk.ListStore)tvFiles.model;
+ 
+ 		switch (App.Status) {
+ 			case AppStatus.PAUSED:
+@@ -1747,7 +1747,7 @@
+ 	}
+ 	
+ 	public void update_status_all(){
+-		ListStore model = (ListStore)tvFiles.model;
++		Gtk.ListStore model = (Gtk.ListStore)tvFiles.model;
+ 		MediaFile mf;
+ 		int index = -1;
+ 		TreeIter iter;
