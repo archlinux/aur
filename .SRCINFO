@@ -1,0 +1,15 @@
+pkgbase = bitefusion
+	pkgdesc = A snake game with 8 levels
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://www.junoplay.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = zlib
+	source = http://www.junoplay.com/files/bitefusion-1.0.1.tar.gz
+	md5sums = d7bc933c3363a76b4cb3eeb2a4f33b40
+
+pkgname = bitefusion
+
