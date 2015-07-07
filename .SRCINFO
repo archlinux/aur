@@ -1,0 +1,21 @@
+pkgbase = vim-languagetool
+	pkgdesc = Grammar checker for English, French, German (etc.) in Vim
+	pkgver = 1.28
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=3223
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	makedepends = unzip
+	depends = vim
+	depends = languagetool
+	source = LanguageTool.zip::http://www.vim.org/scripts/download_script.php?src_id=21514
+	source = languagetool.patch
+	source = license.txt
+	md5sums = 640007d33b5e04e2e94c5ab2d8595f58
+	md5sums = d3571275436ba49afd5693c89dff001b
+	md5sums = f49a1270c8ead84829517d3a625e1d83
+
+pkgname = vim-languagetool
+
