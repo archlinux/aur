@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-vdr-vnsi
 	pkgdesc = VDR VNSI PVR client addon for Kodi
-	pkgver = 20150321.3a28e39
+	pkgver = 20150701.c361ac4
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.vdr.vnsi
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kodi-devel-pvr-vdr-vnsi
 	depends = kodi-devel
 	conflicts = kodi-addon-pvr-vdr-vnsi-devel
 	replaces = kodi-addon-pvr-vdr-vnsi-devel
-	source = https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/3a28e39a59eefbca8ad3ff932c8373eede954416.tar.gz
+	source = https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/c361ac49add28a5e1cdd6a25cd7ef6f4460756c8.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-vdr-vnsi

@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-vdr-vnsi
 _gitname=pvr.vdr.vnsi
-pkgver=20150321.3a28e39
-_gitver=3a28e39a59eefbca8ad3ff932c8373eede954416
+pkgver=20150701.c361ac4
+_gitver=c361ac49add28a5e1cdd6a25cd7ef6f4460756c8
 pkgrel=1
 pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -29,8 +29,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
