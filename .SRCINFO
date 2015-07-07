@@ -1,0 +1,18 @@
+pkgbase = python2-guidata
+	pkgdesc = Python library generating graphical user interfaces for easy dataset editing and display
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://code.google.com/p/guidata/
+	arch = any
+	license = custom:CeCIL
+	makedepends = python2-distribute
+	makedepends = unzip
+	depends = python2-pyqt
+	optdepends = python2-h5py: for HDF5 files I/O
+	optdepends = spyder: for array/dictionnary editors
+	options = !emptydirs
+	source = http://guidata.googlecode.com/files/guidata-1.6.1.zip
+	md5sums = 47d625f998b5092ba797c8657979aa94
+
+pkgname = python2-guidata
+
