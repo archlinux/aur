@@ -1,0 +1,27 @@
+pkgbase = basis-pro5
+	pkgdesc = BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj
+	pkgver = 14.0
+	pkgrel = 1
+	url = http://www.basis.com/
+	install = basis-pro5-install.sh
+	arch = i686
+	arch = x86_64
+	license = custom:Basis International
+	options = !docs
+	options = emptydirs
+	options = !strip
+	source_i686 = 104551200blm111010.Z::file://104551200blm111010.Z
+	source_i686 = 104551400.Z::file://104551400.Z
+	source_i686 = 124551400.Z::file://124551400.Z
+	md5sums_i686 = c636e2a4a1e1b751d4ed4452e814d10c
+	md5sums_i686 = 2917e1056665be192adb3f99dcef85b4
+	md5sums_i686 = 4d53bd538b66365080cd695bf70de3f2
+	source_x86_64 = 604551200blm111010.Z::file://604551200blm111010.Z
+	source_x86_64 = 604551400.Z::file://604551400.Z
+	source_x86_64 = 624551400.Z::file://624551400.Z
+	md5sums_x86_64 = 4711bdb97625b78dbcba941efb9167be
+	md5sums_x86_64 = 70b8b73f56cc18f720f573a8a980d19b
+	md5sums_x86_64 = 6fac757c9d0627d8dadff890fad35339
+
+pkgname = basis-pro5
+
