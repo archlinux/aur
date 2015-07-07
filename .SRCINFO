@@ -1,0 +1,16 @@
+pkgbase = python2-pyliblzma
+	pkgdesc = Python 2 bindings for liblzma
+	pkgver = 0.5.3
+	pkgrel = 6
+	url = https://pypi.python.org/pypi/pyliblzma
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = python2-setuptools
+	depends = python2
+	depends = xz
+	source = https://pypi.python.org/packages/source/p/pyliblzma/pyliblzma-0.5.3.tar.bz2
+	sha256sums = 08d762f36d5e59fb9bb0e22e000c300b21f97e35b713321ee504cfb442667957
+
+pkgname = python2-pyliblzma
+
