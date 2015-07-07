@@ -1,0 +1,14 @@
+pkgbase = transmission-utils
+	pkgdesc = A set of command-line scripts that automate common tasks in Transmission
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://github.com/vinsonchuong/transmission-utils
+	arch = any
+	license = MIT
+	makedepends = clidoc
+	depends = transmission-cli
+	source = https://github.com/vinsonchuong/transmission-utils/archive/v0.0.2.tar.gz
+	md5sums = b0fcc80a3e3a5bea08e88b532efe9dd7
+
+pkgname = transmission-utils
+
