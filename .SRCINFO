@@ -1,0 +1,17 @@
+pkgbase = xsw
+	pkgdesc = Slideshow presentation tool for those who are frustrated with PowerPoint and its clones
+	pkgver = 0.3.5
+	pkgrel = 3
+	url = http://code.google.com/p/xsw/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_gfx
+	optdepends = imagemagick: convert slideshow to png,jpeg,pdf
+	source = http://xsw.googlecode.com/files/xsw-0.3.5.tar.gz
+	md5sums = 916849d541a39aa8c96b89a94d523a0b
+
+pkgname = xsw
+
