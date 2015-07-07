@@ -1,0 +1,15 @@
+pkgbase = python2-ffnet
+	pkgdesc = Feed-forward neural network solution for python
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://ffnet.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/ffnet/ffnet-0.8.0.tar.gz
+	md5sums = ebffdc0c69a7b7fb8f61807aee3fab1d
+
+pkgname = python2-ffnet
+
