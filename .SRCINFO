@@ -1,0 +1,15 @@
+pkgbase = sddm-numix-theme-git
+	pkgdesc = Numix Theme for SDDM
+	pkgver = 0.1.r42.3db8e3a
+	pkgrel = 1
+	url = https://github.com/intialonso/intialonso.github.io.git
+	install = sddm-numix-theme.install
+	arch = any
+	license = CCPL:cc-by-sa
+	makedepends = git
+	depends = sddm
+	source = git://github.com/intialonso/intialonso.github.io.git
+	sha256sums = SKIP
+
+pkgname = sddm-numix-theme-git
+
