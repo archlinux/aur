@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-mediaportal-tvserver
 _gitname=pvr.mediaportal.tvserver
-pkgver=20150331.6f8ca82
-_gitver=6f8ca82e94ac7ebbd40f3d982c0502c8245f9b83
+pkgver=20150701.9cf9f36
+_gitver=9cf9f36dd500e030c4693906f55e8dcaf0748a6a
 pkgrel=1
 pkgdesc='MediaPortal PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
