@@ -1,0 +1,21 @@
+pkgbase = gdcm
+	pkgdesc = a C++ library for DICOM medical files
+	pkgver = 2.4.4
+	pkgrel = 2
+	url = http://gdcm.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = swig
+	makedepends = python2
+	makedepends = java-environment
+	makedepends = mono
+	depends = vtk
+	optdepends = python2: python bindings
+	optdepends = java-runtime: java bindings
+	source = http://sourceforge.net/projects/gdcm/files/gdcm%202.x/GDCM%202.4.4/gdcm-2.4.4.tar.bz2
+	md5sums = c1fd2a9595236a03d114370e9c42ef48
+
+pkgname = gdcm
+
