@@ -1,0 +1,18 @@
+pkgbase = enyo-doom
+	pkgdesc = A frontend for Doom engines
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://github.com/stephendcofer/enyo-doom
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt5-base
+	optdepends = chocolate-doom
+	optdepends = prboom
+	optdepends = zdoom
+	source = https://github.com/stephendcofer/enyo-doom/archive/1.01.tar.gz
+	md5sums = fa19836e763ee0ba4628a4822d886930
+
+pkgname = enyo-doom
+
