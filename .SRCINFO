@@ -1,0 +1,13 @@
+pkgbase = python-yapf
+	pkgdesc = A formatter for Python code.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/google/yapf
+	arch = any
+	license = Apache
+	depends = python
+	source = https://pypi.python.org/packages/source/y/yapf/yapf-0.2.1.tar.gz
+	sha256sums = 310e68e2b30138d40b23502c01985bce679b0256b93af6ce7f8018493747f331
+
+pkgname = python-yapf
+
