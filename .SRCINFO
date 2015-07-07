@@ -1,0 +1,14 @@
+pkgbase = pgworksheet
+	pkgdesc = A simple GUI frontend to PostgreSQL
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://pgworksheet.projects.postgresql.org/
+	arch = i686
+	license = GPL
+	depends = pygtk
+	depends = pypgsql
+	source = http://downloads.sourceforge.net/sourceforge/pgworksheet/pgworksheet-1.9.tar.bz2
+	md5sums = f70c8884350ad8a8e266697d23e4cdeb
+
+pkgname = pgworksheet
+

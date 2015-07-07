@@ -1,0 +1,7 @@
+2008-03-14 Angelo Theodorou <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Arch field added
+	License field set
+	Source downloading from downloads.sourceforge.net
+	Added workarounds to fix some files permissions
