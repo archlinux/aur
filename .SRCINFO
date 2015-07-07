@@ -1,0 +1,23 @@
+pkgbase = cnijfilter-mp230
+	pkgdesc = Canon IJ Printer Driver (for mp230 series)
+	pkgver = 3.80
+	pkgrel = 1
+	url = http://support-au.canon.com.au/contents/AU/EN/0100469302.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = gtk2
+	depends = cups
+	depends = ghostscript
+	source = http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-3.80-1.tar.gz
+	source = fix_cups.patch
+	source = fix_png.patch
+	source = fix_configures.patch
+	md5sums = b6b92717930021d24bd750d4197bdf3b
+	md5sums = c973834af2962d7ad239811b0b0d1db1
+	md5sums = 5f665042df2175da3629667aaf258782
+	md5sums = d75d20fa9041fff6b5df02cdea9e8732
+
+pkgname = cnijfilter-mp230
+
