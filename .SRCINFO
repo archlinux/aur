@@ -1,0 +1,33 @@
+pkgbase = cocos2d-x-src
+	pkgdesc = Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X
+	pkgver = 3.6
+	pkgrel = 2
+	url = http://www.cocos2d-x.org/filedown/
+	arch = i686
+	arch = x86_64
+	license = MIT License
+	makedepends = python2
+	depends = glew
+	depends = glfw
+	depends = glibc
+	depends = fontconfig
+	depends = libgl
+	depends = curl
+	depends = libx11
+	depends = zlib
+	depends = libpng
+	depends = freetype2
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.cocos2d-x.org/filedown/cocos2d-x-3.6.zip
+	source = README
+	source = cocos2d-x.sh
+	source = cocos2d-x.csh
+	sha1sums = d9f52a3bda96948e1b491d75a2c3c3a3fa1c9e98
+	sha1sums = 56aac03c4af0df8fcb371f1ae9a3b9f3f6983f72
+	sha1sums = 353bdefe07bdb6eb7f53aff20d20e83b488c1c05
+	sha1sums = 49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6
+
+pkgname = cocos2d-x-src
+
