@@ -1,0 +1,19 @@
+pkgbase = vim-badwolf-git
+	pkgdesc = A color scheme for Vim, pieced together by Steve Losh.
+	pkgver = e6fdf18
+	pkgrel = 1
+	epoch = 1
+	url = http://stevelosh.com/projects/badwolf/
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-badwolf
+	conflicts = vim-badwolf
+	source = git+https://github.com/sjl/badwolf.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vim-badwolf-git
+
