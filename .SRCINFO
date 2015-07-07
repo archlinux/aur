@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-argustv
 	pkgdesc = ARGUS TV PVR addon for Kodi
-	pkgver = 20150409.96ee875
+	pkgver = 20150701.3e2350c
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.argustv
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kodi-devel-pvr-argustv
 	makedepends = kodi-devel-platform
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
-	source = https://github.com/kodi-pvr/pvr.argustv/archive/96ee87503ebdaadc3cdf66707fb1f263f96dc683.tar.gz
+	source = https://github.com/kodi-pvr/pvr.argustv/archive/3e2350cf9b1bacafcc3a99ed636df68290d15a4c.tar.gz
 	source = http://garr.dl.sourceforge.net/project/jsoncpp/jsoncpp/0.5.0/jsoncpp-src-0.5.0.tar.gz
 	source = jsoncpp-cmakelists.patch
 	md5sums = SKIP
