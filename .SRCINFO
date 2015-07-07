@@ -1,0 +1,15 @@
+pkgbase = ruby-maruku
+	pkgdesc = Maruku is a Markdown-superset interpreter written in Ruby.
+	pkgver = 0.7.2
+	pkgrel = 3
+	url = http://github.com/bhollis/maruku
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = maruku-0.7.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/maruku-0.7.2.gem
+	sha256sums = e8a755d8e9c24f1601157c8b376f0378f88d487fa777aa655f332504557a0798
+
+pkgname = ruby-maruku
+
