@@ -1,0 +1,15 @@
+pkgbase = spec-git
+	pkgdesc = Bash implementation of color spectrum for IP subneting.
+	pkgver = r8.9549867
+	pkgrel = 1
+	url = https://github.com/h3/spec
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = spec
+	conflicts = spec
+	source = git://github.com/h3/spec.git
+	md5sums = SKIP
+
+pkgname = spec-git
+
