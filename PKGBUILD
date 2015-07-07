@@ -19,7 +19,7 @@ pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
 # when building specific commit: 1) pkgver=commit_sha   2) _gitver=$pkgver
-pkgver=15.0b1
+pkgver=15.0rc1
 #_gitver=$pkgver
 _gitver=$pkgver-Isengard
 
@@ -40,10 +40,9 @@ makedepends=(
   'tinyxml' 'unzip' 'upower' 'xorg-xdpyinfo' 'yajl' 'zip'
 )
 
-source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz" "0001-rsxs-gcc5-fix.patch")
+source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
 sha256sums=(
-  '2075e80ea7193f69f5c87721c65b8439c4ed29389709d0ee6f5db52d0c3b33ad'
-  '96810302a15b215f4aea7854932a70ecd203bbe1730153cc6221ad20e69281bd')
+  '8dc56816a7722d84a2ca13a47f599a8232f69d7c69f80da905a158598e1614a6')
 
 _prefix='/usr'
 
@@ -73,8 +72,6 @@ prepare() {
   sed '/WiiRemote/d' -i tools/EventClients/Makefile.in
   sed '/mkdir -p $(DESTDIR)$(bindir)/i \
 install:' -i tools/EventClients/Makefile.in
-
-  patch -p1 -i "$srcdir/0001-rsxs-gcc5-fix.patch"
 }
 
 build() {
