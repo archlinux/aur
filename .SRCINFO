@@ -1,0 +1,14 @@
+pkgbase = dds
+	pkgdesc = A bridge double dummy solver
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = http://privat.bahnhof.se/wb758135/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	options = staticlibs
+	source = http://privat.bahnhof.se/wb758135/dds270-src.zip
+	md5sums = f85ab1086bd5ddb8386e97bf0ed6d239
+
+pkgname = dds
+
