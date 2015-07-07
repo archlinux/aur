@@ -1,6 +1,6 @@
 pkgbase = private-internet-access-vpn
 	pkgdesc = Installs VPN profiles for Private Internet Access Service
-	pkgver = 2.1.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://www.privateinternetaccess.com/
 	arch = any
@@ -14,13 +14,15 @@ pkgbase = private-internet-access-vpn
 	source = https://www.privateinternetaccess.com/openvpn/openvpn.zip
 	source = https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh
 	source = login-example.conf
+	source = pia-example.conf
 	source = restart.conf
 	source = vpn.sh
 	source = pia.8.gz
-	source = git+https://github.com/flamusdiu/python-pia.git#tag=2.1.1
+	source = git+https://github.com/flamusdiu/python-pia.git#tag=v2.2
 	sha256sums = c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92
 	sha256sums = 6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b
 	sha256sums = 4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30
+	sha256sums = 52f69f37c525bde28cfee8b5b8905c75ee60b6ba35c16541da9ac6300b378553
 	sha256sums = 246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e
 	sha256sums = 7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46
 	sha256sums = f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab

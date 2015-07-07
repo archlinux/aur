@@ -1,6 +1,6 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
@@ -13,6 +13,7 @@ optdepends=('networkmanager: Enables PIA for Network Manager'
 sha256sums=('c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92'
             '6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
+            '52f69f37c525bde28cfee8b5b8905c75ee60b6ba35c16541da9ac6300b378553'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
             '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
             'f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab'
@@ -21,6 +22,7 @@ sha256sums=('c2f9af251ae63395896366e0be03ff4eea7748dcc6333fbe777a8f09317bba92'
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
         "https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh"
 	"login-example.conf"
+	"pia-example.conf"
 	"restart.conf"
 	"vpn.sh"
 	"pia.8.gz"
@@ -76,7 +78,7 @@ package() {
   install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/usr/share/man/man8"
 
-  install -Dm 600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
+  install -Dm 644 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
   install -m 755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
   install -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
   install -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
