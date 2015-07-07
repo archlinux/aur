@@ -1,0 +1,14 @@
+pkgbase = rover
+	pkgdesc = Simple file browser for the terminal.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lecram/rover
+	arch = i686
+	arch = x86_64
+	license = custom:Public Domain
+	depends = ncurses
+	source = https://github.com/lecram/rover/archive/v0.3.0.tar.gz
+	sha256sums = 4beb5b0e722c51cd47e0ec6c8591737251ec47f7882a53453a43e6924d673cb1
+
+pkgname = rover
+
