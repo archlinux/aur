@@ -2,7 +2,6 @@
 # Contributor: Matías Hernández <msdark(at)archlinux(dot)cl>
 # Contributor: Hugo Ideler <hugoideler(at)dse(dot)nl>
 #
-# fixes.patch (biloky):
 #   2010.09.23 - some Info.plist does not contain a CFBundleName, use 
 #                CFBundleDisplayName instead
 #   2011.08.07 - fix gcc4.6 werror=sign-compare error (2012.03.21 fixed upstream)
@@ -16,10 +15,11 @@
 #   2013.08.03 - use -Wno-error=unused-result in CFLAGS to ignore unused 
 #                results warnings
 #   2015.07.07 - removed -Werror to ignore compile warnings (Hugo Ideler)
+#              - PKGBUILD fixes and updated git versioning
 
 pkgname=ideviceinstaller-git
 _gitname=ideviceinstaller
-pkgver=20150707
+pkgver=1.1.0.r11.g9677564
 pkgrel=1
 pkgdesc="Manage Applications of an iPhone or iPod Touch"
 arch=('i686' 'x86_64')
@@ -29,31 +29,29 @@ groups=('system')
 depends=('libimobiledevice' 'usbmuxd' 'libzip') 
 makedepends=('git' 'automake')
 provides=('ideviceinstaller')
-source=('git://git.sukimashita.com/ideviceinstaller.git')
+source=("git://git.sukimashita.com/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname}
+  cd ${srcdir}/${_gitname}
 
   # Use the tag of the last commit
-  # git describe --always | sed 's|-|.|g'
+  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
   
   # Use current date
-  date +%Y%m%d
+  #date +%Y%m%d
 }
 
 build() {
-  cd ${_gitname}
+  cd ${srcdir}/${_gitname}
 
-#  unset CPPFLAGS
-#  sed -i "/AS_COMPILER_FLAGS(/s/-Werror/-Werror -Wno-error=unused-result/" configure.ac
   sed -i "/AS_COMPILER_FLAGS(/s/-Werror//" configure.ac
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd ${_gitname}
+  cd ${srcdir}/${_gitname}
 
   make DESTDIR=${pkgdir} install
 }
