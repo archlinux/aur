@@ -1,0 +1,50 @@
+post_install (){
+    DKMS=$(which dkms)
+
+    $DKMS add -m asix -v v4.17.0
+    $DKMS build -m asix -v v4.17.0
+    $DKMS install -m asix -v v4.17.0
+    
+    echo " >> "
+    echo " >> rmmod asix"
+    rmmod asix
+    echo " >> depmod -a"
+    depmod -a
+    echo " >> modprobe asix"
+    modprobe asix
+    echo " >> done "
+    
+}
+
+pre_upgrade(){
+    pre_remove
+}
+
+post_upgrade(){
+    post_install
+}
+
+pre_remove (){
+    _inmemory=$(/usr/bin/lsmod | /usr/bin/grep asix)
+    if [ ! -z "$_inmemory" ]; then
+        /usr/bin/rmmod asix &> /dev/null
+    fi
+
+    DKMS=$(which dkms)
+
+    _line=$($DKMS status -m asix)
+    if echo "$_line" | grep -E 'added|built|installed'; then
+        version=$(echo "$_line" | sed 's/asix,\([^,]*\)[,:].*/\1/;t;d')
+        $DKMS remove -m asix -v $version --all
+    fi
+    
+}
+
+post_remove () {
+    /sbin/depmod -a
+    modprobe asix
+}
+
+op=$1
+shift
+$op $*

@@ -1,0 +1,11 @@
+diff -aur AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v4.17.0_Source.pristine/Makefile AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v4.17.0_Source.new/Makefile
+--- AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v4.17.0_Source.pristine/Makefile	2014-05-21 00:50:13.949688787 -0300
++++ AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v4.17.0_Source.new/Makefile	2014-05-21 00:50:43.493684335 -0300
+@@ -10,6 +10,7 @@
+ endif
+ 
+ EXTRA_CFLAGS = -DEXPORT_SYMTAB
++EXTRA_CFLAGS += -Wno-date-time
+ PWD = $(shell pwd)
+ DEST = /lib/modules/$(CURRENT)/kernel/$(MDIR)
+ 
