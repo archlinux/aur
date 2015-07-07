@@ -1,0 +1,16 @@
+pkgbase = texlive-avm
+	pkgdesc = A latex style for attribute-value matrices
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://nlp.stanford.edu/~manning/tex/
+	install = texlive-avm.install
+	arch = any
+	license = custom
+	depends = texlive-core
+	source = http://nlp.stanford.edu/~manning/tex/avm.sty
+	source = http://nlp.stanford.edu/~manning/tex/avm-doc.tex
+	md5sums = edb92c7995afc59e029f5cc4490b1962
+	md5sums = 21c3fb1470effca2ffe02bf291a4c14d
+
+pkgname = texlive-avm
+
