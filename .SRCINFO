@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-filmon
 	pkgdesc = Filmon PVR addon for Kodi
-	pkgver = 20150331.413fe9e
+	pkgver = 20150701.dab922f
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.filmon
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kodi-devel-pvr-filmon
 	makedepends = kodi-devel-platform
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
-	source = https://github.com/kodi-pvr/pvr.filmon/archive/413fe9eca6f4a202e678e2dcc7dbf59f19e35164.tar.gz
+	source = https://github.com/kodi-pvr/pvr.filmon/archive/dab922f9fa177fa19b553400123514258f4d2867.tar.gz
 	source = http://garr.dl.sourceforge.net/project/jsoncpp/jsoncpp/0.5.0/jsoncpp-src-0.5.0.tar.gz
 	source = jsoncpp-cmakelists.patch
 	md5sums = SKIP
