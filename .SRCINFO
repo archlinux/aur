@@ -1,0 +1,17 @@
+pkgbase = dislocker
+	pkgdesc = Read BitLocker encrypted volumes under Linux
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.hsc.fr/ressources/outils/dislocker
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = fuse
+	depends = polarssl
+	optdepends = ntfs-3g: NTFS file system support
+	conflicts = dislocker-git
+	source = https://github.com/Aorimn/dislocker/archive/v0.4.tar.gz
+	md5sums = 440d4a107d3f4fa56cb8e4ca7b62e645
+
+pkgname = dislocker
+
