@@ -1,0 +1,18 @@
+pkgbase = shadermaker
+	pkgdesc = A simple and cross-platform GLSL editor
+	pkgver = 1.02
+	pkgrel = 5
+	url = http://cgvr.cs.uni-bremen.de/teaching/shader_maker
+	changelog = shadermaker.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = qt4
+	source = http://cgvr.cs.uni-bremen.de/teaching/shader_maker/ShaderMaker_src.zip
+	source = shadermaker.desktop
+	md5sums = 5ec3cfb3e2335b6ccd008a54225dd603
+	md5sums = 1af901ac4b9e6b5239770aded4a8ca46
+
+pkgname = shadermaker
+

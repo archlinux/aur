@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Shader Maker
+Comment=GLSL editor
+Exec=ShaderMaker
+Icon=shadermaker.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Development;IDE;

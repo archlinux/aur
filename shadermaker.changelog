@@ -1,0 +1,24 @@
+2013-10-27 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Source URL corrected
+
+2013-03-10 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated source archive MD5 sum
+	Updated for new qt4 package and qmake-qt4
+
+2012-02-03 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+	Source URL corrected
+
+2011-03-21 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Corrected the source and home URLs
+	Added x86_64 to the arch array
+	Added support for the new executable name
