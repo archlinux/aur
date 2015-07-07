@@ -1,0 +1,28 @@
+pkgbase = python2-etsproxy
+	pkgdesc = ETS Proxy Modules for Backwards Compatibility
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/enthought/etsproxy
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	provides = python2-enthoughtbase=3.1.0
+	provides = python2-envisagecore=3.2.0
+	provides = python2-envisageplugins=3.2.0
+	provides = python2-traitsbackendwx=3.6.0
+	provides = python2-traitsbackendqt=3.6.0
+	provides = python2-traitsgui=3.6.0
+	conflicts = python2-etsproxy-git
+	conflicts = python2-enthoughtbase
+	conflicts = python2-envisagecore
+	conflicts = python2-envisageplugins
+	conflicts = python2-traitsbackendwx
+	conflicts = python2-traitsbackendqt
+	conflicts = python2-traitsgui
+	options = !emptydirs
+	source = https://github.com/enthought/etsproxy/archive/0.1.2.tar.gz
+	md5sums = dfde9ff789238db38e3fc90fa8131b84
+
+pkgname = python2-etsproxy
+
