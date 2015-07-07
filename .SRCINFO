@@ -1,0 +1,21 @@
+pkgbase = ruby-uber-s3
+	pkgdesc = A simple & very fast S3 client supporting sync / async HTTP adapters
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://github.com/nulayer/uber-s3
+	arch = any
+	groups = pacgem
+	license = custom:ruby-uber-s3
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	depends = ruby-mime-types>=1.17
+	optdepends = ruby-rake: Ruby based make-like utility.
+	optdepends = ruby-rspec: rspec-2.7.0
+	noextract = uber-s3-0.2.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/uber-s3-0.2.4.gem
+	sha256sums = 9cda6587d6894227fbd99101ac9b560a8a91d501b900457daf06c1e18ce790ae
+
+pkgname = ruby-uber-s3
+
