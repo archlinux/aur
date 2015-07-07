@@ -7,7 +7,7 @@ pkgname=thermald-git
 pkgver=1.4.2
 pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/01org/thermal_daemon"
 license=('GPL2')
 depends=('dbus-glib>=0.94' 'libxml2>=2.4')
