@@ -1,0 +1,24 @@
+pkgbase = python-unittest2
+	pkgdesc = The new features in unittest backported to Python 2.4+.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.voidspace.org.uk/python/articles/unittest2.shtml
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
+	source = remove-argparse-requirement.patch
+	source = LICENSE
+	sha256sums = 22882a0e418c284e1f718a822b3b022944d53d2d908e1690b319a9d3eb2c0579
+	sha256sums = 30ea56c67824a126c1700435383aba17d72ffd2e5a901294c781938d33e9ab2f
+	sha256sums = e0bfff5f29a59d078142b8b24b60b0105043057b9e238974d26ae778804ba9bc
+
+pkgname = python-unittest2
+	depends = python-six>=1.4.0
+	depends = python-traceback2
+
+pkgname = python2-unittest2
+	depends = python2-six>=1.4.0
+	depends = python2-traceback2
+
