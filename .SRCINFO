@@ -1,0 +1,23 @@
+pkgbase = drqueue
+	pkgdesc = An Open Source render farm managing software
+	pkgver = 0.64.4
+	pkgrel = 1
+	url = http://www.drqueue.org/
+	install = drqueue.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	makedepends = pkgconfig
+	depends = python2
+	depends = gtk2
+	depends = tcsh
+	source = http://www.drqueue.org/files/drqueue.0.64.4.tgz
+	source = drqueue.sh
+	source = SConstruct.patch
+	md5sums = 5d60597cc325f40654a5e2c09a557581
+	md5sums = f74b6b0a3c36a972ba8672cf61e08e22
+	md5sums = 47bb1942f23390fa593a180196bda157
+
+pkgname = drqueue
+

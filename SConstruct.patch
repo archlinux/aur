@@ -1,0 +1,21 @@
+--- SConstruct.orig	2010-06-13 19:27:24.000000000 +0200
++++ SConstruct	2011-07-26 20:26:12.253266624 +0200
+@@ -76,11 +76,14 @@
+ 	try:
+ 		gitlog = subprocess.Popen(["git", "show", "--abbrev-commit"], stdout=subprocess.PIPE)
+ 	except OSError:
+-		print("Not a Git repository. Can't fetch commit id.")
+-		commit_string = ""
++		commit_string = "" 
+ 	else:
+-		commit_string = gitlog.communicate()[0].split("\n")[0].split(" ")[1]
+-		print("Current Git commit id is: "+commit_string)
++		if gitlog.poll() != "0":
++			print("Not a Git repository. Can't fetch commit id.")
++			commit_string = "" 
++		else:
++			commit_string = gitlog.communicate()[0].split("\n")[0].split(" ")[1]
++			print("Current Git commit id is: "+commit_string)
+ 	return commit_string
+ 
+ def write_git_rev(commit_id):

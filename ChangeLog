@@ -1,0 +1,6 @@
+2011-07-26 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added X86_64 to the arch array
+	Added python2 to the depends array
+	Added a patch to the SConstruct file to allow compilation

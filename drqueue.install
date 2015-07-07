@@ -1,0 +1,6 @@
+# arg 1:  the old package version
+post_remove() {
+  echo "If you want to get rid of master db, logs and temporary file delete the /opt/drqueue directory manually"
+}
+
+# vim:set ts=2 sw=2 et:
