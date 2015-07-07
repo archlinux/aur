@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audiodecoder-vgmstream
 _gitname=audiodecoder.vgmstream
-pkgver=20150309.0c3a51a
-_gitver=0c3a51a229de22f667e33208791052e8c00962d2
+pkgver=20150602.7723f91
+_gitver=7723f9130957f4684eac5788ccbc2f45c39590ad
 pkgrel=1
 pkgdesc='VGM decoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
