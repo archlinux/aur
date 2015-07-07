@@ -1,0 +1,16 @@
+pkgbase = python2-venusian
+	pkgdesc = A library for deferring decorator actions.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.repoze.org
+	arch = any
+	license = custom:BSD
+	depends = python2
+	provides = venusian
+	conflicts = venusian
+	replaces = venusian
+	source = http://pypi.python.org/packages/source/v/venusian/venusian-1.0.tar.gz
+	md5sums = dccf2eafb7113759d60c86faf5538756
+
+pkgname = python2-venusian
+
