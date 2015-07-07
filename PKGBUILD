@@ -1,3 +1,4 @@
+# Contributor: lucck <lucck@ep.com.pl>
 # Maintainer: aksr <aksr at t-com dot me>
 _pkgname=linux-udf
 pkgname=udftools
