@@ -1,0 +1,16 @@
+pkgbase = javagen
+	pkgdesc = Collection of small code generators for Java
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/maandree/javagen
+	arch = any
+	license = GPL
+	makedepends = java-environment>=6
+	depends = java-runtime>=6
+	provides = javagen
+	conflicts = javagen
+	source = https://github.com/maandree/javagen/archive/1.2.1.tar.gz
+	sha256sums = fcde1c21b26c47a227d420b063df54530e6c78f6dc7ebc65e391b641e6e2414f
+
+pkgname = javagen
+
