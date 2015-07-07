@@ -1,0 +1,19 @@
+pkgbase = emacs-ipython-mode
+	pkgdesc = Emacs mode that replaces python-mode using the Ipython shell
+	pkgver = 2927
+	pkgrel = 1
+	url = http://ipython.scipy.org/moin/
+	install = emacs-ipython-mode.install
+	arch = any
+	license = GPL
+	depends = emacs
+	depends = ipython
+	depends = emacs-python-mode
+	depends = bash
+	source = http://archive.ipython.org/old-site/ipython.el
+	source = emacs-ipython-mode.install
+	sha256sums = 1ebd204c0a1796bb7a78be6007805f1c
+	sha256sums = 587258bb5e224af645e231ab17fe9a92
+
+pkgname = emacs-ipython-mode
+
