@@ -1,0 +1,26 @@
+pkgbase = stratagus
+	pkgdesc = A free cross-platform real-time strategy gaming engine
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://launchpad.net/stratagus
+	changelog = stratagus.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = tolua++
+	depends = gcc-libs
+	depends = libgl
+	depends = sdl
+	depends = libpng
+	depends = libmng
+	depends = libvorbis
+	depends = libtheora
+	depends = libmikmod
+	depends = lua51
+	depends = sqlite
+	source = http://launchpad.net/stratagus/trunk/2.3/+download/stratagus_2.3.0.orig.tar.gz
+	md5sums = bf64b87f387c8281350e4b54327bc95f
+
+pkgname = stratagus
+

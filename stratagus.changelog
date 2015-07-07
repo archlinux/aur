@@ -1,0 +1,45 @@
+2015-04-08 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Moved post installation commands in the package() function
+
+2013-06-03 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added SBINDIR definition to CMake build command
+
+2013-03-24 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Depends array updated for lua51
+
+2012-09-01 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Depends and makedepends arrays updated
+
+2011-12-27 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+	Depends and makedepends arrays updated
+
+2010-12-08 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	URL, source and dependencies updated
+	Removed compatibility patches
+
+2010-03-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Description changed
+	Added x86_64 to the arch array
+	Added a GCC 4.4 compatibility patch
+
+2008-05-09 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir variables
+	Applying a GCC 4.3 compatibility patch
