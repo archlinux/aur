@@ -1,0 +1,17 @@
+pkgbase = restview
+	pkgdesc = A viewer for ReStructuredText documents that renders them on the fly.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://mg.pov.lt/restview/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-docutils
+	depends = python-pygments
+	depends = python-readme
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/r/restview/restview-2.4.0.tar.gz
+	sha256sums = 52eed1a9ce2bc31d6b4269c8c4ba8c5c1cf7c989b465e9a62bfa6357fc0da965
+
+pkgname = restview
+
