@@ -1,0 +1,15 @@
+pkgbase = python-pydle
+	pkgdesc = A compact, flexible and standards-abiding IRC library for Python 3.
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = https://github.com/Shizmob/pydle
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tornado
+	source = https://pypi.python.org/packages/source/p/pydle/pydle-0.8.0.tar.gz
+	md5sums = 38df5a64ca6abad3b54f18b52665956f
+
+pkgname = python-pydle
+
