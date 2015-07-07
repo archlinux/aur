@@ -24,7 +24,7 @@ prepare() {
   fi
   git clone git://git.salome-platform.org/modules/${_source}.git
   cd ${_source}
-  git checkout V7_6_0
+  git checkout V${pkgver:0:1}_${pkgver:2:1}_${pkgver:4:1}
   msg "GIT checkout done or server timeout"
 
   sed -e 's|INSTALL(CODE "FILE(TIMESTAMP \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_name}\\"            py_time)")|INSTALL(CODE "IF(EXISTS \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_we}.py\\") \\n  FILE(TIMESTAMP \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_we}.py\\" py_time) \\n ELSE()\\n  SET(py_time 0) \\n ENDIF() ")|' -i salome_adm/cmake_files/SalomeMacros.cmake
