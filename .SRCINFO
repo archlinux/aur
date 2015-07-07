@@ -1,0 +1,20 @@
+pkgbase = ruby-yam
+	pkgdesc = A Ruby wrapper for accessing Yammer's REST API.
+	pkgver = 2.4.0
+	pkgrel = 2
+	url = https://github.com/yammer/yam
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-addressable
+	depends = ruby-multi_json
+	depends = ruby-oauth2-client
+	depends = ruby-oj
+	depends = ruby-rest-client
+	noextract = yam-2.4.0.gem
+	source = https://rubygems.org/downloads/yam-2.4.0.gem
+	sha256sums = 12861a971fc5d0f8da653b099f3e10ed45833b9aab175e6a89059ec9ac9c36f7
+
+pkgname = ruby-yam
+
