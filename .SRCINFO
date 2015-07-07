@@ -1,0 +1,27 @@
+pkgbase = zork3
+	pkgdesc = Zork III adventure game (for Infocom's z-code interpreter)
+	pkgver = 1
+	pkgrel = 10
+	url = http://infocom.elsewhere.org/scheyen/
+	arch = any
+	license = custom
+	depends = jzip
+	source = http://infocom.elsewhere.org/scheyen/Download/zork3.zip
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork3/legend.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork3/north.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork3/south.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork3/mirrorbox.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork3/royalmaze.gif
+	source = http://infocom.elsewhere.org/scheyen/Maps/zork3/rmlegend.gif
+	source = LICENSE
+	md5sums = c1a15e9c56267366fa54476baa6fb7d4
+	md5sums = 7af8ddd64c22a37b6cd7292aa0034364
+	md5sums = aef65075af8772c014e11f67e15fcc72
+	md5sums = 837c3accd2d8e799268f65a19f5d24bb
+	md5sums = 9159e829aa6ec726a42e4ec5253d3f11
+	md5sums = 507da33e25a115cb61c864eb3bf0fbc8
+	md5sums = fea74edbc21405f5aea4e014a8e905ef
+	md5sums = 0d52f90e8c314686da4d410581f2c8a6
+
+pkgname = zork3
+
