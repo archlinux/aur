@@ -1,0 +1,18 @@
+pkgbase = micropolis-git
+	pkgdesc = Micropolis Unix version (A.K.A. S*mC*ty)
+	pkgver = r93.6fa8547
+	pkgrel = 1
+	url = http://code.google.com/p/micropolis/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl_mixer
+	depends = libxpm
+	depends = bash
+	options = !makeflags
+	source = micropolis::git://git.zerfleddert.de/micropolis
+	md5sums = SKIP
+
+pkgname = micropolis-git
+
