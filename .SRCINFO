@@ -1,6 +1,6 @@
 pkgbase = domoticz-svn
 	pkgdesc = Web based home automation
-	pkgver = r2362
+	pkgver = r2647
 	pkgrel = 1
 	url = http://www.domoticz.com
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = domoticz-svn
 	makedepends = subversion
 	makedepends = cmake
 	makedepends = boost
-	depends = openzwave
+	depends = openzwave-snapshot
 	depends = libusb-compat
 	depends = curl
 	depends = sqlite

@@ -1,13 +1,13 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=domoticz-svn
-pkgver=r2362
+pkgver=r2647
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64')
 url="http://www.domoticz.com"
 license=('GPL')
-depends=('openzwave' 'libusb-compat' 'curl' 'sqlite' 'boost-libs')
+depends=('openzwave-snapshot' 'libusb-compat' 'curl' 'sqlite' 'boost-libs')
 makedepends=('subversion' 'cmake' 'boost')
 source=('domoticz::svn://svn.code.sf.net/p/domoticz/code/trunk'
         'domoticz.service')
