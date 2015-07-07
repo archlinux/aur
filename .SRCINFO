@@ -1,0 +1,27 @@
+pkgbase = python2-enable
+	pkgdesc = Low-level drawing and interaction packages
+	pkgver = 4.5.1
+	pkgrel = 1
+	url = https://github.com/enthought/enable
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-distribute
+	makedepends = cython2
+	makedepends = swig
+	depends = python2-reportlab
+	depends = python2-traitsui
+	depends = glu
+	conflicts = python-enthought-enable
+	conflicts = python2-enable-git
+	conflicts = python-ets-enable-svn
+	options = !emptydirs
+	source = python2-enable.tar.gz::https://github.com/enthought/enable/archive/4.5.1.tar.gz
+	source = swig.patch
+	source = gcc5.patch
+	md5sums = f25368400538909de5b165f1d9697ca0
+	md5sums = bb0c5bbda3091c9b77fa74520eb84695
+	md5sums = 0c1d220157b8b6d0b6c82b704b5156e3
+
+pkgname = python2-enable
+

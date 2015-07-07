@@ -1,0 +1,11 @@
+--- kiva/agg/setup.py.orig	2015-07-07 20:52:27.901686497 +0200
++++ kiva/agg/setup.py	2015-07-07 20:52:37.228293774 +0200
+@@ -170,7 +170,7 @@
+         f = os.popen("g++ --version")
+         line0 = f.readline()
+         f.close()
+-        m = re.match(r'.+?\s(3|4)\.\d+', line0)
++        m = re.match(r'.+?\s(3|4|5)\.\d+', line0)
+         if int(m.group(1)) < 4:
+             use_32bit_workaround = True
+ 
