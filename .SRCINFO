@@ -1,0 +1,15 @@
+pkgbase = ocfs2-tools
+	pkgdesc = ocfs2 tool chain by Oracle, including mkfs, tunefs, fsck, debugfs and utilities for ocfs2
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://oss.oracle.com/projects/ocfs2-tools/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	optdepends = pacemaker
+	optdepends = corosync
+	source = ocfs2-tools::https://github.com/Thermi/ocfs2-tools/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = ocfs2-tools
+
