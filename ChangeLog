@@ -1,0 +1,10 @@
+2011-08-11 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added x86_64 to the arch array
+
+2009-10-05 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Following the latest PKGBUILD-svn.proto template
+	Using $srcdir and $pkgdir variables

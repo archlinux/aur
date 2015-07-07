@@ -1,0 +1,16 @@
+pkgbase = globs-benchmarks-svn
+	pkgdesc = Standard benchmarks set for GL O.B.S.
+	pkgver = 49
+	pkgrel = 2
+	url = http://globs.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = scons
+	depends = libgl
+	depends = sdl_image
+	depends = globs-svn
+
+pkgname = globs-benchmarks-svn
+
