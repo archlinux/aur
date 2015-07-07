@@ -1,0 +1,22 @@
+pkgbase = tint3-cpp-git
+	pkgdesc = A C++ rewrite attempt of the tint2 panel.
+	pkgver = r691.9c13801
+	pkgrel = 1
+	url = https://github.com/jmc-88/tint3
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = imlib2
+	depends = pango
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxcomposite
+	depends = startup-notification
+	source = tint3::git+https://github.com/jmc-88/tint3.git
+	sha256sums = SKIP
+
+pkgname = tint3-cpp-git
+
