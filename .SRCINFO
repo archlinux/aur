@@ -1,0 +1,16 @@
+pkgbase = pear-mdb2
+	pkgdesc = Provides a class to create MIME messages.
+	pkgver = 2.5.0b5
+	pkgrel = 1
+	url = http://pear.php.net/package/MDB2
+	arch = any
+	license = BSD
+	makedepends = php-pear>=1.6.0
+	depends = php>=4.3.0
+	noextract = MDB2-2.5.0b5.tgz
+	options = !strip
+	source = http://download.pear.php.net/package/MDB2-2.5.0b5.tgz
+	sha256sums = c4ab3cf8cea4aacff02d729998b0ac80b4f92c2cc8055956079b323a406d985b
+
+pkgname = pear-mdb2
+
