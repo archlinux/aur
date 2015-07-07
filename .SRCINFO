@@ -1,0 +1,17 @@
+pkgbase = ruby-oauth2-client
+	pkgdesc = Create quick and dirty OAuth2 clients.
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://tiabas.github.io/oauth2-client/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-addressable
+	depends = ruby-bcrypt-ruby
+	noextract = oauth2-client-2.0.0.gem
+	source = https://rubygems.org/downloads/oauth2-client-2.0.0.gem
+	sha256sums = f1418e5d7589604cd630ce21861a31e67347903a9bf21021f8866b0eaa4cf799
+
+pkgname = ruby-oauth2-client
+
