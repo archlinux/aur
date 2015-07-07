@@ -1,0 +1,17 @@
+pkgbase = python-daemonize
+	pkgdesc = Library to enable your code run as a daemon process on Unix-like systems
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/daemonize/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/d/daemonize/daemonize-2.3.1.tar.gz
+	md5sums = f0d401a0a501ba9d36e516ea89146eb2
+
+pkgname = python-daemonize
+	depends = python
+
+pkgname = python2-daemonize
+	depends = python2
+
