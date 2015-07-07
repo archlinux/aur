@@ -1,0 +1,17 @@
+pkgbase = pear-mdb2-mysql
+	pkgdesc = This is the MySQL driver for pear-MDB2
+	pkgver = 1.5.0b4
+	pkgrel = 1
+	url = http://pear.php.net/package/MDB2_Driver_mysql
+	arch = any
+	license = BSD
+	makedepends = php-pear>=1.6.0
+	depends = php>=4.3.0
+	depends = pear-mdb2>=2.5.0b4
+	noextract = MDB2_Driver_mysql-1.5.0b4.tgz
+	options = !strip
+	source = http://download.pear.php.net/package/MDB2_Driver_mysql-1.5.0b4.tgz
+	sha256sums = df9345235a8e707d9c81fbd6d5efd12e20c563a54a40d48bc411148118b5199a
+
+pkgname = pear-mdb2-mysql
+
