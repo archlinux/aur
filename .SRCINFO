@@ -1,0 +1,21 @@
+pkgbase = ricochet
+	pkgdesc = Anonymous peer-to-peer instant messaging.
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://ricochet.im/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = qt5-tools
+	makedepends = pkg-config
+	depends = tor
+	depends = qt5-quick1
+	depends = qt5-quickcontrols
+	depends = qt5-declarative
+	depends = openssl
+	depends = protobuf
+	source = https://github.com/ricochet-im/ricochet/archive/v1.1.0.tar.gz
+	sha256sums = ab372c46a274825aa51ecc416966bee44fd69088fbc4b9f68fff46967a1becd9
+
+pkgname = ricochet
+
