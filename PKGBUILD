@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-audiodecoder-stsound
 _gitname=audiodecoder.stsound
-pkgver=20150313.775c858
-_gitver=775c858d82bced9b2bf6fe12fc1c9bfcb3de8c4c
+pkgver=20150602.f6fbae9
+_gitver=f6fbae94818fedd09e2f55c6cd1cb283bfdab6f4
 pkgrel=1
 pkgdesc='YM decoder addon for Kodi'
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
