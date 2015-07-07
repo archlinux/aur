@@ -1,0 +1,19 @@
+pkgbase = kodi-devel-audiodecoder-sidplay
+	pkgdesc = Sidplay decoder addon for Kodi
+	pkgver = 20150602.27b2c05
+	pkgrel = 1
+	url = https://github.com/notspiff/audiodecoder.sidplay
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	depends = sidplay-libs
+	source = https://github.com/notspiff/audiodecoder.sidplay/archive/27b2c0582878857bfe03195471fa7ffa4bcc40f0.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-audiodecoder-sidplay
+
