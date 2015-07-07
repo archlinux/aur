@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-omnibar
+	pkgdesc = Integrates the location bar and the search bar into one.
+	pkgver = 0.7.28.20141004
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/8823
+	arch = any
+	license = MPL
+	depends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/file/278824/omnibar-0.7.28.20141004.xpi
+	sha1sums = 7fb603a37762c6af3c38c321f0c96baaca9fe69c
+
+pkgname = firefox-extension-omnibar
+
