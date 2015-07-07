@@ -1,0 +1,23 @@
+pkgbase = python-micawber
+	pkgdesc = A small library for extracting rich content from URLs.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/coleifer/micawber
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/micawber/micawber-0.3.2.tar.gz
+	md5sums = 43f05e8818e99062af46d5388afa3adc
+
+pkgname = python-micawber
+	depends = python
+	depends = python-setuptools
+
+pkgname = python2-micawber
+	depends = python2
+	depends = python2-setuptools
+
