@@ -1,0 +1,30 @@
+pkgbase = lib32-colord
+	pkgdesc = System daemon for managing color devices (32-bit)
+	pkgver = 1.2.9
+	pkgrel = 3
+	url = http://www.freedesktop.org/software/colord
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = argyllcms
+	depends = lib32-lcms2
+	depends = lib32-libgusb>=0.2.2
+	depends = lib32-polkit
+	depends = lib32-sqlite
+	depends = lib32-systemd>=221
+	depends = lib32-libgudev
+	depends = lib32-dconf
+	depends = lib32-dbus
+	depends = lib32-glib2
+	depends = colord>=1.2.9-3
+	conflicts = shared-color-profiles
+	source = http://www.freedesktop.org/software/colord/releases/colord-1.2.9.tar.xz
+	source = 0001-Fix-session-helper-failing-to-find-argyll-tool.patch
+	sha1sums = 1b6319812b12ab7f906983959bbaaf2e5b78bdb7
+	sha1sums = 6d92d75cda7736e734f7472bed52dbc90ca3ea93
+
+pkgname = lib32-colord
+

@@ -1,0 +1,30 @@
+From 301f24d02158f1e12a2e7ccdf9970d02ecddd534 Mon Sep 17 00:00:00 2001
+From: Tim Waugh <twaugh@redhat.com>
+Date: Mon, 23 Feb 2015 09:56:12 +0000
+Subject: [PATCH] Fix session-helper failing to find argyll tool.
+
+We don't want to free the thing we're trying to return. This fixes the
+bug introduced in commit b6f7c4d117a06f059a6e852e2dce8c13a3bb1f2c.
+
+See:
+  https://bugzilla.redhat.com/show_bug.cgi?id=1190720
+---
+ contrib/session-helper/cd-main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/session-helper/cd-main.c b/contrib/session-helper/cd-main.c
+index 61e0c5b..0f93697 100644
+--- a/contrib/session-helper/cd-main.c
++++ b/contrib/session-helper/cd-main.c
+@@ -939,7 +939,7 @@ cd_main_find_argyll_tool (const gchar *command,
+ 			  GError **error)
+ {
+ 	gboolean ret;
+-	_cleanup_free_ gchar *filename = NULL;
++	gchar *filename;
+ 
+ 	/* try the original argyllcms filename installed in /usr/local/bin */
+ 	filename = g_strdup_printf ("/usr/local/bin/%s", command);
+-- 
+2.1.0
+
