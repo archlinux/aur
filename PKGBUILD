@@ -4,7 +4,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 pkgname=postgis-sfcgal
 _pkgname=${pkgname%-sfcgal}
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Adds support for geographic objects to PostgreSQL and includes SFCGAL support for experimental 3D functions"
 arch=('i686' 'x86_64')
