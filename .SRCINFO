@@ -1,0 +1,14 @@
+pkgbase = emacs-color-theme-solarized
+	pkgdesc = Solarized color theme for Emacs
+	pkgver = 1.0.0.beta2
+	pkgrel = 1
+	url = http://ethanschoonover.com/solarized
+	arch = any
+	license = MIT
+	depends = emacs
+	depends = emacs-color-theme
+	source = http://ethanschoonover.com/solarized/files/solarized.zip
+	sha256sums = 13e65141b4e46476acd94d97587a4770323ccf6f3b5ea5bf084c6c004f5e7866
+
+pkgname = emacs-color-theme-solarized
+
