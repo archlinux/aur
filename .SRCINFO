@@ -1,0 +1,28 @@
+pkgbase = python-pynacl
+	pkgdesc = Python binding to the Networking and Cryptography (NaCl) library
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/frozendict/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pycparser
+	makedepends = python-cffi
+	makedepends = python2-setuptools
+	makedepends = python2-pycparser
+	makedepends = python2-cffi
+	depends = libsodium
+	source = https://pypi.python.org/packages/source/P/PyNaCl/PyNaCl-0.3.0.tar.gz
+	md5sums = 04dc891f6b95e3defa8a35ade57559c9
+
+pkgname = python-pynacl
+	depends = libsodium
+	depends = python
+	depends = python-six
+
+pkgname = python2-pynacl
+	depends = libsodium
+	depends = python2
+	depends = python2-six
+
