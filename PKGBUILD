@@ -8,7 +8,7 @@
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
 pkgver=2.4.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -63,7 +63,8 @@ build() {
   ./configure --prefix=/usr \
               --enable-fullscreen \
               --enable-gnomeui \
-              --enable-ethernet
+              --enable-ethernet \
+              --enable-memmap
   make
 }
 

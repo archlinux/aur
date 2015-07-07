@@ -1,7 +1,7 @@
 pkgbase = vice-gnomeui-devel
 	pkgdesc = Versatile Commodore Emulator (development release with the Gnome UI)
 	pkgver = 2.4.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vice-emu.sourceforge.net
 	install = vice-gnomeui-devel.install
 	arch = i686
