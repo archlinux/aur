@@ -9,9 +9,8 @@ BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://www.cocos2d-x.org/filedown/"
 license=('MIT License')
-depends=('glew' 'glfw' 'glibc' 'fontconfig' 'libgl' 'curl' 'libx11' 'zlib' 'libpng' 'freetype2')
+depends=('glew' 'glfw' 'glibc' 'fontconfig' 'libgl' 'curl' 'libx11' 'zlib' 'libpng' 'freetype2' 'python2')
 #depends=('openssl' 'sqlite3')
-makedepends=('python2')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}${_appname}-${pkgver}.zip"
 	"README"
