@@ -1,0 +1,19 @@
+pkgbase = vim-jellybeans-git
+	pkgdesc = A colorful, dark color scheme, inspired by ir_black and twilight.
+	pkgver = v1.5.29.gf931895
+	pkgrel = 1
+	url = https://github.com/nanotech/jellybeans.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-jellybeans
+	conflicts = vim-jellybeans
+	source = git+https://github.com/nanotech/jellybeans.vim.git
+	source = LICENSE.txt
+	sha256sums = SKIP
+	sha256sums = 914e3a036fe21cf2741e5334263ea10ec145ae894248bb95c8cb9e38f20baabf
+
+pkgname = vim-jellybeans-git
+
