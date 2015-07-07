@@ -1,0 +1,11 @@
+[Unit]
+Description=clamav smtp daemon
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/clamsmtp
+PIDFile=/run/clamav/clamsmtpd.pid
+ExecStart=/usr/sbin/clamsmtpd -f /etc/clamav/clamsmtpd.conf -p /run/clamav/clamsmtpd.pid $CLAMSMTP_OPTIONS
+
+[Install]
+WantedBy=multi-user.target

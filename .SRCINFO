@@ -1,0 +1,21 @@
+pkgbase = clamsmtp
+	pkgdesc = SMTP filter that allows you to check for viruses using the ClamAV anti-virus software.
+	pkgver = 1.10
+	pkgrel = 3
+	url = http://thewalter.net/stef/software/clamsmtp/
+	install = clamsmtp.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	depends = clamav
+	backup = etc/clamav/clamsmtpd.conf
+	source = http://thewalter.net/stef/software/clamsmtp/clamsmtp-1.10.tar.gz
+	source = clamsmtp.confd
+	source = clamsmtp.service
+	md5sums = b068ba6e444859782bbdd88f290c1abf
+	md5sums = 1ee746fb89ae90e48b1fa268ecc29b48
+	md5sums = b55ac98624cee3d66656ba356a2b1d67
+
+pkgname = clamsmtp
+

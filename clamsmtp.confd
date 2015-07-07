@@ -1,0 +1,3 @@
+# clamav startup script config options
+
+CLAMSMTP_OPTIONS=""
