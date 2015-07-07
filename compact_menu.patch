@@ -1,0 +1,12 @@
+diff --git a/openbox/menuframe.c b/openbox/menuframe.c
+--- a/openbox/menuframe.c
++++ b/openbox/menuframe.c
+@@ -31,7 +31,7 @@
+ #include "obt/display.h"
+ #include "obrender/theme.h"
+ 
+-#define PADDING 2
++#define PADDING 0
+ #define MAX_MENU_WIDTH 400
+ 
+ #define ITEM_HEIGHT (ob_rr_theme->menu_font_height + 2*PADDING)

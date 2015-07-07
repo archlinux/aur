@@ -1,0 +1,107 @@
+commit ce42ade7286fa387ec77d66d79b546ddeae1592b
+Author: Alexey Korop <avkorop@i.ua>
+Date:   Sun Mar 15 19:03:24 2015 +0200
+
+    import-bind.patch
+
+diff --git a/openbox/config.c b/openbox/config.c
+index 7a4eaa1..8d50846 100644
+--- a/openbox/config.c
++++ b/openbox/config.c
+@@ -572,6 +572,18 @@ static void parse_mouse(xmlNodePtr node, gpointer d)
+                 continue;
+             }
+ 
++            xmlNodePtr import_node = obt_xml_find_node(n->children, "import");
++            while (import_node) { // import bindings from another context
++                gchar *s = obt_xml_node_string(import_node);
++                if (s) {
++                    ObFrameContext import_ctx = frame_context_from_string(s);
++                    if (import_ctx != OB_FRAME_CONTEXT_NONE) {
++                        mouse_import_bind(cx, import_ctx);
++                    }
++                }
++                import_node = obt_xml_find_node(import_node->next, "import");
++            }
++
+             for (nbut = obt_xml_find_node(n->children, "mousebind");
+                  nbut;
+                  nbut = obt_xml_find_node(nbut->next, "mousebind"))
+diff --git a/openbox/mouse.c b/openbox/mouse.c
+index 4da22f3..08a06d4 100644
+--- a/openbox/mouse.c
++++ b/openbox/mouse.c
+@@ -369,20 +369,14 @@ gboolean mouse_event(ObClient *client, XEvent *e)
+     return used;
+ }
+ 
+-gboolean mouse_bind(const gchar *buttonstr, ObFrameContext context,
++static gboolean mouse_bind_b(guint state, guint button, ObFrameContext context,
+                     ObMouseAction mact, ObActionsAct *action)
+ {
+-    guint state = 0, button = 0;
+     ObMouseBinding *b;
+     GSList *it;
+ 
+     g_assert(context != OB_FRAME_CONTEXT_NONE);
+ 
+-    if (!translate_button(buttonstr, &state, &button)) {
+-        g_message(_("Invalid button \"%s\" in mouse binding"), buttonstr);
+-        return FALSE;
+-    }
+-
+     for (it = bound_contexts[context]; it; it = g_slist_next(it)) {
+         b = it->data;
+         if (b->state == state && b->button == button) {
+@@ -401,6 +395,39 @@ gboolean mouse_bind(const gchar *buttonstr, ObFrameContext context,
+     return TRUE;
+ }
+ 
++gboolean mouse_bind(const gchar *buttonstr, ObFrameContext context,
++                    ObMouseAction mact, ObActionsAct *action)
++{
++    guint state = 0, button = 0;
++    ObMouseBinding *b;
++    GSList *it;
++
++    if (!translate_button(buttonstr, &state, &button)) {
++        g_message(_("Invalid button \"%s\" in mouse binding"), buttonstr);
++        return FALSE;
++    }
++    return(mouse_bind_b(state, button, context, mact, action));
++}
++
++void mouse_import_bind(ObFrameContext context, ObFrameContext import_ctx)
++{
++    GSList *it;
++    ObActionsAct *action;
++    GSList *jt;
++
++    for (it = bound_contexts[import_ctx]; it; it = g_slist_next(it)) {
++        ObMouseBinding *b = it->data;
++        gint j;
++        for (j = 0; j < OB_NUM_MOUSE_ACTIONS; ++j) {
++            for (jt = b->actions[j]; jt; jt = g_slist_next(jt)) {
++                action = jt->data;
++                actions_act_ref(action);
++                mouse_bind_b(b->state, b->button, context, j, action);
++            }
++        }
++    }
++}
++
+ void mouse_startup(gboolean reconfig)
+ {
+     grab_all_clients(TRUE);
+diff --git a/openbox/mouse.h b/openbox/mouse.h
+index de4c0ec..90749b4 100644
+--- a/openbox/mouse.h
++++ b/openbox/mouse.h
+@@ -32,6 +32,7 @@ void mouse_shutdown(gboolean reconfig);
+ gboolean mouse_bind(const gchar *buttonstr, ObFrameContext context,
+                     ObMouseAction mact, struct _ObActionsAct *action);
+ void mouse_unbind_all(void);
++void mouse_import_bind(ObFrameContext context, ObFrameContext import_ctx);
+ 
+ gboolean mouse_event(struct _ObClient *client, XEvent *e);
+ 

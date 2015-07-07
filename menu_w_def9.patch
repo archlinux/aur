@@ -1,0 +1,754 @@
+commit 36f80459b6b8f947023ed551dd61cdd3d8d16d0d
+Author: Alexey Korop <avkorop@i.ua>
+Date:   Sat Mar 14 21:07:58 2015 +0200
+
+    menu_w_def8.patch
+
+diff --git a/obrender/theme.c b/obrender/theme.c
+index 2a4f6e1..7b1969f 100644
+--- a/obrender/theme.c
++++ b/obrender/theme.c
+@@ -215,6 +215,8 @@ RrTheme* RrThemeNew(const RrInstance *inst, const gchar *name,
+     theme->a_menu_text_disabled_selected = RrAppearanceNew(inst, 1);
+     theme->a_menu_bullet_normal = RrAppearanceNew(inst, 1);
+     theme->a_menu_bullet_selected = RrAppearanceNew(inst, 1);
++    theme->a_menu_bullet_def_normal = RrAppearanceNew(inst, 1);
++    theme->a_menu_bullet_def_selected = RrAppearanceNew(inst, 1);
+     theme->a_clear = RrAppearanceNew(inst, 0);
+     theme->a_clear_tex = RrAppearanceNew(inst, 1);
+     theme->osd_bg = RrAppearanceNew(inst, 0);
+@@ -527,6 +529,13 @@ RrTheme* RrThemeNew(const RrInstance *inst, const gchar *name,
+         theme->menu_bullet_mask = RrPixmapMaskNew(inst, 4, 7, (gchar*)data);
+     }
+ 
++    /* submenu with default bullet mask */
++    if (!read_mask(inst, path, "bullet_def.xbm", &theme->menu_bullet_def_mask))
++    {
++        guchar data[] = { 0xFF, 0x85, 0x8D, 0x9D, 0xBD, 0x9D, 0x8D, 0x85, 0xFF };
++        theme->menu_bullet_def_mask = RrPixmapMaskNew(inst, 8, 9, (gchar*)data);
++    }
++
+     /* up and down arrows */
+     {
+         guchar data[] = { 0xfe, 0x00, 0x7c, 0x00, 0x38, 0x00, 0x10, 0x00 };
+@@ -618,6 +627,8 @@ RrTheme* RrThemeNew(const RrInstance *inst, const gchar *name,
+         theme->a_menu_text_disabled_selected->surface.grad =
+         theme->a_menu_bullet_normal->surface.grad =
+         theme->a_menu_bullet_selected->surface.grad = RR_SURFACE_PARENTREL;
++        theme->a_menu_bullet_def_normal->surface.grad =
++        theme->a_menu_bullet_def_selected->surface.grad = RR_SURFACE_PARENTREL;
+ 
+     /* set up the textures */
+     theme->a_focused_label->texture[0].type = RR_TEXTURE_TEXT;
+@@ -932,13 +943,26 @@ RrTheme* RrThemeNew(const RrInstance *inst, const gchar *name,
+ 
+     theme->a_menu_bullet_normal->texture[0].type =
+         theme->a_menu_bullet_selected->texture[0].type = RR_TEXTURE_MASK;
++    theme->a_menu_bullet_def_normal->texture[0].type =
++        theme->a_menu_bullet_def_selected->texture[0].type = RR_TEXTURE_MASK;
+     theme->a_menu_bullet_normal->texture[0].data.mask.mask =
+     theme->a_menu_bullet_selected->texture[0].data.mask.mask =
+         theme->menu_bullet_mask;
++    theme->a_menu_bullet_def_normal->texture[0].data.mask.mask =
++    theme->a_menu_bullet_def_selected->texture[0].data.mask.mask =
++        theme->menu_bullet_def_mask;
+     theme->a_menu_bullet_normal->texture[0].data.mask.color =
+         theme->menu_bullet_color;
+     theme->a_menu_bullet_selected->texture[0].data.mask.color =
+         theme->menu_bullet_selected_color;
++    theme->a_menu_bullet_def_normal->texture[0].data.mask.color =
++        theme->menu_bullet_color;
++    theme->a_menu_bullet_def_selected->texture[0].data.mask.color =
++        theme->menu_bullet_selected_color;
++    theme->a_menu_bullet_def_normal->texture[0].data.mask.color =
++        theme->menu_bullet_color;
++    theme->a_menu_bullet_def_selected->texture[0].data.mask.color =
++        theme->menu_bullet_selected_color;
+ 
+     g_free(path);
+     XrmDestroyDatabase(db);
+@@ -1065,6 +1089,7 @@ void RrThemeFree(RrTheme *theme)
+         g_free(theme->def_win_icon);
+         
+         RrPixmapMaskFree(theme->menu_bullet_mask);
++        RrPixmapMaskFree(theme->menu_bullet_def_mask);
+         RrPixmapMaskFree(theme->down_arrow_mask);
+         RrPixmapMaskFree(theme->up_arrow_mask);
+ 
+@@ -1097,6 +1122,8 @@ void RrThemeFree(RrTheme *theme)
+         RrAppearanceFree(theme->a_menu_text_disabled_selected);
+         RrAppearanceFree(theme->a_menu_bullet_normal);
+         RrAppearanceFree(theme->a_menu_bullet_selected);
++        RrAppearanceFree(theme->a_menu_bullet_def_normal);
++        RrAppearanceFree(theme->a_menu_bullet_def_selected);
+         RrAppearanceFree(theme->a_clear);
+         RrAppearanceFree(theme->a_clear_tex);
+         RrAppearanceFree(theme->osd_bg);
+diff --git a/obrender/theme.h b/obrender/theme.h
+index 8797f0b..2c732fc 100644
+--- a/obrender/theme.h
++++ b/obrender/theme.h
+@@ -123,6 +123,7 @@ struct _RrTheme {
+ 
+     /* style settings - masks */
+     RrPixmapMask *menu_bullet_mask; /* submenu pointer */
++    RrPixmapMask *menu_bullet_def_mask; /* submenu with default pointer */
+ #if 0
+     RrPixmapMask *menu_toggle_mask; /* menu boolean */
+ #endif
+@@ -161,6 +162,8 @@ struct _RrTheme {
+     RrAppearance *a_menu_text_selected;
+     RrAppearance *a_menu_bullet_normal;
+     RrAppearance *a_menu_bullet_selected;
++    RrAppearance *a_menu_bullet_def_normal;
++    RrAppearance *a_menu_bullet_def_selected;
+     RrAppearance *a_clear;     /* clear with no texture */
+     RrAppearance *a_clear_tex; /* clear with a texture */
+ 
+diff --git a/openbox/client_list_combined_menu.c b/openbox/client_list_combined_menu.c
+index c26b6fa..84eb506 100644
+--- a/openbox/client_list_combined_menu.c
++++ b/openbox/client_list_combined_menu.c
+@@ -74,9 +74,9 @@ static gboolean self_update(ObMenuFrame *frame, gpointer data)
+                 }
+ 
+                 if (config_menu_show_icons) {
+-                    e->data.normal.icon = client_icon(c);
+-                    RrImageRef(e->data.normal.icon);
+-                    e->data.normal.icon_alpha =
++                    e->icon = client_icon(c);
++                    RrImageRef(e->icon);
++                    e->icon_alpha =
+                         c->iconic ? OB_ICONIC_ALPHA : 0xff;
+                 }
+ 
+diff --git a/openbox/client_list_menu.c b/openbox/client_list_menu.c
+index f3df2a5..4f85935 100644
+--- a/openbox/client_list_menu.c
++++ b/openbox/client_list_menu.c
+@@ -70,9 +70,9 @@ static gboolean desk_menu_update(ObMenuFrame *frame, gpointer data)
+             }
+ 
+             if (config_menu_show_icons) {
+-                e->data.normal.icon = client_icon(c);
+-                RrImageRef(e->data.normal.icon);
+-                e->data.normal.icon_alpha = c->iconic ? OB_ICONIC_ALPHA : 0xff;
++                e->icon = client_icon(c);
++                RrImageRef(e->icon);
++                e->icon_alpha = c->iconic ? OB_ICONIC_ALPHA : 0xff;
+             }
+ 
+             e->data.normal.data = c;
+diff --git a/openbox/client_menu.c b/openbox/client_menu.c
+index 4a3b286..6d5c4c7 100644
+--- a/openbox/client_menu.c
++++ b/openbox/client_menu.c
+@@ -57,10 +57,10 @@ enum {
+ 
+ static void set_icon_color(ObMenuEntry *e)
+ {
+-    e->data.normal.mask_normal_color = ob_rr_theme->menu_color;
+-    e->data.normal.mask_selected_color = ob_rr_theme->menu_selected_color;
+-    e->data.normal.mask_disabled_color = ob_rr_theme->menu_disabled_color;
+-    e->data.normal.mask_disabled_selected_color =
++    e->mask_normal_color = ob_rr_theme->menu_color;
++    e->mask_selected_color = ob_rr_theme->menu_selected_color;
++    e->mask_disabled_color = ob_rr_theme->menu_disabled_color;
++    e->mask_disabled_selected_color =
+         ob_rr_theme->menu_disabled_selected_color;
+ }
+ 
+@@ -276,10 +276,10 @@ static gboolean send_to_menu_update(ObMenuFrame *frame, gpointer data)
+         if ((desk == DESKTOP_ALL && c->desktop != DESKTOP_ALL) ||
+             (c->desktop == DESKTOP_ALL && desk == screen_desktop))
+         {
+-            e->data.normal.mask = ob_rr_theme->btn_desk->unpressed_mask;
++            e->mask = ob_rr_theme->btn_desk->unpressed_mask;
+             set_icon_color(e);
+         } else
+-            e->data.normal.mask = NULL;
++            e->mask = NULL;
+     }
+ 
+     return TRUE; /* show the menu */
+@@ -392,7 +392,7 @@ void client_menu_startup(void)
+     menu_add_submenu(menu, CLIENT_LAYER, LAYER_MENU_NAME);
+ 
+     e = menu_add_normal(menu, CLIENT_RESTORE, _("R_estore"), NULL, TRUE);
+-    e->data.normal.mask = ob_rr_theme->btn_max->unpressed_toggled_mask;
++    e->mask = ob_rr_theme->btn_max->unpressed_toggled_mask;
+     set_icon_color(e);
+ 
+     menu_add_normal(menu, CLIENT_MOVE, _("_Move"), NULL, TRUE);
+@@ -400,15 +400,15 @@ void client_menu_startup(void)
+     menu_add_normal(menu, CLIENT_RESIZE, _("Resi_ze"), NULL, TRUE);
+ 
+     e = menu_add_normal(menu, CLIENT_ICONIFY, _("Ico_nify"), NULL, TRUE);
+-    e->data.normal.mask = ob_rr_theme->btn_iconify->unpressed_mask;
++    e->mask = ob_rr_theme->btn_iconify->unpressed_mask;
+     set_icon_color(e);
+ 
+     e = menu_add_normal(menu, CLIENT_MAXIMIZE, _("Ma_ximize"), NULL, TRUE);
+-    e->data.normal.mask = ob_rr_theme->btn_max->unpressed_mask;
++    e->mask = ob_rr_theme->btn_max->unpressed_mask;
+     set_icon_color(e);
+ 
+     e = menu_add_normal(menu, CLIENT_SHADE, _("_Roll up/down"), NULL, TRUE);
+-    e->data.normal.mask = ob_rr_theme->btn_shade->unpressed_mask;
++    e->mask = ob_rr_theme->btn_shade->unpressed_mask;
+     set_icon_color(e);
+ 
+     menu_add_normal(menu, CLIENT_DECORATE, _("Un/_Decorate"), NULL, TRUE);
+@@ -416,6 +416,6 @@ void client_menu_startup(void)
+     menu_add_separator(menu, -1, NULL);
+ 
+     e = menu_add_normal(menu, CLIENT_CLOSE, _("_Close"), NULL, TRUE);
+-    e->data.normal.mask = ob_rr_theme->btn_close->unpressed_mask;
++    e->mask = ob_rr_theme->btn_close->unpressed_mask;
+     set_icon_color(e);
+ }
+diff --git a/openbox/event.c b/openbox/event.c
+index 5774f67..fd3ecb5 100644
+--- a/openbox/event.c
++++ b/openbox/event.c
+@@ -1845,9 +1845,17 @@ static gboolean event_handle_menu_input(XEvent *ev)
+                         menu_frame_select(e->frame->child, NULL, TRUE);
+                 }
+                 menu_frame_select(e->frame, e, TRUE);
+-                if (ev->type == ButtonRelease)
++                if ((ev->type == ButtonRelease) && (ev->xbutton.button==1)
++                    && (menu_entry_frame_x_not_in_bullet(e->frame, ev->xbutton.x)))
++                {
++                    /* execute clicked entry or it's default entry  */
++                    if (e->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU) {
++                        if (e->frame->child && e->frame->child->default_entry)
++                            e = e->frame->child->default_entry;
++                    }
+                     menu_entry_frame_execute(e, ev->xbutton.state);
+             }
++            }
+             else
+                 menu_frame_hide_all();
+         }
+@@ -1892,24 +1900,15 @@ static gboolean event_handle_menu_input(XEvent *ev)
+                 ret = TRUE;
+             }
+ 
+-            else if (sym == XK_Right || sym == XK_Return || sym == XK_KP_Enter)
++            else if (sym == XK_Right) {
++                /* Right goes to the selected submenu */
++                if (frame->selected &&
++                    frame->selected->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU)
+             {
+-                /* Right and enter goes to the selected submenu.
+-                   Enter executes instead if it's not on a submenu. */
+-
+-                if (frame->selected) {
+-                    const ObMenuEntryType t = frame->selected->entry->type;
+-
+-                    if (t == OB_MENU_ENTRY_TYPE_SUBMENU) {
+                         /* make sure it is visible */
+                         menu_frame_select(frame, frame->selected, TRUE);
+-                        /* move focus to the child menu */
+                         menu_frame_select_next(frame->child);
+                     }
+-                    else if (sym != XK_Right) {
+-                        frame->press_doexec = TRUE;
+-                    }
+-                }
+                 ret = TRUE;
+             }
+ 
+@@ -1933,6 +1932,14 @@ static gboolean event_handle_menu_input(XEvent *ev)
+                 ret = TRUE;
+             }
+ 
++            else if (sym == XK_Return || sym == XK_KP_Enter) {
++                if (frame->selected &&
++                    frame->selected->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU)
++                   menu_frame_select(frame, frame->selected, TRUE);
++                frame->press_doexec = TRUE;
++                ret = TRUE;
++            }
++
+             /* keyboard accelerator shortcuts. (if it was a valid key) */
+             else if (frame->entries &&
+                      (unikey =
+@@ -1979,13 +1986,14 @@ static gboolean event_handle_menu_input(XEvent *ev)
+                     menu_frame_select(frame, found, TRUE);
+ 
+                     if (num_found == 1) {
+-                        if (found->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU) {
++                        if (found->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU &&
++                            ! frame->child->default_entry)
++                        {
+                             /* move focus to the child menu */
+                             menu_frame_select_next(frame->child);
+                         }
+-                        else {
++                        else
+                             frame->press_doexec = TRUE;
+-                        }
+                     }
+                     ret = TRUE;
+                 }
+@@ -1995,14 +2003,22 @@ static gboolean event_handle_menu_input(XEvent *ev)
+         /* Use KeyRelease events for running things so that the key release
+            doesn't get sent to the focused application.
+ 
+-           Allow ControlMask only, and don't bother if the menu is empty */
+-        else if (ev->type == KeyRelease && (mods & ~ControlMask) == 0) {
+-            if (frame->press_keycode == ev->xkey.keycode &&
++          Allow all modifiers, and don't bother if the menu is empty */
++        else if (ev->type == KeyRelease) {
++            if ((frame->press_keycode == ev->xkey.keycode) &&
+                 frame->got_press &&
+                 frame->press_doexec)
+             {
+-                if (frame->selected)
+-                    menu_entry_frame_execute(frame->selected, ev->xkey.state);
++                if (frame->selected){
++                    ObMenuEntryFrame *e = frame->selected;
++
++                    /* execute selected entry or it's default entry  */
++                    if (e->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU) {
++                        if (e->frame->child && e->frame->child->default_entry)
++                            e = e->frame->child->default_entry;
++                }
++                menu_entry_frame_execute(e, ev->xkey.state);
++            }
+             }
+         }
+     }
+diff --git a/openbox/menu.c b/openbox/menu.c
+index 8804e12..6c0cf7e 100644
+--- a/openbox/menu.c
++++ b/openbox/menu.c
+@@ -281,6 +281,7 @@ static void parse_menu_item(xmlNodePtr node, gpointer data)
+ {
+     ObMenuParseState *state = data;
+     gchar *label;
++    gboolean is_default = FALSE;
+     gchar *icon;
+     ObMenuEntry *e;
+ 
+@@ -288,6 +289,7 @@ static void parse_menu_item(xmlNodePtr node, gpointer data)
+         /* Don't try to extract "icon" attribute if icons in user-defined
+            menus are not enabled. */
+ 
++        obt_xml_attr_bool(node, "default", &is_default);
+         if (obt_xml_attr_string_unstripped(node, "label", &label)) {
+             xmlNodePtr c;
+             GSList *acts = NULL;
+@@ -300,14 +302,15 @@ static void parse_menu_item(xmlNodePtr node, gpointer data)
+                 c = obt_xml_find_node(c->next, "action");
+             }
+             e = menu_add_normal(state->parent, -1, label, acts, TRUE);
+-            
++            if (is_default && !state->parent->default_entry)
++                state->parent->default_entry = e;
+             if (config_menu_show_icons &&
+                 obt_xml_attr_string(node, "icon", &icon))
+             {
+-                e->data.normal.icon = RrImageNewFromName(ob_rr_icons, icon);
++                e->icon = RrImageNewFromName(ob_rr_icons, icon);
+ 
+-                if (e->data.normal.icon)
+-                    e->data.normal.icon_alpha = 0xff;
++                if (e->icon)
++                    e->icon_alpha = 0xff;
+ 
+                 g_free(icon);
+             }
+@@ -367,10 +370,10 @@ static void parse_menu(xmlNodePtr node, gpointer data)
+         if (config_menu_show_icons &&
+             obt_xml_attr_string(node, "icon", &icon))
+         {
+-            e->data.submenu.icon = RrImageNewFromName(ob_rr_icons, icon);
++            e->icon = RrImageNewFromName(ob_rr_icons, icon);
+ 
+-            if (e->data.submenu.icon)
+-                e->data.submenu.icon_alpha = 0xff;
++            if (e->icon)
++                e->icon_alpha = 0xff;
+ 
+             g_free(icon);
+         }
+@@ -559,7 +562,7 @@ void menu_entry_unref(ObMenuEntry *self)
+     if (self && --self->ref == 0) {
+         switch (self->type) {
+         case OB_MENU_ENTRY_TYPE_NORMAL:
+-            RrImageUnref(self->data.normal.icon);
++            RrImageUnref(self->icon);
+             g_free(self->data.normal.label);
+             g_free(self->data.normal.collate_key);
+             while (self->data.normal.actions) {
+@@ -570,7 +573,7 @@ void menu_entry_unref(ObMenuEntry *self)
+             }
+             break;
+         case OB_MENU_ENTRY_TYPE_SUBMENU:
+-            RrImageUnref(self->data.submenu.icon);
++            RrImageUnref(self->icon);
+             g_free(self->data.submenu.name);
+             break;
+         case OB_MENU_ENTRY_TYPE_SEPARATOR:
+diff --git a/openbox/menu.h b/openbox/menu.h
+index 8c2ecd7..04dcf10 100644
+--- a/openbox/menu.h
++++ b/openbox/menu.h
+@@ -78,6 +78,9 @@ struct _ObMenu
+     /* ObMenuEntry list */
+     GList *entries;
+ 
++    /* default entry */
++    ObMenuEntry *default_entry;
++
+     /* plugin data */
+     gpointer data;
+ 
+@@ -104,10 +107,6 @@ typedef enum
+ } ObMenuEntryType;
+ 
+ struct _ObNormalMenuEntry {
+-    /* Icon stuff.  If you set this, make sure you RrImageRef() it too. */
+-    RrImage *icon;
+-    gint     icon_alpha;
+-
+     gchar *label;
+     gchar *collate_key;
+     /*! The shortcut key that would be used to activate this menu entry */
+@@ -123,21 +122,10 @@ struct _ObNormalMenuEntry {
+     /* List of ObActions */
+     GSList *actions;
+ 
+-    /* Mask icon */
+-    RrPixmapMask *mask;
+-    RrColor *mask_normal_color;
+-    RrColor *mask_selected_color;
+-    RrColor *mask_disabled_color;
+-    RrColor *mask_disabled_selected_color;
+-
+     gpointer data;
+ };
+ 
+ struct _ObSubmenuMenuEntry {
+-    /* Icon stuff.  If you set this, make sure you RrImageRef() it too. */
+-    RrImage *icon;
+-    gint     icon_alpha;
+-
+     gchar *name;
+     ObMenu *submenu;
+     
+@@ -157,6 +145,17 @@ struct _ObMenuEntry
+ 
+     gint id;
+ 
++    /* Icon stuff.  If you set this, make sure you RrImageRef() it too. */
++    RrImage *icon;
++    gint     icon_alpha;
++
++    /* Mask icon */
++    RrPixmapMask *mask;
++    RrColor *mask_normal_color;
++    RrColor *mask_selected_color;
++    RrColor *mask_disabled_color;
++    RrColor *mask_disabled_selected_color;
++
+     union u {
+         ObNormalMenuEntry normal;
+         ObSubmenuMenuEntry submenu;
+diff --git a/openbox/menuframe.c b/openbox/menuframe.c
+index 2398031..943ff69 100644
+--- a/openbox/menuframe.c
++++ b/openbox/menuframe.c
+@@ -35,6 +35,9 @@
+ 
+ #define ITEM_HEIGHT (ob_rr_theme->menu_font_height + 2*PADDING)
+ 
++  /* offset at which the submenu bullet appears in the items */
++#define BULLET_X (frame->text_x + frame->text_w - ITEM_HEIGHT + PADDING)
++
+ #define FRAME_EVENTMASK (ButtonPressMask |ButtonMotionMask | EnterWindowMask |\
+                          LeaveWindowMask)
+ #define ENTRY_EVENTMASK (EnterWindowMask | LeaveWindowMask | \
+@@ -187,7 +190,10 @@ static ObMenuEntryFrame* menu_entry_frame_new(ObMenuEntry *entry,
+         self->icon = createWindow(self->window, 0, NULL);
+         g_hash_table_insert(menu_frame_map, &self->icon, self);
+     }
+-    if (entry->type == OB_MENU_ENTRY_TYPE_SUBMENU) {
++    if (entry->type == OB_MENU_ENTRY_TYPE_SUBMENU
++       || (entry->type == OB_MENU_ENTRY_TYPE_NORMAL
++          && entry == entry->menu->default_entry))
++    {
+         self->bullet = createWindow(self->window, 0, NULL);
+         g_hash_table_insert(menu_frame_map, &self->bullet, self);
+     }
+@@ -209,12 +215,11 @@ static void menu_entry_frame_free(ObMenuEntryFrame *self)
+         XDestroyWindow(obt_display, self->window);
+         g_hash_table_remove(menu_frame_map, &self->text);
+         g_hash_table_remove(menu_frame_map, &self->window);
+-        if ((self->entry->type == OB_MENU_ENTRY_TYPE_NORMAL) ||
+-            (self->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU)) {
++        if (self->icon) {
+             XDestroyWindow(obt_display, self->icon);
+             g_hash_table_remove(menu_frame_map, &self->icon);
+         }
+-        if (self->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU) {
++        if (self->bullet) {
+             XDestroyWindow(obt_display, self->bullet);
+             g_hash_table_remove(menu_frame_map, &self->bullet);
+         }
+@@ -372,6 +377,7 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+     gint th; /* temp */
+     ObMenu *sub;
+     ObMenuFrame *frame = self->frame;
++    gboolean has_bullet;
+ 
+     switch (self->entry->type) {
+     case OB_MENU_ENTRY_TYPE_NORMAL:
+@@ -532,14 +538,34 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+         g_assert_not_reached();
+     }
+ 
+-    if (((self->entry->type == OB_MENU_ENTRY_TYPE_NORMAL) ||
+-         (self->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU)) &&
+-        self->entry->data.normal.icon)
++    has_bullet = FALSE;
++    if ((self->entry->type == OB_MENU_ENTRY_TYPE_NORMAL) &&
++        frame->parent &&
++        (self == self->frame->default_entry))
+     {
++        // show the mark of the default item
++        RrAppearance *bullet_a;
++
++        XMoveResizeWindow(obt_display, self->bullet,
++                          PADDING, PADDING,
++                          ITEM_HEIGHT - 2*PADDING,
++                          ITEM_HEIGHT - 2*PADDING);
++        bullet_a = ((self == self->frame->selected) ?
++                ob_rr_theme->a_menu_bullet_def_selected :
++                ob_rr_theme->a_menu_bullet_def_normal);
++        bullet_a->surface.parent = item_a;
++        bullet_a->surface.parentx = 0;
++        bullet_a->surface.parenty = PADDING;
++        RrPaint(bullet_a, self->bullet,
++                self->frame->icon_x,
++                ITEM_HEIGHT - 2*PADDING);
++        has_bullet = TRUE;
++    }
++    if (self->entry->icon){
+         RrAppearance *clear;
+ 
+         XMoveResizeWindow(obt_display, self->icon,
+-                          PADDING, frame->item_margin.top,
++                          self->frame->icon_x, frame->item_margin.top,
+                           ITEM_HEIGHT - frame->item_margin.top
+                           - frame->item_margin.bottom,
+                           ITEM_HEIGHT - frame->item_margin.top
+@@ -549,9 +575,9 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+         RrAppearanceClearTextures(clear);
+         clear->texture[0].type = RR_TEXTURE_IMAGE;
+         clear->texture[0].data.image.image =
+-            self->entry->data.normal.icon;
++            self->entry->icon;
+         clear->texture[0].data.image.alpha =
+-            self->entry->data.normal.icon_alpha;
++            self->entry->icon_alpha;
+         clear->surface.parent = item_a;
+         clear->surface.parentx = PADDING;
+         clear->surface.parenty = frame->item_margin.top;
+@@ -562,13 +588,13 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+                 - frame->item_margin.bottom);
+         XMapWindow(obt_display, self->icon);
+     } else if (self->entry->type == OB_MENU_ENTRY_TYPE_NORMAL &&
+-               self->entry->data.normal.mask)
++               self->entry->mask)
+     {
+         RrColor *c;
+         RrAppearance *clear;
+ 
+         XMoveResizeWindow(obt_display, self->icon,
+-                          PADDING, frame->item_margin.top,
++                          self->frame->icon_x, frame->item_margin.top,
+                           ITEM_HEIGHT - frame->item_margin.top
+                           - frame->item_margin.bottom,
+                           ITEM_HEIGHT - frame->item_margin.top
+@@ -578,22 +604,22 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+         RrAppearanceClearTextures(clear);
+         clear->texture[0].type = RR_TEXTURE_MASK;
+         clear->texture[0].data.mask.mask =
+-            self->entry->data.normal.mask;
++            self->entry->mask;
+ 
+         c = (self->entry->type == OB_MENU_ENTRY_TYPE_NORMAL &&
+              !self->entry->data.normal.enabled ?
+              /* disabled */
+              (self == self->frame->selected ?
+-              self->entry->data.normal.mask_disabled_selected_color :
+-              self->entry->data.normal.mask_disabled_color) :
++              self->entry->mask_disabled_selected_color :
++              self->entry->mask_disabled_color) :
+              /* enabled */
+              (self == self->frame->selected ?
+-              self->entry->data.normal.mask_selected_color :
+-              self->entry->data.normal.mask_normal_color));
++              self->entry->mask_selected_color :
++              self->entry->mask_normal_color));
+         clear->texture[0].data.mask.color = c;
+ 
+         clear->surface.parent = item_a;
+-        clear->surface.parentx = PADDING;
++        clear->surface.parentx = self->frame->icon_x;
+         clear->surface.parenty = frame->item_margin.top;
+         RrPaint(clear, self->icon,
+                 ITEM_HEIGHT - frame->item_margin.top
+@@ -607,13 +633,17 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+     if (self->entry->type == OB_MENU_ENTRY_TYPE_SUBMENU) {
+         RrAppearance *bullet_a;
+         XMoveResizeWindow(obt_display, self->bullet,
+-                          self->frame->text_x + self->frame->text_w -
+-                          ITEM_HEIGHT + PADDING, PADDING,
++                          BULLET_X, PADDING,
+                           ITEM_HEIGHT - 2*PADDING,
+                           ITEM_HEIGHT - 2*PADDING);
+-        bullet_a = (self == self->frame->selected ?
+-                    ob_rr_theme->a_menu_bullet_selected :
+-                    ob_rr_theme->a_menu_bullet_normal);
++        if (sub->default_entry)
++            bullet_a = ((self == self->frame->selected) ?
++                         ob_rr_theme->a_menu_bullet_def_selected :
++                         ob_rr_theme->a_menu_bullet_def_normal);
++        else
++            bullet_a = ((self == self->frame->selected) ?
++                         ob_rr_theme->a_menu_bullet_selected :
++                         ob_rr_theme->a_menu_bullet_normal);
+         bullet_a->surface.parent = item_a;
+         bullet_a->surface.parentx =
+             self->frame->text_x + self->frame->text_w - ITEM_HEIGHT + PADDING;
+@@ -621,8 +651,11 @@ static void menu_entry_frame_render(ObMenuEntryFrame *self)
+         RrPaint(bullet_a, self->bullet,
+                 ITEM_HEIGHT - 2*PADDING,
+                 ITEM_HEIGHT - 2*PADDING);
++        has_bullet = TRUE;
++    }
++    if (has_bullet)
+         XMapWindow(obt_display, self->bullet);
+-    } else
++    else
+         XUnmapWindow(obt_display, self->bullet);
+ 
+     XFlush(obt_display);
+@@ -767,8 +800,7 @@ void menu_frame_render(ObMenuFrame *self)
+             tw = MIN(tw, MAX_MENU_WIDTH);
+             th = ob_rr_theme->menu_font_height;
+ 
+-            if (e->entry->data.normal.icon ||
+-                e->entry->data.normal.mask)
++            if (e->entry->icon || e->entry->mask)
+                 has_icon = TRUE;
+             break;
+         case OB_MENU_ENTRY_TYPE_SUBMENU:
+@@ -778,8 +810,8 @@ void menu_frame_render(ObMenuFrame *self)
+             tw = MIN(tw, MAX_MENU_WIDTH);
+             th = ob_rr_theme->menu_font_height;
+ 
+-            if (e->entry->data.normal.icon ||
+-                e->entry->data.normal.mask)
++            if (e->entry->icon ||
++                e->entry->mask)
+                 has_icon = TRUE;
+ 
+             tw += ITEM_HEIGHT - PADDING;
+@@ -818,10 +850,17 @@ void menu_frame_render(ObMenuFrame *self)
+         h -= ob_rr_theme->mbwidth;
+     }
+ 
++    self->icon_x = PADDING;
+     self->text_x = PADDING;
+     self->text_w = w;
+ 
+     if (self->entries) {
++        gint def_w = ITEM_HEIGHT-2*PADDING;
++        if (self->parent && self->menu->default_entry) {
++            w += def_w;
++            self->icon_x += def_w;
++            self->text_x += def_w;
++        }
+         if (has_icon) {
+             w += ITEM_HEIGHT + PADDING;
+             self->text_x += ITEM_HEIGHT + PADDING;
+@@ -852,6 +891,7 @@ static void menu_frame_update(ObMenuFrame *self)
+ {
+     GList *mit, *fit;
+     const Rect *a;
++    ObMenuEntry *menu_default_entry;
+     gint h;
+ 
+     menu_pipe_execute(self->menu);
+@@ -871,10 +911,13 @@ static void menu_frame_update(ObMenuFrame *self)
+         f->entry = mit->data;
+     }
+ 
++    menu_default_entry = self->menu->default_entry;
+     /* if there are more menu entries than in the frame, add them */
+     while (mit) {
+         ObMenuEntryFrame *e = menu_entry_frame_new(mit->data, self);
+         self->entries = g_list_append(self->entries, e);
++        if (menu_default_entry == e->entry)
++             self->default_entry = e;
+         mit = g_list_next(mit);
+     }
+ 
+@@ -957,7 +1000,7 @@ static gboolean menu_frame_is_visible(ObMenuFrame *self)
+     return !!(g_list_find(menu_frame_visible, self));
+ }
+ 
+-static gboolean menu_frame_show(ObMenuFrame *self)
++gboolean menu_frame_show(ObMenuFrame *self)
+ {
+     GList *it;
+ 
+@@ -1178,6 +1221,11 @@ ObMenuEntryFrame* menu_entry_frame_under(gint x, gint y)
+     return ret;
+ }
+ 
++gboolean menu_entry_frame_x_not_in_bullet(ObMenuFrame* frame, gint x /* local */)
++{
++    return(x <= BULLET_X);
++}
++
+ static gboolean submenu_show_timeout(gpointer data)
+ {
+     g_assert(menu_frame_visible);
+diff --git a/openbox/menuframe.h b/openbox/menuframe.h
+index 7b295b6..ffcedf6 100644
+--- a/openbox/menuframe.h
++++ b/openbox/menuframe.h
+@@ -55,6 +55,8 @@ struct _ObMenuFrame
+ 
+     GList *entries;
+     ObMenuEntryFrame *selected;
++    /* default entry */
++    ObMenuEntryFrame *default_entry;
+ 
+     /* show entries from the menu starting at this index */
+     guint show_from;
+@@ -67,6 +69,7 @@ struct _ObMenuFrame
+     Strut item_margin;
+     gint inner_w; /* inside the borders */
+     gint item_h;  /* height of all normal items */
++    gint icon_x;  /* offset at which the icon or mask appears in the items */
+     gint text_x;  /* offset at which the text appears in the items */
+     gint text_w;  /* width of the text area in the items */
+     gint text_h;  /* height of the items */
+@@ -140,8 +143,10 @@ void menu_frame_select_last(ObMenuFrame *self);
+ 
+ ObMenuFrame* menu_frame_under(gint x, gint y);
+ ObMenuEntryFrame* menu_entry_frame_under(gint x, gint y);
++gboolean menu_entry_frame_x_not_in_bullet(ObMenuFrame* frame, gint x /* local */);
+ 
+ void menu_entry_frame_show_submenu(ObMenuEntryFrame *self);
++gboolean menu_frame_show(ObMenuFrame *self);
+ 
+ void menu_entry_frame_execute(ObMenuEntryFrame *self, guint state);
+ 

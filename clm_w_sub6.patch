@@ -1,0 +1,994 @@
+commit 56f62da740419b6edad2cff5f02252bd278d83b0
+Author: Alexey Korop <avkorop@i.ua>
+Date:   Sun Mar 15 12:22:50 2015 +0200
+
+    clm_w_sub6.patch
+
+diff --git a/Makefile.am b/Makefile.am
+index f25bf8e..8a3eed6 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -241,8 +241,6 @@ openbox_openbox_SOURCES = \
+ 	openbox/client.h \
+ 	openbox/client_list_menu.c \
+ 	openbox/client_list_menu.h \
+-	openbox/client_list_combined_menu.c \
+-	openbox/client_list_combined_menu.h \
+ 	openbox/client_menu.c \
+ 	openbox/client_menu.h \
+ 	openbox/config.c \
+diff --git a/openbox/client_list_combined_menu.c b/openbox/client_list_combined_menu.c
+deleted file mode 100644
+index 84eb506..0000000
+--- a/openbox/client_list_combined_menu.c
++++ /dev/null
+@@ -1,167 +0,0 @@
+-/* -*- indent-tabs-mode: nil; tab-width: 4; c-basic-offset: 4; -*-
+-
+-   client_list_menu.c for the Openbox window manager
+-   Copyright (c) 2006        Mikael Magnusson
+-   Copyright (c) 2003-2007   Dana Jansens
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 2 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   See the COPYING file for a copy of the GNU General Public License.
+-*/
+-
+-#include "openbox.h"
+-#include "menu.h"
+-#include "menuframe.h"
+-#include "screen.h"
+-#include "client.h"
+-#include "client_list_combined_menu.h"
+-#include "focus.h"
+-#include "config.h"
+-#include "gettext.h"
+-
+-#include <glib.h>
+-
+-#define MENU_NAME "client-list-combined-menu"
+-
+-static ObMenu *combined_menu;
+-
+-#define SEPARATOR -1
+-#define ADD_DESKTOP -2
+-#define REMOVE_DESKTOP -3
+-
+-static void self_cleanup(ObMenu *menu, gpointer data)
+-{
+-    menu_clear_entries(menu);
+-}
+-
+-static gboolean self_update(ObMenuFrame *frame, gpointer data)
+-{
+-    ObMenu *menu = frame->menu;
+-    ObMenuEntry *e;
+-    GList *it;
+-    guint desktop;
+-
+-    menu_clear_entries(menu);
+-
+-    for (desktop = 0; desktop < screen_num_desktops; desktop++) {
+-        gboolean empty = TRUE;
+-        gboolean onlyiconic = TRUE;
+-
+-        menu_add_separator(menu, SEPARATOR, screen_desktop_names[desktop]);
+-        for (it = focus_order; it; it = g_list_next(it)) {
+-            ObClient *c = it->data;
+-            if (focus_valid_target(c, desktop,
+-                                   TRUE, TRUE,
+-                                   FALSE, TRUE, FALSE, FALSE, FALSE))
+-            {
+-                empty = FALSE;
+-
+-                if (c->iconic) {
+-                    gchar *title = g_strdup_printf("(%s)", c->icon_title);
+-                    e = menu_add_normal(menu, desktop, title, NULL, FALSE);
+-                    g_free(title);
+-                } else {
+-                    onlyiconic = FALSE;
+-                    e = menu_add_normal(menu, desktop, c->title, NULL, FALSE);
+-                }
+-
+-                if (config_menu_show_icons) {
+-                    e->icon = client_icon(c);
+-                    RrImageRef(e->icon);
+-                    e->icon_alpha =
+-                        c->iconic ? OB_ICONIC_ALPHA : 0xff;
+-                }
+-
+-                e->data.normal.data = c;
+-            }
+-        }
+-
+-        if (empty || onlyiconic) {
+-            /* no entries or only iconified windows, so add a
+-             * way to go to this desktop without uniconifying a window */
+-            if (!empty)
+-                menu_add_separator(menu, SEPARATOR, NULL);
+-
+-            e = menu_add_normal(menu, desktop, _("Go there..."), NULL, TRUE);
+-            if (desktop == screen_desktop)
+-                e->data.normal.enabled = FALSE;
+-        }
+-    }
+-
+-    if (config_menu_manage_desktops) {
+-        menu_add_separator(menu, SEPARATOR, _("Manage desktops"));
+-        menu_add_normal(menu, ADD_DESKTOP, _("_Add new desktop"), NULL, TRUE);
+-        menu_add_normal(menu, REMOVE_DESKTOP, _("_Remove last desktop"),
+-                        NULL, TRUE);
+-    }
+-
+-    return TRUE; /* always show the menu */
+-}
+-
+-static void menu_execute(ObMenuEntry *self, ObMenuFrame *f,
+-                         ObClient *c, guint state, gpointer data)
+-{
+-    if (self->id == ADD_DESKTOP) {
+-        screen_add_desktop(FALSE);
+-        menu_frame_hide_all();
+-    }
+-    else if (self->id == REMOVE_DESKTOP) {
+-        screen_remove_desktop(FALSE);
+-        menu_frame_hide_all();
+-    }
+-    else {
+-        ObClient *t = self->data.normal.data;
+-        if (t) { /* it's set to NULL if its destroyed */
+-            gboolean here = state & ShiftMask;
+-
+-            client_activate(t, TRUE, here, TRUE, TRUE, TRUE);
+-            /* if the window is omnipresent then we need to go to its
+-               desktop */
+-            if (!here && t->desktop == DESKTOP_ALL)
+-                screen_set_desktop(self->id, FALSE);
+-        }
+-        else
+-            screen_set_desktop(self->id, TRUE);
+-    }
+-}
+-
+-static void client_dest(ObClient *client, gpointer data)
+-{
+-    /* This concise function removes all references to a closed
+-     * client in the client_list_menu, so we don't have to check
+-     * in client.c */
+-    GList *eit;
+-    for (eit = combined_menu->entries; eit; eit = g_list_next(eit)) {
+-        ObMenuEntry *meit = eit->data;
+-        if (meit->type == OB_MENU_ENTRY_TYPE_NORMAL &&
+-            meit->data.normal.data == client)
+-        {
+-            meit->data.normal.data = NULL;
+-        }
+-    }
+-}
+-
+-void client_list_combined_menu_startup(gboolean reconfig)
+-{
+-    if (!reconfig)
+-        client_add_destroy_notify(client_dest, NULL);
+-
+-    combined_menu = menu_new(MENU_NAME, _("Windows"), TRUE, NULL);
+-    menu_set_update_func(combined_menu, self_update);
+-    menu_set_cleanup_func(combined_menu, self_cleanup);
+-    menu_set_execute_func(combined_menu, menu_execute);
+-}
+-
+-void client_list_combined_menu_shutdown(gboolean reconfig)
+-{
+-    if (!reconfig)
+-        client_remove_destroy_notify(client_dest);
+-}
+diff --git a/openbox/client_list_combined_menu.h b/openbox/client_list_combined_menu.h
+deleted file mode 100644
+index 420e898..0000000
+--- a/openbox/client_list_combined_menu.h
++++ /dev/null
+@@ -1,26 +0,0 @@
+-/* -*- indent-tabs-mode: nil; tab-width: 4; c-basic-offset: 4; -*-
+-
+-   client_list_menu.h for the Openbox window manager
+-   Copyright (c) 2006        Mikael Magnusson
+-   Copyright (c) 2003-2007   Dana Jansens
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 2 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   See the COPYING file for a copy of the GNU General Public License.
+-*/
+-
+-#ifndef ob__client_list_combined_menu_h
+-#define ob__client_list_combined_menu_h
+-
+-void client_list_combined_menu_startup(gboolean reconfig);
+-void client_list_combined_menu_shutdown(gboolean reconfig);
+-
+-#endif
+diff --git a/openbox/client_list_menu.c b/openbox/client_list_menu.c
+index 4f85935..73f39dc 100644
+--- a/openbox/client_list_menu.c
++++ b/openbox/client_list_menu.c
+@@ -21,8 +21,10 @@
+ #include "menu.h"
+ #include "menuframe.h"
+ #include "screen.h"
++#include "client_menu.h"
+ #include "client.h"
+ #include "client_list_menu.h"
++#include "event.h"
+ #include "focus.h"
+ #include "config.h"
+ #include "gettext.h"
+@@ -30,68 +32,170 @@
+ #include <glib.h>
+ 
+ #define MENU_NAME "client-list-menu"
++#define COMBINED_MENU_NAME "client-list-combined-menu"
++
++/* Characters, used as first character of submenu name for
++   actions submenus and move-to submenus. These characters are
++   nonprintable for prevent intersection with user defined names.*/
++#define ACTIONS_TAG (gchar)1
++#define SEND_TO_TAG (gchar)2
++
++static ObMenu *clients_menu; // visible client list or NULL
++
++static void clients_list_repaint(ObMenuFrame *f){
++    guint x,y;
++    ObMenuFrame *p;
++    ObMenuEntryFrame *pe;
++    gchar *name;
++    GravityPoint position = { { 0, }, };
++
++    g_assert(f);
++    position.x.pos = f->area.x;
++    position.y.pos = f->area.y;
++    p = f->parent;
++    pe = f->parent_entry;
++    name = g_strdup(f->menu->name);
++    if (config_menu_middle)
++       y += f->area.height / 2;
++    menu_frame_hide(f);
++    if (p)
++        menu_frame_select(p, pe, TRUE); // client-list-menu
++    else
++        menu_show(name,  &position, screen_monitor_pointer(), FALSE, FALSE, NULL); // client-list-combined-menu
++    g_free(name);
++}
+ 
+-static GSList *desktop_menus;
+-
+-typedef struct
++static gboolean act_menu_update(ObMenuFrame *frame, gpointer data)
+ {
+-    guint desktop;
+-} DesktopData;
++    frame->client = frame->menu->data; // simulate the client-menu environment
++    return(client_menu_update(frame, data));
++}
+ 
+-#define SEPARATOR -1
+-#define ADD_DESKTOP -2
+-#define REMOVE_DESKTOP -3
++static void client_list_cleanup(ObMenu *menu, gpointer data)
++{
++    clients_menu = NULL;
++}
+ 
+-static gboolean desk_menu_update(ObMenuFrame *frame, gpointer data)
++static void client_list_update(ObClient *client, gpointer data)
+ {
+-    ObMenu *menu = frame->menu;
+-    DesktopData *d = data;
++/* This function recreate menu with list of clients
++  if some listed client is closed or moved to the another desktop */
+     GList *it;
+-    gboolean empty = TRUE;
+-    gboolean onlyiconic = TRUE;
++    ObMenuFrame *f;
++
++    if (!clients_menu) return;
++    for (it = menu_frame_visible; it; it = g_list_next(it)) {
++        f = it->data;
++        if (f->menu == clients_menu) {
++            clients_list_repaint(f);
++            return;
++        }
++    }
++}
+ 
+-    menu_clear_entries(menu);
++static void send_to_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
++                                 ObClient *c, guint state, gpointer data)
++{
++    g_assert(c);
+ 
+-    for (it = focus_order; it; it = g_list_next(it)) {
+-        ObClient *c = it->data;
+-        if (focus_valid_target(c, d->desktop,
+-                               TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE)) {
+-            ObMenuEntry *e;
++    client_set_desktop(c, e->id, FALSE, FALSE);
++    client_list_update(c, NULL);
++}
+ 
+-            empty = FALSE;
++static void add_client_menu(ObMenu *menu, ObClient *c, guint desktop,
++                     guint client_number, gboolean *onlyiconic)
++{
++/* Add submenu for one client "c" to menu "menu".
++  This submenu contains the send-to submenu and action items
++(Activate, Close).
++  Created submenus are never freed directly, they will be freed upon
++next time creation the submenus with the same names, and upon
++openbox termination.
++*/
++    ObMenuEntry *e;
++    gchar *name;
++    ObMenu* act_menu, *send_to_menu;
++
++    name = g_strdup_printf("?%d-%d", desktop, client_number);
++    *name = ACTIONS_TAG;
++    if (c->iconic) {
++        gchar *title = g_strdup_printf("(%s)", c->icon_title);
++        act_menu = menu_new(name, title, TRUE, NULL);
++        g_free(title);
++    } else {
++        *onlyiconic = FALSE;
++        act_menu = menu_new(name, c->title, TRUE, NULL);
++    }
++    menu_show_all_shortcuts(act_menu, FALSE);
++    menu_set_update_func(act_menu, act_menu_update);
++    menu_set_execute_func(act_menu, client_menu_execute);
++    act_menu->data = c; // for act_menu_update
++
++    *name = SEND_TO_TAG; // send-to menu name
++    send_to_menu = client_menu_send_to_menu_new(name);
++    menu_set_execute_func(send_to_menu, send_to_menu_execute);
++
++    menu_add_submenu(act_menu, CLIENT_SEND_TO, name);
++    e = menu_add_normal(act_menu, CLIENT_ACTIVATE, _("_Activate"), NULL, TRUE);
++    e->data.normal.data = (gpointer)desktop; // see CLIENT_ACTIVATE in client_menu_execute
++    act_menu->default_entry = e;
++    client_menu_add_actions(act_menu, CA_CLOSE);
++
++    *name = ACTIONS_TAG;
++    e = menu_add_submenu(menu, desktop, name);
++    g_free(name);
++    if (config_menu_show_icons) {
++        e->icon = client_icon(c);
++        RrImageRef(e->icon);
++        e->icon_alpha =
++            c->iconic ? OB_ICONIC_ALPHA : 0xff;
++    menu_set_cleanup_func(menu, client_list_cleanup);
++    clients_menu = menu;
++    }
++}
+ 
+-            if (c->iconic) {
+-                gchar *title = g_strdup_printf("(%s)", c->icon_title);
+-                e = menu_add_normal(menu, d->desktop, title, NULL, FALSE);
+-                g_free(title);
+-            } else {
+-                onlyiconic = FALSE;
+-                e = menu_add_normal(menu, d->desktop, c->title, NULL, FALSE);
+-            }
+-
+-            if (config_menu_show_icons) {
+-                e->icon = client_icon(c);
+-                RrImageRef(e->icon);
+-                e->icon_alpha = c->iconic ? OB_ICONIC_ALPHA : 0xff;
+-            }
+-
+-            e->data.normal.data = c;
++/* Add all items about one desktop to the menu */
++void add_clients(ObMenu *menu, guint desktop)
++{
++    ObMenuEntry *e;
++    GList *it;
++    gboolean empty = TRUE;
++    gboolean onlyiconic = TRUE;
++    guint client_number = 0;
++    ObClient *c;
++
++    for (it = focus_order; it; it = g_list_next(it))
++    {
++        c = it->data;
++        if (focus_valid_target(c, desktop,
++                               TRUE, TRUE,
++                               FALSE, TRUE, FALSE, FALSE, FALSE))
++        {
++            empty = FALSE;
++            add_client_menu(menu, c, desktop, client_number, &onlyiconic);
+         }
++        ++client_number;
+     }
+ 
+     if (empty || onlyiconic) {
+-        ObMenuEntry *e;
+-
+         /* no entries or only iconified windows, so add a
+          * way to go to this desktop without uniconifying a window */
+         if (!empty)
+             menu_add_separator(menu, SEPARATOR, NULL);
+ 
+-        e = menu_add_normal(menu, d->desktop, _("Go there..."), NULL, TRUE);
+-        if (d->desktop == screen_desktop)
++        e = menu_add_normal(menu, desktop, _("Go there..."), NULL, TRUE);
++        if (desktop == screen_desktop)
+             e->data.normal.enabled = FALSE;
++    menu_find_submenus(menu); // for client_list_update
+     }
++}
++
++static gboolean desk_menu_update(ObMenuFrame *frame, gpointer data)
++{
++    ObMenu *menu = frame->menu;
+ 
++    menu_clear_entries(menu);
++    add_clients(menu, (guint)data);
+     return TRUE; /* always show */
+ }
+ 
+@@ -99,6 +203,7 @@ static void desk_menu_execute(ObMenuEntry *self, ObMenuFrame *f,
+                               ObClient *c, guint state, gpointer data)
+ {
+     ObClient *t = self->data.normal.data;
++
+     if (t) { /* it's set to NULL if its destroyed */
+         gboolean here = state & ShiftMask;
+ 
+@@ -108,70 +213,41 @@ static void desk_menu_execute(ObMenuEntry *self, ObMenuFrame *f,
+         if (!here && t->desktop == DESKTOP_ALL)
+             screen_set_desktop(self->id, FALSE);
+     }
+-    else
++    else // this case used in client-list-menu only
+         screen_set_desktop(self->id, TRUE);
+ }
+ 
+-static void desk_menu_destroy(ObMenu *menu, gpointer data)
+-{
+-    DesktopData *d = data;
+-
+-    g_slice_free(DesktopData, d);
+-
+-    desktop_menus = g_slist_remove(desktop_menus, menu);
+-}
+-
+-static void self_cleanup(ObMenu *menu, gpointer data)
+-{
+-    menu_clear_entries(menu);
+-
+-    while (desktop_menus) {
+-        menu_free(desktop_menus->data);
+-        desktop_menus = g_slist_delete_link(desktop_menus, desktop_menus);
++void add_desktop_manage(ObMenu *menu){
++    if (config_menu_manage_desktops) {
++        menu_add_separator(menu, SEPARATOR, NULL);
++        menu_add_normal(menu, ADD_DESKTOP, _("_Add new desktop"), NULL, TRUE);
++        menu_add_normal(menu, REMOVE_DESKTOP, _("_Remove last desktop"),
++                        NULL, TRUE);
+     }
+ }
+ 
+-static gboolean self_update(ObMenuFrame *frame, gpointer data)
++static gboolean client_list_menu_update(ObMenuFrame *frame, gpointer data)
+ {
+     ObMenu *menu = frame->menu;
+     guint i;
+ 
+     menu_clear_entries(menu);
+ 
+-    while (desktop_menus) {
+-        menu_free(desktop_menus->data);
+-        desktop_menus = g_slist_delete_link(desktop_menus, desktop_menus);
+-    }
+-
+     for (i = 0; i < screen_num_desktops; ++i) {
+-        ObMenu *submenu;
++        ObMenu *desktop_menu;
+         gchar *name = g_strdup_printf("%s-%u", MENU_NAME, i);
+-        DesktopData *ddata = g_slice_new(DesktopData);
+-
+-        ddata->desktop = i;
+-        submenu = menu_new(name, screen_desktop_names[i], FALSE, ddata);
+-        menu_set_update_func(submenu, desk_menu_update);
+-        menu_set_execute_func(submenu, desk_menu_execute);
+-        menu_set_destroy_func(submenu, desk_menu_destroy);
+-
++        desktop_menu = menu_new(name, screen_desktop_names[i], FALSE, (gpointer)i);
++        menu_set_update_func(desktop_menu, desk_menu_update);
++        menu_set_execute_func(desktop_menu, desk_menu_execute);
+         menu_add_submenu(menu, i, name);
+ 
+         g_free(name);
+-
+-        desktop_menus = g_slist_append(desktop_menus, submenu);
+-    }
+-
+-    if (config_menu_manage_desktops) {
+-        menu_add_separator(menu, SEPARATOR, NULL);
+-        menu_add_normal(menu, ADD_DESKTOP, _("_Add new desktop"), NULL, TRUE);
+-        menu_add_normal(menu, REMOVE_DESKTOP, _("_Remove last desktop"),
+-                        NULL, TRUE);
+     }
+-
++    add_desktop_manage(menu);
+     return TRUE; /* always show */
+ }
+ 
+-static void self_execute(ObMenuEntry *self, ObMenuFrame *f,
++static void root_menu_execute(ObMenuEntry *self, ObMenuFrame *f,
+                          ObClient *c, guint state, gpointer data)
+ {
+     if (self->id == ADD_DESKTOP) {
+@@ -182,26 +258,8 @@ static void self_execute(ObMenuEntry *self, ObMenuFrame *f,
+         screen_remove_desktop(FALSE);
+         menu_frame_hide_all();
+     }
+-}
+-
+-static void client_dest(ObClient *client, gpointer data)
+-{
+-    /* This concise function removes all references to a closed
+-     * client in the client_list_menu, so we don't have to check
+-     * in client.c */
+-    GSList *it;
+-    for (it = desktop_menus; it; it = g_slist_next(it)) {
+-        ObMenu *mit = it->data;
+-        GList *eit;
+-        for (eit = mit->entries; eit; eit = g_list_next(eit)) {
+-            ObMenuEntry *meit = eit->data;
+-            if (meit->type == OB_MENU_ENTRY_TYPE_NORMAL &&
+-                meit->data.normal.data == client)
+-            {
+-                    meit->data.normal.data = NULL;
+-            }
+-        }
+-    }
++    else // this case used in client-list-combined-menu only
++        screen_set_desktop(self->id, TRUE);
+ }
+ 
+ void client_list_menu_startup(gboolean reconfig)
+@@ -209,16 +267,40 @@ void client_list_menu_startup(gboolean reconfig)
+     ObMenu *menu;
+ 
+     if (!reconfig)
+-        client_add_destroy_notify(client_dest, NULL);
++        client_add_destroy_notify(client_list_update, NULL);
+ 
+     menu = menu_new(MENU_NAME, _("Desktops"), TRUE, NULL);
+-    menu_set_update_func(menu, self_update);
+-    menu_set_cleanup_func(menu, self_cleanup);
+-    menu_set_execute_func(menu, self_execute);
++    menu_set_update_func(menu, client_list_menu_update);
++    menu_set_execute_func(menu, root_menu_execute);
+ }
+ 
+ void client_list_menu_shutdown(gboolean reconfig)
+ {
+     if (!reconfig)
+-        client_remove_destroy_notify(client_dest);
++        client_remove_destroy_notify(client_list_update);
++}
++
++static gboolean combined_menu_update(ObMenuFrame *frame, gpointer data)
++{
++    ObMenu *menu = frame->menu;
++    guint desktop;
++
++    menu_clear_entries(menu);
++
++    for (desktop = 0; desktop < screen_num_desktops; desktop++) {
++        menu_add_separator(menu, SEPARATOR, screen_desktop_names[desktop]);
++        add_clients(menu, desktop);
++    }
++    add_desktop_manage(menu);
++    menu_find_submenus(menu); // for client_list_update
++    return TRUE; /* always show the menu */
++}
++
++void client_list_combined_menu_startup(gboolean reconfig)
++{
++    ObMenu *combined_menu;
++
++    combined_menu = menu_new(COMBINED_MENU_NAME, _("Windows"), TRUE, NULL);
++    menu_set_update_func(combined_menu, combined_menu_update);
++    menu_set_execute_func(combined_menu, root_menu_execute);
+ }
+diff --git a/openbox/client_list_menu.h b/openbox/client_list_menu.h
+index 860cd50..b67c95f 100644
+--- a/openbox/client_list_menu.h
++++ b/openbox/client_list_menu.h
+@@ -20,7 +20,13 @@
+ #ifndef ob__client_list_menu_h
+ #define ob__client_list_menu_h
+ 
++#define SEPARATOR -1
++#define ADD_DESKTOP -2
++#define REMOVE_DESKTOP -3
++
+ void client_list_menu_startup(gboolean reconfig);
+ void client_list_menu_shutdown(gboolean reconfig);
+-
++void client_list_add_clients(ObMenu *menu, guint desktop);
++void client_list_add_desktop_manage(ObMenu *menu);
++void client_list_combined_menu_startup(gboolean reconfig);
+ #endif
+diff --git a/openbox/client_menu.c b/openbox/client_menu.c
+index 6d5c4c7..e48d810 100644
+--- a/openbox/client_menu.c
++++ b/openbox/client_menu.c
+@@ -42,21 +42,9 @@ enum {
+     LAYER_BOTTOM = -1
+ };
+ 
+-enum {
+-    CLIENT_SEND_TO,
+-    CLIENT_LAYER,
+-    CLIENT_ICONIFY,
+-    CLIENT_RESTORE,
+-    CLIENT_MAXIMIZE,
+-    CLIENT_SHADE,
+-    CLIENT_DECORATE,
+-    CLIENT_MOVE,
+-    CLIENT_RESIZE,
+-    CLIENT_CLOSE
+-};
+-
+-static void set_icon_color(ObMenuEntry *e)
++static void menu_entry_set_mask(ObMenuEntry *e, RrPixmapMask *mask)
+ {
++    e->mask = mask;
+     e->mask_normal_color = ob_rr_theme->menu_color;
+     e->mask_selected_color = ob_rr_theme->menu_selected_color;
+     e->mask_disabled_color = ob_rr_theme->menu_disabled_color;
+@@ -64,7 +52,7 @@ static void set_icon_color(ObMenuEntry *e)
+         ob_rr_theme->menu_disabled_selected_color;
+ }
+ 
+-static gboolean client_menu_update(ObMenuFrame *frame, gpointer data)
++gboolean client_menu_update(ObMenuFrame *frame, gpointer data)
+ {
+     ObMenu *menu = frame->menu;
+     GList *it;
+@@ -112,11 +100,12 @@ static gboolean client_menu_update(ObMenuFrame *frame, gpointer data)
+     return TRUE; /* show the menu */
+ }
+ 
+-static void client_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
++void client_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
+                                 ObClient *c, guint state, gpointer data)
+ {
+     gint x, y;
+     gulong ignore_start;
++    gboolean here;
+ 
+     if (!c)
+         return;
+@@ -165,6 +154,14 @@ static void client_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
+     case CLIENT_CLOSE:
+         client_close(c);
+         break;
++    case CLIENT_ACTIVATE: // for client list (combined) menu
++        here = state & ShiftMask;
++        client_activate(c, TRUE, here, TRUE, TRUE, TRUE);
++        /* if the window is omnipresent then we need to go to its
++           desktop */
++        if (!here && c->desktop == DESKTOP_ALL)
++            screen_set_desktop((gint)e->data.normal.data, FALSE);
++        break;
+     default:
+         g_assert_not_reached();
+     }
+@@ -233,7 +230,7 @@ static void layer_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
+     }
+ }
+ 
+-static gboolean send_to_menu_update(ObMenuFrame *frame, gpointer data)
++static gboolean client_menu_send_to_menu_update(ObMenuFrame *frame, gpointer data)
+ {
+     ObMenu *menu = frame->menu;
+     ObClient *c = frame->client;
+@@ -267,18 +264,21 @@ static gboolean send_to_menu_update(ObMenuFrame *frame, gpointer data)
+         }
+     }
+ 
++    menu->default_entry = NULL;
+     for (it = menu->entries; it; it = g_list_next(it)) {
+         ObMenuEntry *e = it->data;
+         guint desk = e->id;
+ 
+         e->data.normal.enabled = c->desktop != desk;
++        if (e->data.normal.enabled && (desk == screen_desktop))
++        {  // mark this desktop target as the default item
++            menu->default_entry = e;
++        }
+ 
+         if ((desk == DESKTOP_ALL && c->desktop != DESKTOP_ALL) ||
+             (c->desktop == DESKTOP_ALL && desk == screen_desktop))
+-        {
+-            e->mask = ob_rr_theme->btn_desk->unpressed_mask;
+-            set_icon_color(e);
+-        } else
++            menu_entry_set_mask(e, ob_rr_theme->btn_desk->unpressed_mask);
++        else
+             e->mask = NULL;
+     }
+ 
+@@ -295,7 +295,7 @@ static void send_to_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
+         /* the client won't even be on the screen anymore, so hide the menu */
+         menu_frame_hide_all();
+     else if (f) {
+-        send_to_menu_update(f, (gpointer)1);
++        client_menu_send_to_menu_update(f, (gpointer)1);
+         menu_frame_render(f);
+     }
+ }
+@@ -363,10 +363,59 @@ static void client_menu_place(ObMenuFrame *frame, gint *x, gint *y,
+     }
+ }
+ 
++void client_menu_add_actions(ObMenu *menu, guint ca_mask)
++{
++    ObMenuEntry *e;
++
++    if (ca_mask & CA_RESTORE){
++        e = menu_add_normal(menu, CLIENT_RESTORE, _("R_estore"), NULL, TRUE);
++        menu_entry_set_mask(e,  ob_rr_theme->btn_max->unpressed_toggled_mask);
++    }
++    if (ca_mask & CA_MOVE)
++        menu_add_normal(menu, CLIENT_MOVE, _("_Move"), NULL, TRUE);
++
++    if (ca_mask & CA_RESIZE)
++        menu_add_normal(menu, CLIENT_RESIZE, _("Resi_ze"), NULL, TRUE);
++
++    if (ca_mask & CA_ICONIFY){
++        e = menu_add_normal(menu, CLIENT_ICONIFY, _("Ico_nify"), NULL, TRUE);
++        menu_entry_set_mask(e, ob_rr_theme->btn_iconify->unpressed_mask);
++    }
++
++    if (ca_mask & CA_MAXIMIZE){
++        e = menu_add_normal(menu, CLIENT_MAXIMIZE, _("Ma_ximize"), NULL, TRUE);
++        menu_entry_set_mask(e, ob_rr_theme->btn_max->unpressed_mask);
++    }
++
++    if (ca_mask & CA_SHADE){
++        e = menu_add_normal(menu, CLIENT_SHADE, _("_Roll up/down"), NULL, TRUE);
++        menu_entry_set_mask(e, ob_rr_theme->btn_shade->unpressed_mask);
++    }
++
++    if (ca_mask & CA_DECORATE)
++        menu_add_normal(menu, CLIENT_DECORATE, _("Un/_Decorate"), NULL, TRUE);
++
++    if (ca_mask & CA_CLOSE){
++        menu_add_separator(menu, -1, NULL);
++        e = menu_add_normal(menu, CLIENT_CLOSE, _("_Close"), NULL, TRUE);
++        menu_entry_set_mask(e, ob_rr_theme->btn_close->unpressed_mask);
++    }
++}
++
++ObMenu *client_menu_send_to_menu_new(gchar *name){
++    ObMenu *menu;
++
++    menu = menu_new(name, _("_Send to desktop"), TRUE, NULL);
++    menu_set_update_func(menu, client_menu_send_to_menu_update);
++    return(menu);
++}
++
+ void client_menu_startup(void)
+ {
++    guint const ca_client = CA_SEND_TO | CA_LAYER | CA_ICONIFY |
++        CA_RESTORE | CA_MAXIMIZE | CA_SHADE | CA_DECORATE |
++        CA_MOVE | CA_RESIZE | CA_CLOSE;
+     ObMenu *menu;
+-    ObMenuEntry *e;
+ 
+     menu = menu_new(LAYER_MENU_NAME, _("_Layer"), TRUE, NULL);
+     menu_show_all_shortcuts(menu, TRUE);
+@@ -377,8 +426,7 @@ void client_menu_startup(void)
+     menu_add_normal(menu, LAYER_NORMAL, _("_Normal"), NULL, TRUE);
+     menu_add_normal(menu, LAYER_BOTTOM, _("Always on _bottom"),NULL, TRUE);
+ 
+-    menu = menu_new(SEND_TO_MENU_NAME, _("_Send to desktop"), TRUE, NULL);
+-    menu_set_update_func(menu, send_to_menu_update);
++    menu = client_menu_send_to_menu_new(SEND_TO_MENU_NAME);
+     menu_set_execute_func(menu, send_to_menu_execute);
+ 
+     menu = menu_new(CLIENT_MENU_NAME, _("Client menu"), TRUE, NULL);
+@@ -390,32 +438,5 @@ void client_menu_startup(void)
+     menu_add_submenu(menu, CLIENT_SEND_TO, SEND_TO_MENU_NAME);
+ 
+     menu_add_submenu(menu, CLIENT_LAYER, LAYER_MENU_NAME);
+-
+-    e = menu_add_normal(menu, CLIENT_RESTORE, _("R_estore"), NULL, TRUE);
+-    e->mask = ob_rr_theme->btn_max->unpressed_toggled_mask;
+-    set_icon_color(e);
+-
+-    menu_add_normal(menu, CLIENT_MOVE, _("_Move"), NULL, TRUE);
+-
+-    menu_add_normal(menu, CLIENT_RESIZE, _("Resi_ze"), NULL, TRUE);
+-
+-    e = menu_add_normal(menu, CLIENT_ICONIFY, _("Ico_nify"), NULL, TRUE);
+-    e->mask = ob_rr_theme->btn_iconify->unpressed_mask;
+-    set_icon_color(e);
+-
+-    e = menu_add_normal(menu, CLIENT_MAXIMIZE, _("Ma_ximize"), NULL, TRUE);
+-    e->mask = ob_rr_theme->btn_max->unpressed_mask;
+-    set_icon_color(e);
+-
+-    e = menu_add_normal(menu, CLIENT_SHADE, _("_Roll up/down"), NULL, TRUE);
+-    e->mask = ob_rr_theme->btn_shade->unpressed_mask;
+-    set_icon_color(e);
+-
+-    menu_add_normal(menu, CLIENT_DECORATE, _("Un/_Decorate"), NULL, TRUE);
+-
+-    menu_add_separator(menu, -1, NULL);
+-
+-    e = menu_add_normal(menu, CLIENT_CLOSE, _("_Close"), NULL, TRUE);
+-    e->mask = ob_rr_theme->btn_close->unpressed_mask;
+-    set_icon_color(e);
++    client_menu_add_actions(menu, ca_client);
+ }
+diff --git a/openbox/client_menu.h b/openbox/client_menu.h
+index 5c55516..2c16334 100644
+--- a/openbox/client_menu.h
++++ b/openbox/client_menu.h
+@@ -18,7 +18,38 @@
+ 
+ #ifndef ob__client_menu_h
+ #define ob__client_menu_h
++#include "client.h"
+ 
+-void client_menu_startup(void);
++enum {
++    CLIENT_SEND_TO,
++    CLIENT_LAYER,
++    CLIENT_ICONIFY,
++    CLIENT_RESTORE,
++    CLIENT_MAXIMIZE,
++    CLIENT_SHADE,
++    CLIENT_DECORATE,
++    CLIENT_MOVE,
++    CLIENT_RESIZE,
++    CLIENT_CLOSE,
++    CLIENT_ACTIVATE
++};
++
++// client actions bits for menu creation mask
++#define CA_SEND_TO   (1<<CLIENT_SEND_TO)
++#define CA_LAYER     (1<<CLIENT_LAYER)
++#define CA_ICONIFY   (1<<CLIENT_ICONIFY)
++#define CA_RESTORE   (1<<CLIENT_RESTORE)
++#define CA_MAXIMIZE  (1<<CLIENT_MAXIMIZE)
++#define CA_SHADE     (1<<CLIENT_SHADE)
++#define CA_DECORATE  (1<<CLIENT_DECORATE)
++#define CA_MOVE      (1<<CLIENT_MOVE)
++#define CA_RESIZE    (1<<CLIENT_RESIZE)
++#define CA_CLOSE     (1<<CLIENT_CLOSE)
+ 
++void client_menu_startup(void);
++gboolean client_menu_update(ObMenuFrame *frame, gpointer data);
++void client_menu_add_actions(ObMenu *menu, guint ca_mask);
++ObMenu *client_menu_send_to_menu_new(gchar *name);
++void client_menu_execute(ObMenuEntry *e, ObMenuFrame *f,
++                                ObClient *c, guint state, gpointer data);
+ #endif
+diff --git a/openbox/menu.c b/openbox/menu.c
+index 6c0cf7e..48c95e2 100644
+--- a/openbox/menu.c
++++ b/openbox/menu.c
+@@ -32,7 +32,6 @@
+ #include "misc.h"
+ #include "client_menu.h"
+ #include "client_list_menu.h"
+-#include "client_list_combined_menu.h"
+ #include "gettext.h"
+ #include "obt/xml.h"
+ #include "obt/paths.h"
+@@ -126,7 +125,6 @@ void menu_shutdown(gboolean reconfig)
+ 
+     menu_frame_hide_all();
+ 
+-    client_list_combined_menu_shutdown(reconfig);
+     client_list_menu_shutdown(reconfig);
+ 
+     g_hash_table_destroy(menu_hash);
+diff --git a/openbox/menuframe.c b/openbox/menuframe.c
+index 943ff69..81a55ba 100644
+--- a/openbox/menuframe.c
++++ b/openbox/menuframe.c
+@@ -56,7 +56,6 @@ static ObMenuEntryFrame* menu_entry_frame_new(ObMenuEntry *entry,
+ static void menu_entry_frame_free(ObMenuEntryFrame *self);
+ static void menu_frame_update(ObMenuFrame *self);
+ static gboolean submenu_show_timeout(gpointer data);
+-static void menu_frame_hide(ObMenuFrame *self);
+ 
+ static gboolean submenu_hide_timeout(gpointer data);
+ 
+@@ -1130,7 +1129,7 @@ gboolean menu_frame_show_submenu(ObMenuFrame *self, ObMenuFrame *parent,
+     return TRUE;
+ }
+ 
+-static void menu_frame_hide(ObMenuFrame *self)
++void menu_frame_hide(ObMenuFrame *self)
+ {
+     ObMenu *const menu = self->menu;
+     GList *it = g_list_find(menu_frame_visible, self);
+diff --git a/openbox/menuframe.h b/openbox/menuframe.h
+index ffcedf6..123cadf 100644
+--- a/openbox/menuframe.h
++++ b/openbox/menuframe.h
+@@ -129,6 +129,7 @@ gboolean menu_frame_show_topmenu(ObMenuFrame *self, const GravityPoint *pos,
+ gboolean menu_frame_show_submenu(ObMenuFrame *self, ObMenuFrame *parent,
+                                  ObMenuEntryFrame *parent_entry);
+ 
++void menu_frame_hide(ObMenuFrame *self);
+ void menu_frame_hide_all(void);
+ void menu_frame_hide_all_client(struct _ObClient *client);
+ 
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 4509714..decb09e 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -3,7 +3,6 @@ openbox/actions.c
+ openbox/actions/execute.c
+ openbox/actions/exit.c
+ openbox/client.c
+-openbox/client_list_combined_menu.c
+ openbox/client_list_menu.c
+ openbox/client_menu.c
+ openbox/config.c
+diff --git a/po/openbox.pot b/po/openbox.pot
+index 3e5a5a9..aafc288 100644
+--- a/po/openbox.pot
++++ b/po/openbox.pot
+@@ -451,3 +451,6 @@ msgstr ""
+ #: openbox/prompt.c:154
+ msgid "OK"
+ msgstr ""
++
++msgid "_Activate"
++msgstr ""
+diff --git a/po/ru.po b/po/ru.po
+index 62424a3..ccbcb91 100644
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -471,3 +471,6 @@ msgstr "Запрошенного ключа \"%s\" на экране не сущ
+ #: openbox/prompt.c:154
+ msgid "OK"
+ msgstr "OK"
++
++msgid "_Activate"
++msgstr "Активизировать (_A)"
+diff --git a/po/uk.po b/po/uk.po
+index 9d300ef..3642b63 100644
+--- a/po/uk.po
++++ b/po/uk.po
+@@ -474,3 +474,6 @@ msgstr "Потрібної кнопки \"%s\" нема на екрані"
+ #: openbox/prompt.c:154
+ msgid "OK"
+ msgstr "Гаразд"
++
++msgid "_Activate"
++msgstr "Активізувати (_A)"

@@ -1,0 +1,68 @@
+diff -urwN -X openbox/.gitignore openbox-efc7efc/Makefile.am openbox/Makefile.am
+--- openbox-efc7efc/Makefile.am	2014-12-13 11:53:40.000000000 +0200
++++ openbox/Makefile.am	2014-12-13 10:21:40.000000000 +0200
+@@ -222,6 +222,7 @@
+ 	openbox/actions/movetoedge.c \
+ 	openbox/actions/omnipresent.c \
+ 	openbox/actions/raise.c \
++	openbox/actions/clearclick.c \
+ 	openbox/actions/raiselower.c \
+ 	openbox/actions/reconfigure.c \
+ 	openbox/actions/resize.c \
+diff -urwN -X openbox/.gitignore openbox-efc7efc/openbox/actions/all.c openbox/openbox/actions/all.c
+--- openbox-efc7efc/openbox/actions/all.c	2014-11-07 19:58:40.000000000 +0200
++++ openbox/openbox/actions/all.c	2014-12-13 11:58:08.000000000 +0200
+@@ -15,6 +15,7 @@
+     action_move_startup();
+     action_focus_startup();
+     action_raise_startup();
++    action_clear_click_startup();
+     action_lower_startup();
+     action_raiselower_startup();
+     action_unfocus_startup();
+diff -urwN -X openbox/.gitignore openbox-efc7efc/openbox/actions/all.h openbox/openbox/actions/all.h
+--- openbox-efc7efc/openbox/actions/all.h	2014-11-07 19:58:40.000000000 +0200
++++ openbox/openbox/actions/all.h	2014-12-13 11:57:30.000000000 +0200
+@@ -16,6 +16,7 @@
+ void action_move_startup(void);
+ void action_focus_startup(void);
+ void action_raise_startup(void);
++void action_clear_click_startup(void);
+ void action_lower_startup(void);
+ void action_raiselower_startup(void);
+ void action_unfocus_startup(void);
+diff -urwN -X openbox/.gitignore openbox-efc7efc/openbox/actions/clearclick.c openbox/openbox/actions/clearclick.c
+--- openbox-efc7efc/openbox/actions/clearclick.c	1970-01-01 03:00:00.000000000 +0300
++++ openbox/openbox/actions/clearclick.c	2014-12-13 11:59:15.000000000 +0200
+@@ -0,0 +1,31 @@
++#include "openbox/actions.h"
++#include "openbox/event.h"
++#include "obt/display.h"
++#include "openbox/focus.h"
++
++/* This action prevents the transmission of the mouse event
++to the nonactive window. The typical using is
++
++    <context name="Client">
++      <mousebind action="Press" button="Left">
++        <action name="Focus"/>
++        <action name="Raise"/>
++        <action name="ClearClick"/>
++      </mousebind>
++ */
++
++static gboolean run_func(ObActionsData *data, gpointer options);
++
++void action_clear_click_startup(void)
++{
++    actions_register("ClearClick", NULL, NULL, run_func);
++}
++
++/* Always return FALSE because its not interactive */
++static gboolean run_func(ObActionsData *data, gpointer options)
++{
++    if (data->client && data->client != focus_client)
++        XAllowEvents(obt_display, AsyncPointer , event_time());
++
++    return FALSE;
++}

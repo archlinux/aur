@@ -1,0 +1,14 @@
+post_install() {
+  echo "Config samples see in /etc/openbox_eui/samples."
+  echo "If You use obconf and/or lxappearance-obconf You must"
+  echo "  rebuild these packages from sources (yaourt -Sb obconf)"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+  echo "If You use obconf and/or lxappearance-obconf You must"
+  echo "reinstall these packages from official repository"
+}

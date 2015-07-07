@@ -1,0 +1,44 @@
+diff -ruw -X openbox-efc7efc/.gitignore openbox-efc7efc/openbox/menu.c openbox-efc7efc^/openbox/menu.c
+--- openbox-efc7efc/openbox/menu.c	2014-12-06 19:20:47.000000000 +0200
++++ openbox-efc7efc^/openbox/menu.c	2014-12-06 18:46:06.000000000 +0200
+@@ -116,6 +116,7 @@
+     }
+ 
+     g_assert(menu_parse_state.parent == NULL);
++    keyboard_rebind();
+ }
+ 
+ void menu_shutdown(gboolean reconfig)
+@@ -282,6 +283,8 @@
+     gboolean is_default = FALSE;
+     gchar *icon;
+     ObMenuEntry *e;
++    GList *keylist;
++    gchar *keystring, **keys, **key;
+ 
+     if (state->parent) {
+         /* Don't try to extract "icon" attribute if icons in user-defined
+@@ -292,11 +295,22 @@
+             xmlNodePtr c;
+             GSList *acts = NULL;
+ 
++            keylist = NULL;
++            if (obt_xml_attr_string(node, "key", &keystring)) {
++                keys = g_strsplit(keystring, " ", 0);
++                for (key = keys; *key; ++key)
++                    keylist = g_list_append(keylist, *key);
++                }
+             c = obt_xml_find_node(node->children, "action");
+             while (c) {
+                 ObActionsAct *action = actions_parse(c);
+-                if (action)
++                if (action) {
++                    if (keylist) {
++                        actions_act_ref(action);
++                        keyboard_bind(keylist, action);
++                    }
+                     acts = g_slist_append(acts, action);
++                }
+                 c = obt_xml_find_node(c->next, "action");
+             }
+             e = menu_add_normal(state->parent, -1, label, acts, TRUE);

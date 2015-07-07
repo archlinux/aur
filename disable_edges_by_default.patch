@@ -1,0 +1,55 @@
+diff --git a/openbox/config.c b/openbox/config.c
+--- a/openbox/config.c
++++ b/openbox/config.c
+@@ -27,6 +27,7 @@
+ #include "openbox.h"
+ #include "gettext.h"
+ #include "obt/paths.h"
++#include "edges.h"
+ 
+ gboolean config_focus_new;
+ gboolean config_focus_follow;
+@@ -565,6 +566,7 @@ static void parse_mouse(xmlNodePtr node, gpointer d)
+                 }
+                 continue;
+             }
++            enable_edge(cx - OB_FRAME_CONTEXT_EDGE_TOP);
+ 
+             nbut = obt_xml_find_node(n->children, "mousebind");
+             while (nbut) {
+diff --git a/openbox/edges.c b/openbox/edges.c
+index 2b40619..2aea791 100644
+--- a/openbox/edges.c
++++ b/openbox/edges.c
+@@ -10,7 +10,7 @@
+ /* Array of array of monitors of edges: edge[monitor 2][top edge] */
+ ObEdge ***edge = NULL;
+ #warning put in config.c and parse configs of course
+-gboolean config_edge_enabled[OB_NUM_EDGES] = {1, 1, 1, 1, 1, 1, 1, 1};
++gboolean config_edge_enabled[OB_NUM_EDGES] = {0, 0, 0, 0, 0, 0, 0, 0};
+ /* this could change at runtime, we should hook into that, but for now
+  * don't crash on reconfigure/shutdown */
+ static guint edge_monitors;
+@@ -133,3 +133,10 @@ void edges_configure()
+     edges_shutdown(TRUE);
+     edges_startup(TRUE);
+ }
++
++void enable_edge(int may_be_edge_index)
++{
++    if ((may_be_edge_index >= 0) && (may_be_edge_index < OB_NUM_EDGES))
++        config_edge_enabled[may_be_edge_index] = 1;
++
++}
+diff --git a/openbox/edges.h b/openbox/edges.h
+index 419cba6..1070e9f 100644
+--- a/openbox/edges.h
++++ b/openbox/edges.h
+@@ -25,6 +25,7 @@ struct _ObEdge
+     ObEdgeLocation location;
+ };
+ 
++void enable_edge(int may_be_edge_index);
+ void edges_startup(gboolean reconfigure);
+ void edges_shutdown(gboolean reconfigure);
+ void edges_configure(void);

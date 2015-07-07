@@ -1,0 +1,166 @@
+diff --git a/data/rc.xml b/data/rc.xml
+index a9a7a35..1f66840 100644
+--- a/data/rc.xml
++++ b/data/rc.xml
+@@ -637,6 +637,14 @@
+        entry in parent menu
+        if this is a negative value, then the delay is infinite and the
+        submenu will not be hidden until a different submenu is opened -->
++  <utf8Enabled>no</utf8Enabled>
++  <!-- set to 'yes' to enable utf8 (unicode) support for menu shortcuts
++       this includes automatic selection of first suitable character and
++       manual setting with a prepended underscore -->
++  <utf8AllowGraph>no</utf8AllowGraph>
++  <!-- set to 'yes' (utf8Enabled must also be set to 'yes') to allow the use of
++       any printable utf8 (unicode) character as a menu shortcut
++       by default ('no'), shortcuts are restricted to alphanumeric characters -->
+   <showIcons>yes</showIcons>
+   <!-- controls if icons appear in the client-list-(combined-)menu -->
+   <manageDesktops>yes</manageDesktops>
+diff --git a/data/rc.xsd b/data/rc.xsd
+index c8f5638..9578b84 100644
+--- a/data/rc.xsd
++++ b/data/rc.xsd
+@@ -221,6 +221,8 @@
+             <xsd:element maxOccurs="unbounded" name="file" type="xsd:string"/>
+             <xsd:element minOccurs="0" name="hideDelay" type="xsd:integer"/>
+             <xsd:element minOccurs="0" name="middle" type="ob:bool"/>
++            <xsd:element minOccurs="0" name="utf8Enabled" type="ob:bool"/>
++            <xsd:element minOccurs="0" name="utf8AllowGraph" type="ob:bool"/>
+             <xsd:element minOccurs="0" name="submenuShowDelay" type="xsd:integer"/>
+             <xsd:element minOccurs="0" name="showIcons" type="ob:bool"/>
+             <xsd:element minOccurs="0" name="manageDesktops" type="ob:bool"/>
+diff --git a/openbox/config.c b/openbox/config.c
+index 436c555..709c777 100644
+--- a/openbox/config.c
++++ b/openbox/config.c
+@@ -98,6 +98,8 @@ guint    config_submenu_show_delay;
+ guint    config_submenu_hide_delay;
+ gboolean config_menu_manage_desktops;
+ gboolean config_menu_show_icons;
++gboolean config_menu_utf8_enabled;
++gboolean config_menu_utf8_allow_graph;
+ 
+ GSList *config_menu_files;
+ 
+@@ -964,8 +966,13 @@ static void parse_menu(xmlNodePtr node, gpointer d)
+         config_submenu_hide_delay = obt_xml_node_int(n);
+     if ((n = obt_xml_find_node(node, "manageDesktops")))
+         config_menu_manage_desktops = obt_xml_node_bool(n);
++    if ((n = obt_xml_find_node(node, "utf8Enabled"))) 
++        config_menu_utf8_enabled = obt_xml_node_bool(n);
++    if ((n = obt_xml_find_node(node, "utf8AllowGraph"))) 
++        config_menu_utf8_allow_graph = obt_xml_node_bool(n);
+     if ((n = obt_xml_find_node(node, "showIcons"))) {
+         config_menu_show_icons = obt_xml_node_bool(n);
++
+ #if !defined(USE_IMLIB2) && !defined(USE_LIBRSVG)
+         if (config_menu_show_icons)
+             g_message(_("Openbox was compiled without image loading support. Icons in menus will not be loaded."));
+@@ -1180,6 +1187,8 @@ void config_startup(ObtXmlInst *i)
+     config_submenu_show_delay = 100;
+     config_submenu_hide_delay = 400;
+     config_menu_manage_desktops = TRUE;
++    config_menu_utf8_enabled = FALSE;
++    config_menu_utf8_allow_graph = FALSE;
+     config_menu_files = NULL;
+     config_menu_show_icons = TRUE;
+ 
+diff --git a/openbox/config.h b/openbox/config.h
+index 5a694c0..d4f5130 100644
+--- a/openbox/config.h
++++ b/openbox/config.h
+@@ -210,6 +210,10 @@ extern guint    config_submenu_show_delay;
+ extern guint    config_submenu_hide_delay;
+ /*! Show manage desktops in client_list_menu */
+ extern gboolean config_menu_manage_desktops;
++/*! Enable utf8 support in menus */
++extern gboolean config_menu_utf8_enabled;
++/*! Allow using all graphs as menu shortcuts */
++extern gboolean config_menu_utf8_allow_graph;
+ /*! Load & show icons in user-defined menus */
+ extern gboolean config_menu_show_icons;
+ /*! User-specified menu files */
+diff --git a/openbox/menu.c b/openbox/menu.c
+index 8804e12..a708b38 100644
+--- a/openbox/menu.c
++++ b/openbox/menu.c
+@@ -55,6 +55,7 @@ static void menu_destroy_hash_value(ObMenu *self);
+ static void parse_menu_item(xmlNodePtr node, gpointer data);
+ static void parse_menu_separator(xmlNodePtr node, gpointer data);
+ static void parse_menu(xmlNodePtr node, gpointer data);
++static gboolean is_valid_shortcut(gchar *c);
+ static gunichar parse_shortcut(const gchar *label, gboolean allow_shortcut,
+                                gchar **strippedlabel, guint *position,
+                                gboolean *always_show);
+@@ -201,6 +202,19 @@ static ObMenu* menu_from_name(gchar *name)
+                            ((c) >= 'A' && (c) <= 'Z') || \
+                            ((c) >= 'a' && (c) <= 'z'))
+ 
++static gboolean is_valid_shortcut(gchar *c)
++{
++    gunichar uc;
++
++    if(!config_menu_utf8_enabled)   // unless utf8 support is explicitly enabled in config
++        return VALID_SHORTCUT(*c);  // preserve old behaviour
++
++    uc = g_utf8_get_char_validated(c, MAX(OB_MAX_UTF8_CHAR_SZ, strlen(c)));
++    g_assert(uc > ((gunichar) - 1));
++
++    return config_menu_utf8_allow_graph ? g_unichar_isgraph(uc) : g_unichar_isalnum(uc); 
++}
++
+ static gunichar parse_shortcut(const gchar *label, gboolean allow_shortcut,
+                                gchar **strippedlabel, guint *position,
+                                gboolean *always_show)
+@@ -228,7 +242,7 @@ static gunichar parse_shortcut(const gchar *label, gboolean allow_shortcut,
+         i = *strippedlabel;
+         do {
+             escape = FALSE;
+-            i = strchr(i, '_');
++            i = config_menu_utf8_enabled ? g_utf8_strchr(i, -1, '_') : strchr(i, '_');
+             if (i && *(i+1) == '_') {
+                 gchar *j;
+ 
+@@ -244,10 +258,16 @@ static gunichar parse_shortcut(const gchar *label, gboolean allow_shortcut,
+         if (allow_shortcut && i != NULL) {
+             /* there is an underscore in the string */
+ 
+-            /* you have to use a printable ascii character for shortcuts
++            /* without utf8Enabled:
++                you have to use an alphanumeric ascii character for shortcuts
++
++               with utf8Enabled:
++                iff not utf8AllowGraph, you have to use an alphanumeric utf8 character
++                else any graph will do (printable character excluding whitespace/formatting
++
+                don't allow space either, so you can have like "a _ b"
+             */
+-            if (VALID_SHORTCUT(*(i+1))) {
++            if (is_valid_shortcut(i+1)) {
+                 shortcut = g_unichar_tolower(g_utf8_get_char(i+1));
+                 *position = i - *strippedlabel;
+                 *always_show = TRUE;
+@@ -267,7 +287,7 @@ static gunichar parse_shortcut(const gchar *label, gboolean allow_shortcut,
+                instead */
+ 
+             for (i = *strippedlabel; *i != '\0'; ++i)
+-                if (VALID_SHORTCUT(*i)) {
++                if (is_valid_shortcut(i)) {
+                     *position = i - *strippedlabel;
+                     shortcut = g_unichar_tolower(g_utf8_get_char(i));
+                     break;
+diff --git a/openbox/misc.h b/openbox/misc.h
+index 750dddd..43b686a 100644
+--- a/openbox/misc.h
++++ b/openbox/misc.h
+@@ -19,6 +19,9 @@
+ #ifndef __ob__misc_h
+ #define __ob__misc_h
+ 
++
++#define OB_MAX_UTF8_CHAR_SZ 4
++
+ /*! The alpha value to use for icons of iconified windows in various places
+   like the focus cycle popup and client list menus.
+   Give iconic windows 7/16 alpha. A little under 50%.

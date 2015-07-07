@@ -1,0 +1,59 @@
+diff --git a/data/rc.xsd b/data/rc.xsd
+--- a/data/rc.xsd
++++ b/data/rc.xsd
+@@ -218,6 +218,7 @@
+     <xsd:complexType name="menu">
+         <xsd:sequence>
+             <xsd:element maxOccurs="unbounded" name="file" type="xsd:string"/>
++            <xsd:element minOccurs="0" name="TopMenuKbdGroup" type="xsd:integer"/>
+             <xsd:element minOccurs="0" name="hideDelay" type="xsd:integer"/>
+             <xsd:element minOccurs="0" name="middle" type="ob:bool"/>
+             <xsd:element minOccurs="0" name="utf8Enabled" type="ob:bool"/>
+diff --git a/openbox/config.c b/openbox/config.c
+--- a/openbox/config.c
++++ b/openbox/config.c
+@@ -92,6 +92,7 @@ gint     config_mouse_dclicktime;
+ gint     config_mouse_screenedgetime;
+ gboolean config_mouse_screenedgewarp;
+ 
++guint config_menu_topmenu_kbd_group;
+ guint    config_menu_hide_delay;
+ gboolean config_menu_middle;
+ guint    config_submenu_show_delay;
+@@ -937,6 +938,8 @@ static void parse_menu(xmlNodePtr node, gpointer d)
+     xmlNodePtr n;
+     node = node->children;
+ 
++    if ((n = obt_xml_find_node(node, "TopMenuKbdGroup")))
++        config_menu_topmenu_kbd_group = obt_xml_node_int(n) + 1;
+     if ((n = obt_xml_find_node(node, "hideDelay")))
+         config_menu_hide_delay = obt_xml_node_int(n);
+     if ((n = obt_xml_find_node(node, "middle")))
+diff --git a/openbox/config.h b/openbox/config.h
+--- a/openbox/config.h
++++ b/openbox/config.h
+@@ -197,6 +197,9 @@ extern gint config_resist_win;
+ /*! Number of pixels to resist while crossing a screen's edge */
+ extern gint config_resist_edge;
+ 
++/*! Incremented by 1 keyboard layout group that must be set when the toplevel menu show.
++0 if not defined */
++extern guint config_menu_topmenu_kbd_group;
+ /*! Delay for hiding menu when opening in milliseconds */
+ extern guint    config_menu_hide_delay;
+ /*! Center menus vertically about the parent entry */
+diff --git a/openbox/menuframe.c b/openbox/menuframe.c
+--- a/openbox/menuframe.c
++++ b/openbox/menuframe.c
+@@ -1056,6 +1056,11 @@ gboolean menu_frame_show_topmenu(ObMenuFrame *self, gint x, gint y,
+             e->ignore_enters++;
+     }
+ 
++    /* set the keyboard layout if specified */
++    gint n = config_menu_topmenu_kbd_group;
++    if (n)
++        XkbLockGroup(obt_display, XkbUseCoreKbd, n - 1);
++
+     return TRUE;
+ }
+ 

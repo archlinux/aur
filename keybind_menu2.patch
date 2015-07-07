@@ -1,0 +1,161 @@
+commit d112fc0e8a9d9d5fdd07a9a3698b76d1cfc6eb5c
+Author: Alexey Korop <avkorop@i.ua>
+Date:   Sun Mar 15 17:28:50 2015 +0200
+
+    keybind_menu.patch
+
+diff --git a/openbox/actions.c b/openbox/actions.c
+index bf00c6c..994740a 100644
+--- a/openbox/actions.c
++++ b/openbox/actions.c
+@@ -28,6 +28,7 @@
+ #include "debug.h"
+ 
+ #include "actions/all.h"
++#include "actions/showmenu.h"
+ 
+ static void     actions_definition_ref(ObActionsDefinition *def);
+ static void     actions_definition_unref(ObActionsDefinition *def);
+@@ -237,6 +238,16 @@ static ObActionsAct* actions_build_act_from_string(const gchar *name)
+     return act;
+ }
+ 
++ObActionsAct* actions_build_act_ShowMenu(const gchar *name)
++{
++   ObActionsAct *act;
++
++   act = actions_parse_string(ACTION_SHOW_MENU);
++   act->options = default_show_menu_options(g_strdup(name));
++   return act;
++}
++
++
+ ObActionsAct* actions_parse_string(const gchar *name)
+ {
+     ObActionsAct *act = NULL;
+diff --git a/openbox/actions.h b/openbox/actions.h
+index f8e1ba8..9d25b33 100644
+--- a/openbox/actions.h
++++ b/openbox/actions.h
+@@ -15,6 +15,8 @@
+ 
+    See the COPYING file for a copy of the GNU General Public License.
+ */
++#ifndef __actions_h
++#define __actions_h
+ 
+ #include "misc.h"
+ #include "frame.h"
+@@ -121,3 +123,8 @@ gboolean actions_interactive_input_event(XEvent *e);
+ 
+ /*! Function for actions to call when they are moving a client around */
+ void actions_client_move(ObActionsData *data, gboolean start);
++
++#define ACTION_SHOW_MENU "ShowMenu"
++ObActionsAct* actions_build_act_ShowMenu(const gchar *name);
++
++#endif
+diff --git a/openbox/actions/showmenu.c b/openbox/actions/showmenu.c
+index 7411e98..49047f0 100644
+--- a/openbox/actions/showmenu.c
++++ b/openbox/actions/showmenu.c
+@@ -5,6 +5,7 @@
+ #include "openbox/screen.h"
+ #include "openbox/config.h"
+ #include <glib.h>
++#include "showmenu.h"
+ 
+ typedef struct {
+     gchar         *name;
+@@ -18,9 +19,20 @@ static gpointer setup_func(xmlNodePtr node);
+ static void     free_func(gpointer options);
+ static gboolean run_func(ObActionsData *data, gpointer options);
+ 
++gpointer default_show_menu_options(gchar* name)
++{
++    Options *o;
++
++    o = g_slice_new0(Options);
++    o->monitor = -1;
++    o->name = name;
++    return o;
++}
++
++
+ void action_showmenu_startup(void)
+ {
+-    actions_register("ShowMenu", setup_func, free_func, run_func);
++    actions_register(ACTION_SHOW_MENU, setup_func, free_func, run_func);
+ }
+ 
+ static gpointer setup_func(xmlNodePtr node)
+@@ -29,11 +41,8 @@ static gpointer setup_func(xmlNodePtr node)
+     Options *o;
+     gboolean x_pos_given = FALSE;
+ 
+-    o = g_slice_new0(Options);
+-    o->monitor = -1;
+-
+-    if ((n = obt_xml_find_node(node, "menu")))
+-        o->name = obt_xml_node_string(n);
++    n = obt_xml_find_node(node, "menu");
++    o = (Options*)default_show_menu_options(obt_xml_node_string(n));
+ 
+     if ((n = obt_xml_find_node(node, "position"))) {
+         if ((c = obt_xml_find_node(n->children, "x"))) {
+diff --git a/openbox/actions/showmenu.h b/openbox/actions/showmenu.h
+new file mode 100644
+index 0000000..217dc90
+--- /dev/null
++++ b/openbox/actions/showmenu.h
+@@ -0,0 +1,2 @@
++/* in fact, return Options* */
++gpointer default_show_menu_options(gchar* name);
+diff --git a/openbox/menu.c b/openbox/menu.c
+index 057e54a..4d461f1 100644
+--- a/openbox/menu.c
++++ b/openbox/menu.c
+@@ -19,6 +19,7 @@
+ 
+ #include "debug.h"
+ #include "menu.h"
++#include "actions.h"
+ #include "openbox.h"
+ #include "stacking.h"
+ #include "grab.h"
+@@ -353,14 +354,23 @@ static void parse_menu(xmlNodePtr node, gpointer data)
+     ObMenu *menu;
+     ObMenuEntry *e;
+     gchar *icon;
++    GList *keylist = NULL;
++    gchar *keystring, **keys, **key;
+ 
+     if (!obt_xml_attr_string(node, "id", &name))
+         goto parse_menu_fail;
+ 
++    if (obt_xml_attr_string(node, "key", &keystring)) { // global keybind
++       keys = g_strsplit(keystring, " ", 0);
++       for (key = keys; *key; ++key)
++          keylist = g_list_append(keylist, *key);
++    }
++
+     if (!g_hash_table_lookup(menu_hash, name)) {
+         if (!obt_xml_attr_string_unstripped(node, "label", &title))
+             goto parse_menu_fail;
+ 
++
+         if ((menu = menu_new(name, title, TRUE, NULL))) {
+             menu->pipe_creator = state->pipe_creator;
+             if (obt_xml_attr_string(node, "execute", &script)) {
+@@ -373,6 +383,11 @@ static void parse_menu(xmlNodePtr node, gpointer data)
+                 obt_xml_tree(menu_parse_inst, node->children);
+                 state->parent = old;
+             }
++            if (keylist) { // add keybind to show this menu
++                ObActionsAct *action;
++                action = actions_build_act_ShowMenu(name);
++                keyboard_bind(keylist, action);
++            }
+         }
+     }
+ 

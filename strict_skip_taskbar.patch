@@ -1,0 +1,53 @@
+commit 3600f9b81b7987d4f777d6218e23e7b2764878ae
+Author: Alexey Korop <avkorop@i.ua>
+Date:   Tue Mar 31 20:30:28 2015 +0300
+
+    strict_skip_taskbar
+
+diff --git a/openbox/config.c b/openbox/config.c
+index 5d2408f..81b542c 100644
+--- a/openbox/config.c
++++ b/openbox/config.c
+@@ -49,6 +49,7 @@ StrutPartial config_margins;
+ gchar   *config_theme;
+ gboolean config_theme_keepborder;
+ guint    config_theme_window_list_icon_size;
++gboolean config_theme_strict_skip_taskbar;
+ 
+ gchar   *config_title_layout;
+ 
+@@ -735,6 +736,8 @@ static void parse_theme(xmlNodePtr node, gpointer d)
+             config_theme_window_list_icon_size = 16;
+         else if (config_theme_window_list_icon_size > 96)
+             config_theme_window_list_icon_size = 96;
++    if ((n = obt_xml_find_node(node, "strictSkipTaskbar")))
++        config_theme_strict_skip_taskbar = obt_xml_node_bool(n);
+     }
+ 
+     for (n = obt_xml_find_node(node, "font");
+diff --git a/openbox/config.h b/openbox/config.h
+index e70ccab..45f8adf 100644
+--- a/openbox/config.h
++++ b/openbox/config.h
+@@ -152,6 +152,8 @@ extern gchar *config_title_layout;
+ extern gboolean config_animate_iconify;
+ /*! Size of icons in focus switching dialogs */
+ extern guint config_theme_window_list_icon_size;
++/*! not show in tasklist iconified windows with _NET_WM_STATE_SKIP_TASKBAR hint */
++extern gboolean config_theme_strict_skip_taskbar;
+ 
+ /*! The font for the active window's title */
+ extern RrFont *config_font_activewindow;
+diff --git a/openbox/focus.c b/openbox/focus.c
+index a4626bf..257cce6 100644
+--- a/openbox/focus.c
++++ b/openbox/focus.c
+@@ -365,7 +365,7 @@ gboolean focus_valid_target(ObClient *ft,
+        not be long-lasting windows */
+     ok = ok && (!ft->skip_taskbar ||
+                 (ft->modal || user_request ||
+-                 (ft->iconic && !ft->parents) ||
++                 (!config_theme_strict_skip_taskbar && ft->iconic && !ft->parents) ||
+                  ft->demands_attention ||
+                  ft->type == OB_CLIENT_TYPE_DIALOG));
+ 

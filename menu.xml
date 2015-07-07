@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+  <!-- main menu; hotkey - Win+Space -->
+  <menu id="root-menu" label="Openbox 3" key="W-space">
+    <menu id="desktop-app-menu" icon="/usr/share/icons/gnome/16x16/categories/applications-other.png" label="Applications" execute="xdg_menu --format openbox3-pipe" key=""/>
+    <!-- Run dialog; hotkey - Win+r -->
+    <item icon="/usr/share/icons/gnome/16x16/actions/system-run.png" label="Run Program" key="W-r">
+      <action name="Execute">
+        <command>gmrun</command>
+      </action>
+    </item>
+    <!-- "Exit" menu with external scripts; default item - shutdown.
+     For shutdown You may press "Win+Space" (main menu), then "x" (e_Xit menu) -->
+    <menu id="exit" label="e_Xit" icon="/usr/share/icons/gnome/16x16/actions/system-log-out.png" key="W-x">
+      <item icon="/usr/share/icons/gnome/16x16/actions/media-playback-pause.png" label="hibernate">
+        <action name="Execute">
+          <execute>.hibernate</execute>
+        </action>
+      </item>
+      <item icon="/usr/share/icons/gnome/16x16/actions/system-log-out.png" label="Logout">
+        <action name="Execute">
+          <execute>.logoff</execute>
+        </action>
+      </item>
+      <item icon="/usr/share/icons/gnome/16x16/actions/window-close.png" label="Reboot">
+        <action name="Execute">
+          <execute>.reboot</execute>
+        </action>
+      </item>
+      <item icon="/usr/share/icons/gnome/16x16/actions/system-shutdown.png" label="Shutdown" default="yes">
+        <action name="Execute">
+          <execute>.shutdown</execute>
+        </action>
+      </item>
+    </menu>
+  </menu>
+</openbox_menu>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+
+  <theme>
+<!-- By default iconified windows appears in openbox tasklists
+     regardless of _NET_WM_STATE_SKIP_TASKBAR hint.
+     Set "strictSkipTaskbar" to "yes" for override this (nonstandard) behavior. -->
+    <strictSkipTaskbar>no</strictSkipTaskbar>
+  </theme>
+  <mouse>
+    <context name="Desktop">
+      <mousebind action="Click" button="Up">
+        <action name="DesktopPrevious"/>
+      </mousebind>
+      <mousebind action="Click" button="Down">
+        <action name="DesktopNext"/>
+      </mousebind>
+      <mousebind action="Click" button="W-Up">
+        <action name="DesktopPrevious"/>
+      </mousebind>
+      <mousebind action="Click" button="W-Down">
+        <action name="DesktopNext"/>
+      </mousebind>
+      <mousebind action="Click" button="S-Up">
+        <action name="Execute">
+          <command>amixer set Master 1+</command>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="S-Down">
+        <action name="Execute">
+          <command>amixer set Master 1-</command>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Root">
+      <mousebind action="Press" button="Middle">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+
+<!-- edges -->
+    <context name="ScreenTopLeft"> <import>Root</import> <import>Desktop</import> </context>
+    <context name="ScreenTop"> <import>Root</import> <import>Desktop</import> </context>
+    <context name="ScreenTopRight"> <import>Root</import> <import>Desktop</import> </context>
+    <context name="ScreenRight"> <import>Root</import> <import>Desktop</import> </context>
+    <context name="ScreenBottomRight"> <import>Root</import> <import>Desktop</import> </context>
+    <context name="ScreenBottom"> <import>Root</import> <import>Desktop</import> </context>
+    <context name="ScreenBottomLeft">
+      <import>Root</import> <import>Desktop</import>
+      <mousebind action="Press" button="Left">
+        <action name="ShowMenu">
+          <menu>desktop-app-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+<!-- edges end  -->
+
+  </mouse>
+
+  <menu>
+    <file>menu.xml</file>
+<!-- When the topmenu appears to be set first layout -->
+    <TopMenuKbdGroup>0</TopMenuKbdGroup>
+
+<!-- Allow utf8 menu accelerator keys  -->
+    <utf8Enabled>yes</utf8Enabled>
+
+  </menu>
+</openbox_config>

@@ -1,0 +1,63 @@
+commit 930d2c1dc7c7ca20defc0ad5540ba628f19adf9f
+Author: Alexey Korop <avkorop@i.ua>
+Date:   Tue Mar 17 08:49:45 2015 +0200
+
+    topmenu_kbd_group_local.patch
+
+diff --git a/openbox/menu.c b/openbox/menu.c
+index 57de2fb..6eaf7e9 100644
+--- a/openbox/menu.c
++++ b/openbox/menu.c
+@@ -373,6 +373,7 @@ static void parse_menu(xmlNodePtr node, gpointer data)
+     gchar *name = NULL, *title = NULL, *script = NULL;
+     ObMenu *menu;
+     ObMenuEntry *e;
++    gint n = 0;
+     gchar *icon;
+     GList *keylist = NULL;
+     gchar *keystring, **keys, **key;
+@@ -380,6 +381,9 @@ static void parse_menu(xmlNodePtr node, gpointer data)
+     if (!obt_xml_attr_string(node, "id", &name))
+         goto parse_menu_fail;
+ 
++    if (obt_xml_attr_int(node, "TopMenuKbdGroup", &n))
++        ++n;
++
+     if (obt_xml_attr_string(node, "key", &keystring)) { // global keybind
+        keys = g_strsplit(keystring, " ", 0);
+        for (key = keys; *key; ++key)
+@@ -393,6 +397,7 @@ static void parse_menu(xmlNodePtr node, gpointer data)
+ 
+         if ((menu = menu_new(name, title, TRUE, NULL))) {
+             menu->pipe_creator = state->pipe_creator;
++            menu->topmenu_kbd_group = n;
+             if (obt_xml_attr_string(node, "execute", &script)) {
+                 menu->execute = obt_paths_expand_tilde(script);
+             } else {
+diff --git a/openbox/menu.h b/openbox/menu.h
+index 04dcf10..c048f65 100644
+--- a/openbox/menu.h
++++ b/openbox/menu.h
+@@ -59,6 +59,9 @@ struct _ObMenu
+     gchar *name;
+     /* Displayed title */
+     gchar *title;
++    /* Incremented by 1 keyboard layout group that must be set when this menu show
++    as root level menu. 0 if not defined. */
++    guint topmenu_kbd_group;
+     gchar *collate_key;
+     /*! The shortcut key that would be used to activate this menu if it was
+       displayed as a submenu */
+diff --git a/openbox/menuframe.c b/openbox/menuframe.c
+index b7ca002..9b438f2 100644
+--- a/openbox/menuframe.c
++++ b/openbox/menuframe.c
+@@ -1071,6 +1071,8 @@ gboolean menu_frame_show_topmenu(ObMenuFrame *self, const GravityPoint *pos,
+ 
+     /* set the keyboard layout if specified */
+     gint n = config_menu_topmenu_kbd_group;
++    if (self->menu->topmenu_kbd_group) 
++        n = self->menu->topmenu_kbd_group; // prefer this menu setting
+     if (n)
+         XkbLockGroup(obt_display, XkbUseCoreKbd, n - 1);
+ 

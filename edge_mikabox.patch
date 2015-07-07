@@ -1,0 +1,396 @@
+diff -urN /mnt/i/linux/openbox/openbox/Makefile.am ./Makefile.am
+--- /mnt/i/linux/openbox/openbox/Makefile.am	2014-12-25 11:21:03.000000000 +0200
++++ ./Makefile.am	2015-01-12 21:04:16.301754384 +0200
+@@ -247,6 +247,8 @@
+ 	openbox/debug.h \
+ 	openbox/dock.c \
+ 	openbox/dock.h \
++	openbox/edges.c \
++	openbox/edges.h \
+ 	openbox/event.c \
+ 	openbox/event.h \
+ 	openbox/focus.c \
+diff -urN /mnt/i/linux/openbox/openbox/openbox/edges.c ./openbox/edges.c
+--- /mnt/i/linux/openbox/openbox/openbox/edges.c	1970-01-01 03:00:00.000000000 +0300
++++ ./openbox/edges.c	2015-01-12 21:04:26.662753953 +0200
+@@ -0,0 +1,135 @@
++#include "openbox.h"
++#include "config.h"
++#include "screen.h"
++#include "edges.h"
++#include "frame.h"
++
++#include <X11/Xlib.h>
++#include <glib.h>
++
++/* Array of array of monitors of edges: edge[monitor 2][top edge] */
++ObEdge ***edge = NULL;
++#warning put in config.c and parse configs of course
++gboolean config_edge_enabled[OB_NUM_EDGES] = {1, 1, 1, 1, 1, 1, 1, 1};
++/* this could change at runtime, we should hook into that, but for now
++ * don't crash on reconfigure/shutdown */
++static guint edge_monitors;
++
++#ifdef DEBUG
++#define EDGE_WIDTH 10
++#define CORNER_SIZE 20
++#else
++#define EDGE_WIDTH 1
++#define CORNER_SIZE 2
++#endif
++static void get_position(ObEdgeLocation edge, Rect screen, Rect *rect)
++{
++    switch (edge) {
++        case OB_EDGE_TOP:
++            RECT_SET(*rect, CORNER_SIZE, 0,
++                     screen.width - 2 * CORNER_SIZE, EDGE_WIDTH);
++            break;
++        case OB_EDGE_TOPRIGHT:
++            RECT_SET(*rect, screen.width - CORNER_SIZE, 0,
++                     CORNER_SIZE, CORNER_SIZE);
++            break;
++        case OB_EDGE_RIGHT:
++            RECT_SET(*rect, screen.width - EDGE_WIDTH, CORNER_SIZE,
++                     EDGE_WIDTH, screen.height - 2 * CORNER_SIZE);
++            break;
++        case OB_EDGE_BOTTOMRIGHT:
++            RECT_SET(*rect, screen.width - CORNER_SIZE,
++                     screen.height - CORNER_SIZE,
++                     CORNER_SIZE, CORNER_SIZE);
++            break;
++        case OB_EDGE_BOTTOM:
++            RECT_SET(*rect, CORNER_SIZE, screen.height - EDGE_WIDTH,
++                     screen.width - 2 * CORNER_SIZE, EDGE_WIDTH);
++            break;
++        case OB_EDGE_BOTTOMLEFT:
++            RECT_SET(*rect, 0, screen.height - CORNER_SIZE,
++                     CORNER_SIZE, CORNER_SIZE);
++            break;
++        case OB_EDGE_LEFT:
++            RECT_SET(*rect, 0, CORNER_SIZE,
++                     EDGE_WIDTH, screen.height - 2 * CORNER_SIZE);
++            break;
++        case OB_EDGE_TOPLEFT:
++            RECT_SET(*rect, 0, 0, CORNER_SIZE, CORNER_SIZE);
++            break;
++    }
++    rect[0].x += screen.x;
++    rect[0].y += screen.y;
++}
++
++void edges_startup(gboolean reconfigure)
++{
++    ObEdgeLocation i;
++    gint m;
++    Rect r;
++    XSetWindowAttributes xswa;
++
++    xswa.override_redirect = True;
++
++    edge_monitors = screen_num_monitors;
++
++    edge = g_slice_alloc(sizeof(ObEdge**) * edge_monitors);
++    for (m = 0; m < edge_monitors; m++) {
++        const Rect *monitor = screen_physical_area_monitor(m);
++        edge[m] = g_slice_alloc(sizeof(ObEdge*) * OB_NUM_EDGES);
++        for (i=0; i < OB_NUM_EDGES; i++) {
++            if (!config_edge_enabled[i])
++                continue;
++
++            edge[m][i] = g_slice_new(ObEdge);
++            edge[m][i]->obwin.type = OB_WINDOW_CLASS_EDGE;
++            edge[m][i]->location = i;
++
++            get_position(i, *monitor, &r);
++            edge[m][i]->win = XCreateWindow(obt_display, obt_root(ob_screen),
++                                         r.x, r.y, r.width, r.height, 0, 0, InputOnly,
++                                         CopyFromParent, CWOverrideRedirect, &xswa);
++            XSelectInput(obt_display, edge[m][i]->win, ButtonPressMask | ButtonReleaseMask
++                         | EnterWindowMask | LeaveWindowMask);
++            XMapWindow(obt_display, edge[m][i]->win);
++
++            stacking_add(EDGE_AS_WINDOW(edge[m][i]));
++            window_add(&edge[m][i]->win, EDGE_AS_WINDOW(edge[m][i]));
++
++#ifdef DEBUG
++            ob_debug("mapped edge window %i at %03i %03i %02i %02i", i, r.x, r.y, r.width, r.height);
++#endif
++        }
++    }
++
++    XFlush(obt_display);
++}
++
++void edges_shutdown(gboolean reconfigure)
++{
++    gint i, m;
++
++    /* This is in case we get called before startup by screen_resize() */
++    if (!edge)
++        return;
++
++    for (m = 0; m < edge_monitors; m++) {
++        for (i = 0; i < OB_NUM_EDGES; i++) {
++            if (!config_edge_enabled[i])
++                continue;
++
++            window_remove(edge[m][i]->win);
++            stacking_remove(EDGE_AS_WINDOW(edge[m][i]));
++            XDestroyWindow(obt_display, edge[m][i]->win);
++            g_slice_free(ObEdge, edge[m][i]);
++        }
++        g_slice_free1(sizeof(ObEdge*) * OB_NUM_EDGES, edge[m]);
++    }
++    g_slice_free1(sizeof(ObEdge**) * edge_monitors, edge);
++}
++
++void edges_configure()
++{
++    edges_shutdown(TRUE);
++    edges_startup(TRUE);
++}
+diff -urN /mnt/i/linux/openbox/openbox/openbox/edges.h ./openbox/edges.h
+--- /mnt/i/linux/openbox/openbox/openbox/edges.h	1970-01-01 03:00:00.000000000 +0300
++++ ./openbox/edges.h	2015-01-12 21:04:26.664753953 +0200
+@@ -0,0 +1,32 @@
++#ifndef __edges_h
++#define __edges_h
++
++#include "window.h"
++
++typedef enum
++{
++    OB_EDGE_TOP,
++    OB_EDGE_TOPRIGHT,
++    OB_EDGE_RIGHT,
++    OB_EDGE_BOTTOMRIGHT,
++    OB_EDGE_BOTTOM,
++    OB_EDGE_BOTTOMLEFT,
++    OB_EDGE_LEFT,
++    OB_EDGE_TOPLEFT,
++    OB_NUM_EDGES
++} ObEdgeLocation;
++
++typedef struct _ObEdge ObEdge;
++
++struct _ObEdge
++{
++    ObWindow obwin;
++    Window win;
++    ObEdgeLocation location;
++};
++
++void edges_startup(gboolean reconfigure);
++void edges_shutdown(gboolean reconfigure);
++void edges_configure(void);
++
++#endif
+diff -urN /mnt/i/linux/openbox/openbox/openbox/event.c ./openbox/event.c
+--- /mnt/i/linux/openbox/openbox/openbox/event.c	2014-12-25 11:17:52.000000000 +0200
++++ ./openbox/event.c	2015-01-12 21:04:16.302754384 +0200
+@@ -30,6 +30,7 @@
+ #include "grab.h"
+ #include "menu.h"
+ #include "prompt.h"
++#include "edges.h"
+ #include "menuframe.h"
+ #include "keyboard.h"
+ #include "mouse.h"
+@@ -479,9 +480,6 @@
+         case OB_WINDOW_CLASS_MENUFRAME:
+             menu = WINDOW_AS_MENUFRAME(obwin);
+             break;
+-        case OB_WINDOW_CLASS_INTERNAL:
+-            /* we don't do anything with events directly on these windows */
+-            break;
+         case OB_WINDOW_CLASS_PROMPT:
+             prompt = WINDOW_AS_PROMPT(obwin);
+             break;
+@@ -710,7 +708,7 @@
+             /* ...or it if it was physically on an openbox
+                internal window... */
+             ((w = window_find(e->xbutton.subwindow)) &&
+-             (WINDOW_IS_INTERNAL(w) || WINDOW_IS_DOCK(w))))
++             (WINDOW_IS_INTERNAL(w) || WINDOW_IS_DOCK(w) || WINDOW_IS_EDGE(w))))
+             /* ...then process the event, otherwise ignore it */
+         {
+             used = event_handle_user_input(client, e);
+diff -urN /mnt/i/linux/openbox/openbox/openbox/frame.c ./openbox/frame.c
+--- /mnt/i/linux/openbox/openbox/openbox/frame.c	2014-11-07 19:58:40.000000000 +0200
++++ ./openbox/frame.c	2015-01-12 21:04:16.302754384 +0200
+@@ -28,6 +28,7 @@
+ #include "focus_cycle_indicator.h"
+ #include "moveresize.h"
+ #include "screen.h"
++#include "edges.h"
+ #include "obrender/theme.h"
+ #include "obt/display.h"
+ #include "obt/xqueue.h"
+@@ -1386,6 +1387,22 @@
+         return OB_FRAME_CONTEXT_MOVE_RESIZE;
+     else if (!g_ascii_strcasecmp("Dock", name))
+         return OB_FRAME_CONTEXT_DOCK;
++    else if (!g_ascii_strcasecmp("ScreenTop", name))
++        return OB_FRAME_CONTEXT_EDGE_TOP;
++    else if (!g_ascii_strcasecmp("ScreenTopRight", name))
++        return OB_FRAME_CONTEXT_EDGE_TOPRIGHT;
++    else if (!g_ascii_strcasecmp("ScreenRight", name))
++        return OB_FRAME_CONTEXT_EDGE_RIGHT;
++    else if (!g_ascii_strcasecmp("ScreenBottomRight", name))
++        return OB_FRAME_CONTEXT_EDGE_BOTTOMRIGHT;
++    else if (!g_ascii_strcasecmp("ScreenBottom", name))
++        return OB_FRAME_CONTEXT_EDGE_BOTTOM;
++    else if (!g_ascii_strcasecmp("ScreenBottomLeft", name))
++        return OB_FRAME_CONTEXT_EDGE_BOTTOMLEFT;
++    else if (!g_ascii_strcasecmp("ScreenLeft", name))
++        return OB_FRAME_CONTEXT_EDGE_LEFT;
++    else if (!g_ascii_strcasecmp("ScreenTopLeft", name))
++        return OB_FRAME_CONTEXT_EDGE_TOPLEFT;
+ 
+     return OB_FRAME_CONTEXT_NONE;
+ }
+@@ -1397,12 +1414,14 @@
+ 
+     if (moveresize_in_progress)
+         return OB_FRAME_CONTEXT_MOVE_RESIZE;
+-
+     if (win == obt_root(ob_screen))
+         return OB_FRAME_CONTEXT_ROOT;
+     if ((obwin = window_find(win))) {
+         if (WINDOW_IS_DOCK(obwin)) {
+           return OB_FRAME_CONTEXT_DOCK;
++        } else if (WINDOW_IS_EDGE(obwin)) {
++          ObEdge *edge = (ObEdge *)obwin;
++          return OB_FRAME_CONTEXT_EDGE_TOP + edge->location;
+         }
+     }
+     if (client == NULL) return OB_FRAME_CONTEXT_NONE;
+diff -urN /mnt/i/linux/openbox/openbox/openbox/frame.h ./openbox/frame.h
+--- /mnt/i/linux/openbox/openbox/openbox/frame.h	2014-11-07 19:58:40.000000000 +0200
++++ ./openbox/frame.h	2015-01-12 21:04:16.303754384 +0200
+@@ -54,6 +54,14 @@
+       a move/resize */
+     OB_FRAME_CONTEXT_MOVE_RESIZE,
+     OB_FRAME_CONTEXT_DOCK,
++    OB_FRAME_CONTEXT_EDGE_TOP,
++    OB_FRAME_CONTEXT_EDGE_TOPRIGHT,
++    OB_FRAME_CONTEXT_EDGE_RIGHT,
++    OB_FRAME_CONTEXT_EDGE_BOTTOMRIGHT,
++    OB_FRAME_CONTEXT_EDGE_BOTTOM,
++    OB_FRAME_CONTEXT_EDGE_BOTTOMLEFT,
++    OB_FRAME_CONTEXT_EDGE_LEFT,
++    OB_FRAME_CONTEXT_EDGE_TOPLEFT,
+     OB_FRAME_NUM_CONTEXTS
+ } ObFrameContext;
+ 
+diff -urN /mnt/i/linux/openbox/openbox/openbox/openbox.c ./openbox/openbox.c
+--- /mnt/i/linux/openbox/openbox/openbox/openbox.c	2014-11-07 19:58:40.000000000 +0200
++++ ./openbox/openbox.c	2015-01-12 21:04:16.303754384 +0200
+@@ -21,6 +21,7 @@
+ #include "openbox.h"
+ #include "session.h"
+ #include "dock.h"
++#include "edges.h"
+ #include "event.h"
+ #include "menu.h"
+ #include "client.h"
+@@ -327,6 +328,7 @@
+             mouse_startup(reconfigure);
+             menu_frame_startup(reconfigure);
+             menu_startup(reconfigure);
++            edges_startup(reconfigure);
+             prompt_startup(reconfigure);
+ 
+             /* do this after everything is started so no events will get
+@@ -392,6 +394,7 @@
+                 window_unmanage_all();
+ 
+             prompt_shutdown(reconfigure);
++            edges_shutdown(reconfigure);
+             menu_shutdown(reconfigure);
+             menu_frame_shutdown(reconfigure);
+             mouse_shutdown(reconfigure);
+diff -urN /mnt/i/linux/openbox/openbox/openbox/screen.c ./openbox/screen.c
+--- /mnt/i/linux/openbox/openbox/openbox/screen.c	2014-11-07 19:58:40.000000000 +0200
++++ ./openbox/screen.c	2015-01-12 21:04:26.665753953 +0200
+@@ -20,6 +20,7 @@
+ #include "debug.h"
+ #include "openbox.h"
+ #include "dock.h"
++#include "edges.h"
+ #include "grab.h"
+ #include "startupnotify.h"
+ #include "moveresize.h"
+@@ -500,6 +501,7 @@
+ 
+     /* this calls screen_update_areas(), which we need ! */
+     dock_configure();
++    edges_configure();
+ 
+     for (it = client_list; it; it = g_list_next(it)) {
+         client_move_onscreen(it->data, FALSE);
+diff -urN /mnt/i/linux/openbox/openbox/openbox/window.c ./openbox/window.c
+--- /mnt/i/linux/openbox/openbox/openbox/window.c	2014-11-07 19:58:40.000000000 +0200
++++ ./openbox/window.c	2015-01-12 21:04:21.164754182 +0200
+@@ -24,6 +24,7 @@
+ #include "frame.h"
+ #include "openbox.h"
+ #include "prompt.h"
++#include "edges.h"
+ #include "debug.h"
+ #include "grab.h"
+ #include "obt/prop.h"
+@@ -62,6 +63,8 @@
+         return WINDOW_AS_INTERNAL(self)->window;
+     case OB_WINDOW_CLASS_PROMPT:
+         return WINDOW_AS_PROMPT(self)->super.window;
++    case OB_WINDOW_CLASS_EDGE:
++        return WINDOW_AS_EDGE(self)->win;
+     }
+     g_assert_not_reached();
+     return None;
+@@ -74,6 +77,7 @@
+         return config_dock_layer;
+     case OB_WINDOW_CLASS_CLIENT:
+         return ((ObClient*)self)->layer;
++    case OB_WINDOW_CLASS_EDGE:
+     case OB_WINDOW_CLASS_MENUFRAME:
+     case OB_WINDOW_CLASS_INTERNAL:
+         return OB_STACKING_LAYER_INTERNAL;
+diff -urN /mnt/i/linux/openbox/openbox/openbox/window.h ./openbox/window.h
+--- /mnt/i/linux/openbox/openbox/openbox/window.h	2014-11-07 19:58:40.000000000 +0200
++++ ./openbox/window.h	2015-01-12 21:04:16.303754384 +0200
+@@ -32,7 +32,8 @@
+     OB_WINDOW_CLASS_DOCK,
+     OB_WINDOW_CLASS_CLIENT,
+     OB_WINDOW_CLASS_INTERNAL,
+-    OB_WINDOW_CLASS_PROMPT
++    OB_WINDOW_CLASS_PROMPT,
++    OB_WINDOW_CLASS_EDGE
+ } ObWindowClass;
+ 
+ /* In order to be an ObWindow, you need to make this struct the top of your
+@@ -51,6 +52,8 @@
+     (((ObWindow*)win)->type == OB_WINDOW_CLASS_INTERNAL)
+ #define WINDOW_IS_PROMPT(win) \
+     (((ObWindow*)win)->type == OB_WINDOW_CLASS_PROMPT)
++#define WINDOW_IS_EDGE(win) \
++    (((ObWindow*)win)->type == OB_WINDOW_CLASS_EDGE)
+ 
+ struct _ObMenu;
+ struct _ObDock;
+@@ -63,12 +66,14 @@
+ #define WINDOW_AS_CLIENT(win) ((struct _ObClient*)win)
+ #define WINDOW_AS_INTERNAL(win) ((struct _ObInternalWindow*)win)
+ #define WINDOW_AS_PROMPT(win) ((struct _ObPrompt*)win)
++#define WINDOW_AS_EDGE(win) ((struct _ObEdge*)win)
+ 
+ #define MENUFRAME_AS_WINDOW(menu) ((ObWindow*)menu)
+ #define DOCK_AS_WINDOW(dock) ((ObWindow*)dock)
+ #define CLIENT_AS_WINDOW(client) ((ObWindow*)client)
+ #define INTERNAL_AS_WINDOW(intern) ((ObWindow*)intern)
+ #define PROMPT_AS_WINDOW(prompt) ((ObWindow*)prompt)
++#define EDGE_AS_WINDOW(edge) ((ObWindow*)edge)
+ 
+ void window_startup (gboolean reconfig);
+ void window_shutdown(gboolean reconfig);
