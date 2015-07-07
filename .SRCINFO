@@ -6,13 +6,12 @@ pkgbase = varrick
 	arch = any
 	license = GPL3
 	checkdepends = bats-git
-	makedepends = git
 	makedepends = ruby-ronn
 	depends = bash
 	depends = sed
 	conflicts = varrick-git
-	source = varrick::git+https://github.com/ztombol/varrick#tag=v0.2.0
-	sha512sums = SKIP
+	source = https://github.com/ztombol/varrick/archive/v0.2.0.tar.gz
+	sha512sums = 93441b49edfa8529cb3044f7b71e0596e266846054ab8f7d597bc6896d7239119a6806c6cf616c03ffdc478f779404774c7d670d24ace49137c8fa42d2f1799c
 
 pkgname = varrick
 

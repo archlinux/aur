@@ -8,24 +8,24 @@ arch=(any)
 url="https://github.com/ztombol/varrick"
 license=('GPL3')
 depends=('bash' 'sed')
-makedepends=('git' 'ruby-ronn')
+makedepends=('ruby-ronn')
 checkdepends=('bats-git')
 conflicts=("${pkgname}-git")
-source=("$pkgname::git+https://github.com/ztombol/$pkgname#tag=v$pkgver")
-sha512sums=('SKIP')
+source=("https://github.com/ztombol/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('93441b49edfa8529cb3044f7b71e0596e266846054ab8f7d597bc6896d7239119a6806c6cf616c03ffdc478f779404774c7d670d24ace49137c8fa42d2f1799c')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make build
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" \
        PREFIX='/usr' \
        LIBEXECDIR='/usr/lib' \
