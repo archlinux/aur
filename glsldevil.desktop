@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=glslDevil
+Comment=OpenGL GLSL Debugger
+Exec=glsldevil
+Icon=glsldevil.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Development;Debugger;

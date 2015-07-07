@@ -1,0 +1,22 @@
+pkgbase = glsldevil
+	pkgdesc = A tool for debugging the OpenGL shader pipeline
+	pkgver = 1.1.5
+	pkgrel = 2
+	url = http://www.vis.uni-stuttgart.de/glsldevil/
+	changelog = glsldevil.changelog
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt4
+	depends = glu
+	source = http://www.vis.uni-stuttgart.de/glsldevil/glsldevil-1.1.5.tar.gz
+	source = http://www.vis.uni-stuttgart.de/glsldevil/glslDevil.png
+	source = glsldevil.desktop
+	source = glsldevil
+	md5sums = 2645dbcc17434e7dac7ee6ce61ab2f9b
+	md5sums = d6e6818f32dab69a73f3019908676638
+	md5sums = bef1e6d2bb78326e43c80531bfbd3846
+	md5sums = 18fd78dde1b0917e6bcafce127fc81e0
+
+pkgname = glsldevil
+

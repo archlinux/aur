@@ -1,0 +1,5 @@
+2013-06-22 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	The build() function has been renamed to package()
+	Dependencies array updated
