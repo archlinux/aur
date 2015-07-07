@@ -1,0 +1,27 @@
+pkgbase = nanoc
+	pkgdesc = A simple, flexible static site generator written in Ruby.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = http://nanoc.ws
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby-cri
+	optdepends = adsf: Provides 'nanoc view' command.
+	optdepends = ruby-builder: Allows generating rss feeds and sitemaps.
+	optdepends = ruby-guard-nanoc: Regenerates site on filesystem changes.
+	optdepends = ruby-kramdown: Filter for Markdown input files.
+	optdepends = ruby-listen: Provides 'nanoc watch' command.
+	optdepends = ruby-nokogiri: Provides 'nanoc check' command.
+	optdepends = ruby-w3c_validators: Provides 'nanoc check' command.
+	provides = ruby-nanoc3
+	provides = ruby-nanoc
+	conflicts = ruby-nanoc3
+	conflicts = ruby-nanoc
+	noextract = nanoc-3.8.0.gem
+	options = !emptydirs
+	source = http://rubygems.org/downloads/nanoc-3.8.0.gem
+	sha256sums = 382397d761ea1a97537eaee995e37ba416f7f7f093090cc812071a9eb28cea1e
+
+pkgname = nanoc
+
