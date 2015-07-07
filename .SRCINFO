@@ -1,0 +1,15 @@
+pkgbase = zeitgeist-extensions
+	pkgdesc = Extensions to the engine such as Teamgeist, Relevancy Providers and Machine Learning Algorithms
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://launchpad.net/zeitgeist-extensions
+	arch = any
+	license = LGPL
+	depends = zeitgeist
+	depends = python2-xapian
+	depends = python2-geoclue
+	source = http://launchpad.net/zeitgeist-extensions/trunk/fts-0.0.13/+download/zeitgeist-extensions-0.0.13.tar.gz
+	md5sums = 0c7725ff02ccb66d0e6afe16f149f86e
+
+pkgname = zeitgeist-extensions
+
