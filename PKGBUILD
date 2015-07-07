@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audioencoder-vorbis
 _gitname=audioencoder.vorbis
-pkgver=20150227.d556a68
-_gitver=d556a6872e59806526f208e8d0af5f886a6c67bb
-pkgrel=2
+pkgver=20150601.15d619d
+_gitver=15d619dae4411ecebadf2ec2996d611600ad0bee
+pkgrel=1
 pkgdesc='Vorbis encoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/$_gitname"
@@ -32,8 +32,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make

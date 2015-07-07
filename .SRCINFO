@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-audioencoder-vorbis
 	pkgdesc = Vorbis encoder addon for Kodi
-	pkgver = 20150227.d556a68
-	pkgrel = 2
+	pkgver = 20150601.15d619d
+	pkgrel = 1
 	url = https://github.com/xbmc/audioencoder.vorbis
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kodi-devel-audioencoder-vorbis
 	depends = libogg
 	conflicts = kodi-audioencoder-vorbis-devel
 	replaces = kodi-audioencoder-vorbis-devel
-	source = https://github.com/xbmc/audioencoder.vorbis/archive/d556a6872e59806526f208e8d0af5f886a6c67bb.tar.gz
+	source = https://github.com/xbmc/audioencoder.vorbis/archive/15d619dae4411ecebadf2ec2996d611600ad0bee.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-audioencoder-vorbis
