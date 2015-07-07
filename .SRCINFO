@@ -1,0 +1,23 @@
+pkgbase = pakbak-git
+	pkgdesc = Back up the local pacman database when it changes
+	pkgver = 0.0.0
+	pkgrel = 3
+	url = https://github.com/gs93/pakbak
+	install = pakbak.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = findutils
+	depends = tar
+	depends = systemd
+	backup = etc/pakbak.conf
+	source = pakbak::git+https://github.com/gs93/pakbak.git
+	source = pakbak.install
+	md5sums = SKIP
+	md5sums = 1a95c99da95f6ef360020a052ea651d6
+	sha512sums = SKIP
+	sha512sums = a9c216f1866d912dcd6a622f9b22bd45b20968fdb72cc64fe1f0184e95fba36ab3152103f12d66c6b047599bd4ec26b3a6a51ed58eb1da1322f28223f625ad1c
+
+pkgname = pakbak-git
+

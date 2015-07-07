@@ -1,0 +1,7 @@
+post_install() {
+    echo "Remember to edit /etc/pakbak.conf and to enable pakbak.path"
+}
+
+post_remove() {
+    echo "Remember to delete the database backups"
+}
