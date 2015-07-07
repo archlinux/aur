@@ -98,7 +98,7 @@ build() {
               LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
               RCC=/usr/bin/rcc-qt4
 
-  make -j8
+  make
 }
 
 package() {
