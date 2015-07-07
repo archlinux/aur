@@ -1,0 +1,16 @@
+pkgbase = python-pydle-git
+	pkgdesc = An IRCv3-compliant Python 3 IRC library.
+	pkgver = 0.7.1.r252.ga6bad04
+	pkgrel = 1
+	url = https://github.com/Shizmob/pydle
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-tornado
+	source = git+https://github.com/Shizmob/pydle.git
+	md5sums = SKIP
+
+pkgname = python-pydle-git
+
