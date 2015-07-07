@@ -1,0 +1,16 @@
+pkgbase = python-setuptools_trial
+	pkgdesc = Setuptools plugin that makes unit tests execute with trial instead of pyunit
+	pkgver = 0.5.12
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/setuptools_trial
+	arch = any
+	license = SPL
+	makedepends = python2-setuptools
+	makedepends = python2-twisted
+	source = http://pypi.python.org/packages/source/s/setuptools_trial/setuptools_trial-0.5.12.tar.gz
+	md5sums = f16f4237c9ee483a0cd13208849d96ad
+
+pkgname = python2-setuptools_trial
+	depends = python2
+	depends = python2-twisted
+
