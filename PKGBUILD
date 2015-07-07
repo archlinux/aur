@@ -2,8 +2,8 @@ pkgname=perl-gedcomlite
 _pkgname=perl-Gedcomlite
 _suffix=2.noarch.rpm
 pkgver=1.16
-_pkgver=0.3.16
-pkgrel=2
+_pkgver=0.3.17
+pkgrel=3
 pkgdesc="Gedcomlite - a perl module to manipulate Gedcom genealogy files"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/rodovid/"
@@ -14,5 +14,4 @@ package() {
   cd $srcdir
   cp -r usr $pkgdir/
 }
-
-md5sums=('d61eb5a00ee297291f0f4afafe914040')
+md5sums=('3f6d631fbb2496bcbef4535f5f34287a')

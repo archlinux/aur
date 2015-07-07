@@ -1,14 +1,14 @@
 pkgbase = perl-gedcomlite
 	pkgdesc = Gedcomlite - a perl module to manipulate Gedcom genealogy files
 	pkgver = 1.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/rodovid/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = perl
-	source = http://sourceforge.net/projects/rodovid/files/0.3.16/linux/rpm/perl-Gedcomlite-1.16-2.noarch.rpm
-	md5sums = d61eb5a00ee297291f0f4afafe914040
+	source = http://sourceforge.net/projects/rodovid/files/0.3.17/linux/rpm/perl-Gedcomlite-1.16-2.noarch.rpm
+	md5sums = 3f6d631fbb2496bcbef4535f5f34287a
 
 pkgname = perl-gedcomlite
 
