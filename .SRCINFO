@@ -1,0 +1,14 @@
+pkgbase = python-frozendict
+	pkgdesc = An immutable dictionary
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/frozendict/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/f/frozendict/frozendict-0.4.tar.gz
+	md5sums = 1a89e2f6c42997358dcaa6bbbeac0819
+
+pkgname = python2-frozendict
+	depends = python2
+
