@@ -1,0 +1,7 @@
+amsynth
+src
+pkg
+amsynth-git-*.tar.xz
+amsynth-git-*.src.tar.gz
+.AURINFO
+

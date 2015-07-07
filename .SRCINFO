@@ -1,0 +1,19 @@
+pkgbase = amsynth-git
+	pkgdesc = an analog modelling (a.k.a virtual analog) synthesizer
+	pkgver = 1.5.1.r729.d394e83
+	pkgrel = 1
+	url = https://code.google.com/p/amsynth/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtkmm
+	depends = jack
+	depends = lv2
+	provides = amsynth
+	conflicts = amsynth
+	source = amsynth::git+https://code.google.com/p/amsynth/
+	md5sums = SKIP
+
+pkgname = amsynth-git
+
