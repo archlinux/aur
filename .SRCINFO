@@ -1,0 +1,17 @@
+pkgbase = latex-beamer-hg
+	pkgdesc = Beamer is a LaTeX class for creating slides for presentations.
+	pkgver = 700.3dd33d75f1b8
+	pkgrel = 1
+	url = http://bitbucket.org/rivanvx/beamer/wiki/Home
+	install = latex-beamer-hg.install
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	depends = texlive-core
+	provides = latex-beamer
+	conflicts = latex-beamer
+	source = latex-beamer-hg::hg+https://bitbucket.org/rivanvx/beamer
+	md5sums = SKIP
+
+pkgname = latex-beamer-hg
+
