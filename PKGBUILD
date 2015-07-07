@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <lex@tentriplenine.com>
 
 pkgname=charles
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(any)
@@ -13,7 +13,7 @@ source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkg
         charles-arch.patch
         charles.desktop)
 install=charles.install
-md5sums=('1a56b270f129ab381c87f10da1bd0354'
+md5sums=('805512e302dc80902d171c42f53dd16e'
          '6bd40b93c0fdea93ed19a4015d0da283'
          '3f788e0263cb50a545855199c8c60b1e')
 
