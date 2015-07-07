@@ -1,0 +1,2 @@
+# echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
+w /sys/kernel/debug/vgaswitcheroo/switch - - - - OFF

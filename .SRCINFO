@@ -1,0 +1,19 @@
+pkgbase = hybrid-video-ati-intel
+	pkgdesc = ATI-Intel hybrid graphics configurer
+	pkgver = 20130828
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Hybrid_graphics#ATI_Dynamic_Switchable_Graphics
+	arch = any
+	license = custom
+	depends = systemd
+	depends = xf86-video-ati
+	depends = xf86-video-intel
+	source = hybrid-video-ati-intel.conf.modules-load
+	source = hybrid-video-ati-intel.conf.tmpfiles
+	md5sums = c41d9d65d75017cdf4b0dd1b8400001c
+	md5sums = 49e81b7c199b6fc34475e2193b10ef72
+	sha512sums = 8221d1a184e3417401cdf1337a1b825b88ab2d30b5e0540f7b67398b455f7b07650c2966213e07b2cdd39f2e9ab324bb1e59fdfbd947642ac60e50b124dbd7a0
+	sha512sums = ee09b69249e9fe5f72daeef5e9b02a5f78a42f98980e1fa1e905eca521b378e5578ed674f01098af0dcdb1fb74c55f86b1ff87418ad3cd86e87e93cc2b3418ef
+
+pkgname = hybrid-video-ati-intel
+
