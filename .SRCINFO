@@ -1,0 +1,17 @@
+pkgbase = python2-configparser
+	pkgdesc = Brings the updated configparser from Python 3.2+ to Python 2.6-2.7
+	pkgver = 3.3.0r2
+	pkgrel = 1
+	url = https://bitbucket.org/ambv/configparser
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !libtool
+	source = https://pypi.python.org/packages/source/c/configparser/configparser-3.3.0r2.tar.gz
+	source = license
+	md5sums = dda0e6a43e9d8767b36d10f1e6770f09
+	md5sums = f8e5b03556ed846d7681bacd4126f484
+
+pkgname = python2-configparser
+
