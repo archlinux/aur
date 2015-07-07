@@ -1,0 +1,23 @@
+pkgbase = ksh
+	pkgdesc = AT&T's Korn shell ksh93 nmake from ast-base
+	pkgver = 2014.06.25beta
+	pkgrel = 1
+	url = http://www.kornshell.com/
+	install = ksh.install
+	arch = i686
+	arch = x86_64
+	license = EPL
+	license = CPL
+	makedepends = binutils
+	depends = glibc
+	conflicts = pdksh
+	noextract = ksh_93u+20120801-1_amd64.deb
+	source = http://:@www2.research.att.com/~astopen/download/beta/INIT.2014-12-24.tgz
+	source = http://:@www2.research.att.com/~astopen/download/beta/ast-base.2014-06-25.tgz
+	source = http://http.us.debian.org/debian/pool/main/k/ksh/ksh_93u+20120801-1_amd64.deb
+	sha256sums = 8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b
+	sha256sums = 58588b07b076f05dbbd5f4f095d5753309a8356ba1e5475262ce77d6bff42dae
+	sha256sums = 37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39
+
+pkgname = ksh
+
