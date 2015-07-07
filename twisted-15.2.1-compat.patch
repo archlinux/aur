@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index f992959..c790484 100755
+--- a/setup.py
++++ b/setup.py
+@@ -48,7 +48,7 @@ setup(
+     description="Reference Synapse Home Server",
+     install_requires=dependencies['requirements'](include_conditional=True).keys(),
+     setup_requires=[
+-        "Twisted==14.0.2", # Here to override setuptools_trial's dependency on Twisted>=2.4.0
++        "Twisted==15.2.1", # Here to override setuptools_trial's dependency on Twisted>=2.4.0
+         "setuptools_trial",
+         "mock"
+     ],
