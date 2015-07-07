@@ -1,6 +1,6 @@
 pkgbase = rivet-hg
 	pkgdesc = A particle physics package for data analysis and validation of Monte Carlo event generators -- latest build from hg-repo
-	pkgver = r4741.dadf2af3cdae
+	pkgver = r4803.18d522e5cb21
 	pkgrel = 1
 	url = http://rivet.hepforge.org
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = rivet-hg
 	makedepends = libtool
 	makedepends = automake
 	depends = python2
-	depends = yoda
+	depends = yoda-hg
 	depends = fastjet
 	depends = gsl
 	depends = hepmc
 	provides = rivet
 	conflicts = rivet
-	source = hg+https://rivet.hepforge.org/hg/rivet#tag=release-2-2-x
+	source = hg+https://rivet.hepforge.org/hg/rivet
 	md5sums = SKIP
 
 pkgname = rivet-hg
