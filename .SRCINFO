@@ -1,0 +1,18 @@
+pkgbase = urw-garamond
+	pkgdesc = URW Garamond No8 Adobe Type1 fonts from CTAN (for texlive)
+	pkgver = 1.0
+	pkgrel = 9
+	url = http://tug.ctan.org/pkg/urw-garamond
+	install = urw-garamond.install
+	arch = any
+	license = CUSTOM:alladin
+	depends = texlive-core
+	source = http://mirror.ctan.org/fonts/urw/garamond.zip
+	source = urw-garamond.maps
+	source = LICENSE
+	md5sums = a60beaf12c12c69eeb8fdc82bd481949
+	md5sums = c8d3a18033c3ab511391862ae8dfd6f8
+	md5sums = 26381247b9d120f68e6c3dae624d6484
+
+pkgname = urw-garamond
+

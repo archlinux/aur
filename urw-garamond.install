@@ -1,0 +1,52 @@
+PKGNAME="urw-garamond"
+UPDMAP="etc/texmf/web2c/updmap.cfg"
+UPDMAPLOCAL="etc/texmf/web2c/updmap-local.cfg"
+SYNCWITHTREES=''
+
+MAPFILE="var/lib/texmf/arch/installedpkgs/$PKGNAME.maps"
+
+post_install() {
+  TMPFILE=`mktemp`
+  echo    ">>> texlive: saving updmap.cfg as $TMPFILE..."
+  cp "$UPDMAP" "$TMPFILE"
+  echo    ">>> texlive: regenerating updmap.cfg (custom additions should go"
+  echo    "             into /etc/texmf/web2c/updmap-local.cfg"
+  cp usr/share/texmf-dist/web2c/updmap-hdr.cfg $UPDMAP
+  cat var/lib/texmf/arch/installedpkgs/*.maps >> $UPDMAP
+  [ -f "$UPDMAPLOCAL" ] && cat "$UPDMAPLOCAL" >> $UPDMAP
+  echo    ">>> texlive: updating the filename database..."
+  usr/bin/mktexlsr
+  echo    ">>> texlive: updating the fontmap files with updmap..."
+  usr/bin/updmap-sys --quiet --nohash
+  echo    " done." 
+}
+
+post_upgrade() {
+  TMPFILE=`mktemp`
+  echo    ">>> texlive: saving updmap.cfg as $TMPFILE..."
+  cp "$UPDMAP" "$TMPFILE"
+  echo    ">>> texlive: regenerating updmap.cfg (custom additions should go"
+  echo    "             into /etc/texmf/web2c/updmap-local.cfg"
+  cp usr/share/texmf-dist/web2c/updmap-hdr.cfg $UPDMAP
+  cat var/lib/texmf/arch/installedpkgs/*.maps >> $UPDMAP
+  [ -f "$UPDMAPLOCAL" ] && cat "$UPDMAPLOCAL" >> $UPDMAP
+  echo    ">>> texlive: updating the filename database..."
+  usr/bin/mktexlsr
+  echo    ">>> texlive: updating the fontmap files with updmap..."
+  usr/bin/updmap-sys --quiet --nohash $SYNCWITHTREES
+  echo    " done." 
+}
+
+pre_remove() {
+for m in `cut -d' ' -f2 $MAPFILE`; do 
+  sed -i "/\s$m/d" $UPDMAP ; 
+done
+}
+
+post_remove() {
+  echo    ">>> texlive: updating the filename database..."
+  usr/bin/mktexlsr
+  echo    ">>> texlive: updating the fontmap files with updmap..."
+  usr/bin/updmap-sys --quiet --nohash
+  echo    " done." 
+}
