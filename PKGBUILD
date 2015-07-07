@@ -1,12 +1,12 @@
 # Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
 pkgname=selene-media-encoder-bzr
-pkgver=r126
-pkgrel=2
+pkgver=r185
+pkgrel=1
 pkgdesc="A simple but powerful audio/video converter for many formats (latest bzr revision)"
 arch=(any)
 url="http://teejeetech.blogspot.in/p/selene-media-encoder.html"
 license=('GPL')
-depends=('gtk3' 'json-glib' 'libgee06' 'libsoup' 'mediainfo' 'vala')
+depends=('gtk3' 'json-glib' 'libgee06' 'libsoup' 'mediainfo' 'vala' 'libav')
 makedepends=('bzr')
 provides=('selene-media-encoder')
 conflicts=('selene-media-encoder')
