@@ -1,0 +1,6 @@
+post_install() {
+   echo "set PYMACS_PYTHON=python2 in your environment" 
+   echo "if your pymacs-scripts should be run by the classical python."
+}
+
+

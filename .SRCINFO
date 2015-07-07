@@ -1,0 +1,18 @@
+pkgbase = pymacs
+	pkgdesc = Interface between Emacs Lisp and Python.
+	pkgver = 0.25
+	pkgrel = 2
+	url = http://pymacs.progiciels-bpi.ca/
+	install = pymacs.install
+	arch = any
+	license = GPL2
+	makedepends = python2
+	makedepends = python2-docutils
+	makedepends = texlive-core
+	depends = emacs
+	conflicts = emacs-python-mode
+	source = pymacs-0.25.tar.gz::https://github.com/pinard/Pymacs/tarball/v0.25
+	md5sums = 3573a1fe20a4afabb7c980d2deac2bdf
+
+pkgname = pymacs
+
