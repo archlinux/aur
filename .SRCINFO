@@ -1,0 +1,18 @@
+pkgbase = drawterm-git
+	pkgdesc = Connect to Plan 9 CPU servers from other operating systems.
+	pkgver = r115.8de603b
+	pkgrel = 1
+	url = https://github.com/0intro/drawterm
+	arch = i686
+	arch = x86_64
+	license = LPL
+	license = MIT
+	makedepends = git
+	provides = drawterm
+	conflicts = drawterm
+	conflicts = drawterm-hg
+	source = drawterm-git::git+https://github.com/0intro/drawterm.git
+	md5sums = SKIP
+
+pkgname = drawterm-git
+
