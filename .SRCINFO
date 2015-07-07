@@ -1,0 +1,20 @@
+pkgbase = ideviceinstaller-git
+	pkgdesc = Manage Applications of an iPhone or iPod Touch
+	pkgver = 20150707
+	pkgrel = 1
+	url = http://cgit.sukimashita.com/ideviceinstaller.git/
+	arch = i686
+	arch = x86_64
+	groups = system
+	license = GPL
+	makedepends = git
+	makedepends = automake
+	depends = libimobiledevice
+	depends = usbmuxd
+	depends = libzip
+	provides = ideviceinstaller
+	source = git://git.sukimashita.com/ideviceinstaller.git
+	md5sums = SKIP
+
+pkgname = ideviceinstaller-git
+
