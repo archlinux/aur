@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-vuplus
 _gitname=pvr.vuplus
-pkgver=20150331.d6abad3
-_gitver=d6abad3899fc5d7c72182f745bf7689612cfa092
+pkgver=20150701.f7dfd47
+_gitver=f7dfd479252d384f3ba4452a73056c7e08f18327
 pkgrel=1
 pkgdesc='VuPlus PVR client addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make

@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-vuplus
 	pkgdesc = VuPlus PVR client addon for Kodi
-	pkgver = 20150331.d6abad3
+	pkgver = 20150701.f7dfd47
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.vuplus
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-pvr-vuplus
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = tinyxml
-	source = https://github.com/kodi-pvr/pvr.vuplus/archive/d6abad3899fc5d7c72182f745bf7689612cfa092.tar.gz
+	source = https://github.com/kodi-pvr/pvr.vuplus/archive/f7dfd479252d384f3ba4452a73056c7e08f18327.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-vuplus
