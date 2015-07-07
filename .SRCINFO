@@ -1,0 +1,31 @@
+pkgbase = synergy-git
+	pkgdesc = Share a single mouse and keyboard between multiple computers
+	pkgver = 20150706.r2251.cfec3a9
+	pkgrel = 1
+	url = http://synergy-foss.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libxt
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = unzip
+	depends = gcc-libs
+	depends = libxtst
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = avahi
+	depends = curl
+	optdepends = qt5-base: gui support
+	optdepends = openssl: encryption support
+	provides = synergy
+	conflicts = synergy
+	source = synergy::git+https://github.com/synergy/synergy.git
+	source = synergys_at.socket
+	source = synergys_at.service
+	sha1sums = SKIP
+	sha1sums = 7ec33221725fc496b807e0f435c5e87b590beb5d
+	sha1sums = 65ab58cc3546d6374a05a6a260f15045632e43ce
+
+pkgname = synergy-git
+
