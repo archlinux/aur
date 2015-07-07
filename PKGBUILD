@@ -2,14 +2,14 @@
 
 pkgname=gnome-flashback-git
 _gitname=gnome-flashback
-pkgver=3.16.1.r6.gcb9342d
-pkgrel=2
+pkgver=3.17.2.r8.g89fdc86
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc="GNOME Flashback session (development version)"
 url="https://wiki.gnome.org/Projects/GnomeFlashback"
 # Note: Dependencies from gnome-panel onwards are flashback session dependencies and are not required for building the flashback module
-depends=('gnome-desktop' 'libcanberra' 'libpulse' 'gnome-panel' 'gnome-screensaver' 'gnome-session' 'metacity' 'nautilus' 'notification-daemon' 'polkit-gnome')
+depends=('gnome-desktop' 'libcanberra' 'libpulse' 'upower' 'gnome-panel' 'gnome-screensaver' 'gnome-session' 'metacity' 'nautilus' 'notification-daemon' 'polkit-gnome')
 optdepends=('compiz: required for the GNOME Flashback (Compiz) session')
 makedepends=('git' 'gnome-common' 'intltool')
 provides=('gnome-flashback')
