@@ -1,0 +1,50 @@
+2012-02-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Changed GIT repository from BerliOS to GitHub
+	LDFLAGS modified to link against X11 and stdc++
+
+2011-06-23 Angelo "encelo" Theodorou <encelo@users.sourceforge.net
+
+	* PKGBUILD :
+	Added a package function
+	Building via the GIT repository
+
+2010-04-05 Angelo "encelo" Theodorou <encelo@users.sourceforge.net
+
+	* PKGBUILD :
+	There are no more 'custom' and 'tiles' data directories
+
+2009-01-11 Angelo "encelo" Theodorou <encelo@users.sourceforge.net
+
+	* PKGBUILD :
+	Description changed
+	Using the !emptydirs option
+
+2008-07-19 Angelo "encelo" Theodorou <encelo@users.sourceforge.net
+
+	* PKGBUILD :
+	Compressing textures and maps
+
+2008-07-17 Angelo "encelo" Theodorou <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	cvs added as a make dependency
+
+2008-03-30 Angelo "encelo" Theodorou <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir
+	ChangeLog format adapted to official prototype
+	Icon installed from the CVS repository
+
+2008-01-18 Angelo "encelo" Theodorou <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Binary compiled from tagged CVS repository
+	Dependencies array corrected
+	Changed permissions for some installed files
+	Icon installed from inside the game archive
+	Description and URL changed
+	This ChangeLog added ;-)

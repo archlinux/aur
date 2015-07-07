@@ -1,0 +1,27 @@
+pkgbase = eternallands
+	pkgdesc = A free 3D MMORPG game with thousands of on-line players
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = http://www.eternal-lands.com/
+	changelog = eternallands.changelog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = git
+	depends = sdl_net
+	depends = sdl_image
+	depends = openal
+	depends = cal3d
+	depends = libxml2
+	depends = libvorbis
+	depends = libgl
+	depends = mesa
+	options = !emptydirs
+	source = http://www.eternal-lands.com/el_linux_193.zip
+	source = eternallands.desktop
+	md5sums = a1d0c7c5983d7c33ee0edc7a4e4867d6
+	md5sums = 4564fba195fc39fce438f717dde0ad9e
+
+pkgname = eternallands
+

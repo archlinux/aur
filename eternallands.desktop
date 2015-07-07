@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=Application;Game;
+Exec=el
+Icon=eternallands.png
+StartupNotify=false
+Terminal=false
+Type=Application
+Name=Eternal Lands
+Comment=3D MMORPG
