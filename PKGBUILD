@@ -1,7 +1,7 @@
 # Maintainer: Ian Hernandez <ihernandezs@openmailbox.org>
 
 pkgname=simple-text
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A not so simple text and code editor written in Vala (Still in development)"
 arch=('i686' 'x86_64')
@@ -14,9 +14,13 @@ source=("$pkgname-$pkgver::git+$url.git")
 md5sums=('SKIP')
 install=$pkgname.install
 
+prepare() {
+	cd $pkgname-$pkgver
+	./autogen.sh
+}
+
 build() {
     cd $pkgname-$pkgver
-    ./autogen.sh
     ./configure --disable-schemas-compile --prefix=/usr
     make
 }
