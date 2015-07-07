@@ -1,0 +1,16 @@
+pkgbase = libucl-git
+	pkgdesc = BSD's Universal Config Language - git version
+	pkgver = 0.7.3.r113.g20b1288
+	pkgrel = 1
+	url = https://github.com/vstakhov/
+	arch = x86
+	arch = x86_64
+	arch = armv7
+	license = GPL
+	makedepends = git
+	conflicts = libucl
+	source = git+https://github.com/vstakhov/libucl.git
+	md5sums = SKIP
+
+pkgname = libucl-git
+
