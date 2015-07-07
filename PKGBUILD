@@ -3,7 +3,7 @@
 # Special thanks to the Linux Mint project, without them this would not exist.
 
 pkgname='mint-x-icons'
-pkgver='1.3.0'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='Mint-X Icon themes.  A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 source=("${url}/${pkgname}_${pkgver}.tar.gz")
 options=('!strip')
 install="${pkgname}.install"
-sha256sums=('9ba87eb03a88e0c7c1b05c83dadc94c45f39190af92867ec28d539cc6b33a43a')
+sha256sums=('1e4fa84ca72cae3695356a4adae94c4151dd7438bac85097b2377abc7c8c100d')
 
 prepare() {
 	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
