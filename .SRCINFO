@@ -1,0 +1,17 @@
+pkgbase = ruby-metriks
+	pkgdesc = An experimental metrics client.
+	pkgver = 0.9.9.6
+	pkgrel = 1
+	url = https://rubygems.org/gems/metriks
+	arch = any
+	license = GPL
+	depends = ruby
+	depends = ruby-atomic
+	depends = ruby-avl-tree
+	depends = ruby-hitimes
+	noextract = metriks-0.9.9.6.gem
+	source = http://gems.rubyforge.org/gems/metriks-0.9.9.6.gem
+	sha256sums = d37ec545dc704a63638f5d02d9cc02600d51bf55c6664a93014168eeac688fc8
+
+pkgname = ruby-metriks
+
