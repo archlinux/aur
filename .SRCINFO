@@ -1,0 +1,16 @@
+pkgbase = python2-chaco
+	pkgdesc = Interactive 2-Dimensional Plotting
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/enthought/chaco
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-enable
+	options = !emptydirs
+	source = https://github.com/enthought/chaco/tarball/4.5.0
+	md5sums = c28f63e4ec29c313efc40a21bb9ddc45
+
+pkgname = python2-chaco
+
