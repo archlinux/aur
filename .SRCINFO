@@ -1,0 +1,17 @@
+pkgbase = perl-text-aspell
+	pkgdesc = Perl interface to the GNU Aspell library
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/~hank/Text-Aspell/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	checkdepends = aspell-en
+	depends = perl
+	depends = aspell
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HANK/Text-Aspell-0.09.tar.gz
+	md5sums = 67ec8b9c4769969fa714fc25c9c73832
+
+pkgname = perl-text-aspell
+
