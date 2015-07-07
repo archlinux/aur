@@ -1,0 +1,14 @@
+pkgbase = giter8
+	pkgdesc = a command line tool to apply templates defined on github
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://github.com/n8han/giter8
+	arch = any
+	license = LGPL
+	depends = sbt
+	source = giter8.properties_0.6.8::https://raw.githubusercontent.com/n8han/giter8/0.6.8/src/main/conscript/g8/launchconfig
+	source = g8
+	options = !emptydirs
+
+pkgname = giter8
+
