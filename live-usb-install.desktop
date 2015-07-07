@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=LiveUSB Install
+Comment=Tool for creating Live USB drives
+Categories=Application;System;
+Exec=gksu python2 /usr/share/live-usb-install/live-usb-install.py
+Terminal=false
+Type=Application
+Name[en_US]=LiveUSB Install
+GenericName[en_US]=LiveUSB Install
+Comment[en_US]=Tool for creating Live USB drives
+Icon=live-usb-install

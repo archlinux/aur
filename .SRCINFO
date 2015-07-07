@@ -1,0 +1,28 @@
+pkgbase = live-usb-install
+	pkgdesc = LiveUSB Install - Create bootable usb sticks from a wide range of different Linux distributions
+	pkgver = 2.5.9
+	pkgrel = 1
+	url = http://live.learnfree.eu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = pygtk
+	depends = libglade
+	depends = syslinux
+	depends = wget
+	depends = p7zip
+	depends = mtools
+	depends = unrar
+	depends = parted
+	depends = gksu
+	depends = python2-dbus
+	optdepends = python-libtorrent: needed for downloading some distributions
+	conflicts = live-usb-install<2.5.9
+	source = http://skss.learnfree.eu/go.php?http://download.learnfree.eu/lfu-usb/live-usb-install-2.5.9.tar.gz
+	source = live-usb-install.desktop
+	md5sums = e195f70162707c930d77a61a5ccc137d
+	md5sums = 3c0c278b60d2f6fe8887a94198b1796f
+
+pkgname = live-usb-install
+
