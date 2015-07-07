@@ -3,7 +3,7 @@
 # Contributor: Stephan Friedrichs <deduktionstheorem@googlemail.com>
 
 pkgname='scipoptsuite'
-pkgver='3.1.1'
+pkgver='3.2.0'
 pkgrel=1
 pkgdesc="Toolbox for generating and solving optimization problems."
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ license=('LGPL3' 'custom:ZIB Academic License')
 depends=('zlib' 'gmp' 'readline')
 replaces=('ziboptsuite')
 makedepends=('chrpath' 'doxygen' 'graphviz')
-provides=('scip=3.1.1' 'soplex=2.0.1' 'zimpl=3.3.2' 'gcg=2.0.1' 'ug=0.7.5')
+provides=('scip=3.2.0' 'soplex=2.2.0' 'zimpl=3.3.3' 'gcg=2.1.0' 'ug=0.8.0')
 options=(staticlibs)
 source=("http://scip.zib.de/download/release/${pkgname}-${pkgver}.tgz")
-sha256sums=('c15359c75493a52f2ae6489dd2be07b3d20683bd21ad36ec134a866be2213a85')
+sha256sums=('9da1cc6ae131987a5a151df846c0a388fdfe1175ddabebeb3342538fe1e75767')
 
 build() {
     # Extract directory names from the $provides array.
