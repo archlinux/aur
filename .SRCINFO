@@ -1,7 +1,7 @@
 pkgbase = private-internet-access-vpn
 	pkgdesc = Installs VPN profiles for Private Internet Access Service
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.privateinternetaccess.com/
 	arch = any
 	license = GPL
