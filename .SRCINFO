@@ -1,0 +1,15 @@
+pkgbase = ssh-restrict-git
+	pkgdesc = whitelist remote commands via ssh config
+	pkgver = 20150523
+	pkgrel = 1
+	url = https://github.com/mxey/ssh-restrict
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = python2-configparser
+	source = ssh-restrict::git+https://github.com/mxey/ssh-restrict.git#branch=HEAD
+	md5sums = SKIP
+
+pkgname = ssh-restrict-git
+
