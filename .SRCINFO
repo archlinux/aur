@@ -1,0 +1,14 @@
+pkgbase = libspf2-git
+	pkgdesc = Implementation of the Sender Policy Framework for SMTP authorization
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.libspf2.org/
+	arch = i685
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	provides = libspf2
+
+pkgname = libspf2-git
+
