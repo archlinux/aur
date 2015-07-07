@@ -1,0 +1,18 @@
+pkgbase = gnusound
+	pkgdesc = A multitrack sound editor for GNOME 1 and 2
+	pkgver = 0.7.5
+	pkgrel = 2
+	url = http://www.gnu.org/software/gnusound/
+	arch = i686
+	license = GPL
+	depends = libsamplerate
+	depends = audiofile
+	depends = libgnomeui
+	depends = jack-audio-connection-kit
+	depends = lame
+	options = !makeflags
+	source = ftp://ftp.gnu.org/gnu/gnusound/gnusound-0.7.5.tar.bz2
+	md5sums = 9f7515d9a68a54ac6b60ab78dfa72d80
+
+pkgname = gnusound
+

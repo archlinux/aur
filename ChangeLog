@@ -1,0 +1,11 @@
+2009-01-11 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the !makeflags option in order to compile on multicore CPUs
+
+2009-01-09 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added arch and license field
+	Using $srcdir and $pkgdir variables
+	Dependencies array updated
