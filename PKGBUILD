@@ -1,5 +1,5 @@
 pkgname=radare2-bindings-git
-pkgver=20150603.484.a938e31
+pkgver=20150705.507.d02e5b9
 pkgrel=1
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
@@ -22,20 +22,12 @@ pkgver () {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ./configure --prefix=/usr --enable=ctypes --enable=python
-  (cd ./python && make)
-  (cd ./ctypes && make)
-  (cd ./libr/lang/p && make)
+  (cd r2pipe/python && python setup.py build)
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}/" install-vapi
-  make DESTDIR="${pkgdir}/" install-python
-  make DESTDIR="${pkgdir}/" install-plugins
-  make DESTDIR="${pkgdir}/" install-ctypes
-
-  rm -rf "${srcdir}"
+  (cd r2pipe/python && python setup.py install --root "${pkgdir}")
 }
 
 # vim:set ts=2 sw=2 et:
