@@ -1,0 +1,15 @@
+pkgbase = python2-caldavclientlibrary-svn
+	pkgdesc = A Python2 library and tool for CalDAV
+	pkgver = r14927
+	pkgrel = 2
+	url = http://calendarserver.org/wiki/CalDAVClientLibrary
+	arch = any
+	license = Apache
+	depends = python2
+	provides = python2-caldavclientlibrary
+	source = caldavclientlibrary::svn+http://svn.calendarserver.org/repository/calendarserver/CalDAVClientLibrary/trunk
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = python2-caldavclientlibrary-svn
+
