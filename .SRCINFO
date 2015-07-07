@@ -1,0 +1,20 @@
+pkgbase = haskell-boxes
+	pkgdesc = A pretty-printing library for laying out text in 2D.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/boxes
+	install = haskell-boxes.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-split>=0.2.0
+	depends = haskell-split<0.3
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/boxes/0.1.4/boxes-0.1.4.tar.gz
+	sha256sums = 4e3ee9a88a28ed14a61b2c885b111922f201f56392ff68d350418ff6e98dfdd8
+	sha512sums = b8afb3216208269883f173f57fc0b53be919e5fd171bf2b7d8d5ed2b0af9c3ca4f9005fc4df43ba8ba4ade694d59a83ff0d419cfbd32e54e80ba6fbe748e9524
+
+pkgname = haskell-boxes
+
