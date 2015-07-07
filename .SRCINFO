@@ -1,0 +1,33 @@
+pkgbase = dgrp
+	pkgdesc = tty driver for Digi RealPort Connect EtherLite Flex One CM PortServer IBM RAN
+	pkgver = 1.9.35
+	pkgrel = 1
+	url = http://www.digi.com/
+	install = dgrp-install.sh
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = APACHE
+	license = custom:DigiInternational
+	makedepends = linux-headers
+	makedepends = openssl
+	makedepends = sudo
+	depends = linux=4.0.7
+	depends = openssl
+	optdepends = tcl: digi config manager in X
+	optdepends = tk: digi config manager in X
+	conflicts = linux>4.0.7
+	conflicts = linux<4.0.7
+	options = !docs
+	options = !emptydirs
+	source = dgrp-1.9.35-81000137_W.tgz::http://ftp1.digi.com/support/driver/81000137_W.tgz
+	source = drpadmin
+	source = drpadmin.1
+	source = autorebuild-dgrp.sh
+	sha256sums = 218c3a873f8623d2e663735efdee384f7dac784327cea9e7211eddce700fe1c8
+	sha256sums = 1ab0ccdc361760ae078f9b69f603e99b40849cdf97ad69bb028ad6af27012634
+	sha256sums = 66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3
+	sha256sums = dde3d60179c465696370aa493a5b9f0ba2e5189e56cfc51439cfcca38f66bad5
+
+pkgname = dgrp
+

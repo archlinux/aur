@@ -1,0 +1,143 @@
+. Copyright (c) 1998 Digi International, All Rights Reserved.
+.
+. $Id: drpadmin.1m,v 1.4 2001/08/08 20:42:08 jamesp Exp $
+.
+.TH DRPADMIN 1M "November 1, 1998"
+.SH NAME
+drpadmin - Digi Realport Configuration Utility
+.SH SYNOPSIS
+.TP 14
+drpadmin
+.SH DESCRIPTION
+The drpadmin utility is invoked by the system administrator to
+view, add, remove, or change the configuration of RealPort-enabled
+Products used with the
+.B dgrp
+driver. When invoked by a non root user the current configuration
+is displayed along with any kernel warning messages. Configuration
+is not available to a non root user.
+.PP
+When invoked, drpadmin begins a question-and-answer
+terminal conversation with the user.  The user may
+.B add
+a RealPort-enabled product,
+.B show
+the current configuration and other details provided by the kernel driver,
+.B remove
+a previously configured unit, or
+.B reset
+a previously configured unit
+.PP
+In the
+.B show
+operation, the program simply displays the contents of the
+.I /etc/dgrp.backing.store
+file with the
+.B less
+program.
+.PP
+The show operations are safe to run any time.
+The remaining operations may cause 
+temporary or permanent service interruptions to your Realport devices.
+.PP
+In the
+.B add
+operation, the user is asked for:
+.TP 8
+Remote node name or IP address
+The TCP/IP node name, or the numeric dot-address of the Digi ethernet-based
+serial device.
+.TP
+Number of ports
+The number of tty devices to be created for this unit.
+If this number is less than the number of physical ports,
+only the entered number will be available to the Realport Driver.
+The unassigned ports will be available for other connection types.
+Some Digi products and drivers accept other connection types to assigned ports
+so long as there are no active Realport connections.
+If this number is greater, the additional devices will not be usable
+unless/until the hardware is expanded.
+.TP
+Realport tty device id
+This one or two character alphanumeric string is used to generate
+the 
+.BI /dev/tty XN,
+.BI /dev/pr XN
+and
+.BI /dev/cu XN
+device names for this unit.
+Here
+.I X
+is the entered string, and
+.I N
+is the automatically generated 2 digit port number in the range 01 to 64.
+.TP
+Encryption
+The encryption setting for this unit. If your device does not support
+encryption then encryption should not be enabled or the device will
+not function. Check your device specifications to see if encryption
+is supported.
+.TP
+Network link speed
+This parameter should be specified only when the network connection from
+the system to the remote device includes a WAN link slower
+than 1 MBit/second.
+The user may enter either simply the WAN speed
+(eg 56000 for a 56K Frame Relay link)
+or may enter a complete WAN speed string as documented
+in the
+.BR drpd (1m)
+manual page.
+.PP
+When all data is entered, the
+.B add
+command calls 
+.B dgrp_cfg_node init
+to load the kernel module if not already loaded and
+activate the device. The new device is then immediately available.
+.PP
+drpadmin only configures the most
+common options. Please see the
+.BR dgrp_cfg_node (1m)
+manual page for all available options.
+.PP
+In the
+.B remove
+operation, the user is first asked for the unit ID
+to delete as displayed by the
+.B show
+option.  The command then calls
+.B dgrp_cfg_node uninit
+to deactivate the device with the kernel module.
+When the last device is deactivated the kernel module is unloaded 
+.PP
+The configuration changes take effect immediately.
+.PP
+In the
+.B reset
+operation, the user is first asked for the unit ID
+to reset as displayed by the
+.B show
+option.  The command then calls
+.B dgrp_cfg_node stop
+then
+.B dgrp_cfg_node start
+to reset the device with the kernel module. 
+.PP
+When the
+.B reset
+operation is complete all connections using the device will be reset.
+.PP
+To change the configuration of a remote device,
+the unit must first be removed and then added back
+into the configuration.
+.PP
+.B dgrp_cfg_node stop
+and
+.B dgrp_cfg_node start
+can be used to change the IP address of a configured unit.
+.PP
+.SH "SEE ALSO"
+.BR ditty (1),
+.BR drpd (1m),
+.BR dgrp_cfg_node (1m)
