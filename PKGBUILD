@@ -2,8 +2,8 @@
 # Contributor: EpocSquadron <crimsonmage a gmail>
 pkgname=libreoffice-extension-writer2latex-devel
 _javaname=writer2latex
-_exts=( writer2latex writer2xhtml writer4latex )
-pkgver=1.3.2
+_exts=( writer2latex writer2xhtml )
+pkgver=1.5.2
 pkgrel=1
 _verflag="alpha"
 pkgdesc="A java program and collection of LibreOffice extensions for converting to and working with LaTeX in LibreOffice (develop release)"
@@ -11,8 +11,8 @@ arch=('any')
 url="http://writer2latex.sourceforge.net"
 license=('LGPL')
 groups=('libreoffice-extensions')
-depends=('libreoffice-common' 'java-runtime-headless')
-makedepends=('libreoffice-writer')
+# libreoffice misses the libcups dependency
+depends=('libcups' 'libreoffice' 'java-runtime-headless')
 provides=('libreoffice-extension-writer2latex')
 conflicts=('libreoffice-extension-writer2latex' 'libreoffice-extension-writer2latex-svn')
 
@@ -21,7 +21,7 @@ _srcname="${_javaname}${_smallver//.}"
 _dlpath="http://downloads.sourceforge.net/project/writer2latex/writer2latex/Writer2LaTeX%20${pkgver%.*}"
 source=("${_dlpath}/${_javaname}${pkgver//.}${_verflag}.zip"
         'writer2latex.sh')
-sha256sums=('702358b568897482d8b13f4c309ee02aacb3ea196ef9a8ca9307bf846586c975'
+sha256sums=('7310dff634d8d342d225dd5d88d6b7ca5daf609ac9e4ee4998eac0b629d15575'
             '964cf8f79d1087e62eff7a93d2e1733cc26941ecc0e7238e49ac5dfbc6b21c8e')
 
 build() {
