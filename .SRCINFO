@@ -1,0 +1,32 @@
+pkgbase = consolekit-git
+	pkgdesc = A framework for defining and tracking users, login sessions, and seats
+	pkgver = 395.af75e10
+	pkgrel = 1
+	epoch = 1
+	url = http://www.freedesktop.org/wiki/Software/ConsoleKit
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	depends = polkit
+	depends = zlib
+	depends = libx11
+	depends = dbus-glib
+	provides = consolekit
+	conflicts = consolekit
+	replaces = consolekit
+	options = !libtool
+	source = git+git://anongit.freedesktop.org/ConsoleKit
+	source = pam-foreground-compat.ck
+	source = consolekit.logrotate
+	source = consolekit.tmpfiles.conf
+	md5sums = SKIP
+	md5sums = a8a4de71d9b0549b8143e5f6c2a36fc7
+	md5sums = 6fefa451d9fe2fc6d6269629d3529793
+	md5sums = 8c5a8059db515d40fae1379daf084094
+
+pkgname = consolekit-git
+
