@@ -1,0 +1,16 @@
+pkgbase = ssreflect
+	pkgdesc = A set of extensions to the scripting language of Coq.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://ssr.msr-inria.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = camlp5-transitional>=6.12
+	depends = coq<8.5
+	source = http://ssr.msr-inria.inria.fr/FTP/ssreflect-1.5.tar.gz
+	sha256sums = bad978693d1bfd0a89586a34678bcc244e3b7efba6431e0f83d8e1ae8f82a142
+	sha512sums = 4d2ece36609ecc38796568e13d3fe093eefa1bd0bd0c062788ef10c639bccba37bc40023098ea609f5877a1afcbc08c346e1a69640203cd95a9e75709816642f
+
+pkgname = ssreflect
+
