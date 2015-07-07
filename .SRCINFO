@@ -1,0 +1,24 @@
+pkgbase = lightdm-webkit-greeter-bzr
+	pkgdesc = Webkit greeter for LightDM
+	pkgver = 13
+	pkgrel = 5
+	url = https://launchpad.net/lightdm-webkit-greeter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = bzr
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = lightdm
+	depends = webkitgtk2
+	provides = lightdm-webkit-greeter
+	conflicts = lightdm-webkit-greeter
+	backup = etc/lightdm/lightdm-webkit-greeter.conf
+	source = lightdm-webkit-greeter::bzr+http://bazaar.launchpad.net/~lightdm-team/lightdm-webkit-greeter/trunk/
+	source = lightdm-webkit-greeter.conf
+	sha256sums = SKIP
+	sha256sums = 96c76474299ea286b39a9327b760393ca8f6bfb6065ae3eb118d22609bcf9980
+
+pkgname = lightdm-webkit-greeter-bzr
+
