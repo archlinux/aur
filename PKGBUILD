@@ -100,10 +100,10 @@ package() {
   cd "${srcdir}"
 
   #Install missing cmake file
-  #for _FILE in TopologicalSort.cmake VTKTargets.cmake
-  #do
-  #  install -Dm644 `find ./ -name ${_FILE}` "${pkgdir}${_installdir}/lib/cmake/paraview-${pkgver:0:3}/"
-  #done
+  for _FILE in TopologicalSort.cmake VTKTargets.cmake
+  do
+    install -Dm644 `find ./ -name ${_FILE}` "${pkgdir}${_installdir}/lib/cmake/paraview-${pkgver:0:3}/"
+  done
 
   #Install missing header
   #for _FILE in pqViewFrameActionGroup.h vtkSIVectorPropertyTemplate.h vtkMaterialInterfaceIdListItem.h vtkExodusIIReaderPrivate.h vtk3DS.h
