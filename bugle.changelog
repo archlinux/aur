@@ -1,0 +1,28 @@
+2013-05-04 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added pkglibdir directive to scons build command for gldb-gui 
+
+2012-04-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added the changelog directive
+	Added a package() function
+	Dependencies updated
+	GCC 4.5 patch removed
+
+2010-06-12 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch to compile under GCC 4.5
+
+2010-03-15 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added glew as a dependency
+
+2009-02-25 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added x86_64 to the arch array
+	Dependencies updated

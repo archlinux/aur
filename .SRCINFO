@@ -1,0 +1,22 @@
+pkgbase = bugle
+	pkgdesc = An OpenGL debugging tool
+	pkgver = 0.0.20140104
+	pkgrel = 1
+	url = http://www.opengl.org/sdk/tools/BuGLe
+	changelog = bugle.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc>=4.1
+	makedepends = scons
+	depends = gtkglext
+	depends = ffmpeg
+	depends = libtool
+	depends = glew
+	optdepends = readline
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/bugle/bugle-0.0.20140104.tar.bz2
+	md5sums = 21a26f507c4c97c2843debf7e4fcac51
+
+pkgname = bugle
+
