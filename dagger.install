@@ -1,0 +1,35 @@
+
+pre_install() {
+  getent group games > /dev/null || /usr/sbin/groupadd -g 50 games
+}
+
+post_install() {
+  echo "You must read and accept the Daggerfall terms of use"
+  echo "   /usr/share/licenses/daggerfall/license"
+  echo ""
+  echo "To accept license run daggerfall from command line"
+  echo "and answer \"yes\" when asked, or issue command"
+  echo "   daggerfall --accept-terms"
+  echo ""
+  echo "You should tweak dosbox settings to match your needs"
+  echo "   /usr/share/games/daggerfall/dagger.conf"
+  echo ""
+  echo "To play, make sure you are in games group and use command"
+  echo "   daggerfall"
+  echo ""
+  echo "To grab/ungrab mouse in window mode press CTRL+F10"
+  echo "To switch fullscreen press ALT+ENTER"
+  echo ""
+  echo "To see more commands, use"
+  echo "   daggerfall --help"
+  chgrp -R games /usr/share/games/daggerfall
+  chmod -R g+rw /usr/share/games/daggerfall
+  chgrp games /usr/bin/daggerfall
+  chmod g+rx /usr/bin/daggerfall
+  /bin/true
+}
+
+post_upgrade() {
+  post_install
+}
+
