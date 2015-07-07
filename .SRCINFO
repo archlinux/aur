@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-wmc
 	pkgdesc = Windows Media Center client PVR addon for Kodi
-	pkgver = 20150415.37b4b29
+	pkgver = 20150701.162053c
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.wmc
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kodi-devel-pvr-wmc
 	makedepends = kodi-devel-platform
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
-	source = https://github.com/kodi-pvr/pvr.wmc/archive/37b4b292d56885489aa8949bd70b54babb41b898.tar.gz
+	source = https://github.com/kodi-pvr/pvr.wmc/archive/162053cbd4e1af533ba2710ec1801da23ab50172.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-wmc

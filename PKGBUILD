@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-wmc
 _gitname=pvr.wmc
-pkgver=20150415.37b4b29
-_gitver=37b4b292d56885489aa8949bd70b54babb41b898
+pkgver=20150701.162053c
+_gitver=162053cbd4e1af533ba2710ec1801da23ab50172
 pkgrel=1
 pkgdesc='Windows Media Center client PVR addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
