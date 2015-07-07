@@ -1,0 +1,35 @@
+
+pre_install() {
+  getent group games > /dev/null || /usr/sbin/groupadd -g 50 games
+}
+
+post_install() {
+  echo "You must read and accept the Arena terms of use"
+  echo "   /usr/share/licenses/arena/license"
+  echo ""
+  echo "To accept license run arena from command line"
+  echo "and answer \"yes\" when asked, or issue command"
+  echo "   arena --accept-terms"
+  echo ""
+  echo "You should tweak dosbox settings to match your needs"
+  echo "   /usr/share/games/arena/arena.conf"
+  echo ""
+  echo "To play, make sure you are in games group and use command"
+  echo "   arena"
+  echo ""
+  echo "To grab/ungrab mouse in window mode press CTRL+F10"
+  echo "To switch fullscreen press ALT+ENTER"
+  echo ""
+  echo "To see more commands, use"
+  echo "   arena --help"
+  chgrp -R games /usr/share/games/arena
+  chmod -R g+rw /usr/share/games/arena
+  chgrp games /usr/bin/arena
+  chmod g+rx /usr/bin/arena
+  /bin/true
+}
+
+post_upgrade() {
+  post_install
+}
+

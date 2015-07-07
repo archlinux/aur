@@ -1,0 +1,26 @@
+pkgbase = arena
+	pkgdesc = The Elder Scrolls I: Arena
+	pkgver = 1.06
+	pkgrel = 2
+	url = http://www.elderscrolls.com/arena/
+	install = arena.install
+	arch = any
+	license = custom:arena
+	makedepends = unrar
+	depends = dosbox
+	options = emptydirs
+	source = http://cms.elderscrolls.com/sites/default/files/tes/extras/Arena106Setup.zip
+	source = license
+	source = arena-launcher.pl
+	source = ARENA.BAT
+	source = SOUND.CFG
+	source = arena.conf
+	md5sums = b55b3ddcce98c1905a723781dbe1df7c
+	md5sums = 2b726b740a5ef663556dea5fe3f25931
+	md5sums = b1cc68ee04ad1ff652f1a764a8461b62
+	md5sums = f125209433385b76e6cdf10977bd1d6a
+	md5sums = 7b7c3c2b9961c8d9e649b12c41266662
+	md5sums = 36e4de3a8b1030bbf12c6badd23da2ec
+
+pkgname = arena
+
