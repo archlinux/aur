@@ -1,0 +1,12 @@
+pkgbase = flavoured
+	pkgdesc = Flavoured, a wallpaper by Digitalshiva
+	pkgver = 20090507
+	pkgrel = 1
+	url = http://digitalshiva.deviantart.com/art/Flavoured-121784194
+	arch = any
+	license = unknown
+	source = http://fc00.deviantart.net/fs42/f/2009/127/7/6/Flavoured_by_Digitalshiva.zip
+	md5sums = a18f350158136070b04ab9e20351b986
+
+pkgname = flavoured
+
