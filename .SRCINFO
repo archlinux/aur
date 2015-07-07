@@ -1,0 +1,18 @@
+pkgbase = python2-seaborn
+	pkgdesc = Statistical data visualization
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://www.stanford.edu/~mwaskom/software/seaborn/index.html
+	arch = any
+	license = BSD
+	depends = python2-pandas
+	depends = python2-matplotlib
+	depends = python2-scipy
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/seaborn/seaborn-0.5.1.tar.gz
+	source = LICENSE
+	md5sums = 2ce6ea7d3c67858c0b1f5793fa2043b8
+	md5sums = b6509e5b306ad6447d7c2fc2f8de8dcb
+
+pkgname = python2-seaborn
+
