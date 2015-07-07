@@ -1,6 +1,6 @@
 pkgbase = vorbis-tools-svn
 	pkgdesc = Extra tools for Ogg-Vorbis
-	pkgver = LATEST
+	pkgver = 19492
 	pkgrel = 1
 	url = http://www.xiph.org/vorbis
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = vorbis-tools-svn
 	depends = curl>=7.16.2
 	provides = vorbis-tools=1.4.0
 	conflicts = vorbis-tools
+	source = svn+http://svn.xiph.org/trunk/vorbis-tools/
+	sha1sums = SKIP
 
 pkgname = vorbis-tools-svn
 

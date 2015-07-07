@@ -1,5 +1,8 @@
+# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Contributor : AdrianoML
+
 pkgname=vorbis-tools-svn
-pkgver=LATEST
+pkgver=19492
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Extra tools for Ogg-Vorbis"
@@ -10,29 +13,31 @@ makedepends=('subversion')
 provides=('vorbis-tools=1.4.0')
 conflicts=('vorbis-tools')
 
-_svntrunk=http://svn.xiph.org/trunk/vorbis-tools
 _svnmod=vorbis-tools
+source=('svn+http://svn.xiph.org/trunk/vorbis-tools/')
+
+pkgver() {
+  cd "$_svnmod"
+  svnversion
+}
 
 build() {
   cd "$srcdir"
 
-  if [ -d $_svnmod/.svn ]; then
-    (cd $_svnmod && svn up -r $pkgver)
-  else
-    svn co $_svntrunk --config-dir ./ -r $pkgver $_svnmod
-  fi
-
-  msg "SVN checkout done or server timeout"
-  msg "Starting make..."
-
   rm -rf "$srcdir/$_svnmod-build"
   cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
 
-  ./autogen.sh --prefix=/usr --without-speex --without-flac --without-kate
-  make || return 1
-  make DESTDIR="$pkgdir/" install || return 1
+  cd "$srcdir/$_svnmod-build"
+  ./autogen.sh --prefix=/usr --without-speex --enable-vcut
+  ./configure --prefix=/usr  --without-speex --enable-vcut
+
+  make
+}
+
+package() {
+  cd "$srcdir/$_svnmod-build"
+  make DESTDIR="$pkgdir/" install
 
   rm -rf "$srcdir/$_svnmod-build"
 }
-
+sha1sums=('SKIP')
