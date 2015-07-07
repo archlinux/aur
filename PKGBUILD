@@ -7,8 +7,8 @@ url="https://radare.org"
 license=('LGPL')
 depends=('radare2-git')
 makedepends=('git' 'valabind-git' 'radare2-git>='${_date}*)
-provides=('r2-bindings')
-conflicts=('r2-bindings')
+provides=('radare2-bindings')
+conflicts=('radare2-bindings')
 
 source=("$pkgname"::"git://github.com/radare/radare2-bindings.git")
 md5sums=('SKIP')
