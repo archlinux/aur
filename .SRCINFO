@@ -1,0 +1,17 @@
+pkgbase = libcpuid-git
+	pkgdesc = Provides CPU identification for x86 (and x86_64).
+	pkgver = 0.2.1.r128.b183a2d
+	pkgrel = 1
+	url = https://github.com/anrieff/libcpuid
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	provides = libcpuid
+	conflicts = libcpuid
+	source = git://github.com/anrieff/libcpuid.git
+	sha256sums = SKIP
+
+pkgname = libcpuid-git
+
