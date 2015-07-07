@@ -2,7 +2,7 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com
 
 pkgname=nuvolaplayer-git
-pkgver=2015.06.09.0d482d6
+pkgver=2015.07.06.c86a837
 pkgrel=1
 pkgdesc="Cloud music integration for your Linux desktop."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$pkgname"
   python ./waf configure --prefix=/usr
-  python ./waf build
+  LANG='en_US.UTF-8' python ./waf build
 }
 
 package() {

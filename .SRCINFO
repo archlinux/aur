@@ -1,6 +1,6 @@
 pkgbase = nuvolaplayer-git
 	pkgdesc = Cloud music integration for your Linux desktop.
-	pkgver = 2015.06.09.0d482d6
+	pkgver = 2015.07.06.c86a837
 	pkgrel = 1
 	url = https://tiliado.eu/nuvolaplayer/
 	arch = i686
