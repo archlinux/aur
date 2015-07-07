@@ -1,0 +1,33 @@
+pkgbase = uenv-git
+	pkgdesc = Useful scripts, systemd timer/service units and their configuration
+	pkgver = r30.cae71ea
+	pkgrel = 1
+	url = https://sleepmap.de/projects/uenv
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = autossh: For autotunnel (SSH tunnel)
+	optdepends = compton: For compton user service
+	optdepends = cpupower: For cpupower settings on linux-rt
+	optdepends = glances: For monitoring user service
+	optdepends = htop: For monitoring user service
+	optdepends = jack: For profile based JACK user service
+	optdepends = linux-rt: For cpupower and jack services
+	optdepends = mpd: For mpd user service to connect to server profiles
+	optdepends = pulseaudio: For pulseaudio user service
+	optdepends = rtorrent: For rtorrent user and system service
+	optdepends = tmux: For monitoring, rtorrent and tmux user services
+	optdepends = update-mirrorlist: For timed pacman mirrorlist updates
+	provides = uenv
+	provides = postpone-screensaver
+	conflicts = uenv
+	conflicts = postpone-screensaver
+	backup = etc/conf.d/fw1
+	backup = etc/conf.d/postpone-screensaver
+	backup = etc/default/cpupower-rt
+	backup = etc/default/rtorrent@.conf
+	source = bare/uenv::git://sleepmap.de/uenv.git
+	md5sums = SKIP
+
+pkgname = uenv-git
+
