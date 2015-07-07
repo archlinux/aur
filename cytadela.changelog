@@ -1,0 +1,30 @@
+2013-08-04 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Added a package() function
+	Added the changelog directive
+	Dependencies updated
+	Source link updated
+
+2010-09-13 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Source link updated
+	Dependencies updated
+
+2009-07-11 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Source link updated
+
+2009-03-19 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added x86_64 to the arch array
+
+2008-07-08 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir variables
+	License field is now an array
+	Source downloading from downloads.sourceforge.net

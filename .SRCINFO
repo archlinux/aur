@@ -1,0 +1,17 @@
+pkgbase = cytadela
+	pkgdesc = A conversion of a Doom clone for Amiga
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://cytadela.sourceforge.net
+	changelog = cytadela.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glu
+	depends = sdl_mixer
+	depends = vlc
+	source = http://downloads.sourceforge.net/project/cytadela/cytadela/1.1.0/cytadela-1.1.0.tar.bz2
+	md5sums = 2929f667639f7b6beadc6c822a1fde03
+
+pkgname = cytadela
+
