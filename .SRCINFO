@@ -1,0 +1,20 @@
+pkgbase = fipy
+	pkgdesc = Partial differential equation solver for Python, based on finite volume approach.
+	pkgver = 3.1
+	pkgrel = 2
+	url = http://www.ctcms.nist.gov/fipy
+	arch = any
+	license = custom:Public Domain
+	makedepends = python2-distribute
+	makedepends = python2-ez-setup
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-matplotlib
+	optdepends = pysparse: improved simulation speed via sparse linear solvers
+	optdepends = gmsh: creation of irregular meshes
+	source = http://www.ctcms.nist.gov/fipy/download/FiPy-3.1.tar.gz
+	sha256sums = 54a4bc2ed6562bd402890ddd257220cf092438db1941427035412813415bd0c7
+
+pkgname = fipy
+
