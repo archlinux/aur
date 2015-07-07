@@ -1,0 +1,16 @@
+pkgbase = pacstats-hg
+	pkgdesc = Statistical charts about pacman activity
+	pkgver = 21
+	pkgrel = 1
+	url = http://pacstats.googlecode.com
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	makedepends = gettext
+	depends = pygtk
+	depends = python-matplotlib
+	provides = pacstats
+	conflicts = pacstats
+
+pkgname = pacstats-hg
+
