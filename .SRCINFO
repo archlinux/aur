@@ -1,0 +1,30 @@
+pkgbase = python2-ets
+	pkgdesc = Enthought Tool Suite
+	pkgver = 4.4.4
+	pkgrel = 1
+	url = https://github.com/enthought/ets
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-apptools
+	depends = python2-blockcanvas
+	depends = python2-chaco
+	depends = python2-codetools
+	depends = python2-enable
+	depends = python2-encore
+	depends = python2-envisage
+	depends = python2-etsdevtools
+	depends = python2-etsproxy
+	depends = python2-graphcanvas
+	depends = python2-mayavi
+	depends = python2-pyface
+	depends = python2-scimath
+	depends = python2-traits
+	depends = python2-traitsui
+	conflicts = python2-ets-git
+	options = !emptydirs
+	source = python2-ets-4.4.4.tar.gz::https://github.com/enthought/ets/archive/4.4.4.tar.gz
+	md5sums = 002dd92971422b3fbd5e628db6652d59
+
+pkgname = python2-ets
+
