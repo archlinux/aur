@@ -5,16 +5,16 @@
 
 pkgname=kodi-devel-libplatform
 _gitname=platform
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Platform support library used by libCEC and binary add-ons for Kodi'
 arch=('i686' 'x86_64')
-url="http://www.kodi.tv"
+url="https://github.com/Pulse-Eight/$_gitname"
 license=('GPL')
 groups=('kodi-devel')
 makedepends=('cmake')
-source=("http://mirrors.xbmc.org/build-deps/sources/$_gitname-$pkgver.tar.gz")
-md5sums=('SKIP')
+source=("https://github.com/Pulse-Eight/$_gitname/archive/$pkgver.tar.gz")
+md5sums=(4ac07e020227d3cbe54351ec3837ba48)
 
 _prefix='/usr'
 

@@ -1,15 +1,15 @@
 pkgbase = kodi-devel-libplatform
 	pkgdesc = Platform support library used by libCEC and binary add-ons for Kodi
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
-	url = http://www.kodi.tv
+	url = https://github.com/Pulse-Eight/platform
 	arch = i686
 	arch = x86_64
 	groups = kodi-devel
 	license = GPL
 	makedepends = cmake
-	source = http://mirrors.xbmc.org/build-deps/sources/platform-1.0.9.tar.gz
-	md5sums = SKIP
+	source = https://github.com/Pulse-Eight/platform/archive/1.0.10.tar.gz
+	md5sums = 4ac07e020227d3cbe54351ec3837ba48
 
 pkgname = kodi-devel-libplatform
 
