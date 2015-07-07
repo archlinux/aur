@@ -1,0 +1,6 @@
+*.src.tar.*
+*.pkg.tar.*
+src/
+pkg/
+
+taipan*.tar.gz

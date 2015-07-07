@@ -1,0 +1,14 @@
+pkgbase = taipan
+	pkgdesc = Ncurses port of Art Canfil's classic Apple ][ game of China trade during the 1800's.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://www.ibiblio.org/pub/linux/games/textrpg/taipan-0.9.lsm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.ibiblio.org/pub/linux/games/textrpg/taipan-0.9.tar.gz
+	sha256sums = d51345e0e0aa599357fe7b8cb79f3f7109a78c15b852ba8a712f65701d7d5861
+
+pkgname = taipan
+
