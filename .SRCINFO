@@ -1,0 +1,19 @@
+pkgbase = flickrms
+	pkgdesc = Management of ones flickr photos and photosets directly from a POSIX compliant machine
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/patrickjennings/FlickrMS
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = fuse
+	depends = flickcurl
+	depends = pkg-config
+	depends = libxml2
+	depends = glib
+	depends = curl
+	source = flickrms::git+https://github.com/patrickjennings/FlickrMS
+	md5sums = SKIP
+
+pkgname = flickrms
+
