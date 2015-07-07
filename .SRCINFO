@@ -1,0 +1,41 @@
+pkgbase = zinnia-git
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://taku910.github.io/$_pkgbase
+	arch = i686
+	arch = x86_64
+	license = BSD
+	options = !makeflags
+	source = https://github.com/taku910/zinnia/archive/master.tar.gz
+	sha256sums = 0a3df9d3fd339445a8c9a172de6ead950c36276929f53f8eec1f9b846494dfef
+
+pkgname = zinnia-git
+	provides = zinnia=0.07
+	conflicts = zinnia
+
+pkgname = zinnia-perl-git
+	pkgdesc = Simple, customizable and portable online hand recognition system based on Support Vector Machines, Perl bindings
+	depends = perl
+	depends = zinnia>=0.07
+	provides = =0.07
+	conflicts = 
+	options = !emptydirs
+	options = purge
+
+pkgname = zinnia-python-git
+	pkgdesc = Simple, customizable and portable online hand recognition system based on Support Vector Machines, Python bindings
+	depends = python2
+	depends = zinnia>=0.07
+	provides = =0.07
+	conflicts = 
+	options = !emptydirs
+
+pkgname = zinnia-ruby-git
+	pkgdesc = Simple, customizable and portable online hand recognition system based on Support Vector Machines, Ruby bindings
+	depends = ruby
+	depends = zinnia>=0.07
+	provides = =0.07
+	conflicts = 
+	options = !emptydirs
+	options = purge
+
