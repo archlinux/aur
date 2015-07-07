@@ -1,0 +1,11 @@
+--- setup.py.orig	2015-03-31 12:31:05.000000000 +0200
++++ setup.py	2015-03-31 12:31:16.000000000 +0200
+@@ -72,7 +72,7 @@
+ 
+     GTK_VIS_LIBS = get_libs()
+     # GTK_VIS_LIBS.append('boost_python-mt-py' + versionString)
+-    GTK_VIS_LIBS.append('boost_python-py' + versionString)
++    GTK_VIS_LIBS.append('boost_python')
+     GTK_VIS_LIBS.append('boost_signals')
+ 
+     GTK_INCDIRS = get_includes()

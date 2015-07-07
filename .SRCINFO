@@ -1,0 +1,28 @@
+pkgbase = python2-vpython
+	pkgdesc = Easy-to-use 3D graphics module for Python.
+	pkgver = 6.11
+	pkgrel = 1
+	url = http://www.vpython.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	makedepends = python2-setuptools
+	depends = gtkglextmm
+	depends = python2-numpy
+	depends = boost-libs
+	depends = wxpython
+	depends = tk
+	depends = python2-fonttools
+	depends = python2-polygon
+	depends = python2-ttfquery
+	conflicts = python-vpython
+	replaces = python-vpython
+	options = !libtool
+	source = http://sourceforge.net/projects/vpythonwx/files/6.11-release/vpython-wx-src.6.11.tgz
+	source = setup.patch
+	md5sums = c9791cda6efc73440b5c355e226543c2
+	md5sums = c879c7bff42ffba58766be3bcd5fdce2
+
+pkgname = python2-vpython
+
