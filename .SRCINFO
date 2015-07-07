@@ -1,0 +1,28 @@
+pkgbase = brother-mfc-j870dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J870DW
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: printing text files from lpr
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj870dwlpr-3.0.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj870dwcupswrapper-3.0.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006869/mfcj870dw_cupswrapper_GPL_source_3.0.0-1.tar.gz
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 70e8c16f1aea8a47bbbcca3dbc8230b6982f2d8565d515b8344eca065c9b7d30
+	sha256sums = ee97c1ad72ecd510a9f12024ed85b738dd71a06e36e5083466411e48046f7ce0
+	sha256sums = e8bf7663a58ebe2fd0b32a4ec6a19ed6ed82c12086cab401dc1d46aff903bd75
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+
+pkgname = brother-mfc-j870dw
+
