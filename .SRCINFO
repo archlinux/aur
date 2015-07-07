@@ -1,7 +1,7 @@
 pkgbase = avahi-nosystemd
-	pkgdesc = Multicast/unicast DNS-SD framework
+	pkgdesc = Multicast DNS-SD / Zeroconf Suite
 	pkgver = 0.6.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.avahi.org/
 	install = avahi.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = avahi-nosystemd
 	makedepends = gobject-introspection
 	makedepends = gtk3
 	makedepends = xmltoman
+	makedepends = git
 	depends = expat
 	depends = libdaemon
 	depends = glib2
@@ -26,7 +27,7 @@ pkgbase = avahi-nosystemd
 	optdepends = gtk2: gtk2 bindings
 	optdepends = qt4: qt4 bindings
 	optdepends = pygtk: avahi-bookmarks, avahi-discover
-	optdepends = twisted: avahi-bookmarks
+	optdepends = python2-twisted: avahi-bookmarks
 	optdepends = mono: mono bindings
 	optdepends = python2-dbus: avahi-discover
 	optdepends = nss-mdns: NSS support for mDNS
@@ -46,10 +47,12 @@ pkgbase = avahi-nosystemd
 	backup = etc/avahi/services/sftp-ssh.service
 	backup = usr/lib/avahi/service-types.db
 	backup = usr/share/avahi/service-types
-	source = http://www.avahi.org/download/avahi-0.6.31.tar.gz
-	source = rc.d.patch
-	sha1sums = 7e05bd78572c9088b03b1207a0ad5aba38490684
-	sha1sums = d40050547c5637e77ef51fcf11936f0724bd7844
+	source = git+https://github.com/heftig/avahi#commit=573e3b5
+	source = avahi-daemon.rc
+	source = avahi-dnsconfd.rc
+	sha1sums = SKIP
+	sha1sums = 2f580771e008ed09e9c6caf5ee0a2707a6f04ded
+	sha1sums = c14d281a023b2c3ed834a107ad1e7f13c5c7469a
 
 pkgname = avahi-nosystemd
 
