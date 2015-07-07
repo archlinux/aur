@@ -1,0 +1,15 @@
+pkgbase = python-py-bcrypt
+	pkgdesc = bcrypt password hashing and key derivation
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/py-bcrypt/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/p/py-bcrypt/py-bcrypt-0.4.tar.gz
+	md5sums = dd8b367d6b716a2ea2e72392525f4e36
+
+pkgname = python-py-bcrypt
+	depends = python
+
