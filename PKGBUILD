@@ -1,7 +1,7 @@
 # Maintainer: Trygve Aaberge <trygveaa+aur at gmail dot com>
 
 pkgname=mopidy-moped
-pkgver=0.4.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Responsive Web client for Mopidy"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('python2' 'mopidy>=0.19')
 makedepends=('python2' 'python2-setuptools')
 source=("https://github.com/martijnboland/moped/archive/v${pkgver}.tar.gz")
-md5sums=('0cff39fc0de4150887745e2a9dad0209')
+md5sums=('5636a495f3835b88cd9dbe85b78b4f00')
 
 package() {
   cd "${srcdir}/moped-${pkgver}"
