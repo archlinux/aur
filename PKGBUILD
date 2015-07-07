@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-dvblink
 _gitname=pvr.dvblink
-pkgver=20150331.5d505b8
-_gitver=5d505b876b06cf09f156a324de8b112d178da16d
+pkgver=20150701.bf96fc7
+_gitver=bf96fc72846cd076c536bf95c7c500b41065fa8e
 pkgrel=1
 pkgdesc='DVBLink PVR addon for Kodi'
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
-    -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
