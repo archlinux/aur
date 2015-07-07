@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-lateef
 	pkgdesc = OpenType Arabic font from SIL
-	pkgver = 1
-	pkgrel = 5
+	pkgver = 1.001
+	pkgrel = 1
 	url = http://scripts.sil.org/ArabicFonts
 	install = ttf.install
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = ttf-sil-lateef
 	depends = xorg-font-utils
 	conflicts = ttf-sil-arabic
 	conflicts = ttf-sil-fonts
-	source = lateef.zip::http://scripts.sil.org/cms/scripts/render_download.php?site_id=nrsi&format=file&media_id=lateef_opentype&filename=LateefRegOT_ttf.zip
+	source = http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=Lateef_OT_1_001&filename=LateefRegOT_1.001.zip
 	source = LICENSE::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
-	md5sums = c59adf1aed6bdc4163edba707756acd0
+	md5sums = c060ab84ab33ae8f991103258b8e7f22
 	md5sums = 6ed93967ff0dc6dd9c8d31c17f817a06
 
 pkgname = ttf-sil-lateef
