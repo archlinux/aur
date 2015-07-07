@@ -2,11 +2,11 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20150211
+pkgver=20150619
 pkgrel=1
-provides=('eudev')
-replaces=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
-conflicts=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
+provides=('eudev' 'libgudev')
+replaces=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools' 'libgudev')
+conflicts=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools' 'libgudev')
 groups=('base')
 arch=('i686' 'x86_64')
 url="https://github.com/gentoo/eudev"
@@ -42,9 +42,6 @@ build() {
     make clean
   fi
 
-  # Temporary workaround for bug #87
-  #sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
-  
   msg2 "Configuring sources..."
   ./autogen.sh
   ./configure --prefix=/usr \
