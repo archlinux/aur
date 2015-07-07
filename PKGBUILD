@@ -5,7 +5,7 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.9.0'
+pkgver='0.9.1'
 pkgrel='1'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
