@@ -1,0 +1,19 @@
+pkgbase = python-syutil
+	pkgdesc = An utility library common to synapse and sydent
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/matrix-org/syutil
+	arch = any
+	license = Apache
+	makedepends = python2-mock
+	makedepends = python2-setuptools_trial
+	source = python-syutil-0.0.7.tar.gz::https://github.com/matrix-org/syutil/archive/v0.0.7.tar.gz
+	md5sums = ef5d3a762141cab7415d06fbd0eff0a4
+
+pkgname = python2-syutil
+	depends = python2
+	depends = python2-pyasn1
+	depends = python2-pynacl
+	depends = python2-simplejson
+	depends = python2-frozendict
+
