@@ -1,0 +1,17 @@
+pkgbase = haskell-parallel
+	pkgdesc = Parallel programming library
+	pkgver = 3.2.0.6
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/parallel
+	install = haskell-parallel.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/parallel/3.2.0.6/parallel-3.2.0.6.tar.gz
+	sha256sums = b928d3fbd0b7b247bfb7072796c6950f3a5b61ec051449cddf86ebfe89dbe642
+
+pkgname = haskell-parallel
+
