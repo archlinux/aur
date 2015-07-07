@@ -1,0 +1,11 @@
+[Unit]
+Description=HylaFAX+ client-server protocol server
+Documentation=man:hfaxd(8)
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/hfaxd -i hylafax
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

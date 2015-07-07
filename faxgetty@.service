@@ -1,0 +1,23 @@
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+[Unit]
+Description=HylaFAX+ faxgetty on %i
+Documentation=man:faxgetty(8)
+After=faxq.service hfaxd.service
+
+[Service]
+ExecStart=/usr/bin/faxgetty %i
+Type=simple
+Restart=always
+RestartSec=0
+KillMode=process
+
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target

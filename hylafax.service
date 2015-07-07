@@ -1,0 +1,13 @@
+[Unit]
+Description=HylaFAX+ daily fax queue cleanup and deletion of 30 days old faxes
+Documentation=man:faxqclean(8) man:faxcron(8)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/faxqclean
+ExecStart=/usr/bin/faxcron -rcv 30
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+#User=
+#Group=

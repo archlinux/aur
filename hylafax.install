@@ -1,0 +1,87 @@
+_print_install() {
+  printf "\n"
+  echo "Run faxsetup to configure and be sure to set..."
+  echo "  The device to configure is usually ttyS0, ttyUSB0, or ttyACM0"
+  echo "  The number of pages to accept to more than 25"
+  echo "  The country code and area code"
+  echo "  The faxclass to 2.0"
+  echo "  Most other defaults are OK"
+  printf "\n"
+}
+
+_print_remove() {
+  printf "\n\n"
+  echo "You may manually remove /var/spool/hylafax and /usr/lib/fax if you do not need anything."
+  echo "You may also remove any aliases added to /etc/mail/aliases."
+  printf "\n"
+}
+
+post_install() {
+  groupadd -g 14 'uucp' &>/dev/null
+  useradd -u 10 -g 'uucp' -d '/' -s '/bin/false' 'uucp' &>/dev/null
+  #useradd -u 69 -g 'daemon' -d '/' -s '/bin/false' 'fax' &>/dev/null
+  post_upgrade
+  usermod -d '/' 'uucp' &>/dev/null
+  #usermod -d '/' 'fax' &>/dev/null
+  _print_install
+  mandb -q
+}
+
+# define _clean_or_copy_doit() to tell this what to do
+_clean_or_copy() {
+  for _outfile in 'archive' 'faxrcvd' 'notify' 'pollrcvd'; do
+    _clean_or_copy_doit "/var/spool/hylafax/bin/${_outfile}.hylafaxplus.default" "/var/spool/hylafax/bin/${_outfile}"
+  done
+  for _outfile in /var/spool/hylafax/etc/*.default; do
+    _clean_or_copy_doit "${_outfile}" "`expr "${_outfile}" : '^\(.\+\).default$'`"
+  done
+}
+
+post_upgrade() {
+  # Only some of the files and folders are chown uucp
+  chown 'uucp' '/var/spool/hylafax'/{,archive,bin,client,config,dev,docq,doneq,etc}
+  chown 'uucp' '/var/spool/hylafax'/{FIFO,info,log,pollq,recvq,sendq,status,tmp}
+  _clean_or_copy_doit() {
+    cp -np "$1" "$2"
+    chmod 'u+w' "$2"
+  }
+  _clean_or_copy
+
+  cp -n /dev/null "/var/spool/hylafax/etc/xferfaxlog" # This doesn't modify the timestamp of an existing file
+  chown 'uucp:uucp' '/var/spool/hylafax/etc/'{hosts.hfaxd,lutRS18.pcf,xferfaxlog}
+  #chown -R uucp /var/spool/hylafax/etc/templates
+  systemctl daemon-reload
+  systemctl enable 'hylafax.timer'
+  systemctl start 'hylafax.timer'
+  if [ ! -z "`command -v 'avantfaxsetup.sh'`" ]; then
+    avantfaxsetup.sh 2 'install'
+  fi
+}
+
+pre_upgrade() {
+  _clean_or_copy_doit() {
+    if [ "`md5sum < "$1"`" = "`md5sum < "$2"`" ]; then
+      rm -f "$2"
+    fi
+  }
+  _clean_or_copy
+}
+
+pre_remove() {
+  pre_upgrade
+  userdel 'uucp' &>/dev/null
+  ##groupdel 'uucp' &>/dev/null
+  #userdel 'fax' &>/dev/null
+  # we could put this into pre_upgrade() but I'd rather let the admin restart when convenient.
+  systemctl stop 'hfaxd.service'
+  systemctl stop 'faxq.service'
+  systemctl stop 'faxgetty@*.service'
+  systemctl stop 'hylafax.timer'
+  #rm -f '/var/spool/hylafax/bin/'{pdf2fax,ps2fax} '/var/spool/hylafax/dev/null'
+  _print_remove
+}
+
+post_remove() {
+  systemctl daemon-reload
+  mandb -q
+}

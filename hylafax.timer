@@ -1,0 +1,11 @@
+[Unit]
+Description=HylaFAX+ daily fax queue cleanup and deletion of 30 days old faxes
+Documentation=man:faxqclean(8) man:faxcron(8)
+
+[Timer]
+OnCalendar=daily
+AccuracySec=3h
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

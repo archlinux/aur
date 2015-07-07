@@ -1,0 +1,11 @@
+[Unit]
+Description=HylaFAX+ queue manager
+Documentation=man:faxq(8)
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/faxq
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
