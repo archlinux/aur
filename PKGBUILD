@@ -4,7 +4,7 @@
 pkgname=libgestures
 pkgdesc="Chromium OS gestures library"
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 url="http://github.com/hugegreenbug/libgestures"
 license=('custom:chromiumos')
