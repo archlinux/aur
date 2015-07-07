@@ -1,0 +1,15 @@
+pkgbase = mercurial-server
+	pkgdesc = Provides easily administered shared SSH access to Mercurial repositories.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.lshift.net/mercurial-server.html
+	install = mercurial-server.install
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = mercurial
+	source = http://dev.lshift.net/paul/mercurial-server/mercurial-server_1.3.tar.gz
+	md5sums = 7cb8e5eb12e7e7a6a9434d7eb67b97d0
+
+pkgname = mercurial-server
+

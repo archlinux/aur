@@ -1,0 +1,8 @@
+post_install() {
+  useradd -Um -d /var/lib/mercurial-server -s /bin/sh hg && \
+    su -lc '/usr/share/mercurial-server/init/hginit /usr/share/mercurial-server' hg
+}
+
+post_remove() {
+	userdel hg &> /dev/null
+}
