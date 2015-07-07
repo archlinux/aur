@@ -1,0 +1,18 @@
+pkgbase = jzip
+	pkgdesc = Jzip is an interpreter for games in the Infocom Zcode story file format
+	pkgver = 2.1
+	pkgrel = 7
+	url = http://jzip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	source = http://prdownloads.sourceforge.net/jzip/jzip21-10oct2000.zip
+	source = makefile-patch.diff
+	source = LICENSE
+	md5sums = 4c03c95bec15e45477899c12a545fc1d
+	md5sums = 1625afeb6da07096571d3ccc964c01af
+	md5sums = 54ec2719ddf62fd3805c732f058f1706
+
+pkgname = jzip
+
