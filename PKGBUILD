@@ -1,9 +1,9 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 # Contributer: Brad Pitcher <bradpitcher@gmail.com>
 _hkgname=parallel
 pkgname=haskell-parallel
 pkgver=3.2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel programming library"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
@@ -14,6 +14,7 @@ options=('strip' 'staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
 sha256sums=('b928d3fbd0b7b247bfb7072796c6950f3a5b61ec051449cddf86ebfe89dbe642')
+sha512sums=('9dbb34f8cefc06d2eeb5b4d13ca36df74529c98601494cfb6e443f1065d12dedac71123f7cb038d05583df11e502061c74020a88ba2e6bb688041376356265cf')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O \
