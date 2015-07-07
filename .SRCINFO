@@ -1,0 +1,16 @@
+pkgbase = mopidy-api-explorer
+	pkgdesc = Mopidy extension which lets you explore the HTTP API
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/dz0ny/mopidy-api-explorer
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = mopidy>=0.19
+	source = https://pypi.python.org/packages/source/M/Mopidy-API-Explorer/Mopidy-API-Explorer-1.0.1.tar.gz
+	md5sums = 245a959dddfabccf796507d0ba2bf34a
+
+pkgname = mopidy-api-explorer
+
