@@ -1,6 +1,6 @@
 pkgbase = vokoscreen-git
 	pkgdesc = An easy to use screencast creator. Qt5 UI. Development version.
-	pkgver = 2.4.1.beta.r0.g41784d9
+	pkgver = 2.4.2.beta.r0.g40858ce
 	pkgrel = 1
 	url = http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vokoscreen-git
 	depends = lame
 	depends = qt5-x11extras
 	optdepends = pulseaudio-alsa: for PulseAudio support
-	provides = vokoscreen=2.4.1.beta.r0.g41784d9
+	provides = vokoscreen=2.4.2.beta.r0.g40858ce
 	conflicts = vokoscreen
 	source = git+https://github.com/vkohaupt/vokoscreen.git
 	source = desktop_file.patch
