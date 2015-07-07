@@ -1,4 +1,4 @@
-# Maintainer: William J. Bowman <bluephoenix47@gmail.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 
 # via Contributer pmates: 
 # For users having problems installing this, I recommend rebuilding several of the dependencies using the following modifications:
@@ -8,7 +8,7 @@
 
 pkgname=ssreflect
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of extensions to the scripting language of Coq."
 url="http://ssr.msr-inria.inria.fr/"
 arch=('i686' 'x86_64')

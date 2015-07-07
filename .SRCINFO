@@ -1,7 +1,7 @@
 pkgbase = ssreflect
 	pkgdesc = A set of extensions to the scripting language of Coq.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ssr.msr-inria.inria.fr/
 	arch = i686
 	arch = x86_64
