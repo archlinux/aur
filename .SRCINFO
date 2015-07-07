@@ -1,0 +1,19 @@
+pkgbase = scangearmp-mp230series
+	pkgdesc = Canon Scanner Driver (for MP230 series)
+	pkgver = 2.00
+	pkgrel = 1
+	url = http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mp_series/pixma_mp230.aspx?type=drivers&language=&os=LINUX
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gimp
+	depends = gtk2
+	depends = libpng12
+	depends = libusb-compat
+	source = https://copy.com/FCUgSGHzE9avw48r
+	source = configure.in.patch
+	md5sums = ccd538e1333bf34aa83900f093ecd9eb
+	md5sums = ff4bb2abed071af5bd6d38c33157c555
+
+pkgname = scangearmp-mp230series
+
