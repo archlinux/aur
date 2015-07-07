@@ -1,0 +1,17 @@
+pkgbase = python2-irc3
+	pkgdesc = plugable irc client library based on asyncio
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/gawel/irc3
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-configparser
+	depends = python2-trollius
+	depends = python2-venusian
+	source = https://pypi.python.org/packages/source/i/irc3/irc3-0.7.1.zip
+	md5sums = a78f43275127b73ea61f9734d0ce491a
+
+pkgname = python2-irc3
+
