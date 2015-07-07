@@ -1,0 +1,15 @@
+pkgbase = tenace
+	pkgdesc = A Bridge hand viewer and editor with double dummy solver
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://www.df7cb.de/bridge/tenace/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dds
+	depends = gtk2
+	source = http://www.df7cb.de/bridge/tenace/source/tenace-0.13.tar.gz
+	md5sums = 274b268dcfd0f1f3c23ebf6e7dc8dc50
+
+pkgname = tenace
+
