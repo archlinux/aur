@@ -1,0 +1,17 @@
+pkgbase = getlive
+	pkgdesc = Fetches your Hotmail Live mail
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/getlive/
+	changelog = getlive.changelog
+	arch = any
+	license = GPL
+	depends = curl
+	depends = perl-uri
+	depends = perl-net-server
+	depends = procmail
+	source = http://downloads.sourceforge.net/sourceforge/getlive/GetLive_2_4.tgz
+	md5sums = 124e2c5f4a4b1d7b188b6057afb8697e
+
+pkgname = getlive
+
