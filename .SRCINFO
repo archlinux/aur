@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-protocol-git
 	pkgdesc = Bitcoin Blockchain Query Privacy Protocol
-	pkgver = 20150519
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-protocol
 	arch = i686
