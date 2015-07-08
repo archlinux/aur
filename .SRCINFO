@@ -1,7 +1,7 @@
 pkgbase = blws-configuration-full-git
 	pkgdesc = Provides configuration, and themes.
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = unknown
 	conflicts = blws-all-in-one-full-git
