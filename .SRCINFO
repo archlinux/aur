@@ -1,0 +1,33 @@
+pkgbase = copy-agent
+	pkgdesc = Copy.com sync agent
+	pkgver = 3.2.01.0481
+	pkgrel = 1
+	url = http://www.copy.com
+	install = copy-agent.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	depends = fuse
+	depends = desktop-file-utils
+	optdepends = qt4: GUI support
+	optdepends = libindicator-gtk2: indicator support
+	options = !strip
+	options = !upx
+	source = https://copy.com/install/linux/Copy.tgz
+	source = copy-agent.desktop
+	source = copy-agent.png
+	source = copy-agent.service
+	source = copy-console.service
+	source = launch.sh
+	source = TERMS
+	sha256sums = f33c0297c2d8f7e90ec481beed88a918446a87507c9ea29f8feae21a4e85f72e
+	sha256sums = ef1767720b5e5eff6567e537f3fed1c1d7da17e4f4248479816cab924f62e431
+	sha256sums = b69bc2f8b4315a43d3b60b11ec9c226c2060d14ac4d5702140260961c74620cb
+	sha256sums = f9a460a12e5ee382b9d2d435028b46e3e289c0b49e4fd382d67052f297531c4a
+	sha256sums = b0f44d8e7144b2b00b4494c14795dde87f1db9bd7947b9be2986f393562f8a98
+	sha256sums = 059995cd96ae09d92681063ffd6d5ee603fa1a4b9fdae9b315494d5becb203c6
+	sha256sums = c328ddfce46fb5577b1d3d4f67258aa1caee671214e335d802cdc9a065a1595a
+
+pkgname = copy-agent
+
