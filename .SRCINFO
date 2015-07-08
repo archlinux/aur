@@ -1,0 +1,13 @@
+pkgbase = memo-notes
+	pkgdesc = memo: A CLI note taking application.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.ideabyte.net/memo/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = memo-notes-1.6.tar.gz::https://github.com/nrosvall/memo/archive/v1.6.tar.gz
+	sha256sums = f9336524f038c0f11f5a82fe6cf6bf438e959a13f3bff973f064731789da5e62
+
+pkgname = memo-notes
+
