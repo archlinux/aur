@@ -1,0 +1,13 @@
+pkgbase = python-fudge-docs
+	pkgdesc = Use fake objects (mocks, stubs, etc) to test real ones
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://farmdev.com/projects/fudge/
+	arch = any
+	license = MIT
+	makedepends = python2-sphinx
+	source = http://pypi.python.org/packages/source/f/fudge/fudge-1.0.3.tar.gz
+	md5sums = ee0797e0a28732e630938da16137240a
+
+pkgname = python-fudge-docs
+
