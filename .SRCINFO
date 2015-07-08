@@ -1,0 +1,17 @@
+pkgbase = chicken-easyffi
+	pkgdesc = Chicken Scheme Egg: Generates bindings from C/C++ declarations
+	pkgver = 1.99.7
+	pkgrel = 2
+	url = http://chicken.wiki.br/eggref/4/easyffi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-silex
+	depends = chicken-matchable
+	options = docs
+	options = !libtool
+	options = !emptydirs
+
+pkgname = chicken-easyffi
+
