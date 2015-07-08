@@ -1,0 +1,15 @@
+pkgbase = dcal
+	pkgdesc = A generic calendar for X
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://dcal.eatabrick.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	provides = dcal
+	source = https://github.com/bentglasstube/dcal/archive/v1.1.tar.gz
+	sha1sums = 2278bad1b01c9735c3bbfa5f2870ace6f0e9b447
+
+pkgname = dcal
+
