@@ -1,0 +1,14 @@
+pkgbase = python2-roman
+	pkgdesc = Integer to Roman numerals converter
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/roman
+	arch = any
+	license = PSF
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://pypi.python.org/packages/source/r/roman/roman-2.0.0.zip
+	md5sums = aa71d131eec16d45c030fd06a27c9d17
+
+pkgname = python2-roman
+
