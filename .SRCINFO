@@ -1,0 +1,16 @@
+pkgbase = gkrellsun
+	pkgdesc = GKrellSun plugin for gkrellm2 to show sunrise and sunset
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://gkrellsun.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gkrellm
+	depends = gtk2
+	source = http://downloads.sourceforge.net/project/gkrellsun/gkrellsun%20gkrellm-2.2/1.0.0/gkrellsun-1.0.0.tar.gz
+	md5sums = fbbf5c23a3966b2e16a2bab19a0885b7
+
+pkgname = gkrellsun
+
