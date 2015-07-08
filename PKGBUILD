@@ -1,18 +1,19 @@
-# Maintainer: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Submitter: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Mantainer: ziu <frances[dot]albanese[at]gmail[dot]com>
 
 pkgname=anoise-media
 pkgver=0.0.16
-pkgrel=0
+pkgrel=2
 pkgdesc="Ambient Noise Library. Sounds and icons for Anoise Player"
 arch=('any')
 license=('GPL3')
-url="https://launchpad.net/~costales/+archive/ubuntu/anoise?field.series_filter=vivid"
+url="https://launchpad.net/~costales/+archive/ubuntu/anoise"
 options=()
 conflicts=()
 depends=('python-distutils-extra')
 optdepends=()
 source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-md5sums=('e373afd6b76074659648653b27f25ae6')
+sha256sums=('8a458f503a85fa4ac02cefe125713db6d913c5a63e00e4516b3f5cfd5b4a962b')
 
 package() {
   cd "${srcdir}"
