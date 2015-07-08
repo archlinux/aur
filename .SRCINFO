@@ -1,0 +1,14 @@
+pkgbase = scscp
+	pkgdesc = C library for the Symbolic Computation Software Composibility Protocol
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.imcce.fr/Equipes/ASD/trip/scscp/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libxml2
+	source = http://www.imcce.fr/Equipes/ASD/trip/scscp/download/scscp-1.0.1.tar.gz
+	md5sums = e00818acf6ebe33002c407896636cd93
+
+pkgname = scscp
+
