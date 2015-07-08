@@ -11,7 +11,6 @@ pkgbase = letsencrypt-git
 	depends = dialog
 	depends = openssl
 	depends = gcc
-	depends = swig
 	depends = libffi
 	depends = git
 	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt

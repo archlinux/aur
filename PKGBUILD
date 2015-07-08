@@ -2,13 +2,13 @@
 
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
-pkgver=2309.3705594
+pkgver=2403.97b09ea
 pkgrel=1
 pkgdesc="A utility that works alongside Apache and nginx to automatically obtain a certificate and convert a website to HTTPS"
 arch=('any')
 license=('Apache')
 url="https://letsencrypt.org/"
-depends=('python' 'augeas' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'swig' 'libffi' 'git')
+depends=('python' 'augeas' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git')
 #makedepends=('python-virtualenv')
 source=("${_pkgname}"::"git+https://github.com/letsencrypt/letsencrypt")
 md5sums=('SKIP')
