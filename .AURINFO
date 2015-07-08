@@ -1,0 +1,30 @@
+pkgbase = jb-config
+	pkgdesc = A gtkdialog GUI and backend to manage settings for JustBrowsing that allows loading/saving from a config file
+	pkgver = 1.7
+	pkgrel = 3
+	url = https://github.com/justbrowsing/jb-config
+	install = jbconfig.install
+	arch = any
+	groups = justbrowsing
+	license = GPL3
+	depends = gtkdialog-svn
+	depends = systemd
+	depends = diffutils
+	depends = xorg-xrandr
+	optdepends = justbrowsing-systemd: Sets defaults on boot and save/load daemon
+	optdepends = cups: Needed for printing support
+	optdepends = xorg-xbacklight: Dim laptop backlight
+	optdepends = xcalib: Dim desktop monitor
+	optdepends = xf86-input-synaptics: Touchpad settings
+	optdepends = pamixer: Volume settings
+	optdepends = justbrowsing-adeskbar: Panel with systray that is reloaded
+	optdepends = jbxkb: Switch between keymaps
+	optdepends = network-manager-applet-gtk2: Connect to wired/wireless networks
+	optdepends = pnmixer: Adjust volume
+	optdepends = nitrogen: Update background/wallpaper
+	optdepends = justbrowsing-webapps: Compose e-mail redirect
+	optdepends = virtualbox-guest-utils: VirtualBox guest addons
+	source = https://github.com/justbrowsing/jb-config/archive/master.zip
+
+pkgname = jb-config
+
