@@ -1,0 +1,17 @@
+pkgbase = gtkdialog-examples
+	pkgdesc = Sample projects: pfeme, pfontview, playmusic
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://code.google.com/p/gtkdialog/
+	arch = any
+	license = GPL
+	depends = gtkdialog
+	source = https://github.com/oshazard/gtkdialog-examples/raw/master/pfeme-0.1.1.tar.gz
+	source = https://github.com/oshazard/gtkdialog-examples/raw/master/pfontview-0.1.3.tar.gz
+	source = https://github.com/oshazard/gtkdialog-examples/raw/master/playmusic-0.1.8.tar.gz
+	md5sums = a09ecfb90dc9f16702d6a1a9f228d65b
+	md5sums = be079eed34073305ffcd5ea664f9fdaa
+	md5sums = c98c861e52378def443e768fb2946992
+
+pkgname = gtkdialog-examples
+
