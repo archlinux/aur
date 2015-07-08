@@ -1,0 +1,13 @@
+pkgbase = gnome-colors-icon-theme-extras
+	pkgdesc = Extra icons for GNOME-Colors icon theme
+	pkgver = 5.5.1
+	pkgrel = 3
+	url = http://gnome-colors.googlecode.com/
+	arch = any
+	license = GPL2
+	depends = gnome-colors-icon-theme
+	source = http://gnome-colors.googlecode.com/files/gnome-colors-extras-5.5.1.tar.gz
+	sha256sums = 5f9740b74f5069a05482798a3243ea66f934894ea9dcb288c610801f1f9411d9
+
+pkgname = gnome-colors-icon-theme-extras
+
