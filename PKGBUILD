@@ -1,9 +1,9 @@
 # Maintainer: Thomas Wucher <arch (at) thomaswucher (dot) de>
 pkgname=stress-ng
 pkgver=0.04.10
-pkgrel=1
+pkgrel=2
 pkgdesc="stress-ng will stress test a computer system in various selectable ways"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://kernel.ubuntu.com/~cking/${pkgname}/"
 license=('GPL')
 depends=()
