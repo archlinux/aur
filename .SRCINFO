@@ -1,0 +1,16 @@
+pkgbase = gmpc-albumview
+	pkgdesc = This plugin shows your music collection in albums.
+	pkgver = 11.8.16
+	pkgrel = 2
+	url = http://gmpc.wikia.com/wiki/GMPC_PLUGIN_ALBUMVIEW
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gmpc>=11.8.16
+	options = !libtool
+	source = http://download.sarine.nl/Programs/gmpc/11.8.16/gmpc-albumview-11.8.16.tar.gz
+	sha1sums = 62240fd85458b34ab408b545a26d5bf95c18bbae
+
+pkgname = gmpc-albumview
+
