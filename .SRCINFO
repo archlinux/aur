@@ -1,0 +1,14 @@
+pkgbase = emacs-org-mode
+	pkgdesc = Emacs Org Mode
+	pkgver = 8.2.10
+	pkgrel = 1
+	url = http://orgmode.org/
+	install = emacs-org-mode.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = http://orgmode.org/org-8.2.10.tar.gz
+	md5sums = d462555af9d95e166235f7c90d84459d
+
+pkgname = emacs-org-mode
+
