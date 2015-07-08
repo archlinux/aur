@@ -1,0 +1,17 @@
+pkgbase = justbrowsing-chrome-profile
+	pkgdesc = Google Chrome profile for JustBrowsing
+	pkgver = 20140731
+	pkgrel = 4
+	url = https://github.com/justbrowsing/justbrowsing-chrome-profile
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = justbrowsing-home
+	optdepends = google-chrome: web browser
+	options = !strip
+	options = !docs
+	source = https://github.com/justbrowsing/justbrowsing-chrome-profile/archive/master.zip
+	md5sums = 68d1171c0e085ff27cdf2b263bd1ad22
+
+pkgname = justbrowsing-chrome-profile
+
