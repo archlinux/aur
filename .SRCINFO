@@ -4,6 +4,7 @@ pkgbase = nodejs-squiffy
 	pkgrel = 1
 	url = https://github.com/textadventures/squiffy#readme
 	arch = any
+	license = MIT
 	depends = nodejs
 	depends = npm
 	noextract = squiffy-4.0.0.tgz
