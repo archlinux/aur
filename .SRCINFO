@@ -1,0 +1,23 @@
+pkgbase = grml-zsh-config-git
+	pkgdesc = Grml's zsh setup.
+	pkgver = 0.9.3.r0.ge3306f3
+	pkgrel = 1
+	url = http://grml.org/zsh/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = txt2tags
+	depends = coreutils
+	depends = grep
+	depends = inetutils
+	depends = procps
+	depends = sed
+	depends = zsh
+	provides = grml-zsh-config
+	provides = grmlzshrc
+	conflicts = grml-zsh-config
+	source = grml-zsh-config-git::git://github.com/grml/grml-etc-core.git
+	sha1sums = SKIP
+
+pkgname = grml-zsh-config-git
+
