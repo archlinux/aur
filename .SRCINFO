@@ -1,0 +1,13 @@
+pkgbase = openrc-arch-services-git
+	pkgdesc = Arch Linux service scripts for openrc
+	pkgver = 0.26
+	pkgrel = 1
+	url = https://github.com/andrewgregory/openrc-arch-services
+	arch = any
+	license = GPL2
+	source = openrc-arch-services-git::git://github.com/andrewgregory/openrc-arch-services.git
+	md5sums = SKIP
+
+pkgname = openrc-arch-services-git
+	backup = etc/openrc/conf.d/*
+
