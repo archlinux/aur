@@ -1,12 +1,13 @@
 pkgbase = fontawesome.sty
 	pkgdesc = FontAwesome bindings for LaTeX
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/pkg/fontawesome
 	install = fontawesome.install
 	arch = any
 	license = LPPL
 	depends = texlive-core
+	depends = otf-font-awesome
 	source = http://mirrors.ctan.org/fonts/fontawesome/fontawesome.sty
 	md5sums = b2d0a4e61a3e0d6f34415fd6e81c74d3
 
