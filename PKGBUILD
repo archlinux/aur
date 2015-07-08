@@ -3,12 +3,12 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=142.2887.3
+_buildver=142.3050.3
 _pkgver=15.0.0
 _eap="True"
 epoch=2
 pkgver=${_pkgver}.${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
