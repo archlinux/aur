@@ -1,0 +1,62 @@
+diff -urBN trunka/swig/python/mkpy trunk/swig/python/mkpy
+--- trunka/swig/python/mkpy	2014-05-26 18:13:21.929540835 -0500
++++ trunk/swig/python/mkpy	2014-05-26 17:38:02.316161854 -0500
+@@ -10,8 +10,8 @@
+     exec /cygdrive/c/MinGW/msys/1.0/bin/bash $0 $optx $*
+ fi
+ 
+-INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python2.7/"
+-INC_PYTHON=-I/usr/include/python2.6
++INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python3.4m/"
++INC_PYTHON=-I/usr/include/python3.4m
+ XCCFLAGS=""
+ XLINKFLAGS=""
+ # on MacOS, use following definition instead.
+@@ -88,7 +88,7 @@
+ err=0
+ for nom in $lst; do
+     [ $flg_swig -ne 0 ] && {
+-	swig -c++ -python $OPT_DBG -o ${nom}_wrap.cpp $nom.i
++	swig -c++ -py3 -python $OPT_DBG -o ${nom}_wrap.cpp $nom.i
+ 	[ $? -ne 0 ] && exit
+     }
+     if [ -e $nom.cpp ]; then
+diff -urBN trunka/swig/python/numpy.i trunk/swig/python/numpy.i
+--- trunka/swig/python/numpy.i	2014-05-26 18:13:22.082874172 -0500
++++ trunk/swig/python/numpy.i	2014-05-26 17:48:09.772841603 -0500
+@@ -107,9 +107,11 @@
+     if (PyDict_Check(    py_obj)) return "dict"        ;
+     if (PyList_Check(    py_obj)) return "list"        ;
+     if (PyTuple_Check(   py_obj)) return "tuple"       ;
++%#if PY_MAJOR_VERSION < 3
+     if (PyFile_Check(    py_obj)) return "file"        ;
+     if (PyModule_Check(  py_obj)) return "module"      ;
+     if (PyInstance_Check(py_obj)) return "instance"    ;
++%#endif
+ 
+     return "unkown type";
+   }
+diff -urBN trunka/swig/python/setup.py.in trunk/swig/python/setup.py.in
+--- trunka/swig/python/setup.py.in	2014-05-26 18:13:21.926207502 -0500
++++ trunk/swig/python/setup.py.in	2014-05-26 18:03:55.089528628 -0500
+@@ -7,7 +7,7 @@
+ # includes numpy : package numpy.distutils , numpy.get_include()
+ # python setup.py build --inplace
+ # python setup.py install --prefix=dist, 
+-incs = ['.'] + map(lambda x: os.path.join('spams',x),[ 'linalg', 'prox', 'decomp', 'dictLearn']) + [numpy.get_include()] + ['/usr/include/python2.7/']
++incs = ['.'] + [os.path.join('spams',x) for x in [ 'linalg', 'prox', 'decomp', 'dictLearn']] + [numpy.get_include()] + ['/usr/include/python3.4m/']
+ 
+ osname = distutils.util.get_platform()
+ cc_flags = ['-fPIC', '-fopenmp']
+@@ -78,11 +78,6 @@
+ #       scripts = ['test_spams.py'],
+        data_files = [
+         ('test',['test_spams.py', 'test_decomp.py', 'test_dictLearn.py', 'test_linalg.py', 'test_prox.py', 'test_utils.py']),
+-        ('doc',['doc_spams.pdf', 'python-interface.pdf']), 
+-        ('doc/sphinx/_sources',mkhtml('_sources')),
+-        ('doc/sphinx/_static',mkhtml('_static')),
+-        ('doc/sphinx',mkhtml()),
+-        ('doc/html',mkhtml(base = 'html')),
+         ('extdata',['boat.png', 'lena.png'])
+         ],
+ )

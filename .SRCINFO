@@ -1,0 +1,17 @@
+pkgbase = python-spams-svn
+	pkgdesc = Optimization toolbox for solving various sparse estimation problems with Python interface
+	pkgver = 20141221
+	pkgrel = 1
+	url = http://spams-devel.gforge.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = swig
+	depends = python-scipy
+	source = python-spams.patch
+	source = svn+svn://scm.gforge.inria.fr/svnroot/spams-devel/trunk
+	md5sums = e30d28e67a50f2eeb42f1c9de47706fe
+	md5sums = SKIP
+
+pkgname = python-spams-svn
+
