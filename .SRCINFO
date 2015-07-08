@@ -1,0 +1,30 @@
+pkgbase = uzbl-git
+	pkgdesc = All uzbl web interface tools: latest from the git master branch
+	pkgver = 20150322
+	pkgrel = 1
+	url = http://github.com/uzbl/uzbl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkgconfig
+	depends = webkitgtk
+	depends = socat
+	depends = zenity
+	depends = xclip
+	depends = dmenu
+	depends = python
+	depends = pygtk
+	depends = python-six
+	provides = uzbl-core
+	provides = uzbl-browser
+	provides = uzbl-tabbed
+	conflicts = uzbl-core
+	conflicts = uzbl-browser
+	conflicts = uzbl-tabbed
+	conflicts = uzbl-experimental-git
+	source = uzbl::git+https://github.com/uzbl/uzbl.git
+	md5sums = SKIP
+
+pkgname = uzbl-git
+
