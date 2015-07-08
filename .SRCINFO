@@ -1,0 +1,20 @@
+pkgbase = balazarbrothers
+	pkgdesc = A 3D puzzle and platform game
+	pkgver = 1.0rc1
+	pkgrel = 8
+	url = http://home.gna.org/oomadness/en/balazar_brothers/
+	changelog = Changelog
+	arch = any
+	license = GPL2
+	depends = python2-pillow
+	depends = openal
+	depends = pyvorbis
+	depends = twisted
+	depends = freetype2
+	depends = python2-soya
+	depends = python2-cerealizer
+	source = http://download.gna.org/balazar/BalazarBrothers-1.0rc1.tar.bz2
+	md5sums = b292ea006a74668dcbe4c609936b8217
+
+pkgname = balazarbrothers
+

@@ -1,0 +1,5 @@
+2012-10-16 Aaron DeVore <aaron.devore@gmail.com> (1.0rc1-7)
+- Remove psyco capabilities because psyco does not support Arch's main
+  version of Python 2
+- Dependency python-soya -> python2-soya
+- 
