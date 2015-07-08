@@ -3,7 +3,7 @@
 
 pkgname=pykolab
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Kolab Python Utilities'
 arch=('any')
 license=('GPL3')
@@ -39,7 +39,7 @@ sha256sums=('ef3c2d462f06e3d3a9206b611b77c11c8281dc7979283436edd587a8e6b83bad'
             '6995524d755ea3cbf3d36fc572667629716a141e7f757af1a970c2e85f8fa4de'
             'a515f068b5fe12c858f327fa0558087e61b4d39070d67dfba9a2b6d19a83c2c6'
             '27c2505eed62ae3f74494d93aed7f0a4c5b72df1bf4cb797189be6d398459b7b'
-            'e88c3114f0803ac9dcf589b5e144df8e4b4932ada3347d1d46c05770a3efdefd'
+            '49816a6a7e0f6ec200c559d4c54fc9ae70d4de299409838113f3654729d6b694'
             '4bbb72695b20b7a4c1c0348a93c62f048f0eef9f3bc7135fa2720c62e98e4634')
 
 

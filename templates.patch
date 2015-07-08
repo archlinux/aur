@@ -26,7 +26,14 @@ diff --git a/share/templates/imapd.conf.tpl b/share/templates/imapd.conf.tpl
 index 194135e..2d397a7 100644
 --- a/share/templates/imapd.conf.tpl
 +++ b/share/templates/imapd.conf.tpl
-@@ -6,8 +6,8 @@ sendmail: /usr/sbin/sendmail
+@@ -1,13 +1,13 @@ sendmail: /usr/sbin/sendmail
+-configdirectory: /var/lib/imap
++configdirectory: /var/imap
+ partition-default: /var/spool/imap
+ admins: $admins
+-sievedir: /var/lib/imap/sieve
++sievedir: /var/imap/sieve
+ sendmail: /usr/sbin/sendmail
  sasl_pwcheck_method: auxprop saslauthd
  sasl_mech_list: PLAIN LOGIN
  allowplaintext: no
