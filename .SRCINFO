@@ -1,11 +1,11 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
-	pkgver = 3.4.4
+	pkgver = 3.4.5
 	pkgrel = 1
 	url = http://www.exaile.org
 	install = exaile.install
 	arch = any
-	license = GPL
+	license = GPL2
 	makedepends = make
 	makedepends = help2man
 	depends = python2
@@ -16,6 +16,7 @@ pkgbase = exaile
 	depends = python2-dbus
 	depends = pygtk>=2.10
 	depends = librsvg
+	depends = desktop-file-utils
 	optdepends = pycddb: CD metadata retrieval
 	optdepends = python2-bsddb: music collection support
 	optdepends = gstreamer0.10-bad-plugins: support for more formats
@@ -29,8 +30,9 @@ pkgbase = exaile
 	optdepends = python2-pillow: Python Imaging Library (PIL) fork. Python2 version
 	optdepends = streamripper: streamripper plugin
 	optdepends = moodbar: moodbar plugin
-	source = https://github.com/exaile-dev/exaile/archive/3.4.4.tar.gz
-	sha512sums = 414f3b2844882d0ab483fabf556b4281ac44ab2328c4adf4202384bc1aaa1a0d230aebdf026982d4edd9a0aff42cd0d317785051b5d740734b670d1fe84aff13
+	optdepends = python2-mmkeys: XKeys plugin
+	source = https://github.com/exaile-dev/exaile/archive/3.4.5.tar.gz
+	sha512sums = 9337b86ed2f6a13071615bd46a7a05a6564011a4e1fef4cb42925336864c07854cfe497d8defe65c4e287fd9546de6a51543180c5ce6a84525506e57209914be
 
 pkgname = exaile
 
