@@ -1,6 +1,6 @@
 pkgbase = linux-libre-firmware
 	pkgdesc = Firmware files for Linux-libre
-	pkgver = 4.0_gnu
+	pkgver = 4.1_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = any
@@ -36,9 +36,9 @@ pkgbase = linux-libre-firmware
 	replaces = rt2x00-rt61-fw
 	replaces = rt2x00-rt71w-fw
 	replaces = amd-ucode
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
-	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
+	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
 
 pkgname = linux-libre-firmware
