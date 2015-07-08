@@ -1,14 +1,14 @@
 pkgbase = argcomplete
 	pkgdesc = Argcomplete provides easy, extensible command line tab completion of arguments for your Python script.
-	pkgver = 0.8.9
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://pypi.python.org
 	arch = any
 	license = Apache
 	depends = python2
 	depends = python
-	source = https://pypi.python.org/packages/source/a/argcomplete/argcomplete-0.8.9.tar.gz
-	sha256sums = 98f04fa2ca22479459d8ba04583dca653a41c2d7a57648ba7f3b4d7e19ea82be
+	source = https://pypi.python.org/packages/source/a/argcomplete/argcomplete-0.9.0.tar.gz
+	sha256sums = f97577332d19aea09583ecb426a49e85dc7bbc9822ab345b9c790d923413af0e
 
 pkgname = argcomplete
 
