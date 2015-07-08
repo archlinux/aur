@@ -1,9 +1,10 @@
-# Maintainer: Franck Michea <franck.michea@gmail.com>
+# Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
+# Contributor: Franck Michea <franck.michea@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: _@killown.com
 
 pkgname=xcwd-git
-pkgver=20130929
+pkgver=20141221
 pkgrel=1
 pkgdesc="xcwd is a simple tool that prints the current working directory of the currently focused window."
 arch=('i686' 'x86_64')
