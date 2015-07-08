@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 31.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gnuzilla/
 	install = icecat.install
 	arch = i686
