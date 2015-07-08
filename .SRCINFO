@@ -1,14 +1,14 @@
 pkgbase = owncloud-app-antivirus
 	pkgdesc = Verify files for virus using ClamAV in owncloud
-	pkgver = 0.4.2
+	pkgver = 0.7.0.1
 	pkgrel = 1
 	url = https://apps.owncloud.com/content/show.php?content=157439
 	arch = any
 	license = GPL
 	depends = owncloud
 	options = !strip
-	source = owncloud-app-antivirus-0.4.2.tar.gz::https://apps.owncloud.com/CONTENT/content-files/157439-files_antivirus.tar.gz
-	md5sums = 9ff09d95a9838fdabb2fcbb7c7ba41a5
+	source = owncloud-app-antivirus-0.7.0.1.tar.gz::https://github.com/owncloud/files_antivirus/releases/download/v0.7.0.1/files_antivirus.tar.gz
+	md5sums = 85f78ec60318433f732aaadae6cf62b4
 
 pkgname = owncloud-app-antivirus
 
