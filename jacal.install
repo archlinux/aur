@@ -1,0 +1,22 @@
+infodir=usr/share/info
+filelist=(jacal)
+
+post_install() {
+[[ -x usr/bin/install-info ]] || return 0
+  for file in "${filelist[@]}"; do
+    install-info "$infodir/$file.info.gz" "$infodir/dir" 2> /dev/null
+  done
+  echo add to the .bashrc for calling slib files
+  echo export SCHEME_LIBRARY_PATH=/usr/share/slib/
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for file in "${filelist[@]}"; do
+    install-info --delete "$infodir/$file.info.gz" "$infodir/dir" 2> /dev/null
+  done
+}
