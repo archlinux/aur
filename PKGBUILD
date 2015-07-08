@@ -1,8 +1,8 @@
-# Maintainer: agnotek <agnostic[dot]sn[at]gmail[dot]com>
-
+# Submitter: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Mantainer: ziu <frances[dot]albanese[at]gmail[dot]com>
 pkgname=anoise-gui
 pkgver=0.0.4
-pkgrel=0
+pkgrel=2
 pkgdesc="GUI for Ambient Noise Player"
 arch=('any')
 license=('GPL3')
@@ -12,7 +12,7 @@ conflicts=()
 depends=('anoise' 'python-distutils-extra')
 optdepends=()
 source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-md5sums=('9b21d537e47db98cdcc673696603da84')
+sha256sums=('8781f0e070675bf831300a7605b274ece8a0ebcefc423d37543bf650d04e8d56')
 
 package() {
   cd "${srcdir}"
