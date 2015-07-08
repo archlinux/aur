@@ -1,0 +1,14 @@
+pkgbase = perl-fake
+	pkgdesc = Fake perl package (saves space)
+	pkgver = 5.20.1
+	pkgrel = 1
+	url = http://justbrowsing.info
+	arch = any
+	license = none
+	optdepends = openssl: only helper script needs the real Perl package
+	optdepends = qpdf: only helper script needs the real Perl package
+	provides = perl=$pkgver
+	options = !strip
+
+pkgname = perl-fake
+
