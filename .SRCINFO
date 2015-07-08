@@ -1,0 +1,19 @@
+pkgbase = ruby-commander-4.2.1
+	pkgdesc = The complete solution for Ruby command-line executables
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/commander
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-highline>1.6.11
+	noextract = commander-4.2.1.gem
+	options = !emptydirs
+	source = http://gems.rubyforge.org/gems/commander-4.2.1.gem
+	source = https://raw.githubusercontent.com/commander-rb/commander/master/LICENSE
+	sha256sums = 8ccbe07c5f389323c03678ff03ab5d4b467c37067a2c21ff079bc365b9868eff
+	sha256sums = d1c0118f15b4e197c63ce1894a1f72f786020adad84a0930157dc0f74c38e0c0
+
+pkgname = ruby-commander-4.2.1
+
