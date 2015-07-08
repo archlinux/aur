@@ -1,0 +1,14 @@
+pkgbase = nodejs-psdinfo
+	pkgdesc = Inspect PSD files from the command line
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/rstacruz/psdinfo
+	arch = any
+	license = Simplifed
+	license = BSD
+	license = License
+	depends = nodejs
+	depends = npm
+
+pkgname = nodejs-psdinfo
+
