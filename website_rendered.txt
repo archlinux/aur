@@ -1,0 +1,318 @@
+                                                                                                     [1]ReZound
+
+                                                                                              [2][project-support.jpg]
+
+                                                                                                      [3]Main
+                                                                                            [4]SourceForge Project Page
+                                                                              [5]Screen Shots      [6]Audio Examples  [7]Download
+                                                                              [8]Support Requests  [9]Request         [10]Report Bugs
+                                                                                                   Features
+                                                                              [11]Documentation    [12]Mailing List   [13]SVN Access
+
+                                                                                             — D e s c r i p t i o n —
+                      ReZound aims to be a stable, open source, and graphical audio file editor primarily for but not limited to the Linux operating system.
+                      [this description needs revision now]
+
+                                                                                             — W h a t ' s   N e x t —
+                      Not particularly ordered:
+
+                        • Preview for Effects (feature discussed [14]here)
+                        • Better audio output code for full compliance with [15]JACK's realtime requirements
+                        • A Configuration Dialog to Change All the Settings (stored in ~/.rezound/registry.dat right now)
+                        • Equalizer action
+                        • Some sorts of noise removal (contingent upon [16]gwc-lib'sdevelopment)
+                        • Give option for using libsndfile and/or audiofile. (Waiting for libsndfile to finish implementing cues/markers and user notes support etc.)
+
+                      These are the tentative main objectives to accomplish before calling it 1.0
+
+                                                                                                    — N e w s —
+                      [17]From CVS to SVN   2008-01-26 21:16 - [18]ReZound
+                      ReZound has now switched from using CVS to SVN.
+
+                      All old history has been preserved in the new SVN repository.
+                      [19]Read More »
+
+                      [20]0.12.3beta Release   2007-01-13 19:43 - [21]ReZound
+                      Apologies for the long release time. This is a maintenance release just to fix some issues with compilers and platforms and other bugs. A couple of features were also
+                      added. See a complete list of changes at: [22]http://sourceforge.net/project/shownotes.php?group_id=5056&release_id=478272
+                      [23]Read More »
+
+                      [24]0.12.1beta Release   2005-09-03 18:01 - [25]ReZound
+                      This release is mainly meant to address gcc4 issues and fix a few minor bugs. See a complete list of changes at:
+                      [26]http://sourceforge.net/project/shownotes.php?release_id=354037
+                      [27]Read More »
+
+                      [28]0.12.0beta Release   2005-04-30 23:00 - [29]ReZound
+                      This release adds a few new major features and some overdue bug fixes. See a complete list of changes at:
+                      [30]http://sourceforge.net/project/shownotes.php?release_id=324398
+                      [31]Read More »
+
+                      [32]0.11.1beta Release   2004-10-26 08:38 - [33]ReZound
+                      This is a quick fix for a mistake in the ALSA code. See also an important release note about ALSA: [34]http://sourceforge.net/project/shownotes.php?release_id=278021
+                      [35]Read More »
+
+                      [36]0.11.0beta Release   2004-10-23 17:34 - [37]ReZound
+                      This release is mainly to fix a build error that several people have reported. Beyond that it also contains a preliminary native ALSA implementation and a couple of
+                      other requested features. See an important release note about ALSA and a complete list of changes at:
+                      [38]Read More »
+
+                      [39]0.10.0beta Release   2004-09-06 09:05 - [40]ReZound
+                      It has been a while since the last release. The major changes include: libSoundTouch support (pitch and tempo change actions added), Adaptive Normalize, new audio
+                      output code (towards JACK correctness), some speed optimizations, more status bars, stability fixes, Spanish translation, and other fixes. See a complete list of
+                      changes at: [41]http://sourceforge.net/project/shownotes.php?release_id=254346
+                      [42]Read More »
+
+                      [43]0.9.0beta Release   2003-11-11 13:43 - [44]ReZound
+                      This is a major new feature release. Mainly: LADSPA, floating point as internal type, morphing arbitrary FIR filter, burn to CD and more. See a complete list of
+                      changes at: [45]http://sourceforge.net/project/shownotes.php?release_id=196907
+                      [46]Read More »
+
+                      [47]Site news archive »
+
+                                                                                       — G o a l s   f o r   R e Z o u n d —
+                                                                                          (to state some of the obvious)
+                        • Linux Platform
+                        • Open Source
+                        • Fast Editing
+                        • Efficient Undo/Redo
+                        • Easy Ability to Create New Actions
+                        • Feature Rich (eventually)
+                        • Make up for the Weaknesses of Other Linux Editors
+                        • Possibly Multitrack Editing in the Future
+
+                                                                                        — C u r r e n t   F e a t u r e s —
+                                                                                                (checked into SVN)
+                     - File Formats:
+                             - Native ReZound
+                             - WAVE                          (libaudiofile)
+                             - AIFF/AIFF-C                   (libaudiofile)
+                             - NeXT/Sun                      (libaudiofile)
+                             - Berkeley/IRCAM/CARL           (libaudiofile)
+                             - raw                           (libaudiofile)
+                             - Ogg Vorbis                    (libogg and libvorbis)
+                             - MPEG Layer-3,2,1              (lame)
+                             - FLAC (preliminary)            (libFLAC LIBFLAC++)
+                             - MIDI Sample Dump Standard     (/dev/midi)
+
+                     - Audio I/O Interfaces
+                             - OSS (default)
+                             - ALSA
+                             - PortAudio ( http://www.portaudio.com )
+                             - JACK ( http://jackit.sourceforge.net )
+
+                     - File Operations
+                             - Standard: New, Open, Save, Save As, Close, Revert
+                             - Reopen History
+                             - Save Selection As
+                             - Save As Multiple Files (according to cue positions)
+                             - Burn to CD
+
+                     - Either 16bit integer or 32bit floating point can be chosen as the interal sample format
+
+                     - Fast Editing of Large Files
+
+                     - Undo
+
+                     - Labeled Cue Positions
+                             - Cues can be dragged
+
+                     - Automatic Crossfading of Selection Edges on All Applicable Actions to Create Smooth Transitions
+
+                     - Ability to Save User Notes on Formats that Support them
+
+                     - Macros Allow a User To Record a Sequence of Changes to a File and Repeat Those Actions on Other Files Later.
+
+                     - User-Definable Key Bindings to Actions
+
+                     - Recording
+                             - Realtime Level Meters (display also when not recording)
+                             - Record Time Limit Setting
+                             - Record can Actually Start when a Given Audio Threshold is Met
+                             - Start and Pause Recording
+                             - Can Reset the Record Position to the Beginning While Recording
+                             - Add Cue Positions While Recording
+                             - Compensation for DC Offset in Recording Hardware
+
+                     - Play Controls
+                             - Play All Once
+                             - Play All Looped
+                             - Play Selection Once
+                             - Play Selection to End
+                             - Play Selection Looped
+                             - Play Selection Looped and Skip Most of the Middle
+                             - Play Selection Looped but Add a Gap Before Repeating
+                             - Stop
+                             - Pause
+                             - Jump to Beginning
+                             - Jump to Selection Start
+                             - Jump to Previous Cue
+                             - Jump to Next Cue
+                             - Shuttle Play Position Control
+                             - Play from Mouse Cursor (hold ctrl and use left and right mouse buttons)
+
+                     - Playback Meters
+                             - Toggle-able
+                             - Audio Level Meters
+                             - Balance Meter
+                             - Stereo Phase Meters
+                             - Frequency Analyzer
+
+                     - Full Featured Editing Tools
+                             - Copy
+                             - Copy to New
+                             - Cut
+                             - Cut to New
+                             - Delete
+                             - Crop
+                             - Paste (all types allow for a "Repeat Count" or "Repeat Time" when pasting)
+                                     - Insert
+                                     - Replace
+                                     - Overwrite
+                                     - Limited Overwrite
+                                     - Mix
+                                     - Limited Mix
+                                     - Fit Mix
+                                     - Paste to New
+                             - Insert Silence
+                             - Mute
+                             - Add Channels
+                             - Duplicate Channel
+                             - Remove Channels
+                             - Swap Channels
+                             - Rotate Selection Left
+                             - Rotate Selection Right
+                             - Various Selection Tools
+
+                     - LADSPA Plugin Support
+
+                     - Various Effects/Manipulations
+                             - Reverse
+                             - Change Volume
+                             - Gain (by constant or curve)
+                             - Change Rate (by constant or curve)
+                             - Flange
+                             - Delay (Echo)
+                             - Quantize
+                             - Distortion (by a curve)
+                             - Varied Repeat
+
+                     - Convolution
+                             - For Various Effects Like Reverb and Applying Room Characteristics
+
+                     - Arbitrary FIR Filter (the user can draw their own frequency response)
+                     - Morphing Arbitrary FIR Filter (the user can draw two frequency responses and have it morph between them)
+
+                     - IIR Single Pole Filters
+                             - Lowpass
+                             - Highpass
+                             - Bandpass
+                             - Notch
+
+                     - Biquad Resonant Filters
+                             - Lowpass
+                             - Highpass
+                             - Bandpass
+
+                     - Looping Tools (much more to come)
+                             - Make Selection Symetric
+                             - Add N Equally Spaced Cues
+                             - Add a Cue Every X Seconds
+
+                     - Mastering/Remastering Tools (more to come)
+                             - Balance/Pan (by constant or curve)
+                             - Monoize (mix down channels or make all the channels the same)
+                             - Noise Gate
+                             - Dynamic Range Compression
+                             - Normalization
+                             - Adaptive Normalize
+                             - Mark Quiet Areas (with cues)
+                             - Shorten Quiet Areas
+                             - Resample
+                             - Change Pitch
+                             - Change Tempo
+                             - Remove DC Component
+                             - Invert Phase
+
+                     - Generate Various Colors of Noise
+                     - Generate Various Timbres of a frequency
+
+                     - Selectable LFO Shapes for Actions that Use an LFO (more to come)
+
+                     - Dynamic Menu Layout (no frontend interface for easy user-defining yet)
+
+                     - gettext support (i18n, internationalization)
+                             - Russian
+                             - German
+                             - Spanish
+                             - Finnish
+
+                     - Tested Platforms
+                             Mandrake 9.1(and upwards)/x86
+                             RH9/x86
+                             RH7.3/x86
+                             BSD/x86
+                             Debian/alpha
+                             Debian/x86
+                             Solaris/Sun
+
+                                                                                                [48]SourceForge Logo
+
+                                                                                       ReZound © 1998 - 2008 [49]Davy Durham
+                                                                    original web site design by [50]Will Jayroe & now maintained by Davy Durham
+
+                                                                                                 hit count: 127028
+                                                                                             last modified Jan 27, 2008
+
+References
+
+   Visible links
+   1. http://rezound.sourceforge.net/
+   2. https://sourceforge.net/p/rezound/donate/
+   3. http://rezound.sourceforge.net/
+   4. http://sourceforge.net/projects/rezound
+   5. http://rezound.sourceforge.net/ss.shtml
+   6. http://rezound.sourceforge.net/examples.shtml
+   7. http://sourceforge.net/projects/rezound/files/
+   8. http://sourceforge.net/p/rezound/support-requests/
+   9. http://sourceforge.net/p/rezound/feature-requests/
+  10. http://sourceforge.net/p/rezound/bugs/
+  11. http://sourceforge.net/docman/?group_id=5056
+  12. http://lists.sourceforge.net/lists/listinfo/rezound-users
+  13. http://sourceforge.net/p/rezound/code/2005/tree/
+  14. http://sourceforge.net/tracker/?func=detail&aid=585586&group_id=5056&atid=355056
+  15. http://jackit.sourceforge.net/
+  16. http://sourceforge.net/project/showfiles.php?group_id=60806
+  17. http://sourceforge.net/forum/forum.php?forum_id=778660
+  18. http://sourceforge.net/projects/rezound/
+  19. http://sourceforge.net/forum/forum.php?forum_id=778660
+  20. http://sourceforge.net/forum/forum.php?forum_id=653763
+  21. http://sourceforge.net/projects/rezound/
+  22. http://sourceforge.net/project/shownotes.php?group_id=5056&release_id=478272
+  23. http://sourceforge.net/forum/forum.php?forum_id=653763
+  24. http://sourceforge.net/forum/forum.php?forum_id=493484
+  25. http://sourceforge.net/projects/rezound/
+  26. http://sourceforge.net/project/shownotes.php?release_id=354037
+  27. http://sourceforge.net/forum/forum.php?forum_id=493484
+  28. http://sourceforge.net/forum/forum.php?forum_id=464215
+  29. http://sourceforge.net/projects/rezound/
+  30. http://sourceforge.net/project/shownotes.php?release_id=324398
+  31. http://sourceforge.net/forum/forum.php?forum_id=464215
+  32. http://sourceforge.net/forum/forum.php?forum_id=417836
+  33. http://sourceforge.net/projects/rezound/
+  34. http://sourceforge.net/project/shownotes.php?release_id=278021
+  35. http://sourceforge.net/forum/forum.php?forum_id=417836
+  36. http://sourceforge.net/forum/forum.php?forum_id=417084
+  37. http://sourceforge.net/projects/rezound/
+  38. http://sourceforge.net/forum/forum.php?forum_id=417084
+  39. http://sourceforge.net/forum/forum.php?forum_id=404853
+  40. http://sourceforge.net/projects/rezound/
+  41. http://sourceforge.net/project/shownotes.php?release_id=254346
+  42. http://sourceforge.net/forum/forum.php?forum_id=404853
+  43. http://sourceforge.net/forum/forum.php?forum_id=327642
+  44. http://sourceforge.net/projects/rezound/
+  45. http://sourceforge.net/project/shownotes.php?release_id=196907
+  46. http://sourceforge.net/forum/forum.php?forum_id=327642
+  47. http://sourceforge.net/news/?group_id=5056
+  48. http://sourceforge.net/
+  49. mailto:ddurham@users.sourceforge.net
+  50. http://jayroe.com/

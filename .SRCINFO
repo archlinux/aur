@@ -1,0 +1,40 @@
+pkgbase = rezound-svn
+	pkgdesc = A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins. (NOTE: The package's dependencies can be minimised by changing the PKGBUILD's ./configure-script.)
+	pkgver = latest
+	pkgrel = 1
+	url = http://rezound.sourceforge.net/
+	install = rezound.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = bison
+	makedepends = flex
+	depends = libpulse
+	depends = portaudio
+	depends = fftw
+	depends = fox
+	depends = jack
+	depends = audiofile
+	depends = desktop-file-utils
+	depends = libvorbis
+	depends = soundtouch
+	depends = lame
+	depends = flac
+	optdepends = cdrdao: For burn-to-CD-feature.
+	provides = rezound=latest
+	conflicts = rezound
+	replaces = rezound<=latest
+	source = rezound::svn+http://svn.code.sf.net/p/rezound/code/trunk
+	source = rezound.png
+	source = rezound.install
+	source = website_rendered.txt
+	source = website.url
+	sha256sums = SKIP
+	sha256sums = 5a33ebae3f38bf9b824c262696ea67febc66ee2ef68fa22e976409041a08a489
+	sha256sums = 9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e
+	sha256sums = 8e164d279e6ebd58b1ca81bc970e6019719e6f5ee8b09cc3aa87fa7122f67867
+	sha256sums = f5e97e9ae55241a0b060f2e0162a9189700f37a1de8e8bb731dfc6ece5d03f88
+
+pkgname = rezound-svn
+
