@@ -1,0 +1,31 @@
+pkgbase = wazzuf-ripper
+	pkgdesc = Wazzuf Ripper is a software to rip various media as DVD and Blu-ray to .mkv file(s).
+	pkgver = 5.7
+	pkgrel = 1
+	url = http://wazzuf-ripper.lokizone.net/
+	arch = any
+	license = GPL3
+	depends = mplayer
+	depends = mencoder
+	depends = zenity
+	depends = gksu
+	depends = imdb-cli
+	depends = bdchapters
+	depends = mkvtoolnix-cli
+	depends = tsmuxer
+	depends = mediainfo
+	depends = lame
+	depends = vorbis-tools
+	depends = ogmtools
+	depends = p7zip
+	depends = imagemagick
+	depends = libdvdcss
+	depends = lsdvd
+	optdepends = vlc: video dumping support
+	optdepends = cdrkit: genisoimage - DVD to iso file suppport
+	optdepends = opus-tools: Opus audio support
+	source = https://github.com/Booloki/wazzuf-ripper/archive/5.7.tar.gz
+	md5sums = 39d64199157243b982118d3116d22a48
+
+pkgname = wazzuf-ripper
+
