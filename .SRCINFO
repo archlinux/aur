@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-rosauth
+	pkgdesc = ROS - Server Side tools for Authorization and Authentication of ROS Clients.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://ros.org/wiki/rosauth
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-roscpp
+	source = rosauth::git+https://github.com/wpi-rail-release/rosauth-release.git#tag=release/indigo/rosauth/0.1.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosauth
+
