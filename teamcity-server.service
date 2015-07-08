@@ -1,0 +1,18 @@
+[Unit]
+Description=TeamCity server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/teamcity
+ExecStart=/opt/teamcity/bin/teamcity-server.sh start
+ExecStop=/opt/teamcity/bin/teamcity-server.sh stop
+Type=forking
+PIDFile=/opt/teamcity/logs/teamcity-server.pid
+Restart=no
+TimeoutSec=30
+RemainAfterExit=yes
+User=teamcity
+
+[Install]
+WantedBy=multi-user.target
+

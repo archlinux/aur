@@ -1,0 +1,21 @@
+pkgbase = teamcity
+	pkgdesc = Continuous integration server from JetBrains
+	pkgver = 8.1.3
+	pkgrel = 1
+	url = http://www.jetbrains.com/teamcity/
+	install = teamcity.install
+	arch = any
+	license = custom:JetBrains TeamCity
+	depends = java-runtime-headless
+	options = !strip
+	source = http://download.jetbrains.com/teamcity/TeamCity-8.1.3.tar.gz
+	source = teamcity-agent.service
+	source = teamcity-server.service
+	source = teamcity.conf
+	sha512sums = 2ae69d942bf29f0b03d33766a2ad7bb7eb614641148ba42540e3eab45e5906291e91fec8fba6641276881c4d859ab917530340b790323cf800bc31e7724dd5c1
+	sha512sums = bf8786f45d9b9101027b6efe2e1732988d032cb1ae1655b2188b61eda70d0df49d48c0de191e2eb00378fd44722a61592fcd26f5426ff150fc72d78b448a3223
+	sha512sums = db22f7e9a58b57df260343973f9338a5828ed7b4949ba45dd6fa26905b502f4a91766cd685d16c3d41cef51c107ea54ac41dda263729c1ba1aee665295a614e3
+	sha512sums = f6a1fb4c66f2303fca3fbba511f8a34eb9489fa0e76997e73753dd25d31dae3f8188bff1ff03782b1333b4704090cb10d86d81260677701dc5d8cc48ffa463e4
+
+pkgname = teamcity
+
