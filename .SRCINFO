@@ -1,0 +1,23 @@
+pkgbase = crawl-sdl
+	pkgdesc = An open-source, single-player, role-playing roguelike game of exploration and treasure-hunting in dungeons
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = http://crawl.develz.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = bison
+	makedepends = flex
+	makedepends = ttf-dejavu
+	makedepends = gendesk
+	depends = lua51
+	depends = glu
+	depends = sqlite
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = ttf-dejavu
+	source = http://crawl.develz.org/release/stone_soup-0.16.1-nodeps.tar.xz
+	md5sums = SKIP
+
+pkgname = crawl-sdl
+
