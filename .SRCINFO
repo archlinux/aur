@@ -1,11 +1,10 @@
 pkgbase = ruby-commander-4.2.1
-	pkgdesc = The complete solution for Ruby command-line executables
+	pkgdesc = The complete solution for Ruby command-line executables, version 4.2.1
 	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://rubygems.org/gems/commander
 	arch = any
 	license = MIT
-	makedepends = rubygems
 	depends = ruby
 	depends = ruby-highline>1.6.11
 	noextract = commander-4.2.1.gem

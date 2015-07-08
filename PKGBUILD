@@ -5,12 +5,11 @@ _gemname=commander
 pkgname=ruby-$_gemname-4.2.1
 pkgver=4.2.1
 pkgrel=1
-pkgdesc="The complete solution for Ruby command-line executables"
+pkgdesc="The complete solution for Ruby command-line executables, version 4.2.1"
 arch=('any')
 url="https://rubygems.org/gems/commander"
 license=('MIT')
 depends=('ruby' 'ruby-highline>1.6.11')
-makedepends=('rubygems')
 options=(!emptydirs)
 source=("http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem"
         "https://raw.githubusercontent.com/commander-rb/commander/master/LICENSE")
