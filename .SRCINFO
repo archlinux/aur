@@ -1,0 +1,17 @@
+pkgbase = fontconfig-infinality
+	pkgdesc = Fontconfig files for use with freetype2-infinality.
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.infinality.net/blog/infinality-freetype-patches/
+	install = install.sh
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = freetype2-infinality
+	backup = etc/fonts/infinality/infinality.conf
+	backup = etc/fonts/conf.d/52-infinality.conf
+	source = http://www.infinality.net/fedora/linux/zips/fontconfig-infinality-1-20130104_1.tar.bz2
+	md5sums = d7a7781865f3a76d70e32e074a63411c
+
+pkgname = fontconfig-infinality
+
