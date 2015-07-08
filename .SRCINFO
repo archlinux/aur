@@ -1,0 +1,20 @@
+pkgbase = scikits-cuda
+	pkgdesc = Python interface to GPU-powered libraries
+	pkgver = 0.5.0b3
+	pkgrel = 1
+	url = http://scikits.appspot.com/cuda
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = subversion
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = scikits-base
+	depends = cuda
+	depends = cula
+	source = https://pypi.python.org/packages/source/s/scikits.cuda/scikits.cuda-0.5.0b3.tar.gz
+	sha256sums = 8d6bfd4a2ce116a34f3c656d4167a380a3d7f4f03bf10008a4acc0b5ee2abca5
+
+pkgname = scikits-cuda
+
