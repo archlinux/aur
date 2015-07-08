@@ -1,0 +1,18 @@
+pkgbase = python2-odfpy
+	pkgdesc = A complete API for OpenDocument in Python. Python 2.x support
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://opendocumentfellowship.com/projects/odfpy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	conflicts = odfpy
+	conflicts = python-odfpy
+	conflicts = python3-odfpy
+	conflicts = python-all-odfpy
+	source = http://pypi.python.org/packages/source/o/odfpy/odfpy-0.9.6.tar.gz
+	md5sums = 3f570ead2b5f5eb6eab97eecce22d491
+
+pkgname = python2-odfpy
+
