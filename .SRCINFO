@@ -1,7 +1,7 @@
 pkgbase = rhc
 	pkgdesc = The client tools for the OpenShift platform that allow for application management.
 	pkgver = 1.36.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openshift/rhc
 	arch = any
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = rhc
 	depends = ruby
 	depends = ruby-archive-tar-minitar
 	depends = ruby-commander<4.3.0
-	depends = ruby-highline
+	depends = ruby-highline<1.7.0
 	depends = ruby-httpclient
 	depends = ruby-net-scp
 	depends = ruby-net-ssh<2.9.3
