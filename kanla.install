@@ -1,0 +1,8 @@
+#/bin/sh
+
+# arg 1:  the new package version
+post_install() {
+  systemd-sysusers kanla.conf
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

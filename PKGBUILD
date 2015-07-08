@@ -9,10 +9,12 @@ url="http://kanla.zekjur.net/"
 license=('bsd')
 depends=('perl' 'perl-anyevent' 'perl-anyevent-xmpp' 'perl-anyevent-http' 'perl-config-general' 'perl-file-sharedir' 'perl-json-xs')
 makedepends=('html-xml-utils' 'asciidoc')
-source=("http://kanla.zekjur.net/downloads/${pkgname}-${pkgver}.tar.gz")
+source=("http://kanla.zekjur.net/downloads/${pkgname}-${pkgver}.tar.gz" "${pkgname}.sysusers")
+install=${pkgname}.install
 options=('!emptydirs')
 backup=('etc/kanla/default.cfg' 'etc/kanla/default.d/http-example.cfg')
-md5sums=('dbecd47dabd36149e59bf06b1b71cbd3')
+md5sums=('dbecd47dabd36149e59bf06b1b71cbd3'
+         'd929f7d1c8885e3af4ca53d62c8707a9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -42,6 +44,11 @@ package() {
   install -Dm644 ${pkgdir}/lib/systemd/system/kanla.service \
     "${pkgdir}/usr/lib/systemd/system/kanla.service"
   rm "${pkgdir}/lib/systemd/system/kanla.service"
+
+  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+  sed 's#ExecStart=/usr/bin/kanla#ExecStart=/usr/bin/vendor_perl/kanla#' -i \
+    "${pkgdir}/usr/lib/systemd/system/kanla.service"
 }
 
 # vim:set ts=2 sw=2 sts=2 et:

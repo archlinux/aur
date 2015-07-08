@@ -3,6 +3,7 @@ pkgbase = kanla
 	pkgver = 1.5
 	pkgrel = 2
 	url = http://kanla.zekjur.net/
+	install = kanla.install
 	arch = any
 	license = bsd
 	makedepends = html-xml-utils
@@ -18,7 +19,9 @@ pkgbase = kanla
 	backup = etc/kanla/default.cfg
 	backup = etc/kanla/default.d/http-example.cfg
 	source = http://kanla.zekjur.net/downloads/kanla-1.5.tar.gz
+	source = kanla.sysusers
 	md5sums = dbecd47dabd36149e59bf06b1b71cbd3
+	md5sums = d929f7d1c8885e3af4ca53d62c8707a9
 
 pkgname = kanla
 
