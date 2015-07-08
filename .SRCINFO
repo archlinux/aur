@@ -1,0 +1,13 @@
+pkgbase = tint2-themes
+	pkgdesc = Config files from the web for tint2.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://tint2.googlecode.com
+	arch = any
+	license = GPL
+	depends = tint2
+	source = http://tint2.googlecode.com/files/tint2-0.10-theme.tar.gz
+	sha1sums = e80c5bc2e40fade2175365ae935f4f08bc022d1c
+
+pkgname = tint2-themes
+
