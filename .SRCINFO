@@ -1,0 +1,12 @@
+pkgbase = poweriso
+	pkgdesc = A powerful CD/DVD image file processing tool
+	pkgver = 1.3
+	pkgrel = 4
+	url = http://www.poweriso.com/
+	arch = any
+	license = freeware
+	source = http://www.poweriso.com/poweriso-1.3.tar.gz
+	md5sums = f5fc967e284769db387e2feae4a4cddf
+
+pkgname = poweriso
+
