@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DrPython
+Exec=drpython
+Icon=/usr/share/drpython/bitmaps/drpython.png
+Terminal=false
+Type=Application
+Categories=Development
+StartupNotify=true
