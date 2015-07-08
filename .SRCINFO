@@ -1,0 +1,13 @@
+pkgbase = gg
+	pkgdesc = Shuts down the system in anger.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/qguv/gg
+	arch = any
+	license = Apache
+	depends = bash
+	source = https://github.com/qguv/gg/archive/v0.2.0.tar.gz
+	sha256sums = 5ab51b7eeea5f1830cc95e24817df111cc10c6fa5e764ff0a4fce8c0bec0eb25
+
+pkgname = gg
+
