@@ -1,0 +1,16 @@
+pkgbase = gmchess
+	pkgdesc = Chinese chess game
+	pkgver = 0.29.6
+	pkgrel = 3
+	url = http://code.google.com/p/gmchess/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = gtkmm
+	source = http://gmchess.googlecode.com/files/gmchess-0.29.6.tar.bz2
+	sha1sums = f9a81c8fd58ff5122423b368c62e54f3b7528af5
+
+pkgname = gmchess
+
