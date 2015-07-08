@@ -2,14 +2,14 @@
 
 pkgname=visual-studio-code
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications"
 arch=('x86_64')
 url="https://code.visualstudio.com/"
 license=('custom: commercial')
 provides=('vscode','visualstudiocode')
 depends=(fontconfig libxtst gtk2 python cairo alsa-lib gconf nss gcc-libs)
-source=(https://az764295.vo.msecnd.net/public/0.3.0/VSCode-linux-x64.zip
+source=(https://az764295.vo.msecnd.net/public/${pkgver}/VSCode-linux-x64.zip
         ${pkgname}.png
         ${pkgname}.desktop
         )

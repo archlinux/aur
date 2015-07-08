@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code
 	pkgdesc = Editor for building and debugging modern web and cloud applications
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = x86_64
 	license = custom: commercial
@@ -15,7 +15,7 @@ pkgbase = visual-studio-code
 	depends = nss
 	depends = gcc-libs
 	provides = vscode,visualstudiocode
-	source = https://az764295.vo.msecnd.net/public/0.3.0/VSCode-linux-x64.zip
+	source = https://az764295.vo.msecnd.net/public/0.5.0/VSCode-linux-x64.zip
 	source = visual-studio-code.png
 	source = visual-studio-code.desktop
 	md5sums = ebe69eb762e60a1dcb3dd948ed06405e
