@@ -1,0 +1,16 @@
+pkgbase = emusicremote
+	pkgdesc = Self contained browser + download client for eMusic based on Mozilla's XULRunner.
+	pkgver = 1.0.0.3_beta1
+	pkgrel = 2
+	url = http://emusic.mozdev.org/remote.html
+	install = emusicremote.install
+	arch = i686
+	arch = x86_64
+	license = Included
+	source = emusicremote.desktop
+	source = http://downloads.mozdev.org/emusic/remote/emusic_remote_linux_current.tar.gz
+	md5sums = 55d7e13ac63c0788ab6e00edb2e4579d
+	md5sums = 37f7fb46ab65367d3d062dd214a8f5b1
+
+pkgname = emusicremote
+

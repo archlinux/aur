@@ -1,0 +1,15 @@
+post_install() {
+	if [ ! -e /usr/bin/emusicremote ]; then
+		ln -s /usr/share/emusicremote/emusicremote /usr/bin/emusicremote
+	fi
+	echo ">>>"
+	echo ">>> By installing and running this you"
+	echo ">>> agree to any included license,"
+	echo ">>> either from eMusic or otherwise."
+	echo ">>>"
+}
+
+op=$1
+shift
+
+$op $*
