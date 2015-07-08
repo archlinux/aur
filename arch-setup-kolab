@@ -27,20 +27,6 @@ freshclam
 sa-update
 echo
 
-# Create initial Cyrus databases
-echo '* Initializing Cyrus-IMAP databases'
-if [[ ! -e '/var/lib/imap' ]]
-then
-    mkdir '/var/lib/imap'
-fi
-if [[ ! -e '/var/lib/imap/sieve' ]]
-then
-    mkdir '/var/lib/imap/sieve'
-fi
-echo -e 'configdirectory: /var/lib/imap\npartition-default: /var/spool/imap' | mkimap -
-chown -R 'cyrus:mail' '/var/lib/imap'
-echo
-
 # Initialize postfix alias DB
 echo '* Regenerating postalias database'
 postalias '/etc/postfix/aliases'
