@@ -1,0 +1,14 @@
+pkgbase = nodejs-squiffy
+	pkgdesc = A tool for creating multiple-choice interactive stories
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/textadventures/squiffy#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = squiffy-4.0.0.tgz
+	source = http://registry.npmjs.org/squiffy/-/squiffy-4.0.0.tgz
+	sha1sums = 2d23b7e250b8b630cacaaa512d495a3bda9aabe7
+
+pkgname = nodejs-squiffy
+
