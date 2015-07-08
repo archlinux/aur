@@ -1,0 +1,16 @@
+pkgbase = npyscreen-git
+	pkgdesc = A python widget library and application framework
+	pkgver = r480.d286599
+	pkgrel = 1
+	url = https://github.com/npcole/npyscreen
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	conflicts = python-npyscreen
+	source = git+https://github.com/npcole/npyscreen.git
+	sha256sums = SKIP
+
+pkgname = npyscreen-git
+
