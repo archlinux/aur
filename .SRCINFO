@@ -1,0 +1,15 @@
+pkgbase = fasd
+	pkgdesc = Command-line productivity booster, offers quick access to files and directories
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/clvv/fasd
+	install = fasd.install
+	arch = any
+	license = MIT
+	source = https://github.com/clvv/fasd/tarball/1.0.1
+	source = fasd.install
+	md5sums = 5f1992f5e1eff96375ff50a1f82e92b4
+	md5sums = 6a0330f84925563f739c4241fd36e41e
+
+pkgname = fasd
+

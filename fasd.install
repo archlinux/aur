@@ -1,0 +1,11 @@
+post_install() {
+        cat <<EOF
+
+Put the line below in your shell rc:
+
+    eval "\$(fasd --init auto)"
+
+For more information, please read fasd's man page or visit project homepage at
+  https://github.com/clvv/fasd
+EOF
+}
