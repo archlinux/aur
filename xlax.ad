@@ -1,0 +1,11 @@
+! X11 Resources for xlax multi window input utility
+!Default Green on Black, Black on Grey is commented out if you prefer
+
+xlax*foreground:         green
+xlax*borderPixmap:       gradient:horizontal?dimension=1&start=green&end=green
+xlax*background:         black
+
+!xlax*foreground:         black
+!xlax*borderPixmap:       gradient:horizontal?dimension=512&start=gray40&end=gray20
+!xlax*background:         gray
+
