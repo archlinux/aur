@@ -1,0 +1,25 @@
+pkgbase = ros-indigo-rosbridge-server
+	pkgdesc = ROS - A WebSocket interface to rosbridge.
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbridge_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosbridge-library
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosapi
+	makedepends = ros-indigo-rospy
+	makedepends = python2-pillow
+	depends = ros-indigo-rosbridge-library
+	depends = ros-indigo-rosauth
+	depends = ros-indigo-rosapi
+	depends = ros-indigo-rospy
+	depends = python2-pillow
+	source = rosbridge_server::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/indigo/rosbridge_server/0.6.8-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosbridge-server
+
