@@ -1,0 +1,24 @@
+pkgbase = surgeonsimulator2013
+	pkgdesc = Poor Bob fell off his toilet, resulting in urgent need for a heart transplant.
+	pkgver = 1.2
+	pkgrel = 7
+	url = http://gamejam.bossastudios.com/
+	install = surgeonsimulator2013.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	options = !strip
+	source = http://downloads.bossastudios.com/ss2013/surgeonsimulator2013_linux.zip
+	source = https://github.com/oshazard/aur-includes/raw/master/surgeonsimulator2013/includes.tar.gz
+	md5sums = 05dcef7582f5c05bc1c7afe250f1b227
+	md5sums = 0a22cb563626fb981aba041b7ef44b5f
+	depends_i686 = libgl
+	depends_i686 = glu
+	depends_i686 = libxcursor
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-libxcursor
+
+pkgname = surgeonsimulator2013
+
