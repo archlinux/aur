@@ -1,0 +1,15 @@
+pkgbase = music-file-organizer
+	pkgdesc = Command-line audio file organizer that reads tags and renames files.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://git.zx2c4.com/music-file-organizer/about/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = icu
+	depends = taglib
+	source = http://git.zx2c4.com/music-file-organizer/snapshot/music-file-organizer-1.0.1.tar.xz
+	sha1sums = 4afbd58c47af4472ea50da383cdca564a5bb0d2d
+
+pkgname = music-file-organizer
+
