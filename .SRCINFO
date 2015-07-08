@@ -1,0 +1,16 @@
+pkgbase = otf-mathilde
+	pkgdesc = Mathilde is a beautiful, free, handwritten cursive-hybrid OpenType font with contextual alternatives
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://leeviathan.com/portfolio-item/mathilde-free-handwritten-opentype-font/
+	install = otf.install
+	arch = any
+	license = CCPL:by-sa
+	depends = fontconfig
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	source = otf-mathilde.zip::http://img.dafont.com/dl/?f=mathilde
+	md5sums = 3b293339eb59a418ee43a01bb69306ca
+
+pkgname = otf-mathilde
+
