@@ -24,7 +24,7 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'i3status: To display system information with a bar.'
             'perl-json-xs: For i3-save-tree'
             'perl-anyevent-i3: For i3-save-tree')
-options=('docs' '!strip')
+options=('docs' '!strip' 'debug')
 source=('git://github.com/i3/i3#branch=next')
 sha1sums=('SKIP')
 
