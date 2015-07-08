@@ -1,8 +1,8 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Michael S. Walker <barrucadu@localhost>
 pkgname=scm
-pkgver=5f1
-pkgrel=2
+pkgver=5f2
+pkgrel=1
 pkgdesc="An R5RS Scheme (IEEE P1178).  Written in C and runs under many OSes."
 url="http://people.csail.mit.edu/jaffer/SCM"
 arch=('i686' 'x86_64')
@@ -11,7 +11,9 @@ depends=('slib')
 optdepends=('rlwrap: for a decent repl')
 provides=('gnu-scm')
 source=("http://groups.csail.mit.edu/mac/ftpdir/scm/$pkgname-$pkgver.zip")
-md5sums=('98be8275f5c69d234c55a8a995a500dd')
+md5sums=('ff83b43844b4fc2efeaa102d8eed8a4a')
+install=scm.install
+options=('!makeflags')
 
 build() {
   export SCHEME_LIBRARY_PATH=/usr/share/slib/
