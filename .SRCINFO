@@ -1,15 +1,19 @@
 pkgbase = pcloud
-	pkgdesc = pCloud Drive client
+	pkgdesc = A QT-based pcloud sync client
 	pkgver = 3.0.1
 	pkgrel = 1
-	url = http://pcloud.com
+	url = https://www.pcloud.com
+	arch = i686
 	arch = x86_64
 	license = unknown
-	makedepends = tar
+	makedepends = jq
+	depends = qt4
 	conflicts = pcloud-git
 	replaces = pcloud-git
-	source = https://c123.pcloud.com/dHZh5k68ZBCBEYZZZzKCXl7ZHkZZ3RXZkZWxIkZO59cFKyp4UJjjTM3CDGI0LhhOkkV/pCloud_Linux_amd64_3.0.1.deb
-	sha256sums = 5c6a52a8d1d1e6e13ba6d5086ca4a775ce82a81c1e7bdd3f1b12c1f4aa4476fe
+	source_i686 = https://www.pcloud.com
+	sha1sums_i686 = 62ab9e9737c14a06780526cbfa9fa000f77f2450
+	source_x86_64 = https://www.pcloud.com
+	sha1sums_x86_64 = 265c085c3e971a1a63dfbe1a43ffee3f35fa8009
 
 pkgname = pcloud
 
