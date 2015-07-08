@@ -1,0 +1,21 @@
+pkgbase = preload
+	pkgdesc = Makes applications run faster by prefetching binaries and shared objects
+	pkgver = 0.6.4
+	pkgrel = 6
+	url = http://sourceforge.net/projects/preload
+	install = preload.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = help2man
+	depends = glib2
+	depends = bash
+	options = !makeflags
+	backup = etc/preload.conf
+	source = http://downloads.sourceforge.net/sourceforge/preload/preload-0.6.4.tar.gz
+	source = preload.service
+	md5sums = 10786287b55afd3a2b433b4f898809f4
+	md5sums = b4871a6ade86968322b3bdf3fce88e99
+
+pkgname = preload
+
