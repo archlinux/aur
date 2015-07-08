@@ -1,17 +1,16 @@
 # Maintainer: OS Hazard <oshazard+aur@gmail.com>
 pkgname=aurlist
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Download list of all AUR packages and search colorized list"
 url="http://github.com/oshazard/aurlist"
 license="GPL"
 arch=('any')
-makedepends=('unzip')
 depends=('grep' 'sed' 'bash' 'curl' 'coreutils' 'ca-certificates')
 provides=('aurlist')
 backup=('usr/share/aurlist/aurlist.txt' 'usr/share/aurlist/aurlist.lst')
-source=("https://github.com/oshazard/aurlist/archive/master.zip")
-md5sums=('13e7ca7e7c80f3adfd0eadaa84b55767')
+source=("https://github.com/oshazard/aurlist/archive/master.tar.gz")
+md5sums=('f13c1d11bfd03a311770071b57e6307b')
 
 package() {
   cd "${srcdir}/aurlist-master"
