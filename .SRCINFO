@@ -1,0 +1,17 @@
+pkgbase = gmpc-wikipedia
+	pkgdesc = The Wikipedia plugin shows information about the current artist.
+	pkgver = 11.8.16
+	pkgrel = 2
+	url = http://gmpc.wikia.com/wiki/GMPC_PLUGIN_WIKIPEDIA
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gmpc>=11.8.16
+	depends = libwebkit
+	options = !libtool
+	source = http://download.sarine.nl/Programs/gmpc/11.8.16/gmpc-wikipedia-11.8.16.tar.gz
+	sha1sums = c860e7c5614362f8cd8bf3cff820032cb1a41691
+
+pkgname = gmpc-wikipedia
+
