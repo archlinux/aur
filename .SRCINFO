@@ -1,6 +1,6 @@
 pkgbase = ostree
 	pkgdesc = a tool for managing bootable, immutable, versioned filesystem trees
-	pkgver = 2015.5
+	pkgver = 2015.7
 	pkgrel = 1
 	url = http://live.gnome.org/OSTree
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = ostree
 	depends = libsoup
 	depends = libarchive
 	depends = gpgme
-	source = https://git.gnome.org/browse/ostree/snapshot/ostree-2015.5.tar.xz
+	source = https://git.gnome.org/browse/ostree/snapshot/ostree-2015.7.tar.xz
 	source = git://github.com/GNOME/libglnx.git#commit=08d1339f9a61c0b437a623e68ebf2c64258d6087
 	source = git://github.com/mendsley/bsdiff.git#commit=1edf9f656850c0c64dae260960fabd8249ea9c60
-	sha256sums = 1585c0c2544039bb1a6315b51931872a570593b422be5a61f448c2c1b9af4a52
+	sha256sums = 7bfac5c5394fbe618f27f66eb3ed8e8d3365be3d4f27440af6119ef241ce6326
 	sha256sums = SKIP
 	sha256sums = SKIP
 
