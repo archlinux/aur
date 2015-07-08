@@ -4,7 +4,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 _gemname=rest-client
-pkgname=ruby-$_gemname
+pkgname=ruby-${_gemname}
 pkgver=1.8.0
 pkgrel=1
 pkgdesc=("Simple HTTP and REST client for Ruby, inspired by the Sinatra microframework style of specifying actions")
@@ -18,7 +18,7 @@ depends=('ruby>=1.9.2'
 options=("!emptydirs")
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('010c236eda2ee04bb99d7d4e6d892a65a05775bec8f553c7d46f5f76bff06511')
+sha256sums=('e70e4fe5660181fe5c6909de06f7b716931b433f5748f3713c841be709031fd5')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
