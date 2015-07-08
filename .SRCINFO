@@ -1,16 +1,17 @@
 pkgbase = ruby-rest-client
-	pkgdesc = Simple HTTP and REST client for Ruby, inspired by microframework syntax for specifying actions.
-	pkgver = 1.7.3
+	pkgdesc = Simple HTTP and REST client for Ruby, inspired by the Sinatra microframework style of specifying actions
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/rest-client/rest-client
 	arch = any
 	license = MIT
-	depends = ruby
-	depends = ruby-mime-types
-	depends = ruby-netrc
-	noextract = rest-client-1.7.3.gem
+	depends = ruby>=1.9.2
+	depends = ruby-http-cookie>=1.0.2
+	depends = ruby-mime-types>1.16
+	depends = ruby-netrc>=0.7
+	noextract = rest-client-1.8.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rest-client-1.7.3.gem
+	source = https://rubygems.org/downloads/rest-client-1.8.0.gem
 	sha256sums = 010c236eda2ee04bb99d7d4e6d892a65a05775bec8f553c7d46f5f76bff06511
 
 pkgname = ruby-rest-client
