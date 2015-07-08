@@ -1,0 +1,22 @@
+pkgbase = pfring-kmod-git
+	pkgdesc = kernel module for packet capture at wirespeed
+	pkgver = 20150708
+	pkgrel = 1
+	url = http://www.ntop.org
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = linux-headers
+	makedepends = make
+	makedepends = binutils
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	depends = numactl
+	provides = pfring-kmod
+	conflicts = pfring-kmod
+	source = git+https://github.com/ntop/PF_RING.git
+	md5sums = SKIP
+
+pkgname = pfring-kmod-git
+
