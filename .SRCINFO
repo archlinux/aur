@@ -1,0 +1,13 @@
+pkgbase = hyphen-el
+	pkgdesc = Greek hyphenation rules
+	pkgver = 1.1b
+	pkgrel = 2
+	url = http://ispell.math.upatras.gr
+	arch = any
+	license = LGPL
+	optdepends = hyphen: offers hyphenation library functions
+	source = http://ispell.math.upatras.gr/files/ooffice/hyph_el.zip
+	md5sums = f4eae38b3b3c6b043089c3e7e6176a2d
+
+pkgname = hyphen-el
+
