@@ -1,0 +1,16 @@
+ac_add_options --enable-application=instantbird
+ac_add_options --prefix=/usr
+ac_add_options --with-system-nss
+ac_add_options --with-system-nspr
+ac_add_options --disable-crashreporter
+ac_add_options --disable-installer
+ac_add_options --disable-tests
+
+if [ "$DEBUG" ]; then
+  mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj-instantbird-dbg
+  ac_add_options --enable-extensions=inspector
+  ac_add_options --enable-debug --disable-optimize --disable-jemalloc
+else
+  mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj-instantbird
+  ac_add_options --disable-debug --enable-optimize
+fi

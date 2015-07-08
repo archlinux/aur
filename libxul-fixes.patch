@@ -1,0 +1,71 @@
+diff -ru instantbird-1.3-src.orig/config/config.mk instantbird-1.3-src/config/config.mk
+--- instantbird-1.3-src.orig/config/config.mk	2012-11-15 13:03:50.000000000 -0800
++++ instantbird-1.3-src/config/config.mk	2012-11-22 12:59:21.000000000 -0800
+@@ -457,7 +457,7 @@
+ endif
+ 
+ SDK_LIB_DIR = $(DIST)/sdk/lib
+-SDK_BIN_DIR = $(DIST)/sdk/bin
++SDK_BIN_DIR = $(LIBXUL_DIST)/sdk/bin
+ 
+ DEPENDENCIES	= .md
+ 
+diff -ru instantbird-1.3-src.orig/mozilla/build/unix/Makefile.in instantbird-1.3-src/mozilla/build/unix/Makefile.in
+--- instantbird-1.3-src.orig/mozilla/build/unix/Makefile.in	2012-11-15 13:11:38.000000000 -0800
++++ instantbird-1.3-src/mozilla/build/unix/Makefile.in	2012-11-22 12:56:46.000000000 -0800
+@@ -23,7 +23,6 @@
+ 
+ TEST_DIRS = test
+ 
+-SDK_BINARY = run-mozilla.sh
+ 
+ include $(topsrcdir)/config/rules.mk
+ 
+diff -ru instantbird-1.3-src.orig/mozilla/config/config.mk instantbird-1.3-src/mozilla/config/config.mk
+--- instantbird-1.3-src.orig/mozilla/config/config.mk	2012-11-15 13:11:38.000000000 -0800
++++ instantbird-1.3-src/mozilla/config/config.mk	2012-11-22 12:59:41.000000000 -0800
+@@ -527,7 +527,7 @@
+ endif
+ 
+ SDK_LIB_DIR = $(DIST)/sdk/lib
+-SDK_BIN_DIR = $(DIST)/sdk/bin
++SDK_BIN_DIR = $(LIBXUL_DIST)/sdk/bin
+ 
+ DEPENDENCIES	= .md
+ 
+diff -ru instantbird-1.3-src.orig/mozilla/js/src/config/config.mk instantbird-1.3-src/mozilla/js/src/config/config.mk
+--- instantbird-1.3-src.orig/mozilla/js/src/config/config.mk	2012-11-15 13:11:42.000000000 -0800
++++ instantbird-1.3-src/mozilla/js/src/config/config.mk	2012-11-22 13:00:00.000000000 -0800
+@@ -527,7 +527,7 @@
+ endif
+ 
+ SDK_LIB_DIR = $(DIST)/sdk/lib
+-SDK_BIN_DIR = $(DIST)/sdk/bin
++SDK_BIN_DIR = $(LIBXUL_DIST)/sdk/bin
+ 
+ DEPENDENCIES	= .md
+ 
+diff -ru instantbird-1.5-src.orig/instantbird/locales/Makefile.in instantbird-1.5-src/instantbird/locales/Makefile.in
+--- instantbird-1.5-src.orig/instantbird/locales/Makefile.in	2014-01-03 11:44:32.000000000 -0800
++++ instantbird-1.5-src/instantbird/locales/Makefile.in	2014-01-03 11:45:52.000000000 -0800
+@@ -83,10 +82,8 @@
+ 
+ libs-%:
+ 	$(NSINSTALL) -D $(DIST)/install
+-	@$(MAKE) -C ../../mozilla/toolkit/locales libs-$*
+ 	@$(MAKE) -C ../../chat/locales AB_CD=$* XPI_NAME=locale-$*
+ 	@$(MAKE) -C ../../purple/locales AB_CD=$* XPI_NAME=locale-$*
+-	@$(MAKE) -C ../../mozilla/extensions/spellcheck/locales AB_CD=$* XPI_NAME=locale-$*
+ 	@$(MAKE) -C ../../mozilla/intl/locales AB_CD=$* XPI_NAME=locale-$*
+ 	@$(MAKE) libs AB_CD=$* XPI_NAME=locale-$* PREF_DIR=defaults/pref
+ 	@$(MAKE) -C $(DEPTH)/$(MOZ_BRANDING_DIRECTORY)/locales AB_CD=$* XPI_NAME=locale-$*
+@@ -134,7 +131,7 @@
+ 	  $(STAGEDIST)/isp/$(AB_CD) \
+ 	  $(STAGEDIST)/chrome/$(AB_CD)
+ 
+-langpack: langpack-$(AB_CD)
++langpack:
+ 
+ # This is a generic target that will make a langpack, repack ZIP (+tarball)
+ # builds, and repack and installer if applicable. It is called from the
+

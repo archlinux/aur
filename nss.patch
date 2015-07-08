@@ -1,0 +1,24 @@
+diff -ru instantbird-1.5-src.orig/mozilla/configure.in instantbird-1.3-src/mozilla/configure.in
+--- instantbird-1.5-src.orig/mozilla/configure.in	2012-11-15 13:11:47.000000000 -0800
++++ instantbird-1.5-src/mozilla/configure.in	2012-11-22 12:38:19.000000000 -0800
+@@ -3911,7 +3911,7 @@
+ if test -n "$MOZ_NATIVE_NSS"; then
+    NSS_LIBS="$NSS_LIBS -lcrmf"
+ else
+-   NSS_CFLAGS='-I$(LIBXUL_DIST)/include/nss'
++   NSS_CFLAGS=`$NSS_CONFIG $nss_config_args --cflags`
+ 
+    if test -z "$GNU_CC" -a "$OS_ARCH" = "WINNT" -o "$OS_ARCH" = "OS2"; then
+        NSS_LIBS="\
+diff -ru instantbird-1.5-src.orig/purple/libpurple/Makefile.in instantbird-1.3-src/purple/libpurple/Makefile.in
+--- instantbird-1.5-src.orig/purple/libpurple/Makefile.in	2012-11-15 13:03:51.000000000 -0800
++++ instantbird-1.5-src/purple/libpurple/Makefile.in	2012-11-22 12:42:54.000000000 -0800
+@@ -19,7 +19,7 @@
+ VISIBILITY_FLAGS=
+ 
+ ifeq (,$(filter WINNT Darwin,$(OS_ARCH)))
+-LOCAL_INCLUDES	= $(GLIB_CFLAGS) $(LIBXML2_CFLAGS)
++LOCAL_INCLUDES	= $(NSS_CFLAGS) $(GLIB_CFLAGS) $(LIBXML2_CFLAGS)
+ else
+ LOCAL_INCLUDES  = -I$(DIST)/include/glib
+ SHARED_LIBRARY_LIBS += $(foreach lib,glib xml2,../libraries/$(lib)/$(LIB_PREFIX)$(lib).$(LIB_SUFFIX))

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Instandbird
+GenericName=Instant Messenger
+Comment=Multi-protocol Instant Messaging Client
+Exec=instantbird
+Icon=/usr/share/pixmaps/instantbird.png
+Terminal=false
+Type=Application
+Categories=Network;
+StartupNotify=false
