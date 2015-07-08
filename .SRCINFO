@@ -1,0 +1,19 @@
+pkgbase = chronos-firmware
+	pkgdesc = Mushkin FW for Atlas, Catalyst, Chronos, Chronos Deluxe, and Chronos MX Sandforce SF-2200 SSDs
+	pkgver = 5.0.7
+	pkgrel = 2
+	url = http://poweredbymushkin.com/support/ssd-firmware-updates
+	install = chronos-firmware.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	makedepends = gzip
+	optdepends = sandforce-updater: flash firmware
+	source = http://poweredbymushkin.com/firmware/Mushkin_Atlas_Chronos_Catalyst_507_FW_Update.zip
+	source = https://github.com/oshazard/aur-includes/raw/master/chronos-firmware/includes.tar.gz
+	md5sums = d989b290e195aedaec75133f63bf8bb7
+	md5sums = 3a8f37a7e2b2e882982b74884eacaa66
+
+pkgname = chronos-firmware
+
