@@ -1,0 +1,16 @@
+pkgbase = sendemail
+	pkgdesc = A lightweight command line SMTP email client written in Perl
+	pkgver = 1.56
+	pkgrel = 1
+	url = http://caspian.dotconf.net/menu/Software/SendEmail/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-net-ssleay
+	depends = perl-io-socket-ssl
+	source = http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz
+	sha256sums = 6dd7ef60338e3a26a5e5246f45aa001054e8fc984e48202e4b0698e571451ac0
+
+pkgname = sendemail
+
