@@ -1,7 +1,7 @@
 pkgbase = ini-git
 	pkgdesc = Command line tool for examining the contents of INI files
 	pkgver = r2.fa7665b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2ion/ini
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=ini-git
 pkgver=r2.fa7665b
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for examining the contents of INI files"
 arch=('i686' 'x86_64')
 url="https://github.com/2ion/ini"
@@ -32,5 +32,5 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install-strip
 }
