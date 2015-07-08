@@ -1,0 +1,13 @@
+pkgbase = rephrase
+	pkgdesc = A specialized passphrase recovery tool for GnuPG.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.roguedaemon.net/rephrase/
+	arch = any
+	license = GPL
+	depends = gnupg
+	source = http://www.roguedaemon.net/rephrase/rephrase-0.1.tar.gz
+	md5sums = be53cd4988efa1a226f3dc15decf12a9
+
+pkgname = rephrase
+
