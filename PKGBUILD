@@ -3,7 +3,7 @@
 
 pkgname=nand2tetris
 pkgver=2.5
-pkgrel=3
+pkgrel=7
 pkgdesc="Software suite accompanying Nand2Tetris course."
 arch=('any')
 url="http://www.nand2tetris.org/"
@@ -21,7 +21,7 @@ source=(http://www.nand2tetris.org/software/nand2tetris.zip
         n2tHardwareSimulator.desktop
         n2tAssembler.desktop
 )
-md5sums=('1e8c2c77698fddfe570f214db56b7666'
+md5sums=('07768ec1fa67c7a4d7be23b298834d64'
          '9c06f1ca0a0323638a7523f0d4dd85a3'
          '99d421df02cb61b735c998e524889ca6'
          'f2d16dd061e09dcc128e944ba74da237'
