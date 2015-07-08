@@ -1,0 +1,24 @@
+pkgbase = googleplaydownloader
+	pkgdesc = A graphical software to download APKs from the Google Play store.
+	pkgver = 1.6
+	pkgrel = 2
+	url = https://codingteam.net/project/googleplaydownloader
+	arch = any
+	license = AGPL
+	makedepends = gendesk
+	depends = python2
+	depends = python2-protobuf
+	depends = python2-requests
+	depends = wxpython
+	depends = python2-ndg-httpsclient
+	optdepends = java-runtime: needed for autogeneration of a new AndroiID
+	options = !emptydirs
+	source = https://codingteam.net/project/googleplaydownloader/download/file/googleplaydownloader-1.6.tar.gz
+	source = googleplaydownloader
+	source = googleplaydownloader.png::https://codingteam.net/project/googleplaydownloader/upload/icon.png
+	sha1sums = f0058fe53ed8f009d5e3bcda1ec2b3389d332fa0
+	sha1sums = 154d3ade5d56fdfdc1f7d590f7e06bdf6aba0bfa
+	sha1sums = 61de3e6b29fc82bacf98c8de9e3ad4cec6c70631
+
+pkgname = googleplaydownloader
+
