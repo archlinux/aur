@@ -1,0 +1,25 @@
+pkgbase = heroku-toolbelt
+	pkgdesc = Everything you need to get started using Heroku (including foreman)
+	pkgver = 3.36.5
+	pkgrel = 1
+	url = https://toolbelt.heroku.com
+	arch = any
+	license = MIT
+	license = APACHE
+	license = RUBY
+	license = PerlArtistic
+	license = GPL
+	license = custom
+	makedepends = ruby-bundler
+	depends = ruby>=1.9
+	optdepends = git
+	conflicts = ruby-heroku
+	conflicts = ruby-foreman
+	conflicts = heroku-client
+	source = Gemfile
+	source = Gemfile.lock
+	md5sums = 0a2cce437aeb5097696a6f78cc4c3bb5
+	md5sums = 31cf02779f22ac6dc8e1fa894abbccd2
+
+pkgname = heroku-toolbelt
+
