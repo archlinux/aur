@@ -1,0 +1,13 @@
+pkgbase = poker-eval
+	pkgdesc = C library to evaluate poker hands
+	pkgver = 138.0
+	pkgrel = 1
+	url = http://gna.org/projects/pokersource/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://download.gna.org/pokersource/sources/poker-eval-138.0.tar.gz
+	md5sums = 8398b5b98c8ebd1cc03dfac96b477012
+
+pkgname = poker-eval
+
