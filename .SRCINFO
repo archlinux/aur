@@ -1,7 +1,7 @@
 pkgbase = laptop-mode-tools
 	pkgdesc = Power Savings tool for Linux
-	pkgver = 1.66
-	pkgrel = 3
+	pkgver = 1.67
+	pkgrel = 1
 	url = https://github.com/rickysarraf/laptop-mode-tools
 	arch = any
 	license = GPL2
@@ -41,8 +41,8 @@ pkgbase = laptop-mode-tools
 	backup = etc/laptop-mode/conf.d/wireless-power.conf
 	backup = etc/laptop-mode/laptop-mode.conf
 	backup = etc/laptop-mode/lm-profiler.conf
-	source = https://github.com/rickysarraf/laptop-mode-tools/archive/debian/1.66-2.tar.gz
-	sha256sums = c9fa63f501bfbb14167eedefb04f7df8e9d1abd23f2a77896b874b61c076882a
+	source = laptop-mode-tools-1.67-1.tar.gz::https://github.com/rickysarraf/laptop-mode-tools/archive/debian/1.67-1.tar.gz
+	sha256sums = 9481c741ef0027479f218752230c2bb9b12edd54d6f43fafa10b72d37df17ebd
 
 pkgname = laptop-mode-tools
 
