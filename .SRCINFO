@@ -1,0 +1,19 @@
+pkgbase = megatools
+	pkgdesc = Command line client application for Mega.co.nz
+	pkgver = 1.9.95
+	pkgrel = 1
+	url = http://megatools.megous.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	depends = curl
+	depends = glib-networking
+	depends = fuse
+	optdepends = gobject-introspection: Bindings support for JavaScript
+	options = !libtool
+	source = http://megatools.megous.com/builds/megatools-1.9.95.tar.gz
+	md5sums = 93c7762196af8ed90920084df03210fb
+
+pkgname = megatools
+
