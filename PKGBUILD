@@ -1,25 +1,22 @@
 # Maintainer: WoefulDerelict <WoefulDerelict at GMail dot com>
 # Contributor: speps <speps at aur dot archlinux dot org>
-_pkgname=ladish
-pkgname=${_pkgname}-git
+pkgname=ladish-git
 pkgver=0.3.r147.g5fe205f
-pkgrel=1
+pkgrel=3
 pkgdesc="Session management system for JACK."
 arch=('any')
 url="https://launchpad.net/ladish"
 license=('GPL2')
 depends=('jack2-dbus' 'dbus-glib' 'laditools-git' 'flowcanvas<=0.7.1' 'a2jmidid')
 makedepends=('git' 'python2')
-provides=("${_pkgname}" "lash")
-conflicts=("${_pkgname}" "lash")
+provides=("ladish" "lash")
+conflicts=("ladish" "lash")
 install=${pkgname}.install
-source=("git://repo.or.cz/${_pkgname}.git")
+source=("git://repo.or.cz/ladish.git")
 md5sums=('SKIP')
 
-_branch=master
-
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/ladish
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^ladish-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -27,14 +24,14 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  git checkout ${_branch}
+  cd "${srcdir}/ladish"
+  git checkout master
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/ladish"
   export PYTHON=/usr/bin/python2
-  sed -i "s|env python|&2|" ${_pkgname}_control
+  sed -i "s|env python|&2|" ladish_control
   sed -i "s|\(RELEASE = \).*|\1True|" wscript
   python2 waf configure --prefix=/usr \
                         --enable-liblash \
@@ -43,6 +40,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/ladish"
   python2 waf install --destdir="${pkgdir}/"
 }

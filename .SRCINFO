@@ -1,7 +1,7 @@
 pkgbase = ladish-git
 	pkgdesc = Session management system for JACK.
 	pkgver = 0.3.r147.g5fe205f
-	pkgrel = 1
+	pkgrel = 3
 	url = https://launchpad.net/ladish
 	install = ladish-git.install
 	arch = any
