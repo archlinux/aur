@@ -1,0 +1,13 @@
+pkgbase = shc
+	pkgdesc = Converts shell script to C source code, and then compiles it. Do NOT use this to encrypt your scripts as it is not meant to be used for that.
+	pkgver = 3.8.9
+	pkgrel = 2
+	url = http://www.datsi.fi.upm.es/~frosal/sources/shc.html
+	arch = any
+	license = GPL
+	provides = shc
+	source = http://www.datsi.fi.upm.es/~frosal/sources/shc-3.8.9.tgz
+	sha256sums = 60f3220db9440322e8eddeea82501035931193e8570983e73b0519b6317ffe4a
+
+pkgname = shc
+
