@@ -7,6 +7,7 @@ pkgbase = perl-string-random
 	license = PerlArtistic
 	license = GPL
 	depends = perl
+	depends = perl-module-build
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/String-Random-0.26.tar.gz
 	sha256sums = d2fca6c3a54002b9a41d1888672db5a00c9e63deae041d992473544a3364b7f7
