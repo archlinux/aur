@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: boyska <piuttosto@logorroici.org>
+# Maintainer: Alan Berndt <alan@eatabrick.org>
 pkgname=libgfshare
-pkgver=1.0.5
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="utilities for multi-way secret-sharing"
@@ -24,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=('http://www.digital-scurf.org/files/libgfshare/libgfshare-1.0.5.tar.gz')
+source=('http://www.digital-scurf.org/files/libgfshare/libgfshare-2.0.0.tar.bz2')
 noextract=()
-md5sums=('ec88b5d72183b4d1f7115ee23fa61c7a')
+sha1sums=('2813a69c7f69dfc406292af4c79f08cf46c54a4f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
