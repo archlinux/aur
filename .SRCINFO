@@ -1,0 +1,17 @@
+pkgbase = otf-aurulent-sans
+	pkgdesc = Aurulent Sans is designed to be used as an interface font on free graphics servers such as X.org.
+	pkgver = 20121130
+	pkgrel = 1
+	url = http://www.dafont.com/aurulent-sans.font
+	install = otf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = otf-aurulent-sans-20121130.zip::http://img.dafont.com/dl/?f=aurulent_sans
+	source = OFL.txt
+	sha1sums = d22a292f5aa66708cceb2ead2f341a88859d40cd
+	sha1sums = e4575441fb9b826e243d7a76622686d7923835cb
+
+pkgname = otf-aurulent-sans
+
