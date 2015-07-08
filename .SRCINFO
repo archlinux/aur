@@ -1,0 +1,24 @@
+pkgbase = toxic-git
+	pkgdesc = CLI Frontend in ncurses for Tox
+	pkgver = r1521.4d73f8b
+	pkgrel = 2
+	url = http://tox.im
+	install = toxic-git.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	depends = desktop-file-utils
+	depends = freealut
+	depends = libnotify
+	depends = tox-git
+	provides = toxic
+	conflicts = toxic
+	source = toxic-git::git+https://github.com/Tox/toxic.git
+	sha512sums = SKIP
+
+pkgname = toxic-git
+
