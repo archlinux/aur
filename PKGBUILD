@@ -26,8 +26,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 
 install=icecat.install
-source=(http://jenkins.trisquel.info/icecat/binaries/${pkgname}-${_pkgver}.tar.bz2{,.sig}
-#source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
+#source=(http://jenkins.trisquel.info/icecat/binaries/${pkgname}-${_pkgver}.tar.bz2{,.sig}
+source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
 #source=(http://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${pkgver}.tar.xz      ## Good mirror
         mozconfig
         icecat.desktop
