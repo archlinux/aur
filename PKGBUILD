@@ -1,6 +1,9 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Ivan Petruk <localizator@ukr.net>
 
+# Note: For this PKGBUILD, 'makepkg -s' will not build the package if jq is not
+# installed on the system. Instead, 'makepkg -s; makepkg'.
+
 _i686_code=XZFLUXZgiFvDjEWrjBd5A0yP6qRvhcw4kAk
 _x86_64_code=XZ5LUXZnCaQsycCaLFoymzccM68XFRwXyNX
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
@@ -15,8 +18,8 @@ makedepends=('jq')
 depends=('qt4')
 conflicts=('pcloud-git')
 replaces=('pcloud-git')
-source_i686="https://www.pcloud.com" # Placeholder
-source_x86_64="https://www.pcloud.com" # Placeholder
+source_i686=() # Placeholder
+source_x86_64=() # Placeholder
 sha256sums_i686=('3611ae16586358bfd5e7889fa5e5be815fa2a36dcb5e033febb9f4d7205d03b6')
 sha256sums_x86_64=('634fcec47799c2c8fd9f7cdf68bd48b135102a81fed51df58161b9984faf75f6')
 
@@ -35,7 +38,14 @@ package() {
     install -Dm644 usr/share/pixmaps/pcloud-icon.svg "${pkgdir}/usr/share/pixmaps/pcloud-icon.svg"
 }
 
-case ${CARCH} in
-    i686) source_i686=("http://$(curl "${_api_url}${_i686_code}" 2> /dev/null | jq -r '.hosts[0] + .path')") ;;
-    x86_64) source_x86_64=("http://$(curl "${_api_url}${_x86_64_code}" 2> /dev/null | jq -r '.hosts[0] + .path')") ;;
-esac
+
+_get_source() {
+    case ${CARCH} in
+        i686)
+            source_i686=("http://$(curl "${_api_url}${_i686_code}" 2> /dev/null | jq -r '.hosts[0] + .path')") ;;
+        x86_64)
+            source_x86_64=("http://$(curl "${_api_url}${_x86_64_code}" 2> /dev/null | jq -r '.hosts[0] + .path')") ;;
+    esac
+}
+
+jq --version &>/dev/null && _get_source || true
