@@ -1,0 +1,15 @@
+pkgbase = justbrowsing-firefox-profile
+	pkgdesc = Firefox profile for JustBrowsing
+	pkgver = 20140804
+	pkgrel = 1
+	url = https://github.com/justbrowsing/justbrowsing-firefox-profile
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = justbrowsing-home
+	optdepends = firefox: web browser
+	source = https://github.com/justbrowsing/justbrowsing-firefox-profile/archive/master.zip
+	options = !docs
+
+pkgname = justbrowsing-firefox-profile
+
