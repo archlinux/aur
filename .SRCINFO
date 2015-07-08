@@ -7,8 +7,8 @@ pkgbase = drawille-git
 	license = GPL3
 	makedepends = git
 	depends = ncurses
-	depends = python
-	depends = python-setuptools
+	depends = python2
+	depends = python2-setuptools
 	source = git+https://github.com/asciimoo/drawille.git
 	sha256sums = SKIP
 
