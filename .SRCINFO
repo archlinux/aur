@@ -1,0 +1,24 @@
+pkgbase = libpfring-git
+	pkgdesc = library to interface with the PF_RING kernel module
+	pkgver = 20150708
+	pkgrel = 1
+	url = http://www.ntop.org
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = linux-headers
+	makedepends = make
+	makedepends = binutils
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	depends = numactl
+	depends = pfring-kmod-git
+	provides = libpfring
+	conflicts = libpfring
+	options = staticlibs
+	source = git+https://github.com/ntop/PF_RING.git
+	md5sums = SKIP
+
+pkgname = libpfring-git
+
