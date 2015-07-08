@@ -1,6 +1,6 @@
 pkgbase = zeromq-git
 	pkgdesc = ZeroMQ core engine in C++
-	pkgver = 20150519
+	pkgver = 20150708
 	pkgrel = 1
 	url = https://github.com/zeromq/libzmq
 	arch = i686
