@@ -1,0 +1,21 @@
+pkgbase = mkinitcpio-btrfs
+	pkgdesc = mkinitcpio hook containing advanced features for btrfs-based root devices
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/xtfxme/mkinitcpio-btrfs
+	install = mkinitcpio-btrfs.install
+	arch = any
+	license = BSD
+	depends = mkinitcpio>=0.9.0
+	depends = btrfs-progs
+	depends = kexec-tools
+	backup = etc/default/btrfs_advanced
+	source = btrfs_hook
+	source = btrfs_install
+	source = btrfs_config
+	md5sums = 0e2b0a9bebfca0ebc2145cc6b2c0de76
+	md5sums = dc4bf193c9581625a5623d26f6096183
+	md5sums = 73806b834c9fa8a8bb39d0201c63f21a
+
+pkgname = mkinitcpio-btrfs
+

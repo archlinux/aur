@@ -1,0 +1,50 @@
+# This file contains some information for the btrfs_advanced initcpio hook.
+
+# Define the default subvolume for our root filesystem.
+BTRFS_DIR_ACTIVE="/__active"
+
+# Define the folder containing snapshots of our root filesystem.
+BTRFS_DIR_SNAPSHOT="/__snapshot"
+
+# Define the subvolume used for rollback operations.
+#
+# This subvolume is temporary and gets deleted each time a restore is
+# triggered. To make it permanent create a snapshot to BTRFS_DIR_ACTIVE.
+BTRFS_DIR_ROLLBACK="/__rollback"
+
+# Define if we have to do kernel rollbacks (enabled by default).
+#
+# In setup with a separate /boot partiton this must be enabled to prevent
+# this hook from searching for the kernel on your btrfs root.
+#BTRFS_ROLLBACK_KERNEL=false
+
+# If you use a custom kernel, specify its name and location below.
+#
+# Currently the kernel must be part on your root volume, as we don't mount
+# anything else in early boot stage.
+#BTRFS_KERNEL="/boot/vmlinuz-linux"
+#BTRFS_INITRD="/boot/initramfs-linux.img"
+
+# It is possible to move and replace BTRFS_DIR_ACTIVE with an older snapshot
+# while it is mounted and reboot afterwards. If you prefer to rollback like
+# this, you can optionally disable the on-boot rollback dialog. This will
+# improve your boot speed by > 3 seconds.
+#BTRFS_ROLLBACK_DIALOG=false
+
+# By default we reload the kernel image from the chosen boot root subvolume
+# only if the version and build-number/date differs from `uname -rv`.
+#
+# If you want to reload the kernel on every boot, you can disable this check.
+#BTRFS_KVER_CHECK=false
+
+# Try to mount RAID setups, when there are devices missing.
+#
+# This is usualy wanted on productive setups, because btrfs supports to
+# replace faulty drives online.
+#
+# ATTENTION: If you enable this, you need to make sure to rebalance the btrfs
+# RAID after system upgrade. Otherwise kernal panic is possible by unbalanced
+# libraries.
+#BTRFS_ENABLE_DEGRADED=true
+
+# vim:set syntax=sh:

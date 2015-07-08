@@ -1,0 +1,74 @@
+post_install() { post_upgrade "${@}"; }
+
+post_upgrade() {
+
+    { grep -qe '^HOOKS=.*btrfs[^_]' /etc/mkinitcpio.conf && cat <<'MSG'
+
+==> WARNING: detected active hook "btrfs" in /etc/mkinitcpio.conf
+  -> You MUST rename it to "btrfs_advanced".
+     Else this hook will *not* run!
+MSG
+} || {
+    [ -z "${2}" ] && ! grep -qe '^HOOKS=.*btrfs_advanced' /etc/mkinitcpio.conf && cat <<'MSG'
+
+==> Add hook to /etc/mkinitcpio.conf:
+  -> HOOKS="[...] btrfs_advanced"
+MSG
+}
+
+    cat <<'MSG'
+
+==> Have a look in /etc/default/btrfs_advanced to configure advanced options.
+
+==> Run mkinitcpio to update your initramfs image
+    # mkinitcpio -p linux
+
+==> ATTENTION: GRUB 2.02 does no longer support relative paths from set-default
+    subvolumes. Thus it is recommended to regenerate your GRUB configuration
+    using grub-mkconfig and also reinstall GRUB to your drive using
+    grub-install, as this is not done automatically on GRUB version updates.
+MSG
+
+    [ $(vercmp ${1} 0.3) -ge 0 ] &&
+    [ $(vercmp ${2:-0} 0.3) -lt 0 ] &&
+        _display_rollback_add_info
+
+    cat <<'MSG'
+
+==> Have ideas for this hook? Share!
+  -> [GitHub] https://github.com/xtfxme/mkinitcpio-btrfs
+  -> [AUR]    https://aur.archlinux.org/packages/mkinitcpio-btrfs
+MSG
+
+    echo
+}
+
+post_remove() {
+
+    cat <<'MSG'
+
+==> Remove "btrfs_advanced" from HOOKS in /etc/mkinitcpio.conf
+
+==> Run mkinitcpio to update your initramfs image (remove hook)
+    # mkinitcpio -p linux
+MSG
+
+    echo
+}
+
+_display_rollback_add_info() {
+
+    cat <<'MSG'
+
+==> To ENABLE rollback support, EITHER:
+  -> Reboot and the hook will ask to do it for you.
+  -> Or run the following command RIGHT before rebooting:
+     # btrfs subvolume snapshot / /__active
+     # btrfs subvolume list /
+     ID 256 gen 98 top level 5 path __active
+     # btrfs subvolume set-default 256 .
+     Changes between snapshot and reboot will be ignored!
+MSG
+
+}
+

@@ -1,0 +1,379 @@
+#!/bin/ash
+# BTRFS repair/bootstrap initramfs hook
+#
+# Copyright (c) 2010-2012, C Anthony Risinger
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met: 
+#
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer. 
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution. 
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# hook name
+: ${BTRFS_HOOK_NAME:="btrfs_advanced"}
+
+# output handlers
+btrfs_info () { [ "${quiet}" != "y" ] && echo ":: ${BTRFS_HOOK_NAME} [INFO]: ${@}"; }
+btrfs_warn () { echo ":: ${BTRFS_HOOK_NAME} [WARN]: ${@}"; }
+btrfs_error () { echo ":: ${BTRFS_HOOK_NAME} [ERROR]: ${@}"; }
+btrfs_fatal () { echo ":: ${BTRFS_HOOK_NAME} [FATAL]: ${@}"; break=y; }
+
+# source config
+if [ -f /etc/default/btrfs_advanced ]; then
+    . /etc/default/btrfs_advanced
+    btrfs_info "Configuration file /etc/default/btrfs_advanced loaded"
+fi
+
+# set defaults if not specified in config
+: ${BTRFS_DIR_ACTIVE:="/__active"}
+: ${BTRFS_DIR_SNAPSHOT:="/__snapshot"}
+: ${BTRFS_DIR_ROLLBACK:="/__rollback"}
+
+# strip trailing / if needed
+BTRFS_DIR_ACTIVE="${BTRFS_DIR_ACTIVE%/}"
+BTRFS_DIR_SNAPSHOT="${BTRFS_DIR_SNAPSHOT%/}"
+BTRFS_DIR_ROLLBACK="${BTRFS_DIR_ROLLBACK%/}"
+
+# internal variables
+: ${BTRFS_HAS_ROLLBACK:=true}
+: ${BTRFS_DIR_WORK:="/new_root"}
+: ${BTRFS_BOOT_SUBVOL:="."}
+: ${BTRFS_BOOT_SUBVOLID:=0}
+: ${BTRFS_ROLLBACK_DIALOG:=true}
+: ${BTRFS_ROLLBACK_CHOICE:="default"}
+: ${BTRFS_ROLLBACK_LIST:="default"}
+: ${BTRFS_ROLLBACK_LIST_COUNT:=1}
+: ${BTRFS_ROLLBACK_KERNEL:=true}
+: ${BTRFS_KERNEL:="/boot/vmlinuz-linux"}
+: ${BTRFS_INITRD:="/boot/initramfs-linux.img"}
+: ${BTRFS_KVER_CHECK:=true}
+: ${BTRFS_KVER_DIFFER:=true}
+: ${BTRFS_ENABLE_DEGRADED:=false}
+: ${BTRFS_ENABLE_DEGRADED_ROLLBACK:=false}
+: ${BTRFS_BOOT_DELAY:=0}
+
+root_is_btrfs() {
+    [ "$(blkid -s TYPE -o value "$root" )" != "btrfs" ] &&
+        [ "$(blkid -s TYPE -o value -lt "$root" )" != "btrfs" ]
+} 2>/dev/null
+
+kver() {
+    # extract kernel_version from header in kernel image
+    # according to kernel documentation:
+    # https://www.kernel.org/doc/Documentation/x86/boot.txt
+
+    local offset=$(hexdump -s 526 -n 2 -e '"%d"' "$1")
+    hexdump -s $(( 0x200 + offset )) -n 128 -e '"%.2s"' "$1" | strings -n10
+}
+
+btrfs_mount_handler () {
+    local x i=1 work=${1%/}
+    BTRFS_DIR_WORK=${work}
+
+    if ! root_is_btrfs; then
+        default_mount_handler "$@"
+        return
+    fi
+
+    # temporary mount btrfs root subvolume
+    if ! mount -t btrfs -o subvolid=0,rw ${root} ${work}; then
+
+        # try to mount in degraded mode
+        if ${BTRFS_ENABLE_DEGRADED}; then
+            if ! mount -t btrfs -o subvolid=0,rw,degraded ${root} ${work}; then
+                btrfs_fatal "Unable to mount root subvolume in degraded mode"
+                return 1
+            else
+                btrfs_warn "Mounted root subvolume in degraded mode"
+                sleep 3
+                rootflags="${rootflags},degraded"
+
+                # supress rollback choice in degraded mode
+                if ! ${BTRFS_ENABLE_DEGRADED_ROLLBACK}; then
+                    btrfs_info "Disabled rollback feature in degraded mode"
+                    kexeced=1
+                fi
+            fi
+        else
+            btrfs_fatal "Unable to mount root subvolume"
+            return 1
+        fi
+    fi
+
+    # check if we already ran kexec
+    if [ -z "$kexeced" ]; then
+
+        if ! [ -d ${work}${BTRFS_DIR_ACTIVE} ]; then
+
+            # ask to initialize active subvolume
+            if ! btrfs_ask_volatile && btrfs_set_volatile; then
+                BTRFS_HAS_ROLLBACK=false
+            fi
+        fi
+
+        if ${BTRFS_HAS_ROLLBACK}; then
+
+            # ask for rollback
+            if ${BTRFS_ROLLBACK_DIALOG} && btrfs_ask_rollback; then
+
+                # collect available snapshots
+                for x in $(btrfs subvolume list ${work} --sort=gen | awk '{print $2 ",/" $9}' | grep -E "^[0-9]*,${BTRFS_DIR_SNAPSHOT}/"); do
+                    i=$((${i}+1))
+                    BTRFS_ROLLBACK_LIST_COUNT=${i}
+                    BTRFS_ROLLBACK_LIST="${BTRFS_ROLLBACK_LIST} ${x}"
+                done; i=1
+
+                # print available snapshots
+                echo "Available rollback snapshots:"
+                for x in ${BTRFS_ROLLBACK_LIST}; do
+                    echo -e "${i})\t${x#*,}"
+                    i=$((${i}+1))
+                done; i=1
+
+                # let the user choose a snapshot
+                BTRFS_ROLLBACK_CHOICE="$(btrfs_get_rollback_choice)"
+
+                if [ "${BTRFS_ROLLBACK_CHOICE}" != "default" ]; then
+                    # choose snapshots subvolume
+                    BTRFS_BOOT_SUBVOL=${BTRFS_ROLLBACK_CHOICE#*,}
+
+                    # snapshot to rollback
+                    btrfs_setup_rollback
+
+                    # get new subvolid of rollback subvolume
+                    x="$(btrfs subvolume list ${work} | awk '{print $2 ",/" $9}' | grep -E "^[0-9]*,${BTRFS_DIR_ROLLBACK}$")"
+                    BTRFS_BOOT_SUBVOL=${x#*,}
+                    BTRFS_BOOT_SUBVOLID=${x%,*}
+                else
+                    # get subvolid of active subvolume
+                    x="$(btrfs subvolume list ${work} | awk '{print $2 ",/" $9}' | grep -E "^[0-9]*,${BTRFS_DIR_ACTIVE}$")"
+                    BTRFS_BOOT_SUBVOL=${x#*,}
+                    BTRFS_BOOT_SUBVOLID=${x%,*}
+                fi
+            else
+                # get subvolid of active subvolume
+                x="$(btrfs subvolume list ${work} | awk '{print $2 ",/" $9}' | grep -E "^[0-9]*,${BTRFS_DIR_ACTIVE}$")"
+                BTRFS_BOOT_SUBVOL=${x#*,}
+                BTRFS_BOOT_SUBVOLID=${x%,*}
+            fi
+
+            # btrfs subvolume set-default
+            btrfs_info "Booting from subvolume [${BTRFS_BOOT_SUBVOL}]..."
+            btrfs subvolume set-default ${BTRFS_BOOT_SUBVOLID} ${work}
+
+            # if kernel rollback is enabled (so it is by default)
+            if ${BTRFS_ROLLBACK_KERNEL}; then
+
+                # test if a new kernel is present
+                if [ -f ${work}${BTRFS_BOOT_SUBVOL}${BTRFS_KERNEL} -a -f ${work}${BTRFS_BOOT_SUBVOL}${BTRFS_INITRD} ]; then
+
+                    # compare running kernel's version against kernel image
+                    if ${BTRFS_CHECK_KVER}; then
+                        if kver "${work}${BTRFS_BOOT_SUBVOL}${BTRFS_KERNEL}" | grep -F "$(uname -r)" | grep -Fq "$(uname -v)"; then
+                            BTRFS_KVER_DIFFER=false
+                        fi
+                    fi
+
+                    # only load new kernel if versions differ
+                    # if the above check failes they differ by default anyway
+                    if ${BTRFS_KVER_DIFFER}; then
+
+                        # copy kernel to initramfs
+                        cp "${work}${BTRFS_BOOT_SUBVOL}${BTRFS_KERNEL}" "/tmp/linux"
+                        cp "${work}${BTRFS_BOOT_SUBVOL}${BTRFS_INITRD}" "/tmp/initrd"
+
+                        # unmount btrfs root subvolume
+                        if ! umount ${BTRFS_DIR_WORK}; then
+                            btrfs_fatal "Unable to umount root subvolume"
+                            return 1
+                        fi
+
+                        # force reload kernel
+                        btrfs_info "Reloading kernel from [${BTRFS_BOOT_SUBVOL}]..."
+                        kexec -f "/tmp/linux" --initrd="/tmp/initrd" --reuse-cmdline --append="kexeced"
+
+                        # at this point the kernel reloads the initramfs and
+                        # restarts init - no further code is executed
+                    fi
+                else
+                    btrfs_warn "Unable to load kernel from new root subvolume"
+                    btrfs_warn "Check your config in /etc/default/btrfs_advanced"
+                fi
+            fi
+        fi
+    fi
+
+    # unmount btrfs root subvolume
+    if ! umount ${BTRFS_DIR_WORK}; then
+        btrfs_fatal "Unable to umount root subvolume"
+        return 1
+    fi
+
+    btrfs_process_mount ${work}
+}
+
+btrfs_process_mount () {
+
+    rootfstype=btrfs
+
+    # remove subvol/subvolid mount option
+    rootflags="$(echo ${rootflags} | sed 's/subvol[id]*=[^,]*,\?//g;s/,$//g')"
+
+    # sleep a short period of time to read console messages
+    [ "${quiet}" != "y" ] && sleep ${BTRFS_BOOT_DELAY}
+
+    # call standard mount handler
+    default_mount_handler ${1}
+
+}
+
+btrfs_ask_volatile () {
+    local r
+
+    read -s -p "Press any key to setup BTRFS rollback support..." -n1 -t3
+    r=$?
+
+    echo
+    return $r
+}
+
+btrfs_set_volatile () {
+
+    cat <<MESSAGE
+
+--------------------------------- INFORMATION ----------------------------------
+
+Either this is your first time using this hook, or you have not prepared your
+system for non-volatile rollback support.  Support can easily be enabled right
+now, else you can continue using this hook without true non-volatile rollback
+support.  To enable support, a snapshot of your system's current state must be
+made to ${BTRFS_DIR_ACTIVE}.
+This snapshot will subsequently be used as the primary boot device from now on.
+This operation is safe. Your original / will remain intact and unused. It is
+up to you to rm -rf the stagnant files from your old /{var,usr,lib,etc},
+and reclaim what would in time become dead space.
+
+ATTENTION: When deleting your old /boot, it may be necessary to reconfigure AND
+           reinstall your bootloader, to search its configuration under
+           ${BTRFS_DIR_ACTIVE}/boot! Otherwise your system may become
+           unbootable!
+
+DO NOT remove ${BTRFS_DIR_ACTIVE}, ${BTRFS_DIR_SNAPSHOT}, or ${BTRFS_DIR_ROLLBACK}.
+
+The following commands will be executed:
+
+# btrfs subvolume snapshot / ${BTRFS_DIR_ACTIVE}
+# mkdir ${BTRFS_DIR_SNAPSHOT}
+
+If you do not understand the above, are afraid, or become clammy/panicky when
+presented with decisions, answer no, and seek the maintainer for clarification.
+
+--------------------------------- INFORMATION ----------------------------------
+
+MESSAGE
+
+    local x i=0 ans prompt="Continue setup rollback support? (y/[n]) "
+    while true; do
+        read -p "${prompt}" ans
+        if [ -z "${ans}" ]; then
+            ans=n; break
+        elif ! echo "${ans}" | grep -q -E "^[yn]$"; then
+            prompt="Try again, this time choose y or n: "
+        else
+            break
+        fi
+    done
+
+    # return 1 to DISABLE NON-VOLATILE SUPPORT, and boot / instead
+    if [ ${ans} = y ]; then
+        btrfs_info "Snapshotting system state to ${BTRFS_DIR_ACTIVE}..."
+        if ! btrfs subvolume snapshot ${BTRFS_DIR_WORK} ${BTRFS_DIR_WORK}${BTRFS_DIR_ACTIVE}; then
+            btrfs_error "Unknown problem creating ${BTRFS_DIR_ACTIVE}, fallback to /"
+            return 1
+        fi
+        if ! mkdir ${BTRFS_DIR_WORK}${BTRFS_DIR_SNAPSHOT}; then
+            btrfs_error "Unknown problem creating ${BTRFS_DIR_SNAPSHOT}, fallback to /"
+            return 1
+        fi
+        return 0
+    else
+        btrfs_warn "Skipping setup of non-volatile rollback support"
+        return 1
+    fi
+
+}
+
+btrfs_ask_rollback () {
+    local r
+
+    read -s -p "Press any key to prepare BTRFS rollback..." -n1 -t3;
+    r=$?
+
+    echo
+    return $r
+}
+
+btrfs_get_rollback_choice () {
+
+    local x i=1 ans prompt="Select snapshot [${BTRFS_ROLLBACK_LIST_COUNT}]: "
+    while true; do
+        read -p "${prompt}" ans
+        if [ -z "${ans}" ]; then
+            ans=${BTRFS_ROLLBACK_LIST_COUNT}
+            break
+        elif ! echo "${ans}" | grep -q -E "^[0-9]+$"; then
+            prompt="Invalid choice (not a number), please try again: "
+        elif [ ${ans} -lt 1 ]; then
+            prompt="Selection (${ans}) is too low, please try again: "
+        elif [ ${ans} -gt ${BTRFS_ROLLBACK_LIST_COUNT} ]; then
+            prompt="Selection (${ans}) is too high, please try again: "
+        else
+            break
+        fi
+    done
+
+    for x in ${BTRFS_ROLLBACK_LIST}; do
+        if [ ${ans} -eq ${i} ]; then
+            echo "${x}"
+            return 0
+        fi
+        i=$((${i}+1))
+    done
+
+    echo "default"
+}
+
+btrfs_setup_rollback () {
+
+    local source=${BTRFS_DIR_WORK}${BTRFS_BOOT_SUBVOL}
+    local target=${BTRFS_DIR_WORK}${BTRFS_DIR_ROLLBACK}
+    if [ -d ${target} ]; then
+        btrfs_info "Delete stagnant rollback environment in [${BTRFS_DIR_ROLLBACK}]..."
+        btrfs subvolume delete ${target} || rm -rf ${target}
+    fi
+    btrfs_info "Creating new rollback environment in [${BTRFS_DIR_ROLLBACK}] from [${BTRFS_BOOT_SUBVOL}]..."
+    btrfs subvolume snapshot ${source} ${target}
+
+}
+
+# main
+run_hook () {
+    mount_handler="btrfs_mount_handler"
+}
+
+# vim:set syntax=sh:
