@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-git
 	pkgdesc = Bitcoin Cross-Platform C++ Development Toolkit
-	pkgver = 20150519
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin
 	arch = i686
