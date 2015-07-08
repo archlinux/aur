@@ -1,0 +1,18 @@
+pkgbase = slimux-git
+	pkgdesc = SLIME inspired tmux integration plugin for Vim
+	pkgver = 1.0.0.2d54abbabf
+	pkgrel = 1
+	url = https://github.com/epeli/slimux
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	depends = tmux
+	provides = slimux
+	conflicts = slimux
+	source = git://github.com/epeli/slimux.git
+	sha512sums = SKIP
+
+pkgname = slimux-git
+
