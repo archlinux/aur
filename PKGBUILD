@@ -9,7 +9,7 @@
 pkgbase=handbrake-svn
 pkgname=('handbrake-svn' 'handbrake-cli-svn')
 _svnmod=HandBrake
-pkgver=r7347
+pkgver=r7348
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')

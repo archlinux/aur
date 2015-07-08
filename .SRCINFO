@@ -1,6 +1,6 @@
 pkgbase = handbrake-svn
 	pkgdesc = Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter
-	pkgver = r7347
+	pkgver = r7348
 	pkgrel = 1
 	url = http://handbrake.fr/
 	arch = i686
