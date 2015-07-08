@@ -1,0 +1,14 @@
+pkgbase = python2-mongokit
+	pkgdesc = Structured schema and validation layer on top of PyMongo
+	pkgver = 0.9.1.1
+	pkgrel = 1
+	url = http://namlook.github.com/mongokit/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-pymongo
+	source = http://pypi.python.org/packages/source/m/mongokit/mongokit-0.9.1.1.tar.gz
+	md5sums = 564c6af175b6cd8c2d3fa059e6900e88
+
+pkgname = python2-mongokit
+
