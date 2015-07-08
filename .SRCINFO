@@ -1,0 +1,17 @@
+pkgbase = attic
+	pkgdesc = A deduplicating backup program for efficient and secure backups.
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://attic-backup.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-sphinx
+	depends = openssl
+	depends = python-msgpack
+	optdepends = python-llfuse: Mounting backups as a FUSE filesystem
+	source = https://pypi.python.org/packages/source/A/Attic/Attic-0.16.tar.gz
+	md5sums = 9c767c883f7f48bf95e7e5307ce6b5ea
+
+pkgname = attic
+
