@@ -12,6 +12,7 @@ pkgbase = geany-gtk3-git
 	makedepends = lua
 	depends = desktop-file-utils
 	depends = gtk3
+	optdepends = vte290: For native terminal
 	provides = geany=1.24.1.r849.g935c389
 	conflicts = geany
 	source = geany::git://github.com/geany/geany.git

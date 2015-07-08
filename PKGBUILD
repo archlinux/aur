@@ -3,7 +3,7 @@
 
 _gitname=geany
 pkgname=$_gitname-gtk3-git
-pkgver=1.24.1.r849.g935c389
+pkgver=1.24.1.r925.gcea3473
 pkgrel=1
 pkgdesc="Fast and lightweight IDE (git version)"
 arch=('x86_64' 'i686')
@@ -11,6 +11,7 @@ url="https://github.com/$_gitname/$_gitname"
 license=('GPL2')
 depends=('desktop-file-utils' 'gtk3')
 makedepends=('git' 'intltool' 'lua')
+optdepends=('vte290: For native terminal')
 conflicts=("$_gitname")
 provides=("$_gitname=$pkgver")
 install="$pkgname.install"
