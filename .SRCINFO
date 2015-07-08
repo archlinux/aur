@@ -10,6 +10,7 @@ pkgbase = qbittorrent-nogui
 	makedepends = which
 	depends = boost-libs
 	depends = libtorrent-rasterbar
+	depends = qt4
 	conflicts = qbittorrent-git-nogui
 	source = http://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.2.0.tar.xz
 	source = qbittorrent.service

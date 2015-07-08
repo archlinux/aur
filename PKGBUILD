@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('GPL')
 depends=('boost-libs'
-         'libtorrent-rasterbar')
+         'libtorrent-rasterbar'
+         'qt4')
 makedepends=('boost'
              'which')
 conflicts=('qbittorrent-git-nogui')
