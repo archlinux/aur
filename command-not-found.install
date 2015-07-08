@@ -1,0 +1,14 @@
+post_install() {
+  cnf-sync
+}
+
+post_upgrade() {
+  cnf-sync
+}
+
+pre_remove() {
+  rm -rf /var/lib/cnf/*.db
+  rm -rf /var/lib/cnf/*.tdb
+}
+
+# vim:set ts=2 sw=2 et:
