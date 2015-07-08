@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Zenbooru
+Comment=A client for image boards implementing the Gelbooru v0.2, Danbooru (v1 & v2) and Moebooru APIs.
+Exec=zenbooru
+Terminal=false
+Type=Application
+Categories=Network;
+Icon=zenbooru
+StartupNotify=true
+StartupWMClass=usr_share_zenbooru_index.html
