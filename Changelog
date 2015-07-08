@@ -1,0 +1,11 @@
+2013-10-23 Aaron DeVore <aaron.devore@gmail.com> (0.15.11)
+- Version bump to 0.15.11
+- Switch python2-distribute -> python2-setuptools
+2013-04-19 Aaron DeVore <aaron.devore@gmail.com> (0.14.1-2)
+- Split build() and package() properly
+2012-12-22 Aaron DeVore <aaron.devore@gmail.com> (0.14.1-1)
+- Version bump to 0.14.1
+- Add license.txt to source array
+- Fix simplejson being downloaded.
+- Remove check(). It wasn't working correctly.
+- Switch python2-lxml to be mandantory, not optional
