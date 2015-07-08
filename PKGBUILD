@@ -1,6 +1,13 @@
 # Maintainer: flu
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
+# Select favourite branch uncommenting only one of the following
+vcs_branch="next"
+#vcs_branch="master"
+
+# Set USE_GDB=1 to build for gdb debugging, otherwise set USE_GDB=0
+USE_GDB=0
+
 _name="spacefm"
 pkgname="$_name-git"
 pkgver=20150309.994
@@ -26,13 +33,10 @@ optdepends=(
 )
 conflicts=("$_name" "$_name-gtk2")
 provides=("$_name")
-source=(git+https://github.com/IgnorantGuru/$_name#branch=next)
-#source=(git+https://github.com/BwackNinja/$_name.git)
+source=(git+https://github.com/IgnorantGuru/$_name#branch=$vcs_branch)
 install="install"
-md5sums=(SKIP)
+sha512sums=(SKIP)
 
-# Set USE_GDB=1 to build for gdb debugging, otherwise set USE_GDB=0
-USE_GDB=0
 
 if (( USE_GDB == 1 )); then
   options=('!strip')
@@ -44,18 +48,20 @@ pkgver() {
 }
 
 build() {
+
   cd "$srcdir/$_name"
+
+
+  if (( USE_GDB == 1 )); then
+    export CFLAGS+="-g"
+  fi
 
   # NOTE: To add a custom su program (mysu in this example), add:
   # --with-preferable-sudo="mysu"  to configure line below.
 
-  if (( USE_GDB == 1 )); then
-    CFLAGS+="-g" ./configure --prefix=/usr --with-gtk3
-    CFLAGS+="-g" make        -s
-  else
-                 ./configure --prefix=/usr --with-gtk3
-                 make        -s
-  fi
+  ./configure --prefix=/usr --with-gtk3
+  make        -s
+
 }
 
 package() {
