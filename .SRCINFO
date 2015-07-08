@@ -1,0 +1,25 @@
+pkgbase = caja-dropbox
+	pkgdesc = Dropbox for Linux - Caja extension
+	pkgver = 1.8.0
+	pkgrel = 2
+	url = http://forums.dropbox.com/topic.php?id=21111
+	arch = i686
+	arch = x86_64
+	license = custom:CC-BY-ND-3
+	license = GPL
+	makedepends = mate-common
+	makedepends = python2-docutils
+	depends = caja
+	depends = glib2
+	depends = libnotify
+	depends = polkit
+	depends = procps
+	depends = pygtk
+	depends = xdg-utils
+	optdepends = dropbox: Dropbox support
+	options = !emptydirs
+	source = http://pub.mate-desktop.org/releases/1.8/caja-dropbox-1.8.0.tar.xz
+	sha1sums = 616ef634f2a5ba479dd2402d8527fcd5cf9950b0
+
+pkgname = caja-dropbox
+
