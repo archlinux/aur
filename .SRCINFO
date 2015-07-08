@@ -1,14 +1,14 @@
 pkgbase = python2-clize
 	pkgdesc = This decorator will turn your normal python functions into proper shell commands
-	pkgver = 2.4
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/clize/
 	arch = any
 	license = MIT
-	checkdepends = python2-nose
 	depends = python2
-	source = http://pypi.python.org/packages/source/c/clize/clize-2.4.tar.gz
-	md5sums = 150f161299c95e314fba68a7b4ed49dc
+	depends = python2-sigtools
+	source = http://pypi.python.org/packages/source/c/clize/clize-3.0.tar.gz
+	sha256sums = 158e3251106fa9c2dfe414a3fea0c07eecb15b5be6ddf68a7cf73402081c79f6
 
 pkgname = python2-clize
 
