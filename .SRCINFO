@@ -1,7 +1,7 @@
 pkgbase = apacman
 	pkgdesc = AUR wrapper forked from packer
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 1.9
+	pkgrel = 1
 	url = http://github.com/oshazard/apacman
 	install = apacman.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = apacman
 	provides = packer
 	backup = etc/apacman.conf
 	source = https://github.com/oshazard/apacman/archive/master.tar.gz
-	md5sums = 07554b821168ad5db65ad36f91937cde
+	md5sums = d31048cef8c43d6be2e06cd910a64c71
 
 pkgname = apacman
 
