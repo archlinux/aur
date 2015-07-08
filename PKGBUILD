@@ -1,15 +1,16 @@
-# Maintainer: Scott Garrett <Wintervenom@gmail.com>
+# Maintainer: Florian Bruhin <archlinux.org@the-compiler.org>
 # Contributor: Scott Garrett <Wintervenom@gmail.com>
 
 pkgname=dmenu-launch
-pkgver=0.5.8
-pkgrel=2
+pkgver=0.5.11
+pkgrel=1
 pkgdesc="A dmenu-based app launcher for X and terminals. Launches binaries and XDG shortcuts."
-url="https://github.com/Wintervenom/Scripts/blob/master/file/launch/dmenu-launch"
-arch=('i686' 'x86_64')
+url='https://github.com/Wintervenom/Scripts/blob/master/file/launch/dmenu-launch'
+arch=(any)
 license=('GPL')
 depends=('dmenu' 'lsx')
-source=('dmenu-launch')
+source=('https://raw.githubusercontent.com/Wintervenom/Scripts/master/file/launch/dmenu-launch')
+sha1sums=('d8059d7fda695bb90152ca341d88ab04a2eeeefa')
 
 package () {
     cd "$srcdir"
@@ -17,4 +18,3 @@ package () {
     install -m755 "$srcdir/dmenu-launch" "$pkgdir/usr/bin/dmenu-launch"
 }
 
-md5sums=('766bc152abd925911b6f087f28ea4177')
