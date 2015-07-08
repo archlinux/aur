@@ -1,0 +1,21 @@
+pkgbase = cula
+	pkgdesc = Provides GPU-accelerated implementations of the LAPACK and BLAS libraries for dense linear algebra using CUDA. Contains routines for systems solvers, singular value decompositions, and eigenproblems.
+	pkgver = 17
+	pkgrel = 2
+	url = http://www.culatools.com/downloads/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	depends = cuda>=5.0.0
+	depends = bash
+	depends = gcc-libs-multilib
+	depends = acml-ifort
+	noextract = cula_dense_free_R17-linux.run
+	source = login.sh
+	source = http://www.culatools.com/files/cula/R17/cula_dense_free_R17-linux.run
+	sha1sums = f88ff0599dd7d91969d48d75ec689c88bb186bfa
+	sha1sums = fddbcea354939a51e7a15826f7f648325a4d9fa1
+
+pkgname = cula
+
