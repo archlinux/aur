@@ -1,0 +1,43 @@
+pkgbase = qemu-fdt
+	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation.
+	pkgver = 1.5.0
+	pkgrel = 2
+	url = http://wiki.qemu.org/Index.html
+	install = qemu.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = texi2html
+	makedepends = perl
+	makedepends = python2
+	depends = pixman
+	depends = libjpeg
+	depends = libpng
+	depends = sdl
+	depends = alsa-lib
+	depends = nss
+	depends = glib2
+	depends = gnutls>=2.4.1
+	depends = bluez-libs
+	depends = vde2
+	depends = util-linux
+	depends = curl
+	depends = libsasl
+	depends = libgl
+	depends = libpulse
+	depends = seabios
+	depends = libcap-ng
+	depends = dtc
+	conflicts = qemu
+	options = !strip
+	backup = etc/qemu/target-x86_64.conf
+	source = http://wiki.qemu.org/download/qemu-1.5.0.tar.bz2
+	source = define-fdt-types.patch
+	source = 65-kvm.rules
+	md5sums = b6f3265b8ed39d77e8f354f35cc26e16
+	md5sums = ead7109d56d11f736297c730af85a114
+	md5sums = b316a066d2f1bb57d8f5b7ea1d0d1caf
+
+pkgname = qemu-fdt
+
