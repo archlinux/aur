@@ -1,7 +1,7 @@
 pkgbase = sync-my-l2p
 	pkgdesc = Sync the L2P of the RWTH Aachen with your Computer
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sync-my-l2p.de/
 	install = sync-my-l2p.install
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sync-my-l2p
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	noextract = sync-my-l2p_2.1.1-0.vivid_i386.deb
-	source = https://github.com/Sync-my-L2P/Sync-my-L2P/releases/download/v2.1.1/sync-my-l2p_2.1.1-0.vivid_i386.deb
-	md5sums = 641830c13298e71e1b370592b64324f8
+	source = https://github.com/Sync-my-L2P/Sync-my-L2P/releases/download/v2.1.1/sync-my-l2p_2.1.1-0.vivid1_i386.deb
+	md5sums = 015c31ffd2f29c156882fbe8628dc18f
 
 pkgname = sync-my-l2p
 
