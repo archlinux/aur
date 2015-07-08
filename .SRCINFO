@@ -1,0 +1,15 @@
+pkgbase = klassik-plasma-theme
+	pkgdesc = A plasma theme for the KDE3 nostalgics, similar to KDE3's default style.
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php/Klassik?content=117677
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	depends = kdebase-workspace
+	source = http://kde-look.org/CONTENT/content-files/117677-klassik.tar.gz
+	md5sums = 8ae550b0ceddfa02a45bd3d142e56e08
+
+pkgname = klassik-plasma-theme
+
