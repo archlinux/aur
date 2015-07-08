@@ -1,0 +1,11 @@
+2013-04-22 Aaron DeVore <aaron.devore@gmail.com> (0.5.1-3)
+- Fix break with new version of makepkg/pacman
+- Remove sha256sums
+2011-03-18 Aaron DeVore <aaron.devore@gmail.com>
+- Add sha256sums
+- Add python2-distribute to makedepends
+- Add post install warning: Runner executable is unit2-2, not unit2.
+- To avoid conflict with python-unittest2:
+    - move /usr/bin/unit2 -> /usr/bin/unit2-2
+    - move /usr/bin/unit2.py -> /usr/bin/unit2-2.py
+    (Remove when upstream adds a unit2-2 symlink)

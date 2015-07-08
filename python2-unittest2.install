@@ -1,0 +1,5 @@
+post_install() {
+   echo "note: the unittest2 Python 2 executable is named unit2-2, not unit2"
+}
+
+# vim:set ts=2 sw=2 et:
