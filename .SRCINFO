@@ -1,0 +1,16 @@
+pkgbase = gmpc-lyrics
+	pkgdesc = This plugin fetches lyrics from the web from two sites.
+	pkgver = 11.8.16
+	pkgrel = 2
+	url = http://gmpc.wikia.com/wiki/GMPC_PLUGIN_LYRICS
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gmpc>=11.8.16
+	options = !libtool
+	source = http://download.sarine.nl/Programs/gmpc/11.8.16/gmpc-lyrics-11.8.16.tar.gz
+	sha1sums = d121251e820a173d29793461ba04d1725581c395
+
+pkgname = gmpc-lyrics
+
