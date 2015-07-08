@@ -1,0 +1,15 @@
+pkgbase = screen-message
+	pkgdesc = Displays a short text fullscreen as large and as quickly as possible.
+	pkgver = 0.23
+	pkgrel = 1
+	url = http://www.joachim-breitner.de/projects
+	install = screen-message.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	source = http://www.joachim-breitner.de/archive/screen-message/screen-message-0.23.tar.gz
+	md5sums = 6e9793e40ab4f266840fea7064e93891
+
+pkgname = screen-message
+
