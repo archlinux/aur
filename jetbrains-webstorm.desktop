@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.0
+Name=WebStorm
+Icon=webstorm
+GenericName=IDE
+Comment=JavaScript IDE and HTML editor
+Exec=/usr/bin/jetbrains-webstorm
+Terminal=false
+Type=Application
+Categories=Development
