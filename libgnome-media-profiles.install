@@ -1,0 +1,21 @@
+pkgname=gnome-media-profiles
+
+post_install(){
+    usr/sbin/gconfpkg --install ${pkgname}
+}
+
+pre_upgrade() {
+    pre_remove $1
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    if [ "$(vercmp 3.0.0-4 "$2")" -eq 1 ]; then
+      usr/sbin/gconfpkg --uninstall libgnome-media-profiles
+    else
+      usr/sbin/gconfpkg --uninstall ${pkgname}
+    fi
+}

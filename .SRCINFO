@@ -1,0 +1,19 @@
+pkgbase = libgnome-media-profiles
+	pkgdesc = Library for management of audio recording profiles
+	pkgver = 3.0.0
+	pkgrel = 4
+	url = https://git.gnome.org/browse/libgnome-media-profiles
+	install = libgnome-media-profiles.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	depends = gconf
+	depends = gtk3
+	depends = gstreamer0.10-base-plugins
+	source = http://download.gnome.org/sources/libgnome-media-profiles/3.0/libgnome-media-profiles-3.0.0.tar.bz2
+	sha256sums = ab1288e53a8fccca3e8fa59757ef586901e236e09a737a1178eeb8d74428c061
+
+pkgname = libgnome-media-profiles
+
