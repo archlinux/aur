@@ -1,0 +1,25 @@
+pkgbase = ansible-git
+	pkgdesc = Radically simple IT automation platform
+	pkgver = 2.0.0.14080.ded6e9b
+	pkgrel = 1
+	url = http://www.ansible.com
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = fakeroot
+	depends = python2
+	depends = python2-paramiko
+	depends = python2-jinja
+	depends = python2-yaml
+	optdepends = python2-pyasn1: needed for accelerated mode
+	optdepends = python2-crypto: needed for accelerated mode
+	optdepends = python2-keyczar: needed for accelerated mode
+	provides = ansible
+	conflicts = ansible
+	backup = etc/ansible/ansible.cfg
+	source = ansible-git::git://github.com/ansible/ansible.git
+	md5sums = SKIP
+
+pkgname = ansible-git
+
