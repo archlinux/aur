@@ -1,0 +1,22 @@
+pkgbase = android-sdk-platform-tools
+	pkgdesc = Platform-Tools for Google Android SDK (adb and fastboot)
+	pkgver = r22
+	pkgrel = 2
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	depends = ncurses
+	provides = adb
+	conflicts = adb
+	source = https://dl-ssl.google.com/android/repository/platform-tools_r22-linux.zip
+	source = adb.service
+	source = license.html
+	sha256sums = 8164ae019f54854a8c4230b4a6208c0205f0014f6a141b066146abe6be2b77cd
+	sha256sums = 1c219abea7584ae13f3f76b04e269ef21c1699d6bd29b7615523f927a9d10deb
+	sha256sums = a7f3a259290ae6a5dc61bd34ecae36e2b7e2f644865ddc3c7fde5d248b8a7cef
+
+pkgname = android-sdk-platform-tools
+
