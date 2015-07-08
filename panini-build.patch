@@ -1,0 +1,12 @@
+diff -aur Panini-0.71.104-src.old/panini.pro Panini-0.71.104-src.new/panini.pro
+--- Panini-0.71.104-src.old/panini.pro	2009-06-25 12:13:24.000000000 +0400
++++ Panini-0.71.104-src.new/panini.pro	2012-06-14 23:26:00.000000000 +0400
+@@ -4,6 +4,8 @@
+ CONFIG += debug_and_release
+ QT = gui core opengl
+ 
++LIBS += -lGLU -lz
++
+ # # Directories ##
+ OBJECTS_DIR = build
+ MOC_DIR = build
