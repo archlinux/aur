@@ -1,0 +1,22 @@
+pkgbase = wok
+	pkgdesc = Static site generator
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://wok.mythmon.com
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-yaml
+	depends = python2-jinja
+	depends = python2-markdown
+	depends = python2-docutils
+	depends = python2-pygments
+	depends = python2-slugify
+	source = http://pypi.python.org/packages/source/w/wok/wok-1.1.1.tar.gz
+	source = LICENSE
+	md5sums = a39df2325317daec09061f983522aca4
+	md5sums = 5c9c57db8a21e4fbe3298502f58a4cd0
+
+pkgname = wok
+
