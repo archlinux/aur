@@ -2,3 +2,5 @@
 *.sign
 *.xz
 *.src.tar.gz
+*.pkg.tar.xz
+*.install.pkg
