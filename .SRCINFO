@@ -1,0 +1,27 @@
+pkgbase = mwlib.rl
+	pkgdesc = Converts MediaWiki articles to pdf, odf, and docbook
+	pkgver = 0.14.3
+	pkgrel = 1
+	url = http://code.pediapress.com/wiki/wiki
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	makedepends = python2-distribute
+	makedepends = python2-docutils
+	depends = python2
+	depends = mwlib.ext
+	depends = texvc
+	depends = python2-pygments
+	depends = fribidi
+	depends = ploticus
+	depends = imagemagick
+	depends = ghostscript
+	depends = ocaml
+	depends = mwlib
+	source = http://pypi.python.org/packages/source/m/mwlib.rl/mwlib.rl-0.14.3.zip
+	source = license.txt
+	md5sums = 26954d7d58ed2f1c00bc9c4c9ee2630b
+	md5sums = 472b2de7c34ecbd590240179882e36f8
+
+pkgname = mwlib.rl
+
