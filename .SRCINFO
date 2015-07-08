@@ -1,0 +1,19 @@
+pkgbase = python2-storm
+	pkgdesc = Object-relational mapper (ORM) for Python developed at Canonical.
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://storm.canonical.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = sqlite3: SQLite support
+	optdepends = mysql-python: MySQL support
+	optdepends = python2-psycopg2: PostgreSQL support
+	optdepends = python2-transaction: Zope support
+	source = http://launchpad.net/storm/trunk/0.20/+download/storm-0.20.tar.bz2
+	md5sums = a097945f3e8da19131ac19e1c45b5907
+
+pkgname = python2-storm
+
