@@ -1,0 +1,16 @@
+pkgbase = secretfs
+	pkgdesc = A secret sharing filesystem
+	pkgver = 0.0.2
+	pkgrel = 3
+	url = http://www.digital-scurf.org/software/secretfs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libgfshare
+	depends = fuse
+	provides = secretfs
+	source = https://github.com/bentglasstube/secretfs/archive/v0.0.2.tar.gz
+	sha1sums = a790bf6afdcfd65baa73b293407e896dd75bc4f3
+
+pkgname = secretfs
+
