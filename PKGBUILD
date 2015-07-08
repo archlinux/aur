@@ -2,7 +2,7 @@
 
 pkgname=kanla
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="small-scale alerting daemon"
 arch=('any')
 url="http://kanla.zekjur.net/"
