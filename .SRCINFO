@@ -1,0 +1,17 @@
+pkgbase = python-unittest2
+	pkgdesc = The new features in unittest for Python 3.2 backported to Python 3.0+
+	pkgver = 0.5.1
+	pkgrel = 3
+	url = http://www.voidspace.org.uk/python/articles/unittest2.shtml
+	changelog = Changelog
+	arch = any
+	license = BSD
+	makedepends = python-distribute
+	depends = python
+	source = http://pypi.python.org/packages/source/u/unittest2py3k/unittest2py3k-0.5.1.tar.gz
+	source = LICENSE
+	md5sums = 8824ff92044310d9365f90d892bf0f09
+	md5sums = 0c162ecb7937c6a146e5b0457f0ccf1e
+
+pkgname = python-unittest2
+

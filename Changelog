@@ -1,0 +1,4 @@
+2013-04-22 Aaron DeVore <aaron.devore@gmail.com> (0.5.1-3)
+- Fix break with new version of makepkg/pacman
+2011-03-18 Aaron DeVore <aaron.devore@gmail.com> (0.5.1-2)
+- Add python-distribute to makedepends
