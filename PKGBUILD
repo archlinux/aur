@@ -1,39 +1,46 @@
 # Maintainer: X0rg
 # Contributor: eloaders <eloaders at linux dot pl>
 
-pkgname=libcpuid-git
 _pkgname=libcpuid
-pkgver=0.2.1.r128.b183a2d
+pkgname=$_pkgname-git
+epoch=1
+pkgver=r160.01ece12
 pkgrel=1
-pkgdesc="Provides CPU identification for x86 (and x86_64)."
+pkgdesc="Provides CPU identification for x86 (and x86_64)"
 arch=('i686' 'x86_64')
 url="https://github.com/anrieff/libcpuid"
 license=('BSD-2-Clause')
-makedepends=('git')
 depends=('glibc')
+makedepends=('git' 'libtool' 'autoconf')
 conflicts=('libcpuid')
 provides=('libcpuid')
-source=("git://github.com/anrieff/${_pkgname}.git")
+source=("git://github.com/anrieff/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-
-  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}"/${_pkgname}
-  libtoolize
-  autoreconf --install
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir/$_pkgname"
+	msg2 "Run 'libtoolize'..."
+	libtoolize
+
+	msg2 "Run 'autoreconf --install'..."
+	autoreconf --install
+
+	msg2 "Run './configure'..."
+	./configure --prefix=/usr
+
+	msg2 "Run 'make'..."
+	make
 }
 
 package() {
-  cd "${srcdir}"/${_pkgname}
+	cd "$srcdir/$_pkgname"
+	make DESTDIR="$pkgdir" install
 
-  make install DESTDIR="${pkgdir}"
-  rm "${pkgdir}"/usr/lib/*.la
+	msg2 "Install license..."
+	install -Dvm644 "$srcdir/libcpuid/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
