@@ -1,0 +1,27 @@
+pkgbase = zeroinstall-injector
+	pkgdesc = A decentralised loosely-coupled secure installation system
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = http://0install.net
+	install = zeroinstall-injector.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	depends = ocaml-curl
+	depends = ocaml-extlib
+	depends = ocaml-lwt
+	depends = ocaml-ounit
+	depends = ocaml-xmlm
+	depends = ocaml-yojson
+	optdepends = ocaml-lablgtk: provides GUI features
+	optdepends = ocaml-obus: for DBUS, packagekit, and NetworkManager integration
+	optdepends = xdg-utils: desktop integration
+	optdepends = packagekit: packagekit integration
+	source = http://downloads.sourceforge.net/zero-install/0install/2.6.1/0install-2.6.1.tar.bz2
+	source = http://downloads.sourceforge.net/zero-install/0install/2.6.1/0install-2.6.1.tar.bz2.sig
+	sha256sums = 7f691924616c1f7154ac53f4904b63e9a801f4ee3e470f9d641d39fc94e274a2
+	sha256sums = SKIP
+
+pkgname = zeroinstall-injector
+
