@@ -1,37 +1,31 @@
-# Maintainer: Justin Davis (juster) <jrcd83@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=perl-alpm
-pkgver=3.05
+_cpanname=ALPM
+pkgver=3.06
 pkgrel=1
 pkgdesc='ArchLinux Package Manager backend library.'
-arch=(i686 x86_64)
-license=(PerlArtistic GPL)
-options=(!emptydirs)
-depends=(perl)
-url=https://metacpan.org/release/ALPM
-source=("http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/ALPM-$pkgver.tar.gz")
-_ddir=ALPM-3.05
-md5sums=('61b9476864416ec394ed24eabe158fcb')
+arch=('i686' 'x86_64')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('pacman')
+url="https://metacpan.org/release/$_cpanname"
+source=("https://cpan.metacpan.org/authors/id/A/AP/APG/$_cpanname-$pkgver.tar.gz")
+md5sums=('6463afd95e292f3a9040e2c722663f05')
 
-build()
-(
-  cd "$srcdir/$_ddir"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  /usr/bin/perl Makefile.PL
+build() (
+  cd $_cpanname-$pkgver
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 )
 
-check()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1
-  unset PERL5LIB
+check() (
+  cd $_cpanname-$pkgver
   make test
 )
 
-package()
-(
-  cd "$srcdir/$_ddir"
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+package() (
+  cd $_cpanname-$pkgver
+  make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 )
