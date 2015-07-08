@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Scid vs. PC
+Comment=A Free Chess Database Application
+Exec=/usr/bin/scid
+Icon=/usr/share/pixmaps/scid.png
+Terminal=false
+StartupNotify=false
+Categories=Game;BoardGame
+GenericName=Chess Database

@@ -1,0 +1,26 @@
+pkgbase = scid-vs-pc-svn
+	pkgdesc = A usability and bug-fix fork of Shane's Chess Information Database (SVN version)
+	pkgver = r1714
+	pkgrel = 1
+	url = http://scidvspc.sourceforge.net/
+	install = scid-vs-pc-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = svn
+	depends = python2
+	depends = tkimg
+	optdepends = snack: for sound support
+	optdepends = tdom-git: for correspondence chess support
+	conflicts = scid
+	conflicts = scid_vs_pc
+	conflicts = fics-timeseal
+	source = scid-vs-pc-svn::svn://svn.code.sf.net/p/scidvspc/code
+	source = scid-vs-pc-svn-Makefile.diff
+	source = scid-vs-pc.desktop
+	sha1sums = SKIP
+	sha1sums = b42149890aae56ddb1fcc16949664e288535a1ea
+	sha1sums = 994abfa617b2eec447ed1d59c82f7c8c89430bc1
+
+pkgname = scid-vs-pc-svn
+

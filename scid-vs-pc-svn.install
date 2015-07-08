@@ -1,0 +1,26 @@
+post_install() {
+   echo
+   echo " ==> To enable speech go to Options/Sounds/Sound Files Folder/Browse -> /usr/share/scid/sounds"
+   echo
+   echo " ==> To use Timeseal in FICS go to Play/Internet/Timeseal/Browse -> /usr/bin/timeseal"
+   echo
+
+   # Update font cache
+    echo -n "Updating font cache... "
+    fc-cache -f -s > /dev/null
+    mkfontscale /usr/share/fonts/TTF
+    mkfontdir /usr/share/fonts/TTF
+    echo "done."
+}
+
+post_upgrade() {
+    echo -n "Updating font cache... "
+    fc-cache -f -s > /dev/null
+    mkfontscale /usr/share/fonts/TTF
+    mkfontdir /usr/share/fonts/TTF
+    echo "done."
+}
+
+post_remove() {
+    post_upgrade $1
+}
