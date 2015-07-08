@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer-git
-pkgver=20150519
+pkgver=20150707
 pkgrel=1
 pkgdesc="The Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
