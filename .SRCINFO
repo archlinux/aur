@@ -1,0 +1,24 @@
+pkgbase = qbittorrent-qt5-git
+	pkgdesc = A bittorrent client written in C++ / Qt5 using the good libtorrent library
+	pkgver = .5529
+	pkgrel = 1
+	url = http://www.qbittorrent.org/
+	install = qbittorrent.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = which
+	makedepends = git
+	makedepends = libtorrent-rasterbar
+	depends = qt5-base
+	depends = libtorrent-rasterbar
+	optdepends = python: needed for search
+	provides = qbittorrent
+	conflicts = qbittorrent
+	conflicts = qbittorrent-git
+	source = git://github.com/qbittorrent/qBittorrent.git
+	md5sums = SKIP
+
+pkgname = qbittorrent-qt5-git
+
