@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo "You can buy a license after the 30-day trial period here:"
+  echo "http://www.jetbrains.com/phpstorm/buy/"
+  echo "For licensing information please read /usr/share/licenses/phpstorm/license.txt"
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
