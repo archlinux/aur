@@ -1,5 +1,5 @@
 pkgbase = python-fake-factory
-	pkgdesc = Generates fake data for you.
+	pkgdesc = Faker generates fake data for you.
 	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://www.joke2k.net/faker/
