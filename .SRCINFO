@@ -1,0 +1,14 @@
+pkgbase = vold2-tnc-gtk-theme-git
+	pkgdesc = The successor of Vold GTK Theme with semi-material design influences and authentic flat, based on Iris Dark theme.
+	pkgver = 20150416.14eace5
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Vold+2%3A+The+Next+Chapter?content=168976
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	source = vold2-tnc-gtk-theme-git::git+https://github.com/thearakattack/vold2-tnc.git
+	md5sums = SKIP
+
+pkgname = vold2-tnc-gtk-theme-git
+
