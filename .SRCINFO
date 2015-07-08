@@ -1,0 +1,16 @@
+pkgbase = python2-fixtures
+	pkgdesc = Fixtures, reusable state for writing clean tests and more.
+	pkgver = 0.3.14
+	pkgrel = 1
+	url = https://launchpad.net/python-fixtures
+	arch = any
+	license = BSD
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-testtools
+	source = http://pypi.python.org/packages/source/f/fixtures/fixtures-0.3.14.tar.gz
+	md5sums = c63c79c87405dbdc8e0f877c3ff583fd
+
+pkgname = python2-fixtures
+
