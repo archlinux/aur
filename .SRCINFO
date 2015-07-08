@@ -1,0 +1,22 @@
+pkgbase = exfalso
+	pkgdesc = GTK+ audio tag editor
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://quodlibet.readthedocs.org/
+	install = exfalso.install
+	arch = any
+	license = GPL2
+	makedepends = intltool
+	makedepends = gettext
+	depends = mutagen
+	depends = gtk3
+	depends = python2-gobject
+	depends = python2-cairo
+	conflicts = quodlibet
+	source = https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-3.4.1.tar.gz
+	source = https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-3.4.1.tar.gz.sig
+	sha256sums = 73b75ee431b1eaee0513e5e82d3dceecf05a026ce29f2eefc4461e4b19ad14c6
+	sha256sums = SKIP
+
+pkgname = exfalso
+
