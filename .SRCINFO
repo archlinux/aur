@@ -1,0 +1,17 @@
+pkgbase = ctags-git
+	pkgdesc = Generates an index file of language objects found in source files
+	pkgver = r2361.b3f670c
+	pkgrel = 1
+	url = http://ctags.io
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = glibc
+	provides = ctags
+	conflicts = ctags
+	source = ctags::git+https://github.com/universal-ctags/ctags.git
+	md5sums = SKIP
+
+pkgname = ctags-git
+
