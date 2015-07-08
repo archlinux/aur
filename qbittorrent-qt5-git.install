@@ -1,0 +1,12 @@
+update_cache() {
+	update-desktop-database -q
+	xdg-icon-resource forceupdate --theme hicolor
+}
+
+post_install() {
+	update_cache
+}
+
+post_upgrade() {
+	update_cache
+}

@@ -1,24 +1,32 @@
 pkgbase = qbittorrent-qt5-git
-	pkgdesc = A bittorrent client written in C++ / Qt5 using the good libtorrent library
-	pkgver = .5529
+	pkgdesc = A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.
+	pkgver = 3.3.0alpha.r6026.g46c54e5
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
-	install = qbittorrent.install
+	install = qbittorrent-qt5-git.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = boost
 	makedepends = which
 	makedepends = git
-	makedepends = libtorrent-rasterbar
+	makedepends = qt5-tools
 	depends = qt5-base
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
 	depends = libtorrent-rasterbar
-	optdepends = python: needed for search
-	provides = qbittorrent
+	optdepends = python: for the search engine
+	provides = qbittorrent=3.3.0alpha.r6026.g46c54e5
 	conflicts = qbittorrent
 	conflicts = qbittorrent-git
-	source = git://github.com/qbittorrent/qBittorrent.git
-	md5sums = SKIP
+	conflicts = qbittorrent-qt4
+	source = git+https://github.com/qbittorrent/qBittorrent.git
+	source = qbittorrent-qt5-git.install
+	source = get_version.pri
+	sha512sums = SKIP
+	sha512sums = ba863e424bf680510de38ecd2a24cddbad695b224d3a4d9a282553f9cdb0f4add14dec881c391de58300d3c676ff84c2562988b93ead76aa6dd26db91df5d20b
+	sha512sums = 8330eda1fa7010134c9f13f2890ee0c62916e3a71b59150c8edfb0f0293731311e19646f581d313a39f63c60b8474828954f4b5ac2a6bb4a31b6b80c198b40b6
 
 pkgname = qbittorrent-qt5-git
 
