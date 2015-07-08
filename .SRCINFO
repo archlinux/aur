@@ -1,0 +1,34 @@
+pkgbase = ros-indigo-rosbridge-library
+	pkgdesc = ROS - The core rosbridge package, repsonsible for interpreting JSON andperforming the appropriate ROS action, like subscribe, publish, call service, and interact with params.
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbridge_library
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosservice
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rostopic
+	makedepends = python2-pillow
+	depends = ros-indigo-rosservice
+	depends = ros-indigo-rospy-tutorials
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-rostopic
+	depends = ros-indigo-actionlib-msgs
+	depends = ros-indigo-stereo-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-nav-msgs
+	depends = python2-pillow
+	source = rosbridge_library::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/indigo/rosbridge_library/0.6.8-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosbridge-library
+
