@@ -1,7 +1,7 @@
 # Maintainer: Rob Cornish <jrmcornish AT gmail DOT com>
 pkgname=brscan-skey
 pkgver=0.2.4_1
-pkgrel=9
+pkgrel=10
 pkgdesc='Brother scan-key-tool'
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en'
@@ -13,13 +13,15 @@ optdepends=('sane: for all default scanning scripts'
 install=brscan-skey.install
 
 source_i686=("http://www.brother.com/pub/bsc/linux/dlf/${pkgname}-${pkgver/_/-}.i386.rpm")
-md5sums_i686=('c6bc7a501f424541130a1b9a38b76493')
+sha256sums_i686=('30e236f1256d88431eb6fd8f052165ed976b0616e89cdb18196bf894d06c401a')
 
 source_x86_64=("http://www.brother.com/pub/bsc/linux/dlf/${pkgname}-${pkgver/_/-}.x86_64.rpm")
-md5sums_x86_64=('9ad29a0ef9f8f4d6f742fb4293ee08a6')
+sha256sums_x86_64=('2e034b37e282e44a6f94315d932eb8f34693007e4abd10ca10fb4ec468c9bb3d')
 
 source=('brscan-skey.service' 'brscan-skey-user.service' 'LICENSE.html')
-md5sums=('82ba4e7cf73306b17f144731f6484ad0' 'da65d820642f760115428769d2639db9' 'bd06a5d28abb3b3a3a6a263567cbb78b')
+sha256sums=('80d1d92f71381c160a93ddac1bfcde1e7922dc84332f1f7561c6d328af7e7219'
+            '511e49ac6618f2c11e5ed3a4ce4c235bd5d46faa584974f318447b117759651a'
+            '7529071ca3e1a5a1a8558a4d2fc5dd47a4f104f1eb3e9be093de8a2a7c3a216a')
 
 package() {
     cp -r "$srcdir"/opt "$pkgdir"

@@ -4,9 +4,6 @@ post_install() {
     getent group brscan-skey &> /dev/null || groupadd -g 289 brscan-skey
     getent passwd brscan-skey &> /dev/null || useradd -c "Brother scan-key-tool user" -u 289 -g brscan-skey -d /srv/brscan-skey -s /bin/false brscan-skey
 
-    # Earlier relases had / as home
-    [ $(eval echo ~brscan-skey) = /srv/brscan-skey ] || usermod -d /srv/brscan-skey brscan-skey
-
     # Brother's install script
     /opt/brother/scanner/brscan-skey/brscan-skey-${pkgver//_/-}.sh 0
 
@@ -16,31 +13,31 @@ post_install() {
 }
 
 pre_upgrade() {
+    local oldpkgverrel=$2
     local oldpkgver=${2%-*}
 
-    local brbase=brscan-skey-${oldpkgver//_/-}.sh
-    # Older Brother install scripts stored differently
-    local oldbr=/usr/local/Brother/sane/$brbase
-    local newbr=/opt/brother/scanner/brscan-skey/$brbase
-
-    if [ -x $newbr ]; then
-        $newbr R
-    elif [ -x $oldbr ]; then
-        $oldbr R
+    if (( $(vercmp $oldpkgver 0.2.3) < 0 )); then
+      # Pre 0.2.3
+      /usr/local/Brother/sane/brscan-skey-${oldpkgver//_/-}.sh R
+    elif (( $(vercmp $oldpkgverrel 0.2.4_1-7) <= 0 )); then
+      # 0.2.4_1-7 and earlier
+      pre_remove $oldpkgverrel # Deletes brscan-skey user and group which had wrong UID and GID
+    else
+      /opt/brother/scanner/brscan-skey/brscan-skey-${oldpkgver//_/-}.sh R
     fi
 }
 
 post_upgrade() {
-    local newpkgver=${1%-*}
+    local newpkgverrel=$1
 
-    post_install "$newpkgver"
+    post_install $newpkgverrel
 }
 
 pre_remove() {
     local pkgver=${1%-*}
 
-    # Allow to fail since earlier releases did not have a brscan-skey.service file
-    systemctl stop brscan-skey.service || true
+    systemctl daemon-reload
+    systemctl --quiet is-active brscan-skey.service && systemctl stop brscan-skey.service
 
     getent passwd brscan-skey &> /dev/null && userdel brscan-skey
     getent group brscan-skey &> /dev/null && groupdel brscan-skey
