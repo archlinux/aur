@@ -1,0 +1,21 @@
+pkgbase = aurlist
+	pkgdesc = Download list of all AUR packages and search colorized list
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://github.com/oshazard/aurlist
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = grep
+	depends = sed
+	depends = bash
+	depends = curl
+	depends = coreutils
+	depends = ca-certificates
+	provides = aurlist
+	source = https://github.com/oshazard/aurlist/archive/master.zip
+	backup = usr/share/aurlist/aurlist.txt
+	backup = usr/share/aurlist/aurlist.lst
+
+pkgname = aurlist
+
