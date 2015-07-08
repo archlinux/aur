@@ -1,0 +1,13 @@
+pkgbase = compass-icon-theme-kde
+	pkgdesc = The alternative icon theme for the .nitrux Operating System
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = http://nitrux.in/store/compass-for-kde/
+	arch = any
+	license = cc-by-nc-nd-4.0
+	depends = librsvg
+	source = http://nitrux.in/downloads/files/free/compass-icon-theme-kde-1.3.6.tar.gz
+	md5sums = ec63c5a1291164a9a625acc3b99d1910
+
+pkgname = compass-icon-theme-kde
+
