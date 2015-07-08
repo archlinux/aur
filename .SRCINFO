@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-nogui
-	pkgdesc = A bittorrent client written in C++ / Qt4 using the good libtorrent library, w/o gui, stable version
-	pkgver = 3.1.12
+	pkgdesc = A bittorrent client based on Qt4 toolkit and libtorrent-rasterbar, w/o gui
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	arch = i686
@@ -8,13 +8,12 @@ pkgbase = qbittorrent-nogui
 	license = GPL
 	makedepends = boost
 	makedepends = which
-	depends = libtorrent-rasterbar
 	depends = boost-libs
-	depends = qt4
+	depends = libtorrent-rasterbar
 	conflicts = qbittorrent-git-nogui
-	source = http://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.1.12.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.2.0.tar.xz
 	source = qbittorrent.service
-	sha256sums = d5d5b27958297f0b14cf03af8dd24a0d2a990e108c9a7a6159e4a2fbb1111c83
+	sha256sums = 51781cb121ebeda041fb348e649c4bd97888ee8c1d18328bc547d447b960d1b3
 	sha256sums = be7b259e25cf8badb124672a7e9b3941708f17fd437089a72e838c599405a50c
 
 pkgname = qbittorrent-nogui
