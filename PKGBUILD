@@ -1,11 +1,12 @@
 # Maintainer: M0Rf30 <morfeo89 [at] hotmail [dot] it>
+# Contributor: Leslie Zhai <xiang.zhai [at] i-soft [dot] com [dot] cn>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=leap-motion-driver
 _major=2.2.7
 _build=30199
 pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Leap Motion Driver"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -13,9 +14,12 @@ depends=('mesa' 'libxxf86vm')
 makedeps=('xz' 'tar')
 license=('custom')
 source=(https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_$_major.tgz
-	LICENSE
-	leapd.service
-	leap-sdk.install)
+    		LICENSE
+    		leapd.service
+    		leap-motion-driver.install
+    		leapmotion.desktop
+    		leapmotion.png)
+
 install=leap-sdk.install
 
 package() {
@@ -27,7 +31,7 @@ package() {
     bsdtar xf Leap-${_major}+${_build}-x86.deb
   fi
 
-  xz -d data.tar.xz 
+  xz -d data.tar.xz
   tar xvf data.tar
 
   # Copy binaries, headers, examples & libraries
@@ -41,9 +45,18 @@ package() {
 
   # Copy license
   install -D -m644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Install desktop file
+	install -Dm644 "${srcdir}/leapmotion.desktop" "${pkgdir}/usr/share/applications/leapmotion.desktop"
+
+	for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
+		install -Dm 0644 "$srcdir/leapmotion.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/leapmotion.png"
+	done
 }
 
 md5sums=('cc9ffe540a913facc34138b9a87908be'
-         '78a4f0934b105397d1f7b17d06e4717c'
-         '07287e65a3c2a4e2a956b7ba9038d816'
-         '7dcbd917193007746310130fb76e53eb')
+				 '78a4f0934b105397d1f7b17d06e4717c'
+				 '07287e65a3c2a4e2a956b7ba9038d816'
+				 '7dcbd917193007746310130fb76e53eb'
+				 '0261f47c2d5090681446f6917b1858ba'
+				 '5b85d03f4109203c5f7ecd610a33136d')
