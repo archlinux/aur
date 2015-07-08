@@ -1,0 +1,16 @@
+pkgbase = grotz
+	pkgdesc = A Z-code interactive fiction interpreter for GTK.
+	pkgver = 0.2c
+	pkgrel = 4
+	url = http://kevinboone.net/README_grotz.html
+	install = grotz.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = mplayer
+	source = http://kevinboone.net/grotz2.tar.gz
+	md5sums = 8cc05bef45467643e15a8624aa0e49a3
+
+pkgname = grotz
+
