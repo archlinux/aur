@@ -2,7 +2,7 @@
 
 pkgname=python-remote-pdb
 _realname=remote-pdb
-pkgver=0.2.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Remote vanilla PDB (over TCP sockets) done right: no extras, proper handling around connection failures and CI. Based on pdbx."
 arch=(any)
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/r/$_realname/$_realname-$pkgver.tar.gz")
-md5sums=('96bb198a4344dcb41cf4dc214135ab73')
+md5sums=('225df53239013d73eb5a983a352c7981')
 
 package() {
   cd "$srcdir/$_realname-$pkgver"
