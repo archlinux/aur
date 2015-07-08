@@ -1,6 +1,3 @@
-pkgname=('pantheon-calculator-bzr')
-builddeps=('granite-bzr')
-
-check_bzr $packagedir/$pkgname/${pkgname%-*}
+pkgname=('pantheon-calculator')
 
 # vim: ts=2 sw=2 et:
