@@ -1,0 +1,27 @@
+pkgbase = ibus-lite
+	pkgdesc = ibus without python3
+	pkgver = 1.5.7
+	pkgrel = 6
+	url = http://ibus.googlecode.com
+	install = ibus.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = gconf
+	depends = libibus
+	depends = dconf
+	depends = gtk2
+	depends = libnotify
+	depends = iso-codes
+	optdepends = vala: build vala bindings
+	provides = ibus=1.5.7
+	conflicts = ibus
+	replaces = ibus
+	options = !emptydirs
+	source = https://github.com/ibus/ibus/archive/1.5.7.tar.gz
+	md5sums = 98f57dbfca36b002b7b4df291f2f04cf
+
+pkgname = ibus-lite
+
