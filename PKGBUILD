@@ -4,8 +4,8 @@ pkgname=linux-xps13
 true && pkgname=(linux-xps13 linux-xps13-headers)
 _kernelname=-xps13
 _srcname=linux-4.0
-pkgver=4.0.6
-pkgrel=1
+pkgver=4.0.7
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/gunzy83/linux-xps13-aur"
 license=('GPL2')
@@ -18,15 +18,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config'
         'config.x86_64'
         'linux-xps13.preset'
+        '0001-block-loop-convert-to-per-device-workqueue.patch'
+        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'change-default-console-loglevel.patch'
         'xps13.patch')
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'd65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d'
+            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
             'SKIP'
             'e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1'
             '5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be'
             'bf7ccd0ca928dc47b7e2a87d08d8f19faafbb21ff957e22f1ee78a180961047e'
+            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
+            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'            
             'f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2')
 validpgpkeys=(
@@ -42,6 +46,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Fix deadlock with stacked loop devices (FS#45129)
+  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
+  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
