@@ -1,0 +1,27 @@
+pkgbase = downpour
+	pkgdesc = Web-based BitTorrent client supporting auto-downloading from RSS and importing and renaming into a media library.
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://jongsma.org/software/downpour/
+	install = downpour.install
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = twisted
+	depends = sqlite3
+	depends = python2-storm
+	depends = python2-jinja
+	depends = libtorrent
+	depends = python2-feedparser
+	depends = python2-dateutil
+	options = !emptydirs
+	source = http://jongsma.org/software/downpour/releases/Downpour-0.2.tar.gz
+	source = downpour.cfg
+	source = downpour.service
+	sha256sums = 1ce1e65932eb378a1624001f3cc7f9ac5096c5e9581e9e4a894a1e9c36c04103
+	sha256sums = 92c38a126edd17c25d1da060af5e704d81aa9acbef756a6255f9568a0f89524b
+	sha256sums = 76714f17aa69805bd7ba3c0390c811c054c3ead6fe12bd6d7b948c45319d5734
+
+pkgname = downpour
+

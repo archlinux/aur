@@ -1,0 +1,11 @@
+[Unit]
+Description=Web-based BitTorrent Client
+
+[Service]
+ExecStart=/usr/bin/downpourd -u downpour -g downpour start
+ExecStop=/usr/bin/downpourd stop
+Type=forking
+PIDFile=/var/run/downpour.pid
+
+[Install]
+WantedBy=multi-user.target

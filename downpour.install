@@ -1,0 +1,26 @@
+_add_user() {
+  useradd -c "downpour torrent" -d '/' -s /bin/false downpour
+  passwd -l downpour
+}
+
+post_install(){
+  _add_user
+  echo "
+>>> Start webinterface : localhost:6280
+>>> Log in Username : admin
+>>> Password : password
+"
+}
+
+post_upgrade(){
+  getent passwd downpour >/dev/null 2>&1 || _add_user
+}
+
+post_remove(){
+  if getent passwd downpour >/dev/null 2>&1; then
+    userdel downpour
+  fi
+  if getent group downpour >/dev/null 2>&1; then
+    groupdel downpour
+  fi
+}
