@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-rosserial-python
+	pkgdesc = ROS - A Python-based implementation of the ROS serial protocol.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosserial_python
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rosserial-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-diagnostic-msgs
+	depends = python2-pyserial
+	source = rosserial_python::git+https://github.com/ros-gbp/rosserial-release.git#tag=release/indigo/rosserial_python/0.6.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosserial-python
+
