@@ -6,7 +6,7 @@
 # Submit issues/pull requests at https://github.com/crumblingstatue/aur-iup
 
 pkgname=iup
-pkgver=3.14
+pkgver=3.15
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ source=(
 )
 
 md5sums=(
-  'fce0f918d6e48a01521173f7f8b687a1'
-  '3c96de1263691a5a6b42bcadb12513f2'
+  'a9af7f6229f998b059ed6dbcf53fcdaf'
+  '367b7142a2f077c6a68cc9d76f20866a'
   '9c50f5376fe5cc0f459ec0148c452c57'
 )
 
