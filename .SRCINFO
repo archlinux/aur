@@ -1,0 +1,20 @@
+pkgbase = smtp-cli
+	pkgdesc = Perl based command line SMTP client
+	pkgver = 3.6
+	pkgrel = 1
+	url = http://www.logix.cz/michal/devel/smtp-cli
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-io-socket-ssl
+	depends = perl-io-socket-inet6
+	depends = perl-mime-lite
+	depends = perl-file-type
+	depends = perl-term-readkey
+	depends = perl-digest-hmac
+	depends = perl-email-date-format
+	source = http://www.logix.cz/michal/devel/smtp-cli/smtp-cli-3.6
+	sha256sums = 39b902bcb98d0b3d58be04656f6eecbf8bf090d8de7cc4a7bc30dcae71dd0417
+
+pkgname = smtp-cli
+
