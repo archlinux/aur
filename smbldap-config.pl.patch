@@ -1,0 +1,18 @@
+diff -aur smbldap-tools-0.9.10/smbldap-config.pl smbldap-tools-0.9.10-modified/smbldap-config.pl
+--- smbldap-tools-0.9.10/smbldap-config.pl	2012-03-05 08:59:44.000000000 +0000
++++ smbldap-tools-0.9.10-modified/smbldap-config.pl	2013-05-30 16:16:01.739410399 +0100
+@@ -557,3 +557,14 @@
+ $mode=0600;
+ chmod $mode,"$smbldap_bind_conf","$smbldap_bind_conf.old";
+ 
++_END_
++
++=head1 NAME
++
++smbldap-config - Configure the smbldap-tools
++
++=head1 SYNOPSIS
++
++smbldap-config
++
++=head1 DESCRIPTION

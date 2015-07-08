@@ -1,0 +1,23 @@
+pkgbase = smbldap-tools
+	pkgdesc = A set of perl scripts designed to manage user and group accounts stored in an LDAP directory.
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = https://gna.org/projects/smbldap-tools/
+	arch = any
+	license = GPL
+	depends = samba
+	depends = openldap
+	depends = perl-digest-sha1
+	depends = perl-unicode-maputf8
+	depends = perl-crypt-smbhash
+	depends = perl-ldap
+	depends = perl-io-socket-ssl
+	backup = etc/smbldap-tools/smbldap.conf
+	backup = etc/smbldap-tools/smbldap_bind.conf
+	source = http://download.gna.org/smbldap-tools/sources/0.9.10/smbldap-tools-0.9.10.tar.gz
+	source = smbldap-config.pl.patch
+	md5sums = f52a626637c468d66a4e71f30c174873
+	md5sums = 36aed03f5fa270bd8ac5849feb200d46
+
+pkgname = smbldap-tools
+
