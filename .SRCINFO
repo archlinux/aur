@@ -1,0 +1,25 @@
+pkgbase = insync
+	pkgdesc = An unofficial Google Drive client that runs on Linux, with support for various desktops
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://www.insynchq.com/downloads
+	arch = i686
+	arch = x86_64
+	license = custom:insync
+	depends = xdg-utils
+	depends = glibc
+	depends = python2
+	optdepends = insync-nautilus: file-manager integration for nautilus
+	optdepends = insync-nemo: file-manager integration for nemo
+	optdepends = insync-dolphin: file-manager integration for dolphin
+	optdepends = insync-thunar: file-manager integration for thunar
+	optdepends = insync-caja: file-manager integration for caja
+	optdepends = sni-qt: To show the icon in Plasma 5 tray
+	noextract = insync-1.2.11.deb
+	options = !strip
+	options = !upx
+	source = insync.service
+	sha256sums = 995d9131bd454015ff11414d002b8927b7397835969e27061008264c0c5f225d
+
+pkgname = insync
+
