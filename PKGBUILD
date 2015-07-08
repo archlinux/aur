@@ -2,7 +2,7 @@
 
 pkgname=flixtor
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 if [[ "$CARCH" == 'x86_64' ]] ; then
    _platform="linux64"
 else
@@ -15,7 +15,7 @@ license=('GPL3')
 options=('!strip')
 install="flixtor.install"
 _gitname="Flixtor"
-source=("https://flixtor.me/download/${_gitname}_${_platform}.tar.gz"
+source=("https://dl.dropboxusercontent.com/u/7226803/${_gitname}_${_platform}.tar.gz"
 	"flixtor.png"
         "flixtor.install"
         "flixtor.desktop")
@@ -27,7 +27,7 @@ build() {
   # https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0
   msg2 "Patching program to fix libudev.so.0 problem"
   cd "${srcdir}/${_gitname}"
-  sed -i 's/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x30/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x31/g' Flixtor
+  sed -i 's/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x30/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x31/g' ${_gitname}
 }
 
 package() {
@@ -40,7 +40,7 @@ package() {
   # Link to program
   msg2 "Symlink /usr/bin/${provides[0]} -> ${_DEST}/"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "${_DEST}/Flixtor" "${pkgdir}/usr/bin/${provides[0]}"
+  ln -s "${_DEST}/${_gitname}" "${pkgdir}/usr/bin/${provides[0]}"
   
 
   # Desktop file
