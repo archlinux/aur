@@ -1,0 +1,24 @@
+pkgbase = gnome-shell-pidgin
+	pkgdesc = Plugin for the Pidgin IM providing integration with gnome-shell user status menu.
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://sourceforge.net/projects/gnomeshpidgin/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pidgin
+	depends = dbus-core
+	depends = libpurple
+	source = http://downloads.sourceforge.net/gnomeshpidgin/gnomeShellPidgin.c
+	source = http://hg.pidgin.im/pidgin/main/raw-file/35c8682ddee7/libpurple/internal.h
+	source = include_dbus_server_add_version.patch
+	source = pidgin-status-to-shell.patch
+	source = Makefile
+	md5sums = 09c4edcd6a1ce1c7008d942862cf7562
+	md5sums = 049cda9a389f768064bc5c1af6fff341
+	md5sums = c2e3374410b89057de83e3068d61e087
+	md5sums = 54d5b99d996a12add5d4bedf9370e0ec
+	md5sums = aaf9f967f51ac5ea193ff40913d509a3
+
+pkgname = gnome-shell-pidgin
+

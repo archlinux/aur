@@ -1,0 +1,70 @@
+--- gnomeShellPidgin.c.orig	2011-10-04 21:47:46.000000000 +0200
++++ gnomeShellPidgin.c	2011-10-09 13:31:07.000000000 +0200
+@@ -22,6 +22,8 @@
+ #include <dbus-maybe.h>
+ #include <dbus-bindings.h>
+ 
++PurplePlugin * g_plugin = NULL;
++
+ static void message(PurplePlugin* plugin,const char* msg)
+ {
+     purple_notify_message(plugin,PURPLE_NOTIFY_MSG_INFO,"Gnome-Shell Connector",msg,NULL,NULL,NULL);
+@@ -107,12 +109,14 @@
+         message(params->plugin,error->message);
+         g_error_free(error);
+     }
++    // printf("SET STATUS %i\n", status);
+ }
+ 
+ static void status_signal_handler(DBusGProxy* presence,guint gnome_status,PluginParams* params)
+ {
+     PurpleSavedStatus* current_status = purple_savedstatus_get_current();
+     guint current_pidgin_status = Purple2Gnome(purple_savedstatus_get_type(current_status));
++    // printf("NEW STATUS %i\n", gnome_status);
+     if (current_pidgin_status < GNOME_NSTATUS && !purple_savedstatus_is_transient(current_status))
+     {
+         const char* title = purple_savedstatus_get_title(current_status);
+@@ -136,6 +140,15 @@
+     }
+ }
+ 
++static void
++account_status_changed_cb(PurpleAccount *account, PurpleStatus *old, PurpleStatus *new, gpointer data)
++{
++	PurpleSavedStatus* currentStatus = purple_savedstatus_get_current();
++	guint current_pidgin_status = Purple2Gnome(purple_savedstatus_get_type(currentStatus));
++	SetInGnome(g_plugin->extra,Purple2Gnome(purple_savedstatus_get_type(currentStatus)));
++	// printf(">> account_status_changed %i\n", current_pidgin_status);
++}
++
+ static gboolean plugin_load(PurplePlugin *plugin)
+ {
+     DBusGProxy* presence;
+@@ -160,6 +173,15 @@
+     SetInGnome(params,Purple2Gnome(purple_savedstatus_get_type(currentStatus)));
+     dbus_g_proxy_add_signal(presence,"StatusChanged",G_TYPE_UINT,G_TYPE_INVALID);
+     dbus_g_proxy_connect_signal(presence,"StatusChanged",G_CALLBACK(status_signal_handler),params,NULL);
++
++	purple_signal_connect(
++		purple_accounts_get_handle(),
++		"account-status-changed",
++		plugin,
++		PURPLE_CALLBACK(account_status_changed_cb),
++		NULL
++	);
++
+     return TRUE;
+ }
+ 
+@@ -200,9 +222,10 @@
+     NULL
+ };
+ 
++
+ static void init_plugin(PurplePlugin *plugin)
+ {
++	g_plugin = plugin;
+ }
+ 
+ PURPLE_INIT_PLUGIN(dbus_example, init_plugin, info)
+-
