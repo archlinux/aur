@@ -1,0 +1,16 @@
+pkgbase = dario
+	pkgdesc = A falling block game made for Ludum Dare 32
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50659
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = dario
+	source = http://ld32.eatabrick.org/final/dario-1.0.tgz
+	sha1sums = e4180482ea4bd55131aa770f607b1e973f45c88f
+
+pkgname = dario
+
