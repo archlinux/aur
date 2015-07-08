@@ -1,0 +1,15 @@
+pkgbase = pmbw
+	pkgdesc = Parallel Memory Bandwidth Benchmark / Measurement
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://panthema.net/2013/pmbw/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	source = https://panthema.net/2013/pmbw/pmbw-0.6.2.tar.bz2
+	md5sums = 0a63f24a2168a9373a3d7679ce93c3e0
+
+pkgname = pmbw
+
