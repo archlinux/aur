@@ -1,0 +1,16 @@
+pkgbase = justbrowsing-syslinux
+	pkgdesc = Syslinux config files for JustBrowsing LiveCD
+	pkgver = 2014.08
+	pkgrel = 1
+	url = https://github.com/justbrowsing/justbrowsing-syslinux
+	install = jb-syslinux.install
+	arch = any
+	groups = justbrowsing
+	license = custom
+	optdepends = justbrowsing-archiso: boot files for LiveCD
+	options = !strip
+	source = https://github.com/justbrowsing/justbrowsing-syslinux/archive/master.tar.gz
+	md5sums = 7918da478de127ccb7e33ef09c265658
+
+pkgname = justbrowsing-syslinux
+
