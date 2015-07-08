@@ -1,0 +1,13 @@
+pkgbase = python-simpletal
+	pkgdesc = Standalone Python implementation of the TAL, TALES and METAL specifications used in Zope to power HTML and XML templates.
+	pkgver = 5.1
+	pkgrel = 1
+	url = http://www.owlfish.com/software/simpleTAL/
+	arch = any
+	license = BSD
+	depends = python
+	source = http://www.owlfish.com/software/simpleTAL/downloads/SimpleTAL-5.1.tar.gz
+	md5sums = 2c43fb2376d501c2957bda26c81c419f
+
+pkgname = python-simpletal
+
