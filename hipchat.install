@@ -1,0 +1,17 @@
+update_icon_cache() {
+  command -v gtk-update-icon-cache >/dev/null 2>&1 &&
+    gtk-update-icon-cache -qtf /usr/share/icons/hicolor
+  /bin/true
+}
+
+post_install() {
+  update_icon_cache
+}
+
+post_upgrade() {
+  update_icon_cache
+}
+
+post_remove() {
+  update_icon_cache
+}

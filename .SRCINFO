@@ -1,0 +1,23 @@
+pkgbase = hipchat
+	pkgdesc = Persistent group chat using XMPP
+	pkgver = 2.2.1373
+	pkgrel = 1
+	url = https://www.hipchat.com/linux
+	install = hipchat.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = qt5-base
+	depends = libltdl
+	depends = mesa
+	depends = libxslt
+	depends = hicolor-icon-theme
+	depends = libxcomposite
+	depends = libpulse
+	depends = gstreamer0.10
+	depends = gstreamer0.10-base
+	source = hipchat-2.2.1373-.tar.xz::http://downloads.hipchat.com/linux/arch//hipchat-2.2.1373-.pkg.tar.xz
+	sha1sums = 8e148d01b677ae1c82d3835d424916df96c29383
+
+pkgname = hipchat
+
