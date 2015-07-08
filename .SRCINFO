@@ -1,0 +1,30 @@
+pkgbase = pelican-git
+	pkgdesc = A static site generator written in Python w/ reST/Markdown support.
+	pkgver = 3.5.0.r103.g8a47973
+	pkgrel = 1
+	url = http://blog.getpelican.com/
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-feedgenerator
+	depends = python-jinja
+	depends = python-pygments
+	depends = python-docutils
+	depends = python-pytz
+	depends = python-blinker
+	depends = python-unidecode
+	depends = python-six
+	depends = python-markupsafe
+	depends = python-dateutil
+	depends = python
+	optdepends = python-markdown: for supporting Markdown as an input format.
+	optdepends = python-typogrify: for typographical enhancements.
+	provides = pelican
+	conflicts = pelican
+	source = pelican-git::git+https://github.com/getpelican/pelican.git
+	md5sums = SKIP
+
+pkgname = pelican-git
+
