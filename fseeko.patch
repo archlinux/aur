@@ -1,0 +1,42 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b2c0dc..e41410e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ find_package(ZLIB)
+ find_package(BZip2)
+ 
+ if (UNIX OR MINGW)
+-    add_compile_options(-std=c99 -fomit-frame-pointer)
++    add_compile_options(-fomit-frame-pointer -D_FILE_OFFSET_BITS=64)
+ endif (UNIX OR MINGW)
+ 
+ #sources
+diff --git a/common/stream.c b/common/stream.c
+index 18c1ebf..242174a 100644
+--- a/common/stream.c
++++ b/common/stream.c
+@@ -61,10 +61,12 @@ static bool file_seek(void *data, off64_t offset, int origin)
+ {
+ #ifdef _MSC_VER
+     return _fseeki64(data, offset, origin) == 0;
++#elif defined __unix__
++    return fseeko(data, offset, origin) == 0;
+ #else
+-    if (offset > INT32_MAX)
+-        return false;
+-    return fseek(data, (long)offset, origin) == 0;
++	if (offset > INT32_MAX)
++		return false;
++        return fseek(data, (long)offset, origin) == 0;
+ #endif
+ }
+ 
+@@ -72,6 +74,8 @@ static off64_t file_tell(void *data)
+ {
+ #ifdef _MSC_VER
+     return _ftelli64(data);
++#elif defined __unix__
++    return ftello(data);
+ #else
+     return ftell(data);
+ #endif
