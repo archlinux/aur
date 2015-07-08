@@ -1,0 +1,20 @@
+post_install() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+  # Fix QT shared library depends
+  if [ ! -f "/usr/lib/libqgif.so" ];
+  then ln -s /usr/lib/qt/plugins/imageformats/libqgif.so /usr/lib/libqgif.so
+  fi
+  if [ ! -f "/usr/lib/libqico.so" ];
+  then ln -s /usr/lib/qt/plugins/imageformats/libqico.so /usr/lib/libqico.so
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}

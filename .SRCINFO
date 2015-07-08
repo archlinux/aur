@@ -1,0 +1,25 @@
+pkgbase = sandforce-updater
+	pkgdesc = Mushkin SSD Firmware Update Tool with GUI (QT)
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://www.sandforce.com/index.php?id=182
+	install = sandforce-updater.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = gzip
+	depends = qt4
+	depends = libpng
+	depends = freetype2
+	depends = libsm
+	depends = libice
+	depends = libxrender
+	depends = fontconfig
+	depends = libxext
+	depends = libx11
+	optdepends = chronos-firmware: Mushkin SSD firmware
+	source = https://github.com/oshazard/aur-includes/raw/master/sandforce-updater/includes.tar.gz
+	md5sums = 55327a4158fa44ca5b734b81dc427b82
+
+pkgname = sandforce-updater
+
