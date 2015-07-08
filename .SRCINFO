@@ -1,0 +1,33 @@
+pkgbase = servo-git
+	pkgdesc = Parallel Browser Project: web browser written in Rust
+	pkgver = 10609.c63fc4d
+	pkgrel = 1
+	url = https://github.com/mozilla/servo
+	arch = x86_64
+	arch = i686
+	license = MPL
+	makedepends = git
+	makedepends = curl
+	makedepends = python2
+	makedepends = python2-virtualenv
+	makedepends = gperf
+	makedepends = cmake
+	depends = freetype2
+	depends = mesa
+	depends = libxrandr
+	depends = libxi
+	depends = libgl
+	depends = glu
+	depends = fontconfig
+	depends = ttf-font
+	depends = bzip2
+	depends = libxcursor
+	depends = libxmu
+	provides = servo
+	conflicts = servo
+	conflicts = rust
+	source = git+https://github.com/servo/servo.git
+	md5sums = SKIP
+
+pkgname = servo-git
+
