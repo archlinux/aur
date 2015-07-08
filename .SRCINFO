@@ -1,6 +1,6 @@
 pkgbase = thunderbird-lightning-bin
 	pkgdesc = A calendar that's fully integrated into Thunderbird.
-	pkgver = 4.0.0.1
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/projects/calendar/
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = thunderbird-lightning-bin
 	license = LGPL
 	depends = thunderbird>=38
 	depends = libnotify
-	provides = lightning=4.0.0.1
+	provides = lightning=4.0.1
 	conflicts = lightning-bin
 	replaces = lightning-bin
 	options = !strip
-	source = lightning-4.0.0.1.xpi::https://addons.mozilla.org/thunderbird/downloads/file/322408/lightning-4.0.0.1-sm+tb-linux.xpi
+	source = lightning-4.0.1.xpi::https://addons.mozilla.org/thunderbird/downloads/file/322408/lightning-4.0.1-sm+tb-linux.xpi
 	sha1sums = 3a467b149798d793c2487f4455f6865e950f1383
 
 pkgname = thunderbird-lightning-bin
