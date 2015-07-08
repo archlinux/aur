@@ -1,0 +1,17 @@
+pkgbase = acestream-player
+	pkgdesc = ACE Stream HD multimedia player based on VLC
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://acestream.org/
+	install = acestream-player.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = acestream-player-data
+	depends = acestream-engine
+	conflicts = acestream
+	source = http://repo.acestream.org/ubuntu/pool/main/a/acestream-player/acestream-player_3.0.2-1trusty1_amd64.deb
+	sha512sums = 04fcf89fb2a0c5f1d34ea37c13c3193a1522167033ae3f28f111d9444f16369d0cb287463ca3245ea5a8609476e839630bca8b06ba4153056653190b52681271
+
+pkgname = acestream-player
+
