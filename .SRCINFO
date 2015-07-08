@@ -1,0 +1,13 @@
+pkgbase = python2-cerealizer
+	pkgdesc = A Python module for saving objects in a file [Python 2]
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://home.gna.org/oomadness/en/cerealizer/
+	arch = any
+	license = PSF
+	depends = python2
+	source = http://download.gna.org/soya/Cerealizer-0.8.tar.bz2
+	md5sums = 91bc8d5f5d75525364377051fd5e8b72
+
+pkgname = python2-cerealizer
+
