@@ -1,0 +1,17 @@
+pkgbase = python2-pypdf
+	pkgdesc = A Pure-Python library built as a PDF toolkit
+	pkgver = 1.13
+	pkgrel = 2
+	url = http://pybrary.net/pyPdf
+	arch = any
+	license = BSD
+	depends = python2
+	provides = pypdf
+	conflicts = pypdf
+	source = http://pybrary.net/pyPdf/pyPdf-1.13.tar.gz
+	source = license.txt
+	md5sums = 7a75ef56f227b78ae62d6e38d4b6b1da
+	md5sums = 19b1b4bc0a9a8c4b7b2f5689a16cec2c
+
+pkgname = python2-pypdf
+
