@@ -1,0 +1,24 @@
+pkgbase = ccsm
+	pkgdesc = Compizconfig Settings Manager in Python2
+	pkgver = 0.8.10
+	pkgrel = 2
+	url = http://www.northfield.ws/projects/compiz/releases/0.8.10/
+	install = ccsm.install
+	arch = any
+	groups = compiz-fusion
+	groups = compiz-fusion-gtk
+	groups = compiz-fusion-kde
+	license = GPL
+	makedepends = intltool
+	depends = compizconfig-python
+	depends = pygtk
+	optdepends = compiz-gtk-standalone: option 1
+	optdepends = compiz-core: option 2
+	optdepends = python2-sexy: needed for some widgets
+	provides = ccsm=0.8.10
+	conflicts = ccsm-git
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/ccsm.tar.gz
+	md5sums = a9b14472e65fe6e9bc37207cb36d993e
+
+pkgname = ccsm
+
