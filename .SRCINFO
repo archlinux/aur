@@ -1,0 +1,17 @@
+pkgbase = 2048term-git
+	pkgdesc = Console version of the game "2048"
+	pkgver = 20150108.3eafde9
+	pkgrel = 2
+	url = https://github.com/alewmoose/2048-in-terminal.git
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	depends = ncurses
+	provides = 2048term
+	conflicts = 2048term
+	source = 2048term::git+https://github.com/alewmoose/2048-in-terminal.git
+	sha1sums = SKIP
+
+pkgname = 2048term-git
+
