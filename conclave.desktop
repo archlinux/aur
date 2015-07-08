@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.9.0
+Type=Application
+Name=Conclave
+Comment=A tabletop-inspired RPG you can play solo or co-op, at any pace.
+Icon=conclave
+Exec=/opt/conclave/conclave
+Categories=Game;
+md5sums=()
