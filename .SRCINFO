@@ -1,0 +1,12 @@
+pkgbase = mstpd
+	pkgdesc = User-space RSTP and MSTP daemon
+	pkgver = 0.04.r8.gb593ac6
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = git+https://github.com/ocedo/mstpd.git
+	sha256sums = SKIP
+
+pkgname = mstpd
+
