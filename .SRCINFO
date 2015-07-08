@@ -1,18 +1,18 @@
 pkgbase = scratch2
 	pkgdesc = With Scratch, you can program your own interactive stories, games, and animations
-	pkgver = 2.0.436
-	pkgrel = 2
+	pkgver = 2.0.437
+	pkgrel = 1
 	url = https://scratch.mit.edu
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
 	depends = adobe-air
-	noextract = Scratch-436.air
-	source = https://scratch.mit.edu/scratchr2/static/sa/Scratch-436.air
+	noextract = Scratch-437.air
+	source = https://scratch.mit.edu/scratchr2/static/sa/Scratch-437.air
 	source = scratch2.desktop
 	source = scratch2.png
-	sha1sums = 1578dbd192a2af8b8dc83cdf03dacd2449af69e4
+	sha1sums = aab72b0217fe4fda9dcdbf94637ff48617211cfa
 	sha1sums = 1f38f3a41cd256f3d34fc2dbefcc290681160109
 	sha1sums = bfca77daa1a9079f2197d98509ca4a33b3246df1
 
