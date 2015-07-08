@@ -27,7 +27,7 @@ md5sums_x86_64=('03987c7a6b53dee9d75fe15dd9aed0f9')
 
 build() {
     #Get binary sources.
-    ar -xv google-musicmanager-beta-_current_*.deb
+    ar -xv "${pkgname}-beta_${pkgver/_/-}_*.deb"
     tar -xvf data.tar.lzma
     tar -xvf control.tar.gz
 
