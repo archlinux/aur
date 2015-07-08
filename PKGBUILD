@@ -5,7 +5,7 @@
 # This PKGBUILD was prepared for pacman 4.1 by William. Thank you. :-)
 
 pkgname=i3-git
-pkgver=4.10.2.r190.g560d9a2
+pkgver=4.10.2.r223.gb30d87e
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager'
 arch=('i686' 'x86_64')
@@ -46,33 +46,11 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 man/i3.1 \
-    ${pkgdir}/usr/share/man/man1/i3.1
-  install -Dm644 man/i3bar.1 \
-    ${pkgdir}/usr/share/man/man1/i3bar.1
-  install -Dm644 man/i3-config-wizard.1 \
-    ${pkgdir}/usr/share/man/man1/i3-config-wizard.1
-  install -Dm644 man/i3-input.1 \
-    ${pkgdir}/usr/share/man/man1/i3-input.1
-  install -Dm644 man/i3-msg.1 \
-    ${pkgdir}/usr/share/man/man1/i3-msg.1
-  install -Dm644 man/i3-migrate-config-to-v4.1 \
-    ${pkgdir}/usr/share/man/man1/i3-migrate-config-to-v4.1
-  install -Dm644 man/i3-nagbar.1 \
-    ${pkgdir}/usr/share/man/man1/i3-nagbar.1
-  install -Dm644 man/i3-dmenu-desktop.1 \
-    ${pkgdir}/usr/share/man/man1/i3-dmenu-desktop.1
-  install -Dm644 man/i3-dump-log.1 \
-    ${pkgdir}/usr/share/man/man1/i3-dump-log.1
-  install -Dm644 man/i3-sensible-editor.1 \
-    ${pkgdir}/usr/share/man/man1/i3-sensible-editor.1
-  install -Dm644 man/i3-sensible-pager.1 \
-    ${pkgdir}/usr/share/man/man1/i3-sensible-pager.1
-  install -Dm644 man/i3-sensible-terminal.1 \
-    ${pkgdir}/usr/share/man/man1/i3-sensible-terminal.1
+  install -d "${pkgdir}/usr/share/man/man1/"
+  install -m644 man/*.1 "${pkgdir}/usr/share/man/man1/"
 
   install -Dm644 LICENSE \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   make clean
 }
