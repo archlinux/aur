@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=2.2
-pkgrel=3
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -71,18 +71,14 @@ prepare() {
 package() {
   cd "${srcdir}"
   
-  install -dm 755 "${pkgdir}/usr/lib/system/systemd/system-sleep"
-  install -dm 755 "${pkgdir}/usr/lib/system/openvpn@.service.d"
-  install -dm 600 "${pkgdir}/etc/openvpn"
-  install -dm 755 "${pkgdir}/etc/private-internet-access"
-  install -dm 755 "${pkgdir}/usr/bin"
-  install -dm 755 "${pkgdir}/usr/share/man/man8"
+  install -dm755 "${pkgdir}"/{etc/{openvpn,private-internet-access},usr/{lib/system/{systemd/system-sleep,openvpn@.service.d},{bin,share/man/man8}}}
 
-  install -Dm 644 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
-  install -m 755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
-  install -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
-  install -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
-  install -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8"
+  install -Dm644 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
+  install -m755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
+  install -m644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
+  install -m755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
+  install -m644 pia.8.gz "${pkgdir}/usr/share/man/man8"
+  install -m644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access"
 
   cd "python-pia"
   python setup.py install --root="${pkgdir}/" --optimize=1
