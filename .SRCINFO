@@ -1,0 +1,12 @@
+pkgbase = gnome-colors-icon-theme
+	pkgdesc = GNOME-Colors icon theme
+	pkgver = 5.5.1
+	pkgrel = 3
+	url = http://gnome-colors.googlecode.com
+	arch = any
+	license = GPL2
+	source = http://gnome-colors.googlecode.com/files/gnome-colors-5.5.1.tar.gz
+	md5sums = 8ec81b556bac351817bd56a1701dbbfb
+
+pkgname = gnome-colors-icon-theme
+
