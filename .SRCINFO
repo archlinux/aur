@@ -1,0 +1,19 @@
+pkgbase = powermanga
+	pkgdesc = Arcade 2D shoot-them-up game with 41 levels and more than 200 sprites
+	pkgver = 0.93.1
+	pkgrel = 1
+	url = http://linux.tlk.fr/games/Powermanga/
+	install = powermanga.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_mixer
+	depends = libpng
+	backup = var/games/powermanga/powermanga.hi
+	backup = var/games/powermanga/powermanga.hi-easy
+	backup = var/games/powermanga/powermanga.hi-hard
+	source = http://linux.tlk.fr/games/Powermanga/download/powermanga-0.93.1.tgz
+	sha256sums = da753fce83905a6db3fd8ea65c70c57d662362c86c429d6c6954417144f943e8
+
+pkgname = powermanga
+

@@ -1,0 +1,9 @@
+
+post_install() {
+  echo ">> In order to save your score, add your user to the 'games' group:"
+  echo ">> $ gpasswd -a $USER games"
+}
+
+post_upgrade() {
+  post_install
+}
