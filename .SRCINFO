@@ -1,0 +1,18 @@
+pkgbase = lightweight-ponies
+	pkgdesc = Featurefree lightweight ponysay script
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/erkin/ponysay/extras/lightweight-ponies
+	arch = any
+	license = custom:GNUAllPermissive
+	depends = sh
+	depends = grep
+	depends = sed
+	depends = findutils
+	depends = coreutils
+	depends = ponysay
+	source = https://github.com/erkin/ponysay/archive/c4fc895c451838a78b93ede7f1ab1b63fdb5a4b9.tar.gz
+	sha256sums = 24ee8698f32d5b986efd36aab04f32420ffe57d501ec1594d992bc05555db546
+
+pkgname = lightweight-ponies
+
