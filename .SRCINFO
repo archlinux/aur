@@ -1,0 +1,20 @@
+pkgbase = libgxps-git
+	pkgdesc = An XPS Documents library
+	pkgver = 20120430
+	pkgrel = 1
+	url = http://git.gnome.org/browse/libgxps/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	depends = cairo
+	depends = libarchive
+	depends = libtiff
+	provides = libgxps
+	conflicts = libgxps
+
+pkgname = libgxps-git
+
