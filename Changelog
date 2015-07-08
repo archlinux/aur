@@ -1,0 +1,5 @@
+2013-11-6 Aaron DeVore <aaron.devore@gmail.com> (1.4.3-3)
+- Switch build() to package()
+2012-1-31 Aaron DeVore <aaron.devore@gmail.com> (1.4.3-2)
+- Correct md5sum
+- Change architecture to 'any'

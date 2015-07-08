@@ -1,0 +1,16 @@
+pkgbase = jflex
+	pkgdesc = A lexer generator written in Java
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://www.jflex.de/
+	changelog = Changelog
+	arch = any
+	license = GPL
+	depends = java-environment
+	source = http://jflex.de/jflex-1.6.0.tar.gz
+	source = jflex.sh
+	md5sums = df8cc9ca50b549bf705bd23479c100dc
+	md5sums = 69cd460b4345372103b8301b456cbd1d
+
+pkgname = jflex
+
