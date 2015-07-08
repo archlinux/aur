@@ -1,0 +1,18 @@
+pkgbase = voikko-libreoffice
+	pkgdesc = Finnish spellchecker, grammar checker and hyphenator extension for libreoffice
+	pkgver = 4.1
+	pkgrel = 3
+	url = http://voikko.sourceforge.net
+	install = voikko-libreoffice.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = zip
+	makedepends = libreoffice-sdk
+	depends = libvoikko
+	depends = libreoffice
+	source = http://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-4.1.tar.gz
+	md5sums = a07b386d4f4356b686e667a2acb1aff6
+
+pkgname = voikko-libreoffice
+

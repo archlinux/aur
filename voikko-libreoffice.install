@@ -1,0 +1,33 @@
+pre_install() {
+  echo ">>> Removing old voikko extensions..."
+  id=" "
+  while [ "$id" != ""  ]; do
+    id=`/usr/lib/libreoffice/program/unopkg list --shared | egrep '^(Name|Identifier):.*voikko' | cut -d":" -f2 | head -n 1`
+    if [ "$id" != "" ]; then
+      if /usr/lib/libreoffice/program/unopkg list --shared $id >/dev/null; then
+        echo "Removing extension $id..."
+        INSTDIR=`mktemp -d`
+        /usr/lib/libreoffice/program/unopkg remove --shared $id
+       fi
+    fi
+  done
+}
+
+post_install() {
+  echo ">>> Adding extension /usr/lib/libreoffice/share/extensions/install/voikko.oxt..."
+  /usr/lib/libreoffice/program/unopkg add --shared /usr/lib/libreoffice/share/extensions/install/voikko.oxt
+}
+
+pre_upgrade() {
+  pre_install $1
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  pre_install $1
+}
+
+# vim:set ts=2 sw=2 et:
