@@ -1,0 +1,30 @@
+pkgbase = qtox-git
+	pkgdesc = Powerful Tox client written in C++/Qt that follows the Tox design guidelines.
+	pkgver = r2712.2fed672
+	pkgrel = 1
+	url = https://github.com/tux3/qTox
+	install = qtox-git.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = desktop-file-utils
+	depends = libfilteraudio-git
+	depends = libxkbcommon-x11
+	depends = libxss
+	depends = opencv
+	depends = openal
+	depends = qt5-svg
+	depends = qrencode
+	depends = tox-git
+	provides = qtox
+	conflicts = qtox
+	source = qtox::git+https://github.com/tux3/qTox.git
+	sha512sums = SKIP
+
+pkgname = qtox-git
+
