@@ -6,10 +6,11 @@
 pkgname=libqglviewer-qt4
 _pkgname=libQGLViewer
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
 url="http://www.libqglviewer.com/"
 depends=('qt4' 'glu' 'mesa')
+conflicts=('libqglviewer')
 arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3' 'custom')
 source=("http://www.libqglviewer.com/src/${_pkgname}-${pkgver}.tar.gz" "qglviewer.patch")
