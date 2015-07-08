@@ -2,6 +2,7 @@ pkgname=libunarr-git
 pkgver=r188.c4136ab
 pkgrel=1
 arch=('i686' 'x86_64')
+url="https://github.com/zeniko/unarr"
 pkgdesc=('A lightweight decompression library with support for rar, tar and zip archives.')
 source=('git+https://github.com/zeniko/unarr'
 		'https://raw.githubusercontent.com/selmf/unarr/master/CMakeLists.txt'
