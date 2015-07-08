@@ -1,0 +1,27 @@
+# Package p4d
+# Maintainer: Andrew Boktor andrew dot boktor at gmail dot come
+post_install(){
+    groupadd p4admin &>/dev/null
+    useradd -g p4admin -d /var/lib/perforce -s /bin/false perforce &>/dev/null
+    echo ":: Configuration in /etc/p4d.conf"
+    echo ":: Change ownership of files in \$P4ROOT and \$P4LOG to perforce:p4admin"
+}
+
+post_upgrade(){
+    getent group p4admin >/dev/null 2>&1 || groupadd p4admin &>/dev/null
+    getent passwd perforce >/dev/null 2>&1 || useradd -g perforce -d /var/lib/perforce \
+        -s /bin/false perforce &>/dev/null
+    if [[ "$(vercmp $2 2014.2.978861-4)" -lt 0 ]]; then
+        echo ":: perforce now is run as the \"perforce\" user"
+        echo ":: Change ownership of files in \$P4ROOT and \$P4LOG to perforce:p4admin"
+    fi
+}
+
+post_remove(){
+    if getent passwd perforce >/dev/null 2>&1; then
+        userdel perforce
+    fi
+    if getent group p4admin >/dev/null 2>&1; then
+        groupdel p4admin
+    fi
+}

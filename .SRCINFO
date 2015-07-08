@@ -1,0 +1,18 @@
+pkgbase = p4d
+	pkgdesc = Perforce Server
+	pkgver = 2014.2.1033284
+	pkgrel = 1
+	url = http://www.perforce.com
+	install = p4d.install
+	arch = x86_64
+	license = custom:p4d
+	backup = etc/p4d.conf
+	source = http://www.perforce.com/downloads/perforce/r14.2/bin.linux26/p4d
+	source = p4d.service
+	source = p4d.conf
+	sha1sums = 92f2f2847b32c0669c1a187dbfe4fc48de3c8b90
+	sha1sums = 8033b7c40f9ff96578f220bf0c27e51788eec661
+	sha1sums = 85ebc96e2c678020308de6985d9e5e53aedbf49c
+
+pkgname = p4d
+

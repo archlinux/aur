@@ -1,0 +1,16 @@
+[Unit]
+Description=Perforce Server
+Requires=network.target local-fs.target
+After=network.target local-fs.target
+
+[Service]
+Type=forking
+User=perforce
+EnvironmentFile=-/etc/p4d.conf
+ExecStart=/usr/bin/p4d -d
+ExecStop=/usr/bin/killall p4d
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
