@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201312w
+	pkgdesc = Epson printer driver (L1800)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201312w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = c0fe79f976034124912e8cd09dd53b02830870a7217a8627f79437ff3d0dc46b
+
+pkgname = epson-inkjet-printer-201312w
+
