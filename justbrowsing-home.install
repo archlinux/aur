@@ -1,0 +1,14 @@
+_username="user"
+_userdir="/home/${_username}"
+
+pre_install(){
+  useradd -U -m -d "${_userdir}" ${_username}
+}
+
+post_install(){
+  chown -R ${_username}:${_username} "${_userdir}"
+}
+
+post_remove(){
+  userdel "${_username}" 2>/dev/null
+}
