@@ -1,0 +1,20 @@
+pkgbase = lxqt-admin-git
+	pkgdesc = LXQt system administration
+	pkgver = 0.9.0.14.gdce4b16
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = liblxqt-git
+	depends = liboobs
+	provides = lxqt-admin
+	conflicts = lxqt-admin
+	source = git+https://github.com/lxde/lxqt-admin.git
+	sha256sums = SKIP
+
+pkgname = lxqt-admin-git
+
