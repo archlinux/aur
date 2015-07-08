@@ -1,6 +1,6 @@
 pkgbase = czmq-git
 	pkgdesc = High-level C binding for ZeroMQ
-	pkgver = 20150520
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/zeromq/czmq
 	arch = i686
