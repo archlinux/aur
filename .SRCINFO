@@ -1,7 +1,7 @@
 pkgbase = blws-all-in-one-optimised-git
 	pkgdesc = Provides optimised binaries, configuration, and themes.
 	pkgver = 0.0.1
-	pkgrel = 5
+	pkgrel = 6
 	arch = any
 	license = unknown
 	conflicts = blws-all-in-one-full-git
