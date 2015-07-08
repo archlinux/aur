@@ -1,0 +1,8 @@
+post_install(){
+  echo "==> Web-apps installed to /apps"
+  echo "  Calculator-> file:///apps/calc/index.html"
+  echo "  Notes-> file:///apps/notes/index.html"
+  echo "  Timers-> file:///apps/timers/index.html"
+  echo "  Wageclock-> file:///apps/wageclock/index.html"
+}
+

@@ -1,0 +1,17 @@
+pkgbase = justbrowsing-webapps
+	pkgdesc = Web-apps for JustBrowsing: calculator, notes, timers, wageclock
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/justbrowsing/justbrowsing
+	install = webapps.install
+	arch = any
+	groups = justbrowsing
+	license = custom
+	license = CCPL
+	license = MIT
+	makedepends = git
+	optdepends = firefox: web browser
+	optdepends = chromium: web browser
+
+pkgname = justbrowsing-webapps
+
