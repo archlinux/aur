@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-vimfx
+	pkgdesc = Introduces Vim-style keyboard shortcuts for browsing and navigation without using the mouse.
+	pkgver = 0.5.17.1
+	pkgrel = 1
+	url = https://github.com/akhodakivskiy/VimFx
+	arch = any
+	license = MIT
+	depends = firefox>=29.0
+	source = https://addons.mozilla.org/firefox/downloads/file/294536/vimfx-0.5.17.1.xpi
+	source = LICENSE
+	sha1sums = b0ae4536be1b7bfbb200585ce07caaaa9687d97a
+	sha1sums = f1eaf939b37946dea611a5d55ef4784306c70a53
+
+pkgname = firefox-extension-vimfx
+
