@@ -1,0 +1,22 @@
+pkgbase = create_ap
+	pkgdesc = A shell script to create a NATed/Bridged Software Access Point
+	pkgver = r124.d55adb7
+	pkgrel = 1
+	url = https://github.com/oblique/create_ap
+	install = create_ap.install
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = bash
+	depends = hostapd
+	depends = iproute2
+	depends = iw
+	depends = dnsmasq
+	depends = iptables
+	depends = util-linux
+	optdepends = haveged: boost low entropy
+	source = git+https://github.com/oblique/create_ap
+	sha256sums = SKIP
+
+pkgname = create_ap
+
