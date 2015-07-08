@@ -1,0 +1,18 @@
+pkgbase = ttf-borna
+	pkgdesc = Borna Rayaneh Persian B font series
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.bornaray.com/products/font.html
+	install = ttf-borna.install
+	arch = any
+	groups = persian-fonts
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = unzip
+	noextract = ttf-borna.zip
+	source = ttf-borna.zip::http://www.bornaray.com/downloads/bfonts.zip
+	md5sums = e21a18bd572bc551ad9728059ec5f0e5
+
+pkgname = ttf-borna
+
