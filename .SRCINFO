@@ -1,0 +1,17 @@
+pkgbase = otf-im-fell-types
+	pkgdesc = A set of free modern revival fonts, with ligatures, swash characters, and ornaments, digitalized by Igino Marini.
+	pkgver = 20121117
+	pkgrel = 1
+	url = http://iginomarini.com/fell/
+	install = otf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://iginomarini.com/fell/wp-content/uploads/IMFellTypesClass.zip
+	source = OFL.txt
+	sha1sums = dd228201eea5c24d15aa51ac058ae056a7315e20
+	sha1sums = 0fdc6a354c80cc47f8025d00c2baeafa019be7a5
+
+pkgname = otf-im-fell-types
+
