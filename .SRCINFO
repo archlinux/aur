@@ -1,0 +1,51 @@
+pkgbase = qgis
+	pkgdesc = Quantum GIS is a Geographic Information System (GIS) that supports vector, raster & database formats
+	pkgver = 2.10
+	pkgrel = 1
+	url = http://qgis.org/
+	install = qgis.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = flex
+	makedepends = bison
+	makedepends = txt2tags
+	makedepends = perl
+	makedepends = git
+	depends = qt4
+	depends = proj
+	depends = geos
+	depends = sqlite
+	depends = gdal
+	depends = expat
+	depends = qwt
+	depends = qwtpolar
+	depends = gsl
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-qscintilla
+	depends = python2-sip
+	depends = python2-psycopg2
+	depends = python2-pygments
+	depends = python2-dateutil
+	depends = python2-jinja
+	depends = python2-markupsafe
+	depends = python2-pytz
+	depends = python2-httplib2
+	depends = libspatialite
+	depends = spatialindex
+	optdepends = grass: GRASS plugin support
+	optdepends = fcgi: QGIS Map Server support
+	optdepends = osgearth: QGIS Globe plugin support
+	optdepends = gpsbabel: GPS toolbar support
+	provides = qgis=2.10
+	conflicts = qgis-git
+	conflicts = qgis
+	source = qgis::git://github.com/qgis/QGIS.git#branch=release-2_10
+	source = https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py
+	md5sums = SKIP
+	md5sums = 57efd9c869ed2d0a50fb7cf35048d99d
+
+pkgname = qgis
+
