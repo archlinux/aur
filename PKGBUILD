@@ -2,7 +2,7 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=icinga2
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program."
 license=('GPL')
