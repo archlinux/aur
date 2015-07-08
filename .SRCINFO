@@ -1,0 +1,31 @@
+pkgbase = utox-git
+	pkgdesc = Lightweight Tox client
+	pkgver = r1519.c46ae4c
+	pkgrel = 1
+	url = https://github.com/notsecure/uTox
+	install = utox-git.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	depends = desktop-file-utils
+	depends = fontconfig
+	depends = libfilteraudio-git
+	depends = hicolor-icon-theme
+	depends = libdbus
+	depends = libxext
+	depends = libxrender
+	depends = openal
+	depends = tox-git
+	depends = v4l-utils
+	optdepends = gtk2: GTK file picker
+	provides = utox
+	conflicts = utox
+	source = utox-git::git+https://github.com/notsecure/uTox
+	md5sums = SKIP
+
+pkgname = utox-git
+
