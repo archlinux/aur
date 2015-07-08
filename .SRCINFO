@@ -1,0 +1,23 @@
+pkgbase = crrcsim
+	pkgdesc = Model airplane flight simulation program.
+	pkgver = 0.9.12
+	pkgrel = 3
+	url = http://sourceforge.net/projects/crrcsim/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gawk
+	makedepends = plib>=1.8.4
+	depends = sdl>=1.2.5
+	depends = portaudio
+	depends = libjpeg
+	depends = cgal
+	source = crrcsim.desktop
+	source = crrcsim.png
+	source = http://sourceforge.net/projects/crrcsim/files/latest/download/crrcsim-0.9.12.tar.gz
+	md5sums = 130b2a0661e96dce8b27dc3531c87474
+	md5sums = 1cba5f3c8d3439e56866880429694a5c
+	md5sums = d6144138c82bff36d55b4517a9bf1a7b
+
+pkgname = crrcsim
+
