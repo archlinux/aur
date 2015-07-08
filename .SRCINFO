@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-rosserial-msgs
+	pkgdesc = ROS - Messages for automatic topic configuration using rosserial.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosserial_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-message-runtime
+	source = rosserial_msgs::git+https://github.com/ros-gbp/rosserial-release.git#tag=release/indigo/rosserial_msgs/0.6.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosserial-msgs
+
