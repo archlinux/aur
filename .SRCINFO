@@ -1,6 +1,6 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
-	pkgver = 3.14
+	pkgver = 3.15
 	pkgrel = 1
 	url = http://www.tecgraf.puc-rio.br/iup/
 	arch = i686
@@ -12,11 +12,11 @@ pkgbase = iup
 	optdepends = im: for advanced imaging support
 	optdepends = mesa: for OpenGL support
 	options = staticlibs
-	source = http://downloads.sourceforge.net/project/iup/3.14/Docs%20and%20Sources/iup-3.14_Sources.tar.gz
-	source = http://heanet.dl.sourceforge.net/project/iup/3.14/Docs%20and%20Sources/iup-3.14_Docs.pdf
+	source = http://downloads.sourceforge.net/project/iup/3.15/Docs%20and%20Sources/iup-3.15_Sources.tar.gz
+	source = http://heanet.dl.sourceforge.net/project/iup/3.15/Docs%20and%20Sources/iup-3.15_Docs.pdf
 	source = makfiles.patch
-	md5sums = fce0f918d6e48a01521173f7f8b687a1
-	md5sums = 3c96de1263691a5a6b42bcadb12513f2
+	md5sums = a9af7f6229f998b059ed6dbcf53fcdaf
+	md5sums = 367b7142a2f077c6a68cc9d76f20866a
 	md5sums = 9c50f5376fe5cc0f459ec0148c452c57
 
 pkgname = iup
