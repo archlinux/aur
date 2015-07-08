@@ -1,0 +1,30 @@
+pkgbase = spotify-beta
+	pkgdesc = A proprietary peer-to-peer music streaming service
+	pkgver = 1.0.7.153
+	pkgrel = 1
+	url = http://www.spotify.com
+	install = spotify.install
+	changelog = spotify.changelog
+	arch = x86_64
+	license = custom:"Copyright (c) 2006-2010 Spotify Ltd"
+	depends = alsa-lib>=1.0.14
+	depends = glibc>=2.6
+	depends = openssl
+	depends = gconf
+	depends = nss
+	depends = systemd
+	depends = gtk2
+	depends = libxtst
+	depends = libx11
+	optdepends = desktop-file-utils: Adds URI support to compatible desktop environments
+	optdepends = ffmpeg-compat: Adds support for playback of local files
+	optdepends = libnotify: Adds desktop notifications
+	conflicts = spotify
+	options = !strip
+	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.7.153.gb9e8174a_amd64.deb
+	source = spotify.protocol
+	md5sums = 9f5157bb783b64b194b958de001434a6
+	md5sums = ef25ddc5b6bf8fe1a0d64cbd79e1f7b4
+
+pkgname = spotify-beta
+
