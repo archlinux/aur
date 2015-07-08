@@ -1,0 +1,11 @@
+--- ensime-vars.el.orig	2014-12-21 15:10:17.000000000 +0100
++++ ensime-vars.el	2014-12-21 15:11:29.000000000 +0100
+@@ -76,6 +76,8 @@
+ (defcustom ensime-default-java-home
+   (cond ((getenv "JDK_HOME"))
+ 	((getenv "JAVA_HOME"))
++	((file-exists-p "/usr/lib/jvm/default")
++	 "/usr/lib/jvm/default")
+ 	((file-exists-p "/usr/libexec/java_home")
+ 	 (s-chomp (shell-command-to-string "/usr/libexec/java_home")))
+ 	('t (let ((java (file-truename (executable-find "javac"))))

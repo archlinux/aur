@@ -1,0 +1,22 @@
+pkgbase = ensime-git
+	pkgdesc = The ENhanced Scala Interaction Mode for Emacs
+	pkgver = r1661.1ec611b
+	pkgrel = 1
+	url = https://github.com/ensime/ensime-server
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = auto-complete
+	depends = emacs
+	depends = emacs-dash
+	depends = emacs-popup-el
+	depends = emacs-s
+	depends = emacs-yasnippet
+	depends = sbt
+	provides = ensime
+	conflicts = ensime
+	source = git+https://github.com/ensime/ensime-emacs.git
+	md5sums = SKIP
+
+pkgname = ensime-git
+
