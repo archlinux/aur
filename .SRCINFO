@@ -1,0 +1,19 @@
+pkgbase = lib32-apulse
+	pkgdesc = PulseAudio emulation for ALSA, multilib.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/i-rinat/apulse
+	install = lib32-apulse.install
+	arch = x86_64
+	license = custom:MIT
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = lib32-glib2
+	depends = lib32-alsa-lib
+	source = apulse-0.1.6.tar.gz::https://github.com/i-rinat/apulse/archive/v0.1.6.tar.gz
+	source = asoundrc.sample
+	sha256sums = f9ffbf7aff96680beff3243758e5c1e0d4ac9043d4bd6cbfb219890b4b91c9f3
+	sha256sums = e851197ec9ebff528154210751cd6d5c426abfc2b1aa34343580407b1ea789a4
+
+pkgname = lib32-apulse
+

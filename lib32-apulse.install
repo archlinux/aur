@@ -1,0 +1,13 @@
+post_install() {
+  cat << EOF
+
+For using PulseAudio emulation (ex. in skype):
+
+1. create a proper .asoundrc
+  $ cp /usr/share/lib32-apulse/asoundrc.sample ~/.asoundrc
+
+2. run apulse32 <program-name> [parameters]
+  $ apulse32 skype
+
+EOF
+}
