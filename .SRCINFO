@@ -1,0 +1,22 @@
+pkgbase = gtkdialog-svn
+	pkgdesc = Gtkdialog is a small utility for fast and easy GUI building (SVN)
+	pkgver = 514
+	pkgrel = 7
+	url = https://code.google.com/p/gtkdialog
+	install = gtkdialog.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = subversion
+	makedepends = automake
+	makedepends = bison
+	makedepends = flex
+	depends = libglade
+	depends = vte
+	optdepends = gtkdialog-examples: sample projects - pfeme, pfontview, playmusic
+	provides = gtkdialog
+	conflicts = gtkdialog
+
+pkgname = gtkdialog-svn
+
