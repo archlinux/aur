@@ -1,0 +1,18 @@
+pkgbase = mwlib.ext
+	pkgdesc = external dependencies for mwlib
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = http://code.pediapress.com/wiki/wiki
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = freetype2
+	source = http://pypi.python.org/packages/source/m/mwlib.ext/mwlib.ext-0.13.2.zip
+	md5sums = 36193837359204d3337b297ba0f20bc8
+
+pkgname = mwlib.ext
+
