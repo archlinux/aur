@@ -1,0 +1,38 @@
+From: Franck Joncourt <franck.mail@dthconnex.com>
+Subject: [PATCH] fixes/gpgwrap_makefile
+
+This allows the main Makefile not to fail when trying to install gpgwrap.
+It just adds the install target in the gpgwrap Makefile.
+
+That could be avoided by handling differently the gpgwrap project in the main
+Makefile, but then it is going to be the mess.
+
+The new target does not install anything since so far the man page is currently
+installed from debian/rules, and thus everything to install gpgwrap is added to
+debian.rules for consistency purpose.
+
+Signed-off-by: Franck Joncourt <franck.mail@dthconnex.com>
+
+---
+ gpgwrap/Makefile |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/gpgwrap/Makefile b/gpgwrap/Makefile
+index 30064df..3dc65b9 100644
+--- a/gpgwrap/Makefile
++++ b/gpgwrap/Makefile
+@@ -1,9 +1,11 @@
+ MAKE=make
+ 
+-.PHONY: all clean
++.PHONY: all clean install
+ 
+ all:
+ 	cd src && ${MAKE} all DIET="${DIET}"
+ 
++install:
++
+ clean:
+ 	cd src && ${MAKE} clean
+-- 
+tg: (9286c56..) fixes/gpgwrap_makefile (depends on: master)

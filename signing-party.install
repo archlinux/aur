@@ -1,0 +1,7 @@
+post_install() {
+cat <<EOF
+
+Documentation and sample configs in /usr/share/doc/signing-party.
+
+EOF
+}
