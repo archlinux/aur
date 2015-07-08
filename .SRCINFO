@@ -1,0 +1,27 @@
+pkgbase = plan9port-git
+	pkgdesc = port of many Plan 9 programs to Unix-like operating systems
+	pkgver = 5d86ecd
+	pkgrel = 1
+	url = http://swtch.com/plan9port/
+	install = plan9.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = xorg-server
+	depends = libxt
+	depends = libxext
+	depends = fuse
+	optdepends = python2: for the codereview script
+	provides = plan9
+	conflicts = 9base
+	conflicts = plan9port
+	options = !zipman
+	options = staticlibs
+	source = git+https://github.com/9fans/plan9port
+	source = plan9.sh
+	md5sums = SKIP
+	md5sums = c884c3c90a107f1a178718c304c67d30
+
+pkgname = plan9port-git
+

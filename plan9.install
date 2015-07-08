@@ -1,0 +1,8 @@
+post_install() {
+  echo ""
+  echo "==> In order to use Plan9 specific apps, run them"
+  echo "    as arguments to the '9' script, i.e. '9 date'"
+  echo "==> Please log off or 'source /etc/profile.d/plan9.sh'"
+  echo "==> Run '9 man 1 intro | less' to begin"
+  source /etc/profile.d/plan9.sh
+}
