@@ -1,0 +1,16 @@
+[Unit]
+Description=An automatic NZB and torrent movie downloader
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/couchpotato
+User=couchpotato
+Group=couchpotato
+ExecStart=/usr/bin/couchpotato --config_file "$CP_CONF" --data_dir "$CP_DATA" --pid_file=/run/couchpotato/couchpotato.pid
+Type=simple
+PIDFile=/run/couchpotato/couchpotato.pid
+
+[Install]
+WantedBy=multi-user.target
+
+
