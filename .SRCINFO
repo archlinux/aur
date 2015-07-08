@@ -1,0 +1,16 @@
+pkgbase = acml-ifort
+	pkgdesc = AMD Core Math Library (ACML) for Linux built with Intel Fortran
+	pkgver = 5.3.1
+	pkgrel = 3
+	url = http://developer.amd.com
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = bash
+	depends = tcsh
+	options = staticlibs
+	source = http://developer.amd.com/tools-and-sdks/cpu-development/amd-core-math-library-acml/acml-downloads-resources/acml-5-3-1-ifort-64bit.tgz
+	sha1sums = 1db417d4b49c0e2e892af7ec0ae4514cf5b98672
+
+pkgname = acml-ifort
+
