@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-node-git
 	pkgdesc = Bitcoin Full Node
-	pkgver = 20150519
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-node
 	arch = i686
