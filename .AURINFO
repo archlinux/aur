@@ -1,0 +1,17 @@
+pkgbase = openstego
+	pkgdesc = Plugin based tool for steganography, with encrytion support.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://openstego.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = unzip
+	depends = java-environment
+	depends = java-runtime
+	depends = x-server
+	source = http://downloads.sourceforge.net/project/openstego/openstego/openstego-0.6.1/openstego-0.6.1.zip
+	source = openstego.sh
+
+pkgname = openstego
+
