@@ -1,0 +1,34 @@
+pkgbase = geary-plank-bzr
+	pkgdesc = The Pantheon Mailer- this package provides plank integration
+	pkgver = r1843
+	pkgrel = 1
+	url = https://launchpad.net/geary
+	install = geary.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-integration
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = vala
+	depends = gmime
+	depends = gnome-keyring
+	depends = libcanberra
+	depends = libgee
+	depends = libnotify
+	depends = librsvg
+	depends = webkitgtk
+	depends = libunity
+	depends = dee-bzr
+	provides = geary-plank-bzr
+	conflicts = geary
+	conflicts = geary-unity
+	conflicts = geary-git
+	source = geary::bzr+http://bazaar.launchpad.net/~yorba/geary/trunk/
+	sha256sums = SKIP
+
+pkgname = geary-plank-bzr
+
