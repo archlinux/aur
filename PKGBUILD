@@ -8,9 +8,9 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgbase=linux-libre-knock # Build stock knock kernel
-_pkgbasever=4.0-gnu
-_pkgver=4.0.7-gnu
-_knockpatchver=3.18_1
+_pkgbasever=4.1-gnu
+_pkgver=4.1.1-gnu
+_knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -19,7 +19,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64' 'mips64el')
 url="https://gnunet.org/knock"
 license=('GPL2')
@@ -29,8 +29,10 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver}.diff"
-        "tcp_stealth_${_knockpatchver}.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver%_1}.diff_1.sig"
+        #"http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver}.diff"
+        #"tcp_stealth_${_knockpatchver}.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver%_1}.diff_1.sig"
+        "https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_${_knockpatchver}.diff"
+        "https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_${_knockpatchver}.diff.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -45,13 +47,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'change-default-console-loglevel.patch'
         # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig")
-sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
+        "https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch"
+        "https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch.sig")
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            'c106ac1baa327ba39fc479c6b7b5c3a9f0a523ecc4db2a0be6a1f6f700d5cc53'
+            '0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3'
             'SKIP'
-            '93a1610c203ea4c187ac5b50dce105fac86df914b1406e1d85df5857d36201c9'
+            'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -59,20 +61,20 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'ba2fa02ea43d4fe9b78e7824d3d9752b5ba84d7ca539b871626c3583ad1cdfc2'
-            'e56bd8db7d7bd0ccf46518e364f51fe57e0d9cb848a3daab145f2b7380a7fe9b'
-            'cff141410c90ec34ce6e3f352f57d302db4304ea87564a1fbe888db97f28fbea'
+            'eb798f148028db57706fd0d4980eb0f31b0d956f864f0d3a130fecd62fc743ea'
+            'dabb4f7a98ac1c6510c05b5bc254a7fb3cd55d1427258e4966af2007209777d5'
+            '58fa33ae523fbacc2478b6616c4a963ac23983cceef22e54ea3a7722871ed74d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22'
+            'ab8fe9b295af6e28858834e464c01198ae1b521e2571ff47efa3ad1ccbbfc846'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
-              'F949CFBD140A6DD071E90B8CDC24396B6D451038' # Julian Kirsch
+              #'F949CFBD140A6DD071E90B8CDC24396B6D451038' # Julian Kirsch
 )
 
 _kernelname=${pkgbase#linux-libre}
@@ -115,7 +117,7 @@ prepare() {
 
   # Adding loongson-community patch
   if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/4.0.2-ae91f13af5-loongson-community.patch
+    patch -p1 -i ${srcdir}/4.1-rc7-db21bcc5d0-loongson-community.patch
   fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
