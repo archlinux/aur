@@ -1,0 +1,19 @@
+pkgbase = python-postfix-policyd-spf
+	pkgdesc = Python Postfix Sender Policy Framework (SPF) filter
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://launchpad.net/pypolicyd-spf/
+	arch = any
+	license = GPL
+	depends = postfix
+	depends = python-pyspf
+	depends = python>=3.3
+	optdepends = python-authres: RFC 7001 Authentication-Results header support
+	conflicts = python2-postfix-policyd-spf
+	options = !emptydirs
+	backup = etc/python-policyd-spf/policyd-spf.conf
+	source = https://launchpad.net/pypolicyd-spf/1.3/1.3.1/+download/pypolicyd-spf-1.3.1.tar.gz
+	md5sums = c847a4deecb7405ff4a6778fb971cbd1
+
+pkgname = python-postfix-policyd-spf
+
