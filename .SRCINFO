@@ -1,0 +1,16 @@
+pkgbase = lapack-manpages
+	pkgdesc = LAPACK and BLAS manual pages
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://netlib.org/lapack
+	arch = any
+	license = BSD
+	depends = man-db
+	provides = lapack-manpages
+	source = http://netlib.org/lapack/manpages.tgz
+	source = LICENSE
+	md5sums = 275687b7e06498798e88b1ca8481b3e2
+	md5sums = 7d9f3a90a3f3d41052b70a31c1daf8ad
+
+pkgname = lapack-manpages
+
