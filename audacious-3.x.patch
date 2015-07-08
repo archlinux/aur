@@ -1,0 +1,295 @@
+Description: audacious 3.x
+  Imms can be compiled and used with audacious 3.x. Changes:
+  * port IMMS to new audacious API
+  * port IMMS to GTK3
+Author: Artur R. Czechowski <arturcz@hell.pl>
+Origin: vendor
+Bug: http://code.google.com/p/imms/issues/detail?id=20
+Bug-Debian: http://bugs.debian.org/661390
+Last-Update: 2012-03-18
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: imms-3.1.0~svn301/configure.ac
+===================================================================
+--- imms-3.1.0~svn301.orig/configure.ac	2012-03-18 00:59:47.085708840 +0100
++++ imms-3.1.0~svn301/configure.ac	2012-03-18 01:03:25.716388038 +0100
+@@ -356,7 +356,7 @@
+     fi
+ fi
+ 
+-PKG_CHECK_MODULES(audacious, [audacious >= 2.4], [], [with_audacious=no])
++PKG_CHECK_MODULES(audacious, [audacious >= 2.4 gtk+-3.0], [], [with_audacious=no])
+ PKG_CHECK_MODULES(dbus_glib, [dbus-glib-1 >= 0.70], [], [with_audacious=no])
+ 
+ LIBS="$audacious_LIBS $dbus_glib_LIBS"
+@@ -366,14 +366,16 @@
+ 
+ if test "$with_audacious" != "no"; then
+     AC_LANG_PUSH(C)
++dnl    AC_CHECK_HEADERS(gtk/gtk.h,, [with_audacious=no])
+     AC_CHECK_HEADERS(audacious/drct.h,, [with_audacious=no])
+-    AC_MSG_CHECKING([for aud_drct_pq_add in -laudacious])
++    AC_MSG_CHECKING([for aud_playlist_queue_insert in -laudcore])
+     AC_TRY_LINK([#include <audacious/drct.h>
+                  #include <audacious/plugin.h>
+                  #include <audacious/dbus.h>
++                 #include <audacious/playlist.h>
+ 
+-                  SIMPLE_GENERAL_PLUGIN(0, 0);],
+-                [aud_drct_pq_add(0)],
++                  AUD_GENERAL_PLUGIN();],
++                [aud_playlist_queue_insert(aud_playlist_get_active(),-1,0)],
+                 [AC_MSG_RESULT(yes)],
+                 [with_audacious="no"
+                  AC_MSG_RESULT(no)]);
+Index: imms-3.1.0~svn301/clients/audacious/audplugindef.c
+===================================================================
+--- imms-3.1.0~svn301.orig/clients/audacious/audplugindef.c	2012-03-17 04:16:06.000000000 +0100
++++ imms-3.1.0~svn301/clients/audacious/audplugindef.c	2012-03-18 00:59:47.149703771 +0100
+@@ -5,11 +5,12 @@
+ 
+ #include "immsconf.h"
+ 
+-void init(void);
++bool_t init(void);
+ void about(void);
+ void configure(void);
+ void cleanup(void);
+ 
++/*
+ static GeneralPlugin imms_gp =
+ {
+     PACKAGE_STRING,
+@@ -24,3 +25,11 @@
+ GeneralPlugin *gp_plugin_list[] = { &imms_gp, NULL };
+ 
+ SIMPLE_GENERAL_PLUGIN(imms, gp_plugin_list);
++*/
++AUD_GENERAL_PLUGIN(
++        .name = PACKAGE_NAME,
++        .init = init,
++        .cleanup = cleanup,
++        .about = about,
++        .configure = configure
++)
+Index: imms-3.1.0~svn301/clients/audacious/audplugin.cc
+===================================================================
+--- imms-3.1.0~svn301.orig/clients/audacious/audplugin.cc	2012-03-17 04:16:06.000000000 +0100
++++ imms-3.1.0~svn301/clients/audacious/audplugin.cc	2012-03-18 01:02:08.010544942 +0100
+@@ -29,6 +29,8 @@
+ #include <audacious/audctrl.h>
+ #include <audacious/drct.h>
+ #include <libaudcore/audstrings.h>
++#include <audacious/playlist.h>
++#include <audacious/misc.h>
+ }
+ 
+ #include "immsconf.h"
+@@ -55,9 +57,9 @@
+     if (at > pl_length - 1)
+         return "";
+     char* uri = 0;
+-    while (!uri) uri = aud_drct_pl_get_file(at);
++    while (!uri) uri = aud_playlist_entry_get_filename(aud_playlist_get_active (), at);
+     string result = uri;
+-    free(uri);
++    if(uri) str_unref(uri);
+ 
+     gchar* realfn = g_filename_from_uri(result.c_str(), NULL, NULL);
+     char* decoded = g_filename_to_utf8(realfn ? realfn : result.c_str(),
+@@ -70,7 +72,8 @@
+ 
+ static void player_reset_selection()
+ {
+-    aud_drct_pq_remove(next_plpos);
++    gint playlist = aud_playlist_get_active();
++    aud_playlist_queue_delete (playlist, aud_playlist_queue_find_entry(playlist, next_plpos), 1);
+     next_plpos = -1;
+ }
+ 
+@@ -98,7 +101,7 @@
+     static void set_next(int next)
+     {
+         next_plpos = next;
+-        aud_drct_pq_add(next_plpos);
++        aud_playlist_queue_insert(aud_playlist_get_active (), -1, next_plpos);
+         select_pending = false;
+         just_enqueued = 2;
+     }
+@@ -112,7 +115,7 @@
+     }
+     static int get_length()
+     {
+-        return aud_drct_pl_get_length();
++        return aud_playlist_entry_count(aud_playlist_get_active());
+     }
+ }; 
+ 
+@@ -162,7 +165,7 @@
+ static void check_playlist()
+ {
+     // update playlist length
+-    int new_pl_length = aud_drct_pl_get_length();
++    int new_pl_length = aud_playlist_entry_count(aud_playlist_get_active());
+     if (new_pl_length != pl_length)
+     {
+         pl_length = new_pl_length;
+@@ -188,10 +191,10 @@
+         select_pending = false;
+         imms->setup(xidle_val);
+         imms->playlist_changed(pl_length =
+-                aud_drct_pl_get_length());
++                aud_playlist_entry_count(aud_playlist_get_active()));
+         if (aud_drct_get_playing())
+         {
+-            last_plpos = cur_plpos = aud_drct_pl_get_pos();
++            last_plpos = cur_plpos = aud_playlist_get_position(aud_playlist_get_active());
+             last_path = cur_path = imms_get_playlist_item(cur_plpos);
+             imms->start_song(cur_plpos, cur_path);
+         }
+@@ -201,10 +204,10 @@
+     if (!aud_drct_get_playing())
+         return;
+ 
+-    cur_plpos = aud_drct_pl_get_pos();
++    cur_plpos = aud_playlist_get_position(aud_playlist_get_active());
+     
+     // check if xmms is reporting the song length correctly
+-    song_length = aud_drct_pl_get_time(cur_plpos);
++    song_length = aud_playlist_entry_get_length(aud_playlist_get_active(), cur_plpos, FALSE);
+     if (song_length > 1000)
+         good_length++;
+ 
+@@ -220,14 +223,15 @@
+         if (last_path != cur_path)
+         {
+             do_song_change();
+-            aud_drct_pq_remove(next_plpos);
++            gint playlist = aud_playlist_get_active();
++            aud_playlist_queue_delete(playlist, aud_playlist_queue_find_entry(playlist, next_plpos), 1);
+             return;
+         }
+     }
+ 
+     check_time();
+ 
+-    bool newshuffle = aud_drct_pl_shuffle_is_enabled();
++    bool newshuffle = aud_get_bool(NULL, "shuffle");
+     if (!newshuffle && shuffle)
+         player_reset_selection();
+     shuffle = newshuffle;
+@@ -235,7 +239,7 @@
+     if (!shuffle)
+         return;
+ 
+-    int qlength = aud_drct_pq_get_length();
++    int qlength = aud_playlist_queue_count(aud_playlist_get_active());
+     if (qlength > 1)
+         player_reset_selection();
+     else if (!qlength)
+Index: imms-3.1.0~svn301/clients/bmp/bmpinterface.c
+===================================================================
+--- imms-3.1.0~svn301.orig/clients/bmp/bmpinterface.c	2012-03-17 04:16:06.000000000 +0100
++++ imms-3.1.0~svn301/clients/bmp/bmpinterface.c	2012-03-18 00:59:47.197699970 +0100
+@@ -28,8 +28,8 @@
+ #include <audacious/i18n.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <gtk/gtk.h>
+-#include <audacious/configdb.h>
+ #include <audacious/plugin.h>
++#include <audacious/misc.h>
+ #include <libaudgui/libaudgui.h>
+ #include <libaudgui/libaudgui-gtk.h>
+ #define PACKAGE PACKAGE_NAME
+@@ -53,6 +53,9 @@
+ 
+ void read_config(void)
+ {
++#if AUDACIOUS
++    use_xidle=PLAYER_PREFIX(get_int)("imms", "xidle");
++#else
+     ConfigDb *cfgfile;
+ 
+     if ((cfgfile = PLAYER_PREFIX(cfg_db_open)()) != NULL)
+@@ -60,6 +63,7 @@
+         PLAYER_PREFIX(cfg_db_get_int)(cfgfile, "imms", "xidle", &use_xidle);
+         PLAYER_PREFIX(cfg_db_close)(cfgfile);
+     }
++#endif
+ }
+ 
+ void init(void)
+@@ -67,7 +71,7 @@
+     imms_init();
+     read_config();
+     imms_setup(use_xidle);
+-    poll_tag = gtk_timeout_add(200, poll_func, NULL);
++    poll_tag = g_timeout_add(200, poll_func, NULL);
+ }
+ 
+ void cleanup(void)
+@@ -75,19 +79,23 @@
+     imms_cleanup();
+ 
+     if (poll_tag)
+-        gtk_timeout_remove(poll_tag);
++        g_source_remove(poll_tag);
+ 
+     poll_tag = 0;
+ }
+ 
+ void configure_ok_cb(gpointer data)
+ {
++#if AUDACIOUS
++    PLAYER_PREFIX(set_int)("imms", "xidle",use_xidle);
++#else
+     ConfigDb *cfgfile = PLAYER_PREFIX(cfg_db_open)();
+ 
+     use_xidle = !!GTK_TOGGLE_BUTTON(xidle_button)->active;
+ 
+     PLAYER_PREFIX(cfg_db_set_int)(cfgfile, "imms", "xidle", use_xidle);
+     PLAYER_PREFIX(cfg_db_close)(cfgfile);
++#endif
+ 
+     imms_setup(use_xidle);
+     gtk_widget_destroy(configure_win);
+@@ -132,8 +140,8 @@
+     read_config();
+ 
+     configure_win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+-    gtk_signal_connect(GTK_OBJECT(configure_win), "destroy",
+-            GTK_SIGNAL_FUNC(gtk_widget_destroyed), &configure_win);
++    g_signal_connect(configure_win, "destroy",
++            G_CALLBACK(gtk_widget_destroyed), &configure_win);
+     gtk_window_set_title(GTK_WINDOW(configure_win), "IMMS Configuration");
+ 
+     gtk_container_set_border_width(GTK_CONTAINER(configure_win), 10);
+@@ -152,21 +160,21 @@
+     /* Buttons */
+     configure_bbox = gtk_hbutton_box_new();
+     gtk_button_box_set_layout(GTK_BUTTON_BOX(configure_bbox), GTK_BUTTONBOX_END);
+-    gtk_button_box_set_spacing(GTK_BUTTON_BOX(configure_bbox), 5);
++    gtk_box_set_spacing(GTK_BUTTON_BOX(configure_bbox), 5);
+     gtk_box_pack_start(GTK_BOX(configure_vbox), configure_bbox, FALSE, FALSE, 0);
+ 
+     configure_ok = gtk_button_new_with_label("Ok");
+-    gtk_signal_connect(GTK_OBJECT(configure_ok), "clicked",
+-            GTK_SIGNAL_FUNC(configure_ok_cb), NULL);
+-    GTK_WIDGET_SET_FLAGS(configure_ok, GTK_CAN_DEFAULT);
++    g_signal_connect(configure_ok, "clicked",
++            G_CALLBACK(configure_ok_cb), NULL);
++    gtk_widget_set_can_default(configure_ok,TRUE);
+     gtk_box_pack_start(GTK_BOX(configure_bbox), configure_ok, TRUE, TRUE, 0);
+     gtk_widget_show(configure_ok);
+     gtk_widget_grab_default(configure_ok);
+ 
+     configure_cancel = gtk_button_new_with_label("Cancel");
+-    gtk_signal_connect_object(GTK_OBJECT(configure_cancel), "clicked",
+-            GTK_SIGNAL_FUNC(gtk_widget_destroy), GTK_OBJECT(configure_win));
+-    GTK_WIDGET_SET_FLAGS(configure_cancel, GTK_CAN_DEFAULT);
++    g_signal_connect_swapped(configure_cancel, "clicked",
++            G_CALLBACK(gtk_widget_destroy), configure_win);
++    gtk_widget_set_can_default(configure_cancel,TRUE);
+     gtk_box_pack_start(GTK_BOX(configure_bbox), configure_cancel, TRUE, TRUE, 0);
+     gtk_widget_show(configure_cancel);
+     gtk_widget_show(configure_bbox);

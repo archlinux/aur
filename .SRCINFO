@@ -1,0 +1,24 @@
+pkgbase = audacious-imms-svn
+	pkgdesc = An intelligent playlist plug-in for XMMS that tracks your listening patterns and dynamically adapts to your taste.
+	pkgver = r301
+	pkgrel = 1
+	url = http://imms.luminal.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = audacious
+	depends = pcre
+	depends = sqlite3
+	depends = taglib
+	depends = glib2
+	depends = sox
+	depends = torch
+	conflicts = audacious-imms
+	replaces = imms
+	source = audacious-3.x.patch
+	source = svn+http://imms.googlecode.com/svn/trunk/imms
+	md5sums = df045c1fb7ff96c5305ad35a3dfb28bd
+	md5sums = SKIP
+
+pkgname = audacious-imms-svn
+
