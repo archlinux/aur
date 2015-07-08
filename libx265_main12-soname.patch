@@ -1,0 +1,11 @@
+diff -rupN x265/source/CMakeLists.txt x265-10bit/source/CMakeLists.txt
+--- x265/source/CMakeLists.txt	2015-06-11 09:46:35.227652244 +0200
++++ x265-10bit/source/CMakeLists.txt	2015-06-11 09:55:15.561256669 +0200
+@@ -427,6 +427,7 @@ if(ENABLE_SHARED)
+         set_target_properties(x265-shared PROPERTIES OUTPUT_NAME x265)
+     endif()
+     if(UNIX)
++        set_target_properties(x265-shared PROPERTIES OUTPUT_NAME x265_main12)
+         set_target_properties(x265-shared PROPERTIES VERSION ${X265_BUILD})
+         if(APPLE)
+             set_target_properties(x265-shared PROPERTIES MACOSX_RPATH 1)

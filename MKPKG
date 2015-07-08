@@ -1,0 +1,5 @@
+pkgname=('x265-hg')
+
+check_hg $packagedir/x265-hg/x265
+
+# vim: ts=2 sw=2 et:
