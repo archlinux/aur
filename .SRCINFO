@@ -1,0 +1,15 @@
+pkgbase = chisel
+	pkgdesc = Constructing Hardware in a Scala Embedded Language
+	pkgver = 2.2.27
+	pkgrel = 1
+	url = https://chisel.eecs.berkeley.edu/
+	arch = any
+	license = BSD
+	makedepends = sbt
+	depends = java-environment
+	source = https://github.com/ucb-bar/chisel/archive/v2.2.27.tar.gz
+	md5sums = 8898537587c20b23e7add342aa51f2ff
+	sha256sums = a4c344f9666058db4bd3f7093d02762c46314ab15b8091f6a47b4331ccb8baec
+
+pkgname = chisel
+
