@@ -1,0 +1,15 @@
+pkgbase = sconstools-hg
+	pkgdesc = Extenstions to the SCons build system
+	pkgver = 148
+	pkgrel = 1
+	url = http://bitbucket.org/jmb/sconstools
+	arch = any
+	license = custom
+	depends = python
+	depends = scons
+	provides = sconstools
+	source = hg+http://bitbucket.org/jmb/sconstools
+	md5sums = SKIP
+
+pkgname = sconstools-hg
+
