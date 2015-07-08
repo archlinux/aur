@@ -1,0 +1,16 @@
+pkgbase = justbrowsing-archiso
+	pkgdesc = ArchISO boot files for JustBrowsing LiveCD
+	pkgver = 2014.08
+	pkgrel = 1
+	url = https://github.com/justbrowsing/justbrowsing-archiso
+	install = jb-archiso.install
+	arch = any
+	groups = justbrowsing
+	license = custom
+	depends = justbrowsing-syslinux
+	options = !strip
+	source = https://github.com/justbrowsing/justbrowsing-archiso/archive/master.tar.gz
+	md5sums = 8e7a7aa0472c6b14e57c8ee4620ab12e
+
+pkgname = justbrowsing-archiso
+
