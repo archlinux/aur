@@ -1,0 +1,18 @@
+pkgbase = python-nevow
+	pkgdesc = Web application construction kit and templating engine written in python.
+	pkgver = 0.10.0
+	pkgrel = 3
+	url = http://divmod.org/trac/wiki/DivmodNevow
+	changelog = Changelog
+	arch = any
+	license = custom
+	makedepends = twisted
+	makedepends = python2-distribute
+	depends = python2
+	optdepends = twisted: to use all the advanced features of nevow, such as LivePage
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/N/Nevow/Nevow-0.10.0.tar.gz
+	md5sums = 66dda2ad88f42dea05911add15f4d1b2
+
+pkgname = python-nevow
+

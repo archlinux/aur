@@ -1,0 +1,4 @@
+2011-10-23 Aaron DeVore <aaron.devore@gmail.com>
+- Switch from dead divmod link to Python Package Index
+- Cosmetic clean ups
+- Switch from setuptools to python2-distribute
