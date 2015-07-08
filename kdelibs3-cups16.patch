@@ -1,0 +1,724 @@
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/cupsdconf2/cupsdconf.cpp kdelibs-3.5.10/kdeprint/cups/cupsdconf2/cupsdconf.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/cupsdconf2/cupsdconf.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/cupsdconf2/cupsdconf.cpp	2012-10-06 15:08:17.460612585 -0400
+@@ -629,26 +629,26 @@
+ 	cups_lang_t*	lang = cupsLangDefault();
+ 	ippAddString(request_, IPP_TAG_OPERATION, IPP_TAG_CHARSET, "attributes-charset", NULL, cupsLangEncoding(lang));
+ 	ippAddString(request_, IPP_TAG_OPERATION, IPP_TAG_LANGUAGE, "attributes-natural-language", NULL, lang->language);
+-	request_->request.op.operation_id = CUPS_GET_PRINTERS;
++	ippSetOperation(request_, CUPS_GET_PRINTERS);
+ 	request_ = cupsDoRequest(http_, request_, "/printers/");
+ 	if (request_)
+ 	{
+ 		QString	name;
+ 		int	type(0);
+-		ipp_attribute_t	*attr = request_->attrs;
++		ipp_attribute_t	*attr = ippFirstAttribute(request_);
+ 		while (attr)
+ 		{
+ 			// check new printer (keep only local non-implicit printers)
+-			if (!attr->name)
++			if (!ippGetName(attr))
+ 			{
+ 				if (!(type & CUPS_PRINTER_REMOTE) && !(type & CUPS_PRINTER_IMPLICIT) && !name.isEmpty())
+ 					resources_.append(new CupsResource("/printers/"+name));
+ 				name = "";
+ 				type = 0;
+ 			}
+-			else if (strcmp(attr->name, "printer-name") == 0) name = attr->values[0].string.text;
+-			else if (strcmp(attr->name, "printer-type") == 0) type = attr->values[0].integer;
+-			attr = attr->next;
++			else if (strcmp(ippGetName(attr), "printer-name") == 0) name = ippGetString(attr, 0, NULL);
++			else if (strcmp(ippGetName(attr), "printer-type") == 0) type = ippGetInteger(attr, 0);
++			attr = ippNextAttribute(request_);
+ 		}
+ 		if (!(type & CUPS_PRINTER_REMOTE) && !(type & CUPS_PRINTER_IMPLICIT) && !name.isEmpty())
+ 			resources_.append(new CupsResource("/printers/"+name));
+@@ -658,26 +658,26 @@
+ 	request_ = ippNew();
+ 	ippAddString(request_, IPP_TAG_OPERATION, IPP_TAG_CHARSET, "attributes-charset", NULL, cupsLangEncoding(lang));
+ 	ippAddString(request_, IPP_TAG_OPERATION, IPP_TAG_LANGUAGE, "attributes-natural-language", NULL, lang->language);
+-	request_->request.op.operation_id = CUPS_GET_CLASSES;
++	ippSetOperation(request_, CUPS_GET_CLASSES);
+ 	request_ = cupsDoRequest(http_, request_, "/classes/");
+ 	if (request_)
+ 	{
+ 		QString	name;
+ 		int	type(0);
+-		ipp_attribute_t	*attr = request_->attrs;
++		ipp_attribute_t	*attr = ippFirstAttribute(request_);
+ 		while (attr)
+ 		{
+ 			// check new class (keep only local classes)
+-			if (!attr->name)
++			if (!ippGetName(attr))
+ 			{
+ 				if (!(type & CUPS_PRINTER_REMOTE) && !name.isEmpty())
+ 					resources_.append(new CupsResource("/classes/"+name));
+ 				name = "";
+ 				type = 0;
+ 			}
+-			else if (strcmp(attr->name, "printer-name") == 0) name = attr->values[0].string.text;
+-			else if (strcmp(attr->name, "printer-type") == 0) type = attr->values[0].integer;
+-			attr = attr->next;
++			else if (strcmp(ippGetName(attr), "printer-name") == 0) name = ippGetString(attr, 0, NULL);
++			else if (strcmp(ippGetName(attr), "printer-type") == 0) type = ippGetInteger(attr, 0);
++			attr = ippNextAttribute(request_);
+ 		}
+ 		if (!(type & CUPS_PRINTER_REMOTE) && !name.isEmpty())
+ 			resources_.append(new CupsResource("/classes/"+name));
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/ipprequest.cpp kdelibs-3.5.10/kdeprint/cups/ipprequest.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/ipprequest.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/ipprequest.cpp	2012-10-06 15:12:00.919127451 -0400
+@@ -51,32 +51,34 @@
+ 		kdDebug(500) << "Null request" << endl;
+ 		return;
+ 	}
+-	kdDebug(500) << "State = 0x" << QString::number(req->state, 16) << endl;
+-	kdDebug(500) << "ID = 0x" << QString::number(req->request.status.request_id, 16) << endl;
++	kdDebug(500) << "State = 0x" << QString::number(ippGetState(req), 16) << endl;
++	kdDebug(500) << "ID = 0x" << QString::number(ippGetRequestId(req), 16) << endl;
+ 	if (answer)
+ 	{
+-		kdDebug(500) << "Status = 0x" << QString::number(req->request.status.status_code, 16) << endl;
+-		kdDebug(500) << "Status message = " << ippErrorString(req->request.status.status_code) << endl;
++		kdDebug(500) << "Status = 0x" << QString::number(ippGetStatusCode(req), 16) << endl;
++		kdDebug(500) << "Status message = " << ippErrorString(ippGetStatusCode(req)) << endl;
+ 	}
+ 	else
+-		kdDebug(500) << "Operation = 0x" << QString::number(req->request.op.operation_id, 16) << endl;
+-	kdDebug(500) << "Version = " << (int)(req->request.status.version[0]) << "." << (int)(req->request.status.version[1]) << endl;
++		kdDebug(500) << "Operation = 0x" << QString::number(ippGetOperation(req), 16) << endl;
++	int minorVersion;
++	int majorVersion = ippGetVersion(req, &minorVersion);
++	kdDebug(500) << "Version = " << (int)(majorVersion) << "." << (int)(minorVersion) << endl;
+ 	kdDebug(500) << endl;
+ 
+-	ipp_attribute_t *attr = req->attrs;
++	ipp_attribute_t *attr = ippFirstAttribute(req);
+ 	while (attr)
+ 	{
+-		QString s = QString::fromLatin1("%1 (0x%2) = ").arg(attr->name).arg(attr->value_tag, 0, 16);
+-		for (int i=0;i<attr->num_values;i++)
++		QString s = QString::fromLatin1("%1 (0x%2) = ").arg(ippGetName(attr)).arg(ippGetValueTag(attr), 0, 16);
++		for (int i=0;i<ippGetCount(attr);i++)
+ 		{
+-			switch (attr->value_tag)
++			switch (ippGetValueTag(attr))
+ 			{
+ 				case IPP_TAG_INTEGER:
+ 				case IPP_TAG_ENUM:
+-					s += ("0x"+QString::number(attr->values[i].integer, 16));
++					s += ("0x"+QString::number(ippGetInteger(attr, i), 16));
+ 					break;
+ 				case IPP_TAG_BOOLEAN:
+-					s += (attr->values[i].boolean ? "true" : "false");
++					s += (ippGetBoolean(attr, i) ? "true" : "false");
+ 					break;
+ 				case IPP_TAG_STRING:
+ 				case IPP_TAG_TEXT:
+@@ -88,16 +90,16 @@
+ 				case IPP_TAG_TEXTLANG:
+ 				case IPP_TAG_CHARSET:
+ 				case IPP_TAG_LANGUAGE:
+-					s += attr->values[i].string.text;
++					s += ippGetString(attr, i, NULL);
+ 					break;
+ 				default:
+ 					break;
+ 			}
+-			if (i != (attr->num_values-1))
++			if (i != (ippGetCount(attr)-1))
+ 				s += ", ";
+ 		}
+ 		kdDebug(500) << s << endl;
+-		attr = attr->next;
++		attr = ippNextAttribute(req);
+ 	}
+ }
+ 
+@@ -177,7 +179,7 @@
+ 		ipp_attribute_t	*attr = ippAddStrings(request_,(ipp_tag_t)group,(ipp_tag_t)type,name.latin1(),(int)(values.count()),NULL,NULL);
+ 		int	i(0);
+ 		for (QStringList::ConstIterator it=values.begin(); it != values.end(); ++it, i++)
+-			attr->values[i].string.text = strdup((*it).local8Bit());
++			ippSetString(request_, &attr, i, strdup((*it).local8Bit()));
+ 	}
+ }
+ 
+@@ -193,7 +195,7 @@
+ 		ipp_attribute_t	*attr = ippAddIntegers(request_,(ipp_tag_t)group,(ipp_tag_t)type,name.latin1(),(int)(values.count()),NULL);
+ 		int	i(0);
+ 		for (QValueList<int>::ConstIterator it=values.begin(); it != values.end(); ++it, i++)
+-			attr->values[i].integer = *it;
++			ippSetInteger(request_, &attr, i, *it);
+ 	}
+ }
+ 
+@@ -209,19 +211,19 @@
+ 		ipp_attribute_t	*attr = ippAddBooleans(request_,(ipp_tag_t)group,name.latin1(),(int)(values.count()),NULL);
+ 		int	i(0);
+ 		for (QValueList<bool>::ConstIterator it=values.begin(); it != values.end(); ++it, i++)
+-			attr->values[i].boolean = (char)(*it);
++			ippSetBoolean(request_, &attr, i, (char)(*it));
+ 	}
+ }
+ 
+ void IppRequest::setOperation(int op)
+ {
+-	request_->request.op.operation_id = (ipp_op_t)op;
+-	request_->request.op.request_id = 1;	// 0 is not RFC-compliant, should be at least 1
++	ippSetOperation(request_, (ipp_op_t)op);
++	ippSetRequestId(request_, 1);		// 0 is not RFC-compliant, should be at least 1
+ }
+ 
+ int IppRequest::status()
+ {
+-	return (request_ ? request_->request.status.status_code : (connect_ ? cupsLastError() : -2));
++	return (request_ ? ippGetStatusCode(request_) : (connect_ ? cupsLastError() : -2));
+ }
+ 
+ QString IppRequest::statusMessage()
+@@ -248,7 +250,7 @@
+ 	ipp_attribute_t	*attr = ippFindAttribute(request_, name.latin1(), (ipp_tag_t)type);
+ 	if (attr)
+ 	{
+-		value = attr->values[0].integer;
++		value = ippGetInteger(attr, 0);
+ 		return true;
+ 	}
+ 	else return false;
+@@ -260,7 +262,7 @@
+ 	ipp_attribute_t	*attr = ippFindAttribute(request_, name.latin1(), (ipp_tag_t)type);
+ 	if (attr)
+ 	{
+-		value = QString::fromLocal8Bit(attr->values[0].string.text);
++		value = QString::fromLocal8Bit(ippGetString(attr, 0, NULL));
+ 		return true;
+ 	}
+ 	else return false;
+@@ -273,8 +275,8 @@
+ 	values.clear();
+ 	if (attr)
+ 	{
+-		for (int i=0;i<attr->num_values;i++)
+-			values.append(QString::fromLocal8Bit(attr->values[i].string.text));
++		for (int i=0;i<ippGetCount(attr);i++)
++			values.append(QString::fromLocal8Bit(ippGetString(attr, i, NULL)));
+ 		return true;
+ 	}
+ 	else return false;
+@@ -286,7 +288,7 @@
+ 	ipp_attribute_t	*attr = ippFindAttribute(request_, name.latin1(), IPP_TAG_BOOLEAN);
+ 	if (attr)
+ 	{
+-		value = (bool)attr->values[0].boolean;
++		value = (bool)ippGetBoolean(attr, 0);
+ 		return true;
+ 	}
+ 	else return false;
+@@ -338,10 +340,10 @@
+ 	}
+ 
+ 	/* No printers found */
+-	if ( request_ && request_->request.status.status_code == 0x406 )
++	if ( request_ && ippGetStatusCode(request_) == 0x406 )
+ 		return true;
+ 
+-	if (!request_ || request_->state == IPP_ERROR || (request_->request.status.status_code & 0x0F00))
++	if (!request_ || ippGetState(request_) == IPP_ERROR || (ippGetStatusCode(request_) & 0x0F00))
+ 		return false;
+ 
+ 
+@@ -356,36 +358,36 @@
+ 	output << "<tr><th bgcolor=\"dark blue\"><font color=\"white\">" << i18n("Attribute") << "</font></th>" << endl;
+ 	output << "<th bgcolor=\"dark blue\"><font color=\"white\">" << i18n("Values") << "</font></th></tr>" << endl;
+ 	// go to the first attribute of the specified group
+-	ipp_attribute_t	*attr = request_->attrs;
+-	while (attr && attr->group_tag != group)
+-		attr = attr->next;
++	ipp_attribute_t	*attr = ippFirstAttribute(request_);
++	while (attr && ippGetGroupTag(attr) != group)
++		attr = ippNextAttribute(request_);
+ 	// print each attribute
+-	ipp_uchar_t	*d;
+-	QCString	dateStr;
+-	QDateTime	dt;
+-	bool	bg(false);
+-	while (attr && attr->group_tag == group)
++	const ipp_uchar_t	*d;
++	QCString		dateStr;
++	QDateTime		dt;
++	bool			bg(false);
++	while (attr && ippGetGroupTag(attr) == group)
+ 	{
+-		output << "  <tr bgcolor=\"" << (bg ? "#ffffd9" : "#ffffff") << "\">\n    <td><b>" << attr->name << "</b></td>\n    <td>" << endl;
++		output << "  <tr bgcolor=\"" << (bg ? "#ffffd9" : "#ffffff") << "\">\n    <td><b>" << ippGetName(attr) << "</b></td>\n    <td>" << endl;
+ 		bg = !bg;
+-		for (int i=0; i<attr->num_values; i++)
++		for (int i=0; i<ippGetCount(attr); i++)
+ 		{
+-			switch (attr->value_tag)
++			switch (ippGetValueTag(attr))
+ 			{
+ 				case IPP_TAG_INTEGER:
+-					if (attr->name && strstr(attr->name, "time"))
++					if (ippGetName(attr) && strstr(ippGetName(attr), "time"))
+ 					{
+-						dt.setTime_t((unsigned int)(attr->values[i].integer));
++						dt.setTime_t((unsigned int)(ippGetInteger(attr, i)));
+ 						output << dt.toString();
+ 					}
+ 					else
+-						output << attr->values[i].integer;
++						output << ippGetInteger(attr, i);
+ 					break;
+ 				case IPP_TAG_ENUM:
+-					output << "0x" << hex << attr->values[i].integer << dec;
++					output << "0x" << hex << ippGetInteger(attr, i) << dec;
+ 					break;
+ 				case IPP_TAG_BOOLEAN:
+-					output << (attr->values[i].boolean ? i18n("True") : i18n("False"));
++					output << (ippGetBoolean(attr, i) ? i18n("True") : i18n("False"));
+ 					break;
+ 				case IPP_TAG_STRING:
+ 				case IPP_TAG_TEXTLANG:
+@@ -397,18 +399,25 @@
+ 				case IPP_TAG_CHARSET:
+ 				case IPP_TAG_LANGUAGE:
+ 				case IPP_TAG_MIMETYPE:
+-					output << attr->values[i].string.text;
++					output << ippGetString(attr, i, NULL);
+ 					break;
+ 				case IPP_TAG_RESOLUTION:
+-					output << "( " << attr->values[i].resolution.xres
+-					       << ", " << attr->values[i].resolution.yres << " )";
++					int xres;
++					int yres;
++					ipp_res_t units;
++					xres = ippGetResolution(attr, i, &yres, &units);
++					output << "( " << xres
++					       << ", " << yres << " )";
+ 					break;
+ 				case IPP_TAG_RANGE:
+-					output << "[ " << (attr->values[i].range.lower > 0 ? attr->values[i].range.lower : 1)
+-					       << ", " << (attr->values[i].range.upper > 0 ? attr->values[i].range.upper : 65535) << " ]";
++					int lowervalue;
++					int uppervalue;
++					lowervalue = ippGetRange(attr, i, &uppervalue);
++					output << "[ " << (lowervalue > 0 ? lowervalue : 1)
++					       << ", " << (uppervalue > 0 ? uppervalue : 65535) << " ]";
+ 					break;
+ 				case IPP_TAG_DATE:
+-					d = attr->values[i].date;
++					d = ippGetDate(attr, i);
+ 					dateStr.sprintf("%.4d-%.2d-%.2d, %.2d:%.2d:%.2d %c%.2d%.2d",
+ 							d[0]*256+d[1], d[2], d[3],
+ 							d[4], d[5], d[6],
+@@ -418,11 +427,11 @@
+ 				default:
+ 					continue;
+ 			}
+-			if (i < attr->num_values-1)
++			if (i < ippGetCount(attr)-1)
+ 				output << "<br>";
+ 		}
+ 		output << "</td>\n  </tr>" << endl;
+-		attr = attr->next;
++		attr = ippNextAttribute(request_);
+ 	}
+ 	// end table
+ 	output << "</table>" << endl;
+@@ -438,31 +447,34 @@
+ 		ipp_attribute_t	*attr = first();
+ 		while (attr)
+ 		{
+-			if (group != -1 && attr->group_tag != group)
++			if (group != -1 && ippGetGroupTag(attr) != group)
+ 			{
+-				attr = attr->next;
++				attr = ippNextAttribute(request_);
+ 				continue;
+ 			}
+ 			QString	value;
+-			for (int i=0; i<attr->num_values; i++)
++			for (int i=0; i<ippGetCount(attr); i++)
+ 			{
+-				switch (attr->value_tag)
++				switch (ippGetValueTag(attr))
+ 				{
+ 					case IPP_TAG_INTEGER:
+ 					case IPP_TAG_ENUM:
+-						value.append(QString::number(attr->values[i].integer)).append(",");
++						value.append(QString::number(ippGetInteger(attr, i))).append(",");
+ 						break;
+ 					case IPP_TAG_BOOLEAN:
+-						value.append((attr->values[i].boolean ? "true" : "false")).append(",");
++						value.append((ippGetBoolean(attr, i) ? "true" : "false")).append(",");
+ 						break;
+ 					case IPP_TAG_RANGE:
+-						if (attr->values[i].range.lower > 0)
+-							value.append(QString::number(attr->values[i].range.lower));
+-						if (attr->values[i].range.lower != attr->values[i].range.upper)
++						int lowervalue;
++						int uppervalue;
++						lowervalue = ippGetRange(attr, i, &uppervalue);
++						if (lowervalue > 0)
++							value.append(QString::number(lowervalue));
++						if (lowervalue != uppervalue)
+ 						{
+ 							value.append("-");
+-							if (attr->values[i].range.upper > 0)
+-								value.append(QString::number(attr->values[i].range.upper));
++							if (uppervalue > 0)
++								value.append(QString::number(uppervalue));
+ 						}
+ 						value.append(",");
+ 						break;
+@@ -476,7 +488,7 @@
+ 					case IPP_TAG_TEXTLANG:
+ 					case IPP_TAG_CHARSET:
+ 					case IPP_TAG_LANGUAGE:
+-						value.append(QString::fromLocal8Bit(attr->values[i].string.text)).append(",");
++						value.append(QString::fromLocal8Bit(ippGetString(attr, i, NULL))).append(",");
+ 						break;
+ 					default:
+ 						break;
+@@ -484,8 +496,8 @@
+ 			}
+ 			if (!value.isEmpty())
+ 				value.truncate(value.length()-1);
+-			opts[QString::fromLocal8Bit(attr->name)] = value;
+-			attr = attr->next;
++			opts[QString::fromLocal8Bit(ippGetName(attr))] = value;
++			attr = ippNextAttribute(request_);
+ 		}
+ 	}
+ 	return opts;
+@@ -542,3 +554,7 @@
+ 	}
+ #endif
+ }
++
++
++ipp_attribute_t* IppRequest::first()
++{ return (request_ ? ippFirstAttribute(request_) : NULL); }
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/ipprequest.h kdelibs-3.5.10/kdeprint/cups/ipprequest.h
+--- kdelibs-3.5.10-orig/kdeprint/cups/ipprequest.h	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/ipprequest.h	2012-10-06 15:06:05.581489574 -0400
+@@ -72,7 +72,7 @@
+ 	bool keyword(const QString& name, QStringList& value);
+ 	bool mime(const QString& name, QString& value);
+ 	ipp_attribute_t* first();
+-	ipp_attribute_t* last();
++	ipp_t* request();
+ 	QMap<QString,QString> toMap(int group = -1);
+ 	void setMap(const QMap<QString,QString>& opts);
+ 
+@@ -178,12 +178,6 @@
+ inline bool IppRequest::doRequest(const QString& res)
+ { return doFileRequest(res); }
+ 
+-inline ipp_attribute_t* IppRequest::first()
+-{ return (request_ ? request_->attrs : NULL); }
+-
+-inline ipp_attribute_t* IppRequest::last()
+-{ return (request_ ? request_->last : NULL); }
+-
+ inline void IppRequest::setHost(const QString& host)
+ { host_ = host; }
+ 
+@@ -193,4 +187,7 @@
+ inline void IppRequest::dump(int state)
+ { dump_ = state; }
+ 
++inline ipp_t* IppRequest::request()
++{ return request_; }
++
+ #endif
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/kmcupsjobmanager.cpp kdelibs-3.5.10/kdeprint/cups/kmcupsjobmanager.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/kmcupsjobmanager.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/kmcupsjobmanager.cpp	2012-10-06 15:13:31.451859386 -0400
+@@ -36,6 +36,8 @@
+ #include <kdebug.h>
+ #include <kurl.h>
+ 
++#include "config.h"
++
+ KMCupsJobManager::KMCupsJobManager(QObject *parent, const char *name, const QStringList & /*args*/)
+ : KMJobManager(parent,name)
+ {
+@@ -166,17 +168,18 @@
+ void KMCupsJobManager::parseListAnswer(IppRequest& req, KMPrinter *pr)
+ {
+ 	ipp_attribute_t	*attr = req.first();
++	ipp_attribute_t	*nextAttr;
+ 	KMJob		*job = new KMJob();
+ 	QString		uri;
+ 	while (attr)
+ 	{
+-		QString	name(attr->name);
+-		if (name == "job-id") job->setId(attr->values[0].integer);
+-		else if (name == "job-uri") job->setUri(QString::fromLocal8Bit(attr->values[0].string.text));
+-		else if (name == "job-name") job->setName(QString::fromLocal8Bit(attr->values[0].string.text));
++		QString	name(ippGetName(attr));
++		if (name == "job-id") job->setId(ippGetInteger(attr, 0));
++		else if (name == "job-uri") job->setUri(QString::fromLocal8Bit(ippGetString(attr, 0, NULL)));
++		else if (name == "job-name") job->setName(QString::fromLocal8Bit(ippGetString(attr, 0, NULL)));
+ 		else if (name == "job-state")
+ 		{
+-			switch (attr->values[0].integer)
++			switch (ippGetInteger(attr, 0))
+ 			{
+ 				case IPP_JOB_PENDING:
+ 					job->setState(KMJob::Queued);
+@@ -204,29 +207,30 @@
+ 					break;
+ 			}
+ 		}
+-		else if (name == "job-k-octets") job->setSize(attr->values[0].integer);
+-		else if (name == "job-originating-user-name") job->setOwner(QString::fromLocal8Bit(attr->values[0].string.text));
+-		else if (name == "job-k-octets-completed") job->setProcessedSize(attr->values[0].integer);
+-		else if (name == "job-media-sheets") job->setPages(attr->values[0].integer);
+-		else if (name == "job-media-sheets-completed") job->setProcessedPages(attr->values[0].integer);
++		else if (name == "job-k-octets") job->setSize(ippGetInteger(attr, 0));
++		else if (name == "job-originating-user-name") job->setOwner(QString::fromLocal8Bit(ippGetString(attr, 0, NULL)));
++		else if (name == "job-k-octets-completed") job->setProcessedSize(ippGetInteger(attr, 0));
++		else if (name == "job-media-sheets") job->setPages(ippGetInteger(attr, 0));
++		else if (name == "job-media-sheets-completed") job->setProcessedPages(ippGetInteger(attr, 0));
+ 		else if (name == "job-printer-uri" && !pr->isRemote())
+ 		{
+-			QString	str(attr->values[0].string.text);
++			QString	str(ippGetString(attr, 0, NULL));
+ 			int	p = str.findRev('/');
+ 			if (p != -1)
+ 				job->setPrinter(str.mid(p+1));
+ 		}
+ 		else if (name == "job-priority")
+ 		{
+-			job->setAttribute(0, QString::fromLatin1("%1").arg(attr->values[0].integer, 3));
++			job->setAttribute(0, QString::fromLatin1("%1").arg(ippGetInteger(attr, 0), 3));
+ 		}
+ 		else if (name == "job-billing")
+ 		{
+ 			job->setAttributeCount(2);
+-			job->setAttribute(1, QString::fromLocal8Bit(attr->values[0].string.text));
++			job->setAttribute(1, QString::fromLocal8Bit(ippGetString(attr, 0, NULL)));
+ 		}
+ 
+-		if (name.isEmpty() || attr == req.last())
++		nextAttr = ippNextAttribute(req.request());
++		if (name.isEmpty() || (!nextAttr))
+ 		{
+ 			if (job->printer().isEmpty())
+ 				job->setPrinter(pr->printerName());
+@@ -234,8 +238,7 @@
+ 			addJob(job);	// don't use job after this call !!!
+ 			job = new KMJob();
+ 		}
+-
+-		attr = attr->next;
++		attr = nextAttr;
+ 	}
+ 	delete job;
+ }
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/kmcupsmanager.cpp kdelibs-3.5.10/kdeprint/cups/kmcupsmanager.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/kmcupsmanager.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/kmcupsmanager.cpp	2012-10-06 15:14:22.311521604 -0400
+@@ -476,19 +476,20 @@
+ void KMCupsManager::processRequest(IppRequest* req)
+ {
+ 	ipp_attribute_t	*attr = req->first();
++	ipp_attribute_t	*nextAttr;
+ 	KMPrinter	*printer = new KMPrinter();
+ 	while (attr)
+ 	{
+-		QString	attrname(attr->name);
++		QString	attrname(ippGetName(attr));
+ 		if (attrname == "printer-name")
+ 		{
+-			QString	value = QString::fromLocal8Bit(attr->values[0].string.text);
++			QString	value = QString::fromLocal8Bit(ippGetString(attr, 0, NULL));
+ 			printer->setName(value);
+ 			printer->setPrinterName(value);
+ 		}
+ 		else if (attrname == "printer-type")
+ 		{
+-			int	value = attr->values[0].integer;
++			int	value = ippGetInteger(attr, 0);
+ 			printer->setType(0);
+ 			printer->addType(((value & CUPS_PRINTER_CLASS) || (value & CUPS_PRINTER_IMPLICIT) ? KMPrinter::Class : KMPrinter::Printer));
+ 			if ((value & CUPS_PRINTER_REMOTE)) printer->addType(KMPrinter::Remote);
+@@ -499,7 +500,7 @@
+ 		}
+ 		else if (attrname == "printer-state")
+ 		{
+-			switch (attr->values[0].integer)
++			switch (ippGetInteger(attr, 0))
+ 			{
+ 				case IPP_PRINTER_IDLE: printer->setState(KMPrinter::Idle); break;
+ 				case IPP_PRINTER_PROCESSING: printer->setState(KMPrinter::Processing); break;
+@@ -508,22 +509,24 @@
+ 		}
+ 		else if (attrname == "printer-uri-supported")
+ 		{
+-			printer->setUri(KURL(attr->values[0].string.text));
++			printer->setUri(KURL(ippGetString(attr, 0, NULL)));
+ 		}
+ 		else if (attrname == "printer-location")
+ 		{
+-			printer->setLocation(QString::fromLocal8Bit(attr->values[0].string.text));
++			printer->setLocation(QString::fromLocal8Bit(ippGetString(attr, 0, NULL)));
+ 		}
+ 		else if (attrname == "printer-is-accepting-jobs")
+ 		{
+-			printer->setAcceptJobs(attr->values[0].boolean);
++			printer->setAcceptJobs(ippGetBoolean(attr, 0));
+ 		}
+-		if (attrname.isEmpty() || attr == req->last())
++
++		nextAttr = ippNextAttribute(req->request());
++		if (attrname.isEmpty() || (!nextAttr))
+ 		{
+ 			addPrinter(printer);
+ 			printer = new KMPrinter();
+ 		}
+-		attr = attr->next;
++		attr = nextAttr;
+ 	}
+ 	delete printer;
+ }
+@@ -817,6 +820,7 @@
+ {
+ 	QStringList	list;
+ 	IppRequest	req;
++	ipp_attribute_t	*nextAttr;
+ 	req.setOperation(CUPS_GET_DEVICES);
+ 	if (req.doRequest("/"))
+ 	{
+@@ -824,12 +828,13 @@
+ 		ipp_attribute_t	*attr = req.first();
+ 		while (attr)
+ 		{
+-			QString	attrname(attr->name);
+-			if (attrname == "device-info") desc = attr->values[0].string.text;
+-			else if (attrname == "device-make-and-model") printer = attr->values[0].string.text;
+-			else if (attrname == "device-uri") uri = attr->values[0].string.text;
+-			else if ( attrname == "device-class" ) cl = attr->values[ 0 ].string.text;
+-			if (attrname.isEmpty() || attr == req.last())
++			QString	attrname(ippGetName(attr));
++			if (attrname == "device-info") desc = ippGetString(attr, 0, NULL);
++			else if (attrname == "device-make-and-model") printer = ippGetString(attr, 0, NULL);
++			else if (attrname == "device-uri") uri = ippGetString(attr, 0, NULL);
++			else if ( attrname == "device-class" ) cl = ippGetString(attr, 0, NULL);
++			nextAttr = ippNextAttribute(req.request());
++			if (attrname.isEmpty() || (!nextAttr))
+ 			{
+ 				if (!uri.isEmpty())
+ 				{
+@@ -838,7 +843,7 @@
+ 				}
+ 				uri = desc = printer = cl = QString::null;
+ 			}
+-			attr = attr->next;
++			attr = nextAttr;
+ 		}
+ 	}
+ 	return list;
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/kmcupsuimanager.cpp kdelibs-3.5.10/kdeprint/cups/kmcupsuimanager.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/kmcupsuimanager.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/kmcupsuimanager.cpp	2012-10-06 15:14:55.177970017 -0400
+@@ -60,6 +60,8 @@
+ #include <kaction.h>
+ #include <kmessagebox.h>
+ 
++#include "config.h"
++
+ KMCupsUiManager::KMCupsUiManager(QObject *parent, const char *name, const QStringList & /*args*/)
+ : KMUiManager(parent,name)
+ {
+@@ -143,22 +145,22 @@
+ 		ipp_attribute_t	*attr = req.first();
+ 		while (attr)
+ 		{
+-			if (attr->name && strcmp(attr->name,"device-uri") == 0)
++			if (ippGetName(attr) && strcmp(ippGetName(attr),"device-uri") == 0)
+ 			{
+-				if (strncmp(attr->values[0].string.text,"socket",6) == 0) backend->enableBackend(KMWizard::TCP,true);
+-				else if (strncmp(attr->values[0].string.text,"parallel",8) == 0) backend->enableBackend(KMWizard::Local,true);
+-				else if (strncmp(attr->values[0].string.text,"serial",6) == 0) backend->enableBackend(KMWizard::Local,true);
+-				else if (strncmp(attr->values[0].string.text,"smb",3) == 0) backend->enableBackend(KMWizard::SMB,true);
+-				else if (strncmp(attr->values[0].string.text,"lpd",3) == 0) backend->enableBackend(KMWizard::LPD,true);
+-				else if (strncmp(attr->values[0].string.text,"usb",3) == 0) backend->enableBackend(KMWizard::Local,true);
+-				else if (strncmp(attr->values[0].string.text,"http",4) == 0 || strncmp(attr->values[0].string.text,"ipp",3) == 0)
++				if (strncmp(ippGetString(attr, 0, NULL),"socket",6) == 0) backend->enableBackend(KMWizard::TCP,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"parallel",8) == 0) backend->enableBackend(KMWizard::Local,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"serial",6) == 0) backend->enableBackend(KMWizard::Local,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"smb",3) == 0) backend->enableBackend(KMWizard::SMB,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"lpd",3) == 0) backend->enableBackend(KMWizard::LPD,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"usb",3) == 0) backend->enableBackend(KMWizard::Local,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"http",4) == 0 || strncmp(ippGetString(attr, 0, NULL),"ipp",3) == 0)
+ 				{
+ 					backend->enableBackend(KMWizard::IPP,true);
+ 					backend->enableBackend(KMWizard::Custom+1,true);
+ 				}
+-				else if (strncmp(attr->values[0].string.text,"fax",3) == 0) backend->enableBackend(KMWizard::Custom+2,true);
++				else if (strncmp(ippGetString(attr, 0, NULL),"fax",3) == 0) backend->enableBackend(KMWizard::Custom+2,true);
+ 			}
+-			attr = attr->next;
++			attr = ippNextAttribute(req.request());
+ 		}
+ 		backend->enableBackend(KMWizard::Class, true);
+ 		backend->enableBackend(KMWizard::Custom+5, true);
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/kmwfax.cpp kdelibs-3.5.10/kdeprint/cups/kmwfax.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/kmwfax.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/kmwfax.cpp	2012-10-06 15:15:28.044418449 -0400
+@@ -30,6 +30,8 @@
+ #include <kiconloader.h>
+ #include <kurl.h>
+ 
++#include "config.h"
++
+ KMWFax::KMWFax(QWidget *parent, const char *name)
+ : KMWizardPage(parent,name)
+ {
+@@ -55,11 +57,11 @@
+ 		ipp_attribute_t	*attr = req.first();
+ 		while (attr)
+ 		{
+-			if (attr->name && strcmp(attr->name,"device-uri") == 0 && strncmp(attr->values[0].string.text,"fax",3) == 0)
++			if (ippGetName(attr) && strcmp(ippGetName(attr),"device-uri") == 0 && strncmp(ippGetString(attr, 0, NULL),"fax",3) == 0)
+ 			{
+-				m_list->insertItem(SmallIcon("blockdevice"),QString::fromLatin1(attr->values[0].string.text));
++				m_list->insertItem(SmallIcon("blockdevice"),QString::fromLatin1(ippGetString(attr, 0, NULL)));
+ 			}
+-			attr = attr->next;
++			attr = ippNextAttribute(req.request());
+ 		}
+ 	}
+ }
+diff -Naur kdelibs-3.5.10-orig/kdeprint/cups/kmwippselect.cpp kdelibs-3.5.10/kdeprint/cups/kmwippselect.cpp
+--- kdelibs-3.5.10-orig/kdeprint/cups/kmwippselect.cpp	2012-10-06 14:49:37.521406729 -0400
++++ kdelibs-3.5.10/kdeprint/cups/kmwippselect.cpp	2012-10-06 15:15:56.867560417 -0400
+@@ -29,6 +29,8 @@
+ #include <kdebug.h>
+ #include <kiconloader.h>
+ 
++#include "config.h"
++
+ KMWIppSelect::KMWIppSelect(QWidget *parent, const char *name)
+ : KMWizardPage(parent,name)
+ {
+@@ -83,9 +85,9 @@
+ 		ipp_attribute_t	*attr = req.first();
+ 		while (attr)
+ 		{
+-			if (attr->name && strcmp(attr->name,"printer-name") == 0)
+-				m_list->insertItem(SmallIcon("kdeprint_printer"),QString::fromLatin1(attr->values[0].string.text));
+-			attr = attr->next;
++			if (ippGetName(attr) && strcmp(ippGetName(attr),"printer-name") == 0)
++				m_list->insertItem(SmallIcon("kdeprint_printer"),QString::fromLatin1(ippGetString(attr, 0, NULL)));
++			attr = ippNextAttribute(req.request());
+ 		}
+ 		m_list->sort();
+ 	}

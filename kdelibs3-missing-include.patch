@@ -1,0 +1,10 @@
+--- kdeprint/cups/cupsdconf2/cups-util.c.old	2012-01-19 01:30:26.000000000 -0500
++++ kdeprint/cups/cupsdconf2/cups-util.c	2012-01-19 01:31:33.000000000 -0500
+@@ -2,6 +2,7 @@
+ #include <cups/http.h>
+ #include <cups/cups.h>
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ #include <unistd.h>

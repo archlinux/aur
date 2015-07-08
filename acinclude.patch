@@ -1,0 +1,66 @@
+2009-12-10  Stepan Kasal  <skasal@redhat.com>
+
+The change of implementation of AC_REQUIRE in 2.64 caused a regression
+in the arts project.
+This can be fixed by shuffling some macro calls.
+
+I suppose that most of this patch will not be needed with a future
+release of Autoconf.
+But the last chunk of this patch is a real bug in this source and
+should go upstream.
+
+--- arts-1.5.10/admin/acinclude.m4.in	2008-08-20 18:07:05.000000000 +0200
++++ arts-1.5.10/admin/acinclude.m4.in	2009-12-09 17:30:57.000000000 +0100
+@@ -3081,8 +3081,18 @@
+ fi
+ ])
+ 
++AC_DEFUN([AC_CHECK_COMPILERS_CC],
++[ 
++  dnl this prevents stupid AC_PROG_CC to add "-g" to the default CFLAGS
++  CFLAGS=" $CFLAGS"
++  AC_PROG_CC
++  CXXFLAGS=" $CXXFLAGS"
++  AC_PROG_CXX
++])
++
+ AC_DEFUN([AC_CHECK_COMPILERS],
+ [
++  AC_REQUIRE([AC_CHECK_COMPILERS_CC])
+   AC_ARG_ENABLE(debug,
+ 	        AC_HELP_STRING([--enable-debug=ARG],[enables debug symbols (yes|no|full) [default=no]]),
+   [
+@@ -3141,11 +3151,6 @@
+     [kde_use_profiling="no"]
+   )
+ 
+-  dnl this prevents stupid AC_PROG_CC to add "-g" to the default CFLAGS
+-  CFLAGS=" $CFLAGS"
+-
+-  AC_PROG_CC 
+-
+   AC_PROG_CPP
+ 
+   if test "$GCC" = "yes"; then
+@@ -3174,10 +3179,6 @@
+      LDFLAGS=""
+   fi
+ 
+-  CXXFLAGS=" $CXXFLAGS"
+-
+-  AC_PROG_CXX
+-
+   KDE_CHECK_FOR_BAD_COMPILER
+ 
+   if test "$GXX" = "yes" || test "$CXX" = "KCC"; then
+@@ -3503,8 +3504,8 @@
+ AC_REQUIRE([AC_LIBTOOL_DLOPEN])
+ AC_REQUIRE([KDE_CHECK_LIB64])
+ 
+-AC_OBJEXT
+-AC_EXEEXT
++AC_REQUIRE([AC_OBJEXT])
++AC_REQUIRE([AC_EXEEXT])
+ 
+ AM_PROG_LIBTOOL
+ AC_LIBTOOL_CXX
