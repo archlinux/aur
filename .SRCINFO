@@ -1,0 +1,24 @@
+pkgbase = libfilteraudio-git
+	pkgdesc = An easy to use audio filtering library made from webrtc code
+	pkgver = r92.612c5a1
+	pkgrel = 1
+	url = https://github.com/irungentoo/filter_audio
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = libfilteraudio
+	provides = filter_audio
+	conflicts = libfilteraudio
+	conflicts = filter_audio
+	source = libfilteraudio::git+https://github.com/irungentoo/libfilteraudio.git
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = ab7ea75c03fab3dfc5d452f04a38b42783f646c2e0acaf8494628bfdf6f83e4b04d470e019385de3e89dd57eb8ef6d02daa6256d4ff311cc66f3999b694ef143
+
+pkgname = libfilteraudio-git
+
