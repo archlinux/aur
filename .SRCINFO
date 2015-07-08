@@ -1,0 +1,25 @@
+pkgbase = nautilus-dropbox
+	pkgdesc = Dropbox for Linux - Nautilus extension
+	pkgver = 2015.02.12
+	pkgrel = 1
+	url = https://www.dropbox.com/
+	install = nautilus-dropbox.install
+	arch = i686
+	arch = x86_64
+	license = custom:CC-BY-ND-3
+	license = GPL
+	makedepends = python2-docutils
+	makedepends = python2
+	makedepends = pygtk
+	makedepends = pkg-config
+	depends = libnotify
+	depends = nautilus
+	depends = dropbox
+	depends = hicolor-icon-theme
+	options = !libtool
+	options = !emptydirs
+	source = https://linux.dropbox.com/packages/nautilus-dropbox-2015.02.12.tar.bz2
+	md5sums = bac2adbfc3bbcf1bb1cb28dcc975a090
+
+pkgname = nautilus-dropbox
+
