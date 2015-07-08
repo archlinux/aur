@@ -1,0 +1,21 @@
+pkgbase = jbxkb
+	pkgdesc = A pygtk keyboard layout switcher tray applet (inspired by gxkb) for JustBrowsing
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/justbrowsing/jbxkb
+	arch = any
+	groups = justbrowsing
+	license = GPL3
+	depends = python2
+	depends = pygtk
+	depends = procps-ng
+	depends = xorg-setxkbmap
+	depends = xkb-switch-git
+	optdepends = ibus-lite: Special input methods without python3 dependency
+	optdepends = ibus-m17n: Variety pack of input methods
+	optdepends = ibus-pinyin: Popular Chinese input method
+	optdepends = ibus-skk: Popular Japanese input method
+	source = https://github.com/justbrowsing/jbxkb/archive/master.zip
+
+pkgname = jbxkb
+
