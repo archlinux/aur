@@ -1,0 +1,17 @@
+pkgbase = i3blocks
+	pkgdesc = Define blocks for your i3bar status line
+	pkgver = 1.3
+	pkgrel = 2
+	url = https://github.com/vivien/i3blocks
+	arch = any
+	license = GPL3
+	optdepends = openvpn: For openvpn script
+	optdepends = playerctl: For mediaplayer script
+	optdepends = lm_sensors: For temperature script
+	optdepends = acpi: For battery script
+	optdepends = sysstat: For cpu_usage script
+	source = https://github.com/vivien/i3blocks/releases/download/1.3/i3blocks-1.3.tar.gz
+	sha256sums = e9d8a4a2c822645cef2373aa7d3762215d7b8d3e7d44c2dd24002c37b532ee53
+
+pkgname = i3blocks
+
