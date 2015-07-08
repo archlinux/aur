@@ -1,0 +1,36 @@
+pkgbase = cnijfilter-mg5400series
+	pkgdesc = Canon MG5450 printer driver
+	pkgver = 3.80
+	pkgrel = 1
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100467102.html
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	depends = atk
+	depends = glibc
+	depends = glib2
+	depends = cairo
+	depends = cups
+	depends = fontconfig
+	depends = gtk2
+	depends = pango
+	depends = libpng12
+	depends = popt
+	depends = libtiff3
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxinerama
+	depends = libxml2
+	depends = libxrandr
+	depends = libxrender
+	depends = cnijfilter-common-mg5400>=3.80
+	options = emptydirs
+	source = http://gdlp01.c-wss.com/gds/1/0100004671/01/cnijfilter-mg5400series-3.80-1-rpm.tar.gz
+	md5sums = e76ff321213bca10ae33aef9f162c301
+
+pkgname = cnijfilter-mg5400series
+
