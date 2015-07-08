@@ -28,7 +28,7 @@ pkgbase = spacefm-git
 	conflicts = spacefm
 	conflicts = spacefm-gtk2
 	source = git+https://github.com/IgnorantGuru/spacefm#branch=next
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = spacefm-git
 
