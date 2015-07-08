@@ -1,0 +1,20 @@
+pkgbase = x86_64-efi-pe-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the x86_64 architecture in the Portable Executable format.
+	pkgver = 2.24
+	pkgrel = 0
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.bz2
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.bz2.sig
+	source = binutils-2.24-lto-testsuite.patch
+	source = binutils-2.24-shared-pie.patch
+	md5sums = e0f71a7b2ddab0f8612336ac81d9636b
+	md5sums = SKIP
+	md5sums = b16e895c24ff80acd98a21021eccefad
+	md5sums = ec59461c4febab9cfe1c1ef33326bc50
+
+pkgname = x86_64-efi-pe-binutils
+
