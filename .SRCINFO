@@ -1,0 +1,17 @@
+pkgbase = kdeplasma-applets-keyleds-svn
+	pkgdesc = A plasmoid to display LED status in the KDE panel, for wireless keyboards without LEDs
+	pkgver = 91
+	pkgrel = 1
+	url = http://software.dukitan.com/en/keyleds/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	depends = kdebase-workspace
+	depends = xorg-xset
+	provides = kdeplasma-applets-keyleds
+	conflicts = kdeplasma-applets-keyleds
+
+pkgname = kdeplasma-applets-keyleds-svn
+
