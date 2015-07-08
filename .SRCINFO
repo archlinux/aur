@@ -1,0 +1,23 @@
+pkgbase = s-nail-git
+	pkgdesc = Commandline utility for sending and receiving email
+	pkgver = 14.8.3_x15_g47a1a5c
+	pkgrel = 1
+	url = http://sdaoden.users.sourceforge.net/code.html#s-nail
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = krb5
+	depends = libidn
+	depends = openssl
+	optdepends = smtp-forwarder: alternatives for sending mail
+	provides = mailx
+	provides = heirloom-mailx
+	conflicts = mailx
+	conflicts = heirloom-mailx
+	backup = etc/mail.rc
+	source = git+https://gitlab.com/s-nail/s-nail.git
+	sha1sums = SKIP
+
+pkgname = s-nail-git
+
