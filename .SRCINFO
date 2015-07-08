@@ -1,0 +1,17 @@
+pkgbase = kdeplasma-applets-keyleds
+	pkgdesc = KDE4 KeyLEDs - Plasma(plasmoid) Keyboard Status LEDs
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://software.dukitan.com/en/keyleds/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdebase-workspace
+	depends = xorg-xset
+	provides = kdeplasma-applet-keyleds
+	replaces = kdeplasma-applet-keyleds
+	source = http://dukitan.googlecode.com/files/keyleds.1.2.bin.zip
+	md5sums = cb7f9e1b5bdbf4e2d56b05da5f542b1a
+
+pkgname = kdeplasma-applets-keyleds
+
