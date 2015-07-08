@@ -1,0 +1,16 @@
+pkgbase = ruby-rb-kqueue
+	pkgdesc = A Ruby wrapper for BSD's kqueue, using FFI
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://github.com/mat813/rb-kqueue
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ffi
+	noextract = rb-kqueue-0.2.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rb-kqueue-0.2.3.gem
+	sha1sums = 5e9c78922bbf503f5a3633d7859029b7d368a719
+
+pkgname = ruby-rb-kqueue
+
