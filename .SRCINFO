@@ -1,0 +1,19 @@
+pkgbase = ptop
+	pkgdesc = An awesome task manager written in python
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/black-perl/ptop
+	arch = any
+	license = MIT
+	depends = ncurses
+	depends = python
+	depends = drawille-git
+	depends = python-npyscreen
+	depends = python-argparse
+	depends = psutils
+	depends = python-setuptools
+	source = https://github.com/black-perl/ptop/archive/0.0.6.tar.gz
+	md5sums = 84bbfa602758173c749a885fb6556e5b
+
+pkgname = ptop
+
