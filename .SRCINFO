@@ -1,0 +1,14 @@
+pkgbase = gfk
+	pkgdesc = Securely share files between computers with a USB drive
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://gfk.eatabrick.org/
+	arch = any
+	license = MIT
+	depends = secretfs
+	provides = gfk
+	source = https://github.com/bentglasstube/gfk/archive/v0.0.3.tar.gz
+	sha1sums = 76edc377c3dfa185440174d1214801a23fb34208
+
+pkgname = gfk
+
