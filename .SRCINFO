@@ -1,7 +1,7 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Receiver for Linux (ICAClient)
-	pkgver = 13.1.0.285639
-	pkgrel = 10
+	pkgver = 13.2
+	pkgrel = 1
 	url = http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top
 	install = citrix-client.install
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = icaclient
 	source = wfica.desktop
 	source = wfica.sh
 	source = wfica_assoc.sh
-	source = icaclient-13.1.0.285639.tar.gz::http://downloads.citrix.com/9819/linuxx64-13.1.0.285639.tar.gz?__gda__=1436307928_1b84d128f260b9d7ee727ebba854e53f
+	source = icaclient-13.2.tar.gz::http://downloads.citrix.com/9819/linuxx64-13.1.0.285639.tar.gz?__gda__=1436366117_7bd129d72cb4c9673fd8bdade8cc499c
 	md5sums = 71aca6257f259996ac59729604f32978
 	md5sums = a38c3f844a0fefe8017a25bee213b843
 	md5sums = 0e92c33b3fcc99b04269787da2984809
