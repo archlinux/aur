@@ -1,0 +1,18 @@
+pkgbase = gmpc-tagedit
+	pkgdesc = Add to GMPC an editor for song tags.
+	pkgver = 11.8.16
+	pkgrel = 2
+	url = http://gmpc.wikia.com/wiki/GMPC_PLUGIN_TAGEDIT
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gob2
+	depends = gmpc>=11.8.16
+	depends = taglib
+	options = !libtool
+	source = http://download.sarine.nl/Programs/gmpc/11.8.16/gmpc-tagedit-11.8.16.tar.gz
+	sha1sums = a704e2ce6ab5b0faee6efdc892dc946ba077fa61
+
+pkgname = gmpc-tagedit
+
