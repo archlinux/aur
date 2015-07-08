@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-consensus-git
 	pkgdesc = Libbitcoin Consensus Library
-	pkgver = 20150518
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-consensus
 	arch = i686
