@@ -3,7 +3,7 @@
 
 pkgname=python-clize
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="This decorator will turn your normal python functions into proper shell commands"
 arch=('any')
 url="https://pypi.python.org/pypi/clize/"
@@ -22,7 +22,7 @@ check() {
 
 package() {
   cd "$srcdir/clize-$pkgver"
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}"  --optimize=1
 }
 
 # vim:ts=2:sw=2:et:
