@@ -1,0 +1,1 @@
+*/5 * * * * root nice /opt/quicklook/stats.py --data=/var/opt/quicklook/ --output=/srv/http/quicklook/ > /dev/null

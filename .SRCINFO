@@ -1,0 +1,17 @@
+pkgbase = quicklook
+	pkgdesc = Collects system statistics and outputs pretty graphics and (X)HTML pages.
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://code.google.com/p/quicklook/
+	arch = any
+	license = GPL
+	depends = python2>=2.3
+	depends = python2-cheetah
+	depends = rrdtool
+	source = quicklook-1.2.tar.gz::https://bitbucket.org/jmb/quicklook/get/v1.2.tar.gz
+	source = quicklook.cron
+	md5sums = bed76c1d9eeb30008eb2c0c6b39694d0
+	md5sums = 92e2f9514865de7ad8fadb7ab9da5164
+
+pkgname = quicklook
+
