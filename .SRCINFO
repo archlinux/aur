@@ -1,0 +1,35 @@
+pkgbase = apacman-deps
+	pkgdesc = Meta package that installs build depends for apacman AUR wrapper
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/apacman/
+	arch = any
+	license = None
+	depends = autoconf
+	depends = automake
+	depends = binutils
+	depends = file
+	depends = gcc
+	depends = gettext
+	depends = git
+	depends = gtk-doc
+	depends = libtool
+	depends = linux-headers
+	depends = m4
+	depends = make
+	depends = mercurial
+	depends = patch
+	depends = pcre
+	depends = pkg-config
+	depends = subversion
+	depends = vala
+	depends = xorg-server-devel
+	optdepends = sudo: install packages as a user
+	optdepends = pkgfile: determine which package a missing file belongs to
+	optdepends = expac: parse --quickcheck output
+	optdepends = rsync: download ABS source packages
+	provides = apacman-deps
+	options = !strip
+
+pkgname = apacman-deps
+
