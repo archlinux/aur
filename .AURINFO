@@ -1,0 +1,14 @@
+pkgbase = justbrowsing-xorg
+	pkgdesc = X11 Xorg config files for JustBrowsing
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/justbrowsing/justbrowsing-xorg
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = xorg-xinit
+	optdepends = justbrowsing-home: Home directory for JustBrowsing
+	source = https://github.com/justbrowsing/justbrowsing-xorg/archive/master.zip
+
+pkgname = justbrowsing-xorg
+
