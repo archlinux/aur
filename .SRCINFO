@@ -1,6 +1,6 @@
 pkgbase = gdl-git
 	pkgdesc = GNOME Docking Libraries, git version
-	pkgver = 3.16.0.3.g27b13de
+	pkgver = 3.16.0.4.g727c4d0
 	pkgrel = 1
 	url = https://developer.gnome.org/gdl/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gdl-git
 	makedepends = pkgconfig
 	depends = gtk3
 	depends = gdk-pixbuf2
-	provides = gdl=3.16.0.3.g27b13de
+	provides = gdl=3.16.0.4.g727c4d0
 	conflicts = gdl
 	source = git://git.gnome.org/gdl
 	md5sums = SKIP
