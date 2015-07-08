@@ -1,0 +1,18 @@
+post_install(){
+  mkdir -p /var/cache/apacman/pkg
+  echo "==> Must install apacman-deps meta package to compile packages from AUR"
+  echo "==> Remove build depends with: pacman -Rss apacman-deps"
+  id aurbuild >/dev/null 2>/dev/null || useradd -r -d /var/empty aurbuild
+}
+
+post_upgrade() {
+  mkdir -p /var/cache/apacman/pkg
+  echo "==> Must install apacman-deps meta package to compile packages from AUR"
+  echo "==> Remove build depends with: pacman -Rss apacman-deps"
+  id aurbuild >/dev/null 2>/dev/null || useradd -r -d /var/empty aurbuild
+}
+
+post_remove() {
+  echo "==> Remove build depends with: pacman -Rss apacman-deps"
+  userdel aurbuild 2>/dev/null
+}

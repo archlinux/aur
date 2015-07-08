@@ -1,0 +1,29 @@
+pkgbase = apacman
+	pkgdesc = AUR wrapper forked from packer
+	pkgver = 1.8
+	pkgrel = 2
+	url = http://github.com/oshazard/apacman
+	install = apacman.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = binutils
+	depends = ca-certificates
+	depends = curl
+	depends = fakeroot
+	depends = file
+	depends = grep
+	depends = jshon
+	depends = sed
+	depends = tar
+	depends = wget
+	optdepends = apacman-deps: Required AUR build depends
+	optdepends = customizepkg: Tool to auto-patch AUR PKGBUILDs
+	optdepends = rsync: Built-in ABS support
+	provides = packer
+	backup = etc/apacman.conf
+	source = https://github.com/oshazard/apacman/archive/master.tar.gz
+	md5sums = 07554b821168ad5db65ad36f91937cde
+
+pkgname = apacman
+
