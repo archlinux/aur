@@ -1,0 +1,21 @@
+pkgbase = libaacplus
+	pkgdesc = 3GPP AAC+ High Efficiency Advanced Audio Codec v2 (HE-AAC+) Encoder Shared Library
+	pkgver = 2.0.2
+	pkgrel = 8
+	url = http://tipok.org.ua/node/17
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = 3GPP
+	makedepends = unzip
+	depends = glibc
+	optdepends = fftw
+	provides = aacplusenc
+	conflicts = aacplusenc
+	options = !makeflags
+	options = !libtool
+	source = http://tipok.org.ua/downloads/media/aac+/libaacplus/libaacplus-2.0.2.tar.gz
+	md5sums = 3fc15d5aa91d0e8b8f94acb6555103da
+
+pkgname = libaacplus
+
