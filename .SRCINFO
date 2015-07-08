@@ -1,0 +1,22 @@
+pkgbase = aura-bin
+	pkgdesc = A secure package manager for Arch Linux and the AUR written in Haskell - Prebuilt binary
+	pkgver = 1.3.0.5
+	pkgrel = 1
+	url = https://github.com/fosskers/aura
+	arch = x86_64
+	license = GPL-3
+	depends = gmp
+	depends = pacman
+	depends = pcre
+	depends = abs
+	optdepends = powerpill: For faster repository downloads.
+	optdepends = customizepkg: For auto-editing of PKGBUILDs.
+	optdepends = aur-git: AUR package completions for zsh.
+	provides = aura
+	conflicts = aura
+	conflicts = aura-git
+	options = strip
+	source = https://bitbucket.org/fosskers/aura/downloads/aura-1.3.0.5-.tar.gz
+
+pkgname = aura-bin
+
