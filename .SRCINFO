@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-freetype2
+	pkgdesc = TrueType font rendering library (mingw-w64)
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://www.freetype.org/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-zlib
+	depends = mingw-w64-crt
+	provides = mingw-w64-freetype
+	replaces = mingw-w64-freetype
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.gz
+	sha512sums = fd0337b2cdf4e1a3a79fc8bd55a572b7276a7d8b6897cbfe6c04a2c03672fd835f51d7b986e44731edbdda42cb10e69eb56d5b1a32f9acf95224171f6d86259f
+
+pkgname = mingw-w64-freetype2
+
