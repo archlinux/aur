@@ -1,0 +1,17 @@
+pkgbase = otf-league-gothic
+	pkgdesc = A revival of Alternate Gothic, originally designed by M.F. Benton.
+	pkgver = 20130215
+	pkgrel = 1
+	url = http://www.theleagueofmoveabletype.com/league-gothic
+	install = otf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = otf-league-gothic-20130215.zip::http://theleagueof.s3.amazonaws.com/downloads/theleagueof-league-gothic-64c3ede.zip
+	source = OFL.txt
+	sha1sums = 06b3c3d133ee74fe1a0a4ce5760aa50e78783d58
+	sha1sums = 5d2bd43577e6c664887781d7e19a6eec6f07bc8b
+
+pkgname = otf-league-gothic
+
