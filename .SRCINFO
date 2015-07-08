@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-topicons
+	pkgdesc = Shows legacy tray icons on top.
+	pkgver = 26
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/495/topicons/
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL
+	depends = gnome-shell
+	source = http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-26.tar.gz
+	sha256sums = 952f9441825d7231b2ca1f40c8ec360b5cc0ea48ff26ca13e91c0744588d5ea0
+
+pkgname = gnome-shell-extension-topicons
+
