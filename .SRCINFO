@@ -1,7 +1,7 @@
 pkgbase = hunspell-uk
 	pkgdesc = Ukrainian spelling dictionary
-	pkgver = 1.6.5
-	pkgrel = 2
+	pkgver = 1.9.6
+	pkgrel = 1
 	url = http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus
 	arch = any
 	groups = dict-uk
@@ -10,8 +10,8 @@ pkgbase = hunspell-uk
 	optdepends = hunspell: the spell checking libraries and apps
 	optdepends = hyphen-uk: Ukrainian hyphenation rules
 	optdepends = mythes-uk: Ukrainian thesaurus
-	source = http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus/releases/1.6.5/dict-uk_ua-1.6.5.oxt
-	md5sums = 30746735548944edf5f4c9ef6881c510
+	source = http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus/releases/1.9.6/dict-uk_ua-1-9-6.oxt
+	sha256sums = 526365ad178dd0bb829db11ea2cf21a3811e0f16a3a93d65c97b946240d9d4eb
 
 pkgname = hunspell-uk
 
