@@ -1,0 +1,17 @@
+post_install() {
+    check_initramfs
+}
+
+post_upgrade() {
+    check_initramfs
+}
+
+check_initramfs() {    
+    echo " >>>  To build the module for the current kernel use this command:
+        # dkms install spl/0.6.4 -k _KERNEL_VERSION_HERE_
+      or just boot to kernel you want to built and do
+        # dkms install spl/0.6.4 -k \$(uname -r)
+
+ >>>  Always remember to install kernel headers!
+"
+}
