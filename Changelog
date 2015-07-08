@@ -1,0 +1,13 @@
+2012-12-21 Aaron DeVore <aaron.devore@gmail.com> (1.6.3-1)
+- Version bump to 1.6.3
+- Add makedepends=(python2-distribute)
+2012-06-17 Aaron DeVore <aaron.devore@gmail.com> (1.6.2-1)
+- Version bump to 1.6.2
+- Quotes around all ${pkg,src}dir references
+- Move license file install to package()
+- Install man page, docs
+2011-03-19 Aaron DeVore <aaron.devore@gmail.com> (1.6.1-1)
+- Bump upstream version to 1.6.1
+- Change Python dependency to python2
+- Change architecture to any
+- Added Changelog
