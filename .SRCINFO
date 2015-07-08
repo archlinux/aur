@@ -1,0 +1,14 @@
+pkgbase = siod
+	pkgdesc = Scheme in one day
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://people.delphiforums.com/gjc/siod.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gcc
+	source = http://ftp.muni.cz/pub/linux/ftp.ibiblio.org/devel/lang/lisp/siod-3.2.tar.gz
+	md5sums = ba909ed12ae8b0c8bbad09845053e35b
+
+pkgname = siod
+
