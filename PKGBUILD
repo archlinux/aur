@@ -1,0 +1,69 @@
+# Maintainer: Martin Villagra <mvillagra0@gmail.com>
+# Contributor: William Rea <sillywilly@gmail.com>
+# Contributor: Nikhil Bysani <nikron@gmail.com>
+# Contributor: Mika HynnÃ¤ <igheax@gmail.com>
+# Contributor: Jonathan Conder <jonno.conder@gmail.com>
+# Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
+
+pkgname=mediatomb
+pkgver=0.12.1
+pkgrel=12
+pkgdesc="Free UPnP/DLNA media server"
+arch=('i686' 'x86_64' 'armv6h')
+url="http://mediatomb.cc/"
+license=('GPL')
+depends=('file' 'curl' 'ffmpegthumbnailer' 'libexif' 'libmp4v2' 'sqlite3' 'taglib' 'libmariadbclient' 'js185')
+optdepends=('mariadb: to store your music database in mariadb')
+backup=('etc/conf.d/mediatomb')
+install=mediatomb.install
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
+        'mediatomb.service'
+        'mediatomb-mariadb.service'
+        'mediatomb.conf'
+        'gcc46.patch'
+        'tonewjs.patch'
+        'jsparse.patch'
+        'libav_0.7_support.patch'
+        'libmp4v2_191_p497.patch'
+        'libavformat.patch'
+        'symlinks.patch')
+md5sums=('e927dd5dc52d3cfcebd8ca1af6f0d3c2'
+         '951b133930436a0ffc1c9b0c9f8145a3'
+         '27e796979c7778c3876b9a16452eb6e4'
+         '6503695608c811133db647e0991698eb'
+         '0ae34c0d73b76e3d215887834c3c08cf'
+         'd9e02a9956eecf5ff645bddf6dac0331'
+         'a7509bdaa0301ccbd9e564f727c1dd22'
+         '88144653ff2dc602bcb737f59b2421ce'
+         '915fa5b3b72649454009511a152b6102'
+         '932d29fbaaea6f1715bb6da456fb5f44'
+         'e1de449736dab88cbb7e10e6bb63ff0d')
+
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/gcc46.patch"
+  patch -Np1 -i "$srcdir/tonewjs.patch"
+  patch -Np1 -i "$srcdir/jsparse.patch"
+  patch -Np1 -i "$srcdir/libav_0.7_support.patch"
+  patch -Np1 -i "$srcdir/libmp4v2_191_p497.patch"
+  patch -Np1 -i "$srcdir/libavformat.patch"
+  patch -Np1 -i "$srcdir/symlinks.patch"
+
+  ./configure --prefix=/usr \
+              --enable-mysql \
+              --enable-libmagic \
+              --enable-libjs \
+              --enable-ffmpeg
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+
+  install -D -m0644 "$srcdir/mediatomb.service" "$pkgdir/usr/lib/systemd/system/mediatomb.service"
+  install -D -m0644 "$srcdir/mediatomb-mariadb.service" "$pkgdir/usr/lib/systemd/system/mediatomb-mariadb.service"
+  install -D -m0644 "$srcdir/mediatomb.conf" "$pkgdir/etc/conf.d/mediatomb"
+}
