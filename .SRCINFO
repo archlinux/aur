@@ -1,0 +1,19 @@
+pkgbase = x2x-git
+	pkgdesc = Allows the keyboard, mouse on one X display to be used to control another X display.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/dottedmag/x2x
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxtst
+	depends = xorg-server
+	depends = libxtst
+	provides = x2x
+	conflicts = x2x
+	source = x2x-git::git+https://github.com/dottedmag/x2x.git
+	md5sums = SKIP
+
+pkgname = x2x-git
+
