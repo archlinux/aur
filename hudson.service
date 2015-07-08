@@ -1,0 +1,24 @@
+[Unit]
+Description=An extendable open source continuous integration server
+After=network.target
+
+[Service]
+User=hudson
+Type=simple
+EnvironmentFile=/etc/conf.d/hudson
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=hudson
+ExecStart=/bin/sh -c 'eval $HUDSON_COMMAND_LINE'
+#MemoryLimit=768M
+OOMScoreAdjust=-1000
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitCORE=0
+LimitAS=infinity
+LimitLOCKS=infinity
+
+[Install]
+WantedBy=multi-user.target
+

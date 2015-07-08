@@ -1,0 +1,58 @@
+#!/bin/sh
+# vim:set ts=2 sw=2 et:
+
+_service_name=hudson.service
+_service_username=hudson
+_service_groupname=${_service_username}
+_service_home_dir=/var/lib/hudson
+_service_tmpfiles_conf=${_service_username}.conf
+
+# Test whether the systemd service is enabled (presuming that systemd is running).
+_is_systemd_service_enabled() {
+  /usr/bin/systemctl is-enabled --quiet ${_service_name} 2>/dev/null
+}
+
+# arg 1:  the new package version
+pre_install() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+post_install() {
+  getent passwd ${_service_username} > /dev/null || /usr/sbin/useradd --system --user-group --home-dir "${_service_home_dir}" --create-home --shell "/bin/bash" --skel /dev/null ${_service_username} &> /dev/null
+  [ -n "${_service_tmpfiles_conf}" ] && systemd-tmpfiles --create ${_service_tmpfiles_conf}
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  [ -n "${_service_tmpfiles_conf}" ] && systemd-tmpfiles --create ${_service_tmpfiles_conf}
+  _is_systemd_service_enabled && cat <<EOF
+=> Remember to issue the following commands:
+  sudo systemctl --system daemon-reload
+  sudo systemctl restart ${_service_name}
+EOF
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  /usr/bin/systemctl stop ${_service_name} 2>/dev/null
+  _is_systemd_service_enabled && /usr/bin/systemctl disable ${_service_name} 2>/dev/null
+  [ -n "${_service_tmpfiles_conf}" ] && systemd-tmpfiles --remove ${_service_tmpfiles_conf}
+  return 0;
+}
+
+# arg 1:  the old package version
+post_remove() {
+  getent passwd ${_service_username} > /dev/null && /usr/sbin/userdel ${_service_username} &>/dev/null
+  for d in ${_service_home_dir}; do
+    [ -n "${d}" -a -d "${d}" ] && echo "=> directory ${d} needs to be removed manually"
+  done
+  return 0;
+}

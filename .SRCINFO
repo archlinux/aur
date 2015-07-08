@@ -1,0 +1,27 @@
+pkgbase = hudson
+	pkgdesc = Extensible continuous integration server
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://hudson-ci.org
+	install = hudson.install
+	arch = any
+	license = EPL
+	depends = java-runtime
+	depends = ttf-dejavu
+	depends = libcups
+	provides = hudson
+	conflicts = hudson
+	replaces = hudson
+	noextract = hudson.war
+	backup = etc/conf.d/hudson
+	source = http://hudson-ci.org/downloads/war/3.1.2/hudson.war
+	source = hudson.conf
+	source = hudson.service
+	source = hudson.tmpfiles.d
+	sha256sums = b33b62559c658b3152f4e905c40ebcf0241b2e36d8bf2bd9f2f23d0c2bb9a8dd
+	sha256sums = 514f755b90bcb3a88339ab7f4104e9b7fcfebe70038abc008fa8acf450b1a531
+	sha256sums = 00a96b88bb9e98d14697e7e9eb443b0785f074eb1bbba207d3e7dd30d10ebbdf
+	sha256sums = c61cbcf85c887379a605c1908b5474599b0fce25bd2f8dd567da3ace6a631b08
+
+pkgname = hudson
+
