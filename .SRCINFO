@@ -1,0 +1,70 @@
+pkgbase = jdk7
+	pkgdesc = Oracle Java 7 Development Kit
+	pkgver = 7.80
+	pkgrel = 2
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ca-certificates-java
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = libx11
+	depends = libxrender
+	depends = libxslt
+	depends = libxtst
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = derby: for Oracle Apache Derby Java database (AUR)
+	optdepends = eclipse: "Oracle Java Mission Control" plugins for Eclipse
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	optdepends = ttf-font: fonts
+	optdepends = visualvm: for lightweight profiling capabilities
+	optdepends = jdk7-docs: Oracle JDK 7 documentation
+	optdepends = java7-jce_ustrength: Unrestricted cryptographic libraries
+	provides = java-runtime=7
+	provides = java-runtime-headless=7
+	provides = java-web-start=7
+	provides = java-environment=7
+	provides = java-runtime-jre=7
+	provides = java-runtime-headless-jre=7
+	provides = java-web-start-jre=7
+	provides = java-environment-jdk=7
+	backup = etc/java-jdk7/amd64/jvm.cfg
+	backup = etc/java-jdk7/amd64/server/Xusage.txt
+	backup = etc/java-jdk7/images/cursors/cursors.properties
+	backup = etc/java-jdk7/management/jmxremote.access
+	backup = etc/java-jdk7/management/jmxremote.password.template
+	backup = etc/java-jdk7/management/management.properties
+	backup = etc/java-jdk7/management/snmp.acl.template
+	backup = etc/java-jdk7/security/java.policy
+	backup = etc/java-jdk7/security/java.security
+	backup = etc/java-jdk7/security/javaws.policy
+	backup = etc/java-jdk7/calendars.properties
+	backup = etc/java-jdk7/content-types.properties
+	backup = etc/java-jdk7/flavormap.properties
+	backup = etc/java-jdk7/fontconfig.properties.src
+	backup = etc/java-jdk7/javafx.properties
+	backup = etc/java-jdk7/jvm.hprof.txt
+	backup = etc/java-jdk7/logging.properties
+	backup = etc/java-jdk7/net.properties
+	backup = etc/java-jdk7/psfont.properties.ja
+	backup = etc/java-jdk7/psfontj2d.properties
+	backup = etc/java-jdk7/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+	source = jconsole-jdk7.desktop
+	source = jmc-jdk7.desktop
+	source = jvisualvm-jdk7.desktop
+	source = policytool-jdk7.desktop
+	sha256sums = bad9a731639655118740bee119139c1ed019737ec802a630dd7ad7aab4309623
+	sha256sums = ab4a2e49825df4e6055e90283f9d0b432e28a6d66f0f7ed659985e7c53847751
+	sha256sums = 535d86adeb183340442c307e0ba579d0f7718b30fe6ed319bdc91bb2cee47763
+	sha256sums = cf20cdf39583e1a992a85ab366437b80217951aeb9dec6b2ee54b77b4d0af6be
+	sha256sums = af15efe8b471d0ab147f4a88215aed3fc50b1a605ce31100dfa7a404f29e85b1
+
+pkgname = jdk7
+
