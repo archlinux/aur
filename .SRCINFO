@@ -1,0 +1,15 @@
+pkgbase = gedit-solarized-git
+	pkgdesc = Precision colors for machines and people.
+	pkgver = 20130409
+	pkgrel = 1
+	url = https://github.com/mattcan/solarized-gedit
+	install = gedit-solarized-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gedit
+	source = git://github.com/mattcan/solarized-gedit.git
+	sha1sums = SKIP
+
+pkgname = gedit-solarized-git
+
