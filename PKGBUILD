@@ -26,9 +26,9 @@ build() {
 
 package() {
   cd "$srcdir/dynamic-colors"
-  install -dm755 "$pkgdir/usr/bin" "$pkgdir/usr/share/dynamic-colors/colorschemes" "$pkgdir/var/run/dynamic-colors"
+  install -dm755 "$pkgdir/usr/bin" "$pkgdir/usr/share/dynamic-colors/colorschemes" "$pkgdir/run/dynamic-colors"
   install -m755 "bin/dynamic-colors" "$pkgdir/usr/bin/dynamic-colors"
   cp -r "colorschemes/" "$pkgdir/usr/share/dynamic-colors/"
-  touch "$pkgdir/var/run/dynamic-colors/colorscheme"
-  chmod 777 "$pkgdir/var/run/dynamic-colors/colorscheme"
+  touch "$pkgdir/run/dynamic-colors/colorscheme"
+  chmod 777 "$pkgdir/run/dynamic-colors/colorscheme"
 }
