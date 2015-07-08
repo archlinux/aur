@@ -1,0 +1,16 @@
+pkgbase = drawille-git
+	pkgdesc = Pixel graphics in terminal with unicode braille characters
+	pkgver = r115.7f5714a
+	pkgrel = 1
+	url = https://github.com/asciimoo/drawille
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	depends = python
+	depends = python-setuptools
+	source = git+https://github.com/asciimoo/drawille.git
+	sha256sums = SKIP
+
+pkgname = drawille-git
+
