@@ -1,0 +1,22 @@
+pkgbase = gtklevel9
+	pkgdesc = An interpreter for games from the British text adventure company Level 9.
+	pkgver = 5.1
+	pkgrel = 3
+	url = http://mirror.ifarchive.org/indexes/if-archiveXlevel9XinterpretersXlevel9.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://mirror.ifarchive.org/if-archive/level9/interpreters/level9/Level9_5.1_Source.zip
+	source = gargoyle.patch
+	source = glibc.patch
+	source = gtklevel9.desktop
+	source = gtklevel9.png
+	md5sums = 7566e9b527a22164bf91c02b44a2bc81
+	md5sums = 57df12cb8ff5fa80d2ac3f7aaefc1f2c
+	md5sums = 1f26eaa8a885e651620ff3fae18e7816
+	md5sums = 8611e0ea83131a909395d2be3fd0fb22
+	md5sums = 4eb964f974666388080af3bc8eaba9d8
+
+pkgname = gtklevel9
+

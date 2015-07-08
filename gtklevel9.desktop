@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Level 9 interpreter
+GenericName=Level 9
+Comment=An interpreter for games from the British text adventure company Level 9
+Exec=gtklevel9 %U
+Icon=gtklevel9.png
+Terminal=false
+Type=Application
+Categories=GTK;Application;Game;
+StartupNotify=true

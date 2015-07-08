@@ -1,0 +1,96 @@
+diff -aur ./bitmap.c ../garglevel9/bitmap.c
+--- ./bitmap.c	2011-05-29 09:35:49.000000000 +0200
++++ ../garglevel9/bitmap.c	2011-10-06 10:11:15.000000000 +0200
+@@ -761,7 +761,7 @@
+ 		L9BYTE data[6];
+ 		int x, y;
+ 
+-		fread(data,1,sizeof data,f);
++		if(fread(data,1,sizeof data,f) != sizeof data && !feof(f)) return NO_BITMAPS;
+ 		fclose(f);
+ 
+ 		x = data[2]+data[3]*256;
+@@ -911,7 +911,7 @@
+ 		L9BYTE data[72];
+ 		int x, y;
+ 
+-		fread(data,1,sizeof data,f);
++		if(fread(data,1,sizeof data,f) != sizeof data && !feof(f)) return NO_BITMAPS;
+ 		fclose(f);
+ 
+ 		x = data[67]+data[66]*256;
+@@ -1436,7 +1436,7 @@
+ 
+ 	/* Seek to the offset of the pixPat data and read in the data */
+ 	fseek(f,filelength(f)-32,SEEK_SET);
+-	fread(patRowData,sizeof (L9BYTE),32,f);
++	if(fread(patRowData,sizeof (L9BYTE),32,f) != 32 && !feof(f)) return FALSE;
+ 	fclose(f);
+ 
+ 	/* Extract the patterns */
+diff -aur ./generic.c ../garglevel9/generic.c
+--- ./generic.c	2011-05-29 09:36:11.000000000 +0200
++++ ../garglevel9/generic.c	2011-10-06 10:11:15.000000000 +0200
+@@ -18,7 +18,7 @@
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
++* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ \***********************************************************************/
+ 
+diff -aur ./level9.c ../garglevel9/level9.c
+--- ./level9.c	2011-05-29 09:35:49.000000000 +0200
++++ ../garglevel9/level9.c	2011-10-06 10:11:15.000000000 +0200
+@@ -18,7 +18,7 @@
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
++* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * The input routine will repond to the following 'hash' commands
+ *  #save         saves position file directly (bypasses any
+diff -aur ./level9.h ../garglevel9/level9.h
+--- ./level9.h	2011-05-29 09:35:49.000000000 +0200
++++ ../garglevel9/level9.h	2012-10-11 23:59:07.066326054 +0200
+@@ -18,13 +18,34 @@
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
++* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ \***********************************************************************/
+ 
+-typedef unsigned char L9BYTE;
+-typedef unsigned short L9UINT16;
+-typedef unsigned long L9UINT32;
++#include <limits.h>
++
++#if UCHAR_MAX==0xff
++typedef unsigned char L9BYTE;
++#else
++#error "Can't find an 8-bit integer type"
++#endif
++
++#if SHRT_MAX==0x7fff
++typedef unsigned short L9UINT16;
++#elif INT_MAX==0x7fff
++typedef unsigned int   L9UINT16;
++#else
++#error "Can't find a 16-bit integer type"
++#endif
++
++#if INT_MAX==0x7fffffff
++typedef unsigned int L9UINT32;
++#elif LONG_MAX==0x7fffffff
++typedef unsigned long L9UINT32;
++#else
++#error "Can't find a 32-bit integer type"
++#endif
++
+ typedef int L9BOOL;
+ 
+ #ifndef FALSE
