@@ -1,0 +1,17 @@
+pkgbase = acestream-mozilla-plugin
+	pkgdesc = ACE Stream multimedia plugin for web browsers
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://acestream.org/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = acestream-player-data
+	depends = acestream-engine
+	depends = qtwebkit
+	conflicts = acestream
+	source = http://repo.acestream.org/ubuntu/pool/main/a/acestream-mozilla-plugin/acestream-mozilla-plugin_3.0.2-1trusty1_amd64.deb
+	sha512sums = a6ede23e4c06630ff20261cd9dff07b8950ebf1a38270a1c366ff032fb8556682ef87f7f74a122755e28b107ebf8c4879ef22264dea153cfbd82253a93b5eb0f
+
+pkgname = acestream-mozilla-plugin
+
