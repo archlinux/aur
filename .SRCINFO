@@ -1,0 +1,13 @@
+pkgbase = findimage
+	pkgdesc = Search for original sources of cropped images and thumbnails.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://szanni.org/findimage
+	arch = any
+	license = BSD
+	depends = opencv>=2.0
+	source = http://szanni.org/findimage/download/findimage-0.0.0.tar.xz
+	sha256sums = 635a51d5daec1cf2d233865c076f3ef13d6d5ba90557b020b39f60061982e3f4
+
+pkgname = findimage
+
