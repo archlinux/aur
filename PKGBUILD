@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/asciimoo/drawille"
 license=('GPL3')
 makedepends=('git')
-depends=('ncurses' 'python' 'python-setuptools')
+depends=('ncurses' 'python2' 'python2-setuptools')
 source=('git+https://github.com/asciimoo/drawille.git')
 sha256sums=('SKIP')
 
@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
    cd "$srcdir/drawille"
-   python setup.py install --root="$pkgdir/" --optimize=1
+   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
