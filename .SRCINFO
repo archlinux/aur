@@ -1,0 +1,16 @@
+pkgbase = ttf-office-2007-fonts
+	pkgdesc = Microsoft Office 2007 TrueType Fonts.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://support.microsoft.com/kb/924623
+	install = ttf-office-2007-fonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	source = license.rtf
+	sha256sums = 096cdd18e26b2b3d8cf0b3ec6a1ffb5b0eaae0fcc2105e3c145f19037a42d467
+
+pkgname = ttf-office-2007-fonts
+
