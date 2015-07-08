@@ -1,0 +1,35 @@
+post_install() {
+	if ! getent group _mandos > /dev/null; then
+		groupadd --system _mandos
+	fi
+	if ! getent passwd _mandos > /dev/null; then
+		useradd -c "Mandos Server" --system -d /var/lib/mandos -s /usr/bin/nologin -g _mandos _mandos
+		passwd -l _mandos > /dev/null
+	fi
+	mkdir -p /var/lib/mandos
+	chown -R _mandos:_mandos /var/lib/mandos > /dev/null
+	
+	# reload dbus, otherwise the mandos server will not start up properly
+	systemctl reload-or-restart dbus
+	
+	echo 'In /etc/avahi/avahi-daemon.conf , enable IPv6 by changing the option'
+	echo 'use-ipv6=yes'
+	echo 'Then restart the avahi-daemon service: systemctl restart avahi-daemon'
+	echo 'Clients will not be able to connect to the mandos server otherwise.'
+	echo 'After adding client configs to /etc/mandos/clients.conf'
+	echo 'start and enable the Mandos Server with'
+	echo 'systemctl start mandos ; systemctl enable mandos'
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+post_remove() {
+	if getent passwd _mandos >/dev/null; then
+		userdel _mandos
+	fi
+	if getent group _mandos >/dev/null; then
+		groupdel _mandos
+	fi
+}

@@ -1,0 +1,32 @@
+pkgbase = mandos-server
+	pkgdesc = unlock LUKS encrypted drives remotely - server component
+	pkgver = 1.6.9
+	pkgrel = 1
+	url = https://wiki.recompile.se/wiki/Mandos
+	install = mandos.install
+	arch = any
+	license = GPL3
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	makedepends = pkg-config
+	depends = avahi
+	depends = gnupg
+	depends = python2-gnutls
+	depends = python-gobject2
+	depends = python2-gobject2
+	depends = python-dbus
+	depends = python2-dbus
+	depends = python-urwid
+	depends = python2-urwid
+	depends = openssh
+	optdepends = fping: host uptime checking - legacy method
+	backup = etc/mandos/mandos.conf
+	backup = etc/mandos/clients.conf
+	backup = etc/dbus-1/system.d/mandos.conf
+	source = http://ftp.recompile.se/pub/mandos/mandos_1.6.9.orig.tar.gz
+	source = fix_makefile.patch
+	sha256sums = bf04b7786c5c29409ca48454de25aa3e70f2bbd3428a393d3424069f89e3a40e
+	sha256sums = 73af9f42039d4b843f13ca3985ec5ab4809ecd092c2f229db57e36deb671b54d
+
+pkgname = mandos-server
+

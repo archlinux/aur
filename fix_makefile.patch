@@ -1,0 +1,20 @@
+--- a/src/mandos-1.6.9/Makefile
++++ b/src/mandos-1.6.9/Makefile
+@@ -83,7 +83,7 @@ DOCBOOKTOMAN=$(strip cd $(dir $<); xsltp
+ 	--param make.single.year.ranges		1 \
+ 	--param man.output.quietly		1 \
+ 	--param man.authors.section.enabled	0 \
+-	/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl \
++        /usr/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl \
+ 	$(notdir $<); \
+ 	if locale --all 2>/dev/null | grep --regexp='^en_US\.utf8$$' \
+ 	&& type man 2>/dev/null; then LANG=en_US.UTF-8 MANWIDTH=80 \
+@@ -97,7 +97,7 @@ DOCBOOKTOHTML=$(strip xsltproc --nonet -
+ 	--param man.authors.section.enabled	0 \
+ 	--param citerefentry.link		1 \
+ 	--output $@ \
+-	/usr/share/xml/docbook/stylesheet/nwalsh/xhtml/docbook.xsl \
++        /usr/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl \
+ 	$<; $(HTMLPOST) $@)
+ # Fix citerefentry links
+ HTMLPOST=$(SED) --in-place \
