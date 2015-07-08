@@ -1,0 +1,24 @@
+# based on vimdoc.install from vim-rust-git
+post_install() {
+  echo -n "Updating vim help tags..."
+  /usr/bin/vim --noplugins -u NONE -U NONE \
+    --cmd ":helptags /usr/share/vim/doc" --cmd ":q" > /dev/null 2>&1
+  echo "done."
+
+  echo "To use the julia commands, you may need to insert this line in your ~/.vimrc:"
+  echo "    filetype plugin on"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install
+}
+
+op=$1
+shift
+
+$op $*
+
