@@ -26,22 +26,22 @@ package() {
   make install DESTDIR="$pkgdir/"
 
   install -Dm644 Changes \
-    ${pkgdir}/usr/share/doc/kanla/Changes
+    "${pkgdir}/usr/share/doc/kanla/Changes"
   install -Dm644 docs/contributions.html \
-    ${pkgdir}/usr/share/doc/kanla/contributions.html
+    "${pkgdir}/usr/share/doc/kanla/contributions.html"
   install -Dm644 docs/userguide.html \
-    ${pkgdir}/usr/share/doc/kanla/userguide.html
+    "${pkgdir}/usr/share/doc/kanla/userguide.html"
   install -Dm644 docs/installing-rhel.html \
-    ${pkgdir}/usr/share/doc/kanla/installing-rhel.html
+    "${pkgdir}/usr/share/doc/kanla/installing-rhel.html"
   install -Dm644 docs/installing-wheezy.html \
-    ${pkgdir}/usr/share/doc/kanla/installing-wheezy.html
+    "${pkgdir}/usr/share/doc/kanla/installing-wheezy.html"
 
   install -Dm644 LICENSE \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 ${pkgdir}/lib/systemd/system/kanla.service \
-    ${pkgdir}/usr/lib/systemd/system/kanla.service
-  rm ${pkgdir}/lib/systemd/system/kanla.service
+    "${pkgdir}/usr/lib/systemd/system/kanla.service"
+  rm "${pkgdir}/lib/systemd/system/kanla.service"
 }
 
 # vim:set ts=2 sw=2 sts=2 et:
