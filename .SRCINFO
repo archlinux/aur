@@ -1,7 +1,7 @@
 pkgbase = laditools-git
 	pkgdesc = Utilities to improve integration and workflow with JACK and LASH.
 	pkgver = 1.0.r9.g498fc36
-	pkgrel = 1
+	pkgrel = 3
 	url = https://launchpad.net/laditools
 	install = laditools-git.install
 	arch = any
