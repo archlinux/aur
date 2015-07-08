@@ -1,0 +1,40 @@
+2013-11-4 Aaron DeVore <aaron.devore@gmail.com> (2.37.2-1)
+- Version bump to 2.37.2
+2013-9-24 Aaron DeVore <aaron.devore@gmail.com> (2.35.0-1)
+- Version bump to 2.35.0
+- optdepends python2-distribute -> python2-setuptools
+2013-4-12 Aaron DeVore <aaron.devore@gmail.com> (2.32.0-1)
+- Version bump to 2.32.0
+- Remove conflicts/provides python-selenium (now a Python 3 package)
+- Add [Python 2] to description
+2013-3-2 Aaron DeVore <aaron.devore@gmail.com> (2.31.0-1)
+- Version bump to 2.31.0
+- Switch to using license=('Apache') instead of the COPYING file
+  due to COPYING no longer being included in Selenium
+2012-12-15 Aaron DeVore <aaron.devore@gmail.com> (2.28.0-1)
+- Version bump to 2.28.0
+2012-07-25 Aaron DeVore <aaron.devore@gmail.com> (2.25.0-1)
+- Version bump to 2.25.0
+- Add python2-distribute to makedepends
+2012-07-01 Aaron DeVore <aaron.devore@gmail.com> (2.24.0-1)
+- Replace python2-selenium with the python-selenium code
+- Version bump to 2.24.0
+- Change arch back to (i686 x86_64) (better safe than sorry)
+- Create conflicts/provides for python-selenium for the future switch
+  to Python 3
+2012-06-17 Aaron DeVore <aaron.devore@gmail.com> (2.23.0-1)
+- Version bump to 2.23.0 (forgot Changelog entries)
+- Remove rdflib dependency
+- Add optional dependency for Firefox x86 on x86_64
+- Make sure all paths are quoted
+2012-02-06 Aaron DeVore <aaron.devore@gmail.com> (2.18.1-1)
+- Version bump to 2.18.1
+- Change rdflib dependency to python2-rdflib
+2011-10-23 Aaron DeVore <aaron.devore@gmail.com> (2.9.0-1)
+- Version bump to 2.9.0
+- Add missed rdflib dependency
+2011-8-20 Aaron DeVore <aaron.devore@gmail.com> (2.4.0-1)
+- Adopt
+- Remove some "|| return 1" lines
+- Change arch to ('any')
+- Version bump (from 2.0b2-1)
