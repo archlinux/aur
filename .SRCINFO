@@ -1,0 +1,14 @@
+pkgbase = atlassian-plugin-sdk
+	pkgdesc = Atlassian Plugin SDK for Developing Plugins for Atlassian Products
+	pkgver = 5.0.13
+	pkgrel = 4
+	url = http://confluence.atlassian.com/x/rwWzDQ
+	arch = i686
+	arch = x86_64
+	license = Apache License 2.0
+	depends = jdk
+	source = https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/5.0.13/atlassian-plugin-sdk-5.0.13.tar.gz
+	md5sums = b1681e60e2d75a2511f005dd7e91a323
+
+pkgname = atlassian-plugin-sdk
+
