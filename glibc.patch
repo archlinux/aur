@@ -1,0 +1,11 @@
+--- Gtk/Makefile	2005-07-26 12:03:44.000000000 +0200
++++ Gtk1/Makefile	2012-05-18 00:22:20.883487513 +0200
+@@ -69,7 +69,7 @@
+ 
+ #######################################################################
+ 
+-LIBS = $(GTK_LIBS) $(SOUND_LIBS)
++LIBS = $(GTK_LIBS) $(SOUND_LIBS) -lm
+ 
+ gtkmagnetic: $(OBJS)
+ 	$(CC) -o gtkmagnetic $(OBJS) $(LIBS)

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Magnetic Scrolls interpreter
+GenericName=Magnetic
+Comment=Play classic text adventures by Magnetic Scrolls
+Exec=gtkmagnetic %U
+Icon=gtkmagnetic.png
+Terminal=false
+Type=Application
+Categories=GTK;Application;Game;
+StartupNotify=true

@@ -1,0 +1,557 @@
+diff -aur Generic/defs.h Generic.garg/defs.h
+--- Generic/defs.h	2008-08-12 19:56:48.000000000 +0200
++++ Generic.garg/defs.h	2011-10-20 05:38:40.000000000 +0200
+@@ -21,7 +21,7 @@
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program; if not, write to the Free Software
+-*     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
++*     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ \****************************************************************************/
+ 
+@@ -35,12 +35,34 @@
+ *       correct number of bits on your system !!!
+ \*****************************************************************************/
+ 
+-typedef unsigned char  type8;
+-typedef signed   char  type8s;
+-typedef unsigned short type16;
+-typedef signed   short type16s;
+-typedef unsigned long  type32;
+-typedef signed   long  type32s;
++#include <limits.h>
++
++#if UCHAR_MAX==0xff
++typedef unsigned char type8;
++typedef signed char   type8s;
++#else
++#error "Can't find an 8-bit integer type"
++#endif
++
++#if SHRT_MAX==0x7fff
++typedef unsigned short type16;
++typedef signed   short type16s;
++#elif INT_MAX==0x7fff
++typedef unsigned int type16;
++typedef signed   int type16s;
++#else
++#error "Can't find a 16-bit integer type"
++#endif
++
++#if INT_MAX==0x7fffffff
++typedef unsigned int type32;
++typedef signed   int type32s;
++#elif LONG_MAX==0x7fffffff
++typedef unsigned long type32;
++typedef signed   long type32s;
++#else
++#error "Can't find a 32-bit integer type"
++#endif
+ 
+ /****************************************************************************\
+ * Compile time switches 
+diff -aur Generic/emu.c Generic.garg/emu.c
+--- Generic/emu.c	2008-08-21 07:10:40.000000000 +0200
++++ Generic.garg/emu.c	2011-10-04 11:35:14.000000000 +0200
+@@ -21,7 +21,7 @@
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program; if not, write to the Free Software
+-*     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
++*     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * History:
+ *
+@@ -824,7 +824,7 @@
+ 				if ((hints != 0) && (hint_contents != 0))
+ 				{
+ 					/* Read number of blocks */
+-					fread(&buf, 1, 2, hnt_fp);
++					if (fread(&buf, 1, 2, hnt_fp) != 2 && !feof(hnt_fp)) return 0;
+ 					blkcnt = read_w2(buf);
+ #ifdef LOGHNT
+ 					out2("Blocks: %d\n",blkcnt);
+@@ -836,7 +836,7 @@
+ 						out2("\nBlock No. %d\n",i);
+ #endif
+ 						/* Read number of elements */
+-						fread(&buf, 1, 2, hnt_fp);
++						if (fread(&buf, 1, 2, hnt_fp) != 2 && !feof(hnt_fp)) return 0;
+ 						elcnt = read_w2(buf);
+ #ifdef LOGHNT
+ 						out2("Elements: %d\n",elcnt);
+@@ -844,7 +844,7 @@
+ 						hints[i].elcount = elcnt;
+ 
+ 						/* Read node type */
+-						fread(&buf, 1, 2, hnt_fp);
++						if (fread(&buf, 1, 2, hnt_fp) != 2 && !feof(hnt_fp)) return 0;
+ 						ntype = read_w2(buf);
+ #ifdef LOGHNT
+ 						if (ntype == 1)
+@@ -859,9 +859,9 @@
+ #endif
+ 						for (j = 0; j < elcnt; j++)
+ 						{
+-							fread(&buf, 1, 2, hnt_fp);
++							if (fread(&buf, 1, 2, hnt_fp) != 2 && !feof(hnt_fp)) return 0;
+ 							elsize = read_w2(buf);
+-							fread(hint_contents+conidx, 1, elsize, hnt_fp);
++							if (fread(hint_contents+conidx, 1, elsize, hnt_fp) != elsize && !feof(hnt_fp)) return 0;
+ 							hint_contents[conidx+elsize-1] = '\0';
+ #ifdef LOGHNT
+ 							out2("%s\n",hint_contents+conidx);
+@@ -877,7 +877,7 @@
+ #endif
+ 							for (j = 0; j < elcnt; j++)
+ 							{
+-								fread(&buf, 1, 2, hnt_fp);
++								if (fread(&buf, 1, 2, hnt_fp) != 2 && !feof(hnt_fp)) return 0;
+ 								hints[i].links[j] = read_w2(buf);
+ #ifdef LOGHNT
+ 								out2("%d\n",hints[i].links[j]);
+@@ -886,7 +886,7 @@
+ 						}
+ 
+ 						/* Read the parent block */
+-						fread(&buf, 1, 2, hnt_fp);
++						if (fread(&buf, 1, 2, hnt_fp) != 2 && !feof(hnt_fp)) return 0;
+ 						hints[i].parent = read_w2(buf);
+ #ifdef LOGHNT
+ 						out2("Parent: %d\n",hints[i].parent);
+diff -aur Generic/gfxlink2.c Generic.garg/gfxlink2.c
+--- Generic/gfxlink2.c	2010-10-25 17:32:11.000000000 +0200
++++ Generic.garg/gfxlink2.c	2011-06-07 22:21:27.000000000 +0200
+@@ -6,7 +6,6 @@
+     Written by David Kinder.
+ */
+ 
+-#include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff -aur Generic/gfxlink.c Generic.garg/gfxlink.c
+--- Generic/gfxlink.c	1998-01-09 21:35:42.000000000 +0100
++++ Generic.garg/gfxlink.c	2011-06-07 22:21:27.000000000 +0200
+@@ -61,9 +61,29 @@
+ #define DIRSEP "/"
+ #endif
+ 
+-typedef unsigned char type8;
+-typedef unsigned short type16;
+-typedef unsigned long int type32;
++#include <limits.h>
++
++#if UCHAR_MAX==0xff
++typedef unsigned char type8;
++#else
++#error "Can't find an 8-bit integer type"
++#endif
++
++#if SHRT_MAX==0x7fff
++typedef unsigned short type16;
++#elif INT_MAX==0x7fff
++typedef unsigned int type16;
++#else
++#error "Can't find a 16-bit integer type"
++#endif
++
++#if INT_MAX==0x7fffffff
++typedef unsigned int type32;
++#elif LONG_MAX==0x7fffffff
++typedef unsigned long type32;
++#else
++#error "Can't find a 32-bit integer type"
++#endif
+ 
+ int fdi, fdo_temp, fdo_gfx;
+ char infilemask[FILENAMELENGTH];
+diff -aur Generic/main.c Generic.garg/main.c
+--- Generic/main.c	2010-10-25 17:32:25.000000000 +0200
++++ Generic.garg/main.c	2011-10-04 11:35:14.000000000 +0200
+@@ -21,7 +21,7 @@
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program; if not, write to the Free Software
+-*     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
++*     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ *     Simple ANSI interface main.c
+ *
+@@ -36,7 +36,7 @@
+ #define WIDTH 78
+ 
+ type8 buffer[80], xpos = 0, bufpos = 0, log_on = 0, ms_gfx_enabled, filename[256];
+-FILE *logfile1 = 0, *logfile2 = 0;
++FILE *log1 = 0, *log2 = 0;
+ 
+ type8 ms_load_file(type8s *name, type8 *ptr, type16 size)
+ {
+@@ -88,23 +88,23 @@
+ 
+ void script_write(type8 c)
+ {
+-	if (log_on == 2 && fputc(c,logfile1) == EOF)
++	if (log_on == 2 && fputc(c,log1) == EOF)
+ 	{
+ 		printf("[Problem with script file - closing]\n");
+-		fclose(logfile1);
++		fclose(log1);
+ 		log_on = 0;
+ 	}
+ }
+ 
+ void transcript_write(type8 c)
+ {
+-	if (logfile2 && c == 0x08 && ftell(logfile2) > 0)
+-		fseek(logfile2,-1,SEEK_CUR);
+-	else if (logfile2 && fputc(c,logfile2) == EOF)
++	if (log2 && c == 0x08 && ftell(log2) > 0)
++		fseek(log2,-1,SEEK_CUR);
++	else if (log2 && fputc(c,log2) == EOF)
+ 	{
+ 		printf("[Problem with transcript file - closing]\n");
+-		fclose(logfile2);
+-		logfile2 = 0;
++		fclose(log2);
++		log2 = 0;
+ 	}
+ }
+ 
+@@ -187,11 +187,11 @@
+ 			if (log_on == 1)
+ 			{
+ 				/* Reading from logfile */
+-				if ((c = fgetc(logfile1)) == EOF)
++				if ((c = fgetc(log1)) == EOF)
+ 				{
+ 					/* End of log? - turn off */
+ 					log_on = 0;
+-					fclose(logfile1);
++					fclose(log1);
+ 					c = getchar();
+ 				}
+ 				else printf("%c",c); /* print the char as well */
+@@ -211,7 +211,7 @@
+ 					{
+ 						printf("[Closing script file]\n");
+ 						log_on = 0;
+-						fclose(logfile1);
++						fclose(log1);
+ 					}
+ 					else if (!strcmp(buf,"undo"))
+ 						c = 0;
+@@ -311,17 +311,17 @@
+ 					slimit = 655360;
+ 				break;
+ 			case 't':
+-				if (!(logfile2 = fopen(&argv[i][2],"w")))
++				if (!(log2 = fopen(&argv[i][2],"w")))
+ 					printf("Failed to open \"%s\" for writing.\n",&argv[i][2]);
+ 				break; 
+ 			case 'r':
+-				if (logfile1 = fopen(&argv[i][2],"r"))
++				if (log1 = fopen(&argv[i][2],"r"))
+ 					log_on = 1;
+ 				else
+ 					printf("Failed to open \"%s\" for reading.\n",&argv[i][2]);
+ 				break;
+ 			case 'w':
+-				if (logfile1 = fopen(&argv[i][2],"w"))
++				if (log1 = fopen(&argv[i][2],"w"))
+ 					log_on = 2;
+ 				else
+ 					printf("Failed to open \"%s\" for writing.\n",&argv[i][2]);
+@@ -374,9 +374,9 @@
+ 	}
+ 	ms_freemem();
+ 	if (log_on)
+-		fclose(logfile1);
+-	if (logfile2)
+-		fclose(logfile2);
++		fclose(log1);
++	if (log2)
++		fclose(log2);
+ 	printf("\nExiting.\n");
+ 	return 0;
+ }
+diff -aur Generic/passwd.c Generic.garg/passwd.c
+--- Generic/passwd.c	2000-12-06 23:33:06.000000000 +0100
++++ Generic.garg/passwd.c	2011-06-07 22:21:27.000000000 +0200
+@@ -1,61 +1,73 @@
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <ctype.h>
+-
+-typedef unsigned char  type8;
+-typedef unsigned long   type32;
+-
+-type8 obfuscate(type8 c) {
+-	static type8 state;
+-	type8	       i;
+-
+-	if (!c) state=0;
+-	else {
+-		state^=c;
+-		for (i=0;i<13;i++) {
+-			if ((state & 1) ^ ((state>>1) & 1)) state|=0x80;
+-			else state&=0x7f;
+-			state>>=1;
+-		}
+-	}
+-	return state;
+-}
+-
+-int main(int argc, char **argv) {
+-
+-	type8 tmp,name[128],result[128],pad[]="MAGNETICSCR";
+-	type32 i,j;
+-
+-	if (argc!=2) {
+-		printf("Usage: %s string\n",argv[0]);
+-		exit(1);
+-	}
+-
+-	for (i=j=0;i<strlen(argv[1]);i++) {
+-		if (argv[1][i]!=0x20) name[j++]=toupper(argv[1][i]);
+-	}
+-	name[j]=0;
+-
+-	tmp=name[strlen(name)-1];
+-	if ((tmp=='#') || (tmp==']')) name[strlen(name)-1]=0;
+-
+-	if (strlen(name)<12) {
+-		for (i=strlen(name),j=0;i<12;i++,j++) name[i]=pad[j];
+-		name[i]=0;
+-	}
+-
+-	obfuscate(0);
+-	i=j=0;
+-	while (name[i]) {
+-		tmp=obfuscate(name[i++]);
+-		if (name[i]) tmp+=obfuscate(name[i++]);
+-		tmp&=0x1f;
+-		if (tmp<26) tmp+='A';
+-		else tmp+=0x16;
+-		result[j++]=tmp;
+-	}
+-	result[j]=0;
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
++#include <limits.h>
++
++#if UCHAR_MAX==0xff
++typedef unsigned char type8;
++#else
++#error "Can't find an 8-bit integer type"
++#endif
++
++#if INT_MAX==0x7fffffff
++typedef unsigned int type32;
++#elif LONG_MAX==0x7fffffff
++typedef unsigned long type32;
++#else
++#error "Can't find a 32-bit integer type"
++#endif
++
++type8 obfuscate(type8 c) {
++	static type8 state;
++	type8	       i;
++
++	if (!c) state=0;
++	else {
++		state^=c;
++		for (i=0;i<13;i++) {
++			if ((state & 1) ^ ((state>>1) & 1)) state|=0x80;
++			else state&=0x7f;
++			state>>=1;
++		}
++	}
++	return state;
++}
++
++int main(int argc, char **argv) {
++
++	type8 tmp,name[128],result[128],pad[]="MAGNETICSCR";
++	type32 i,j;
++
++	if (argc!=2) {
++		printf("Usage: %s string\n",argv[0]);
++		exit(1);
++	}
++
++	for (i=j=0;i<strlen(argv[1]);i++) {
++		if (argv[1][i]!=0x20) name[j++]=toupper(argv[1][i]);
++	}
++	name[j]=0;
++
++	tmp=name[strlen(name)-1];
++	if ((tmp=='#') || (tmp==']')) name[strlen(name)-1]=0;
++
++	if (strlen(name)<12) {
++		for (i=strlen(name),j=0;i<12;i++,j++) name[i]=pad[j];
++		name[i]=0;
++	}
++
++	obfuscate(0);
++	i=j=0;
++	while (name[i]) {
++		tmp=obfuscate(name[i++]);
++		if (name[i]) tmp+=obfuscate(name[i++]);
++		tmp&=0x1f;
++		if (tmp<26) tmp+='A';
++		else tmp+=0x16;
++		result[j++]=tmp;
++	}
++	result[j]=0;
+ 	printf("The password for \"%s\" is: %s\n",argv[1],result);
+-	return 0;
+-}
++	return 0;
++}
+diff -aur Generic/sndlink.c Generic.garg/sndlink.c
+--- Generic/sndlink.c	2009-06-06 18:22:59.000000000 +0200
++++ Generic.garg/sndlink.c	2011-06-07 22:21:27.000000000 +0200
+@@ -7,7 +7,6 @@
+ 
+ 	v1.1 added option for tempo patching
+ 	v1.2 fixed tempo patching
+-	v1.3 remove garbage bytes at end of original data
+ */
+ 
+ #include <stdio.h>
+@@ -39,7 +38,6 @@
+ FILE* OutputFile = NULL;
+ unsigned long OutOffset = 0;
+ int tempopatch=0;
+-int garbagefix=0;
+ 
+ void WriteLong(unsigned char* p, unsigned long v)
+ {
+@@ -204,7 +202,7 @@
+ 
+ void WriteSndFile(int Index)
+ {
+-	unsigned long offset, length, j = 0;
++	unsigned long offset, length;
+ 	unsigned short tsize;
+ 	int game = -1;
+ 
+@@ -214,21 +212,6 @@
+ 				length = BUFFER_SIZE;
+ 			ReadFile(Buffer1,&offset,length);
+ 
+-			// Remove garbage bytes if present
+-			if (garbagefix)
+-			{
+-				while ((j <= length-1) && !(Buffer1[j]==0xFF && Buffer1[j+1]==0x2F && Buffer1[j+2]==0x00))
+-				{
+-					j++;
+-				}
+-				if (j+3 != length)
+-				{
+-					SndFiles[Index].Length = j+3;
+-					length=j+3;
+-				}
+-			}
+-
+-
+ 			// Tempo patching
+ 			if (tempopatch)
+ 			{
+@@ -356,25 +339,14 @@
+ 
+ int main(int argc, char** argv)
+ {
+-	if (argc == 2 || 
+-		((argc == 3 && ((strcmp(argv[1],"-p")==0) || strcmp(argv[1],"-r")==0))) ||
+-		((argc == 4 && ((strcmp(argv[1],"-p")==0) && strcmp(argv[2],"-r")==0))))
++	if (argc == 2 || (argc == 3 && strcmp(argv[1],"-p")==0))
+ 	{
+ 		if (argc==2)
+ 		   OpenFile(argv[1]);
+-		else if (argc==2)
+-		{
+-			if (strcmp(argv[1],"-p")==0)
+-				tempopatch = 1;
+-			if (strcmp(argv[1],"-r")==0)
+-				garbagefix = 1;
+-			OpenFile(argv[2]);
+-		}
+ 		else
+ 		{
+ 			tempopatch = 1;
+-			garbagefix = 1;
+-			OpenFile(argv[3]);
++			OpenFile(argv[2]);
+ 		}
+ 		FindResourceNames();
+ 		WriteSndHeader1();
+@@ -385,18 +357,17 @@
+ 	}
+ 	else
+ 	{
+-		printf("SndLink v1.3 by Stefan Meier.\n\n"
++		printf("SndLink v1.2 by Stefan Meier.\n\n"
+ 		       "Extractor for the music scores in Magnetic Scrolls' Wonderland\n"
+ 		       "Amiga, Atari ST, PC versions.\n\n"
+-			   "Usage: SndLink [-p] [-r] all.rsc\n\n"
++			   "Usage: SndLink [-p] all.rsc\n\n"
+ 		       "\"all.rsc\" is taken from an installed game. Depending on your\n"
+ 			   "game version, the resource file might be split into several files\n"
+ 			   "named e.g. all.1, all.2,... or TWO,THREE,FOUR...\n"
+ 		       "Before running the extractor, you need to merge these parts into\n"
+ 			   "one file, e.g. with the DOS command copy /B ONE+TWO+THREE+... all.rsc\n"
+ 		       "If the extraction is successfull, the file wonder.snd is created\n\n"
+-			   "The optional -p switch adds tempo data to the music score\n"
+-			   "The optional -r switch removes garbage bytes from the PC versions");
++			   "The optional -p switch adds tempo data to the music score");
+ 	}
+ 	return 0;
+ }
+diff -aur Generic/xtract64.c Generic.garg/xtract64.c
+--- Generic/xtract64.c	2000-05-06 16:30:00.000000000 +0200
++++ Generic.garg/xtract64.c	2011-06-07 22:21:27.000000000 +0200
+@@ -2,12 +2,25 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <limits.h>
+ 
+ #define size_d64 ((type32)(174848))
+ #define NL ((type32) -1)
+ 
+-typedef unsigned char type8;
+-typedef unsigned long type32;
++#if UCHAR_MAX==0xff
++typedef unsigned char type8;
++#else
++#error "Can't find an 8-bit integer type"
++#endif
++
++#if INT_MAX==0x7fffffff
++typedef unsigned int type32;
++#elif LONG_MAX==0x7fffffff
++typedef unsigned long type32;
++#else
++#error "Can't find a 32-bit integer type"
++#endif
++
+ #ifdef __MSDOS__
+ typedef unsigned char huge * type8ptr;
+ #include <alloc.h>
+diff -aur Generic/xtractpc.c Generic.garg/xtractpc.c
+--- Generic/xtractpc.c	2010-10-25 17:32:32.000000000 +0200
++++ Generic.garg/xtractpc.c	2011-06-07 22:21:27.000000000 +0200
+@@ -7,7 +7,6 @@
+     Written by Niclas Karlsson and David Kinder.
+ */
+ 
+-#include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
