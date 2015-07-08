@@ -1,0 +1,14 @@
+pkgbase = carps-cups
+	pkgdesc = CUPS driver for Canon CARPS printers
+	pkgver = r149.778be89
+	pkgrel = 1
+	url = https://github.com/ondrej-zary/carps-cups
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libcups
+	source = git://github.com/ondrej-zary/carps-cups.git
+
+pkgname = carps-cups
+
