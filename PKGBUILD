@@ -8,8 +8,8 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgbase=linux-libre         # Build stock "" kernel
-_pkgbasever=4.0-gnu
-_pkgver=4.0.7-gnu
+_pkgbasever=4.1-gnu
+_pkgver=4.1.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -18,7 +18,7 @@ _replacesoldmodules=('linux-libre%-kmod-alx') # '%' gets replaced with _kernelna
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64' 'mips64el')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -42,11 +42,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'change-default-console-loglevel.patch'
         # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig")
-sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
+        "https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch"
+        "https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch.sig")
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            'c106ac1baa327ba39fc479c6b7b5c3a9f0a523ecc4db2a0be6a1f6f700d5cc53'
+            '0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -54,14 +54,14 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '5fa50ffbe7b6e82c70d1d15947c34caa0b484ecd264f01149f40b910e7c8f394'
-            '33f68753bc12456e601492f870f7e04cd116f36b81630d9bad954093d72bc57a'
-            '7b6954ed843d17149129cc04064d00db791767ad8b7dca5a4833a2febafce50a'
+            '0fc8d80f2a5acce485fd2fc243a87a325e5a242bdbaa538f1a9aa852776085be'
+            '78fd6dfd2400a1e627a763709cd67bfd2b07aec86ea7be873f918995e6aa6ce5'
+            '50241bf38a9d2e64527f5f631b536b67f27bc0c05c4ec784bd52401dcba74839'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22'
+            'ab8fe9b295af6e28858834e464c01198ae1b521e2571ff47efa3ad1ccbbfc846'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -106,7 +106,7 @@ prepare() {
 
   # Adding loongson-community patch
   if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/4.0.2-ae91f13af5-loongson-community.patch
+    patch -p1 -i ${srcdir}/4.1-rc7-db21bcc5d0-loongson-community.patch
   fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config

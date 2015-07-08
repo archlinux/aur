@@ -1,3 +1,8 @@
+2015-07-04  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.0.7_gnu-2
+	* Removed the conflicts=(linux) from the version posted to AUR to avoid making it hard for Arch users to try it out [6]
+
 2015-03-19  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-3.19.2_gnu-1
@@ -61,3 +66,4 @@
 [3] https://labs.parabola.nu/issues/116
 [4] https://www.gnu.org/graphics/gnu-and-freedo/gnu-and-freedo.html
 [5] https://labs.parabola.nu/issues/685
+[6] https://labs.parabola.nu/issues/750
