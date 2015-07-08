@@ -1,0 +1,115 @@
+diff -ur a/globals.h b/globals.h
+--- a/globals.h	2010-05-28 17:16:31.000000000 -0400
++++ b/globals.h	2010-05-28 21:28:58.000000000 -0400
+@@ -34,6 +34,7 @@
+ WHERE char *AliasFile;
+ WHERE char *AliasFmt;
+ WHERE char *AssumedCharset;
++WHERE char *AttachKeyword;
+ WHERE char *AttachSep;
+ WHERE char *Attribution;
+ WHERE char *AttachCharset;
+diff -ur a/init.h b/init.h
+--- a/init.h	2010-05-28 17:11:18.000000000 -0400
++++ b/init.h	2010-05-28 21:29:27.000000000 -0400
+@@ -83,6 +83,14 @@
+ 
+ struct option_t MuttVars[] = {
+   /*++*/
++  { "abort_noattach", DT_QUAD, R_NONE, OPT_ATTACH, M_ASKYES },
++  /*
++  ** .pp
++  ** If set to \fIyes\fP, when composing messages containing the word
++  ** specified by $attach_keyword (default is "attach") and no attachments 
++  ** are given, composition will be aborted. If set to \fIno\fP, composing
++  ** messages as such will never be aborted.
++  */ 
+   { "abort_nosubject",	DT_QUAD, R_NONE, OPT_SUBJECT, M_ASKYES },
+   /*
+   ** .pp
+@@ -241,6 +249,13 @@
+   ** .pp
+   ** For an explanation of ``soft-fill'', see the $$index_format documentation.
+   */
++  { "attach_keyword",  DT_STR,  R_NONE, UL &AttachKeyword, UL "attach" },
++  /*
++  ** .pp
++  ** If $abort_attach is not set to no, then the body of the message
++  ** will be scanned for this keyword, and if found, you will be prompted
++  ** if there are no attachments. This is case insensitive.
++  */
+   { "attach_sep",	DT_STR,	 R_NONE, UL &AttachSep, UL "\n" },
+   /*
+   ** .pp
+diff -ur a/mutt.h b/mutt.h
+--- a/mutt.h	2010-05-28 17:13:48.000000000 -0400
++++ b/mutt.h	2010-05-28 21:29:44.000000000 -0400
+@@ -286,6 +286,8 @@
+   OPT_SUBJECT,
+   OPT_VERIFYSIG,      /* verify PGP signatures */
+     
++  OPT_ATTACH, /* forgotten attachment detector */
++
+   /* THIS MUST BE THE LAST VALUE. */
+   OPT_MAX
+ };
+diff -ur a/send.c b/send.c
+--- a/send.c	2010-05-28 21:42:58.000000000 -0400
++++ b/send.c	2010-05-28 21:44:39.000000000 -0400
+@@ -1113,6 +1113,34 @@
+ }
+ 
+ int
++mutt_search_attach_keyword(char* filename)
++{
++  /* searches for the magic keyword "attach" within a file */
++  int found = 0;
++  char* inputline = malloc(1024);
++  char* lowerKeyword = malloc(strlen(AttachKeyword)+1);
++  FILE *attf = fopen(filename, "r");
++  int i;
++  for (i=0; i <= strlen(AttachKeyword); i++) {
++    lowerKeyword[i] = tolower(AttachKeyword[i]);
++  }
++  while (!feof(attf)) {
++    fgets(inputline, 1024, attf);
++    for (i=0; i < strlen(inputline); i++) {
++      inputline[i] = tolower(inputline[i]);
++    }
++    if (strstr(inputline, lowerKeyword)) {
++        found = 1;
++        break;
++    }
++  }
++  free(inputline);
++  free(lowerKeyword);
++  fclose(attf);
++  return found;
++}
++
++int
+ ci_send_message (int flags,		/* send mode */
+ 		 HEADER *msg,		/* template to use for new message */
+ 		 char *tempfile,	/* file specified by -i or -H */
+@@ -1605,6 +1633,21 @@
+     goto main_loop;
+   }
+ 
++  if (mutt_search_attach_keyword(msg->content->filename) && 
++         !msg->content->next && 
++         query_quadoption(OPT_ATTACH, _("No attachments, cancel sending?")) != M_NO)
++  {
++    /* if the abort is automatic, print an error message */
++    if (quadoption (OPT_ATTACH) == M_YES) {
++         char errorstr[512];
++         if (snprintf(errorstr, 512, 
++                       "Message contains magic keyword \"%s\", but no attachments. Not sending.", AttachKeyword)==-1)
++               errorstr[511] = 0; // terminate if need be. our string shouldnt be this long.
++      mutt_error _(errorstr);
++    }
++    goto main_loop;
++  }
++
+   if (msg->content->next)
+     msg->content = mutt_make_multipart (msg->content);
+ 

@@ -1,0 +1,59 @@
+# HG changeset patch
+# User Kevin McCarthy <kevin@8t8.us>
+# Date 1383096352 25200
+#      Tue Oct 29 18:25:52 2013 -0700
+# Node ID e9a88e52c98a404bd2cb4fe48d341e1e50b054c0
+# Parent  1e935cab6f178deefd5f2b9ce5e10638aa64a0f4
+Add gpg signature name. (closes #3478)
+
+Some mail clients display "noname" for the gpg signature
+attachment.  This patch sets the mime name to "signature.asc".
+
+The patch is based on
+http://dev.mutt.org/trac/attachment/ticket/3478/gpg_signature_name.patch
+with the changes:
+  - removes the configuration options
+  - removes mime description
+
+diff --git a/crypt-gpgme.c b/crypt-gpgme.c
+--- a/crypt-gpgme.c
++++ b/crypt-gpgme.c
+@@ -913,16 +913,17 @@
+       t->encoding = ENCBASE64; 
+       t->use_disp = 1;
+       t->disposition = DISPATTACH;
+       t->d_filename = safe_strdup ("smime.p7s");
+     }
+   else
+     {
+       t->subtype = safe_strdup ("pgp-signature");
++      mutt_set_parameter ("name", "signature.asc", &t->parameter);
+       t->use_disp = 0;
+       t->disposition = DISPNONE;
+       t->encoding = ENC7BIT;
+     }
+   t->filename = sigfile;
+   t->unlink = 1; /* ok to remove this file after sending. */
+ 
+   return a;
+diff --git a/pgp.c b/pgp.c
+--- a/pgp.c
++++ b/pgp.c
+@@ -1122,16 +1122,17 @@
+   t = t->parts->next;
+   t->type = TYPEAPPLICATION;
+   t->subtype = safe_strdup ("pgp-signature");
+   t->filename = safe_strdup (sigfile);
+   t->use_disp = 0;
+   t->disposition = DISPNONE;
+   t->encoding = ENC7BIT;
+   t->unlink = 1; /* ok to remove this file after sending. */
++  mutt_set_parameter ("name", "signature.asc", &t->parameter);
+ 
+   return (a);
+ }
+ 
+ static short is_numerical_keyid (const char *s)
+ {
+   /* or should we require the "0x"? */
+   if (strncmp (s, "0x", 2) == 0)
