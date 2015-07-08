@@ -1,7 +1,7 @@
 pkgbase = xcas
 	pkgdesc = Computer Algebra System
 	pkgver = 1.2.0
-	pkgrel = 15
+	pkgrel = 19
 	url = http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
 	install = xcas.install
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = xcas
 	depends = libao
 	provides = xcas
 	provides = giac
-	source = http://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/giac_1.2.0-15.tar.gz
-	md5sums = 0e67ec6ab189857b45c249eef9b92f05
+	source = http://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/giac_1.2.0-19.tar.gz
+	md5sums = 431686e4acc87b24f6ae8dfb3cf0adec
 
 pkgname = xcas
 
