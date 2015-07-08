@@ -57,6 +57,6 @@ package() {
   done
 
   for file in $(find ${srcdir} -name "*.desktop"); do
-    install -Dm644 $file ${pkgdir}/usr/share/applications/${file}
+    install -Dm644 $file ${pkgdir}/usr/share/applications/$(basename ${file})
   done
 }
