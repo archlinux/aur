@@ -1,0 +1,14 @@
+pkgbase = setpwc
+	pkgdesc = Set various aspects of Philips (and compatible) webcams.
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://www.vanheusden.com/setpwc/
+	install = setpwc.install
+	arch = any
+	license = GPL2
+	optdepends = gtksetpwc: GTK2 frontend for setpwc
+	source = http://www.vanheusden.com/setpwc/setpwc-1.3.tgz
+	md5sums = 79d5ee468c0076feb3cac473bef661d2
+
+pkgname = setpwc
+

@@ -1,0 +1,9 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+post_install() {
+   echo 
+   echo "Type 'setpwc -h' for options"
+   echo
+}
