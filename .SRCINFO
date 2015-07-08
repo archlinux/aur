@@ -1,0 +1,18 @@
+pkgbase = python-django-extensions
+	pkgdesc = A collection of custom extensions for the Django Framework.
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = http://github.com/django-extensions/django-extensions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-django
+	depends = python-six
+	optdepends = graphviz: to graph Django models
+	optdepends = python-werkzeug: to use the Werkzeug debugger in the embedded web server
+	options = !emptydirs
+	source = https://github.com/django-extensions/django-extensions/archive/1.5.5.tar.gz
+	sha256sums = 4ee4fe0559137a74df3d7692406d1efaa7c47fe903442f211b926104f193e436
+
+pkgname = python-django-extensions
+
