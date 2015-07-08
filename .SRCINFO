@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-consensus
 	pkgdesc = Libbitcoin Consensus Library
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-consensus
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = libbitcoin-consensus
 	depends = boost
 	depends = boost-libs
 	depends = secp256k1-git
-	source = libbitcoin-consensus-1.0.1.tar.gz::https://codeload.github.com/libbitcoin/libbitcoin-consensus/tar.gz/v1.0.1
-	sha256sums = 5f04904b59fa9ea6d9a69ef4456f2ddaa0f8ab24f9d303b69a14177c2c7092a2
+	source = libbitcoin-consensus-1.2.0.tar.gz::https://codeload.github.com/libbitcoin/libbitcoin-consensus/tar.gz/v1.2.0
+	sha256sums = d99c3e2dfba9267b3732f805645b241825aad8b389c3491870250bbe14719134
 
 pkgname = libbitcoin-consensus
 
