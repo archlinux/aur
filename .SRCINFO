@@ -1,0 +1,23 @@
+pkgbase = yzis-git
+	pkgdesc = Vi-like editor with frontends for Qt5 and NCurses
+	pkgver = 2864.378c355
+	pkgrel = 1
+	url = http://www.yzis.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = qt5-base
+	depends = qt5-xmlpatterns
+	depends = lua51
+	depends = ncurses
+	provides = yzis
+	conflicts = yzis
+	source = git+https://github.com/sandsmark/yzis.git
+	md5sums = SKIP
+
+pkgname = yzis-git
+
