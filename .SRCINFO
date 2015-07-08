@@ -1,0 +1,16 @@
+pkgbase = vtigercrm-customerportal
+	pkgdesc = Customer portal for vTigerCRM
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://www.vtiger.com/open-source
+	install = vtigercrm-customerportal.install
+	arch = any
+	license = custom
+	depends = vtigercrm
+	options = !strip
+	backup = srv/http/vtigercrm/portal/PortalConfig.php
+	source = http://downloads.sourceforge.net/project/vtigercrm/vtiger%20CRM%206.2.0/Add-ons/vtigercrm-customerportal-6.2.0.zip
+	md5sums = 1c8b98b9a8832c07694e5ce17230d2c9
+
+pkgname = vtigercrm-customerportal
+

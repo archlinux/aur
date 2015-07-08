@@ -1,0 +1,12 @@
+post_install() {
+  echo "vtigercrm-customerportal: Please read /srv/http/vtigercrm/portal/INSTALLATION.txt before attempting to use the customer portal"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+
+$op $*
