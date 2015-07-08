@@ -1,0 +1,15 @@
+pkgbase = python-geniusql-svn
+	pkgdesc = A thread-safe low-level object-relational mapper for python
+	pkgver = r329
+	pkgrel = 1
+	url = http://www.aminus.net/geniusql/
+	arch = any
+	license = Public Domain
+	makedepends = subversion
+	makedepends = python2-setuptools
+	depends = python2
+	source = geniusql::svn+http://svn.aminus.net/geniusql/trunk
+	md5sums = SKIP
+
+pkgname = python-geniusql-svn
+
