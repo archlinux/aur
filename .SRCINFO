@@ -1,0 +1,25 @@
+pkgbase = tinc-ponyhof-git
+	pkgdesc = VPN (Virtual Private Network) daemon (tinc ponyhof development version)
+	pkgver = release.1.1pre11.r308.g1f2e14d
+	pkgrel = 1
+	url = https://github.com/thorkill/tinc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lzo2
+	depends = zlib
+	depends = openssl
+	optdepends = wxpython: gui support
+	provides = tinc
+	conflicts = tinc
+	conflicts = tinc-pre
+	source = git+https://github.com/thorkill/tinc.git#branch=thkr-1.1-ponyhof
+	source = tincd@.service
+	source = tinc-gui.patch
+	md5sums = SKIP
+	md5sums = 2b2cbedd14f921a2a7fdbf4315d9dbd7
+	md5sums = 2f32295af4f4d471f411a6e41ec70afa
+
+pkgname = tinc-ponyhof-git
+

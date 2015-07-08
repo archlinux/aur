@@ -1,0 +1,12 @@
+[Unit]
+Description=Tinc daemon for net %i
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/tincd -D --pidfile=/run/tinc.%i.pid -n %I
+ExecStop=/usr/bin/tinc -n %I stop
+ExecReload=/usr/bin/tinc -n %I reload
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
