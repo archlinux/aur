@@ -1,0 +1,9 @@
+[Unit]
+Description=trid defenitions database update timer
+
+[Timer]
+OnCalendar=weekly
+Persistent=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=trid defenitions database update
+RequiresMountsFor=/var/lib/trid
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update-trid-defs

@@ -1,0 +1,12 @@
+post_install() {
+  echo "To enable automatic defenitions database updating"
+  echo "run systemctl enable update-trid-defs.timer"
+}
+
+post_upgrade() {
+  post_install()
+}
+
+post_remove() {
+  echo "Don't forget to disable update-trid-defs.timer"
+}

@@ -1,0 +1,29 @@
+pkgbase = trid
+	pkgdesc = An utility designed to identify file types from their binary signatures
+	pkgver = 2.20
+	pkgrel = 2
+	url = http://mark0.net/soft-trid-e.html
+	install = trid.install
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = ncurses
+	depends = libtinfo
+	depends = python2
+	source = trid.sh
+	source = update-trid-defs.sh
+	source = update-trid-defs.service
+	source = update-trid-defs.timer
+	source = triupdate-1.00.zip::http://mark0.net/download/tridupdate.zip
+	md5sums = 9e4849a0d14bb4df970dcbc1159c4007
+	md5sums = 6ef06da62edde6c84c9473f7a62969e6
+	md5sums = a78caa24cf0851d17b8d3798f9e776a3
+	md5sums = 2ea012671b50e0761cbc4bbec820952e
+	md5sums = fd7e042a50ee1c93ed3147f5bff6d876
+	source_i686 = trid-2.20-i686.zip::http://mark0.net/download/trid_linux.zip
+	md5sums_i686 = 07bab126d34993a1c725bf60d16e0829
+	source_x86_64 = trid-2.20-x86_64.zip::http://mark0.net/download/trid_linux_64.zip
+	md5sums_x86_64 = db0b1f4dfd0039c65e70ec559940cad7
+
+pkgname = trid
+
