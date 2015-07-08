@@ -1,0 +1,31 @@
+pkgbase = acroread
+	pkgdesc = Adobe Reader is a PDF file viewer
+	pkgver = 9.5.5
+	pkgrel = 5
+	url = http://www.adobe.com/products/reader/
+	install = acroread.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = libxml2
+	depends = libxt
+	depends = mesa
+	depends = pangox-compat
+	depends = libidn
+	optdepends = acroread-fonts: CJK and extended font packs
+	optdepends = libcanberra: XDG sound support
+	optdepends = gtk-engine-murrine: fix ugly buttons and scrollbars
+	noextract = acroread.desktop
+	noextract = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.bin
+	options = !strip
+	source = acroread.desktop
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.bin
+	sha256sums = 6f72d131fd3ceadead6573fd9520fa073007442ba40b58d457e73c3599fe4173
+	sha256sums = f3d060c1ab475a649dec6316c0b5a4a7e1055f9681ec2f35b4f77a070dfb3ea2
+	sha512sums = e8ee711536892ced9a0f932c8cf44332dabf10754139f93229dd1d38113bf6521ea3fc42a8a54170c85ef9da009d6ae34233cdda8bf798e2f5bf6e0ae61e37d1
+	sha512sums = f9c18ca0dc0687de353afeb90925439a557a14604e6361ff2b229ec29257ff051ea9eac6a90671b38a745473b5c87135377d035520f441ceaabf2510d690675b
+
+pkgname = acroread
+
