@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Paintball2
+GenericName=Paintball2
+Comment=Fast Paced Game
+Icon=/opt/paintball2/pixmaps/epsxe.png
+TryExec=/opt/paintball2/paintball2
+Exec=/opt/paintball2/paintball2
+Terminal=false
+Categories=Game;

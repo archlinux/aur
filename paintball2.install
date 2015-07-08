@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+
+Add your user to group 'games' in order to play.
+  
+EOF
+}
+
+op=$1
+shift
+$op $*

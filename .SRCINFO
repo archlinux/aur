@@ -1,0 +1,27 @@
+pkgbase = paintball2
+	pkgdesc = Fast paced fps game
+	pkgver = 2.0.40
+	pkgrel = 1
+	url = http://www.digitalpaint.org/
+	install = paintball2.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source = paintball2.desktop
+	source = paintball2.png
+	source = paintball2.sh
+	source = http://sourceforge.net/projects/paintball2/files/Paintball%202/Paintball%202.0%20Alpha%20build040/paintball2_build040_linux_full.tar.gz
+	md5sums = fb44a5dc10575cccaaa134716b5365be
+	md5sums = 2cfe693e653e7f4080f1739076d3187c
+	md5sums = d9a362a58d5bfc6dea22302e9328dbeb
+	md5sums = 88d1acd0d126dc9c0d6b9a593347aff7
+	depends_i686 = libjpeg6
+	depends_i686 = sdl_ttf
+	depends_x86_64 = lib32-libjpeg6
+	depends_x86_64 = lib32-libxt
+	depends_x86_64 = lib32-sdl_ttf
+	depends_x86_64 = lib32-alsa-lib
+
+pkgname = paintball2
+
