@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-blockchain-git
 	pkgdesc = Bitcoin Blockchain Implementation
-	pkgver = 20150519
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-blockchain
 	arch = i686
