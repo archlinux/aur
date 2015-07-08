@@ -8,6 +8,7 @@ post_install() {
   done
   echo add to the .bashrc for calling slib files
   echo export SCHEME_LIBRARY_PATH=/usr/share/slib/
+  echo export JACALDIR=/usr/lib/jacal
 }
 
 post_upgrade() {
