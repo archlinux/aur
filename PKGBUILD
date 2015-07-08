@@ -8,8 +8,8 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgbase=linux-libre-xen     # Build stock -xen kernel
-_pkgbasever=4.0-gnu
-_pkgver=4.0.7-gnu
+_pkgbasever=4.1-gnu
+_pkgver=4.1.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -18,7 +18,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 arch=('i686')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -41,9 +41,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0001-block-loop-convert-to-per-device-workqueue.patch'
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'change-default-console-loglevel.patch')
-sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            'c106ac1baa327ba39fc479c6b7b5c3a9f0a523ecc4db2a0be6a1f6f700d5cc53'
+            '0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -51,10 +51,10 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '829578ec9d35cae1f7fa559c6cab1d13ca21bc91be88f9f110e7ee70e698e659'
+            '27e5b2fe0b2c5a67bfa27d7f0c61df206b5e77a83f348005b9332804acf791ab'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
