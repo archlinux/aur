@@ -1,6 +1,6 @@
 pkgbase = pcloud
 	pkgdesc = A QT-based pcloud sync client
-	pkgver = 3.0.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://www.pcloud.com
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = pcloud
 	conflicts = pcloud-git
 	replaces = pcloud-git
 	source_i686 = https://www.pcloud.com
-	sha1sums_i686 = 62ab9e9737c14a06780526cbfa9fa000f77f2450
+	sha256sums_i686 = 3611ae16586358bfd5e7889fa5e5be815fa2a36dcb5e033febb9f4d7205d03b6
 	source_x86_64 = https://www.pcloud.com
-	sha1sums_x86_64 = 265c085c3e971a1a63dfbe1a43ffee3f35fa8009
+	sha256sums_x86_64 = 634fcec47799c2c8fd9f7cdf68bd48b135102a81fed51df58161b9984faf75f6
 
 pkgname = pcloud
 

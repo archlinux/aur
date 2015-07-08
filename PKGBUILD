@@ -1,11 +1,11 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Ivan Petruk <localizator@ukr.net>
 
-_i686_code=XZDxIkZSrlWwLJDtWJPQJ0tuzqE8pB3Mw9V
-_x86_64_code=XZWxIkZuAkt4AQ9bT05r3TpMKN8lSYnEyfV
+_i686_code=XZFLUXZgiFvDjEWrjBd5A0yP6qRvhcw4kAk
+_x86_64_code=XZ5LUXZnCaQsycCaLFoymzccM68XFRwXyNX
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
 pkgname=pcloud
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='A QT-based pcloud sync client'
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ conflicts=('pcloud-git')
 replaces=('pcloud-git')
 source_i686="https://www.pcloud.com" # Placeholder
 source_x86_64="https://www.pcloud.com" # Placeholder
-sha1sums_i686=('62ab9e9737c14a06780526cbfa9fa000f77f2450')
-sha1sums_x86_64=('265c085c3e971a1a63dfbe1a43ffee3f35fa8009')
+sha256sums_i686=('3611ae16586358bfd5e7889fa5e5be815fa2a36dcb5e033febb9f4d7205d03b6')
+sha256sums_x86_64=('634fcec47799c2c8fd9f7cdf68bd48b135102a81fed51df58161b9984faf75f6')
 
 prepare() {
     cd "${srcdir}"
