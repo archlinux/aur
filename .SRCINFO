@@ -1,0 +1,23 @@
+pkgbase = rhc
+	pkgdesc = The client tools for the OpenShift platform that allow for application management.
+	pkgver = 1.36.4
+	pkgrel = 1
+	url = https://github.com/openshift/rhc
+	arch = any
+	license = Apache
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-archive-tar-minitar
+	depends = ruby-commander<4.3.0
+	depends = ruby-highline
+	depends = ruby-httpclient
+	depends = ruby-net-scp
+	depends = ruby-net-ssh<2.9.3
+	depends = ruby-net-ssh-multi
+	depends = ruby-open4
+	noextract = rhc-1.36.4.gem
+	source = http://rubygems.org/downloads/rhc-1.36.4.gem
+	sha1sums = 58370edec2c53180fd07ce61fcab56df6b8168bc
+
+pkgname = rhc
+
