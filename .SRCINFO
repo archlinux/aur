@@ -1,0 +1,28 @@
+pkgbase = lib32-sdl_mixer
+	pkgdesc = A simple multi-channel audio mixer (32 bit)
+	pkgver = 1.2.12
+	pkgrel = 2
+	url = http://www.libsdl.org/projects/SDL_mixer/release-1.2.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = lib32-fluidsynth
+	depends = sdl_mixer
+	depends = lib32-sdl>=1.2.12
+	depends = lib32-libvorbis
+	depends = lib32-libmikmod
+	depends = lib32-smpeg
+	optdepends = lib32-fluidsynth: MIDI software synth, replaces built-in timidity
+	source = http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.12.tar.gz
+	source = lib32-sdl_mixer-mikmod1.patch
+	source = lib32-sdl_mixer-mikmod2.patch
+	source = lib32-sdl_mixer-fluidsynth-volume.patch
+	source = lib32-sdl_mixer-double-free-crash.patch
+	sha256sums = 1644308279a975799049e4826af2cfc787cad2abb11aa14562e402521f86992a
+	sha256sums = e0d36cd81083a0b033436b8f300cc4f4513a6043e57fea139afbade02dbe0de8
+	sha256sums = a0c5326b4363464159a38dc51badad984b65ce0fa4c3b1dd1ad5f73bc7b6c55e
+	sha256sums = 4b6c567debf18c88398d4045a6e4ed0954f0e04cc61162ca907a83ddec17cd70
+	sha256sums = b707f5c8d1229d1612cc8a9f4e976f0a3b19ea40d7bd1d5bc1cbd5c9f8bca56d
+
+pkgname = lib32-sdl_mixer
+
