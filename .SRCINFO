@@ -1,0 +1,14 @@
+pkgbase = compute
+	pkgdesc = A command-line program that performs simple calculations on input files
+	pkgver = 1.0.4
+	pkgrel = 3
+	url = http://compute.teamerlich.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gperf
+	source = https://s3.amazonaws.com/agordon/compute/src/compute-1.0.4.tar.gz
+	md5sums = 8b8634e10d8bde512c17ca0f1f097583
+
+pkgname = compute
+
