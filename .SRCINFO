@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-rosapi
+	pkgdesc = ROS - Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = http://ros.org/wiki/rosapi
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosbridge-library
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-message-generation
+	depends = ros-indigo-rosbridge-library
+	depends = ros-indigo-rosnode
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	source = rosapi::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/indigo/rosapi/0.6.8-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosapi
+
