@@ -7,7 +7,7 @@
 # Contributor: David Spicer <azleifel at gmail dot com>
 
 pkgbase=handbrake-svn
-pkgname=('handbrake-svn' 'handbrake-cli-svn')
+pkgname=('handbrake-gtk-svn' 'handbrake-cli-svn')
 _svnmod=HandBrake
 pkgver=r7348
 pkgrel=1
@@ -47,7 +47,7 @@ build() {
   make -C "build" TMPDIR="$srcdir/$_svnmod/build/build_tmp"
 }
 
-package_handbrake-svn() {
+package_handbrake-gtk-svn() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)"
   optdepends=('gst-plugins-base: For Preview Window'
               'gst-plugins-bad: For Preview Window'
@@ -56,7 +56,7 @@ package_handbrake-svn() {
               'gst-libav: For Preview Window')
   provides=('handbrake')
   conflicts=('handbrake')
-  install=${pkgname}.install
+  install=${pkgbase}.install
 
   cd "$srcdir/$_svnmod"
   make -C "build" DESTDIR="$pkgdir/" install

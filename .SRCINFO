@@ -27,7 +27,7 @@ pkgbase = handbrake-svn
 	source = HandBrake::svn://svn.handbrake.fr/HandBrake/trunk
 	md5sums = SKIP
 
-pkgname = handbrake-svn
+pkgname = handbrake-gtk-svn
 	pkgdesc = Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)
 	install = handbrake-svn.install
 	optdepends = gst-plugins-base: For Preview Window
