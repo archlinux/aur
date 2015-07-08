@@ -1,0 +1,20 @@
+pkgbase = libicns
+	pkgdesc = Library for manipulating Mac OS X icon files
+	pkgver = 0.8.1
+	pkgrel = 2
+	url = http://icns.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	depends = libpng
+	depends = jasper
+	provides = icns2png=0.8.1
+	conflicts = icns2png
+	replaces = icns2png
+	options = !libtool
+	source = http://downloads.sf.net/icns/libicns-0.8.1.tar.gz
+	md5sums = 7a9b74b84ce08c5b11bdee3cad296dd3
+
+pkgname = libicns
+
