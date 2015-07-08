@@ -1,0 +1,21 @@
+pkgbase = chicken-foreigners
+	pkgdesc = Chicken Scheme Egg: Foreign helper macros for Chicken 4
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/foreigners
+	install = chicken.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-matchable
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-foreigners-1.4.1.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=foreigners&version=1.4.1
+	source = chicken-foreigners-1.4.1.html::http://wiki.call-cc.org/eggref/4/foreigners.html
+	md5sums = 5e7027cadfdba6af5607ae7e6d966a81
+	md5sums = 4df43c333846583c39e63c47f594cad7
+
+pkgname = chicken-foreigners
+
