@@ -1,0 +1,21 @@
+pkgbase = sakura-bzr
+	pkgdesc = A terminal emulator based on GTK and VTE
+	pkgver = 492
+	pkgrel = 1
+	url = https://launchpad.net/sakura
+	install = sakura-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = bzr
+	depends = vte290
+	depends = libxft
+	depends = desktop-file-utils
+	provides = sakura
+	conflicts = sakura
+	source = sakura-bzr::bzr+https://launchpad.net/sakura/trunk
+	sha256sums = SKIP
+
+pkgname = sakura-bzr
+
