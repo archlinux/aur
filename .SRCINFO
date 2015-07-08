@@ -1,0 +1,15 @@
+pkgbase = ubase-git
+	pkgdesc = An extension of the sbase *nix core utilities - git checkout
+	pkgver = 0.r565.g71da562
+	pkgrel = 1
+	url = http://git.suckless.org/ubase/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sbase-git
+	source = git://git.suckless.org/ubase
+	sha256sums = SKIP
+
+pkgname = ubase-git
+
