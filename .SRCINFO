@@ -1,0 +1,28 @@
+pkgbase = i3lock-spy
+	pkgdesc = A screenlocker with intruder detection designed for JustBrowsing
+	pkgver = 2.4.4
+	pkgrel = 3
+	url = https://github.com/justbrowsing/i3lock-spy
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	groups = justbrowsing
+	license = MIT
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = pam
+	depends = libev
+	depends = cairo
+	depends = fswebcam
+	depends = v4l-utils
+	optdepends = wbar: To add a lockscreen panel in JustBrowsing
+	optdepends = adeskbar: To add a lockscreen panel in jb-next
+	provides = i3lock
+	conflicts = i3lock
+	options = docs
+	backup = etc/pam.d/i3lock
+	source = https://github.com/justbrowsing/i3lock-spy/archive/master.tar.gz
+	md5sums = 7348dd53ce18a434aa4815059cec92a4
+
+pkgname = i3lock-spy
+
