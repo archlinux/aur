@@ -1,11 +1,10 @@
 pkgbase = jacal
 	pkgdesc = Jacal is a symbolic mathematics system written in the programming language Scheme.
 	pkgver = 1c4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://people.csail.mit.edu/jaffer/JACAL.html
 	install = jacal.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = LGPL
 	depends = scm
 	depends = slib

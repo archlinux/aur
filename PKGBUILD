@@ -3,10 +3,10 @@
 
 pkgname=jacal
 pkgver=1c4
-pkgrel=1 
+pkgrel=2
 pkgdesc="Jacal is a symbolic mathematics system written in the programming language Scheme."
 url="http://people.csail.mit.edu/jaffer/JACAL.html"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('LGPL')
 depends=('scm' 'slib')
 install=jacal.install
@@ -28,5 +28,6 @@ package() {
   cd $srcdir/$pkgname
   make DESTDIR=$pkgdir install
   rmdir $pkgdir/usr/share/doc/$pkgname
+  sed -i '4d' $pkgdir/usr/bin/jacal
 }
 
