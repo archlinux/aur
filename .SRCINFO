@@ -1,0 +1,48 @@
+pkgbase = freetype2-infinality
+	pkgdesc = TrueType font rendering library with infinality patch
+	pkgver = 2.4.12
+	pkgrel = 4
+	url = http://www.infinality.net/blog/infinality-freetype-patches/
+	install = install.sh
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = bzip2
+	depends = sh
+	optdepends = fontconfig-infinality: Infinality package for fontconfig (required)
+	provides = freetype2=2.4.12
+	conflicts = freetype2
+	options = !libtool
+	backup = etc/profile.d/infinality-settings.sh
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.4.12.tar.bz2
+	source = http://www.infinality.net/fedora/linux/zips/freetype-infinality-2.4.12-20130514_01-x86_64.tar.bz2
+	source = freetype-2.2.1-enable-valid.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/freetype-2.2.1-enable-valid.patch?h=packages/freetype2
+	source = freetype-2.5.0-CVE-2014-2240.patch
+	source = freetype-2.5.0-CVE-2014-2241.patch
+	source = freetype-2.4.11-ft-strncmp.patch
+	source = freetype-2.4.11-CVE-2014-9657.patch
+	source = freetype-2.4.11-CVE-2014-9658.patch
+	source = freetype-2.4.11-CVE-2014-9660.patch
+	source = freetype-2.4.11-CVE-2014-9663.patch
+	source = freetype-2.4.11-CVE-2014-9667.patch
+	source = freetype-2.4.11-CVE-2014-9669.patch
+	source = freetype-2.4.11-CVE-2014-9670.patch
+	source = freetype-2.4.11-CVE-2014-9671.patch
+	md5sums = 3463102764315eb86c0d3c2e1f3ffb7d
+	md5sums = 4f5ff3fd3e3e56310953e25eade4a2d3
+	md5sums = 214119610444c9b02766ccee5e220680
+	md5sums = e29654122be7dbfbc828b1f890257f40
+	md5sums = 54d52c143c5e399972f2928d17b0f28e
+	md5sums = 451163e82887b59f0c0fad72a652f316
+	md5sums = d8c69d190a81133d40b92d1d2ab81c98
+	md5sums = 82055b1adb096766cf4269658ce5a68b
+	md5sums = 79e695ff3714fb66dcdadd2a4b82f418
+	md5sums = 817ff425988e4f91dbd08b1f4bfaf5b4
+	md5sums = a1560e1032cd0fb113aee6ce7b0c951e
+	md5sums = c5cbf68b7b2f3beeb766e8d97d9f723e
+	md5sums = 1bf2b83b8623ac4fed57dbe4e4f7714c
+	md5sums = f543132d39f801a230768dc133fd4870
+
+pkgname = freetype2-infinality
+
