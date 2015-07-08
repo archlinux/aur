@@ -2,10 +2,10 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=leap-motion-sdk
-_major=2.2.2
-_build=24469
+_major=2.2.7
+_build=30199
 pkgver=${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -44,5 +44,5 @@ package() {
   install -D -m644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('3e3ceb48baa17a7aa4ce3149fac5eab3'
+md5sums=('cc9ffe540a913facc34138b9a87908be'
          '78a4f0934b105397d1f7b17d06e4717c')
