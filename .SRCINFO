@@ -1,0 +1,17 @@
+pkgbase = racer-git
+	pkgdesc = Code completion for Rust
+	pkgver = r545.465e4b8
+	pkgrel = 1
+	url = https://github.com/phildawes/racer
+	install = racer-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = rust
+	source = git+https://github.com/phildawes/racer.git
+	md5sums = SKIP
+
+pkgname = racer-git
+
