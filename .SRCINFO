@@ -1,0 +1,16 @@
+pkgbase = tmuxline-git
+	pkgdesc = Simple tmux statusline generator with support for powerline symbols and airline integration.
+	pkgver = r41.725a511
+	pkgrel = 1
+	url = https://github.com/edkolev/tmuxline.vim
+	install = tmuxline-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = tmux
+	depends = vim
+	source = tmuxline-git::git://github.com/edkolev/tmuxline.vim.git
+	sha1sums = SKIP
+
+pkgname = tmuxline-git
+
