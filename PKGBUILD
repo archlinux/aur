@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client-git
-pkgver=20150516
+pkgver=20150707
 pkgrel=1
 pkgdesc="The Bitcoin Client Protocol Implementation"
 arch=('i686' 'x86_64')
