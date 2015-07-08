@@ -1,0 +1,20 @@
+pkgbase = gunicorn
+	pkgdesc = WSGI HTTP Server for UNIX
+	pkgver = 19.3
+	pkgrel = 1
+	url = http://gunicorn.org/
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	makedepends = python2-distribute
+	source = https://github.com/benoitc/gunicorn/archive/19.3.tar.gz
+	sha256sums = 06279932c743286f6420e32638c8c581db688d31aa75fcb719ed63bc2a36d7f0
+
+pkgname = gunicorn
+	depends = python
+
+pkgname = gunicorn-python2
+	depends = python2
+	provides = python2-gunicorn
+	conflicts = python2-gunicorn
+
