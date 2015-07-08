@@ -9,7 +9,7 @@ url="https://github.com/npcole/npyscreen"
 license=('GPL3')
 makedepends=('git')
 conflicts=('python-npyscreen')
-depends=('python' 'python-setuptools')
+depends=('python2' 'python2-setuptools')
 source=('git+https://github.com/npcole/npyscreen.git')
 sha256sums=('SKIP')
 
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
    cd "$srcdir/npyscreen"
-   python setup.py install --root="$pkgdir/" --optimize=1
+   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
