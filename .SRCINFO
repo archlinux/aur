@@ -1,0 +1,13 @@
+pkgbase = python2-apipkg
+	pkgdesc = Python 2 module for namespace control and lazy-import mechanism
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/apipkg
+	arch = any
+	license = MIT
+	depends = python2
+	source = http://pypi.python.org/packages/source/a/apipkg/apipkg-1.4.tar.gz
+	md5sums = 17e5668601a2322aff41548cb957e7c8
+
+pkgname = python2-apipkg
+
