@@ -1,0 +1,19 @@
+pkgbase = postgresql-jdbc
+	pkgdesc = The official JDBC driver for PostgreSQL. Contains JDBC 4.0 and 4.1 drivers.
+	pkgver = 9.4.1201
+	pkgrel = 2
+	url = http://jdbc.postgresql.org/
+	arch = any
+	license = Custom: BSD
+	depends = java-runtime
+	noextract = postgresql-9.4.1201.jdbc4.jar
+	noextract = postgresql-9.4.1201.jdbc41.jar
+	source = LICENSE
+	source = postgresql-jdbc-9.4.1201.jdbc4.jar::http://jdbc.postgresql.org/download/postgresql-9.4-1201.jdbc4.jar
+	source = postgresql-jdbc-9.4.1201.jdbc41.jar::http://jdbc.postgresql.org/download/postgresql-9.4-1201.jdbc41.jar
+	md5sums = da7e6f8b26deefe7c03b391454732a0d
+	md5sums = 42200af7dcc45451450e1ec6104b7336
+	md5sums = a707b13c0c067a707d41db09dc0b3342
+
+pkgname = postgresql-jdbc
+
