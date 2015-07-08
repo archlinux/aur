@@ -1,0 +1,25 @@
+pkgbase = opendmarc
+	pkgdesc = Free open source software implementation of the DMARC specification
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = http://www.trusteddomain.org/opendmarc/
+	install = opendmarc.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libmilter
+	depends = smtp-server
+	optdepends = opendbx: acts as a middleware layer between OpenDMARC and a SQL backend of choice
+	optdepends = python: run opendmarc scripts at /usr/share/doc/opendmarc
+	optdepends = perl: run opendmarc scripts at /usr/share/doc/opendmarc
+	optdepends = perl-switch: generate DMARC reports
+	optdepends = perl-dbd-mysql: generate DMARC reports
+	optdepends = perl-libwww: generate DMARC reports
+	backup = etc/opendmarc/opendmarc.conf
+	source = http://downloads.sourceforge.net/project/opendmarc/opendmarc-1.3.1.tar.gz
+	source = opendmarc.service
+	sha256sums = a0c0cf74de68454cbdce16a3095b96e70fc16614325052ea230878d1ca64da6b
+	sha256sums = dc16a2bb66df7473a0288fc0c33db731922ff2ea9fdcd59d86da8dc908ca4a14
+
+pkgname = opendmarc
+

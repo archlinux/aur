@@ -1,0 +1,24 @@
+_config_instructions() {
+  echo "==> The opendmarc user has been created."
+  echo "    It is recommended to run the daemon under this user."
+  echo "    A sample configuration file has been instaled at"
+  echo "    /etc/opendmarc/opendmarc.conf.sample"
+}
+
+post_install() {
+  getent passwd opendmarc >/dev/null || \
+  useradd --system -g mail -s /usr/bin/nologin -d /etc/opendmarc opendmarc
+  if [ ! -e /etc/opendmarc/opendmarc.conf ]; then
+	  _config_instructions
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove(){
+  if getent passwd opendmarc >/dev/null 2>&1; then
+    userdel opendmarc
+  fi
+}
