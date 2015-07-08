@@ -1,7 +1,8 @@
-# Maintainer:  agnotek <agnostic.sn [at]gmail.com>
+# Maintainer:  Giovanni Santini "ItachiSan" <giovannisantini93@yahoo.it>
+# Previous maintainer:  agnotek <agnostic.sn [at]gmail.com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
-pkgname=telegram-desktop
+pkgname=telegram-desktop-bin
 pkgver=0.8.38
 pkgrel=2
 pkgdesc="Official desktop version of Telegram messaging app."

@@ -1,9 +1,9 @@
-pkgbase = telegram-desktop
+pkgbase = telegram-desktop-bin
 	pkgdesc = Official desktop version of Telegram messaging app.
 	pkgver = 0.8.38
 	pkgrel = 2
 	url = https://desktop.telegram.org
-	install = telegram-desktop.install
+	install = telegram-desktop-bin.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -31,5 +31,5 @@ pkgbase = telegram-desktop
 	source_x86_64 = https://updates.tdesktop.com/tlinux/tsetup.0.8.38.tar.xz
 	sha256sums_x86_64 = 5b7b15ab555275beda47a198c34baee97cfadc3d88feb664a01aa342ad603ba0
 
-pkgname = telegram-desktop
+pkgname = telegram-desktop-bin
 
