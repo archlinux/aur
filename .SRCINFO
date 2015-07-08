@@ -1,5 +1,5 @@
 pkgbase = linux-libre-lts-knock
-	pkgver = 3.14.46_gnu
+	pkgver = 3.14.47_gnu
 	pkgrel = 1
 	url = https://gnunet.org/knock
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-libre-lts-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.46-gnu/patch-3.14-gnu-3.14.46-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.46-gnu/patch-3.14-gnu-3.14.46-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.47-gnu/patch-3.14-gnu-3.14.47-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.47-gnu/patch-3.14-gnu-3.14.47-gnu.xz.sign
 	source = http://gnunet.org/sites/default/files/tcp_stealth_3.16_1.diff
 	source = tcp_stealth_3.16_1.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_3.16.diff_1.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -38,7 +38,7 @@ pkgbase = linux-libre-lts-knock
 	source = https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community.patch.sig
 	sha256sums = 477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b
 	sha256sums = SKIP
-	sha256sums = 4892d0c0d4c363d3d8484dd1805a8afef5f524e327a352e29ffdff6e0d832d2f
+	sha256sums = d9be335479424000a60cb76928a6aa691dcb9669d0583099247dad58dc5e664a
 	sha256sums = SKIP
 	sha256sums = 70cbe962aa01989ffa83490bb0765d6e4c781f6133dc8d768d84bd6716ac0209
 	sha256sums = SKIP
@@ -71,7 +71,7 @@ pkgname = linux-libre-lts-knock
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-lts-knock=3.14.46
+	provides = linux-lts-knock=3.14.47
 	conflicts = kernel26-lts-knock
 	conflicts = kernel26-libre-lts-knock
 	replaces = linux-lts-knock
@@ -81,7 +81,7 @@ pkgname = linux-libre-lts-knock
 
 pkgname = linux-libre-lts-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts-knock kernel
-	provides = linux-lts-knock-headers=3.14.46
+	provides = linux-lts-knock-headers=3.14.47
 	conflicts = kernel26-lts-knock-headers
 	conflicts = kernel26-libre-lts-knock-headers
 	replaces = linux-lts-knock-headers
@@ -90,7 +90,7 @@ pkgname = linux-libre-lts-knock-headers
 
 pkgname = linux-libre-lts-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts-knock kernel
-	provides = linux-lts-knock-docs=3.14.46
+	provides = linux-lts-knock-docs=3.14.47
 	conflicts = kernel26-lts-knock-docs
 	conflicts = kernel26-libre-lts-knock-docs
 	replaces = linux-lts-knock-docs
