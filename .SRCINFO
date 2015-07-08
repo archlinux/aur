@@ -1,23 +1,23 @@
 pkgbase = phpstorm
-	pkgdesc = Lightweight and Smart PHP IDE.
-	pkgver = 8.0.3
+	pkgdesc = Lightweight and Smart PHP IDE
+	pkgver = 9.0
 	pkgrel = 1
 	url = http://www.jetbrains.com/phpstorm/
 	install = phpstorm.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-environment>=6
 	depends = bash
+	depends = java-environment>=6
 	options = !strip
-	source = http://download.jetbrains.com/webide/PhpStorm-8.0.3.tar.gz
+	source = http://download.jetbrains.com/webide/PhpStorm-9.0.tar.gz
 	source = phpstorm.desktop
 	source = phpstorm.sh
 	source = phpstorm.install
-	sha256sums = 2b11ffe1a14a07d2616df0f84fce333bdcdd05b8b9417f3a1be92a3bb2b3c7f4
+	sha256sums = f70ad7066327b8a4761ba7ecaa5cb6ba8624d4bb1514019c373a5bb06347d7d8
 	sha256sums = e84e01936b4d1a3d909ca5f17122ccfdb071ad98cd908fd67714f784ddd05471
 	sha256sums = 76fb549efe568de294a1f403f0fbc292c9e3f1201e150e491a6e31c97ab9323e
-	sha256sums = ea3b8898b7ee604b3dc9c83aefb47b35c129a0e5f7d1246569889dc7429d87a4
+	sha256sums = 3dd0738870932c8bfafc6a47a4b2a65be5bebbaa07ce88708c750b3e51b97cb5
 
 pkgname = phpstorm
 

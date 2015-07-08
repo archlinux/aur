@@ -1,27 +1,29 @@
-# Maintainer: Attila Bukor <r1pp3rj4ck[at]w4it[dot]eu>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Attila Bukor <r1pp3rj4ck[at]w4it[dot]eu>
 # Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
 # Contributor: Slava Volkov <sv99sv[at]gmail[dot]com>
 
 pkgname=phpstorm
-_pkgname=PhpStorm # Directory name in the tar file
-_pkgbuild=139.1348
-pkgver=8.0.3
+_pkgname=PhpStorm
+_pkgbuild=141.1912
+pkgver=9.0
 pkgrel=1
-pkgdesc="Lightweight and Smart PHP IDE."
+pkgdesc="Lightweight and Smart PHP IDE"
 arch=('i686' 'x86_64')
 options=(!strip)
 url="http://www.jetbrains.com/phpstorm/"
 license=('custom')
-depends=('java-environment>=6' 'bash')
+depends=('bash'
+         'java-environment>=6' )
 install='phpstorm.install'
 source=("http://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "phpstorm.desktop"
         "phpstorm.sh"
         "phpstorm.install")
-sha256sums=('2b11ffe1a14a07d2616df0f84fce333bdcdd05b8b9417f3a1be92a3bb2b3c7f4'
+sha256sums=('f70ad7066327b8a4761ba7ecaa5cb6ba8624d4bb1514019c373a5bb06347d7d8'
             'e84e01936b4d1a3d909ca5f17122ccfdb071ad98cd908fd67714f784ddd05471'
             '76fb549efe568de294a1f403f0fbc292c9e3f1201e150e491a6e31c97ab9323e'
-            'ea3b8898b7ee604b3dc9c83aefb47b35c129a0e5f7d1246569889dc7429d87a4')
+            '3dd0738870932c8bfafc6a47a4b2a65be5bebbaa07ce88708c750b3e51b97cb5')
 
 package() {
   install -d -m 755 "${pkgdir}/usr/share"
@@ -52,5 +54,3 @@ package() {
   install -D -m 644 "${pkgdir}/usr/share/${pkgname}/bin/webide.png" "${pkgdir}/usr/share/pixmaps/phpstorm.png"
   install -D -m 644 "${srcdir}/${_pkgname}-${_pkgbuild}/license/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
-
-# vim:set ts=2 sw=2 et:
