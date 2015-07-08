@@ -1,0 +1,14 @@
+pkgbase = python-imageio
+	pkgdesc = Library for reading and writing a wide range of image, video, scientific, and volumetric data formats
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/imageio/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy
+	source = https://pypi.python.org/packages/source/i/imageio/imageio-1.3.tar.gz
+	sha256sums = ce818a09fcc258f6a1d9ec3a144d3ed35a45ff8e5482ad7e2592cb128a1084dd
+
+pkgname = python-imageio
+
