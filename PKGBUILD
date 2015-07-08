@@ -1,18 +1,19 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pyanimenc-git
-pkgver=r37.617a8f7
+pkgver=r41.66af141
 pkgrel=1
 pkgdesc='Python Transcoding Tools'
 arch=('any')
 url='https://github.com/alucryd/pyanimenc'
 license=('GPL3')
-depends=('ffms2' 'python-gobject' 'python-lxml' 'python-setuptools' 'vapoursynth')
-makedepends=('git')
+depends=('ffms2' 'python-gobject' 'python-lxml' 'vapoursynth')
+makedepends=('git' 'python-setuptools')
 optdepends=('fdkaac: fdkaac encoder'
             'lame: lame encoder'
             'vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
             'vapoursynth-plugin-fluxsmooth-git: FluxSmooth denoise filters'
+            'vapoursynth-plugin-lsmashsource-git: L-SMASH source filters'
             'vapoursynth-plugin-temporalsoften-git: TemporalSoften denoise filter'
             'x264: x264 and x264-10bit encoders'
             'x265: x265 encoder')
