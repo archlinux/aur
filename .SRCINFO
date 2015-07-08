@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-rosserial
+	pkgdesc = ROS - Metapackage for core of rosserial.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosserial
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rosserial-python
+	depends = ros-indigo-rosserial-msgs
+	depends = ros-indigo-rosserial-client
+	source = rosserial::git+https://github.com/ros-gbp/rosserial-release.git#tag=release/indigo/rosserial/0.6.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosserial
+
