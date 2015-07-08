@@ -1,0 +1,18 @@
+pkgbase = python-send2trash
+	pkgdesc = Send file to trash natively under Mac OS X, Windows and Linux
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Send2Trash/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	conflicts = send2trash
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/S/Send2Trash/Send2Trash-1.3.0.tar.gz
+	source = https://raw.githubusercontent.com/hsoft/send2trash/1.3.0/LICENSE
+	sha256sums = 33f4461eae831eb09a21b70ca202c2a6dfd83db6bafa1e1ca11b5001e22c58fe
+	sha256sums = f3b3cb683064a3e33b28870b3610a976a948a1edb7d8b6fc00887b3b4398a4f2
+
+pkgname = python-send2trash
+
