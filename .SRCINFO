@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-client-git
 	pkgdesc = The Bitcoin Client Protocol Implementation
-	pkgver = 20150516
+	pkgver = 20150707
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-client
 	arch = i686
