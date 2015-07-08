@@ -1,0 +1,9 @@
+2013-9-22 Aaron DeVore <aaron.devore@gmail.com> (1.3.4-4)
+- Update distribute_setup.py to the latest version (fixes Python 3.3 build)
+- Change python-distribute -> python-setuptools
+2013-4-17 Aaron DeVore <aaron.devore@gmail.com> (1.3.4-2)
+- Separate build() and package() functions
+2011-03-18 Aaron DeVore <aaron.devore@gmail.com> (1.3.4-1)
+- Add Changelog
+- Split into Python 2 and Python 3 packages
+- Bump the upstream version to 1.3.4
