@@ -1,0 +1,29 @@
+pkgbase = macaulay2
+	pkgdesc = Software system for algebraic geometry and commutative algebra
+	pkgver = 12992.639ac3c
+	pkgrel = 1
+	url = http://www.math.uiuc.edu/Macaulay2/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = unzip
+	makedepends = emacs
+	depends = gcc-fortran
+	depends = gdbm
+	depends = gmp
+	depends = readline
+	depends = lapack
+	depends = scscp
+	depends = gc
+	depends = singular-factory
+	depends = frobby
+	depends = glpk
+	depends = cddlib
+	depends = gfan
+	depends = gtest
+	source = git+https://github.com/Macaulay2/M2
+	md5sums = SKIP
+
+pkgname = macaulay2
+
