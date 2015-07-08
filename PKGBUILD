@@ -1,6 +1,6 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=php-phalcon
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
@@ -15,20 +15,20 @@ source=(
 	"https://github.com/phalcon/cphalcon/archive/phalcon-v$pkgver.zip"
 )
 
-sha256sums=('80c7d2b4b570df9fb3a85f2bad49fccd9d073ad3d3918c5715ae240731952435')
+sha256sums=('97118008d285c288dbaf14e4c3e2257ae8ed899c399336e618ce1685769b7164')
 
 build() {
   cd "$srcdir/cphalcon-phalcon-v$pkgver"
   #Check best compilation flags for GCC
   export CC="gcc"
-  export CFLAGS="-march=native -mtune=native -O2 -finline-functions -fomit-frame-pointer"
+  export CFLAGS="-march=native -mtune=native -O2 -fomit-frame-pointer"
   export CPPFLAGS="-DPHALCON_RELEASE"
   echo "int main() {}" > t.c
   gcc $CFLAGS t.c -o t 2> t.t
   if [ $? != 0 ]; then
 	  chmod +x gcccpuopt
 	  BFLAGS=`./gcccpuopt`
-	  export CFLAGS="-O2 -finline-functions -fomit-frame-pointer $BFLAGS"
+	  export CFLAGS="-O2 -fomit-frame-pointer $BFLAGS"
 	  gcc $CFLAGS t.c -o t 2> t.t
 	  if [ $? != 0 ]; then
 		  export CFLAGS="-O2"
@@ -42,7 +42,7 @@ build() {
   rm -f t.t t.c t
 
   #cd dir
-  cd "$srcdir/cphalcon-phalcon-v$pkgver/build/$_arch"
+  cd "$srcdir/cphalcon-phalcon-v$pkgver/ext"
 
   #Clean current compilation
   if [ -f Makefile ]; then
@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/cphalcon-phalcon-v$pkgver/build/$_arch"
+  cd "$srcdir/cphalcon-phalcon-v$pkgver/ext"
 
   make INSTALL_ROOT="$pkgdir" install
   echo 'extension=phalcon.so' > phalcon.ini 
