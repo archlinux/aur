@@ -1,0 +1,16 @@
+pkgbase = myrulib-git
+	pkgdesc = Home library with lib.rus.ec site support
+	pkgver = 20131116
+	pkgrel = 1
+	url = http://www.lintest.ru/wiki/MyRuLib
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wxgtk2.8
+	depends = wxsqlite3-2.8
+	depends = expat
+	source = git+https://github.com/lintest/myrulib.git
+	sha1sums = SKIP
+
+pkgname = myrulib-git
+
