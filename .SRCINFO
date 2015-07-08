@@ -1,0 +1,15 @@
+pkgbase = cowdancer
+	pkgdesc = Copy-on-write wrapper for pbuilder
+	pkgver = 0.73
+	pkgrel = 6
+	url = https://packages.debian.org/sid/cowdancer/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pbuilder-ubuntu
+	optdepends = qemu: if you want to use qemubuilder
+	source = http://httpredir.debian.org/debian/pool/main/c/cowdancer/cowdancer_0.73.tar.gz
+	sha256sums = 59fde4bd0347258e797f06b36acaf5a42816b0f5d416d85b0493eac0594f77a9
+
+pkgname = cowdancer
+
