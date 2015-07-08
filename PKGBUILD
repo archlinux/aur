@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=389-ds-console
-pkgver=1.2.10
+pkgver=1.2.12
 _majorver=1.2
 pkgrel=1
 pkgdesc="The Directory Services componenet of the 389 Directory Server console for install from the Admin Server."
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('389-admin')
 makedepends=('java-environment')
 source=(http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2)
-sha256sums=('4c2a3c49b30b06134926c400b97296676b4cb5b4f063e704ae7c4d151e740d57')
+sha256sums=('3b8ef3acf4c3369d9345d3b103f0db7265d9bd7874e01af58342ddb3425107a3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
