@@ -1,6 +1,6 @@
 pkgbase = python-fake-factory
 	pkgdesc = Faker generates fake data for you.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = http://www.joke2k.net/faker/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-fake-factory
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/f/fake-factory/fake-factory-0.5.2.tar.gz
-	sha256sums = 37b121776d0ee180440fb3133baff8c97dbaaafdb3fc9a659ac6db498abcbc27
+	source = https://github.com/joke2k/faker/archive/v0.5.3.tar.gz
+	sha256sums = ab4961b1ed34b1c011a17c633332f108f45d8b80042e764a1965f7e2c3961894
 
 pkgname = python-fake-factory
 	depends = python
