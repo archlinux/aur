@@ -1,28 +1,26 @@
-# Maintainer: Joris Steyn <jorissteyn@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Contributor: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: Curtis McEnroe <programble@gmail.com>
 pkgname=git-extras-git
-pkgver=1.9.0.9.ge91da7c
+pkgver=3.0.0.r30.g392a2d6
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, repl, changelog population, author commit percentages and more"
 arch=('any')
-url="https://github.com/visionmedia/git-extras"
-license=('MIT')
+url="https://github.com/tj/${pkgname%-git}"
+license=('custom:MIT')
 depends=('git')
-makedepends=('git')
-conflicts=('git-extras')
-provides=('git-extras')
-source=('git://github.com/visionmedia/git-extras.git')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+source=("git://github.com/tj/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/git-extras"
-  git describe --tags --always|sed 's|-|.|g'
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/git-extras"
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/${pkgname%-git}"
+    make DESTDIR="${pkgdir}" PREFIX="/usr" install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
