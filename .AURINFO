@@ -1,0 +1,22 @@
+pkgbase = justbrowsing-adeskbar
+	pkgdesc = A lightweight application launcher configured for JustBrowsing
+	pkgver = 0.5.1
+	pkgrel = 6
+	url = https://github.com/justbrowsing/justbrowsing-adeskbar
+	install = adeskbar.install
+	arch = any
+	groups = justbrowsing
+	license = GPL3
+	depends = python2-xdg
+	depends = python2-xlib
+	depends = pygtk
+	optdepends = justbrowsing-theme: icons for panel
+	optdepends = jbxkb: keymap systray
+	optdepends = batterymon-clone: battery systray
+	optdepends = network-manager-applet-gtk2: networking systray
+	optdepends = pnmixer: volume systray
+	conflicts = adeskbar
+	source = https://github.com/justbrowsing/justbrowsing-adeskbar/archive/master.zip
+
+pkgname = justbrowsing-adeskbar
+

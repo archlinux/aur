@@ -1,0 +1,17 @@
+post_install(){
+  menuLink="/etc/xdg/menus/applications.menu"
+  [ ! -f "$menuLink" ] && ln -s "/etc/xdg/menus/adeskbar-applications.menu" "$menuLink"
+  gtk-update-icon-cache -q -t -f /usr/share/pixmaps
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  menuLink="/etc/xdg/menus/applications.menu"
+  [ -h "$menuLink" -a ! -L "$menuLink" ] && rm "$menuLink"
+  gtk-update-icon-cache -q -t -f /usr/share/pixmaps
+  update-desktop-database -q
+}
