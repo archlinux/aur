@@ -1,0 +1,11 @@
+--- src/paths.h	2012-09-28 23:52:32.635670907 -0400
++++ src/paths.h.new	2012-09-28 23:52:39.504932330 -0400
+@@ -26,7 +26,7 @@
+ #define CONSOLE		"/dev/console"		/* Logical system console */
+ #define SECURETTY	"/etc/securetty"	/* List of root terminals */
+ #define SDALLOW		"/etc/shutdown.allow"	/* Users allowed to shutdown */
+-#define INITTAB		"/etc/inittab"		/* Location of inittab */
++#define INITTAB		"/etc/openrc/inittab"		/* Location of inittab */
+ #define INIT		"/sbin/init"		/* Location of init itself. */
+ #define NOLOGIN		"/etc/nologin"		/* Stop user logging in. */
+ #define FASTBOOT	"/fastboot"		/* Enable fast boot. */

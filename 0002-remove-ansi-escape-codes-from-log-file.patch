@@ -1,0 +1,79 @@
+From 8d0022d9540112a92ce8d88c91c4ac10bad8c9ef Mon Sep 17 00:00:00 2001
+From: Florian Pritz <bluewind@xinu.at>
+Date: Sun, 24 Jun 2012 15:49:51 +0200
+Subject: [PATCH 2/2] remove ansi escape codes from log file
+
+References: https://en.wikipedia.org/wiki/ANSI_escape_code
+
+Signed-off-by: Florian Pritz <bluewind@xinu.at>
+---
+ bootlogd.c |   45 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 43 insertions(+), 2 deletions(-)
+
+diff --git a/bootlogd.c b/bootlogd.c
+index e36e261..88e610d 100644
+--- a/bootlogd.c
++++ b/bootlogd.c
+@@ -349,6 +349,7 @@ void writelog(FILE *fp, unsigned char *ptr, int len)
+	int dosync = 0;
+	int i;
+	static int first_run = 1;
++	static int inside_esc = 0;
+
+	for (i = 0; i < len; i++) {
+		int ignore = 0;
+@@ -364,10 +365,50 @@ void writelog(FILE *fp, unsigned char *ptr, int len)
+			first_run = 0;
+		}
+
+-		if (*ptr == '\r') {
+-			ignore = 1;
++		/* remove escape sequences, but do it in a way that allows us to stop
++		 * in the middle in case the string was cut off */
++		if (inside_esc == 1) {
++			/* first '[' is special because if we encounter it again, it should be considered the final byte */
++			if (*ptr == '[') {
++				/* multi char sequence */
++				ignore = 1;
++				inside_esc = 2;
++			} else {
++				/* single char sequence */
++				if (*ptr >= 64 && *ptr <= 95) {
++					ignore = 1;
++				}
++				inside_esc = 0;
++			}
++		} else if (inside_esc == 2) {
++			switch (*ptr) {
++				case '0' ... '9': /* intermediate chars of escape sequence */
++				case ';':
++				case 32 ... 47:
++					if (inside_esc) {
++						ignore = 1;
++					}
++					break;
++				case 64 ... 126: /* final char of escape sequence */
++					if (inside_esc) {
++						ignore = 1;
++						inside_esc = 0;
++					}
++					break;
++			}
++		} else {
++			switch (*ptr) {
++				case '\r':
++					ignore = 1;
++					break;
++				case 27: /* ESC */
++					ignore = 1;
++					inside_esc = 1;
++					break;
++			}
+		}
+
++
+		if (!ignore) {
+			fwrite(ptr, sizeof(char), 1, fp);
+		}
+--
+1.7.10.4

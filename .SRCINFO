@@ -1,0 +1,22 @@
+pkgbase = openrc-sysvinit
+	pkgdesc = Linux System V Init patched to use alternate inittab for openrc
+	pkgver = 2.88
+	pkgrel = 10
+	url = http://savannah.nongnu.org/projects/sysvinit
+	install = sysvinit.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	depends = sysvinit
+	source = http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.88dsf.tar.bz2
+	source = 0001-simplify-writelog.patch
+	source = 0002-remove-ansi-escape-codes-from-log-file.patch
+	source = openrc-init.patch
+	md5sums = 6eda8a97b86e0a6f59dabbf25202aa6f
+	md5sums = 26bfc38ccd225814ef9dd02842109df2
+	md5sums = a913d77f6554699bc074428cc6b07589
+	md5sums = f60460c6a3bc58376562fc76568bf3d7
+
+pkgname = openrc-sysvinit
+

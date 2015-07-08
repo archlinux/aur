@@ -1,0 +1,31 @@
+From bd0ec99398e3ebdb54ea80200d7cc738a7f6657a Mon Sep 17 00:00:00 2001
+From: Andrew Gregory <andrew.gregory.8@gmail.com>
+Date: Sat, 7 Dec 2013 10:17:41 -0500
+Subject: [PATCH] Makefile: detect dynamic libcrypt
+
+Even though the libcrypt detection was looking for libcrypt.a, sulogin
+was being linked against libcrypt dynamically anyway because -static was
+not used.  Using libcrypt.a failed to find libcrypt on systems without
+static libs, causing compiler errors.
+
+Signed-off-by: Andrew Gregory <andrew.gregory.8@gmail.com>
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 9e80533..215ad19 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -89,7 +89,7 @@ else
+ endif
+ 
+ # Additional libs for GNU libc.
+-ifneq ($(wildcard /usr/lib*/libcrypt.a),)
++ifneq ($(wildcard /usr/lib*/libcrypt.*),)
+   SULOGINLIBS	+= -lcrypt
+ endif
+ 
+-- 
+1.8.4.2
+

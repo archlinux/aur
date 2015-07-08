@@ -1,0 +1,7 @@
+post_install() {
+    echo "To boot using OpenRC append init=/usr/bin/init-openrc to your kernel bootline."
+}
+
+post_upgrade() {
+  [ -x usr/bin/init-openrc ] && usr/bin/init-openrc u
+}
