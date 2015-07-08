@@ -1,0 +1,28 @@
+pkgbase = tox-git
+	pkgdesc = Secure, configuration-free, P2P Skype replacement backend
+	pkgver = r3350.6a1efc3
+	pkgrel = 1
+	url = https://tox.im
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = check
+	depends = libconfig>=1.4
+	depends = libsodium>=1.0
+	depends = libvpx
+	depends = opus
+	optdepends = qtox-git: qt-based Tox client
+	optdepends = utox-git: lightweight Tox client
+	optdepends = toxic-git: ncurses-based Tox client
+	provides = tox
+	conflicts = tox
+	replaces = tox
+	source = tox::git+https://github.com/irungentoo/toxcore.git
+	sha512sums = SKIP
+
+pkgname = tox-git
+
