@@ -1,0 +1,22 @@
+pkgbase = kcm-wacomtablet-frameworks-git
+	pkgdesc = KDE GUI for the Wacom Linux Drivers (KF5 branch)
+	pkgver = 471.7ca3077
+	pkgrel = 1
+	epoch = 1
+	url = http://kde-apps.org/content/show.php/wacom+tablet?content=114856
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = kdelibs4support
+	depends = plasma-framework
+	depends = xf86-input-wacom
+	conflicts = kcm-wacomtablet
+	source = git://anongit.kde.org/wacomtablet#branch=kf5-port
+	md5sums = SKIP
+
+pkgname = kcm-wacomtablet-frameworks-git
+
