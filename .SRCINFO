@@ -1,0 +1,49 @@
+pkgbase = gridcoinresearch-git
+	pkgver = 3.4.2.5.r443.78d83b2
+	pkgrel = 1
+	url = http://gridcoin.us
+	arch = i686
+	arch = x86_64
+	license = custom:gridcoin
+	makedepends = boost
+	makedepends = git
+	makedepends = qt4
+	makedepends = openssl
+	makedepends = qrencode
+	makedepends = db
+	makedepends = curl
+	makedepends = protobuf
+	makedepends = miniupnpc
+	source = gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git
+	source = fix-upnp.patch
+	source = gridcoinresearch-qt.desktop
+	sha1sums = SKIP
+	sha1sums = 46006c634ef57189b9a9e6607ca392cb17b933b4
+	sha1sums = 931e82ce57cf9099d73534f969f49ba4e524e671
+
+pkgname = gridcoinresearch-daemon-git
+	pkgdesc = GridCoin is a PoS-based cryptocurrency - Daemon
+	install = gridcoin.install
+	depends = boost-libs
+	depends = libzip
+	depends = miniupnpc
+	depends = curl
+	depends = boinc
+
+pkgname = gridcoinresearch-qt-git
+	pkgdesc = GridCoin is a PoS-based cryptocurrency - Qt
+	install = gridcoin.install
+	depends = boost-libs
+	depends = qrencode
+	depends = qt4
+	depends = libzip
+	depends = miniupnpc
+	depends = curl
+	depends = boinc
+
+pkgname = gridcoinresearch-upgrader-git
+	pkgdesc = Stub program for Gridcoin Daemon
+	depends = curl
+	depends = boost-libs
+	depends = libzip
+

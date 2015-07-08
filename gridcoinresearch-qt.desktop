@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GridcoinResearch-Qt
+Comment=Gridcoin P2P Cryptocurrency
+Exec=/usr/bin/gridcoinresearch %u
+Terminal=false
+Type=Application
+Icon=grc-small
+MimeType=x-scheme-handler/gridcoin;
+Categories=Office;Finance;

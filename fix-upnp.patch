@@ -1,0 +1,30 @@
+From 2868f6e39247b4a2c81f893aed49f95ec16fc559 Mon Sep 17 00:00:00 2001
+From: Matthias Bach <marix@marix.org>
+Date: Thu, 1 Jan 2015 19:35:37 +0100
+Subject: [PATCH] Fix compilation of UPNP support
+
+Miniupnpc stores its headers in a directory miniupnpc, which was missing
+where the headers where included.
+---
+ src/net.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/net.cpp b/src/net.cpp
+index 2a25bf4..b8efad3 100644
+--- a/src/net.cpp
++++ b/src/net.cpp
+@@ -16,10 +16,10 @@
+ #endif
+ 
+ #ifdef USE_UPNP
+-#include <miniwget.h>
+-#include <miniupnpc.h>
+-#include <upnpcommands.h>
+-#include <upnperrors.h>
++#include <miniupnpc/miniwget.h>
++#include <miniupnpc/miniupnpc.h>
++#include <miniupnpc/upnpcommands.h>
++#include <miniupnpc/upnperrors.h>
+ #endif
+ 
+ using namespace std;
