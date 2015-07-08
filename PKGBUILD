@@ -6,7 +6,7 @@
 
 pkgname=cyrus-imapd-ldap
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='LDAP support (via ptloader) for Cyrus IMAP mail server'
 arch=('i686' 'x86_64')
 url='http://www.cyrusimap.org/'
@@ -39,12 +39,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/cyrus-imapd-${pkgver}/ptclient"
+    cd "${srcdir}/cyrus-imapd-${pkgver}"
 
     mkdir -p "${pkgdir}/usr/lib/cyrus/bin"
-    install -Dm 755 ptdump "${pkgdir}/usr/lib/cyrus/bin"
-    install -Dm 755 ptexpire "${pkgdir}/usr/lib/cyrus/bin"
-    install -Dm 755 ptloader "${pkgdir}/usr/lib/cyrus/bin"
+    /bin/sh ./libtool --mode=install /usr/bin/install -c ptclient/ptloader ptclient/ptdump ptclient/ptexpire "${pkgdir}/usr/lib/cyrus/bin"
 
     install -Dm 644 "${srcdir}/cyrus-imapd-${pkgver}/COPYING" \
         "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"

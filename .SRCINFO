@@ -1,7 +1,7 @@
 pkgbase = cyrus-imapd-ldap
 	pkgdesc = LDAP support (via ptloader) for Cyrus IMAP mail server
 	pkgver = 2.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cyrusimap.org/
 	arch = i686
 	arch = x86_64
