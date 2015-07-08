@@ -74,8 +74,9 @@ _uksmvernel="0.1.2.4-beta"
 _uksmname="v4.0"
 _ckpatchversion=1
 _ckpatchname="patch-4.0-ck${_ckpatchversion}"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r8/"
+_bfqrel=v7r8
+#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-${_bfqrel}"
+_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.0.0-${_bfqrel}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -88,9 +89,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-rtmn-fix.patch"
         "http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-update_inittask.patch"  
         "bfs462-nosubmit.patch"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.0.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-uksm-ck.preset'
         'change-default-console-loglevel.patch'
