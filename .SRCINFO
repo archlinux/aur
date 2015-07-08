@@ -1,0 +1,17 @@
+pkgbase = hfstospell
+	pkgdesc = Helsinki Finite-State Transducer Technology (HFST) tools
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = libxml++
+	depends = libarchive
+	depends = libsigc++
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/hfst/hfst/source/hfstospell-0.3.0.tar.gz
+	md5sums = e28ed98558db5caf4ef8a9cc017443ab
+
+pkgname = hfstospell
+
