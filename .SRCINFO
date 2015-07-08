@@ -1,13 +1,13 @@
 pkgbase = torrentinfo
 	pkgdesc = Bittorrent .torrent file parser and summariser
-	pkgver = 1.0.2
-	pkgrel = 3
-	url = http://vrai.net/project.php?project=torrentinfo
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://github.com/Fuuzetsu/torrentinfo
 	arch = any
 	license = GPL2
 	depends = python2
-	source = http://vrai.net/files/software_projects/torrentinfo/torrentinfo-1.0.2.tar.gz
-	md5sums = 0ab4400f43a9509cb858d07917603cda
+	source = https://github.com/Fuuzetsu/torrentinfo/archive/v1.8.6.tar.gz
+	sha1sums = b3e17039b081e383dda92dae5c614698cba2398d
 
 pkgname = torrentinfo
 
