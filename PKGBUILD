@@ -2,20 +2,20 @@
 
 pkgname=clanlib-gl1
 pkgver=2.3.7
-pkgrel=7
+pkgrel=8
 pkgdesc="Clanlib GL1 library .so from Fedora"
 arch=('i686' 'x86_64')
 url="http://clanlib.org/"
 license=('zlib')
 depends=('clanlib>=2.3.0')
 makedepends=('rpmextract')
-_rpmrel=7
+_rpmrel=8
 _fc=fc23
 _arch=$(uname -m)
 source_i686=(ftp://ftp.is.co.za/mirror/fedora.redhat.com/linux/development/rawhide/i386/os/Packages/c/ClanLib-$pkgver-$_rpmrel.$_fc.i686.rpm)
-md5sums_i686=('c6387e36973096c5dd987a6fbaee7a73')
+md5sums_i686=('ef9aa3874c36852dd550c0ba19f3c73f')
+md5sums_x86_64=('3b500f6dfeb673eadcd27fe925af7eac')
 source_x86_64=(ftp://ftp.is.co.za/mirror/fedora.redhat.com/linux/development/rawhide/x86_64/os/Packages/c/ClanLib-$pkgver-$_rpmrel.$_fc.x86_64.rpm)
-md5sums_x86_64=('dcc8c1083f1553888c270785f3b8c5c0')
 
 package () {
   cd $srcdir
