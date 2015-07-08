@@ -1,0 +1,15 @@
+pkgbase = ttf-sil-ezra
+	pkgdesc = OpenType Hebrew font from SIL.
+	pkgver = 2.51
+	pkgrel = 2
+	url = http://scripts.sil.org/EzraSIL_Home
+	install = ttf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = ttf-sil-ezra-2.51.zip::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=EzraSIL251.zip
+	sha1sums = 97472305eea615f415c7805ba32da01a6d706283
+
+pkgname = ttf-sil-ezra
+
