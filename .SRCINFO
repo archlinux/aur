@@ -1,0 +1,18 @@
+pkgbase = perl-cryptx
+	pkgdesc = Crypto toolkit (self-contained no external libraries needed)
+	pkgver = 0.024
+	pkgrel = 1
+	url = https://metacpan.org/release/CryptX
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl-json>=2.01
+	depends = perl>=5.06
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIK/CryptX-0.024.tar.gz
+	md5sums = 1847e5f78d58497965ac83331183b418
+
+pkgname = perl-cryptx
+
