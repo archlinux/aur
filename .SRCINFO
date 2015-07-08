@@ -1,7 +1,7 @@
 pkgbase = siod
 	pkgdesc = Scheme in one day
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://people.delphiforums.com/gjc/siod.html
 	arch = i686
 	arch = x86_64
