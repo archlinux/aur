@@ -1,0 +1,30 @@
+pkgbase = gegl-git
+	pkgdesc = Graph based image processing framework
+	pkgver = GEGL_0_3_0.34.gd0bfae0
+	pkgrel = 1
+	url = http://www.gegl.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	makedepends = intltool
+	makedepends = lua
+	makedepends = openexr
+	makedepends = ffmpeg
+	makedepends = librsvg
+	makedepends = jasper
+	makedepends = libopenraw
+	depends = babl-git
+	depends = libspiro
+	optdepends = openexr: for using the openexr plugin
+	optdepends = ffmpeg: for using the ffmpeg plugin
+	optdepends = librsvg: for using the svg plugin
+	optdepends = jasper: for using the jasper plugin
+	optdepends = libopenraw: for using the openraw plugin
+	options = !libtool
+	source = git://git.gnome.org/gegl
+	md5sums = SKIP
+
+pkgname = gegl-git
+
