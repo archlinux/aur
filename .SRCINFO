@@ -1,0 +1,19 @@
+pkgbase = arkanae3_2d
+	pkgdesc = Jeu de rôles / aventure libre en 3D (only in French)
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://home.gna.org/oomadness/fr/arkanae_iii/
+	changelog = Changelog
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2-cerealizer
+	depends = sdl
+	depends = python2-pygame
+	source = http://download.gna.org/balazar/Arkanae3_2d-0.1.tar.bz2
+	source = arkanae3_2d.desktop
+	md5sums = 02da7f6a57f0d346f931449615fe3fb7
+	md5sums = f81e02c9d1965debd3b8fe0489ea5a32
+
+pkgname = arkanae3_2d
+

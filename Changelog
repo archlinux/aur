@@ -1,0 +1,8 @@
+2012-12-15 Aaron DeVore <aaron.devore@gmail.com> (0.1-r3)
+- Adopt
+- Change to use python2 setup.py install, not bdist
+- Put in sed line to fix a bug
+- Add the python2-distribute makedepends
+- Add md5sum for arkanae3_2d.desktop
+- Switch pygame dependency to renamed python2-pygame
+- Switch python-cerealizer dependency -> python2-cerealizer

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Arkanae III
+GenericName= Arkanae III
+Comment=An adventure / rpg game with a mysterious storyline. 
+Comment[fr]=Un jeu de rôle / aventure dans un monde inconnu et mystérieux.
+Icon=arkanae3_2d.png
+Exec=arkanae3_2d
+Categories=Game;
+
