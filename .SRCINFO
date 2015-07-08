@@ -1,0 +1,28 @@
+pkgbase = telegram-desktop-git
+	pkgdesc = Official desktop version of Telegram messaging app.
+	pkgver = r546.db96605
+	pkgrel = 1
+	url = https://desktop.telegram.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libunity
+	makedepends = libappindicator-gtk2
+	makedepends = xorg-server-xvfb
+	depends = ffmpeg
+	depends = icu
+	depends = jasper
+	depends = libexif
+	depends = libmng
+	depends = libwebp
+	depends = libxkbcommon-x11
+	depends = mtdev
+	depends = openal
+	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.0/single/qt-everywhere-opensource-src-5.4.0.tar.gz
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev
+	md5sums = e8654e4b37dd98039ba20da7a53877e6
+	md5sums = SKIP
+
+pkgname = telegram-desktop-git
+
