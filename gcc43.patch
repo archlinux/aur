@@ -1,0 +1,451 @@
+diff -Naur rezound-0.12.3beta~/src/backend/ALFO.h rezound-0.12.3beta/src/backend/ALFO.h
+--- rezound-0.12.3beta~/src/backend/ALFO.h	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/backend/ALFO.h	2008-03-18 22:30:06.000000000 -0400
+@@ -21,6 +21,16 @@
+ #ifndef __ALFO_H__
+ #define __ALFO_H__
+ 
++#ifndef GCC_VERSION
++#define GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
++#endif
++
++#if GCC_VERSION >= 403
++# define STATIC
++#else
++# define STATIC static
++#endif
++
+ #include "../../config/common.h"
+ 
+ #include "CSound_defs.h"
+@@ -94,7 +104,7 @@
+ };
+ 
+ #include <CNestedDataFile/anytype.h>
+-template<> static const CLFODescription string_to_anytype<CLFODescription>(const string &str,CLFODescription &ret) 
++template<> STATIC const CLFODescription string_to_anytype<CLFODescription>(const string &str,CLFODescription &ret) 
+ {
+ 	 CNestedDataFile f;
+ 	 f.parseString(s2at::remove_surrounding_quotes(str));
+@@ -102,7 +112,7 @@
+ 	 return ret;
+ }
+ 
+-template<> static const string anytype_to_string<CLFODescription>(const CLFODescription &any) 
++template<> STATIC const string anytype_to_string<CLFODescription>(const CLFODescription &any) 
+ {
+ 	CNestedDataFile f; any.writeToFile(&f,"");
+ 	return "\""+s2at::escape_chars(istring(f.asString()).searchAndReplace("\n"," ",true))+"\"";
+diff -Naur rezound-0.12.3beta~/src/backend/CGraphParamValueNode.h rezound-0.12.3beta/src/backend/CGraphParamValueNode.h
+--- rezound-0.12.3beta~/src/backend/CGraphParamValueNode.h	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/backend/CGraphParamValueNode.h	2008-03-18 22:33:30.000000000 -0400
+@@ -21,6 +21,15 @@
+ #ifndef __CGraphParamValueNode_H__
+ #define __CGraphParamValueNode_H__
+ 
++#ifndef GCC_VERSION
++#define GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
++#endif
++
++#if GCC_VERSION >= 403
++# define STATIC
++#else
++# define STATIC static
++#endif
+ 
+ #include "../../config/common.h"
+ 
+@@ -45,7 +54,7 @@
+ typedef vector<CGraphParamValueNode> CGraphParamValueNodeList;
+ 
+ #include <CNestedDataFile/anytype.h>
+-template<> static const CGraphParamValueNode string_to_anytype<CGraphParamValueNode>(const string &_str,CGraphParamValueNode &ret) 
++template<> STATIC const CGraphParamValueNode string_to_anytype<CGraphParamValueNode>(const string &_str,CGraphParamValueNode &ret) 
+ {
+ 	const string str=s2at::remove_surrounding_quotes(_str); 
+ 	const size_t pos=str.find("|"); 
+@@ -56,7 +65,7 @@
+ 	return ret; 
+ }
+ 
+-template<> static const string anytype_to_string<CGraphParamValueNode>(const CGraphParamValueNode &any) 
++template<> STATIC const string anytype_to_string<CGraphParamValueNode>(const CGraphParamValueNode &any) 
+ {
+ 	return "\""+anytype_to_string<double>(any.x)+"|"+anytype_to_string<double>(any.y)+"\""; 
+ }
+diff -Naur rezound-0.12.3beta~/src/backend/CPluginMapping.h rezound-0.12.3beta/src/backend/CPluginMapping.h
+--- rezound-0.12.3beta~/src/backend/CPluginMapping.h	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/backend/CPluginMapping.h	2008-03-18 22:30:22.000000000 -0400
+@@ -21,6 +21,16 @@
+ #ifndef __CPluginMapping_H__
+ #define __CPluginMapping_H__
+ 
++#ifndef GCC_VERSION
++#define GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
++#endif
++
++#if GCC_VERSION >= 403
++# define STATIC
++#else
++# define STATIC static
++#endif
++
+ #include "../../config/common.h"
+ 
+ #include <string>
+@@ -215,7 +225,7 @@
+ };
+ 
+ #include <CNestedDataFile/anytype.h>
+-template<> static const CPluginMapping string_to_anytype<CPluginMapping>(const string &str,CPluginMapping &ret)
++template<> STATIC const CPluginMapping string_to_anytype<CPluginMapping>(const string &str,CPluginMapping &ret)
+ {
+ 	CNestedDataFile f;
+ 	f.parseString(s2at::remove_surrounding_quotes(str));
+@@ -223,7 +233,7 @@
+ 	return ret;
+ }
+ 
+-template<> static const string anytype_to_string<CPluginMapping>(const CPluginMapping &any)
++template<> STATIC const string anytype_to_string<CPluginMapping>(const CPluginMapping &any)
+ {
+ 	CNestedDataFile f;
+ 	any.writeToFile(&f,"");
+diff -Naur rezound-0.12.3beta~/src/backend/CSound_defs.h rezound-0.12.3beta/src/backend/CSound_defs.h
+--- rezound-0.12.3beta~/src/backend/CSound_defs.h	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/backend/CSound_defs.h	2008-03-18 22:31:38.000000000 -0400
+@@ -21,6 +21,16 @@
+ #ifndef __CSound_defs_H__
+ #define __CSound_defs_H__
+ 
++#ifndef GCC_VERSION
++#define GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
++#endif
++
++#if GCC_VERSION >= 403
++# define STATIC
++#else
++# define STATIC static
++#endif
++
+ #include "../../config/common.h"
+ 
+ class CSound;
+@@ -161,10 +171,10 @@
+ 
+ // int8_t -> ...
+ 	// int8_t -> int8_t
+-	template<> static inline const int8_t convert_sample<int8_t,int8_t>(const register int8_t sample) { return sample; }
++	template<> STATIC inline const int8_t convert_sample<int8_t,int8_t>(const register int8_t sample) { return sample; }
+ 
+ 	// int8_t -> int16_t
+-	template<> static inline const int16_t convert_sample<int8_t,int16_t>(const register int8_t sample) { return sample*256; }
++	template<> STATIC inline const int16_t convert_sample<int8_t,int16_t>(const register int8_t sample) { return sample*256; }
+ 
+ 	// int8_t -> int24_t
+ 	//template<> static inline const int24_t convert_sample<int8_t,int24_t>(const register int8_t sample) { }
+@@ -173,7 +183,7 @@
+ 	//template<> static inline const int32_t convert_sample<int8_t,int32_t>(const register int8_t sample) { }
+ 
+ 	// int8_t -> float
+-	template<> static inline const float convert_sample<int8_t,float>(const register int8_t sample) { return ((float)sample)/127.0f; }
++	template<> STATIC inline const float convert_sample<int8_t,float>(const register int8_t sample) { return ((float)sample)/127.0f; }
+ 
+ 	// int8_t -> double
+ 	//template<> static inline const double convert_sample<int8_t,double>(const register int8_t sample) { }
+@@ -181,22 +191,22 @@
+ 
+ // int16_t -> ...
+ 	// int16_t -> int8_t
+-	template<> static inline const int8_t convert_sample<int16_t,int8_t>(const register int16_t sample) { return sample/256; }
++	template<> STATIC inline const int8_t convert_sample<int16_t,int8_t>(const register int16_t sample) { return sample/256; }
+ 
+ 	// int16_t -> int16_t
+-	template<> static inline const int16_t convert_sample<int16_t,int16_t>(const register int16_t sample) { return sample; }
++	template<> STATIC inline const int16_t convert_sample<int16_t,int16_t>(const register int16_t sample) { return sample; }
+ 
+ 	// int16_t -> int24_t
+-	template<> static inline const int24_t convert_sample<int16_t,int24_t>(const register int16_t sample) { int24_t r; r.set(sample*256); return r; }
++	template<> STATIC inline const int24_t convert_sample<int16_t,int24_t>(const register int16_t sample) { int24_t r; r.set(sample*256); return r; }
+ 
+ 	// int16_t -> int32_t
+-	template<> static inline const int32_t convert_sample<int16_t,int32_t>(const register int16_t sample) { return sample*65536; }
++	template<> STATIC inline const int32_t convert_sample<int16_t,int32_t>(const register int16_t sample) { return sample*65536; }
+ 
+ 	// int16_t -> float
+-	template<> static inline const float convert_sample<int16_t,float>(const register int16_t sample) { return (float)sample/32767.0f; }
++	template<> STATIC inline const float convert_sample<int16_t,float>(const register int16_t sample) { return (float)sample/32767.0f; }
+ 
+ 	// int16_t -> double
+-	template<> static inline const double convert_sample<int16_t,double>(const register int16_t sample) { return (double)sample/32767.0; }
++	template<> STATIC inline const double convert_sample<int16_t,double>(const register int16_t sample) { return (double)sample/32767.0; }
+ 
+ 
+ // int24_t -> ...
+@@ -204,16 +214,16 @@
+ 	//template<> static inline const int8_t convert_sample<int24_t,int8_t>(const int24_t sample) { }
+ 
+ 	// int24_t -> int16_t
+-	template<> static inline const int16_t convert_sample<int24_t,int16_t>(const int24_t sample) { return sample.get()>>8; }
++	template<> STATIC inline const int16_t convert_sample<int24_t,int16_t>(const int24_t sample) { return sample.get()>>8; }
+ 
+ 	// int24_t -> int24_t
+-	template<> static inline const int24_t convert_sample<int24_t,int24_t>(const int24_t sample) { return sample; }
++	template<> STATIC inline const int24_t convert_sample<int24_t,int24_t>(const int24_t sample) { return sample; }
+ 
+ 	// int24_t -> int32_t
+ 	//template<> static inline const int32_t convert_sample<int24_t,int32_t>(const int24_t sample) { }
+ 
+ 	// int24_t -> float
+-	template<> static inline const float convert_sample<int24_t,float>(const int24_t sample) { return sample.get()/8388607.0f; }
++	template<> STATIC inline const float convert_sample<int24_t,float>(const int24_t sample) { return sample.get()/8388607.0f; }
+ 
+ 	// int24_t -> double
+ 	//template<> static inline const double convert_sample<int24_t,double>(const int24_t sample) { }
+@@ -224,16 +234,16 @@
+ 	//template<> static inline const int8_t convert_sample<int32_t,int8_t>(const register int32_t sample) { }
+ 
+ 	// int32_t -> int16_t
+-	template<> static inline const int16_t convert_sample<int32_t,int16_t>(const register int32_t sample) { return sample/65536; }
++	template<> STATIC inline const int16_t convert_sample<int32_t,int16_t>(const register int32_t sample) { return sample/65536; }
+ 
+ 	// int32_t -> int24_t
+ 	//template<> static inline const int24_t convert_sample<int32_t,int24_t>(const register int32_t sample) { }
+ 
+ 	// int32_t -> int32_t
+-	template<> static inline const int32_t convert_sample<int32_t,int32_t>(const register int32_t sample) { return sample; }
++	template<> STATIC inline const int32_t convert_sample<int32_t,int32_t>(const register int32_t sample) { return sample; }
+ 
+ 	// int32_t -> float
+-	template<> static inline const float convert_sample<int32_t,float>(const register int32_t sample) { return ((double)sample)/2147483647.0; }
++	template<> STATIC inline const float convert_sample<int32_t,float>(const register int32_t sample) { return ((double)sample)/2147483647.0; }
+ 
+ 	// int32_t -> double
+ 	//template<> static inline const double  convert_sample<int32_t,double >(const register int32_t sample) { }
+@@ -241,22 +251,22 @@
+ 
+ // float -> ...
+ 	// float -> int8_t
+-	template<> static inline const int8_t convert_sample<float,int8_t>(const register float sample) { return (int8_t)floorf((sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample))*127.0f); }
++	template<> STATIC inline const int8_t convert_sample<float,int8_t>(const register float sample) { return (int8_t)floorf((sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample))*127.0f); }
+ 
+ 	// float -> int16_t
+-	template<> static inline const int16_t convert_sample<float,int16_t>(const register float sample) { return (int16_t)floorf((sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample))*32767.0f); }
++	template<> STATIC inline const int16_t convert_sample<float,int16_t>(const register float sample) { return (int16_t)floorf((sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample))*32767.0f); }
+ 
+ 	// float -> int24_t
+-	template<> static inline const int24_t convert_sample<float,int24_t>(const register float sample) { int24_t r; r.set((int_fast32_t)floorf((sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample))*8388607.0f)); return r; }
++	template<> STATIC inline const int24_t convert_sample<float,int24_t>(const register float sample) { int24_t r; r.set((int_fast32_t)floorf((sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample))*8388607.0f)); return r; }
+ 
+ 	// float -> int32_t
+-	template<> static inline const int32_t convert_sample<float,int32_t>(const register float sample) { return (int32_t) floor((double)(sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample)) * 2147483647.0); }
++	template<> STATIC inline const int32_t convert_sample<float,int32_t>(const register float sample) { return (int32_t) floor((double)(sample>1.0f ? 1.0f : (sample<-1.0f ? -1.0f : sample)) * 2147483647.0); }
+ 
+ 	// float -> float
+-	template<> static inline const float convert_sample<float,float>(const register float sample) { return sample; }
++	template<> STATIC inline const float convert_sample<float,float>(const register float sample) { return sample; }
+ 
+ 	// float -> double
+-	template<> static inline const double convert_sample<float,double>(const register float sample) { return (double)sample; }
++	template<> STATIC inline const double convert_sample<float,double>(const register float sample) { return (double)sample; }
+ 
+ 
+ // double -> ...
+@@ -264,7 +274,7 @@
+ 	//template<> static inline const int8_t convert_sample<double,int8_t>(const register double sample) { }
+ 
+ 	// double -> int16_t
+-	template<> static inline const int16_t convert_sample<double,int16_t>(const register double sample) { return (int16_t)floor((sample>1.0 ? 1.0 : (sample<-1.0 ? -1.0 : sample))*32767.0); }
++	template<> STATIC inline const int16_t convert_sample<double,int16_t>(const register double sample) { return (int16_t)floor((sample>1.0 ? 1.0 : (sample<-1.0 ? -1.0 : sample))*32767.0); }
+ 
+ 	// double -> int24_t
+ 	//template<> static inline const int24_t convert_sample<double,int24_t>(const register double sample) { }
+@@ -273,10 +283,10 @@
+ 	//template<> static inline const int32_t convert_sample<double,int32_t>(const register double sample) { }
+ 
+ 	// double -> float
+-	template<> static inline const float convert_sample<double,float>(const register double sample) { return (float)sample; }
++	template<> STATIC inline const float convert_sample<double,float>(const register double sample) { return (float)sample; }
+ 
+ 	// double -> double
+-	template<> static inline const double convert_sample<double,double>(const register double sample) { return sample; }
++	template<> STATIC inline const double convert_sample<double,double>(const register double sample) { return sample; }
+ 
+ 
+ 
+diff -Naur rezound-0.12.3beta~/src/backend/Generate/CGenerateNoiseAction.cpp rezound-0.12.3beta/src/backend/Generate/CGenerateNoiseAction.cpp
+--- rezound-0.12.3beta~/src/backend/Generate/CGenerateNoiseAction.cpp	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/backend/Generate/CGenerateNoiseAction.cpp	2008-03-18 22:33:05.000000000 -0400
+@@ -22,6 +22,7 @@
+ #include "CGenerateNoiseAction.h"
+ 
+ #include "../CActionParameters.h"
++#include <cstdlib>
+ 
+ CGenerateNoiseAction::CGenerateNoiseAction(const AActionFactory *factory,const CActionSound *actionSound,const double _noiseLength,const double _volume,const NoiseTypes _noiseType,const StereoImage _stereoImage,const double _maxParticleVelocity):
+ 	AAction(factory,actionSound),
+diff -Naur rezound-0.12.3beta~/src/misc/CNestedDataFile/anytype.h rezound-0.12.3beta/src/misc/CNestedDataFile/anytype.h
+--- rezound-0.12.3beta~/src/misc/CNestedDataFile/anytype.h	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/misc/CNestedDataFile/anytype.h	2008-03-18 22:33:11.000000000 -0400
+@@ -20,6 +20,16 @@
+ #ifndef __anytype_H__
+ #define __anytype_H__
+ 
++#ifndef GCC_VERSION
++#define GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
++#endif
++
++#if GCC_VERSION >= 403
++# define STATIC
++#else
++# define STATIC static
++#endif
++
+ #include <sstream>
+ #include <string>
+ #include <vector> // for the vector implemenation to/from string
+@@ -67,28 +77,28 @@
+ 
+ // template specializations of string_to_anytype
+ 
+-template<> static const string string_to_anytype<string>(const string &str,string &ret)                         { return s2at::unescape_chars(s2at::remove_surrounding_quotes(str)); }
++template<> STATIC const string string_to_anytype<string>(const string &str,string &ret)                         { return s2at::unescape_chars(s2at::remove_surrounding_quotes(str)); }
+ 
+-template<> static const bool string_to_anytype<bool>(const string &str,bool &ret)                             { return s2at::remove_surrounding_quotes(str)=="true" ? ret=true : ret=false; }
++template<> STATIC const bool string_to_anytype<bool>(const string &str,bool &ret)                             { return s2at::remove_surrounding_quotes(str)=="true" ? ret=true : ret=false; }
+ 
+-template<> static const char string_to_anytype<char>(const string &str,char &ret)                             { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+-template<> static const unsigned char string_to_anytype<unsigned char>(const string &str,unsigned char &ret)           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const char string_to_anytype<char>(const string &str,char &ret)                             { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const unsigned char string_to_anytype<unsigned char>(const string &str,unsigned char &ret)           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+ 
+-template<> static const short string_to_anytype<short>(const string &str,short &ret)                           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+-template<> static const unsigned short string_to_anytype<unsigned short>(const string &str,unsigned short &ret)         { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const short string_to_anytype<short>(const string &str,short &ret)                           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const unsigned short string_to_anytype<unsigned short>(const string &str,unsigned short &ret)         { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+ 
+-template<> static const int string_to_anytype<int>(const string &str,int &ret)                               { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+-template<> static const unsigned int string_to_anytype<unsigned int>(const string &str,unsigned int &ret)             { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const int string_to_anytype<int>(const string &str,int &ret)                               { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const unsigned int string_to_anytype<unsigned int>(const string &str,unsigned int &ret)             { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+ 
+-template<> static const long string_to_anytype<long>(const string &str,long &ret)                             { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+-template<> static const unsigned long string_to_anytype<unsigned long>(const string &str,unsigned long &ret)           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const long string_to_anytype<long>(const string &str,long &ret)                             { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const unsigned long string_to_anytype<unsigned long>(const string &str,unsigned long &ret)           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+ 
+-template<> static const long long string_to_anytype<long long>(const string &str,long long &ret)                   { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+-template<> static const unsigned long long string_to_anytype<unsigned long long>(const string &str,unsigned long long &ret) { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const long long string_to_anytype<long long>(const string &str,long long &ret)                   { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
++template<> STATIC const unsigned long long string_to_anytype<unsigned long long>(const string &str,unsigned long long &ret) { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0; ss >> ret; return ret; }
+ 
+-template<> static const float string_to_anytype<float>(const string &str,float &ret)                           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0.0f; ss >> ret; return ret; }
+-template<> static const double string_to_anytype<double>(const string &str,double &ret)                         { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0.0; ss >> ret; return ret; }
+-template<> static const long double string_to_anytype<long double>(const string &str,long double &ret)               { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0.0; ss >> ret; return ret; }
++template<> STATIC const float string_to_anytype<float>(const string &str,float &ret)                           { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0.0f; ss >> ret; return ret; }
++template<> STATIC const double string_to_anytype<double>(const string &str,double &ret)                         { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0.0; ss >> ret; return ret; }
++template<> STATIC const long double string_to_anytype<long double>(const string &str,long double &ret)               { istringstream ss(s2at::remove_surrounding_quotes(str)); NO_LOCALE(ss) ret=0.0; ss >> ret; return ret; }
+ 
+ // I really wished that I didn't have to explicitly use 'vector' in the definition; I'd have like to use any container with an iterator interface
+ #include <CMutex.h>
+@@ -119,31 +129,31 @@
+ 
+ // template specializations of anytype_to_string
+ 
+-template<> static const string anytype_to_string<string>(const string &any)             { return "\""+s2at::escape_chars(any)+"\""; }
++template<> STATIC const string anytype_to_string<string>(const string &any)             { return "\""+s2at::escape_chars(any)+"\""; }
+ 
+-template<> static const string anytype_to_string<bool>(const bool &any)               { return any ? "true" : "false"; }
++template<> STATIC const string anytype_to_string<bool>(const bool &any)               { return any ? "true" : "false"; }
+ 
+-template<> static const string anytype_to_string<char>(const char &any)               { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+-template<> static const string anytype_to_string<unsigned char>(const unsigned char &any)      { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<char>(const char &any)               { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<unsigned char>(const unsigned char &any)      { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+ 
+-template<> static const string anytype_to_string<short>(const short &any)              { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+-template<> static const string anytype_to_string<unsigned short>(const unsigned short &any)     { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<short>(const short &any)              { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<unsigned short>(const unsigned short &any)     { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+ 
+-template<> static const string anytype_to_string<int>(const int &any)                { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+-template<> static const string anytype_to_string<unsigned int>(const unsigned int &any)       { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<int>(const int &any)                { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<unsigned int>(const unsigned int &any)       { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+ 
+-template<> static const string anytype_to_string<long>(const long &any)               { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+-template<> static const string anytype_to_string<unsigned long>(const unsigned long &any)      { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<long>(const long &any)               { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<unsigned long>(const unsigned long &any)      { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+ 
+-template<> static const string anytype_to_string<long long>(const long long &any)          { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+-template<> static const string anytype_to_string<unsigned long long>(const unsigned long long &any) { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<long long>(const long long &any)          { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
++template<> STATIC const string anytype_to_string<unsigned long long>(const unsigned long long &any) { ostringstream ss; NO_LOCALE(ss) ss << any; return ss.str(); }
+ 
+ // I've picked a rather arbitrary way of formatting floats one way or another depending on how big it is.. I wish there were a way to output the ascii in such a way as to preserve all the information in the float (without printing the hex of it or something like that)
+ #include <istring>
+ #include <math.h> // for isnan which I hope is there (maybe fix in common.h if it's not
+-template<> static const string anytype_to_string<float>(const float &any)              { if(isnan(any)) return "0"; else { ostringstream ss; NO_LOCALE(ss) if(any>999999.0) {ss.setf(ios::scientific); ss.width(0); ss.precision(12); ss.fill(' '); } else {ss.setf(ios::fixed); ss.precision(6); ss.fill(' '); } ss << any; return istring(ss.str()).trim(); } }
+-template<> static const string anytype_to_string<double>(const double &any)             { if(isnan(any)) return "0"; else { ostringstream ss; NO_LOCALE(ss) if(any>999999.0) {ss.setf(ios::scientific); ss.width(0); ss.precision(12); ss.fill(' '); } else {ss.setf(ios::fixed); ss.precision(6); ss.fill(' '); } ss << any; return istring(ss.str()).trim(); } }
+-template<> static const string anytype_to_string<long double>(const long double &any)        { if(isnan(any)) return "0"; else { ostringstream ss; NO_LOCALE(ss) if(any>999999.0) {ss.setf(ios::scientific); ss.width(0); ss.precision(12); ss.fill(' '); } else {ss.setf(ios::fixed); ss.precision(6); ss.fill(' '); } ss << any; return istring(ss.str()).trim(); } }
++template<> STATIC const string anytype_to_string<float>(const float &any)              { if(isnan(any)) return "0"; else { ostringstream ss; NO_LOCALE(ss) if(any>999999.0) {ss.setf(ios::scientific); ss.width(0); ss.precision(12); ss.fill(' '); } else {ss.setf(ios::fixed); ss.precision(6); ss.fill(' '); } ss << any; return istring(ss.str()).trim(); } }
++template<> STATIC const string anytype_to_string<double>(const double &any)             { if(isnan(any)) return "0"; else { ostringstream ss; NO_LOCALE(ss) if(any>999999.0) {ss.setf(ios::scientific); ss.width(0); ss.precision(12); ss.fill(' '); } else {ss.setf(ios::fixed); ss.precision(6); ss.fill(' '); } ss << any; return istring(ss.str()).trim(); } }
++template<> STATIC const string anytype_to_string<long double>(const long double &any)        { if(isnan(any)) return "0"; else { ostringstream ss; NO_LOCALE(ss) if(any>999999.0) {ss.setf(ios::scientific); ss.width(0); ss.precision(12); ss.fill(' '); } else {ss.setf(ios::fixed); ss.precision(6); ss.fill(' '); } ss << any; return istring(ss.str()).trim(); } }
+ 
+ 
+ // I really wished that I didn't have to explicitly use 'vector' in the definition, I'd have like to use any container with an iterator interface
+diff -Naur rezound-0.12.3beta~/src/misc/endian_util.h rezound-0.12.3beta/src/misc/endian_util.h
+--- rezound-0.12.3beta~/src/misc/endian_util.h	2008-03-18 22:20:36.000000000 -0400
++++ rezound-0.12.3beta/src/misc/endian_util.h	2008-03-18 22:29:18.000000000 -0400
+@@ -21,6 +21,16 @@
+ #ifndef __endian_util_H__
+ #define __endian_util_H__
+ 
++#ifndef GCC_VERSION
++#define GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
++#endif
++
++#if GCC_VERSION >= 403
++# define STATIC
++#else
++# define STATIC static
++#endif
++
+ /*
+  * This header files given functionality to convenient change endian-ness of values
+  * and through the use of very few function names regardless of the type.
+@@ -131,13 +141,13 @@
+ 	}
+ 
+ 	// --- implementation for 1 byte quantities (nothing)
+-	template<> inline static void really_swap_endian_ptr<1>(void *value,const unsigned size)
++	template<> inline STATIC void really_swap_endian_ptr<1>(void *value,const unsigned size)
+ 	{
+ 		// nothing to do
+ 	}
+ 
+ 	// --- implementation for 2 byte quantities
+-	template<> inline static void really_swap_endian_ptr<2>(void *value,const unsigned size)
++	template<> inline STATIC void really_swap_endian_ptr<2>(void *value,const unsigned size)
+ 	{
+ 		const register uint16_t v=((uint16_t *)value)[0];
+ 		((uint16_t *)value)[0]=
+@@ -147,7 +157,7 @@
+ 	}
+ 
+ 	// --- implementation for 4 byte quantities
+-	template<> inline static void really_swap_endian_ptr<4>(void *value,const unsigned size)
++	template<> inline STATIC void really_swap_endian_ptr<4>(void *value,const unsigned size)
+ 	{
+ 		const register uint32_t v=((uint32_t *)value)[0];
+ 		((uint32_t *)value)[0]=
+@@ -157,7 +167,7 @@
+ 	}
+ 
+ 	// --- implementation for 8 byte quantities
+-	template<> inline static void really_swap_endian_ptr<8>(void *value,const unsigned size)
++	template<> inline STATIC void really_swap_endian_ptr<8>(void *value,const unsigned size)
+ 	{
+ 		const register uint64_t v=((uint64_t *)value)[0];
+ 		// of 8, swap upper most and lower most octets then the next two inward, and so on ..

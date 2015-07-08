@@ -1,0 +1,24 @@
+pkgbase = rezound
+	pkgdesc = ReZound aims to be a stable, open source, and graphical audio file editor primarily for but not limited to the Linux operating system.
+	pkgver = 0.12.3beta
+	pkgrel = 4
+	url = http://rezound.sourceforge.net/
+	arch = i686
+	license = GPL
+	makedepends = flex
+	makedepends = bison
+	depends = jack-audio-connection-kit
+	depends = fox
+	depends = libvorbis
+	depends = audiofile
+	depends = soundtouch
+	depends = fftw2double
+	source = http://downloads.sourceforge.net/sourceforge/rezound/rezound-0.12.3beta.tar.gz
+	source = flacpatch
+	source = gcc43.patch
+	md5sums = df109c9d9ad6d27214a7417df583115d
+	md5sums = 440991794129922eb27623a616ab3df8
+	md5sums = 65d8d469c2c164f18849ef6ca1f64cfe
+
+pkgname = rezound
+
