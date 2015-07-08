@@ -1,6 +1,6 @@
 pkgbase = chromium-pepper-flash-standalone
 	pkgdesc = Google Chrome's Pepper Flash plugin for Chromium (stable version) - Standalone version
-	pkgver = 18.0.0.194
+	pkgver = 18.0.0.204
 	pkgrel = 1
 	url = http://www.google.com/chrome
 	install = chromium-pepper-flash.install
