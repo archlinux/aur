@@ -11,7 +11,7 @@ pkgbase = osticket
 	depends = php-apache>=4.3.10
 	depends = mysql>=4.4.0
 	source = http://osticket.com/sites/default/files/download/osTicket-v1.9.9.zip
-	md5sums = 35ae9eebd702833e67cab06f77723ece
+	md5sums = f5519cad52b1448664c6a9b67d930465
 
 pkgname = osticket
 
