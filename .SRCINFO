@@ -1,0 +1,14 @@
+pkgbase = sbase-git
+	pkgdesc = A suckless variant of the *nix core utilities - git checkout
+	pkgver = 0.r1472.g47c05f9
+	pkgrel = 1
+	url = http://git.suckless.org/sbase
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git://git.suckless.org/sbase
+	sha256sums = SKIP
+
+pkgname = sbase-git
+
