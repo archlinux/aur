@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-web-video-server
+	pkgdesc = ROS - A ROS Node to Stream Image Topics Via a MJPEG Server.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://ros.org/wiki/web_video_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslib
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ffmpeg
+	depends = ros-indigo-roslib
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-cv-bridge
+	depends = ffmpeg
+	source = web_video_server::git+https://github.com/RobotWebTools-release/web_video_server-release.git#tag=release/indigo/web_video_server/0.0.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-web-video-server
+
