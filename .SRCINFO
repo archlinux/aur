@@ -1,0 +1,23 @@
+pkgbase = pnmixer-gtk2
+	pkgdesc = Popular volume mixer systray applet built with gtk2
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/nicklan/pnmixer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gettext
+	makedepends = pkg-config
+	makedepends = autoconf
+	makedepends = automake
+	depends = gtk2>=2.22
+	depends = alsa-lib
+	depends = glib2
+	provides = pnmixer
+	conflicts = pnmixer
+	conflicts = pnmixer-git
+	source = https://github.com/nicklan/pnmixer/archive/master.tar.gz
+	md5sums = 73a619600472697f6c2830d25fc2061f
+
+pkgname = pnmixer-gtk2
+
