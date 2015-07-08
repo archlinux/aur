@@ -1,0 +1,19 @@
+pkgbase = p4v
+	pkgdesc = Perforce Visual Client
+	pkgver = 2014.3.1007540
+	pkgrel = 25
+	url = http://www.perforce.com
+	install = p4v.install
+	arch = i686
+	arch = x86_64
+	license = custom:p4v
+	depends = libxcb
+	options = !strip
+	source = http://www.perforce.com/downloads/perforce/r14.3/bin.linux26/p4v.tgz
+	source = p4v.desktop
+	source = p4admin.desktop
+	source = p4merge.desktop
+	source = LICENSE
+
+pkgname = p4v
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=P4Admin
+Comment=Perforce Administration Tool
+Exec=p4admin
+Icon=p4admin
+Terminal=false
+Type=Application
+Categories=GNOME;Application;Development;
