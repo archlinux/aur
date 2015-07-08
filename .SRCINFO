@@ -1,0 +1,11 @@
+pkgbase = cronutils
+	pkgver = 1.8
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache
+	source = https://github.com/google/cronutils/archive/version/1.8.tar.gz
+	md5sums = 827fdf82ed8ee3a8cb41575ef0ada361
+
+pkgname = cronutils
+
