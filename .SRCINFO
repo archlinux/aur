@@ -1,0 +1,15 @@
+pkgbase = screengrab
+	pkgdesc = Crossplatform tool for grabbing screenshots of your desktop.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://screengrab.doomer.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake>=2.6
+	depends = qt4>=4.6.0
+	source = screengrab-1.2.1.tar.gz::http://screengrab.doomer.org/download/screengrab-1_2_1_/
+	md5sums = b233b108558c509419bd754ba1c2c318
+
+pkgname = screengrab
+
