@@ -6,12 +6,12 @@ pkgbase = ptop
 	arch = any
 	license = MIT
 	depends = ncurses
-	depends = python
+	depends = python2
 	depends = drawille-git
 	depends = npyscreen-git
-	depends = python-argparse
+	depends = python2-argparse
 	depends = psutils
-	depends = python-setuptools
+	depends = python2-setuptools
 	source = https://github.com/black-perl/ptop/archive/0.0.6.tar.gz
 	md5sums = 84bbfa602758173c749a885fb6556e5b
 
