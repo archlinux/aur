@@ -1,0 +1,20 @@
+pkgbase = gnome2-icon-theme-symbolic
+	pkgdesc = GNOME 2 icon theme, symbolic icons
+	pkgver = 2.31.0
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = gnome-icon-theme-symbolic.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = icon-naming-utils
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	depends = librsvg
+	provides = gnome-icon-theme-symbolic
+	conflicts = gnome-icon-theme-symbolic
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-icon-theme-symbolic/2.31/gnome-icon-theme-symbolic-2.31.0.tar.bz2
+	sha256sums = 5fa028e7263e15ef58ab21963303becd6ecd6321c3e3e570820fa434203191bd
+
+pkgname = gnome2-icon-theme-symbolic
+
