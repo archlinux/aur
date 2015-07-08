@@ -1,0 +1,18 @@
+diff -u -r freetype-2.5.4/src/truetype/ttobjs.c freetype-2.5.4-env/src/truetype/ttobjs.c
+--- freetype-2.5.4/src/truetype/ttobjs.c	2014-12-06 18:52:13.098214719 +0100
++++ freetype-2.5.4-env/src/truetype/ttobjs.c	2014-12-10 09:13:04.418886699 +0100
+@@ -1264,10 +1264,11 @@
+       return FT_THROW( Could_Not_Find_Context );
+ 
+ #ifdef TT_CONFIG_OPTION_SUBPIXEL_HINTING
+-    driver->interpreter_version = TT_INTERPRETER_VERSION_38;
+-#else
+-    driver->interpreter_version = TT_INTERPRETER_VERSION_35;
++    if ( getenv( "FT2_SUBPIXEL_HINTING" ) )
++      driver->interpreter_version = TT_INTERPRETER_VERSION_38;
++    else
+ #endif
++      driver->interpreter_version = TT_INTERPRETER_VERSION_35;
+ 
+ #else /* !TT_USE_BYTECODE_INTERPRETER */
+ 

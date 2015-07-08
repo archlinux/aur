@@ -1,0 +1,29 @@
+pkgbase = libreoffice-uglyfix-freetype2
+	pkgdesc = Installs freetype2 .so files in the LibreOffice directory to fix font ugliness
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://freetype.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = bzip2
+	depends = sh
+	depends = libpng
+	depends = libreoffice-common
+	options = !docs
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.6.tar.bz2
+	source = libreoffice-uglyfix.patch
+	source = freetype-2.2.1-enable-valid.patch
+	source = freetype-2.5.1-enable-spr.patch
+	source = freetype-2.5.1-enable-sph.patch
+	source = env_FT2_SUBPIXEL_HINTING.diff
+	sha256sums = 8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e
+	sha256sums = 78932b6044c92367bf1eca07910b1c533ce6a0e721233feaeb27e6019adc3b81
+	sha256sums = 54c83a91b0b2ad7edad7df00a2c26a11ca18431a8e323db9471268a139c46f7e
+	sha256sums = 1c9a03e4cf07799deb7983b47b15f7557a8dbf9b8a7690910d017b6fd6804a23
+	sha256sums = ae89da5ce6d196abd5fe44dfbec16e731d7045c0cdc043a503ed3f120663bcfd
+	sha256sums = 4b0a220ea989da35fc40f58c20bed092a901ecc35f28c45b02da38c96c470855
+
+pkgname = libreoffice-uglyfix-freetype2
+
