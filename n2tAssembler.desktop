@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=nand2tetris Assembler
+Comment=Translates programs from the Hack assembly language to Hack binary code.
+Exec=n2tAssembler
+Icon=java
+Categories=Education;

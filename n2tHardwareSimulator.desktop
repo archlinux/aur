@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=nand2tetris Hardware Simulator
+Comment=Simulates and tests logic gates and chips implemented in HDL.
+Exec=n2tHardwareSimulator
+Icon=java
+Categories=Education;

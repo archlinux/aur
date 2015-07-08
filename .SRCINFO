@@ -1,0 +1,32 @@
+pkgbase = nand2tetris
+	pkgdesc = Software suite accompanying Nand2Tetris course.
+	pkgver = 2.5
+	pkgrel = 3
+	url = http://www.nand2tetris.org/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime
+	source = http://www.nand2tetris.org/software/nand2tetris.zip
+	source = n2tCPUEmulator.run
+	source = n2tVMEmulator.run
+	source = n2tJackCompiler.run
+	source = n2tHardwareSimulator.run
+	source = n2tAssembler.run
+	source = n2tCPUEmulator.desktop
+	source = n2tVMEmulator.desktop
+	source = n2tHardwareSimulator.desktop
+	source = n2tAssembler.desktop
+	md5sums = 1e8c2c77698fddfe570f214db56b7666
+	md5sums = 9c06f1ca0a0323638a7523f0d4dd85a3
+	md5sums = 99d421df02cb61b735c998e524889ca6
+	md5sums = f2d16dd061e09dcc128e944ba74da237
+	md5sums = 19d7f3c833d2e689c122729151ba2e02
+	md5sums = 06a58b051ef4cf27372ae92f1540a6f5
+	md5sums = 3170c0923d01e8f70378d668ac8a2eed
+	md5sums = be9557bc67ba66c63f565bfcf35f2550
+	md5sums = fa26bd9b1d54bf67c357d560b0b545bc
+	md5sums = abf1c846bf3e9216bfaaea0acc0478f1
+
+pkgname = nand2tetris
+

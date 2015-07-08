@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=nand2tetris VM Emulator
+Comment=Emulates the operation of the virtual machine for Hack.
+Exec=n2tVMEmulator
+Icon=java
+Categories=Education;

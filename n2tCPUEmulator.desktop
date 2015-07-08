@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=nand2tetris CPU Emulator
+Comment=Emulates the operation of the Hack computer system.
+Exec=n2tCPUEmulator
+Icon=java
+Categories=Education;
