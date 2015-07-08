@@ -1,0 +1,16 @@
+pkgbase = python-parse-docs
+	pkgdesc = Documentation for python-parse and python2-parse
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/parse
+	changelog = Changelog
+	arch = any
+	license = BSD
+	makedepends = python-docutils
+	source = http://pypi.python.org/packages/source/p/parse/parse-1.6.4.tar.gz
+	source = license.txt
+	md5sums = 87bfd55c25d1aea2d7499197254f3a6f
+	md5sums = db7ed26afd7dab7d5cb906e06ea68988
+
+pkgname = python-parse-docs
+
