@@ -1,0 +1,19 @@
+pkgbase = snappy-git
+	pkgdesc = A fast compressor/decompressor library
+	pkgver = r92.efb39e8
+	pkgrel = 1
+	url = http://code.google.com/p/snappy/
+	arch = any
+	license = BSD
+	checkdepends = zlib
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	conflicts = snappy
+	conflicts = snappy-git
+	replaces = snappy
+	source = git+https://github.com/google/snappy.git
+	md5sums = SKIP
+
+pkgname = snappy-git
+
