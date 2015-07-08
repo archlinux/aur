@@ -1,0 +1,14 @@
+pkgbase = yakuake-skin-steampunk
+	pkgdesc = SteampunK Yakuake skin. This item is a part of Steam-Powered Linux KDE theme set.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=158529
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-sa
+	depends = yakuake
+	source = http://kde-look.org/CONTENT/content-files/158529-SteampunK.tar.gz
+	md5sums = 208ac5480f61316d63008e06c9053f62
+
+pkgname = yakuake-skin-steampunk
+
