@@ -1,11 +1,12 @@
 pkgbase = cdpr
 	pkgdesc = cdpr is used to decode a Cisco Disovery Protocol (CDP) packet
 	pkgver = 2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/cdpr
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = libpcap
 	source = http://heanet.dl.sourceforge.net/sourceforge/cdpr/cdpr-2.4.tgz
 	md5sums = ee0f112e1a914168d088e4e0291efbcb
 
