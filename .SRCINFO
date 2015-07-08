@@ -1,16 +1,15 @@
 pkgbase = vim-eunuch
 	pkgdesc = Vim sugar for the UNIX shell commands that need it the most, by tpope
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://www.vim.org/scripts/script.php?script_id=4300
+	pkgrel = 2
+	url = https://github.com/tpope/vim-eunuch
 	install = vimdoc.install
 	arch = any
 	groups = vim-plugins
 	license = custom:vim
 	depends = vim
-	provides = vim-eunuch
-	source = vim-eunuch.zip::http://www.vim.org/scripts/download_script.php?src_id=21847
-	sha256sums = 687f615c3b7c204f14560d9df75ff20c310a49253152e2d72452682489707c8b
+	source = https://github.com/tpope/vim-eunuch/archive/v1.1.tar.gz
+	sha256sums = e452ddd541ef10e5fa9af48e36b181df6d95e5fe96fcea56cf41b20f99db8532
 
 pkgname = vim-eunuch
 
