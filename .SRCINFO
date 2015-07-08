@@ -1,0 +1,18 @@
+pkgbase = babl-git
+	pkgdesc = babl is a dynamic, any to any, pixel format translation library.
+	pkgver = BABL_0_1_12.28.gdf222a5
+	pkgrel = 1
+	url = http://www.gegl.org/babl
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = glibc
+	provides = babl
+	conflicts = babl
+	options = !libtool
+	source = git://git.gnome.org/babl
+	md5sums = SKIP
+
+pkgname = babl-git
+
