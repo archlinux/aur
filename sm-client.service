@@ -1,0 +1,15 @@
+[Unit]
+Description=Sendmail Mail Transport Client
+After=syslog.target network.target sendmail.service
+Wants=sendmail.service
+BindsTo=sendmail.service
+
+[Service]
+Type=forking
+PIDFile=/var/spool/clientmqueue/sm-client.pid
+EnvironmentFile=/etc/conf.d/sendmail
+ExecStartPre=/usr/bin/rm -f /var/spool/mqueue/xf*
+ExecStart=/usr/sbin/sendmail $CLIENTMQUEUE_OPTS > /dev/null 2>&1
+
+[Install]
+WantedBy=multi-user.target

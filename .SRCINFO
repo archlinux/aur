@@ -1,0 +1,34 @@
+pkgbase = sendmail
+	pkgdesc = The sendmail MTA
+	pkgver = 8.14.9
+	pkgrel = 1
+	url = http://www.sendmail.org
+	install = sendmail.install
+	arch = i686
+	arch = x86_64
+	license = Sendmail License
+	depends = db
+	depends = cyrus-sasl
+	provides = sendmail=8.14
+	conflicts = msmtp-mta
+	conflicts = postfix
+	conflicts = exim
+	conflicts = opensmtpd
+	backup = etc/conf.d/sendmail
+	backup = etc/mail/aliases
+	backup = etc/mail/sendmail.cf
+	source = ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.14.9.tar.gz
+	source = sendmail.service
+	source = sendmail.conf
+	source = sm-client.service
+	md5sums = 6a3bdceffa592316f830be289a4bd783
+	md5sums = a11b2aabaa97305431220c38c486081c
+	md5sums = 4b60270921f77772d1ba941d831b732d
+	md5sums = 3c95e29825ea97fc425e2e1ac42d1f22
+	sha256sums = f5a497151abd8f341cca0736c3f9bd703d574d93146b2989689dff6d7a445d75
+	sha256sums = 380edeb289dfdfc5b0d4ea38df3a0fd35e6f83eeee76254ec7b3506eadfb674f
+	sha256sums = 39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580
+	sha256sums = ecbd0a27e868d73d87fcfec292c19ea9479d0a8e9783788596d9add5e012218f
+
+pkgname = sendmail
+
