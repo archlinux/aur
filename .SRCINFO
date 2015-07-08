@@ -1,7 +1,7 @@
 pkgbase = libbitcoin-server-git
 	pkgdesc = Bitcoin Full Node and Query Server
-	pkgver = 20150519
-	pkgrel = 2
+	pkgver = 20150707
+	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-server
 	install = bs.install
 	arch = i686
