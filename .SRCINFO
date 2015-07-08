@@ -1,0 +1,31 @@
+pkgbase = tor-browser-es
+	pkgdesc = Navegación anónima utilizando Firefox y Tor
+	pkgver = 4.5.3
+	pkgrel = 1
+	url = https://www.torproject.org/projects/torbrowser.html
+	install = tor-browser-es.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dbus-glib
+	depends = gtk2
+	optdepends = kdebase-kdialog: KDE dialog boxes
+	optdepends = libnotify: Gnome dialog boxes
+	optdepends = zenity: simple dialog boxes
+	source = tor-browser-es.desktop
+	source = tor-browser-es.png
+	source = tor-browser-es.sh
+	sha1sums = 28e65f7537e7dc76af475166365ad0deabb91cb9
+	sha1sums = 7a283313a21bb9cd8331891f99d2646186231636
+	sha1sums = d4da2996d4b99d847a9ed382401b9f41cea4098b
+	source_i686 = https://www.torproject.org/dist/torbrowser/4.5.3/tor-browser-linux32-4.5.3_es-ES.tar.xz
+	source_i686 = https://www.torproject.org/dist/torbrowser/4.5.3/tor-browser-linux32-4.5.3_es-ES.tar.xz.asc
+	sha256sums_i686 = 196cfd81e726d0e1f7ecf0fe0183eac6b7e2cf8e8c5bc89b9105ce4d82e0922a
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://www.torproject.org/dist/torbrowser/4.5.3/tor-browser-linux64-4.5.3_es-ES.tar.xz
+	source_x86_64 = https://www.torproject.org/dist/torbrowser/4.5.3/tor-browser-linux64-4.5.3_es-ES.tar.xz.asc
+	sha256sums_x86_64 = df7961b4384012eedd96c31d62633c9b95ae727f12f5e650ffdf7f6d5ca30617
+	sha256sums_x86_64 = SKIP
+
+pkgname = tor-browser-es
+
