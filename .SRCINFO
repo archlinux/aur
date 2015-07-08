@@ -1,0 +1,23 @@
+pkgbase = wikkid-bzr
+	pkgdesc = A wiki that is backed by Bazaar that allows local branching of the wiki for later merging. Also doesn't have any page locks and uses Bazaar's three way merging.
+	pkgver = 74
+	pkgrel = 1
+	url = https://launchpad.net/wikkid
+	arch = any
+	license = AGPL
+	makedepends = python2-setuptools
+	depends = bzr
+	depends = python2-pygments
+	depends = python2-jinja
+	depends = python2-webob
+	depends = python2-zope-interface
+	depends = python2-docutils
+	depends = python2-lxml
+	depends = python2-markdown
+	depends = python2-beautifulsoup3
+	conflicts = wikkid
+	source = bzr+http://bazaar.launchpad.net/~wikkid/wikkid/trunk/
+	md5sums = SKIP
+
+pkgname = wikkid-bzr
+
