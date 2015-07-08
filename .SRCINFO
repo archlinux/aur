@@ -1,0 +1,35 @@
+pkgbase = xmobar-git
+	pkgdesc = A minimal status bar for the XMonad Window Manager.
+	pkgver = 20140211
+	pkgrel = 1
+	url = http://projects.haskell.org/xmobar/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-x11
+	makedepends = haskell-x11-xft
+	makedepends = haskell-mtl
+	makedepends = haskell-parsec
+	makedepends = haskell-stm
+	makedepends = haskell-utf8-string
+	makedepends = haskell-regex-compat
+	makedepends = haskell-http
+	makedepends = git
+	depends = wireless_tools
+	depends = gmp
+	depends = libxml2
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxft
+	optdepends = haskell-alsa-mixer: Enables Volume plugin.
+	optdepends = haskell-dbus: Control xmobar with DBUS.
+	optdepends = haskell-libmpd: Enables MPD plugin.
+	optdepends = haskell-hinotify: Support for inotify.
+	optdepends = haskell-timezone-olson: With haskell-timezone-series, enables DateZone plugin
+	optdepends = haskell-timezone-series: With haskell-timezone-olson, enables DateZone plugin
+	conflicts = xmobar
+	conflicts = xmobar-darcs
+
+pkgname = xmobar-git
+
