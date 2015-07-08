@@ -1,0 +1,26 @@
+pkgbase = freebasic
+	pkgdesc = A free BASIC compiler
+	pkgver = 1.03.0
+	pkgrel = 1
+	url = http://www.freebasic.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	depends = gcc-libs
+	depends = libxpm
+	depends = libtinfo
+	provides = fbc
+	conflicts = freebasic-examples
+	options = staticlibs
+	source_i686 = fbc.sh
+	source_i686 = http://downloads.sourceforge.net/fbc/FreeBASIC-1.03.0-linux-x86.tar.xz
+	md5sums_i686 = 443851851bbd1610448a1df3eb8da6b5
+	md5sums_i686 = 6d20df94ab8fe76c6936c6adf3dce9dc
+	source_x86_64 = fbc.sh
+	source_x86_64 = http://downloads.sourceforge.net/fbc/FreeBASIC-1.03.0-linux-x86_64.tar.xz
+	md5sums_x86_64 = 443851851bbd1610448a1df3eb8da6b5
+	md5sums_x86_64 = fd47aa49f04220a85a227f4c687fa377
+
+pkgname = freebasic
+
