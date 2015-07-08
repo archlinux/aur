@@ -1,31 +1,33 @@
-# Maintainer: Morgan Mullaney  <jump@fastmail.fm>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Morgan Mullaney  <jump@fastmail.fm>
 # Contributor: Techlive Zheng <techlivezheng@gmail.com>
 
 pkgname=google-musicmanager
 pkgver=1.0.196.8837_r0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library."
 arch=('i686' 'x86_64')
 url="http://music.google.com"
 license=('custom:musicmanager')
-depends=('flac' 'fontconfig' 'libogg' 'freetype2' 'libvorbis' 'xdg-utils' 'libidn' 'qtwebkit')
+depends=('flac'
+         'fontconfig'
+         'libogg'
+         'freetype2'
+         'libvorbis'
+         'xdg-utils'
+         'libidn'
+         'qtwebkit')
 optdepends=('log4cxx')
 options=(!strip)
 install=${pkgname}.install
-
-if [ "$CARCH" = "x86_64" ]; then
-    _arch='amd64'
-    md5sums=('03987c7a6b53dee9d75fe15dd9aed0f9')
-elif [ "$CARCH" = "i686" ]; then
-    _arch='i386'
-    md5sums=('663ff763de2f01de02218f6fb330ec9d')
-fi
-
-source=("google-musicmanager-beta-${_arch}-${pkgver}.deb::http://dl.google.com/linux/direct/google-musicmanager-beta_current_${_arch}.deb")
+source_i686=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_i386.deb")
+source_x86_64=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_amd64.deb")
+md5sums_i686=('663ff763de2f01de02218f6fb330ec9d')
+md5sums_x86_64=('03987c7a6b53dee9d75fe15dd9aed0f9')
 
 build() {
     #Get binary sources.
-    ar -xv google-musicmanager-beta-${_arch}-${pkgver}.deb
+    ar -xv google-musicmanager-beta-_current_*.deb
     tar -xvf data.tar.lzma
     tar -xvf control.tar.gz
 
@@ -49,10 +51,10 @@ package() {
     #Installing icons to /usr/share/icons/hicolor/
     for i in 16 32 48 128
     do
-        install -D -m644 $pkgdir/opt/google/musicmanager/product_logo_${i}.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/google-musicmanager.png
+        install -Dm644 $pkgdir/opt/google/musicmanager/product_logo_${i}.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/google-musicmanager.png
     done
 
-    install -D -m644 $pkgdir/opt/google/musicmanager/google-musicmanager.desktop $pkgdir/usr/share/applications
+    install -Dm644 $pkgdir/opt/google/musicmanager/google-musicmanager.desktop $pkgdir/usr/share/applications
 
     ln -s /opt/google/musicmanager/google-musicmanager $pkgdir/usr/bin/
 }
