@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -73,7 +73,7 @@ package() {
   
   install -dm755 "${pkgdir}"/{etc/{openvpn,private-internet-access},usr/{lib/system/{systemd/system-sleep,openvpn@.service.d},{bin,share/man/man8}}}
 
-  install -Dm644 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
+  install -Dm600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
   install -m755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
   install -m644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
   install -m755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
