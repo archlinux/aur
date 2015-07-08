@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=cave9
+Comment=A 3D gravity cave-exploration game based on the classic SFCave
+Exec=cave9
+Icon=cave9.png
+Terminal=false
+Categories=Game;ArcadeGame;
