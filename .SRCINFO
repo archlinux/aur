@@ -1,0 +1,23 @@
+pkgbase = childsplay
+	pkgdesc = A suite of educational games for young children
+	pkgver = 2.6.5
+	pkgrel = 2
+	url = http://www.childsplay.mobi
+	install = childsplay.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-pygame
+	depends = pygtk
+	depends = python2-sqlalchemy
+	depends = python2-numpy
+	optdepends = childsplay-alphabet-sounds
+	source = http://download.savannah.gnu.org/releases/childsplay/childsplay-2.6.5.tgz
+	source = childsplay.desktop
+	source = childsplay
+	sha256sums = 16b232db3e1806e37748ecf563523cfd7da78fe6b86a625c63e58993b73ca88a
+	sha256sums = 84414248cb8b55d73569414884ef2cbd8c10f3ddf7803d10f912a2f3fcf42e5f
+	sha256sums = 487b8649729b3d8fae8c7d8fb2f76450abf516354e6b4c0d7bf280332ff8f1b1
+
+pkgname = childsplay
+

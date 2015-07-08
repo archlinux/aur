@@ -1,0 +1,13 @@
+post_install () {
+  ln -s /usr/local/games/childsplay/childsplay /usr/bin/childsplay
+  echo "To use childsplay with your own language, use"
+  echo "childsplay --language={choose from ar ca de el en es fr it nb nl pl pt ro sl sv uk vi}"
+}
+
+post_upgrade () {
+  post_install
+}
+
+post_remove () {
+  rm -rf /usr/bin/childsplay
+}
