@@ -1,7 +1,7 @@
 pkgbase = testssl.sh
 	pkgdesc = Testing TLS/SSL encryption
 	pkgver = 2.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/drwetter/testssl.sh
 	arch = any
 	license = GPL

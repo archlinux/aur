@@ -3,7 +3,7 @@
 
 pkgname='testssl.sh'
 pkgver=2.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Testing TLS/SSL encryption"
 arch=('any')
 url="https://github.com/drwetter/testssl.sh"
