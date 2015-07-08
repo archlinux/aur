@@ -1,8 +1,9 @@
-# Maintainer: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Submitter: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Mantainer: ziu <frances[dot]albanese[at]gmail[dot]com>
 
 pkgname=anoise
 pkgver=0.0.25
-pkgrel=0
+pkgrel=2
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 license=('GPL3')
@@ -12,7 +13,7 @@ conflicts=()
 depends=('anoise-media' 'python-distutils-extra' 'gstreamer0.10' 'gstreamer0.10-python')
 optdepends=()
 source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-md5sums=('1f03caa5b7a9ba59cae1814c7aacad5e')
+sha256sums=('7d6215cfcbce1c5a9a48c61d62a2851f142dac21b818f8820aed37ab84a6f2a0')
 
 package() {
   cd "${srcdir}"
