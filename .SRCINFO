@@ -8,7 +8,7 @@ pkgbase = npyscreen-git
 	makedepends = git
 	depends = python2
 	depends = python2-setuptools
-	conflicts = python-npyscreen
+	conflicts = python2-npyscreen
 	source = git+https://github.com/npcole/npyscreen.git
 	sha256sums = SKIP
 
