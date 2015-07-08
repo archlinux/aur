@@ -1,0 +1,9 @@
+[Unit]
+Description=Multiple Spanning Tree daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/mstpd
+
+[Install]
+WantedBy=multi-user.target
