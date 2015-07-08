@@ -1,0 +1,16 @@
+pkgbase = justbrowsing-systemd
+	pkgdesc = SystemD Unit files and boot script to start JustBrowsing session
+	pkgver = 1.1
+	pkgrel = 7
+	url = https://github.com/justbrowsing/justbrowsing-systemd
+	install = jb-systemd.install
+	arch = any
+	groups = justbrowsing
+	license = GPL3
+	depends = systemd
+	depends = polkit
+	optdepends = jb-config: load/save and manage settings
+	source = https://github.com/justbrowsing/justbrowsing-systemd/archive/master.zip
+
+pkgname = justbrowsing-systemd
+

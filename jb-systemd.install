@@ -1,0 +1,22 @@
+pre_install() {
+  rm "/etc/systemd/system/autologin@.service"
+  rm "/etc/systemd/system/restoreboot.service"
+}
+
+post_install() {
+  mkdir -p "/etc/systemd/system/getty.target.wants" "/etc/systemd/system/multi-user.target.wants"
+  ln -s "/usr/lib/systemd/system/autologin@.service" "/etc/systemd/system/getty.target.wants/autologin@.service"
+  ln -s "/usr/lib/systemd/system/autologin@.service" "/etc/systemd/system/getty.target.wants/autologin@tty1.service"
+  ln -s "/usr/lib/systemd/system/restoreboot.service" "/etc/systemd/system/multi-user.target.wants/restoreboot.service"
+}
+
+post_upgrade() {
+  post_remove $1
+  post_install $1
+}
+
+post_remove() {
+  rm "/etc/systemd/system/getty.target.wants/autologin@.service"
+  rm "/etc/systemd/system/getty.target.wants/autologin@tty1.service"
+  rm "/etc/systemd/system/multi-user.target.wants/restoreboot.service"
+}
