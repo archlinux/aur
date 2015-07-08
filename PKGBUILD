@@ -1,7 +1,7 @@
 # Maintainer: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('custom:"BSD-3-Clause"',
 depends=('boost' 'libcl')
 makedepends=('cmake' 'valgrind' 'gperftools' 'protobuf' 'opencl-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/actor-framework/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('3ccf7e469740e750eef31f14b965b00f7b6e3a89b05086a088ca905b3b1a04e6')
+sha256sums=('156c9548dba4ed815eff7df58d470647304f59701b6005cb2baf32cf74c19df6')
 
 build() {
   cd ${pkgname}-${pkgver}
