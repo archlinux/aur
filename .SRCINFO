@@ -1,0 +1,24 @@
+pkgbase = krusader-git
+	pkgdesc = Advanced twin panel file manager for KDE. (GIT version)
+	pkgver = 15.08.beta.r5088.49b8589
+	pkgrel = 1
+	url = http://www.krusader.org
+	install = krusader-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	makedepends = acl
+	depends = kparts
+	depends = hicolor-icon-theme
+	optdepends = acl: Access control list utilities
+	provides = krusader
+	conflicts = krusader
+	source = git://anongit.kde.org/krusader
+	sha1sums = SKIP
+
+pkgname = krusader-git
+
