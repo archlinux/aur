@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=gtk-setpwc
+Comment=A GTK frontend for setpwc
+Exec=gtksetpwc.pl
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/gtksetpwc.png
+Categories=GTK;Utility;
+
+

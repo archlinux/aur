@@ -1,0 +1,20 @@
+pkgbase = gtksetpwc
+	pkgdesc = GTK2 frontend for setpwc
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://gtksetpwc.spiderou.net/
+	arch = i686
+	arch = x86_64
+	license = custom:"CeCILL"
+	depends = setpwc
+	depends = perl
+	depends = gtk2-perl
+	source = http://gtksetpwc.spiderou.net/files/gtksetpwc-0.2.tar.bz2
+	source = http://gtksetpwc.spiderou.net/files/webcam.png
+	source = gtksetpwc.desktop
+	md5sums = d8702f6a8405e84ea89eae36d6b6ae2e
+	md5sums = 76f6153d38d87b53bed8d19c9947d6fe
+	md5sums = 0ed9dcbf01784d40b9328ecdfe508e4e
+
+pkgname = gtksetpwc
+
