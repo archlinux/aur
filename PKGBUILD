@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-consensus
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Libbitcoin Consensus Library"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-consensus"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('5f04904b59fa9ea6d9a69ef4456f2ddaa0f8ab24f9d303b69a14177c2c7092a2')
+sha256sums=('d99c3e2dfba9267b3732f805645b241825aad8b389c3491870250bbe14719134')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
