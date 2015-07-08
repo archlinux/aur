@@ -1,0 +1,15 @@
+pkgbase = nodejs-npm2arch
+	pkgdesc = Convert NPM package to a PKGBUILD for ArchLinux
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/Filirom1/npm2arch
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = npm2arch-0.1.19.tgz
+	source = http://registry.npmjs.org/npm2arch/-/npm2arch-0.1.19.tgz
+	sha1sums = 05dbc5e5ce6ae0306e22d9811df170cd26454a2d
+
+pkgname = nodejs-npm2arch
+
