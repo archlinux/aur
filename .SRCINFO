@@ -1,0 +1,14 @@
+pkgbase = vimim
+	pkgdesc = The VimIM is a Vim plugin designed as an independent IM (Input Method) to support CJK search and CJK input, with or without vim omni popup window.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2506
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim>=7.0
+	source = vimim.vim::http://www.vim.org/scripts/download_script.php?src_id=23122
+	md5sums = d76596281165b27194c965c2eb73a6e0
+
+pkgname = vimim
+
