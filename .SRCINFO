@@ -1,0 +1,13 @@
+pkgbase = python-funcsigs
+	pkgdesc = Python function signatures from PEP362
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/funcsigs/
+	arch = any
+	license = Apache
+	depends = python
+	source = https://pypi.python.org/packages/source/f/funcsigs/funcsigs-0.4.tar.gz
+	sha256sums = d83ce6df0b0ea6618700fe1db353526391a8a3ada1b7aba52fed7a61da772033
+
+pkgname = python-funcsigs
+
