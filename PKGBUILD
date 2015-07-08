@@ -16,7 +16,7 @@ install=crashplan-pro.install
 source=(http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_${pkgver}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('b63a8fc93675c3ee54a2686954f4fc5236abbc5abd886d4ed3d97e6933909aef'
+sha256sums=('b8010fa3b33c9535bdff385216e383629b510dc24916b0ec7bc7a89aa0c60b4a'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'd8667e149439e4c6f35779a6d04ce5215530049579011eb1db5feb2d6976420e')
 
