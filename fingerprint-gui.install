@@ -1,0 +1,54 @@
+post_install() {
+  post_upgrade
+  # Re-initialize the UPEK device
+  if [[ `lsusb -d 0483:` ]] || [[ `lsusb -d 147e:` ]]
+  then
+    if [[ `which udevadm` ]]
+    then
+        for ID in 2015 2016
+        do
+            udevadm trigger --subsystem-match=usb --attr-match=idVendor=0483 --attr-match=idProduct=$ID
+        done
+        for ID in 2015 2016 1000 1001 3000
+        do
+            udevadm trigger --subsystem-match=usb --attr-match=idVendor=147e --attr-match=idProduct=$ID
+        done
+    fi
+  fi
+}
+
+post_upgrade() {
+  ldconfig
+  cat << EOF
+Please make sure your user is a member of "plugdev" group if you use UPEK
+non-free library:
+
+"sudo gpasswd -a USERNAME plugdev"
+
+and modify your PAM configuration
+(e.g., /etc/pam.d/{login,su,sudo,gdm}).
+
+fingerprint-polkit-agent conflicts with files in /etc/xdg/autostart that must
+be removed:
+ "polkit-gnome-authentication-agent-1.desktop" and
+ "polkit-kde-authentication-agent-1.desktop".
+
+Add "debug" switch to fingerprint-gui, you can see the debug log in
+/var/log/auth.log
+
+Refer to "Manual_en.html" and "CHANGELOG" for more information.
+EOF
+  if [[ `lsusb -d 0483:` ]] || [[ `lsusb -d 147e:` ]]
+  then
+    getent group plugdev &> /dev/null || groupadd -r plugdev > /dev/null
+    chown -R root.plugdev /var/upek_data
+    chown root.plugdev /etc/upek.cfg
+  fi
+}
+
+post_remove() {
+  if [[ `lsusb -d 0483:` ]] || [[ `lsusb -d 147e:` ]]
+  then
+    getent group plugdev &> /dev/null && groupdel plugdev > /dev/null
+  fi
+}
