@@ -1,0 +1,16 @@
+pkgbase = abi-compliance-checker
+	pkgdesc = Check ABI compatibility between library versions
+	pkgver = 1.99.9
+	pkgrel = 1
+	url = http://ispras.linuxbase.org/index.php/ABI_compliance_checker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = binutils
+	depends = perl
+	source = abi-compliance-checker-1.99.9.tar.gz::https://github.com/lvc/abi-compliance-checker/archive/1.99.9.tar.gz
+	md5sums = a9163668236cae5e33c606f51c7f8173
+
+pkgname = abi-compliance-checker
+

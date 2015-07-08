@@ -1,0 +1,4 @@
+^abi-compliance-checker.*\.pkg\.tar\.xz$
+
+^pkg/
+^src/
