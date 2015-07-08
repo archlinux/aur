@@ -1,0 +1,15 @@
+pkgbase = ruby-httpclient
+	pkgdesc = Gives something like the functionality of libwww-perl (LWP) in Ruby.
+	pkgver = 2.6.0.1
+	pkgrel = 1
+	url = http://github.com/nahi/httpclient
+	arch = any
+	license = Ruby
+	makedepends = rubygems
+	depends = ruby
+	noextract = httpclient-2.6.0.1.gem
+	source = http://rubygems.org/downloads/httpclient-2.6.0.1.gem
+	sha1sums = f6a18094e9d1154a9c90df90aa2c8518f3837863
+
+pkgname = ruby-httpclient
+
