@@ -1,20 +1,20 @@
 # Maintainer: roger <rogerduran at gmail>
 
 pkgname=qtile-python2
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager."
 arch=('any')
 url="http://www.qtile.org"
 license=('MIT')
-depends=('python2' 'python2-trollius' 'pango' 'python2-xcffib>=0.1.11' 'python2-cairocffi')
+depends=('python2' 'python2-trollius' 'pango' 'python2-xcffib>=0.3.2' 'python2-cairocffi>=0.7')
 makedepends=('python2-distribute')
 optdepends=('python2-setproctitle: change the process name to qtile')
 provides=('qtile')
 conflicts=('qtile')
 install=${pkgname}.install
 source=("https://github.com/qtile/qtile/archive/v${pkgver}.tar.gz")
-md5sums=('0a24f8111d94cb07eae3b276b97fb042')
+md5sums=('fb95960b4d495f6637da83c9d54c2c6a')
 
 package() {
   cd "$srcdir/qtile-$pkgver/"
