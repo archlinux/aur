@@ -1,6 +1,6 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS) - BETA version
-	pkgver = 352.09
+	pkgver = 352.21
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-beta-dkms.install
@@ -11,12 +11,12 @@ pkgbase = nvidia-beta-dkms
 	depends = dkms
 	depends = linux>=3.7
 	depends = linux<4.2
-	depends = nvidia-utils-beta>=352.09
-	provides = nvidia=352.09
+	depends = nvidia-utils-beta>=352.21
+	provides = nvidia=352.21
 	provides = nvidia-dkms
 	conflicts = nvidia-beta
-	source = http://us.download.nvidia.com/XFree86/Linux-/352.09/.run
-	md5sums = 0e009686400c522209eaa8ab835ff81f
+	source = http://us.download.nvidia.com/XFree86/Linux-/352.21/.run
+	md5sums = c91760a04f658845722380f6c7fd4709
 
 pkgname = nvidia-beta-dkms
 
