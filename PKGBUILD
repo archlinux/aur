@@ -1,6 +1,5 @@
 # Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
-# Contributor: Arthur Țițeică arthur.titeica/gmail/com
-# Contributor: Thomas Laube <tomx3@tomtomtom.org>
+# Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
 _pkgver=2.4.2-beta
