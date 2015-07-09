@@ -1,0 +1,21 @@
+pkgbase = lib32-dconf
+	pkgdesc = A low-level configuration system
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = http://live.gnome.org/dconf
+	install = dconf.install
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = docbook-xsl
+	makedepends = gcc-multilib
+	makedepends = intltool
+	makedepends = python2
+	makedepends = vala
+	depends = dconf
+	depends = lib32-glib2
+	depends = lib32-libdbus
+	source = http://download.gnome.org/sources/dconf/0.24/dconf-0.24.0.tar.xz
+	sha256sums = 4373e0ced1f4d7d68d518038796c073696280e22957babb29feb0267c630fec2
+
+pkgname = lib32-dconf
+
