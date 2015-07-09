@@ -1,0 +1,15 @@
+pkgbase = pngrim-git
+	pkgdesc = A tool that fixes PNG images to prevent white borders when used as OpenGL textures
+	pkgver = r5.9f13288
+	pkgrel = 1
+	url = https://github.com/fgenesis/pngrim
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = cmake
+	depends = gcc-libs
+	source = git://github.com/fgenesis/pngrim.git
+	md5sums = SKIP
+
+pkgname = pngrim-git
+
