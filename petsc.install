@@ -12,7 +12,7 @@ cat << EOF
 If you just ran makepkg in this directory then
 to test the PETSc installation you can run:
 
-$ cd src/petsc-3.5.3/; make PETSC_DIR=$PETSC_DIR test
+$ cd src/petsc-3.6.0/; make PETSC_DIR=$PETSC_DIR test
 
 EOF
 }
