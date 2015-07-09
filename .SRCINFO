@@ -1,6 +1,6 @@
 pkgbase = vmd.pl-git
 	pkgdesc = Download music manager from vkontakte.ru
-	pkgver = r30.c944c59
+	pkgver = r35.d3ffee5
 	pkgrel = 1
 	url = https://github.com/genaev/vmd
 	arch = any

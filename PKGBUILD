@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=vmd.pl-git
-pkgver=r30.c944c59
+pkgver=r35.d3ffee5
 pkgrel=1
 pkgdesc='Download music manager from vkontakte.ru'
 arch=(any)
