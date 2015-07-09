@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-libqmi
-pkgver=1.12.0
+pkgver=1.12.6
 pkgrel=1
 pkgdesc='QMI modem protocol helper library'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('lib32-glib2' 'libqmi')
 makedepends=('gcc-multilib' 'python')
 source=("http://www.freedesktop.org/software/libqmi/libqmi-${pkgver}.tar.xz")
-sha256sums=('7bf0a5b70a6e8214932ec32c264e59d5290c6bd181fa1341c028a063181f64ff')
+sha256sums=('0857bffece4e8ddfa7f721dd9ca63b4c78de345ac9ae2faebf04062cacba3780')
 
 build() {
   cd libqmi-${pkgver}
