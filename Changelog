@@ -1,0 +1,15 @@
+2013-05-07  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	2.4.0-2:
+	* fixed some python2 #! lines
+
+	2.4.0-1:
+	* new upstream release
+	* new maintainer
+	* updated PKGBUILD
+	* added Changelog
+	* changed python to python2 in depends
+	* added documentation
+	* added man pages
+	* added contrib scripts
+
