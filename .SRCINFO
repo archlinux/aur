@@ -1,7 +1,7 @@
 pkgbase = azpainter
 	pkgdesc = Painting software
-	pkgver = 1.0.5
-	pkgrel = 2
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = http://azsky2.html.xdomain.jp/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = azpainter
 	depends = libxft
 	depends = libxi
 	depends = zlib
-	source = http://osdn.jp/frs/redir.php?m=iij&f=/azpainter/62214/azpainter-1.0.5-src.tar.bz2
-	md5sums = 213c5f86fdf24fe29382ac125d2e281a
+	source = http://osdn.jp/frs/redir.php?m=iij&f=/azpainter/63501/azpainter-1.0.6.tar.bz2
+	md5sums = b60831703efa395583d818fa502e48d2
 
 pkgname = azpainter
 
