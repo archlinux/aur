@@ -1,6 +1,6 @@
 pkgbase = obs-studio
 	pkgdesc = Free and open source software for video recording and live streaming.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/jp9000/obs-studio
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = obs-studio
 	optdepends = libxcomposite: XComposite capture support
 	provides = obs-studio
 	conflicts = obs-studio-git
-	source = https://github.com/jp9000/obs-studio/archive/0.11.0.tar.gz
-	sha256sums = 015c316ea382cf83cbc34af60febb972add2290452d88715aae0f80d9d2f706b
+	source = https://github.com/jp9000/obs-studio/archive/0.11.1.tar.gz
+	sha256sums = a8ba62302a8c720dd5342e0e0e1a9ca51920017ef8f47226df6ff788bcf1e189
 
 pkgname = obs-studio
 

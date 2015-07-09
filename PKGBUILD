@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('libfdk-aac: FDK AAC codec support'
 provides=('obs-studio')
 conflicts=('obs-studio-git')
 source=("https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz")
-sha256sums=('015c316ea382cf83cbc34af60febb972add2290452d88715aae0f80d9d2f706b')
+sha256sums=('a8ba62302a8c720dd5342e0e0e1a9ca51920017ef8f47226df6ff788bcf1e189')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
