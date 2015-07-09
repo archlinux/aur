@@ -56,8 +56,8 @@ package() {
     install -d $pkgdir/usr/bin/
     install -d $pkgdir/opt/
     cd ${srcdir}
-    cp ${startdir}/fofix-git.desktop ${pkgdir}/usr/share/applications/
-    cp ${startdir}/fofix-git.png ${pkgdir}/usr/share/pixmaps/
+    cp fofix-git.desktop ${pkgdir}/usr/share/applications/
+    cp fofix-git.png ${pkgdir}/usr/share/pixmaps/
     mv ${srcdir}/fofix $pkgdir/opt/fofix-git
     cd $pkgdir/usr/bin/
     echo "#/bin/sh" > fofix-git
