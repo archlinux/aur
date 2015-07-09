@@ -1,0 +1,15 @@
+pkgbase = antigen-git
+	pkgdesc = A plugin manager for zsh, inspired by oh-my-zsh and vundle.
+	pkgver = r358.7860ce7
+	pkgrel = 1
+	url = https://github.com/zsh-users/antigen
+	install = antigen.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	source = git+https://github.com/zsh-users/antigen
+	md5sums = SKIP
+
+pkgname = antigen-git
+
