@@ -12,6 +12,7 @@ depends=('sdl' 'nvidia-cg-toolkit' 'libgl')
 optdepends=('libtxc_dxtn: For more efficient texture handling when using one of the open-source Mesa graphics drivers')
 makedepends=('unzip')
 options=('!strip' '!upx')
+replaces=('braid')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 

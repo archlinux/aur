@@ -11,6 +11,7 @@ pkgbase = braid-hib
 	depends = nvidia-cg-toolkit
 	depends = libgl
 	optdepends = libtxc_dxtn: For more efficient texture handling when using one of the open-source Mesa graphics drivers
+	replaces = braid
 	options = !strip
 	options = !upx
 	source = braid-linux-build2.run.bin::hib://braid-linux-build2.run.bin
