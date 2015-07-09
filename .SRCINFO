@@ -1,0 +1,18 @@
+pkgbase = gxneur
+	pkgdesc = GTK frontend for XNeur
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = http://www.xneur.ru
+	install = gxneur.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libglade
+	depends = xneur>=0.17.0
+	depends = hicolor-icon-theme
+	depends = gconf
+	source = https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/gxneur_0.17.0.orig.tar.gz
+	md5sums = 824903cb3c37646ddb5ac701413058f3
+
+pkgname = gxneur
+
