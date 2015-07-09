@@ -10,6 +10,7 @@ pkgbase = bittriprunner-hib
 	depends = libgl
 	depends = openal
 	depends = libvorbis
+	replaces = bittriprunner
 	source = bittriprunner.desktop
 	md5sums = 651aad252c4b42fea26f388642dce6ca
 	source_i686 = hib://bit.trip.runner-linux-1.0-4_i386-1348702546.tar.gz

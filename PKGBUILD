@@ -11,6 +11,7 @@ url="http://bittripgame.com/bittrip-runner.html"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('sdl' 'libgl' 'openal' 'libvorbis')
+replaces=('bittriprunner')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
 source=('bittriprunner.desktop')
