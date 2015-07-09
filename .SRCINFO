@@ -1,14 +1,14 @@
 pkgbase = graylog-web-interface
 	pkgdesc = Web interface for Graylog, an open source syslog implementation
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://graylog.org
 	arch = any
 	license = GPL
 	depends = java-runtime
 	replaces = graylog2-web-interface
 	options = !strip
-	backup = etc/webapps/graylog-web-interface/graylog-web-interface.conf
+	backup = etc/graylog/web-interface/graylog-web-interface.conf
 	source = https://packages.graylog2.org/releases/graylog2-web-interface/graylog-web-interface-1.1.2.tgz
 	source = graylog-web-interface.service
 	source = graylog-web-interface.conf

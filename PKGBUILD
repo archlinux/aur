@@ -1,9 +1,8 @@
 # Maintainer: Spider.007 <aur@spider007.net>
-# Don't forget updating the version @ *.service
 pkgname=graylog-web-interface
 replaces=graylog2-web-interface
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web interface for Graylog, an open source syslog implementation"
 arch=(any)
 url="http://graylog.org"
@@ -14,11 +13,11 @@ source=(
 	graylog-web-interface.service
 	graylog-web-interface.conf
 )
-backup=(etc/webapps/$pkgname/$pkgname.conf)
+backup=(etc/graylog/web-interface/graylog-web-interface.conf)
 options=(!strip)
 sha256sums=('2d1e414f0b4928f5ba866f89652db0f0995496ffd6bd178ee0d8458e4abd89eb'
-            'SKIP'
-            'SKIP')
+			'SKIP'
+			'SKIP')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -26,12 +25,13 @@ package() {
 	install -Dm644 "$srcdir/graylog-web-interface.conf" "$pkgdir/etc/conf.d/graylog-web-interface.conf"
 	install -Dm644 "$srcdir/graylog-web-interface.service" "$pkgdir/usr/lib/systemd/system/graylog-web-interface.service"
 
-	install -dm755 -o nobody "$pkgdir/etc/webapps/$pkgname/logs"
-	cp conf/* "$pkgdir/etc/webapps/$pkgname/"
+	mkdir -p $pkgdir/{usr/lib/$pkgname,etc/graylog/web-interface}
 
-	install -dm755 "$pkgdir/usr/share/webapps/$pkgname"
-	cp -R lib/ "$pkgdir/usr/share/webapps/$pkgname/"
+	install -Dm644 lib/*  "$pkgdir/usr/lib/$pkgname/"
+	install -Dm644 conf/* "$pkgdir/etc/graylog/web-interface/"
+	install -dm755 -o nobody "$pkgdir/var/log/$pkgname/"
 
-	ln -s $pkgname.$pkgname-$pkgver.jar "$pkgdir/usr/share/webapps/$pkgname/lib/$pkgname.jar"
-	ln -s /etc/webapps/$pkgname/ $pkgdir/usr/share/webapps/$pkgname/conf
+	ln -s $pkgname.$pkgname-$pkgver.jar "$pkgdir/usr/lib/$pkgname/$pkgname.jar"
+	ln -s /etc/graylog/web-interface/ $pkgdir/usr/lib/$pkgname/conf
+	ln -s /var/log/graylog-web-interface/ $pkgdir/usr/lib/$pkgname/logs
 }
