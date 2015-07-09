@@ -2,13 +2,13 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect-git
-pkgver=r804.e34a291
+pkgver=r883.2506f0e
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/playground/base/kdeconnect-kde'
 license=(GPL2)
-depends=(kio kcmutils qca-qt5 libfakekey hicolor-icon-theme)
+depends=(kio kcmutils qca-qt5 libfakekey hicolor-icon-theme kwayland-git)
 makedepends=(extra-cmake-modules git python)
 provides=(kdeconnect)
 conflicts=(kdeconnect-frameworks kdeconnect)
