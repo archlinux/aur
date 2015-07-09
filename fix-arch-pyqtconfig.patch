@@ -1,0 +1,29 @@
+diff -ur a/ankiqt/ui/main.py b/ankiqt/ui/main.py
+--- a/ankiqt/ui/main.py	2014-06-16 00:57:52.945348513 +0200
++++ b/ankiqt/ui/main.py	2014-06-16 01:00:49.724004647 +0200
+@@ -9,8 +9,6 @@
+ from PyQt4.QtCore import *
+ from PyQt4.QtGui import *
+ from PyQt4.QtWebKit import QWebPage
+-from PyQt4 import pyqtconfig
+-QtConfig = pyqtconfig.Configuration()
+ from anki import DeckStorage
+ from anki.errors import *
+ from anki.sound import hasSound, playFromText, clearAudioQueue, stripSounds
+diff -ur a/ankiqt/ui/utils.py b/ankiqt/ui/utils.py
+--- a/ankiqt/ui/utils.py	2014-06-16 00:57:52.955348436 +0200
++++ b/ankiqt/ui/utils.py	2014-06-16 01:01:16.387138825 +0200
+@@ -219,13 +219,6 @@
+     key += "Geom"
+     if ankiqt.mw.config.get(key):
+         widget.restoreGeometry(ankiqt.mw.config[key])
+-        if sys.platform.startswith("darwin") and offset:
+-            from ankiqt.ui.main import QtConfig as q
+-            minor = (q.qt_version & 0x00ff00) >> 8
+-            if minor > 6:
+-                # bug in osx toolkit
+-                s = widget.size()
+-                widget.resize(s.width(), s.height()+offset*2)
+ 
+ def saveState(widget, key):
+     key += "State"

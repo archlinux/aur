@@ -1,0 +1,27 @@
+pkgbase = anki12
+	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = http://ankisrs.net/
+	arch = any
+	license = GPL
+	makedepends = setuptools
+	makedepends = desktop-file-utils
+	depends = python2-pyqt
+	depends = python2-sqlalchemy
+	depends = python2-simplejson
+	depends = python2-pysqlite
+	optdepends = python2-matplotlib: for graph support
+	optdepends = python2-beautifulsoup3: for SuperMemo import support
+	optdepends = sox: for audio recording support
+	conflicts = anki
+	replaces = anki12
+	source = http://ankisrs.net/download/mirror/archive/anki-1.2.11.tgz
+	source = disable-auto-update.patch
+	source = fix-arch-pyqtconfig.patch
+	sha256sums = ca075fd0c0d6851d22046de8f6fa90d7c442cdd4a6783f7c6ffad7fbc46f5089
+	sha256sums = 9ef3c30b5103b7cd52286e54aa17a79f440a92b76cd8146c63b69ddf48137594
+	sha256sums = f38816a01f50a861ae879764a98a3d8038d4aa331021d1b399d24f05b52b1dad
+
+pkgname = anki12
+

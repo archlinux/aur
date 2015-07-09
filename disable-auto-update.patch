@@ -1,0 +1,10 @@
+--- a/ankiqt/ui/main.py	2011-03-28 09:33:31.000000000 +0200
++++ b/ankiqt/ui/main.py	2014-01-12 11:38:39.058868490 +0100
+@@ -2615,7 +2615,6 @@
+ 
+     def setupAutoUpdate(self):
+         self.autoUpdate = ui.update.LatestVersionFinder(self)
+-        self.connect(self.autoUpdate, SIGNAL("newVerAvail"), self.newVerAvail)
+         self.connect(self.autoUpdate, SIGNAL("newMsg"), self.newMsg)
+         self.connect(self.autoUpdate, SIGNAL("clockIsOff"), self.clockIsOff)
+         self.autoUpdate.start()
