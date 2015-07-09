@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
+provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin')
 depends=('gcc-libs' 'zlib' 'sh')
 source=("http://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"{,.asc})
