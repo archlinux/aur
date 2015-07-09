@@ -1,0 +1,26 @@
+pkgbase = mowedline-git
+	pkgdesc = an X status bar program
+	pkgver = 20150608
+	pkgrel = 1
+	url = http://retroj.net/mowedline
+	arch = x86_64
+	license = GPL3
+	depends = chicken
+	depends = chicken-coops
+	depends = chicken-dbus>=0.92
+	depends = chicken-filepath
+	depends = chicken-imperative-command-line-a>=0.4
+	depends = chicken-list-utils
+	depends = chicken-mailbox
+	depends = chicken-matchable
+	depends = chicken-miscmacros
+	depends = chicken-xft
+	depends = chicken-xlib
+	depends = chicken-xtypes
+	provides = mowedline
+	conflicts = mowedline
+	source = git://github.com/retroj/mowedline.git
+	md5sums = SKIP
+
+pkgname = mowedline-git
+
