@@ -1,0 +1,14 @@
+pkgbase = python-numpy-doc
+	pkgdesc = Documentation for NumPy
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://docs.scipy.org
+	arch = any
+	license = BSD
+	makedepends = unzip
+	noextract = python-numpy-doc-1.9.1.zip
+	source = python-numpy-doc-1.9.1.zip::http://docs.scipy.org/doc/numpy/numpy-html-1.9.1.zip
+	md5sums = 8ff2aec1a47e0043be04b77a071871fd
+
+pkgname = python-numpy-doc
+
