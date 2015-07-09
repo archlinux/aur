@@ -4,12 +4,14 @@
 
 pkgname='blast+-bin'
 pkgver=2.2.31
-pkgrel=1
+pkgrel=2
 pkgdesc="New suite of BLAST tools that utilizes the NCBI C++ Toolkit"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastHome"
 license=('custom')
 depends=('perl' 'zlib')
+provides=('blast+')
+conflicts=('blast+')
 PKGEXT='.pkg.tar'
 
 _arch=$CARCH

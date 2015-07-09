@@ -1,13 +1,15 @@
 pkgbase = blast+-bin
 	pkgdesc = New suite of BLAST tools that utilizes the NCBI C++ Toolkit
 	pkgver = 2.2.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastHome
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = perl
 	depends = zlib
+	provides = blast+
+	conflicts = blast+
 	source = ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.31/ncbi-blast-2.2.31+--linux.tar.gz
 
 pkgname = blast+-bin
