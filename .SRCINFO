@@ -1,0 +1,24 @@
+pkgbase = lib32-libsoup
+	pkgdesc = GNOME HTTP Library
+	pkgver = 2.50.0
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = python
+	makedepends = python
+	depends = lib32-glib-networking
+	depends = lib32-libxml2
+	depends = lib32-sqlite
+	depends = libsoup
+	conflicts = lib32-libsoup-gnome
+	replaces = lib32-libsoup-gnome
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/libsoup/2.50/libsoup-2.50.0.tar.xz
+	sha256sums = 1e01365ac4af3817187ea847f9d3588c27eee01fc519a5a7cb212bb78b0f667b
+
+pkgname = lib32-libsoup
+
