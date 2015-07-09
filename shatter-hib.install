@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "Notes:#
+  echo "  - Make sure the 32bit DRI drivers for your graphics card are"
+  echo "    installed and working, otherwise the game will crash."
+  echo "  - Before starting to play Shatter, you may want to run"
+  echo "    `shatter-settings` in a terminal and increase the screen"
+  echo "    resolution, choose your language, etc."
+}

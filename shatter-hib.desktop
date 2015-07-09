@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Shatter
+Comment=Sidhe Interactive
+GenericName=Brick-Breaking Game
+Icon=shatter
+Exec=/usr/bin/shatter
+Terminal=false
+StartupNotify=false

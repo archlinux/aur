@@ -1,0 +1,27 @@
+pkgbase = shatter-hib
+	pkgdesc = A retro-inspired brick-breaking game with unique twists (Humble Bundle version)
+	pkgver = 1.0.20130609
+	pkgrel = 1
+	url = http://www.shattergame.com/
+	install = shatter-hib.install
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = lib32-libgl
+	depends = lib32-libidn
+	depends = lib32-libxinerama
+	depends = lib32-libxft
+	depends = lib32-alsa-lib
+	depends = xdg-utils
+	depends = lib32-nvidia-cg-toolkit
+	depends = lib32-libtxc_dxtn
+	optdepends = lib32-alsa-plugins: PulseAudio support
+	optdepends = lib32-libpulse: PulseAudio support
+	options = !upx
+	source = hib://Shatter-Release-2013-06-09.sh
+	source = shatter-hib.desktop
+	md5sums = 0c787b00292593ad91711c0df56ded0c
+	md5sums = 52e9ea073d699ae979167fd4cb4af585
+
+pkgname = shatter-hib
+
