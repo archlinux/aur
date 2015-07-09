@@ -1,0 +1,23 @@
+pkgbase = audacious2
+	pkgdesc = Lightweight, GTK-based advanced audio player focused on audio quality. Gtk2 version.
+	pkgver = 3.2.4
+	pkgrel = 1
+	url = http://audacious-media-player.org/
+	install = audacious2.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = libmcs
+	depends = dbus-glib
+	depends = libguess
+	depends = libsm
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = audacious2-plugins: required for all
+	optdepends = unzip: zipped skins support
+	source = http://distfiles.audacious-media-player.org/audacious-3.2.4.tar.gz
+	md5sums = 2d8e262ea6ffee704d4d0d72b49b13bc
+
+pkgname = audacious2
+
