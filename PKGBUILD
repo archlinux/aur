@@ -1,19 +1,20 @@
-# Maintainer: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Submitter: agnotek <agnostic[dot]sn[at]gmail[dot]com>
+# Mantainer: ziu <frances[dot]albanese[at]gmail[dot]com>
 
 pkgname=anoise-community-extension1
 pkgver=0.0.1
-pkgrel=0
+pkgrel=2
 pkgdesc="Ambient Noise Community Library. Sounds and icons from the users"
 arch=('any')
 license=('GPL3')
 url="https://code.launchpad.net/anoise"
-install=postinst
+install=
 options=()
 conflicts=()
 depends=('anoise' 'python-distutils-extra' 'gstreamer0.10' 'gstreamer0.10-python')
 optdepends=()
 source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-md5sums=('1a14263778ea070558f440fab8066a2d')
+sha256sums=('3dc4d15970ede8011c4934ea76f69e1bbb5e4e1e1b80d223f620f4bf11adbaa3')
 
 package() {
   cd "${srcdir}"
