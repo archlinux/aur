@@ -1,0 +1,26 @@
+pkgbase = solaar
+	pkgdesc = Device manager for Logitech's Unifying receiver peripherals
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = http://pwr.github.com/Solaar/
+	install = solaar.install
+	arch = any
+	license = GPL2
+	makedepends = python
+	depends = python
+	depends = python-pyudev
+	depends = python-gobject
+	depends = pygtk
+	optdepends = libappindicator3: better integration into Unity
+	provides = solaar
+	conflicts = solaar
+	options = !emptydirs
+	source = https://github.com/pwr/Solaar/archive/0.9.2.tar.gz
+	source = solaar.install
+	source = solaar.patch
+	sha512sums = 13f469df753cc8fab55f5259ccc3e62b6e44471d277d240cd56ce0580144d2b1f95d731268176648663dd15e5607bfb512f477362f4f100aa0a653b001dfe04b
+	sha512sums = 707594c923f9840716f7584ed43d5078316f06cb9d9a524ad4973453120a1a44dc551dabac156e50b81d98d5480c43c1874d0372a40e1477e64e635674b7e018
+	sha512sums = cb91902047862da8a600436262270f02bb9f096f3cffb613d300d88dd7476ae9ab27b6a3d186d4cc0b748a107916f188744b2581276de72fc5b83fb3353af6b9
+
+pkgname = solaar
+

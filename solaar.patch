@@ -1,0 +1,12 @@
+--- Solaar-0.9.2/lib/solaar/ui/window.py	2013-07-24 11:40:54.000000000 +0200
++++ Solaar-0.9.2/lib/solaar/ui/window.py.new	2015-06-27 00:35:10.124892524 +0200
+@@ -76,9 +76,6 @@
+ # create UI layout
+ #
+ 
+-Gtk.Window.set_default_icon_name(NAME.lower())
+-Gtk.Window.set_default_icon_from_file(_icons.icon_file(NAME.lower()))
+-
+ def _new_button(label, icon_name=None, icon_size=_NORMAL_BUTTON_ICON_SIZE, tooltip=None, toggle=False, clicked=None):
+ 	if toggle:
+ 		b = Gtk.ToggleButton()
