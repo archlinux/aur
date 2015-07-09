@@ -1,0 +1,20 @@
+pkgbase = fontconfig-ubuntu
+	pkgdesc = Library for configuring and customizing font access, with Ubuntu's LCD rendering patches.
+	pkgver = 2.11.1
+	pkgrel = 3
+	url = https://launchpad.net/ubuntu/+source/fontconfig
+	install = fontconfig-ubuntu.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = expat
+	depends = freetype2-ubuntu
+	provides = fontconfig=2.11.1
+	conflicts = fontconfig
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.11.1.orig.tar.bz2
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.11.1-0ubuntu6.debian.tar.xz
+	source = 53-monospace-lcd-filter.patch
+	options = !libtool
+
+pkgname = fontconfig-ubuntu
+
