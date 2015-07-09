@@ -1,0 +1,19 @@
+pkgbase = dualbootpatcher-git
+	pkgdesc = Dual Boot Patcher for Android ROMs
+	pkgver = latest
+	pkgrel = 1
+	url = https://snapshots.noobdev.io/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = android-ndk
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = qt5-base
+	provides = dualbootpatcher
+	conflicts = dualbootpatcher
+	source = git+https://github.com/chenxiaolong/DualBootPatcher.git
+	sha512sums = SKIP
+
+pkgname = dualbootpatcher-git
+
