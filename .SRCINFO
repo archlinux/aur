@@ -1,5 +1,5 @@
 pkgbase = lximage-qt
-	pkgdesc = LXQt image viewer
+	pkgdesc = The LXQt image viewer
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://lxqt.org
@@ -8,11 +8,9 @@ pkgbase = lximage-qt
 	arch = x86_64
 	groups = lxqt
 	license = GPL2
-	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = pcmanfm-qt
-	depends = qt5-x11extras
 	source = http://downloads.lxqt.org/lximage-qt/0.4.0/lximage-qt-0.4.0.tar.xz
 	sha256sums = 11abc99b0946e6254aad42cb3e29349dc6199879be0728418e7bc81200d59730
 
