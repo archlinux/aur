@@ -1,0 +1,21 @@
+pkgbase = xmonad-utils
+	pkgdesc = A small collection of X utilities
+	pkgver = 0.1.3.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/xmonad-utils
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-x11>=1.3
+	makedepends = haskell-random
+	makedepends = haskell-unix
+	makedepends = glibc
+	depends = gmp
+	depends = glibc
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/xmonad-utils/0.1.3.3/xmonad-utils-0.1.3.3.tar.gz
+	md5sums = d0ef4c556313f87c8311afd56a6e4ff9
+
+pkgname = xmonad-utils
+
