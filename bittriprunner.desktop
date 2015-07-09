@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=BIT.TRIP RUNNER 
+Comment=Gaijin Games
+GenericName=2D Action Platformer
+Icon=bittriprunner
+Exec=/usr/bin/bittriprunner
+Terminal=false

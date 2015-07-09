@@ -1,0 +1,21 @@
+pkgbase = bittriprunner-hib
+	pkgdesc = BIT.TRIP RUNNER, a rhythm-based action platformer
+	pkgver = 1.0.4+h20120927
+	pkgrel = 1
+	url = http://bittripgame.com/bittrip-runner.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl
+	depends = libgl
+	depends = openal
+	depends = libvorbis
+	source = bittriprunner.desktop
+	md5sums = 651aad252c4b42fea26f388642dce6ca
+	source_i686 = hib://bit.trip.runner-linux-1.0-4_i386-1348702546.tar.gz
+	md5sums_i686 = 900019b5994e1b8b2e08fcf07d9c1c08
+	source_x86_64 = hib://bit.trip.runner_1.0-4_amd64-1348702546.tar.gz
+	md5sums_x86_64 = 026712ac29972467f0b167a3eeaa3933
+
+pkgname = bittriprunner-hib
+
