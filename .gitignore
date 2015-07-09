@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!mkv-extractor-qt.install
+!mkv-extractor-qt.desktop
+!mkv-extractor-qt.xml

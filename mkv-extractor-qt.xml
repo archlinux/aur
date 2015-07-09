@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-mkv-extractor-qt">
+    <comment>GUI for mkvextract</comment>
+    <comment xml:lang="fr">GUI pour mkvextract</comment>
+    <glob pattern="*.mkv"/>
+    <magic>
+      <match type="string" offset="0" value="[mkvextractGUI]"/>
+    </magic>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+</mime-info>

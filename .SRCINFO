@@ -1,0 +1,25 @@
+pkgbase = mkv-extractor-qt
+	pkgdesc = GUI for extract files from .mkv
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = http://hizo.fr/linux/mkv_extractor_gui
+	install = mkv-extractor-qt.install
+	arch = any
+	license = GPL3
+	depends = python-pyqt4
+	depends = mkvtoolnix-cli
+	optdepends = ffmpeg: for DTS conversion
+	optdepends = mkclean: MKV optimisation
+	optdepends = mkvalidator: MKV check
+	optdepends = tesseract: subtitle conversion
+	optdepends = ogmrip: subtitle conversion
+	conflicts = mkv-extractor-gui
+	replaces = mkv-extractor-gui
+	noextract = MKV-Extractor-Qt_sources_5.2.1.tar.gz
+	source = http://hizo.fr/linux/mkv_extractor_gui/MKV-Extractor-Qt_sources_5.2.1.tar.gz
+	source = mkv-extractor-qt.desktop
+	sha1sums = da22ccbd748752034455e3173284e67005632d5f
+	sha1sums = 8036a3af674b1d3050ebd65c3838a4a3519b6a09
+
+pkgname = mkv-extractor-qt
+

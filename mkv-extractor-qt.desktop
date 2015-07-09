@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=MKV Extractor Qt
+GenericName=GUI for mkvextract
+GenericName[fr]=GUI pour mkvextract
+Comment=Extractor track from mkv files
+Comment[fr]=Extracteur de piste depuis des fichiers mkv
+Exec=mkv-extractor-qt
+Icon=mkv-extractor-qt
+Categories=AudioVideo;Video;
+Terminal=false
+StartupNotify=true
+MimeType=video/x-matroska;audio/x-matroska;application/x-matroska;
