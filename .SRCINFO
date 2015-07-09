@@ -1,0 +1,18 @@
+pkgbase = macfanctld
+	pkgdesc = Fan control daemon for MacBook
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/MikaelStrom/macfanctld
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	depends = glibc
+	backup = etc/macfanctl.conf
+	source = https://github.com/MikaelStrom/macfanctld/archive/master.tar.gz
+	source = macfanctld.service
+	md5sums = d1a42fe34cbb4e830bed5547bef969df
+	md5sums = 3ae082c7be885c8427eee8108393fc90
+
+pkgname = macfanctld
+
