@@ -1,0 +1,13 @@
+pkgbase = svg-docs
+	pkgdesc = Set of HTML documentation for Scalable Vector Graphics (SVG) 1.1
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.w3.org/TR/SVG11/
+	arch = any
+	license = GPL
+	options = docs
+	source = http://www.w3.org/TR/SVG11/REC-SVG11-20110816.zip
+	md5sums = 961a793d90c2868c95e10937f6ec3b87
+
+pkgname = svg-docs
+
