@@ -4,7 +4,7 @@
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 pkgname=brscan3
 pkgver=0.2.13_1
-pkgrel=3
+pkgrel=4
 pkgdesc="Brother SANE drivers for $pkgname-compatible models"
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en'
