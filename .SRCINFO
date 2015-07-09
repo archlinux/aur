@@ -1,0 +1,26 @@
+pkgbase = scalapack
+	pkgdesc = subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers.
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = http://www.netlib.org/scalapack/
+	install = scalapack.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = glibc
+	depends = openmpi
+	depends = blas
+	depends = lapack
+	provides = blacs
+	source = http://www.netlib.org/scalapack/scalapack-2.0.2.tgz
+	source = http://www.netlib.org/scalapack/manpages.tgz
+	source = Makefile
+	source = example1.f
+	md5sums = 2f75e600a2ba155ed9ce974a1c4b536f
+	md5sums = a536ab4837ec68addff0a3ec99427a10
+	md5sums = 0bef36150ffaf341a6228b474ed800c9
+	md5sums = 4723ad431356431bb193db254b6ee0fb
+
+pkgname = scalapack
+
