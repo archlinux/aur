@@ -1,6 +1,6 @@
 pkgbase = kdeconnect-git
 	pkgdesc = Adds communication between KDE and your smartphone
-	pkgver = r804.e34a291
+	pkgver = r883.2506f0e
 	pkgrel = 1
 	url = https://projects.kde.org/projects/playground/base/kdeconnect-kde
 	install = kdeconnect-git.install
@@ -15,6 +15,7 @@ pkgbase = kdeconnect-git
 	depends = qca-qt5
 	depends = libfakekey
 	depends = hicolor-icon-theme
+	depends = kwayland-git
 	provides = kdeconnect
 	conflicts = kdeconnect-frameworks
 	conflicts = kdeconnect
