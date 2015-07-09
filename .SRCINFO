@@ -1,20 +1,20 @@
-pkgbase = python2-rax-backup-schedule-python-novaclient-ext
+pkgbase = python-rax-backup-schedule-python-novaclient-ext
 	pkgdesc = Novaclient Extension for Backup Schedule
 	pkgver = 0.1.2
 	pkgrel = 5
 	url = http://pypi.python.org/pypi/rax_backup_schedule_python_novaclient_ext
 	arch = any
 	license = GPL
-	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-novaclient
-	depends = python2-httplib2
-	depends = python2-prettytable
-	depends = python2-simplejson
-	depends = python2-iso8601
-	provides = python2-rax-backup-schedule-python-novaclient-ext=0.1.2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-novaclient
+	depends = python-httplib2
+	depends = python-prettytable
+	depends = python-simplejson
+	depends = python-iso8601
+	provides = python-rax-backup-schedule-python-novaclient-ext=0.1.2
 	source = https://pypi.python.org/packages/source/r/rax_backup_schedule_python_novaclient_ext/rax_backup_schedule_python_novaclient_ext-0.1.2.tar.gz
 	md5sums = 5a4f9da670e5171623ee25b48d5b30a1
 
-pkgname = python2-rax-backup-schedule-python-novaclient-ext
+pkgname = python-rax-backup-schedule-python-novaclient-ext
 
