@@ -1,8 +1,8 @@
 # Maintainer: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=4.5.2
-_pkgver=4.5.2
+pkgver=4.5.3
+_pkgver=4.5.3
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional version."
 arch=('any')
@@ -17,7 +17,7 @@ source=(http://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
         'pycharm')
-sha256sums=('a736a1d648ff7ae742b86ff278b2eeb53c61c875037d44f863b1abc78ffdf7b5'
+sha256sums=('5ac0ff2ad0e5a61d93182637ff308c30227f1c2f7e396149a9720782bc336601'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             '6442ec9f0690f743da697a2a65b0784017de501e7f39d5de0879153fbf85dc7a'
             'ad59415f8ac2c623f9c61453caf70bf75b6b14db2f09807e4ea339a2dc740be9')
