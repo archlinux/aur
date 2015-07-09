@@ -1,0 +1,12 @@
+pkgbase = chicken-xtypes
+	pkgdesc = Chicken Egg: Bindings for datatypes used by Xlib
+	pkgver = 0.1a2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/4/xtypes
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-foreigners
+
+pkgname = chicken-xtypes
+
