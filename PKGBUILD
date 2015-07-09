@@ -2,7 +2,7 @@
 
 pkgname=radsecproxy
 pkgver=1.6.6
-pkgrel=3
+pkgrel=4
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
 url='https://software.uninett.no/radsecproxy/'
@@ -18,7 +18,7 @@ source=("https://software.uninett.no/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.a
 sha256sums=('278251399e326f9afacd1df8c7de492ec5ae6420085f71630da8f6ce585297ef'
             'SKIP'
             '0483d60588701245864e3f7788f49b143a990be1776715c101d91b8bb0c70fbb'
-            '5d4ff031051a3c8d7f851e26cd76fa9d8ed4b862d87d912415b7b9092cd78167')
+            '20ee87484473ab800847b9b11921e0913c411382556390088155c3be0d038ac0')
 
 build() {
 	cd ${pkgname}-${pkgver}/
