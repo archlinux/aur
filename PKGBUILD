@@ -2,8 +2,8 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="nautilus-megasync"
-pkgver="2.0.0"
-pkgrel="2"
+pkgver="2.1.0"
+pkgrel="1"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
@@ -13,8 +13,8 @@ provides=("${pkgname}")
 
 source_i686=("https://mega.co.nz/linux/MEGAsync/Debian_8.0/i386/${pkgname}_${pkgver}_i386.deb")
 source_x86_64=("https://mega.co.nz/linux/MEGAsync/Debian_8.0/amd64/${pkgname}_${pkgver}_amd64.deb")
-sha256sums_i686=('1ccd2a476f8ab384fd9a11a5a68d624c190a27459f7d10ff5da24c6c03299172')
-sha256sums_x86_64=('1df5ab2c627ad160dc16f29e48c27f83b47c4fb0ff644284a6f4e466a2fd574e')
+sha256sums_i686=('12094a1b0bdccdf2bf6a75c1d80c162ba6b5c344e439ca2d82cfe6befe80ee28')
+sha256sums_x86_64=('06470c7e342c474d9a87afa1a7cdef2d14fc5e2bcd18d61438edb23718c0dbe1')
 
 install="${pkgname}.install"
 
