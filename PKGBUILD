@@ -14,7 +14,8 @@ md5sums=("b60831703efa395583d818fa502e48d2")
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	sed -i 's/\/local$/\nifdef DESTDIR\n\tprefix=$(DESTDIR)\/usr\nendif/' Makefile
-	sed -i 's/axt/axt .\/README .\/NEWS/' Makefile 
+	sed -i 's/axt/axt .\/README .\/NEWS/' Makefile
+	sed -i '/-gtk-update-icon-cache/d' Makefile
 	make -j1
 }
 
