@@ -3,14 +3,14 @@
 
 pkgname=globus-toolkit
 pkgver=6.0.1433516164
-pkgrel=3
+pkgrel=4
 pkgdesc="Toolkit for building grids"
 arch=('i686' 'x86_64')
 url="http://toolkit.globus.org/"
 license=('APACHE')
-provides=("globus=$pkgver")
+provides=(globus=$pkgver gsissh=6.4p1 myproxy=$pkgver)
 replaces=(globus)
-conflicts=(globus)
+conflicts=(globus myproxy)
 source=(http://toolkit.globus.org/ftppub/gt6/installers/src/globus_toolkit-$pkgver.tar.gz
         globus.env.sh
         globus.sysusers)
@@ -28,7 +28,8 @@ build() {
     --prefix=/usr                     \
     --sbindir=/usr/bin                \
     --sysconfdir=/etc/globus          \
-    --includedir=/usr/include/globus  ;
+    --includedir=/usr/include/globus  \
+    --enable-myproxy                  ;
   make
 }
 

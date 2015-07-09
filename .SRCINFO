@@ -1,17 +1,25 @@
 pkgbase = globus-toolkit
 	pkgdesc = Toolkit for building grids
 	pkgver = 6.0.1433516164
-	pkgrel = 1
+	pkgrel = 4
 	url = http://toolkit.globus.org/
 	install = globus.install
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	provides = globus=6.0.1433516164
+	provides = gsissh=6.4p1
+	provides = myproxy=6.0.1433516164
 	conflicts = globus
+	conflicts = myproxy
 	replaces = globus
+	options = !emptydirs
 	source = http://toolkit.globus.org/ftppub/gt6/installers/src/globus_toolkit-6.0.1433516164.tar.gz
+	source = globus.env.sh
+	source = globus.sysusers
 	sha1sums = 2f6c451664d01d238906519ca33a4b4d9fb1217d
+	sha1sums = ad9c17923fb85224cb134beb79c04871c3a18307
+	sha1sums = 48e2f95145dfa27b0fee81022e33039e8524399c
 
 pkgname = globus-toolkit
 
