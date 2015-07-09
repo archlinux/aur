@@ -1,5 +1,3 @@
-# Maintainer: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
-
 pkgname=cppdb
 pkgver=0.3.1
 pkgrel=1
