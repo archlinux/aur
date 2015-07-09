@@ -1,15 +1,16 @@
 pkgbase = gimp-plugin-webp
-	pkgdesc = Gimp plugin to load and save files using the new WebP image format.
-	pkgver = 0.1.1
-	pkgrel = 2
-	url = http://registry.gimp.org/node/25874
+	pkgdesc = This plugin provides Gimp with the ability to load and export WebP images.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/nathan-osman/gimp-webp
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0
+	makedepends = cmake
 	depends = gimp
 	depends = libwebp
-	source = http://registry.gimp.org/files/gimp-webp_0.1.1.tar.gz
-	sha1sums = eee1f32408e84f863de9722202b4be6a2e53a43a
+	source = https://github.com/nathan-osman/gimp-webp/archive/0.2.tar.gz
+	sha1sums = d0b0d6bbf9004a043ea10ac1fd84bd2783d190b6
 
 pkgname = gimp-plugin-webp
 
