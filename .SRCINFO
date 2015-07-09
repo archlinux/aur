@@ -1,0 +1,17 @@
+pkgbase = python2-dispass-git
+	pkgdesc = Generate and disperse/dispell passwords
+	pkgver = 20140926
+	pkgrel = 1
+	url = http://dispass.babab.nl/
+	arch = any
+	license = custom:ISC
+	makedepends = python2-distribute
+	makedepends = git
+	depends = python2
+	optdepends = tk: for gdispass
+	conflicts = python2-dispass
+	source = git://github.com/babab/DisPass.git
+	md5sums = SKIP
+
+pkgname = python2-dispass-git
+
