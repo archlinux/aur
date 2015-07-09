@@ -1,44 +1,11 @@
-
-# new package version
-devices_file="/usr/local/Brother/sane/brsanenetdevice3.cfg"
-
-pre_install() {
-  /bin/true
-}
-
-# new package version
 post_install() {
   /usr/local/Brother/sane/setupSaneScan3 -i
-  
 }
 
-# the new package version
-# old package version
-pre_upgrade() {
-  # If user has already configured their scanner then make a config backup
-  if [ -f $devices_file ]; then
-    cp $devices_file $devices_file.backup || return 1
-  fi
-}
-
-# new package version
-# old package version
 post_upgrade() {
-  # After upgrade revert user's scanner config and delete a config backup
-  if [ -f $devices_file.backup ]; then
-    cp $devices_file.backup $devices_file || return 1
-    rm $devices_file.backup || return 1
-  fi
+  post_install
 }
 
-# old package version
 pre_remove() {
   /usr/local/Brother/sane/setupSaneScan3 -e
-  /bin/true
 }
-
-# old package version
-post_remove() {
-  /bin/true
-}
-
