@@ -2,8 +2,8 @@
 # Contributor: Lukas Sabota <lukas at lwsabota dot com>
 
 pkgname='litecoin-daemon'
-pkgver=0.8.7.5
-pkgrel=2
+pkgver=0.10.2.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc')
@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://github.com/litecoin-project/litecoin/archive/v$pkgver.tar.gz"
         "litecoind@.service"
 )
-sha256sums=('c1b04be2035c00f1af887c80c2d9c239acbb31ab581f734fe281741ace1c4539'
+sha256sums=('952c84b181323db17a8fa23217f59b576ad3ebad92c158b3a7c29d458a1130dc'
             '3e0afef47970cdf304a376b51dbbb44759ac7eeb232be1ea4b2b995817b5df88')
 pkgdesc="Peer-to-peer network based digital currency (daemon)"
 depends=(boost-libs miniupnpc openssl)
@@ -19,8 +19,9 @@ conflicts=(litecoin)
 
 build() {
   cd "$srcdir/litecoin-$pkgver"
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
-  make -f makefile.unix -C src CXXFLAGS="$CXXFLAGS" USE_UPNP=1
+  ./autogen.sh
+  ./configure --without-gui --with-incompatible-bdb
+  make
 }
 
 package() {
