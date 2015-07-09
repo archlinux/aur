@@ -3,12 +3,11 @@
 pkgname=non-mixer-git
 pkgver=r1798.18a299c
 pkgrel=1
-pkgdesc="mixer from the NON family"
+pkgdesc="Jack audio mixer from the NON DAW"
 arch=('x86_64' 'i686')
 url="http://non.tuxfamily.org/"
-license=('GPL')
-groups=()
-provides='non-mixer'
+license=('GPL2')
+provides='non-mixer=$pkgver'
 conflicts='non-mixer'
 depends=('ntk-git' 'jack' 'liblo')
 makedepends=('git')
