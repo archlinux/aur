@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Frozen Synapse
+Comment=Mode 7 Games
+GenericName=Turn-Based Tactics Game
+Icon=frozensynapse
+Exec=/usr/bin/frozensynapse
+Terminal=false
+StartupNotify=false

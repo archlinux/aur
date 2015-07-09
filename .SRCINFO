@@ -1,0 +1,23 @@
+pkgbase = frozensynapse
+	pkgdesc = A top-down simultaneous-turn-based tactical combat game (Humble Bundle version)
+	pkgver = 1.0.32+h20120614
+	pkgrel = 1
+	url = http://www.frozensynapse.com/
+	arch = i686
+	arch = x86_64
+	license = custom: "commercial"
+	depends = lib32-mesa
+	depends = lib32-libgl
+	depends = lib32-sdl
+	depends = lib32-openal
+	optdepends = lib32-ati-dri: Support for the ATI (open-source) graphics driver
+	optdepends = lib32-intel-dri: Support for the Intel graphics driver
+	optdepends = lib32-nouveau-dri: Support for the Nouveau graphics driver
+	options = !upx
+	source = hib://frozensynapse-linux-32-1339710386.run
+	source = frozensynapse.desktop
+	md5sums = bcbfce04bd280b69bddea7a4bef0864a
+	md5sums = e5480e851062946708572273c9545b9c
+
+pkgname = frozensynapse
+
