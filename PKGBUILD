@@ -1,7 +1,7 @@
 #Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname='python2-fbx-sdk'
-pkgver=2015.1
+pkgver=2016.0
 pkgrel=1
 pkgdesc='Platform and API toolkit to transfer existing content into the FBX format, Python binding.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python2' 'fbx-sdk')
 #_verstr="${pkgver:0:4}${pkgver:5:1}_${pkgver:7:1}"
 _verstr="${pkgver:0:4}${pkgver:5:1}"
 source=("http://images.autodesk.com/adsk/files/fbx${_verstr}_fbxpythonsdk_linux.tar.gz")
-md5sums=('6cc89bc9532449c7c95c27cd0f2e881c')
+md5sums=('711c6ce8055b2690f00105f8ba3bd082')
 
 build() {
   cd "$srcdir"
