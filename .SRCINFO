@@ -1,0 +1,22 @@
+pkgbase = petsc
+	pkgdesc = Portable, extensible toolkit for scientific computation
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://www.mcs.anl.gov/petsc/petsc-as
+	install = petsc.install
+	arch = i686
+	arch = x86_64
+	license = MIT compatible
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = python2
+	depends = openmpi
+	depends = boost
+	depends = lapack
+	options = staticlibs
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.6.0.tar.gz
+	md5sums = f0dcbf25a8dd7f3069c1f094338c5263
+
+pkgname = petsc
+
