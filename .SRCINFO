@@ -1,0 +1,26 @@
+pkgbase = haskell-libmpd
+	pkgdesc = An MPD client library.
+	pkgver = 0.9.0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/libmpd
+	install = haskell-libmpd.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = ghc
+	depends = haskell-attoparsec<1
+	depends = haskell-bytestring<1
+	depends = haskell-containers
+	depends = haskell-data-default>=0.4
+	depends = haskell-filepath
+	depends = haskell-mtl<3
+	depends = haskell-network<3
+	depends = haskell-text>=0.11
+	depends = haskell-time<2
+	depends = haskell-utf8-string
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/libmpd/0.9.0.2/libmpd-0.9.0.2.tar.gz
+	md5sums = f02b903117e8284b30826b07ee8e0b52
+
+pkgname = haskell-libmpd
+
