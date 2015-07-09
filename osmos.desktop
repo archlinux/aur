@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Osmos
+GenericName=Osmos
+Comment=Enter the ambient world of Osmos: elegant, physics-based gameplay, dreamlike visuals, and a minimalist, electronic soundtrack.
+Exec=osmos
+Icon=/opt/osmos/Icons/128x128.png
+Terminal=false
+Type=Application
+Categories=Game;
