@@ -2,6 +2,7 @@ post_install() {
   xdg-icon-resource install --size 256 --novendor /usr/share/pixmaps/designlab.png
   echo "YOU MUST AGREE THE LICENSE:"
   echo "http://forum.gadgetfactory.net/index.php?/files/download/236-papilio-designlab-ide/"
+  cat /usr/share/licenses/papilio-designlab/LICENSE
   echo
   echo "Don't forget to add yourself to the uucp and lock groups: gpasswd -a <user> uucp && gpasswd -a <user> lock (execute as root)"
 }
