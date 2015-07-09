@@ -1,4 +1,5 @@
-# Maintainer: Claudio Kozicky <claudiokozicky@gmail.com>
+# Maintainer: Sam S. <smls75@gmail.com>
+# Contributor: Claudio Kozicky <claudiokozicky@gmail.com>
 # Contributor: Gadget3000 <gadget3000 at msn dot com>
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
