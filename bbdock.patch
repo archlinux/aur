@@ -1,0 +1,12 @@
+diff -up src/bbdock/src/Dock.cc.orig src/bbdock/src/Dock.cc
+--- src/bbdock/src/Dock.cc.orig	2015-07-08 22:10:06.000000000 -0600
++++ src/bbdock/src/Dock.cc	2015-07-08 22:10:47.000000000 -0600
+@@ -31,6 +31,8 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <unistd.h>
++#include <strings.h>
++#include <string.h>
+ #include <iostream>
+ #include <string>
+ 

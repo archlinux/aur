@@ -1,0 +1,21 @@
+pkgbase = bbdock-git
+	pkgdesc = An application launcher dockapp supporting PNG files and transparency
+	pkgver = 07fcb34
+	pkgrel = 2
+	url = https://github.com/markusfisch/bbdock
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = libxt
+	makedepends = git
+	depends = libx11
+	depends = libpng
+	provides = bbdock
+	conflicts = bbdock
+	source = git://github.com/markusfisch/bbdock.git
+	source = bbdock.patch
+	md5sums = SKIP
+	md5sums = 5568359bb94d3bf6c8777b75e255fa3f
+
+pkgname = bbdock-git
+
