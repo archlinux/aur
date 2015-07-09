@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=A Virus Named TOM
+Comment=Misfits Attic
+GenericName=Action-Puzzle Game
+Icon=avirusnamedtom
+Exec=/usr/bin/avirusnamedtom
+Terminal=false

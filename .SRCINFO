@@ -1,0 +1,23 @@
+pkgbase = avirusnamedtom-hib
+	pkgdesc = A Virus Named TOM, a fast-paced action-puzzler (Humble Bundle version)
+	pkgver = 0+h20131019
+	pkgrel = 1
+	url = http://www.avirusnamedtom.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	makedepends = imagemagick
+	depends = sdl2
+	depends = openal
+	depends = gcc-libs
+	depends = libvorbis
+	depends = libtheora
+	options = !strip
+	options = !upx
+	source = hib://avnt-10192013-bin
+	source = avirusnamedtom-hib.desktop
+	md5sums = 4431412ea1ec5164ab63924161c8b4b4
+	md5sums = 1d68b4a3457c20486796c3e3f01dc88f
+
+pkgname = avirusnamedtom-hib
+
