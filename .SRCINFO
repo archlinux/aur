@@ -1,0 +1,20 @@
+pkgbase = dnsenum
+	pkgdesc = Perl script that enumerates DNS information from a domain, attempts zone transfers, performs a brute force dictionary style attack, and then performs reverse look-ups on the results
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://www2.packetstormsecurity.org/cgi-bin/search/search.cgi?searchvalue=dnsenum
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-net-dns
+	depends = perl-net-ip
+	depends = perl-net-netmask
+	optdepends = perl-www-mechanize: google scraping support
+	optdepends = perl-net-whois-ip: whois query support
+	source = http://dl.packetstormsecurity.net/UNIX/scanners/dnsenum1.2.tar.gz
+	md5sums = 59d92826d06119a21f197ea7fd8bcb17
+	sha1sums = ceee37fb9e9e019eb1c0b55177d521ae48e321a4
+
+pkgname = dnsenum
+
