@@ -1,0 +1,14 @@
+pkgbase = deepin-gtk-theme
+	pkgdesc = Deepin GTK Theme.
+	pkgver = 20131205094859~95cd257c48
+	pkgrel = 1
+	url = http://www.linuxdeepin.com
+	arch = any
+	license = LGPL-3+
+	depends = gtk3
+	depends = lib32-glibc
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gtk-theme/deepin-gtk-theme_13.06+git20131205094859~95cd257c48.tar.gz
+	sha256sums = f11748d3dd875a4653541bd5638682298f2370d715adc4afd9d5ffc7338b048f
+
+pkgname = deepin-gtk-theme
+
