@@ -1,0 +1,13 @@
+pkgbase = chicken-xft
+	pkgdesc = Chicken Egg: Bindings for xft
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/4/xft
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-foreigners
+	depends = chicken-xtypes
+
+pkgname = chicken-xft
+
