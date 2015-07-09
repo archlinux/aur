@@ -13,7 +13,7 @@ install=kibana.install
 source=(
 	"https://download.elasticsearch.org/kibana/kibana/$pkgname-$pkgver-linux-x64.tar.gz"
 	kibana.service)
-[[ $CARCH == 'i686' ]] && ${source[1]}=${source[1]/x64/x86}
+[[ $CARCH == 'i686' ]] && ${source[0]}=${source[1]/x64/x86}
 md5sums=('3a9bba5bb5e883851904fde9b79c291f'
          'SKIP')
 
