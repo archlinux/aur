@@ -1,0 +1,14 @@
+pkgbase = libvdpau-sunxi
+	pkgdesc = VDPAU driver for Allwinner sunxi SoCs
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/linux-sunxi/libvdpau-sunxi
+	arch = armv7h
+	license = LGPL
+	makedepends = libvdpau
+	depends = libx11
+	source = https://github.com/linux-sunxi/libvdpau-sunxi/archive/v0.3.tar.gz
+	sha256sums = 8a29b2b5394e9ad5f461af48cea780d3cb183bfc80399e58a27b632c1a9d5bab
+
+pkgname = libvdpau-sunxi
+
