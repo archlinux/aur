@@ -2,7 +2,7 @@
 
 pkgname=sachesi
 _pkgname=Sachesi
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Firmware, extractor, searcher and installer for Blackberry 10 (official build)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('gendesk')
 license=('GPL3')
 source=(https://github.com/xsacha/Sachesi/releases/download/${pkgver}/${pkgname}${pkgver}-Linux.tar.bz2
 		https://raw.githubusercontent.com/xsacha/Sachesi/master/assets/sachesi.png)
-sha1sums=('20594cbdd699e0ba0a19d5b663644a07f0c229d5'
+sha1sums=('2ecf4043b384fdbbc4dda27db03b6e30f83e9818'
           'f079002b6a39ea4bc71858d89b892c2d0a45c680')
 
 package() {
