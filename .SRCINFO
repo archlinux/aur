@@ -1,0 +1,15 @@
+pkgbase = aquaria-data-hib
+	pkgdesc = A 2D fantasy action-adventure game (Humble Bundle version; game data only)
+	pkgver = 1.1.3+h20100504
+	pkgrel = 2
+	url = http://www.bit-blot.com/
+	install = aquaria-data-hib.install
+	arch = any
+	license = custom: "commercial"
+	makedepends = pngrim-git
+	provides = aquaria-data=1.1.3
+	source = hib://aquaria-lnx-humble-bundle.mojo.run
+	md5sums = 8b24ddeeb553e028bbd501102f891cc2
+
+pkgname = aquaria-data-hib
+
