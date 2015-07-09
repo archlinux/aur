@@ -3,23 +3,23 @@
 
 pkgname=bd-git
 _gitname=bd
-pkgver=20141009
+pkgver=r41.8b04657
 pkgrel=1
 pkgdesc="Jump back to a specific directory, without doing `cd ../../..`"
 arch=('any')
 url="https://github.com/vigneshwaranr/bd"
 license=('MIT')
 makedepends=('git')
-source=('git://github.com/vigneshwaranr/bd.git')
+source=($pkgname'::git+git://github.com/vigneshwaranr/bd.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
 
   install -D -m 755 bd "$pkgdir/usr/bin/bd"
   install -D -m 644 bash_completion.d/bd "$pkgdir/usr/share/bash-completion/completions/bd"
