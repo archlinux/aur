@@ -1,0 +1,19 @@
+pkgbase = rochard-hib
+	pkgdesc = A sci-fi action platformer that centers around manipulating gravity (Humble Bundle version)
+	pkgver = 1.42+h20130620
+	pkgrel = 1
+	url = http://www.rochardthegame.com
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = mesa
+	depends = libgl
+	depends = glu
+	options = !upx
+	source = hib://Rochard_v1.42_Linux_x64_1371746492.tar.gz
+	source = rochard-hib.desktop
+	md5sums = 94944c149291287900d3face338d1b4b
+	md5sums = a84ba958254ba229f5f9d66d5c6672ea
+
+pkgname = rochard-hib
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Rochard
+Comment=Recoil Games
+GenericName=Sci-Fi Action Platformer
+Icon=rochard
+Exec=/usr/bin/rochard
+Terminal=false
