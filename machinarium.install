@@ -1,0 +1,27 @@
+_databases() {
+    update-desktop-database -q
+    gtk-update-icon-cache -qtf usr/share/icons/hicolor
+}
+
+post_install() {
+    _databases
+    [[ $CARCH == 'x86_64' ]] && echo "Don't forget to install the lib32 packages of your gtk engines."
+    cat <<__EOF__
+ALTERNATIVE startup:
+open your browser and go to /usr/share/games/machinarium/machinarium-browser.swf
+
+Mouse slowness hack:
+right-click Settings > first tab; disable HW accel
+second tab: just click on Advanced button (this will incidentally make game in windowed mode)
+now you can under (window menu)Controls>Quality>set some lower
+__EOF__
+}
+
+post_upgrade() {
+    _databases
+
+}
+
+post_remove() {
+    _databases
+}

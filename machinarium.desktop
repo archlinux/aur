@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Machinarium
+GenericName=A point-and-click adventure game by the creators of Samorost
+Type=Application
+Categories=Game;
+Icon=machinarium
+Exec=machinarium
+Terminal=false
