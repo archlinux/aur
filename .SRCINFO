@@ -1,0 +1,19 @@
+pkgbase = asclock-classic
+	pkgdesc = The AfterStep clock dock app - Xlib version
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	provides = asclock
+	conflicts = asclock-classic
+	conflicts = asclock-gtk
+	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/asclock-classic-1.0.tar.gz
+	source = asclock.desktop
+	md5sums = fc7f280e77b2646a02fd0dd42ac31ceb
+	md5sums = 00cbeb63e46bc7c402e20680e0aa1fec
+
+pkgname = asclock-classic
+

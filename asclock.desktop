@@ -1,0 +1,42 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=ASClock
+GenericName=Clock
+Comment=The AfterStep clock dock app
+Exec=asclock -d
+Icon=GNUstep3D
+Terminal=false
+StartupNotify=false
+Categories=DockApp;WMAKER;
+StartupWMClass=asclock
+X-Arch-Package=asclock
+Actions=Newstone;Orb;Stone;Analog;Beats;Classic;Shaped;
+
+[Desktop Action Newstone]
+Name=Newstone theme
+Exec=asclock -d -t Newstone
+
+[Desktop Action Orb]
+Name=Orb theme
+Exec=asclock -d -t Orb
+
+[Desktop Action Stone]
+Name=Stone theme
+Exec=asclock -d -t Stone
+
+[Desktop Action Analog]
+Name=Analog theme
+Exec=asclock -d -t analog
+
+[Desktop Action Beats]
+Name=Beats theme
+Exec=asclock -d -t beats
+
+[Desktop Action Classic]
+Name=Classic theme
+Exec=asclock -d -t classic
+
+[Desktop Action Shaped]
+Name=Shaped theme
+Exec=asclock -d -t shaped
