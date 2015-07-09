@@ -1,0 +1,14 @@
+pkgbase = chicken-coops
+	pkgdesc = An featureful object system
+	pkgver = 1.93
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/coops
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-matchable
+	depends = chicken-record-variants
+
+pkgname = chicken-coops
+
