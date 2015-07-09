@@ -23,7 +23,8 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
         "0001-systemd-logind-do-not-rely-on-directed-signals.patch")
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
-              'C383B778255613DFDB409D91DB221A6900000011')
+              'C383B778255613DFDB409D91DB221A6900000011'
+              'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
 sha256sums=('f61120612728f2c5034671d0ca3e2273438c60aba93b3dda4a8aa40e6a257993'
             'SKIP'
             'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
