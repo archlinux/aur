@@ -1,0 +1,20 @@
+pkgbase = arx-fatalis-data-gog
+	pkgdesc = Arx Fatalis game data from GOG.com installer
+	pkgver = 1.21
+	pkgrel = 1
+	url = http://www.gog.com/en/gamecard/arx_fatalis
+	install = arx-fatalis-data.install
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = innoextract
+	provides = arx-fatalis-data
+	conflicts = arx-fatalis-data-copy
+	conflicts = arx-fatalis-data-demo
+	source = install-verify
+	source = install-gog
+	md5sums = e9c245ac1bb48cb8ef667933e0b725d2
+	md5sums = fc86639646ba5dba6d737560fb846f4a
+
+pkgname = arx-fatalis-data-gog
+
