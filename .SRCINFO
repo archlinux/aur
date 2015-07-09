@@ -1,0 +1,14 @@
+pkgbase = chicken-condition-utils
+	pkgdesc = Chicken Scheme Egg: SRFI 12 Condition Utilities
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/condition-utils
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-setup-helper
+	depends = chicken-check-errors>=1.12.0
+
+pkgname = chicken-condition-utils
+
