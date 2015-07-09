@@ -1,0 +1,23 @@
+pkgbase = xfce-theme-greybird-git
+	pkgdesc = Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity
+	pkgver = v1.4.2.g98d9182.557.98d9182
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Greybird
+	arch = any
+	license = GPL
+	license = CCPL
+	makedepends = git
+	depends = gtk-engine-murrine
+	optdepends = elementary-xfce-icons: matching icon theme
+	optdepends = emerald: emerald theme
+	optdepends = lightdm-gtk2-greeter: lightdm GTK+2 theme
+	optdepends = lightdm-gtk3-greeter: lightdm GTK+3 theme
+	optdepends = lightdm-unity-greeter: lightdm unity theme
+	provides = xfce-theme-greybird
+	conflicts = xfce-theme-greybird
+	options = !strip
+	source = git://github.com/shimmerproject/Greybird.git
+	md5sums = SKIP
+
+pkgname = xfce-theme-greybird-git
+
