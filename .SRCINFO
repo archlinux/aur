@@ -1,0 +1,26 @@
+pkgbase = aquaria-git
+	pkgdesc = A 2D fantasy action-adventure game (improved Open Source build of the engine)
+	pkgver = 1.1.3+g406.cccd422
+	pkgrel = 1
+	url = http://www.bit-blot.com/
+	install = aquaria-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = sdl2
+	depends = openal
+	depends = gcc-libs
+	conflicts = aquaria-hib-git
+	conflicts = aquaria-hib-hg
+	conflicts = aquaria
+	replaces = aquaria-hib-git
+	replaces = aquaria-hib-hg
+	replaces = aquaria
+	source = git://github.com/fgenesis/Aquaria.git
+	source = aquaria-git.desktop
+	md5sums = SKIP
+	md5sums = 8677297d97cee364ca63652503ed6e62
+
+pkgname = aquaria-git
+

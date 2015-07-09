@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Aquaria
+Comment=Bit Blot
+GenericName=2D Fantasy Action-Adventure
+Icon=aquaria
+Exec=/usr/bin/aquaria
+Terminal=false
