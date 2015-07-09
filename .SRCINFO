@@ -1,7 +1,7 @@
 pkgbase = thinkfan
 	pkgdesc = A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi
 	pkgver = 0.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://thinkfan.sourceforge.net/
 	install = thinkfan.install
 	arch = i686
@@ -11,13 +11,11 @@ pkgbase = thinkfan
 	depends = libatasmart
 	optdepends = lm_sensors: hwmon support
 	source = http://downloads.sourceforge.net/project/thinkfan/thinkfan-0.9.2.tar.gz
-	source = thinkfan.install
 	source = thinkfan.service
 	source = thinkpad_acpi.conf
-	md5sums = 4292633aebd61b91f04cd332c4d3e181
-	md5sums = 76553f63dc55a6e09a429bb4e28eb649
-	md5sums = 656b3721d0fccd770f615531f50ce0aa
-	md5sums = bca920d066846e5811a2465aefa13012
+	sha256sums = 90daa0f2db221e1d5085d7f25cb6c63608d174db2987478c340e9523e652af79
+	sha256sums = 90f0270b4044a41315feb7bc1447ce4a0d5ee50178682e9a1d2a36b07c1a494f
+	sha256sums = 28874576641b3cc1aa486e1bc9ed40eadfe8b13d6d3014016e31fedc5dc5195f
 
 pkgname = thinkfan
 
