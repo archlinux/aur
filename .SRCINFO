@@ -1,0 +1,21 @@
+pkgbase = snapshot-hib
+	pkgdesc = A platformer puzzle game (Humble Bundle version)
+	pkgver = 1.28_20121219
+	pkgrel = 1
+	url = http://www.retroaffect.com/games/1/snapshot/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = glu
+	depends = sdl
+	depends = openal
+	depends = libvorbis
+	options = !strip
+	options = !upx
+	source = hib://Snapshot-linux-v28-.tar.gz
+	source = snapshot-hib.desktop
+	md5sums = 
+	md5sums = 6df7363660caff44e3f2bfd946d12b34
+
+pkgname = snapshot-hib
+

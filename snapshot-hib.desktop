@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Snapshot
+Comment=Retro Affect
+GenericName=Puzzle Platformer
+Icon=snapshot
+Exec=/usr/bin/snapshot
+Terminal=false
