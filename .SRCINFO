@@ -1,0 +1,15 @@
+pkgbase = html-docs
+	pkgdesc = Set of documentation for HTML5 including HTML4 documentation.
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://www.w3.org/TR/html/
+	arch = any
+	license = GPL
+	makedepends = wget
+	noextract = html40.tgz
+	options = docs
+	source = http://www.w3.org/TR/html4/html40.tgz
+	md5sums = 1ed76627ba80816079649f67023ec7ab
+
+pkgname = html-docs
+
