@@ -20,10 +20,10 @@ pkgbase = popcorntime
 	options = !strip
 	source = desktop-v0.3.8-0.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v0.3.8-0
 	source = desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master
-	source = https://get.popcorntime.io/nw/v0.12.1/
+	source = https://get.popcorntime.io/nw/v0.12.1/node-webkit-v0.12.1-linux-x64.tar.gz
 	source = popcorntime.desktop
 	sha256sums = 58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c
-	sha256sums = SKIP
+	sha256sums = 447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47
 	sha256sums = 1366ea08e022ae78d5fc63bcfa9ce50797da0573302d867c6082bc39aaf576ab
 	sha256sums = ac2b7183d3ea62ae821c7d1f4b243b0ca41c7838efa16babe29cad0c4958ee25
 

@@ -21,14 +21,6 @@ options=('!strip')
 install="popcorntime.install"
 _gitname=desktop.git
 _nw_ver=0.12.1
-source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
-        "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
-        "https://get.popcorntime.io/nw/v${_nw_ver}/${_nw_file}"
-        "popcorntime.desktop")
-sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
-            'SKIP'
-            '1366ea08e022ae78d5fc63bcfa9ce50797da0573302d867c6082bc39aaf576ab'
-            'ac2b7183d3ea62ae821c7d1f4b243b0ca41c7838efa16babe29cad0c4958ee25')
 
 _platform=linux64
 _nw_platform=linux-x64
@@ -39,6 +31,14 @@ if [ "$CARCH" = 'i686' ]; then
 fi
 _nw_file=node-webkit-v${_nw_ver}-${_nw_platform}.tar.gz
 
+source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
+        "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
+        "https://get.popcorntime.io/nw/v${_nw_ver}/${_nw_file}"
+        "popcorntime.desktop")
+sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
+            '447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47'
+            '1366ea08e022ae78d5fc63bcfa9ce50797da0573302d867c6082bc39aaf576ab'
+            'ac2b7183d3ea62ae821c7d1f4b243b0ca41c7838efa16babe29cad0c4958ee25')
 
 prepare() {
   cd "${srcdir}/${_gitname}"
