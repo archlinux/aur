@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=glsl-debugger-git
-pkgver=0.r324.72937cf
+pkgver=r386.55b007c
 pkgrel=1
 epoch=1
 pkgdesc="GLSL source level debugger. This is the Open Source public release of the project originally known as glslDevil."
