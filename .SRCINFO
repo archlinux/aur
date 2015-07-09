@@ -1,0 +1,16 @@
+pkgbase = firmware-mod-kit
+	pkgdesc = This kit allows for easy deconstruction and reconsutrction of firmware images for various embedded devices.
+	pkgver = 0.99
+	pkgrel = 6
+	url = http://code.google.com/p/firmware-mod-kit/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-magic
+	provides = firmware-mod-kit
+	options = !strip
+	source = https://firmware-mod-kit.googlecode.com/files/fmk_099.tar.gz
+	md5sums = 91bd2cb3803880368af369d07271b5b9
+
+pkgname = firmware-mod-kit
+
