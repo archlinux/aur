@@ -1,0 +1,52 @@
+run_hook ()
+{
+	# avoid exporting configuration
+	(
+		SPLASH_INIT_MESSAGE="Initializing the kernel"
+		# Get configuration and functions (faking sysinit for config file hacks)
+		PREVLEVEL=N; RUNLEVEL=S
+		. /usr/bin/splash-functions.sh
+		unset PREVLEVEL RUNLEVEL
+
+		[ "${SPLASH_MODE_REQ}" = "silent" ] || exit 0
+
+		# Start the daemon here if possible
+		# to show animations early and gain some bootup speed
+		if [ -x "$spl_daemon" ]; then
+			msg "Starting Fbsplash Daemon"
+			set -e
+			# Mount the cache within /run to get it moved to the new root
+			mkdir /run/.splash-cache
+			( spl_cachedir=/run/.splash-cache; splash_cache_prep )
+			# Take over any existing cache content
+			mkdir -p $spl_cachedir
+			parent=$( dirname $spl_cachedir )
+			mv $spl_cachedir $parent/.splash-cache
+			cp -a $parent/.splash-cache /run/
+			# Symlink for starting the daemon
+			ln -s /run/.splash-cache $spl_cachedir
+			# Wait for any fbcondecor fadein - may take very long on some broken systems
+			i=0
+			while [ -n "$( pidof fbcondecor_helper )" ]; do
+				if [ $i -ge 50 ]; then
+					err "timeout on waiting for fbcondecor_helper to die!"
+					exit 1
+				fi
+				sleep .1
+				i=$(( i + 1 ))
+			done
+			# Actually start the daemon
+			cd /run/.splash-cache
+			set +e
+			SPLASH_BOOT_MESSAGE="${SPLASH_INIT_MESSAGE}"
+			splash_start && sleep .1 # allow the daemon to open the event dev
+			exit
+		fi
+
+		# Start the fbcondecor helper if not already done by fbcondecor kernel
+		if ! fbcondecor_supported; then
+			BOOT_MSG="${SPLASH_INIT_MESSAGE}" \
+				/usr/bin/fbcondecor_helper 2 init 0 0 $SPLASH_THEME
+		fi
+	)
+}

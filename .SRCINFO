@@ -1,0 +1,36 @@
+pkgbase = fbsplash
+	pkgdesc = Userspace implementation of a splash screen for Linux (formerly gensplash)
+	pkgver = 1.5.4.4
+	pkgrel = 16
+	url = http://fbsplash.alanhaggai.org
+	install = fbsplash.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = miscsplashutils
+	depends = freetype2
+	depends = libjpeg
+	depends = libpng
+	depends = libmng
+	depends = lcms
+	depends = gpm
+	optdepends = linux-fbcondecor: enable console background images
+	optdepends = fbsplash-extras: additional functionality like daemon icons
+	optdepends = uswsusp-fbsplash: suspend to disk with fbsplash
+	optdepends = python: convert themes from splashy to fbsplash
+	conflicts = fbsplash-scripts
+	conflicts = initscripts-extras-fbsplash
+	source = http://downloads.sourceforge.net/project/fbsplash.berlios/splashutils-1.5.4.4.tar.bz2
+	source = splash_start_initcpio.patch
+	source = splash.conf
+	source = fbsplash-basic.sh
+	source = fbsplash.initcpio_install
+	source = fbsplash.initcpio_hook
+	source = fbcondecor.daemon
+	source = fbcondecor.conf
+	options = !makeflags
+	backup = etc/conf.d/fbcondecor
+	backup = etc/conf.d/splash
+
+pkgname = fbsplash
+

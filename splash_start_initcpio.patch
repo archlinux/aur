@@ -1,0 +1,22 @@
+diff -ru src.orig//splashutils-1.5.4.3/scripts/splash-functions.sh.in src//splashutils-1.5.4.3/scripts/splash-functions.sh.in
+--- src.orig//splashutils-1.5.4.3/scripts/splash-functions.sh.in	2008-11-13 20:54:19.000000000 +0100
++++ src//splashutils-1.5.4.3/scripts/splash-functions.sh.in	2011-03-03 09:45:29.258901793 +0100
+@@ -250,6 +250,9 @@
+ 	# Start the splash daemon
+ 	BOOT_MSG="$(splash_get_boot_message)" ${spl_daemon} --theme="${SPLASH_THEME}" --pidfile="${spl_pidfile}" --type=${ttype} ${options}
+
++	# First let the daemon open the event dev before it's gone away in case this is run in the initcpio
++	splash_set_event_dev
++
+ 	# Set the silent TTY and boot message
+ 	splash_comm_send "set tty silent ${SPLASH_TTY}"
+
+@@ -261,8 +264,6 @@
+
+ 	splash_comm_send "set autoverbose ${SPLASH_AUTOVERBOSE}"
+
+-	splash_set_event_dev
+-
+ 	return 0
+ }
+

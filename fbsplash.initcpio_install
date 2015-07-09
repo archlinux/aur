@@ -1,0 +1,104 @@
+
+build() {
+	# Add config file, splash-functions and the helper
+	add_file   /etc/conf.d/splash
+	add_file   /usr/bin/splash-functions.sh
+	add_binary /usr/bin/fbcondecor_helper
+
+	# Get in configuration, parameters and functions
+	. /etc/conf.d/splash
+	. /usr/bin/splash-functions.sh
+
+	# Unmount any stale cache tmpfs
+	splash_cache_cleanup
+
+	SPLASH_PROFILE=off
+
+	if [[ $SPLASH_DAEMON = early ]]; then
+		# Add stuff needed to run splash_start function (except optional evdev module)
+		add_dir    $spl_tmpdir
+		add_binary $spl_daemon
+		if [[ -e /etc/rc.d/functions.d/fbsplash-extras.sh ]]; then
+			. /etc/rc.d/functions.d/fbsplash-extras.sh
+			# Add files from a prepared cache (faking sysinit)
+			splash_cache_prep_initcpio && add_full_dir $spl_cachedir
+		fi
+	fi
+
+	# List file paths contained in given Fbsplash theme cfg files
+	# (Only file paths containing at least one slash will be found by this.)
+	fbsplash_list_paths() {
+		(( $# )) || return 0
+		/bin/sed -re '
+			# convert all whitespace into single blanks
+			s,[[:space:]]+, ,g ; t L1
+			:L1
+			# drop comments, grouping directives and blank lines
+			/^ *([#<]|$)/ d
+			# get a filepath or drop
+			s,.*[ =]([^ ]*/[^ ]+).*,\1, ; t ; d
+		' "$@" | /usr/bin/sort -u
+	}
+
+	# Check if arg is a theme cfg file path
+	fbsplash_is_cfg() {
+		[[ $1 =~ ^/etc/splash/[^/]+/[0-9]+x[0-9]+\.cfg$ ]]
+	}
+
+	# Add all files referenced by path in given theme cfg files
+	# args: <theme-root-dir> <cfg-file>...
+	fbsplash_add_files_from_cfgs() {
+		local file theme_dir=$1; shift
+		while read file; do
+			if [[ $file == /* ]]; then
+				add_file $file
+			else # Path may be relative to /etc/splash or theme-dir
+				local found=0
+				for file in /etc/splash/$file "$theme_dir"/$file; do
+					[[ -f $file ]] && { add_file $file; found=1; }
+				done
+				(( found )) || error "Theme '${theme_dir##*/}': File not found: '$file'"
+			fi
+		done < <( fbsplash_list_paths "$@" )
+	}
+
+	# Add common files (may be referenced in cfg by plain file name)
+	local file
+	for file in /etc/splash/*; do
+		[[ -f $file ]] && add_file "$file"
+	done
+
+	# Add themes
+	local file theme
+	for theme in $SPLASH_THEMES; do
+		if [[ -d /etc/splash/$theme && $theme != */* ]]; then
+			add_full_dir /etc/splash/$theme
+			local files=()
+			for file in /etc/splash/$theme/*.cfg; do
+				[[ -f $file ]] && fbsplash_is_cfg "$file" && files+=( $file )
+			done
+			fbsplash_add_files_from_cfgs /etc/splash/$theme "${files[@]}"
+		elif [[ -f /etc/splash/$theme ]] && fbsplash_is_cfg /etc/splash/$theme; then
+			file=/etc/splash/$theme; theme=${theme%/*}
+			add_file $file
+			fbsplash_add_files_from_cfgs /etc/splash/$theme $file
+			# Add all non-cfg files from theme dir (may be referenced by plain file name)
+			for file in /etc/splash/$theme/*; do
+				[[ -f $file ]] && ! fbsplash_is_cfg "$file" && add_file "$file"
+			done
+		else
+			error "Theme invalid or not found: '$theme'"
+		fi
+	done
+
+	add_runscript fbsplash
+}
+
+help() {
+cat<<HELPEOF
+  This hook adds the FBconDecor helper and Fbsplash themes and maybe the
+  Fbsplash daemon as specified in /etc/conf.d/splash.
+HELPEOF
+}
+
+#EOF
