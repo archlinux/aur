@@ -1,0 +1,26 @@
+pkgbase = vokoscreen
+	pkgdesc = Desktop Recorder, GUI ffmpeg based on Qt4 libriaries.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.kohaupt-online.de/
+	install = vokoscreen.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = gcc
+	depends = qt4
+	depends = ffmpeg
+	depends = lame
+	depends = mkvtoolnix-cli
+	depends = opencv
+	optdepends = pulseaudio
+	optdepends = alsa-utils
+	source = https://github.com/vkohaupt/vokoscreen/archive/2.2.0.tar.gz
+	source = vokoscreen.install
+	md5sums = db3015b369c3f6531a887fc2b1492215
+	md5sums = 027efd4ee6f24da7af118f6f99ef5909
+
+pkgname = vokoscreen
+
