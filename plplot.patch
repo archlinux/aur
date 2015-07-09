@@ -1,0 +1,87 @@
+--- ./examples/CMakeLists.txt~	2014-02-06 05:04:19.000000000 +0000
++++ ./examples/CMakeLists.txt	2014-10-18 12:37:48.230640851 +0100
+@@ -414,7 +414,7 @@
+ endif(CORE_BUILD)
+ 
+ if(CORE_BUILD AND BUILD_TEST)
+-  remove_definitions("-DHAVE_CONFIG_H")
++  remove_definitions("-DPLPLOT_HAVE_CONFIG_H")
+ endif(CORE_BUILD AND BUILD_TEST)
+ 
+ # Decide on device to be used for generic interactive tests.
+--- ./bindings/ocaml/CMakeLists.txt~	2013-10-22 18:47:13.000000000 +0100
++++ ./bindings/ocaml/CMakeLists.txt	2014-10-18 12:38:33.277573399 +0100
+@@ -99,7 +99,7 @@
+     ${CMAKE_CURRENT_BINARY_DIR}/dllplplot_stubs.so
+     ${CMAKE_CURRENT_BINARY_DIR}/libplplot_stubs.a
+     COMMAND ${OCAMLC} -ccopt -I${CAMLIDL_LIB_DIR} -c ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.c
+-    COMMAND ${OCAMLC} -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime -ccopt -I${CMAKE_BINARY_DIR} -ccopt -I${CAMLIDL_LIB_DIR} -ccopt -DHAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plplot_impl.c
++    COMMAND ${OCAMLC} -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime -ccopt -I${CMAKE_BINARY_DIR} -ccopt -I${CAMLIDL_LIB_DIR} -ccopt -DPLPLOT_HAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plplot_impl.c
+     COMMAND ${OCAMLMKLIB} -o plplot_stubs -L${CAMLIDL_LIB_DIR} -lcamlidl -L${CMAKE_BINARY_DIR}/src -lplplot${LIB_TAG} ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.o ${CMAKE_CURRENT_BINARY_DIR}/plplot_impl.o ${ocaml_STATIC_FLAGS}
+     DEPENDS
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.c
+--- ./bindings/ocaml/plcairo/CMakeLists.txt~	2013-10-22 18:47:13.000000000 +0100
++++ ./bindings/ocaml/plcairo/CMakeLists.txt	2014-10-18 12:39:03.217750051 +0100
+@@ -36,7 +36,7 @@
+     ${CMAKE_CURRENT_BINARY_DIR}/plcairo_impl.o
+     ${CMAKE_CURRENT_BINARY_DIR}/dllplcairo_stubs.so
+     ${CMAKE_CURRENT_BINARY_DIR}/libplcairo_stubs.a
+-    COMMAND ${OCAMLC} -ccopt "${CAIRO_COMPILE_FLAGS}" -cclib "${CAIRO_LINK_FLAGS}" -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime  -ccopt -I${CMAKE_BINARY_DIR} -ccopt -DHAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plcairo_impl.c
++    COMMAND ${OCAMLC} -ccopt "${CAIRO_COMPILE_FLAGS}" -cclib "${CAIRO_LINK_FLAGS}" -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime  -ccopt -I${CMAKE_BINARY_DIR} -ccopt -DPLPLOT_HAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plcairo_impl.c
+     COMMAND ${OCAMLMKLIB} -o plcairo_stubs ${CAIRO_LINK_FLAGS_LIST} -L${CMAKE_BINARY_DIR}/src -lplplot${LIB_TAG} ${CMAKE_CURRENT_BINARY_DIR}/plcairo_impl.o
+     DEPENDS
+     ${CMAKE_CURRENT_SOURCE_DIR}/plcairo_impl.c
+--- ./plplot_config.h.in~	2014-01-13 03:27:10.000000000 +0000
++++ ./plplot_config.h.in	2014-10-18 12:39:42.821316972 +0100
+@@ -3,7 +3,7 @@
+ // examples (and presumably any user applications).  Therefore, the
+ // configured plplot_config.h should not be installed.  In contrast,
+ // include/plConfig.h.in (note, the configured plConfig.h result
+-// #includes plplot_config.h for the core build because HAVE_CONFIG_H
++// #includes plplot_config.h for the core build because PLPLOT_HAVE_CONFIG_H
+ // is #defined in that case) contains configured macros that are
+ // required for the core build, installed examples build, and build of
+ // user applications.  Therefore, in contrast to plplot_config.h,
+--- ./include/plConfig.h.in~	2013-12-29 20:11:07.000000000 +0000
++++ ./include/plConfig.h.in	2014-10-18 12:40:03.134770083 +0100
+@@ -30,7 +30,7 @@
+ // any user applications).  Therefore, the configured plConfig.h
+ // should be installed.  In contrast, plplot_config.h.in (note,
+ // plConfig.h #includes plplot_config.h for the core build because
+-// HAVE_CONFIG_H is #defined in that case) contains configured macros
++// PLPLOT_HAVE_CONFIG_H is #defined in that case) contains configured macros
+ // that are only required for the core build.  Therefore, in contrast
+ // to plConfig.h, plplot_config.h should not be installed.
+ //
+@@ -44,7 +44,7 @@
+ #ifndef __PLCONFIG_H__
+ #define __PLCONFIG_H__
+ 
+-#ifdef HAVE_CONFIG_H
++#ifdef PLPLOT_HAVE_CONFIG_H
+ #  include <plplot_config.h>
+ #endif
+ 
+--- ./CMakeLists.txt~	2013-12-29 20:11:07.000000000 +0000
++++ ./CMakeLists.txt	2014-10-18 12:40:28.278251641 +0100
+@@ -125,7 +125,7 @@
+   ${CMAKE_CURRENT_BINARY_DIR}/plplot_config.h
+   )
+ # Allow access to the generated plplot_config.h for this build.
+-add_definitions("-DHAVE_CONFIG_H")
++add_definitions("-DPLPLOT_HAVE_CONFIG_H")
+ # Install top-level files
+ 
+ # Enable testing framework for examples
+--- ./cmake/modules/pkg-config.cmake.old  2014-02-06 05:06:07.000000000 +0000
++++ ./cmake/modules/pkg-config.cmake      2015-02-11 18:23:57.654766094 +0000
+@@ -94,7 +94,8 @@
+     set(_xprefix ${_prefix})
+   endif(FORCE_EXTERNAL_STATIC)
+   
+-  _pkg_check_modules_internal(0 0 ${_prefix} "${_package}")
++  _pkg_check_modules_internal(0 0 0 0 ${_prefix} "${_package}")
++
+   if(${_prefix}_FOUND)
+     cmake_link_flags(${_link_FLAGS} "${${_xprefix}_LDFLAGS}")
+     # If libraries cannot be not found, then that is equivalent to whole

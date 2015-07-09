@@ -1,0 +1,30 @@
+pkgbase = plplot
+	pkgdesc = A cross-platform software package for creating scientific plots
+	pkgver = 5.10.0
+	pkgrel = 4
+	url = http://plplot.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom
+	makedepends = cmake
+	depends = libtool
+	depends = tk
+	optdepends = qhull: calculating convex hulls
+	optdepends = agg: high quality rendering engine in C++
+	optdepends = swig: connects Plplot C library to Python, Java and Lua (must be present at compile time for Java)
+	optdepends = gd: ability to output png, jpeg and gif files
+	optdepends = qt4: display plots, output various formats using the Qt UI framework
+	optdepends = wxgtk: displays plots using wxWidgets library
+	optdepends = freetype2: enables use of ttf fonts for some drivers
+	optdepends = ttf-freefont: enables use of ttf fonts for some drivers
+	optdepends = cairo: displays plots and save to different file formats
+	options = !libtool
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/plplot/plplot-5.10.0.tar.gz
+	source = plplot.patch
+	md5sums = ece8c0b4d5cd815968a6d56bed0fbe7b
+	md5sums = 9a50d8aa4c088bd29355076f6fc91f31
+
+pkgname = plplot
+
