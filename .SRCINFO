@@ -1,0 +1,15 @@
+pkgbase = fbmix
+	pkgdesc = A simple mixer applet for the system tray
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://sandbox.ltmnet.com/page/projects/fbmix
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = vte
+	source = http://sandbox.ltmnet.com/downloads/fbmix-0.4.1.tar.bz2
+	md5sums = 12d3571658b6fa5b5f3bbb3dad9493d1
+
+pkgname = fbmix
+
