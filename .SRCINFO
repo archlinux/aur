@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-knlmeanscl-git
 	pkgdesc = Plugin for Vapoursynth: knlmeanscl (GIT version)
-	pkgver = r7.a89eb6e
+	pkgver = .r8.add1a31
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171379
 	arch = i686
