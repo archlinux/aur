@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#A simple pacman and cower wrapper written in bash
+#A simple pacman and AUR wrapper written in bash
 #Developer: William Hahn <bill@hahn3.com>
 
 ##########Initialization##########
@@ -20,7 +20,7 @@ fi
 if [ -f $HOME/.wrapaurrc ]; then
 	source $HOME/.wrapaurrc
 else
-	echo -e "#Configuration file for wrapaur\n\n#Set country for reflector mirror update\ncountry=\n\n#Set number of top mirrors to sync\nmirrorcount=\n\n#Set for no prompts on mirror update\nmirrorprompt=\n\n#Set email for package updates\nemail=\n\n#Set colors\ncolor1=''\ncolor2=''\ncolor3=''" > $HOME/.wrapaurrc
+	echo -e "#Configuration file for wrapaur\n\n#Set country for mirror update\ncountry=\n\n#Set number of top mirrors to sync\nmirrorcount=\n\n#Set for no prompts on mirror update\nmirrorprompt=\n\n#Set email for package updates\nemail=\n\n#Set colors\ncolor1=''\ncolor2=''\ncolor3=''" > $HOME/.wrapaurrc
 	echo "wrapaur configuration file created at $HOME/.wrapaurrc"
 	chmod 600 $HOME/.wrapaurrc
 fi
@@ -33,10 +33,16 @@ update_all()
 	#run pacman update
 	sudo pacman -Syu
 
-	#run cower update for AUR and assign item names to downloads variable
+	#check for AUR updates and assign item names to downloads variable
 	echo -e "${color1}:: ${color2}Checking the AUR for updates...${color3}"
-	downloads=$(cower -uddf -t $HOME/.wrapaur | cut -d ' ' -f 2)
-	downloads=$(echo -e $downloads | tac -s " ")
+	aurpkgs=$(pacman -Qm | awk '{print $1}')
+	for line in $aurpkgs
+	do
+		vcheck=$(check_pkgversion $line)
+		if [[ $vcheck == 1 ]]; then
+			downloads=$(echo -e "$downloads\n$line")
+		fi
+	done
 	#check if updates were found and assigned to downloads variable
 	if [[ -z $downloads ]]; then
 		echo -e " ${color3}there is nothing to do"
@@ -47,48 +53,21 @@ update_all()
 		do
 			echo -e $line
 		done
-		dprompt=$(echo -e "${color1}:: ${color2}Proceed with installation? [Y/n] ${color3}")
-		until [ "$dchoice" == "y" ] || [ "$dchoice" == "n" ] || [ "$dchoice" == "Y" ] || [ "$dchoice" == "N" ]; do
-			read -p "$dprompt" dchoice
-		done	
-		#if chosen to install now, loop through each item in downloads variable, install and run pacman -U, then remove folder
-		if [ "$dchoice" == "y" ] || [ "$dchoice" == "Y" ]; then
-			for line in $downloads
-			do
-				cd $HOME/.wrapaur/$line
-				echo -e "installing  ${line}..."
-				eprompt=$(echo -e "${color1}:: ${color2}Edit PKGBUILD? [Y/n] ${color3}")
-				until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ]; do
-					read -p "$eprompt" echoice
-				done	
-				#if chosen to edit PKGBUILD open editor
-				if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ]; then
-					$EDITOR PKGBUILD
-				fi
-				makepkg -si
-				cd $HOME/.wrapaur
-				ruprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
-				until [ "$ruchoice" == "y" ] || [ "$ruchoice" == "n" ] || [ "$ruchoice" == "Y" ] || [ "$ruchoice" == "N" ]; do
-					read -p "$ruprompt" ruchoice
-				done
-				if [ "$ruchoice" == "y" ] || [ "$ruchoice" == "Y" ]; then
-					rm -Rf $HOME/.wrapaur/$line
-				fi
-				echoice="x"
-				ruchoice="x"
-			done
-		else
-			echo -e " ${color3}updates downloaded to $HOME/.wrapaur"
-		fi
+		for line in $downloads
+		do
+			aur_dep_install $line
+		done
 	fi
 }
 
 #search option selected
 package_search()
 {
-	#search with pacman and cower
+	#search with pacman
 	pacman -Ss $1
-	cower -sc $1
+	#aur search
+	curl -s "https://aur4.archlinux.org/rpc.php?type=search&arg=$1" | awk -F , 'BEGIN {RS = "{"} {print $0}' | awk -F : 'BEGIN {RS = ","} {print $0}' | grep -E '"Name":"|"Version":"|"Description":"' | while read line; do if [[ $line == *"Name"* ]]; then name=$(echo $line | awk -F : '{print $2}' | sed 's/"//g'); elif [[ $line == *"Version"* ]]; then version=$(echo $line| awk -F : '{print $2}' | sed 's/"//g'); elif [[ $line == *"Description"* ]]; then desc=$(echo $line | awk -F : '{print $2}' | sed 's/"//g') && echo -e "aur\\$name $version\n$desc";fi; done < /dev/stdin
+
 }
 
 #official install option selected
@@ -103,57 +82,6 @@ pac_remove()
 {
 	#remove with pacman
 	sudo pacman -Rsn $1
-}
-
-#aur install option selected
-aur_install()
-{
-	#run cower download with dependencies, loop to install all downloaded packages
-	ainstalls=$(cower -ddf -t $HOME/.wrapaur $1 | cut -d ' ' -f 2)
-	ainstalls=$(echo -e $ainstalls | tac -s " ")
-	if [[ -z $ainstalls ]]; then
-		echo -e " ${color3}there is nothing to do"
-	else
-		#if packages were found, echo install list and ask to install
-		echo -e "${color1}:: ${color2}Packages found...${color3}"
-		for line in $ainstalls
-		do
-			echo -e $line
-		done
-		aprompt=$(echo -e "${color1}:: ${color2}Proceed with installation? [Y/n] ${color3}")
-		until [ "$ichoice" == "y" ] || [ "$ichoice" == "n" ] || [ "$ichoice" == "Y" ] || [ "$ichoice" == "N" ]; do
-			read -p "$aprompt" ichoice
-		done	
-		#if chosen to install now, loop through each item in ainstalls variable, install and run pacman -U, then remove folder
-		if [ "$ichoice" == "y" ] || [ "$ichoice" == "Y" ]; then
-			for line in $ainstalls
-			do
-				cd $HOME/.wrapaur/$line
-				echo -e "installing ${line}..."
-				eprompt=$(echo -e "${color1}:: ${color2}Edit PKGBUILD? [Y/n] ${color3}")
-				until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ]; do
-					read -p "$eprompt" echoice
-				done	
-				#if chosen to edit PKGBUILD open editor
-				if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ]; then
-					$EDITOR PKGBUILD
-				fi			
-				makepkg -si
-				cd $HOME/.wrapaur
-				raprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
-				until [ "$rachoice" == "y" ] || [ "$rachoice" == "n" ] || [ "$rachoice" == "Y" ] || [ "$rachoice" == "N" ]; do
-					read -p "$raprompt" rachoice
-				done
-				if [ "$rachoice" == "y" ] || [ "$rachoice" == "Y" ]; then			
-					rm -Rf $HOME/.wrapaur/$line
-				fi
-				echoice="x"
-				rachoice="x"
-			done	
-		else
-			echo -e " ${color3}updates downloaded to $HOME/.wrapaur"
-		fi
-	fi
 }
 
 #clear cache option selected
@@ -192,17 +120,13 @@ update_mirrors()
 	if [[ -z $mirrorcount ]]; then
 		mirrorcount=200
 	fi
-	#check if reflector is installed
-	reflector --help > /dev/null 2>/dev/null
-	if [ $? -eq 127 ]; then
-		echo -e "Optional dependency not installed.  Use wrapaur -i reflector"	
 	#run with no prompts
-	elif [ "$mirrorprompt" == "no" ] || [[ ! -t 0 ]]; then
+	if [ "$mirrorprompt" == "no" ] || [[ ! -t 0 ]]; then
 		sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 		if [[ -z $country ]]; then
-			sudo reflector --verbose -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
+			curl -s "https://www.archlinux.org/mirrorlist/?country=all&protocol=http&ip_version=4&use_mirror_status=on" | sed 's/#Server/Server/g' | head -n $((6+2*$mirrorcount)) | sudo tee /etc/pacman.d/mirrorlist > /dev/null
 		else
-			sudo reflector --verbose --country "${country}" -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist	
+			curl -s "https://www.archlinux.org/mirrorlist/?country=${country}&protocol=http&ip_version=4&use_mirror_status=on" | sed 's/#Server/Server/g' | head -n $((6+2*$mirrorcount)) | sudo tee /etc/pacman.d/mirrorlist > /dev/null
 		fi
 	#run with prompts
 	else
@@ -215,241 +139,238 @@ update_mirrors()
 			if [[ -z $country ]]; then
 				rcprompt=$(echo -e "${color1}:: ${color2}Enter Country or All: ${color3}")
 				PS3=${rcprompt}
-				moptions=("Australia" "Austria" "Bangladesh" "Belarus" "Belgium" "Brazil" "Bulgaria" "Canada" "Chile" "China" "Colombia" "Croatia" "Czech Republic" "Denmark" "Ecuador" "Estonia" "Finland" "France" "Germany" "Greece" "Hong Kong" "Iceland" "India" "Ireland" "Italy" "Japan" "Kazakhstan" "Korea" "Lithuania" "Luxembourg" "Macedonia" "Netherlands" "New Caledonia" "New Zealand" "Norway" "Philippines" "Poland" "Portugal" "Romania" "Russian Federation" "Serbia" "Singapore" "Slovakia" "South Africa" "Spain" "Sri Lanka" "Sweden" "Switzerland" "Taiwan" "Turkey" "Ukraine" "United Kingdom" "United States" "Viet Nam" "All")
+				moptions=("Australia" "Austria" "Bangladesh" "Belarus" "Belgium" "Brazil" "Bulgaria" "Canada" "Chile" "China" "Colombia" "Croatia" "Czech Republic" "Denmark" "Ecuador" "Estonia" "France" "Germany" "Greece" "Hungary" "Iceland" "India" "Indonesia" "Ireland" "Israel" "Italy" "Japan" "Kazakhstan" "Latvia" "Lithuania" "Luxembourg" "Macedonia" "Netherlands" "New Caledonia" "New Zealand" "Norway" "Poland" "Portugal" "Romania" "Russia" "Serbia" "Singapore" "Slovakia" "South Africa" "South Korea" "Spain" "Sweden" "Switzerland" "Taiwan" "Turkey" "Ukraine" "United Kingdom" "United States" "Vietnam" "All")
 				select opt in "${moptions[@]}"
 				do
 					case $opt in
 						"Australia")
-							country="Australia"
+							country="AU"
 							break
 							;;
 						"Austria")
-							country="Austria"	
+							country="AT"	
 							break
 							;;
 						"Bangladesh")
-							country="Bangladesh"	
+							country="BD"	
 							break
 							;;
 						"Belarus")
-							country="Belarus"	
+							country="BY"	
 							break
 							;;
 						"Belgium")
-							country="Belgium"	
+							country="BE"	
 							break
 							;;
 						"Brazil")
-							country="Brazil"	
+							country="BR"	
 							break
 							;;
 						"Bulgaria")
-							country="Bulgaria"	
+							country="BG"	
 							break
 							;;
 						"Canada")
-							country="Canada"	
+							country="CA"	
 							break
 							;;
 						"Chile")
-							country="Chile"	
+							country="CL"	
 							break
 							;;
 						"China")
-							country="China"	
+							country="CN"	
 							break
 							;;
 						"Colombia")
-							country="Columbia"	
+							country="CO"	
 							break
 							;;
 						"Croatia")
-							country="Croatia"	
+							country="HR"	
 							break
 							;;
 						"Czech Republic")
-							country="Czech Republic"	
+							country="CZ"	
 							break
 							;;
 						"Denmark")
-							country="Denmark"	
+							country="DK"	
 							break
 							;;
 						"Ecuador")
-							country="Ecuador"	
+							country="EC"	
 							break
 							;;
 						"Estonia")
-							country="Estonia"	
-							break
-							;;
-						"Finland")
-							country="Finland"	
+							country="EE"	
 							break
 							;;
 						"France")
-							country="France"	
+							country="FR"	
 							break
 							;;
 						"Germany")
-							country="Germany"	
+							country="DE"	
 							break
 							;;
 						"Greece")
-							country="Greece"	
+							country="GR"	
 							break
 							;;
-						"Hong Kong")
-							country="Hong Kong"	
+						"Hungary")
+							country="HU"	
 							break
 							;;
 						"Iceland")
-							country="Iceland"	
+							country="IS"	
 							break
 							;;
 						"India")
-							country="India"	
+							country="IN"	
+							break
+							;;
+						"Indonesia")
+							country="ID"
 							break
 							;;
 						"Ireland")
-							country="Ireland"	
+							country="IE"	
+							break
+							;;
+						"Israel")
+							country="IL"
 							break
 							;;
 						"Italy")
-							country="Italy"	
+							country="IT"	
 							break
 							;;
 						"Japan")
-							country="Japan"	
+							country="JP"	
 							break
 							;;
 						"Kazakhstan")
-							country="Kazakhstan"	
+							country="KZ"	
 							break
 							;;
-						"Korea")
-							country="Korea"	
+						"Latvia")
+							country="LV"	
 							break
 							;;
 						"Lithuania")
-							country="Lithuania"	
+							country="LT"	
 							break
 							;;
 						"Luxembourg")
-							country="Luxembourg"	
+							country="LU"	
 							break
 							;;
 						"Macedonia")
-							country="Macedonia"	
+							country="MK"	
 							break
 							;;
 						"Netherlands")
-							country="Netherlands"	
+							country="NL"	
 							break
 							;;
 						"New Caledonia")
-							country="New Caledonia"	
+							country="NC"	
 							break
 							;;
 						"New Zealand")
-							country="New Zealand"	
+							country="NZ"	
 							break
 							;;
 						"Norway")
-							country="Norway"	
-							break
-							;;
-						"Philippines")
-							country="Philippines"	
+							country="NO"	
 							break
 							;;
 						"Poland")
-							country="Poland"	
+							country="PL"	
 							break
 							;;
 						"Portugal")
-							country="Portugal"	
+							country="PT"	
 							break
 							;;
 						"Romania")
-							country="Romania"	
+							country="RO"	
 							break
 							;;
-						"Russian Federation")
-							country="Russian Federation"	
+						"Russia")
+							country="RU"	
 							break
 							;;
 						"Serbia")
-							country="Serbia"	
+							country="RS"	
 							break
 							;;
 						"Singapore")
-							country="Singapore"	
+							country="SG"	
 							break
 							;;
 						"Slovakia")
-							country="Slovakia"	
+							country="SK"	
 							break
 							;;
 						"South Africa")
-							country="South Africa"	
+							country="ZA"	
+							break
+							;;
+						"South Korea")
+							country="KR"
 							break
 							;;
 						"Spain")
-							country="Spain"	
-							break
-							;;
-						"Sri Lanka")
-							country="Sri Lanka"	
+							country="ES"	
 							break
 							;;
 						"Sweden")
-							country="Sweden"	
+							country="SE"	
 							break
 							;;
 						"Switzerland")
-							country="Switzerland"	
+							country="CH"	
 							break
 							;;
 						"Taiwan")
-							country="Taiwan"	
+							country="TW"	
 							break
 							;;
 						"Turkey")
-							country="Turkey"	
+							country="TR"	
 							break
 							;;
 						"Ukraine")
-							country="Ukraine"	
+							country="UA"	
 							break
 							;;
 						"United Kingdom")
-							country="United Kingdom"	
+							country="GB"	
 							break
 							;;
 						"United States")
-							country="United States"	
+							country="US"	
 							break
 							;;
-						"Viet Nam")
-							country="Viet Nam"	
+						"Vietnam")
+							country="VN"	
 							break
 							;;
 						"All")
-							country="All"	
+							country="all"	
 							break
 							;;
 						*) echo Invalid Option;;
 					esac
 				done
-				if [ "$country" == "All" ] || [ "$country" == "all" ] || [ "$country" == "ALL" ]; then
-					sudo reflector --verbose -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
-				else
-					sudo reflector --verbose --country "${country}" -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
-				fi
+				curl -s "https://www.archlinux.org/mirrorlist/?country=${country}&protocol=http&ip_version=4&use_mirror_status=on" | sed 's/#Server/Server/g' | head -n $((6+2*$mirrorcount)) | sudo tee /etc/pacman.d/mirrorlist > /dev/null
 				echo -e " original mirrorlist has been backed up to /etc/pacman.d/mirrorlist.backup"
 			else
-				sudo reflector --verbose --country "${country}" -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
+				curl -s "https://www.archlinux.org/mirrorlist/?country=${country}&protocol=http&ip_version=4&use_mirror_status=on" | sed 's/#Server/Server/g' | head -n $((6+2*$mirrorcount)) | sudo tee /etc/pacman.d/mirrorlist > /dev/null
+				echo -e " original mirrorlist has been backed up to /etc/pacman.d/mirrorlist.backup"
 			fi
 		fi
 	fi
@@ -502,7 +423,14 @@ check_updates()
 	echo -e "${color1}:: ${color2}Checking for updates... ${color3}"
 	#check for updates and place in variables
 	pacupdates=$(pacman -Qu)
-	aurupdates=$(cower -u)
+	aurpkgs=$(pacman -Qm | awk '{print $1}')
+	for line in $aurpkgs
+	do
+		vcheck=$(check_pkgversion $line)
+		if [[ $vcheck == 1 ]]; then
+			aurupdates=$(echo -e "$aurupdates\n$line")
+		fi
+	done
 	#write current updates to temp file
 	tempfile=$(mktemp -t wrapaur_current.XXXXXXXXXX)
 	echo -e "${pacupdates}\n${aurupdates}" > $tempfile
@@ -526,17 +454,130 @@ check_updates()
 	echo -e "${pacupdates}\n${aurupdates}" > $HOME/.wrapaur_history
 }
 
+check_pkgversion()
+{
+	newver=$(curl -s "https://aur4.archlinux.org/rpc.php?type=info&arg=$1" | awk -F : '{print $10}' | awk -F , '{print $1}' | sed 's/"//g')
+	currentver=$(pacman -Qi $1 | awk '{print $3}' | head -n 2 | tail -n 1)
+	if [[ $newver != $currentver ]]; then
+		echo 1
+	fi
+}
+
+check_all_depends()
+{
+	echo -e "${color1}:: ${color2}Checking Dependencies...${color3}"
+	depends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bdepends=/{/depends=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+	mdepends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bmakedepends=/{/makedepends=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+	arch=$(uname -m)
+	if [[ $arch == "x86_64" ]]; then
+		dependsx64=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bdepends_x86_64=/{/depends_x86_64=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+	else
+		dependsi686=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bdepends_i686=/{/depends_i686=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+	fi
+	#if no dependencies echo and leave loop
+	if [[ $depends == "" ]]; then
+		echo "No dependencies found..."
+	else
+		#loop through dependencies recursively, check if installed, try pacman install, then aur install
+		for line in $depends $mdepends $dependsx64 $dependsi686
+		do
+			line=$(echo $line | sed -e "s/>=[^=]*$//g" -e "s/<=[^=]*$//g" -e "s/<[^<]*$//g" -e "s/>[^>]*$//g")
+			pacman -Qi $line &>/dev/null
+			if [[ $? == 1 ]]; then
+				sudo pacman -S --needed $line 2>/dev/null
+				if [[ $? == 1 ]]; then
+					check_all_depends $line
+					aur_git_install $line
+				fi
+			fi
+		done 
+	fi
+}
+
+aur_dep_install()
+{
+	check_all_depends $1
+	aur_git_install $1
+}
+
+aur_git_install()
+{
+	#check if package exists in AUR
+	exists=$(curl -s "https://aur4.archlinux.org/rpc.php?type=info&arg=$1" | awk -F : '{print $4}' | awk -F , '{print $1}')
+	if [[ $exists != 0 ]]; then
+		echo -e "${color1}:: ${color2}Packages found...${color3}"
+		echo -e $1
+		#clone git package to wrapaur folder or update if exists
+		if [[ ! -d $HOME/.wrapaur/$1 ]]; then
+			git clone https://aur4.archlinux.org/${1}.git $HOME/.wrapaur/$1
+		else
+			cd $HOME/.wrapaur/$1
+			git pull
+		fi
+		aprompt=$(echo -e "${color1}:: ${color2}Proceed with installation? [Y/n] ${color3}")
+		until [ "$ichoice" == "y" ] || [ "$ichoice" == "n" ] || [ "$ichoice" == "Y" ] || [ "$ichoice" == "N" ]; do
+			read -p "$aprompt" ichoice
+		done	
+		#if chosen to install now, compile and run pacman -U, then remove folder
+		if [ "$ichoice" == "y" ] || [ "$ichoice" == "Y" ]; then
+			cd $HOME/.wrapaur/$1
+			echo -e "installing ${1}..."
+			eprompt=$(echo -e "${color1}:: ${color2}Edit PKGBUILD? [Y/n] ${color3}")
+			until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ]; do
+				read -p "$eprompt" echoice
+			done	
+			#if chosen to edit PKGBUILD open editor
+			if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ]; then
+				$EDITOR PKGBUILD
+			fi			
+			makepkg -si
+			cd $HOME/.wrapaur
+			raprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
+			until [ "$rachoice" == "y" ] || [ "$rachoice" == "n" ] || [ "$rachoice" == "Y" ] || [ "$rachoice" == "N" ]; do
+				read -p "$raprompt" rachoice
+			done
+			if [ "$rachoice" == "y" ] || [ "$rachoice" == "Y" ]; then			
+				rm -Rf $HOME/.wrapaur/$1
+			fi
+			echoice="x"
+			rachoice="x"
+		else
+			echo -e " ${color3}updates downloaded to $HOME/.wrapaur"
+		fi
+	else
+		echo -e "Package not found."
+	fi
+}
+
+archnews()
+{
+	local IFS=\>
+	while read -d \< ENTITY CONTENT;
+	do
+		if [[ $ENTITY = "title" ]]; then
+			echo -e "------${CONTENT}------\n" | sed -r -e "s/&lt;\(.*\)&gt;//g"
+		elif [[ $ENTITY = "description" ]]; then
+			echo -e "${CONTENT}\n" | sed -r -e "s/amp;amp;//g" -e "s/&lt;[a-z|A-Z|/| |0-9|=|\"|:|_|\.|-|\?|;|#]*?&gt;//g"
+		fi
+	done < <(curl -s "https://www.archlinux.org/feeds/news/")
+}
+
+aur_comments()
+{
+	curl -s "https://aur4.archlinux.org/packages/$1/?comments=all" | sed -r -n -e "/<div id=\"news\">/,/<!-- End of main content -->/p" | sed -e 's/<[^>]*>//g'
+}
+
 usage()
 {
-	echo $'Usage: wrapaur [OPTION]... [PACKAGE]...\n(for multiple packages pass option each time; e.g. -i package1 -i package2)\n  -a install from aur\n  -c clean pacman cache with pacman -Sc, optimize pacman database, and clear .wrapaur folder\n  -e check for updates from official repositories and aur and print available updates or email results if email is present in .wrapaurrc (add to cron or systemd timer to have email updates for new packages)\n      note: email must be properly configured on system\n  -i install from official repositories\n  -l list installed packages with package count\n  -m update pacman mirrorlist wth reflector\n  -q query information on a specific package\n  -r remove a package with pacman -Rsn (for other removal options use pacman)\n  -s search official repositories and aur\n  -u update official repositories and aur'
+	echo $'Usage: wrapaur [OPTION]... [PACKAGE]...\n(for multiple packages pass option each time; e.g. -i package1 -i package2)\n  -a install from aur\n  -c clean pacman cache with pacman -Sc, optimize pacman database, and clear .wrapaur folder\n  -e check for updates from official repositories and aur and print available updates or email results if email is present in .wrapaurrc (add to cron or systemd timer to have email updates for new packages)\n      note: email must be properly configured on system\n  -i install from official repositories\n  -l list installed packages with package count\n  -m update pacman mirrorlist\n  -n print the latest news from archlinux.org\n  -o print aur comments for a specific package\n  -q query information on a specific package\n  -r remove a package with pacman -Rsn (for other removal options use pacman)\n  -s search official repositories and aur\n  -u update official repositories and aur'
 }
 
 ##########Main Program##########
 
-while getopts "a:cei:lmq:r:s:u" args; do
+while getopts "a:cei:lmno:q:r:s:u" args; do
 	case $args in
 		a)
-			aur_install $OPTARG
+			aur_dep_install $OPTARG
 			;;
 		c)
 			clear_cache
@@ -552,6 +593,12 @@ while getopts "a:cei:lmq:r:s:u" args; do
 			;;
 		m)
 			update_mirrors
+			;;
+		n)
+			archnews
+			;;
+		o)
+			aur_comments $OPTARG
 			;;
 		q)
 			query_packages $OPTARG

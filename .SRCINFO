@@ -1,18 +1,23 @@
 pkgbase = wrapaur
-	pkgdesc = A simple pacman and cower wrapper written in bash to help with everyday package tasks
-	pkgver = 1.6.4
+	pkgdesc = A simple pacman and AUR wrapper written in bash to help with everyday package tasks
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/whahn1983/wrapaur
+	url = https://aur.archlinux.org/wrapaur.git
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = bash
-	depends = cower
+	depends = coreutils
+	depends = curl
+	depends = grep
+	depends = gawk
+	depends = sed
+	depends = git
 	depends = pacman
 	depends = sudo
-	optdepends = reflector: required to update mirrorlist
+	optdepends = s-nail: required for mail notifications
 	source = wrapaur
-	md5sums = c2314fdff31e541515191e8291f95760
+	md5sums = ab029bdb2dba7a91e2e0ddd3a8497299
 
 pkgname = wrapaur
 
