@@ -1,0 +1,27 @@
+pkgbase = chicken-dbus
+	pkgdesc = Chicken Scheme Egg: A binding for libdbus, the IPC mechanism
+	pkgver = 0.93
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/dbus
+	install = chicken.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = chicken>=4.5.0
+	depends = chicken-easyffi
+	depends = chicken-matchable
+	depends = chicken-miscmacros
+	depends = chicken-foreigners
+	depends = dbus-core
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-dbus-0.93.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=dbus&version=0.93
+	source = chicken-dbus-0.93.html::http://wiki.call-cc.org/eggref/4/dbus.html
+	source = dbus.patch
+	md5sums = 891f74b8231f0d655297444e140f5e4f
+	md5sums = 503a55be746bee8815a95f8ff07bef97
+	md5sums = 3abccbef575aa13ac1b3cbaefee12ff1
+
+pkgname = chicken-dbus
+

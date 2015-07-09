@@ -1,0 +1,11 @@
+--- dbus/dbus.scm	2015-07-08 22:17:28.746987420 +0200
++++ dbus-patched/dbus.scm	2015-05-31 20:24:57.469958384 +0200
+@@ -275,7 +275,7 @@
+ 				(if (null? rem-keys)
+ 					subtree
+ 					(loop (cdr rem-keys)
+-						(let ([pr (assq (car rem-keys) subtree)])
++						(let ([pr (assq (car rem-keys) (or subtree '()))])
+ 							(and (pair? pr) (cdr pr))))))))
+ 
+ 	;; The "tree" version of asset!: drills down into an assq-tree
