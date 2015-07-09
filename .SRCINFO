@@ -1,6 +1,6 @@
 pkgbase = emacs-langtool
 	pkgdesc = LanguageTool for Emacs
-	pkgver = 1.2.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/mhayashi1120/Emacs-langtool
 	arch = any
@@ -8,10 +8,8 @@ pkgbase = emacs-langtool
 	depends = emacs
 	depends = languagetool
 	options = !emptydirs
-	source = https://github.com/mhayashi1120/Emacs-langtool/archive/1.2.3.tar.gz
-	source = languagetool.patch
-	md5sums = c59b2a50f705b879922a32e3630cd735
-	md5sums = cf5b407289b3f72b0eb8f1784d4d93f6
+	source = https://github.com/mhayashi1120/Emacs-langtool/archive/1.3.1.tar.gz
+	md5sums = 4f6730d738e8b41a47c86ecad80af40a
 
 pkgname = emacs-langtool
 

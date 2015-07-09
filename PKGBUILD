@@ -1,6 +1,6 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=emacs-langtool
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="LanguageTool for Emacs"
 arch=('any')
@@ -9,15 +9,8 @@ license=('GPL')
 depends=('emacs' 'languagetool')
 options=(!emptydirs)
 
-source=("https://github.com/mhayashi1120/Emacs-langtool/archive/$pkgver.tar.gz" "languagetool.patch")
-md5sums=('c59b2a50f705b879922a32e3630cd735'
-         'cf5b407289b3f72b0eb8f1784d4d93f6')
-
-build() {
-  cd "$srcdir"/Emacs-langtool-$pkgver
-
-  patch -p0 < ../languagetool.patch
-}
+source=("https://github.com/mhayashi1120/Emacs-langtool/archive/$pkgver.tar.gz")
+md5sums=('4f6730d738e8b41a47c86ecad80af40a')
 
 package() {
   cd "$srcdir"/Emacs-langtool-$pkgver
