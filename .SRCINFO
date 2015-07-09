@@ -1,0 +1,13 @@
+pkgbase = css-docs
+	pkgdesc = Set of HTML documentation for CSS2.1
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://www.w3.org/TR/CSS2/
+	arch = any
+	license = GPL
+	options = docs
+	source = http://www.w3.org/TR/CSS2/css2.tgz
+	md5sums = 04ace6edc522fa88231192335559a33b
+
+pkgname = css-docs
+
