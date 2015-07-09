@@ -1,0 +1,17 @@
+pkgbase = k810-conf
+	pkgdesc = Logitech K810 Keyboard Configurator, change function keys (F-keys) behavior. Read USAGE at https://github.com/gutenye/aurs/tree/master/k810-conf
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://www.trial-n-error.de/posts/2012/12/31/logitech-k810-keyboard-configurator
+	install = install
+	arch = i686
+	arch = x86_64
+	license = Unkown
+	backup = etc/udev/rules.d/10-k810-conf.rules
+	source = http://www.trial-n-error.de/static/articles/k810/k810_conf-v0.1.tar.bz2
+	source = 10-k810-conf.rules
+	md5sums = 858a8de02d5b8db27e4da22833b54d20
+	md5sums = aed33b3162e7c57a545191478dd71ba7
+
+pkgname = k810-conf
+

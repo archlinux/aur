@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{address}=="00:1F:81:00:01:1C", RUN+="/usr/bin/k810-conf -d %p -f on"
