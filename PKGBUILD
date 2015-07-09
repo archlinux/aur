@@ -2,17 +2,16 @@
 # Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
 
 pkgname=frotz
-pkgver=2.43d
-pkgrel=3
+pkgver=2.44
+pkgrel=1
 pkgdesc="Z-machine interpreter for playing Interactive Fiction games."
 arch=(i686 x86_64 arm armv6h)
 url="http://frotz.sourceforge.net/"
 license=('GPL')
 depends=('ncurses')
 groups=(inform)
-source=(http://downloads.sourceforge.net/project/frotz/frotz/2.43/frotz-2.43d.tar.gz)
-md5sums=('6f4211c9180c75214cda1020c7db2629')
-
+source=(https://github.com/DavidGriffith/$pkgname/archive/$pkgver.tar.gz)
+sha256sums=('dbb5eb3bc95275dcb984c4bdbaea58bc1f1b085b20092ce6e86d9f0bf3ba858f')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -22,13 +21,11 @@ build() {
   sed -i 's|PREFIX = /usr/local.*$|PREFIX = /usr|' Makefile
   sed -i 's|CONFIG_DIR = /usr/local/etc.*$|#CONFIG_DIR = /usr/local/etc|' Makefile   
   sed -i 's|#CONFIG_DIR = /etc.*$|CONFIG_DIR = /etc|' Makefile 
-  sed -i 's|#SOUND_DEFS = -DOSS_SOUND.*$|SOUND_DEFS = -DOSS_SOUND|' Makefile 
-  sed -i 's|#SOUND_DEV = /dev/dsp.*$|SOUND_DEV = /dev/dsp|' Makefile 
   sed -i 's|CURSES = -lcurses.*$|#CURSES = -lcurses|' Makefile 
   sed -i 's|#CURSES = -lncurses.*$|CURSES = -lncurses|' Makefile  
   sed -i 's|#CURSES_DEF = -DUSE_NCURSES_H.*$|CURSES_DEF = -DUSE_NCURSES_H|' Makefile  
   sed -i 's|getline|getaline|' src/dumb/dumb_input.c
-   
+
   make || return 1
   make dumb || return 1
 }
