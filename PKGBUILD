@@ -15,7 +15,13 @@ source=("http://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_
 sha256sums=('d891b94149ecd11ba0dc807762873b7b0ee0cbbf997d4f7203ac22b57de82b08')
 
 prepare() {
-    sed -i "s:value=\"1.4\":value=\"1.7\":" "${srcdir}/wrapper_${pkgver}_src/build.xml"
+    sed -i "${srcdir}/wrapper_${pkgver}_src/build.xml" \
+        -e "s:value=\"1.4\":value=\"1.7\":"
+
+    # Prevent building the testsuite on the x64, this requires the cunit pkg
+    # from the AUR, its a pain and useless to keep it a build-dep
+    sed -i "${srcdir}/wrapper_${pkgver}_src/src/c/Makefile-linux-x86*.make" \
+        -e "s|all: .*|all: init wrapper libwrapper.so|"
 }
 
 build() {
