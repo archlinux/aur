@@ -11,7 +11,7 @@
 pkgname=popcorntime-bin
 pkgver=0.3.8.0
 _pkgver='0.3.8-0'
-pkgrel=3
+pkgrel=4
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('x86_64' 'i686')
 url="http://popcorntime.io/"
@@ -30,7 +30,7 @@ _platform='Linux-64'
 
 if [ "$CARCH" = 'i686' ]; then
   _platform='Linux-32'
-  sha256sums[0]='0217ce93e88650c7d557cafcfdf10a4b5fa14c54'
+  sha1sums[0]='0217ce93e88650c7d557cafcfdf10a4b5fa14c54'
 fi
 
 source=("http://get.popcorntime.io/build/Popcorn-Time-${_pkgver}-${_platform}.tar.xz"
