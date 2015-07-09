@@ -1,3 +1,4 @@
+# Maintainer: Lex Black <autumn-wind at web dot de>
 # Maintainer: Anton Larionov <diffident dot cat at gmail dot com>
 
 pkgname=7kaa-music
@@ -9,6 +10,7 @@ arch=('any')
 license=('custom')
 source=("http://www.7kfans.com/downloads/${pkgname}.tar.bz2")
 md5sums=('90716e41b58e56b816ffea797fb24676')
+
 
 package() {
   # music files
