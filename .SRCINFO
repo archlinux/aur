@@ -1,15 +1,15 @@
-pkgbase = python2-rax-scheduled-images-python-novaclient-ext
+pkgbase = python-rax-scheduled-images-python-novaclient-ext
 	pkgdesc = Extends python-novaclient to use RAX-SI, the Rackspace Nova API Scheduled Images extension
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/rax_scheduled_images_python_novaclient_ext
 	arch = any
 	license = GPL
-	makedepends = python2-setuptools
-	depends = python2-novaclient
-	provides = python2-rax-scheduled-images-python-novaclient-ext=0.2.2
+	makedepends = python-setuptools
+	depends = python-novaclient
+	provides = python-rax-scheduled-images-python-novaclient-ext=0.2.2
 	source = http://pypi.python.org/packages/source/r/rax_scheduled_images_python_novaclient_ext/rax_scheduled_images_python_novaclient_ext-0.2.2.tar.gz
 	md5sums = 9d9507aa4b42164169c62ee2057ece08
 
-pkgname = python2-rax-scheduled-images-python-novaclient-ext
+pkgname = python-rax-scheduled-images-python-novaclient-ext
 
