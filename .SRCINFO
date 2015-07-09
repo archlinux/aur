@@ -1,0 +1,14 @@
+pkgbase = gkrellmpager
+	pkgdesc = A GKrellM plugin which provides pager functionality for your virtual desktops
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = http://gkrellmpager.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://downloads.sourceforge.net/gkrellmpager/gkrellmpager-0.2.0.tar.gz
+	md5sums = 7a19f19c5aa39d7faac2cc95b01b9a63
+
+pkgname = gkrellmpager
+
