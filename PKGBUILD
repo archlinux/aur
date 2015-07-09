@@ -11,8 +11,8 @@ pkgdesc="Helps you remember facts (like words/phrases in a foreign language) eff
 url="http://ankisrs.net/"
 license=('GPL')
 arch=('any')
-conflicts=('anki')
-replaces=('anki12')
+conflicts=('anki' 'anki-old')
+replaces=('anki-old')
 depends=('python2-pyqt' 'python2-sqlalchemy' 'python2-simplejson' 
          'python2-pysqlite')
 optdepends=('python2-matplotlib: for graph support'
