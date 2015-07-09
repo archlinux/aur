@@ -5,4 +5,4 @@ pkgdir
 *.xz
 *.gz
 *.pkg.*
-iio-sensot-proxy
+iio-sensor-proxy
