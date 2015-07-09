@@ -1,7 +1,7 @@
-diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
---- coreutils-8.23/src/copy.c	2014-07-13 16:09:52.000000000 -0600
-+++ coreutils-8.23-patched/src/copy.c	2015-04-11 16:15:00.000000000 -0600
-@@ -113,6 +113,71 @@ struct dir_list
+diff -rup coreutils-8.24/src/copy.c coreutils-8.24-patched/src/copy.c
+--- coreutils-8.24/src/copy.c	2015-06-26 11:05:22.000000000 -0600
++++ coreutils-8.24-patched/src/copy.c	2015-07-09 15:39:58.000000000 -0600
+@@ -117,6 +117,71 @@ struct dir_list
    dev_t dev;
  };
  
@@ -73,8 +73,8 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
  /* Initial size of the cp.dest_info hash table.  */
  #define DEST_INFO_INITIAL_CAPACITY 61
  
-@@ -161,13 +226,92 @@ sparse_copy (int src_fd, int dest_fd, ch
-              bool make_holes,
+@@ -212,7 +277,8 @@ sparse_copy (int src_fd, int dest_fd, ch
+              size_t hole_size, bool punch_holes,
               char const *src_name, char const *dst_name,
               uintmax_t max_n_read, off_t *total_n_read,
 -             bool *last_write_made_hole)
@@ -83,11 +83,11 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
  {
    *last_write_made_hole = false;
    *total_n_read = 0;
+@@ -221,6 +287,83 @@ sparse_copy (int src_fd, int dest_fd, ch
  
    while (max_n_read)
--    {
-+  {
-+
+     {
++        
 +    if (progress) {
 +          /* BEGIN progress mod */
 +          /* update countdown */
@@ -163,13 +163,12 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
 +          }
 +          /* END progress mod */
 +      }
-+ 
 +
-       bool make_hole = false;
- 
        ssize_t n_read = read (src_fd, buf, MIN (max_n_read, buf_size));
-@@ -226,6 +370,14 @@ sparse_copy (int src_fd, int dest_fd, ch
-       *last_write_made_hole = make_hole;
+       if (n_read < 0)
+         {
+@@ -316,6 +459,14 @@ sparse_copy (int src_fd, int dest_fd, ch
+          certain files in /proc or /sys with linux kernels.  */
      }
  
 +    /* BEGIN progress mod */
@@ -180,12 +179,12 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
 +    }
 +    /* END progress mod */
 +
-   return true;
- }
- 
-@@ -292,7 +444,9 @@ static bool
- extent_copy (int src_fd, int dest_fd, char *buf, size_t buf_size,
-              off_t src_total_size, enum Sparse_type sparse_mode,
+   /* Ensure a trailing hole is created, so that subsequent
+      calls of sparse_copy() start at the correct offset.  */
+   if (make_hole && ! create_hole (dest_fd, dst_name, punch_holes, psize))
+@@ -388,7 +539,9 @@ extent_copy (int src_fd, int dest_fd, ch
+              size_t hole_size, off_t src_total_size,
+              enum Sparse_type sparse_mode,
               char const *src_name, char const *dst_name,
 -             bool *require_normal_copy)
 +             bool *require_normal_copy, 
@@ -194,23 +193,24 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
  {
    struct extent_scan scan;
    off_t last_ext_start = 0;
-@@ -409,10 +563,14 @@ extent_copy (int src_fd, int dest_fd, ch
+@@ -504,10 +657,15 @@ extent_copy (int src_fd, int dest_fd, ch
                empty_extent = false;
                last_ext_len = ext_len;
  
-+              struct timeval a; 
-+              struct stat b ;
++              struct timeval a;
++              struct stat b;
 +
-+              struct progress_status s_progress={iCountDown, cProgressField, last_time, last_size, iBarLength, src_open_sb}; 
++              struct progress_status s_progress={iCountDown, cProgressField, last_time, last_size, iBarLength, src_open_sb};
++
                if ( ! sparse_copy (src_fd, dest_fd, buf, buf_size,
-                                   sparse_mode == SPARSE_ALWAYS,
-                                   src_name, dst_name, ext_len, &n_read,
+                                   sparse_mode == SPARSE_ALWAYS ? hole_size: 0,
+                                   true, src_name, dst_name, ext_len, &n_read,
 -                                  &wrote_hole_at_eof))
 +                                  &wrote_hole_at_eof, &s_progress))
                  goto fail;
  
                dest_pos = ext_start + n_read;
-@@ -880,7 +1038,6 @@ is_probably_sparse (struct stat const *s
+@@ -982,7 +1140,6 @@ is_probably_sparse (struct stat const *s
            && ST_NBLOCKS (*sb) < sb->st_size / ST_NBLOCKSIZE);
  }
  
@@ -218,7 +218,7 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
  /* Copy a regular file from SRC_NAME to DST_NAME.
     If the source file contains holes, copies holes and blocks of zeros
     in the source file as holes in the destination file.
-@@ -1156,6 +1313,72 @@ copy_reg (char const *src_name, char con
+@@ -1258,6 +1415,72 @@ copy_reg (char const *src_name, char con
        buf_alloc = xmalloc (buf_size + buf_alignment_slop);
        buf = ptr_align (buf_alloc, buf_alignment);
  
@@ -291,10 +291,10 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
        if (sparse_src)
          {
            bool normal_copy_required;
-@@ -1167,7 +1390,9 @@ copy_reg (char const *src_name, char con
-           if (extent_copy (source_desc, dest_desc, buf, buf_size,
+@@ -1269,7 +1492,9 @@ copy_reg (char const *src_name, char con
+           if (extent_copy (source_desc, dest_desc, buf, buf_size, hole_size,
                             src_open_sb.st_size,
-                            S_ISREG (sb.st_mode) ? x->sparse_mode : SPARSE_NEVER,
+                            make_holes ? x->sparse_mode : SPARSE_NEVER,
 -                           src_name, dst_name, &normal_copy_required))
 +                           src_name, dst_name, &normal_copy_required,
 +                           iCountDown, cProgressField, last_time, last_size, 
@@ -302,21 +302,21 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
              goto preserve_metadata;
  
            if (! normal_copy_required)
-@@ -1179,10 +1404,12 @@ copy_reg (char const *src_name, char con
+@@ -1281,11 +1506,12 @@ copy_reg (char const *src_name, char con
  
        off_t n_read;
        bool wrote_hole_at_eof;
-+
-+      struct progress_status s_progress = { iCountDown, cProgressField, last_time, last_size, iBarLength, src_open_sb}; 
-       if ( ! sparse_copy (source_desc, dest_desc, buf, buf_size,
-                           make_holes, src_name, dst_name,
-                           UINTMAX_MAX, &n_read,
--                          &wrote_hole_at_eof)
-+                          &wrote_hole_at_eof, &s_progress)
-            || (wrote_hole_at_eof
-                && ftruncate (dest_desc, n_read) < 0))
++      struct progress_status s_progress = { iCountDown, cProgressField, last_time, last_size, iBarLength, src_open_sb};
+       if (! sparse_copy (source_desc, dest_desc, buf, buf_size,
+                          make_holes ? hole_size : 0,
+                          x->sparse_mode == SPARSE_ALWAYS, src_name, dst_name,
+                          UINTMAX_MAX, &n_read,
+-                         &wrote_hole_at_eof))
++                         &wrote_hole_at_eof, &s_progress))
          {
-@@ -1190,6 +1417,15 @@ copy_reg (char const *src_name, char con
+           return_val = false;
+           goto close_src_and_dst_desc;
+@@ -1296,6 +1522,15 @@ copy_reg (char const *src_name, char con
            return_val = false;
            goto close_src_and_dst_desc;
          }
@@ -332,7 +332,7 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
      }
  
  preserve_metadata:
-@@ -1290,6 +1526,7 @@ close_src_desc:
+@@ -1396,6 +1631,7 @@ close_src_desc:
  
    free (buf_alloc);
    free (name_alloc);
@@ -340,9 +340,9 @@ diff -rup coreutils-8.23/src/copy.c coreutils-8.23-patched/src/copy.c
    return return_val;
  }
  
-diff -rup coreutils-8.23/src/copy.h coreutils-8.23-patched/src/copy.h
---- coreutils-8.23/src/copy.h	2014-07-11 05:00:07.000000000 -0600
-+++ coreutils-8.23-patched/src/copy.h	2015-04-11 16:15:00.000000000 -0600
+diff -rup coreutils-8.24/src/copy.h coreutils-8.24-patched/src/copy.h
+--- coreutils-8.24/src/copy.h	2015-06-26 11:04:19.000000000 -0600
++++ coreutils-8.24-patched/src/copy.h	2015-07-09 15:05:07.000000000 -0600
 @@ -231,6 +231,9 @@ struct cp_options
       Create destination directories as usual. */
    bool symbolic_link;
@@ -370,9 +370,9 @@ diff -rup coreutils-8.23/src/copy.h coreutils-8.23-patched/src/copy.h
 +/* END OF PROGRESS MOD */ 
 +
  #endif
-diff -rup coreutils-8.23/src/cp.c coreutils-8.23-patched/src/cp.c
---- coreutils-8.23/src/cp.c	2014-07-13 16:09:52.000000000 -0600
-+++ coreutils-8.23-patched/src/cp.c	2015-04-11 16:18:17.000000000 -0600
+diff -rup coreutils-8.24/src/cp.c coreutils-8.24-patched/src/cp.c
+--- coreutils-8.24/src/cp.c	2015-06-26 11:04:19.000000000 -0600
++++ coreutils-8.24-patched/src/cp.c	2015-07-09 15:05:07.000000000 -0600
 @@ -140,6 +140,7 @@ static struct option const long_opts[] =
    {"symbolic-link", no_argument, NULL, 's'},
    {"target-directory", required_argument, NULL, 't'},
@@ -538,9 +538,9 @@ diff -rup coreutils-8.23/src/cp.c coreutils-8.23-patched/src/cp.c
          case 'H':
            x.dereference = DEREF_COMMAND_LINE_ARGUMENTS;
            break;
-diff -rup coreutils-8.23/src/mv.c coreutils-8.23-patched/src/mv.c
---- coreutils-8.23/src/mv.c	2014-07-11 05:00:07.000000000 -0600
-+++ coreutils-8.23-patched/src/mv.c	2015-04-11 16:19:18.000000000 -0600
+diff -rup coreutils-8.24/src/mv.c coreutils-8.24-patched/src/mv.c
+--- coreutils-8.24/src/mv.c	2015-06-26 11:04:19.000000000 -0600
++++ coreutils-8.24-patched/src/mv.c	2015-07-09 15:05:07.000000000 -0600
 @@ -65,6 +65,7 @@ static struct option const long_options[
    {"target-directory", required_argument, NULL, 't'},
    {"update", no_argument, NULL, 'u'},
