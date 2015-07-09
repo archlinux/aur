@@ -1,0 +1,17 @@
+pkgbase = libvpx-git
+	pkgdesc = The VP8 Codec SDK (git version)
+	pkgver = v1.4.0.730.g8783a8a
+	pkgrel = 1
+	url = http://www.webmproject.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = yasm
+	provides = libvpx=1.4.0
+	conflicts = libvpx
+	source = git+https://chromium.googlesource.com/webm/libvpx
+	md5sums = SKIP
+
+pkgname = libvpx-git
+
