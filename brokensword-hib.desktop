@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Broken Sword: The Shadow of the Templars
+Comment=Revolution Software
+GenericName=Point-and-Click Adventure
+Icon=brokensword
+Exec=/usr/bin/brokensword
+Terminal=false

@@ -1,0 +1,22 @@
+pkgbase = brokensword-hib
+	pkgdesc = A classic point-and-click adventure game (2009 remake; Humble Bundle version)
+	pkgver = 1.0.800+h20130701
+	pkgrel = 1
+	url = http://revolution.co.uk/games/bs1dc/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	makedepends = imagemagick
+	depends = sdl
+	depends = libgl
+	depends = openal
+	depends = libvorbis
+	depends = xdg-utils
+	options = !upx
+	source = hib://BrokenSword1DirectorsCut_v1.0.800_Linux_1372464772.tar.gz
+	source = brokensword-hib.desktop
+	md5sums = f4867d26cda9d8b06b617abcdd8bb1b7
+	md5sums = 6af18e848dff2f265da638ec5a48ea6c
+
+pkgname = brokensword-hib
+
