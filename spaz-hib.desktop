@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Space Pirates and Zombies
+Comment=MinMax Games
+GenericName=2D Space Combat/Strategy Game
+Icon=spaz
+Exec=/usr/bin/spaz
+Terminal=false
+StartupNotify=false

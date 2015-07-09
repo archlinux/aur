@@ -1,0 +1,22 @@
+pkgbase = spaz-hib
+	pkgdesc = Space Pirates and Zombies, a top-down space combat/strategy game (Humble Bundle version)
+	pkgver = 1.605_20120918
+	pkgrel = 1
+	url = http://spacepiratesandzombies.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = lib32-gcc-libs
+	depends = lib32-libgl
+	depends = lib32-sdl
+	depends = lib32-openal
+	depends = lib32-alsa-lib
+	optdepends = lib32-alsa-plugins: PulseAudio support
+	optdepends = lib32-libpulse: PulseAudio support
+	source = hib://spaz-linux-1385503815.bin
+	source = spaz-hib.desktop
+	options = !strip
+	options = !upx
+
+pkgname = spaz-hib
+
