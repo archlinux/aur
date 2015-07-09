@@ -1,0 +1,16 @@
+pkgbase = adwaita-x-dark-and-light-theme
+	pkgdesc = Adwaita-X dark and light theme pack (GTK3, GTK2, Mutter, Metacity, Xfwm4)
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php?action=content&content=150905
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	depends = gnome-themes-standard
+	optdepends = ttf-droid: General-purpose fonts released by Google as part of Android
+	source = http://gnome-look.org/CONTENT/content-files/150905-adwaita-x-dark-light-1.3.zip
+	md5sums = 5ced0d4ec96f254f6e190b0587206330
+
+pkgname = adwaita-x-dark-and-light-theme
+
