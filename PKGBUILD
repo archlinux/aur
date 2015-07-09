@@ -9,7 +9,7 @@
 # https://github.com/jkl1337/packages-archlinux.git
 
 pkgname=hipchat
-pkgver=2.2.1373
+pkgver=2.2.1388
 pkgrel=1
 pkgdesc="Persistent group chat using XMPP"
 arch=('i686' 'x86_64')
@@ -21,10 +21,11 @@ install='hipchat.install'
 # remove pkg in basename to avoid confusing AUR helpers such as packer
 source=(${pkgname}-${pkgver}-$CARCH.tar.xz::http://downloads.hipchat.com/linux/arch/$CARCH/${pkgname}-${pkgver}-$CARCH.pkg.tar.xz)
 
-if [ "$CARCH" == "x86_64" ]; then
-  sha1sums=('cdcb21ab567a3f7976a559118285c210fcd6cfee')
+if [ "$CARCH" == "i686" ]; then
+  sha1sums=('273a9abce4ac4cc6f3002657a50a38e2afa9e50a')
+
 else
-  sha1sums=('8e148d01b677ae1c82d3835d424916df96c29383')
+  sha1sums=('0f0ee7c25d85912b744f74c7ab85fa980e9a992e')
 fi
 
 package() {
