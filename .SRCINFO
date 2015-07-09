@@ -1,0 +1,14 @@
+pkgbase = fontviewer
+	pkgdesc = Font Viewer written in Tcl/Tk
+	pkgver = 0.5.3
+	pkgrel = 2
+	url = https://github.com/siyb/fontviewer
+	arch = any
+	license = custom:BSD
+	depends = tcl
+	depends = tk
+	source = fontviewer-0.5.3.tar.gz::https://github.com/siyb/fontviewer/tarball/0.5.3
+	md5sums = c6cbb5a2fa1c62632bcbab5cefe175df
+
+pkgname = fontviewer
+
