@@ -1,4 +1,4 @@
-# Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
@@ -23,7 +23,7 @@ provides=("${_pkgname}=${pkgver}" "gummiboot-efi=${pkgver}" "gummiboot-efi-git=$
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
-source=("${_pkgname}::git+git://anongit.freedesktop.org/gummiboot#branch=master"
+source=("${_pkgname}::git+git://anongit.freedesktop.org/gummiboot#commit=2bcd919c"
         'loader.conf'
         'arch.conf')
 

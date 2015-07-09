@@ -21,7 +21,7 @@ pkgbase = gummiboot-git
 	conflicts = gummiboot-efi-git
 	options = !strip
 	options = !makeflags
-	source = gummiboot::git+git://anongit.freedesktop.org/gummiboot#branch=master
+	source = gummiboot::git+git://anongit.freedesktop.org/gummiboot#commit=2bcd919c
 	source = loader.conf
 	source = arch.conf
 	sha1sums = SKIP
