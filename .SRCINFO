@@ -1,0 +1,21 @@
+pkgbase = lbdb
+	pkgdesc = The little brother's database for the mutt mail reader
+	pkgver = 0.39
+	pkgrel = 1
+	url = http://www.spinnaker.de/lbdb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = awk
+	depends = glibc
+	depends = perl
+	optdepends = libvformat: for reading vcard files (needed at compile time)
+	optdepends = inetutils: provides the hostname binary
+	optdepends = netkit-bsd-finger: finger module
+	backup = etc/lbdb.rc
+	backup = etc/lbdb_ldap.rc
+	source = http://www.spinnaker.de/debian/lbdb_0.39.tar.gz
+	md5sums = b4739fd4e331e41da8a634c24c98a2c8
+
+pkgname = lbdb
+
