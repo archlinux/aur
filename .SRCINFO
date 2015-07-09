@@ -1,0 +1,15 @@
+pkgbase = libaosd
+	pkgdesc = Atheme On Screen Display library
+	pkgver = 0.2.7
+	pkgrel = 2
+	url = https://github.com/atheme/libaosd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxcomposite
+	depends = pango
+	source = https://github.com/atheme/libaosd/archive/0.2.7.tar.gz
+	sha256sums = b1d02cc5f1761ab6b1c1f8994a92466f11d91d57af65dcb3204e8c54ea514059
+
+pkgname = libaosd
+
