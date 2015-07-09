@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.2.2"
+pkgver="1.3.1"
 pkgrel="1"
 pkgdesc="OpenStack Block Storage API Client Library"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=0.11" "python2-pbr>=0.11")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('78707be107a29a4218874c1092e99275417630d1d3120689f628862adc3b326a')
+sha256sums=('59ae1fbeeda7a12ac8635a7cce9bdc5e8bd080707e2dc12d858857713db1d233')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
