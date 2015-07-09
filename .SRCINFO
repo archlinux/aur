@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop
 	pkgdesc = Official desktop version of Telegram messaging app.
 	pkgver = 0.8.38
-	pkgrel = 1
+	pkgrel = 3
 	url = https://desktop.telegram.org/
 	install = telegram-desktop.install
 	arch = i686
