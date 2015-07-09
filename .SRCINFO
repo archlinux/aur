@@ -1,0 +1,26 @@
+pkgbase = advcp
+	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
+	pkgver = 8.23
+	pkgrel = 1
+	url = https://www.gnu.org/software/coreutils/
+	install = advcp.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL3
+	depends = glibc
+	depends = pam
+	depends = acl
+	depends = gmp
+	depends = libcap
+	provides = acp
+	provides = amv
+	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
+	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz.sig
+	source = advcpmv-8.23.patch
+	sha256sums = ec43ca5bcfc62242accb46b7f121f6b684ee21ecd7d075059bf650ff9e37b82d
+	sha256sums = SKIP
+	sha256sums = 296ffcd4988a4cb47588cf7fe72f3e796d78af73bf6d38ef101c542b3cfdd454
+
+pkgname = advcp
+
