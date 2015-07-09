@@ -1,0 +1,4 @@
+pkgname=('lib32-pam')
+builddeps=('lib32-cracklib' 'lib32-flex' 'lib32-libtirpc')
+
+# vim: ts=2 sw=2 et:

@@ -1,0 +1,22 @@
+pkgbase = lib32-pam
+	pkgdesc = PAM (Pluggable Authentication Modules)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://linux-pam.org
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	makedepends = lib32-flex
+	depends = lib32-cracklib
+	depends = lib32-libtirpc
+	depends = pam
+	options = !emptydirs
+	source = http://linux-pam.org/library/Linux-PAM-1.2.0.tar.bz2
+	source = https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
+	source = pam_unix2-glibc216.patch
+	sha256sums = cd8beac5961e942e9c73b32a3cd1a3457755f8fb35d07c9ec64511e19e135ea4
+	sha256sums = 3315747699fece4e1cc5771885d243b3e017c4c4ca1326e86228d590a840e955
+	sha256sums = 6644c5cff46878c65bdc77977becbeda392675702264bfcc7c610a45a9982574
+
+pkgname = lib32-pam
+
