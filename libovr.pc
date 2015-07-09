@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: LibOVR
+Description: LibOVR for oculus rift support.
+Requires: xrandr libudev
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lOVR
+Cflags: -I${includedir}/ovr-@PACKAGE_VERSION@/LibOVR -I${includedir}/ovr-@PACKAGE_VERSION@/LibOVR/Include -I${includedir}/ovr-@PACKAGE_VERSION@/LibOVR/Src -I${includedir}/ovr-@PACKAGE_VERSION@/LibOVRKernel -I${includedir}/ovr-@PACKAGE_VERSION@/LibOVRKernel/Src
