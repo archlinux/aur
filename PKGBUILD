@@ -1,5 +1,3 @@
-# Maintainer: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
-
 pkgname=htmlcxx
 pkgver=0.85
 pkgrel=4
