@@ -19,16 +19,16 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (3.19, 4.0 & 4.1 kernel patch)
+# Contributor: kolasa (4.0 & 4.1 kernel patch)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
-pkgver=15.3
-pkgrel=2
+pkgver=15.7
+pkgrel=1
 # _betano=1.0
-_amdver=15.200
-pkgdesc="AMD/ATI drivers for Ubuntu 15.04, AMD's version is ${_amdver}. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
+_amdver=15.20.1046
+pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
@@ -65,7 +65,7 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-x86.x86_64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
-    https://launchpad.net/ubuntu/+archive/primary/+files/fglrx-installer_15.200.orig.tar.gz
+    http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
     catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
@@ -88,11 +88,10 @@ source=(
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     fglrx_3.17rc6-no_hotplug.patch
-    kolasa-3.19-get_cpu_var.patch
     kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED.patch)
+    kolasa_4.1_remove-IRQF_DISABLED-15.7.patch)
 
-md5sums=('bdadc856a7ba723873561d2d1e9de191'
+md5sums=('65bb3ac5ec0201ba7940ae0db151bf3d'
 	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
@@ -115,19 +114,18 @@ md5sums=('bdadc856a7ba723873561d2d1e9de191'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '67a22f624bae95a76638ce269392cb01'
-	 '3aa45013515b724a71bbd8e01f98ad99'
 	 'dee3df1c5d3ed87363f4304da917fc00'
-	 '81a9e38dee025151cccb7e5db2362cfb')
+	 '8776efc373bcfec81355f5ac56c84d90')
 
 
 
 build() {
   ## Unpack archive
-#      /bin/sh ./fglrx-${_amdver}/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
-mkdir common
-mv etc lib usr common
-mkdir archive_files
-mv arch common xpic xpic_64a archive_files
+     /bin/sh ./amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
+# mkdir common
+# mv etc lib usr common
+# mkdir archive_files
+# mv arch common xpic xpic_64a archive_files
 }
 
 package() {
@@ -263,7 +261,7 @@ package() {
 
     # License
 #       install -m644 ${srcdir}/archive_files/LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}
-      install -m644 ${srcdir}/archive_files/common/usr/share/doc/fglrx/LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}
+      install -m644 ${srcdir}/archive_files/LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}
       install -m644 ${srcdir}/archive_files/common/usr/share/doc/amdcccle/ccc_copyrights.txt \
 	${pkgdir}/usr/share/licenses/${pkgname}/amdcccle_copyrights.txt
 
@@ -299,12 +297,11 @@ package() {
 #       patch -Np1 -i ../lano1106_fglrx-13.8_proc.patch
 #       patch -Np1 -i ../cold-fglrx-3.14-current_euid.patch
 #       patch -Np1 -i ../fglrx_3.17rc6-no_hotplug.patch
-#       patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
 #      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
+      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED-15.7.patch
 
     # Prepare modules source files
       _archdir=x86_64

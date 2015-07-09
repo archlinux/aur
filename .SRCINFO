@@ -1,7 +1,7 @@
 pkgbase = catalyst-test
-	pkgdesc = AMD/ATI drivers for Ubuntu 15.04, AMD's version is 15.200. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
-	pkgver = 15.3
-	pkgrel = 2
+	pkgdesc = AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
+	pkgver = 15.7
+	pkgrel = 1
 	url = http://www.amd.com
 	install = catalyst-test.install
 	arch = i686
@@ -29,12 +29,12 @@ pkgbase = catalyst-test
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
 	provides = libgl
-	provides = libatical=15.3
-	provides = catalyst=15.3
-	provides = catalyst-utils=15.3
-	provides = catalyst-hook=15.3
-	provides = catalyst-libgl=15.3
-	provides = opencl-catalyst=15.3
+	provides = libatical=15.7
+	provides = catalyst=15.7
+	provides = catalyst-utils=15.7
+	provides = catalyst-hook=15.7
+	provides = catalyst-libgl=15.7
+	provides = opencl-catalyst=15.7
 	provides = libcl
 	provides = dri
 	provides = libtxc_dxtn
@@ -54,7 +54,7 @@ pkgbase = catalyst-test
 	options = libtool
 	options = !strip
 	options = !upx
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fglrx-installer_15.200.orig.tar.gz
+	source = http://www2.ati.com/drivers/linux/amd-driver-installer-15.20.1046-x86.x86_64.zip
 	source = catalyst_build_module
 	source = lib32-catalyst.sh
 	source = catalyst.sh
@@ -77,10 +77,9 @@ pkgbase = catalyst-test
 	source = cold-fglrx-3.14-current_euid.patch
 	source = fglrx_gpl_symbol.patch
 	source = fglrx_3.17rc6-no_hotplug.patch
-	source = kolasa-3.19-get_cpu_var.patch
 	source = kolasa_4.0-cr4-strn.patch
-	source = kolasa_4.1_remove-IRQF_DISABLED.patch
-	md5sums = bdadc856a7ba723873561d2d1e9de191
+	source = kolasa_4.1_remove-IRQF_DISABLED-15.7.patch
+	md5sums = 65bb3ac5ec0201ba7940ae0db151bf3d
 	md5sums = 601d9c756571dd79d26944e54827631e
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -103,9 +102,8 @@ pkgbase = catalyst-test
 	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
 	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
 	md5sums = 67a22f624bae95a76638ce269392cb01
-	md5sums = 3aa45013515b724a71bbd8e01f98ad99
 	md5sums = dee3df1c5d3ed87363f4304da917fc00
-	md5sums = 81a9e38dee025151cccb7e5db2362cfb
+	md5sums = 8776efc373bcfec81355f5ac56c84d90
 
 pkgname = catalyst-test
 
