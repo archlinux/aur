@@ -1,0 +1,15 @@
+pkgbase = gkleds
+	pkgdesc = Gkrellm plugin to monitor the CapsLock, NumLock, and ScrollLock keys
+	pkgver = 0.8.2
+	pkgrel = 2
+	url = http://freshmeat.net/projects/gkleds/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	depends = gtk2
+	source = http://heim.ifi.uio.no/~oyvinha/files/files/gkleds-0.8.2.tar.gz
+	md5sums = 140719ffcba3ff84b9b9c7c57b24fbff
+
+pkgname = gkleds
+
