@@ -1,0 +1,46 @@
+pkgbase = bluez-git
+	pkgdesc = Libraries and tools for the Bluetooth protocol stack
+	pkgver = 20130324
+	pkgrel = 1
+	url = http://www.bluez.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gstreamer0.10-base
+	makedepends = libusb-compat
+	makedepends = libnl
+	makedepends = libsndfile
+	depends = dbus-core
+	optdepends = gstreamer0.10-base: bluetooth GStreamer support
+	optdepends = alsa-lib: Audio bluetooth devices support
+	optdepends = dbus-python: to run bluez-simple-agent
+	optdepends = pygobject: to run bluez-simple-agent
+	optdepends = libusb-compat: USB adapters support
+	optdepends = cups: CUPS backend
+	optdepends = libnl: netlink plugin
+	provides = bluez=4.97
+	provides = bluez-libs
+	provides = bluez-utils
+	conflicts = bluez
+	conflicts = bluez-libs
+	conflicts = bluez-utils
+	replaces = bluez
+	replaces = bluez-libs
+	replaces = bluez-utils
+	options = !libtool
+	options = emptydirs
+	backup = etc/bluetooth/proximity.conf
+	backup = etc/bluetooth/input.conf
+	backup = etc/bluetooth/network.conf
+	backup = etc/bluetooth/audio.conf
+	backup = etc/bluetooth/main.conf
+	backup = etc/bluetooth/bluetooth.conf
+	backup = etc/conf.d/bluetooth
+	backup = etc/dbus-1/system.d/bluetooth.conf
+	source = bluetooth.conf.d
+	source = rc.bluetooth
+	md5sums = 7412982b440f29fa7f76a41a87fef985
+	md5sums = 8f9498707f809506928b2e480d3b6789
+
+pkgname = bluez-git
+
