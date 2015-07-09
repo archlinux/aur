@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FoFiX (GIT)
+Comment=A great Guitar Hero clone!
+Exec=/usr/bin/fofix-git
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/fofix-git.png
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false
