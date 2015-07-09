@@ -1,0 +1,10 @@
+[Desktop Entry]
+Value=1.0
+Type=Application
+Categories=Game;
+Name=Braid
+Comment=Number None
+GenericName=Time-bending Puzzle Platformer
+Icon=braid
+Exec=braid
+Terminal=false

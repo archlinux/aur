@@ -1,0 +1,22 @@
+pkgbase = braid-hib
+	pkgdesc = A puzzle-platformer where the player manipulates the flow of time (Humble Bundle/Store version)
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://braid-game.com
+	arch = i686
+	arch = x86_64
+	license = custom: "commercial"
+	makedepends = unzip
+	depends = sdl
+	depends = nvidia-cg-toolkit
+	depends = libgl
+	optdepends = libtxc_dxtn: For more efficient texture handling when using one of the open-source Mesa graphics drivers
+	options = !strip
+	options = !upx
+	source = braid-linux-build2.run.bin::hib://braid-linux-build2.run.bin
+	source = braid.desktop
+	md5sums = f8933b7f7c77a234763cf73e2f9312a7
+	md5sums = e479ba41d20c1a15a9d8a29fd3b4ff76
+
+pkgname = braid-hib
+
