@@ -10,5 +10,5 @@ default_image="/boot/initramfs-linux-git.img"
 #default_options=""
 
 #fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/boot/initramfs-linux-git-fallback.img" 
+fallback_image="/boot/initramfs-linux-git-fallback.img"
 fallback_options="-S autodetect"
