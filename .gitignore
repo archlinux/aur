@@ -1,0 +1,8 @@
+src
+srcdir
+pkg
+pkgdir
+*.xz
+*.gz
+*.pkg.*
+iio-sensot-proxy
