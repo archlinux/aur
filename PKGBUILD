@@ -1,38 +1,62 @@
-# Contributer: giacomogiorgianni@gmail.com 
+# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Contributor: Arthur Țițeică arthur.titeica/gmail/com
+# Contributor: Thomas Laube <tomx3@tomtomtom.org>
 
 pkgname=vokoscreen
-numver=201303021707
-pkgver=2.2.0
+_pkgver=2.4.2-beta
+pkgver=${_pkgver/-/.}
 pkgrel=1
-pkgdesc="Desktop Recorder, GUI ffmpeg based on Qt4 libriaries."
+pkgdesc='An easy to use screencast creator. Qt5 UI.'
 arch=('i686' 'x86_64')
-url="http://www.kohaupt-online.de/"
-depends=('qt4' 'ffmpeg' 'lame' 'mkvtoolnix-cli' 'opencv')
-makedepends=('cmake' 'automoc4' 'gcc')
-source=("https://github.com/vkohaupt/vokoscreen/archive/${pkgver}.tar.gz" $pkgname.install)
-#source=("http://ppa.launchpad.net/$pkgname-dev/$pkgname/ubuntu/pool/main/v/$pkgname/${pkgname}_${pkgver}-${pkgrel}#~precise1.tar.gz" $pkgname.install)
-optdepends=('pulseaudio' 'alsa-utils')
-#options=('!strip')
+url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
-install=${pkgname}.install
-md5sums=('db3015b369c3f6531a887fc2b1492215' '027efd4ee6f24da7af118f6f99ef5909')
+
+depends=('ffmpeg' 'lame' 'qt5-x11extras')
+optdepends=(
+	'pulseaudio-alsa: for PulseAudio support'
+)
+makedepends=('qt5-tools')
+provides=("${pkgname}=${pkgver}")
+conflicts=("${pkgname}-git")
+
+source=(
+	"${pkgname}-${_pkgver}.tar.gz::https://github.com/vkohaupt/${pkgname}/archive/${_pkgver}.tar.gz"
+	'desktop_file.patch'
+)
+sha512sums=(
+	'cfd0a116cd9c98ba83348404b0bbcb5f340f5adb3d4b642b6b319021ea43889dfeb8e6eec34156a52ba805d4a41081bb8bc91be5a6ca9f446a1370b01239a65c'
+	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
+)
+
+prepare() {
+	# Patching *.desktop file
+	cd ${srcdir}/${pkgname}-${_pkgver}
+	patch ./applications/${pkgname}.desktop ./../desktop_file.patch
+
+	# Create build directory
+	mkdir -p ${srcdir}/build
+}
 
 build() {
-#  cd "${srcdir}/recipe-{debversion}"
-    cd $pkgname-$pkgver
-  qmake-qt4 $pkgname.pro -r -config release \
-    "CONFIG+=LINUX_INTEGRATED" \
-    "INSTALL_ROOT_PATH=$pkgdir/usr/" \
-    "LOWERED_APPNAME=$pkgname"
- make
+	# Number of jobs
+	declare -i njobs=$(nproc)
+
+	if [[ ${njobs} -ge 8 ]]; then
+		njobs=$(( $njobs - 2 ))
+	fi
+
+	# Building package
+	cd ${srcdir}/build
+	qmake-qt5 ../${pkgname}-${_pkgver} \
+		CONFIG+=release \
+		CONFIG+=c++14 \
+		-spec linux-g++
+
+	make -j${njobs}
 }
 
 package() {
-  #cd "${srcdir}/recipe-{debversion}"
-  cd $pkgname-$pkgver
-  make INSTALL_ROOT=${pkgdir} install
-  #make DESTDIR="$pkgdir" install
-  chmod -R 755 ${pkgdir}/usr/share/man
-  chmod -R 755 ${pkgdir}/usr/share/man/man1
-  chmod -R 644 ${pkgdir}/usr/share/man/man1/$pkgname.1.gz
+	# Installing package
+	cd ${srcdir}/build
+	make INSTALL_ROOT=${pkgdir} install
 }
