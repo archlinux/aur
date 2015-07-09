@@ -1,0 +1,2 @@
+[org.gnome.nautilus.preferences]
+bulk-rename-tool=b'/usr/share/nautilus-renamer/nautilus-renamer'

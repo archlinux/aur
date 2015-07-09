@@ -1,0 +1,17 @@
+pkgbase = nautilus-renamer
+	pkgdesc = Rename multiple files easily in Nautilus (Files).
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://launchpad.net/nautilus-renamer/
+	install = nautilus-renamer.install
+	arch = any
+	license = GPL3
+	depends = python
+	depends = nautilus
+	source = https://launchpad.net/nautilus-renamer/trunk/4.0/+download/nautilus-renamer_4.0.tar.gz
+	source = 50_nautilus-renamer.gschema.override
+	sha256sums = f4fc1d46b7cbd71a0acefce893434474f5cd90a6f198cb070ab301e56f55f43d
+	sha256sums = 719f8a7aaa7458368dacbd87894430cd08c23dd0f2c036e251bc0797b0b004fe
+
+pkgname = nautilus-renamer
+
