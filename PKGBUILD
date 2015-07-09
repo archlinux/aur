@@ -10,7 +10,7 @@
 
 _pkgname=prokit
 pkgname=$_pkgname-git
-pkgver=1.1.0
+pkgver=r445.84f3ccc
 pkgrel=1
 pkgdesc="The ProteanOS Development Kit"
 arch=('any')
@@ -19,6 +19,11 @@ license=('GPL3')
 depends=('bash')
 source=('git+git://git.proteanos.com/prokit/prokit.git/')
 md5sums=('SKIP')
+
+pkgver() {
+    cd $_pkgname
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd "$srcdir/$_pkgname"

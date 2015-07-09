@@ -1,6 +1,6 @@
 pkgbase = prokit-git
 	pkgdesc = The ProteanOS Development Kit
-	pkgver = 1.1.0
+	pkgver = r445.84f3ccc
 	pkgrel = 1
 	url = http://proteanos.com/dev/prokit/
 	arch = any
