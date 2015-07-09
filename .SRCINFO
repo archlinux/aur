@@ -1,14 +1,14 @@
 pkgbase = fbx-sdk-extensions
 	pkgdesc = Platform and API toolkit to transfer existing content into the FBX format, extensions.
-	pkgver = 2015.1
+	pkgver = 2016.0
 	pkgrel = 1
 	url = http://www.autodesk.com/products/fbx/overview
 	install = fbx-sdk-extensions.install
 	arch = any
 	license = custom
 	depends = fbx-sdk
-	source = http://images.autodesk.com/adsk/files/fbx20151_fbxextensionssdk_linux.tar.gz
-	md5sums = 037900f93e79fdc52c54e446d6ee5bae
+	source = http://images.autodesk.com/adsk/files/fbx20160_fbxextensionssdk_linux.tar.gz
+	md5sums = a88d0c5140340a8e252614c0d365e0ec
 
 pkgname = fbx-sdk-extensions
 
