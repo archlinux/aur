@@ -1,5 +1,5 @@
 pkgbase = crayonphysicsdeluxe
-	pkgdesc = A 2D physics puzzle/sandbox game (Humble Bundle/Store version)
+	pkgdesc = A 2D sandbox/puzzle game where your drawings become objects (Humble Bundle/Store version)
 	pkgver = 55+h20120827
 	pkgrel = 1
 	url = http://www.crayonphysics.com/
