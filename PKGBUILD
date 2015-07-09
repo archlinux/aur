@@ -2,7 +2,8 @@
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 
 _gemname=commander
-pkgname=ruby-$_gemname-4.2.1
+_pkgname=ruby-$_gemname
+pkgname=$_pkgname-4.2.1
 pkgver=4.2.1
 pkgrel=1
 pkgdesc="The complete solution for Ruby command-line executables, version 4.2.1"
@@ -10,6 +11,8 @@ arch=('any')
 url="https://rubygems.org/gems/commander"
 license=('MIT')
 depends=('ruby' 'ruby-highline>1.6.11')
+provides=("${_pkgname}=$pkgver")
+conflicts=("${_pkgname}")
 options=(!emptydirs)
 source=("http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem"
         "https://raw.githubusercontent.com/commander-rb/commander/master/LICENSE")

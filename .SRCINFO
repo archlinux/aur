@@ -7,6 +7,8 @@ pkgbase = ruby-commander-4.2.1
 	license = MIT
 	depends = ruby
 	depends = ruby-highline>1.6.11
+	provides = ruby-commander=4.2.1
+	conflicts = ruby-commander
 	noextract = commander-4.2.1.gem
 	options = !emptydirs
 	source = http://gems.rubyforge.org/gems/commander-4.2.1.gem
