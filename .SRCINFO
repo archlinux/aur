@@ -1,9 +1,10 @@
 pkgbase = proovread
 	pkgdesc = large-scale high accuracy PacBio correction through iterative short read consensus
 	pkgver = 2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BioInf-Wuerzburg/proovread
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
 	depends = blasr-git
 	depends = perl-log-log4perl
