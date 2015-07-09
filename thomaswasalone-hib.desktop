@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Thomas Was Alone
+Comment=Mike Bithell
+GenericName=Platformer Puzzle Game
+Icon=thomaswasalone
+Exec=/usr/bin/thomaswasalone
+Terminal=false

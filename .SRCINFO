@@ -1,0 +1,23 @@
+pkgbase = thomaswasalone-hib
+	pkgdesc = Thomas Was Alone, a minimalistic puzzle-platformer (Humble Bundle version)
+	pkgver = 0_20130429
+	pkgrel = 2
+	url = http://www.thomaswasalone.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = lib32-glu
+	depends = lib32-libxcursor
+	depends = lib32-alsa-lib
+	depends = lib32-gcc-libs
+	optdepends = lib32-alsa-plugins: PulseAudio support
+	optdepends = lib32-libpulse: PulseAudio support
+	options = !strip
+	options = !upx
+	source = hib://thomaswasalone-linux-1369349552.tar
+	source = thomaswasalone-hib.desktop
+	md5sums = e7f8e766188718e16880b1137c430f35
+	md5sums = 8fe996d4b1a2b3ded634a9d487ea8893
+
+pkgname = thomaswasalone-hib
+
