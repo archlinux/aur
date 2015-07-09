@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+export force_s3tc_enable=true
+/usr/bin/bastion

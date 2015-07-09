@@ -1,0 +1,26 @@
+pkgbase = bastion
+	pkgdesc = An original action role-playing game set in a lush imaginative world, in which players must create and fight for civilization’s last refuge as a mysterious narrator marks their every move.
+	pkgver = 20120621
+	pkgrel = 7
+	url = http://supergiantgames.com/?page_id=242
+	install = bastion.install
+	arch = i686
+	arch = x86_64
+	groups = humble-indie-bundleV
+	groups = games
+	license = custom
+	makedepends = curl
+	depends = libxft
+	source = Bastion-HIB-2012-06-20.sh::https://www.humblebundle.com/login
+	source = Bastion-HIB-2012-06-20.sh::http://www.humblebundle.com/downloads?key=
+	source = bastion.desktop
+	source = mesabastion
+	source = bastion.install
+	md5sums = aa6ccaead3b4b8a5fbd156f4019e8c8b
+	md5sums = aa6ccaead3b4b8a5fbd156f4019e8c8b
+	md5sums = 0facce79c6d93c5914a58e096eca8c92
+	md5sums = a42e39c5f52abf19b6975cb79f732907
+	md5sums = 234862600b3d8792b95eedeae28577b7
+
+pkgname = bastion
+

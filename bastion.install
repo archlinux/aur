@@ -1,0 +1,7 @@
+post_install(){
+    echo "If you have a problem and are getting a black screen at start. Try bastionmesa"
+}
+post_upgrade(){
+    echo "intelbastion has been moved to bastionmesa, for autocompletion"
+    echo "if you are having problems with a black screen, please try that"
+}
