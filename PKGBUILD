@@ -6,7 +6,7 @@
 # Contributor in Chakra: totoloco <totoloco@gmx.com>
 
 pkgname=cutegram-git
-pkgver=2.4.0.stable.r42.g93d4534
+pkgver=2.5.0.stable.r2.g865c835
 pkgrel=1
 pkgdesc="Telegram client by Aseman Land"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
          'qt5-webengine' 'qt5-imageformats' 'qt5-graphicaleffects' 
          'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins'
-         'qt5-quickcontrols' 'libqtelegram-ae>=1:4.1' 'telegramqml')
+         'qt5-quickcontrols' 'telegramqml')
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/Cutegram.git")
 md5sums=('SKIP')
