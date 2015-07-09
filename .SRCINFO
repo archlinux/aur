@@ -1,6 +1,6 @@
 pkgbase = hdctools-git
 	pkgdesc = Chrome OS Hardware Debug & Control Tools
-	pkgver = r487.cf30312
+	pkgver = r493.73e85ec
 	pkgrel = 1
 	url = http://sites.google.com/a/google.com/chromeos-partner/hardware-control-and-debug
 	arch = i686
