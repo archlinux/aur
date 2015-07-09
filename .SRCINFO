@@ -1,14 +1,17 @@
 pkgbase = python-pymysql-git
 	pkgdesc = Pure Python MySQL Client
-	pkgver = 20130105
+	pkgver = r538.cda58f0
 	pkgrel = 1
 	url = https://github.com/petehunt/PyMySQL
 	arch = any
-	license = BSD
+	license = MIT
 	makedepends = git
 	makedepends = python-distribute
 	depends = python
+	provides = pymysql
 	conflicts = pymysql
+	source = python-pymysql-git::git+https://github.com/petehunt/PyMySQL
+	md5sums = SKIP
 
 pkgname = python-pymysql-git
 
