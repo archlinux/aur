@@ -1,0 +1,27 @@
+pkgbase = mono-emby
+	pkgdesc = Free implementation of the .NET platform including runtime and compiler - version 3.10 for use with emby-server package
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = http://www.mono-project.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL2.1
+	license = MPL
+	license = custom:MITX11
+	depends = zlib
+	depends = libgdiplus>=3.8
+	depends = sh
+	depends = python
+	provides = monodoc
+	provides = mono
+	conflicts = monodoc
+	conflicts = mono
+	options = !makeflags
+	source = http://download.mono-project.com/sources/mono/mono-3.10.0.tar.bz2
+	source = mono.binfmt.d
+	sha256sums = fd74d1a6810d2d9b4733b4affbda67958e61520aade531c73103568dc18ab0b4
+	sha256sums = 9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425
+
+pkgname = mono-emby
+
