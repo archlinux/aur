@@ -4,7 +4,7 @@
 
 pkgname=saleae-logic-beta
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High speed USB logic analyzer."
 arch=('i686' 'x86_64')
 url="http://www.saleae.com/"
@@ -42,12 +42,7 @@ package() {
   install -d "$pkgdir/opt/saleae-logic"
   install -d "$pkgdir/usr/share/doc/saleae-logic"
   cp -r ./ "$pkgdir/opt/saleae-logic/"
-  touch "$pkgdir/opt/saleae-logic/Settings/settings.xml"
-  touch "$pkgdir/opt/saleae-logic/Databases/SearchDB1.db"
-#  chmod 0666 "$pkgdir/opt/saleae-logic/Settings/settings.xml"
-#  chmod 0666 "$pkgdir/opt/saleae-logic/Databases/SearchDB1.db"
-  chmod 0777 "$pkgdir/opt/saleae-logic/Settings"
-  chmod 0777 "$pkgdir/opt/saleae-logic/Databases"
+  chmod 0777 "$pkgdir/opt/saleae-logic"
   #icon
   install -Dm644 "$srcdir/133473-SaleaeLogic.svg" "$pkgdir/usr/share/pixmaps/SaleaeLogic.svg"
   install -D -m644 "$srcdir/saleae-logic.desktop" \
