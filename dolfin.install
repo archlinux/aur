@@ -1,0 +1,14 @@
+post_install() {
+
+cat << EOF
+
+If you just ran makepkg in this directory then
+to build the documentation you can try:
+
+$ cd src/dolfin-build/build/doc
+$ make doc SPHINXBUILD=sphinx-build2
+
+EOF
+}
+
+# vim:set ts=2 sw=2 et:
