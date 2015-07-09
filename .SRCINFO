@@ -1,14 +1,17 @@
-pkgbase = globus
+pkgbase = globus-toolkit
 	pkgdesc = Toolkit for building grids
-	pkgver = 5.2.0
+	pkgver = 6.0.1433516164
 	pkgrel = 1
-	url = http://www.globus.org/
+	url = http://toolkit.globus.org/
 	install = globus.install
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	source = http://www.globus.org/ftppub/gt5/5.2/5.2.0/installers/src/gt5.2.0-all-source-installer.tar.gz
-	md5sums = f27553b377277eb625f29db1384c5c7a
+	provides = globus=6.0.1433516164
+	conflicts = globus
+	replaces = globus
+	source = http://toolkit.globus.org/ftppub/gt6/installers/src/globus_toolkit-6.0.1433516164.tar.gz
+	sha1sums = 2f6c451664d01d238906519ca33a4b4d9fb1217d
 
-pkgname = globus
+pkgname = globus-toolkit
 
