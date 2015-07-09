@@ -1,0 +1,16 @@
+pkgbase = flmusic
+	pkgdesc = Very simple CD/audio player application for FLTK
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://home.arcor.de/szukw000/english_index.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gendesk
+	depends = fltk
+	depends = sox
+	source = http://home.arcor.de/szukw000/flmusic-fltk13-source-1.2.1.tgz
+	md5sums = 1e2e1bd760a7f5ea583093537090c3ae
+
+pkgname = flmusic
+
