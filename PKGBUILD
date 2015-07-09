@@ -2,8 +2,8 @@
 
 pkgname=gimp-plugin-webp
 pkgver=0.2
-pkgrel=1
-pkgdesc="Gimp plugin to load and save files using the new WebP image format."
+pkgrel=2
+pkgdesc="This plugin provides Gimp with the ability to load and export WebP images."
 arch=('i686' 'x86_64')
 url="https://github.com/nathan-osman/gimp-webp"
 license=('GPL-3.0')
