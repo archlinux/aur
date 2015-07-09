@@ -27,7 +27,7 @@ package() {
 
 	mkdir -p $pkgdir/{usr/lib/$pkgname/lib,etc/graylog/web-interface}
 
-	install -Dm644 lib/*  "$pkgdir/usr/lib/$pkgname/"
+	install -Dm644 lib/*  "$pkgdir/usr/lib/$pkgname/lib/"
 	install -Dm644 conf/* "$pkgdir/etc/graylog/web-interface/"
 	install -dm755 -o nobody "$pkgdir/var/log/$pkgname/"
 
