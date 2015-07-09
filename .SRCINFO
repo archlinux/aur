@@ -1,0 +1,17 @@
+pkgbase = cdw
+	pkgdesc = Ncurses CD writer program which uses cdrecord and mkisofs
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://cdw.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cdrtools
+	depends = ncurses
+	depends = libburn
+	depends = libcdio
+	source = cdw-0.8.0.tar.gz::http://sourceforge.net/projects/cdw/files/cdw/cdw%200.8.0/cdw-0.8.0.tar.gz/download
+	md5sums = 60a8d094343b50b436a013737261e92c
+
+pkgname = cdw
+
