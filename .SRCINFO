@@ -1,0 +1,29 @@
+pkgbase = blast+
+	pkgdesc = finds regions of similarity between biological sequences
+	pkgver = 2.2.31
+	pkgrel = 1
+	url = http://blast.ncbi.nlm.nih.gov/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cpio
+	depends = lzo2
+	depends = pcre
+	depends = python
+	provides = blast
+	provides = blast+-bin
+	provides = ncbi-blast
+	provides = ncbi-blast+
+	conflicts = blast
+	conflicts = blast+-bin
+	conflicts = ncbi-blast
+	conflicts = ncbi-blast+
+	conflicts = cddlib
+	conflicts = proj
+	source = ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.31/ncbi-blast-2.2.31+-src.tar.gz
+	source = typeinfo.patch
+	md5sums = f32bd2d2c66205c53c6981f94e1a0d54
+	md5sums = 9c257a762ce4e7418e95a48723832a86
+
+pkgname = blast+
+
