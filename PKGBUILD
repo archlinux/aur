@@ -21,7 +21,9 @@ install="globus.install"
 
 build() {
   cd "globus_toolkit-$pkgver"
-  ./configure --prefix=/opt/globus
+  #./configure --prefix=/opt/globus --libdir=/opt/globus/usr/lib
+  # "libtool: cannot install to a path not ending in /usr/lib"
+  ./configure --prefix=/usr
   make
 }
 
