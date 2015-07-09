@@ -1,0 +1,15 @@
+pkgbase = fluff
+	pkgdesc = Fast, light file manager application for FLTK
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://sites.google.com/site/lockmoorecoding/downloads/fluff
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = fltk
+	source = https://sites.google.com/site/lockmoorecoding/downloads/fluff/fluff_1_0_3_src.tar.gz
+	md5sums = 94c4a97d31e1fe850d765a70762e0c52
+
+pkgname = fluff
+
