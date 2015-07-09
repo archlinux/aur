@@ -29,12 +29,12 @@
  
  # There is a slight chance this gets called twice, once here from here and once
  # from ../po4a/Makefile. Treat files with care.
-@@ -92,7 +92,7 @@
+@@ -89,7 +89,7 @@
  	$(foreach python,$(shell py3versions -r ../debian/control),$(python) setup.py test$(\n))
  
  install: all
 -	python3 setup.py install --root="$(DESTDIR)" --no-compile --install-layout=deb
 +	python3 setup.py install --root="$(DESTDIR)" --no-compile
- 	install -dD $(DESTDIR)$(BINDIR) $(DESTDIR)$(PKGLIBDIR)
  	cp $(SCRIPTS) $(DESTDIR)$(BINDIR)
  	ln -sf edit-patch $(DESTDIR)$(BINDIR)/add-patch
+ 	install -d $(DESTDIR)$(COMPL_DIR)
