@@ -1,0 +1,16 @@
+pkgbase = pidgin-facebook-git
+	pkgdesc = A pidgin plugin for Facebook chat, based on the new Facebook Messenger protocol
+	pkgver = 20150707
+	pkgrel = 1
+	url = https://github.com/jgeboski/purple-facebook/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pidgin
+	depends = json-glib
+	depends = zlib
+	source = purple-facebook::git+https://github.com/jgeboski/purple-facebook
+	md5sums = SKIP
+
+pkgname = pidgin-facebook-git
+
