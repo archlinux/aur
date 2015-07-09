@@ -1,0 +1,16 @@
+pkgbase = canon-pixma-mp230-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MP230 series
+	pkgver = 3.80
+	pkgrel = 2
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100465901.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	source = http://gdlp01.c-wss.com/gds/9/0100004659/01/cnijfilter-mp230series-3.80-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/5/0100004695/01/scangearmp-mp230series-2.00-1-deb.tar.gz
+	sha1sums = aa10d1483cec69f10c0c12bc524ac4f1b9c08a8f
+	sha1sums = df3a723c7e8bdce8fc5708905862aaa17fe333c0
+
+pkgname = canon-pixma-mp230-complete
+
