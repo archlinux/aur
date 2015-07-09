@@ -1,0 +1,23 @@
+pkgbase = chicken-mailbox
+	pkgdesc = Chicken Scheme Egg: Thread-safe queues with timeout
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/mailbox
+	install = chicken.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-setup-helper
+	depends = chicken-check-errors>=1.12.0
+	depends = chicken-condition-utils>=1.0.0
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-mailbox-2.1.5.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=mailbox&version=2.1.5
+	source = chicken-mailbox-2.1.5.html::http://wiki.call-cc.org/eggref/4/mailbox.html
+	md5sums = bf9d49709ed80243533ee32d7594b892
+	md5sums = 371a0f2ce408110fac5cc9086d1ba7f1
+
+pkgname = chicken-mailbox
+
