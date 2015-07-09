@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Tiny & Big in Grandpa's Leftovers
+Comment=Black Pants Game Studio
+GenericName=3D Puzzle Platformer
+Icon=tinyandbig
+Exec=tinyandbig-episode1
+Terminal=false

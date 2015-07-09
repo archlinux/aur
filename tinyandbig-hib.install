@@ -1,0 +1,28 @@
+
+post_install() {
+  xdg-icon-resource forceupdate
+  
+  if (pacman -Q mesa-libgl 2>/dev/null 1>2); then cat <<EOT
+ | Note:
+ | This game needs OpenGL with S3TC support. Mesa only implements this
+ | partially, and disables it by default. Running the game with the
+ | environment variable force_s3tc_enabled=true will enable Mesa's limited
+ | implementation, which *may* be enough for this particular game.
+ | If it isn't (e.g. if you still see missing textures or such), you need to
+ | install libtxc_dxtn (patent encumbered) which provides full S3TC support.
+ | Please post a comment at http://aur.archlinux.org/packages/tinyandbig-hib
+ | telling me which of the two solutions worked for you, so I can update the
+ | PKGBUILD accordingly.
+ | (Note: The proprietary Catalyst/NVIDIA drivers are not affected, as they
+ | have full built-in S3TC support.)
+EOT
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}

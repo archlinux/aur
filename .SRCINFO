@@ -1,0 +1,24 @@
+pkgbase = tinyandbig-hib
+	pkgdesc = Tiny & Big: Grandpa's Leftovers - a 3D jump-and-slice platformer (Humble Bundle version)
+	pkgver = 1.4.1_20130612
+	pkgrel = 1
+	url = http://www.tinyandbig.com/
+	install = tinyandbig-hib.install
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = sdl
+	depends = libgl
+	depends = nvidia-cg-toolkit
+	depends = openal
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	options = !strip
+	options = !upx
+	source = hib://tinyandbig_grandpasleftovers-retail-1.4.1_1370968538.deb
+	source = tinyandbig-hib.desktop
+	md5sums = 47de47b0b22e75f885e1acfe508cf5c5
+	md5sums = 2442ac327eaced6a1db2dce1e202490d
+
+pkgname = tinyandbig-hib
+
