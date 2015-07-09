@@ -1,0 +1,170 @@
+--- hacks/xmatrix.c	2014-10-05 01:35:38.000000000 -0500
++++ /home/berocs/Documents/xscreensaver/hacks/xmatrix.c	2015-07-09 00:19:43.175906299 -0500
+@@ -230,11 +230,97 @@
+   int delay;
+ } m_state;
+ 
++static void
++edit_image (Display *dpy, char ** bits, int which, const char * shift_text)
++{
++	char colors_text[3];
++	char *hex;
++	char dark_hex[3];
++	char light_hex[3];
++	int colors_int;
++	int index;
++	int char_size;
++	
++	printf("\nColor Shift: %s", shift_text);
++	char_size=sizeof(char);
++	printf("\nBits: %s", bits[3]);
++	colors_text[0] = bits[0][8];
++	colors_text[1] = bits[0][9];
++	colors_text[2] = '\0';
++	colors_int = atoi(colors_text);
++	printf("\nNumber of colors: %i", colors_int);
++	for (index = 3; index <= colors_int; ++index)
++	{
++		hex = malloc(sizeof(char) * 12);
++		memmove(hex, bits[index], 11*char_size);
++		memmove(dark_hex, hex+5,2*char_size);
++		memmove(light_hex, hex+7,2*char_size);
++		dark_hex[2] = '\0';
++		light_hex[2] = '\0';
++		hex[11] = '\0';
++		printf("\nhex: %s, Dark: %s, Light: %s", bits[index], dark_hex, light_hex);
++		if (!strcasecmp(shift_text, "yellow"))
++		{
++			memmove(hex+5, light_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "red"))
++		{
++			memmove(hex+5, light_hex, 2*char_size);
++			memmove(hex+7, dark_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "blue"))
++		{
++			memmove(hex+9, light_hex, 2*char_size);
++			memmove(hex+7, dark_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "purple"))
++		{
++			memmove(hex+5, light_hex, 2*char_size);
++			memmove(hex+7, dark_hex, 2*char_size);
++			memmove(hex+9, light_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "aqua"))
++		{
++			memmove(hex+9, light_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "white"))
++		{
++			memmove(hex+5, light_hex, 2*char_size);
++			memmove(hex+7, light_hex, 2*char_size);
++			memmove(hex+9, light_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "grey"))
++		{
++			memmove(hex+5, dark_hex, 2*char_size);
++			memmove(hex+7, dark_hex, 2*char_size);
++			memmove(hex+9, dark_hex, 2*char_size);
++			bits[index]=hex;
++			printf(" New Color: %s", bits[index]);
++		}
++		else if (!strcasecmp(shift_text, "green"))
++		{
++			/* Really? */
++		}
++	}
++}
+ 
+ static void
+ load_images_1 (Display *dpy, m_state *state, int which)
+ {
+ #if defined(HAVE_GDK_PIXBUF) || defined(HAVE_XPM)
++  const char *shift_text = get_string_resource(dpy, "colorShift", "String");
+   if (!get_boolean_resource (dpy, "mono", "Boolean") &&
+       state->xgwa.depth > 1)
+     {
+@@ -242,6 +328,12 @@
+         (which == 1 ? (state->small_p ? matrix1b_xpm : matrix1_xpm) :
+          (state->small_p ? matrix2b_xpm : matrix2_xpm));
+ 
++		/* Edit 2D array of char data here */
++		if (shift_text != NULL)
++		{
++			edit_image(dpy, bits, which, shift_text);
++		}
++
+       state->images[which] =
+         xpm_data_to_pixmap (state->dpy, state->window, bits,
+                             &state->image_width, &state->image_height, 0);
+@@ -1854,6 +1946,9 @@
+   { "-pipe",	        ".usePipe",		XrmoptionNoArg, "True" },
+   { "-no-pipe",	        ".usePipe",		XrmoptionNoArg, "False" },
+   { "-program",	        ".program",		XrmoptionSepArg, 0 },
++  { "-bg",	        ".background",		XrmoptionSepArg, 0 },
++  { "-fg",	        ".foreground",		XrmoptionSepArg, 0 },
++  { "-color-shift",	        ".colorShift",		XrmoptionSepArg, 0 },
+   { 0, 0, 0, 0 }
+ };
+ 
+--- hacks/config/xmatrix.xml	2015-06-13 18:08:53.000000000 -0500
++++ /home/berocs/Documents/xscreensaver/hacks/config/xmatrix.xml	2015-07-09 00:19:43.175906299 -0500
+@@ -25,6 +25,16 @@
+      <option id="top"    _label="Slider algorithm"    arg-set="-insert top"/>
+      <option id="bottom" _label="Expansion algorithm" arg-set="-insert bottom"/>
+    </select>
++   
++   <select id="color">
++	   <option id="color_green" _label="Green"/>
++     <option id="color_blue" _label="Blue"  arg-set="-color-shift blue"/>
++     <option id="color_red" _label="Red"  arg-set="-color-shift red"/>
++     <option id="color_yellow" _label="Yellow"  arg-set="-color-shift yellow"/>
++     <option id="color_aqua" _label="Aqua"  arg-set="-color-shift aqua"/>
++     <option id="color_white" _label="White"  arg-set="-color-shift White"/>
++     <option id="color_grey" _label="Grey"  arg-set="-color-shift grey"/>
++   </select>
+   </hgroup>
+ 
+   <hgroup>
+--- hacks/xmatrix.man	2011-08-03 13:44:25.000000000 -0500
++++ /home/berocs/Documents/xscreensaver/hacks/xmatrix.man	2015-07-09 00:19:43.175906299 -0500
+@@ -26,6 +26,8 @@
+ [\-mode \fImode\fP]
+ [\-phone \fInumber\fP]
+ [\-fps]
++[\-mono [\-fg #XXXXXX] [\-bg #XXXXXX]]
++[\-color\-shift "color"]
+ .SH DESCRIPTION
+ The \fIxmatrix\fP program draws the 2D "digital rain" effect, as seen on
+ the computer monitors in the Wachowski brothers' film, "The Matrix".
+@@ -120,6 +122,16 @@
+ xmatrix -ascii -program 'ps -eo comm | rev'
+ xmatrix -program 'od -txC -w6 /dev/random'
+ xmatrix -program 'cat /dev/random'
++
++.TP 8
++.B \-mono
++Force use of XBM files, which only allows one foreground color.
++Set custom hex colors with -fg and -bg.
++.TP 8
++.B \-color-shift
++Specify a simple color shift to one of:
++red, blue, green, purple, yellow, aqua, white, grey
++
+ .EE
+ .SH ENVIRONMENT
+ .PP

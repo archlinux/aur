@@ -1,0 +1,31 @@
+pkgbase = xscreensaver-xmatrix-color
+	pkgdesc = Screen saver and locker for the X Window System, modified xmatrix with variable color.
+	pkgver = 5.32
+	pkgrel = 1
+	url = http://www.jwz.org/xscreensaver/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bc
+	makedepends = intltool
+	makedepends = libxpm
+	depends = libglade
+	depends = libxmu
+	depends = glu
+	depends = xorg-appres
+	depends = perl-libwww
+	optdepends = gdm: for login manager support
+	provides = xscreensaver
+	conflicts = xscreensaver
+	backup = etc/pam.d/xscreensaver
+	source = http://www.jwz.org/xscreensaver/xscreensaver-5.32.tar.gz
+	source = xscreensaver-add-electricsheep.diff
+	source = xmatrix-color.diff
+	source = LICENSE
+	sha1sums = 3131d45295b9a18a2901737c9b95f1c5434f53a6
+	sha1sums = e8dc57b6471fb3867ee099304ac6bf628351cb98
+	sha1sums = 0c53c0bdec2c9ed00eaf1d11995a25c9cebfd2dd
+	sha1sums = bf8995d86609cdab678ca277ae685407f82691db
+
+pkgname = xscreensaver-xmatrix-color
+
