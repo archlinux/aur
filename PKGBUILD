@@ -8,10 +8,11 @@ pkgdesc="Openbox configuration tool. Qt port of ObConf"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("qt5-base")
+depends=("hicolor-icon-theme" "libxkbcommon-x11" "openbox" "qt5-x11extras" "xdg-utils")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install=$_pkgname.install
 source=("git+https://github.com/lxde/$_pkgname.git")
 sha256sums=("SKIP")
 
