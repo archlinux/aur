@@ -1,0 +1,17 @@
+pkgbase = clustal-omega
+	pkgdesc = Protein sequence alignment program
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.clustal.org/omega/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glib2
+	depends = argtable
+	options = libtool
+	options = staticlibs
+	source = http://www.clustal.org/omega/clustal-omega-1.2.1.tar.gz
+	sha1sums = 50f67eb3244c25c9380e7afef0e157161535121b
+
+pkgname = clustal-omega
+
