@@ -1,0 +1,13 @@
+pkgbase = prokit-git
+	pkgdesc = The ProteanOS Development Kit
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://proteanos.com/dev/prokit/
+	arch = any
+	license = GPL3
+	depends = bash
+	source = git+git://git.proteanos.com/prokit/prokit.git/
+	md5sums = SKIP
+
+pkgname = prokit-git
+
