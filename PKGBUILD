@@ -1,6 +1,6 @@
 # Maintainer:  dacoit <dacoit at tuta.io>
 pkgname=tutanota
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc='Tutanota end-to-end encrypted email client webapp'
 url='https://tutanota.de'
