@@ -1,0 +1,14 @@
+pkgbase = gkrellmapcupsd
+	pkgdesc = Gkrellm apcupsd monitor. Monitors line voltage, charge, time left, load. Works fine if you do not change the config. Otherwise, gkrellm will crash.
+	pkgver = 0.02
+	pkgrel = 3
+	url = http://www.unixdev.net/projects/gkrellmapcupsd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = ftp://ftp.unixdev.net/pub/unixdev/gkrellmapcupsd/0.02/gkrellmapcupsd_0.02.tar.gz
+	md5sums = 37179b274e07c0b7c308392f9f8524ad
+
+pkgname = gkrellmapcupsd
+
