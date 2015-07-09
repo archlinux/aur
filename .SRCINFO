@@ -1,0 +1,14 @@
+pkgbase = bviplus
+	pkgdesc = Bviplus is an ncurses based hex editor with a vim-like interface.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://bviplus.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = ncurses
+	source = http://downloads.sourceforge.net/project/bviplus/bviplus/0.9.4/bviplus-0.9.4.tgz
+	md5sums = b814929c439d2ec75cec2597540003e7
+
+pkgname = bviplus
+
