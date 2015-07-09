@@ -1,0 +1,17 @@
+pkgbase = echinus
+	pkgdesc = A window manager for X in the spirit of dwm
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = http://plhk.ru/echinus
+	install = echinus.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = libxft
+	depends = libxrandr
+	optdepends = ourico: complementary taskbar for echinus
+	source = http://plhk.ru/static/echinus/echinus-0.4.9.tar.gz
+	md5sums = 8e17f3973060121847050b74a1bf000d
+
+pkgname = echinus
+
