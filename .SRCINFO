@@ -1,0 +1,14 @@
+pkgbase = gecode
+	pkgdesc = The Generic Constraint Development Environment
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://www.gecode.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = mpfr
+	source = http://www.gecode.org/download/gecode-4.4.0.tar.gz
+	md5sums = a892852927b12ed291b435c72c085834
+
+pkgname = gecode
+
