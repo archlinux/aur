@@ -19,7 +19,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver-$_ubver.debian.tar.xz"
         '53-monospace-lcd-filter.patch')
 md5sums=('824d000eb737af6e16c826dd3b2d6c90'
-         'c445273d4c1e8d4fa3cc9542d06b486f'
+         '5d8e082f4d36d6c82853f6b6a5f6997a'
          'a17e48be6a06bc056574be6756cb9738')
 
 prepare() {
