@@ -1,0 +1,14 @@
+pkgbase = bzrtools
+	pkgdesc = Useful collection of utilities (all plugins, right now) for bzr.
+	pkgver = 2.6.0
+	pkgrel = 2
+	url = http://bazaar-vcs.org/BzrTools
+	changelog = bzrtools.changelog
+	arch = any
+	license = GPL
+	depends = bzr
+	source = http://launchpad.net/bzrtools/stable/2.6.0/+download/bzrtools-2.6.0.tar.gz
+	sha256sums = 8b17fbba61dafc8dbefe1917a2ce084a8adc7650dee60add340615270dfb7f58
+
+pkgname = bzrtools
+

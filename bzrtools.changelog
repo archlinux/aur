@@ -1,0 +1,7 @@
+2014-03-01 Charles Goyard <cg@fsck.fr>
+
+* 2.6.0-2 : typo in PKGBUILD sha256sums
+
+* 2.6.0-1 : new upstream release.
+            new maintainer.
+
