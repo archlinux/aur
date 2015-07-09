@@ -8,6 +8,7 @@ pkgbase = rofi-git
 	license = MIT
 	makedepends = autoconf
 	makedepends = git
+	makedepends = pkg-config
 	depends = libx11
 	depends = libxft
 	depends = freetype2
