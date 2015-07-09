@@ -2,9 +2,9 @@
 # Contributor: trya <tryagainprod@gmail.com>
 
 pkgname=braid-hib
-pkgver=1.0.2
-pkgrel=2
-pkgdesc="A puzzle-platformer where the player manipulates the flow of time (Humble Bundle/Store version)"
+pkgver=1.0.2+h20110807
+pkgrel=1
+pkgdesc="A puzzle platformer where you manipulate the flow of time (Humble Bundle/Store version)"
 url="http://braid-game.com"
 license=('custom: "commercial"')
 arch=('i686' 'x86_64')
