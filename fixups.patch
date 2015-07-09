@@ -1,0 +1,12 @@
+diff -up src/evince-2.32.0/backend/tiff/tiff2ps.c.orig src/evince-2.32.0/backend/tiff/tiff2ps.c
+--- src/evince-2.32.0/backend/tiff/tiff2ps.c.orig	2015-06-06 19:55:51.000000000 -0600
++++ src/evince-2.32.0/backend/tiff/tiff2ps.c	2015-06-06 20:53:56.000000000 -0600
+@@ -1127,7 +1127,7 @@ PS_Lvl2page(TIFF2PSContext* ctx, TIFF* t
+ 	}
+ 	buf_data = (unsigned char *)_TIFFmalloc(chunk_size);
+ 	if (!buf_data) {
+-		TIFFError(ctx->filename, "Can't alloc %u bytes for %s.",
++		TIFFError(ctx->filename, "Can't alloc %lu bytes for %s.",
+ 			chunk_size, tiled_image ? "tiles" : "strips");
+ 		return(FALSE);
+ 	}

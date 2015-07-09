@@ -1,0 +1,37 @@
+pkgbase = evince2
+	pkgdesc = Simply a document viewer. Gtk2 version.
+	pkgver = 2.32.0
+	pkgrel = 3
+	url = http://projects.gnome.org/evince/
+	install = evince2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = gnome-common
+	depends = gtk2
+	depends = libspectre>=0.2.6
+	depends = gsfonts
+	depends = poppler-glib>=0.16.2
+	depends = libdjvu>=3.5.22
+	depends = gnome-icon-theme>=2.31.0
+	depends = t1lib
+	depends = desktop-file-utils
+	depends = dconf
+	depends = gconf
+	provides = evince=2.32.0
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/evince/2.32/evince-2.32.0.tar.bz2
+	source = update_to_poppler_api.patch
+	source = security_issues_in_dvi-backend.patch
+	source = fixups.patch
+	sha256sums = 2a4c91ae38f8b5028cebb91b9da9ddc50ea8ae3f3d429df89ba351da2d787ff7
+	sha256sums = 2990c789c8cfd50e46f4dfa7a2406499b3ee26f4db9840c8b9a6e1dee40f61f4
+	sha256sums = 49d1ed8adc734a005d4d8fdc1912bb115d97f734071d64bcae0aae60f2b5626a
+	sha256sums = 4cd393d57a0587eeb11f9efd4c5099d3fc0078f2566729f002165db4aae40891
+
+pkgname = evince2
+
