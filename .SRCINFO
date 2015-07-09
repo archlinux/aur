@@ -1,0 +1,19 @@
+pkgbase = g3dviewer
+	pkgdesc = A 3D file viewer for GTK+ supporting a variety of file types
+	pkgver = 0.2.99.4
+	pkgrel = 1
+	url = http://automagically.de/g3dviewer/
+	install = g3dviewer.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtkglext
+	depends = libg3d
+	depends = libglade
+	source = http://automagically.de/files/g3dviewer-0.2.99.4.tar.gz
+	source = g3dviewer.desktop
+	md5sums = b7da4a68dd18309805ea2ca081542cfd
+	md5sums = 644b376a72ed514090a185d0c62dd362
+
+pkgname = g3dviewer
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=G3DViewer
+GenericName=Gtk 3D Viewer
+Comment=Visualize 3d Models
+Type=Application
+Exec=g3dviewer
+Icon=g3dviewer
+Terminal=false
+Categories=Application;Graphics;3DGraphics;
