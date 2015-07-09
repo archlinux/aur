@@ -1,7 +1,7 @@
 pkgbase = lapack-manpages
 	pkgdesc = LAPACK and BLAS manual pages
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://netlib.org/lapack
 	arch = any
 	license = BSD
