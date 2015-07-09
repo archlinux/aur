@@ -10,6 +10,8 @@ pkgbase = non-mixer-git
 	depends = ntk-git
 	depends = jack
 	depends = liblo
+	provides = non-mixer
+	conflicts = non-mixer
 	source = non-mixer-git::git+git://git.tuxfamily.org/gitroot/non/non.git
 	md5sums = SKIP
 
