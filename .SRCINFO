@@ -1,0 +1,24 @@
+pkgbase = lib32-gconf
+	pkgdesc = A configuration database system
+	pkgver = 3.2.6
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = gconf.install
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = python2
+	depends = gconf
+	depends = lib32-dbus-glib
+	depends = lib32-gtk3
+	source = http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-3.2.6.tar.xz
+	source = gconf-reload.patch
+	source = 01_xml-gettext-domain.patch
+	sha256sums = 1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c
+	sha256sums = 567b78d8b4b4bbcb77c5f134d57bc503c34867fcc6341c0b01716bcaa4a21694
+	sha256sums = c883dec2b96978874a53700cfe7f26f24f8296767203e970bc6402b4b9945eb8
+
+pkgname = lib32-gconf
+
