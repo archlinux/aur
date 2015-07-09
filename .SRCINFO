@@ -1,0 +1,15 @@
+pkgbase = systemd-numlockontty
+	pkgdesc = Systemd service + script, automatically activate numpad on ttys
+	pkgver = 0.1
+	pkgrel = 11
+	url = http://avalon.ybalrid.info/aur/numlockontty.html
+	install = numlockontty.install
+	arch = any
+	license = GPL
+	depends = systemd
+	replaces = numlockontty
+	source = http://avalon.ybalrid.info/aur/numlockontty-0.1.tar.gz
+	md5sums = f7b69626dd83f5da5269b226688ff1b8
+
+pkgname = systemd-numlockontty
+
