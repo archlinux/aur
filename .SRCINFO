@@ -18,5 +18,3 @@ pkgbase = python-rackspace-novaclient
 
 pkgname = python-rackspace-novaclient
 
-pkgname = python2-rackspace-novaclient
-
