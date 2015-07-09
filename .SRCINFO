@@ -1,0 +1,13 @@
+pkgbase = weatherman
+	pkgdesc = Display weather information from the command line.
+	pkgver = 1.2.2
+	pkgrel = 2
+	url = https://github.com/subrosa/weatherman
+	arch = any
+	license = custom
+	depends = curl
+	source = https://github.com/subrosa/weatherman/archive/1.2.2.tar.gz
+	md5sums = 5da26fa890238c0b2a2105d0ae43e9d5
+
+pkgname = weatherman
+
