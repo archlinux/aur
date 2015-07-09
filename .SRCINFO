@@ -1,0 +1,24 @@
+pkgbase = eboard
+	pkgdesc = A chess interface to ICS and chess engines
+	pkgver = 1.1.1
+	pkgrel = 5
+	url = http://www.bergo.eng.br/eboard/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	depends = gtk2
+	depends = libpng
+	source = eboard-1.1.1.tar.bz2::http://sourceforge.net/projects/eboard/files/eboard/1.1.1/eboard-1.1.1.tar.bz2/download
+	source = eboard.desktop
+	source = eboard.png
+	source = gcc-4.4.patch
+	source = libpng-1.5.8.patch
+	md5sums = 03dcdaa2bc85218b1b18c4bee276fea7
+	md5sums = 9c933f467c8482624fa9f9e56901b456
+	md5sums = 2cf1bd8f4623be7540c0f2386baf355e
+	md5sums = 0a4e70bcda6aaf06f4290cfbea730114
+	md5sums = 8999e1c3ae7e14740c361294049c607d
+
+pkgname = eboard
+
