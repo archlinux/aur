@@ -1,7 +1,7 @@
 pkgbase = gsi-sshterm
 	pkgdesc = Java Grid authentication program by the UK National Grid Service
 	pkgver = 0.91d
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ngs.ac.uk/index.php?title=GSI-SSHTerm
 	arch = i686
 	arch = x86_64
