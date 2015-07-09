@@ -1,9 +1,5 @@
 post_install() {
   systemd-sysusers globus.conf
-
-  echo -e "To use Globus, run the following commands:\n \
-   export GLOBUS_LOCATION=/opt/globus\n \
-   source $GLOBUS_LOCATION/etc/globus-user-env.sh"
 }
 
 post_upgrade() {
