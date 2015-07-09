@@ -1,0 +1,12 @@
+pkgbase = ms-sys
+	pkgdesc = A tool to write Win9x/2k/XP/2k3/Vista/7/2k8 master boot records (mbr) under linux - RTM!
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://ms-sys.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = ms-sys-2.4.1.tar.gz::http://prdownloads.sourceforge.net/ms-sys/ms-sys-2.4.1.tar.gz?download
+	md5sums = d31e7ef3db6bd77dbb13df11057fa0f2
+
+pkgname = ms-sys
