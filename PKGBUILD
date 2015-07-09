@@ -1,4 +1,4 @@
-# Maintainer: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
+# Contributor: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
 
 pkgname=cppcms
