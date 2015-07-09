@@ -1,0 +1,19 @@
+pkgbase = fiat-git
+	pkgdesc = Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra.
+	pkgver = 20140214
+	pkgrel = 1
+	url = https://bitbucket.org/fenics-project/fiat
+	arch = i686
+	arch = x86_64
+	groups = fenics-git
+	license = LGPL
+	depends = python2
+	depends = python2-scientificpython
+	provides = fiat
+	conflicts = fiat
+	options = !emptydirs
+	source = fiat::git+https://bitbucket.org/fenics-project/fiat.git#branch=master
+	md5sums = SKIP
+
+pkgname = fiat-git
+
