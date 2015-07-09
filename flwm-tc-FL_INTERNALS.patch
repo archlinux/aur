@@ -1,0 +1,66 @@
+diff -Naur flwm-1.14/Frame.C flwm-1.14-2/Frame.C
+--- flwm-1.14/Frame.C	2012-01-06 19:30:31.000000000 +0100
++++ flwm-1.14-2/Frame.C	2012-02-18 13:44:18.221491337 +0100
+@@ -2,6 +2,9 @@
+ // Some modifications by Michael A. Losh, tagged "ML" below, 
+ // Last update: 2009-09-27
+ 
++#ifndef FL_INTERNALS
++#define FL_INTERNALS
++
+ #include "config.h"
+ #include "Frame.H"
+ #include "Desktop.H"
+@@ -11,6 +14,7 @@
+ #include <FL/fl_draw.H>
+ #include "Rotated.H"
+ 
++#endif
+ 
+ static Atom wm_state = 0;
+ static Atom wm_change_state;
+diff -Naur flwm-1.14/main.C flwm-1.14-2/main.C
+--- flwm-1.14/main.C	2012-01-06 16:40:15.000000000 +0100
++++ flwm-1.14-2/main.C	2012-02-18 13:46:02.974257177 +0100
+@@ -2,6 +2,9 @@
+ // you can test the window controls.
+ //#define TEST 1
+ 
++#ifndef FL_INTERNALS
++#define FL_INTERNALS
++
+ #include "Frame.H"
+ #include <X11/Xproto.h>
+ #include <stdio.h>
+@@ -16,6 +19,9 @@
+ 
+ //ML
+ #include <FL/fl_ask.H>
++
++#endif
++
+ #include <signal.h>
+ 
+ ////////////////////////////////////////////////////////////////
+diff -Naur flwm-1.14/Rotated.C flwm-1.14-2/Rotated.C
+--- flwm-1.14/Rotated.C	2005-09-19 06:29:11.000000000 +0200
++++ flwm-1.14-2/Rotated.C	2012-02-18 13:45:50.564324407 +0100
+@@ -26,12 +26,18 @@
+ 
+ /* ********************************************************************** */
+ 
++#ifndef FL_INTERNALS
++#define FL_INTERNALS
++
+ #include <FL/x.H>
+ #if FL_MAJOR_VERSION < 2
+ # define XWindow Window
+ #endif
+ #include <FL/fl_draw.H>
+ #include "Rotated.H"
++
++#endif
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
