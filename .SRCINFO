@@ -1,0 +1,15 @@
+pkgbase = ftmenu
+	pkgdesc = Fluxbox menu icon tray
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://ftmenu.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fluxbox
+	depends = gtk2
+	source = http://sourceforge.net/projects/ftmenu/files/ftmenu/ftmenu-0.4/ftmenu-0.4.0.tar.gz/download
+	md5sums = 7a56d92be35970e66c45abe72d50653e
+
+pkgname = ftmenu
+
