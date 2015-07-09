@@ -1,7 +1,6 @@
 post_install() {
-  getent passwd globus >/dev/null || useradd -s /bin/false globus
-  passwd -l globus &>/dev/null
-  chown -R globus: /opt/globus
+  systemd-sysusers globus.conf
+
   echo -e "To use Globus, run the following commands:\n \
    export GLOBUS_LOCATION=/opt/globus\n \
    source $GLOBUS_LOCATION/etc/globus-user-env.sh"
@@ -11,6 +10,4 @@ post_upgrade() {
   post_install $1
 }
 
-pre_remove() {
-  userdel globus &> /dev/null
-}
+# vim: ft=sh:ts=2:sw=2:et
