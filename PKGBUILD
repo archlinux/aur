@@ -11,6 +11,7 @@ depends=('lzo2' 'pcre' 'python')
 makedepends=('cpio')
 conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'ncbi-blast+' 'cddlib' 'proj')
 provides=('blast' 'blast+-bin' 'ncbi-blast' 'ncbi-blast+')
+replaces=('ncbi-blast')
 source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz"
         'typeinfo.patch')
 md5sums=('f32bd2d2c66205c53c6981f94e1a0d54'
