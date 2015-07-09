@@ -1,0 +1,21 @@
+pkgbase = eekboard
+	pkgdesc = Yet Another Virtual Keyboard for Gnome. http://blog.du-a.org/?cat=9
+	pkgver = 1.0.8
+	pkgrel = 3
+	url = https://github.com/ueno/eekboard
+	install = eekboard.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = libxklavier
+	depends = libcanberra
+	optdepends = ibus
+	optdepends = clutter-gtk
+	source = https://github.com/downloads/ueno/eekboard/eekboard-1.0.8.tar.gz
+	sha512sums = 21ed54e7343db9566d268f1793ea19650eac2884cf5fe2b5647247d65956150017e9cbcbeab5f0e175677079559873abb6ac712099f9e5d635e1e792f0dce659
+
+pkgname = eekboard
+
