@@ -1,0 +1,19 @@
+pkgbase = bzr-builder
+	pkgdesc = A bzr plugin to construct a bzr branch based on a recipe
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://launchpad.net/bzr-builder
+	arch = any
+	license = GPL3
+	depends = bzr
+	depends = python2
+	depends = python2-debian
+	depends = devscripts
+	depends = dput
+	provides = bzr-builder
+	conflicts = bzr-builder-bzr
+	source = https://launchpad.net/bzr-builder/trunk/0.7.3/+download/bzr-builder-0.7.3.tar.gz
+	md5sums = 3ba527090b2bc440a8288ff243f9cc53
+
+pkgname = bzr-builder
+
