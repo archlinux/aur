@@ -1,0 +1,12 @@
+post_install() {
+	echo "Before usage with cmus you MUST invoke this program with 'init'"
+	echo "argument:"
+	echo ""
+	echo "   cmusfm init"
+	echo ""
+	echo "After that you can set status_display_program in cmus:"
+	echo ""
+	echo "   :set status_display_program=cmusfm"
+	echo ""
+	echo '(for more information see 'man cmus'). Enjoy!'
+}
