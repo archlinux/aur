@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openssl
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)
-	pkgver = 1.0.2.c
+	pkgver = 1.0.2.d
 	pkgrel = 1
 	url = http://www.openssl.org
 	arch = any
@@ -12,20 +12,20 @@ pkgbase = mingw-w64-openssl
 	options = !buildflags
 	options = !makeflags
 	options = staticlibs
-	source = http://www.openssl.org/source/openssl-1.0.2c.tar.gz
-	source = http://www.openssl.org/source/openssl-1.0.2c.tar.gz.asc
+	source = http://www.openssl.org/source/openssl-1.0.2d.tar.gz
+	source = http://www.openssl.org/source/openssl-1.0.2d.tar.gz.asc
 	source = openssl-0.9.6-x509.patch
 	source = openssl-1.0.0a-ldflags.patch
 	source = openssl-1.0.0d-windres.patch
 	source = openssl-1.0.1-x32.patch
 	source = openssl-1.0.2a-parallel-build.patch
-	md5sums = 8c8d81a9ae7005276e486702edbcd4b6
+	md5sums = 38dd619b2e77cbac69b99f52a053d25a
 	md5sums = SKIP
-	md5sums = cae4eea6db48a254653fd1903cfabd15
-	md5sums = 9e0abad8dd17079815d9e92345c5adcb
-	md5sums = 835a78dbe9c8690dbdd9190aaf5432e7
-	md5sums = 87610b76871d53d4b6f07374000dae87
-	md5sums = 1d363d5e19c6eb4144b49f9daadefd5f
+	md5sums = 990d027cc82ff8b2acffead24073d43c
+	md5sums = dd616e53eba607f5ab46634f93d5c5a5
+	md5sums = df46ea89a28b0bd18f13b9ab63d1ade3
+	md5sums = 7400927e547cd4c68d2af2fe0b322345
+	md5sums = 7ea5aaac21cee0f89dfb58b03219caaa
 
 pkgname = mingw-w64-openssl
 
