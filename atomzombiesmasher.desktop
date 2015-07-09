@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AtomZombieSmasher
+GenericName=AtomZombieSmasher
+Comment=RTS, evacuating civilians out of zombie-contaminated cities
+Exec=atomzombiesmasher
+Icon=/opt/atomzombiesmasher/game/atomzombiesmasher.png
+Terminal=false
+Type=Application
+Categories=Game;

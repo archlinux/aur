@@ -1,0 +1,18 @@
+pkgbase = atomzombiesmasher-hib
+	pkgdesc = RTS, evacuating civilians out of zombie-contaminated cities. (Commercial)
+	pkgver = 1.953
+	pkgrel = 1
+	url = http://blendogames.com/atomzombiesmasher/
+	arch = any
+	license = custom:commercial
+	conflicts = atomzombiesmasherdemo
+	conflicts = atomzombiesmasher
+	source = atomzombiesmasher_v1_953-er.tar.gz::hib://atomzombiesmasher_v1_953-er.tar.gz
+	source = atomzombiesmasher.desktop
+	source = https://apps.ubuntu.com/site_media/icons/2013/12/atom-zombie-smashertCCn9V.png
+	md5sums = 6902c845a21e92c62f5b33b38715c797
+	md5sums = 73ed32320ac1dc645754a6520b4e4e8b
+	md5sums = 341ce551a8525be96d6c59c1bf9efd2a
+
+pkgname = atomzombiesmasher-hib
+
