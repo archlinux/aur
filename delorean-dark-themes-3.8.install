@@ -1,0 +1,12 @@
+post_install() {
+    echo 'XFCE, LXDE & Gnome2' 
+	echo '>>> The panel image files are located at: /usr/share/themes/delorean-dark-theme-*-3.8/gtk-2.0/panel-background/*'
+}
+post_upgrade() {
+	echo 'XFCE, LXDE & Gnome2' 
+	echo '>>> The panel image files are located at: /usr/share/themes/delorean-dark-theme-*-3.8/gtk-2.0/panel-background/*'
+}
+
+post_remove() {
+   return 0;
+}

@@ -1,0 +1,16 @@
+pkgbase = delorean-dark-themes-3.8
+	pkgdesc = Unique Metal Theme for Gtk2, Gtk3, Metacity, Xfwm4, LXDE & Openbox
+	pkgver = 10082013
+	pkgrel = 1
+	url = http://fav.me/d6a12ra
+	install = delorean-dark-themes-3.8.install
+	arch = any
+	license = GPLv3
+	depends = gtk-engines
+	depends = gnome-themes-standard>=3.6.0
+	depends = gtk-engine-murrine>=0.98.2
+	source = https://dl.dropboxusercontent.com/u/330352/DeLorean-Dark-Themes-3.8_10082013.zip
+	md5sums = 5385784e49392adfc4769dbe61392e8b
+
+pkgname = delorean-dark-themes-3.8
+
