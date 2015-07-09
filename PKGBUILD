@@ -1,8 +1,9 @@
-# Maintainer: Rob Hunter <subrosa@github>
+# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Contributor: Rob Hunter <subrosa@github>
 
 pkgname=weatherman
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Display weather information from the command line."
 arch=('any')
 license=('custom')

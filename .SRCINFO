@@ -1,7 +1,7 @@
 pkgbase = weatherman
 	pkgdesc = Display weather information from the command line.
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/subrosa/weatherman
 	arch = any
 	license = custom
