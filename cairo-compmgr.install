@@ -1,0 +1,17 @@
+post_install() {
+  gconfpkg --install cairo-compmgr
+}
+
+pre_upgrade() {
+  gconfpkg --uninstall cairo-compmgr
+}
+
+post_upgrade() {
+  gconfpkg --install cairo-compmgr
+}
+
+pre_remove() {
+  gconfpkg --uninstall cairo-compmgr
+}
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,28 @@
+pkgbase = cairo-compmgr
+	pkgdesc = A Cairo based composite manager
+	pkgver = 0.3.1
+	pkgrel = 12
+	url = https://github.com/gandalfn/Cairo-Composite-Manager
+	install = cairo-compmgr.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gettext
+	makedepends = gtk-doc
+	makedepends = intltool>=0.41
+	makedepends = git
+	depends = gtk2>=2.16.0
+	depends = vala>=0.28
+	depends = libsm
+	depends = libgl
+	depends = gconf
+	options = !libtool
+	source = https://github.com/downloads/gandalfn/Cairo-Composite-Manager/cairo-compmgr-0.3.1.tar.bz2
+	source = https://github.com/gandalfn/Cairo-Composite-Manager/pull/4.diff
+	source = bfd_ansidecl.patch
+	md5sums = 4ef285e0735b1a61b5db2205a2d8f8b3
+	md5sums = 011074cd9687475ebf9ac93fc1f535aa
+	md5sums = b316779ffe9f86ada7ed601ae433789b
+
+pkgname = cairo-compmgr
+
