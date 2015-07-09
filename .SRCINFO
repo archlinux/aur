@@ -1,0 +1,18 @@
+pkgbase = flburn
+	pkgdesc = Optical disk burning software for linux based on the libraries FLTK and libburnia.
+	pkgver = 0.0.3
+	pkgrel = 4
+	url = http://flburn.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = fltk
+	depends = libburn
+	depends = libisofs
+	source = http://sourceforge.net/projects/flburn/files/flburn_0.0.3/flburn_src_0.0.3.tar.gz
+	source = flburn.desktop
+	md5sums = 98ba79eb586d801b822c942c33c0d042
+	md5sums = 56568821523e459271399afa8a9f0813
+
+pkgname = flburn
+
