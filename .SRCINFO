@@ -1,0 +1,13 @@
+pkgbase = msaprobs
+	pkgdesc = Multiple sequence alignment generator
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://sourceforge.net/projects/msaprobs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/project/msaprobs/MSAProbs-0.9.7.tar.gz
+	sha1sums = c94598467805cac3f4021e982358a2d1eaa501e4
+
+pkgname = msaprobs
+
