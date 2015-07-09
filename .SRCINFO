@@ -1,0 +1,15 @@
+pkgbase = cook
+	pkgdesc = A powerful make alternative
+	pkgver = 2.34
+	pkgrel = 1
+	url = http://miller.emu.id.au/pmiller/software/cook/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = groff>=1.15
+	depends = bison
+	source = http://miller.emu.id.au/pmiller/software/cook/cook-2.34.tar.gz
+	md5sums = 9ec89c0f983213696fa0dd59c05e66ba
+
+pkgname = cook
+
