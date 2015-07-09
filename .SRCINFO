@@ -1,0 +1,24 @@
+pkgbase = dustforce-hib
+	pkgdesc = A fast-paced 2D action platformer (Humble Bundle version)
+	pkgver = 1.0+20141222
+	pkgrel = 1
+	url = http://dustforce.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = mesa
+	depends = libgl
+	depends = sdl2
+	depends = libxdamage
+	depends = freealut
+	depends = libidn
+	depends = libvorbis
+	depends = libxft
+	depends = xdg-utils
+	source = hib://Dustforce-Linux-2014-12-22.sh
+	source = dustforce-hib.desktop
+	md5sums = e2fa7efd5b9ec64fc453f32480f63ad4
+	md5sums = c012863d22d4332c651a272eb5e9cf03
+
+pkgname = dustforce-hib
+

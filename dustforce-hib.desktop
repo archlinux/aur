@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Dustforce DX
+Comment=Hitbox Team
+GenericName=2D Action Platformer
+Icon=dustforce
+Exec=/usr/bin/dustforce
+Terminal=false
+StartupNotify=false
