@@ -15,14 +15,21 @@ source=("https://github.com/atheme/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('b1d02cc5f1761ab6b1c1f8994a92466f11d91d57af65dcb3204e8c54ea514059')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir/$pkgname-$pkgver"
+	msg2 "Run './autogen.sh'..."
+	./autogen.sh
+
+	msg2 "Run './configure'..."
+	./configure --prefix=/usr
+
+	msg2 "Run 'make'..."
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
+
+	msg2 "Install license..."
+	install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
