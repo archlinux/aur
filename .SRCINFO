@@ -1,0 +1,15 @@
+pkgbase = canon-pixma-mx860-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX860
+	pkgver = 3.10
+	pkgrel = 2
+	url = http://support-au.canon.com.au/P/search?model=PIXMA+MX860&menu=download&filter=0&tagname=g_os&g_os=Linux
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://gdlp01.c-wss.com/gds/7/0100001877/01/cnijfilter-mx860series-3.10-1-i386-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/0/0100001870/01/scangearmp-mx860series-1.30-1-i386-deb.tar.gz
+	sha1sums = ce47570fc8d7b2fe1fd53a6b745364a054ee383a
+	sha1sums = c871b9922035a58e24d2629ad3e1325d1b6feac8
+
+pkgname = canon-pixma-mx860-complete
+
