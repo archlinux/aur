@@ -1,0 +1,18 @@
+--- src/cairo-clock.c.orig	2008-02-27 11:02:57.000000000 +0000
++++ src/cairo-clock.c	2008-06-10 07:51:17.000000000 +0100
+@@ -1487,15 +1487,6 @@
+ 	g_pErrorDialog = glade_xml_get_widget (pGladeXml,
+ 					      "errorDialog");
+ 
+-	if (!gdk_screen_is_composited (gtk_widget_get_screen (g_pMainWindow)))
+-	{
+-		gtk_window_set_icon_from_file (GTK_WINDOW (g_pErrorDialog),
+-					       get_icon_filename (),
+-					       NULL);
+-		gtk_dialog_run (GTK_DIALOG (g_pErrorDialog));
+-		exit (2);
+-	}
+-
+ 	g_pPopUpMenu = glade_xml_get_widget (pGladeXml,
+ 					     "popUpMenu");
+ 	pSettingsMenuItem = glade_xml_get_widget (pGladeXml,

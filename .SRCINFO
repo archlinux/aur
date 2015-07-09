@@ -1,0 +1,22 @@
+pkgbase = cairo-clock-ccw
+	pkgdesc = An analog clock displaying the system-time, running counter-clockwise.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://macslow.thepimp.net/?page_id=23
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = cairo
+	depends = libglade>=2.6.0
+	depends = librsvg>=2.14.0
+	conflicts = cairo-clock
+	source = http://ftp.de.debian.org/debian/pool/main/c/cairo-clock/cairo-clock_0.3.4.orig.tar.gz
+	source = cairo-clock.patch
+	source = ccw.patch
+	md5sums = 78e5b3aa3492aa6c182eaacae63a7c03
+	md5sums = a2ec378bf79dfb9a1b1418d7b2d341ff
+	md5sums = 621199b7064b4e53ecc4740bfe4bf404
+
+pkgname = cairo-clock-ccw
+
