@@ -1,0 +1,19 @@
+pkgbase = glsl-debugger-git
+	pkgdesc = GLSL source level debugger. This is the Open Source public release of the project originally known as glslDevil.
+	pkgver = 0.r324.72937cf
+	pkgrel = 1
+	epoch = 1
+	url = http://glsl-debugger.github.io/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = qt4
+	depends = glew
+	depends = freeglut
+	source = glsl-debugger-git::git://github.com/GLSL-Debugger/GLSL-Debugger.git
+	md5sums = SKIP
+
+pkgname = glsl-debugger-git
+
