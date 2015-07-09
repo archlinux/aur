@@ -1,4 +1,4 @@
-# Maintainer: Tomas Storck <tomasstorck@gmail.com>
+# Maintainer: Tomas Storck <storcktomas@gmail.com>
 pkgname=java-jmatio
 _shortname=jmatio	# Name used by author, for destination and .jar file
 pkgver=1.1		# This will be updated by the pkgver()
