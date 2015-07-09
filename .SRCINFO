@@ -1,0 +1,17 @@
+pkgbase = canon-pixma-mx390-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX390
+	pkgver = 3.90
+	pkgrel = 4
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100272202.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	optdepends = system-config-printer: an easy configuration-tool for printers
+	source = http://gdlp01.c-wss.com/gds/9/0100005149/01/cnijfilter-mx390series-3.90-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/3/0100005173/01/scangearmp-mx390series-2.10-1-deb.tar.gz
+	sha1sums = aac87f818d238dd2e8f92987d2a21c2e212e7c0d
+	sha1sums = c7f9960bf45a53e0e6bee53dcbce846fc6424950
+
+pkgname = canon-pixma-mx390-complete
+
