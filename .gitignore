@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+*.rpm
+*.sw[op]
+/src/
+/pkg/

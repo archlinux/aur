@@ -1,0 +1,23 @@
+pkgbase = brscan3
+	pkgdesc = Brother SANE drivers for brscan3-compatible models
+	pkgver = 0.2.13_1
+	pkgrel = 3
+	url = http://support.brother.com/g/s/id/linux/en
+	install = brscan3.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:Brother
+	depends = sane
+	depends = libusb-compat
+	source = brscan3.rules
+	source = LICENSE.html
+	sha256sums = 2e73148e0b89e0753d3cbfe99837efd3ebf06d9d9e3b030b4a241fa8fb5b662b
+	sha256sums = 3434bca1936d6a5fd6afd810cde7e1876dd4d1496722b09af180278480f464f2
+	source_i686 = http://download.brother.com/welcome/dlf006643/brscan3-0.2.13-1.i386.rpm
+	sha256sums_i686 = 5586fe264c7bd715e598b5d444f2851464ffe72857f2f48486466e7e2957f792
+	source_x86_64 = http://download.brother.com/welcome/dlf006644/brscan3-0.2.13-1.x86_64.rpm
+	sha256sums_x86_64 = b462dbded2d0f7ae511057bd3cb6f8379042b75d996eef2675998a4559cc5556
+
+pkgname = brscan3
+
