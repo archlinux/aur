@@ -1,0 +1,16 @@
+pkgbase = bfg
+	pkgdesc = Removes large or troublesome blobs like git-filter-branch does, but faster. And written in Scala.
+	pkgver = 1.11.8
+	pkgrel = 2
+	url = http://rtyley.github.io/bfg-repo-cleaner/
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	noextract = bfg-1.11.8.jar
+	source = http://repo1.maven.org/maven2/com/madgag/bfg/1.11.8/bfg-1.11.8.jar
+	source = bfg.sh
+	md5sums = 7b39539a485603e69eea6ffd91e876f6
+	md5sums = bd25a99f7c9b59549d70df0687ca90b4
+
+pkgname = bfg
+
