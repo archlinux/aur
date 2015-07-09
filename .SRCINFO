@@ -1,0 +1,16 @@
+pkgbase = gkrellshoot
+	pkgdesc = A plugin for GkrellM for screen lock and screen shoot
+	pkgver = 0.4.4
+	pkgrel = 2
+	url = http://gkrellshoot.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = imagemagick
+	depends = gkrellm
+	depends = gtk2
+	source = http://downloads.sourceforge.net/project/gkrellshoot/GkrellM2.0%20Port/0.4.4/gkrellshoot-0.4.4.tar.gz
+	md5sums = aa5d16c2a284e018dbab532bec44a0d6
+
+pkgname = gkrellshoot
+
