@@ -1,0 +1,25 @@
+pkgbase = salt-git
+	pkgdesc = A remote execution and communication system built on zeromq
+	pkgver = v0.14.0.573.ge6e0ad7
+	pkgrel = 1
+	url = https://github.com/saltstack/salt
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = python2
+	depends = python2-yaml
+	depends = python2-jinja
+	depends = python2-pyzmq
+	depends = python2-crypto
+	depends = python2-psutil
+	depends = python2-msgpack
+	depends = python2-m2crypto
+	provides = salt
+	conflicts = salt
+	backup = etc/salt/master
+	backup = etc/salt/minion
+	source = git://github.com/saltstack/salt.git
+	md5sums = SKIP
+
+pkgname = salt-git
+
