@@ -1,0 +1,206 @@
+# Maintainer : Swift Geek
+# Contributor: magedon <magedon.zt@gmail.com>
+
+pkgname=bin32-firefox-i18n
+pkgver=39.0
+pkgrel=1
+pkgdesc="Language packs for bin32-firefox"
+arch=('x86_64')
+license=('MPL')
+url="http://www.mozilla.com/projects/firefox"
+depends=('bin32-firefox')
+install=i18n.install
+
+_url=http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-i686/xpi
+source=(
+   $_url/ach.xpi
+   $_url/af.xpi
+   $_url/an.xpi
+   $_url/ar.xpi
+   $_url/as.xpi
+   $_url/ast.xpi
+   $_url/az.xpi
+   $_url/be.xpi
+   $_url/bg.xpi
+   $_url/bn-BD.xpi
+   $_url/bn-IN.xpi
+   $_url/br.xpi
+   $_url/bs.xpi
+   $_url/ca.xpi
+   $_url/cs.xpi
+   $_url/cy.xpi
+   $_url/da.xpi
+   $_url/de.xpi
+   $_url/dsb.xpi
+   $_url/el.xpi
+   $_url/en-GB.xpi
+   $_url/en-US.xpi
+   $_url/en-ZA.xpi
+   $_url/eo.xpi
+   $_url/es-AR.xpi
+   $_url/es-CL.xpi
+   $_url/es-ES.xpi
+   $_url/es-MX.xpi
+   $_url/et.xpi
+   $_url/eu.xpi
+   $_url/fa.xpi
+   $_url/ff.xpi
+   $_url/fi.xpi
+   $_url/fr.xpi
+   $_url/fy-NL.xpi
+   $_url/ga-IE.xpi
+   $_url/gd.xpi
+   $_url/gl.xpi
+   $_url/gu-IN.xpi
+   $_url/he.xpi
+   $_url/hi-IN.xpi
+   $_url/hr.xpi
+   $_url/hsb.xpi
+   $_url/hu.xpi
+   $_url/hy-AM.xpi
+   $_url/id.xpi
+   $_url/is.xpi
+   $_url/it.xpi
+   $_url/ja.xpi
+   $_url/kk.xpi
+   $_url/km.xpi
+   $_url/kn.xpi
+   $_url/ko.xpi
+   $_url/lij.xpi
+   $_url/lt.xpi
+   $_url/lv.xpi
+   $_url/mai.xpi
+   $_url/mk.xpi
+   $_url/ml.xpi
+   $_url/mr.xpi
+   $_url/ms.xpi
+   $_url/nb-NO.xpi
+   $_url/nl.xpi
+   $_url/nn-NO.xpi
+   $_url/or.xpi
+   $_url/pa-IN.xpi
+   $_url/pl.xpi
+   $_url/pt-BR.xpi
+   $_url/pt-PT.xpi
+   $_url/rm.xpi
+   $_url/ro.xpi
+   $_url/ru.xpi
+   $_url/si.xpi
+   $_url/sk.xpi
+   $_url/sl.xpi
+   $_url/son.xpi
+   $_url/sq.xpi
+   $_url/sr.xpi
+   $_url/sv-SE.xpi
+   $_url/ta.xpi
+   $_url/te.xpi
+   $_url/th.xpi
+   $_url/tr.xpi
+   $_url/uk.xpi
+   $_url/uz.xpi
+   $_url/vi.xpi
+   $_url/xh.xpi
+   $_url/zh-CN.xpi
+   $_url/zh-TW.xpi
+)
+md5sums=('acbcd177e94bd5491d6734e78d319281'
+         '51559d22a17dbb0c8d4ad441ae7b1369'
+         '9af0a5c7cdaa081a92e6df8a79c3e829'
+         '667dc3fa01d62b95f24f647ef47f397b'
+         '267846d5414fd2856732f27cd86da712'
+         '38258f53a537a0fd4bbb06bf5c2b364b'
+         'eadabc9bb83cc3877265b5202615fea3'
+         '928f9b0359c2cefd7ac93a81889e0906'
+         '5a0b81483c2e264ef502e551bad96907'
+         '8ede916b77187a6a2601dae5bed05fff'
+         'db1a1e55af5aa2a27544b448746abc06'
+         'be737b8f575fc02b94bbae53e8a0d3fd'
+         '945230fd5fcd85213512c7340b2e46f6'
+         'c7483cc961d56063e73aa91729ee3b01'
+         'cc8c886961ea48ff307556b4ca412989'
+         '5154bd2a65835521a65085a146fcc488'
+         '030e8eac1e18cf544e8740bc39f6c9c1'
+         'b2d77c7b2e6eb3aacc5d6d4ccc04143d'
+         'a4ca9a9e543b8141c497b9c3055a52e7'
+         '61099f4a7841a900ffcb243b06a2649b'
+         'db95aae778ac380d8448eead4f3790a4'
+         '5adb2e3ef2f6db5533c927262cbfbe0f'
+         '064288e35c61d67537ee381a80ac0a03'
+         '5fedee0ef8463c4b62cb31afce1fd574'
+         '76c50bb10b7b391f0a21fae6d644d9f6'
+         '8e00d82cfbd083e09c1056cfe66ab405'
+         '83c308200217ab95f7d92acf8b18c03f'
+         '13f7845983f60929cfcb712e357e1821'
+         'addd6e0e7c5ccd02af7138044aeedc1b'
+         '40f248a0fa8fc15c65bbbf3826668785'
+         'a9ad1f6522f0c97e193f89faa41622af'
+         'd1c0ea8939ca4d2f2ee0a4027f26b5e3'
+         '0781f37b5541002950e23ca139260b3d'
+         '2597fd0e6e82150d8aa553fc89c59011'
+         '6e19caf7bc4d7068371a719760713348'
+         '7a327b65a81e5d19b8f7f58ee4e99ff4'
+         '2585df0fba39b4ef0c6c728c1e26f1a4'
+         'f465a9390443db1a7aff3433bf2302a9'
+         '5e3a338ae5cc95bd35b0b51ee8f81ac3'
+         '5167405bea3be3bfa11dd20ffdae73bd'
+         '7e25296db99604ae0ed90e9dbea31664'
+         '82130e9c7371b85eeaf489b77554c523'
+         '6ed4013bd8e77db038203a492a3fd386'
+         '0e03d926c48cc86cc489c863b7a96ed3'
+         '762ae7978dc5c145f69b21b6e1a4e954'
+         '24501242c485115daab62d7eebcf43db'
+         '3ce96e5a20aa54f2f8227c06a344ce40'
+         '7a2d7fdb1b8a521ee2d06a70b0f92fc8'
+         'de8e46a96e08a965c11af8e6e807fad5'
+         'a826b10b0a2c5fa51fd3445ab53823e7'
+         '8f06499d0dcc9d60a8cc081d3cf725c2'
+         'dcaa5b2f74cb6d6d0ff68cfad514b816'
+         '558b4ba87a4f37eda9032345289ce38a'
+         'd973d35bc248a76a050e881a2c882602'
+         '715660cef66574e5f6124a6600784427'
+         'd1099c42da9ace7c51d5417e66f0fe03'
+         '206dc34739672321c26ac4e2f07b91e5'
+         '5f3cdee241f41ad879b5adafee227311'
+         '6612764c9a416b55ee9ca3096796ef52'
+         'd8684d7c58a04f001e55df494f26d270'
+         '986878d03cf01da3da70a8587a247946'
+         '7fa18a469effac7fdff03909050edc71'
+         '94b8e34a92f363ae22dad252de1f9974'
+         '556dd48c0fce3094ccb0e5e22f7bffe1'
+         '3fece552b53c06a9941dda6cbaa3bbd6'
+         '48dc753cd5f95cccb25ca6aeeecfcd7e'
+         '61aad617e2de6ba4700654a557359fcd'
+         '22982760ef2c36d888dfe1a4b77e16b9'
+         '9a00b784533ca5619ff26eb464e55858'
+         'e67d731b7fbe1ab81d9003fa3d6e3102'
+         '392fa05fff0f81a193b486069da4f1a1'
+         'c049f6c65e539af676c276235ddcea65'
+         '2969c77898c0af4d537a28b89f226aa8'
+         '847c123e8dba8ea743c8f933d78ae7c8'
+         'e8e428d58920cf88f34101cd2f390bc7'
+         '69c93b0f737f6e0fe515e8623c0ed22d'
+         '9652b06209467439ae2ad5ac9cf9cbb6'
+         '7f21cc9230d06c83d454a963cb832a2b'
+         'd982dd3275453d5c7e1867944cf5b835'
+         '74ea83b11a1bb04f40cf826ddbf716c2'
+         '69a2164e66762d391529483d232cbb9c'
+         'a3a388cf1f00090735a64923fac8c4bd'
+         '2aa1303c0c1c7b063c1b648321e6ac58'
+         '44b32892f2d53243670920a91f26004e'
+         '0c493ca137c5ed0e26b04e50e777af8e'
+         'b3abe08396085dd563cd56eef977b12c'
+         'ecb4e0cf4c6600eb8f7ba826289cc815'
+         '89f9f66c0d44a2266beb7fbf5dc3b741'
+         '3d4305b3b81df4befbf881b3f90f66c5')
+
+
+noextract=(${source[@]##*/})e
+
+package() {
+  extdir=${pkgdir}/usr/lib32/bin32-firefox/extensions
+  mkdir -p $extdir
+  cd ${srcdir} install -d $extdir
+  for i in *.xpi; do
+    install -m644 $i $extdir
+  done
+}
