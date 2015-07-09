@@ -1,0 +1,16 @@
+pkgbase = lib32-dbus-glib
+	pkgdesc = GLib bindings for DBUS
+	pkgver = 0.104
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/DBusBindings
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = dbus-glib
+	depends = lib32-glib2
+	options = !emptydirs
+	source = http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.104.tar.gz
+	sha256sums = bfc1f1a82bfc3ec3ecafe04d0e87bab7e999f50dce4f4a34d0b89caf6bd821f6
+
+pkgname = lib32-dbus-glib
+
