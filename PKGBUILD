@@ -2,7 +2,7 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc-sim
-pkgver=20150219
+pkgver=20150701
 pkgrel=1
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git' 'boost.patch')
 md5sums=('SKIP'
         'ba6948dc5dc155849f55039e454cdbd6')
 makedepends=('git')
+PKGEXT='.pkg.tar'
 
 pkgver() {
   cd "$srcdir/$_gitname"
