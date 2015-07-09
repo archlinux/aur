@@ -1,0 +1,22 @@
+pkgbase = cwm-git
+	pkgdesc = OpenBSD fork of calmwm, a clean and lightweight window manager
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = pkg-config
+	depends = libxft
+	depends = libxrandr
+	depends = libxinerama
+	provides = cwm
+	conflicts = cwm
+	source = git://github.com/chneukirchen/cwm.git#branch=linux
+	source = cwm.desktop
+	md5sums = SKIP
+	md5sums = 42530ce5a23fc5f9088d891e325d99bd
+
+pkgname = cwm-git
+
