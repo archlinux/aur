@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-bsm-simple
+	pkgdesc = A small, light and smooth theme for GTK based desktops.
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://gnome-look.org/content/show.php/BSM+Simple?content=121685
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	source = http://gnome-look.org/CONTENT/content-files/121685-BSM%20Simple%2013.tar.gz
+	md5sums = 26ba7fd532b8811e77a041ce8bacf79f
+
+pkgname = gtk-theme-bsm-simple
+
