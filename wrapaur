@@ -466,13 +466,13 @@ check_pkgversion()
 check_all_depends()
 {
 	echo -e "${color1}:: ${color2}Checking Dependencies...${color3}"
-	depends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bdepends=/{/depends=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
-	mdepends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bmakedepends=/{/makedepends=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+	depends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends=/,/\)$/' | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+	mdepends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^makedepends=/,/\)$/' | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
 	arch=$(uname -m)
 	if [[ $arch == "x86_64" ]]; then
-		dependsx64=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bdepends_x86_64=/{/depends_x86_64=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+		dependsx64=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_x86_64=/,/\)$/' | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
 	else
-		dependsi686=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -nr "1,/\bdepends_i686=/{/depends_i686=/,/\)/p}" | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
+		dependsi686=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_i686=/,/\)$/' | sed -e "s/[a-z]*=('//g" -e "s/'//g" -e "s/)//g")
 	fi
 	#if no dependencies echo and leave loop
 	if [[ $depends == "" ]]; then
