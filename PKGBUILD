@@ -1,13 +1,15 @@
-#Maintainer: Daniel Wallace < danielwallace at gtmanfred dot com>
+#Maintainer: Sam S <smls75@gmail.com>
+#Contributor: Daniel Wallace < danielwallace at gtmanfred dot com>
+
 pkgname=bastion
 pkgver=20120621
 _pkgver=2012-06-20
 pkgrel=7
-pkgdesc="An original action role-playing game set in a lush imaginative world, in which players must create and fight for civilization’s last refuge as a mysterious narrator marks their every move."
-url="http://supergiantgames.com/?page_id=242"
+pkgdesc="An action role-playing game set in a lush imaginative world (Humble Bundle/Store version)"
+url="http://www.supergiantgames.com/games/bastion/"
 license=('custom')
 arch=('i686' 'x86_64')
-groups=("humble-indie-bundleV" "games")
+groups=("humblebundle" "hib5" "hib9")
 depends=('libxft')
 makedepends=('curl')
 install=$pkgname.install
