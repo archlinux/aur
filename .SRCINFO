@@ -1,0 +1,18 @@
+pkgbase = fbxkb
+	pkgdesc = Keyboard indicator and switcher
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://fbxkb.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libx11
+	depends = libxmu
+	source = http://download.sourceforge.net/fbxkb/fbxkb-0.6.tgz
+	source = fbxkb.patch
+	md5sums = fa768bbb07aac8a4ae590633499cce15
+	md5sums = 33171c56c308eb68cb5035762fbb8aa0
+
+pkgname = fbxkb
+
