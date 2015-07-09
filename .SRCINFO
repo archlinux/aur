@@ -1,6 +1,6 @@
 pkgbase = cargo-bin
 	pkgdesc = Cargo downloads your Rust project's dependencies and compiles your project.
-	pkgver = 20150618
+	pkgver = 20150709
 	pkgrel = 1
 	url = http://crates.io/
 	arch = x86_64
