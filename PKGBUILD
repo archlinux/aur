@@ -5,7 +5,7 @@ pkgver=0.19.3
 pkgrel=1
 pkgdesc="Container Cluster Manager for Docker"
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'rsync')
 arch=('x86_64' 'i686')
 source=("https://github.com/GoogleCloudPlatform/kubernetes/archive/v$pkgver.tar.gz"
         "kubernetes.install")
