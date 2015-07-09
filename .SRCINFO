@@ -1,0 +1,16 @@
+pkgbase = sqlcipher
+	pkgdesc = SQLite extension that provides transparent 256-bit AES encryption of database files
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://www.zetetic.net/sqlcipher/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = openssl
+	makedepends = sqlite3
+	makedepends = git
+	source = https://github.com/sqlcipher/sqlcipher/archive/v3.3.0.tar.gz
+	sha512sums = 9f24fcd25811aabe36f5e27cdfc117a02ad3578a95691e9b3b7f41ee47ee0c176243c4f35a8415a17a3828d4534aae58a1097b75a950937706b10a79f2c92c81
+
+pkgname = sqlcipher
+
