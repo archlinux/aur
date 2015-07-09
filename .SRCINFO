@@ -1,0 +1,22 @@
+pkgbase = chicken-xlib
+	pkgdesc = Chicken Scheme Egg: Xlib bindings
+	pkgver = 1.2
+	pkgrel = 4
+	url = http://chicken.wiki.br/eggref/4/xlib
+	install = chicken.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = chicken>=4.5.0
+	depends = chicken-matchable
+	depends = libx11
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-xlib-1.2.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=xlib&version=1.2
+	source = chicken-xlib-1.2.html::http://wiki.call-cc.org/eggref/4/xlib.html
+	md5sums = 951268d1fa79c41046260f1a0f75aa1e
+	md5sums = 687f763efb2880565ab2eb8a4f9914aa
+
+pkgname = chicken-xlib
+
