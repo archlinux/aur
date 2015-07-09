@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 240298 2015-06-03 10:23:18Z fyan $
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
 
 pkgname="qt5-plugin-sql-oci"
