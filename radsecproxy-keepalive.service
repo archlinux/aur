@@ -1,0 +1,18 @@
+[Unit]
+Description=generic RADIUS proxy
+After=network.target
+
+[Service]
+Type=forking
+Restart=always
+Environment=LD_PRELOAD=/usr/lib/libkeepalive.so
+ExecStartPre=/usr/bin/radsecproxy -p
+ExecStart=/usr/bin/radsecproxy
+ProtectSystem=full
+ProtectHome=on
+PrivateDevices=on
+NoNewPrivileges=on
+
+
+[Install]
+WantedBy=multi-user.target
