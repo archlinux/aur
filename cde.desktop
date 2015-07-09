@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CDE
+Comment=Use this session to boot into the Common Desktop Environment
+Exec=/usr/dt/bin/startxsession.sh
+Icon=
+Type=Application
+

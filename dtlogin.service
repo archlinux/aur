@@ -1,0 +1,11 @@
+[Unit]
+Description=CDE Login Manager
+Requires=rpcbind.service
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/dt/bin/dtlogin
+
+[Install]
+Alias=display-manager.service
+
