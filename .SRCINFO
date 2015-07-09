@@ -1,0 +1,13 @@
+pkgbase = apache-docs
+	pkgdesc = Set of HTML documentation for Apache HTTP Server
+	pkgver = 2.4.12
+	pkgrel = 1
+	url = https://httpd.apache.org/docs/
+	arch = any
+	license = APACHE
+	options = docs
+	source = http://www.apache.org/dist/httpd/docs/httpd-docs-2.4.12.en.zip
+	sha256sums = 2d5c8500b717cc6c75039479172023c0cf59ce09a2144bb88ec62a604483c67e
+
+pkgname = apache-docs
+
