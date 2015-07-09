@@ -1,0 +1,396 @@
+diff -U3 -r bin/Makefile.am bin/Makefile.am
+--- bin/Makefile.am	2012-12-30 16:24:27.000000000 +0100
++++ bin/Makefile.am	2013-05-02 21:22:41.013679388 +0200
+@@ -20,7 +20,7 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm $(xpm_LIBS) $(Xcursor_LIBS) \
+ 	$(X_PRE_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS) $(Xrender_LIBS) \
+ 	$(Xcursor_LIBS) $(png_LIBS) $(rsvg_LIBS)
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS) \
+ 	$(rsvg_CFLAGS)
+ 
+ configdir = @FVWM_DATADIR@
+diff -U3 -r configure.ac configure.ac
+--- configure.ac	2013-05-02 04:10:21.000000000 +0200
++++ configure.ac	2013-05-02 21:22:40.997012415 +0200
+@@ -1,7 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+ dnl
+ AC_PREREQ(2.60)
+-AC_INIT(fvwm/fvwm.c)
++AC_INIT(fvwm, 2.6.6)
+ 
+ dnl should be "yes" only within the released distribution
+ ISRELEASED=no
+@@ -68,8 +68,9 @@
+ AC_SUBST(FVWMWORKERSLISTLONG)
+ AC_SUBST(MANPAGE_PREAMBLE)
+ 
+-AM_INIT_AUTOMAKE(fvwm, ${version})
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_SRCDIR(fvwm/fvwm.c)
++AM_INIT_AUTOMAKE
++AC_CONFIG_HEADER(config.h)
+ 
+ # check for programs needed to build html docs
+ AC_CHECK_PROG(SED, sed, sed, "")
+diff -U3 -r doc/commands/Makefile.am doc/commands/Makefile.am
+--- doc/commands/Makefile.am	2008-02-26 15:35:08.000000000 +0100
++++ doc/commands/Makefile.am	2013-05-02 21:22:41.133681260 +0200
+@@ -17,7 +17,7 @@
+ distclean-local: clean
+ 
+ # All HTML output is generated from XML files.
+-%.html : $(srcdir)/%.xml $(srcdir)/../header.html $(srcdir)/../style.css
++*.html :$(srcdir)/%.xml $(srcdir)/../header.html $(srcdir)/../style.css
+ 	$(XSLTPROC) --path "$(top_builddir)/doc" --xinclude \
+ 		--stringparam profile.attribute output \
+ 		--stringparam profile.value html \
+diff -U3 -r fvwm/Makefile.am fvwm/Makefile.am
+--- fvwm/Makefile.am	2011-12-26 01:54:20.000000000 +0100
++++ fvwm/Makefile.am	2013-05-02 21:22:41.020346121 +0200
+@@ -38,7 +38,7 @@
+ 	$(X_EXTRA_LIBS) -lm $(iconv_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS) \
+ 	$(Bidi_LIBS) $(png_LIBS) $(rsvg_LIBS) $(intl_LIBS)
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	-I$(top_srcdir) $(stroke_CFLAGS) $(Xft_CFLAGS) \
+ 	$(xpm_CFLAGS) $(X_CFLAGS) $(iconv_CFLAGS) $(Xrender_CFLAGS) \
+ 	$(Bidi_CFLAGS) $(png_CFLAGS) $(rsvg_CFLAGS) $(intl_CFLAGS)
+diff -U3 -r libs/Makefile.am libs/Makefile.am
+--- libs/Makefile.am	2009-07-08 21:17:51.000000000 +0200
++++ libs/Makefile.am	2013-05-02 21:22:41.020346121 +0200
+@@ -30,6 +30,6 @@
+ 
+ libfvwm_a_LIBADD = @LIBOBJS@ @ALLOCA@
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS) \
+ 	$(iconv_CFLAGS) $(Xrender_CFLAGS) $(Bidi_CFLAGS) $(png_CFLAGS) \
+ 	$(rsvg_CFLAGS) $(intl_CFLAGS)
+diff -U3 -r modules/FvwmAnimate/Makefile.am modules/FvwmAnimate/Makefile.am
+--- modules/FvwmAnimate/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmAnimate/Makefile.am	2013-05-02 21:22:41.053680007 +0200
+@@ -15,5 +15,5 @@
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS) -lm $(png_LIBS) \
+ 	$(rsvg_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(rplay_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(rplay_CFLAGS) $(X_CFLAGS) \
+ 	$(png_CFLAGS) $(Xrender_CFLAGS)
+diff -U3 -r modules/FvwmAuto/Makefile.am modules/FvwmAuto/Makefile.am
+--- modules/FvwmAuto/Makefile.am	2002-04-05 11:24:30.000000000 +0200
++++ modules/FvwmAuto/Makefile.am	2013-05-02 21:22:41.053680007 +0200
+@@ -11,5 +11,5 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm  \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmBacker/Makefile.am modules/FvwmBacker/Makefile.am
+--- modules/FvwmBacker/Makefile.am	2007-01-28 16:29:26.000000000 +0100
++++ modules/FvwmBacker/Makefile.am	2013-05-02 21:22:41.057013390 +0200
+@@ -17,5 +17,5 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS) \
+ 	$(Xrender_LIBS) $(rsvg_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS) $(Xrender_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS) $(Xrender_CFLAGS)
+ 
+diff -U3 -r modules/FvwmBanner/Makefile.am modules/FvwmBanner/Makefile.am
+--- modules/FvwmBanner/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmBanner/Makefile.am	2013-05-02 21:22:41.057013390 +0200
+@@ -17,6 +17,6 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 $(X_EXTRA_LIBS) \
+ 	$(png_LIBS) $(rsvg_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS) \
+ 	$(Xrender_CFLAGS)
+ 
+diff -U3 -r modules/FvwmButtons/Makefile.am modules/FvwmButtons/Makefile.am
+--- modules/FvwmButtons/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmButtons/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -24,6 +24,6 @@
+ 	$(iconv_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS) $(Bidi_LIBS) \
+ 	$(png_LIBS) $(rsvg_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS) \
+ 	$(iconv_CFLAGS) $(Xrender_CFLAGS) $(fribidi_CFLAGS) $(png_CFLAGS)
+ 
+diff -U3 -r modules/FvwmCommand/Makefile.am modules/FvwmCommand/Makefile.am
+--- modules/FvwmCommand/Makefile.am	2007-08-07 22:17:43.000000000 +0200
++++ modules/FvwmCommand/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -38,5 +38,5 @@
+ # FIXME:
+ # Despite not using X functions explicitly, the code includes
+ # fvwmlib.h, which *does* include X headers and xpm.h!
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmConsole/Makefile.am modules/FvwmConsole/Makefile.am
+--- modules/FvwmConsole/Makefile.am	1999-09-04 18:53:05.000000000 +0200
++++ modules/FvwmConsole/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -21,4 +21,4 @@
+ # FIXME:
+ # Despite not using X functions explicitly, the code includes
+ # fvwmlib.h, which *does* include X headers and xpm.h!
+-INCLUDES = -I$(top_srcdir) $(readline_CFLAGS) $(xpm_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(readline_CFLAGS) $(xpm_CFLAGS) $(X_CFLAGS)
+diff -U3 -r modules/FvwmCpp/Makefile.am modules/FvwmCpp/Makefile.am
+--- modules/FvwmCpp/Makefile.am	2002-04-05 11:24:31.000000000 +0200
++++ modules/FvwmCpp/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -14,7 +14,7 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm -lm  \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS)
+ AM_CFLAGS = -DFVWM_MODULEDIR=\"$(FVWM_MODULEDIR)\"	\
+ 	-DFVWM_DATADIR=\"$(FVWM_DATADIR)\"		\
+ 	-DFVWM_CPP='"$(FVWM_CPP)"'
+diff -U3 -r modules/FvwmDebug/Makefile.am modules/FvwmDebug/Makefile.am
+--- modules/FvwmDebug/Makefile.am	2009-03-22 14:14:56.000000000 +0100
++++ modules/FvwmDebug/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -18,7 +18,7 @@
+ # FIXME:
+ # Despite not using X functions explicitly, the code includes
+ # fvwmlib.h, which *does* include X headers and xpm.h!
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS)
+ 
+ _FvwmDebug.1: FvwmDebug
+ 	pod2man --center "Fvwm Modules" --release "@VERSION@@VERSIONINFO@" \
+diff -U3 -r modules/FvwmDragWell/Makefile.am modules/FvwmDragWell/Makefile.am
+--- modules/FvwmDragWell/Makefile.am	2007-01-28 16:29:26.000000000 +0100
++++ modules/FvwmDragWell/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -16,5 +16,5 @@
+ 	$(X_LIBS) $(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 $(X_EXTRA_LIBS) \
+ 	-lm $(Xrender_LIBS) $(rsvg_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS) $(Xrender_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS) $(Xrender_CFLAGS)
+ 
+diff -U3 -r modules/FvwmEvent/Makefile.am modules/FvwmEvent/Makefile.am
+--- modules/FvwmEvent/Makefile.am	2002-04-05 11:24:31.000000000 +0200
++++ modules/FvwmEvent/Makefile.am	2013-05-02 21:22:41.060346799 +0200
+@@ -20,4 +20,4 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm $(rplay_LIBS) \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(rplay_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(rplay_CFLAGS) $(X_CFLAGS)
+diff -U3 -r modules/FvwmForm/Makefile.am modules/FvwmForm/Makefile.am
+--- modules/FvwmForm/Makefile.am	2010-12-28 05:04:37.000000000 +0100
++++ modules/FvwmForm/Makefile.am	2013-05-02 21:22:41.063680161 +0200
+@@ -49,7 +49,7 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 $(X_EXTRA_LIBS) \
+ 	-lm $(Xrender_LIBS) $(rsvg_LIBS) $(iconv_LIBS) $(Bidi_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) $(iconv_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) $(iconv_CFLAGS) \
+ 	$(Bidi_CFLAGS) $(Xrender_CFLAGS)
+ 
+ FvwmForm-Setup: FvwmForm-Setup.in Makefile
+diff -U3 -r modules/FvwmGtk/Makefile.am modules/FvwmGtk/Makefile.am
+--- modules/FvwmGtk/Makefile.am	2004-07-09 17:46:44.000000000 +0200
++++ modules/FvwmGtk/Makefile.am	2013-05-02 21:22:41.067013527 +0200
+@@ -34,7 +34,7 @@
+ 	$(GTK_LIBS) $(GDK_IMLIB_LIBS) \
+ 	$(GNOME_LIBDIR) $(GNOMEUI_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) \
+ 	$(GTK_CFLAGS) $(GDK_IMLIB_CFLAGS) $(GNOME_INCLUDEDIR)
+ 
+ clean-local:
+diff -U3 -r modules/FvwmIconBox/Makefile.am modules/FvwmIconBox/Makefile.am
+--- modules/FvwmIconBox/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmIconBox/Makefile.am	2013-05-02 21:22:41.067013527 +0200
+@@ -21,6 +21,6 @@
+ 	$(iconv_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS) $(Bidi_LIBS) \
+ 	$(png_LIBS) $(rsvg_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(xpm_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(xpm_CFLAGS) $(X_CFLAGS) \
+ 	$(iconv_CFLAGS) $(Xrender_CFLAGS) $(Bidi_CFLAGS) $(png_CFLAGS)
+ 
+diff -U3 -r modules/FvwmIconMan/Makefile.am modules/FvwmIconMan/Makefile.am
+--- modules/FvwmIconMan/Makefile.am	2007-01-28 16:29:26.000000000 +0100
++++ modules/FvwmIconMan/Makefile.am	2013-05-02 21:22:41.067013527 +0200
+@@ -23,6 +23,6 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 $(X_EXTRA_LIBS) \
+ 	$(iconv_LIBS) $(Xrender_LIBS) $(rsvg_LIBS) -lm $(Bidi_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir)  $(Xft_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir)  $(Xft_CFLAGS) $(X_CFLAGS) \
+ 	$(iconv_CFLAGS) $(Xrender_CFLAGS) $(Bidi_CFLAGS)
+ 
+diff -U3 -r modules/FvwmIdent/Makefile.am modules/FvwmIdent/Makefile.am
+--- modules/FvwmIdent/Makefile.am	2007-01-28 16:29:26.000000000 +0100
++++ modules/FvwmIdent/Makefile.am	2013-05-02 21:22:41.067013527 +0200
+@@ -20,6 +20,6 @@
+ 	$(png_LIBS) $(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 -lm \
+ 	$(X_EXTRA_LIBS) $(Xrender_LIBS) $(rsvg_LIBS) $(iconv_LIBS) $(Bidi_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(xpm_CFLAGS) $(png_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(xpm_CFLAGS) $(png_CFLAGS) \
+ 	$(X_CFLAGS) $(Xrender_CFLAGS) $(iconv_CFLAGS) $(Bidi_CFLAGS)
+ 
+diff -U3 -r modules/FvwmM4/Makefile.am modules/FvwmM4/Makefile.am
+--- modules/FvwmM4/Makefile.am	2002-04-05 11:24:32.000000000 +0200
++++ modules/FvwmM4/Makefile.am	2013-05-02 21:22:41.067013527 +0200
+@@ -14,6 +14,6 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm -lm  \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS)
+ AM_CFLAGS = -DFVWM_MODULEDIR=\"$(FVWM_MODULEDIR)\" \
+ 	-DFVWM_DATADIR=\"$(FVWM_DATADIR)\"
+diff -U3 -r modules/FvwmPager/Makefile.am modules/FvwmPager/Makefile.am
+--- modules/FvwmPager/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmPager/Makefile.am	2013-05-02 21:22:41.067013527 +0200
+@@ -21,6 +21,6 @@
+ 	$(X_EXTRA_LIBS) -lm $(Xrender_LIBS) $(Xcursor_LIBS) $(iconv_LIBS) \
+ 	$(Bidi_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(png_CFLAGS) $(Xft_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(png_CFLAGS) $(Xft_CFLAGS) \
+ 	$(X_CFLAGS) $(Xrender_CFLAGS) $(iconv_CFLAGS) $(Bidi_CFLAGS)
+ 
+diff -U3 -r modules/FvwmProxy/Makefile.am modules/FvwmProxy/Makefile.am
+--- modules/FvwmProxy/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmProxy/Makefile.am	2013-05-02 21:22:41.070346947 +0200
+@@ -21,5 +21,5 @@
+ 	$(X_EXTRA_LIBS) -lm $(Xrender_LIBS) $(Xcursor_LIBS) $(iconv_LIBS) \
+ 	$(Bidi_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(png_CFLAGS) $(Xft_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(png_CFLAGS) $(Xft_CFLAGS) \
+ 	$(X_CFLAGS) $(Xrender_CFLAGS) $(iconv_CFLAGS) $(Bidi_CFLAGS)
+diff -U3 -r modules/FvwmRearrange/Makefile.am modules/FvwmRearrange/Makefile.am
+--- modules/FvwmRearrange/Makefile.am	2002-10-13 17:50:01.000000000 +0200
++++ modules/FvwmRearrange/Makefile.am	2013-05-02 21:22:41.070346947 +0200
+@@ -30,5 +30,5 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lm -lfvwm  \
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmSave/Makefile.am modules/FvwmSave/Makefile.am
+--- modules/FvwmSave/Makefile.am	2002-05-29 21:11:18.000000000 +0200
++++ modules/FvwmSave/Makefile.am	2013-05-02 21:22:41.073680325 +0200
+@@ -11,5 +11,5 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm  \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmSaveDesk/Makefile.am modules/FvwmSaveDesk/Makefile.am
+--- modules/FvwmSaveDesk/Makefile.am	2002-05-29 21:11:18.000000000 +0200
++++ modules/FvwmSaveDesk/Makefile.am	2013-05-02 21:22:41.070346947 +0200
+@@ -11,5 +11,5 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm  \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmScript/Makefile.am modules/FvwmScript/Makefile.am
+--- modules/FvwmScript/Makefile.am	2009-02-22 22:24:48.000000000 +0100
++++ modules/FvwmScript/Makefile.am	2013-05-02 21:22:41.073680325 +0200
+@@ -21,7 +21,7 @@
+ 	$(X_EXTRA_LIBS) -lm $(Xrender_LIBS) $(Xcursor_LIBS) $(iconv_LIBS) \
+ 	$(Bidi_LIBS) $(png_LIBS) $(rsvg_LIBS) $(intl_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS) \
+ 	$(Xrender_CFLAGS) $(iconv_CFLAGS) $(Bidi_CFLAGS) $(png_CFLAGS)
+ 
+ # Need this to get datadir into FvwmScript.c:
+diff -U3 -r modules/FvwmScript/Widgets/Makefile.am modules/FvwmScript/Widgets/Makefile.am
+--- modules/FvwmScript/Widgets/Makefile.am	2002-05-29 21:11:19.000000000 +0200
++++ modules/FvwmScript/Widgets/Makefile.am	2013-05-02 21:22:41.117014361 +0200
+@@ -7,5 +7,5 @@
+ 	RadioButton.c Rectangle.c Swallow.c TextField.c Tools.c \
+ 	Tools.h VDipstick.c VScrollBar.c Widget.c
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(Xft_CFLAGS) $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmScroll/Makefile.am modules/FvwmScroll/Makefile.am
+--- modules/FvwmScroll/Makefile.am	2007-01-28 16:29:26.000000000 +0100
++++ modules/FvwmScroll/Makefile.am	2013-05-02 21:22:41.073680325 +0200
+@@ -17,4 +17,4 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS) \
+ 	$(Xrender_LIBS) $(rsvg_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS) $(Xrender_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS) $(Xrender_CFLAGS)
+diff -U3 -r modules/FvwmTaskBar/Makefile.am modules/FvwmTaskBar/Makefile.am
+--- modules/FvwmTaskBar/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmTaskBar/Makefile.am	2013-05-02 21:22:41.077013708 +0200
+@@ -22,7 +22,7 @@
+ 	$(X_EXTRA_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS) $(iconv_LIBS) \
+ 	$(Bidi_LIBS) $(intl_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(png_CFLAGS) $(Xft_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(png_CFLAGS) $(Xft_CFLAGS) \
+ 	$(X_CFLAGS) $(Xrender_CFLAGS) $(iconv_CFLAGS) $(Bidi_CFLAGS) \
+ 	$(intl_CFLAGS)
+ 
+diff -U3 -r modules/FvwmTheme/Makefile.am modules/FvwmTheme/Makefile.am
+--- modules/FvwmTheme/Makefile.am	2002-04-22 10:06:17.000000000 +0200
++++ modules/FvwmTheme/Makefile.am	2013-05-02 21:22:41.077013708 +0200
+@@ -11,5 +11,5 @@
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm  \
+ 	$(X_PRE_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir)  $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir)  $(X_CFLAGS)
+ 
+diff -U3 -r modules/FvwmWharf/Makefile.am modules/FvwmWharf/Makefile.am
+--- modules/FvwmWharf/Makefile.am	2007-07-15 14:39:39.000000000 +0200
++++ modules/FvwmWharf/Makefile.am	2013-05-02 21:22:41.077013708 +0200
+@@ -17,5 +17,5 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS) \
+ 	$(rsvg_LIBS) $(Xrender_LIBS) $(Xcursor_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS) \
+ 	$(Xrender_CFLAGS)
+diff -U3 -r modules/FvwmWinList/Makefile.am modules/FvwmWinList/Makefile.am
+--- modules/FvwmWinList/Makefile.am	2007-01-28 16:29:26.000000000 +0100
++++ modules/FvwmWinList/Makefile.am	2013-05-02 21:22:41.080347101 +0200
+@@ -22,6 +22,6 @@
+ 	$(X_PRE_LIBS) $(Xinerama_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS) \
+ 	$(Xrender_LIBS) $(rsvg_LIBS) $(iconv_LIBS) $(Bidi_LIBS)
+ 
+-INCLUDES = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) $(Xrender_CFLAGS) \
++AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) $(Xrender_CFLAGS) \
+ 	$(iconv_CFLAGS) $(Bidi_CFLAGS)
+ 
+diff -U3 -r tests/hints/Makefile.am tests/hints/Makefile.am
+--- tests/hints/Makefile.am	2003-02-11 20:29:17.000000000 +0100
++++ tests/hints/Makefile.am	2013-05-02 21:22:41.080347101 +0200
+@@ -5,4 +5,4 @@
+ 
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm \
+ 	$(X_PRE_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS)
+-INCLUDES = -I$(top_srcdir) $(X_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(X_CFLAGS)
+diff -U3 -r utils/Makefile.am utils/Makefile.am
+--- utils/Makefile.am	2006-02-11 09:58:26.000000000 +0100
++++ utils/Makefile.am	2013-05-02 21:22:41.030346290 +0200
+@@ -8,4 +8,4 @@
+ 
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm $(xpm_LIBS) \
+ 	$(X_PRE_LIBS) -lXext -lX11 -lm $(X_EXTRA_LIBS) $(png_LIBS)
+-INCLUDES = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(xpm_CFLAGS) $(X_CFLAGS) $(png_CFLAGS)
