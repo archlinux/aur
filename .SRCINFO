@@ -1,12 +1,13 @@
 pkgbase = alock-git
 	pkgdesc = Simple transparent screen-lock
 	pkgver = r91.09d2ad2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.google.com/p/alock/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = xmlto
 	depends = libx11
 	depends = pam
 	optdepends = libxcursor
