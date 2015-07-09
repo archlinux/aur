@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-pomodoro-git
 	pkgdesc = A time management utility for GNOME based on the pomodoro technique
-	pkgver = r674.eda26b4
+	pkgver = r676.1fd4e2e
 	pkgrel = 1
 	url = https://github.com/codito/gnome-shell-pomodoro/
 	install = gschemas.install
