@@ -1,0 +1,19 @@
+pkgbase = ruby-paint
+	pkgdesc = Terminal painter!
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/janlelis/paint
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-rspec
+	depends = ruby-rspec-core
+	depends = ruby-rainbow
+	depends = ruby-term-ansicolor
+	noextract = paint-0.8.6.gem
+	source = http://gems.rubyforge.org/gems/paint-0.8.6.gem
+	sha256sums = 8444e3656254df5361daa627d9b18aec0edeedfcc135e27e5e92c43f739652d8
+
+pkgname = ruby-paint
+
