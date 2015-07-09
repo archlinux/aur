@@ -1,4 +1,5 @@
-# Maintainer: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: xantares <xantares09@hotmail.com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
@@ -6,7 +7,8 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.3.7.2
+pkgver=0.3.8.0
+_pkgver=0.3.8-0
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -18,34 +20,32 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
 _gitname=desktop.git
-_nw_ver=0.9.2
-md5sums=('5b3ddb62787e9ed381105b56626974bb'
-         'SKIP'
-         'fc25eb312257b8c7e04e8e59c973566e'
-         'efe872f41ed74a706308b4015e4fd82f'
-         '9608f35f4cc083a0c36b0f4ef275ab10')
+_nw_ver=0.12.1
+source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
+        "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
+        "https://get.popcorntime.io/nw/v${_nw_ver}/${_nw_file}"
+        "popcorntime.desktop")
+sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
+            'SKIP'
+            '1366ea08e022ae78d5fc63bcfa9ce50797da0573302d867c6082bc39aaf576ab'
+            'ac2b7183d3ea62ae821c7d1f4b243b0ca41c7838efa16babe29cad0c4958ee25')
 
 _platform=linux64
 _nw_platform=linux-x64
 if [ "$CARCH" = 'i686' ]; then
   _platform=linux32
   _nw_platform=linux-ia32
-  md5sums[2]='dca779c67be155aa53458a146cda41ee'
+  sha256sums[2]='a676024eff0900067d9c78c13b7d09ee5f87b8e0efed9517f8e163696e8e80cb'
 fi
 _nw_file=node-webkit-v${_nw_ver}-${_nw_platform}.tar.gz
 
-source=("desktop-v${pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${pkgver}"
-        "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
-        "http://get.popcorntime.io/nw/v${_nw_ver}/${_nw_file}"
-        "popcorntime.install"
-        "popcorntime.desktop")
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  
+
   # https://git.popcorntime.io/popcorntime/desktop/commit/6f1864cb00b0af4da062391de04206f9495c88b0
   sed -i "s|git+https://git.popcorntime.io/mirrors/peerflix.git|https://git.popcorntime.io/mirrors/peerflix/repository/archive.tar.gz|g" package.json
-  
+
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
 
   mkdir -p "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/"

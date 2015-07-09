@@ -1,6 +1,6 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
-	pkgver = 0.3.7.2
+	pkgver = 0.3.8.0
 	pkgrel = 1
 	url = http://popcorntime.io/
 	install = popcorntime.install
@@ -18,16 +18,14 @@ pkgbase = popcorntime
 	depends = libxtst
 	optdepends = net-tools: vpn.ht client
 	options = !strip
-	source = desktop-v0.3.7.2.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v0.3.7.2
+	source = desktop-v0.3.8-0.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v0.3.8-0
 	source = desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master
-	source = http://get.popcorntime.io/nw/v0.9.2/node-webkit-v0.9.2-linux-x64.tar.gz
-	source = popcorntime.install
+	source = https://get.popcorntime.io/nw/v0.12.1/
 	source = popcorntime.desktop
-	md5sums = 5b3ddb62787e9ed381105b56626974bb
-	md5sums = SKIP
-	md5sums = fc25eb312257b8c7e04e8e59c973566e
-	md5sums = efe872f41ed74a706308b4015e4fd82f
-	md5sums = 9608f35f4cc083a0c36b0f4ef275ab10
+	sha256sums = 58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c
+	sha256sums = SKIP
+	sha256sums = 1366ea08e022ae78d5fc63bcfa9ce50797da0573302d867c6082bc39aaf576ab
+	sha256sums = ac2b7183d3ea62ae821c7d1f4b243b0ca41c7838efa16babe29cad0c4958ee25
 
 pkgname = popcorntime
 
