@@ -1,0 +1,27 @@
+pkgbase = obs-studio-git
+	pkgdesc = Free and open source software for video recording and live streaming.
+	pkgver = 0.11.0.r1.g91bfb53
+	pkgrel = 1
+	url = https://github.com/jp9000/obs-studio
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	depends = ffmpeg
+	depends = jansson
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = qt5-x11extras
+	optdepends = libfdk-aac: FDK AAC codec support
+	optdepends = libxcomposite: XComposite capture support
+	provides = obs-studio
+	conflicts = obs-studio
+	source = obs-studio::git://github.com/jp9000/obs-studio.git#branch=master
+	sha256sums = SKIP
+
+pkgname = obs-studio-git
+
