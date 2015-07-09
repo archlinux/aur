@@ -1,5 +1,5 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 2b1ba90..791f3e3 100755
+index cb87bf1..201c069 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
 @@ -132,7 +132,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
@@ -11,7 +11,7 @@ index 2b1ba90..791f3e3 100755
          
          aboutinfo.SetLicense( license )
          
-@@ -1907,7 +1907,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+@@ -1908,7 +1908,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
                  
              elif command == '8chan_board': webbrowser.open( 'http://8ch.net/hydrus/index.html' )
              elif command == 'file_integrity': self._CheckFileIntegrity()
@@ -21,7 +21,7 @@ index 2b1ba90..791f3e3 100755
              elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
              elif command == 'import_files': self._ImportFiles()
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 29aeb23..19ed8e3 100755
+index 7ffd518..520e94c 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
 @@ -621,7 +621,7 @@ class DialogFirstStart( Dialog ):
@@ -34,7 +34,7 @@ index 29aeb23..19ed8e3 100755
          message3 = 'When you close this dialog, the client will start its local http server. You will probably get a firewall warning.'
          message4 = 'You can block it if you like, or you can allow it. It doesn\'t phone home, or expose your files to your network; it just provides another way to locally export your files.'
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index a4100c1..a070e15 100755
+index ef81009..18d7831 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,9 +3,9 @@ import sys

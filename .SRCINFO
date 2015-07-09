@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 163.a
+	pkgver = 164
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
@@ -25,7 +25,7 @@ pkgbase = hydrus
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=1e162828f4b8c6d6790b7ab9b0fb2438ddbd3a29
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=c985f70a4ff49d0da8c5d73dc91d57356f9380db
 	source = paths-in-opt.patch
 	source = running-the-server.patch
 	source = cython-workarounds.patch
@@ -33,9 +33,9 @@ pkgbase = hydrus
 	source = hydrus-server
 	source = hydrus.desktop
 	sha256sums = SKIP
-	sha256sums = f0ce34feda340f307ec4ec149547a69d0bdecafc61f6efe322c42ef0f98a3a29
+	sha256sums = faf1bcdab469bd7bfe6616897fd355642da55c3e2b269a20d477a23d5583f75b
 	sha256sums = b4cd358402ac8f225fe77a60aeb89dde88ba8ad050c5b04f11c1ffd44242e9d8
-	sha256sums = d75842ea2f622e98cfe56d6d8785b2285399fa59bbde330b876c8c61a91cc4f6
+	sha256sums = fa39e8dda692e1f098170e4869b23c78cb8adcd1bc3c2c2b82616faa985a0412
 	sha256sums = b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678
 	sha256sums = ac7254e3cdb359ebae302655b72b9f74b85d9e817c326fa28173791b3fb4f114
 	sha256sums = 9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2

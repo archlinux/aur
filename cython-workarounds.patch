@@ -1,8 +1,8 @@
 diff --git a/include/ClientDB.py b/include/ClientDB.py
-index 5b1b712..2fa1732 100755
+index 0d1b6f8..51e06e4 100755
 --- a/include/ClientDB.py
 +++ b/include/ClientDB.py
-@@ -2491,7 +2491,7 @@ class DB( HydrusDB.HydrusDB ):
+@@ -2563,7 +2563,7 @@ class DB( HydrusDB.HydrusDB ):
                  counts_iterable = self._c.execute( nonzero_counts_query )
                  
              
@@ -11,7 +11,7 @@ index 5b1b712..2fa1732 100755
              
          
          #
-@@ -6100,4 +6100,4 @@ class DB( HydrusDB.HydrusDB ):
+@@ -6248,4 +6248,4 @@ class DB( HydrusDB.HydrusDB ):
          shutil.copytree( path + os.path.sep + 'client_thumbnails', HC.CLIENT_THUMBNAILS_DIR )
          shutil.copytree( path + os.path.sep + 'client_updates', HC.CLIENT_UPDATES_DIR )
          
@@ -19,7 +19,7 @@ index 5b1b712..2fa1732 100755
 \ No newline at end of file
 +    
 diff --git a/include/ClientGUICanvas.py b/include/ClientGUICanvas.py
-index 5882175..9d623ac 100755
+index 2fe9e3d..74e388c 100755
 --- a/include/ClientGUICanvas.py
 +++ b/include/ClientGUICanvas.py
 @@ -48,7 +48,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
@@ -33,7 +33,7 @@ index 5882175..9d623ac 100755
      ( media_width, media_height ) = media.GetResolution()
      
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 19ed8e3..398fc7d 100755
+index 520e94c..09f3971 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
 @@ -243,7 +243,8 @@ class Dialog( wx.Dialog ):
@@ -47,7 +47,7 @@ index 19ed8e3..398fc7d 100755
          wx.Dialog.SetInitialSize( self, ( width, height ) )
          
 diff --git a/include/ClientGUIManagement.py b/include/ClientGUIManagement.py
-index 71b5491..0b4cf7c 100755
+index abfd02f..22e7a15 100755
 --- a/include/ClientGUIManagement.py
 +++ b/include/ClientGUIManagement.py
 @@ -63,26 +63,6 @@ def CreateManagementController( management_type, file_service_key = None ):
@@ -1377,7 +1377,7 @@ index 98576c6..0000000
 -    
 -HydrusSerialisable.SERIALISABLE_TYPES_TO_OBJECT_TYPES[ HydrusSerialisable.SERIALISABLE_TYPE_SEED_QUEUE ] = SeedQueue
 diff --git a/include/HydrusData.py b/include/HydrusData.py
-index 60345e8..2a9d747 100644
+index aa4a331..695e1e2 100644
 --- a/include/HydrusData.py
 +++ b/include/HydrusData.py
 @@ -999,15 +999,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
