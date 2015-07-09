@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Firefox32 - Safe Mode
+Exec=bin32-firefox -safe-mode %u
+Icon=firefox32
+Type=Application
+Terminal=false
+MultipleArgs=false
+GenericName=Web Browser - Safe Mode
+StartupNotify=false
+Categories=Application;Network;
+
