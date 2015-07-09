@@ -1,0 +1,6 @@
+src
+srcdir
+pkg
+pkgdir
+*.pkg.tar.*
+wl_apsta-3.130.20.0.o
