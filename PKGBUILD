@@ -6,7 +6,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.3.1
-pkgrel=8
+pkgrel=9
 arch=('any')
 url='http://sphinx.pocoo.org/'
 license=('BSD')
@@ -37,6 +37,11 @@ md5sums=('8786a194acf9673464c5455b11fd4332'
          '103a559a4e4a17d4dd9c3e2342486197')
 
 prepare() {
+  # https://github.com/sphinx-doc/sphinx/pull/1892
+  pushd Sphinx-$pkgver
+   patch -p1 -i "$srcdir"/4c2f693cbf7ec40448e7237383880d701ede6c88.patch
+  popd
+
   # souce duplication is required because makefile modify source code
   # setyp.py --build tricks don't works well
   cp -a Sphinx-$pkgver Sphinx-${pkgver}2
@@ -46,10 +51,6 @@ prepare() {
   # change sphinx-binaries name in source code
   find Sphinx-${pkgver}2 -type f -name '*.py' -exec \
     sed -ri 's,(sphinx-(:?build|apidoc|autogen|quickstart)),\12,' {} \;
-
-  # https://github.com/sphinx-doc/sphinx/pull/1892
-  cd Sphinx-$pkgver
-  patch -p1 -i "$srcdir"/4c2f693cbf7ec40448e7237383880d701ede6c88.patch
 }
 
 build() {
