@@ -1,9 +1,10 @@
 [Desktop Entry]
-Name=AtomZombieSmasher
-GenericName=AtomZombieSmasher
-Comment=RTS, evacuating civilians out of zombie-contaminated cities
-Exec=atomzombiesmasher
-Icon=/opt/atomzombiesmasher/game/atomzombiesmasher.png
-Terminal=false
+Value=1.0
 Type=Application
 Categories=Game;
+Name=Atom Zombie Smasher
+Comment=Blendo Games
+GenericName=Real-time Tactics Game
+Icon=atomzombiesmasher
+Exec=atomzombiesmasher
+Terminal=false

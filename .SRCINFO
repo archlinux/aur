@@ -1,6 +1,6 @@
 pkgbase = atomzombiesmasher-hib
-	pkgdesc = RTS, evacuating civilians out of zombie-contaminated cities. (Commercial)
-	pkgver = 1.953
+	pkgdesc = A 2D tactics/strategy game where you evacuate civilians from zombie-infested cities. (Humble Bundle/Store version)
+	pkgver = 1.953+h20130409
 	pkgrel = 1
 	url = http://blendogames.com/atomzombiesmasher/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = atomzombiesmasher-hib
 	source = atomzombiesmasher.desktop
 	source = https://apps.ubuntu.com/site_media/icons/2013/12/atom-zombie-smashertCCn9V.png
 	md5sums = 6902c845a21e92c62f5b33b38715c797
-	md5sums = 73ed32320ac1dc645754a6520b4e4e8b
+	md5sums = b1f2e18834d1bec5785a889f642e2191
 	md5sums = 341ce551a8525be96d6c59c1bf9efd2a
 
 pkgname = atomzombiesmasher-hib
