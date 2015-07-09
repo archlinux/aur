@@ -1,0 +1,22 @@
+pkgbase = chicken-list-utils
+	pkgdesc = Chicken Scheme Egg: list-utils
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/list-utils
+	install = chicken.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-setup-helper
+	depends = chicken-check-errors
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-list-utils-1.1.1.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=list-utils&version=1.1.1
+	source = chicken-list-utils-1.1.1.html::http://wiki.call-cc.org/eggref/4/list-utils.html
+	md5sums = 02d6563f2cdcd26b94d4245356c9358e
+	md5sums = d4c0540020ed67295ec72890fbf2dabb
+
+pkgname = chicken-list-utils
+
