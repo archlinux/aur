@@ -26,6 +26,4 @@ package() {
 
   chmod +x arx-install-data
   ./arx-install-data --batch "$_gamepkg" "$pkgdir/usr/share/arx"
-
-  mkdir "$pkgdir/usr/share/games" && ln -s "/usr/share/arx/" "$pkgdir/usr/share/games/arx" 
 }
