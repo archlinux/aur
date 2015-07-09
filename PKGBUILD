@@ -14,7 +14,7 @@ depends=('sdl' 'libgl' 'openal' 'libvorbis')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
 source=('bittriprunner.desktop')
-md5sums=('bf61637b0bbd771f19bcec3b2c76438c')
+md5sums=('651aad252c4b42fea26f388642dce6ca')
 
 source_i686+=("hib://bit.trip.runner-linux-${_hibver}_i386-${_buildver}.tar.gz")
 md5sums_i686+=('900019b5994e1b8b2e08fcf07d9c1c08')
