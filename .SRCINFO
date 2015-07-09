@@ -1,0 +1,20 @@
+pkgbase = scanmem-git
+	pkgdesc = A utility used to locate the address of a variable in an executing process.
+	pkgver = v0.15.2
+	pkgrel = 1
+	url = https://github.com/coolwan/scanmem
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	depends = python
+	depends = pygtk
+	depends = polkit
+	depends = python-gobject
+	provides = scanmem
+	conflicts = scanmem
+	source = git+https://github.com/scanmem/scanmem.git
+	md5sums = SKIP
+
+pkgname = scanmem-git
+
