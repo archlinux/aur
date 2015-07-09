@@ -1,0 +1,13 @@
+
+post_install() {
+  if (! pacman -Qqs '^aquaria-data' >/dev/null); then
+    echo "Note:"
+    echo " | This package only provides the game engine. You will also need to"
+    echo " | install the proprietary game data, using one of these packages:"
+    echo " |   aquaria-data-hib  .. if you own the Humble Bundle version"
+  fi
+}
+
+post_upgrade() {
+  post_install "$@"
+}
