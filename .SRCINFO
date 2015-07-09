@@ -1,0 +1,22 @@
+pkgbase = pyfa
+	pkgdesc = EVE Online Fitting Assistant
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://github.com/DarkFenX/Pyfa
+	arch = any
+	license = GPL
+	depends = python2
+	depends = wxpython2.8
+	depends = python2-sqlalchemy
+	depends = python2-dateutil
+	optdepends = python2-matplotlib: for graph plotting
+	optdepends = python2-numpy: for graph plotting
+	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.13.1/pyfa-1.13.1-aegis-1.0-linux.zip
+	source = pyfa.desktop
+	source = pyfa-start.sh
+	md5sums = 9e192643e953e97f841f7465496578fb
+	md5sums = a6f1cef5a9fcc5dfd6c5ecdddf2c5e38
+	md5sums = 9937192cfce7f5e16e9cf26086f1899c
+
+pkgname = pyfa
+
