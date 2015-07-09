@@ -16,13 +16,13 @@ install="globus.install"
 
 build() {
   cd globus_toolkit-$pkgver
-  ./configure --prefix=/usr/globus
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
   cd globus_toolkit-$pkgver
-	make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim: ft=sh:ts=2:sw=2:et
