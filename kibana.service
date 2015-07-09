@@ -4,7 +4,8 @@ After=elasticsearch.service
 
 [Service]
 User=nobody
-ExecStart=/usr/share/webapps/kibana/bin/kibana --quiet
+Environment="CONFIG_PATH=/etc/elasticsearch/kibana/kibana.yml" "NODE_ENV=production"
+ExecStart=/usr/bin/node /usr/lib/kibana/bin/kibana.js --quiet
 
 [Install]
 WantedBy=multi-user.target

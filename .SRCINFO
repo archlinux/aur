@@ -1,6 +1,6 @@
 pkgbase = kibana
 	pkgdesc = browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node'
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://www.elasticsearch.org/overview/kibana/
 	install = kibana.install
@@ -9,11 +9,11 @@ pkgbase = kibana
 	license = apache
 	makedepends = git
 	depends = nodejs
-	backup = etc/webapps/kibana/kibana.yml
+	backup = etc/elasticsearch/kibana/kibana.yml
+	source = https://download.elasticsearch.org/kibana/kibana/kibana-4.1.1-linux-x64.tar.gz
 	source = kibana.service
-	source = https://download.elasticsearch.org/kibana/kibana/kibana-4.1.0-linux-x64.tar.gz
+	md5sums = 3a9bba5bb5e883851904fde9b79c291f
 	md5sums = SKIP
-	md5sums = 77b65888f0ab6b8fa403732b3bf9fbe5
 
 pkgname = kibana
 
