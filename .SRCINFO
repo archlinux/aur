@@ -1,0 +1,14 @@
+pkgbase = python2-enum
+	pkgdesc = Robust enumerated type support in Python.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/enum/
+	arch = any
+	license = GPL2
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/source/e/enum/enum-0.4.4.tar.gz
+	sha512sums = 67819dc2412f833b4d27171dd71d12a7b67a35c1e8401d03938621273b1c13b6ec6d561b2cddaaf2080d92abfed5ccaa460996a3e7f7058e0f90ae3a0dd0f552
+
+pkgname = python2-enum
+
