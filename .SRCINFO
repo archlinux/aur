@@ -1,6 +1,6 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
-	pkgver = 0.11.0.r1.g91bfb53
+	pkgver = 0.11.1.r0.g1efb849
 	pkgrel = 1
 	url = https://github.com/jp9000/obs-studio
 	arch = i686

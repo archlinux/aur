@@ -4,7 +4,7 @@
 
 pkgname=obs-studio-git
 _pkgname=obs-studio
-pkgver=0.11.0.r1.g91bfb53
+pkgver=0.11.1.r0.g1efb849
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=('i686' 'x86_64')
