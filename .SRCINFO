@@ -1,0 +1,33 @@
+pkgbase = devscripts
+	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
+	pkgver = 2.15.4
+	pkgrel = 1
+	url = http://packages.qa.debian.org/d/devscripts.html
+	install = devscripts.install
+	arch = any
+	license = GPL2
+	makedepends = po4a
+	makedepends = perl-timedate
+	makedepends = perl-libwww
+	makedepends = docbook-xsl
+	makedepends = perl-file-desktopentry
+	makedepends = perl-file-basedir
+	makedepends = perl-parse-debcontrol
+	makedepends = python-setuptools
+	depends = dpkg
+	depends = wget
+	depends = sed
+	depends = perl
+	depends = debianutils
+	depends = debhelper
+	optdepends = sensible-utils: for sensible alternative selection
+	options = !makeflags
+	source = http://ftp.debian.org/debian/pool/main/d/devscripts/devscripts_2.15.4.tar.xz
+	source = fixes.patch
+	source = devscripts.install
+	md5sums = 940e520d057b68fa565f15f057e73d52
+	md5sums = 8a1a9315dabe0403c92938680319eae6
+	md5sums = 5ca9e31b6cbe4f32115dedd3a2c2d5b0
+
+pkgname = devscripts
+

@@ -1,0 +1,40 @@
+--- po4a/Makefile	2013-09-17 11:58:14.177059023 +0100
++++ po4a/Makefile	2013-09-17 11:57:31.943725986 +0100
+@@ -25,7 +25,7 @@
+ 	pod2man --utf8 --center=" " --release="Debian-Hilfswerkzeuge" $< > $@
+ de/%.de.1: de/%.de.dbk translate
+ 	xsltproc --nonet -o $@ \
+-	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl $<
+ # xsltproc writes out to foo.1 even if you tell it to do otherwise, so we have
+ # to rename the file after it's generated
+ 	mv de/$*.1 $@
+@@ -35,7 +35,7 @@
+ 	pod2man --utf8 --center=" " --release="Utilitaires Debian" $< > $@
+ fr/%.fr.1: fr/%.fr.dbk translate
+ 	xsltproc --nonet -o $@ \
+-	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl $<
+ # xsltproc writes out to foo.1 even if you tell it to do otherwise, so we have
+ # to rename the file after it's generated
+ 	mv fr/$*.1 $@
+--- scripts/Makefile	2011-02-09 08:39:18.000000000 +0100
++++ scripts/Makefile	2011-02-13 17:50:50.393333338 +0100
+@@ -61,7 +61,7 @@
+ 	pod2man --utf8 --center=" " --release="Debian Utilities" $< > $@
+ %.1: %.dbk
+ 	xsltproc --nonet -o $@ \
+-	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl $<
+ 
+ # There is a slight chance this gets called twice, once here from here and once
+ # from ../po4a/Makefile. Treat files with care.
+@@ -92,7 +92,7 @@
+ 	$(foreach python,$(shell py3versions -r ../debian/control),$(python) setup.py test$(\n))
+ 
+ install: all
+-	python3 setup.py install --root="$(DESTDIR)" --no-compile --install-layout=deb
++	python3 setup.py install --root="$(DESTDIR)" --no-compile
+ 	install -dD $(DESTDIR)$(BINDIR) $(DESTDIR)$(PKGLIBDIR)
+ 	cp $(SCRIPTS) $(DESTDIR)$(BINDIR)
+ 	ln -sf edit-patch $(DESTDIR)$(BINDIR)/add-patch
