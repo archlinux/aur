@@ -1,0 +1,15 @@
+pkgbase = dhcpcd-dbus
+	pkgdesc = DBus bindings for dhcpcd
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = http://roy.marples.name/projects/dhcpcd-dbus
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = dbus-core
+	depends = dhcpcd>=5.0
+	source = http://roy.marples.name/downloads/dhcpcd/dhcpcd-dbus-0.6.0.tar.bz2
+	md5sums = 4fd43b0f0ca7c0e65f95a0b2846b37b7
+
+pkgname = dhcpcd-dbus
+
