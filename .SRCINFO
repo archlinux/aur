@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabx-bin
 	pkgdesc = IDE for Microchip PIC and dsPIC development
 	pkgver = 3.05
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.microchip.com/mplabx
 	install = microchip-mplabx-bin.install
 	arch = i686
@@ -31,6 +31,10 @@ pkgbase = microchip-mplabx-bin
 	source = LICENSE
 	md5sums = cd9f5108ef6f4fdfbfabd89007748012
 	md5sums = a34a85b2600a26f1c558bcd14c2444bd
+	source_x86_64 = fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-fakeroot
+	md5sums_x86_64 = 92b9a1dc8fa0534048790731a7bf2fc5
 
 pkgname = microchip-mplabx-bin
 
