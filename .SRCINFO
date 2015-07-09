@@ -1,0 +1,17 @@
+pkgbase = lib32-libgusb
+	pkgdesc = GLib wrapper around libusb1
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://gitorious.org/gusb/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gcc-multilib
+	makedepends = gobject-introspection
+	makedepends = python2
+	depends = lib32-libusb
+	depends = libgusb
+	source = http://people.freedesktop.org/~hughsient/releases/libgusb-0.2.4.tar.xz
+	sha256sums = 437966fb45e30b8e757b2c200daf5d4e7dd22bf5aa80e151e3b1807270d38083
+
+pkgname = lib32-libgusb
+
