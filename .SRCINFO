@@ -9,7 +9,7 @@ pkgbase = python-rackspace-novaclient
 	depends = python-rax-scheduled-images-python-novaclient-ext
 	depends = python-rax-backup-schedule-python-novaclient-ext
 	depends = python-rax-default-network-flags-python-novaclient-ext
-	depends = python-os-networksv-python-novaclient-ext
+	depends = python-os-networksv2-python-novaclient-ext
 	depends = python-rackspace-auth-openstack
 	depends = python-os-diskconfig-python-novaclient-ext
 	provides = python-rackspace-novaclient=1.4
