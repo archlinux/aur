@@ -1,0 +1,15 @@
+pkgbase = gkrellm-gkfreq
+	pkgdesc = A plugin for gkrellm2 which displays the current CPU frequency
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://code.google.com/p/gkrellm-gkfreq
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gkrellm
+	source = http://gkrellm-gkfreq.googlecode.com/files/gkrellm-gkfreq-1.3.tar.gz
+	md5sums = 26c96bce1d27fd1ec4b67eaa172cc2c3
+
+pkgname = gkrellm-gkfreq
+
