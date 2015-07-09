@@ -4,8 +4,7 @@ _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.6
 pkgrel=2
-pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, 
-BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
+pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://www.cocos2d-x.org/filedown/"
 license=('MIT License')
@@ -24,8 +23,8 @@ sha1sums=('d9f52a3bda96948e1b491d75a2c3c3a3fa1c9e98'
 )
 
 prepare() {
-	chmod +x ${_appname}-${pkgver}/download-deps.py
-	python2 ${_appname}-${pkgver}/download-deps.py
+	chmod +x "${_appname}-${pkgver}/download-deps.py"
+	python2 "${_appname}-${pkgver}/download-deps.py"
 }
 
 package() {
