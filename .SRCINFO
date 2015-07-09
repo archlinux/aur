@@ -1,7 +1,7 @@
 pkgbase = alock-git
 	pkgdesc = Simple transparent screen-lock
 	pkgver = r91.09d2ad2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code.google.com/p/alock/
 	arch = i686
 	arch = x86_64

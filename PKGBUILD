@@ -1,7 +1,7 @@
-# Maintainer: Vincent Ambo <dev@tazj.in>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=alock-git
 pkgver=r91.09d2ad2
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple transparent screen-lock"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/alock/"
@@ -30,4 +30,5 @@ build() {
 package() {
   cd "$srcdir/alock"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
