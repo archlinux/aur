@@ -1,0 +1,10 @@
+[Unit]
+Description=Speech-Dispatcher an high-level device independent layer for speech synthesis.
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/speech-dispatcher -d 
+
+[Install]
+WantedBy=multi-user.target
