@@ -1,6 +1,6 @@
 pkgbase = python-wtforms
 	pkgdesc = A flexible forms validation and rendering library for python web development.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/WTForms
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-wtforms
 	makedepends = unzip
 	makedepends = python-distribute
 	depends = python
-	source = http://pypi.python.org/packages/source/W/WTForms/WTForms-2.0.1.zip
-	md5sums = aaac94c137b3cd63efeb3ded51082cde
+	source = http://pypi.python.org/packages/source/W/WTForms/WTForms-2.0.2.zip
+	md5sums = 613cf723ab40537705bec02733c78d95
 
 pkgname = python-wtforms
 
