@@ -1,0 +1,21 @@
+pkgbase = ugene
+	pkgdesc = A free cross-platform genome analysis suite.
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = http://ugene.unipro.ru/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = libxtst
+	depends = glu
+	depends = qtwebkit
+	depends = desktop-file-utils
+	depends = procps-ng
+	depends = python
+	depends = shared-mime-info
+	source = http://ugene.unipro.ru/downloads/ugene-1.17.0.tar.gz
+	sha1sums = 5b88783dbd1552daa40f0acb3182d261ccc10ea4
+
+pkgname = ugene
+
