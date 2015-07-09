@@ -1,16 +1,15 @@
 pkgbase = opendict
 	pkgdesc = Multiplatform computer dictionary software
-	pkgver = 0.6.3
-	pkgrel = 4
+	pkgver = 0.6.6
+	pkgrel = 1
 	url = http://opendict.idiles.com/
+	install = opendict.install
 	arch = any
 	license = GPL
-	depends = python2>=2.3
 	depends = wxpython
-	depends = pyxml
-	depends = gettext>=0.14
-	source = http://opendict.idiles.com/files/opendict-0.6.3.tar.gz
-	md5sums = 2426a1de1131d0279dcea0cded43b063
+	depends = xdg-utils
+	source = http://downloads.sourceforge.net/project/opendict/opendict-0.6.6.tar.gz
+	md5sums = 2909fe7ebdcc8bba869c9ca24dbbe086
 
 pkgname = opendict
 
