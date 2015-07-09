@@ -1,8 +1,8 @@
 diff --git a/src/kimchi/model/host.py b/src/kimchi/model/host.py
-index 477e126..0a73230 100644
+index b2fa379..03aa974 100644
 --- a/src/kimchi/model/host.py
 +++ b/src/kimchi/model/host.py
-@@ -102,7 +102,7 @@ class HostModel(object):
+@@ -102,13 +102,16 @@ class HostModel(object):
          return res
  
      def lookup(self, *name):
@@ -11,35 +11,58 @@ index 477e126..0a73230 100644
  
          # psutil is unstable on how to get the number of
          # cpus, different versions call it differently
-@@ -118,7 +118,7 @@ class HostModel(object):
+         if hasattr(psutil, 'cpu_count'):
+             cpus = psutil.cpu_count()
+ 
++        elif hasattr(psutil, 'NUM_CPUS'):
++            cpus = psutil.NUM_CPUS
++
+         elif hasattr(psutil, '_psplatform'):
+             for method_name in ['_get_num_cpus', 'get_num_cpus']:
+ 
+@@ -118,7 +121,10 @@ class HostModel(object):
                      break
  
          self.host_info['cpus'] = cpus
 -        self.host_info['memory'] = psutil.phymem_usage().total
-+        self.host_info['memory'] = psutil.virtual_memory().total
++        if hasattr(psutil,'phymem_usage'):
++            self.host_info['memory'] = psutil.phymem_usage().total
++        elif hasattr(psutil, 'virtual_memory'):
++            self.host_info['memory'] = psutil.virtual_memory().total
          return self.host_info
  
      def swupdate(self, *name):
-@@ -248,7 +248,7 @@ class HostStatsModel(object):
+@@ -248,7 +254,12 @@ class HostStatsModel(object):
          prev_recv_bytes = net_recv_bytes[-1] if net_recv_bytes else 0
          prev_sent_bytes = net_sent_bytes[-1] if net_sent_bytes else 0
  
 -        net_ios = psutil.network_io_counters(True)
-+        net_ios = psutil.net_io_counters(True)
++        net_ios = None
++        if hasattr(psutil, 'net_io_counters'):
++            net_ios = psutil.net_io_counters(True)
++        elif hasattr(psutil, 'network_io_counters'):
++            net_ios = psutil.network_io_counters(True)
++
          recv_bytes = 0
          sent_bytes = 0
          for key in set(netinfo.nics() +
-
 diff --git a/src/kimchi/osinfo.py b/src/kimchi/osinfo.py
-index 78eb828..21dbb6c 100644
+index 78eb828..df10910 100644
 --- a/src/kimchi/osinfo.py
 +++ b/src/kimchi/osinfo.py
-@@ -186,7 +186,7 @@ def lookup(distro, version):
+@@ -186,8 +186,10 @@ def lookup(distro, version):
      arch = _get_arch()
  
      # Setting maxMemory of the VM, which will be equal total Host memory in Kib
 -    params['max_memory'] = psutil.TOTAL_PHYMEM >> 10
-+    params['max_memory'] = psutil.virtual_memory().total >> 10
- 
+-
++    if hasattr(psutil, 'virtual_memory'):
++        params['max_memory'] = psutil.virtual_memory().total >> 10
++    else:
++        params['max_memory'] = psutil.TOTAL_PHYMEM >> 10
      # set up arch to ppc64 instead of ppc64le due to libvirt compatibility
      if params["arch"] == "ppc64le":
+         params["arch"] = "ppc64"
+-- 
+2.2.1
+
