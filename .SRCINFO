@@ -1,0 +1,16 @@
+pkgbase = fbautostart
+	pkgdesc = Lightweight XDG autostarter for Fluxbox
+	pkgver = 2.718281828
+	pkgrel = 1
+	url = https://launchpad.net/fbautostart
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	source = https://launchpad.net/fbautostart/fbautostart/2.718281828/+download/fbautostart-2.718281828.tar.gz
+	source = LICENSE
+	md5sums = 06495f9b23b1c9b1bf35c2346cb48f63
+	md5sums = 3b20fd23a403ee99b09928d2c3b70e19
+
+pkgname = fbautostart
+
