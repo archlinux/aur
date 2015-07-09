@@ -1,0 +1,23 @@
+pkgbase = mnemosyne-bzr
+	pkgdesc = A flash-card tool with a sophisticated card review algorithm (latest development snapshot)
+	pkgver = 2.3.3+r1886
+	pkgrel = 1
+	url = http://www.mnemosyne-proj.org
+	install = mnemosyne-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	depends = python2-pyqt
+	depends = python2-matplotlib
+	depends = python2-cherrypy
+	depends = python2-webob
+	optdepends = texlive-core: support for mathematical formulae in cards
+	conflicts = mnemosyne
+	source = bzr+lp:mnemosyne-proj
+	md5sums = SKIP
+
+pkgname = mnemosyne-bzr
+

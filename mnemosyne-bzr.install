@@ -1,0 +1,7 @@
+post_install() {
+  echo "    When started, Mnemosyne 2.x looks for a Mnemosyne 1.x database in"
+  echo "    ~/.mnemosyne/ and tries to automatically import it. It won't overwrite"
+  echo "    it, though, as it stores its own database in ~/.local/share/mnemosyne/."
+  echo "    After it has been successfully imported once, manually delete the old"
+  echo "    ~/.mnemosyne/ folder so it won't be automatically imported again."
+}
