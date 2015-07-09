@@ -1,7 +1,7 @@
 pkgbase = skychart
 	pkgdesc = Free software to draw sky charts, also known as Cartes du Ciel
 	pkgver = 3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ap-i.net/skychart/start
 	install = skychart.install
 	arch = i686

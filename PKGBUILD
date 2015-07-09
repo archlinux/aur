@@ -1,9 +1,10 @@
-#Maintainer: Mihai Coman <mihai@m1x.ro>
-#Contributor: Alexander Vynnyk <cosmonaut@mail.ua>
+# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Contributor: Mihai Coman <mihai@m1x.ro>
+# Contributor: Alexander Vynnyk <cosmonaut@mail.ua>
 
 pkgname=skychart
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
 arch=('i686' 'x86_64')
 license=('GPL')
