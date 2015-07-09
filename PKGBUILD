@@ -31,6 +31,8 @@ package() {
   install -d -m755 "$pkgdir"/usr/share/licenses/$pkgname
   install -D -m644 "$srcdir"/LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname
 
+  [ "$CARCH" = x86_64 ] && mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib
+
   cd "$pkgdir"/usr/lib
   ln -sf libbrscandec3.so.1.0.0 libbrscandec3.so.1
   ln -sf libbrscandec3.so.1 libbrscandec3.so
