@@ -1,0 +1,14 @@
+pkgbase = gkrellm2-show_ip
+	pkgdesc = Shows the actual IP address of a given network interface
+	pkgver = 1.1
+	pkgrel = 6
+	url = http://members.dslextreme.com/users/billw/gkrellm/Plugins.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://members.dslextreme.com/users/billw/gkrellm/Plugins/GKrellM2-show_ip-1.1.tar.gz
+	md5sums = 65639a9588231a1b0df34405441b7861
+
+pkgname = gkrellm2-show_ip
+
