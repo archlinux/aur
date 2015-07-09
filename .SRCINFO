@@ -1,0 +1,19 @@
+pkgbase = acid-gtk-theme
+	pkgdesc = A dark, minimalistic & xfce4 fast theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sixsixfive.deviantart.com/art/ACID-280889262
+	arch = i686
+	arch = x86_64
+	groups = xfce
+	license = GPL
+	depends = gtk2>=2.24
+	depends = gtk-engines
+	depends = gtk-engine-mist
+	depends = gtk3>=3.4.1
+	depends = gtk-engine-unico>=1.0.1
+	source = acid_by_sixsixfive-d4n8fji.7z::http://localizator.googlecode.com/files/acid_by_sixsixfive-d4n8fji.7z
+	md5sums = aea71393deeaec6068c3e6bdd9fe175a
+
+pkgname = acid-gtk-theme
+
