@@ -8,6 +8,7 @@ pkgbase = iio-sensor-proxy
 	license = GPLv2
 	makedepends = git
 	makedepends = gtk-doc
+	makedepends = gnome-common
 	depends = systemd
 	depends = libgudev
 	source = iio-sensor-proxy::git+https://github.com/hadess/iio-sensor-proxy.git#tag=1.0
