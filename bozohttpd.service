@@ -1,0 +1,19 @@
+[Unit]
+Description=the bozotic HTTP server
+After=syslog.target
+After=network.target
+
+[Service]
+PIDFile=/run/bozohttpd.pid
+StandardOutput=null
+# Simplest use:
+ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http/www
+# Enable directory index:
+#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -X /srv/http/www
+# Enable CGI:
+#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -c /srv/http/cgi-bin /srv/http/www
+# Enable PHP and set default to index.php (instead of index.html):
+#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -x index.php -C .php /usr/bin/php-cgi /srv/http/www
+
+[Install]
+WantedBy=multi-user.target
