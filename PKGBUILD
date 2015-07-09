@@ -4,7 +4,7 @@
 # Contributor: bct <bct at diffeq dot com>
 
 pkgname=imapfilter
-pkgver=2.5.7
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A mail filtering utility for processing IMAP mailboxes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('lua' 'pcre' 'openssl')
 optdepends=('openssl: SSL/TLS encryption and CRAM-MD5 authentication')
 source=("https://codeload.github.com/lefcha/${pkgname}/tar.gz/v${pkgver}")
-md5sums=('5af01afcca4a24b46f113f36bc3eaef8')
+sha256sums=('8aca5d3534e3a808a17d0aa6bfffd9afc7e6c47d92f645a5d3683a2d5933e24d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
