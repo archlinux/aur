@@ -458,7 +458,7 @@ check_pkgversion()
 {
 	newver=$(curl -s "https://aur4.archlinux.org/rpc.php?type=info&arg=$1" | awk -F : '{print $10}' | awk -F , '{print $1}' | sed 's/"//g')
 	currentver=$(pacman -Qi $1 | awk '{print $3}' | head -n 2 | tail -n 1)
-	if [[ $newver != $currentver ]]; then
+	if [[ $newver != $currentver ]] && [[ ! -z $newver ]]; then
 		echo 1
 	fi
 }
@@ -481,10 +481,10 @@ check_all_depends()
 		#loop through dependencies recursively, check if installed, try pacman install, then aur install
 		for line in $depends $mdepends $dependsx64 $dependsi686
 		do
-			line=$(echo $line | sed -e "s/>=[^=]*$//g" -e "s/<=[^=]*$//g" -e "s/<[^<]*$//g" -e "s/>[^>]*$//g")
+			line=$(echo "$line" | sed -e "s/>=[^=]*$//g" -e "s/<=[^=]*$//g" -e "s/<[^<]*$//g" -e "s/>[^>]*$//g")
 			pacman -Qi $line &>/dev/null
 			if [[ $? == 1 ]]; then
-				sudo pacman -S --needed $line 2>/dev/null
+				sudo pacman -S --needed $line
 				if [[ $? == 1 ]]; then
 					check_all_depends $line
 					aur_git_install $line
