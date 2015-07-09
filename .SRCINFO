@@ -1,0 +1,19 @@
+pkgbase = eetsmunchies-hib
+	pkgdesc = Eets Munchies, a family-friendly puzzle game (beta; Humble Bundle version)
+	pkgver = beta97446+h20140311
+	pkgrel = 1
+	url = http://kleientertainment.com/games/eets-munchies/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = sdl2
+	depends = libgl
+	options = !strip
+	options = !upx
+	source = hib://eets2-64x_linux_1394496804.tar
+	source = eetsmunchies-hib.desktop
+	md5sums = ee7694ca24aabb4c3890123f8cb2474e
+	md5sums = 36154f360150b2812a8e2fd44b1d8021
+
+pkgname = eetsmunchies-hib
+

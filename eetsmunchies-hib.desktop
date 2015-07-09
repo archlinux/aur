@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Eets Munchies
+Comment=Klei Entertainment
+GenericName=Puzzle Game
+Icon=eetsmunchies
+Exec=/usr/bin/eetsmunchies
+Terminal=false
