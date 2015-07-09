@@ -1,9 +1,10 @@
-# Maintainer: Matteo Paoluzzi <duwath [at] gmail [dot] com>
+# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Contributor: Matteo Paoluzzi <duwath [at] gmail [dot] com>
 # Contributor: jmf <jmf [at] mesecons [dot] net>
 
 pkgname=xephem
 pkgver=3.7.6
-pkgrel=3
+pkgrel=4
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
