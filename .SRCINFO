@@ -1,0 +1,13 @@
+pkgbase = diacstuff
+	pkgdesc = rglassd, rcollector for quaggas bgp
+	pkgver = 20130328
+	pkgrel = 2
+	url = http://diac24.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libxml2
+
+pkgname = diacstuff
+
