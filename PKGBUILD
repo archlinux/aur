@@ -3,7 +3,7 @@
 
 pkgname=fofix
 pkgver=3.121
-pkgrel=6
+pkgrel=7
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://github.com/fofix/fofix"
 arch=(any)
@@ -32,7 +32,7 @@ md5sums=('ed38bef0e72bfecdd67818f80f487e36'
          'f886a7fdfa7592b50aa9f62901910e03')
 
 
-build() {
+package() {
     install -d $pkgdir/usr/
     install -d $pkgdir/usr/share/
     install -d $pkgdir/usr/share/applications/
