@@ -1,0 +1,15 @@
+pkgbase = gkrellm-bluez
+	pkgdesc = GKrellM BlueZ is a plugin that displays a graph of RX/TX bytes of Bluetooth adaptors. It uses the same layout as a Net monitor.
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://gkrellm-bluez.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	depends = bluez-libs
+	source = http://downloads.sourceforge.net/sourceforge/gkrellm-bluez/gkrellm-bluez-0.2.tar.gz
+	md5sums = e5dbdb540450bfa21d8d1fa02086d770
+
+pkgname = gkrellm-bluez
+
