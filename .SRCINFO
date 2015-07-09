@@ -1,0 +1,20 @@
+pkgbase = libtelnet
+	pkgdesc = Simple RFC-complient TELNET implementation as a C library.
+	pkgver = 0.21
+	pkgrel = 3
+	url = http://github.com/seanmiddleditch/libtelnet
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = patch
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = autoconf
+	source = https://github.com/seanmiddleditch/libtelnet/archive/0.21.tar.gz
+	source = libtelnet-autoconf-2.6.patch
+	md5sums = 73f66c693c23daa10bf65976f47b7f4b
+	md5sums = 8d860d0649aefbf455b6d6e6bde599a3
+
+pkgname = libtelnet
+

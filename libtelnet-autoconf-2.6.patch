@@ -1,0 +1,24 @@
+From 76b4633f91b07d6319de5924d8ece4905f29646e Mon Sep 17 00:00:00 2001
+From: Felipe Weckx <felipe@weckx.net>
+Date: Mon, 16 Jun 2014 10:36:01 -0300
+Subject: [PATCH] compatibility with autoconf 2.6.x
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 7f5bb61..021b48f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,6 +8,7 @@ AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR([libtelnet.c])
+ AM_INIT_AUTOMAKE([1.9 foreign -Wall -Werror subdir-objects])
++AM_PROG_AR
+ #LT_INIT([win32-dll])
+ AC_LIBTOOL_WIN32_DLL
+ 
+-- 
+2.0.0
+
