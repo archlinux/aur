@@ -4,31 +4,34 @@
 # New Maintainer: BlindPenguin <ferdinand holzner at gmail dot com>
 #
 pkgname=cdesktopenv
-pkgver=2.2.0d
-pkgrel=1
+pkgver=2.2.2
+pkgrel=3
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
 license=('LGPL2')
 options=(!strip !zipman)
-depends=(openmotif xbitmaps rpcbind mksh ncurses)
-makedepends=(tcl ncompress)
+install="cdesktopenv.install"
+depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps)
+makedepends=(tcl ncompress bison)
 optdepends=('xorg-fonts-100dpi: additional fonts'
             'cups: for printing support'
             'xinetd: for rpc services')
 backup=('etc/dt/config/xfonts/C/fonts.alias')
-source=("http://downloads.sourceforge.net/$pkgname/cde-src-$pkgver-beta.tar.gz"
+source=("http://downloads.sourceforge.net/$pkgname/cde-src-$pkgver.tar.gz"
+	'cdesktopenv.install'
         'dtlogin.service'
         'fonts.alias'
         'fonts.dir'
         'cde.desktop'
 	'startxsession.sh')
 
-md5sums=('6ebda6347706c2aac361e399acad2120'
+md5sums=('8ceb3110832421c14b135058c6c11cd9'
+	 '66ff27b4c6b7c5fda4e2db69f829e4aa'
          '18f9ef4643ff7ed6637907f5cbdabecf'
          '5cc80c2851ea90b94e94b0c5d92d81fb'
          '897316929176464ebc9ad085f31e7284'
-         'f4c8125c54dbed1e91ce859b7ad6a365'
+         '7d11b9d2bc1234278f14151025744916'
          '2e5557241915e4c2761ba136dbcba469')
 
 build() {
@@ -45,8 +48,8 @@ build() {
 #define DtLocalesToBuild
 EOF
 
-  mkdir -p imports/x11/include
-  ln -sf /usr/include/X11 imports/x11/include/
+#  mkdir -p imports/x11/include
+#  ln -sf /usr/include/X11 imports/x11/include/
   
   (
      export LANG=C

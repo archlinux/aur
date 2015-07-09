@@ -1,0 +1,20 @@
+post_install() {
+	echo
+	echo "You MUST edit /etc/conf.d/rpcbind"
+	echo "Change the line which reads:"
+	echo
+	echo "RPCBIND_ARGS=\"\""
+	echo
+	echo "to:"
+	echo
+	echo "RPCBIND_ARGS=\"-i\""
+	echo
+	echo "This is probably insecure."
+	echo "To start dtlogin, first use systemctl to start rpcbind.service, and then start dtlogin.service"
+}
+
+post_upgrade() {
+	post_install
+}
+
+# vim:set ts=2 sw=2 et:
