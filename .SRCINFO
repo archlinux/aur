@@ -1,0 +1,18 @@
+pkgbase = radeontop-git
+	pkgdesc = Radeon cards monitoring utility
+	pkgver = v0.6.4.g244c88e
+	pkgrel = 2
+	url = https://github.com/clbr/radeontop
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	depends = xf86-video-ati
+	provides = radeontop
+	conflicts = radeontop
+	source = git://github.com/clbr/radeontop.git
+	sha256sums = SKIP
+
+pkgname = radeontop-git
+
