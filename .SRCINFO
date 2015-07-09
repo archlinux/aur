@@ -1,0 +1,17 @@
+pkgbase = vim-pathogen
+	pkgdesc = A vim plugin for managing your runtimepath
+	pkgver = 2.3
+	pkgrel = 2
+	url = http://github.com/tpope/vim-pathogen
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	provides = vim-pathogen
+	conflicts = vim-pathogen-git
+	source = vim-pathogen-2.3.tar.gz::https://github.com/tpope/vim-pathogen/archive/v2.3.tar.gz
+	md5sums = 8cf56e1d8f5c993bee44d89a003aa943
+
+pkgname = vim-pathogen
+
