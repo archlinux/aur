@@ -1,0 +1,18 @@
+pkgbase = hugo
+	pkgdesc = Fast and Flexible Static Site Generator in Go
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://hugo.spf13.com/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = custom:SimPL
+	source_x86_64 = https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_linux_amd64.tar.gz
+	sha256sums_x86_64 = e5a455f019aa1811f76cfa3c899dc45b61e5c01dc3ad0cc98261836cbf637803
+	source_i686 = https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_linux_386.tar.gz
+	sha256sums_i686 = 8327776db22aa948d39c065e2460dadf009cbf5bdec87bcbe65b6ff2722882fb
+	source_arm = https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_linux_arm.tar.gz
+	sha256sums_arm = 3ca7f98ab099614544e7d43068c8cf2a3c4b71b0166cd4127ce3a2d9be20c827
+
+pkgname = hugo
+
