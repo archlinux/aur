@@ -1,0 +1,27 @@
+pkgbase = torchlight-hib
+	pkgdesc = A hack and slash action role-playing game (Humble Bundle version)
+	pkgver = 1.15_20130521
+	pkgrel = 1
+	url = http://www.torchlightgame.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = mesa
+	depends = glu
+	depends = freeglut
+	depends = libxaw
+	depends = libxft
+	depends = freeimage
+	depends = util-linux
+	depends = zziplib
+	depends = pcre
+	depends = libtxc_dxtn
+	options = !strip
+	options = !upx
+	source = hib://Torchlight-2013-05-21.sh
+	source = torchlight-hib.desktop
+	md5sums = a747a31547202d7dc85c8a6cd9b47c9f
+	md5sums = 36903fc0f19910870440b68ac4cd22a4
+
+pkgname = torchlight-hib
+

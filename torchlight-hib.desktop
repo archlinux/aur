@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Torchlight
+Comment=Runic Games
+GenericName=Action Role-Playing Game
+Icon=torchlight
+Exec=/usr/bin/torchlight
+Terminal=false
+StartupNotify=false
