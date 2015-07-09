@@ -1,12 +1,8 @@
 post_install() {
-
-
-echo
-echo "Run 'fofix-git' to start the game. To add songs to the game, add them to '/opt/fofix-git/data/songs' (I don't think it works in ~/.fofix/songs anymore)"
-echo
-echo "If it ever doesn't work, try removing ~/.fofix/fofix.ini"
-echo
-echo "3.020 and higher only include the Megalight themes by default. For more themes, go to http://www.fretsonfire.net/forums/viewtopic.php?f=32&t=24976 and add the themes to /opt/fofix-git/data/themes/"
+    echo
+    echo "Run 'fofix-git' to start the game. To add songs to the game, add them to '/opt/fofix-git/data/songs' (not in ~/.fofix/songs anymore)"
+    echo
+    echo "If it ever doesn't work, try removing ~/.fofix/fofix.ini"
+    echo
+    echo "3.020 and higher only include the Megalight themes by default. For more themes, go to http://www.fretsonfire.net/forums/viewtopic.php?f=32&t=24976 and add the themes to /opt/fofix-git/data/themes/"
 }
-
-

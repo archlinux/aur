@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=FoFiX (GIT)
+Name=FoFiX (Git)
 Comment=A great Guitar Hero clone!
 Exec=/usr/bin/fofix-git
 Encoding=UTF-8
