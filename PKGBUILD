@@ -14,7 +14,7 @@ conflicts=('masterpdfeditor')
 install=${pkgname}.install
 
 source=(${pkgname}.desktop)
-source_x86_64=(http://code-industry.net/public/master-pdf-editor-${pkgver}_qt5.amd64.tar.gz)
+source_x86_64=(http://get.code-industry.net/public/master-pdf-editor-${pkgver}_qt5.amd64.tar.gz)
 
 sha256sums=('29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd')
 sha256sums_x86_64=('6f4eaf814f542864d1ec83b7d48f8d516fab5e5e24aca30299ceef6dd3f5cc2a')
