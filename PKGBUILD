@@ -1,4 +1,5 @@
-# Maintainer: kfgz <kfgz at interia pl>
+# Maintainer: Lex Black <autumn-wind at web dot de>
+# Contributor: kfgz <kfgz at interia pl>
 # Contributor: Joey Mazzarelli <mazzarelli at gmail dot com>
 
 pkgname=cdw
@@ -12,15 +13,19 @@ depends=('cdrtools' 'ncurses' 'libburn' 'libcdio')
 source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}%20${pkgver}/${pkgname}-${pkgver}.tar.gz/download)
 md5sums=('60a8d094343b50b436a013737261e92c')
 
+
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
+
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
+
   make prefix="${pkgdir}"/usr install
+
   install -dm755 "${pkgdir}"/usr/share/doc/cdw
   install -m644 cdw.conf "${pkgdir}"/usr/share/doc/cdw
   install -m644 cdw.colors "${pkgdir}"/usr/share/doc/cdw
