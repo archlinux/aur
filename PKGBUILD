@@ -1,0 +1,27 @@
+# Maintainer: sandman <r.coded@gmail.com>
+# Contributor: Christoph Siegenthaler <csi@gmx.ch>
+
+pkgname=xprobe2
+pkgver=0.3
+pkgrel=2
+pkgdesc="xprobe2 is an active OS fingerprinting tool"
+url="http://sourceforge.net/apps/mediawiki/xprobe/index.php?title=Main_Page"
+depends=('gcc' 'libpcap')
+source=('http://downloads.sourceforge.net/project/xprobe/xprobe2/Xprobe2%200.3/'$pkgname'-'$pkgver'.tar.gz')
+md5sums=('3ebb89ed9380038d368327816e34ec54')
+arch=('i686' 'x86_64')
+license=('GPL2')
+build(){
+	cd $startdir
+	patch -p1 < ip.patch
+	patch -p1 < misc.patch
+	patch -p1 < tcp.patch
+	cd $startdir/src/$pkgname-$pkgver
+	./configure --prefix=/usr --sysconfdir=/etc
+	make || return 1
+}
+
+package(){
+	cd $startdir/src/$pkgname-$pkgver
+	make DESTDIR=$startdir/pkg install
+}
