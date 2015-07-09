@@ -8,8 +8,10 @@ pkgbase = qtermwidget
 	license = GPL2
 	makedepends = cmake
 	depends = qt5-base
+	depends = libsm
+	depends = libxkbcommon-x11
 	source = https://github.com/qterminal/qtermwidget/releases/download/0.6.0/qtermwidget-0.6.0.tar.xz
-	sha256sums = SKIP
+	sha256sums = 1ea148e67c3e28a53ca24a3c91532507ddd6c5d28611467e7a67334d945cd010
 
 pkgname = qtermwidget
 
