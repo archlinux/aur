@@ -1,0 +1,19 @@
+pkgbase = bmpanel2
+	pkgdesc = A NETWM-compatible panel for X11
+	pkgver = 2.1pre1
+	pkgrel = 5
+	url = http://bmpanel2.googlecode.com/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = cmake
+	makedepends = asciidoc
+	makedepends = python2
+	depends = libxext
+	depends = pango
+	optdepends = pygtk: configuration GUI
+	source = http://bmpanel2.googlecode.com/files/bmpanel2-2.1pre1.tar.gz
+	md5sums = 766ce5d3d6be427192fa11883b230eed
+
+pkgname = bmpanel2
+
