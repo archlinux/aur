@@ -1,7 +1,7 @@
 # Maintainer: lth <manuelung@gmail.com>
 # Contributor: nizox <nizzox@gmail.com>
 pkgname=dhcpcd-ui
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="dhcpcd Monitor in GTK+"
 url="http://roy.marples.name/projects/dhcpcd-ui"
@@ -10,7 +10,7 @@ depends=("gtk2" "libnotify" "dhcpcd-dbus>=0.6.0" "hicolor-icon-theme")
 install=dhcpcd-ui.install
 source=(http://roy.marples.name/downloads/dhcpcd/$pkgname-$pkgver.tar.bz2)
 arch=(i686 x86_64)
-md5sums=('6cd085cdf7f9c2bd9b98029edc1d712c')
+md5sums=('ff937ffe2ffc2801488078a61bdbfd0d')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
