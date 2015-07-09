@@ -1,9 +1,6 @@
 # Maintainer: John K Luebs <jkluebs@luebsphoto.com>
 # Contributor: Eric Le Bras <eric.lebras@gmail.com>
 
-# I maintain this on github, feel free to submit a pull request to
-# https://github.com/jkl1337/packages-archlinux.git
-
 pkgname=mma-songs
 pkgver=15.01
 pkgrel=1
