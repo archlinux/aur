@@ -1,0 +1,13 @@
+pkgbase = atomzombiesmasher
+	pkgdesc = RTS, evacuating civilians out of zombie-contaminated cities. (Commercial)
+	pkgver = 1.94
+	pkgrel = 2
+	url = http://blendogames.com/atomzombiesmasher/
+	arch = any
+	license = custom:commercial
+	conflicts = atomzombiesmasherdemo
+	source = http://blendogames.com/files/atomzombiepatch_v1_94_linux.tar.gz
+	md5sums = c9512b8c841841967c20a81d36f7a6bc
+
+pkgname = atomzombiesmasher
+
