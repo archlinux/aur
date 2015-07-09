@@ -1,11 +1,11 @@
 pkgbase = gimp-plugin-webp
 	pkgdesc = This plugin provides Gimp with the ability to load and export WebP images.
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nathan-osman/gimp-webp
 	arch = i686
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
 	makedepends = cmake
 	depends = gimp
 	depends = libwebp
