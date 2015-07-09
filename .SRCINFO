@@ -1,0 +1,20 @@
+pkgbase = libsexy3
+	pkgdesc = Custom Gtk3 widgets
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://tingping.github.io/libsexy3
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = iso-codes
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtk3
+	depends = enchant
+	source = https://github.com/TingPing/libsexy3/releases/download/v1.1.0/libsexy3-1.1.0.tar.xz
+	sha256sums = 3cd2f377b9cdc55ebb238008b38cff37b7a0bef42ad400eb836c65fd1a40d625
+
+pkgname = libsexy3
+
