@@ -1,0 +1,12 @@
+pkgbase = absolute-theme
+	pkgdesc = A light fluxbox theme that fits well with absolute gtk theme
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://www.neogrigio.t15.org/
+	arch = any
+	license = GPL
+	source = theme.cfg
+	md5sums = ad55a5a6a77b3c3258821e8f1459cf7c
+
+pkgname = absolute-theme
+
