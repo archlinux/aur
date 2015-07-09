@@ -1,6 +1,6 @@
-diff -upr Gtk2-Notify-0.05.orig/lib/Gtk2/Notify.pm Gtk2-Notify-0.05/lib/Gtk2/Notify.pm
---- Gtk2-Notify-0.05.orig/lib/Gtk2/Notify.pm	2008-11-11 23:47:33.000000000 -0700
-+++ Gtk2-Notify-0.05/lib/Gtk2/Notify.pm	2013-02-22 06:43:03.000000000 -0700
+diff -up src/Gtk2-Notify-0.05/lib/Gtk2/Notify.pm.orig src/Gtk2-Notify-0.05/lib/Gtk2/Notify.pm
+--- src/Gtk2-Notify-0.05/lib/Gtk2/Notify.pm.orig	2008-11-11 23:47:33.000000000 -0700
++++ src/Gtk2-Notify-0.05/lib/Gtk2/Notify.pm	2015-07-07 20:02:12.000000000 -0600
 @@ -47,7 +47,7 @@ Version 0.04
  
      use Gtk2::Notify -init, "app_name";
@@ -10,9 +10,9 @@ diff -upr Gtk2-Notify-0.05.orig/lib/Gtk2/Notify.pm Gtk2-Notify-0.05/lib/Gtk2/Not
      $notification->show;
  
  =head1 INITIALISATION
-diff -upr Gtk2-Notify-0.05.orig/t/notification.t Gtk2-Notify-0.05/t/notification.t
---- Gtk2-Notify-0.05.orig/t/notification.t	2006-08-27 13:11:57.000000000 -0600
-+++ Gtk2-Notify-0.05/t/notification.t	2013-02-22 06:49:35.000000000 -0700
+diff -up src/Gtk2-Notify-0.05/t/notification.t.orig src/Gtk2-Notify-0.05/t/notification.t
+--- src/Gtk2-Notify-0.05/t/notification.t.orig	2006-08-27 13:11:57.000000000 -0600
++++ src/Gtk2-Notify-0.05/t/notification.t	2015-07-07 20:09:52.000000000 -0600
 @@ -2,20 +2,18 @@
  
  use strict;
@@ -66,9 +66,9 @@ diff -upr Gtk2-Notify-0.05.orig/t/notification.t Gtk2-Notify-0.05/t/notification
          $n->show;
  }, 'show');
  
-diff -upr Gtk2-Notify-0.05.orig/xs/Notify.xs Gtk2-Notify-0.05/xs/Notify.xs
---- Gtk2-Notify-0.05.orig/xs/Notify.xs	2007-10-04 06:11:13.000000000 -0600
-+++ Gtk2-Notify-0.05/xs/Notify.xs	2013-02-22 06:47:46.000000000 -0700
+diff -up src/Gtk2-Notify-0.05/xs/Notify.xs.orig src/Gtk2-Notify-0.05/xs/Notify.xs
+--- src/Gtk2-Notify-0.05/xs/Notify.xs.orig	2007-10-04 06:11:13.000000000 -0600
++++ src/Gtk2-Notify-0.05/xs/Notify.xs	2015-07-07 20:05:37.000000000 -0600
 @@ -21,8 +21,7 @@ PROTOTYPES: DISABLE
      my $notification = Gtk2::Notify->new(
              $summary,
@@ -148,3 +148,14 @@ diff -upr Gtk2-Notify-0.05.orig/xs/Notify.xs Gtk2-Notify-0.05/xs/Notify.xs
  set_hint (notification, key, value)
  		NotifyNotification *notification
  		const gchar *key
+@@ -265,6 +234,10 @@ notify_notification_close (notification)
+ 			gperl_croak_gerror (NULL, error);
+ 		}
+ 
++gint
++notify_notification_get_closed_reason(notification)
++		NotifyNotification *notification
++
+ BOOT:
+ #include "register.xsh"
+ #include "boot.xsh"
