@@ -10,40 +10,22 @@ license=('custom:commercial')
 makedepends=('innoextract')
 provides=('arx-fatalis-data')
 conflicts=('arx-fatalis-data-copy' 'arx-fatalis-data-demo')
-source=("install-verify" "install-gog")
-md5sums=('e9c245ac1bb48cb8ef667933e0b725d2'
-         'fc86639646ba5dba6d737560fb846f4a')
 install='arx-fatalis-data.install'
 PKGEXT='.pkg.tar'
+DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
-_gamepkg="setup_arx_fatalis.exe"
+_gamepkg="setup_arx_fatalis_2.0.0.7.exe"
 
+source=("gog://$_gamepkg"
+        "arx-install-data")  # from http://arx.vg/arx-install-data
+md5sums=('5be0898e71632e46ca430d7a32d0179a'
+         'fc5456e4c213af243b65862db8d5db0a')
 
 package() {
   cd $srcdir
-  _get_local_source "$_gamepkg" || {
-    error "Unable to find the game archive. Please download it from your GOG.com
-           account, and copy or symlink it into one of the above directories."
-    exit 1; }
 
-  msg "Starting setup..."
-  chmod +x install-gog
-  ./install-gog --no-progress "$_gamepkg" "$pkgdir/usr/share/arx"
+  chmod +x arx-install-data
+  ./arx-install-data --batch "$_gamepkg" "$pkgdir/usr/share/arx"
+
   mkdir "$pkgdir/usr/share/games" && ln -s "/usr/share/arx/" "$pkgdir/usr/share/games/arx" 
-}
-
-
-# Locate a file or folder provided by the user, and symlink it into $srcdir
-_get_local_source() {
-  msg "Looking for '$1'..."
-  declare -A _search=(['build dir']="$startdir"
-                      ['$LOCAL_PACKAGE_SOURCES']="$LOCAL_PACKAGE_SOURCES")
-  for _key in "${!_search[@]}"; do local _dir="${_search["$_key"]}"
-    if [ -z "$_dir" ]; then _dir="<undefined>"; fi
-    echo -n "    - in $_key ['$_dir'] ... ";
-    if [ -e "$_dir/$1" ]; then
-      echo "FOUND"; ln -sfT "$(readlink -f "$_dir/$1")" "$srcdir/$1"; break; fi
-    echo "NOT FOUND"
-  done
-  if [ ! -e "$srcdir/$1" ]; then return 1; fi
 }

@@ -11,10 +11,10 @@ pkgbase = arx-fatalis-data-gog
 	provides = arx-fatalis-data
 	conflicts = arx-fatalis-data-copy
 	conflicts = arx-fatalis-data-demo
-	source = install-verify
-	source = install-gog
-	md5sums = e9c245ac1bb48cb8ef667933e0b725d2
-	md5sums = fc86639646ba5dba6d737560fb846f4a
+	source = gog://setup_arx_fatalis_2.0.0.7.exe
+	source = arx-install-data
+	md5sums = 5be0898e71632e46ca430d7a32d0179a
+	md5sums = fc5456e4c213af243b65862db8d5db0a
 
 pkgname = arx-fatalis-data-gog
 
