@@ -1,0 +1,16 @@
+pkgbase = lib32-talloc
+	pkgdesc = A hierarchical pool based memory allocator with destructors
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://talloc.samba.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-multilib
+	makedepends = python2
+	depends = lib32-glibc
+	depends = talloc
+	source = http://samba.org/ftp/talloc/talloc-2.1.1.tar.gz
+	sha256sums = 3e29ce6c3ba3c4f7c2d57ce8cf0fbc24c86618c519f2b2fb6a459025488b6174
+
+pkgname = lib32-talloc
+
