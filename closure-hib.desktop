@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Closure
+Comment=Eyebrow Interactive
+GenericName=Platformer Puzzle Game
+Icon=closure
+Exec=/usr/bin/closure
+Terminal=false
