@@ -1,0 +1,24 @@
+pkgbase = proteus-hib
+	pkgdesc = An audio-visual exploration game (Humble Bundle version)
+	pkgver = 1.2+h20140516
+	pkgrel = 1
+	url = http://www.visitproteus.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = glu
+	depends = alsa-lib
+	depends = libogg
+	depends = libvorbis
+	options = !strip
+	options = !upx
+	source = hib://proteus-05162014-bin
+	source = proteus-hib.desktop
+	md5sums = 8a5911751382bcfb91483f52f781e283
+	md5sums = 4ddd7b894b490e3bbd32a83922e111b3
+
+pkgname = proteus-hib
+

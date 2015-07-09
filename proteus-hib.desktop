@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Proteus
+Comment=Ed Key & David Kanaga
+GenericName=Exploration Game
+Icon=proteus
+Exec=/usr/bin/proteus
+Terminal=false
