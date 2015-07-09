@@ -1,19 +1,13 @@
 post_install() {
   post_upgrade
   # Re-initialize the UPEK device
-  if [[ `lsusb -d 0483:` ]] || [[ `lsusb -d 147e:` ]]
-  then
-    if [[ `which udevadm` ]]
-    then
-        for ID in 2015 2016
-        do
-            udevadm trigger --subsystem-match=usb --attr-match=idVendor=0483 --attr-match=idProduct=$ID
-        done
-        for ID in 2015 2016 1000 1001 3000
-        do
-            udevadm trigger --subsystem-match=usb --attr-match=idVendor=147e --attr-match=idProduct=$ID
-        done
-    fi
+  if [[ `which udevadm` ]]; then
+    for ID in 2015 2016; do
+      udevadm trigger --subsystem-match=usb --attr-match=idVendor=0483 --attr-match=idProduct=$ID
+    done
+    for ID in 2015 2016 1000 1001 3000; do
+      udevadm trigger --subsystem-match=usb --attr-match=idVendor=147e --attr-match=idProduct=$ID
+    done
   fi
 }
 
@@ -30,25 +24,33 @@ and modify your PAM configuration
 
 fingerprint-polkit-agent conflicts with files in /etc/xdg/autostart that must
 be removed:
- "polkit-gnome-authentication-agent-1.desktop" and
- "polkit-kde-authentication-agent-1.desktop".
+  "polkit-gnome-authentication-agent-1.desktop" and
+  "polkit-kde-authentication-agent-1.desktop".
 
 Add "debug" switch to fingerprint-gui, you can see the debug log in
 /var/log/auth.log
 
+Make sure that directory "/var/lib/fingerprint-gui" and all its subdirectories
+are owned by root.root with mode 755 and all files in these directories are also
+owned by root.root with mode 600.
+
 Refer to "Manual_en.html" and "CHANGELOG" for more information.
 EOF
-  if [[ `lsusb -d 0483:` ]] || [[ `lsusb -d 147e:` ]]
-  then
-    getent group plugdev &> /dev/null || groupadd -r plugdev > /dev/null
-    chown -R root.plugdev /var/upek_data
-    chown root.plugdev /etc/upek.cfg
-  fi
+  # plugdev group changes
+  getent group plugdev &> /dev/null || groupadd -r plugdev > /dev/null
+  chown -R root.plugdev "/var/upek_data"
+  chown root.plugdev "/etc/upek.cfg"
+  # fingerprint data changes
+  chown -R root.root "/var/lib/fingerprint-gui"
+  find "/var/lib/fingerprint-gui" -type d -exec chmod 755 {} \;
+  find "/var/lib/fingerprint-gui" -type f -exec chmod 600 {} \;
+  # icon update
+  update-desktop-database -q
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
 
 post_remove() {
-  if [[ `lsusb -d 0483:` ]] || [[ `lsusb -d 147e:` ]]
-  then
-    getent group plugdev &> /dev/null && groupdel plugdev > /dev/null
-  fi
+  getent group plugdev &> /dev/null && groupdel plugdev > /dev/null
+  update-desktop-database -q
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }

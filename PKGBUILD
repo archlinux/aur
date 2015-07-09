@@ -3,27 +3,27 @@
 
 pkgname=fingerprint-gui
 pkgver=1.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library"
 arch=('i686' 'x86_64')
 url="http://www.ullrich-online.cc/fingerprint/"
 license=('GPL')
-depends=('qca-ossl' 'libfprint' 'libfakekey')
-makedepends=('qt4>=4.8.4' 'libfprint' 'libfakekey' 'polkit-qt')
+depends=('libfprint' 'libfakekey' 'polkit-qt4' 'qca')
 optdepends=('libusb: for libbsapi')
 source=("http://ullrich-online.cc/nview/Appliance/fingerprint/download/${pkgname}-${pkgver}.tar.gz")
-install=${pkgname}.install
+install="${pkgname}.install"
 md5sums=('a909b2fb386abc9259aac727e8ad97c8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt4 PREFIX=/usr LIB=/usr/lib LIBPOLKIT_QT=LIBPOLKIT_QT_1_1
+  qmake-qt4 PREFIX=/usr LIB=/usr/lib
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
+  install -Dm644 "CHANGELOG" "COPYING" "${pkgdir}/usr/share/doc/${pkgname}/"
 
   install -dm770 "${pkgdir}/var/upek_data"
   install -Dm644 "upek/upek.cfg" "${pkgdir}/etc/"
