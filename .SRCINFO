@@ -1,0 +1,15 @@
+pkgbase = perl-io-captureoutput
+	pkgdesc = capture STDOUT and STDERR from Perl code, subprocesses or XS
+	pkgver = 1.1104
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IO-CaptureOutput
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
+	sha512sums = 5694635c91e4dd11279c33fb9d58e2eb27014f4ea0a976e62c23505524e3d37264aab6d6b1cfe5d925e123d6aa240e574dbc4f489c6c1007da09631368af94f5
+
+pkgname = perl-io-captureoutput
+
