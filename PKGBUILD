@@ -1,10 +1,12 @@
 # Maintainer: McLenin <mclenin at gooogles email>
 
-pkgname=pidgin-facebook-git
+pkgname=purple-facebook-git
 _gitname="purple-facebook"
 pkgver=20150707
 pkgrel=1
-pkgdesc="A pidgin plugin for Facebook chat, based on the new Facebook Messenger protocol"
+pkgdesc="A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook 
+Messenger 
+protocol"
 url="https://github.com/jgeboski/purple-facebook/"
 arch=('i686' 'x86_64')
 license='GPL2'
@@ -20,7 +22,7 @@ pkgver() {
 
 
 depends=(
-  pidgin json-glib zlib
+  libpurple json-glib zlib
 )
 
 
