@@ -1,7 +1,7 @@
 pkgbase = veracity
 	pkgdesc = A new open source distributed version control system.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.veracity-scm.com
 	install = veracity.install
 	arch = x86_64
@@ -11,11 +11,13 @@ pkgbase = veracity
 	makedepends = unzip
 	depends = curl
 	depends = icu
-	depends = js
+	depends = js185
 	optdepends = libgnome-keyring: for remembering authentication credentials
 	options = !makeflags
 	source = http://download.sourcegear.com/Veracity/release/2.5.0.11065/veracity-source-2.5.0.11065.tar.gz
+	source = location.patch
 	sha256sums = a6e9f0bb1215d9730fa95d65d528e60085ac8b64d18307c5038b526cd78636a2
+	sha256sums = 873b8074f07b5059eaf030d006a8676fe3693c7a3e7bc9475bc315ba65787395
 
 pkgname = veracity
 

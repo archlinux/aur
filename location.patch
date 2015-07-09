@@ -1,0 +1,13 @@
+diff -urN veracity.orig/testsuite/CMakeLists.txt veracity/testsuite/CMakeLists.txt
+--- veracity.orig/testsuite/CMakeLists.txt	2015-07-09 11:50:37.560253337 +0200
++++ veracity/testsuite/CMakeLists.txt	2015-07-09 11:51:23.529943553 +0200
+@@ -252,7 +252,8 @@
+ target_link_libraries(u0000_error_messages sglib sg_wc sg_fs3 ${SG_THIRDPARTY_LIBS} ${SG_OS_LIBS})
+ add_test(u0000_error_messages u0000_error_messages)
+ 
+-get_target_property(SGLIB_LOCATION sglib LOCATION)
++#get_target_property(SGLIB_LOCATION sglib LOCATION)
++set(SGLIB_LOCATION $<TARGET_OBJECTS:sglib>)
+ get_filename_component(SGLIB_DIR ${SGLIB_LOCATION} PATH)
+ set(SGLIB_OBJECT_DIR "${SGLIB_DIR}${CMAKE_FILES_DIRECTORY}/sglib.dir")
+ #message(${SGLIB_OBJECT_DIR})
