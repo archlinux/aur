@@ -1,0 +1,21 @@
+post_install() {
+source /etc/profile.d/slepc.sh
+source /etc/profile.d/petsc.sh
+noVersion=${1%%-[1-9]}
+rootDir=${noVersion/_/-}
+
+cat << EOF
+
+1) If you just ran makepkg in this directory then
+   to test the SLEPc installation you can run:
+
+   # cd src/slepc-${rootDir}/; make SLEPC_DIR=$SLEPC_DIR PETSC_DIR=$PETSC_DIR test
+
+2) Set your environment variable somewhere appropriate:
+
+export SLEPC_DIR=/opt/slepc/arch-linux2-cxx-opt
+
+EOF
+}
+
+# vim:set ts=2 sw=2 et:

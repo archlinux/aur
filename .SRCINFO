@@ -1,0 +1,18 @@
+pkgbase = slepc
+	pkgdesc = Scalable library for Eigenvalue problem computations
+	pkgver = 3.5.3
+	pkgrel = 2
+	url = http://www.grycap.upv.es/slepc
+	install = slepc.install
+	arch = i686
+	arch = x86_64
+	license = GNUv3
+	depends = python2
+	depends = gcc
+	depends = gcc-fortran
+	depends = petsc>=3.5.3
+	source = http://www.grycap.upv.es/slepc/download/distrib/slepc-3.5.3.tar.gz
+	md5sums = 417a691e5a756ba2a6dde7f156ff57a5
+
+pkgname = slepc
+
