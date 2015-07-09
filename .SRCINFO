@@ -1,6 +1,6 @@
 pkgbase = physlock-git
 	pkgdesc = lightweight linux console locking tool (Git version)
-	pkgver = 0.67.v0.4.4.7.g568a46e
+	pkgver = 0.4.5.r3.gb64dccc
 	pkgrel = 1
 	url = https://github.com/muennich/physlock
 	arch = i686

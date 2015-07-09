@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=physlock-git
-pkgver=0.67.v0.4.4.7.g568a46e
+pkgver=0.4.5.r3.gb64dccc
 pkgrel=1
 pkgdesc="lightweight linux console locking tool (Git version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver () {
   cd "${srcdir}/${pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always | sed 's|-|.|g')"
+  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
 }
 
 build() {
