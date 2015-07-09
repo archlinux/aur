@@ -1,0 +1,14 @@
+pkgbase = lib32-jansson
+	pkgdesc = C library for encoding, decoding and manipulating JSON data
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://www.digip.org/jansson/
+	arch = x86_64
+	license = MIT
+	depends = jansson
+	depends = lib32-glibc
+	source = http://www.digip.org/jansson/releases/jansson-2.7.tar.bz2
+	sha256sums = 459f2b7cf22fb676286723f26169a17cf111fbfb6f54e3dc2ec6b6f9f4a97bdc
+
+pkgname = lib32-jansson
+
