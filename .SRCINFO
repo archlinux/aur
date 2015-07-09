@@ -1,0 +1,18 @@
+pkgbase = jags
+	pkgdesc = Bayesian hierarchical models using Markov Chain Monte Carlo (MCMC) simulation
+	pkgver = 3.4.0
+	pkgrel = 2
+	url = http://mcmc-jags.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gcc-fortran
+	makedepends = lapack
+	depends = lapack
+	depends = libtool
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/mcmc-jags/JAGS/3.x/Source/JAGS-3.4.0.tar.gz
+	md5sums = ac8242931837e4367b2a3de8b231aa0e
+
+pkgname = jags
+
