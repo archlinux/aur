@@ -10,9 +10,9 @@ pkgbase = masterpdfeditor
 	depends = qt4
 	source = masterpdfeditor.desktop
 	sha256sums = 29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd
-	source_i686 = http://code-industry.net/public/master-pdf-editor-3.2.62_i386.tar.gz
+	source_i686 = http://get.code-industry.net/public/master-pdf-editor-3.2.62_i386.tar.gz
 	sha256sums_i686 = 4bd36e4cf4192c3a393baf5335a4bc9d75fbe2c8f35fe6bda3e637ae62d9bcc0
-	source_x86_64 = http://code-industry.net/public/master-pdf-editor-3.2.62_amd64.tar.gz
+	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-3.2.62_amd64.tar.gz
 	sha256sums_x86_64 = 30db9548412f38aeebf795543dde36fc1f9fcb5244c61e22d25bafe68528c02d
 
 pkgname = masterpdfeditor

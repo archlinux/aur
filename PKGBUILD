@@ -12,8 +12,8 @@ depends=('qt4')
 install=${pkgname}.install
 
 source=(${pkgname}.desktop)
-source_i686=(http://code-industry.net/public/master-pdf-editor-${pkgver}_i386.tar.gz)
-source_x86_64=(http://code-industry.net/public/master-pdf-editor-${pkgver}_amd64.tar.gz)
+source_i686=(http://get.code-industry.net/public/master-pdf-editor-${pkgver}_i386.tar.gz)
+source_x86_64=(http://get.code-industry.net/public/master-pdf-editor-${pkgver}_amd64.tar.gz)
 
 sha256sums=('29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd')
 sha256sums_i686=('4bd36e4cf4192c3a393baf5335a4bc9d75fbe2c8f35fe6bda3e637ae62d9bcc0')
