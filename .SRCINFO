@@ -1,0 +1,17 @@
+pkgbase = gdmenu
+	pkgdesc = GTK+ dmenu clone
+	pkgver = r18.d0b9dfc
+	pkgrel = 1
+	url = https://github.com/rliang/gdmenu
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gtk3
+	provides = gdmenu
+	conflicts = gdmenu
+	source = git+https://github.com/rliang/gdmenu.git
+	md5sums = SKIP
+
+pkgname = gdmenu
+
