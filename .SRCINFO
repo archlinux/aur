@@ -1,0 +1,21 @@
+pkgbase = chicken-filepath
+	pkgdesc = Chicken Scheme Egg: Cross-platform file path manipulation.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/filepath
+	install = chicken.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-matchable
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-filepath-1.5.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=filepath&version=1.5
+	source = chicken-filepath-1.5.html::http://wiki.call-cc.org/eggref/4/filepath.html
+	md5sums = 82313ef72f684b7de33722a369a0673c
+	md5sums = 861bc4f472062364cd75c127f7ba35da
+
+pkgname = chicken-filepath
+
