@@ -25,13 +25,13 @@ package() {
 	install -Dm644 "$srcdir/graylog-web-interface.conf" "$pkgdir/etc/conf.d/graylog-web-interface.conf"
 	install -Dm644 "$srcdir/graylog-web-interface.service" "$pkgdir/usr/lib/systemd/system/graylog-web-interface.service"
 
-	mkdir -p $pkgdir/{usr/lib/$pkgname,etc/graylog/web-interface}
+	mkdir -p $pkgdir/{usr/lib/$pkgname/lib,etc/graylog/web-interface}
 
 	install -Dm644 lib/*  "$pkgdir/usr/lib/$pkgname/"
 	install -Dm644 conf/* "$pkgdir/etc/graylog/web-interface/"
 	install -dm755 -o nobody "$pkgdir/var/log/$pkgname/"
 
-	ln -s $pkgname.$pkgname-$pkgver.jar "$pkgdir/usr/lib/$pkgname/$pkgname.jar"
+	ln -s $pkgname.$pkgname-$pkgver.jar "$pkgdir/usr/lib/$pkgname/lib/$pkgname.jar"
 	ln -s /etc/graylog/web-interface/ $pkgdir/usr/lib/$pkgname/conf
 	ln -s /var/log/graylog-web-interface/ $pkgdir/usr/lib/$pkgname/logs
 }
