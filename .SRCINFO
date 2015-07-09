@@ -1,0 +1,32 @@
+pkgbase = gnudatalanguage
+	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://gnudatalanguage.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = python2
+	depends = python2-numpy
+	depends = plplot
+	depends = gsl
+	depends = readline
+	depends = hdf5
+	depends = netcdf
+	depends = netcdf-cxx-legacy
+	depends = wxgtk
+	depends = fftw
+	depends = udunits
+	depends = pslib
+	depends = grib_api
+	depends = udunits
+	depends = eigen3
+	options = !makeflags
+	source = http://downloads.sourceforge.net/gnudatalanguage/gdl-0.9.5.tar.gz
+	source = gdl.profile
+	md5sums = 2d02283c544820729479a57545d5b599
+	md5sums = 40aa5fd8278cd8e80425c62a577563cc
+
+pkgname = gnudatalanguage
+
