@@ -1,0 +1,18 @@
+pkgbase = lltag
+	pkgdesc = Automatic command-line music (mp3/ogg/flac) file tagger and renamer
+	pkgver = 0.14.4
+	pkgrel = 1
+	url = http://home.gna.org/lltag
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	optdepends = mp3info: id3 support
+	optdepends = perl-mp3-tag: id3v2 support
+	optdepends = vorbis-tools: ogg support
+	optdepends = flac: FLAC support
+	source = http://download.gna.org/lltag/lltag-0.14.4.tar.bz2
+	md5sums = baa55ca592214e78671676492518170b
+
+pkgname = lltag
+
