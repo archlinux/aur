@@ -1,0 +1,10 @@
+[Desktop Entry]
+Value=1.0
+Type=Application
+Categories=Game;
+Name=Crayon Physics Deluxe
+Comment=Kloonigames
+GenericName=Sandbox Puzzle Game
+Icon=kloonigames-crayon
+Exec=crayon
+Terminal=false

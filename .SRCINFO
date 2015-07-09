@@ -5,12 +5,22 @@ pkgbase = crayonphysicsdeluxe
 	url = http://www.crayonphysics.com/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:commercial
 	options = !strip
 	source = hib://crayon_physics_deluxe-linux-release55.tar.gz
+	source = crayonphysicsdeluxe.desktop
 	source = crayon.sh
 	md5sums = 3f799bba4fbca02fcee4b866e17b193d
+	md5sums = 75e2f77781e830e4eb40b90c091dd858
 	md5sums = 4e3c5f5fe8fe1db8e36d6a83dc30625d
+	depends_i686 = glu
+	depends_i686 = qt4
+	depends_i686 = sdl_image
+	depends_i686 = sdl_mixer
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-qt4
+	depends_x86_64 = lib32-sdl_image
+	depends_x86_64 = lib32-sdl_mixer
 
 pkgname = crayonphysicsdeluxe
 
