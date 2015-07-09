@@ -1,0 +1,16 @@
+pkgbase = cvsps2
+	pkgdesc = cvsps v2, needed by 'git cvsimport'
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://www.cobite.com/cvsps/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = cvsps
+	source = http://www.cobite.com/cvsps/cvsps-2.1.tar.gz
+	source = inet_addr-64bit.patch
+	md5sums = bde2110ed9f5d14de8f8cb04e9d596fe
+	md5sums = 669d2eefca07ef46cafbe3686d616239
+
+pkgname = cvsps2
+
