@@ -1,0 +1,11 @@
+pkgbase = openttd-opengfx-snapshot
+	pkgdesc = A free graphics set for openttd (latest snapshot release)
+	pkgver = 0.5.1+s20141109
+	pkgrel = 1
+	url = http://dev.openttdcoop.org/projects/opengfx
+	arch = any
+	license = GPL
+	conflicts = openttd-opengfx
+
+pkgname = openttd-opengfx-snapshot
+
