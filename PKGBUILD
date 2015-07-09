@@ -2,13 +2,13 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 pkgname=laditools-git
 pkgver=1.0.r9.g498fc36
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities to improve integration and workflow with JACK and 
 LASH."
 arch=('any')
 url="https://launchpad.net/laditools"
 license=('GPL3')
-depends=('pygtk' 'python2-yaml' 'glade')
+depends=('pygtk' 'python2-yaml' 'glade' 'python2-enum')
 makedepends=('git' 'python2' 'python2-distutils-extra')
 provides=("laditools")
 conflicts=("laditools")
