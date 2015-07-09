@@ -1,0 +1,16 @@
+pkgbase = kalibrate-rtl-git
+	pkgdesc = Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices
+	pkgver = aae11c8
+	pkgrel = 1
+	url = https://github.com/steve-m/kalibrate-rtl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = rtl-sdr
+	provides = kalibrate-rtl
+	source = kalibrate-rtl-git::git+https://github.com/steve-m/kalibrate-rtl
+	md5sums = SKIP
+
+pkgname = kalibrate-rtl-git
+
