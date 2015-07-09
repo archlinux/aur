@@ -1,0 +1,15 @@
+pkgbase = lib32-cracklib
+	pkgdesc = Password Checking Library
+	pkgver = 2.9.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/cracklib
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = cracklib
+	depends = lib32-zlib
+	source = http://downloads.sourceforge.net/sourceforge/cracklib/cracklib-2.9.4.tar.gz
+	sha256sums = f2a866b4b9808344228ea6d68b69e3ba9a8a99210e23dfd718d4b95c60be8958
+
+pkgname = lib32-cracklib
+
