@@ -1,0 +1,16 @@
+pkgbase = chicken-check-errors
+	pkgdesc = Chicken Scheme Egg: Argument checks & errors
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://chicken.wiki.br/eggref/4/check-errors
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = chicken>=4.5.0
+	depends = chicken-setup-helper>=1.5.2
+	options = docs
+	options = !libtool
+	options = !emptydirs
+
+pkgname = chicken-check-errors
+
