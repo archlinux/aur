@@ -1,0 +1,14 @@
+pkgbase = gkx86info
+	pkgdesc = GKrellM plugin to display CPU speed (useful for clock stepping)
+	pkgver = 0.0.2
+	pkgrel = 3
+	url = http://anchois.free.fr
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gkrellm
+	source = http://anchois.free.fr/gkx86info2-0.0.2.tar.gz
+	md5sums = e893ac5db865b4621c9f880686d30a99
+
+pkgname = gkx86info
+
