@@ -1,4 +1,4 @@
-pkgbase = python2-rackspace-novaclient
+pkgbase = python-rackspace-novaclient
 	pkgdesc = Metapackage to install python-novaclient and Rackspace extensions
 	pkgver = 1.4
 	pkgrel = 3
@@ -12,9 +12,11 @@ pkgbase = python2-rackspace-novaclient
 	depends = python2-os-networksv2-python-novaclient-ext
 	depends = python2-rackspace-auth-openstack
 	depends = python2-os-diskconfig-python-novaclient-ext
-	provides = python2-rackspace-novaclient=1.4
+	provides = python-rackspace-novaclient=1.4
 	source = http://pypi.python.org/packages/source/r/rackspace-novaclient/rackspace-novaclient-1.4.tar.gz
 	md5sums = 8cd0c5293511ad68bed3594cd4db276f
+
+pkgname = python-rackspace-novaclient
 
 pkgname = python2-rackspace-novaclient
 

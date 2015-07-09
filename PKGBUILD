@@ -1,6 +1,6 @@
 # Maintainer: Troy C < rstrox -ta yahoo -tod com >
 
-pkgname=python2-rackspace-novaclient
+pkgname=('python-rackspace-novaclient' 'python2-rackspace-novaclient')
 pkgver=1.4
 pkgrel=3
 pkgdesc="Metapackage to install python-novaclient and Rackspace extensions"
@@ -15,10 +15,16 @@ md5sums=('8cd0c5293511ad68bed3594cd4db276f')
 
 build() {
 	cd "$srcdir/rackspace-novaclient-${pkgver}"
+	python setup.py build || return 1
 	python2 setup.py build || return 1
 }
 
-package() {
+package_python-rackspace-novaclient() {
+	cd "$srcdir/rackspace-novaclient-${pkgver}"
+	python setup.py install --root=${pkgdir} || return 1
+}
+
+package_python2-rackspace-novaclient() {
 	cd "$srcdir/rackspace-novaclient-${pkgver}"
 	python2 setup.py install --root=${pkgdir} || return 1
 }
