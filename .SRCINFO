@@ -1,0 +1,27 @@
+pkgbase = intrusion2-hib
+	pkgdesc = A 2D action platformer / sidescrolling shooter (Humble Bundle version)
+	pkgver = 0_20130604
+	pkgrel = 2
+	url = http://intrusion2.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = unrar
+	depends = lib32-flashplugin
+	depends = lib32-gtk2
+	depends = lib32-gstreamer0.10
+	depends = lib32-gstreamer0.10-base
+	depends = lib32-nss
+	depends = lib32-libxtst
+	noextract = intrusion2_graphics.rar
+	options = !strip
+	options = !upx
+	source = hib://intrusion2-1370288626-bin
+	source = http://intrusion2.com/files/graphics/intrusion2_graphics.rar
+	source = intrusion2-hib.desktop
+	md5sums = de6a30d7fb3d117065f11743b4f0a13a
+	md5sums = 18b0ebc86da94049b4fc9c3efa781080
+	md5sums = 5228fd61295650f4588ac62b8e139310
+
+pkgname = intrusion2-hib
+

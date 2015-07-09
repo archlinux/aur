@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Intrusion 2
+Comment=vapgames
+GenericName=Action Platformer
+Icon=intrusion2
+Exec=/usr/bin/intrusion2
+Terminal=false
