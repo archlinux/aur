@@ -1,0 +1,22 @@
+pkgbase = capsized-hib
+	pkgdesc = A science-fiction action platformer (Humble Bundle version)
+	pkgver = 0_20130613
+	pkgrel = 1
+	url = http://www.capsizedgame.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = imagemagick
+	depends = openal
+	depends = libtheora
+	depends = libvorbis
+	depends = gcc-libs
+	options = !strip
+	options = !upx
+	source = hib://capsized-06132013-bin
+	source = capsized-hib.desktop
+	md5sums = 710a25b2dc5f948f0a1cf6c6fe39690f
+	md5sums = a6f5bc2ddf20690545cf095d59eec37b
+
+pkgname = capsized-hib
+

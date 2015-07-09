@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Capsized
+Comment=Alientrap Games
+GenericName=Action Platformer
+Icon=capsized
+Exec=/usr/bin/capsized
+Terminal=false
