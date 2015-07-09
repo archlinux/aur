@@ -1,0 +1,18 @@
+pkgbase = ocamlfuse
+	pkgdesc = An ocaml binding for fuse.
+	pkgver = 2.7.1
+	pkgrel = 5
+	url = http://sourceforge.net/apps/mediawiki/ocamlfuse
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = fuse
+	depends = camlidl
+	depends = fuse
+	depends = ocaml-findlib
+	options = staticlibs
+	source = https://forge.ocamlcore.org/frs/download.php/1074/ocamlfuse-2.7.1_cvs2.tar.gz
+	sha256sums = 180d665dfb273813b0014ef618e19f3e96f22cd4b54751b34ac2f31f1e7fd524
+
+pkgname = ocamlfuse
+
