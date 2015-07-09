@@ -4,18 +4,18 @@ post_install() {
     getent passwd teamcity &>/dev/null || useradd -r -g teamcity -d '/var/lib/teamcity' -s /bin/bash -G teamcity teamcity >/dev/null
     chown -R teamcity '/opt/teamcity'
     chown -R teamcity '/var/lib/teamcity'
-    echo "Make sure /usr/lib/jvm/default-java symlinks to your prefered Java environment."
+    echo "Make sure /usr/lib/jvm/default symlinks to your prefered Java environment."
     echo "If you want to use a different Java, set it in /etc/conf.d/teamcity"
     echo ""
     echo "To start your instance:"
     echo "  systemctl start teamcity-server"
     echo "  systemctl start teamcity-agent"
-    echo 
+    echo
     echo "Hint for newcomers: by default, TeamCity operates on port 8111."
 }
 
 post_upgrade() {
-    echo "Make sure /usr/lib/jvm/default-java symlinks to your prefered Java environment."
+    echo "Make sure /usr/lib/jvm/default symlinks to your prefered Java environment."
     echo "If you want to use a different Java, set it in /etc/conf.d/teamcity"
 }
 
