@@ -20,7 +20,7 @@ optdepends=("vlc: Internet video/audio support"
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
 source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver-Java8.tgz")
-sha1sums=('0c1b36895a04a06e5d9cae0754d2045164336b46')
+sha1sums=('bb72a351acd5c43b1c7e14eac8af8cbee02f289c')
 
 package() {
   mkdir -p $pkgdir/opt/ums
