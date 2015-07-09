@@ -1,0 +1,12 @@
+pkgbase = 7kaa-music
+	pkgdesc = Music set for Seven Kingdoms: Ancient Adversaries
+	pkgver = 2.13
+	pkgrel = 3
+	url = http://7kfans.com/
+	arch = any
+	license = custom
+	source = http://www.7kfans.com/downloads/7kaa-music.tar.bz2
+	md5sums = 90716e41b58e56b816ffea797fb24676
+
+pkgname = 7kaa-music
+
