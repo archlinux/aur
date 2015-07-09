@@ -1,0 +1,15 @@
+pkgbase = fenics-git
+	pkgdesc = automated, efficient solution of differential equations
+	pkgver = 1
+	pkgrel = 1
+	url = https://launchpad.net/fenics
+	arch = i686
+	arch = x86_64
+	groups = fenics-git
+	license = LGPL
+	depends = dolfin-git
+	conflicts = dolfin
+	options = !emptydirs
+
+pkgname = fenics-git
+
