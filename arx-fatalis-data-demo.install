@@ -1,0 +1,10 @@
+
+post_install() {
+  echo "This package only installs the (proprietary) game demo data, no"
+  echo "game binaries."
+  echo "To actually play the demo, compile and install Arx Libertatis,"
+  echo "the community-driven open-source port of Arx Fatalis for Linux"
+  echo "based on the publically released Arx Fatalis 1.21 source code."
+  echo " -> http://arx-libertatis.org"
+  echo " -> AUR package: arx-libertatis"
+}
