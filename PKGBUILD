@@ -12,7 +12,6 @@ provides=(globus=$pkgver gsissh=6.4p1 myproxy=$pkgver)
 replaces=(globus)
 conflicts=(globus myproxy)
 source=(http://toolkit.globus.org/ftppub/gt6/installers/src/globus_toolkit-$pkgver.tar.gz
-        globus.env.sh
         globus.sysusers)
 sha1sums=('2f6c451664d01d238906519ca33a4b4d9fb1217d'
           'ad9c17923fb85224cb134beb79c04871c3a18307'
@@ -44,7 +43,6 @@ package() {
   mv "$pkgdir"/usr/doc/gsi_openssh  "$pkgdir"/usr/share/doc/
 
   cd "$srcdir"
-  install -Dm 644 globus.env.sh   "$pkgdir"/etc/profile.d/globus.sh
   install -Dm 644 globus.sysusers "$pkgdir"/usr/lib/sysusers.d/globus.conf
 }
 

@@ -15,7 +15,6 @@ pkgbase = globus-toolkit
 	replaces = globus
 	options = !emptydirs
 	source = http://toolkit.globus.org/ftppub/gt6/installers/src/globus_toolkit-6.0.1433516164.tar.gz
-	source = globus.env.sh
 	source = globus.sysusers
 	sha1sums = 2f6c451664d01d238906519ca33a4b4d9fb1217d
 	sha1sums = ad9c17923fb85224cb134beb79c04871c3a18307
