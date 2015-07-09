@@ -1,0 +1,25 @@
+pkgbase = pcl
+	pkgdesc = A comprehensive open source library for n-D Point Clouds and 3D geometry processing
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = http://www.pointclouds.org
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = cmake
+	depends = boost
+	depends = eigen
+	depends = flann
+	depends = vtk
+	depends = qhull
+	depends = qt5-base
+	depends = glu
+	optdepends = openmpi
+	optdepends = cuda
+	optdepends = openni2
+	optdepends = python-sphinx
+	source = https://github.com/PointCloudLibrary/pcl/archive/pcl-1.7.2.tar.gz
+	md5sums = 02c72eb6760fcb1f2e359ad8871b9968
+
+pkgname = pcl
+
