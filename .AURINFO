@@ -1,0 +1,19 @@
+pkgbase = markoftheninja-hib
+	pkgdesc = Mark of the Ninja, a side-scrolling stealth game (Humble Bundle version)
+	pkgver = 1.38+h20131002
+	pkgrel = 1
+	url = http://www.markoftheninja.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = sdl
+	depends = libgl
+	depends = gcc-libs
+	depends = xdg-utils
+	source = hib://markoftheninja_linux38_1380755375.zip
+	source = markoftheninja-hib.desktop
+	options = !strip
+	options = !upx
+
+pkgname = markoftheninja-hib
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Mark of the Ninja
+Comment=Klei Entertainment
+GenericName=Stealth Game
+Icon=markoftheninja
+Exec=/usr/bin/markoftheninja
+Terminal=false
