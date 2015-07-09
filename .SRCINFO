@@ -1,0 +1,16 @@
+pkgbase = yaml-cpp0.3
+	pkgdesc = YAML parser and emitter in C++, written around the YAML 1.2 spec
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://code.google.com/p/yaml-cpp/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = yaml-cpp=0.3.0
+	conflicts = yaml-cpp
+	source = http://yaml-cpp.googlecode.com/files/yaml-cpp-0.3.0.tar.gz
+	md5sums = 9aa519205a543f9372bf4179071c8ac6
+
+pkgname = yaml-cpp0.3
+
