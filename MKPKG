@@ -1,0 +1,4 @@
+pkgname=('lib32-at-spi2-atk')
+builddeps=('lib32-at-spi2-core')
+
+# vim: ts=2 sw=2 et:

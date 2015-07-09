@@ -1,0 +1,17 @@
+pkgbase = lib32-at-spi2-atk
+	pkgdesc = A GTK+ module that bridges ATK to D-Bus at-spi
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Accessibility
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	makedepends = intltool
+	depends = at-spi2-atk
+	depends = lib32-at-spi2-core
+	depends = lib32-atk
+	source = http://download.gnome.org/sources/at-spi2-atk/2.16/at-spi2-atk-2.16.0.tar.xz
+	sha256sums = 78efc45ec36383bf785f8636e64a8d866defeb020e00a08f92978f1fc3772ff9
+
+pkgname = lib32-at-spi2-atk
+
