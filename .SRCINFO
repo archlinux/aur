@@ -1,0 +1,21 @@
+pkgbase = ufl-git
+	pkgdesc = Unified form language.
+	pkgver = 20140711
+	pkgrel = 1
+	url = https://bitbucket.org/fenics-project/ufl
+	arch = i686
+	arch = x86_64
+	groups = fenics-git
+	license = LGPL
+	makedepends = git
+	makedepends = python2
+	depends = python2
+	depends = python2-six
+	provides = ufl
+	conflicts = ufl
+	options = !emptydirs
+	source = ufl::git+https://bitbucket.org/fenics-project/ufl.git#branch=master
+	md5sums = SKIP
+
+pkgname = ufl-git
+
