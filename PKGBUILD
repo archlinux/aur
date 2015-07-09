@@ -3,7 +3,7 @@
 
 _gitname=fofix
 pkgname=fofix-git
-pkgver=v4.0.0alpha1.607.g3fe0f93
+pkgver=v4.0.0alpha2.r190.g3fe0f93
 epoch=1
 pkgrel=1
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)"
@@ -40,7 +40,7 @@ md5sums=('7ad2bde66aea003e1cc152b7650453ea'
 
 pkgver() {
     cd "$_gitname"
-    git describe --always | sed 's|-|.|g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
