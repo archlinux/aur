@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-libmm-glib
-pkgver=1.2.0
+pkgver=1.4.8
 pkgrel=1
 pkgdesc='ModemManager library'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-glib2' 'libmm-glib')
 makedepends=('gcc-multilib' 'gobject-introspection' 'intltool' 'lib32-libmbim'
              'lib32-libqmi' 'lib32-polkit' 'lib32-systemd' 'python2' 'vala')
 source=("http://www.freedesktop.org/software/ModemManager/ModemManager-${pkgver}.tar.xz")
-sha256sums=('8bd9d8c3b506f34a9f927e95784026d1fe132c9d60fc426a892b690f7d6408bc')
+sha256sums=('d951eaffbe513bcde54f90602c6c423a49593f656d6485ba95f6fcb4bc1e8003')
 
 build() {
   cd ModemManager-${pkgver}
