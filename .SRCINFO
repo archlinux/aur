@@ -1,0 +1,19 @@
+pkgbase = imapsync
+	pkgdesc = IMAP synchronisation, sync, copy or migration tool
+	pkgver = 1.607
+	pkgrel = 1
+	url = http://www.linux-france.org/prj/
+	arch = any
+	license = GPL
+	depends = perl-date-manip
+	depends = perl-mail-imapclient
+	depends = perl-term-readkey
+	depends = perl-io-socket-ssl
+	depends = perl-file-copy-recursive
+	depends = perl-io-tee
+	depends = perl-unicode-string
+	source = https://fedorahosted.org/released/imapsync/imapsync-1.607.tgz
+	sha256sums = 784331cfa6cc391751dcdc5290eba5d50bf3ddbe9b213f072b413941a3fe4f2a
+
+pkgname = imapsync
+
