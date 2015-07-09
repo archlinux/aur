@@ -1,8 +1,8 @@
 pkgbase = fofix
-	pkgdesc = fretsonfire X (FoFiX). Highly improved version of Frets on Fire
+	pkgdesc = Frets on Fire X (FoFiX). Highly improved version of Frets on Fire
 	pkgver = 3.121
 	pkgrel = 6
-	url = http://code.google.com/p/fofix
+	url = https://github.com/fofix/fofix
 	install = fofix.install
 	arch = any
 	groups = games
