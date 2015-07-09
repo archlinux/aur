@@ -1,0 +1,14 @@
+pkgbase = kalign
+	pkgdesc = A fast and accurate multiple sequence alignment algorithm designed to align large numbers of sequences
+	pkgver = 2.0.4
+	pkgrel = 2
+	url = http://msa.sbc.su.se
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://msa.sbc.su.se/downloads/kalign/current.tar.gz
+	md5sums = bde173eb65e617ed73cd78bad7f881a3
+
+pkgname = kalign
+
