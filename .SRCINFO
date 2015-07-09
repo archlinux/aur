@@ -1,0 +1,14 @@
+pkgbase = openelec-dvb-firmware
+	pkgdesc = Set of dvb firmwares from OpenElec project
+	pkgver = 88.4ded321
+	pkgrel = 1
+	url = https://github.com/OpenELEC/dvb-firmware.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git diffutils
+	source = git+https://github.com/OpenELEC/dvb-firmware.git
+	md5sums = SKIP
+
+pkgname = openelec-dvb-firmware
+
