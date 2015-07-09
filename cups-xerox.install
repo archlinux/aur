@@ -1,0 +1,14 @@
+post_install() {
+  echo "If CUPS isn't already running, please start and enable it with the following:"
+  echo "  systemctl enable org.cups.cupsd.service"
+  echo "  systemctl start org.cups.cupsd.service"
+  echo ""
+  echo "To add a network printer:"
+  echo "  lpadmin -p Printer_Name -E -v socket://x.x.x.x:9100/ -P /usr/share/cups/mode/Xerox/_YOUR_MODEL_.ppd"
+  echo ""
+  echo "Where x.x.x.x is the ip address of the printer and _YOUR_MODEL_.ppd is the ppd file for your model of printer."
+  echo ""
+  echo "You can also add the printer through the CUPS web interface located at:"
+  echo "http://localhost:631/"
+  echo ""
+}
