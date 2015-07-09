@@ -1,6 +1,6 @@
 pkgbase = ums
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8.
-	pkgver = 5.1.4
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = http://www.universalmediaserver.com/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ums
 	depends = java-runtime
 	backup = opt/ums/UMS.conf
 	backup = opt/ums/WEB.conf
-	source = http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-5.1.4-Java8.tgz
+	source = http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-5.2.0-Java8.tgz
 	sha1sums = 0c1b36895a04a06e5d9cae0754d2045164336b46
 
 pkgname = ums
