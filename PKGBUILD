@@ -2,7 +2,7 @@
 
 pkgname=perl-vk-app
 _cpanname=VK-App
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc='Creation of a client application for vk.com'
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL2)
 url='http://search.cpan.org/dist/$_cpanname/'
 depends=(perl perl-lwp-protocol-https perl-json)
 source=(http://search.cpan.org/CPAN/authors/id/M/MA/MAG/$_cpanname-$pkgver.tar.gz)
-sha1sums=('7ec4b2e8b56e7b69dfadb39286c7f7e60c37e506')
+sha1sums=('4878af974036204d7e6ecbf603ecb855316f7e6f')
 
 build() {
   cd $_cpanname-$pkgver
