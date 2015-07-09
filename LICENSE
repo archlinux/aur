@@ -1,0 +1,40 @@
+Files: *
+
+Copyright: © 1996 X Consortium
+           © 1996 Dalrymple Computing
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE X CONSORTIUM OR DALRYMPLE CONSULTING BE LIABLE FOR
+ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Except as contained in this notice, the names of the X Consortium and
+ Dalrymple Consulting shall not be used in advertising or otherwise to
+ promote the sale, use or other dealings in this Software without prior
+ written authorization.
+
+Files: regexp.patch
+
+Copyright: © 2006-2007 Daniel Baumann <daniel@debian.org>
+           © 2007 Philipp Benner <pbenner@uni-osnabrueck.de>
+License: GPL-2+
+ This package was debianized by Daniel Baumann on Sat, 29 Jul 2006
+ and is licensed under the GPL. It is now maintained by Philipp Benner.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+

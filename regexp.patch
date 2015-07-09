@@ -1,0 +1,26 @@
+--- a/Instant/tptregexp/regexp.c	1999-07-03 12:58:24.000000000 +0000
++++ b/Instant/tptregexp/regexp.c	2006-07-29 15:23:05.000000000 +0000
+@@ -196,7 +196,6 @@
+ 	register char *longest;
+ 	register int len;
+ 	int flags;
+-	extern char *malloc();
+ 
+ 	if (exp == NULL)
+ 		FAIL("NULL argument");
+@@ -705,7 +704,6 @@
+ register char *string;
+ {
+ 	register char *s;
+-	extern char *strchr();
+ 
+ 	/* Be paranoid... */
+ 	if (prog == NULL || string == NULL) {
+@@ -804,7 +802,6 @@
+ {
+ 	register char *scan;	/* Current node. */
+ 	char *next;		/* Next node. */
+-	extern char *strchr();
+ 
+ 	scan = prog;
+ #ifdef DEBUG
