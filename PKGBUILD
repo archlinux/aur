@@ -1,4 +1,4 @@
-# Maintainer: x@safe-mail.net where x stands for jbjunk
+# Maintainer: darkfeline@felesatra.moe
 
 pkgname=non-mixer-git
 pkgver=r1798.18a299c
