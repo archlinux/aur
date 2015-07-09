@@ -1,0 +1,39 @@
+pkgbase = lib32-smbclient
+	pkgdesc = Tools to access a server's filespace and printers via SMB
+	pkgver = 4.1.12
+	pkgrel = 1
+	url = http://www.samba.org
+	arch = x86_64
+	license = GPL3
+	makedepends = lib32-avahi
+	makedepends = lib32-gnutls
+	makedepends = lib32-libbsd
+	makedepends = lib32-libcap
+	makedepends = lib32-libcups
+	makedepends = lib32-libgcrypt
+	makedepends = lib32-pam
+	makedepends = lib32-python2
+	makedepends = lib32-systemd
+	makedepends = lib32-talloc
+	makedepends = lib32-tdb
+	source = http://us1.samba.org/samba/ftp/stable/samba-4.1.12.tar.gz
+	sha256sums = 033604674936bf5c77d7df299b0626052b84a41505a6a6afe902f6274fc29898
+
+pkgname = lib32-libwbclient
+	pkgdesc = Samba winbind client library
+	depends = lib32-libbsd
+	depends = libwbclient
+
+pkgname = lib32-smbclient
+	depends = lib32-avahi
+	depends = lib32-gnutls
+	depends = lib32-libcap
+	depends = lib32-libcups
+	depends = lib32-libgcrypt
+	depends = lib32-libwbclient
+	depends = lib32-pam
+	depends = lib32-systemd
+	depends = lib32-talloc
+	depends = lib32-tdb
+	depends = smbclient
+

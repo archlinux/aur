@@ -1,0 +1,1 @@
+sudo multilib-build -- -I ~/AUR/pkg/lib32-gdbm*.pkg.tar.xz -I ~/AUR/pkg/lib32-libdaemon*.pkg.tar.xz -I ~/AUR/pkg/lib32-avahi*.pkg.tar.xz -I ~/AUR/pkg/lib32-libbsd*.pkg.tar.xz -I ~/AUR/pkg/lib32-cracklib*.pkg.tar.xz -I ~/AUR/pkg/lib32-libtirpc*.pkg.tar.xz -I ~/AUR/pkg/lib32-pam*.pkg.tar.xz -I ~/AUR/pkg/lib32-talloc*.pkg.tar.xz

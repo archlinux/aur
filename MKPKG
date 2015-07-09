@@ -1,0 +1,11 @@
+arch=('x86_64')
+pkgname=('lib32-libwbclient' 'lib32-smbclient')
+builddeps=('lib32-gdbm' 'lib32-libdaemon' 'lib32-avahi' 'lib32-cracklib'
+           'lib32-libtirpc' 'lib32-pam' 'lib32-talloc')
+
+build () {
+    shift
+    ionice -c 3 chrt -b 0 sudo multilib-build -- $*
+}
+
+# vim: ts=2 sw=2 et:
