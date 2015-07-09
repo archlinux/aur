@@ -1,0 +1,18 @@
+pkgbase = flann
+	pkgdesc = FLANN is a library for performing fast approximate nearest neighbor searches in high dimensional spaces
+	pkgver = 1.8.4
+	pkgrel = 2
+	url = http://www.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = python2
+	depends = hdf5
+	optdepends = python2: python bindings
+	optdepends = cuda: cuda support
+	source = http://people.cs.ubc.ca/~mariusm/uploads/FLANN/flann-1.8.4-src.zip
+	md5sums = a0ecd46be2ee11a68d2a7d9c6b4ce701
+
+pkgname = flann
+
