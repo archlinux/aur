@@ -1,0 +1,13 @@
+pkgbase = libtiff3
+	pkgdesc = Library for manipulation of TIFF images, legacy version, links to libtiff.so.3
+	pkgver = 3.9.7
+	pkgrel = 1
+	url = http://www.remotesensing.org/libtiff/
+	arch = any
+	license = custom
+	depends = libtiff4
+	optdepends = freeglut: for using tiffgt
+	options = !libtool
+
+pkgname = libtiff3
+
