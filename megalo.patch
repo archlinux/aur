@@ -1,0 +1,105 @@
+# Fixs segfault in AWN when Schema.get_metadata_option returns something, that
+# is not boolean
+--- libdesktop-agnostic.bak/config-client.vala	2011-03-12 15:14:23.000000000 +0100
++++ libdesktop-agnostic/config-client.vala	2013-10-28 01:01:10.894005264 +0100
+@@ -134,7 +134,7 @@
+     create_instance_config (string instance_id) throws GLib.Error
+     {
+-      Value single_instance = this._schema.get_metadata_option ("single_instance");
+-      if ((bool)single_instance)
++      Value? single_instance = this._schema.get_metadata_option ("single_instance");
++      if ((single_instance != null) && (single_instance.get_boolean()) )
+       {
+         return false;
+       }
+# ParamSpecEnum disappeared from gobject
+diff -ur libdesktop-agnostic.bak/config-bridge.vala libdesktop-agnostic/config-bridge.vala
+--- libdesktop-agnostic.bak/config-bridge.vala	2011-03-12 15:14:23.000000000 +0100
++++ libdesktop-agnostic/config-bridge.vala	2013-10-28 00:21:12.524020208 +0100
+@@ -216,7 +216,7 @@
+           spec.value_type == typeof (double) ||
+           spec.value_type == typeof (int) ||
+           spec.value_type == typeof (long) ||
+-          spec is ParamSpecEnum ||
++          // spec is ParamSpecEnum ||
+           spec.value_type == typeof (string))
+       {
+         func (config, group, key, notifier.on_simple_value_changed);
+# Probably bug in vala compiler, generated c-code accessed non-existing field on NotifyDelegate.
+diff -ur libdesktop-agnostic.bak/config-impl-keyfile.vala libdesktop-agnostic/config-impl-keyfile.vala
+--- libdesktop-agnostic.bak/config-impl-keyfile.vala	2011-03-12 15:14:23.000000000 +0100
++++ libdesktop-agnostic/config-impl-keyfile.vala	2013-10-28 00:49:46.827342860 +0100
+@@ -423,10 +423,8 @@
+       unowned SList<NotifyDelegate> funcs = this._notifiers.get_data (full_key);
+       foreach (unowned NotifyDelegate data in funcs)
+       {
+-        if (data != null && data.callback != null)
+-        {
++          // Modified according to config-impl-gconf.vala
+           data.execute (group, key, value);
+-        }
+       }
+     }
+
+# Updated to current GLib bindigs
+diff -ur libdesktop-agnostic.bak/vfs-file-impl-gio.vala libdesktop-agnostic/vfs-file-impl-gio.vala
+--- libdesktop-agnostic.bak/vfs-file-impl-gio.vala	2011-03-12 15:14:23.000000000 +0100
++++ libdesktop-agnostic/vfs-file-impl-gio.vala	2013-10-28 00:12:29.530690133 +0100
+@@ -177,13 +177,21 @@
+     public override bool
+     load_contents (out string contents, out size_t length) throws Error
+     {
+-      return this._file.load_contents (null, out contents, out length, null);
++      uint8 [] glib_contents;
++      string etag_out;
++      if (this._file.load_contents (null, out glib_contents, out etag_out)) {
++		  contents = (string)glib_contents;
++		  length = glib_contents.length;
++		  g_free(glib_contents);
++		  return true;
++	  } else {
++		  return false;
++	  }
+     }
+     public override bool
+     replace_contents (string contents) throws Error
+     {
+-      return this._file.replace_contents (contents, contents.size (), null,
+-                                          false, 0, null, null);
++	      return this._file.replace_contents ((uint8[])contents, null, false, FileCreateFlags.NONE, null);
+     }
+     public override bool
+     launch () throws Error
+# Return value transfers ownership but method return type hasn't been declared to
+# transfer ownership
+diff -ur libdesktop-agnostic.bak/vfs-volume-impl-gio.vala libdesktop-agnostic/vfs-volume-impl-gio.vala
+--- libdesktop-agnostic.bak/vfs-volume-impl-gio.vala	2011-03-12 15:14:23.000000000 +0100
++++ libdesktop-agnostic/vfs-volume-impl-gio.vala	2013-10-28 00:18:43.450687804 +0100
+@@ -27,6 +27,7 @@
+   public class VolumeGIO : Object, Volume
+   {
+     private GLib.Volume vol;
++    private string? _name;
+     public GLib.Volume implementation
+     {
+       construct
+@@ -38,7 +39,9 @@
+     {
+       get
+       {
+-        return this.vol.get_name ();
++        if (_name == null)
++            _name = (string)this.vol.get_name ();
++        return _name;
+       }
+     }
+     private File _uri;
+@@ -142,7 +145,7 @@
+     {
+       if (this._unmount_callback == null)
+       {
+-        unowned Mount? mount;
++        Mount? mount;
+         this._unmount_callback = callback;
+         mount = this.vol.get_mount ();
+         if (mount != null)

@@ -1,0 +1,56 @@
+diff --git a/libdesktop-agnostic/ui-icon-chooser-dialog.vala b/libdesktop-agnostic/ui-icon-chooser-dialog.vala
+index 604c976..8e065f5 100644
+--- libdesktop-agnostic.bak/ui-icon-chooser-dialog.vala
++++ libdesktop-agnostic/ui-icon-chooser-dialog.vala
+@@ -165,7 +165,7 @@ namespace DesktopAgnostic.UI
+       {
+         TreeIter iter;
+         Value val;
+-        var store = this._viewer.model as ListStore;
++        var store = this._viewer.model as Gtk.ListStore;
+         store.get_iter (out iter, p);
+         store.get_value (iter, Column.DATA, out val);
+ 
+@@ -205,11 +205,11 @@ namespace DesktopAgnostic.UI
+       return viewer;
+     }
+ 
+-    private ListStore
++    private Gtk.ListStore
+     create_model ()
+     {
+       // icon, name, data
+-      return new ListStore (Column.COUNT,
++      return new Gtk.ListStore (Column.COUNT,
+                             typeof (Gdk.Pixbuf),
+                             typeof (string),
+                             typeof (string),
+@@ -291,12 +291,12 @@ namespace DesktopAgnostic.UI
+     private void
+     on_folder_changed (FileChooser chooser)
+     {
+-      unowned ListStore model;
++      unowned Gtk.ListStore model;
+       string uri;
+       VFS.File directory;
+       SList<VFS.File> children;
+ 
+-      model = this._file_viewer.model as ListStore;
++      model = this._file_viewer.model as Gtk.ListStore;
+       model.clear ();
+ 
+       uri = chooser.get_uri ();
+@@ -342,11 +342,11 @@ namespace DesktopAgnostic.UI
+     private void
+     on_icon_context_changed (ComboBox box)
+     {
+-      unowned ListStore model;
++      unowned Gtk.ListStore model;
+       unowned IconTheme icon_theme;
+       List<string> icon_list;
+ 
+-      model = this._themed_viewer.model as ListStore;
++      model = this._themed_viewer.model as Gtk.ListStore;
+       model.clear ();
+ 
+       icon_theme = IconTheme.get_default ();

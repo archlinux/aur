@@ -1,0 +1,27 @@
+pkgbase = libdesktop-agnostic
+	pkgdesc = Provides an extensible config API, a unified virtual fs API, and a desktop item editor for GLib-based projects
+	pkgver = 0.3.92
+	pkgrel = 8
+	url = https://launchpad.net/libdesktop-agnostic
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = vala
+	makedepends = gconf
+	makedepends = gobject-introspection
+	depends = pygtk
+	optdepends = gconf: gconf configuration backend
+	options = !libtool
+	options = !strip
+	backup = etc/xdg/libdesktop-agnostic/desktop-agnostic.ini
+	source = https://launchpad.net/libdesktop-agnostic/0.4/0.3.92/+download/libdesktop-agnostic-0.3.92.tar.gz
+	source = megalo.patch
+	source = ListStore.patch
+	md5sums = 42374d226a21d57637f97173f6b105a1
+	md5sums = 9be8f4e706b933f456393a782d89d555
+	md5sums = fc0d00e48be5be46045307b4366408be
+
+pkgname = libdesktop-agnostic
+
