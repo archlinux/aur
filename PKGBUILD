@@ -1,4 +1,5 @@
-# Maintainer: Thiago Yukio Kikuchi Oliveira <stratust@gmail.com>
+# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
+# Contributor: Thiago Yukio Kikuchi Oliveira <stratust@gmail.com>
 
 pkgname=globus-toolkit
 pkgver=6.0.1433516164
