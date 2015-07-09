@@ -1,0 +1,13 @@
+pkgbase = python-whitenoise
+	pkgdesc = Radically simplified static file serving for WSGI applications
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/whitenoise
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/w/whitenoise/whitenoise-2.0.2.tar.gz
+	md5sums = 1de83f28df3e1db8b154be685a286605
+
+pkgname = python-whitenoise
+
