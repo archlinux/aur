@@ -1,0 +1,18 @@
+pkgbase = haskell-transformers-compat
+	pkgdesc = A small compatibility shim exposing the new types from transformers 0.3 to older Haskell platforms.
+	pkgver = 0.4.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/transformers-compat
+	install = haskell-transformers-compat.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-transformers
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/transformers-compat/0.4.0.4/transformers-compat-0.4.0.4.tar.gz
+	sha256sums = d5231bc9929ed234032411038c0baae5a3d82939163c2a36582fbe657c46af52
+	sha512sums = 5850fa8ed63684b3dc37897c22d1d32d7412374dcd892e42db7ed975d493fdc8e216630735813ed00203f83dcd17722484a6ec182ccffb6fc8794b4b82b6c951
+
+pkgname = haskell-transformers-compat
+
