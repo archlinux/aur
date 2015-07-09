@@ -1,0 +1,13 @@
+pkgbase = rp++-git
+	pkgdesc = Find ROP gadgets in PE/ELF/MACH-O x86/x64 binaries.
+	pkgver = 20120818
+	pkgrel = 1
+	url = https://github.com/0vercl0k/rp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+
+pkgname = rp++-git
+
