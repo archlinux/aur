@@ -6,8 +6,8 @@
 # Fixes in AUR by: ogarcia
 
 pkgname=libqtelegram-ae-git
-epoch=1
-pkgver=4.1.r24.ge093ef7
+epoch=2
+pkgver=0.5.0.stable.r0.g07872f5
 pkgrel=1
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'i686')

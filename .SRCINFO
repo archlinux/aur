@@ -1,8 +1,8 @@
 pkgbase = libqtelegram-ae-git
 	pkgdesc = Telegram library written in Qt based on telegram-cli code
-	pkgver = 4.1.r24.ge093ef7
+	pkgver = 0.5.0.stable.r0.g07872f5
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://launchpad.net/libqtelegram
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libqtelegram-ae-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-multimedia
-	provides = libqtelegram-ae=1:4.1.r24.ge093ef7
+	provides = libqtelegram-ae=2:0.5.0.stable.r0.g07872f5
 	conflicts = libqtelegram-ae
 	source = libqtelegram-ae-git::git+https://github.com/Aseman-Land/libqtelegram-aseman-edition.git
 	md5sums = SKIP
