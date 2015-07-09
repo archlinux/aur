@@ -1,7 +1,7 @@
 pkgbase = python2-guiqwt
 	pkgdesc = Python library providing efficient 2D data-plotting features
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/guiqwt/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python2-guiqwt
 	makedepends = unzip
 	makedepends = cython2
 	depends = python2-guidata
-	depends = pyqwt
+	depends = python2-pyqwt
 	depends = python2-scipy
 	depends = python-imaging
 	optdepends = python2-pydicom: for DICOM files I/O features
