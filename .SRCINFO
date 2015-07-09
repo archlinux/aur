@@ -1,0 +1,16 @@
+pkgbase = crayonphysicsdeluxe
+	pkgdesc = A 2D physics puzzle / sandbox game, in which your drawings are transformed into objects.
+	pkgver = 55
+	pkgrel = 5
+	url = http://www.crayonphysics.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = hib://crayon_physics_deluxe-linux-release55.tar.gz
+	source = crayon.sh
+	md5sums = 3f799bba4fbca02fcee4b866e17b193d
+	md5sums = 4e3c5f5fe8fe1db8e36d6a83dc30625d
+
+pkgname = crayonphysicsdeluxe
+
