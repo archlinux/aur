@@ -1,7 +1,7 @@
 pkgbase = k810-conf
-	pkgdesc = Logitech K810 Keyboard Configurator, change function keys (F-keys) behavior. Read USAGE at https://github.com/gutenye/aurs/tree/master/k810-conf
+	pkgdesc = Logitech K810 Keyboard Configurator, change function keys (F-keys) behavior. Read USAGE at https://aur4.archlinux.org/cgit/aur.git/tree/README.md?h=k810-conf
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.trial-n-error.de/posts/2012/12/31/logitech-k810-keyboard-configurator
 	install = install
 	arch = i686
