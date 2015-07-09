@@ -1,0 +1,18 @@
+pkgbase = lib32-libgnutls28
+	pkgdesc = A library which provides a secure layer over a reliable transport layer
+	pkgver = 3.3.15
+	pkgrel = 1
+	url = http://gnutls.org/
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	makedepends = gcc-multilib
+	makedepends = lib32-libidn
+	depends = lib32-nettle4
+	depends = lib32-p11-kit
+	depends = lib32-zlib
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.15.tar.xz
+	sha256sums = 8961227852911a1974e15bc017ddbcd4779876c867226d199f06648d8b27ba4b
+
+pkgname = lib32-libgnutls28
+
