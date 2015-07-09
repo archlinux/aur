@@ -1,7 +1,7 @@
 pkgbase = brscan-skey
 	pkgdesc = Brother scan-key-tool
 	pkgver = 0.2.4_1
-	pkgrel = 8
+	pkgrel = 10
 	url = http://support.brother.com/g/s/id/linux/en
 	install = brscan-skey.install
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = brscan-skey
 	source = brscan-skey.service
 	source = brscan-skey-user.service
 	source = LICENSE.html
-	md5sums = 82ba4e7cf73306b17f144731f6484ad0
-	md5sums = da65d820642f760115428769d2639db9
-	md5sums = bd06a5d28abb3b3a3a6a263567cbb78b
+	sha256sums = 80d1d92f71381c160a93ddac1bfcde1e7922dc84332f1f7561c6d328af7e7219
+	sha256sums = 511e49ac6618f2c11e5ed3a4ce4c235bd5d46faa584974f318447b117759651a
+	sha256sums = 7529071ca3e1a5a1a8558a4d2fc5dd47a4f104f1eb3e9be093de8a2a7c3a216a
 	source_i686 = http://www.brother.com/pub/bsc/linux/dlf/brscan-skey-0.2.4-1.i386.rpm
-	md5sums_i686 = c6bc7a501f424541130a1b9a38b76493
+	sha256sums_i686 = 30e236f1256d88431eb6fd8f052165ed976b0616e89cdb18196bf894d06c401a
 	source_x86_64 = http://www.brother.com/pub/bsc/linux/dlf/brscan-skey-0.2.4-1.x86_64.rpm
-	md5sums_x86_64 = 9ad29a0ef9f8f4d6f742fb4293ee08a6
+	sha256sums_x86_64 = 2e034b37e282e44a6f94315d932eb8f34693007e4abd10ca10fb4ec468c9bb3d
 
 pkgname = brscan-skey
 
