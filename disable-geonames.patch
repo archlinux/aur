@@ -1,0 +1,19 @@
+Index: calcelestial/src/calcelestial.c
+===================================================================
+--- calcelestial.orig/src/calcelestial.c
++++ calcelestial/src/calcelestial.c
+@@ -242,14 +242,6 @@ int main(int argc, char *argv[]) {
+ 		error = true;
+ 	}
+ 
+-#ifdef GEONAMES_SUPPORT
+-	/* lookup place at http://geonames.org */
+-	if (query && geonames_lookup(query, (struct pos *) &obs, NULL, 0) != 0) {
+-		fprintf(stderr, "failed to lookup location: %s\n", query);
+-		error = true;
+-	}
+-#endif
+-
+ 	/* validate observer coordinates */
+ 	if (fabs(obs.lat) > 90) {
+ 		fprintf(stderr, "invalid latitude, use --lat\n");
