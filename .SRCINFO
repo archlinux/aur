@@ -1,0 +1,13 @@
+pkgbase = prokit
+	pkgdesc = The ProteanOS Development Kit
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://proteanos.com/dev/prokit/
+	arch = any
+	license = GPL3
+	depends = bash
+	source = http://files.proteanos.com/pub/prokit/1.1.0/prokit-1.1.0.tar.bz2
+	md5sums = afbe178da9a6e8431e45d18b97b801c6
+
+pkgname = prokit
+
