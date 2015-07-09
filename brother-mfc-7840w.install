@@ -1,0 +1,37 @@
+# orig name brother-mfc-8870dw.install
+post_install() {
+  __port2=`lpinfo -v | grep -i 'usb://Brother/MFC-7840W' | head -1`
+  if [ "$__port2" = '' ];then
+          __port2=`lpinfo -v | grep 'usb://' | head -1`
+  fi
+  __port=`echo $__port2| sed s/direct//g`
+  if [ "$__port" = '' ];then
+          __port="usb:/dev/usb/lp0"
+  fi
+
+  lpadmin -p MFC7840W -E -v $__port -P /usr/share/cups/model/MFC7840W.ppd
+  echo "If CUPS is not running now, start it after installation"
+  echo "and type command:" 
+  echo "  lpadmin -p MFC7840W -E -v URL -P /usr/share/cups/model/MFC7840W.ppd"
+  echo "where URL can be found using command:"
+  echo "  lpinfo -v | grep -i 'Brother'"
+  echo "in case of a network printer, take URL:"
+  echo "  socket://ipaddress:9100/"
+  echo "You can also register the new printer using web interface at:"
+  echo "  http://localhost:631/"
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  lpadmin -x HL2030
+}
+
+
+op=$1
+shift
+
+$op "$@"
+
