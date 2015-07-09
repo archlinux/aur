@@ -1,0 +1,29 @@
+pkgbase = sudo-sssd
+	pkgdesc = core sudo package, but with sssd support added in
+	pkgver = 1.8.13
+	pkgrel = 1
+	url = http://www.sudo.ws/sudo/
+	install = sudo.install
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = custom
+	depends = glibc
+	depends = pam
+	depends = libldap
+	depends = sssd
+	provides = sudo
+	conflicts = sudo
+	backup = etc/sudoers
+	backup = etc/pam.d/sudo
+	source = http://www.sudo.ws/sudo/dist/sudo-1.8.13.tar.gz
+	source = http://www.sudo.ws/sudo/dist/sudo-1.8.13.tar.gz.sig
+	source = sudo.tmpfiles.conf
+	source = sudo.pam
+	sha256sums = e374e5edf2c11c00d6916a9f51cb0ad15e51c7b028370fa15169b07e61e05a25
+	sha256sums = SKIP
+	sha256sums = c1de59f1895373ecb39451372abf9a852518ed6eb3401da864e76a1baf2f20ce
+	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
+
+pkgname = sudo-sssd
+
