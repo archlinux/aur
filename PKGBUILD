@@ -10,7 +10,7 @@ url="https://github.com/hadess/iio-sensor-proxy"
 license=("GPLv2")
 depends=("systemd" "libgudev")
 makedepends=("git" "gtk-doc")
-source=("${pkgname}::git+https://github.com/hadess/iio-sensor-proxy.git#tag=%{pkgver}")
+source=("${pkgname}::git+https://github.com/hadess/iio-sensor-proxy.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {

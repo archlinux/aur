@@ -10,7 +10,7 @@ pkgbase = iio-sensor-proxy
 	makedepends = gtk-doc
 	depends = systemd
 	depends = libgudev
-	source = iio-sensor-proxy::git+https://github.com/hadess/iio-sensor-proxy.git#tag=%{pkgver}
+	source = iio-sensor-proxy::git+https://github.com/hadess/iio-sensor-proxy.git#tag=1.0
 	md5sums = SKIP
 
 pkgname = iio-sensor-proxy
