@@ -1,0 +1,20 @@
+pkgbase = esound
+	pkgdesc = Enlightened Sound Daemon
+	pkgver = 0.2.41
+	pkgrel = 4
+	url = http://www.tux.org/~ricdude/EsounD.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = audiofile
+	provides = esd=0.2.41
+	conflicts = esd
+	options = !libtool
+	backup = etc/esd.conf
+	source = http://ftp.gnome.org/pub/GNOME/sources/esound/0.2/esound-0.2.41.tar.bz2
+	source = esound.service
+	md5sums = 8d9aad3d94d15e0d59ba9dc0ea990c6c
+	md5sums = c3f08e2930bcc9dd0fa4142b98413832
+
+pkgname = esound
+

@@ -1,0 +1,8 @@
+[Unit]
+Description=Enlightened Sound Daemon
+
+[Service]
+ExecStart=/usr/bin/esd -nobeeps
+
+[Install]
+WantedBy=multi-user.target
