@@ -1,0 +1,16 @@
+pkgbase = saleae-logic-beta
+	pkgdesc = High speed USB logic analyzer.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://www.saleae.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = gcc-libs
+	depends = gtk2
+	depends = libice
+	provides = saleae-logic
+	conflicts = saleae-logic
+
+pkgname = saleae-logic-beta
+
