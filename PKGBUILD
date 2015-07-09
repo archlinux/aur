@@ -3,11 +3,12 @@
 
 pkgname=globus-toolkit
 pkgver=6.0.1433516164
-pkgrel=4
+pkgrel=5
 pkgdesc="Toolkit for building grids"
 arch=('i686' 'x86_64')
 url="http://toolkit.globus.org/"
 license=('APACHE')
+optdepends=("igtf-trust-anchors: EUGridPMA trusted certificate authorities")
 provides=(globus=$pkgver gsissh=6.4p1 myproxy=$pkgver)
 replaces=(globus)
 conflicts=(globus myproxy)

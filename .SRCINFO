@@ -1,12 +1,13 @@
 pkgbase = globus-toolkit
 	pkgdesc = Toolkit for building grids
 	pkgver = 6.0.1433516164
-	pkgrel = 4
+	pkgrel = 5
 	url = http://toolkit.globus.org/
 	install = globus.install
 	arch = i686
 	arch = x86_64
 	license = APACHE
+	optdepends = igtf-trust-anchors: EUGridPMA trusted certificate authorities
 	provides = globus=6.0.1433516164
 	provides = gsissh=6.4p1
 	provides = myproxy=6.0.1433516164
