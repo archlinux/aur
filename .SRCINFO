@@ -1,6 +1,6 @@
 pkgbase = bzr-builder-bzr
-	pkgdesc = A bzr plugin to construct a bzr branch based on a recipe
-	pkgver = 0.7.4
+	pkgdesc = A bzr plugin to construct a bzr branch based on a recipe. (Bazaar source code)
+	pkgver = 0.7.4.1.r174
 	pkgrel = 1
 	url = https://launchpad.net/bzr-builder
 	arch = any

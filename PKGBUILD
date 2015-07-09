@@ -2,7 +2,8 @@
 
 pkgname=bzr-builder-bzr
 _pluginname=bzr-builder
-pkgver=0.7.4
+pkgver=0.7.4.1.r174
+_pkgver=0.7.4 # Needed for pkgver() function
 pkgrel=1
 pkgdesc="A bzr plugin to construct a bzr branch based on a recipe. (Bazaar source code)"
 url="https://launchpad.net/bzr-builder"
@@ -16,8 +17,8 @@ md5sums=('SKIP')
 
 pkgver() {
 	# Getting version
-	cd "$_pluginname"
-	echo "$pkgver.r$(bzr revno)"
+	cd "$srcdir/$_pluginname"
+	echo "$_pkgver.$pkgrel.r$(bzr revno)"
 }
 
 package() {
