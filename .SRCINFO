@@ -1,0 +1,17 @@
+pkgbase = proovread
+	pkgdesc = large-scale high accuracy PacBio correction through iterative short read consensus
+	pkgver = 2.12
+	pkgrel = 1
+	url = https://github.com/BioInf-Wuerzburg/proovread
+	arch = any
+	license = PerlArtistic
+	depends = blasr-git
+	depends = perl-log-log4perl
+	depends = blast+>=2.2.24
+	depends = samtools>=1.1
+	depends = shrimp
+	source = proovread::git+https://github.com/BioInf-Wuerzburg/proovread#tag=proovread-2.12
+	md5sums = SKIP
+
+pkgname = proovread
+
