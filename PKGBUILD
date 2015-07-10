@@ -13,6 +13,7 @@ optdepends=('python-gobject: for GTK GUI'
             'libnotify: for GTK GUI'
             'python-qscintilla: for QT GUI'
             'kdebindings-python: for QT GUI')
+conflicts=('autokey' 'autokey-gtk' 'autokey-qt' 'autokey-data')
 
 build() {
   pip install --no-deps --target="autokey-py3" autokey-py3

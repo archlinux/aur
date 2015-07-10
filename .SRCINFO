@@ -20,6 +20,10 @@ pkgbase = autokey-py3
 	optdepends = libnotify: for GTK GUI
 	optdepends = python-qscintilla: for QT GUI
 	optdepends = kdebindings-python: for QT GUI
+	conflicts = autokey
+	conflicts = autokey-gtk
+	conflicts = autokey-qt
+	conflicts = autokey-data
 
 pkgname = autokey-py3
 
