@@ -1,18 +1,37 @@
-pkgbase = glfw3-git
-	pkgdesc = A free, open source, portable framework for OpenGL application development. (git version)
-	pkgver = 3.1.1.r87.g08b3af4
+pkgbase = glfw-git
+	pkgver = 3.1.1.r119.g0f3b69c
 	pkgrel = 1
 	url = http://www.glfw.org/
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv7h
 	license = custom:ZLIB
 	makedepends = cmake
 	makedepends = git
-	depends = libxi
-	depends = libgl
-	depends = libxrandr
+	makedepends = libxi
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxcursor
+	makedepends = wayland
+	makedepends = libxkbcommon
+	makedepends = libgl
+	optdepends = doxygen: build glfw html documentation
+	provides = glfw=3.2
 	conflicts = glfw
-	source = glfw::git+https://github.com/glfw/glfw.git#branch=master
+	source = glfw::git+https://github.com/glfw/glfw
 	md5sums = SKIP
 
-pkgname = glfw3-git
+pkgname = glfw-x11-git
+	pkgdesc = A free, open source, portable framework for OpenGL application development. (git, X11 version)
+	depends = libxi
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = libgl
+
+pkgname = glfw-wayland-git
+	pkgdesc = A free, open source, portable framework for OpenGL application development. (git, Wayland version)
+	depends = wayland
+	depends = libxkbcommon
+	depends = libgl
 
