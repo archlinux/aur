@@ -1,7 +1,7 @@
 pkgbase = gnome-encfs-manager
 	pkgdesc = An easy to use manager and mounter for encfs stashes
 	pkgver = 1.8.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/gencfsm
 	install = gnome-encfs-manager.install
 	changelog = gnome-encfs-manager.changelog
