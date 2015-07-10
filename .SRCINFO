@@ -1,0 +1,17 @@
+pkgbase = cam-git
+	pkgdesc = a unix command for viewing images
+	pkgver = 20130319
+	pkgrel = 2
+	url = https://github.com/itchyny/cam
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = cam
+	conflicts = cam
+	source = cam::git+https://github.com/itchyny/cam.git
+	md5sums = SKIP
+
+pkgname = cam-git
+
