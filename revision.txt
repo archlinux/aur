@@ -5,6 +5,29 @@
                               http://www.fmod.org
 ===============================================================================
 
+08/07/15 1.06.06 - Studio API patch release (build 65638)
+----------------------------------------------------
+
+Fixes:
+* Studio API   - Fixed potential invalid memory access when a bank is unloaded
+                 while create instance commands are queued.
+* Studio API   - Removed one frame delay between setting a parameter and having
+                 conditional timeline transitions occur.
+* Studio API   - Studio gracefully handles the case of a programmer sound being
+                 returned in a streaming not-ready state when the instrument is
+                 being used with timelocked seeks.
+* LowLevel API - Fixed rare crash when streams go virtual.
+* LowLevel API - Fixed 3EQ DSP not waiting an extra mix block before going idle,
+                 possibly cutting off a tail.
+* LowLevel API - Fixed potential crash in PitchShifter DSP if changing channel
+                 count or FFT size while running.
+* LowLevel API - Fixed rare volume pop when ramping with fade points as a channel
+                 goes emulated.
+* Lowlevel API - Linux - Fixed record position not advancing with ALSA output mode. 
+* LowLevel API - Fix race condition when setting the impulse response on an active 
+                 convolution reverb DSP.
+* Unity        - Fix compatibility with Unity 5.1
+
 24/06/15 1.06.05 - Studio API patch release (build 65161)
 ----------------------------------------------------
 
