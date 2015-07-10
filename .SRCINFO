@@ -1,0 +1,18 @@
+pkgbase = masterpassword-cli-git
+	pkgdesc = CLI version of Master Password. (git-version)
+	pkgver = 2.3.r3.gff12aa6
+	pkgrel = 1
+	url = https://github.com/Lyndir/MasterPassword
+	arch = any
+	license = GPL3
+	makedepends = openssl
+	makedepends = gcc
+	makedepends = git
+	makedepends = subversion
+	optdepends = xclip: copy password to clipboard
+	conflicts = masterpassword-cli
+	source = masterpassword-cli::git+http://github.com/Lyndir/MasterPassword.git#branch=master
+	sha256sums = SKIP
+
+pkgname = masterpassword-cli-git
+
