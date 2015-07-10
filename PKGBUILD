@@ -1,15 +1,17 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
-pkgname=arx-fatalis-data-demo
+pkgname=arxfatalis-data-demo
 pkgver=0
 pkgrel=1
 pkgdesc='Arx Fatalis game data from official free demo'
 url='http://www.arkane-studios.com/uk/arx.php'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('custom:freeware')
+provides=('arxfatalis-data')
+replaces=('arx-fatalis-data-demo')
+conflicts=('arxfatalis-data-gog' 'arxfatalis-data-copy'
+           'arx-fatalis-data-gog' 'arx-fatalis-data-copy')
 makedepends=('cabextract' 'libarchive')
-provides=('arx-fatalis-data')
-conflicts=('arx-fatalis-data-gog' 'arx-fatalis-data-copy')
 source=("install-demo")
 md5sums=('d6bc2486243986694426260d2d76f5cb')
 install='arx-fatalis-data-demo.install'
