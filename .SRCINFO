@@ -1,0 +1,18 @@
+pkgbase = hyperion-rpi-bin
+	pkgdesc = An opensource 'AmbiLight' implementation (build for raspberry pi) (binary)
+	pkgver = 20150306.205657
+	pkgrel = 1
+	url = https://github.com/tvdzwan/hyperion
+	arch = any
+	license = MIT
+	conflicts = hyperion-git
+	conflicts = hyperion-rpi-git
+	source = https://raw.githubusercontent.com/tvdzwan/hyperion/master/deploy/hyperion.tar.gz
+	source = hyperiond.service
+	source = LICENSE
+	sha256sums = 3446ec0c6a9f5c9501e90efa559727ae7686086cf42043dbd07c4fb4b20463f6
+	sha256sums = aab12fb3d901ea4c8694bd713b1a2187beae6a6ed40f3355d12fc7ad50aaf3fe
+	sha256sums = 85f28018f946ca13b6de640c45e011cd9fe56114d474cb990d4d1ff91ae1cd60
+
+pkgname = hyperion-rpi-bin
+
