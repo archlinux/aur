@@ -1,6 +1,6 @@
 [Unit]
 Description=Domoticz Daemon
-After=network-online.target
+After=network.target
 
 [Service]
 ExecStart=/opt/domoticz/domoticz

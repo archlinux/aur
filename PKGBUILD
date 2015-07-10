@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=domoticz-svn
-pkgver=r2647
+pkgver=r2656
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('subversion' 'cmake' 'boost')
 source=('domoticz::svn://svn.code.sf.net/p/domoticz/code/trunk'
         'domoticz.service')
 sha256sums=('SKIP'
-            '48834ff12ca6a0a45536428a8125bd74cc4b79dc59fe99649782e4d915642dce')
+            'e7a310198e3830ef1a735ee2c864c749b186080db77bee28b2d63a0a8abef877')
 
 pkgver() {
   cd "domoticz"
