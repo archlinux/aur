@@ -1,6 +1,6 @@
 pkgbase = torchlight-hib
 	pkgdesc = A hack and slash action role-playing game (Humble Bundle version)
-	pkgver = 1.15_20130521
+	pkgver = 1.15+h20130521
 	pkgrel = 1
 	url = http://www.torchlightgame.com/
 	arch = i686

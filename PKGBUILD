@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=torchlight-hib
-pkgver=1.15_20130521
+pkgver=1.15+h20130521
 _hibver=2013-05-21
 pkgrel=1
 pkgdesc='A hack and slash action role-playing game (Humble Bundle version)'
