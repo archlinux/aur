@@ -1,0 +1,16 @@
+pkgbase = guile-cairo
+	pkgdesc = Guile Scheme bindings for the cairo graphics library
+	pkgver = 1.9.91
+	pkgrel = 2
+	url = http://www.non-gnu.org/guile-cairo/
+	install = guile-cairo.install
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	depends = guile>=1.8.0
+	depends = cairo>=1.2.0
+	source = http://download.savannah.gnu.org/releases/guile-cairo/guile-cairo-1.9.91.tar.gz
+	md5sums = bc8f4f00d1d351f85e0235636a113ad6
+
+pkgname = guile-cairo
+
