@@ -1,15 +1,17 @@
 pkgbase = leap-motion-sdk
 	pkgdesc = The Leap Motion Developer SDK
-	pkgver = 2.2.2
+	pkgver = 2.2.7
 	pkgrel = 2
 	url = https://developer.leapmotion.com/downloads
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = leap-motion-driver: to install Playground and LeapControlPanel
-	source = https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_2.2.2.tgz
+	source = https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_2.2.7.tgz
+	source = libleap.pc
 	source = LICENSE
-	md5sums = 3e3ceb48baa17a7aa4ce3149fac5eab3
+	md5sums = cc9ffe540a913facc34138b9a87908be
+	md5sums = c43a3a834f646efc8f033f75eb80cc7e
 	md5sums = 78a4f0934b105397d1f7b17d06e4717c
 
 pkgname = leap-motion-sdk
