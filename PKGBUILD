@@ -1,5 +1,5 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
-pkgname=python-autokey-py3
+pkgname=autokey-py3
 pkgver=0.93.4
 pkgrel=1
 pkgdesc='Python 3 port of AutoKey, a desktop automation utility for Linux and X11.'
