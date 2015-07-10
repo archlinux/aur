@@ -1,6 +1,6 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
-pkgname=arx-fatalis-data-gog
+pkgname=arxfatalis-data-gog
 pkgver=1.21
 pkgrel=1
 pkgdesc='Arx Fatalis game data from GOG.com installer'

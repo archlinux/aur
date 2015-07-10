@@ -1,4 +1,4 @@
-pkgbase = arx-fatalis-data-gog
+pkgbase = arxfatalis-data-gog
 	pkgdesc = Arx Fatalis game data from GOG.com installer
 	pkgver = 1.21
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = arx-fatalis-data-gog
 	md5sums = 5be0898e71632e46ca430d7a32d0179a
 	md5sums = fc5456e4c213af243b65862db8d5db0a
 
-pkgname = arx-fatalis-data-gog
+pkgname = arxfatalis-data-gog
 
