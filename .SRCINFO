@@ -1,7 +1,7 @@
 pkgbase = xcfa
 	pkgdesc = X Convert File Audio
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xcfa.tuxfamily.org/
 	install = xcfa.install
 	arch = i686

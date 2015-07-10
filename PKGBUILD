@@ -3,7 +3,7 @@
 
 pkgname=xcfa
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="X Convert File Audio"
 arch=('i686' 'x86_64')
 url="http://www.xcfa.tuxfamily.org/"
@@ -18,6 +18,11 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package(){
