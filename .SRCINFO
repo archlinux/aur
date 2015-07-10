@@ -1,0 +1,35 @@
+pkgbase = viper-framework
+	pkgdesc = Stable version of Viper the Binary Analysis Framework
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://github.com/botherder/viper
+	install = viper-framework.install
+	arch = any
+	license = BSD
+	depends = python2-pyexiftool
+	depends = python2-pylzma
+	depends = python2-bottle
+	depends = python2-pyelftools
+	depends = python2-bitstring
+	depends = python2-dnspython
+	depends = python2-m2crypto
+	depends = python2-pyasn1
+	depends = python2-requests
+	depends = python2-sqlalchemy
+	depends = python2-prettytable
+	depends = python2-magic
+	depends = python2-pydeep
+	depends = ssdeep
+	depends = python2-ssdeep
+	depends = python2-beautifulsoup4
+	depends = python2-pefile
+	depends = python2-crypto
+	depends = python2-olefile
+	depends = python2-oletools
+	source = https://github.com/botherder/viper/archive/v1.2.tar.gz
+	source = viper-framework.install
+	sha512sums = 07ed69479a472a9c909ea57661af33fc8f5a50df4e3af627658dea26d1e5e7f0fef5baef783a4042506e4eb702e757dea8da8e7fd3002d0ae77c053d9f74aee2
+	sha512sums = 5f2446433205c4b04b7a2aad4c2262dfd54dc25a034a1b94f8de45a37a164c3fccdebdda60446148ddb940a5f84257426cbda21b7815d1e7b3cea5e9af54c0fe
+
+pkgname = viper-framework
+
