@@ -1,7 +1,7 @@
 pkgbase = flixtor
 	pkgdesc = Flixtor streams movies, series, videos and animes from Torrents.
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.flixtor.me/
 	install = flixtor.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = flixtor
 	license = GPL3
 	provides = flixtor
 	options = !strip
-	source = https://flixtor.me/download/Flixtor_linux32.tar.gz
+	source = https://dl.dropboxusercontent.com/u/7226803/Flixtor_linux32.tar.gz
 	source = flixtor.png
 	source = flixtor.install
 	source = flixtor.desktop
