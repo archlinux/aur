@@ -12,9 +12,7 @@ pkgbase = arxfatalis-data-copy
 	conflicts = arx-fatalis-data-gog
 	conflicts = arx-fatalis-data-demo
 	replaces = arx-fatalis-data-copy
-	source = local://arx fatalis/
 	source = arx-install-data
-	md5sums = SKIP
 	md5sums = fc5456e4c213af243b65862db8d5db0a
 
 pkgname = arxfatalis-data-copy

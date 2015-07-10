@@ -14,13 +14,20 @@ conflicts=('arxfatalis-data-gog' 'arxfatalis-data-demo'
 optdepends=('arxlibertatis: native Linux game executable')
 PKGEXT='.pkg.tar'
 
-_gamefolder="arx fatalis"
-source=("local://$_gamefolder/"
-        "arx-install-data")  # from http://arx.vg/arx-install-data
-md5sums=('SKIP'
-         'fc5456e4c213af243b65862db8d5db0a')
+source=("arx-install-data")  # from http://arx.vg/arx-install-data
+md5sums=('fc5456e4c213af243b65862db8d5db0a')
+
+_gamefolder="Arx Fatalis"
 
 package() {
+    _realfolder="$(realpath "$startdir/$_gamefolder")"
+    
+    if [[ ! -e $_realfolder ]]; then
+       error "Existing game installation folder not found"
+       echo "    Please symlink it to '$startdir/$_gamefolder'"
+       exit 1
+    fi
+    
     chmod +x arx-install-data
-    ./arx-install-data --batch "$_gamefolder" "$pkgdir/usr/share/arx"
+    ./arx-install-data --batch "$_realfolder" "$pkgdir/usr/share/arx"
 }
