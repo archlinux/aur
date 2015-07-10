@@ -7,7 +7,7 @@ pkgdesc="A collection of Python deprecation patterns and strategies that help yo
 arch=("any")
 url="https://pypi.python.org/pypi/debtcollector"
 license=("Apache")
-makedepends=("python2-setuptools")
+makedepends=('python-pbr')
 source=("https://pypi.python.org/packages/source/d/debtcollector/debtcollector-${pkgver}.tar.gz")
 sha256sums=('4ddab1c494ce9c714a2b6f88a01bf1226a1b20d584bcf65d1593a2e4ca63b42a')
 
