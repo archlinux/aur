@@ -1,0 +1,21 @@
+pkgbase = dpsprep-git
+	pkgdesc = Python DJVU to PDF converter which preserves OCR text and bookmark metadata (e.g. TOC)
+	pkgver = r7.265cdb1
+	pkgrel = 1
+	url = https://github.com/kcroker/dpsprep
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = python2
+	depends = python2-sexpdata
+	depends = python2-argparse
+	depends = djvulibre
+	depends = ocrodjvu
+	depends = pdfbeads
+	depends = pdftk-bin
+	source = git+git://github.com/kcroker/dpsprep.git
+	md5sums = SKIP
+
+pkgname = dpsprep-git
+
