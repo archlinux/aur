@@ -1,6 +1,6 @@
 pkgbase = capsized-hib
 	pkgdesc = A science-fiction action platformer (Humble Bundle version)
-	pkgver = 0_20130613
+	pkgver = 1+h20130613
 	pkgrel = 1
 	url = http://www.capsizedgame.com/
 	arch = i686

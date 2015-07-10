@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=capsized-hib
-pkgver=0_20130613
+pkgver=1+h20130613
 _hibver=06132013
 pkgrel=1
 pkgdesc='A science-fiction action platformer (Humble Bundle version)'
