@@ -1,0 +1,15 @@
+pkgbase = apkstudio-git
+	pkgdesc = An IDE for decompiling/editing & then recompiling of android application binaries.
+	pkgver = r2.b1e443a
+	pkgrel = 1
+	url = http://apkstudio.codeplex.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	source = git+https://git01.codeplex.com/apkstudio.git
+	sha256sums = SKIP
+
+pkgname = apkstudio-git
+
