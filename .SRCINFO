@@ -1,0 +1,18 @@
+pkgbase = tempsense-git
+	pkgdesc = command line client for the Diamex AVR Temp Sensor (DS18B20)
+	pkgver = LATEST
+	pkgrel = 1
+	url = https://git.tamcore.eu/philipp/tempsense
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	makedepends = git
+	depends = hidapi
+	depends = libusb-compat
+	provides = tempsense
+	source = git+https://git.tamcore.eu/philipp/tempsense.git
+	sha256sums = SKIP
+
+pkgname = tempsense-git
+
