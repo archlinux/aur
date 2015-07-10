@@ -8,7 +8,8 @@ pkgdesc="Test your project's packaging friendliness"
 arch=('any')
 url='https://bitbucket.org/regebro/pyroma'
 license=('MIT')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
+             'python-docutils' 'python2-docutils')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('7490b824c1bf3713660746f06ed1c68b')
