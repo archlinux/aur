@@ -1,21 +1,22 @@
 pkgbase = python-docker
 	pkgdesc = An API client for docker written in Python
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/docker/docker-py
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/d/docker-py/docker-py-1.2.3.tar.gz
-	sha256sums = 5328a7f4a2d812da166b3fb59211fca976c9f48bb9f8b17d9f3fd4ef7c765ac5
+	source = https://pypi.python.org/packages/source/d/docker-py/docker-py-1.3.0.tar.gz
+	sha256sums = ac4c960e84a44f5dbbcee775c46c3a8a194241e37767f60d64aa84d704c95dfd
 
 pkgname = python-docker
 	depends = python-requests>=2.5.3
 	depends = python-six>=1.3.0
+	depends = python-websocket-client>=0.32.0
 
 pkgname = python2-docker
 	depends = python2-requests>=2.5.3
 	depends = python2-six>=1.3.0
-	depends = python2-websocket-client>=0.11.0
+	depends = python2-websocket-client>=0.32.0
 
