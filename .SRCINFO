@@ -1,0 +1,16 @@
+pkgbase = g-wrap
+	pkgdesc = A tool and guile library, for generating function wrappers for inter-language calls
+	pkgver = 1.9.14
+	pkgrel = 2
+	url = http://www.nongnu.org/g-wrap/
+	install = g-wrap.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glib2
+	depends = guile-lib>=0.1.2
+	source = http://savannah.nongnu.org/download/g-wrap/g-wrap-1.9.14.tar.gz
+	md5sums = fef7ec5e2ff5192221ed6e97fe93bcb9
+
+pkgname = g-wrap
+
