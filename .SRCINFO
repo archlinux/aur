@@ -1,6 +1,6 @@
 pkgbase = python2-python-jsonrpc
 	pkgdesc = Simple to use Python JSONRPC-Library
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://github.com/gerold-penz/python-jsonrpc
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = python2-python-jsonrpc
 	provides = python2-pyjsonrpc
 	provides = python2-python-jsonrpc
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/python-jsonrpc/python-jsonrpc-0.7.7.tar.gz
-	md5sums = 02f5ec6965d20467adda7aa2daa77083
-	sha256sums = e8342355920d7edffef4e8b26caa585363fe410a6ba1b985ea084bdc824b8cb2
+	source = https://pypi.python.org/packages/source/p/python-jsonrpc/python-jsonrpc-0.7.8.tar.gz
+	md5sums = 13c23f6a5d228f344492db1e4ce06db6
+	sha256sums = 4c956e842de52718bb3aabd15f82934390d58c9f8527b8248cd56515b5915795
 
 pkgname = python2-python-jsonrpc
 
