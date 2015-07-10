@@ -2,13 +2,13 @@
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
 _gitname=pkgbuilder
-pkgver=3.5.1.r2.gc019167
+pkgver=4.0.1.r1.g90d20a5
 pkgrel=1
 pkgdesc='A Python AUR helper/library. (git version)'
 arch=('any')
 url='https://github.com/Kwpolska/pkgbuilder'
 license=('BSD')
-depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
+depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'python-srcinfo' 'rsync')
 makedepends=('git')
 options=(!emptydirs)
 provides=('pkgbuilder')
