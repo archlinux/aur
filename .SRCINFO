@@ -1,14 +1,14 @@
 pkgbase = owncloud-app-roundcube
 	pkgdesc = Roundcubemail integration for owncloud
-	pkgver = 2.6.0.306
+	pkgver = 2.6.1_build429
 	pkgrel = 1
 	url = http://apps.owncloud.com/content/show.php/?content=151523
 	arch = any
 	license = GPL
 	depends = owncloud
 	options = !strip
-	source = owncloud-app-roundcube-2.6.0.306.zip::https://apps.owncloud.com/CONTENT/content-files/151523-roundcube_v2.6.0.306.zip
-	md5sums = 8df716a01ac3e0f576f266ae8763e016
+	source = owncloud-app-roundcube-2.6.1_build429.zip::https://apps.owncloud.com/CONTENT/content-files/151523-roundcube_v2.6.1_build429.zip
+	md5sums = c2b7466a7f335cedd4a6fa593e17cf90
 
 pkgname = owncloud-app-roundcube
 
