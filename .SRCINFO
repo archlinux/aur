@@ -14,8 +14,10 @@ pkgbase = arxfatalis-data-demo
 	conflicts = arx-fatalis-data-gog
 	conflicts = arx-fatalis-data-copy
 	replaces = arx-fatalis-data-demo
-	source = install-demo
-	md5sums = d6bc2486243986694426260d2d76f5cb
+	source = local://arx_demo_english.zip
+	source = arx-install-data
+	md5sums = 3c59a5799e1237b1b181c96e8c09155a
+	md5sums = fc5456e4c213af243b65862db8d5db0a
 
 pkgname = arxfatalis-data-demo
 
