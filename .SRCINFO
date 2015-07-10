@@ -1,12 +1,13 @@
 pkgbase = gog-towerfall-ascension
 	pkgdesc = Inspired by classics from the golden age of couch multiplayer, TowerFall Ascension is a 4-player local party game centering around hilarious, intense versus matches. GOG linux game package required
 	pkgver = 1.1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/towerfall_ascension
 	arch = i686
 	arch = x86_64
 	groups = games
 	license = custom
+	depends = gcc-libs
 	source = local://gog_towerfall_ascension_1.1.0.3.tar.gz
 	source = gog-towerfall-ascension
 	sha256sums = c58de25fe1c3538772195ebb51dbd39f738d33843c49b53c0cf66bc599dc02bb
