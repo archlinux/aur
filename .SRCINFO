@@ -1,7 +1,7 @@
 pkgbase = python-pyrss2gen
 	pkgdesc = A Python library for generating RSS 2.0 feeds.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = http://www.dalkescientific.com/Python/PyRSS2Gen.html
 	arch = any
 	license = BSD
