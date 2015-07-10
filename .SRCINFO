@@ -1,7 +1,7 @@
 pkgbase = nginx-passenger
 	pkgdesc = HTTP Server with Passenger Module
 	pkgver = 1.8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://nginx.org
 	install = nginx-passenger.install
 	arch = i686
