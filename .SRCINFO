@@ -1,6 +1,6 @@
 pkgbase = trafficserver
 	pkgdesc = Apache Traffic Server
-	pkgver = 5.2.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = http://trafficserver.apache.org/
 	install = trafficserver.install
@@ -61,10 +61,10 @@ pkgbase = trafficserver
 	backup = etc/trafficserver/stats.config.xml
 	backup = etc/trafficserver/log_hosts.config
 	backup = etc/trafficserver/ip_allow.config
-	source = http://archive.apache.org/dist/trafficserver/trafficserver-5.2.0.tar.bz2
+	source = http://archive.apache.org/dist/trafficserver/trafficserver-5.3.1.tar.bz2
 	source = trafficserver.tmpfiles
 	source = trafficserver.service.in.patch
-	md5sums = 7c983d8fd5e5b8cb3eca957ce72b173c
+	md5sums = 9c0e2450b1dd1bbdd63ebcc344b5a813
 	md5sums = fc8ab2b6d01e22fb376832fb13137db1
 	md5sums = 74ba08091f580f8984eee8db0f7e4d27
 
