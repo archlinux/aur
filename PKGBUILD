@@ -3,19 +3,17 @@
 pkgname=iojs
 pkgver=2.3.4
 _foldername=iojs-v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
 depends=('icu' 'openssl' 'zlib')
 makedepends=('python2' 'git')
-optdepends=('npm: nodejs package manager')
-provides=('nodejs')
-conflicts=('nodejs' 'iojs-bin')
+provides=('nodejs' 'npm')
+conflicts=('nodejs' 'iojs-bin' 'npm')
 options=('!emptydirs')
 source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}.tar.gz")
-install=iojs.install
 sha256sums=('18aeb8ad79b549f45caf6e4baa421046a0cd8f60102ac0986f19b19174962cc1')
 
 prepare() {
@@ -42,8 +40,7 @@ build() {
     --prefix=/usr \
     --shared-openssl \
     --shared-zlib \
-    --with-intl=system-icu \
-    --without-npm 
+    --with-intl=system-icu 
   make
 }
 
