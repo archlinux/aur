@@ -7,7 +7,8 @@ pkgdesc="Python DJVU to PDF converter which preserves OCR text and bookmark meta
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL3')
-depends=('git' 'python2' 'python2-sexpdata' 'python2-argparse' 'djvulibre' 'ocrodjvu' 'pdfbeads' 'pdftk-bin' 'ruby-iconv')
+makedepends=('git')
+depends=('python2' 'python2-sexpdata' 'python2-argparse' 'djvulibre' 'ocrodjvu' 'pdfbeads' 'pdftk-bin' 'ruby-iconv')
 source=('git+git://github.com/kcroker/dpsprep.git')
 md5sums=('SKIP')
 
