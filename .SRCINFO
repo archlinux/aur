@@ -43,9 +43,9 @@ pkgbase = chromium-continuous-bin
 	md5sums = 6203259f7a8fe2fa55b64005a202828d
 	md5sums = 3f2bfd12b55b7153b60ad904207599dd
 	md5sums = 537e0b52077bf0a616d0a0c8a79bc9d5
-	source_i686 = chrome-linux-r335862.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux/335862/chrome-linux.zip
+	source_i686 = chrome-linux-r338261.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux/338261/chrome-linux.zip
 	md5sums_i686 = SKIP
-	source_x86_64 = chrome-linux-r335862.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_x64/335862/chrome-linux.zip
+	source_x86_64 = chrome-linux-r338261.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_x64/338261/chrome-linux.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = chromium-continuous-bin
