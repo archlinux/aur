@@ -7,8 +7,8 @@ pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/shk3/edx-downloader'
 license=('LGPL3')
-makedepends=('git')
-depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html5lib' 'pandoc-bin')
+makedepends=('git' 'pandoc-bin')
+depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html5lib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 

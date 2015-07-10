@@ -6,12 +6,12 @@ pkgbase = edx-downloader-git
 	arch = any
 	license = LGPL3
 	makedepends = git
+	makedepends = pandoc-bin
 	depends = python
 	depends = python-beautifulsoup4
 	depends = youtube-dl
 	depends = python-six
 	depends = python-html5lib
-	depends = pandoc-bin
 	provides = edx-downloader
 	conflicts = edx-downloader
 
