@@ -2,12 +2,13 @@
 
 pkgname=keepass-plugin-keeagent
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH Agent Plugin for KeePass"
 license=('BSD')
 depends=('keepass')
 provides=('keepass-plugin-keeagent')
-arch=(i686 x86_64)
+conflicts=('keepass-plugin-keeagent-beta')
+arch=('any')
 url="http://lechnology.com/software/keeagent/"
 DLAGENTS='http::/usr/bin/curl -fLC - --user-agent Firefox --retry 3 --retry-delay 3 -o %o %u'
 install=$pkgname.install

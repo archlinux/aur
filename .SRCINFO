@@ -1,14 +1,14 @@
 pkgbase = keepass-plugin-keeagent
 	pkgdesc = SSH Agent Plugin for KeePass
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lechnology.com/software/keeagent/
 	install = keepass-plugin-keeagent.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	depends = keepass
 	provides = keepass-plugin-keeagent
+	conflicts = keepass-plugin-keeagent-beta
 	source = http://lechnology.com/wp-content/uploads/2015/04/KeeAgent_v0.6.3.zip
 	source = keepass-plugin-keeagent.install
 	sha512sums = 22fa181f6b09276a3b85cd8b5cdbc01d5ed014303357c6c26521e6ee6c239bfeafbeeca5f1ee068cca3771c2ae54e201c61ddb3e89c2fbf29185fb34e642fadc
