@@ -1,0 +1,21 @@
+pkgbase = xcfa
+	pkgdesc = X Convert File Audio
+	pkgver = 5.0.2
+	pkgrel = 1
+	url = http://www.xcfa.tuxfamily.org/
+	install = xcfa.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = taglib
+	depends = alsa-lib
+	depends = curl
+	depends = desktop-file-utils
+	depends = vte3
+	optdepends = dvd+rw-tools
+	optdepends = cd-discid
+	source = http://download.tuxfamily.org/xcfaudio/xcfa_download/src/xcfa-5.0.2.tar.gz
+	sha256sums = 37cb7cbf6707d02b0e2082e49e3a8194b6d2c6cfecd2747f78b1a682c00a6815
+
+pkgname = xcfa
+
