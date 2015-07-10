@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-sudo
 pkgname=$_pkgname-git
-pkgver=0.9.0.6.ga2f898a
+pkgver=0.9.0.5.ga2f898a
 pkgrel=1
 pkgdesc="Qt front-end for sudo. Part of but not restricted to LXQt."
 arch=("i686" "x86_64")
