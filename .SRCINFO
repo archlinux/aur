@@ -1,4 +1,4 @@
-pkgbase = arx-fatalis-data-copy
+pkgbase = arxfatalis-data-copy
 	pkgdesc = Arx Fatalis game data from existing win32 installation
 	pkgver = 1.21
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = arx-fatalis-data-copy
 	md5sums = e9c245ac1bb48cb8ef667933e0b725d2
 	md5sums = 9bbb1a2ae298343aafe40a5e7117c24c
 
-pkgname = arx-fatalis-data-copy
+pkgname = arxfatalis-data-copy
 

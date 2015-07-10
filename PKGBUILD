@@ -1,6 +1,6 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
-pkgname=arx-fatalis-data-copy
+pkgname=arxfatalis-data-copy
 pkgver=1.21
 pkgrel=1
 pkgdesc='Arx Fatalis game data from existing win32 installation'
