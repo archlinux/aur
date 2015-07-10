@@ -1,0 +1,13 @@
+pkgbase = ttf-fira-code
+	pkgdesc = monospaced font with programming ligatures
+	pkgver = 0.5
+	pkgrel = 1
+	install = ttf-fira-code.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/tonsky/FiraCode/releases/download/0.5/FiraCode-Regular.ttf
+	sha256sums = ad3da7bfe88cc6e020e47fd7b7bd52f84387b0a2b9d4a88ea3e1b1d88392aa11
+
+pkgname = ttf-fira-code
+
