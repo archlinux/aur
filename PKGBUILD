@@ -1,25 +1,22 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=shatter-hib
-pkgver=1.0.20130609
+pkgver=1.0+h20130609
 _hibver=2013-06-09
 pkgrel=1
 pkgdesc='A retro-inspired brick-breaking game with unique twists (Humble Bundle version)'
 url='http://www.shattergame.com/'
 arch=('i686' 'x86_64')
 license=('custom:commercial')
-if [ $CARCH == i686 ]; then
-  depends=('libgl' 'libidn' 'libxinerama' 'libxft' 'alsa-lib' 'xdg-utils'
-          'nvidia-cg-toolkit' 'libtxc_dxtn')
-  optdepends=('alsa-plugins: PulseAudio support'
-              'libpulse: PulseAudio support')
-else
-  depends=('lib32-libgl' 'lib32-libidn' 'lib32-libxinerama' 'lib32-libxft'
-           'lib32-alsa-lib' 'xdg-utils' 'lib32-nvidia-cg-toolkit'
-           'lib32-libtxc_dxtn')
-  optdepends=('lib32-alsa-plugins: PulseAudio support'
-              'lib32-libpulse: PulseAudio support')
-fi
+depends_i686=('libgl' 'libidn' 'libxinerama' 'libxft' 'alsa-lib'
+              'xdg-utils' 'nvidia-cg-toolkit' 'libtxc_dxtn')
+optdepends_i686=('alsa-plugins: PulseAudio support'
+                 'libpulse: PulseAudio support')
+depends_x86_64=('lib32-libgl' 'lib32-libidn' 'lib32-libxinerama'
+                'lib32-libxft' 'lib32-alsa-lib' 'xdg-utils'
+                'lib32-nvidia-cg-toolkit' 'lib32-libtxc_dxtn')
+optdepends_x86_64=('lib32-alsa-plugins: PulseAudio support'
+                   'lib32-libpulse: PulseAudio support')
 install='shatter-hib.install'
 options=('!upx')
 PKGEXT='.pkg.tar'
