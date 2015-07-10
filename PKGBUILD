@@ -63,7 +63,7 @@ pkgbase=linux-uksm-ck
 pkgname=('linux-uksm-ck' 'linux-uksm-ck-headers' 'linux-uksm-ck-docs')
 _kernelname=-uksm-ck
 _srcname=linux-4.0
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kerneldedup.org/"
@@ -491,7 +491,7 @@ package_linux-uksm-ck-docs() {
 
 sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995'
             'SKIP'
-            '94c9ae61d665bdb06b2558b4e473777c13cb77e00c4b6cab326d10372f64bb8a9550f8bc2e2d3e1bf2a4ddf2adf1f3546a93e727aeb6b8792057017276dd9683'
+            '384884edcf9dc5c3f9cd3be03bf1459058a7189858234718c40c926ccef33c4a71b2f9468f2592b25bf780b92fdc46e66de0294b6cc6e43ce77b6478fd0f9757'
             'SKIP'
             'ce46c47a1685f5014f4ada55b9ee6292255a383f83c04ac84ae922d16fef0687ebf09e7a6b211f23c6d1156312ef812c950805979893792f3e19b6c643d2fb81'
             '97f392e0bed2e6622aed7eb344f0ed499bb58ee118e62e28b67080df6ef02c7b874596e70d7db970a2f58f9f94faa3406c8a29eb5f6871ddc8d290ecd6aaf0b5'
