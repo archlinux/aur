@@ -1,4 +1,5 @@
-# Maintainer: <kfgz at interia dot pl>
+# Maintainer: polyzen <polycitizen@gmail.com>
+# Contributor: <kfgz at interia dot pl>
 # Contributor: <damir at archlinux dot org>
 
 pkgname=ms-sys
