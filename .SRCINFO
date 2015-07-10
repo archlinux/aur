@@ -1,0 +1,16 @@
+pkgbase = python2-jedi-git
+	pkgdesc = Jedi is an autocompletion tool for Python that can be used in IDEs/editors
+	pkgver = 3964.7b50bb0
+	pkgrel = 1
+	url = https://github.com/davidhalter/jedi
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-distribute
+	depends = python2
+	options = !emptydirs
+	source = git://github.com/davidhalter/jedi.git
+	md5sums = SKIP
+
+pkgname = python2-jedi-git
+
