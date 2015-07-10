@@ -5,7 +5,7 @@
 
 pkgname="sendmail"
 pkgver=8.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The sendmail MTA"
 url="http://www.sendmail.org"
 arch=('i686' 'x86_64')
@@ -35,7 +35,8 @@ build(){
   # Add support for SASL2
   chmod +w devtools/OS/Linux
   echo -e "define(\`confSTDIO_TYPE', \`portable')\nAPPENDDEF(\`conf_sendmail_ENVDEF', \`-DSTARTTLS')\nAPPENDDEF(\`conf_sendmail_LIBS', \`-lssl -lcrypto')\n">>devtools/OS/Linux
-  echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DNETINET6 -DSASL=2')" >>devtools/OS/Linux
+  echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DSASL=2')" >>devtools/OS/Linux
+  echo "APPENDDEF(\`conf_libmilter_ENVDEF', \`-DNETINET6')" >>devtools/OS/Linux
   echo "APPENDDEF(\`conf_sendmail_LIBS', \`-lresolv -lsasl2')" >>devtools/OS/Linux
   echo "APPENDDEF(\`confLIBS', \`-ldb')" >>devtools/OS/Linux
   echo "APPENDDEF(\`confMAPDEF', \`-DNEWDB')" >>devtools/OS/Linux
