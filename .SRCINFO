@@ -1,0 +1,16 @@
+pkgbase = gtk-engine-equinox
+	pkgdesc = A heavily modified version of the beautiful Aurora engine
+	pkgver = 1.50
+	pkgrel = 2
+	url = http://gnome-look.org/content/show.php/Equinox+GTK+Engine?content=121881
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	depends = gtk2
+	options = !libtool
+	source = http://gnome-look.org/CONTENT/content-files/121881-equinox-1.50.tar.gz
+	sha256sums = 0cf8b8cc841e0da7d4a08ab5a70d3bb330fd76bdcb03165a47aaddcd47e02227
+
+pkgname = gtk-engine-equinox
+
