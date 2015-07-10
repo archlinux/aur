@@ -6,12 +6,13 @@ pkgbase = python-rackspace-novaclient
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	depends = python-rax-scheduled-images-python-novaclient-ext
-	depends = python-rax-backup-schedule-python-novaclient-ext
-	depends = python-rax-default-network-flags-python-novaclient-ext
-	depends = python-os-networksv2-python-novaclient-ext
+	depends = python-novaclient
 	depends = python-rackspace-auth-openstack
 	depends = python-os-diskconfig-python-novaclient-ext
+	depends = python-rax-scheduled-images-python-novaclient-ext
+	depends = python-os-networksv2-python-novaclient-ext
+	depends = python-os-virtual-interfacesv2-python-novaclient-ext
+	depends = python-rax-default-network-flags-python-novaclient-ext
 	provides = python-rackspace-novaclient=1.4
 	source = http://pypi.python.org/packages/source/r/rackspace-novaclient/rackspace-novaclient-1.4.tar.gz
 	md5sums = 8cd0c5293511ad68bed3594cd4db276f
