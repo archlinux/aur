@@ -3,7 +3,7 @@
 
 pkgname=php-xhprof
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Hierarchical Profiler for PHP"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/xhprof"
@@ -22,6 +22,9 @@ prepare() {
 
   phpize || return 1 
   ./configure --prefix=/usr --with-php-config=$(which php-config)
+}
+
+build() {
   cd "$srcdir/xhprof-$pkgver/extension/"
   make || return 1
 }
