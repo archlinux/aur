@@ -1,0 +1,23 @@
+pkgbase = vm-bzr
+	pkgdesc = View Mail for Emacs
+	pkgver = 1506
+	pkgrel = 1
+	url = https://launchpad.net/vm
+	install = vm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = texinfo-legacy
+	depends = emacs
+	depends = stunnel
+	optdepends = mailcrypt: for encrypted mails
+	optdepends = bbdb: for using a rolodex-like db
+	provides = vm
+	conflicts = vm
+	options = !makeflags
+	source = vm::bzr+https://code.launchpad.net/~vm/vm/trunk/
+	md5sums = SKIP
+
+pkgname = vm-bzr
+

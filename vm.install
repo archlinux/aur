@@ -1,0 +1,27 @@
+infodir=/usr/share/info
+filelist=(vm-pcrisis.info  vm.info)
+
+post_install() {
+  [ -x usr/bin/install-info ] || return 0
+  for file in ${filelist[@]}; do
+    install-info $infodir/$file $infodir/dir 2> /dev/null
+  done
+ cat << EOF
+
+:: To make use of vm, add the following lines to your ~/.emacs
+(require 'vm-autoloads)
+:: Then run 'M-x vm' from within emacs.
+
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  [ -x usr/bin/install-info ] || return 0
+  for file in ${filelist[@]}; do
+    install-info --delete $infodir/$file $infodir/dir 2> /dev/null
+  done
+}
