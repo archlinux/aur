@@ -1,0 +1,18 @@
+pkgbase = vim-go-git
+	pkgdesc = Go development plugin for Vim
+	pkgver = 20150710
+	pkgrel = 1
+	url = https://github.com/fatih/vim-go
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = go
+	depends = vim
+	conflicts = vim-go
+	conflicts = vim-gocode
+	conflicts = gocode-git
+	source = git+https://github.com/fatih/vim-go.git
+	md5sums = SKIP
+
+pkgname = vim-go-git
+
