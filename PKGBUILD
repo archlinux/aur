@@ -25,7 +25,7 @@ optdepends=(
 	"libfbclient: Firebird/iBase driver"
 )
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "qtchooser")
 source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=5.5")
 
 sha256sums=("SKIP")

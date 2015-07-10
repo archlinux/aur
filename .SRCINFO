@@ -31,6 +31,7 @@ pkgbase = qt5-base-git
 	optdepends = libfbclient: Firebird/iBase driver
 	provides = qt5-base
 	conflicts = qt5-base
+	conflicts = qtchooser
 	source = qt5-base::git://code.qt.io/qt/qtbase.git#branch=5.5
 	sha256sums = SKIP
 
