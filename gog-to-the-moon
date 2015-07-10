@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/to-the-moon"
+
+"$gogdir"/start.sh
