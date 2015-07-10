@@ -10,7 +10,7 @@ pkgrel=4
 source=('git+https://github.com/hagabaka/sddm-config-editor.git')
 md5sums=('SKIP')
 depends=('qt5-quickcontrols' 'sddm' 'polkit')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 arch=('i686' 'x86_64')
 
 pkgver() {
