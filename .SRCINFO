@@ -1,0 +1,13 @@
+pkgbase = semt
+	pkgdesc = Processing the "Extended display identification data" (EDID) in order to apply a custom resolution. This is helpfull if the concerning monitor does not provide an EDID itself or its EDID is corrupted.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Edenhofer/semt
+	arch = any
+	license = GPL2
+	depends = glibc
+	source = semt-1.1.tar.gz::https://github.com/Edenhofer/semt/archive/v1.1.tar.gz
+	md5sums = e9d1ab41f5122a2bcbf79937cbcfad0c
+
+pkgname = semt
+
