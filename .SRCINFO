@@ -23,7 +23,7 @@ pkgbase = salome-gui
 	source = salome-gui.profile
 	source = salome.desktop
 	source = salome
-	md5sums = 3075efd2833f52d28fa622cd28999c4d
+	md5sums = 9ee448ab4c97667a75a96450dc8e118a
 	md5sums = a102063b779e332914ef0b73843e928a
 	md5sums = c47b2bb9e51120089bd3169c2298abf3
 

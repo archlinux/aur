@@ -1,6 +1,6 @@
 export GUI_ROOT_DIR=/opt/salome/gui
 
-_paraview_pythonpath="/usr/lib/paraview-4.1/site-packages/:/usr/lib/paraview-4.1/site-packages/vtk"
+_paraview_pythonpath="/usr/lib/paraview-4.3/site-packages/:/usr/lib/paraview-4.1/site-packages/vtk"
 if [[ $PYTHONPATH != *${_paraview_pythonpath}* ]]; then
   export PYTHONPATH=${_paraview_pythonpath}:$PYTHONPATH
 fi

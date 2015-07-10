@@ -103,6 +103,6 @@ package() {
 
   sed -e "s|GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS|GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS,EFICAS,ASTER|" -i ${pkgdir}${_installdir}/share/salome/resources/gui/SalomeApp.xml
 }
-md5sums=('3075efd2833f52d28fa622cd28999c4d'
+md5sums=('9ee448ab4c97667a75a96450dc8e118a'
          'a102063b779e332914ef0b73843e928a'
          'c47b2bb9e51120089bd3169c2298abf3')
