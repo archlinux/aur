@@ -1,0 +1,16 @@
+pkgbase = ne
+	pkgdesc = The nice editor, a fast small powerful and simple to use editor
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://ne.di.unimi.it
+	install = ne.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ncurses
+	depends = texinfo
+	source = http://ne.di.unimi.it/ne-3.0.1.tar.gz
+	md5sums = 48787d0aa55f89fadbd6f7d6cc6eb1de
+
+pkgname = ne
+
