@@ -8,7 +8,8 @@ pkgdesc='doit automation tool'
 arch=('any')
 url='http://pydoit.org/'
 license=('MIT')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
+             'python-pyinotify' 'python-six' 'python2-pyinotify' 'python2-six')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
