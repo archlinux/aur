@@ -1,12 +1,16 @@
 pkgbase = gog-to-the-moon
 	pkgdesc = To The Moon follows Dr. Rosalene and Dr. Watts' attempt to fulfill the wishes of a dying elderly man, Johnny. In their attempt to do so, they travel deep through the man's memories, unfolding his curious life story before their eyes.
 	pkgver = 1.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/to_the_moon
 	arch = i686
 	arch = x86_64
 	groups = games
 	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
 	source = local://gog_to_the_moon_1.0.0.1.tar.gz
 	source = gog-to-the-moon
 	sha256sums = 668428a4e0d8886bda3093dec18e851618f8d555c942c6174ac85379e26e0fad
