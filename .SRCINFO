@@ -1,0 +1,16 @@
+pkgbase = gqview
+	pkgdesc = An image browser and viewer
+	pkgver = 2.0.4
+	pkgrel = 5
+	url = http://gqview.sourceforge.net/
+	install = gqview.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/gqview/gqview-2.0.4.tar.gz
+	md5sums = 7196deab04db94cec2167637cddc02f9
+
+pkgname = gqview
+
