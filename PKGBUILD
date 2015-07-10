@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='gauche-git'
-pkgver=0.9.4.539.g1abd9fa
+pkgver=0.9.5.pre1.8398
 pkgrel=1
 pkgdesc="R5RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ source=('git+https://github.com/shirok/Gauche.git')
 md5sums=('SKIP')
 install="$pkgname.install"
 _gitname='Gauche'
-options=('!makeflags')
+options=('!makeflags' '!emptydirs')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed s+[-_]+.+g | cut -c8-
+  printf %s.%s $(cat VERSION|tr _ .) $(git rev-list --count HEAD)
 }
 
 prepare() {
