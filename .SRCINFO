@@ -1,14 +1,14 @@
 pkgbase = moneyguru
 	pkgdesc = Personal finance management application
-	pkgver = 2.8.2
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = http://www.hardcoded.net/moneyguru/
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-pyqt4
-	source = http://download.hardcoded.net/moneyguru-src-2.8.2.tar.gz
-	md5sums = c4f1b9d21d22306a4124135356de4548
+	source = http://download.hardcoded.net/moneyguru-src-2.9.2.tar.gz
+	md5sums = f3142646c213ef928f33474a677033cd
 
 pkgname = moneyguru
 
