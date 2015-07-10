@@ -1,8 +1,8 @@
 # Maintainer: Denis Demidov <dennis.demidov@gmail.com>
 
 pkgname=vexcl-git
-pkgver=20150609
-pkgrel=3
+pkgver=20150710
+pkgrel=4
 pkgdesc='a C++ vector expression template library for OpenCL/CUDA'
 arch=('i686' 'x86_64')
 url='http://github.com/ddemidov/vexcl'
@@ -24,7 +24,7 @@ package() {
 
   cd $_gitname
   install -d "$pkgdir/usr/include/vexcl"
-  find vexcl -type f -exec install -Dm644 '{}' "$pkgdir/usr/include/vexcl/" ';' || return 1
+  find vexcl -type f -exec install -Dm644 '{}' "$pkgdir/usr/include/{}" ';' || return 1
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_gitname/LICENSE.md" || return 1
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_gitname/README.md" || return 1
 }
