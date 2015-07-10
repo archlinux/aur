@@ -1,0 +1,160 @@
+diff --git a/dlls/gdi32/dibdrv/graphics.c b/dlls/gdi32/dibdrv/graphics.c
+index f3aaeb6..3caa5cf 100644
+--- a/dlls/gdi32/dibdrv/graphics.c
++++ b/dlls/gdi32/dibdrv/graphics.c
+@@ -758,7 +758,8 @@ static void render_string( HDC hdc, dib_info *dib, struct cached_font *font, INT
+ 
+     for (i = 0; i < count; i++)
+     {
+-        if (!(glyph = get_cached_glyph( font, str[i], flags )) &&
++        // Disable font-caching for Livino
++        if ( // !(glyph = get_cached_glyph( font, str[i], flags )) &&
+             !(glyph = cache_glyph_bitmap( hdc, font, str[i], flags ))) continue;
+ 
+         glyph_dib.width       = glyph->metrics.gmBlackBoxX;
+diff --git a/dlls/gdi32/font.c b/dlls/gdi32/font.c
+index 7fd5bd3..ba8df0f 100644
+--- a/dlls/gdi32/font.c
++++ b/dlls/gdi32/font.c
+@@ -2762,7 +2762,6 @@ BOOL WINAPI GetCharABCWidthsI( HDC hdc, UINT firstChar, UINT count,
+     return ret;
+ }
+ 
+-
+ /***********************************************************************
+  *           GetGlyphOutlineA    (GDI32.@)
+  */
+@@ -2794,6 +2793,92 @@ DWORD WINAPI GetGlyphOutlineA( HDC hdc, UINT uChar, UINT fuFormat,
+                             lpmat2);
+ }
+ 
++const char* LIVINO_DUMP_FILE_PATH = "/tmp/vndump.html";
++
++/*
++ * This where we analyze each character request made by the game going through GetGlyphOutlineB().
++ * The characters are dumped to a file. 
++ * There are some heuristics also: some games make double-calls
++ * for just a single character and we want to avoid double-dumping. 
++ */
++void treatCharacter(UINT c, DWORD cbBuffer) {
++
++    static int isInitialized = 0;
++    static FILE *file;
++    static time_t lastTime;
++
++    if (!cbBuffer) return;
++
++    if (cbBuffer && !isInitialized) {
++        isInitialized = 1;
++        file = fopen(LIVINO_DUMP_FILE_PATH, "w");
++        writeHTMLHeader(file);
++        lastTime = 0;
++    }
++
++    time_t nowTime = time(NULL);
++    
++    // Resets the dump after 2 seconds of text inactivity
++    if (nowTime - lastTime >= 2) {
++        fclose(file);
++        file = fopen(LIVINO_DUMP_FILE_PATH, "w");
++        writeHTMLHeader(file);
++	}
++
++    lastTime = nowTime;
++
++    static int charsPrinted = 0;
++    static UINT lastChar = 0;
++    static int nbRep = 0;
++    static int skip1Of2 = 0;
++    static int pairJustFound = 0;
++
++    charsPrinted++;
++
++    // Examines the set of the latest printed characters to guess 
++    // if this game likes to "double requests" characters.
++    int CHECK_LIMIT = 30;
++    
++    if (skip1Of2 == 0 && charsPrinted <= CHECK_LIMIT) {
++        if (c == lastChar) {
++            // Just read a double character
++            if (!pairJustFound) {
++                // New pair, count it
++                nbRep ++;
++            }
++            // Pair or series of the same character
++            pairJustFound = 1;
++        } else {
++            pairJustFound = 0;
++        }
++        lastChar = c;
++        if (charsPrinted == CHECK_LIMIT) {
++            // Time to check our latest set
++            skip1Of2 = nbRep > CHECK_LIMIT * 0.4f? 1 : 0;
++            nbRep = charsPrinted = 0; // Reset for next set to examine
++        }
++    }
++
++    if (skip1Of2 && (charsPrinted % 2 == 0) ) {
++        // Treatment for duplicated character
++        // Do nothing
++	} else {
++        // Dumps the character to the file
++        int l = fprintf(file, "%lc", c);
++        fflush(file);
++        if (l == -1) ERR("Could not write to file!\n");
++    }
++
++}
++
++/*
++ * Writes some HTML header so a web-browser knows how to display the text dumps.
++ */
++void writeHTMLHeader(FILE *file) {
++    const char* header = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/><style type=\"text/css\">html{font-size:1.8em;color:white;background:black;}</style><title>LiViNo</title></head><body>";
++    fprintf(file, "%s", header);
++}
++
+ /***********************************************************************
+  *           GetGlyphOutlineW    (GDI32.@)
+  */
+@@ -2801,6 +2886,8 @@ DWORD WINAPI GetGlyphOutlineW( HDC hdc, UINT uChar, UINT fuFormat,
+                                  LPGLYPHMETRICS lpgm, DWORD cbBuffer,
+                                  LPVOID lpBuffer, const MAT2 *lpmat2 )
+ {
++    
++
+     DC *dc;
+     DWORD ret;
+     PHYSDEV dev;
+@@ -2813,6 +2900,9 @@ DWORD WINAPI GetGlyphOutlineW( HDC hdc, UINT uChar, UINT fuFormat,
+     dc = get_dc_ptr(hdc);
+     if(!dc) return GDI_ERROR;
+ 
++    // Forward to Livino
++    treatCharacter(uChar, cbBuffer);
++
+     dev = GET_DC_PHYSDEV( dc, pGetGlyphOutline );
+     ret = dev->funcs->pGetGlyphOutline( dev, uChar, fuFormat, lpgm, cbBuffer, lpBuffer, lpmat2 );
+     release_dc_ptr( dc );
+diff --git a/dlls/gdi32/gdi_private.h b/dlls/gdi32/gdi_private.h
+index edd4bf6..01102ae 100644
+--- a/dlls/gdi32/gdi_private.h
++++ b/dlls/gdi32/gdi_private.h
+@@ -25,6 +25,8 @@
+ #include <math.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
++#include <stdio.h>
++#include <time.h>
+ #include "windef.h"
+ #include "winbase.h"
+ #include "wingdi.h"
+@@ -526,4 +528,8 @@ extern void free_heap_bits( struct gdi_image_bits *bits ) DECLSPEC_HIDDEN;
+ 
+ extern HMODULE gdi32_module DECLSPEC_HIDDEN;
+ 
++// Some Livino internal functions
++void treatCharacter(UINT c, DWORD cbBuffer);
++void writeHTMLHeader(FILE *file);
++
+ #endif /* __WINE_GDI_PRIVATE_H */
