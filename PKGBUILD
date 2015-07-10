@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=maxima-git
-pkgver=5.36.1.130.gc2a688e
+pkgver=5.36.1.153.g3aefdf5
 pkgrel=1
 pkgdesc="a sophisticated computer algebra system - git-version"
 arch=('any')
@@ -41,9 +41,4 @@ package() {
   # install some freedesktop.org compatibility
   install -Dm644 ${srcdir}/maxima.desktop \
   	${pkgdir}/usr/share/applications/${pkgname}.desktop
-  
-  # make sure, we have a nice icon for the desktop file at the right place ;)
-  install -d ${pkgdir}/usr/share/pixmaps/
-  ln -s /usr/share/maxima/branch_${pkgver//./_}_dirty/xmaxima/maxima-new.png \
-	${pkgdir}/usr/share/pixmaps/${pkgname}.png
 }
