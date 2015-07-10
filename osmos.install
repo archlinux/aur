@@ -1,0 +1,17 @@
+_databases() {
+    update-desktop-database -q
+    gtk-update-icon-cache -qtf usr/share/icons/hicolor
+}
+
+post_install() {
+    _databases
+}
+
+post_upgrade() {
+    _databases
+
+}
+
+post_remove() {
+    _databases
+}

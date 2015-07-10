@@ -1,7 +1,7 @@
 pkgbase = osmos
-	pkgdesc = Enter the ambient world of Osmos: elegant, physics-based gameplay, dreamlike visuals, and a minimalist, electronic soundtrack.
-	pkgver = 1.6.1
-	pkgrel = 3
+	pkgdesc = A physics-based ambient game (Humble Bundle/Store version)
+	pkgver = 1.6.1+20110216
+	pkgrel = 1
 	url = http://www.hemispheregames.com/osmos/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = osmos
 	source = hib://Osmos_1.6.1.tar.gz
 	source = osmos.desktop
 	md5sums = ed2cb029c20c25de719c28062e6fc9cf
-	md5sums = 7709be11fab3001b109ddf842b596d0c
+	md5sums = 030de4b7f794aaab819273bba8edf05d
 
 pkgname = osmos
 
