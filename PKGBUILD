@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/shk3/edx-downloader'
-license=('unknown')
+license=('LGPL3')
 makedepends=('git')
 depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html5lib' 'pandoc-bin')
 provides=("${pkgname%-git}")
@@ -32,4 +32,5 @@ package() {
   #install -D -m 755 edx-dl.py "${pkgdir}/usr/bin/edx-downloader"
   pandoc --from=markdown --to=rst --output=README.rst README.md
   python setup.py install --root="$pkgdir/" --optimize=1
+  ln -s "/usr/bin/edx-dl.py" "$pkgdir/usr/bin/edx-downloader"
 }
