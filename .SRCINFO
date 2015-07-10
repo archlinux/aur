@@ -15,6 +15,7 @@ pkgbase = autokey-py3
 	depends = xautomation
 	depends = imagemagick
 	depends = xorg-xwd
+	depends = python-xlib
 	optdepends = python-gobject: for GTK GUI
 	optdepends = gtksourceview3: for GTK GUI
 	optdepends = libnotify: for GTK GUI
