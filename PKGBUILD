@@ -3,7 +3,7 @@
 
 pkgname=dump1090-fa-git
 _gitname=dump1090
-pkgver=1.14.r35.gf58ff14
+pkgver=1.14.r42.ga3d26ea
 pkgrel=1
 pkgdesc="FlightAware fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ url="https://github.com/flightaware/dump1090"
 license=('BSD')
 depends=('rtl-sdr')
 conflicts=('dump1090' 'dump1090-git' 'dump1090_mr-git')
-provides=('dump1090')
+provides=('dump1090' 'dump1090-fa')
 makedepends=('git')
 source=('dump1090::git+git://github.com/flightaware/dump1090'
 	'dump1090.service')
