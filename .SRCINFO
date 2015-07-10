@@ -1,0 +1,31 @@
+pkgbase = gnome-panel2
+	pkgdesc = The GNOME Panel (legacy version)
+	pkgver = 2.32.1
+	pkgrel = 2
+	url = http://www.gnome.org
+	install = gnome-panel.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-menus2
+	makedepends = libgweather2
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = networkmanager
+	makedepends = libcanberra
+	depends = hicolor-icon-theme
+	depends = libgweather2
+	depends = librsvg
+	depends = gnome-desktop2
+	depends = libwnck
+	depends = libsm
+	depends = libbonoboui
+	depends = gnome-menus2
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.32/gnome-panel-2.32.1.tar.bz2
+	md5sums = a228035e1f7026abf296b797f1f7d2f9
+
+pkgname = gnome-panel2
+
