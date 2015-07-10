@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=dustforce-hib
-pkgver=1.0+20141222
+pkgver=1.0+h20141222
 _hibver=2014-12-22
 pkgrel=1
 pkgdesc='A fast-paced 2D action platformer (Humble Bundle version)'
@@ -17,7 +17,7 @@ _installer="Dustforce-Linux-${_hibver}.sh"
 source=("hib://${_installer}"
         'dustforce-hib.desktop')
 md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
-         'c012863d22d4332c651a272eb5e9cf03')
+         '4cb8d6d22ac618e38386fc0340865244')
 
 [[ $CARCH == "i686" ]] && _arch='x86' || _arch='x86_64'
 

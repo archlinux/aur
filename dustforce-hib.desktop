@@ -6,6 +6,6 @@ Name=Dustforce DX
 Comment=Hitbox Team
 GenericName=2D Action Platformer
 Icon=dustforce
-Exec=/usr/bin/dustforce
+Exec=dustforce
 Terminal=false
 StartupNotify=false
