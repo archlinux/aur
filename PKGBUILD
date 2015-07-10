@@ -9,7 +9,8 @@ pkgdesc="Test your project's packaging friendliness (hg version)"
 arch=('any')
 url='https://bitbucket.org/regebro/pyroma'
 license=('MIT')
-makedepends=('mercurial' 'python' 'python2' 'python-setuptools' 'python2-setuptools')
+makedepends=('mercurial' 'python' 'python2' 'python-setuptools' 'python2-setuptools'
+             'python-docutils' 'python2-docutils')
 options=(!emptydirs)
 source=("hg+https://bitbucket.org/regebro/${_hgname}")
 md5sums=('SKIP')
