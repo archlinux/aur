@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  cp "$srcdir/config.h" .
+  #cp "$srcdir/config.h" .
 }
 
 build() {
