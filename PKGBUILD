@@ -2,13 +2,13 @@
 
 pkgname=ekgping
 pkgver=1.31
-pkgrel=2
+pkgrel=3
 pkgdesc='Electrocardiograph-like graphical and audible ping'
 url='http://finalrewind.org/projects/ekgping/'
 license=('custom:WTFPL')
 arch=('any')
 depends=('perl-file-sharedir' 'perl-ipc-run' 'perl-sdl' 'perl-term-size')
-makedepends=('perl-test-compile' 'perl-test-pod')
+makedepends=('perl-module-build' 'perl-test-compile' 'perl-test-pod')
 options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')
 source=("http://finalrewind.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc})

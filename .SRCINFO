@@ -1,10 +1,11 @@
 pkgbase = ekgping
 	pkgdesc = Electrocardiograph-like graphical and audible ping
 	pkgver = 1.31
-	pkgrel = 2
+	pkgrel = 3
 	url = http://finalrewind.org/projects/ekgping/
 	arch = any
 	license = custom:WTFPL
+	makedepends = perl-module-build
 	makedepends = perl-test-compile
 	makedepends = perl-test-pod
 	depends = perl-file-sharedir
