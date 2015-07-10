@@ -1,0 +1,19 @@
+pkgbase = nodejs-git
+	pkgdesc = Evented I/O for V8 javascript
+	pkgver = 0.12.7.52.g9660833
+	pkgrel = 1
+	url = http://nodejs.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	makedepends = git
+	depends = openssl
+	provides = nodejs
+	conflicts = nodejs
+	options = !emptydirs
+	source = nodejs-git::git://github.com/joyent/node.git
+	sha256sums = SKIP
+
+pkgname = nodejs-git
+
