@@ -1,0 +1,8 @@
+#!/bin/bash
+
+post_install() {
+    cat<<INSTALLEOF
+    This is beta software. If you find any bugs, please report
+    them upstream.
+INSTALLEOF
+}
