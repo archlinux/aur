@@ -1,0 +1,17 @@
+pkgbase = gtk-theme-elementary
+	pkgdesc = The official elementary GTK theme designed to be smooth, attractive, fast, and usable.
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://launchpad.net/egtk
+	arch = any
+	groups = pantheon
+	license = GPL2
+	depends = gtk-engine-murrine
+	optdepends = elementary-icon-theme: the elementary icon theme
+	conflicts = elementary-gtk-theme
+	conflicts = egtk-bzr
+	source = gtk-theme-elementary-4.0.3.tar.gz::https://launchpad.net/egtk/4.x/4.0.3/+download/elementary.tar.gz
+	md5sums = ddd7a10fa56acfc85b53350f28ed521c
+
+pkgname = gtk-theme-elementary
+
