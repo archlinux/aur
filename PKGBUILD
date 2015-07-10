@@ -9,7 +9,8 @@ pkgdesc='doit automation tool (git version)'
 arch=('any')
 url='http://pydoit.org/'
 license=('MIT')
-makedepends=('git' 'python' 'python2' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python' 'python2' 'python-setuptools' 'python2-setuptools'
+             'python-pyinotify' 'python-six' 'python2-pyinotify' 'python2-six')
 options=(!emptydirs)
 source=("git+https://github.com/pydoit/${_gitname}")
 md5sums=('SKIP')
