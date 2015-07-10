@@ -1,10 +1,11 @@
 pkgbase = perl-travel-status-de-vrr
 	pkgdesc = Interface to the efa.vrr.de departure monitor
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://finalrewind.org/projects/Travel-Status-DE-VRR/
 	arch = any
 	license = PerlArtistic
+	makedepends = perl-module-build
 	makedepends = perl-file-slurp
 	makedepends = perl-test-pod
 	depends = perl-class-accessor
