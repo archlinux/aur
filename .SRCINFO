@@ -1,0 +1,15 @@
+pkgbase = makedumpfile
+	pkgdesc = A tool to generate smaller dumpfiles from kdump memory dumps
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = http://sourceforge.net/projects/makedumpfile
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	depends = elfutils
+	source = http://freefr.dl.sourceforge.net/project/makedumpfile/makedumpfile/1.5.8/makedumpfile-1.5.8.tar.gz
+	sha256sums = dd9c6c40c1ae6774b61bbe7b53f5ebbee9734f576d8ecb75ffb929288f5ea64d
+
+pkgname = makedumpfile
+
