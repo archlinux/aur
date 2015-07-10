@@ -8,7 +8,6 @@ pkgbase = vm-bzr
 	arch = x86_64
 	license = GPL
 	makedepends = bzr
-	makedepends = texinfo-legacy
 	depends = emacs
 	depends = stunnel
 	optdepends = mailcrypt: for encrypted mails

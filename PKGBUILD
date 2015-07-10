@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/vm"
 license=('GPL')
 depends=('emacs' 'stunnel')
-makedepends=('bzr' 'texinfo-legacy')
+makedepends=('bzr')
 optdepends=('mailcrypt: for encrypted mails'
 'bbdb: for using a rolodex-like db')
 provides=('vm')
@@ -24,13 +24,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_bzrmod-build"
+  cd "$srcdir/$_bzrmod"
   autoconf
   ./configure --prefix=/usr
-  MAKEINFO=makeinfo-4.13a make
+  make
 }
 
 package() {
-  cd "$srcdir/$_bzrmod-build"
+  cd "$srcdir/$_bzrmod"
   make DESTDIR="$pkgdir/" install
 }
