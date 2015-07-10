@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('libxtst' 'qt4' 'shared-mime-info' 'qjson' 'libmicrohttpd')
 install=keepassx.install
 makedepends=('git' 'intltool' 'cmake' 'zlib' 'libgcrypt')
-optdepends=('libxtst : auto-type support')
+optdepends=('libxtst: auto-type support')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassx-git')
 source=(git+https://github.com/eugenesan/keepassx.git#branch=http)
 md5sums=('SKIP')
