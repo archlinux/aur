@@ -1,0 +1,28 @@
+post_install() {
+    echo "By default, kippo runs on port 2222. Do not try to run it on port 22."
+    echo "Instead, use something like"
+    echo "    iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 22 -j REDIRECT --to-port 2222"
+    echo "to make it reachable on port 22."
+    echo "The whole kippo installation lives in /opt/kippo to make it isolated from the real system."
+
+    /usr/bin/getent group kippo > /dev/null || /usr/sbin/groupadd kippo
+    /usr/bin/getent passwd kippo > /dev/null || \
+        /usr/sbin/useradd -d /opt/kippo -g kippo -s /bin/nologin kippo
+
+    chown -R kippo:kippo /opt/kippo
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+  if [[ -f /opt/kippo/kippo.pid ]]; then
+    systemctl stop kippo
+  fi
+}
+
+post_remove() {
+    /usr/sbin/userdel kippo > /dev/null
+}
+# vim: ts=2 sw=2 et:

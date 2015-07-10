@@ -1,0 +1,24 @@
+pkgbase = kippo-git
+	pkgdesc = A medium interaction SSH honeypot designed to log brute force attacks and, most importantly, the entire shell interaction performed by the attacker
+	pkgver = v0.9.281.860224d
+	pkgrel = 1
+	url = https://github.com/desaster/kippo
+	install = kippo.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = twisted
+	depends = pycrypto
+	provides = kippo
+	conflicts = kippo
+	source = git+http://github.com/desaster/kippo
+	source = kippo.service
+	source = kippo.install
+	sha512sums = SKIP
+	sha512sums = 1ef2d5b1223567dbe37ea51ad668fc39d173e85b22cbbf13d85d781bfe0b52a994f9768ef4f2389f5970f8636be9ca3b30b6e8ae7b6b040bb6564c1387d16d42
+	sha512sums = d1a15c792912e6f127839665bbe1cde82711ba485f536083c84e568faf6ebdfb4c941abfc7f25e8098d2a6f5f328a900fde78242cf49cc751c7227dfd3584d1a
+
+pkgname = kippo-git
+

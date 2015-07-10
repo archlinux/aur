@@ -1,0 +1,14 @@
+[Unit]
+Description=Kippo Honey Pot
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/kippo
+User=kippo
+Group=kippo
+PIDFile=/opt/kippo/kippo.pid
+ExecStart=/usr/bin/twistd -y kippo.tac -l log/kippo.log --pidfile kippo.pid
+
+[Install]
+WantedBy=multi-user.target
