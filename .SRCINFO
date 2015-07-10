@@ -1,6 +1,6 @@
 pkgbase = arangodb
 	pkgdesc = A distributed open-source database with a flexible data model for documents, graphs, and key-values.
-	pkgver = 2.6.0
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://www.arangodb.com/
 	install = arangodb.install
@@ -15,11 +15,11 @@ pkgbase = arangodb
 	depends = readline
 	depends = systemd
 	depends = icu
-	provides = arangodb=2.6.0
+	provides = arangodb=2.6.2
 	conflicts = arangodb-git
-	source = https://www.arangodb.com/repositories/Source/ArangoDB-2.6.0.tar.bz2
+	source = https://www.arangodb.com/repositories/Source/ArangoDB-2.6.2.tar.bz2
 	source = arangodb.service
-	sha256sums = cd20043e425f02af6a643439261f79328d8b256d1a9d88f8f59e8a0d8b7545f4
+	sha256sums = 230de07979a81388edce9ca668d11ac0d567b8435085793e216bc48bacff46e2
 	sha256sums = 8b244e30c69dac28c12fa080b4ee7c4256977e8a8a6ffa342432ae48e35a9b12
 
 pkgname = arangodb
