@@ -1,6 +1,6 @@
 pkgbase = bibellese
 	pkgdesc = Helps with reading the bible according to various reading plans (German only)
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = http://www.brodbeck-online.de/software/bibellese
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = bibellese
 	depends = glibc
 	depends = libical
 	depends = qt5-base
-	source = bibellese-1.6.2.tar.gz
-	md5sums = 61550d90ef251296a85254ebfd4913ba
+	source = bibellese-1.7.0.tar.gz
+	md5sums = cf5202ae1547ac3e1b718324f6f814c3
 
 pkgname = bibellese
 
