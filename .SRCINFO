@@ -5,7 +5,7 @@ pkgbase = dpsprep-git
 	url = https://github.com/kcroker/dpsprep
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = git
 	depends = python2
 	depends = python2-sexpdata
@@ -14,6 +14,7 @@ pkgbase = dpsprep-git
 	depends = ocrodjvu
 	depends = pdfbeads
 	depends = pdftk-bin
+	depends = ruby-iconv
 	source = git+git://github.com/kcroker/dpsprep.git
 	md5sums = SKIP
 
