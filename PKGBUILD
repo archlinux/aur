@@ -4,14 +4,14 @@ pkgname=keepassx-http-merge
 _gitname=keepassx
 pkgver=2.0.alpha6.r235.gf076ad3
 pkgrel=1
-pkgdesc="KeePassX, with eugenesan's merge request for keepasshttp. The libxtst package is optional dependancy for auto-type."
+pkgdesc="KeepassX, with eugenesan's merge request for keepasshttp."
 arch=('i686' 'x86_64')
 url="https://github.com/eugenesan/keepassx/tree/http"
 license=('GPL2')
 depends=('libxtst' 'qt4' 'shared-mime-info' 'qjson' 'libmicrohttpd')
 install=keepassx.install
 makedepends=('git' 'intltool' 'cmake' 'zlib' 'libgcrypt')
-optdepends=('libxtst : auto-type')
+optdepends=('libxtst : auto-type support')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassx-git')
 source=(git+https://github.com/eugenesan/keepassx.git#branch=http)
 md5sums=('SKIP')

@@ -1,5 +1,5 @@
 pkgbase = keepassx-http-merge
-	pkgdesc = KeePassX, with eugenesan's merge request for keepasshttp. The libxtst package is optional dependancy for auto-type.
+	pkgdesc = KeepassX, with eugenesan's merge request for keepasshttp.
 	pkgver = 2.0.alpha6.r235.gf076ad3
 	pkgrel = 1
 	url = https://github.com/eugenesan/keepassx/tree/http
@@ -17,7 +17,7 @@ pkgbase = keepassx-http-merge
 	depends = shared-mime-info
 	depends = qjson
 	depends = libmicrohttpd
-	optdepends = libxtst : auto-type
+	optdepends = libxtst : auto-type support
 	conflicts = keepassx-svn
 	conflicts = keepassx
 	conflicts = keepassx2-git
