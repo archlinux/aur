@@ -1,0 +1,14 @@
+pkgbase = python-tzlocal
+	pkgdesc = Tzinfo object for the local timezone
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/regebro/tzlocal
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python-pytz
+	source = https://pypi.python.org/packages/source/t/tzlocal/tzlocal-1.1.2.zip
+	sha256sums = 4d9ddb8d5eab086e3a7c504c6e994ffa85df43e40da4d6be776218be051c677a
+
+pkgname = python-tzlocal
+
