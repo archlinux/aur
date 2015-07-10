@@ -1,0 +1,14 @@
+pkgbase = android-support
+	pkgdesc = Android Support Package
+	pkgver = r22.1.1
+	pkgrel = 1
+	url = https://developer.android.com/sdk/compatibility-library.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/support_r22.1.1.zip
+	sha1sums = 88bdc7b4074065ed28681f39e6b32c4f7ab45d94
+
+pkgname = android-support
+
