@@ -1,32 +1,38 @@
 # Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
 #
-# namcap warns that python is an unnecessary dependency. This is untrue.
+# namcap incorrectly states that python{,2} are unnecessary deps.
 
-pkgname=python-factory_boy
-_pkgname="${pkgname#python-}"
+pkgbase=python-factory_boy
+_pkgbase="${pkgbase#python-}"
+pkgname=(python-factory_boy python2-factory_boy)
 pkgver=2.5.2
 pkgrel=1
 pkgdesc="A fixtures replacement based on thoughtbot's factory_girl for Ruby."
 arch=(any)
 url='https://github.com/rbarrois/factory_boy'
 license=(MIT)
-depends=(python)
-makedepends=(python-distribute)
-options=(!emptydirs)
-source=(
-  "https://pypi.python.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-  LICENSE
+makedepends=(
+  python-distribute
+  python-fake-factory
+  python2-distribute
+  python2-fake-factory
 )
+options=(!emptydirs)
+source=("https://github.com/rbarrois/${_pkgbase}/archive/v${pkgver}.tar.gz")
+sha256sums=('bcbadc503b37c2b9db0ac59eae18014f9560d47087e5ad0ddd844560a64ffcdd')
 
-sha256sums=('cd8306e64c3a115deca136685e945db88ffe171382012ec938ed241a20dd7eba'
-            'a57c71972eb450d03a3ef6eb8ae32bcdb9fcc485c11c52ee1032a2b0c107f714')
-
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+package_python-factory_boy() {
+  depends=(python-fake-factory)
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 \
-    "${srcdir}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-factory_boy() {
+  depends=(python2-fake-factory)
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

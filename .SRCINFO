@@ -6,12 +6,16 @@ pkgbase = python-factory_boy
 	arch = any
 	license = MIT
 	makedepends = python-distribute
-	depends = python
+	makedepends = python-fake-factory
+	makedepends = python2-distribute
+	makedepends = python2-fake-factory
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/f/factory_boy/factory_boy-2.5.2.tar.gz
-	source = LICENSE
-	sha256sums = cd8306e64c3a115deca136685e945db88ffe171382012ec938ed241a20dd7eba
-	sha256sums = a57c71972eb450d03a3ef6eb8ae32bcdb9fcc485c11c52ee1032a2b0c107f714
+	source = https://github.com/rbarrois/factory_boy/archive/v2.5.2.tar.gz
+	sha256sums = bcbadc503b37c2b9db0ac59eae18014f9560d47087e5ad0ddd844560a64ffcdd
 
 pkgname = python-factory_boy
+	depends = python-fake-factory
+
+pkgname = python2-factory_boy
+	depends = python2-fake-factory
 
