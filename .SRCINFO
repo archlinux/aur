@@ -1,19 +1,21 @@
 pkgbase = arxfatalis-data-copy
-	pkgdesc = Arx Fatalis game data from existing win32 installation
+	pkgdesc = Arx Fatalis game data from an existing win32 installation
 	pkgver = 1.21
 	pkgrel = 1
 	url = http://www.arkane-studios.com/uk/arx.php
 	install = arx-fatalis-data.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom:commercial
-	provides = arx-fatalis-data
+	provides = arxfatalis-data
+	conflicts = arxfatalis-data-gog
+	conflicts = arxfatalis-data-demo
 	conflicts = arx-fatalis-data-gog
 	conflicts = arx-fatalis-data-demo
-	source = install-verify
-	source = install-copy
-	md5sums = e9c245ac1bb48cb8ef667933e0b725d2
-	md5sums = 9bbb1a2ae298343aafe40a5e7117c24c
+	replaces = arx-fatalis-data-copy
+	source = local://arx fatalis/
+	source = arx-install-data
+	md5sums = SKIP
+	md5sums = fc5456e4c213af243b65862db8d5db0a
 
 pkgname = arxfatalis-data-copy
 
