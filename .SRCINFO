@@ -1,0 +1,17 @@
+pkgbase = salome-geom
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - GEOM Module
+	pkgver = 7.6.6
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = boost
+	makedepends = optipng
+	makedepends = swig2
+	depends = salome-gui>=7.6.0
+	depends = salome-gui<7.7.0
+	source = salome-geom.profile
+
+pkgname = salome-geom
+
