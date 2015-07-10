@@ -1,0 +1,14 @@
+pkgbase = ezoe-git
+	pkgdesc = Not a question
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mattn/ezoe
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = ezoe
+
+pkgname = ezoe-git
+
