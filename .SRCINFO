@@ -1,12 +1,12 @@
 pkgbase = soulseekqt
 	pkgdesc = A desktop client for the Soulseek peer-to-peer file sharing network
-	pkgver = 20141130
+	pkgver = 20150621
 	pkgrel = 1
 	url = http://www.soulseekqt.net/news/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = http://www.soulseekqt.net/SoulseekQT/Linux/SoulseekQt-2014-11-30-32bit.tgz
+	source = https://dl.dropboxusercontent.com/u/7226803/SoulseekQt-2015-6-21-32bit.tgz
 	source = soulseekqt.desktop
 	source = soulseekqt.png
 
