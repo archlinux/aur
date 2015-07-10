@@ -1,0 +1,19 @@
+pkgbase = edx-downloader-git
+	pkgdesc = A simple tool to download video lectures from edx.org.
+	pkgver = latest
+	pkgrel = 2
+	url = https://github.com/shk3/edx-downloader
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	depends = youtube-dl
+	depends = python-six
+	depends = python-html5lib
+	depends = pandoc-bin
+	provides = edx-downloader
+	conflicts = edx-downloader
+
+pkgname = edx-downloader-git
+
