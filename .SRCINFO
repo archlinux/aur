@@ -1,0 +1,14 @@
+pkgbase = authbind
+	pkgdesc = Allows non-root programs to bind() to low TCP ports (0-1023)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://packages.qa.debian.org/a/authbind.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://ftp.debian.org/debian/pool/main/a/authbind/authbind_2.1.1.tar.gz
+	md5sums = ef3cd5eef28519b8daf248e3761dd9bd
+
+pkgname = authbind
+
