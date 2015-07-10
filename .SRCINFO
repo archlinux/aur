@@ -1,0 +1,25 @@
+pkgbase = python-lepl
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.acooke.org/lepl/index.html
+	arch = any
+	license = LGPL
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python
+	makedepends = python-setuptools
+	source = http://lepl.googlecode.com/files/LEPL-5.0.0.tar.gz
+	source = LGPL-3.0.txt
+	source = MPL-1.1.txt
+	md5sums = c8b3eb755234b00c66ca0c912457d629
+	md5sums = e6a600fd5e1d9cbde2d983680233ad02
+	md5sums = 4fc87e887bb0ede396a78bd31155c5d6
+
+pkgname = python-lepl
+	pkgdesc = A Python3 recursive descent parser, written in Python, which has a a friendly, easy-to-use syntax
+	depends = python
+
+pkgname = python2-lepl
+	pkgdesc = A Python2 recursive descent parser, written in Python, which has a a friendly, easy-to-use syntax
+	depends = python2
+
