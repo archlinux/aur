@@ -1,10 +1,10 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=closure-hib
-pkgver=1.1_20121228
+pkgver=1.1+h20121228
 _hibver=1.1-2012-12-28
-pkgrel=2
-pkgdesc='A puzzle platformer game that centers around light (Humble Bundle version)'
+pkgrel=1
+pkgdesc='A puzzle platformer game that centers around light and darkness (Humble Bundle version)'
 url='http://closuregame.com/'
 arch=('i686' 'x86_64')
 license=('custom:commercial')
@@ -17,7 +17,7 @@ _installer="Closure-Linux-${_hibver}.sh"
 source=("hib://${_installer}"
         'closure-hib.desktop')
 md5sums=('a7c2f7fe17ff67f376da70611abdce97'
-         'd691e2d56865f8331999374684bdf354')
+         '443054a1154ef9423698d6f010682a9c')
 
 package() {
   cd $srcdir
