@@ -1,7 +1,7 @@
 pkgbase = sendmail
 	pkgdesc = The sendmail MTA
 	pkgver = 8.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sendmail.org
 	install = sendmail.install
 	arch = i686
