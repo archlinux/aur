@@ -1,29 +1,45 @@
-# Contributor: jorick <roels.jorick@gmail.com>
+# Contributor: VargArch <roels.jorick@gmail.com>
+# Contributor: zsrkmyn
+# Contributor: marsam
+
 pkgname=universal-ctags-git
-pkgver=20150705
+_gitname=ctags
+pkgver=0.r2366.2ead2d5
 pkgrel=1
-pkgdesc="A maintained ctags implementation with support for more languages"
+pkgdesc="multilanguage reimplementation of the Unix ctags utility"
 arch=('i686' 'x86_64')
-url="https://github.com/universal-ctags/ctags/tree/master"
 license=('GPL')
-depends=('')
+depends=('bash')
 makedepends=('git')
 provides=('ctags')
 conflicts=('ctags')
-source=("$pkgname::git+https://github.com/universal-ctags/ctags.git")
+options=('!emptydirs')
+url="https://ctags.io/"
+source=("${_gitname}::git+https://github.com/universal-ctags/ctags.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$srcdir/$pkgname"
-  autoreconf -vfi
-  ./configure -prefix=/usr --sysconfdir=/etc
+  cd "${srcdir}/${_gitname}"
+  autoreconf -vif
+  ./configure --prefix=/usr \
+              --libexecdir=/usr/lib \
+              --sysconfdir=/etc
   make
 }
 
-package ()
-{
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+check() {
+  cd "${srcdir}/${_gitname}"
+  make check
+}
+
+package() {
+  cd "${srcdir}/${_gitname}"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
