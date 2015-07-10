@@ -1,14 +1,16 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonnet-git
-pkgver=r146.a5b7c87
+pkgver=r195.fa8c523
 pkgrel=1
 pkgdesc='Sonnet'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/sonnet'
 license=('LGPL')
-depends=('qt5-base' 'enchant')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
+depends=('qt5-base')
+makedepends=('extra-cmake-modules' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'libvoikko' 'git')
+optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via aspell' 'hspell: spell checking for Hebrew'
+  'libvoikko: spell checking for Finnish via Voikko')
 groups=('kf5')
 conflicts=(sonnet)
 provides=(sonnet)
