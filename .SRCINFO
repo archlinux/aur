@@ -1,0 +1,14 @@
+pkgbase = pi-blaster-git
+	pkgdesc = Daemon for Raspberry Pi which provides an interface to drive multiple PWM via the GPIO pins
+	pkgver = 20150610.r130.2cd6659
+	pkgrel = 1
+	url = https://github.com/sarfata/pi-blaster/
+	arch = any
+	license = MIT
+	makedepends = autoconf
+	makedepends = git
+	source = git+https://github.com/sarfata/pi-blaster
+	sha256sums = SKIP
+
+pkgname = pi-blaster-git
+
