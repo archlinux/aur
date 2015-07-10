@@ -5,7 +5,7 @@
 # - https://aur.archlinux.org/packages/arangodb-git
 
 pkgname=arangodb
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64" "armv7h")
@@ -32,7 +32,7 @@ backup=('etc/arangodb/arangob.conf'
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/$pkgname-$pkgver.tar.bz2" "arangodb.service")
-sha256sums=('4b8c1560b6d4727c646b3d96332ffa7ff1a8309e94ddd43977c47a09b4a78c41'
+sha256sums=('230de07979a81388edce9ca668d11ac0d567b8435085793e216bc48bacff46e2'
             'ccde74e481761e2879845a0c9fbef601f4cdd73465d425549d3ad6714e99443d')
 
 build() {
