@@ -5,14 +5,25 @@ pkgbase = python-django-extensions
 	url = http://github.com/django-extensions/django-extensions
 	arch = any
 	license = MIT
+	makedepends = python-django
 	makedepends = python-setuptools
-	depends = python-django
-	depends = python-six
-	optdepends = graphviz: to graph Django models
-	optdepends = python-werkzeug: to use the Werkzeug debugger in the embedded web server
+	makedepends = python-six
+	makedepends = python2-django
+	makedepends = python2-setuptools
+	makedepends = python2-six
 	options = !emptydirs
 	source = https://github.com/django-extensions/django-extensions/archive/1.5.5.tar.gz
 	sha256sums = 4ee4fe0559137a74df3d7692406d1efaa7c47fe903442f211b926104f193e436
 
 pkgname = python-django-extensions
+	depends = python-django
+	depends = python-six
+	optdepends = graphviz: to graph Django models
+	optdepends = python-werkzeug: to use the Werkzeug debugger in the embedded web server
+
+pkgname = python2-django-extensions
+	depends = python2-django
+	depends = python2-six
+	optdepends = graphviz: to graph Django models
+	optdepends = python2-werkzeug: to use the Werkzeug debugger in the embedded web server
 
