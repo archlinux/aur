@@ -9,7 +9,7 @@ pkgbase = percol-git
 	depends = python2
 	depends = python2-six
 	depends = python2-setuptools
-	optdepends = python-cmigemo
+	optdepends = python2-cmigemo
 	source = percol::git+https://github.com/mooz/percol.git
 	md5sums = SKIP
 

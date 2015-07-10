@@ -2,7 +2,7 @@
 _pkgname=percol
 pkgname=$_pkgname-git
 pkgver=20150630.362
-pkgrel=1
+pkgrel=2
 pkgdesc="percol adds flavor of interactive selection to the traditional pipe concept on UNIX"
 url="https://github.com/mooz/percol"
 arch=('i686' 'x86_64')
