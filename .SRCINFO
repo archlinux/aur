@@ -1,0 +1,35 @@
+pkgbase = cmus-git
+	pkgdesc = A very feature-rich ncurses-based music player
+	pkgver = v2.7.0.r2.gc22b5bd
+	pkgrel = 1
+	url = https://cmus.github.io/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	optdepends = libpulse: PulseAudio
+	optdepends = alsa-lib: ALSA
+	optdepends = OSS: OSS
+	optdepends = libroar: RoarAudio
+	optdepends = libao: libao
+	optdepends = aRts: aRts
+	optdepends = libcdio: cdio plugin
+	optdepends = libcddb: cdio plugin
+	optdepends = libcue: .cue
+	optdepends = FLAC: .flac
+	optdepends = libvorbis: .ogg
+	optdepends = libmpcded: .mpc, .mpp, .mp+
+	optdepends = wavpack: .wv
+	optdepends = libmad: .mp3
+	optdepends = libavcodec: .wma, .ape, .mka, .tta, .shn
+	optdepends = FAAD: .aac, .mp4, .m4a, .m4b
+	optdepends = mp4v2: .mp4, .m4a, .m4b
+	optdepends = libmodplug: .mod, .s3m
+	optdepends = libmikmod: .mod, .s3m
+	provides = cmus
+	conflicts = cmus
+	source = git://github.com/cmus/cmus
+	sha512sums = SKIP
+
+pkgname = cmus-git
+
