@@ -1,4 +1,5 @@
-# Maintainer: Enrico Bacis <enrico.bacis@gmail.com>
+# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
 pkgver=latest
 pkgrel=2
