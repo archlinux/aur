@@ -1,0 +1,25 @@
+pkgbase = python-autokey-py3
+	pkgdesc = Python 3 port of AutoKey, a desktop automation utility for Linux and X11.
+	pkgver = 0.93.4
+	pkgrel = 1
+	url = https://github.com/guoci/autokey-py3
+	arch = any
+	license = GPL v3
+	depends = python
+	depends = python-pip
+	depends = wmctrl
+	depends = hicolor-icon-theme
+	depends = python-dbus
+	depends = python-pyinotify
+	depends = zenity
+	depends = xautomation
+	depends = imagemagick
+	depends = xorg-xwd
+	optdepends = python-gobject: for GTK GUI
+	optdepends = gtksourceview3: for GTK GUI
+	optdepends = libnotify: for GTK GUI
+	optdepends = python-qscintilla: for QT GUI
+	optdepends = kdebindings-python: for QT GUI
+
+pkgname = python-autokey-py3
+
