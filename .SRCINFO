@@ -1,12 +1,13 @@
 pkgbase = pipman-git
 	pkgdesc = Generate PKGBUILD from pip packages
-	pkgver = 0.5.1.r5.gca7315b
+	pkgver = 0.6.2.r0.g441a9c0
 	pkgrel = 1
 	url = http://github.com/sollidsnake/pipman
 	arch = any
 	license = GPL
 	depends = python
 	depends = python-pip
+	depends = python-virtualenv
 	source = git+https://github.com/sollidsnake/pipman
 	md5sums = SKIP
 
