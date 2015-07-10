@@ -1,0 +1,15 @@
+post_install() {
+echo "You must have Java 6.0 or later installed in order to run"
+echo "Total Validator."
+echo ""
+echo "In order to automatically display the results in a browser"
+echo "you may have to amend /opt/totalvalidatorbasic/default_browser.sh."
+echo ""
+echo "Launch /opt/totalvalidatorbasic/total_validator.sh"
+echo "or /opt/totalvalidatorbasic/total_validator_listen.sh"
+echo "to use Total Validator Basic."
+}
+
+post_upgrade() {
+	post_install
+}
