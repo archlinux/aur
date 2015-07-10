@@ -1,0 +1,27 @@
+pkgbase = print-manager-kde4
+	pkgdesc = A tool for managing print jobs and printers
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdeutils/print-manager
+	arch = i686
+	arch = x86_64
+	groups = kdeutils
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = libcups
+	optdepends = system-config-printer: auto-detect the printer driver
+	conflicts = kdeutils-print-manager
+	conflicts = print-manager
+	replaces = kdeutils-print-manager
+	replaces = print-manager
+	replaces = kdeutils-printer-applet
+	replaces = kdeadmin-system-config-printer-kde
+	source = print-manager-4.14.3.tar.xz::http://download.kde.org/stable/4.14.3/src/print-manager-4.14.3.tar.xz
+	sha256sums = 081736f273c7f13806828497caddf83d36d5e083d56b277dc363360614fbc135
+
+pkgname = print-manager-kde4
+
