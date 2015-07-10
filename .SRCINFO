@@ -1,0 +1,18 @@
+pkgbase = pfclient-beta-bin
+	pkgdesc = Planefinder.net sharing client
+	pkgver = 3.0.2080
+	pkgrel = 1
+	url = https://planefinder.net/sharing/client
+	install = pfclient-beta-bin.install
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = unknown
+	backup = etc/pfclient/pfclient-config.json
+	source = http://client.planefinder.net/pfclient_3.0.2080_armhf.tar.gz
+	source = pfclient-beta.service
+	md5sums = 761a109f7dcc3a485958a74c7a7b27bd
+	md5sums = f2f2b11d1bd4fd216480071467a95b09
+
+pkgname = pfclient-beta-bin
+

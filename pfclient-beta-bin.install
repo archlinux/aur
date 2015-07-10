@@ -1,0 +1,9 @@
+post_install() {
+  echo "
+    In order to use the client, it's necessary to start the service and
+    configure it by HTML interface at http://<your-ip>:30053.
+    "
+}
+
+# vim:set ts=2 sw=2 et:
+
