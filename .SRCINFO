@@ -6,7 +6,7 @@ pkgbase = ruby-commander
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-highline>1.7.2
+	depends = ruby-highline>=1.7.2
 	noextract = commander-4.3.4.gem
 	options = !emptydirs
 	source = http://gems.rubyforge.org/gems/commander-4.3.4.gem

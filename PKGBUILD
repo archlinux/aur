@@ -9,7 +9,7 @@ pkgdesc="The complete solution for Ruby command-line executables"
 arch=('any')
 url="https://rubygems.org/gems/commander"
 license=('MIT')
-depends=('ruby' 'ruby-highline>1.7.2')
+depends=('ruby' 'ruby-highline>=1.7.2')
 options=(!emptydirs)
 source=("http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem"
         "https://raw.githubusercontent.com/commander-rb/commander/master/LICENSE")
