@@ -1,0 +1,16 @@
+pkgbase = python-swiftclient
+	pkgdesc = OpenStack Object Storage API Client Library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/openstack/python-swiftclient
+	arch = any
+	license = Apache
+	makedepends = python-pbr>=0.11
+	source = https://pypi.python.org/packages/source/p/python-swiftclient/python-swiftclient-2.4.0.tar.gz
+	sha256sums = e865553b3afc63a9952cfa30f155a604564cae31a40275fa2ce94c80d7affd4b
+
+pkgname = python-swiftclient
+	depends = python-requests>=1.1
+	depends = python-simplejson>=2.0.9
+	depends = python-six>=1.5.2
+
