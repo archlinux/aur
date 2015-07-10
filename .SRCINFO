@@ -1,0 +1,16 @@
+pkgbase = python2-cmigemo
+	pkgdesc = python-cmigemo is a pure python binding for C/Migemo
+	pkgver = 0.1.5
+	pkgrel = 2
+	url = https://github.com/mooz/python-cmigemo
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	depends = cmigemo-git
+	depends = python2-distribute
+	source = python-cmigemo-0.1.5.zip::https://github.com/mooz/python-cmigemo/archive/v0.1.5.zip
+	sha256sums = e28511b64924ccf0a95241af0d9988dac9b5743b7353c3f8ed30ee18d5eafbde
+
+pkgname = python2-cmigemo
+
