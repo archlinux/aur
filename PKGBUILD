@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
-pkgver=latest
-pkgrel=2
+pkgver=r514.6299a75
+pkgrel=1
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/shk3/edx-downloader'
@@ -32,5 +32,5 @@ package() {
   #install -D -m 755 edx-dl.py "${pkgdir}/usr/bin/edx-downloader"
   pandoc --from=markdown --to=rst --output=README.rst README.md
   python setup.py install --root="$pkgdir/" --optimize=1
-  ln -s "/usr/bin/edx-dl.py" "$pkgdir/usr/bin/edx-downloader"
+  ln -s "/usr/bin/edx-dl" "$pkgdir/usr/bin/edx-downloader"
 }

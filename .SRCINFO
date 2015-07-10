@@ -1,7 +1,7 @@
 pkgbase = edx-downloader-git
 	pkgdesc = A simple tool to download video lectures from edx.org.
-	pkgver = latest
-	pkgrel = 2
+	pkgver = r514.6299a75
+	pkgrel = 1
 	url = https://github.com/shk3/edx-downloader
 	arch = any
 	license = LGPL3
