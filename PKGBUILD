@@ -1,22 +1,37 @@
-# Maintainer: Yaron de Leeuw < me@jarondl.net  >
-
-# Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
-pkgname=python-natsort
-_pkgname=natsort
-pkgver=4.0.0
+# Maintainer: Chris Warrick <aur@chriswarrick.com>
+# Maintainer: Yaron de Leeuw <me@jarondl.net>
+pkgbase=python-natsort
+pkgname=('python-natsort' 'python2-natsort')
+_pyname=natsort
+pkgver=4.0.3
 pkgrel=1
-pkgdesc="Natural sorting for python"
+pkgdesc='Sort lists naturally.'
 arch=('any')
-url="https://pypi.python.org/pypi/natsort"
+url='https://github.com/SethMMorton/natsort'
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/n/natsort/natsort-${pkgver}.tar.gz")
-sha512sums=('bf22c0b3a31fb9eeb89e820a3eb2ed50a3c12445c7947daa16ee2fd74d619ec157d49a4045e30d4e103d74c02047f1e5329529f76ce1248eafe76fbf4b325a28')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+options=(!emptydirs)
+source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('ef2c4d6e2c5dc0458fe604a91f721aaa')
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+prepare() {
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  cp -r "${srcdir}/${_pyname}-${pkgver}" "${srcdir}/${_pyname}-${pkgver}-py2"
 }
 
+package_python-natsort() {
+  depends=('python' 'python-setuptools')
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+}
+
+package_python2-natsort() {
+  depends=('python2' 'python2-setuptools')
+  cd "${srcdir}/${_pyname}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  mv "${pkgdir}/usr/bin/${_pyname}" "${pkgdir}/usr/bin/${_pyname}2"
+}
+
+# vim:set ts=2 sw=2 et:
