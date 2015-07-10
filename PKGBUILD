@@ -2,12 +2,12 @@
 _pkgbasename=pipman
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=0.5.1.r5.gca7315b
+pkgver=0.6.2.r0.g441a9c0
 pkgdesc="Generate PKGBUILD from pip packages"
 arch=('any')
 url="http://github.com/sollidsnake/pipman"
 license=('GPL')
-depends=('python' 'python-pip')
+depends=('python' 'python-pip' 'python-virtualenv')
 source=(git+https://github.com/sollidsnake/pipman)
 md5sums=('SKIP')
 
@@ -31,7 +31,7 @@ package() {
 
     _python=$(ls "$pkgdir/usr/lib/")
     chmod +x "$pkgdir/usr/lib/$_python/site-packages/$_pkgbasename/$_pkgbasename.py"
-    ln -s "$pkgdir/usr/lib/$_python/site-packages/$_pkgbasename/$_pkgbasename.py" \
+    ln -s "/usr/lib/$_python/site-packages/$_pkgbasename/$_pkgbasename.py" \
        "$pkgdir/usr/bin/pipman"
 
 }
