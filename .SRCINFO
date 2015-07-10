@@ -1,6 +1,6 @@
 pkgbase = ostinato
 	pkgdesc = Cross-platform network packet/traffic generator and analyzer
-	pkgver = 0.6
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://code.google.com/p/ostinato/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = ostinato
 	optdepends = gzip
 	optdepends = diff
 	optdepends = awk
-	source = http://dl.bintray.com/pstavirs/ostinato/ostinato-src-0.6.tar.gz
-	md5sums = 0e6f825179ab01b77f00042172afe921
+	source = http://dl.bintray.com/pstavirs/ostinato/ostinato-src-0.7.1.tar.gz
+	md5sums = 84c1ad90d3132d42b40025c6167fd8f0
 
 pkgname = ostinato
 
