@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Solarus Quest Editor
+Comment=A graphical user interface to create and modify quests for the Solarus engine.
+Exec=/usr/bin/solarus-quest-editor
+Icon=/usr/share/pixmaps/sqe-logo.png
+Categories=Development;
