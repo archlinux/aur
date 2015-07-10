@@ -1,3 +1,7 @@
+2015-07-10  Magnus Therning <magnus@therning.org>
+
+	* Ensure icon cache is updated by using `gtk-update-icon-cache`.
+
 2015-06-27  Magnus Therning <magnus@therning.org>
 
 	* Upgrade to 1.8.14
