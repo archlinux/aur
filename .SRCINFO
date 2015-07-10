@@ -1,0 +1,24 @@
+pkgbase = apper-git
+	pkgdesc = An application and package manager using PackageKit
+	pkgver = r1128.bfee5e5
+	pkgrel = 1
+	url = https://userbase.kde.org/Apper
+	install = apper-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = kdoctools
+	makedepends = plasma-workspace
+	depends = packagekit-qt5
+	depends = kdelibs4support
+	depends = kcmutils
+	provides = apper
+	conflicts = apper
+	source = git://anongit.kde.org/apper.git
+	md5sums = SKIP
+
+pkgname = apper-git
+
