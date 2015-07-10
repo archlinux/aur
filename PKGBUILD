@@ -1,6 +1,6 @@
-# Maintainer: Egon Geerardyn < egon DOT geerardyn AT gmail DOT com >
+# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Contributor: Egon Geerardyn < egon DOT geerardyn AT gmail DOT com >
 # Contributor: TDY <tdy@gmx.com>
-
 pkgname=cb2bib
 pkgver=1.5.0
 pkgrel=1
