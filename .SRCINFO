@@ -1,0 +1,16 @@
+pkgbase = texlive-cleanthesis
+	pkgdesc = A beautiful clean LaTeX style
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://cleanthesis.der-ric.de/
+	install = cleanthesis.install
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = texlive-latexextra
+	depends = koma-script
+	source = https://github.com/derric/cleanthesis/archive/v0.2.3.zip
+	sha1sums = 6b7f0ba84ec5c97625e183f1d421aff21f11239f
+
+pkgname = texlive-cleanthesis
+
