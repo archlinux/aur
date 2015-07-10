@@ -1,16 +1,16 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-qt5
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Qt5 IM Module for Fcitx"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
-depends=('fcitx' 'libxkbcommon' 'qt5-base=5.4.2')
+depends=('fcitx' 'libxkbcommon' 'qt5-base=5.5.0')
 makedepends=('extra-cmake-modules')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
-sha512sums=('f7075d5334e29fd00c54563182c9cc4027011503aa14d577aa2fb75eb8558c385d91c939f1f21e51850c9c64fc5c396aad5b32fdcc8ddd99c46ec74bd577255d'
+sha512sums=('0b1e0cc2ebebeffaced59e23028bf6353b3e8c8a2bd3e0f79a346f3bb786bc5cd5b6357bc3a2a3b75b63beac833c7b3a4c137a03fcb642e414bcc84c4da56c34'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
