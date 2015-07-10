@@ -1,12 +1,12 @@
 pkgname=libunarr-git
-pkgver=r188.c4136ab
+pkgver=r189.91c3eb5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zeniko/unarr"
 pkgdesc=('A lightweight decompression library with support for rar, tar and zip archives.')
 source=('git+https://github.com/zeniko/unarr'
 		'https://raw.githubusercontent.com/selmf/unarr/master/CMakeLists.txt'
-		'fseeko.patch')
+		)
 makedepends=('cmake' 'git')
 
 pkgver() {
@@ -17,8 +17,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/unarr"
   cp ../CMakeLists.txt .
-  cp ../fseeko.patch .
-  patch -p1 < fseeko.patch  
 }
 
 build() {
@@ -32,5 +30,4 @@ package() {
   make DESTDIR=$pkgdir install
 }
 md5sums=('SKIP'
-         '2a4efbaab8d331302cb3ae21c912a061'
-         '128ad4e9ffc1019ec88f53d539921297')
+         'c47b8e30bdc668f54aa34930fe1ab726')
