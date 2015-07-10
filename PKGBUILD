@@ -4,10 +4,10 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=osmos
-pkgver=1.6.1+20110216
+pkgver=1.6.1+h20110216
 _hibver=1.6.1
 pkgrel=1
-pkgdesc="A physics-based ambient game (Humble Bundle/Store version)"
+pkgdesc="A unique physics-based ambient game (Humble Bundle/Store version)"
 arch=("i686" "x86_64")
 url="http://www.hemispheregames.com/osmos/"
 license=("custom: commercial")

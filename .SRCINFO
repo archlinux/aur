@@ -1,8 +1,9 @@
 pkgbase = osmos
-	pkgdesc = A physics-based ambient game (Humble Bundle/Store version)
-	pkgver = 1.6.1+20110216
+	pkgdesc = A unique physics-based ambient game (Humble Bundle/Store version)
+	pkgver = 1.6.1+h20110216
 	pkgrel = 1
 	url = http://www.hemispheregames.com/osmos/
+	install = osmos.install
 	arch = i686
 	arch = x86_64
 	license = custom: commercial
