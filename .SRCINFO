@@ -1,0 +1,15 @@
+pkgbase = libreoffice-extension-cogroo
+	pkgdesc = CoGrOO (A LibreOffice & OpenOffice.org Grammar Checker), the only open source Portuguese grammar checker that can be used with LibreOffice & OpenOffice.org.
+	pkgver = 4.0.0
+	pkgrel = 2
+	url = http://cogroo.sourceforge.net/
+	arch = any
+	groups = libreoffice-extensions
+	license = Apache
+	depends = libreoffice
+	depends = java-runtime
+	source = http://sourceforge.net/projects/cogroo/files/cogroo4/4.0.0/cogroo-4.0.0.oxt
+	sha1sums = e29cbb48ec458b73eb06b06885cd85d33ce086a9
+
+pkgname = libreoffice-extension-cogroo
+
