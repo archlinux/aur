@@ -1,7 +1,7 @@
 pkgbase = archimedes-tools
 	pkgdesc = Archimedes is a set of tools, including mesh generators, for performing unstructured finite element simulations
 	pkgver = 1.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.cs.cmu.edu/~quake/archimedes.html
 	arch = i686
 	arch = x86_64
