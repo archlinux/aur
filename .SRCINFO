@@ -1,4 +1,4 @@
-pkgbase = python-autokey-py3
+pkgbase = autokey-py3
 	pkgdesc = Python 3 port of AutoKey, a desktop automation utility for Linux and X11.
 	pkgver = 0.93.4
 	pkgrel = 1
@@ -21,5 +21,5 @@ pkgbase = python-autokey-py3
 	optdepends = python-qscintilla: for QT GUI
 	optdepends = kdebindings-python: for QT GUI
 
-pkgname = python-autokey-py3
+pkgname = autokey-py3
 
