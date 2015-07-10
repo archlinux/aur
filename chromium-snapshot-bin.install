@@ -1,10 +1,10 @@
 # Colored makepkg-like functions
 msg_blue() {
-    printf "${blue}::${bold} ${1}${all_off}\n"
+    printf "${blue}==>${bold} ${1}${all_off}\n"
 }
 
 note() {
-    printf "${yellow}::${bold} ${1}${all_off}\n"
+    printf "${yellow}==>${bold} ${1}${all_off}\n"
 }
 
 all_off="$(tput sgr0)"
@@ -24,12 +24,12 @@ post_install() {
    echo
 
     note "Custom flags should be put directly in: ~/.config/chromium-flags.conf
-   Setting CHROMIUM_FLAGS in /etc is deprecated."
+    Setting CHROMIUM_FLAGS in /etc is deprecated."
    echo
 
     note "Pepper Flash is now auto-detected from: 
-   - /usr/lib/PepperFlash (chromium-pepper-flash-dev)
-   - /opt/google/chrome-unstable/PepperFlash (google-chrome-dev)"
+    - /usr/lib/PepperFlash (chromium-pepper-flash-dev)
+    - /opt/google/chrome-unstable/PepperFlash (google-chrome-dev)"
    echo
 
     note "The launcher is called: 'chromium-snapshot-bin'"

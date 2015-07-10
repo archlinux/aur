@@ -1,6 +1,6 @@
 pkgbase = chromium-snapshot-bin
 	pkgdesc = The open-source project behind Google Chrome (Snapshot builds)
-	pkgver = 45.0.2441.0.r335899
+	pkgver = 45.0.2454.0.r338285
 	pkgrel = 1
 	url = https://build.chromium.org
 	install = chromium-snapshot-bin.install
@@ -43,9 +43,9 @@ pkgbase = chromium-snapshot-bin
 	md5sums = 65607114be4390c9ecc90fc133157d3c
 	md5sums = 793b3dca6ae19d15a830e7de7e1f6fd3
 	md5sums = 537e0b52077bf0a616d0a0c8a79bc9d5
-	source_i686 = chrome-linux-r335899.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/335899/chrome-linux.zip
+	source_i686 = chrome-linux-r338285.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/338285/chrome-linux.zip
 	md5sums_i686 = SKIP
-	source_x86_64 = chrome-linux-r335899.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/335899/chrome-linux.zip
+	source_x86_64 = chrome-linux-r338285.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/338285/chrome-linux.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = chromium-snapshot-bin
