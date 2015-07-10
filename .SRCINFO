@@ -1,0 +1,15 @@
+pkgbase = ssdeep
+	pkgdesc = A program for computing context triggered piecewise hashes
+	pkgver = 2.13
+	pkgrel = 1
+	url = http://ssdeep.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	options = !libtool
+	source = http://downloads.sourceforge.net/ssdeep/ssdeep-2.13.tar.gz
+	md5sums = 7608b794ce6b25fae8bb1c2f4d35b2ad
+
+pkgname = ssdeep
+
