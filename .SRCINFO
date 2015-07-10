@@ -1,6 +1,6 @@
 pkgbase = atom-editor-bin
 	pkgdesc = Chrome-based text editor from Github - Precompiled binary from official repository
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/atom/atom
 	install = atom-editor-bin.install
@@ -20,9 +20,9 @@ pkgbase = atom-editor-bin
 	conflicts = atom-editor-git
 	conflicts = atom-editor-git-tagged
 	options = !strip
-	source = https://github.com/atom/atom/releases/download/v1.0.0/atom-amd64.deb
+	source = https://github.com/atom/atom/releases/download/v1.0.2/atom-amd64.deb
 	source = atom-python.patch
-	md5sums = 5fca492e9c093db2221190aadea352a4
+	md5sums = d20d52fe50e574ebf1eade928058ff94
 	md5sums = dbb685607dea46517de0a27e24085bf4
 
 pkgname = atom-editor-bin
