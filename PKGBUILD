@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=adwm
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('libxi')
 depends=('libxfixes' 'libxft' 'libxrandr' 'libxinerama' 'libxpm' 'startup-notification' 'imlib2')
 options=('!libtool')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('27c194db38a56bcf8ce9e5de230ef64e')
+md5sums=('ab542bf431fe31c3e9e0b2b62620eb68')
 
 build() {
   cd $pkgname-$pkgver
