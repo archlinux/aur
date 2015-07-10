@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/flightaware/piaware"
 license=('BSD')
 
-depends=('dump1090-fa' 'tcl' 'tcllib' 'tclx' 'tk' 'tls')
+depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls')
 makedepends=('git' 'autoconf' 'tcl')
 
 source=('piaware::git+git://github.com/flightaware/piaware'
