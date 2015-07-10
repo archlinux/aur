@@ -9,7 +9,7 @@
 pkgname=popcorntime
 pkgver=0.3.8.0
 _pkgver=0.3.8-0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.io/"
@@ -27,17 +27,16 @@ _nw_platform=linux-x64
 if [ "$CARCH" = 'i686' ]; then
   _platform=linux32
   _nw_platform=linux-ia32
-  sha256sums[2]='a676024eff0900067d9c78c13b7d09ee5f87b8e0efed9517f8e163696e8e80cb'
+  sha256sums[2]='973a8a7eeb1d26035869be39450a6f0f796a84ad7db7ea4f27ef8c8e64017948'
 fi
-_nw_file=node-webkit-v${_nw_ver}-${_nw_platform}.tar.gz
 
 source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
-        "https://get.popcorntime.io/nw/v${_nw_ver}/${_nw_file}"
+        "http://dl.nwjs.io/v${_nw_ver}/nwjs-v${_nw_ver}-${_nw_platform}.tar.gz"
         "popcorntime.desktop")
 sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
             '447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47'
-            '1366ea08e022ae78d5fc63bcfa9ce50797da0573302d867c6082bc39aaf576ab'
+            '7f46d6c00fd2bb3aae70e177b94685af2f53476c3ee50c1c243760d0f271b505'
             'ac2b7183d3ea62ae821c7d1f4b243b0ca41c7838efa16babe29cad0c4958ee25')
 
 prepare() {
@@ -49,7 +48,7 @@ prepare() {
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
 
   mkdir -p "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/"
-  mv "${srcdir}/node-webkit-v${_nw_ver}-${_nw_platform}/"* \
+  mv "${srcdir}/nwjs-v${_nw_ver}-${_nw_platform}/"* \
     "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/"
 
   # for gyp
@@ -80,6 +79,7 @@ package() {
   install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/${pkgname}/"
+  install -Dm644 "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/icudtl.dat" "${pkgdir}/usr/lib/${pkgname}/"
 
   # Link to program
   mkdir -p "${pkgdir}/usr/bin"
@@ -90,4 +90,5 @@ package() {
 
   # Icon
   install -Dm644 "${srcdir}/${_gitname}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
+
 }
