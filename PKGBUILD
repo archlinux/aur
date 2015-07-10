@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 # Contributor: Daniel Scharrer <daniel@constexpr.org>
 
-pkgname=arx-libertatis
+pkgname=arxlibertatis
 pkgver=1.1.2
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)'

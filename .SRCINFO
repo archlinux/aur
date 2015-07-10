@@ -1,4 +1,4 @@
-pkgbase = arx-libertatis
+pkgbase = arxlibertatis
 	pkgdesc = Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)
 	pkgver = 1.1.2
 	pkgrel = 1
@@ -17,8 +17,8 @@ pkgbase = arx-libertatis
 	optdepends = gdb: generate detailed crash reports
 	provides = arx
 	conflicts = arx-git
-	source = http://downloads.sourceforge.net/arx/arx-libertatis-1.1.2.tar.xz
+	source = http://downloads.sourceforge.net/arx/arxlibertatis-1.1.2.tar.xz
 	md5sums = 543dfdaaaaf7c337227c1b6a3087589a
 
-pkgname = arx-libertatis
+pkgname = arxlibertatis
 
