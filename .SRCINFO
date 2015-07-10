@@ -1,0 +1,18 @@
+pkgbase = openbox-theme-mistral
+	pkgdesc = A Breeze style for Openbox.
+	pkgver = 20150704
+	pkgrel = 1
+	url = http://phobi4n.deviantart.com/art/Mistral-Openbox-543910044
+	arch = any
+	license = license-free
+	makedepends = p7zip
+	depends = openbox
+	optdepends = openbox-git: for bleeding-edge openbox features
+	provides = openbox-theme-mistral=20150704
+	conflicts = openbox-theme-mistral
+	noextract = openbox-theme-mistral-20150704.7z
+	source = openbox-theme-mistral-20150704.7z::http://orig01.deviantart.net/2870/f/2015/184/6/8/mistral_openbox_by_phobi4n-d8ztvoc.7z
+	sha512sums = 45113db8af5c7012f40192067790165bbc56aa1a25d333d0d87ab53241e8a00227408337ad6363ba213cae3ea450c8ac12ab141a45fbaeaae0b26390a8b34e9c
+
+pkgname = openbox-theme-mistral
+
