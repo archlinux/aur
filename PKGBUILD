@@ -2,7 +2,7 @@
 # Contributor: kozec <kozec at kozec dot com>
 
 pkgname=minecraft-technic-launcher
-pkgver=4.304
+pkgver=4.308
 pkgrel=1
 pkgdesc=("Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.")
 arch=('any')
@@ -14,7 +14,7 @@ source=("http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/Techn
         "technic-launcher"
         "technic-launcher.desktop"
         "technic-launcher.install")
-sha256sums=("0b9de40976f32bc3b3ebcc3cb3ccd7ea4c9347bdbe1ee2083c16adcef3745e1b"
+sha256sums=("4cbb21cff8b3a5471e055ea3e617f75dab0ec6e0b284e59b029fe6d8f2a506e5"
             "bcf657996e45b436382f401457e35d834baa1e35c0c483e7918ab6f93a2252c1"
             "bfea4300dc48adeb726b49125d05b5e65ed368cf08910ced970b1f1c571c4ecd"
             "4e967927f460029e27efd8f2417d18e064d37dfbd3af82393402636f0dfbd095")

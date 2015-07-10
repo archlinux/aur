@@ -1,6 +1,6 @@
 pkgbase = minecraft-technic-launcher
 	pkgdesc = Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.
-	pkgver = 4.304
+	pkgver = 4.308
 	pkgrel = 1
 	url = http://www.technicpack.net/
 	install = technic-launcher.install
@@ -10,7 +10,7 @@ pkgbase = minecraft-technic-launcher
 	depends = java-runtime
 	depends = xorg-xrandr
 	depends = hicolor-icon-theme
-	source = http://launcher.technicpack.net/launcher4/304/TechnicLauncher.jar
+	source = http://launcher.technicpack.net/launcher4/308/TechnicLauncher.jar
 	source = technic-launcher
 	source = technic-launcher.desktop
 	source = technic-launcher.install
