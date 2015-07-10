@@ -3,13 +3,13 @@
 _perlmod=App-Icli
 pkgname=icli
 pkgver=0.48
-pkgrel=2
+pkgrel=3
 pkgdesc='Icinga Command Line Interface'
 url='http://finalrewind.org/projects/App-Icli/'
 license=('custom:WTFPL')
 arch=('any')
 depends=('perl-datetime' 'perl-datetime-format-strptime' 'perl-datetime-timezone' 'perl-list-moreutils' 'perl-term-size')
-makedepends=('perl-test-compile' 'perl-test-pod')
+makedepends=('perl-module-build' 'perl-test-compile' 'perl-test-pod')
 optdepends=('icinga')
 options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')

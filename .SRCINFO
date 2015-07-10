@@ -1,10 +1,11 @@
 pkgbase = icli
 	pkgdesc = Icinga Command Line Interface
 	pkgver = 0.48
-	pkgrel = 2
+	pkgrel = 3
 	url = http://finalrewind.org/projects/App-Icli/
 	arch = any
 	license = custom:WTFPL
+	makedepends = perl-module-build
 	makedepends = perl-test-compile
 	makedepends = perl-test-pod
 	depends = perl-datetime
