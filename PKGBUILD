@@ -72,3 +72,4 @@ package() {
     optipng -quiet -force -fix ${pkgdir}${_installdir}${_FILE}
   done
 }
+md5sums=('dd6f6ea96cb26b594777316451c278ac')
