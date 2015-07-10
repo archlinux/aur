@@ -1,0 +1,20 @@
+pkgbase = terminus-font-ll2-td1
+	pkgdesc = A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde)
+	pkgver = 4.39
+	pkgrel = 1
+	url = http://sourceforge.net/projects/terminus-font/
+	install = terminus-font.install
+	arch = any
+	license = GPL2
+	license = custom:OFL
+	depends = xorg-fonts-encodings
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = fontconfig
+	provides = terminus-font
+	conflicts = terminus-font
+	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.39/terminus-font-4.39.tar.gz
+	md5sums = 1ec1bee67a1c017f349bc8558b2d4fa6
+
+pkgname = terminus-font-ll2-td1
+
