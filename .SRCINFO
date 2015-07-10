@@ -1,0 +1,22 @@
+pkgbase = lmod-git
+	pkgdesc = An Environment Module System based on Lua, Reads TCL Modules, Supports a Software Hierarchy
+	pkgver = 6.0.4.r23.gf67163f
+	pkgrel = 3
+	url = https://www.tacc.utexas.edu/research-development/tacc-projects/lmod
+	arch = i686
+	arch = x86_64
+	license = custom:lmod
+	makedepends = git
+	makedepends = make
+	depends = sh
+	depends = tcl
+	depends = lua
+	optdepends = csh: supported shell
+	optdepends = zsh: supported shell
+	provides = lmod
+	conflicts = modules
+	source = lmod::git+https://github.com/TACC/Lmod.git
+	md5sums = SKIP
+
+pkgname = lmod-git
+
