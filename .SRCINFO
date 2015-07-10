@@ -1,6 +1,6 @@
 pkgbase = python2-shapely
 	pkgdesc = Manipulation and analysis of geometric objects in the Cartesian plane
-	pkgver = 1.5.6
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/Shapely
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python2-shapely
 	license = BSD
 	depends = python2>=2.6
 	depends = geos>=3.3
-	source = https://pypi.python.org/packages/source/S/Shapely/Shapely-1.5.6.tar.gz
-	md5sums = 3d1df5fc176005ab0ce110291ac60a5a
+	source = https://pypi.python.org/packages/source/S/Shapely/Shapely-1.5.9.tar.gz
+	md5sums = b502824b154a49fbb8f33703d71557dd
 
 pkgname = python2-shapely
 
