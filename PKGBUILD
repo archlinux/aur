@@ -1,6 +1,6 @@
 pkgname=libunarr-git
 pkgver=r189.91c3eb5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/zeniko/unarr"
 pkgdesc=('A lightweight decompression library with support for rar, tar and zip archives.')
@@ -30,4 +30,4 @@ package() {
   make DESTDIR=$pkgdir install
 }
 md5sums=('SKIP'
-         'c47b8e30bdc668f54aa34930fe1ab726')
+         '056fd95cfab5889c591f1ee53d389a97')
