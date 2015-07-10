@@ -1,0 +1,16 @@
+pkgbase = happy-hacking-linux
+	pkgdesc = Happy Hacking Linux without mice. ATTENTION!! Your sensitve mice knock down your computer.
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = http://snca.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = bash
+	source = https://raw.github.com/anekos/happy-hacking-linux/master/source/happy-hacking-linux
+	source = https://raw.github.com/anekos/happy-hacking-linux/master/package/arch-linux/happy-hacking-linux.service
+	md5sums = b7f313555d9345a1bafb442ef78dc916
+	md5sums = 4b80abf365a11e031074cff8fd023e7e
+
+pkgname = happy-hacking-linux
+
