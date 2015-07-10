@@ -1,4 +1,4 @@
-# Maintainer: linduxed <linduxed@gmail.com>
+# Maintainer: linduxed <linduxed at gmail dot com>
 
 pkgname=exercism-cli
 pkgver=v2.2.0
