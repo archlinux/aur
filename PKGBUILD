@@ -16,7 +16,7 @@ DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(p
 source=("hib://proteus-${_hibver}-bin"
         'proteus-hib.desktop')
 md5sums=('8a5911751382bcfb91483f52f781e283'
-         '4ddd7b894b490e3bbd32a83922e111b3')
+         '73388192024e7c225ed29c8219fc224c')
 
 package() {
   cd "$srcdir"

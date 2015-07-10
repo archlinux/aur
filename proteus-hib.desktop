@@ -6,5 +6,5 @@ Name=Proteus
 Comment=Ed Key & David Kanaga
 GenericName=Exploration Game
 Icon=proteus
-Exec=/usr/bin/proteus
+Exec=proteus
 Terminal=false

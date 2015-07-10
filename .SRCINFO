@@ -18,7 +18,7 @@ pkgbase = proteus-hib
 	source = hib://proteus-05162014-bin
 	source = proteus-hib.desktop
 	md5sums = 8a5911751382bcfb91483f52f781e283
-	md5sums = 4ddd7b894b490e3bbd32a83922e111b3
+	md5sums = 73388192024e7c225ed29c8219fc224c
 
 pkgname = proteus-hib
 
