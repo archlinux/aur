@@ -8,7 +8,7 @@ url="https://github.com/mooz/percol"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('python2' 'python2-six' 'python2-setuptools')
-optdepends=('python-cmigemo')
+optdepends=('python2-cmigemo')
 source=("$_pkgname::git+https://github.com/mooz/percol.git")
 md5sums=('SKIP')
 
