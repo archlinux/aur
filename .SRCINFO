@@ -1,0 +1,14 @@
+pkgbase = nodejs-pulp
+	pkgdesc = A build system and package manager for PureScript projects.
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/bodil/pulp
+	arch = any
+	license = LGPL3
+	depends = npm
+	noextract = pulp-4.0.2.tgz
+	source = http://registry.npmjs.org/pulp/-/pulp-4.0.2.tgz
+	md5sums = 0727f690a584ce58468883b34030306b
+
+pkgname = nodejs-pulp
+
