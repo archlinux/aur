@@ -8,19 +8,25 @@ pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (e
 url='http://arx-libertatis.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
+replaces=('arx-libertatis')
 depends=('sdl' 'openal' 'glew')
-optdepends=('qt: enable built-in crash handler (Qt5 version; recompile needed)'
+optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
+            'arxfatalis-data-copy: game data from existing win32 installation'
+            'arxfatalis-data-demo: game data from official freeware demo'
+            'qt: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
             'gdb: generate detailed crash reports')
 makedepends=('boost' 'cmake')
 provides=('arx')
 conflicts=('arx-git')
-source=("http://downloads.sourceforge.net/arx/$pkgname-$pkgver.tar.xz")
+install='arxlibertatis.install'
+
+_archivefolder=arx-libertatis-$pkgver
+source=("http://downloads.sourceforge.net/arx/$_archivefolder.tar.xz")
 md5sums=('543dfdaaaaf7c337227c1b6a3087589a')
-install='arx-libertatis.install'
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_archivefolder
   
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
@@ -40,7 +46,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_archivefolder
   
   make DESTDIR="$pkgdir" install
   
