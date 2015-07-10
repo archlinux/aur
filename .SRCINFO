@@ -1,16 +1,34 @@
 pkgbase = mp-5
-	pkgdesc = Text editor for programmers (KDE front-end)
 	pkgver = 5.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.triptico.com/software/mp.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = kdelibs
+	makedepends = ncurses
+	makedepends = qt4
+	makedepends = kdelibs
+	makedepends = gtk3
 	source = http://triptico.com/download/mp/mp-5.2.10.tar.gz
 	source = MinimumProfit.desktop
 	md5sums = 16c425264e2728679ab5975f8e582acb
 	md5sums = 7eae413ded2d6f69fba8347240b8b875
 
-pkgname = mp-5
+pkgname = mp-5-qt4
+	pkgdesc = Text editor for programmers (QT4 front-end)
+	depends = qt4
+	provides = 
+	conflicts = 
+
+pkgname = mp-5-kde4
+	pkgdesc = Text editor for programmers (KDE4 front-end)
+	depends = kdelibs
+	provides = 
+	conflicts = 
+
+pkgname = mp-5-gtk
+	pkgdesc = Text editor for programmers (GTK front-end)
+	depends = gtk3
+	provides = 
+	conflicts = 
 
