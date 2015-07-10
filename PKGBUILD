@@ -2,7 +2,7 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-continuous-bin
-pkgver=45.0.2441.0.r335862
+pkgver=45.0.2454.0.r338261
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Continuous, auto-tested Snapshot builds)"
 arch=('i686' 'x86_64')
