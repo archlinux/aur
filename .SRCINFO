@@ -4,10 +4,11 @@ pkgbase = ttf-fira-code
 	pkgrel = 1
 	install = ttf-fira-code.install
 	arch = any
+	license = custom: SIL Open Font License
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/tonsky/FiraCode/releases/download/0.5/FiraCode-Regular.ttf
-	sha256sums = ad3da7bfe88cc6e020e47fd7b7bd52f84387b0a2b9d4a88ea3e1b1d88392aa11
+	source = https://github.com/tonsky/FiraCode/archive/0.5.tar.gz
+	md5sums = 11e49eee5e0540828a8ba8298c404258
 
 pkgname = ttf-fira-code
 
