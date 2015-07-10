@@ -5,12 +5,21 @@ pkgbase = python-django-tables2
 	url = https://github.com/bradleyayers/django-tables2
 	arch = any
 	license = MIT
+	makedepends = python-django
 	makedepends = python-setuptools
-	depends = python-django
-	depends = python-six
+	makedepends = python-six
+	makedepends = python2-django
+	makedepends = python2-setuptools
+	makedepends = python2-six
 	options = !emptydirs
 	source = https://github.com/bradleyayers/django-tables2/archive/v1.0.4.tar.gz
 	sha256sums = f8312d38c245ddc777605c3e2508d3517435179ae9952e5cb7d870966e09317f
 
 pkgname = python-django-tables2
+	depends = python-django
+	depends = python-six
+
+pkgname = python2-django-tables2
+	depends = python2-django
+	depends = python2-six
 
