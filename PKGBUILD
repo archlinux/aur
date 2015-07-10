@@ -3,7 +3,7 @@
 pkgname=arxfatalis-data-demo
 pkgver=0
 pkgrel=1
-pkgdesc='Arx Fatalis game data from official free demo'
+pkgdesc='Arx Fatalis game data from official freeware demo (for use with arxlibertatis)'
 url='http://www.arkane-studios.com/uk/arx.php'
 arch=('any')
 license=('custom:freeware')
@@ -12,7 +12,7 @@ replaces=('arx-fatalis-data-demo')
 conflicts=('arxfatalis-data-gog' 'arxfatalis-data-copy'
            'arx-fatalis-data-gog' 'arx-fatalis-data-copy')
 makedepends=('cabextract' 'libarchive')
-install='arx-fatalis-data-demo.install'
+optdepends=('arxlibertatis: native Linux game executable')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('local::/usr/bin/echo "Please download %u (see http://arx.vg/Getting_the_game_data#Demo), and place it in \"$(pwd)\"."; exit 1')
 
