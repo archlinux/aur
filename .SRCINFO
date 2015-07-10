@@ -1,0 +1,24 @@
+pkgbase = deepdream-git
+	pkgdesc = Google DeepDream experiment
+	pkgver = r16.f8f03a5
+	pkgrel = 1
+	url = https://github.com/google/deepdream
+	install = install
+	arch = i686
+	arch = x86_64
+	license = Apache v2
+	depends = caffe-git
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-pillow
+	depends = ipython2-notebook
+	depends = protobuf
+	source = git+https://github.com/google/deepdream.git
+	source = http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel
+	source = deepdream.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 76c3dfd5d2c985c5f5b75a88d241ff0e1c60f5dffd82655e59bc1ec47b22d96d
+
+pkgname = deepdream-git
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+post_install()
+{
+	echo "   The \`deepdream\` command will copy the deepdream ipython notebook to ~/deepdream/
+   (unless it exists already) and open it for you..."
+}
