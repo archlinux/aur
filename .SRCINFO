@@ -1,6 +1,6 @@
 pkgbase = salome-geom
 	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - GEOM Module
-	pkgver = 7.6.6
+	pkgver = 7.6.0
 	pkgrel = 1
 	url = http://www.salome-platform.org
 	arch = i686

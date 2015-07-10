@@ -1,7 +1,7 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=salome-geom
-pkgver=7.6.6
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GEOM Module"
 url="http://www.salome-platform.org"
