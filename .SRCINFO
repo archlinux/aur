@@ -1,7 +1,7 @@
 pkgbase = leap-motion-driver
 	pkgdesc = The Leap Motion Driver
-	pkgver = 2.2.2
-	pkgrel = 1
+	pkgver = 2.2.7
+	pkgrel = 2
 	url = https://developer.leapmotion.com/downloads
 	install = leap-sdk.install
 	arch = i686
@@ -9,14 +9,18 @@ pkgbase = leap-motion-driver
 	license = custom
 	depends = mesa
 	depends = libxxf86vm
-	source = https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_2.2.2.tgz
+	source = https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_2.2.7.tgz
 	source = LICENSE
 	source = leapd.service
-	source = leap-sdk.install
-	md5sums = 3e3ceb48baa17a7aa4ce3149fac5eab3
+	source = leap-motion-driver.install
+	source = leapmotion.desktop
+	source = leapmotion.png
+	md5sums = cc9ffe540a913facc34138b9a87908be
 	md5sums = 78a4f0934b105397d1f7b17d06e4717c
 	md5sums = 07287e65a3c2a4e2a956b7ba9038d816
 	md5sums = 7dcbd917193007746310130fb76e53eb
+	md5sums = 0261f47c2d5090681446f6917b1858ba
+	md5sums = 5b85d03f4109203c5f7ecd610a33136d
 
 pkgname = leap-motion-driver
 
