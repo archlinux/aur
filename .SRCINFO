@@ -1,0 +1,15 @@
+pkgbase = knlmeanscl
+	pkgdesc = OpenCL implementation of the Non-local means denoising algorithm
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/Khanattila/KNLMeansCL
+	arch = x86_64
+	license = GPL
+	makedepends = opencl-headers
+	depends = vapoursynth
+	depends = ocl-icd
+	source = git+https://github.com/Khanattila/KNLMeansCL.git
+	md5sums = SKIP
+
+pkgname = knlmeanscl
+
