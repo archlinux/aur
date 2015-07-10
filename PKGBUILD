@@ -4,14 +4,22 @@ pkgbase=python-nikola-git
 _pyname=nikola
 _gitname=nikola
 pkgname=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
-pkgver=7.6.0.r43.gc8f7a6a
+pkgver=7.6.0.r73.g85cd720
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
 url='https://getnikola.com/'
 license=('MIT')
 options=(!emptydirs)
-makedepends=('git' 'python' 'python-setuptools' 'python2' 'python2-setuptools')
+makedepends=('git'
+             'python' 'python-doit' 'python-pygments' 'python-pillow'
+             'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
+             'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
+             'python-blinker' 'python-natsort' 'python-setuptools' 'python-requests'
+             'python2' 'python2-doit' 'python2-pygments' 'python2-pillow'
+             'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
+             'python2-yapsy>=1.11.223' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
+             'python2-blinker' 'python2-natsort' 'python2-setuptools' 'python2-requests')
 source=("git+https://github.com/getnikola/${_gitname}.git")
 md5sums=('SKIP')
 
