@@ -2,8 +2,8 @@
 
 pkgname=docker-compose-bin
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="Fast, isolated development environments using Docker"
+pkgrel=2
+pkgdesc="Pythonless package of a fast, isolated development environments using Docker"
 depends=('docker')
 arch=('x86_64')
 conflicts=('docker-compose')
@@ -20,7 +20,7 @@ sha256sums=('1ceb5fd0d43bc7ae33eb9c78779e43ed89b4dba16375bbce09c8dce770c7d73d'
 package() {
   cd $srcdir
   install -Dm755 docker-compose-Linux-x86_64 $pkgdir/usr/bin/docker-compose
-  ln -s /usr/bin/docker-compose $pkgdir/usr/bin/fig
+  ln -s docker-compose $pkgdir/usr/bin/fig
 
   cd $srcdir/compose-$pkgver
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE

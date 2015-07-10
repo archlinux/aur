@@ -1,7 +1,7 @@
 pkgbase = docker-compose-bin
-	pkgdesc = Fast, isolated development environments using Docker
+	pkgdesc = Pythonless package of a fast, isolated development environments using Docker
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.docker.com/
 	arch = x86_64
 	license = Apache
