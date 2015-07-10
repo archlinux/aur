@@ -5,7 +5,7 @@ pkgbase = python-debtcollector
 	url = https://pypi.python.org/pypi/debtcollector
 	arch = any
 	license = Apache
-	makedepends = python2-setuptools
+	makedepends = python-pbr
 	source = https://pypi.python.org/packages/source/d/debtcollector/debtcollector-0.5.0.tar.gz
 	sha256sums = 4ddab1c494ce9c714a2b6f88a01bf1226a1b20d584bcf65d1593a2e4ca63b42a
 
