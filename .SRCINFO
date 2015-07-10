@@ -1,7 +1,7 @@
 pkgbase = cam-git
 	pkgdesc = a unix command for viewing images
-	pkgver = 20130319
-	pkgrel = 2
+	pkgver = 20141220.19
+	pkgrel = 1
 	url = https://github.com/itchyny/cam
 	arch = i686
 	arch = x86_64
