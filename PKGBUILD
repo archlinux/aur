@@ -3,7 +3,7 @@
 
 _pkgname=qbittorrent
 pkgname=${_pkgname}-qt5-git
-pkgver=3.3.0alpha.r6026.g46c54e5
+pkgver=3.3.0alpha.r6030.g647140c
 pkgrel=1
 pkgdesc='A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('qt5-base' 'xdg-utils' 'desktop-file-utils' 'hicolor-icon-theme' 'libto
 optdepends=(
 	'python: for the search engine'
 )
-makedepends=('boost' 'which' 'git' 'qt5-tools')
+makedepends=('boost' 'which' 'git' 'qt5-tools' 'geoip-database')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-qt4")
 
@@ -36,7 +36,7 @@ pkgver() {
 	cd ${srcdir}/qBittorrent
 	(
 		set -o pipefail
-		printf "%s.r%s.g%s" "$(qmake-qt5 ../get_version.pri 2>/dev/null)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
+		printf "%s.r%s.g%s" "$(qmake-qt5 ./../get_version.pri 2>/dev/null)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
@@ -48,11 +48,12 @@ prepare() {
 	# Build with GeoIP support
 	# geoip-database is already installed at this point as dependency
 	# (libtorrent-rasterbar -> geoip) but another check won't hurt
-	local _geoip_database=/usr/share/GeoIP/GeoIP.dat
-	if [[ -f ${_geoip_database} ]]; then
-		# Make a symlink due that qBittorrent needs the file in the source
+	local geoip_database=/usr/share/GeoIP/GeoIP.dat
+	if [[ -f ${geoip_database} ]]; then
+		# Make a copy due that qBittorrent needs the file in the source
 		# directory, see qBittorrent/src/gui/geoip/geoip.qrc
-		ln -rs ${_geoip_database} ${srcdir}/qBittorrent/src/gui/geoip
+		cd ${srcdir}/qBittorrent
+		cp ${geoip_database} ./src/gui/geoip
 	fi
 }
 
@@ -67,11 +68,11 @@ build() {
 	# Building package
 	cd ${srcdir}/build
 	
-	../qBittorrent/configure \
+	./../qBittorrent/configure \
 		--prefix=/usr \
 		--with-qt5 \
 		--with-geoip-database-embedded
-	qmake-qt5 ../qBittorrent \
+	qmake-qt5 ./../qBittorrent \
 		CONFIG+=release \
 		CONFIG+=c++14 \
 		-spec linux-g++
