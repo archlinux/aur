@@ -1,0 +1,3 @@
+post_install() {
+  echo "relogin or source /etc/profile.d/ossim.sh"
+}

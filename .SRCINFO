@@ -1,0 +1,37 @@
+pkgbase = ossim-nogui-svn
+	pkgdesc = A powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data; built w/o GUIs
+	pkgver = 22270
+	pkgrel = 2
+	url = http://www.ossim.org/
+	install = ossim-nogui-svn.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = openthreads
+	depends = ffmpeg
+	depends = gdal
+	provides = ossim
+	conflicts = ossim
+	backup = etc/ossim_preferences
+	source = svn+http://svn.osgeo.org/ossim/trunk/ossim
+	source = svn+http://svn.osgeo.org/ossim/trunk/ossim_plugins
+	source = svn+http://svn.osgeo.org/ossim/trunk/csmApi
+	source = svn+http://svn.osgeo.org/ossim/trunk/libwms
+	source = svn+http://svn.osgeo.org/ossim/trunk/oms
+	source = svn+http://svn.osgeo.org/ossim/trunk/ossimPredator
+	source = svn+http://svn.osgeo.org/ossim/trunk/ossim_package_support/cmake
+	source = svn+http://svn.osgeo.org/ossim/trunk/ossim_package_support/fonts
+	source = svn+http://svn.osgeo.org/ossim/trunk/ossim_package_support/geoids
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ossim-nogui-svn
+
