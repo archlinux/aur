@@ -1,6 +1,6 @@
 pkgbase = plasma-desktop-git
 	pkgdesc = KDE Plasma Desktop
-	pkgver = r2474.a76328c
+	pkgver = r2502.a029fb5
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = plasma-desktop-git.install
@@ -13,7 +13,6 @@ pkgbase = plasma-desktop-git
 	makedepends = git
 	makedepends = kdoctools
 	depends = libxkbfile
-	depends = libusb-compat
 	depends = libcanberra
 	depends = systemsettings-git
 	depends = ksysguard-git
