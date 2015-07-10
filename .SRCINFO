@@ -1,0 +1,14 @@
+pkgbase = nodejs-grunt-purescript
+	pkgdesc = Compile PureScript files.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/purescript/grunt-purescript
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = grunt-purescript-0.6.0.tgz
+	source = http://registry.npmjs.org/grunt-purescript/-/grunt-purescript-0.6.0.tgz
+	md5sums = 088b7de323c1416bb0f8519386bd37e4
+
+pkgname = nodejs-grunt-purescript
+
