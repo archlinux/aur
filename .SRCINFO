@@ -1,0 +1,23 @@
+pkgbase = python2-cartopy
+	pkgdesc = A cartographic Python library with matplotlib support
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = http://scitools.org.uk/cartopy
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cython2
+	depends = python2
+	depends = proj
+	depends = geos
+	depends = python2-shapely
+	depends = python2-pyshp
+	depends = python2-scipy
+	depends = python2-matplotlib
+	source = https://github.com/SciTools/cartopy/archive/v0.11.2.tar.gz
+	md5sums = e3cc04b8fb87e418031cd01d296ed428
+	sha1sums = 73181a85bf252259bb58a41c6eadfa4ddf8a0c71
+	sha256sums = f803c565bd43ce94086f87e8c75c66755734fa0bc865f4ac3c1ff8df55487919
+
+pkgname = python2-cartopy
+
