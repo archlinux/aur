@@ -1,10 +1,11 @@
 pkgbase = perl-travel-routing-de-vrr
 	pkgdesc = Unofficial efa.vrr.de command line client and Perl module
 	pkgver = 2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://finalrewind.org/projects/Travel-Routing-DE-VRR/
 	arch = any
 	license = custom:WTFPL
+	makedepends = perl-module-build
 	makedepends = perl-file-slurp
 	makedepends = perl-test-compile
 	makedepends = perl-test-fatal
