@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.0
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,7 +83,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch")
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
+            '14487a99af8ade843f1c6c4dbc0c447a8546402bd737d30193cd4295577cbd80'
             'SKIP'
             '8fb75c36b16d7c4895c720949b8d217f84d225da25f4db81c0da00920b925843'
             '7e82bbe1ed937acfbd351ff75a0420777f4bfd64d0c7f3e041f41f28221a75f1'
