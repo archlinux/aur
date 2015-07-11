@@ -9,6 +9,7 @@ url="https://github.com/praw-dev/praw"
 license=('GPL3')
 depends=('python-six' 'python-requests' 'python-update_checker-git')
 makedepends=('git' 'python-setuptools')
+conflicts=('python-praw')
 source=(${pkgname}::'git+https://github.com/praw-dev/praw.git')
 sha256sums=('SKIP')
 
