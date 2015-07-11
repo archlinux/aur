@@ -1,0 +1,29 @@
+pkgbase = solr5
+	pkgdesc = Popular, blazing fast open source enterprise search platform from the Apache Lucene project
+	pkgver = 5.2.1
+	pkgrel = 2
+	url = http://lucene.apache.org/solr/
+	install = solr.install
+	arch = any
+	license = Apache
+	makedepends = unzip
+	depends = java-runtime>=7.u55
+	optdepends = java-runtime>=8: for improved performance compared to older runtime systems.
+	provides = solr=5.2.1
+	conflicts = solr
+	backup = etc/solr/webdefault.xml
+	backup = etc/solr/zoo.cfg
+	backup = etc/solr/jetty.xml
+	backup = etc/solr/jetty-http.xml
+	backup = etc/solr/jetty-https.xml
+	backup = etc/solr/jetty-https-ssl.xml
+	backup = etc/solr/jetty-ssl.xml
+	source = http://archive.apache.org/dist/lucene/solr/5.2.1/solr-5.2.1.tgz
+	source = solr
+	source = solr.service
+	sha256sums = 3f54cec862da1376857f96f4a6f2044a5addcebc4df159b8797fd71f7ba8df86
+	sha256sums = 08e89de3711e158b5b031241f2d5233e54a8e87747b4518d9fa64754664ab30b
+	sha256sums = 37318da4f5aaad606e3d97bf49f038bde34d8d947de178b1c9a86fa5f815c9ee
+
+pkgname = solr5
+

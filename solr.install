@@ -1,0 +1,17 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  getent group solr >/dev/null 2>&1 || groupadd --gid 521 solr &>/dev/null
+  getent passwd solr >/dev/null 2>&1 || useradd --gid 521 --home-dir /var/lib/solr --shell /usr/bin/nologin --uid 521 solr &>/dev/null
+}
+
+post_remove() {
+  if getent passwd solr >/dev/null 2>&1; then
+    userdel solr
+  fi
+  if getent group solr >/dev/null 2>&1; then
+    groupdel solr
+  fi
+}
