@@ -1,0 +1,25 @@
+pkgbase = cloud-utils-git
+	pkgdesc = A useful set of utilities for interacting with a cloud
+	pkgver = 0.27.r269
+	pkgrel = 1
+	url = https://launchpad.net/cloud-utils
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-yaml
+	depends = python2-paramiko
+	depends = ca-certificates
+	depends = e2fsprogs
+	depends = file
+	depends = euca2ools
+	depends = util-linux
+	depends = wget
+	depends = gnupg
+	depends = cdrkit
+	optdepends = gptfdisk
+	provides = cloud-utils=0.27.r269
+	source = cloud-utils-git::bzr+http://bazaar.launchpad.net/~cloud-utils-dev/cloud-utils/trunk
+	md5sums = SKIP
+
+pkgname = cloud-utils-git
+
