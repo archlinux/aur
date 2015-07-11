@@ -1,0 +1,22 @@
+pkgbase = guile-gnome-platform-git
+	pkgdesc = Binding between Guile Scheme and the Gnome stack of libraries. (fe. Pango, GTK+, Cairo, GStreamer, Glade, GtkSourceView and else). To build wrappers for GTK+ and higher in the stack, you will first need Guile-Cairo.
+	pkgver = 2.16.2.r11.g0fcbe69
+	pkgrel = 1
+	epoch = 1
+	url = http://www.gnu.org/software/guile-gnome/
+	install = guile-gnome-platform-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = g-wrap
+	depends = guile-cairo
+	depends = libgnomeui
+	provides = guile-gnome-platform
+	conflicts = guile-gnome-platform
+	options = !libtool
+	source = guile-gnome-platform::git://git.sv.gnu.org/guile-gnome.git
+	md5sums = SKIP
+
+pkgname = guile-gnome-platform-git
+

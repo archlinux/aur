@@ -1,0 +1,43 @@
+infodir=usr/share/info
+_file_prefix='guile-gnome-'
+filelist=('gobject.info'
+          'glib.info'
+          'atk.info'
+          'pango.info'
+          'pangocairo.info'
+          'gdk.info'
+          'gdk.info-1'
+          'gdk.info-2'
+          'gtk.info'
+          'gtk.info-1'
+          'gtk.info-2'
+          'gtk.info-3'
+          'gtk.info-4'
+          'gtk.info-5'
+          'libgnomeui.info'
+          'libgnomecanvas.info'
+          'libgnome.info'
+          'libglade.info'
+          'gnome-vfs.info'
+          'gconf.info'
+          'corba.info')
+
+post_install() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for file in "${filelist[@]}"; do
+    install-info "$infodir/$_file_prefix$file.gz" "$infodir/dir" 2> /dev/null
+  done
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+pre_remove() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for file in "${filelist[@]}"; do
+    install-info --delete "$infodir/$_file_prefix$file.gz" "$infodir/dir" 2> /dev/null
+  done
+}
+
+# vim:set ts=2 sw=2 et:
