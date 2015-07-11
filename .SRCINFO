@@ -1,0 +1,17 @@
+pkgbase = openmusic
+	pkgdesc = A visual programming language designed for music composition. (32 bit)
+	pkgver = 6.9.1_beta_0
+	pkgrel = 3
+	url = http://repmus.ircam.fr/openmusic/linux
+	install = openmusic.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	options = !strip
+	source = .curlrc
+	source = http://forge.ircam.fr/p/OM/downloads/get/OM_6.9.1_beta_0.tar.bz2
+	md5sums = b0dc7498bade5c4fa60da87503a16ef2
+	md5sums = 6ba97ee9b63e4e8b3e9487ef8e758992
+
+pkgname = openmusic
+
