@@ -7,7 +7,8 @@ pkgbase = purple-facebook
 	arch = i686
 	license = GPL
 	makedepends = make
-	depends = libpurple
+	depends = libpurple,
+	depends = json-glib
 	source = https://github.com/jgeboski/purple-facebook/releases/download/a34b993324e4/purple-facebook-a34b993324e4.tar.gz
 	md5sums = SKIP
 
