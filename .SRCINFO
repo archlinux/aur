@@ -1,0 +1,16 @@
+pkgbase = ddccontrol-db-git
+	pkgdesc = Monitor database for DDCControl
+	pkgver = 20120905.r130da80
+	pkgrel = 1
+	url = https://github.com/ddccontrol/ddccontrol-db
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	provides = ddccontrol-db
+	conflicts = ddccontrol-db
+	source = ddccontrol-db::git+https://github.com/ddccontrol/ddccontrol-db.git
+	md5sums = SKIP
+
+pkgname = ddccontrol-db-git
+
