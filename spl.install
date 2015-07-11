@@ -28,8 +28,8 @@ check_hostid() {
 run_depmod() {
     echo ">>> Updating module dependencies. Please wait ..."
 
-    _kernel_version_x32_full="3.14.47-1"
-    _kernel_version_x64_full="3.14.47-1"
+    _kernel_version_x32_full="3.14.48-1"
+    _kernel_version_x64_full="3.14.48-1"
 
     [[ $CARCH == "i686" ]] && _kernel_version_full=${_kernel_version_x32_full} || _kernel_version_full=${_kernel_version_x64_full}
 

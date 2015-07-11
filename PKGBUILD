@@ -8,16 +8,16 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-lts"
-pkgver=0.6.4.2_3.14.47_1
+pkgver=0.6.4.2_3.14.48_1
 pkgrel=1
 
 # Used incase the i686 and x86_64 linux packages get out of sync with the
 # PKGREL. This occurred on January 31, 2014 where i686 was versioned at
 # 3.12.9-1 and x86_64 was versioned at 3.12.9-2.
-_kernel_version_x32="3.14.47-1"
-_kernel_version_x32_full="3.14.47-1"
-_kernel_version_x64="3.14.47-1"
-_kernel_version_x64_full="3.14.47-1"
+_kernel_version_x32="3.14.48-1"
+_kernel_version_x32_full="3.14.48-1"
+_kernel_version_x64="3.14.48-1"
+_kernel_version_x64_full="3.14.48-1"
 
 if [[ $CARCH == "i686" ]]; then
     _kernel_version=${_kernel_version_x32}
