@@ -1,0 +1,25 @@
+pkgbase = maim-git
+	pkgdesc = maim (make image) makes an image out of the given area on the given X screen. Defaults to the whole screen.
+	pkgver = v3.4.43.r0.g2e5ed5b
+	pkgrel = 1
+	url = https://github.com/naelstrof/maim
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	depends = bzip2
+	depends = freetype2
+	depends = glibc
+	depends = imlib2
+	depends = libx11
+	depends = libxext
+	depends = zlib
+	optdepends = slop-git: for selection support
+	conflicts = maim
+	source = maim::git+https://github.com/naelstrof/maim.git
+	md5sums = SKIP
+
+pkgname = maim-git
+
