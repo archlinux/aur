@@ -43,6 +43,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
 
+  # Copy local libraries into lib.
+  cp -r "$srcdir/local" lib
+
   # The ArchLinux jansson header files are directly under
   # /usr/i686-w64-mingw32/include.
   find src \( -name '*.c' -or -name '*.h' -or -name '*.cpp' \) \
