@@ -1,5 +1,5 @@
 infodir=usr/share/info
-filelist=(info.info info-stnd.info texinfo.info{,-1,-2,-3})
+filelist=(info.info info-stnd.info texinfo.info)
 
 post_install() {
   # Scan *all* info files on install

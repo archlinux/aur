@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=6411
+pkgver=6412
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
 license=('GPL')
 groups=('base' 'base-devel')
-depends=('ncurses' 'findutils' 'gzip' 'perl' 'sh')
+depends=('perl' 'sh' 'coreutils')
 makedepends=('subversion')
 provides=('texinfo')
 conflicts=('texinfo')
@@ -33,7 +33,7 @@ build() {
   cd "$srcdir"/"${_svnmod}"
   export LANG=C
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --exec-prefix=/usr
   make
 }
 
