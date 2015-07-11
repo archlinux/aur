@@ -1,0 +1,14 @@
+pkgbase = karmen
+	pkgdesc = An easy-to-use window manager for X
+	pkgver = 0.15
+	pkgrel = 2
+	url = http://karmen.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = http://downloads.sourceforge.net/karmen/karmen-0.15.tar.gz
+	md5sums = 8f800b71b454d6f0de2e9dd5ad34f9e3
+
+pkgname = karmen
+
