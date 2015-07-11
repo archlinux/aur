@@ -1,0 +1,13 @@
+pkgbase = breeze-purple-cursor-theme
+	pkgdesc = Breeze Purple cursor theme.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	source = https://share.kde.org/public.php?service=files&t=7e177568d01d2016eecbcf246e38f061&download
+	sha256sums = ed7944b0175b455b5ebce8b0937936a5defda992f54830d5ef98b90a8d422b11
+
+pkgname = breeze-purple-cursor-theme
+
