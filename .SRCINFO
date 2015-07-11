@@ -1,0 +1,13 @@
+pkgbase = openbox-shiki-colors-themes
+	pkgdesc = Openbox Shiki-Colors matching themes for the GTK and respective Gnome-Colors icon theme
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://www.box-look.org/content/show.php/Shiki-Colors+for+Openbox?content=118358
+	arch = any
+	license = Creative Commons by-nc-sa
+	depends = openbox
+	source = http://fc00.deviantart.net/fs71/f/2010/011/1/5/Shiki_Colors_for_Openbox_by_jmcknight.gz
+	sha256sums = cac41a7c807743a52e90ea3c7e1c4892992e8fe6b499672bd29e2f755ef77cf3
+
+pkgname = openbox-shiki-colors-themes
+
