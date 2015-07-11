@@ -1,0 +1,20 @@
+pkgbase = usermode
+	pkgdesc = Allow configured programs to be run with superuser privileges by ordinary users
+	pkgver = 1.111
+	pkgrel = 4
+	url = https://fedorahosted.org/usermode/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = desktop-file-utils
+	makedepends = intltool
+	depends = gtk2
+	depends = libice
+	depends = libsm
+	depends = libuser
+	depends = startup-notification
+	source = https://fedorahosted.org/releases/u/s/usermode/usermode-1.111.tar.xz
+	md5sums = 28ba510fbd8da9f4e86e57d6c31cff29
+
+pkgname = usermode
+
