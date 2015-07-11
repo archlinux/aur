@@ -1,0 +1,20 @@
+pkgbase = sord-svn
+	pkgdesc = A lightweight C library for storing RDF statements in memory
+	pkgver = 0.13.0.r327
+	pkgrel = 1
+	url = http://dev.drobilla.net/browser/sord
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = subversion
+	makedepends = python2
+	depends = pcre
+	depends = serd
+	provides = sord
+	conflicts = sord
+	replaces = redlandmm-svn
+	source = sord::svn+http://svn.drobilla.net/sord/trunk
+	md5sums = SKIP
+
+pkgname = sord-svn
+

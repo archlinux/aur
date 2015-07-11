@@ -1,0 +1,7 @@
+sord
+src
+pkg
+sord-svn-*.tar.xz
+sord-svn-*.src.tar.gz
+.AURINFO
+
