@@ -1,0 +1,13 @@
+pkgbase = breeze-blue-cursor-theme
+	pkgdesc = Breeze Blue cursor theme.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	source = https://share.kde.org/public.php?service=files&t=cf72875d375d5a7746c921dc2d8d2499&download
+	sha256sums = 0ba7968e5915dea1ccff681f4afd4aa6da43e328bd33d2a559f8154fc9967254
+
+pkgname = breeze-blue-cursor-theme
+
