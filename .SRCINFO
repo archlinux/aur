@@ -1,0 +1,29 @@
+pkgbase = stardict-reduced
+	pkgdesc = International dictionary software - very reduced version with offline dictionaries support only
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = http://www.stardict.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = popt
+	makedepends = gnome-doc-utils
+	makedepends = gnome-common
+	depends = gtk2
+	depends = libsigc++
+	depends = libsm
+	provides = stardict=3.0.6
+	conflicts = stardict
+	conflicts = stardict-lite
+	options = !libtool
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/stardict-4/3.0.6/stardict-3.0.6.tar.bz2
+	source = gcc46.patch
+	source = glib2.patch
+	md5sums = 93371b35482e6380e8bd4ba5d256b864
+	md5sums = 52ff47441c503de07add4b7688510bc5
+	md5sums = b2f216897c9053c7e4666c3d78705cf1
+
+pkgname = stardict-reduced
+
