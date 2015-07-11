@@ -1,0 +1,16 @@
+pkgbase = pidgin-awayonlock
+	pkgdesc = Sets you as away when the screensaver gets activated.
+	pkgver = 0.5.2
+	pkgrel = 2
+	url = http://costela.net/projects/awayonlock/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = pidgin
+	depends = gnome-screensaver>=2.26.0
+	source = http://costela.net/files/awayonlock-0.5.2.tar.gz
+	md5sums = 4601543ca8efbaed9ed71e726c119c5d
+
+pkgname = pidgin-awayonlock
+
