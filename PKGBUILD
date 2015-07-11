@@ -3,19 +3,20 @@
 
 pkgname=trid
 pkgver=2.20
-pkgrel=2
+pkgrel=3
 pkgdesc="An utility designed to identify file types from their binary signatures"
 arch=('i686' 'x86_64')
 url="http://mark0.net/soft-trid-e.html"
 license=('CUSTOM')
 depends=('ncurses' 'libtinfo' 'python2')
+install=trid.install
 
 source=(trid.sh
         update-trid-defs.sh
         update-trid-defs.service
         update-trid-defs.timer
         triupdate-1.00.zip::http://mark0.net/download/tridupdate.zip)
-md5sums=('9e4849a0d14bb4df970dcbc1159c4007'
+md5sums=('fe447a9fb6da5591ad72bf17e77084ae'
          '6ef06da62edde6c84c9473f7a62969e6'
          'a78caa24cf0851d17b8d3798f9e776a3'
          '2ea012671b50e0761cbc4bbec820952e'
