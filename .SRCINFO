@@ -1,0 +1,18 @@
+pkgbase = igprof-git
+	pkgdesc = A simple tool for measuring and analysing application memory and performance characteristics
+	pkgver = v5.9.15.r2.g7dc2dba
+	pkgrel = 1
+	url = http://igprof.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libatomic_ops
+	depends = libunwind
+	depends = pcre
+	depends = python
+	source = igprof-git::git+https://github.com/igprof/igprof/
+	md5sums = SKIP
+
+pkgname = igprof-git
+
