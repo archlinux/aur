@@ -5,9 +5,9 @@
 
 pkgbase=linux-grsec-lts
 _srcname=linux-3.14
-_pkgver=3.14.47
+_pkgver=3.14.48
 _grsecver=3.1
-_timestamp=201507041029
+_timestamp=201507111210
 _grsec_patch="grsecurity-$_grsecver-$_pkgver-$_timestamp.patch"
 pkgver=$_pkgver.$_timestamp
 pkgrel=1
@@ -35,9 +35,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            '608e818d8e4c3cb7fdd03492e77b904bb8aaf183b71331770f6d5de0ace9ce63'
+            'd654e53b889fd9244ce2ec9d8ab4cb5fe68d0c4ae6a49efa517850cbd22ebcd5'
             'SKIP'
-            '8157677cfaf32d58a9b89930d77523a3b13d1f5fde8c06f5ef9ab7e1f22b3916'
+            '13277da6735f6184754f75dea92edf9ae7d33527cfb87bd3d9146fd327c5155e'
             'SKIP'
             '6652a150cdedc8e0fe972a9484cd5deda88c0e6a3e6cb0f30b9e51bd19486a13'
             'ad8b0de3bcbb00d1ffc120094319793454f841ec4d448b9336fb605f19b01707'

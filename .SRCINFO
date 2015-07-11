@@ -1,5 +1,5 @@
 pkgbase = linux-grsec-lts
-	pkgver = 3.14.47.201507041029
+	pkgver = 3.14.48.201507111210
 	pkgrel = 1
 	url = https://grsecurity.net/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = linux-grsec-lts
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.47.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.47.sign
-	source = https://grsecurity.net/stable/grsecurity-3.1-3.14.47-201507041029.patch
-	source = https://grsecurity.net/stable/grsecurity-3.1-3.14.47-201507041029.patch.sig
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.48.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.48.sign
+	source = https://grsecurity.net/stable/grsecurity-3.1-3.14.48-201507111210.patch
+	source = https://grsecurity.net/stable/grsecurity-3.1-3.14.48-201507111210.patch.sig
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -28,9 +28,9 @@ pkgbase = linux-grsec-lts
 	source = gcc5_buildfixes.diff
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
-	sha256sums = 608e818d8e4c3cb7fdd03492e77b904bb8aaf183b71331770f6d5de0ace9ce63
+	sha256sums = d654e53b889fd9244ce2ec9d8ab4cb5fe68d0c4ae6a49efa517850cbd22ebcd5
 	sha256sums = SKIP
-	sha256sums = 8157677cfaf32d58a9b89930d77523a3b13d1f5fde8c06f5ef9ab7e1f22b3916
+	sha256sums = 13277da6735f6184754f75dea92edf9ae7d33527cfb87bd3d9146fd327c5155e
 	sha256sums = SKIP
 	sha256sums = 6652a150cdedc8e0fe972a9484cd5deda88c0e6a3e6cb0f30b9e51bd19486a13
 	sha256sums = ad8b0de3bcbb00d1ffc120094319793454f841ec4d448b9336fb605f19b01707
@@ -53,20 +53,20 @@ pkgname = linux-grsec-lts
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = gradm: to configure and enable Role Based Access Control (RBAC)
 	optdepends = paxd: to enable PaX exploit mitigations and apply exceptions automatically
-	provides = kernel26-grsec-lts=3.14.47
+	provides = kernel26-grsec-lts=3.14.48
 	conflicts = kernel26-grsec-lts
 	replaces = kernel26-grsec-lts
 	backup = etc/mkinitcpio.d/linux-grsec-lts.preset
 
 pkgname = linux-grsec-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-grsec-lts kernel
-	provides = kernel26-grsec-lts-headers=3.14.47
+	provides = kernel26-grsec-lts-headers=3.14.48
 	conflicts = kernel26-grsec-lts-headers
 	replaces = kernel26-grsec-lts-headers
 
 pkgname = linux-grsec-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-grsec-lts kernel
-	provides = kernel26-grsec-lts-docs=3.14.47
+	provides = kernel26-grsec-lts-docs=3.14.48
 	conflicts = kernel26-grsec-lts-docs
 	replaces = kernel26-grsec-lts-docs
 
