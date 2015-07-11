@@ -1,0 +1,16 @@
+pkgbase = ubuntu-device-flash
+	pkgdesc = Flash supported Nexus devices with Ubuntu.
+	pkgver = 0.4+14.10.20141002
+	pkgrel = 3
+	url = http://packages.ubuntu.com/trusty/devel/ubuntu-device-flash
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = bzr
+	depends = android-tools
+	depends = sudo
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/goget-ubuntu-touch_0.4+14.10.20141002.orig.tar.gz
+	md5sums = 3dca7517e95af8348f191137d6ed8bac
+
+pkgname = ubuntu-device-flash
+
