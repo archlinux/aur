@@ -2,7 +2,7 @@
 
 _hkgname=linear
 pkgname=haskell-linear
-pkgver=1.18.1.1
+pkgver=1.19.1.2
 pkgrel=1
 pkgdesc="Linear Algebra"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ arch=('any')
 makedepends=()
 depends=('ghc'
          'haskell-adjunctions>=4.0' 'haskell-adjunctions<5'
-         'haskell-base>=4.6' 'haskell-base<5'
+         'haskell-base>=4.5' 'haskell-base<5'
          'haskell-binary>=0.5' 'haskell-binary<0.8'
          'haskell-bytes>=0.15' 'haskell-bytes<1'
          'haskell-cereal>=0.4.1.1' 'haskell-cereal<0.5'
@@ -21,7 +21,7 @@ depends=('ghc'
          'haskell-ghc-prim'
          'haskell-hashable>=1.1' 'haskell-hashable<1.3'
          'haskell-lens>=4.0' 'haskell-lens<5'
-         'haskell-reflection>=1.3.2' 'haskell-reflection<2'
+         'haskell-reflection>=1.3.2' 'haskell-reflection<3'
          'haskell-semigroupoids>=3.0' 'haskell-semigroupoids<6'
          'haskell-semigroups>=0.9' 'haskell-semigroups<1'
          'haskell-tagged>=0.4.4' 'haskell-tagged<1'
@@ -34,7 +34,7 @@ depends=('ghc'
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
-sha512sums=('c10515ab07a93a3e567987769ad0ecac89e29161d2e38392042bf6e99317f93fa8be9129bdcfb63370161593305ad5bdf495b6bc8fee6ed9eaa3d05b338d8d68')
+sha512sums=('e6c180ccaad8a4e8d55516e0bb535792cdac2744fa46fde00dace6f51c4d4045ae620b8c6c7e9dafc4e26ce727073858a8d75e47684d7beb48ce930cdc17068b')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
