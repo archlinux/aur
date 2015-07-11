@@ -9,26 +9,21 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
-depends=('ruby' 'curl' 'lzo' 'libidn' 'rtmpdump')
+depends=('lzo' 'libidn' 'rtmpdump')
 makedepends=('git')
-source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('5fdb20727a3c3c31f33432ba7d5283a4')
-[[ $CARCH == i686 ]] && md5sums+=('c04042b24de56d18a041bc005e5ecaa4')
-[[ $CARCH == x86_64 ]] && md5sums+=('53d8a137e0b50fee8509a7d1c15fd33b')
-
-prepare() {
-  # Fix FS#43419
-  sed -i 's/hexdigest(path)/hexdigest(path.to_s)/' \
-    $pkgname-$pkgver/plugins/provisioners/puppet/provisioner/puppet.rb
-}
+source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
+source_i686+=(http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_i686.zip)
+source_x86_64+=(http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_x86_64.zip)
+md5sums=('f69210d71278884d1ab918e251fc7371')
+md5sums_i686=('c04042b24de56d18a041bc005e5ecaa4')
+md5sums_x86_64=('53d8a137e0b50fee8509a7d1c15fd33b')
 
 build() {
   cd $pkgname-$pkgver
