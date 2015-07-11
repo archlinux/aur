@@ -1,0 +1,22 @@
+pkgbase = python-pygame_sdl2-git
+	pkgdesc = Reimplementation of portions of the pygame API using SDL2.
+	pkgver = renpy.6.99.0.303.r28.gd5869f1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/brandy/files/brandy/brandy-1.20/brandy-1.20.1.tar.gz/download
+	arch = i686
+	arch = x86_64
+	groups = zlib
+	groups = LGPL
+	license = GPL
+	makedepends = git
+	makedepends = cython
+	depends = python
+	depends = sdl2_mixer
+	depends = sdl2_image
+	depends = sdl2_gfx
+	depends = sdl2_ttf
+	source = git+https://github.com/renpy/pygame_sdl2.git
+	md5sums = SKIP
+
+pkgname = python-pygame_sdl2-git
+
