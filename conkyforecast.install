@@ -1,0 +1,24 @@
+post_install() {
+/bin/cat << ENDOFMESSAGE
+>>
+>>  Please read the README in /usr/share/conkyforecast/
+>>  for pointers concerning configuration.
+>>
+>>  As of 2.21, Conkyforecast provides support for
+>>  Weather Underground as well. Since Weather.com
+>>  have removed developer support [sic], you will
+>>  only be able to continue using their services
+>>  if you have your own login credentials. If that
+>>  is not the case, using the Weather Underground
+>>  script is recommended.
+
+ENDOFMESSAGE
+}
+
+post_upgrade() {
+post_install
+}
+
+op=$1
+shift
+$op $*

@@ -1,0 +1,26 @@
+2012-08-24
+* Switched to conkyforecast Weather Underground codebase
+
+2011-06-04
+* Updated to 2.20
+
+2010-12-25
+* Updated to 2.15
+
+2010-10-08
+* Hardcoded python2 paths into scripts since python (3.x) and python2 
+  (legacy) will probably coexist for a while
+
+2010-08-29
+* Updated to 2.12
+
+2010-07-03
+* Renamed AUR package from conky-forecast to conkyforecast (the
+  official name of the project)
+* Updated WI, MI and BI datatype functionality to be in line with
+  gtk-desktop-info. Now Bearing icons with wind strength will be
+  displayed and calm wind will be output properly.
+* Replaced animated gif based images for variable wind with png images
+  as conky doesn't support gif animations yet - Thanks Bruce M
+* Added remaining bearing icons needed for alternative strength winds
+  (yellow, orange and red)

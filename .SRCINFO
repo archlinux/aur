@@ -1,0 +1,18 @@
+pkgbase = conkyforecast
+	pkgdesc = Provides weather forecast information to be displayed in conky.
+	pkgver = 2.24
+	pkgrel = 1
+	url = https://code.launchpad.net/~conky-companions/+junk/conkyforecast
+	install = conkyforecast.install
+	changelog = conkyforecast.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	conflicts = conkyforecast-bzr
+	replaces = conkyforecast-bzr
+	source = https://launchpad.net/~conky-companions/+archive/ppa/+files/conkyforecast_2.24.tar.gz
+	sha256sums = 251dba60bc209a2f4181de856abb1fe553e8b983d1af40998235061e8679a54d
+
+pkgname = conkyforecast
+
