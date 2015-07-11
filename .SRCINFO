@@ -1,0 +1,16 @@
+pkgbase = dssi-vst-git
+	pkgdesc = DSSI adapter/wrapper for win32 VST plug-ins
+	pkgver = 20130811
+	pkgrel = 1
+	url = https://github.com/falkTX/dssi-vst
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = wine
+	depends = liblo
+	depends = jack
+	provides = dssi-vst
+
+pkgname = dssi-vst-git
+
