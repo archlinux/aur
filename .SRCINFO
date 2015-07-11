@@ -1,0 +1,17 @@
+pkgbase = java8-openjdk-hsdis
+	pkgdesc = Disassembler for HotSpot
+	pkgver = 8.u45
+	pkgrel = 1
+	url = http://openjdk.java.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = hotspot-jdk8u45-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u45-b14.tar.gz
+	source = git://sourceware.org/git/binutils-gdb.git#commit=69352378
+	source = binutils-e9c1bdad.patch
+	sha256sums = 1dc7c5038f57f77a1e92cf1b48a188a0291805e69f570e1164efb7adb34c5a59
+	sha256sums = SKIP
+	sha256sums = 4dc13852d61825aa59b7436ae41c449d181e5a66b355b6ca69604e4da3e03699
+
+pkgname = java8-openjdk-hsdis
+
