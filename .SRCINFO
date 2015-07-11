@@ -1,0 +1,20 @@
+pkgbase = cqrlog
+	pkgdesc = An advanced ham radio logger based on MySQL database ( MariaDB replaces MySQL in repositories ). (Binary Version)
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://www.cqrlog.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mariadb
+	depends = libmariadbclient
+	depends = mariadb-clients
+	depends = libmysqlclient
+	depends = hamlib
+	depends = trustedqsl
+	depends = xplanet
+	depends = glabels
+	source = http://www.cqrlog.com/files/cqrlog_1.9.0/cqrlog_1.9.0_.tar.gz
+
+pkgname = cqrlog
+
