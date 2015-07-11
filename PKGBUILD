@@ -44,7 +44,9 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   # Copy local libraries into lib.
-  cp -r "$srcdir/local" lib
+  if [ ! -d lib ]; then
+    cp -r "$srcdir/local" lib
+  fi
 
   # The ArchLinux jansson header files are directly under
   # /usr/i686-w64-mingw32/include.
