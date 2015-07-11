@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=osc2midi-utils
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Utilities and GTK frontend for OSC2MIDI"
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ makedepends=()
 provides=('osc2midi-utils')
 conflicts=('osc2midi-utils-git')
 install="osc2midi-utils.install"
-source=("https://bitbucket.org/agraef/osc2midi-utils/downloads/osc2midi-utils-0.1.tar.gz")
-md5sums=('3f82ccd572e1f053a1c89079bd27da3f')
+source=("https://bitbucket.org/agraef/osc2midi-utils/downloads/$pkgname-$pkgver.tar.gz")
+md5sums=('f3dfd57b1455bd7725af09d2f27f9e38')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
