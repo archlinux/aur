@@ -9,7 +9,7 @@ pkgbase = doomrl
 	depends = sdl_mixer
 	depends = zlib
 	depends = lua
-	depends = timidity-eawpatches
+	depends = timidity++
 	depends = sdl_image
 	conflicts = doomrl-lq doomrl-ogg
 

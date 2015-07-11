@@ -14,7 +14,7 @@ license=("custom")
 depends=("sdl_mixer"
         "zlib"
         "lua"
-        "timidity-eawpatches"
+        "timidity++"
         "sdl_image")
 conflicts=("doomrl-lq doomrl-ogg")
 
