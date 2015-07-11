@@ -7,7 +7,7 @@
 pkgname=clion
 pkgbuild=1.0.5
 pkgver=${pkgbuild}
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64')
 options=(!strip)
