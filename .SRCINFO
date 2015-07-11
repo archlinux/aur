@@ -1,0 +1,14 @@
+pkgbase = libsdif
+	pkgdesc = Library to handle Sound Description Interchange Format (SDIF) files.
+	pkgver = 3.11.4
+	pkgrel = 1
+	url = http://sdif.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/sdif//SDIF-3.11.4-src.zip
+	sha256sums = b1719b93babf13c6461f3db960cf383803dce274682bc284d9b6ac12405be531
+
+pkgname = libsdif
+
