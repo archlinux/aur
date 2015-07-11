@@ -9,7 +9,7 @@ url="https://github.com/michael-lazar/rtv"
 license=('MIT')
 conflicts=('rtv-git')
 makedepends=('git')
-depends=('python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw' 'python-setuptools')
+depends=('python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw-git' 'python-setuptools')
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
 md5sums=('07ebf3aff58d4e4f6dfbcd8e8311a8d0')
 
