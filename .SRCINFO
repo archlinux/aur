@@ -1,7 +1,7 @@
 pkgbase = nvidia-e531
 	pkgdesc = NVIDIA drivers for linux-E531
 	pkgver = 352.21
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	install = nvidia-e531.install
 	arch = x86_64
