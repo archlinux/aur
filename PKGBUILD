@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-vbox
 _gitname=pvr.vbox
-pkgver=20150701.2280b56
-_gitver=2280b564f97ac35b89ae1f737074ec74d02e335a
+pkgver=20150707.387c70a
+_gitver=387c70abed5e728757e5ac4620b79a7e3a3a1fba
 pkgrel=1
 pkgdesc='Box TV Gateway PVR client addon for Kodi'
 arch=('i686' 'x86_64')
