@@ -1,6 +1,6 @@
 pkgbase = dracut
 	pkgdesc = Generic, modular, cross-distribution initramfs generation tool
-	pkgver = 041
+	pkgver = 043
 	pkgrel = 1
 	url = https://dracut.wiki.kernel.org/
 	install = dracut.install
@@ -22,8 +22,8 @@ pkgbase = dracut
 	optdepends = mdadm: Part of the MDadmin thing
 	optdepends = kexec: For switch kernels without reboot support
 	backup = etc/dracut.conf
-	source = http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-041.tar.xz
-	md5sums = ccde6cd8ef36b883b68d8e5954369a32
+	source = http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-043.tar.xz
+	md5sums = 85de75ddf00962e7bb0ae387f05794e5
 
 pkgname = dracut
 

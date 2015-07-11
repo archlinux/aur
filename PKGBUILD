@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com_
 
 pkgname=dracut
-pkgver=041
+pkgver=043
 pkgrel=1
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
@@ -37,4 +37,5 @@ package() {
 }
 
 #I use md5sum because is the default in "makepkg -g", blame Allan McRae
-md5sums=('ccde6cd8ef36b883b68d8e5954369a32')
+
+md5sums=('85de75ddf00962e7bb0ae387f05794e5')
