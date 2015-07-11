@@ -1,0 +1,19 @@
+pkgbase = solr-conf-drupal
+	pkgdesc = Configuration files to enable Drupal to use Solr as its search provider
+	pkgver = 7.x_1.8
+	pkgrel = 2
+	url = http://drupal.org/project/search_api_solr
+	arch = i686
+	arch = x86_64
+	arch = any
+	license = GPL
+	depends = solr>=5
+	optdepends = drupal: Solr client for these configuration files
+	optdepends = aegir: meta-Drupal hosting platform
+	source = http://ftp.drupal.org/files/projects/search_api_solr-7.x-1.8.zip
+	source = mapping-ISOLatin1Accent.txt
+	md5sums = ea3f8918a37f5d581def933921870e2d
+	md5sums = 9f3c8a60a4f09327fad22aeff082c2b3
+
+pkgname = solr-conf-drupal
+
