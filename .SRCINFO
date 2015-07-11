@@ -1,0 +1,21 @@
+pkgbase = xaralx
+	pkgdesc = An advanced vector graphics program, development release
+	pkgver = 0.7_rev1785
+	pkgrel = 9
+	url = http://www.xaraxtreme.org/
+	install = xaralx.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = wxgtk
+	depends = gtk2
+	depends = libpng
+	depends = libjpeg
+	depends = libxml2
+	optdepends = imagemagick: needed for some conversions
+	source = http://downloads.xara.com/opensource/xaralx0.7_rev1785.tar.bz2
+	md5sums = 14c6b270bcc1598b9b3d38f9a6db71aa
+
+pkgname = xaralx
+

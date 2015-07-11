@@ -1,0 +1,23 @@
+post_install() {
+  echo -n "update desktop mime database... "
+  update-mime-database 1> /dev/null /usr/share/mime
+  echo "done"
+  echo -n "update desktop applications database... "
+  update-desktop-database -q
+  echo "done"
+
+  echo "Documentation, examples and templates are to be found in /usr/share/xaralx folder. "
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo -n "update desktop mime database... "
+  update-mime-database 1> /dev/null /usr/share/mime
+  echo "done"
+  echo -n "update desktop applications database... "
+  update-desktop-database -q
+  echo "done"
+}
