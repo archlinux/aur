@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=6412
+pkgver=6414
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
