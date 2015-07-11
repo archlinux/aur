@@ -1,0 +1,14 @@
+pkgbase = yum-utils
+	pkgdesc = A collection of utilities and plugins extending and supplementing yum in different ways
+	pkgver = 1.1.31
+	pkgrel = 3
+	url = http://yum.baseurl.org/wiki/YumUtils
+	arch = any
+	license = GPLv2
+	makedepends = intltool
+	depends = yum
+	source = http://yum.baseurl.org/download/yum-utils/yum-utils-1.1.31.tar.gz
+	md5sums = b2859b89321b98f2581243536e1b4993
+
+pkgname = yum-utils
+
