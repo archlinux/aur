@@ -1,7 +1,7 @@
 pkgbase = obs-studio
 	pkgdesc = Free and open source software for video recording and live streaming.
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jp9000/obs-studio
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = obs-studio
 	depends = libxinerama
 	depends = libxkbcommon-x11
 	depends = qt5-x11extras
+	depends = curl
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
 	provides = obs-studio
