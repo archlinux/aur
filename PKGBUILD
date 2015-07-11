@@ -1,4 +1,5 @@
-# Maintainer: laloch <lalochcz@gmail.com>
+# Maintainer: spider-mario <spidermario@free.fr>
+# Contributor: laloch <lalochcz@gmail.com>
 pkgname=dsf2flac-svn
 pkgver=53
 pkgrel=1
