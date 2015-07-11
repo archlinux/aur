@@ -1,0 +1,111 @@
+From 10034e1bb965cc1874d977668c0b7d3dbced8e22 Mon Sep 17 00:00:00 2001
+From: Tyler Veness <calcmogul@gmail.com>
+Date: Thu, 25 Jun 2015 18:38:44 -0700
+Subject: [PATCH] artf4155: Move Port.h from hal/lib/Athena to hal/include/HAL
+
+Change-Id: I76a8d8baf4d77b7383c321d16a9286537632c3e9
+---
+ hal/include/HAL/Port.h                          | 7 +++++++
+ hal/lib/Athena/Analog.cpp                       | 2 +-
+ hal/lib/Athena/Digital.cpp                      | 2 +-
+ hal/lib/Athena/HAL.cpp                          | 2 +-
+ hal/lib/Athena/Port.h                           | 7 -------
+ hal/lib/Athena/Solenoid.cpp                     | 2 +-
+ wpilibc/wpilibC++Devices/include/SolenoidBase.h | 2 +-
+ 7 files changed, 12 insertions(+), 12 deletions(-)
+ create mode 100644 hal/include/HAL/Port.h
+ delete mode 100644 hal/lib/Athena/Port.h
+
+diff --git a/hal/include/HAL/Port.h b/hal/include/HAL/Port.h
+new file mode 100644
+index 0000000..8679c26
+--- /dev/null
++++ b/hal/include/HAL/Port.h
+@@ -0,0 +1,7 @@
++#pragma once
++
++typedef struct port_t
++{
++	uint8_t pin;
++	uint8_t module;
++} Port;
+diff --git a/hal/lib/Athena/Analog.cpp b/hal/lib/Athena/Analog.cpp
+index 9461ebb..b3aea54 100644
+--- a/hal/lib/Athena/Analog.cpp
++++ b/hal/lib/Athena/Analog.cpp
+@@ -1,7 +1,7 @@
+ 
+ #include "HAL/Analog.hpp"
+ 
+-#include "Port.h"
++#include "HAL/Port.h"
+ #include "HAL/HAL.hpp"
+ #include "ChipObject.h"
+ #include "HAL/cpp/Synchronized.hpp"
+diff --git a/hal/lib/Athena/Digital.cpp b/hal/lib/Athena/Digital.cpp
+index f117216..ba43abf 100644
+--- a/hal/lib/Athena/Digital.cpp
++++ b/hal/lib/Athena/Digital.cpp
+@@ -1,7 +1,7 @@
+ 
+ #include "HAL/Digital.hpp"
+ 
+-#include "Port.h"
++#include "HAL/Port.h"
+ #include "HAL/HAL.hpp"
+ #include "ChipObject.h"
+ #include "HAL/cpp/Synchronized.hpp"
+diff --git a/hal/lib/Athena/HAL.cpp b/hal/lib/Athena/HAL.cpp
+index b24f8dc..185f2be 100644
+--- a/hal/lib/Athena/HAL.cpp
++++ b/hal/lib/Athena/HAL.cpp
+@@ -1,6 +1,6 @@
+ #include "HAL/HAL.hpp"
+ 
+-#include "Port.h"
++#include "HAL/Port.h"
+ #include "HAL/Errors.hpp"
+ #include "ctre/ctre.h"
+ #include "visa/visa.h"
+diff --git a/hal/lib/Athena/Port.h b/hal/lib/Athena/Port.h
+deleted file mode 100644
+index 8679c26..0000000
+--- a/hal/lib/Athena/Port.h
++++ /dev/null
+@@ -1,7 +0,0 @@
+-#pragma once
+-
+-typedef struct port_t
+-{
+-	uint8_t pin;
+-	uint8_t module;
+-} Port;
+diff --git a/hal/lib/Athena/Solenoid.cpp b/hal/lib/Athena/Solenoid.cpp
+index c545106..dde205e 100644
+--- a/hal/lib/Athena/Solenoid.cpp
++++ b/hal/lib/Athena/Solenoid.cpp
+@@ -1,7 +1,7 @@
+ 
+ #include "HAL/Solenoid.hpp"
+ 
+-#include "Port.h"
++#include "HAL/Port.h"
+ #include "HAL/Errors.hpp"
+ #include "ChipObject.h"
+ #include "HAL/cpp/Synchronized.hpp"
+diff --git a/wpilibc/wpilibC++Devices/include/SolenoidBase.h b/wpilibc/wpilibC++Devices/include/SolenoidBase.h
+index 0a51be6..16ba181 100644
+--- a/wpilibc/wpilibC++Devices/include/SolenoidBase.h
++++ b/wpilibc/wpilibC++Devices/include/SolenoidBase.h
+@@ -10,7 +10,7 @@
+ #include "SensorBase.h"
+ #include "HAL/HAL.hpp"
+ #include "HAL/cpp/Synchronized.hpp"
+-#include "Port.h"
++#include "HAL/Port.h"
+ 
+ /**
+  * SolenoidBase class is the common base class for the Solenoid and
+-- 
+2.4.5
+
