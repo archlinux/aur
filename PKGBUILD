@@ -3,7 +3,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=logrotate-selinux
-pkgver=3.8.9
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Rotates system logs automatically with SELinux support"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://fedorahosted.org/releases/l/o/logrotate/logrotate-${pkgver}.tar
         'paths.patch'
         'logrotate.conf'
         logrotate.{timer,service})
-md5sums=('2660f30742da79870d15d042b07829f6'
+md5sums=('4492b145b6d542e4a2f41e77fa199ab0'
          'e76526bcd6fc33c9d921e1cb1eff1ffb'
          '94dae4d3eded2fab9ae879533d3680db'
          '287c2ad9b074cb5478db7692f385827c'
