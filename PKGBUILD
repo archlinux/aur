@@ -1,4 +1,5 @@
-# Maintainer: David Roheim <david.roheim@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: David Roheim <david.roheim@gmail.com>
 # Contributor: Rohit Manokaran <rohit000@live.com>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Rohit Manokaran <rohitmanokaran@yahoo.com>
@@ -10,12 +11,12 @@
 
 pkgname=hal
 pkgver=0.5.14
-pkgrel=22
+pkgrel=23
 pkgdesc="Hardware Abstraction Layer"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 url="http://www.freedesktop.org/wiki/Software/hal"
-depends=('dbus-glib>=0.82' 'libusb-compat' 'hal-info>=0.20090716' 'dmidecode' 'v4l-utils')
+depends=('dbus-glib>=0.82' 'libusb-compat' 'hal-info>=0.20090716' 'dmidecode' 'v4l-utils' 'pciutils')
 optdepends=('acpid>=2.0' 'pm-utils>=1.2.5')
 makedepends=('gperf')
 options=('!libtool' '!makeflags')
