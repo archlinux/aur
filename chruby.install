@@ -1,0 +1,35 @@
+## arg 1:  the new package version
+post_install() {
+  echo "
+Please do one of the following or something similar depending of your preferred
+shell and setup:
+
+  echo 'source /usr/share/chruby/chruby.sh' >> ~/.bashrc
+  echo 'source /usr/share/chruby/chruby.sh' >> ~/.zprofile
+
+For further support/information, please see the project's homepage!
+
+For your convenience there's a file at /etc/profile.d/chruby.sh which can used
+to enable chruby systemwide. You just need to uncomment the lines in the file.
+"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "
+Please do not forget to delete those lines from your shell's initscript(s):
+e.g. .bashrc, .zprofile, ...
+
+source /usr/share/chruby/chruby.sh
+
+For further support/information, please see the project's homepage!
+"
+}
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,18 @@
+pkgbase = chruby
+	pkgdesc = Changes the current ruby. Supports both zsh and bash.
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/postmodern/chruby
+	install = chruby.install
+	arch = any
+	license = MIT
+	makedepends = gnupg
+	depends = bash
+	optdepends = zsh
+	source = https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+	source = profile.d-chruby.sh
+	sha256sums = 7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd
+	sha256sums = 8256f38a8908654c4d75793774cbb85da324d73ce0137c647f43e852e6618b54
+
+pkgname = chruby
+
