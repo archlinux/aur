@@ -1,0 +1,8 @@
+eq10q
+src
+pkg
+eq10q-*.tar.gz
+eq10q-*.pkg.tar.xz
+eq10q-*.src.tar.gz
+.AURINFO
+

@@ -1,0 +1,17 @@
+pkgbase = eq10q
+	pkgdesc = An LV2 parametric equalizer audio plugin
+	pkgver = 2_beta7.1
+	pkgrel = 1
+	url = http://eq10q.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL3
+	makedepends = cmake
+	depends = lv2
+	depends = gtkmm
+	source = http://download.sourceforge.net/project/eq10q/eq10q-2-beta7.1.tar.gz
+	md5sums = a40e5c09d1a8bc4e1e60f91508593436
+
+pkgname = eq10q
+
