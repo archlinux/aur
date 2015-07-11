@@ -9,7 +9,7 @@ url="https://github.com/aitjcize/cppman"
 license=("GPL")
 makedepends=(git)
 conflicts=(cppman)
-depends=(python3 vim groff python3-beautifulsoup4)
+depends=(python3 vim groff python-beautifulsoup4)
 source=("git://github.com/aitjcize/${_pkgname}")
 sha256sums=("SKIP")
 
