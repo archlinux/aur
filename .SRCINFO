@@ -1,0 +1,14 @@
+pkgbase = hal-info
+	pkgdesc = Hardware Abstraction Layer information files
+	pkgver = 0.20091130
+	pkgrel = 3
+	url = http://www.freedesktop.org/wiki/Software/hal
+	arch = any
+	license = GPL
+	license = custom
+	options = !emptydirs
+	source = http://hal.freedesktop.org/releases/hal-info-20091130.tar.gz
+	md5sums = 34375489a02a00b250fdc0b280be11b8
+
+pkgname = hal-info
+
