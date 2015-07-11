@@ -9,7 +9,6 @@ pkgbase = xaralx
 	license = GPL
 	makedepends = pkgconfig
 	depends = wxgtk
-	depends = gtk2
 	depends = libpng
 	depends = libjpeg
 	depends = libxml2
