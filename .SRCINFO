@@ -1,0 +1,14 @@
+pkgbase = creator-build-git
+	pkgdesc = Meta Build System for Ninja tool
+	pkgver = r123.f42170c
+	pkgrel = 1
+	url = https://github.com/creator-build/creator
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-nr.strex
+	source = git+https://github.com/creator-build/creator
+	sha1sums = SKIP
+
+pkgname = creator-build-git
+
