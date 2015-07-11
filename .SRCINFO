@@ -1,0 +1,20 @@
+pkgbase = inklingreader-git
+	pkgdesc = A GNU/Linux-friendly version of the Wacom Inkling SketchManager.
+	pkgver = 0.8.r34.g97827c7
+	pkgrel = 2
+	url = https://github.com/roelj/inklingreader
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = librsvg
+	depends = libusb
+	depends = gtk3
+	optdepends = inkscape: To use the inkscape plugin
+	provides = inklingreader
+	conflicts = inklingreader
+	source = git+https://github.com/roelj/inklingreader.git
+	sha256sums = SKIP
+
+pkgname = inklingreader-git
+
