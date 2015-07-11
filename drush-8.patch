@@ -1,0 +1,12 @@
+diff --git a/platform/drupal/install_7.inc b/platform/drupal/install_7.inc
+index b8e0288..8938365 100644
+--- a/platform/drupal/install_7.inc
++++ b/platform/drupal/install_7.inc
+@@ -84,6 +84,7 @@ function install_main() {
+   // We have an existing settings.php.
+ 
+   switch (substr(drush_core_version(), 0, 1)) {
++    case '8':
+     case '7':
+       $sql = drush_get_class('Drush\Sql\Sql', array(), array(drush_drupal_major_version()));
+       $db_spec = $sql->get_db_spec();

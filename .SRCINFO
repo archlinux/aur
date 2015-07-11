@@ -6,6 +6,8 @@ pkgbase = aegir-provision
 	arch = any
 	license = GPL
 	depends = drush>=7
+	source = drush-8.patch
+	md5sums = 79573892736baf4e5a0b95f4f20eec15
 
 pkgname = aegir-provision
 

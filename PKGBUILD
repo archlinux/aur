@@ -9,6 +9,8 @@ arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=('drush>=7')
+source=('drush-8.patch')
+md5sums=('79573892736baf4e5a0b95f4f20eec15')
 
 pkgver() {
     drush rl --fields=version --field-labels=0 provision | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
@@ -17,6 +19,9 @@ pkgver() {
 prepare() {
     drush dl $_pkgname --yes --destination="$srcdir" &>/dev/null
     echo 'extension=posix.so' >| "$srcdir/posix.aegir.ini"
+
+    cd $_pkgname
+    patch -p1 < ../drush-8.patch
 }
 
 build() {
