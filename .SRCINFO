@@ -1,0 +1,18 @@
+pkgbase = cqrtest-git
+	pkgdesc = CQRTest - Linux contest log (git version)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://cqrtest.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = lazarus
+	depends = mariadb
+	depends = libmariadbclient
+	depends = hamlib
+	source = git://github.com/ok2cqr/cqrtest.git
+	md5sums = SKIP
+
+pkgname = cqrtest-git
+
