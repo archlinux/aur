@@ -1,0 +1,14 @@
+pkgbase = gitslave
+	pkgdesc = Gits - The git slave repository tool for super-project multi-repository management
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://gitslave.sourceforge.net
+	arch = any
+	license = custom
+	makedepends = git
+	depends = perl>=5,
+	depends = git
+	source = http://downloads.sourceforge.net/gitslave/gitslave-2.0.2.tar.gz
+
+pkgname = gitslave
+
