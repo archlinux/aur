@@ -1,0 +1,30 @@
+post_install() {
+    getent group nzbget &>/dev/null || groupadd -r nzbget >/dev/null
+    getent passwd nzbget &>/dev/null || useradd -r -g nzbget -d /usr/share/nzbget -s /bin/false -c nzbget nzbget >/dev/null
+    chown -R nzbget:nzbget /usr/share/nzbget
+    echo "==> PLEASE NOTE:"
+    echo "==> "
+    echo "==> NZBGet needs to be configured before first use (systemctl start nzbget.service)."
+    echo "==> The configuration file have to be placed under /etc/nzbget.conf."
+    echo "==> Check out /usr/share/nzbget/nzbget.conf for examples."
+    echo
+}
+
+pre_upgrade(){
+    post_install
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    echo "==> PLEASE UPGRADE NOTE:"
+    echo "==> "
+    echo "==> Restart NZBget (systemctl restart nzbget.service)."
+    echo
+}
+
+post_remove() {
+    systemctl stop nzbget.service
+    getent passwd nzbget &>/dev/null && userdel nzbget >/dev/null
+    getent group nzbget &>/dev/null && groupdel nzbget >/dev/null
+    true
+}

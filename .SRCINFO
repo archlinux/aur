@@ -1,0 +1,27 @@
+pkgbase = nzbget-svn
+	pkgdesc = Download from Usenet using .nzb files
+	pkgver = 0.r1308
+	pkgrel = 1
+	epoch = 1
+	url = http://nzbget.net/
+	install = nzbget.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = svn
+	makedepends = autoconf
+	makedepends = automake
+	depends = libxml2
+	depends = ncurses
+	depends = libgcrypt
+	depends = openssl
+	provides = nzbget
+	conflicts = nzbget
+	source = nzbget::svn://svn.code.sf.net/p/nzbget/code/
+	source = nzbget.service
+	sha512sums = SKIP
+	sha512sums = d33dc707bb4f0265b08208f5e3be0c33f4ba8197717548160fc2b10dcd9c88dc299bf2c48a80ab6b7b8c86f5c3777f786ef55d317803315955dabd4bb28ed93a
+
+pkgname = nzbget-svn
+
