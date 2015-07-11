@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibtool-git
-pkgver=2.60.13.g1871051
+pkgver=2.60.15.g6afb7f0
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files - from git-repo"
 arch=('i686' 'x86_64')
