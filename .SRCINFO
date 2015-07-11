@@ -1,0 +1,20 @@
+pkgbase = pcmanx-gtk2-git
+	pkgdesc = A gtk+ based free BBS client
+	pkgver = 20130709
+	pkgrel = 1
+	url = http://code.google.com/p/pcmanx-gtk2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	makedepends = intltool
+	depends = gtk2
+	depends = librsvg
+	provides = pcmanx-gtk2
+	conflicts = pcmanx-gtk2
+	options = !libtool
+
+pkgname = pcmanx-gtk2-git
+
