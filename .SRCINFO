@@ -1,11 +1,13 @@
 pkgbase = guile-lib
 	pkgdesc = Repository of useful code written in Guile Scheme
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/guile-lib/
+	install = guile-lib.install
 	arch = i686
 	arch = x86_64
-	license = GPL3 and LGPL3
+	license = GPL3
+	license = LGPL3
 	depends = guile
 	source = http://download.savannah.gnu.org/releases/guile-lib/guile-lib-0.2.2.tar.gz
 	md5sums = 77427e4ff3f2b1061bffa370666125f7
