@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Popcorn Time
-Comment=Watch torrent movies instantly
+Comment=Watch Movies and TV Shows instantly
 Exec=popcorntime %U
 Icon=popcorntime
 Terminal=false
