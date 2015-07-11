@@ -1,0 +1,16 @@
+pkgbase = python2-pysolr
+	pkgdesc = Lightweight python wrapper for Apache Solr.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pysolr
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-requests
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pysolr/pysolr-3.2.0.tar.gz
+	sha256sums = 33d8c9ec3a0b5379f2d679e9a5d835d9bbbe4f89ca236b720fdc919c32c89029
+
+pkgname = python2-pysolr
+
