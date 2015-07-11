@@ -1,0 +1,156 @@
+diff -ru hal-0.5.14/hald/linux/addons/addon-acpi-buttons-toshiba.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-acpi-buttons-toshiba.c
+--- hal-0.5.14/hald/linux/addons/addon-acpi-buttons-toshiba.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-acpi-buttons-toshiba.c	2012-05-26 18:17:41.516400197 -0700
+@@ -40,7 +40,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ 
+ #include "libhal/libhal.h"
+ #include "../../logger.h"
+diff -ru hal-0.5.14/hald/linux/addons/addon-cpufreq.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-cpufreq.c
+--- hal-0.5.14/hald/linux/addons/addon-cpufreq.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-cpufreq.c	2012-05-26 18:16:04.626395657 -0700
+@@ -32,7 +32,6 @@
+ #include <unistd.h>
+ #include <signal.h>
+ #include <getopt.h>
+-#include <glib/gprintf.h>
+ 
+ #include "addon-cpufreq.h"
+ #include "addon-cpufreq-userspace.h"
+diff -ru hal-0.5.14/hald/linux/addons/addon-dell-backlight.cpp hal-glib-2.3-compile-fix/hald/linux/addons/addon-dell-backlight.cpp
+--- hal-0.5.14/hald/linux/addons/addon-dell-backlight.cpp	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-dell-backlight.cpp	2012-05-26 18:17:16.816399038 -0700
+@@ -29,7 +29,7 @@
+ 
+ #include <string.h>
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-generic-backlight.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-generic-backlight.c
+--- hal-0.5.14/hald/linux/addons/addon-generic-backlight.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-generic-backlight.c	2012-05-26 18:16:51.779731200 -0700
+@@ -35,7 +35,7 @@
+ #include <sys/stat.h>
+ #include <unistd.h> 
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-imac-backlight.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-imac-backlight.c
+--- hal-0.5.14/hald/linux/addons/addon-imac-backlight.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-imac-backlight.c	2012-05-26 18:16:58.686398190 -0700
+@@ -29,7 +29,7 @@
+ #include <stdlib.h>
+ #include <sys/io.h>
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-input.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-input.c
+--- hal-0.5.14/hald/linux/addons/addon-input.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-input.c	2012-05-26 18:17:10.783065423 -0700
+@@ -41,8 +41,7 @@
+ #else
+   #include <linux/input.h>
+ #endif
+-#include <glib/gmain.h>
+-#include <glib/gprintf.h>
++#include <glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+ #include "libhal/libhal.h"
+diff -ru hal-0.5.14/hald/linux/addons/addon-ipw-killswitch.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-ipw-killswitch.c
+--- hal-0.5.14/hald/linux/addons/addon-ipw-killswitch.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-ipw-killswitch.c	2012-05-26 18:16:44.186397511 -0700
+@@ -36,8 +36,6 @@
+ #include <unistd.h> 
+ 
+ #include <glib.h>
+-#include <glib/gmain.h>
+-#include <glib/gstdio.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-leds.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-leds.c
+--- hal-0.5.14/hald/linux/addons/addon-leds.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-leds.c	2012-05-26 18:17:59.099734354 -0700
+@@ -36,8 +36,6 @@
+ #include <unistd.h> 
+ 
+ #include <glib.h>
+-#include <glib/gmain.h>
+-#include <glib/gstdio.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-macbookpro-backlight.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-macbookpro-backlight.c
+--- hal-0.5.14/hald/linux/addons/addon-macbookpro-backlight.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-macbookpro-backlight.c	2012-05-26 18:18:05.539734654 -0700
+@@ -39,7 +39,7 @@
+ #include <pci/pci.h>
+ #include <unistd.h> 
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-omap-backlight.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-omap-backlight.c
+--- hal-0.5.14/hald/linux/addons/addon-omap-backlight.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-omap-backlight.c	2012-05-26 18:17:34.836399884 -0700
+@@ -41,7 +41,7 @@
+ #include <fcntl.h>
+ #include <unistd.h> 
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-rfkill-killswitch.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-rfkill-killswitch.c
+--- hal-0.5.14/hald/linux/addons/addon-rfkill-killswitch.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-rfkill-killswitch.c	2012-05-26 18:16:36.813063830 -0700
+@@ -36,8 +36,6 @@
+ #include <unistd.h> 
+ 
+ #include <glib.h>
+-#include <glib/gmain.h>
+-#include <glib/gstdio.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-storage.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-storage.c
+--- hal-0.5.14/hald/linux/addons/addon-storage.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-storage.c	2012-05-26 18:16:25.149729952 -0700
+@@ -39,7 +39,7 @@
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include <unistd.h>
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+diff -ru hal-0.5.14/hald/linux/addons/addon-usb-csr.c hal-glib-2.3-compile-fix/hald/linux/addons/addon-usb-csr.c
+--- hal-0.5.14/hald/linux/addons/addon-usb-csr.c	2009-08-24 05:42:30.000000000 -0700
++++ hal-glib-2.3-compile-fix/hald/linux/addons/addon-usb-csr.c	2012-05-26 18:17:22.746399317 -0700
+@@ -29,7 +29,7 @@
+ #include <string.h>
+ #include <usb.h>
+ 
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 

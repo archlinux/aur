@@ -1,0 +1,346 @@
+diff -ru hal-0.5.14/configure.in hal-libudev-events/configure.in
+--- hal-0.5.14/configure.in	2012-06-17 17:05:38.346983427 -0700
++++ hal-libudev-events/configure.in	2012-06-17 12:30:53.406613390 -0700
+@@ -14,6 +14,7 @@
+ 
+ glib_module="glib-2.0 >= 2.10.0 gobject-2.0 > 2.10.0 dbus-glib-1 >= 0.61"
+ dbus_module="dbus-1 >= 0.61"
++udev_module="libudev >= 185"
+ blkid_module="blkid >= 2.15"
+ volume_id_module="libvolume_id >= 0.77"
+ polkit_module="polkit >= 0.5"
+@@ -693,6 +694,11 @@
+ AC_SUBST(DBUS_CFLAGS)
+ AC_SUBST(DBUS_LIBS)
+ 
++# D-Bus libs
++PKG_CHECK_MODULES(UDEV, [$udev_module])
++AC_SUBST(UDEV_CFLAGS)
++AC_SUBST(UDEV_LIBS)
++
+ # glib libs
+ PKG_CHECK_MODULES(GLIB, [$glib_module])
+ AC_SUBST(GLIB_CFLAGS)
+Only in hal-libudev-events: .configure.in.swp
+diff -ru hal-0.5.14/hald/linux/osspec.c hal-libudev-events/hald/linux/osspec.c
+--- hal-0.5.14/hald/linux/osspec.c	2012-06-17 17:05:38.343650094 -0700
++++ hal-libudev-events/hald/linux/osspec.c	2012-06-17 16:57:08.250305305 -0700
+@@ -44,6 +44,7 @@
+ #include <sys/un.h>
+ #include <sys/utsname.h>
+ #include <unistd.h>
++#include <libudev.h>
+ 
+ #include <dbus/dbus.h>
+ #include <dbus/dbus-glib.h>
+@@ -69,158 +70,97 @@
+ 
+ static gboolean hald_done_synthesizing_coldplug = FALSE;
+ 
+-static gboolean
+-hald_udev_data (GIOChannel *source, GIOCondition condition, gpointer user_data)
++static long long get_ll_dev_prop(struct udev_device *device, const char *property)
+ {
+-	int fd;
+-	int retval;
+-	struct msghdr smsg;
+-	struct cmsghdr *cmsg;
+-	struct iovec iov;
+-	struct ucred *cred;
+-	char cred_msg[CMSG_SPACE(sizeof(struct ucred))];
++	long long result = 0;
++	const char * propVal = udev_device_get_property_value(device, property);
+ 
+-	char buf[4096];
+-	size_t bufpos = 0;
+-	const char *action = NULL;
+-	HotplugEvent *hotplug_event;
++	if(propVal != NULL) {
++		result = strtoull(propVal, NULL, 10);
++		HAL_INFO(("Property: %s Value: %lli", property, result));
++	}
++	return result;
++}
+ 
+-	memset(buf, 0x00, sizeof (buf));
++static void copy_dev_prop(struct udev_device *device, char * dst, size_t dst_size, const char *property)
++{
++	const char * propVal = udev_device_get_property_value(device, property);
+ 
+-	fd = g_io_channel_unix_get_fd (source);
++	if(propVal != NULL) {
++		g_strlcpy (dst, propVal, dst_size);
++		HAL_INFO(("Property: %s Value: %s", property, dst));
++	}
++}
+ 
+-	iov.iov_base = &buf;
+-	iov.iov_len = sizeof (buf);
++static void copy_dev_prop_formatted(struct udev_device *device, char * format, char * dst, size_t dst_size, const char *property)
++{
++	const char * propVal = udev_device_get_property_value(device, property);
+ 
+-	memset(&smsg, 0x00, sizeof (struct msghdr));
+-	smsg.msg_iov = &iov;
+-	smsg.msg_iovlen = 1;
+-	smsg.msg_control = cred_msg;
+-	smsg.msg_controllen = sizeof (cred_msg);
+-
+-	retval = recvmsg (fd, &smsg, 0);
+-	if (retval <  0) {
+-		if (errno != EINTR)
+-			HAL_INFO (("Unable to receive message, errno=%d", errno));
+-		goto out;
++	if(propVal != NULL) {
++		g_snprintf (dst, dst_size, format, propVal);
++		HAL_INFO(("Property: %s Value: %s", property, dst));
+ 	}
+-	cmsg = CMSG_FIRSTHDR (&smsg);
+-	cred = (struct ucred *) CMSG_DATA (cmsg);
++}
+ 
+-	if (cmsg == NULL || cmsg->cmsg_type != SCM_CREDENTIALS) {
+-		HAL_INFO (("No sender credentials received, message ignored"));
+-		goto out;
+-	}
++static gboolean
++hald_udev_data (GIOChannel *source, GIOCondition condition, gpointer user_data)
++{
++	struct udev_monitor *udev_monitor = (struct udev_monitor *) user_data;
++	struct udev_device *device;
+ 
+-	if (cred->uid != 0) {
+-		HAL_INFO (("Sender uid=%i, message ignored", cred->uid));
+-		goto out;
+-	}
++	char *tmp, *tmp1;
++
++	const char *action = NULL;
++	HotplugEvent *hotplug_event;
+ 
+-	if (!strstr(buf, "@/")) {
+-		HAL_INFO (("invalid message format"));
++	device = udev_monitor_receive_device(udev_monitor);
++
++	if (!device) {
++		HAL_ERROR (("Unable to receive message from udev device"));
+ 		goto out;
+ 	}
+ 
+ 	hotplug_event = g_slice_new0 (HotplugEvent);
+ 	hotplug_event->type = HOTPLUG_EVENT_SYSFS;
+ 
+-	while (bufpos < sizeof (buf)) {
+-		size_t keylen;
+-		char *key;
+-		char *str, *dstr;
+-
+-		key = &buf[bufpos];
+-		keylen = strlen(key);
+-		if (keylen == 0)
+-			break;
+-		bufpos += keylen + 1;
+-
+-		if (strncmp(key, "ACTION=", 7) == 0)
+-			action = &key[7];
+-		else if (strncmp(key, "DEVPATH=", 8) == 0) {
+-
+-                        /* md devices are handled via looking at /proc/mdstat */
+-                        if (g_str_has_prefix (key + 8, "/block/md")) {
+-                                HAL_INFO (("skipping md event for %s", key + 8));
+-                                goto invalid;
+-                        }
+-
+-			g_snprintf (hotplug_event->sysfs.sysfs_path, sizeof (hotplug_event->sysfs.sysfs_path),
+-				    "/sys%s", &key[8]);
+-		} else if (strncmp(key, "DEVPATH_OLD=", 12) == 0) {
+-
+-                        /* md devices are handled via looking at /proc/mdstat */
+-                        if (g_str_has_prefix (key + 12, "/block/md")) {
+-                                HAL_INFO (("skipping md event for %s", key + 8));
+-                                goto invalid;
+-                        }
+-
+-			g_snprintf (hotplug_event->sysfs.sysfs_path_old, sizeof (hotplug_event->sysfs.sysfs_path_old),
+-				    "/sys%s", &key[12]);
+-		} else if (strncmp(key, "SUBSYSTEM=", 10) == 0)
+-			g_strlcpy (hotplug_event->sysfs.subsystem, &key[10], sizeof (hotplug_event->sysfs.subsystem));
+-		else if (strncmp(key, "DEVNAME=", 8) == 0)
+-			g_strlcpy (hotplug_event->sysfs.device_file, &key[8], sizeof (hotplug_event->sysfs.device_file));
+-		else if (strncmp(key, "SEQNUM=", 7) == 0)
+-			hotplug_event->sysfs.seqnum = strtoull(&key[7], NULL, 10);
+-		else if (strncmp(key, "IFINDEX=", 8) == 0)
+-			hotplug_event->sysfs.net_ifindex = strtoul(&key[8], NULL, 10);
+-		else if (strncmp(key, "ID_VENDOR=", 10) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[10])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.vendor, str, sizeof(hotplug_event->sysfs.vendor));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_MODEL=", 9) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[9])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.model, str, sizeof(hotplug_event->sysfs.model));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_REVISION=", 12) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[12])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.revision, str, sizeof(hotplug_event->sysfs.revision));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_SERIAL=", 10) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[10])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.serial, str, sizeof(hotplug_event->sysfs.serial));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_FS_USAGE=", 12) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[12])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.fsusage, str, sizeof(hotplug_event->sysfs.fsusage));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_FS_TYPE=", 11) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[11])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.fstype, str, sizeof(hotplug_event->sysfs.fstype));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_FS_VERSION=", 14) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[14])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.fsversion, str, sizeof(hotplug_event->sysfs.fsversion));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_FS_UUID=", 11) == 0) {
+-			if ((str = hal_util_strdup_valid_utf8(&key[11])) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.fsuuid, str, sizeof(hotplug_event->sysfs.fsuuid));
+-				g_free (str);
+-			}
+-		} else if (strncmp(key, "ID_FS_LABEL_ENC=", 16) == 0) {
+-			dstr = g_malloc0 (keylen - 15);
+-			hal_util_decode_escape (&key[16], dstr, sizeof(hotplug_event->sysfs.fslabel));
+-
+-			if ((str = hal_util_strdup_valid_utf8(dstr)) != NULL ) {
+-				g_strlcpy (hotplug_event->sysfs.fslabel, str, sizeof(hotplug_event->sysfs.fslabel));
+-				g_free (str);
+-			}
+-			g_free (dstr);
+-		} else if (strncmp(key, "DM_UDEV_DISABLE_OTHER_RULES_FLAG=", 33) == 0) {
+-			if (strtoul(&key[33], NULL, 10) == 1) {
+-				HAL_INFO (("ignoring device requested by DM udev rules"));
+-				goto invalid;
+-			}
++	action = udev_device_get_action(device);
++
++	copy_dev_prop_formatted(device, "/sys%s", hotplug_event->sysfs.sysfs_path, sizeof(hotplug_event->sysfs.sysfs_path), "DEVPATH");
++	copy_dev_prop(device, hotplug_event->sysfs.subsystem, sizeof(hotplug_event->sysfs.subsystem), "SUBSYSTEM");
++	copy_dev_prop(device, hotplug_event->sysfs.device_file, sizeof(hotplug_event->sysfs.device_file), "DEVNAME");
++
++	hotplug_event->sysfs.seqnum = get_ll_dev_prop(device, "SEQNUM");
++	hotplug_event->sysfs.net_ifindex = get_ll_dev_prop(device, "IFINDEX");
++
++	copy_dev_prop_formatted(device, "/sys%s", hotplug_event->sysfs.sysfs_path_old, sizeof(hotplug_event->sysfs.sysfs_path_old), "DEVPATH_OLD");
++	copy_dev_prop(device, hotplug_event->sysfs.vendor, sizeof(hotplug_event->sysfs.vendor), "ID_VENDOR");
++	copy_dev_prop(device, hotplug_event->sysfs.model, sizeof(hotplug_event->sysfs.model), "ID_MODEL");
++	copy_dev_prop(device, hotplug_event->sysfs.revision, sizeof(hotplug_event->sysfs.revision), "ID_REVISION");
++	copy_dev_prop(device, hotplug_event->sysfs.serial, sizeof(hotplug_event->sysfs.serial), "ID_SERIAL");
++	copy_dev_prop(device, hotplug_event->sysfs.fsusage, sizeof(hotplug_event->sysfs.fsusage), "ID_FS_USAGE");
++	copy_dev_prop(device, hotplug_event->sysfs.fstype, sizeof(hotplug_event->sysfs.fstype), "ID_FS_TYPE");
++	copy_dev_prop(device, hotplug_event->sysfs.fsversion, sizeof(hotplug_event->sysfs.fsversion), "ID_FS_VERSION");
++	copy_dev_prop(device, hotplug_event->sysfs.fsuuid, sizeof(hotplug_event->sysfs.fsuuid), "ID_FS_UUID");
++	copy_dev_prop(device, hotplug_event->sysfs.fslabel, sizeof(hotplug_event->sysfs.fslabel), "ID_FS_LABEL_ENC");
++
++    /* md devices are handled via looking at /proc/mdstat */
++    if (g_str_has_prefix (hotplug_event->sysfs.sysfs_path, "/sys/block/md")) {
++        HAL_INFO (("skipping md event for %s", hotplug_event->sysfs.sysfs_path));
++        goto invalid;
++    }
++    if (g_str_has_prefix (hotplug_event->sysfs.sysfs_path_old, "/sys/block/md")) {
++        HAL_INFO (("skipping md event for %s", hotplug_event->sysfs.sysfs_path_old));
++        goto invalid;
++    }
++
++	if(hotplug_event->sysfs.fslabel != NULL) {
++		tmp = g_malloc(sizeof(hotplug_event->sysfs.fslabel));
++		hal_util_decode_escape (hotplug_event->sysfs.fslabel, tmp, sizeof(hotplug_event->sysfs.fslabel));
++		if ((tmp1 = hal_util_strdup_valid_utf8(tmp)) != NULL ) {
++			g_strlcpy (hotplug_event->sysfs.fslabel, tmp1, sizeof(hotplug_event->sysfs.fslabel));
++			g_free (tmp1);
+ 		}
++		g_free(tmp);
+ 	}
+ 
+ 	if (!action) {
+@@ -291,6 +231,7 @@
+ 	g_slice_free (HotplugEvent, hotplug_event);
+ 
+ out:
++    udev_device_unref(device);
+ 	return TRUE;
+ }
+ 
+@@ -406,9 +347,9 @@
+ void
+ osspec_init (void)
+ {
++	struct udev * udev;
++	struct udev_monitor * udev_monitor;
+ 	int udev_socket;
+-	struct sockaddr_un saddr;
+-	socklen_t addrlen;
+ 	const int on = 1;
+ 	GIOChannel *udev_channel;
+ 	GIOChannel *mounts_channel;
+@@ -419,28 +360,35 @@
+ 
+ 	hal_device_store_index_property (hald_get_gdl (), "linux.sysfs_path");
+ 
+-	memset(&saddr, 0x00, sizeof(saddr));
+-	saddr.sun_family = AF_LOCAL;
+-	/* use abstract namespace for socket path */
+-	strcpy(&saddr.sun_path[1], "/org/freedesktop/hal/udev_event");
+-	addrlen = offsetof(struct sockaddr_un, sun_path) + strlen(saddr.sun_path+1) + 1;
++	udev = udev_new();
++
++	if(!udev) {
++		DIE (("Could not create udev"));
++	}
++
++	udev_monitor = udev_monitor_new_from_netlink(udev, "udev");
++
++	if(!udev_monitor || udev_monitor_enable_receiving(udev_monitor)) {
++		DIE (("Could not create udev monitor"));
++	}
++
++	udev_socket = udev_monitor_get_fd(udev_monitor);
+ 
+-	udev_socket = socket(AF_LOCAL, SOCK_DGRAM, 0);
+ 	if (udev_socket == -1) {
+ 		DIE (("Couldn't open socket"));
+ 	}
+ 
+-	if (bind(udev_socket, (struct sockaddr *) &saddr, addrlen) < 0) {
+-		fprintf (stderr, "Error binding udev_event socket: %s\n", strerror(errno));
+-		exit (1);
+-	}
+ 	/* enable receiving of the sender credentials */
+ 	setsockopt(udev_socket, SOL_SOCKET, SO_PASSCRED, &on, sizeof(on));
+ 
+ 	udev_channel = g_io_channel_unix_new (udev_socket);
+-	g_io_add_watch (udev_channel, G_IO_IN, hald_udev_data, NULL);
++	g_io_add_watch (udev_channel, G_IO_IN, hald_udev_data, udev_monitor);
+ 	g_io_channel_unref (udev_channel);
+ 
++	/*udev_monitor_unref(udev_monitor);
++	udev_unref(udev);*/
++
++
+ 	/* watch /proc/mounts for mount tree changes
+ 	 * kernel 2.6.15 vfs throws a POLLERR event for every change
+ 	 */diff -ru hal-0.5.14/hald/Makefile.am hal-libudev-events/hald/Makefile.am
+--- hal-0.5.14/hald/Makefile.am	2012-06-17 17:05:38.346983427 -0700
++++ hal-libudev-events/hald/Makefile.am	2012-06-17 12:41:57.566628300 -0700
+@@ -74,7 +74,7 @@
+ hald_SOURCES += ck-tracker.h ck-tracker.c
+ endif
+ 
+-hald_LDADD = @GLIB_LIBS@ @DBUS_LIBS@ @POLKIT_LIBS@ -lm @HALD_OS_LIBS@ $(top_builddir)/hald/$(HALD_BACKEND)/libhald_$(HALD_BACKEND).la
++hald_LDADD = @GLIB_LIBS@ @DBUS_LIBS@ @POLKIT_LIBS@ -lm @HALD_OS_LIBS@ $(top_builddir)/hald/$(HALD_BACKEND)/libhald_$(HALD_BACKEND).la @UDEV_LIBS@
+ 
+ #### Init scripts fun
+ SCRIPT_IN_FILES=haldaemon.in

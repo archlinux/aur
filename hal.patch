@@ -1,0 +1,603 @@
+diff -u -r hal-0.5.14/configure.in src/hal-0.5.14/configure.in
+--- hal-0.5.14/configure.in	2009-08-24 14:42:29.000000000 +0200
++++ src/hal-0.5.14/configure.in	2011-12-19 20:39:54.000000000 +0100
+@@ -479,9 +479,6 @@
+ fi 
+ AM_CONDITIONAL([HAVE_LIBPCI], [test "x$USE_LIBPCI" = "xyes"])
+ 
+-USE_LIBUSB20=no
+-USE_LIBUSB=no
+-LIBUSB20_LIBS=""
+ AC_ARG_WITH([backend],
+ 	    AS_HELP_STRING([--with-backend=<name>],
+ 	                   [backend to use (linux/solaris/freebsd/dummy)]),
+@@ -510,21 +507,25 @@
+ AM_CONDITIONAL(HALD_COMPILE_SOLARIS, [test x$HALD_BACKEND = xsolaris], [Compiling for Solaris])
+ AC_SUBST(HALD_BACKEND)
+ if test "x$HALD_BACKEND" = "xfreebsd"; then
+-    AC_CHECK_LIB([usb20], [libusb20_dev_get_info], [USE_LIBUSB20=yes], [USE_LIBUSB20=no])
+-fi
+-if test "x$USE_LIBUSB20" = "xno"; then
+-    AC_CHECK_LIB([usb], [libusb20_dev_get_info], [USE_LIBUSB=yes], [USE_LIBUSB=no])
+-fi
+-AM_CONDITIONAL([HAVE_LIBUSB20],[test "x$USE_LIBUSB20" = "xyes"])
+-AM_CONDITIONAL([HAVE_LIBUSB20],[test "x$USE_LIBUSB" = "xyes"])
+-if test "x$USE_LIBUSB20" = "xyes"; then
+-    AC_DEFINE(HAVE_LIBUSB20, 1, [Set if we need libusb20])
+-    LIBUSB20_LIBS="-lusb20"
+-elif test "x$USE_LIBUSB" = "xyes"; then
+-    AC_DEFINE(HAVE_LIBUSB20, 1, [Set if we need libsub20])
+-    LIBUSB20_LIBS="-lusb"
++    USE_BSDLIBUSB20=no
++    USE_BSDLIBUSB=no
++    LIBUSB20_LIBS=""
++    AC_CHECK_LIB([usb20], [libusb20_dev_get_info], [USE_BSDLIBUSB20=yes], [USE_BSDLIBUSB20=no])
++    if test "x$USE_BSDLIBUSB20" = "xno"; then
++        AC_CHECK_LIB([usb], [libusb20_dev_get_info], [USE_BSDLIBUSB=yes], [USE_BSDLIBUSB=no])
++    fi
++    AM_CONDITIONAL([HAVE_LIBUSB20],[test "x$USE_BSDLIBUSB20" = "xyes" -o "x$USE_BSDLIBUSB" = "xyes"])
++    if test "x$USE_BSDLIBUSB20" = "xyes"; then
++        AC_DEFINE(HAVE_LIBUSB20, 1, [Set if we need libusb20])
++        LIBUSB20_LIBS="-lusb20"
++    elif test "x$USE_BSDLIBUSB" = "xyes"; then
++        AC_DEFINE(HAVE_LIBUSB20, 1, [Set if we need libsub20])
++        LIBUSB20_LIBS="-lusb"
++    fi
++    AC_SUBST(LIBUSB20_LIBS)
++else
++    AM_CONDITIONAL([HAVE_LIBUSB20], [false])
+ fi
+-AC_SUBST(LIBUSB20_LIBS)
+ 
+ dnl DBUS API is subject to changes
+ AC_DEFINE_UNQUOTED(DBUS_API_SUBJECT_TO_CHANGE, [], [DBUS API is subject to change])
+diff -u -r hal-0.5.14/fdi/policy/10osvendor/10-x11-input.fdi src/hal-0.5.14/fdi/policy/10osvendor/10-x11-input.fdi
+--- hal-0.5.14/fdi/policy/10osvendor/10-x11-input.fdi	2009-06-26 09:28:39.000000000 +0200
++++ src/hal-0.5.14/fdi/policy/10osvendor/10-x11-input.fdi	2011-12-19 20:39:54.000000000 +0100
+@@ -2,6 +2,12 @@
+ <deviceinfo version="0.2">
+   <device>
+ 
++    <!-- This KVMS has abs x/y and buttons. It only has inputInfo.joystick
++         set by hal and doesn't get picked up by default -->
++    <match key="input.product" contains="American Megatrends Inc. Virtual Keyboard and Mouse">
++       <merge key="input.x11_driver" type="string">evdev</merge>
++    </match>
++
+     <!-- KVM emulates a USB graphics tablet which works in absolute coordinate mode -->
+     <match key="input.product" contains="QEMU USB Tablet">
+        <merge key="input.x11_driver" type="string">evdev</merge>
+@@ -16,6 +22,14 @@
+       </match>
+     </match>
+ 
++    <match key="info.capabilities" contains="input.touchpad">
++      <merge key="input.x11_driver" type="string">mouse</merge>
++      <match key="/org/freedesktop/Hal/devices/computer:system.kernel.name"
++             string="Linux">
++        <merge key="input.x11_driver" type="string">evdev</merge>
++      </match>
++    </match>
++
+     <match key="info.capabilities" contains="input.tablet">
+       <match key="/org/freedesktop/Hal/devices/computer:system.kernel.name"
+              string="Linux">
+@@ -32,5 +46,18 @@
+         <merge key="input.x11_driver" type="string">evdev</merge>
+       </match>
+     </match>
++
++    <!-- http://bugs.freedesktop.org/show_bug.cgi?id=22442 
++         Posts accel data through ABS_X/ABS_Y, makes X unusable -->
++    <match key="info.product" contains="ThinkPad HDAPS accelerometer data">
++        <remove key="input.x11_driver" />
++    </match>
++
++    <!-- https://bugzilla.redhat.com/show_bug.cgi?id=523914
++         Mouse does not move in PV Xen guest -->
++    <match key="info.product" contains="Xen Virtual Pointer">
++      <merge key="input.x11_options.IgnoreAbsoluteAxes" type="string">false</merge>
++      <merge key="input.x11_options.IgnoreRelativeAxes" type="string">false</merge>
++    </match>
+   </device>
+ </deviceinfo>
+diff -u -r hal-0.5.14/fdi/policy/10osvendor/20-storage-methods.fdi src/hal-0.5.14/fdi/policy/10osvendor/20-storage-methods.fdi
+--- hal-0.5.14/fdi/policy/10osvendor/20-storage-methods.fdi	2009-11-05 15:09:01.000000000 +0100
++++ src/hal-0.5.14/fdi/policy/10osvendor/20-storage-methods.fdi	2011-12-19 20:39:54.000000000 +0100
+@@ -99,6 +99,11 @@
+         </match>
+       </match>
+ 
++      <!-- Hide partitions marked as Compaq Diagnostics -->
++      <match key="volume.partition.type" string="0x12">
++        <merge key="volume.ignore" type="bool">true</merge>
++      </match>
++
+       <!-- EFI firmware partitions -->
+       <match key="volume.fstype" string="vfat">
+ 	<match key="volume.label" string="EFI">
+diff -u -r hal-0.5.14/hal.conf.in src/hal-0.5.14/hal.conf.in
+--- hal-0.5.14/hal.conf.in	2009-02-04 23:07:23.000000000 +0100
++++ src/hal-0.5.14/hal.conf.in	2011-12-19 20:39:54.000000000 +0100
+@@ -25,7 +25,41 @@
+            send_interface="org.freedesktop.Hal.Device"/>
+     <allow send_destination="org.freedesktop.Hal"
+            send_interface="org.freedesktop.Hal.Manager"/>
++  </policy>
+ 
++  <!-- Only allow users at the local console to manipulate devices -->
++  <policy at_console="true">
++    <allow send_destination="org.freedesktop.Hal"
++           send_interface="org.freedesktop.Hal.Device.CPUFreq"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.DockStation"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.KillSwitch"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.KeyboardBacklight"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.LaptopPanel"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.Leds"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.LightSensor"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.Storage"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.Storage.Removable"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.SystemPowerManagement"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.Volume"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.Volume.Crypto"/>
++    <allow send_destination="org.freedesktop.Hal"
++    	   send_interface="org.freedesktop.Hal.Device.WakeOnLan"/>
++
++  </policy>
++
++  <!-- well,...and root too -->
++  <policy user="root">
+     <allow send_destination="org.freedesktop.Hal"
+            send_interface="org.freedesktop.Hal.Device.CPUFreq"/>
+     <allow send_destination="org.freedesktop.Hal"
+diff -u -r hal-0.5.14/hald/linux/addons/addon-imac-backlight.c src/hal-0.5.14/hald/linux/addons/addon-imac-backlight.c
+--- hal-0.5.14/hald/linux/addons/addon-imac-backlight.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/addons/addon-imac-backlight.c	2011-12-19 20:39:54.000000000 +0100
+@@ -158,7 +158,8 @@
+ 		goto out;
+ 	}
+ 
+-	if (ioperm(0xB2, 0xB3, 1) < 0)
++	/* Allow access to ports 0xB2 and 0xB3 */
++	if (ioperm(0xB2, 2, 1) < 0)
+ 	{
+ 		HAL_ERROR (("ioperm failed (you should be root)."));
+ 		exit(1);
+diff -u -r hal-0.5.14/hald/linux/addons/addon-macbookpro-backlight.c src/hal-0.5.14/hald/linux/addons/addon-macbookpro-backlight.c
+--- hal-0.5.14/hald/linux/addons/addon-macbookpro-backlight.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/addons/addon-macbookpro-backlight.c	2011-12-19 20:39:54.000000000 +0100
+@@ -507,7 +507,8 @@
+  	state = INREG(0x7ae4);
+  	OUTREG(0x7ae4, state);
+ 
+-	if (ioperm (0x300, 0x304, 1) < 0) {
++	/* Allow access to porta 0x300 through 0x304 */
++	if (ioperm (0x300, 5, 1) < 0) {
+ 		HAL_ERROR (("ioperm failed (you should be root)."));
+ 		exit(1);
+ 	}
+diff -u -r hal-0.5.14/hald/linux/osspec.c src/hal-0.5.14/hald/linux/osspec.c
+--- hal-0.5.14/hald/linux/osspec.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/osspec.c	2011-12-19 20:39:54.000000000 +0100
+@@ -215,6 +215,11 @@
+ 				g_free (str);
+ 			}
+ 			g_free (dstr);
++		} else if (strncmp(key, "DM_UDEV_DISABLE_OTHER_RULES_FLAG=", 33) == 0) {
++			if (strtoul(&key[33], NULL, 10) == 1) {
++				HAL_INFO (("ignoring device requested by DM udev rules"));
++				goto invalid;
++			}
+ 		}
+ 	}
+ 
+diff -u -r hal-0.5.14/hald/linux/probing/probe-hiddev.c src/hal-0.5.14/hald/linux/probing/probe-hiddev.c
+--- hal-0.5.14/hald/linux/probing/probe-hiddev.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-hiddev.c	2011-12-19 20:39:54.000000000 +0100
+@@ -57,11 +57,12 @@
+ 	/* assume failure */
+ 	ret = 1;
+ 
++	dbus_error_init (&error);
++
+ 	udi = getenv ("UDI");
+ 	if (udi == NULL)
+ 		goto out;
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL)
+ 		goto out;
+ 
+diff -u -r hal-0.5.14/hald/linux/probing/probe-ieee1394-unit.c src/hal-0.5.14/hald/linux/probing/probe-ieee1394-unit.c
+--- hal-0.5.14/hald/linux/probing/probe-ieee1394-unit.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-ieee1394-unit.c	2011-12-19 20:39:54.000000000 +0100
+@@ -388,6 +388,8 @@
+ 
+ 	setup_logger ();
+ 
++	dbus_error_init (&error);
++
+ 	udi = getenv ("UDI");
+ 	if (udi == NULL)
+ 		goto out;
+@@ -396,7 +398,6 @@
+ 	if (ieee1394_udi == NULL)
+ 		goto out;
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL)
+ 		goto out;
+ 
+diff -u -r hal-0.5.14/hald/linux/probing/probe-input.c src/hal-0.5.14/hald/linux/probing/probe-input.c
+--- hal-0.5.14/hald/linux/probing/probe-input.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-input.c	2011-12-19 20:39:54.000000000 +0100
+@@ -70,6 +70,7 @@
+ 	fd = -1;
+ 
+ 	setup_logger ();
++	dbus_error_init (&error);
+ 
+ 	button_type = getenv ("HAL_PROP_BUTTON_TYPE");
+ 	if (button_type == NULL)
+@@ -96,7 +97,6 @@
+ 	if (udi == NULL)
+ 		goto out;
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL)
+ 		goto out;
+ 
+diff -u -r hal-0.5.14/hald/linux/probing/probe-net-bluetooth.c src/hal-0.5.14/hald/linux/probing/probe-net-bluetooth.c
+--- hal-0.5.14/hald/linux/probing/probe-net-bluetooth.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-net-bluetooth.c	2011-12-19 20:39:54.000000000 +0100
+@@ -141,6 +141,8 @@
+ 	DBusMessage *reply = NULL;
+ 	DBusError error;
+ 
++	dbus_error_init (&error);
++
+ 	udi = getenv ("UDI");
+ 	if (udi == NULL)
+ 		goto out;
+@@ -151,8 +153,6 @@
+ 
+ 	HAL_INFO (("Investigating '%s'", iface));
+ 
+-	dbus_error_init (&error);
+-
+ 	if ((conn = dbus_bus_get (DBUS_BUS_SYSTEM, &error)) == NULL)
+ 		goto out;
+ 
+diff -u -r hal-0.5.14/hald/linux/probing/probe-printer.c src/hal-0.5.14/hald/linux/probing/probe-printer.c
+--- hal-0.5.14/hald/linux/probing/probe-printer.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-printer.c	2011-12-19 20:39:54.000000000 +0100
+@@ -66,6 +66,8 @@
+ 	ret = 1;
+ 
+ 	setup_logger ();
++
++	dbus_error_init (&error);
+ 	
+ 	udi = getenv ("UDI");
+ 	if (udi == NULL) {
+@@ -73,7 +75,6 @@
+ 		goto out;
+ 	}
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL) {
+ 		HAL_ERROR (("ctx init failed"));
+ 		goto out;
+diff -u -r hal-0.5.14/hald/linux/probing/probe-smbios.c src/hal-0.5.14/hald/linux/probing/probe-smbios.c
+--- hal-0.5.14/hald/linux/probing/probe-smbios.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-smbios.c	2011-12-19 20:39:54.000000000 +0100
+@@ -129,6 +129,8 @@
+ 	ret = 1;
+ 
+ 	setup_logger ();
++
++	dbus_error_init (&error);
+ 	
+ 	udi = getenv ("UDI");
+ 	if (udi == NULL) {
+@@ -136,7 +138,6 @@
+ 		goto out;
+ 	}
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL) {
+ 		HAL_ERROR (("ctx init failed"));
+ 		goto out;
+diff -u -r hal-0.5.14/hald/linux/probing/probe-storage.c src/hal-0.5.14/hald/linux/probing/probe-storage.c
+--- hal-0.5.14/hald/linux/probing/probe-storage.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-storage.c	2011-12-19 20:39:54.000000000 +0100
+@@ -109,6 +109,8 @@
+ 	/* assume failure */
+ 	ret = 1;
+ 
++	dbus_error_init (&error);
++
+ 	if ((udi = getenv ("UDI")) == NULL)
+ 		goto out;
+ 	if ((device_file = getenv ("HAL_PROP_BLOCK_DEVICE")) == NULL)
+@@ -127,7 +129,6 @@
+ 	else
+ 		only_check_for_fs = FALSE;
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL)
+ 		goto out;
+ 
+diff -u -r hal-0.5.14/hald/linux/probing/probe-video4linux.c src/hal-0.5.14/hald/linux/probing/probe-video4linux.c
+--- hal-0.5.14/hald/linux/probing/probe-video4linux.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-video4linux.c	2011-12-19 20:44:20.000000000 +0100
+@@ -30,7 +30,7 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/ioctl.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <linux/videodev2.h>
+ #include <errno.h>
+ #include <fcntl.h>
+@@ -58,6 +58,8 @@
+ 
+ 	setup_logger ();
+ 
++	dbus_error_init (&error);
++
+ 	device_file = getenv ("HAL_PROP_VIDEO4LINUX_DEVICE");
+ 	if (device_file == NULL)
+ 		goto out;
+@@ -66,7 +68,6 @@
+ 	if (udi == NULL)
+ 		goto out;
+ 
+-	dbus_error_init (&error);
+ 	ctx = libhal_ctx_init_direct (&error);
+ 	if (ctx == NULL)
+ 		goto out;
+diff -u -r hal-0.5.14/hald/linux/probing/probe-volume.c src/hal-0.5.14/hald/linux/probing/probe-volume.c
+--- hal-0.5.14/hald/linux/probing/probe-volume.c	2009-08-24 14:42:30.000000000 +0200
++++ src/hal-0.5.14/hald/linux/probing/probe-volume.c	2011-12-19 20:39:54.000000000 +0100
+@@ -318,6 +318,8 @@
+ 	/* assume failure */
+ 	ret = 1;
+ 
++	dbus_error_init (&error);
++
+ 	if ((udi = getenv ("UDI")) == NULL)
+ 		goto out;
+ 	if ((device_file = getenv ("HAL_PROP_BLOCK_DEVICE")) == NULL)
+@@ -346,7 +348,6 @@
+ 
+ 	fsusage = getenv ("HAL_PROP_VOLUME_FSUSAGE");
+ 
+-	dbus_error_init (&error);
+ 	if ((ctx = libhal_ctx_init_direct (&error)) == NULL)
+ 		goto out;
+ 
+diff -u -r hal-0.5.14/hald/util.h src/hal-0.5.14/hald/util.h
+--- hal-0.5.14/hald/util.h	2009-04-03 16:31:34.000000000 +0200
++++ src/hal-0.5.14/hald/util.h	2011-12-19 20:39:54.000000000 +0100
+@@ -38,7 +38,7 @@
+ #endif
+ 
+ #define HAL_NAME_MAX 256
+-#define HAL_PATH_MAX 512
++#define HAL_PATH_MAX 4096
+ 
+ gboolean hal_util_remove_trailing_slash (gchar *path);
+ 
+diff -u -r hal-0.5.14/tools/linux/hal-system-killswitch-get-power-linux src/hal-0.5.14/tools/linux/hal-system-killswitch-get-power-linux
+--- hal-0.5.14/tools/linux/hal-system-killswitch-get-power-linux	2008-11-10 11:14:12.000000000 +0100
++++ src/hal-0.5.14/tools/linux/hal-system-killswitch-get-power-linux	2011-12-19 20:39:54.000000000 +0100
+@@ -8,11 +8,6 @@
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ 
+-DELL_WCTL=/usr/bin/dellWirelessCtl
+-if [ -x "/usr/sbin/dellWirelessCtl" ]; then
+-  DELL_WCTL=/usr/sbin/dellWirelessCtl
+-fi
+-
+ if [ "$HAL_PROP_KILLSWITCH_TYPE" = "bluetooth" ]; then
+     if [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "sonypic" ]; then
+ 	value="`hal-system-sonypic getbluetooth`"
+@@ -22,25 +17,6 @@
+ 	    exit 1
+ 	fi
+ 	exit ${value}
+-    elif [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "dell" ]; then
+-	if [ -x "$DELL_WCTL" ]; then
+-	    # TODO: write our own binary that links with libsmbios?
+-	    $DELL_WCTL --st_bt
+-	    value=$?
+-	    if [ "$value" = "0" ]; then
+-	        exit 1
+-	    elif [ "$value" = "1" ]; then
+-	        exit 0
+-	    else
+-	        echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	        echo "dellWirelessCtl returned $value" >&2
+-                exit 1
+-	    fi
+-        else
+-	    echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	    echo "dellWirelessCtl ($DELL_WCTL) not available or executable" >&2
+-	    exit 1
+-	fi
+     elif [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = thinkpad -a -r "$HAL_PROP_LINUX_SYSFS_PATH" ]; then
+ 	read value < $HAL_PROP_LINUX_SYSFS_PATH 2> /dev/null
+ 	if [ $? -eq 0 ]; then
+@@ -53,56 +29,6 @@
+     else
+ 	echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+ 	echo "Access type not supported" >&2
+-	exit 1
+-    fi
+-elif [ "$HAL_PROP_KILLSWITCH_TYPE" = "wlan" ]; then
+-    if [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "dell" ]; then
+-	if [ -x "$DELL_WCTL" ]; then
+- 	    # TODO: write our own binary that links with libsmbios?
+-	    $DELL_WCTL --st_wlan
+-	    value=$?
+-	    if [ "$value" = "0" ]; then
+-	        exit 1
+-	    elif [ "$value" = "1" ]; then
+-	        exit 0
+-	    else
+-	        echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	        echo "dellWirelessCtl returned $value" >&2
+-                exit 1
+-	    fi
+-	else 
+-	    echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	    echo "dellWirelessCtl ($DELL_WCTL) not available or executable" >&2
+-	    exit 1
+-	fi
+-    else
+-	echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	echo "Access type not supported" >&2
+-	exit 1
+-    fi
+-elif [ "$HAL_PROP_KILLSWITCH_TYPE" = "wwan" ]; then
+-    if [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "dell" ]; then
+-	if [ -x "$DELL_WCTL" ]; then
+-   	    # TODO: write our own binary that links with libsmbios?
+-	    $DELL_WCTL --st_wwan
+-	    value=$?
+-	    if [ "$value" = "0" ]; then
+-	        exit 1
+-	    elif [ "$value" = "1" ]; then
+-	        exit 0
+-	    else
+-	        echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	        echo "dellWirelessCtl returned $value" >&2
+-                exit 1
+-	    fi
+-	else 
+-	    echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	    echo "dellWirelessCtl ($DELL_WCTL) not available or executable" >&2
+-	    exit 1
+-	fi
+-    else
+-	echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	echo "Access type not supported" >&2
+ 	exit 1
+     fi
+ else
+diff -u -r hal-0.5.14/tools/linux/hal-system-killswitch-set-power-linux src/hal-0.5.14/tools/linux/hal-system-killswitch-set-power-linux
+--- hal-0.5.14/tools/linux/hal-system-killswitch-set-power-linux	2008-11-10 11:14:12.000000000 +0100
++++ src/hal-0.5.14/tools/linux/hal-system-killswitch-set-power-linux	2011-12-19 20:39:54.000000000 +0100
+@@ -8,11 +8,6 @@
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ 
+-DELL_WCTL=/usr/bin/dellWirelessCtl
+-if [ -x "/usr/sbin/dellWirelessCtl" ]; then
+-    DELL_WCTL=/usr/sbin/dellWirelessCtl
+-fi
+-
+ if [ "$HAL_PROP_KILLSWITCH_TYPE" = "bluetooth" ]; then
+     if [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "sonypic" ]; then
+ 	hal-system-sonypic setbluetooth $value
+@@ -23,26 +18,6 @@
+ 	    exit 1
+ 	fi
+ 	exit 0
+-    elif [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "dell" ]; then
+-	if [ -x "$DELL_WCTL" ]; then
+-	    # TODO: write our own binary that links with libsmbios?
+-	    if [ "$value" = "true" ]; then
+-	        $DELL_WCTL --bt 1
+-	        ret=$?
+-	    else
+-	        $DELL_WCTL --bt 0
+-	        ret=$?
+-	    fi
+-	    if [ "$ret" != "0" ]; then
+-	        echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	        echo "dellWirelessCtl returned $ret" >&2
+-	        exit 1
+-	    fi
+-        else
+-            echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-            echo "dellWirelessCtl ($DELL_WCTL) not available or executable" >&2
+-            exit 1
+-        fi
+     elif [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = thinkpad -a -w "$HAL_PROP_LINUX_SYSFS_PATH" ]; then
+         if [ "$value" = "true" ]; then 
+ 	    bit=1; 
+@@ -59,60 +34,6 @@
+     else
+ 	echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+ 	echo "Access type not supported" >&2
+-	exit 1
+-    fi
+-elif [ "$HAL_PROP_KILLSWITCH_TYPE" = "wlan" ]; then
+-    if [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "dell" ]; then
+-	if [ -x "$DELL_WCTL" ]; then
+-	    # As a side effect we disable the physical kill switch
+-	    # TODO: write our own binary that links with libsmbios?
+-	    if [ "$value" = "true" ]; then
+-	        $DELL_WCTL --sw_wlan 0 --wlan 1
+-	        ret=$?
+-	    else
+-	        $DELL_WCTL --sw_wlan 0 --wlan 0
+-	        ret=$?
+-	    fi
+-	    if [ "$ret" != "0" ]; then
+-	        echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	        echo "dellWirelessCtl returned $ret" >&2
+-                exit 1
+-	    fi
+-        else
+-            echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-            echo "dellWirelessCtl ($DELL_WCTL) not available or executable" >&2
+-            exit 1
+-        fi
+-    else
+-	echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	echo "Access type not supported" >&2
+-	exit 1
+-    fi
+-elif [ "$HAL_PROP_KILLSWITCH_TYPE" = "wwan" ]; then
+-    if [ "$HAL_PROP_KILLSWITCH_ACCESS_METHOD" = "dell" ]; then 
+-	if [ -x "$DELL_WCTL" ]; then
+-	    # As a side effect we disable the physical kill switch
+-	    # TODO: write our own binary that links with libsmbios?
+-	    if [ "$value" = "true" ]; then
+-	        $DELL_WCTL --sw_wwan 0 --wwan 1
+-	        ret=$?
+-	    else
+-	        $DELL_WCTL --sw_wwan 0 --wwan 0
+-	        ret=$?
+-	    fi
+-	    if [ "$ret" != "0" ]; then
+-	        echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	        echo "dellWirelessCtl returned $ret" >&2
+-                exit 1
+-	    fi
+-        else
+-            echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-            echo "dellWirelessCtl ($DELL_WCTL) not available or executable" >&2
+-            exit 1
+-        fi
+-    else
+-	echo "org.freedesktop.Hal.Device.KillSwitch.NotSupported" >&2
+-	echo "Access type not supported" >&2
+ 	exit 1
+     fi
+ else

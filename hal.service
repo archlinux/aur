@@ -1,0 +1,14 @@
+[Unit]
+Description=Hardware Abstraction Layer
+Requires=dbus.service
+Wants=acpid.service
+After=dbus.service syslog.target acpid.service
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.Hal
+ExecStart=/usr/sbin/hald --daemon=no --use-syslog
+
+[Install]
+WantedBy=multi-user.target
+Alias=dbus-org.freedesktop.Hal.service
