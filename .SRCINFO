@@ -1,6 +1,6 @@
 pkgbase = konfig
 	pkgdesc = Manager for Linn DS players on the network
-	pkgver = 4.18.220
+	pkgver = 4.19.292
 	pkgrel = 1
 	url = http://oss.linn.co.uk/trac/wiki/Konfig
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = konfig
 	depends = webkit-sharp
 	source = http://oss.linn.co.uk/Releases/Konfig/Davaar/konfig_latest_amd64.deb
 	source = konfig.patch
-	md5sums = 86e6d1a8187762103d792e973a315c8e
+	md5sums = 38948c43da374e938a629e5c93861105
 	md5sums = 6c2f77714aad71c1a4475dea46463161
 
 pkgname = konfig

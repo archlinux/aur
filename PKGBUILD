@@ -1,6 +1,6 @@
 # Maintainer: Tristelune  <tristelune at archlinux dot info>
 pkgname=konfig
-pkgver=4.18.220
+pkgver=4.19.292
 pkgrel=1
 pkgdesc="Manager for Linn DS players on the network"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('mono' 'gtk-sharp-2' 'webkit-sharp')
 source=("http://oss.linn.co.uk/Releases/Konfig/Davaar/${pkgname}_latest_amd64.deb"
 		'konfig.patch')
-md5sums=('86e6d1a8187762103d792e973a315c8e'
+md5sums=('38948c43da374e938a629e5c93861105'
          '6c2f77714aad71c1a4475dea46463161')
 
 build() {
