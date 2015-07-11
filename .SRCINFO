@@ -1,0 +1,17 @@
+pkgbase = docker-registry
+	pkgdesc = An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/docker/distribution
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	backup = etc//config.yml
+	source = https://github.com/docker/distribution/archive/v2.0.1.tar.gz
+	source = docker-registry.service
+	sha256sums = 1664584c311dac98a8b09880d5c79ffceea7a4e0f2359be70c6a9a6ddd9d804a
+	sha256sums = 32b4e0586cbcc24c6a262b7302ea568580261664ca7b41779358680bc790be7e
+
+pkgname = docker-registry
+

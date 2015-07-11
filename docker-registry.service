@@ -1,0 +1,9 @@
+[Unit]
+Description=Docker Registry 2.0
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/docker-registry /etc/docker-registry/config.yml
+
+[Install]
+WantedBy=multi-user.target
