@@ -1,7 +1,7 @@
 pkgbase = hal-info
 	pkgdesc = Hardware Abstraction Layer information files
 	pkgver = 0.20091130
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freedesktop.org/wiki/Software/hal
 	arch = any
 	license = GPL
