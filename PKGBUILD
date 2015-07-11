@@ -13,9 +13,11 @@ provides=('openrct2')
 options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
+        'orctlibs.zip::https://download.openrct2.website/dev/lib/mingw'
         'openrct2'
         'openrct2.desktop')
 md5sums=('SKIP'
+         'ca0766feab75b9adfea8f8b85f8e83ac'
          'b750eaf997a27e981232b21a68fa868e'
          '035a407b940492c584c72f4f59f1bd69')
 

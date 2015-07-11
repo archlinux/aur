@@ -6,6 +6,7 @@
 /src
 /pkg
 /openrct2-git
+/orctlibs.zip
 *.tar.xz
 *.tar.xz.sig
 *.src.tar.gz
