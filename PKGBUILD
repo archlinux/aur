@@ -49,9 +49,6 @@ _BFQ_enable_=
 _enable_uksm=
 _uksmvernel="0.1.2.3"
 
-# Enable haswell performance patch introduced with linux 4.0 by LunarG
-_haswell_performance_enable=
-
 # Enable libata patch in order to reduce power consumption on haswell and broadwell systems (Matthew Garrett)
 _libata_enable=
 
@@ -60,7 +57,7 @@ _libata_enable=
 pkgname=(linux-lts318-ck linux-lts318-ck-headers)
 _kernelname=-lts318-ck
 _srcname=linux-3.18
-pkgver=3.18.17
+pkgver=3.18.18
 pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,7 +84,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8'
+            'bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e'
             'SKIP'
             'e603c2752c160c124ae54dba8a4a9820d86912e5685b3bf6cd99705d7b147552'
             '7ea49a31d2e0391c78588f07a8f0e0262535f5981b22d6a7fe0c1697f9dda282'
@@ -102,10 +99,6 @@ sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
 if [ -n "$_enable_uksm" ]; then
 	source+=("http://kerneldedup.org/download/uksm/${_uksmvernel}/uksm-${_uksmvernel}-for-v3.18.patch")
 	sha256sums+=('8f810dd873e37d6144f70b440880f4fac9fb0f58bf0486bb6e873e38a74c010f')
-fi
-if [ -n "_haswell_performance_enable" ]; then
-	source+=("haswell-performance.patch::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/patch/?id=944115934436b1ff6cf773a9e9123858ea9ef3da")
-	sha256sums+=('89471fa9d8671c031f96b15b29c7a3b9f7d82171ab97b29a29638b1c8a052cff')
 fi
 if [ -n "-_libata_enable" ]; then
 	source+=("libata001.patch"
@@ -150,11 +143,6 @@ prepare() {
 	if [ -n "$_enable_uksm" ]; then
 		msg "Patching source with UKSM patch"
 		patch -Np1 -i "${srcdir}/uksm-${_uksmvernel}-for-v3.18.patch"
-	fi
-	
-	if [ -n "$_haswell_performance_enable" ]; then
-		msg "Patching source with haswell performance patch by LunarG"
-		patch -Np1 -i ${srcdir}/haswell-performance.patch
 	fi
         
 	if [ -n "$_libata_enable" ]; then

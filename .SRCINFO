@@ -1,5 +1,5 @@
 pkgbase = linux-lts318-ck
-	pkgver = 3.18.17
+	pkgver = 3.18.18
 	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-lts318-ck
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.17.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.17.sign
+	source = http://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.18.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.18.sign
 	source = http://ck.kolivas.org/patches/3.0/3.18/3.18-ck1/patch-3.18-ck1.bz2
 	source = http://ck.kolivas.org/patches/bfs/3.0/3.18/pending/bfs460-locked-pluggedio.patch
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
@@ -23,13 +23,12 @@ pkgbase = linux-lts318-ck
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.18.0-v7r7/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.18.patch
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.18.0-v7r7/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.18.patch
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.18.0-v7r7/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.18.0.patch
-	source = haswell-performance.patch::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/patch/?id=944115934436b1ff6cf773a9e9123858ea9ef3da
 	source = libata001.patch
 	source = libata002.patch
 	source = libata003.patch
 	sha256sums = becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd
 	sha256sums = SKIP
-	sha256sums = 190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8
+	sha256sums = bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e
 	sha256sums = SKIP
 	sha256sums = e603c2752c160c124ae54dba8a4a9820d86912e5685b3bf6cd99705d7b147552
 	sha256sums = 7ea49a31d2e0391c78588f07a8f0e0262535f5981b22d6a7fe0c1697f9dda282
@@ -41,7 +40,6 @@ pkgbase = linux-lts318-ck
 	sha256sums = 75a43175fb6f289215669a7aff23a86459bcf966303a24b4013a42da53fad035
 	sha256sums = 68045bcff777bc175e9f17ba46e0a8b13450c4546c6c9db3d9b9e2ed31af812d
 	sha256sums = cda196f911af55f8c26e711040a66637aed03df9dfdc149aaf7fdbecf1bb19da
-	sha256sums = 89471fa9d8671c031f96b15b29c7a3b9f7d82171ab97b29a29638b1c8a052cff
 	sha256sums = 1fbed1c8355363636b8c492c42703ac32a28ca10ef82d150f2bdef20b27215a7
 	sha256sums = bbd16086fd0ffb23549f4256dff4d0452a007b89b150fcf080972a20ff1266c2
 	sha256sums = 58ac21cb7cae40b55928326fc267bf72988e190ed2193e438d5a494d5506c623
@@ -55,14 +53,14 @@ pkgname = linux-lts318-ck
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = nvidia-ck: nVidia drivers for linux-lts318-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-lts318-ck=3.18.17
+	provides = linux-lts318-ck=3.18.18
 	replaces = kernel26-ck
 	backup = etc/mkinitcpio.d/linux-lts318-ck.preset
 
 pkgname = linux-lts318-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts318-ck.
 	depends = linux-lts318-ck
-	provides = linux-lts318-ck-headers=3.18.17
-	provides = linux-headers=3.18.17
+	provides = linux-lts318-ck-headers=3.18.18
+	provides = linux-headers=3.18.18
 	replaces = kernel26-ck-headers
 
