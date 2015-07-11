@@ -11,15 +11,15 @@
 ## The build script generates and updates the pkgver and _kernel* variables.
 ##
 pkgname="spl-lts318-ck-git"
-pkgver=0.6.4.2_r0_g04974ca_3.18.17_2
+pkgver=0.6.4.2_r0_g04974ca_3.18.18_1
 pkgrel=1
 license=('GPL')
 
 # Used incase the i686 and x86_64 linux packages get out of sync with the
 # PKGREL. This occurred on January 31, 2014 where i686 was versioned at
 # 3.12.9-1 and x86_64 was versioned at 3.12.9-2.
-_kernel_version="3.18.17-2"
-_kernel_version_full="3.18.17-2"
+_kernel_version="3.18.18-1"
+_kernel_version_full="3.18.18-1"
 
 
 pkgdesc="Solaris Porting Layer kernel modules for linux-lts318-ck."
