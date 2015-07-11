@@ -5,17 +5,17 @@
 #pkgbase=python-lepl
 #pkgname=('python-lepl' 'python2-lepl')
 pkgname=python-lepl
-pkgver=5.0.0
+pkgver=5.1.3
 pkgrel=1
 arch=('any')
 url="http://www.acooke.org/lepl/index.html"
 license=('LGPL')
 #makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 makedepends=('python' 'python-setuptools')
-source=( http://lepl.googlecode.com/files/LEPL-${pkgver}.tar.gz
+source=( https://pypi.python.org/packages/source/L/LEPL/LEPL-$pkgver.tar.gz
 		'LGPL-3.0.txt'
 		'MPL-1.1.txt')
-md5sums=( 'c8b3eb755234b00c66ca0c912457d629'
+md5sums=( '5f653984c57ad8efad828c5153660743'
 		'e6a600fd5e1d9cbde2d983680233ad02'
 		'4fc87e887bb0ede396a78bd31155c5d6')
 
