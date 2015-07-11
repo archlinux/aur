@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=oxygen-git
-pkgver=r3958.4ee404b
+pkgver=r4003.bcf0fd7
 pkgrel=1
 pkgdesc='KDE Oxygen style'
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ license=(LGPL)
 depends=(frameworkintegration-git kdecoration-git kcmutils-git)
 makedepends=(extra-cmake-modules git kdoctools python)
 optdepends=("oxygen-kde4-git: Oxygen widget style for KDE4 applications")
-conflicts=(oxygen kdebase-workspace)
-provides=(oxygen)
+conflicts=(oxygen oxygen-cursors kdebase-workspace)
+provides=(oxygen oxygen-cursors)
 source=('git://anongit.kde.org/oxygen.git')
 md5sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = oxygen-git
 	pkgdesc = KDE Oxygen style
-	pkgver = r3958.4ee404b
+	pkgver = r4003.bcf0fd7
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	arch = i686
@@ -15,7 +15,9 @@ pkgbase = oxygen-git
 	depends = kcmutils-git
 	optdepends = oxygen-kde4-git: Oxygen widget style for KDE4 applications
 	provides = oxygen
+	provides = oxygen-cursors
 	conflicts = oxygen
+	conflicts = oxygen-cursors
 	conflicts = kdebase-workspace
 	source = git://anongit.kde.org/oxygen.git
 	md5sums = SKIP
