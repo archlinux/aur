@@ -1,12 +1,12 @@
 pkgbase = linux-source
 	pkgdesc = Source files for the Linux Kernel
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.2.tar.xz
 	sha256sums = SKIP
 
 pkgname = linux-source
