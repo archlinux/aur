@@ -44,6 +44,8 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   # Copy local libraries into lib.
+  # TODO ideally we'd package everything up in orctlibs.zip/local properly
+  # instead of compiling an embedded copy in this package.
   if [ ! -d lib ]; then
     cp -r "$srcdir/local" lib
   fi
