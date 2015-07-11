@@ -16,10 +16,10 @@ source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
         'orctlibs.zip::https://download.openrct2.website/dev/lib/mingw'
         'openrct2'
         'openrct2.desktop')
-md5sums=('SKIP'
-         'ca0766feab75b9adfea8f8b85f8e83ac'
-         'b750eaf997a27e981232b21a68fa868e'
-         '035a407b940492c584c72f4f59f1bd69')
+sha256sums=('SKIP'
+            '8892b09fe99b601d72e54cc3f56894bad3b11f28df9d52adecd982a2e393efa8'
+            '27db282994fe8e7ae04582704c949d9dab1959409c2905e55573418d409c2646'
+            'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 
 # Enable Twitch support. This pulls in lots of mingw-w64-* packages from the AUR
 # which takes a while to build. If you don't need Twitch support, it's probably
