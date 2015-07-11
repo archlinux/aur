@@ -11,13 +11,20 @@ pkgbase = solr5
 	optdepends = java-runtime>=8: for improved performance compared to older runtime systems.
 	provides = solr=5.2.1
 	conflicts = solr
-	backup = etc/solr/webdefault.xml
-	backup = etc/solr/zoo.cfg
-	backup = etc/solr/jetty.xml
-	backup = etc/solr/jetty-http.xml
-	backup = etc/solr/jetty-https.xml
-	backup = etc/solr/jetty-https-ssl.xml
-	backup = etc/solr/jetty-ssl.xml
+	backup = etc/solr/conf/webdefault.xml
+	backup = etc/solr/conf/zoo.cfg
+	backup = etc/solr/conf/jetty.xml
+	backup = etc/solr/conf/jetty-http.xml
+	backup = etc/solr/conf/jetty-https.xml
+	backup = etc/solr/conf/jetty-https-ssl.xml
+	backup = etc/solr/conf/jetty-ssl.xml
+	backup = etc/solr/contexts/solr-jetty-context.xml
+	backup = etc/solr/modules/http.mod
+	backup = etc/solr/modules/https.mod
+	backup = etc/solr/modules/server.mod
+	backup = etc/solr/modules/ssl.mod
+	backup = etc/solr/resources/jetty-logging.properties
+	backup = etc/solr/resources/log4j.properties
 	source = http://archive.apache.org/dist/lucene/solr/5.2.1/solr-5.2.1.tgz
 	source = solr
 	source = solr.service

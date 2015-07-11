@@ -19,8 +19,11 @@ source=("http://archive.apache.org/dist/lucene/$_pkgname/$pkgver/$_pkgname-$pkgv
         "$_pkgname"
         "$_pkgname.service")
 install=$_pkgname.install
-backup=(etc/$_pkgname/{webdefault.xml,zoo.cfg}
-        etc/$_pkgname/jetty{,-{http,https,https-ssl,ssl}}.xml)
+backup=(etc/$_pkgname/conf/{webdefault.xml,zoo.cfg}
+        etc/$_pkgname/conf/jetty{,-{http,https,https-ssl,ssl}}.xml
+        etc/$_pkgname/contexts/$_pkgname-jetty-context.xml
+        etc/$_pkgname/modules/{http,https,server,ssl}.mod
+        etc/$_pkgname/resources/{jetty-logging,log4j}.properties)
 
 sha256sums=('3f54cec862da1376857f96f4a6f2044a5addcebc4df159b8797fd71f7ba8df86'
             '08e89de3711e158b5b031241f2d5233e54a8e87747b4518d9fa64754664ab30b'
@@ -31,7 +34,7 @@ prepare() {
 
   msg2 'Unpacking war archive'
   mkdir --parents "$_pkgname-webapp/webapp"
-  unzip -foq webapps/solr.war -d "$_pkgname-webapp/webapp" #&>/dev/null
+  unzip -foq webapps/$_pkgname.war -d "$_pkgname-webapp/webapp" #&>/dev/null
 }
 
 package() {
@@ -42,7 +45,7 @@ package() {
     file="$(basename $path)"
     install -Dm644 $path "$pkgdir/etc/$_pkgname/conf/$file"
   done
-  install -Dm644 contexts/solr-jetty-context.xml "$pkgdir/etc/$_pkgname/contexts/solr-jetty-context.xml"
+  install -Dm644 "contexts/$_pkgname-jetty-context.xml" "$pkgdir/etc/$_pkgname/contexts/$_pkgname-jetty-context.xml"
   for module in modules/{http,https,server,ssl}.mod; do
     install -Dm644 $module "$pkgdir/etc/$_pkgname/$module"
   done
@@ -63,7 +66,7 @@ package() {
 
   msg2 'Installing documentation'
   install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
-  for file in README.txt scripts $_pkgname/configsets; do
+  for file in README.txt $_pkgname/configsets scripts; do
     cp --archive $file "$pkgdir/usr/share/doc/$_pkgname"
   done
 
@@ -85,7 +88,7 @@ package() {
   ln -s "/etc/$_pkgname/modules" "$pkgdir/usr/share/webapps/$_pkgname/modules"
   ln -s "/etc/$_pkgname/resources" "$pkgdir/usr/share/webapps/$_pkgname/resources"
   ln -s "/usr/lib/$_pkgname" "$pkgdir/usr/share/webapps/$_pkgname/lib"
-  for file in README.txt configsets contexts resources scripts; do
+  for file in README.txt configsets scripts; do
     ln -s "/usr/share/doc/$_pkgname/$file" "$pkgdir/usr/share/webapps/$_pkgname/$file"
   done
   ln -s "/var/log/$_pkgname" "$pkgdir/usr/share/webapps/$_pkgname/logs"

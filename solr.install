@@ -2,12 +2,37 @@ post_install() {
   post_upgrade
 }
 
-post_upgrade() {
-  getent group solr >/dev/null 2>&1 || groupadd --gid 521 solr &>/dev/null
-  getent passwd solr >/dev/null 2>&1 || useradd --gid 521 --home-dir /var/lib/solr --shell /usr/bin/nologin --uid 521 solr &>/dev/null
+pre_upgrade() {
+  # Stop solr.service if its active, to be restarted after upgrade.
+  local _active=/tmp/.solr
+  systemctl daemon-reload
+  if [ $(systemctl is-active solr.service) ]; then
+    systemctl --quiet stop solr.service
+    touch $_active
+  elif [ -f $_active ]; then
+    rm --force $_active
+  fi
 }
 
-post_remove() {
+post_upgrade() {
+  # Create solr user and group.
+  getent group solr >/dev/null 2>&1 || groupadd --gid 521 solr &>/dev/null
+  getent passwd solr >/dev/null 2>&1 || useradd --gid 521 --home-dir /var/lib/solr --shell /usr/bin/nologin --uid 521 solr &>/dev/null
+
+  # Start solr.server unit if it was active before upgrade.
+  local _active=/tmp/.solr
+  systemctl daemon-reload
+  if [ -f $_active ]; then
+    systemctl --quiet start solr.service
+    rm --force $_active
+  fi
+}
+
+pre_remove() {
+  # Stop solr.service if its active.
+  if [ $(systemctl is-active macfanctld.service) ]; then
+    systemctl --quiet stop macfanctld.service
+  fi
   if getent passwd solr >/dev/null 2>&1; then
     userdel solr
   fi
