@@ -1,0 +1,14 @@
+pkgbase = hqx
+	pkgdesc = A fast, high-quality magnification filter designed for pixel art.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://code.google.com/p/hqx/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = devil
+	source = http://hqx.googlecode.com/files/hqx-1.1.tar.gz
+	sha256sums = cc18f571fb4bc325317892e39ecd5711c4901831926bc93296de9ebb7b2f317b
+
+pkgname = hqx
+
