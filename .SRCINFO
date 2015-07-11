@@ -1,0 +1,13 @@
+pkgbase = python-nr.strex
+	pkgdesc = A package for processing text and character streams in an easy fashion
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/nr-python/nr.strex
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/n/nr.strex/nr.strex-1.3.tar.gz
+	sha1sums = 60942a7bfaf3941ff1619c2e991a9a6f16ed8f60
+
+pkgname = python-nr.strex
+
