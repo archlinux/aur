@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r3722.78104bc
+pkgver=r3926.aeeca24
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('any')
