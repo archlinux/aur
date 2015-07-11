@@ -1,0 +1,16 @@
+pkgbase = ttf-openlogos-archupdate
+	pkgdesc = Font depicting various open-source logos, by CtrlAltF12
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://bbs.archlinux.org/viewtopic.php?id=45256
+	install = ttf-openlogos-archupdate.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-openlogos
+	source = https://github.com/jpope777/PKGBUILDs/raw/master/ttf-openlogos-archupdate/openlogos-archupdate.ttf
+	sha256sums = 9e7e171a01d327df63460eac083ce4e756b52466be87d6670e80dafd7eccf177
+
+pkgname = ttf-openlogos-archupdate
+
