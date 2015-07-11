@@ -1,6 +1,6 @@
 pkgbase = python3-aur
 	pkgdesc = AUR-related modules and helper utilities (aurploader, aurquery, aurtomatic).
-	pkgver = 2015.7
+	pkgver = 2015.7.11
 	pkgrel = 1
 	url = http://xyne.archlinux.ca/projects/python3-aur
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = python3-aur
 	provides = aurploader
 	conflicts = aurploader
 	replaces = aurploader
-	source = http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2015.7.tar.xz
-	source = http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2015.7.tar.xz.sig
-	md5sums = 269a3a0d2bc8e3634e50ee86167ee56c
-	md5sums = a5fd84b66ff070a1b1c8e96a9a2fd21f
-	sha512sums = 0641b98cdd06cf9bc28a329d31c8870928319e3228c82ca116c7dc7fad173b08cb7a559fbe774128f85aad053e3cffd9cc96f50d98cbbfcfea8cb61615810f9d
-	sha512sums = aa38d0a852c513cd60f8f9de0d325e1da625b6b0c4e1ae43eda50faedb3d162c7d607b7a041fd4f579b82021a7b5ec471ab30da8a312f6bfdf30776c73ff2702
+	source = http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2015.7.11.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2015.7.11.tar.xz.sig
+	md5sums = aed76544a82b5181e170b58925295fdc
+	md5sums = 4488d4163d2f55479a901340d5957d23
+	sha512sums = cc85b1164bf986b67a3bb85c973756acb07cbc26c9a530751d4761a47abba3a445b63ce5e132be6344a6ea83102b806d70666574af76ab51bc438742f4b73b62
+	sha512sums = 33a670210c4f990b9a4ddbfaedbf56c4363d60b284a712b4d2a50c3ef0043966176aa01ab6778d08c3191a97fc0028210f4bfa8d1161ba75073d5b37cc3ed962
 
 pkgname = python3-aur
 
