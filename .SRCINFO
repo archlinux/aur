@@ -1,0 +1,13 @@
+pkgbase = chipper
+	pkgdesc = Chip-8 (Chip-48, Super Chip-48 V1.0 and V1.1) assembler.
+	pkgver = 2.11
+	pkgrel = 2
+	url = http://www.hpcalc.org/details.php?id=6735
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://www.hpcalc.org/hp48/pc/programming/chipper.zip
+	md5sums = c194a19a565938df431d52812ef8278d
+
+pkgname = chipper
+
