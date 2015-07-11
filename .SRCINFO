@@ -1,0 +1,16 @@
+pkgbase = ruby-ttfunk
+	pkgdesc = TrueType Font Metrics Parser
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/prawnpdf/ttfunk
+	arch = any
+	license = Ruby
+	license = GPL
+	depends = ruby
+	noextract = ttfunk-1.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ttfunk-1.4.0.gem
+	sha256sums = 323836ca09f7e631797870b7897b94155676404bf738de4bc720a212652ee2cc
+
+pkgname = ruby-ttfunk
+
