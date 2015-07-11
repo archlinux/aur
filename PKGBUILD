@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 
 pkgname=clion
-pkgbuild=1.0.4
+pkgbuild=1.0.5
 pkgver=${pkgbuild}
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -17,7 +17,7 @@ optdepends=(
   'biicode: C/C++ dependency manager'
 )
 source=("https://download.jetbrains.com/cpp/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9511c98e4eae7ae3830a859e59774e884d30b8708900c6ec3f5e7efb054ce5b3')
+sha256sums=('ca042146f68af6efbc5f2241c8b78b50a1844dd5f106e06809d8acb391f56c0f')
 
 package() {
   cd ${srcdir}
