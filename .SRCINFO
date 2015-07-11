@@ -1,6 +1,6 @@
 pkgbase = budgie-desktop-git
 	pkgdesc = Simple GTK3 desktop experience
-	pkgver = v8.2.r13.gabfc761
+	pkgver = v8.2.r17.ga92612e
 	pkgrel = 1
 	url = https://solus-project.com/budgie
 	install = budgie-desktop.install

@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v8.2.r13.gabfc761
+pkgver=v8.2.r17.ga92612e
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
