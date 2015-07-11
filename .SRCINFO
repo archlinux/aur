@@ -1,6 +1,6 @@
 pkgbase = shotcut-bin
 	pkgdesc = A free, open source, cross-platform video editor.
-	pkgver = 150601
+	pkgver = 150702
 	pkgrel = 1
 	url = http://www.mltframework.org/bin/view/Shotcut/WebHome
 	install = shotcut-bin.install
@@ -12,9 +12,9 @@ pkgbase = shotcut-bin
 	depends = desktop-file-utils
 	depends = gstreamer0.10-base
 	provides = shotcut
-	source = https://github.com/mltframework/shotcut/releases/download/v15.06/shotcut-debian7-x86-150601.tar.bz2
+	source = https://github.com/mltframework/shotcut/releases/download/v15.07/shotcut-debian7-x86-150702.tar.bz2
 	source = shotcut.png
-	md5sums = aef0820532cb5a1b2ede9a5ab7a2c5a7
+	md5sums = dfe2ff87e437afe398a7169bd3c425bc
 	md5sums = 457bc6ae5a299dee017521ec058e833b
 
 pkgname = shotcut-bin
