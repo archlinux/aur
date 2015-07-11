@@ -13,7 +13,7 @@ license=(LGPL)
 depends=(libusb nss pixman)
 groups=(fprint)
 options=(!emptydirs)
-source=(http://people.freedesktop.org/~hadess/$pkgname-$pkgver.tar.xz vfs0050.patch)
+source=(http://people.freedesktop.org/~hadess/libfprint-$pkgver.tar.xz vfs0050.patch)
 md5sums=('1e66f6e786348b46075368cc682450a8'
          '139f2b678600b66fb6214ff8dbd81a28')
 
