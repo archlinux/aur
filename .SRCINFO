@@ -1,0 +1,23 @@
+pkgbase = calf-git
+	pkgdesc = LV2/JACK audio plug-ins for musicians
+	pkgver = 0.0.60.r2236.f1f85c0
+	pkgrel = 1
+	url = http://calf.sourceforge.net/
+	install = calf-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = desktop-file-utils
+	depends = fluidsynth
+	depends = gtk-update-icon-cache
+	depends = lash
+	depends = lv2
+	provides = calf
+	conflicts = calf
+	source = calf::git+git://repo.or.cz/calf.git
+	md5sums = SKIP
+
+pkgname = calf-git
+

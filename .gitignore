@@ -1,0 +1,6 @@
+calf/
+calf-git-*.tar.xz
+calf-git-*.src.tar.gz
+pkg/
+src/
+.AURINFO
