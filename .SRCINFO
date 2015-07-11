@@ -1,6 +1,6 @@
 pkgbase = zfs-lts
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 0.6.4.2_3.14.47_1
+	pkgver = 0.6.4.2_3.14.48_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = zfs.install
@@ -8,10 +8,10 @@ pkgbase = zfs-lts
 	arch = x86_64
 	groups = archzfs-lts
 	license = CDDL
-	makedepends = linux-lts-headers=3.14.47-1
+	makedepends = linux-lts-headers=3.14.48-1
 	depends = spl-lts
 	depends = zfs-utils-lts
-	depends = linux-lts=3.14.47-1
+	depends = linux-lts=3.14.48-1
 	provides = zfs
 	conflicts = zfs
 	conflicts = zfs-git
