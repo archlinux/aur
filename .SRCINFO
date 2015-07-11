@@ -1,0 +1,27 @@
+pkgbase = pumpio-git
+	pkgdesc = This is pump.io. It's a stream server that does most of what people really want from a social network. (git version)
+	pkgver = 0.3.0.3.g1029ac7
+	pkgrel = 1
+	url = http://pump.io
+	install = pumpio-git.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = python2
+	depends = nodejs
+	depends = graphicsmagick
+	optdepends = mongodb
+	optdepends = redis
+	provides = pumpio
+	conflicts = pumpio
+	backup = etc/webapps/pumpio/pump.io.json
+	source = git://github.com/e14n/pump.io.git
+	source = pumpio.service
+	source = pump.io.json
+	sha256sums = SKIP
+	sha256sums = 6274e77edd4f97fa974049877f51d40b3555104b2fec31187212b07a579a9016
+	sha256sums = e7e94e20cecf7354856a88ad9b9635bb7e748e05990d4050e755d79154c587fa
+
+pkgname = pumpio-git
+

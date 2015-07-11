@@ -1,0 +1,21 @@
+pumpuser=pumpio
+pumphome=/usr/share/webapps/pumpio
+
+_chown() {
+  chown -R $pumpuser:$pumpuser $pumphome
+}
+
+post_install() {
+  getent passwd $pumpuser &> /dev/null || useradd -r -d $pumphome -s /bin/bash $pumpuser
+  _chown
+  echo 'Edit the file /etc/webapps/pumpio/pump.io.json as needed. Please look over the documentation at http://pump.io/#configuration'  
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent passwd $pumpuser &> /dev/null && userdel -f $pumpuser
+  return 0
+}

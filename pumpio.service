@@ -1,0 +1,16 @@
+[Unit]
+Description=pumpio
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/webapps/pumpio
+User=pumpio
+Group=pumpio
+ExecStart=/usr/bin/node ./bin/pump -c /etc/webapps/pumpio/pump.io.json start
+ExecStop=/usr/bin/node ./bin/pump -c /etc/webapps/pumpio/pump.io.json stop
+Restart=always
+SyslogIdentifier=pumpio
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+{
+    "driver":  "memory",
+    "secret":  "my dog has fleas",
+    "noweb":  false,
+    "site":  "Awesome Sauce",
+    "owner":  "Awesome Inc.",
+    "ownerURL":  "http://example.com/",
+    "port":  8000,
+    "hostname":  "localhost",
+    "address":  "localhost",
+    "nologger":  false,
+    "serverUser":  "pumpio",
+    "uploaddir": "/tmp/pump.io/uploads",
+    "debugClient": false,
+    "firehose": "ofirehose.example"
+}
