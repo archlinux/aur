@@ -1,7 +1,7 @@
 pkgbase = aarchup
 	pkgdesc = Fork of archup a small and lightweight update-notifier for archlinux.
 	pkgver = 1.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aericson/aarchup
 	install = aarchup.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = aarchup
 	optdepends = cower: AUR support(--aur)
 	backup = etc/systemd/system/aarchup.timer
 	source = https://github.com/aericson/aarchup/archive/1.7.3.zip
-	md5sums = 204df2d8b83ce76c79b88ba4b10f370e
+	md5sums = 89e1e830cb9b10ee29bb561ad3c3cde9
 
 pkgname = aarchup
 
