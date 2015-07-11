@@ -1,0 +1,16 @@
+pkgbase = mfastboot
+	pkgdesc = Motorola Fastboot
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://forum.xda-developers.com/moto-g/general/install-brazil-5-0-ota-xt1033-t2963800
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	provides = mfastboot
+	conflicts = mfastboot
+	source = http://forum.xda-developers.com/attachment.php?attachmentid=2427667
+	md5sums = 590734d743cc9bf0e6a301246e036974
+
+pkgname = mfastboot
+
