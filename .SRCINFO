@@ -1,0 +1,23 @@
+pkgbase = ocrodjvu
+	pkgdesc = ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files.
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://jwilk.net/software/ocrodjvu
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = python2-lxml
+	depends = python-djvulibre
+	optdepends = python2-html5lib: HTML parser; required for the ``--html5`` option
+	optdepends = python2-pyicu: required for the ``--word-segmentation=uax29`` option
+	optdepends = cuneiform: OCR system
+	optdepends = tesseract: OCR system
+	optdepends = ocrad: OCR system
+	optdepends = gocr: OCR system
+	optdepends = ocropy: OCR system
+	source = http://pypi.python.org/packages/source/o/ocrodjvu/ocrodjvu-0.8.tar.gz
+	sha256sums = e76fc3fbd658a9cbe56f0a015de67d4b3a81b89c4e2c774a44e30776b077dc01
+
+pkgname = ocrodjvu
+
