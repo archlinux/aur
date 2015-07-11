@@ -1,7 +1,7 @@
 # Maintainer: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=python-praw-git
-pkgver=3.0a1.r1021.g23a2bb0
+pkgver=3.1.0.r1101.ge557666
 pkgrel=1
 pkgdesc="A python package that allows for simple access to reddit's API"
 arch=('any')
