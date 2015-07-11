@@ -1,0 +1,19 @@
+pkgbase = dsf2flac-svn
+	pkgdesc = A file conversion tool for translating dsf and dff dsd audio files into flac pcm audio files.
+	pkgver = 53
+	pkgrel = 1
+	url = https://code.google.com/p/dsf2flac
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = subversion
+	depends = boost-libs
+	depends = flac
+	depends = id3lib
+	source = dsf2flac::svn+http://dsf2flac.googlecode.com/svn/trunk/
+	sha512sums = SKIP
+
+pkgname = dsf2flac-svn
+
