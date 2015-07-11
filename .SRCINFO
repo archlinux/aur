@@ -1,0 +1,15 @@
+pkgbase = python2-jig
+	pkgdesc = Check your code for stuff before you 'git commit'
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/jig
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/j/jig/jig-0.1.9.tar.gz
+	md5sums = 8019da231fcacc8c4a6cf2e03cdfe74c
+
+pkgname = python2-jig
+
