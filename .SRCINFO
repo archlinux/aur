@@ -10,6 +10,7 @@ pkgbase = clion
 	optdepends = gcc: GNU compiler
 	optdepends = clang: LLVM compiler
 	optdepends = biicode: C/C++ dependency manager
+	noextract = clion-1.0.5.tar.gz
 	options = !strip
 	source = https://download.jetbrains.com/cpp/clion-1.0.5.tar.gz
 	sha256sums = ca042146f68af6efbc5f2241c8b78b50a1844dd5f106e06809d8acb391f56c0f
