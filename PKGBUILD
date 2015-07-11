@@ -3,7 +3,7 @@
 
 pkgname=totalvalidatorbasic
 pkgver=8.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="(X)HTML validator, an accessibility validator, a spell checker, and a broken links checker"
 arch=('i686' 'x86_64')
 url='https://www.totalvalidator.com'
@@ -19,8 +19,4 @@ package() {
 	# Install license
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
 	cp ${srcdir}/${pkgname}/License.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	# Create symlinks
-	mkdir -p ${pkgdir}/usr/bin
-	ln -s /opt/${pkgname}/total_validator.sh "${pkgdir}/usr/bin/${pkgname}"
-	ln -s /opt/${pkgname}/total_validator_listen.sh "${pkgdir}/usr/bin/${pkgname}listen"
 }

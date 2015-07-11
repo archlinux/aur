@@ -1,7 +1,7 @@
 pkgbase = totalvalidatorbasic
 	pkgdesc = (X)HTML validator, an accessibility validator, a spell checker, and a broken links checker
 	pkgver = 8.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.totalvalidator.com
 	install = totalvalidatorbasic.install
 	arch = i686
