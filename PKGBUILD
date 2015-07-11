@@ -9,7 +9,7 @@ url="https://github.com/michael-lazar/rtv"
 license=('MIT')
 conflicts=('rtv')
 makedepends=('git')
-depends=('python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw' 'python-setuptools')
+depends=('python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw-git' 'python-setuptools')
 source=('git+https://github.com/michael-lazar/rtv.git')
 sha256sums=('SKIP')
 
