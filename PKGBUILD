@@ -1,6 +1,6 @@
 # Maintainer: Albert Berger < nbdspcl at gmail dot com>
 pkgname=regd-git
-pkgver=VERSION
+pkgver=v0.6.pre0.r17
 pkgrel=1
 pkgdesc="Registry daemon, information cache and secure credential storage."
 arch=('any')
@@ -27,7 +27,10 @@ pkgver() {
 }
 
 package() {
+	cd "${pkgname%-git}"
+	pname="${pkgname%-git}"
+	_username="$(id | sed -e 's/[^(]*(\([^)]*\)).*/\1/')"
 	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 -o $_username "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
-	install -Dm644 -o $_username "data/${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
+	install -Dm644 -o $_username "data/conf.${pname}" "$pkgdir/etc/${pname}/conf.${pname}"
+	install -Dm644 -o $_username "data/${pname}.1" "$pkgdir/usr/share/man/man1/${pname}.1"
 }

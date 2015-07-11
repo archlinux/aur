@@ -1,6 +1,6 @@
 pkgbase = regd-git
 	pkgdesc = Registry daemon, information cache and secure credential storage.
-	pkgver = VERSION
+	pkgver = v0.6.pre0.r17
 	pkgrel = 1
 	url = https://github.com/nbdsp/regd
 	arch = any
