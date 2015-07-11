@@ -1,7 +1,7 @@
 pkgbase = chicken-numbers
 	pkgdesc = Full numeric tower support
-	pkgver = 4.2
-	pkgrel = 3
+	pkgver = 4.3
+	pkgrel = 1
 	url = http://wiki.call-cc.org/eggref/4/numbers
 	arch = i686
 	arch = x86_64

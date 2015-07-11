@@ -3,8 +3,8 @@
 
 pkgname=chicken-numbers
 _pkgname=numbers
-pkgver=4.2
-pkgrel=3
+pkgver=4.3
+pkgrel=1
 pkgdesc='Full numeric tower support'
 arch=('i686' 'x86_64')
 url='http://wiki.call-cc.org/eggref/4/numbers'
