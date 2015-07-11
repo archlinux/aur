@@ -1,0 +1,21 @@
+pkgbase = phablet-tools
+	pkgdesc = Tools to install Ubuntu Touch on Nexus Devices
+	pkgver = 1.1+14.10.20141010
+	pkgrel = 3
+	url = https://launchpad.net/~phablet-team
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = android-tools
+	depends = python2-configobj
+	depends = python2-pyliblzma
+	depends = python2-requests
+	depends = python2-xdg
+	depends = python2-six
+	depends = sudo
+	depends = repo
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/phablet-tools_1.1+14.10.20141010.orig.tar.gz
+	md5sums = d5838733df3b0c1625c7034c4af0b6ec
+
+pkgname = phablet-tools
+
