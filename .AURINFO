@@ -8,7 +8,6 @@ pkgbase = guile-lib
 	license = GPL3 and LGPL3
 	depends = guile
 	source = http://download.savannah.gnu.org/releases/guile-lib/guile-lib-0.2.2.tar.gz
-	md5sums = 77427e4ff3f2b1061bffa370666125f7
 
 pkgname = guile-lib
 
