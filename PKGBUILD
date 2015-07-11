@@ -1,12 +1,12 @@
 # Maintainer: WoefulDerelict <WoefulDerelict at GMail dot com>
 pkgname=ladish
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Session management system for JACK."
 arch=('any')
 url="https://launchpad.net/ladish"
 license=('GPL2')
-depends=('jack2-dbus' 'dbus-glib' 'laditools-git' 'flowcanvas<=0.7.1' 'a2jmidid')
+depends=('jack2-dbus' 'dbus-glib' 'laditools' 'flowcanvas<=0.7.1' 'a2jmidid')
 makedepends=('git' 'python2')
 provides=("ladish" "lash")
 conflicts=("ladish" "lash")
