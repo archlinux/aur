@@ -1,5 +1,5 @@
 pkgbase = kodi-devel
-	pkgver = 15.0rc1
+	pkgver = 15.0rc2
 	pkgrel = 1
 	url = http://xbmc.org
 	arch = i686
@@ -58,8 +58,8 @@ pkgbase = kodi-devel
 	makedepends = xorg-xdpyinfo
 	makedepends = yajl
 	makedepends = zip
-	source = https://github.com/xbmc/xbmc/archive/15.0rc1-Isengard.tar.gz
-	sha256sums = 8dc56816a7722d84a2ca13a47f599a8232f69d7c69f80da905a158598e1614a6
+	source = https://github.com/xbmc/xbmc/archive/15.0rc2-Isengard.tar.gz
+	sha256sums = 47b91e31dd1b7e41d81223000c9a15ebaf45872f1e7dfe18851c90da3182f9f8
 
 pkgname = kodi-devel
 	pkgdesc = Kodi Media Center monthly development releases
