@@ -1,12 +1,12 @@
 # Maintainer: aggraef@gmail.com
 pkgname=osc2midi-utils-git
-pkgver=89.1214bf2
+pkgver=91.4a45221
 pkgrel=1
 pkgdesc="Utilities and GTK frontend for OSC2MIDI (git version)"
 arch=('x86_64' 'i686')
 url="https://bitbucket.org/agraef/osc2midi-utils/"
 license=('BSD')
-depends=('osc2midi' 'pure' 'pure-avahi' 'pure-ffi' 'pure-liblo' 'pure-sockets' 'pure-tk' 'pure-xml' 'gnocl' 'gnocl-builder' 'gnocl-gconf' 'xdg-utils' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('osc2midi' 'pure' 'pure-avahi' 'pure-ffi' 'pure-liblo' 'pure-sockets' 'pure-tk' 'pure-xml' 'gnocl' 'gnocl-builder' 'gnocl-gconf' 'desktop-file-utils')
 optdepends=('touchosc-editor: create and edit TouchOSC layouts')
 makedepends=()
 provides=('osc2midi-utils')

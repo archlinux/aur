@@ -1,6 +1,6 @@
 pkgbase = osc2midi-utils-git
 	pkgdesc = Utilities and GTK frontend for OSC2MIDI (git version)
-	pkgver = 89.1214bf2
+	pkgver = 91.4a45221
 	pkgrel = 1
 	url = https://bitbucket.org/agraef/osc2midi-utils/
 	install = osc2midi-utils.install
@@ -18,9 +18,7 @@ pkgbase = osc2midi-utils-git
 	depends = gnocl
 	depends = gnocl-builder
 	depends = gnocl-gconf
-	depends = xdg-utils
 	depends = desktop-file-utils
-	depends = hicolor-icon-theme
 	optdepends = touchosc-editor: create and edit TouchOSC layouts
 	provides = osc2midi-utils
 	conflicts = osc2midi-utils
