@@ -1,0 +1,27 @@
+pkgbase = texinfo-svn
+	pkgdesc = GNU documentation system for on-line information and printed output
+	pkgver = 6411
+	pkgrel = 1
+	url = http://www.gnu.org/software/texinfo/
+	install = texinfo.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	groups = base-devel
+	license = GPL
+	makedepends = subversion
+	depends = ncurses
+	depends = findutils
+	depends = gzip
+	depends = perl
+	depends = sh
+	provides = texinfo
+	conflicts = texinfo
+	options = !makeflags
+	source = texinfo::svn://svn.sv.gnu.org/texinfo/trunk
+	source = activate_plaintext_pm.patch
+	md5sums = SKIP
+	md5sums = 91730d301ea8c0a687f392e2f1a49c0b
+
+pkgname = texinfo-svn
+
