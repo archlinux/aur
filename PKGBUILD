@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-aur
-pkgver=2014.12
+pkgver=2015.7
 pkgrel=1
 pkgdesc='AUR-related modules and helper utilities (aurploader, aurquery, aurtomatic).'
 arch=(any)
@@ -12,16 +12,16 @@ replaces=(aurploader)
 conflicts=(aurploader)
 provides=(aurploader)
 source=(
-  http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2014.12.tar.xz
-  http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2014.12.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2015.7.tar.xz
+  http://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2015.7.tar.xz.sig
 )
 sha512sums=(
-  e345cde10d0951b12ba41acbb80259716495156adef8d1ad1649741563ce427b41452ea4fb8dc40426da58e4ad6d1e90d1690259610ade2d6ee3258a3ea25a6a
-  21dc1b0b1e68082fc53504a07bd4b3336e1f0741c0b737f7e89b1cc00420859bf61618dcbdb06f92df6ddea9caf5dbb90957bfbf55d36b29e28ac1bc0a96282b
+  0641b98cdd06cf9bc28a329d31c8870928319e3228c82ca116c7dc7fad173b08cb7a559fbe774128f85aad053e3cffd9cc96f50d98cbbfcfea8cb61615810f9d
+  aa38d0a852c513cd60f8f9de0d325e1da625b6b0c4e1ae43eda50faedb3d162c7d607b7a041fd4f579b82021a7b5ec471ab30da8a312f6bfdf30776c73ff2702
 )
 md5sums=(
-  72452b0fadcce493f55be5a0614f95bd
-  cc10e00a306321911feb03eb74d81bf3
+  269a3a0d2bc8e3634e50ee86167ee56c
+  a5fd84b66ff070a1b1c8e96a9a2fd21f
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
