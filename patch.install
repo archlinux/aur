@@ -1,0 +1,10 @@
+--- a/locale.d/install	2014-09-12 10:53:39.386559817 +0430
++++ b/locale.d/install	2014-09-12 11:10:33.759831300 +0430
+@@ -9,6 +9,6 @@
+ for LANG in fa ; do
+     msgfmt "$myDir/$LANG.po" -o "$myDir/$LANG.mo"
+     mkdir -p "$targetPrefix/share/locale/$LANG/LC_MESSAGES"
+-    sudo cp -f "$myDir/$LANG.mo" "$targetPrefix/share/locale/$LANG/LC_MESSAGES/starcal2.mo"
++    cp -f "$myDir/$LANG.mo" "$targetPrefix/share/locale/$LANG/LC_MESSAGES/starcal2.mo"
+ done
+ 

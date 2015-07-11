@@ -1,0 +1,24 @@
+pkgbase = starcal2-git
+	pkgdesc = A full-featured international calendar writen in Python
+	pkgver = 2015.04.27
+	pkgrel = 1
+	url = http://starcal.sourceforge.net
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python2>=2.6
+	depends = pygtk>=2.8
+	depends = pygobject
+	depends = python2-pytz
+	optdepends = python2-igraph
+	optdepends = python2-gflags
+	optdepends = python2-httplib2
+	optdepends = python2-gnomevfs
+	conflicts = starcal2
+	source = git://github.com/ilius/starcal.git
+	source = patch.install
+	md5sums = SKIP
+	md5sums = 8e8805cd60fc15a1e5031a4c3742beca
+
+pkgname = starcal2-git
+
