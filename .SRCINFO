@@ -1,0 +1,13 @@
+pkgbase = libayemu
+	pkgdesc = AY/YM sound chip (from ZX-Spectrum) emulation library.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://sashnov.nm.ru/libayemu.html
+	arch = i686
+	arch = x86_64
+	license = LGPLv2
+	source = http://downloads.sourceforge.net/project/libayemu/libayemu/1.0.0/libayemu-1.0.0.tar.gz
+	md5sums = 548cf778170a982de8ebcb0880b5518c
+
+pkgname = libayemu
+
