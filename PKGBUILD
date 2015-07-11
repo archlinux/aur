@@ -6,11 +6,12 @@
 #pkgname=('python-lepl' 'python2-lepl')
 pkgname=python2-lepl
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://www.acooke.org/lepl/index.html"
 license=('LGPL')
 #makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
+makedepends=('python2' 'python2-setuptools')
 source=( http://lepl.googlecode.com/files/LEPL-${pkgver}.tar.gz
 		'LGPL-3.0.txt'
 		'MPL-1.1.txt')
@@ -51,6 +52,7 @@ build() {
 #   install -Dm644 MPL-1.1.txt "${pkgdir}"/usr/share/licenses/$pkgname/MPL-1.1.txt
 #}
 
+#package_python2-lepl() {
 package() {
    depends=('python2' )
    pkgdesc="A Python2 recursive descent parser, written in Python, which has a a friendly, easy-to-use syntax"

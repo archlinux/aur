@@ -1,9 +1,11 @@
 pkgbase = python2-lepl
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.acooke.org/lepl/index.html
 	arch = any
 	license = LGPL
+	makedepends = python2
+	makedepends = python2-setuptools
 	source = http://lepl.googlecode.com/files/LEPL-5.0.0.tar.gz
 	source = LGPL-3.0.txt
 	source = MPL-1.1.txt
