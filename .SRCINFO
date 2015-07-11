@@ -1,0 +1,14 @@
+pkgbase = lib32-libxml
+	pkgdesc = The XML C parser and toolkit of Gnome. Older version (32-bit)
+	pkgver = 1.8.17
+	pkgrel = 1
+	url = http://xmlsoft.org/
+	arch = x86_64
+	license = GPL
+	depends = lib32-zlib
+	options = !libtool
+	source = ftp://xmlsoft.org/libxml2/old/libxml-1.8.17.tar.gz
+	md5sums = 53846294aa850a7d042948176d1d19dc
+
+pkgname = lib32-libxml
+
