@@ -1,0 +1,26 @@
+pkgbase = lv2-git
+	pkgdesc = A standard for plugins and matching host applications, mainly targeted at audio processing and generation.
+	pkgver = 1.12.0.r984.f18cfa8
+	pkgrel = 1
+	url = http://lv2plug.in/
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	makedepends = python2
+	makedepends = libsndfile
+	makedepends = gtk2
+	optdepends = libsndfile: example sampler plugin
+	optdepends = gtk2: example scope plugin
+	optdepends = python2: lv2specgen script
+	provides = lv2=1.12.0.r984.f18cfa8
+	provides = lv2core
+	provides = lv2-svn
+	conflicts = lv2
+	conflicts = lv2-svn
+	replaces = lv2core
+	source = lv2::git+http://lv2plug.in/git/cgit.cgi/lv2.git
+	md5sums = SKIP
+
+pkgname = lv2-git
+
