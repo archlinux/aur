@@ -1,0 +1,8 @@
+lvtk
+src
+pkg
+lvtk-git-*.tar.xz
+lvtk-git-*.src.tar.gz
+.AURINFO
+
+

@@ -1,0 +1,12 @@
+diff --git a/lvtk/plugin.hpp b/lvtk/plugin.hpp
+index 258f6e5..d0ff03e 100644
+--- a/lvtk/plugin.hpp
++++ b/lvtk/plugin.hpp
+@@ -23,6 +23,7 @@
+ #define LVTK_PLUGIN_HPP
+ 
+ #include <iostream>
++#include <sstream>
+ #include <cstdarg>
+ #include <cstring>
+ #include <string>

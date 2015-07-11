@@ -1,0 +1,23 @@
+pkgbase = lvtk-git
+	pkgdesc = A set of C++ wrappers around the LV2 C API
+	pkgver = 1.2.0.r13.gab61440
+	pkgrel = 1
+	url = https://github.com/lvtk/lvtk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = git
+	makedepends = gtkmm
+	makedepends = python2
+	depends = lv2
+	optdepends = gtkmm: lv2 sample plugins
+	provides = lvtk
+	conflicts = lvtk
+	source = lvtk::git+https://github.com/lvtk/lvtk.git
+	source = lvtk-sstream.patch
+	md5sums = SKIP
+	md5sums = 41c59a69393067ea4947f22b5d617284
+
+pkgname = lvtk-git
+
