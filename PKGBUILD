@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-utils-lts318-ck-git"
-pkgver=0.6.4.2_r0_g04974ca_3.18.17_2
+pkgver=0.6.4.2_r0_g04974ca_3.18.18_1
 pkgrel=1
 license=('GPL')
 pkgdesc="Solaris Porting Layer kernel module support files."
