@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Hexxagon
+Exec=hexxagon
+Icon=hexxagon
+Categories=Game;BoardGame;GTK;
