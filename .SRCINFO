@@ -1,0 +1,15 @@
+pkgbase = ruby-afm
+	pkgdesc = A simple library to read Adobe Font Metrics (afm) files
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://github.com/halfbyte/afm
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = afm-0.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/afm-0.2.2.gem
+	sha256sums = c83e698e759ab0063331ff84ca39c4673b03318f4ddcbe8e90177dd01e4c721a
+
+pkgname = ruby-afm
+
