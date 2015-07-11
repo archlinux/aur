@@ -1,0 +1,19 @@
+pkgbase = serd-svn
+	pkgdesc = A lightweight C library for RDF syntax which supports reading and writing Turtle and NTriples
+	pkgver = 0.21.1.r489
+	pkgrel = 1
+	url = http://dev.drobilla.net/browser/serd
+	install = serd.install
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = python2
+	makedepends = subversion
+	depends = glibc
+	provides = serd
+	conflicts = serd
+	source = serd::svn+http://svn.drobilla.net/serd/trunk
+	md5sums = SKIP
+
+pkgname = serd-svn
+

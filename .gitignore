@@ -1,0 +1,7 @@
+serd
+src
+pkg
+serd-svn-*.tar.xz
+serd-svn-*.src.tar.gz
+.AURINFO
+
