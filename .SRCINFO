@@ -1,7 +1,7 @@
 pkgbase = ladish
 	pkgdesc = Session management system for JACK.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ladish
 	install = ladish.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ladish
 	makedepends = python2
 	depends = jack2-dbus
 	depends = dbus-glib
-	depends = laditools-git
+	depends = laditools
 	depends = flowcanvas<=0.7.1
 	depends = a2jmidid
 	provides = ladish
