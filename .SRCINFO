@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-threadweaver
 	pkgdesc = High-level multithreading framework (mingw-w64)
-	pkgver = 5.11.0
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/threadweaver
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-threadweaver
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.11/threadweaver-5.11.0.tar.xz
-	md5sums = 5ffac7ee80aa144de5719cae044878b0
+	source = http://download.kde.org/stable/frameworks/5.12/threadweaver-5.12.0.tar.xz
+	md5sums = e7bec854878b5e1a874999691ff2ed19
 
 pkgname = mingw-w64-threadweaver
 
