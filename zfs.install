@@ -13,7 +13,7 @@ post_upgrade() {
 check_initramfs() {
     echo ">>> Updating module dependencies. Please wait ..."
 
-    _kernel_version_full="3.18.17-2"
+    _kernel_version_full="3.18.18-1"
 
     depmod ${_kernel_version_full}-lts318-ck
 
