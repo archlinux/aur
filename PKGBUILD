@@ -22,19 +22,19 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd yamado
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
+  cd yamado
 
 #  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd yamado
   
   make DESTDIR="$pkgdir" install
 }
