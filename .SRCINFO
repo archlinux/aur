@@ -1,0 +1,17 @@
+pkgbase = cppman
+	pkgdesc = C++ 98/11/14 manual pages for Linux/MacOS
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/aitjcize/cppman
+	arch = any
+	license = GPL
+	depends = python3
+	depends = vim
+	depends = groff
+	depends = python3-beautifulsoup4
+	conflicts = cppman-git
+	source = https://pypi.python.org/packages/source/c/cppman/cppman-0.4.5.tar.gz
+	md5sums = f97b52fda330bab6b315a473622001dd
+
+pkgname = cppman
+
