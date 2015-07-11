@@ -1,0 +1,18 @@
+pkgbase = python2-pyelasticsearch
+	pkgdesc = Flexible, high-scale API to elasticsearch
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyelasticsearch/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-six
+	depends = python2-requests
+	depends = python2-simplejson
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pyelasticsearch/pyelasticsearch-0.6.1.tar.gz
+	sha256sums = daea4813a78949f9f1941be2c56d5abe2c99a8582350caf059804fb65788aca5
+
+pkgname = python2-pyelasticsearch
+
