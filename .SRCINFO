@@ -1,6 +1,6 @@
 pkgbase = grpc
 	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = http://www.grpc.io/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = grpc
 	license = BSD
 	depends = openssl
 	depends = protobuf3
-	source = https://github.com/grpc/grpc/archive/release-0_9_1.tar.gz
-	md5sums = 0a5c7d44987f6bbfa3b819b4a65bade3
+	source = https://github.com/grpc/grpc/archive/release-0_10_0.tar.gz
+	md5sums = ba67356c028066f36d3a0cf196690803
 
 pkgname = grpc
 
