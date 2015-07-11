@@ -1,26 +1,35 @@
 pkgbase = haskell-linear
 	pkgdesc = Linear Algebra
-	pkgver = 1.18.1.1
+	pkgver = 1.19.1.2
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/linear
 	install = haskell-linear.install
 	arch = any
-	license = custom:BSD3
+	license = BSD3
 	depends = ghc
 	depends = haskell-adjunctions>=4.0
 	depends = haskell-adjunctions<5
+	depends = haskell-base>=4.5
+	depends = haskell-base<5
+	depends = haskell-binary>=0.5
+	depends = haskell-binary<0.8
 	depends = haskell-bytes>=0.15
 	depends = haskell-bytes<1
 	depends = haskell-cereal>=0.4.1.1
 	depends = haskell-cereal<0.5
+	depends = haskell-containers>=0.4
+	depends = haskell-containers<0.6
+	depends = haskell-deepseq>=1.1
+	depends = haskell-deepseq<1.5
 	depends = haskell-distributive>=0.2.2
 	depends = haskell-distributive<1
+	depends = haskell-ghc-prim
 	depends = haskell-hashable>=1.1
 	depends = haskell-hashable<1.3
 	depends = haskell-lens>=4.0
 	depends = haskell-lens<5
 	depends = haskell-reflection>=1.3.2
-	depends = haskell-reflection<2
+	depends = haskell-reflection<3
 	depends = haskell-semigroupoids>=3.0
 	depends = haskell-semigroupoids<6
 	depends = haskell-semigroups>=0.9
@@ -29,6 +38,8 @@ pkgbase = haskell-linear
 	depends = haskell-tagged<1
 	depends = haskell-template-haskell>=2.7
 	depends = haskell-template-haskell<3.0
+	depends = haskell-transformers>=0.2
+	depends = haskell-transformers<0.5
 	depends = haskell-transformers-compat>=0.4
 	depends = haskell-transformers-compat<1
 	depends = haskell-unordered-containers>=0.2.3
@@ -38,8 +49,8 @@ pkgbase = haskell-linear
 	depends = haskell-void>=0.6
 	depends = haskell-void<1
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/linear/1.18.1.1/linear-1.18.1.1.tar.gz
-	sha512sums = c10515ab07a93a3e567987769ad0ecac89e29161d2e38392042bf6e99317f93fa8be9129bdcfb63370161593305ad5bdf495b6bc8fee6ed9eaa3d05b338d8d68
+	source = http://hackage.haskell.org/packages/archive/linear/1.19.1.2/linear-1.19.1.2.tar.gz
+	sha512sums = e6c180ccaad8a4e8d55516e0bb535792cdac2744fa46fde00dace6f51c4d4045ae620b8c6c7e9dafc4e26ce727073858a8d75e47684d7beb48ce930cdc17068b
 
 pkgname = haskell-linear
 
