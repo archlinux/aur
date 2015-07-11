@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kcoreaddons
 	pkgdesc = Addons to QtCore (mingw-w64)
-	pkgver = 5.11.0
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kcoreaddons
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-kcoreaddons
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.11/kcoreaddons-5.11.0.tar.xz
-	md5sums = 1d17806d243683ac89c95352f82b0da3
+	source = http://download.kde.org/stable/frameworks/5.12/kcoreaddons-5.12.0.tar.xz
+	md5sums = 65975642ab8272601df81b738da01e7d
 
 pkgname = mingw-w64-kcoreaddons
 
