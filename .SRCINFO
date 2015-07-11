@@ -1,6 +1,6 @@
 pkgbase = kea
 	pkgdesc = DHCPv4/DHCPv6 server
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = http://kea.isc.org
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = kea
 	optdepends = postgresql: Lease information database
 	provides = kea
 	conflicts = kea
-	source = kea::git+git://git.kea.isc.org/kea.git#branch=kea-0.9.1-release
+	source = kea::git+git://git.kea.isc.org/kea.git#branch=kea-0.9.2-beta
 	sha512sums = SKIP
 
 pkgname = kea

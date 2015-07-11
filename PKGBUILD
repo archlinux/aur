@@ -1,6 +1,6 @@
 pkgname=('kea')
 srcname='kea'
-pkgver='0.9.1'
+pkgver='0.9.2'
 pkgrel='1'
 pkgdesc='DHCPv4/DHCPv6 server'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ makedepends=(
 provides=('kea')
 conflicts=('kea')
 
-source=("${srcname}::git+git://git.kea.isc.org/kea.git#branch=kea-${pkgver}-release")
+source=("${srcname}::git+git://git.kea.isc.org/kea.git#branch=kea-${pkgver}-beta")
 sha512sums=('SKIP')
 
 prepare() {
