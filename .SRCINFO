@@ -1,0 +1,15 @@
+pkgbase = otf-hermit
+	pkgdesc = A monospace font designed to be clear, pragmatic and very readable.
+	pkgver = 1.21
+	pkgrel = 2
+	url = https://pcaro.es/p/hermit/
+	install = otf-hermit.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://pcaro.es/d/otf-hermit-1.21.tar.gz
+	md5sums = 95e44bd81eb96f04e129ee019726db9a
+
+pkgname = otf-hermit
+

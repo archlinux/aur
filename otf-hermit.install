@@ -1,0 +1,22 @@
+post_install() {
+    echo -n "Updating font cache... "
+    fc-cache -fs >/dev/null
+    mkfontscale /usr/share/fonts/OTF
+    mkfontdir /usr/share/fonts/OTF
+    echo "done"
+}
+
+post_upgrade() {
+    # Renamed "hermit.otf" to "Hermit.otf" for coherence with the font name.
+    rm -f /usr/share/fonts/OTF/hermit.otf
+
+    # Moved "Hermit.otf" to "Hermit-medium.otf"
+    rm -f /usr/share/fonts/OTF/Hermit.otf
+
+    post_install
+}
+
+post_remove() {
+    post_install
+}
+
