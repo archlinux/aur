@@ -12,7 +12,7 @@ optdepends=('python-gobject: for GTK GUI'
             'python-qscintilla: for QT GUI'
             'kdebindings-python: for QT GUI')
 conflicts=('autokey' 'autokey-gtk' 'autokey-qt' 'autokey-data')
-license=('GPL v3')
+license=('GPL3')
 arch=('any')
 source=('https://pypi.python.org/packages/source/a/autokey-py3/autokey-py3-0.93.4.tar.gz')
 md5sums=('742d11eab5bad53485ada0ea6d9102cf')
