@@ -1,0 +1,17 @@
+pkgbase = git-deliver
+	pkgdesc = A delivery system based on Git and SSH
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://www.github.com/arnoo/git-deliver
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = gawk
+	depends = bash
+	depends = openssh
+	source = https://github.com/arnoo/git-deliver/archive/0.15.tar.gz
+	sha1sums = 3d125bba012f7d000b8a9869b691727124c5a70b
+
+pkgname = git-deliver
+
