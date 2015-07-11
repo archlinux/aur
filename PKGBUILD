@@ -23,11 +23,10 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${pkgname%-git}"
 
-	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe)"
 }
 
 package() {
-	cd "${pkgname%-git}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 -o $_username "data/conf.${pkgname}" "$pkgdir/etc/${pkgname}/conf.${pkgname}"
 	install -Dm644 -o $_username "data/${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
