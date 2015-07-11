@@ -1,0 +1,15 @@
+pkgbase = ruby-hashery
+	pkgdesc = Facets-bread collection of Hash-like classes.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://rubyworks.github.com/hashery
+	arch = any
+	license = BSD-2-Clause
+	depends = ruby
+	noextract = hashery-2.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hashery-2.1.1.gem
+	sha256sums = 8f94ee21ba35f970d188491318f9b79ff7288e517301700e4d342ba9255d5c75
+
+pkgname = ruby-hashery
+
