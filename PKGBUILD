@@ -1,8 +1,9 @@
 # Maintainer: Alexander Konarev  <avkonarev@gmail.com>
 # Author: Andrey Ovsankin aka EvilBeaver
+
 pkgname=onescript
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise"
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
@@ -12,13 +13,11 @@ makedepens=('unzip')
 
 source=(
         "https://bitbucket.org/EvilBeaver/1script/downloads/OneScript-$pkgver-bin.zip"
-        "https://bitbucket.org/EvilBeaver/1script/wiki/attachments/snake.os"
         "oscript"
         )
 noextract=("OneScript-$pkgver-bin.zip")
 
-md5sums=('d4f3b23a3cfcf477923ecced2f2f4c83'
-         'e88df2f8a75ee97859839b3f45fe7e0a'
+md5sums=('b68f9065bd9146c13f809a8fdb6b3809'
          'd0c25bfc717401e9806a7612581f6995')
 
 prepare() {
@@ -29,9 +28,6 @@ prepare() {
 package() {
   cd $srcdir
   install -Dm755 oscript "$pkgdir/usr/bin/oscript"
-
-  install -d "$pkgdir/usr/share/oscript/examples"
-  install -Dm644 snake.os "$pkgdir/usr/share/oscript/examples"
 
   cd $srcdir/OneScript-$pkgver/
   install -d "$pkgdir/usr/lib/oscript"
