@@ -1,13 +1,13 @@
 pkgbase = python2-cliapp
 	pkgdesc = Python framework for Unix-like command line programs
-	pkgver = 1.20150305
+	pkgver = 1.20150701
 	pkgrel = 1
 	url = http://liw.fi/cliapp/
 	arch = any
 	license = GPL2
 	depends = python2
-	source = http://code.liw.fi/debian/pool/main/p/python-cliapp/python-cliapp_1.20150305.orig.tar.gz
-	sha256sums = bfd6d21cbde11e1bc691ed5914fb0c99a36ecc9b0fce1041faa3f2c39e70cbd0
+	source = http://code.liw.fi/debian/pool/main/p/python-cliapp/python-cliapp_1.20150701.orig.tar.xz
+	sha256sums = 6410f7593cfd871efec4bb1a544ffca016a97554b7361fadae827d3068f5406f
 
 pkgname = python2-cliapp
 
