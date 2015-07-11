@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/aitjcize/cppman"
 license=('GPL')
 conflicts=(cppman-git)
-depends=(python3 vim groff python3-beautifulsoup4)
+depends=(python3 vim groff python-beautifulsoup4)
 source=("https://pypi.python.org/packages/source/c/cppman/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f97b52fda330bab6b315a473622001dd')
 
