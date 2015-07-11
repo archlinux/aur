@@ -14,7 +14,7 @@ pkgbase = libfprint-vfs0050
 	source = http://people.freedesktop.org/~hadess/libfprint-0.6.0.tar.xz
 	source = vfs0050.patch
 	md5sums = 1e66f6e786348b46075368cc682450a8
-	md5sums = 139f2b678600b66fb6214ff8dbd81a28
+	md5sums = 4d6e6d825aac69cc337885b82415a5c7
 
 pkgname = libfprint-vfs0050
 

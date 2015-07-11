@@ -527,7 +527,7 @@ diff -uraN libfprint-0.6.0/libfprint/drivers/vfs0050.h libfprint-0.6.0-my/libfpr
 +
 +#define DEBUG_PATH "/tmp/"
 +
-+/* Prints image in .pgm format */
++
 +static void print_image(unsigned char *data, int height)
 +{
 +    FILE *f = fopen(DEBUG_PATH "/image.pgm", "w");
@@ -544,7 +544,7 @@ diff -uraN libfprint-0.6.0/libfprint/drivers/vfs0050.h libfprint-0.6.0-my/libfpr
 +    fclose(f);
 +}
 +
-+/* Prints just scanned data in .pgm format */
++
 +static void print_raw_image(struct vfs_dev_t *vdev)
 +{
 +    unsigned char *data = vdev->data;
