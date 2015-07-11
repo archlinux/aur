@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgname=libfprint
+pkgname=libfprint-vfs0050
 pkgver=0.6.0
 pkgrel=1
 pkgdesc="Library for fingerprint readers with vfs0050 driver(github.com/zemen/libfprint)"
