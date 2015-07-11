@@ -18,19 +18,19 @@ md5sums=('1e66f6e786348b46075368cc682450a8'
          '139f2b678600b66fb6214ff8dbd81a28')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd libfprint-$pkgver
   patch -Np1 -i $srcdir/vfs0050.patch
   aclocal
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd libfprint-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --disable-static
   automake
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd libfprint-$pkgver
   make DESTDIR="$pkgdir" install
 }
