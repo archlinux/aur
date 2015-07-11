@@ -3,7 +3,7 @@
 
 pkgname=macfanctld
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 pkgdesc="Fan control daemon for MacBook"
 url="https://github.com/MikaelStrom/macfanctld"
@@ -11,12 +11,13 @@ license="GPL3"
 makedepends=('gcc')
 depends=('glibc')
 backup=('etc/macfanctl.conf')
+install=$pkgname.install
 source=(
   "https://github.com/MikaelStrom/$pkgname/archive/master.tar.gz"
   "$pkgname.service"
 )
 md5sums=('d1a42fe34cbb4e830bed5547bef969df'
-         '3ae082c7be885c8427eee8108393fc90')
+         '3debfbd8f3e9110d1581adb0c97ced71')
 
 prepare() {
   cd "$pkgname-master"

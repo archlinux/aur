@@ -1,0 +1,26 @@
+pre_upgrade() {
+  local _active=/tmp/.macfanctld
+  systemctl daemon-reload
+  if [ $(systemctl is-active macfanctld.service) ]; then
+    systemctl --quiet stop macfanctld.service
+    touch $_active
+  elif [ -f $_active ]; then
+    rm --force $_active
+  fi
+}
+
+post_upgrade() {
+  local _active=/tmp/.macfanctld
+  systemctl daemon-reload
+  if [ -f $_active ]; then
+    systemctl --quiet start macfanctld.service
+    rm --force $_active
+  fi
+}
+
+pre_remove() {
+  if [ $(systemctl is-active macfanctld.service) ]; then
+    systemctl --quiet stop macfanctld.service
+  fi
+}
+
