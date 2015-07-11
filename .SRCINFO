@@ -1,0 +1,19 @@
+pkgbase = sratom-svn
+	pkgdesc = An LV2 Atom RDF serialisation library
+	pkgver = 0.4.7.r5694
+	pkgrel = 1
+	url = http://drobilla.net/software/sratom/
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = subversion
+	makedepends = python2
+	depends = lv2
+	depends = sord
+	provides = sratom
+	conflicts = sratom
+	source = sratom::svn+http://svn.drobilla.net/lad/trunk/sratom
+	md5sums = SKIP
+
+pkgname = sratom-svn
+

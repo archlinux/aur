@@ -1,0 +1,7 @@
+sratom
+src
+pkg
+sratom-svn-*.tar.xz
+sratom-svn-*.src.tar.gz
+.AURINFO
+
