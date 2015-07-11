@@ -1,8 +1,8 @@
 # Maintainer: Corey Powell <mistdragon100@gmail.com>
 # Previous Maintainer: Scott Olson <scott@scott-olson.org>
 pkgname=rock
-pkgver=0.9.9
-pkgrel=3
+pkgver=0.9.10
+pkgrel=1
 pkgdesc="An ooc compiler written in ooc"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -14,7 +14,7 @@ depends=('sh')
 optdepends=('gcc: can be used as backend C compiler'
             'clang: can be used as backend C compiler'
             'tcc: can be used as backend C compiler')
-md5sums=('55adb0a0753f2cfea9ba6670e5270563'
+md5sums=('30613c1fb1b823c545870fbbe984e933'
          '5de9146a5f9df52ae395863299438017')
 
 build() {

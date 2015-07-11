@@ -1,7 +1,7 @@
 pkgbase = rock
 	pkgdesc = An ooc compiler written in ooc
-	pkgver = 0.9.9
-	pkgrel = 3
+	pkgver = 0.9.10
+	pkgrel = 1
 	url = http://ooc-lang.org/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rock
 	optdepends = gcc: can be used as backend C compiler
 	optdepends = clang: can be used as backend C compiler
 	optdepends = tcc: can be used as backend C compiler
-	source = https://github.com/fasterthanlime/rock/archive/v0.9.9.tar.gz
-	source = http://downloads.ooc-lang.org/rock/0.9.9/latest-bootstrap.tar.bz2
-	md5sums = 55adb0a0753f2cfea9ba6670e5270563
+	source = https://github.com/fasterthanlime/rock/archive/v0.9.10.tar.gz
+	source = http://downloads.ooc-lang.org/rock/0.9.10/latest-bootstrap.tar.bz2
+	md5sums = 30613c1fb1b823c545870fbbe984e933
 	md5sums = 5de9146a5f9df52ae395863299438017
 
 pkgname = rock
