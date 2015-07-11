@@ -1,0 +1,28 @@
+pkgbase = sublime-text-imfix
+	pkgdesc = sophisticated text editor for code, html and prose. Fcitx input method support
+	pkgver = 2.0.2
+	pkgrel = 2
+	url = http://www.sublimetext.com/2
+	install = sublime-text.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	depends = libpng
+	depends = gtk2
+	depends = xdg-utils
+	depends = desktop-file-utils
+	conflicts = sublime-text
+	source = sublime-text.desktop
+	source = subl
+	source = sublime_imfix.c
+	sha256sums = 3f11bf8cb814b68ed81b535dd13cc86bb28c71010d74141bfa06137782fd2f7d
+	sha256sums = d3453ef5f1722be562baea8a4afce0b11aa5d6228292c8e2f1a621ebad28a4f1
+	sha256sums = 8ac4d949f65785736f6a67de9c23cb25b22495313a5b5de95f199cf84568524f
+	source_i686 = http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.tar.bz2
+	sha256sums_i686 = 07338e041cfb348938fa8069f0aad3b5b43c319b7ec564ffff1489796f2dcf08
+	source_x86_64 = http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2%20x64.tar.bz2
+	sha256sums_x86_64 = 01baed30d66432e30002a309ff0393967be1daba5cce653e43bba6bd6c38ab84
+
+pkgname = sublime-text-imfix
+
