@@ -1,0 +1,13 @@
+pkgbase = atolm-openbox-theme
+	pkgdesc = Atolm Openbox Theme
+	pkgver = 20110813
+	pkgrel = 1
+	url = http://box-look.org/content/show.php?content=144416
+	arch = any
+	license = GPL
+	depends = openbox
+	source = atolm-openbox-theme-20110813.tar.gz::http://box-look.org/CONTENT/content-files/144416-Atolm.obt
+	md5sums = fe601ae403ef0a4a7f2a5fea12b0f0e6
+
+pkgname = atolm-openbox-theme
+
