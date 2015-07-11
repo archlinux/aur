@@ -1,5 +1,5 @@
 pkgbase = freeglut-svn
-	pkgver = 1559
+	pkgver = r1768
 	pkgrel = 1
 	url = http://freeglut.sourceforge.net/
 	arch = i686
