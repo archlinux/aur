@@ -1,0 +1,22 @@
+pkgbase = lib32-portmidi
+	pkgdesc = Platform independent library for real-time MIDI input/output. (32 bit)
+	pkgver = 217
+	pkgrel = 5
+	url = http://portmedia.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = java-environment
+	makedepends = gcc-multilib
+	depends = lib32-alsa-lib
+	optdepends = java-runtime: for using pmdefaults
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/portmedia/portmidi/217/portmidi-src-217.zip
+	source = portmidi-217-build-fix.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/portmidi-217-build-fix.patch?h=packages/portmidi
+	source = pm_common.patch
+	sha256sums = 08e9a892bd80bdb1115213fb72dc29a7bf2ff108b378180586aa65f3cfd42e0f
+	sha256sums = da2b6a4e8f86bc42520c660bde4833497ddbe6a491aa3aa98b9a81c07e2db347
+	sha256sums = 3659c73b30b4d2d0cdb9447bfcef16ecc9b59aa9f729867130b4b645ca2156e5
+
+pkgname = lib32-portmidi
+
