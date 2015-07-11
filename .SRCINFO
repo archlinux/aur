@@ -1,6 +1,6 @@
 pkgbase = openbazaar-git
 	pkgdesc = A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL
-	pkgver = 4064.5832e84
+	pkgver = 4073.837b466
 	pkgrel = 1
 	url = http://openbazaar.org
 	install = openbazaar.install
