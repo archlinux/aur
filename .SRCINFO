@@ -1,0 +1,18 @@
+pkgbase = python2-gitifyhg
+	pkgdesc = git remote that allows local development and push changes to upstream mercurial
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/gitifyhg/
+	arch = any
+	license = GPL3
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-path
+	depends = mercurial
+	optdepends = git: clone hg repos
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/g/gitifyhg/gitifyhg-0.8.4.tar.gz
+	md5sums = f8580e1358c794793cf223157fbcec61
+
+pkgname = python2-gitifyhg
+
