@@ -1,0 +1,24 @@
+pkgbase = cadence-git
+	pkgdesc = JACK Audio Toolbox.
+	pkgver = 20150618
+	pkgrel = 1
+	url = http://kxstudio.sf.net/cadence
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python-pyqt4
+	depends = python-dbus
+	depends = jack
+	depends = qt4
+	optdepends = a2jmidid: alsa-midi bridge
+	optdepends = pulseaudio: pulseaudio bridge
+	optdepends = zita-ajbridge: alternate alsa-audio bridge
+	optdepends = jack_capture: needed for cadence-render
+	optdepends = ladish: needed for claudia
+	provides = cadence
+	conflicts = cadence
+	source = cadence-git::git+https://github.com/falkTX/Cadence.git
+	md5sums = SKIP
+
+pkgname = cadence-git
+
