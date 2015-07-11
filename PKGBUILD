@@ -35,8 +35,8 @@ source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/des
         "http://dl.nwjs.io/v${_nw_ver}/nwjs-v${_nw_ver}-${_nw_platform}.tar.gz"
         "popcorntime.desktop")
 sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
-            'SKIP'
-            '43fbdcaf89bb21ec74f83b159283636e0e390b1771a0c39507db8c23a0e0703d'
+            '447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47'
+            '7f46d6c00fd2bb3aae70e177b94685af2f53476c3ee50c1c243760d0f271b505'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
 prepare() {
