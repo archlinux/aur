@@ -1,0 +1,21 @@
+pkgbase = ddccontrol-git
+	pkgdesc = Control your monitor by software using the DDC/CI protocol.
+	pkgver = 20140105.r9d89d8c
+	pkgrel = 1
+	url = https://github.com/ddccontrol/ddccontrol
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = pciutils
+	depends = libxml2
+	depends = ddccontrol-db-git
+	provides = ddccontrol
+	conflicts = ddccontrol
+	options = !libtool
+	source = git+https://github.com/ddccontrol/ddccontrol.git
+	md5sums = SKIP
+
+pkgname = ddccontrol-git
+

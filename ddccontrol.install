@@ -1,0 +1,13 @@
+post_install() {
+
+echo 
+echo "Add 'i2c-dev' module load: echo \"i2c-dev\" > /etc/modules-load.d/90-i2c.conf"
+echo "Or"
+echo "Load manual modprobe i2c-dev"
+echo 
+echo "Start: sudo ddccontrol -p"
+echo "Or"
+echo "kdesu gddccontrol"
+echo "gksu gddccontrol"
+
+}
