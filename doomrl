@@ -1,0 +1,6 @@
+#! /bin/sh
+
+## This is required for savegames to work.
+cd /usr/share/doomrl
+/usr/share/doomrl/doomrl $1
+

@@ -1,0 +1,17 @@
+pkgbase = doomrl
+	pkgdesc = A roguelike game based on the FPS Doom.
+	pkgver = 0.9.9.7
+	pkgrel = 1
+	url = http://doom.chaosforge.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl_mixer
+	depends = zlib
+	depends = lua
+	depends = timidity-eawpatches
+	depends = sdl_image
+	conflicts = doomrl-lq doomrl-ogg
+
+pkgname = doomrl
+
