@@ -1,0 +1,21 @@
+pkgbase = ike
+	pkgdesc = Shrew Soft VPN client for Linux
+	pkgver = 2.2.1
+	pkgrel = 3
+	url = http://www.shrew.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = openssl
+	depends = qt4
+	depends = libedit
+	optdepends = openldap
+	backup = etc/iked.conf
+	source = http://www.shrew.net/download/ike/ike-2.2.1-release.tgz
+	source = iked.service
+	md5sums = 3dac18a2da5809ccb38c50cd4a455897
+	md5sums = 3cb3ff3b663805f76be1efd527ae436c
+
+pkgname = ike
+

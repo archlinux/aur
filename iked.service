@@ -1,0 +1,12 @@
+[Unit]
+Description=Shrew VPN client 
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/iked
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
