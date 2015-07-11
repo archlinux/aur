@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Symantec Ghost
+Name[zh_CN]=赛门铁克Ghost克隆与备份实用工具
+Name[zh_HK]=賽門鐵克Ghost克隆與備份實用程式
+Name[zh_TW]=賽門鐵克魅影系统
+Comment=Backup or Restore your partition
+Comment[zh_CN]=備份或还原磁盘分区
+Comment[zh_HK]=備份還原磁盤分區
+Comment[zh_TW]=克隆或還原磁碟分割
+Exec=bash -c 'if [[ $(which pkexec) ]];then pkexec --disable-internal-agent "/usr/bin/ghost";else coproc /usr/bin/ghost;fi'
+Icon=ghost
+Type=Application
+Categories=System;Filesystem;
+StartupNotify=true

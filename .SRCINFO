@@ -1,0 +1,24 @@
+pkgbase = symantec-ghost
+	pkgdesc = Symantec Ghost for Linux
+	pkgver = 11.5
+	pkgrel = 2
+	url = http://www.symantec.com/ghost-solution-suite
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = glibc
+	depends = lib32-gcc-libs
+	depends = lib32-libx11
+	optdepends = polkit: to run ghost directly from menu
+	options = !strip
+	source = ghost.desktop
+	source = http://upload.wikimedia.org/wikipedia/en/5/58/Norton_Ghost_icon.png
+	source = ghost.polkit
+	source = ftp://ftp.norton.com/public/english_us_canada/products/symantec_ghost_solution_suite/2.5/manuals/readme.txt
+	sha256sums = 7d0b4a0f3c15927d8b9c788f61ea05d6dd591fea0db99e8cb5cacaba5dab218c
+	sha256sums = 849459ed3ff52e76547eb1f90d2963226a4bd9d9875473785cbf3922ab3ca0ac
+	sha256sums = 852c2208a95080923e7534146e86d0b50ff790a254161fad900029c7e44181e3
+	sha256sums = 39b5bca2401df511364904039fb8f692be3095f57df434245cfc36893416b176
+
+pkgname = symantec-ghost
+
