@@ -16,7 +16,6 @@ pkgbase = thunderbird-beta
 	makedepends = wireless_tools
 	makedepends = yasm
 	makedepends = zip
-	makedepends = pacman>=4.2.0
 	depends = alsa-lib
 	depends = dbus-glib
 	depends = desktop-file-utils

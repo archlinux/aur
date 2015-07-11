@@ -17,7 +17,7 @@ depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'g
          'hicolor-icon-theme' 'hunspell' 'libjpeg' 'libnotify' 'libpng' 'libvpx' 'libxt' 'mime-types'
          'mozilla-common' 'nspr' 'nss' 'pixman' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
-makedepends=('autoconf2.13' 'mesa' 'python2' 'unzip' 'wireless_tools' 'yasm' 'zip' 'pacman>=4.2.0')
+makedepends=('autoconf2.13' 'mesa' 'python2' 'unzip' 'wireless_tools' 'yasm' 'zip')
 [[ $_pgo = 1 ]] && makedepends+=('imake' 'xorg-server-xvfb')
 provides=("thunderbird=$pkgver")
 install=$pkgname.install
