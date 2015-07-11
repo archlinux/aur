@@ -1,0 +1,15 @@
+post_install()
+{ 
+  echo ""
+  echo "***************************************************************"
+  echo " XRoar needs ROM dumps from the original computers to work"
+  echo " correctly. Install ROMs to /usr/share/xroar/roms/ for system"
+  echo " wide use, or ~/.xroar/roms/ for single user only."
+  echo " See http://www.6809.org.uk/dragon/xroar-manual.shtml for more information."
+  echo "***************************************************************"
+  echo ""
+}
+
+op=$1
+shift
+$op $*

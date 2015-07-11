@@ -1,0 +1,22 @@
+pkgbase = xroar
+	pkgdesc = A Dragon and Tandy CoCo emulator.
+	pkgver = 0.33.2
+	pkgrel = 1
+	url = http://www.6809.org.uk/dragon/xroar.shtml
+	install = xroar.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = sdl
+	depends = libgl
+	depends = libsndfile
+	source = http://www.6809.org.uk/xroar/dl/xroar-0.33.2.tar.gz
+	source = xroar.desktop
+	source = xroar.png
+	md5sums = d17eb0c201d0c8572fb4f89605ea0f79
+	md5sums = b72be2c92759966c932b6e61c1ae4fef
+	md5sums = 8d34759e88a1ddc929a5db982db06e6a
+
+pkgname = xroar
+

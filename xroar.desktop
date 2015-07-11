@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XRoar
+Comment=A Dragon and Tandy CoCo emulator.
+Icon=xroar
+Exec=xroar
+Terminal=false
+StartupNotify=false
+Categories=Emulator;Game;
