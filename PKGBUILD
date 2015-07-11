@@ -18,7 +18,7 @@ source=(
 noextract=("OneScript-$pkgver-bin.zip")
 
 md5sums=('b68f9065bd9146c13f809a8fdb6b3809'
-         'd0c25bfc717401e9806a7612581f6995')
+         '907f8929debbe8a307fbe15b5f60cf68')
 
 prepare() {
   cd $srcdir
@@ -30,6 +30,6 @@ package() {
   install -Dm755 oscript "$pkgdir/usr/bin/oscript"
 
   cd $srcdir/OneScript-$pkgver/
-  install -d "$pkgdir/usr/lib/oscript"
-  install -Dm644 * "$pkgdir/usr/lib/oscript"
+  mkdir -p "$pkgdir/usr/lib/oscript"
+  cp -r .  "$pkgdir/usr/lib/oscript"
 }
