@@ -2,7 +2,7 @@
 # Contributor: Kenny Rasschaert <kenny dot rasschaert at gmail dot com> PGP-Key: 1F70454121E41419
 
 pkgname=rkt
-pkgver=0.5.6
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('rkt')
 replaces=('rocket')
 conflicts=('rocket')
 source=("https://github.com/coreos/rkt/archive/v${pkgver}.tar.gz")
-sha256sums=('bae39568c9e980245b13309ba89eac1f31ba8e29d7ccf3e0f85b75c34ae57a7d')
+sha256sums=('1e5996c9c26a69f107d9d4f8dd2a3e55ca3a9b8491ecbd9fe2dfe423c7c384ce')
 
 build() {
   cd "${pkgname}-${pkgver}"
