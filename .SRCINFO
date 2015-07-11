@@ -1,0 +1,18 @@
+pkgbase = pngquant-git
+	pkgdesc = pngquant is a command-line utility to quantize PNGs down to 8-bit paletted PNGs
+	pkgver = 2.2.0.r26.gb848d0e
+	pkgrel = 1
+	url = http://pngquant.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libpng
+	depends = zlib
+	provides = pngquant
+	conflicts = pngquant
+	source = pngquant-git::git://github.com/pornel/improved-pngquant.git
+	md5sums = SKIP
+
+pkgname = pngquant-git
+
