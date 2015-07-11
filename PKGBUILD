@@ -1,23 +1,26 @@
-# Maintainer : carukia <hornetsnest0@gmail.com
-# Contributor: Thomas Krug <phragment@lavabit.com>
-pkgname=pidgin-awayonlock
-pkgver=0.5.2
-pkgrel=2
-pkgdesc="Sets you as away when the screensaver gets activated."
-arch=('i686' 'x86_64')
+# Maintainer: Carl George < arch at cgtx dot us >
+# Contributor: carukia < hornetsnest0 at gmail dot com >
+# Contributor: Thomas Krug < phragment at lavabit dot com >
+
+pkgname="pidgin-awayonlock"
+pkgver="0.5.2"
+pkgrel="3"
+pkgdesc="A simple plugin for Pidgin to change your status when the screensaver gets activated."
+arch=("i686" "x86_64")
 url="http://costela.net/projects/awayonlock/"
-license=('GPL')
-depends=('pidgin' 'gnome-screensaver>=2.26.0')
-makedepends=('cmake')
-source=("http://costela.net/files/awayonlock-${pkgver}.tar.gz")
-md5sums=('4601543ca8efbaed9ed71e726c119c5d')
+license=("GPL3")
+depends=("pidgin")
+optdepends=(
+    "gnome-screensaver: gnome support"
+    "kdeartwork-kscreensaver: kde support"
+)
+makedepends=("cmake")
+source=("https://github.com/costela/awayonlock/archive/v${pkgver}.tar.gz")
+sha256sums=("40b25b72a310304e5dbbc1dfd26b87129b3a305a447312dc494731c72af72bb9")
 
 package() {
-  cd "$srcdir/awayonlock-${pkgver}"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ ./ || return 1
-
-  make || return 1
-
-  make DESTDIR="$pkgdir" install || return 1
+    cd "${srcdir}/awayonlock-${pkgver}"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/ ./
+    make
+    make DESTDIR="${pkgdir}" install
 }
