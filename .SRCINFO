@@ -1,0 +1,13 @@
+pkgbase = breeze-obsidian-cursor-theme
+	pkgdesc = Breeze Obsidian cursor theme.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	source = https://share.kde.org/public.php?service=files&t=6524eea49b2f0f30be31e98e9fe6b731&download
+	sha256sums = 2f8b9f8dd1bbf3e8ea6d5ab649d59ec7a0136658b2fd3368a87958c6975d48cb
+
+pkgname = breeze-obsidian-cursor-theme
+
