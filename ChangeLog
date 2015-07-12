@@ -1,6 +1,12 @@
+2015-07-12 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 2.1-1 :
+	Switch to MIT license and include "LICENSE" file.
+
 2012-09-27 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
-  * 2.0-1 :
-  Added support for running under both systemd and System V systems.
+
+	* 2.0-1 :
+	Added support for running under both systemd and System V systems.
 
 2012-03-10 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 

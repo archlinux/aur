@@ -1,16 +1,18 @@
 pkgbase = networkmanager-dispatcher-pdnsd
 	pkgdesc = Dispatcher Script for pDNSd; works with systemd and sysvinit
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
-	url = http://projects.gnome.org/NetworkManager/
+	url = https://wiki.gnome.org/Projects/NetworkManager
 	changelog = ChangeLog
 	arch = any
-	license = BSD
+	license = MIT
 	depends = networkmanager
 	depends = pdnsd
 	backup = etc/NetworkManager/dispatcher.d/00-pdnsd
 	source = 00-pdnsd
+	source = LICENSE
 	sha256sums = 586da6d5e87185ad4c00cdcdaae666a0a777fda477c652355bf826851da66814
+	sha256sums = dcadbc70cabe99658c2ec966cbec7134514fbe8894b1fe7bd5f3ccbaf643825a
 
 pkgname = networkmanager-dispatcher-pdnsd
 
