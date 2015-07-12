@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-protocol-git
-pkgver=20150707
+pkgver=20150710
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Query Privacy Protocol"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('boost'
          'boost-libs'
          'czmq-git'
          'czmqpp-git'
-         'libbitcoin-git'
+         'libbitcoin'
          'libsodium'
          'protobuf'
          'zeromq')
