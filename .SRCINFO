@@ -1,7 +1,7 @@
 pkgbase = conky-nvidia
 	pkgdesc = Lightweight system monitor for X
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://conky.sourceforge.net/
 	arch = i686
 	arch = x86_64

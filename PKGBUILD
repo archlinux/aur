@@ -7,7 +7,7 @@
 pkgname=conky-nvidia
 _pkgname=conky
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight system monitor for X'
 url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
@@ -35,6 +35,7 @@ build() {
 
 	cmake \
 		-D CMAKE_BUILD_TYPE=Release \
+		-D MAINTAINER_MODE=ON \
 		-D BUILD_CURL=ON \
 		-D BUILD_IBM=ON \
 		-D BUILD_IMLIB2=ON \
