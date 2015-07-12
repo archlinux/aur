@@ -1,5 +1,4 @@
 #!/bin/sh
-# vim:set ts=2 sw=2 et:
 
 _service_name=hudson.service
 _service_username=hudson
