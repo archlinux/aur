@@ -1,0 +1,15 @@
+post_install() {
+	if [ -x /usr/bin/ldconfig ]; then
+		/usr/bin/ldconfig
+	fi
+}
+post_upgrade() {
+	if [ -x /usr/bin/ldconfig ]; then
+                /usr/bin/ldconfig
+        fi
+}
+post_remove() {
+        if [ -x /usr/bin/ldconfig ]; then
+                /usr/bin/ldconfig
+        fi
+}
