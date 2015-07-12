@@ -1,0 +1,26 @@
+From 97d6cbee11c577cfce424eb696031000e26ce89e Mon Sep 17 00:00:00 2001
+From: Sebastian Krzyszkowiak <dos@dosowisko.net>
+Date: Tue, 16 Jun 2015 03:44:41 +0200
+Subject: [PATCH] configure.ac: use PKG_CHECK_MODULES for libvpx
+
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9eb46c1..444a771 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -60,8 +60,7 @@ else
+ fi
+ 
+ if test "x$enable_engine" = xyes; then
+-  PKG_CHECK_MODULES([ENGINE], [sdl alure >= 1.1 openal vorbis ogg])
+-  AC_CHECK_LIB([vpx], [vpx_codec_decode], [ENGINE_LIBS+=" -lvpx"], [AC_MSG_ERROR([cannot find vpx library])])
++  PKG_CHECK_MODULES([ENGINE], [sdl alure >= 1.1 openal vorbis ogg vpx])
+   if test "x$enable_gles2" = xyes; then
+     AC_CHECK_LIB([GLESv2], [glEnable], [ENGINE_LIBS+=" -lGLESv2"], [AC_MSG_ERROR([cannot find GLESv2 library])])
+     AC_CHECK_LIB([EGL], [eglInitialize], [ENGINE_LIBS+=" -lEGL"], [AC_MSG_ERROR([cannot find EGL library])])
+-- 
+2.4.5
+
