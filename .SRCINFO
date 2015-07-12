@@ -1,0 +1,23 @@
+pkgbase = libsysstat-git
+	pkgdesc = Library to query system statistics (net, resource usage, ...)
+	pkgver = 0.3.0.12.g5ef5c4a
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = libsysstat
+	provides = libsysstat-qt5
+	provides = libsysstat-qt5-git
+	conflicts = libsysstat
+	conflicts = libsysstat-qt5
+	conflicts = libsysstat-qt5-git
+	source = git+https://github.com/lxde/libsysstat.git
+	sha256sums = SKIP
+
+pkgname = libsysstat-git
+
