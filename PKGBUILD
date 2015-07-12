@@ -7,7 +7,7 @@
 
 pkgname=font-manager
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
 url="http://fontmanager.github.io/"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ md5sums=('0d845cc3cd369b60da04d78211146937')
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-schemas-compile
-  make
+  ./configure --prefix=/usr --disable-schemas-compile
+  make -j1
 }
 
 package() {
