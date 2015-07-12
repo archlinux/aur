@@ -1,0 +1,13 @@
+[Unit]
+Description=An open platform to manage code quality
+After=network.target
+
+[Service]
+User=sonarqube
+Group=sonarqube
+PIDFile=/opt/sonarqube/run/SonarQube.pid
+ExecStart=/opt/sonarqube/bin/ARCH/sonar.sh start
+ExecStop=/opt/sonarqube/bin/ARCH/sonar.sh stop
+
+[Install]
+WantedBy=multi-user.target

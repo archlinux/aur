@@ -1,0 +1,11 @@
+--- sonar.sh	2015-02-26 21:29:16.000000000 +0100
++++ sonar.sh.new	2015-07-03 14:32:42.594080161 +0200
+@@ -30,7 +30,7 @@
+ PRIORITY=
+ 
+ # Location of the pid file.
+-PIDDIR="."
++PIDDIR="../../run"
+ 
+ # If uncommented, causes the Wrapper to be shutdown using an anchor file.
+ #  When launched with the 'start' command, it will also ignore all INT and

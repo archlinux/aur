@@ -1,0 +1,22 @@
+pkgbase = sonarqube-lts
+	pkgdesc = An open platform to manage code quality
+	pkgver = 4.5.4
+	pkgrel = 1
+	url = http://www.sonarqube.org/
+	install = sonarqube-lts.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = java-runtime>=7
+	conflicts = sonar
+	conflicts = sonarqube
+	options = !strip
+	source = http://downloads.sonarsource.com/sonarqube/sonarqube-4.5.4.zip
+	source = sonarqube.service
+	source = sonar.sh.patch
+	md5sums = 59c454a0fa62fe1fe6c269616770b288
+	md5sums = e98cb43f4f6b9af33312fa1d8aba88e3
+	md5sums = 2b443049eede589adc4ad451197f1c10
+
+pkgname = sonarqube-lts
+

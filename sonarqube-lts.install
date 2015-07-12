@@ -1,0 +1,12 @@
+pre_install() {
+	getent group sonarqube > /dev/null || groupadd -g 123 sonarqube 1>/dev/null
+	getent passwd sonarqube > /dev/null || useradd -u 123 -d /opt/sonarqube -g sonarqube -s /bin/false sonarqube 1>/dev/null
+}
+
+post_install() {
+	chown -R sonarqube:sonarqube /opt/sonarqube/{logs,run,temp,data,extensions,web}
+}
+
+post_upgrade() {
+	post_install
+}
