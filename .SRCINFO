@@ -1,0 +1,24 @@
+pkgbase = nethack-nao
+	pkgdesc = A single player dungeon exploration game (with patches from NAO)
+	pkgver = 3.4.3_20141103
+	pkgrel = 1
+	url = http://alt.org/nethack/naonh.php
+	changelog = nethack.changelog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = bash
+	provides = nethack
+	conflicts = nethack
+	backup = var/games/nethack/logfile
+	backup = var/games/nethack/perm
+	backup = var/games/nethack/record
+	backup = var/games/nethack/xlogfile
+	source = git+http://alt.org/nethack/nh343-nao.git
+	source = nethack.patch
+	sha256sums = SKIP
+	sha256sums = 4263cac9fa958763966525a6e9d67149f608b01bef26039a12deb0d5b6a979bf
+
+pkgname = nethack-nao
+
