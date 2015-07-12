@@ -1,0 +1,28 @@
+pkgbase = radium
+	pkgdesc = A graphical music editor. A next generation tracker.
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = http://users.notam02.no/~kjetism/radium/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = python2
+	depends = libxaw
+	depends = libsndfile
+	depends = libsamplerate
+	depends = liblrdf
+	depends = qt4
+	depends = libxkbfile
+	depends = glu
+	depends = speex
+	depends = fftw
+	depends = jack
+	depends = libxinerama
+	depends = libxcursor
+	options = !strip
+	source = https://github.com/kmatheussen/radium/archive/3.1.4.tar.gz
+	md5sums = 0bb481835ebdc14c542839e4e66dc22b
+
+pkgname = radium
+
