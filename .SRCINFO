@@ -1,5 +1,5 @@
 pkgbase = linux-lts318
-	pkgver = 3.18.17
+	pkgver = 3.18.18
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,15 +13,15 @@ pkgbase = linux-lts318
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.17.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.17.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.18.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.18.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	sha256sums = becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd
 	sha256sums = SKIP
-	sha256sums = 190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8
+	sha256sums = bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e
 	sha256sums = SKIP
 	sha256sums = c9821d2a786b569233833c3074c7bb4e9c0d50ab903a9b9aeb8784d95c87a52d
 	sha256sums = 781d5cb410935f3f904a539ecdb0b49f2d87c95a0f05c665b19b97a9d14dd40e
@@ -36,20 +36,20 @@ pkgname = linux-lts318
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-lts318=3.18.17
+	provides = kernel26-lts318=3.18.18
 	conflicts = kernel26-lts318
 	replaces = kernel26-lts318
 	backup = etc/mkinitcpio.d/linux-lts318.preset
 
 pkgname = linux-lts318-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts318 kernel
-	provides = kernel26-lts318-headers=3.18.17
+	provides = kernel26-lts318-headers=3.18.18
 	conflicts = kernel26-lts318-headers
 	replaces = kernel26-lts318-headers
 
 pkgname = linux-lts318-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts318 kernel
-	provides = kernel26-lts318-docs=3.18.17
+	provides = kernel26-lts318-docs=3.18.18
 	conflicts = kernel26-lts318-docs
 	replaces = kernel26-lts318-docs
 
