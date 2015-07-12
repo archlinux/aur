@@ -2,24 +2,25 @@
 # Contributor: Jed Brown <jed@59A2.org>
 
 pkgname=sowing
-pkgver=1.1.17
-pkgrel=2
+pkgver=1.1.18
+pkgrel=1
 pkgdesc="Tools for documenting and improving portability"
 arch=('any')
 url="http://www.cs.uiuc.edu/~wgropp/projects/software/sowing"
 license=('GPL')
 source=('http://ftp.mcs.anl.gov/pub/sowing/sowing.tar.gz')
-sha256sums=('fb6d76c02c9691c8abe652498283ef5d260cb2ec4d0ec7afaa7623aaa7de8bb8')
+sha256sums='b63cec263c413b18d283d8885ff38fe0c2267d8fc6b2246b8df922411cab1e13'
 
 build() {
-  mkdir -p "${srcdir}/build"
-  cd "${srcdir}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --datadir=/usr/share/sowing
 
-  ../"${pkgname}-${pkgver}"/configure --prefix=/usr --datadir=/usr/share/sowing
-  make
+  # force -j1 otherwise compilation problems may occur
+  # depending on the timing of the jobs
+  make -j1
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make install prefix="${pkgdir}/usr" datadir="${pkgdir}/usr/share/sowing"
 }
