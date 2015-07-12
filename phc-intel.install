@@ -1,0 +1,30 @@
+post_install() {
+	cat << EOF
+Run "phc-intel setup" to build the module for current kernel.
+You can enter the desired voltage IDs in /etc/default/phc-intel.
+Booting with nophc kernel parameter skips setting of VIDs in case of failure.
+EOF
+}
+
+post_upgrade() {
+	rm -f var/log/phc-intel.log
+}
+
+post_remove() {
+	echo Removing built modules ...
+	rm -rf usr/src/phc-intel/
+	cd usr/lib/modules/
+	for i in *; do
+		if [ -f "$i/extramodules/phc-intel.ko" ]; then
+			rm -f "$i/extramodules/phc-intel.ko"
+			[ -d "$i/kernel" ] && depmod "$i"
+		elif [ -f "$i/phc-intel.ko" ]; then
+			rm -f "$i/phc-intel.ko"
+			rmdir -p --ignore-fail-on-non-empty "$i"
+		elif [ -f "$i/extra/phc-intel.ko" ]; then
+			rm -f "$i/extra/phc-intel.ko"
+			rmdir -p --ignore-fail-on-non-empty "$i/extra"
+			[ -d "$i/kernel" ] && depmod "$i"
+		fi
+	done
+}
