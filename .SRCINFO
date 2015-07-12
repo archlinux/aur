@@ -1,0 +1,15 @@
+pkgbase = cnijfilter-mg3500series
+	pkgdesc = Canon InkJet Printer Driver (mg3500 Series)
+	pkgver = 4.00
+	pkgrel = 1
+	url = http://www.canon.co.uk/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_mg3550.aspx
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	provides = cnijfilter-common=4.00
+	source = http://gdlp01.c-wss.com/gds/4/0100005504/01/cnijfilter-mg3500series-4.00-1-deb.tar.gz
+	md5sums = 019d208676264cc0aa90eb98344d3be3
+
+pkgname = cnijfilter-mg3500series
+
