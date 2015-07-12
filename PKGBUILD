@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-blockchain
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Implementation"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-blockchain"
 license=('AGPL3')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/$pkgver)
-sha256sums=('0dbb16b3d7b2c45a6a9aa9abb72e499f7eb9f1cee18d48f64dd62f105e1f435e')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
+sha256sums=('ab0cd69de566c8af7bd996bc4b8abfad8b6dd5d066d66235622880e703e498b5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
