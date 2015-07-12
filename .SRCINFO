@@ -1,12 +1,13 @@
 pkgbase = termbox-git
 	pkgdesc = termbox library (ncurses alternative)
-	pkgver = 252bef0
+	pkgver = 0730826
 	pkgrel = 1
 	url = http://code.google.com/p/termbox/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
+	makedepends = python
 	options = staticlibs
 	source = termbox::git+https://github.com/nsf/termbox.git
 	sha1sums = SKIP
