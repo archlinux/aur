@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=insight-bitcore
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Bitcoin blockchain explorer with complete REST and websocket APIs"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 source=(${pkgname%-bitcore}.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
         insight.conf
         insight.service)
-sha256sums=('acc48d528e74e861bc8487a7cb35e54e5afcf4641afead0bef81e7c5c9ab4844'
+sha256sums=('3269653cfcae3a0d0c44603b1ac2d7fa320eee563c5dfea1d07427d0b56b7161'
             'ba78afbd00a873a0447a78c2661d5ea64137648c92a9d7b4f8d88817453e9283'
             'e39b630e18423dbb1868438814e7ac5e31e0b3908df97891b418083941adccb7')
 options=('!strip')
