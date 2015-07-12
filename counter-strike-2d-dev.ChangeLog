@@ -1,0 +1,71 @@
+2015-07-12  erayaydin <eray@erayaydin.me>
+	* counter-strike-2d 0.1.2.7-1 :
+	updated to 0.1.2.7 version
+
+2014-05-17  osense <krupicka.adam@gmail.com>
+	* counter-strike-2d 0.1.2.4-1 :
+	new maintainer
+
+2014-01-13  carstene1ns <url/mail: arch carsten-teibes de>
+	* counter-strike-2d 0.1.2.3-1 :
+	rewritten PKGBUILD nearly from scratch
+	moved installation to /opt folder
+	fix for filenames is not necessary anymore
+	removed unzip makedep, using libarchive now
+
+2012-09-15  josephgbr <rafael.f.f1@gmail.com>
+	* counter-strike-2d 0.1.2.1-1 :
+	added user's files in backup, so they shouldn't be overwritten on install
+	added fix to languages' filename, caused by having accent + charset issue
+
+2012-05-09  josephgbr <rafael.f.f1@gmail.com>
+	* counter-strike-2d 0.1.2.0-4 :
+	fixed source URL, now getting a cid required to download.
+
+2012-05-08  josephgbr <rafael.f.f1@gmail.com>
+	* counter-strike-2d 0.1.2.0-3 :
+	depends: lua added (needed for server)
+	set writer permission to configure files, to avoid 'permission denied'
+	when running cs2d as normal user.
+
+2012-05-08  josephgbr <rafael.f.f1@gmail.com>
+	* counter-strike-2d 0.1.2.0-1 :
+	depends and makedepends reviewed with strace
+	sources now get .zip files, and windows archive files are required
+	new maintainer
+
+2011-03-28  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.9b-2 :
+	chmoded files to 644, dirs to 755
+
+2011-03-27  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.9b-1 :
+
+2010-12-27  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.8b-2 :
+	depends: libxxf86vm/lib32-libxxf86vm added
+
+2010-09-18  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.8b-1 :
+
+2010-02-14  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.7b-3 :
+	depends: libstdc++5/lib32-libstdc++5 removed
+	depends: freetype2/lib32-freetype2 added
+	depends: gcc-libs/lib32-gcc-libs added
+	cs2d-launcher line 501 edited to launch CounterStrike2D properly
+	(`"$bash_prompt"` -> /usr/bin/CounterStrike2D...)
+
+2010-01-01  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.7b-2 :
+	depends: libgl/lib32-libgl added
+
+2009-12-26  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.7b-1 :
+	ChangeLog added
+	SHA1 checksums added
+	makedepends: coreutils added
+
+2009-12-11  Josef Lusticky <evramp@gmail.com>
+	* counter-strike-2d 0.1.1.6-2 :
+	Symbolic link to cs2d-launcher fixed

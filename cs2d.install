@@ -1,0 +1,5 @@
+
+post_install() {
+  echo "You can change all settings in /opt/cs2d/sys/*.cfg. You have to be"
+  echo "in the games group to have write access."
+}

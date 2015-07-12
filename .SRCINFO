@@ -1,0 +1,36 @@
+pkgbase = counter-strike-2d-dev
+	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
+	pkgver = 0.1.2.7
+	pkgrel = 1
+	url = http://www.cs2d.com/
+	install = cs2d.install
+	changelog = counter-strike-2d-dev.ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	options = emptydirs
+	backup = opt/cs2d/sys/autobuy.cfg
+	backup = opt/cs2d/sys/autoexec.cfg
+	backup = opt/cs2d/sys/config.cfg
+	backup = opt/cs2d/sys/controls.cfg
+	backup = opt/cs2d/sys/editor.cfg
+	backup = opt/cs2d/sys/filters.cfg
+	backup = opt/cs2d/sys/mapcycle.cfg
+	backup = opt/cs2d/sys/more.cfg
+	backup = opt/cs2d/sys/server.cfg
+	backup = opt/cs2d/sys/usgn.dat
+	backup = opt/cs2d/sys/usgn_pw.dat
+	source = cs2d_0127_linux.zip::http://www.unrealsoftware.de/get.php?get=cs2d_0127_linux.zip&p=1&cid=get.php?get=cs2d_0127_linux.zip&p=1&cid=1564
+	source = cs2d_0127_win.zip::http://www.unrealsoftware.de/get.php?get=cs2d_0127_win.zip&p=1&cid=get.php?get=cs2d_0127_linux.zip&p=1&cid=1564
+	source = cs2d.desktop
+	source = cs2d-fs.desktop
+	source = cs2d.png
+	sha512sums = 738be401192a795e76404cf3a97986fcfba2dc082dcec5c546a1c133a50b0a651b2d1f94885f77d830c90b0c37612e615e47fbf51a6f677a56034be62a8c5a6a
+	sha512sums = cbc3c7c8246907d8c8d8143679e13144449048df09398b4f25cc50ecae0473d8bc186752418727297da0f79b4b323d272a9e1b97a0b0249243bb9098abc23897
+	sha512sums = 9db3ccddf9180461de5bfea671d52f5d7fe3ef9eb00bef69853362983b227315f75f931d8d4ed9e541a56872b461cb8a1864bbbf1cc88b3e9ed3a52c32a01238
+	sha512sums = 18cee40fd348ffba864d22f6a1c3e20aeaeba031b0ac0d288885b0d8f82aa553a37047b9793e66440d7e6a008077bd11aeff6cecf6681a38b0a835a1bccf971a
+	sha512sums = dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80
+
+pkgname = counter-strike-2d-dev
+
