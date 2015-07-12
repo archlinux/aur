@@ -1,0 +1,27 @@
+pkgbase = pure-ftpd
+	pkgdesc = A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use.
+	pkgver = 1.0.41
+	pkgrel = 1
+	url = http://www.pureftpd.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openssl
+	depends = libmariadbclient
+	conflicts = pure-ftpd-db
+	backup = etc/pure-ftpd/pure-ftpd.conf
+	source = http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.41.tar.bz2
+	source = pure-ftpd.service
+	source = pure-ftpd.logrotate
+	source = welcome.msg
+	source = pure-ftpd.pem
+	source = pure-ftpd-dhparams.pem
+	md5sums = 76c2364591418f153ed815034621d058
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pure-ftpd
+
