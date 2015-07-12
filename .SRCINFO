@@ -1,0 +1,15 @@
+pkgbase = pam_encfs
+	pkgdesc = pam_encfs is a module to auto mount encfs dir on login
+	pkgver = 0.1.4.4
+	pkgrel = 2
+	url = http://code.google.com/p/pam-encfs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = encfs
+	backup = etc/security/pam_encfs.conf
+	source = http://pam-encfs.googlecode.com/files/pam_encfs-0.1.4.4.tar.gz
+	md5sums = 20d10fa842e968a224af542db7e10d21
+
+pkgname = pam_encfs
+
