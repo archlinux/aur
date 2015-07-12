@@ -1,11 +1,13 @@
 pkgbase = szip
 	pkgdesc = High compression library
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.hdfgroup.org/doc_resource/SZIP
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = gcc-fortran
+	depends = glibc
 	source = http://www.hdfgroup.org/ftp/lib-external/szip/2.1/src/szip-2.1.tar.gz
 	sha256sums = a816d95d5662e8279625abdbea7d0e62157d7d1f028020b1075500bf483ed5ef
 
