@@ -1,0 +1,23 @@
+pkgbase = libcurl-compat
+	pkgdesc = An URL retrieval library (old version)
+	pkgver = 7.23.1
+	pkgrel = 2
+	url = http://curl.haxx.se
+	install = curl-compat.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	depends = gnutls
+	depends = openssl
+	depends = zlib
+	provides = libcurl.so.3
+	provides = libcurl.so.4.2.0
+	provides = libcurl-gnutls.so.3
+	provides = libcurl-gnutls.so.4.2.0
+	options = strip
+	source = http://curl.haxx.se/download/curl-7.23.1.tar.gz
+	md5sums = 8e23151f569fb54afef093ac0695077d
+
+pkgname = libcurl-compat
+
