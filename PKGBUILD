@@ -13,19 +13,40 @@ source=("${pkgname}-${pkgver}.tar.xz::http://iij.dl.sourceforge.jp/yash/62651/${
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	export LDFLAGS="${LDFLAGS} -lXau -lm"
+
 	./configure --prefix=/usr \
+		libdir=/usr/lib \
 		libexecdir=/usr/lib/yash \
-		sbindir=/usr/bin libdir=/usr/lib
+		bindir=/usr/bin \
+		sbindir=/usr/bin \
+		--enable-alias \
+		--enable-array \
+		--enable-dirstack \
+		--enable-help \
+		--enable-history \
+		--enable-lineedit \
+		--enable-nls \
+		--enable-printf \
+		--enable-socket \
+		--disable-test \
+		--enable-ulimit
  	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	LDFLAGS="${LDFLAGS} -lXau -lm"
+
 	make install DESTDIR=$pkgdir \
-		prefix=/usr libexecdir=/usr/lib/yash \
-		sbindir=/usr/bin libdir=/usr/lib
+		prefix=/usr \
+		libdir=/usr/lib \
+		libexecdir=/usr/lib/yash \
+		bindir=/usr/bin \
+		sbindir=/usr/bin
 }
 
 #Default to md5 as makepkg do, blame Allan McRae
-
 md5sums=('c119e542d58d5555d36f237c0011e83d')
