@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=tor-control-port-proxy
-pkgver=0.3
-pkgrel=2
+pkgver=11.6031602
+pkgrel=1
 pkgdesc="Whitelisting Tor control port proxy written in Python"
 arch=('any')
 url="https://github.com/mutantmonkey/tor-control-port-proxy"
@@ -10,6 +10,11 @@ depends=('python' 'stem')
 options=(!emptydirs)
 source=('git+https://github.com/mutantmonkey/tor-control-port-proxy.git')
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/tor-control-port-proxy"
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 package() {
   cd "$srcdir/tor-control-port-proxy"
