@@ -1,0 +1,16 @@
+pkgbase = neopop_sdl
+	pkgdesc = NeoGeo Pocket emulator.
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://www.nih.at/NeoPop-SDL/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = libpng
+	depends = zlib
+	source = http://www.nih.at/NeoPop-SDL/NeoPop-SDL-0.2.tar.gz
+	md5sums = a705816f823fe2cf85410ea74a57763f
+
+pkgname = neopop_sdl
+
