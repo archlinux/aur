@@ -1,6 +1,6 @@
 pkgbase = dpsprep-git
 	pkgdesc = Python DJVU to PDF converter which preserves OCR text and bookmark metadata (e.g. TOC)
-	pkgver = r7.265cdb1
+	pkgver = r10.e52d7ca
 	pkgrel = 1
 	url = https://github.com/kcroker/dpsprep
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = dpsprep-git
 	depends = pdfbeads
 	depends = pdftk-bin
 	depends = ruby-iconv
+	optdepends = jbig2enc-git: JBIG2 encoder provides much better PDF compression, \ but some software may not handle resulting files
 	source = git+git://github.com/kcroker/dpsprep.git
 	md5sums = SKIP
 
