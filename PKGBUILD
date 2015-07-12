@@ -1,23 +1,20 @@
-# Maintainer: pisuka <tekmon@gmail.com>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: pisuka <tekmon@gmail.com>
+
 pkgname=heroku-toolbelt
-pkgver=3.36.5
+pkgver=3.39.5
 pkgrel=1
 pkgdesc="Everything you need to get started using Heroku (including foreman)"
-arch=(any)
+arch=('any')
 url="https://toolbelt.heroku.com"
-license=(MIT APACHE RUBY PerlArtistic GPL custom)
-groups=()
+license=('MIT' 'APACHE' 'RUBY' 'PerlArtistic' 'GPL' 'custom')
 depends=("ruby>=1.9")
 makedepends=("ruby-bundler")
-optdepends=(git)
-provides=()
-conflicts=(ruby-heroku ruby-foreman heroku-client)
-replaces=()
-backup=()
-options=()
-install=
-source=(Gemfile Gemfile.lock)
-md5sums=(0a2cce437aeb5097696a6f78cc4c3bb5 31cf02779f22ac6dc8e1fa894abbccd2)
+optdepends=('git')
+conflicts=('ruby-heroku' 'ruby-foreman' 'heroku-client')
+source=('Gemfile' 'Gemfile.lock')
+sha256sums=('40408f90fb021e95253a07cc5972b2cad952e05d5f632a62b7bbdc34bb1ad7f1'
+            '6e16c9f5dafe10ead8d9b3f7e47dc6b284d4f01a84ab1564446ecabdfc6d7806')
 
 package() {
 	cd "$pkgdir"
@@ -37,5 +34,3 @@ package() {
 
 	find "usr/lib/ruby/vendor_ruby/heroku-toolbelt/vendor/bundle/ruby" -path "*/gems/*/man/*" -exec ln -st "usr/share/man/man1/" "/{}" \;
 }
-
-# vim:set ts=2 sw=2 et:
