@@ -11,7 +11,7 @@ depends=('giflib' 'jasper' 'librsvg' 'xine-lib' 'curl')
 optdepends=()
 makedepends=('git')
 provides=('openscenegraph-git')
-conflicts=('openscenegraph', 'openscenegraph-svn')
+conflicts=('openscenegraph' 'openscenegraph-svn')
 
 _gitroot="git://github.com/openscenegraph/osg.git"
 _gitname="osg"
