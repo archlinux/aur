@@ -1,0 +1,22 @@
+pkgbase = sludge
+	pkgdesc = An engine and development kit for the creation of 2D adventure games.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://opensludge.sourceforge.net/
+	install = sludge.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	depends = glee
+	depends = alure
+	depends = libvpx
+	depends = gtkglext
+	depends = sdl
+	depends = dumb
+	depends = desktop-file-utils
+	source = https://github.com/opensludge/opensludge/releases/download/2.2.1/sludge-2.2.1-source.tar.gz
+	md5sums = 4769a94656411ef3efa486f3d32ac410
+
+pkgname = sludge
+
