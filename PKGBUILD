@@ -1,4 +1,5 @@
-# Maintainer: PitBall
+# Maintainer: Evan Anderson <evananderson@thelinuxman.us>
+# Contributor: PitBall
 
 pkgname=libcurl-compat
 _pkgname=curl
