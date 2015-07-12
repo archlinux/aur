@@ -1,0 +1,31 @@
+pkgbase = ark-git
+	pkgdesc = Archiving Tool
+	pkgver = r2885.dfc3cb8
+	pkgrel = 1
+	url = http://kde.org/applications/utilities/ark/
+	install = ark-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kpty
+	depends = khtml
+	depends = libarchive
+	depends = hicolor-icon-theme
+	optdepends = p7zip
+	optdepends = zip
+	optdepends = unzip
+	optdepends = unrar
+	provides = ark
+	conflicts = kdeutils-ark
+	conflicts = ark
+	conflicts = ark-frameworks-git
+	replaces = ark-frameworks-git
+	source = git://anongit.kde.org/ark.git
+	sha256sums = SKIP
+
+pkgname = ark-git
+
