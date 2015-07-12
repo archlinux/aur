@@ -1,0 +1,21 @@
+pkgbase = logstalgia
+	pkgdesc = a website access log visualisation tool
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/acaudwell/Logstalgia
+	arch = i686
+	arch = x86_64
+	groups = system
+	license = GPL3
+	depends = pcre
+	depends = sdl2_image
+	depends = ftgl
+	depends = glew
+	depends = glm
+	depends = boost
+	depends = libpng
+	source = https://github.com/acaudwell/Logstalgia/releases/download/logstalgia-1.0.5/logstalgia-1.0.5.tar.gz
+	md5sums = 6cf7fb56c1d2183cdfba9e1349fc429f
+
+pkgname = logstalgia
+
