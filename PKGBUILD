@@ -5,18 +5,18 @@
 _appname_=vlc
 pkgname=${_appname_}-nightly
 pkgver=3.0.0
-_snapshot_=20150511-0533
-pkgrel=4
+_snapshot_=20150706-0829
+pkgrel=5
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly GIT snapshot"
 arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
-depends=("a52dec" "libdvbpsi" "libxpm" "libdca" "qt4" "libproxy"
+depends=("a52dec" "libdvbpsi" "libxpm" "libdca" "qt5-base" "libproxy"
          "sdl_image" "libdvdnav" "libtiger" "lua" "libmatroska"
          "zvbi" "taglib" "libmpcdec" "ffmpeg" "faad2" "libupnp"
          "libshout" "libmad" "directfb" "libmpeg2" "libmodplug" "libass"
          "xcb-util-keysyms")
-makedepends=("live-media" "libnotify" "libbluray" "flac" "kdelibs"
+makedepends=("live-media" "libnotify" "libbluray" "flac" "kdelibs4support"
              "fluidsynth" "libdc1394" "libavc1394" "lirc-utils"
              "libcaca" "librsvg" "portaudio" "libgme" "xosd"
              "projectm" "twolame" "aalib" "libmtp" "libdvdcss"
@@ -64,7 +64,7 @@ source=("http://nightlies.videolan.org/build/source/vlc-${pkgver}-${_snapshot_}.
 
 build() {
 	cd "${_appname_}-3.0.0-git"
-
+  RCC=/usr/bin/rcc-qt5
 	./bootstrap
 
 	# Patch
@@ -104,4 +104,4 @@ package() {
 	done
 }
 
-sha1sums=('fad00a10e8c78ea0b1a5b619278d8c024de90eef')
+sha1sums=('efc7e8030b177ab6d1758eaf732c2199598a9e80')
