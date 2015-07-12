@@ -1,0 +1,26 @@
+pkgbase = veejay-client-git
+	pkgdesc = Veejay is a visual instrument and realtime video sampler for GNU/Linux
+	pkgver = 1.5.51.r35.gedd474e
+	pkgrel = 1
+	url = http://www.veejayhq.net
+	arch = i686
+	arch = x86_64
+	groups = veejay
+	license = LGPL
+	makedepends = git
+	depends = libxml2
+	depends = libx11
+	depends = jack
+	depends = ffmpeg
+	depends = sdl
+	depends = gtk2
+	depends = libjpeg-turbo
+	depends = ffmpeg
+	provides = veejay-client
+	conflicts = veejay-client
+	replaces = veejay-client
+	source = veejay-client::git+git://code.dyne.org/veejay.git
+	md5sums = SKIP
+
+pkgname = veejay-client-git
+
