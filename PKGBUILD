@@ -2,7 +2,7 @@
 
 pkgname=mt7630-pcie-wifi-dkms
 _gitname=mt7630e
-pkgver=19.ca67d42
+pkgver=22.d9899f0
 pkgrel=1
 pkgdesc="MT7630e PCIe Wifi (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('dkms')
 optdepends=('linux-headers: If running standard kernel, otherwise find matching headers for your kernel')
 install=MT7630e-wifi.install
-source=('mt7630e::git+https://github.com/benjarobin/MT7630E.git#tag=v2.3.2'
+source=('mt7630e::git+https://github.com/benjarobin/MT7630E.git#tag=v2.3.3'
         'dkms.conf')
 md5sums=('SKIP'
          'ba71b64eac40daed63a3acbf3b8021a3')
