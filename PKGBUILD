@@ -4,7 +4,7 @@
 
 pkgname=pandoc-static
 _pkgname=pandoc
-pkgver=1.15.0.4
+pkgver=1.15.0.5
 pkgrel=1
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
@@ -123,5 +123,5 @@ package() {
   cp -rv "${srcdir}"/build/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
   mv -v        "${pkgdir}"/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
 }
-sha512sums=('411625d868d524fa52dc2a1ea0654fee55a4126ed085912a1d1230cd40bfc06b124f16044b72a81fb25d4f396e5c7729dc3c11db3f7f35c7ce8241c0b87d3a53'
+sha512sums=('d204241b298da315a75f1aee37866ebe1725af635e3ff1a37597123ead374fa0f0529843bbf337955506563d032d54bae303329181a491a3f5c9ebb2272f4c7b'
             'SKIP')

@@ -1,6 +1,6 @@
 pkgbase = pandoc-static
 	pkgdesc = Conversion between markup formats (no Haskell libraries)
-	pkgver = 1.15.0.4
+	pkgver = 1.15.0.5
 	pkgrel = 1
 	url = http://johnmacfarlane.net/pandoc/
 	arch = i686
@@ -23,9 +23,9 @@ pkgbase = pandoc-static
 	options = !makeflags
 	options = !distcc
 	options = !emptydirs
-	source = https://repo.parabola.nu/other/pandoc-static/pandoc-static-1.15.0.4-1.tar.xz
-	source = https://repo.parabola.nu/other/pandoc-static/pandoc-static-1.15.0.4-1.tar.xz.sig
-	sha512sums = 411625d868d524fa52dc2a1ea0654fee55a4126ed085912a1d1230cd40bfc06b124f16044b72a81fb25d4f396e5c7729dc3c11db3f7f35c7ce8241c0b87d3a53
+	source = https://repo.parabola.nu/other/pandoc-static/pandoc-static-1.15.0.5-1.tar.xz
+	source = https://repo.parabola.nu/other/pandoc-static/pandoc-static-1.15.0.5-1.tar.xz.sig
+	sha512sums = d204241b298da315a75f1aee37866ebe1725af635e3ff1a37597123ead374fa0f0529843bbf337955506563d032d54bae303329181a491a3f5c9ebb2272f4c7b
 	sha512sums = SKIP
 
 pkgname = pandoc-static
