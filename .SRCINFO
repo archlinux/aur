@@ -5,10 +5,15 @@ pkgbase = python-nmap
 	url = http://xael.org/norman/python/python-nmap
 	arch = any
 	license = GPL3
-	depends = python
 	depends = nmap
 	source = http://xael.org/norman/python/python-nmap/python-nmap-0.3.7.tar.gz
 	md5sums = 3ed35d4093a04b2ad2b3a6447dd0588e
 
 pkgname = python-nmap
+	depends = nmap
+	depends = python
+
+pkgname = python2-nmap
+	depends = nmap
+	depends = python2
 
