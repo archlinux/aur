@@ -1,6 +1,6 @@
 pkgbase = libu2f-server
 	pkgdesc = Yubico Universal 2nd Factor (U2F) Server C Library
-	pkgver = 0.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://developers.yubico.com/libu2f-server/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libu2f-server
 	makedepends = check
 	depends = openssl
 	depends = json-c
-	source = https://developers.yubico.com/libu2f-server/Releases/libu2f-server-0.0.0.tar.xz
-	sha256sums = e072604a35a4450458a08415afee77d3f3d4ea09fc2302cd35f1babf151eb4ed
+	source = https://developers.yubico.com/libu2f-server/Releases/libu2f-server-1.0.1.tar.xz
+	sha256sums = a618f59051209d6d70c24cf42d64c9b67bd7dd5946b6dbd2c649181d7e8f1f6e
 
 pkgname = libu2f-server
 
