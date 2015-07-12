@@ -1,0 +1,8 @@
+pkg
+pkgdir
+src
+srcdir
+*.tar
+*.bz2
+*.gz
+*.xz

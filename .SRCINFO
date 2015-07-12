@@ -1,0 +1,21 @@
+pkgbase = acroread-fonts
+	pkgdesc = Chinese Simplified, Chinese Traditional, Japanese, Korean and Extended Language font packs for Adobe Acrobat Reader
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = http://www.adobe.com/support/downloads/product.jsp?platform=unix&product=10
+	arch = any
+	license = custom
+	provides = acroread-fonts
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_chs_i486-linux.tar.bz2
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_cht_i486-linux.tar.bz2
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_jpn_i486-linux.tar.bz2
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_kor_i486-linux.tar.bz2
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_xtd_i486-linux.tar.bz2
+	md5sums = 8abe3f7fb77918a8376b6793b841eaab
+	md5sums = 38baee4eca2d8291220eb8a8ab77f9b7
+	md5sums = b681807c0b8a34c76ec894675d98ec77
+	md5sums = 76a3dd2511d82c9dc1556bb0f0eae6c1
+	md5sums = a2de87858345cf3b2199d4a2fe424b65
+
+pkgname = acroread-fonts
+
