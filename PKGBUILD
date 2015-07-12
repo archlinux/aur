@@ -1,6 +1,6 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=pacupg
-pkgver=r254.f2a7e5c
+pkgver=r259.a2c2258
 pkgrel=1
 pkgdesc="Script that wraps package and AUR upgrades in btrfs snapshots and provides an easy way to roll them back"
 arch=('any')
