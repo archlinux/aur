@@ -11,7 +11,8 @@ depends=('python2')
 
 makedepends=(
 			'python2'
-			'python2-docopt')
+			'python2-docopt'
+			'python2-setuptools')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
 
