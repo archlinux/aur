@@ -1,0 +1,14 @@
+pkgbase = fgdata-git
+	pkgdesc = Base-Data for the opensource flight-simulator.
+	pkgver = 20150613
+	pkgrel = 1
+	url = http://www.flightgear.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = fgdata-git
+	conflicts = flightgear-data
+
+pkgname = fgdata-git
+
