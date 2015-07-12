@@ -1,0 +1,17 @@
+pkgbase = brother-hll2320d
+	pkgdesc = Brother HL-L2320D CUPS driver
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = x86_64
+	arch = i686
+	license = custom:Brother
+	depends = perl
+	depends = bash
+	source = http://download.brother.com/welcome/dlf101906/hll2320dlpr-3.2.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101907/hll2320dcupswrapper-3.2.0-1.i386.rpm
+	md5sums = ca753f68807bd1002c2000225512a75b
+	md5sums = 98d6f5fdbb50d6a3a2557a2630c7bc0e
+
+pkgname = brother-hll2320d
+
