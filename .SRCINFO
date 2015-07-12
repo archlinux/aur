@@ -1,7 +1,7 @@
 pkgbase = scilab
 	pkgdesc = A scientific software package for numerical computations.
 	pkgver = 5.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scilab.org
 	install = scilab.install
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = scilab
 	depends = jeuclid-core
 	depends = jgraphx>=2.0.0.1
 	depends = javahelp2
-	depends = jing
+	depends = saxon-he
 	depends = jlatexmath-fop>=1.0.3
 	depends = jrosetta>=1.0.4
 	depends = jgoodies-looks
