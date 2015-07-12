@@ -12,11 +12,11 @@ license=('GPL')
 options=('!libtool')
 depends=(libxpm)
 source=("$pkgname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=$pkgname-$pkgver.tar.gz")
-md5sums=('1b2ff611b62880e3df323e656d1f2e58')
+md5sums=('6e9a5d68f329564bce9d1743dc90672e')
 
 
 build() {
-	cd "dockapps"
+	cd "dockapps-d06e8c1"
 
 	autoreconf -fvi
 	./configure --prefix=/usr/ --without-examples --without-font
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-	cd "dockapps"
+	cd "dockapps-d06e8c1"
 
 	make DESTDIR="$pkgdir/" install
 }

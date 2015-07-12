@@ -9,7 +9,7 @@ pkgbase = libdockapp
 	depends = libxpm
 	options = !libtool
 	source = libdockapp-0.6.4.tar.gz::http://windowmaker.org/dockapps/?download=libdockapp-0.6.4.tar.gz
-	md5sums = 1b2ff611b62880e3df323e656d1f2e58
+	md5sums = 6e9a5d68f329564bce9d1743dc90672e
 
 pkgname = libdockapp
 
