@@ -1,0 +1,15 @@
+pkgbase = mdbus2
+	pkgdesc = DBus introspection command utility
+	pkgver = 2.3.0
+	pkgrel = 2
+	epoch = 1
+	url = http://www.freesmartphone.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	depends = dbus-glib
+	options = !emptydirs
+
+pkgname = mdbus2
+
