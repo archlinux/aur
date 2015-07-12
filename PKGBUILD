@@ -21,11 +21,11 @@ source=("http://gdlp01.c-wss.com/gds/8/0100003928/01/cnijfilter-source-${_pkgver
 				'cups.patch'
 				'id.po.patch'
 				'libpng.patch')
-md5sums=('70e412331a21f4b573b4e901c89cee18'
-	       '5f4b3523f6542f0a90886e7e6264f19a'
-	       'd5c3dda759bd8809cd5359872f9ba645'
-	       'e228560529d46e1f03617ba7bc9aa657'
-	       '3bca06ca61b0c9ffd0c292ed6985375f')
+sha256sums=('7e4f91a0aebfa32d75da046a20bab992bd6032bb2069cf0091e77d8119a489de'
+	       'ffd5c8cf926d6956cd8eec7e36c27fd080ea4f6dfd9e324f4890902584080617'
+	       '0b0cad3fad763a35d06550eda1c9de9b7592d4b29b2acb4a927efcad77fbb76c'
+	       'b535f0cf501ec4023a3166f85d230d9c0da24e3cdaa5ba3ba435669cb14cbd4c'
+	       'f1723e8e6a84942bd9fcfefef3efb20a40384ffb449101eccecf02aac929399c')
 
 prepare() {
   ## Patches
