@@ -1,6 +1,6 @@
 pkgbase = ncursesfm-git
 	pkgdesc = A FileManager written in c and ncurses library.
-	pkgver = 0.r219.dc1b8bb
+	pkgver = 0.r248.431ec18
 	pkgrel = 1
 	url = https://github.com/FedeDP/ncursesFM
 	install = ncursesFM.install
