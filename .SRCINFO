@@ -1,7 +1,7 @@
 pkgbase = mackup
 	pkgdesc = a small Python utitlity to keep your application settings in sync.
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lra/mackup
 	arch = any
 	license = GPL3

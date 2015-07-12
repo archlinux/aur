@@ -2,7 +2,7 @@
 
 pkgname=mackup
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
 url="https://github.com/lra/mackup"
