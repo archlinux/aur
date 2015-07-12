@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lua-yaml-git
-pkgver=5.1.4.2.g35c1164
+pkgver=5.1.4.5.g0fb4475
 pkgrel=1
 pkgdesc="Lua bindings for YAML using the LibYAML library"
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ pkgver() {
   cd "lua-yaml"
   git describe --tags | sed 's|-|.|g' | cut -c2-
 }
+
 prepare() {
   cd "lua-yaml"
   sed -i '32,37d' bootstrap.conf
@@ -32,6 +33,6 @@ build() {
 
 package() {
   cd "lua-yaml"
-  make DESTDIR=$pkgdir/usr install
+  make DESTDIR=$pkgdir install
   install -Dm644 COPYING $pkgdir/usr/share/licenses/lua-yaml-git/COPYING
 }
