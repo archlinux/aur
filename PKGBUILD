@@ -36,7 +36,7 @@ pkgver() {
 	cd ${srcdir}/qBittorrent
 	(
 		set -o pipefail
-		printf "%s.r%s.g%s" "$(qmake-qt5 ./../get_version.pri 2>/dev/null)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
+		printf "%s.r%s.g%s" "$(qmake-qt5 ../get_version.pri 2>/dev/null)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
@@ -53,7 +53,7 @@ prepare() {
 		# Make a copy due that qBittorrent needs the file in the source
 		# directory, see qBittorrent/src/gui/geoip/geoip.qrc
 		cd ${srcdir}/qBittorrent
-		cp ${geoip_database} ./src/gui/geoip
+		cp ${geoip_database} src/gui/geoip
 	fi
 }
 
@@ -68,11 +68,11 @@ build() {
 	# Building package
 	cd ${srcdir}/build
 	
-	./../qBittorrent/configure \
+	../qBittorrent/configure \
 		--prefix=/usr \
 		--with-qt5 \
 		--with-geoip-database-embedded
-	qmake-qt5 ./../qBittorrent \
+	qmake-qt5 ../qBittorrent \
 		CONFIG+=release \
 		CONFIG+=c++14 \
 		-spec linux-g++
