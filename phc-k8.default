@@ -1,0 +1,4 @@
+# configuration for phc-k8
+
+# voltage IDs to be set for all CPUs
+VIDS=""

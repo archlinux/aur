@@ -1,0 +1,30 @@
+post_install() {
+	cat << EOF
+Run "phc-k8 setup" to build the module for current kernel.
+You can enter the desired voltage IDs in /etc/default/phc-k8.
+Booting with nophc kernel parameter skips setting of VIDs in case of failure.
+EOF
+}
+
+post_upgrade() {
+	rm -f var/log/phc-k8.log
+}
+
+post_remove() {
+	echo Removing built modules ...
+	rm -rf usr/src/phc-k8/
+	cd usr/lib/modules/
+	for i in *; do
+		if [ -f "$i/extramodules/phc-k8.ko" ]; then
+			rm -f "$i"/extramodules/{mperf,phc-k8}.ko
+			[ -d "$i/kernel" ] && depmod "$i"
+		elif [ -f "$i/phc-k8.ko" ]; then
+			rm -f "$i"/{mperf,phc-k8}.ko
+			rmdir -p --ignore-fail-on-non-empty "$i"
+		elif [ -d "$i/updates/kernel/arch/x86/kernel/cpu/cpufreq" ]; then
+			rm -f "$i"/updates/kernel/arch/x86/kernel/cpu/cpufreq/{mperf,phc-k8}.ko
+			rmdir -p --ignore-fail-on-non-empty "$i/updates/kernel/arch/x86/kernel/cpu/cpufreq"
+			[ -d "$i/kernel" ] && depmod "$i"
+		fi
+	done
+}

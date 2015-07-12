@@ -1,0 +1,24 @@
+pkgbase = phc-k8
+	pkgdesc = frequency driver for AMD CPUs with undervolting feature
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = http://www.linux-phc.org
+	install = phc-k8.install
+	arch = any
+	license = GPL
+	provides = linux-phc
+	backup = etc/default/phc-k8
+	backup = etc/modprobe.d/phc-k8.conf
+	source = phc-k8-0.4.6.tar.gz::http://www.linux-phc.org/forum/download/file.php?id=165
+	source = phc-k8.default
+	source = phc-k8.sh
+	source = phc-k8.sleep
+	source = phc-k8.system-sleep
+	sha256sums = 33c6041f314cfe25b7cded4b71736a3986781c505209c1af766723a12d37b53b
+	sha256sums = 352a97272390ed428cc1ebb886ebb044e7b54c145aa7a4c0d96862ad7a7fd46a
+	sha256sums = 8b4638f406249bf3e54604bfd282af6886be1c817045d586471383ea3b251fbf
+	sha256sums = 8619514df4b931705f713d61c1288b6e6960d578067523604b75960dcbc6e778
+	sha256sums = 74ae72d992d0205babd6c9428e637ca407fb26461bfc68da7f331945126b810a
+
+pkgname = phc-k8
+
