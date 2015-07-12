@@ -31,10 +31,10 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.1
-_minor=1
+_minor=2
 pkgver=${__basekernel}.${_minor}
-pkgrel=2
-lqxrel=2
+pkgrel=1
+lqxrel=1
 _kernelname=-lqx
 pkgbase=linux-lqx
 pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -59,7 +59,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'c4d33db52ec4872df4aeba1928f4e8479b2718c49a5bd649516b7572067ce7d7551851f45bc589978b141d16a2681bdf84d2ad36c902387d160ac0187d0dc1c5'
+            '7589af0e97e09aad863600db72a2cc68dea627518b602621ef729a690593a81a94b501e7eca9cb4b0910cc3d50d46716ebe872680dadee1bde8591d1218d7ed0'
             '9d155d1761d0c3e3cc24b720c2fea6733b75119ca7f52f154aa3ddcf2e4c2b8b310ce77caf7361cc97afa657d227af6b56bdb62a9645bc099fc803439aecfe0f'
             'a3980286e1a658b11678049e5f0b6f0ca99397158d888833439a5e316946fc5836084e96c2c8ae6d3b16805e307c9e281ef93a5106eb8519882a08a4bd6fab1a'
             '708d61979d961db1f15540c4369c058f8926ba8038583ddd7dbf2bf856d22738247ff71075a9445857467c982e99b89b72d7b1dce7ac90b9422c0dc3ac1001d6'
