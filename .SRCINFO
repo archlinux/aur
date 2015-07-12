@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-notify
 	pkgdesc = Perl interface to libnotify
 	pkgver = 0.05
-	pkgrel = 12
+	pkgrel = 14
 	url = http://search.cpan.org/perldoc?Gtk2::Notify
 	arch = i686
 	arch = x86_64
