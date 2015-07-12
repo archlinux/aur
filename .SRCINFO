@@ -3,17 +3,19 @@ pkgbase = jackass-git
 	pkgver = 1.0.r13.adcd7eb
 	pkgrel = 1
 	url = https://github.com/falkTX/JackAss/
+	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = unzip
 	depends = gcc-libs-multilib
 	depends = wine
 	provides = jackass
 	conflicts = jackass
 	source = jackass::git+https://github.com/falkTX/JackAss.git
+	source = http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip
 	sha256sums = SKIP
+	sha256sums = 74e41da563a1c91e86677530936cb46a15f1af76b29d4c1877134cf29eafb718
 
 pkgname = jackass-git
 

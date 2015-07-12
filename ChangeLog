@@ -1,0 +1,6 @@
+2015-07-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1.0.r13.adcd7eb-2:
+	add VST3 SDK to sources, since it can be downloaded from Steinberg's
+	website now without login
+	remove 'unzip' from makedepends accordingly

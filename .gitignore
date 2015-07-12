@@ -2,7 +2,7 @@ pkg
 src
 jackass
 vst_sdk2.4_rev2.zip
+vstsdk360_22_11_2013_build_100.zip
 jackass-git-*.pkg.tar.xz
 jackass-git-*.src.tar.gz
 .AURINFO
-
