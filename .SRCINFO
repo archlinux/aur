@@ -1,7 +1,7 @@
 pkgbase = jackass-git
 	pkgdesc = A VST plugin that provides JACK-MIDI support for VST hosts.
 	pkgver = 1.0.r13.adcd7eb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/falkTX/JackAss/
 	changelog = ChangeLog
 	arch = i686
