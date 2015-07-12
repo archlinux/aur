@@ -1,6 +1,6 @@
 pkgbase = inkscape-gtk3-bzr
 	pkgdesc = An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled
-	pkgver = r14241
+	pkgver = r14242
 	pkgrel = 1
 	url = https://launchpad.net/inkscape
 	install = inkscape-bzr.install
