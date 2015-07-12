@@ -2,12 +2,13 @@
 
 pkgname=bzr-builder
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A bzr plugin to construct a bzr branch based on a recipe"
 url="https://launchpad.net/bzr-builder"
 arch=('any')
 license=("GPL3")
-depends=('bzr' 'python2' 'python2-debian' 'devscripts' 'dput')
+depends=('python2' 'python2-debian' 'devscripts' 'dput')
+makedepends=('bzr')
 provides=('bzr-builder')
 conflicts=('bzr-builder-bzr')
 source=('https://launchpad.net/bzr-builder/trunk/0.7.3/+download/bzr-builder-0.7.3.tar.gz')
