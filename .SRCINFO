@@ -1,8 +1,8 @@
 pkgbase = toxic-git
 	pkgdesc = CLI Frontend in ncurses for Tox
 	pkgver = r1521.4d73f8b
-	pkgrel = 2
-	url = http://tox.im
+	pkgrel = 3
+	url = http://tox.chat
 	install = toxic-git.install
 	arch = i686
 	arch = x86_64

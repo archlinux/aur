@@ -6,18 +6,16 @@ pkgname=toxic-git
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
 pkgver=r1521.4d73f8b
-pkgrel=2
-depends=(
-  'desktop-file-utils'
-  'freealut'
-  'libnotify'
-  'tox-git'
-)
+pkgrel=3
+depends=('desktop-file-utils'
+         'freealut'
+         'libnotify'
+         'tox-git')
 makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url=('http://tox.im')
+url=('http://tox.chat')
 source=("${pkgname}::git+https://github.com/Tox/toxic.git")
 sha512sums=('SKIP')
 
@@ -37,4 +35,3 @@ package() {
   cd "$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
