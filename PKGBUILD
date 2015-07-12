@@ -4,7 +4,7 @@
 
 pkgname=aacskeys
 pkgver="0.4.0e"
-pkgrel=3
+pkgrel=4
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
