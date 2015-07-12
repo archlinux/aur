@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TouchEgg-GCE
+GenericName=MultiTouch Config
+TryExec=/opt/Touchegg-gce/touchegg-gce
+Exec=/opt/Touchegg-gce/touchegg-gce
+Terminal=false
+Icon=input-tablet
+Type=Application
+Categories=Settings;
+Comment=Configuration Tool for Touchegg multitouch.
+Name[en_US]=touchegg-gce

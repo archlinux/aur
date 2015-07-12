@@ -1,0 +1,11 @@
+--- main.cpp	2015-01-29 17:51:09.126111148 +0100
++++ main.cpp	2015-01-29 17:59:37.019553147 +0100
+@@ -31,7 +31,7 @@
+     QDialog *diag = new QDialog();
+     diag->setLayout(new QHBoxLayout());
+     QComboBox *chooser = new QComboBox(diag);
+-    QDir *dir = new QDir("Dictionaries");
++    QDir *dir = new QDir("/usr/share/touchegg-gce/Dictionaries");
+     QStringList langs = dir->entryList(QStringList("[A-Z][A-Z]*.qm"), QDir::Files);
+     QStringList chopped = QStringList();
+     foreach(QString s, langs){

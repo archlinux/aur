@@ -1,0 +1,22 @@
+pkgbase = touchegg-gce-git
+	pkgdesc = GUI for touchegg
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://github.com/Raffarti/Touchegg-gce
+	arch = i686
+	arch = x86_64
+	license = CC-BY
+	makedepends = libx11
+	makedepends = git
+	depends = qt4
+	depends = libx11
+	depends = touchegg
+	source = git://github.com/Raffarti/Touchegg-gce.git
+	source = touchegg-gce.desktop
+	source = touchegg.patch
+	sha256sums = SKIP
+	sha256sums = abd417b6895f6a52455285b06dd3090f0fdf00bcec3f28bcf186a28b2db9db43
+	sha256sums = 49d25c678abfb81407c10e659df55f188c79dbe5808d314cac094be67fcdfa3c
+
+pkgname = touchegg-gce-git
+
