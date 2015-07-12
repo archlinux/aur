@@ -17,11 +17,11 @@ depends=(
 	'java-runtime'
 	'libpng12'
 )
-sha256sum=('781f8b9cbe3e1137b62d4dbb76670b3e2d5a20403b04b3767e03a2e89dba860e')
+sha256sums=('781f8b9cbe3e1137b62d4dbb76670b3e2d5a20403b04b3767e03a2e89dba860e')
 
 if [ "$CARCH" = 'i686' ]; then
   _arch=i386
-  sha256sum=('50be711e33d37fd43590845718e5e5710cc48a5f7f745df8990b0f792da3a7da')
+  sha256sums=('50be711e33d37fd43590845718e5e5710cc48a5f7f745df8990b0f792da3a7da')
 fi;
 
 source="http://sourceforge.net/projects/nevernote/files/${_pkgver}/${pkgname}-${pkgver}_${_arch}.tar.gz/download"
