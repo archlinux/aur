@@ -5,10 +5,14 @@ pkgbase = python-netaddr
 	url = http://github.com/drkjam/netaddr/
 	arch = any
 	license = BSD
-	depends = python
-	optdepends = ipython: used to work with the netaddr interractive command
 	source = https://pypi.python.org/packages/source/n/netaddr/netaddr-0.7.15.tar.gz
 	md5sums = bd024c8f82f71fd1d90553da64735f14
 
 pkgname = python-netaddr
+	depends = python
+	optdepends = ipython: used to work with the netaddr interractive command
+
+pkgname = python2-netaddr
+	depends = python2
+	optdepends = ipython2: used to work with the netaddr interractive command
 
