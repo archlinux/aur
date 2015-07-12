@@ -1,0 +1,18 @@
+pkgbase = aacskeys
+	pkgdesc = A library and program to retrieve decryption keys for HD discs
+	pkgver = 0.4.0e
+	pkgrel = 3
+	url = http://forum.doom9.org/showthread.php?t=123311
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = java-environment
+	makedepends = premake3
+	depends = openssl
+	source = http://deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e.orig.tar.gz
+	source = http://deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e-dmo2.diff.gz
+	sha1sums = 8790f0d4098d6bc83304ad2136cc9681374df83a
+	sha1sums = 325504f38a5ac1e9f7be740a602faa2c8d4b812c
+
+pkgname = aacskeys
+
