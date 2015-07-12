@@ -1,0 +1,12 @@
+diff -Nura gnokii-0.6.31.orig/Docs/sample/gnokiirc gnokii-0.6.31/Docs/sample/gnokiirc
+--- gnokii-0.6.31.orig/Docs/sample/gnokiirc	2011-12-02 15:53:04.000000000 +0100
++++ gnokii-0.6.31/Docs/sample/gnokiirc	2012-02-18 12:49:26.957557504 +0100
+@@ -238,7 +238,7 @@
+ # In particular ensure that mgnokiidev is in this location, with
+ # permissions 4750, owned by root, group gnokii.  Ensure you
+ # are in the gnokii group and that the group exists...
+-bindir = /usr/local/sbin/
++bindir = /usr/bin/
+ 
+ # Any entries in the following two sections will be set as environment
+ # variables when running the scripts.

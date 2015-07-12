@@ -1,0 +1,33 @@
+pkgbase = gnokii-git
+	pkgdesc = Tools and user space driver for use with mobile phones
+	pkgver = r5004.187de67
+	pkgrel = 1
+	url = http://www.gnokii.org/
+	install = gnokii.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk2
+	makedepends = libmariadbclient
+	makedepends = postgresql-libs
+	makedepends = intltool
+	depends = libusb-compat
+	depends = libxpm
+	depends = bluez-libs
+	depends = libical
+	depends = sqlite
+	optdepends = dialog: sendsms tool
+	optdepends = gtk2: xgnokii GUI
+	optdepends = libmariadbclient: smsd mysql backend
+	optdepends = postgresql-libs: smsd postgresql backend
+	conflicts = gnokii
+	backup = etc/gnokiirc
+	source = gnokii::git://git.savannah.nongnu.org/gnokii.git
+	source = gnokii-config.patch
+	source = gnokii-lock.patch
+	md5sums = SKIP
+	md5sums = b2961b52ac1f770c4704ccc50b64fde2
+	md5sums = 17b629db85a6bb2b98ca59941aa95295
+
+pkgname = gnokii-git
+
