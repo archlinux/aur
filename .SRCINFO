@@ -1,7 +1,7 @@
 pkgbase = nvidia-lts-ck
 	pkgdesc = NVIDIA drivers for linux-lts-ck
 	pkgver = 352.21
-	pkgrel = 3
+	pkgrel = 5
 	url = http://www.nvidia.com/
 	install = nvidia-lts-ck.install
 	arch = i686
