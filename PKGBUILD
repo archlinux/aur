@@ -22,8 +22,8 @@ depends=('gambas3-runtime'
 makedepends=('gambas3-devel' 'gcc' 'imagemagick' 'git')
 source=("https://github.com/eloaders/I-Nex/archive/${pkgver}.tar.gz")
 sha256sums=('f7eb0a97d140ea85dc4e04972c5a34210c5a486310550ddc7d07cab5570dbbbe')
-provides=('i-nex' 'i-nex-bzr' 'i-nex-dev')
-conflicts=('i-nex' 'i-nex-bzr' 'i-nex-dev')
+provides=('i-nex' 'i-nex-bzr' 'i-nex-dev' 'i-nex-git')
+conflicts=('i-nex' 'i-nex-bzr' 'i-nex-dev' 'i-nex-git')
 backup=('etc/i-nex/Database/i2c/devices.json'
 	'etc/i-nex/Database/A6.json'
 	'etc/i-nex/Database/amd.json'
