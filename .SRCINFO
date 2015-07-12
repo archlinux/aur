@@ -1,6 +1,6 @@
 pkgbase = bitcoin-core-git
 	pkgdesc = Bitcoin Core headless P2P node
-	pkgver = 20150426
+	pkgver = 20150711
 	pkgrel = 1
 	url = https://bitcoin.org
 	install = bitcoin.install
