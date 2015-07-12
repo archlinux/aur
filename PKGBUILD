@@ -1,6 +1,6 @@
 # Maintainer: Ettore Chimenti <ek5.chimenti @ gmail.com>
 pkgname="init-headphone"
-pkgver="0.6.0"
+pkgver="0.8.0"
 pkgrel=1
 pkgdesc="Re-enables headphone jack after sleep/suspend resume on Clevo W230SS"
 arch=("any")
@@ -12,10 +12,11 @@ source=("init-headphone"
         "init-headphone.service"  
         "init-headphone.install"
         "init-headphone.conf")
-md5sums=('1ca3c858e5aae9c5fc160d59f9f3c7ad'
+md5sums=('c02b1055ca25970aef2d5c92e1860f8f'
          'ad3ad6f4c9157035fd7a9dd2e82184c2'
          '81b2f5e44cd18753e64a084eaff563b5'
          '77e35c3c5b8020192eec29ec1d8ad916')
+        
 package() {
 
   install -Dm 755 init-headphone  $pkgdir/usr/bin/init-headphone 
