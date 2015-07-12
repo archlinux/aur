@@ -15,6 +15,7 @@ sha256sums=('ec933af8359408b11478477de83b042a5bdf1d23e85683528aebb53c9bc0e6bc')
 prepare() {
 	cd "$pkgname-$pkgver"
 	find . -name Makefile -exec sed -i 's|\(PYTHON=\)python|\1python2|' {} \;
+	find . -name Makefile -exec sed -i 's|sbin|bin|' {} \;
 }
 
 package() {
