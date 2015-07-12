@@ -1,8 +1,8 @@
 pkgbase = tox-git
 	pkgdesc = Secure, configuration-free, P2P Skype replacement backend
 	pkgver = r3350.6a1efc3
-	pkgrel = 1
-	url = https://tox.im
+	pkgrel = 2
+	url = https://tox.chat
 	arch = i686
 	arch = x86_64
 	arch = arm

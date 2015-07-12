@@ -6,17 +6,15 @@
 _pkgname=tox
 pkgname=tox-git
 pkgver=r3350.6a1efc3
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url='https://tox.im'
+url='https://tox.chat'
 license=('GPL3')
-depends=(
-  'libconfig>=1.4'
-  'libsodium>=1.0'
-  'libvpx'
-  'opus'
-)
+depends=('libconfig>=1.4'
+         'libsodium>=1.0'
+         'libvpx'
+         'opus')
 makedepends=('git' 'check')
 optdepends=('qtox-git: qt-based Tox client'
             'utox-git: lightweight Tox client'
