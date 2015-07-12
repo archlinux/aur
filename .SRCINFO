@@ -1,7 +1,7 @@
 pkgbase = i-nex
 	pkgdesc = System information tool like hardinfo, sysinfo
 	pkgver = 7.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = i-nex
 	makedepends = gambas3-devel
 	makedepends = gcc
 	makedepends = imagemagick
-	makedepends = git
 	depends = gambas3-runtime
 	depends = gambas3-gb-image
 	depends = gambas3-gb-form

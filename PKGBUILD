@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -19,7 +19,7 @@ depends=('gambas3-runtime'
          'xorg-server-utils' 
          'lsb-release' 
          'curl')
-makedepends=('gambas3-devel' 'gcc' 'imagemagick' 'git')
+makedepends=('gambas3-devel' 'gcc' 'imagemagick')
 source=("https://github.com/eloaders/I-Nex/archive/${pkgver}.tar.gz")
 sha256sums=('f7eb0a97d140ea85dc4e04972c5a34210c5a486310550ddc7d07cab5570dbbbe')
 provides=('i-nex-bzr' 'i-nex-dev' 'i-nex-git')
@@ -35,12 +35,8 @@ backup=('etc/i-nex/Database/i2c/devices.json'
 	'etc/i-nex/Database/intel.json'
 	'etc/i-nex/Database/Opteron.json'
 	'etc/i-nex/Database/Xeon.json')
-pkgver() {
-  cd "I-Nex-${pkgver}"
-  git describe --tags | tr - .
-}
 prepare() {
-  cd "I-Nex-${pkgver}"
+  cd "${srcdir}/I-Nex-${pkgver}"
   sed -i 's|python3$|python2|' pastebinit
   # make it dynamic
   sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
@@ -50,7 +46,7 @@ prepare() {
 }
  
 build() {
-  cd "I-Nex-${pkgver}"
+  cd "${srcdir}/I-Nex-${pkgver}"
   cd "I-Nex"
   ./configure --prefix=/usr
   cd ..
@@ -58,6 +54,6 @@ build() {
 }
  
 package() {
-  cd "I-Nex-${pkgver}"
-  make install DESTDIR="$pkgdir"
+  cd "${srcdir}/I-Nex-${pkgver}"
+  make DESTDIR="$pkgdir/" install
 }
