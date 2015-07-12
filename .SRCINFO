@@ -1,7 +1,7 @@
 pkgbase = trid
 	pkgdesc = An utility designed to identify file types from their binary signatures
 	pkgver = 2.20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mark0.net/soft-trid-e.html
 	install = trid.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = trid
 	source = update-trid-defs.service
 	source = update-trid-defs.timer
 	source = triupdate-1.00.zip::http://mark0.net/download/tridupdate.zip
-	md5sums = 9e4849a0d14bb4df970dcbc1159c4007
+	md5sums = fe447a9fb6da5591ad72bf17e77084ae
 	md5sums = 6ef06da62edde6c84c9473f7a62969e6
 	md5sums = a78caa24cf0851d17b8d3798f9e776a3
 	md5sums = 2ea012671b50e0761cbc4bbec820952e
