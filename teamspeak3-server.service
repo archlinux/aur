@@ -1,0 +1,14 @@
+[Unit]
+Description=TeamSpeak3 Server
+After=network.target
+
+[Service]
+Type=simple
+User=teamspeak
+Group=teamspeak
+WorkingDirectory=/var/lib/teamspeak3-server
+EnvironmentFile=/etc/default/teamspeak3-server
+ExecStart=/usr/bin/teamspeak3-server $TS_ARGS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+post_install() {
+  /usr/bin/getent group teamspeak &> /dev/null || /usr/bin/groupadd -r teamspeak &> /dev/null
+  /usr/bin/getent passwd teamspeak &> /dev/null || /usr/bin/useradd -r -c "TeamSpeak Server" -M -d /var/lib/teamspeak3-server -g teamspeak -s /usr/bin/nologin teamspeak &> /dev/null
+
+  /usr/bin/chown -R teamspeak:teamspeak \
+    /var/lib/teamspeak3-server \
+    /var/log/teamspeak3-server
+
+  echo " >>> TeamSpeak End User License Agreement:"
+  echo " >>> You need to agree with the license at"
+  echo " >>> /usr/share/licenses/teamspeak3-server/LICENSE"
+  echo " >>> before you are allowed to use teamspeak3-server."
+}
+
+post_remove() {
+  /usr/bin/getent passwd teamspeak &> /dev/null && /usr/bin/userdel teamspeak &> /dev/null
+  /usr/bin/getent group teamspeak &> /dev/null && /usr/bin/groupdel teamspeak &> /dev/null
+}
