@@ -1,7 +1,7 @@
 # Maintainer: Maxime de Roucy <maxime.deroucy@gmail.com>
 
 pkgname=libu2f-server
-pkgver=0.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Yubico Universal 2nd Factor (U2F) Server C Library"
 arch=('i686' 'x86_64')
@@ -33,4 +33,4 @@ package() {
 	cp COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
-sha256sums=('e072604a35a4450458a08415afee77d3f3d4ea09fc2302cd35f1babf151eb4ed')
+sha256sums=('a618f59051209d6d70c24cf42d64c9b67bd7dd5946b6dbd2c649181d7e8f1f6e')
