@@ -1,14 +1,16 @@
-# Maintainer: Leo von Klenze <aur@leo.von-klenze.de>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Leo von Klenze <aur@leo.von-klenze.de>
+
 pkgname=jquery
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
-pkgdesc="jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development."
-arch=(i686 x86_64)
+pkgdesc="Cross-platform JavaScript library designed to simplify the client-side scripting of HTML"
+arch=('any')
 url="http://jquery.com"
 license=('MIT' 'GPL2')
 
 source=(http://code.jquery.com/jquery-$pkgver.min.js)
-md5sums=('32015dd42e9582a80a84736f5d9a44d7')
+sha256sums=('f16ab224bb962910558715c82f58c10c3ed20f153ddfaa199029f141b5b0255c')
 
 package() {
     mkdir -p $pkgdir/usr/share/jquery
@@ -16,4 +18,3 @@ package() {
     cp jquery-$pkgver.min.js $pkgdir/usr/share/jquery
     ln -s /usr/share/jquery/jquery-$pkgver.min.js $pkgdir/usr/share/jquery/jquery.min.js
 }
-

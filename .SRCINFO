@@ -1,14 +1,13 @@
 pkgbase = jquery
-	pkgdesc = jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
-	pkgver = 2.1.3
+	pkgdesc = Cross-platform JavaScript library designed to simplify the client-side scripting of HTML
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = http://jquery.com
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	license = GPL2
-	source = http://code.jquery.com/jquery-2.1.3.min.js
-	md5sums = 32015dd42e9582a80a84736f5d9a44d7
+	source = http://code.jquery.com/jquery-2.1.4.min.js
+	sha256sums = f16ab224bb962910558715c82f58c10c3ed20f153ddfaa199029f141b5b0255c
 
 pkgname = jquery
 
