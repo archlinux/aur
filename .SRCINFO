@@ -1,6 +1,6 @@
 pkgbase = ocaml-core_bench
 	pkgdesc = A micro-benchmarking library for ocaml
-	pkgver = 112.17.00
+	pkgver = 112.35.00
 	pkgrel = 1
 	url = https://github.com/janestreet/core_bench
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = ocaml-core_bench
 	depends = ocaml-sexplib
 	depends = ocaml-textutils
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/112.17/files/core_bench-112.17.00.tar.gz
-	md5sums = d507304cc31692cf9ba4c7bdf3e9cc25
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/core_bench-112.35.00.tar.gz
+	md5sums = f2811e531a07264006767ea98f9e98ff
 
 pkgname = ocaml-core_bench
 
