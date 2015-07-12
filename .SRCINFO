@@ -1,6 +1,6 @@
 pkgbase = venturous
 	pkgdesc = Random playback manager for Audacious
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/vedgy/venturous
 	install = venturous.install
@@ -9,7 +9,8 @@ pkgbase = venturous
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	depends = qt4
+	depends = qt5-base
+	depends = libxkbcommon-x11
 	depends = audacious
 	optdepends = libnotify: desktop notifications
 	optdepends = libcue: Audacious CUE playlist format support
