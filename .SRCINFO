@@ -1,0 +1,15 @@
+pkgbase = keepass-plugin-keeotp-beta
+	pkgdesc = KeePass plugin that generates TOTPs from secrets stored in the KeePass database (ie: Google Authenticator, other RFC 6238 compliant TOTP implementations) (Beta version)
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://bitbucket.org/devinmartin/keeotp/wiki/Home
+	arch = any
+	license = MIT
+	depends = keepass
+	provides = keepass-plugin-keeotp
+	conflicts = keepass-plugin-keeotp
+	source = https://bitbucket.org/devinmartin/keeotp/downloads/KeeOtp-1.3.7-Beta.zip
+	sha512sums = 08d84aefb397b2795698317ae7f6fddd006e40cf78a155955f2dc184bef765469671ca7df385f409c85e862803e6b80ce6cb899cdbf5730334c08f4e83bd2a63
+
+pkgname = keepass-plugin-keeotp-beta
+
