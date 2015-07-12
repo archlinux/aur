@@ -6,6 +6,7 @@ pkgdesc="A TeX package to create commutative diagrams with TikZ"
 arch=(any)
 url="https://www.ctan.org/tex-archive/graphics/pgf/contrib/tikz-cd"
 license=('GPL')
+install=(tikz-cd.install)
 depends=(texlive-core)
 source=("http://mirrors.ctan.org/graphics/pgf/contrib/tikz-cd/tikz-cd.sty" \
 	"http://mirrors.ctan.org/graphics/pgf/contrib/tikz-cd/tikzlibrarycd.code.tex")

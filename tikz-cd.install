@@ -1,0 +1,11 @@
+post_install() {
+	  texhash
+}
+
+post_remove() {
+	  texhash
+}
+
+post_upgrade() {
+	  texhash
+}
