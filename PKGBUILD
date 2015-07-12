@@ -5,15 +5,15 @@
 # Contributor: Jacek Poplawski <jacekpoplawski__gmail>
 
 pkgname=alephone
-_pkgdate=20140104
-pkgver=1.1_$_pkgdate
-pkgrel=3
+_pkgdate=20150620
+pkgver=1.2.1_$_pkgdate
+pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="http://marathon.sourceforge.net/"
 license=('GPL3')
-depends=('sdl_ttf' 'sdl_image' 'sdl_net' 'libmad' 'glu' 'mesa' 'zziplib'
-         'ffmpeg')
+depends=('sdl_ttf' 'sdl_image' 'sdl_net' 'smpeg' 'libmad' 'glu' 'zziplib'
+         'ffmpeg' 'boost-libs' 'curl')
 # todo: figure out, if they are all compatible
 optdepends=('alephone-emr: community-made scenario'
             'alephone-eternalx: community-made scenario' # ok!
@@ -24,28 +24,14 @@ optdepends=('alephone-emr: community-made scenario'
             'alephone-red: community-made scenario'
             'alephone-rubiconx: community-made scenario'
             'alephone-tempus_irae: community-made scenario')
-makedepends=('boost' 'lua' 'icoutils')
+makedepends=('boost' 'mesa' 'icoutils')
 source=("http://downloads.sourceforge.net/marathon/AlephOne-$_pkgdate.tar.bz2"
-        "http://downloads.sourceforge.net/marathon/README.md"
-        "$pkgname-r5002-remove-deprecated-ffmpeg-quality-setting.diff"
-        "$pkgname-r5009-support-newer-ffmpeg.diff"
-        "$pkgname-r5011-use-mkstemp.diff"
-        "$pkgname-r5012-include-iostream.diff")
-sha256sums=('7f7d35c1d99cddd7cd0b47d3e4b84311373b04c60402ce86e9d85c36dfbaabcd'
-            'b2b01a3120b61e56cecb6409585118a5e907171fef0e4dc25afaf13fcea5c5d5'
-            'd792f675ad0a92f415f43f1cd15dd828520b1728b5d9b6129933a2abf72df43f'
-            '40117efbd082d0b81b7ca0880bfaa313bd64061d80e29f1660eba6ce3c8b2eba'
-            '44b8426b1d0260d152864eb473915a206554569833fe3bea5746285a8d7689d0'
-            'd1d82464dd97621dfcec234e36d8b5d54c6251b5a792959e9ad8e28bf4bc3dc6')
+        "http://downloads.sourceforge.net/marathon/README.md")
+sha256sums=('c0f360dfb74a6264f95d375103a74000930cf0439ffb0464f915f5379443e133'
+            '2eb7fedcd6d4f85b3dc62b3c26f08d8f620fe670f504dafb411787e09ff3b9d9')
 
 prepare() {
   cd AlephOne-$_pkgdate
-
-  # backport some patches to make it compile correctly
-  patch -Np0 < ../$pkgname-r5002-remove-deprecated-ffmpeg-quality-setting.diff
-  patch -Np0 < ../$pkgname-r5009-support-newer-ffmpeg.diff
-  patch -Np0 < ../$pkgname-r5011-use-mkstemp.diff
-  patch -Np0 < ../$pkgname-r5012-include-iostream.diff
 
   # lowercase for (folder) name
   sed "s|PACKAGE='AlephOne'|PACKAGE='alephone'|g" -i configure
@@ -75,6 +61,6 @@ package() {
   install -m644 Resources/*.png "$pkgdir"/usr/share/icons
 
   # docs
-  install -Dm644 ../README.md "$pkgdir"/usr/share/doc/$pkgname/README-1.1.md
+  install -Dm644 ../README.md "$pkgdir"/usr/share/doc/$pkgname/README-${pkgver%_*}.md
   install -m644 README docs/*.html "$pkgdir"/usr/share/doc/$pkgname
 }
