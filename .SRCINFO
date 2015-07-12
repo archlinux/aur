@@ -1,5 +1,5 @@
 pkgbase = btcd
-	pkgver = 20150513
+	pkgver = 20150711
 	pkgrel = 1
 	url = https://github.com/btcsuite
 	arch = i686
