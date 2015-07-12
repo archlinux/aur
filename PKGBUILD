@@ -4,7 +4,7 @@
 pkgname=automake-1.14
 _realname=automake
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU tool for automatically creating Makefiles"
 arch=('any')
 license=('GPL')
