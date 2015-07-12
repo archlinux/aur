@@ -1,3 +1,4 @@
+# Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 # submit: Chao Wang <chaowang@redhat.com>
 
 pkgname=koji
