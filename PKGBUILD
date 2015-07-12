@@ -41,7 +41,7 @@ pkgver() {
 prepare() {
 	# Patching *.desktop file
 	cd ${srcdir}/${_pkgname}
-	patch ./applications/${_pkgname}.desktop ../desktop_file.patch
+	patch applications/${_pkgname}.desktop ../desktop_file.patch
 
 	# Create build directory
 	mkdir -p ${srcdir}/build
