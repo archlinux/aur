@@ -1,7 +1,7 @@
 pkgbase = jquery
 	pkgdesc = Cross-platform JavaScript library designed to simplify the client-side scripting of HTML
 	pkgver = 2.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jquery.com
 	arch = any
 	license = MIT
