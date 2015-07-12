@@ -1,0 +1,21 @@
+pkgbase = scangearmp-common-mg3500series
+	pkgdesc = Canon IJ Scanner Driver (Common package)
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://support-asia.canon-asia.com/contents/ASIA/EN/0100470402.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = gtk2>=2.4.0
+	depends = libpng12
+	depends = pangox-compat
+	depends = libusb-compat
+	optdepends = sane
+	optdepends = gimp>=2.0.0
+	options = emptydirs
+	source = http://gdlp01.c-wss.com/gds/0/0100005520/01/scangearmp-mg3500series-2.20-1-rpm.tar.gz
+	md5sums = 78aca903bc0281be1e79a0bc276c7f15
+
+pkgname = scangearmp-common-mg3500series
+
