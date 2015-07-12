@@ -1,0 +1,14 @@
+pkgbase = nixnote
+	pkgdesc = Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.sourceforge.net/projects/nevernote/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = java-runtime
+	depends = libpng12
+	source = http://sourceforge.net/projects/nevernote/files/NixNote%201.6/nixnote-1.6_amd64.tar.gz/download
+
+pkgname = nixnote
+
