@@ -1,0 +1,46 @@
+pkgbase = libappindicator-activate
+	pkgdesc = libappindicator patched to improve user experience under Plasma 5 (single click activation via Activate dbus method)
+	pkgver = 12.10.0
+	pkgrel = 5
+	url = https://launchpad.net/libappindicator
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = dbus-glib
+	makedepends = gobject-introspection
+	makedepends = gtk-sharp-2
+	makedepends = libdbusmenu-gtk2
+	makedepends = libdbusmenu-gtk3
+	makedepends = libindicator-gtk2
+	makedepends = libindicator-gtk3
+	makedepends = mono
+	makedepends = perl-xml-libxml
+	makedepends = pygtk
+	makedepends = vala
+	options = !emptydirs
+	source = http://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz
+	source = 0001-Add-support-for-Activate-method-for-improved-Plasma-.patch
+	sha256sums = d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f
+	sha256sums = b5ee550484aebc13eccbee181f355416efa1de917317c00b044266104418526a
+
+pkgname = libappindicator-activate-gtk2
+	depends = libdbusmenu-gtk2
+	depends = libindicator-gtk2
+	provides = libappindicator
+	provides = libappindicator-gtk2
+	conflicts = libappindicator
+	conflicts = libappindicator-gtk2
+
+pkgname = libappindicator-activate-gtk3
+	depends = libdbusmenu-gtk3
+	depends = libindicator-gtk3
+	provides = libappindicator3
+	provides = libappindicator-gtk3
+	conflicts = libappindicator3
+	conflicts = libappindicator-gtk3
+
+pkgname = libappindicator-activate-sharp
+	arch = any
+	provides = libappindicator-sharp
+	conflicts = libappindicator-sharp
+
