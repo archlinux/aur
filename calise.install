@@ -1,0 +1,9 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    echo "==> UDev rules have been created but not yet loaded, they are loaded automatically after a reboot (or UDev reload/refresh)."
+}
+
+post_upgrade() {
+    echo "==> Default udev rules group changed from \"video\" to \"wheel\""
+}
+

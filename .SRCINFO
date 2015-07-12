@@ -1,0 +1,27 @@
+pkgbase = calise
+	pkgdesc = A program that computes ambient brightness and sets screen's correct backlight using a webcam.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://calise.sourceforge.net/
+	install = calise.install
+	arch = any
+	license = GPL3
+	makedepends = python2-distutils-extra
+	makedepends = intltool
+	makedepends = libx11
+	makedepends = linux-headers
+	depends = python2-xdg
+	depends = python2-pyephem
+	depends = python2-dbus
+	depends = python2-gobject2
+	depends = hicolor-icon-theme
+	optdepends = python2-pyqt: gui (non-service only)
+	optdepends = pm-utils: graceful pause and resume on suspend/hiberante
+	provides = calise
+	conflicts = calise-git
+	replaces = camsensor
+	source = http://sourceforge.net/projects/calise/files/calise-beta/0.4.2/calise-0.4.2.tar.gz
+	sha1sums = 13638acce079ebbec1546913738c8e0293363513
+
+pkgname = calise
+
