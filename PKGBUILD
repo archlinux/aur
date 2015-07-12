@@ -1,6 +1,6 @@
 # Maintainer: Nicolo' Barbon <smilzoboboz@gmail.com>
 pkgname=calise-git
-pkgver=v0.4.1.r19.g25dbdaf
+pkgver=v0.5.0.r19.g25dbdaf
 pkgrel=1
 pkgdesc="A program that computes ambient brightness and sets screen's correct backlight using a webcam. Development GIT Version."
 arch=('i686' 'x86_64')
@@ -92,5 +92,6 @@ package() {
 
 pkgver() {
   cd "$_gitname"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  # Upstream wanted to release 0.5.0 but never updated tags. Doh.
+  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' | sed 's/4\.1/5\.0/'
 }

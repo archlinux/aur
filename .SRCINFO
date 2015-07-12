@@ -1,6 +1,6 @@
 pkgbase = calise-git
 	pkgdesc = A program that computes ambient brightness and sets screen's correct backlight using a webcam. Development GIT Version.
-	pkgver = v0.4.1.r19.g25dbdaf
+	pkgver = v0.5.0.r19.g25dbdaf
 	pkgrel = 1
 	url = http://calise.sourceforge.net/
 	arch = i686
