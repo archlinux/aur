@@ -1,0 +1,23 @@
+pkgbase = lib32-librsvg
+	pkgdesc = A SVG viewing library (32-bit)
+	pkgver = 2.40.9
+	pkgrel = 3
+	url = https://live.gnome.org/LibRsvg
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = python2
+	makedepends = lib32-gtk3
+	depends = lib32-gdk-pixbuf2
+	depends = lib32-pango
+	depends = lib32-libcroco
+	depends = librsvg
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/librsvg/2.40/librsvg-2.40.9.tar.xz
+	sha256sums = 13964c5d35357552b47d365c34215eee0a63bf0e6059b689f048648c6bf5f43a
+
+pkgname = lib32-librsvg
+
