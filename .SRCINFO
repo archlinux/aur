@@ -1,0 +1,18 @@
+pkgbase = gnome-breeze-git
+	pkgdesc = A GTK theme created to match with the new Plasma 5 Breeze.
+	pkgver = 42.f8dafee
+	pkgrel = 1
+	url = https://github.com/dirruk1/gnome-breeze
+	arch = any
+	license = LGPL
+	makedepends = git
+	optdepends = gtk2: GTK+2 theme
+	optdepends = gtk3: GTK+3 theme
+	conflicts = gtk-theme-breezy-gtk3
+	conflicts = gtk-theme-breezy-gtk2
+	conflicts = gtk-theme-breezy
+	source = gnome-breeze-git::git+https://github.com/dirruk1/gnome-breeze.git
+	md5sums = SKIP
+
+pkgname = gnome-breeze-git
+
