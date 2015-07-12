@@ -1,0 +1,20 @@
+pkgbase = jack-rack
+	pkgdesc = Effects rack for JACK
+	pkgver = 1.4.7
+	pkgrel = 4
+	url = http://jack-rack.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = gtk2
+	depends = libxml2
+	optdepends = lash: LASH support
+	optdepends = raptor1: LRDF support
+	optdepends = liblrdf: LRDF support
+	optdepends = python2: ecarack
+	source = http://downloads.sourceforge.net/sourceforge/jack-rack/jack-rack-1.4.7.tar.bz2
+	md5sums = a29ef4001ee2916a1b758952c936adca
+
+pkgname = jack-rack
+
