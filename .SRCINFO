@@ -1,6 +1,6 @@
 pkgbase = cjdns-git
 	pkgdesc = A routing engine designed for security, scalability, speed and ease of use
-	pkgver = 0.3.3376
+	pkgver = 0.3.3381
 	pkgrel = 1
 	url = https://github.com/cjdelisle/cjdns
 	arch = i686
