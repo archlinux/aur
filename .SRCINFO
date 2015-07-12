@@ -1,6 +1,6 @@
 pkgbase = playpen-git
 	pkgdesc = A secure application sandbox using namespaces, cgroups and seccomp
-	pkgver = 5.7.g15789f4
+	pkgver = 11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/thestinger/playpen/

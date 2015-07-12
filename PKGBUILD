@@ -1,7 +1,7 @@
 # Maintainer: Daniel Micay <danielmicay@gmail.com>
 _gitname=playpen
 pkgname=playpen-git
-pkgver=5.7.g15789f4
+pkgver=11
 pkgver() { cd $_gitname && git describe | sed 's/^v//; s/-/./g'; }
 pkgrel=1
 epoch=1
@@ -18,7 +18,7 @@ md5sums=(SKIP)
 
 build() {
   cd $_gitname
-  CC=cc make
+  make
 }
 
 package() {
