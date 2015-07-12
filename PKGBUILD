@@ -15,7 +15,7 @@ _build_voip=false
 
 pkgname=retroshare
 pkgver=0.6.0.RC2
-pkgrel=2
+pkgrel=3
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -129,12 +129,12 @@ package() {
 			"${pkgdir}/usr/bin/${pkgname}-nogui"
 	fi
 
-    # Webui files
-	install -d -m 655 "${pkgdir}/usr/share/RetroShare/webfiles/"
+    # Webui files ( the path is currently hardcoded for the gui )
+	install -d -m 655 "${pkgdir}/usr/share/RetroShare06/webui/"
 	for _file in $(ls "${_srcdir}/libresapi/src/webfiles/"); do
 		install -D -m 644 \
 			"${_srcdir}/libresapi/src/webfiles/${_file}" \
-			"${pkgdir}/usr/share/RetroShare/webfiles/"
+			"${pkgdir}/usr/share/RetroShare06/webui/"
 	done
 
 
