@@ -3,15 +3,13 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.64.4
-_gitver=38ad235
+pkgver=0.64.5
+_gitver=c09ecd56ce834bf602107960697a74d6977d0958
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
-url="http://rainemu.swishparty.co.uk"
+url="http://raine.1emulation.com/"
 license=('custom')
 arch=('i686' 'x86_64')
-provides=('neoraine')
-conflicts=('neoraine')
 replaces=('neoraine')
 depends_i686=('sdl_ttf' 'sdl_image' 'sdl_sound' 'muparser' 'glu')
 depends_x86_64=('lib32-sdl_ttf' 'lib32-sdl_image' 'lib32-sdl_sound' 'lib32-muparser' 'lib32-glu')
@@ -22,10 +20,10 @@ optdepends=('raine-artwork: additional background graphics for some games'
             'raine-blend: transparency information for some games'
             'arcade-history-dat: database with various information about the loaded rom'
             'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
-source=(raine-$pkgver.tar.gz::"$url/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=$_gitver;sf=tgz"
-        "$url/html/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}_i386.deb")
-sha256sums=('797a444d685a6d268a0814f2c570120a0e2f1765fa98ae0ce14bae90e37f2a06'
-            'f799bc25f095d9e0685649c280ed28c72ec0d3bb93285c3ed21e7f94e157b7ec')
+source=(raine-$pkgver.tar.gz::"https://github.com/zelurker/raine/archive/$_gitver.tar.gz"
+        "$url/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}-2_i386.deb")
+sha256sums=('b43acd7c23f742148bf73fe57fc49e344e6392a50c1548590aeceafa04ff5147'
+            'c917d1c17f23901cd160c24f1be0b504590f773b7f791e5a890875162d813d8f')
 options=('emptydirs')
 
 prepare() {
