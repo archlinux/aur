@@ -1,0 +1,15 @@
+pkgbase = sc68
+	pkgdesc = Atari ST and Amiga music player
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://sc68.atari.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = http://downloads.sourceforge.net/project/sc68/sc68/2.2.1/sc68-2.2.1.tar.gz
+	source = doctex.patch
+	md5sums = 84aa948f76274361f7e78c3563951eff
+	md5sums = 669451bc5ba1d1e5912be341a9d5cecd
+
+pkgname = sc68
+

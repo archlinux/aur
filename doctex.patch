@@ -1,0 +1,11 @@
+--- sc68-2.2.1/info/sc68.texi	2003-08-30 05:27:08.000000000 +0400
++++ sc68-2.2.1-new/info/sc68.texi	2015-03-11 12:57:53.070285302 +0300
+@@ -25,7 +25,7 @@
+ 
+ @titlepage
+ @sp 3
+-@title{sc68 documentation}
++@title sc68 documentation
+ @subtitle version @value{VERSION}, last updated the @value{UPDATED}
+ @author Benjamin Gerard
+ 
