@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
-	pkgver = 38.0.1
+	pkgver = 38.1.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-beta-bin.install
@@ -29,7 +29,7 @@ pkgbase = thunderbird-beta-bin
 	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=38.0.1
+	provides = thunderbird=38.1.0
 	conflicts = thunderbird-beta
 	source = thunderbird-beta-bin.desktop
 	source = thunderbird-beta-bin-safe.desktop
@@ -37,10 +37,10 @@ pkgbase = thunderbird-beta-bin
 	md5sums = 6c94c2e7f041c5c947af1ed958c0d227
 	md5sums = 00fef0a11f3643454a1af66bb7e4af35
 	md5sums = 5a53179d14ae9631b7afe5e4d0fc0b25
-	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/38.0.1/linux-i686/en-US/thunderbird-38.0.1.tar.bz2
-	md5sums_i686 = cfe63bc784f017bbb5dfa25ced2db50f
-	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/38.0.1/linux-x86_64/en-US/thunderbird-38.0.1.tar.bz2
-	md5sums_x86_64 = 183c117180bf359b8bbea5eff61eba34
+	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/38.1.0/linux-i686/en-US/thunderbird-38.1.0.tar.bz2
+	md5sums_i686 = 5e4cbf39f2b775c056d8ce0239287c74
+	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/38.1.0/linux-x86_64/en-US/thunderbird-38.1.0.tar.bz2
+	md5sums_x86_64 = 325603a1bd10c728a36f032c9c8661e8
 
 pkgname = thunderbird-beta-bin
 
