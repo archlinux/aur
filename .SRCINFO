@@ -34,9 +34,9 @@ pkgbase = google-chrome-beta
 	options = !strip
 	source = eula_text.html
 	md5sums = b7e752f549b215ac77f284b6486794b6
-	source_i686 = google-chrome-beta_44.0.2403.61_i386.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb
+	source_i686 = google-chrome-beta_44.0.2403.81_i386.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb
 	md5sums_i686 = 73d28cf324f6dc513c4867c425a24888
-	source_x86_64 = google-chrome-beta_44.0.2403.61_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
+	source_x86_64 = google-chrome-beta_44.0.2403.81_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 	md5sums_x86_64 = c691ab5a8318bcaa1ea08b63fe5c00de
 
 pkgname = google-chrome-beta
