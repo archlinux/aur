@@ -21,5 +21,5 @@ prepare() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" -C koji install
+	make DESTDIR="$pkgdir/" install
 }
