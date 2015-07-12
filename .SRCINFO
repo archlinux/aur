@@ -1,7 +1,7 @@
 pkgbase = koji
 	pkgdesc = Koji is a system for building and tracking RPMS. This base package contains shared libraries and the command-line interface.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedorahosted.org/koji/
 	arch = any
 	license = GPL2
@@ -12,9 +12,7 @@ pkgbase = koji
 	depends = urlgrabber
 	depends = rpm-org
 	source = https://fedorahosted.org/released/koji/koji-1.9.0.tar.bz2
-	source = makefile_python_to_python2.patch
 	sha256sums = ec933af8359408b11478477de83b042a5bdf1d23e85683528aebb53c9bc0e6bc
-	sha256sums = f1bc4f65f4f7be2615336ce0e5d2fd728f6af2b6cd12f4d40ee59d204fa5ca9c
 
 pkgname = koji
 

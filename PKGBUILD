@@ -3,7 +3,7 @@
 
 pkgname=koji
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Koji is a system for building and tracking RPMS. This base package contains shared libraries and the command-line interface.'
 arch=('any')
 license=('GPL2' 'LGPL2.1')
