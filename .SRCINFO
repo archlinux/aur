@@ -1,0 +1,18 @@
+pkgbase = groovesquid
+	pkgdesc = Find, play & download any song in the internet with one click
+	pkgver = 0.9.3
+	pkgrel = 0
+	url = http://groovesquid.com/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	noextract = Groovesquid.jar
+	source = https://github.com/groovesquid/groovesquid/releases/download/v0.9.3/Groovesquid.jar
+	source = http://groovesquid.com/img/squid.png
+	source = groovesquid.desktop
+	md5sums = 9ef0f331040391f2b8dcfed7f32ca7af
+	md5sums = 725d5638a52ead6d31d57639457189e7
+	md5sums = 860f8b8cf1eeee1b8f7b71a7fb505619
+
+pkgname = groovesquid
+

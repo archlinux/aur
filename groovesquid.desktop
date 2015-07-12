@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Groovesquid
+GenericName=Grooveshark Downloader and Streamer
+Type=Application
+Categories=Audio;Music;Player;AudioVideo
+Terminal=false
+Exec=java -jar /opt/groovesquid/groovesquid.jar
+Icon=groovesquid
