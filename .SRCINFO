@@ -1,0 +1,19 @@
+pkgbase = ocaml-pa_structural_sexp
+	pkgdesc = Industrial strength alternative to OCaml's standard library
+	pkgver = 112.35.00
+	pkgrel = 1
+	url = https://github.com/janestreet/core
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = camlp4
+	depends = ocaml-sexplib
+	depends = ocaml-type_conv
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/pa_structural_sexp-112.35.00.tar.gz
+	md5sums = b9d40e3a8586d6679c799d99cfabc596
+
+pkgname = ocaml-pa_structural_sexp
+
