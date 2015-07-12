@@ -1,7 +1,7 @@
 pkgbase = font-manager-git
 	pkgdesc = A simple font management application for GTK+ Desktop Environments
 	pkgver = 0.r148.91c509c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fontmanager.github.io/
 	install = font-manager.install
 	arch = i686

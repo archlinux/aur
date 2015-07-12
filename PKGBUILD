@@ -6,7 +6,7 @@
 pkgname=font-manager-git
 _gitname=master
 pkgver=0.r148.91c509c
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
 url="http://fontmanager.github.io/"
 arch=('i686' 'x86_64')
@@ -29,9 +29,8 @@ pkgver() {
 build() {
   cd ${srcdir}/${_gitname}
 
-  aclocal
   ./autogen.sh --prefix=/usr --disable-schemas-compile
-  make
+  make -j1
 }
 
 package() {
