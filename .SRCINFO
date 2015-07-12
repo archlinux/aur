@@ -1,0 +1,22 @@
+pkgbase = blueshift-git
+	pkgdesc = An extensible and highly configurable alternative to redshift.
+	pkgver = 1.90.3.r1.g3f2d049
+	pkgrel = 1
+	url = https://github.com/maandree/blueshift
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = pylibgamma
+	depends = solar-python
+	depends = argparser
+	depends = libxcb
+	depends = adjbacklight
+	depends = wget
+	depends = auto-auto-complete
+	source = blueshift-git::git+https://github.com/maandree/blueshift
+	md5sums = SKIP
+
+pkgname = blueshift-git
+
