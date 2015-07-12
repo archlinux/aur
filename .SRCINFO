@@ -1,6 +1,6 @@
 pkgbase = staruml
 	pkgdesc = A sophisticated software modeler
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://staruml.io/
 	install = staruml.install
@@ -15,10 +15,10 @@ pkgbase = staruml
 	depends = libudev.so.0
 	source = staruml.sh
 	md5sums = 9e14e38e0b2054353eab13e9f028bd74
-	source_i686 = http://staruml.io/download/release/v2.3.0/StarUML-v2.3.0-32-bit.deb
-	md5sums_i686 = f3cfc1ca72b2653323eb926547a7ddb6
-	source_x86_64 = http://staruml.io/download/release/v2.3.0/StarUML-v2.3.0-64-bit.deb
-	md5sums_x86_64 = 8b7423c03f72e4a4beda215963257589
+	source_i686 = http://staruml.io/download/release/v2.4.0/StarUML-v2.4.0-32-bit.deb
+	md5sums_i686 = dd378f46cb452c1227ee570d81d2c530
+	source_x86_64 = http://staruml.io/download/release/v2.4.0/StarUML-v2.4.0-64-bit.deb
+	md5sums_x86_64 = 345930d4ef6fe046b6a60c30b2fec241
 
 pkgname = staruml
 
