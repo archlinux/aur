@@ -14,7 +14,7 @@ _build_voip=false
 _svnmod=trunk
 
 pkgname=retroshare-svn
-pkgver=8571
+pkgver=8603
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -138,11 +138,11 @@ package() {
 	fi
 
 	# Webui files
-	install -d -m 655 "${pkgdir}/usr/share/RetroShare/webfiles/"
+	install -d -m 655 "${pkgdir}/usr/share/RetroShare06/webui/"
 	for _file in $(ls libresapi/src/webfiles/); do
 		install -D -m 644 \
 			"libresapi/src/webfiles/${_file}" \
-			"${pkgdir}/usr/share/RetroShare/webfiles/"
+			"${pkgdir}/usr/share/RetroShare06/webui/"
 	done
 
 	# Plugins
