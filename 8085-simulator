@@ -1,3 +1,13 @@
 #!/bin/bash
 
+# Lauch the java program
 java -jar /opt/8085-simulator/8085-simulator-2.0.jar
+
+# This program creates some data files in the working directory.
+#
+# - settings.dat
+# - backup.dat
+# - *\user_code (directory)
+#
+# Delete these unwanted files upon exit
+rm -rf settings.dat backup.dat *\\user_code

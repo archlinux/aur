@@ -2,6 +2,5 @@
 Name=8085 Simulator
 Type=Application
 Exec=8085-simulator
-Terminal=false
-Comment=Jubin's 8085 Simulator with Training Kit
+Comment=Jubin's 8085 Simulator with Trainer Kit
 Categories=Education;Engineering;Science;Development;Programming;
