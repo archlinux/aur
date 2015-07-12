@@ -1,7 +1,7 @@
 pkgbase = google-musicmanager
-	pkgdesc = A simple application for adding the music files on your computer to your Google Music library.
+	pkgdesc = A simple application for adding the music files on your computer to your Google Music library
 	pkgver = 1.0.196.8837_r0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://music.google.com
 	install = google-musicmanager.install
 	arch = i686
