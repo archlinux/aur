@@ -1,0 +1,15 @@
+pkgbase = fontconfig-ttf-ms-fonts
+	pkgdesc = Enhanced font configuration for ttf-ms-fonts. (Prefer Microsoft versions of PostScript fonts.)
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://corefonts.sourceforge.net/
+	install = fontconfig-ttf-ms-fonts.install
+	arch = any
+	license = GPL
+	depends = ttf-ms-fonts
+	depends = fontconfig
+	source = 29-replace-bitmap-fonts.conf
+	md5sums = 39654873d8ff74d418f533e559b57fb9
+
+pkgname = fontconfig-ttf-ms-fonts
+
