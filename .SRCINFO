@@ -1,14 +1,15 @@
 pkgbase = python-django-reversion
-	pkgver = 1.8.2
-	pkgrel = 2
+	pkgver = 1.8.5
+	pkgrel = 1
 	url = http://github.com/etianen/django-reversion
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = python2
+	makedepends = python2-setuptools
 	makedepends = python
-	source = https://pypi.python.org/packages/source/d/django-reversion/django-reversion-1.8.2.tar.gz
-	md5sums = b00c492284c776a69ff6cc43247be682
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/d/django-reversion/django-reversion-1.8.5.tar.gz
+	md5sums = 2de5a3fe82aaf505c134570f96fcc7a8
 
 pkgname = python-django-reversion
 	pkgdesc = An python3 extension to the Django web framework that provides comprehensive version control facilities

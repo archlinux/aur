@@ -2,14 +2,14 @@
 
 pkgbase=python-django-reversion
 pkgname=('python-django-reversion' 'python2-django-reversion')
-pkgver=1.8.2
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgver=1.8.5
+pkgrel=1
+arch=(any)
 url="http://github.com/etianen/django-reversion"
 license=('BSD')
-makedepends=('python2' 'python')
-source=("https://pypi.python.org/packages/source/d/django-reversion/django-reversion-$pkgver.tar.gz")
-md5sums=('b00c492284c776a69ff6cc43247be682')
+makedepends=( 'python2' 'python2-setuptools' 'python' 'python-setuptools' )
+source=( "https://pypi.python.org/packages/source/d/django-reversion/django-reversion-$pkgver.tar.gz" )
+md5sums=( '2de5a3fe82aaf505c134570f96fcc7a8' )
 
 prepare() {
    cp -r django-reversion-${pkgver} python2-django-reversion-${pkgver}
