@@ -1,0 +1,25 @@
+pkgbase = dviasm-git
+	pkgdesc = A TeX utility program for editing DVI files directly.
+	pkgver = 20150412.r2.gcc03d91
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	conflicts = dviasm
+	source = dviasm-git::git+https://github.com/khaledhosny/dviasm
+	source = http://tug.org/TUGboat/Articles/tb28-2/tb89cho.pdf
+	source = http://ajt.ktug.kr/assets/2008/5/1/0201cho.pdf
+	md5sums = SKIP
+	md5sums = 702f49e7eaaebe4ed4e445399c6d56e0
+	md5sums = 86b75c9b11e95c5158b60d8ba8a5c631
+	sha1sums = SKIP
+	sha1sums = 6be6a8b35d183b27c0ab86d30fd0ff1dcaa98c77
+	sha1sums = 8545152b546eccaae344b10e1605468b223a66a4
+	sha256sums = SKIP
+	sha256sums = acbbc433c70be092359182e1d2ea8c24e47eacf46c7c6da4981902d1fcd6cf78
+	sha256sums = ca59060b7f74e82330d371ca06d8e9cd17ca7962fb303c53c33f1b2da270a833
+
+pkgname = dviasm-git
+
