@@ -1,8 +1,9 @@
 # Maintainer: Fabio Rämi <fabio[at]dynamix-tontechnik[dot]ch>
+# Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=friture
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
 url="http://tlecomte.github.com/friture/"
