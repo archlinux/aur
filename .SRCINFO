@@ -1,0 +1,25 @@
+pkgbase = python-rfc6266
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/g2p/rfc6266
+	arch = any
+	license = LGPL
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lepl
+	source = https://pypi.python.org/packages/source/r/rfc6266/rfc6266-0.0.4.tar.gz
+	source = LGPL-3.0.txt
+	md5sums = 772b711de0bf9fc9277fe91e7b53060c
+	md5sums = e6a600fd5e1d9cbde2d983680233ad02
+
+pkgname = python2-rfc6266
+	pkgdesc = A Python2 Content-Disposition header support (RFC6266)
+	depends = python2
+
+pkgname = python-rfc6266
+	pkgdesc = A Python3 Content-Disposition header support (RFC6266)
+	depends = python
+
