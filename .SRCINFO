@@ -1,5 +1,5 @@
 pkgbase = linux-lts-ck
-	pkgver = 3.14.46
+	pkgver = 3.14.48
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-lts-ck
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.46.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.46.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.48.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.48.sign
 	source = http://ck.kolivas.org/patches/3.0/3.14/3.14-ck1/patch-3.14-ck1.bz2
 	source = bfs447-454.patch
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+.patch.gz
@@ -31,13 +31,13 @@ pkgbase = linux-lts-ck
 	source = gcc5_buildfixes.diff
 	sha512sums = 5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e
 	sha512sums = SKIP
-	sha512sums = d5a5af3d81313932adb90d74e4d3999e73c86a11dc42d2928304bb51b87dd237ef33005de2fecb6971e11aac7fe55d4ef3dd35b82fbc1e530d772c0d1363d987
+	sha512sums = dcde80071a43c54afa8cddd4a19a899ff576b0d0e6fa4059d9ef202f9007eb0384c843b7282def950094637a3cfcd0722207fd441101d1763017a715bb0fa28c
 	sha512sums = SKIP
 	sha512sums = d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305
 	sha512sums = 1a112daacec768b588af4549a6e90fa24a251b4632bd14dd1ccbb818838a009df25f9df369ad71e3ef9a6900f4e8ff37f8132bd8450c1653c1a6eb7bdffb0ad5
 	sha512sums = 1b8ac77604b891aac57257bc3d9578596f38f2f75a625310a7d36e7f59612a616da6ef12d028622cb855a065e4fadc739cb67d12370c49bb52708744ad312957
-	sha512sums = f893f956f1be6cd03ef42937d728e24f69a3d6c828803faaae9aba83f09fdb75a021ef39ad0ff09a23b6174740e58fa0d88eadb3f832ed6e51fed0ea881f3040
-	sha512sums = 774b3a8ae15dbe9ba3f2483d41a67a79d7e0dbaa4bed01d0957e7920651a1e1048c5215bddb827ceb363bc2e81666580de976807b9a9eed3e223b9640fb91fd1
+	sha512sums = 244dcd48fa445c98ef0cf5b1cf37dcf5dc90ebf69a909fb39d523ad3b4e8011cdaf9393532ed913afd6934a3571380304c7315ff82725748e9092e65d1a5fbad
+	sha512sums = 4adf7d8599beb9f8a1b13b9a931a64fe4f6688c4792ce8532b4ac1cc1122dbb7fae5bf693b4dd23db6f3f9dd6fab50084bf91113bc9b7dc70b75c7f1ba015e76
 	sha512sums = a93cb41a6a37bfa1a4aae49b3c69d714e0c58d0d5826d6dc13529861e1f7f9a45d524455dca30d6a26f1993e542d8ccddb5b85caf01957a94e4c05dfd1ca71de
 	sha512sums = 502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78
 	sha512sums = f26306c173e3fc35ae6df4c43e9ddbac33845dcc1fb0def612fe370c2d7b8f904b4c70d267eb52717ade879d1e289695b9e971dfcb1c963dac4c6e2fb5230453
@@ -62,7 +62,7 @@ pkgname = linux-lts-ck
 	optdepends = nvidia-lts-ck: nVidia drivers for linux-lts-ck
 	optdepends = nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-lts-ck=3.14.46
+	provides = linux-lts-ck=3.14.48
 	replaces = kernel26-lts-ck
 	backup = etc/mkinitcpio.d/linux-lts-ck.preset
 
@@ -70,7 +70,7 @@ pkgname = linux-lts-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts-ck.
 	groups = lts-ck-generic
 	depends = linux-lts-ck
-	provides = linux-lts-ck-headers=3.14.46
-	provides = linux-headers=3.14.46
+	provides = linux-lts-ck-headers=3.14.48
+	provides = linux-headers=3.14.48
 	replaces = kernel26-ck-lts-headers
 
