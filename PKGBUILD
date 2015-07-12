@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/mertensj/aclock"
 license=('GPL')
 depends=('gtk3')
-source=("https://git@github.com/mertensj/aclock.git")
+source=("https://github.com/mertensj/aclock.git")
 md5sums=("SKIP")
 
 _gitname="aclock"

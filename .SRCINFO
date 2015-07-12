@@ -7,7 +7,7 @@ pkgbase = aclock
 	arch = x86_64
 	license = GPL
 	depends = gtk3
-	source = https://git@github.com/mertensj/aclock.git
+	source = https://github.com/mertensj/aclock.git
 	md5sums = SKIP
 
 pkgname = aclock
