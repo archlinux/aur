@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=War Thunder
+Comment=A cross-platform MMO combat game dedicated to World War II military aviation, armoured vehicles, and fleets.
+Comment[ru_RU]=Кросс-платформенная военная онлайн-игра, посвященная боевой авиации, бронетехнике и флоту времен Второй мировой и Корейской войны.
+Exec=/usr/bin/warthunder
+Icon=warthunder
+Terminal=true
+Type=Application
+Categories=Game;ActionGame;

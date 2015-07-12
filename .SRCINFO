@@ -1,12 +1,25 @@
 pkgbase = warthunder
 	pkgdesc = Updater and launcher for War Thunder - a combat game dedicated to WW2
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://warthunder.com/
+	install = warthunder.install
 	arch = x86_64
 	license = custom
 	source = warthunder.sh
+	source = warthunder.desktop
+	source = 16x16.png
+	source = 48x48.png
+	source = 64x64.png
+	source = 128x128.png
+	source = 256x256.png
 	sha256sums = 885b1ef426a98365a68699dfb6d6bc1e3f99a1624eebcffae8c00facb2bd3e3a
+	sha256sums = 352a7289b255fc3c57692a20db23c3260de98093e3f8d86372f5a7ee511ab543
+	sha256sums = 48676d477d800f8ee7ca28b9e483a7ef0961b3218c4c373c754a01e62bda5c21
+	sha256sums = e942263ad59cf80a133c9e493c8b18637c21aa8e5b75fe9bd5c54c970301cf26
+	sha256sums = ce594219697fce830ece3a18379d106072da11ae47052aa0d1a9a372ed515065
+	sha256sums = 83cb65c23edf7fc22c6a74c4adb3e2544af44e1b2e5930904836039faccd732a
+	sha256sums = c08846a2f9a76b74c24b2c14e2585559d87f9e61de9f08f4ec3c718ec6d3efb4
 	source_x86_64 = http://yup2.gaijinent.com/updater_1.0.7.tar.gz
 	sha256sums_x86_64 = 312b247a7f04281cebafe07d98a2a38ccf23e3e9983eff89935f1f91378821d2
 
