@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-node"
 license=('AGPL3')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('fe14b04f6caf5ce313e593c9cf324dad2f7e3d81565486bc873accf040baef4d')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/$pkgver)
+sha256sums=('b3bc7ca3d9445e0f510c23a492028308fb3111647983212714085b0abb9e7fb9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

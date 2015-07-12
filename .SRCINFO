@@ -1,6 +1,6 @@
 pkgbase = libbitcoin-node
 	pkgdesc = Bitcoin Full Node
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin-node
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = libbitcoin-node
 	depends = boost-libs
 	depends = libbitcoin-blockchain
 	depends = secp256k1-git
-	source = libbitcoin-node-2.0.0.tar.gz::https://codeload.github.com/libbitcoin/libbitcoin-node/tar.gz/v2.0.0
-	sha256sums = fe14b04f6caf5ce313e593c9cf324dad2f7e3d81565486bc873accf040baef4d
+	source = libbitcoin-node-2.1.0.tar.gz::https://codeload.github.com/libbitcoin/libbitcoin-node/tar.gz/2.1.0
+	sha256sums = b3bc7ca3d9445e0f510c23a492028308fb3111647983212714085b0abb9e7fb9
 
 pkgname = libbitcoin-node
 
