@@ -1,21 +1,25 @@
-# Contributor: Guillem Rieu <guillemr@gmx.net>
+# Maintainer: Ainola
+# Contributor: Guillem Rieu
 
 pkgname=pam_encfs
 pkgver=0.1.4.4
-pkgrel=2
-pkgdesc="pam_encfs is a module to auto mount encfs dir on login"
+pkgrel=3
+pkgdesc="A module to auto-mount encfs directories on login"
 url="http://code.google.com/p/pam-encfs/"
-arch=(i686 x86_64)
-depends=('encfs')
+arch=('i686' 'x86_64')
+depends=('pam' 'encfs')
 backup=('etc/security/pam_encfs.conf')
-license="GPL"
-source=(http://pam-encfs.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-md5sums=('20d10fa842e968a224af542db7e10d21')
+license=('GPL2')
+source=("http://pam-encfs.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('ec3144d20e32f568e0cbce645e2525565b0f9307f7643436d98937d0c3d09f8e')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  make || return 1
-  make DESTDIR=${pkgdir}/usr install || return 1
-  mkdir -p $pkgdir/etc/security
-  cp pam_encfs.conf $pkgdir/etc/security
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make
+}
+package(){
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/usr" install
+  mkdir -p "${pkgdir}/etc/security"
+  cp pam_encfs.conf "${pkgdir}/etc/security"
 }
