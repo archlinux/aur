@@ -1,0 +1,13 @@
+pkgbase = gauche-readline
+	pkgdesc = Readline module for gauche REPL
+	pkgver = 20100625
+	pkgrel = 1
+	url = http://www.netlab.is.tsukuba.ac.jp/~yokota/izumi/gauche/
+	arch = i686
+	arch = x86_64
+	depends = readline
+	source = http://www.netlab.is.tsukuba.ac.jp/~yokota/archive/Gauche-readline-20100625.tar.gz
+	md5sums = d2f4b71feb7533ca73218680c37521ed
+
+pkgname = gauche-readline
+
