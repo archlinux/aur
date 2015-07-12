@@ -1,0 +1,16 @@
+pkgbase = libchipcard
+	pkgdesc = A library for easy access to chip cards via chip card readers
+	pkgver = 5.0.2
+	pkgrel = 1
+	url = http://www.libchipcard.de/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gwenhywfar
+	depends = pcsclite
+	options = !libtool
+	source = libchipcard-5.0.2.tar.gz::http://www.aquamaniac.de/sites/download/download.php?package=02&release=26&file=01&dummy=libchipcard-5.0.2.tar.gz
+	sha256sums = d0968594c8ed0fc4cb6d681a74a5f000b48b0ac7a9375648b57d397ac49c1808
+
+pkgname = libchipcard
+
