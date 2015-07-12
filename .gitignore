@@ -4,4 +4,5 @@ pkg
 helm-git-*.tar.xz
 helm-git-*.src.tar.gz
 vst_sdk2.4_rev2.zip
+vstsdk360_22_11_2013_build_100.zip
 .AURINFO

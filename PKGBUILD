@@ -3,34 +3,26 @@
 _pkgname=helm
 pkgname="${_pkgname}-git"
 pkgver=0.3.3.r958.0741c59
-pkgrel=1
+pkgrel=2
 pkgdesc="a cross-platform, polyphonic synthesizer LV2 and VST plugin"
 arch=('i686' 'x86_64')
 url="http://tytel.org/helm/"
 license=('GPL')
 groups=('lv2-plugins' 'vst-plugins')
 depends=('alsa-lib' 'mesa' 'lv2')
-makedepends=('git' 'unzip')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/mtytel/helm.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/mtytel/helm.git"
+        'http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip')
+md5sums=('SKIP'
+         '1ac422ebb4aa2e86061278412c347b55')
+changelog=ChangeLog
+
 
 prepare() {
-  cd "${srcdir}"
-
-  if [ ! -d vstsdk2.4 ]; then
-
-    if [ ! -e "$startdir/vst_sdk2.4_rev2.zip" ]; then
-      error "This package needs the Steinberg VST SDK 2.4rev2 to build."
-      plain "Place the file vst_sdk2.4-rev2.zip next to PKGBUILD manually."
-    fi
-
-    unzip "$startdir/vst_sdk2.4_rev2.zip"
-  fi
-
   cd "$srcdir/${_pkgname}/builds/linux/VST"
-  sed -i -e "s|-I ~/srcs/vstsdk2.4|-I $srcdir/vstsdk2.4|" Makefile
+  sed -i -e "s|-I ~/srcs/VST3\\\\ SDK|-I $srcdir/VST3\\\\ SDK|" Makefile
 }
 
 pkgver() {

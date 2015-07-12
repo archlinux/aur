@@ -1,0 +1,6 @@
+2015-07-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.3.3.r958.0741c59-2:
+	add VST3 SDK to sources, since it can be downloaded from Steinberg's
+	website now without login
+	removed 'unzip' from dependencies accordingly
