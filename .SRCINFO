@@ -1,7 +1,7 @@
 pkgbase = mdbus2
 	pkgdesc = DBus introspection command utility
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.3
+	pkgrel = 1
 	epoch = 1
 	url = http://www.freesmartphone.org/
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = mdbus2
 	makedepends = vala
 	depends = dbus-glib
 	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/freesmartphone/sources/mdbus2-2.3.3.tar.bz2
+	sha256sums = a7ecc11b596e022ac09748eb883437bdcfa09005a441a3f933ffcbcdad47f05f
 
 pkgname = mdbus2
 
