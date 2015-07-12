@@ -4,7 +4,7 @@
 pkgname=nvidia-340xx-lts-ck
 pkgver=340.76
 _extramodules=extramodules-3.14-lts-ck
-pkgrel=14
+pkgrel=15
 pkgdesc="NVIDIA drivers for linux-lts-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"

@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-lts-ck
 	pkgdesc = NVIDIA drivers for linux-lts-ck
 	pkgver = 340.76
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-lts-ck.install
 	arch = i686
