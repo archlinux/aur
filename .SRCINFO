@@ -1,0 +1,48 @@
+pkgbase = libcanberra-git
+	pkgdesc = A small and lightweight implementation of the XDG Sound Theme Specification
+	pkgver = 0.30.r2.gc0620e4
+	pkgrel = 1
+	epoch = 1
+	url = http://0pointer.de/lennart/projects/libcanberra
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gtk-doc
+	makedepends = libpulse
+	makedepends = gstreamer
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = git
+	depends = libvorbis
+	depends = libltdl
+	depends = alsa-lib
+	depends = tdb
+	depends = sound-theme-freedesktop
+	options = !emptydirs
+	options = libtool
+	source = libcanberra-git::git://git.0pointer.de/libcanberra.git
+	source = libcanberra.xinit
+	sha256sums = SKIP
+	sha256sums = 2158708f594ab1688d6207eb1659190b3e3a1f711191de1f8e45dd42be8ceb76
+
+pkgname = libcanberra-git
+	install = libcanberra.install
+	optdepends = libcanberra-git-pulse: PulseAudio driver
+	optdepends = libcanberra-git-gstreamer: GStreamer driver
+	provides = libcanberra
+	conflicts = libcanberra
+
+pkgname = libcanberra-pulse-git
+	pkgdesc = PulseAudio plugin for libcanberra
+	depends = libcanberra-git=0.30.r2.gc0620e4-1
+	depends = libpulse
+	provides = libcanberra-pulse
+	conflicts = libcanberra-pulse
+
+pkgname = libcanberra-gstreamer-git
+	pkgdesc = GStreamer plugin for libcanberra
+	depends = libcanberra-git=0.30.r2.gc0620e4-1
+	depends = gstreamer
+	provides = libcanberra-gstreamer
+	conflicts = libcanberra-gstreamer
+
