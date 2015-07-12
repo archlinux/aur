@@ -1,9 +1,9 @@
-# Maintainer: Matěj Grabovský <matej.grabovsky@gmail.com>
+# Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 
 pkgname=lean-git
 _pkgver=0.2.0
 pkgver="${_pkgver}.r5708.0cda3f7"
-pkgrel=2
+pkgrel=3
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
 url="http://leanprover.github.io/"
@@ -11,6 +11,7 @@ license=('Apache')
 depends=('gmp' 'mpfr' 'lua>=5.2')
 makedepends=('git' 'cmake' 'python' 'gperftools')
 optdepends=('emacs: emacs mode')
+conflicts=('lean-bin')
 source=("$pkgname::git+https://github.com/leanprover/lean.git")
 md5sums=(SKIP)
 

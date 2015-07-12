@@ -1,7 +1,7 @@
 pkgbase = lean-git
 	pkgdesc = Lean Theorem Prover
 	pkgver = 0.2.0.r5708.0cda3f7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://leanprover.github.io/
 	arch = x86_64
 	arch = i386
@@ -14,6 +14,7 @@ pkgbase = lean-git
 	depends = mpfr
 	depends = lua>=5.2
 	optdepends = emacs: emacs mode
+	conflicts = lean-bin
 	source = lean-git::git+https://github.com/leanprover/lean.git
 	md5sums = SKIP
 
