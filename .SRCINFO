@@ -1,6 +1,6 @@
 pkgbase = perl-imager
 	pkgdesc = Perl extension for Generating 24 bit Images
-	pkgver = 1.002
+	pkgver = 1.003
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Imager
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = perl-imager
 	depends = freetype2
 	optdepends = perl-parse-recdescent: needed to parse transform2() expressions
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TONYC/Imager-1.002.tar.gz
-	sha256sums = 5e5c142f2e65d624e1f61d60dbb79543afadfca52fc38d3f6d5fdf358dc74a8d
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TONYC/Imager-1.003.tar.gz
+	sha256sums = db916b593302f86f7f09a7807637f5a10c96a870d7836fee026da182530af7b7
 
 pkgname = perl-imager
 
