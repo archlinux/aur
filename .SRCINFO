@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt
 	pkgdesc = A library for cooperative threads in OCaml
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ocsigen.org/lwt/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ocaml-lwt
 	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = camlp4
+	depends = ocaml-ppx_tools
 	depends = ocaml-react
 	depends = ocaml-ssl
 	depends = libev
