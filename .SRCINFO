@@ -1,0 +1,15 @@
+pkgbase = lzip
+	pkgdesc = A lossless file compressor based on the LZMA algorithm
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://www.nongnu.org/lzip/lzip.html
+	install = lzip.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = http://download.savannah.gnu.org/releases/lzip/lzip-1.16.tar.gz
+	md5sums = 716a9876dc595ec52d4f3bda81e42471
+
+pkgname = lzip
+
