@@ -5,7 +5,7 @@
 _pgo=0  # "1" to enable
 
 pkgname=thunderbird-beta
-pkgver=38.0.1
+pkgver=38.1.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -28,7 +28,7 @@ source=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/so
         "$pkgname.desktop"
         "$pkgname-safe.desktop"
         'vendor.js')
-md5sums=('0a740cdeee86d3ab49c635c6070c4b06'
+md5sums=('dd161196c6bd444643d2de54d1222d31'
          '0c5dbb39b27bb72f837921b88a9e48c8'
          '7b0cf4656fa25e75187aac4a44376ab9'
          'fe18423c55d549722870573695b3bd60'
