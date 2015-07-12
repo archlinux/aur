@@ -1,0 +1,15 @@
+pkgbase = ocaml-ppx_tools
+	pkgdesc = Tools for authors of ppx rewriters and other syntactic tools
+	pkgver = 0.99.2
+	pkgrel = 1
+	url = https://github.com/alainfrisch/ppx_tools
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ocaml-findlib
+	depends = ocaml
+	source = https://github.com/alainfrisch/ppx_tools/archive/ppx_tools_0.99.2.tar.gz
+	md5sums = 94926dda74fa4720d4d3edac57ba5fee
+
+pkgname = ocaml-ppx_tools
+
