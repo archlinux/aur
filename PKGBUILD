@@ -5,20 +5,20 @@
 # Contributor: Mitchel Humpherys <mitch.special@gmail.com>
 
 pkgname=alephone-marathon
-pkgver=20140104
-pkgrel=2
+pkgver=20150620
+pkgrel=1
 pkgdesc="Marathon 1 scenario data files for Aleph One"
 arch=('any')
 url="http://marathon.sourceforge.net"
 license=('custom')
 depends=('alephone')
-conflicts=('alephone-m1a1' 'alephone-highres')
+conflicts=('alephone-highres')
 replaces=('alephone-m1a1')
-source=(Marathon-$pkgver-Data.zip::"http://marathon.sourceforge.net/download/data.php?game=marathon"
+source=("http://downloads.sourceforge.net/marathon/Marathon-$pkgver-Data.zip"
         "$pkgname.sh"
         "LICENSE" # TODO: clarify where this file comes from
         "$pkgname.desktop")
-sha256sums=('9cbdcff88c1aa775799a8d52536003aab88f26e3938b694d60ec8543aee830f1'
+sha256sums=('774cb40c9bde33a5d23146e82f593ac001edd0ee4d62e5b0445953a95fd44f31'
             '64deb7f505ea1ec29e10037a2dcc297abed787b0ec4790d231bff6d08a0408d0'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
             'a6074d617b51d6674381e3d1940b2c770fb87d5825f15964006c604258796288')
