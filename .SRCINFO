@@ -5,12 +5,14 @@ pkgbase = networkmanager-dispatcher-chrony
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	changelog = ChangeLog
 	arch = any
-	license = BSD
+	license = MIT
 	depends = networkmanager
 	depends = chrony
 	backup = etc/NetworkManager/dispatcher.d/10-chrony
 	source = 10-chrony
+	source = LICENSE
 	sha256sums = 676cc8a1b770c4e4d6985d194e3bf82d47794809d49ffa2bfbb2190f10ed7885
+	sha256sums = 453e6920a08aa104baf245c81568050d075379af3944ae92b03d46d01e37d6cf
 
 pkgname = networkmanager-dispatcher-chrony
 
