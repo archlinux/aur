@@ -11,7 +11,7 @@ depends=('gtk3')
 source=("https://github.com/mertensj/aclock.git")
 md5sums=("SKIP")
 
-_gitname="aclock"
+_gitname="aclock.git"
 
 pkgver() {
   cd "$srcdir/${_gitname}"
