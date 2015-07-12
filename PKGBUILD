@@ -2,7 +2,7 @@
 
 pkgbase=calligra
 pkgname=krita
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="Digital painting and illustration suite (stand-alone)."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('calligra-krita')
 conflicts=('calligra-krita' 'calligra-plugins' 'calligra-libs' 'calligra-extras' 'calligra-filters')
 install=krita.install
 source=("http://download.kde.org/stable/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('b787b59e979514b4b200746a0ffe5cb344feddec9320a91e33e2780d590f5115')
+sha256sums=('78564137133e2f45065085df66ce2ab31478517c10163a06ba690a2d3a98a184')
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
