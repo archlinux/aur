@@ -1,0 +1,15 @@
+pkgbase = gtk-theme-equinox
+	pkgdesc = Gtk theme for equinox engine
+	pkgver = 1.50
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php?content=140449
+	arch = any
+	license = GPL2
+	depends = gtk-engine-equinox
+	optdepends = faenza-icon-theme: icons designed for this theme
+	noextract = 140449-equinox-themes-1.50.tar.gz
+	source = http://gnome-look.org/CONTENT/content-files/140449-equinox-themes-1.50.tar.gz
+	sha256sums = 32b3cedfbc27e466289aa8a0b6d1f3f964a553956d94bf267bd42c749691823c
+
+pkgname = gtk-theme-equinox
+
