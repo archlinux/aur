@@ -2,7 +2,7 @@
 
 pkgname=mopidy-mopify
 _pypiname=Mopidy-Mopify
-pkgver=1.5.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A mopidy webclient based on the Spotify webbased interface"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python2' 'mopidy>=1.0.0'  'python2-configobj')
 makedepends=('python2' 'python2-setuptools' )
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('2bba95a52d0b68b4752a75fdea6e98f6')
+md5sums=('07279ce997984374f9547dc054a1fa89')
 
 package() {
   cd "${srcdir}/${_pypiname}-${pkgver}"
