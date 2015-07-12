@@ -1,7 +1,7 @@
 pkgbase = paycoin-qt-git
 	pkgdesc = Paycoin is a Paycoin network-compatible, community-developed wallet client.
-	pkgver = r164.acd3748
-	pkgrel = 2
+	pkgver = 0.3.0.2.r0.g63dbad1
+	pkgrel = 1
 	url = http://paycoin.com
 	arch = any
 	license = MIT/X11

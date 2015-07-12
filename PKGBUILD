@@ -1,6 +1,6 @@
 pkgname="paycoin-qt-git"
-pkgver=r164.acd3748
-pkgrel=2
+pkgver=0.3.0.2.r0.g63dbad1
+pkgrel=1
 pkgdesc='Paycoin is a Paycoin network-compatible, community-developed wallet client.'
 arch=('any')
 url='http://paycoin.com'
@@ -16,9 +16,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/paycoin"
-
-	# Git, no tags available
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -29,7 +27,7 @@ prepare() {
 build() {
 	# Build Qt Wallet
         cd "$srcdir/paycoin"
-        make
+        make -j 4
 }
 
 package() {
@@ -37,10 +35,9 @@ package() {
         install -d "$pkgdir/opt/paycoin"
 	install -d "$pkgdir"/usr/bin
 	cp paycoin-qt "$pkgdir/opt/paycoin/paycoin-qt"
-	ln -s "$pkgdir"/opt/paycoin/paycoin-qt "$pkgdir"/usr/bin/paycoin-qt
+	ln -s /opt/paycoin/paycoin-qt "$pkgdir"/usr/bin/paycoin-qt
 	
 	chmod 755 "$pkgdir/opt/paycoin/paycoin-qt"
-	chmod 755 "$pkgdir"/usr/bin/paycoin-qt
 
 	cd ..
 	# install desktop file
