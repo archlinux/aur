@@ -23,14 +23,12 @@ options=('!emptydirs')
 install=$pkgname.install
 source=('googleearth'
         "$pkgname.desktop"
-        "$pkgname.menu"
-        "$pkgname-mimetypes.xml")
+        "$pkgname.menu")
 source_i686=("http://packages.linuxmint.com/pool/import/g/googleearth/googleearth_$pkgver-r0_i386.deb")
 source_x86_64=("http://packages.linuxmint.com/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb")
 md5sums=('e5f591e3bd44743539722e019611b773'  # googleearth
          'bfacc99dae6bc5ded73cd9b3bd2c9087'  # google-earth6.desktop
-         '3e87399f2051321102a59227e6d6ded7'  # google-earth6.menu
-         'e3c67b8d05c3de50535bd7e45eee728e') # google-earth6-mimetypes.xml
+         '3e87399f2051321102a59227e6d6ded7') # google-earth6.menu
 md5sums_i686=('e38c0d806cf1d581213fb6f4f204ec9c')
 md5sums_x86_64=('bd1960eb3e2d061b319c3f38835840d7')
 
@@ -66,9 +64,6 @@ package() {
 
   # Menu
   install -Dm644 $pkgname.menu "$pkgdir"/usr/share/menu/$pkgname.menu
-
-  # MIME package
-  install -Dm644 $pkgname-mimetypes.xml "$pkgdir"/usr/share/mime/packages/$pkgname-mimetypes.xml
 
   # License
   install -d "$pkgdir"/usr/share/licenses/$pkgname/

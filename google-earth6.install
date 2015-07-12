@@ -15,14 +15,14 @@ yellow="${bold}$(tput setaf 3)"
 _update() {
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
-    msg_blue "Updating MIME database..."
-    update-mime-database usr/share/mime >/dev/null
+
     msg_blue "Updating icon cache..."
     xdg-icon-resource forceupdate &>/dev/null
 }
 
 post_install() {
     _update
+    
     note 1 "The launcher is called 'google-earth6'."
     note 2 "This package installs side-by-side with 'google-earth' (v7)."
     note 3 "Keep in mind both versions sharing ~/.googleearth/ might not work as inteded."
