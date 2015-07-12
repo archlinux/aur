@@ -14,13 +14,15 @@ source=("https://fedorahosted.org/released/${pkgname}/${pkgname}-${pkgver}.tar.b
 sha256sums=('ec933af8359408b11478477de83b042a5bdf1d23e85683528aebb53c9bc0e6bc')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	find . -name Makefile -exec sed -i 's|\(PYTHON=\)python|\1python2|' {} \;
-	find . -name Makefile -exec sed -i 's|sbin|bin|' {} \;
-	find . -type f -exec sed -i 's|^\(#!/usr/bin/\)python|\1python2|' {} \;
+  cd "$pkgname-$pkgver"
+  find . -name Makefile -exec sed -i 's|\(PYTHON=\)python|\1python2|' {} \;
+  find . -name Makefile -exec sed -i 's|sbin|bin|' {} \;
+  find . -type f -exec sed -i 's|^\(#!/usr/bin/\)python|\1python2|' {} \;
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
+
+# vim:set ts=2 sw=2 et:
