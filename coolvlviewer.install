@@ -2,8 +2,8 @@ post_install() {
 	echo ">>> For use with OpenAl, please comment out line 8 and uncomment line 10"
 	echo ">>> of the file /opt/coolvlviewer/cool_vl_viewer ."
 	echo ">>> Currently the file is set for use with OSS."
-#	echo ">>> New version of settings file is:"
-#	echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12610.xml."
+	echo ">>> New version of settings file is:"
+	echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12614.xml."
 	echo ">>> You must also add your user to the 'games' group."
 	echo ">>>  # gpasswd -a USERNAME games"
 	echo ">>> Remember to logout and log back in for the changes to take effect."
@@ -14,8 +14,8 @@ post_upgrade() {
 	echo ">>> For use with OpenAl, please comment out line 8 and uncomment line 10"
 	echo ">>> of the file /opt/coolvlviewer/cool_vl_viewer ."
 	echo ">>> Currently the file is set for use with OSS."
-#	echo ">>> New version of settings file is:"
-#	echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12610.xml."
+	echo ">>> New version of settings file is:"
+	echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12614.xml."
 
 }
 

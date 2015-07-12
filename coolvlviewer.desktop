@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Cool VL Viewer v1.26.10
+Name=Cool VL Viewer v1.26.14
 GenericName=A third-party viewer for Second Life (C) and OpenSim grids
 Comment=A third-party viewer for Second Life (C) and OpenSim grids
 Exec=/usr/bin/coolvlviewer
