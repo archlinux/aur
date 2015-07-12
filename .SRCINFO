@@ -1,0 +1,20 @@
+pkgbase = florence
+	pkgdesc = A configurable on-screen virtual keyboard
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/florence/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool>=0.23
+	depends = gtk3
+	depends = libxml2
+	depends = librsvg
+	depends = gettext
+	depends = gstreamer>=1.0
+	provides = florence
+	source = http://sourceforge.net/projects/florence/files/florence/0.6.3/florence-0.6.3.tar.bz2
+	md5sums = 8775051d7352f75dec5a86dc9964e8e0
+
+pkgname = florence
+
