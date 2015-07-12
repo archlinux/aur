@@ -1,0 +1,14 @@
+pkgbase = python2-ctypes
+	pkgdesc = Create and manipulate C data types in Python, call functions in shared libraries
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/ctypes
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/ctypes/ctypes/1.0.2/ctypes-1.0.2.tar.gz
+	md5sums = 94ff7aa7f7f71b23bac8a98065d77743
+
+pkgname = python2-ctypes
+
