@@ -8,9 +8,9 @@ pkgname=yasem-git
 _pkgname=yasem
 pkgver=0.1
 _pkgver=$pkgver
-pkgrel=17
+pkgrel=19
 pkgdesc="IPTV STB emulator"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url=("https://github.com/mvasilchuk/yasem")
 license=('GPL2')
 depends=('qt5-base>=5.2' 'qt5-webkit>=5.2' 'ffmpeg' 'portaudio')
@@ -18,7 +18,7 @@ makedepends=('gcc>=4.3' 'git')
 optdepends=(
   'openal: OpenAL support'
   'smbclient: SAMBA support'
-  'cifs-utils: SAMBA support',
+  'cifs-utils: SAMBA support'
   'qca-qt5: Wi-Fi/LAN remote controls support for MAG2xx devices'
 )
 
