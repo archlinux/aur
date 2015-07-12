@@ -1,0 +1,14 @@
+pkgbase = modplay
+	pkgdesc = A command-line IT/XM/S3M/MOD player
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://jangler.info/code/modplay
+	arch = any
+	license = MIT
+	depends = dumb
+	depends = portaudio
+	source = https://github.com/jangler/modplay/archive/1.0.0.tar.gz
+	sha256sums = f7882d1e53ed8c2a56d81874d4aadb71f14fd7a78f0018b16511f185716882d9
+
+pkgname = modplay
+
