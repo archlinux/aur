@@ -1,0 +1,14 @@
+pkgbase = rtaudio
+	pkgdesc = A set of C++ classes that provide a common API for realtime audio input/output.
+	pkgver = 4.1.1
+	pkgrel = 6
+	url = http://www.music.mcgill.ca/~gary/rtaudio/
+	arch = any
+	license = MIT
+	depends = jack2-dbus
+	depends = rtmidi
+	source = http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-4.1.1.tar.gz
+	sha512sums = b47f909d7b5485fa670005642ff2846122b15229f72e600318eca187c93d18b34ba38f5f8ba367799e3d47f3b0c9cb84f28d1315e6607ab779b0799e364b454b
+
+pkgname = rtaudio
+
