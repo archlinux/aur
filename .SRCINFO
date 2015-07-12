@@ -1,6 +1,6 @@
 pkgbase = ocaml-typerep
 	pkgdesc = A library for runtime types.
-	pkgver = 112.24.00
+	pkgver = 112.35.00
 	pkgrel = 1
 	url = https://github.com/janestreet/typerep
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = ocaml-typerep
 	depends = ocaml-sexplib
 	depends = ocaml-type_conv
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/112.24/files/typerep-112.24.tar.gz
-	md5sums = 0697290a8f350482ac0deef2f332be2c
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/typerep-112.35.00.tar.gz
+	md5sums = aeb10c36678c4bc9a5942affaf3eab79
 
 pkgname = ocaml-typerep
 
