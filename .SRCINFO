@@ -1,0 +1,20 @@
+pkgbase = libdbusmenu-gtk2
+	pkgdesc = A library for passing menus over DBus
+	pkgver = 12.10.2
+	pkgrel = 3
+	url = https://launchpad.net/libdbusmenu
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = vala
+	depends = gtk2
+	depends = libdbusmenu-glib
+	options = !emptydirs
+	source = http://launchpad.net/dbusmenu/12.10/12.10.2/+download/libdbusmenu-12.10.2.tar.gz
+	sha256sums = 9d6ad4a0b918b342ad2ee9230cce8a095eb601cb0cee6ddc1122d0481f9d04c9
+
+pkgname = libdbusmenu-gtk2
+
