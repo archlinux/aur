@@ -1,14 +1,14 @@
 pkgbase = ocaml-otk
 	pkgdesc = A bleeding edge fork of lablTk to implement new features of Tk.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forge.ocamlcore.org/projects/otk
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = tcl
-	makedepends = tk
-	makedepends = ocaml>=4.0
+	depends = tcl
+	depends = tk
+	depends = ocaml>=4.0
 	source = http://forge.ocamlcore.org/frs/download.php/1515/otk-0.6.1.tar.gz
 	md5sums = cc1691a5a524f1c44b65edce5adc55be
 
