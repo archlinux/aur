@@ -2,7 +2,7 @@
 # Thu May 28 11:01:56 UTC 2015
 pkgbase = mopidy-mopify
 	pkgdesc = A mopidy webclient based on the Spotify webbased interface
-	pkgver = 1.5.1
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/dirkgroenen/mopidy-mopify
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mopidy-mopify
 	depends = python2
 	depends = mopidy>=1.0.0
 	depends = python2-configobj
-	source = https://pypi.python.org/packages/source/M/Mopidy-Mopify/Mopidy-Mopify-1.5.1.tar.gz
-	md5sums = 2bba95a52d0b68b4752a75fdea6e98f6
+	source = https://pypi.python.org/packages/source/M/Mopidy-Mopify/Mopidy-Mopify-1.5.4.tar.gz
+	md5sums = 07279ce997984374f9547dc054a1fa89
 
 pkgname = mopidy-mopify
 
