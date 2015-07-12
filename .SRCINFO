@@ -1,6 +1,6 @@
 pkgbase = ocaml-core_kernel
 	pkgdesc = Industrial strength alternative to OCaml's standard library (system-independent part)
-	pkgver = 112.24.00
+	pkgver = 112.35.00
 	pkgrel = 1
 	url = https://github.com/janestreet/core_kernel
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = ocaml-core_kernel
 	depends = ocaml-typerep
 	depends = ocaml-variantslib
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/112.24/files/core_kernel-112.24.tar.gz
-	md5sums = 776c6560c005a355f6a801c0edf211f9
+	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/core_kernel-112.35.00.tar.gz
+	md5sums = e580957344e421dd0eae61a7f86e2ea2
 
 pkgname = ocaml-core_kernel
 
