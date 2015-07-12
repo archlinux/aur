@@ -3,8 +3,8 @@
 
 pkgname=nvidia-grsec
 pkgver=352.21
-_extramodules=extramodules-4.0.7-grsec
-pkgrel=2
+_extramodules=extramodules-4.0.8-grsec
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
