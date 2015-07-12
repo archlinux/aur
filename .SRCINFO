@@ -1,0 +1,17 @@
+pkgbase = libreoffice-style-breeze-git
+	pkgdesc = Breeze icons for LibreOffice
+	pkgver = df1a5e3
+	pkgrel = 1
+	url = https://github.com/NitruxSA/plasma-next-icons
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = zip
+	makedepends = imagemagick
+	makedepends = inkscape
+	conflicts = libreoffice-style-breeze
+	source = git+https://github.com/NitruxSA/plasma-next-icons
+	sha256sums = SKIP
+
+pkgname = libreoffice-style-breeze-git
+
