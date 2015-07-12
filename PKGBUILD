@@ -23,7 +23,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${pkgname%-git}"
 
-	printf "%s" "$(git describe)"
+	git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
 }
 
 package() {
