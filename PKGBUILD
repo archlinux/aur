@@ -2,7 +2,7 @@
 
 pkgname=gnome-flashback-git
 _gitname=gnome-flashback
-pkgver=3.17.2.r8.g89fdc86
+pkgver=3.17.2.r41.g68aa436
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -34,6 +34,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname"
+
+  # Disable Werror
+  export CFLAGS="-Wno-error"
+
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/"$_gitname"
   make
 }

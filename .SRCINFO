@@ -1,6 +1,6 @@
 pkgbase = gnome-flashback-git
 	pkgdesc = GNOME Flashback session (development version)
-	pkgver = 3.17.2.r8.g89fdc86
+	pkgver = 3.17.2.r41.g68aa436
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-flashback.install
