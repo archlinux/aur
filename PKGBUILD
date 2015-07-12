@@ -2,7 +2,7 @@
 
 pkgname=bdf-tewi-git
 _gitname=tewi-font
-pkgver=0.197.90e0dfa
+pkgver=0.205.486a8c6
 pkgrel=1
 pkgdesc='Bitmap font'
 arch=('any')
