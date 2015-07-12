@@ -38,11 +38,9 @@ options=('!emptydirs')
 install=$pkgname.install
 source=("google-earth-stable_${pkgver}_${_arch}.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_${_arch}.deb"
         'googleearth'
-        'google-earth-mimetypes.xml'
         'baifaao.cpp')
 md5sums=('b8847cb867bdb3ff892149f0fd68f036'
          'e84f5d51ea3545c131d1794f89f6464a'
-         'e3c67b8d05c3de50535bd7e45eee728e'
          '598d579a1c3199c77850d86ba78f7b44')
 [[ $_arch = amd64 ]] && md5sums[0]='7bbba9d4d64f2a9b38752e259d849bda'
 
@@ -72,9 +70,6 @@ package() {
   for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 "$pkgdir"/$_instdir/product_logo_$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/google-earth.png
   done
-
-  # The MIME package
-  install -Dm644 google-earth-mimetypes.xml "$pkgdir"/usr/share/mime/packages/google-earth-mimetypes.xml
 
   # The license (too many different ones to do this in "source=()")
   install -d "$pkgdir"/usr/share/licenses/google-earth/
