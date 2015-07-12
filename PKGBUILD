@@ -32,9 +32,7 @@ package () {
 
   rm -rf "$pkgdir/usr/"{bin/{aclocal,automake},share/{doc,aclocal}}
 
-  for files in "$pkgdir"/usr/share/info/*; do
-    rename "$files" "$(echo $files | sed -r 's/(\.info)/-1.14\1/')" "$files"
-  done
+  rename "automake" "automake-1.14" "$pkgdir"/usr/share/info/*
 
   rm "$pkgdir/usr/share/man/man1/"{aclocal,automake}.1
 }
