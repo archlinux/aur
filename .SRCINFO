@@ -1,0 +1,16 @@
+pkgbase = qlivestreamer-git
+	pkgdesc = qLiveStreamer is a small Qt/C++ frontend for Livestreamer, inspired by gLiveStreamer.
+	pkgver = 20131007
+	pkgrel = 1
+	url = https://github.com/Hyperz/qLiveStreamer
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt4
+	depends = livestreamer
+	source = git+https://github.com/Hyperz/qLiveStreamer.git
+	md5sums = SKIP
+
+pkgname = qlivestreamer-git
+
