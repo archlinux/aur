@@ -1,4 +1,0 @@
-2996c2996
-< 						specials[special_index].graph_width = w - 1;
----
-> 						specials[special_index].graph_width = MAX(w - 1, 0);
