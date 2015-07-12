@@ -1,8 +1,8 @@
 dexed-vst
 src
 pkg
-vst_sdk2.4_rev2.zip
 dexed-vst-git-*.tar.xz
 dexed-vst-git-*.src.tar.gz
+vst_sdk2.4_rev2.zip
+vstsdk360_22_11_2013_build_100.zip
 .AURINFO
-
