@@ -15,7 +15,7 @@ pkgbase = psp-newlib
 	source = ftp://sourceware.org/pub/newlib/newlib-1.20.0.tar.gz
 	source = https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/newlib-1.20.0-PSP.patch
 	md5sums = e5488f545c46287d360e68a801d470e8
-	md5sums = 299d12b29bd492fe21bb27f72f1de548
+	md5sums = a4c92e3212937ced1f6aa9130331c1b1
 
 pkgname = psp-newlib
 

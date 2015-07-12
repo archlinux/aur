@@ -11,16 +11,13 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("ftp://sourceware.org/pub/newlib/newlib-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/newlib-$pkgver-PSP.patch")
 md5sums=('e5488f545c46287d360e68a801d470e8'
-         '299d12b29bd492fe21bb27f72f1de548')
+         'a4c92e3212937ced1f6aa9130331c1b1')
 
 prepare ()
 {
   cd "$srcdir/newlib-$pkgver"
   rm -rf newlib/libc/sys/psp/
   patch -p1 -i "$srcdir"/newlib-$pkgver-PSP.patch
-
-  # https://github.com/pspdev/psptoolchain/pull/56
-  sed -i "s|time.o_link.o|time.o _link.o|g" newlib/libc/sys/psp/Makefile.in
 }
 
 build()
