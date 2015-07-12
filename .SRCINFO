@@ -1,0 +1,17 @@
+pkgbase = automake-1.14
+	pkgdesc = A GNU tool for automatically creating Makefiles
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/automake
+	install = automake.install
+	arch = any
+	groups = base-devel
+	license = GPL
+	depends = perl
+	depends = bash
+	provides = automake=1.14
+	source = ftp://ftp.gnu.org/gnu/automake/automake-1.14.1.tar.gz
+	md5sums = d052a3e884631b9c7892f2efce542d75
+
+pkgname = automake-1.14
+
