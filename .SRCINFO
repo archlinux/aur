@@ -6,6 +6,7 @@ pkgbase = purple-facebook-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = mercurial
 	depends = libpurple
 	depends = json-glib
 	depends = zlib
