@@ -1,0 +1,14 @@
+pkgbase = jamomacore-git
+	pkgdesc = The Jamoma Frameworks
+	pkgver = 0.6a47
+	pkgrel = 1
+	url = http://www.jamoma.org
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = portaudio
+	depends = libxml2
+	provides = jamomacore
+
+pkgname = jamomacore-git
+
