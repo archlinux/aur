@@ -1,6 +1,6 @@
 _name=vlc
 pkgname=vlc-clang-git
-pkgver=3.0.r61042.g0d8babb
+pkgver=3.0.r61465.g8239787
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player. Development GIT Version."
 arch=('i686' 'x86_64')
@@ -8,13 +8,13 @@ url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 
 
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'qt4'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'qt5-base'
          'sdl_image' 'libdvdnav' 'lua' 'libmatroska'
-         'libmpcdec' 'ffmpeg-git' 'faad2' 'libupnp'
+         'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
          'libmad' 'libmpeg2' 'xcb-util-keysyms'
          'libxinerama'
          'x264' 'fluidsynth' 'x265-hg')
-makedepends=('live-media' 'libbluray' 'flac' 'kdelibs'
+makedepends=('live-media' 'libbluray' 'flac' 'kdelibs4support'
              'libdc1394' 'libavc1394' 'lirc-utils'
              'librsvg' 'projectm'
              'twolame' 'aalib' 'libdvdcss'
