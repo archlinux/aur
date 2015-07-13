@@ -1,0 +1,14 @@
+pkgbase = musictube
+	pkgdesc = A YouTube music player
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://flavio.tordini.org/musictube
+	install = musictube.install
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	depends = qt4
+	depends = phonon
+
+pkgname = musictube
+
