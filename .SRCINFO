@@ -1,16 +1,14 @@
 pkgbase = python2-watchdog
 	pkgdesc = This decorator will turn your normal python functions into proper shell commands
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/watchdog
 	arch = any
 	license = Apache
 	depends = python2
-	depends = python2-yaml
-	depends = python2-argh
 	depends = python2-pathtools
-	source = https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.1.tar.gz
-	md5sums = a58a082823dc6d3c60ffba1ff5f94608
+	source = https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.3.tar.gz
+	sha256sums = 7e65882adb7746039b6f3876ee174952f8eaaa34491ba34333ddf1fe35de4162
 
 pkgname = python2-watchdog
 
