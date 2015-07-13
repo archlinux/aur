@@ -15,7 +15,7 @@
 pkgbase=linux-tresor        # Build stock kernel with TRESOR patches
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.18
-pkgver=3.18.17
+pkgver=3.18.18
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www1.informatik.uni-erlangen.de/tresor"
@@ -43,7 +43,7 @@ source_x86_64+=("http://www1.informatik.uni-erlangen.de/filepool/projects/tresor
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8'
+            'bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e'
             'SKIP'
             '4d895b57f2c04501f052f2bf938fe9e7335f067fedc44e2348709d81d1cb9541'
             '0a7cca9e748e70c7123540d5a9bdc9cab703b3363997f11761bf7fc8e2e4bfb3'
@@ -52,10 +52,10 @@ sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd6fcbd0ea7a5a4c42d326286b60bbd5b1d476b8a6752046fa28133e05351c1fe')
 sha256sums_i686=('c7b2f142b66653cd44bf3d1b8c2554ee1216733baf64e71c7206acf2a14eaf8c'
-                 'f57e575d154fb36ed9c5474dce135548420079053fe1ba8bc0649a8cd285c239'
+                 '5081b43f6a5b76ff7e4deefeef748cc7299f8b6e66a1bf549c759028fa01f592'
                  'SKIP')
 sha256sums_x86_64=('e1db73aac4c7b909eccca43ceba639ebdda6393504c92203ae160aa57a0ee49e'
-                   'b468a9627714510db9eacac8fac12eb99f32722a330318fccd054a4dd0b9eb46'
+                   '4f762bbf720718d3482d9b67a00efcc37275158300c18ff3c118fd7ab6bb0f6d'
                    'SKIP')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds

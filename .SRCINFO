@@ -1,5 +1,5 @@
 pkgbase = linux-tresor
-	pkgver = 3.18.17
+	pkgver = 3.18.18
 	pkgrel = 1
 	url = http://www1.informatik.uni-erlangen.de/tresor
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-tresor
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.17.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.17.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.18.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.18.18.sign
 	source = config
 	source = config.x86_64
 	source = linux-tresor.preset
@@ -23,7 +23,7 @@ pkgbase = linux-tresor
 	source = http://www1.informatik.uni-erlangen.de/filepool/projects/tresor/tresor_sysfs.c
 	sha256sums = becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd
 	sha256sums = SKIP
-	sha256sums = 190b769580a766add68c3e3a8878a725b36fe6877991f3af0cb4a1d6b5eeccf8
+	sha256sums = bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e
 	sha256sums = SKIP
 	sha256sums = 4d895b57f2c04501f052f2bf938fe9e7335f067fedc44e2348709d81d1cb9541
 	sha256sums = 0a7cca9e748e70c7123540d5a9bdc9cab703b3363997f11761bf7fc8e2e4bfb3
@@ -35,13 +35,13 @@ pkgbase = linux-tresor
 	source_i686 = tresor-patch-3.18.5_i686.patch
 	source_i686 = tresor-patch-3.18.5_i686.patch.asc
 	sha256sums_i686 = c7b2f142b66653cd44bf3d1b8c2554ee1216733baf64e71c7206acf2a14eaf8c
-	sha256sums_i686 = f57e575d154fb36ed9c5474dce135548420079053fe1ba8bc0649a8cd285c239
+	sha256sums_i686 = 5081b43f6a5b76ff7e4deefeef748cc7299f8b6e66a1bf549c759028fa01f592
 	sha256sums_i686 = SKIP
 	source_x86_64 = http://www1.informatik.uni-erlangen.de/filepool/projects/tresor/tresor-patch-3.18.5_aesni
 	source_x86_64 = tresor-patch-3.18.5_aesni.patch
 	source_x86_64 = tresor-patch-3.18.5_aesni.patch.asc
 	sha256sums_x86_64 = e1db73aac4c7b909eccca43ceba639ebdda6393504c92203ae160aa57a0ee49e
-	sha256sums_x86_64 = b468a9627714510db9eacac8fac12eb99f32722a330318fccd054a4dd0b9eb46
+	sha256sums_x86_64 = 4f762bbf720718d3482d9b67a00efcc37275158300c18ff3c118fd7ab6bb0f6d
 	sha256sums_x86_64 = SKIP
 
 pkgname = linux-tresor
@@ -52,20 +52,20 @@ pkgname = linux-tresor
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-tresor=3.18.17
+	provides = kernel26-tresor=3.18.18
 	conflicts = kernel26-tresor
 	replaces = kernel26-tresor
 	backup = etc/mkinitcpio.d/linux-tresor.preset
 
 pkgname = linux-tresor-headers
 	pkgdesc = Header files and scripts for building modules for Linux-tresor kernel
-	provides = kernel26-tresor-headers=3.18.17
+	provides = kernel26-tresor-headers=3.18.18
 	conflicts = kernel26-tresor-headers
 	replaces = kernel26-tresor-headers
 
 pkgname = linux-tresor-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-tresor kernel
-	provides = kernel26-tresor-docs=3.18.17
+	provides = kernel26-tresor-docs=3.18.18
 	conflicts = kernel26-tresor-docs
 	replaces = kernel26-tresor-docs
 

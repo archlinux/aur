@@ -5,7 +5,7 @@
   VERSION = 3
   PATCHLEVEL = 18
 - SUBLEVEL = 5
-+ SUBLEVEL = 17
++ SUBLEVEL = 18
  -EXTRAVERSION =
  +EXTRAVERSION = -tresor0.5
   NAME = Diseased Newt
