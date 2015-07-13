@@ -16,8 +16,6 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    #printf "%s.r%s.g%s" "$(grep __version__ praw/__init__.py | grep -oP '([0-9]{1,2}(\.){0,1}){3}')" \
-    #    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     printf "%s.r%s.g%s" "$(grep __version__ praw/__init__.py | head -1 | cut -d"'" -f2)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
