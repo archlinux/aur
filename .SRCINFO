@@ -1,0 +1,21 @@
+pkgbase = python-django-versionfield2
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/tonioo/django-versionfield
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/d/django-versionfield2/django-versionfield2-0.3.3.tar.gz
+	md5sums = 5c10628b61fa83f2112b93b6be5de140
+
+pkgname = python2-django-versionfield2
+	pkgdesc = A Python2 DB Independent Custom Django Field for storing Version numbers for fast indexing.
+	depends = python2
+
+pkgname = python-django-versionfield2
+	pkgdesc = A Python3 DB Independent Custom Django Field for storing Version numbers for fast indexing.
+	depends = python
+
