@@ -10,8 +10,8 @@ license=('LGPL')
 provides=('gst-plugins-bad='$pkgver)
 conflicts=('gst-plugins-bad' 'gst-plugins-gl')
 url="http://gstreamer.freedesktop.org/"
-depends=('mjpegtools' 'gst-plugins-base-git' 'curl' 'chromaprint' 'libmms' 'faad2' 'mpg123' 'faac' 'celt' 'libdca' 'soundtouch' 'spandsp' 'libdvdnav' 'libmodplug' 'libgme' 'opus' 'wayland')
-makedepends=('schroedinger' 'libexif' 'libdvdread' 'libvdpau' 'libmpeg2')
+depends=('mjpegtools' 'gst-plugins-base-git' 'curl' 'chromaprint' 'libmms' 'faad2' 'mpg123' 'faac' 'celt' 'libdca' 'soundtouch' 'spandsp' 'libdvdnav' 'libmodplug' 'libgme' 'opus' 'wayland' 'rtmpdump')
+makedepends=('schroedinger' 'libexif' 'libdvdread' 'libvdpau' 'libmpeg2' 'gtk-doc' 'glu')
 options=(!libtool !emptydirs)
 
 source='git+git://anongit.freedesktop.org/gstreamer/gst-plugins-bad'
