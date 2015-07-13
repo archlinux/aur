@@ -1,8 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=symengine-git
 _pkgname=symengine
-pkgver=r1937.a4b2c77
-pkgrel=3
+pkgver=r2144.2b06a0c
+pkgrel=1
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
 arch=('i686' 'x86_64')
@@ -42,5 +42,5 @@ package() {
     cd "$srcdir/$_pkgname/build"
     make DESTDIR="$pkgdir" install
 
-    mv "$pkgdir"/usr/include/complex{,_sympy}.h
+    mv "$pkgdir"/usr/include/symengine/complex{,_sympy}.h
 }
