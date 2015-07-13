@@ -1,22 +1,21 @@
 # Maintainer: Tyler Langlois <ty at tjll dot net>
 
 pkgname=packetbeat
-pkgver=1.0.0_beta1
-_pkgver=${pkgver/_/.}
-_pkgver=${_pkgver/b/B}
-pkgrel=3
+pkgver=1.0.0_beta2
+_pkgver=${pkgver/_/-}
+pkgrel=1
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64')
 url="https://www.elastic.co/products/beats/$pkgname"
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
 depends=('libpcap')
-makedepends=('go')
+makedepends=('go' 'bzr')
 optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 source=("https://github.com/elastic/$pkgname/archive/v$_pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('a119a2976ac7c7577d7ee2750d0608354e51cd73edbc5529a6ec2c5b67fd6a7b'
+sha256sums=('6308ae8d8afd048fbb1b57ada299b7b3df13bef432d13163affdc315c57a243b'
             '09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64')
 
 prepare() {
