@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-nogui
 	pkgdesc = A bittorrent client based on Qt4 toolkit and libtorrent-rasterbar, w/o gui
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = qbittorrent-nogui
 	depends = libtorrent-rasterbar
 	depends = qt4
 	conflicts = qbittorrent-git-nogui
-	source = http://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.2.0.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.2.1.tar.xz
 	source = qbittorrent.service
-	sha256sums = 51781cb121ebeda041fb348e649c4bd97888ee8c1d18328bc547d447b960d1b3
+	sha256sums = e54221ccfc017f95e875947631f313a151cd1f5dd03be5bfd715b44aeb194889
 	sha256sums = be7b259e25cf8badb124672a7e9b3941708f17fd437089a72e838c599405a50c
 
 pkgname = qbittorrent-nogui
