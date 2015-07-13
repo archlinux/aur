@@ -1,0 +1,16 @@
+pkgbase = x-tile
+	pkgdesc = A gnome/xfce tiling applet for your panel
+	pkgver = 2.5
+	pkgrel = 3
+	url = http://www.giuspen.com/x-tile
+	install = x-tile.install
+	arch = any
+	license = GPL2
+	depends = hicolor-icon-theme
+	depends = python2-gconf
+	source = http://www.giuspen.com/software/x-tile-2.5.tar.xz
+	sha256sums = 7fdb1bd143db84538e4024864b53f97f2c7d28eb885f1baee4ce2eb05c262656
+	sha512sums = f0d85cbb34c79e535d1522a3ba4356b555c2db02fbad20026f3ddca9a000ab151ac75d1ee62d9549058190739c5c9f935b47f0998982f0f89877250f08388f30
+
+pkgname = x-tile
+
