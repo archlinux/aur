@@ -1,0 +1,15 @@
+pkgbase = perl-regexp-ipv6
+	pkgdesc = Regular expression for IPv6 addresses
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/~salva/Regexp-IPv6
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.5.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Regexp-IPv6-0.03.tar.gz
+	sha256sums = d542d17d75ce93631de8ba2156da0e0b58a755c409cd4a0d27a3873a26712ce2
+
+pkgname = perl-regexp-ipv6
+
