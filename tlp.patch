@@ -1,0 +1,11 @@
+diff --git a/tpacpi.service b/tpacpi.service
+index 4446b70..24ef8d6 100644
+--- a/tpacpi.service
++++ b/tpacpi.service
+@@ -1,5 +1,6 @@
+ [Unit]
+ Description=sets battery thresholds
++After=tlp.service
+ 
+ [Service]
+ Type=oneshot
