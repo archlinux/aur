@@ -1,21 +1,18 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=thomaswasalone-hib
-pkgver=0_20130429
+pkgver=1+h20130429
 _hibver=1369349552
 pkgrel=2
 pkgdesc='Thomas Was Alone, a minimalistic puzzle-platformer (Humble Bundle version)'
 url='http://www.thomaswasalone.com/'
 arch=('i686' 'x86_64')
 license=('custom:commercial')
-if [ $CARCH == i686 ]; then
-  depends=('glu' 'libxcursor' 'alsa-lib' 'gcc-libs')
-  optdepends=('alsa-plugins: PulseAudio support')
-else
-  depends=('lib32-glu' 'lib32-libxcursor' 'lib32-alsa-lib' 'lib32-gcc-libs')
-  optdepends=('lib32-alsa-plugins: PulseAudio support'
-              'lib32-libpulse: PulseAudio support')
-fi
+depends_i686=('glu' 'libxcursor' 'alsa-lib' 'gcc-libs')
+depends_x86_64=('lib32-glu' 'lib32-libxcursor' 'lib32-alsa-lib' 'lib32-gcc-libs')
+optdepends_i686=('alsa-plugins: PulseAudio support')
+optdepends_x86_64=('lib32-alsa-plugins: PulseAudio support'
+                   'lib32-libpulse: PulseAudio support')
 options=('!strip' '!upx')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
