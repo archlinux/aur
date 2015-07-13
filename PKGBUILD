@@ -1,6 +1,6 @@
 # Maintainer: Christoph Wiechert <wio@psitrax.de>
 pkgname=purple-facebook
-pkgver=a34b993324e4
+pkgver=4098e875ebcb
 pkgrel=1
 pkgdesc="Facebook Messenger protocol into pidgin, finch, and libpurple"
 url="https://github.com/jgeboski/purple-facebook"
