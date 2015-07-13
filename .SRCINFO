@@ -1,0 +1,31 @@
+pkgbase = pango
+	pkgdesc = A library for layout and rendering of text
+	pkgver = 1.37.1.3744.65214f2
+	pkgrel = 1
+	url = http://gnome.org/
+	install = pango.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = libxt
+	makedepends = gtk-doc
+	depends = glib2-git
+	depends = cairo-git
+	depends = libxft
+	depends = libthai
+	depends = freetype2
+	depends = harfbuzz-git
+	depends = fontconfig-git
+	provides = pango=1.37.1.3744.65214f2
+	conflicts = pango
+	options = !libtool
+	options = strip
+	options = debug
+	source = git+git://git.gnome.org/pango
+	source = pango.install
+	sha256sums = SKIP
+	sha256sums = f1e5094509e01a9eeefd29830e8be7c8b9fab4eafccd4daac4cd50c9a811c992
+
+pkgname = pango-git
+
