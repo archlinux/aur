@@ -1,0 +1,12 @@
+pkgbase = libudev.so.0
+	pkgdesc = Creates /usr/lib/libudev.so.0 -> /usr/lib/libudev.so symlink
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://www.dartlang.org/dartium/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	conflicts = chromium-browser-bin
+
+pkgname = libudev.so.0
+
