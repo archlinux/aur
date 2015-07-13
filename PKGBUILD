@@ -8,8 +8,16 @@ pkgdesc="This decorator will turn your normal python functions into proper shell
 arch=('any')
 url="https://pypi.python.org/pypi/watchdog"
 license=('Apache')
-depends=('python' 'python-yaml' 'python-argh' 'python-pathtools')
+depends=('python' 'python-pathtools')
+optdeps=('python-yaml : for watchmedo script'
+         'python-argh : for watchmedo script')
 source=(https://pypi.python.org/packages/source/w/watchdog/watchdog-${pkgver}.tar.gz)
+sha256sums=('7e65882adb7746039b6f3876ee174952f8eaaa34491ba34333ddf1fe35de4162')
+
+check() {
+  cd "$srcdir/watchdog-$pkgver"
+  python setup.py test
+}
 
 build() {
   cd "$srcdir/watchdog-$pkgver"
@@ -19,8 +27,6 @@ build() {
 package() {
   cd "$srcdir/watchdog-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('bb16926bccc98eae2a04535e4512ddf1')

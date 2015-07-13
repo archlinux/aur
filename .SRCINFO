@@ -6,11 +6,9 @@ pkgbase = python-watchdog
 	arch = any
 	license = Apache
 	depends = python
-	depends = python-yaml
-	depends = python-argh
 	depends = python-pathtools
 	source = https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.3.tar.gz
-	md5sums = bb16926bccc98eae2a04535e4512ddf1
+	sha256sums = 7e65882adb7746039b6f3876ee174952f8eaaa34491ba34333ddf1fe35de4162
 
 pkgname = python-watchdog
 
