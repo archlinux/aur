@@ -32,6 +32,10 @@ package() {
   cd ${pkgname%-*}
 
   make DESTDIR="${pkgdir}" install
+  
+  # resolve conflict with autoconf-archive
+  rm ${pkgdir}/usr/share/aclocal/ax_check_enable_debug.m4
+  rm ${pkgdir}/usr/share/aclocal/ax_code_coverage.m4
 }
 
 # vim: ts=2 sw=2 et:
