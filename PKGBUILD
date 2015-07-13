@@ -1,4 +1,6 @@
-# Maintainer: Etienne Perot <etienne at perot dot me>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Etienne Perot <etienne at perot dot me>
+
 pkgname=parcimonie-sh-git
 pkgver=45.d7d83f0
 pkgrel=1
