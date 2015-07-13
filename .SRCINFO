@@ -1,0 +1,14 @@
+pkgbase = perl-regexp-common
+	pkgdesc = Regexp::Common - Provides commonly requested regular expressions
+	pkgver = 2013031301
+	pkgrel = 4
+	url = http://search.cpan.org/dist/Regexp-Common
+	arch = i686
+	arch = x86_64
+	license = MIT
+	options = !emptydirs
+	source = http://cpan.org/modules/by-module/Regexp/Regexp-Common-2013031301.tar.gz
+	sha256sums = 729a8198d264aa64ecbb233ff990507f97fbb66bda746b95f3286f50f5f25c84
+
+pkgname = perl-regexp-common
+
