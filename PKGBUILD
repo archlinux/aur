@@ -4,9 +4,9 @@
 # YOU MUST SUPPLY THE ZIP FILE INCLUDED WITH YOUR HUMBLE PURCHASE
 
 pkgname=besiege
-pkgver=0.08
+pkgver=0.09
 pkgrel=1
-pkgdesc="A physics based building puzzler."
+pkgdesc="A physics based building puzzler (Humble Version)."
 arch=('i686' 'x86_64')
 url="http://besiegethegame.com/"
 license=('custom')
@@ -15,7 +15,7 @@ makedepends=('unzip')
 source=(besiege.desktop besiege)
 sha256sums=('c6cef3d0bfef18cf355cbb31843463fbeaad9057d958e055bffaa4a261e5b5dd'
             '9ae91d4d571866d2ac004d7d5b6c3ce4e593ca2cb7ff410be81897dbd4810ae2')
-_gamedir=Besiege_Alpha_Linux_v0_08
+_gamedir=Besiege_Alpha_Linux_v0_09
 
 if [[ $CARCH == 'x86_64' ]]; then
   _arch='x86_64'

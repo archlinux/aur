@@ -1,6 +1,6 @@
 pkgbase = besiege
-	pkgdesc = A physics based building puzzler.
-	pkgver = 0.08
+	pkgdesc = A physics based building puzzler (Humble Version).
+	pkgver = 0.09
 	pkgrel = 1
 	url = http://besiegethegame.com/
 	arch = i686
