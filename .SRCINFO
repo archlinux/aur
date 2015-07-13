@@ -1,7 +1,7 @@
 pkgbase = dyndhcpd
 	pkgdesc = start DHCP daemon that dynamically creates configuration based on assigned IP address
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/eworm-de/dyndhcpd
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dyndhcpd
 	depends = dhcp
 	optdepends = ipxe: for network boot
 	backup = etc/dyndhcpd/dhcpd.conf
-	source = http://www.eworm.de/download/dyndhcpd/dyndhcpd-0.1.0.tar.xz
-	source = http://www.eworm.de/download/dyndhcpd/dyndhcpd-0.1.0.tar.xz.asc
-	sha256sums = d49cdb68ffbd91b342fa957d72e9df22a51e5fc450d2652616cd45d3130de7e6
+	source = http://www.eworm.de/download/dyndhcpd/dyndhcpd-0.1.1.tar.xz
+	source = http://www.eworm.de/download/dyndhcpd/dyndhcpd-0.1.1.tar.xz.asc
+	sha256sums = 575ad23ce2529303d86cde6f44963d1b1929cb2beb72614886a5f456cec47645
 	sha256sums = SKIP
 
 pkgname = dyndhcpd
