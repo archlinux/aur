@@ -10,20 +10,19 @@
 
 pkgname=vagrant
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
 depends=('lzo' 'libidn' 'rtmpdump')
-makedepends=('git')
 source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
-source_i686+=(http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_i686.zip)
-source_x86_64+=(http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_x86_64.zip)
+source_i686+=(http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_i686-2.zip)
+source_x86_64+=(http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_x86_64-2.zip)
 md5sums=('f69210d71278884d1ab918e251fc7371')
-md5sums_i686=('c04042b24de56d18a041bc005e5ecaa4')
-md5sums_x86_64=('53d8a137e0b50fee8509a7d1c15fd33b')
+md5sums_i686=('a72932fa4f1a936d633a8efcde8981c1')
+md5sums_x86_64=('98d92dedfb660045ba779c4761deac58')
 
 build() {
   cd $pkgname-$pkgver
