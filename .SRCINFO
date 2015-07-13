@@ -1,0 +1,33 @@
+pkgbase = mpich2
+	pkgdesc = An improved implementation of the Message Passing Interface (legacy version).
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://mpich.org
+	install = mpich2.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	makedepends = make
+	makedepends = coreutils
+	makedepends = texlive-core
+	makedepends = sowing
+	depends = python2
+	depends = gcc-fortran
+	depends = libxml2
+	depends = openssh
+	depends = numactl
+	depends = pciutils
+	optdepends = java-environment
+	conflicts = mpich
+	options = !libtool
+	options = strip
+	source = http://www.mpich.org/static/downloads/1.5/mpich2-1.5.tar.gz
+	source = mpich2.install
+	source = mpich2.profile
+	md5sums = c60146aa6691005f2fb25973e144cfdc
+	md5sums = 661f5a993e1afb6c51fdd5ad529d628b
+	md5sums = fb934502236ca58705f69db1749feb59
+
+pkgname = mpich2
+
