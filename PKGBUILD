@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname="gitaur"
-pkgver="0.0.6"
+pkgver="0.1.0"
 pkgrel="1"
 pkgdesc="A set of command-line scripts that automate common tasks in maintaining AUR packages on GitHub"
 arch=("any")
@@ -15,8 +15,8 @@ depends=(
 	"pkgbuild-introspection"
 )
 makedepends=("clidoc")
-source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('56b70b42d6c85c47829e903bec7a7c6e')
+source=("$url/archive/v$pkgver-1.tar.gz")
+md5sums=('2d1cae272fa6deaf3a660961e0f8c5f6')
 build () 
 { 
     cd "$srcdir/$pkgname-$pkgver";
