@@ -1,0 +1,19 @@
+pkgbase = lib32-fltk
+	pkgdesc = Graphical user interface toolkit for X (32-bit)
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://www.fltk.org
+	install = lib32-fltk.install
+	arch = x86_64
+	license = LGPL
+	depends = fltk
+	depends = lib32-gcc-libs
+	depends = lib32-libjpeg-turbo
+	depends = lib32-libpng
+	depends = lib32-libxft
+	depends = lib32-libxinerama
+	source = http://fltk.org/pub/fltk/1.3.3/fltk-1.3.3-source.tar.gz
+	sha512sums = 277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559eed4ecd5215ac26d53a1091ada003e17f1553194cebaa97dd854809dd2885d
+
+pkgname = lib32-fltk
+
