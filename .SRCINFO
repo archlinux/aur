@@ -1,7 +1,7 @@
 pkgbase = freeswitch
 	pkgdesc = An opensource and free (libre, price) telephony system, similar to Asterisk.
 	pkgver = 1.4.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeswitch.org/
 	install = freeswitch.install
 	changelog = ChangeLog

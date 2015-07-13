@@ -13,11 +13,12 @@ pre_install() {
 
 post_install() {
   echo 'FreeSWITCH is installed!'
-  echo '<<<WARNING>>> You MUST change the default_password in /etc/freeswitch/vars.xml
+  echo '<<<WARNING>>> You MUST change the default_password in /etc/freeswitch/private/passwords.xml
         Failure to do so will leave your default extension 1000 vulnerable'
   echo 'The FreeSWITCH default configuration is available in
         /usr/share/doc/freeswitch/examples/conf.default, with Arch-specific modifications
-        version in /usr/share/doc/freeswitch/examples/conf.archlinux'
+        version in /usr/share/doc/freeswitch/examples/conf.archlinux
+	(these may be the same).'
   post_upgrade
 }
 
