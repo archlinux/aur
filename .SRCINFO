@@ -1,0 +1,16 @@
+pkgbase = xdg-su
+	pkgdesc = Run a program as root with the most environment appropriate available graphical authentication agent
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/tarakbumba/xdg-su
+	arch = any
+	license = MIT
+	makedepends = links
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	depends = sh
+	source = https://github.com/tarakbumba/xdg-su/archive/xdg-su-1.2.3.tar.gz
+	sha1sums = e92fd399b39f7b38d7bbfc7b834c78e551b2eee5
+
+pkgname = xdg-su
+
