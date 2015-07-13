@@ -1,0 +1,18 @@
+pkgbase = bristol
+	pkgdesc = Vintage synthesizers emulator
+	pkgver = 0.60.11
+	pkgrel = 1
+	url = http://bristol.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = jack
+	depends = libx11
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/bristol/bristol-0.60.11.tar.gz
+	md5sums = 9ea4dacdac0dba3048156e2f6a5ee4d6
+	sha256sums = 7d1f0bbd0d7d303fc77c6b9549b61708d7a83b4dc007818011b1f55d1fa922ba
+
+pkgname = bristol
+
