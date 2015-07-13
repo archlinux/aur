@@ -1,0 +1,9 @@
+post_install() {
+	xdg-mime install --novendor /usr/share/mime-info/stopmotion.mime
+	update-desktop-database -q
+}
+
+pre_remove() {
+	xdg-mime uninstall /usr/share/mime-info/stopmotion.mime
+	update-desktop-database -q
+}
