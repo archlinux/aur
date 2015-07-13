@@ -1,0 +1,20 @@
+pkgbase = xzgv
+	pkgdesc = A picture viewer for X, with a thumbnail-based file selector
+	pkgver = 0.9.1
+	pkgrel = 4
+	url = http://sourceforge.net/projects/xzgv/
+	install = xzgv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	optdepends = xterm: open help files
+	source = http://heanet.dl.sourceforge.net/project/xzgv/xzgv/0.9.1/xzgv-0.9.1.tar.gz
+	source = xzgv.desktop
+	source = xzgv-ldflags.patch
+	md5sums = d6452ebd4911d986fa1176086afb6e33
+	md5sums = fa2c04aa696e23e28f2dec0ef89f5493
+	md5sums = ac77492f25a6b4927d2efca966f5e03c
+
+pkgname = xzgv
+

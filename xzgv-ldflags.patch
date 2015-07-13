@@ -1,0 +1,12 @@
+diff -Naur xzgv-0.9.1.orig/src/Makefile xzgv-0.9.1/src/Makefile
+--- xzgv-0.9.1.orig/src/Makefile	2007-12-23 21:47:25.000000000 +0100
++++ xzgv-0.9.1/src/Makefile	2012-01-08 14:06:34.888056998 +0100
+@@ -10,7 +10,7 @@
+ include ../config.mk
+ 
+ CFLAGS+=`pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-pixbuf-2.0`
+-LDFLAGS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0`
++LDFLAGS+=-lm `pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0` `pkg-config --libs x11`
+ 
+ all: xzgv
+ 

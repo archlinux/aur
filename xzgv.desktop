@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xzgv
+GenericName=Image viewer
+Comment=Browse images in a thumbnail-based file selector
+Exec=xzgv
+Icon=xzgv
+Categories=GTK;Graphics;RasterGraphics;Viewer;
