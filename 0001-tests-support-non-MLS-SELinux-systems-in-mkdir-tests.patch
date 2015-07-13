@@ -1,0 +1,40 @@
+From 9ea92da190ba454a5e690095ac10aff5bf220a95 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss_git@polytechnique.org>
+Date: Wed, 8 Jul 2015 19:01:03 +0800
+Subject: [PATCH] tests: support non-MLS SELinux systems in mkdir tests
+
+When running "make check" on a non-MLS Linux system,
+tests/mkdir/restorecon.sh test fails with:
+
+  chcon: invalid context: root:object_r:tmp_t:s0: Invalid argument
+
+A valid context for such a configuration would be
+root:object_r:tmp_t.  So use it, and fix the sed pattern too to
+correctly grab the type out of "ls -Zd" result.
+---
+ tests/mkdir/restorecon.sh | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/mkdir/restorecon.sh b/tests/mkdir/restorecon.sh
+index 7d6a671b58a8..e5aa5507af96 100755
+--- a/tests/mkdir/restorecon.sh
++++ b/tests/mkdir/restorecon.sh
+@@ -21,10 +21,14 @@ print_ver_ mkdir mknod mkfifo
+ require_selinux_
+ 
+ 
+-get_selinux_type() { ls -Zd "$1" | sed -n 's/.*:\(.*_t\):.*/\1/p'; }
++get_selinux_type() { ls -Zd "$1" | sed -n 's/.*:\(.*_t\)[: ].*/\1/p'; }
+ 
+ mkdir subdir || framework_failure_
++if sestatus |grep 'Policy MLS status:.*enabled' > /dev/null ; then
+ chcon 'root:object_r:tmp_t:s0' subdir || framework_failure_
++else
++chcon 'root:object_r:tmp_t' subdir || framework_failure_
++fi
+ cd subdir
+ 
+ # --- mkdir -Z ---
+-- 
+2.4.5
+
