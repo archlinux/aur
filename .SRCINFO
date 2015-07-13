@@ -1,0 +1,19 @@
+pkgbase = gnu-cobol
+	pkgdesc = An open-source COBOL compiler
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/open-cobol/
+	install = gnu-cobol.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = db
+	depends = gmp
+	options = !libtool
+	source = http://sourceforge.net/projects/open-cobol/files/gnu-cobol/2.0/gnu-cobol-2.0_nightly_r411.tar.gz
+	source = cob-cflags.patch
+	md5sums = f5f761b3dd6c99f94fdca70f753a6fbd
+	md5sums = 1ed5d24c0e51f4825e014546c83984c9
+
+pkgname = gnu-cobol
+

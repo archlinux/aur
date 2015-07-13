@@ -1,0 +1,10 @@
+--- configure	2014-10-11 00:07:01.798446516 +0200
++++ configure	2014-10-11 00:07:16.619560911 +0200
+@@ -16915,6 +16915,7 @@
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-O//' -e 's/ $//' -e 's/^ //'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-fmessage-length=0//'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-D_FORTIFY_SOURCE=.//'`
++	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-fstack-protector-strong//'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-fstack-protector//'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-funwind-tables//'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-fasynchronous-unwind-tables//'`
