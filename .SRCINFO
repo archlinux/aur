@@ -1,0 +1,14 @@
+pkgbase = ftkimager
+	pkgdesc = Closed source binary CLI forensic imaging software by Access Data
+	pkgver = 3.1.1
+	pkgrel = 2
+	url = http://accessdata.com/product-download
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	depends = zlib
+	depends = openssl
+	source = https://ad-zip.s3.amazonaws.com/ftkimager.3.1.1_fedora.tar.gz
+
+pkgname = ftkimager
+
