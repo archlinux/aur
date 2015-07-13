@@ -1,0 +1,13 @@
+pkgbase = wercker-cli
+	pkgdesc = Wercker CLI
+	pkgver = 1.0.174
+	pkgrel = 1
+	url = http://devcenter.wercker.com/docs/using-the-cli/index.html
+	arch = x86_64
+	license = unknown
+	source = https://s3.amazonaws.com/downloads.wercker.com/cli/versions/1.0.174/linux_amd64/wercker
+	md5sums = 381460d2c93ddd5c6da1471e9544f904
+	sha256sums = 2d5128cf65a8a938283186c8298d7a958fc3033f310f05e03c22ff17160699ef
+
+pkgname = wercker-cli
+

@@ -1,0 +1,6 @@
+*.swp
+src/
+pkg/
+*.xz
+*.tar.gz
+wercker
