@@ -1,8 +1,8 @@
 pkgbase = geeqie-git
 	pkgdesc = A lightweight image browser and viewer (fork of GQview)
-	pkgver = 20140526
-	pkgrel = 1
-	url = http://geeqie.sourceforge.net/
+	pkgver = 20140927
+	pkgrel = 2
+	url = http://www.geeqie.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = geeqie-git
 	provides = geeqie
 	conflicts = geeqie
 	conflicts = gqview-devel
-	source = git://gitorious.org/geeqie/geeqie.git
+	source = git+http://www.geeqie.org/git/geeqie.git
 	md5sums = SKIP
 
 pkgname = geeqie-git

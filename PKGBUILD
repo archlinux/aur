@@ -1,10 +1,10 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20140526
-pkgrel=1
+pkgver=20140927
+pkgrel=2
 pkgdesc="A lightweight image browser and viewer (fork of GQview)"
-url="http://geeqie.sourceforge.net/"
+url="http://www.geeqie.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('gtk3' 'exiv2' 'lcms2')
@@ -14,7 +14,7 @@ optdepends=('lirc: remote control support'
 makedepends=('git' 'intltool')
 provides=('geeqie')
 conflicts=('geeqie' 'gqview-devel')
-source=("git://gitorious.org/geeqie/geeqie.git")
+source=("git+http://www.geeqie.org/git/geeqie.git")
 md5sums=('SKIP')
 
 pkgver() {
