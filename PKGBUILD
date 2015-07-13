@@ -1,7 +1,7 @@
 # Maintainer: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=python-praw-git
-pkgver=3.1.0.r1101.ge557666
+pkgver=3.1.0.r1126.g0ae0d9d
 pkgrel=1
 pkgdesc="A python package that allows for simple access to reddit's API"
 arch=('any')
@@ -9,6 +9,7 @@ url="https://github.com/praw-dev/praw"
 license=('GPL3')
 depends=('python-six' 'python-requests' 'python-update_checker-git')
 makedepends=('git' 'python-setuptools')
+provideos=('python-praw')
 conflicts=('python-praw')
 source=(${pkgname}::'git+https://github.com/praw-dev/praw.git')
 sha256sums=('SKIP')
