@@ -1,0 +1,6 @@
+pkg/
+src/
+SU2/
+*.pkg.tar
+*.log
+*.tar.gz

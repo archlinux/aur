@@ -1,5 +1,5 @@
 diff --git a/configure.ac b/configure.ac
-index 56ad1c2..d726313 100644
+index 480112a..4050bb5 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -161,7 +161,7 @@ AC_SUBST([su2_externals_LIBS])
