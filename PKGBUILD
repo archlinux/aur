@@ -3,21 +3,30 @@
 
 _gemname=colorize
 pkgname=ruby-$_gemname
-pkgver=0.7.3
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='Add color methods to String class'
 arch=(any)
 url='http://github.com/fazibear/colorize'
-license=(GPL-2)
-depends=(ruby)
+license=('GPL-2')
+depends=('ruby')
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('a566a747cedcda971ffbb5fcb3e8c31c74f38dae')
+source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
+noextract=("${_gemname}-${pkgver}.gem")
+sha512sums=('ac55d281a3ac7aa72c02ecdc27a1936410cb2754e48e0c23b98eba5e98a8bf42e362fe3a86e73c12ff5445f2e0a92a7c561e82a4d85aae0ef08a9855b056f359')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	local _gemdir="$(ruby -e'puts Gem.default_dir')"
+	gem install \
+		--ignore-dependencies \
+		--no-user-install \
+		-i "${pkgdir}/${_gemdir}" \
+		-n "${pkgdir}/usr/bin" \
+		"${_gemname}-${pkgver}.gem"
+
+	rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+
+	install -D -m644 \
+		"${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
