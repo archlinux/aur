@@ -1,0 +1,19 @@
+pkgbase = atk-git
+	pkgdesc = A library providing a set of interfaces for accessibility. Git version.
+	pkgver = 2.15.4.5.g8c54232.8c54232
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gnome-common-git
+	depends = glib2
+	provides = atk
+	conflicts = atk
+	options = !libtool
+	source = git://git.gnome.org/atk
+	md5sums = SKIP
+
+pkgname = atk-git
+
