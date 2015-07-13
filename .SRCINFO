@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libtiff
 	pkgdesc = Library for manipulation of TIFF images (mingw-w64)
-	pkgver = 4.0.3
-	pkgrel = 7
+	pkgver = 4.0.4
+	pkgrel = 1
 	url = http://www.remotesensing.org/libtiff
 	arch = any
 	license = custom
@@ -11,14 +11,8 @@ pkgbase = mingw-w64-libtiff
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://download.osgeo.org/libtiff/tiff-4.0.3.tar.gz
-	source = tiff-3.9.7-CVE-2012-4447.patch
-	source = tiff-4.0.3-CVE-2013-1961.patch
-	source = libtiff-printdir-width.patch
-	sha1sums = 652e97b78f1444237a82cbcfe014310e776eb6f0
-	sha1sums = 41be661638282dae0d07bd2788414cb6650f8981
-	sha1sums = 29a91870cca5d4cd9ca1c464f8074088eddc3fb8
-	sha1sums = 1c0a195230a69340ebd1d789bc787f6da1fafd25
+	source = http://download.osgeo.org/libtiff/tiff-4.0.4.tar.gz
+	sha1sums = 185f844babe4ee902b5e4775d9f65915fcbabd11
 
 pkgname = mingw-w64-libtiff
 
