@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=snapshot-hib
-pkgver=1.28_20121219
+pkgver=1.28+h20121219
 _hibver=v28
 pkgrel=1
 pkgdesc='A platformer puzzle game (Humble Bundle version)'
@@ -33,7 +33,7 @@ package() {
 
   # Install game files
   install -d "${pkgdir}/opt/Snapshot/"
-  cp -r "${srcdir}/"{resources,snapshot.bin,snapshot,liblua5.1.so.0} \
+  cp -r "${srcdir}/"{resources,snapshot.bin,snapshot,libSDL*,liblua5.1.so.0} \
         "${pkgdir}/opt/Snapshot/"
 
   # Install desktop entry

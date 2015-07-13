@@ -1,6 +1,6 @@
 pkgbase = snapshot-hib
 	pkgdesc = A platformer puzzle game (Humble Bundle version)
-	pkgver = 1.28_20121219
+	pkgver = 1.28+h20121219
 	pkgrel = 1
 	url = http://www.retroaffect.com/games/1/snapshot/
 	arch = i686
