@@ -1,7 +1,7 @@
 # Maintainer: Duncan <duncan@vtllf.org>
 
 pkgname=terraform
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
