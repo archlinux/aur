@@ -1,3 +1,5 @@
+# Maintainer:Martin C. Doege <mdoege at compuserve dot com>
+
 pkgname='pyswisseph'
 pkgver='2.00.00.2'
 pkgrel='1'
