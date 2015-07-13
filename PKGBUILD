@@ -23,12 +23,12 @@ package() {
 	mv Ogar ogar
 	mkdir -p $pkgdir/usr/share
 	mv ogar $pkgdir/usr/share/ogar
-//	rm -R $pkgdir/usr/share/ogar/bin
+#	rm -R $pkgdir/usr/share/ogar/bin
 	rm $pkgdir/usr/share/ogar/Launch.bat
 	rm $pkgdir/usr/share/ogar/src/Start.bat
 	rm $pkgdir/usr/share/ogar/.gitignore
 	rm $pkgdir/usr/share/ogar/ogar-linux-script.sh
-	chmod -R 644 $pkgdir/usr/share/ogar
+	chmod -R 755 $pkgdir/usr/share/ogar
 
 	install -Dm 644 "ogar.service" "${pkgdir}/usr/lib/systemd/system/ogar.service"
 
