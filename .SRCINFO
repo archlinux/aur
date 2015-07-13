@@ -1,0 +1,24 @@
+pkgbase = foldingathome-noroot
+	pkgdesc = Folding@Home client that does not run as the root user.
+	pkgver = 7.4.4
+	pkgrel = 1
+	url = http://folding.stanford.edu/
+	install = foldingathome.install
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = glibc
+	optdepends = opencl-nvidia: for folding with an nVidia GPU
+	conflicts = foldingathome-v7
+	conflicts = foldingathome
+	replaces = foldingathome-v7
+	replaces = foldingathome
+	source = foldingathome.service
+	source = fah-config
+	source = foldingathome.install
+	md5sums = 40530df579e406fa29e6535adf2c0c22
+	md5sums = bb0bca34f6f32c8bd46dfcdcd6abe1f6
+	md5sums = 12accb9cd18aaa13d8b2f1ce6fa169d0
+
+pkgname = foldingathome-noroot
+

@@ -1,0 +1,24 @@
+post_install() {
+  getent group fah &>/dev/null \
+    || groupadd -r fah >/dev/null
+  getent passwd fah &>/dev/null \
+    || useradd -r -g fah -d /var/opt/fah --create-home -s /bin/false fah >/dev/null
+  chmod 755 /var/opt/fah
+  
+  cat << 'EOM'
+  --> Please run /opt/fah/fah-config as root to configure your
+  --> settings. If you are using systemd, then run "systemctl enable
+  --> foldingathome.service" to enable the folding service. If you would
+  --> like join the Arch Linux team, use team number 45032.
+EOM
+
+  true
+}
+
+post_remove() {
+  getent passwd fah &>/dev/null \
+    && userdel fah >/dev/null
+  getent group fah &>/dev/null \
+    && groupdel fah >/dev/null
+  true
+}

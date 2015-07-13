@@ -1,0 +1,13 @@
+[Unit]
+Description=Folding@home distributed computing client
+After=network.target
+
+[Service]
+User=fah
+Type=simple
+WorkingDirectory=/var/opt/fah
+ExecStart=/opt/fah/FAHClient --config /var/opt/fah/config.xml --exec-directory=/opt/fah --data-directory=/var/opt/fah
+
+[Install]
+WantedBy=multi-user.target
+
