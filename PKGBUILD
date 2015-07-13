@@ -1,7 +1,7 @@
 # Maintainer: Mark Coolen <mark dot coolen at gmail dot com>
 pkgname=linuxstopmotion-git
 _realname=linuxstopmotion
-pkgver=0.8.0.r0.gb08ca1c
+pkgver=0.8.1beta3.r0.gf34923c
 pkgrel=1
 epoch=1
 pkgdesc="software for capturing and creating stop-motion animations - development version"
@@ -12,7 +12,7 @@ depends=('qt4' 'sdl_image' 'libvorbis' 'libxml2')
 makedepends=('git' 'libtar')
 install=$_realname.install
 conflicts=('stopmotion')
-source=($_realname::git+http://git.code.sf.net/p/$_realname/code)
+source=("$_realname::git+http://git.code.sf.net/p/$_realname/code#branch=ioctl-autodetect")
 md5sums=('SKIP')
 
 pkgver() {
