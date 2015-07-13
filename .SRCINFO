@@ -1,0 +1,20 @@
+pkgbase = minetestmapper-git
+	pkgdesc = Minetest map generator
+	pkgver = 6e30d47
+	pkgrel = 1
+	url = http://wiki.minetest.net/Minetestmapper
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = gd
+	depends = leveldb
+	depends = sqlite
+	depends = zlib
+	provides = minetestmapper
+	source = git://github.com/minetest/minetestmapper.git
+	sha256sums = SKIP
+
+pkgname = minetestmapper-git
+
