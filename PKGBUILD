@@ -18,7 +18,6 @@ sha256sums=('SKIP'
 	'e69f5e5fff155917621ee65d91adf943d3d133e1d771578d7176ba3649f01363'
 'b575dcd3f2aa734718b6d3dbd487c5a7ec3ff946c4532e1d9b3fe5e8461b88b9'	
 '35b09e3873980df0bdd37baa6694c1b219b24a7f3550a5630f453381976d0f48')
-install=gmusicproxy.install
 pkgver() {
 	cd "$srcdir/$_gitname"
  	git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'

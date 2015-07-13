@@ -1,6 +1,6 @@
 pkgbase = gmusicproxy
 	pkgdesc = Let's stream Google Play Music using any media-player
-	pkgver = 0.9.9.r9.g0fe052e
+	pkgver = 0.9.8.r6.g8fec2d8
 	pkgrel = 1
 	url = https://github.com/diraimondo/gmusicproxy
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = gmusicproxy
 	depends = python2-requests
 	depends = python2-gmusicapi
 	depends = python2-certifi
+	depends = python2-gpsoauth
 	provides = gmusicproxy
 	source = gmusicproxy::git+https://github.com/diraimondo/gmusicproxy.git
 	source = gmusicproxy.cfg.sample
