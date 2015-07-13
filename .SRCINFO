@@ -1,0 +1,15 @@
+pkgbase = conway-git
+	pkgdesc = A conway's game of life player that uses ncurses
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DestructiveReasoning/Conway
+	install = conway-git.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = ncurses
+	source = conway-git::git+https://github.com/DestructiveReasoning/Conway.git
+	md5sums = SKIP
+
+pkgname = conway-git
+
