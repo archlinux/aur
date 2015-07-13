@@ -9,7 +9,9 @@ pkgbase = libhugetlbfs
 	checkdepends = python2
 	depends = perl
 	source = http://downloads.sourceforge.net/libhugetlbfs/libhugetlbfs-2.19.tar.gz
+	source = gcc51-compile.patch::https://github.com/libhugetlbfs/libhugetlbfs/commit/82743f2a4d8fc099b17cac7d3b8f83ea13328916.patch
 	sha1sums = 9d67423a6137a14fcd7165ba74f687aa2e4465cf
+	sha1sums = ea1de7ae6c7f02c73c9fa416b3240cae7f2c1b86
 
 pkgname = libhugetlbfs
 
