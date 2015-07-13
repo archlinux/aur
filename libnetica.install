@@ -1,6 +1,6 @@
 post_install() {
-    echo -e '\e[1m'
+    echo
     echo 'The pristine libnetica directory is installed to /opt/norsys/netica-c/'
     echo 'Symlinks are in /usr/lib and /usr/include'
-    echo -e '\e[0m'
+    echo
 }

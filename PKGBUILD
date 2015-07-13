@@ -1,6 +1,6 @@
 # Maintainer: Daniel Boerlage <daniel.brlg@gmail.com>
 pkgname=libnetica
-pkgver=504
+pkgver=5.04
 pkgrel=1
 pkgdesc="Probabilistic graphical model software to work with Bayesian networks"
 arch=('i686' 'x86_64')
