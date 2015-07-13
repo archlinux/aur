@@ -1,4 +1,5 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Maintainer:Martin C. Doege <mdoege at compuserve dot com>
+# Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-unifont
 pkgver=8.0.01
