@@ -1,20 +1,22 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
-pkgname=ruby-rmagick
-pkgver=2.13.1
-_sfdlid=70067
-pkgrel=1
-pkgdesc="RMagick is an interface between the Ruby programming language and the ImageMagick and GraphicsMagick image processing libraries"
-arch=('i686' 'x86_64')
-url="http://rmagick.rubyforge.org"
-license=('GPL')
-depends=('ruby>=1.8.2' 'imagemagick' 'graphicsmagick')
-source=("http://rubyforge.org/frs/download.php/${_sfdlid}/RMagick-${pkgver}.tar.bz2")
+# Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 
-build() {
-  cd "$srcdir/RMagick-$pkgver"
-  # the post-install.rb script does not seem to take the prefix into account
-  # when installing docs, we have to force it
-  ruby setup.rb all --doc-dir=${pkgdir}/usr/share/doc/rmagic || exit 1
-  ruby setup.rb install --prefix=$pkgdir || exit 3
+_gemname=rmagick
+pkgname=ruby-rmagick
+pkgver=2.15.2
+pkgrel=1
+pkgdesc="RMagick is an interface between the Ruby programming language and the ImageMagick image processing library"
+arch=('i686' 'x86_64')
+url='https://github.com/rmagick/rmagick'
+license=('GPL')
+depends=('ruby>=1.8.5' 'imagemagick>=6.4.9')
+#source=("https://github.com/rmagick/rmagick/archive/RMagick_${pkgver//./-}.tar.gz")
+source=("https://rubygems.org/downloads/rmagick-$pkgver.gem")
+sha256sums=('33aae1aa0035e4fe20ae8700a5035d306188eeac3eb2297d3459dcda1bb44964')
+
+package() {
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('fa419869d5533884e4556c8b8b390adb')
