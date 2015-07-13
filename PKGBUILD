@@ -1,7 +1,7 @@
 # Maintainer: Glennie Vignarajah <glennie@glennie.fr>
 
 pkgname=python-robobrowser
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="RoboBrowser is a simple, Pythonic library for browsing the web without a standalone web browser."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-pip' 'python
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("http://pypi.python.org/packages/source/r/robobrowser/robobrowser-$pkgver.tar.gz")
-md5sums=('7d8b49461b77e5f3e77c1dabdf175cfe')
+md5sums=('333ad401f4a0b320fa873c78bc5fb64d')
 
 
 prepare() {
