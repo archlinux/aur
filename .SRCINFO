@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-metalfairytale-git
+	pkgdesc = A fairy tale whose hero belongs to one of the many Metal (sub-)genres, served in the marvelous form of fortune cookies!
+	pkgver = 1e53c54
+	pkgrel = 2
+	url = https://github.com/virtualtam/fortune-metal-fairy-tale
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = fortune-mod
+	source = git://github.com/virtualtam/fortune-metal-fairy-tale.git
+	sha256sums = SKIP
+
+pkgname = fortune-mod-metalfairytale-git
+
