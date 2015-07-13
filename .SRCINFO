@@ -1,0 +1,21 @@
+pkgbase = kgtk
+	pkgdesc = LD_PRELOAD hack with helper scripts to make gtk and qt-only programs use KDE file dialogs.
+	pkgver = 0.11.0
+	pkgrel = 4
+	url = http://www.kde-apps.org/content/show.php?content=36077
+	install = kgtk.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = gettext
+	makedepends = gtk2>=2.6
+	makedepends = gtk3>=3.0
+	depends = kdelibs
+	source = http://kde-apps.org/CONTENT/content-files/36077-KGtk-0.11.0.tar.bz2
+	md5sums = e5abf37b9f15b301d213ffb881144ddb
+
+pkgname = kgtk
+

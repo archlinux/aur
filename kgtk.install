@@ -1,0 +1,27 @@
+post_install() {
+    echo ""
+    echo "This converts GTK Filedialogs to KDE4 dialogs."
+    echo ""
+    echo "You can run GTK applications in 2 ways:"
+    echo "	A. Call /usr/bin/kgtk-wrapper gimp"
+    echo "	B. Create a symbolic link from the wrapper script to"
+    echo "         your application, e.g."
+    echo ""
+    echo "		ln -s /usr/bin/kgtk-wrapper /usr/local/bin/gimp"
+    echo ""
+    echo "         and make sure you run /usr/local/bin/gimp instead of"
+    echo "         /usr/bin/gimp in the future"
+    echo ""
+
+    /bin/true
+}
+
+pre_remove() {
+    echo ""
+    echo "If you linked some GTK applications to the wrapper"
+    echo "script provided by this package, make sure to"
+    echo "remove those links."
+    echo ""
+
+    /bin/true
+}
