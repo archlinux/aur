@@ -3,7 +3,7 @@
 _pkgname=lxqt-config
 pkgname=$_pkgname-git
 pkgver=0.9.0.26.g176260a
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt system configuration."
 arch=("i686" "x86_64")
 url="http://lxqt.org"
@@ -23,7 +23,7 @@ pkgver() {
 build() {
 	mkdir -p build
 	cd build
-	cmake "$srcdir/$_pkgname"
+	cmake "$srcdir/$_pkgname" \
 		-DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
