@@ -1,0 +1,19 @@
+pkgbase = lib32-libcurl-compat
+	pkgdesc = An URL retrieval library (old 32bit version)
+	pkgver = 7.23.1
+	pkgrel = 2
+	url = http://curl.haxx.se
+	install = curl-compat.install
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-multilib
+	depends = ca-certificates
+	depends = lib32-gnutls
+	depends = lib32-openssl
+	depends = lib32-zlib
+	options = strip
+	source = http://curl.haxx.se/download/curl-7.23.1.tar.gz
+	md5sums = 8e23151f569fb54afef093ac0695077d
+
+pkgname = lib32-libcurl-compat
+
