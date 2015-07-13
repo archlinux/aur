@@ -5,7 +5,7 @@
 
 pkgname=ttf-mgopen
 pkgver=1.1
-pkgrel=10
+pkgrel=11
 pkgdesc="TrueType fonts containing glyphs for the Latin and Greek alphabet"
 arch=('any')
 url="https://web.archive.org/web/20120409173416/http://www.zvr.gr/typo/mgopen/index"

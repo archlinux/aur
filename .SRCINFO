@@ -1,8 +1,8 @@
 pkgbase = ttf-mgopen
 	pkgdesc = TrueType fonts containing glyphs for the Latin and Greek alphabet
 	pkgver = 1.1
-	pkgrel = 10
-	url = http://www.zvr.gr/typo/mgopen/index
+	pkgrel = 11
+	url = https://web.archive.org/web/20120409173416/http://www.zvr.gr/typo/mgopen/index
 	install = ttf.install
 	arch = any
 	license = custom
