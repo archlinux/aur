@@ -1,0 +1,16 @@
+pkgbase = java-jblas-intel
+	pkgdesc = Linear algebra library for Java based on BLAS and LAPACK. Attention: This package needs Intel Math Kernel Library which is NOT in the repositories.
+	pkgver = 20150713
+	pkgrel = 1
+	url = https://github.com/mikiobraun/jblas
+	arch = x86_64
+	license = custom
+	makedepends = ruby
+	makedepends = apache-ant
+	depends = java-environment
+	depends = java-runtime
+	provides = java-jblas
+	conflicts = java-jblas
+
+pkgname = java-jblas-intel
+
