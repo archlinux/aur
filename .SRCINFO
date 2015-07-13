@@ -3,8 +3,7 @@ pkgbase = ruby-rmagick
 	pkgver = 2.15.2
 	pkgrel = 1
 	url = https://github.com/rmagick/rmagick
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = ruby>=1.8.5
 	depends = imagemagick>=6.4.9
