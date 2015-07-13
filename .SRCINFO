@@ -1,0 +1,22 @@
+pkgbase = python-ipython-sql
+	pkgdesc = Issue SQL commands from IPython.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/ipython-sql
+	arch = any
+	license = custom:PYTHON
+	depends = ipython
+	depends = python-sqlalchemy
+	depends = python-prettytable
+	depends = python-sqlparse
+	source = https://pypi.python.org/packages/source/i/ipython-sql/ipython-sql-0.3.4.tar.gz
+	md5sums = a68076f11ae62197a16ed4000dcbe8d3
+
+pkgname = python-ipython-sql
+
+pkgname = python2-ipython-sql
+	depends = ipython2
+	depends = python2-sqlalchemy
+	depends = python2-prettytable
+	depends = python2-sqlparse
+
