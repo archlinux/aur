@@ -1,0 +1,18 @@
+pkgbase = lib32-libnotify
+	pkgdesc = Desktop notification library (32-bit)
+	pkgver = 0.7.6
+	pkgrel = 2
+	url = http://library.gnome.org/devel/notification-spec/
+	arch = x86_64
+	license = LGPL
+	makedepends = lib32-gtk3
+	makedepends = gcc-multilib
+	makedepends = gobject-introspection
+	depends = lib32-gdk-pixbuf2
+	depends = libnotify
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/libnotify/0.7/libnotify-0.7.6.tar.xz
+	sha512sums = 5d656ee7ee5caeb95aec4adb973795dc72fc620cd36b9fe3d4f910951945bd5df70ee1c422cd6aca9c38a9ba2760562e479fc8fb9269449924a5b24d762d03df
+
+pkgname = lib32-libnotify
+
