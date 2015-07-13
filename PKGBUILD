@@ -52,7 +52,7 @@ prepare() {
   
   patch -Np1 < $srcdir/no_fontforge-versioncheck.patch
   rm -rf python/out/
-  sed -i '1s+1.8++' scripts/out/lilypond-invoke-editor.scm
+  sed -i '1s+1.8++' scripts/out/lilypond-invoke-editor
 }
 
 build() {
