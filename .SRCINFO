@@ -1,0 +1,16 @@
+pkgbase = xcalib
+	pkgdesc = A tiny monitor calibration loader for X.org
+	pkgver = 0.8
+	pkgrel = 7
+	url = http://xcalib.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxxf86vm
+	source = http://downloads.sourceforge.net/xcalib/xcalib-source-0.8.tar.gz
+	source = makefile-ldflags.patch
+	sha256sums = 8a112ee710e5446f6c36e62345b2066f10639d500259db8c48bf1716caea06e6
+	sha256sums = 09b50960bff9848fbae0045f61a8bf081366f6658477584126f13534a23d596e
+
+pkgname = xcalib
+

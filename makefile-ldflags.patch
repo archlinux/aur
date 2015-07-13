@@ -1,0 +1,22 @@
+--- Makefile	2007-08-26 23:30:34.000000000 +0200
++++ Makefile.new	2012-08-20 10:50:27.000000000 +0200
+@@ -50,16 +50,16 @@
+ # low overhead version (internal parser)
+ xcalib: xcalib.c
+ 	$(CC) $(CFLAGS) -c xcalib.c -I$(XINCLUDEDIR) -DXCALIB_VERSION=\"$(XCALIB_VERSION)\"
+-	$(CC) $(CFLAGS) -L$(XLIBDIR) -lm -o xcalib xcalib.o -lX11 -lXxf86vm -lXext
++	$(CC) $(LDFLAGS) -L$(XLIBDIR) -o xcalib xcalib.o -lX11 -lXxf86vm -lXext -lm
+ 
+ fglrx_xcalib: xcalib.c
+ 	$(CC) $(CFLAGS) -c xcalib.c -I$(XINCLUDEDIR) -DXCALIB_VERSION=\"$(XCALIB_VERSION)\" -I$(FGLRXINCLUDEDIR) -DFGLRX
+-	$(CC) $(CFLAGS) -L$(XLIBDIR) -L$(FGLRXLIBDIR) -lm -o xcalib xcalib.o -lX11 -lXxf86vm -lXext -lfglrx_gamma
++	$(CC) $(LDFLAGS) -L$(XLIBDIR) -L$(FGLRXLIBDIR) -o xcalib xcalib.o -lX11 -lXxf86vm -lXext -lfglrx_gamma -lm
+ 
+ win_xcalib: xcalib.c
+ 	$(CC) $(CFLAGS) -c xcalib.c -DXCALIB_VERSION=\"$(XCALIB_VERSION)\" -DWIN32GDI
+ 	windres.exe resource.rc resource.o
+-	$(CC) $(CFLAGS) -mwindows -lm resource.o -o xcalib xcalib.o
++	$(CC) $(LDFLAGS) -mwindows -lm resource.o -o xcalib xcalib.o
+ 
+ install:
+ 	cp ./xcalib $(DESTDIR)/usr/local/bin/
