@@ -1,0 +1,11 @@
+[Unit]
+Description=Daemon for xflux that allows for any arguments to be passed in
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/xfluxd-args.conf
+ExecStart=/usr/bin/xflux $ARGS
+Restart=always
+
+[Install]
+WantedBy=default.target
