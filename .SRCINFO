@@ -1,17 +1,24 @@
 pkgbase = fsv2
-	pkgdesc = gtk2 port of fsv
-	pkgver = 1.1.0
+	pkgdesc = GTK2 port of fsv, the filesystem visualizer
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = http://fedorchenko.net/fsv2.php
+	epoch = 1
+	url = https://github.com/mcuelenaere/fsv
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
 	depends = gtkglarea
 	depends = gtkmm
 	depends = ftgl
+	depends = gtk2
 	options = !libtool
-	source = http://fedorchenko.net/src/fsv2-1.1.0.tar.bz2
-	md5sums = 3a8e5e6a9b2e5cdc7a111765a2f18599
+	source = https://github.com/mcuelenaere/fsv/archive/fsv-0.9-1.tar.gz
+	source = fsv2.desktop
+	md5sums = 61e8d3ce2803d8873a717d20d22fbc6d
+	md5sums = 0284ef25cd9fd798d5e863fc65485d6c
 
 pkgname = fsv2
 
