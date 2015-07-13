@@ -1,0 +1,22 @@
+pkgbase = java-gnome
+	pkgdesc = Java bindings to the GNOME platform (including gtk, glib and glade)
+	pkgver = 4.1.3
+	pkgrel = 1
+	url = http://java-gnome.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = java-environment
+	makedepends = junit
+	makedepends = python2
+	depends = java-runtime
+	depends = gtksourceview3
+	depends = librsvg
+	depends = libunique3
+	depends = libnotify
+	depends = enchant
+	source = http://ftp.gnome.org/pub/gnome/sources/java-gnome/4.1/java-gnome-4.1.3.tar.xz
+	sha256sums = 060b2b249bad918b91a55a82b8a2ed085bec5734defaf31e6c8c5ad006532373
+
+pkgname = java-gnome
+
