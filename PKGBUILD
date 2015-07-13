@@ -4,18 +4,18 @@ pkgname=packetbeat
 pkgver=1.0.0_beta1
 _pkgver=${pkgver/_/.}
 _pkgver=${_pkgver/b/B}
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64')
-url='https://www.elastic.co/products/beats/packetbeat'
+url="https://www.elastic.co/products/beats/$pkgname"
 license=('APACHE')
-backup=('etc/packetbeat/packetbeat.yml')
+backup=("etc/$pkgname/$pkgname.yml")
 depends=('libpcap')
 makedepends=('go')
 optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 source=("https://github.com/elastic/$pkgname/archive/v$_pkgver.tar.gz"
-        'packetbeat.service')
+        "$pkgname.service")
 sha256sums=('a119a2976ac7c7577d7ee2750d0608354e51cd73edbc5529a6ec2c5b67fd6a7b'
             '09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64')
 
@@ -38,7 +38,7 @@ prepare() {
     # Workaround to place extracted release into GOPATH
     mkdir -p "$srcdir/gopath/src/github.com/elastic"
     ln -sf "$srcdir/$pkgname-$_pkgver" \
-        "$srcdir/gopath/src/github.com/elastic/packetbeat"
+        "$srcdir/gopath/src/github.com/elastic/$pkgname"
 }
 
 build() {
