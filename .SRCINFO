@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-multidesk
+	pkgdesc = Fortune cookies: Jayce about his OS, MultiDeskOS.
+	pkgver = 20140622
+	pkgrel = 1
+	url = http://lordoric.free.fr
+	arch = any
+	groups = fortune-mods
+	license = custom:PublicDomain
+	depends = fortune-mod
+	source = multidesk
+	md5sums = a2c437db52dee4163ebf302e2fd6b522
+
+pkgname = fortune-mod-multidesk
+
