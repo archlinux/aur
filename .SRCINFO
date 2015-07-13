@@ -1,7 +1,7 @@
 pkgbase = ccat
 	pkgdesc = Colorizes output for cat.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/jingweno/ccat
 	arch = any
 	license = CUSTOM
@@ -10,7 +10,7 @@ pkgbase = ccat
 	conflicts = ccat-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/jingweno/ccat/archive/v0.1.0.tar.gz
+	source = https://github.com/jingweno/ccat/archive/v1.0.0.tar.gz
 	md5sums = 2bc1f3aa7d3b9764cfb3c0aa0270392c
 
 pkgname = ccat

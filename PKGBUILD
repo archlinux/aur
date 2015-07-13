@@ -1,8 +1,8 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ccat
-pkgver=0.1.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Colorizes output for cat."
 arch=('any')
 url="https://github.com/jingweno/ccat"
