@@ -1,6 +1,6 @@
 pkgbase = rssguard
 	pkgdesc = A simple (yet powerful) Qt5 feed reader.
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://bitbucket.org/skunkos/rssguard
 	install = rssguard.install
@@ -15,8 +15,8 @@ pkgbase = rssguard
 	conflicts = rss-guard
 	conflicts = rssguard-git
 	replaces = rss-guard
-	source = https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.4.0.tar.gz
-	sha256sums = 5b9f87185a1d5b4ebbbd6aa8ff49fe0b470f323e7465c1a7c364198f62ed877e
+	source = https://bitbucket.org/skunkos/rssguard/get/2.4.1.tar.gz
+	sha256sums = 98e38b9254436dbc1e036569fbab2aa081d0691a7004e8a9870a8eeba3dd5156
 
 pkgname = rssguard
 
