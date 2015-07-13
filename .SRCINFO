@@ -1,0 +1,20 @@
+pkgbase = creddit-git
+	pkgdesc = CLI Reddit client written in C.
+	pkgver = r177.accd51f
+	pkgrel = 1
+	url = https://github.com/Cotix/cReddit
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = ncurses
+	depends = curl
+	provides = creddit-git
+	conflicts = creddit-git
+	source = creddit-git::git+http://github.com/Cotix/cReddit.git
+	md5sums = SKIP
+
+pkgname = creddit-git
+
