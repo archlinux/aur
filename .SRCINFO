@@ -1,0 +1,17 @@
+pkgbase = jameica-nightly
+	pkgdesc = Jameica Plattform
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = http://www.willuhn.de/products/jameica/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime>=1.6
+	source = http://www.willuhn.de/products/jameica/releases/nightly/jameica-2.7.0-nightly-linux64.zip
+	source = jameica.desktop
+	md5sums = SKIP
+	md5sums = c5915975edcf2ef695f57e93983ebbe6
+
+pkgname = jameica-nightly
+
