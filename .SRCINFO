@@ -1,6 +1,6 @@
 pkgbase = python2-sqlalchemy-git
 	pkgdesc = Python SQL toolkit and Object Relational Mapper
-	pkgver = 1.0.6.9.gcadc2e0
+	pkgver = 1.0.6.10.gb68c9ac
 	pkgrel = 1
 	url = http://www.sqlalchemy.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = python2-sqlalchemy-git
 	license = custom:MIT
 	makedepends = git
 	depends = python2
-	provides = sqlalchemy=1.0.6.9.gcadc2e0
+	provides = sqlalchemy=1.0.6.10.gb68c9ac
 	conflicts = sqlalchemy
 	source = git+https://bitbucket.org/zzzeek/sqlalchemy.git
 	md5sums = SKIP
