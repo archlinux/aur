@@ -1,0 +1,23 @@
+diff -Naur xsvg-0.2.1.orig/configure.in xsvg-0.2.1.new/configure.in
+--- xsvg-0.2.1.orig/configure.in	2013-10-03 15:28:26.124461920 +0200
++++ xsvg-0.2.1.new/configure.in	2013-10-03 15:45:08.651048072 +0200
+@@ -1,11 +1,6 @@
+-AC_INIT(src/xsvg.c)
+-
+-dnl ===========================================================================
+-
+-XSVG_VERSION=0.2.1
+-AC_SUBST(XSVG_VERSION)
+-
+ dnl ===========================================================================
+ 
+-AM_INIT_AUTOMAKE(xsvg, $XSVG_VERSION)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
++AC_INIT([xsvg], [0.2.1])
++AC_CONFIG_SRCDIR([src/xsvg.c])
++AM_INIT_AUTOMAKE
+
+ 
+ AM_MAINTAINER_MODE
+ 

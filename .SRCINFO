@@ -1,0 +1,19 @@
+pkgbase = xsvg
+	pkgdesc = A viewer of SVG files
+	pkgver = 0.2.1
+	pkgrel = 7
+	url = http://cairographics.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libsvg-cairo
+	depends = libpng
+	depends = libxinerama
+	depends = libxrandr
+	source = http://cairographics.org/snapshots/xsvg-0.2.1.tar.gz
+	source = configure.in.patch
+	md5sums = f20409e87d9bff3c4d698d8c0e9e9f2b
+	md5sums = cae774a2a7b60ab4d4600415b8265314
+
+pkgname = xsvg
+
