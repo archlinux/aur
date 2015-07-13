@@ -1,3 +1,5 @@
+# Maintainer:Martin C. Doege <mdoege at compuserve dot com>
+
 pkgname='openastro'
 pkgver='1.1.48'
 pkgrel='1'
