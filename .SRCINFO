@@ -29,7 +29,7 @@ pkgbase = freeswitch
 	conflicts = freeswitch-fixed
 	backup = etc/freeswitch/private/passwords.xml
 	backup = etc/freeswitch/vars.xml
-	source = git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v1.4.18
+	source = git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v1.4.20
 	source = freeswitch.conf.d
 	source = README.freeswitch
 	source = run.freeswitch
