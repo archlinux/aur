@@ -1,6 +1,6 @@
 pkgbase = atk-git
 	pkgdesc = A library providing a set of interfaces for accessibility. Git version.
-	pkgver = 2.15.4.5.g8c54232.8c54232
+	pkgver = 2.16.0.8.g5dbc330.5dbc330
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686

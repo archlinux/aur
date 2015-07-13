@@ -2,7 +2,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname=atk-git
-pkgver=2.15.4.5.g8c54232.8c54232
+pkgver=2.16.0.8.g5dbc330.5dbc330
 pkgrel=1
 pkgdesc="A library providing a set of interfaces for accessibility. Git version."
 arch=("i686" "x86_64")
