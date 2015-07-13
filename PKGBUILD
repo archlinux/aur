@@ -25,12 +25,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   git submodule init
-  #git config submodule.mysubmodule.url $srcdir/mysubmodule
   git config submodule.hugin.git.oftal.dk $srcdir/hugin
   git submodule update
-  # hackish, but I don't want to clone hugin with every build
-  #rmdir hugin
-  #ln -sf "$srcdir/hugin" hugin
   ./autogen.sh
 }
 
