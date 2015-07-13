@@ -2,7 +2,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname="vim-command-t"
-pkgver=1.11.4
+pkgver=1.13
 pkgrel=1
 pkgdesc="an extremely fast, intuitive mechanism for opening files and buffers with a minimal number of keystrokes"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ depends=("vim" "ruby")
 install="vimdoc.install"
 
 source="https://github.com/wincent/Command-T/archive/$pkgver.tar.gz"
-md5sums=('65769429d388acfb49b33d5c4eb71659')
+md5sums=('781160833b1e4e95c99ce1401b647b85')
 
 build() {
   cd "$srcdir/command-t-$pkgver/ruby/command-t"
@@ -21,7 +21,6 @@ build() {
   ruby "extconf.rb"
   make
 }
-
 
 package() {
   local _gitname="command-t"
@@ -32,6 +31,7 @@ package() {
   install -m644 -t "${_installprefix}/autoload"                        "autoload"/*.vim
   install -m644 -t "${_installprefix}/doc"                        "doc"/*.txt
   install -m644 -t "${_installprefix}/plugin"                     "plugin"/*.vim
+  install -m644 -t "${_installprefix}/ruby"                       "ruby/"*.rb
   install -m644 -t "${_installprefix}/ruby/${_gitname}"           "ruby/${_gitname}"/*.{rb,so}
   install -m644 -t "${_installprefix}/ruby/${_gitname}/vim"       "ruby/${_gitname}/vim"/*.rb
   install -m644 -t "${_installprefix}/ruby/${_gitname}/finder"    "ruby/${_gitname}/finder"/*.rb
