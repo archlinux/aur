@@ -1,0 +1,14 @@
+--- firestorm	2015-07-12 16:34:32.761109534 -0700
++++ firestorm-intel	2015-07-12 16:24:03.111511573 -0700
+@@ -85,9 +85,9 @@
+ exportMutliArchDRIPath "amd64"
+ if [ -z ${LIBGL_DRIVERS_PATH} ]
+ then
+-	export LIBGL_DRIVERS_PATH="/usr/lib64/dri:/usr/lib32/dri:/usr/lib/dri"
++	export LIBGL_DRIVERS_PATH="/usr/lib64/dri:/usr/lib32/dri:/usr/lib32/xorg/modules/dri:/usr/lib/dri"
+ else
+-	export LIBGL_DRIVERS_PATH="${LIBGL_DRIVERS_PATH}:/usr/lib64/dri:/usr/lib32/dri:/usr/lib/dri"
++	export LIBGL_DRIVERS_PATH="${LIBGL_DRIVERS_PATH}:/usr/lib64/dri:/usr/lib32/dri:/usr/lib32/xorg/modules/dri:/usr/lib/dri"
+ fi
+ echo "LIBGL_DRIVERS_PATH is ${LIBGL_DRIVERS_PATH}"
+ 
