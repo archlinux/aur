@@ -1,17 +1,18 @@
 pkgbase = pidgin-awayonlock
 	pkgdesc = A simple plugin for Pidgin to change your status when the screensaver gets activated.
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 0.6
+	pkgrel = 1
 	url = http://costela.net/projects/awayonlock/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = pidgin
+	depends = libpurple
 	optdepends = gnome-screensaver: gnome support
 	optdepends = kdeartwork-kscreensaver: kde support
-	source = https://github.com/costela/awayonlock/archive/v0.5.2.tar.gz
-	sha256sums = 40b25b72a310304e5dbbc1dfd26b87129b3a305a447312dc494731c72af72bb9
+	optdepends = mate-screensaver: mate support
+	source = https://github.com/costela/awayonlock/archive/v0.6.tar.gz
+	sha256sums = 2d321221b254cc577f14ab9391b4cd98925a0f3f5bd56e33fe62b2868bb5d03a
 
 pkgname = pidgin-awayonlock
 
