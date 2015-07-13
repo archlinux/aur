@@ -4,7 +4,7 @@
 # Contributor: Yahya Mohajer < yaya_2013 At yahoo Dot com >
 
 pkgname=hudson
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Extensible continuous integration server"
 arch=('any')
@@ -19,7 +19,7 @@ source=("http://hudson-ci.org/downloads/war/$pkgname-$pkgver.war"
         'hudson.conf'
         'hudson.service'
         'hudson.tmpfiles.d')
-sha256sums=('31d7a97d09118a06990e5a3c7a1e0f39131971c73f32f0efb4299b00bc10e3d1'
+sha256sums=('88104ecc0fa908f72017740c83870f315bdaeda5b1a47bab66cf671f8146740b'
             '784a07d6d0cc2a1fd53114e765ccf44e022e9372c398bfacfa743e95eb7ddc40'
             '00a96b88bb9e98d14697e7e9eb443b0785f074eb1bbba207d3e7dd30d10ebbdf'
             'c61cbcf85c887379a605c1908b5474599b0fce25bd2f8dd567da3ace6a631b08')
