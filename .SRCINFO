@@ -11,10 +11,13 @@ pkgbase = fontconfig-ubuntu
 	depends = freetype2-ubuntu
 	provides = fontconfig=2.11.1
 	conflicts = fontconfig
+	options = !libtool
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.11.1.orig.tar.bz2
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.11.1-0ubuntu6.debian.tar.xz
 	source = 53-monospace-lcd-filter.patch
-	options = !libtool
+	md5sums = 824d000eb737af6e16c826dd3b2d6c90
+	md5sums = 5d8e082f4d36d6c82853f6b6a5f6997a
+	md5sums = a17e48be6a06bc056574be6756cb9738
 
 pkgname = fontconfig-ubuntu
 

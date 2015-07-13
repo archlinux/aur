@@ -38,10 +38,10 @@ build() {
   cd fontconfig-$pkgver
 
   # make sure there's no rpath trouble and sane .so versioning - FC and Gentoo do this as well
-  msg2 "Running 'libtoolize'.."
+  msg2 "Running libtoolize.."
   libtoolize -f
 
-  msg2 "Running 'autoreconf'.."
+  msg2 "Running autoreconf.."
   autoreconf -fi
 
   # Enable Position Independent Code for prelinking
@@ -57,19 +57,19 @@ build() {
     --with-default-fonts=/usr/share/fonts \
     --with-add-fonts=/usr/share/fonts
 	
-  msg2 "Running 'make'.."
+  msg2 "Running make.."
   make
 }
 
 package() {
   cd fontconfig-$pkgver
   
-  msg2 "Running 'make install'.."
+  msg2 "Running make install.."
   make DESTDIR="$pkgdir" install
 
   # License
   install -Dm0644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 
   # Docs
-  install -Dm0644 debian/changelog "$pkgdir"/usr/share/doc/fontconfig/changelog
+  install -Dm0644 ../debian/changelog "$pkgdir"/usr/share/doc/fontconfig/changelog
 }
