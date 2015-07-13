@@ -32,7 +32,7 @@ build() {
   cd $_gitname
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-static --enable-experimental --disable-fatal-warnings \
-    --with-gtk=3.0
+    --with-gtk=3.0 --disable-gtk-doc
   make
 }
 
