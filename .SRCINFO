@@ -1,0 +1,17 @@
+pkgbase = isight-firmware-tools
+	pkgdesc = Tools to manipulate firmware for Built-in iSight found on Apple machines
+	pkgver = 1.6
+	pkgrel = 2
+	url = https://launchpad.net/isight-firmware-tools/
+	install = isight-firmware-tools.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gcc
+	depends = libusb-compat
+	source = http://launchpad.net/isight-firmware-tools/main/1.6/+download/isight-firmware-tools-1.6.tar.gz
+	sha256sums = 3181973db8a1cadd68785cd81959c8e1e9dc8110342ec1639a50db53d82a367e
+
+pkgname = isight-firmware-tools
+

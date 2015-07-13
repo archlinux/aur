@@ -1,0 +1,17 @@
+infodir=usr/share/info
+
+post_install() {
+  [ -x usr/bin/install-info ] || return 0
+  install-info $infodir/ift-export.info.gz $infodir/dir 2> /dev/null
+  install-info $infodir/ift-extract.info.gz $infodir/dir 2> /dev/null
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  [ -x usr/bin/install-info ] || return 0
+  install-info --delete $infodir/ift-export.info.gz $infodir/dir 2> /dev/null
+  install-info --delete $infodir/ift-extract.info.gz $infodir/dir 2> /dev/null
+}
