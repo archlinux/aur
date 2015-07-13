@@ -1,7 +1,7 @@
 pkgbase = xmobar-git
-	pkgdesc = A minimal status bar for the XMonad Window Manager.
-	pkgver = 20140211
-	pkgrel = 1
+	pkgdesc = A minimal status bar for the XMonad Window Manager
+	pkgver = 0.23.1.r12.g1b46609
+	pkgrel = 2
 	url = http://projects.haskell.org/xmobar/
 	arch = i686
 	arch = x86_64
@@ -30,6 +30,8 @@ pkgbase = xmobar-git
 	optdepends = haskell-timezone-series: With haskell-timezone-olson, enables DateZone plugin
 	conflicts = xmobar
 	conflicts = xmobar-darcs
+	source = xmobar-git::git+https://github.com/jaor/xmobar.git
+	md5sums = SKIP
 
 pkgname = xmobar-git
 

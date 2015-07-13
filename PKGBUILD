@@ -1,9 +1,12 @@
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributer: euclio
 # Contributer: Cedric Girard <girard.cedric@gmail.com>
-# Maintainer: Colin Woodbury <colingw@gmail.com>
+# Contributer: Colin Woodbury <colingw@gmail.com>
+
 pkgname=xmobar-git
-pkgver=20140211
-pkgrel=1
-pkgdesc="A minimal status bar for the XMonad Window Manager."
+pkgver=0.23.1.r12.g1b46609
+pkgrel=2
+pkgdesc="A minimal status bar for the XMonad Window Manager"
 arch=('i686' 'x86_64')
 url="http://projects.haskell.org/xmobar/"
 license=('custom:BSD3')
@@ -27,52 +30,42 @@ optdepends=(
   'haskell-timezone-olson: With haskell-timezone-series, enables DateZone plugin'
   'haskell-timezone-series: With haskell-timezone-olson, enables DateZone plugin')
 conflicts=('xmobar' 'xmobar-darcs')
-source=()
-md5sums=()
-
 _gitroot="https://github.com/jaor/xmobar.git"
-_gitname="xmobar"
+source=("${pkgname}::git+${_gitroot}")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd "${srcdir}"
-    msg "Connecting to GIT server...."
+  cd "${pkgname}"
 
-    if [ -d $_gitname ] ; then
-        cd $_gitname && git pull origin
-        msg "The local files are updated."
-    else
-        git clone $_gitroot $_gitname
-    fi
+  # XMOBAR INSTALLATION
+  # Several possible setup options are offered below. Choose whichever is
+  # best for you. Uncomment and recomment as necessary.
+  # See http://projects.haskell.org/xmobar/#optional-features for more information.
 
-    msg "GIT checkout done or server timeout"
-    msg "Starting make..."
+  # Default setup.
+  runhaskell Setup configure --flags="with_xft with_iwlib" --prefix=/usr
 
-    rm -rf "${srcdir}/$_gitname-build"
-    git clone "${srcdir}/$_gitname" "${srcdir}/$_gitname-build"
-    cd "${srcdir}/$_gitname-build"
+  # MPD Support. Must have `haskell-libmpd` installed.
+  # runhaskell Setup configure --flags="with_xft with_iwlib with_mpd" --prefix=/usr
 
-    # XMOBAR INSTALLATION
-    # Several possible setup options are offered below. Choose whichever is
-    # best for you. Uncomment and recomment as necessary.
-    # See http://projects.haskell.org/xmobar/#optional-features for more information.
+  # Alsa Support. Must have `haskell-alsa-mixer` installed.
+  # Be warned, its dependencies can be troublesome.
+  # runhaskell Setup configure --flags="with_xft with_iwlib with_alsa" --prefix=/usr
 
-    # Default setup.
-    runhaskell Setup configure --flags="with_xft with_iwlib" --prefix=/usr
+  # If you have _all_ of the optdepends installed, and want all extentions:
+  # runhaskell Setup configure --flags="all_extensions" --prefix=/usr
 
-    # MPD Support. Must have `haskell-libmpd` installed.
-    # runhaskell Setup configure --flags="with_xft with_iwlib with_mpd" --prefix=/usr
-
-    # Alsa Support. Must have `haskell-alsa-mixer` installed.
-    # Be warned, its dependencies can be troublesome.
-    # runhaskell Setup configure --flags="with_xft with_iwlib with_alsa" --prefix=/usr
-    
-    # If you have _all_ of the optdepends installed, and want all extentions:
-    # runhaskell Setup configure --flags="all_extensions" --prefix=/usr
-    runhaskell Setup build
+  runhaskell Setup build
 }
 
 package() {
-    cd "${srcdir}/$_gitname-build"
-    runhaskell Setup copy --destdir=${pkgdir}
-    install -D -m644 license ${pkgdir}/usr/share/licenses/$pkgname/BSD3
+  cd "${pkgname}"
+
+  runhaskell Setup copy --destdir=${pkgdir}
+  install -Dm644 license ${pkgdir}/usr/share/licenses/$pkgname/BSD3
 }
