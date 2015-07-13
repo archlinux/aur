@@ -1,0 +1,14 @@
+[Unit]
+Description=Courier ESMTP-MSA Daemon
+Requires=authdaemond.service
+After=authdaemond.service
+
+[Service]
+Type=forking
+ExecStartPre=[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier
+ExecStart=/usr/sbin/esmtpd-msa start
+ExecStop=/usr/sbin/esmtpd-msa stop
+PIDFile=/var/run/courier/esmtpd-msa.pid
+
+[Install]
+WantedBy=multi-user.target

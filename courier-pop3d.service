@@ -1,0 +1,14 @@
+[Unit]
+Description=Courier POP3 Daemon
+Requires=authdaemond.service
+After=authdaemond.service
+
+[Service]
+Type=forking
+ExecStartPre=[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier
+ExecStart=/usr/sbin/pop3d start
+ExecStop=/usr/sbin/pop3d stop
+PIDFile=/var/run/courier/pop3d.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Courier Webmail Daemon
+Requires=authdaemond.service
+After=authdaemond.service
+
+[Service]
+Type=forking
+ExecStartPre=[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier
+ExecStart=/usr/sbin/webmaild start
+ExecStop=/usr/sbin/webmaild stop
+PIDFile=/var/run/courier/webmaild.pid
+
+[Install]
+WantedBy=multi-user.target

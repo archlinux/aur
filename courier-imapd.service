@@ -1,0 +1,14 @@
+[Unit]
+Description=Courier IMAP Daemon
+Requires=authdaemond.service
+After=authdaemond.service
+
+[Service]
+Type=forking
+ExecStartPre=[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier
+ExecStart=/usr/sbin/imapd start
+ExecStop=/usr/sbin/imapd stop
+PIDFile=/var/run/courier/imapd.pid
+
+[Install]
+WantedBy=multi-user.target

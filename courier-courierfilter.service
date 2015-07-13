@@ -1,0 +1,12 @@
+[Unit]
+Description=Courier filter Daemon
+
+[Service]
+Type=forking
+ExecStartPre=[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier
+ExecStart=/usr/sbin/courierfilter start
+ExecStop=/usr/sbin/courierfilter stop
+PIDFile=/var/run/courier/courierfilter.pid
+
+[Install]
+WantedBy=multi-user.target
