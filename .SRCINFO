@@ -1,0 +1,20 @@
+pkgbase = curlcpp-git
+	pkgdesc = An object oriented C++ wrapper for cURL tool.
+	pkgver = r35.023e161
+	pkgrel = 1
+	url = https://github.com/JosephP91/curlcpp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	provides = curlcpp
+	conflicts = curlcpp
+	source = curlcpp::git+https://github.com/JosephP91/curlcpp.git
+	source = CMakeLists.txt
+	md5sums = SKIP
+	md5sums = 7858aa6a9eb359fd9baf38ddd28e7f0c
+
+pkgname = curlcpp-git
+
