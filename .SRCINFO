@@ -1,9 +1,10 @@
 pkgbase = i3blocks
 	pkgdesc = Define blocks for your i3bar status line
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vivien/i3blocks
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL3
 	optdepends = openvpn: For openvpn script
 	optdepends = playerctl: For mediaplayer script
