@@ -1,0 +1,574 @@
+"There is a wiki on iptables http://en.wikipedia.org/wiki/Iptables
+and don't mess around with iptables - it's really tricky"
+
+Husse Mar 15 2007
+%
+"The Ubuntu developers have gone to great lengths to make sudo as smooth as possible in the GUI environment, and they've done a very good job. By re-enabling the root user and even logging in as root, you literally throw their work out the window, take your safety belt off and drive head-on into traffic. Yes, it is a bit insane.."
+
+Husse Mar 20 2007
+%
+"Have you managed to complete the install?
+Maybe my old eyes but I can't figure it out from your post."
+
+Husse Mar 24 2007
+%
+"I'm having similar problems and is looking for a solution. I'll be posting something shortly, most likely a cry for help (for both of us) rather than a solution"
+
+Husse Apr 1 2007
+%
+"And vesa is at best "not terrible"
+
+Husse Apr 5 2007
+%
+"I don't think you have to go through the process of reconfiguring X as I did - that was partly because the frustration made me brain dead."
+
+Husse Apr 5 2007
+%
+"Besides hdparm is a dangerous toy.."
+
+Husse Apr 6 2007
+%
+"Unfortunately there are so many ads for old tin cans for sale when you search the web so a search is useless"
+
+Husse Apr 4 2007
+%
+"That brings me to a black screen with just a cursor - cursing my bad luck"
+
+Husse Apr 3 2007
+%
+"PS Like me you seem not to be a native english speaker...
+you write not wright"
+
+Husse Apr 9 2007
+%
+"Yes you do something wrong - and yet not"
+
+Husse Apr 9 2007
+%
+"Never thought the space i "Program Files" would be a problem in Linux"
+
+Husse Apr 9 2007
+%
+"Unfortunately some apps don't end up in the menu."
+
+Husse Apr 13 2007
+%
+"Check the homepage for a .deb package.
+It seems you've got to "make install", something I could do only if I could hold someones hand, uncle Google will do"
+
+Husse Apr 9 2007
+%
+"What's happened to you is a bit of the backside of Linux."
+
+Husse Apr 14 2007
+%
+"I've yet to master a way to search all files for a string with a reasonable output (reasonable output is the crux - grep gives a confusing output to say the least)"
+
+Husse Apr 15 2007
+%
+"Unfortunately suspend does mean things sometimes"
+
+Husse Apr 25 2007
+%
+"My bad - expressed my self really bad in this post"
+
+Husse Apr 26 2007
+%
+"As for sharing home partition let's just say I was warned when I read lot's of posts in different forums before I moved my home - i.e. on my computer, not in the real world"
+
+Husse Apr 26 2007
+%
+"Not that I know if it helps anything, but surprisingly often a reboot solves your problems. And for the moment at least I'm out of solutions"
+
+Husse Apr 7 2007
+%
+"And a lot of times it did not work when it should have and the other way round sometimes"
+
+Husse May 1 2007
+%
+"Don't do the upgrade to 7.0.4 it'll give you problems if you're not really skilled. Even I would refrain"
+
+Husse May 1 2007
+%
+"BTW uuid is a horrible thing - they can change suddenly and unexpectedly"
+
+Husse Apr 30 2007
+%
+"Maybe not all versions of nvidia settings behave gracefully?"
+
+Husse Apr 22 2007
+%
+"An annoying mishap you have"
+
+Husse May 6 2007
+%
+"You've passed the big hurdle - to get wifi working."
+
+Husse May 12 2007
+%
+"If you still have a problem I have to think hard - no good for the brain"
+
+Husse May 14 2007
+%
+"(I could explain it in more a more geekish language but...)"
+
+Husse May 18 2007
+%
+"Everything working?
+That's a relief"
+
+Husse May 24 2007
+%
+"I don't think you'll be sad but you'll never be able to run Vista with that"
+
+Husse Jun 2 2007
+%
+"You have been without answer too long now. Unfortunately I don't know the answer, but I believe the short answer is NO"
+
+Husse Jun 8 2007
+%
+"I answered a similar question a few days ago (I'm not implying you should have searched better)"
+
+Husse Jun 8 2007
+%
+"Or you could do like me - throw yourself right into the Linux nest and read afterwards"
+
+Husse Jun 8 2007
+%
+"Yes you can create hotkeys by the dozen if you like...."
+
+Husse Jun 16 2007
+%
+"I'm out of options for now. It is something that has gone wrong "in the apt-get region" (can't find a good expression for that)"
+
+Husse Jun 17 2007
+%
+"But now hda8 lives happily on the desktop together with its siblings"
+
+Husse Jul 1 2007
+%
+"I am sorry.....
+The E1505 is a mystery"
+
+Husse Jul 5 2007
+%
+"computers are really hard to understand - one user has no problems and another all the problems in the world with the same hardware...."
+
+Husse Jun 20 2007
+%
+"Good luck!
+Sometimes PCLOS win sometimes we do"
+
+Husse Jul 6 2007
+%
+"Since when do we offer web-hosting?
+Found that to my surprise on the XFCE start page in Firefox"
+
+Husse Jul 6 2007
+%
+"You have the E1405 that is such a problem child"
+
+Husse Jul 6 2007
+%
+"Right now I'm a bit confused as to which one is the big problem, but probably 1505. This is what happens to you when you answer lots of posts - it's not even nearly possible to remember all."
+
+Husse Jul 6 2007
+%
+"This is not newbie or even nerd friendly, but it works"
+
+Husse Jul 5 2007
+%
+"I've got a WRT54G v.2 and I had to "strangle" it to 11 mbps and change channel to get a connection that didn't break up all the time - I think it still does now and then, but my wife doesn't tell me"
+
+Husse Jul 7 2007
+%
+"In case of failure - these gadgets are cheap..."
+
+Jul 7 2007
+%
+"Be very careful with what you do with IP-tables - it's extremely hard to get right - I've tried to set rules in a router with IP-tables - small wonder the thing did not fly out of the window"
+
+Jul 7 2007
+%
+"You have waited a bit too long for an answer, here it is in the middle of big holidays - haven't done anything with my computer other than reading the newspapers for a couple of days."
+
+Husse Jun 23 2007
+%
+"I'm afraid we are at a loss here - apart from the tip above to edit xorg.conf I don't have a clue"
+
+Husse Jun 21 2007
+%
+"Right now I'm really confused as to whether it's the 1405 or the 1505 that's giving all the problems...."
+
+Husse Jul 6 2007
+%
+"At times some error is hiding behind it, but I would not care"
+
+Husse Jul 9 2007
+%
+"Easy to forget the beginning of a thread"
+
+Husse May 20 2007
+%
+"You are definitely not ridiculed! Your keyboard is"
+
+Husse Jul 5 2007
+%
+"It seems to be not only in Vista creative is "a bit" problematic"
+
+Husse Jul 10 2007
+%
+"Sorry - when you are used to something it's easy to forget that everybody is not"
+
+Husse Jul 12 2007
+%
+"Sorry, I underestimated your need for help"
+
+Husse Jun 30 2007
+%
+"You may have to add other esoteric combinations of letters to get Beryl working and so on..."
+
+Husse Jul 15 2007
+%
+"You are a bit ambigous."
+
+Husse Jul 17 2007
+%
+"And - yes a bit more user friendly would be nice"
+
+Husse Jul 18 2007
+%
+"That is the magic sudo command. So put sudo in front of the command and it'll work."
+
+Husse Jul 20 2007
+%
+"If you installed and had a power failure you could get really funny results"
+
+Husse Jul 20 2007
+%
+"The links are dead - and Firefox don't like them"
+
+Husse Jul 7 2007
+%
+"It is complicated - believe me"
+
+Husse Jul 24 2007
+%
+"Sadly wifi is a bit of a problem.."
+
+Husse Jul 25 2007
+%
+"It is a beta, but is fairly stable. As with any beta things can go wrong."
+
+Husse Jul 25 2007
+%
+"There's definitely something wrong here."
+
+Husse Jul 11 2007
+%
+"The vesa driver always (almost) works, but does not give nice video - rather horrible"
+
+Husse Jul 29 2007
+%
+"No - we don't mind if you use other distros"
+
+Husse Jul 25 2007
+%
+"I don't know if something can be done, but something should be done...."
+
+Husse Jul 28 2007
+%
+"This is sad - the old DOS days is not what we want it to be like.
+However some hardware does not want to cooperate...."
+
+Husse Jul 29 2007
+%
+"But your problem with the monitor is I believe a mixture of an unhappy heritage from Ubuntu (one of its weaknesses) and unsuitable hardware. But good luck in Mepis! If it works for you that's good."
+
+Husse Jul 30 2007
+%
+"I'm not at all sure this helps you, but as you say there is nothing to be found about the problem except in czech and my attempt att "babelfishing" failed miserably"
+
+Husse Jul 30 2007
+%
+"I have waited to answer in the hope someone else would."
+
+Husse Jul 31 2007
+%
+"I was going to answer you, but my lovely wife served some coffee so I went away for a while and I see that Nick has given about the answer I would have given."
+
+Husse Aug 5 2007
+%
+"But - it is sad that it is so, not complicated, but not at all straight forward"
+
+Husse Aug 5 2007
+%
+"OK I was thinking we = Mint
+how ego of me"
+
+Husse Aug 19 2007
+%
+"And your problem is?"
+
+Husse Aug 25 2007
+%
+"I'll see if I have the time to guide you into that - I have a life and a wife and a job"
+
+Husse Aug 28 2007
+%
+"The ICH controllers (chipset) do have problems, I'm not at all surprised - they are a pain in Windows as well...
+There are some oddities in them and in motherboards that may explain why not all are hit...."
+
+Husse Jun 2 2007
+%
+"We're lucky to have a distro that tells you which device is which UUID."
+
+Husse Jun 4 2007
+%
+"This is a situation where you can't be sure what's doing what...."
+
+Husse Aug 31 2007
+%
+"In KDE it's kate
+and
+please try to find something out by yourself"
+
+Husse Sept 1 2007
+%
+"My answer was partly the way it was because I did not know and did not have the time to check"
+
+Husse Sept 2 2007
+%
+"Oh dear - you got another chance to hug Microsoft"
+
+Husse Sept 2 2007
+%
+"I must admit I don't "see" that splash - I don't really care and my mind is elsewhere when I log in"
+
+Husse Sept 3 2007
+%
+"Turning a supertanker"
+
+Husse Jul 27 2007
+%
+"I answered this yesterday ?! But it's gone....
+Oh well perhaps I never pushed the submit button or answered in the wrong thread"
+
+Husse Sept 5 2007
+%
+"even the cheapest of all new nvidia cards is like a formula 1 car compared to a wheelchair"
+
+Husse Sept 3 2007
+%
+"The problem is to find it - for once I was completely lost in all sorts of answers in Google but not the right one."
+
+Husse Jul 25 2007
+%
+"Please include more details - as someone else in this forum says - my crystal ball is not working"
+
+Husse Sept 11 2007
+%
+"I'll come back to you when I'm thinking a bit better"
+
+Husse Sept 11 2007
+%
+"But I think a possible explanation could be that the sound card is still sleeping..."
+
+Husse Sept 12 2007
+%
+"No
+but I will try to contemplate a solution, and try to catch one of my sons who is a real hardware guru....but not easy to get in touch with"
+
+Husse Sept 12 2007
+%
+"Unfortunately the partitioner in the install is a bit "grumpy"
+It is, as far as I know safe, but does not always let you do what you want"
+
+Husse Sept 18 2007
+%
+"The wiki is unfortunately living a life a bit in the shadows but it contains lots of good stuff"
+
+Husse Sept 12 2007
+%
+"samba is not simple to deal with"
+
+Husse Sept 14 2007
+%
+"If we solve the fuse problem and you can use the CD player we are sort of done, but the disorderly behavior of your disks are worrying"
+
+Husse Aug 5 2007
+%
+"What do you mean with disappear - it's completely closed down or disappeared from the panel or..."
+
+Husse Sept 16 2007
+%
+"This is the kind of hassle you can get into when you install an OS be it Windows or Linux (I could give you some sad stories about installing Windows)"
+
+Husse Sept 18 2007
+%
+"This may be one of the cases when one should use the heavy artillery (have to find the solution in linux again)"
+
+Husse Sept 15 2007
+%
+"You have so many partitions that "crawl all over the place" that I get seriously confused.
+That grub listing is ominous ....."
+
+Husse Sept 16 2007
+%
+"This is "not possible" (of course not - it has happened) but some partition table or MBR or both is seriously screwed up, but I can't tell what to do (in short and simple terms)"
+
+Husse Sept 16 2007
+%
+"I'm also confused about the mentioning of Solaris - that's an ugly beast!"
+
+Husse Sept 16 2007
+%
+"What ever you do - never install windows after linux - the mbr is completely over written"
+
+Husse Sept 23 2007
+%
+"The diversity in Linux is both its strength and its weekness"
+
+Husse Sept 23 2007
+%
+"Do I understand you right that you say that you have to reboot to fix the problems from a reboot"
+
+Husse Sept 7 2007
+%
+"Can be your internet connection
+Or that the nice boys from Southpark are playing with you"
+
+Husse Jul 3 2007
+%
+"And vi is a tricky one - "real men use vi""
+
+Husse Sept 27 2007
+%
+"On the other hand I prefer to see the file I'm changing in case I do something stupid - an old habit - but it's saved my but at times"
+
+Husse Sept 27 2007
+%
+"I definitely don't think you are imagining things"
+
+Husse Sept 24 2007
+%
+"That's an impressive piece of laptop"
+
+Husse Sept 12 2007
+%
+"It seems that your system thinks it has two CD players and gets confused"
+
+Husse Sept 28 2007
+%
+"This shows the importance of not just doing something, but to do it after you think about it and take note of what you do - how often do we not follow that advice"
+
+Husse Sept 28 2007
+%
+"You have a really ugly menu.lst"
+
+Husse Sept 29 2007
+%
+"I'm curious - what do you do with your computer to get mintMenu eat hundreds of MB - I don't think I've ever been above around 300 MB total"
+
+Husse Oct 2 2007
+%
+"Please don't post like that - we don't have crystal balls, neither can we read thoughts.
+If you don't give us some information on what's happening we can't help you"
+
+Husse Oct 3 2007
+%
+"I did a quick search for the printer and most hits were in languages I don't understand"
+
+Husse Oct 3 2007
+%
+"Wifi is a pain in the.... until you get it fixed"
+
+Husse Oct 8 2007
+%
+"Sorry - but this is nonsense and I can't even think of what it means..."
+
+Husse Oct 7 2007
+%
+"One of the few drawbacks with FF I know of is that it is a bit hungry for memory, and when it's eaten enough it gets indigestion....."
+
+Husse Oct 13
+%
+"Fedora is a bit "grumpy" when it comes to grub and such....."
+
+Husse Oct 10 2007
+%
+"I have a vague memory of a solution for you - just have to find it first"
+
+Husse Oct 10 2007
+%
+"I have an immense patience and in the end we will clear things out"
+
+Oct 14 2007
+%
+"It will work (perhaps) but it will swap like hell and be slower than a tired snail"
+
+Husse Oct 16 2007
+%
+"If you still do not find it it's not there"
+
+Husse Oct 18 2007
+%
+"There is a tutorial about it , but oddly I don't find it now"
+
+Husse Oct 21 2007
+%
+"You have made your way to UUID hell"
+
+Husse Oct 20 2007
+%
+"Add fluidsynth to these commands and you'll find it sooner or later - does not hurt to know how to search"
+
+Husse Oct 27 2007
+%
+"Clueless
+I'll have to read this again"
+
+Husse Oct 22 2007
+%
+"Even if I am the main support person here I still am a relative newcomer to Linux, so sometimes I have to take one or two steps more than the "real guru""
+
+Husse Nov 6 2007
+%
+"Well - tell you a secret - I can answer because I make good searches, I find what others don't"
+
+Husse Nov 11 2007
+%
+"Problems like this makes me wonder if I should install some virtualization software and run an instance of Mint in that. I could then destroy that Mint in all kinds of ways"
+
+Husse Nov 12 2007
+%
+"What do you mean? Install Synaptic - it's there from the beginning....."
+
+Husse Nov 18 2007
+%
+"Oh dear
+That's not a happy xorg.conf"
+
+Husse Nov 22 2007
+%
+"it takes time to find a solution and if you find that another application does the job you've solved the problem with less effort"
+
+Husse Nov 23 2007
+%
+"Could you describe what happens better so there's a chance to see when it stops."
+
+Husse Nov 25 2007
+%
+"Hmm I have seen someone else with the same problem, which is one of these "should not happen" things"
+
+Husse Nov 23 2007
+%
+"Hopefully you are experienced enough not to make mistakes such as giving the wrong path to the inf file"
+
+Husse Nov 29 2007
+%
+"You've broken one important rule Never install Windows after you install some other operating system!
+Microsoft don't give a damn about what else is on the disk"
+
+Husse Dec 2 2007
+%
