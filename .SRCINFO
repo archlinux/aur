@@ -1,13 +1,15 @@
 pkgbase = popcorntime-bin
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://popcorntime.io/
 	install = popcorntime.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = libsystemd
+	depends = libnotify
+	depends = desktop-file-utils
 	depends = ttf-liberation
 	depends = gconf
 	depends = nss
@@ -22,7 +24,7 @@ pkgbase = popcorntime-bin
 	source = popcorntime.install
 	source = popcorntime.desktop
 	sha1sums = e0d34c48fb55680f922b62d31121032c744fb183
-	sha1sums = 23ee4387bebeaec41fb5b2d0428dd0ff5d0cad73
+	sha1sums = d2e56426a321faabd316ea0bc89b2fa2fb0dfa48
 	sha1sums = 98cba5c0c979d37e601cc33cf3b562f106427d36
 
 pkgname = popcorntime-bin

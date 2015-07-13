@@ -11,19 +11,19 @@
 pkgname=popcorntime-bin
 pkgver=0.3.8.0
 _pkgver='0.3.8-0'
-pkgrel=4
+pkgrel=5
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('x86_64' 'i686')
 url="http://popcorntime.io/"
 license=('GPL3')
-depends=('libsystemd' 'ttf-liberation' 'gconf' 'nss' 'libxtst' 'gtk2' 'alsa-lib')
+depends=('libsystemd' 'libnotify' 'desktop-file-utils' 'ttf-liberation' 'gconf' 'nss' 'libxtst' 'gtk2' 'alsa-lib')
 optdepends=('net-tools: necessary for the new vpn feature')
 provides=('popcorntime')
 conflicts=('popcorntime')
 options=('!strip')
 install="popcorntime.install"
 sha1sums=('e0d34c48fb55680f922b62d31121032c744fb183'
-            '23ee4387bebeaec41fb5b2d0428dd0ff5d0cad73'
+            'd2e56426a321faabd316ea0bc89b2fa2fb0dfa48'
             '98cba5c0c979d37e601cc33cf3b562f106427d36')
 
 _platform='Linux-64'
