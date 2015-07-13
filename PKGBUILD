@@ -1,4 +1,5 @@
-# Maintainer:   Lucky <archlinux@builds.lucky.li>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Lucky <archlinux@builds.lucky.li>
 
 pkgname=tpacpi-bat-git
 _pkgname="${pkgname%-*}"
