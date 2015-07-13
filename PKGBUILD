@@ -1,36 +1,34 @@
-# $Id: PKGBUILD 232066 2015-02-27 12:29:32Z heftig $
-# Maintainer: Tom Gundersen <teg@jklm.no>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Konstantin Semenov <zemen17@gmail.com>
 
 pkgname=libfprint-vfs0050
+epoch=1
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="Library for fingerprint readers with vfs0050 driver(github.com/zemen/libfprint)"
+pkgdesc="Library for fingerprint readers with vfs0050 driver"
 arch=(i686 x86_64)
-url="http://www.freedesktop.org/wiki/Software/fprint/libfprint"
+url="https://github.com/zemen/libfprint"
 license=(LGPL)
 depends=(libusb nss pixman)
-groups=(fprint)
-options=(!emptydirs)
-source=(http://people.freedesktop.org/~hadess/libfprint-$pkgver.tar.xz vfs0050.patch)
-md5sums=('1e66f6e786348b46075368cc682450a8'
-         '4d6e6d825aac69cc337885b82415a5c7')
+makedepends=(git)
+groups=(fprint-git)
+provides=(libfprint)
+conflicts=(libfprint)
 
-prepare() {
-  cd libfprint-$pkgver
-  patch -Np1 -i $srcdir/vfs0050.patch
-  aclocal
+source=("git+https://github.com/zemen/libfprint.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd libfprint
+  git describe --long --tags 2>/dev/null | sed 's/^v_//;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
 }
 
 build() {
-  cd libfprint-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-static
-  automake
+  cd libfprint
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc --disable-static
   make
 }
 
 package() {
-  cd libfprint-$pkgver
+  cd libfprint
   make DESTDIR="$pkgdir" install
 }
