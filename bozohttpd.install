@@ -1,20 +1,16 @@
 post_install() {
-  if [ ! -f "${pkgdir}"/srv/http/www/index.html ]; then
-    ln -s "${pkgdir}"/srv/http/www/sample_index.html "${pkgdir}/srv/http/www/index.html"
-  fi
-  if [ ! -f "${pkgdir}"/srv/http/www/index.php ]; then
-    ln -s "${pkgdir}"/srv/http/www/sample_index.php "${pkgdir}/srv/http/www/index.php"
-  fi
+	[ ! -f /srv/http/index.html ] && echo "<html><body><h2>Server online.</h2></body></html>" >/srv/http/index.html
+	[ ! -f /srv/http/index.php ] && echo "<?php phpinfo(); ?>" >/srv/http/index.php
 	echo
 	echo "*** USAGE ***"
 	echo
-	echo "Web server root is /srv/http/www ."
-	echo "Use 'systemctl start bozohttpd.service' to start the web server."
-	echo "Instructions on how to enable CGI and PHP support, dir indexing and much more"
-	echo "are in /usr/lib/systemd/system/bozohttpd.service ."
+	echo "'systemctl start bozohttpd.service' starts the web server."
+	echo "Web server root is /srv/http. CGI dir is /usr/lib/cgi-bin."
+	echo "To enable CGI, PHP, and dir indexing"
+	echo "modify /usr/lib/systemd/system/bozohttpd.service ."
 	echo
 }
 
 post_upgrade() {
-    post_install
+	post_install
 }

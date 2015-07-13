@@ -7,13 +7,13 @@ After=network.target
 PIDFile=/run/bozohttpd.pid
 StandardOutput=null
 # Simplest use:
-ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http/www
+ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http
 # Enable directory index:
-#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -X /srv/http/www
+#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -X /srv/http
 # Enable CGI:
-#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -c /srv/http/cgi-bin /srv/http/www
+#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -c /usr/lib/cgi-bin /srv/http
 # Enable PHP and set default to index.php (instead of index.html):
-#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -x index.php -C .php /usr/bin/php-cgi /srv/http/www
+#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -x index.php -C .php /usr/bin/php-cgi /srv/http
 
 [Install]
 WantedBy=multi-user.target
