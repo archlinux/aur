@@ -1,5 +1,0 @@
-1155a1156,1159
-> #define _pcre_ucd_records _pcre_ucd_records_
-> #define _pcre_ucd_stage1  _pcre_ucd_stage1_
-> #define _pcre_ucd_stage2  _pcre_ucd_stage2_
-> #define _pcre_ucp_gentype _pcre_ucp_gentype_
