@@ -1,6 +1,6 @@
 pkgbase = ttf-unifont
 	pkgdesc = TrueType version of the GNU Unifont
-	pkgver = 7.0.06
+	pkgver = 8.0.01
 	pkgrel = 1
 	url = http://unifoundry.com/unifont.html
 	install = ttf-unifont.install
@@ -9,8 +9,8 @@ pkgbase = ttf-unifont
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = http://unifoundry.com/pub/unifont-7.0.06/unifont-7.0.06.tar.gz
-	md5sums = e2f1afb52cbe659384c0764aede3cdbe
+	source = http://unifoundry.com/pub/unifont-8.0.01/unifont-8.0.01.tar.gz
+	md5sums = b813e863f35e0f5f6235e73041c7b1a6
 
 pkgname = ttf-unifont
 
