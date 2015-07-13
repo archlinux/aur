@@ -8,6 +8,7 @@ url="http://www.willuhn.de/products/hibiscus/"
 license=('GPL')
 depends=('jameica-nightly>=2.7')
 makedepends=('unzip')
+conflicts=(hibiscus)
 source=(http://www.willuhn.de/products/hibiscus/releases/nightly/hibiscus-$pkgver-nightly.zip)
 md5sums=('SKIP')
 

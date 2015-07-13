@@ -8,6 +8,7 @@ pkgbase = hibiscus-nightly
 	license = GPL
 	makedepends = unzip
 	depends = jameica-nightly>=2.7
+	conflicts = hibiscus
 	source = http://www.willuhn.de/products/hibiscus/releases/nightly/hibiscus-2.7.0-nightly.zip
 	md5sums = SKIP
 
