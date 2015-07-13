@@ -10,6 +10,7 @@ url='http://git.z3bra.org/cgit.cgi/skroll'
 license=('WTFPL')
 makedepends=('git')
 provides=('skroll')
+conflicts=('skroll')
 source=('git://z3bra.org/skroll')
 md5sums=('SKIP')
 
