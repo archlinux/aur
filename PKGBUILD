@@ -4,7 +4,7 @@
 # Contributor: Simo Leone <neotuli@gmail.com>
 
 pkgname=darcs
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Elegant and powerful distributed revision control system'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('ghc' 'cabal-install')
 options=('strip')
 source=("http://darcs.net/releases/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('52b3db3f7b64a4306585b96af7b5887f62ba54f6e9c3bdbed9b6a18d97f16b36')
+sha256sums=('f1ef65b43780e7593ca1afdae5ecf44ed91d62cc1be360693a52c5ff7b57ee94')
 
 # PKGBUILD functions
 
