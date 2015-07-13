@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libpurple', 'json-glib')
 
 makedepends=('make')
-source=("https://github.com/jgeboski/purple-facebook/releases/download/a34b993324e4/purple-facebook-${pkgver}.tar.gz")
+source=("https://github.com/jgeboski/purple-facebook/releases/download/${pkgver}/purple-facebook-${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
