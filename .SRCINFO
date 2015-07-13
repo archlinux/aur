@@ -1,0 +1,28 @@
+pkgbase = glib2-git
+	pkgdesc = Common C routines used by GTK+ 2.4 and other libs
+	pkgver = 2.43.92.46.gcc287a2
+	pkgrel = 1
+	url = http://git.gnome.org/browse/glib/tree/README.in
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gtk-doc
+	makedepends = git
+	depends = elfutils
+	depends = python
+	provides = glib2=2.43.92.46.gcc287a2
+	conflicts = glib2
+	options = !emptydirs
+	options = !libtool
+	source = glib2-git::git://git.gnome.org/glib
+	source = glib2.sh
+	source = glib2.csh
+	sha256sums = SKIP
+	sha256sums = 9456872cdedcc639fb679448d74b85b0facf81033e27157d2861b991823b5a2a
+	sha256sums = 8d5626ffa361304ad3696493c0ef041d0ab10c857f6ef32116b3e2878ecf89e3
+	sha512sums = SKIP
+	sha512sums = dca2bc74d2013fcb24145ac794eef457aa3213c039e40a1a26ca5017694930768e7c80e334e17a56834549dff6549c781ddd91fae6c7bbb26fdd6a083ad8217a
+	sha512sums = c3899eb7fa5482ce8a35fe02db90fd0f928d50aa7e4365a9529ef35a2dcd1ed86d5a24f6bc5c635ef5b2d95a0ebfebc2bb6bc90404c99f6fb7484ed2fa032c06
+
+pkgname = glib2-git
+
