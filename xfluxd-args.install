@@ -3,10 +3,10 @@ post_install() {
     echo "==> Add xfluxd-args to systemctl if you wish (use the --user option to make it only for you)."
 }
 post_upgrade() {
-	echo "==> THE CONFIG FILE IN '/etc/xfluxd-args.conf' HAS BEEN REPLACED"
-	echo "==> Make sure to reload the daemon in systemctl once you have fixed your settings."
+    echo "==> THE CONFIG FILE IN '/etc/xfluxd-args.conf' HAS BEEN REPLACED"
+    echo "==> Make sure to reload the daemon in systemctl once you have fixed your settings."
 }
 post_remove() {
-	echo "==> Make sure to disable it in systemctl!"
-	echo "==> You may have to remove the config file '/etc/xfluxd-args.conf'"
+    echo "==> Make sure to disable it in systemctl!"
+    echo "==> You may have to remove the config file '/etc/xfluxd-args.conf'"
 }

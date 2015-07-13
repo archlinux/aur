@@ -12,7 +12,7 @@ source=(xfluxd-args.conf xfluxd-args.service)
 install=xfluxd-args.install
 conflicts=('xfluxd' 'auto-xflux')
 md5sums=('edf22f4e3e1bfba14c12967536a9053d'
-		 'c645a1216c2ebc45cedc1e0347b55ce4')
+	 'c645a1216c2ebc45cedc1e0347b55ce4')
 conflicts=('xfluxd')
 
 package() {
