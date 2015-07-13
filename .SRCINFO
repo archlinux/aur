@@ -1,0 +1,15 @@
+pkgbase = python-rpyc
+	pkgdesc = Remote Python Call (RPyC), a transparent and symmetric RPC library
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://rpyc.readthedocs.org
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-plumbum
+	source = https://pypi.python.org/packages/source/r/rpyc/rpyc-3.3.0.tar.gz
+	md5sums = 6931cb92c41f547591b525142ccaeef1
+
+pkgname = python-rpyc
+
