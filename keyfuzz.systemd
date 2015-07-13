@@ -1,0 +1,11 @@
+[Unit]
+Description=Keyboard keycode translation manipulation tool
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/systemd/scripts/keyfuzz start
+ExecReload=/usr/lib/systemd/scripts/keyfuzz reload
+
+[Install]
+WantedBy=multi-user.target

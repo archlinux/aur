@@ -1,0 +1,20 @@
+pkgbase = keyfuzz
+	pkgdesc = A Utility for manipulating the scancode/keycode translation tables of keyboard drivers
+	pkgver = 0.2
+	pkgrel = 9
+	url = http://0pointer.de/lennart/projects/keyfuzz/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = lynx
+	source = keyfuzz-0.2.tar.gz
+	source = keyfuzz.systemd
+	source = logitech_media_keyboard_600.keyfuzz
+	source = support_by_id.patch
+	sha256sums = d3cea89fc0a66e37026a947263f85f2075dbabda017ad60bf3d6a1bb63f56977
+	sha256sums = 231fb0c51d4a0f9d018d84851486c669a0c9a42debf08ce1d27beefcf91e29b3
+	sha256sums = de089c3769996398816f38ce68474be712e15a62a547f7f0e0f44842f7eb0c74
+	sha256sums = 5e1d8910f66053f269576e1fab94592e4df4e452a1a78153253b9df0fc8a129a
+
+pkgname = keyfuzz
+

@@ -1,0 +1,30 @@
+### keyfuzz file for the Logitech Multimedia keyboard 600  special keys
+
+# All keycodes are shifted left by 8.
+
+# Search (244)
+0x9002d 236
+
+# VoIP (245)
+0x90001 237
+
+# Word Proccesing (246)
+0xc0184 238
+
+# Spreadsheet (247)
+0xc0186 239
+
+#Presentation (248)
+0xc0188 240
+
+# a (249)
+0x90049 241
+
+# b (250)
+0x9004a 242
+
+# c (251)
+0x9004b 243
+
+# d (252)
+0x9004c 244

@@ -1,0 +1,21 @@
+--- conf/keyfuzz.init.in.orig	2013-04-24 12:33:52.683242182 +0200
++++ conf/keyfuzz.init.in	2013-04-24 12:37:44.836295270 +0200
+@@ -30,9 +30,15 @@
+         echo -n "Loading input layer scancode tables: "
+         cd "@pkgsysconfdir@"
+         none=1
+-        for E in event? ; do 
+-            if test -r "$E" ; then
+-                "$KEYFUZZ" -s -d "$E" < "$E"
++        for OE in `find -type l -exec basename {} \;` ; do
++            if [[ -n "`echo $OE|egrep '^event'`" ]]; then
++                E=$OE
++            else
++                E=`basename $(readlink /dev/input/by-id/${OE})`
++            fi
++
++            if test -r "$OE" ; then
++                "$KEYFUZZ" -s -d "$E" < "$OE"
+                 echo -n "$E "
+                 none=0
+             fi
