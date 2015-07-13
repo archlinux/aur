@@ -2,12 +2,13 @@
 pkgname=libxaw3dxft 
 _pkgname=libXaw3dXft 
 pkgver=1.6.2c
-pkgrel=1
+pkgrel=2
+epoch=1
 pkgdesc="xaw3d library for xpaint"
 url="http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libxft' 'libxmu')
+depends=('libxft' 'libxmu' 'libxpm')
 makedepends=('xorg-util-macros')
 conflicts=('xaw3d')
 provides=('xaw3d')

@@ -1,7 +1,8 @@
 pkgbase = libxaw3dxft
 	pkgdesc = xaw3d library for xpaint
 	pkgver = 1.6.2c
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 1
 	url = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/
 	arch = i686
 	arch = x86_64
@@ -9,6 +10,7 @@ pkgbase = libxaw3dxft
 	makedepends = xorg-util-macros
 	depends = libxft
 	depends = libxmu
+	depends = libxpm
 	provides = xaw3d
 	conflicts = xaw3d
 	source = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/libXaw3dXft-1.6.2c.tar.bz2
