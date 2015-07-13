@@ -1,0 +1,20 @@
+pkgbase = google-api-python-client
+	pkgdesc = This is the Python client library for Google's discovery based APIs.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/google/google-api-python-client
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	depends = python-uritemplate
+	depends = python-httplib2
+	optdepends = python-pyopenssl
+	optdepends = python-webtest
+	optdepends = pycrypto
+	options = !emptydirs
+	source = google-api-python-client-1.4.1.tar.gz::https://github.com/google/google-api-python-client/archive/v1.4.1.tar.gz
+	sha256sums = 7dfa74cf06834525efc5f77708250d10e41b893f774ae11d9bd8fe77eea8eca0
+
+pkgname = google-api-python-client
+
