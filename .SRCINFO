@@ -1,0 +1,14 @@
+pkgbase = libudev0
+	pkgdesc = Dynamic library to access udev device information, legacy libudev.so.0.
+	pkgver = 182
+	pkgrel = 2
+	url = https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gperf
+	source = https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-182.tar.xz
+	sha256sums = adb8892f3b8e4b7163703ed4a545774721a3d55a1062de001f08c477c03d97ab
+
+pkgname = libudev0
+
