@@ -1,0 +1,13 @@
+pkgbase = pacifica-icon-theme
+	pkgdesc = Pacifica icon theme by bokehlicia
+	pkgver = 31.10.2013
+	pkgrel = 3
+	url = http://bokehlicia.deviantart.com/art/Pacifica-Icons-402508559
+	arch = any
+	license = GPL
+	depends = elementary-icon-theme
+	source = http://fc02.deviantart.net/fs70/f/2013/304/8/5/pacifica_icons_by_bokehlicia-d6nn5lb.zip
+	md5sums = 5a0d03777f06ee79d8de05b3ad669087
+
+pkgname = pacifica-icon-theme
+
