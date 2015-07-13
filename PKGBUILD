@@ -4,7 +4,7 @@
 
 _pkgname=glib2
 pkgname=$_pkgname-git
-pkgver=2.43.92.46.gcc287a2
+pkgver=2.45.3.26.g27fae83
 pkgrel=1
 pkgdesc="Common C routines used by GTK+ 2.4 and other libs"
 arch=(i686 x86_64)

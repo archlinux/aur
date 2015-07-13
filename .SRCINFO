@@ -1,6 +1,6 @@
 pkgbase = glib2-git
 	pkgdesc = Common C routines used by GTK+ 2.4 and other libs
-	pkgver = 2.43.92.46.gcc287a2
+	pkgver = 2.45.3.26.g27fae83
 	pkgrel = 1
 	url = http://git.gnome.org/browse/glib/tree/README.in
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = glib2-git
 	makedepends = git
 	depends = elfutils
 	depends = python
-	provides = glib2=2.43.92.46.gcc287a2
+	provides = glib2=2.45.3.26.g27fae83
 	conflicts = glib2
 	options = !emptydirs
 	options = !libtool
