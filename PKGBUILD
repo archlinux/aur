@@ -1,7 +1,7 @@
 # Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=soundhelix
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=1
 pkgdesc="Tool for creating algorithmic random MIDI music"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("http://downloads.sourceforge.net/project/soundhelix/SoundHelix-"$pkgver
 	"SoundHelix-logo-medium.png"
 	"soundhelix.desktop"
 	)
-md5sums=('80bd37265f951346fbf9e4bbfbad8601'
+md5sums=('7dbe5aee3fca7e2f36db5d37d48c0824'
          '790b82587ddf5c6aab42589fc410250c'
          'eb639d466cb81d1e4ab34fc425538c50'
          '688d5fce1d2304eb476bb6ee5ca591aa')
