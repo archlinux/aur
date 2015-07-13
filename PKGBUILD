@@ -1,6 +1,6 @@
 # Maintainer: Albert Berger < nbdspcl at gmail dot com>
 pkgname=regd-git
-pkgver=v0.6.pre0.r17
+pkgver=VERSION
 pkgrel=1
 pkgdesc="Registry daemon, information cache and secure credential storage."
 arch=('any')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${pkgname%-git}"
 
-	git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
+	git describe
 }
 
 package() {
