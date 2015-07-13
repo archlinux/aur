@@ -1,19 +1,17 @@
 pkgbase = so-synth-lv2-git
-	pkgdesc = LV2 ports of the SO-404, SO-KL5, and SO-666 synthesizers
-	pkgver = 20110609.e7ff3d5
-	pkgrel = 2
+	pkgdesc = Unofficial LV2 ports of 50m30n3's synthesizers
+	pkgver = 1.4.r174.e7ff3d5
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/jeremysalwen/So-synth-LV2
 	arch = i686
 	arch = x86_64
-	groups = lv2-plugins
 	license = GPL3
 	makedepends = git
-	depends = libsigc++
-	depends = gtkmm
 	depends = lv2
 	provides = so-synth-lv2
 	conflicts = so-synth-lv2
-	source = git://github.com/jeremysalwen/So-synth-LV2.git
+	source = so-synth-lv2::git+https://github.com/jeremysalwen/So-synth-LV2.git
 	md5sums = SKIP
 
 pkgname = so-synth-lv2-git
