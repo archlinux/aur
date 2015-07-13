@@ -1,0 +1,12 @@
+pkgbase = ttf-win7-fonts-cjk
+	pkgdesc = Microsoft Windows 7 CJK TrueType Fonts
+	pkgver = 7.1
+	pkgrel = 1
+	url = http://www.microsoft.com
+	install = ttf-win7-fonts-cjk.install
+	arch = any
+	license = custom
+	makedepends = samba
+
+pkgname = ttf-win7-fonts-cjk
+
