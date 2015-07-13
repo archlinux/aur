@@ -1,0 +1,14 @@
+pkgbase = phplint11
+	pkgdesc = PHP 4 and 5 validator and documentator.
+	pkgver = 1.1_20130803
+	pkgrel = 2
+	url = http://www.icosaedro.it/phplint/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gc
+	source = http://www.icosaedro.it/phplint//phplint11-pure-c-1.1_20130803.tar.gz
+	md5sums = 6c7b80444adaa31a5005b1b816d0cfda
+
+pkgname = phplint11
+
