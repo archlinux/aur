@@ -1,0 +1,31 @@
+pkgbase = goldendict-git
+	pkgdesc = Feature-rich dictionary lookup program.
+	pkgver = 1.5.0.RC.487.g043a10c
+	pkgrel = 1
+	url = http://goldendict.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ffmpeg
+	depends = hunspell
+	depends = libao
+	depends = libeb
+	depends = libvorbis
+	depends = libxtst
+	depends = lzo2
+	depends = qt4
+	depends = qtwebkit
+	depends = zlib
+	provides = goldendict
+	conflicts = goldendict
+	conflicts = goldendict-svn
+	conflicts = goldendict-git-opt
+	replaces = goldendict
+	replaces = goldendict-svn
+	replaces = goldendict-git-opt
+	source = git://github.com/goldendict/goldendict.git
+	sha256sums = SKIP
+
+pkgname = goldendict-git
+
