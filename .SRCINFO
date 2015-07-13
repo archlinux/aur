@@ -1,0 +1,14 @@
+pkgbase = eclipse-photran
+	pkgdesc = IDE and refactoring toolfor Fortran based on Eclipse and the CDT
+	pkgver = 8.1
+	pkgrel = 1
+	url = http://www.eclipse.org/photran/
+	arch = any
+	license = custom
+	depends = eclipse>=4.3
+	depends = eclipse-cdt>=8.2.1
+	source = http://mirror.cc.columbia.edu/pub/software/eclipse/tools/ptp/updates/kepler/ptp-master-7.0.3.201308141907.zip
+	sha512sums = b986b12191b91e091c237ebd697d5db2cca4b3fae4d15db669c72e41e6638877d6001aff2e00b19d238f967dfdc39f3a41ae104a84c76fe2ef928750297833f0
+
+pkgname = eclipse-photran
+
