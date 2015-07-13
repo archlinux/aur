@@ -9,13 +9,22 @@
 pkgname=popcorntime
 pkgver=0.3.8.0
 _pkgver=0.3.8-0
-pkgrel=3
+pkgrel=4
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.io/"
 license=('GPL3')
-makedepends=('git' 'nodejs-grunt-cli' 'nodejs-bower')
-depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst')
+makedepends=('git'
+             'nodejs-bower'
+             'nodejs-grunt-cli'
+             'npm')
+depends=('alsa-lib'
+         'gconf'
+         'gtk2'
+         'libnotify'
+         'libxtst'
+         'nss'
+         'ttf-liberation')
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
