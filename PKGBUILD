@@ -20,10 +20,7 @@ conflicts=('rakudo' 'rakudo-moarvm')
 options=('!makeflags')
 source=(http://rakudo.org/downloads/star/$pkgname-$pkgver.tar.gz)
 sha512sums=('SKIP')
-
-prepare() {
-  mkdir -p ~/.rakudostar
-}
+pkgdir="$HOME/.rakudostar"
 
 build() {
   cd "$pkgname-$pkgver"
@@ -34,6 +31,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  cp "$srcdir"/"$pkgname-$pkgver"/install/bin/* ~/.rakudostar
-  sudo ln -sf ~/.rakudostar/* /usr/bin/
+  sudo ln -sf "$srcdir"/"$pkgname-$pkgver"/install/bin/* /usr/bin/
 }
