@@ -1,0 +1,22 @@
+pkgbase = kcm-ufw
+	pkgdesc = KDE4 control module for Ufw(Uncomplicated Firewall)
+	pkgver = 0.4.3
+	pkgrel = 3
+	url = http://kde-apps.org/content/show.php/UFW+KControl+Module?content=137789
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	depends = ufw
+	depends = kdebase-workspace
+	depends = polkit-kde
+	depends = openssl
+	depends = python2
+	source = kcm_ufw-0.4.3.tar.bz2::ftp://ftp.litnet.lt/gentoo/distfiles/kcm_ufw-0.4.3.tar.bz2
+	md5sums = 97de867481948e3f54d76ca3678ffd2e
+
+pkgname = kcm-ufw
+
