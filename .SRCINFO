@@ -1,0 +1,17 @@
+pkgbase = android-google-play-licensing
+	pkgdesc = Google Play Licensing client library
+	pkgver = r02
+	pkgrel = 1
+	url = http://developer.android.com/guide/publishing/licensing.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	replaces = android-google-market-licensing
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/market_licensing-r02.zip
+	source = source.properties
+	sha1sums = 355e8dc304a92a5616db235af8ee7bd554356254
+	sha1sums = e52cbb3f56f3354e6375c7afd01cb886ef91335b
+
+pkgname = android-google-play-licensing
+
