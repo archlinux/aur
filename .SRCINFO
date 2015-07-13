@@ -1,14 +1,14 @@
 pkgbase = bbswitch-lts-ck
 	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-ck
 	pkgver = 0.8
-	pkgrel = 23
+	pkgrel = 25
 	url = http://github.com/Bumblebee-Project/bbswitch
 	install = bbswitch-lts-ck.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = linux-lts-ck-headers=3.14.46
-	depends = linux-lts-ck=3.14.46
+	makedepends = linux-lts-ck-headers=3.14.48
+	depends = linux-lts-ck=3.14.48
 	provides = bbswitch
 	source = https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
 	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
