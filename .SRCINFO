@@ -1,7 +1,7 @@
 pkgbase = uswsusp-git
 	pkgdesc = Userspace software suspend - git checkout
 	pkgver = 0.r501.g668c5f7
-	pkgrel = 6
+	pkgrel = 7
 	url = http://suspend.sourceforge.net/
 	install = uswsusp.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = uswsusp-git
 	makedepends = git
 	depends = libx86
 	depends = lzo2
+	depends = pciutils
 	provides = uswsusp
 	conflicts = uswsusp
 	backup = etc/suspend.conf
@@ -19,12 +20,14 @@ pkgbase = uswsusp-git
 	source = print-no-version.patch
 	source = load-checksum-mismatch.patch
 	source = no-deprecated-switch.patch
+	source = no-inline.patch
 	sha256sums = SKIP
 	sha256sums = 2662d879ca7a2339233c8bdce123f0d686397093759ca54f162a3577603587b0
 	sha256sums = 9fe3e38301014b4c8597aec2041ad3c6d85e6935004cbd3ac93659d391db3157
 	sha256sums = cdf29e41f35469b134bb6421ba109e8398e1f3e88ec4e1d41b015920e420ee44
 	sha256sums = fe8d5c831302125fd92ba6e48cacaf0359925d41de5623be2b8525a0cdf1fcc6
 	sha256sums = d8a4f646d0785adf038830f14564f20ea307a27f225c17eb581a2e4d5e0c8519
+	sha256sums = fc303c78d3ae0794f8a267e9b8b9fec665b7413f396310d1a19efedcd2a1760d
 
 pkgname = uswsusp-git
 

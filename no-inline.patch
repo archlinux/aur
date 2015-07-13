@@ -1,0 +1,69 @@
+diff --git a/bootsplash.c b/bootsplash.c
+index 44b1531..17cc13c 100644
+--- a/bootsplash.c
++++ b/bootsplash.c
+@@ -93,7 +93,7 @@ void bootsplash_switch_to(void)
+ 	}
+ }
+ 
+-inline int bootsplash_progress(int p)
++int bootsplash_progress(int p)
+ {
+ 	char buf[MAX_LINE_SIZE];
+ 
+diff --git a/loglevel.c b/loglevel.c
+index 2213cbf..1cb6d87 100644
+--- a/loglevel.c
++++ b/loglevel.c
+@@ -16,7 +16,7 @@
+ static FILE *printk_file;
+ static int proc_mounted = 0;
+ 
+-inline void open_printk(void)
++void open_printk(void)
+ {
+ 	struct stat stat_buf;
+ 	char *procname = "/proc/sys/kernel/printk";
+@@ -32,7 +32,7 @@ inline void open_printk(void)
+         printk_file = fopen(procname, "r+");
+ }
+ 
+-inline int get_kernel_console_loglevel(void)
++int get_kernel_console_loglevel(void)
+ {
+         int level = -1;
+ 
+@@ -43,7 +43,7 @@ inline int get_kernel_console_loglevel(void)
+         return level;
+ }
+ 
+-inline void set_kernel_console_loglevel(int level)
++void set_kernel_console_loglevel(int level)
+ {
+         if (printk_file) {
+                 rewind(printk_file);
+@@ -53,7 +53,7 @@ inline void set_kernel_console_loglevel(int level)
+ 
+ }
+ 
+-inline void close_printk(void)
++void close_printk(void)
+ {
+         if (printk_file)
+                 fclose(printk_file);
+diff --git a/loglevel.h b/loglevel.h
+index e042ae3..82dee9c 100644
+--- a/loglevel.h
++++ b/loglevel.h
+@@ -4,7 +4,7 @@
+  * (c) 2007 Tim Dijkstra
+  */
+ 
+-inline void open_printk(void);
+-inline int get_kernel_console_loglevel(void);
+-inline void set_kernel_console_loglevel(int level);
+-inline void close_printk(void);
++void open_printk(void);
++int get_kernel_console_loglevel(void);
++void set_kernel_console_loglevel(int level);
++void close_printk(void);
