@@ -9,6 +9,8 @@ url="http://github.com/bboe/update_checker"
 license=('BSD 2-Clause')
 depends=('python-requests')
 makedepends=('git' 'python-setuptools')
+provides=('python-update_checker')
+conflicts=('python-update_checker')
 source=(${pkgname}::'git+https://github.com/bboe/update_checker.git')
 sha256sums=('SKIP')
 

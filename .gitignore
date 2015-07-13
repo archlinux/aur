@@ -1,0 +1,4 @@
+pkg
+src
+python-update_checker-git
+*.pkg.tar.xz
