@@ -1,6 +1,6 @@
 # Maintainer: Harley Wiltzer <harleyw@hotmail.com>
 pkgname=conway-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A conway's game of life player that uses ncurses"
 arch=('x86_64')
@@ -54,7 +54,7 @@ package() {
   if [ ! -d "$HOME/.conway" ]; then
     mkdir "$HOME/.conway"
   fi
-  cp conwaylogo "$HOME/.savant/conwaylogo"
+  cp conwaylogo "$HOME/.conway/conwaylogo"
 #make DESTDIR="${pkgdir}" install
 }
 
