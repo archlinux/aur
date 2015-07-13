@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-protolol-git
+	pkgdesc = A compilation of networking jokes
+	pkgver = 9f59ff8
+	pkgrel = 1
+	url = http://attrition.org/misc/ee/protolol.txt
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = fortune-mod
+	source = git://github.com/virtualtam/fortune-protolol.git
+	sha256sums = SKIP
+
+pkgname = fortune-mod-protolol-git
+
