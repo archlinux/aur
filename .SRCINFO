@@ -1,0 +1,12 @@
+pkgbase = 602xmlfiller
+	pkgdesc = Application for filling in and submitting smart forms (ZFO) or work with form applications on desktop PC environment
+	pkgver = 4.52.0.3_13.0725
+	pkgrel = 1
+	url = http://www.602.eu/form-filler
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = nss
+
+pkgname = 602xmlfiller
+
