@@ -1,0 +1,12 @@
+pkgbase = lib32-libudev.so.0
+	pkgdesc = Creates /usr/lib32/libudev.so.0 -> /usr/lib32/libudev.so symlink
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.dartlang.org/dartium/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = lib32-systemd
+
+pkgname = lib32-libudev.so.0
+
