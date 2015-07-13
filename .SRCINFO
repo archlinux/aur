@@ -1,0 +1,18 @@
+pkgbase = iscore-git
+	pkgdesc = i-score, an interactive sequencer for the intermedia arts
+	pkgver = 0.3a0
+	pkgrel = 1
+	url = http://www.i-score.org
+	arch = x86_64
+	license = CeCILLv2
+	makedepends = git
+	makedepends = cmake
+	depends = jamomacore
+	depends = boost
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-svg
+	provides = i-score
+
+pkgname = iscore-git
+
