@@ -1,13 +1,15 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mpd-notification-git
-pkgver=0.6.0.r3.ge05895b
+pkgver=0.7.0.r0.g14c059a
 pkgrel=1
 pkgdesc='Notify about tracks played by mpd - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/mpd-notification'
 depends=('ffmpeg' 'libnotify' 'libmpdclient' 'gnome-icon-theme')
 makedepends=('git' 'markdown')
+conflicts=('mpd-notification')
+provides=('mpd-notification')
 license=('GPL')
 source=('git://github.com/eworm-de/mpd-notification.git')
 sha256sums=('SKIP')
@@ -22,7 +24,7 @@ pkgver() {
 			"$(git log -1 --format='%h')"
 	else
 		printf '0.r%s.g%s' \
-			"$(git rev-list --count)" \
+			"$(git rev-list --count master)" \
 			"$(git log -1 --format='%h')"
 	fi
 }
