@@ -1,0 +1,15 @@
+pkgbase = libp11
+	pkgdesc = A library implementing a small layer on top of the PKCS11 API
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://www.opensc-project.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = openssl
+	depends = libtool
+	source = http://downloads.sourceforge.net/project/opensc/libp11/libp11-0.2.8.tar.gz
+	sha256sums = a4121015503ade98074b5e2a2517fc8a139f8b28aed10021db2bb77283f40691
+
+pkgname = libp11
+
