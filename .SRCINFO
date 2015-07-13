@@ -1,7 +1,7 @@
 pkgbase = onedrive-fuse-fs-git
-	pkgdesc = Script to mount Microsoft OneDrive (formerly known as SkyDrive) folder as a FUSE filesystem.
-	pkgver = r16.d3061d5
-	pkgrel = 1
+	pkgdesc = Script to mount Microsoft OneDrive folder as a FUSE filesystem
+	pkgver = r17.bbd6a93
+	pkgrel = 2
 	url = https://github.com/mk-fg/onedrive-fuse-fs
 	arch = any
 	license = WTFPL
@@ -12,7 +12,7 @@ pkgbase = onedrive-fuse-fs-git
 	provides = onedrive-fuse-fs
 	conflicts = onedrive-fuse-fs
 	options = !emptydirs
-	source = onedrive-fuse-fs-git::git://github.com/mk-fg/onedrive-fuse-fs.git
+	source = onedrive-fuse-fs-git::git+https://github.com/mk-fg/onedrive-fuse-fs.git
 	md5sums = SKIP
 
 pkgname = onedrive-fuse-fs-git

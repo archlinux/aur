@@ -1,8 +1,10 @@
-# Maintainer: maz-1 <loveayawaka at  gmail dot com>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: maz-1 <loveayawaka at  gmail dot com>
+
 pkgname=onedrive-fuse-fs-git
-pkgver=r16.d3061d5
-pkgrel=1
-pkgdesc="Script to mount Microsoft OneDrive (formerly known as SkyDrive) folder as a FUSE filesystem."
+pkgver=r17.bbd6a93
+pkgrel=2
+pkgdesc="Script to mount Microsoft OneDrive folder as a FUSE filesystem"
 arch=('any')
 url="https://github.com/mk-fg/onedrive-fuse-fs"
 license=('WTFPL')
@@ -11,7 +13,7 @@ makedepends=('git')
 provides=('onedrive-fuse-fs')
 conflicts=('onedrive-fuse-fs')
 options=(!emptydirs)
-source=("$pkgname"::'git://github.com/mk-fg/onedrive-fuse-fs.git')
+source=("$pkgname"::'git+https://github.com/mk-fg/onedrive-fuse-fs.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,10 +23,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  sed -i -e "s|^#!/usr/bin/env python|#!/usr/bin/env python2|" \
-            ./onedrivefs
-  install -Dm 755 ./onedrivefs ${pkgdir}/usr/bin/onedrivefs
-  install -Dm 644 ./COPYING ${pkgdir}/usr/share/doc/${pkgname}/COPYING
-  install -Dm 644 ./README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm755 ./onedrivefs ${pkgdir}/usr/bin/onedrivefs
+  install -Dm644 ./COPYING ${pkgdir}/usr/share/doc/${pkgname}/COPYING
+  install -Dm644 ./README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 }
-
