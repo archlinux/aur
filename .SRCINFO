@@ -1,6 +1,6 @@
 pkgbase = texinfo-svn
 	pkgdesc = GNU documentation system for on-line information and printed output
-	pkgver = 6427
+	pkgver = 6428
 	pkgrel = 1
 	url = http://www.gnu.org/software/texinfo/
 	install = texinfo.install
