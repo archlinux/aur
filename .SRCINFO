@@ -1,0 +1,17 @@
+pkgbase = confmacs
+	pkgdesc = An Emacs configuration switcher.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SShrike/confmacs
+	arch = any
+	license = GPL3
+	makedepends = ruby
+	depends = ruby-thor>=0.19.1
+	depends = ruby-colorize>=0.7.3
+	depends = ruby-highline>=1.7.2
+	noextract = confmacs-0.2.0.gem
+	source = http://rubygems.org/downloads/confmacs-0.2.0.gem
+	md5sums = a7574ba12d9e342feda23cfeb9187ce5
+
+pkgname = confmacs
+
