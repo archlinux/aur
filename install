@@ -1,0 +1,15 @@
+
+post_install() {
+cat << "EOF"
+
+  Activate lua_plugin in teamspeak: Settings->Plugins.
+  Turn off testmodule in settings of lua_plugin. It is not necessary.
+  You can configure font, color, position of overlay by
+  editing /opt/teamspeak3/plugins/lua_plugin/osd/init.lua
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

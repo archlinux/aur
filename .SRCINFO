@@ -1,0 +1,17 @@
+pkgbase = teamspeak3-xosd-overlay
+	pkgdesc = Teamspeak3 overlay for Linux, which uses lua and xosd to output
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://bitbucket.org/l0ser140/teamspeak3-xosd-overlay
+	install = install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = lua
+	depends = teamspeak3
+	depends = xosd
+	source = git+https://bitbucket.org/l0ser140/teamspeak3-xosd-overlay.git
+	md5sums = SKIP
+
+pkgname = teamspeak3-xosd-overlay
+
