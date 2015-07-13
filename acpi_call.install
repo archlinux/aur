@@ -1,0 +1,35 @@
+post_remove() {
+  depmod -a
+}
+
+# arg 1:  the new package version
+post_install() {
+  local newver=${1%%-*}
+  dkms install -m acpi_call -v $newver
+
+  echo ""
+  echo "[+] use the module -> 'modprobe acpi_call'"
+  echo ""
+  echo ">>> run '/usr/bin/turn_off_gpu.sh' to test/view different acpi_call functions to see if it disables your secondary/hybrid video card"
+  echo ">>> FYI: there are a few scripts in '/usr/share/acpi_call/' - some for specific laptops => asus1215n.sh, dellL702X.sh, m11xr2.sh"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  local oldver=${2%%-*}
+  pre_remove $oldver
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  local newver=${1%%-*}
+  post_install $newver
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  local oldver=${1%%-*}
+  dkms remove -m acpi_call -v $oldver --all
+}

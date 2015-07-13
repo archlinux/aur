@@ -1,0 +1,20 @@
+pkgbase = acpi_call-git-dkms
+	pkgdesc = kernel module that enables calls to ACPI methods through /proc/acpi/call. e.g. to turn off discrete graphics card in a dual graphics environment (like NVIDIA Optimus)
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://github.com/mkottman/acpi_call
+	install = acpi_call.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: needed if using archlinux default kernel
+	optdepends = linux-lts-headers: needed if using the archlinux lts kernel
+	provides = acpi_call-git
+	provides = acpi_call
+	source = acpi_call::git://github.com/mkottman/acpi_call.git
+	md5sums = SKIP
+
+pkgname = acpi_call-git-dkms
+
