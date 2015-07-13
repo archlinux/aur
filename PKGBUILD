@@ -1,4 +1,5 @@
-# Maintainer:  TDY <tdy@archlinux.info>
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor:  TDY <tdy@archlinux.info>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 # Contributor: Robert Emil Berge <filoktetes@linuxophic.org>
 
@@ -7,7 +8,7 @@ pkgver=1.1
 pkgrel=10
 pkgdesc="TrueType fonts containing glyphs for the Latin and Greek alphabet"
 arch=('any')
-url="http://www.zvr.gr/typo/mgopen/index"
+url="https://web.archive.org/web/20120409173416/http://www.zvr.gr/typo/mgopen/index"
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 install=ttf.install
