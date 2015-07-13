@@ -33,7 +33,7 @@ build() {
 		git pull
 	)
   else
-    git clone "$_gitroot" "$_gitname" --depth=1
+    git clone "$_gitroot" "$_gitname"
     (
 		cd "$_gitname"
 		git checkout dev
