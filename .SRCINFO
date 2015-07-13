@@ -1,0 +1,25 @@
+pkgbase = gtksourceview3-git
+	pkgdesc = A text widget adding syntax highlighting and more to GNOME
+	pkgver = 3.17.2.2.gb1437e6
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = glade
+	makedepends = gtk-doc
+	makedepends = gnome-common
+	depends = gtk3
+	depends = libxml2
+	depends = glib2
+	provides = gtksourceview3=3.17.3
+	conflicts = gtksourceview3
+	replaces = gtksourceview3
+	options = !libtool
+	source = git://git.gnome.org/gtksourceview
+	sha256sums = SKIP
+
+pkgname = gtksourceview3-git
+
