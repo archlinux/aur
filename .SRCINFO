@@ -1,4 +1,4 @@
-pkgbase = pango
+pkgbase = pango-git
 	pkgdesc = A library for layout and rendering of text
 	pkgver = 1.37.1.3744.65214f2
 	pkgrel = 1
@@ -10,13 +10,13 @@ pkgbase = pango
 	makedepends = gobject-introspection
 	makedepends = libxt
 	makedepends = gtk-doc
-	depends = glib2-git
-	depends = cairo-git
+	depends = glib2
+	depends = cairo
 	depends = libxft
 	depends = libthai
 	depends = freetype2
-	depends = harfbuzz-git
-	depends = fontconfig-git
+	depends = harfbuzz
+	depends = fontconfig
 	provides = pango=1.37.1.3744.65214f2
 	conflicts = pango
 	options = !libtool
