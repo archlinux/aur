@@ -1,0 +1,23 @@
+pkgbase = yeahconsole
+	pkgdesc = YeahConsole turns a terminal into a gamelike console. If you hit a shortcut it slides down from top of the screen.
+	pkgver = 0.3.4
+	pkgrel = 2
+	url = http://phrat.de/yeahtools.html
+	arch = i686
+	arch = x86_64
+	groups = yeahtools
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	optdepends = xterm: yeahconsole needs a terminal
+	optdepends = rxvt-unicode: yeahconsole needs a terminal
+	source = http://phrat.de/yeahconsole-0.3.4.tar.gz
+	source = yeahconsole_c.patch
+	md5sums = 83a2367f9b4857fed02464b0e8a6595a
+	md5sums = d3216231337126dda5e97995e26dd487
+	sha256sums = fcf3481f78a263a70f1cb5163630fc22e78bb0915013eb05689c6f4aeb0583ef
+	sha256sums = d5dfe9143f7e81ad7ca4f9e7ca58d589193c6ece51c3d7ec39da64511497f855
+
+pkgname = yeahconsole
+
