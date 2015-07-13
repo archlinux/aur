@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Yarssr
+Comment=Yet Another RSS Reader
+Categories=GNOME;Application;Network;
+Type=Application
+StartupNotify=true
+Exec=/usr/bin/yarssr
+Icon=/usr/share/yarssr/pixmaps/paper_grey.xpm
+X-GNOME-Autostart-enabled=true
