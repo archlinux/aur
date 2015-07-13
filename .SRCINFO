@@ -1,0 +1,14 @@
+pkgbase = python2-esky
+	pkgdesc = keep frozen apps fresh
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/esky/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/e/esky/esky-0.9.8.tar.gz
+	md5sums = 8e09b27df237927b09e59af396c6098c
+
+pkgname = python2-esky
+
