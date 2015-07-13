@@ -1,0 +1,18 @@
+pkgbase = xwinfo-git
+	pkgdesc = Print window informations
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/baskerville/xwinfo
+	arch = i686
+	arch = x86_64
+	license = custom:Unlicense
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util-wm
+	provides = xwinfo
+	conflicts = xwinfo
+	source = git://github.com/baskerville/xwinfo.git
+	md5sums = SKIP
+
+pkgname = xwinfo-git
+
