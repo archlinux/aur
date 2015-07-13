@@ -1,0 +1,16 @@
+pkgbase = viennacl
+	pkgdesc = The library provides high level C++ interfaces for linear algebra routines on CPUs and GPUs using CUDA, OpenCL and OpenMP.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = http://viennacl.sourceforge.net/
+	arch = any
+	license = custom
+	depends = libcl
+	depends = opencl-headers
+	optdepends = cuda
+	optdepends = opencl-nvidia
+	source = http://iweb.dl.sourceforge.net/project/viennacl/1.6.x/ViennaCL-1.6.2.tar.gz
+	sha512sums = 70855a0bf28fa6f2389f7f1f7e3aa1824913124a62edd98524e6b9818804eec1e4565eab9722dc5e6ccf86b2b60a78b414d856b7c2ad02ed196c895b71e8b637
+
+pkgname = viennacl
+
