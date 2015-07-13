@@ -1,0 +1,21 @@
+pkgbase = osmose
+	pkgdesc = A Sega Master System / Gamegear console emulator
+	pkgver = 0.9.96
+	pkgrel = 4
+	url = http://bcz.asterope.fr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = qt4
+	source = http://bcz.asterope.fr/osmose/Osmose-0-9-96-QT.zip
+	source = osmose.desktop
+	source = osmose.png
+	source = osmose.patch
+	md5sums = 256b393d83270620e98f39e0cfb11359
+	md5sums = 8189b6d17735eab45cace7723eb574f7
+	md5sums = ed9aed5b68cbe81bc69ede1893958750
+	md5sums = 403cc66c15528d75615f4f2cf3438873
+
+pkgname = osmose
+

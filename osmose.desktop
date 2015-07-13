@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Osmose
+GenericName=A Sega Master System emulator
+Exec=osmose
+Icon=/usr/share/pixmaps/osmose.png
+Type=Application
+Categories=System;Emulator;
+Encoding=UTF-8
+
+
