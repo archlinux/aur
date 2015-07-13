@@ -1,0 +1,14 @@
+pkgbase = pfqueue
+	pkgdesc = A console-based program to handle MTA (postfix,exim) queues interactively
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://pfqueue.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://downloads.sourceforge.net/pfqueue/pfqueue-0.5.6.tar.gz
+	md5sums = ff3fbcc39b39112f123b93df579998b8
+
+pkgname = pfqueue
+
