@@ -1,0 +1,16 @@
+# arg 1:  the new package version
+post_install() {
+  echo -n "Updating font cache... "
+  fc-cache -f > /dev/null
+  echo "done."
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+$op $*

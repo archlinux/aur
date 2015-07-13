@@ -1,0 +1,15 @@
+pkgbase = maitreya
+	pkgdesc = A free software for Vedic and western astrology
+	pkgver = 7.1
+	pkgrel = 1
+	url = http://www.saravali.de/maitreya/index.html
+	install = maitreya.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wxgtk
+	source = http://saravali.de/downloads/7.1/maitreya-7.1.tar.bz2
+	md5sums = 95e4e103a8c592b625d3a2236675b323
+
+pkgname = maitreya
+
