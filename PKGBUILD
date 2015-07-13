@@ -37,9 +37,7 @@ build() {
     (
 		cd "$_gitname"
 		git checkout dev
-		git submodule update --init --depth=1 -- Core
-		cd Core
-		git checkout dev
+		git submodule update --init -- Core
     )
   fi
 
