@@ -5,11 +5,14 @@ pkgbase = python-rpyc
 	url = http://rpyc.readthedocs.org
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python
-	depends = python-plumbum
 	source = https://pypi.python.org/packages/source/r/rpyc/rpyc-3.3.0.tar.gz
 	md5sums = 6931cb92c41f547591b525142ccaeef1
 
 pkgname = python-rpyc
+	depends = python
+	depends = python-plumbum
+
+pkgname = python2-rpyc
+	depends = python2
+	depends = python2-plumbum
 
