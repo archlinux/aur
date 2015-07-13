@@ -1,0 +1,14 @@
+pkgbase = sqm-scripts-git
+	pkgdesc = A set of scripts that does simple SQM configuration.
+	pkgver = r17.64aa83c
+	pkgrel = 1
+	url = https://github.com/tohojo/sqm-scripts
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = iproute2
+	source = sqm-scripts-git::git+https://github.com/tohojo/sqm-scripts.git
+	sha1sums = SKIP
+
+pkgname = sqm-scripts-git
+

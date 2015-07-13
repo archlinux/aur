@@ -1,0 +1,5 @@
+pkg
+src
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+sqm-scripts-git
