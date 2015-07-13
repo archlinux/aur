@@ -4,7 +4,7 @@
 pkgname=visit
 pkgver=2.9.2
 _pkgver=2_9_2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -13,7 +13,7 @@ license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
 depends=('qtwebkit' 'python2-numpy'
          'gperftools' 'icet' 'java-environment'
-         'vtk' 'silo' 'libcgns-paraview')
+         'vtk' 'silo' 'cgns')
 conflicts=('visit-bin' 'visit-build')
 source=("${_url}/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"

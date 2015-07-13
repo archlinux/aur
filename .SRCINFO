@@ -1,7 +1,7 @@
 pkgbase = visit
 	pkgdesc = Interactive parallel visualization and graphical analysis tool.
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wci.llnl.gov/simulation/computer-codes/visit
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = visit
 	depends = java-environment
 	depends = vtk
 	depends = silo
-	depends = libcgns-paraview
+	depends = cgns
 	conflicts = visit-bin
 	conflicts = visit-build
 	options = !emptydirs
