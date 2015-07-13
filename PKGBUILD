@@ -18,7 +18,7 @@ options=('!libtool' 'strip' 'debug')
 
 source=("git+git://git.gnome.org/pango" "pango.install")
 
-sha256sums=("SKIP" "f1e5094509e01a9eeefd29830e8be7c8b9fab4eafccd4daac4cd50c9a811c992")
+sha256sums=("SKIP" "1e69feead9d9e5a76e7e0dc1b3da3b8938f65f58c02449478900559be50e9ac7")
 
 subver() {
   PREFIX="m4_define(\[pango_version_$1\], \["
