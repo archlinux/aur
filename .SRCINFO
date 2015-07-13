@@ -1,0 +1,15 @@
+pkgbase = gnome-common-git
+	pkgdesc = Common development macros for GNOME
+	pkgver = 3.14.0.r12.4363223
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = gnome-common
+	conflicts = gnome-common
+	source = git://git.gnome.org/gnome-common
+	sha256sums = SKIP
+
+pkgname = gnome-common-git
+
