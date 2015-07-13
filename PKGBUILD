@@ -29,6 +29,9 @@ package() {
   _reloc usr/sbin   usr/bin
 
   ln -s /opt/dell/srvadmin/bin/idracadm7 "$pkgdir/usr/bin/racadm"
+
+  msg2 "Removing crud"
+  rm -f "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
 }
 
 _reloc() {
