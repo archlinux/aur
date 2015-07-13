@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="RMagick is an interface between the Ruby programming language and the ImageMagick image processing library"
 arch=('i686' 'x86_64')
 url='https://github.com/rmagick/rmagick'
-license=('GPL')
+license=('MIT')
 depends=('ruby>=1.8.5' 'imagemagick>=6.4.9')
 #source=("https://github.com/rmagick/rmagick/archive/RMagick_${pkgver//./-}.tar.gz")
 source=("https://rubygems.org/downloads/rmagick-$pkgver.gem")
