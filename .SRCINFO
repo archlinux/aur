@@ -1,7 +1,7 @@
 pkgbase = paccache
 	pkgdesc = serve pacman cache and redirect via avahi service
-	pkgver = 0.1.14
-	pkgrel = 2
+	pkgver = 0.1.15
+	pkgrel = 1
 	url = https://github.com/eworm-de/paccache
 	install = paccache.install
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = paccache
 	replaces = pacserve
 	backup = etc/pacredir.conf
 	backup = etc/pacman.d/paccache
-	source = http://www.eworm.de/download/paccache/paccache-0.1.14.tar.xz
-	source = http://www.eworm.de/download/paccache/paccache-0.1.14.tar.xz.asc
-	sha256sums = b6ebbbc9d2ce12798a1e6ad4bc448a95b47787a2c4d4e42e0fa677908a74fd83
+	source = http://www.eworm.de/download/paccache/paccache-0.1.15.tar.xz
+	source = http://www.eworm.de/download/paccache/paccache-0.1.15.tar.xz.asc
+	sha256sums = a5e6b22ef20bec30453013af0a1b4be9285abb8fb2ab5428befd6f44cc2057c9
 	sha256sums = SKIP
 
 pkgname = paccache
