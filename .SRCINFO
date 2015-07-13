@@ -1,7 +1,7 @@
 pkgbase = libdockapp
 	pkgdesc = Library that provides a framework for developing dockapps.
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://windowmaker.org/dockapps/?name=libdockapp
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libdockapp
 	depends = libxpm
 	options = !libtool
 	source = libdockapp-0.6.4.tar.gz::http://windowmaker.org/dockapps/?download=libdockapp-0.6.4.tar.gz
-	md5sums = 6e9a5d68f329564bce9d1743dc90672e
+	md5sums = SKIP
 
 pkgname = libdockapp
 
