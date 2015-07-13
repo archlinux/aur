@@ -1,0 +1,15 @@
+pkgbase = eclipse-bibsonomy
+	pkgdesc = This texlipse extension adds Bibsonomy support for Eclipse.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://texlipse.sourceforge.net/
+	arch = any
+	license = EPL
+	depends = eclipse>=3.3
+	depends = texlive-core
+	depends = texlipse
+	source = http://gforge.cs.uni-kassel.de/frs/download.php/84/org.bibsonomy.texlipseextension_0.1.1.jar
+	sha256sums = 8e1b7ba71d6e55c3e7e84cb2059b8f1182e4491088df634758cfef0694c49aa8
+
+pkgname = eclipse-bibsonomy
+
