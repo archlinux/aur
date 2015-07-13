@@ -1,0 +1,14 @@
+post_install() {
+  if [ ! -d /usr/share/licenses/libsmi ] 
+    then
+      mkdir /usr/share/licenses/libsmi
+  fi
+
+  if [ ! -f /usr/share/licenses/libsmi/LICENSE ] 
+  then 
+    cp LICENSE /usr/share/licenses/libsmi/LICENSE
+  fi
+
+}
+
+# vim:set ts=2 sw=2 et:
