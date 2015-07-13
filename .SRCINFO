@@ -1,0 +1,16 @@
+pkgbase = gnome-directory-thumbnailer
+	pkgdesc = A GNOME thumbnailer utility that will generate a thumbnail for a directory
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://wiki.gnome.org/GnomeDirectoryThumbnailer
+	arch = any
+	license = LGPL2.1
+	makedepends = glib2
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	depends = gnome-desktop
+	source = http://ftp.acc.umu.se/pub/GNOME/sources/gnome-directory-thumbnailer/0.1/gnome-directory-thumbnailer-0.1.6.tar.xz
+	md5sums = dac98a3becbc71015a927fa3a1621038
+
+pkgname = gnome-directory-thumbnailer
+
