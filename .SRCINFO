@@ -1,0 +1,17 @@
+pkgbase = android-google-play-apk-expansion
+	pkgdesc = Google Play APK Expansion library
+	pkgver = r03
+	pkgrel = 1
+	url = http://developer.android.com/guide/google/play/expansion-files.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	replaces = android-google-market-apk-expansion
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/market_apk_expansion-r03.zip
+	source = source.properties
+	sha1sums = 5305399dc1a56814e86b8459ce24871916f78b8c
+	sha1sums = 9c3a0dd44d86244e5d2ba7940117778eb8036b33
+
+pkgname = android-google-play-apk-expansion
+
