@@ -1,8 +1,11 @@
 pkgbase = perl-unicode-string
 	pkgdesc = String of Unicode characters for perl (UCS2/UTF16)
 	pkgver = 2.09
-	pkgrel = 8
+	pkgrel = 9
 	url = http://search.cpan.org/dist/Unicode-String/
+	arch = arm
+	arch = armv6h
+	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic

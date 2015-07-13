@@ -5,9 +5,9 @@
 pkgname=perl-unicode-string
 _realname=Unicode-String
 pkgver=2.09
-pkgrel=8
+pkgrel=9
 pkgdesc="String of Unicode characters for perl (UCS2/UTF16)"
-arch=('i686' 'x86_64')
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('PerlArtistic')
 url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl')
