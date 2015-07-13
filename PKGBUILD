@@ -7,12 +7,12 @@
 
 pkgname=paraview
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qtwebkit' 'openmpi' 'python2' 'ffmpeg-compat' 'boost' 'libcgns-paraview'
+depends=('qtwebkit' 'openmpi' 'python2' 'ffmpeg-compat' 'boost' 'cgns'
 	 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib')
 makedepends=('cmake' 'mesa')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'

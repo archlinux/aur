@@ -1,7 +1,7 @@
 pkgbase = paraview
 	pkgdesc = Parallel Visualization Application using VTK
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.paraview.org
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = paraview
 	depends = python2
 	depends = ffmpeg-compat
 	depends = boost
-	depends = libcgns-paraview
+	depends = cgns
 	depends = expat
 	depends = freetype2
 	depends = hdf5
