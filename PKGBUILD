@@ -4,7 +4,7 @@
 pkgname=nvidia-lts310-ck
 pkgver=352.21
 _extramodules=extramodules-3.10-lts310-ck
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux-lts310-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
