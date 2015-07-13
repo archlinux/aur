@@ -1,0 +1,28 @@
+pkgbase = curlew
+	pkgdesc = Easy to use, Free and Open-Source Multimedia converter for Linux in Python
+	pkgver = 0.2.0_beta
+	pkgrel = 1
+	url = http://sourceforge.net/projects/curlew/
+	install = curlew.install
+	arch = i686
+	arch = x86_64
+	license = Waqf GPL
+	makedepends = intltool
+	makedepends = librsvg
+	depends = python>=3.3
+	depends = ffmpeg>=0.8
+	depends = ffmpeg-compat
+	depends = python-gobject>=3.10
+	depends = hicolor-icon-theme
+	depends = mencoder
+	depends = gobject-introspection
+	depends = xdg-utils
+	depends = python-xdg
+	depends = python-dbus
+	depends = mediainfo
+	optdepends = curl: Aurploader support
+	source = http://sourceforge.net/projects/curlew/files/curlew-0.2.0_beta/curlew-0.2.0_beta.tar.gz/download
+	sha256sums = 5f18e94e0ce2e5df89acc057fb8cd6a035b795566c79353cc29d7668c2af97a1
+
+pkgname = curlew
+
