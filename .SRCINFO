@@ -1,6 +1,6 @@
 pkgbase = drumgizmo-git
 	pkgdesc = an open source cross-platform drum plugin and stand-alone application (lv2)
-	pkgver = 0.9.8.1.r20.g2699cb7
+	pkgver = 0.9.8.1.r22.ga611e1e
 	pkgrel = 1
 	url = http://www.drumgizmo.org
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = drumgizmo-git
 	depends = jack
 	depends = libao
 	depends = qt4
+	depends = zita-resampler
 	provides = drumgizmo
 	conflicts = drumgizmo
 	source = drumgizmo::git+http://git.drumgizmo.org/drumgizmo.git
