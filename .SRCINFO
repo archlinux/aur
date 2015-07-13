@@ -1,0 +1,16 @@
+pkgbase = plymouth-theme-ozunity-gnomish
+	pkgdesc = Oz Unity plymouth splash with GNOME background
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ryanvade/plymouth-theme-ozunity-gnomish/
+	install = plymouth-ozunity-gnomish.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = plymouth-theme-ozunity-gnomish::git+https://github.com/ryanvade/plymouth-theme-ozunity-gnomish.git
+	source = plymouth-ozunity-gnomish.install
+	md5sums = SKIP
+	md5sums = 9198d4d882bd91a48766d26783a6f9c3
+
+pkgname = plymouth-theme-ozunity-gnomish
+
