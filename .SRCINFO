@@ -1,0 +1,18 @@
+pkgbase = perl-file-keepass
+	pkgdesc = Interface to KeePass V1 and V2 database files
+	pkgver = 2.03
+	pkgrel = 3
+	url = http://search.cpan.org/dist/File-KeePass
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-crypt-rijndael
+	depends = perl-digest-sha
+	depends = perl-xml-parser
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RH/RHANDOM/File-KeePass-2.03.tar.gz
+	sha256sums = c30c688027a52ff4f58cd69d6d8ef35472a7cf106d4ce94eb73a796ba7c7ffa7
+
+pkgname = perl-file-keepass
+
