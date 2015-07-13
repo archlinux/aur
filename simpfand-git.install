@@ -1,0 +1,26 @@
+post_install() {
+  cat << _EOF
+
+  Simpfand can only work if you have enabled the
+  fan control option in the thinkpad_acpi module.
+  Create a file in /etc/modprobe.d/ and append:
+
+  options thinkpad_acpi fan_control=1
+
+  An example config file is located in:
+  /usr/share/doc/simpfand/simpfand.conf
+
+_EOF
+}
+
+post_upgrade() {
+  cat << _EOF
+
+  Simpfand expects a config file in:
+
+    /etc/simpfand.conf
+
+  An _updated_ example config file is located in:
+  /usr/share/doc/simpfand/simpfand.conf
+_EOF
+}
