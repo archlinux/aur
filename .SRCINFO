@@ -1,7 +1,7 @@
 pkgbase = java-gnome
 	pkgdesc = Java bindings to the GNOME platform (including gtk, glib and glade)
 	pkgver = 4.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://java-gnome.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,11 @@ pkgbase = java-gnome
 	depends = libunique3
 	depends = libnotify
 	depends = enchant
+	depends = gtkspell3
 	source = http://ftp.gnome.org/pub/gnome/sources/java-gnome/4.1/java-gnome-4.1.3.tar.xz
+	source = jdk8-javadoc_disable-doclint.patch
 	sha256sums = 060b2b249bad918b91a55a82b8a2ed085bec5734defaf31e6c8c5ad006532373
+	sha256sums = baee2777041531b6e6ce9e2b176ed27f89afe2c35f5f913ba377d7027d6dc039
 
 pkgname = java-gnome
 
