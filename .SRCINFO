@@ -1,0 +1,19 @@
+pkgbase = parcimonie-sh-git
+	pkgdesc = Bash reimplementation of parcimonie - Refresh your GnuPG keyring without disclosing your whole contact list to the world
+	pkgver = 45.d7d83f0
+	pkgrel = 1
+	url = https://github.com/EtiennePerot/parcimonie.sh
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = bash
+	depends = torsocks
+	depends = tor
+	depends = gnupg
+	source = git://perot.me/parcimonie.sh
+	source = pgp-key::https://perot.me/pgp-minimal.asc
+	sha512sums = SKIP
+	sha512sums = 0f473fb9b853803570c8213eecbdf43f672cc55c6f39c59c9801b70bbdf33cddb7aedf44c0fc0fef632460c6325157dbf31d1043891ff186d2d064703f0fe97e
+
+pkgname = parcimonie-sh-git
+
