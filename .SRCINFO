@@ -1,0 +1,28 @@
+pkgbase = emacs-lucid
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
+	pkgver = 24.5
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/emacs.html
+	install = emacs.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = librsvg
+	depends = gpm
+	depends = giflib
+	depends = libxpm
+	depends = libotf
+	depends = m17n-lib
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = alsa-lib
+	depends = imagemagick
+	depends = gnutls
+	depends = libxaw
+	provides = emacs
+	conflicts = emacs
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
+	md5sums = 50560ee00bac9bb9cf0e822764cd0832
+
+pkgname = emacs-lucid
+
