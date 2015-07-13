@@ -1,22 +1,20 @@
 # Maintainer: balwierz <my user name at the most popular google email service>
 pkgbase=cura
 pkgname=cura
-pkgver=15.06.01
+pkgver=15.04
 pkgrel=1
-pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker. This package contains both the binary Cura engine and the python front-end."
+pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('python2' 'wxpython' 'python2-opengl' 'python2-pyserial' 'python2-numpy' 'python2-power-git')
 provides=('cura')
-#replaces=('cura')
-#conflicts=('cura')
 url="https://github.com/daid/Cura"
 license=('AGPLv3')
-arch=('x86_64')
+arch=('i686' 'x86_64')
 if [ "$CARCH" == x86_64 ]; then
-	source+=(http://software.ultimaker.com/15.06/Cura-${pkgver}-Linux.deb)
-	sha1sums+=('51f46906e7c0ea51941198bd66bbf29cbdb09af2')
-#elif [ "$CARCH" == i686 ]; then
-#	source+=(http://software.ultimaker.com/current/cura_${pkgver}-debian_i386.deb)
-#	sha1sums+=('e18e5bd4bd72e2af8d97102aea5ecaaf4e93e856')
+	source+=(http://software.ultimaker.com/current/cura_${pkgver}-debian_amd64.deb)
+	sha1sums+=('16ebec62f0811a2cc1d7562b5d7d5bdd35f9ea54')
+elif [ "$CARCH" == i686 ]; then
+	source+=(http://software.ultimaker.com/current/cura_${pkgver}-debian_i386.deb)
+	sha1sums+=('e18e5bd4bd72e2af8d97102aea5ecaaf4e93e856')
 fi
 
 install=.install
