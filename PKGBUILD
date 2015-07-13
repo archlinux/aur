@@ -3,19 +3,17 @@
 
 pkgname=linuxptp-git
 pkgver=1.5.r13.g572438b
-pkgrel=1
-pkgdesc="An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux."
-arch=(i686 x86_64)
-url="http://linuxptp.sourceforge.net/"
+pkgrel=2
+pkgdesc='An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.'
+arch=('i686' 'x86_64')
+url='http://linuxptp.sourceforge.net/'
 license=('GPL')
 depends=('glibc')
 makedepends=()
 provides=('linuxptp')
 conflicts=('linuxptp')
-source=("$pkgname::git+http://git.code.sf.net/p/linuxptp/code"
-	"prefix.patch")
-md5sums=("SKIP"
-	 "05922d53987cc15eb273e0bb9152fe1d")
+source=("$pkgname::git+http://git.code.sf.net/p/linuxptp/code")
+md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -29,5 +27,5 @@ build() {
 
 package() {
   cd $pkgname
-  make prefix="${pkgdir}/usr" mandir='$(prefix)/share/man' man8dir='$(mandir)/man8' install
+  make prefix="${pkgdir}/usr" sbindir='$(prefix)/bin' mandir='$(prefix)/share/man' man8dir='$(mandir)/man8' install
 }
