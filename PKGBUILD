@@ -1,7 +1,7 @@
 #Maintainer truh <truhgoj[äT]truh(O)in>
 
 pkgname=flappycoin-qt
-pkgver=4.0.1.0
+pkgver=4.0.2.0
 pkgrel=1
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ source=("https://github.com/FlappycoinDEV/flappycoin/archive/${pkgver}.zip"
         "flappycoin.desktop")
 install=flappycoin.install
 
-sha512sums=('a2b8dfba02ebca06180a70aece3ab2e179005656843841f085cdcbde3417e6cc57cf73bbba09daf35911a039742e494a548e4783502b30425969a6fa02c996e0'
+sha512sums=('2873ba2deff68c15431658e756dbeb496809a7b015330f9dd731e00c54b1c40f871960af3c8846cf87b8176d9134d0156816f141abd24ca5df79497c6686379f'
             '166004f5dfbbfc1e389140f9b26f9d7a17b300642338db458045d0bbfe07caeaee4723812cdb9177cdc3fa63505582d7fb7de5af5c7c276146765948310c9bb1')
 
 ## files & commands for building
