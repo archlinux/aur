@@ -9,7 +9,7 @@ license=('custom')
 depends=('glibc')
 options=('!strip')
 install=${pkgname}.install
-source=(https://www.norsys.com/downloads/NeticaAPI_Linux_${pkgver}.zip)
+source=(https://www.norsys.com/downloads/NeticaAPI_Linux_504.zip)
 sha256sums=('56fc10c6eafbd6d2d82b41c6f1640704b0152b06014834eb815203d0a705f98e')
 
 package() {

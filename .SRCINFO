@@ -1,6 +1,6 @@
 pkgbase = libnetica
 	pkgdesc = Probabilistic graphical model software to work with Bayesian networks
-	pkgver = 504
+	pkgver = 5.04
 	pkgrel = 1
 	url = norsys.com
 	install = libnetica.install
