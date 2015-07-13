@@ -8,6 +8,7 @@ pkgbase = jameica-nightly
 	license = GPL
 	makedepends = unzip
 	depends = java-runtime>=1.6
+	conflicts = jameica
 	source = http://www.willuhn.de/products/jameica/releases/nightly/jameica-2.7.0-nightly-linux64.zip
 	source = jameica.desktop
 	md5sums = SKIP

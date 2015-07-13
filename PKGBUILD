@@ -8,6 +8,7 @@ url="http://www.willuhn.de/products/jameica/"
 license=('GPL')
 depends=('java-runtime>=1.6')
 makedepends=('unzip')
+conflicts=(jameica)
 source=("http://www.willuhn.de/products/jameica/releases/nightly/jameica-$pkgver-nightly-linux64.zip" "jameica.desktop")
 md5sums=('SKIP'
          'c5915975edcf2ef695f57e93983ebbe6')
