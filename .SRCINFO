@@ -1,0 +1,14 @@
+pkgbase = python2-universal-analytics-python
+	pkgdesc = Universal Analytics Python Module
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/universal-analytics-python/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/u/universal-analytics-python/universal-analytics-python-0.2.4.tar.gz
+	md5sums = 20982cc84a974ddfeb628fbba8284907
+
+pkgname = python2-universal-analytics-python
+
