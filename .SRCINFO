@@ -1,0 +1,15 @@
+pkgbase = hibiscus-nightly
+	pkgdesc = Hibiscus Plugin for Jameica Plattform
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = http://www.willuhn.de/products/hibiscus/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = jameica-nightly>=2.7
+	source = http://www.willuhn.de/products/hibiscus/releases/nightly/hibiscus-2.7.0-nightly.zip
+	md5sums = SKIP
+
+pkgname = hibiscus-nightly
+
