@@ -13,7 +13,7 @@ source=(https://www.norsys.com/downloads/NeticaAPI_Linux_504.zip)
 sha256sums=('56fc10c6eafbd6d2d82b41c6f1640704b0152b06014834eb815203d0a705f98e')
 
 package() {
-	cd "Netica_API_$pkgver"
+	cd "Netica_API_504"
 
 	# install netica-c api
 	install -d "$pkgdir"/opt/norsys/netica-c/
