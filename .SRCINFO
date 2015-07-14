@@ -1,0 +1,17 @@
+pkgbase = pngout
+	pkgdesc = Lossless PNG compressor
+	pkgver = 20150319
+	pkgrel = 1
+	url = http://www.jonof.id.au/kenutils
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
+	source = pngout.completion
+	source = LICENSE
+	md5sums = a48761bb753622c846b4846be60c7e4b
+	md5sums = 99a75d19ff6278f04c66358ce67e8eed
+	md5sums = 6aca04829b82718d2cb26c9b45f9a570
+
+pkgname = pngout
+
