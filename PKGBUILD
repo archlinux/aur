@@ -8,10 +8,10 @@ pkgdesc="gEDA/gaf suite - Contains gschem, gnetlist, gsymcheck, gattrib, utiliti
 arch=('i686' 'x86_64')
 url="http://www.geda-project.org/"
 license=('GPL')
-depends=('gtk2' 'guile' 'libstroke' 'shared-mime-info' 'hicolor-icon-theme')
+depends=('gtk2' 'guile' 'libstroke' 'desktop-file-utils')
 makedepends=('git' 'autoconf' 'automake' 'pkgconfig' 'flex' 'gawk')
 optdepends=('python2: for two of the commands (garchive, tragesym)'
-  'gawk: for sw2asc')
+            'gawk: for sw2asc')
 provides=('geda-gaf')
 conflicts=('geda-gaf')
 install=geda-gaf.install
