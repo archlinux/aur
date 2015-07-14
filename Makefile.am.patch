@@ -1,0 +1,38 @@
+--- ../apertium-fr-ca-1.0.2/Makefile.am	2009-03-12 20:49:44.000000000 +0100
++++ apertium-fr-ca-1.0.2/Makefile.am	2010-09-15 15:49:32.000000000 +0200
+@@ -48,7 +48,7 @@
+ 	apertium-validate-transfer $(BASENAME).$(PREFIX1).t1x
+ 	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t1x \
+ 	                             $(PREFIX1).t1x.bin
+-	                             
++
+ $(PREFIX2).t1x.bin: $(BASENAME).$(PREFIX2).t1x
+ 	apertium-validate-transfer $(BASENAME).$(PREFIX2).t1x
+ 	apertium-preprocess-transfer $(BASENAME).$(PREFIX2).t1x \
+@@ -64,12 +64,12 @@
+            $(PREFIX1)-supervised.make $(PREFIX1)-unsupervised.make \
+            $(PREFIX2)-supervised.make $(PREFIX2)-unsupervised.make \
+            $(LANG1)-tagger-data/README $(LANG2)-tagger-data/README
+-           
++
+ apertium-fr-ca.fr.dix: apertium-fr-ca.fr.metadix
+ 	@xsltproc buscaPar.xsl apertium-fr-ca.fr.metadix | uniq > $$gen.xsl
+ 	@xsltproc $$gen.xsl apertium-fr-ca.fr.metadix >$@
+ 	@rm $$gen.xsl
+-           
++
+ apertium_fr_cadir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_fr_modesdir=$(prefix)/share/apertium/modes/
+ 
+@@ -91,8 +91,8 @@
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_fr_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_fr_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t1x $(BASENAME).$(PREFIX1).t1x $(apertium_fr_cadir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_fr_modesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_fr_modesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t1x $(BASENAME).$(PREFIX1).t1x $(DESTDIR)$(apertium_fr_cadir)
+ 
+ CLEANFILES = -rf $(TARGETS) modes $(BASENAME).$(LANG1).dix *.mode

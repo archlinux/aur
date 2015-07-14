@@ -1,0 +1,21 @@
+pkgbase = apertium-fr-ca
+	pkgdesc = Apertium language data for the French-Catalan translator.
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-fr-ca-1.0.2.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = f04cb595c342a623a5d17cd1f5bfa1f3
+	md5sums = 25adf0c47d303ec33e8859e153f8f500
+	md5sums = 4ec3f673513fa04ca595878d79707849
+
+pkgname = apertium-fr-ca
+

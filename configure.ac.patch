@@ -1,0 +1,19 @@
+--- ../apertium-fr-ca-1.0.2/configure.ac	2009-03-12 20:55:15.000000000 +0100
++++ apertium-fr-ca-1.0.2/configure.ac	2010-09-21 16:13:21.567405445 +0200
+@@ -27,8 +27,14 @@
+               APERTIUM_VER=30
+           ],
+           [
+-              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0)
+-              APERTIUM_VER=31
++              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0,
++              [
++                APERTIUM_VER=31
++              ],
++              [
++                PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
++                APERTIUM_VER=32
++              ])
+           ])
+       ])
+   ])
