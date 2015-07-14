@@ -9,7 +9,8 @@ pkgdesc="Let's stream Google Play Music using any media-player"
 arch=('any')
 url="https://github.com/diraimondo/gmusicproxy"
 license=('GPL3')
-depends=('python2' 'python2-netifaces' 'python2-xdg' 'python2-eyed3' 'python2-daemon' 'python2-requests' 'python2-gmusicapi' 'python2-certifi' 'python2-gpsoauth')
+depends=('python2' 'python2-netifaces' 'python2-xdg' 'python2-eyed3' 'python2-daemon' 'python2-requests' 'python2-gmusicapi' 'python2-certifi' 'python2-gpsoauth' 
+'python2-mechanize' 'python-mechanicalsoup')
 makedepends=('python2-setuptools' 'git')
 provides=('gmusicproxy')
 source=("gmusicproxy::git+https://github.com/diraimondo/gmusicproxy.git"
