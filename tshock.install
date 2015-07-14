@@ -3,8 +3,7 @@ post_install() {
   getent passwd tshock >/dev/null 2>&1 || useradd -g tshock -d /srv/tshock/ -s /bin/bash tshock 
   chown -R tshock:tshock /srv/tshock/
 
-  echo ">>> Run \`sudo -u tshock /srv/tshock/tshock.sh install\` and create a world named World1
-    You can then start tshock@default.service"
+  echo ">>> You can start the server in a default configuration by starting tshock@default.service"
 }
 
 post_upgrade() {

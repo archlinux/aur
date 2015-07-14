@@ -1,7 +1,7 @@
 pkgbase = tshock
 	pkgdesc = A Terraria Server administration modification that runs on the open source TerrariaAPI.
 	pkgver = 4.3.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://tshock.co/xf/
 	install = tshock.install
@@ -13,7 +13,7 @@ pkgbase = tshock
 	source = tshock.sh
 	source = tshock@.service
 	sha512sums = b15c1518507a7bf7b700789fb55eb7c2ecc175d1da8585b4d12c118f6f64b8d82a2f72b048d4efc856e841ea48508a925b4717932d045caad5fdd93e3cd60904
-	sha512sums = bdf5a5a626f071b5a1a9aa60ffbc0f87078cf96a940af7ac6bb99798234a07021eaab61bef72bed0af7c5a821ffccb4eda5a50076e2133ae5643f2f2517e6265
+	sha512sums = ea25422690dfb8a15436529b56d594530d3a1d4800f337460f70c46b9328bef1ce6898c25f87d5dbc6a33c36ffc18648a189903650581b4529a5db366c50a705
 	sha512sums = 563ada981c2e08293462485fd85b2c4e0b190c55ed3bcea4139b955f931d970d97c2bd89fba5b190231e9f2adeddd2c385abd11781bf1a98b13b78b8951bf623
 
 pkgname = tshock
