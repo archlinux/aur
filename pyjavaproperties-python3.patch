@@ -1,0 +1,254 @@
+# HG changeset patch
+# User Horst Gutmann <zerok@zerokspot.com>
+# Date 1381593336 -3600
+# Node ID 0e116313f4d4c0d40a1eee60083a87a8411206dd
+# Parent  6dc1f59f67930215509e2e1e64f967d970f290ab
+Adds support for Python3
+
+diff --git a/pyjavaproperties.py b/pyjavaproperties.py
+--- a/pyjavaproperties.py
++++ b/pyjavaproperties.py
+@@ -6,11 +6,17 @@
+ 
+ Created - Anand B Pillai <abpillai@gmail.com>
+ """
+-
+-import sys,os
++from __future__ import print_function
++import os
++import io
++import sys
+ import re
+ import time
+ 
++
++IS_PY3 = sys.version_info[0] == 3
++
++
+ class IllegalArgumentException(Exception):
+ 
+     def __init__(self, lineno, msg):
+@@ -21,6 +27,7 @@
+         s='Exception at line number %d => %s' % (self.lineno, self.msg)
+         return s
+ 
++
+ class Properties(object):
+     """ A Python replacement for java.util.Properties """
+ 
+@@ -146,7 +153,7 @@
+             # same property
+             while line[-1] == '\\':
+                 # Read next line
+-                nextline = i.next()
++                nextline = next(i)
+                 nextline = nextline.strip()
+                 lineno += 1
+                 # This line will become part of the value
+@@ -195,13 +202,13 @@
+ 
+         for f in found:
+             srcKey = f[1:-1]
+-            if self._props.has_key(srcKey):
++            if srcKey in self._props:
+                 value = value.replace(f, self._props[srcKey], 1)
+ 
+         self._props[key] = value.strip()
+ 
+         # Check if an entry exists in pristine keys
+-        if self._keymap.has_key(key):
++        if key in self._keymap:
+             oldkey = self._keymap.get(key)
+             self._origprops[oldkey] = oldvalue.strip()
+         else:
+@@ -234,16 +241,16 @@
+         """ Load properties from an open file stream """
+ 
+         # For the time being only accept file input streams
+-        if type(stream) is not file:
+-            raise TypeError,'Argument should be a file object!'
++        if not _is_file(stream):
++            raise TypeError('Argument should be a file object!')
+         # Check for the opened mode
+         if stream.mode != 'r':
+-            raise ValueError,'Stream should be opened in read-only mode!'
++            raise ValueError('Stream should be opened in read-only mode!')
+ 
+         try:
+             lines = stream.readlines()
+             self.__parse(lines)
+-        except IOError, e:
++        except IOError:
+             raise
+ 
+     def getProperty(self, key):
+@@ -257,7 +264,7 @@
+         if type(key) is str and type(value) is str:
+             self.processPair(key, value)
+         else:
+-            raise TypeError,'both key and value should be strings!'
++            raise TypeError('both key and value should be strings!')
+ 
+     def propertyNames(self):
+         """ Return an iterator over all the keys of the property
+@@ -278,7 +285,7 @@
+         with the optional 'header' """
+ 
+         if out.mode[0] != 'w':
+-            raise ValueError,'Steam should be opened in write mode!'
++            raise ValueError('Steam should be opened in write mode!')
+ 
+         try:
+             out.write(''.join(('#',header,'\n')))
+@@ -292,7 +299,7 @@
+                     out.write(''.join((prop,'=',self.escape(val),'\n')))
+ 
+             out.close()
+-        except IOError, e:
++        except IOError:
+             raise
+ 
+     def getPropertyDict(self):
+@@ -318,14 +325,21 @@
+             if hasattr(self._props,name):
+                 return getattr(self._props, name)
+ 
++
++def _is_file(obj):
++    if not IS_PY3:
++        return isinstance(obj, file)
++    return isinstance(obj, io.IOBase)
++
++
+ if __name__=="__main__":
+     p = Properties()
+     p.load(open('test2.properties'))
+     p.list()
+-    print p
+-    print p.items()
+-    print p['name3']
++    print(p)
++    print(p.items())
++    print(p['name3'])
+     p['name3'] = 'changed = value'
+-    print p['name3']
++    print(p['name3'])
+     p['new key'] = 'new value'
+     p.store(open('test2.properties','w'))
+diff --git a/pyjavaproperties_test.py b/pyjavaproperties_test.py
+--- a/pyjavaproperties_test.py
++++ b/pyjavaproperties_test.py
+@@ -5,50 +5,66 @@
+ Created - Pepper Lebeck-Jobe (eljobe@gmail.com)
+ """
+ 
++import contextlib
+ import os
++import tempfile
+ import unittest
+ 
+ from pyjavaproperties import Properties
+ 
+ 
+ class PyJavaPropertiesTest(unittest.TestCase):
+-  """Tests pyjavaproperties complies to java.util.Properties contract."""
++    """Tests pyjavaproperties complies to java.util.Properties contract."""
+ 
+-  def setUp(self):
+-    test_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'testdata')
+-    self.properties_file = os.path.join(test_dir, 'complex.properties')
++    def setUp(self):
++        test_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'testdata')
++        self.properties_file = os.path.join(test_dir, 'complex.properties')
+ 
+-  def testParsePropertiesInput(self):
+-    properties = Properties()
+-    properties.load(open(self.properties_file))
+-    self.assertEquals(23, len(properties.items()))
+-    self.assertEquals('Value00', properties['Key00'])
+-    self.assertEquals('Value01', properties['Key01'])
+-    self.assertEquals('Value02', properties['Key02'])
+-    self.assertEquals('Value03', properties['Key03'])
+-    self.assertEquals('Value04', properties['Key04'])
+-    self.assertEquals('Value05a, Value05b, Value05c', properties['Key05'])
+-    self.assertEquals('Value06a, Value06b, Value06c', properties['Key06'])
+-    self.assertEquals('Value07b', properties['Key07'])
+-    self.assertEquals(
+-        'Value08a, Value08b, Value08c, Value08d, Value08e, Value08f',
+-        properties['Key08'])
+-    self.assertEquals(
+-        'Value09a, Value09b, Value09c, Value09d, Value09e, Value09f',
+-        properties['Key09'])
+-    self.assertEquals('Value10', properties['Key10'])
+-    self.assertEquals('', properties['Key11'])
+-    self.assertEquals('Value12a, Value12b, Value12c', properties['Key12'])
+-    self.assertEquals('Value13 With Spaces', properties['Key13'])
+-    self.assertEquals('Value14 With Spaces', properties['Key14'])
+-    self.assertEquals('Value15 With Spaces', properties['Key15'])
+-    self.assertEquals('Value16', properties['Key16 With Spaces'])
+-    self.assertEquals('Value17', properties['Key17 With Spaces'])
+-    self.assertEquals('Value18 # Not a comment.', properties['Key18'])
+-    self.assertEquals('Value19 ! Not a comment.', properties['Key19'])
+-    self.assertEquals('Value20', properties['Key20=WithEquals'])
+-    self.assertEquals('Value21', properties['Key21:WithColon'])
+-    self.assertEquals('Value22', properties['Key22'])
++    def testParsePropertiesInput(self):
++        properties = Properties()
++        properties.load(open(self.properties_file))
++        self.assertEquals(23, len(properties.items()))
++        self.assertEquals('Value00', properties['Key00'])
++        self.assertEquals('Value01', properties['Key01'])
++        self.assertEquals('Value02', properties['Key02'])
++        self.assertEquals('Value03', properties['Key03'])
++        self.assertEquals('Value04', properties['Key04'])
++        self.assertEquals('Value05a, Value05b, Value05c', properties['Key05'])
++        self.assertEquals('Value06a, Value06b, Value06c', properties['Key06'])
++        self.assertEquals('Value07b', properties['Key07'])
++        self.assertEquals(
++            'Value08a, Value08b, Value08c, Value08d, Value08e, Value08f',
++            properties['Key08'])
++        self.assertEquals(
++            'Value09a, Value09b, Value09c, Value09d, Value09e, Value09f',
++            properties['Key09'])
++        self.assertEquals('Value10', properties['Key10'])
++        self.assertEquals('', properties['Key11'])
++        self.assertEquals('Value12a, Value12b, Value12c', properties['Key12'])
++        self.assertEquals('Value13 With Spaces', properties['Key13'])
++        self.assertEquals('Value14 With Spaces', properties['Key14'])
++        self.assertEquals('Value15 With Spaces', properties['Key15'])
++        self.assertEquals('Value16', properties['Key16 With Spaces'])
++        self.assertEquals('Value17', properties['Key17 With Spaces'])
++        self.assertEquals('Value18 # Not a comment.', properties['Key18'])
++        self.assertEquals('Value19 ! Not a comment.', properties['Key19'])
++        self.assertEquals('Value20', properties['Key20=WithEquals'])
++        self.assertEquals('Value21', properties['Key21:WithColon'])
++        self.assertEquals('Value22', properties['Key22'])
++
++    def testLoadHandlerWithStrings(self):
++        """Load only accepts file-like streams opened in read mode."""
++        properties = Properties()
++        with self.assertRaises(TypeError):
++            properties.load('i-am-a-string')
++
++    def testLoadHandlingWithWrongMode(self):
++        properties = Properties()
++        tmpfile = tempfile.NamedTemporaryFile()
++        with contextlib.closing(tmpfile.file) as fp:
++            with self.assertRaises(ValueError):
++                properties.load(fp)
++
+ 
+ if __name__ == '__main__':
+   unittest.main()
+diff --git a/tox.ini b/tox.ini
+new file mode 100644
+--- /dev/null
++++ b/tox.ini
+@@ -0,0 +1,6 @@
++[tox]
++envlist=py27,py33
++
++[testenv]
++deps=pytest
++commands=py.test
+\ No newline at end of file

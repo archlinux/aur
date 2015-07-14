@@ -1,0 +1,16 @@
+pkgbase = python-pyjavaproperties
+	pkgdesc = Python replacement for java.util.Properties.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyjavaproperties
+	arch = any
+	license = PSF
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyjavaproperties/pyjavaproperties-0.6.tar.gz
+	source = pyjavaproperties-python3.patch
+	md5sums = e459c21668937a06335e3a2ed77efa22
+	md5sums = 51aa70dfbfb86aa7ab6b05b22d124fcb
+
+pkgname = python-pyjavaproperties
+
