@@ -1,0 +1,13 @@
+pkgbase = libnbcompat
+	pkgdesc = Portable NetBSD compatibility library
+	pkgver = 20111103
+	pkgrel = 1
+	url = http://www.netbsd.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bmake
+	makedepends = cvs
+
+pkgname = libnbcompat
+
