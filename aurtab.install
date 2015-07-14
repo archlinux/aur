@@ -1,0 +1,3 @@
+post_install() {
+  echo "Please run aurtab to compile the database."
+}
