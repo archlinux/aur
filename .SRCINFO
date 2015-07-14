@@ -1,0 +1,15 @@
+pkgbase = bups
+	pkgdesc = Simple GUI for Bup, a very efficient backup system.
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = https://github.com/emersion/bups
+	arch = any
+	license = MIT
+	depends = bup
+	depends = pygtk
+	depends = cifs-utils
+	source = https://github.com/emersion/bups/archive/v0.5.0.tar.gz
+	md5sums = 348d5717902c67a36d0fc0b66736e186
+
+pkgname = bups
+
