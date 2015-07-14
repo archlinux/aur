@@ -1,0 +1,18 @@
+pkgbase = lttoolbox
+	pkgdesc = Handles lexical processing, morphological analysis and generation of words in natural languages using fast finite state transducers.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://wiki.apertium.org/wiki/Lttoolbox
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = libxml2
+	depends = gcc-libs
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/apertium/lttoolbox-3.3.0.tar.gz
+	md5sums = 001144ffacd544695f5343691cec1824
+	sha256sums = b12cb16f286e87f15eea0e3e988c70e89183eaa6e46a517aff2a4260e52ed773
+
+pkgname = lttoolbox
+
