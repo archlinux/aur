@@ -1,17 +1,17 @@
 pkgname='sigmavpn'
 pkgver='0.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Light-weight, secure and modular VPN solution'
-url='http://frozenriver.net/SigmaVPN'
+url='https://github.com/neilalexander/sigmavpn/'
 license=('BSD')
 depends=('libsodium')
 source=(
-	"http://sigmavpn.googlecode.com/files/${pkgname}-${pkgver}.tar.gz"
+	"${url}/archive/v${pkgver}.tar.gz"
 	fix-paths.patch
 	Makefile
 	sigmavpn.conf
 )
-sha1sums=('711c43967208ec1f4d1c6fc9ef36e19830405bc5'
+sha1sums=('8fb0e9eb03a0650d10fc3589381944b6b19a437e'
           '59a308938341d1e13373b49ce482bb642fbc06fc'
           'fb0fc62c58049feee34247efe99d619d9f6459b6'
           'a5dd10b1599079f45bba4398fb295696c76cd9f2')
