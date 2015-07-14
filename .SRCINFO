@@ -1,5 +1,5 @@
 pkgbase = prison-frameworks-git
-	pkgdesc = Barcode api currently offering a nice Qt api to produce QRCode barcodes and DataMatrix barcodes. KF5 Frameworks branch (GIT version)
+	pkgdesc = Barcode api currently offering a nice Qt api to produce QRCode barcodes and DataMatrix barcodes. KF5 Frameworks branch. (GIT version)
 	pkgver = r75.8f25e5a
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kdesupport/prison
@@ -11,7 +11,11 @@ pkgbase = prison-frameworks-git
 	depends = libdmtx
 	depends = qrencode
 	depends = qt5-base
-	source = git://anongit.kde.org/prison.git#branch=frameworks
+	provides = prison-frameworks
+	provides = prison
+	conflicts = prison-frameworks
+	conflicts = prison
+	source = git://anongit.kde.org/prison#branch=frameworks
 	sha1sums = SKIP
 
 pkgname = prison-frameworks-git
