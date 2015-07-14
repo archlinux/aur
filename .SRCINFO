@@ -1,0 +1,14 @@
+pkgbase = python-ansi
+	pkgdesc = ANSI cursor movement and graphics
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/tehmaze/ansi
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = https://github.com/tehmaze/ansi/archive/ansi-0.1.3.tar.gz
+	md5sums = 4bf5805a69f3584638db101ff4f07ddf
+
+pkgname = python-ansi
+
