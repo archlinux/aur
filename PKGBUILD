@@ -6,10 +6,10 @@
 pkgname=inadyn-fork
 _name=inadyn
 pkgver=1.99.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei'
 url='http://troglobit.com/inadyn.html'
-arch=('x86_64' 'i686' 'armv6h')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 license=('GPL')
 depends=('openssl')
 backup=('etc/inadyn.conf')

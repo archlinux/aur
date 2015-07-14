@@ -1,11 +1,12 @@
 pkgbase = inadyn-fork
 	pkgdesc = Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei
 	pkgver = 1.99.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://troglobit.com/inadyn.html
 	arch = x86_64
 	arch = i686
 	arch = armv6h
+	arch = armv7h
 	license = GPL
 	depends = openssl
 	provides = inadyn
