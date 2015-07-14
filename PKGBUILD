@@ -1,9 +1,9 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=pyshark
 pkgname=('python-pyshark' 'python2-pyshark')
-pkgver=0.3.4
-pkgrel=2
+pkgver=0.3.6
+pkgrel=1
 pkgdesc="Python wrapper for tshark, allowing python packet parsing using wireshark dissectors"
 url="https://github.com/KimiNewt/pyshark"
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=(
   'python2-mock' 'python2-pytest' 'pypy' 'python2-lxml' 'python2-trollius' 'python2-logbook'
 )
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/KimiNewt/${pkgbase}/archive/v${pkgver}.tar.gz)
-sha512sums=('6c7a11a9dbb1e00a7a38eb7da304af80be431697eed9e10d6dcf7cff7c8c15396b30caf1fb8d5fe369d1fed1416b731f6a820d0230c9146507788a456b497b58')
+sha512sums=('3a6ffbbab3c0b4a7d395314d96dd126ab3af0f34d6cdd0ddd37ac0a921eab809ed3eb1e3c39049fc6146423f261958c0b6439563da2143f816de8c0b4da0c0d0')
 
 check() {
   cd ${pkgbase}-${pkgver}
