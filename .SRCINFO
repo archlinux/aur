@@ -1,0 +1,16 @@
+pkgbase = apertium-af-nl
+	pkgdesc = Apertium language data for the Afrikaans-Nederlands (Dutch) translator.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2
+	depends = apertium>=3.2
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-af-nl-0.2.0.tar.gz
+	md5sums = c6e048623ab18cf58d6a2d7c2daafc63
+
+pkgname = apertium-af-nl
+
