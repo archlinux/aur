@@ -1,0 +1,34 @@
+--- ../apertium-pt-gl-0.9.1/Makefile.am	2009-03-03 20:36:19.000000000 +0100
++++ apertium-pt-gl-0.9.1/Makefile.am	2010-09-15 16:24:56.000000000 +0200
+@@ -49,7 +49,7 @@
+ 	apertium-validate-transfer $(BASENAME).trules-$(PREFIX1).xml
+ 	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX1).xml \
+ 				     trules-$(PREFIX1).bin
+-				     
++
+ trules-$(PREFIX2).bin: $(BASENAME).trules-$(PREFIX2).xml
+ 	apertium-validate-transfer $(BASENAME).trules-$(PREFIX2).xml
+ 	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX2).xml \
+@@ -68,7 +68,7 @@
+ 	   $(BASENAME).trules-$(PREFIX2).xml $(PREFIX1).prob $(PREFIX2).prob \
+ 	   $(PREFIX1)-latin1.prob $(PREFIX2)-latin1.prob \
+ 	   modes.xml
+-	   
++
+ apertium_pt_gldir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_pt_modesdir=$(prefix)/share/apertium/modes/
+ apertium_pt_gl_DATA=$(PREFIX1).automorf.bin $(PREFIX2).automorf.bin \
+@@ -87,9 +87,9 @@
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_pt_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_pt_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX1).xml $(apertium_pt_gldir)
+-	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX2).xml $(apertium_pt_gldir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_pt_modesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_pt_modesdir)
++	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX1).xml $(DESTDIR)$(apertium_pt_gldir)
++	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX2).xml $(DESTDIR)$(apertium_pt_gldir)
+ 
+ CLEANFILES = -rf $(TARGETS_COMMON) modes trules-$(PREFIX1).xml trules-$(PREFIX2).xml trules-$(PREFIX1).bin trules-$(PREFIX2).bin
