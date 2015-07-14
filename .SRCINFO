@@ -1,0 +1,16 @@
+pkgbase = ruby-bindata
+	pkgdesc = A declarative way to read and write binary file formats
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://bindata.rubyforge.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = rubygems
+	depends = ruby
+	noextract = bindata-1.4.3.gem
+	source = http://gems.rubyforge.org/gems/bindata-1.4.3.gem
+	sha256sums = 1004d10a8a194bc181cc836220939379ae18e797e8756e01415ac8ae80c8f5a5
+
+pkgname = ruby-bindata
+
