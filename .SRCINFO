@@ -1,0 +1,17 @@
+pkgbase = txtw-git
+	pkgdesc = Return the pixel width of the given strings for the given font
+	pkgver = 11
+	pkgrel = 1
+	url = https://github.com/baskerville/txtw
+	arch = i686
+	arch = x86_64
+	license = custom:Unlicense
+	makedepends = git
+	depends = cairo
+	provides = txtw
+	conflicts = txtw
+	source = git://github.com/baskerville/txtw.git
+	md5sums = SKIP
+
+pkgname = txtw-git
+
