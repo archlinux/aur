@@ -2,8 +2,7 @@
 Name=SimulationCraft
 Comment=A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.
 Exec=simulationcraft
-Icon=SimulationCraft.xpm
-Path=
+Icon=SimulationCraft
 Terminal=false
 Type=Application
 StartupNotify=true
