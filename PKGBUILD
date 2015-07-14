@@ -1,47 +1,53 @@
-# Maintainer: Jianhui Z <jianhui@outlook.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tau Tsao <realturner at gmail.com>
-_githash=8904252
 pkgname=xrdp-git
-pkgver=0.9.0.$_githash
+pkgver=0.8.0.r432.g2ed8108
 pkgrel=1
-pkgdesc="An open source remote desktop protocol(rdp) server - GIT version"
-arch=('i686' 'x86_64')
+epoch=1
+pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/xrdp"
+arch=('i686' 'x86_64' 'armv6h')
 license=('Apache')
-groups=()
-depends=('libxrandr' 'tigervnc' 'fuse')
-makedepends=('git' 'autoconf' 'automake' 'libtool')
-optdepends=('autocutsel: easy clipboard handling')
-provides=()
+makedepends=('libpulse' 'fuse' 'git')
+depends=('tigervnc' 'libxrandr')
+optdepends=('libpulse: to use the pule audio module'
+            'fuse: to use the file clipboard module')
 conflicts=('xrdp')
-replaces=()
+provides=('xrdp=0.8.0')
 backup=('etc/xrdp/sesman.ini' 'etc/xrdp/xrdp.ini')
-options=()
 install=xrdp-git.install
-changelog=
-source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git#commit=$_githash"
-        "arch-config.diff"
-        "archlinux.bmp")
-noextract=()
+source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git"
+        "arch-config.diff")
 md5sums=('SKIP'
-         '44a4b78459738b76db1d3fe8605aa1f2'
-         'fc66ae93316811ac5fa1e0960a88f157')
+         'd08f0984fc543e2478eaa79337726da7')
+
+pkgver() {
+  cd $pkgname
+  printf "0.8.0.r%s.g%s" "$(git rev-list --count v0.8.0..HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd $pkgname
-  patch -p1 < ../arch-config.diff
+  patch -Np2 -b -z .orig <../arch-config.diff
+  ./bootstrap
 }
 
 build() {
   cd $pkgname
-  ./bootstrap
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --enable-fuse
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --sbindir=/usr/bin \
+              --with-systemdsystemdunitdir=/usr/lib/systemd/system \
+              --enable-jpeg \
+              --enable-simplesound \
+              --enable-fuse \
+              --enable-loadpulsemodules
   make
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-  install -Dm644 "$srcdir/archlinux.bmp" "$pkgdir/usr/share/xrdp/archlinux.bmp"
 }
