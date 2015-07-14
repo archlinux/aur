@@ -1,0 +1,17 @@
+pkgbase = libgcal-git
+	pkgdesc = ANSI C library that does allow communication with google calendar and contacts - Git Version
+	pkgver = 20111102
+	pkgrel = 1
+	url = http://code.google.com/p/libgcal/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libxml2
+	depends = curl
+	provides = libgcal
+	conflicts = libgcal
+
+pkgname = libgcal-git
+
