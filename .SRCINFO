@@ -1,0 +1,14 @@
+pkgbase = hunspell-sme
+	pkgdesc = Northern Sámi (se/sme) dictionary for Hunspell
+	pkgver = 1.0beta9.20110318
+	pkgrel = 1
+	url = http://www.divvun.no/en/userdocs/X-spell/install_linux.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = hunspell
+	source = http://divvun.no/static_files/hunspell-smi.tar.gz
+	md5sums = 0e568da241f65dbe2771c2b314aae319
+
+pkgname = hunspell-sme
+
