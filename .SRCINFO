@@ -1,0 +1,14 @@
+pkgbase = python-argh
+	pkgdesc = An unobtrusive argparse wrapper with natural syntax
+	pkgver = 0.26.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/argh
+	arch = any
+	license = LGPL3
+	makedepends = python-distribute
+	depends = python
+	source = https://pypi.python.org/packages/source/a/argh/argh-0.26.1.tar.gz
+	sha256sums = 06a7442cb9130fb8806fe336000fcf20edf1f2f8ad205e7b62cec118505510db
+
+pkgname = python-argh
+
