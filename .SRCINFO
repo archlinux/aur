@@ -1,15 +1,15 @@
 pkgbase = ambiance-radiance-colors-suite
 	pkgdesc = Ambiance & Radiance Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops
 	pkgver = 15.04.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ravefinity.com/p/ambiance-radiance-colors-suite.html
 	arch = any
 	license = GPL
 	depends = gtk3>=3.14
 	depends = gtk-engine-murrine
-	depends = gtk-engine-unico
-	optdepends = humanity-icon-theme
-	optdepends = humanitycolors-icon-theme
+	optdepends = rave-x-colors
+	options = !strip
+	options = !zipman
 	source = Ambiance&Radiance-Colors-15-04-1bx-GTK-3-14-Theme.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QANXFqSU1wWk14bGs
 	md5sums = 0ac06ff4f88fc2303349a1429748a64c
 
