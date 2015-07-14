@@ -1,0 +1,17 @@
+pkgbase = cmsmadesimple
+	pkgdesc = An easy to use content management system for simple stable content sites.
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://www.cmsmadesimple.org
+	install = cmsmadesimple.install
+	arch = any
+	license = GPL
+	depends = php
+	depends = mysql
+	optdepends = apache
+	optdepends = lighttpd
+	source = http://s3.amazonaws.com/cmsms/downloads/12559/cmsmadesimple-1.12-english.tar.gz
+	sha256sums = 2e5f7a077bf8b14a77b32125828a48f07b8354830495f393d13c964ecd2f6b3c
+
+pkgname = cmsmadesimple
+
