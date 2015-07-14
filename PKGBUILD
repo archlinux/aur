@@ -3,14 +3,13 @@
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
 pkgver=2463.01481aa
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility that works alongside Apache and nginx to automatically obtain a certificate and convert a website to HTTPS"
 arch=('any')
 license=('Apache')
 url="https://letsencrypt.org/"
 depends=('python2' 'augeas' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git')
 makedepends=('python-virtualenv')
-install=letsencrypt.install
 source=("${_pkgname}"::"git+https://github.com/letsencrypt/letsencrypt")
 md5sums=('SKIP')
 
@@ -30,9 +29,12 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    mkdir -p "${pkgdir}"/opt/letsencrypt "${pkgdir}"/etc/profile.d
+    # Moving the complete virtual environment and source to /opt
+    mkdir -p "${pkgdir}"/opt/letsencrypt
     cp -dpr --no-preserve=ownership ./* "${pkgdir}"/opt/letsencrypt
-    echo "export PATH=$PATH:/opt/letsencrypt/venv/bin" > "${pkgdir}"/etc/profile.d/letsencrypt.sh
-    echo "setenv PATH ${PATH}:/opt/letsencrypt/venv/bin" > "${pkgdir}"/etc/profile.d/letsencrypt.csh
-    chmod 755 "${pkgdir}"/etc/profile.d/letsencrypt.sh "${pkgdir}"/etc/profile.d/letsencrypt.csh
+
+    # Link to the executables
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/letsencrypt/venv/bin/letsencrypt "${pkgdir}"/usr/bin/letsencrypt
+    ln -s /opt/letsencrypt/venv/bin/letsencrypt-renewer "${pkgdir}"/usr/bin/letsencrypt-renewer
 }
