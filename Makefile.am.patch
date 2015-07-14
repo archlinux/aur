@@ -1,0 +1,62 @@
+--- apertium-en-es-0.8.0/Makefile.am	2011-08-03 20:20:35.000000000 +0200
++++ src/apertium-en-es-0.8.0/Makefile.am	2014-10-06 10:41:50.408342594 +0200
+@@ -21,7 +21,7 @@
+ 		 $(BASENAME).$(PREFIX1)-lextor.dix $(BASENAME).$(PREFIX2)-lextor.dix
+ 
+ 
+-TARGETS = $(TARGETS_COMMON) 
++TARGETS = $(TARGETS_COMMON)
+ 
+ $(BASENAME).$(LANG1)-lextor.dix: $(BASENAME).$(PREFIX1).dix
+ 	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
+@@ -61,8 +61,8 @@
+ 	lt-comp lr .deps/$(LANG1).dix $@ $(BASENAME).$(LANG1).acx
+ 
+ #$(PREFIX1).automorf.bin: $(BASENAME).$(LANG1).metadix $(BASENAME).$(LANG1).acx
+-#	@xsltproc buscaPar.xsl apertium-en-es.en.metadix | uniq > tmp1gen.xsl 	 
+-#	@xsltproc tmp1gen.xsl apertium-en-es.en.metadix >$(BASENAME).$(LANG1).dixtmp1 
++#	@xsltproc buscaPar.xsl apertium-en-es.en.metadix | uniq > tmp1gen.xsl
++#	@xsltproc tmp1gen.xsl apertium-en-es.en.metadix >$(BASENAME).$(LANG1).dixtmp1
+ #	@rm tmp1gen.xsl
+ #	apertium-validate-acx $(BASENAME).$(LANG1).acx
+ #	apertium-validate-dictionary $(BASENAME).$(LANG1).dixtmp1
+@@ -106,15 +106,15 @@
+ 	lt-comp rl .deps/$(LANG1b).dix $@
+ 
+ #$(PREFIX2).autogen.bin: $(BASENAME).$(LANG1).metadix
+-#	@xsltproc buscaPar.xsl apertium-en-es.en.metadix | uniq > tmp2gen.xsl 	 
++#	@xsltproc buscaPar.xsl apertium-en-es.en.metadix | uniq > tmp2gen.xsl
+ #	@xsltproc tmp2gen.xsl apertium-en-es.en.metadix >$(BASENAME).$(LANG1).dixtmp2
+ #	@rm tmp2gen.xsl
+ #	apertium-validate-dictionary $(BASENAME).$(LANG1).dixtmp2
+ #	lt-comp rl $(BASENAME).$(LANG1).dixtmp2 $@
+ #	@rm $(BASENAME).$(LANG1).dixtmp2
+ #	@rm $(BASENAME).$(LANG1).metadix
+-#	@rm $(BASENAME).$(LANG2).dix	
+-#	@rm $(BASENAME).$(LANG1)-$(LANG2).dix	
++#	@rm $(BASENAME).$(LANG2).dix
++#	@rm $(BASENAME).$(LANG1)-$(LANG2).dix
+ 
+ $(PREFIX2).autopgen.bin: $(BASENAME).post-$(LANG1).dix
+ 	apertium-validate-dictionary $(BASENAME).post-$(LANG1).dix
+@@ -207,13 +207,13 @@
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_en_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_en_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2b).mode $(apertium_en_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).genitive.t1x $(apertium_en_esdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).t2x $(apertium_en_esdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(BASENAME).$(PREFIX2).t1x $(apertium_en_esdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t2x $(BASENAME).$(PREFIX2).t3x $(apertium_en_esdir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_en_modesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_en_modesdir)
++	$(INSTALL_DATA) $(PREFIX2b).mode $(DESTDIR)$(apertium_en_modesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).genitive.t1x $(DESTDIR)$(apertium_en_esdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).t2x $(DESTDIR)$(apertium_en_esdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(BASENAME).$(PREFIX2).t1x $(DESTDIR)$(apertium_en_esdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t2x $(BASENAME).$(PREFIX2).t3x $(DESTDIR)$(apertium_en_esdir)
+ 
+ CLEANFILES = -rf $(TARGETS) modes
+ 
