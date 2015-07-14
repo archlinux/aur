@@ -1,11 +1,11 @@
-# Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@gmail.com>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=stardict-fkv-nob  
 pkgver=2.4.2
-pkgrel=1 
+pkgrel=2 
 pkgdesc="Kvääni-norja sanakirja, a StarDict dictionary for Kven to Norwegian Bokmål and back again"
 url="http://giellatekno.uit.no/words/dicts/index.eng.html"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 license=('unknown')
 depends=()
 optdepends=("stardict: a Gtk2 applicaton for looking up words in $pkgname"
