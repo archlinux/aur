@@ -1,0 +1,21 @@
+pkgbase = ruby-git-up
+	pkgdesc = git command to fetch and rebase all branches
+	pkgver = 0.5.12
+	pkgrel = 1
+	url = http://github.com/aanand/git-up
+	arch = any
+	groups = pacgem
+	license = custom:ruby-git-up
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	depends = ruby-colored
+	depends = ruby-grit
+	optdepends = ruby-thoughtbot-shoulda: Making tests easy on the fingers and eyes
+	noextract = git-up-0.5.12.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/git-up-0.5.12.gem
+	sha256sums = ba8a3d4422895299b7a8cd50efb47bcec0e93b64a28a96518da3fbe03a113698
+
+pkgname = ruby-git-up
+
