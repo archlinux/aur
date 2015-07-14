@@ -1,0 +1,18 @@
+pkgbase = wmnetload
+	pkgdesc = Dockapp which displays network activity in different LCD styles
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://dockapps.windowmaker.org/file.php/id/78
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libdockapp
+	source = http://ftp.de.debian.org/debian/pool/main/w/wmnetload/wmnetload_1.3.orig.tar.gz
+	source = http://tnemeth.free.fr/projets/programmes/wmnetload-1.3-tn1.patch
+	source = http://tnemeth.free.fr/projets/programmes/wmnetload-1.3-tn2.patch
+	md5sums = 104f594c8b30d3a0895c03679e759997
+	md5sums = 1ba977d044d035d9ae088f72380af1e0
+	md5sums = 9703e76da9777cb60d3358e5761f0841
+
+pkgname = wmnetload
+
