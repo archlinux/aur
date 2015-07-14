@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-toy
+	pkgdesc = GIMP plug-in that creates a toy effect or tilt-shift miniature faking on a selected layer
+	pkgver = 1.0.4
+	pkgrel = 2
+	url = http://registry.gimp.org/node/25803
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = gimp
+	source = http://registry.gimp.org/files/gimp-plugin-toy-1.0.4.tar.gz
+	md5sums = a46f6dbfc79445870797a87c079128d2
+
+pkgname = gimp-plugin-toy
+
