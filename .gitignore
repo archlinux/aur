@@ -1,0 +1,8 @@
+pkg
+src
+*.pkg.tar*
+
+upp-x11-src-*.tar.gz
+theide.1
+umk.1
+mkfile
