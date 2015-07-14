@@ -1,0 +1,112 @@
+*** include/libxml/tree.h.orig	Mon Aug 22 05:14:24 2005
+--- include/libxml/tree.h	Sat Jan  7 22:30:25 2006
+***************
+*** 452,459 ****
+      struct _xmlAttr *properties;/* properties list */
+      xmlNs           *nsDef;     /* namespace definitions on this node */
+      void            *psvi;	/* for type/PSVI informations */
+!     unsigned short   line;	/* line number */
+      unsigned short   extra;	/* extra data for XPath/XSLT */
+  };
+  
+  /**
+--- 452,460 ----
+      struct _xmlAttr *properties;/* properties list */
+      xmlNs           *nsDef;     /* namespace definitions on this node */
+      void            *psvi;	/* for type/PSVI informations */
+!     unsigned short   line16;	/* line number */
+      unsigned short   extra;	/* extra data for XPath/XSLT */
++     int              line;	/* line number */
+  };
+  
+  /**
+*** SAX2.c.orig	Sat Sep  3 08:27:39 2005
+--- ./SAX2.c	Sat Jan  7 22:34:34 2006
+***************
+*** 1562,1570 ****
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line = (short) ctxt->input->line;
+  	    else
+! 	        ret->line = 65535;
+  	}
+      }
+  
+--- 1562,1571 ----
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line16 = (unsigned short) ctxt->input->line;
+  	    else
+! 	        ret->line16 = 65535;
+! 	    ret->line = ctxt->input->line;
+  	}
+      }
+  
+***************
+*** 2165,2173 ****
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line = (short) ctxt->input->line;
+  	    else
+! 	        ret->line = 65535;
+  	}
+      }
+  
+--- 2166,2175 ----
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line16 = (unsigned short) ctxt->input->line;
+  	    else
+! 	        ret->line16 = 65535;
+! 	    ret->line = ctxt->input->line;
+  	}
+      }
+  
+***************
+*** 2508,2516 ****
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line = (short) ctxt->input->line;
+  	    else
+! 	        ret->line = 65535;
+  	}
+      }
+      if (ctxt->inSubset == 1) {
+--- 2510,2519 ----
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line16 = (unsigned short) ctxt->input->line;
+  	    else
+! 	        ret->line16 = 65535;
+! 	    ret->line = ctxt->input->line;
+  	}
+      }
+      if (ctxt->inSubset == 1) {
+***************
+*** 2568,2576 ****
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line = (short) ctxt->input->line;
+  	    else
+! 	        ret->line = 65535;
+  	}
+      }
+  
+--- 2571,2580 ----
+      if (ctxt->linenumbers) {
+  	if (ctxt->input != NULL) {
+  	    if (ctxt->input->line < 65535)
+! 		ret->line16 = (unsigned short) ctxt->input->line;
+  	    else
+! 	        ret->line16 = 65535;
+! 	    ret->line = ctxt->input->line;
+  	}
+      }
+  

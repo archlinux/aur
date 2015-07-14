@@ -1,0 +1,29 @@
+pkgbase = libxml2-linenum
+	pkgdesc = XML parsing library, version 2, with high line number patch applied
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = http://www.xmlsoft.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	depends = zlib
+	depends = readline
+	depends = ncurses
+	depends = xz
+	optdepends = python2: python bindings to libxml
+	provides = libxml2
+	conflicts = libxml2
+	source = ftp://ftp.xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz
+	source = http://www.w3.org/XML/Test/xmlts20080827.tar.gz
+	source = revert-catalog-initialize.patch
+	source = fix-CVE-2014-3660.patch
+	source = bug325533-16bit-linenum.patch
+	md5sums = 9e6a9aca9d155737868b3dc5fd82f788
+	md5sums = ae3d1ebe000a3972afa104ca7f0e1b4a
+	md5sums = fdb2e26174ac9cced85ffbf4fb782187
+	md5sums = 71c88ee5a133461a8ab8aaa194899453
+	md5sums = 72d9e5a59dfe070effb4a59102d40195
+
+pkgname = libxml2-linenum
+
