@@ -1,15 +1,17 @@
 pkgbase = pstate-frequency
 	pkgdesc = Easily control Intel p-state driver
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
-	url = https://github.com/pyamsoft/pstate-frequency/archive/1.2.5.tar.gz
+	url = https://github.com/pyamsoft/pstate-frequency/archive/1.2.6.tar.gz
 	arch = i686
 	arch = x86_64
 	license = GPLv2
+	depends = coreutils
+	optdepends = x86_energy_perf_policy
 	provides = pstate-frequency
 	conflicts = pstate-frequency
-	source = https://github.com/pyamsoft/pstate-frequency/archive/1.2.5.tar.gz
-	sha256sums = 2ad3923bb9a5c7787ed17d3538d653e3298e350a8bbb5a19852bfe0ece7b715d
+	source = https://github.com/pyamsoft/pstate-frequency/archive/1.2.6.tar.gz
+	sha256sums = 28d66829f782f0fddc7776a8dac9cd321fb574c9cc3b7fb47deee5f0fda0a69e
 
 pkgname = pstate-frequency
 
