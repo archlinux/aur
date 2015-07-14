@@ -1,0 +1,38 @@
+--- ../apertium-oc-ca-1.0.5/apertium-oc-ca.ca-oc.t1x	2008-07-21 13:02:56.000000000 +0200
++++ apertium-oc-ca-1.0.5/apertium-oc-ca.ca-oc.t1x	2010-09-21 16:29:10.240738777 +0200
+@@ -987,7 +987,7 @@
+ 			</choose>
+ 			<choose><!-- aquests no són ref-->
+ 				<when>
+-					<test>
++					<test><and>
+ 						<equal caseless="yes">
+ 							<clip pos="2" side="sl" part="pers"/>
+ 							<lit-tag v="p3"/>
+@@ -996,7 +996,7 @@
+ 							<clip pos="2" side="sl" part="nbr"/>
+ 							<lit-tag v="sg"/>
+ 						</equal>
+-					</test>
++					</and></test>
+ 					<choose>
+ 						<when><!-- m'ha passat-> m'a arribat-->
+ 							<test>
+@@ -1202,7 +1202,7 @@
+ 			</choose>
+ 			<choose><!-- aquests no són ref-->
+ 				<when>
+-					<test>
++					<test><and>
+ 						<equal caseless="yes">
+ 							<clip pos="2" side="sl" part="pers"/>
+ 							<lit-tag v="p3"/>
+@@ -1211,7 +1211,7 @@
+ 							<clip pos="2" side="sl" part="nbr"/>
+ 							<lit-tag v="sg"/>
+ 						</equal>
+-					</test>
++					</and></test>
+ 					<choose>
+ 						<when><!-- m'ha passat-> m'a arribat-->
+ 							<test>
