@@ -48,9 +48,9 @@ _use_current=
 pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
-_srcname=linux-4.0
-_pkgver=4.0.8
-_rtpatchver=rt6
+_srcname=linux-4.1
+_pkgver=4.1.2
+_rtpatchver=rt1
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -59,19 +59,19 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r8
-#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-${_bfqrel}"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.0.0-${_bfqrel}/"
+#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-${_bfqrel}"
+_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.1.0-${_bfqrel}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.0/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.0/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.0.0.patch"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.1.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.1.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.1.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
@@ -435,20 +435,20 @@ package_linux-rt-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995'
+sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '384884edcf9dc5c3f9cd3be03bf1459058a7189858234718c40c926ccef33c4a71b2f9468f2592b25bf780b92fdc46e66de0294b6cc6e43ce77b6478fd0f9757'
+            'b498f7a8113c7e31feed64c53c0c09765f55e759e340ac8c8a364bed5e2b148d9f582762ce9c779b7c3a067596ae2b30dcd7a8637ffdc21f011fa18f58ae22ad'
             'SKIP'
-            '9e9367ad92647406832ca3f71be6b39286062bc9947dd733d1a869bea2d031a709d85fcf6a8c8aa9e210bb485e5fc75a8db80101ed21b1090ed8997918bb69be'
+            '199319a0eed9be1c55ded4dd068d87ee273ed765ab4fe9e9574ec605eb2b5d5f3a0cf442b7fc6f6d52a10e19a506db0078d1bd2c2f12f5e7012c74546cfd92b6'
             'SKIP'
-            '1a08e834c4e90a7f9da77460bda1ed0efa9b331811521520402b0d094de3a1155d6e7ddbcbfcbefeef92b5468c56960750f6568cd73114a2a87a9d8a39a63fe8'
-            '46cb51684ca5fd9ba9460c8a62be22e99169de1b5e87ac47f9782f52123993de61fe9563ffec062a9b7c2024d08b1d5f57e09a09dbd7841faa3d149f346f5464'
-            '879ab2364ae09993f8dcd17f3c44584967cf26d26f8376611a9eb7824cf78cadf4cdae58d18f3b493d0ec48395888f1ca1395563e52501dc79f559369c931371'
+            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
+            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
+            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44'
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '14d530c8d727e5253474b3d46a7e30933bcc0aa9a6cf597ab6557c12779e2ce627d49258a3623f48421b48cd1a29012f7e3ff984387488c101d94d98fe0aae9d'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '3edcd586d6b21a6d7cdcf12371b431289ece9098cd79c5810d7c48c28dc37a330bc3a963ddf6ae6d4dd479501cb2cfeb3a5874cb4736b93820743dadd074cc18'
-            'c670b6b51d12685ad713f48adc8daf7e3f79bd0041e00f1ded5aa1457352821f92551838e273c451458a8ad575ed7f11603bbb3b7ab9c17eadb970c792a2846e'
+            '400099819fd13495dc06a91d9223dc0db08f3838843ad50045c577bd5d88491894a6a4860e3a5ec466868dee97368453f070564e22e15dd01a79c7d2ae9e28f7'
+            'b96d848948e92607af5d0489879d04f0819f626a5adf9649874f5741047395ee901680e27de9e730badee06e1fd0698f306702d5292b2746827ac0956279ed13'
             '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528')
             
 validpgpkeys=(
