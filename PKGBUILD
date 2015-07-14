@@ -3,7 +3,7 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.04.00
+pkgver=6.04.02
 pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')

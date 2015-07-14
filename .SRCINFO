@@ -1,6 +1,6 @@
 pkgbase = root
 	pkgdesc = C++ data analysis framework and interpreter from CERN.
-	pkgver = 6.04.00
+	pkgver = 6.04.02
 	pkgrel = 1
 	url = http://root.cern.ch
 	install = root.install
@@ -27,7 +27,7 @@ pkgbase = root
 	depends = gtk-update-icon-cache
 	depends = libafterimage
 	options = !emptydirs
-	source = ftp://root.cern.ch/root/root_v6.04.00.source.tar.gz
+	source = ftp://root.cern.ch/root/root_v6.04.02.source.tar.gz
 	source = root.sh
 	source = rootd
 	source = root.xml
