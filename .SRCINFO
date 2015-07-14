@@ -1,0 +1,32 @@
+pkgbase = madedit-svn
+	pkgdesc = Open-Source & Cross-Platform Text/Hex Editor written in C++ and wxWidgets.
+	pkgver = r589
+	pkgrel = 5
+	url = http://sourceforge.net/projects/madedit/develop
+	install = madedit-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = wxgtk2.8
+	depends = wxgtk2.8
+	depends = desktop-file-utils
+	provides = madedit
+	conflicts = madedit
+	source = madedit::svn://svn.code.sf.net/p/madedit/code/trunk
+	source = http://downloads.sourceforge.net/project/boost/boost/1.47.0/boost_1_47_0.tar.bz2
+	source = madedit-highlight-blink-fix.patch
+	source = madedit-onpaint-fix.patch
+	source = madedit-add-file-changed-event.patch
+	source = madedit-max-linelength-fix.patch
+	source = madedit-desktop-file.patch
+	md5sums = SKIP
+	md5sums = a2dc343f7bc7f83f8941e47ed4a18200
+	md5sums = 5e89e938d1122a5fe299a68fc583edb2
+	md5sums = 7985f66c07a1e27ee65bc01524274796
+	md5sums = 661acd7e6c5f3c53177157f681335459
+	md5sums = 9d9e75d6519c723e5870801d5d43bf37
+	md5sums = cdce3aba22e7106a1278a512b7f6a028
+
+pkgname = madedit-svn
+

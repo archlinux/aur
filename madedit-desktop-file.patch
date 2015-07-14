@@ -1,0 +1,18 @@
+--- madedit.desktop.orig	2006-07-25 18:00:56.000000000 +0100
++++ madedit.desktop	2010-01-21 15:10:22.336140770 +0000
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=MadEdit
+ Comment=Text/Hex Editor
+ Comment[zh_CN]=文字及十六进位编辑器
+ Comment[zh_TW]=文字及十六進位編輯器
+ Exec=madedit %f
+-Icon=madedit.xpm
++Icon=madedit
+ Terminal=false
+ Type=Application
+-MimeType=text/plain
+-Categories=Application;Utility;TextEditor;
++MimeType=text/plain;
++Categories=Utility;TextEditor;

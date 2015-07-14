@@ -1,0 +1,60 @@
+--- src/MadEditFrame.h.orig	2010-01-22 17:44:25.882267610 -0430
++++ src/MadEditFrame.h	2010-01-22 18:02:14.144664728 -0430
+@@ -288,6 +288,8 @@
+     //void OnChar(wxKeyEvent& evt);
+     void OnActivate(wxActivateEvent &evt);
+ 
++    void OnFileChanged(wxEvent &evt);
++
+     bool QueryCloseFile(int idx);
+     bool QueryCloseAllFiles();
+ 
+--- src/MadEditFrame.cpp.orig	2010-01-22 17:41:26.481409287 -0430
++++ src/MadEditFrame.cpp	2010-01-22 18:35:11.374420287 -0430
+@@ -960,6 +960,12 @@
+ 
+ };
+ 
++BEGIN_DECLARE_EVENT_TYPES()
++	DECLARE_LOCAL_EVENT_TYPE( myEVT_FILE_CHANGED, wxNewEventType() )
++END_DECLARE_EVENT_TYPES()
++
++DEFINE_LOCAL_EVENT_TYPE( myEVT_FILE_CHANGED )
++
+ //----------------------------------------------------------------------------
+ // MadEditFrame
+ //----------------------------------------------------------------------------
+@@ -976,6 +982,7 @@
+ 	//EVT_CHAR(MadEditFrame::OnChar)
+ 	// file
+ 	EVT_ACTIVATE(MadEditFrame::OnActivate)
++	EVT_CUSTOM( myEVT_FILE_CHANGED, wxID_ANY, MadEditFrame::OnFileChanged)
+ 	EVT_UPDATE_UI(menuSave, MadEditFrame::OnUpdateUI_MenuFile_CheckCount)
+ 	EVT_UPDATE_UI(menuSaveAs, MadEditFrame::OnUpdateUI_MenuFile_CheckCount)
+ 	EVT_UPDATE_UI(menuSaveAll, MadEditFrame::OnUpdateUI_MenuFile_CheckCount)
+@@ -2378,7 +2385,9 @@
+ 
+         if(g_CheckModTimeForReload)
+         {
+-            g_ActiveMadEdit->ReloadByModificationTime();
++            wxCommandEvent event(myEVT_FILE_CHANGED, m_Notebook->GetId());
++            event.SetEventObject(this);
++            AddPendingEvent(event);
+         }
+     }
+     else
+@@ -2387,6 +2396,14 @@
+     }
+ }
+ 
++void MadEditFrame::OnFileChanged(wxEvent& evt) {
++    if(g_ActiveMadEdit) {
++        wxMilliSleep(100);
++        g_ActiveMadEdit->SetFocus();
++        g_ActiveMadEdit->ReloadByModificationTime();
++    }
++}
++
+ void MadEditFrame::OnNotebookPageClosing(wxAuiNotebookEvent& event)
+ {
+     if(m_PageClosing)

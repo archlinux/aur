@@ -1,0 +1,22 @@
+diff -u orig/MadEdit.cpp mad/MadEdit.cpp
+--- src/MadEdit/MadEdit.cpp	2011-06-21 21:42:10.000000000 +0100
++++ src/MadEdit/MadEdit.cpp	2011-06-21 21:52:46.467942943 +0100
+@@ -9515,7 +9515,7 @@
+         if(InvertRect==NULL)
+         {
+             wxMemoryDC dc1, dc2;
+-            dc.SelectObject(*m_ClientBitmap);
++            dc1.SelectObject(*m_ClientBitmap);
+             dc1.SetBrush(*wxTheBrushList->FindOrCreateBrush(*wxWHITE));
+             dc1.SetPen(*wxThePenList->FindOrCreatePen(*wxWHITE, 1, wxSOLID));
+ 
+diff -u orig/MadEdit.h mad/MadEdit.h
+--- src/MadEdit/MadEdit.h	2011-06-21 21:49:42.671009945 +0100
++++ src/MadEdit/MadEdit.h	2011-06-21 21:50:30.273549412 +0100
+@@ -996,4 +996,6 @@
+ wxString FormatThousands(const wxString& s);
+ bool StrToInt64(wxString str, wxInt64 &i64);
+ 
++#define FIXINVERT 2
++
+ #endif

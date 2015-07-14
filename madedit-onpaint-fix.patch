@@ -1,0 +1,10 @@
+--- src/MadEdit/MadEdit.cpp.orig	2009-12-01 13:52:40.709180585 -0430
++++ src/MadEdit/MadEdit.cpp	2009-12-01 13:52:51.001679283 -0430
+@@ -9720,6 +9720,7 @@
+ 
+     wxWindow *focuswin=FindFocus();
+ 
++    if(m_ClientBitmap)
+     if(InPrinting())
+     {
+         switch(m_LastPaintBitmap)
