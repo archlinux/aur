@@ -1,0 +1,38 @@
+--- ../apertium-es-gl-1.0.7/Makefile.am	2009-03-11 22:20:58.000000000 +0100
++++ apertium-es-gl-1.0.7/Makefile.am	2010-09-15 15:57:44.000000000 +0200
+@@ -20,7 +20,7 @@
+ 	xmllint --xinclude $(BASENAME).$(LANG2).dix.xml > $(BASENAME).$(LANG2).dix
+ $(BASENAME).$(LANG1)-$(LANG2).dix:
+ 	xmllint --xinclude $(BASENAME).$(LANG1)-$(LANG2).dix.xml > $(BASENAME).$(LANG1)-$(LANG2).dix
+-     
++
+ $(PREFIX1).automorf.bin: $(BASENAME).$(LANG1).dix
+ 	apertium-validate-dictionary $(BASENAME).$(LANG1).dix
+ 	lt-comp lr $(BASENAME).$(LANG1).dix $@
+@@ -97,7 +97,7 @@
+ 	rm $(BASENAME).$(LANG1).dix
+ 	rm $(BASENAME).$(LANG2).dix
+ 	rm $(BASENAME).$(PREFIX1).dix
+-	
++
+ apertium_es_gldir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_es_modesdir=$(prefix)/share/apertium/modes/
+ 
+@@ -116,12 +116,12 @@
+ 		    $(PREFIX1).t1x.bin \
+ 		    $(PREFIX2).t1x.bin \
+ 	            $(PREFIX1).mode $(PREFIX2).mode modes.xml apertium-$(PREFIX1).symbols.xml
+-		  
++
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(apertium_es_gldir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t1x $(apertium_es_gldir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_es_modesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_es_modesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(DESTDIR)$(apertium_es_gldir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t1x $(DESTDIR)$(apertium_es_gldir)
+ 
+ CLEANFILES = -rf $(TARGETS_COMMON) modes
