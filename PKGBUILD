@@ -1,6 +1,6 @@
 pkgname='sigmavpn'
 pkgver='0.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Light-weight, secure and modular VPN solution'
 url='https://github.com/neilalexander/sigmavpn/'
 license=('BSD')
@@ -25,6 +25,9 @@ prepare () {
 	cd "${pkgname}-${pkgver}"
 	patch -p0 < "${srcdir}/fix-paths.patch"
 	cp -v "${srcdir}/Makefile" .
+
+	# Extract license text from main.c
+	sed -e '1,/^$/{p}' -e d main.c > COPYING
 }
 
 build () {
@@ -48,4 +51,5 @@ package () {
 	install -m 755 -d "${pkgdir}/etc"
 	install -m 755 -t "${pkgdir}/etc" \
 		"${srcdir}/sigmavpn.conf"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
