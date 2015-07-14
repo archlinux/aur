@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgbase=mdxmini-git
 pkgname=(mdxmini-git mdxplay-git)
 pkgver=r19.eda5bca
