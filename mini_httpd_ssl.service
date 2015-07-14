@@ -1,0 +1,11 @@
+[Unit]
+Description=mini_httpd server
+After=syslog.target
+After=network.target
+
+[Service]
+PIDFile=/run/mini_httpd.pid
+ExecStart=/usr/bin/mini_httpd -C /etc/mini_httpd/mini_httpd_ssl.conf
+
+[Install]
+WantedBy=multi-user.target

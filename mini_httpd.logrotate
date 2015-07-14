@@ -1,0 +1,13 @@
+/var/log/mini_httpd.log
+{
+        weekly
+        missingok
+        notifempty
+        compress
+	delaycompress
+	create 644 nobody nobody
+	sharedscripts
+	postrotate
+	  kill -HUP `cat /run/mini_httpd.pid 2>/dev/null` 2> /dev/null || true
+	endscript
+}

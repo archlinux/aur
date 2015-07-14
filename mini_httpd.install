@@ -1,0 +1,17 @@
+post_install() {
+	[ ! -f /srv/http/index.html ] && echo "<html><body><h2>Server online.</h2></body></html>" >/srv/http/index.html
+	[ ! -f /srv/http/index.php ] && echo "<?php phpinfo(); ?>" >/srv/http/index.php
+	echo
+	echo "*** USAGE ***"
+	echo
+	echo "'systemctl start mini_httpd.service' starts the web server."
+	echo "'systemctl start mini_httpd_ssl.service' starts the web server in SSL mode."
+	echo "Web server root is /srv/http."
+	echo "Configuration files are in /etc/mini_httpd/ (man mini_httpd for options)"
+	echo "For directory protection, use mini_htpasswd ."
+	echo
+}
+
+post_upgrade() {
+	post_install
+}

@@ -1,0 +1,34 @@
+pkgbase = mini_httpd
+	pkgdesc = A small and simple forking http server. CGI, SSL, auth, vhosts, ipv6.
+	pkgver = 1.21
+	pkgrel = 1
+	url = http://www.acme.com/software/mini_httpd/
+	install = mini_httpd.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openssl
+	backup = etc/mini_httpd.conf
+	source = http://www.acme.com/software/mini_httpd/mini_httpd-1.21.tar.gz
+	source = mini_httpd.service
+	source = mini_httpd_ssl.service
+	source = mini_httpd.logrotate
+	source = mini_httpd.conf
+	source = mini_httpd_ssl.conf
+	source = mini_httpd.pem
+	source = sample.cgi
+	source = sample_perl.cgi
+	source = LICENSE
+	md5sums = c7d18a2952eb44282366c127e6dc3870
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mini_httpd
+
