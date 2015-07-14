@@ -1,0 +1,15 @@
+pkgbase = stardict-fkv-nob
+	pkgdesc = Kvääni-norja sanakirja, a StarDict dictionary for Kven to Norwegian Bokmål and back again
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://giellatekno.uit.no/words/dicts/index.eng.html
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	optdepends = stardict: a Gtk2 applicaton for looking up words in stardict-fkv-nob
+	optdepends = qstardict: a Qt4 applicaton for looking up words in stardict-fkv-nob
+	source = http://www.divvun.no/static_files/fkvnobfkv-stardict.dictionary.zip
+	md5sums = 34152e5f0079937ed383c0b86fdd5edb
+
+pkgname = stardict-fkv-nob
+
