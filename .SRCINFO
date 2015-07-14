@@ -1,0 +1,16 @@
+pkgbase = playerctl
+	pkgdesc = mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/acrisci/playerctl
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = glib2
+	depends = gobject-introspection
+	optdepends = python-gobject
+	source = https://github.com/acrisci/playerctl/releases/download/v0.4.2/playerctl-0.4.2.tar.gz
+	md5sums = 480ef14416607baa3d8bd8fe305d55d1
+
+pkgname = playerctl
+
