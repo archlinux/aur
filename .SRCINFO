@@ -1,0 +1,17 @@
+pkgbase = verbiste
+	pkgdesc = Verbiste is a French conjugation system.
+	pkgver = 0.1.41
+	pkgrel = 2
+	url = http://sarrazip.com/dev/verbiste.html
+	install = verbiste.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libgnomeui
+	depends = libxml2
+	depends = gtk2
+	source = http://perso.b2b2c.ca/sarrazip/dev/verbiste-0.1.41.tar.gz
+	md5sums = 822ed70783a081505aaa36e49d562583
+
+pkgname = verbiste
+
