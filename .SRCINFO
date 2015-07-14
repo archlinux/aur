@@ -1,0 +1,18 @@
+pkgbase = titus
+	pkgdesc = Totally Isolated TLS Unwrapping Server
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://www.opsmate.com/titus/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = MIT
+	depends = openssl>=1.0.1f
+	options = zipman
+	source = https://www.opsmate.com/titus/downloads/titus-0.2.tar.gz
+	source = https://www.opsmate.com/titus/downloads/titus-0.2.tar.gz.asc
+	sha512sums = a4b2f8723b54596d8d88fbb2acb9b7295510d93ad872560da949e23fe8340dd90145a891c66840c0a484158b54026e1d737fb897c2519c202d038cd336dd274d
+	sha512sums = SKIP
+
+pkgname = titus
+
