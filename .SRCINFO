@@ -1,0 +1,13 @@
+pkgbase = rude
+	pkgdesc = Real-time UDP Data Emitter
+	pkgver = 0.70
+	pkgrel = 1
+	url = http://rude.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://dl.sourceforge.net/sourceforge/rude/rude-0.70.tar.gz
+	md5sums = 04f3206da3aada5aba04cc0ffe0113b4
+
+pkgname = rude
+
