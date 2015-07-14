@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=vio2sf-git
 pkgver=r30.0d2a329
 pkgrel=1
