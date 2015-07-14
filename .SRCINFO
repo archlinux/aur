@@ -1,0 +1,14 @@
+pkgbase = python-pgpdump
+	pkgdesc = Python replacement for java.util.Properties.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pgpdump
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pgpdump/pgpdump-1.4.tar.gz
+	md5sums = b437c28ff9d6a6257a0062c0bbe2a9ec
+
+pkgname = python-pgpdump
+
