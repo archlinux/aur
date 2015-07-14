@@ -1,5 +1,5 @@
 pkgname='tappet-git'
-pkgver=0.r81
+pkgver=0.r92
 pkgrel=1
 pkgdesc='Simple encrypted UDP tunnel using TweetNaCl'
 license='MIT'
@@ -7,7 +7,7 @@ url='https://github.com/amenonsen/tappet'
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 arch=('i686' 'x86_64' 'arm')
-depends=('glibc' 'iproute2')
+depends=('iproute2' 'libsodium')
 options=('strip')
 provides=('tappet')
 conflicts=('tappet')
@@ -22,13 +22,16 @@ pkgver () {
 build () {
 	cd "${srcdir}/${pkgname}"
 	eval "$(sed -e '/^CFLAGS=/p' -e d /etc/makepkg.conf)"
-	make OPTIM="${CFLAGS}"
+	make OPTIM="${CFLAGS}" LDLIBS='-lrt -lsodium' \
+		NACLLIB='' NACL='' NACLINC=/usr/include/sodium
 }
 
 package () {
 	cd "${srcdir}/${pkgname}"
 	install -Dm644 README \
-		"${pkgdir}/usr/share/doc/${pkgname}"
+		"${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm644 LICENSE \
+		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 	for program in tappet tappet-keygen ; do
 		install -Dm755 "${program}" \
 			"${pkgdir}/usr/bin/${program}"
