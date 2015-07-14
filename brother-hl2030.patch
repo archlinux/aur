@@ -1,0 +1,123 @@
+diff -ur old_usr/local/Brother/cupswrapper/cupswrapperHL2030-2.0.1 usr/local/Brother/cupswrapper/cupswrapperHL2030-2.0.1
+--- old_usr/local/Brother/cupswrapper/cupswrapperHL2030-2.0.1	2007-12-06 00:36:39.000000000 +0100
++++ usr/local/Brother/cupswrapper/cupswrapperHL2030-2.0.1	2007-12-06 00:36:54.000000000 +0100
+@@ -17,7 +17,7 @@
+ # this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ # Place, Suite 330, Boston, MA  02111-1307  USA
+ #
+-
++if /bin/false; then
+ if [ "$1" = '-e' ]; then
+   lpadmin -x HL2030
+   rm -f /usr/share/cups/model/HL2030.ppd
+@@ -60,7 +60,8 @@
+ rm -f /usr/share/cups/model/HL2030.ppd
+ ppd_file_name=/usr/share/cups/model/HL2030.ppd
+ 
+-cat <<ENDOFPPDFILE >$ppd_file_name
++fi
++cat <<ENDOFPPDFILE > ppd_file
+ *PPD-Adobe: "4.3"
+ *%================================================
+ *%	Copyright(C) 2006 Brother Industries, Ltd.
+@@ -333,15 +334,16 @@
+ ENDOFPPDFILE
+ 
+ 
++if /bin/false; then
+ brotherlpdwrapper=/usr/lib/cups/filter/brlpdwrapperHL2030
+ brotherlpdwrapper64=/usr/lib64/cups/filter/brlpdwrapperHL2030
+ rm -f  $brotherlpdwrapper
+ 
+-
+-cat <<!ENDOFWFILTER! >$brotherlpdwrapper
++fi
++cat <<!ENDOFWFILTER! > wrapper
+ #! /bin/sh
+ #
+-# Brother Print filter  >>  $brotherlpdwrapper
++# Brother Print filter
+ # Copyright (C) 2005 Brother. Industries, Ltd.
+ #                                    Ver1.00
+ 
+@@ -467,25 +469,25 @@
+ fi
+ 
+ 
+-if [ -e "/usr/local/Brother/lpd/filter\$PRINTER" ]; then
++if [ -e "/usr/share/brother/lpd/filter\$PRINTER" ]; then
+        :
+ else
+-    echo "ERROR: /usr/local/Brother/lpd/filter\$PRINTER does not exist"   >>\$LOGFILE
++    echo "ERROR: /usr/share/brother/lpd/filter\$PRINTER does not exist"   >>\$LOGFILE
+     errorcode=30
+     exit $errorcode
+ fi
+ 
+-if [ -e "/usr/local/Brother/cupswrapper/brcupsconfig3" ]; then
++if [ -e "/usr/share/brother/cupswrapper/brcupsconfig3" ]; then
+   if [ \$DEBUG = 0 ]; then
+-     /usr/local/Brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD 0 "\$options" >> /dev/null
++     /usr/share/brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD 0 "\$options" >> /dev/null
+   else
+-     /usr/local/Brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD \$LOGCLEVEL "\$options" >>\$LOGFILE
++     /usr/share/brother/cupswrapper/brcupsconfig3  \$PRINTER  \$PPD \$LOGCLEVEL "\$options" >>\$LOGFILE
+   fi
+ fi
+ 
+ 
+ if [ \$DEBUG -le 2 ]; then
+-    cat    \$INPUT_TEMP_PS | /usr/local/Brother/lpd/filter\$PRINTER
++    cat    \$INPUT_TEMP_PS | /usr/share/brother/lpd/filter\$PRINTER
+ fi
+ 
+ if [ \$DEBUG -ge 2 ];  then
+@@ -501,7 +503,7 @@
+ 
+ !ENDOFWFILTER!
+ 
+-
++if /bin/false; then
+ chmod a+x $brotherlpdwrapper
+ if [ -e /usr/lib64/cups/filter ]; then
+    cp $brotherlpdwrapper  $brotherlpdwrapper64
+@@ -532,3 +534,4 @@
+ fi
+ lpadmin -p HL2030 -E -v $port -P /usr/share/cups/model/HL2030.ppd
+   exit 0 
++fi
+diff -ur old_usr/local/Brother/inf/brHL2030func usr/local/Brother/inf/brHL2030func
+--- old_usr/local/Brother/inf/brHL2030func	2007-12-06 00:36:39.000000000 +0100
++++ usr/local/Brother/inf/brHL2030func	2007-12-06 00:36:58.000000000 +0100
+@@ -24,3 +24,5 @@
+ Sleep={PrinterDefault,"1-99"}
+ Toner Save Mode={ON,OFF}
+ 
++[psconvert2]
++pstops=/usr/lib/cups/filter/pstops
+diff -ur old_usr/local/Brother/lpd/filterHL2030 usr/local/Brother/lpd/filterHL2030
+--- old_usr/local/Brother/lpd/filterHL2030	2007-12-06 00:36:39.000000000 +0100
++++ usr/local/Brother/lpd/filterHL2030	2007-12-06 00:36:50.000000000 +0100
+@@ -21,7 +21,7 @@
+ PRINTER="HL2030"
+ PRINTER_TMP=$(echo $PRINTER | sed -e 's/ //g' -e 's/-//g')
+ 
+-BR_PRT_PATH=/usr/local/Brother
++BR_PRT_PATH=/usr/share/brother
+ RCFILE=`eval echo $BR_PRT_PATH/inf/brPRINTERrc | eval sed 's/PRINTER/"$PRINTER_TMP"/'`
+ PAPER_INF=$BR_PRT_PATH/inf/paperinf
+ PSCONV=$BR_PRT_PATH/lpd/psconvert2
+@@ -109,11 +109,9 @@
+ 	cat $INPUT_TEMP1| $prefilter >$INPUT_TEMP
+ fi
+ 	
+-#PSTOPSFILTER=`which pstops`
++PSTOPSFILTER='/usr/lib/cups/filter/pstops'
+ 
+-if [ -e '/usr/bin/pstops' ];then
+-	PSTOPSFILTER='/usr/bin/pstops'
+-else
++if ! [ -e "$PSTOPSFILTER" ];then
+ 	PSTOPSFILTER=''
+ fi
+ 

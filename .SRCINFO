@@ -1,0 +1,19 @@
+pkgbase = brother-hl2030
+	pkgdesc = Brother HL-2030 CUPS driver
+	pkgver = 2.0.1
+	pkgrel = 6
+	url = http://www.brother.com
+	install = brother-hl2030.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = brother-hl2030.patch
+	source = http://download.brother.com/welcome/dlf005837/cupswrapperHL2030-2.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf005835/brhl2030lpr-2.0.1-1.i386.rpm
+	md5sums = e81a2b369368fb8fa56a08c3341097b2
+	md5sums = 29e4d9dfd44ee8fc1629b9cfdadfb896
+	md5sums = 29d20e3925e29779260dbbcd0d1fc29e
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hl2030
+
