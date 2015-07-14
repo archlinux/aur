@@ -1,0 +1,16 @@
+post_install() {
+	echo ""
+	echo "==> Point your browser to the following location to set up pmwiki."
+	echo "==> http://localhost/pmwiki/pmwiki.php"
+	echo ""
+}
+
+post_remove() {
+	echo ""
+	echo "==> I did not remove your wiki pages, config files and cookbooks."
+	echo "==> You have to manually delete pmwiki's directory:"
+	echo "==> rm -rf /srv/http/pmwiki/"
+	echo ""
+}
+
+# vim:set ts=2 sw=2 et:
