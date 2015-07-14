@@ -1,0 +1,12 @@
+[Unit]
+Description=A Terraria Server administration modification that runs on the open source TerrariaAPI.
+
+[Service]
+User=tshock
+Group=tshock
+ExecStart=/srv/tshock/tshock.sh start %i
+ExecStop=/srv/tshock/tshock.sh stop %i
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
