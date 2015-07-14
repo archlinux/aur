@@ -1,20 +1,20 @@
 pkgbase = linux-pax
-	pkgver = 4.1.1
-	pkgrel = 1
+	pkgver = 4.1.2
+	pkgrel = 2
 	url = http://grsecurity.net/~paxguy1/
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.1.xz
-	source = http://grsecurity.net/~paxguy1/pax-linux-4.1.1-test1.patch
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.xz
+	source = http://grsecurity.net/~paxguy1/pax-linux-4.1.2-test4.patch
 	source = config.x86_64
 	source = linux-pax.install
 	source = linux-pax.preset
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
-	sha256sums = 48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad
-	sha256sums = 888185ba93c917e0a843180856621016630d0ecc9c2778b4c837143f5c394431
+	sha256sums = 1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef
+	sha256sums = efb23993f3ca2ba97b5885afaddde31c0fea0df2b6e9e90ad50c6a9998cb843e
 	sha256sums = 4966c3b5441b4e3aa94080b700ef04dafb01340de76a37de99292d5919980da1
 	sha256sums = c048941d45cdaa9b93916b88952e1b745a48a477f45aceb6ae5433161ff719c3
 	sha256sums = 92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
@@ -36,7 +36,7 @@ pkgname = linux-pax
 
 pkgname = linux-pax-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel with PaX patches
-	provides = kernel26-pax-headers=4.1.1
+	provides = kernel26-pax-headers=4.1.2
 	conflicts = kernel26-pax-headers
 	replaces = kernel26-pax-headers
 
