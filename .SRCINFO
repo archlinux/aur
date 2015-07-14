@@ -1,0 +1,14 @@
+pkgbase = hunspell-en-gb
+	pkgdesc = English hunspell dictionaries (en_GB only)
+	pkgver = 2015.05.18
+	pkgrel = 1
+	url = http://wordlist.aspell.net/dicts/
+	arch = any
+	license = LGPL
+	license = custom:scowl
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://downloads.sourceforge.net/project/wordlist/speller/2015.05.18/hunspell-en_GB-large-2015.05.18.zip
+	sha1sums = daf8e7d03571990199cb0986e18e469a951e8ab0
+
+pkgname = hunspell-en-gb
+
