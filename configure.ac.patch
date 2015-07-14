@@ -1,0 +1,19 @@
+--- ../apertium-en-gl-0.5.1/configure.ac	2008-11-19 08:41:42.000000000 +0100
++++ apertium-en-gl-0.5.1/configure.ac	2010-09-21 15:43:39.507405444 +0200
+@@ -27,8 +27,14 @@
+               APERTIUM_VER=30
+           ],
+           [
+-              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0)
+-              APERTIUM_VER=31
++              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0,
++	      [
++	          APERTIUM_VER=31
++	      ],
++	      [
++	          PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
++ 		  APERTIUM_VER=32
++              ])
+           ])
+       ])
+   ])

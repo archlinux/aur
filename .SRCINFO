@@ -1,0 +1,21 @@
+pkgbase = apertium-en-gl
+	pkgdesc = Apertium language data for the English-Galician translator.
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-en-gl-0.5.1.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = daaba4c47ed5cbfbdd9c9410044ffa31
+	md5sums = 106b362aa9693eee1c94c55f0f00fa33
+	md5sums = 0040d866c8c2baed89a744c699e0179d
+
+pkgname = apertium-en-gl
+
