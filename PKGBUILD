@@ -1,7 +1,7 @@
 # Maintainer: flu
 
 pkgname=sqlcipher
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="SQLite extension that provides transparent 256-bit AES encryption of database files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.zetetic.net/sqlcipher/"
 license=('BSD')
 makedepends=('openssl' 'sqlite3' 'git')
 source=(https://github.com/sqlcipher/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('9f24fcd25811aabe36f5e27cdfc117a02ad3578a95691e9b3b7f41ee47ee0c176243c4f35a8415a17a3828d4534aae58a1097b75a950937706b10a79f2c92c81')
+sha512sums=('8bcbe0d46ec109788bf58ba53eaccad189338fb3caf551096ae166c71a72ba58331bc2d1198d6c7b3f62973e004be06c6189f2539e7da664b2e4b50c5637f989')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
