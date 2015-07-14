@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=rocksdb
-pkgver=3.11
+pkgver=3.12
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64 armv6h)
@@ -10,7 +10,7 @@ license=(BSD)
 depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/rocksdb-$pkgver.zip)
-sha256sums=('8214dde4a06b364e8aa081fb9e553aea302d554c79879fdf24be7c6844bcd675')
+sha256sums=('1e81391b2cd034e51f48c5659d386608538cf3a3daf87338fa9149da64ba5e04')
 
 prepare() {
   cd rocksdb-rocksdb-$pkgver
