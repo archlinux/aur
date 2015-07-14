@@ -1,0 +1,20 @@
+pkgbase = apertium-eo-en
+	pkgdesc = Apertium language data for the Esperanto-English translator.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-eo-en-1.0.0.tar.gz
+	source = Makefile.am.patch
+	source = Makefile.in.patch
+	md5sums = df00059573f4a87d90dc56394daf6793
+	md5sums = 31dfb82e3412a1159786ce65a2748910
+	md5sums = 6145fc4ec2ceddd7270fa2111d11bb73
+
+pkgname = apertium-eo-en
+
