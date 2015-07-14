@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  old=`echo $2 | sed 's/-[0-9]*$//'`
+  new=`echo $1 | sed 's/-[0-9]*$//'`
+  if [[ $old != $new ]]; then
+    echo "New vislcg3 version."
+    echo "Packages dependent on vislcg3 may require rebuilds!"
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
