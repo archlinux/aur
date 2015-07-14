@@ -1,0 +1,29 @@
+pkgbase = geda-gaf-git
+	pkgdesc = gEDA/gaf suite - Contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project (latest git revision)
+	pkgver = 5902.da7dabe
+	pkgrel = 1
+	url = http://www.geda-project.org/
+	install = geda-gaf.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	makedepends = flex
+	makedepends = gawk
+	depends = gtk2
+	depends = guile
+	depends = libstroke
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	optdepends = python2: for two of the commands (garchive, tragesym)
+	optdepends = gawk: for sw2asc
+	provides = geda-gaf
+	conflicts = geda-gaf
+	source = git://git.geda-project.org/geda-gaf.git
+	md5sums = SKIP
+
+pkgname = geda-gaf-git
+
