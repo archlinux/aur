@@ -1,0 +1,19 @@
+pkgbase = perl-xml-tidy
+	pkgdesc = tidy indenting of XML documents
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Tidy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-pod>=0
+	checkdepends = perl-test-pod-coverage>=0
+	depends = perl-math-basecnv>=0
+	depends = perl-xml-xpath>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PI/PIP/XML-Tidy-1.12.B55J2qn.tgz
+	md5sums = a6179a289edbd6ae7dd050b98c87f7dc
+	sha512sums = eda74fa413aa40cf0933830f65f00507fa967f825cdb0b45f97bb9c90eeef93bf0eb6d416896557da023bd60c652004530496149a839a8750483f80daa342500
+
+pkgname = perl-xml-tidy
+
