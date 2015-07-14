@@ -1,0 +1,22 @@
+pkgbase = showtime-git
+	pkgdesc = Media player for use on HTPC media centers.
+	pkgver = 20130206
+	pkgrel = 1
+	url = https://www.lonelycoder.com/showtime
+	install = showtime.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = mesa
+	makedepends = yasm
+	depends = gtk2
+	depends = libxss
+	depends = libxv
+	depends = libcdio-paranoia
+	depends = libvdpau
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+
+pkgname = showtime-git
+
