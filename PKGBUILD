@@ -1,15 +1,15 @@
 # Maintainer: Brandon Giesing <brandon@giesing.cf>
 
 pkgname=jackett
-pkgver=0.3.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='User any tracker with Sonarr'
 arch=('any')
 license=('GPL')
 url='https://github.com/zone117x/Jackett'
 depends=('mono' 'curl')
-source=('https://github.com/zone117x/Jackett/releases/download/v0.3.1/Release.v0.3.1.zip' 'jackett.service')
-md5sums=('08a7b51dcdddfbbb0487aba455ce72d4'
+source=('https://github.com/zone117x/Jackett/releases/download/v0.4.3/Release.v0.4.3.zip' 'jackett.service')
+md5sums=('160840fd3cf7fbc29c1e5ab6dec5e021'
          'bfefcb47a83a216e223dbc1294d03e0c')
 install=$pkgname.install
 
