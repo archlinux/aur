@@ -1,6 +1,6 @@
 pkgbase = bup-git
 	pkgdesc = Highly efficient file backup system based on the git packfile format (development version)
-	pkgver = 1260.c7f3161
+	pkgver = 1278.6178db0
 	pkgrel = 1
 	url = https://github.com/bup/bup
 	arch = i686
