@@ -1,0 +1,17 @@
+pkgbase = apertium-br-fr
+	pkgdesc = Apertium language data for the Breton-French translator.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2
+	depends = apertium>=3.2
+	depends = vislcg3>=0.9.7.7823
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-br-fr-0.5.0.tar.gz
+	md5sums = 65992f979f243e1f6a0f0b850b5a8a10
+
+pkgname = apertium-br-fr
+
