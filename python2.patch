@@ -1,0 +1,36 @@
+diff -uBw -aur pbdagcon-git/blasr_libcpp/configure.py pbdagcon-git-patched/blasr_libcpp/configure.py
+--- pbdagcon-git/blasr_libcpp/configure.py	2015-07-14 13:03:49.607274903 +0200
++++ pbdagcon-git-patched/blasr_libcpp/configure.py	2015-07-14 13:07:20.106202064 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ """Configure the build.
+ 
+ - Fetch HDF5 headers.
+diff -uBw -aur pbdagcon-git/src/filterm4.py pbdagcon-git-patched/src/filterm4.py
+--- pbdagcon-git/src/filterm4.py	2015-07-14 13:03:49.607274903 +0200
++++ pbdagcon-git-patched/src/filterm4.py	2015-07-14 13:07:20.102868695 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Filters for unique, highest scoring subread query/target pairs from an m4
+ # file. Helps get rid of chimeras, at the cost of some yield.
+diff -uBw -aur pbdagcon-git/src/m4topre.py pbdagcon-git-patched/src/m4topre.py
+--- pbdagcon-git/src/m4topre.py	2015-07-14 13:03:49.607274903 +0200
++++ pbdagcon-git-patched/src/m4topre.py	2015-07-14 13:07:20.106202064 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ """Super-simple converter from blasr m4 alignments to pbdagcon 'pre'
+ alignments. For use in the pre-assembler dagcon workflow.
+ """
+diff -uBw -aur pbdagcon-git/src/q-sense.py pbdagcon-git-patched/src/q-sense.py
+--- pbdagcon-git/src/q-sense.py	2015-07-14 13:03:49.607274903 +0200
++++ pbdagcon-git-patched/src/q-sense.py	2015-07-14 13:07:20.106202064 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #################################################################################$$
+ # Copyright (c) 2011-2013, Pacific Biosciences of California, Inc.

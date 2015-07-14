@@ -1,0 +1,19 @@
+pkgbase = pbdagcon-git
+	pkgdesc = sequence consensus algorithm implementation based on using directed acyclic graphs to encode multiple sequence alignment
+	pkgver = r62.a6790e2
+	pkgrel = 1
+	url = https://github.com/PacificBiosciences/pbdagcon
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	depends = python2
+	provides = pbdagcon
+	conflicts = pbdagcon
+	source = pbdagcon-git::git+https://github.com/PacificBiosciences/pbdagcon
+	source = python2.patch
+	md5sums = SKIP
+	md5sums = 839716278029c906ecd20523fef9e3c5
+
+pkgname = pbdagcon-git
+
