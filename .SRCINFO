@@ -1,6 +1,6 @@
 pkgbase = popcorntime-git
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
-	pkgver = r4591.101f883
+	pkgver = r5140.702f376
 	pkgrel = 1
 	url = http://popcorntime.io
 	install = popcorntime.install

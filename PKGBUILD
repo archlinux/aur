@@ -2,7 +2,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=popcorntime-git
-pkgver=r4591.101f883
+pkgver=r5140.702f376
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ install="popcorntime.install"
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 _gitname=desktop
+_nw_ver=0.12.1
 
 source=('popcorntime.install'
         "git+https://git.popcorntime.io/popcorntime/desktop.git"
@@ -43,7 +44,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  grunt build
+
+  # FIXME: fails the first time:
+  # Fatal error: Cannot read property 'length' of undefined
+  grunt build || grunt build
 }
 
 package() {
@@ -58,6 +62,7 @@ package() {
   install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/lib/popcorntime/"
   install -Dm644 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/popcorntime/"
   install -Dm644 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/popcorntime/"
+  install -Dm644 "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/icudtl.dat" "${pkgdir}/usr/lib/popcorntime/"
 
   # Link to program
   mkdir -p "${pkgdir}/usr/bin"
