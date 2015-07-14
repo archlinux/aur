@@ -1,6 +1,6 @@
 pkgbase = confmacs-git
 	pkgdesc = An Emacs configuration switcher.
-	pkgver = 20.f27121f
+	pkgver = 24.fbc9036
 	pkgrel = 1
 	url = https://github.com/SShrike/confmacs
 	arch = any
