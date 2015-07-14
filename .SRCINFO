@@ -1,0 +1,11 @@
+pkgbase = bsdwhois-drizztbsd-git
+	pkgdesc = FreeBSD Whois Client - Git Version (drizztbsd version)
+	pkgver = 20111104
+	pkgrel = 1
+	url = https://github.com/drizztbsd/bsdwhois
+	arch = i686
+	arch = x86_64
+	license = BSD
+
+pkgname = bsdwhois-drizztbsd-git
+
