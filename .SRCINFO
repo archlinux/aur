@@ -1,0 +1,17 @@
+pkgbase = python2-pymtp
+	pkgdesc = LibMTP bindings in Python (python 2 version)
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/PyMTP
+	install = pymtp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-setuptools
+	depends = libmtp
+	depends = python2
+	source = https://pypi.python.org/packages/source/P/PyMTP/PyMTP-0.0.6.tar.gz
+	md5sums = 23679b79ce5e2eebf987b0daeb351fb1
+
+pkgname = python2-pymtp
+
