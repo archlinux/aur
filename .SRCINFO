@@ -1,14 +1,14 @@
 pkgbase = meson
 	pkgdesc = SCons-like build system that use python as a front-end language and Ninja as a building backend
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
-	url = https://jpakkane.github.io/meson/
+	url = http://mesonbuild.com/
 	arch = any
 	license = Apache
 	depends = python
 	depends = ninja
-	source = https://github.com/jpakkane/meson/archive/0.24.0.zip
-	sha1sums = 858522b19693abc3dda7d403407e8b3c050397ac
+	source = https://github.com/jpakkane/meson/archive/0.25.0.zip
+	sha1sums = 4439ebf44223204cf6a2fc4101a81cd20bc0dc81
 
 pkgname = meson
 
