@@ -1,7 +1,7 @@
 pkgbase = aurtab
 	pkgdesc = AUR tab completion for yaourt using zsh.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/worzel666/aurtab
 	install = aurtab.install
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = aurtab
 	depends = python
 	depends = python-requests
 	depends = zsh
-	depends = zsh-completions
 	provides = aurtab
 	conflicts = aurtab
+	conflicts = zsh-completions
 	source = git+https://github.com/worzel666/aurtab.git
 	sha256sums = SKIP
 
