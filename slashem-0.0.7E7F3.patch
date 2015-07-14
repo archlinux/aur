@@ -1,0 +1,132 @@
+--- Makefile.bak	2015-07-14 12:30:58.723692095 -0800
++++ Makefile	2015-07-14 13:03:55.940290421 -0800
+@@ -17,15 +17,15 @@
+ PREFIX   = /usr
+ GAME     = slashem
+ # GAME     = slashem.prg
+-GAMEUID  = games
+-GAMEGRP  = bin
++GAMEUID  = root
++GAMEGRP  = games
+ 
+ # Permissions - some places use setgid instead of setuid, for instance
+ # See also the option "SECURE" in include/config.h
+-GAMEPERM = 04755
+-FILEPERM = 0644
++GAMEPERM = 02755
++FILEPERM = 0664
+ EXEPERM  = 0755
+-DIRPERM  = 0755
++DIRPERM  = 0775
+ VARFILEPERM = 0644
+ VARDIRPERM  = 0755
+ 
+@@ -40,7 +40,7 @@
+ # These must agree with the definitions in unixconf.h
+ 
+ # Defs. for non file areas support.
+-GAMEDIR  = $(PREFIX)/local/slashemdir
++GAMEDIR  = $(PREFIX)/var/games/$(GAME)
+ VARDIR = $(GAMEDIR)
+ FILE_AREA_VAR = $(VARDIR)
+ FILE_AREA_SAVE = $(VARDIR)/save
+@@ -49,7 +49,7 @@
+ FILE_AREA_DOC = $(GAMEDIR)
+ FILE_AREA_BONES = $(FILE_AREA_VAR)
+ FILE_AREA_LEVL = $(FILE_AREA_VAR)
+-SHELLDIR = $(PREFIX)/local/bin
++SHELLDIR = $(PREFIX)/usr/bin
+ 
+ # Defs. compatible with Linux's FSSTND 1.2
+ # FILE_AREA_VAR = /var/lib/games/slashem
+@@ -69,7 +69,7 @@
+ # FILE_AREA_DOC = /usr/share/doc/slashem
+ # FILE_AREA_BONES = $(FILE_AREA_VAR)
+ # FILE_AREA_LEVL = $(FILE_AREA_VAR)
+-# SHELLDIR = /usr/games
++# SHELLDIR = /usr/bin
+ 
+ # KDEDIR = /opt/kde
+ # SHELLDIR = $(KDEDIR)/bin
+--- includeconfig.h.bak	2015-07-14 12:10:52.030400467 -0800
++++ include/config.h	2015-07-14 12:27:13.817033203 -0800
+@@ -231,7 +231,7 @@
+ #ifdef UNIX
+ /* path and file name extension for compression program */
+ # define COMPRESS "/usr/bin/compress" /* Lempel-Ziv compression */
+-# define COMPRESS_EXTENSION ".Z"	     /* compress's extension */
++# define COMPRESS_EXTENSION ".gz"	     /* compress's extension */
+ 
+ /* An example of one alternative you might want to use: */
+ /* # define COMPRESS "/usr/local/bin/gzip" */   /* FSF gzip compression */
+@@ -249,7 +249,7 @@
+  *	a tar-like file, thus making a neater installation.  See *conf.h
+  *	for detailed configuration.
+  */
+-/* #define DLB */             /* not supported on all platforms */
++#define DLB             /* not supported on all platforms */
+ 
+ /*
+  *	Defining INSURANCE slows down level changes, but allows games that
+--- includeunixconf.h.bak	2015-07-14 12:28:20.217030905 -0800
++++ include/unixconf.h	2015-07-14 13:03:27.956958059 -0800
+@@ -38,7 +38,7 @@
+ #define NETWORK		/* if running on a networked system */
+ 			/* e.g. Suns sharing a playground through NFS */
+ /* #define SUNOS4 */	/* SunOS 4.x */
+-/* #define LINUX */	/* Another Unix clone */
++#define LINUX	/* Another Unix clone */
+ /* #define CYGWIN32 */	/* Unix on Win32 -- use with case sensitive defines */
+ /* #define GENIX */	/* Yet Another Unix Clone */
+ /* #define HISX */	/* Bull Unix for XPS Machines */
+@@ -195,7 +195,7 @@
+  * "extra output" method is used, but not all systems provide access to
+  * a fine-grained timer.
+  */
+-/* #define TIMED_DELAY */	/* usleep() */
++#define TIMED_DELAY	/* usleep() */
+ 
+ # ifdef TEXTCOLOR
+ #  define VIDEOSHADES
+--- srcMakefile.bak	2015-07-14 12:25:08.923704185 -0800
++++ src/Makefile	2015-07-14 12:25:41.147036404 -0800
+@@ -124,7 +124,7 @@
+ 
+ # flags for Linux
+ #   compile normally
+-# CFLAGS = -O2 -fomit-frame-pointer -I../include
++CFLAGS = -O2 -fomit-frame-pointer -I../include
+ # LFLAGS = -L/usr/X11R6/lib
+ #   OR compile backwards compatible a.out format
+ # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
+@@ -144,7 +144,7 @@
+ # flags for debugging:
+ # CFLAGS = -g -I../include
+ 
+-CFLAGS = -O -I../include
++# CFLAGS = -O -I../include
+ LFLAGS =
+ 
+ # Only used for the Gnome interface.
+@@ -336,8 +336,8 @@
+ # WINTTYLIB = -ltermcap
+ # WINTTYLIB = -lcurses
+ # WINTTYLIB = -lcurses16
+-# WINTTYLIB = -lncurses
+-WINTTYLIB = -ltermlib
++WINTTYLIB = -lncurses
++# WINTTYLIB = -ltermlib
+ #
+ # libraries for X11
+ # If USE_XPM is defined in config.h, you will also need -lXpm here.
+--- docMakefile.bak	2015-07-14 13:47:17.040200526 -0800
++++ doc/Makefile	2015-07-14 13:47:31.520200024 -0800
+@@ -53,7 +53,7 @@
+ #	tbl tmac.n Guidebook.mn | groff -Wall -Tdvi > Guidebook.dvi
+ 
+ GAME    = slashem
+-MANDIR	= /usr/man/man6
++MANDIR	= $(PREFIX)/usr/share/man/man6
+ MANEXT	= 6
+ FRMANDIR= $(MANDIR:man6=fr/man6)
+ 

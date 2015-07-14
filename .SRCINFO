@@ -1,0 +1,16 @@
+pkgbase = slashem
+	pkgdesc = Nethack variant Super Lotsa Added Stuff Hack - Extended Magic
+	pkgver = 0.0.7E7F3
+	pkgrel = 3
+	url = http://www.slashem.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash
+	source = http://prdownloads.sourceforge.net/slashem/se007e7f3.tar.gz
+	source = slashem-0.0.7E7F3.patch
+	md5sums = 54b4534fe85f08722e8b6b38d52c2e9a
+	md5sums = 81e685f77734d1a39a85d4d5d77add7c
+
+pkgname = slashem
+
