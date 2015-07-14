@@ -16,7 +16,7 @@ install=simulationcraft.install
 source=('simulationcraft::git+https://code.google.com/p/simulationcraft/'
         'SimulationCraft.desktop')
 md5sums=('SKIP'
-         '59f2d428f6c7ad8a3eee1ca615a5982a')
+         '9e52edb48f39888bc13a0b9bd5f8d758')
 
 pkgver() {
   cd "$srcdir/simulationcraft"
