@@ -1,6 +1,6 @@
 pkgbase = reop-git
 	pkgdesc = Utility to create and verifies cryptographic signatures
-	pkgver = 138.81dc1b4
+	pkgver = 184.8b6f63a
 	pkgrel = 1
 	url = https://github.com/tedu/reop/
 	arch = arm
@@ -8,8 +8,10 @@ pkgbase = reop-git
 	arch = x86_64
 	license = MIT
 	depends = libsodium
+	provides = reop
+	conflicts = reop
 	options = zipman
-	source = git+https://github.com/tedu/reop.git
+	source = reop-git::git+https://github.com/tedu/reop/
 	md5sums = SKIP
 
 pkgname = reop-git
