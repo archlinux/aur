@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('rhythmbox>=3.0' 'python-chardet' 'python-lxml' )
 install=$pkgname.install
 source=("https://github.com/dmo60/lLyrics/archive/v$pkgver.zip")
-md5sums=('d6b9a5dd1282d69bcd5e8f974c05cfa6')
+md5sums=('a1d19eb0663c2d4027aa5b5af9d2b50c')
 
 _plugin_name=llyrics
 

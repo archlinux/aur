@@ -12,7 +12,7 @@ pkgbase = rhythmbox-llyrics
 	depends = python-chardet
 	depends = python-lxml
 	source = https://github.com/dmo60/lLyrics/archive/v1.0.zip
-	md5sums = d6b9a5dd1282d69bcd5e8f974c05cfa6
+	md5sums = a1d19eb0663c2d4027aa5b5af9d2b50c
 
 pkgname = rhythmbox-llyrics
 
