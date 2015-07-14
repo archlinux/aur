@@ -1,0 +1,17 @@
+pkgbase = apertium-tolk-svn
+	pkgdesc = apertium-tolk is a program that translates as you type, using Apertium
+	pkgver = 25848
+	pkgrel = 1
+	url = http://wiki.apertium.org/wiki/Apertium-tolk
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	depends = apertium-dbus
+	depends = python>=2.4
+	conflicts = apertium-tolk
+
+pkgname = apertium-tolk-svn
+
