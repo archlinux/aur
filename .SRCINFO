@@ -1,0 +1,18 @@
+pkgbase = jack_capture
+	pkgdesc = Simple command line tool to record JACK audio output to a file
+	pkgver = 0.9.71
+	pkgrel = 1
+	url = http://www.notam02.no/arkiv/src/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = lame
+	depends = liblo
+	optdepends = meterbridge: levels monitor
+	optdepends = zenity: gtk2 gui
+	source = http://www.notam02.no/arkiv/src/jack_capture-0.9.71.tar.gz
+	md5sums = 9f5f39d2183c32a790612ca0257fdcc4
+
+pkgname = jack_capture
+
