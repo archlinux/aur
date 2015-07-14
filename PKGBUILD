@@ -1,10 +1,10 @@
 # Maintainer: Severen Redwood <severen.redwood@gmail.com>
 
-pkgname=ruby-thor
-_gemname=thor
-pkgver=0.19.1
+_gemname='thor'
+pkgname='ruby-thor'
+pkgver='0.19.1'
 pkgrel=1
-pkgdesc="Thor is a toolkit for building powerful command-line interfaces."
+pkgdesc='Thor is a toolkit for building powerful command-line interfaces.'
 arch=('any')
 license=('MIT')
 makedepends=('ruby')
@@ -16,5 +16,7 @@ noextract=("thor-$pkgver.gem")
 package() {
   cd "$srcdir"
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
 }
+
+# vim:set ts=2 sw=2 et:
