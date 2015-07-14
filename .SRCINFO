@@ -1,0 +1,21 @@
+pkgbase = apertium-mk-en
+	pkgdesc = Apertium language data for the Macedonian-English translator.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2
+	depends = apertium>=3.2
+	depends = vislcg3>=0.9.7.6010
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-mk-en-0.1.1.tar.gz
+	source = Makefile.am.patch
+	source = Makefile.in.patch
+	md5sums = 46bd7cfcb16afeea7a731b574ae439d8
+	md5sums = fcedcd77d631ff01f38dcfe244e6325d
+	md5sums = 44a0cf3352b887866f0e15a0eda48510
+
+pkgname = apertium-mk-en
+
