@@ -1,7 +1,7 @@
 pkgbase = any-dl
 	pkgdesc = Generic video downloader for principially any site.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.first.in-berlin.de/software/tools/any-dl/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = any-dl
 	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = ocaml-pcre
-	depends = ocaml-xml-light
+	depends = ocaml-xmlm
 	depends = ocamlnet
 	depends = gnutls
 	depends = ocaml-csv
