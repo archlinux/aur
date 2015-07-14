@@ -1,0 +1,17 @@
+pkgbase = apertium-dbus-svn
+	pkgdesc = D-Bus service for apertium
+	pkgver = 25849
+	pkgrel = 1
+	url = http://wiki.apertium.org/wiki/D-Bus_service_for_Apertium
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automake
+	makedepends = autoconf
+	depends = dbus-python
+	depends = apertium
+	provides = apertium-dbus
+	conflicts = apertium-dbus
+
+pkgname = apertium-dbus-svn
+
