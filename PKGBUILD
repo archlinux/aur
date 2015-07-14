@@ -2,9 +2,10 @@
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=1.7.0.5.g2385305
+pkgver=1.7.3.26.g2209d76
 _pkgver=1.7.0
 pkgrel=1
+_subver=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -12,13 +13,15 @@ license=('MIT')
 conflicts=('vagrant')
 options=('!emptydirs')
 makedepends=('git')
-depends=('ruby' 'curl' 'lzo' 'libidn' 'rtmpdump')
+depends=('lzo' 'libidn' 'rtmpdump')
 source=(git://github.com/mitchellh/$_pkgname.git
-        git://github.com/mitchellh/$_pkgname-installers.git
-        http://pkgbuild.com/~jsteel/arch/$_pkgname/substrate_archlinux_$CARCH.zip)
+        git://github.com/mitchellh/$_pkgname-installers.git)
+source_i686+=(http://pkgbuild.com/~jsteel/$_pkgname/substrate_archlinux_i686-$_subver.zip)
+source_x86_64+=(http://pkgbuild.com/~jsteel/$_pkgname/substrate_archlinux_x86_64-$_subver.zip)
 md5sums=('SKIP' 'SKIP')
-[[ $CARCH == i686 ]] && md5sums+=('c04042b24de56d18a041bc005e5ecaa4')
-[[ $CARCH == x86_64 ]] && md5sums+=('53d8a137e0b50fee8509a7d1c15fd33b')
+md5sums_i686=('a72932fa4f1a936d633a8efcde8981c1')
+md5sums_x86_64=('98d92dedfb660045ba779c4761deac58')
+
 
 pkgver() {
   cd $_pkgname
