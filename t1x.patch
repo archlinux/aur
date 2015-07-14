@@ -1,0 +1,14 @@
+--- ../apertium-ht-en-0.1.0/apertium-ht-en.ht-en.t1x	2010-01-24 23:11:45.000000000 +0100
++++ apertium-ht-en-0.1.0/apertium-ht-en.ht-en.t1x	2010-09-15 14:25:40.000000000 +0200
+@@ -228,10 +228,7 @@
+   </section-def-lists>
+   <section-def-macros>
+     <def-macro n="set_temps_chunk" npar="1"
+-               c="Guess temps for lone verbs based on stative/dynamic.
+-                  In the present non-progressive tense, one just uses the basic verb form for
+-                  stative verbs. Note that when the basic form of action verbs is used without any
+-                  verb markers, it is generally understood as referring to the past.">
++>
+       <choose>
+         <when>
+           <test>

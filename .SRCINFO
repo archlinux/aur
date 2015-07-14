@@ -1,0 +1,22 @@
+pkgbase = apertium-ht-en
+	pkgdesc = Apertium language data for the Haitian Creole-English translator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-ht-en-0.1.0.tar.gz
+	source = Makefile.am.patch
+	source = Makefile.in.patch
+	source = t1x.patch
+	md5sums = 73d6dbbb2c1ad50b8e6c5428f4fc7a9e
+	md5sums = e99487bbc9df970596882bdc1b152218
+	md5sums = 8625b7f9ee07b3696e71a49129db01fd
+	md5sums = b8f420edd5577fabef485dcb6d08a5e6
+
+pkgname = apertium-ht-en
+
