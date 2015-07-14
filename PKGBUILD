@@ -1,17 +1,23 @@
-# Maintainer: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
+# Maintainer : David Phillips <dbphillipsnz@gmail.com>
+# Contributor: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
 
 pkgname=perl-bot-basicbot
 pkgver=0.89
 pkgrel=1
-pkgdesc="simple irc bot baseclass"
-depends=('perl>=5.10.0' 'glibc' 'perl-poe' 'perl-poe-component-irc' 'perl-irc-utils')
+pkgdesc="Simple irc bot baseclass"
+depends=('perl>=5.10.0'
+         'glibc'
+         'perl-poe'
+         'perl-poe-component-irc'
+         'perl-irc-utils')
 license=('GPL' 'PerlArtistic')
 url="http://search.cpan.org/dist/Bot-BasicBot"
 source=(http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/Bot-BasicBot-$pkgver.tar.gz)
 options=('!emptydirs')
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
+sha256sums=('34bc132338ce3fad601050a7815dbe41')
 
-build()
+package()
 {
   cd ${srcdir}/Bot-BasicBot-$pkgver
 
@@ -22,7 +28,5 @@ build()
   # Remove .packlist and perllocal.pod files.
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name 'perllocal.pod' -delete
-
 }
 
-md5sums=('34bc132338ce3fad601050a7815dbe41')

@@ -1,5 +1,5 @@
 pkgbase = perl-bot-basicbot
-	pkgdesc = simple irc bot baseclass
+	pkgdesc = Simple irc bot baseclass
 	pkgver = 0.89
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Bot-BasicBot
@@ -14,7 +14,7 @@ pkgbase = perl-bot-basicbot
 	depends = perl-irc-utils
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/Bot-BasicBot-0.89.tar.gz
-	md5sums = 34bc132338ce3fad601050a7815dbe41
+	sha256sums = 34bc132338ce3fad601050a7815dbe41
 
 pkgname = perl-bot-basicbot
 
