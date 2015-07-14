@@ -1,0 +1,5 @@
+post_install() {
+	echo
+	echo "Remember to add your user to the uucp group so you can access the serial ports"
+	echo "'gpasswd -a \$USER uucp'"
+}

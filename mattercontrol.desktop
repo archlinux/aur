@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Name=MatterControl
+Comment=Control your 3D printer
+Path=/usr/bin/
+Exec=/usr/bin/mattercontrol
+Icon=mattercontrol
+Terminal=false
+Type=Application
+Categories=GNOME;Utility
