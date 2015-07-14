@@ -1,0 +1,14 @@
+pkgbase = scinterface-bin
+	pkgdesc = cryptovision software to use the RUB (Ruhr-Uni-Bochum) student identity card.
+	pkgver = 6.1.6.415
+	pkgrel = 1
+	url = https://web-rubicon.ruhr-uni-bochum.de/rubicon/download/rubcard.html
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = pcsclite
+	source = https://web-rubicon.ruhr-uni-bochum.de/rubicon/download/files/rubcard/scInterface-6.1.6.415-Ubuntu12-.deb
+	sha256sums = 41e5ce99cf9de7f15980338803ea077c07d506e07b9dab9d36adb09877e3a3ce
+
+pkgname = scinterface-bin
+
