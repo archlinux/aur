@@ -1,0 +1,31 @@
+pkgbase = xdm-minimalist
+	pkgdesc = a minimalist xdm setup.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://xorg.freedesktop.org
+	install = xdm-minimalist.install
+	arch = any
+	license = GPL
+	depends = xorg-xdm
+	depends = bash
+	depends = xorg-xmessage
+	depends = xorg-xclock
+	depends = xorg-xsetroot
+	depends = xorg-xwininfo
+	depends = xorg-xkill
+	depends = terminus-font
+	backup = etc/X11/xdm/minimalist/Xsetup
+	backup = etc/X11/xdm/minimalist/Xresources
+	source = xdm-config
+	source = Xsetup
+	source = Xstartup
+	source = Xresources
+	source = buttons
+	md5sums = e420ef106f97ba5b866164feb031bb14
+	md5sums = d3637c5aca0e787b54db2b78fe99621d
+	md5sums = 1628c6cf77d5da2528265dbaf2eaacf4
+	md5sums = 9c63f8eec798fc13ff7caeb2e628c2a2
+	md5sums = e145d6eee0bbdb5cb674944bc3a09a88
+
+pkgname = xdm-minimalist
+
