@@ -1,0 +1,16 @@
+pkgbase = apertium-ca-it
+	pkgdesc = Apertium language data for the Catalan-Italian translator.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2
+	depends = apertium>=3.2
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-ca-it-0.1.1.tar.gz
+	md5sums = 08b3d5a949ddce7fc8b3539490ef11f8
+
+pkgname = apertium-ca-it
+
