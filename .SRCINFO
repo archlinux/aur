@@ -1,0 +1,15 @@
+pkgbase = nodejs-esformatter-jsx
+	pkgdesc = format javascript files that contain React JSX blocks
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/royriojas/esformatter-jsx
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = esformatter-jsx-1.3.0.tgz
+	source = https://registry.npmjs.org/esformatter-jsx/-/esformatter-jsx-1.3.0.tgz
+	sha256sums = c52761456e03d10cfcab1984bd853c974e74978759e4469346e9c98f9766670a
+
+pkgname = nodejs-esformatter-jsx
+
