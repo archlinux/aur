@@ -1,0 +1,21 @@
+pkgbase = kdeplasma-applets-gx-mail-notify
+	pkgdesc = Plasmoid for checking unreaded e-mails.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://www.kde-look.org/content/show.php?content=99617
+	install = gxmailnotify.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	conflicts = plasma-gx-mail-notify-plasmoid
+	replaces = plasma-gx-mail-notify-plasmoid
+	source = http://www.kde-look.org/CONTENT/content-files/99617-gx_mail_notify-0.4.4.tar.bz2
+	source = mail_checker.cpp.patch
+	md5sums = bc9bb6234f85abdfc630b94390c474bf
+	md5sums = afae43af219c3ddd6f3cf021cead6947
+
+pkgname = kdeplasma-applets-gx-mail-notify
+

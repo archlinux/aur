@@ -1,0 +1,4 @@
+post_install()
+{
+	update-desktop-database -q
+}
