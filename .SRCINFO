@@ -1,0 +1,14 @@
+pkgbase = python2-python-potr
+	pkgdesc = pure Python Off-The-Record encryption
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-potr
+	arch = any
+	license = LGPL3
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/python-potr/python-potr-1.0.0.tar.gz
+	md5sums = 72b0001dd8dc4acd8ea2cc2ce9d0a1f6
+
+pkgname = python2-python-potr
+
