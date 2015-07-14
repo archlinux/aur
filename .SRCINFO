@@ -1,9 +1,9 @@
 pkgbase = stardict-sma-nob
 	pkgdesc = Åarjelsaemien-daaroen digibaakoeh, a StarDict dictionary for Southern Sámi to Norwegian Bokmål and Swedish
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://giellatekno.uit.no/words/dicts/index.eng.html
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = unknown
 	optdepends = stardict: a Gtk2 applicaton for looking up words in stardict-sma-nob
