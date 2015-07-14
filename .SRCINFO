@@ -1,0 +1,17 @@
+pkgbase = wmcpu
+	pkgdesc = Dockapp CPU monitor resembling Xosview.
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://www.ne.jp/asahi/linux/timecop/#wmcpu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = x-server
+	source = wmcpu-1.4.tar.gz
+	source = makefile.patch
+	md5sums = e690eda219cdf285476bcbb602a117ff
+	md5sums = 5e80a4fc615e6ffbce9ae36df698b88d
+
+pkgname = wmcpu
+

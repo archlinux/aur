@@ -1,0 +1,17 @@
+--- Makefile.old	2005-12-23 01:40:10.000000000 +0900
++++ Makefile	2011-09-15 02:03:58.000000000 +0900
+@@ -2,12 +2,12 @@
+ CFLAGS		= -O3 -Wall
+ #DEBUG FLAGS HERE:
+ #CFLAGS		+= -g -ggdb
+-LDFLAGS		= -L/usr/X11R6/lib -lXpm -lXext -lX11
++LDFLAGS		= -lXpm -lXext -lX11
+ OBJS		= wmcpu.o
+ 
+ # where to install this program (also for packaging stuff)
+ DESTDIR		=
+-PREFIX		= $(DESTDIR)/usr/X11R6
++PREFIX		= $(DESTDIR)/usr
+ INSTALL		= -m 755
+ 
+ .PHONY: all clean
