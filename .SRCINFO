@@ -1,0 +1,28 @@
+pkgbase = keysync
+	pkgdesc = convert OTR keystores into other keystore formats for moving keys into a new IM app
+	pkgver = 0.2.1.1
+	pkgrel = 1
+	url = https://guardianproject.info/apps/keysync/
+	install = keysync.install
+	arch = any
+	license = GPL3
+	makedepends = desktop-file-utils
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-beautifulsoup3
+	depends = python2-psutil
+	depends = python2-python-potr
+	depends = python2-pyasn1
+	depends = python2-crypto
+	depends = python2-pyjavaproperties
+	depends = python2-pyparsing
+	depends = python2-pgpdump
+	depends = python2-qrcode
+	depends = hicolor-icon-theme
+	optdepends = tk: for GUI
+	optdepends = pymtp: for MTP on GUI
+	source = keysync-0.2.1.1.tar.gz::https://github.com/guardianproject/keysync/archive/0.2.1.1.tar.gz
+	sha256sums = 1002832c89a623b73a2964c8f83c455b377feb602fd6b898a62382ca40ea2f28
+
+pkgname = keysync
+
