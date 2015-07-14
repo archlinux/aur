@@ -1,4 +1,4 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
@@ -7,40 +7,39 @@
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
 pkgname=calibre-git
-pkgver=2.1.0.44.g8659089
-pkgrel=3
+pkgver=2.31.0.r80.gf7d246f
+pkgrel=1
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
 url="http://calibre-ebook.com/"
 license=('GPL3')
-depends=('python2-six' 'python2-dateutil' 'python2-cssutils'
-	 'python2-cherrypy' 'python2-mechanize' 'podofo' 'libwmf'
-         'imagemagick' 'chmlib' 'python2-lxml' 'libusbx' 
-         'python2-pillow' 'shared-mime-info' 'python2-dnspython' 
-         'python2-pyqt5' 'python2-psutil' 'icu' 'libmtp' 
-         'python2-netifaces' 'python2-cssselect' 'python2-apsw'
-	 'qt5-webkit' 'python2-chardet' 'python2-beautifulsoup3'
-	 'desktop-file-utils' 'qt5-svg' 'python2-html5lib')
-makedepends=('git')
-provides=('calibre')
-conflicts=('calibre')
+depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
+         'podofo' 'poppler' 'libwmf' 'imagemagick' 'chmlib' 'python2-lxml'
+         'libusbx' 'python2-pillow' 'shared-mime-info' 'python2-dnspython'
+         'python2-pyqt5' 'python2-psutil' 'icu' 'libmtp' 'python2-dbus'
+         'python2-netifaces' 'python2-cssselect' 'python2-apsw' 'xdg-utils'
+         'qt5-webkit' 'desktop-file-utils' 'qt5-svg' 'python2-pygments')
+makedepends=('git' 'qt5-x11extras')
+optdepends=('ipython2: to use calibre-debug'
+            'udisks: required for mounting certain devices')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 install=calibre.install
-source=("git://github.com/kovidgoyal/calibre.git")
+source=("git://github.com/kovidgoyal/${pkgname%-git}.git")
 md5sums=('SKIP')
-_gitname="calibre"
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
-  git describe --tags | sed 's|-|.|g' |cut -c2-
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${pkgname%-git}"
+
   sed -i "s/shlex.split(ldflags)/& + ['-fPIC']/" setup/extensions.py
 
   # Use python2
   sed -i 's:\(env[ ]\+python$\|/usr/bin/python$\):\12:g' $(find . -regex ".*\.py\|.*\.recipe")
-  sed -i "/pyqt_sip_dir/ s:=.*:= '/usr/share/sip/Py2-PyQt5':" setup/build_environment.py
 
   # Desktop integration (e.g. enforce arch defaults)
   sed -e "/self.create_uninstaller()/,/os.rmdir(config_dir)/d" \
@@ -56,30 +55,33 @@ prepare(){
       -e "s/'ctc-posml'/'text' not in mt and 'pdf' not in mt and 'xhtml'/" \
       -e "s/^Name=calibre/Name=Calibre/g" \
       -i  src/calibre/linux.py
-  }
+}
 
 build() {
-  cd $srcdir/$_gitname
-  LANG='en_US.UTF-8' CXX=g++ CC=gcc python2 setup.py build
-  LANG='en_US.UTF-8' CXX=g++ CC=gcc python2 setup.py resources
+  cd "${srcdir}/${pkgname%-git}"
+
+  LANG='en_US.UTF-8' python2 setup.py build
+  # LANG='en_US.UTF-8' python2 setup.py resources
+
+  # Don't build translations since building them is broken badly
+  #LANG='en_US.UTF-8' python2 setup.py translations
 }
 
 package() {
-  cd $srcdir/$_gitname
+  cd "${srcdir}/${pkgname%-git}"
+
+  # Fix the environment module location
   sed -i -e "s|(prefix=.*)|(prefix='$pkgdir/usr')|g" setup/install.py
-  
+
   install -d "${pkgdir}/usr/lib/python2.7/site-packages" \
              "${pkgdir}/usr/share/zsh/site-functions"
 
-  LANG='en_US.UTF-8' python2 setup.py install --root="${pkgdir}" \
-      --prefix=/usr \
-      --staging-bindir="${pkgdir}/usr/bin" \
-      --staging-libdir="${pkgdir}/usr/lib" \
-      --staging-sharedir="${pkgdir}/usr/share"
+  LANG='en_US.UTF-8' python2 setup.py install --root="${pkgdir}" --prefix=/usr \
+    --staging-bindir="${pkgdir}/usr/bin" \
+    --staging-libdir="${pkgdir}/usr/lib" \
+    --staging-sharedir="${pkgdir}/usr/share"
 
   # Compiling bytecode FS#33392
   python2 -m compileall "${pkgdir}/usr/lib/calibre/"
-#  python2 -O -m compileall "${pkgdir}/usr/lib/calibre/"
-  rmdir $pkgdir/usr/share/{appdata,zsh/site-functions,zsh}
+  python2 -O -m compileall "${pkgdir}/usr/lib/calibre/"
 }
-
