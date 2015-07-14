@@ -1,0 +1,14 @@
+pkgbase = mythes-en-us
+	pkgdesc = English thesaurus (en_US only)
+	pkgver = 20060306
+	pkgrel = 1
+	url = http://wiki.services.openoffice.org/wiki/Dictionaries#English_.28AU.2CCA.2CGB.2CNZ.2CUS.2CZA.29
+	arch = any
+	license = LGPL
+	optdepends = libmythes: offers thesaurus library functions
+	conflicts = mythes-en
+	source = http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/thes_en_US_v2.zip
+	md5sums = ec611ad21ae4ee2b4415e27e252e4952
+
+pkgname = mythes-en-us
+
