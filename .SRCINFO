@@ -1,0 +1,15 @@
+pkgbase = deadbeef-plugin-fb-git
+	pkgdesc = filebrowser plugin for the deadbeef audio player
+	pkgver = v0.5.6.r14.gbc31e3d9
+	pkgrel = 1
+	url = http://sourceforge.net/projects/deadbeef-fb/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = deadbeef
+	source = deadbeef-fb::git://deadbeef-fb.git.sourceforge.net/gitroot/deadbeef-fb/deadbeef-fb
+	md5sums = SKIP
+
+pkgname = deadbeef-plugin-fb-git
+
