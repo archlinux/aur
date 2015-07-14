@@ -1,0 +1,13 @@
+diff --git a/rdup-1.1.14/rdup-tr.c b/rdup-1.1.14/rdup-tr.c
+index 2b7d05c..3b671fc 100644
+--- a/rdup-1.1.14/rdup-tr.c
++++ b/rdup-1.1.14/rdup-tr.c
+@@ -364,7 +364,7 @@ not_s_isreg:
+ 
+ 	if (opt_output != O_RDUP) {
+ 		archive_write_close(archive);
+-		archive_write_finish(archive);
++		archive_write_free(archive);
+ 	}
+ 	g_free(readbuf);
+ 	g_free(buf);
