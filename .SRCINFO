@@ -1,7 +1,7 @@
 pkgbase = wmforkplop
 	pkgdesc = A mixture between wmhdplop and the great wmtop.
 	pkgver = 0.9.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://hules.free.fr/wmforkplop/
 	arch = i686
 	arch = x86_64

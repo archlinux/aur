@@ -1,7 +1,7 @@
 # Contributor : Mathieu Pasquet <mathieuivi@gmail.com>
 pkgname=wmforkplop
 pkgver=0.9.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A mixture between wmhdplop and the great wmtop."
 arch=('i686' 'x86_64')
 url="http://hules.free.fr/wmforkplop/"
