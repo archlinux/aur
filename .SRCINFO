@@ -1,0 +1,17 @@
+pkgbase = pidgin-knotifications
+	pkgdesc = A Pidgin plugin that provides KDE4/Gnome/Growl for Windows notifications
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://code.google.com/p/pidgin-knotifications/
+	arch = any
+	license = GPL2
+	makedepends = pkg-config
+	depends = pidgin
+	depends = perl-libwww
+	optdepends = kdebase-kdialog: KDE notification support
+	optdepends = libnotify: Gnome notification support
+	source = http://pidgin-knotifications.googlecode.com/files/knotifications-0.3.6.pl
+	sha256sums = 7088213bf11240f4f197017143aeef6b4b2025cfefb11bf8107868e3547d9091
+
+pkgname = pidgin-knotifications
+
