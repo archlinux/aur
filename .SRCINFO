@@ -1,0 +1,19 @@
+pkgbase = xdwm
+	pkgdesc = An extended dynamic window manager for X (dwm fork)
+	pkgver = 6.1p7
+	pkgrel = 1
+	url = http://github.com/aperezdc/xdwm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = xorg-xrdb
+	optdepends = pulseaudio: launch pulseaudio at session startup
+	optdepends = gnome-keyring: launch GNOME keyring at session startup
+	optdepends = consolekit: register sessions with ConsoleKit
+	source = https://github.com/downloads/aperezdc/xdwm/xdwm-6.1p7.tar.gz
+	md5sums = f7aeee78df89fb646fccd385f9cfca74
+
+pkgname = xdwm
+
