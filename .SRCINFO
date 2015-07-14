@@ -1,7 +1,7 @@
 pkgbase = aether-git
 	pkgdesc = Distributed network that creates forum–like, anonymous and encrypted public spaces for its constituents
 	pkgver = 20141026
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nehbit/aether-public
 	arch = any
 	license = AGPL3
@@ -29,6 +29,7 @@ pkgbase = aether-git
 	depends = python2-wsgiref
 	depends = python2-zope-interface
 	depends = qt5-base
+	depends = qt5-webkit
 	source = aether::git+https://github.com/nehbit/aether-public
 	source = aether.sh
 	sha256sums = SKIP

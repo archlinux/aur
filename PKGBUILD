@@ -2,10 +2,33 @@
 
 pkgname=aether-git
 pkgver=20141026
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed network that creates forum–like, anonymous and encrypted public spaces for its constituents"
 arch=('any')
-depends=('python2' 'python2-cffi' 'python2-characteristic' 'python2-cryptography' 'python2-miniupnpc' 'python2-pif' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-pycparser' 'python2-pyopenssl' 'python2-pyqt5' 'python2-pytz' 'python2-requests' 'python2-service-identity' 'python2-six' 'python2-sqlalchemy' 'python2-tendo' 'python2-termcolor' 'python2-twisted' 'python2-ujson' 'python2-wsgiref' 'python2-zope-interface' 'qt5-base')
+depends=('python2'
+         'python2-cffi'
+         'python2-characteristic'
+         'python2-cryptography'
+         'python2-miniupnpc'
+         'python2-pif'
+         'python2-pyasn1'
+         'python2-pyasn1-modules'
+         'python2-pycparser'
+         'python2-pyopenssl'
+         'python2-pyqt5'
+         'python2-pytz'
+         'python2-requests'
+         'python2-service-identity'
+         'python2-six'
+         'python2-sqlalchemy'
+         'python2-tendo'
+         'python2-termcolor'
+         'python2-twisted'
+         'python2-ujson'
+         'python2-wsgiref'
+         'python2-zope-interface'
+         'qt5-base'
+         'qt5-webkit')
 makedepends=('git')
 url="https://github.com/nehbit/aether-public"
 license=('AGPL3')
@@ -22,10 +45,10 @@ pkgver() {
 prepare() {
   cd ${pkgname%-git}
 
-  msg 'Fixing Non-ASCII character (\xc3) in qt5reactor.py...'
+  msg2 'Fixing Non-ASCII character (\xc3) in qt5reactor.py...'
   sed -i '1s/^/#coding: utf8 /' qt5reactor.py
 
-  msg 'Fixing Python version...'
+  msg2 'Fixing Python version...'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
 }
@@ -33,19 +56,19 @@ prepare() {
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing license...'
+  msg2 'Installing license...'
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/aether/LICENSE"
 
-  msg 'Installing documentation...'
+  msg2 'Installing documentation...'
   install -Dm 644 README.md "$pkgdir/usr/share/doc/aether/README.md"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   install -dm 755 "$pkgdir/usr/share/aether"
   find . -mindepth 1 -maxdepth 1 \
     -prune ! -name "README.md" \
     -prune ! -name "LICENSE" \
     -exec cp -dpr --no-preserve=ownership '{}' "$pkgdir/usr/share/aether" \;
 
-  msg 'Installing executable...'
+  msg2 'Installing executable...'
   install -Dm 755 "$srcdir/aether.sh" "$pkgdir/usr/bin/aether"
 }
