@@ -1,0 +1,16 @@
+pkgbase = vim-securemodelines-git
+	pkgdesc = A secure alternative to Vim modelines. Latest git version
+	pkgver = 20111103
+	pkgrel = 1
+	url = http://github.com/ciaranm/securemodelines
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	conflicts = vim-securemodelines
+	source = license.txt
+	md5sums = 9cbc86548400621ea7ad55d4386d81e2
+
+pkgname = vim-securemodelines-git
+
