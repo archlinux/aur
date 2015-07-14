@@ -1,11 +1,12 @@
 pkgbase = quicktun
-	pkgdesc = QuickTun is a simple and secure VPN software
+	pkgdesc = Simple and secure VPN software
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ucis.nl/QuickTun
 	arch = i686
 	arch = x86_64
-	license = Custom
+	arch = arm
+	license = custom
 	depends = libsodium
 	source = http://oss.ucis.nl/quicktun/src/quicktun-2.2.4.tgz
 	sha512sums = da60fc39d8e85d5b2c162633840b887be3fd58d9f2b3a99fe605fa13546e4f53878ce6246d835b7931e42193fb044330c539b29751cdb6f54d025efc52041487
