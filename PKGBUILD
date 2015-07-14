@@ -5,7 +5,7 @@ pkgver=r402.1b81dc2
 pkgrel=1
 pkgdesc="Esperanza is a XMMS2 client written in C++/Qt4 and aims to be fully featured and easy to use"
 arch=('i686' 'x86_64')
-url="http://wiki.xmms2.xmms.se/index.php/Client:Esperanza"
+url="https://xmms2.org/wiki/Client:Esperanza"
 license=('GPL')
 groups=('xmms2')
 depends=('xmms2' 'qt4')
@@ -13,7 +13,7 @@ makedepends=('boost' 'git')
 provides=('esperanza')
 conflicts=('esperanza')
 replaces=('esperanza')
-source=($pkgname::'git+git://git.xmms.se/xmms2/esperanza.git'
+source=($pkgname::'git+git://git.xmms2.org/xmms2/esperanza.git'
         'esperanza.desktop'
         'esperanza-DSO.patch')
 md5sums=('SKIP'
