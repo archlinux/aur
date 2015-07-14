@@ -1,0 +1,24 @@
+pkgbase = apertium-oc-es
+	pkgdesc = Apertium language data for the Occitan-Spanish translator.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-oc-es-1.0.5.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	source = oc-es.t1x.patch
+	source = es-oc.t1x.patch
+	md5sums = c3d7f9d2c5b0ee050e7219ea590c019e
+	md5sums = a5f5705c9de36ec1ec46ab31bf148b3e
+	md5sums = 26cc63e7e3e830a5f6fd76590f5e22de
+	md5sums = a65e5c80e5cec7490665dd4a3a232fe7
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
+
+pkgname = apertium-oc-es
+
