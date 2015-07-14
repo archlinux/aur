@@ -1,0 +1,12 @@
+pkgbase = xcursor-arch-simple
+	pkgdesc = Simple blue Arch Linux cursor theme
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Arch+Cursor+Theme+(simple)?content=135902
+	arch = any
+	license = GPL
+	source = http://gnome-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz
+	md5sums = ac2c9e3c6ddc46b36793007e6a5eeb48
+
+pkgname = xcursor-arch-simple
+
