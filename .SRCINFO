@@ -1,0 +1,23 @@
+pkgbase = apitrace-git
+	pkgdesc = Graphics API Tracing
+	pkgver = 3242.fe91ec3
+	pkgrel = 1
+	url = https://github.com/apitrace/apitrace
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = cmake>=2.8
+	makedepends = git
+	makedepends = mesa
+	makedepends = qt5-webkit
+	depends = python2
+	depends = libgl
+	depends = procps-ng
+	optdepends = qt5-webkit: GUI support
+	provides = apitrace
+	conflicts = apitrace
+	source = apitrace::git+http://github.com/apitrace/apitrace.git#branch=master
+	md5sums = SKIP
+
+pkgname = apitrace-git
+
