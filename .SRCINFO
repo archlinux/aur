@@ -1,0 +1,18 @@
+pkgbase = pbpst-git
+	pkgdesc = A small tool to interact with pb instances
+	pkgver = 0.r77.d2c79f1
+	pkgrel = 1
+	url = https://github.com/HalosGhost/pbpst
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = tup
+	makedepends = clang
+	makedepends = python-sphinx
+	depends = curl
+	source = git+https://github.com/HalosGhost/pbpst.git
+	sha256sums = SKIP
+
+pkgname = pbpst-git
+
