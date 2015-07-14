@@ -1,0 +1,14 @@
+pkgbase = wmmemload
+	pkgdesc = WindowMaker dockapp to monitor memory and swap usage.
+	pkgver = 0.1.6
+	pkgrel = 8
+	url = http://packages.ubuntu.com/trusty/wmmemload
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/w/wmmemload/wmmemload_0.1.6.orig.tar.gz
+	md5sums = 0ca9bda2fcdccedfb5045b0017d9f60e
+
+pkgname = wmmemload
+
