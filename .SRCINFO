@@ -1,0 +1,21 @@
+pkgbase = apertium-pt-ca
+	pkgdesc = Apertium language data for the Portuguese-Catalan translator.
+	pkgver = 0.8.1
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-pt-ca-0.8.1.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = 615df78d702ca48bf96c55f2d3eaf1f9
+	md5sums = 4faa12bc68e3f7190f71de562328872c
+	md5sums = 7db5c971f2d683acb51d44d4e5d44f67
+
+pkgname = apertium-pt-ca
+
