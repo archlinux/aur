@@ -4,7 +4,7 @@
 
 _name=owncloudclient
 pkgname=owncloud-client-qt5
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='ownCloud client based on mirall built with Qt 5'
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ conflicts=('owncloud-client')
 install=$pkgname.install
 backup=('etc/ownCloud/sync-exclude.lst')
 source=("https://download.owncloud.com/desktop/stable/$_name-$pkgver.tar.xz")
-md5sums=('f1d933a0f7e327a74688c3c356ac8a92')
+md5sums=('ce82c234fca674062599b3ceb4ac50c6')
 
 prepare() {
   cd $srcdir/$_name-$pkgver
