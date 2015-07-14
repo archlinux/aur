@@ -39,6 +39,10 @@ package() {
 
   make DESTDIR="$pkgdir/" install
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  rm -f "$pkgdir/usr/bin/testknc"
+  rm -f "$pkgdir/usr/bin/unit"
+  rm -f "$pkgdir/usr/bin/unit-simple"
 }
 
 # vim:set ts=2 sw=2 et:
