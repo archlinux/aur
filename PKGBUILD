@@ -15,9 +15,9 @@ sha512sums=('aa765d789fa159eea2fdbbdb8f568ba4f6bea7c7d7a26db8e46070abac0e1425630
 backup=('etc/paramano.conf')
 
 build() {
-	make all --directory=${srcdir}/${pkgname}-${pkgver}
+	make -C "${srcdir}/${pkgname}-${pkgver}" all
 }
 
 package() {
-	make install DESTDIR=${pkgdir} --directory=${srcdir}/${pkgname}-${pkgver}
+	make -C "${srcdir}/${pkgname}-${pkgver}" install DESTDIR="${pkgdir}"
 }
