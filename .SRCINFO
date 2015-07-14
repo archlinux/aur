@@ -1,0 +1,17 @@
+pkgbase = pidgin-indicator
+	pkgdesc = Pidgin plugin that adds tray icon using libappindicator
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/philipl/pidgin-indicator
+	install = pidgin-indicator.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = libpurple
+	depends = libappindicator-gtk2
+	source = https://github.com/philipl/pidgin-indicator/releases/download/0.9/pidgin-indicator-0.9.tar.gz
+	sha256sums = 2593b248c7c11adc65936d4709c453b6d3bae9437fd6d1f9e6ee092de55efbee
+
+pkgname = pidgin-indicator
+
