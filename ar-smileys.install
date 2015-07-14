@@ -1,0 +1,13 @@
+# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+
+post_install() {
+  if [ -d "/usr/share/pixmaps/pidgin/emotes" ]; then
+    ln -sf "/usr/share/emoticons/ar-smileys" "/usr/share/pixmaps/pidgin/emotes/ar-smileys"
+  fi
+}
+
+post_remove() {
+  rm -f "/usr/share/pixmaps/pidgin/emotes/ar-smileys"
+}
+
+# vim:set ts=2 sw=2 et:

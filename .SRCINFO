@@ -1,0 +1,13 @@
+pkgbase = ar-smileys
+	pkgdesc = AkiRoss Smileys (for Pidgin and Kopete)
+	pkgver = 1.9b
+	pkgrel = 1
+	url = http://www.ale-re.net
+	install = ar-smileys.install
+	arch = any
+	license = custom
+	source = http://www.ale-re.net/downloads/ar-smiles-1.9b.tar.gz
+	sha256sums = 94d28cb7059dcbc762627f7365c0657505cd9ed3913fb2d054f2dc65610d574f
+
+pkgname = ar-smileys
+
