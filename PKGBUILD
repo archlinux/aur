@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=viogsf-git
 pkgver=r21.f171786
 pkgrel=1
