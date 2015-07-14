@@ -1,46 +1,39 @@
-# Maintainer: polyzen <polycitizen@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Contributor: polyzen <polycitizen@gmail.com>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 pkgname=firefox-extension-privacy-badger-git
 _gitname=privacybadgerfirefox
-pkgver=0.2.5.7.g5150b3e
-pkgrel=4
+pkgver=0.2.5.r147.g72e9ac2
+pkgrel=1
 pkgdesc='Blocks spying ads and invisible trackers.'
 license=('custom:GPLv3+')
 arch=('any')
-url=https://www.eff.org/privacybadger
+url='https://www.eff.org/privacybadger'
 depends=('firefox')
 makedepends=('addon-sdk' 'git')
+provides=('firefox-extension-privacybadger')
 conflicts=('firefox-extension-privacybadger')
 options=('!emptydirs')
-source=('git://github.com/EFForg/privacybadgerfirefox')
+source=("git://github.com/EFForg/${_gitname}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  git describe |sed 's/-/./g'
+    cd "${srcdir}/${_gitname}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
-  /opt/addon-sdk/bin/cfx xpi
+    cd "${srcdir}/${_gitname}"
+    /opt/addon-sdk/bin/cfx xpi --output-file ../privacybadger-${pkgver}.xpi
 }
 
 package() {
-  cd $_gitname
+    cd "${srcdir}"
 
-  install -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    _dstdir="${pkgdir}/usr/lib/firefox/browser/extensions/jid1-MnnxcxisBPnSXQ@jetpack"
+    install -d "${_dstdir}"
+    unzip -qqo -d "${_dstdir}" privacybadger-${pkgver}.xpi
 
-  unzip -qo -d xpi privacybadgerfirefox.xpi
-  cd xpi
-
-  find -empty -type d -delete # remove empty dirs
-
-  local dstdir="$pkgdir"/usr/lib/firefox/browser/extensions/jid1-MnnxcxisBPnSXQ@jetpack
-
-  install -d "$dstdir"
-  cp -dpr --no-preserve=ownership * "$dstdir"
-  chmod -R 755 "$dstdir"
+    install -Dm644 "${_gitname}/LICENSE" "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
