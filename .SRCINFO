@@ -1,6 +1,6 @@
 pkgbase = openssl-chacha20
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with Chacha20 cipher
-	pkgver = 1.0.2.c
+	pkgver = 1.0.2.d
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = i686
@@ -9,16 +9,16 @@ pkgbase = openssl-chacha20
 	depends = zlib
 	depends = perl
 	optdepends = ca-certificates
-	provides = openssl=1.0.2.c
+	provides = openssl=1.0.2.d
 	conflicts = openssl
 	options = !makeflags
 	backup = etc/ssl/openssl.cnf
-	source = https://www.openssl.org/source/openssl-1.0.2c.tar.gz
-	source = https://www.openssl.org/source/openssl-1.0.2c.tar.gz.asc
+	source = https://www.openssl.org/source/openssl-1.0.2d.tar.gz
+	source = https://www.openssl.org/source/openssl-1.0.2d.tar.gz.asc
 	source = no-rpath.patch
 	source = ca-dir.patch
 	source = openssl__chacha20_poly1305_cf.patch
-	md5sums = 8c8d81a9ae7005276e486702edbcd4b6
+	md5sums = 38dd619b2e77cbac69b99f52a053d25a
 	md5sums = SKIP
 	md5sums = dc78d3d06baffc16217519242ce92478
 	md5sums = 3bf51be3a1bbd262be46dc619f92aa90
