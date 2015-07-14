@@ -1,9 +1,10 @@
 pkgbase = visual-studio-code
 	pkgdesc = Editor for building and debugging modern web and cloud applications
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.visualstudio.com/
 	arch = x86_64
+	arch = i686
 	license = custom: commercial
 	depends = fontconfig
 	depends = libxtst
@@ -15,12 +16,15 @@ pkgbase = visual-studio-code
 	depends = nss
 	depends = gcc-libs
 	provides = vscode,visualstudiocode
-	source = https://az764295.vo.msecnd.net/public/0.5.0/VSCode-linux-x64.zip
-	source = visual-studio-code.png
-	source = visual-studio-code.desktop
-	md5sums = ebe69eb762e60a1dcb3dd948ed06405e
-	md5sums = 6dfffd3ebb0f173f5cd13b432fcdb2db
-	md5sums = 94c9ab66cc24c2683873e07b2a5aada4
+	source_x86_64 = https://az764295.vo.msecnd.net/public/0.5.0/VSCode-linux-x64.zip
+	source_x86_64 = visual-studio-code.png
+	source_x86_64 = visual-studio-code.desktop
+	md5sums_x86_64 = ebe69eb762e60a1dcb3dd948ed06405e
+	md5sums_x86_64 = 6dfffd3ebb0f173f5cd13b432fcdb2db
+	md5sums_x86_64 = 94c9ab66cc24c2683873e07b2a5aada4
+	md5sums_i686 = ab8a85a28b06d4ef2d17057a36ea8db1
+	md5sums_i686 = 6dfffd3ebb0f173f5cd13b432fcdb2db
+	md5sums_i686 = 94c9ab66cc24c2683873e07b2a5aada4
 
 pkgname = visual-studio-code
 
