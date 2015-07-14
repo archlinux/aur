@@ -1,6 +1,6 @@
 pkgbase = libsnsf9x-git
 	pkgdesc = SNSF playing library based on the Snes9x emulator
-	pkgver = r25.593fdb5
+	pkgver = r28.6b8bd73
 	pkgrel = 1
 	url = https://github.com/Deewiant/libsnsf9x
 	arch = i686

@@ -1,7 +1,5 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=libsnsf9x-git
-pkgver=r25.593fdb5
+pkgver=r28.6b8bd73
 pkgrel=1
 pkgdesc="SNSF playing library based on the Snes9x emulator"
 arch=(i686 x86_64)
