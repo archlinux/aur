@@ -1,0 +1,14 @@
+pkgbase = hw1-udev
+	pkgdesc = Udev rules to connect HW-1 wallet to your linux box
+	pkgver = 1
+	pkgrel = 1
+	url = https://hardwarewallet.com/
+	install = hw1-udev.install
+	arch = any
+	license = GPL
+	depends = udev
+	source = 51-hw1.rules
+	md5sums = fb3d300474303aa1518bdb7e2e7429ca
+
+pkgname = hw1-udev
+
