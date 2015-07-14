@@ -1,7 +1,7 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://popcorntime.io/
 	install = popcorntime.install
 	arch = i686
@@ -17,8 +17,10 @@ pkgbase = popcorntime
 	depends = libnotify
 	depends = libxtst
 	depends = nss
-	depends = ttf-liberation
+	depends = ttf-font
 	optdepends = net-tools: vpn.ht client
+	optdepends = ttf-liberation
+	optdepends = ttf-ms-fonts
 	options = !strip
 	source = desktop-v0.3.8-0.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v0.3.8-0
 	source = desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master
