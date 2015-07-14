@@ -1,0 +1,21 @@
+pkgbase = driftnet-debian
+	pkgdesc = Listens to network traffic and picks out images from TCP streams it observes. (with Debian patches)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://www.ex-parrot.com/~chris/driftnet/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libpcap
+	depends = gtk2
+	depends = giflib
+	provides = driftnet
+	conflicts = driftnet
+	source = http://www.ex-parrot.com/~chris/driftnet/driftnet-0.1.6.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/d/driftnet/driftnet_0.1.6-9.diff.gz
+	md5sums = 8e11d77770452f97bb3c23f510489815
+	md5sums = 912c7ff5c0af1ebf4482749aa53533e6
+
+pkgname = driftnet-debian
+
