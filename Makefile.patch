@@ -1,0 +1,18 @@
+--- ../lttoolbox-java-3.2.0/Makefile	2010-01-26 14:46:14.000000000 +0100
++++ lttoolbox-java-3.2.0/Makefile	2010-09-19 21:01:14.000000000 +0200
+@@ -11,8 +11,13 @@
+ 		echo "/usr/local" > prefix; \
+ 	fi
+ 	@echo installing into `cat prefix`;
+-	cp dist/lttoolbox.jar `cat prefix`/share/apertium/;
+-	cp -a lt-proc-j lt-expand-j lt-comp-j lt-validate-j `cat prefix`/bin/;
++	if [ ! -d $(DESTDIR)`cat prefix` ]; then mkdir $(DESTDIR)`cat prefix`; fi
++	if [ ! -d $(DESTDIR)`cat prefix`/share ]; then mkdir $(DESTDIR)`cat prefix`/share; fi
++	if [ ! -d $(DESTDIR)`cat prefix`/share/apertium ]; then mkdir $(DESTDIR)`cat prefix`/share/apertium; fi
++	cp dist/lttoolbox.jar $(DESTDIR)`cat prefix`/share/apertium/;
++	cp dist/lttoolbox.jar $(DESTDIR)`cat prefix`/share/apertium/;
++	if [ ! -d $(DESTDIR)`cat prefix`/bin ]; then mkdir $(DESTDIR)`cat prefix`/bin; fi
++	cp -a lt-proc-j lt-expand-j lt-comp-j lt-validate-j $(DESTDIR)`cat prefix`/bin/;
+ 
+ tests:
+ 	ant -quiet test

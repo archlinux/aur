@@ -1,0 +1,19 @@
+pkgbase = lttoolbox-java
+	pkgdesc = Java port of lttoolbox. Handles lexical processing, morphological analysis and generation of words in natural languages using fast finite state transducers.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://wiki.apertium.org/wiki/Lttoolbox-java
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = apache-ant
+	depends = java-runtime
+	depends = sh
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/apertium/lttoolbox-java-3.2.0.tar.gz
+	source = Makefile.patch
+	md5sums = 6e029b981a721c6ad515d879e4a6478a
+	md5sums = 2304c7390728fea1b8d0ba2cce2bd780
+
+pkgname = lttoolbox-java
+
