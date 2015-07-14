@@ -1,0 +1,21 @@
+post_install() {
+cat << EOF
+
+/boot should be mounted on boot for proper operation, do not
+use options such as noauto,x-systemd.automount in /etc/fstab
+
+EOF
+/usr/bin/ckboot-init
+}
+
+post_remove() {
+/usr/bin/rm /tmp/ckboot /var/ckboot/{boothash,mbrhash} &> /dev/null
+/usr/bin/rmdir /var/ckboot &> /dev/null
+}
+
+post_upgrade() {
+if [[ -e /var/ckboot/filehash ]]
+then
+/usr/bin/mv /var/ckboot/filehash /var/ckboot/boothash
+fi
+}

@@ -1,0 +1,16 @@
+pkgbase = systemd-ckboot
+	pkgdesc = Checks boot files and MBR for changes
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/ckboot
+	install = ckboot.install
+	arch = any
+	license = GPL
+	depends = zenity
+	depends = systemd
+	backup = etc/ckboot.conf
+	source = https://downloads.sourceforge.net/project/ckboot/ckboot-1.2.tar.gz
+	md5sums = b59dac8618371ec58ad9da192e5fbd7c
+
+pkgname = systemd-ckboot
+
