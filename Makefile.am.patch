@@ -1,0 +1,46 @@
+--- ../apertium-es-ro-0.7.1/Makefile.am	2007-10-11 21:06:30.000000000 +0200
++++ apertium-es-ro-0.7.1/Makefile.am	2010-09-15 17:21:24.000000000 +0200
+@@ -49,7 +49,7 @@
+ 	apertium-validate-transfer $(BASENAME).trules-$(PREFIX1).xml
+ 	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX1).xml \
+ 	                             trules-$(PREFIX1).bin
+-	                             
++
+ trules-$(PREFIX2).bin: $(BASENAME).trules-$(PREFIX2).xml
+ 	apertium-validate-transfer $(BASENAME).trules-$(PREFIX2).xml
+ 	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX2).xml \
+@@ -67,7 +67,7 @@
+            $(BASENAME).$(LANG2).tsx $(BASENAME).trules-$(PREFIX1).xml \
+            $(BASENAME).trules-$(PREFIX2).xml $(PREFIX1).prob $(PREFIX2).prob \
+            modes.xml
+-           
++
+ apertium_es_rodir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_es_modesdir=$(prefix)/share/apertium/modes/
+ 
+@@ -79,20 +79,21 @@
+ 
+ modes: modes.xml
+ 	apertium-gen-modes modes.xml
+-           
++
+ apertium_es_ro_DATA=$(PREFIX1).automorf.bin $(PREFIX2).automorf.bin \
+ 	$(PREFIX1).autobil.bin $(PREFIX2).autobil.bin \
+ 	$(PREFIX1).autogen.bin $(PREFIX2).autogen.bin \
+ 	$(PREFIX1).autopgen.bin $(PREFIX2).autopgen.bin \
+ 	$(PREFIX1).prob $(PREFIX2).prob trules-$(PREFIX1).xml \
+ 	trules-$(PREFIX2).xml trules-$(PREFIX1).bin \
+-	trules-$(PREFIX2).bin $(PREFIX1).mode $(PREFIX2).mode
++	trules-$(PREFIX2).bin $(PREFIX2).mode
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_es_modesdir)
++	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX2).xml $(BASENAME).trules-$(PREFIX1).xml $(DESTDIR)$(apertium_es_rodir)
++
+ # spanish -> romanian is not currently functional ~fmt
+ #	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX2).xml $(BASENAME).trules-$(PREFIX1).xml $(apertium_es_rodir)
+ 
+ CLEANFILES = -rf $(TARGETS) modes

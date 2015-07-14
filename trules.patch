@@ -1,0 +1,56 @@
+--- ../apertium-es-ro-0.7.1/apertium-es-ro.trules-ro-es.xml	2007-10-11 21:04:49.000000000 +0200
++++ apertium-es-ro-0.7.1/apertium-es-ro.trules-ro-es.xml	2010-09-15 17:18:56.000000000 +0200
+@@ -4545,8 +4545,6 @@
+                   <clip pos="3" side="sl" part="a_case"/>
+                   <lit-tag v="nom"/>
+                 </equal>
+-              </and>
+-              <and>
+                 <equal>
+                   <clip pos="4" side="sl" part="a_def"/>
+                   <lit-tag v="def"/>
+@@ -4676,8 +4674,6 @@
+                   <clip pos="2" side="sl" part="a_case"/>
+                   <lit-tag v="nom"/>
+                 </equal>
+-              </and>
+-              <and>
+                 <equal>
+                   <clip pos="3" side="sl" part="a_def"/>
+                   <lit-tag v="def"/>
+@@ -4984,8 +4980,6 @@
+                   <clip pos="2" side="sl" part="a_case"/>
+                   <lit-tag v="nom"/>
+                 </equal>
+-              </and>
+-              <and>
+                 <equal>
+                   <clip pos="3" side="sl" part="a_def"/>
+                   <lit-tag v="def"/>
+@@ -5115,8 +5109,6 @@
+                   <clip pos="2" side="sl" part="a_case"/>
+                   <lit-tag v="nom"/>
+                 </equal>
+-              </and>
+-              <and>
+                 <equal>
+                   <clip pos="3" side="sl" part="a_def"/>
+                   <lit-tag v="def"/>
+@@ -5757,7 +5749,7 @@
+         </call-macro>    
+          <choose>
+           <when>
+-             <test>
++             <test><and>
+                <equal>
+                   <clip pos="1" side="sl" part="a_case"/>
+                   <lit-tag v="nom"/>
+@@ -5766,7 +5758,7 @@
+ 	        <clip pos="1" side="sl" part="a_def"/>
+ 		<lit-tag v="def"/>
+ 	      </equal>
+-             </test>
++             </and></test>
+              <call-macro n="modcase">
+                <with-param pos="1"/>
+             </call-macro>
