@@ -1,0 +1,15 @@
+pkgbase = nodejs-jsfmt
+	pkgdesc = gofmt for javascript
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://rdio.github.io/jsfmt/
+	arch = any
+	license = Apache
+	depends = nodejs
+	depends = npm
+	noextract = jsfmt-0.4.1.tgz
+	source = https://registry.npmjs.org/jsfmt/-/jsfmt-0.4.1.tgz
+	sha256sums = 3643eeb4c6318d9b2ca74b609ff2727955826d4379aef8af38725b3fe8b802b0
+
+pkgname = nodejs-jsfmt
+
