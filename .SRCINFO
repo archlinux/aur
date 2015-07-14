@@ -1,12 +1,14 @@
 pkgbase = pstate-frequency-git
 	pkgdesc = Easily control Intel p-state driver (git version)
-	pkgver = 1.2.5.git
+	pkgver = 1.2.8.git
 	pkgrel = 1
 	url = https://github.com/pyamsoft/pstate-frequency.git
 	arch = i686
 	arch = x86_64
 	license = GPLv2
 	makedepends = git
+	depends = coreutils
+	optdepends = x86_energy_perf_policy
 	provides = pstate-frequency
 	conflicts = pstate-frequency
 	source = pstate-frequency::git+https://github.com/pyamsoft/pstate-frequency.git#branch=dev
