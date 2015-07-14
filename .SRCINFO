@@ -1,0 +1,14 @@
+pkgbase = wmjump
+	pkgdesc = A tool to switch between windows using keyboard
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://code.google.com/p/wmjump
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	source = http://wmjump.googlecode.com/files/wmjump_1.2.2.tar.gz
+	md5sums = f3780a892fc25e3575023a784c0db72c
+
+pkgname = wmjump
+
