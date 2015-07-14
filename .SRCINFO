@@ -1,0 +1,18 @@
+pkgbase = apertium-nn-nb
+	pkgdesc = Apertium language data for the Norwegian Nynorsk-Norwegian Bokmål translator.
+	pkgver = 0.7.0
+	pkgrel = 2
+	url = http://wiki.apertium.org/wiki/Norwegian_Nynorsk_and_Norwegian_Bokmål
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2.0
+	depends = apertium>=3.2.0
+	depends = vislcg3>=0.9.7.6010
+	optdepends = lttoolbox-java: for compound analysis (use mode nb-nn-cp or nb-nn_a-cp)
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-nn-nb-0.7.0.tar.gz
+	md5sums = 708ece31d9017963f2adac14a30fdf62
+
+pkgname = apertium-nn-nb
+
