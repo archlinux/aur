@@ -21,7 +21,7 @@ source=("http://downloads.simulationcraft.org/$_pkgname-${_simver}-${_simrel}-so
         'SimulationCraft.desktop'
 )
 md5sums=('d1155ac12510ae0344d742ee86d8ba6d'
-         '59f2d428f6c7ad8a3eee1ca615a5982a')
+         '9e52edb48f39888bc13a0b9bd5f8d758')
 
 prepare()
 {
