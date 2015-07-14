@@ -1,0 +1,20 @@
+pkgbase = screenfetch-git
+	pkgdesc = CLI Bash script to show system/theme info in screenshots
+	pkgver = 3.6.5.r141.ge73c7af
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/KittyKatt/screenFetch
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = xorg-xdpyinfo
+	depends = xorg-xprop
+	optdepends = scrot: To take screenshot
+	provides = screenfetch
+	conflicts = screenfetch
+	source = screenfetch-git::git+https://github.com/KittyKatt/screenFetch.git
+	md5sums = SKIP
+
+pkgname = screenfetch-git
+
