@@ -1,0 +1,19 @@
+pkgbase = ruby-ipaddress
+	pkgdesc = IPv4/IPv6 addresses manipulation library
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://github.com/bluemonk/ipaddress
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = ipaddress-0.8.0.gem
+	source = http://rubygems.org/downloads/ipaddress-0.8.0.gem
+	source = https://raw.github.com/bluemonk/ipaddress/master/LICENSE
+	md5sums = c1b274b056650390689360c9856f2180
+	md5sums = 52f3a53aa4932dc3fbda4d659f7baa8c
+	sha1sums = 9983abb9f35a8de6cff23c0870d732bba21130ca
+	sha1sums = 484f22d08e326ad332b0a67b46a4675c8324e0e7
+
+pkgname = ruby-ipaddress
+
