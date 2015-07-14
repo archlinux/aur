@@ -1,0 +1,25 @@
+pkgbase = xbic
+	pkgdesc = A tactical turn-based game based on the Battle Isle series
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.ibiblio.org/pub/Linux/games/strategy
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libpng
+	depends = qt5-base
+	source = http://www.ibiblio.org/pub/Linux/games/strategy/xbic-1.0.tgz
+	source = xbic.png
+	source = xbic.desktop
+	source = xbic.sh
+	source = qt2to4.patch
+	source = qstring-qt5.patch
+	md5sums = d6116030331749a1da67d4bc2dc756b1
+	md5sums = 52fad6ae9e03dcfc1efb58f05d391e31
+	md5sums = 794d58f764c172b1c8574ebb18fd6a02
+	md5sums = 4d412141ddaf38f927e2f13565f6b5cc
+	md5sums = 94c0b52a27c6083a285302d5ec2a1556
+	md5sums = 29b14f248a8379556f23137712709c68
+
+pkgname = xbic
+

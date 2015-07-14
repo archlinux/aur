@@ -1,0 +1,1490 @@
+diff -upr xbic-1.0_qtlib2-old/src/battle_main.cc xbic-1.0_qtlib2/src/battle_main.cc
+--- xbic-1.0_qtlib2-old/src/battle_main.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/battle_main.cc	2014-08-09 09:24:49.069070321 -0700
+@@ -39,7 +39,6 @@ int main(int argc, char **argv) {
+   co=new communicator(mw);
+   mw->show();
+   
+-  a.setMainWidget(mw);
+   return a.exec();
+   
+ }
+diff -upr xbic-1.0_qtlib2-old/src/bildspeicher.cc xbic-1.0_qtlib2/src/bildspeicher.cc
+--- xbic-1.0_qtlib2-old/src/bildspeicher.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/bildspeicher.cc	2014-08-09 09:24:49.071070321 -0700
+@@ -169,7 +169,7 @@ void bildspeicher::readLandBeschreibung(
+   for (i=0; i<land_anzahl; i++) {
+     in>>name;
+     land_pxm[i]=new QPixmap();
+-    if (land_pxm[i]->load(name)==FALSE) { cerr<<"cant load "<<name<<endl; exit(1); }
++    if (land_pxm[i]->load(name)==false) { cerr<<"cant load "<<name<<endl; exit(1); }
+     in>>befahrbarkeit[i];
+     in>>name;
+     if (strcasecmp(name,"la")==0) land_type[i]=type_la;
+@@ -190,19 +190,19 @@ land *bildspeicher::newLand(int type, in
+   if ((type>=0) && (type<land_anzahl)) {
+     switch (land_type[type]) {
+       case type_la:
+-        l=new land(mw,land_pxm[type],befahrbarkeit[type],FALSE);
++        l=new land(mw,land_pxm[type],befahrbarkeit[type],false);
+         break;
+       case type_de:
+-        l=new depot(mw,land_pxm[type],befahrbarkeit[type],land_spieler[type],px,py,FALSE,FALSE);
++        l=new depot(mw,land_pxm[type],befahrbarkeit[type],land_spieler[type],px,py,false,false);
+         break;
+       case type_fa:
+-        l=new depot(mw,land_pxm[type],befahrbarkeit[type],land_spieler[type],px,py,TRUE,FALSE);
++        l=new depot(mw,land_pxm[type],befahrbarkeit[type],land_spieler[type],px,py,true,false);
+         break;
+       case type_hq:
+-        l=new depot(mw,land_pxm[type],befahrbarkeit[type],land_spieler[type],px,py,FALSE,TRUE);
++        l=new depot(mw,land_pxm[type],befahrbarkeit[type],land_spieler[type],px,py,false,true);
+         break;
+       case type_du:
+-        l=new land(mw,land_pxm[type],befahrbarkeit[type],TRUE);
++        l=new land(mw,land_pxm[type],befahrbarkeit[type],true);
+         break;
+       default:
+         cerr<<"unknown land type\n";
+@@ -279,7 +279,7 @@ void bildspeicher::readStrassenBeschreib
+   for (i=0; i<strasse_anzahl; i++) {
+     in>>name;
+     strasse[i]=new QPixmap();
+-    if (strasse[i]->load(name)==FALSE) { cerr<<"cant load "<<name<<endl; exit(1); }
++    if (strasse[i]->load(name)==false) { cerr<<"cant load "<<name<<endl; exit(1); }
+   }
+   
+ }
+@@ -336,14 +336,14 @@ void bildspeicher::readFahrzeugePics() {
+     if (!in) { cerr<<"cant open "<<einheit_beschreibung[i]<<endl; exit(1); }
+     do {
+       in>>line;
+-    } while ((strcmp(line,"Bild_Spieler1:")!=0) && (in.eof()==FALSE));
++    } while ((strcmp(line,"Bild_Spieler1:")!=0) && (in.eof()==false));
+     if (in.eof()) { cerr<<"cant find Bild_Spieler1: in "<<einheit_beschreibung[i]<<endl; exit(1); }
+     in>>line;
+-    if (fahrzeuge_spieler1[i]->load(line)==FALSE) { cerr<<"cant open "<<line<<endl; exit(1); }
++    if (fahrzeuge_spieler1[i]->load(line)==false) { cerr<<"cant open "<<line<<endl; exit(1); }
+     in>>line;
+     if (strcmp(line,"Bild_Spieler2:")!=0) { cerr<<"cant find Bild_Spieler2: in "<<einheit_beschreibung[i]<<endl; exit(1); }
+     in>>line;
+-    if (fahrzeuge_spieler2[i]->load(line)==FALSE) { cerr<<"cant open "<<line<<endl; exit(1); }
++    if (fahrzeuge_spieler2[i]->load(line)==false) { cerr<<"cant open "<<line<<endl; exit(1); }
+     in.close();
+   }
+   
+diff -upr xbic-1.0_qtlib2-old/src/communicator.cc xbic-1.0_qtlib2/src/communicator.cc
+--- xbic-1.0_qtlib2-old/src/communicator.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/communicator.cc	2014-08-09 09:24:49.072070321 -0700
+@@ -24,8 +24,8 @@ communicator::communicator(main_win *spi
+   
+   MenuMsg	msg;
+   
+-  fertig=FALSE;
+-  anderer_fertig=FALSE;
++  fertig=false;
++  anderer_fertig=false;
+   bewegung=NULL;
+   angriff=NULL;
+   anz_bewegung=0;
+@@ -105,8 +105,8 @@ void communicator::modus_wechseln() {
+     anz_uebernahme=0;
+     
+     mw->modus_wechseln();
+-    fertig=FALSE;
+-    anderer_fertig=FALSE;
++    fertig=false;
++    anderer_fertig=false;
+     
+   }
+   
+@@ -305,16 +305,16 @@ void communicator::einheiten_empfangen()
+   
+   int		feld[w][h][anz_inhalt];
+   
+-  for (i=0; i<w; i++) for (j=0; j<h; j++) for (k=0; k<anz_inhalt; k++)feld[i][j][k]=FALSE;
++  for (i=0; i<w; i++) for (j=0; j<h; j++) for (k=0; k<anz_inhalt; k++)feld[i][j][k]=false;
+   
+   for (i=0; i<anz; i++) {
+     if (msgrcv(msq_id,(msgbuf *)(&msg),sizeof(BattleMsg)-sizeof(long),asp+BEFEHL_EINHEIT,0)==-1) { perror("cant recieved message"); exit(1); }
+     e=ls->get_einheit(msg.k.sx,msg.k.sy,msg.k.platz_start);
+     l=ls->get_land(msg.k.sx,msg.k.sy);
+-    if (l->bin_depot()==FALSE) {
++    if (l->bin_depot()==false) {
+       if (e!=NULL) {
+         e->data2werte(msg.e);
+-        feld[msg.k.sx][msg.k.sy][msg.k.platz_start]=TRUE;
++        feld[msg.k.sx][msg.k.sy][msg.k.platz_start]=true;
+       } else {
+         cerr<<"Fehler Einheiten abgleichen: Platz ";
+         cerr<<msg.k.sx<<" "<<msg.k.sy<<" "<<msg.k.platz_start<<endl;
+@@ -323,12 +323,12 @@ void communicator::einheiten_empfangen()
+     } else {
+       if (e!=NULL) {
+         e->data2werte(msg.e);
+-        feld[msg.k.sx][msg.k.sy][msg.k.platz_start]=TRUE;
++        feld[msg.k.sx][msg.k.sy][msg.k.platz_start]=true;
+       } else {
+         e=new einheit(mw,msg.e.type,msg.e.gehoere_zu);
+         e->data2werte(msg.e);
+         l->einheit_kommt_an(e,msg.k.platz_start);
+-        feld[msg.k.sx][msg.k.sy][msg.k.platz_start]=TRUE;
++        feld[msg.k.sx][msg.k.sy][msg.k.platz_start]=true;
+       }
+     }
+   }
+@@ -340,13 +340,13 @@ void communicator::einheiten_empfangen()
+       l=ls->get_land(i,j);
+       if (l->bin_depot()) {
+         for (k=0; k<anz_inhalt; k++) {
+-          if (feld[i][j][k]==FALSE) {
++          if (feld[i][j][k]==false) {
+             e=l->get_einheit(k);
+             if (e!=NULL) l->einheit_zerstoert(k);
+           }
+         }
+       } else {
+-        if (feld[i][j][0]==FALSE) {
++        if (feld[i][j][0]==false) {
+           e=l->get_einheit();
+           if (e!=NULL) l->einheit_zerstoert();
+         }
+@@ -379,7 +379,7 @@ void communicator::uebernahme_senden() {
+   for (i=0; i<anz_uebernahme; i++) {
+     // im Depot pruefen, ob Fusstruppe erfolgreich eingetrungen
+     l=ls->get_land(uebernahme[i].sx,uebernahme[i].sy);
+-    if (l->bin_depot()==FALSE) { cerr<<"uebernahme von land nicht moeglich\n"; exit(1); }
++    if (l->bin_depot()==false) { cerr<<"uebernahme von land nicht moeglich\n"; exit(1); }
+     for (j=0; j<anz_inhalt; j++) {
+       e=l->get_einheit(j);
+       if (e!=NULL) {
+@@ -415,7 +415,7 @@ void communicator::uebernahme_empfangen(
+   for (i=0; i<anz; i++) {
+     if (msgrcv(msq_id,(msgbuf *)(&msg),sizeof(BattleMsg)-sizeof(long),asp+BEFEHL_UEBERNAHME,0)==-1) { perror("cant recieved message"); exit(1); }
+     l=ls->get_land(msg.k.sx,msg.k.sy);
+-    if (l->bin_depot()==FALSE) { cerr<<"uebernahme von land nicht moeglich; interner Fehler\n"; exit(1); }
++    if (l->bin_depot()==false) { cerr<<"uebernahme von land nicht moeglich; interner Fehler\n"; exit(1); }
+     // Depot uebernehmen
+     l->uebernahmeDurchSpieler(msg.spieler);
+   }
+@@ -450,8 +450,8 @@ void communicator::sendKampfbildschirmMs
+   KampfMsg	msg;
+   
+   msg.mtype=BEFEHL_KAMPFBILDSCHIRM+sp;
+-  if (status==1) msg.kampfbildschirm=TRUE;
+-  else msg.kampfbildschirm=FALSE;
++  if (status==1) msg.kampfbildschirm=true;
++  else msg.kampfbildschirm=false;
+   
+   if (msgsnd(msq_id,(msgbuf *)(&msg),sizeof(KampfMsg)-sizeof(long),0)==-1) { perror("cant send message"); exit(1); }
+   
+@@ -481,7 +481,7 @@ void communicator::sende_depot_energie()
+   for (x=0; x<w; x++) {
+     for (y=0; y<h; y++) {
+       l=ls->get_land(x,y);
+-      if ((l->bin_depot()==TRUE) && (l->gehoere_zu()==sp)) {
++      if ((l->bin_depot()==true) && (l->gehoere_zu()==sp)) {
+         msg.mtype=sp+BEFEHL_DEPOT;
+         msg.x=x;
+         msg.y=y;
+@@ -504,7 +504,7 @@ void communicator::empfange_depot_energi
+   for (x=0; x<w; x++) {
+     for (y=0; y<h; y++) {
+       l=ls->get_land(x,y);
+-      if ((l->bin_depot()==TRUE) && (l->gehoere_zu()==asp)) anz_dep++;
++      if ((l->bin_depot()==true) && (l->gehoere_zu()==asp)) anz_dep++;
+     }
+   }
+   
+diff -upr xbic-1.0_qtlib2-old/src/computerspieler.cc xbic-1.0_qtlib2/src/computerspieler.cc
+--- xbic-1.0_qtlib2-old/src/computerspieler.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/computerspieler.cc	2014-08-09 09:24:49.073070321 -0700
+@@ -89,7 +89,7 @@ int computerspieler::zaehle_feinde() {
+   for (x=0; x<w; x++) {
+     for (y=0; y<h; y++) {
+       la=ls->get_land(x,y);
+-      if (la->bin_depot()==FALSE) {
++      if (la->bin_depot()==false) {
+         e=la->get_einheit();
+         if (e!=NULL)
+           if (e->gehoere_zu!=mw->bin_spieler) f++;
+@@ -116,7 +116,7 @@ void computerspieler::fahrzeuge_aktualis
+   for (x=0; x<lw; x++) {
+     for (y=0; y<lh; y++) {
+       la=ls->get_land(x,y);
+-      if (la->bin_depot()==FALSE) {
++      if (la->bin_depot()==false) {
+         e=la->get_einheit();
+         if (e!=NULL) {
+           if (e->gehoere_zu==mw->bin_spieler) {
+@@ -173,14 +173,14 @@ void computerspieler::bewegen() {
+   
+   // Bubblesort
+   anz=zaehle_feinde();
+-  bo=TRUE;
++  bo=true;
+   while (bo) {
+-    bo=FALSE;
++    bo=false;
+     for (i=1; i<anz; i++) {
+       abst1=abstand(fe[i-1].x,fe[i-1].y,mx,my);
+       abst2=abstand(fe[i].x,fe[i].y,mx,my);
+       if (abst1>abst2) {
+-        bo=TRUE;
++        bo=true;
+         swap(fe[i-1],fe[i]);
+       }
+     }
+@@ -210,20 +210,20 @@ void computerspieler::bewegen() {
+             if (abst2<abst1) {
+               if (fz[i].e->max_schussweite>1) {
+                 // Einheit ist Artillerie
+-                var=TRUE;
++                var=true;
+                 nb=ls->nachbar(x,y,nachbar_o);
+-                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=FALSE;
++                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=false;
+                 nb=ls->nachbar(x,y,nachbar_ol);
+-                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=FALSE;
++                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=false;
+                 nb=ls->nachbar(x,y,nachbar_or);
+-                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=FALSE;
++                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=false;
+                 nb=ls->nachbar(x,y,nachbar_u);
+-                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=FALSE;
++                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=false;
+                 nb=ls->nachbar(x,y,nachbar_ul);
+-                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=FALSE;
++                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=false;
+                 nb=ls->nachbar(x,y,nachbar_ur);
+-                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=FALSE;
+-                if (var==TRUE) {
++                if (nb!=NULL) if (nb->gehoere_zu!=fz[i].e->gehoere_zu) var=false;
++                if (var==true) {
+                   ziel_x=x;
+                   ziel_y=y;
+                   abst1=abst2;
+@@ -255,32 +255,32 @@ void computerspieler::bewegen() {
+             if (la->wieviel_energie()<3) {
+               // alle Fahrzeuge rausbewegen
+               ls->steuerung_bewegungsmodus(i,j);
+-              b=FALSE;
++              b=false;
+               for (x=0; x<lw; x++) {
+                 for (y=0; y<lh; y++) {
+                   la=ls->get_land(x,y);
+                   if (la->rahmen()) {
+-                    b=TRUE;
++                    b=true;
+                     ls->steuerung_bewegungsmodus(x,y);
+                   }
+                 }
+               }
+-              if (b==FALSE) ls->steuerung_reset();
++              if (b==false) ls->steuerung_reset();
+             } else {
+               // nur die reparierten rausbewegen
+               if (ei->anzahl==10) {
+                 ls->steuerung_bewegungsmodus(i,j);
+-                b=FALSE;
++                b=false;
+                 for (x=0; x<lw; x++) {
+                   for (y=0; y<lh; y++) {
+                     la=ls->get_land(x,y);
+                     if (la->rahmen()) {
+-                      b=TRUE;
++                      b=true;
+                       ls->steuerung_bewegungsmodus(x,y);
+                     }
+                   }
+                 }
+-                if (b==FALSE) ls->steuerung_reset();
++                if (b==false) ls->steuerung_reset();
+               }
+             }
+           }
+@@ -332,9 +332,9 @@ void computerspieler::angreifen() {
+       // 3. Anzahl
+       
+       // Bubblesort
+-      bo=TRUE;
++      bo=true;
+       while (bo) {
+-        bo=FALSE;
++        bo=false;
+         for (j=1; j<anz; j++) {
+           // 1. Feuerkraft
+           if (fz[i].e->flugzeug) {
+@@ -348,7 +348,7 @@ void computerspieler::angreifen() {
+           v1+=ziele[j-1].e->ausbildung+ziele[j-1].e->anzahl;
+           v2+=ziele[j].e->ausbildung+ziele[j].e->anzahl;
+           if (v1>v2) {
+-            bo=TRUE;
++            bo=true;
+             swap(ziele[j-1],ziele[j]);
+           }
+         }
+@@ -405,7 +405,7 @@ void computerspieler::naechstesDepot(int
+   for (i=0; i<w; i++) {
+     for (j=0; j<h; j++) {
+       l=ls->get_land(i,j);
+-      if ((l->gehoere_zu()==mw->bin_spieler) && (l->bin_depot()==TRUE) && (l->wieviel_energie()>=3)) {
++      if ((l->gehoere_zu()==mw->bin_spieler) && (l->bin_depot()==true) && (l->wieviel_energie()>=3)) {
+         dep_x[p]=i;
+         dep_y[p]=j;
+         dep_abst[p++]=abstand(i,j,posx,posy);
+@@ -422,12 +422,12 @@ void computerspieler::naechstesDepot(int
+   
+   // sortieren
+   
+-  i=TRUE;
++  i=true;
+   while (i) {
+-    i=FALSE;
++    i=false;
+     for (j=1; j<p; j++) {
+       if (dep_abst[j-1]>dep_abst[j]) {
+-        i=TRUE;
++        i=true;
+         swap(dep_abst[j],dep_abst[j-1]);
+         swap(dep_x[j],dep_x[j-1]);
+         swap(dep_y[j],dep_y[j-1]);
+diff -upr xbic-1.0_qtlib2-old/src/depot.cc xbic-1.0_qtlib2/src/depot.cc
+--- xbic-1.0_qtlib2-old/src/depot.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/depot.cc	2014-08-09 09:24:49.074070321 -0700
+@@ -12,7 +12,7 @@
+ using namespace std;
+ 
+ depot::depot(QWidget *parent, QPixmap *ans, double bef, int spieler, int px, int py, int fabrik, int hauptquartier)
+-  : QObject(), land(parent,ans,bef,FALSE) {
++  : QObject(), land(parent,ans,bef,false) {
+   
+   int		i;
+   
+@@ -31,7 +31,7 @@ depot::depot(QWidget *parent, QPixmap *a
+   
+   for (i=0; i<anz_inhalt; i++) {
+     inhalt[i]=NULL;
+-    bewegt[i]=FALSE;
++    bewegt[i]=false;
+   }
+   
+   inhalt_fenster=NULL;
+@@ -53,7 +53,7 @@ void depot::draw_ansicht(QPainter *pa, i
+   
+   pa->drawPixmap(posx,posy,*land::landbild);
+   
+-  if (rahmen_v==TRUE) pa->drawPixmap(posx,posy,*land::rahmen_pixmap);
++  if (rahmen_v==true) pa->drawPixmap(posx,posy,*land::rahmen_pixmap);
+   
+ }
+ 
+@@ -65,7 +65,7 @@ int depot::oeffnen() {
+   inhalt_fenster->raise();
+   inhalt_fenster->repaint();
+   
+-  return TRUE;
++  return true;
+   
+ }
+ 
+@@ -77,7 +77,7 @@ void depot::schliessen() {
+ 
+ int depot::einheit_kommt_an(einheit *e, int platz) {
+   
+-  if ((e->fusstruppe()==FALSE) && (e->gehoere_zu!=gehoere_zu())) return FALSE;
++  if ((e->fusstruppe()==false) && (e->gehoere_zu!=gehoere_zu())) return false;
+   
+   if (platz!=-1) {
+     if ((platz<0) || (platz>=anz_inhalt)) { cerr<<"falscher Stellplatz\n"; exit(1); }
+@@ -90,11 +90,11 @@ int depot::einheit_kommt_an(einheit *e,
+   }
+   
+   inhalt[akt_stellplatz]=e;
+-  bewegt[akt_stellplatz]=TRUE;
++  bewegt[akt_stellplatz]=true;
+   
+   if (inhalt_fenster!=NULL) inhalt_fenster->redraw_inhalt();
+   
+-  return TRUE;
++  return true;
+   
+ }
+ 
+@@ -104,7 +104,7 @@ void depot::modus_wechseln() {
+   
+   land::modus_wechseln();
+   
+-  for (i=0; i<anz_inhalt; i++) bewegt[i]=FALSE;
++  for (i=0; i<anz_inhalt; i++) bewegt[i]=false;
+   
+   if (inhalt_fenster!=NULL) inhalt_fenster->redraw_inhalt();
+   
+@@ -159,7 +159,7 @@ void depot::set_akt_stellplatz(int platz
+ }
+ 
+ int depot::bin_depot() {
+-  return TRUE;
++  return true;
+ }
+ 
+ int depot::platz_frei() {
+@@ -167,9 +167,9 @@ int depot::platz_frei() {
+   int		i;
+   
+   for (i=0; i<anz_inhalt; i++)
+-    if (inhalt[i]==NULL) return TRUE;
++    if (inhalt[i]==NULL) return true;
+   
+-  return FALSE;
++  return false;
+   
+ }
+ 
+@@ -183,7 +183,7 @@ void depot::repariere_einheit(int platz)
+     if ((energie>=3) && (inhalt[platz]->anzahl<10)) {
+       inhalt[platz]->anzahl=10;
+       inhalt[platz]->anzahl_d=10;
+-      bewegt[platz]=TRUE;
++      bewegt[platz]=true;
+       energie-=3;
+       if (inhalt_fenster!=NULL) inhalt_fenster->repaint();
+     }
+@@ -206,10 +206,10 @@ int depot::bin_factory() {
+ 
+ int depot::energieVerbrauch(int m) {
+   
+-  if (m>energie) return FALSE;
++  if (m>energie) return false;
+   else {
+     energie-=m;
+-    return TRUE;
++    return true;
+   }
+   if (inhalt_fenster!=NULL) inhalt_fenster->redraw_inhalt();
+   
+@@ -239,7 +239,7 @@ int depot::bin_headquarter() {
+ }
+ 
+ int depot::bin_depotumr() {
+-  return FALSE;
++  return false;
+ }
+ 
+ void depot::setEnergy(int e) {
+diff -upr xbic-1.0_qtlib2-old/src/depot_window.cc xbic-1.0_qtlib2/src/depot_window.cc
+--- xbic-1.0_qtlib2-old/src/depot_window.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/depot_window.cc	2014-08-09 09:24:49.075070321 -0700
+@@ -3,7 +3,7 @@
+ #include <qpainter.h>
+ //Added by qt3to4:
+ #include <QMouseEvent>
+-#include <Q3Frame>
++#include <QFrame>
+ #include <QCloseEvent>
+ #include <QPaintEvent>
+ #include <stdio.h>
+@@ -35,19 +35,19 @@ depot_window::depot_window(main_win *par
+   schliessen.setGeometry(310,10,150,25);
+   
+   energie.setGeometry(220,10,80,25);
+-  energie.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  energie.setFrameStyle(QFrame::Panel | QFrame::Raised);
+   energie.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   headline.setGeometry(10,10,200,25);
+-  headline.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  headline.setFrameStyle(QFrame::Panel | QFrame::Raised);
+   headline.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   beschr1.setGeometry(80,45,150,25);
+-  beschr1.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  beschr1.setFrameStyle(QFrame::Panel | QFrame::Raised);
+   beschr1.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   beschr2.setGeometry(310,45,150,25);
+-  beschr2.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  beschr2.setFrameStyle(QFrame::Panel | QFrame::Raised);
+   beschr2.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   connect(&schliessen,SIGNAL(clicked()),dep,SLOT(schliessen()));
+@@ -81,7 +81,7 @@ void depot_window::paintEvent(QPaintEven
+       sprintf(str,"%d/%d",dep->inhalt[i]->anzahl,dep->inhalt[i]->ausbildung);
+       pa.drawText(x+70,y+10,str);
+       pa.drawPixmap(x,y,*(dep->inhalt[i]->ansicht));
+-      if (dep->bewegt[i]==TRUE)
++      if (dep->bewegt[i]==true)
+         pa.drawPixmap(x,y,*moved);
+     }
+     y+=65;
+@@ -125,7 +125,7 @@ void depot_window::mouseReleaseEvent(QMo
+     if (dep->akt_stellplatz<0) dep->akt_stellplatz=0;
+     if (dep->akt_stellplatz>=anz_inhalt) dep->akt_stellplatz=anz_inhalt-1;
+     
+-    if ((dep->inhalt[dep->akt_stellplatz]!=NULL) && (dep->bewegt[dep->akt_stellplatz]==FALSE)) {
++    if ((dep->inhalt[dep->akt_stellplatz]!=NULL) && (dep->bewegt[dep->akt_stellplatz]==false)) {
+       if (mw->aktueller_modus()==bewegungsmodus) {
+         // Bewegen
+         ls=mw->get_landschaft();
+diff -upr xbic-1.0_qtlib2-old/src/einheit.cc xbic-1.0_qtlib2/src/einheit.cc
+--- xbic-1.0_qtlib2-old/src/einheit.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/einheit.cc	2014-08-09 09:24:49.076070321 -0700
+@@ -102,15 +102,15 @@ void einheit::read(char *filename) {
+   eingabe>>line;
+   if (strcmp(line,"Flugzeug:")!=0) { cerr<<"Falsches Dateiformat: "<<filename<<endl; exit(1); }
+   eingabe>>line;
+-  if (strncasecmp(line,"FALSE",5)==0) flugzeug=FALSE;
+-  else if (strncasecmp(line,"TRUE",4)==0) flugzeug=TRUE;
++  if (strncasecmp(line,"false",5)==0) flugzeug=false;
++  else if (strncasecmp(line,"true",4)==0) flugzeug=true;
+   else { cerr<<"Falsches Dateiformat: "<<filename<<endl; exit(1); }
+   
+   eingabe>>line;
+   if (strcmp(line,"Fusstruppe:")!=0) { cerr<<"Falsches Dateiformat: "<<filename<<endl; exit(1); }
+   eingabe>>line;
+-  if (strncasecmp(line,"FALSE",5)==0) fusstr=FALSE;
+-  else if (strncasecmp(line,"TRUE",4)==0) fusstr=TRUE;
++  if (strncasecmp(line,"false",5)==0) fusstr=false;
++  else if (strncasecmp(line,"true",4)==0) fusstr=true;
+   else { cerr<<"Falsches Dateiformat: "<<filename<<endl; exit(1); }
+   
+   eingabe>>line;
+diff -upr xbic-1.0_qtlib2-old/src/factory.cc xbic-1.0_qtlib2/src/factory.cc
+--- xbic-1.0_qtlib2-old/src/factory.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/factory.cc	2014-08-09 09:24:49.076070321 -0700
+@@ -65,7 +65,7 @@ void factory::mouseReleaseEvent(QMouseEv
+   
+   if (p<fahrzeug_anzahl) {
+     if (dep->energieVerbrauch(mw->bs.getFahrzeugPreis(p))) {
+-      if (dep->einheit_kommt_an(new einheit(mw,p,mw->bin_spieler))==FALSE) {
++      if (dep->einheit_kommt_an(new einheit(mw,p,mw->bin_spieler))==false) {
+         cerr<<"cant build einheit\n";
+         exit(1);
+       }
+diff -upr xbic-1.0_qtlib2-old/src/kampfhandlung.cc xbic-1.0_qtlib2/src/kampfhandlung.cc
+--- xbic-1.0_qtlib2-old/src/kampfhandlung.cc	2014-08-08 18:10:16.561054780 -0700
++++ xbic-1.0_qtlib2/src/kampfhandlung.cc	2014-08-09 09:24:49.077070321 -0700
+@@ -31,7 +31,7 @@ kampfhandlung::kampfhandlung(int spieler
+   MenuMsg	msg;
+   
+   sp=spieler;
+-  kampfbildschirm=TRUE;
++  kampfbildschirm=true;
+   
+   setFixedSize(350,350);
+   
+@@ -92,7 +92,7 @@ void kampfhandlung::kampf_start(KampfMsg
+   ypos_missle_angreifer=200;
+   ypos_missle_gegner=90;
+   
+-  if (gegner_pixmap.load(msg.geg_pxm_name)==FALSE) {
++  if (gegner_pixmap.load(msg.geg_pxm_name)==false) {
+     cerr<<"kann "<<msg.geg_pxm_name<<" nicht oeffnen\n";
+     exit(1);
+   }
+@@ -104,14 +104,14 @@ void kampfhandlung::kampf_start(KampfMsg
+   pa.rotate(180.0);   
+   pa.drawPixmap(-30,-30,angreifer_pixmap);
+   pa.end();
+-  if (angreifer_pixmap.load(msg.ang_pxm_name)==FALSE) {
++  if (angreifer_pixmap.load(msg.ang_pxm_name)==false) {
+     cerr<<"kann "<<msg.ang_pxm_name<<" nicht oeffnen\n";
+     exit(1);
+   }
+   angreifer_pixmap.setMask(angreifer_pixmap.createHeuristicMask());
+   gegner_pixmap.setMask(gegner_pixmap.createHeuristicMask());
+   
+-  if (missle_gegner.load(msg.geg_msl_name)==FALSE) {
++  if (missle_gegner.load(msg.geg_msl_name)==false) {
+     cerr<<"kann "<<msg.geg_msl_name<<" nicht oeffnen\n";
+     exit(1);
+   }
+@@ -123,7 +123,7 @@ void kampfhandlung::kampf_start(KampfMsg
+   pa.rotate(180.0);   
+   pa.drawPixmap(-30,-30,missle_angreifer);
+   pa.end();
+-  if (missle_angreifer.load(msg.ang_msl_name)==FALSE) {
++  if (missle_angreifer.load(msg.ang_msl_name)==false) {
+     cerr<<"kann "<<msg.ang_msl_name<<" nicht oeffnen\n";
+     exit(1);
+   }
+diff -upr xbic-1.0_qtlib2-old/src/kampf_main.cc xbic-1.0_qtlib2/src/kampf_main.cc
+--- xbic-1.0_qtlib2-old/src/kampf_main.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/kampf_main.cc	2014-08-09 09:24:49.077070321 -0700
+@@ -25,7 +25,6 @@ int main(int argc, char **argv) {
+   
+   kampfhandlung	k(s);
+   
+-  a.setMainWidget(&k);
+   return a.exec();
+   
+ }
+diff -upr xbic-1.0_qtlib2-old/src/land.cc xbic-1.0_qtlib2/src/land.cc
+--- xbic-1.0_qtlib2-old/src/land.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/land.cc	2014-08-09 09:24:49.078070321 -0700
+@@ -19,8 +19,8 @@ land::land(QWidget *parent, QPixmap *ans
+   depot_umr=du;
+   parent_widget=parent;
+   eh=NULL;
+-  rahmen_v=FALSE;
+-  zug_beendet_v=FALSE;
++  rahmen_v=false;
++  zug_beendet_v=false;
+   
+   landbild=ans;
+   befahrbarkeit=bef;
+@@ -41,12 +41,12 @@ land::~land() {
+ int land::einheit_kommt_an(einheit *e, int) {
+   
+   if (e==NULL) { cerr<<"Einheit==NULL (zuwenig Speicher oder interner Fehler)\n", exit(1); }
+-  if (eh!=NULL) return FALSE;
++  if (eh!=NULL) return false;
+   
+   eh=e;
+-  zug_beendet(TRUE);
++  zug_beendet(true);
+   
+-  return TRUE;
++  return true;
+   
+ }
+ 
+@@ -66,7 +66,7 @@ einheit * land::get_einheit(int) {
+ }
+ 
+ void land::rahmen(int bo) {
+-  if (zug_beendet_v==TRUE) rahmen_v=FALSE;
++  if (zug_beendet_v==true) rahmen_v=false;
+   else rahmen_v=bo;
+ }
+ 
+@@ -96,8 +96,8 @@ void land::einheit_zerstoert(int) {
+ 
+ void land::modus_wechseln() {
+   
+-  if (zug_beendet()==TRUE) zug_beendet(FALSE);
+-  if (rahmen()==TRUE) rahmen(FALSE);
++  if (zug_beendet()==true) zug_beendet(false);
++  if (rahmen()==true) rahmen(false);
+   
+ }
+ 
+@@ -106,22 +106,22 @@ void land::draw_ansicht(QPainter *pa, in
+   pa->drawPixmap(posx,posy,*landbild);
+   if (strasse_pixmap!=NULL) pa->drawPixmap(posx,posy,*strasse_pixmap);
+   if (eh!=NULL) pa->drawPixmap(posx,posy,*(eh->ansicht));
+-  if (zug_beendet_v==TRUE) pa->drawPixmap(posx,posy,*moved_pixmap);
+-  else if (rahmen_v==TRUE) pa->drawPixmap(posx,posy,*rahmen_pixmap);
++  if (zug_beendet_v==true) pa->drawPixmap(posx,posy,*moved_pixmap);
++  else if (rahmen_v==true) pa->drawPixmap(posx,posy,*rahmen_pixmap);
+   
+ }
+ 
+ int land::oeffnen() {
+-  return FALSE;
++  return false;
+ }
+ 
+ int land::bin_depot() {
+-  return FALSE;
++  return false;
+ }
+ 
+ int land::platz_frei() {
+-  if (eh==NULL) return TRUE;
+-  else return FALSE;
++  if (eh==NULL) return true;
++  else return false;
+ }
+ 
+ int land::gehoere_zu() {
+@@ -147,7 +147,7 @@ void land::copy(land *) {
+ }
+ 
+ int land::bin_factory() {
+-  return FALSE;
++  return false;
+ }
+ 
+ void land::uebernahmeDurchSpieler(int) {
+@@ -156,7 +156,7 @@ void land::uebernahmeDurchSpieler(int) {
+ }
+ 
+ int land::bin_headquarter() {
+-  return FALSE;
++  return false;
+ }
+ 
+ void land::setStrasse(int strasse) {
+@@ -170,8 +170,8 @@ int land::bin_depotumr() {
+ }
+ 
+ int land::bin_strasse() {
+-  if (strasse_pixmap!=NULL) return TRUE;
+-  else return FALSE;
++  if (strasse_pixmap!=NULL) return true;
++  else return false;
+ }
+ 
+ void land::setEnergy(int) {
+diff -upr xbic-1.0_qtlib2-old/src/landschaft.cc xbic-1.0_qtlib2/src/landschaft.cc
+--- xbic-1.0_qtlib2-old/src/landschaft.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/landschaft.cc	2014-08-09 09:24:49.080070321 -0700
+@@ -28,7 +28,7 @@ using namespace std;
+ extern int einheit_id_count;
+ 
+ landschaft::landschaft(char *filename, QWidget *parent, const char *name)
+-  : QWidget(parent,name) {
++  : QWidget(parent) {
+   
+   mw = (main_win *) (topLevelWidget());
+   co=NULL;
+@@ -50,11 +50,11 @@ landschaft::landschaft(char *filename, Q
+   
+   read(filename);
+   
+-  updown=new QScrollBar(1,1000,50,250,1,Qt::Vertical,parent,"updown");
+-  updown->setTracking(TRUE);
++  updown=new QScrollBar(Qt::Vertical,parent);
++  updown->setTracking(true);
+   
+-  leftright=new QScrollBar(1,1000,50,250,1,Qt::Horizontal,parent,"leftright");
+-  leftright->setTracking(TRUE);
++  leftright=new QScrollBar(Qt::Horizontal,parent);
++  leftright->setTracking(true);
+   
+   connect(updown,SIGNAL(valueChanged(int)),this,SLOT(set_offy(int)));
+   connect(leftright,SIGNAL(valueChanged(int)),this,SLOT(set_offx(int)));
+@@ -187,7 +187,7 @@ int landschaft::read(char *filename) {
+       sscanf(line,"%d",&typ);
+       if (typ!=99) {
+         (la[i])[j]->einheit_kommt_an(new einheit(this,typ,1));
+-        (la[i])[j]->zug_beendet(FALSE);
++        (la[i])[j]->zug_beendet(false);
+       }
+     }
+   }
+@@ -201,27 +201,27 @@ int landschaft::read(char *filename) {
+       sscanf(line,"%d",&typ);
+       if (typ!=99) {
+         (la[i])[j]->einheit_kommt_an(new einheit(this,typ,2));
+-        (la[i])[j]->zug_beendet(FALSE);
++        (la[i])[j]->zug_beendet(false);
+       }
+     }
+   }
+   
+-  return TRUE;
++  return true;
+   
+ }
+ 
+ void landschaft::set_offx(int val) {
+   offx=-(int)((double)(landwidth*versch_x-width()+versch_x/3)/1000.0*(double)val);
+-  repaint(FALSE);
++  repaint();
+ }
+ 
+ void landschaft::set_offy(int val) {
+   offy=-(int)((double)(landheight*2*versch_y+versch_y-height()+2)/1000.0*(double)val);
+-  repaint(FALSE);
++  repaint();
+ }
+ 
+ void landschaft::paint_new() {
+-  repaint(TRUE);
++  repaint();
+ }
+ 
+ void landschaft::mouseReleaseEvent(QMouseEvent *me) {
+@@ -240,7 +240,7 @@ void landschaft::mouseReleaseEvent(QMous
+   if (y>=landheight) y=landheight-1;
+   
+   if (klick==1) {
+-    if ((la[x])[y]->oeffnen()==FALSE) {
++    if ((la[x])[y]->oeffnen()==false) {
+       if (mw->aktueller_modus()==bewegungsmodus) steuerung_bewegungsmodus(x,y);
+       else steuerung_angriffsmodus(x,y);
+     }
+@@ -249,7 +249,7 @@ void landschaft::mouseReleaseEvent(QMous
+     else steuerung_angriffsmodus(x,y);
+   }
+   
+-  repaint(FALSE);
++  repaint();
+   
+ }
+ 
+@@ -270,7 +270,7 @@ void landschaft::bewege_einheit(int sx,
+   e=(la[sx])[sy]->get_einheit();
+   if (e==NULL) { cerr<<"landschaft::bewege_einheit() Feld ist unbesetzt!\n"; exit(1); }
+   
+-  if ((la[ex])[ey]->einheit_kommt_an(e)==TRUE) {
++  if ((la[ex])[ey]->einheit_kommt_an(e)==true) {
+     
+     (la[sx])[sy]->einheit_geht();
+     
+@@ -297,12 +297,12 @@ void landschaft::steuerung_bewegungsmodu
+     if (e==NULL) return;
+     mw->info(e);
+     
+-    if ((la[klickx])[klicky]->zug_beendet()==TRUE) return;
++    if ((la[klickx])[klicky]->zug_beendet()==true) return;
+     if (e->gehoere_zu!=mw->bin_spieler) return;
+     
+     markiere_erreichbare_felder(klickx,klicky,(double)(e->bewegung),e->flugzeug);
+     
+-    (la[klickx])[klicky]->rahmen(FALSE);
++    (la[klickx])[klicky]->rahmen(false);
+     
+     first_klickx=klickx;
+     first_klicky=klicky;
+@@ -328,7 +328,7 @@ void landschaft::steuerung_bewegungsmodu
+     
+     for (i=0; i<landwidth; i++)
+       for (j=0; j<landheight; j++)
+-        if ( (la[i])[j]->rahmen()==TRUE ) (la[i])[j]->rahmen(FALSE);
++        if ( (la[i])[j]->rahmen()==true ) (la[i])[j]->rahmen(false);
+     
+     klick=1;
+   }
+@@ -347,28 +347,28 @@ void landschaft::steuerung_angriffsmodus
+     if (e1==NULL) return;
+     mw->info(e1);
+     
+-    if ((la[klickx])[klicky]->zug_beendet()==TRUE) return;
++    if ((la[klickx])[klicky]->zug_beendet()==true) return;
+     if (e1->gehoere_zu!=mw->bin_spieler) return;
+     
+-    bo=FALSE;
++    bo=false;
+     
+     for (i=0; i<landwidth; i++) {
+       for (j=0; j<landheight; j++) {
+-        if ((la[i])[j]->bin_depot()==FALSE) {
++        if ((la[i])[j]->bin_depot()==false) {
+           e2=(la[i])[j]->get_einheit();
+           if (e2!=NULL) {
+             if (e2->gehoere_zu!=mw->bin_spieler) {
+-              if (ist_in_radius(e1->min_schussweite-1,klickx,klicky,i,j)==FALSE) {
+-                if (ist_in_radius(e1->max_schussweite,klickx,klicky,i,j)==TRUE) {
++              if (ist_in_radius(e1->min_schussweite-1,klickx,klicky,i,j)==false) {
++                if (ist_in_radius(e1->max_schussweite,klickx,klicky,i,j)==true) {
+                   if (e2->flugzeug) {
+                     if (e1->feuerkraft_luft>0) {
+-                      (la[i])[j]->rahmen(TRUE);
+-                      bo=TRUE;
++                      (la[i])[j]->rahmen(true);
++                      bo=true;
+                     }
+                   } else {
+                     if (e1->feuerkraft_boden>0) {
+-                      (la[i])[j]->rahmen(TRUE);
+-                      bo=TRUE;
++                      (la[i])[j]->rahmen(true);
++                      bo=true;
+                     }
+                   }
+                 }
+@@ -383,16 +383,16 @@ void landschaft::steuerung_angriffsmodus
+     if (bo) klick=2;
+   } else {
+     
+-    if ( (la[klickx])[klicky]->rahmen()==TRUE ) {
++    if ( (la[klickx])[klicky]->rahmen()==true ) {
+       gegenwehr=ist_in_radius(1,first_klickx,first_klicky,klickx,klicky);
+       e1=(la[klickx])[klicky]->get_einheit();
+-      if (ist_in_radius(e1->min_schussweite-1,first_klickx,first_klicky,klickx,klicky)) gegenwehr=FALSE;
++      if (ist_in_radius(e1->min_schussweite-1,first_klickx,first_klicky,klickx,klicky)) gegenwehr=false;
+       greife_einheit_an(first_klickx,first_klicky,klickx,klicky,gegenwehr);
+     }
+     
+     for (i=0; i<landwidth; i++)
+       for (j=0; j<landheight; j++)
+-        if ( (la[i])[j]->rahmen()==TRUE ) (la[i])[j]->rahmen(FALSE);
++        if ( (la[i])[j]->rahmen()==true ) (la[i])[j]->rahmen(false);
+     
+     klick=1;
+   }
+@@ -427,15 +427,15 @@ int landschaft::ist_in_radius(int r, int
+     if ( (mx%2)==0 ) {
+       // gerade
+       by=my-r+(abs>>1);
+-      if ( (y>=by) && (y<(by+ly)) ) return TRUE;
++      if ( (y>=by) && (y<(by+ly)) ) return true;
+     } else {
+       // ungerade
+       by=my+r-(abs>>1);
+-      if ( (y<=by) && (y>(by-ly)) ) return TRUE;
++      if ( (y<=by) && (y>(by-ly)) ) return true;
+     }
+   }
+   
+-  return FALSE;
++  return false;
+   
+ }
+ 
+@@ -445,7 +445,7 @@ void landschaft::neuer_communicator(comm
+ 
+ void landschaft::greife_einheit_an(int x, int y, int nx, int ny, int gegenwehr) {
+   
+-  (la[x])[y]->zug_beendet(TRUE);
++  (la[x])[y]->zug_beendet(true);
+   
+   // Meldung an communicator
+   
+@@ -487,7 +487,7 @@ void landschaft::markiere_erreichbare_fe
+           else feld_bew[y*landwidth+x]=(la[x])[y]->befahrbarkeit;
+         } else feld_bew[y*landwidth+x]=(la[x])[y]->befahrbarkeit;
+       } else feld_bew[y*landwidth+x]=e->gehoere_zu*1000;	// Achtung: e kann NULL sein
+-      feld_erg[y*landwidth+x]=FALSE;
++      feld_erg[y*landwidth+x]=false;
+     }
+   }
+   
+@@ -497,7 +497,7 @@ void landschaft::markiere_erreichbare_fe
+   for (x=0; x<landwidth; x++) {
+     for (y=0; y<landheight; y++) {
+       if (feld_erg[y*landwidth+x])
+-        (la[x])[y]->rahmen(TRUE);
++        (la[x])[y]->rahmen(true);
+     }
+   }
+   
+@@ -525,7 +525,7 @@ void landschaft::markiere_erreichbare_fe
+     } else {
+       if (flugzeug) bew-=1.0;
+       else bew-=feld_bew[a];
+-      feld_erg[a]=TRUE;
++      feld_erg[a]=true;
+     }
+     // wenn eingeschlossen, dann return
+     // vertikal
+@@ -563,16 +563,16 @@ void landschaft::markiere_erreichbare_fe
+   if (bew<=0) return;
+   
+   // oben
+-  if (nachbar_koords(sx,sy,nachbar_o,&x,&y)==TRUE) {
++  if (nachbar_koords(sx,sy,nachbar_o,&x,&y)==true) {
+     v=feld_bew[y*landwidth+x];
+     if ((v<900) || ((int)(v+0.5)==mw->bin_spieler*1000)) {
+-      if (nachbar_koords(sx,sy,nachbar_ol,&nx,&ny)==TRUE) {
++      if (nachbar_koords(sx,sy,nachbar_ol,&nx,&ny)==true) {
+         v=feld_bew[ny*landwidth+nx];
+         if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-          if (nachbar_koords(sx,sy,nachbar_or,&nx,&ny)==TRUE) {
++          if (nachbar_koords(sx,sy,nachbar_or,&nx,&ny)==true) {
+             v=feld_bew[ny*landwidth+nx];
+             if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=TRUE;
++              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=true;
+             } else {
+               markiere_erreichbare_felder_rek(feld_bew,feld_erg,schritte,x,y,bew,flugzeug);
+             }
+@@ -589,16 +589,16 @@ void landschaft::markiere_erreichbare_fe
+   }
+   
+   // unten
+-  if (nachbar_koords(sx,sy,nachbar_u,&x,&y)==TRUE) {
++  if (nachbar_koords(sx,sy,nachbar_u,&x,&y)==true) {
+     v=feld_bew[y*landwidth+x];
+     if ((v<900) || ((int)(v+0.5)==mw->bin_spieler*1000)) {
+-      if (nachbar_koords(sx,sy,nachbar_ul,&nx,&ny)==TRUE) {
++      if (nachbar_koords(sx,sy,nachbar_ul,&nx,&ny)==true) {
+         v=feld_bew[ny*landwidth+nx];
+         if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-          if (nachbar_koords(sx,sy,nachbar_ur,&nx,&ny)==TRUE) {
++          if (nachbar_koords(sx,sy,nachbar_ur,&nx,&ny)==true) {
+             v=feld_bew[ny*landwidth+nx];
+             if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=TRUE;
++              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=true;
+             } else {
+               markiere_erreichbare_felder_rek(feld_bew,feld_erg,schritte,x,y,bew,flugzeug);
+             }
+@@ -615,16 +615,16 @@ void landschaft::markiere_erreichbare_fe
+   }
+   
+   // oben links
+-  if (nachbar_koords(sx,sy,nachbar_ol,&x,&y)==TRUE) {
++  if (nachbar_koords(sx,sy,nachbar_ol,&x,&y)==true) {
+     v=feld_bew[y*landwidth+x];
+     if ((v<900) || ((int)(v+0.5)==mw->bin_spieler*1000)) {
+-      if (nachbar_koords(sx,sy,nachbar_o,&nx,&ny)==TRUE) {
++      if (nachbar_koords(sx,sy,nachbar_o,&nx,&ny)==true) {
+         v=feld_bew[ny*landwidth+nx];
+         if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-          if (nachbar_koords(sx,sy,nachbar_ul,&nx,&ny)==TRUE) {
++          if (nachbar_koords(sx,sy,nachbar_ul,&nx,&ny)==true) {
+             v=feld_bew[ny*landwidth+nx];
+             if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=TRUE;
++              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=true;
+             } else {
+               markiere_erreichbare_felder_rek(feld_bew,feld_erg,schritte,x,y,bew,flugzeug);
+             }
+@@ -641,16 +641,16 @@ void landschaft::markiere_erreichbare_fe
+   }
+   
+   // oben rechts
+-  if (nachbar_koords(sx,sy,nachbar_or,&x,&y)==TRUE) {
++  if (nachbar_koords(sx,sy,nachbar_or,&x,&y)==true) {
+     v=feld_bew[y*landwidth+x];
+     if ((v<900) || ((int)(v+0.5)==mw->bin_spieler*1000)) {
+-      if (nachbar_koords(sx,sy,nachbar_o,&nx,&ny)==TRUE) {
++      if (nachbar_koords(sx,sy,nachbar_o,&nx,&ny)==true) {
+         v=feld_bew[ny*landwidth+nx];
+         if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-          if (nachbar_koords(sx,sy,nachbar_ur,&nx,&ny)==TRUE) {
++          if (nachbar_koords(sx,sy,nachbar_ur,&nx,&ny)==true) {
+             v=feld_bew[ny*landwidth+nx];
+             if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=TRUE;
++              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=true;
+             } else {
+               markiere_erreichbare_felder_rek(feld_bew,feld_erg,schritte,x,y,bew,flugzeug);
+             }
+@@ -667,16 +667,16 @@ void landschaft::markiere_erreichbare_fe
+   }
+   
+   // unten links
+-  if (nachbar_koords(sx,sy,nachbar_ul,&x,&y)==TRUE) {
++  if (nachbar_koords(sx,sy,nachbar_ul,&x,&y)==true) {
+     v=feld_bew[y*landwidth+x];
+     if ((v<900) || ((int)(v+0.5)==mw->bin_spieler*1000)) {
+-      if (nachbar_koords(sx,sy,nachbar_ol,&nx,&ny)==TRUE) {
++      if (nachbar_koords(sx,sy,nachbar_ol,&nx,&ny)==true) {
+         v=feld_bew[ny*landwidth+nx];
+         if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-          if (nachbar_koords(sx,sy,nachbar_u,&nx,&ny)==TRUE) {
++          if (nachbar_koords(sx,sy,nachbar_u,&nx,&ny)==true) {
+             v=feld_bew[ny*landwidth+nx];
+             if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=TRUE;
++              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=true;
+             } else {
+               markiere_erreichbare_felder_rek(feld_bew,feld_erg,schritte,x,y,bew,flugzeug);
+             }
+@@ -693,16 +693,16 @@ void landschaft::markiere_erreichbare_fe
+   }
+   
+   // unten rechts
+-  if (nachbar_koords(sx,sy,nachbar_ur,&x,&y)==TRUE) {
++  if (nachbar_koords(sx,sy,nachbar_ur,&x,&y)==true) {
+     v=feld_bew[y*landwidth+x];
+     if ((v<900) || ((int)(v+0.5)==mw->bin_spieler*1000)) {
+-      if (nachbar_koords(sx,sy,nachbar_or,&nx,&ny)==TRUE) {
++      if (nachbar_koords(sx,sy,nachbar_or,&nx,&ny)==true) {
+         v=feld_bew[ny*landwidth+nx];
+         if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-          if (nachbar_koords(sx,sy,nachbar_u,&nx,&ny)==TRUE) {
++          if (nachbar_koords(sx,sy,nachbar_u,&nx,&ny)==true) {
+             v=feld_bew[ny*landwidth+nx];
+             if (((int)(v+0.5)==anderer_spieler*1000) || ((int)(v+0.5)==1111)) {
+-              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=TRUE;
++              if (feld_bew[y*landwidth+x]<900) feld_erg[y*landwidth+x]=true;
+             } else {
+               markiere_erreichbare_felder_rek(feld_bew,feld_erg,schritte,x,y,bew,flugzeug);
+             }
+@@ -768,39 +768,39 @@ int landschaft::nachbar_koords(int x, in
+   
+   switch(wo) {
+     case nachbar_o:
+-      if (y>0) { *kx=x; *ky=y-1; return TRUE; }
+-      return FALSE;
++      if (y>0) { *kx=x; *ky=y-1; return true; }
++      return false;
+     case nachbar_u:
+-      if (y<landheight-1) { *kx=x; *ky=y+1; return TRUE; }
+-      return FALSE;
++      if (y<landheight-1) { *kx=x; *ky=y+1; return true; }
++      return false;
+     case nachbar_ol:
+       if (x%2==0) {
+-        if ( (x>0) && (y>0) ) { *kx=x-1; *ky=y-1; return TRUE; }
++        if ( (x>0) && (y>0) ) { *kx=x-1; *ky=y-1; return true; }
+       } else {
+-        if (x>0) { *kx=x-1; *ky=y; return TRUE; }
++        if (x>0) { *kx=x-1; *ky=y; return true; }
+       }
+-      return FALSE;
++      return false;
+     case nachbar_ul:
+       if (x%2==0) {
+-        if (x>0) { *kx=x-1; *ky=y; return TRUE; }
++        if (x>0) { *kx=x-1; *ky=y; return true; }
+       } else {
+-        if ( (x>0) && (y<landheight-1) ) { *kx=x-1; *ky=y+1; return TRUE; }
++        if ( (x>0) && (y<landheight-1) ) { *kx=x-1; *ky=y+1; return true; }
+       }
+-      return FALSE;
++      return false;
+     case nachbar_or:
+       if (x%2==0) {
+-        if ( (x<landwidth-1) && (y>0) ) { *kx=x+1; *ky=y-1; return TRUE; }
++        if ( (x<landwidth-1) && (y>0) ) { *kx=x+1; *ky=y-1; return true; }
+       } else {
+-        if (x<landwidth-1) { *kx=x+1; *ky=y; return TRUE; }
++        if (x<landwidth-1) { *kx=x+1; *ky=y; return true; }
+       }
+-      return FALSE;
++      return false;
+     case nachbar_ur:
+       if (x%2==0) {
+-        if (x<landwidth-1) { *kx=x+1; *ky=y; return TRUE; }
++        if (x<landwidth-1) { *kx=x+1; *ky=y; return true; }
+       } else {
+-        if ( (x<landwidth-1) && (y<landheight-1) ) { *kx=x+1; *ky=y+1; return TRUE; }
++        if ( (x<landwidth-1) && (y<landheight-1) ) { *kx=x+1; *ky=y+1; return true; }
+       }
+-      return FALSE;
++      return false;
+     default:
+       cerr<<"landschaft::nachbar() unbekannte Richtung!\n";
+       exit(1);
+@@ -833,7 +833,7 @@ void landschaft::bewegung_ausfuehren(int
+     return;
+   }
+   
+-  if ((la[ex])[ey]->einheit_kommt_an(e,platz_ziel)==TRUE) (la[sx])[sy]->einheit_geht(platz_start);
++  if ((la[ex])[ey]->einheit_kommt_an(e,platz_ziel)==true) (la[sx])[sy]->einheit_geht(platz_start);
+   else { cerr<<"interner Fehler! bewegung_ausfuehren()\n"; exit(1); }
+   
+ }
+diff -upr xbic-1.0_qtlib2-old/src/main_win.cc xbic-1.0_qtlib2/src/main_win.cc
+--- xbic-1.0_qtlib2-old/src/main_win.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/main_win.cc	2014-08-09 09:24:49.081070321 -0700
+@@ -2,7 +2,7 @@
+ #include <qapplication.h>
+ //Added by qt3to4:
+ #include <QLabel>
+-#include <Q3Frame>
++#include <QFrame>
+ #include <QTimerEvent>
+ #include <QCloseEvent>
+ #include <QPaintEvent>
+@@ -21,7 +21,7 @@ using namespace std;
+ char levelName[256];
+ 
+ main_win::main_win(int spieler, computerspieler *csp, QWidget *parent, const char *name)
+-  : QWidget(parent,name),
++  : QWidget(parent),
+     kampf(this,"battle screen on","battle screen off"),
+     bs(this),
+     karte(this)
+@@ -31,7 +31,7 @@ main_win::main_win(int spieler, computer
+   
+   if (spieler<1) { cerr<<"Spieler muss >=1 sein!\n"; exit(1); }
+   
+-  can_change_mod=FALSE;
++  can_change_mod=false;
+   co=NULL;
+   
+   bin_spieler=spieler;
+@@ -44,17 +44,17 @@ main_win::main_win(int spieler, computer
+   info_label=NULL;
+   
+   if (spieler==1) {
+-    if (csp==NULL) setCaption("XB.I.C. player 1 red");
+-    else setCaption("XB.I.C. computer 1 red");
++    if (csp==NULL) setWindowTitle("XB.I.C. player 1 red");
++    else setWindowTitle("XB.I.C. computer 1 red");
+   } else {
+-    if (csp==NULL) setCaption("XB.I.C. player 2 blue");
+-    else setCaption("XB.I.C. computer 2 blue");
++    if (csp==NULL) setWindowTitle("XB.I.C. player 2 blue");
++    else setWindowTitle("XB.I.C. computer 2 blue");
+   }
+   
+-  modus_label=new QLabel(this,"modus_label");
++  modus_label=new QLabel(this);
+   modus_label->move(10,40);
+   modus_label->resize(390,20);
+-  modus_label->setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  modus_label->setFrameStyle(QFrame::Panel | QFrame::Raised);
+   modus_label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   if (csp==NULL) {
+@@ -69,16 +69,16 @@ main_win::main_win(int spieler, computer
+   ls=new landschaft(fname,this,"ls");
+   ls->move(10,70);
+   
+-  status_label=new QLabel(this,"status_label");
++  status_label=new QLabel(this);
+   status_label->move(410,70);
+   status_label->resize(100,50);
+-  status_label->setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  status_label->setFrameStyle(QFrame::Panel | QFrame::Raised);
+   status_label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+-  info_label=new QLabel(this,"info_label");
++  info_label=new QLabel(this);
+   info_label->move(410,130);
+   info_label->resize(100,190);
+-  info_label->setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  info_label->setFrameStyle(QFrame::Panel | QFrame::Raised);
+   info_label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+   
+   ende=new QPushButton("quit",this);
+@@ -141,7 +141,7 @@ void main_win::modus_wechseln() {
+   if (anz_spieler2<=0) victory("player 2 has lost all units, victory player 1!\n");
+   if (anz_spieler1<=0) victory("player 1 has lost all units, victory player 2!\n");
+   
+-  can_change_mod=FALSE;
++  can_change_mod=false;
+   
+ }
+ 
+@@ -190,12 +190,12 @@ void main_win::modus_change_pressed() {
+   co->sendKampfbildschirmMsg(kampf.status());
+   // ###
+   
+-  if (can_change_mod==FALSE) {
+-    can_change_mod=TRUE;
++  if (can_change_mod==false) {
++    can_change_mod=true;
+     if (modus==bewegungsmodus) modus_label->setText("move, wait for other player");
+     else modus_label->setText("attack, wait for other player");
+   } else {
+-    can_change_mod=FALSE;
++    can_change_mod=false;
+     if (modus==bewegungsmodus) modus_label->setText("move");
+     else modus_label->setText("attack");
+   }
+@@ -233,7 +233,7 @@ void main_win::closeEvent(QCloseEvent *)
+ 
+ void main_win::timerEvent(QTimerEvent *) {
+   
+-  if (co->warten_auf_wechsel()==FALSE) {
++  if (co->warten_auf_wechsel()==false) {
+     if (aktueller_modus()==angriffsmodus) cs->angreifen();
+     else cs->bewegen();
+   }
+@@ -241,8 +241,8 @@ void main_win::timerEvent(QTimerEvent *)
+ }
+ 
+ int main_win::bin_computerspieler() {
+-  if (cs==NULL) return FALSE;
+-  else return TRUE;
++  if (cs==NULL) return false;
++  else return true;
+ }
+ 
+ void main_win::zaehleFahrzeuge() {
+diff -upr xbic-1.0_qtlib2-old/src/Makefile xbic-1.0_qtlib2/src/Makefile
+--- xbic-1.0_qtlib2-old/src/Makefile	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/Makefile	2014-08-09 09:33:08.851103873 -0700
+@@ -3,16 +3,16 @@
+ 
+ CC = g++
+ 
+-MOC = /usr/lib/qt4/bin/moc
++MOC = /usr/lib/qt/bin/moc
+ 
+-CFLAGS = -Wall -O6 -fomit-frame-pointer -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
++CFLAGS = -Wall -O6 -fomit-frame-pointer -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -fPIE
+ #CFLAGS = -Wall -g
+ 
+-INCDIR = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/Qt3Support -I/usr/include/qt4 -I.
++INCDIR = -I/usr/share/qt/mkspecs/linux-g++ -I. -I/usr/include/qt/QtCore -I/usr/include/qt/QtGui -I/usr/include/qt/QtWidgets -I/usr/include/qt -I.
+ 
+ LIBDIR = -L/usr/lib 
+ 
+-LIBS = -lX11 -lpng -lz -lQt3Support -lQtGui -lQtCore -lpthread
++LIBS = -lX11 -lpng -lz -lQt5Gui -lQt5Core -lQt5Widgets -lpthread
+ 
+ OBJ1 =  battle_main.o factory.o bewertung.o mytogglebutton.o \
+ 	computerspieler.o depot_window.o depot.o land.o landschaft.o \
+diff -upr xbic-1.0_qtlib2-old/src/menu.cc xbic-1.0_qtlib2/src/menu.cc
+--- xbic-1.0_qtlib2-old/src/menu.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/menu.cc	2014-08-09 09:24:49.082070321 -0700
+@@ -11,6 +11,7 @@
+ #include <QTimerEvent>
+ #include <QBasicTimer>
+ #include <QObject>
++#include <QPalette>
+ 
+ #include "menu.hh"
+ 
+@@ -18,6 +19,8 @@ using namespace std;
+ 
+ int msq_id;
+ 
++QPalette m_palette;
++
+ menu::menu() :
+   st_bat("start",this),
+   choose_lev("choose",this),
+@@ -35,7 +38,8 @@ menu::menu() :
+ 
+   setFixedSize(640,480);
+   
+-  setBackgroundPixmap(title);
++  m_palette.setBrush(backgroundRole(), QBrush(title));
++  setPalette(m_palette);
+ 
+   sp1.setGeometry(20,320,140,20);
+   sp2.setGeometry(180,320,140,20);
+@@ -72,15 +76,15 @@ menu::menu() :
+   victory[0]=0;
+
+   connect(&choose_lev,SIGNAL(clicked()),this,SLOT(showLevList()));
+-  connect(&lev_list,SIGNAL(selected(int)),this,SLOT(levSelected(int)));
++  connect(&lev_list,SIGNAL(currentRowChanged(int)),this,SLOT(levSelected(int)));
+ 
+   lev_list.resize(200,200);
+-  lev_list.setCaption("choose Level");
++  lev_list.setWindowTitle("choose Level");
+   lev_list.hide();
+   
+   readLevList();
+   
+-  setCaption("XB.I.C. by Torsten Brischalle & Ingo Berg");
++  setWindowTitle("XB.I.C. by Torsten Brischalle & Ingo Berg");
+ }
+ 
+ menu::~menu() {
+@@ -100,14 +104,14 @@ void menu::start_battle() {
+   hide();
+   
+   strcpy(name,"bin/fight 1 -display ");
+-  strcat(name, (const char*) di1.text().data());
++  strcat(name, di1.text().toLocal8Bit().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+   fight1=msg.pid;
+   
+   strcpy(name,"bin/fight 2 -display ");
+-  strcat(name,(const char*) di2.text().data());
++  strcat(name, di2.text().toLocal8Bit().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+@@ -118,9 +122,9 @@ void menu::start_battle() {
+   else strcat(name," c 1");
+   if (ka1.status()==1) strcat(name," kon ");
+   else strcat(name," koff ");
+-  strcat(name,(const char*) lev.text().data());
++  strcat(name, lev.text().toLocal8Bit().data());
+   strcat(name," -display ");
+-  strcat(name,(const char*) di1.text().data());
++  strcat(name, di1.text().toLocal8Bit().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+@@ -131,9 +135,9 @@ void menu::start_battle() {
+   else strcat(name," c 2");
+   if (ka2.status()==1) strcat(name," kon ");
+   else strcat(name," koff ");
+-  strcat(name,(const char*) lev.text().data());
++  strcat(name, lev.text().toLocal8Bit().data());
+   strcat(name," -display ");
+-  strcat(name,(const char*) di2.text().data());
++  strcat(name, di2.text().toLocal8Bit().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+@@ -176,11 +180,11 @@ void menu::timerEvent(QTimerEvent *) {
+     strncpy(victory,msg.victory,VICTORY_TXT_SIZE);
+     if (strlen(victory)<3) strcpy(victory,"one player pressed the quit button!");
+     
+-    sprintf(name,"bin/showVictory \"%s\" -display %s &",(char*) victory,di1.text().data());
++    sprintf(name,"bin/showVictory \"%s\" -display %s &",(char*) victory,di1.text().toLocal8Bit().data());
+ /*killme*/							//di1.text() durch di1.text().data() ersetzt
+     if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+-    if (strcmp((const char*) di1.text().data(), (const char*) di2.text().data())!=0) {
+-      sprintf(name,"bin/showVictory \"%s\" -display %s &",(char*) victory,di2.text().data());
++    if (strcmp((const char*) di1.text().toLocal8Bit().data(), (const char*) di2.text().toLocal8Bit().data())!=0) {
++      sprintf(name,"bin/showVictory \"%s\" -display %s &",(char*) victory,di2.text().toLocal8Bit().data());
+ /*killme*/							//di2.text() durch di2.text().data ersetzt
+       if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+     }
+@@ -202,7 +206,7 @@ void menu::readLevList() {
+   
+   while (!in.eof()) {
+     in>>l;
+-    if (strlen(l)>2) lev_list.inSort(l);
++    if (strlen(l)>2) {lev_list.addItem(l); lev_list.sortItems();}
+   }
+   
+ }
+@@ -217,7 +221,7 @@ void menu::showLevList() {
+ void menu::levSelected(int index)//const char *l)
+ {
+   lev_list.hide();
+-  lev.setText(lev_list.text(index));
++  lev.setText(lev_list.item(index)->text());
+ //  lev.setText(l);
+ }
+ 
+diff -upr xbic-1.0_qtlib2-old/src/menu.hh xbic-1.0_qtlib2/src/menu.hh
+--- xbic-1.0_qtlib2-old/src/menu.hh	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/menu.hh	2014-08-09 09:24:49.083070322 -0700
+@@ -12,7 +12,7 @@
+ #include <sys/types.h>
+ #include <sys/ipc.h>
+ #include <sys/msg.h>
+-#include <q3listbox.h>
++#include <QListWidget>
+ 
+ #include "mytogglebutton.hh"
+ 
+@@ -57,7 +57,7 @@ class menu : public QWidget {
+   pid_t			battle1, battle2, fight1, fight2;
+   char			victory[VICTORY_TXT_SIZE];
+   key_t			ipc_key;
+-  Q3ListBox		lev_list;
++  QListWidget		lev_list;
+   
+   void readLevList();
+   
+diff -upr xbic-1.0_qtlib2-old/src/menu_main.cc xbic-1.0_qtlib2/src/menu_main.cc
+--- xbic-1.0_qtlib2-old/src/menu_main.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/menu_main.cc	2014-08-09 09:24:49.083070322 -0700
+@@ -33,7 +33,6 @@ int main(int argc, char *argv[])
+   signal(SIGINT,sigIntHandler);
+   
+   me.show();
+-  a.setMainWidget(&me);
+   r=a.exec();
+   
+   if (msgctl(msq_id,IPC_RMID,0)==-1) perror("cant remove message queue");
+diff -upr xbic-1.0_qtlib2-old/src/victory_main.cc xbic-1.0_qtlib2/src/victory_main.cc
+--- xbic-1.0_qtlib2-old/src/victory_main.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/victory_main.cc	2014-08-09 09:24:49.083070322 -0700
+@@ -20,7 +20,6 @@ int main(int argc, char **argv) {
+   if (argc<2) { cerr<<"usage: showVictory text\n"; exit(1); }
+   
+   me.setText(argv[1]);
+-  ap.setMainWidget(&me);
+   return ap.exec();
+   
+ }
+diff -upr xbic-1.0_qtlib2-old/src/victory_msg.cc xbic-1.0_qtlib2/src/victory_msg.cc
+--- xbic-1.0_qtlib2-old/src/victory_msg.cc	2014-08-08 18:10:16.562054780 -0700
++++ xbic-1.0_qtlib2/src/victory_msg.cc	2014-08-09 09:24:49.084070322 -0700
+@@ -4,9 +4,12 @@
+ //Added by qt3to4:
+ #include <QPixmap>
+ #include <QPaintEvent>
++#include <QPalette>
+ 
+ #include "victory_msg.hh"
+ 
++QPalette m_palette;
++
+ victoryMsg::victoryMsg() :
+   ok("ok",this),
+   pixmap("pics/msg_wb.jpg")
+@@ -14,7 +17,8 @@ victoryMsg::victoryMsg() :
+   
+   text=NULL;
+   setFixedSize(400,100);
+-  setBackgroundPixmap((QPixmap&)pixmap);  
++  m_palette.setBrush(backgroundRole(), QBrush((QPixmap&)pixmap));
++  setPalette(m_palette);
+   connect(&ok,SIGNAL(pressed()),qApp,SLOT(quit()));
+   
+   hide();

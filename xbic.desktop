@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XB.I.C.
+Comment=A tactical turn-based game based on the Battle Isle series
+Exec=xbic
+Icon=xbic
+Terminal=false
+Categories=Game;StrategyGame;

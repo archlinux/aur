@@ -1,0 +1,732 @@
+diff -ruN xbic-1.0_qtlib2/src/battle_main.cc xbic-1.0_qt4/src/battle_main.cc
+--- xbic-1.0_qtlib2/src/battle_main.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/battle_main.cc	2014-08-05 18:09:02.795698911 +0200
+@@ -1,5 +1,7 @@
+ 
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <stdio.h>
+ #include <string.h>
+ 
+@@ -9,6 +11,8 @@
+ #include "communicator.hh"
+ #include "main_win.hh"
+ 
++using namespace std;
++
+ int main(int argc, char **argv) {
+   
+   if (argc<5) { cerr<<"usage: battle c/m 1/2 kon/koff level\n"; exit(1); }
+diff -ruN xbic-1.0_qtlib2/src/bildspeicher.cc xbic-1.0_qt4/src/bildspeicher.cc
+--- xbic-1.0_qtlib2/src/bildspeicher.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/bildspeicher.cc	2014-08-05 18:09:02.804698911 +0200
+@@ -2,7 +2,11 @@
+ #include "bildspeicher.hh"
+ 
+ #include <qbitmap.h>
+-#include <fstream.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ 
+ #include "land.hh"
+ #include "main_win.hh"
+@@ -14,6 +18,8 @@
+ #define type_hq	3
+ #define type_du	4
+ 
++using namespace std;
++
+ bildspeicher::bildspeicher(main_win *m) {
+   
+   int		i;
+diff -ruN xbic-1.0_qtlib2/src/communicator.cc xbic-1.0_qt4/src/communicator.cc
+--- xbic-1.0_qtlib2/src/communicator.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/communicator.cc	2014-08-05 18:09:02.813698911 +0200
+@@ -2,7 +2,9 @@
+ #include <sys/types.h>
+ #include <sys/ipc.h>
+ #include <sys/msg.h>
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <stdio.h>
+ #include <qapplication.h>
+ #include <unistd.h>
+@@ -16,6 +18,8 @@
+ #include "depot.hh"
+ #include "menu.hh"
+ 
++using namespace std;
++
+ communicator::communicator(main_win *spieler_win) : QTimer () {
+   
+   MenuMsg	msg;
+diff -ruN xbic-1.0_qtlib2/src/computerspieler.cc xbic-1.0_qt4/src/computerspieler.cc
+--- xbic-1.0_qtlib2/src/computerspieler.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/computerspieler.cc	2014-08-05 18:09:02.821698910 +0200
+@@ -1,6 +1,8 @@
+ 
+ #include <unistd.h>
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ 
+ #include "computerspieler.hh"
+ #include "land.hh"
+@@ -9,6 +11,8 @@
+ #define MAX_DEPOT	10
+ #define REPAIR_CHECK	4
+ 
++using namespace std;
++
+ computerspieler::computerspieler() {
+   
+   mw=NULL;
+diff -ruN xbic-1.0_qtlib2/src/depot.cc xbic-1.0_qt4/src/depot.cc
+--- xbic-1.0_qtlib2/src/depot.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/depot.cc	2014-08-05 18:09:02.826698910 +0200
+@@ -1,10 +1,16 @@
+ 
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <qpushbutton.h>
++//Added by qt3to4:
++#include <QPixmap>
+ 
+ #include "depot.hh"
+ #include "depot_window.hh"
+ 
++using namespace std;
++
+ depot::depot(QWidget *parent, QPixmap *ans, double bef, int spieler, int px, int py, int fabrik, int hauptquartier)
+   : QObject(), land(parent,ans,bef,FALSE) {
+   
+diff -ruN xbic-1.0_qtlib2/src/depot.hh xbic-1.0_qt4/src/depot.hh
+--- xbic-1.0_qtlib2/src/depot.hh	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/depot.hh	2014-08-05 16:09:50.434946978 +0200
+@@ -4,9 +4,12 @@
+ 
+ #include <qobject.h>
+ #include <qwidget.h>
++//Added by qt3to4:
++#include <QPixmap>
+ 
+ #include "main_win.hh"
+ #include "land.hh"
++#include "depot_window.hh"
+ 
+ #define anz_inhalt	8
+ 
+diff -ruN xbic-1.0_qtlib2/src/depot_window.cc xbic-1.0_qt4/src/depot_window.cc
+--- xbic-1.0_qtlib2/src/depot_window.cc	1999-09-13 14:56:28.000000000 +0200
++++ xbic-1.0_qt4/src/depot_window.cc	2014-08-05 18:09:02.829698910 +0200
+@@ -1,6 +1,11 @@
+ 
+-#include <fstream.h>
++#include <fstream>
+ #include <qpainter.h>
++//Added by qt3to4:
++#include <QMouseEvent>
++#include <Q3Frame>
++#include <QCloseEvent>
++#include <QPaintEvent>
+ #include <stdio.h>
+ 
+ #include "main_win.hh"
+@@ -30,20 +35,20 @@
+   schliessen.setGeometry(310,10,150,25);
+   
+   energie.setGeometry(220,10,80,25);
+-  energie.setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  energie.setAlignment(AlignHCenter | AlignVCenter);
++  energie.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  energie.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   headline.setGeometry(10,10,200,25);
+-  headline.setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  headline.setAlignment(AlignHCenter | AlignVCenter);
++  headline.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  headline.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   beschr1.setGeometry(80,45,150,25);
+-  beschr1.setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  beschr1.setAlignment(AlignHCenter | AlignVCenter);
++  beschr1.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  beschr1.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   beschr2.setGeometry(310,45,150,25);
+-  beschr2.setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  beschr2.setAlignment(AlignHCenter | AlignVCenter);
++  beschr2.setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  beschr2.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   connect(&schliessen,SIGNAL(clicked()),dep,SLOT(schliessen()));
+   
+diff -ruN xbic-1.0_qtlib2/src/depot_window.hh xbic-1.0_qt4/src/depot_window.hh
+--- xbic-1.0_qtlib2/src/depot_window.hh	1999-09-13 14:48:52.000000000 +0200
++++ xbic-1.0_qt4/src/depot_window.hh	2014-08-05 16:09:50.617946972 +0200
+@@ -5,6 +5,11 @@
+ #include <qwidget.h>
+ #include <qpushbutton.h>
+ #include <qlabel.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <QPaintEvent>
++#include <QCloseEvent>
++#include <QMouseEvent>
+ 
+ class main_win;
+ class depot;
+diff -ruN xbic-1.0_qtlib2/src/einheit.cc xbic-1.0_qt4/src/einheit.cc
+--- xbic-1.0_qtlib2/src/einheit.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/einheit.cc	2014-08-05 18:09:02.833698910 +0200
+@@ -1,11 +1,15 @@
+ 
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <qbitmap.h>
+ #include <stdio.h>
+ 
+ #include "einheit.hh"
+ #include "main_win.hh"
+ 
++using namespace std;
++
+ int		einheit_id_count=0;
+ 
+ einheit::einheit(QWidget *parent, int type, int spieler) {
+diff -ruN xbic-1.0_qtlib2/src/factory.cc xbic-1.0_qt4/src/factory.cc
+--- xbic-1.0_qtlib2/src/factory.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/factory.cc	2014-08-05 18:09:02.834698910 +0200
+@@ -1,13 +1,20 @@
+ 
+ #include <stdio.h>
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ 
+ #include "factory.hh"
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QMouseEvent>
+ 
+ #define spaltenbreite		100
+ #define zeilenhoehe		70
+ #define anz_zeilen		4
+ 
++using namespace std;
++
+ factory::factory(main_win *mainw, depot *d) {
+   
+   mw=mainw;
+diff -ruN xbic-1.0_qtlib2/src/factory.hh xbic-1.0_qt4/src/factory.hh
+--- xbic-1.0_qtlib2/src/factory.hh	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/factory.hh	2014-08-05 16:09:51.027946958 +0200
+@@ -3,6 +3,9 @@
+ #define factory_H
+ 
+ #include <qwidget.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QMouseEvent>
+ 
+ #include "main_win.hh"
+ #include "depot.hh"
+diff -ruN xbic-1.0_qtlib2/src/kampfhandlung.cc xbic-1.0_qt4/src/kampfhandlung.cc
+--- xbic-1.0_qtlib2/src/kampfhandlung.cc	1999-09-13 13:45:54.000000000 +0200
++++ xbic-1.0_qt4/src/kampfhandlung.cc	2014-08-05 18:09:02.840698910 +0200
+@@ -2,14 +2,22 @@
+ #include <sys/msg.h>
+ 
+ #include <qpainter.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <QTimerEvent>
++#include <QPaintEvent>
+ #include <unistd.h>
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <stdio.h>
+ 
+ #include "kampfhandlung.hh"
+ #include "communicator.hh"
+ #include "menu.hh"
+ 
++using namespace std;
++
+ kampfhandlung::kampfhandlung(int spieler) :
+   gegner_pixmap(),
+   hintergrund("pics/background.jpg"),
+diff -ruN xbic-1.0_qtlib2/src/kampfhandlung.hh xbic-1.0_qt4/src/kampfhandlung.hh
+--- xbic-1.0_qtlib2/src/kampfhandlung.hh	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/kampfhandlung.hh	2014-08-05 16:09:51.197946952 +0200
+@@ -7,6 +7,9 @@
+ 
+ #include <qwidget.h>
+ #include <qpixmap.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QTimerEvent>
+ 
+ #include "einheit.hh"
+ 
+diff -ruN xbic-1.0_qtlib2/src/kampf_main.cc xbic-1.0_qt4/src/kampf_main.cc
+--- xbic-1.0_qtlib2/src/kampf_main.cc	1999-09-13 14:42:56.000000000 +0200
++++ xbic-1.0_qt4/src/kampf_main.cc	2014-08-06 10:20:24.118170740 +0200
+@@ -1,18 +1,20 @@
+ 
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ 
+ #include <qapplication.h>
+-#include <qjpegio.h>
++#include <qimageiohandler.h>
+ 
+ #include "kampfhandlung.hh"
+ 
++using namespace std;
++
+ int main(int argc, char **argv) {
+   
+   // Jpeg Unterstuetzung
+-  qInitJpegIO();
+   
+   QApplication	a(argc,argv);
+   int		s;
+diff -ruN xbic-1.0_qtlib2/src/land.cc xbic-1.0_qt4/src/land.cc
+--- xbic-1.0_qtlib2/src/land.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/land.cc	2014-08-05 18:09:02.845698910 +0200
+@@ -1,11 +1,17 @@
+ 
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <qbitmap.h>
++//Added by qt3to4:
++#include <QPixmap>
+ 
+ #include "land.hh"
+ #include "main_win.hh"
+ #include "landschaft.hh"
+ 
++using namespace std;
++
+ land::land(QWidget *parent, QPixmap *ans, double bef, int du) {
+   
+   mw = (main_win *) (parent->topLevelWidget());
+diff -ruN xbic-1.0_qtlib2/src/landschaft.cc xbic-1.0_qt4/src/landschaft.cc
+--- xbic-1.0_qtlib2/src/landschaft.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/landschaft.cc	2014-08-05 18:09:02.861698909 +0200
+@@ -1,8 +1,14 @@
+ 
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <qbrush.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QPixmap>
++#include <QMouseEvent>
+ #include <math.h>
+ #include <qcolor.h>
+ 
+@@ -17,6 +23,8 @@
+ 
+ #define karte_rect_size	6
+ 
++using namespace std;
++
+ extern int einheit_id_count;
+ 
+ landschaft::landschaft(char *filename, QWidget *parent, const char *name)
+@@ -42,10 +50,10 @@
+   
+   read(filename);
+   
+-  updown=new QScrollBar(1,1000,50,250,1,QScrollBar::Vertical,parent,"updown");
++  updown=new QScrollBar(1,1000,50,250,1,Qt::Vertical,parent,"updown");
+   updown->setTracking(TRUE);
+   
+-  leftright=new QScrollBar(1,1000,50,250,1,QScrollBar::Horizontal,parent,"leftright");
++  leftright=new QScrollBar(1,1000,50,250,1,Qt::Horizontal,parent,"leftright");
+   leftright->setTracking(TRUE);
+   
+   connect(updown,SIGNAL(valueChanged(int)),this,SLOT(set_offy(int)));
+@@ -879,7 +887,7 @@
+   land		*l;
+   einheit	*e;
+   QPainter	pa;
+-  QBrush	br(SolidPattern);
++  QBrush	br(Qt::SolidPattern);
+   QColor	lightBlue(120,200,255),
+ 		lightRed(255,120,150),
+ 		darkGray(100,100,100);
+@@ -898,8 +906,8 @@
+           br.setColor(lightBlue);
+         }
+       } else if (l->bin_depotumr()) {
+-        pa.setPen(gray);
+-        br.setColor(gray);
++        pa.setPen(Qt::gray);
++        br.setColor(Qt::gray);
+       } else {
+         e=l->get_einheit();
+         if (e==NULL) {
+@@ -907,19 +915,19 @@
+             pa.setPen(darkGray);
+             br.setColor(darkGray);
+           } else {
+-            pa.setPen(darkGreen);
+-            br.setColor(darkGreen);
++            pa.setPen(Qt::darkGreen);
++            br.setColor(Qt::darkGreen);
+           }
+         } else {
+           if (l->zug_beendet()) {
+-            pa.setPen(black);
+-            br.setColor(black);
++            pa.setPen(Qt::black);
++            br.setColor(Qt::black);
+           } else if (e->gehoere_zu==1) {
+-            pa.setPen(red);
+-            br.setColor(red);
++            pa.setPen(Qt::red);
++            br.setColor(Qt::red);
+           } else {
+-            pa.setPen(blue);
+-            br.setColor(blue);
++            pa.setPen(Qt::blue);
++            br.setColor(Qt::blue);
+           }
+         }
+       }
+diff -ruN xbic-1.0_qtlib2/src/landschaft.hh xbic-1.0_qt4/src/landschaft.hh
+--- xbic-1.0_qtlib2/src/landschaft.hh	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/landschaft.hh	2014-08-05 16:09:51.631946937 +0200
+@@ -7,6 +7,9 @@
+ #include <qpixmap.h>
+ #include <qbitmap.h>
+ #include <qscrollbar.h>
++//Added by qt3to4:
++#include <QMouseEvent>
++#include <QPaintEvent>
+ 
+ #include "land.hh"
+ 
+diff -ruN xbic-1.0_qtlib2/src/main_win.cc xbic-1.0_qt4/src/main_win.cc
+--- xbic-1.0_qtlib2/src/main_win.cc	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/main_win.cc	2014-08-05 18:09:02.865698909 +0200
+@@ -1,13 +1,23 @@
+ 
+ #include <qapplication.h>
++//Added by qt3to4:
++#include <QLabel>
++#include <Q3Frame>
++#include <QTimerEvent>
++#include <QCloseEvent>
++#include <QPaintEvent>
+ #include <stdio.h>
+ #include <string.h>
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ 
+ #include "main_win.hh"
+ #include "communicator.hh"
+ #include "computerspieler.hh"
+ 
++using namespace std;
++
+ char levelName[256];
+ 
+ main_win::main_win(int spieler, computerspieler *csp, QWidget *parent, const char *name)
+@@ -44,8 +54,8 @@
+   modus_label=new QLabel(this,"modus_label");
+   modus_label->move(10,40);
+   modus_label->resize(390,20);
+-  modus_label->setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  modus_label->setAlignment(AlignHCenter | AlignVCenter);
++  modus_label->setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  modus_label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   if (csp==NULL) {
+     mod_wechsel=new QPushButton("change mode",this);
+@@ -62,14 +72,14 @@
+   status_label=new QLabel(this,"status_label");
+   status_label->move(410,70);
+   status_label->resize(100,50);
+-  status_label->setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  status_label->setAlignment(AlignHCenter | AlignVCenter);
++  status_label->setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  status_label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+   
+   info_label=new QLabel(this,"info_label");
+   info_label->move(410,130);
+   info_label->resize(100,190);
+-  info_label->setFrameStyle(QFrame::Panel | QFrame::Raised);
+-  info_label->setAlignment(AlignVCenter | AlignLeft);
++  info_label->setFrameStyle(Q3Frame::Panel | Q3Frame::Raised);
++  info_label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+   
+   ende=new QPushButton("quit",this);
+   ende->move(10,360);
+diff -ruN xbic-1.0_qtlib2/src/main_win.hh xbic-1.0_qt4/src/main_win.hh
+--- xbic-1.0_qtlib2/src/main_win.hh	1999-08-24 12:19:42.000000000 +0200
++++ xbic-1.0_qt4/src/main_win.hh	2014-08-05 16:09:51.883946928 +0200
+@@ -7,6 +7,10 @@
+ #include <qlabel.h>
+ #include <qpixmap.h>
+ #include <qbitmap.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QTimerEvent>
++#include <QCloseEvent>
+ 
+ #include "landschaft.hh"
+ #include "einheit.hh"
+diff -ruN xbic-1.0_qtlib2/src/Makefile xbic-1.0_qt4/src/Makefile
+--- xbic-1.0_qtlib2/src/Makefile	2000-01-14 04:26:46.000000000 +0100
++++ xbic-1.0_qt4/src/Makefile	2014-08-06 13:48:22.278227918 +0200
+@@ -3,16 +3,16 @@
+ 
+ CC = g++
+ 
+-MOC = moc
++MOC = /usr/lib/qt4/bin/moc
+ 
+-CFLAGS = -Wall -O6 -fomit-frame-pointer
++CFLAGS = -Wall -O6 -fomit-frame-pointer -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+ #CFLAGS = -Wall -g
+ 
+-INCDIR = -I/usr/lib/qt/include
++INCDIR = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/Qt3Support -I/usr/include/qt4 -I.
+ 
+-LIBDIR = -L/usr/X11R6/lib
++LIBDIR = -L/usr/lib 
+ 
+-LIBS = -lqt -lqimgio -lpng -lz
++LIBS = -lX11 -lpng -lz -lQt3Support -lQtGui -lQtCore -lpthread
+ 
+ OBJ1 =  battle_main.o factory.o bewertung.o mytogglebutton.o \
+ 	computerspieler.o depot_window.o depot.o land.o landschaft.o \
+diff -ruN xbic-1.0_qtlib2/src/menu.cc xbic-1.0_qt4/src/menu.cc
+--- xbic-1.0_qtlib2/src/menu.cc	2000-01-14 03:58:15.000000000 +0100
++++ xbic-1.0_qt4/src/menu.cc	2014-08-06 13:35:50.881557808 +0200
+@@ -1,4 +1,5 @@
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
+@@ -6,9 +7,15 @@
+ #include <signal.h>
+ #include <qpainter.h>
+ #include <qapplication.h>
++//Added by qt3to4:
++#include <QTimerEvent>
++#include <QBasicTimer>
++#include <QObject>
+ 
+ #include "menu.hh"
+ 
++using namespace std;
++
+ int msq_id;
+ 
+ menu::menu() :
+@@ -93,14 +100,14 @@
+   hide();
+   
+   strcpy(name,"bin/fight 1 -display ");
+-  strcat(name,di1.text().data());
++  strcat(name, (const char*) di1.text().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+   fight1=msg.pid;
+   
+   strcpy(name,"bin/fight 2 -display ");
+-  strcat(name,di2.text().data());
++  strcat(name,(const char*) di2.text().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+@@ -111,9 +118,9 @@
+   else strcat(name," c 1");
+   if (ka1.status()==1) strcat(name," kon ");
+   else strcat(name," koff ");
+-  strcat(name,lev.text().data());
++  strcat(name,(const char*) lev.text().data());
+   strcat(name," -display ");
+-  strcat(name,di1.text().data());
++  strcat(name,(const char*) di1.text().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+@@ -124,9 +131,9 @@
+   else strcat(name," c 2");
+   if (ka2.status()==1) strcat(name," kon ");
+   else strcat(name," koff ");
+-  strcat(name,lev.text().data());
++  strcat(name,(const char*) lev.text().data());
+   strcat(name," -display ");
+-  strcat(name,di2.text().data());
++  strcat(name,(const char*) di2.text().data());
+   strcat(name," &");
+   if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+   if (msgrcv(msq_id,(struct msgbuf *)(&msg),sizeof(MenuMsg)-sizeof(long),MSGTYPE_PID,0)==-1) { perror("cant recieve message"); exit(1); }
+@@ -169,11 +176,11 @@
+     strncpy(victory,msg.victory,VICTORY_TXT_SIZE);
+     if (strlen(victory)<3) strcpy(victory,"one player pressed the quit button!");
+     
+-    sprintf(name,"bin/showVictory \"%s\" -display %s &",victory,di1.text().data());
++    sprintf(name,"bin/showVictory \"%s\" -display %s &",(char*) victory,di1.text().data());
+ /*killme*/							//di1.text() durch di1.text().data() ersetzt
+     if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+-    if (strcmp(di1.text().data(),di2.text().data())!=0) {
+-      sprintf(name,"bin/showVictory \"%s\" -display %s &",victory,di2.text().data());
++    if (strcmp((const char*) di1.text().data(), (const char*) di2.text().data())!=0) {
++      sprintf(name,"bin/showVictory \"%s\" -display %s &",(char*) victory,di2.text().data());
+ /*killme*/							//di2.text() durch di2.text().data ersetzt
+       if (system(name)!=0) { cerr<<"cant execute "<<name<<endl; exit(1); }
+     }
+@@ -182,7 +189,7 @@
+     msq_id=msgget(ipc_key,IPC_CREAT|0660);
+     if (msq_id==-1) { perror("cant create msg-queue"); exit(1); }
+     show();
+-    killTimers();
++//    killTimers(); // what can we add here???
+   }
+   
+ }
+diff -ruN xbic-1.0_qtlib2/src/menu.hh xbic-1.0_qt4/src/menu.hh
+--- xbic-1.0_qtlib2/src/menu.hh	2000-01-14 03:58:46.000000000 +0100
++++ xbic-1.0_qt4/src/menu.hh	2014-08-05 16:09:52.114946920 +0200
+@@ -6,11 +6,13 @@
+ #include <qlabel.h>
+ #include <qpixmap.h>
+ #include <qlineedit.h>
++//Added by qt3to4:
++#include <QTimerEvent>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/ipc.h>
+ #include <sys/msg.h>
+-#include <qlistbox.h>
++#include <q3listbox.h>
+ 
+ #include "mytogglebutton.hh"
+ 
+@@ -55,7 +57,7 @@
+   pid_t			battle1, battle2, fight1, fight2;
+   char			victory[VICTORY_TXT_SIZE];
+   key_t			ipc_key;
+-  QListBox		lev_list;
++  Q3ListBox		lev_list;
+   
+   void readLevList();
+   
+diff -ruN xbic-1.0_qtlib2/src/menu_main.cc xbic-1.0_qt4/src/menu_main.cc
+--- xbic-1.0_qtlib2/src/menu_main.cc	2000-01-14 04:05:23.000000000 +0100
++++ xbic-1.0_qt4/src/menu_main.cc	2014-08-06 10:20:08.274837334 +0200
+@@ -1,11 +1,15 @@
+-#include <fstream.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
+ #include <stdio.h>
+ #include <qapplication.h>
+ #include <signal.h>
+-#include <qjpegio.h>
++#include <qimageiohandler.h>
+ 
+ #include "menu.hh"
+ 
++using namespace std;
++
+ void sigIntHandler(int)
+ {
+   cout << "program recieved SIGINT, exiting" << endl;
+@@ -18,7 +22,7 @@
+ {
+   
+   // Jpeg Unterstuetzung
+-  qInitJpegIO();
++
+   
+   QApplication::setColorSpec(QApplication::ManyColor);
+   QApplication	a(argc,argv);
+diff -ruN xbic-1.0_qtlib2/src/victory_main.cc xbic-1.0_qt4/src/victory_main.cc
+--- xbic-1.0_qtlib2/src/victory_main.cc	1999-09-13 15:33:05.000000000 +0200
++++ xbic-1.0_qt4/src/victory_main.cc	2014-08-06 10:19:50.308170585 +0200
+@@ -1,14 +1,18 @@
+ 
+ #include <qapplication.h>
+-#include <fstream.h>
+-#include <qjpegio.h>
++#include <fstream>
++#include <iostream>
++#include <cstdlib>
++#include <qimageiohandler.h>
+ 
+ #include "victory_msg.hh"
+ 
++using namespace std;
++
+ int main(int argc, char **argv) {
+   
+   // JpegUnterstuetzung
+-  qInitJpegIO();
++
+   
+   QApplication		ap(argc,argv);
+   victoryMsg		me;
+diff -ruN xbic-1.0_qtlib2/src/victory_msg.cc xbic-1.0_qt4/src/victory_msg.cc
+--- xbic-1.0_qtlib2/src/victory_msg.cc	1999-09-13 15:32:01.000000000 +0200
++++ xbic-1.0_qt4/src/victory_msg.cc	2014-08-05 18:09:02.874698909 +0200
+@@ -1,6 +1,9 @@
+ 
+ #include <qpainter.h>
+ #include <qapplication.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <QPaintEvent>
+ 
+ #include "victory_msg.hh"
+ 
+diff -ruN xbic-1.0_qtlib2/src/victory_msg.hh xbic-1.0_qt4/src/victory_msg.hh
+--- xbic-1.0_qtlib2/src/victory_msg.hh	1999-09-13 15:16:28.000000000 +0200
++++ xbic-1.0_qt4/src/victory_msg.hh	2014-08-05 16:09:52.410946910 +0200
+@@ -5,6 +5,8 @@
+ #include <qwidget.h>
+ #include <qpixmap.h>
+ #include <qpushbutton.h>
++//Added by qt3to4:
++#include <QPaintEvent>
+ 
+ class victoryMsg : public QWidget {
+   
