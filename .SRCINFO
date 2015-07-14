@@ -1,0 +1,14 @@
+pkgbase = hyphen-en-us
+	pkgdesc = English hyphenation rules (en_US only)
+	pkgver = 2.8.8
+	pkgrel = 1
+	url = http://hunspell.sf.net
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	license = MPL
+	source = http://downloads.sourceforge.net/hunspell/hyphen-2.8.8.tar.gz
+	sha1sums = 0556c392beb59433e577e3517575801212201df6
+
+pkgname = hyphen-en-us
+
