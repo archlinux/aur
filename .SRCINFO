@@ -1,0 +1,16 @@
+pkgbase = python2-fusepy-git
+	pkgdesc = Simple ctypes bindings for FUSE
+	pkgver = v2.0.2.r1.g27d76e4
+	pkgrel = 1
+	url = https://github.com/terencehonles/fusepy
+	arch = any
+	license = custom:ISCL
+	makedepends = python2-setuptools
+	depends = fuse>=2.6
+	depends = python2
+	conflicts = python2-fuse
+	source = git://github.com/terencehonles/fusepy.git
+	md5sums = SKIP
+
+pkgname = python2-fusepy-git
+
