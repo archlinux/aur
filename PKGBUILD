@@ -12,6 +12,7 @@ replaces=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 checkdepends=('zlib')
 makedepends=('git')
+provides=('snappy')
 source=("git+https://github.com/google/${pkgname%-*}.git")
 md5sums=('SKIP')
 
