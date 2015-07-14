@@ -7,14 +7,31 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgbase=llvm-svn
-pkgname=('llvm-svn' 'llvm-libs-svn' 'llvm-ocaml-svn' 'clang-svn' 'clang-analyzer-svn' 'clang-tools-extra-svn')
+
+# WARNING: Ocaml bindings are disabled by default.
+# Change the variable below to 1 if you want to
+# build them.
+_ocamlbuild=0
+
 _pkgname='llvm'
-pkgver=224989
+pkgname=('llvm-svn' 'llvm-libs-svn' 'clang-svn' 'clang-analyzer-svn' 'clang-tools-extra-svn')
+
+if [[ ${_ocamlbuild} -eq 1 ]]
+then
+    pkgname+=('llvm-ocaml-svn')
+fi
+
+pkgver=241875
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://llvm.org"
 license=('custom:University of Illinois')
-makedepends=('subversion' 'libffi' 'python2' 'ocaml-ctypes' 'ocaml-findlib' 'python-sphinx' 'chrpath')
+makedepends=('subversion' 'libffi' 'python2' 'python-sphinx')
+
+if [[ ${_ocamlbuild} -eq 1 ]]
+then
+    makedepends+=('ocaml-ctypes' 'ocaml-findlib' 'chrpath')
+fi
 
 # this is always the latest svn so debug info can be useful
 options=('staticlibs' '!strip')
@@ -32,10 +49,13 @@ sha256sums=('SKIP'
             '312574e655f9a87784ca416949c505c452b819fad3061f2cde8aced6540a19a3'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 
-_ocamlver()
-{
-    pacman -Q ocaml | awk '{print $2}' | cut -d - -f1 | cut -d . -f1,2,3
-}
+if [[ ${_ocamlbuild} -eq 1 ]]
+then
+    _ocamlver()
+    {
+        pacman -Q ocaml | awk '{print $2}' | cut -d - -f1 | cut -d . -f1,2,3
+    }
+fi
 
 pkgver()
 {
@@ -57,10 +77,13 @@ prepare() {
     # Fix definition of LLVM_CMAKE_DIR in LLVMConfig.cmake
     sed -e '/@LLVM_CONFIG_CMAKE_DIR@/s:$(PROJ_cmake):$(PROJ_prefix)/share/llvm/cmake:' \
         -i cmake/modules/Makefile
+
+    rm -rf "${srcdir}/llvm-build"
+    mkdir "${srcdir}/llvm-build"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/llvm-build"
 
     # Apply strip option to configure
     _optimized_switch="enable"
@@ -71,23 +94,22 @@ build() {
 
     # Force the use of GCC instead of clang
     CC=gcc CXX=g++ \
-    ./configure \
+    "${srcdir}/llvm/configure" \
         --prefix=/usr \
         --sysconfdir=/etc \
         --enable-shared \
         --enable-libffi \
         --enable-targets=all \
-        --disable-expensive-checks \
-        --disable-debug-runtime \
         --disable-assertions \
         --with-binutils-include=/usr/include \
         --with-python=/usr/bin/python2 \
         --$_optimized_switch-optimized
 
     make REQUIRES_RTTI=1
-    make -C docs -f Makefile.sphinx man
-    make -C docs -f Makefile.sphinx html
-    make -C tools/clang/docs -f Makefile.sphinx html
+
+    make -C "${srcdir}/${_pkgname}/docs" -f Makefile.sphinx man
+    make -C "${srcdir}/${_pkgname}/docs" -f Makefile.sphinx html
+    make -C "${srcdir}/${_pkgname}/tools/clang/docs" -f Makefile.sphinx html
 }
 
 package_llvm-svn() {
@@ -97,26 +119,32 @@ package_llvm-svn() {
     replaces=('llvm')
     conflicts=('llvm')
 
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/llvm-build"
 
     # We move the clang directory out of the tree so it won't get installed and
     # then we bring it back in for the clang package
-    mv tools/clang "${srcdir}/clang.src"
+    mv tools/clang "${srcdir}/clang.build"
+    mv "${srcdir}/${_pkgname}/tools/clang" "${srcdir}/clang.src"
 
     # -j1 is due to race conditions during the installation of the OCaml bindings
     make -j1 DESTDIR="${pkgdir}" install
-    mv "${srcdir}/clang.src" tools/clang
+
+    mv "${srcdir}/clang.build" tools/clang
+    mv "${srcdir}/clang.src" "${srcdir}/${_pkgname}/tools/clang"
 
     # The runtime library goes into llvm-libs
     rm -rf "${srcdir}"/*.so
     mv "${pkgdir}"/usr/lib/libLLVM-*.so "${srcdir}/"
 
-    # OCaml bindings go to a separate package
-    rm -rf "${srcdir}"/ocaml
-    mv "${pkgdir}"/usr/lib/ocaml "${srcdir}/"
+    if [[ ${_ocamlbuild} -eq 1 ]]
+    then
+        # OCaml bindings go to a separate package
+        rm -rf "${srcdir}"/ocaml
+        mv "${pkgdir}"/usr/lib/ocaml "${srcdir}/"
 
-    # Remove duplicate files installed by the OCaml bindings
-    rm -rf "${pkgdir}"/usr/lib/libllvm*
+        # Remove duplicate files installed by the OCaml bindings
+        rm -rf "${pkgdir}"/usr/lib/libllvm*
+    fi
 
     # Fix permissions of static libs
     chmod -x "${pkgdir}"/usr/lib/*.a
@@ -141,13 +169,13 @@ package_llvm-svn() {
 
     # Install man pages
     install -d "${pkgdir}/usr/share/man/man1"
-    cp docs/_build/man/*.1 "${pkgdir}/usr/share/man/man1/"
+    cp "${srcdir}/${_pkgname}"/docs/_build/man/*.1 "${pkgdir}/usr/share/man/man1/"
 
     # Install html docs
-    cp -r docs/_build/html/* "${pkgdir}/usr/share/doc/$_pkgname/html/"
+    cp -r "${srcdir}/${_pkgname}"/docs/_build/html/* "${pkgdir}/usr/share/doc/$_pkgname/html/"
     rm -r "${pkgdir}/usr/share/doc/${_pkgname}/html/_sources"
 
-    install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_llvm-libs-svn() {
@@ -157,7 +185,7 @@ package_llvm-libs-svn() {
     replaces=('llvm-libs')
     conflicts=('llvm-libs')
 
-    install -m755 -d "${pkgdir}"/usr/lib/
+    install -m755 -d "${pkgdir}/usr/lib/"
 
     mv "${srcdir}"/libLLVM-*.so "${pkgdir}/usr/lib/"
 
@@ -169,26 +197,29 @@ package_llvm-libs-svn() {
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_llvm-ocaml-svn() {
-    pkgdesc="OCaml bindings for LLVM"
-    depends=("llvm-svn=$pkgver-$pkgrel" "ocaml=$(_ocamlver)" 'ocaml-ctypes')
-    provides=('llvm-ocaml')
-    replaces=('llvm-ocaml')
-    conflicts=('llvm-ocaml')
+if [[ ${_ocamlbuild} -eq 1 ]]
+then
+    package_llvm-ocaml-svn() {
+        pkgdesc="OCaml bindings for LLVM"
+        depends=("llvm-svn=$pkgver-$pkgrel" "ocaml=$(_ocamlver)" 'ocaml-ctypes')
+        provides=('llvm-ocaml')
+        replaces=('llvm-ocaml')
+        conflicts=('llvm-ocaml')
 
-    cd "${srcdir}/${_pkgname}"
+        cd "${srcdir}/llvm-build"
 
-    install -m755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/ocaml" "${pkgdir}/usr/lib/"
+        install -m755 -d "${pkgdir}/usr/lib"
+        cp -r "${srcdir}/ocaml" "${pkgdir}/usr/lib/"
 
-    # Remove execute bit from static libraries
-    chmod -x "${pkgdir}"/usr/lib/ocaml/libllvm*.a
+        # Remove execute bit from static libraries
+        chmod -x "${pkgdir}"/usr/lib/ocaml/libllvm*.a
 
-    # Remove insecure rpath
-    chrpath -d "${pkgdir}"/usr/lib/ocaml/*.so
+        # Remove insecure rpath
+        chrpath -d "${pkgdir}"/usr/lib/ocaml/*.so
 
-    install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+        install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    }
+fi
 
 package_clang-svn() {
     pkgdesc="C language family frontend for LLVM"
@@ -199,31 +230,34 @@ package_clang-svn() {
     conflicts=('clang')
 
     sed -e 's:$(PROJ_prefix)/share/doc/llvm:$(PROJ_prefix)/share/doc/clang:' \
-        -i "${srcdir}/${_pkgname}/Makefile.config"
+        -i "${srcdir}/llvm-build/Makefile.config"
 
-    cd "${srcdir}/${_pkgname}/tools/clang"
+    cd "${srcdir}/llvm-build/tools/clang"
 
     # We move the extra tools directory out of the tree so it won't get
     # installed and then we bring it back in for the clang-tools-extra package
-    mv tools/extra "${srcdir}/"
+    mv tools/extra "${srcdir}/extra.build"
+    mv "${srcdir}/${_pkgname}/tools/clang/tools/extra" "${srcdir}/extra.src"
 
     make DESTDIR="${pkgdir}" install
-    mv "${srcdir}/extra" tools/
+
+    mv "${srcdir}/extra.build" tools/extra
+    mv "${srcdir}/extra.src" "${srcdir}/${_pkgname}/tools/clang/tools/extra"
 
     # Fix permissions of static libs
     chmod -x "${pkgdir}"/usr/lib/*.a
 
     # Revert the path change in case we want to do a repackage later
     sed -e 's:$(PROJ_prefix)/share/doc/clang:$(PROJ_prefix)/share/doc/llvm:' \
-        -i "${srcdir}/${_pkgname}/Makefile.config"
+        -i "${srcdir}/llvm-build/Makefile.config"
 
     # Install html docs
-    cp -r docs/_build/html/* "${pkgdir}/usr/share/doc/clang/html/"
+    cp -r "${srcdir}/${_pkgname}"/docs/_build/html/* "${pkgdir}/usr/share/doc/clang/html/"
     rm -r "${pkgdir}/usr/share/doc/clang/html/_sources"
 
     # Install Python bindings
     install -m755 -d "${pkgdir}/usr/lib/python2.7/site-packages"
-    cp -r bindings/python/clang "${pkgdir}/usr/lib/python2.7/site-packages/"
+    cp -r "${srcdir}/${_pkgname}/tools/clang/bindings/python/clang" "${pkgdir}/usr/lib/python2.7/site-packages/"
     python2 -m compileall "${pkgdir}/usr/lib/python2.7/site-packages/clang"
     python2 -O -m compileall "${pkgdir}/usr/lib/python2.7/site-packages/clang"
 
@@ -231,7 +265,7 @@ package_clang-svn() {
     # Destination paths are copied from clang-format/CMakeLists.txt
     install -m755 -d "$pkgdir/usr/share/clang"
     (
-    cd tools/clang-format
+    cd "${srcdir}/${_pkgname}/tools/clang/tools/clang-format"
     cp clang-format-diff.py \
        clang-format-sublime.py \
        clang-format.el \
@@ -244,7 +278,7 @@ package_clang-svn() {
           -i "${pkgdir}/usr/share/clang/clang-format-diff.py"
     )
 
-    install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_clang-analyzer-svn() {
@@ -281,7 +315,7 @@ package_clang-analyzer-svn() {
     python2 -m compileall "${pkgdir}/usr/lib/clang-analyzer"
     python2 -O -m compileall "${pkgdir}/usr/lib/clang-analyzer"
 
-    install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_clang-tools-extra-svn() {
@@ -292,12 +326,12 @@ package_clang-tools-extra-svn() {
     replaces=('clang-tools-extra')
     conflicts=('clang-tools-extra')
 
-    cd "${srcdir}/${_pkgname}/tools/clang/tools/extra"
+    cd "${srcdir}/llvm-build/tools/clang/tools/extra"
 
     make DESTDIR="${pkgdir}" install
 
     # Fix permissions of static libs
     chmod -x "${pkgdir}"/usr/lib/*.a
 
-    install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
