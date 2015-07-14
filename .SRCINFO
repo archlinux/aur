@@ -1,0 +1,14 @@
+pkgbase = justext
+	pkgdesc = jusText removes boilerplate content (such as navigation links, headers, and footers) from HTML pages. Designed to preserve text with full sentences, it is suited for creating linguistic resources like Web corpora.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://code.google.com/p/justext/
+	arch = i686
+	arch = x86_64
+	license = New BSD License
+	depends = python2>=2.2.4
+	source = http://justext.googlecode.com/files/justext-1.1.tar.gz
+	md5sums = 120d33a917a6362c88dd546d4f354c47
+
+pkgname = justext
+
