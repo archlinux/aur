@@ -5,7 +5,7 @@
 _name=php-apache
 _base=php
 pkgname=php-apache22
-pkgver=5.6.10
+pkgver=5.6.11
 pkgrel=1
 pkgdesc='Apache SAPI for PHP'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=("http://www.php.net/distributions/${_base}-${pkgver}.tar.gz"
         'php.ini.patch'
         'apache.conf'
         'php-fpm.conf.in.patch')
-md5sums=('5afb2f6467f525ae38a9ce6f1acf5c6a'
+md5sums=('c4d55105e07c9f75dcbacef8000f7992'
          '0e5a8cf6e851b2c68dd638ce63f82647'
          'dec2cbaad64e3abf4f0ec70e1de4e8e9'
          'b9d7ead46639bbcd6c6d6e8b4876ed7f')
