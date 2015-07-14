@@ -1,0 +1,18 @@
+# Message displayed for a fresh install.
+post_install()
+{ 
+  # Display a helpful message to the user
+  echo ""
+  echo "***************************************************************"
+  echo " Running Atari800 for the first time will create a config file"
+  echo " at $HOME/.atari800.cfg and immediately open the emulator." 
+  echo " Pressing the F1 key will open the menu where you should modify"
+  echo " the emultion configuration ROM path to /usr/share/atari800"
+  echo " to use the included ROMs Atari800 needs for emulation."
+  echo "***************************************************************"
+  echo ""
+}
+
+op=$1
+shift
+$op $*

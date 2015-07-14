@@ -1,0 +1,23 @@
+pkgbase = atari800
+	pkgdesc = An emulator of the Atari 800/800XL/130XE/5200 with various extensions
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://atari800.sourceforge.net/
+	install = atari800.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	makedepends = unzip
+	depends = libpng
+	depends = sdl
+	optdepends = xboxdrv: XBox/360gamepad driver - supports a multitude of controllers ,like PS3 USB controller
+	optdepends = qtsixa: utility to configure and use sixaxis controller via bluetooth
+	optdepends = jstest-gtk: simple GTK2-based joystick tester and calibrator
+	source = http://downloads.sourceforge.net/sourceforge/atari800/atari800-3.1.0.tar.gz
+	source = http://sourceforge.net/projects/atari800/files/ROM/Original%20XL%20ROM/xf25.zip
+	md5sums = 354f8756a7f33cf5b7a56377d1759e41
+	md5sums = 4dc3b6b4313e9596c4d474785a37b94d
+
+pkgname = atari800
+
