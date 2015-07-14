@@ -1,6 +1,6 @@
 pkgbase = non-mixer-git
 	pkgdesc = Jack audio mixer from the NON DAW
-	pkgver = r1798.18a299c
+	pkgver = 1.1.0.r685.g18a299c
 	pkgrel = 1
 	url = http://non.tuxfamily.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = non-mixer-git
 	depends = ntk-git
 	depends = jack
 	depends = liblo
-	provides = non-mixer=$pkgver
+	provides = non-mixer
 	conflicts = non-mixer
 	source = non-mixer-git::git+git://git.tuxfamily.org/gitroot/non/non.git
 	md5sums = SKIP

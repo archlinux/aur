@@ -1,13 +1,13 @@
 # Maintainer: darkfeline@felesatra.moe
 
 pkgname=non-mixer-git
-pkgver=r1798.18a299c
+pkgver=1.1.0.r685.g18a299c
 pkgrel=1
 pkgdesc="Jack audio mixer from the NON DAW"
 arch=('x86_64' 'i686')
 url="http://non.tuxfamily.org/"
 license=('GPL2')
-provides='non-mixer=$pkgver'
+provides='non-mixer'
 conflicts='non-mixer'
 depends=('ntk-git' 'jack' 'liblo')
 makedepends=('git')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/^non-daw-v//;s/-/./g'
 }
 
 build() {
