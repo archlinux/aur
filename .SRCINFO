@@ -1,0 +1,28 @@
+pkgbase = simcraft
+	pkgdesc = SimulationCraft is a tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm)
+	pkgver = 620_02
+	pkgrel = 1
+	url = http://code.google.com/p/simulationcraft
+	install = simcraft.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	makedepends = qt5-webkit
+	source = http://downloads.simulationcraft.org/simc-620-02-source.zip
+	source = SimulationCraft.desktop
+	md5sums = d1155ac12510ae0344d742ee86d8ba6d
+	md5sums = 527f78bab42ec0a524388da12e3ce9e0
+
+pkgname = simcraft
+	depends = openssl
+	depends = simcraft-data=620_02
+
+pkgname = simcraft-gui
+	pkgdesc = SimulationCraft is a tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm)gui
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = simcraft=620_02
+
+pkgname = simcraft-data
+
