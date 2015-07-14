@@ -1,0 +1,20 @@
+pkgbase = apertium-es-ca
+	pkgdesc = Apertium language data for the Spanish-Catalan translator.
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-es-ca-1.2.0.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = 0cc9676a152947adf703ec81b67654bf
+	md5sums = b75136e67d4ac876e024f3147f149c97
+	md5sums = 6e8507366d33e85af7988de36f366fa2
+
+pkgname = apertium-es-ca
+
