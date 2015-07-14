@@ -1,0 +1,19 @@
+pkgbase = xcolorsel
+	pkgdesc = display and grab colors in X
+	pkgver = 1.1a
+	pkgrel = 2
+	url = http://packages.debian.org/stable/x11/xcolorsel
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxaw
+	source = http://ftp.de.debian.org/debian/pool/main/x/xcolorsel/xcolorsel_1.1a.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/x/xcolorsel/xcolorsel_1.1a-17.diff.gz
+	source = rgb.txt::http://cvsweb.xfree86.org/cvsweb/*checkout*/xc/programs/rgb/rgb.txt?rev=HEAD&content-type=text/plain
+	md5sums = 6833bdf1c49d21e7681dc9df0829da0e
+	md5sums = cae579a5bc36697d2fa768a129581923
+	md5sums = 26273ff2170258797478318c30a40b9b
+
+pkgname = xcolorsel
+
