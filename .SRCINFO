@@ -1,0 +1,13 @@
+pkgbase = debian-keyring
+	pkgdesc = GnuPG keys of the Ubuntu archive
+	pkgver = 2013.12.13
+	pkgrel = 1
+	url = http://keyring.debian.org/
+	arch = any
+	license = GPL
+	depends = gnupg
+	source = http://ftp.de.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2013.12.13_all.deb
+	sha256sums = 3649263fe61d970c58d46e930a5ffb03a01f3ca2d2c634862693b0e20fbe4782
+
+pkgname = debian-keyring
+
