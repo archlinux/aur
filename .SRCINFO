@@ -1,6 +1,6 @@
 pkgbase = ttf-roboto-slab
 	pkgdesc = Serif Roboto font from Google Keep
-	pkgver = r46d486c
+	pkgver = r4f5374de05
 	pkgrel = 1
 	url = https://www.google.com/fonts/specimen/Roboto+Slab
 	install = ttf-roboto-slab.install
