@@ -1,0 +1,24 @@
+diff -pruN twinkle-1.4.2-o/configure.in twinkle-1.4.2/configure.in
+--- twinkle-1.4.2-o/configure.in	2009-02-24 11:49:20.000000000 -0800
++++ twinkle-1.4.2/configure.in	2012-05-19 09:20:51.151778516 -0700
+@@ -66,7 +66,7 @@ fi
+ 
+ export PKG_CONFIG_PATH
+ 
+-PKG_CHECK_MODULES(CCRTP, libccrtp1 >= 1.6.0)
++PKG_CHECK_MODULES(CCRTP, libccrtp >= 2.0.0)
+ 
+ PKG_CHECK_MODULES(XML2, libxml-2.0)
+ # AC_CHECK_HEADER(libxml/tree.h, [],
+diff -pruN twinkle-1.4.2-o/src/log.cpp twinkle-1.4.2/src/log.cpp
+--- twinkle-1.4.2-o/src/log.cpp	2009-01-18 06:35:28.000000000 -0800
++++ twinkle-1.4.2/src/log.cpp	2012-05-19 09:21:11.071594114 -0700
+@@ -161,7 +161,7 @@ void t_log::write_header(const string &f
+ 
+ 	gettimeofday(&t, NULL);
+ 	date = t.tv_sec;
+-	localtime_r(&date, &tm);
++	::localtime_r(&date, &tm);
+ 
+ 	*log_stream << "+++ ";
+ 	*log_stream << tm.tm_mday;

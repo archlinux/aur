@@ -1,0 +1,25 @@
+pkgbase = twinkle
+	pkgdesc = Softphone for voice over IP and IM communication using SIP
+	pkgver = 1.4.2
+	pkgrel = 19
+	url = http://www.twinklephone.com/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = pkg-config
+	makedepends = boost
+	makedepends = gendesk
+	depends = file
+	depends = speex
+	depends = boost-libs
+	depends = libsndfile
+	depends = qt3
+	depends = libzrtpcpp
+	depends = commoncpp2
+	source = http://www.xs4all.nl/~mfnboer/twinkle/download/twinkle-1.4.2.tar.gz
+	source = twinkle-1.4.2-ccrtp.patch
+	md5sums = d70c8972f296ffd998c7fb698774705b
+	md5sums = 934f59ff60a8ae29a152feb8bf131ae2
+
+pkgname = twinkle
+
