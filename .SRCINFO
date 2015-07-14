@@ -1,0 +1,18 @@
+pkgbase = bmx6
+	pkgdesc = bmx6 mesh routing network daemon
+	pkgver = r8f26909
+	pkgrel = 1
+	url = https://github.com/axn/bmx6
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = bmx6
+	source = bmx6::git+https://github.com/axn/bmx6
+	sha256sums = SKIP
+
+pkgname = bmx6
+
