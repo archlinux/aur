@@ -1,6 +1,6 @@
 pkgbase = drive
 	pkgdesc = Pull or push Google Drive files
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = http://github.com/odeke-em/drive
 	install = drive.install
@@ -17,8 +17,8 @@ pkgbase = drive
 	conflicts = drive-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/odeke-em/drive/archive/v0.2.5.tar.gz
-	sha256sums = 54b3f188ff682ba5f246f472183e01630316ee0372f1cfe08e5cc7db540c21e1
+	source = https://github.com/odeke-em/drive/archive/v0.2.6.tar.gz
+	sha256sums = f342da13797f039472586e0474997279318a7e80d34fb8de32b2e7a5f44a06c6
 
 pkgname = drive
 
