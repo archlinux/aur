@@ -1,0 +1,19 @@
+--- ../apertium-is-en-0.1.0/Makefile.in	2010-03-05 13:33:27.000000000 +0100
++++ apertium-is-en-0.1.0/Makefile.in	2010-09-15 13:54:27.000000000 +0200
+@@ -534,11 +534,11 @@
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+ 	cp *.mode modes/
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_is_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(apertium_is_endir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t2x $(apertium_is_endir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(apertium_is_endir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t4x $(apertium_is_endir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_is_modesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(DESTDIR)$(apertium_is_endir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t2x $(DESTDIR)$(apertium_is_endir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(DESTDIR)$(apertium_is_endir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t4x $(DESTDIR)$(apertium_is_endir)
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

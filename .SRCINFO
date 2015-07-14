@@ -1,0 +1,21 @@
+pkgbase = apertium-is-en
+	pkgdesc = Apertium language data for the Icelandic-English translator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2.0
+	depends = apertium>=3.2.0
+	depends = vislcg3>=0.9.7.6010
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-is-en-0.1.0.tar.gz
+	source = Makefile.am.patch
+	source = Makefile.in.patch
+	md5sums = a53f884fc72d69de1e57b56581258978
+	md5sums = 9b49f260b71cbd2a68b46d99e01248fe
+	md5sums = a3974fcdb318c511a0624be504558601
+
+pkgname = apertium-is-en
+
