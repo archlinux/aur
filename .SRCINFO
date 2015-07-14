@@ -1,0 +1,13 @@
+pkgbase = sensible-utils
+	pkgdesc = Utilities for sensible alternative selection
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = http://packages.debian.org/source/sid/sensible-utils
+	arch = any
+	license = unknown
+	makedepends = po4a
+	source = http://ftp.de.debian.org/debian/pool/main/s/sensible-utils/sensible-utils_0.0.7.tar.gz
+	md5sums = 9a208cceb0e9c5cc1d2aa4d53d7d2baa
+
+pkgname = sensible-utils
+
