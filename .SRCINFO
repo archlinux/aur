@@ -1,0 +1,21 @@
+pkgbase = apertium-sv-da
+	pkgdesc = Apertium language data for the Swedish-Danish translator.
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-sv-da-0.5.0.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = 23d4247a7eb4835a096737a20251bc78
+	md5sums = 276a049384b15d77c6b5164315b593e4
+	md5sums = ba12ab1b519a4853478cf27104639e23
+
+pkgname = apertium-sv-da
+
