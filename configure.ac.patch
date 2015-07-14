@@ -1,0 +1,65 @@
+--- ../apertium-cy-en-0.1.0/configure.ac	2008-08-01 10:21:25.000000000 +0200
++++ apertium-cy-en-0.1.0/configure.ac	2010-09-15 17:34:36.000000000 +0200
+@@ -10,8 +10,60 @@
+ AC_PROG_AWK
+ AC_CONFIG_HEADER([config])
+ 
+-PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.0 >= 3.0.3)
+-PKG_CHECK_MODULES(APERTIUM, apertium-3.0 >= 3.0.9)
++m4_define([required_apertium_version], [3.0.3])
++m4_define([required_lttolbox_version], [3.0.9])
++
++AC_DEFUN([PKG_CHECK_APERTIUM], [
++  APERTIUM_VER=0
++  PKG_CHECK_MODULES(APERTIUM, apertium-1.0 >= 1.0.0,
++  [
++      APERTIUM_VER=10
++  ],
++  [
++      PKG_CHECK_MODULES(APERTIUM, apertium-2.0 >= 2.0.0,
++      [
++          APERTIUM_VER=20
++      ],
++      [
++          PKG_CHECK_MODULES(APERTIUM, apertium-3.0 >= 3.0.0,
++          [
++              APERTIUM_VER=30
++          ],
++          [
++              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0,
++              [
++                  APERTIUM_VER=31
++              ],
++              [
++                  PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
++                  APERTIUM_VER=32
++              ])
++          ])
++      ])
++  ])
++  AC_SUBST(APERTIUM_VER)
++])
++AC_DEFUN([PKG_CHECK_LTTOOLBOX], [
++  LTTOOLBOX_VER=0
++  PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.0 >= 3.0.0,
++  [
++    LTTOOLBOX_VER=30
++  ],
++  [
++    PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.1 >= 3.1.0,
++    [
++      LTTOOLBOX_VER=31
++    ],
++    [
++      PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.2 >= 3.2.0)
++      LTTOOLBOX_VER=32
++    ])
++  ])
++  AC_SUBST(LTTOOLBOX_VER)
++])
++
++PKG_CHECK_APERTIUM
++PKG_CHECK_LTTOOLBOX
+ 
+ APERTIUM_VER=30
+ 

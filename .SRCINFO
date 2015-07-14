@@ -1,0 +1,22 @@
+pkgbase = apertium-cy-en
+	pkgdesc = Apertium language data for the Welsh-English translator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	depends = vislcg3>=0.9.7.6010
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-cy-en-0.1.0.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = 7067869350719ba2347e0a52d0143938
+	md5sums = 7c267173fc4f2a6bfce946bb81c6c3a0
+	md5sums = 687597e2eda763211d1594ba6b1a151a
+
+pkgname = apertium-cy-en
+

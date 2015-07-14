@@ -1,0 +1,52 @@
+--- ../apertium-cy-en-0.1.0/Makefile.am	2008-08-01 18:42:09.000000000 +0200
++++ apertium-cy-en-0.1.0/Makefile.am	2010-09-15 17:29:02.000000000 +0200
+@@ -22,7 +22,7 @@
+ 	xmllint --xinclude $(BASENAME).$(LANG2).dix.xml > $(BASENAME).$(LANG2).dix
+ $(BASENAME).$(LANG1)-$(LANG2).dix:
+ 	xmllint --xinclude $(BASENAME).$(LANG1)-$(LANG2).dix.xml > $(BASENAME).$(LANG1)-$(LANG2).dix
+-     
++
+ $(PREFIX1).automorf.bin: $(BASENAME).$(LANG1).dix
+ 	apertium-validate-dictionary $(BASENAME).$(LANG1).dix
+ 	lt-comp lr $(BASENAME).$(LANG1).dix $@ $(BASENAME).$(LANG1).acx
+@@ -117,7 +117,7 @@
+ 	rm $(BASENAME).$(LANG1).dix
+ 	rm $(BASENAME).$(LANG2).dix
+ 	rm $(BASENAME).$(PREFIX1).dix
+-	
++
+ apertium_cy_endir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_cy_modesdir=$(prefix)/share/apertium/modes/
+ 
+@@ -132,23 +132,23 @@
+                     $(PREFIX1).autogen.bin $(PREFIX2).autogen.bin \
+                     $(PREFIX1).autopgen.bin \
+                     $(PREFIX2).autopgen.bin \
+-     		    $(PREFIX2).autoorth.bin \
++		    $(PREFIX2).autoorth.bin \
+                     $(PREFIX1).prob $(PREFIX2).prob \
+ 		    $(PREFIX1).cg.bin \
+ 		    $(PREFIX1).t1x.bin $(PREFIX1).t2x.bin $(PREFIX1).t3x.bin \
+ 		    $(PREFIX2).t1x.bin $(PREFIX2).t2x.bin $(PREFIX2).t3x.bin pre-$(LANG1).t1x.bin \
+ 		    $(PREFIX1).mode 
+-		    
++
+ #$(PREFIX2).mode
+-		  
++
+ #$(INSTALL_DATA) $(PREFIX2).mode $(apertium_cy_modesdir)
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_cy_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).t2x $(apertium_cy_endir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(BASENAME).$(PREFIX2).t1x $(apertium_cy_endir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t2x $(BASENAME).$(PREFIX2).t3x $(apertium_cy_endir)
+-	$(INSTALL_DATA) $(BASENAME).pre-$(LANG1).t1x $(apertium_cy_endir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_cy_modesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).t2x $(DESTDIR)$(apertium_cy_endir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(BASENAME).$(PREFIX2).t1x $(DESTDIR)$(apertium_cy_endir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX2).t2x $(BASENAME).$(PREFIX2).t3x $(DESTDIR)$(apertium_cy_endir)
++	$(INSTALL_DATA) $(BASENAME).pre-$(LANG1).t1x $(DESTDIR)$(apertium_cy_endir)
+ 
+ CLEANFILES = -rf $(TARGETS_COMMON) modes
