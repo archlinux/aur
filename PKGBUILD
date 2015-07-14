@@ -12,11 +12,11 @@ source=("http://www.brain-dump.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.
 sha512sums=('1f6df3604f5b4b59a650ccb8b6b7f9e62591154f72163350b8c8d2ffa9c392c9ebda0f958537a203e87319e275674fec6d161f18a10d49e44d0afc512c467f88')
 
 build () {
-	make all --directory="${srcdir}/${pkgname}-${pkgver}"
+	make  -C "${srcdir}/${pkgname}-${pkgver}" all
 }
 	
 package () {
-	make install PREFIX="${pkgdir}/usr" --directory="${srcdir}/${pkgname}-${pkgver}"
+	make -C "${srcdir}/${pkgname}-${pkgver}" install PREFIX="${pkgdir}/usr"
 	install -Dm 644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 			
