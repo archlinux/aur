@@ -1,13 +1,18 @@
 pkgbase = bups
 	pkgdesc = Simple GUI for Bup, a very efficient backup system.
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emersion/bups
 	arch = any
 	license = MIT
 	depends = bup
-	depends = pygtk
-	depends = cifs-utils
+	depends = gtk3
+	depends = gobject-introspection
+	optdepends = cifs-utils: samba filesystems support
+	optdepends = encfs: encryption support
+	optdepends = sshfs: ssh filesystems support
+	optdepends = google-drive-ocamlfuse: google drive support
+	optdepends = systemd: backup scheduling support
 	source = https://github.com/emersion/bups/archive/v0.7.2.tar.gz
 	md5sums = a0aa558d9186f4e926fc615620079a76
 
