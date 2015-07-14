@@ -1,0 +1,20 @@
+pkgbase = apertium-eo-ca
+	pkgdesc = Apertium language data for the Esperanto-Catalan translator.
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-eo-ca-0.9.1.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = 75b027c23e031bfdb645fbd120e82d72
+	md5sums = 99ff6b39e16ef8314a82951414bb2d66
+	md5sums = 4695b4ad4f6eb089b528bef0d2820a3f
+
+pkgname = apertium-eo-ca
+
