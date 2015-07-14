@@ -7,8 +7,10 @@
 pkgname=conky-nvidia
 _pkgname=conky
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight system monitor for X'
+provides=('conky')
+conflicts=('conky')
 url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
 arch=('i686' 'x86_64')
