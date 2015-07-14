@@ -1,0 +1,15 @@
+pkgbase = dfu-programmer-svn
+	pkgdesc = Device Firmware Update based USB programmer for Atmel chips with a USB bootloader
+	pkgver = 105
+	pkgrel = 1
+	url = http://dfu-programmer.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = libusb
+	source = dfu-programmer-as-needed.patch
+	md5sums = a836e61ea39c240e19224de6fcfed725
+
+pkgname = dfu-programmer-svn
+
