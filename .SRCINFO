@@ -12,9 +12,7 @@ pkgbase = prison-frameworks-git
 	depends = qrencode
 	depends = qt5-base
 	provides = prison-frameworks
-	provides = prison
 	conflicts = prison-frameworks
-	conflicts = prison
 	source = git://anongit.kde.org/prison#branch=frameworks
 	sha1sums = SKIP
 

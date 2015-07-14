@@ -10,8 +10,8 @@ url='https://projects.kde.org/projects/kdesupport/prison'
 license=('LGPL')
 depends=('libdmtx' 'qrencode' 'qt5-base')
 makedepends=('extra-cmake-modules' 'git')
-conflicts=('prison-frameworks' 'prison')
-provides=('prison-frameworks' 'prison')
+conflicts=('prison-frameworks')
+provides=('prison-frameworks')
 source=('git://anongit.kde.org/prison#branch=frameworks')
 sha1sums=('SKIP')
 
