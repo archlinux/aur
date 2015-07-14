@@ -1,14 +1,14 @@
 pkgbase = rtorrent-color
 	pkgdesc = Ncurses BitTorrent client based on libTorrent with color patch.
 	pkgver = 0.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://libtorrent.rakshasa.no
 	install = rtorrent-color.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = curl
-	depends = libtorrent=0.13.4
+	depends = libtorrent>=0.13.4
 	depends = xmlrpc-c
 	depends = libsigc++
 	provides = rtorrent
