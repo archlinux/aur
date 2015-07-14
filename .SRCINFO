@@ -1,6 +1,6 @@
 pkgbase = keybase
 	pkgdesc = CLI tool for GPG with keybase.io
-	pkgver = 0.8.6
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = http://keybase.io/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = keybase
 	makedepends = npm
 	depends = gnupg
 	depends = nodejs
-	source = https://github.com/keybase/node-client/archive/v0.8.6.tar.gz
-	sha1sums = 36d64ba0d56d27cccda951a3f47f0a6613fda774
+	source = https://github.com/keybase/node-client/archive/v0.8.9.tar.gz
+	sha1sums = a8f3acbc1f69026e630abc71d0559d67440de1a8
 
 pkgname = keybase
 
