@@ -1,0 +1,18 @@
+pkgbase = extract-artwork-git
+	pkgdesc = extract artwork from media files - git checkout
+	pkgver = 0.0.1.r0.g8003e63
+	pkgrel = 1
+	url = https://github.com/eworm-de/extract-artwork
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = markdown
+	depends = ffmpeg
+	provides = extract-artwork
+	conflicts = extract-artwork
+	source = git://github.com/eworm-de/extract-artwork.git
+	sha256sums = SKIP
+
+pkgname = extract-artwork-git
+
