@@ -1,6 +1,6 @@
 pkgbase = debootstrap
 	pkgdesc = A tool used to create a Debian base system from scratch, without requiring the availability of dpkg or apt
-	pkgver = 1.0.70
+	pkgver = 1.0.71
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/debootstrap
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = debootstrap
 	optdepends = ubuntu-keyring: checking Ubuntu release signatures
 	optdepends = gnupg1: checking Debian and Ubuntu release signatures
 	backup = usr/share/debootstrap/arch
-	source = http://ftp.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.70_all.deb
-	md5sums = d5be4e10b6cbe080029d96b3982d9c2f
+	source = http://ftp.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.71_all.deb
+	md5sums = 70e602f0e22759595b854ef084b86003
 
 pkgname = debootstrap
 
