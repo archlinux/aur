@@ -1,6 +1,6 @@
 pkgbase = crispy-doom
-	pkgdesc = Chocolate Doom with vanilla-compatible enhancements
-	pkgver = 2.3
+	pkgdesc = Vanilla-compatible enhanced Doom, Heretic, Hexen, Strife engine
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://fabiangreffrath.github.io/crispy-doom
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = crispy-doom
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
-	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-2.3.tar.gz
-	sha256sums = cdf669fbaabb409c89f5641fcd890123381cebd2c0ee19e2faa9ef0d11044d6d
+	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-3.0.tar.gz
+	sha256sums = 7aeae60ecd7b18e41678e89a67f04e075d88338466f5efe6e988701c4b6c851f
 
 pkgname = crispy-doom
 	pkgdesc = Doom port accurately reproducing the original DOS EXEs.

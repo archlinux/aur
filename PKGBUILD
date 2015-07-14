@@ -2,8 +2,8 @@
 
 pkgname=(crispy-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
-pkgdesc="Chocolate Doom with vanilla-compatible enhancements"
-pkgver=2.3
+pkgdesc="Vanilla-compatible enhanced Doom, Heretic, Hexen, Strife engine"
+pkgver=3.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -11,12 +11,20 @@ license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('autoconf' 'python')
 source=(https://github.com/fabiangreffrath/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('cdf669fbaabb409c89f5641fcd890123381cebd2c0ee19e2faa9ef0d11044d6d')
+sha256sums=('7aeae60ecd7b18e41678e89a67f04e075d88338466f5efe6e988701c4b6c851f')
 
 prepare() {
   # GitHub's generated archive prefix kind of sucks.
   mv "${pkgbase}-${pkgbase}-${pkgver}" "${pkgbase}-${pkgver}"
   cd "${pkgbase}-${pkgver}"
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
 
   # Change binary dir from /usr/games to /usr/bin
   sed 's|/games|/bin|g' -i src{,/setup}/Makefile.am
