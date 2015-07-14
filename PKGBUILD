@@ -1,7 +1,7 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-beta
-pkgver=25.6.0_beta1
+pkgver=25.6.0_beta2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
