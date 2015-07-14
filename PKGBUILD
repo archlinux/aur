@@ -47,8 +47,7 @@ package() {
 	cp $srcdir/openhab.service usr/lib/systemd/system
 	cp -r $srcdir/openhab-runtime opt
 	cp $srcdir/openhab etc/conf.d
-	cp opt/openhab-runtime/configurations/openhab_default.cfg etc/openhab/openhab.cfg
-	ln -s /etc/openhab/openhab.cfg opt/openhab-runtime/configurations/openhab.cfg
-	rm -r opt/openhab-runtime/addons
+	mv opt/openhab-runtime/configurations etc/openhab/configuration
+	ln -s /etc/openhab/configurations opt/openhab-runtime/configurations
 	ln -s /etc/openhab/addons-enabled opt/openhab-runtime/addons
 }
