@@ -3,8 +3,8 @@
 
 pkgname=hunspell-en-us
 pkgver=2015.05.18
-pkgrel=4
-pkgdesc="English US hunspell dictionaries"
+pkgrel=1
+pkgdesc="English hunspell dictionaries (en_US only)"
 arch=(any)
 url="http://wordlist.aspell.net/dicts/"
 license=('LGPL' 'custom:scowl')
