@@ -1,0 +1,100 @@
+--- ../apertium-eu-es-0.3.1/Makefile.am	2009-04-24 09:55:48.000000000 +0200
++++ apertium-eu-es-0.3.1/Makefile.am	2010-09-21 16:17:49.880738777 +0200
+@@ -10,13 +10,13 @@
+ 	$(PREFIX1).autopgen.bin $(PREFIX1).t1x.bin $(PREFIX1).t2x.bin $(PREFIX1).t3x.bin \
+ 	$(PREFIX1).ordinals.t1x.bin modes
+ #$(PREFIX1).rlx.bin modes
+-     
++
+ TARGETS = $(TARGETS_COMMON) trules-$(PREFIX1).bin trules-$(PREFIX2).bin \
+           trules-$(PREFIX1).xml trules-$(PREFIX2).xml 
+           # $(BASENAME).$(LANG1)-lextor.dix $(BASENAME).$(LANG2)-lextor.dix \
+ 	  # $(BASENAME).$(PREFIX1)-lextor.dix $(BASENAME).$(PREFIX2)-lextor.dix 
+ 
+-	  
++
+ $(PREFIX1).automorf.bin: $(BASENAME).$(LANG1).dix
+ 	apertium-validate-dictionary $(BASENAME).$(LANG1).dix
+ 	lt-comp lr $(BASENAME).$(LANG1).dix $@
+@@ -63,7 +63,7 @@
+ ##	apertium-validate-transfer $(BASENAME).trules-$(PREFIX1).xml
+ ##	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX1).xml \
+ ##	                             trules-$(PREFIX1).bin
+-	                             
++
+ ##trules-$(PREFIX2).bin: $(BASENAME).trules-$(PREFIX2).xml
+ ##	apertium-validate-transfer $(BASENAME).trules-$(PREFIX2).xml
+ ##	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX2).xml \
+@@ -79,14 +79,14 @@
+ ##$(BASENAME).$(LANG1)-lextor.dix: $(BASENAME).$(PREFIX1).dix
+ ##	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
+ ##	apertium-gen-lextormono rl $(BASENAME).$(PREFIX1).dix $@
+-	
++
+ ##$(BASENAME).$(LANG2)-lextor.dix: $(BASENAME).$(PREFIX1).dix
+ ##	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
+ ##	apertium-gen-lextormono lr $(BASENAME).$(PREFIX1).dix $@
+ 
+ ##$(PREFIX1).lextormono.bin: $(BASENAME).$(LANG1)-lextor.dix
+ ##	lt-comp lr $(BASENAME).$(LANG1)-lextor.dix $@
+-	
++
+ ##$(PREFIX2).lextormono.bin: $(BASENAME).$(LANG2)-lextor.dix
+ ##	lt-comp lr $(BASENAME).$(LANG2)-lextor.dix $@
+ 
+@@ -94,14 +94,14 @@
+ ##$(BASENAME).$(PREFIX1)-lextor.dix: $(BASENAME).$(PREFIX1).dix
+ ##	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
+ ##	apertium-gen-lextorbil rl $(BASENAME).$(PREFIX1).dix $@
+-	
++
+ ##$(BASENAME).$(PREFIX2)-lextor.dix: $(BASENAME).$(PREFIX1).dix
+ ##	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
+ ##	apertium-gen-lextorbil lr $(BASENAME).$(PREFIX1).dix $@
+ 
+ ##$(PREFIX1).lextorbil.bin: $(BASENAME).$(PREFIX1)-lextor.dix
+ ##	lt-comp lr $(BASENAME).$(PREFIX1)-lextor.dix $@
+-	
++
+ ##$(PREFIX2).lextorbil.bin: $(BASENAME).$(PREFIX2)-lextor.dix
+ ##	lt-comp lr $(BASENAME).$(PREFIX2)-lextor.dix $@
+ 
+@@ -152,7 +152,7 @@
+ #	    $(BASENAME).$(PREFIX2).t1x 
+ #	    $(BASENAME).$(PREFIX2).t2x $(BASENAME).$(PREFIX2).t3x 
+ #	    $(BASENAME).$(LANG2).tsx 
+-           	            	            	            	            	            	  	 
++
+ modes: modes.xml
+ 	apertium-gen-modes modes.xml
+ 
+@@ -161,7 +161,7 @@
+ 	apertium-gen-modes modes.xml
+ 	mkdir -p modes/
+ 	cp $(PREFIX1).mode modes/
+-	
++
+ apertium_eu_esdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_eu_modesdir=$(prefix)/share/apertium/modes/
+ 
+@@ -169,15 +169,15 @@
+                     $(PREFIX1).autobil.bin \
+                     $(PREFIX1).autogen.bin \
+                     $(PREFIX1).autopgen.bin \
+-                    $(PREFIX1).prob $(PREFIX1).ordinals.t1x.bin \
++                    $(PREFIX1).prob \
+ 		    $(PREFIX1).t1x.bin $(PREFIX1).t2x.bin $(PREFIX1).t3x.bin  $(PREFIX1).ordinals.t1x.bin\
+ 		    $(PREFIX1).mode	  
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_eu_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).t2x $(apertium_eu_esdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(apertium_eu_esdir)
+-	$(INSTALL_DATA) $(BASENAME).ordinals.t1x $(apertium_eu_esdir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_eu_modesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).t2x $(DESTDIR)$(apertium_eu_esdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(DESTDIR)$(apertium_eu_esdir)
++	$(INSTALL_DATA) $(BASENAME).ordinals.t1x $(DESTDIR)$(apertium_eu_esdir)
+ 
+ CLEANFILES = -r $(TARGETS) 
