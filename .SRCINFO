@@ -1,6 +1,6 @@
 pkgbase = subsurface-git
 	pkgdesc = Divelog program
-	pkgver = 20150705.35b4af9
+	pkgver = 20150713.e82f8ea
 	pkgrel = 1
 	url = http://subsurface-divelog.org/
 	install = install
@@ -16,6 +16,7 @@ pkgbase = subsurface-git
 	depends = sqlite
 	depends = libusb
 	depends = libgit2
+	depends = qt5-connectivity
 	depends = grantlee-qt5
 	depends = subsurface-libdc-git
 	depends = subsurface-marble
