@@ -1,0 +1,18 @@
+pkgbase = netica
+	pkgdesc = Probabilistic graphical model software for editing, learning from data, and computation with Bayesian networks
+	pkgver = 5.19
+	pkgrel = 1
+	url = norsys.com
+	install = netica.install
+	arch = any
+	license = custom:netica license
+	depends = wine
+	source = netica32
+	source = netica64
+	source = https://www.norsys.com/downloads/Netica_Win_519.zip
+	sha256sums = 24141601057f66352e2b0e76e4723f9412fa3e261efd55e647126e382f153155
+	sha256sums = 31c60a2af0520a121161b66d4a1fa0e7c055766130bf63682aab06fb8c6a50dd
+	sha256sums = 675bfbee41c400d1797f28d16f917231604efa658f99a57870bedbf32b4cea28
+
+pkgname = netica
+

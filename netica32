@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /opt/norsys/netica/Examples
+WINEDEBUG=-all wine /opt/norsys/netica/Netica32.exe "$@"

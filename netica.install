@@ -1,0 +1,6 @@
+post_install() {
+    echo
+    echo 'The pristine netica directory is installed to /opt/norsys/netica/'
+    echo 'The netica launcher is /usr/bin/netica'
+    echo
+}
