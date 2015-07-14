@@ -1,21 +1,21 @@
-# Maintainer:  Ainola <opp310@alh.rqh> (ROT13)
+# Maintainer:  Ainola
 
 pkgname=broken-age-hib
-pkgver=20_04_22_2015
+pkgver=2.2
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Broken Age is a point-and-click adventure telling the stories of a young boy and girl leading parallel lives. (Humble Bundle Version)"
 arch=('i686' 'x86_64')
 url="http://www.brokenagegame.com/"
 license=('custom: commercial')
 depends_i686=('libgl')
 depends_x86_64=('lib32-libgl')
-source=("hib://v${pkgver}_BrokenAge_linux.tar.gz"
+source=("hib://BrokenAge_linuxv${pkgver}.tar.gz"
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=("652c128f1ea913237834a03ba0ba82cc7a7dd5b8f428ab2aace98eb31a3f2806"
-            "96a97646e52807c2e3202d1c8e375ed1832a6a5968897c897f1a0c83007bafb7"
+sha256sums=("c54217733bd335ab57c8dfbeb9e1f7515732732ac881c4daaa794b4ec0a086ab"
+            "b9962cb73ed2807a095c4c535d70ad90e097a3cee2143d99256d875ce6eae412"
             "1344c36f86b3b8530a0d68f2e47908eaf950cc6ba28a680837097cceffe36506"
             "9582f8603a4927fff9a2d07306416603293cfbfa3ffc2ac0715da83b2c757a48")
 
