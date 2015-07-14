@@ -1,6 +1,6 @@
 pkgbase = clementine-qt5-git
 	pkgdesc = Experimental Qt5 version of Clementine, a modern music player and library organiser.
-	pkgver = 1.2.3.r1195.gcc079ec
+	pkgver = 1.2.3.r1204.g26b6296
 	pkgrel = 1
 	url = http://www.clementine-player.org/
 	install = clementine.install
