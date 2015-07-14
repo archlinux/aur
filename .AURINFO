@@ -1,0 +1,16 @@
+pkgbase = apertium-en-ca
+	pkgdesc = Apertium language data for the English-Catalan (including Valencian) translator.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2
+	depends = apertium>=3.2
+	source = https://downloads.sourceforge.net/sourceforge/apertium/apertium-en-ca-0.9.3.tar.gz
+	source = configure.ac.patch
+
+pkgname = apertium-en-ca
+
