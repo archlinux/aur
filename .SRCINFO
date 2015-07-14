@@ -1,0 +1,26 @@
+pkgbase = webby-browser-bzr
+	pkgdesc = A webapp browser.
+	pkgver = r9
+	pkgrel = 1
+	url = https://code.launchpad.net/~erasmo-marin/webby-browser
+	install = webby-browser.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = cmake
+	makedepends = bzr
+	depends = glib2
+	depends = gtk3
+	depends = granite
+	depends = libgee
+	depends = webkit2gtk
+	depends = libsoup
+	provides = webby-browser
+	conflicts = webby-browser
+	source = bzr+lp:webby-browser
+	sha256sums = SKIP
+
+pkgname = webby-browser-bzr
+
