@@ -1,0 +1,16 @@
+pkgbase = wmbutton
+	pkgdesc = A dockapp displaying configurable buttons
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://www.windowmaker.org
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = libx11
+	makedepends = ctags
+	depends = libxpm
+	source = http://www.idchk.org/pool/main/w/wmbutton/wmbutton_0.7.0.orig.tar.gz
+	md5sums = 21421b159340e022a623560a0fb0266f
+
+pkgname = wmbutton
+
