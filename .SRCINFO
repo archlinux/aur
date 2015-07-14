@@ -1,6 +1,6 @@
 pkgbase = owncloud-client-qt5
 	pkgdesc = ownCloud client based on mirall built with Qt 5
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = http://owncloud.org/
 	install = owncloud-client-qt5.install
@@ -15,8 +15,8 @@ pkgbase = owncloud-client-qt5
 	optdepends = nemo-python: integration with Nemo
 	conflicts = owncloud-client
 	backup = etc/ownCloud/sync-exclude.lst
-	source = https://download.owncloud.com/desktop/stable/owncloudclient-1.8.3.tar.xz
-	md5sums = f1d933a0f7e327a74688c3c356ac8a92
+	source = https://download.owncloud.com/desktop/stable/owncloudclient-1.8.4.tar.xz
+	md5sums = ce82c234fca674062599b3ceb4ac50c6
 
 pkgname = owncloud-client-qt5
 
