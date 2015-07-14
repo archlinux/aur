@@ -1,0 +1,13 @@
+pkgbase = ppmrose
+	pkgdesc = unwarp images
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://diybookscanner.org/forum/viewtopic.php?f=19&t=2589&start=10
+	arch = x86_64
+	arch = i686
+	license = GPL
+	source = ppmrose.zip::http://diybookscanner.org/forum/download/file.php?id=4390
+	sha1sums = 49655e12b7d5886cb1d8b885a8cbdfecf2b759dd
+
+pkgname = ppmrose
+
