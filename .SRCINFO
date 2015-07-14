@@ -1,0 +1,23 @@
+pkgbase = xli
+	pkgdesc = An image display program for X
+	pkgver = 1.17.0+20061110
+	pkgrel = 7
+	url = ftp://ftp.de.debian.org/debian/pool/main/x/xli/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = patch
+	depends = libxext
+	depends = libpng
+	depends = libjpeg
+	source = ftp://ftp2.de.debian.org/debian/pool/main/x/xli/xli_1.17.0+20061110.orig.tar.gz
+	source = ftp://ftp2.de.debian.org/debian/pool/main/x/xli/xli_1.17.0+20061110-4.diff.gz
+	source = c_includes.diff
+	source = makefile.patch
+	md5sums = 2cdef0c420f54f0cf668f751fd581706
+	md5sums = fc1985c39e6c8ae7bacce5aa1d9cb190
+	md5sums = 4d0db38476f7fd80ae66fb7cd431e0bd
+	md5sums = b366cc06ed57bb04e3f4293dccb70aff
+
+pkgname = xli
+

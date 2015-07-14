@@ -1,0 +1,219 @@
+diff -Naur xli-2006-11-10_old//clip.c xli-2006-11-10_new//clip.c
+--- xli-2006-11-10_old//clip.c	1999-10-25 04:14:52.000000000 +0200
++++ xli-2006-11-10_new//clip.c	2011-06-14 22:33:37.000000000 +0200
+@@ -8,6 +8,7 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+ 
+diff -Naur xli-2006-11-10_old//dither.c xli-2006-11-10_new//dither.c
+--- xli-2006-11-10_old//dither.c	1999-10-25 04:14:54.000000000 +0200
++++ xli-2006-11-10_new//dither.c	2011-06-14 22:34:00.000000000 +0200
+@@ -22,6 +22,7 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "kljcpyrght.h"
+ #include "xli.h"
+diff -Naur xli-2006-11-10_old//faces.c xli-2006-11-10_new//faces.c
+--- xli-2006-11-10_old//faces.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//faces.c	2011-06-14 22:52:38.000000000 +0200
+@@ -8,10 +8,10 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+ #include "imagetypes.h"
+-#include <string.h>
+ 
+ /* read a hex value and return its value
+  */
+diff -Naur xli-2006-11-10_old//fbm.c xli-2006-11-10_new//fbm.c
+--- xli-2006-11-10_old//fbm.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//fbm.c	2011-06-14 22:54:08.000000000 +0200
+@@ -14,9 +14,10 @@
+  * Copyright 1990 Mark Majhor (see the included file
+  * "mrmcpyrght.h" for complete copyright information)
+  */
++# include <string.h>
+ # include "xli.h"
+ # include <ctype.h>
+-# include <string.h>
++
+ #define FBM_C
+ # include "fbm.h"
+ # include "imagetypes.h"
+diff -Naur xli-2006-11-10_old//Imakefile xli-2006-11-10_new//Imakefile
+--- xli-2006-11-10_old//Imakefile	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//Imakefile	2011-06-14 23:07:58.000000000 +0200
+@@ -36,21 +36,7 @@
+ ComplexProgramTarget_1(xli,$(DEFINES) $(LOCAL_LIBRARIES),)
+ ComplexProgramTarget_2(xlito,,)
+ 
+-install:: $(SYSPATHFILE)
++install::
+ 	$(RM) $(BINDIR)/xview $(BINDIR)/xsetbg
+ 	$(LN) $(BINDIR)/xli $(BINDIR)/xview
+ 	$(LN) $(BINDIR)/xli $(BINDIR)/xsetbg
+-
+-$(SYSPATHFILE):
+-	@echo "*** Creating default $(SYSPATHFILE) since you"
+-	@echo "*** don't have one. This file is used to set up default places"
+-	@echo "*** and names to look for images.  You probably want to edit"
+-	@echo "*** it for your site.  See the xloadimage manual page for"
+-	@echo "*** details on the contents of this file."
+-	cp /dev/null $(SYSPATHFILE)
+-	echo "path=$(INCDIR)/bitmaps $(INCDIR)/images" \
+-		>> $(SYSPATHFILE)
+-	echo "extension=.gif .jpg .rle .csun .msun .sun .face .xbm .bm" \
+-		>>$(SYSPATHFILE)
+-	chmod a+r $(SYSPATHFILE)
+-
+diff -Naur xli-2006-11-10_old//misc.c xli-2006-11-10_new//misc.c
+--- xli-2006-11-10_old//misc.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//misc.c	2011-06-14 22:54:57.000000000 +0200
+@@ -8,11 +8,11 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+ #include "patchlevel"
+ #include <signal.h>
+-#include <string.h>
+ 
+ static char *signalName(int sig)
+ {
+diff -Naur xli-2006-11-10_old//options.c xli-2006-11-10_new//options.c
+--- xli-2006-11-10_old//options.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//options.c	2011-06-14 22:56:10.000000000 +0200
+@@ -8,9 +8,9 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+-#include <string.h>
+ #include <stdlib.h>
+ 
+ /* options array and definitions.  If you add something to this you also
+diff -Naur xli-2006-11-10_old//path.c xli-2006-11-10_new//path.c
+--- xli-2006-11-10_old//path.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//path.c	2011-06-14 22:57:08.000000000 +0200
+@@ -8,6 +8,7 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+ #include <sys/stat.h>
+@@ -17,7 +18,6 @@
+ #include <pwd.h>
+ #endif
+ #include <errno.h>
+-#include <string.h>
+ 
+ extern int errno;
+ 
+diff -Naur xli-2006-11-10_old//png.c xli-2006-11-10_new//png.c
+--- xli-2006-11-10_old//png.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//png.c	2011-06-14 23:02:44.000000000 +0200
+@@ -3,10 +3,10 @@
+  * Glenn Randers-Pehrson et al.  Any bugs are my fault. -- smar@reptiles.org
+  */
+ 
++#include <png.h>
+ #include "xli.h"
+ #include "imagetypes.h"
+ #include "pbm.h"
+-#include <png.h>
+ #include <assert.h>
+ 
+ #define TITLE_KEYWORD "Title"
+diff -Naur xli-2006-11-10_old//root.c xli-2006-11-10_new//root.c
+--- xli-2006-11-10_old//root.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//root.c	2011-06-14 22:58:13.000000000 +0200
+@@ -10,9 +10,9 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+-#include <string.h>
+ 
+ #define RETAIN_PROP_NAME	"_XSETROOT_ID"
+ 
+diff -Naur xli-2006-11-10_old//window.c xli-2006-11-10_new//window.c
+--- xli-2006-11-10_old//window.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//window.c	2011-06-14 22:58:54.000000000 +0200
+@@ -9,10 +9,10 @@
+  * See included file "copyright.h" for complete copyright information.
+  */
+ 
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+ #include <ctype.h>
+-#include <string.h>
+ #include <signal.h>
+ #include <errno.h>
+ #include <sys/types.h>
+diff -Naur xli-2006-11-10_old//xlito.c xli-2006-11-10_new//xlito.c
+--- xli-2006-11-10_old//xlito.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//xlito.c	2011-06-14 23:03:49.000000000 +0200
+@@ -1,3 +1,4 @@
++#include <string.h>
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -8,7 +9,6 @@
+ #ifndef VMS
+ #include <unistd.h>
+ #endif
+-#include <string.h>
+ 
+ #define VERSION "1"
+ #define PATCHLEVEL "02"
+diff -Naur xli-2006-11-10_old//xpixmap.c xli-2006-11-10_new//xpixmap.c
+--- xli-2006-11-10_old//xpixmap.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//xpixmap.c	2011-06-14 22:59:53.000000000 +0200
+@@ -15,11 +15,10 @@
+  *
+  * Modified 16/10/92 by GWG to add version 2C and 3 support.
+  */
+-
++#include <string.h>
+ #include "copyright.h"
+ #include "xli.h"
+ #include "imagetypes.h"
+-#include <string.h>
+ 
+ static void freeCtable(char **ctable, int ncolors)
+ 		/* color table */
+diff -Naur xli-2006-11-10_old//zio.c xli-2006-11-10_new//zio.c
+--- xli-2006-11-10_old//zio.c	2006-11-11 06:52:14.000000000 +0100
++++ xli-2006-11-10_new//zio.c	2011-06-14 23:01:31.000000000 +0200
+@@ -18,10 +18,10 @@
+  *
+  */
+ 
++#include <string.h>
++#include <ctype.h>
+ #include "copyright.h"
+ #include "xli.h"
+-#include <ctype.h>
+-#include <string.h>
+ 
+ #ifdef VMS
+ #define NO_UNCOMPRESS		/* VMS doesn't have uncompress */

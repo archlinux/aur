@@ -1,0 +1,12 @@
+diff -Naur a/Makefile.std b/Makefile.std
+--- a/Makefile.std	2011-12-27 00:35:09.000000000 +0100
++++ b/Makefile.std	2011-12-27 01:04:36.000000000 +0100
+@@ -18,7 +18,7 @@
+ LN= ln -s
+ RM= rm -f
+ MV= mv -f
+-LIBS= -lX11 -lm
++LIBS= -lX11 -lm -lpng -ljpeg -lXext
+ CFLAGS= -O -DSYSPATHFILE=\"$(SYSPATHFILE)\" $(OPTIONALFLAGS) $(EXTRAFLAGS)
+ GCCFLAGS= -fstrength-reduce -finline-functions
+ 
