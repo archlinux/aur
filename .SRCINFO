@@ -1,0 +1,11 @@
+pkgbase = cpdup-git
+	pkgdesc = A comprehensive filesystem mirroring program - Git Version
+	pkgver = 20111103
+	pkgrel = 1
+	url = http://apollo.backplane.com/FreeSrc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+
+pkgname = cpdup-git
+
