@@ -1,0 +1,15 @@
+pkgbase = ordbanken
+	pkgdesc = Look up Norwegian Nynorsk or Bokmål words in an inflectional dictionary
+	pkgver = 2013.02.17
+	pkgrel = 1
+	url = http://huftis.org/artiklar/ordbanken/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = util-linux-ng
+	depends = sh
+	source = http://download-mirror.savannah.gnu.org/releases/ordbanken/ordbanken-2013-02-17.tar.xz
+	md5sums = c2abe87b472da23423734a52a8d7a609
+
+pkgname = ordbanken
+
