@@ -1,0 +1,20 @@
+pkgbase = xdg-su-git
+	pkgdesc = Run a program as root with a graphical interface
+	pkgver = 1.2.3.r0.g5c1f1f5
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/tarakbumba/xdg-su
+	arch = any
+	license = MIT
+	makedepends = links
+	makedepends = xmlto
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = bash
+	provides = xdg-su
+	conflicts = xdg-su
+	source = xdg-su-git::git+https://github.com/tarakbumba/xdg-su.git
+	md5sums = SKIP
+
+pkgname = xdg-su-git
+
