@@ -1,0 +1,23 @@
+pkgbase = lib32-apitrace-git
+	pkgdesc = Graphics API Tracing from git (32-bit)
+	pkgver = 3238.365fb3e
+	pkgrel = 1
+	url = https://github.com/apitrace/apitrace
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = lib32-mesa-libgl
+	makedepends = lib32-procps-ng
+	makedepends = gcc-multilib
+	provides = lib32-apitrace
+	conflicts = lib32-apitrace
+	source = apitrace::git+http://github.com/apitrace/apitrace.git#branch=master
+	md5sums = SKIP
+
+pkgname = lib32-apitrace-git
+	depends = python2
+	depends = lib32-libgl
+	depends = lib32-procps-ng
+	depends = apitrace-git
+
