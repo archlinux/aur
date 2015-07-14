@@ -1,28 +1,37 @@
-pkgbase = simcraft
-	pkgdesc = SimulationCraft is a tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm)
+pkgbase = simulationcraft
+	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.
 	pkgver = 620_02
 	pkgrel = 1
 	url = http://code.google.com/p/simulationcraft
-	install = simcraft.install
+	install = simulationcraft.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-base
 	makedepends = qt5-webkit
+	conflicts = simcraft
+	conflicts = simcraft-data
+	conflicts = simcraft-gui
+	conflicts = simulationcraft-git
+	conflicts = simulationcraft-data-git
+	conflicts = simulationcraft-gui-git
+	replaces = simcraft
+	replaces = simcraft-data
+	replaces = simcraft-gui
 	source = http://downloads.simulationcraft.org/simc-620-02-source.zip
 	source = SimulationCraft.desktop
 	md5sums = d1155ac12510ae0344d742ee86d8ba6d
-	md5sums = 527f78bab42ec0a524388da12e3ce9e0
+	md5sums = 59f2d428f6c7ad8a3eee1ca615a5982a
 
-pkgname = simcraft
+pkgname = simulationcraft
 	depends = openssl
-	depends = simcraft-data=620_02
+	depends = simulationcraft-data=620_02
 
-pkgname = simcraft-gui
-	pkgdesc = SimulationCraft is a tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm)gui
+pkgname = simulationcraft-gui
+	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.gui
 	depends = qt5-base
 	depends = qt5-webkit
-	depends = simcraft=620_02
+	depends = simulationcraft=620_02
 
-pkgname = simcraft-data
+pkgname = simulationcraft-data
 
