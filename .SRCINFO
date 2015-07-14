@@ -1,0 +1,22 @@
+pkgbase = apertium
+	pkgdesc = Language-independent machine translation engine and tools to manage language data.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = flex
+	depends = lttoolbox>=3.2.0
+	depends = pcre
+	depends = gawk
+	depends = expat
+	depends = libxslt
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-3.3.0.tar.gz
+	md5sums = d008c1a1365a740206b48ba3ea759547
+	sha256sums = 9c2ff5b4f3cb99cd1b2f09c585fd86469ad32fb9d651ccd5c25c1848eca55a0d
+
+pkgname = apertium
+
