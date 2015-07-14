@@ -1,0 +1,16 @@
+pkgbase = apertium-es-ast
+	pkgdesc = Apertium language data for the Spanish-Asturian translator.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-es-ast_NO-PN-1.1.0.tar.gz
+	md5sums = 3e94345c525b2c6de87a50d599f1ce04
+
+pkgname = apertium-es-ast
+
