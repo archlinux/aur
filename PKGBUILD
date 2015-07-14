@@ -4,8 +4,8 @@
 _gui=true
 pkgbase=simulationcraft-git
 pkgname=simulationcraft-git
-pkgver=0
-pkgrel=1
+pkgver=620.02.r1.g76dbaa9
+pkgrel=2
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
 url="http://code.google.com/p/simulationcraft"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP'
          '59f2d428f6c7ad8a3eee1ca615a5982a')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/simulationcraft"
   git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
