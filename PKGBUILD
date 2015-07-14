@@ -1,6 +1,6 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=moneyguru
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Personal finance management application"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt4')
 makedepends=(
 )
 source=(http://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz)
-md5sums=('f3142646c213ef928f33474a677033cd')
+md5sums=('68d17535c092af07162291ca80472341')
 
 build() {
   cd "$srcdir"
