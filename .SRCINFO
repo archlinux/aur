@@ -1,0 +1,21 @@
+pkgbase = apertium-es-pt
+	pkgdesc = Apertium language data for the Spanish-Portuguese translator.
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	depends = lttoolbox>=3.0
+	depends = apertium>=3.0
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-es-pt-1.0.3.tar.gz
+	source = Makefile.am.patch
+	source = configure.ac.patch
+	md5sums = 0549493582ed682c6369b6a3ab3f09b5
+	md5sums = 980ec38601b6da839b0f98fab5821cde
+	md5sums = 29e1b3e85af2d026f3d48d19a4924986
+
+pkgname = apertium-es-pt
+

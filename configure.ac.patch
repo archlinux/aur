@@ -1,0 +1,20 @@
+--- ../apertium-es-pt-1.0.3/configure.ac	2007-10-02 12:39:06.000000000 +0200
++++ apertium-es-pt-1.0.3/configure.ac	2010-09-21 16:08:38.124072111 +0200
+@@ -10,9 +10,14 @@
+ AC_PROG_AWK
+ AC_CONFIG_HEADER([config])
+ 
+-PKG_CHECK_MODULES(APERTIUM, apertium-3.0 >= 3.0.0)
+-
+-APERTIUM_VER=30
++PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0,
++[
++  APERTIUM_VER=31
++],
++[
++  PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
++  APERTIUM_VER=32
++])
+ 
+ AC_SUBST(APERTIUM_VER)
+ 

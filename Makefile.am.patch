@@ -1,0 +1,81 @@
+--- ../apertium-es-pt-1.0.3/Makefile.am	2007-10-02 10:38:51.000000000 +0200
++++ apertium-es-pt-1.0.3/Makefile.am	2010-09-15 16:34:42.000000000 +0200
+@@ -31,11 +31,11 @@
+ $(PREFIX1b).autobil.bin: es-pt_BR.dix
+ 	apertium-validate-dictionary es-pt_BR.dix
+ 	lt-comp lr es-pt_BR.dix $@
+-                
++
+ $(PREFIX1b).autogen.bin: pt_BR.dix
+ 	apertium-validate-dictionary pt_BR.dix
+ 	lt-comp rl pt_BR.dix $@
+-                                
++
+ $(PREFIX1).autopgen.bin: $(BASENAME).post-$(LANG2).dix
+ 	apertium-validate-dictionary $(BASENAME).post-$(LANG2).dix
+ 	lt-comp lr $(BASENAME).post-$(LANG2).dix $@
+@@ -60,13 +60,13 @@
+ 	apertium-validate-transfer $(BASENAME).trules-$(PREFIX2).xml
+ 	apertium-preprocess-transfer $(BASENAME).trules-$(PREFIX2).xml \
+ 	                             trules-$(PREFIX2).bin
+-	                         
++
+ trules-$(PREFIX1).xml: $(BASENAME).trules-$(PREFIX1).xml
+ 	./filterrules.sh pt_PT $(BASENAME).trules-$(PREFIX1).xml >$@
+ 
+ trules-$(PREFIX1b).xml: $(BASENAME).trules-$(PREFIX1).xml
+ 	./filterrules.sh pt_BR $(BASENAME).trules-$(PREFIX1).xml >$@	                      
+-	                             
++
+ trules-$(PREFIX1).bin: trules-$(PREFIX1).xml
+ 	apertium-validate-transfer trules-$(PREFIX1).xml
+ 	apertium-preprocess-transfer trules-$(PREFIX1).xml $@
+@@ -87,20 +87,20 @@
+            $(PREFIX2)-supervised.make $(PREFIX2)-unsupervised.make \
+ 	   $(LANG2).dix $(LANG2b).dix $(PREFIX1).dix $(PREFIX1b).dix \
+            filter.sh filter.xsl filterrules.sh filterrules.xsl modes.xml
+-                                  
++
+ apertium_es_ptdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_es_modesdir=$(prefix)/share/apertium/modes/
+ 
+ 
+ pt.dix: $(BASENAME).$(LANG2).dix
+ 	./filter.sh pt left $(BASENAME).$(LANG2).dix >$@
+-        
++
+ pt_BR.dix: $(BASENAME).$(LANG2).dix
+ 	./filter.sh br left $(BASENAME).$(LANG2).dix >$@
+-                 
++
+ es-pt.dix: $(BASENAME).$(PREFIX1).dix
+ 	./filter.sh pt right $(BASENAME).$(PREFIX1).dix >$@
+-                         
++
+ es-pt_BR.dix: $(BASENAME).$(PREFIX1).dix
+ 	./filter.sh br right $(BASENAME).$(PREFIX1).dix >$@
+ 
+@@ -115,7 +115,7 @@
+ 
+ modes: modes.xml
+ 	apertium-gen-modes modes.xml
+-           
++
+ apertium_es_pt_DATA=$(PREFIX1).automorf.bin $(PREFIX2).automorf.bin \
+ 	$(PREFIX1).autobil.bin $(PREFIX2).autobil.bin \
+ 	$(PREFIX1b).autobil.bin $(PREFIX1b).autogen.bin \
+@@ -128,10 +128,10 @@
+ 
+ install-data-local:
+ 	$(prefix)/bin/apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(PREFIX1b).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_es_modesdir)
+-	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX2).xml $(BASENAME).trules-$(PREFIX1).xml trules-$(PREFIX1b).xml $(apertium_es_ptdir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_es_modesdir)
++	$(INSTALL_DATA) $(PREFIX1b).mode $(DESTDIR)$(apertium_es_modesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_es_modesdir)
++	$(INSTALL_DATA) $(BASENAME).trules-$(PREFIX2).xml $(BASENAME).trules-$(PREFIX1).xml trules-$(PREFIX1b).xml $(DESTDIR)$(apertium_es_ptdir)
+ 
+ 
+ CLEANFILES = -rf $(TARGETS) pt.dix pt_BR.dix es-pt.dix es-pt_BR.dix  modes
