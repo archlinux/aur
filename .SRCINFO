@@ -1,0 +1,49 @@
+pkgbase = wireshark-dev
+	pkgdesc = a free network protocol analyzer for Unix/Linux and Windows
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://www.wireshark.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt4
+	makedepends = gtk2
+	makedepends = krb5
+	makedepends = libpcap
+	makedepends = bash
+	makedepends = gnutls
+	makedepends = lua
+	makedepends = python
+	makedepends = desktop-file-utils
+	makedepends = hicolor-icon-theme
+	options = !libtool
+	source = http://www.wireshark.org/download/src/wireshark-1.11.3.tar.bz2
+	sha256sums = dfe8aa60581c9f7642503215a2dc1fe506a92aab20abcdf8520b9f8e12a83664
+
+pkgname = wireshark-dev-cli
+	install = wireshark.install
+	depends = krb5
+	depends = libpcap
+	depends = bash
+	depends = gnutls
+	depends = glib2
+	depends = lua
+	conflicts = wireshark
+	conflicts = wireshark-cli
+	replaces = wireshark-cli
+
+pkgname = wireshark-dev-gtk
+	install = wireshark-gtk.install
+	depends = gtk2
+	depends = wireshark-dev-cli
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	conflicts = wireshark
+	conflicts = wireshark-gtk
+	replaces = wireshark
+	replaces = wireshark-gtk
+
+pkgname = wireshark-dev-qt
+	depends = qt4
+	depends = wireshark-dev-cli
+
