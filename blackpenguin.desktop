@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Black Penguin
+Comment=An arcade style jump-on-cubes game with Penguin and Evil Window
+Exec=blackpenguin
+Icon=blackpenguin
+Terminal=false
+Categories=Game;ArcadeGame;

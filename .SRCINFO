@@ -1,0 +1,25 @@
+pkgbase = blackpenguin
+	pkgdesc = An arcade style jump-on-cubes game with Penguin and Evil Window
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://www.ibiblio.org/pub/linux/games/arcade/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxext
+	depends = qt5-base
+	source = http://www.ibiblio.org/pub/linux/games/arcade/blackpenguin-0.2.tar.gz
+	source = blackpenguin.patch
+	source = blackpenguin.png
+	source = blackpenguin.desktop
+	source = qt2to4.patch
+	source = blackpenguin-qt5.patch
+	md5sums = 91ac8ac0f5588122c469e3f65b98c3df
+	md5sums = f3ca77928e512e263fbf9e769d614260
+	md5sums = 9204e564d47ea7ce9592232e2bd31c92
+	md5sums = 55d2533c522dae44e9ac739a6fb287c0
+	md5sums = 5705ea4929b6eea8b4d39a4052ff5743
+	md5sums = e9f73a47936e2eaeafe1f492cac53427
+
+pkgname = blackpenguin
+

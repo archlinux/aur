@@ -1,0 +1,912 @@
+diff -upr blackpenguin-0.2-old/src/appwindow.cpp blackpenguin-0.2/src/appwindow.cpp
+--- blackpenguin-0.2-old/src/appwindow.cpp	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/appwindow.cpp	2014-08-16 16:36:21.780011811 -0700
+@@ -23,12 +23,17 @@
+ #include <qmessagebox.h>
+ //Added by qt3to4:
+ #include <QPixmap>
+-#include <Q3PopupMenu>
++#include <QMenu>
+ #include "CRulesDialog.h"
+ #include "newgame.xpm"
+ #include "rules.xpm"
+ #include "load.xpm" 
+ #include "save.xpm"
++#include "config.xpm"
++// --------
++// added by Olaf Hartig (9 Nov 1999)
++#include "CConfigDialog.h"
++// --------
+ 
+ const char* newGameText = "Start a new game. Beware of the Evil Window!";
+ const char* rulesGameText = "Show a short description of the game's rules."; 
+@@ -36,69 +41,58 @@ const char* loadGameText = "Load a previ
+ const char* saveGameText = "Save a game. Only one game can be saved at a time; any previously saved game will be overwritten.";
+ 
+ ApplicationWindow::ApplicationWindow()
+-    : Q3MainWindow( 0, "Black Penguin Main Window" )
++    : QMainWindow( 0 )
+ {
+ 	e = new BlackPenguinData( this, "blackpenguin" );
+ 	e->setFocus();
+-	// reduce screen flickering
+-	e->setUpdatesEnabled(FALSE);
+ 	setCentralWidget( e );
+ 
+-	fileTools = new Q3ToolBar( this, "file operations" );
++	fileTools = addToolBar("file operations");
+ 
+ 	newGameIcon = QPixmap( newgame_xpm );
+ 	rulesIcon = QPixmap( rules_xpm );
+ 	loadIcon = QPixmap( load_xpm );
+ 	saveIcon = QPixmap( save_xpm );
++	configIcon = QPixmap( config_xpm );
+ 
+-	QToolButton * newGame = new QToolButton( newGameIcon, "New Game", 0,
+-					      this, SLOT(reset()),
+-					      fileTools, "new game" );
+-
+-	QToolButton* rulesGame = new QToolButton( rulesIcon, "Rules of the Game", 0,
+-						this, SLOT(rules()),
+-						fileTools, "rules game" );
+-
+-	QToolButton* loadGame = new QToolButton( loadIcon, "Load Game", 0,
+-						this, SLOT(load()),
+-						fileTools, "load game" );
+-
+-	QToolButton* saveGame = new QToolButton( saveIcon, "Save Game", 0,
+-						this, SLOT(save()),
+-						fileTools, "save game" );
+-
+-	Q3PopupMenu* file = new Q3PopupMenu();
+-	Q3PopupMenu* help = new Q3PopupMenu();
+-	menuBar()->insertItem( "&File", file );
+-	menuBar()->insertItem( "&Help", help );
+-
+-	file->insertItem( newGameIcon, "New Game", this, SLOT(reset()), Qt::Key_F2 );
+-	file->insertSeparator();
+-	file->insertItem( loadIcon, "Load Game", this, SLOT(load()), Qt::Key_F3 );
+-	file->insertItem( saveIcon, "Save Game", this, SLOT(save()), Qt::Key_F4 );
+-	file->insertSeparator();
+-	file->insertItem( "Quit", this, SLOT(quit()), Qt::CTRL+Qt::Key_C  );
+-
+-	help->insertItem( rulesIcon, "Rules of the Game", this, SLOT( rules() ), Qt::Key_F1 );
+-	help->insertSeparator();
+-	help->insertItem( "About &Black Penguin", this, SLOT( aboutp() ), Qt::Key_F5 );
+-	help->insertItem( "No &Warranty", this, SLOT( aboutw() ), Qt::Key_F6 );
+-	help->insertItem( "&Redistribution", this, SLOT( aboutc() ), Qt::Key_F7 );
++	QAction* newGame = fileTools->addAction( newGameIcon, "New Game", this, SLOT(reset()));
++	QAction* rulesGame = fileTools->addAction( rulesIcon, "Rules of the Game", this, SLOT(rules()));
++	QAction* loadGame = fileTools->addAction( loadIcon, "Load Game", this, SLOT(load()));
++	QAction* saveGame = fileTools->addAction( saveIcon, "Save Game", this, SLOT(save()));
++
++
++	QMenu* file = menuBar()->addMenu(tr("&File"));
++	QMenu* help = menuBar()->addMenu(tr("&Help"));
++
++	file->addAction( newGameIcon, "New Game", this, SLOT(reset()), Qt::Key_F2 );
++	file->addSeparator();
++	file->addAction( loadIcon, "Load Game", this, SLOT(load()), Qt::Key_F3 );
++	file->addAction( saveIcon, "Save Game", this, SLOT(save()), Qt::Key_F4 );
++	file->addSeparator();
+++	file->addAction( configIcon, "Configure Keys", this, SLOT(config()), Qt::CTRL+Qt::Key_C );
++	file->addSeparator();
++	file->addAction( "Quit", this, SLOT(quit()), Qt::CTRL+Qt::Key_Q  );
++
++	help->addAction( rulesIcon, "Rules of the Game", this, SLOT( rules() ), Qt::Key_F1 );
++	help->addSeparator();
++	help->addAction( "About &Black Penguin", this, SLOT( aboutp() ), Qt::Key_F5 );
++	help->addAction( "No &Warranty", this, SLOT( aboutw() ), Qt::Key_F6 );
++	help->addAction( "&Redistribution", this, SLOT( aboutc() ), Qt::Key_F7 );
+ 	
+ 
+-	(void)Q3WhatsThis::whatsThisButton( fileTools );
+-	Q3WhatsThis::add( newGame, newGameText );
+-	Q3WhatsThis::add( rulesGame, rulesGameText );
+-	Q3WhatsThis::add( loadGame, loadGameText );
+-	Q3WhatsThis::add( saveGame, saveGameText );
++	fileTools->addAction( QWhatsThis::createAction() );
++	newGame->setWhatsThis( newGameText );
++	rulesGame->setWhatsThis( rulesGameText );
++	loadGame->setWhatsThis( loadGameText );
++	saveGame->setWhatsThis( saveGameText );
+ 
+-	statusBar()->message( "Hit F2 to start a new Game", 5000 );
++	statusBar()->showMessage( "Hit F2 to start a new Game", 5000 );
+ 
+ }
+ 
+ void ApplicationWindow::reset() {
+ 	e->reset();
+-	statusBar()->message( "Game started.", 2000 );
++	statusBar()->showMessage( "Game started.", 2000 );
+ }
+ 
+ void ApplicationWindow::save() {
+@@ -106,13 +100,13 @@ void ApplicationWindow::save() {
+ 
+ 	retval = e->savegame();
+ 	switch (retval) {
+-		case 0:		statusBar()->message( "Game successfully saved.", 3000 );
++		case 0:		statusBar()->showMessage( "Game successfully saved.", 3000 );
+ 				break;
+-		case 1:		statusBar()->message( "You cannot save a Game that is over.", 3000 );
++		case 1:		statusBar()->showMessage( "You cannot save a Game that is over.", 3000 );
+ 				break;
+-		case 2:		statusBar()->message( "Could not save Game.", 3000 );
++		case 2:		statusBar()->showMessage( "Could not save Game.", 3000 );
+ 				break;
+-		default:	statusBar()->message( "Unknown error.", 3000 );
++		default:	statusBar()->showMessage( "Unknown error.", 3000 );
+ 	}
+ }
+ 
+@@ -122,17 +116,24 @@ void ApplicationWindow::load() {
+ 
+ 	retval = e->loadgame();
+ 	switch (retval) {
+-		case 0:		statusBar()->message( "Recently saved Game successfully loaded.", 3000 );
++		case 0:		statusBar()->showMessage( "Recently saved Game successfully loaded.", 3000 );
+ 				break;
+-		case 1:		statusBar()->message( "Could not load Game.", 3000 );
++		case 1:		statusBar()->showMessage( "Could not load Game.", 3000 );
+ 				break;
+-		default:	statusBar()->message( "Unknown error.", 3000 );
++		default:	statusBar()->showMessage( "Unknown error.", 3000 );
+ 	}
+ }
+ 
++void ApplicationWindow::config()
++{
++	CConfigDialog dlgConfig(e->getKeyNW(), e->getKeyNE(), e->getKeySW(), e->getKeySE(), this);
++	connect(&dlgConfig, SIGNAL(newKeys(int,int,int,int)), e, SLOT(newKeys(int,int,int,int)) );
++	dlgConfig.exec();
++}
++
+ 
+ void ApplicationWindow::aboutp() {
+-	QMessageBox::message( "About Black Penguin", "Black Penguin 0.1b\nCopyright (C) \
++	QMessageBox::information(this, "About Black Penguin", "Black Penguin 0.1b\nCopyright (C) \
+ 1999 Holger Priebs pengu@priebs.de\n\n\
+ Black Penguin comes with ABSOLUTE NO WARRANTY: \n\
+ for details hit F6.\n\
+@@ -141,7 +142,7 @@ under certain conditions, hit F7 for det
+ }
+ 
+ void ApplicationWindow::aboutc() {
+-	QMessageBox::message( "Redistribution", "Black Penguin 0.1b\nCopyright (C) \
++	QMessageBox::information(this, "Redistribution", "Black Penguin 0.1b\nCopyright (C) \
+ 1999 Holger Priebs, pengu@priebs.de\n\n\
+ This program is free software; you can redistribute it and/or modify it\n\
+ under the terms of the GNU General Public Licence as published by the\n\
+@@ -154,7 +155,7 @@ Inc., 675 Mass Ave, Cambridge, MA 02139,
+ }
+ 
+ void ApplicationWindow::aboutw() {
+-	QMessageBox::message( "No Warranty", "Black Penguin 0.1b\nCopyright (C) \
++	QMessageBox::information(this, "No Warranty", "Black Penguin 0.1b\nCopyright (C) \
+ 1999 Holger Priebs, pengu@priebs.de\n\n\
+ This program is distributed in the hope that it will be useful, but\n\
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTIBILITY\n\
+@@ -174,7 +175,7 @@ void ApplicationWindow::rules() {
+ };
+ 
+ void ApplicationWindow::quit() {
+-	close(TRUE);
++	close();
+ }	
+ 
+ 
+diff -upr blackpenguin-0.2-old/src/appwindow.h blackpenguin-0.2/src/appwindow.h
+--- blackpenguin-0.2-old/src/appwindow.h	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/appwindow.h	2014-08-16 16:37:04.209011334 -0700
+@@ -19,19 +19,19 @@
+ //    along with this program; if not, write to the Free Software
+ //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+-#include <q3mainwindow.h>
+-#include <q3toolbar.h>
++#include <qmainwindow.h>
++#include <qtoolbar.h>
+ #include <qtoolbutton.h>
+-#include <q3popupmenu.h>
++#include <qmenu.h>
+ #include <qmenubar.h>
+ #include <qnamespace.h>
+ #include <qpixmap.h>
+ #include <qstatusbar.h>
+-#include <q3whatsthis.h>
++#include <qwhatsthis.h>
+ 
+ #include "BlackPenguinData.h"
+ 
+-class ApplicationWindow: public Q3MainWindow
++class ApplicationWindow: public QMainWindow
+ {
+     Q_OBJECT
+ public:
+@@ -42,6 +42,7 @@ private slots:
+ 	void reset();
+ 	void save();
+ 	void load();
++	void config();
+ 
+ public slots:
+ 	void aboutp();
+@@ -52,8 +53,8 @@ public slots:
+ 
+ private:
+ 	BlackPenguinData* e;	
+-	Q3ToolBar *fileTools;
+-	Q3PopupMenu *controls;
++	QToolBar *fileTools;
++	QMenu *controls;
+ 	
+ // Pixmaps for toolbar
+ 	QPixmap newGameIcon;
+diff -upr blackpenguin-0.2-old/src/BlackPenguinData.cpp blackpenguin-0.2/src/BlackPenguinData.cpp
+--- blackpenguin-0.2-old/src/BlackPenguinData.cpp	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/BlackPenguinData.cpp	2014-08-16 16:57:38.805997458 -0700
+@@ -23,7 +23,8 @@
+ #include <qfile.h>
+ //Added by qt3to4:
+ #include <QPaintEvent>
+-#include <Q3Frame>
++#include <QPainter>
++#include <QFrame>
+ #include <QLabel>
+ #include <QKeyEvent>
+ #include <QEvent>
+@@ -576,8 +577,8 @@ int Foe::current_pos() {
+ void Foe::show( QPaintDevice* qpd ) {
+ 	
+ 	// show foe only on legal positions of the playing field
+-	if (legal[m_position]) bitBlt(qpd, sc[m_position].x - foeoffsx, 
+-		sc[m_position].y - foeoffsy, m_foeBP );
++	if (legal[m_position])QPainter(qpd).drawPixmap(sc[m_position].x - foeoffsx,
++			sc[m_position].y - foeoffsy, *m_foeBP );
+ 
+ }
+ 
+@@ -792,10 +793,10 @@ void Goodies::show( QPaintDevice* qpd )
+ 
+ 	for (int n=0; n<81; n++) {
+ 		if (available[n] != 0) {
+-			bitBlt(qpd, 
++			QPainter(qpd).drawPixmap(
+ 				sc[n].x - goffsx, 
+ 				sc[n].y - goffsy, 
+-				m_goodiesBP[available[n] - 1] );
++				*m_goodiesBP[available[n] - 1] );
+ 		}
+ 	};
+ }
+@@ -825,8 +826,8 @@ void BP::show( QPaintDevice* qpd ) {
+ 		foeactive = 0;
+ 		if  (lives == 0) GameOver = 1;
+ 	}
+-	if (!round_over)bitBlt(qpd, sc[m_position].x - penguoffsetx, 
+-		sc[m_position].y - penguoffsety, m_penguBP );
++	if (!round_over)QPainter(qpd).drawPixmap( sc[m_position].x - penguoffsetx,
++			sc[m_position].y - penguoffsety, *m_penguBP );
+ 
+ }
+ 
+@@ -892,9 +893,8 @@ BlackPenguinData::BlackPenguinData
+ 	const char* name
+ )
+ 	:
+-	Inherited( parent, name, 0 )
++	Inherited( parent, 0 )
+ {
+-	setAttribute(Qt::WA_PaintOutsidePaintEvent, true);
+ 	// load a previously stored keyboard assignment if available, else use defaults
+ 	if (!loadkeys()) {
+ 		m_nKeyNW = Qt::Key_Left;
+@@ -930,75 +930,77 @@ BlackPenguinData::BlackPenguinData
+ 
+ 	// first create a common palette for all labels a.s.f.
+ 
+-	QColorGroup normal_all( QColor( QRgb(0) ), QColor( QRgb(16296080) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(0) ), QColor( QRgb(16777215) ) );
+-	QColorGroup disabled_all( QColor( QRgb(8421504) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(8421504) ), QColor( QRgb(12632256) ) );
+-	QColorGroup active_all( QColor( QRgb(0) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(0) ), QColor( QRgb(16777215) ) );
+-	QPalette palette_forall( normal_all, disabled_all, active_all );
++	QPalette* palette_forall = new QPalette();
++
++	palette_forall->setColorGroup( QPalette::Active, QColor( QRgb(0) ), QColor( QRgb(16296080) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(0) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(16296080) ) );
++	palette_forall->setColorGroup( QPalette::Disabled, QColor( QRgb(8421504) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(8421504) ), Qt:: white, QColor( QRgb(12632256) ), QColor( QRgb(12632256) ));
++	palette_forall->setColorGroup( QPalette::Inactive, QColor( QRgb(0) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(0) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(12632256) ));
++	
+ 
+ 	// create LCD counter for credits
+ 
+-	LCDcounter = new QLCDNumber( this, "LCDNumber_1" );
++	LCDcounter = new QLCDNumber( this );
+ 	LCDcounter->setGeometry( 540, 20, 100, 40 ); //20,100,100,30
+ 	LCDcounter->setMinimumSize( 10, 10 );
+ 	LCDcounter->setMaximumSize( 32767, 32767 );
+-	LCDcounter->setPalette( palette_forall );
++	LCDcounter->setPalette( *palette_forall );
+ 	LCDcounter->setFrameStyle( 50 ) ; //( 33 );
+-	LCDcounter->setSmallDecimalPoint( FALSE );
+-	LCDcounter->setNumDigits( 5 );
+-	LCDcounter->setMode( QLCDNumber::DEC );
++	LCDcounter->setSmallDecimalPoint( false );
++	LCDcounter->setDigitCount( 5 );
++	LCDcounter->setMode( QLCDNumber::Dec );
+ 	LCDcounter->setSegmentStyle( QLCDNumber::Outline );
+ 
+ 	// create label to explain the LCD
+ 
+ 	QPixmap* creditpixmap = new QPixmap( pingucoinsmall_xpm );
+ 	QLabel * creditlabel = new QLabel(this);
+-	creditlabel->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
++	creditlabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+ 	creditlabel->setGeometry( 505, 20, 30, 30 );
+-	creditlabel->setPalette( palette_forall );
++	creditlabel->setPalette( *palette_forall );
+ 	creditlabel->setPixmap( *creditpixmap );
+ 	
+ 	// create second LCD counter for # of lives
+ 
+-	LCDcounter2 = new QLCDNumber( this, "LCDNumber_2" );
++	LCDcounter2 = new QLCDNumber( this );
+ 	LCDcounter2->setGeometry( 540, 65, 100, 40 ); //20,100,100,30
+ 	LCDcounter2->setMinimumSize( 10, 10 );
+ 	LCDcounter2->setMaximumSize( 32767, 32767 );
+-	LCDcounter2->setPalette( palette_forall );
++	LCDcounter2->setPalette( *palette_forall );
+ 	LCDcounter2->setFrameStyle( 50 );
+-	LCDcounter2->setSmallDecimalPoint( FALSE );
+-	LCDcounter2->setNumDigits( 5 );
+-	LCDcounter2->setMode( QLCDNumber::DEC );
++	LCDcounter2->setSmallDecimalPoint( false );
++	LCDcounter2->setDigitCount( 5 );
++	LCDcounter2->setMode( QLCDNumber::Dec );
+ 	LCDcounter2->setSegmentStyle( QLCDNumber::Outline );
+ 
+ 	// create second label to explain the LCD
+ 
+ 	QPixmap* creditpixmap2 = new QPixmap( lives_xpm );
+ 	QLabel * creditlabel2 = new QLabel(this);
+-	creditlabel2->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
++	creditlabel2->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+ 	creditlabel2->setGeometry( 505, 65, 30, 30 );
+-	creditlabel2->setPalette( palette_forall );
++	creditlabel2->setPalette( *palette_forall );
+ 	creditlabel2->setPixmap( *creditpixmap2 );
+ 
+ 	// create third LCD counter for # of level
+ 
+-	LCDcounter3 = new QLCDNumber( this, "LCDNumber_2" );
++	LCDcounter3 = new QLCDNumber( this );
+ 	LCDcounter3->setGeometry( 540, 100 +10, 100, 40 ); //20,100,100,30
+ 	LCDcounter3->setMinimumSize( 10, 10 );
+ 	LCDcounter3->setMaximumSize( 32767, 32767 );
+-	LCDcounter3->setPalette( palette_forall );
++	LCDcounter3->setPalette( *palette_forall );
+ 	LCDcounter3->setFrameStyle( 50 );
+-	LCDcounter3->setSmallDecimalPoint( FALSE );
+-	LCDcounter3->setNumDigits( 5 );
+-	LCDcounter3->setMode( QLCDNumber::DEC );
++	LCDcounter3->setSmallDecimalPoint( false );
++	LCDcounter3->setDigitCount( 5 );
++	LCDcounter3->setMode( QLCDNumber::Dec );
+ 	LCDcounter3->setSegmentStyle( QLCDNumber::Outline );
+ 
+ 	// create third label to explain the LCD
+ 
+ 	QPixmap* creditpixmap3 = new QPixmap( levelicon_xpm );
+ 	QLabel * creditlabel3 = new QLabel(this);
+-	creditlabel3->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
++	creditlabel3->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+ 	creditlabel3->setGeometry( 505, 110, 30, 30 );
+-	creditlabel3->setPalette( palette_forall );
++	creditlabel3->setPalette( *palette_forall );
+ 	creditlabel3->setPixmap( *creditpixmap3 );
+ 
+ 	// initialize background
+@@ -1075,7 +1077,7 @@ void BlackPenguinData::paintEvent( QPain
+ {
+ 	// we do nothing but blitting the elsewhere painted picture to the 
+ 	// physical screen
+-	bitBlt(this, 0, 0, m_visible_bg );
++	QPainter(this).drawPixmap( 0, 0, *m_visible_bg );
+ }
+ 
+ int BlackPenguinData::savekeys() {
+@@ -1086,10 +1088,10 @@ int BlackPenguinData::savekeys() {
+ 	QFile f(filename);
+ 	if ( f.open( QIODevice::WriteOnly ) ) {
+ 		// writeBlock() expects char*. Cast looks ugly, but it works
+-		f.writeBlock((char*)&m_nKeyNW, sizeof(int));
+-		f.writeBlock((char*)&m_nKeySW, sizeof(int));
+-		f.writeBlock((char*)&m_nKeyNE, sizeof(int));
+-		f.writeBlock((char*)&m_nKeySE, sizeof(int));
++		f.write((char*)&m_nKeyNW, sizeof(int));
++		f.write((char*)&m_nKeySW, sizeof(int));
++		f.write((char*)&m_nKeyNE, sizeof(int));
++		f.write((char*)&m_nKeySE, sizeof(int));
+ 		f.close();
+ 		return 0;
+ 	}
+@@ -1104,14 +1106,14 @@ int BlackPenguinData::loadkeys() {
+ 	QFile f(filename);
+ 	if ( f.open( QIODevice::ReadOnly ) ) {
+ 		// writeBlock() expects char*. Cast looks ugly, but it works
+-		f.readBlock((char*)&m_nKeyNW, sizeof(int));
+-		f.readBlock((char*)&m_nKeySW, sizeof(int));
+-		f.readBlock((char*)&m_nKeyNE, sizeof(int));
+-		f.readBlock((char*)&m_nKeySE, sizeof(int));
++		f.read((char*)&m_nKeyNW, sizeof(int));
++		f.read((char*)&m_nKeySW, sizeof(int));
++		f.read((char*)&m_nKeyNE, sizeof(int));
++		f.read((char*)&m_nKeySE, sizeof(int));
+ 		f.close();
+-		return TRUE;
++		return true;
+ 	}
+-	return FALSE;
++	return false;
+ }
+ 
+ int BlackPenguinData::savegame() {
+@@ -1123,9 +1125,9 @@ int BlackPenguinData::savegame() {
+ 	if (GameOver) return 1; // you cannot save a game that's over
+ 	if ( f.open( QIODevice::WriteOnly ) ) {
+ 		// writeBlock() expects char*. Cast looks ugly, but it works
+-		f.writeBlock((char*)&credit, sizeof(int));
+-		f.writeBlock((char*)&lives, sizeof(int));
+-		f.writeBlock((char*)&level, sizeof(int));
++		f.write((char*)&credit, sizeof(int));
++		f.write((char*)&lives, sizeof(int));
++		f.write((char*)&level, sizeof(int));
+ 		f.close();
+ 		return 0;
+ 	}
+@@ -1140,9 +1142,9 @@ int BlackPenguinData::loadgame() {
+ 	QFile f(filename);
+ 	if ( f.open( QIODevice::ReadOnly ) ) {
+ 		// readBlock() expects char*. Cast looks ugly, but it works
+-		f.readBlock((char*)&credit, sizeof(int));
+-		f.readBlock((char*)&lives, sizeof(int));
+-		f.readBlock((char*)&level, sizeof(int));
++		f.read((char*)&credit, sizeof(int));
++		f.read((char*)&lives, sizeof(int));
++		f.read((char*)&level, sizeof(int));
+ 		f.close();
+ 		// we did not store some variables which are essential for game control
+ 		GameOver = 0;
+@@ -1172,7 +1174,7 @@ void BlackPenguinData::increaselevel() {
+ 	// display lives
+ 	LCDcounter2->display(lives);
+ 	// first delete the background by overwriting it with the new one			
+-	bitBlt( m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] ); 
++	QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] ); 
+ 	// then put the goodies on all the places
+ 	memcpy(available, level_pattern[ld[level].pattern], sizeof(level_pattern[ld[level].pattern]));
+ 	// put the little penguin on the top field
+@@ -1182,9 +1184,10 @@ void BlackPenguinData::increaselevel() {
+ 	// finally blit the little penguin on the pixmap
+ 	pbp->show( m_visible_bg );
+ 	// blit the whole thing on the physical screen
+-	bitBlt(this, 0, 0, m_visible_bg );
++	update();
+ 	// start the timer
+-	ptimer->start( ld[level].timer, FALSE);
++	ptimer->setSingleShot(false);
++	ptimer->start( ld[level].timer);
+ 	// reset the foe
+ 	pfoe->reset();
+ 	// we're still free
+@@ -1227,7 +1230,7 @@ void BlackPenguinData::reset() {
+ 	// game has been started
+ 	GameStarted = 1;
+ 	// first delete the background by overwriting it with the original			
+-	bitBlt( m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] ); 
++	QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] ); 
+ 	// then put the goodies on all the places
+ 	memcpy(available, level_pattern[ld[level].pattern], sizeof(level_pattern[ld[level].pattern]));
+ 	// put the little penguin on the top field
+@@ -1237,9 +1240,10 @@ void BlackPenguinData::reset() {
+ 	// finally blit the little penguin on the pixmap
+ 	pbp->show( m_visible_bg );
+ 	// blit the whole thing on the physical screen
+-	bitBlt(this, 0, 0, m_visible_bg );
++	update();
+ 	// start the timer
+-	ptimer->start( ld[level].timer , FALSE);
++	ptimer->setSingleShot( false );
++	ptimer->start( ld[level].timer );
+ 	// reset the foe
+ 	pfoe->reset();
+ 	// we're still free
+@@ -1268,7 +1272,7 @@ void BlackPenguinData::resetround() {
+ 	LCDcounter3->display(level+1);
+ 	if ( GameOver ) return;
+ 	// first delete the background by overwriting it with the original			
+-	bitBlt( m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor] ); 
++	QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor] ); 
+ 	// then put the goodies on all the places
+ 	memcpy(available, level_pattern[ld[level].pattern], sizeof(level_pattern[ld[level].pattern]));
+ 	// put the little penguin on the top field
+@@ -1278,9 +1282,10 @@ void BlackPenguinData::resetround() {
+ 	// finally blit the little penguin on the pixmap
+ 	pbp->show( m_visible_bg );
+ 	// blit the whole thing on the physical screen
+-	bitBlt(this, 0, 0, m_visible_bg );
++	update();
+ 	// start the timer
+-	ptimer->start( ld[level].timer , FALSE);
++	ptimer->setSingleShot( false );
++	ptimer->start( ld[level].timer );
+ 	// reset the foe
+ 	pfoe->reset();
+ 	// we're still free
+@@ -1312,12 +1317,12 @@ void BlackPenguinData::keyPressEvent( QK
+ 	if ( GameOver ) {
+ 			e->ignore();
+ 			
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor  ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor  ] );
+ 			pg->show( m_visible_bg ); // copy goodies to bg2
+ 			pbp->show( m_visible_bg ); // show the penguin
+ 			pfoe->show( m_visible_bg ); // copy the evil foe to bm2
+-			bitBlt(  m_visible_bg , 190, 140, m_gameover ); 
+-			bitBlt(this, 0, 0, m_visible_bg ); // blit to physical screen
++			QPainter(m_visible_bg).drawPixmap( 190, 140, *m_gameover ); 
++			update();
+ 			return;
+ 	}
+ 
+@@ -1337,13 +1342,12 @@ void BlackPenguinData::keyPressEvent( QK
+ 			}
+ 			countdown--;
+ 
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pg->show( m_visible_bg ); // copy goodies to bg2
+ 			pbp->show( m_visible_bg ); 
+ 			// make the foe jump on poor penguin
+ 			pfoe->show( m_visible_bg ); // copy the evil foe to bm2
+-			bitBlt(  m_visible_bg , 190, 140, m_gotcha ); 
+-			bitBlt(this, 0, 0, m_visible_bg ); // blit to physical screen
++			QPainter(m_visible_bg).drawPixmap( 190, 140, *m_gotcha ); 
+ 			return;
+ 	}
+ 
+@@ -1357,11 +1361,11 @@ void BlackPenguinData::keyPressEvent( QK
+ 				return;
+ 			}
+ 			countdown--;
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pg->show( m_visible_bg ); // copy goodies to bg2
+ 			pfoe->show( m_visible_bg ); // copy the evil foe to bm2
+-			bitBlt(  m_visible_bg , 190, 140, m_minusone ); 
+-			bitBlt(this, 0, 0, m_visible_bg ); // blit to physical screen
++			QPainter(m_visible_bg).drawPixmap( 190, 140, *m_minusone ); 
++			update();
+ 			return;
+ 	}
+ 
+@@ -1375,17 +1379,17 @@ void BlackPenguinData::keyPressEvent( QK
+ 				return;
+ 			}
+ 			countdown--;
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pg->show( m_visible_bg ); // copy goodies to bg2
+ 			pfoe->show( m_visible_bg ); // copy the evil foe to bm2
+ 			
+ 			if ( !ld[level].lastlevel )
+-			bitBlt(  m_visible_bg , 190, 140, m_nextlevel ); 
++				QPainter(m_visible_bg).drawPixmap( 190, 140, *m_nextlevel ); 
+ 			else 
+ 			{  
+- 				bitBlt(  m_visible_bg , 190, 140, m_youwin ); 
++				QPainter(m_visible_bg).drawPixmap( 190, 140, *m_youwin ); 
+ 			}
+-			bitBlt(this, 0, 0, m_visible_bg ); // blit to physical screen
++			update();
+ 			return;
+ 
+ 	}
+@@ -1399,13 +1403,13 @@ void BlackPenguinData::keyPressEvent( QK
+ 
+ 	if ((GameStarted)&&(e->key() ==	m_nKeySW))
+ 	{
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pbp->down(); // change state of penguin
+ 			pg->show( m_visible_bg ); // change & copy goodies to bg2
+ 			pbp->show( m_visible_bg ); // actually copy penguin, i.e.
+ 			pfoe->show( m_visible_bg ); // copy the evil foe to bm2
+ 			// change and copy penguin in two steps to ensure it's always on top
+-			bitBlt(this, 0, 0, m_visible_bg ); // blit to physical screen
++			update();
+ 			LCDcounter->display(credit);
+ //			break;
+ 	}
+@@ -1414,12 +1418,12 @@ void BlackPenguinData::keyPressEvent( QK
+ //			if (!GameStarted) break;
+ 	else if ((GameStarted)&&(e->key() == m_nKeyNE))
+ 	{
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pbp->up();
+ 			pg->show( m_visible_bg );
+ 			pbp->show( m_visible_bg );
+ 			pfoe->show( m_visible_bg );
+-			bitBlt(this, 0, 0, m_visible_bg );
++			update();
+ 			LCDcounter->display(credit);
+ //			break;
+ 	}
+@@ -1428,12 +1432,12 @@ void BlackPenguinData::keyPressEvent( QK
+ //			if (!GameStarted) break;
+ 	else if ((GameStarted)&&(e->key() == m_nKeySE))
+ 	{
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pbp->right();
+ 			pg->show( m_visible_bg );
+ 			pbp->show( m_visible_bg );
+ 			pfoe->show( m_visible_bg );
+-			bitBlt(this, 0, 0, m_visible_bg );
++			update();
+ 			LCDcounter->display(credit);
+ //			break;
+ 	}
+@@ -1442,12 +1446,12 @@ void BlackPenguinData::keyPressEvent( QK
+ //			if (!GameStarted) break;
+ 	else if ((GameStarted)&&(e->key() == m_nKeyNW))
+ 	{
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pbp->left();
+ 			pg->show( m_visible_bg );
+ 			pbp->show( m_visible_bg );
+ 			pfoe->show( m_visible_bg );
+-			bitBlt(this, 0, 0, m_visible_bg );
++			update();
+ 			LCDcounter->display(credit);
+ //			break;
+ 	}
+@@ -1458,11 +1462,11 @@ void BlackPenguinData::keyPressEvent( QK
+ 			// keys not relevant for the application are handled here, i.e.
+ 			// ignored. We use a dummy key event to handle all screen updates
+ 			// (incl. those triggered by the timer) in one function
+-			bitBlt(m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] );
++			QPainter(m_visible_bg).drawPixmap( 0, 0, *m_invisible_bg[ ld[level].backgroundcolor ] );
+ 			pg->show( m_visible_bg );
+ 			if (GameStarted)pbp->show( m_visible_bg );
+ 			pfoe->show( m_visible_bg );
+-			bitBlt(this, 0, 0, m_visible_bg );
++			update();
+ 			LCDcounter->display(credit); // ununcommented H.Priebs 16 Nov 99
+ 			e->ignore();
+ 			return;
+diff -upr blackpenguin-0.2-old/src/BlackPenguinData.h blackpenguin-0.2/src/BlackPenguinData.h
+--- blackpenguin-0.2-old/src/BlackPenguinData.h	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/BlackPenguinData.h	2014-08-16 15:35:08.043053101 -0700
+@@ -22,7 +22,7 @@
+ #ifndef BlackPenguinData_included
+ #define BlackPenguinData_included
+ 
+-#include <q3frame.h>
++#include <qframe.h>
+ #include <qlabel.h>
+ #include <qpushbutton.h>
+ #include <qlcdnumber.h>
+diff -upr blackpenguin-0.2-old/src/blackpenguin.pro blackpenguin-0.2/src/blackpenguin.pro
+--- blackpenguin-0.2-old/src/blackpenguin.pro	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/blackpenguin.pro	2014-08-16 14:41:10.222089491 -0700
+@@ -2,4 +2,4 @@ HEADERS = appwindow.h BlackPenguinData.h
+ SOURCES = main.cpp appwindow.cpp BlackPenguinData.cpp CRulesDialog.cpp CRulesDialogData.cpp CConfigDialog.cpp
+ TARGET = blackpenguin
+ #The following line was inserted by qt3to4
+-QT +=  qt3support 
++QT +=  widgets
+Only in blackpenguin-0.2/src: blackpenguin.pro.user
+diff -upr blackpenguin-0.2-old/src/CConfigDialog.cpp blackpenguin-0.2/src/CConfigDialog.cpp
+--- blackpenguin-0.2-old/src/CConfigDialog.cpp	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/CConfigDialog.cpp	2014-08-16 16:46:08.862005213 -0700
+@@ -22,6 +22,7 @@
+ #include <qnamespace.h>
+ //Added by qt3to4:
+ #include <QPaintEvent>
++#include <QPainter>
+ #include <QPixmap>
+ #include <QKeyEvent>
+ #include <QEvent>
+@@ -48,13 +49,13 @@ QString getKeycodeName(int nKeycode);
+ 
+ 
+ CConfigDialog::CConfigDialog(int nKeyNW, int nKeyNE, int nKeySW, int nKeySE, QWidget * pParent, const char * pszName)
+-	: QDialog(pParent, pszName, true),
++	: QDialog(pParent),
+ 	  m_fWaitingForKey(false)
+ {
+ 
+ // added by Holger Priebs ( 18 Nov 99 )
+ 
+-	setCaption("Configure Keys");
++	setWindowTitle("Configure Keys");
+ 
+ 	configpix = new QPixmap( configback_xpm );
+ 	button_nw = new QPixmap( nw_xpm );
+@@ -62,11 +63,12 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 	button_sw = new QPixmap( sw_xpm );
+ 	button_se = new QPixmap( se_xpm );
+ 
+-	QColorGroup normal( QColor( QRgb(0) ), QColor( QRgb(16296080) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(0) ), QColor( QRgb(16777215) ) );
+-	QColorGroup disabled( QColor( QRgb(0) ), QColor( QRgb(16769987) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(8421504) ), QColor( QRgb(16777215) ) );
+-	QColorGroup active( QColor( QRgb(0) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(0) ), QColor( QRgb(16777215) ) );
++	QPalette* palette = new QPalette();
++
++	palette->setColorGroup( QPalette::Active, QColor( QRgb(0) ), QColor( QRgb(16296080) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(0) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(0) ) );
++	palette->setColorGroup( QPalette::Disabled, QColor( QRgb(0) ), QColor( QRgb(16769987) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(8421504) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(16769987) ) );
++	palette->setColorGroup( QPalette::Inactive, QColor( QRgb(0) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(0) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(12632256) ) );
+ 
+-	QPalette palette( normal, disabled, active );
+ // --------
+ 
+ 	m_nActKeys[0] = nKeyNW;
+@@ -80,7 +82,7 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 
+ 	// - initialize the editlines
+ 	for (int i=0; i<4; i++)
+-	{	//m_pLineEdits[i]->setPalette( palette ); // Absturz!!
++	{	//m_pLineEdits[i]->setPalette( *palette ); // Absturz!!
+ 		m_pLineEdits[i] = new QLineEdit(this);
+ 		m_pLineEdits[i]->setEnabled(false);
+ 		m_pLineEdits[i]->setText(getKeycodeName(m_nActKeys[i]));
+@@ -90,10 +92,10 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 
+ // added by Holger Priebs (16 Nov 99) ----
+ 
+-	m_pLineEdits[0]->setPalette( palette );
+-	m_pLineEdits[1]->setPalette( palette );
+-	m_pLineEdits[2]->setPalette( palette );
+-	m_pLineEdits[3]->setPalette( palette );
++	m_pLineEdits[0]->setPalette( *palette );
++	m_pLineEdits[1]->setPalette( *palette );
++	m_pLineEdits[2]->setPalette( *palette );
++	m_pLineEdits[3]->setPalette( *palette );
+ // ---------------------------------------
+ 
+ 	m_pLineEdits[0]->setGeometry( DISTANCE, DISTANCE, LINEEDIT_WIDTH, LINEEDIT_HEIGHT );
+@@ -124,10 +126,10 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 
+ // added by Holger Priebs (16 Nov 99) ----
+ 
+-	m_pDirButtons[0]->setPalette( palette );
+-	m_pDirButtons[1]->setPalette( palette );
+-	m_pDirButtons[2]->setPalette( palette );
+-	m_pDirButtons[3]->setPalette( palette );
++	m_pDirButtons[0]->setPalette( *palette );
++	m_pDirButtons[1]->setPalette( *palette );
++	m_pDirButtons[2]->setPalette( *palette );
++	m_pDirButtons[3]->setPalette( *palette );
+ 
+ // ---------------------------------------
+ 
+@@ -138,10 +140,10 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 
+ // added by Holger Priebs ( 18 Nov 99 )
+ 
+-	m_pDirButtons[0]->setPixmap( *button_nw );
+-	m_pDirButtons[1]->setPixmap( *button_ne );
+-	m_pDirButtons[2]->setPixmap( *button_sw );
+-	m_pDirButtons[3]->setPixmap( *button_se );
++	m_pDirButtons[0]->setIcon( *button_nw );
++	m_pDirButtons[1]->setIcon( *button_ne );
++	m_pDirButtons[2]->setIcon( *button_sw );
++	m_pDirButtons[3]->setIcon( *button_se );
+ 
+ // ------------------------------------
+ 
+@@ -155,8 +157,8 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 	pButtonOK->setGeometry( DISTANCE + LINEEDIT_WIDTH + DISTANCE + DIRBUTTON_WIDTH - STDBUTTON_WIDTH, DISTANCE + LINEEDIT_HEIGHT + DISTANCE + LINEEDIT_HEIGHT + DISTANCE, STDBUTTON_WIDTH, STDBUTTON_HEIGHT);
+ 	pButtonCancel->setGeometry( DISTANCE + LINEEDIT_WIDTH + DISTANCE + DIRBUTTON_WIDTH + DISTANCE, DISTANCE + LINEEDIT_HEIGHT + DISTANCE + LINEEDIT_HEIGHT + DISTANCE, STDBUTTON_WIDTH, STDBUTTON_HEIGHT);
+ 
+-	pButtonOK->setPalette( palette );
+-	pButtonCancel->setPalette( palette );
++	pButtonOK->setPalette( *palette );
++	pButtonCancel->setPalette( *palette );
+ 
+ 	pButtonOK->show();
+ 	pButtonCancel->show();
+@@ -169,7 +171,7 @@ CConfigDialog::CConfigDialog(int nKeyNW,
+ 
+ void CConfigDialog::paintEvent( QPaintEvent * )
+ {
+-	bitBlt(this, 0, 0, configpix );
++	QPainter(this).drawPixmap( 0, 0, *configpix );
+ }
+ 
+ void CConfigDialog::pressedDirButton(int nDir)
+diff -upr blackpenguin-0.2-old/src/CRulesDialog.cpp blackpenguin-0.2/src/CRulesDialog.cpp
+--- blackpenguin-0.2-old/src/CRulesDialog.cpp	2014-08-16 10:10:39.694271909 -0700
++++ blackpenguin-0.2/src/CRulesDialog.cpp	2014-08-16 14:41:10.227089491 -0700
+@@ -31,7 +31,7 @@ CRulesDialog::CRulesDialog
+ 	:
+ 	Inherited( parent, name )
+ {
+-	setCaption( "Rules of the Game" );
++	setWindowTitle( "Rules of the Game" );
+ }
+ 
+ 
+diff -upr blackpenguin-0.2-old/src/CRulesDialogData.cpp blackpenguin-0.2/src/CRulesDialogData.cpp
+--- blackpenguin-0.2-old/src/CRulesDialogData.cpp	2014-08-16 10:10:39.695271909 -0700
++++ blackpenguin-0.2/src/CRulesDialogData.cpp	2014-08-16 16:19:05.240023461 -0700
+@@ -27,6 +27,7 @@
+ #include <qpushbutton.h>
+ #include <qpixmap.h>
+ //Added by qt3to4:
++#include <QPainter>
+ #include <QPaintEvent>
+ #include "howtoplay.xpm"
+ 
+@@ -36,26 +37,28 @@ CRulesDialogData::CRulesDialogData
+ 	const char* name
+ )
+ 	:
+-	Inherited( parent, name, TRUE, (Qt::WindowFlags) 53248 )
++	Inherited( parent, (Qt::WindowFlags) 53248 )
+ {
+ 	// ------- added by Holger Priebs 22 Nov 99 
+-	setCaption("Black Penguin - Rules of the Game");
++	setWindowTitle("Black Penguin - Rules of the Game");
+ 
+ 	QPushButton* dlgedit_PushButton_1;
+-	dlgedit_PushButton_1 = new QPushButton( this, "PushButton_1" );
++	dlgedit_PushButton_1 = new QPushButton( this );
++	dlgedit_PushButton_1->setObjectName( "PushButton_1" );
+ 	dlgedit_PushButton_1->setGeometry( 150, 260, 100, 30 );
+ 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
+ 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
+ 	{
+-		QColorGroup normal( QColor( QRgb(0) ), QColor( QRgb(16296080) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(0) ), QColor( QRgb(16777215) ) );
+-		QColorGroup disabled( QColor( QRgb(8421504) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(8421504) ), QColor( QRgb(12632256) ) );
+-		QColorGroup active( QColor( QRgb(0) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(0) ), QColor( QRgb(16777215) ) );
+-		QPalette palette( normal, disabled, active );
+-		dlgedit_PushButton_1->setPalette( palette );
++		QPalette* palette = new QPalette();
++
++		palette->setColorGroup( QPalette::Active, QColor( QRgb(0) ), QColor( QRgb(16296080) ), QColor( QRgb(16310472) ), QColor( QRgb(8412240) ), QColor( QRgb(16287864) ), QColor( QRgb(0) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(16296080) ));
++		palette->setColorGroup( QPalette::Disabled, QColor( QRgb(8421504) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(8421504) ), Qt::white, QColor( QRgb(12632256) ), QColor( QRgb(12632256) ));
++		palette->setColorGroup( QPalette::Inactive, QColor( QRgb(0) ), QColor( QRgb(12632256) ), QColor( QRgb(16777215) ), QColor( QRgb(8421504) ), QColor( QRgb(10789024) ), QColor( QRgb(0) ), Qt::white, QColor( QRgb(16777215) ), QColor( QRgb(12632256) ) );
++		dlgedit_PushButton_1->setPalette( *palette );
+ 	}
+ 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(accept()) );
+ 	dlgedit_PushButton_1->setText( "Dismiss" );
+-	dlgedit_PushButton_1->setAutoRepeat( FALSE );
++	dlgedit_PushButton_1->setAutoRepeat( false );
+ // need to figure out how the syntax looks for porting from Qt3 setAutoResize()	
+ //	dlgedit_PushButton_1->setFixedSize(QWidget::sizeHint());
+ 
+@@ -71,7 +74,7 @@ CRulesDialogData::CRulesDialogData
+ void CRulesDialogData::paintEvent( QPaintEvent * )
+ {
+ //	QPixmap* howpix;
+-	bitBlt(this, 0, 0, howpix );
++	QPainter(this).drawPixmap( 0, 0, *howpix );
+ }
+ 
+ CRulesDialogData::~CRulesDialogData()
+diff -upr blackpenguin-0.2-old/src/main.cpp blackpenguin-0.2/src/main.cpp
+--- blackpenguin-0.2-old/src/main.cpp	2014-08-16 10:10:39.694271909 -0700
++++ blackpenguin-0.2/src/main.cpp	2014-08-16 14:41:10.233089491 -0700
+@@ -29,8 +29,7 @@ int main( int argc, char **argv )
+ {    
+ 	QApplication a(argc, argv );
+ 	ApplicationWindow * mw = new ApplicationWindow();
+-	a.setMainWidget(mw);
+-	mw->setCaption( "Black Penguin 0.2 GPL" );
++	mw->setWindowTitle( "Black Penguin 0.2 GPL" );
+ 	mw->show();
+ 	return a.exec();
+ }

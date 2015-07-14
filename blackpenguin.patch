@@ -1,0 +1,250 @@
+diff -aur blackpenguin-0.2.orig/src/appwindow.cpp.alt blackpenguin-0.2/src/appwindow.cpp.alt
+--- blackpenguin-0.2.orig/src/appwindow.cpp.alt	1999-11-23 22:50:14.000000000 +0500
++++ blackpenguin-0.2/src/appwindow.cpp.alt	2012-05-21 17:17:19.962632028 +0600
+@@ -84,10 +84,10 @@
+ 	
+ 
+ 	(void)QWhatsThis::whatsThisButton( fileTools );
+-	QWhatsThis::add( newGame, newGameText, FALSE );
+-	QWhatsThis::add( rulesGame, rulesGameText, FALSE );
+-	QWhatsThis::add( loadGame, loadGameText, FALSE );
+-	QWhatsThis::add( saveGame, saveGameText, FALSE );
++	QWhatsThis::add( newGame, newGameText );
++	QWhatsThis::add( rulesGame, rulesGameText );
++	QWhatsThis::add( loadGame, loadGameText );
++	QWhatsThis::add( saveGame, saveGameText );
+ 
+ 	statusBar()->message( "Hit F2 to start a new Game", 5000 );
+ 
+diff -aur blackpenguin-0.2.orig/src/appwindow.h blackpenguin-0.2/src/appwindow.h
+--- blackpenguin-0.2.orig/src/appwindow.h	1999-11-23 22:50:14.000000000 +0500
++++ blackpenguin-0.2/src/appwindow.h	2012-05-21 17:17:19.965965362 +0600
+@@ -42,10 +42,6 @@
+ 	void reset();
+ 	void save();
+ 	void load();
+-// --------
+-// added by Olaf Hartig (9 Nov 1999)
+-	void config();
+-// --------
+ 
+ public slots:
+ 	void aboutp();
+diff -aur blackpenguin-0.2.orig/src/BlackPenguinData.cpp blackpenguin-0.2/src/BlackPenguinData.cpp
+--- blackpenguin-0.2.orig/src/BlackPenguinData.cpp	1999-11-23 22:50:14.000000000 +0500
++++ blackpenguin-0.2/src/BlackPenguinData.cpp	2012-05-21 17:17:19.965965362 +0600
+@@ -900,7 +900,7 @@
+ 	calculate_credits();
+ 
+ 	// dummy kbd event
+-	m_keydummy = new QKeyEvent(Event_KeyPress,0,0,0);
++	m_keydummy = new QKeyEvent(QEvent::KeyPress,0,0,0);
+ 
+ 	// usr has to start game first
+ 
+@@ -1167,7 +1167,7 @@
+ 	// first delete the background by overwriting it with the new one			
+ 	bitBlt( m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] ); 
+ 	// then put the goodies on all the places
+-	available = level_pattern[ld[level].pattern];
++	memcpy(available, level_pattern[ld[level].pattern], sizeof(level_pattern[ld[level].pattern]));
+ 	// put the little penguin on the top field
+ 	pbp->m_position = 10;
+ 	// blit the goodies on the 'visible' screen
+@@ -1222,7 +1222,7 @@
+ 	// first delete the background by overwriting it with the original			
+ 	bitBlt( m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor ] ); 
+ 	// then put the goodies on all the places
+-	available = level_pattern[ld[level].pattern];
++	memcpy(available, level_pattern[ld[level].pattern], sizeof(level_pattern[ld[level].pattern]));
+ 	// put the little penguin on the top field
+ 	pbp->m_position = 10;
+ 	// blit the goodies on the 'visible' screen
+@@ -1263,7 +1263,7 @@
+ 	// first delete the background by overwriting it with the original			
+ 	bitBlt( m_visible_bg, 0, 0, m_invisible_bg[ ld[level].backgroundcolor] ); 
+ 	// then put the goodies on all the places
+-	available = level_pattern[ld[level].pattern];
++	memcpy(available, level_pattern[ld[level].pattern], sizeof(level_pattern[ld[level].pattern]));
+ 	// put the little penguin on the top field
+ 	pbp->m_position = 10;
+ 	// blit the goodies on the 'visible' screen
+diff -aur blackpenguin-0.2.orig/src/CConfigDialog.cpp blackpenguin-0.2/src/CConfigDialog.cpp
+--- blackpenguin-0.2.orig/src/CConfigDialog.cpp	1999-11-23 22:50:14.000000000 +0500
++++ blackpenguin-0.2/src/CConfigDialog.cpp	2012-05-21 17:17:19.965965362 +0600
+@@ -225,84 +225,84 @@
+ {
+ 	switch(nKeycode)
+ 	{
+-		case Key_Home: return "Home"; break;
+-		case Key_End: return "End"; break;
+-		case Key_Left: return "Left"; break;
+-		case Key_Up: return "Up"; break;
+-		case Key_Right: return "Right"; break;
+-		case Key_Down: return "Down"; break;
+-		case Key_PageUp: return "PageUp"; break;
+-		case Key_PageDown: return "PageDown"; break;
++		case QEvent::Key_Home: return "Home"; break;
++		case QEvent::Key_End: return "End"; break;
++		case QEvent::Key_Left: return "Left"; break;
++		case QEvent::Key_Up: return "Up"; break;
++		case QEvent::Key_Right: return "Right"; break;
++		case QEvent::Key_Down: return "Down"; break;
++		case QEvent::Key_PageUp: return "PageUp"; break;
++		case QEvent::Key_PageDown: return "PageDown"; break;
+ 
+-		case Key_Space: return "Space"; break;
+-		case Key_Exclam: return "!"; break;
+-		case Key_QuoteDbl: return "\""; break;
+-		case Key_NumberSign: return "#"; break;
+-		case Key_Dollar: return "$"; break;
+-		case Key_Percent: return "%"; break;
+-		case Key_Ampersand: return "&"; break;
+-		case Key_Apostrophe: return "'"; break;
+-		case Key_ParenLeft: return "("; break;
+-		case Key_ParenRight: return ")"; break;
+-		case Key_Asterisk: return "*"; break;
+-		case Key_Plus: return "+"; break;
+-		case Key_Comma: return ","; break;
+-		case Key_Minus: return "-"; break;
+-		case Key_Period: return "."; break;
+-		case Key_Slash: return "/"; break;
+-		case Key_0: return "0"; break;
+-		case Key_1: return "1"; break;
+-		case Key_2: return "2"; break;
+-		case Key_3: return "3"; break;
+-		case Key_4: return "4"; break;
+-		case Key_5: return "5"; break;
+-		case Key_6: return "6"; break;
+-		case Key_7: return "7"; break;
+-		case Key_8: return "8"; break;
+-		case Key_9: return "9"; break;
+-		case Key_Colon: return ","; break;
+-		case Key_Semicolon: return ";"; break;
+-		case Key_Less: return "<"; break;
+-		case Key_Equal: return "="; break;
+-		case Key_Greater: return ">"; break;
+-		case Key_Question: return "?"; break;
+-		case Key_At: return ""; break;
+-		case Key_A: return "a"; break;
+-		case Key_B: return "b"; break;
+-		case Key_C: return "c"; break;
+-		case Key_D: return "d"; break;
+-		case Key_E: return "e"; break;
+-		case Key_F: return "f"; break;
+-		case Key_G: return "g"; break;
+-		case Key_H: return "h"; break;
+-		case Key_I: return "i"; break;
+-		case Key_J: return "j"; break;
+-		case Key_K: return "k"; break;
+-		case Key_L: return "l"; break;
+-		case Key_M: return "m"; break;
+-		case Key_N: return "n"; break;
+-		case Key_O: return "o"; break;
+-		case Key_P: return "p"; break;
+-		case Key_Q: return "q"; break;
+-		case Key_R: return "r"; break;
+-		case Key_S: return "s"; break;
+-		case Key_T: return "t"; break;
+-		case Key_U: return "u"; break;
+-		case Key_V: return "v"; break;
+-		case Key_W: return "w"; break;
+-		case Key_X: return "x"; break;
+-		case Key_Y: return "y"; break;
+-		case Key_Z: return "z"; break;
+-		case Key_BracketLeft: return "["; break;
+-		case Key_Backslash: return "\\"; break;
+-		case Key_BracketRight: return "]"; break;
+-		case Key_AsciiCircum: return "Circum"; break;
+-		case Key_Underscore: return "_"; break;
+-		case Key_QuoteLeft: return "`"; break;
+-		case Key_BraceLeft: return "{"; break;
+-		case Key_Bar: return "|"; break;
+-		case Key_BraceRight: return "}"; break;
+-		case Key_AsciiTilde: return "~"; break;
++		case QEvent::Key_Space: return "Space"; break;
++		case QEvent::Key_Exclam: return "!"; break;
++		case QEvent::Key_QuoteDbl: return "\""; break;
++		case QEvent::Key_NumberSign: return "#"; break;
++		case QEvent::Key_Dollar: return "$"; break;
++		case QEvent::Key_Percent: return "%"; break;
++		case QEvent::Key_Ampersand: return "&"; break;
++		case QEvent::Key_Apostrophe: return "'"; break;
++		case QEvent::Key_ParenLeft: return "("; break;
++		case QEvent::Key_ParenRight: return ")"; break;
++		case QEvent::Key_Asterisk: return "*"; break;
++		case QEvent::Key_Plus: return "+"; break;
++		case QEvent::Key_Comma: return ","; break;
++		case QEvent::Key_Minus: return "-"; break;
++		case QEvent::Key_Period: return "."; break;
++		case QEvent::Key_Slash: return "/"; break;
++		case QEvent::Key_0: return "0"; break;
++		case QEvent::Key_1: return "1"; break;
++		case QEvent::Key_2: return "2"; break;
++		case QEvent::Key_3: return "3"; break;
++		case QEvent::Key_4: return "4"; break;
++		case QEvent::Key_5: return "5"; break;
++		case QEvent::Key_6: return "6"; break;
++		case QEvent::Key_7: return "7"; break;
++		case QEvent::Key_8: return "8"; break;
++		case QEvent::Key_9: return "9"; break;
++		case QEvent::Key_Colon: return ","; break;
++		case QEvent::Key_Semicolon: return ";"; break;
++		case QEvent::Key_Less: return "<"; break;
++		case QEvent::Key_Equal: return "="; break;
++		case QEvent::Key_Greater: return ">"; break;
++		case QEvent::Key_Question: return "?"; break;
++		case QEvent::Key_At: return ""; break;
++		case QEvent::Key_A: return "a"; break;
++		case QEvent::Key_B: return "b"; break;
++		case QEvent::Key_C: return "c"; break;
++		case QEvent::Key_D: return "d"; break;
++		case QEvent::Key_E: return "e"; break;
++		case QEvent::Key_F: return "f"; break;
++		case QEvent::Key_G: return "g"; break;
++		case QEvent::Key_H: return "h"; break;
++		case QEvent::Key_I: return "i"; break;
++		case QEvent::Key_J: return "j"; break;
++		case QEvent::Key_K: return "k"; break;
++		case QEvent::Key_L: return "l"; break;
++		case QEvent::Key_M: return "m"; break;
++		case QEvent::Key_N: return "n"; break;
++		case QEvent::Key_O: return "o"; break;
++		case QEvent::Key_P: return "p"; break;
++		case QEvent::Key_Q: return "q"; break;
++		case QEvent::Key_R: return "r"; break;
++		case QEvent::Key_S: return "s"; break;
++		case QEvent::Key_T: return "t"; break;
++		case QEvent::Key_U: return "u"; break;
++		case QEvent::Key_V: return "v"; break;
++		case QEvent::Key_W: return "w"; break;
++		case QEvent::Key_X: return "x"; break;
++		case QEvent::Key_Y: return "y"; break;
++		case QEvent::Key_Z: return "z"; break;
++		case QEvent::Key_BracketLeft: return "["; break;
++		case QEvent::Key_Backslash: return "\\"; break;
++		case QEvent::Key_BracketRight: return "]"; break;
++		case QEvent::Key_AsciiCircum: return "Circum"; break;
++		case QEvent::Key_Underscore: return "_"; break;
++		case QEvent::Key_QuoteLeft: return "`"; break;
++		case QEvent::Key_BraceLeft: return "{"; break;
++		case QEvent::Key_Bar: return "|"; break;
++		case QEvent::Key_BraceRight: return "}"; break;
++		case QEvent::Key_AsciiTilde: return "~"; break;
+ 		default: return "unknown";
+ 	}
+ 	return "w";		
+diff -aur blackpenguin-0.2.orig/src/Makefile blackpenguin-0.2/src/Makefile
+--- blackpenguin-0.2.orig/src/Makefile	1999-11-23 22:50:14.000000000 +0500
++++ blackpenguin-0.2/src/Makefile	2012-05-21 17:19:11.472628234 +0600
+@@ -14,8 +14,8 @@
+ INCPATH	=	-I$(QTDIR)/include
+ LINK	=	g++
+ LFLAGS	=	
+-LIBS	=	-L$(QTDIR)/lib -lqt -L/usr/X11R6/lib -lX11 -lXext
+-MOC	=	moc
++LIBS	=	-L$(QTDIR)/lib -lqt -L/usr/lib -lX11 -lXext
++MOC	=	/opt/qt2/bin/moc
+ 
+ TAR	=	tar -cf
+ GZIP	=	gzip -9f

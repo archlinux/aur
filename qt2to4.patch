@@ -1,0 +1,1043 @@
+diff -ruN blackpenguin-0.2/src/apple_mask.xpm blackpenguin-qt2to4/src/apple_mask.xpm
+--- blackpenguin-0.2/src/apple_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/apple_mask.xpm	2014-08-04 09:41:00.890983314 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * apple_mask_xpm[] = {
++static const char * apple_mask_xpm[] = {
+ "42 55 8 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/apple.xpm blackpenguin-qt2to4/src/apple.xpm
+--- blackpenguin-0.2/src/apple.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/apple.xpm	2014-08-04 09:41:00.904983314 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * apple_xpm[] = {
++static const char * apple_xpm[] = {
+ "42 55 65 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/appwindow.cpp blackpenguin-qt2to4/src/appwindow.cpp
+--- blackpenguin-0.2/src/appwindow.cpp	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/appwindow.cpp	2014-08-04 09:41:23.806983623 +0200
+@@ -21,6 +21,9 @@
+ 
+ #include "appwindow.h"
+ #include <qmessagebox.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <Q3PopupMenu>
+ #include "CRulesDialog.h"
+ #include "newgame.xpm"
+ #include "rules.xpm"
+@@ -38,7 +41,7 @@
+ const char* saveGameText = "Save a game. Only one game can be saved at a time; any previously saved game will be overwritten.";
+ 
+ ApplicationWindow::ApplicationWindow()
+-    : QMainWindow( 0, "Black Penguin Main Window" )
++    : Q3MainWindow( 0, "Black Penguin Main Window" )
+ {
+ 	e = new BlackPenguinData( this, "blackpenguin" );
+ 	e->setFocus();
+@@ -46,7 +49,7 @@
+ 	e->setUpdatesEnabled(FALSE);
+ 	setCentralWidget( e );
+ 
+-	fileTools = new QToolBar( this, "file operations" );
++	fileTools = new Q3ToolBar( this, "file operations" );
+ 
+ 	newGameIcon = QPixmap( newgame_xpm );
+ 	rulesIcon = QPixmap( rules_xpm );
+@@ -70,35 +73,35 @@
+ 						this, SLOT(save()),
+ 						fileTools, "save game" );
+ 
+-	QPopupMenu* file = new QPopupMenu();
+-	QPopupMenu* help = new QPopupMenu();
++	Q3PopupMenu* file = new Q3PopupMenu();
++	Q3PopupMenu* help = new Q3PopupMenu();
+ 	menuBar()->insertItem( "&File", file );
+ 	menuBar()->insertItem( "&Help", help );
+ 
+-	file->insertItem( newGameIcon, "New Game", this, SLOT(reset()), Key_F2 );
++	file->insertItem( newGameIcon, "New Game", this, SLOT(reset()), Qt::Key_F2 );
+ 	file->insertSeparator();
+-	file->insertItem( loadIcon, "Load Game", this, SLOT(load()), Key_F3 );
+-	file->insertItem( saveIcon, "Save Game", this, SLOT(save()), Key_F4 );
++	file->insertItem( loadIcon, "Load Game", this, SLOT(load()), Qt::Key_F3 );
++	file->insertItem( saveIcon, "Save Game", this, SLOT(save()), Qt::Key_F4 );
+ 	file->insertSeparator();
+ // --------
+ // added by Olaf Hartig (9 Nov 1999) changed by Holger Priebs (16 Nov 1999)
+-	file->insertItem( configIcon, "Configure Keys", this, SLOT(config()), CTRL+Key_C );
++	file->insertItem( configIcon, "Configure Keys", this, SLOT(config()), Qt::CTRL+Qt::Key_C );
+ 	file->insertSeparator();
+ // --------
+-	file->insertItem( "Quit", this, SLOT(quit()), CTRL+Key_Q );
++	file->insertItem( "Quit", this, SLOT(quit()), Qt::CTRL+Qt::Key_Q );
+ 
+-	help->insertItem( rulesIcon, "Rules of the Game", this, SLOT( rules() ), Key_F1 );
++	help->insertItem( rulesIcon, "Rules of the Game", this, SLOT( rules() ), Qt::Key_F1 );
+ 	help->insertSeparator();
+-	help->insertItem( "About &Black Penguin", this, SLOT( aboutp() ), Key_F5 );
+-	help->insertItem( "No &Warranty", this, SLOT( aboutw() ), Key_F6 );
+-	help->insertItem( "&Redistribution", this, SLOT( aboutc() ), Key_F7 );
++	help->insertItem( "About &Black Penguin", this, SLOT( aboutp() ), Qt::Key_F5 );
++	help->insertItem( "No &Warranty", this, SLOT( aboutw() ), Qt::Key_F6 );
++	help->insertItem( "&Redistribution", this, SLOT( aboutc() ), Qt::Key_F7 );
+ 	
+ 
+-	(void)QWhatsThis::whatsThisButton( fileTools );
+-	QWhatsThis::add( newGame, newGameText, FALSE );
+-	QWhatsThis::add( rulesGame, rulesGameText, FALSE );
+-	QWhatsThis::add( loadGame, loadGameText, FALSE );
+-	QWhatsThis::add( saveGame, saveGameText, FALSE );
++	(void)Q3WhatsThis::whatsThisButton( fileTools );
++	Q3WhatsThis::add( newGame, newGameText, FALSE );
++	Q3WhatsThis::add( rulesGame, rulesGameText, FALSE );
++	Q3WhatsThis::add( loadGame, loadGameText, FALSE );
++	Q3WhatsThis::add( saveGame, saveGameText, FALSE );
+ 
+ 	statusBar()->message( "Hit F2 to start a new Game", 5000 );
+ 
+@@ -152,7 +155,7 @@
+ 	QMessageBox::message( "About Black Penguin", "Black Penguin 0.2b\nCopyright (C) \
+ 1999 Holger Priebs <pengu@priebs.de>\n\n\
+ Thanks to:\n
+-Olaf Hartig <O.Hartig@keh-berlin.de> - Key Configuration\n\n
++Olaf Hartig <O.Hartig@keh-berlin.de> - Qt::Key Configuration\n\n
+ Black Penguin comes with ABSOLUTE NO WARRANTY: \n\
+ for details hit F6.\n\
+ This is free software, and you are welcome to redistribute it\n\
+diff -ruN blackpenguin-0.2/src/appwindow.cpp.alt blackpenguin-qt2to4/src/appwindow.cpp.alt
+--- blackpenguin-0.2/src/appwindow.cpp.alt	2014-08-03 07:02:21.004996736 +0200
++++ blackpenguin-qt2to4/src/appwindow.cpp.alt	2014-08-03 08:32:28.835069783 +0200
+@@ -21,6 +21,9 @@
+ 
+ #include "appwindow.h"
+ #include <qmessagebox.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <Q3PopupMenu>
+ #include "CRulesDialog.h"
+ #include "newgame.xpm"
+ #include "rules.xpm"
+@@ -33,7 +36,7 @@
+ const char* saveGameText = "Save a game. Only one game can be saved at a time; any previously saved game will be overwritten.";
+ 
+ ApplicationWindow::ApplicationWindow()
+-    : QMainWindow( 0, "Black Penguin Main Window" )
++    : Q3MainWindow( 0, "Black Penguin Main Window" )
+ {
+ 	e = new BlackPenguinData( this, "blackpenguin" );
+ 	e->setFocus();
+@@ -41,7 +44,7 @@
+ 	e->setUpdatesEnabled(FALSE);
+ 	setCentralWidget( e );
+ 
+-	fileTools = new QToolBar( this, "file operations" );
++	fileTools = new Q3ToolBar( this, "file operations" );
+ 
+ 	newGameIcon = QPixmap( newgame_xpm );
+ 	rulesIcon = QPixmap( rules_xpm );
+@@ -64,30 +67,30 @@
+ 						this, SLOT(save()),
+ 						fileTools, "save game" );
+ 
+-	QPopupMenu* file = new QPopupMenu();
+-	QPopupMenu* help = new QPopupMenu();
++	Q3PopupMenu* file = new Q3PopupMenu();
++	Q3PopupMenu* help = new Q3PopupMenu();
+ 	menuBar()->insertItem( "&File", file );
+ 	menuBar()->insertItem( "&Help", help );
+ 
+-	file->insertItem( newGameIcon, "New Game", this, SLOT(reset()), Key_F2 );
++	file->insertItem( newGameIcon, "New Game", this, SLOT(reset()), Qt::Key_F2 );
+ 	file->insertSeparator();
+-	file->insertItem( loadIcon, "Load Game", this, SLOT(load()), Key_F3 );
+-	file->insertItem( saveIcon, "Save Game", this, SLOT(save()), Key_F4 );
++	file->insertItem( loadIcon, "Load Game", this, SLOT(load()), Qt::Key_F3 );
++	file->insertItem( saveIcon, "Save Game", this, SLOT(save()), Qt::Key_F4 );
+ 	file->insertSeparator();
+-	file->insertItem( "Quit", this, SLOT(quit()), CTRL+Key_Q );
++	file->insertItem( "Quit", this, SLOT(quit()), Qt::CTRL+Qt::Key_C  );
+ 
+-	help->insertItem( rulesIcon, "Rules of the Game", this, SLOT( rules() ), Key_F1 );
++	help->insertItem( rulesIcon, "Rules of the Game", this, SLOT( rules() ), Qt::Key_F1 );
+ 	help->insertSeparator();
+-	help->insertItem( "About &Black Penguin", this, SLOT( aboutp() ), Key_F5 );
+-	help->insertItem( "No &Warranty", this, SLOT( aboutw() ), Key_F6 );
+-	help->insertItem( "&Redistribution", this, SLOT( aboutc() ), Key_F7 );
++	help->insertItem( "About &Black Penguin", this, SLOT( aboutp() ), Qt::Key_F5 );
++	help->insertItem( "No &Warranty", this, SLOT( aboutw() ), Qt::Key_F6 );
++	help->insertItem( "&Redistribution", this, SLOT( aboutc() ), Qt::Key_F7 );
+ 	
+ 
+-	(void)QWhatsThis::whatsThisButton( fileTools );
+-	QWhatsThis::add( newGame, newGameText );
+-	QWhatsThis::add( rulesGame, rulesGameText );
+-	QWhatsThis::add( loadGame, loadGameText );
+-	QWhatsThis::add( saveGame, saveGameText );
++	(void)Q3WhatsThis::whatsThisButton( fileTools );
++	Q3WhatsThis::add( newGame, newGameText );
++	Q3WhatsThis::add( rulesGame, rulesGameText );
++	Q3WhatsThis::add( loadGame, loadGameText );
++	Q3WhatsThis::add( saveGame, saveGameText );
+ 
+ 	statusBar()->message( "Hit F2 to start a new Game", 5000 );
+ 
+diff -ruN blackpenguin-0.2/src/appwindow.h blackpenguin-qt2to4/src/appwindow.h
+--- blackpenguin-0.2/src/appwindow.h	2014-08-03 07:02:21.005996736 +0200
++++ blackpenguin-qt2to4/src/appwindow.h	2014-08-04 09:41:32.961983747 +0200
+@@ -19,19 +19,19 @@
+ //    along with this program; if not, write to the Free Software
+ //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+-#include <qmainwindow.h>
+-#include <qtoolbar.h>
++#include <q3mainwindow.h>
++#include <q3toolbar.h>
+ #include <qtoolbutton.h>
+-#include <qpopupmenu.h>
++#include <q3popupmenu.h>
+ #include <qmenubar.h>
+-#include <qkeycode.h>
++#include <qnamespace.h>
+ #include <qpixmap.h>
+ #include <qstatusbar.h>
+-#include <qwhatsthis.h>
++#include <q3whatsthis.h>
+ 
+ #include "BlackPenguinData.h"
+ 
+-class ApplicationWindow: public QMainWindow
++class ApplicationWindow: public Q3MainWindow
+ {
+     Q_OBJECT
+ public:
+@@ -52,8 +52,8 @@
+ 
+ private:
+ 	BlackPenguinData* e;	
+-	QToolBar *fileTools;
+-	QPopupMenu *controls;
++	Q3ToolBar *fileTools;
++	Q3PopupMenu *controls;
+ 	
+ // Pixmaps for toolbar
+ 	QPixmap newGameIcon;
+diff -ruN blackpenguin-0.2/src/background2.xpm blackpenguin-qt2to4/src/background2.xpm
+--- blackpenguin-0.2/src/background2.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/background2.xpm	2014-08-04 09:41:00.938983315 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * background2_xpm[] = {
++static const char * background2_xpm[] = {
+ "665 390 64 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/background3.xpm blackpenguin-qt2to4/src/background3.xpm
+--- blackpenguin-0.2/src/background3.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/background3.xpm	2014-08-04 09:41:00.973983315 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * background3_xpm[] = {
++static const char * background3_xpm[] = {
+ "665 390 61 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #514459658617",
+diff -ruN blackpenguin-0.2/src/background4.xpm blackpenguin-qt2to4/src/background4.xpm
+--- blackpenguin-0.2/src/background4.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/background4.xpm	2014-08-04 09:41:01.002983315 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * background4_xpm[] = {
++static const char * background4_xpm[] = {
+ "680 391 66 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #514459658617",
+diff -ruN blackpenguin-0.2/src/background.xpm blackpenguin-qt2to4/src/background.xpm
+--- blackpenguin-0.2/src/background.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/background.xpm	2014-08-04 09:41:01.043983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * background_xpm[] = {
++static const char * background_xpm[] = {
+ "665 390 63 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #514459658617",
+diff -ruN blackpenguin-0.2/src/BlackPenguinData.cpp blackpenguin-qt2to4/src/BlackPenguinData.cpp
+--- blackpenguin-0.2/src/BlackPenguinData.cpp	2014-08-03 07:02:21.007996736 +0200
++++ blackpenguin-qt2to4/src/BlackPenguinData.cpp	2014-08-11 14:27:44.773471967 +0200
+@@ -21,10 +21,16 @@
+ 
+ 
+ #include <qfile.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <Q3Frame>
++#include <QLabel>
++#include <QKeyEvent>
++#include <QEvent>
+ #include <stdlib.h>
+ #include <qpixmap.h>
+ #include <qbitmap.h>
+-#include <qkeycode.h>
++#include <qnamespace.h>
+ #include <qtimer.h>
+ #include <qmenubar.h>
+ #include "apple.xpm"
+@@ -888,12 +894,13 @@
+ 	:
+ 	Inherited( parent, name, 0 )
+ {
++	setAttribute(Qt::WA_PaintOutsidePaintEvent, true);
+ 	// load a previously stored keyboard assignment if available, else use defaults
+ 	if (!loadkeys()) {
+-		m_nKeyNW = Key_Left;
+-		m_nKeyNE = Key_Up;	
+-		m_nKeySW = Key_Down;
+-		m_nKeySE = Key_Right;
++		m_nKeyNW = Qt::Key_Left;
++		m_nKeyNE = Qt::Key_Up;	
++		m_nKeySW = Qt::Key_Down;
++		m_nKeySE = Qt::Key_Right;
+ 	}
+ 
+ 	// calculate the values for max credits of each level so we need not hard code the values
+@@ -912,7 +919,7 @@
+ 
+ 	// handle keyboard events
+ 
+-	setFocusPolicy( StrongFocus );	
++	setFocusPolicy( Qt::StrongFocus );	
+ 
+ 	// pointers to the penguin's and the goodies' classes and to the foe
+ 
+@@ -945,7 +952,7 @@
+ 
+ 	QPixmap* creditpixmap = new QPixmap( pingucoinsmall_xpm );
+ 	QLabel * creditlabel = new QLabel(this);
+-	creditlabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
++	creditlabel->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
+ 	creditlabel->setGeometry( 505, 20, 30, 30 );
+ 	creditlabel->setPalette( palette_forall );
+ 	creditlabel->setPixmap( *creditpixmap );
+@@ -967,7 +974,7 @@
+ 
+ 	QPixmap* creditpixmap2 = new QPixmap( lives_xpm );
+ 	QLabel * creditlabel2 = new QLabel(this);
+-	creditlabel2->setFrameStyle( QFrame::Panel | QFrame::Sunken );
++	creditlabel2->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
+ 	creditlabel2->setGeometry( 505, 65, 30, 30 );
+ 	creditlabel2->setPalette( palette_forall );
+ 	creditlabel2->setPixmap( *creditpixmap2 );
+@@ -989,7 +996,7 @@
+ 
+ 	QPixmap* creditpixmap3 = new QPixmap( levelicon_xpm );
+ 	QLabel * creditlabel3 = new QLabel(this);
+-	creditlabel3->setFrameStyle( QFrame::Panel | QFrame::Sunken );
++	creditlabel3->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
+ 	creditlabel3->setGeometry( 505, 110, 30, 30 );
+ 	creditlabel3->setPalette( palette_forall );
+ 	creditlabel3->setPixmap( *creditpixmap3 );
+@@ -1077,7 +1084,7 @@
+ 	strcpy( filename, getenv("HOME"));
+ 	strcat( filename, "/.blackpenguinkeys");
+ 	QFile f(filename);
+-	if ( f.open( IO_WriteOnly ) ) {
++	if ( f.open( QIODevice::WriteOnly ) ) {
+ 		// writeBlock() expects char*. Cast looks ugly, but it works
+ 		f.writeBlock((char*)&m_nKeyNW, sizeof(int));
+ 		f.writeBlock((char*)&m_nKeySW, sizeof(int));
+@@ -1095,7 +1102,7 @@
+ 	strcpy( filename, getenv("HOME"));
+ 	strcat( filename, "/.blackpenguinkeys");
+ 	QFile f(filename);
+-	if ( f.open( IO_ReadOnly ) ) {
++	if ( f.open( QIODevice::ReadOnly ) ) {
+ 		// writeBlock() expects char*. Cast looks ugly, but it works
+ 		f.readBlock((char*)&m_nKeyNW, sizeof(int));
+ 		f.readBlock((char*)&m_nKeySW, sizeof(int));
+@@ -1114,7 +1121,7 @@
+ 	strcat( filename, "/.blackpenguin");
+ 	QFile f(filename);
+ 	if (GameOver) return 1; // you cannot save a game that's over
+-	if ( f.open( IO_WriteOnly ) ) {
++	if ( f.open( QIODevice::WriteOnly ) ) {
+ 		// writeBlock() expects char*. Cast looks ugly, but it works
+ 		f.writeBlock((char*)&credit, sizeof(int));
+ 		f.writeBlock((char*)&lives, sizeof(int));
+@@ -1131,7 +1138,7 @@
+ 	strcpy( filename, getenv("HOME"));
+ 	strcat( filename, "/.blackpenguin");
+ 	QFile f(filename);
+-	if ( f.open( IO_ReadOnly ) ) {
++	if ( f.open( QIODevice::ReadOnly ) ) {
+ 		// readBlock() expects char*. Cast looks ugly, but it works
+ 		f.readBlock((char*)&credit, sizeof(int));
+ 		f.readBlock((char*)&lives, sizeof(int));
+diff -ruN blackpenguin-0.2/src/BlackPenguinData.h blackpenguin-qt2to4/src/BlackPenguinData.h
+--- blackpenguin-0.2/src/BlackPenguinData.h	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/BlackPenguinData.h	2014-08-04 09:41:32.965983747 +0200
+@@ -22,11 +22,15 @@
+ #ifndef BlackPenguinData_included
+ #define BlackPenguinData_included
+ 
+-#include <qframe.h>
++#include <q3frame.h>
+ #include <qlabel.h>
+-#include <qpushbt.h>
+-#include <qlcdnum.h>
++#include <qpushbutton.h>
++#include <qlcdnumber.h>
+ #include <qevent.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <QKeyEvent>
++#include <QPaintEvent>
+ 
+ #define maxbackgrounds 4
+ #define maxlevels 16
+diff -ruN blackpenguin-0.2/src/blackpenguin.pro blackpenguin-qt2to4/src/blackpenguin.pro
+--- blackpenguin-0.2/src/blackpenguin.pro	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/blackpenguin.pro	2014-08-03 07:03:13.200997441 +0200
+@@ -1,3 +1,5 @@
+ HEADERS = appwindow.h BlackPenguinData.h CRulesDialog.h CRulesDialogData.h CConfigDialog.h
+ SOURCES = main.cpp appwindow.cpp BlackPenguinData.cpp CRulesDialog.cpp CRulesDialogData.cpp CConfigDialog.cpp
+ TARGET = blackpenguin
++#The following line was inserted by qt3to4
++QT +=  qt3support 
+diff -ruN blackpenguin-0.2/src/bomb_mask.xpm blackpenguin-qt2to4/src/bomb_mask.xpm
+--- blackpenguin-0.2/src/bomb_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/bomb_mask.xpm	2014-08-04 09:41:01.052983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * bomb_mask_xpm[] = {
++static const char * bomb_mask_xpm[] = {
+ "42 55 2 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/bomb.xpm blackpenguin-qt2to4/src/bomb.xpm
+--- blackpenguin-0.2/src/bomb.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/bomb.xpm	2014-08-04 09:41:01.055983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * bomb_xpm[] = {
++static const char * bomb_xpm[] = {
+ "42 55 56 1",
+ " 	c #FFFF00000000",
+ ".	c #492449244924",
+diff -ruN blackpenguin-0.2/src/CConfigDialog.cpp blackpenguin-qt2to4/src/CConfigDialog.cpp
+--- blackpenguin-0.2/src/CConfigDialog.cpp	2014-08-03 07:02:21.009996736 +0200
++++ blackpenguin-qt2to4/src/CConfigDialog.cpp	2014-08-04 09:41:23.871983624 +0200
+@@ -17,9 +17,14 @@
+ //
+ 
+ #include "CConfigDialog.h"
+-#include <qpushbt.h>
++#include <qpushbutton.h>
+ #include <qlineedit.h>
+-#include <qkeycode.h>
++#include <qnamespace.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QPixmap>
++#include <QKeyEvent>
++#include <QEvent>
+ 
+ // added by Holger Priebs ( 18 Nov 99 )
+ #include "configback.xpm"
+@@ -198,8 +203,8 @@
+ 	if (m_fWaitingForKey)
+ 	{
+ 		int nKey = e->key();
+-		if ( ((nKey>=Key_Home)&&(nKey<=Key_PageDown)) ||
+-		     ((nKey>=Key_Space)&&(nKey<=Key_AsciiTilde)) )
++		if ( ((nKey>=Qt::Key_Home)&&(nKey<=Qt::Key_PageDown)) ||
++		     ((nKey>=Qt::Key_Space)&&(nKey<=Qt::Key_AsciiTilde)) )
+ 		{
+ 			//checking for double occurence:
+ 			bool fFirstOccurence = true;
+@@ -225,84 +230,83 @@
+ {
+ 	switch(nKeycode)
+ 	{
+-		case QEvent::Key_Home: return "Home"; break;
+-		case QEvent::Key_End: return "End"; break;
+-		case QEvent::Key_Left: return "Left"; break;
+-		case QEvent::Key_Up: return "Up"; break;
+-		case QEvent::Key_Right: return "Right"; break;
+-		case QEvent::Key_Down: return "Down"; break;
+-		case QEvent::Key_PageUp: return "PageUp"; break;
+-		case QEvent::Key_PageDown: return "PageDown"; break;
+-
+-		case QEvent::Key_Space: return "Space"; break;
+-		case QEvent::Key_Exclam: return "!"; break;
+-		case QEvent::Key_QuoteDbl: return "\""; break;
+-		case QEvent::Key_NumberSign: return "#"; break;
+-		case QEvent::Key_Dollar: return "$"; break;
+-		case QEvent::Key_Percent: return "%"; break;
+-		case QEvent::Key_Ampersand: return "&"; break;
+-		case QEvent::Key_Apostrophe: return "'"; break;
+-		case QEvent::Key_ParenLeft: return "("; break;
+-		case QEvent::Key_ParenRight: return ")"; break;
+-		case QEvent::Key_Asterisk: return "*"; break;
+-		case QEvent::Key_Plus: return "+"; break;
+-		case QEvent::Key_Comma: return ","; break;
+-		case QEvent::Key_Minus: return "-"; break;
+-		case QEvent::Key_Period: return "."; break;
+-		case QEvent::Key_Slash: return "/"; break;
+-		case QEvent::Key_0: return "0"; break;
+-		case QEvent::Key_1: return "1"; break;
+-		case QEvent::Key_2: return "2"; break;
+-		case QEvent::Key_3: return "3"; break;
+-		case QEvent::Key_4: return "4"; break;
+-		case QEvent::Key_5: return "5"; break;
+-		case QEvent::Key_6: return "6"; break;
+-		case QEvent::Key_7: return "7"; break;
+-		case QEvent::Key_8: return "8"; break;
+-		case QEvent::Key_9: return "9"; break;
+-		case QEvent::Key_Colon: return ","; break;
+-		case QEvent::Key_Semicolon: return ";"; break;
+-		case QEvent::Key_Less: return "<"; break;
+-		case QEvent::Key_Equal: return "="; break;
+-		case QEvent::Key_Greater: return ">"; break;
+-		case QEvent::Key_Question: return "?"; break;
+-		case QEvent::Key_At: return ""; break;
+-		case QEvent::Key_A: return "a"; break;
+-		case QEvent::Key_B: return "b"; break;
+-		case QEvent::Key_C: return "c"; break;
+-		case QEvent::Key_D: return "d"; break;
+-		case QEvent::Key_E: return "e"; break;
+-		case QEvent::Key_F: return "f"; break;
+-		case QEvent::Key_G: return "g"; break;
+-		case QEvent::Key_H: return "h"; break;
+-		case QEvent::Key_I: return "i"; break;
+-		case QEvent::Key_J: return "j"; break;
+-		case QEvent::Key_K: return "k"; break;
+-		case QEvent::Key_L: return "l"; break;
+-		case QEvent::Key_M: return "m"; break;
+-		case QEvent::Key_N: return "n"; break;
+-		case QEvent::Key_O: return "o"; break;
+-		case QEvent::Key_P: return "p"; break;
+-		case QEvent::Key_Q: return "q"; break;
+-		case QEvent::Key_R: return "r"; break;
+-		case QEvent::Key_S: return "s"; break;
+-		case QEvent::Key_T: return "t"; break;
+-		case QEvent::Key_U: return "u"; break;
+-		case QEvent::Key_V: return "v"; break;
+-		case QEvent::Key_W: return "w"; break;
+-		case QEvent::Key_X: return "x"; break;
+-		case QEvent::Key_Y: return "y"; break;
+-		case QEvent::Key_Z: return "z"; break;
+-		case QEvent::Key_BracketLeft: return "["; break;
+-		case QEvent::Key_Backslash: return "\\"; break;
+-		case QEvent::Key_BracketRight: return "]"; break;
+-		case QEvent::Key_AsciiCircum: return "Circum"; break;
+-		case QEvent::Key_Underscore: return "_"; break;
+-		case QEvent::Key_QuoteLeft: return "`"; break;
+-		case QEvent::Key_BraceLeft: return "{"; break;
+-		case QEvent::Key_Bar: return "|"; break;
+-		case QEvent::Key_BraceRight: return "}"; break;
+-		case QEvent::Key_AsciiTilde: return "~"; break;
++		case Qt::Key_Home: return "Home"; break;
++		case Qt::Key_End: return "End"; break;
++		case Qt::Key_Left: return "Left"; break;
++		case Qt::Key_Up: return "Up"; break;
++		case Qt::Key_Right: return "Right"; break;
++		case Qt::Key_Down: return "Down"; break;
++		case Qt::Key_PageUp: return "PageUp"; break;
++		case Qt::Key_PageDown: return "PageDown"; break;
++		case Qt::Key_Space: return "Space"; break;
++		case Qt::Key_Exclam: return "!"; break;
++		case Qt::Key_QuoteDbl: return "\""; break;
++		case Qt::Key_NumberSign: return "#"; break;
++		case Qt::Key_Dollar: return "$"; break;
++		case Qt::Key_Percent: return "%"; break;
++		case Qt::Key_Ampersand: return "&"; break;
++		case Qt::Key_Apostrophe: return "'"; break;
++		case Qt::Key_ParenLeft: return "("; break;
++		case Qt::Key_ParenRight: return ")"; break;
++		case Qt::Key_Asterisk: return "*"; break;
++		case Qt::Key_Plus: return "+"; break;
++		case Qt::Key_Comma: return ","; break;
++		case Qt::Key_Minus: return "-"; break;
++		case Qt::Key_Period: return "."; break;
++		case Qt::Key_Slash: return "/"; break;
++		case Qt::Key_0: return "0"; break;
++		case Qt::Key_1: return "1"; break;
++		case Qt::Key_2: return "2"; break;
++		case Qt::Key_3: return "3"; break;
++		case Qt::Key_4: return "4"; break;
++		case Qt::Key_5: return "5"; break;
++		case Qt::Key_6: return "6"; break;
++		case Qt::Key_7: return "7"; break;
++		case Qt::Key_8: return "8"; break;
++		case Qt::Key_9: return "9"; break;
++		case Qt::Key_Colon: return ","; break;
++		case Qt::Key_Semicolon: return ";"; break;
++		case Qt::Key_Less: return "<"; break;
++		case Qt::Key_Equal: return "="; break;
++		case Qt::Key_Greater: return ">"; break;
++		case Qt::Key_Question: return "?"; break;
++		case Qt::Key_At: return ""; break;
++		case Qt::Key_A: return "a"; break;
++		case Qt::Key_B: return "b"; break;
++		case Qt::Key_C: return "c"; break;
++		case Qt::Key_D: return "d"; break;
++		case Qt::Key_E: return "e"; break;
++		case Qt::Key_F: return "f"; break;
++		case Qt::Key_G: return "g"; break;
++		case Qt::Key_H: return "h"; break;
++		case Qt::Key_I: return "i"; break;
++		case Qt::Key_J: return "j"; break;
++		case Qt::Key_K: return "k"; break;
++		case Qt::Key_L: return "l"; break;
++		case Qt::Key_M: return "m"; break;
++		case Qt::Key_N: return "n"; break;
++		case Qt::Key_O: return "o"; break;
++		case Qt::Key_P: return "p"; break;
++		case Qt::Key_Q: return "q"; break;
++		case Qt::Key_R: return "r"; break;
++		case Qt::Key_S: return "s"; break;
++		case Qt::Key_T: return "t"; break;
++		case Qt::Key_U: return "u"; break;
++		case Qt::Key_V: return "v"; break;
++		case Qt::Key_W: return "w"; break;
++		case Qt::Key_X: return "x"; break;
++		case Qt::Key_Y: return "y"; break;
++		case Qt::Key_Z: return "z"; break;
++		case Qt::Key_BracketLeft: return "["; break;
++		case Qt::Key_Backslash: return "\\"; break;
++		case Qt::Key_BracketRight: return "]"; break;
++		case Qt::Key_AsciiCircum: return "Circum"; break;
++		case Qt::Key_Underscore: return "_"; break;
++		case Qt::Key_QuoteLeft: return "`"; break;
++		case Qt::Key_BraceLeft: return "{"; break;
++		case Qt::Key_Bar: return "|"; break;
++		case Qt::Key_BraceRight: return "}"; break;
++		case Qt::Key_AsciiTilde: return "~"; break;
+ 		default: return "unknown";
+ 	}
+ 	return "w";		
+diff -ruN blackpenguin-0.2/src/CConfigDialog.h blackpenguin-qt2to4/src/CConfigDialog.h
+--- blackpenguin-0.2/src/CConfigDialog.h	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/CConfigDialog.h	2014-08-04 09:41:32.968983747 +0200
+@@ -22,6 +22,9 @@
+ #include <qdialog.h>
+ #include <qevent.h>
+ #include <qpixmap.h>
++//Added by qt3to4:
++#include <QPaintEvent>
++#include <QKeyEvent>
+ 
+ class QLineEdit;
+ class QPushButton;
+diff -ruN blackpenguin-0.2/src/chessblue.xpm blackpenguin-qt2to4/src/chessblue.xpm
+--- blackpenguin-0.2/src/chessblue.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/chessblue.xpm	2014-08-04 09:41:01.057983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * chessblue_xpm[] = {
++static const char * chessblue_xpm[] = {
+ "42 55 61 1",
+ " 	c #00000000FFFF",
+ ".	c #49245144E79D",
+diff -ruN blackpenguin-0.2/src/chessred_mask.xpm blackpenguin-qt2to4/src/chessred_mask.xpm
+--- blackpenguin-0.2/src/chessred_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/chessred_mask.xpm	2014-08-04 09:41:01.064983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * chessred_mask_xpm[] = {
++static const char * chessred_mask_xpm[] = {
+ "42 55 2 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/chessred.xpm blackpenguin-qt2to4/src/chessred.xpm
+--- blackpenguin-0.2/src/chessred.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/chessred.xpm	2014-08-04 09:41:01.067983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * chessred_xpm[] = {
++static const char * chessred_xpm[] = {
+ "42 55 49 1",
+ " 	c #0000FFFF0000",
+ ".	c #FFFF00000000",
+diff -ruN blackpenguin-0.2/src/choco.xpm blackpenguin-qt2to4/src/choco.xpm
+--- blackpenguin-0.2/src/choco.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/choco.xpm	2014-08-04 09:41:01.069983316 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * choco_xpm[] = {
++static const char * choco_xpm[] = {
+ "42 55 61 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #AEBA82076185",
+diff -ruN blackpenguin-0.2/src/configback.xpm blackpenguin-qt2to4/src/configback.xpm
+--- blackpenguin-0.2/src/configback.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/configback.xpm	2014-08-04 09:41:01.091983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char *configback_xpm[] = {
++static const char *configback_xpm[] = {
+ /* width height num_colors chars_per_pixel */
+ "   198   134       53            1",
+ /* colors */
+diff -ruN blackpenguin-0.2/src/config.xpm blackpenguin-qt2to4/src/config.xpm
+--- blackpenguin-0.2/src/config.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/config.xpm	2014-08-04 09:41:01.092983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * config_xpm[] = {
++static const char * config_xpm[] = {
+ "26 26 5 1",
+ " 	c #9658A289FFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/CRulesDialogData.cpp blackpenguin-qt2to4/src/CRulesDialogData.cpp
+--- blackpenguin-0.2/src/CRulesDialogData.cpp	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/CRulesDialogData.cpp	2014-08-12 18:17:16.333668950 +0200
+@@ -15,7 +15,7 @@
+ //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ //    GNU General Public License for more details.
+ //
+-//    You should have received a copy of the GNU General Public License
++//    You should have received a copy of the GNU General Public Licenseđ
+ //    along with this program; if not, write to the Free Software
+ //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+@@ -24,8 +24,10 @@
+ #define Inherited QDialog
+ 
+ #include <qlabel.h>
+-#include <qpushbt.h>
++#include <qpushbutton.h>
+ #include <qpixmap.h>
++//Added by qt3to4:
++#include <QPaintEvent>
+ #include "howtoplay.xpm"
+ 
+ CRulesDialogData::CRulesDialogData
+@@ -34,7 +36,7 @@
+ 	const char* name
+ )
+ 	:
+-	Inherited( parent, name, TRUE, 53248 )
++	Inherited( parent, name, TRUE, (Qt::WindowFlags) 53248 )
+ {
+ 	// ------- added by Holger Priebs 22 Nov 99 
+ 	setCaption("Black Penguin - Rules of the Game");
+@@ -54,7 +56,8 @@
+ 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(accept()) );
+ 	dlgedit_PushButton_1->setText( "Dismiss" );
+ 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
+-	dlgedit_PushButton_1->setAutoResize( FALSE );
++// need to figure out how the syntax looks for porting from Qt3 setAutoResize()	
++//	dlgedit_PushButton_1->setFixedSize(QWidget::sizeHint());
+ 
+ 	howpix = new QPixmap( howtoplay_xpm );
+ 
+diff -ruN blackpenguin-0.2/src/CRulesDialogData.h blackpenguin-qt2to4/src/CRulesDialogData.h
+--- blackpenguin-0.2/src/CRulesDialogData.h	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/CRulesDialogData.h	2014-08-04 09:41:32.970983747 +0200
+@@ -23,6 +23,9 @@
+ #define CRulesDialogData_included
+ 
+ #include <qdialog.h>
++//Added by qt3to4:
++#include <QPixmap>
++#include <QPaintEvent>
+ 
+ class CRulesDialogData : public QDialog
+ {
+diff -ruN blackpenguin-0.2/src/gameover.xpm blackpenguin-qt2to4/src/gameover.xpm
+--- blackpenguin-0.2/src/gameover.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/gameover.xpm	2014-08-04 09:41:01.127983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * gameover_xpm[] = {
++static const char * gameover_xpm[] = {
+ "285 136 66 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #79E78A28FFFF",
+diff -ruN blackpenguin-0.2/src/glas2.xpm blackpenguin-qt2to4/src/glas2.xpm
+--- blackpenguin-0.2/src/glas2.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/glas2.xpm	2014-08-04 09:41:01.132983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * glas2_xpm[] = {
++static const char * glas2_xpm[] = {
+ "42 55 60 1",
+ " 	c #DF7DFBEEFFFF",
+ ".	c #D75CF3CEFFFF",
+diff -ruN blackpenguin-0.2/src/glas_mask.xpm blackpenguin-qt2to4/src/glas_mask.xpm
+--- blackpenguin-0.2/src/glas_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/glas_mask.xpm	2014-08-04 09:41:01.133983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * glas_mask_xpm[] = {
++static const char * glas_mask_xpm[] = {
+ "42 55 2 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/glas.xpm blackpenguin-qt2to4/src/glas.xpm
+--- blackpenguin-0.2/src/glas.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/glas.xpm	2014-08-04 09:41:01.136983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * glas_xpm[] = {
++static const char * glas_xpm[] = {
+ "42 55 59 1",
+ " 	c #FFFF0000FFFF",
+ ".	c #61858617A699",
+diff -ruN blackpenguin-0.2/src/gotcha_mask.xpm blackpenguin-qt2to4/src/gotcha_mask.xpm
+--- blackpenguin-0.2/src/gotcha_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/gotcha_mask.xpm	2014-08-04 09:41:01.149983317 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * gotcha_mask_xpm[] = {
++static const char * gotcha_mask_xpm[] = {
+ "285 136 4 1",
+ " 	c #000000000000",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/gotcha.xpm blackpenguin-qt2to4/src/gotcha.xpm
+--- blackpenguin-0.2/src/gotcha.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/gotcha.xpm	2014-08-04 09:41:01.196983318 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * gotcha_xpm[] = {
++static const char * gotcha_xpm[] = {
+ "285 136 62 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #79E78A28FFFF",
+diff -ruN blackpenguin-0.2/src/howtoplay.xpm blackpenguin-qt2to4/src/howtoplay.xpm
+--- blackpenguin-0.2/src/howtoplay.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/howtoplay.xpm	2014-08-04 09:41:01.238983319 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * howtoplay_xpm[] = {
++static const char * howtoplay_xpm[] = {
+ "403 303 63 1",
+ " 	c #A699B2CAFFFF",
+ ".	c #9E79AAAAFFFF",
+diff -ruN blackpenguin-0.2/src/levelicon.xpm blackpenguin-qt2to4/src/levelicon.xpm
+--- blackpenguin-0.2/src/levelicon.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/levelicon.xpm	2014-08-04 09:41:01.261983319 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char *levelicon_xpm[] = {
++static const char *levelicon_xpm[] = {
+ /* width height num_colors chars_per_pixel */
+ "    23    25      237            2",
+ /* colors */
+diff -ruN blackpenguin-0.2/src/lives.xpm blackpenguin-qt2to4/src/lives.xpm
+--- blackpenguin-0.2/src/lives.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/lives.xpm	2014-08-04 09:41:01.302983319 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char *lives_xpm[] = {
++static const char *lives_xpm[] = {
+ /* width height num_colors chars_per_pixel */
+ "    23    25      189            2",
+ /* colors */
+diff -ruN blackpenguin-0.2/src/load.xpm blackpenguin-qt2to4/src/load.xpm
+--- blackpenguin-0.2/src/load.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/load.xpm	2014-08-04 09:41:01.303983319 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * load_xpm[] = {
++static const char * load_xpm[] = {
+ "26 26 7 1",
+ " 	c #9658A289FFFF",
+ ".	c #FFFF00000000",
+diff -ruN blackpenguin-0.2/src/mask_pengu.xpm blackpenguin-qt2to4/src/mask_pengu.xpm
+--- blackpenguin-0.2/src/mask_pengu.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/mask_pengu.xpm	2014-08-04 09:41:01.311983320 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * mask_pengu_xpm[] = {
++static const char * mask_pengu_xpm[] = {
+ "44 77 3 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/minusone.xpm blackpenguin-qt2to4/src/minusone.xpm
+--- blackpenguin-0.2/src/minusone.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/minusone.xpm	2014-08-04 09:41:01.327983320 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * minusone_xpm[] = {
++static const char * minusone_xpm[] = {
+ "285 136 64 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #79E78A28FFFF",
+diff -ruN blackpenguin-0.2/src/newgame.xpm blackpenguin-qt2to4/src/newgame.xpm
+--- blackpenguin-0.2/src/newgame.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/newgame.xpm	2014-08-04 09:41:01.328983320 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * newgame_xpm[] = {
++static const char * newgame_xpm[] = {
+ "26 26 16 1",
+ " 	c #41039248FFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/ne.xpm blackpenguin-qt2to4/src/ne.xpm
+--- blackpenguin-0.2/src/ne.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/ne.xpm	2014-08-04 09:41:01.330983320 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * ne_xpm[] = {
++static const char * ne_xpm[] = {
+ "21 21 3 1",
+ " 	c #9658AAAAFFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/nextlevel.xpm blackpenguin-qt2to4/src/nextlevel.xpm
+--- blackpenguin-0.2/src/nextlevel.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/nextlevel.xpm	2014-08-04 09:41:01.372983320 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * nextlevel_xpm[] = {
++static const char * nextlevel_xpm[] = {
+ "285 136 63 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #79E78A28FFFF",
+diff -ruN blackpenguin-0.2/src/nw.xpm blackpenguin-qt2to4/src/nw.xpm
+--- blackpenguin-0.2/src/nw.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/nw.xpm	2014-08-04 09:41:01.373983320 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * nw_xpm[] = {
++static const char * nw_xpm[] = {
+ "21 21 3 1",
+ " 	c #9658AAAAFFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/orange_mask.xpm blackpenguin-qt2to4/src/orange_mask.xpm
+--- blackpenguin-0.2/src/orange_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/orange_mask.xpm	2014-08-04 09:41:01.382983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * orange_mask_xpm[] = {
++static const char * orange_mask_xpm[] = {
+ "42 55 2 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/orange.xpm blackpenguin-qt2to4/src/orange.xpm
+--- blackpenguin-0.2/src/orange.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/orange.xpm	2014-08-04 09:41:01.385983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * orange_xpm[] = {
++static const char * orange_xpm[] = {
+ "42 55 62 1",
+ " 	c #FFFF00000000",
+ ".	c #514438E31040",
+diff -ruN blackpenguin-0.2/src/pengu.xpm blackpenguin-qt2to4/src/pengu.xpm
+--- blackpenguin-0.2/src/pengu.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/pengu.xpm	2014-08-04 09:41:01.393983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * pengu[] = {
++static const char * pengu[] = {
+ "44 77 64 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #618561859E79",
+diff -ruN blackpenguin-0.2/src/pingucoin_mask.xpm blackpenguin-qt2to4/src/pingucoin_mask.xpm
+--- blackpenguin-0.2/src/pingucoin_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/pingucoin_mask.xpm	2014-08-04 09:41:01.395983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * pingucoin_mask_xpm[] = {
++static const char * pingucoin_mask_xpm[] = {
+ "42 55 2 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/pingucoinsmall.xpm blackpenguin-qt2to4/src/pingucoinsmall.xpm
+--- blackpenguin-0.2/src/pingucoinsmall.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/pingucoinsmall.xpm	2014-08-04 09:41:01.404983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char *pingucoinsmall_xpm[] = {
++static const char *pingucoinsmall_xpm[] = {
+ /* width height num_colors chars_per_pixel */
+ "    23    25      141            2",
+ /* colors */
+diff -ruN blackpenguin-0.2/src/pingucoin.xpm blackpenguin-qt2to4/src/pingucoin.xpm
+--- blackpenguin-0.2/src/pingucoin.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/pingucoin.xpm	2014-08-04 09:41:01.407983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * pingucoin_xpm[] = {
++static const char * pingucoin_xpm[] = {
+ "42 55 60 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #D75CC30BAEBA",
+diff -ruN blackpenguin-0.2/src/rules.xpm blackpenguin-qt2to4/src/rules.xpm
+--- blackpenguin-0.2/src/rules.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/rules.xpm	2014-08-04 09:41:01.409983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * rules_xpm[] = {
++static const char * rules_xpm[] = {
+ "26 26 46 1",
+ " 	c #AEBAC30BFFFF",
+ ".	c #B6DAC30BFFFF",
+diff -ruN blackpenguin-0.2/src/save.xpm blackpenguin-qt2to4/src/save.xpm
+--- blackpenguin-0.2/src/save.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/save.xpm	2014-08-04 09:41:01.413983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * save_xpm[] = {
++static const char * save_xpm[] = {
+ "26 26 7 1",
+ " 	c #9658A289FFFF",
+ ".	c #FFFF00000000",
+diff -ruN blackpenguin-0.2/src/se.xpm blackpenguin-qt2to4/src/se.xpm
+--- blackpenguin-0.2/src/se.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/se.xpm	2014-08-04 09:41:01.416983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * se_xpm[] = {
++static const char * se_xpm[] = {
+ "21 21 3 1",
+ " 	c #9658AAAAFFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/sw.xpm blackpenguin-qt2to4/src/sw.xpm
+--- blackpenguin-0.2/src/sw.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/sw.xpm	2014-08-04 09:41:01.418983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * sw_xpm[] = {
++static const char * sw_xpm[] = {
+ "21 21 3 1",
+ " 	c #9658AAAAFFFF",
+ ".	c #FFFFFFFFFFFF",
+diff -ruN blackpenguin-0.2/src/window_mask.xpm blackpenguin-qt2to4/src/window_mask.xpm
+--- blackpenguin-0.2/src/window_mask.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/window_mask.xpm	2014-08-04 09:41:01.436983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * window_mask_xpm[] = {
++static const char * window_mask_xpm[] = {
+ "48 67 6 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #000000000000",
+diff -ruN blackpenguin-0.2/src/window.xpm blackpenguin-qt2to4/src/window.xpm
+--- blackpenguin-0.2/src/window.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/window.xpm	2014-08-04 09:41:01.443983321 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * window_xpm[] = {
++static const char * window_xpm[] = {
+ "48 67 63 1",
+ " 	c #FFFFFFFFFFFF",
+ ".	c #A69975D65965",
+diff -ruN blackpenguin-0.2/src/youwin.xpm blackpenguin-qt2to4/src/youwin.xpm
+--- blackpenguin-0.2/src/youwin.xpm	1999-11-23 18:50:14.000000000 +0100
++++ blackpenguin-qt2to4/src/youwin.xpm	2014-08-04 09:41:01.469983322 +0200
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * youwin_xpm[] = {
++static const char * youwin_xpm[] = {
+ "285 136 68 1",
+ " 	c #FFFFFBEEFFFF",
+ ".	c #79E78A28FFFF",
