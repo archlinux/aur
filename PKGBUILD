@@ -2,12 +2,12 @@
 
 pkgname=claws-contacts-git
 pkgver=0.r99.g5c40728
-pkgrel=1
-pkgdesc="A GTK+ based contacts manager / address book - git checkout"
+pkgrel=2
+pkgdesc='A GTK+ based contacts manager / address book - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="http://www.claws-mail.org/"
-depends=('gtk2')
+url='http://www.claws-mail.org/'
+depends=('gtk2' 'dbus-glib')
 makedepends=('git')
 conflicts=('claws-contacts' 'claws-contacts-cvs')
 provides=('claws-contacts' 'claws-contacts-cvs')

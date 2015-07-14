@@ -1,7 +1,7 @@
 pkgbase = claws-contacts-git
 	pkgdesc = A GTK+ based contacts manager / address book - git checkout
 	pkgver = 0.r99.g5c40728
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.claws-mail.org/
 	install = claws-contacts.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = claws-contacts-git
 	license = GPL3
 	makedepends = git
 	depends = gtk2
+	depends = dbus-glib
 	provides = claws-contacts
 	provides = claws-contacts-cvs
 	conflicts = claws-contacts
