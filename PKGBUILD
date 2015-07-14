@@ -6,7 +6,7 @@
 _pkgname=cjdns
 pkgname=$_pkgname-git
 pkgver=0.3.3382
-pkgrel=1
+pkgrel=2
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
 license=('GPL3')
@@ -16,9 +16,10 @@ depends=('glibc')
 makedepends=('git' 'nodejs' 'python2')
 optdepends=(
   'cjdnsify: allows you to run some programs bound to your cjdns address'
-  'libnacl: speed up the build process by skipping the need to compile cnacl'
   'cjdns-git-sysvinit: support for sysvinit (rc.d)'
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url#branch=crashey")
 sha512sums=('SKIP')
 
