@@ -2,7 +2,7 @@
 # Contributor: Ner0
 
 pkgname=chromium-pepper-flash-dev
-pkgver=18.0.0.160
+pkgver=18.0.0.205
 pkgrel=1
 pkgdesc="Google Chrome's Pepper Flash plugin for Chromium (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,6 @@ sha1sums_x86_64=("${_rpm_sha1sum_x86_64}")
 install=chromium-pepper-flash-dev.install
 noextract=("google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm"
            "google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm")
-
 
 pkgver() {
   if [ "${CARCH}" = "i686" ]; then
