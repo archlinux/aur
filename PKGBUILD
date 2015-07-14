@@ -1,7 +1,7 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot-tts
-pkgver=1.3.0_664_g6db171e
+pkgver=1.3.0_690_ge614a7b
 pkgrel=1
 pkgdesc="A high quality voice chat program. (snapshot build + text to speech)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 source=("http://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha256sums=('3ab66ad2d4cd49edc3cb493c8adef1d994807aa0f15cfc8c7162e2dc9330adf8')
+sha256sums=('c833ed48c00c44a34363876705c5e33b25e146510af158f01fd44866499b6151')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
