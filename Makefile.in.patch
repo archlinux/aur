@@ -1,0 +1,15 @@
+--- ../apertium-mk-bg-0.2.0/Makefile.in	2010-10-26 13:44:30.000000000 +0200
++++ apertium-mk-bg-0.2.0/Makefile.in	2012-02-09 08:49:07.935637762 +0100
+@@ -515,9 +515,9 @@
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_mk_bgmodesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_mk_bgmodesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX2).t1x $(apertium_mk_bgdir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_mk_bgmodesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_mk_bgmodesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX2).t1x $(DESTDIR)$(apertium_mk_bgdir)
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

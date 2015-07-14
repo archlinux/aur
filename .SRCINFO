@@ -1,0 +1,21 @@
+pkgbase = apertium-mk-bg
+	pkgdesc = Apertium language data for the Macedonian-Bulgarian translator.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = lttoolbox>=3.2
+	depends = apertium>=3.2
+	depends = vislcg3>=0.9.7.6010
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-mk-bg-0.2.0.tar.gz
+	source = Makefile.am.patch
+	source = Makefile.in.patch
+	md5sums = a0f12e989097c67eb3d3a96e06a0fa38
+	md5sums = b66ee552f3e54e767c052cd36828e667
+	md5sums = cbe4d1dd0f37737b3aa98fdaa3770763
+
+pkgname = apertium-mk-bg
+

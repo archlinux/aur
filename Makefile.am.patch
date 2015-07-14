@@ -1,0 +1,27 @@
+--- ../apertium-mk-bg-0.2.0/Makefile.am	2010-10-26 13:44:25.000000000 +0200
++++ apertium-mk-bg-0.2.0/Makefile.am	2012-02-09 08:49:22.128894204 +0100
+@@ -77,7 +77,7 @@
+ clean-dicts:
+ 	touch $(BASENAME).$(LANG1).dix $(BASENAME).$(LANG2).dix $(BASENAME).$(PREFIX1).dix
+ 	rm $(BASENAME).$(LANG1).dix
+-	
++
+ apertium_mk_bgmodesdir=$(prefix)/share/apertium/modes/
+ apertium_mk_bgdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+ apertium_mk_bg_DATA=$(PREFIX1).automorf.bin $(PREFIX2).automorf.bin \
+@@ -95,11 +95,11 @@
+ 		    $(PREFIX1).autopgen.bin \
+ 		    $(PREFIX1).mode \
+ 		    $(PREFIX2).mode
+-		  
++
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_mk_bgmodesdir)
+-	$(INSTALL_DATA) $(PREFIX2).mode $(apertium_mk_bgmodesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX2).t1x $(apertium_mk_bgdir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_mk_bgmodesdir)
++	$(INSTALL_DATA) $(PREFIX2).mode $(DESTDIR)$(apertium_mk_bgmodesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX2).t1x $(DESTDIR)$(apertium_mk_bgdir)
+ 
+ CLEANFILES = -r $(TARGETS_COMMON) 
