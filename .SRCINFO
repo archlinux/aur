@@ -1,0 +1,15 @@
+pkgbase = mxml-static
+	pkgdesc = A small XML parsing library (static library)
+	pkgver = 2.7
+	pkgrel = 2
+	url = http://www.minixml.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = mxml
+	options = staticlibs
+	source = http://www.msweet.org/files/project3/mxml-2.7.tar.gz
+	md5sums = 76f2ae49bf0f5745d5cb5d9507774dc9
+
+pkgname = mxml-static
+
