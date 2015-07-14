@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$pkgname"
   python ./waf configure --prefix=/usr
-  LANG='en_US.UTF-8' python ./waf build
+  python ./waf build
 }
 
 package() {
