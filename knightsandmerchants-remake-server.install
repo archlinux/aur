@@ -1,0 +1,22 @@
+post_install() {
+	echo ""
+	echo "==> You will find logs and configs in /usr/share/knightsandmerchants-remake-server/"
+	echo "==> There's also a html log file, just point your browser to the server directory."
+	echo "==> To start simply run:"
+	echo "==> "
+	echo "==> kam-server"
+	echo "==> "
+	echo "==> To change server settings, edit the .ini file in the same directory."
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	# Remove all files
+	rm -rf /usr/share/knightsandmerchants-remake-server/
+}
+
+# vim:set ts=2 sw=2 et:

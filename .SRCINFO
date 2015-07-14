@@ -1,0 +1,16 @@
+pkgbase = knightsandmerchants-remake-server
+	pkgdesc = Dedicated server for the Knights And Merchants Remake (strategy game)
+	pkgver = r6720
+	pkgrel = 1
+	url = http://www.kamremake.com
+	install = knightsandmerchants-remake-server.install
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source = knightsandmerchants-remake-server-r6720.zip::http://www.kamremake.com/files/kam_remake_server_r6720-zip
+	source = kam-server.sh
+	sha256sums = 4912d3d097fc2741f42be8879cccbfdfc09a1bf83e7b6552c11e6460ff6a9b87
+	sha256sums = bf8d39e962b37089a94840d918c496796d589227158ed5f479f37d718e8cb130
+
+pkgname = knightsandmerchants-remake-server
+
