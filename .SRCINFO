@@ -1,0 +1,23 @@
+pkgbase = markmywords-git
+	pkgdesc = A minimal markdown editor. It is currently under heavy development.
+	pkgver = d6f19f4
+	pkgrel = 1
+	url = https://github.com/voldyman/MarkMyWords
+	install = gschemas.install
+	arch = i686
+	arch = x86_64
+	license = None
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = cmake
+	depends = gtksourceview3
+	depends = glib2
+	depends = gtk3
+	depends = webkit2gtk
+	provides = markmywords
+	conflicts = markmywords
+	source = git://github.com/voldyman/MarkMyWords.git
+	md5sums = SKIP
+
+pkgname = markmywords-git
+
