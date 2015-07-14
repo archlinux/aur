@@ -1,0 +1,16 @@
+pkgbase = gladstone-drizztbsd-git
+	pkgdesc = educational ITU-T G729 compliant codec with a GStreamer plugin - Git Version (drizztbsd fork)
+	pkgver = 20111104
+	pkgrel = 1
+	url = http://code.google.com/p/gladstone
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = MIT
+	depends = gstreamer0.10
+	options = !libtool
+	source = T-REC-G.729-200701-I!!SOFT-ZST-E.zip::http://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-G.729-200701-I!!SOFT-ZST-E
+	sha256sums = 9555544399d5594b61e9d6e01bd3f3faab013815741536f64f590f6fa5099a2a
+
+pkgname = gladstone-drizztbsd-git
+
