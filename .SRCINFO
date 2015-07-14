@@ -1,0 +1,14 @@
+pkgbase = python2-nuxeo-drive
+	pkgdesc = Desktop synchronization of local folders with remote Nuxeo workspaces
+	pkgver = 2.0.0626
+	pkgrel = 1
+	url = https://github.com/nuxeo/nuxeo-drive
+	arch = any
+	license = GPLv2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/nuxeo/nuxeo-drive/archive/release-2.0.0626.tar.gz
+	md5sums = e07715d709bd97ebad49d87ab04e76dd
+
+pkgname = python2-nuxeo-drive
+
