@@ -1,0 +1,15 @@
+pkgbase = stardict-sma-nob
+	pkgdesc = Åarjelsaemien-daaroen digibaakoeh, a StarDict dictionary for Southern Sámi to Norwegian Bokmål and Swedish
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://giellatekno.uit.no/words/dicts/index.eng.html
+	arch = i686,
+	arch = x86_64
+	license = unknown
+	optdepends = stardict: a Gtk2 applicaton for looking up words in stardict-sma-nob
+	optdepends = qstardict: a Qt4 applicaton for looking up words in stardict-sma-nob
+	source = http://www.divvun.no/static_files/smanob-stardict.dictionary.zip
+	md5sums = 91781ae459ad82b95371a30d0f447075
+
+pkgname = stardict-sma-nob
+
