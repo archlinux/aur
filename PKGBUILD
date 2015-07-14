@@ -1,9 +1,9 @@
 # Maintainer: Severen Redwood <severen.redwood@gmail.com>
 
-pkgname=confmacs
-pkgver=0.2.0
+pkgname='confmacs'
+pkgver='0.2.0'
 pkgrel=1
-pkgdesc="An Emacs configuration switcher."
+pkgdesc='An Emacs configuration switcher.'
 arch=('any')
 license=('GPL3')
 makedepends=('ruby')
@@ -14,7 +14,9 @@ md5sums=('a7574ba12d9e342feda23cfeb9187ce5')
 noextract=("$pkgname-$pkgver.gem")
 
 package() {
-  cd "$srcdir"
+  cd $srcdir
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver.gem"
 }
+
+# vim:set ts=2 sw=2 et:
