@@ -1,0 +1,19 @@
+diff -Naur xpaint-2.9.10.2.orig/Makefile.am xpaint-2.9.10.2.new/Makefile.am
+--- xpaint-2.9.10.2.orig/Makefile.am	2014-04-24 21:04:21.854869178 +0200
++++ xpaint-2.9.10.2.new/Makefile.am	2014-04-24 21:05:22.407819283 +0200
+@@ -3,7 +3,7 @@
+ ## Local Configuration arguments
+ BINDIR = $(prefix)/bin
+ SHAREDIR = $(prefix)/share/xpaint
+-XAPPLOADDIR = /etc/X11/app-defaults
++XAPPLOADDIR = $(prefix)/share/X11/app-defaults
+ 
+ ## Printing system defaults
+ PRINT_COMMAND = lpr
+@@ -146,4 +146,4 @@
+ 	cd util ; make clean
+ 
+ distclean-local:
+-	cd util ; make distclean
+\ No newline at end of file
++	cd util ; make distclean
