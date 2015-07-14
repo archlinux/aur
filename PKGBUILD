@@ -14,7 +14,7 @@ md5sums=('a7574ba12d9e342feda23cfeb9187ce5')
 noextract=("$pkgname-$pkgver.gem")
 
 package() {
-  cd $srcdir
+  cd "$srcdir"
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
   gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver.gem"
 }
