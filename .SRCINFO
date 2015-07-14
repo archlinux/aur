@@ -1,15 +1,20 @@
 pkgbase = pesign
 	pkgdesc = Tools for manipulating signed PE-COFF binaries
 	pkgver = 0.110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhinstaller/pesign
+	install = PKGBUILD
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = efivar
-	source = pesign-0.110.tar.gz::https://github.com/rhinstaller/pesign/archive/0.110.tar.gz
+	depends = nss
+	depends = libutil-linux
+	source = https://github.com/rhinstaller/pesign/releases/download/0.110/pesign-0.110.tar.bz2
+	source = http://pkgs.fedoraproject.org/lookaside/pkgs/pesign/rh-test-certs.tar.bz2/328db7cb27847cb610b7cf8f9c470455/rh-test-certs.tar.bz2
 	source = efivar-const-correct.patch
-	sha256sums = 836abeb4404b4b3a616deb478f8bf4fed2fce4f12be1a00b6fab238d150ed2ed
+	sha256sums = a03499ffa181fea6086e1966476eccc05e3e014761ac300de1da27a44dba2281
+	sha256sums = 8932ff61a95a25def2551e5774b0fc16c126ed9ae3198ad5468e5a4d1b4f03b0
 	sha256sums = c57523fbab55140ff629b320947f60319fb6f0083cc5ceba2712f61034c97c76
 
 pkgname = pesign
