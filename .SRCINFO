@@ -1,0 +1,17 @@
+pkgbase = vim-extradite-git
+	pkgdesc = A git commit browser. Latest git version
+	pkgver = 20110302
+	pkgrel = 1
+	url = http://int3.github.com/vim-extradite/
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:public-domain
+	makedepends = git
+	depends = vim
+	depends = vim-fugitive
+	source = license.txt
+	md5sums = 6c8165541cda0defa2adc6ad03bfea6e
+
+pkgname = vim-extradite-git
+
