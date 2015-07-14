@@ -1,0 +1,17 @@
+pkgbase = dbg2olc-bin
+	pkgdesc = Efficient Assembly of Large Genomes Using the Compressed Overlap Graph
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://sites.google.com/site/dbg2olc/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = catdoc
+	optdepends = blasr
+	optdepends = pbdagcon
+	optdepends = python2
+	source = dbg2olc-bin-1.0.zip::https://sites.google.com/site/dbg2olc/home/Programs.zip
+	md5sums = bbb67d927f8fe78d6c96f3ada168291c
+
+pkgname = dbg2olc-bin
+
