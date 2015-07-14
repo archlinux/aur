@@ -1,0 +1,18 @@
+pkgbase = vim-detectindent-git
+	pkgdesc = Vim script for automatically detecting indent setting
+	pkgver = 0.r20.c6f6e7b
+	pkgrel = 1
+	url = http://github.com/ciaranm/detectindent
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	conflicts = vim-detectindent
+	source = detectindent::git+https://github.com/ciaranm/detectindent.git
+	source = license.txt
+	md5sums = SKIP
+	md5sums = b779e18be6ed77facc770691c967b8f8
+
+pkgname = vim-detectindent-git
+
