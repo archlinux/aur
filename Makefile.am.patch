@@ -1,0 +1,15 @@
+--- apertium-eo-fr-0.9.0/Makefile.am.orig	2011-05-28 13:14:57.955419683 +0400
++++ apertium-eo-fr-0.9.0/Makefile.am	2011-05-28 13:16:12.248463272 +0400
+@@ -90,9 +90,9 @@
+ 
+ install-data-local:
+ 	apertium-gen-modes modes.xml apertium-$(PREFIX1)
+-	$(INSTALL_DATA) $(PREFIX1).mode $(apertium_eo_camodesdir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).antaux1_t2x  $(BASENAME).$(PREFIX1).antaux2_t2x $(BASENAME).$(PREFIX1).antaux3_t2x $(BASENAME).$(PREFIX1).antaux4_t2x $(BASENAME).$(PREFIX1).t2x $(BASENAME).$(PREFIX1).post_t2x $(apertium_eo_cadir)
+-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(apertium_eo_cadir)
++	$(INSTALL_DATA) $(PREFIX1).mode $(DESTDIR)$(apertium_eo_camodesdir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(BASENAME).$(PREFIX1).antaux1_t2x  $(BASENAME).$(PREFIX1).antaux2_t2x $(BASENAME).$(PREFIX1).antaux3_t2x $(BASENAME).$(PREFIX1).antaux4_t2x $(BASENAME).$(PREFIX1).t2x $(BASENAME).$(PREFIX1).post_t2x $(DESTDIR)$(apertium_eo_cadir)
++	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(DESTDIR)$(apertium_eo_cadir)
+ 
+ 
+ #	$(INSTALL_DATA) $(PREFIX2)-pn.mode $(apertium_es_modesdir)
