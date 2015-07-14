@@ -1,0 +1,16 @@
+pkgbase = systemd-hddapm
+	pkgdesc = Hard Disk APM level service for systemd
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/hddapm
+	install = systemd-hddapm.install
+	arch = any
+	license = GPL
+	depends = hdparm
+	depends = systemd
+	backup = etc/udev/rules.d/10-hddapm.rules
+	source = https://downloads.sourceforge.net/project/hddapm/hddapm-1.6.tar.gz
+	md5sums = 0e07111f65cd7768f992ff52cdd73a88
+
+pkgname = systemd-hddapm
+

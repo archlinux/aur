@@ -1,0 +1,20 @@
+post_install() {
+cat << EOF
+
+Edit '/etc/udev/rules.d/10-hddapm.rules' to configure the devices to change and
+the APM level to set for each one.
+Use 'udevadm info -a /dev/sdx' to obtain information about the attributes of the
+drives you wish to control.
+
+You have to manually enable the unit to have the APM level restored after
+suspend/hibernate/hybrid-sleep. You can do it with: 'systemctl enable hddapm'.
+
+If you wish to set the APM level early during boot, add hddapm to your HOOKS
+line in '/etc/mkinitcpio.conf' and regenerate your initramfs.
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
