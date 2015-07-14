@@ -1,0 +1,21 @@
+pkgbase = norsk-ordbog
+	pkgdesc = CLI dictionary lookup for 'Norsk Ordbog med dansk Forklaring, by Ivar Aaasen (1873)'
+	pkgver = 1
+	pkgrel = 1
+	url = http://huftis.org/artiklar/norsk-ordbog-i-terminalen/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tidyhtml
+	makedepends = unoconv
+	source = http://huftis.org/nedlasting/program/konverter-norsk-ordbog.sh
+	source = http://www.aasentunet.no/download.asp?object_id=C7B10D366BB84147B69F58ED0ABF21A4.zip
+	source = http://huftis.org/nedlasting/program/norsk-ordbog.sh
+	source = http://huftis.org/nedlasting/program/forkortingar.dat
+	md5sums = 4da738e5a6bfc67f9bb5108f395f2e3d
+	md5sums = 97bf4bacada91e909416b91bc252b559
+	md5sums = 1af84169c67fb742ee99371b3627d909
+	md5sums = c8c95d3e3d4c755b6125c8a6e1960903
+
+pkgname = norsk-ordbog
+
