@@ -1,8 +1,8 @@
 pkgbase = yamado-git
 	pkgdesc = Yamado is a minimal note & journal system with extensions for functioning as a homepage & blog.
-	pkgver = 150707alpha
-	pkgrel = 2
-	url = http://lc.orbitalfox.com
+	pkgver = 150714alpha
+	pkgrel = 1
+	url = http://orbifx.github.io/yamado
 	arch = any
 	groups = portal
 	license = AGPL3
