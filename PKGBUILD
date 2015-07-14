@@ -8,9 +8,10 @@
 _name='rezound'
 pkgname="${_name}-svn"
 _pkgver='latest'
+# pkgver="${_pkgver}"
 pkgver="${_pkgver}"
 # pkgver='0.13.1beta.r2022M.date20131229'
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins. (NOTE: The package's dependencies can be minimised by changing the PKGBUILD's ./configure-script.)"
 arch=('i686' 'x86_64')
 url='http://rezound.sourceforge.net/'
@@ -89,6 +90,7 @@ build() {
     --enable-alsa \
     --enable-portaudio \
     --enable-jack \
+    --enable-pulse \
     --enable-ladspa \
     --disable-rpath \
     --enable-nls

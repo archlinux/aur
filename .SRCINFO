@@ -1,7 +1,7 @@
 pkgbase = rezound-svn
 	pkgdesc = A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins. (NOTE: The package's dependencies can be minimised by changing the PKGBUILD's ./configure-script.)
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rezound.sourceforge.net/
 	install = rezound.install
 	arch = i686
