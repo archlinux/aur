@@ -1,6 +1,6 @@
 pkgbase = non-sessionmanager-git
 	pkgdesc = Jack audio session manager from the NON DAW
-	pkgver = r1798.18a299c
+	pkgver = 1.1.0.r685.g18a299c
 	pkgrel = 1
 	url = http://non.tuxfamily.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = non-sessionmanager-git
 	depends = ntk-git
 	depends = jack
 	depends = liblo
-	provides = non-sessionmanager=$pkgver
+	provides = non-sessionmanager
 	conflicts = non-sessionmanager
 	source = non-sessionmanager-git::git+git://git.tuxfamily.org/gitroot/non/non.git
 	md5sums = SKIP
