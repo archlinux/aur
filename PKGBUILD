@@ -1,9 +1,9 @@
-# Maintainer: valère monseur <valere dot monseur at ymail dot com>
+# Maintainer: Christopher Woodruff <cswoodruff@gmail.com>
 
 pkgname=python2-livereload
 _pkgname=livereload
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python LiveReload is an awesome tool for web developers'
 arch=('any')
 url="https://pypi.python.org/pypi/livereload"
