@@ -1,0 +1,19 @@
+pkgbase = system-tools-backends
+	pkgdesc = Backends for Gnome/MATE System Tools.
+	pkgver = 2.10.2
+	pkgrel = 5
+	url = http://system-tools-backends.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = perl-xml-parser
+	depends = dbus-glib
+	depends = perl
+	depends = perl-net-dbus
+	depends = polkit
+	source = http://ftp.gnome.org/pub/gnome/sources/system-tools-backends/2.10/system-tools-backends-2.10.2.tar.bz2
+	sha256sums = 1dbe5177df46a9c7250735e05e77129fe7ec04840771accfa87690111ca2c670
+
+pkgname = system-tools-backends
+
