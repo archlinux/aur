@@ -1,0 +1,28 @@
+pkgbase = gettext-java
+	pkgdesc = GNU internationalization library - Java libraries
+	pkgver = 0.19.4
+	pkgrel = 1
+	url = http://www.gnu.org/software/gettext/
+	install = gettext.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	groups = base-devel
+	license = GPL
+	makedepends = java-environment
+	depends = gcc-libs
+	depends = acl
+	depends = sh
+	depends = glib2
+	depends = libunistring
+	optdepends = git: for autopoint infrastructure updates
+	options = !docs
+	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.4.tar.gz
+	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.4.tar.gz.sig
+	source = fix_buggy_msgunfmt3.patch
+	md5sums = d3511af1e604a3478900d2c2b4a4a48e
+	md5sums = SKIP
+	md5sums = d80847a08b5c6566a3ef940c52347d37
+
+pkgname = gettext-java
+
