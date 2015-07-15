@@ -1,0 +1,20 @@
+pkgbase = djbdns-ipv4
+	pkgdesc = The DNS suite by DJ Bernstein, including dnscache, tinydns, axfrdns and dnstools.
+	pkgver = 1.05
+	pkgrel = 3
+	url = http://cr.yp.to/djbdns.html
+	install = djbdns-ipv4.install
+	arch = i686
+	arch = x86_64
+	license = Public domain
+	makedepends = wget
+	makedepends = gawk
+	depends = daemontools
+	depends = ucspi-tcp
+	source = http://cr.yp.to/djbdns/djbdns-1.05.tar.gz
+	source = http://milksnot.com/stuff/archlinux/djbdns-ipv4-1.05-1-files.tar.bz2
+	md5sums = 3147c5cd56832aa3b41955c7a51cbeb2
+	md5sums = be9ce02f68831437707eb464d5fe6c97
+
+pkgname = djbdns-ipv4
+

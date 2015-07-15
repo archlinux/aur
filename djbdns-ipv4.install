@@ -1,0 +1,69 @@
+post_install() {
+  groupadd -r _djbdns
+  useradd -r -g _djbdns -d / -s /bin/false _dnslog
+  useradd -r -g _djbdns -d / -s /bin/false _tinydns
+  useradd -r -g _djbdns -d / -s /bin/false _dnscache  
+  useradd -r -g _djbdns -d / -s /bin/false _rbldns  
+  useradd -r -g _djbdns -d / -s /bin/false _walldns  
+  mkdir /service
+
+  cat << EOF
+>>> Configure and run tinydns:
+    tinydns-conf _tinydns _dnslog /service/tinydns [IP] 
+    ln -s /service/tinydns /etc/
+
+>>> Configure and run dnscache as a recursive cache:
+    dnscache-conf _dnscache _dnslog /service/dnscache [IP]
+    mkdir /service/dnscache/dump
+    ln -s /service/dnscache /etc/
+
+>>> To change from recursive to forward-only:
+    echo 1 > /service/dnscache/env/FORWARDONLY
+    echo IP_address_of_a_recursive_DNS server > /service/dnscache/root/servers/@
+    echo IP_address_of_another_recursive_DNS server >> /service/dnscache/root/servers/@
+
+>>> To add a local authoritative server to a recursive or forward-only setup:
+    echo IP_address_of_a_local_authoritative_server > /service/dnscache/root/servers/name.of.toplevel.domain
+
+If [IP] is omitted dnscache will run on localhost.
+More help can be found at http://cr.yp.to/djbdns.html
+
+Read /usr/share/djbdns/README for more information about this package.
+EOF
+}
+
+post_remove() {
+  if [ -e /service/dnscache ]; then
+    cd /service/dnscache
+    echo Stopping dnscache ... done.
+    svc -dx . log
+    rm /service/dnscache
+  fi
+  if [ -e /service/tinydns ]; then
+    cd /service/tinydns
+    echo Stopping tinydns ... done.
+    svc -dx . log
+    rm /service/tinydns
+  fi
+  userdel _dnslog
+  userdel _tinydns
+  userdel _dnscache
+  userdel _rbldns
+  userdel _walldns
+  groupdel _djbdns
+}
+
+post_upgrade() {
+  if [ -e /service/dnscache ]; then
+      echo Restarting dnscache ... done.
+      svc -t /service/dnscache
+  fi
+  if [ -e /service/tinydns ]; then
+      echo Restarting tinydns ... done.
+      svc -t /service/tinydns
+  fi
+  if [ -e /service/axfrdns ]; then
+      echo Restarting axfrdns ... done.
+      svc -t /service/axfrdns
+  fi
+}
