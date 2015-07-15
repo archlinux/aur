@@ -11,6 +11,7 @@ license=('LGPL' 'custom:scowl')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=(http://downloads.sourceforge.net/project/wordlist/speller/$pkgver/hunspell-en_GB-large-$pkgver.zip)
 sha1sums=('daf8e7d03571990199cb0986e18e469a951e8ab0')
+PKGEXT='.pkg.tar'
 
 prepare() {
   sed -i "s:SET UTF8:SET UTF-8:g"  *.aff
