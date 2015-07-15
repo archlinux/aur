@@ -25,6 +25,11 @@ else
 	chmod 600 $HOME/.wrapaurrc
 fi
 
+#make sure wrapaur_history file exists
+if [ ! -f $HOME/.wrapaur_history ]; then
+	touch $HOME/.wrapaur_history
+fi
+
 ##########Functions##########
 
 #update option selected
@@ -576,6 +581,13 @@ usage()
 }
 
 ##########Main Program##########
+
+#fix for running --help with getopts
+dashtest=$(echo $1 | grep "^--.*")
+if [[ ! -z $dashtest ]]; then
+	usage
+	exit
+fi
 
 while getopts "a:cei:lmno:q:r:s:u" args; do
 	case $args in
