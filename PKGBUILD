@@ -1,15 +1,16 @@
 # Maintainer: Michael Wendland <michael@michiwend.com>
-# Contributor: Adri√°n P√©rez de Castro <aperez@igalia.com>
+# Contributor: Adri·n PÈrez de Castro <aperez@igalia.com>
+# Contributor: Jo„o Guerra <joca.bt@gmail.com>
 
 pkgname=evopop-gtk-theme-git
 pkgver=0.29.r2.g9767c30
-pkgrel=1
-pkgdesc="A simple, flat and bold Gtk theme for Evolve OS & Budgie Desktop. Iris Dark was used as base."
+pkgrel=2
+pkgdesc="A simple, flat, and bold GTK+ theme for Solus OS and Budgie Desktop"
 arch=('any')
 url="https://github.com/solus-project/evopop-gtk-theme"
 license=('GPL3')
-depends=('gtk3>=3.16')
-provides=('evopop-gtk-theme', 'evopop-light-gtk-theme')
+depends=('gtk3>=3.16' 'gtk-engine-murrine')
+provides=('evopop-gtk-theme' 'evopop-light-gtk-theme')
 conflicts=('evopop-gtk-theme')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')

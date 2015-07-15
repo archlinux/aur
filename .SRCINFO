@@ -1,12 +1,13 @@
 pkgbase = evopop-gtk-theme-git
-	pkgdesc = A simple, flat and bold Gtk theme for Evolve OS & Budgie Desktop. Iris Dark was used as base.
+	pkgdesc = A simple, flat, and bold GTK+ theme for Solus OS and Budgie Desktop
 	pkgver = 0.29.r2.g9767c30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solus-project/evopop-gtk-theme
 	arch = any
 	license = GPL3
 	depends = gtk3>=3.16
-	provides = evopop-gtk-theme,
+	depends = gtk-engine-murrine
+	provides = evopop-gtk-theme
 	provides = evopop-light-gtk-theme
 	conflicts = evopop-gtk-theme
 	source = evopop-gtk-theme-git::git+https://github.com/solus-project/evopop-gtk-theme
