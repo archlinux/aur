@@ -2,13 +2,13 @@
 
 pkgname='mythes-pt_pt'
 pkgver=20060817
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese (European) thesaurus"
 arch=('any')
 url="http://openthesaurus.caixamagica.pt/"
 license=('GPL')
 optdepends=('libmythes: offers thesaurus library functions')
-source=("http://openthesaurus.caixamagica.pt/download/thes_pt_PT_v2.zip")
+source=("http://contribsoft.caixamagica.pt/export/294/packages/cm12/myspell-dictionaries/current/SOURCES/thes_pt_PT_v2.zip")
 md5sums=('2fa9a6845405ebb574c2f82a5cddbcbf')
 
 build() {

@@ -1,12 +1,12 @@
 pkgbase = mythes-pt_pt
 	pkgdesc = Portuguese (European) thesaurus
 	pkgver = 20060817
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openthesaurus.caixamagica.pt/
 	arch = any
 	license = GPL
 	optdepends = libmythes: offers thesaurus library functions
-	source = http://openthesaurus.caixamagica.pt/download/thes_pt_PT_v2.zip
+	source = http://contribsoft.caixamagica.pt/export/294/packages/cm12/myspell-dictionaries/current/SOURCES/thes_pt_PT_v2.zip
 	md5sums = 2fa9a6845405ebb574c2f82a5cddbcbf
 
 pkgname = mythes-pt_pt
