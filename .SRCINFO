@@ -1,0 +1,17 @@
+pkgbase = appset-qt-svn
+	pkgdesc = An advanced and feature rich Package Manager Frontend
+	pkgver = 198
+	pkgrel = 1
+	url = http://appset.svn.sourceforge.net/viewvc/appset/
+	install = appset-qt-svn.install
+	changelog = appset-qt-svn.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = qt4
+	optdepends = packer: for AUR support
+	conflicts = appset-qt
+
+pkgname = appset-qt-svn
+

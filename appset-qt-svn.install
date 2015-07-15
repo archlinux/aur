@@ -1,0 +1,37 @@
+whisperer(){
+    echo "----------------------------------------------------------------"
+    echo "Don't forget that this is an alpha release of AppSet-Qt."
+    echo "You can test it but it is not recommended for use every day"
+    echo "----------------------------------------------------------------"
+    echo "AppSet is in your desktop menu under Applications->System"
+    echo "To launch AppSet from shell run 'appset-launch.sh' as normal"
+    echo "user."
+    echo "----------------------------------------------------------------"
+    echo "----------------------------------------------------------------"
+    echo "IMPORTANT: NOW YOU NEED TO REBOOT YOUR COMPUTER TO LET APPSET"
+    echo "WORKING AT ITS BEST"
+    echo "----------------------------------------------------------------"
+    echo "----------------------------------------------------------------"
+}
+
+mr_daemon(){
+    angel=$(grep ^DAEMONS /etc/rc.conf | grep appset-helper)
+
+    if [ "$angel" = "" ]; then
+        sed -i '/^DAEMONS/{s/)$/ appset-helper)/}' /etc/rc.conf
+    fi
+}
+
+post_install(){
+    mr_daemon
+    whisperer
+} 
+
+post_upgrade(){
+    mr_daemon
+    whisperer
+} 
+
+post_remove(){
+    sed -i '/^DAEMONS/{s/ appset-helper)$/)/}' /etc/rc.conf
+}
