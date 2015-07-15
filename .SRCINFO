@@ -1,6 +1,6 @@
 pkgbase = spop-git
 	pkgdesc = A Spotify client running as a daemon, similar to mpd.
-	pkgver = 327.3890ab3
+	pkgver = r328.1a26dec
 	pkgrel = 1
 	url = https://github.com/Schnouki/spop
 	arch = i686
@@ -9,6 +9,15 @@ pkgbase = spop-git
 	makedepends = git
 	makedepends = cmake
 	depends = libspotify
+	depends = json-glib
+	optdepends = libao: libao audio output
+	optdepends = sox: libsox audio output
+	optdepends = dbus-glib: awesome integration
+	optdepends = libnotify: desktop notifications support
+	optdepends = libsoup: last.fm scrobble support
+	optdepends = python: dspop GUI
+	optdepends = dmenu: dspop GUI (or rofi)
+	optdepends = rofi: dspop GUI (or dmenu)
 	source = git+https://github.com/Schnouki/spop.git
 	md5sums = SKIP
 
