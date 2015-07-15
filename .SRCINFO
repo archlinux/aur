@@ -1,0 +1,26 @@
+pkgbase = python-django-ical
+	pkgdesc = a simple library/framework for creating ical feeds based in Django's syndication feed framework
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://bitbucket.org/IanLewis/django-ical
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/d/django-ical/django-ical-1.3.tar.gz
+	source = tests.patch
+	source = views.patch
+	sha256sums = 9a002aa3dcb3c7a4fc1c6c81bae8906bb89e78b429f43108ff82f76080386740
+	sha256sums = c6dd20758035581e829233000dd5263e2062fa8c1e43d98169412bbec92fc067
+	sha256sums = a043092bcf3ec90fc8af8ad36865614c38636d5ebf36deb6ee3e4ddb91691134
+
+pkgname = python-django-ical
+	depends = python-django>=1.4.2
+	depends = python-icalendar
+
+pkgname = python2-django-ical
+	depends = python2-django
+	depends = python2-icalendar
+
