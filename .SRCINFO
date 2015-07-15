@@ -1,0 +1,18 @@
+pkgbase = crark-cuda
+	pkgdesc = A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors. with CUDA support
+	pkgver = 3.43
+	pkgrel = 3
+	url = http://www.crark.net/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unrar
+	depends = cuda
+	provides = crark-cuda
+	noextract = crark34-linux-cuda.rar
+	options = !strip
+	source = http://www.crark.net/download/crark34-linux-cuda.rar
+	md5sums = 33256ce4564f6bcfe875bc03a0300158
+
+pkgname = crark-cuda
+
