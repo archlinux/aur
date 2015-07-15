@@ -1,0 +1,10 @@
+--- a/QtSingleApplicationQt5/qtlocalpeer.h	2015-07-15 00:37:52.607697860 -0500
++++ b/QtSingleApplicationQt5/qtlocalpeer.h	2015-07-15 00:38:05.327732874 -0500
+@@ -43,6 +43,7 @@
+ #include <QLocalServer>
+ #include <QLocalSocket>
+ #include <QDir>
++#include <QDataStream>
+
+ #include "qtlockedfile.h"
+
