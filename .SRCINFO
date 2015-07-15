@@ -1,0 +1,15 @@
+pkgbase = jpegpixi
+	pkgdesc = A program to interpolate pixels in JPEG images
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = http://www.zero-based.org/software/jpegpixi/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libjpeg
+	depends = glibc
+	source = https://dl.dropboxusercontent.com/u/29095940/oss/jpegpixi-1.1.1.tar.gz
+	md5sums = c888abdb58ff63d634215d4d5b160d5d
+
+pkgname = jpegpixi
+
