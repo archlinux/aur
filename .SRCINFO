@@ -1,0 +1,13 @@
+pkgbase = minisat
+	pkgdesc = Minimalistic, open-source SAT solver.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://minisat.se/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = http://minisat.se/downloads/minisat-2.2.0.tar.gz
+	md5sums = 99a2eaabe528cd366100e4bc0327d22e
+
+pkgname = minisat
+
