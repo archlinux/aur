@@ -4,17 +4,9 @@
 ## enable/disable gnome help files; adds makedepends+='yelp-tools'
 _build_gnome_help="no" # yes|no
 
-##
-## list of locales to build see also: po/LINGUAS
-## bg ca cs da de el es fr he hu it ja lt nl pl pt_BR ro ru sl sr sr@latin sv tr uk zh_CN zh_TW
-##
-## eg. export LINGUAS="bg ru"
-##
-#export LINGUAS="ru de" # uncomment to enable
-
 pkgname=easytag-git
 _gitname=easytag
-pkgver=1565.0e3a7f5
+pkgver=2.3.r1565.g0e3a7f5
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
@@ -36,9 +28,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
-#  git describe --always | sed -e 's|-|.|g'
-#  git describe --always | sed 's/^easytag.//;s/-/./g'
+#  echo $(git rev-list --count master).$(git rev-parse --short master)
+   echo "2.3.r$(git rev-list --count master).g$(git log -1 --format="%h")"
 }
 
 prepare() {
@@ -53,7 +44,7 @@ prepare() {
 	rm -fr help/
   fi
   ## add git rev to version
-  sed "s/(\[EasyTAG\], \[\([0-9]\).\([0-9]\).\([0-9]\)\], /(\[EasyTAG\], [\1.\2.\3-$pkgver], /" -i configure.ac
+  sed "s/(\[EasyTAG\], \[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[EasyTAG\], [\1.\2.\3-$(git rev-list --count master).$(git rev-parse --short master)], /" -i configure.ac
   ./autogen.sh
 }
 
