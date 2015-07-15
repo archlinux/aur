@@ -1,13 +1,12 @@
 pkgbase = popcorntime-bin
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://popcorntime.io/
 	install = popcorntime.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	depends = libsystemd
 	depends = libnotify
 	depends = desktop-file-utils
 	depends = ttf-liberation
