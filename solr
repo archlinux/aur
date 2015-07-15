@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-/usr/share/webapps/solr/solr start -f -d /usr/share/webapps/solr -s /etc/solr -a '-Dsolr.install.dir=/var/lib/solr -Xloggc:/var/log/solr/solr_gc.log'
+/usr/share/webapps/solr/solr start -f -d /usr/share/webapps/solr -s /etc/solr/conf -a '-Dsolr.install.dir=/var/lib/solr -Xloggc:/var/log/solr/solr_gc.log'

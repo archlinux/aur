@@ -1,7 +1,7 @@
 pkgbase = solr5
 	pkgdesc = Popular, blazing fast open source enterprise search platform from the Apache Lucene project
 	pkgver = 5.2.1
-	pkgrel = 2
+	pkgrel = 4
 	url = http://lucene.apache.org/solr/
 	install = solr.install
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = solr5
 	source = solr
 	source = solr.service
 	sha256sums = 3f54cec862da1376857f96f4a6f2044a5addcebc4df159b8797fd71f7ba8df86
-	sha256sums = 08e89de3711e158b5b031241f2d5233e54a8e87747b4518d9fa64754664ab30b
+	sha256sums = 546690ba89a238efd349c0a2c7c0cf3ebde16de9b502e017dceb43754f8021e1
 	sha256sums = 37318da4f5aaad606e3d97bf49f038bde34d8d947de178b1c9a86fa5f815c9ee
 
 pkgname = solr5

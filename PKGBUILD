@@ -5,7 +5,7 @@
 _pkgname=solr
 pkgname=solr5
 pkgver=5.2.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
 license=('Apache')
@@ -26,7 +26,7 @@ backup=(etc/$_pkgname/conf/{webdefault.xml,zoo.cfg}
         etc/$_pkgname/resources/{jetty-logging,log4j}.properties)
 
 sha256sums=('3f54cec862da1376857f96f4a6f2044a5addcebc4df159b8797fd71f7ba8df86'
-            '08e89de3711e158b5b031241f2d5233e54a8e87747b4518d9fa64754664ab30b'
+            '546690ba89a238efd349c0a2c7c0cf3ebde16de9b502e017dceb43754f8021e1'
             '37318da4f5aaad606e3d97bf49f038bde34d8d947de178b1c9a86fa5f815c9ee')
 
 prepare() {
@@ -91,6 +91,8 @@ package() {
   for file in README.txt configsets scripts; do
     ln -s "/usr/share/doc/$_pkgname/$file" "$pkgdir/usr/share/webapps/$_pkgname/$file"
   done
+  install -dm755 "$pkgdir/var/lib"
+  ln -s "/usr/share/webapps/$_pkgname" "$pkgdir/var/lib/$_pkgname"
   ln -s "/var/log/$_pkgname" "$pkgdir/usr/share/webapps/$_pkgname/logs"
   chown --recursive 521:521 "$pkgdir/etc/$_pkgname" "$pkgdir/var/log/$_pkgname" "$pkgdir/usr/share/webapps/$_pkgname/$_pkgname-webapp"
 }
