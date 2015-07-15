@@ -1,19 +1,20 @@
 pkgbase = jupyterhub
 	pkgdesc = Multi-user server for Jupyter notebooks
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://jupyter.org/
 	arch = any
 	license = BSD
 	makedepends = nodejs-bower
+	makedepends = npm
 	depends = ipython-notebook
 	depends = python-jinja
 	depends = python3-simplepam
 	depends = python-sqlalchemy
 	depends = python-requests
 	depends = nodejs-configurable-http-proxy
-	source = https://github.com/jupyter/jupyterhub/archive/0.1.0.tar.gz
-	md5sums = 17cf693de2dfca7c8a94b163ed57349f
+	source = https://github.com/jupyter/jupyterhub/archive/0.2.0.tar.gz
+	md5sums = 3d781022ae234ef7802209895db4fc45
 
 pkgname = jupyterhub
 
