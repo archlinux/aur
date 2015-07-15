@@ -1,6 +1,6 @@
 pkgbase = nodejs-riot
 	pkgdesc = A React-like, 2.5K user interface library
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://muut.com/riotjs
 	arch = any
