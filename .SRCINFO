@@ -1,0 +1,25 @@
+pkgbase = sup-git
+	pkgdesc = Sup is a console-based email client for people with a lot of email. Great mutt alternative.
+	pkgver = 2715.199e895
+	pkgrel = 1
+	url = http://supmua.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ruby-chronic-old
+	depends = ruby-highline
+	depends = ruby-locale
+	depends = ruby-lockfile
+	depends = ruby-mime-types
+	depends = ruby-ncursesw
+	depends = ruby-rmail-sup
+	depends = ruby-trollop
+	depends = ruby-unicode
+	depends = ruby-xapian-ruby
+	optdepends = ruby-gpgme: PGP support
+	conflicts = sup
+	source = sup::git://github.com/sup-heliotrope/sup.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = sup-git
+
