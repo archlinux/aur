@@ -1,0 +1,18 @@
+pkgbase = cronopete
+	pkgdesc = An Apple's Time Machine clone
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = http://www.rastersoft.com/programas/cronopete.html
+	install = cronopete.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = vala
+	depends = gsl
+	depends = libgee
+	source = https://github.com/rastersoft/cronopete/archive/v3.16.0.tar.gz
+	md5sums = 1f8200dcf187606554e637bf213c2f80
+
+pkgname = cronopete
+
