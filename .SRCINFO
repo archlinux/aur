@@ -1,0 +1,14 @@
+pkgbase = python2-griddataformats
+	pkgdesc = The gridDataFormats package provides classes to unify reading and writing n-dimensional datasets. One can read grid data from files, make them available as a Grid object, and allows one to write out the data again.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/orbeckst/GridDataFormats/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-numpy
+	source = https://github.com/orbeckst/GridDataFormats/archive/release-0.2.5.tar.gz
+	sha1sums = 6b545feb6acd7d5ba9a035360e17706e713d4416
+
+pkgname = python2-griddataformats
+
