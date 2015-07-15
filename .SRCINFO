@@ -1,0 +1,17 @@
+pkgbase = python2-pyg-git
+	pkgdesc = Pyg package installer
+	pkgver = 20111102
+	pkgrel = 1
+	url = http://bitbucket.org/rubik/pyg/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-distribute
+	depends = python2-pkgtools
+	depends = python2-argh
+	provides = pyg
+	conflicts = python2-pyg
+
+pkgname = python2-pyg-git
+
