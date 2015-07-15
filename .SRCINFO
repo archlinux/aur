@@ -1,0 +1,20 @@
+pkgbase = python2-espressopp
+	pkgdesc = ESPResSo++ is an extensible, flexible, fast and parallel simulation software for soft matter research.
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://www.espresso-pp.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	depends = fftw
+	depends = openmpi
+	depends = python2
+	depends = boost
+	depends = python2-mpi4py
+	source = http://www.espresso-pp.de/Download/espressopp-1.9.2.tgz
+	sha1sums = 7e9ad6ed25448275fa33e63fbf2e00c9399acf87
+
+pkgname = python2-espressopp
+
