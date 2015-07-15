@@ -1,0 +1,17 @@
+pkgbase = httpcli
+	pkgdesc = RESTful command line HTTP client (simpler than cURL).
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://github.com/dolph/httpcli
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-httplib2
+	conflicts = python-httpie
+	conflicts = python2-httpie
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/httpcli/httpcli-1.1.3.tar.gz#md5=0faf9009cefc297c2e82d4133f5afec7
+	md5sums = 0faf9009cefc297c2e82d4133f5afec7
+
+pkgname = httpcli
+
