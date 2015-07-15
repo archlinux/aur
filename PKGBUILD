@@ -7,7 +7,7 @@
 pkgname=opencv-java
 _pkgbase=opencv
 pkgver=2.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -128,6 +128,12 @@ package() {
 	mkdir -p "$pkgdir/usr/share/opencv/java"
 	# Installing the built files
 	cp -r "$srcdir/temp/usr/share/OpenCV/java" "$pkgdir/usr/share/opencv"
+
+	# Create a symbolic link in /usr/share/java as Java apps written for Ubuntu may be looking there
+	mkdir -p "$pkgdir/usr/share/java/"
+	# Get the number in the Jar filename
+	_number=$(echo $pkgver | sed 's/\.//g')
+	ln -s "/usr/share/opencv/java/opencv-$_number.jar" "$pkgdir/usr/share/java/opencv.jar"
 
 	# Removing the junk
 	rm -r "$srcdir/temp"

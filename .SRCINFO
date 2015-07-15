@@ -1,7 +1,7 @@
 pkgbase = opencv-java
 	pkgdesc = Open Source Computer Vision Library - Java bindings
 	pkgver = 2.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = i686
 	arch = x86_64
