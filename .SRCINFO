@@ -1,10 +1,9 @@
 pkgbase = linux-libre-knock
-	pkgver = 4.1.1_gnu
+	pkgver = 4.1.2_gnu
 	pkgrel = 1
 	url = https://gnunet.org/knock
 	arch = i686
 	arch = x86_64
-	arch = mips64el
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -14,8 +13,8 @@ pkgbase = linux-libre-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.1-gnu/patch-4.1-gnu-4.1.1-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.1-gnu/patch-4.1-gnu-4.1.1-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz.sign
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -26,16 +25,13 @@ pkgbase = linux-libre-knock
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config.i686
 	source = config.x86_64
-	source = config.mips64el
 	source = linux.preset
 	source = 0001-block-loop-convert-to-per-device-workqueue.patch
 	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 	source = change-default-console-loglevel.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch.sig
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3
+	sha256sums = b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988
 	sha256sums = SKIP
 	sha256sums = da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc
 	sha256sums = SKIP
@@ -47,13 +43,10 @@ pkgbase = linux-libre-knock
 	sha256sums = SKIP
 	sha256sums = eb798f148028db57706fd0d4980eb0f31b0d956f864f0d3a130fecd62fc743ea
 	sha256sums = dabb4f7a98ac1c6510c05b5bc254a7fb3cd55d1427258e4966af2007209777d5
-	sha256sums = 58fa33ae523fbacc2478b6616c4a963ac23983cceef22e54ea3a7722871ed74d
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
 	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = ab8fe9b295af6e28858834e464c01198ae1b521e2571ff47efa3ad1ccbbfc846
-	sha256sums = SKIP
 
 pkgname = linux-libre-knock
 	pkgdesc = The Linux-libre-knock kernel and modules with support for stealth TCP sockets
@@ -65,7 +58,7 @@ pkgname = linux-libre-knock
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-knock=4.1.1
+	provides = linux-knock=4.1.2
 	conflicts = kernel26-knock
 	conflicts = kernel26-libre-knock
 	replaces = linux-knock
@@ -75,7 +68,7 @@ pkgname = linux-libre-knock
 
 pkgname = linux-libre-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
-	provides = linux-knock-headers=4.1.1
+	provides = linux-knock-headers=4.1.2
 	conflicts = kernel26-knock-headers
 	conflicts = kernel26-libre-knock-headers
 	replaces = linux-knock-headers
@@ -84,7 +77,7 @@ pkgname = linux-libre-knock-headers
 
 pkgname = linux-libre-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
-	provides = linux-knock-docs=4.1.1
+	provides = linux-knock-docs=4.1.2
 	conflicts = kernel26-knock-docs
 	conflicts = kernel26-libre-knock-docs
 	replaces = linux-knock-docs

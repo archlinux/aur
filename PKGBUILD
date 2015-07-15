@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-knock # Build stock knock kernel
 _pkgbasever=4.1-gnu
-_pkgver=4.1.1-gnu
+_pkgver=4.1.2-gnu
 _knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-arch=('i686' 'x86_64' 'mips64el')
+arch=('i686' 'x86_64')
 url="https://gnunet.org/knock"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
@@ -40,18 +40,15 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config.i686' 'config.x86_64' 'config.mips64el'
+        'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-block-loop-convert-to-per-device-workqueue.patch'
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
-        'change-default-console-loglevel.patch'
-        # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        "https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch.sig")
+        'change-default-console-loglevel.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3'
+            'b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988'
             'SKIP'
             'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
@@ -63,13 +60,10 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             'eb798f148028db57706fd0d4980eb0f31b0d956f864f0d3a130fecd62fc743ea'
             'dabb4f7a98ac1c6510c05b5bc254a7fb3cd55d1427258e4966af2007209777d5'
-            '58fa33ae523fbacc2478b6616c4a963ac23983cceef22e54ea3a7722871ed74d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
             'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ab8fe9b295af6e28858834e464c01198ae1b521e2571ff47efa3ad1ccbbfc846'
-            'SKIP')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -84,7 +78,6 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
-  mips64el) KARCH=mips;;
 esac
 
 prepare() {
@@ -114,11 +107,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Adding loongson-community patch
-  if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/4.1-rc7-db21bcc5d0-loongson-community.patch
-  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
