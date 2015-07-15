@@ -1,6 +1,6 @@
 pkgbase = gnucash-xbt
 	pkgdesc = A personal and small-business financial-accounting application with Bitcoin support
-	pkgver = 2.6.6
+	pkgver = 2.6.7
 	pkgrel = 1
 	url = http://www.gnucash.org
 	install = gnucash.install
@@ -8,6 +8,7 @@ pkgbase = gnucash-xbt
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	depends = guile
 	depends = slib
 	depends = goffice0.8
 	depends = libdbi-drivers
@@ -27,9 +28,9 @@ pkgbase = gnucash-xbt
 	conflicts = gnucash-devel
 	options = !makeflags
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-2.6.6.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-2.6.7.tar.bz2
 	source = xbt.patch
-	sha1sums = 7a508743047202cc4c648ff188f92741010105a1
+	sha1sums = 93d51c45bdcc66bfcb1a1924622b48ca7f5ada17
 	sha1sums = 7244b9cc71d0d03c43055c062f3eeba5e3544630
 
 pkgname = gnucash-xbt
