@@ -1,7 +1,7 @@
 pkgbase = hunspell-en-us
-	pkgdesc = English US hunspell dictionaries
+	pkgdesc = English hunspell dictionaries (en_US only)
 	pkgver = 2015.05.18
-	pkgrel = 4
+	pkgrel = 1
 	url = http://wordlist.aspell.net/dicts/
 	arch = any
 	license = LGPL
