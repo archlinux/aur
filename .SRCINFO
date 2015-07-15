@@ -1,7 +1,7 @@
 pkgbase = vokoscreen
 	pkgdesc = An easy to use screencast creator. Qt5 UI.
 	pkgver = 2.4.3.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 	arch = i686
 	arch = x86_64

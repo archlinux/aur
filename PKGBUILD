@@ -4,7 +4,7 @@
 pkgname=vokoscreen
 _pkgver=2.4.3-beta
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
