@@ -23,8 +23,10 @@ pkgbase = mail-notification
 	options = !emptydirs
 	source = git+https://github.com/epienbroek/mail-notification.git
 	source = http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-jb-gcc-format.patch
+	source = http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-dont-link-against-bsd-compat.patch
 	sha256sums = SKIP
 	sha256sums = a7646259ca72b58165e4e1c8cf12b197e32807459c4291867479ef3520d39732
+	sha256sums = 2340c6001ad9dfd071f80cf0cd9b45d3fa7efada6880a530b16a3b4d36a27444
 
 pkgname = mail-notification
 
