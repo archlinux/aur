@@ -71,7 +71,7 @@ _bldtype=Release
 
 _mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
 _utdicver=20150529
-_zipcoderel=201505
+_zipcoderel=201506
 _uimmozcrev=316.2b3eff9
 
 _gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
@@ -110,8 +110,8 @@ sha1sums=('SKIP'
           '53374c972e58097143c8f08387c1eb191d09f190'
           '6540c19e76053e4d2c8e339a7257dbaf5ad56262'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '1bef90786e016b94a02b694041010719bcd74ca2'
-          'ad9cc9bd9e5acb5d6f75741e07f17732f3ff71a8'
+          'b174652a1689df61049f4a3fcebfc3f5edb7dcdc'
+          'c4f56e0063f5c1c932609aa1d8afe62e56e19c3d'
           '6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7')
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
