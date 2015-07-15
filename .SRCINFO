@@ -1,0 +1,18 @@
+pkgbase = reload-editor
+	pkgdesc = Content Package and Metadata editor
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = http://www.reload.ac.uk/editor.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = http://www.reload.ac.uk/download/Reload_Dist255_Java15.zip
+	source = reload-editor.desktop
+	source = reload-editor.sh
+	md5sums = d7e51041f5ff606819901915c4083612
+	md5sums = 279e19dc7e7ac2b425f8f8379a41f15f
+	md5sums = 591600911c1718d1d9d22b27b7374b51
+
+pkgname = reload-editor
+

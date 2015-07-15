@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Reload Editor
+Comment=Content Package and Metadata Editor
+Exec=reload-editor %f
+Terminal=false
+Icon=/usr/share/pixmaps/reload-editor.gif
+X-MultipleArgs=false
+Type=Application
+Categories=Application;Development;
