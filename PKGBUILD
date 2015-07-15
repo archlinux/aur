@@ -6,7 +6,7 @@
 _name=audacious
 pkgname=${_name}2
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, GTK-based advanced audio player focused on audio quality. Gtk2 version.'
 arch=('i686' 'x86_64')
 url='http://audacious-media-player.org/'

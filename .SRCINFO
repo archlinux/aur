@@ -1,7 +1,7 @@
 pkgbase = audacious2
 	pkgdesc = Lightweight, GTK-based advanced audio player focused on audio quality. Gtk2 version.
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://audacious-media-player.org/
 	install = audacious2.install
 	arch = i686
