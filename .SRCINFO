@@ -1,6 +1,6 @@
 pkgbase = bin32-jdk
 	pkgdesc = Oracle Java Development Kit (32-bit)
-	pkgver = 8u45
+	pkgver = 8u51
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = bin32-jdk.install
@@ -38,7 +38,7 @@ pkgbase = bin32-jdk
 	md5sums = 9dfed511010a54eb377b692638d17585
 	md5sums = 915f23fd70bb5a6bbfbd7160a35ab035
 	md5sums = 65d3a4147634b7cf0923caafed7edda4
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-i586.tar.gz
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jdk-8u51-linux-i586.tar.gz
 	depends_x86_64 = ca-certificates-java
 	depends_x86_64 = desktop-file-utils
 	depends_x86_64 = hicolor-icon-theme
@@ -57,7 +57,7 @@ pkgbase = bin32-jdk
 	optdepends_x86_64 = lib32-gtk2: for Gtk+ look and feel (desktop)
 	optdepends_x86_64 = ttf-font: fonts
 	makedepends_x86_64 = pacman>=4.2.0
-	md5sums_x86_64 = e68241caf30cb81ae4e985be7218bb6d
+	md5sums_x86_64 = 742b9151d9190a9ae7d8ed05c7d39850
 
 pkgname = bin32-jdk
 

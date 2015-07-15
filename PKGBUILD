@@ -4,8 +4,8 @@
 _pkgname=jdk
 pkgname=bin32-jdk
 _major=8
-_minor=45
-_build=b14
+_minor=51
+_build=b16
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (32-bit)"
@@ -54,7 +54,7 @@ md5sums=('30d35416b403c621fb02d0dc0b115c05'
          '9dfed511010a54eb377b692638d17585'
          '915f23fd70bb5a6bbfbd7160a35ab035'
          '65d3a4147634b7cf0923caafed7edda4')
-md5sums_x86_64=('e68241caf30cb81ae4e985be7218bb6d')
+md5sums_x86_64=('742b9151d9190a9ae7d8ed05c7d39850')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
