@@ -1,0 +1,16 @@
+pkgbase = python2-uxie-git
+	pkgdesc = PyGtk UX lib
+	pkgver = 20111112
+	pkgrel = 1
+	url = http://github.com/baverman/uxie
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	depends = python2
+	depends = pygtk>=2.10
+	depends = pygtksourceview2>=2.10
+	depends = python2-distribute
+
+pkgname = python2-uxie-git
+
