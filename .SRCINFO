@@ -1,0 +1,17 @@
+pkgbase = a2jmidid-git
+	pkgdesc = Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system.
+	pkgver = 20121007
+	pkgrel = 1
+	url = http://home.gna.org/a2jmidid/
+	install = a2jmidid-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = jack
+	depends = dbus-core
+	depends = python2
+	provides = a2jmidid
+
+pkgname = a2jmidid-git
+

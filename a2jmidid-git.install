@@ -1,0 +1,19 @@
+nag() {
+cat << EOM
+
+==> Due to the lack of a manpage and the not very verbose output,
+==> the README was installed to /usr/share/a2jmidid/README.
+==> Please consult it for usage information.
+
+EOM
+}
+
+post_install() {
+  nag
+}
+
+post_upgrade() {
+  nag
+}
+
+# vim:set ts=2 sw=2 et:
