@@ -6,10 +6,10 @@
 
 pkgname=gromacs
 pkgver=5.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
-license=("GPL")
+license=("LGPL")
 arch=('i686' 'x86_64')
 depends=('fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11')
 makedepends=('cmake')
@@ -32,10 +32,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DGMX_X11=ON \
-        -DGMX_OPENMP=ON \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_DOUBLE=ON \
-        -DGMX_SIMD=AVX_256 \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DGMX_LIBS_SUFFIX=_d
   make
@@ -46,25 +44,18 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=ON \
         -DGMX_X11=ON \
-        -DGMX_OPENMP=ON \
-        -DGMX_SIMD=AVX_256 \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
 check () {
-  ########################################
-  #   Currently tests fail. This is the  #
-  #   reason they are commented out.     #
-  #   Still no problems detected so far. #
-  ######################################## 
   msg2 "Testing double precision compilation"
   cd ${srcdir}/double
-#  make test
+  make check
   msg2 "Testing single precision compilation"
   cd ${srcdir}/single
-#  make test
+  make check
 }
 
 package() {
