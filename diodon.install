@@ -1,5 +1,6 @@
 post_install() {
 /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+[ -x `which update-desktop-database` ] && update-desktop-database -q
 }
 
 post_upgrade() {

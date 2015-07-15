@@ -1,6 +1,6 @@
 pkgbase = diodon
 	pkgdesc = GTK+ clipboard manager
-	pkgver = 1.0.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://launchpad.net/diodon
 	install = diodon.install
@@ -15,8 +15,11 @@ pkgbase = diodon
 	depends = libxtst
 	depends = dconf
 	depends = libappindicator3
-	source = http://launchpad.net/diodon/trunk/1.0.3/+download/diodon-1.0.3.tar.gz
-	md5sums = fe61103cd9f436cbea6b52794dbb930e
+	depends = desktop-file-utils
+	depends = libgee
+	depends = zeitgeist
+	source = http://launchpad.net/diodon/trunk/1.3.0/+download/diodon-1.3.0.tar.gz
+	md5sums = 8738acb38756f85bfcbd333327169c00
 
 pkgname = diodon
 
