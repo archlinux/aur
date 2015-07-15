@@ -3,6 +3,7 @@
 pkgname=ejectsy
 pkgver=672c917
 pkgrel=3
+epoch=
 pkgdesc="A simple and convenient external disk manager for Linux that sits in the tray."
 arch=('any')
 url="https://github.com/sharat87/ejectsy.git"
