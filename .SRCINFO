@@ -1,0 +1,21 @@
+pkgbase = insight3d
+	pkgdesc = insight3d lets you create 3D models from photographs
+	pkgver = 0.3.2
+	pkgrel = 3
+	url = http://insight3d.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = opencv
+	depends = libxml2
+	depends = sdl
+	depends = gtk2
+	depends = lapack
+	depends = blas
+	depends = glu
+	depends = libcl
+	source = http://sourceforge.net/projects/insight3d/files/insight3d_linux.tar.gz/download
+	md5sums = 31c7d629e5c6f37982cb3e8676cc7e38
+
+pkgname = insight3d
+
