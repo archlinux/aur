@@ -1,0 +1,16 @@
+pkgbase = joschy-git
+	pkgdesc = Video upload/search/etc library
+	pkgver = 20100816
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/RecordItNow?content=114610
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = kdebase-runtime
+	provides = joschy
+
+pkgname = joschy-git
+
