@@ -1,0 +1,23 @@
+pkgbase = dropbox-kde-systray-icons
+	pkgdesc = Dropbox systray icons that fit better in KDE 4
+	pkgver = 1
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=141519
+	install = dropbox-kde.install
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = dropbox
+	conflicts = dropbox-faenza-light
+	conflicts = dropbox-humanity-dark-icons
+	conflicts = dropbox-dark-panel-icons
+	conflicts = dropbox-humanity-icons
+	conflicts = dropbox-light-panel-icons
+	conflicts = dropbox-ubuntu-mono-light
+	conflicts = dropbox-ubuntu-mono-dark
+	conflicts = dropbox-faenza-dark
+	source = http://cccliparts.org/CONTENT/content-files/141519-dropbox-icons.tar.gz
+	md5sums = d4ec417f3906e99f3deef704b38718ae
+
+pkgname = dropbox-kde-systray-icons
+
