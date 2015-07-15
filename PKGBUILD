@@ -2,13 +2,13 @@
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
 pkgver=12.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('i686' 'x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('lapack' 'openmpi' 'python2' 'boost')
-source=(http://trilinos.sandia.gov/oldsite/download/files/${pkgname}-${pkgver}-Source.tar.bz2)
+source=(http://trilinos.org/oldsite/download/files/${pkgname}-${pkgver}-Source.tar.bz2)
 makedepends=('python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake')
 # gcc-fortran gcc-fortran-multilib
 md5sums=('19efcadf25c80b834f7c910ccfcca290')
