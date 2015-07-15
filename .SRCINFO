@@ -1,0 +1,25 @@
+pkgbase = brother-mfc-j6710dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J6710DW printer
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: printing text files from lpr
+	source = http://download.brother.com/welcome/dlf006815/mfcj6710dw_cupswrapper_GPL_source_3.0.0-1.tar.gz
+	source = http://download.brother.com/welcome/dlf006619/mfcj6710dwcupswrapper-3.0.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006617/mfcj6710dwlpr-3.0.0-1.i386.rpm
+	sha256sums = 749145cf019dad18ebdbc46c138846a10df32459729b05fbd3167bad2a73423b
+	sha256sums = c7fb5985701a41cb6230685fd1d704b17315a977c6ffb487e33766177810f6a0
+	sha256sums = 5d01721cc6f264fa989cb4ffff4aa1f7a9559474a70788b06a5ba9131b645c25
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j6710dw
+
