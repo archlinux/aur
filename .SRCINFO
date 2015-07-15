@@ -1,0 +1,12 @@
+pkgbase = revoco2
+	pkgdesc = Change the wheel behaviour of Logitech's MX-Revolution mouse.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tech2077/revoco2
+	arch = i686
+	arch = x86_64
+	source = git+https://github.com/tech2077/revoco2.git
+	md5sums = SKIP
+
+pkgname = revoco2
+
