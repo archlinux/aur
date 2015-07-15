@@ -22,7 +22,7 @@ conflicts=(
   'python2-neovim'
 )
 provides=('python2-neovim')
-makedepends=()
+makedepends=('git')
 source=("$pkgname::git://github.com/neovim/python-client.git"
         "LICENSE::https://raw.githubusercontent.com/neovim/python-client/master/LICENSE")
 sha256sums=('SKIP' '297a62ff61eb84f532ff5a8181860d925b710d4458f204e56c90b1da997c8711')
