@@ -2,6 +2,7 @@ src
 srcdir
 pkg
 pkgdir
+Bluebird
 *.tar.*
 *.xz
 *.gz
