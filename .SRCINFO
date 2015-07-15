@@ -1,0 +1,15 @@
+pkgbase = python2-moar
+	pkgdesc = Easy thumbnails for everyone
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://github.com/lucuma/Moar
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python-imaging
+	source = http://pypi.python.org/packages/source/M/Moar/Moar-1.3.2.tar.gz
+	md5sums = cf68132d2546a58dec7f684891e98cbb
+
+pkgname = python2-moar
+
