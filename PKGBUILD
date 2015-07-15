@@ -9,9 +9,9 @@ pkgdesc="Tray icon application that informs you if you have new mail"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/mailnotify/"
 license=('GPL3' 'FDL')
-depends=('gmime' 'libnotify' 'gnome-keyring' 'hicolor-icon-theme' 'notification-daemon' 'libgnome')
-makedepends=('gob2' 'intltool' 'evolution' 'gnome-doc-utils' 'gtk2')
-options=('!libtool' '!emptydirs')
+depends=('gmime' 'gnome-keyring' 'hicolor-icon-theme' 'libgnome' 'libnotify' 'notification-daemon')
+makedepends=('evolution' 'gnome-doc-utils' 'gob2' 'gtk2' 'intltool')
+options=(!emptydirs)
 install=mail-notification.install
 source=(git+https://github.com/epienbroek/mail-notification.git
         http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-jb-gcc-format.patch
@@ -25,44 +25,52 @@ sha256sums=('SKIP'
             '2340c6001ad9dfd071f80cf0cd9b45d3fa7efada6880a530b16a3b4d36a27444')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
 
   git tag -f v5.4 7a2c97e1f48cfb8cd6e21a1d619fd589dfa19ef0
   git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
 
-  patch -Np1 < "${srcdir}/mail-notification-jb-gcc-format.patch"
-  patch -Np1 < "${srcdir}/mail-notification-aarch64.patch"
-  patch -Np1 < "${srcdir}/mail-notification-evo3_11_2.patch"
-  patch -Np0 < "${srcdir}/mail-notification-dont-link-against-bsd-compat.patch"
+  patch -Np1 < "$srcdir/mail-notification-jb-gcc-format.patch"
+  patch -Np1 < "$srcdir/mail-notification-aarch64.patch"
+  patch -Np1 < "$srcdir/mail-notification-evo3_11_2.patch"
+  patch -Np0 < "$srcdir/mail-notification-dont-link-against-bsd-compat.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
 
-  ./jb configure prefix=/usr sysconfdir=/etc \
-      localstatedir=/var destdir="${pkgdir}" \
-      gconf-schemas-dir=/etc/gconf/schemas install-gconf-schemas=no \
-      cflags="${CFLAGS}" cppflags="${CXXFLAGS}" ldflags="${LDFLAGS}" \
-      library-mode=0755
+  ./jb configure \
+      cflags="$CFLAGS"                      \
+      cppflags="$CXXFLAGS"                  \
+      ldflags="$LDFLAGS"                    \
+      destdir="$pkgdir"                     \
+      prefix=/usr                           \
+      sysconfdir=/etc                       \
+      localstatedir=/var                    \
+      gconf-schemas-dir=/etc/gconf/schemas  \
+      install-gconf-schemas=no              \
+      update-gtk-icon-cache=no              \
+      ;
+
   ./jb build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
 
-  GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 ./jb install
+  export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-  rm -f "${pkgdir}/usr/share/mail-notification/"*.glade
-  install -m644 ui/mailbox-properties-dialog.ui "${pkgdir}/usr/share/mail-notification/"
-  install -m644 ui/properties-dialog.ui "${pkgdir}/usr/share/mail-notification/"
+  ./jb install
 
-  install -m755 -d "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema ${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas --domain mail-notification ${pkgdir}/etc/gconf/schemas/*.schemas
-  rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
+  install -d -m755 "$pkgdir"/usr/share/gconf/schemas
+
+  gconf-merge-schema "$pkgdir"/usr/share/gconf/schemas/$pkgname.schemas --domain mail-notification "$pkgdir"/etc/gconf/schemas/*.schemas
+
+  rm -f "$pkgdir"/etc/gconf/schemas/*.schemas
 }
 
 # vim: ts=2:sw=2:et
