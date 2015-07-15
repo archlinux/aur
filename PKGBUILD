@@ -11,6 +11,7 @@ license=('GPL' 'LGPL' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/$_pkgname-$pkgver.tar.gz")
 md5sums=('27b19be9c318156339a8cfb217f17476')
+PKGEXT='.pkg.tar'
 
 build() {
   /bin/true
