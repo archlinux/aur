@@ -1,0 +1,18 @@
+pkgbase = aury-git
+	pkgdesc = Automates maintenance of AUR python packages
+	pkgver = 20120125
+	pkgrel = 2
+	url = https://github.com/fdev31/aury.git
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = git
+	depends = python
+	depends = python-lxml
+	depends = python-cssselect
+	depends = pkgbuild-introspection
+	depends = burp
+	conflicts = python-aury
+
+pkgname = aury-git
+
