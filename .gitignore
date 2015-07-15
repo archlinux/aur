@@ -1,0 +1,11 @@
+src
+srcdir
+pkg
+okgdir
+Greybird
+*.gz
+*.bz2
+*.zip
+*.rar
+*.xz
+
