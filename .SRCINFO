@@ -1,7 +1,7 @@
 pkgbase = python2-sphinx-autobuild
 	pkgdesc = Watch a Sphinx directory and rebuild the documentation when a change is detected. Also includes a livereload enabled web server.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GaretJax/sphinx-autobuild
 	arch = any
 	license = MIT
