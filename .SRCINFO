@@ -1,0 +1,15 @@
+pkgbase = ejectsy
+	pkgdesc = A simple and convenient external disk manager for Linux that sits in the tray.
+	pkgver = 672c917
+	pkgrel = 3
+	url = https://github.com/sharat87/ejectsy.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pygtk
+	depends = python2
+	source = git+https://github.com/sharat87/ejectsy.git
+	md5sums = SKIP
+
+pkgname = ejectsy
+
