@@ -1,0 +1,17 @@
+pkgbase = php-pdo-firebird
+	pkgdesc = Firebird PHP PDO extension
+	pkgver = 5.6.11
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	depends = libfbclient
+	source = http://www.php.net/distributions/php-5.6.11.tar.bz2
+	source = pdo_firebird.ini
+	md5sums = a0c842c1d30fedbe972e1556ae9cee27
+	md5sums = 4a23b02aaa079d4419dad09b41b1f3a2
+
+pkgname = php-pdo-firebird
+
