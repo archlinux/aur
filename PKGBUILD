@@ -4,8 +4,8 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.2.beta.r0.g40858ce
-pkgrel=1
+pkgver=2.4.3.beta.r0.g8369402
+pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
@@ -21,10 +21,12 @@ conflicts=("${_pkgname}")
 
 source=(
 	"git+https://github.com/vkohaupt/${_pkgname}.git"
+	'qdatastream_fix.patch'
 	'desktop_file.patch'
 )
 sha512sums=(
 	'SKIP'
+	'301ad97abcb5ad731ee4a95ebf00b6fe47d53cb1e0342df00290f61e8c0316b4e2621c0743212a480bbe0a3699659f2fff1196629de0ebf843dc1b0d2997f889'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
 )
 
@@ -39,8 +41,12 @@ pkgver() {
 }
 
 prepare() {
-	# Patching *.desktop file
 	cd ${srcdir}/${_pkgname}
+	
+	# Qt 5.5 fix
+	patch QtSingleApplicationQt5/qtlocalpeer.h ../qdatastream_fix.patch
+	
+	# Desktop file description
 	patch applications/${_pkgname}.desktop ../desktop_file.patch
 
 	# Create build directory
