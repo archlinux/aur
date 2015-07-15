@@ -1,0 +1,13 @@
+pkgbase = crosti
+	pkgdesc = Graphic conversion utility to create cross stitches
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://sites.google.com/site/crostiapp/
+	arch = any
+	license = GPL
+	depends = qt4
+	source = http://sourceforge.net/projects/crosti/files/crosti%201.13.0/crosti-1.13.0-source.zip
+	md5sums = 5f71d8294eb33cbe67e9034d9516eaa8
+
+pkgname = crosti
+
