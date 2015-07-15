@@ -7,7 +7,7 @@
 pkgname=opencv-java
 _pkgbase=opencv
 pkgver=2.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -102,7 +102,7 @@ prepare() {
 
 	# Setting JAVA_HOME
 	msg2 "Setting JAVA_HOME variable"
-	export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
+	export JAVA_HOME="/usr/lib/jvm/default"
 }
 
 build() {
