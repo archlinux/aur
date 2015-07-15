@@ -10,8 +10,6 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxft' 'libxmu' 'libxpm')
 makedepends=('xorg-util-macros')
-conflicts=('xaw3d')
-provides=('xaw3d')
 source=("http://sourceforge.net/projects/sf-xpaint/files/$pkgname/${_pkgname}-$pkgver.tar.bz2")
 md5sums=('eaf7638fad4016abad4a3116485c8e67')
 

@@ -11,8 +11,6 @@ pkgbase = libxaw3dxft
 	depends = libxft
 	depends = libxmu
 	depends = libxpm
-	provides = xaw3d
-	conflicts = xaw3d
 	source = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/libXaw3dXft-1.6.2c.tar.bz2
 	md5sums = eaf7638fad4016abad4a3116485c8e67
 
