@@ -1,6 +1,6 @@
 pkgbase = mm-common-git
 	pkgdesc = The build infrastructure and utilities shared among the GNOME C++ binding libraries
-	pkgver = 0.9.7.2.g569bfca
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/GNOME/mm-common
 	arch = any
