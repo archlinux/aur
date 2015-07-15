@@ -1,0 +1,43 @@
+pkgbase = gthumb-git
+	pkgdesc = Image browser and viewer for the GNOME Desktop
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://live.gnome.org/gthumb/
+	install = gthumb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = libchamplain
+	makedepends = libraw
+	makedepends = exiv2
+	makedepends = itstool
+	makedepends = brasero
+	makedepends = librsvg
+	makedepends = libraw
+	makedepends = liboauth
+	makedepends = docbook-xsl
+	makedepends = gnome-common
+	makedepends = yelp-tools
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = librsvg
+	depends = clutter-gtk
+	depends = gst-plugins-base-libs
+	depends = gsettings-desktop-schemas
+	depends = libwebp
+	depends = webkit2gtk
+	optdepends = libraw: read RAW files
+	optdepends = exiv2: metadata support
+	optdepends = libchamplain: map viewer
+	optdepends = brasero: burn discs
+	optdepends = liboauth: web albums
+	provides = gthumb=3.3.4
+	conflicts = gthumb
+	options = !emptydirs
+	source = gthumb::git+https://git.gnome.org/browse/gthumb
+	md5sums = SKIP
+
+pkgname = gthumb-git
+
