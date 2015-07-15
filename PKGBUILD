@@ -23,6 +23,7 @@ replaces=('git-annex-standalone')
 source=('git-annex' 'runshell.patch')
 sha256sums=('c7d12ba3f3a00736d0d22e18e76721314d461561adcf48cbd102413e5e75be92'
             '173b3f0dc5a314559574113a2cc1242b61ff7caebbd3be52d3090b7a91e1268f')
+validpgpkeys=('40055C6AFD2D526B2961E78F5EE1DBA789C809CB')
 
 # binaries to remove from resulting standalone package
 _rmbin=('cp' 'curl' 'git' 'gpg' 'lsof' 'rsync' 'sh' 'sha1sum' 'sha224sum' \
@@ -34,18 +35,24 @@ depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget'
 
 _file_x86_64="git-annex-standalone-amd64-${pkgver}.tar.gz"
 _url_x86_64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
-source_x86_64=("${_file_x86_64}::${_url_x86_64}")
-sha256sums_x86_64=('be3f0f2a4a317bf9ee24db82821dd147e1ab9a1c6f0fbfae4a36aee6a22bbfce')
+source_x86_64=("${_file_x86_64}::${_url_x86_64}"
+               "${_file_x86_64}.sig::${_url_x86_64}.sig")
+sha256sums_x86_64=('be3f0f2a4a317bf9ee24db82821dd147e1ab9a1c6f0fbfae4a36aee6a22bbfce'
+                   'SKIP')
 
 _file_i686="git-annex-standalone-i386-${pkgver}.tar.gz"
 _url_i686="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz"
-source_i686=("${_file_i686}::${_url_i686}")
-sha256sums_i686=('8901ab302b3bbbacea11b34a1213487b1d2c1f1b7742f220fb743b644ea84362')
+source_i686=("${_file_i686}::${_url_i686}"
+             "${_file_i686}.sig::${_url_i686}.sig")
+sha256sums_i686=('8901ab302b3bbbacea11b34a1213487b1d2c1f1b7742f220fb743b644ea84362'
+                 'SKIP')
 
 _file_armv6h="git-annex-standalone-armel-${pkgver}.tar.gz"
 _url_armv6h="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz"
-source_armv6h=("${_file_armv6h}::${_url_armv6h}")
-sha256sums_armv6h=('9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658')
+source_armv6h=("${_file_armv6h}::${_url_armv6h}"
+               "${_file_armv6h}.sig::${_url_armv6h}.sig")
+sha256sums_armv6h=('9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658'
+                   'SKIP')
 
 package() {
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
