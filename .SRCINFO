@@ -1,0 +1,17 @@
+pkgbase = blender26-ogre-exporter
+	pkgdesc = Blender-integrated exporter for exporting OGRE meshes
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://www.ogre3d.org/wiki/index.php/OGRE_Meshes_Exporter
+	install = blender-ogre-exporter.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = blender
+	depends = ogre
+	source = http://blender2ogre.googlecode.com/files/blender2ogre-0.6.0.zip
+	md5sums = 72340d0d510e63427dfe980de4eb2a3d
+
+pkgname = blender26-ogre-exporter
+

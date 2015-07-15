@@ -1,0 +1,5 @@
+post_install() {
+	echo "  Installing: "
+	echo "Use blenders interface, under user-prefs, click addons, click 'install-addon', and select: io_export_ogreDotScene.py"
+	echo "or you can simply copy io_export_ogreDotScene.py to your blender installation under blender/2.63/scripts/addons/."
+}
