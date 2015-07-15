@@ -1,0 +1,20 @@
+pkgbase = boombox
+	pkgdesc = BoomBox is an KDE4-audio player with built-in database for easy browsing of local music files
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/BoomBox?content=12964
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs>=4.3
+	depends = kdebase-runtime
+	depends = qt4
+	depends = phonon>=4
+	depends = kdelibs>=4
+	source = https://opendesktop.org/CONTENT/content-files/12964-boombox-0.4.4.tar.gz
+	md5sums = 00149aa097444726280bf5874de69e80
+
+pkgname = boombox
+
