@@ -1,0 +1,16 @@
+pkgbase = lated
+	pkgdesc = A simple LaTeX editor with preview function.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php/laTed?content=121895
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdegraphics-okular
+	source = http://opendesktop.org/CONTENT/content-files/121895-lated.tar.bz
+	md5sums = 67d6470b3e0379ce9ca68ad7ce46faf3
+
+pkgname = lated
+
