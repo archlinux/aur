@@ -1,0 +1,16 @@
+pkgbase = netctl-eduroam-tu-dresden
+	pkgdesc = Example netctl profile for eduroam at TU Dresden
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://raw.githubusercontent.com/JuanCabre/arch_pckgs/master/eduroam-tu-dresden/eduroam-tu-dresden
+	install = install
+	arch = any
+	license = MIT
+	depends = ca-certificates
+	depends = netctl
+	source = eduroam-tu-dresden
+	md5sums = 846cb8c3df725e968ec83a0948ae449a
+	sha256sums = 91ac966c6cfe12d990cae8bcb2ecba9758a779d5a2bb8e48b03a4ca87762a3d5
+
+pkgname = netctl-eduroam-tu-dresden
+

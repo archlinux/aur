@@ -1,0 +1,17 @@
+Connection='wireless'
+Interface=wlp3s0
+Security='wpa-configsection'
+Description="eduroam network"
+IP='dhcp'
+TimeoutWPA=60
+WPAConfigSection=(
+    'ssid="eduroam"'
+    'key_mgmt=WPA-EAP'
+    'eap=TTLS'
+    'proto=WPA2'
+    'phase2="auth=PAP"'
+    'anonymous_identity="anonymous@tu-dresden.de"'
+    'identity="xxxxxxx@tu-dresden.de"'
+    'ca_cert="Path/to/the/certificate"'
+    'password="xxxxxxxxxx"'
+)

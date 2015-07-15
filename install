@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo "To use eduroam: copy the template..."
+  echo "    cp /etc/netctl/examples/eduroam-tu-dresden /etc/netctl/eduroam-tu-dresden"
+  echo "... and edit it, to match your credentials"
+}
