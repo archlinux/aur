@@ -1,0 +1,15 @@
+pkgbase = aury
+	pkgdesc = Automates maintenance of AUR python packages
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/fdev31/aury.git
+	arch = any
+	license = MIT
+	depends = python
+	depends = burp
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/a/aury/aury-1.0.tar.gz#md5=d1d6600a17f6d80e322165366534c4e6
+	md5sums = d1d6600a17f6d80e322165366534c4e6
+
+pkgname = aury
+
