@@ -1,0 +1,24 @@
+pkgbase = arm-none-eabi-gdb-linaro
+	pkgdesc = Linaro GDB is a branch of FSF GDB that contains ARM focused features and patches.
+	pkgver = 7.8_2014.09
+	pkgrel = 1
+	url = https://releases.linaro.org/
+	arch = i686
+	arch = x86_64
+	groups = arm-none-eabi-toolchain
+	license = GPL3
+	makedepends = texinfo
+	depends = ncurses
+	depends = expat
+	depends = python2
+	optdepends = openocd: for debugging JTAG targets
+	provides = arm-none-eabi-gdb
+	conflicts = cross-arm-none-eabi-gdb
+	conflicts = arm-none-eabi-gdb
+	options = !libtool
+	options = !emptydirs
+	source = https://releases.linaro.org/14.09/components/toolchain/gdb-linaro/gdb-linaro-7.8-2014.09.tar.xz
+	sha256sums = fbbe96b8d0debf7c2d8c9a4a6c7ca0ba87d536e43289f81c4af56f95e5f7b5ea
+
+pkgname = arm-none-eabi-gdb-linaro
+
