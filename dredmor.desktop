@@ -1,0 +1,8 @@
+[Desktop Entry]
+Value=1.0
+Type=Application
+Name=Dungeons of Dredmor
+Categories=Game
+Path=/opt/dredmor
+Exec=/opt/dredmor/Dredmor
+Icon=dredmor

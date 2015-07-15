@@ -1,0 +1,20 @@
+pkgbase = dungeons-of-dredmor
+	pkgdesc = Rogue-like game with hilarity as the centerpiece. Requires purchase from Humble Store (or Bundle).
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://dungeonsofdredmor.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = gcc-libs
+	depends = openal
+	source = dredmor.desktop
+	source = dredmor.png
+	md5sums = cc0659ad114563dd1122910f78b27dbb
+	md5sums = a629a7939c0a8f4ef86fb351e72d6be9
+
+pkgname = dungeons-of-dredmor
+
