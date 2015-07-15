@@ -1,6 +1,6 @@
 pkgbase = hunspell-pt_pt-preao
 	pkgdesc = Portuguese (European, pre-orthographic agreement) hunspell dictionaries
-	pkgver = 20150418
+	pkgver = 20150704
 	pkgrel = 1
 	url = http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = hunspell-pt_pt-preao
 	license = LGPL
 	license = MPL
 	optdepends = hunspell: the spell checking libraries and apps
-	source = http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/hunspell-pt_PT-preao-20150418.tar.gz
-	md5sums = 43e21d50e97d7d0916b31381ddcba311
+	source = http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/hunspell-pt_PT-preao-20150704.tar.gz
+	md5sums = 88c65fea113430eb1f15de5ae7d8575b
 
 pkgname = hunspell-pt_pt-preao
 
