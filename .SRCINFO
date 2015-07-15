@@ -1,0 +1,21 @@
+pkgbase = salome-smesh
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - SMESH Module
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = boost
+	makedepends = swig2
+	makedepends = python2-sphinx
+	makedepends = optipng
+	depends = salome-geom>=7.6.0
+	depends = salome-geom<7.7.0
+	depends = salome-med>=7.6.0
+	depends = salome-med<7.7.0
+	source = salome-smesh.profile
+	md5sums = 2770fc45e9fc631a1f68ec5e851705e4
+
+pkgname = salome-smesh
+
