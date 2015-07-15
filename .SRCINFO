@@ -1,0 +1,19 @@
+pkgbase = ctrlwm
+	pkgdesc = Is a customisable tool for automatic windows positioning and sizing.
+	pkgver = 0_8_0_9
+	pkgrel = 3
+	url = http://opendesktop.org/content/show.php/ctrlwm?content=114565
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = cmake
+	makedepends = xorg-server-devel
+	depends = libxtst
+	depends = libxmu
+	depends = glib2
+	source = https://opendesktop.org/CONTENT/content-files/114565-ctrlwm_0_8_0_9_pack.tar.gz
+	md5sums = ce19612dffcf06487d86d5d054f06a0a
+
+pkgname = ctrlwm
+
