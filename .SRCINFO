@@ -1,0 +1,18 @@
+pkgbase = python-pyzolib
+	pkgdesc = The pyzolib package provides basic functionality for the Pyzo environment.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://pypi.python.org/packages/source/p/pyzolib/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-shiboken
+	optdepends = python-pyside: At least one installed
+	optdepends = python-pyqt4: At least one installed
+	source = https://pypi.python.org/packages/source/p/pyzolib/pyzolib-0.3.3.tar.gz
+	source = license.txt
+	sha1sums = 04de49364729de43992135c567cf94fba21f6a73
+	sha1sums = f48b8e7759daf06f23d55739af167c523796d508
+
+pkgname = python-pyzolib
+
