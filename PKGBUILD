@@ -9,7 +9,7 @@ _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
 #_uim_mozc="yes"
 ## If applying patch for uim-mozc fails, try to uncomment below.
-#_kill_kill_line="yes"
+_kill_kill_line="yes"
 ## This will disable the 'kill-line' feature of uim-mozc.
 
 ## If you will be using mozc.el on Emacs, uncomment below.
@@ -70,7 +70,7 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
-_utdicver=20150529
+_utdicver=20150715
 _zipcoderel=201506
 _uimmozcrev=316.2b3eff9
 
@@ -82,7 +82,7 @@ _jpusd=10
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2095.102.20150529
+pkgver=2.17.2095.102.20150715
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -101,18 +101,18 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
   mod-generate-mozc-ut.sh
 )
-
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '53374c972e58097143c8f08387c1eb191d09f190'
-          '6540c19e76053e4d2c8e339a7257dbaf5ad56262'
+          'fb7cf7efcbdfeae3dd26095e4c1dc6602679b629'
+          '6604c7b616af8287dc0c3d6975a39130fe1ebdd0'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           'b174652a1689df61049f4a3fcebfc3f5edb7dcdc'
           'c4f56e0063f5c1c932609aa1d8afe62e56e19c3d'
           '6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7')
+
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
   true && pkgname+=('ibus-mozc-ut')
@@ -146,11 +146,6 @@ prepare() {
   ln -sf `which python2` ./python
   PATH="${srcdir}:${PATH}"
 
-  for dep in jsoncpp gyp protobuf japanese_usage_dictionary
-  do
-    ln -sf "`pwd`/$dep" mozc/src/third_party/
-  done
-
   cd "${srcdir}/mozcdic-ut-${_utdicver}"
 
   _mozcver=`mozcver`
@@ -159,6 +154,11 @@ prepare() {
   MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" \
     ./generate-mozc-ut.sh
   msg "Done."
+
+  for dep in jsoncpp gyp protobuf japanese_usage_dictionary
+  do
+    ln -sf "${srcdir}/${dep}" "${srcdir}/${pkgbase}-${pkgver}/third_party/"
+  done
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 

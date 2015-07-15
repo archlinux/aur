@@ -1,6 +1,6 @@
 pkgbase = mozc-ut
 	pkgdesc = Mozc the Japanese Input Method with Mozc UT Dictionary (additional dictionary) and uim-mozc (optional)
-	pkgver = 2.17.2095.102.20150529
+	pkgver = 2.17.2095.102.20150715
 	pkgrel = 1
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
@@ -24,11 +24,11 @@ pkgbase = mozc-ut
 	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
 	source = japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=10
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-20150529.tar.bz2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150529.gz
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-20150715.tar.bz2
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150715.gz
 	source = EDICT_license.html
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201505.zip
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201505.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201506.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201506.zip
 	source = mod-generate-mozc-ut.sh
 	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-316.2b3eff9.tar.xz
 	sha1sums = SKIP
@@ -36,11 +36,11 @@ pkgbase = mozc-ut
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 53374c972e58097143c8f08387c1eb191d09f190
-	sha1sums = 6540c19e76053e4d2c8e339a7257dbaf5ad56262
+	sha1sums = fb7cf7efcbdfeae3dd26095e4c1dc6602679b629
+	sha1sums = 6604c7b616af8287dc0c3d6975a39130fe1ebdd0
 	sha1sums = e0ba18e67c1be8e3cfb8ecb30760597b215da255
-	sha1sums = 1bef90786e016b94a02b694041010719bcd74ca2
-	sha1sums = ad9cc9bd9e5acb5d6f75741e07f17732f3ff71a8
+	sha1sums = b174652a1689df61049f4a3fcebfc3f5edb7dcdc
+	sha1sums = c4f56e0063f5c1c932609aa1d8afe62e56e19c3d
 	sha1sums = 6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7
 	sha1sums = 8b17dcfdb43ac86e223c71c17676bd5f6aa8c40d
 
