@@ -1,0 +1,14 @@
+pkgbase = kvazaar-git
+	pkgdesc = An open-source HEVC encoder
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ultravideo/kvazaar
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = yasm
+	provides = kvazaar
+
+pkgname = kvazaar-git
+
