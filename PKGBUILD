@@ -3,7 +3,7 @@
 # Contributor: foalsrock <foalsrock at gmail dot com>
 
 pkgname=compass-icon-theme
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='The alternative icon theme for the .nitrux Operating System'
 url='http://nitrux.in/store/artwork-store/compass-icon-theme/'
@@ -11,7 +11,7 @@ license=('cc-by-nc-nd-4.0')
 depends=('librsvg')
 arch=('any')
 source=("http://nitrux.in/downloads/files/free/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4c635ce9760926dee31a7bdf22ebc39a')
+md5sums=('63192602b948f66c27a901aa8f4428b0')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/icons/"
