@@ -1,0 +1,15 @@
+pkgbase = python2-windmill
+	pkgdesc = Windmill Web Tester
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.getwindmill.com/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-distribute
+	provides = windmill
+	source = http://pypi.python.org/packages/source/w/windmill/windmill-1.6.tar.gz
+	md5sums = 56eb5bd57a52d8e762b488e647e5efb4
+
+pkgname = python2-windmill
+
