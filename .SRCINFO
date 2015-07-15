@@ -1,0 +1,15 @@
+pkgbase = vim-opencl
+	pkgdesc = Vim plugin for syntax checking and highliting for OpenCL files.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/petRUShka/vim-opencl
+	arch = any
+	groups = vim-plugins
+	license = UNKNOWN
+	optdepends = vim-syntastic: enable syntax checker 1/2
+	optdepends = clcc: enable syntax checker 2/2
+	source = https://github.com/petRUShka/vim-opencl/archive/master.zip
+	sha512sums = SKIP
+
+pkgname = vim-opencl
+
