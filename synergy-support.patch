@@ -1,0 +1,55 @@
+diff -u slim-1.3.5/app.cpp slim-1.3.5-synergy/app.cpp
+--- slim-1.3.5/app.cpp	2012-12-31 14:03:42.000000000 +0100
++++ slim-1.3.5-synergy/app.cpp	2013-05-15 22:10:12.434687885 +0200
+@@ -357,6 +357,14 @@
+ 
+ 		LoginPanel->Reset();
+ 
++        /* Start Synergy */
++		string synergy_server = cfg->getOption("synergy_server");
++		if (synergy_server != "" && system("pgrep synergyc") != 0)
++		{
++		    string synergy = "XAUTHORITY=" + cfg->getOption("authfile") + " synergyc -f " + synergy_server + " &";
++		    system(synergy.c_str());
++		}
++
+ 		if (firstloop && cfg->getOption("default_user") != "") {
+ 			LoginPanel->SetName(cfg->getOption("default_user") );
+ 		}
+diff -u slim-1.3.5/cfg.cpp slim-1.3.5-synergy/cfg.cpp
+--- slim-1.3.5/cfg.cpp	2012-12-31 14:03:42.000000000 +0100
++++ slim-1.3.5-synergy/cfg.cpp	2013-05-15 20:51:14.474537000 +0200
+@@ -56,6 +56,7 @@
+ 	options.insert(option("sessions","wmaker,blackbox,icewm"));
+ 	options.insert(option("sessiondir",""));
+ 	options.insert(option("hidecursor","false"));
++	options.insert(option("synergy_server",""));
+ 
+ 	/* Theme stuff */
+ 	options.insert(option("input_panel_x","50%"));
+Common subdirectories: slim-1.3.5/cmake and slim-1.3.5-synergy/cmake
+diff -u slim-1.3.5/slim.conf slim-1.3.5-synergy/slim.conf
+--- slim-1.3.5/slim.conf	2012-12-31 14:03:42.000000000 +0100
++++ slim-1.3.5-synergy/slim.conf	2013-05-15 20:51:14.474537000 +0200
+@@ -47,6 +47,9 @@
+ # options "-d" and "-nodaemon"
+ # daemon	yes
+ 
++# Synergy server hostname or IP
++#synergy_server     hostname.domain
++
+ # Available sessions (first one is the default).
+ # The current chosen session name is replaced in the login_cmd
+ # above, so your login command can handle different sessions.
+diff -u slim-1.3.5/slim.service slim-1.3.5-synergy/slim.service
+--- slim-1.3.5/slim.service	2012-12-31 14:03:42.000000000 +0100
++++ slim-1.3.5-synergy/slim.service	2013-05-15 20:51:14.477871000 +0200
+@@ -4,6 +4,7 @@
+ 
+ [Service]
+ ExecStart=/usr/bin/slim -nodaemon
++Restart=always
+ 
+ [Install]
+ Alias=display-manager.service
+Common subdirectories: slim-1.3.5/themes and slim-1.3.5-synergy/themes

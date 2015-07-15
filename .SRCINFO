@@ -1,0 +1,33 @@
+pkgbase = slim-synergy
+	pkgdesc = Desktop-independent graphical login manager for X11 with synergy support
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = http://slim.berlios.de/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = freeglut
+	depends = pam
+	depends = libxmu
+	depends = libpng
+	depends = libjpeg
+	depends = libxft
+	depends = xorg-xauth
+	depends = synergy
+	provides = slim
+	conflicts = slim
+	backup = etc/slim.conf
+	backup = etc/logrotate.d/slim
+	backup = etc/pam.d/slim
+	source = http://download.berlios.de/slim/slim-1.3.5.tar.gz
+	source = slim.pam
+	source = slim.logrotate
+	source = synergy-support.patch
+	sha256sums = 818d209f51e2fa8d5b94ef75ce90a7415be48b45e796d66f8083a9532b655629
+	sha256sums = b9a77a614c451287b574c33d41e28b5b149c6d2464bdb3a5274799842bca51a4
+	sha256sums = 5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def
+	sha256sums = 15cecdd15c377a618542ddd7211c8ac5cff0c8996c29b19462e84376a02887de
+
+pkgname = slim-synergy
+
