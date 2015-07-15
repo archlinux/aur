@@ -1,0 +1,13 @@
+pkgbase = indimpc-git
+	pkgdesc = Minimalistic MPD client with support for multimedia keys and notifications
+	pkgver = 20121107
+	pkgrel = 1
+	url = https://github.com/fmoralesc/indimpc
+	arch = any
+	license = custom
+	depends = python2-dbus
+	depends = python2-notify
+	depends = python2-mpd
+
+pkgname = indimpc-git
+
