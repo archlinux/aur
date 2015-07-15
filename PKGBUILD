@@ -10,7 +10,7 @@ depends=('libpurple' 'json-glib')
 
 makedepends=('make')
 source=("https://github.com/jgeboski/purple-facebook/releases/download/${pkgver}/purple-facebook-${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('fbd948c5aa397a42f9d09b408cb2c619')
 
 build() {
   cd "${srcdir}/purple-facebook-${pkgver}"
