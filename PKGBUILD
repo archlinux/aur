@@ -27,6 +27,7 @@ md5sums=('SKIP'
          '661acd7e6c5f3c53177157f681335459'
          '9d9e75d6519c723e5870801d5d43bf37'
          'cdce3aba22e7106a1278a512b7f6a028')
+PKGEXT='.pkg.tar'
 
 pkgver() {
   cd "$srcdir/madedit/madedit"
