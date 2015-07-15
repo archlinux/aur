@@ -1,0 +1,23 @@
+pkgbase = soundconverter-py3k-git
+	pkgdesc = A simple sound converter application for GNOME using python 3 and GTK+3 branch
+	pkgver = 3.0.0.alpha1.7.g34895a6
+	pkgrel = 1
+	url = http://soundconverter.org/
+	install = soundconverter.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = intltool
+	makedepends = gnome-common
+	depends = pygtk
+	depends = gst-python
+	depends = gst-plugins-ugly
+	depends = desktop-file-utils
+	depends = gst-plugins-good
+	provides = soundconverter
+	conflicts = soundconverter
+	source = git+https://github.com/kassoulet/soundconverter.git#branch=py3k
+	md5sums = SKIP
+
+pkgname = soundconverter-py3k-git
+
