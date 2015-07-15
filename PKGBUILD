@@ -1,7 +1,7 @@
 # Maintainer: Christopher Woodruff <cswoodruff@gmail.com>
 pkgname=python2-sphinx-autobuild
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch a Sphinx directory and rebuild the documentation when a change is detected. Also includes a livereload enabled web server."
 arch=('any')
 url="https://github.com/GaretJax/sphinx-autobuild"
@@ -35,6 +35,9 @@ md5sums=(
 
 package() {
   cd "$srcdir/sphinx-autobuild-$pkgver"
+
+  sed -i "s/sphinx-build/sphinx-build2/" sphinx_autobuild/__init__.py
+
   python2 setup.py install --root="$pkgdir/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
