@@ -13,6 +13,7 @@ source=("http://download.tuxfamily.org/casetta/casetta-0.3/casetta-$pkgver.tar.g
         'fixes20150517.patch')
 md5sums=('0d95ce37cacd99f79f826fe06eb4104a'
          'ce51dbbb3e1649051acd671c56bb2065')
+PKGEXT='.pkg.tar'
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
