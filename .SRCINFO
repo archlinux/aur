@@ -1,0 +1,14 @@
+pkgbase = java-commons-cli
+	pkgdesc = Java API for parsing command line options passed to programs
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://commons.apache.org/cli/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = java-runtime
+	source = http://artfiles.org/apache.org//commons/cli/binaries/commons-cli-1.3.1-bin.tar.gz
+	sha256sums = d89ae4e907aa9d753cdc5b97705c16edf1277a5c09cd310de4ae8c3878369b5b
+
+pkgname = java-commons-cli
+
