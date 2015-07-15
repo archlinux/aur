@@ -1,0 +1,20 @@
+pkgbase = ccwatcher
+	pkgdesc = A QT monitors the progress of computational chemistry calculations during runtime.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php/ccwatcher?content=119644
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automoc4
+	makedepends = cmake
+	depends = python2>=2.4
+	depends = gnuplot>=4
+	optdepends = pyqt>=4
+	optdepends = avogadro
+	optdepends = pyqwt>=5
+	source = http://heanet.dl.sourceforge.net/project/ccwatcher/1.2.0/ccwatcher-1.2.0-src.tar.bz2
+	md5sums = dad007e9bd6c52b7e3a5093f34b5e189
+
+pkgname = ccwatcher
+
