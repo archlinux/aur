@@ -1,0 +1,14 @@
+pkgbase = caenvmelib
+	pkgdesc = Interface library for CAEN VME Bridges
+	pkgver = 2.41
+	pkgrel = 2
+	url = http://www.caen.it/csite/CaenProd.jsp?idmod=689&parent=38
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc>2.12
+	source = file://CAENVMELib-2.41.tgz
+	sha256sums = 631465e1f4fb6ae2884dd849c04ce50ce68ab30392e62f37c7df588b89805f60
+
+pkgname = caenvmelib
+
