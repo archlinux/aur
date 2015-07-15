@@ -1,0 +1,18 @@
+pkgbase = pacmanxg
+	pkgdesc = Yet another GUI for pacman and yaourt. Depends on neither GTK or Qt: only X11
+	pkgver = 4.16.3
+	pkgrel = 1
+	url = http://almin-soft.ru/index.php?programmy/pacmanxg/tags/pacmanxg
+	install = pacmanxg.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	optdepends = curl: news and screenshot support
+	optdepends = yaourt: AUR support
+	optdepends = lib32-libxft: anti-aliasing fix for x64
+	optdepends = pkgfile: for searching file(s) from packages
+	optdepends = scrot: for making screenshots
+	options = !strip
+
+pkgname = pacmanxg
+

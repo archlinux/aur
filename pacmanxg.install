@@ -1,0 +1,22 @@
+pre_install() {
+ mkdir /opt/Almin-Soft/
+}
+
+post_install() {
+ ln -s /opt/Almin-Soft/pacmanxg/pacmanxg /usr/bin/pacmanxg  
+ gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+ update-desktop-database -q
+}
+
+post_upgrade() {
+ ln -sf /opt/Almin-Soft/pacmanxg/pacmanxg /usr/bin/pacmanxg  
+ gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+ update-desktop-database -q
+}
+
+post_remove() {
+ unlink /usr/bin/pacmanxg
+ rmdir /opt/Almin-Soft/
+ gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+ update-desktop-database -q
+}
