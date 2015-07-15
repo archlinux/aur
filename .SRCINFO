@@ -1,7 +1,7 @@
 pkgbase = kdbx-viewer
 	pkgdesc = ncurses GUI to browse and command-line tool to dump all contents of a KeePass2 Database files (kdbx)
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/max-weller/kdbx-viewer
 	arch = x86_64
 	license = GPL
