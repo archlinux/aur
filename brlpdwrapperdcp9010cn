@@ -1,0 +1,137 @@
+#! /bin/sh
+#
+# Copyright (C) 2005-2011 Brother. Industries, Ltd.
+#                                    Ver1.10
+
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+# Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+LOGFILE="/dev/null"
+LOGLEVEL="1"
+LOGCLEVEL="7"
+DEBUG=0
+NUPENABLE=1
+LOG_LATESTONLY=1
+errorcode=0
+
+if [ $DEBUG != 0 ]; then
+    LOGFILE=/tmp/br_cupsfilter_debug_log
+fi
+
+PPDC=`printenv | grep "PPD="`
+PPDC=`echo $PPDC | sed -e 's/PPD=//'`
+
+if [ "$PPDC" = "" ]; then
+    PPDC="/usr/share/cups/model/brother_dcp9010cn_printer_en.ppd"
+fi
+
+
+if [ $LOGFILE != "/dev/null" ]; then
+  if [ $LOG_LATESTONLY == "1" ]; then
+    rm -f $LOGFILE
+    date                                                           >$LOGFILE
+  else
+    if [ -e $LOGFILE ]; then
+        date                                                        >>$LOGFILE
+    else
+        date                                                        >$LOGFILE
+    fi
+  fi
+    echo "arg0 = $0"                                           >>$LOGFILE
+    echo "arg1 = $1"                                           >>$LOGFILE
+    echo "arg2 = $2"                                           >>$LOGFILE
+    echo "arg3 = $3"                                           >>$LOGFILE
+    echo "arg4 = $4"                                           >>$LOGFILE
+    echo "arg5 = $5"                                           >>$LOGFILE
+    echo "arg6 = $6"                                           >>$LOGFILE
+    echo "PPD  = $PPD"                                         >>$LOGFILE
+fi
+
+INPUT_TEMP_PS=`mktemp /tmp/br_input_ps.XXXXXX`
+
+nup="cat"
+if [ "`echo $5 | grep 'Nup='`" != '' ] && [ $NUPENABLE != 0 ]; then
+
+    if   [ "`echo $5 | grep 'Nup=64'`" != '' ]; then
+        nup="psnup -64"
+    elif [ "`echo $5 | grep 'Nup=32'`" != '' ]; then
+        nup="psnup -32"
+    elif [ "`echo $5 | grep 'Nup=25'`" != '' ]; then
+        nup="psnup -25"
+    elif [ "`echo $5 | grep 'Nup=16'`" != '' ]; then
+        nup="psnup -16"
+    elif [ "`echo $5 | grep 'Nup=8'`" != '' ]; then
+        nup="psnup -8"
+    elif [ "`echo $5 | grep 'Nup=6'`" != '' ]; then
+        nup="psnup -6"
+    elif [ "`echo $5 | grep 'Nup=4'`" != '' ]; then
+        nup="psnup -4"
+    elif [ "`echo $5 | grep 'Nup=2'`" != '' ]; then
+        nup="psnup -2"
+    elif [ "`echo $5 | grep 'Nup=1'`" != '' ]; then
+        nup="cat"
+    fi
+    echo   "NUP=$nup"                                      >>$LOGFILE
+   if [ -e /usr/bin/psnup ]; then
+       if [ $# -ge 7 ]; then
+           cat $6  | $nup > $INPUT_TEMP_PS
+       else
+           cat       | $nup > $INPUT_TEMP_PS
+       fi
+   else
+       if [ $# -ge 7 ]; then
+           cp $6  $INPUT_TEMP_PS
+       else
+           cat    > $INPUT_TEMP_PS
+       fi
+   fi
+else
+   if [ $# -ge 7 ]; then
+      cp $6  $INPUT_TEMP_PS
+   else
+      cat    > $INPUT_TEMP_PS
+   fi
+fi
+if [ -e "/opt/brother/Printers/dcp9010cn/lpd/filterdcp9010cn" ]; then
+       :
+else
+    echo "ERROR: /opt/brother/Printers/dcp9010cn/lpd/filterdcp9010cn does not exist"   >>$LOGFILE
+    errorcode=30
+    exit
+fi
+
+CUPSOPTION=`echo "$5 Copies=1" | sed -e 's/BrMirror=OFF/MirrorPrint=OFF/' -e 's/BrMirror=ON/MirrorPrint=ON/' -e 's/BrChain/Chain/' -e 's/BrBrightness/Brightness/' -e 's/BrContrast/Contrast/' -e 's/BrHalfCut/HalfCut/' -e 's/BrAutoTapeCut/AutoCut/' -e 's/BrHalftonePattern/Halftone/' -e 's/Binary/Binary/' -e 's/Dither/Dither/' -e 's/ErrorDiffusion/ErrorDiffusion/' -e 's/BrSheets/Sheets/' -e 's/multiple-document-handling/Collate/' -e 's/separate-documents-collated-copies/ON/' -e 's/separate-documents-uncollated-copies/OFF/'`
+if [ -e "/opt/brother/Printers/dcp9010cn/cupswrapper/brcupsconfpt1" ]; then
+  if [ $DEBUG = 0 ]; then
+     /opt/brother/Printers/dcp9010cn/cupswrapper/brcupsconfpt1  DCP9010CN  $PPDC 0 "$CUPSOPTION" "dcp9010cn">> /dev/null
+  else
+     /opt/brother/Printers/dcp9010cn/cupswrapper/brcupsconfpt1  DCP9010CN  $PPDC $LOGCLEVEL "$CUPSOPTION" "dcp9010cn">>$LOGFILE
+  fi
+fi
+
+if [ $DEBUG -lt 10 ]; then
+    cat    $INPUT_TEMP_PS | /opt/brother/Printers/dcp9010cn/lpd/filterdcp9010cn "$$" "CUPS" "USB"
+
+    if [ $LOGLEVEL -gt 2 ];  then
+       if [ $LOGFILE != "/dev/null" ]; then
+         echo ""                                                >>$LOGFILE
+         echo "    ------PostScript Data-------"                >>$LOGFILE
+         cat    $INPUT_TEMP_PS                                  >>$LOGFILE
+       fi
+    fi
+fi
+rm -f  $INPUT_TEMP_PS
+
+exit $errorcode
