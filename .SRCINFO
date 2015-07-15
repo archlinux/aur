@@ -8,6 +8,7 @@ pkgbase = python2-buildozer-git
 	makedepends = cmake
 	makedepends = libusb>=1.0
 	depends = python2
+	depends = python2-pexpect
 
 pkgname = python2-buildozer-git
 
