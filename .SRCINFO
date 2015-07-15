@@ -1,0 +1,12 @@
+pkgbase = pidgin-elementary-tray-icons
+	pkgdesc = Pidgin elementary icon theme for system tray
+	pkgver = 1
+	pkgrel = 1
+	url = http://xfce-look.org/content/show.php/Elementary+Tray+Icons+4+Pidgin?content=126339
+	arch = any
+	license = GPL
+	source = http://xfce-look.org/CONTENT/content-files/126339-elementary-pidgin-tray.tar.bz2
+	md5sums = 126c206bc8d18bf452c280813a375f01
+
+pkgname = pidgin-elementary-tray-icons
+
