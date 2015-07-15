@@ -45,7 +45,7 @@ md5sums=('c8dc33a61251acb5474e56eab6b18f43'
          '0944695e9b9b30f39028f85c83c6a7e2'
          'c3f643ef16aab3b4fe9ff5b333bff41a')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -Np0 -i "${srcdir}/dont-update-cache.patch"
@@ -63,6 +63,10 @@ build() {
   patch -Np0 -i "${srcdir}/mail-notification-5.4-add-fallback-icon.patch"
   patch -Np1 -i "${srcdir}/mail-notification-5.4-gmime.patch"
   patch -Np1 -i "${srcdir}/mail-notification-5.4-libx11.patch"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   gtk-builder-convert ui/mailbox-properties-dialog.glade ui/mailbox-properties-dialog.ui
   gtk-builder-convert ui/properties-dialog.glade ui/properties-dialog.ui
@@ -73,6 +77,11 @@ build() {
       cflags="${CFLAGS}" cppflags="${CXXFLAGS}" ldflags="${LDFLAGS}" \
       library-mode=0755
   ./jb build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 ./jb install
 
   rm -f "${pkgdir}/usr/share/mail-notification/"*.glade
@@ -83,3 +92,5 @@ build() {
   gconf-merge-schema ${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas --domain mail-notification ${pkgdir}/etc/gconf/schemas/*.schemas
   rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
 }
+
+# vim: ts=2:sw=2:et
