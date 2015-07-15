@@ -1,0 +1,16 @@
+pkgbase = vim-pandoc-syntax-git
+	pkgdesc = syntax plugin for Pandoc's extended markdown
+	pkgver = 1434938917
+	pkgrel = 1
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim
+	provides = vim-pandoc-syntax
+	conflicts = vim-pandoc-syntax
+	source = git://github.com/vim-pandoc/vim-pandoc-syntax.git
+	sha512sums = SKIP
+
+pkgname = vim-pandoc-syntax-git
+
