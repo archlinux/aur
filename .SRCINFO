@@ -1,5 +1,5 @@
 pkgbase = brother-mfc-j870dw
-	pkgdesc = LPR and CUPS driver for the Brother MFC-J870DW
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J870DW printer
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
@@ -23,6 +23,7 @@ pkgbase = brother-mfc-j870dw
 	sha256sums = e8bf7663a58ebe2fd0b32a4ec6a19ed6ed82c12086cab401dc1d46aff903bd75
 	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
 	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-j870dw
 
