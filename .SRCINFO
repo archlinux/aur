@@ -1,0 +1,24 @@
+pkgbase = pidgin-gfire-git
+	pkgdesc = Plugin to Pidgin which adds Xfire network support (Dev/git tree)
+	pkgver = r547.1e33ad5
+	pkgrel = 1
+	url = http://gfireproject.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = libtool
+	depends = glib2
+	depends = libpurple
+	depends = libnotify
+	depends = gtk2
+	provides = pidgin-gfire
+	provides = pidgin-gfire-svn
+	conflicts = pidgin-gfire
+	source = pidgin-gfire-git::git+http://github.com/gfireproject/gfire#branch=master
+	md5sums = SKIP
+
+pkgname = pidgin-gfire-git
+
