@@ -9,7 +9,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2015.06.09
+pkgver=2015.07.15
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -17,9 +17,8 @@ pkgdesc='A voice chat application similar to TeamSpeak'
 url='http://wiki.mumble.info'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf'
-         'libpulse' 'opus' 'libxkbcommon-x11' 'xdg-utils')
+         'libpulse' 'opus' 'libxkbcommon-x11' 'xdg-utils' 'speech-dispatcher')
 makedepends=('boost' 'qt5-tools' 'mesa' 'git')
-#optdepends=('portaudio: for portaudio back-end' 'g15daemon: G15 Keyboard support')
 conflicts=('mumble')
 provides=('mumble')
 install=mumble.install
@@ -36,8 +35,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/mumble"
 
-  sed -i 's|git://git.xiph.org|https://git.xiph.org|' .gitmodules
-
   git submodule init
   git config submodule.3rdparty/fx11-src.url "$srcdir/fx11"
   git config submodule.3rdparty/celt-0.11.0-src.url "$srcdir/celt"
@@ -53,9 +50,10 @@ build() {
 
   # Building mumble
   qmake-qt5 main.pro \
-    CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-speechd no-g15 \
-             no-xevie no-server no-embed-qt-translations no-update packaged" \
-    DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
+    CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie \
+             no-server no-embed-qt-translations no-update packaged" \
+    DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
+    INCLUDEPATH+="/usr/include/speech-dispatcher"
 
   make release
 }
