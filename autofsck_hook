@@ -1,0 +1,20 @@
+#!/usr/bin/ash
+
+run_hook () {
+	eval "$(busybox sed 's/fsck_device/orig_fsck_device/' init_functions)"
+	eval "fsck_device(){ auto_fsck_device \$1;}"
+}
+auto_fsck_device() {
+	orig_fsck_device $1;
+	RET=$?;
+	if [ -n "$fsckret" ] && [ "$fsckret" -ne 255 ]; then
+	        if bitfield_has_bit "$fsckret" 4; then
+			fsck -a $1;
+			if [ "$?" == "0" ];then
+				return 0;
+			fi;
+		fi;
+	fi;
+	return $RET;
+}
+

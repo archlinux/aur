@@ -1,0 +1,32 @@
+post_install() { post_upgrade "${@}"; }
+
+post_upgrade() {
+
+
+    [ -z "${2}" ] && ! grep -qe '^HOOKS=.*autofsck' /etc/mkinitcpio.conf && cat <<'MSG'
+
+==> Add hook to /etc/mkinitcpio.conf:
+  -> HOOKS="[...] autofsck"
+MSG
+
+
+    cat <<'MSG'
+==> Run mkinitcpio to update your initramfs image
+    # mkinitcpio -p linux
+MSG
+
+    echo
+}
+
+post_remove() {
+
+    cat <<'MSG'
+
+==> Remove "autofsck" from HOOKS in /etc/mkinitcpio.conf
+
+==> Run mkinitcpio to update your initramfs image (remove hook)
+    # mkinitcpio -p linux
+MSG
+
+    echo
+}
