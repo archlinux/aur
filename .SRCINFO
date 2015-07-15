@@ -1,0 +1,14 @@
+pkgbase = pear-channel-pear2
+	pkgdesc = PEAR2 PEAR channel
+	pkgver = 1
+	pkgrel = 1
+	url = http://pear2.php.net/
+	arch = any
+	license = MIT
+	depends = php-pear
+	options = !strip
+	source = http://pear2.php.net/channel.xml
+	md5sums = 087a7d8bf8522cfcbfbb3019e2b01ddf
+
+pkgname = pear-channel-pear2
+
