@@ -1,6 +1,6 @@
 pkgbase = mdbtools-git
 	pkgdesc = A set of libraries and utilities for reading Microsoft Access database (MDB) files.
-	pkgver = 0.7.r184.g22b5b62
+	pkgver = 0.7.r195.g584119e
 	pkgrel = 1
 	url = https://github.com/brianb/mdbtools
 	arch = i686

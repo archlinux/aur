@@ -2,7 +2,7 @@
 
 pkgname=mdbtools-git
 _gitname=mdbtools
-pkgver=0.7.r184.g22b5b62
+pkgver=0.7.r195.g584119e
 pkgrel=1
 pkgdesc="A set of libraries and utilities for reading Microsoft Access database (MDB) files."
 arch=('i686' 'x86_64')
