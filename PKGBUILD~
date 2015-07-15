@@ -1,8 +1,8 @@
 # Maintainer: Duru Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=0xdbe-eap
 _pkgname=0xdbe
-pkgver=142.2927.6
-_buildver=142.2927.6
+pkgver=138.2222.2
+_buildver=138.2222.2
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64') # not 'any' because of fsnotifier
@@ -13,7 +13,7 @@ depends=('java-environment' 'giflib')
 source=("http://download.jetbrains.com/dbe/${_pkgname}-${_buildver}.tar.gz" \
         "${_pkgname}.sh" \
         "${_pkgname}.desktop")
-md5sums=('a73433e6fce42275603ef414b9510c83'
+md5sums=('85167d6e0dd5c5eb3cac4ac29b58327f'
          '864c5bb6071568a1a9f26573e090207b'
          'e520ed91c5c0578cc93df0cd7e03166b')
 package() {
@@ -35,7 +35,8 @@ package() {
   install -D -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D -m644 "$srcdir/0xDBE-$_buildver/bin/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
-  
-  install -d -m755 "$pkgdir/usr/share/licenses/${_pkgname}"
-  install -D -m644 "$srcdir"/0xDBE-${_buildver}/license/* "$pkgdir"/usr/share/licenses/${_pkgname}
+  install -D -m644 "$srcdir/0xDBE-$_buildver/license/0xDBE_Preview_license.txt" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.txt"
 }
+md5sums=('f33f22c975f7400508aaf77a62bac389'
+         '864c5bb6071568a1a9f26573e090207b'
+         'e520ed91c5c0578cc93df0cd7e03166b')
