@@ -1,0 +1,36 @@
+pkgbase = arm-none-eabi-gcc48-linaro
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
+	pkgver = 4.8_2014.08
+	pkgrel = 1
+	url = https://releases.linaro.org/
+	arch = i686
+	arch = x86_64
+	groups = arm-none-eabi-toolchain
+	license = GPL
+	license = LGPL
+	makedepends = flex
+	makedepends = bison
+	depends = arm-none-eabi-binutils>=2.23.2
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	provides = arm-none-eabi-gcc
+	conflicts = arm-none-eabi-gcc
+	conflicts = cross-arm-none-eabi-gcc
+	options = staticlibs
+	options = !libtool
+	options = !emptydirs
+	options = !strip
+	options = zipman
+	options = docs
+	source = http://releases.linaro.org/14.08/components/toolchain/gcc-linaro/4.8/gcc-linaro-4.8-2014.08.tar.xz
+	source = http://releases.linaro.org/14.09/components/toolchain/newlib-linaro/newlib-linaro-2.1.0-2014.09.tar.bz2
+	source = gcc-4.8-multilib2.patch
+	source = gcc-4.8-no-exceptions.patch
+	sha256sums = 184ef94f0f9a51fc671e0c8a0702f516e75e23ee33846f36a6370e3d9562ef0b
+	sha256sums = ed92e8547246834725a3c5743fa41d3f573e3e5d2e5066d433ac3c29e6676fc8
+	sha256sums = 104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf
+	sha256sums = 3a1d6a17aba8a578ade3552a6d1beb66a129fb4f3268539596d39cbbef88ac6c
+
+pkgname = arm-none-eabi-gcc48-linaro
+
