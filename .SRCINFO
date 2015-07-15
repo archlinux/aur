@@ -1,7 +1,7 @@
 pkgbase = trilinos
 	pkgdesc = An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems.
 	pkgver = 12.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trilinos.org
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = trilinos
 	depends = openmpi
 	depends = python2
 	depends = boost
-	source = https://trilinos.org/oldsite/download/files/trilinos-12.0.1-Source.tar.bz2
+	source = http://trilinos.sandia.gov/oldsite/download/files/trilinos-12.0.1-Source.tar.bz2
 	md5sums = 19efcadf25c80b834f7c910ccfcca290
 
 pkgname = trilinos
