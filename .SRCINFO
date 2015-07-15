@@ -1,0 +1,25 @@
+pkgbase = brother-mfc-j6910dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J6910DW printer
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: printing text files from lpr
+	source = http://download.brother.com/welcome/dlf006816/mfcj6910dw_cupswrapper_GPL_source_3.0.0-1.tar.gz
+	source = http://download.brother.com/welcome/dlf006623/mfcj6910dwcupswrapper-3.0.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006621/mfcj6910dwlpr-3.0.0-1.i386.rpm
+	sha256sums = 6c73a8a67b80dc09f19805fb58d9ede0646896469c27f8cc46438e979c9fb7e7
+	sha256sums = 125c6a4a4796a8c79b0232351469bd5e74249874c9a9dc1e47cd6a6ee2910185
+	sha256sums = 430cd331ad6f264593f99243bb6822459fbf2eaac9172a778623d86a1b68c8e4
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j6910dw
+
