@@ -10,6 +10,7 @@ license=('GPL2' 'LGPL2.1' 'MPL')
 pkgdesc="English hyphenation rules (en_US only)"
 source=(http://downloads.sourceforge.net/hunspell/hyphen-${pkgver}.tar.gz)
 sha1sums=('0556c392beb59433e577e3517575801212201df6')
+PKGEXT='.pkg.tar'
 
 package() {
   cd hyphen-${pkgver}
