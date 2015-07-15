@@ -5,8 +5,8 @@ pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
 url="https://radare.org"
 license=('LGPL')
-depends=('radare2-git')
-makedepends=('git' 'valabind-git' 'radare2-git>='${_date}*)
+depends=('radare2')
+makedepends=('git' 'valabind' 'radare2')
 provides=('radare2-bindings')
 conflicts=('radare2-bindings')
 
