@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-netconf
+	pkgdesc = Archlinux mkinitcpio hook for configuring early userspace networking
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/grazzolini/mkinitcpio-netconf
+	install = mkinitcpio-netconf.install
+	changelog = Changelog
+	arch = any
+	license = BSD
+	depends = mkinitcpio-nfs-utils
+	depends = iproute2
+	source = https://github.com/grazzolini/mkinitcpio-netconf/archive/v0.0.1.tar.gz
+	sha512sums = 86a79da8994b79df34407744400a5fc125e984e7550068e176d98e1c348e3c0bed78f21e901a215c10de6eb65beac53cfdb17ee73014a7ab38ac09ce937c634c
+
+pkgname = mkinitcpio-netconf
+

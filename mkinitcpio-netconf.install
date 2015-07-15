@@ -1,0 +1,24 @@
+#!/bin/bash
+
+post_install() {
+    cat<<INSTALLEOF
+    This hook will parse the ip= kernel command line variable and configure any
+    interfaces specified using ipconfig found in the mkinitcpio-nfs-utils package.
+    It is meant to be used alongside other hooks that need early userspace networking
+    such as, mkinitcpio-dropbear. This hook doesn't support yet systemd enabled
+    initramfs images. To use it, add the netconf hook before any other hook that need
+    networking in "/etc/mkinitcpio.conf" and rebuild the initramfs.
+INSTALLEOF
+}
+
+post_remove() {
+    cat<<REMOVEEOF
+    Remove the "netconf" from the "HOOKS" section in "/etc/mkinitcpio.conf"
+    and rebuild the initramfs. Also, remove the ip= cmdline parameter and regenerate
+    your bootloader configuration.
+REMOVEEOF
+}
+
+post_upgrade() {
+    post_install
+}

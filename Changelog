@@ -1,0 +1,5 @@
+2015-07-15 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.1 :
+	- Initial release.
+	- Right now it only support the ip= configuration mode.
