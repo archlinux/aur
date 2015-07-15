@@ -1,0 +1,23 @@
+pkgbase = gromacs-4.5-complete
+	pkgdesc = A versatile package to perform molecular dynamics. Last stable release of 4.5.x version series. Single and Double precision; Sources; Doxygen documentation
+	pkgver = 4.5.7
+	pkgrel = 1
+	url = http://www.gromacs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fftw
+	depends = lesstif
+	depends = perl
+	depends = libxml2
+	depends = libsm
+	depends = libx11
+	depends = doxygen
+	options = !libtool
+	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-4.5.7.tar.gz
+	md5sums = 24febafaf51be785b1c755ef679bea08
+	sha1sums = f2fb59bcfb45043d8dd72122629fc23d7e2b800f
+
+pkgname = gromacs-4.5-complete
+
