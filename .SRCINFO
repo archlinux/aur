@@ -6,6 +6,7 @@ pkgbase = git-annex-bin
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = arm
 	license = GPL3
 	depends = coreutils
 	depends = curl
@@ -39,6 +40,10 @@ pkgbase = git-annex-bin
 	source_armv6h = git-annex-standalone-armel-5.20150710.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz.sig
 	sha256sums_armv6h = 9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658
 	sha256sums_armv6h = SKIP
+	source_arm = git-annex-standalone-armel-5.20150710.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz
+	source_arm = git-annex-standalone-armel-5.20150710.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz.sig
+	sha256sums_arm = 9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658
+	sha256sums_arm = SKIP
 
 pkgname = git-annex-bin
 

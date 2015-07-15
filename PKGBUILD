@@ -14,7 +14,7 @@ pkgname=git-annex-bin
 pkgver=5.20150710
 pkgrel=3
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'arm')
 url='http://git-annex.branchable.com/'
 license=('GPL3')
 provides=('git-annex')
@@ -53,6 +53,9 @@ source_armv6h=("${_file_armv6h}::${_url_armv6h}"
                "${_file_armv6h}.sig::${_url_armv6h}.sig")
 sha256sums_armv6h=('9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658'
                    'SKIP')
+
+source_arm=(${source_armv6h[@]})
+sha256sums_arm=(${sha256sums_armv6h[@]})
 
 package() {
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
