@@ -4,14 +4,14 @@
 _pkgname=mailcatcher
 pkgname=ruby-$_pkgname
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
 license=('MIT')
-depends=('ruby-activesupport' 'ruby-eventmachine' 'ruby-haml' 'ruby-mail' 'ruby-sinatra' 'ruby-skinny' 'ruby-sqlite3' 'ruby-thin')
+depends=('gnu-netcat' 'ruby-activesupport' 'ruby-eventmachine' 'ruby-haml' 'ruby-mail' 'ruby-sinatra' 'ruby-skinny' 'ruby-sqlite3' 'ruby-thin')
 makedepends=('rubygems')
-provides=("$_pkgname" 'smtp-forwarder')
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!emptydirs)
 install="$pkgname.install"

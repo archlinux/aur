@@ -1,12 +1,13 @@
 pkgbase = ruby-mailcatcher
 	pkgdesc = Catches mail and serves it through a dream.
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 5
 	url = http://mailcatcher.me
 	install = ruby-mailcatcher.install
 	arch = any
 	license = MIT
 	makedepends = rubygems
+	depends = gnu-netcat
 	depends = ruby-activesupport
 	depends = ruby-eventmachine
 	depends = ruby-haml
