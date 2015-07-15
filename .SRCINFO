@@ -1,7 +1,7 @@
 pkgbase = gettext-java
 	pkgdesc = GNU internationalization library - Java libraries
 	pkgver = 0.19.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gettext/
 	install = gettext.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = gettext-java
 	depends = sh
 	depends = glib2
 	depends = libunistring
+	depends = gettext>=0.19.4
 	optdepends = git: for autopoint infrastructure updates
 	options = !docs
 	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.4.tar.gz

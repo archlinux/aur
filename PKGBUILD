@@ -4,13 +4,13 @@
 pkgname=gettext-java
 _pkgbase=gettext
 pkgver=0.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU internationalization library - Java libraries"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gettext/"
 license=('GPL')
 groups=('base' 'base-devel')
-depends=('gcc-libs' 'acl' 'sh' 'glib2' 'libunistring')
+depends=('gcc-libs' 'acl' 'sh' 'glib2' 'libunistring' "gettext>=$pkgver")
 makedepends=('java-environment')
 optdepends=('git: for autopoint infrastructure updates')
 options=(!docs)
@@ -48,9 +48,16 @@ package() {
 	# New stuff from here
 	# Install in the junk directory, not pkgdir
 	make DESTDIR="${srcdir}/temp" install
+
 	# Now move just what we need
 	install -Dm644 "${srcdir}/temp/usr/share/gettext/gettext.jar" "$pkgdir/usr/share/gettext/gettext.jar"
 	install -Dm644 "${srcdir}/temp/usr/share/gettext/libintl.jar" "$pkgdir/usr/share/gettext/libintl.jar"
+
+	# Create a symbolic link in /usr/share/java as Java apps written for Ubuntu may be looking there
+	mkdir -p "$pkgdir/usr/share/java/"
+	ln -s "/usr/share/gettext/gettext.jar" "$pkgdir/usr/share/java/gettext.jar"
+	ln -s "/usr/share/gettext/libintl.jar" "$pkgdir/usr/share/java/libintl.jar "
+
 	# Remove junk directory
 	rm -r "${srcdir}/temp/"
 }
