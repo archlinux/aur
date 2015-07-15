@@ -21,6 +21,7 @@ _update() {
 post_install() {
 	_update
 	usr/bin/glib-compile-schemas usr/share/glib-2.0/schemas
+    msg_blue "This package is now obsolete due to an error in the vala compiler that prevents us from continuing the development. The project is currently being ported to C and being also rebranded so that the development may continue. New package's info comming soon..."
 }
 
 post_upgrade() {
