@@ -17,15 +17,15 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=45.0.2438.3
+pkgver=45.0.2454.6
 _launcher_ver=2
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome (Dev Channel)'
 arch=('i686' 'x86_64')
-url="http://www.chromium.org/"
+url='http://www.chromium.org'
 license=('BSD')
-depends=('desktop-file-utils' 'gtk2' 'icu' 'jsoncpp' 'libwebp' 'libxslt' 'libxss' 'minizip' 'perl-file-basedir'
-         'nss' 'pciutils' 're2' 'snappy' 'speech-dispatcher' 'speex' 'xdg-utils') #  'opus'  'protobuf'  'libsrtp' 'libevent' 'libvpx'
+depends=('desktop-file-utils' 'gtk2' 'icu' 'jsoncpp' 'libsrtp' 'libwebp' 'libxslt' 'libxss' 'minizip' 'perl-file-basedir'
+         'nss' 'pciutils' 're2' 'snappy' 'speech-dispatcher' 'speex' 'xdg-utils') #  'opus'  'protobuf'  'libevent' 'libvpx'
 makedepends=('libexif' 'elfutils' 'gperf' 'ninja' 'perl-json' 'python2-beautifulsoup3' 'python2-simplejson' 'python2-jinja' 'subversion' 'yasm' 'git') # 'python2-ply'
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
@@ -146,6 +146,7 @@ _necesary=('base/third_party/dmg_fp'
            'courgette/third_party'
            'crypto/third_party/nss'
            'native_client/src/third_party/dlmalloc'
+           'native_client_sdk/src/libraries/third_party/newlib-extras'
            'net/third_party/mozilla_security_manager'
            'net/third_party/nss'
            'third_party/WebKit'
@@ -177,7 +178,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/libjingle'
            'third_party/libphonenumber'
            'third_party/libsecret'
-           'third_party/libsrtp'
            'third_party/libudev'
            'third_party/libusb'
            'third_party/libva'
@@ -202,6 +202,10 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/pdfium/third_party/base'
            'third_party/pdfium/third_party/bigint'
            'third_party/pdfium/third_party/freetype'
+           'third_party/pdfium/third_party/lcms2-2.6'
+           'third_party/pdfium/third_party/libjpeg'
+           'third_party/pdfium/third_party/libopenjpeg20'
+           'third_party/pdfium/third_party/zlib_v128'
            'third_party/ply'
            'third_party/polymer'
            'third_party/protobuf'
@@ -213,14 +217,14 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/sqlite'
            'third_party/tcmalloc'
            'third_party/trace-viewer'
-           'third_party/trace-viewer/third_party/d3'
-           'third_party/trace-viewer/third_party/components/polymer'
-           'third_party/trace-viewer/third_party/gl-matrix'
-           'third_party/trace-viewer/third_party/jszip'
-           'third_party/trace-viewer/third_party/tvcm'
-           'third_party/trace-viewer/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py'
-           'third_party/trace-viewer/third_party/tvcm/third_party/rcssmin'
-           'third_party/trace-viewer/third_party/tvcm/third_party/rjsmin'
+           'third_party/trace-viewer/tracing/third_party/components/polymer'
+           'third_party/trace-viewer/tracing/third_party/d3'
+           'third_party/trace-viewer/tracing/third_party/gl-matrix'
+           'third_party/trace-viewer/tracing/third_party/jszip'
+           'third_party/trace-viewer/tracing/third_party/tvcm'
+           'third_party/trace-viewer/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py'
+           'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rcssmin'
+           'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rjsmin'
            'third_party/usrsctp'
            'third_party/web-animations-js'
            'third_party/webdriver'
@@ -300,7 +304,6 @@ fi
 # Set the bundled/external components
 # TODO
 # -Duse_system_hunspell=1    | Upstream changes needed
-# -Duse_system_libsrtp=1     | https://bugs.gentoo.org/show_bug.cgi?id=459932
 # -Duse_system_libusb=1      | http://crbug.com/266149
 # -Duse_system_opus=1        | https://code.google.com/p/webrtc/issues/detail?id=3077
 # -Duse_system_sqlite=1      | http://crbug.com/22208
@@ -323,6 +326,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_libexif=1'
              '-Duse_system_libjpeg=1'
              '-Duse_system_libpng=1'
+             '-Duse_system_libsrtp=1'
              '-Duse_system_libusb=0'
              '-Duse_system_libvpx=0'
              '-Duse_system_libwebp=1'
