@@ -16,7 +16,7 @@ pkgbase = xfce-theme-greybird-git
 	provides = xfce-theme-greybird
 	conflicts = xfce-theme-greybird
 	options = !strip
-	source = git://github.com/shimmerproject/Greybird.git
+	source = Greybird::git://github.com/shimmerproject/Greybird.git
 	md5sums = SKIP
 
 pkgname = xfce-theme-greybird-git

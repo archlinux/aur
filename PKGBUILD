@@ -19,11 +19,11 @@ optdepends=('elementary-xfce-icons: matching icon theme'
 provides=('xfce-theme-greybird')
 conflicts=('xfce-theme-greybird')
 options=('!strip')
-source=('git://github.com/shimmerproject/Greybird.git')
+source=('Greybird::git://github.com/shimmerproject/Greybird.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Greybird"
+  cd "Greybird"
   echo $(git describe --always --abbrev=0).r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
 }
 
