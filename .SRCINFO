@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 40.0b3
+	pkgver = 40.0b4
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -33,10 +33,10 @@ pkgbase = firefox-beta-bin
 	source = firefox-beta-bin-safe.desktop
 	md5sums = 13bd50c37f55a83539a680ce83162468
 	md5sums = a85c53ccb2b78514f37833d288a20ba2
-	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0b3/linux-i686/en-US/firefox-40.0b3.tar.bz2
-	md5sums_i686 = 947c4b6133a153439dc616483becb102
-	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0b3/linux-x86_64/en-US/firefox-40.0b3.tar.bz2
-	md5sums_x86_64 = d7d372f3079c3310b11861793a9dfbf0
+	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0b4/linux-i686/en-US/firefox-40.0b4.tar.bz2
+	md5sums_i686 = 8f9eb6e9306778d64817e3e3187666c0
+	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0b4/linux-x86_64/en-US/firefox-40.0b4.tar.bz2
+	md5sums_x86_64 = eee58dc4c1f22a21502a2b6540bfd0a9
 
 pkgname = firefox-beta-bin
 
