@@ -26,9 +26,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
 
-  gtk-builder-convert ui/mailbox-properties-dialog.glade ui/mailbox-properties-dialog.ui
-  gtk-builder-convert ui/properties-dialog.glade ui/properties-dialog.ui
-
   ./jb configure prefix=/usr sysconfdir=/etc \
       localstatedir=/var destdir="${pkgdir}" \
       gconf-schemas-dir=/etc/gconf/schemas install-gconf-schemas=no \
