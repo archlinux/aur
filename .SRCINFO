@@ -1,5 +1,5 @@
 pkgbase = linux-libre-pae
-	pkgver = 4.1.1_gnu
+	pkgver = 4.1.2_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = linux-libre-pae
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.1-gnu/patch-4.1-gnu-4.1.1-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.1-gnu/patch-4.1-gnu-4.1.1-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -27,7 +27,7 @@ pkgbase = linux-libre-pae
 	source = change-default-console-loglevel.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3
+	sha256sums = b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -49,7 +49,7 @@ pkgname = linux-libre-pae
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-pae=4.1.1
+	provides = linux-pae=4.1.2
 	conflicts = kernel26-pae
 	conflicts = kernel26-libre-pae
 	replaces = linux-pae
@@ -59,7 +59,7 @@ pkgname = linux-libre-pae
 
 pkgname = linux-libre-pae-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-pae kernel
-	provides = linux-pae-headers=4.1.1
+	provides = linux-pae-headers=4.1.2
 	conflicts = kernel26-pae-headers
 	conflicts = kernel26-libre-pae-headers
 	replaces = linux-pae-headers
@@ -68,7 +68,7 @@ pkgname = linux-libre-pae-headers
 
 pkgname = linux-libre-pae-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-pae kernel
-	provides = linux-pae-docs=4.1.1
+	provides = linux-pae-docs=4.1.2
 	conflicts = kernel26-pae-docs
 	conflicts = kernel26-libre-pae-docs
 	replaces = linux-pae-docs
