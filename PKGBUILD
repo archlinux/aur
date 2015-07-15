@@ -12,6 +12,7 @@ backup=('etc/ckboot.conf')
 install='ckboot.install'
 source=("https://downloads.sourceforge.net/project/ckboot/ckboot-${pkgver}.tar.gz")
 md5sums=('b59dac8618371ec58ad9da192e5fbd7c')
+PKGEXT='.pkg.tar'
 
 package() {
     # Install files
