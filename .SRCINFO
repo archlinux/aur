@@ -1,0 +1,17 @@
+pkgbase = php-interbase
+	pkgdesc = Interbase PHP extension
+	pkgver = 5.6.11
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	depends = libfbclient
+	source = http://www.php.net/distributions/php-5.6.11.tar.bz2
+	source = interbase.ini
+	md5sums = a0c842c1d30fedbe972e1556ae9cee27
+	md5sums = 1294b282b70e9c1bf4f267b74f491baa
+
+pkgname = php-interbase
+
