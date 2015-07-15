@@ -1,0 +1,16 @@
+pkgbase = backupto
+	pkgdesc = kde backup easy and fast
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://opendesktop.org/content/show.php/BackupTo?content=149622
+	arch = 686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://opendesktop.org/CONTENT/content-files/149622-BackupTo.zip
+	source = BackupTo.desktop
+	md5sums = b8cad31a1ef17b613cefd3453dcea4c5
+	md5sums = 5c61b35ad59bb6fc74e3d01542d74f7a
+
+pkgname = backupto
+

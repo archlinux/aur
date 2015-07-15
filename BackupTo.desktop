@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Application;System;
+Comment[it]=
+Comment=
+Exec=/usr/bin/backupto
+GenericName[it]=
+GenericName=
+Icon=/usr/share/pixmaps/qtcreator_logo.png
+MimeType=
+Name[it]=backupto
+Name=backupto
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
