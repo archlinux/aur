@@ -1,0 +1,17 @@
+pkgbase = python2-pydub
+	pkgdesc = Manipulate audio with an simple and easy high level interface
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://pydub.com
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = ffmpeg
+	conflicts = python2--git
+	source = http://pypi.python.org/packages/source/p/pydub/pydub-0.10.0.tar.gz
+	md5sums = abd575830143fd9ae89abfcc8b4d6a84
+
+pkgname = python2-pydub
+
