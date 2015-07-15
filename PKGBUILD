@@ -3,19 +3,19 @@
 #Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=docker-compose
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Fast, isolated development environments using Docker"
 depends=('python2-docopt' 'python2-yaml' 'python2-requests' 'python2-pip'
-         'python2-six' 'python2-texttable' 'python2-websocket-client'
-         'python2-docker-py>=1.2.3' 'python2-dockerpty>=0.3.4' 'docker' 'python2-certifi')
+         'python2-six' 'python2-texttable' 'python2-websocket-client>=0.32.0'
+         'python2-docker-py>=1.3.0' 'python2-dockerpty>=0.3.4' 'docker' 'python2-certifi')
 arch=('any')
 source=("https://github.com/docker/compose/archive/$pkgver.tar.gz"
         "remove-requires-upper-bound.patch")
 url="https://www.docker.com/"
 license="BSD"
-sha256sums=('04b60b805dc305543d5fe9a0880b8e1ad5818c440587a26b0eb01f9e3e8e79eb'
-            '3038eed8d1aec71b3197b786c7b4ad0b188bfe7e5476ad0a45ea3cd065585d21')
+sha256sums=('61e26f9eaed839d2df69f85579239afd2d305b7c2d10bb96b03d8b92b4690d72'
+            '954073423ec6f4427d8ef0e17ff5a2c3eb67f42eba8237e87fcc99dd056b6d02')
 
 prepare() {
     cd $srcdir/compose-$pkgver
