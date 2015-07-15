@@ -9,6 +9,7 @@ url="http://cidrmerge.sourceforge.net/"
 license=('GPL')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('d273347b639d11fcb65873c3c3362057')
+PKGEXT='.pkg.tar'
 
 build() {
     cd "${srcdir}/${pkgname}"
