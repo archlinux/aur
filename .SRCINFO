@@ -1,0 +1,13 @@
+pkgbase = python-supplement-git
+	pkgdesc = Python code completion library
+	pkgver = 20120119
+	pkgrel = 2
+	url = http://github.com/baverman/supplement
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+
+pkgname = python-supplement-git
+
