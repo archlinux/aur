@@ -1,7 +1,8 @@
-# Maintainer: Diego <cdprincipe atgmaildot com>
+# Contributor: Diego <cdprincipe atgmaildot com>
+# Maintainer: Pablo Lezaeta <prflr88@gmai.com>
 
 pkgname=xfce-theme-albatross-git
-pkgver=1.7.3_5_g735e8f2
+pkgver=1.7.3.r108
 pkgrel=1
 pkgdesc="A dark, smooth Xfce theme, introduced in the release of Xubuntu 9.10"
 arch=('any')
@@ -11,24 +12,23 @@ depends=('gtk-engine-murrine')
 makedepends=('git')
 provides=('xfce-theme-albatross')
 conflicts=('xfce-theme-albatross')
-source=('git+http://github.com/shimmerproject/Albatross')
+source=('Albatross::git+http://github.com/shimmerproject/Albatross')
 md5sums=('SKIP')
 
 pkgver() {
-  cd Albatross
-  git describe --always | sed 's#-#_#g;s#v##'
+  cd "Albatross"
+  echo $(git describe --always --abbrev=0).r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
 }
 
 package() {
-  cd Albatross
+  cd "${srcdir}/Albatross"
 
   # create theme dirs
-  install -d -m 755 "$pkgdir"/usr/share/themes/Albatross{,-compact/xfwm4}
+  install -d -m 755 "${pkgdir}"/usr/share/themes/Albatross{,-compact/xfwm4}
 
   # clean up
   rm -rf {.git,.gitignore,LICENSE.{CC,GPL},README}
 
   # install theme
-  cp -r . "$pkgdir"/usr/share/themes/Albatross/
-
+  cp -r . "${pkgdir}/usr/share/themes/Albatross/"
 }

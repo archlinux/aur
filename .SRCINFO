@@ -1,6 +1,6 @@
 pkgbase = xfce-theme-albatross-git
 	pkgdesc = A dark, smooth Xfce theme, introduced in the release of Xubuntu 9.10
-	pkgver = 1.7.3_5_g735e8f2
+	pkgver = 1.7.3.r108
 	pkgrel = 1
 	url = https://github.com/shimmerproject/Albatross
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = xfce-theme-albatross-git
 	depends = gtk-engine-murrine
 	provides = xfce-theme-albatross
 	conflicts = xfce-theme-albatross
-	source = git+http://github.com/shimmerproject/Albatross
+	source = Albatross::git+http://github.com/shimmerproject/Albatross
 	md5sums = SKIP
 
 pkgname = xfce-theme-albatross-git
