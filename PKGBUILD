@@ -7,7 +7,7 @@ _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
 pkgver=221
-pkgrel=2
+pkgrel=2.1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
@@ -195,7 +195,6 @@ package_libsystemd-knock() {
 package_systemd-knock-sysvcompat() {
   pkgdesc="sysvinit compat for systemd-knock"
   license=('GPL2')
-  groups=('base')
   provides=("systemd-sysvcompat=$pkgver")
   conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-knock')

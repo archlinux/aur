@@ -1,6 +1,6 @@
 pkgbase = systemd-knock
 	pkgver = 221
-	pkgrel = 2
+	pkgrel = 2.1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -125,7 +125,6 @@ pkgname = libsystemd-knock
 
 pkgname = systemd-knock-sysvcompat
 	pkgdesc = sysvinit compat for systemd-knock
-	groups = base
 	license = GPL2
 	depends = systemd-knock
 	provides = systemd-sysvcompat=221
