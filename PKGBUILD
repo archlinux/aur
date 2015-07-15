@@ -7,7 +7,7 @@ arch=('any')
 url="http://www.elderscrolls.com/daggerfall/"
 license=('custom:daggerfall')
 depends=("dosbox")
-makedepends=("python2" "unzip" "bsdiff")
+makedepends=("python" "unzip" "bsdiff")
 options=(emptydirs)
 install="dagger.install"
 source=(http://cms.elderscrolls.com/sites/default/files/tes/extras/DFInstall.zip
@@ -26,7 +26,7 @@ md5sums=('3cdd09a5696c2b94c58b85488be7cba2'
          'dd4b858a32c6e80aaa025c57496958fe'
          'eae2f2244cc23bc1f266438ca4d9b2ce'
          'bd94604036a62217617fd28092c9d956'
-         '5cfc8231715eefd6b574b15e39d6a26c'
+         '309788ccffa8adf3085255bb137be95c'
          '4e773bc05d54c36a53c7aec2c2d2f538'
          '36e4de3a8b1030bbf12c6badd23da2ec')
 
@@ -45,12 +45,12 @@ package() {
   install "$srcdir/RUN.BAT" "$_target/DAGGER/RUN.BAT"
   install "$srcdir/Z.CFG" "$_target/DAGGER/Z.CFG"
   install "$srcdir/HMISET.CFG" "$_target/DAGGER/HMISET.CFG"
-  python2 unpk.py "$srcdir/DFCD/DAGGER/ARENA2/PACKED.DAT" "$_target/DAGGER"
+  python unpk.py "$srcdir/DFCD/DAGGER/ARENA2/PACKED.DAT" "$_target/DAGGER"
   rm "$_target/DAGGER/ARENA2/PACKED.DAT"
   unzip -o "$srcdir/addquest.zip" -d "$_target/DAGGER/ARENA2"
   rm "$_target/DAGGER/ARENA2/readme.txt"
   _offset=$((`grep -Ubo --binary-files=text 'start of data' "$srcdir/DAGGER/DAG213.EXE" | head -1 | sed 's/:.*//g'`+13))
-  python2 unpk.py "$srcdir/DAGGER/DAG213.EXE" "$_target/DAGGER" ${_offset}
+  python unpk.py "$srcdir/DAGGER/DAG213.EXE" "$_target/DAGGER" ${_offset}
   unzip -o "$srcdir/fixsa175.zip" -d "$_target/DAGGER"
   bspatch "$_target/DAGGER/ARENA2/MAPS.BSA" "$_target/MAPS.BSA" "$srcdir/maps.patch"
   mv "$_target/MAPS.BSA" "$_target/DAGGER/ARENA2/MAPS.BSA"

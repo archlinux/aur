@@ -6,7 +6,7 @@ pkgbase = daggerfall
 	install = dagger.install
 	arch = any
 	license = custom:daggerfall
-	makedepends = python2
+	makedepends = python
 	makedepends = unzip
 	makedepends = bsdiff
 	depends = dosbox
@@ -34,7 +34,7 @@ pkgbase = daggerfall
 	md5sums = dd4b858a32c6e80aaa025c57496958fe
 	md5sums = eae2f2244cc23bc1f266438ca4d9b2ce
 	md5sums = bd94604036a62217617fd28092c9d956
-	md5sums = 5cfc8231715eefd6b574b15e39d6a26c
+	md5sums = 309788ccffa8adf3085255bb137be95c
 	md5sums = 4e773bc05d54c36a53c7aec2c2d2f538
 	md5sums = 36e4de3a8b1030bbf12c6badd23da2ec
 
