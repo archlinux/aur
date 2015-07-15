@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 8u45
+	pkgver = 8u51
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre.install
@@ -42,10 +42,10 @@ pkgbase = jre
 	backup = etc/java-jre8/sound.properties
 	source = policytool-jre8.desktop
 	md5sums = 762729fa0faba8ff2b5a29c249c95079
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jre-8u45-linux-i586.tar.gz
-	md5sums_i686 = def512ee71620662c7f4631bed7da183
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jre-8u45-linux-x64.tar.gz
-	md5sums_x86_64 = 58486d7b16d7b21fbea7374adc109233
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jre-8u51-linux-i586.tar.gz
+	md5sums_i686 = f234dacdff97e6ac5ff3e85d58f2d158
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jre-8u51-linux-x64.tar.gz
+	md5sums_x86_64 = 3c4e3ed6b1c61fe18b9a88ea8b2d9384
 
 pkgname = jre
 
