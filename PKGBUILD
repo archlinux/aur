@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.1r20150714
+pkgver=5.1r20150715
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
