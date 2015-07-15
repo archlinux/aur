@@ -13,14 +13,22 @@ depends=('gmime' 'libnotify' 'gnome-keyring' 'hicolor-icon-theme' 'notification-
 makedepends=('gob2' 'intltool' 'evolution' 'gnome-doc-utils' 'gtk2')
 options=('!libtool' '!emptydirs')
 install=mail-notification.install
-source=(git+https://github.com/epienbroek/mail-notification.git)
-sha256sums=('SKIP')
+source=(git+https://github.com/epienbroek/mail-notification.git
+        http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-jb-gcc-format.patch)
+sha256sums=('SKIP'
+            'a7646259ca72b58165e4e1c8cf12b197e32807459c4291867479ef3520d39732')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
   git tag -f v5.4 7a2c97e1f48cfb8cd6e21a1d619fd589dfa19ef0
   git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+
+  patch -Np1 < "${srcdir}/mail-notification-jb-gcc-format.patch"
 }
 
 build() {

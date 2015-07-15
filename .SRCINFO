@@ -22,7 +22,9 @@ pkgbase = mail-notification
 	options = !libtool
 	options = !emptydirs
 	source = git+https://github.com/epienbroek/mail-notification.git
+	source = http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-jb-gcc-format.patch
 	sha256sums = SKIP
+	sha256sums = a7646259ca72b58165e4e1c8cf12b197e32807459c4291867479ef3520d39732
 
 pkgname = mail-notification
 
