@@ -4,7 +4,7 @@
 pkgname=gettext-java
 _pkgbase=gettext
 pkgver=0.19.4
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU internationalization library - Java libraries"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gettext/"
@@ -56,7 +56,7 @@ package() {
 	# Create a symbolic link in /usr/share/java as Java apps written for Ubuntu may be looking there
 	mkdir -p "$pkgdir/usr/share/java/"
 	ln -s "/usr/share/gettext/gettext.jar" "$pkgdir/usr/share/java/gettext.jar"
-	ln -s "/usr/share/gettext/libintl.jar" "$pkgdir/usr/share/java/libintl.jar "
+	ln -s "/usr/share/gettext/libintl.jar" "$pkgdir/usr/share/java/libintl.jar"
 
 	# Remove junk directory
 	rm -r "${srcdir}/temp/"

@@ -1,7 +1,7 @@
 pkgbase = gettext-java
 	pkgdesc = GNU internationalization library - Java libraries
 	pkgver = 0.19.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gettext/
 	install = gettext.install
 	arch = i686
