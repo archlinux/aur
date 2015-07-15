@@ -12,7 +12,7 @@ backup=('etc/udev/rules.d/10-hddapm.rules')
 install=$pkgname.install
 source=("https://downloads.sourceforge.net/project/hddapm/hddapm-${pkgver}.tar.gz")
 md5sums=('0e07111f65cd7768f992ff52cdd73a88')
-
+PKGEXT='.pkg.tar'
 
 package() {
     # Install script, service file and mkinitcpio hook
