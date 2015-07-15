@@ -1,0 +1,17 @@
+pkgbase = python2-livereload
+	pkgdesc = Python LiveReload is an awesome tool for web developers
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/livereload
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-six
+	depends = python2-tornado
+	conflicts = livereload
+	replaces = livereload
+	source = https://pypi.python.org/packages/source/l/livereload/livereload-2.4.0.tar.gz
+	md5sums = 8ebfe29fc9dd3bbe0cdf2ca6745eb2b7
+
+pkgname = python2-livereload
+
