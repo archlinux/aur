@@ -1,0 +1,17 @@
+pkgbase = kdeplasma-applets-stackfolder-git
+	pkgdesc = Browse the stack of folders
+	pkgver = 20121024
+	pkgrel = 1
+	url = http://quickgit.kde.org/index.php?p=stackfolder.git&a=summary
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = kdebase-workspace
+	conflicts = kdeplasma-applets-stackfolder
+
+pkgname = kdeplasma-applets-stackfolder-git
+
