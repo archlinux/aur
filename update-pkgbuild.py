@@ -79,19 +79,20 @@ _rmbin=('cp' 'curl' 'git' 'gpg' 'lsof' 'rsync' 'sh' 'sha1sum' 'sha224sum' \\
 # all of these can be left out if not deleting $_rmbin binaries
 depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget' 'findutils' 'dnsutils' 'aria2')
 
-if [[ $CARCH == "x86_64" ]] ; then
-    _file=git-annex-standalone-amd64-${pkgver}.tar.gz
-    source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz")
-    sha256sums+=('%(sha256_x86_64)s')
-elif [[ $CARCH == "i686" ]] ; then
-    _file=git-annex-standalone-i386-${pkgver}.tar.gz
-    source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz")
-    sha256sums+=('%(sha256_i686)s')
-elif [[ $CARCH == "armv6h" ]] ; then
-    _file=git-annex-standalone-armel-${pkgver}.tar.gz
-    source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz")
-    sha256sums+=('%(sha256_armv6h)s')
-fi
+_file_x86_64="git-annex-standalone-amd64-${pkgver}.tar.gz"
+_url_x86_64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
+source_x86_64=("${_file_x86_64}::${_url_x86_64}")
+sha256sums_x86_64=('%(sha256_x86_64)s')
+
+_file_i686="git-annex-standalone-i386-${pkgver}.tar.gz"
+_url_i686="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz"
+source_i686=("${_file_i686}::${_url_i686}")
+sha256sums_i686=('%(sha256_i686)s')
+
+_file_armv6h="git-annex-standalone-armel-${pkgver}.tar.gz"
+_url_armv6h="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz"
+source_armv6h=("${_file_armv6h}::${_url_armv6h}")
+sha256sums_armv6h=('%(sha256_armv6h)s')
 
 package() {
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"

@@ -12,7 +12,7 @@
 
 pkgname=git-annex-bin
 pkgver=5.20150710
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://git-annex.branchable.com/'
@@ -32,19 +32,20 @@ _rmbin=('cp' 'curl' 'git' 'gpg' 'lsof' 'rsync' 'sh' 'sha1sum' 'sha224sum' \
 # all of these can be left out if not deleting $_rmbin binaries
 depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget' 'findutils' 'dnsutils' 'aria2')
 
-if [[ $CARCH == "x86_64" ]] ; then
-    _file=git-annex-standalone-amd64-${pkgver}.tar.gz
-    source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz")
-    sha256sums+=('be3f0f2a4a317bf9ee24db82821dd147e1ab9a1c6f0fbfae4a36aee6a22bbfce')
-elif [[ $CARCH == "i686" ]] ; then
-    _file=git-annex-standalone-i386-${pkgver}.tar.gz
-    source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz")
-    sha256sums+=('8901ab302b3bbbacea11b34a1213487b1d2c1f1b7742f220fb743b644ea84362')
-elif [[ $CARCH == "armv6h" ]] ; then
-    _file=git-annex-standalone-armel-${pkgver}.tar.gz
-    source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz")
-    sha256sums+=('9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658')
-fi
+_file_x86_64="git-annex-standalone-amd64-${pkgver}.tar.gz"
+_url_x86_64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
+source_x86_64=("${_file_x86_64}::${_url_x86_64}")
+sha256sums_x86_64=('be3f0f2a4a317bf9ee24db82821dd147e1ab9a1c6f0fbfae4a36aee6a22bbfce')
+
+_file_i686="git-annex-standalone-i386-${pkgver}.tar.gz"
+_url_i686="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz"
+source_i686=("${_file_i686}::${_url_i686}")
+sha256sums_i686=('8901ab302b3bbbacea11b34a1213487b1d2c1f1b7742f220fb743b644ea84362')
+
+_file_armv6h="git-annex-standalone-armel-${pkgver}.tar.gz"
+_url_armv6h="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz"
+source_armv6h=("${_file_armv6h}::${_url_armv6h}")
+sha256sums_armv6h=('9e3116ae104e81784579907f47e30e1661b0eeb768533be120151b9ee704e658')
 
 package() {
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
