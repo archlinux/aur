@@ -1,0 +1,29 @@
+pkgbase = mypaint-git
+	pkgdesc = A fast and easy painting application for digital painters, with brush dynamics
+	pkgver = 1.1.0.r3605.84e823e
+	pkgrel = 1
+	url = http://mypaint.intilinux.com/
+	install = mypaint-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = scons
+	makedepends = swig
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = json-c
+	depends = python2-cairo
+	depends = python2-gobject
+	depends = python2-numpy
+	provides = mypaint
+	conflicts = mypaint
+	source = git+https://github.com/mypaint/mypaint.git
+	source = git+https://github.com/mypaint/libmypaint.git
+	source = mypaint-git.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 34dec9df2e005de9fae6c6352f49835a1d41e515c6131ed1df8c9e27ee3c9d1d
+
+pkgname = mypaint-git
+
