@@ -1,0 +1,27 @@
+pkgbase = fceux-svn
+	pkgdesc = Fast and ultra-compatible NES/Famicom emulator with SDL, OpenGL and SVGALIB support
+	pkgver = 2888
+	pkgrel = 1
+	url = http://fceux.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = scons
+	makedepends = libgl
+	makedepends = glu
+	depends = sdl
+	depends = lua51
+	depends = gtk2
+	depends = gd
+	depends = libgl
+	optdepends = xchm: for viewing the help manual
+	provides = fceu
+	provides = gfceux
+	provides = fceux
+	conflicts = fceu
+	conflicts = gfceux
+	conflicts = fceux
+
+pkgname = fceux-svn
+
