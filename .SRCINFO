@@ -1,0 +1,13 @@
+pkgbase = libiriverdb
+	pkgdesc = A small C library to handle database creation on iriver H100/H300 devices.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://bodgitandscarper.co.uk/libiriverdb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://libiriverdb.s3.amazonaws.com/libiriverdb-1.6.tar.gz
+	md5sums = 9da37e9d54bd136ef4470b271f64c4e3
+
+pkgname = libiriverdb
+
