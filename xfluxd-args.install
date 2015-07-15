@@ -8,5 +8,4 @@ post_upgrade() {
 }
 post_remove() {
     echo "==> Make sure to disable it in systemctl!"
-    echo "==> You may have to remove the config file '/etc/xfluxd-args.conf'"
 }
