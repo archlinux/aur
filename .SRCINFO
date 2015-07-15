@@ -1,0 +1,25 @@
+pkgbase = brother-mfc7340
+	pkgdesc = LPR and CUPS driver for the Brother MFC-7340 printer
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: printing text files from lpr
+	source = http://download.brother.com/welcome/dlf006677/brother-laser2-cups-driver-2.0.2-1.tar.gz
+	source = http://download.brother.com/welcome/dlf006230/cupswrapperMFC7340-2.0.2-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006228/brmfc7340lpr-2.0.2-1.i386.rpm
+	sha256sums = d303e86b9143bd6d2ac27294a33cb9676efd9e968b57912e496dac6e97e90641
+	sha256sums = f32246c7e7366ef0e3cccf4984c08a3988102df11a06b449a9ae7a3ed2521623
+	sha256sums = 1510def42605919864f4118143c617e0bf9d5f0d71d354b241219f01467b638a
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc7340
+
