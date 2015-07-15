@@ -1,0 +1,29 @@
+pkgbase = brother-mfc-j5620dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J5620DW printer
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: printing text files from lpr
+	source = http://download.brother.com/welcome/dlf101196/mfcj5620dwlpr-3.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101197/mfcj5620dwcupswrapper-3.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101201/brother_mfcj5620dw_GPL_source_3.0.1-1.tar.gz
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 91f54f5a34ff2e288f295008e5826ea6beb887c24c573b682d859206bd420267
+	sha256sums = 488494f80797e4dcbab67123f2aa483e8e0fef5dfeda0d11c49067ea300d3f84
+	sha256sums = 0a7981a735bf79e797582abc08c684ad06fc9b84438cbb95eaf8f38ee9abf3ff
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j5620dw
+
