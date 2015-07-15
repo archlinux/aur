@@ -2,8 +2,8 @@
 
 _pkgname=juffed
 pkgname=${_pkgname}-qt5-git
-pkgver=0.10.r67.g27e19a2
-pkgrel=4
+pkgver=0.10.r71.gc3c1a3f
+pkgrel=1
 pkgdesc='A lightweight cross-platform text editor. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://juffed.com/'
@@ -19,12 +19,10 @@ install=${pkgname}.install
 source=(
 	"git+https://github.com/Mezomish/${_pkgname}.git"
 	"${pkgname}.install"
-	'qdatastream_fix.patch'
 )
 sha512sums=(
 	'SKIP'
 	'ac9be39d90d5696142b61e00f74577cec23d379be128965642a92cabefd5ed9c511fedeb7cec068f24224d96aa5ace9992920c5a4dd54f90c59a93442f14079a'
-	'a4ebe1626c70825d99279a41334c47b34513f0ba7f86ab8334d9e3a971cd725ed45db6af05b4439f744115ace2a838501cf7620b5936f36a257c9d5ecd5b8943'
 )
 
 pkgver() {
@@ -38,10 +36,6 @@ pkgver() {
 }
 
 prepare() {
-	# Qt 5.5 fix
-	cd ${srcdir}/${_pkgname}
-	patch --binary src/3rd_party/qtsingleapplication/qtlocalpeer.h ../qdatastream_fix.patch
-	
 	# Make build directory
 	mkdir -p ${srcdir}/build
 }
