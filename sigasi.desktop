@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sigasi
+Exec=sigasi %f
+Icon=sigasi
+Comment=IDE for VHDL development
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
