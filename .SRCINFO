@@ -1,0 +1,22 @@
+pkgbase = python2-jukebox
+	pkgdesc = Democratic Jukebox - your democratic music player
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = http://github.com/lociii/jukebox
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-django
+	depends = mutagen
+	depends = django-social-auth
+	depends = python2-django-rest-framework
+	depends = python2-shout
+	depends = python2-daemon
+	depends = python2-pyinotify
+	depends = python2-simplejson
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/j/jukebox/jukebox-0.4.1.tar.gz
+	md5sums = 2451323ef346229e3986ae2203232391
+
+pkgname = python2-jukebox
+
