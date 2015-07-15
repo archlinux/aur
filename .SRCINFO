@@ -1,15 +1,15 @@
 pkgbase = docker-compose-bin
 	pkgdesc = Pythonless package of a fast, isolated development environments using Docker
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.3.2
+	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
 	license = Apache
 	depends = docker
 	conflicts = docker-compose
 	options = !strip
-	source = https://github.com/docker/compose/releases/download/1.3.1/docker-compose-Linux-x86_64
-	source = https://github.com/docker/compose/archive/1.3.1.tar.gz
+	source = https://github.com/docker/compose/releases/download/1.3.2/docker-compose-Linux-x86_64
+	source = https://github.com/docker/compose/archive/1.3.2.tar.gz
 	sha256sums = 1ceb5fd0d43bc7ae33eb9c78779e43ed89b4dba16375bbce09c8dce770c7d73d
 	sha256sums = 04b60b805dc305543d5fe9a0880b8e1ad5818c440587a26b0eb01f9e3e8e79eb
 

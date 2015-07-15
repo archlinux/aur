@@ -1,8 +1,8 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=docker-compose-bin
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Pythonless package of a fast, isolated development environments using Docker"
 depends=('docker')
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=(
 )
 url="https://www.docker.com/"
 license="Apache"
-sha256sums=('1ceb5fd0d43bc7ae33eb9c78779e43ed89b4dba16375bbce09c8dce770c7d73d'
-            '04b60b805dc305543d5fe9a0880b8e1ad5818c440587a26b0eb01f9e3e8e79eb')
+sha256sums=('7a5ae383ce760b400215871e2dff970308649727415b52045fb1c32767722869'
+            '61e26f9eaed839d2df69f85579239afd2d305b7c2d10bb96b03d8b92b4690d72')
 
 package() {
   cd $srcdir
