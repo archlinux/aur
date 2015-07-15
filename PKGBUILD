@@ -5,11 +5,12 @@ pkgver=20040415
 pkgrel=2
 pkgdesc="Portuguese hyphenation rules"
 arch=('any')
-url="http://ftp.daum.net/openoffice/contrib/dictionaries/"
+url="http://download.services.openoffice.org/contrib/dictionaries/"
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
 source=('http://download.services.openoffice.org/contrib/dictionaries/hyph_pt_PT.zip')
 md5sums=('327989bbbfc9f9d56eb772427a344eb3')
+PKGEXT='.pkg.tar'
 
 build() {
   /bin/true
