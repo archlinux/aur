@@ -1,0 +1,25 @@
+From 4d24b3b6a4a6383e05e7da26d183b79fa8663697 Mon Sep 17 00:00:00 2001
+From: Damien Miller <djm@mindrot.org>
+Date: Thu, 19 Mar 2015 22:11:59 +0000
+Subject: remove error() accidentally inserted for debugging
+
+pointed out by Christian Hesse
+---
+diff --git a/monitor_wrap.c b/monitor_wrap.c
+index b379f05..d39d491 100644
+--- a/monitor_wrap.c
++++ b/monitor_wrap.c
+@@ -153,10 +153,8 @@ mm_request_receive(int sock, Buffer *m)
+ 	debug3("%s entering", __func__);
+ 
+ 	if (atomicio(read, sock, buf, sizeof(buf)) != sizeof(buf)) {
+-		if (errno == EPIPE) {
+-			error("%s: socket closed", __func__);
++		if (errno == EPIPE)
+ 			cleanup_exit(255);
+-		}
+ 		fatal("%s: read: %s", __func__, strerror(errno));
+ 	}
+ 	msg_len = get_u32(buf);
+--
+cgit v0.9.2

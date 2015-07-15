@@ -1,0 +1,81 @@
+From 639d6bc57b1942393ed12fb48f00bc05d4e093e4 Mon Sep 17 00:00:00 2001
+From: djm@openbsd.org <djm@openbsd.org>
+Date: Fri, 01 May 2015 07:10:01 +0000
+Subject: upstream commit
+
+refactor ssh_dispatch_run_fatal() to use sshpkt_fatal()
+ to better report error conditions. Teach sshpkt_fatal() about ECONNRESET.
+
+Improves error messages on TCP connection resets. bz#2257
+
+ok dtucker@
+---
+diff --git a/dispatch.c b/dispatch.c
+index afe6182..aac933e 100644
+--- a/dispatch.c
++++ b/dispatch.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: dispatch.c,v 1.26 2015/02/12 20:34:19 dtucker Exp $ */
++/* $OpenBSD: dispatch.c,v 1.27 2015/05/01 07:10:01 djm Exp $ */
+ /*
+  * Copyright (c) 2000 Markus Friedl.  All rights reserved.
+  *
+@@ -137,22 +137,6 @@ ssh_dispatch_run_fatal(struct ssh *ssh, int mode, volatile sig_atomic_t *done,
+ {
+ 	int r;
+ 
+-	if ((r = ssh_dispatch_run(ssh, mode, done, ctxt)) != 0) {
+-		switch (r) {
+-		case SSH_ERR_CONN_CLOSED:
+-			logit("Connection closed by %.200s",
+-			    ssh_remote_ipaddr(ssh));
+-			cleanup_exit(255);
+-		case SSH_ERR_CONN_TIMEOUT:
+-			logit("Connection to %.200s timed out while "
+-			    "waiting to read", ssh_remote_ipaddr(ssh));
+-			cleanup_exit(255);
+-		case SSH_ERR_DISCONNECTED:
+-			logit("Disconnected from %.200s",
+-			    ssh_remote_ipaddr(ssh));
+-			cleanup_exit(255);
+-		default:
+-			fatal("%s: %s", __func__, ssh_err(r));
+-		}
+-	}
++	if ((r = ssh_dispatch_run(ssh, mode, done, ctxt)) != 0)
++		sshpkt_fatal(ssh, __func__, r);
+ }
+diff --git a/packet.c b/packet.c
+index 4922573..a7727ef 100644
+--- a/packet.c
++++ b/packet.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: packet.c,v 1.208 2015/02/13 18:57:00 markus Exp $ */
++/* $OpenBSD: packet.c,v 1.212 2015/05/01 07:10:01 djm Exp $ */
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+@@ -1920,9 +1920,19 @@ sshpkt_fatal(struct ssh *ssh, const char *tag, int r)
+ 		logit("Connection closed by %.200s", ssh_remote_ipaddr(ssh));
+ 		cleanup_exit(255);
+ 	case SSH_ERR_CONN_TIMEOUT:
+-		logit("Connection to %.200s timed out while "
+-		    "waiting to write", ssh_remote_ipaddr(ssh));
++		logit("Connection to %.200s timed out", ssh_remote_ipaddr(ssh));
+ 		cleanup_exit(255);
++	case SSH_ERR_DISCONNECTED:
++		logit("Disconnected from %.200s",
++		    ssh_remote_ipaddr(ssh));
++		cleanup_exit(255);
++	case SSH_ERR_SYSTEM_ERROR:
++		if (errno == ECONNRESET) {
++			logit("Connection reset by %.200s",
++			    ssh_remote_ipaddr(ssh));
++			cleanup_exit(255);
++		}
++		/* FALLTHROUGH */
+ 	default:
+ 		fatal("%s%sConnection to %.200s: %s",
+ 		    tag != NULL ? tag : "", tag != NULL ? ": " : "",
+--
+cgit v0.9.2
