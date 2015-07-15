@@ -3,8 +3,8 @@
 
 pkgname=jdk
 _major=8
-_minor=45
-_build=b14
+_minor=51
+_build=b16
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit"
@@ -54,8 +54,8 @@ md5sums=('b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_i686=('e68241caf30cb81ae4e985be7218bb6d')
-md5sums_x86_64=('1ad9a5be748fb75b31cd3bd3aa339cac')
+md5sums_i686=('742b9151d9190a9ae7d8ed05c7d39850')
+md5sums_x86_64=('b34ff02c5d98b6f372288c17e96c51cf')
 ## Alternative mirror, if your local one is throttled:
 #source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
 

@@ -1,6 +1,6 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java Development Kit
-	pkgver = 8u45
+	pkgver = 8u51
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk.install
@@ -55,10 +55,10 @@ pkgbase = jdk
 	md5sums = 8f0ebcead2aecad67fbd12ef8ced1503
 	md5sums = a4a21b064ff9f3c3f3fdb95edf5ac6f3
 	md5sums = 98245ddb13914a74f0cc5a028fffddca
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-i586.tar.gz
-	md5sums_i686 = e68241caf30cb81ae4e985be7218bb6d
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz
-	md5sums_x86_64 = 1ad9a5be748fb75b31cd3bd3aa339cac
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jdk-8u51-linux-i586.tar.gz
+	md5sums_i686 = 742b9151d9190a9ae7d8ed05c7d39850
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jdk-8u51-linux-x64.tar.gz
+	md5sums_x86_64 = b34ff02c5d98b6f372288c17e96c51cf
 
 pkgname = jdk
 
