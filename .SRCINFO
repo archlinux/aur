@@ -1,0 +1,17 @@
+pkgbase = arrowmatcher
+	pkgdesc = ballistics software for arrows and bullets
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php/arrowmatcher?content=144151
+	arch = i386
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gettext
+	makedepends = automoc4
+	depends = qt4
+	source = http://kent.dl.sourceforge.net/project/arrowmatcher/arrowmatcher/arrowmatcher2-3.1.0/arrowmatcher2-3.1.0.tar.gz
+	sha1sums = e8ed9ee08ff5671440c9e3c8267c6551d8c9a653
+
+pkgname = arrowmatcher
+
