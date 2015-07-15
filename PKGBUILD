@@ -20,6 +20,7 @@ source=('dvb-usb-rtl2832u.patch::https://github.com/Xtrend-Official/meta-xtrend/
 md5sums=('263f5060ff7ef969ecaad1494700230a'
          'b91ef30d49fc0e7d8e76b39c98cf3ff6'
          '063be4e255e010899574fc3cdec67120')
+PKGEXT='.pkg.tar'
 
 _extramodules="extramodules-$(uname -r | cut -f-2 -d.)-$(uname -r | cut -f3- -d-)"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
