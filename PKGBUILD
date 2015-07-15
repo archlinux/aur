@@ -1,6 +1,6 @@
 #Maintainer: Stavros Polymenis <sp orbitalfox.com>
 pkgname=yamado-git
-pkgver=150714alpha
+pkgver=150715alpha
 pkgrel=1
 pkgdesc="Yamado is a minimal note & journal system with extensions for functioning as a homepage & blog."
 arch=(any)
