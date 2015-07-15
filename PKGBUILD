@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=43.0.2357.132
+pkgver=43.0.2357.134
 pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
         add-build-flag-to-disable-hotwording.patch
         chromium-widevine.patch)
-sha256sums=('405f52c6649f1d2937952fbcfcd238ba058db7d13edf4705f7027805f3ce1809'
+sha256sums=('d3a1bbe3e1445dfcf5ef4aff4b11a8f3770436c8b8954b7cc5fee5416f117659'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
