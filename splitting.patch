@@ -1,0 +1,21 @@
+diff -ru wordaxe-1.0.1-orig/wordaxe/rl/NewParagraph.py wordaxe-1.0.1/wordaxe/rl/NewParagraph.py
+--- wordaxe-1.0.1-orig/wordaxe/rl/NewParagraph.py	2010-04-15 10:34:19.000000000 -0300
++++ wordaxe-1.0.1/wordaxe/rl/NewParagraph.py	2010-04-15 10:37:11.000000000 -0300
+@@ -657,7 +657,7 @@
+ 
+         self.width = availW
+         self.height = sumHeight
+-        if sumHeight > availH:
++        if sumHeight and sumHeight > availH:
+             #print id(self), "needs splitting"
+             #print "lines[-1]:", lines[-1]
+             #print "frags_remaining:", frags_remaining
+@@ -687,7 +687,7 @@
+         else:
+             #print id(self), "fits"
+             unused = []
+-        assert self.height <= availH, (id(self), self.height, availH)
++        #assert self.height <= availH, (id(self), self.height, availH)
+         self._cache['lines'] = lines
+         self._cache['unused'] = unused
+         self._cache['avail'] = (availW, availH)

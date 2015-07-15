@@ -1,0 +1,20 @@
+pkgbase = python2-wordaxe
+	pkgdesc = Hyphenation support for reportlab
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = http://deco-cow.sf.net
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = python2
+	depends = setuptools
+	depends = docutils
+	depends = python2-reportlab
+	depends = python-pyhyphen
+	source = http://downloads.sourceforge.net/deco-cow/wordaxe-1.0.1.zip
+	source = splitting.patch
+	md5sums = b1b5e4b2a3abec5a352d84e65c3b0dec
+	md5sums = 60212f5716c1b9e2e57d8f1da3174654
+
+pkgname = python2-wordaxe
+
