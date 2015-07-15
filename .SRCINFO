@@ -1,0 +1,24 @@
+pkgbase = libgtop11dotnet
+	pkgdesc = PKCS11 driver for the Gemalto Cryptocard token
+	pkgver = 2.2.0.12
+	pkgrel = 1
+	url = http://www.gemalto.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	depends = boost-libs
+	depends = pcsclite
+	depends = p11-kit
+	depends = pcsc-tools
+	depends = opensc
+	depends = openct
+	depends = openvpn
+	depends = ccid
+	depends = engine_pkcs11
+	depends = pkcs11-helper
+	source = https://www.nemid.nu/dk-da/support/aktiver_nemid/aktiver_nemid_paa_hardware/installer_driver/drivers/libgtop11dotnet_2.2.0.12.tar.gz
+	md5sums = 0d2ac6dc267377a5c3fad0117d8d5a6d
+
+pkgname = libgtop11dotnet
+
