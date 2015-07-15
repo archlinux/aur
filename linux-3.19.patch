@@ -1,0 +1,11 @@
+--- CAENUSBdrvB.c.orig	2015-03-23 11:29:23.635981437 +0100
++++ CAENUSBdrvB.c	2015-03-23 11:29:51.079033178 +0100
+@@ -287,7 +287,7 @@
+ #if LINUX_VERSION_CODE >= VERSION(2,6,11)
+ static long unlocked_ioctl_v1718(struct file *file, unsigned int cmd, unsigned long arg)
+ {
+-	struct inode *inode = file->f_dentry->d_inode;
++	struct inode *inode = file->f_path.dentry;
+         struct v1718_usb_data *s = (struct v1718_usb_data *)file->private_data;
+ 	long ret;
+ 
