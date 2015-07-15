@@ -1,0 +1,16 @@
+pkgbase = ttf-latex-xft-fonts
+	pkgdesc = LaTeX ttf fonts needed by Abiword to display formulas
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://movementarian.org/
+	install = ttf-latex-xft-fonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://movementarian.org/latex-xft-fonts-0.1.tar.gz
+	sha1sums = 50edf35ff08354bdf08517add33e16ee37f769e9
+
+pkgname = ttf-latex-xft-fonts
+
