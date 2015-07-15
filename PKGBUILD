@@ -2,7 +2,7 @@
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
 _gitname=pkgbuilder
-pkgver=4.0.2.r1.gcf3432f
+pkgver=4.0.3.r1.g739caa0
 pkgrel=1
 pkgdesc='A Python AUR helper/library. (git version)'
 arch=('any')
