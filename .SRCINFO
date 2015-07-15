@@ -1,7 +1,7 @@
 pkgbase = eclipse-linuxtools
 	pkgdesc = Eclipse Linux Tools Project
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclipse.org/linuxtools
 	arch = any
 	license = EPL

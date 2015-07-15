@@ -4,7 +4,7 @@
 
 pkgname=eclipse-linuxtools
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse Linux Tools Project"
 url="http://www.eclipse.org/linuxtools"
 arch=('any')
@@ -22,19 +22,8 @@ source=("http://www.eclipse.org/downloads/download.php?r=1&file=/linuxtools/linu
 sha256sums=('332c1bba17e987066d831a76f035ccf68c5056a694c183c70fc62f8d5814407d')
 
 package() {
-  _dest="${pkgdir}/usr/share/eclipse/dropins/linuxtools/eclipse"
-
-  cd "${srcdir}"
-
-  # Features
-  for _f in features/*; do
-    _dir="${_dest}/${_f/.jar}"
-    mkdir -p "${_dir}"
-    bsdtar -xf "${_f}" -C "${_dir}"
-  done
-
-  # Plugins
-  for _p in plugins/*; do
-    install -Dm644 "${_p}" "${_dest}/${_p}"
-  done
+  d="$pkgdir/usr/share/eclipse/dropins/linuxtools/eclipse"
+  install -d "$d"
+  cp -a features "$d"
+  cp -a plugins "$d"
 }
