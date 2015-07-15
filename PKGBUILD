@@ -2,11 +2,11 @@
 
 pkgname=python2-pyyaml
 pkgver=3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML parser and emitter for Python"
 arch=('any')
-depends=('libyaml' 'python')
-makedepends=('python-setuptools')
+depends=('libyaml' 'python2')
+makedepends=('python2-setuptools')
 url="http://pyyaml.org/wiki/PyYAML"
 license=('MIT')
 options=(!emptydirs)
@@ -18,5 +18,5 @@ package() {
   cd "$srcdir/PyYAML-$pkgver"
 
   msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
