@@ -1,0 +1,16 @@
+pkgbase = spop-git
+	pkgdesc = A Spotify client running as a daemon, similar to mpd.
+	pkgver = 327.3890ab3
+	pkgrel = 1
+	url = https://github.com/Schnouki/spop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libspotify
+	source = git+https://github.com/Schnouki/spop.git
+	md5sums = SKIP
+
+pkgname = spop-git
+
