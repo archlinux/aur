@@ -1,0 +1,18 @@
+pkgbase = libkdeedu-git
+	pkgdesc = Libraries used by KDE Education applications
+	pkgver = 20110405
+	pkgrel = 1
+	url = http://edu.kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = kdebase-runtime
+	provides = libkdeedu
+	conflicts = libkdeedu
+
+pkgname = libkdeedu-git
+
