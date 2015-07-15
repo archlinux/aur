@@ -1,6 +1,6 @@
 pkgbase = radare2-git
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 20150622.8220.d436d16
+	pkgver = 20150715.8475.d4eb221
 	pkgrel = 1
 	url = http://radare.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = radare2-git
 	license = GPL3
 	license = LGPL3
 	makedepends = git
-	depends = capstone-git
+	depends = capstone
 	provides = radare2
 	conflicts = radare2
 	source = radare2-git::git://github.com/radare/radare2.git

@@ -1,14 +1,14 @@
 # with fixes by 0xAA <0xaa@dmg.sx>
 pkgname="radare2-git"
-pkgver=20150622.8220.d436d16
+pkgver=20150715.8475.d4eb221
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
 url="http://radare.org"
 license=('GPL3' 'LGPL3')
 makedepends=('git')
-depends=('capstone-git')
-provides=('radare2')
+depends=('capstone')
+provides=('radare2') # capstone-git is reccomended
 conflicts=('radare2')
 
 source=("$pkgname"::"git://github.com/radare/radare2.git")
@@ -34,7 +34,7 @@ build() {
 	# installation. Unfortunately linking syscapstone is broken and the
 	# build system always clones capstone and links against this instead.
 	#CFGARG="--with-syscapstone" ./sys/build.sh
-	./autogen.sh
+	#./autogen.sh # needs acr
 	./configure --with-syscapstone --with-openssl --prefix=/usr
 	make
 	#./sys/build.sh
