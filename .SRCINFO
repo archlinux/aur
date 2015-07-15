@@ -1,0 +1,16 @@
+pkgbase = ggmud-svn
+	pkgdesc = GTK2 mud client inspired by tintin and sclient.
+	pkgver = r267
+	pkgrel = 1
+	url = http://www.ggsoft.org/ggmud/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = gtk2
+	depends = lua
+	source = svn://svn.code.sf.net/p/ggmud/code/trunk/ggmud/
+	sha256sums = SKIP
+
+pkgname = ggmud-svn
+
