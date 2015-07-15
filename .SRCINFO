@@ -1,6 +1,6 @@
 pkgbase = gauche-git
 	pkgdesc = R5RS Scheme implementation developed to be a handy script interpreter
-	pkgver = 0.9.5.pre1.8402
+	pkgver = 0.9.5.pre1.8407
 	pkgrel = 1
 	url = http://practical-scheme.net/gauche/index.html
 	install = gauche-git.install
