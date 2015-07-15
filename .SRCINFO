@@ -1,0 +1,13 @@
+pkgbase = python2-fs
+	pkgdesc = Filesystem abstraction
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://code.google.com/p/pyfilesystem/
+	arch = any
+	license = BSD
+	depends = python2
+	source = https://pypi.python.org/packages/source/f/fs/fs-0.5.1.tar.gz
+	md5sums = 7abd892a7534cab3a81775b92ca949ad
+
+pkgname = python2-fs
+
