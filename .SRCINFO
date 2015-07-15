@@ -1,0 +1,16 @@
+pkgbase = iep
+	pkgdesc = Pronounced as 'eep'is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing. Its practical design is aimed at simplicity and efficiency.
+	pkgver = 3.6
+	pkgrel = 1
+	url = http://iep-project.org
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-pyzolib
+	optdepends = python-pyqt4: At least one qt4 python bindings should be installed
+	optdepends = python-pyside: At lease one qt4 python bindings should be installed
+	source = http://bitbucket.org/iep-project/iep/downloads/iep-3.6.source.zip
+	sha1sums = 8d2ff6bc83fda981d223d5f84aef3d748eab0a67
+
+pkgname = iep
+
