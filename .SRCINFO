@@ -1,0 +1,14 @@
+pkgbase = baires
+	pkgdesc = A small tool to resize all images in a directory. It is designed to resize many images in quickest and simplest way possible.
+	pkgver = 1.2r1
+	pkgrel = 2
+	url = http://www.beli.ws/apps/baires/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://www.beli.ws/apps/baires/baires.tar.gz
+	md5sums = 2ef963760336f595c071efb61813bfaf
+
+pkgname = baires
+
