@@ -1,0 +1,16 @@
+pkgbase = python2-pyyaml
+	pkgdesc = YAML parser and emitter for Python2
+	pkgver = 3.11
+	pkgrel = 1
+	url = http://pyyaml.org/wiki/PyYAML
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = libyaml
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/P/PyYAML/PyYAML-3.11.tar.gz
+	md5sums = f50e08ef0fe55178479d3a618efe21db
+	sha256sums = c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8
+
+pkgname = python2-pyyaml
