@@ -1,7 +1,7 @@
 pkgbase = lib32-libcurl-compat
 	pkgdesc = An URL retrieval library (old 32bit version)
 	pkgver = 7.23.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://curl.haxx.se
 	install = curl-compat.install
 	arch = x86_64

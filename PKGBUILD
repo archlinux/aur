@@ -3,7 +3,7 @@
 pkgname=lib32-libcurl-compat
 _pkgname=curl
 pkgver=7.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An URL retrieval library (old 32bit version)"
 arch=('x86_64')
 url="http://curl.haxx.se"
