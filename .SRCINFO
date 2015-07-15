@@ -1,0 +1,14 @@
+pkgbase = pear-channel-phpseclib
+	pkgdesc = PHP Secure Communications Library PEAR channel
+	pkgver = 1
+	pkgrel = 1
+	url = http://phpseclib.sourceforge.net/
+	arch = any
+	license = MIT
+	depends = php-pear
+	options = !strip
+	source = http://phpseclib.sourceforge.net/channel.xml
+	md5sums = f10b822379303e0b2ebd4072ae2ea7e6
+
+pkgname = pear-channel-phpseclib
+

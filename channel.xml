@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<channel version="1.0" xmlns="http://pear.php.net/channel-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/channel-1.0 http://pear.php.net/dtd/channel-1.0.xsd">
+    <name>phpseclib.sourceforge.net</name>
+    <summary>PHP Secure Communications Library PEAR channel</summary>
+    <suggestedalias>phpseclib</suggestedalias>
+    <servers>
+        <primary>
+            <rest>
+                <baseurl type="REST1.0">http://phpseclib.sourceforge.net//rest/</baseurl>
+                <baseurl type="REST1.1">http://phpseclib.sourceforge.net//rest/</baseurl>
+                <baseurl type="REST1.2">http://phpseclib.sourceforge.net//rest/</baseurl>
+                <baseurl type="REST1.3">http://phpseclib.sourceforge.net//rest/</baseurl>
+            </rest>
+        </primary>
+    </servers>
+</channel>
