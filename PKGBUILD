@@ -2,7 +2,7 @@
 #Contributor: Alexandre Minoshi (Almin-Soft Group)
 pkgname=pacmanxg
 pkgver=4.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another GUI for pacman and yaourt. Depends on neither GTK or Qt: only X11"
 arch=('i686' 'x86_64')
 url="http://almin-soft.ru/index.php?programmy/pacmanxg/tags/pacmanxg"

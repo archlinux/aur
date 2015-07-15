@@ -16,7 +16,6 @@ post_upgrade() {
 
 post_remove() {
  unlink /usr/bin/pacmanxg
- rmdir /opt/Almin-Soft/
  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
  update-desktop-database -q
 }
