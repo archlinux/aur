@@ -20,7 +20,7 @@ pkgbase = trilinos
 	depends = openmpi
 	depends = python2
 	depends = boost
-	source = http://trilinos.sandia.gov/download/files/trilinos-12.0.1-Source.tar.bz2
+	source = https://trilinos.org/oldsite/download/files/trilinos-12.0.1-Source.tar.bz2
 	md5sums = 19efcadf25c80b834f7c910ccfcca290
 
 pkgname = trilinos
