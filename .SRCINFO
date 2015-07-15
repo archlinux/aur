@@ -1,6 +1,6 @@
 pkgbase = gpxviewer-bzr
 	pkgdesc = a simple program to visualize a gpx file
-	pkgver = 247
+	pkgver = r296
 	pkgrel = 1
 	url = http://blog.sarine.nl/gpx-viewer/
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = gpxviewer-bzr
 	depends = intltool
 	depends = gdl
 	conflicts = gpxviewer
+	source = gpxviewer-bzr::bzr+lp:~chkr/gpx-viewer/gtk3-bugfix
+	md5sums = SKIP
 
 pkgname = gpxviewer-bzr
 
