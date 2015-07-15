@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=belle
+Exec=belle
+Icon=/usr/share/gSculpt/gsimages/gSculpt_Glass_Master_by_Gary_Rose.png
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;

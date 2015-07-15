@@ -1,0 +1,16 @@
+pkgbase = belle
+	pkgdesc = Qt Graphic Editor
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php/Belle?content=155259
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = https://github.com/fr33mind/Belle/archive/0.5a.tar.gz
+	source = belle.desktop
+	md5sums = 2ae62f9a8e1f79790a987050006a82e1
+	md5sums = 4ee8afc35b6c725e6be1e720d00ad3fc
+
+pkgname = belle
+
