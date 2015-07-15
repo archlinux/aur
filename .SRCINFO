@@ -1,0 +1,14 @@
+pkgbase = pyuv
+	pkgdesc = A raw video sequence player
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://dsplab.diei.unipg.it/pyuv_raw_video_sequence_player_original_one
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = wxgtk
+	source = http://dsplab.diei.unipg.it/~baruffa/dvbt/binaries/player/lin32/pyuv_0.5-1_i386.deb
+	md5sums = 0e79185d6de4bfeb8c3ab56a26459cd6
+
+pkgname = pyuv
+
