@@ -1,0 +1,27 @@
+pkgbase = adanaxis-gpl-deb
+	pkgdesc = A deep space first-person shooter game in four spatial dimensions (GPL version)
+	pkgver = 1.2.5
+	pkgrel = 4.1
+	url = http://libregamewiki.org/Adanaxis
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = libxxf86vm
+	depends = mesa
+	depends = freeglut
+	depends = pcre
+	depends = expat
+	depends = giflib
+	depends = libtiff
+	depends = sdl
+	depends = sdl_mixer
+	depends = alsa-lib
+	depends = esound
+	depends = smpeg
+	depends = libogg
+	depends = libvorbis
+	source = http://mirror.manitu.net/ubuntu/pool/universe/a/adanaxisgpl/adanaxisgpl_1.2.5.dfsg.1-4.1_.deb
+
+pkgname = adanaxis-gpl-deb
+
