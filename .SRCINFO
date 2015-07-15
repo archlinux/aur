@@ -1,0 +1,23 @@
+pkgbase = byzanz-git
+	pkgdesc = Record what's happening on your desktop
+	pkgver = 0.2.1.105.g1875a7f
+	pkgrel = 1
+	url = http://blogs.gnome.org/otte/2009/08/30/byzanz-0-2-0/
+	install = byzanz.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = gtk3
+	depends = gst-plugins-base
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = gnome-panel: panel applet
+	provides = byzanz
+	conflicts = byzanz
+	source = byzanz-git::git://git.gnome.org/byzanz
+	md5sums = SKIP
+
+pkgname = byzanz-git
+
