@@ -1,0 +1,20 @@
+pkgbase = a8
+	pkgdesc = The Abominade IDE
+	pkgver = 0.11
+	pkgrel = 2
+	url = http://code.google.com/p/abominade/
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = pygtkhelpers-hg
+	depends = python2-logbook
+	depends = python2-psutil
+	depends = python2-yaml
+	depends = vte
+	provides = a8
+	source = http://pypi.python.org/packages/source/a/a8/a8-0.11.tar.gz
+	md5sums = 13e135f42427cd7bd4736c6a42e3ff10
+
+pkgname = a8
+
