@@ -6,8 +6,8 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=31.7.0
-_pkgver=31.7.0-gnu1
+pkgver=31.8.0
+_pkgver=31.8.0-gnu1
 _pkgverbase=${pkgver%%.*}
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
@@ -33,15 +33,17 @@ source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2
         icecat.desktop
         icecat-safe.desktop
         vendor.js
-        fixing_nullptr_31.7.0.patch)
+        fixing_nullptr_31.7.0.patch
+        freetype26.patch)
 
-sha256sums=('57ddd9a3b2875dc3f1bfbb0f6d8fd5551775f1f68cc4237f6f4251a7ca954528'
+sha256sums=('370087d0adadf8b1c1e6a9920e26488a8902b9dc461d305f258fddb26a129d87'
             'SKIP'
             '91a675ffde751aac15c83401dc8842a055df0fe3949b6a0b304882608e6a4de2'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'd57d0e4d5bc66323388e8f3c9999ed443abfd304a28a1696cc6f4518ed0d0f2a')
+            'd57d0e4d5bc66323388e8f3c9999ed443abfd304a28a1696cc6f4518ed0d0f2a'
+            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -55,6 +57,9 @@ prepare() {
 
   # Patch for GCC 5.1
   patch -Np1 -i ../fixing_nullptr_31.7.0.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1143411
+  patch -Np1 -i ../freetype26.patch
 
   msg2 "Starting build..."
 

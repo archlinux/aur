@@ -1,0 +1,30 @@
+
+# HG changeset patch
+# User NiLuJe <ninuje@gmail.com>
+# Date 1426721573 14400
+# Node ID afd840d66e6a775dc2ed35dd3add01ff07f950fe
+# Parent  35515400af363bfc141353acd474814567c43c54
+Bug 1143411 - Fix build against latest freetype code. r=glandium
+
+diff --git a/config/system-headers b/config/system-headers
+--- a/config/system-headers
++++ b/config/system-headers
+@@ -465,16 +465,17 @@ freetype/tttables.h
+ freetype/t1tables.h
+ freetype/ftlcdfil.h
+ freetype/ftsizes.h
+ freetype/ftadvanc.h
+ freetype/ftbitmap.h
+ freetype/ftxf86.h
+ freetype.h
+ ftcache.h
++ftfntfmt.h
+ ftglyph.h
+ ftsynth.h
+ ftoutln.h
+ ttnameid.h
+ tttables.h
+ t1tables.h
+ ftlcdfil.h
+ ftsizes.h
+
