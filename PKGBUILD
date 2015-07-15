@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 conflicts=()
 provides=()
 license=('LGPL')
-source=("${pkgname}.profile")
+source=("${pkgname}.profile" "doc_salome_gui_GEOM_collect_geom_methods.py.patch")
 
 _source=geom
 _installdir=/opt/salome/geom
@@ -31,7 +31,13 @@ prepare(){
 
   msg "GIT checkout done or server timeout"
 
-  # python -> python2
+  patch -Np1 -i "${srcdir}/doc_salome_gui_GEOM_collect_geom_methods.py.patch"
+  
+  # sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_BINS}|\"\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_BINS}\"|" -i CMakeLists.txt
+  # sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_PYTHON}|\"\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_PYTHON}\"|" -i CMakeLists.txt
+  # sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_PYTHON_SHARED}|\"\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_PYTHON_SHARED}\"|" -i CMakeLists.txt
+  # sed -e "s|\${CMAKE_INSTALL_PREFIX}|\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}|" -i CMakeLists.txt
+
   for _FILE in `grep -Rl "/usr/bin/env python" * `
   do
 	sed -e "s|/usr/bin/env python|/usr/bin/env python2|" -i ${_FILE}
@@ -56,6 +62,8 @@ build() {
      -DLIBXML2_INCLUDE_DIR=/usr/include/libxml2 \
      -DSWIG_EXECUTABLE=/usr/bin/swig-2
      
+  sed -e "s|PYTHONPATH=${_installdir}|PYTHONPATH=\$DESTDIR${_installdir}|" -i doc/salome/gui/GEOM/env_script.sh
+
   make
 }
 
@@ -67,9 +75,10 @@ package() {
   install -D -m755 "${srcdir}/${pkgname}.profile" \
                    "${pkgdir}/etc/salome/profile.d/${pkgname}.sh"
 		   
-  for _FILE in /opt/salome/geom/share/doc/salome/gui/GEOM/arcsn1.png opt/salome/geom/share/doc/salome/gui/GEOM/arcsn2.png opt/salome/geom/share/doc/salome/gui/GEOM/glue_faces3.png opt/salome/geom/share/doc/salome/gui/GEOM/geomimport_reopen.png opt/salome/geom/share/doc/salome/gui/GEOM/remove_extra_edges1.png opt/salome/geom/share/doc/salome/gui/GEOM/remove_extra_edges2.png opt/salome/geom/share/doc/salome/gui/GEOM/scale_transformsn3.png opt/salome/geom/share/doc/salome/gui/GEOM/scale_transformsn4.png
+  for _FILE in share/doc/salome/gui/GEOM/arcsn1.png share/doc/salome/gui/GEOM/arcsn2.png share/doc/salome/gui/GEOM/tree_view_fitarea.png share/doc/salome/gui/GEOM/tree_view_fitselect.png share/doc/salome/gui/GEOM/glue_faces3.png share/doc/salome/gui/GEOM/geomimport_reopen.png share/doc/salome/gui/GEOM/remove_extra_edges1.png share/doc/salome/gui/GEOM/remove_extra_edges2.png share/doc/salome/gui/GEOM/scale_transformsn3.png share/doc/salome/gui/GEOM/scale_transformsn4.png
   do
-    optipng -quiet -force -fix ${pkgdir}${_installdir}${_FILE}
+    optipng -quiet -force -fix ${pkgdir}${_installdir}/${_FILE}
   done
 }
-md5sums=('dd6f6ea96cb26b594777316451c278ac')
+md5sums=('dd6f6ea96cb26b594777316451c278ac'
+         '28be73960779f51a29eef77ff1bc627d')

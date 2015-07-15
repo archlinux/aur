@@ -12,6 +12,9 @@ pkgbase = salome-geom
 	depends = salome-gui>=7.6.0
 	depends = salome-gui<7.7.0
 	source = salome-geom.profile
+	source = doc_salome_gui_GEOM_collect_geom_methods.py.patch
+	md5sums = dd6f6ea96cb26b594777316451c278ac
+	md5sums = 28be73960779f51a29eef77ff1bc627d
 
 pkgname = salome-geom
 

@@ -1,0 +1,32 @@
+X-Git-Url: http://git.salome-platform.org/gitweb/?p=modules%2Fgeom.git;a=blobdiff_plain;f=doc%2Fsalome%2Fgui%2FGEOM%2Fcollect_geom_methods.py;h=2f489aefb3be3851e0ea20f20b148ea680525640;hp=3639181c4d03cd8920303464a680da6bb3b6288a;hb=44ee08e8492cdceb03d6633b4c855936fc8b636f;hpb=f312091eb5bf90096c0a8d4d0ed4be68f34fbd9b
+
+diff --git a/doc/salome/gui/GEOM/collect_geom_methods.py b/doc/salome/gui/GEOM/collect_geom_methods.py
+index 3639181..2f489ae 100644
+--- a/doc/salome/gui/GEOM/collect_geom_methods.py
++++ b/doc/salome/gui/GEOM/collect_geom_methods.py
+@@ -117,16 +117,22 @@ if __name__ == "__main__":
+     if len( args ) < 1: sys.exit("Plugin name is not specified")
+ 
+     f = open(options.output, "w")
+-    
++
++    if len(args) > 1:
++        plugins_names = " ".join(args) + " plugins"
++    elif len(args) == 1:
++        plugins_names = args[0] + " plugin"
++    else:
++        plugins_names = ""
+     output = []
+     if options.dummygeomhelp:
+         output.append( "## @package geomBuilder" )
+-        output.append( "#  Documentation of the methods dynamically added by the " + plugin_name + " Geometry plug-in to the geomBuilder class." )
++        output.append( "#  Documentation of the methods dynamically added by the " + plugins_names + " to the @b %geomBuilder class." )
+         # Add dummy Geometry help
+         # This is supposed to be done when generating documentation for Geometry module plug-ins
+         output.append( "#  @note The documentation below does not provide complete description of class @b %geomBuilder" )
+         output.append( "#  from @b geomBuilder package. This documentation provides only information about" )
+-        output.append( "#  the methods dynamically added to the %geomBuilder class by the " + plugin_name + " plugin" )
++        output.append( "#  the methods dynamically added to the %geomBuilder class by the " + plugins_names + "." )
+         output.append( "#  For more details on the %geomBuilder class, please refer to the SALOME %Geometry module" )
+         output.append( "#  documentation." )
+         pass
