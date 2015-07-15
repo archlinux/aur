@@ -1,0 +1,16 @@
+pkgbase = rhythmweb-git
+	pkgdesc = GTK3 port of the original rhythmweb v0.1x GTK2 plugin - for Rhythmbox v2.96 and above
+	pkgver = 20121202
+	pkgrel = 1
+	url = https://github.com/fossfreedom/rhythmweb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = rhythmbox
+	provides = rhythmweb
+	conflicts = rhythmweb
+	replaces = rhythmweb
+
+pkgname = rhythmweb-git
+
