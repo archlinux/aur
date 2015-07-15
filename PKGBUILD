@@ -3,7 +3,7 @@
 pkgname=bmx6
 pkgver=r662.8f26909
 pkgrel=1
-pkgdesc="Bmx6 mesh routing network daemon including JSON, SMS and Table plugins"
+pkgdesc="Bmx6 mesh routing network protocol including json, sms and table plugins"
 arch=('i686' 'x86_64')
 url="http://bmx6.net"
 license=('GPL2')
@@ -32,11 +32,10 @@ build() {
   make -C lib/bmx6_table/
 }
 
-  
 package() {
   cd "$srcdir/$pkgname"
-  install -D -m 755 bmx6 ${pkgdir}/usr/sbin/bmx6 
-  install -D -m 755 lib/bmx6_json/bmx6_json.so ${pkgdir}/usr/lib/bmx6_json.so 
-  install -D -m 755 lib/bmx6_sms/bmx6_sms.so ${pkgdir}/usr/lib/bmx6_sms.so 
-  install -D -m 755 lib/bmx6_table/bmx6_table.so ${pkgdir}/usr/lib/bmx6_table.so 
+  install -D -m 755 bmx6 ${pkgdir}/usr/sbin/bmx6
+  install -D -m 755 lib/bmx6_json/bmx6_json.so ${pkgdir}/usr/lib/bmx6_json.so
+  install -D -m 755 lib/bmx6_sms/bmx6_sms.so ${pkgdir}/usr/lib/bmx6_sms.so
+  install -D -m 755 lib/bmx6_table/bmx6_table.so ${pkgdir}/usr/lib/bmx6_table.so
 }
