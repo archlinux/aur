@@ -1,0 +1,13 @@
+Link with libX11 explicitly.
+
+--- mail-notification-5.4.dfsg.1.orig/jbsrc/jb.c
++++ mail-notification-5.4.dfsg.1/jbsrc/jb.c
+@@ -445,6 +445,8 @@
+ 
+   jb_compile_options_add_libs(object->compile_options, "-lm");
+ 
++  jb_compile_options_add_libs(object->compile_options, "-lX11");
++
+   jb_compile_options_add_package(object->compile_options, "gettext");
+   jb_compile_options_add_package(object->compile_options, "gnome");
+   jb_compile_options_add_package(object->compile_options, "dbus");

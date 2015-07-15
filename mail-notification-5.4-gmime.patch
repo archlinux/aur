@@ -1,0 +1,63 @@
+diff -Nrbu mail-notification-5.4/build/src/mn-base-mbox-mailbox-backend.c mail-notification-5.4-OK/build/src/mn-base-mbox-mailbox-backend.c
+--- mail-notification-5.4/build/src/mn-base-mbox-mailbox-backend.c	2008-12-23 14:48:49.000000000 +0300
++++ mail-notification-5.4-OK/build/src/mn-base-mbox-mailbox-backend.c	2008-12-23 14:48:28.000000000 +0300
+@@ -265,7 +265,7 @@
+ 	    mime_message = g_mime_parser_construct_message(parser);
+ 	    if (mime_message)
+ 	      {
+-		if (g_mime_message_get_header(mime_message, "X-Mozilla-Status"))
++		if (g_mime_object_get_header(mime_message, "X-Mozilla-Status"))
+ 		  {
+ #if WITH_MOZILLA
+ 		    type = MN_TYPE_MOZILLA_MAILBOX_BACKEND;
+diff -Nrbu mail-notification-5.4/build/src/mn-mozilla-mailbox-backend.c mail-notification-5.4-OK/build/src/mn-mozilla-mailbox-backend.c
+--- mail-notification-5.4/build/src/mn-mozilla-mailbox-backend.c	2008-12-23 14:48:49.000000000 +0300
++++ mail-notification-5.4-OK/build/src/mn-mozilla-mailbox-backend.c	2008-12-23 14:46:47.000000000 +0300
+@@ -167,7 +167,7 @@
+ 	
+     const char *header;
+ 
+-    header = g_mime_message_get_header(mime_message, header_name);
++    header = g_mime_object_get_header(mime_message, header_name);
+     if (header && mn_str_ishex(header))
+       return strtol(header, NULL, 16);
+     else
+diff -Nrbu mail-notification-5.4/jbsrc/jb.c mail-notification-5.4-OK/jbsrc/jb.c
+--- mail-notification-5.4/jbsrc/jb.c	2008-05-22 19:47:04.000000000 +0400
++++ mail-notification-5.4-OK/jbsrc/jb.c	2008-12-23 14:43:09.000000000 +0300
+@@ -166,7 +166,7 @@
+   jb_require_packages("GNOME", "gnome", "glib-2.0 >= 2.14 gthread-2.0 gconf-2.0 >= 2.4.0 gtk+-2.0 >= 2.12 libgnomeui-2.0 >= 2.14.0 gnome-vfs-2.0 libglade-2.0 libxml-2.0 libnotify >= 0.4.1");
+   jb_require_packages("D-Bus", "dbus", "dbus-glib-1");
+ 
+-  jb_check_packages_for_options("GMime", "gmime", "gmime-2.0 >= 2.2.7",
++  jb_check_packages_for_options("GMime", "gmime", "gmime-2.6",
+ 				"hotmail",
+ 				"imap",
+ 				"maildir",
+diff -Nrbu mail-notification-5.4/src/mn-message-mime.c mail-notification-5.4-OK/src/mn-message-mime.c
+--- mail-notification-5.4/src/mn-message-mime.c	2008-05-22 19:45:35.000000000 +0400
++++ mail-notification-5.4-OK/src/mn-message-mime.c	2008-12-23 14:46:35.000000000 +0300
+@@ -33,12 +33,12 @@
+   g_return_val_if_fail(GMIME_IS_MESSAGE(mime_message), FALSE);
+ 
+   /* SpamAssassin */
+-  spam = g_mime_message_get_header(mime_message, "X-Spam-Status");
++  spam = g_mime_object_get_header(mime_message, "X-Spam-Status");
+   if (spam && mn_ascii_str_case_has_prefix(spam, "yes"))
+     return TRUE;
+ 
+   /* bogofilter */
+-  spam = g_mime_message_get_header(mime_message, "X-Bogosity");
++  spam = g_mime_object_get_header(mime_message, "X-Bogosity");
+   if (spam && mn_ascii_str_case_has_prefix(spam, "yes"))
+     return TRUE;
+ 
+@@ -89,7 +89,7 @@
+     {
+       const char *status;
+ 
+-      status = g_mime_message_get_header(mime_message, "Status");
++      status = g_mime_object_get_header(mime_message, "Status");
+       if (status && strchr(status, 'R'))
+ 	return NULL;		/* the message was read */
+       else if (status && strchr(status, 'O'))
