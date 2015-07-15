@@ -1,0 +1,15 @@
+pkgbase = python2-odict
+	pkgdesc = Ordered dictionary.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/bluedynamics/odict
+	arch = any
+	license = PSF
+	makedepends = python2-distribute
+	depends = python2
+	provides = odict
+	source = http://pypi.python.org/packages/source/o/odict/odict-1.5.1.tar.gz
+	md5sums = 77ded25c29035b68574383a08af2bdf1
+
+pkgname = python2-odict
+
