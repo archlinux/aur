@@ -1,0 +1,22 @@
+pkgbase = pinpoint-git
+	pkgdesc = a tool for making hackers do excellent presentations
+	pkgver = 0.1.4.40_g9df3bf6
+	pkgrel = 1
+	url = https://live.gnome.org/Pinpoint
+	install = pinpoint.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = clutter
+	depends = gdk-pixbuf2
+	depends = clutter-gst
+	depends = glproto
+	depends = dri2proto
+	provides = pinpoint
+	conflicts = pinpoint
+	source = git+http://git.gnome.org/browse/pinpoint
+	md5sums = SKIP
+
+pkgname = pinpoint-git
+
