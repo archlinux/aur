@@ -3,7 +3,7 @@
 
 pkgname=retroarch
 _pkgname=RetroArch
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Simple frontend for the libretro API. Stable version."
 
@@ -17,7 +17,7 @@ conflicts=('retroarch-git')
 provides=('retroarch-git')
 
 source=("https://github.com/libretro/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ec4c9314d8ea8ef61294f30804ff05df')
+md5sums=('1a1645c38d3d705f9f5dee00eb1ecfdd')
 
 backup=('etc/retroarch.cfg')
 
