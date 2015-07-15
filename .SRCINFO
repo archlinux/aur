@@ -1,0 +1,15 @@
+pkgbase = rhythmbox-lastfm_extension-git
+	pkgdesc = A Rhythmbox plugin that adds a bunch of new exciting features making of use of the great services provided by LastFM
+	pkgver = 20130303
+	pkgrel = 1
+	url = https://github.com/asermax/lastfm_extension
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = rhythmbox
+	depends = python2-pylast
+	depends = python2-pylastfp
+
+pkgname = rhythmbox-lastfm_extension-git
+
