@@ -1,5 +1,5 @@
 pkgbase = brother-mfc7360n
-	pkgdesc = CUPS and LPR driver for Brother MFC7360N printer
+	pkgdesc = LPR and CUPS driver for the Brother MFC-7360N printer
 	pkgver = 2.0.4
 	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
@@ -19,6 +19,7 @@ pkgbase = brother-mfc7360n
 	sha256sums = 0330ea2d74627026736842beade0b504816265cdd61b1b1b49a234a1e2c8011c
 	sha256sums = 358e37e1d8cfdce25b1ebe17f21fd2cf3abcdc45263c7e007e36c8be74ae2fbf
 	sha256sums = b3ffe2e882d08763795e2cc18b35e724e5157a57edf6c76696401c4c810af3a9
+	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc7360n
 
