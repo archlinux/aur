@@ -1,0 +1,21 @@
+pkgbase = ruby-gpgme
+	pkgdesc = Ruby binding of GPGME.
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = https://github.com/ueno/ruby-gpgme
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gmp
+	depends = gpgme
+	depends = libgpg-error
+	depends = libassuan
+	depends = ruby
+	depends = ruby-mini_portile-0.6.0
+	noextract = gpgme-2.0.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gpgme-2.0.8.gem
+	sha1sums = df49d45cd095fc3ce880a7e2c20e1da2b93fa8c6
+
+pkgname = ruby-gpgme
+
