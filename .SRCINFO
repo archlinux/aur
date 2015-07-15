@@ -1,0 +1,16 @@
+pkgbase = ruby-ncursesw
+	pkgdesc = This wrapper provides access to the functions, macros, global variables and constants of the ncurses library. These are mapped to a Ruby Module named "Ncurses": Functions and external variables are implemented as singleton functions of the Module Ncurses.
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = http://github.com/sup-heliotrope/ncursesw-ruby
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	depends = ruby
+	noextract = ncursesw-1.4.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ncursesw-1.4.9.gem
+	sha1sums = 18ae6580bf8ead6a48ed1e63eb2b44dc71dc0002
+
+pkgname = ruby-ncursesw
+
