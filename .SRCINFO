@@ -1,7 +1,7 @@
 pkgbase = freenet
 	pkgdesc = An encrypted network without censorship
-	pkgver = 0.7.5.1468
-	pkgrel = 2
+	pkgver = 0.7.5.1468.29.g38c543c
+	pkgrel = 3
 	url = https://downloads.freenetproject.org
 	install = freenet.install
 	arch = any
@@ -13,23 +13,25 @@ pkgbase = freenet
 	makedepends = apache-ant-contrib
 	makedepends = git
 	depends = java-runtime
-	depends = bcprov151
+	depends = bcprov151>=1.52
 	depends = gmp
 	depends = java-service-wrapper
 	noextract = lzma465.tar.bz2
 	noextract = league-lzmajio-0.95-0-gd38bf5c.tar.gz
 	noextract = jBitcollider-0.8.zip
 	noextract = mantissa-7.2-src.zip
-	noextract = *.jar
+	noextract = db4o-7.4-java.zip
+	noextract = commons-compress.jar
+	noextract = db4o.jar
 	backup = opt/freenet/wrapper.config
 	backup = opt/freenet/conf/freenet.ini
-	source = git+https://github.com/freenet/fred.git#commit=ad3fc4a
+	source = git+https://github.com/freenet/fred.git#commit=38c543c
 	source = git+https://github.com/freenet/contrib.git
 	source = git+https://github.com/freenet/plugin-JSTUN.git
 	source = git+https://github.com/freenet/plugin-UPnP.git
 	source = git+https://github.com/freenet/plugin-KeyUtils.git
+	source = git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
-	source = WebOfTrust.jar::https://downloads.freenetproject.org/alpha/plugins/WebOfTrust/WebOfTrust-build0013.jar
 	source = https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar
 	source = https://downloads.freenetproject.org/contrib/jar/latest/db4o.jar
 	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c
@@ -44,27 +46,29 @@ pkgbase = freenet
 	source = league-lzmajio-0.95-0-gd38bf5c.tar.gz::https://codeload.github.com/league/lzmajio/legacy.tar.gz/0.95
 	source = https://downloads.sourceforge.net/project/bitcollider/jBitcollider%20%28Java%29/0.8/jBitcollider-0.8.zip
 	source = https://www.spaceroots.org/software/mantissa/mantissa-7.2-src.zip
+	source = https://downloads.freenetproject.org/contrib/db4o-7.4-java.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c8a96950fe4c469084905a3de54a0f89e811d39e50d46b91d052ec1d2985512d
+	sha256sums = SKIP
 	sha256sums = 16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d
 	sha256sums = bb98650344e65138d694dfa54f89b5690088cc14f42d1ace2ae0063d35f417bd
 	sha256sums = f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d
 	sha256sums = 9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2
 	sha256sums = 24fed7935fcbfc6eb022e04abe8b9d22fda88eae8c1f73daf99e8f28a420d05f
-	sha256sums = 10ee7592556225883e11bc13019736f77ba27e5fcce8cdc82048975317ca8c8b
+	sha256sums = 23301d421c1fd1d076ef2c8371881477924c03db21b19a8ca180a8db6349dfaa
 	sha256sums = 3e48a77324277569b93a6e4082ddcf4303435c86ebd005594f164cb0047997b3
 	sha256sums = c449771efa8819b31565ae7e46787e9aee7afbbc4664e27a96d1fd2f2a4ca4fa
-	sha256sums = 60930e055217f885135ff016175aeebc2582dcc391ff9f6340717e20ef597ec3
+	sha256sums = e83c19b6f9137539ab4dd66a5bf1a5207b4b351eb808688d963f1081852be022
 	sha256sums = ac83d727d6301e75cf1d441a1a1e72ba06ea119fa53a3bae65b3373108abf213
 	sha256sums = c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e
 	sha256sums = 265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef
 	sha256sums = b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044
 	sha256sums = e438135d69139ed4fa44400f416ea73935d16afe50dfe490b7bba0602ee89476
+	sha256sums = 73f307a8cbd114fdc0af8daa067994a2cdc364c4053e6734d16b8dd1d5a0469f
 
 pkgname = freenet
 

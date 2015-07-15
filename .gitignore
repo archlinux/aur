@@ -1,0 +1,14 @@
+contrib/
+fred/
+plugin-*/
+src/
+pkg/
+
+*.jar
+*.zip
+*.pkg.tar
+*.c
+*.h
+*.tar.gz
+*.tar.bz2
+seednodes.fref
