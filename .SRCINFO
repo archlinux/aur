@@ -1,0 +1,18 @@
+pkgbase = httpshell
+	pkgdesc = An interactive shell for issuing HTTP commands to a web server or REST API
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = https://github.com/chrislongo/HttpShell/
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-pygments
+	depends = python2-httplib2
+	depends = python2-oauth2
+	provides = httpsh
+	source = http://github.com/downloads/chrislongo/HttpShell/httpshell-0.8.0.tar.gz
+	sha256sums = a639da2fd3f5b98e064df9a5ca9949f153cc948287075112b1c847c1a9bdda42
+
+pkgname = httpshell
+
