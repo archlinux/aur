@@ -1,0 +1,5 @@
+2015-07-14 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.1 :
+	- Initial release.
+	- Provide the same functionality as in dropbear_initrd_encrypt regarding dropbear.

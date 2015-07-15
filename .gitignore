@@ -1,0 +1,3 @@
+v*.tar.gz
+mkinitcpio-dropbear-*-any.pkg.tar.xz
+mkinitcpio-dropbear-*.src.tar.gz

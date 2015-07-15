@@ -1,0 +1,18 @@
+pkgbase = mkinitcpio-dropbear
+	pkgdesc = Archlinux mkinitcpio hook to install and enable the dropbear daemon in early userspace
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/grazzolini/mkinitcpio-dropbear
+	install = mkinitcpio-dropbear.install
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	depends = dropbear
+	depends = psmisc
+	optdepends = openssh: Allows the use of the same host keys used for normal access
+	conflicts = dropbear_initrd_encrypt
+	source = https://github.com/grazzolini/mkinitcpio-dropbear/archive/v0.0.1.tar.gz
+	sha512sums = a4c4d91d27638d9f045b4321fd232cf86d9fb5aa45e59299108c794da4770bab33d444c2c518867fae3c1c9bb91099ab5ad9d149fca229a236d15e98f38283c5
+
+pkgname = mkinitcpio-dropbear
+
