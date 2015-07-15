@@ -1,0 +1,13 @@
+pkgbase = lua-fs
+	pkgdesc = Simple filesystem extension library for Lua
+	pkgver = 0.3
+	pkgrel = 5
+	url = http://www.steve.org.uk/Software/lua/lua-fs/
+	arch = any
+	license = LGPL
+	depends = lua
+	source = http://www.steve.org.uk/Software/lua/lua-fs/lua-fs-0.3.tar.gz
+	md5sums = 52e253fb86c71c201265074dc09a10e6
+
+pkgname = lua-fs
+
