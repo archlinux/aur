@@ -66,7 +66,7 @@ build() {
     LDFLAGS="${LDFLAGS} -L${_icclibpath}"
     
     
-    if [ "$_CC" = "icc" ]; then
+    if [ $_CC = "icc" ]; then
         export CC="icc"
         export CXX="icpc"
         export AR="xiar"
