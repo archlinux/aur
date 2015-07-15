@@ -1,38 +1,45 @@
-# Maintainer: Ondrej Kucera <ondrej.kucera@centrum.cz>
+# Maintainer: Det
+# Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 
-pkgname=jdk-docs
-pkgver=8u45
-_realver=8u45
-_buildnum=b14
-_javafxver=8.0.45
-_javafxbuildnum=b13
+pkgname=('jdk-docs' 'javafx-docs')
+_major=8
+_minor=45
+_build=b14
+pkgver=${_major}u${_minor}
 pkgrel=1
-pkgdesc="Java SE Development Kit Documentation 8"
-arch=("any")
+pkgdesc="Documentation for Oracle Java Development Kit"
+arch=('any')
 url="http://www.oracle.com/technetwork/java/index.html"
-license=("custom")
-options=("!strip" "docs" "libtool" "staticlibs" "!zipman")
-source=("http://download.oracle.com/otn-pub/java/jdk/$_realver-$_buildnum/jdk-$_realver-docs-all.zip"
-	"http://download.oracle.com/otn-pub/java/javafx/$_javafxver-$_javafxbuildnum/javafx-$_realver-apidocs.zip"
-	"Java SE Development Kit 8 Documentation License Agreement"
-	"Oracle Legal Notices"
-       )
-sha256sums=('bc83053e6730779a97077cf1246e7c57e46600294357ab37675555c1c6a11cbc'
-            'ca3fa0ea160de1c3761c88cec3bc7925ef7cf1c260e76e700ea16f319f1e83b2'
-            '14dc1953902010f7b48891e795183b39c048b19881815eec6a57cf3d62631ab7'
-            '63626da8084eec01f7702aab6c62227fb4ddf249a428397da031be39940b689d')
-noextract=("jdk-$_realver-docs-all.zip" "javafx-$_realver-apidocs.zip")
+license=('custom:Oracle')
+optdepends=("java-runtime>=$_major: Run the examples"
+            "java-environment>=$_major: Compile and run the examples")
+options=('!strip')
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver-docs-all.zip"
+        "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/javafx-$pkgver-apidocs.zip"
+        'LICENSE-Documentation'
+        'LICENSE-JavaFX')
+md5sums=('ad1bee41ba1f17e81fe09b983ae6adba'
+         'ecd9f7c34acf8c06ebe50b3e2a6440f1'
+         '4d54057ca75b691366977dab2277e869'
+         'b2a9fa7a855645ba5e1ea2ea555cce25')
 
 DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
 
-package() {
-  mkdir -p "$pkgdir/usr/share/doc/java"
-  bsdtar -xf "$srcdir/jdk-$_realver-docs-all.zip" -C "$pkgdir/usr/share/doc/java"
-  mv "$pkgdir/usr/share/doc/java/docs" "$pkgdir/usr/share/doc/java/jdk"
-  mkdir -p "$pkgdir/usr/share/doc/java/javafx"
-  bsdtar -xf "$srcdir/javafx-$_realver-apidocs.zip" -C "$pkgdir/usr/share/doc/java/javafx"
-  install -D -m644 "Java SE Development Kit 8 Documentation License Agreement" "$pkgdir/usr/share/licenses/$pkgname/Java SE Development Kit 8 Documentation License Agreement"
-  install -D -m644 "Oracle Legal Notices" "$pkgdir/usr/share/licenses/$pkgname/Oracle Legal Notices"
-  chown -R root:root "$pkgdir/usr/share/doc/java"
+package_jdk-docs() {
+  # Install
+  install -d "$pkgdir"/usr/share/doc/java/
+  mv docs/* "$pkgdir"/usr/share/doc/java/
+
+  # License
+  install -Dm644 LICENSE-Documentation "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_javafx-docs() {
+  # Install
+  install -d "$pkgdir"/usr/share/doc/java/javafx/
+  mv api "$pkgdir"/usr/share/doc/java/javafx/
+
+  # License
+  install -Dm644 LICENSE-JavaFX "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
