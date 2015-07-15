@@ -1,0 +1,21 @@
+post_install() {
+	odbcinst -i -d -r <<-EOS
+		[MDBTools]
+		Description = MDBTools Driver
+		Driver = libmdbodbc.so
+		Setup = libmdbodbc.so
+		FileUsage = 1
+	EOS
+}
+
+pre_upgrade() {
+	odbcinst -u -d -n "MDBTools"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	odbcinst -u -d -n "MDBTools"
+}

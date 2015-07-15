@@ -1,0 +1,21 @@
+pkgbase = mdbtools-unixodbc-git
+	pkgdesc = A software driver based on unixodbc to access JET / MS Access database (MDB) files through ODBC.
+	pkgver = 0.7.1.r57.g584119e
+	pkgrel = 1
+	url = https://github.com/brianb/mdbtools
+	install = mdbtools-unixodbc.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = unixodbc
+	depends = flex
+	depends = glib2
+	depends = mdbtools-git
+	provides = mdbtools-unixodbc
+	conflicts = mdbtools-unixodbc
+	source = mdbtools-unixodbc-git::git+https://github.com/brianb/mdbtools.git
+	md5sums = SKIP
+
+pkgname = mdbtools-unixodbc-git
+
