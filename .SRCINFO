@@ -1,0 +1,17 @@
+pkgbase = php-runkit
+	pkgdesc = Runkit is set of tools which allowes to do what Reflection does not allow. Usefull for unit tests.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/zenovich/runkit
+	arch = x86_64
+	arch = i686
+	license = PHP
+	makedepends = php
+	depends = php
+	source = git+https://github.com/zenovich/runkit.git
+	source = https://github.com/zenovich/runkit/pull/73.diff
+	md5sums = SKIP
+	md5sums = 768c220680f414b1b3858f0d856e6a40
+
+pkgname = php-runkit
+
