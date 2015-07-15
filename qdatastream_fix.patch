@@ -1,0 +1,10 @@
+--- a/src/3rd_party/qtsingleapplication/qtlocalpeer.h	2015-07-15 01:15:20.631302622 -0500
++++ b/src/3rd_party/qtsingleapplication/qtlocalpeer.h	2015-07-15 01:15:28.681332734 -0500
+@@ -49,6 +49,7 @@
+ #include <QtNetwork/QLocalServer>
+ #include <QtNetwork/QLocalSocket>
+ #include <QtCore/QDir>
++#include <QtCore/QDataStream>
+ 
+ namespace QtLP_Private {
+ #include "qtlockedfile.h"

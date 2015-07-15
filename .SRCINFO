@@ -19,8 +19,10 @@ pkgbase = juffed-qt5-git
 	conflicts = juffed-git
 	source = git+https://github.com/Mezomish/juffed.git
 	source = juffed-qt5-git.install
+	source = qdatastream_fix.patch
 	sha512sums = SKIP
 	sha512sums = ac9be39d90d5696142b61e00f74577cec23d379be128965642a92cabefd5ed9c511fedeb7cec068f24224d96aa5ace9992920c5a4dd54f90c59a93442f14079a
+	sha512sums = a4ebe1626c70825d99279a41334c47b34513f0ba7f86ab8334d9e3a971cd725ed45db6af05b4439f744115ace2a838501cf7620b5936f36a257c9d5ecd5b8943
 
 pkgname = juffed-qt5-git
 
