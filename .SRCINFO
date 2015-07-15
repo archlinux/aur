@@ -1,6 +1,6 @@
 pkgbase = watchman
 	pkgdesc = An inotify-based file watching and job triggering command line utility
-	pkgver = 3.3.0
+	pkgver = 3.5.0
 	pkgrel = 0
 	url = https://facebook.github.io/watchman/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = watchman
 	license = Apache
 	depends = glibc
 	depends = pcre
-	source = watchman-3.3.0.tar.gz::https://github.com/facebook/watchman/archive/v3.3.0.tar.gz
-	sha256sums = c8bd6b496f5d86b13c91368bf3b01346282f565c8af4f8e2f7bb6b74a48c4793
+	source = watchman-3.5.0.tar.gz::https://github.com/facebook/watchman/archive/v3.5.0.tar.gz
+	sha256sums = cfc63ca1172ac3c40c8558c87e8014d5fc4f058667fb0d58f9ac1d09316bfee3
 
 pkgname = watchman
 
