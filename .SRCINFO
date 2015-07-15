@@ -1,0 +1,21 @@
+pkgbase = cpyrit-cuda
+	pkgdesc = Pyrit support for Nvidia-CUDA.
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = http://code.google.com/p/pyrit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = python2
+	makedepends = cuda
+	depends = python2
+	depends = openssl
+	depends = zlib
+	depends = nvidia
+	depends = pyrit
+	source = http://pyrit.googlecode.com/files/cpyrit-cuda-0.4.0.tar.gz
+	md5sums = e3eaf2bbd841409326670cb8f501f2c6
+
+pkgname = cpyrit-cuda
+
