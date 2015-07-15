@@ -1,0 +1,18 @@
+pkgbase = python2-glipy
+	pkgdesc = The OpenGL IPython/Python terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://webloria.loria.fr/~rougier/coding/glipy/
+	arch = any
+	license = BSD
+	makedepends = patch
+	depends = python
+	depends = pyglet
+	depends = ipython
+	depends = python2-numpy
+	options = !emptydirs
+	source = http://www.loria.fr/~rougier/coding/software/glipy.tgz
+	md5sums = 72f03a34ad9380066a123c44311ed1ef
+
+pkgname = python2-glipy
+
