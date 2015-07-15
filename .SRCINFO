@@ -1,0 +1,16 @@
+pkgbase = ruby-unicode
+	pkgdesc = Unicode normalization library.
+	pkgver = 0.4.4.2
+	pkgrel = 1
+	url = http://www.yoshidam.net/Ruby.html#unicode
+	arch = i686
+	arch = x86_64
+	license = Ruby
+	depends = ruby
+	noextract = unicode-0.4.4.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unicode-0.4.4.2.gem
+	sha1sums = 7cf8ea4a38a1f1acf38009dff147628e024786eb
+
+pkgname = ruby-unicode
+
