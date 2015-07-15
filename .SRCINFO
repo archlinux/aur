@@ -1,0 +1,19 @@
+pkgbase = kdeplasma-applets-plasma-crystal-git
+	pkgdesc = A widget that can be used as search widget, or alternative file-open mechanism
+	pkgver = 20120109
+	pkgrel = 1
+	url = http://quickgit.kde.org/?p=plasma-crystal.git&a=summary
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = docbook-xsl
+	makedepends = bc
+	depends = kdebase-plasma
+	provides = kdeplasma-applets-plasma-crystal
+	conflicts = kdeplasma-applets-plasma-crystal
+
+pkgname = kdeplasma-applets-plasma-crystal-git
+
