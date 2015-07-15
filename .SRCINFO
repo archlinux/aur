@@ -1,0 +1,12 @@
+pkgbase = footswitch-git
+	pkgdesc = Command-line utility for PCsensor foot switch
+	pkgver = 11.f2bfaa2
+	pkgrel = 1
+	url = https://github.com/rgerganov/footswitch
+	arch = any
+	license = GPL
+	source = git+https://github.com/rgerganov/footswitch
+	md5sums = SKIP
+
+pkgname = footswitch-git
+
