@@ -1,13 +1,13 @@
 # Maintainer: Pau Escrich <p4u@dabax.net>
 
 pkgname=bmx6
-pkgver=r8f26909
+pkgver=r662.8f26909
 pkgrel=1
-pkgdesc="bmx6 mesh routing network daemon"
+pkgdesc="Bmx6 mesh routing network daemon including JSON, SMS and Table plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/axn/bmx6"
+url="http://bmx6.net"
 license=('GPL2')
-depends=('glibc')
+depends=('glibc' 'json-c')
 makedepends=('git' 'make' 'gcc')
 conflicts=('')
 provides=('bmx6')
@@ -23,9 +23,20 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make
+  #JSON plugin
+  sed -i s/"json\/json.h"/"json-c\/json.h"/g lib/bmx6_json/json.c
+  make -C lib/bmx6_json/
+  #SMS plugin
+  make -C lib/bmx6_sms/
+  #Table plugin
+  make -C lib/bmx6_table/
 }
 
+  
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 bmx6 ${pkgdir}/usr/bin/bmx6
+  install -D -m 755 bmx6 ${pkgdir}/usr/sbin/bmx6 
+  install -D -m 755 lib/bmx6_json/bmx6_json.so ${pkgdir}/usr/lib/bmx6_json.so 
+  install -D -m 755 lib/bmx6_sms/bmx6_sms.so ${pkgdir}/usr/lib/bmx6_sms.so 
+  install -D -m 755 lib/bmx6_table/bmx6_table.so ${pkgdir}/usr/lib/bmx6_table.so 
 }
