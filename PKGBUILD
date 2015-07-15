@@ -12,7 +12,7 @@
 
 pkgname=git-annex-bin
 pkgver=5.20150710
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://git-annex.branchable.com/'
@@ -67,11 +67,6 @@ package() {
 
     msg "  Removing runshell componets from executables..."
     rm "$pkgdir"/opt/git-annex.linux/git{,-receive-pack,-upload-pack,-shell}
-
-    # 64-bit curl fix (endless loop in assistant when creating new repo - incompatible curl bin (system) and lib (package))
-    if [[ $CARCH == "x86_64" ]] ; then
-        rm "$pkgdir/opt/git-annex.linux/usr/lib/x86_64-linux-gnu/libcurl.so.4"
-    fi
 
     # move the man pages over to the system directory
     mv "$pkgdir/opt/git-annex.linux/usr/share" "$pkgdir/usr/"
