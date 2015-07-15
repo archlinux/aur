@@ -1,0 +1,15 @@
+pkgbase = chg
+	pkgdesc = A bit faster Mercurial client for Unix with per-user cmdserver daemon.
+	pkgver = hg
+	pkgrel = 1
+	url = https://bitbucket.org/yuja/chg/src
+	arch = x86_64
+	arch = x86
+	license = GPL
+	makedepends = mercurial
+	depends = python2
+	depends = mercurial
+	options = !emptydirs
+
+pkgname = chg
+
