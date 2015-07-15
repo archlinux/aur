@@ -18,14 +18,14 @@ source=(http://images.uesp.net//9/9d/Fixqs001.zip
         http://www.uesp.net/dagger/files/xqpatch.zip
         http://images.uesp.net//3/34/Lbsword.zip
         http://www.uesp.net/dagger/files/addtext.zip
-        http://www.svatopluk.com/daggerfall/mods/BrenRSC1.zip
-        http://www.svatopluk.com/daggerfall/mods/BrenRSC2.zip
+        http://www.uesp.net/w/images/a/ab/BrenRSC1.zip
+        http://www.uesp.net/w/images/6/69/BrenRSC2.zip
         http://images.uesp.net//5/5e/MountedGuards.zip
         http://images.uesp.net//0/04/WeaponsFall.zip
         http://images.uesp.net//9/9c/ArmorFall.zip
         http://images.uesp.net//c/c3/ClothesFall.zip
         http://images.uesp.net//f/f8/WomenFall.zip
-        http://www.svatopluk.com/daggerfall/mods/andyfall.zip
+        http://www.uesp.net/dagger/files/andyfall.zip
         andyfall-clothes.patch andyfall-armor.patch andyfall.patch)
 noextract=(xtraqst.zip xtraqst2.zip Xtraqst3.zip xqse.zip xqpatch.zip Lbsword.zip
            MountedGuards.zip WeaponsFall.zip ArmorFall.zip ClothesFall.zip WomenFall.zip
@@ -39,7 +39,7 @@ md5sums=('4b8d31d14f3ee8c7400bdf8c9768aa1c'
          'fd07e8b79ec015421bae0e4ddaeee002'
          '13d33aae6edc1abaf6e060e775873588'
          '50711bb9b198972c41a9e8b9c74559ba'
-         '8b585dc1c1ee47e348613dc60180720d'
+         'b98a33fd5498621265521847519c64d1'
          '9a27ce990dc32df5f92cb5a841b6ceaa'
          'ae5d7a13120754e3f1574767958977a7'
          '567f827b27536c740459269a02869c14'
@@ -167,9 +167,8 @@ package() {
   install -d brendan_straight_text/ARENA2
   cd brendan_straight_text/ARENA2
   unzip "$srcdir"/BrenRSC2.zip
-  rm -rf __MACOSX
-  mv BrenRSC2/Brendan2.rsc TEXT.RSC
-  rm -rf BrenRSC2
+  rm BrenRSC2.txt
+  mv Brendan2.rsc TEXT.RSC
   cd "$_target"
   echo "brendan_straight_text" >> addons.extends
 
