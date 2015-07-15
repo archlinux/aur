@@ -13,10 +13,12 @@ depends=('libpurple')
 makedepends=('pkg-config')
 source=(http://www.siorarina.net/gss/src/${_realname}-${pkgver}.src.tar.gz)
 md5sums=('651444f5e7e8f35aaa108c471d571030')
+PKGEXT='.pkg.tar'
 
 prepare() {
   cd ${srcdir}/${_realname}-${pkgver}
   sed -i -e "s|~/.purple/plugins|${pkgdir}/usr/lib/pidgin|" Makefile
+  sed -i -e "s|^CFLAGS :=|CFLAGS := -O2|" Makefile
 }
 
 build() {
