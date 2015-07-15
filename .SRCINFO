@@ -1,10 +1,9 @@
 pkgbase = linux-libre-lts-grsec
-	pkgver = 3.14.47_gnu.201507050832
+	pkgver = 3.14.48_gnu.201507111210
 	pkgrel = 1
 	url = https://grsecurity.net/
 	arch = i686
 	arch = x86_64
-	arch = mips64el
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -14,10 +13,10 @@ pkgbase = linux-libre-lts-grsec
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.47-gnu/patch-3.14-gnu-3.14.47-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.47-gnu/patch-3.14-gnu-3.14.47-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.47-201507050832.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.47-201507050832.patch.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.48-gnu/patch-3.14-gnu-3.14.48-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.48-gnu/patch-3.14-gnu-3.14.48-gnu.xz.sign
+	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.48-201507111210.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.48-201507111210.patch.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -26,7 +25,6 @@ pkgbase = linux-libre-lts-grsec
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config.i686
 	source = config.x86_64
-	source = config.mips64el
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = 0001-Bluetooth-allocate-static-minor-for-vhci.patch
@@ -34,13 +32,11 @@ pkgbase = linux-libre-lts-grsec
 	source = 0003-module-remove-MODULE_GENERIC_TABLE.patch
 	source = 0006-genksyms-fix-typeof-handling.patch
 	source = gcc5_buildfixes.diff
-	source = https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community_grsecurity.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community_grsecurity.patch.sig
 	sha256sums = 477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b
 	sha256sums = SKIP
-	sha256sums = d9be335479424000a60cb76928a6aa691dcb9669d0583099247dad58dc5e664a
+	sha256sums = bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6
 	sha256sums = SKIP
-	sha256sums = 325574b248d7096596a95d888020d1de6f6815082f0c08f9f48f248c357e56a8
+	sha256sums = 14d8a15b59128f04ed06fb0c5f91bed626dd98983c8e6229dbfd56dcf00ff350
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -48,9 +44,8 @@ pkgbase = linux-libre-lts-grsec
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = 3758c3c26491cbbea0a096724a8f54ac246188b1c8e86a3dbe91ac1d23708d3e
-	sha256sums = 07447a3299fcd730a17ca5f1ef6e18983e4843b167e65eca0ab479adf64d60c2
-	sha256sums = c7863a24550dd068b86b50f74a3a2503289419503d460e526164ea6c246bd443
+	sha256sums = 150cb59bfe9074a04cc64bc43bf49d7b9c1fff9a22334a11b83eb3016e36443b
+	sha256sums = f699b8b0acb528d45a867c461cea7503e097a5a75f61710a46513476582a2109
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182
 	sha256sums = 6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02
@@ -58,8 +53,6 @@ pkgbase = linux-libre-lts-grsec
 	sha256sums = 65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d
 	sha256sums = cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7
 	sha256sums = 9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a
-	sha256sums = 4637b23fc0cb21520c9da612cd39c38a52bd00c80778e39110fc2e72118f9c10
-	sha256sums = SKIP
 
 pkgname = linux-libre-lts-grsec
 	pkgdesc = The Linux-libre-lts-grsec kernel and modules - stable longtime supported kernel package suitable for servers with grsecurity/PaX patches
@@ -72,7 +65,7 @@ pkgname = linux-libre-lts-grsec
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = gradm: to configure and enable Role Based Access Control (RBAC)
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
-	provides = linux-lts-grsec=3.14.47.201507050832
+	provides = linux-lts-grsec=3.14.48.201507111210
 	conflicts = kernel26-lts-grsec
 	conflicts = kernel26-libre-lts-grsec
 	replaces = linux-lts-grsec
@@ -82,7 +75,7 @@ pkgname = linux-libre-lts-grsec
 
 pkgname = linux-libre-lts-grsec-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts-grsec kernel
-	provides = linux-lts-grsec-headers=3.14.47.201507050832
+	provides = linux-lts-grsec-headers=3.14.48.201507111210
 	conflicts = kernel26-lts-grsec-headers
 	conflicts = kernel26-libre-lts-grsec-headers
 	replaces = linux-lts-grsec-headers
@@ -91,7 +84,7 @@ pkgname = linux-libre-lts-grsec-headers
 
 pkgname = linux-libre-lts-grsec-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts-grsec kernel
-	provides = linux-lts-grsec-docs=3.14.47.201507050832
+	provides = linux-lts-grsec-docs=3.14.48.201507111210
 	conflicts = kernel26-lts-grsec-docs
 	conflicts = kernel26-libre-lts-grsec-docs
 	replaces = linux-lts-grsec-docs
