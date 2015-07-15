@@ -1,0 +1,17 @@
+--- pulseaudio-equalizer.orig/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py	2011-03-17 10:53:48.000000000 +0000
++++ pulseaudio-equalizer/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py	2011-03-17 11:18:04.000000000 +0000
+@@ -180,10 +180,13 @@ class Equalizer:
+ 		if os.path.isfile(presetdir1 + "/" + preset + ".preset"):
+ 			f = open(presetdir1 + "/" + preset + ".preset", "r")
+ 			rawdata=f.read().split('\n')
+-		else:
++			f.close
++		elif os.path.isfile(presetdir2 + "/" + preset + ".preset"):
+ 			f = open(presetdir2 + "/" + preset + ".preset", "r")
+ 			rawdata=f.read().split('\n')
+ 			f.close
++		else:
++			print "Can't find %s preset" % preset
+ 
+ 		ladspa_filename = str(rawdata[0])
+ 		ladspa_name = str(rawdata[1])

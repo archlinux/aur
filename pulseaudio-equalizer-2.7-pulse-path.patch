@@ -1,0 +1,161 @@
+--- pulseaudio-equalizer.orig/usr/bin/pulseaudio-equalizer	2013-10-24 10:23:27.000000000 +0000
++++ pulseaudio-equalizer/usr/bin/pulseaudio-equalizer	2013-10-24 10:53:48.000000000 +0000
+@@ -18,11 +18,11 @@
+ PA_PREAMP="1.0"
+ PA_CURRENT_PRESET=""
+ 
+-PRESET_DIR1=$HOME/.pulse/presets
++PRESET_DIR1=$HOME/.config/pulse/presets
+ PRESET_DIR2=/usr/share/pulseaudio-equalizer/presets
+ SCRIPT_NAME=pulseaudio-equalizer
+ SCRIPT_VERSION="2.7 (05/02/2010)"
+-CONFIG_NAME=$HOME/.pulse/equalizerrc
++CONFIG_NAME=$HOME/.config/pulse/equalizerrc
+ LOG_NAME=$HOME/Desktop/pulseaudio-equalizer.log
+ 
+ # Don't execute the script with elevated privileges
+@@ -125,8 +125,8 @@
+ fi 
+ 
+ # Check if equalizer is set as persistent
+-if [ -f $HOME/.pulse/default.pa ]; then
+-    if [ "$(cat $HOME/.pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
++if [ -f $HOME/.config/pulse/default.pa ]; then
++    if [ "$(cat $HOME/.config/pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
+     PA_EQUALIZER_PERSISTENCE=1
+   fi
+ else
+@@ -204,8 +204,8 @@
+   echo PA_PREAMP=$PA_PREAMP
+   echo PA_REAL_PREAMP=$PA_REAL_PREAMP
+ 
+-  if [ -f $HOME/.pulse/default.pa ]; then
+-    tail -n7 $HOME/.pulse/default.pa
++  if [ -f $HOME/.config/pulse/default.pa ]; then
++    tail -n7 $HOME/.config/pulse/default.pa
+   fi
+ 
+   echo "---"
+@@ -253,24 +253,24 @@
+   echo "-------------------------------------"
+ 
+   # If equalizer configuration is already set, delete file
+-  if [ -f $HOME/.pulse/default.pa ]; then
+-    if [ "$(cat $HOME/.pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
+-      echo "Equalizer definition detected in file '$HOME/.pulse/default.pa', deleting..."
+-      rm $HOME/.pulse/default.pa
++  if [ -f $HOME/.config/pulse/default.pa ]; then
++    if [ "$(cat $HOME/.config/pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
++      echo "Equalizer definition detected in file '$HOME/.config/pulse/default.pa', deleting..."
++      rm $HOME/.config/pulse/default.pa
+     fi
+   fi
+ 
+   # Make a backup of configuration if necessary
+-  if [ -f $HOME/.pulse/default.pa ]; then
+-    echo "Found '$HOME/.pulse/default.pa', making a copy..."
+-    cp $HOME/.pulse/default.pa $HOME/.pulse/default.pa.noeq
+-    CFG_SOURCE_FILE="$HOME/.pulse/default.pa.noeq"
++  if [ -f $HOME/.config/pulse/default.pa ]; then
++    echo "Found '$HOME/.config/pulse/default.pa', making a copy..."
++    cp $HOME/.config/pulse/default.pa $HOME/.config/pulse/default.pa.noeq
++    CFG_SOURCE_FILE="$HOME/.config/pulse/default.pa.noeq"
+   fi
+ 
+   # Decide which file to use as the configuration source
+-  if [ -f $HOME/.pulse/default.pa.noeq ]; then
+-    echo "Found '$HOME/.pulse/default.pa.noeq'..."
+-    CFG_SOURCE_FILE="$HOME/.pulse/default.pa.noeq"
++  if [ -f $HOME/.config/pulse/default.pa.noeq ]; then
++    echo "Found '$HOME/.config/pulse/default.pa.noeq'..."
++    CFG_SOURCE_FILE="$HOME/.config/pulse/default.pa.noeq"
+   else
+     CFG_SOURCE_FILE="/etc/pulse/default.pa"
+   fi
+@@ -278,19 +278,19 @@
+   echo "Using configuration file '$CFG_SOURCE_FILE' as source..."
+ 
+   # Modify module-stream-restore line to disable cached sinks
+-  cat $CFG_SOURCE_FILE | sed 's/load-module module-stream-restore/load-module module-stream-restore restore_device=false/g' >$HOME/.pulse/default.pa 
++  cat $CFG_SOURCE_FILE | sed 's/load-module module-stream-restore/load-module module-stream-restore restore_device=false/g' >$HOME/.config/pulse/default.pa 
+ 
+   # Add module-ladspa-sink definition
+-  echo "" >>$HOME/.pulse/default.pa
+-  echo "### BEGIN: Equalized audio configuration" >>$HOME/.pulse/default.pa
+-  echo "### Generated from: $SCRIPT_NAME" >>$HOME/.pulse/default.pa
+-  echo "load-module module-ladspa-sink sink_name=$PA_LADSPA_SINK master=$PA_MASTER_SINK plugin=$PA_LADSPA_PLUGIN label=$PA_LADSPA_LABEL control=$PA_LADSPA_CONTROLS" >>$HOME/.pulse/default.pa
++  echo "" >>$HOME/.config/pulse/default.pa
++  echo "### BEGIN: Equalized audio configuration" >>$HOME/.config/pulse/default.pa
++  echo "### Generated from: $SCRIPT_NAME" >>$HOME/.config/pulse/default.pa
++  echo "load-module module-ladspa-sink sink_name=$PA_LADSPA_SINK master=$PA_MASTER_SINK plugin=$PA_LADSPA_PLUGIN label=$PA_LADSPA_LABEL control=$PA_LADSPA_CONTROLS" >>$HOME/.config/pulse/default.pa
+ 
+   # Set LADSPA sink as default sink & set appropriate master sink (preamp) volume
+-  echo "set-default-sink $PA_LADSPA_SINK" >>$HOME/.pulse/default.pa
+-  echo "set-sink-volume $PA_MASTER_SINK $PA_REAL_PREAMP" >>$HOME/.pulse/default.pa
+-  echo "set-sink-mute $PA_MASTER_SINK 0" >>$HOME/.pulse/default.pa
+-  echo "### END: Equalized audio configuration" >>$HOME/.pulse/default.pa
++  echo "set-default-sink $PA_LADSPA_SINK" >>$HOME/.config/pulse/default.pa
++  echo "set-sink-volume $PA_MASTER_SINK $PA_REAL_PREAMP" >>$HOME/.config/pulse/default.pa
++  echo "set-sink-mute $PA_MASTER_SINK 0" >>$HOME/.config/pulse/default.pa
++  echo "### END: Equalized audio configuration" >>$HOME/.config/pulse/default.pa
+ 
+   echo "Equalizer setting saved (enable-config)."
+   echo "-------------------------------------"
+@@ -306,16 +306,16 @@
+   echo "-------------------------------------"
+ 
+   # Move .noeq configuration file if it exists
+-  if [ -f $HOME/.pulse/default.pa.noeq ]; then
+-    echo "Found '$HOME/.pulse/default.pa.noeq', moving..."
+-    mv $HOME/.pulse/default.pa.noeq $HOME/.pulse/default.pa
++  if [ -f $HOME/.config/pulse/default.pa.noeq ]; then
++    echo "Found '$HOME/.config/pulse/default.pa.noeq', moving..."
++    mv $HOME/.config/pulse/default.pa.noeq $HOME/.config/pulse/default.pa
+   fi
+ 
+   # If equalizer configuration is present, delete file
+-  if [ -f $HOME/.pulse/default.pa ]; then
+-    if [ "$(cat $HOME/.pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
+-     echo "Equalizer definition detected, deleting '$HOME/.pulse/default.pa'..."
+-     rm $HOME/.pulse/default.pa
++  if [ -f $HOME/.config/pulse/default.pa ]; then
++    if [ "$(cat $HOME/.config/pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
++     echo "Equalizer definition detected, deleting '$HOME/.config/pulse/default.pa'..."
++     rm $HOME/.config/pulse/default.pa
+    fi
+   fi
+ 
+@@ -426,8 +426,8 @@
+   echo "-------------------------------------"
+   echo "Equalizer status: [enabled]"
+ 
+-  if [ -f $HOME/.pulse/default.pa ]; then
+-    if [ "$(cat $HOME/.pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
++  if [ -f $HOME/.config/pulse/default.pa ]; then
++    if [ "$(cat $HOME/.config/pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
+       echo "Equalizer configuration status: [enabled]"
+     else
+       echo "Equalizer configuration status: [disabled]"
+@@ -448,8 +448,8 @@
+   echo "-------------------------------------"
+   echo "Equalizer status: [disabled]"
+ 
+-  if [ -f $HOME/.pulse/default.pa ]; then
+-    if [ "$(cat $HOME/.pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
++  if [ -f $HOME/.config/pulse/default.pa ]; then
++    if [ "$(cat $HOME/.config/pulse/default.pa | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
+       echo "Equalizer configuration status: [enabled]"
+       echo "Equalizer plugin: [$PA_LADSPA_PLUGIN/$PA_LADSPA_LABEL]"
+       echo "Equalizer control: [$PA_LADSPA_CONTROLS]"
+
+--- pulseaudio-equalizer.orig/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py	2013-10-24 10:23:27.000000000 +0000
++++ pulseaudio-equalizer/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py	2013-10-24 10:53:48.000000000 +0000
+@@ -13,7 +13,7 @@
+ import gtk, gobject
+ import os
+ 
+-configdir = os.getenv('HOME') + "/.pulse"
++configdir = os.getenv('HOME') + "/.config/pulse"
+ eqconfig = configdir + "/equalizerrc"
+ eqconfig2 = configdir + "/equalizerrc.test"
+ eqpresets = eqconfig + ".availablepresets"

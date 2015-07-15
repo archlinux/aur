@@ -1,0 +1,32 @@
+--- pulseaudio-equalizer.orig/usr/bin/pulseaudio-equalizer
++++ pulseaudio-equalizer/usr/bin/pulseaudio-equalizer
+@@ -378,7 +378,7 @@
+ 
+   # Unmute & set preamp level on ALSA sink (as LADSPA sink will act as primary volume control)
+   echo "Setting ALSA sink ($PA_MASTER_SINK) preamp ("$PA_PREAMP"x)..."
+-  echo >>/tmp/eqcommands.sh "set-sink-volume $PA_MASTER_SINK $PA_REAL_PREAMP"
++  #echo >>/tmp/eqcommands.sh "set-sink-volume $PA_MASTER_SINK $PA_REAL_PREAMP"
+   echo >>/tmp/eqcommands.sh "set-sink-mute $PA_MASTER_SINK 0"
+ 
+   # Set the LADSPA sink as the default
+--- pulseaudio-equalizer.orig/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py
++++ pulseaudio-equalizer/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py
+@@ -412,14 +412,14 @@
+ 	table.attach(label, 1, 2, 0, 1)
+ 	table.attach(preampscale, 1, 2, 1, 2)
+ 	table.attach(preampscalevalue, 1, 2, 2, 3)
+-	label.show()
+-	preampscale.show()
+-	preampscalevalue.show()
++	#label.show()
++	#preampscale.show()
++	#preampscalevalue.show()
+ 
+ 	# Separator between preamp and bands
+ 	separator = gtk.VSeparator()
+ 	table.attach(separator, 2, 3, 1, 2)
+-	separator.show()
++	#separator.show()
+ 
+ 	# Equalizer bands
+ 	global scale

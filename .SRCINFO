@@ -1,0 +1,30 @@
+pkgbase = pulseaudio-equalizer-ladspa
+	pkgdesc = A 15-band equalizer for PulseAudio
+	pkgver = 2.7.0.2
+	pkgrel = 4
+	url = http://www.webupd8.org/2013/10/system-wide-pulseaudio-equalizer.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pygtk
+	depends = swh-plugins
+	depends = gnome-icon-theme
+	depends = pulseaudio
+	depends = bc
+	source = http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/p/pulseaudio-equalizer/pulseaudio-equalizer_2.7.0.2.orig.tar.gz
+	source = pulseaudio-equalizer-2.7-do-not-crash-on-missing-preset.patch
+	source = pulseaudio-equalizer-2.7-force-default-persistence-value.patch
+	source = pulseaudio-equalizer-2.7-remove-preamp.patch
+	source = pulseaudio-equalizer-2.7-window-icon.patch
+	source = pulseaudio-equalizer-2.7-pulse-path.patch
+	source = pulseaudio-equalizer-2.7-current-volume.patch
+	md5sums = c3c886a6017cb16408d47d0f5cd8549b
+	md5sums = ab6578d8e9528e1fc78f461a9842760d
+	md5sums = 141a6d70f57938b71fb0bac0d3df9fb1
+	md5sums = 0df0fa924165601f8703f13052a63456
+	md5sums = 6d132c5b5d71a985fb2aa98aa93cf190
+	md5sums = abb24625bb9e2e5d77f21d8d9148cb26
+	md5sums = 917b144f7789ceef42980e0b816f101d
+
+pkgname = pulseaudio-equalizer-ladspa
+
