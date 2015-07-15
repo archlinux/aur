@@ -1,3 +1,8 @@
+2015-07-14  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.1.2_gnu-1
+	* Dropped mips64el support
+
 2015-07-04  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-4.0.7_gnu-2

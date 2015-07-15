@@ -1,10 +1,9 @@
 pkgbase = linux-libre
-	pkgver = 4.1.1_gnu
+	pkgver = 4.1.2_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
 	arch = x86_64
-	arch = mips64el
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -14,8 +13,8 @@ pkgbase = linux-libre
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.1-gnu/patch-4.1-gnu-4.1.1-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.1-gnu/patch-4.1-gnu-4.1.1-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -24,16 +23,13 @@ pkgbase = linux-libre
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config.i686
 	source = config.x86_64
-	source = config.mips64el
 	source = linux.preset
 	source = 0001-block-loop-convert-to-per-device-workqueue.patch
 	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 	source = change-default-console-loglevel.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/4.1-rc7-db21bcc5d0-loongson-community.patch.sig
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3
+	sha256sums = b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -43,13 +39,10 @@ pkgbase = linux-libre
 	sha256sums = SKIP
 	sha256sums = 0fc8d80f2a5acce485fd2fc243a87a325e5a242bdbaa538f1a9aa852776085be
 	sha256sums = 78fd6dfd2400a1e627a763709cd67bfd2b07aec86ea7be873f918995e6aa6ce5
-	sha256sums = 50241bf38a9d2e64527f5f631b536b67f27bc0c05c4ec784bd52401dcba74839
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
 	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = ab8fe9b295af6e28858834e464c01198ae1b521e2571ff47efa3ad1ccbbfc846
-	sha256sums = SKIP
 
 pkgname = linux-libre
 	pkgdesc = The Linux-libre kernel and modules
@@ -59,7 +52,7 @@ pkgname = linux-libre
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=4.1.1
+	provides = linux=4.1.2
 	conflicts = kernel26
 	conflicts = kernel26-libre
 	conflicts = linux-libre-kmod-alx
@@ -71,7 +64,7 @@ pkgname = linux-libre
 
 pkgname = linux-libre-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre kernel
-	provides = linux-headers=4.1.1
+	provides = linux-headers=4.1.2
 	conflicts = kernel26-headers
 	conflicts = kernel26-libre-headers
 	replaces = linux-headers
@@ -80,7 +73,7 @@ pkgname = linux-libre-headers
 
 pkgname = linux-libre-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre kernel
-	provides = linux-docs=4.1.1
+	provides = linux-docs=4.1.2
 	conflicts = kernel26-docs
 	conflicts = kernel26-libre-docs
 	replaces = linux-docs
