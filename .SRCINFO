@@ -1,0 +1,14 @@
+pkgbase = caenhvwrapper
+	pkgdesc = Library for CAEN Power Supply Control
+	pkgver = 5.61
+	pkgrel = 1
+	url = http://www.caen.it/jsp/Template2/CaenProd.jsp?parent=42&idmod=835
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc>2.9
+	source = file://CAENHVWrapper-5.61.tgz
+	sha256sums = d01b82098de1943663040eca26a8bbc75aaf4cd2a152e18d78c432fb842e059f
+
+pkgname = caenhvwrapper
+
