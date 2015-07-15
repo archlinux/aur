@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-lts     # Build kernel with -lts localname
 _pkgbasever=3.14-gnu
-_pkgver=3.14.47-gnu
+_pkgver=3.14.48-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -19,7 +19,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-arch=('i686' 'x86_64' 'mips64el')
+arch=('i686' 'x86_64')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
@@ -35,7 +35,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config.i686' 'config.x86_64' 'config.mips64el'
+        'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -43,13 +43,10 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         '0006-genksyms-fix-typeof-handling.patch'
-        'gcc5_buildfixes.diff'
-        # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        "https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community.patch.sig")
+        'gcc5_buildfixes.diff')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            'd9be335479424000a60cb76928a6aa691dcb9669d0583099247dad58dc5e664a'
+            'bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -57,18 +54,15 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'b4cc9c49948fc1d571c27ddeddd93b5b499ccc17fb06fa75bfe41ecddfbc12e4'
-            '3fa8ce26aea9b5e596ccfc842baa3f2a8be8ef4a62bc13d75e8da2bafd89141c'
-            'f15f2cf744d402e575713e4d500b82e7bcf8983aef5c97f82dcc9400ba4487f0'
+            '2d257eadefd31955dd8d887fb6ab0e2932475ae34fb03c1dd64c17e0f8758318'
+            'a06ecf54b9b20c91c66c42e5d742248de8b0543dd0b378fac8f37a91b3f19eb8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a'
-            '7c2d1e257acce0ea6f260f3acf18e30e21c12a9a6b3d7d1d4097dafd287388e2'
-            'SKIP')
+            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -82,7 +76,6 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
-  mips64el) KARCH=mips;;
 esac
 
 prepare() {
@@ -121,11 +114,6 @@ prepare() {
   # Fix generation of symbol CRCs
   # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
   patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-
-  # Adding loongson-community patch
-  if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/3.14.26-8475f027b4-loongson-community.patch
-  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
