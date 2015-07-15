@@ -27,7 +27,7 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201505
+_zipcoderel=201506
 _mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
 
 _gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
@@ -59,8 +59,8 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '1bef90786e016b94a02b694041010719bcd74ca2'
-          'ad9cc9bd9e5acb5d6f75741e07f17732f3ff71a8')
+          'b174652a1689df61049f4a3fcebfc3f5edb7dcdc'
+          'c4f56e0063f5c1c932609aa1d8afe62e56e19c3d')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
