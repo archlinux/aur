@@ -1,0 +1,21 @@
+pkgbase = libgames-support-git
+	pkgdesc = Code shared between GNOME games
+	pkgver = 0.1.r166.f8ada8e
+	pkgrel = 1
+	url = https://git.gnome.org/browse/libgames-support
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = gnome-common
+	makedepends = git
+	depends = clutter-gtk
+	depends = libgee
+	provides = libgames-support
+	conflicts = libgames-support
+	options = !libtool
+	source = git+https://git.gnome.org/browse/libgames-support
+	md5sums = SKIP
+
+pkgname = libgames-support-git
+
