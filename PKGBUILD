@@ -2,13 +2,14 @@
 
 pkgname=gnome-builder-git
 pkgver=2657.cac6cfe
-pkgrel=3
+pkgrel=4
 pkgdesc="Builder, a new IDE for Gnome"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Builder"
 license=(GPL)
 conflicts=(gnome-builder)
-depends=('gtksourceview3-git' 'gtk3-git' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 'libgit2-glib-git' 'glib2-git')
+depends=('gtksourceview3-git' 'gtk3-git' 'libpeas-git' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 
+'libgit2-glib-git' 'glib2-git')
 makedepends=('gnome-common-git' 'gobject-introspection-git' 'llvm' 'intltool')
 install=gnome-builder.install
 source=('git+git://git.gnome.org/gnome-builder')

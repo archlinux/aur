@@ -1,7 +1,7 @@
 pkgbase = gnome-builder-git
 	pkgdesc = Builder, a new IDE for Gnome
 	pkgver = 2657.cac6cfe
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Apps/Builder
 	install = gnome-builder.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = gnome-builder-git
 	makedepends = intltool
 	depends = gtksourceview3-git
 	depends = gtk3-git
+	depends = libpeas-git
 	depends = gsettings-desktop-schemas
 	depends = dconf
 	depends = devhelp
