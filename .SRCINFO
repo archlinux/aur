@@ -1,0 +1,25 @@
+pkgbase = python-mdtraj
+	pkgdesc = A modern, open library for the analysis of molecular dynamics trajectories
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://mdtraj.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	optdepends = python-scipy: For loading and saving AMBER netcdf formatted trajectories.
+	optdepends = python-pandas: Some functionality, including mol2 parsing, requires pandas.
+	optdepends = python-pytables: Working with HDF5 formatted trajectories requires the PyTables package.
+	options = !libtool
+	source = https://github.com/SimTk/mdtraj/archive/1.4.2.tar.gz
+	sha1sums = 9012aa9233f061b886ed471bb0d780f0c17027d5
+
+pkgname = python2-mdtraj
+	depends = python2-numpy
+	depends = cython2
+
+pkgname = python-mdtraj
+	depends = python-numpy
+	depends = cython
+
