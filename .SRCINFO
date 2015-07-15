@@ -1,0 +1,15 @@
+pkgbase = ruby-chronic
+	pkgdesc = Chronic is a natural language date/time parser written in pure Ruby.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://github.com/mojombo/chronic
+	arch = any
+	license = MIT
+	depends = ruby
+	conflicts = ruby-chronic-old
+	noextract = chronic-0.9.1.gem
+	source = http://gems.rubyforge.org/gems/chronic-0.9.1.gem
+	sha256sums = 13739596a4e0c4bf8a6495809f1647d26151100fa3df4dc3f4db1fef6e57574f
+
+pkgname = ruby-chronic
+
