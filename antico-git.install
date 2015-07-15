@@ -1,0 +1,5 @@
+post_install () {
+  echo "If you don't have a login manager (GDM/KDM), add this to ~/.xinitrc:"
+  echo "  exec /usr/bin/antico"
+  echo "Then use Slim to login or 'xinit' from the commandline." 
+} 

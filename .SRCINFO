@@ -1,0 +1,15 @@
+pkgbase = antico-git
+	pkgdesc = Lightweight pure QT4 window manager
+	pkgver = 20130303
+	pkgrel = 1
+	url = http://qt-apps.org/content/show.php/Antico?content=93778
+	install = antico-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = qt4
+
+pkgname = antico-git
+
