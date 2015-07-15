@@ -1,0 +1,15 @@
+pkgbase = aj-snapshot
+	pkgdesc = Command line utility to store/restore ALSA and/or JACK connections to/from an XML file.
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://aj-snapshot.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = jack
+	depends = mxml
+	source = http://downloads.sourceforge.net/project/aj-snapshot/aj-snapshot-0.9.6.tar.bz2
+	sha256sums = 3f31e0b808ce70f1edbf058f1d36a366fb584a25aaf2ccadd57bb904cc80c28a
+
+pkgname = aj-snapshot
+

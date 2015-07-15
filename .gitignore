@@ -1,0 +1,6 @@
+aj-snapshot-*.tar.bz2
+aj-snapshot-*.pkg.tar.xz
+aj-snapshot-*.src.tar.gz
+pkg/
+src/
+.AURINFO
