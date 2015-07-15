@@ -1,0 +1,17 @@
+pkgbase = m3u8-segmenter-git
+	pkgdesc = Apple HTTP Live Streaming Segmenter
+	pkgver = 20120803
+	pkgrel = 1
+	url = http://m3u8-segmenter.inodes.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = pkgconfig
+	depends = ffmpeg
+	provides = m3u8-segmenter
+	options = !libtool
+	sha256sums = e1e6cc6a7e55df1981ff5df1bd345221e657ed68ac12583553b951e454695d67
+
+pkgname = m3u8-segmenter-git
+
