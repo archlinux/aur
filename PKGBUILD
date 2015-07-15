@@ -13,6 +13,7 @@ conflicts=('mythes-en')
 # Fedora uses http://www.danielnaber.de/wn2ooo/ but it doesn't look more fresh
 source=("http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/thes_en_US_v2.zip")
 md5sums=('ec611ad21ae4ee2b4415e27e252e4952')
+PKGEXT='.pkg.tar'
 
 build() {
   /bin/true
