@@ -1,0 +1,16 @@
+pkgbase = python2-pygsr
+	pkgdesc = Simple way to access google api for speech recognition with python
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://bitbucket.org/drneox/pygsr/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-pyaudio
+	depends = sox
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pygsr/pygsr-0.1.tar.gz#md5=993b3cdb6651d05a250963bf423909d1
+	md5sums = 993b3cdb6651d05a250963bf423909d1
+
+pkgname = python2-pygsr
+
