@@ -1,7 +1,7 @@
 pkgbase = angband-ncurses
 	pkgdesc = A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)
-	pkgver = 4.0.0
-	pkgrel = 3
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = http://rephial.org/
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = angband-ncurses
 	depends = ncurses
 	conflicts = angband
 	conflicts = angband-git
-	source = http://rephial.org/downloads/4.0/angband-4.0.0.tar.gz
-	sha256sums = f2b674350bbaca2bc803dc4aeb3e421c2a08737e574c666cf4694c9b327fa9aa
+	source = http://rephial.org/downloads/4.0/angband-4.0.1.tar.gz
+	sha256sums = f65814a521960e05a0b1cb0badbefb7b229530fd74616ed3a23fb898faa528d0
 
 pkgname = angband-ncurses
 
