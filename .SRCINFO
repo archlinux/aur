@@ -1,15 +1,15 @@
 pkgbase = commacd
 	pkgdesc = A faster way to move around Bash
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/shyiko/commacd
 	install = commacd.install
 	arch = any
 	license = MIT
 	depends = bash
-	source = commacd-0.2.1.tar.gz::https://codeload.github.com/shyiko/commacd/tar.gz/v0.2.1
+	source = commacd-0.3.0.tar.gz::https://codeload.github.com/shyiko/commacd/tar.gz/v0.3.0
 	source = commacd.1
-	sha256sums = 0eca4bb6b9b128c2322b0573bc508bc204177415f517ca24f9744118d5c0b792
+	sha256sums = 5764c52cbe1ba9101bd98389a16743246f8b3697d316905c4e93237536d9bed0
 	sha256sums = e1cf248eb023fb608432d97e92421d8a15cf3d8f2144b5b9a29c4e80653e1382
 
 pkgname = commacd
