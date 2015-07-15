@@ -12,9 +12,9 @@
 
 pkgbase=linux-libre-lts-grsec-knock   # Build kernel with lts-grsec-knock localname
 _pkgbasever=3.14-gnu
-_pkgver=3.14.47-gnu
+_pkgver=3.14.48-gnu
 _grsecver=3.1
-_timestamp=201507050832
+_timestamp=201507111210
 _knockpatchver=3.16_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -25,7 +25,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
 pkgrel=1
-arch=('i686' 'x86_64' 'mips64el')
+arch=('i686' 'x86_64')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
@@ -45,7 +45,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config.i686' 'config.x86_64' 'config.mips64el'
+        'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -53,16 +53,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         '0006-genksyms-fix-typeof-handling.patch'
-        'gcc5_buildfixes.diff'
-        # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        # Note: Makefile patching was removed due which we are using specific flags from grsecurity patch
-        "https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community_grsecurity.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community_grsecurity.patch.sig")
+        'gcc5_buildfixes.diff')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            'd9be335479424000a60cb76928a6aa691dcb9669d0583099247dad58dc5e664a'
+            'bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6'
             'SKIP'
-            '325574b248d7096596a95d888020d1de6f6815082f0c08f9f48f248c357e56a8'
+            '14d8a15b59128f04ed06fb0c5f91bed626dd98983c8e6229dbfd56dcf00ff350'
             'SKIP'
             '70cbe962aa01989ffa83490bb0765d6e4c781f6133dc8d768d84bd6716ac0209'
             'SKIP'
@@ -72,18 +68,15 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'f8f419c5163ba0121a1321049352a5efdf1e872656fcf1d0df03e90e226e5e18'
-            '1a492d913eca774e5885059ddf712a888e10fb2fff4013c117dd744f08438a9e'
-            '2ea3b6d526adedc0eb39be030c9f4e2efa37bff67e495044527d3b978f5784c0'
+            'd17ada3d4f047bee666a31adf1fd3a60185e0c785420ffab46c126521f964ea3'
+            '721ab1a12c7d685d99fd1fa0069510b2feb74cbdea06845a16ed6d9041ed6016'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a'
-            '4637b23fc0cb21520c9da612cd39c38a52bd00c80778e39110fc2e72118f9c10'
-            'SKIP')
+            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -98,7 +91,6 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
-  mips64el) KARCH=mips;;
 esac
 
 prepare() {
@@ -144,11 +136,6 @@ prepare() {
   # Fix generation of symbol CRCs
   # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
   patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-
-  # Adding loongson-community patch
-  if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/3.14.26-8475f027b4-loongson-community.patch
-  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
