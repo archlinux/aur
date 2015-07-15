@@ -2,7 +2,7 @@
 
 pkgname=slashem
 pkgver=0.0.7E7F3
-pkgrel=3
+pkgrel=4
 pkgdesc='Nethack variant Super Lotsa Added Stuff Hack - Extended Magic'
 arch=('i686' 'x86_64')
 url="http://www.slashem.org/"
@@ -11,14 +11,12 @@ depends=('bash')
 source=("http://prdownloads.sourceforge.net/$pkgname/se007e7f3.tar.gz"
 	"$pkgname-$pkgver.patch")
 md5sums=('54b4534fe85f08722e8b6b38d52c2e9a'
-         '81e685f77734d1a39a85d4d5d77add7c')
+         'fd208bd24da31198d6a1d7d067e7377e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	sh sys/unix/setup.sh
 	patch -p0 -i "$srcdir/$pkgname-$pkgver.patch"
-	sed -e "/^# define COMPRESS /s|/usr/bin/compress|$(which gzip)|" \
-		-i include/config.h
 }
 
 build() {
@@ -28,13 +26,17 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
+	install -dm755 "$pkgdir"/usr/share/man/{fr/man6,man6}
+	install -dm775 "$pkgdir/var/games"
 	make PREFIX="$pkgdir" install manpages
-	sed -e "s|HACKDIR=$pkgdir/|HACKDIR=|" \
+	sed -e "s|HACKDIR=$pkgdir|HACKDIR=|" \
 		-e 's|HACK=$HACKDIR|HACK=/usr/lib/slashem|' \
 		-i $pkgdir/usr/bin/slashem
 	install -Dm644 dat/license "$pkgdir/usr/share/licenses/$pkgname/license"
 	install -dm755 "$pkgdir/usr/lib/$pkgname"
 	mv "$pkgdir"/var/games/slashem/{slashem,recover} \
 		"$pkgdir/usr/lib/$pkgname"
+	# Delete man pages that conflict with nethack.
+	rm "$pkgdir"/usr/share/man/man6/{dgn_comp.6,dlb.6,lev_comp.6,recover.6}
 }
 
