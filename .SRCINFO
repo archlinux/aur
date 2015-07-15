@@ -1,0 +1,26 @@
+pkgbase = cpyrit-opencl
+	pkgdesc = Pyrit support for Nvidia-CUDA.
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = http://code.google.com/p/pyrit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = opencl-headers
+	makedepends = gcc
+	makedepends = python2
+	depends = python2
+	depends = openssl
+	depends = zlib
+	depends = libcl
+	depends = pyrit
+	optdepends = opencl-catalyst: OpenCL implemention from AMD
+	conflicts = cpyrit-calpp-svn
+	conflicts = cpyrit-calpp
+	conflicts = cpyrit-opencl
+	conflicts = cpyrit-cuda
+	source = http://pyrit.googlecode.com/files/cpyrit-opencl-0.4.0.tar.gz
+	md5sums = 9aea58eb00a147ed4e76802bb02541c5
+
+pkgname = cpyrit-opencl
+
