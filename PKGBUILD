@@ -24,7 +24,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
 pkgrel=1
-arch=('i686' 'x86_64' 'mips64el')
+arch=('i686' 'x86_64')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
@@ -42,13 +42,10 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config.i686' 'config.x86_64' 'config.mips64el'
+        'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig")
+        'change-default-console-loglevel.patch')
 sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172'
@@ -63,11 +60,8 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             'af56a529b4ecf2d2022e90a2cb45b333ddb2c289ba67a2fa230ae8ffa1d4312d'
             '38ad70222577fc0c995569228dc9104b00deee0846995542661d1fcc2a8e9344'
-            '5bf34aee37178508394885b9b8f870c5ace955aca18f3d5ccc25fea876d8b334'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22'
-            'SKIP')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -83,7 +77,6 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
-  mips64el) KARCH=mips;;
 esac
 
 prepare() {
@@ -109,11 +102,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Adding loongson-community patch
-  if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/4.0.2-ae91f13af5-loongson-community.patch
-  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
