@@ -1,0 +1,16 @@
+pkgbase = blastem-hg
+	pkgdesc = Fast and accurate Sega Genesis/Mega Drive emulator
+	pkgver = r682.7ed1dbb48f61
+	pkgrel = 2
+	url = http://rhope.retrodev.com/files/blastem.html
+	arch = x86_64
+	license = GPLv3
+	makedepends = mercurial
+	depends = sdl
+	provides = blastem
+	conflicts = blastem
+	source = blastem::hg+http://rhope.retrodev.com/repos/blastem
+	sha256sums = SKIP
+
+pkgname = blastem-hg
+
