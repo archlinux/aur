@@ -1,0 +1,16 @@
+pkgbase = ruby-locale
+	pkgdesc = Ruby-Locale is the pure ruby library which provides basic APIs for localization.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/ruby-gettext/locale
+	arch = any
+	license = Ruby
+	license = LGPLv3+
+	depends = ruby
+	noextract = locale-2.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/locale-2.1.1.gem
+	sha1sums = d31ee2630b8f5d10043992856a7a368c67de3e5c
+
+pkgname = ruby-locale
+
