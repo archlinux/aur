@@ -1,0 +1,17 @@
+pkgbase = python2-pylastfp
+	pkgdesc = A Python interface to Last.fm's acoustic fingerprinting library and its related API servicesa
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pylastfp
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = python2
+	depends = python2
+	depends = libsamplerate
+	depends = fftw
+	source = https://pypi.python.org/packages/source/p/pylastfp/pylastfp-0.6.tar.gz
+	md5sums = 292946bd34f24f533029085e063d5155
+
+pkgname = python2-pylastfp
+
