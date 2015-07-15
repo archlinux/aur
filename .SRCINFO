@@ -1,0 +1,20 @@
+pkgbase = arpack++
+	pkgdesc = an object-oriented version of the ARPACK package
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://www.ime.unicamp.br/~chico/arpack++/
+	arch = any
+	license = BSD
+	depends = glibc
+	depends = arpack
+	depends = lapack
+	depends = blas
+	optdepends = superlu
+	optdepends = umfpack
+	source = http://www.ime.unicamp.br/~chico/arpack++/arpack++.tar.gz
+	source = http://reuter.mit.edu/download/arpackpp1.2.patch.diff
+	md5sums = ba746bd46ea53ed2f141c806e36c60b2
+	md5sums = 09c778d6fd3815974d4b9ef940c31129
+
+pkgname = arpack++
+
