@@ -2,11 +2,11 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.212
+pkgver=0.99.618
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
-url="http://www.rstudio.org/"
+url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
 depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'qt5-webkit')
 makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'qt5-svg' 'pam' 'wget')
