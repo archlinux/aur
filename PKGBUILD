@@ -1,9 +1,7 @@
-# Contributor: Henrik Nymann Jensen <h@henriknj.dk>
-
 pkgname=revoco2
 pkgver=1.0
 pkgrel=1
-pkgdesc="Change the wheel behaviour of Logitech's MX-Revolution mouse."
+pkgdesc="Change the wheel behaviour of Logitech's MX-Revolution mouse. Now supports bluetooth"
 arch=('i686' 'x86_64')
 url="https://github.com/tech2077/revoco2"
 license=()
