@@ -1,7 +1,7 @@
 pkgbase = libxaw3dxft
 	pkgdesc = xaw3d library for xpaint
 	pkgver = 1.6.2c
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/
 	arch = i686

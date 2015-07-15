@@ -2,7 +2,7 @@
 pkgname=libxaw3dxft 
 _pkgname=libXaw3dXft 
 pkgver=1.6.2c
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="xaw3d library for xpaint"
 url="http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/"
