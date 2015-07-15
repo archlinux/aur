@@ -1,0 +1,12 @@
+pkgbase = mercurial-web-theme-hg
+	pkgdesc = A clean & lean Mercurial Web theme
+	pkgver = 58
+	pkgrel = 2
+	url = http://hgweb.boddie.org.uk/MercurialWebTheme
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	depends = mercurial
+
+pkgname = mercurial-web-theme-hg
+
