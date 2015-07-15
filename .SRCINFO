@@ -1,0 +1,20 @@
+pkgbase = dropbox-white-icons
+	pkgdesc = White Notification icons for Dropbox based on dropbox-dark-panel-icons
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://forums.dropbox.com/topic.php?id=7818
+	install = icons.install
+	arch = any
+	license = CCPL:by-3.0
+	depends = dropbox
+	depends = hicolor-icon-theme
+	conflicts = dropbox-light-panel-icons
+	conflicts = dropbox-dark-panel-icons
+	conflicts = dropbox-humanity-icons
+	conflicts = dropbox-humanity-dark-icons
+	source = https://dl.dropbox.com/u/62148/Misc/Dropbox Dark Panel.tar.gz?dl=1
+	sha256sums = 058d57d6db040b3394bc309c37490f7e2d874fc1955d5c4cb7210223984d3680
+	sha512sums = 6416022bf3cf8bdd40489566260fdd07f13959f54cc6c96a4169f42669058efb7eaa595ef5c1f68ddfa8b3aced059adbeb176265373b5a470fb0eae6b42be5d8
+
+pkgname = dropbox-white-icons
+
