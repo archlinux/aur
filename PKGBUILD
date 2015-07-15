@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-xen     # Build stock -xen kernel
 _pkgbasever=4.1-gnu
-_pkgver=4.1.1-gnu
+_pkgver=4.1.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -43,7 +43,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '0db144c71cc7ce0b730f012ceeed7b1d44b81acc6583bad8e91c80fb5cc0a1a3'
+            'b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
