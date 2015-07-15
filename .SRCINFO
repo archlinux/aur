@@ -1,0 +1,19 @@
+pkgbase = python-sources
+	pkgdesc = getting/pulling/cloning/updating many source dirs at once (SCC URLs: git, hg, svn)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://github.com/trentm/sources
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-distribute
+	depends = python
+	depends = git
+	depends = mercurial
+	depends = subversion
+	conflicts = python--git
+	source = http://pypi.python.org/packages/source/s/sources/sources-1.1.0.zip
+	md5sums = d80a1c742a7a6509f53316093441e3bf
+
+pkgname = python-sources
+
