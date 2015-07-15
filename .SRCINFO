@@ -1,0 +1,18 @@
+pkgbase = creox-git
+	pkgdesc = A real-time sound processor. You can plug your electric guitar or any other musical instrument directly to the PC's sound card and start experimenting with various sound effects.
+	pkgver = 20110709
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=142906
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake>=2.8.0
+	makedepends = automoc4
+	depends = kdelibs
+	depends = jack
+	provides = creox
+	conflicts = creox
+
+pkgname = creox-git
+
