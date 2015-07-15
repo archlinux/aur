@@ -7,7 +7,7 @@
 
 pkgname=java-gnome
 pkgver=4.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Java bindings to the GNOME platform (including gtk, glib and glade)"
 arch=('i686' 'x86_64')
 url="http://java-gnome.sourceforge.net"
@@ -38,7 +38,7 @@ build() {
 	unset CLASSPATH
 
 	# Ok, this had to be updated
-	./configure jdk="/usr/lib/jvm/$(archlinux-java get)" prefix=/usr
+	./configure jdk="/usr/lib/jvm/default" prefix=/usr
 	make
 	DISPLAY= make doc
 }
