@@ -1,0 +1,15 @@
+pkgbase = ghost.py
+	pkgdesc = Webkit based webclient (relies on PyQT)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://jeanphix.github.com/Ghost.py/
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-pyqt
+	source = http://pypi.python.org/packages/source/G/Ghost.py/Ghost.py-0.1.1.tar.gz
+	md5sums = 8ea797161ef3173a9cb6860533d79d18
+
+pkgname = ghost.py
+
