@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Summoning Wars
+GenericName=Summoning Wars
+Comment=3D Hack and Slash
+Exec=sumwars
+Icon=/usr/share/pixmaps/sumwars.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
+ 
