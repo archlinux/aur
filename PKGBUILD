@@ -1,15 +1,15 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kross-git
-pkgver=r61.997dd12
+pkgver=r95.78b3de7
 pkgrel=1
-pkgdesc='Kross'
-arch=('i686' 'x86_64')
+pkgdesc='Multi-language application scripting'
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kross'
-license=('LGPL')
-depends=('kparts-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'qt5-tools')
-groups=('kf5')
+license=(LGPL)
+depends=(kparts-git)
+makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools)
+groups=(kf5-aids)
 conflicts=(kross)
 provides=(kross)
 source=('git://anongit.kde.org/kross.git')

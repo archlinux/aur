@@ -1,11 +1,11 @@
 pkgbase = kross-git
-	pkgdesc = Kross
-	pkgver = r61.997dd12
+	pkgdesc = Multi-language application scripting
+	pkgver = r95.78b3de7
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kross
 	arch = i686
 	arch = x86_64
-	groups = kf5
+	groups = kf5-aids
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
