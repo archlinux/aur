@@ -1,16 +1,16 @@
 pkgbase = comodo-modules
 	pkgdesc = Modules for Comodo Antivirus for providing realtime protection
-	pkgver = 20150307_4.0.5_1
+	pkgver = 20150307_4.1.2_2
 	pkgrel = 1
 	url = http://www.bondoffamily-net.com/~kinta-chan
 	install = comodo-modules.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = linux-headers>=4.0
-	makedepends = linux-headers<4.1
-	depends = linux>=4.0
-	depends = linux<4.1
+	makedepends = linux-headers>=4.1
+	makedepends = linux-headers<4.2
+	depends = linux>=4.1
+	depends = linux<4.2
 	depends = comodo
 	source = driver-20150307.tar::http://www.bondoffamily-net.com/~kinta-chan/techknow/DownLoad/redirfs/beta/driver.tar
 	md5sums = bdf595fdb2493def6e6e128f96b83916

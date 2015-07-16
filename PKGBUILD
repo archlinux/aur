@@ -1,13 +1,13 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=comodo-modules
-pkgver=20150307_4.0.5_1
+pkgver=20150307_4.1.2_2
 pkgrel=1
 pkgdesc="Modules for Comodo Antivirus for providing realtime protection"
 arch=('i686' 'x86_64')
 url="http://www.bondoffamily-net.com/~kinta-chan"
 license=('GPL3')
-depends=('linux>=4.0' 'linux<4.1' 'comodo')
-makedepends=('linux-headers>=4.0' 'linux-headers<4.1')
+depends=('linux>=4.1' 'linux<4.2' 'comodo')
+makedepends=('linux-headers>=4.1' 'linux-headers<4.2')
 install=comodo-modules.install
 _date=20150307
 source=("driver-${_date}.tar::${url}/techknow/DownLoad/redirfs/beta/driver.tar")
