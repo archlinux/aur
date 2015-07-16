@@ -1,7 +1,7 @@
 pkgbase = glfw2
 	pkgdesc = A free, open source, portable framework for OpenGL application development (LEGACY 2.x)
 	pkgver = 2.7.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.glfw.org/
 	arch = i686
 	arch = x86_64

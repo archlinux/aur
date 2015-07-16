@@ -1,8 +1,9 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: speps <speps at aur dot archlinux dot org>
+
 pkgname=glfw2
 pkgver=2.7.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, open source, portable framework for OpenGL application development (LEGACY 2.x)"
 arch=('i686' 'x86_64')
 url="http://www.glfw.org/"
@@ -33,8 +34,7 @@ package() {
   install -Dm644 docs/*.pdf "${pkgdir}/usr/share/doc/${pkgname}"
 
   # License.
-  install -Dm644 COPYING.txt \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   # Fix .pc file prefix path
   sed -i "s|${pkgdir}||g" "${pkgdir}/usr/lib/pkgconfig/libglfw.pc"
