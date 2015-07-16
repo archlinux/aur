@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=highly-quixotic-git
 pkgver=r23.c60a359
 pkgrel=1
