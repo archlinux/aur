@@ -1,6 +1,6 @@
 pkgbase = notepadqq
 	pkgver = 0.50.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://notepadqq.altervista.org/wp/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgname = notepadqq-bin
 	pkgdesc = A Linux clone of Notepad++
 	install = notepadqq-bin.install
 	license = GPL3
-	depends = qt5-webkit
+	depends = qt5-webkit>5.2
 	depends = desktop-file-utils
 	provides = notepadqq=0.50.1
 	conflicts = notepadqq-git

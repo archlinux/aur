@@ -6,7 +6,7 @@ pkgbase=notepadqq
 pkgname=('notepadqq-bin' 'notepadqq-common')
 pkgver=0.50.1
 _pkgver=0.50.1-0~vivid1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 optdepends=('notepadqq-gtk: enables GTK style on startup')
@@ -24,7 +24,7 @@ md5sums_x86_64=('16a04cece23b9dd49746d62189daa97c')
 
 package_notepadqq-bin() {
   pkgdesc="A Linux clone of Notepad++"
-  depends=('qt5-webkit' 'desktop-file-utils')
+  depends=('qt5-webkit>5.2' 'desktop-file-utils')
   depends_x86_64+=('gcc-libs-multilib')
   requires=('notepadqq-common=${pkgver}')
   conflicts=('notepadqq-git' 'notepadqq')
