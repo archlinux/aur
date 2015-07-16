@@ -1,12 +1,13 @@
 pkgbase = rtmidi
 	pkgdesc = A set of C++ classes that provides a common API for realtime MIDI input/output.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.music.mcgill.ca/~gary/rtmidi/
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
 	depends = alsa-lib
-	depends = jack2-dbus
+	depends = jack
 	source = http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-2.1.0.tar.gz
 	sha512sums = 3bb58a7bcdbd0a6c716060d57eb856f4557a460fd24a533e956ee93523aafe058a4b3cf3133fe1f21d517b1bc7519822f3466a88e3b2c3042a8b09d171143877
 
