@@ -1,7 +1,7 @@
 pkgbase = gnome-flashback
 	pkgdesc = GNOME Flashback session
 	pkgver = 3.16.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-flashback.install
 	arch = i686
@@ -23,8 +23,10 @@ pkgbase = gnome-flashback
 	optdepends = compiz: required for the GNOME Flashback (Compiz) session
 	source = http://ftp.gnome.org/pub/gnome/sources/gnome-flashback/3.16/gnome-flashback-3.16.1.tar.xz
 	source = session-components.patch
+	source = workarounds.patch
 	sha256sums = b5424a28b2de694ae9bd170b73dfc6da62358c0e3527631b92be9dc400b52f90
 	sha256sums = 046121b5fbb185c4736a62b909e74985f52c0f0ff4b8a17c5a26d84576bfa4c0
+	sha256sums = 985186169be8bd55e98fd710b353791a63759087ddc6eb50ff98dd3dcc5af7e9
 
 pkgname = gnome-flashback
 

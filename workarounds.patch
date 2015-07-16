@@ -1,0 +1,952 @@
+diff -Nur original/configure.ac modified/configure.ac
+--- original/configure.ac	2015-04-14 23:57:08.000000000 +0100
++++ modified/configure.ac	2015-07-16 11:44:43.739704296 +0100
+@@ -76,6 +76,10 @@
+ AC_SUBST(SOUND_APPLET_CFLAGS)
+ AC_SUBST(SOUND_APPLET_LIBS)
+ 
++PKG_CHECK_MODULES(WORKAROUNDS, glib-2.0 >= $GLIB_REQUIRED gtk+-3.0 >= $GTK_REQUIRED x11)
++AC_SUBST(WORKAROUNDS_CFLAGS)
++AC_SUBST(WORKAROUNDS_LIBS)
++
+ AC_CONFIG_FILES([
+ Makefile
+ data/Makefile
+@@ -90,6 +94,7 @@
+ gnome-flashback/libshell/Makefile
+ gnome-flashback/libsound-applet/Makefile
+ gnome-flashback/libsound-applet/gvc/Makefile
++gnome-flashback/libworkarounds/Makefile
+ po/Makefile.in
+ ])
+ 
+diff -Nur original/data/org.gnome.gnome-flashback.gschema.xml.in.in modified/data/org.gnome.gnome-flashback.gschema.xml.in.in
+--- original/data/org.gnome.gnome-flashback.gschema.xml.in.in	2015-03-31 14:25:02.000000000 +0100
++++ modified/data/org.gnome.gnome-flashback.gschema.xml.in.in	2015-07-16 11:44:43.739704296 +0100
+@@ -45,8 +45,14 @@
+ 			<_summary>Sound applet</_summary>
+ 			<_description>If set to true, then GNOME Flashback application will be used to show a sound applet. This is the same sound applet that used to be a part of GNOME Control Center.</_description>
+ 		</key>
++		<key name="workarounds" type="b">
++			<default>true</default>
++			<_summary>Workarounds</_summary>
++			<_description>If set to true, then GNOME Flashback application will use workarounds to fix bugs.</_description>
++		</key>
+ 
+ 		<child name="desktop-background" schema="org.gnome.gnome-flashback.desktop-background"/>
++		<child name="workarounds" schema="org.gnome.gnome-flashback.workarounds"/>
+ 	</schema>
+ 
+ 	<schema id="org.gnome.gnome-flashback.desktop-background" path="/org/gnome/gnome-flashback/desktop-background/">
+@@ -56,4 +62,17 @@
+ 			<_description>If set to true, then fade effect will be used to change the desktop background.</_description>
+ 		</key>
+ 	</schema>
++
++	<schema id="org.gnome.gnome-flashback.workarounds" path="/org/gnome/gnome-flashback/workarounds/">
++		<key name="fix-app-menu" type="b">
++			<default>true</default>
++			<_summary>Fix missing app menu button</_summary>
++			<_description>If set to true, then gnome-flashback will force Gtk/ShellShowsAppMenu to FALSE. Disable if you want to use gnome-settings-daemon overrides in xsettings plugin for 'Gtk/ShellShowsAppMenu' property.</_description>
++		</key>
++		<key name="fix-button-layout" type="s">
++			<default>'menu:minimize,maximize,close'</default>
++			<_summary>Fix wrong button layout</_summary>
++			<_description>If set to true, then gnome-flashback will force Gtk/DecorationLayout to value set by this setting. Set to empty string if you want to use gnome-settings-daemon overrides in xsettings plugin for 'Gtk/DecorationLayout' property.</_description>
++		</key>
++	</schema>
+ </schemalist>
+diff -Nur original/gnome-flashback/flashback-application.c modified/gnome-flashback/flashback-application.c
+--- original/gnome-flashback/flashback-application.c	2015-04-13 18:04:30.000000000 +0100
++++ modified/gnome-flashback/flashback-application.c	2015-07-16 11:44:37.409739244 +0100
+@@ -28,6 +28,7 @@
+ #include "libscreenshot/flashback-screenshot.h"
+ #include "libshell/flashback-shell.h"
+ #include "libsound-applet/gvc-applet.h"
++#include "libworkarounds/flashback-workarounds.h"
+ 
+ struct _FlashbackApplication
+ {
+@@ -48,6 +49,7 @@
+   FlashbackScreenshot       *screenshot;
+   FlashbackShell            *shell;
+   GvcApplet                 *applet;
++  FlashbackWorkarounds      *workarounds;
+ };
+ 
+ G_DEFINE_TYPE (FlashbackApplication, flashback_application, G_TYPE_OBJECT)
+@@ -135,6 +137,7 @@
+   SETTING_CHANGED (screenshot, "screenshot", flashback_screenshot_new)
+   SETTING_CHANGED (shell, "shell", flashback_shell_new)
+   SETTING_CHANGED (applet, "sound-applet", gvc_applet_new)
++  SETTING_CHANGED (workarounds, "workarounds", flashback_workarounds_new)
+ 
+ #undef SETTING_CHANGED
+ 
+@@ -168,6 +171,7 @@
+   g_clear_object (&application->screenshot);
+   g_clear_object (&application->shell);
+   g_clear_object (&application->applet);
++  g_clear_object (&application->workarounds);
+ 
+   G_OBJECT_CLASS (flashback_application_parent_class)->finalize (object);
+ }
+diff -Nur original/gnome-flashback/libworkarounds/flashback-workarounds.c modified/gnome-flashback/libworkarounds/flashback-workarounds.c
+--- original/gnome-flashback/libworkarounds/flashback-workarounds.c	1970-01-01 01:00:00.000000000 +0100
++++ modified/gnome-flashback/libworkarounds/flashback-workarounds.c	2015-07-16 11:44:43.739704296 +0100
+@@ -0,0 +1,762 @@
++/*
++ * Copyright (C) 2015 Alberts Muktupāvels
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program. If not, see <http://www.gnu.org/licenses/>.
++ *
++ * Based on code from Owen Tylor, Copyright(C) 2001, 2007 Red Hat, Inc.
++ *
++ * https://git.gnome.org/browse/gtk+/tree/gdk/x11/xsettings-client.c
++ * https://git.gnome.org/browse/gnome-settings-daemon/tree/plugins/xsettings/xsettings-manager.c
++ */
++
++#include "config.h"
++
++#include <string.h>
++#include <gdk/gdkx.h>
++#include <gtk/gtk.h>
++#include <X11/Xmd.h>
++
++#include "flashback-workarounds.h"
++
++#define BYTES_LEFT(buffer) ((buffer)->data + (buffer)->len - (buffer)->pos)
++#define RETURN_IF_FAIL_BYTES(buffer, n_bytes) if (BYTES_LEFT (buffer) < (n_bytes)) return FALSE;
++#define XSETTINGS_PAD(n,m) ((n + m - 1) & (~(m-1)))
++
++struct _FlashbackWorkarounds
++{
++  GObject      parent;
++
++  GSettings   *g_settings;
++  GtkSettings *gtk_settings;
++
++  gboolean     fix_app_menu;
++  gchar       *fix_button_layout;
++
++  guint        idle_id;
++  guint        timeout_id;
++
++  Display     *xdisplay;
++
++  Atom         selection_atom;
++  Atom         xsettings_atom;
++
++  Window       manager_window;
++
++  GHashTable  *xsettings;
++  CARD32       serial;
++};
++
++G_DEFINE_TYPE (FlashbackWorkarounds, flashback_workarounds, G_TYPE_OBJECT)
++
++static void add_workarounds (FlashbackWorkarounds *workarounds);
++
++typedef enum
++{
++  XSETTINGS_TYPE_INT    = 0,
++  XSETTINGS_TYPE_STRING = 1,
++  XSETTINGS_TYPE_COLOR  = 2
++} XSettingsType;
++
++typedef struct
++{
++  gchar         *name;
++  XSettingsType  type;
++  GValue        *value;
++  gulong         last_change_serial;
++} XSettingsSetting;
++
++typedef struct
++{
++  gchar   byte_order;
++  gulong  len;
++  guchar *data;
++  guchar *pos;
++} XSettingsBuffer;
++
++static gboolean
++fetch_card16 (XSettingsBuffer *buffer,
++              CARD16          *result)
++{
++  CARD16 x;
++
++  RETURN_IF_FAIL_BYTES (buffer, 2);
++
++  x = *(CARD16 *)buffer->pos;
++  buffer->pos += 2;
++
++  if (buffer->byte_order == MSBFirst)
++    *result = GUINT16_FROM_BE (x);
++  else
++    *result = GUINT16_FROM_LE (x);
++
++  return TRUE;
++}
++
++static gboolean
++fetch_ushort (XSettingsBuffer *buffer,
++              gushort         *result)
++{
++  CARD16 x;
++  gboolean r;
++
++  r = fetch_card16 (buffer, &x);
++  if (r)
++    *result = x;
++
++  return r;
++}
++
++static gboolean
++fetch_card32 (XSettingsBuffer *buffer,
++              CARD32          *result)
++{
++  CARD32 x;
++
++  RETURN_IF_FAIL_BYTES (buffer, 4);
++
++  x = *(CARD32 *)buffer->pos;
++  buffer->pos += 4;
++
++  if (buffer->byte_order == MSBFirst)
++    *result = GUINT32_FROM_BE (x);
++  else
++    *result = GUINT32_FROM_LE (x);
++
++  return TRUE;
++}
++
++static gboolean
++fetch_card8 (XSettingsBuffer *buffer,
++             CARD8           *result)
++{
++  RETURN_IF_FAIL_BYTES (buffer, 1);
++
++  *result = *(CARD8 *)buffer->pos;
++  buffer->pos += 1;
++
++  return TRUE;
++}
++
++static gboolean
++fetch_string (XSettingsBuffer  *buffer,
++              guint             length,
++              gchar           **result)
++{
++  guint pad_len;
++
++  pad_len = XSETTINGS_PAD (length, 4);
++  if (pad_len < length)
++    return FALSE;
++
++  RETURN_IF_FAIL_BYTES (buffer, pad_len);
++
++  *result = g_strndup ((gchar *) buffer->pos, length);
++  buffer->pos += pad_len;
++
++  return TRUE;
++}
++
++static void
++free_gvalue (gpointer user_data)
++{
++  GValue *value;
++
++  value = (GValue *) user_data;
++
++  g_value_unset (value);
++  g_free (value);
++}
++
++static void
++free_xsetting (gpointer data)
++{
++  XSettingsSetting *setting;
++
++  setting = (XSettingsSetting *) data;
++
++  g_free (setting->name);
++  free_gvalue (setting->value);
++  g_free (setting);
++}
++
++static GHashTable *
++parse_settings (FlashbackWorkarounds *workarounds,
++                guchar               *data,
++                gulong                n_items)
++{
++  XSettingsBuffer buffer;
++  GHashTable *settings;
++  CARD32 n_entries;
++  CARD32 i;
++  GValue *value;
++  gchar *x_name;
++  gulong last_change_serial;
++  XSettingsSetting *setting;
++
++  buffer.pos = buffer.data = data;
++  buffer.len = n_items;
++
++  if (!fetch_card8 (&buffer, (guchar *)&buffer.byte_order))
++    return NULL;
++
++  if (buffer.byte_order != MSBFirst && buffer.byte_order != LSBFirst)
++    return NULL;
++
++  buffer.pos += 3;
++
++  if (!fetch_card32 (&buffer, &workarounds->serial) ||
++      !fetch_card32 (&buffer, &n_entries))
++    return NULL;
++
++  settings = NULL;
++  value = NULL;
++  x_name = NULL;
++
++  for (i = 0; i < n_entries; i++)
++    {
++      CARD8 type;
++      CARD16 name_len;
++      CARD32 v_int;
++
++      if (!fetch_card8 (&buffer, &type))
++        goto out;
++
++      buffer.pos += 1;
++
++      if (!fetch_card16 (&buffer, &name_len))
++        goto out;
++
++      if (!fetch_string (&buffer, name_len, &x_name) || !fetch_card32 (&buffer, &v_int))
++        goto out;
++
++      last_change_serial = (gulong) v_int;
++
++      switch (type)
++        {
++          case XSETTINGS_TYPE_INT:
++            if (!fetch_card32 (&buffer, &v_int))
++              goto out;
++
++            value = g_new0 (GValue, 1);
++            g_value_init (value, G_TYPE_INT);
++            g_value_set_int (value, (gint32) v_int);
++            break;
++
++          case XSETTINGS_TYPE_STRING:
++            {
++              gchar *s;
++
++              if (!fetch_card32 (&buffer, &v_int) || !fetch_string (&buffer, v_int, &s))
++                goto out;
++
++              value = g_new0 (GValue, 1);
++              g_value_init (value, G_TYPE_STRING);
++              g_value_take_string (value, s);
++            }
++            break;
++
++          case XSETTINGS_TYPE_COLOR:
++            /* GNOME Settings Daemon does not export settings with color type. */
++            g_free (x_name);
++            x_name = NULL;
++            break;
++
++          default:
++            /* Unknown type */
++            g_free (x_name);
++            x_name = NULL;
++            break;
++        }
++
++      if (settings == NULL)
++        settings = g_hash_table_new_full (g_str_hash, g_str_equal,
++                                          g_free, free_xsetting);
++
++      if (g_hash_table_lookup (settings, x_name) != NULL)
++        goto out;
++
++      if (x_name != NULL)
++        {
++          setting = g_new0 (XSettingsSetting, 1);
++
++          setting->name = g_strdup (x_name);
++          setting->type = type;
++          setting->value = value;
++          setting->last_change_serial = last_change_serial;
++
++          g_hash_table_insert (settings, (gpointer) x_name, setting);
++
++          x_name = NULL;
++          value = NULL;
++        }
++    }
++
++  return settings;
++
++out:
++
++  if (value)
++    free_gvalue (value);
++
++  if (settings)
++    g_hash_table_unref (settings);
++
++  g_free (x_name);
++
++  return NULL;
++}
++
++static gboolean
++read_settings (FlashbackWorkarounds *workarounds)
++{
++  GdkDisplay *display;
++  gint result;
++  Atom type;
++  gint format;
++  gulong n_items;
++  gulong bytes_after;
++  guchar *data;
++
++  display = gdk_x11_lookup_xdisplay (workarounds->xdisplay);
++
++  gdk_x11_display_error_trap_push (display);
++  result = XGetWindowProperty (workarounds->xdisplay, workarounds->manager_window,
++                               workarounds->xsettings_atom, 0, LONG_MAX,
++                               False, workarounds->xsettings_atom,
++                               &type, &format, &n_items, &bytes_after, &data);
++  gdk_x11_display_error_trap_pop_ignored (display);
++
++  if (result == Success && type != None)
++    {
++      if (type == workarounds->xsettings_atom && format == 8)
++        workarounds->xsettings = parse_settings (workarounds, data, n_items);
++
++      XFree (data);
++    }
++
++  if (workarounds->xsettings)
++    return TRUE;
++
++  return FALSE;
++}
++
++static gchar
++get_byte_order (void)
++{
++  CARD32 myint = 0x01020304;
++  return (*(gchar *)&myint == 1) ? MSBFirst : LSBFirst;
++}
++
++static void
++align_string (GString *string,
++              gint     alignment)
++{
++  while ((string->len % alignment) != 0)
++    g_string_append_c (string, '\0');
++}
++
++static void
++setting_store (XSettingsSetting *setting,
++               GString          *buffer)
++{
++  guint16 len16;
++
++  g_string_append_c (buffer, setting->type);
++  g_string_append_c (buffer, 0);
++
++  len16 = strlen (setting->name);
++  g_string_append_len (buffer, (gchar *) &len16, 2);
++  g_string_append (buffer, setting->name);
++  align_string (buffer, 4);
++
++  g_string_append_len (buffer, (gchar *) &setting->last_change_serial, 4);
++
++  if (setting->type == XSETTINGS_TYPE_INT)
++    {
++      gint value;
++
++      value = g_value_get_int (setting->value);
++
++      g_string_append_len (buffer, (gchar *) &value, 4);
++    }
++  else if (setting->type == XSETTINGS_TYPE_STRING)
++    {
++      const gchar *string;
++      guint32 len32;
++
++      string = g_value_get_string (setting->value);
++      len32 = strlen (string);
++      g_string_append_len (buffer, (gchar *) &len32, 4);
++      g_string_append (buffer, string);
++      align_string (buffer, 4);
++    }
++  else if (setting->type == XSETTINGS_TYPE_COLOR)
++    {
++      /* GNOME Settings Daemon does not export settings with color type. */
++    }
++}
++
++static void
++write_settings (FlashbackWorkarounds *workarounds)
++{
++  GString *buffer;
++  GHashTableIter iter;
++  int n_settings;
++  gpointer value;
++
++  n_settings = g_hash_table_size (workarounds->xsettings);
++
++  buffer = g_string_new (NULL);
++  g_string_append_c (buffer, get_byte_order ());
++  g_string_append_c (buffer, '\0');
++  g_string_append_c (buffer, '\0');
++  g_string_append_c (buffer, '\0');
++
++  g_string_append_len (buffer, (gchar *) &workarounds->serial, 4);
++  g_string_append_len (buffer, (gchar *) &n_settings, 4);
++
++  g_hash_table_iter_init (&iter, workarounds->xsettings);
++  while (g_hash_table_iter_next (&iter, NULL, &value))
++    setting_store (value, buffer);
++
++  XChangeProperty (workarounds->xdisplay, workarounds->manager_window,
++                   workarounds->xsettings_atom, workarounds->xsettings_atom,
++                   8, PropModeReplace, (guchar *) buffer->str, buffer->len);
++
++  g_string_free (buffer, TRUE);
++  g_hash_table_unref (workarounds->xsettings);
++  workarounds->xsettings = NULL;
++}
++
++static void
++apply_app_menu_workaround (FlashbackWorkarounds *workarounds)
++{
++  const gchar *key;
++  XSettingsSetting *setting;
++
++  key = "Gtk/ShellShowsAppMenu";
++  setting = g_hash_table_lookup (workarounds->xsettings, key);
++
++  if (setting != NULL)
++    {
++      g_hash_table_steal (workarounds->xsettings, key);
++      free_gvalue (setting->value);
++    }
++  else
++    {
++      setting = g_new0 (XSettingsSetting, 1);
++      setting->name = g_strdup (key);
++      setting->type = XSETTINGS_TYPE_INT;
++      setting->last_change_serial = 0;
++    }
++
++  setting->value = g_new0 (GValue, 1);
++  g_value_init (setting->value, G_TYPE_INT);
++  g_value_set_int (setting->value, 0);
++
++  g_hash_table_insert (workarounds->xsettings, g_strdup (key), setting);
++}
++
++static void
++apply_button_layout_workaround (FlashbackWorkarounds *workarounds)
++{
++  const gchar *key;
++  XSettingsSetting *setting;
++
++  key = "Gtk/DecorationLayout";
++  setting = g_hash_table_lookup (workarounds->xsettings, key);
++
++  if (setting != NULL)
++    {
++      g_hash_table_steal (workarounds->xsettings, key);
++      free_gvalue (setting->value);
++    }
++  else
++    {
++      setting = g_new0 (XSettingsSetting, 1);
++      setting->name = g_strdup (key);
++      setting->type = XSETTINGS_TYPE_STRING;
++      setting->last_change_serial = 0;
++    }
++
++  setting->value = g_new0 (GValue, 1);
++  g_value_init (setting->value, G_TYPE_STRING);
++  g_value_set_string (setting->value, workarounds->fix_button_layout);
++
++  g_hash_table_insert (workarounds->xsettings, g_strdup (key), setting);
++}
++
++static gboolean
++apply_workarounds (FlashbackWorkarounds *workarounds)
++{
++  gboolean gtk_shell_shows_app_menu;
++  gchar *gtk_decoration_layout;
++  gboolean need_workarounds;
++
++  g_object_get (workarounds->gtk_settings,
++                "gtk-shell-shows-app-menu", &gtk_shell_shows_app_menu,
++                NULL);
++
++  g_object_get (workarounds->gtk_settings,
++                "gtk-decoration-layout", &gtk_decoration_layout,
++                NULL);
++
++  need_workarounds = gtk_shell_shows_app_menu;
++  if (g_strcmp0 (gtk_decoration_layout, workarounds->fix_button_layout) != 0)
++    need_workarounds = TRUE;
++
++  g_free (gtk_decoration_layout);
++
++  if (!need_workarounds)
++    return TRUE;
++
++  workarounds->manager_window = XGetSelectionOwner (workarounds->xdisplay,
++                                                    workarounds->selection_atom);
++
++  if (workarounds->manager_window == None)
++    return FALSE;
++
++  if (!read_settings (workarounds))
++    return FALSE;
++
++  if (workarounds->fix_app_menu)
++    apply_app_menu_workaround (workarounds);
++
++  if (g_strcmp0 (workarounds->fix_button_layout, "") != 0)
++    apply_button_layout_workaround (workarounds);
++
++  write_settings (workarounds);
++
++  return TRUE;
++}
++
++static gboolean
++try_again (gpointer user_data)
++{
++  FlashbackWorkarounds *workarounds;
++
++  workarounds = FLASHBACK_WORKAROUNDS (user_data);
++
++  add_workarounds (workarounds);
++
++  workarounds->timeout_id = 0;
++  return G_SOURCE_REMOVE;
++}
++
++static gboolean
++add_workarounds_real (gpointer user_data)
++{
++  FlashbackWorkarounds *workarounds;
++  gboolean fix_app_menu;
++  gchar *fix_button_layout;
++
++  workarounds = FLASHBACK_WORKAROUNDS (user_data);
++
++  fix_app_menu = g_settings_get_boolean (workarounds->g_settings,
++                                         "fix-app-menu");
++  fix_button_layout = g_settings_get_string (workarounds->g_settings,
++                                             "fix-button-layout");
++
++  g_free (workarounds->fix_button_layout);
++
++  workarounds->fix_app_menu = fix_app_menu;
++  workarounds->fix_button_layout = fix_button_layout;
++
++  if (!fix_app_menu && g_strcmp0 (fix_button_layout, "") == 0)
++    {
++      workarounds->idle_id = 0;
++      return G_SOURCE_REMOVE;
++    }
++
++  if (!apply_workarounds (workarounds))
++    {
++      if (workarounds->timeout_id > 0)
++        g_source_remove (workarounds->timeout_id);
++
++      workarounds->timeout_id = g_timeout_add (100, try_again, workarounds);
++      g_source_set_name_by_id (workarounds->timeout_id,
++                               "[gnome-flashback] try_again");
++    }
++
++  workarounds->idle_id = 0;
++  return G_SOURCE_REMOVE;
++}
++
++static void
++add_workarounds (FlashbackWorkarounds *workarounds)
++{
++  if (workarounds->idle_id > 0)
++    g_source_remove (workarounds->idle_id);
++
++  workarounds->idle_id = g_idle_add (add_workarounds_real, workarounds);
++  g_source_set_name_by_id (workarounds->idle_id,
++                           "[gnome-flashback] add_workarounds_real");
++}
++
++static void
++remove_workarounds (void)
++{
++  GSettings *settings;
++  GVariant *overrides;
++
++  settings = g_settings_new ("org.gnome.settings-daemon.plugins.xsettings");
++
++  overrides = g_settings_get_value (settings, "overrides");
++  g_settings_set_value (settings, "overrides", overrides);
++
++  g_variant_unref (overrides);
++  g_object_unref (settings);
++}
++
++static void
++g_settings_changed (GSettings   *settings,
++                    const gchar *key,
++                    gpointer     user_data)
++{
++  FlashbackWorkarounds *workarounds;
++  gboolean fix_app_menu;
++  gchar *fix_button_layout;
++  gboolean reset;
++
++  workarounds = FLASHBACK_WORKAROUNDS (user_data);
++
++  fix_app_menu = g_settings_get_boolean (workarounds->g_settings,
++                                         "fix-app-menu");
++  fix_button_layout = g_settings_get_string (workarounds->g_settings,
++                                             "fix-button-layout");
++
++  reset = FALSE;
++
++  if (workarounds->fix_app_menu && !fix_app_menu)
++    reset = TRUE;
++
++  if (g_strcmp0 (workarounds->fix_button_layout, "") != 0 &&
++      g_strcmp0 (fix_button_layout, "") == 0)
++    reset = TRUE;
++
++  g_free (fix_button_layout);
++
++  if (reset)
++    {
++      remove_workarounds ();
++      return;
++    }
++
++  add_workarounds (workarounds);
++}
++
++static void
++gtk_settings_changed (GtkSettings *settings,
++                      GParamSpec  *pspec,
++                      gpointer     user_data)
++{
++  FlashbackWorkarounds *workarounds;
++
++  workarounds = FLASHBACK_WORKAROUNDS (user_data);
++
++  add_workarounds (workarounds);
++}
++
++static void
++x11_init (FlashbackWorkarounds *workarounds)
++{
++  GdkDisplay *display;
++  Display *xdisplay;
++  GdkScreen *screen;
++  gint number;
++  gchar *atom;
++
++  display = gdk_display_get_default ();
++  xdisplay = gdk_x11_display_get_xdisplay (display);
++  screen = gdk_display_get_default_screen (display);
++  number = gdk_screen_get_number (screen);
++  atom = g_strdup_printf ("_XSETTINGS_S%d", number);
++
++  workarounds->xdisplay = xdisplay;
++  workarounds->selection_atom = XInternAtom (xdisplay, atom, False);
++  workarounds->xsettings_atom = XInternAtom (xdisplay, "_XSETTINGS_SETTINGS", False);
++
++  g_free (atom);
++}
++
++static void
++flashback_workarounds_dispose (GObject *object)
++{
++  FlashbackWorkarounds *workarounds;
++
++  workarounds = FLASHBACK_WORKAROUNDS (object);
++
++  g_clear_object (&workarounds->g_settings);
++  g_signal_handlers_disconnect_by_func (workarounds->gtk_settings,
++                                        gtk_settings_changed,
++                                        workarounds);
++
++  g_free (workarounds->fix_button_layout);
++
++  if (workarounds->idle_id > 0)
++    {
++      g_source_remove (workarounds->idle_id);
++      workarounds->idle_id = 0;
++    }
++
++  if (workarounds->timeout_id > 0)
++    {
++      g_source_remove (workarounds->timeout_id);
++      workarounds->timeout_id = 0;
++    }
++
++  if (workarounds->xsettings)
++    {
++      g_hash_table_unref (workarounds->xsettings);
++      workarounds->xsettings = NULL;
++    }
++
++  remove_workarounds ();
++
++  G_OBJECT_CLASS (flashback_workarounds_parent_class)->dispose (object);
++}
++
++static void
++flashback_workarounds_class_init (FlashbackWorkaroundsClass *workarounds_class)
++{
++  GObjectClass *object_class;
++
++  object_class = G_OBJECT_CLASS (workarounds_class);
++
++  object_class->dispose = flashback_workarounds_dispose;
++}
++
++static void
++flashback_workarounds_init (FlashbackWorkarounds *workarounds)
++{
++  x11_init (workarounds);
++
++  workarounds->g_settings = g_settings_new ("org.gnome.gnome-flashback.workarounds");
++  workarounds->gtk_settings = gtk_settings_get_default ();
++
++  g_signal_connect (workarounds->g_settings, "changed",
++                    G_CALLBACK (g_settings_changed), workarounds);
++  g_signal_connect (workarounds->gtk_settings, "notify::gtk-shell-shows-app-menu",
++                    G_CALLBACK (gtk_settings_changed), workarounds);
++  g_signal_connect (workarounds->gtk_settings, "notify::gtk-decoration-layout",
++                    G_CALLBACK (gtk_settings_changed), workarounds);
++
++  add_workarounds (workarounds);
++}
++
++FlashbackWorkarounds *
++flashback_workarounds_new (void)
++{
++	return g_object_new (FLASHBACK_TYPE_WORKAROUNDS, NULL);
++}
+diff -Nur original/gnome-flashback/libworkarounds/flashback-workarounds.h modified/gnome-flashback/libworkarounds/flashback-workarounds.h
+--- original/gnome-flashback/libworkarounds/flashback-workarounds.h	1970-01-01 01:00:00.000000000 +0100
++++ modified/gnome-flashback/libworkarounds/flashback-workarounds.h	2015-07-16 11:44:37.413072559 +0100
+@@ -0,0 +1,33 @@
++/*
++ * Copyright (C) 2015 Alberts Muktupāvels
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program. If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef FLASHBACK_WORKAROUNDS_H
++#define FLASHBACK_WORKAROUNDS_H
++
++#include <glib-object.h>
++
++G_BEGIN_DECLS
++
++#define FLASHBACK_TYPE_WORKAROUNDS flashback_workarounds_get_type ()
++G_DECLARE_FINAL_TYPE (FlashbackWorkarounds, flashback_workarounds,
++                      FLASHBACK, WORKAROUNDS, GObject)
++
++FlashbackWorkarounds *flashback_workarounds_new (void);
++
++G_END_DECLS
++
++#endif
+diff -Nur original/gnome-flashback/libworkarounds/Makefile.am modified/gnome-flashback/libworkarounds/Makefile.am
+--- original/gnome-flashback/libworkarounds/Makefile.am	1970-01-01 01:00:00.000000000 +0100
++++ modified/gnome-flashback/libworkarounds/Makefile.am	2015-07-16 11:44:37.409739244 +0100
+@@ -0,0 +1,21 @@
++NULL =
++
++noinst_LTLIBRARIES = \
++	libworkarounds.la \
++	$(NULL)
++
++AM_CPPFLAGS = \
++	$(IDLE_MONITOR_CFLAGS) \
++	-I$(top_builddir)/gnome-flashback/libworkarounds \
++	$(NULL)
++
++libworkarounds_la_SOURCES = \
++	flashback-workarounds.c \
++	flashback-workarounds.h \
++	$(NULL)
++
++libworkarounds_la_LIBADD = \
++	$(IDLE_MONITOR_LIBS) \
++	$(NULL)
++
++-include $(top_srcdir)/git.mk
+diff -Nur original/gnome-flashback/Makefile.am modified/gnome-flashback/Makefile.am
+--- original/gnome-flashback/Makefile.am	2015-03-31 14:25:02.000000000 +0100
++++ modified/gnome-flashback/Makefile.am	2015-07-16 11:44:37.409739244 +0100
+@@ -1,3 +1,5 @@
++NULL =
++
+ SUBDIRS = \
+ 	libautomount-manager \
+ 	libdesktop-background \
+@@ -7,7 +9,9 @@
+ 	libscreencast \
+ 	libscreenshot \
+ 	libshell \
+-	libsound-applet
++	libsound-applet \
++	libworkarounds \
++	$(NULL)
+ 
+ bin_PROGRAMS = \
+ 	gnome-flashback
+@@ -35,7 +39,9 @@
+ 	$(top_builddir)/gnome-flashback/libscreencast/libscreencast.la \
+ 	$(top_builddir)/gnome-flashback/libscreenshot/libscreenshot.la \
+ 	$(top_builddir)/gnome-flashback/libshell/libshell.la \
+-	$(top_builddir)/gnome-flashback/libsound-applet/libsound-applet.la
++	$(top_builddir)/gnome-flashback/libsound-applet/libsound-applet.la \
++	$(top_builddir)/gnome-flashback/libworkarounds/libworkarounds.la \
++	$(NULL)
+ 
+ flashback-resources.c: flashback.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/flashback.gresource.xml)
+ 	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name flashback $<
