@@ -36,7 +36,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make CFLAGS="-std=gnu90"
 }
 
 package() {
