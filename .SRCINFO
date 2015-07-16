@@ -1,0 +1,16 @@
+pkgbase = sutils-git
+	pkgdesc = Small command-line utilities
+	pkgver = 25
+	pkgrel = 1
+	url = https://github.com/baskerville/sutils
+	arch = i686
+	arch = x86_64
+	license = custom:Unlicense
+	makedepends = git
+	provides = sutils
+	conflicts = sutils
+	source = git://github.com/baskerville/sutils.git
+	md5sums = SKIP
+
+pkgname = sutils-git
+
