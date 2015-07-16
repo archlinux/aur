@@ -1,6 +1,6 @@
 pkgbase = gala-bzr
 	pkgdesc = The Pantheon Window Manager
-	pkgver = r463
+	pkgver = r475
 	pkgrel = 1
 	url = https://launchpad.net/gala
 	install = gala.install
@@ -10,15 +10,17 @@ pkgbase = gala-bzr
 	license = GPL3
 	makedepends = bzr
 	makedepends = gnome-common
+	makedepends = granite-bzr
 	makedepends = intltool
 	makedepends = vala
 	depends = clutter-gtk
-	depends = granite-bzr
 	depends = mutter
 	depends = plank
+	depends = libgranite.so
 	provides = gala
+	provides = libgala.so
 	conflicts = gala
-	source = gala::bzr+http://bazaar.launchpad.net/~gala-dev/gala/trunk/
+	source = bzr+lp:gala
 	sha256sums = SKIP
 
 pkgname = gala-bzr
