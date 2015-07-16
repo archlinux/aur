@@ -94,7 +94,7 @@ chmod 755 $pkgdir/usr/share/applications/*.*
 rmdir $pkgdir/usr/share/mdm/applications
 
 }
-sha256sums=('f71850c370a99625ce0a8884ac7cff45ba4ba4ce06054ed5c3c9aa6778710dfd'
+sha256sums=('7e047c45edc6a5a1141650ca9af448d8d5596fe12fb9863001eb8e6f1e0d577c'
             '8663192f02fbbcaf9b84a37a44d47af7381c18d4327c576ca7924baca2cc163b'
             'd3dd582eb25bb31f012167069c869d3ce89c1dbd9b5aa7396350d8cf609994a5'
             '479e8fd4d5ef353fec5af776ad05e4f414a92d6f374f9b8f5deef77b9e301bc7'
