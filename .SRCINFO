@@ -1,6 +1,6 @@
 pkgbase = gcs
 	pkgdesc = WYSIWYG editor for building character sheets for GURPS 4th Edition
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://gurpscharactersheet.com
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = gcs
 	makedepends = imagemagick
 	depends = java-runtime=8
 	source = git://code.trollworks.com/apple_stubs.git
-	source = git://code.trollworks.com/gcs.git#tag=gcs-4.1.0
-	source = git://code.trollworks.com/toolkit.git#tag=gcs-4.1.0
+	source = git://code.trollworks.com/gcs.git#tag=gcs-4.1.1
+	source = git://code.trollworks.com/toolkit.git#tag=gcs-4.1.1
 	source = gcs.sh
 	source = gcs.desktop
 	source = set_app_path_from_env.patch

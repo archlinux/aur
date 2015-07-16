@@ -1,7 +1,7 @@
 # Maintainer: Maxwell Anselm <silverhammermba+aur@gmail.com>
 
 pkgname=gcs
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 arch=('any')
