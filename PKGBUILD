@@ -1,14 +1,16 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: speps <speps at aur dot archlinux dot org>
+
 pkgname=vsxu
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('jack' 'glew' 'glfw2' 'opencv' 'libpng12' 'desktop-file-utils' 'xdg-utils')
+depends=('pulseaudio' 'glew' 'glfw2' 'opencv' 'libpng12' 'desktop-file-utils' 'xdg-utils')
 makedepends=('cmake')
+optdepends=( 'jack: alternate audio source')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
@@ -17,12 +19,11 @@ sha512sums=('e77d8e7300a43ceeb59cf39771f0d8ac8930cebffb4d25305a9e245fd5e2d668e12
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
   [[ -d build ]] || mkdir build && cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DGLFW_LIBRARY=/usr/lib/libglfw2.so \
-           -DPNG_LIBRARY=/usr/lib/libpng12.so \
-           -DPNG_PNG_INCLUDE_DIR=/usr/include/libpng12
+              -DGLFW_LIBRARY=/usr/lib/libglfw2.so \
+              -DPNG_LIBRARY=/usr/lib/libpng12.so \
+              -DPNG_PNG_INCLUDE_DIR=/usr/include/libpng12
   make
 }
 
@@ -31,6 +32,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # License.
-  install -Dm644 ../COPYING \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
