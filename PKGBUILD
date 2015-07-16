@@ -1,9 +1,9 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sabart Otto - Seberm <seberm[at]seberm[dot]com>
 # Contributor: Tobias Veit - nIcE <m.on.key.tobi[at]gmail[dot]com>
 
 pkgname=metasploit
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
 url="https://www.metasploit.com/"
@@ -20,19 +20,19 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rapid7/metasploit-framew
 sha512sums=('530b4016f2405d0ca793961ce11e70efde75f1da4f58e5045ff0fd46386e35be2eb88dacde9365ae256c8d7397c47b6bed03474ce16649de573c9f1b68a714ee')
 
 package() {
-  cd metasploit-framework-${pkgver}
+  cd ${pkgname}-framework-${pkgver}
 
   mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
   cp -r . "${pkgdir}/opt/${pkgname}"
 
-  for f in ${pkgdir}/opt/${pkgname}/msf*; do
+  for f in "${pkgdir}"/opt/${pkgname}/msf*; do
     local _msffile="${pkgdir}/usr/bin/`basename "${f}"`"
     echo "BUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/`basename "${f}"` \"\$@\"" > ${_msffile}
     chmod 755 ${_msffile}
   done
   
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
 # vim: ts=2 sw=2 et:
