@@ -1,15 +1,15 @@
 pkgbase = cadence-git
 	pkgdesc = JACK Audio Toolbox.
-	pkgver = 20150618
+	pkgver = 20150712
 	pkgrel = 1
 	url = http://kxstudio.sf.net/cadence
+	install = cadence-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = python-pyqt4
 	depends = python-dbus
 	depends = jack
-	depends = qt4
 	optdepends = a2jmidid: alsa-midi bridge
 	optdepends = pulseaudio: pulseaudio bridge
 	optdepends = zita-ajbridge: alternate alsa-audio bridge
