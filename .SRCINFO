@@ -1,6 +1,6 @@
 pkgbase = 2bwm-git
 	pkgdesc = A fast floating window manager
-	pkgver = 0.1.r110.ga461244
+	pkgver = 0.1.r112.g401be41
 	pkgrel = 1
 	url = https://github.com/venam/2bwm
 	arch = i686

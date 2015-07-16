@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname='2bwm-git'
-pkgver=0.1.r110.ga461244
+pkgver=0.1.r112.g401be41
 pkgrel=1
 pkgdesc="A fast floating window manager"
 arch=('i686' 'x86_64')
