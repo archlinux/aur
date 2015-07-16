@@ -1,0 +1,16 @@
+--- src/OpenFOAM-2.3.1/etc/config/settings.sh
++++ src/OpenFOAM-2.3.1/etc/config/settings.sh
+@@ -406,9 +406,12 @@
+ 
+     # Bit of a hack: strip off 'lib' and hope this is the path to openmpi
+     # include files and libraries.
+-    export MPI_ARCH_PATH="${libDir%/*}"
++    # More of a hack: On arch we need to strip off the openmpi library subdir first, so do it twice
++    tmplibDir="${libDir%/*}"
++    export MPI_ARCH_PATH="${tmplibDir%/*}"
+ 
+     _foamAddLib     $libDir
++    unset tmplibDir
+     unset libDir
+     ;;
+ 

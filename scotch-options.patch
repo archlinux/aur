@@ -1,0 +1,25 @@
+--- src/OpenFOAM-2.4.0/src/parallel/decompose/ptscotchDecomp/Make/options
++++ src/OpenFOAM-2.4.0/src/parallel/decompose/ptscotchDecomp/Make/options
+@@ -9,4 +9,4 @@
+     -I../decompositionMethods/lnInclude
+
+ LIB_LIBS = \
+-    -L$(SCOTCH_ROOT)/lib -L$(FOAM_EXT_LIBBIN)/$(FOAM_MPI) -lptscotch -lptscotcherrexit -lscotch ${LINK_FLAGS} -lrt
++    -L$(SCOTCH_ROOT)/lib -L$(FOAM_EXT_LIBBIN)/$(FOAM_MPI) -lptscotch -lbz2 -lscotch -lptscotcherrexit -lscotcherrexit ${LINK_FLAGS} -lrt
+--- src/OpenFOAM-2.4.0/applications/utilities/parallelProcessing/decomposePar/Make/options
++++ src/OpenFOAM-2.4.0/applications/utilities/parallelProcessing/decomposePar/Make/options
+@@ -13,4 +13,5 @@ EXE_LIBS = \
+     -ldecompositionMethods -L$(FOAM_LIBBIN)/dummy -lmetisDecomp -lscotchDecomp \
+     -llagrangian \
+     -lmeshTools \
++    -lbz2 \
+     -lregionModels
+--- src/OpenFOAM-2.4.0/applications/utilities/mesh/manipulation/renumberMesh/Make/options
++++ src/OpenFOAM-2.4.0/applications/utilities/mesh/manipulation/renumberMesh/Make/options
+@@ -14,5 +14,6 @@ EXE_LIBS = \
+     -lfiniteVolume \
+     -lgenericPatchFields \
+     -lrenumberMethods \
++    -lbz2 \
+     $(LINK_FLAGS) \
+     -ldecompositionMethods -L$(FOAM_LIBBIN)/dummy -lmetisDecomp -lscotchDecomp
