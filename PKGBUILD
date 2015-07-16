@@ -2,24 +2,25 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=mingw-w64-sfml
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
-pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
-arch=(any)
-url="http://www.sfml-dev.org"
-license=("zlib")
-makedepends=(mingw-w64-gcc cmake mingw-w64-cmake git)
-depends=(mingw-w64-crt mingw-w64-libsndfile mingw-w64-libjpeg-turbo mingw-w64-openal mingw-w64-glew mingw-w64-freetype)
+pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)'
+arch=('any')
+url='http://www.sfml-dev.org/'
+license=('zlib')
+depends=('mingw-w64-crt' 'mingw-w64-libsndfile' 'mingw-w64-libjpeg-turbo' 'mingw-w64-openal' 'mingw-w64-glew' 'mingw-w64-freetype')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'git')
 conflicts=(mingw-w64-sfml-static)
 provides=(mingw-w64-sfml-static)
 options=(staticlibs !strip !buildflags)
-source=("git+https://github.com/SFML/SFML.git#tag=${pkgver}")
+source=("git+git://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "$srcdir/SFML"
+  cd "$srcdir"/SFML
+
   unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"

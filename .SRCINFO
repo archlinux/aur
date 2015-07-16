@@ -1,12 +1,11 @@
 pkgbase = mingw-w64-sfml
 	pkgdesc = A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)
-	pkgver = 2.3
+	pkgver = 2.3.1
 	pkgrel = 1
-	url = http://www.sfml-dev.org
+	url = http://www.sfml-dev.org/
 	arch = any
 	license = zlib
 	makedepends = mingw-w64-gcc
-	makedepends = cmake
 	makedepends = mingw-w64-cmake
 	makedepends = git
 	depends = mingw-w64-crt
@@ -20,7 +19,7 @@ pkgbase = mingw-w64-sfml
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = git+https://github.com/SFML/SFML.git#tag=2.3
+	source = git+git://github.com/LaurentGomila/SFML.git#tag=2.3.1
 	md5sums = SKIP
 
 pkgname = mingw-w64-sfml
