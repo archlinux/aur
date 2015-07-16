@@ -1,0 +1,13 @@
+pkgbase = perl-universal-require
+	pkgdesc = UNIVERSAL::require - require() modules from a variable
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/~neilb/UNIVERSAL-require/lib/UNIVERSAL/require.pm
+	arch = any
+	license = PerlArtistic
+	makedepends = perl
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/UNIVERSAL-require-0.18.tar.gz
+	md5sums = 2cdfd54bc7e270c77456a8e929a091b3
+
+pkgname = perl-universal-require
+
