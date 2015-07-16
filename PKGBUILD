@@ -8,12 +8,12 @@
 pkgname=nvidia-mainline
 pkgver=352.21
 _extramodules=extramodules-4.1-mainline
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-mainline"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-mainline>=4.1rc1' 'linux-mainline<4.2rc1' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-mainline-headers>=4.1rc1' 'linux-mainline-headers<4.2rc1')
+depends=('linux-mainline>=4.2rc1' 'linux-mainline<4.3rc1' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-mainline-headers>=4.2rc1' 'linux-mainline-headers<4.3rc1')
 license=('custom')
 install=nvidia.install
 options=(!strip)
