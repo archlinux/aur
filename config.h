@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Liberation Mono:pixelsize=11:antialias=true:autohint=true";
+static char font[] = "Liberation Mono:pixelsize=10:antialias=true:autohint=true";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 static char *utmp = NULL;
@@ -65,33 +65,26 @@ static const char *colorname[] = {
 	"black",
 	"red3",
 	"green3",
-	"orange1",
-	"blue3",
+	"yellow3",
+	"blue2",
 	"magenta3",
-	"DeepSkyBlue2",
-	"grey90",
+	"cyan3",
+	"gray90",
 
 	/* 8 bright colors */
-	"grey30",
-	"HotPink1",
-	"green1",
-	"yellow1",
-	"DodgerBlue1",
-	"magenta1",
-	"SkyBlue1",
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
 	"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
-	"DodgerBlue2",
-	"HotPink2",
-	"orange1",
-	"white",
-	"DodgerBlue1",
-	"yellow1",
-	"DodgerBlue1",
 };
 
 
@@ -100,7 +93,7 @@ static const char *colorname[] = {
  * foreground, background, cursor
  */
 static unsigned int defaultfg = 0;
-static unsigned int defaultbg = 15;
+static unsigned int defaultbg = 7;
 static unsigned int defaultcs = 256;
 
 /*
@@ -108,8 +101,8 @@ static unsigned int defaultcs = 256;
  * will reverse too. Another logic would only make the simple feature too
  * complex.
  */
-static unsigned int defaultitalic = 19;
-static unsigned int defaultunderline = 17;
+static unsigned int defaultitalic = 11;
+static unsigned int defaultunderline = 7;
 
 /* Internal mouse shortcuts. */
 /* Beware that overloading Button1 will disable the selection. */
