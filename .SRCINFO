@@ -1,7 +1,7 @@
 pkgbase = lib32-libexif
 	pkgdesc = A library to parse an EXIF file and read the data from those tags (32-bit)
 	pkgver = 0.6.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/libexif
 	arch = x86_64
 	license = LGPL
