@@ -1,6 +1,6 @@
 pkgbase = bucky
 	pkgdesc = bayesian concordance analysis
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = http://www.stat.wisc.edu/~ane/bucky/index.html
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = bucky
 	license = GPL2
 	makedepends = boost
 	depends = gcc-libs
-	source = http://www.stat.wisc.edu/~ane/bucky/v1.4/bucky-1.4.3.tgz
-	md5sums = 73fb7f55e25655c2efb8fb2b2dd5798b
+	source = http://www.stat.wisc.edu/~ane/bucky/v1.4/bucky-1.4.4.tgz
+	md5sums = f0c910dd1d411d112637826519943a6d
 
 pkgname = bucky
 

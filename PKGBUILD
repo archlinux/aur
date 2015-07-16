@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=bucky
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='bayesian concordance analysis'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=('boost')
 source=("http://www.stat.wisc.edu/~ane/bucky/v1.4/$pkgname-$pkgver.tgz")
-md5sums=('73fb7f55e25655c2efb8fb2b2dd5798b')
+md5sums=('f0c910dd1d411d112637826519943a6d')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver/src
