@@ -1,0 +1,15 @@
+pkgbase = lc-command-git
+	pkgdesc = Kent Landfield's "lc" command.
+	pkgver = r36.b6695e2
+	pkgrel = 1
+	url = https://github.com/Keith-S-Thompson/lc
+	install = lc-command-git.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = lc-command-git::git+https://github.com/Keith-S-Thompson/lc.git
+	md5sums = SKIP
+
+pkgname = lc-command-git
+
