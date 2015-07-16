@@ -1,0 +1,12 @@
+# Contributor: DonVla <donvla@users.sourceforge.net>
+# ipager install file
+
+post_install() {
+  printf "\n"
+  printf "==> IPager creates a default config file \"$HOME/.ipager/ipager.conf\"\n"
+  printf "==> You can define other config file via \"-c\" command line option.\n"
+  printf "==> \"$> ipager -c /usr/share/ipager/themes/other.config\"\n"
+  printf "\n"
+}
+
+# vim:set ts=2 sw=2 et:

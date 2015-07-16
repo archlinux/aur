@@ -1,0 +1,117 @@
+--- SConstruct.orig	2005-11-06 05:23:24.000000000 -0600
++++ SConstruct	2012-04-29 06:59:11.927253922 -0500
+@@ -7,15 +7,16 @@
+ ###############################################
+ # options
+ ipager_optfile = [ 'scons.opts', 'user.opts' ]
+-ipager_options = Options(ipager_optfile)
+-ipager_options.AddOptions(
+-    BoolOption('debug', 'build debug version', 0),
+-    BoolOption('debug_events', 'debug xserve events', 0),
+ 
+-    BoolOption('xinerama', 'support xinerama', 0),
++ipager_options = Variables(ipager_optfile)
++ipager_options.AddVariables(
++    BoolVariable('debug', 'build debug version', 0),
++    BoolVariable('debug_events', 'debug xserve events', 0),
+ 
+-    PathOption('PREFIX', 'install-path base', '/usr/local'),
+-    PathOption('DESTDIR', 'install to $DESTDIR/$PREFIX', '/')
++    BoolVariable('xinerama', 'support xinerama', 0),
++
++    PathVariable('PREFIX', 'install-path base', '/usr'),
++    PathVariable('DESTDIR', 'install to $DESTDIR/$PREFIX', '/')
+ )
+ 
+ 
+@@ -31,10 +32,10 @@
+ ipager_env = Environment(options = ipager_options, ENV = os.environ)
+ 
+ ipager_env.Append(
+-        CPPFLAGS = [ '-Wall' ],
+-        CPPPATH = [ '/usr/X11R6/include' ],
+-        LIBPATH = ['/usr/X11R6/lib']
+-	)
++        CPPFLAGS = [ '-Wall', '-march=native', '-O' ],
++        CPPPATH = [ '/usr/include' ],
++        LIBPATH = [ '/usr/lib' ]
++)
+ 
+ ipager_options.Update(ipager_env)
+ 
+@@ -115,11 +116,10 @@
+     else:
+         print "yes"
+         ipager_env.AppendUnique(
+-            CPPPATH = imlib2_env.Dictionary()['CPPPATH'], 
+-            CCFLAGS = imlib2_env.Dictionary()['CCFLAGS'], 
+-            LIBPATH = imlib2_env.Dictionary()['LIBPATH'],
+-            LIBS    = imlib2_env.Dictionary()['LIBS']
+-
++            CPPPATH = imlib2_env.Dictionary().get('CPPPATH'), 
++            CCFLAGS = imlib2_env.Dictionary().get('CCFLAGS'), 
++            LIBPATH = imlib2_env.Dictionary().get('LIBPATH'),
++            LIBS    = imlib2_env.Dictionary().get('LIBS')
+         )
+ 
+ conf.Finish()
+--- iconfig.cpp.orig	2012-04-28 19:34:36.902151855 -0500
++++ iconfig.cpp	2012-04-28 18:31:28.000000000 -0500
+@@ -30,11 +30,11 @@
+ #include <iostream>
+ #include <fstream>
+ #include <sstream>
+-
++#include <cstdlib>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ 
+-
++using namespace std;
+ 
+ template <class T>
+ bool from_string(T &t,
+--- ipager.cpp.orig	2012-04-28 19:34:36.928818549 -0500
++++ ipager.cpp	2012-04-28 18:43:26.000000000 -0500
+@@ -31,6 +31,7 @@
+ 
+ #include <iostream>
+ #include <string>
++#include <unistd.h>
+ using namespace std;
+ 
+ #include "pager.h"
+--- pager.cpp.orig	2012-04-28 19:34:36.928818549 -0500
++++ pager.cpp	2012-04-28 19:07:28.000000000 -0500
+@@ -266,13 +266,13 @@
+         /* Window updates go here */
+         if (m_window_update.updateNetWindowList())
+             updateNetWindowList();
+-        if (m_window_update.displayIcons())
+-            if (m_window_update.motion())
++        if (m_window_update.displayIcons()) {
++            if (m_window_update.motion()) {
+                 displayIcons(m_window_update.getX(), m_window_update.getY());
+-            else
++            } else {
+                 displayIcons();
+-
+-
++            }
++        }
+ 
+         /* ImLib updates go here */
+ 
+--- wm.cpp.orig	2012-04-28 19:34:36.928818549 -0500
++++ wm.cpp	2012-04-28 18:42:07.000000000 -0500
+@@ -27,7 +27,9 @@
+ 
+ #include <time.h>
+ #include "atoms.h"
++#include <cstdlib>
+ 
++using namespace std;
+ 
+ WM * WM::m_instance = 0;
+ bool WM::x_error = false;
+ 
