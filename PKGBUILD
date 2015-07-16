@@ -3,7 +3,7 @@
 
 pkgname=thermald
 _pkgname=thermal_daemon
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('i686' 'x86_64')
@@ -16,9 +16,8 @@ conflicts=('thermald')
 provides=('thermald')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'modules-load-thermald.conf')
-sha256sums=('4be5e1105f8b24af17d19357eda97b6edd3d74284c3ee762060d487158997f8b'
+sha256sums=('566595eb2c56679d463be5a65d612de90968248054122bb390d0bc902ba7b762'
             '0155e1eb459306d251a5a049ffc6c11e144fa8caa75901ac5fa20bd52e05d515')
-
 build() {
   cd "${_pkgname}-${pkgver}"
   ./autogen.sh
