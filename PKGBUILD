@@ -10,6 +10,7 @@ license=('GPL')
 depends=('qt4' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info')
 source=(${url}downloads/$pkgname-$pkgver.tar.gz)
 sha1sums=('5b88783dbd1552daa40f0acb3182d261ccc10ea4')
+install=$pkgname.install
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
