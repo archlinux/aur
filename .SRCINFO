@@ -1,6 +1,6 @@
 pkgbase = red
 	pkgdesc = An open source, native code compiled, dialect of Rebol
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = http://www.red-lang.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = red
 	makedepends = wget
 	makedepends = rebol=2.7.8
 	depends = lib32-readline
-	source = https://github.com/dockimbel/red/archive/v0.5.3.tar.gz
-	md5sums = 336312940154eafe9c49e450181e9030
+	source = https://github.com/dockimbel/red/archive/v0.5.4.tar.gz
+	md5sums = fe80eb93b7dcb9cedf6693a0f6f91399
 
 pkgname = red
 
