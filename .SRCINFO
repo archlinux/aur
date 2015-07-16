@@ -1,7 +1,7 @@
 pkgbase = laditools-git
 	pkgdesc = Utilities to improve integration and workflow with JACK and LASH.
 	pkgver = 1.0.r9.g498fc36
-	pkgrel = 5
+	pkgrel = 6
 	url = https://launchpad.net/laditools
 	install = laditools-git.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = laditools-git
 	depends = python2-enum
 	provides = laditools
 	conflicts = laditools
-	source = git://repo.or.cz/laditools.git
+	source = laditools-git::git://repo.or.cz/laditools.git
 	sha512sums = SKIP
 
 pkgname = laditools-git
