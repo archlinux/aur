@@ -1,0 +1,16 @@
+pkgbase = perl-sub-name
+	pkgdesc = (re)name a sub
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sub-Name
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = glibc
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Sub-Name-0.14.tar.gz
+	md5sums = 211ca38767145b6c362da3b821a5abca
+
+pkgname = perl-sub-name
+
