@@ -2,13 +2,13 @@
 # Contributor: Majki <majki@majki.hu>
 pkgname=tsclient2
 pkgver=2.0.1
-pkgrel=9
+pkgrel=10
 pkgdesc="Terminal Server Client [tsclient] is a GTK2 frontend for rdesktop and other remote desktop tools."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/tsclient"
 license=('GPL')
-depends=('rdesktop' 'gnome-desktop2' 'libgnomeui' 'networkmanager' 'desktop-file-utils')
-makedepends=('perlxml' 'sharutils')
+depends=('gnome-desktop2' 'libgnomeui' 'libnm-glib' 'desktop-file-utils')
+makedepends=('sharutils')
 conflicts=('tsclient')
 source=(http://downloads.sourceforge.net/sourceforge/tsclient/tsclient-$pkgver.tar.bz2)
 md5sums=('3de7131156f37c5ef1028a5f03ed021b')
