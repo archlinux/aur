@@ -1,0 +1,15 @@
+pkgbase = ttf-nishiki-teki
+	pkgdesc = A Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”.
+	pkgver = 2.80
+	pkgrel = 1
+	url = http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.htm
+	install = install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki_2_80.zip
+	sha256sums = 0f0eced466e80e7ddc95eca4faba0dcf0cbc2e99f9f974747ae7d3217cb58546
+
+pkgname = ttf-nishiki-teki
+
