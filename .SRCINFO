@@ -1,0 +1,25 @@
+pkgbase = libsdformat-hg
+	pkgdesc = SDF world description lib for gazebo
+	pkgver = 3.0.6.1372
+	pkgrel = 1
+	url = http://bitbucket.org/osrf/sdformat/
+	arch = i686
+	arch = x86_64
+	groups = development
+	groups = simulation
+	license = Apache
+	makedepends = mercurial
+	makedepends = cmake
+	makedepends = ruby
+	depends = boost
+	depends = tinyxml
+	depends = doxygen
+	depends = libtar
+	depends = ignition-math2
+	provides = sdformat
+	conflicts = sdformat
+	source = sdformat::hg+http://bitbucket.org/osrf/sdformat
+	md5sums = SKIP
+
+pkgname = libsdformat-hg
+
