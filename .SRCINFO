@@ -1,0 +1,15 @@
+pkgbase = perl-scope-guard
+	pkgdesc = Lexically-scoped resource management
+	pkgver = 0.20
+	pkgrel = 2
+	url = http://search.cpan.org/~chocolate/Scope-Guard
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.5.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOCOLATE/Scope-Guard-0.20.tar.gz
+	md5sums = 495d5ae16a2df8128fd068c386c9d4ac
+
+pkgname = perl-scope-guard
+
