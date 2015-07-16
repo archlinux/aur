@@ -1,6 +1,6 @@
 pkgbase = rakudo-star
 	pkgdesc = Rakudo Perl6 on MoarVM with additional modules
-	pkgver = 2015.03
+	pkgver = 2015.06
 	pkgrel = 1
 	url = http://rakudo.org/
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = rakudo-star
 	provides = rakudo-moarvm
 	conflicts = rakudo
 	conflicts = rakudo-moarvm
-	options = !makeflags
-	source = http://rakudo.org/downloads/star/rakudo-star-2015.03.tar.gz
+	source = http://rakudo.org/downloads/star/rakudo-star-2015.06.tar.gz
 	sha512sums = SKIP
 
 pkgname = rakudo-star
