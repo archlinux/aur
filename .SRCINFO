@@ -1,0 +1,16 @@
+pkgbase = vimb-gtk2
+	pkgdesc = A lightweight vim-like webkit-based browser
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://fanglingsu.github.io/vimb
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = webkitgtk2
+	provides = vimb
+	conflicts = vimb
+	source = vimb-2.10.tar.gz::https://github.com/fanglingsu/vimb/archive/2.10.tar.gz
+	md5sums = 74ff7458e89406fd3537c89507bf6596
+
+pkgname = vimb-gtk2
+
