@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Name=mp3DirectCut
+GenericName=fast mp3 audio editor
+Comment=fast and extensive audio editor and recorder for compressed mp3.
+Exec=mp3directcut
+Icon=mp3directcut
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;AudioVideoEditing;Recorder;

@@ -1,0 +1,19 @@
+pkgbase = mp3directcut
+	pkgdesc = fast audio editor and recorder for mp3 with no need to decompress
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://mpesch3.de1.cc/mp3dc.html
+	arch = i686
+	arch = x86_64
+	license = FREEWARE
+	source = mp3directcut
+	source = mp3directcut.desktop
+	source = mp3dcicon.png
+	source = http://mp.mpex.net/files/mp3DC220.exe
+	md5sums = 31de44159649baddf5c7b6936b87133f
+	md5sums = 910ada5caa9b0ea67a88bfc7ffe9c237
+	md5sums = a56a1f306e2c918f0e5f8b5cabdf8c1d
+	md5sums = 7159533de29017dca87f100f31d625bd
+
+pkgname = mp3directcut
+
