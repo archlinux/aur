@@ -2,15 +2,16 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-files-bzr
-pkgver=r1871
+pkgver=r1883
 pkgrel=1
 pkgdesc='The Pantheon File Manager'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-files'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('desktop-file-utils' 'gconf' 'granite-bzr' 'libnotify' 'zeitgeist')
-makedepends=('bzr' 'cmake' 'gnome-common' 'sqlite3' 'vala')
+depends=('desktop-file-utils' 'gconf' 'libnotify' 'plank' 'zeitgeist'
+         'libgranite.so')
+makedepends=('bzr' 'cmake' 'gnome-common' 'granite-bzr' 'sqlite3' 'vala')
 optdepends=('contractor-bzr: Various context menu entries'
             'pantheon-files-plugin-dropbox-bzr: Dropbox integration'
             'tumbler: Thumbnails generation')
