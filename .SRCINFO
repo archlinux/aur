@@ -1,0 +1,13 @@
+pkgbase = ninvaders
+	pkgdesc = Ncurses based space invaders clone
+	pkgver = 0.1.1
+	pkgrel = 3
+	url = http://ninvaders.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/sourceforge/ninvaders/ninvaders-0.1.1.tar.gz
+	md5sums = 97b2c3fb082241ab5c56ab728522622b
+
+pkgname = ninvaders
+
