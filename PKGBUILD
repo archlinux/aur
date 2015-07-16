@@ -17,8 +17,7 @@ build() {
 
   ./configure --prefix=/usr \
               --disable-static \
-              --with-vrna=/usr \
-              --enable-librna
+              --with-vrna=/usr
 
   make
 }
