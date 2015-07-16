@@ -1,7 +1,7 @@
 pkgbase = ladish-git
 	pkgdesc = Session management system for JACK.
 	pkgver = 0.3.r147.g5fe205f
-	pkgrel = 5
+	pkgrel = 6
 	url = https://launchpad.net/ladish
 	install = ladish-git.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ladish-git
 	provides = lash
 	conflicts = ladish
 	conflicts = lash
-	source = git://repo.or.cz/ladish.git
+	source = ladish-git::git://repo.or.cz/ladish.git
 	sha512sums = SKIP
 
 pkgname = ladish-git
