@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=highly-theoretical-git
 pkgver=r44.2b9f9a6
 pkgrel=1
