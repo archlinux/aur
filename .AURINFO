@@ -1,0 +1,16 @@
+pkgbase = hydroxygen-iconset
+	pkgdesc = GTK+ port of the KDE4 Oxygen icon theme
+	pkgver = 20090119
+	pkgrel = 2.1
+	url = http://deviantdark.deviantart.com/art/hydroxygen-iconset-100826865
+	install = hydroxygen-iconset.install
+	arch = i686
+	arch = x86_64
+	license = custom:cc-gnu_gpl
+	makedepends = findutils
+	depends = gtk2
+	source = http://fc04.deviantart.com/fs40/f/2009/019/8/7/hydroxygen_iconset_by_deviantdark.zip
+	source = hydroxygen-chtype
+
+pkgname = hydroxygen-iconset
+
