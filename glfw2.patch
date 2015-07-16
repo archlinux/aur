@@ -1,0 +1,11 @@
+--- ./Makefile.org	2015-07-13 18:07:48.105171224 +0200
++++ ./Makefile	2015-07-13 18:07:56.514876228 +0200
+@@ -6,7 +6,7 @@ CPPFLAGS = -g -Wall -O -D_GNU_SOURCE=1 -
+ DEFINES = -DDATA_DIR='"/usr/share/dark-oberon/"' -DUNIX=1 -DSOUND=$(SOUND) -DDEBUG=$(DEBUG)
+ INCLUDES = -I/usr/include -I/usr/include/SDL -I../libs
+ LIBPATHS = -L/usr/lib -L/usr/local/lib -L../libs
+-LIBRARIES = -lpthread -lglfw -lGL -lX11 -lGLU -lXrandr -lSDL -lSDL_mixer
++LIBRARIES = -lpthread -lglfw2 -lGL -lX11 -lGLU -lXrandr -lSDL -lSDL_mixer
+ OBJECTS = doalloc.o doberon.o dobuildings.o doconfig.o dodata.o dodraw.o doengine.o doevents.o dofactories.o dofight.o dofile.o dofollower.o doforces.o dohost.o doipc.o dolayout.o doleader.o dologs.o domap.o domapunits.o domouse.o donet.o doplayers.o doraces.o doschemes.o doselection.o dosimpletypes.o dosound.o dosources.o dounits.o dowalk.o doworkers.o glfont.o glgui.o tga.o utils.o
+ TARGETS = ../dark-oberon
+ 

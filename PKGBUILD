@@ -3,37 +3,35 @@
 
 pkgname=dark-oberon
 pkgver=1.0.2rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source real-time strategy game similar to Warcraft II"
 arch=('i686' 'x86_64')
-url="http://dark-oberon.sourceforge.net/"
+url='http://dark-oberon.sourceforge.net/'
 license=('GPL2' 'CCPL')
-depends=('glfw' 'mesa' 'sdl_mixer')
-source=("${pkgname}.png"
+depends=('glfw2' 'mesa' 'sdl_mixer')
+source=("${pkgname}.tar.gz::http://${pkgname}.cvs.sourceforge.net/viewvc/${pkgname}/${pkgname}/?view=tar"
+        'glfw2.patch'
+        "${pkgname}.png"
         "${pkgname}.desktop")
-md5sums=('c5943968757bcfe5a15d532fc2e61caa'
-         '073062bada4cde2cb1f0ba67dcc16955')
+sha256sums=('SKIP'
+            'aec94dc857f1226a4417808a930e55743390755b8e3328399a49ac2fbe1c1832'
+            'da7706793697e1fe7f762334bb74d8c947a3afb18528e842edb42adbcf8324cf'
+            '8ba3bc1334a7751486ddc9ede4c7ad98801b1a62ddb41a76e4c3c953dc443ea2')
 
 build() {
-  cd "${srcdir}"
-
-  _cvstar="http://dark-oberon.cvs.sourceforge.net/viewvc/dark-oberon/dark-oberon/?view=tar"
-
-  # Download source code from CVS (it always has a different md5 sum)
-  if [[ ! -f ${pkgname}.tar.gz ]]; then
-    curl ${_cvstar} -o ${pkgname}.tar.gz
-  fi
-
-  rm -rf ${pkgname}
-  bsdtar -xf ${pkgname}.tar.gz
-  cd ${pkgname}/src
+  cd "${srcdir}/${pkgname}/src"
 
   # Fix path to data files
   sed -i "s#DATA_DIR=''#DATA_DIR='/usr/share/${pkgname}/'#" create_makefile.sh
 
-  # Compile
+  # Create Makefiles
   chmod a+x create_makefile.sh
   ./create_makefile.sh
+
+  # Use glfw2 instead of glfw
+  patch -Np1 -i ${srcdir}/glfw2.patch
+
+  # Compile
   make
 }
 

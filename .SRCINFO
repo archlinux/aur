@@ -1,19 +1,23 @@
 pkgbase = dark-oberon
 	pkgdesc = An open source real-time strategy game similar to Warcraft II
 	pkgver = 1.0.2rc2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dark-oberon.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = CCPL
-	depends = glfw
+	depends = glfw2
 	depends = mesa
 	depends = sdl_mixer
+	source = dark-oberon.tar.gz::http://dark-oberon.cvs.sourceforge.net/viewvc/dark-oberon/dark-oberon/?view=tar
+	source = glfw2.patch
 	source = dark-oberon.png
 	source = dark-oberon.desktop
-	md5sums = c5943968757bcfe5a15d532fc2e61caa
-	md5sums = 073062bada4cde2cb1f0ba67dcc16955
+	sha256sums = 97c8546dbdbe14e243fd2cbe09b9d6bb3b1f1211f19262037e60093384f0b98d
+	sha256sums = aec94dc857f1226a4417808a930e55743390755b8e3328399a49ac2fbe1c1832
+	sha256sums = da7706793697e1fe7f762334bb74d8c947a3afb18528e842edb42adbcf8324cf
+	sha256sums = 8ba3bc1334a7751486ddc9ede4c7ad98801b1a62ddb41a76e4c3c953dc443ea2
 
 pkgname = dark-oberon
 
