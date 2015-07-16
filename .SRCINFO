@@ -1,0 +1,18 @@
+pkgbase = byacc-noconflict
+	pkgdesc = Non-conflicting version of byacc not providing bison/yacc
+	pkgver = 20141128
+	pkgrel = 2
+	url = http://invisible-island.net/byacc/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = ftp://invisible-island.net/byacc/byacc-20141128.tgz
+	source = ftp://invisible-island.net/byacc/byacc-20141128.tgz.asc
+	md5sums = acb0ff0fb6cc414a6b50c799794b2425
+	md5sums = SKIP
+	sha256sums = f517fc21f08c1a1f010177357df58fc64eb1131011e5dcd48c19fe44c47198d0
+	sha256sums = SKIP
+
+pkgname = byacc-noconflict
+
