@@ -1,4 +1,4 @@
-# Maintainer: Simon Gomizelj <sgomizelj@sangoma.com>
+# Maintainer: Simon Gomizelj <simongmzlj@gmail.com>
 
 pkgname=sipp-git
 pkgver=3.5.0.rc1.130.g81e68f8
@@ -29,12 +29,13 @@ build() {
     --with-openssl \
     --with-pcap
 
-  make
-  make sipp sipp_unittest
+  make sipp
 }
 
 check() {
   cd "sipp"
+  make sipp_unittest
+
   ./sipp_unittest
 }
 
