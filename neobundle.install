@@ -1,0 +1,21 @@
+post_install() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
+    echo "To use neobundle, please check the file in /usr/share/neobundle/vimrc.sample"
+    echo "and update your ~/.vimrc file, accordingly"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo -n "Updating vim help tags..."
+  /usr/bin/vim --noplugins -u NONE -U NONE \
+      --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+  echo "done."
+  echo "Please remember to remove neobundles from your ~/.vimrc file"
+  echo "and from your ~/.vim directory!"
+}

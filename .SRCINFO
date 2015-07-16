@@ -1,0 +1,17 @@
+pkgbase = neobundle-git
+	pkgdesc = Ultimate Vim plugin manager inspired by Vundle
+	pkgver = 3.0.32.g2f94664
+	pkgrel = 1
+	url = https://github.com/Shougo/neobundle.vim
+	install = neobundle.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim>=7.2.051
+	source = neobundle-git::git+https://github.com/Shougo/neobundle.vim.git
+	source = neobundle.vimrc
+	sha512sums = SKIP
+	sha512sums = 0f213143dca741957c9873fe881666b86b66fa285db6e3fdd85f4121596798169de6201b3660b1960602a0e6f2bc54ddb98a4ff42041e7ce59b08bd75190ec01
+
+pkgname = neobundle-git
+
