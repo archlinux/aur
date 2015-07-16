@@ -1,0 +1,34 @@
+pkgbase = feelpp
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = https://github.com/feelpp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake>=2.8.7
+	depends = ann
+	depends = cln
+	depends = arpack
+	depends = boost-libs
+	depends = libxml2
+	depends = gmsh
+	depends = mumps
+	depends = petsc
+	optdepends = eigen3
+	optdepends = fftw
+	optdepends = metis
+	optdepends = suitesparse
+	optdepends = slepc
+	optdepends = openturns
+	optdepends = hdf5-openmpi
+	optdepends = hdf5
+	optdepends = gperftools
+	source = https://github.com/feelpp/feelpp/releases/download/v0.99.0-final.1/feelpp-0.99.0-final.1.tar.gz
+	md5sums = 47d49dde8af39a03c89fc0f64953db67
+
+pkgname = feelpp
+	pkgdesc = Feel++ a library for finite element methods - libraries
+
+pkgname = feelpp-examples
+	pkgdesc = Feel++ a library for finite element methods - examples
+
