@@ -23,5 +23,5 @@ build() {
 
 package() {
     cd "$srcdir/${_gitname}"
-	install -Dm 755 luksipc $pkgdir/usr/bin/$pkgname
+	install -Dm 755 luksipc $pkgdir/usr/bin/luksipc
 }
