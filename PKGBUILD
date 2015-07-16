@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('lib32-readline')
 makedepends=('wget' 'rebol=2.7.8')
 checkdepends=('bash')
 source=("https://github.com/dockimbel/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('336312940154eafe9c49e450181e9030')
+md5sums=('fe80eb93b7dcb9cedf6693a0f6f91399')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
