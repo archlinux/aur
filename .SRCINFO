@@ -1,7 +1,7 @@
 pkgbase = jacktrip-git
 	pkgdesc = Tool to manage and tune JACK settings for optimum performance between networked machines.
 	pkgver = 1.1.r16.gb5ad0df
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jcacerec/jacktrip
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = jacktrip-git
 	depends = rtaudio
 	provides = jacktrip
 	conflicts = jacktrip
-	source = git://github.com/jcacerec/jacktrip.git
+	source = jacktrip-git::git+https://github.com/jcacerec/jacktrip.git
 	sha512sums = SKIP
 
 pkgname = jacktrip-git
