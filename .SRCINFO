@@ -7,8 +7,7 @@ pkgbase = pdepend
 	license = BSD
 	depends = php
 	source = http://static.pdepend.org/php/2.1.0/pdepend.phar
-	source = pdepend.install
 	md5sums = a865a41bc90c8ad121f6055e633f9442
-	md5sums = 2ac82322f6c7bf452459d422ce1f8bc3
 
 pkgname = pdepend
+
