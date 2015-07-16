@@ -1,0 +1,8 @@
+pkgbase = foo
+	pkgdesc = Test package
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = all
+
+pkgname = foo
+
