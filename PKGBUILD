@@ -1,13 +1,13 @@
-# Maintainer: Austin Haedicke <irc.freenode.net / github: gtbjj>
+# Maintainer: Austin Haedicke
 
-# If you find errors or have suggestions please contact me
-# via IRC PM or submit a pull request on github.
+# If you find errors or have suggestions feel free to file an issue
+# or submit a pull request @ https://github.com/gtbjj/pkgbuild
 
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 
 pkgname=rakudo-star
-pkgver=2015.03
+pkgver=2015.06
 pkgrel=1
 pkgdesc="Rakudo Perl6 on MoarVM with additional modules"
 arch=('i686' 'x86_64')
@@ -17,10 +17,8 @@ depends=('glibc')
 makedepends=('perl')
 provides=('rakudo' 'rakudo-moarvm')
 conflicts=('rakudo' 'rakudo-moarvm')
-options=('!makeflags')
 source=(http://rakudo.org/downloads/star/$pkgname-$pkgver.tar.gz)
 sha512sums=('SKIP')
-pkgdir="$HOME/.rakudostar"
 
 build() {
   cd "$pkgname-$pkgver"
