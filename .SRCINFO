@@ -15,7 +15,8 @@ pkgbase = openmw-git
 	depends = openscenegraph
 	depends = mygui>=3.2.1
 	depends = bullet
-	depends = qt5
+	depends = qt4
+	depends = qt5-base
 	depends = ffmpeg
 	depends = sdl2
 	depends = unshield

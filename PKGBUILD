@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
 
-depends=('openal' 'openscenegraph' 'mygui>=3.2.1' 'bullet' 'qt5' 'ffmpeg' 'sdl2' 'unshield')
+depends=('openal' 'openscenegraph' 'mygui>=3.2.1' 'bullet' 'qt4' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield')
 makedepends=('git' 'cmake' 'boost')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
