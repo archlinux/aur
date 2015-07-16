@@ -1,11 +1,12 @@
 pkgbase = rapsearch
 	pkgdesc = Reduced Alphabet based Protein similarity Search
 	pkgver = 2.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rapsearch2.sourceforge.net/
 	arch = x86_64
 	license = GPL
-	depends = gcc-libs
+	makedepends = threadpool
+	depends = boost-libs
 	source = http://downloads.sourceforge.net/rapsearch2/RAPSearch2.23_64bits.tar.gz
 	md5sums = 1fe5e42dd65d97fd54dc142e6d8ec68d
 
