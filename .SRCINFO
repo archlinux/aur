@@ -1,7 +1,7 @@
 pkgbase = lib32-js17
 	pkgdesc = JavaScript interpreter and libraries (legacy)
 	pkgver = 17.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.mozilla.org/En/SpiderMonkey/17
 	arch = x86_64
 	license = MPL
@@ -14,7 +14,9 @@ pkgbase = lib32-js17
 	depends = lib32-nspr
 	depends = lib32-readline
 	source = http://ftp.mozilla.org/pub/mozilla.org/js/mozjs17.0.0.tar.gz
+	source = js17-version.patch
 	sha256sums = 321e964fe9386785d3bf80870640f2fa1c683e32fe988eeb201b04471c172fba
+	sha256sums = c97f7a880b1660291a704aca5fb913d1c39dba2589281c791c075ac80332081b
 
 pkgname = lib32-js17
 

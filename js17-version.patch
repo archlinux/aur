@@ -1,0 +1,14 @@
+diff -rupN mozjs17.0.0.orig/js/src/configure mozjs17.0.0/js/src/configure
+--- mozjs17.0.0.orig/js/src/configure	2015-07-16 16:26:49.190288604 +0200
++++ mozjs17.0.0/js/src/configure	2015-07-16 16:33:11.338731818 +0200
+@@ -1523,8 +1523,8 @@ esac
+ 
+ fi
+ 
+-MOZILLA_VERSION=`$PERL $srcdir/config/milestone.pl -topsrcdir $srcdir`
+-MOZILLA_UAVERSION=`$PERL $srcdir/config/milestone.pl -topsrcdir $srcdir -uaversion`
++MOZILLA_VERSION=17.0.0
++MOZILLA_UAVERSION=17.0.0
+ 
+ cat >> confdefs.pytmp <<EOF
+         (''' MOZILLA_VERSION ''', r''' "$MOZILLA_VERSION" ''')
