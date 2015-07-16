@@ -1,7 +1,7 @@
 pkgbase = perl-term-size
 	pkgdesc = provides a straightforward way to get the size of the terminal, or window, on which a script is running
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.207
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Term-Size/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = perl-term-size
 	license = PerlArtistic
 	depends = perl
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/T/TI/TIMPX/Term-Size-0.2.tar.gz
-	md5sums = 982b5df8351e7654a42b7bffc0bf1d57
+	source = http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/Term-Size-0.207.tar.gz
+	md5sums = 474438fff3f12fca88a23388cc5a7571
 
 pkgname = perl-term-size
 
