@@ -1,0 +1,23 @@
+
+post_install() {
+cat << _EOF
+
+==> vicious installation notes:
+    ----------------------------------------
+    Vicious is a framework for gathering data about your system, and
+    creating widgets to feed them that data in statusbars of various
+    window managers, primarily the 'awesome' window manager. Vicious
+    can be used with stable versions of awesome and development code,
+    from the 3.4 branch or the master branch.
+    
+_EOF
+
+}
+
+post_upgrade() {
+        post_install
+}
+
+op=$1
+shift
+$op $*

@@ -1,0 +1,22 @@
+pkgbase = vicious-git
+	pkgdesc = Modular widget library for window managers
+	pkgver = 2.1.3.9.g02e1142
+	pkgrel = 2
+	url = http://git.sysphere.org/vicious/about/
+	install = vicious-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = lua
+	optdepends = awesome: for which vicious was mainly written for
+	optdepends = hddtemp: for the HDD Temp widget type
+	optdepends = alsa-utils: for the Volume widget type
+	optdepends = wireless_tools: for the Wireless widget type
+	optdepends = curl: for widget types accessing network resources
+	provides = vicious
+	conflicts = vicious
+	source = vicious-git::git+http://git.sysphere.org/vicious
+	sha1sums = SKIP
+
+pkgname = vicious-git
+
