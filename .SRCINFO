@@ -1,0 +1,22 @@
+pkgbase = polkit-gnome-gtk2
+	pkgdesc = PolicyKit integration for the GNOME desktop
+	pkgver = 0.102
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/PolicyKit
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	depends = polkit
+	depends = gtk2
+	provides = polkit-gnome
+	conflicts = polkit-gnome
+	options = !libtool
+	source = http://download.gnome.org/sources/polkit-gnome/0.102/polkit-gnome-0.102.tar.xz
+	source = polkit-gnome-authentication-agent-1.desktop
+	sha256sums = c78cee0001128dc1b00248ed11ffd23988d9cd0ce78c8b00eb36880b289e7598
+	sha256sums = ad19e73ae8eba00a8f66bd9afd3e0e1fd7ca22f716e29b97f097d9c01711e0de
+
+pkgname = polkit-gnome-gtk2
+
