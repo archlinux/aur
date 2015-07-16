@@ -1,0 +1,20 @@
+pkgbase = envoy-git
+	pkgdesc = A ssh-agent/gpg-agent keychain and process monitor
+	pkgver = 12
+	pkgrel = 1
+	url = http://github.com/vodik/envoy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ragel
+	depends = openssh
+	depends = systemd
+	optdepends = gnupg: gpg-agent support
+	provides = envoy
+	conflicts = envoy
+	source = git+git://github.com/vodik/envoy.git
+	sha1sums = SKIP
+
+pkgname = envoy-git
+
