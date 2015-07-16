@@ -1,0 +1,6 @@
+post_install() {
+	cat <<-EOT
+		==> Example configuration has been installed in /etc/fackup.yml.example.
+		==> For more details see https://github.com/b3niup/fackup
+	EOT
+}

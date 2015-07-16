@@ -1,0 +1,5 @@
+pkg/
+src/
+fackup-*.pkg.tar.xz
+fackup-*.src.tar.gz
+fackup-*.tar.bz2
