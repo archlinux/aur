@@ -4,7 +4,7 @@ pkgbase = pdepend
 	pkgrel = 1
 	url = http://pdepend.org/
 	arch = any
-	license = GPLv3
+	license = BSD
 	depends = php
 	source = http://static.pdepend.org/php/2.1.0/pdepend.phar
 	source = pdepend.install
@@ -12,4 +12,3 @@ pkgbase = pdepend
 	md5sums = 2ac82322f6c7bf452459d422ce1f8bc3
 
 pkgname = pdepend
-

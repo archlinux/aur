@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='A tool for PHP software metrics'
 url="http://pdepend.org/"
 arch=('any')
-license=('GPLv3')
+license=('BSD')
 depends=('php')
 source=("http://static.pdepend.org/php/${pkgver}/pdepend.phar"
 				"pdepend.install")
