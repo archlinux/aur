@@ -17,5 +17,5 @@ package() {
 
   echo
   echo "Warning: bz2.so must be enabled in your php.ini"
-	echo
+  echo
 }
