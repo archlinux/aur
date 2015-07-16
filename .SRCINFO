@@ -1,0 +1,15 @@
+pkgbase = perl-xml-xpathengine
+	pkgdesc = a re-usable XPath engine for DOM-like trees
+	pkgver = 0.14
+	pkgrel = 2
+	url = http://search.cpan.org/dist/XML-XPathEngine
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIROD/XML-XPathEngine-0.14.tar.gz
+	md5sums = d840cbefa57c23041f0bed14940a6b22
+
+pkgname = perl-xml-xpathengine
+
