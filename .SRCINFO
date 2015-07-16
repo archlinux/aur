@@ -1,6 +1,6 @@
 pkgbase = lumina-desktop
 	pkgdesc = A Lightweight QT5 Desktop for FreeBSD
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/pcbsd/lumina
 	install = lumina.install
@@ -32,8 +32,8 @@ pkgbase = lumina-desktop
 	conflicts = lumina-de-git
 	conflicts = lumina-desktop-git
 	conflicts = insight-fm
-	source = https://github.com/pcbsd/lumina/archive/v0.8.4-Release-P1.tar.gz
-	md5sums = 7f6fe869e99ee0816bcea12c0da92acd
+	source = https://github.com/pcbsd/lumina/archive/v0.8.5-Release.tar.gz
+	md5sums = 33a39510a1964baf12b32c14a6d80b41
 
 pkgname = lumina-desktop
 
