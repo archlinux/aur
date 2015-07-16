@@ -1,0 +1,157 @@
+From 7c35d52f3c3b0079cd6c9b188ec36e732b998720 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 15 Jul 2015 23:45:49 +0200
+Subject: Revert "x11: Query pointer devices' scroll valuators on toplevel
+ enter events"
+
+This reverts commit 3d9cce79cf16bce335599b3b78b6bd0a04e37560.
+
+The commit broke more scenarios than fixed, better to go back to square one.
+
+diff --git a/gdk/x11/gdkdevice-xi2.c b/gdk/x11/gdkdevice-xi2.c
+index f5e06f1..6d49b9a 100644
+--- a/gdk/x11/gdkdevice-xi2.c
++++ b/gdk/x11/gdkdevice-xi2.c
+@@ -40,6 +40,7 @@ struct _ScrollValuator
+ {
+   guint n_valuator       : 4;
+   guint direction        : 4;
++  guint last_value_valid : 1;
+   gdouble last_value;
+   gdouble increment;
+ };
+@@ -818,8 +819,8 @@ _gdk_x11_device_xi2_add_scroll_valuator (GdkX11DeviceXI2    *device,
+ 
+   scroll.n_valuator = n_valuator;
+   scroll.direction = direction;
++  scroll.last_value_valid = FALSE;
+   scroll.increment = increment;
+-  scroll.last_value = 0;
+ 
+   g_array_append_val (device->scroll_valuators, scroll);
+ }
+@@ -850,10 +851,18 @@ _gdk_x11_device_xi2_get_scroll_delta (GdkX11DeviceXI2    *device,
+           if (delta_ret)
+             *delta_ret = 0;
+ 
+-          if (delta_ret)
+-            *delta_ret = (valuator_value - scroll->last_value) / scroll->increment;
++          if (scroll->last_value_valid)
++            {
++              if (delta_ret)
++                *delta_ret = (valuator_value - scroll->last_value) / scroll->increment;
+ 
+-          scroll->last_value = valuator_value;
++              scroll->last_value = valuator_value;
++            }
++          else
++            {
++              scroll->last_value = valuator_value;
++              scroll->last_value_valid = TRUE;
++            }
+ 
+           return TRUE;
+         }
+@@ -863,33 +872,17 @@ _gdk_x11_device_xi2_get_scroll_delta (GdkX11DeviceXI2    *device,
+ }
+ 
+ void
+-_gdk_device_xi2_revalidate_scroll_valuators (GdkX11DeviceXI2 *device)
++_gdk_device_xi2_reset_scroll_valuators (GdkX11DeviceXI2 *device)
+ {
+-  GdkDisplay *display;
+-  XIDeviceInfo *info;
+-  gint i, ndevices;
+-
+-  display = gdk_device_get_display (GDK_DEVICE (device));
+-
+-  gdk_x11_display_error_trap_push (display);
+-  info = XIQueryDevice (GDK_DISPLAY_XDISPLAY (display),
+-                        device->device_id, &ndevices);
+-  gdk_x11_display_error_trap_pop_ignored (display);
+-
+-  if (!info)
+-    return;
++  guint i;
+ 
+   for (i = 0; i < device->scroll_valuators->len; i++)
+     {
+-      XIValuatorClassInfo *valuator;
+       ScrollValuator *scroll;
+ 
+       scroll = &g_array_index (device->scroll_valuators, ScrollValuator, i);
+-      valuator = (XIValuatorClassInfo *) info->classes[scroll->n_valuator + 1];
+-      scroll->last_value = valuator->value;
++      scroll->last_value_valid = FALSE;
+     }
+-
+-  XIFreeDeviceInfo (info);
+ }
+ 
+ void
+diff --git a/gdk/x11/gdkdevicemanager-xi2.c b/gdk/x11/gdkdevicemanager-xi2.c
+index 72dfff2..a57ecaf 100644
+--- a/gdk/x11/gdkdevicemanager-xi2.c
++++ b/gdk/x11/gdkdevicemanager-xi2.c
+@@ -825,11 +825,13 @@ handle_device_changed (GdkX11DeviceManagerXI2 *device_manager,
+                        XIDeviceChangedEvent   *ev)
+ {
+   GdkDisplay *display;
+-  GdkDevice *device;
++  GdkDevice *device, *source_device;
+ 
+   display = gdk_device_manager_get_display (GDK_DEVICE_MANAGER (device_manager));
+   device = g_hash_table_lookup (device_manager->id_table,
+                                 GUINT_TO_POINTER (ev->deviceid));
++  source_device = g_hash_table_lookup (device_manager->id_table,
++                                       GUINT_TO_POINTER (ev->sourceid));
+ 
+   if (device)
+     {
+@@ -840,6 +842,9 @@ handle_device_changed (GdkX11DeviceManagerXI2 *device_manager,
+ 
+       g_signal_emit_by_name (G_OBJECT (device), "changed");
+     }
++
++  if (source_device)
++    _gdk_device_xi2_reset_scroll_valuators (GDK_X11_DEVICE_XI2 (source_device));
+ }
+ 
+ static GdkCrossingMode
+@@ -1681,16 +1686,16 @@ gdk_x11_device_manager_xi2_translate_event (GdkEventTranslator *translator,
+             xev->detail != XINotifyInferior && xev->mode != XINotifyPassiveUngrab &&
+ 	    gdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL)
+           {
+-            if (gdk_device_get_device_type (device) != GDK_DEVICE_TYPE_MASTER)
+-              _gdk_device_xi2_revalidate_scroll_valuators (GDK_X11_DEVICE_XI2 (source_device));
++            if (gdk_device_get_device_type (source_device) != GDK_DEVICE_TYPE_MASTER)
++              _gdk_device_xi2_reset_scroll_valuators (GDK_X11_DEVICE_XI2 (source_device));
+             else
+               {
+                 GList *slaves, *l;
+ 
+-                slaves = gdk_device_list_slave_devices (device);
++                slaves = gdk_device_list_slave_devices (source_device);
+ 
+                 for (l = slaves; l; l = l->next)
+-                  _gdk_device_xi2_revalidate_scroll_valuators (l->data);
++                  _gdk_device_xi2_reset_scroll_valuators (GDK_X11_DEVICE_XI2 (l->data));
+ 
+                 g_list_free (slaves);
+               }
+diff --git a/gdk/x11/gdkprivate-x11.h b/gdk/x11/gdkprivate-x11.h
+index 459b76e..c2afecf 100644
+--- a/gdk/x11/gdkprivate-x11.h
++++ b/gdk/x11/gdkprivate-x11.h
+@@ -246,8 +246,6 @@ gboolean  _gdk_x11_device_xi2_get_scroll_delta    (GdkX11DeviceXI2    *device,
+                                                    GdkScrollDirection *direction_ret,
+                                                    gdouble            *delta_ret);
+ void     _gdk_device_xi2_reset_scroll_valuators   (GdkX11DeviceXI2    *device);
+-void     _gdk_device_xi2_revalidate_scroll_valuators (GdkX11DeviceXI2 *device);
+-
+ 
+ gdouble  gdk_x11_device_xi2_get_last_axis_value (GdkX11DeviceXI2 *device,
+                                                  gint             n_axis);
+-- 
+cgit v0.10.2
+

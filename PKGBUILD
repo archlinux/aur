@@ -4,7 +4,7 @@
 
 pkgname=lib32-gtk3
 pkgver=3.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc='GObject-based multi-platform GUI toolkit (v3)'
 arch=('x86_64')
 license=('LGPL')
@@ -15,8 +15,16 @@ depends=('gtk3' 'lib32-at-spi2-atk' 'lib32-colord' 'lib32-gdk-pixbuf2'
          'lib32-libxkbcommon' 'lib32-libxrandr' 'lib32-pango' 'lib32-rest')
 makedepends=('gcc-multilib' 'gobject-introspection')
 install='gtk3.install'
-source=("http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz")
-sha256sums=('b87c99d127eb962fc857c246b77a65322cdffd7dcbcf46a83bce2040e0f4bc31')
+source=("http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz"
+        'mousewheels-fs45666.patch')
+sha256sums=('b87c99d127eb962fc857c246b77a65322cdffd7dcbcf46a83bce2040e0f4bc31'
+            'c103076f4f648e20ef8da7ea6a48fda8012ecaec6987008c08f2bfdd4f5101f4')
+
+prepare() {
+  cd gtk+-${pkgver}
+
+  patch -Np1 -i ../mousewheels-fs45666.patch
+}
 
 build() {
   cd gtk+-${pkgver}
