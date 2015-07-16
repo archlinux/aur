@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=granite-bzr
-pkgver=r851
+pkgver=r862
 pkgrel=1
 pkgdesc='An extension of GTK+ libraries'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL3')
 groups=('pantheon-unstable')
 depends=('gtk3' 'libgee')
 makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
-provides=('granite')
+provides=('granite' 'libgranite.so')
 conflicts=('granite')
 install='granite.install'
 source=('bzr+lp:granite')

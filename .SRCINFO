@@ -1,6 +1,6 @@
 pkgbase = granite-bzr
 	pkgdesc = An extension of GTK+ libraries
-	pkgver = r851
+	pkgver = r862
 	pkgrel = 1
 	url = https://launchpad.net/granite
 	install = granite.install
@@ -15,6 +15,7 @@ pkgbase = granite-bzr
 	depends = gtk3
 	depends = libgee
 	provides = granite
+	provides = libgranite.so
 	conflicts = granite
 	source = bzr+lp:granite
 	sha256sums = SKIP
