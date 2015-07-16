@@ -1,0 +1,19 @@
+pkgbase = repose-git
+	pkgdesc = A archlinux repo building tool
+	pkgver = 3.34.gc663937
+	pkgrel = 1
+	url = http://github.com/vodik/repose
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pacman
+	depends = libarchive
+	depends = gnupg
+	provides = repose
+	conflicts = repose
+	source = git+git://github.com/vodik/repose.git
+	sha1sums = SKIP
+
+pkgname = repose-git
+
