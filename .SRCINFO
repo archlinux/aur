@@ -1,6 +1,6 @@
 pkgbase = scudcloud
 	pkgdesc = A Linux client for Slack
-	pkgver = 1.0.36
+	pkgver = 1.0.50
 	pkgrel = 1
 	url = https://github.com/raelgc/scudcloud
 	install = scudcloud.install
@@ -8,8 +8,8 @@ pkgbase = scudcloud
 	license = MIT
 	depends = python-dbus
 	depends = python-pyqt4
-	source = https://github.com/raelgc/scudcloud/archive/v1.0.36.tar.gz
-	sha256sums = 6c0b2ae27e62e2b76bf8ab8aa2b2a1de85fbecf450fe5be36ee8d3904a1bdd59
+	source = https://github.com/raelgc/scudcloud/archive/v1.0.50.tar.gz
+	sha256sums = a7358da8d42e61cdf4896f7ed5572a908fffb3e2b746cf111ec6aed3f26754f9
 
 pkgname = scudcloud
 
