@@ -1,0 +1,22 @@
+--- src/IconMap.cpp	2013-10-07 04:56:43.000000000 +1030
++++ src/IconMap.cpp	2014-01-12 10:22:14.746162850 +1030
+@@ -15,7 +15,7 @@
+ #include "WildcardCompare.h"
+ #include "Png.h"
+ 
+-#include <string>
++#include "string.h"
+ #include <algorithm>
+ #include <sstream>
+ #include <fstream>
+--- src/Png.cpp	2013-10-07 04:56:43.000000000 +1030
++++ src/Png.cpp	2014-01-12 10:22:27.602994831 +1030
+@@ -13,7 +13,7 @@
+  */
+ #include "Png.h"
+ 
+-#include <string>
++#include "string.h"
+ #include <fstream>
+ #include <stdexcept>
+ 

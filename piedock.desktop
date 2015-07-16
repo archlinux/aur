@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Pie Dock
+Comment=A Circular Menu
+Exec=piedock
+Icon=emblem-new
+Categories=GNOME;Utility;
