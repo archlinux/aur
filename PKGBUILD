@@ -1,6 +1,6 @@
-_qtver=5.4.0
+_qtver=5.5.0
 pkgname=telegram-desktop-git
-pkgver=r546.db96605
+pkgver=r654.e193a86
 pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
@@ -74,5 +74,5 @@ package() {
   install -dm755 "$pkgdir"/usr/bin
   install -Dm755 "$srcdir"/tdesktop/Linux/Release/Telegram "$pkgdir"/usr/bin/telegram
 }
-md5sums=('e8654e4b37dd98039ba20da7a53877e6'
+md5sums=('828594c91ba736ce2cd3e1e8a6146452'
          'SKIP')
