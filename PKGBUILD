@@ -2,7 +2,7 @@
 #Contributor: Bob Finch <w9ya@qrparci.net>
 
 pkgname=qsstv
-pkgver=8.2.11
+pkgver=8.2.12
 pkgrel=1
 pkgdesc="Radio Slow-Scan TV for qt"
 url="http://users.telenet.be/on4qz/"
@@ -11,7 +11,7 @@ source=(http://users.telenet.be/on4qz/qsstv/downloads/${pkgname}_${pkgver}.tar.g
         $pkgname.desktop)
 arch=('i686' 'x86_64')
 license=('GPL')
-sha512sums=('e446609536e24c2dad69c5e44ee4dbcbe44d97ba8a7cff6d4ab28b6145c905ccff327ac235e715283f532a5a131a95a8a7e594124502573625c2ac89f076abf7'
+sha512sums=('5e87152e644336119fa328a6dbe33524a53cfd78866ed036652213bf860c022ba60bfa64e95b3a55d73ec4370f8d912a0317654137db07eb27dececc0889e097'
             '99aa49c0e03c03ec645196354c809016fbcdf6106aea8d79b4ed9e90f0d1127eabbc08a6bd20b3c4f66866aa3ffcc35beaf16cd6a926c9996f3ec431bb8759e8')
 
 build() {
