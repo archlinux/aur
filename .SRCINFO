@@ -1,0 +1,21 @@
+pkgbase = perl-xml-dom-xpath
+	pkgdesc = Implements Level 1 of W3's DOM: XPath
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/~mirod/XML-DOM-XPath-0.14/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perlxml>=2.30
+	depends = perl-xml-regexp
+	depends = libxml-perl>=0.07
+	depends = perl-libwww
+	depends = perl-xml-dom
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIROD/XML-DOM-XPath-0.14.tar.gz
+	md5sums = 51a40df96c2f92829e1a4f84782fa75e
+
+pkgname = perl-xml-dom-xpath
+
