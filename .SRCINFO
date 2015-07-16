@@ -1,0 +1,19 @@
+pkgbase = hub-git
+	pkgdesc = hub introduces git to GitHub
+	pkgver = 2.2.0.27.g64187e3
+	pkgrel = 1
+	epoch = 1
+	url = http://hub.github.com
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	provides = hub
+	conflicts = hub
+	conflicts = hub-rubygem-git
+	replaces = hub-rubygem-git
+	source = hub::git://github.com/github/hub.git
+	md5sums = SKIP
+
+pkgname = hub-git
+
