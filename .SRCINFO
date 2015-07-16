@@ -1,17 +1,14 @@
 pkgbase = gnome-shell-extension-installer
 	pkgdesc = A bash script to search and install GNOME Shell extensions
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://github.com/ianbrunelli/gnome-shell-extension-installer
 	arch = any
 	license = GPL2
-	depends = bash
-	depends = curl
-	depends = glib2
 	depends = gnome-shell
 	optdepends = less: to display comments and long descriptions more elegantly
-	source = gnome-shell-extension-installer::https://github.com/ianbrunelli/gnome-shell-extension-installer/releases/download/v1.4.1/gnome-shell-extension-installer
-	sha256sums = 2a87a710dc2a98a91a069d0bb1cdb4526a101e260c4a152e43de5dff0b0a3ec3
+	source = gnome-shell-extension-installer::https://github.com/ianbrunelli/gnome-shell-extension-installer/releases/download/v1.4.2/gnome-shell-extension-installer
+	sha256sums = 22a44cacd4e2b9752395809a0642da43df59192284cfcd41398ed3e843310bbf
 
 pkgname = gnome-shell-extension-installer
 
