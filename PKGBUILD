@@ -7,13 +7,14 @@ pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma D
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/breeze'
 license=(LGPL)
-depends=(frameworkintegration kdecoration-git kcmutils)
+depends=(frameworkintegration kdecoration-git kcmutils hicolor-icon-theme)
 makedepends=(extra-cmake-modules git)
 optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'oxygen-icons: fallback icon theme')
 conflicts=(breeze breeze-icons)
 provides=(breeze breeze-icons)
 source=('git://anongit.kde.org/breeze.git')
 md5sums=('SKIP')
+install=$pkgname.install
 
 pkgver() {
   cd breeze
