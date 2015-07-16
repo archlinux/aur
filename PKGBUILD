@@ -2,8 +2,8 @@
 # submit: Chao Wang <chaowang@redhat.com>
 
 pkgname=koji
-pkgver=1.9.0
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Koji is a system for building and tracking RPMS. This base package contains shared libraries and the command-line interface.'
 arch=('any')
 license=('GPL2' 'LGPL2.1')
@@ -23,7 +23,7 @@ backup=('etc/httpd/conf.d/kojihub.conf'
         'etc/kojivmd/kojivmd.conf'
         'etc/kojiweb/web.conf')
 source=("https://fedorahosted.org/released/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ec933af8359408b11478477de83b042a5bdf1d23e85683528aebb53c9bc0e6bc')
+sha256sums=('c512f682a7ce617bd4cfbed5f2d12935a7bd62839fa8bf9811449c89293a0df9')
 
 prepare() {
   cd "$pkgname-$pkgver"
