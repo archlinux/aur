@@ -1,0 +1,12 @@
+pkgbase = vim-gmsh
+	pkgdesc = A Vim syntax file for GMSH
+	pkgver = 20150716
+	pkgrel = 1
+	url = https://github.com/nschloe/gmsh.vim
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+
+pkgname = vim-gmsh
+
