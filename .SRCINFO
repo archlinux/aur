@@ -1,12 +1,13 @@
 pkgbase = jacktrip
 	pkgdesc = Tool to manage and tune JACK settings for optimum performance between networked machines.
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jcacerec/jacktrip
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
-	depends = jack2-dbus
-	depends = qt4
+	depends = jack
+	depends = qt5-base
 	provides = jacktrip
 	conflicts = jacktrip
 	source = https://github.com/jcacerec/jacktrip/archive/jacktrip-1.1.tar.gz
