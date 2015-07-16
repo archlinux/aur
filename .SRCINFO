@@ -1,0 +1,19 @@
+pkgbase = projectascension-dev-git
+	pkgdesc = Community-driven open source gaming client
+	pkgver = 0
+	pkgrel = 1
+	url = http://www.projectascension.io
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = cmake
+	depends = boost
+	depends = ninja
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-webkit
+	source = projectascension::git+https://www.github.com/Proj-Ascension/Client#branch=dev
+	md5sums = SKIP
+
+pkgname = projectascension-dev-git
+
