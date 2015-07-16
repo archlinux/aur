@@ -10,6 +10,7 @@ pkgbase = todoman-git
 	depends = python-urwid
 	depends = python-xdg
 	depends = python-ansi-git
+	depends = python-parsedatetime
 	optdepends = python-click-repl-git: the repl command.
 	provides = todoman
 	conflicts = todoman
