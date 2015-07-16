@@ -1,6 +1,6 @@
 pkgbase = linux-libre-xen
 	pkgver = 4.1.2_gnu
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux-libre.fsfla.org/
 	arch = i686
 	license = GPL2
@@ -24,6 +24,8 @@ pkgbase = linux-libre-xen
 	source = linux.preset
 	source = 0001-block-loop-convert-to-per-device-workqueue.patch
 	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	source = change-default-console-loglevel.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
@@ -39,6 +41,8 @@ pkgbase = linux-libre-xen
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
 	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
+	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
+	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-libre-xen
