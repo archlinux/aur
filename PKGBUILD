@@ -29,6 +29,7 @@ prepare() {
   cd "$pkgname-$pkgver"
   find . -name Makefile -exec sed -i 's|\(PYTHON=\)python|\1python2|' {} \;
   find . -name Makefile -exec sed -i 's|sbin|bin|' {} \;
+  find . -name '*.service' -exec sed -i 's|sbin|bin|' {} \;
   find . -type f -exec sed -i 's|^\(#!/usr/bin/\)python|\1python2|' {} \;
 }
 
