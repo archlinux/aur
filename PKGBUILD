@@ -7,7 +7,7 @@
 
 pkgname=java-gnome
 pkgver=4.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Java bindings to the GNOME platform (including gtk, glib and glade)"
 arch=('i686' 'x86_64')
 url="http://java-gnome.sourceforge.net"
@@ -40,7 +40,8 @@ build() {
 	# Ok, this had to be updated
 	./configure jdk="/usr/lib/jvm/default" prefix=/usr
 	make
-	DISPLAY= make doc
+	# Prevent errors running make doc (GLib errors)
+	G_ENABLE_DIAGNOSTIC=0 make doc
 }
 
 package() {
