@@ -1,0 +1,20 @@
+pkgbase = ignition-math-hg
+	pkgdesc = Math classes and functions for robot applications
+	pkgver = 2.1.1.434
+	pkgrel = 1
+	url = https://bitbucket.org/ignitionrobotics/ign-math
+	arch = i686
+	arch = x86_64
+	groups = development
+	license = Apache
+	makedepends = cmake
+	makedepends = mercurial
+	makedepends = ruby-ronn
+	makedepends = pkg-config>=0.28
+	provides = ignition-math2
+	replaces = ignition-math2
+	source = ignition-math::hg+https://bitbucket.org/ignitionrobotics/ign-math
+	md5sums = SKIP
+
+pkgname = ignition-math-hg
+
