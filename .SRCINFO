@@ -1,0 +1,23 @@
+pkgbase = babelmap
+	pkgdesc = A Unicode character map for Windows.
+	pkgver = 8.0.0.1
+	pkgrel = 1
+	url = http://www.babelstone.co.uk/Software/BabelMap.html
+	install = babelmap.install
+	arch = any
+	license = custom
+	makedepends = icoutils
+	makedepends = imagemagick
+	depends = wine
+	depends = xdg-utils
+	source = http://www.babelstone.co.uk/Software/BabelMap.zip
+	source = babelmap
+	source = babelmap.desktop
+	source = LICENSE
+	sha256sums = 4d2e2725cad9eb5e7f44ef260848439541ac1c4918b772eda07333c2ac352068
+	sha256sums = 5d62cd3c9bf31ca196e98da3d2eff27c6642c05f8ad9893cd1e73cdf08eb1573
+	sha256sums = 332804bcab37fdf223a9b55cead76c1c12e4c0e7f3df1691c93c9ad98e537274
+	sha256sums = 90544b87643dad089f816791171a909827bbdce12df7113543d005ffbfb53d64
+
+pkgname = babelmap
+

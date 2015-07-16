@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BabelMap
+Comment=Unicode character map
+Exec=babelmap
+Icon=babelmap
+Categories=Utility;
