@@ -1,0 +1,20 @@
+pkgbase = toilet-fonts
+	pkgdesc = Additional asciiart fonts for toilet (adapted from figlet-fonts)
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.figlet.org/fontdb.cgi
+	arch = any
+	license = GPL
+	depends = toilet
+	optdepends = jave: create cool ascii-art and figlets
+	source = ftp://ftp.figlet.org/pub/figlet/fonts/ours.tar.gz
+	source = ftp://ftp.figlet.org/pub/figlet/fonts/contributed.tar.gz
+	source = ftp://ftp.figlet.org/pub/figlet/fonts/international.tar.gz
+	source = ftp://ftp.figlet.org/pub/figlet/fonts/ms-dos.tar.gz
+	sha256sums = 10184c883faa63e91c8c7d99f100fe2f76195221ff8863d29c1beef88f666e69
+	sha256sums = 2c569e052e638b28e4205023ae717f7b07e05695b728e4c80f4ce700354b18c8
+	sha256sums = e6493f51c96f8671c29ab879a533c50b31ade681acfb59e50bae6b765e70c65a
+	sha256sums = d3678a98b3b058ae4ded8525f51a1c53b3c6e6833793cf7cf98fcd9550ed7e70
+
+pkgname = toilet-fonts
+
