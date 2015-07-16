@@ -1,8 +1,8 @@
 diff --git a/include/ClientDB.py b/include/ClientDB.py
-index 0d1b6f8..51e06e4 100755
+index 2188e2b..e90abe6 100755
 --- a/include/ClientDB.py
 +++ b/include/ClientDB.py
-@@ -2563,7 +2563,7 @@ class DB( HydrusDB.HydrusDB ):
+@@ -2596,7 +2596,7 @@ class DB( HydrusDB.HydrusDB ):
                  counts_iterable = self._c.execute( nonzero_counts_query )
                  
              
@@ -11,7 +11,7 @@ index 0d1b6f8..51e06e4 100755
              
          
          #
-@@ -6248,4 +6248,4 @@ class DB( HydrusDB.HydrusDB ):
+@@ -6301,4 +6301,4 @@ class DB( HydrusDB.HydrusDB ):
          shutil.copytree( path + os.path.sep + 'client_thumbnails', HC.CLIENT_THUMBNAILS_DIR )
          shutil.copytree( path + os.path.sep + 'client_updates', HC.CLIENT_UPDATES_DIR )
          
@@ -19,7 +19,7 @@ index 0d1b6f8..51e06e4 100755
 \ No newline at end of file
 +    
 diff --git a/include/ClientGUICanvas.py b/include/ClientGUICanvas.py
-index 2fe9e3d..74e388c 100755
+index 155bf4a..9cb413b 100755
 --- a/include/ClientGUICanvas.py
 +++ b/include/ClientGUICanvas.py
 @@ -48,7 +48,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
@@ -33,7 +33,7 @@ index 2fe9e3d..74e388c 100755
      ( media_width, media_height ) = media.GetResolution()
      
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 520e94c..09f3971 100755
+index 3926a31..c69092a 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
 @@ -243,7 +243,8 @@ class Dialog( wx.Dialog ):
@@ -1377,10 +1377,10 @@ index 98576c6..0000000
 -    
 -HydrusSerialisable.SERIALISABLE_TYPES_TO_OBJECT_TYPES[ HydrusSerialisable.SERIALISABLE_TYPE_SEED_QUEUE ] = SeedQueue
 diff --git a/include/HydrusData.py b/include/HydrusData.py
-index aa4a331..695e1e2 100644
+index 3b644d5..b80b5e8 100644
 --- a/include/HydrusData.py
 +++ b/include/HydrusData.py
-@@ -999,15 +999,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
+@@ -1003,15 +1003,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
                  
                  if data_type in ( HC.CONTENT_DATA_TYPE_TAG_SIBLINGS, HC.CONTENT_DATA_TYPE_TAG_PARENTS ) and action in ( HC.CONTENT_UPDATE_PENDING, HC.CONTENT_UPDATE_PETITION ):
                      
@@ -1400,7 +1400,7 @@ index aa4a331..695e1e2 100644
                  
              else: new_action = action
 diff --git a/include/HydrusImageHandling.py b/include/HydrusImageHandling.py
-index 97c2fca..a69fe4e 100755
+index c037164..bb6c08e 100755
 --- a/include/HydrusImageHandling.py
 +++ b/include/HydrusImageHandling.py
 @@ -50,7 +50,8 @@ def ConvertToPngIfBmp( path ):
@@ -1443,7 +1443,7 @@ index 97c2fca..a69fe4e 100755
      
      ( im_x, im_y ) = pil_image.size
      
-@@ -348,7 +352,9 @@ def GetResolutionAndNumFrames( path ):
+@@ -350,7 +354,9 @@ def GetResolutionAndNumFrames( path ):
      
      return ( ( x, y ), num_frames )
      
@@ -1707,7 +1707,7 @@ index d26bf20..9518fc2 100644
 \ No newline at end of file
 +    
 diff --git a/include/HydrusTags.py b/include/HydrusTags.py
-index 3bc8528..75c7f7b 100644
+index 710c20a..edd9bfd 100644
 --- a/include/HydrusTags.py
 +++ b/include/HydrusTags.py
 @@ -352,7 +352,7 @@ class TagsManagerSimple( object ):
