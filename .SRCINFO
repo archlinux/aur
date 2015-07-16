@@ -1,0 +1,18 @@
+pkgbase = ocaml-rss
+	pkgdesc = Library providing functions to parse and print RSS 2.0 files
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://zoggy.github.io/ocamlrss/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = ocaml-xmlm
+	makedepends = ocamlnet
+	options = !makeflags
+	source = http://zoggy.github.io/ocamlrss/ocamlrss-2.2.2.tar.gz
+	md5sums = 072eb405de941d6d07d3780a5a5d01f5
+
+pkgname = ocaml-rss
+
