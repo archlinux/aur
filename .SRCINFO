@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-git
 	pkgdesc = Kernel module support files for the Zettabyte File System.
-	pkgver = 0.6.4.2_r0_g44b5ec8_4.0.7_2
+	pkgver = 0.6.4.2_r0_g44b5ec8_4.1.2_2
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686

@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-utils-git"
-pkgver=0.6.4.2_r0_g44b5ec8_4.0.7_2
+pkgver=0.6.4.2_r0_g44b5ec8_4.1.2_2
 pkgrel=1
 license=('CDDL')
 pkgdesc="Kernel module support files for the Zettabyte File System."
