@@ -4,20 +4,20 @@
 
 _pkgname=tzlocal
 pkgname=python-${_pkgname}
-pkgver=1.1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc="Tzinfo object for the local timezone"
 arch=('any')
-url='https://github.com/regebro/tzlocal'
+url='https://pypi.python.org/pypi/tzlocal'
 license=('custom')
 depends=('python-pytz')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/t/${_pkgname}/${_pkgname}-${pkgver}.zip")
-sha256sums=('4d9ddb8d5eab086e3a7c504c6e994ffa85df43e40da4d6be776218be051c677a')
+source=("https://pypi.python.org/packages/source/t/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('438f122d684c951b22cb98aecc80fdb961b84e69542bf878c6b9a9419de09a8b')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}"
+    python setup.py install --root="${pkgdir}" --optimize=1
     install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
