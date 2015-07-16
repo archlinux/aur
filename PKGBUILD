@@ -5,8 +5,8 @@
 pkgname=vicious-git
 _gitname=vicious
 pkgver=2.1.3.9.g02e1142
-_luaver="5.2"
-pkgrel=1
+_luaver="5.3"
+pkgrel=2
 pkgdesc="Modular widget library for window managers"
 arch=("any")
 url="http://git.sysphere.org/vicious/about/"
