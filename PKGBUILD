@@ -3,12 +3,12 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=142.3050.1
+_buildver=142.3230.1
 _pkgver=15.0.0
 _eap="True"
 epoch=2
 pkgver=${_pkgver}.${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
 options=(!strip)
