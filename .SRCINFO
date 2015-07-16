@@ -1,6 +1,6 @@
 pkgbase = php-codesniffer-drupal
 	pkgdesc = Drupal coding standard for PHP_CodeSniffer
-	pkgver = 8.x-2.3
+	pkgver = 8.x_2.3
 	pkgrel = 2
 	url = http://drupal.org/project/coder
 	arch = any
