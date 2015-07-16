@@ -1,13 +1,15 @@
 pkgbase = rkt
 	pkgdesc = App container runtime
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coreos/rkt
 	arch = x86_64
 	license = apache
 	makedepends = cpio
 	makedepends = go
 	makedepends = squashfs-tools
+	makedepends = perl-capture-tiny
+	depends = glibc
 	provides = rkt
 	conflicts = rocket
 	replaces = rocket
