@@ -2,7 +2,7 @@
 
 pkgname=cava-git
 _pkgname=cava
-pkgver=r81.6a9b405
+pkgver=r156.b2a8305
 pkgrel=1
 pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=(i686 x86_64)
