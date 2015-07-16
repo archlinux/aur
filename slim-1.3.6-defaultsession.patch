@@ -1,0 +1,48 @@
+diff -rupN original/slim-1.3.6/cfg.cpp patched/slim-1.3.6/cfg.cpp
+--- original/slim-1.3.6/cfg.cpp	2014-03-31 07:30:28.609045864 +0200
++++ patched/slim-1.3.6/cfg.cpp	2014-03-31 07:31:44.349203338 +0200
+@@ -56,6 +56,7 @@ Cfg::Cfg()
+ 	options.insert(option("reboot_msg","The system is rebooting..."));
+ 	options.insert(option("sessiondir",""));
+ 	options.insert(option("hidecursor","false"));
++    options.insert(option("default_session",""));
+ 
+ 	/* Theme stuff */
+ 	options.insert(option("input_panel_x","50%"));
+@@ -290,6 +291,7 @@ void Cfg::split(vector<string>& v, const
+ 
+ void Cfg::fillSessionList(){
+ 	string strSessionDir  = getOption("sessiondir");
++    std::pair<std::string,std::string> sessionTemp; 
+ 
+ 	sessions.clear();
+ 
+@@ -327,6 +329,13 @@ void Cfg::fillSessionList(){
+                              desktop_file.close();
+                              pair<string,string> session(session_name,session_exec);
+                              sessions.push_back(session);
++                             // Check whether this is the default session. If so switch to front.
++                             if (session_name.compare(getOption("default_session")) == 0)
++                                     {
++                                         sessionTemp = sessions.front();
++                                         sessions.at(0) = sessions.back();
++                                         sessions.at(sessions.size() - 1) = sessionTemp;
++                                     }
+                              cout << session_exec << " - " << session_name << endl;
+                         }
+ 
+diff -rupN original/slim-1.3.6/slim.conf patched/slim-1.3.6/slim.conf
+--- original/slim-1.3.6/slim.conf	2014-03-31 07:30:28.609045864 +0200
++++ patched/slim-1.3.6/slim.conf	2014-03-31 07:31:44.349203338 +0200
+@@ -51,6 +51,11 @@ login_cmd           exec /bin/bash -logi
+ # slim reads xsesion from this directory, and be able to select.
+ sessiondir            /usr/share/xsessions/
+ 
++# Set the default session. Note that the session name
++# must match the field "Name" in the xsession .desktop file 
++# located in sessiondir. 
++# default_session GNOME
++
+ # Executed when pressing F11 (requires imagemagick)
+ screenshot_cmd      import -window root /slim.png
+ 
