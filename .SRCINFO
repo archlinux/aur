@@ -1,14 +1,15 @@
 pkgbase = ladish-git
 	pkgdesc = Session management system for JACK.
 	pkgver = 0.3.r147.g5fe205f
-	pkgrel = 4
+	pkgrel = 1
 	url = https://launchpad.net/ladish
 	install = ladish-git.install
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = python2
-	depends = jack2-dbus
+	depends = jack
 	depends = dbus-glib
 	depends = laditools-git
 	depends = flowcanvas<=0.7.1
