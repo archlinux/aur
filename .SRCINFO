@@ -1,6 +1,6 @@
 pkgbase = unvanquished
 	pkgdesc = A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Monthly alpha release.
-	pkgver = 0.40.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = http://www.unvanquished.net
 	install = unvanquished.install
@@ -8,7 +8,7 @@ pkgbase = unvanquished
 	arch = i686
 	license = GPL3
 	makedepends = cmake
-	depends = unvanquished-data>=0.40.0
+	depends = unvanquished-data>=0.41.0
 	depends = zlib
 	depends = gmp
 	depends = nettle
@@ -38,10 +38,10 @@ pkgbase = unvanquished
 	backup = etc/conf.d/unvanquished.conf
 	backup = etc/unvanquished/server.cfg
 	backup = etc/unvanquished/maprotation.cfg
-	source = https://github.com/Unvanquished/Unvanquished/archive/archlinux/0.40.0-1.tar.gz
+	source = https://github.com/Unvanquished/Unvanquished/archive/archlinux/0.41.0-1.tar.gz
 	source = unvanquished.install
 	source = https://dl.unvanquished.net/deps/linux32-3.tar.bz2
-	md5sums = 693e2f70e9ff59df60be5970dad385b5
+	md5sums = 2364a818a1cd0e3802ace010f09d0645
 	md5sums = a5246cf3bed53798ddc4d95c6b8c1b37
 	md5sums = 64aa86d0d0d469c1f2272377e06322a1
 
