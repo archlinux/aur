@@ -1,0 +1,14 @@
+pkgbase = enpass-bin
+	pkgdesc = A multiplatform password manager
+	pkgver = 4.6.1
+	pkgrel = 1
+	url = http://enpass.io/
+	install = enpass-bin.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libxss
+	source = http://repo.sinew.in/pool/main/e/enpass/enpass_4.6.1_.deb
+
+pkgname = enpass-bin
+
