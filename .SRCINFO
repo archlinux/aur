@@ -1,0 +1,23 @@
+pkgbase = pkgman
+	pkgdesc = A script providing centralized local package and PKGBUILD management
+	pkgver = r188
+	pkgrel = 1
+	url = http://sourceforge.net/apps/mediawiki/pkgman/index.php?title=Main_Page
+	arch = any
+	license = GPL
+	depends = abs
+	depends = curl
+	depends = findutils
+	depends = gawk
+	depends = grep
+	depends = pacman
+	depends = sed
+	optdepends = namcap: check built packages
+	optdepends = desktop-file-utils: validate desktop entry files
+	optdepends = tree: formatted directory listing
+	source = http://downloads.sourceforge.net/sourceforge/pkgman/pkgman-r188.tar.gz
+	md5sums = 31f45848c515c13b2291d3a8c41022f7
+	sha256sums = 9a01b9026b7b69ff35128fb3df2f66b4777ce9890a5e8229efef566877848864
+
+pkgname = pkgman
+
