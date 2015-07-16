@@ -1,0 +1,16 @@
+pkgbase = ttf-input
+	pkgdesc = Fonts for Code, from Font Bureau
+	pkgver = 20150316
+	pkgrel = 1
+	url = http://input.fontbureau.com/
+	install = ttf-input.install
+	arch = any
+	license = custom:Font Software License Agreement
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = Input-Font.zip::http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=
+	sha256sums = 970f4ac3147c92470ccabbb1faf69127e0028142360083cd160fc4af850b86a1
+
+pkgname = ttf-input
+
