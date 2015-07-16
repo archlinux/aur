@@ -1,0 +1,21 @@
+pkgbase = jes
+	pkgdesc = A java-based tool for german cash method of accounting (Einnahme-Überschuss-Rechnung)
+	pkgver = 1.00.40
+	pkgrel = 1
+	url = http://www.jes-eur.de
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = x-server
+	depends = xdg-utils
+	source = https://dl.dropboxusercontent.com/u/2628626/jes/jes_10040.zip
+	source = jes.desktop
+	source = jes.sh.new
+	source = LICENSE
+	md5sums = a98fe3051629d982fefdc752a4fd9b2d
+	md5sums = fb13c662b57cf5a59ba54004de735b82
+	md5sums = 611c2047318cbad2e5ae2f186f26593d
+	md5sums = 7d5b1e5c39c18e5f943bb35f6bccd62a
+
+pkgname = jes
+
