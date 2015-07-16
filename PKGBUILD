@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=fzf-extras-git
-pkgver=20150703
+pkgver=20150715
 pkgrel=1
 pkgdesc="Extra keybindings for fzf"
 arch=('any')
