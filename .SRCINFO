@@ -1,0 +1,16 @@
+pkgbase = libretro-pocketsnes-git
+	pkgdesc = ARM based SNES emulator for libretro
+	pkgver = r17.79f6be5
+	pkgrel = 1
+	url = https://github.com/libretro/pocketsnes-libretro
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	makedepends = git
+	conflicts = libretro-super-git
+	source = git+https://github.com/libretro/pocketsnes-libretro.git
+	sha1sums = SKIP
+
+pkgname = libretro-pocketsnes-git
+
