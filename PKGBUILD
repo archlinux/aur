@@ -4,7 +4,7 @@
 _pkgbase=ladish
 pkgname=${_pkgbase}-git
 pkgver=0.3.r147.g5fe205f
-pkgrel=1
+pkgrel=5
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
