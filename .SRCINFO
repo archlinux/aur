@@ -1,6 +1,6 @@
 pkgbase = spl-git
 	pkgdesc = Solaris Porting Layer kernel modules.
-	pkgver = 0.6.4.2_r0_g04974ca_4.0.7_2
+	pkgver = 0.6.4.2_r0_g04974ca_4.1.2_2
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = spl.install
@@ -9,9 +9,9 @@ pkgbase = spl-git
 	groups = archzfs-git
 	license = GPL
 	makedepends = git
-	makedepends = linux-headers=4.0.7-2
+	makedepends = linux-headers=4.1.2-2
 	depends = spl-utils-git
-	depends = linux=4.0.7-2
+	depends = linux=4.1.2-2
 	provides = spl
 	conflicts = spl
 	conflicts = spl-lts

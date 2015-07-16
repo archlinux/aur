@@ -8,17 +8,17 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-git"
-pkgver=0.6.4.2_r0_g04974ca_4.0.7_2
+pkgver=0.6.4.2_r0_g04974ca_4.1.2_2
 pkgrel=1
 license=('GPL')
 
 # Used incase the i686 and x86_64 linux packages get out of sync with the
 # PKGREL. This occurred on January 31, 2014 where i686 was versioned at
 # 3.12.9-1 and x86_64 was versioned at 3.12.9-2.
-_kernel_version_x32="4.0.7-2"
-_kernel_version_x32_full="4.0.7-2"
-_kernel_version_x64="4.0.7-2"
-_kernel_version_x64_full="4.0.7-2"
+_kernel_version_x32="4.1.2-2"
+_kernel_version_x32_full="4.1.2-2"
+_kernel_version_x64="4.1.2-2"
+_kernel_version_x64_full="4.1.2-2"
 
 if [[ $CARCH == "i686" ]]; then
     _kernel_version=${_kernel_version_x32}
