@@ -1,0 +1,14 @@
+
+[Desktop Entry]
+Name=ytd
+GenericName=YouTube Downloader
+GenericName[cs]=YouTube Downloader
+Comment=an utility for downloading multimedia content from YouTube and other online streaming services
+Comment[cs]=Nástroj pro stahování videa z YouTube a dalších webových úložišť videa
+Exec=ytd
+StartupNotify=true
+Icon=
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Network;

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export WINEDEBUG=-all # Supresses Wine debug messages
+
+if [ ! -d "$HOME"/.ytd ] ; then
+   mkdir "$HOME"/.ytd
+   #prepare the environment here
+   cp /usr/share/ytd/ytd.xml "$HOME"/.ytd/ytd.xml || exit 1
+
+   ln -s /usr/share/ytd/ytd-defs.xml "$HOME"/.ytd/ytd-defs.xml || exit 1   
+   ln -s /usr/share/ytd/ytd.exe "$HOME"/.ytd/ytd.exe || exit 1
+   ln -s /usr/share/ytd/msdl_dll.dll "$HOME"/.ytd/msdl_dll.dll || exit 1
+   ln -s /usr/share/ytd/rtmpdump_dll.dll "$HOME"/.ytd/rtmpdump_dll.dll || exit 1
+   ln -s -T /usr/share/ytd/locale "$HOME"/.ytd/locale || exit 1
+   
+fi
+
+cd "$HOME"/.ytd/
+wine "$HOME"/.ytd/ytd.exe "$@"

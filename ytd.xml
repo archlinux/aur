@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ytd>
+	<converters>
+		<activated>0</activated>
+		<converter id="ffmpeg-to-avi">
+			<title>FFmpeg - Změnit kontejner na .AVI</title>
+			<exe_path>ffmpeg.exe</exe_path>
+			<command_line>-i &quot;{$FULLPATH}&quot; -acodec copy -vcodec copy -y &quot;{$FULLPATH}.avi&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+		<converter id="ffmpeg-convert-to-xvid">
+			<title>FFmpeg - Zkonvertovat film do AVI/XVID</title>
+			<exe_path>ffmpeg.exe</exe_path>
+			<command_line>-i &quot;{$FULLPATH}&quot; -acodec libmp3lame -vcodec mpeg4 -b 1200k -vtag DX50 -y &quot;{$FULLPATH}.avi&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+		<converter id="ffmpeg-convert-to-h264">
+			<title>FFmpeg - Zkonvertovat film do AVI/H264</title>
+			<exe_path>ffmpeg.exe</exe_path>
+			<command_line>-i &quot;{$FULLPATH}&quot; -vcodec libx264 -preset fast -tune film -profile main -crf 22 -threads 0  -acodec aac -strict experimental -y &quot;{$FULLPATH}.avi&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+		<converter id="ffmpeg-convert-to-mp3">
+			<title>FFmpeg - Zkonvertovat film do MP3</title>
+			<exe_path>ffmpeg.exe</exe_path>
+			<command_line>-i &quot;{$FULLPATH}&quot; -q:a 0 -vn -y &quot;{$FULLPATH}.mp3&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+		<converter id="mencoder-to-avi">
+			<title>Mencoder - Změnit kontejner na .AVI</title>
+			<exe_path>mencoder.exe</exe_path>
+			<command_line>-oac copy -ovc copy -of avi -o &quot;{$FULLPATH}.avi&quot; &quot;{$FULLPATH}&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+		<converter id="mencoder-convert-to-xvid">
+			<title>Mencoder - Zkonvertovat film do AVI/XVID</title>
+			<exe_path>mencoder.exe</exe_path>
+			<command_line>-oac mp3lame -ovc lavc -lavcopts vcodec=mpeg4:vbitrate=1200 -ffourcc xvid -of avi -o &quot;{$FULLPATH}.avi&quot; &quot;{$FULLPATH}&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+		<converter id="mencoder-convert-to-h264">
+			<title>Mencoder - Zkonvertovat film do AVI/H264</title>
+			<exe_path>mencoder.exe</exe_path>
+			<command_line>-oac mp3lame -ovc x264 -x264encopts bitrate=1200 -of avi -o &quot;{$FULLPATH}.avi&quot; &quot;{$FULLPATH}&quot;</command_line>
+			<visibility>minimized</visibility>
+		</converter>
+	</converters>
+	<config>
+		<portable_mode>1</portable_mode>
+	</config>
+	<gui>
+		<check_for_new_version>0</check_for_new_version>
+		<main_form>
+			<left>0</left>
+			<top>6</top>
+			<width>778</width>
+			<height>300</height>
+		</main_form>
+		<download_list>
+			<column_0_width>160</column_0_width>
+			<column_1_width>80</column_1_width>
+			<column_2_width>96</column_2_width>
+			<column_3_width>200</column_3_width>
+			<column_4_width>64</column_4_width>
+			<column_5_width>120</column_5_width>
+		</download_list>
+	</gui>
+	<download_list/>
+</ytd>
