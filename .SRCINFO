@@ -1,0 +1,15 @@
+pkgbase = cava
+	pkgdesc = Console-based Audio Visualizer for Alsa
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/karlstav/cava
+	arch = i686
+	arch = x86_64
+	license = none
+	makedepends = fftw
+	depends = glibc
+	source = https://github.com/karlstav/cava/archive/0.2.0.tar.gz
+	sha1sums = f7def5df6541042bbbaacf324114753151655095
+
+pkgname = cava
+
