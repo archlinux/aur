@@ -1,0 +1,15 @@
+pkgbase = bs1770gain-debian-git
+	pkgdesc = A loudness scanner compliant with ITU-R BS.1770.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = http://bs1770gain.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = ffmpeg
+	depends = sox
+	source = bs1770gain::git+https://anonscm.debian.org/git/pkg-multimedia/bs1770gain.git
+	sha256sums = SKIP
+
+pkgname = bs1770gain-debian-git
+
