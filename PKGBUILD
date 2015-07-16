@@ -2,9 +2,9 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=icinga2
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
-pkgdesc="An open source host, service and network monitoring program."
+pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
@@ -22,7 +22,7 @@ backup=(etc/default/icinga2
         etc/logrotate.d/icinga2)
 install='icinga2.install'
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('712d13e997fc6fbf02f8c2046851b1fda1291305f0d3d6792cbebf5fb1558225')
+sha256sums=('067335129daf464d800f48d75bf2fde6ae63c99db6a5126d3d322b6562dfdf28')
 
 build() {
   mkdir -p "$srcdir/$pkgname-$pkgver/build"
