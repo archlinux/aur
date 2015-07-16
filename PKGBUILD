@@ -6,8 +6,8 @@ _pkgname=jre
 pkgname=bin32-jre-devel
 _major=9
 #_minor=1
-_build=b71
-_date=01_jul_2015
+_build=b72
+_date=08_jul_2015
 _pkgver=$_major
 pkgver=${_major}${_build}
 #_pkgver=${_major}u${_minor}
@@ -49,7 +49,7 @@ source=("policytool32-$_jname.desktop"
 source_x86_64=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-i586-$_date.tar.gz")
 md5sums=('643277e142823bf695b0a6327d3ef963'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_x86_64=('ef7109046853b1974369951c1bac169d')
+md5sums_x86_64=('81d37ae7a968396838dd2df90fc159e6')
 
 package() {
     cd ${_pkgname}1.${_major}.0
