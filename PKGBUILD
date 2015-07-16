@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/"
 license=('GPL2')
 depends=('gcc-libs')
-source=("https://github.com/loneknightpy/idba/releases/download/1.1.2/idba-$pkgver.tar.gz")
+source=("https://github.com/loneknightpy/idba/releases/download/$pkgver/idba-$pkgver.tar.gz")
 md5sums=('0f0efa1534c7f15ae4bf64473a7709a4')
 
 build() {
