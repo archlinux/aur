@@ -1,0 +1,16 @@
+pkgbase = phpunit
+	pkgdesc = PHPUnit is a programmer-oriented testing framework for PHP.
+	pkgver = 4.7.0
+	pkgrel = 2
+	url = https://phpunit.de
+	install = phpunit.install
+	arch = any
+	license = BSD
+	depends = php
+	source = https://phar.phpunit.de/phpunit-4.7.0.phar
+	source = phpunit.install
+	md5sums = 3c70e990ab7029decdfc6971b5a3c567
+	md5sums = 1fbae58bd7ae27afdf86ce14985dedd8
+
+pkgname = phpunit
+

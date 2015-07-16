@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo "Warning: phar.so must be enabled and date.timezone set in your php.ini"
+  echo "Note: You should load /usr/share/webapps/bin/phpunit.phar in your IDE"
+}
+
+post_upgrade() {
+  post_install
+}
