@@ -1,6 +1,6 @@
 pkgbase = mariadb-jdbc
 	pkgdesc = The official JDBC driver (Java library) for MariaDB
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://downloads.mariadb.org/client-java/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = mariadb-jdbc
 	provides = mysql-jdbc
 	conflicts = mysql-jdbc
 	replaces = mysql-jdbc
-	source = http://ftp.osuosl.org/pub/mariadb/client-java-1.1.8/mariadb-java-client-1.1.8.jar
-	md5sums = f73ea6447640d3712555376bbd80fff9
+	source = https://code.mariadb.com/connectors/java/connector-java-1.1.9/mariadb-java-client-1.1.9.jar
+	md5sums = 30e779153c565cbdd8920bde11156b84
 
 pkgname = mariadb-jdbc
 
