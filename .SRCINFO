@@ -1,0 +1,12 @@
+pkgbase = luksipc-git
+	pkgdesc = A tool to convert unencrypted block devices to encrypted LUKS devices in-place - git version
+	pkgver = 0.04.r2.g16e3285
+	pkgrel = 1
+	url = http://www.johannes-bauer.com/linux/luksipc
+	arch = any
+	license = GPL3
+	source = git+https://github.com/johndoe31415/luksipc.git
+	md5sums = SKIP
+
+pkgname = luksipc-git
+
