@@ -1,0 +1,25 @@
+pkgbase = vsxu
+	pkgdesc = A free to use program that lets you create and perform real-time audio visual presets.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://www.vsxu.com/
+	install = vsxu.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = cmake
+	depends = jack
+	depends = glew
+	depends = glfw2
+	depends = opencv
+	depends = libpng12
+	depends = desktop-file-utils
+	depends = xdg-utils
+	provides = vsxu
+	conflicts = vsxu
+	source = https://github.com/vovoid/vsxu/archive/v0.5.1.tar.gz
+	sha512sums = e77d8e7300a43ceeb59cf39771f0d8ac8930cebffb4d25305a9e245fd5e2d668e126267227c5334f999688307f8b22cf30183c495137f7490942d78581d0d4a6
+
+pkgname = vsxu
+
