@@ -1,5 +1,5 @@
 pkgbase = uncrustify0.60
-	pkgdesc = A source code beautifier
+	pkgdesc = A source code beautifier, version 0.60
 	pkgver = 0.60
 	pkgrel = 1
 	url = http://uncrustify.sourceforge.net/
@@ -7,8 +7,8 @@ pkgbase = uncrustify0.60
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
-	source = http://downloads.sourceforge.net/uncrustify0.60/uncrustify0.60-0.60.tar.gz
-	md5sums = 0467a60b7c6f108259e69a90120afd4a
+	source = https://github.com/bengardner/uncrustify/archive/uncrustify-0.60.tar.gz
+	md5sums = aa1c2f5d8ee0db959305f0d4a3e0a298
 
 pkgname = uncrustify0.60
 
