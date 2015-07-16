@@ -1,15 +1,15 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjs-git
-pkgver=r69.8d3db9e
+pkgver=r95.50a015d
 pkgrel=1
-pkgdesc='KJS'
-arch=('i686' 'x86_64')
+pkgdesc='Support for JS scripting in applications'
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kjs'
-license=('LGPL')
-depends=('qt5-base')
-makedepends=('extra-cmake-modules-git' 'git')
-groups=('kf5')
+license=(LGPL)
+depends=(qt5-base)
+makedepends=(extra-cmake-modules-git git)
+groups=(kf5-aids)
 conflicts=(kjs)
 provides=(kjs)
 source=('git://anongit.kde.org/kjs.git')
