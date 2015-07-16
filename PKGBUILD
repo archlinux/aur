@@ -22,7 +22,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$pkgname
 
