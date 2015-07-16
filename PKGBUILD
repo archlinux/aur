@@ -22,7 +22,7 @@ install=$pkgname.install
 source=("https://github.com/ArchipelProject/Archipel/zipball/@$_pkgver"
         "systemd.fix728.patch"
         "initinstall.patch")
-md5sums=('5e17b2f807ccfe6ed528587bbb28af6a'
+md5sums=('d54db88eddeba782b52a8f1a55709325'
          '806b4169371ba03f36e0ac21b76bd944'
          '5be3048be2978421705b65f3e04e7768')
 
