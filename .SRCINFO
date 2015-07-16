@@ -1,0 +1,15 @@
+pkgbase = python2-pyftdi-git
+	pkgdesc = PyFtdi aims at providing a user-space driver for modern FTDI devices, implemented in pure Python language.
+	pkgver = v0.10.0.r0.g47eef7a
+	pkgrel = 1
+	url = https://github.com/eblot/pyftdi
+	arch = any
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = git+https://github.com/eblot/pyftdi.git
+	sha256sums = SKIP
+
+pkgname = python2-pyftdi-git
+
