@@ -1,6 +1,6 @@
 pkgbase = fzf-extras
 	pkgdesc = Extra keybindings for fzf
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/atweiden/fzf-extras
 	install = fzf-extras.install
@@ -13,8 +13,8 @@ pkgbase = fzf-extras
 	optdepends = vim-fzf: fzf.vim
 	optdepends = xdg-utils: open files
 	optdepends = zsh: zsh keybindings
-	source = fzf-extras-0.0.6.tar.gz::https://codeload.github.com/atweiden/fzf-extras/tar.gz/0.0.6
-	sha256sums = 46c75689bc4b9501a6bfb88a29b69bcae15eeb529fdf5b04541f84b2087efa6e
+	source = fzf-extras-0.0.7.tar.gz::https://codeload.github.com/atweiden/fzf-extras/tar.gz/0.0.7
+	sha256sums = 1c09c73aefc1c6026e15003b9efd65593c1857fb1ad4a21abc7c57f53b95090d
 
 pkgname = fzf-extras
 
