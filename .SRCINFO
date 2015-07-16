@@ -1,7 +1,7 @@
 pkgbase = st-white
 	pkgdesc = A simple virtual terminal emulator for X.
 	pkgver = 0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://st.suckless.org
 	arch = i686
 	arch = x86_64
