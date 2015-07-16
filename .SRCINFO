@@ -1,0 +1,16 @@
+pkgbase = clevo-xsm-wmi-util
+	pkgdesc = A GUI control utility for the clevo-xsm-wmi driver.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://bitbucket.org/lynthium/clevo-xsm-wmi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = clevo-xsm-wmi
+	depends = qt5-base
+	options = !emptydirs
+	source = clevo-xsm-wmi-0.4.src.tar.gz::https://bitbucket.org/lynthium/clevo-xsm-wmi/get/v0.4.tar.gz
+	md5sums = 9a9b35fcf80113cf0b4a551bbf73ea59
+
+pkgname = clevo-xsm-wmi-util
+
