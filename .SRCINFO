@@ -1,14 +1,14 @@
 pkgbase = beast2
 	pkgdesc = Bayesian Evolutionary Analysis by Sampling Trees
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://www.beast2.org/
 	arch = any
 	license = GPL2
 	depends = bash
 	depends = java-runtime>=8
-	source = beast2-2.2.1.tar.gz::https://github.com/CompEvol/beast2/releases/download/v2.2.1/BEAST.v2.2.1.Linux.tgz
-	md5sums = 91f157b3bcdd8c7971d5ac364eb6c5ae
+	source = beast2-2.3.0.tar.gz::https://github.com/CompEvol/beast2/releases/download/v2.3.0/BEAST.v2.3.0.Linux.tgz
+	md5sums = 7d12227e44f2610ed7ea3798c01600ca
 
 pkgname = beast2
 
