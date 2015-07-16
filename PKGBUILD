@@ -1,4 +1,5 @@
-# Maintainer:  prettyvanilla <prettyvanilla@posteo.at>
+# AUR3 Maintainer:  prettyvanilla <prettyvanilla@posteo.at>
+# AUR4 Maintainer: firstbass	<brettrsears@gmail.com>
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 # Contributor: Themaister    <maister@archlinux.us>
 

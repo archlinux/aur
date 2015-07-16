@@ -8,6 +8,7 @@ pkgbase = dinothawr
 	arch = x86_64
 	arch = arm
 	arch = armv6h
+	arch = armv7h
 	license = custom
 	makedepends = git
 	depends = zlib
