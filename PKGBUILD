@@ -1,15 +1,15 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmediaplayer-git
-pkgver=r34.06ab59d
+pkgver=r78.9af2878
 pkgrel=1
-pkgdesc='KMediaPlayer'
-arch=('i686' 'x86_64')
+pkgdesc='Plugin interface for media player features'
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kmediaplayer'
-license=('LGPL')
-depends=('kparts-git')
-makedepends=('extra-cmake-modules-git' 'git')
-groups=('kf5')
+license=(LGPL)
+depends=(kparts-git)
+makedepends=(extra-cmake-modules-git git)
+groups=(kf5-aids)
 conflicts=(kmediaplayer)
 provides=(kmediaplayer)
 source=('git://anongit.kde.org/kmediaplayer.git')
