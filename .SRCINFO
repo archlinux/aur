@@ -1,13 +1,16 @@
 pkgbase = pcf-unifont
 	pkgdesc = Bitmap version of the GNU Unifont
-	pkgver = 7.0.06
+	pkgver = 8.0.01
 	pkgrel = 1
 	url = http://unifoundry.com/unifont.html
+	install = pcf-unifont.install
 	arch = any
 	license = GPL
-	noextract = unifont-7.0.06.pcf.gz
-	source = http://unifoundry.com/pub/unifont-7.0.06/font-builds/unifont-7.0.06.pcf.gz
-	md5sums = d7d0c102abff5174d217c2d5976e13b7
+	noextract = unifont-8.0.01.pcf.gz
+	source = http://unifoundry.com/pub/unifont-8.0.01/font-builds/unifont-8.0.01.pcf.gz
+	source = pcf-unifont.install
+	md5sums = 35b33e4859814e4ce363b7ccfad95886
+	md5sums = b66d07781191b1266dd775722be14cff
 
 pkgname = pcf-unifont
 

@@ -1,0 +1,12 @@
+post_upgrade() {
+  post_install
+}
+
+post_install() {
+  echo Creating an index of X font files...
+  FONT_DIR=/usr/share/fonts/misc
+  if [ -f /usr/bin/mkfontdir ] && [ -d $FONT_DIR ]; then
+    cd $FONT_DIR && mkfontdir
+  fi
+  echo "done."
+}
