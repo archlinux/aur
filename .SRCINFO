@@ -1,0 +1,16 @@
+pkgbase = gimp-webp-bzr
+	pkgdesc = A WebP plugin for Gimp. Allowing to export/import to this format.
+	pkgver = 0
+	pkgrel = 1
+	url = https://launchpad.net/gimp-webp
+	arch = i686
+	arch = x86_64
+	license = GNU GPL3
+	makedepends = bzr
+	depends = gimp
+	depends = libwebp
+	provides = gimp-webp
+	conflicts = gimp-webp
+
+pkgname = gimp-webp-bzr
+
