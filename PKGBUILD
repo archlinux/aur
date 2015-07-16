@@ -1,4 +1,5 @@
-# Maintainer: Vladimir Tsanev <tsachev@gmail.com>
+# Submitter: Vladimir Tsanev <tsachev@gmail.com>
+# Maintainer: Andrew Reed <reed.996@osu.edu>
 pkgname=python2-lz4
 pkgver=0.7.0
 pkgrel=1
