@@ -8,7 +8,7 @@ arch=(any)
 url="http://www.beast2.org/"
 license=('GPL2')
 depends=('bash' 'java-runtime>=8')
-source=($pkgname-$pkgver.tar.gz::https://github.com/CompEvol/beast2/releases/download/v$pkgver/BEAST.v$pkgver.Linux.tgz)
+source=("https://github.com/CompEvol/beast2/releases/download/v$pkgver/BEAST.v$pkgver.Linux.tgz")
 md5sums=('7d12227e44f2610ed7ea3798c01600ca')
 
 package() {
