@@ -12,7 +12,7 @@ options=(staticlibs !ccache)
 install=wine-staging.install
 
 # source=(http://prdownloads.sourceforge.net/wine/wine-${pkgver}.tar.bz2{,.sign}
-source=(http://prdownloads.sourceforge.net/wine/wine-${pkgver}.tar.bz2
+source=(http://ftp.winehq.org/pub/wine/source/1.7/wine-${pkgver}.tar.bz2
         "https://github.com/wine-compholio/wine-staging/archive/v${pkgver}.tar.gz"
         "30-win32-aliases.conf")
 
