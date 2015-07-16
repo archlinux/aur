@@ -2,7 +2,7 @@
 
 pkgname=locarna
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Global and Local Alignment of RNAs'
 arch=('i686' 'x86_64')
 url="http://www.bioinf.uni-freiburg.de/Software/LocARNA/"
@@ -34,10 +34,6 @@ package() {
   make DESTDIR=$pkgdir install
 
   # cleanup after dirty install ...
-  for perlscript in $pkgdir/usr/bin/*.pl ; do
-    mv $perlscript $pkgdir/usr/bin/$(basename $perlscript .pl)
-  done
-
   install -d $pkgdir/usr/lib/perl5
   mv $pkgdir/usr/lib/perl $pkgdir/usr/lib/perl5/vendor_perl
 
