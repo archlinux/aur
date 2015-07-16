@@ -1,14 +1,19 @@
 pkgbase = libressl
 	pkgdesc = FREE version of the SSL/TLS protocol forked from OpenSSL - HIGHLY EXPRIMENTAL ONLY
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://www.libressl.org/
 	arch = i686
 	arch = x86_64
 	license = custom:Openssl
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.0.tar.gz
+	depends = glibc
+	optdepends = ca-certificates
+	backup = etc/ssl/openssl.cnf
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.1.tar.gz
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.1.tar.gz.asc
 	source = libressl-dummy-rand-egd.patch
-	sha512sums = aee06cf98dfeda9ff68c0db5c36c4f00ae0d436fadccaf811ff6c5ba26ef9e0ff73afb9034b1e3bf2715938a420ed297beee5102442b3bf5d344647d33c04e02
+	sha512sums = 5c0ae6780717cc907b4a0aaffc018fa2608d5ed6f1ebae1d0c2bde7ed3f8c38511e93a82967c490adc8582512c06d6f26fb0fce7097298bbf587a83d1d591721
+	sha512sums = SKIP
 	sha512sums = 73ca8a924a23f874287503453d939ecffa40f05760cd539b4773f3f28687ee1f2fa463ca3f2cad4ac5f57a49f3b6a918c015c8829112c61cb3ea7b798c0d110b
 
 pkgname = libressl
