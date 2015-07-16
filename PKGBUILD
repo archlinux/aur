@@ -3,14 +3,14 @@
 
 pkgname=mpich
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
-arch="any"
-license="custom"
+arch=("any")
+license=("custom")
 depends=('python2' 'gcc-fortran' 'libxml2' 'openssh' 'numactl' 'pciutils')
 makedepends=('texlive-core' 'sowing')
-optdepends="java-environment"
+optdepends=("java-environment")
 install="${pkgname}.install"
 source=("http://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	    "mpich.profile")
