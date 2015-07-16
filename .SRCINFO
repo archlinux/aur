@@ -1,0 +1,15 @@
+pkgbase = wave-git
+	pkgdesc = A simple command that outputs a sampled sine wave to stdout. Can be used to play music.
+	pkgver = r35.932cbd5
+	pkgrel = 1
+	url = https://github.com/efferifick/wave
+	arch = i686
+	arch = x86_64
+	license = none
+	makedepends = git
+	depends = glibc
+	source = git://github.com/efferifick/wave
+	sha1sums = SKIP
+
+pkgname = wave-git
+
