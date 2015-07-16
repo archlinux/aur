@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 pkgname=php-codesniffer-drupal
-pkgver=8.x-2.3
+pkgver=8.x_2.3
 pkgrel=2
 pkgdesc='Drupal coding standard for PHP_CodeSniffer'
 arch=('any')
