@@ -16,16 +16,14 @@ sha256sums=('8a112ee710e5446f6c36e62345b2066f10639d500259db8c48bf1716caea06e6'
             '09b50960bff9848fbae0045f61a8bf081366f6658477584126f13534a23d596e')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver/
+  cd "$pkgname-$pkgver"
   patch -p0 < ../makefile-ldflags.patch
-  make || return 1
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/
-  install -Dm755 xcalib $pkgdir/usr/bin/xcalib
-
-  for i in README *.icc *.icm; do
-      install -Dm644 $i $pkgdir/usr/share/xcalib/$i
-  done
+  cd "$pkgname-$pkgver"
+  install -d "$pkgdir"/usr/{share/xcalib,bin}
+  install -m755 xcalib "$pkgdir"/usr/bin
+  install -m644 README *.icc *.icm "$pkgdir"/usr/share/xcalib/
 }
