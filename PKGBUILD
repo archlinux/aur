@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=highly-experimental-git
 pkgver=r29.9674a08
 pkgrel=1
