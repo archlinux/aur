@@ -1,0 +1,13 @@
+pkgbase = vim-easy-align
+	pkgdesc = A Vim alignment plugin
+	pkgver = 20150716
+	pkgrel = 1
+	url = https://github.com/junegunn/vim-easy-align
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+
+pkgname = vim-easy-align
+
