@@ -13,8 +13,8 @@ post_upgrade() {
 check_initramfs() {
     echo ">>> Updating module dependencies. Please wait ..."
 
-    _kernel_version_x32_full="4.0.7-2"
-    _kernel_version_x64_full="4.0.7-2"
+    _kernel_version_x32_full="4.1.2-2"
+    _kernel_version_x64_full="4.1.2-2"
 
     [[ $CARCH == "i686" ]] && _kernel_version_full=${_kernel_version_x32_full} || _kernel_version_full=${_kernel_version_x64_full}
 
