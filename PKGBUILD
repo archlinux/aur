@@ -1,7 +1,7 @@
 # Maintainer: qs9rx < that nick at enjoys döt it>
 # Contributor: Christoph Zeiler <rabyte*gmail> (the fitzquake PKGBUILD was a base)
 pkgname=quakespasm-svn
-pkgver=1234
+pkgver=1237
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music."
 arch=('i686' 'x86_64')
