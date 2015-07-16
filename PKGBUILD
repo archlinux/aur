@@ -2,16 +2,16 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-photos-bzr
-pkgver=r2758
+pkgver=r2788
 pkgrel=1
 pkgdesc='The Pantheon Photos Manager'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-photos'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('desktop-file-utils' 'granite-bzr' 'libgexiv2' 'libgphoto2' 'libraw'
-         'webkitgtk')
-makedepends=('bzr' 'vala')
+depends=('desktop-file-utils' 'libgexiv2' 'libgphoto2' 'libraw' 'webkitgtk'
+         'libgranite.so')
+makedepends=('bzr' 'granite-bzr' 'vala')
 provides=('pantheon-photos')
 conflicts=('pantheon-photos')
 install='pantheon-photos.install'
