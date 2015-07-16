@@ -1,0 +1,17 @@
+pkgbase = lcc-compiler
+	pkgdesc = A small and fast C compiler.
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://www.cs.princeton.edu/software/lcc/
+	install = lcc-compiler.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	source = ftp://ftp.cs.princeton.edu/pub/packages/lcc/lcc-4.2.tar.gz
+	md5sums = 2c4826936b4486f3b0445a2ddb6cd642
+	sha1sums = 40353f5dc66ac62cc27abe1e7ef09ad31be9168d
+	sha256sums = 05d3e2b2824b30e9860621de1568a0a0f2028182955c5fedd68474a7bcab5d00
+
+pkgname = lcc-compiler
+

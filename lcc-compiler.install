@@ -1,0 +1,9 @@
+post_install() {
+  echo "==> Warning: Package should be rebuilt after gcc is upgraded."
+  echo "==> Warning: rcc renamed to lcc-rcc to avoid a conflict with qtchooser."
+}
+
+post_upgrade() {
+  post_install
+}
+
