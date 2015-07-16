@@ -1,0 +1,12 @@
+pkgbase = vim-vinegar
+	pkgdesc = A Vim plugin that enhances netrw
+	pkgver = 20150716
+	pkgrel = 1
+	url = https://github.com/tpope/vim-vinegar
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+
+pkgname = vim-vinegar
+
