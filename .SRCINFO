@@ -1,0 +1,17 @@
+pkgbase = glfw2
+	pkgdesc = A free, open source, portable framework for OpenGL application development (LEGACY 2.x)
+	pkgver = 2.7.9
+	pkgrel = 2
+	url = http://www.glfw.org/
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = mesa
+	depends = libgl
+	depends = libxrandr
+	depends = glu
+	source = http://downloads.sourceforge.net/sourceforge/glfw/glfw-2.7.9.tar.bz2
+	sha512sums = 78f36d85734bc6689bd51f6af96f4f1773a57c62e7b1ff7ac9b88f4c3c6915685cb967350c2eaf94179df0db14973d543498aa490d6f9d6a9d4eddd5d1771201
+
+pkgname = glfw2
+
