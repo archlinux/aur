@@ -5,7 +5,7 @@
 _pkgbase=freeglut
 pkgname=lib32-${_pkgbase}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides functionality for small OpenGL programs. (32-bit)"
 arch=('x86_64')
 url="http://freeglut.sourceforge.net/"
@@ -34,4 +34,6 @@ package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/"{bin,include,share}
+  mkdir -p "${pkgdir}/usr/share/licenses"
+  ln -s ${_pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
 }
