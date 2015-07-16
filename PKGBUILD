@@ -28,7 +28,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	
-	 ./configure --qmake-path qmake-qt5 --prefix "${pkgdir}/usr"
+	 ./configure --prefix "${pkgdir}/usr"
 	 make
 	
 }
