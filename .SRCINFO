@@ -1,0 +1,28 @@
+pkgbase = cataclysm-dda-git
+	pkgdesc = Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world. Both SDL tiles and ascii version included.
+	pkgver = 0.A.7768.g6fb2244
+	pkgrel = 1
+	url = http://www.cataclysmdda.com/
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-sa
+	makedepends = git
+	makedepends = gettext
+	depends = ncurses
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = bzip2
+	optdepends = lua51
+	conflicts = cataclysm-dda,
+	conflicts = cataclysm-dda-ncurses
+	source = cataclysm-dda-git::git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master
+	md5sums = SKIP
+
+pkgname = cataclysm-dda-git
+
