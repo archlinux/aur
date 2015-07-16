@@ -2,15 +2,16 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=footnote-bzr
-pkgver=r339
+pkgver=r340
 pkgrel=1
 pkgdesc='Take note in elementary style'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/footnote'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('granite-bzr' 'sqlheavy')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('sqlheavy'
+         'libgranite.so')
+makedepends=('bzr' 'cmake' 'granite-bzr' 'vala')
 provides=('footnote')
 conflicts=('footnote')
 install='footnote.install'
