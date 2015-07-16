@@ -1,0 +1,21 @@
+pkgbase = st-white-git
+	pkgdesc = A simple virtual terminal emulator for X.
+	pkgver = 0.6.r13.gd032b61
+	pkgrel = 1
+	url = http://st.suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = git://git.suckless.org/st
+	source = config.h
+	md5sums = SKIP
+	md5sums = 63512eae3f0018abdaa5b39bb01c0900
+
+pkgname = st-white-git
+
