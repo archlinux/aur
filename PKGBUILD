@@ -3,7 +3,7 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 
 _gitver="archlinux/${pkgver}-${pkgrel}"
@@ -92,7 +92,7 @@ package() {
 	ln -s ../../../../etc/unvanquished/maprotation.cfg .
 }
 
-md5sums=('693e2f70e9ff59df60be5970dad385b5'
+md5sums=('2364a818a1cd0e3802ace010f09d0645'
          'a5246cf3bed53798ddc4d95c6b8c1b37')
 if test "$CARCH" == "x86_64"; then
 	md5sums+=('9f73b3b0b4536b022be5d3e218b48ea1')
