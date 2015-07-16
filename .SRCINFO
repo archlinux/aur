@@ -1,7 +1,7 @@
 pkgbase = nvidia-mainline
 	pkgdesc = NVIDIA drivers for linux-mainline
 	pkgver = 352.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = nvidia-mainline
 	depends = nvidia-libgl
 	depends = nvidia-utils=352.21
 	options = !strip
+	source = nvidia-4.2.patch
+	sha256sums = 863a43c374eb00678bf8a16b60bb941c63a21b98d7ab4d13e217771e4296589c
 
 pkgname = nvidia-mainline
 
