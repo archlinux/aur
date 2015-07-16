@@ -1,4 +1,4 @@
-From ebcacf05168d9791d39c5434164c64b9ef937171 Mon Sep 17 00:00:00 2001
+From ebff6d5c91195d37e33b7bbfb36c6cc0119aa06f Mon Sep 17 00:00:00 2001
 From: Ming Lei <ming.lei@canonical.com>
 Date: Tue, 5 May 2015 19:49:54 +0800
 Subject: [PATCH 1/2] block: loop: convert to per-device workqueue
@@ -23,19 +23,19 @@ Signed-off-by: Jens Axboe <axboe@fb.com>
  2 files changed, 15 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/block/loop.c b/drivers/block/loop.c
-index d1f168b..fec06d5 100644
+index d7173cb..9786aa3 100644
 --- a/drivers/block/loop.c
 +++ b/drivers/block/loop.c
-@@ -85,8 +85,6 @@ static DEFINE_MUTEX(loop_index_mutex);
+@@ -86,8 +86,6 @@ static DEFINE_MUTEX(loop_index_mutex);
  static int max_part;
  static int part_shift;
  
 -static struct workqueue_struct *loop_wq;
 -
- /*
-  * Transfer functions
-  */
-@@ -777,6 +775,12 @@ static int loop_set_fd(struct loop_device *lo, fmode_t mode,
+ static int transfer_xor(struct loop_device *lo, int cmd,
+ 			struct page *raw_page, unsigned raw_off,
+ 			struct page *loop_page, unsigned loop_off,
+@@ -725,6 +723,12 @@ static int loop_set_fd(struct loop_device *lo, fmode_t mode,
  	size = get_loop_size(lo, file);
  	if ((loff_t)(sector_t)size != size)
  		goto out_putf;
@@ -48,7 +48,7 @@ index d1f168b..fec06d5 100644
  
  	error = 0;
  
-@@ -924,6 +928,8 @@ static int loop_clr_fd(struct loop_device *lo)
+@@ -872,6 +876,8 @@ static int loop_clr_fd(struct loop_device *lo)
  	lo->lo_flags = 0;
  	if (!part_shift)
  		lo->lo_disk->flags |= GENHD_FL_NO_PART_SCAN;
@@ -57,7 +57,7 @@ index d1f168b..fec06d5 100644
  	mutex_unlock(&lo->lo_ctl_mutex);
  	/*
  	 * Need not hold lo_ctl_mutex to fput backing file.
-@@ -1477,9 +1483,13 @@ static int loop_queue_rq(struct blk_mq_hw_ctx *hctx,
+@@ -1425,9 +1431,13 @@ static int loop_queue_rq(struct blk_mq_hw_ctx *hctx,
  		const struct blk_mq_queue_data *bd)
  {
  	struct loop_cmd *cmd = blk_mq_rq_to_pdu(bd->rq);
@@ -71,7 +71,7 @@ index d1f168b..fec06d5 100644
  	if (cmd->rq->cmd_flags & REQ_WRITE) {
  		struct loop_device *lo = cmd->rq->q->queuedata;
  		bool need_sched = true;
-@@ -1493,9 +1503,9 @@ static int loop_queue_rq(struct blk_mq_hw_ctx *hctx,
+@@ -1441,9 +1451,9 @@ static int loop_queue_rq(struct blk_mq_hw_ctx *hctx,
  		spin_unlock_irq(&lo->lo_lock);
  
  		if (need_sched)
@@ -83,7 +83,7 @@ index d1f168b..fec06d5 100644
  	}
  
  	return BLK_MQ_RQ_QUEUE_OK;
-@@ -1507,9 +1517,6 @@ static void loop_handle_cmd(struct loop_cmd *cmd)
+@@ -1455,9 +1465,6 @@ static void loop_handle_cmd(struct loop_cmd *cmd)
  	struct loop_device *lo = cmd->rq->q->queuedata;
  	int ret = -EIO;
  
@@ -93,7 +93,7 @@ index d1f168b..fec06d5 100644
  	if (write && (lo->lo_flags & LO_FLAGS_READ_ONLY))
  		goto failed;
  
-@@ -1858,13 +1865,6 @@ static int __init loop_init(void)
+@@ -1806,13 +1813,6 @@ static int __init loop_init(void)
  		goto misc_out;
  	}
  
@@ -107,7 +107,7 @@ index d1f168b..fec06d5 100644
  	blk_register_region(MKDEV(LOOP_MAJOR, 0), range,
  				  THIS_MODULE, loop_probe, NULL, NULL);
  
-@@ -1902,8 +1902,6 @@ static void __exit loop_exit(void)
+@@ -1850,8 +1850,6 @@ static void __exit loop_exit(void)
  	blk_unregister_region(MKDEV(LOOP_MAJOR, 0), range);
  	unregister_blkdev(LOOP_MAJOR, "loop");
  
