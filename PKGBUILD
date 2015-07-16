@@ -25,7 +25,7 @@ md5sums=('319c85a9b3e282749b53df07fda2cb94'
          '4d54057ca75b691366977dab2277e869'
          'b2a9fa7a855645ba5e1ea2ea555cce25')
 
-DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 package() {
 #package_jdk-docs() {
