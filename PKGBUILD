@@ -1,15 +1,15 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=khtml-git
-pkgver=r157.cd43a79
+pkgver=r233.093c96c
 pkgrel=1
 pkgdesc='KHtml'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/khtml'
-license=('LGPL')
-depends=('kparts-git' 'kjs-git' 'giflib')
-makedepends=('extra-cmake-modules-git' 'git')
-groups=('kf5')
+license=(LGPL)
+depends=(kparts-git kjs-git giflib)
+makedepends=(extra-cmake-modules-git git)
+groups=(kf5-aids)
 conflicts=(khtml)
 provides=(khtml)
 source=('git://anongit.kde.org/khtml.git')

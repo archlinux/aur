@@ -1,11 +1,11 @@
 pkgbase = khtml-git
 	pkgdesc = KHtml
-	pkgver = r157.cd43a79
+	pkgver = r233.093c96c
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/khtml
 	arch = i686
 	arch = x86_64
-	groups = kf5
+	groups = kf5-aids
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
