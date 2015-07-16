@@ -1,0 +1,13 @@
+pkgbase = phploc
+	pkgdesc = A tool for quickly measuring the size of a PHP project
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/sebastianbergmann/phploc
+	arch = any
+	license = BSD
+	depends = php
+	source = https://phar.phpunit.de/phploc-2.1.3.phar
+	md5sums = 4304b744b31f44d5f476b2654caaade5
+
+pkgname = phploc
+
