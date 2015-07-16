@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -D -m 755 bmx6 ${pkgdir}/usr/sbin/bmx6
+  install -D -m 755 bmx6 ${pkgdir}/usr/bin/bmx6
   install -D -m 755 lib/bmx6_json/bmx6_json.so ${pkgdir}/usr/lib/bmx6_json.so
   install -D -m 755 lib/bmx6_sms/bmx6_sms.so ${pkgdir}/usr/lib/bmx6_sms.so
   install -D -m 755 lib/bmx6_table/bmx6_table.so ${pkgdir}/usr/lib/bmx6_table.so
