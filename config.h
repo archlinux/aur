@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Liberation Mono:pixelsize=11:antialias=true:autohint=true";
+static char font[] = "Liberation Mono:size=9pt:antialias=true:autohint=true";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 static char *utmp = NULL;
@@ -23,7 +23,7 @@ static float chscale = 1.0;
  *
  * More advanced example: " `'\"()[]{}"
  */
-static char worddelimiters[] = " ";
+static char worddelimiters[] = " '`\"()[]{}<>|";
 
 /* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
@@ -69,10 +69,10 @@ static const char *colorname[] = {
 	"blue3",
 	"magenta3",
 	"DeepSkyBlue2",
-	"grey90",
+	"gray90",
 
 	/* 8 bright colors */
-	"grey30",
+	"gray30",
 	"HotPink1",
 	"green1",
 	"yellow1",
@@ -101,7 +101,7 @@ static const char *colorname[] = {
  */
 static unsigned int defaultfg = 0;
 static unsigned int defaultbg = 15;
-static unsigned int defaultcs = 256;
+static unsigned int defaultcs = 21;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
