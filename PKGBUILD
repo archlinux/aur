@@ -15,6 +15,6 @@ package() {
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/share/webapps/bin/pdepend.phar "${pkgdir}/usr/bin/pdepend"
 
-	echo
+  echo
   echo "Warning: bz2.so must be enabled in your php.ini"
 }
