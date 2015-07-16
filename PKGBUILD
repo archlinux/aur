@@ -2,7 +2,7 @@
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
 url="http://ugene.unipro.ru/"
@@ -28,17 +28,3 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
 }
 
-post_install() {
-  update-mime-database usr/share/mime
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  update-mime-database usr/share/mime
-  update-desktop-database -q
-}
-
-post_remove() {
-  update-mime-database usr/share/mime
-  update-desktop-database -q
-}
