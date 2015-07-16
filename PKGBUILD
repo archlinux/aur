@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url='https://launchpad.net/eidete'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('granite-bzr' 'gst-plugins-base-libs' 'libwnck3')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('gst-plugins-base-libs' 'libwnck3'
+         'libgranite.so')
+makedepends=('bzr' 'cmake' 'granite-bzr' 'vala')
 provides=('eidete')
 conflicts=('eidete')
 install='eidete.install'
@@ -32,8 +33,8 @@ build() {
   mkdir build && cd build
 
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_EXE_LINKER_FLAGS='-lX11'
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
