@@ -1,7 +1,7 @@
-# Maintainer: Austin Haedicke <irc.freenode.net / github:  gtbjj>
+# Maintainer: Austin Haedicke
 
-# If you find errors or have suggestions please contact me
-# via IRC PM or submit a pull request on github.
+# If you find errors or have suggestions feel free to file an issue
+# or submit a pull request @ https://github.com/gtbjj/pkgbuild
 
 pkgname=cmus-git
 pkgver=v2.7.0.r2.gc22b5bd
