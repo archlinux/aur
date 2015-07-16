@@ -1,0 +1,14 @@
+pkgbase = python-picamera
+	pkgdesc = A pure Python interface to the Raspberry Pi camera module
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/picamera/1.10
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/p/picamera/picamera-1.10.tar.gz
+	sha256sums = f0dfc3a6983f63da2ff7cbefeedcacb8c98cc41ad651e55148e8f798940ca73d
+
+pkgname = python-picamera
+
