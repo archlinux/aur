@@ -4,7 +4,7 @@
 pkgname=st-white
 _pkgname=st
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -34,3 +34,7 @@ md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
          'f610e4f0b387ea72d4ec00517cf3e25f')
 md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
          '4a761074f7f19b487ebd0d2a9aadc64e')
+md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
+         '625038eae74decdfb513ef93813a589b')
+md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
+         'd4b84a4fb1166ff5521eeb456c8af751')
