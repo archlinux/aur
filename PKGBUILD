@@ -1,15 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calculator-bzr
-pkgver=r132
+pkgver=r151
 pkgrel=1
 pkgdesc='The Pantheon Calculator'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-calculator'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('granite-bzr')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('libgranite.so')
+makedepends=('bzr' 'cmake' 'granite-bzr' 'vala')
 provides=('pantheon-calculator')
 conflicts=('pantheon-calculator')
 install='pantheon-calculator.install'
