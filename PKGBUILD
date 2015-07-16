@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url="http://fanglingsu.github.io/vimb"
 license=('GPL3')
 depends=('webkitgtk2')
+provides=('vimb')
 conflicts=('vimb')
-source=('git://github.com/fanglingsu/vimb.git')
+source=('git+https://github.com/fanglingsu/vimb.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,3 +29,4 @@ package() {
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
+# vim:set ts=2 sw=2 et:

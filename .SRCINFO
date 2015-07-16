@@ -7,8 +7,9 @@ pkgbase = vimb-git
 	arch = x86_64
 	license = GPL3
 	depends = webkitgtk2
+	provides = vimb
 	conflicts = vimb
-	source = git://github.com/fanglingsu/vimb.git
+	source = git+https://github.com/fanglingsu/vimb.git
 	md5sums = SKIP
 
 pkgname = vimb-git
