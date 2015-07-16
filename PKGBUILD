@@ -1,8 +1,9 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 #Contributor: Alexandre Minoshi (Almin-Soft Group)
+
 pkgname=pacmanxg
 pkgver=4.16.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another GUI for pacman and yaourt. Depends on neither GTK or Qt: only X11"
 arch=('i686' 'x86_64')
 url="http://almin-soft.ru/index.php?programmy/pacmanxg/tags/pacmanxg"
@@ -12,7 +13,7 @@ optdepends=(
   'yaourt: AUR support' 
   'lib32-libxft: anti-aliasing fix for x64' 
   'pkgfile: for searching file(s) from packages' 
-  'scrot: for making screenshots' 
+  'scrot: for making screenshots'
 )
 options=('!strip')
 install=${pkgname}.install
@@ -33,6 +34,7 @@ package() {
   install -Dm755 dizz.sh "${pkgdir}/opt/Almin-Soft/pacmanxg/dizz.sh"
   install -Dm755 repacman "${pkgdir}/opt/Almin-Soft/pacmanxg/repacman"
 
+  # Localization files.
   install -Dm755 langs/de.lang "${pkgdir}/opt/Almin-Soft/pacmanxg/langs/de.lang"
   install -Dm755 langs/en.lang "${pkgdir}/opt/Almin-Soft/pacmanxg/langs/en.lang"
   install -Dm755 langs/es.lang "${pkgdir}/opt/Almin-Soft/pacmanxg/langs/es.lang"
@@ -44,12 +46,14 @@ package() {
   install -Dm755 langs/ca.lang "${pkgdir}/opt/Almin-Soft/pacmanxg/langs/ca.lang"
   install -Dm755 langs/pt-br.lang "${pkgdir}/opt/Almin-Soft/pacmanxg/langs/pt-br.lang"
 
+  # Themes.
   install -Dm775 "themes/dusk (Chakra)" "${pkgdir}/opt/Almin-Soft/themes/dusk (Chakra)"
   install -Dm775 "themes/Graybird-like (Bridge)" "${pkgdi}r/opt/Almin-Soft/themes/Graybird-like (Bridge)"
   install -Dm775 "themes/Menda-like (Manjaro 0.10)" "${pkgdir}/opt/Almin-Soft/themes/Menda-like (Manjaro 0.10)"
   install -Dm775 "themes/Munix Frost Light (Antergos)" "${pkgdir}/opt/Almin-Soft/themes/Munix Frost Light (Antergos)"
   install -Dm775 "themes/Oxigen-like (Netrunner)" "${pkgdir}/opt/Almin-Soft/themes/Oxigen-like (Netrunner)"
 
+  # Application launcher.
   install -Dm644 pacmanxg.png "${pkgdir}/usr/share/pixmaps/pacmanxg.png"
   install -Dm644 pacmanxg.desktop "${pkgdir}/usr/share/applications/pacmanxg.desktop"
   install -d "${srcdir}/usr/bin/"
