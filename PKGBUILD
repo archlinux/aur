@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Contributor: Joris Steyn <jorissteyn@gmail.com>
 pkgname=phploc
 pkgver=2.1.3
 pkgrel=1
