@@ -1,0 +1,53 @@
+pkgbase = slim-git
+	pkgver = 1.3.6.4.ga33d260
+	pkgrel = 1
+	url = http://developer.berlios.de/projects/slim/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = pam
+	makedepends = libxmu
+	makedepends = libpng
+	makedepends = libjpeg
+	makedepends = libxft
+	makedepends = libxrandr
+	source = git+https://github.com/WorMzy/slim.git
+	source = slimlock-git.install
+	source = slim.conf
+	source = http://downloads.sourceforge.net/project/slim.berlios/slim-archlinux-simple.tar.gz
+	source = slim.pam
+	source = slim.logrotate
+	md5sums = SKIP
+	md5sums = 40af4379e8b17203414356edbf57469f
+	md5sums = 3f75d2a7a85c08a41b2f75eeb548cd87
+	md5sums = 7c7aaa255561444a4ae3e9f1dfb4be5d
+	md5sums = 294bc95c215ed04151d02fa90e2bd387
+	md5sums = 43da096480bf72c3ccec8ad8400f34f0
+
+pkgname = slim-git
+	pkgdesc = Desktop-independent graphical login manager for X11 (git)
+	depends = pam
+	depends = libxmu
+	depends = libpng
+	depends = libjpeg
+	depends = libxft
+	depends = libxrandr
+	provides = slim
+	conflicts = slim
+	backup = etc/slim.conf
+	backup = etc/logrotate.d/slim
+	backup = etc/pam.d/slim
+
+pkgname = slimlock-git
+	pkgdesc = Stand-alone lightweight themable screen locker based on SLiM (git)
+	depends = libxft
+	depends = pam
+	depends = libxrandr
+	depends = libpng
+	depends = libjpeg
+	conflicts = slimlock
+	conflicts = slim>=1.3.6
+	backup = etc/slimlock.conf
+
