@@ -1,20 +1,23 @@
 pkgbase = shadowsocks-libev
-	pkgdesc = A lightweight secured socks5 proxy for embedded devices and low end boxes.
+	pkgdesc = A lightweight secured scoks5 proxy for embedded devices and low end boxes
 	pkgver = 2.2.2
-	pkgrel = 1
-	url = http://github.com/shadowsocks/shadowsocks-libev
+	pkgrel = 2
+	url = https://github.com/shadowsocks/shadowsocks-libev
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
-	makedepends = git
 	makedepends = make
-	depends = libev
+	makedepends = autoconf
+	makedepends = automake
 	depends = openssl
-	provides = shadowsocks-libev
-	conflicts = shadowsocks-libev
+	depends = libev
 	source = https://github.com/shadowsocks/shadowsocks-libev/archive/v2.2.2.tar.gz
-	sha1sums = 05185c3ed15003ef8644bbe4a39edcf079bb7198
+	source = shadowsocks-libev@.service
+	source = shadowsocks-libev-server@.service
+	sha512sums = 0d83a506e2ab95aa8ba1d1815d2e0a8213b96a901cf5e8939c00900167af96ae6045071f39fc07ac7daba328bc2eb1e89b0286e1e98744a8750916ec81b47f27
+	sha512sums = 96e5c9ba04a8d45fa57728aeb5282cf25fce42baf2c2221c5040cced89196b25d2c212472ba9b3f53bdce93ad1edd5f06e42ec62ef212764349c1dab24dde16a
+	sha512sums = 73925959731b7ab6e2b3900662f4b67a9986b798b1a4a943307c87574c9069e32a0c2298cf6e9adb895fe71316a3bac09cb684c54e8a1350566b2fe7526c1cff
 
 pkgname = shadowsocks-libev
 
