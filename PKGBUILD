@@ -2,8 +2,9 @@
 pkgbase=python-pygal
 pkgname=('python-pygal' 'python2-pygal')
 _pyname=pygal
+epoch=1
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python SVG graph plotting library'
 arch=('any')
 url='http://pygal.org/'
