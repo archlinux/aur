@@ -1,14 +1,9 @@
 post_install() {
 cat << EOM
-
-==> There are two configuration files samples: /etc/pommed.conf.{pmac,mactel},
-==> use them as base for your /etc/pommmed.conf
-
-==> To run the pommed daemon at startup:
+==> To run the pommed at startup:
 ==> # systemctl enable pommed.service
 
 ==> To run pommed now:
 ==> # systemctl start pommed.service
-
 EOM
 }

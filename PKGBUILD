@@ -1,60 +1,56 @@
-# Maintainer: tjbp
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: tjbp
 # Contributor: jalaziz <me jalaziz net>
 # Contributor: dryes <joswiseman gmail com>
 # Contributor: Corrado Primier <ilbardo gmail com>
 # Contributor: Other contributors existed but lost information
 # Contributor: dpevp <daniel.plaza.espi gmail com>
 # Contributor: jordi Cerdan (jcerdan) <jcerdan tecob com>
-pkgname='pommed-jalaziz'
-pkgver=20121127
-pkgrel=2
-pkgdesc='Handles the hotkeys, LCD backlight, volume and keyboard backlight of various Apple laptops. Includes support for 2012 models and systemd.'
-url='http://technologeek.org/projects/pommed'
+
+_pkgname=pommed
+pkgname="$_pkgname-jalaziz"
+pkgver=1.40.r7.g243f0f2
+pkgrel=1
+pkgdesc='Hotkey handler for Apple laptops for LCD/keyboard backlight, sound volume, and disc ejection, with systemd and 2012 model support.'
+url="http://$_pkgname.alioth.debian.org"
 arch=('i686' 'x86_64')
 license=('GPL2')
-install='pommed.install'
+install="$_pkgname.install"
 depends=('alsa-lib' 'audiofile' 'confuse' 'dbus-core' 'pciutils')
-optdepends=('eject')
-provides=('pommed')
-conflicts=('pommed')
+optdepends=('eject: to handle ejecting media from optical disc drive')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 makedepends=('git')
-source=('pommed.service')
-md5sums=('fd5be6c0aa9ac4a0b1b628a23361b4cf')
-
-_gitroot='git://github.com/jalaziz/pommed.git'
-_gitname='pommed'
+source=(
+  "$_pkgname"::"git+https://github.com/jamesan/$_pkgname.git"
+  "$_pkgname.service"
+)
+md5sums=('SKIP'
+         '2f4742c76b489ddad3897c0199256933')
 
 build() {
-  cd "${srcdir}"
-  msg 'Connecting to GIT server....'
-
-  if [ -d "${_gitname}" ] ; then
-    cd "${_gitname}" && git pull origin
-    msg 'The local files are updated.'
-  else
-    git clone "${_gitroot}" "${_gitname}"
-  fi
-
-  msg 'GIT checkout done or server timeout'
-  
-  cd "${srcdir}/${_gitname}"
-
-  make pommed
+  cd "$_pkgname"
+  make "$_pkgname"
+  gzip --force --best "$_pkgname.1"
 }
 
 package() {
-  install -Dm755 "${srcdir}/${_gitname}/pommed/pommed" "${pkgdir}/usr/bin/pommed"
-  install -Dm644 "${srcdir}/${_gitname}/pommed.conf.mactel" "${pkgdir}/etc/pommed.conf.mactel"
-  install -Dm644 "${srcdir}/${_gitname}/pommed.conf.pmac" "${pkgdir}/etc/pommed.conf.pmac"
-  install -Dm644 "${srcdir}/${_gitname}/dbus-policy.conf" "${pkgdir}/etc/dbus-1/system.d/pommed.conf"
+  cd "$_pkgname"
 
-  # Man page
-  install -Dm644 "${srcdir}/${_gitname}/pommed.1" "${pkgdir}/usr/share/man/man1/pommed.1"
+  install -Dm755 "$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$_pkgname.conf.mactel" "$pkgdir/etc/$_pkgname.conf"
+  install -Dm644 "dbus-policy.conf" "$pkgdir/etc/dbus-1/system.d/$_pkgname.conf"
+
+  # Documentation
+  install -Dm644 "$_pkgname.1.gz" "$pkgdir/usr/share/man/man1/$_pkgname.1.gz"
+  for file in AUTHORS ChangeLog README TODO; do
+    install -Dm644 $file "$pkgdir/usr/share/doc/$_pkgname/$file"
+  done
 
   # Sounds
-  install -Dm644 "${srcdir}/${_gitname}/pommed/data/goutte.wav" "${pkgdir}/usr/share/pommed/goutte.wav"
-  install -Dm644 "${srcdir}/${_gitname}/pommed/data/click.wav" "${pkgdir}/usr/share/pommed/click.wav"
+  install -Dm644 "$_pkgname/data/goutte.wav" "$pkgdir/usr/share/$_pkgname/goutte.wav"
+  install -Dm644 "$_pkgname/data/click.wav" "$pkgdir/usr/share/$_pkgname/click.wav"
 
   # Systemd
-  install -Dm644 ${srcdir}/pommed.service ${pkgdir}/usr/lib/systemd/system/pommed.service
+  install -Dm644 "../$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
 }

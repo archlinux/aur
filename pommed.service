@@ -1,10 +1,9 @@
 [Unit]
-Description=Pommed Apple Hotkeys Daemon
+Description=Apple laptops hotkeys events handler
+Documentation=man:pommed(1)
 
 [Service]
-User=root
 ExecStart=/usr/bin/pommed -f
 
 [Install]
 WantedBy=multi-user.target
-
