@@ -7,6 +7,7 @@ pkgdesc="A tool to convert unencrypted block devices to encrypted LUKS devices i
 arch=(any)
 url="http://www.johannes-bauer.com/linux/luksipc"
 license=('GPL3')
+conflicts=('luksipc')
 source=(git+https://github.com/johndoe31415/luksipc.git)
 md5sums=('SKIP')
 
