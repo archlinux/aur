@@ -19,7 +19,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/driver"
+  cd "$srcdir/driver"
 
   # make sure we build for the installed kernel, not the booted one
   _ver=$(pacman -Q linux | cut -d " " -f 2)
@@ -28,13 +28,13 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/driver"
-	ROOT_PATH="$srcdir/driver" make all
+  cd "$srcdir/driver"
+  ROOT_PATH="$srcdir/driver" make all
 }
 
 package() {
-	cd "$srcdir/driver"
-	ROOT_PATH="$srcdir/driver" make INSTALL_MOD_PATH="$pkgdir/usr" install
+  cd "$srcdir/driver"
+  ROOT_PATH="$srcdir/driver" make INSTALL_MOD_PATH="$pkgdir/usr" install
 
   # fix .install file
   sed -i "s:KERNEL=.*:KERNEL=${_kernel}:" "${startdir}/comodo-modules.install"
