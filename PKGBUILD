@@ -19,7 +19,7 @@ source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demo
 md5sums_i686=('7949b6d6d79c900b3e22e264be6e6574')
 md5sums_x86_64=('cbb1fc0a43bd42bc48f86daf7c79368f')
 
-DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 package() {
   cd jdk1.$_major.0_$_minor
