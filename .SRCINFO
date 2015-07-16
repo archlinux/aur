@@ -1,0 +1,13 @@
+pkgbase = pdepend
+	pkgdesc = A tool for PHP software metrics
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://pdepend.org/
+	arch = any
+	license = GPLv3
+	depends = php
+	source = http://static.pdepend.org/php/2.1.0/pdepend.phar
+	md5sums = a865a41bc90c8ad121f6055e633f9442
+
+pkgname = pdepend
+
