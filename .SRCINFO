@@ -1,0 +1,20 @@
+pkgbase = dinothawr
+	pkgdesc = Block pushing puzzle game on slippery surfaces. Free your dinosaur friends from their ice prison. Needs a libretro frontend to play.
+	pkgver = 409.b6a4503
+	pkgrel = 1
+	url = https://github.com/libretro/Dinothawr
+	install = dinothawr.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = custom
+	makedepends = git
+	depends = zlib
+	source = git+https://github.com/libretro/Dinothawr.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/dinothawr_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = dinothawr
+
