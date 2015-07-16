@@ -1,20 +1,19 @@
 pkgbase = wiggletools
 	pkgdesc = basic operations on the space of numerical functions defined on the genome using lazy evaluators for flexibility and efficiency
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Ensembl/WiggleTools
 	arch = i686
 	arch = x86_64
 	license = Apache
-	checkdepends = python2
 	makedepends = git
 	makedepends = libmariadbclient
 	makedepends = libpng
 	makedepends = unzip
 	depends = gsl
-	depends = openssl
-	source = wiggletools-1.0.tar.gz::https://github.com/Ensembl/WiggleTools/archive/v1.0.tar.gz
-	md5sums = 151aa1ccfaacd77183bf2ac053ee18a0
+	depends = python2
+	source = wiggletools-1.1.tar.gz::https://github.com/Ensembl/WiggleTools/archive/v1.1.tar.gz
+	md5sums = 7b7052b755415936324d7919756bd070
 
 pkgname = wiggletools
 
