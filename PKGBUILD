@@ -3,7 +3,7 @@
 
 pkgname=mpich
 pkgver=3.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
 arch=("any")

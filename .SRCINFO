@@ -1,7 +1,7 @@
 pkgbase = mpich
 	pkgdesc = An improved implementation of the Message Passing Interface.
 	pkgver = 3.1.4
-	pkgrel = 2
+	pkgrel = 4
 	url = https://mpich.org
 	install = mpich.install
 	arch = any
