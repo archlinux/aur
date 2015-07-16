@@ -1,30 +1,36 @@
-# Contributor: Brian Bidulock <bidulock@openss7.org>
-# Contributor: speps <speps at aur dot archlinux dot org>
+# Maintainer: speps <speps at aur dot archlinux dot org>
 
 pkgname=piedock
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.6.3
+pkgrel=2
 pkgdesc="A task bar and application launcher in shape of a circular pie menu."
 arch=(i686 x86_64)
 url="http://www.markusfisch.de/"
 license=('custom:MIT')
-depends=('libpng' 'libxft' 'libxmu')
+depends=('libxft' 'libxmu')
 optdepends=('gnome-icon-theme: default icons')
 install="$pkgname.install"
 source=("${url}downloads/$pkgname-$pkgver.tar.bz2"
-        "$pkgname.desktop")
-md5sums=('ffb2b647ed2b4246d2d9cb072b9b5dcf'
-         '3dc3675e073fd1172249e9f42f18f3cf')
+        "$pkgname.desktop"
+        "$pkgname-libpng16.patch")
+sha256sums=('252e58bb36122e09aafbd9297b2d17054e60d548d21fb548e53317ca03180be9'
+         '3b1b6e248eecf4591eb0502e914a79e2449e405655fe1f54c8f593b1b6cbcfe4'
+         '9e86635ba37a77d0e1e1814b3cd6dd86be7c30a4b1f1888f50688d0eafadc370')
+
+prepare() {
+  cd $pkgname-$pkgver
+  # libpng 1.6 support
+  patch -p0 < ../piedock-libpng16.patch
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/^$/#include <unistd.h>/;t' src/Application.cpp
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
 
   # configuration file
