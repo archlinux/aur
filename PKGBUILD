@@ -4,10 +4,10 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
-_srcname=linux-4.0
-pkgver=4.0.7
+_srcname=linux-4.1
+pkgver=4.1.2
 pkgrel=1
-_toipatch=tuxonice-for-linux-4.0.5-2015-06-17.patch
+_toipatch=tuxonice-for-linux-head-4.1.0-2015-06-26.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,25 +21,31 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'linux.install'
         '0001-block-loop-convert-to-per-device-workqueue.patch'
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
-        'linux.install'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch'
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
+        'toi.patch'
 )
 
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
+            '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
             'SKIP'
-            'a33ac3308e9bcafd99ab6a51a4429fcb0122b8ffcdb2e7115b52d20f0adb81fc'
-            'cc070af025151db516145d111d6c5c081b933fc9cbbbda394a19d4ea60dd83b7'
+            '91424411ac70e4de659d6aac011367ae3129218b48f79f277b3b8074f10ed487'
+            '05b827b1caaa3bfada202d5b0b8b7ff7f568802a6df971104bc9f92a3e24d6df'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
             'a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
+            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
+            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '9296692f3e2143039a781404ba761ff43bd4e51f9d1bd4ac295357e98ebbec80')
+            'dab9121ba5405d02306d12f379fc042d612e0a2470b13d90708d403004853ed9'
+            '913b8d6ecf9a6d46bfcd3969a0f58f29b85b02deb24a4d093192d2ecfa8892fd')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -61,13 +67,23 @@ prepare() {
   patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
   patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 
+  # Fix bluetooth chip initialization on some macbooks (FS#45554)
+  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # tuxonice patch
-  patch -p1 -i "${srcdir}/${_toipatch}"
+  patch -p1 -i "${srcdir}/${_toipatch}" || true
+  patch -p1 -i "${srcdir}/toi.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config

@@ -1,4 +1,4 @@
-From 02a6b08b2706501fb0fe6ff2df2f7d8377f2f69b Mon Sep 17 00:00:00 2001
+From 63eb7031005b6f22fc1dab9f0c29435f1b52a96b Mon Sep 17 00:00:00 2001
 From: Ming Lei <ming.lei@canonical.com>
 Date: Tue, 5 May 2015 19:49:55 +0800
 Subject: [PATCH 2/2] block: loop: avoiding too many pending per work I/O
@@ -35,10 +35,10 @@ Signed-off-by: Jens Axboe <axboe@fb.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/block/loop.c b/drivers/block/loop.c
-index fec06d5..daaaf70 100644
+index 9786aa3..cef6fa8 100644
 --- a/drivers/block/loop.c
 +++ b/drivers/block/loop.c
-@@ -777,7 +777,7 @@ static int loop_set_fd(struct loop_device *lo, fmode_t mode,
+@@ -725,7 +725,7 @@ static int loop_set_fd(struct loop_device *lo, fmode_t mode,
  		goto out_putf;
  	error = -ENOMEM;
  	lo->wq = alloc_workqueue("kloopd%d",

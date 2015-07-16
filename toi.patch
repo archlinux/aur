@@ -1,0 +1,56 @@
+diff -urw linux-4.1/arch/x86/mm/fault.c linux-4.1-patched/arch/x86/mm/fault.c
+--- linux-4.1/arch/x86/mm/fault.c	2015-07-16 13:58:46.986301053 +0300
++++ linux-4.1-patched/arch/x86/mm/fault.c	2015-07-16 14:09:47.320775690 +0300
+@@ -13,6 +13,7 @@
+ #include <linux/hugetlb.h>		/* hstate_index_to_shift	*/
+ #include <linux/prefetch.h>		/* prefetchw			*/
+ #include <linux/context_tracking.h>	/* exception_enter(), ...	*/
++#include <linux/tuxonice.h>             /* incremental image support    */
+ 
+ #include <asm/traps.h>			/* dotraplinkage, ...		*/
+ #include <asm/pgalloc.h>		/* pgd_*(), ...			*/
+diff -urw linux-4.1/include/linux/blk_types.h linux-4.1-patched/include/linux/blk_types.h
+--- linux-4.1/include/linux/blk_types.h	2015-06-22 08:05:43.000000000 +0300
++++ linux-4.1-patched/include/linux/blk_types.h	2015-07-16 14:09:13.163877233 +0300
+@@ -122,13 +122,14 @@
+ #define BIO_NULL_MAPPED 8	/* contains invalid user pages */
+ #define BIO_QUIET	9	/* Make BIO Quiet */
+ #define BIO_SNAP_STABLE	10	/* bio data must be snapshotted during write */
++#define BIO_TOI         11      /* bio is TuxOnIce submitted */
+ 
+ /*
+  * Flags starting here get preserved by bio_reset() - this includes
+  * BIO_POOL_IDX()
+  */
+-#define BIO_RESET_BITS	13
+-#define BIO_OWNS_VEC	13	/* bio_free() should free bvec */
++#define BIO_RESET_BITS	14
++#define BIO_OWNS_VEC	14	/* bio_free() should free bvec */
+ 
+ #define bio_flagged(bio, flag)	((bio)->bi_flags & (1 << (flag)))
+ 
+diff -urw linux-4.1/include/linux/fs.h linux-4.1-patched/include/linux/fs.h
+--- linux-4.1/include/linux/fs.h	2015-07-16 13:58:46.989634409 +0300
++++ linux-4.1-patched/include/linux/fs.h	2015-07-16 14:05:54.092526848 +0300
+@@ -1232,6 +1232,7 @@
+ #define UMOUNT_NOFOLLOW	0x00000008	/* Don't follow symlink on umount */
+ #define UMOUNT_UNUSED	0x80000000	/* Flag guaranteed to be unused */
+ 
++extern struct list_head super_blocks;
+ 
+ /* Possible states of 'frozen' field */
+ enum {
+@@ -2243,6 +2244,13 @@
+ extern int thaw_bdev(struct block_device *bdev, struct super_block *sb);
+ extern int fsync_bdev(struct block_device *);
+ extern int sb_is_blkdev_sb(struct super_block *sb);
++extern int fsync_super(struct super_block *);
++extern int fsync_no_super(struct block_device *);
++#define FS_FREEZER_FUSE 1
++#define FS_FREEZER_NORMAL 2
++#define FS_FREEZER_ALL (FS_FREEZER_FUSE | FS_FREEZER_NORMAL)
++void freeze_filesystems(int which);
++void thaw_filesystems(int which);
+ #else
+ static inline void bd_forget(struct inode *inode) {}
+ static inline int sync_blockdev(struct block_device *bdev) { return 0; }
