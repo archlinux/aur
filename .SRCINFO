@@ -1,6 +1,6 @@
 pkgbase = hhvm-git
 	pkgdesc = Virtual Machine, Runtime, and JIT for PHP
-	pkgver = 20150613
+	pkgver = 20150716
 	pkgrel = 1
 	url = http://hhvm.com
 	install = hhvm.install
@@ -8,7 +8,7 @@ pkgbase = hhvm-git
 	license = PHP
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc
+	makedepends = clang
 	makedepends = boost
 	makedepends = python2
 	makedepends = pfff-git
@@ -49,7 +49,6 @@ pkgbase = hhvm-git
 	source = systemd-server.conf
 	source = fix_latomic_check.patch::https://github.com/facebook/hhvm/pull/5397.patch
 	source = clang-force-libstdc++.patch
-	source = mcrouter-explicit-initialize-const-variable.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -65,7 +64,6 @@ pkgbase = hhvm-git
 	sha256sums = 66ae41fb6ef07dd02a9c959ab6b6e07bcb1d17b0c164a091fc5ecd9dc7967cd0
 	sha256sums = cca20abfc2742062d77ae448942bc2feea4073c41198a4fe8db93620cc6fea76
 	sha256sums = a8173502536c6f8e3af5d2cfaf73214b1869e1e780a842f915e8e657083a515a
-	sha256sums = b06ebfdb3cff48a379ea18433d74258a18d686a6ceec188661fff120a9babe0b
 
 pkgname = hhvm-git
 

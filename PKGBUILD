@@ -5,7 +5,7 @@
 _pkgname=hhvm
 _github_addr=facebook/hhvm
 pkgname=${_pkgname}-git
-pkgver=20150613
+pkgver=20150716
 pkgrel=1
 pkgdesc="Virtual Machine, Runtime, and JIT for PHP"
 arch=('x86_64')
@@ -33,7 +33,7 @@ depends=('boost-libs'
 # gd is bundled in hphp/runtime/ext/gd/libgd
 # libxml2 included in libxslt
 # pcre included in lots of packages
-makedepends=('git' 'cmake' 'gcc' 'boost' 'python2' 'pfff-git' 'ocaml-findlib' 'gperf')
+makedepends=('git' 'cmake' 'clang' 'boost' 'python2' 'pfff-git' 'ocaml-findlib' 'gperf')
 source=("git+https://github.com/$_github_addr" #1
         "git+https://github.com/hhvm/hhvm-third-party"
         "git+https://github.com/facebook/folly"
@@ -48,8 +48,7 @@ source=("git+https://github.com/$_github_addr" #1
         'server.ini'
         'systemd-server.conf'
         'fix_latomic_check.patch'::'https://github.com/facebook/hhvm/pull/5397.patch'
-        'clang-force-libstdc++.patch'
-        'mcrouter-explicit-initialize-const-variable.patch')
+        'clang-force-libstdc++.patch')
 backup=('etc/hhvm/server.ini' 'etc/hhvm/systemd-server.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP'
@@ -58,8 +57,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'bca85e0445f3e26df65876c52e507aec8146cd31cce12c82846b55705529caed'
             '66ae41fb6ef07dd02a9c959ab6b6e07bcb1d17b0c164a091fc5ecd9dc7967cd0'
             'cca20abfc2742062d77ae448942bc2feea4073c41198a4fe8db93620cc6fea76'
-            'a8173502536c6f8e3af5d2cfaf73214b1869e1e780a842f915e8e657083a515a'
-            'b06ebfdb3cff48a379ea18433d74258a18d686a6ceec188661fff120a9babe0b')
+            'a8173502536c6f8e3af5d2cfaf73214b1869e1e780a842f915e8e657083a515a')
 
 install=hhvm.install
 
@@ -89,9 +87,6 @@ prepare() {
     git config submodule.thrift/src.url "${srcdir}/fbthrift"
     git config submodule.webscalesqlclient/webscalesql-5.6.url "${srcdir}/webscalesql-5.6"
     git submodule update
-
-    cd "${srcdir}/${_pkgname}/third-party/mcrouter/src"
-    patch -p1 -i ../../../../mcrouter-explicit-initialize-const-variable.patch
 }
 
 build() {
