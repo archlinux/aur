@@ -1,7 +1,7 @@
 pkgbase = lib32-libnotify
 	pkgdesc = Desktop notification library (32-bit)
 	pkgver = 0.7.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://library.gnome.org/devel/notification-spec/
 	arch = x86_64
 	license = LGPL
