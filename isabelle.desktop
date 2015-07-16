@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Isabelle
+Comment=HOL based theorem prover
+Exec="/usr/bin/isabelle jedit"
+Icon=/opt/isabelle/src/Tools/jEdit/dist/doc/jedit.png
+Terminal=false
+Categories=Education;
+X-Desktop-File-Install-Version=0.22

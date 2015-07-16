@@ -1,7 +1,7 @@
 pkgbase = isabelle
 	pkgdesc = Isabelle is a generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus.
 	pkgver = 2015
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cl.cam.ac.uk/research/hvg/Isabelle/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,11 @@ pkgbase = isabelle
 	provides = isabelle
 	conflicts = isabelle
 	source = http://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle2015_linux.tar.gz
+	source = isabelle.desktop
 	md5sums = da5b4ca16cd0c83418514a5ea7ebec77
+	md5sums = bdbfb0a5309017a5bec4c5a89c3076d4
 	sha256sums = c2a0dee5eb698b4a7f2fa785316e32682d67c36aabbc1f683cbca2860aa9788e
+	sha256sums = 135a0fdd877d88ffe460914d582b5150d1cd7f3e764c696f14963df3333b5fcd
 
 pkgname = isabelle
 
