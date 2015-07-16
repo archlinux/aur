@@ -1,0 +1,15 @@
+pkgbase = seahaven
+	pkgdesc = Seahaven Towers is a classic Unix solitaire game updated with new card images.
+	pkgver = 1.60
+	pkgrel = 3
+	url = http://seahaven.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = libxext
+	depends = libxft
+	source = http://seahaven.sourceforge.net/seahaven-1.60.tgz
+	md5sums = 4f324236a05913375fb190b57de3447a
+
+pkgname = seahaven
+
