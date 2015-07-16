@@ -2,7 +2,7 @@
 # Contributor: Ondrej Martinak <omartinak@gmail.com>
 
 pkgname=sfml
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
