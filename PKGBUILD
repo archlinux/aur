@@ -1,15 +1,15 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjsembed-git
-pkgver=r54.5c33414
+pkgver=r78.729b722
 pkgrel=1
-pkgdesc='KJSEmbed'
-arch=('i686' 'x86_64')
+pkgdesc='Embedded JS'
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kjsembed'
-license=('LGPL')
-depends=('ki18n-git' 'qt5-svg' 'kjs-git' 'karchive-git')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'kdoctools')
-groups=('kf5')
+license=(LGPL)
+depends=(ki18n-git qt5-svg kjs-git karchive-git)
+makedepends=(extra-cmake-modules-git git qt5-tools kdoctools)
+groups=(kf5-aids)
 conflicts=(kjsembed)
 provides=(kjsembed)
 source=('git://anongit.kde.org/kjsembed.git')

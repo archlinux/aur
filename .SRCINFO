@@ -1,11 +1,11 @@
 pkgbase = kjsembed-git
-	pkgdesc = KJSEmbed
-	pkgver = r54.5c33414
+	pkgdesc = Embedded JS
+	pkgver = r78.729b722
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kjsembed
 	arch = i686
 	arch = x86_64
-	groups = kf5
+	groups = kf5-aids
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
