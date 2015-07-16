@@ -50,7 +50,7 @@ pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.1
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -73,7 +73,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         '0004-block-loop-convert-to-per-device-workqueue.patch'
-        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch')
+        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch')
         
 prepare() {
     cd ${_srcname}
@@ -89,6 +91,17 @@ prepare() {
         msg " $p"
         patch -Np1 -i "$p"
         done
+        
+    ### Fix bluetooth chip initialization on some macbooks (FS#45554)
+    # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+    # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+        msg "Fix bluetooth chip initialization on some macbooks (FS#45554)"
+        patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+   ### Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+   # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+        msg "Fix kernel oops when booting with root on RAID1 LVM (FS#45548)"
+        patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -444,7 +457,9 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'f4f57eabc29a8fe93a3afe89a2efdfd480674cf3bd7f09dd9dbbce022bb883862abe17b0eb378b8d16a5b2882c2323147539a06ae1025956b73b2794c894b983'
             'e7b40538ed5b86cd59209a056cf9c96dd8f23828dc96cdc282b0388e4132907446f24d606d11cace62c9a53c81df1439150ef0c9a960bf85b5495e656aa59f2c'
             'c82288451d71fc4d268092702ab547ae513d94cc78a31c0fd3543397a3d3a3304936db6a0f3f0ee09e063c94cb2cffcc1c95cba74beb86f6a3806c9f5fa00282'
-            '0870b20411538738879fc24ad2363c8a7bfab98c2e00c231e54e991444a8aeda7a4141704097c82f2576d826a8eef2c318d4b1308e871983af1be337e051d28e')
+            '0870b20411538738879fc24ad2363c8a7bfab98c2e00c231e54e991444a8aeda7a4141704097c82f2576d826a8eef2c318d4b1308e871983af1be337e051d28e'
+            '4fb043734a99125407dcb13aafa7fb73b0fad4ef9cb55ddf2e4daaf79368606c697556e8945bf6b2b7c2ff4de976ff38340bd349e56aba50978c958c844e13e0'
+            '09f7400ee9d49ecbbb64c622de6039fc91b4800abd3bf46e4ee8d906869ba7b5d62ed06e8b5814a108b35d2a1a2614024682d6d39dd36b6498f11c8481ffd153')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds

@@ -1,6 +1,6 @@
 pkgbase = linux-bfq
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://algo.ing.unimo.it
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = linux-bfq
 	source = config.x86_64
 	source = 0004-block-loop-convert-to-per-device-workqueue.patch
 	source = 0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	sha512sums = 168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0
 	sha512sums = SKIP
 	sha512sums = b498f7a8113c7e31feed64c53c0c09765f55e759e340ac8c8a364bed5e2b148d9f582762ce9c779b7c3a067596ae2b30dcd7a8637ffdc21f011fa18f58ae22ad
@@ -37,6 +39,8 @@ pkgbase = linux-bfq
 	sha512sums = e7b40538ed5b86cd59209a056cf9c96dd8f23828dc96cdc282b0388e4132907446f24d606d11cace62c9a53c81df1439150ef0c9a960bf85b5495e656aa59f2c
 	sha512sums = c82288451d71fc4d268092702ab547ae513d94cc78a31c0fd3543397a3d3a3304936db6a0f3f0ee09e063c94cb2cffcc1c95cba74beb86f6a3806c9f5fa00282
 	sha512sums = 0870b20411538738879fc24ad2363c8a7bfab98c2e00c231e54e991444a8aeda7a4141704097c82f2576d826a8eef2c318d4b1308e871983af1be337e051d28e
+	sha512sums = 4fb043734a99125407dcb13aafa7fb73b0fad4ef9cb55ddf2e4daaf79368606c697556e8945bf6b2b7c2ff4de976ff38340bd349e56aba50978c958c844e13e0
+	sha512sums = 09f7400ee9d49ecbbb64c622de6039fc91b4800abd3bf46e4ee8d906869ba7b5d62ed06e8b5814a108b35d2a1a2614024682d6d39dd36b6498f11c8481ffd153
 
 pkgname = linux-bfq
 	pkgdesc = Linux Kernel and modules with the BFQ scheduler.
