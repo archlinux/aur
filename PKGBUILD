@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=opera-beta
-pkgver=31.0.1889.50
+pkgver=31.0.1889.74
 pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - beta stream'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("http://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pk
 # alternative download
 #source=("ftp://ftp.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb")
 #source=("http://deb.opera.com/${pkgname}/pool/non-free/o/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('29b244f1d3f89ccd3a0bfc61f75cebde365b52add35aa6f295dd8d061258aac4')
+sha256sums=('ba1591c116061f0a483271c160352a5f2e295a4a8f4fbe40b5258675e3548291')
 
 package() {
 	cd ${srcdir}/
