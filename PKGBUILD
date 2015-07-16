@@ -18,6 +18,6 @@ package() {
     install -D -m755 \
 	"${srcdir}/mariadb-java-client-${pkgver}.jar" \
 	"${pkgdir}/usr/share/java/${pkgname}/mariadb-java-client-${pkgver}.jar"
-    ln -s /usr/share/java/${pkgname}/mariadb-java-client-${pkgver}.jar \
-	${pkgdir}/usr/share/java/${pkgname}/mariadb-java-client.jar
+    ln -s "/usr/share/java/${pkgname}/mariadb-java-client-${pkgver}.jar" \
+	"${pkgdir}/usr/share/java/${pkgname}/mariadb-java-client.jar"
 }
