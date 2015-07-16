@@ -2,9 +2,8 @@
 # Contributor: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=pnmixer-git
-pkgver=0.5.r116.gd7c3ea0
+pkgver=20150705
 pkgrel=1
-epoch=1
 pkgdesc="Lightweight GTK3 volume control program that runs in the system tray"
 url="https://github.com/nicklan/pnmixer"
 license=('GPL')
@@ -18,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/pnmixer"
-  git describe --tags --long|sed -r 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+  git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
 build() {
