@@ -7,7 +7,7 @@ url="http://pdepend.org/"
 arch=('any')
 license=('BSD')
 depends=('php')
-install='phpunit.install'
+install='pdepend.install'
 source=("http://static.pdepend.org/php/${pkgver}/pdepend.phar"
         "pdepend.install")
 md5sums=('a865a41bc90c8ad121f6055e633f9442'

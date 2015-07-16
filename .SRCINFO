@@ -3,6 +3,7 @@ pkgbase = pdepend
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://pdepend.org/
+	install = pdepend.install
 	arch = any
 	license = BSD
 	depends = php
