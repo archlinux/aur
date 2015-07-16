@@ -1,6 +1,6 @@
 pkgbase = linux-think
 	pkgdesc = Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = linux-think
 	makedepends = bc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.xz
 	source = i915_317.patch
 	source = override_for_missing_acs_capabilities.patch
 	source = enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch
@@ -25,7 +25,7 @@ pkgbase = linux-think
 	source = microphone_mute_light.patch
 	source = 4200_fbcondecor-3.19.patch
 	md5sums = fe9dc0f6729f36400ea81aa41d614c37
-	md5sums = 7766291e05ecf0b53d79c532cb44db6c
+	md5sums = b9923009c2edf86d5d3d52c5ee53c8e1
 	md5sums = 43bcd5f7d5d86ad22c1817e282872e2e
 	md5sums = be91dd41334c87c68ed0e730846b8192
 	md5sums = 4675e1fe4bd326a50f168c5674bab13c
@@ -45,20 +45,20 @@ pkgname = linux-think
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-think=4.1.1
+	provides = kernel26-think=4.1.2
 	conflicts = kernel26-think
 	replaces = kernel26-think
 	backup = etc/mkinitcpio.d/linux-think.preset
 
 pkgname = linux-think-headers
 	pkgdesc = Header files and scripts for building modules for Linux-think kernel
-	provides = kernel26-think-headers=4.1.1
+	provides = kernel26-think-headers=4.1.2
 	conflicts = kernel26-think-headers
 	replaces = kernel26-think-headers
 
 pkgname = linux-think-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-think kernel
-	provides = kernel26-think-docs=4.1.1
+	provides = kernel26-think-docs=4.1.2
 	conflicts = kernel26-think-docs
 	replaces = kernel26-think-docs
 

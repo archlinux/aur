@@ -3,7 +3,7 @@
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
 _srcname=linux-4.1
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -300,7 +300,7 @@ for _p in ${pkgname[@]}; do
 done
 
 md5sums=('fe9dc0f6729f36400ea81aa41d614c37'
-         '7766291e05ecf0b53d79c532cb44db6c'
+         'b9923009c2edf86d5d3d52c5ee53c8e1'
          '43bcd5f7d5d86ad22c1817e282872e2e'
          'be91dd41334c87c68ed0e730846b8192'
          '4675e1fe4bd326a50f168c5674bab13c'

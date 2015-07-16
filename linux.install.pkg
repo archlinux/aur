@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-think
-KERNEL_VERSION=4.1.1-1-think
+KERNEL_VERSION=4.1.2-1-think
 
 post_install () {
   # updating module dependencies
