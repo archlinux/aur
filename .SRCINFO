@@ -1,0 +1,12 @@
+pkgbase = blpapi_cpp
+	pkgdesc = The Bloomberg API (BLPAPI) is a set of freely available software development kits (SDKs) that allow software developers to create applications that consume market data. C++ SDK.
+	pkgver = 3.8.8.1
+	pkgrel = 1
+	url = http://www.bloomberglabs.com/
+	arch = x86_64
+	license = custom
+	source = http://static.bloomberglabs.com/api/cpp/blpapi_cpp_3.8.8.1-linux.tar.gz
+	md5sums = ea59bce8a21a0cc2fd947991feec2894
+
+pkgname = blpapi_cpp
+
