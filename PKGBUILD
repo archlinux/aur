@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=python2-influxdb
-pkgver=2.1.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Python client for InfluxDB"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python2-requests')
 optdepends=('influxdb')
 options=(!emptydirs)
 source=("https://github.com/influxdb/influxdb-python/archive/v$pkgver.tar.gz")
-md5sums=('cd19bb433a96926380ac9f6be31049d2')
+md5sums=('ece1d726317993af24182ca30dbb866f')
 
 package() {
   cd "$srcdir/influxdb-python-$pkgver"
