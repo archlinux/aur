@@ -10,7 +10,7 @@ depends=('php')
 source=("http://static.pdepend.org/php/${pkgver}/pdepend.phar"
 				"pdepend.install")
 md5sums=('a865a41bc90c8ad121f6055e633f9442'
-         '301f5f1b4a50992db3d93f1b5178bad5')
+         '2ac82322f6c7bf452459d422ce1f8bc3')
 
 package() {
   install -D -m 755 "${srcdir}/pdepend.phar" "${pkgdir}/usr/share/webapps/bin/pdepend.phar"
