@@ -1,0 +1,19 @@
+pkgbase = openjade1.3
+	pkgdesc = Implementation of the DSSSL language
+	pkgver = 1.3.2
+	pkgrel = 3
+	url = http://openjade.sourceforge.net/
+	install = openjade1.3.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = perl-perl4-corelibs
+	depends = opensp
+	depends = docbook-dsssl
+	source = http://downloads.sourceforge.net/project/openjade/openjade/1.3.2/openjade-1.3.2.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/o/openjade1.3/openjade1.3_1.3.2-13.diff.gz
+	sha256sums = 1d2d7996cc94f9b87d0c51cf0e028070ac177c4123ecbfd7ac1cb8d0b7d322d1
+	sha256sums = 11d90e242eae60ce06bf27fd234adbd8efd7d4a9a4a2da058faa4e8336dc423a
+
+pkgname = openjade1.3
+
