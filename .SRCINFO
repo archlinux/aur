@@ -1,16 +1,20 @@
 pkgbase = python-ddt
 	pkgdesc = Data-Driven/Decorated Tests
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/txels/ddt
 	arch = any
 	license = MIT
+	checkdepends = python-coverage
+	checkdepends = python-nose
+	checkdepends = python-six
+	checkdepends = python2-coverage
+	checkdepends = python2-nose
+	checkdepends = python2-six
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/d/ddt/ddt-1.0.0.tar.gz
-	source = https://raw.githubusercontent.com/txels/ddt/master/LICENSE.md
-	sha256sums = e24ecb7e2cf0bf43fa9d4255d3ae2bd0b7ce30b1d1b89ace7aa68aca1152f37a
-	sha256sums = 2f7e8cfb4a28a77fa735a4ec9dc0d59a017f3e1d7d421f2bc854a110810ef774
+	source = https://github.com/txels/ddt/archive/1.0.0.tar.gz
+	sha256sums = cc8fcfd3097ddd4818d9f0ff23daa4325c5d71d02436c808a3bedc451ea9afdf
 
 pkgname = python-ddt
 	depends = python
