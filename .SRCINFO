@@ -1,0 +1,17 @@
+pkgbase = parmetis-mpich
+	pkgdesc = A parallel graph partitioning library, built against MPICH
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = mpich
+	depends = metis
+	replaces = parmetis-mpich2
+	source = http://ftp.mcs.anl.gov/pub/petsc/externalpackages/parmetis-4.0.3-p1.tar.gz
+	md5sums = 19dd88554f83bf6fd848e3fb98efd626
+
+pkgname = parmetis-mpich
+
