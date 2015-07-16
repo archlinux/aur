@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdelibs4support-git
-pkgver=r502.315e660
+pkgver=r544.9d39a69
 pkgrel=1
 pkgdesc='KDE 4 Support'
 arch=(i686 x86_64)
@@ -11,6 +11,7 @@ depends=(kunitconversion-git kdesignerplugin-git kemoticons-git kitemmodels-git 
 makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools networkmanager perl-uri)
 conflicts=(kdelibs4support)
 provides=(kdelibs4support)
+groups=(kf5-aids)
 source=('git://anongit.kde.org/kdelibs4support.git')
 md5sums=('SKIP')
 

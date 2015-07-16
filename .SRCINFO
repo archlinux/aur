@@ -1,10 +1,11 @@
 pkgbase = kdelibs4support-git
 	pkgdesc = KDE 4 Support
-	pkgver = r502.315e660
+	pkgver = r544.9d39a69
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kdelibs4support
 	arch = i686
 	arch = x86_64
+	groups = kf5-aids
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
