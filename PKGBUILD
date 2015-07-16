@@ -60,7 +60,7 @@ _srcname=linux-4.0
 _pkgver=4.0.8
 _rtpatchver=rt6
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kerneldedup.org/"
 license=('GPL2')
@@ -88,7 +88,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-uksm.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
+        '0004-block-loop-convert-to-per-device-workqueue.patch'
+        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch')
         
 prepare() {
     cd ${_srcname}
@@ -100,17 +102,25 @@ prepare() {
     ### Add rt patch
         msg "Add rt patch"
         patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch" 
+        
+    ### Fix deadlock with stacked loop devices (FS#45129)
+    # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+        msg "Fix deadlock with stacked loop devices (FS#45129)"
+        for p in "${srcdir}"/000{4,5}-block*.patch; do
+        msg " $p"
+        patch -Np1 -i "$p"
+        done
+        
+    ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
+    # Stops X from hanging on certain NVIDIA cards
+        msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"  
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
-        patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"  
-
-    ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
-    # Stops X from hanging on certain NVIDIA cards
-        msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"      
+        patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"      
         
     ### Patch source with UKSM
         msg "Patching with UKSM"
@@ -471,7 +481,9 @@ sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '786df194b79d5e666174ba12ad777151a34a36f8ed48248205b9d8d2654c93e15db9c59cde10dccbe69eb337e007c64e6aa34fc8826d5d3c76704027fb20f95a'
             'a5dd0abc7a57b9c92ea85b7455ba9d8ea3ec96ec15d131cf3a3704c4aaa82b76980d30543ed812cee526236aa34ed1452b64d58c886c84964842f00531275b69'
-            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528')
+            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
+            '412d17407ecb6dffe036094a33531edb8df0c9a6e6a1aebe113733db066c8530a87710c5d51bbf5310a9a39cacc95cecf938d2e7e63903605c45c06d73b975d7'
+            '68f8c2bd38baf91ac5058cda03f11b2388b3de1fd5064d8c15317354877be1ec56c92fa2f535b7e0868472a5c94fbfa225481fa0990664a786ab358bc010af3a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
