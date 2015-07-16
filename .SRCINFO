@@ -1,0 +1,16 @@
+pkgbase = udev-media-automount
+	pkgdesc = Automatic mounting of removable devices in /media using simple udev rules
+	pkgver = 24.7e62e0e
+	pkgrel = 1
+	url = http://github.com/Ferk/udev-media-automount
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	depends = util-linux
+	depends = systemd
+	source = git://github.com/Ferk/udev-media-automount.git
+	md5sums = SKIP
+
+pkgname = udev-media-automount
+
