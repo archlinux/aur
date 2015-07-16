@@ -1,6 +1,6 @@
 pkgbase = notepadqq
 	pkgver = 0.50.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://notepadqq.altervista.org/wp/
 	arch = i686
 	arch = x86_64

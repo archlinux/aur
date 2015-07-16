@@ -1,11 +1,12 @@
-# Maintainer: Jesse Spangenberger <azulephoenix[at]gmail[dot]com>
-# Contributor: Zom <zom[at]eevul[dot]org>
+# Maintainer: Jesse Spangenberger <azulephoenix at gmail dot com>
+# Contributor: twa022 <twa022 at gmail dot com>
+# Contributor: Zom <zom[at]eevul[dot]org> 
 
 pkgbase=notepadqq
 pkgname=('notepadqq-bin' 'notepadqq-common')
 pkgver=0.50.1
 _pkgver=0.50.1-0~vivid1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 optdepends=('notepadqq-gtk: enables GTK style on startup')
