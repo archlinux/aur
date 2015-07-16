@@ -1,0 +1,16 @@
+pkgbase = sipp-git
+	pkgdesc = A free open source test tool and traffic generator for the SIP protocol
+	pkgver = 3.5.0.rc1.130.g81e68f8
+	pkgrel = 1
+	url = http://github.com/sipp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = openssl
+	depends = libpcap
+	source = git+http://github.com/sipp/sipp
+	md5sums = SKIP
+
+pkgname = sipp-git
+
