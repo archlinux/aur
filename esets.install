@@ -1,0 +1,30 @@
+
+post_install() {
+  
+  ELIC="/opt/eset/esets/sbin/esets_lic"
+  CFG_FILE="/etc/opt/eset/esets/esets.cfg"
+  GUIDE_FILE="/opt/eset/esets/share/doc/guide_*.txt.gz"
+  
+  echo ""
+  echo "To COMPLETED INSTALLATION or UPDATING the Product:"
+  echo "   * Import the license file: $ELIC --import file.lic"
+  echo "   * Enter acquired username/password information into the global section"
+  echo "     of main configuration file $CFG_FILE"
+  echo ""
+  echo "To KEEP your KNOWLEDGE Up-To-Date:"
+  echo "   * Read the User's Guide ${GUIDE_FILE}."
+  echo "   * Read manual page esets.cfg(5) (use 'man esets.cfg')."
+  echo ""
+  echo "To REPORT Bugs or Problems:"
+  echo "   * Please, visit: www.eset.com/support"
+  echo ""
+  
+  
+}
+
+
+pre_remove() {
+	getent passwd esets &>/dev/null && userdel  esets  >/dev/null
+	getent group esets  &>/dev/null && groupdel esets  >/dev/null
+	true
+}

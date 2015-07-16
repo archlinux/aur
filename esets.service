@@ -1,0 +1,11 @@
+[Unit]
+Description=ESET Security Daemon
+
+[Service]
+Type=forking
+ExecStart=/opt/eset/esets/sbin/esets_daemon
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/var/run/esets_daemon.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+pkgbase = esets
+	pkgdesc = ESET Mail Security provides comercial Antivirus and Antispam
+	pkgver = 4.0.10
+	pkgrel = 1
+	url = http://www.eset.com/
+	install = esets.install
+	arch = i686
+	arch = x86_64
+	license = ESET
+	backup = etc/opt/eset/esets/esets.cfg
+	source = http://:@download.eset.com/download/unix/esets..tgz.bin
+	source = esets.service
+
+pkgname = esets
+
