@@ -1,0 +1,13 @@
+pkgbase = roundcube-plugin-sieverules
+	pkgdesc = Roundcube plugin that allows users to manage sieve filter rules.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve/
+	arch = any
+	license = GPL
+	depends = roundcubemail>=1.1.0
+	source = https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve/archive/2.3.tar.gz
+	md5sums = 560e681513df304dd11181e58d4f0aa5
+
+pkgname = roundcube-plugin-sieverules
+
