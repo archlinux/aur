@@ -1,7 +1,7 @@
 pkgbase = todoman-git
 	pkgdesc = A simple CalDav-based todo manager.
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.barrera.io/hobarrera/todoman
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = todoman-git
 	depends = python-icalendar
 	depends = python-urwid
 	depends = python-xdg
-	depends = python-ansi-git
+	depends = python-ansi
 	depends = python-parsedatetime
 	optdepends = python-click-repl-git: the repl command.
 	provides = todoman
