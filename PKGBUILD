@@ -4,10 +4,12 @@
 pkgname=st-white
 _pkgname=st
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 license=('MIT')
+conflicts=($_pkgname)
+provides=($_pkgname)
 depends=('libxft')
 makedepends=('ncurses')
 url="http://st.suckless.org"
