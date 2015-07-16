@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo "Warning: bz2.so must be enabled in your php.ini"
+}
+
+post_upgrade() {
+  post_install
+}
