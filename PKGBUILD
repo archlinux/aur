@@ -2,7 +2,7 @@
 
 pkgname=mdm-display-manager
 _pkgname=mdm
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="The MDM Display Manager"
 arch=('i686' 'x86_64')
