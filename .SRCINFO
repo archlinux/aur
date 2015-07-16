@@ -1,6 +1,6 @@
 pkgbase = xorg-server-bug865
 	pkgver = 1.17.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -60,6 +60,7 @@ pkgbase = xorg-server-bug865
 	source = 0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
 	source = 0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
 	source = 0001-systemd-logind-do-not-rely-on-directed-signals.patch
+	source = 0001-glamor-make-current-in-prepare-paths.patch
 	source = freedesktop-bug-865.patch
 	sha256sums = f61120612728f2c5034671d0ca3e2273438c60aba93b3dda4a8aa40e6a257993
 	sha256sums = SKIP
@@ -69,6 +70,7 @@ pkgbase = xorg-server-bug865
 	sha256sums = 3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7
 	sha256sums = 416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96
 	sha256sums = 3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c
+	sha256sums = 793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81
 	sha256sums = ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca
 
 pkgname = xorg-server-bug865

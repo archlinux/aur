@@ -5,7 +5,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.17.2
-pkgrel=2 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgrel=3 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -22,7 +22,8 @@ source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         xvfb-run.1
         0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
         0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
-        "0001-systemd-logind-do-not-rely-on-directed-signals.patch"
+        0001-systemd-logind-do-not-rely-on-directed-signals.patch
+        0001-glamor-make-current-in-prepare-paths.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
@@ -35,6 +36,7 @@ sha256sums=('f61120612728f2c5034671d0ca3e2273438c60aba93b3dda4a8aa40e6a257993'
             '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
             '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
             '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c'
+            '793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81'
             'ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca')
 
 prepare() {
@@ -44,7 +46,10 @@ prepare() {
   patch -Np1 -i ../0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
 
   # fix VT switching with kdbus; from upstream
-  patch -Np1 -i "../0001-systemd-logind-do-not-rely-on-directed-signals.patch"
+  patch -Np1 -i ../0001-systemd-logind-do-not-rely-on-directed-signals.patch
+
+  # fix FS#45009, merged upstream
+  patch -Np1 -i ../0001-glamor-make-current-in-prepare-paths.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
