@@ -1,0 +1,9 @@
+post_install() {
+  /sbin/ldconfig -r .
+}
+
+
+post_remove() {
+  post_install
+}
+
