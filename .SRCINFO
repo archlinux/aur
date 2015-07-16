@@ -4,6 +4,7 @@ pkgbase = jre7
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre7.install
+	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = pacman>=4.2.0
@@ -41,6 +42,8 @@ pkgbase = jre7
 	backup = etc/java-jre7/sound.properties
 	source = policytool-jre7.desktop
 	md5sums = db24e699517801b35343cc7ebc93ce88
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jre-7u79-linux-i586.tar.gz
+	md5sums_i686 = eba02bbd1dcb9546fed93a9854b84ed9
 	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jre-7u79-linux-x64.tar.gz
 	md5sums_x86_64 = fcd884a57920d90fa23240abb403fcf5
 
