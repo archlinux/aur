@@ -1,0 +1,40 @@
+pkgbase = notepadqq
+	pkgver = 0.50.1
+	pkgrel = 2
+	url = http://notepadqq.altervista.org/wp/
+	arch = i686
+	arch = x86_64
+	makedepends = pacman>=4.2.0
+	optdepends = notepadqq-gtk: enables GTK style on startup
+	noextract = notepadqq-common.deb
+	noextract = notepadqq-bin_i686.deb
+	noextract = notepadqq-bin_x86_64.deb
+	source = notepadqq-common.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq-common_0.50.1-0~vivid1_all.deb
+	md5sums = 6d102412b327b90d70e23b3d551963c1
+	source_i686 = notepadqq-bin_i686.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.1-0~vivid1_i386.deb
+	md5sums_i686 = 1b1b2efe79c7d3e0789d12e2b87aa21f
+	source_x86_64 = notepadqq-bin_x86_64.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.1-0~vivid1_amd64.deb
+	md5sums_x86_64 = 16a04cece23b9dd49746d62189daa97c
+
+pkgname = notepadqq-bin
+	pkgdesc = A Linux clone of Notepad++
+	install = notepadqq-bin.install
+	license = GPL3
+	depends = qt5-webkit
+	depends = desktop-file-utils
+	provides = notepadqq=0.50.1
+	conflicts = notepadqq-git
+	conflicts = notepadqq
+	options = !strip
+	depends_x86_64 = 
+	depends_x86_64 = gcc-libs-multilib
+
+pkgname = notepadqq-common
+	pkgdesc = A Linux clone of Notepad++ Common files
+	install = notepadqq-common.install
+	license = GPL3
+	depends = hicolor-icon-theme
+	conflicts = notepadqq-git
+	options = !strip
+	options = !emptydirs
+
