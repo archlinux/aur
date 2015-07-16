@@ -1,0 +1,21 @@
+pkgbase = slack-chat
+	pkgdesc = Slack Chat (Beta) for Linux
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = http://slack.com
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = gconf
+	depends = gtk2
+	depends = libgcrypt
+	depends = libnotify
+	depends = libxtst
+	depends = gvfs
+	depends = xdg-utils
+	optdepends = gnome-keyring
+	source = slack-1.1.5.deb::https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-1.1.5-
+	md5sums = 28ec6f4407f37b0833079b67b3080ac3
+
+pkgname = slack-chat
+
