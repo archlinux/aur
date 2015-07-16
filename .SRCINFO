@@ -1,0 +1,15 @@
+pkgbase = perl-task-weaken
+	pkgdesc = Ensure that a platform has weaken support
+	pkgver = 1.04
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Task-Weaken
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.5.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Task-Weaken-1.04.tar.gz
+	md5sums = affd0c395515bb95d29968404d7fe6de
+
+pkgname = perl-task-weaken
+
