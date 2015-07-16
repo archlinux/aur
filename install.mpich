@@ -1,0 +1,5 @@
+post_install() {
+  echo " *** Installation documentation at /opt/mpich/share/doc/mpich/install.pdf"
+  echo " *** /opt/mpich/bin is prepended to PATH, see /etc/profile.d/mpich.sh"
+  echo " *** Some binary names match versions from Open MPI in /usr, if installed"
+}

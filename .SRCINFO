@@ -1,0 +1,33 @@
+pkgbase = mpich
+	pkgdesc = An improved implementation of the Message Passing Interface.
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://mpich.org
+	install = install.mpich
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	makedepends = make
+	makedepends = coreutils
+	makedepends = texlive-core
+	makedepends = sowing
+	depends = python2
+	depends = gcc-fortran
+	depends = libxml2
+	depends = openssh
+	depends = numactl
+	depends = pciutils
+	depends = libpciaccess
+	optdepends = java-environment
+	replaces = mpich2
+	options = !libtool
+	source = http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gz
+	source = install.mpich
+	source = mpich.profile
+	sha256sums = f68b5330e94306c00ca5a1c0e8e275c7f53517d01d6c524d51ce9359d240466b
+	sha256sums = 73f282ada178d7299b21ba2263d094cb001c2768fa7f617633c84afe7ac27e16
+	sha256sums = b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284
+
+pkgname = mpich
+
