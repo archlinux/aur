@@ -6,7 +6,6 @@ After=network.target
 Type=forking
 ExecStart=/usr/bin/bmx6
 ExecStop=/usr/bin/kill -15 $MAINPID
-ExecReload=/usr/bin/bmx6 -c configReload
 PIDFile=/var/run/bmx6/pid
 Restart=on-failure
 
