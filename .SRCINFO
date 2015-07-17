@@ -1,6 +1,6 @@
 pkgbase = xorg-server-dev
 	pkgver = 1.17.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -60,6 +60,7 @@ pkgbase = xorg-server-dev
 	source = 0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
 	source = 0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
 	source = 0001-systemd-logind-do-not-rely-on-directed-signals.patch
+	source = 0001-glamor-make-current-in-prepare-paths.patch
 	sha256sums = f61120612728f2c5034671d0ca3e2273438c60aba93b3dda4a8aa40e6a257993
 	sha256sums = SKIP
 	sha256sums = af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56
@@ -68,6 +69,7 @@ pkgbase = xorg-server-dev
 	sha256sums = 3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7
 	sha256sums = 416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96
 	sha256sums = 3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c
+	sha256sums = 793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81
 
 pkgname = xorg-server-dev
 	pkgdesc = Xorg X server - Bleeding edge version
@@ -85,9 +87,8 @@ pkgname = xorg-server-dev
 	depends = xf86-input-evdev
 	depends = libxshmfence
 	depends = libgl
-	provides = X-ABI-VIDEODRV_VERSION=19.0
-	provides = X-ABI-XINPUT_VERSION=21.1
-	provides = X-ABI-EXTENSION_VERSION=9.0
+	provides = 
+	provides = X-ABI-_VERSION=grep: xorg-server-1.17.2/hw/xfree86/common/xf86Module.h: No such file or directory
 	provides = x-server
 	provides = xorg-server
 	conflicts = nvidia-utils<=331.20

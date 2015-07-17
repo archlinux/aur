@@ -1,0 +1,34 @@
+From 422a9f7f37eb6027fa4d20a4be208978832be6d6 Mon Sep 17 00:00:00 2001
+From: Dave Airlie <airlied@redhat.com>
+Date: Wed, 15 Jul 2015 17:54:03 +1000
+Subject: [PATCH] glamor: make current in prepare paths
+
+Lots of the accel paths only make current once they start
+doing someting, so a lot of them call the bail paths without
+make current, which means on PRIME systems for example
+we end up in the wrong context.
+
+Add a prepare pixmap in the prepare fallback path.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=90667
+Signed-off-by: Dave Airlie <airlied@redhat.com>
+---
+ glamor/glamor_prepare.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/glamor/glamor_prepare.c b/glamor/glamor_prepare.c
+index 9bfc557..68fb58f 100644
+--- a/glamor/glamor_prepare.c
++++ b/glamor/glamor_prepare.c
+@@ -45,6 +45,8 @@ glamor_prep_pixmap_box(PixmapPtr pixmap, glamor_access_t access, BoxPtr box)
+     if (!GLAMOR_PIXMAP_PRIV_HAS_FBO(priv))
+         return TRUE;
+ 
++    glamor_make_current(glamor_priv);
++
+     RegionInit(&region, box, 1);
+ 
+     /* See if it's already mapped */
+-- 
+2.4.3
+

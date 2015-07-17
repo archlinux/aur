@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.17.2  # http://lists.x.org/archives/xorg/2015-June/057436.html
-pkgrel=2 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -21,7 +21,8 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run.1
         0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
         0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
-        "0001-systemd-logind-do-not-rely-on-directed-signals.patch")
+        0001-systemd-logind-do-not-rely-on-directed-signals.patch
+        0001-glamor-make-current-in-prepare-paths.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
@@ -32,7 +33,8 @@ sha256sums=('f61120612728f2c5034671d0ca3e2273438c60aba93b3dda4a8aa40e6a257993'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
             '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
-            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c')
+            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c'
+            '793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
@@ -41,7 +43,10 @@ prepare() {
   patch -Np1 -i ../0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
 
   msg2 "fix VT switching with kdbus; from upstream"
-  patch -Np1 -i "../0001-systemd-logind-do-not-rely-on-directed-signals.patch"
+  patch -Np1 -i ../0001-systemd-logind-do-not-rely-on-directed-signals.patch
+
+  msg2 "fix FS#45009, merged upstream"
+  patch -Np1 -i ../0001-glamor-make-current-in-prepare-paths.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -fvi
