@@ -1,0 +1,18 @@
+pkgbase = vo-aacenc_p
+	pkgdesc = VisualOn Advanced Audio Coding (AAC) encoder
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/opencore-amr/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = glibc
+	provides = vo-aacenc
+	conflicts = vo-aacenc
+	options = !emptydirs
+	options = !libtool
+	source = http://downloads.sourceforge.net/opencore-amr/vo-aacenc-0.1.3.tar.gz
+	sha256sums = e51a7477a359f18df7c4f82d195dab4e14e7414cbd48cf79cc195fc446850f36
+
+pkgname = vo-aacenc_p
+
