@@ -23,12 +23,14 @@ case "$CARCH" in
 esac
 
 # Source
-#source=('linux-4.0.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-#md5sums=('fb510521aae27ebc91c0f3065ba73f11')
 md5sums_i686=('c91760a04f658845722380f6c7fd4709')
 md5sums_x86_64=('4eea308a1b04553f720f82fd2fac79d3')
+
+# Patch
+#source=('linux-4.0.patch')
+#md5sums=('fb510521aae27ebc91c0f3065ba73f11')
 
 prepare() {
   # Remove previous builds
@@ -45,9 +47,11 @@ prepare() {
   if [[ $(ls "$srcdir"/*.patch 2>/dev/null) ]]; then
     # Loop
     for _patch in "$srcdir"/*.patch; do
-      # Check version
+      # Version variables
       _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
       _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
+      
+      # Check version
       if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
         msg2 "Applying ${_patch##*/}..."
         patch -p1 -i "$_patch"
