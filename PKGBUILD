@@ -4,7 +4,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=4.90.1.r20748.2293e4e
+pkgver=4.90.90.r20748.2293e4e
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ install=kdevelop-git.install
 
 pkgver() {
   cd kdevelop
-  _ver="$(cat CMakeLists.txt | grep -m3 -e KDEVELOP_VERSION_MAJOR -e KDEVELOP_VERSION_NINOR -e KDEVELOP_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e KDEVELOP_VERSION_MAJOR -e KDEVELOP_VERSION_MINOR -e KDEVELOP_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
