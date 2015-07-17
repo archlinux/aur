@@ -1,0 +1,15 @@
+pkgbase = nodejs-generator-angular
+	pkgdesc = Yeoman generator for AngularJS
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/yeoman/generator-angular
+	arch = any
+	license = BSD
+	depends = nodejs-yeoman
+	depends = nodejs-generator-karma
+	noextract = generator-angular-0.12.1.tgz
+	source = http://registry.npmjs.org/generator-angular/-/generator-angular-0.12.1.tgz
+	sha1sums = 3a8775464cfbac132c563b5229306dfbb7b777aa
+
+pkgname = nodejs-generator-angular
+
