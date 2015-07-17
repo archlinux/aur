@@ -1,7 +1,7 @@
 pkgbase = transmission-csd
 	pkgdesc = Fast, easy, and free BitTorrent client (GTK+ GUI), CSD port
-	pkgver = r57.baf688f
-	pkgrel = 2
+	pkgver = r58.b965eb1
+	pkgrel = 1
 	url = https://github.com/derekstavis/transmission/tree/wip/gtk-3.14
 	install = transmission-gtk.install
 	arch = i686

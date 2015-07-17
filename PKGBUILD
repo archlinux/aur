@@ -3,8 +3,8 @@
 pkgname=transmission-csd
 _gitname=transmission
 _gitbranch="wip/gtk-3.14"
-pkgver=r57.baf688f
-pkgrel=2
+pkgver=r58.b965eb1
+pkgrel=1
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI), CSD port"
 arch=('i686' 'x86_64')
 license=('GPL2')
