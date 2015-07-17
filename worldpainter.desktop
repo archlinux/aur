@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Worldpainter
+GenericName=WorldPainter
+Comment=Paint your own Minecraft worlds
+Comment[de]=Minecraft-Welten durch malen erstellen
+Exec=worldpainter
+Icon=/usr/share/pixmaps/worldpainter.png
+Terminal=false
+Type=Application
+Categories=Game;
