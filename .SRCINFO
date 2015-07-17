@@ -1,0 +1,22 @@
+pkgbase = terminator-gtk3-bzr
+	pkgdesc = GTK3 porting branch for terminal emulator that supports tabs and grids GTK3
+	pkgver = r1561
+	pkgrel = 1
+	url = https://code.launchpad.net/~gnome-terminator/terminator/gtk3
+	install = terminator.install
+	arch = any
+	license = GPL2
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = intltool
+	depends = vte3
+	depends = pygtk
+	depends = xdg-utils
+	depends = python2-notify
+	depends = libkeybinder3
+	conflicts = terminator
+	source = terminator-gtk3-bzr::bzr+lp:terminator/gtk3
+	sha256sums = SKIP
+
+pkgname = terminator-gtk3-bzr
+
