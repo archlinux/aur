@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-coverflow-alt-tab-git
+	pkgdesc = Alternate Alt-Tab behaviour: iterates through windows in a manner akin to Cover Flow.
+	pkgver = r104.db5bd2c
+	pkgrel = 1
+	url = https://github.com/dmo60/CoverflowAltTab
+	install = gschemas.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-coverflow-alt-tab
+	conflicts = gnome-shell-extension-coverflow-alt-tab
+	source = gnome-shell-extension-coverflow-alt-tab::git+https://github.com/dmo60/CoverflowAltTab.git
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-coverflow-alt-tab-git
+
