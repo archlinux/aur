@@ -1,0 +1,13 @@
+# Freshly created, didn't find an existing rdma-ndd.service anywhere
+# Skeleton systemd service file, may need additional work such as Before/Requires/After
+
+[Unit]
+Description=Start or stop the srptools rdma-ndd daemon
+Documentation=file:///etc/infiniband-diags/ibdiag.conf
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rdma-ndd
+
+[Install]
+WantedBy=network.target

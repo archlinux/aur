@@ -1,0 +1,20 @@
+pkgbase = infiniband-diags
+	pkgdesc = OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibmad
+	depends = opensm
+	depends = systemd
+	depends = glib2
+	source = https://www.openfabrics.org/downloads/management/infiniband-diags-1.6.5.tar.gz
+	source = rdma-ndd.service
+	md5sums = 2a587bda5fc8287643c83363e4b6ec21
+	md5sums = 4958d94ab0760c4b5b1908d66895e118
+
+pkgname = infiniband-diags
+
