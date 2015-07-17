@@ -1,6 +1,6 @@
 # Maintainer: Maxqia maxqia@kliznoe.com
 
-pkgname=keepassx-http-merge
+pkgname=keepassx-http
 _gitname=keepassx
 pkgver=2.0.alpha6.r235.gf076ad3
 pkgrel=1

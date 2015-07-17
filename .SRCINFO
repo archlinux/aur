@@ -1,4 +1,4 @@
-pkgbase = keepassx-http-merge
+pkgbase = keepassx-http
 	pkgdesc = KeepassX, with eugenesan's merge request for keepasshttp.
 	pkgver = 2.0.alpha6.r235.gf076ad3
 	pkgrel = 1
@@ -28,5 +28,5 @@ pkgbase = keepassx-http-merge
 	source = git+https://github.com/eugenesan/keepassx.git#branch=http
 	md5sums = SKIP
 
-pkgname = keepassx-http-merge
+pkgname = keepassx-http
 
