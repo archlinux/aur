@@ -3,13 +3,14 @@
 _pkgname=canto-curses
 pkgname=canto-curses-git
 pkgver=0.9.3.r60.g456e3b8
-pkgrel=1
+pkgrel=2
 pkgdesc="ncurses user interface for canto-daemon/canto-next. Git version"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('ncurses' 'readline' 'canto-daemon>=0.9.1')
 makedepends=('git')
+optdepends=('xdg-utils: xdg-open is used as default browser')
 conflicts=('canto-curses')
 provides=('canto-curses=0.9.4')
 source=('git://github.com/themoken/canto-curses#branch=master')
