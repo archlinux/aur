@@ -1,0 +1,15 @@
+pkgbase = libmthca
+	pkgdesc = OpenFabrics Alliance InfiniBand Mellanox InfiniBand HCA driver
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.openfabrics.org/downloads/${pkgname}/README.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/libmthca/libmthca-1.0.5-0.1.gbe5eef3.tar.gz
+	md5sums = 685e4d142d7f1c8fbd1413bbef325153
+
+pkgname = libmthca
+
