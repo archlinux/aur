@@ -1,0 +1,17 @@
+pkgbase = gog-blackwell-legacy
+	pkgdesc = Meet Rosangela Blackwell, an embittered writer who just found out that she is a medium and that it’s her mission.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/blackwell_bundle
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	source = local://gog_blackwell_legacy_1.0.0.1.tar.gz
+	source = gog-blackwell-legacy
+	sha256sums = 819bd16896920db3147409fe5e2ea2cb05112ba11f7e292c39dcf255a1882ebe
+	sha256sums = 85772f6c6b12938561a8ae10ac948ff1fd8f5a6dd36ff907f530f3a495c909a0
+
+pkgname = gog-blackwell-legacy
+
