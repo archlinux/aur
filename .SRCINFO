@@ -1,4 +1,5 @@
 pkgbase = phpmetrics
+	pkgdesc = A static analysis tool for PHP
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://www.phpmetrics.org/

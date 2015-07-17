@@ -2,7 +2,7 @@
 pkgname=phpmetrics
 pkgver=1.1.1
 pkgrel=1
-pkgdesc=''
+pkgdesc='A static analysis tool for PHP'
 url="http://www.phpmetrics.org/"
 arch=('any')
 license=('MIT')
