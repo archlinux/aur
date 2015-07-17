@@ -1,6 +1,6 @@
 pkgbase = rust-nightly
 	pkgdesc = A safe, concurrent, practical language
-	pkgver = 1.3.0_2015.07.15
+	pkgver = 1.3.0_2015.07.17
 	pkgrel = 1
 	url = http://www.rust-lang.org/
 	install = rust.install
