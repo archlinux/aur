@@ -13,7 +13,7 @@ depends=('libpulse' 'boost-libs')
 makedepends=('boost')
 
 source=(https://github.com/cdemoulins/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('918488982c5d8314b809a188c2dbe97a')
+md5sums=('c43b97a565edcaee3161641416108355')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
