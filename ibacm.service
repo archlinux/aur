@@ -1,0 +1,16 @@
+# Copied from CentOS's ibacm-1.0.9-1.el7.src.rpm
+# Modified to follow Arch layout, and add before network and remote-fs-pre targets
+
+[Unit]
+Description=Starts the InfiniBand Address Cache Manager daemon
+Documentation=man:ibacm
+Before=network.target remote-fs-pre.target
+Requires=rdma.service
+After=rdma.service opensm.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/ibacm
+
+[Install]
+WantedBy=network.target

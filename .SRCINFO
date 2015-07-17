@@ -1,0 +1,18 @@
+pkgbase = ibacm
+	pkgdesc = OpenFabrics Alliance InfiniBand communication manager daemon for librdmacm
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	depends = libibumad
+	source = https://www.openfabrics.org/downloads/rdmacm/ibacm-1.0.9.tar.gz
+	source = ibacm.service
+	md5sums = 67c323e8c31671e27ccf5583ef8e7443
+	md5sums = ddb76ae6e28a18fcc984770b5699ea00
+
+pkgname = ibacm
+
