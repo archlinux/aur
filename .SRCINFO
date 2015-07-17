@@ -1,21 +1,21 @@
 pkgbase = gnome-news-git
-	pkgdesc = Music player for GNOME
-	pkgver = r86.dec2231
+	pkgdesc = A GNOME 3 Feed Reader
+	pkgver = r96.521ed49
 	pkgrel = 1
 	url = https://github.com/ignatenkobrain/gnome-news
 	install = gnome-news.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
 	makedepends = git
-	makedepends = gnome-common
 	makedepends = intltool
-	makedepends = itstool
 	depends = gtk3
 	depends = libgrss
 	depends = python
 	depends = tracker
-	provides = gnome-news=r86.dec2231
+	provides = gnome-news=r96.521ed49
 	conflicts = gnome-news
 	options = !emptydirs
 	source = git://github.com/ignatenkobrain/gnome-news.git
