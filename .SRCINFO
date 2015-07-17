@@ -1,0 +1,15 @@
+pkgbase = libfabric
+	pkgdesc = OpenFabrics Alliance fabric service interface communication library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = glibc
+	source = https://www.openfabrics.org/downloads/ofi/libfabric-1.0.0.tar.gz
+	md5sums = 9272fead8b89d6ee8db2e537215e6b19
+
+pkgname = libfabric
+
