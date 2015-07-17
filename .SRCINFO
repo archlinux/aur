@@ -1,0 +1,15 @@
+pkgbase = libmlx4
+	pkgdesc = OpenFabrics Alliance userspace Mellanox ConnectX InfiniBand HCA driver
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://www.openfabrics.org/downloads/mlx4/README.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/mlx4/libmlx4-1.0.6.tar.gz
+	md5sums = bbc1a9293a550250fb9ed8860824fad3
+
+pkgname = libmlx4
+
