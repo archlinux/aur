@@ -1,0 +1,21 @@
+pkgbase = multirust-git
+	pkgdesc = A tool for managing multiple Rust installations
+	pkgver = 0.0.6.r36.g011bb72
+	pkgrel = 1
+	url = https://github.com/brson/multirust
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	optdepends = gnupg: to verify signatures
+	provides = rust
+	provides = cargo
+	source = git+https://github.com/brson/multirust
+	source = git+https://github.com/rust-lang/rust-installer
+	source = git+https://github.com/rust-lang/rustup
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = multirust-git
+
