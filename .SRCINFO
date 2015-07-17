@@ -1,0 +1,15 @@
+pkgbase = libibverbs
+	pkgdesc = OpenFabrics Alliance RDMA (remote direct memory access) InfiniBand verbs library
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://www.openfabrics.org/downloads/verbs/README.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = glibc
+	source = https://www.openfabrics.org/downloads/verbs/libibverbs-1.1.8.tar.gz
+	md5sums = 1fe85889c8bbc4968b1feba6524ca408
+
+pkgname = libibverbs
+
