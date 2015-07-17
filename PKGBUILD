@@ -1,9 +1,9 @@
-# Maintainter: thr <r at sledinmay dot com>
+# Maintainer: thr <r at sledinmay dot com>
 # Contributor: Emmanuele Massimi <finferflu at gmail dot com>
 pkgname=gtkmagnetic
 pkgver=2.3
-pkgrel=7
-pkgdesc="An interpreter for Magnetic Scrolls adventures."
+pkgrel=8
+pkgdesc="An interpreter for British text adventures by Magnetic Scrolls."
 arch=(i686 x86_64)
 url="http://mirror.ifarchive.org/indexes/if-archiveXmagnetic-scrollsXinterpretersXmagnetic.html"
 license=('GPL')
@@ -17,22 +17,22 @@ md5sums=('74b0d027c6a70e39d9447f12c215e8a9'
          '2298ab45562d480d9d383242fa93dfdb'
          '04c0dcca4ad7f1e9eedf5f32fc5958f1') 
 
-build() {
-  patch -Np0 -i $srcdir/ms_init.patch
-  patch -Np0 -i $srcdir/gargoyle.patch
-  patch -Np0 -i $srcdir/glibc.patch
+prepare() {
+ patch -Np0 -i gargoyle.patch
+ patch -Np0 -i glibc.patch
+ patch -Np0 -i ms_init.patch
+}
 
-  cd $srcdir/Gtk
-  make || return 1
+build() {
+ cd Gtk
+ make
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/gtkmagnetic
-
-  install -D Gtk/README $pkgdir/usr/share/gtkmagnetic/
-  install -D Gtk/BUGS $pkgdir/usr/share/gtkmagnetic/
-  install -D $srcdir/../$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -D -m644 $srcdir/../$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -D Gtk/gtkmagnetic $pkgdir/usr/bin/gtkmagnetic
-  ln -s /usr/bin/gtkmagnetic $pkgdir/usr/bin/magnetic
+ install -D Gtk/gtkmagnetic ${pkgdir}/usr/bin/gtkmagnetic
+ ln -s /usr/bin/gtkmagnetic ${pkgdir}/usr/bin/magnetic
+ install -D -m644 Gtk/README ${pkgdir}/usr/share/gtkmagnetic/README
+ cp Gtk/BUGS ${pkgdir}/usr/share/gtkmagnetic/
+ install -D -m644 ${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+ install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }

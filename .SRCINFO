@@ -1,7 +1,7 @@
 pkgbase = gtkmagnetic
-	pkgdesc = An interpreter for Magnetic Scrolls adventures.
+	pkgdesc = An interpreter for British text adventures by Magnetic Scrolls.
 	pkgver = 2.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://mirror.ifarchive.org/indexes/if-archiveXmagnetic-scrollsXinterpretersXmagnetic.html
 	arch = i686
 	arch = x86_64
