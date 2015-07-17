@@ -1,24 +1,23 @@
 pkgbase = metasploit-git
-	pkgdesc = An advanced platform for using exploits (git version)
-	pkgver = 33556.d10b20b
+	pkgdesc = An advanced open-source platform for developing, testing, and using exploit code
+	pkgver = 34523.18ca617
 	pkgrel = 1
 	url = http://www.metasploit.com/
 	install = metasploit.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = git
 	depends = ruby
-	depends = ruby-bundler
-	depends = postgresql-libs
 	depends = libpcap
+	depends = postgresql-libs
+	depends = ruby-bundler
 	optdepends = java-runtime: msfgui support
 	optdepends = ruby-pg: database support
 	provides = metasploit
 	conflicts = metasploit
 	options = !strip
 	source = metasploit-git::git+https://github.com/rapid7/metasploit-framework.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = metasploit-git
 

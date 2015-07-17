@@ -1,10 +1,7 @@
-# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
-
 update_ruby_deps() {
   cd /opt/metasploit-git
   bundle install --path vendor/bundle
-  find /opt/metasploit-git/vendor/bundle/ruby -name robots.rb -exec chmod o+r '{} \'
-\;
+  find /opt/metasploit-git/vendor/bundle/ruby -name robots.rb -exec chmod o+r '{}' \;
 }
 
 
