@@ -1,0 +1,17 @@
+pkgbase = libibumad
+	pkgdesc = OpenFabrics Alliance InfiniBand umad (user MAD) library
+	pkgver = 1.3.10.2
+	pkgrel = 1
+	url = http://www.openfabrics.org
+	arch = x86_64
+	arch = i686
+	groups = ofed
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = glibc
+	source = https://www.openfabrics.org/downloads/management/libibumad-1.3.10.2.tar.gz
+	md5sums = 52a81356906f4faf29a6cf9583161aa8
+	sha512sums = 8046b485802fa9a6350730bf0af9ccd0c798365a6ba4af2d36bd986d2db3afdf91252ee1c0f34d737db43c2a3d1baa1b9654c3047476f849e716180e17c79c27
+
+pkgname = libibumad
+
