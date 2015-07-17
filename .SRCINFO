@@ -1,0 +1,15 @@
+pkgbase = perl-list-utilsby
+	pkgdesc = Higher-order list utility functions
+	pkgver = 0.09
+	pkgrel = 2
+	url = http://search.cpan.org/~pevans/List-UtilsBy
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.5.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/List-UtilsBy-0.09.tar.gz
+	md5sums = ed80e57fb37bf929c641b8a43470e488
+
+pkgname = perl-list-utilsby
+
