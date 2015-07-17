@@ -1,0 +1,14 @@
+pkgbase = perl-config-general
+	pkgdesc = Config::General - Generic Config Module
+	pkgver = 2.56
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Config-General
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://cpan.org/modules/by-module/Config/Config-General-2.56.tar.gz
+	sha512sums = 0439d690e58fb30cafd18e3c51fb1c6226cb20017fcd260959ad0210006d0e98a32a939d314b384e5c62871c0a59400a678099e3d703d9e2ed859de20292de9a
+
+pkgname = perl-config-general
+
