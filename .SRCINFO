@@ -1,0 +1,12 @@
+pkgbase = flashplugin-must-die
+	pkgdesc = Hinder flashplugin from being installed on your system.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur4.archlinux.org/packages/flashplugin-must-die
+	arch = any
+	license = BSD
+	provides = flashplugin
+	conflicts = flashplugin
+
+pkgname = flashplugin-must-die
+
