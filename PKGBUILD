@@ -1,5 +1,6 @@
 pkgname="mcabber-module-focus"
-pkgver=2.f6c6c90
+pkgver=3.d92e41c
+_commit=d92e41c
 pkgrel=1
 pkgdesc="autoleaving focus for mcabber"
 url="https://github.com/kovetskiy/mcabber-focus"
@@ -11,7 +12,8 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "mcabber-focus"
-    echo $(git rev-list --count master).$(git rev-parse --short master)
+    git checkout $_commit
+    echo $(git rev-list --count $_commit).$(git rev-parse --short $_commit)
 }
 
 build() {

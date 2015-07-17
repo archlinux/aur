@@ -1,6 +1,6 @@
 pkgbase = mcabber-module-focus
 	pkgdesc = autoleaving focus for mcabber
-	pkgver = 2.f6c6c90
+	pkgver = 3.d92e41c
 	pkgrel = 1
 	url = https://github.com/kovetskiy/mcabber-focus
 	arch = any
