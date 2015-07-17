@@ -1,6 +1,6 @@
 pkgbase = piwik
 	pkgdesc = Piwik is a real time web analytics software program, written in PHP
-	pkgver = 2.14.0
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = http://www.piwik.org
 	install = piwik.install
@@ -12,8 +12,8 @@ pkgbase = piwik
 	optdepends = python2: For log importer script
 	optdepends = php-geoip: For GeoIP php module
 	backup = etc/webapps/piwik/config.ini.php
-	source = http://builds.piwik.org/piwik-2.14.0.zip
-	sha512sums = 895c7110427552133f179a509b9dbf8e9ad7083604b354a036bb829f820bddd2e70f273eb6e5e2dc71b50663c797cf471a535b414b39528b946e3fe1f1ae6cad
+	source = http://builds.piwik.org/piwik-2.14.1.zip
+	sha512sums = f49e3ca3fd43a1f367848d2153f5a6381ef3730cd0c8f8a3e16a774a9f6c1cde07d20e67e2da4f2780b973b24d2fd6d626e16812f25e619f2627c0aeba6cf397
 
 pkgname = piwik
 
