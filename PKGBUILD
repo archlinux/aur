@@ -1,7 +1,8 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Earnestly
 
 pkgname=antimony-git
-pkgver=20150621
+pkgver=0.8.0b.r223.g24899a4
 pkgrel=1
 pkgdesc="Graph-based 3D CSG CAD modeller"
 url="http://www.mattkeeter.com/projects/antimony/3/"
@@ -9,7 +10,7 @@ provides=('antimony')
 conflicts=('antimony')
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('qt5-base' 'boost-libs' 'python' 'libpng')
+depends=('qt5-base' 'boost-libs' 'python' 'libpng' 'lemon')
 makedepends=('boost' 'git')
 source=("git+https://github.com/mkeeter/antimony.git")
 md5sums=('SKIP')
@@ -21,21 +22,21 @@ _gitbranch="master"
 
 pkgver() {
   cd "$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  #git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  git describe | sed 's/-/.r/; s/-/./'
 }
 
 build() {
     cd "$_gitname"
 
-    sed -i 's|/usr/local/bin/sb/|/usr/share/antimony/sb/|' app/app.pro 
-    sed -i 's|/usr/local/|/usr/|' qt/*.pri
-    sed -i 's|/usr/local/|/usr/|' app/*.pro
-    #sed -i 's|/usr/share/antimony/sb/fab|/usr/lib/python3.4/site-packages/fab|' qt/antimony.pro
+    sed -i 's|\(executable.path =\).*|\1 /usr/bin|' app/app.pro
+    sed -i 's|\(nodes_folder.path =\).*|\1  /usr/share/antimony/sb/nodes|' app/app.pro
+    sed -i 's|\(fab_folder.path =\).*|\1 /usr/lib/python3.4/site-packages/fab|' app/app.pro
     sed -i 's|return path.join("/");|return "/usr/share/antimony/sb/nodes";|' app/src/app/app.cpp
 
     mkdir -p build
     cd build
-    qmake-qt5 PREFIX="/usr" ../app/app.pro
+    qmake-qt5 PREFIX="/usr" ../sb.pro
     sed -i 's|/local/bin|/bin|g' Makefile
     make
 }
@@ -53,5 +54,5 @@ check() {
 package() {
     cd "$_gitname/build"
     make INSTALL_ROOT="$pkgdir" install
-    install -Dm755 antimony "$pkgdir/usr/bin/antimony"
+    install -Dm755 app/antimony "$pkgdir/usr/bin/antimony"
 }
