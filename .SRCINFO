@@ -1,0 +1,14 @@
+pkgbase = libbson
+	pkgdesc = A BSON utility library.
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = http://www.mongodb.org/display/DOCS/C+Language+Center
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python
+	source = https://github.com/mongodb/libbson/releases/download/1.1.9/libbson-1.1.9.tar.gz
+	sha512sums = eba60954ec9f11e118a2ee44b92f78dded71aa599806e3289212c2cba0cdb7e33c3c347afcd4297a6cac1d8502ce2b2d00b3e145a6b77233faf731b2319bcff0
+
+pkgname = libbson
+
