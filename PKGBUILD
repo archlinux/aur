@@ -29,4 +29,4 @@ package() {
   fi
 }
 
-md5sums=('SKIP')
+md5sums=('9d99c74817e7e84fedbfaca0ff182f19')
