@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-appindicator-git
 pkgver=15.r2.g0c53cfb
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('any')
 url="https://github.com/rgcjonas/gnome-shell-extension-appindicator"
@@ -13,7 +13,7 @@ depends=('gnome-shell' 'libappindicator')
 makedepends=('git')
 options=('!emptydirs')
 install="gschemas.install"
-source=("${pkgname}::git://github.com/rgcjonas/gnome-shell-extension-appindicator.git")
+source=("${pkgname}::git+https://github.com/rgcjonas/gnome-shell-extension-appindicator.git")
 sha512sums=('SKIP')
 
 pkgver() {
