@@ -28,9 +28,9 @@ source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDI
 md5sums_i686=('c91760a04f658845722380f6c7fd4709')
 md5sums_x86_64=('4eea308a1b04553f720f82fd2fac79d3')
 
-# Patch
-#source=('linux-4.0.patch')
-#md5sums=('fb510521aae27ebc91c0f3065ba73f11')
+# Auto-detect patches
+source=($(ls *.patch 2>/dev/null))
+md5sums=('SKIP')
 
 prepare() {
   # Remove previous builds
