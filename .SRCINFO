@@ -1,0 +1,17 @@
+pkgbase = proot
+	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
+	pkgver = 5.1.0
+	pkgrel = 2
+	url = http://proot.me
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-docutils
+	makedepends = libxslt
+	depends = talloc
+	provides = proot
+	source = proot-v5.1.0.tar.gz::https://github.com/cedric-vincent/PRoot/archive/v5.1.0.tar.gz
+	sha1sums = 7aaffddb8f955dc1015402846768a5e755294579
+
+pkgname = proot
+
