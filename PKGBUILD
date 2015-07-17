@@ -4,15 +4,13 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=4.90.90.r20707.07781db
+pkgver=4.90.1.r20748.2293e4e
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
-arch=(i686 x86_64)
-url="http://www.kdevelop.org/"
-license=(GPL)
-groups=('kde')
+arch=('i686' 'x86_64')
+url='http://www.kdevelop.org'
+license=('GPL')
 depends=('qt5-tools' 'kdevplatform-git' 'krunner' 'hicolor-icon-theme')
-makedepends=('cmake' 'git' 'okteta' 'krunner' 'plasma-framework')
 optdepends=('krunner: For enabling the KDevelop runner'
             'plasma-framework: Plasma libraries for enabling the plasma addons'
             'okteta: hex editor integration'
@@ -24,16 +22,16 @@ optdepends=('krunner: For enabling the KDevelop runner'
             'qt4-doc: qt4 documentation integration'
             'qt5-doc: qt5 documentation integration'
             'cmake: build system')
-provides=('kdevelop')
+makedepends=('extra-cmake-modules' 'git' 'okteta' 'krunner' 'plasma-framework')
 conflicts=('kdevelop')
-source=(git+git://anongit.kde.org/kdevelop)
+source=('git://anongit.kde.org/kdevelop.git')
 sha1sums=('SKIP')
-install='kdevelop-git.install'
+install=kdevelop-git.install
 
 pkgver() {
   cd kdevelop
-  _ver="$(cat CMakeLists.txt | grep -e KDEVELOP_VERSION_MAJOR -e KDEVELOP_VERSION_MINOR -e KDEVELOP_VERSION_PATCH | head -n3 | cut -d ' ' -f3 | tr -d ')')"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e KDEVELOP_VERSION_MAJOR -e KDEVELOP_VERSION_NINOR -e KDEVELOP_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
