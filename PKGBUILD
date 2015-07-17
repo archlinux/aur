@@ -35,8 +35,11 @@ md5sums_x86_64=('4eea308a1b04553f720f82fd2fac79d3')
 [[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('60bcf9f25c0736b17a48bf1e060cb271')
 
 # Auto-detect patches
-source=($(ls *.patch 2>/dev/null))
-md5sums=('SKIP')
+_patches=($(ls *.patch 2>/dev/null))
+for _patch in ${_patches[@]}; do
+    source+=("$_patch")
+    md5sums+=('SKIP')
+done
 
 _create_links() {
   # create missing soname links
