@@ -3,7 +3,7 @@
 
 pkgname='perl-glib-object-introspection'
 pkgver='0.028'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Dynamically create Perl language bindings"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
