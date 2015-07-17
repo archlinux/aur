@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.23.1.2.gdf7d170
+pkgver=2.19.23.1.10.g029145b
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -52,7 +52,6 @@ prepare() {
   
   patch -Np1 < $srcdir/no_fontforge-versioncheck.patch
   rm -rf python/out/
-  sed -i '1s+1.8++' scripts/out/lilypond-invoke-editor
 }
 
 build() {
@@ -70,6 +69,6 @@ build() {
 package() {
   cd lilypond/
   make DESTDIR="$pkgdir/" vimdir="/usr/share/vim/vimfiles" install
-
+  sed -i '1s+guile1.8+guile+' $pkgdir/usr/bin/lilypond-invoke-editor
   rm -rf "$pkgdir/usr/share/man"
 }
