@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=repoctl-git
-pkgver=v0.10.8.gcf1b293
+pkgver=v0.12
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64')
