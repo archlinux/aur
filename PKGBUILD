@@ -4,13 +4,13 @@
 
 pkgbase=redshift-git
 pkgname=('redshift-git' 'redshift-gtk-git')
-pkgver=1.9.1.r91.g59023d8
+pkgver=1.10.r32.g5f26b3d
 pkgrel=1
 pkgdesc='Adjusts the color temperature of your screen according to your surroundings (development version)'
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
 license=('GPL3')
-depends=('libxxf86vm' 'libdrm' 'libxcb' 'geoclue')
+depends=('libxxf86vm' 'libdrm' 'libxcb' 'geoclue2')
 makedepends=('git' 'intltool' 'python')
 source=(redshift::"git+https://github.com/jonls/redshift.git")
 md5sums=('SKIP')
@@ -24,7 +24,7 @@ build() {
   cd redshift
 
   ./bootstrap
-  ./configure --prefix=/usr --enable-randr --enable-drm --enable-vidmode --enable-geoclue \
+  ./configure --prefix=/usr --enable-randr --enable-drm --enable-vidmode --enable-geoclue2 \
     --with-systemduserunitdir=/usr/lib/systemd/user
   make
 }
