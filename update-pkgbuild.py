@@ -126,11 +126,6 @@ package() {
     msg "  Removing runshell componets from executables..."
     rm "$pkgdir"/opt/git-annex.linux/git{,-receive-pack,-upload-pack,-shell}
 
-    # 64-bit curl fix (endless loop in assistant when creating new repo - incompatible curl bin (system) and lib (package))
-    if [[ $CARCH == "x86_64" ]] ; then
-        rm "$pkgdir/opt/git-annex.linux/usr/lib/x86_64-linux-gnu/libcurl.so.4"
-    fi
-
     # move the man pages over to the system directory
     mv "$pkgdir/opt/git-annex.linux/usr/share" "$pkgdir/usr/"
     gzip -9 "$pkgdir/usr/share/man/man1/git-annex.1"
