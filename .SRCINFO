@@ -10,8 +10,8 @@ pkgbase = stlarch_font
 	depends = xorg-fonts-encodings
 	depends = xorg-mkfontdir
 	depends = xorg-mkfontscale
-	source = http://sourceforge.net/projects/stlarchfont/files/stlarch_font-1.5.tar.gz
-	sha256sums = bce5386cdc5efc1e3b5af3e26768c09a303df9fc43ed039eb82ebe8c7da803c3
+	source = https://github.com/Stebalien/stlarch_font/archive/v1.5.tar.gz
+	sha256sums = 3ddbc60c341c6af8dd0ce732c6ae863d435ea72c63613fa19c6e50ab0f399bbc
 
 pkgname = stlarch_font
 

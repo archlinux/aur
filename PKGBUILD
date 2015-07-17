@@ -10,15 +10,15 @@ url="http://sourceforge.net/projects/stlarchfont"
 license=('GPL2')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontdir' 'xorg-mkfontscale')
 install=stlarch_font.install
-source=("http://sourceforge.net/projects/stlarchfont/files/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/Stebalien/${pkgname}/archive/v${pkgver}.tar.gz")
 
 package () {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -dm755 "$pkgdir/usr/share/fonts/local"
   install -m644 *.pcf "$pkgdir/usr/share/fonts/local"
-  install -Dm644 README.stlarch "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 
   gzip "$pkgdir/usr/share/fonts/local/"*
 }
-sha256sums=('bce5386cdc5efc1e3b5af3e26768c09a303df9fc43ed039eb82ebe8c7da803c3')
+sha256sums=('3ddbc60c341c6af8dd0ce732c6ae863d435ea72c63613fa19c6e50ab0f399bbc')
