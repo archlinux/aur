@@ -1,0 +1,15 @@
+pkgbase = perl-module-find
+	pkgdesc = Find and use installed modules in a (sub)category
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Find
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CR/CRENZ/Module-Find-0.12.tar.gz
+	md5sums = abd614f3ebca68b4e7cc474400a8c0f2
+
+pkgname = perl-module-find
+
