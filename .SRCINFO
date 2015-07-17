@@ -1,0 +1,23 @@
+pkgbase = starrypy
+	pkgdesc = Plugin-driven Starbound proxy server built using Twisted.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/CarrotsAreMediocre/StarryPy
+	install = starrypy.install
+	arch = any
+	license = WTFPL
+	makedepends = python2
+	depends = python2-twisted
+	depends = python2-sqlalchemy
+	depends = python2-enum34
+	depends = python2-construct
+	depends = python2-tornado
+	optdepends = python2-nose: testsuite
+	backup = srv/starrypy/config/config.json.default
+	source = starrypy.zip::https://github.com/StarryPy/StarryPy/archive/b11e7444a0223bd86f9601f338950995e49e6ae0.zip
+	source = starrypy.sh
+	md5sums = bc55382d21484feaf2b5b60a1acac86c
+	md5sums = 681dabb1214c046fd6f2db802eaf6a79
+
+pkgname = starrypy
+

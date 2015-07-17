@@ -1,0 +1,22 @@
+post_install() {
+  getent group starbound >/dev/null 2>&1 || groupadd starbound
+  getent passwd starbound >/dev/null 2>&1 || useradd -g starbound -d /srv/starrypy -s /bin/bash starbound
+  chown -R starbound:starbound /srv/starrypy/
+  cd /srv/starrypy
+  python2 server.py
+}
+
+post_upgrade() {
+  getent group starbound >/dev/null 2>&1 || groupadd starbound
+  getent passwd starbound >/dev/null 2>&1 || useradd -g starbound -d /srv/starrypy -s /bin/bash starbound
+  chown -R starbound:starbound /srv/starrpy/
+}
+
+post_remove() {
+  if getent passwd starbound >/dev/null 2>&1; then
+    userdel starbound
+  fi
+  if getent group starbound >/dev/null 2>&1; then
+    groupdel starbound
+  fi
+}
