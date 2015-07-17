@@ -1,0 +1,19 @@
+pkgbase = libqi
+	pkgdesc = Qi library from Aldebaran
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/aldebaran/libqi
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = qibuild
+	depends = boost
+	options = strip
+	options = staticlibs
+	source = https://github.com/aldebaran/libqi/archive/v2.1.3.tar.gz
+	source = without_qiprobe.patch
+	sha1sums = 778b4b82da7ca3c5522244e73fd901962a025271
+	sha1sums = aedb17967843f9745d6ef9a2a2c183b669e94939
+
+pkgname = libqi
+
