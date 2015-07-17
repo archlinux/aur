@@ -1,0 +1,17 @@
+pkgbase = ibutils
+	pkgdesc = OpenFabrics Alliance InfiniBand network diagnostic and testing utilities
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = opensm
+	depends = tk
+	depends = perl
+	source = https://www.openfabrics.org/downloads/ibutils/ibutils-1.5.7-0.2.gbd7e502.tar.gz
+	md5sums = 8c296a4262a91078d61f20dc58adee9d
+
+pkgname = ibutils
+
