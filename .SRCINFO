@@ -1,0 +1,24 @@
+pkgbase = haskell-parsers
+	pkgdesc = Parsing combinators
+	pkgver = 0.12.2.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/parsers
+	install = haskell-parsers.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-attoparsec<0.14
+	depends = haskell-charset<1
+	depends = haskell-containers
+	depends = haskell-parsec
+	depends = haskell-scientific<0.4
+	depends = haskell-text
+	depends = haskell-transformers
+	depends = haskell-unordered-containers<0.3
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/parsers/0.12.2.1/parsers-0.12.2.1.tar.gz
+	md5sums = 74ccf6c2b9569a0fe7ab88d2142da344
+
+pkgname = haskell-parsers
+
