@@ -1,0 +1,15 @@
+pkgbase = libmlx5
+	pkgdesc = OpenFabrics Alliance InfiniBand Mellanox Connect-IB InfiniBand HCA driver
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/mlx5/libmlx5-1.0.2.tar.gz
+	md5sums = fdc8f38f01a02e26f38c0965b5357d17
+
+pkgname = libmlx5
+
