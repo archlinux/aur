@@ -4,7 +4,7 @@
 pkgname=ampache-git
 _gitname=ampache
 pkgver=3.8.0.beta2.25.gf946a1c
-pkgrel=3
+pkgrel=4
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
