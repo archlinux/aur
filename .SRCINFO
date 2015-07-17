@@ -1,0 +1,20 @@
+pkgbase = include-what-you-use-git
+	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files
+	pkgver = r510.4b74b71
+	pkgrel = 1
+	url = http://code.google.com/p/include-what-you-use/
+	arch = i686
+	arch = x86_64
+	license = LLVM Release License
+	makedepends = clang>=3.6
+	makedepends = clang<3.7
+	depends = clang>=3.6
+	depends = clang<3.7
+	optdepends = python2
+	provides = include-what-you-use=0.4
+	conflicts = include-what-you-use
+	source = include-what-you-use::git+https://github.com/include-what-you-use/include-what-you-use#branch=clang_3.6
+	sha1sums = SKIP
+
+pkgname = include-what-you-use-git
+
