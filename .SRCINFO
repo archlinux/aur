@@ -1,14 +1,14 @@
 pkgbase = canto-next-git
 	pkgdesc = News aggregator for Atom/RSS/RDF. Git version
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgver = 0.9.1.r64.g4bbba6f
+	pkgrel = 1
 	url = http://codezen.org/canto-ng/
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python-feedparser
 	optdepends = canto-curses-git: Curses interface. Git pull
-	provides = canto-daemon=0.9.1
+	provides = canto-daemon=0.9.2
 	conflicts = canto-daemon
 	source = git://github.com/themoken/canto-next#branch=master
 	md5sums = SKIP
