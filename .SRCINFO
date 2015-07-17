@@ -1,0 +1,14 @@
+pkgbase = oosbuild
+	pkgdesc = Build an autoconf project out of source
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BPaden/oosbuild
+	arch = any
+	license = GPL2
+	depends = python
+	depends = python-docopt
+	source = https://github.com/BPaden/oosbuild/archive/1.0.tar.gz
+	sha256sums = 8ace8d822c8ff2c51f9f58eacc65caac98060253fce3026b9df0352895b33a28
+
+pkgname = oosbuild
+
