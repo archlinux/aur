@@ -2,7 +2,7 @@
 # Based on the gcc-docs PKGBUILD available in community
 _pkgname=gfortran
 pkgname=${_pkgname}-docs
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Set of HTML documentation for then GNU Fortran compiler"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://gcc.gnu.org/onlinedocs/"
 depends=('libgomp-docs')
 license=('GPL')
 options=('docs' '!strip')
-source=("http://gcc.gnu.org/onlinedocs/gcc-${pkgver}/${_pkgname}-html.tar.gz")
-sha256sums=('2b5ff84d27524e74bb104d4e1c67300b4dc37a6be0fc1bc9458fa32aa401e44e')
+source=(${pkgname}-html-${pkgver}.tar.gz::"https://gcc.gnu.org/onlinedocs/gcc-${pkgver}/${_pkgname}-html.tar.gz")
+sha256sums=('d684658b01b250de23d662fbec518afd0c0e36cacb00d40dc83435a50d61ffe8')
 
 package() {
   cd "${srcdir}/${_pkgname}"
