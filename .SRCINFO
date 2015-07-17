@@ -1,0 +1,17 @@
+pkgbase = gog-blackwell-deception
+	pkgdesc = Meet Rosangela Blackwell, an embittered writer who just found out that she is a medium and that it’s her mission.
+	pkgver = 1.0.0.2
+	pkgrel = 1
+	url = http://www.gog.com/game/blackwell_bundle
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	source = local://gog_blackwell_deception_1.0.0.2.tar.gz
+	source = gog-blackwell-deception
+	sha256sums = bc317479fc432a9f873c5c24c6000a91edbb618dbecc7dc20d7d292d9048df02
+	sha256sums = 96d1bb5c6648748be966ace6bb9c3d380f207d577c7dc729e8778ea409cbe442
+
+pkgname = gog-blackwell-deception
+
