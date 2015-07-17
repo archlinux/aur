@@ -1,6 +1,6 @@
 pkgbase = gog-legend-of-grimrock
 	pkgdesc = Explore a vast network of ancient tunnels, discover secrets, and find a way to survive in the perilous dungeons of Mount Grimrock.
-	pkgver = 1.0.0.3
+	pkgver = 1.1.0.4
 	pkgrel = 1
 	url = http://www.gog.com/game/legend_of_grimrock
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = gog-legend-of-grimrock
 	depends = libx11
 	depends = libxext
 	depends = desktop-file-utils
-	source = local://legend_of_grimrock_1.0.0.3.tar.gz
+	source = local://legend_of_grimrock_1.1.0.4.tar.gz
 	source = gog-legend-of-grimrock
-	sha256sums = a788b20caaffca65fa111cd1b145391f6fdbb28b76ba0b99f96fcfd73b7fd946
+	sha256sums = bc5e387feb53629cbc5d8f889046dbf8e931d5b3958879171570f57f774168e6
 	sha256sums = f5e9f95e55ab87c46033606c28cea3c76ff0a4367fa0dd671070b28a9be78130
 
 pkgname = gog-legend-of-grimrock
