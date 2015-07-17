@@ -1,0 +1,23 @@
+pkgbase = rainbowstream
+	pkgdesc = A smart and nice Twitter client on terminal written in Python
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = http://www.rainbowstream.org/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	depends = python-arrow-git
+	depends = python-requests
+	depends = python-pyfiglet
+	depends = python-twitter
+	depends = python-pillow
+	depends = python-pysocks-git
+	provides = rainbowstream
+	conflicts = rainbowstream
+	source = https://pypi.python.org/packages/source/r/rainbowstream/rainbowstream-1.2.7.tar.gz
+	sha512sums = 5999f4f64cb7f29a255f5518a776a89ac83557bee496872ff014ca92bb68e7627d0ecaf7f786742f23cd94e4b69a4cd0c204cf6b30d224ac77d2bd69d69296d9
+
+pkgname = rainbowstream
+
