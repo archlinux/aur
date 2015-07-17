@@ -1,0 +1,19 @@
+pkgbase = pkcs11-helper
+	pkgdesc = A library that simplifies the interaction with PKCS11 providers for end-user applications using a simple API and optional OpenSSL engine.
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://www.opensc-project.org/opensc/wiki/pkcs11-helper
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = BSD
+	depends = gnutls
+	depends = nss
+	depends = openssl
+	provides = pkcs11-helper
+	conflicts = pkcs11-helper-1.11
+	options = !libtool
+	source = https://github.com/OpenSC/pkcs11-helper/archive/pkcs11-helper-1.11.tar.gz
+	sha512sums = 098bbd8fdfe1df065f3acc402faa95bbba9a440ed4327f0d976d0e8fe0a2cac8546d33481b2fa85493f600ec56f248db01835edf10b3ed608fea67f27c3c54c2
+
+pkgname = pkcs11-helper
