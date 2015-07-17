@@ -4,7 +4,7 @@
 pkgname=dump1090-fa-git
 _gitname=dump1090
 pkgver=1.14.r42.ga3d26ea
-pkgrel=1
+pkgrel=2
 pkgdesc="FlightAware fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/flightaware/dump1090"
@@ -37,8 +37,8 @@ package() {
   # mkdir -p "${pkgdir}/usr/bin"
   install -D -m755 "${srcdir}/${_gitname}/dump1090" "${pkgdir}/usr/bin/dump1090"
   install -D -m755 "${srcdir}/${_gitname}/view1090" "${pkgdir}/usr/bin/view1090"
-  install -d -m755 "${pkgdir}/usr/share/dump1090/public_html"
+  install -d -m755 "${pkgdir}/usr/share/dump1090/"
   install -D -m775 dump1090.service "${pkgdir}/usr/lib/systemd/system/dump1090.service"
   chmod -x "${pkgdir}/usr/lib/systemd/system/dump1090.service"
-  cp -r "${srcdir}/${_gitname}/public_html/" "${pkgdir}/usr/share/dump1090/"
+  cp -r "${srcdir}"/"${_gitname}"/public_html/* "${pkgdir}/usr/share/dump1090/"
 }
