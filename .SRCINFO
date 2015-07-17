@@ -39,7 +39,7 @@ pkgbase = linux-dell
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-dell
-	pkgdesc = The Linux-dell kernel and modules
+	pkgdesc = The Arch linux 4.1.2-2 kernel with patches for new Dell laptops such as 2015 XPS 13
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware

@@ -1,0 +1,10 @@
+*.tar.gz
+*.tar.xz
+*.sign
+*.part
+*.xz
+*.pkg
+*.log
+*.log.*
+pkg/
+src/
