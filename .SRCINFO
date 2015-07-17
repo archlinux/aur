@@ -1,0 +1,18 @@
+pkgbase = scenebuilder
+	pkgdesc = JavaFX visual layout tool that lets users quickly design JavaFX application user interfaces, without coding.
+	pkgver = 8u51_b16
+	pkgrel = 1
+	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	makedepends = apache-ant
+	depends = jdk8-openjdk
+	depends = java-openjfx
+	source = scenebuilder::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=8u51-b16
+	source = SceneBuilder
+	sha256sums = SKIP
+	sha256sums = af2f200569f3062a9f0239a4d20ef1e0e2e2eb6da99f2659dd7eb2a195480e9f
+
+pkgname = scenebuilder
+
