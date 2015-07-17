@@ -9,11 +9,10 @@
 # Includes:
 #
 # XPS-13 (2015) audio/mic patches
-# TRACKPAD fix for touch events under gnome shell (et al)
 
-pkgbase=linux-xps13-alt     # Build kernel with a different name
-_srcname=linux-4.0
-pkgver=4.0.7
+pkgbase=linux-xps13-alt       # Build kernel with a different name
+_srcname=linux-4.1
+pkgver=4.1.2
 pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -30,23 +29,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-block-loop-convert-to-per-device-workqueue.patch'
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch'
-        'hda-realtek-dell-headset-mode-for-alc288.patch'
-        'hda-realtek-dell-headset-mode-for-alc286-288.patch'
-        'input_mt_get_slot_by_key.patch')
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
+        'hda_dell_mic_fixup.patch')
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
+            '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
             'SKIP'
-            'bd84b917fdd0b167e6cb3c3f0e59a773bc43a22d5fbee197ab2d4ba078093630'
-            '1897de88b48bbafb4912a140b772e70ebaad6ec1348e25972be200743224efca'
+            'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
+            '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
+            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
+            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '27449bcba953556f720052f0be06b64b862f79f01fb8d45beed4ff30a455ba7b'
-            '2f407826a0326005e7c681d8cc0239201d3df6aade17812ec7dbcab874db629a'
-            'cd90e3e8c082991b494c364bd2c943afee8b2f46cce71bbdd71e3777d70a9d01')
+            '8c8cd1e8f87089e92ff4e3ab96ed5f4865b031b50930543bd32a31e7b0935e8e')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -68,29 +67,23 @@ prepare() {
   patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
   patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
 
+  # Fix bluetooth chip initialization on some macbooks (FS#45554)
+  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # -------------------------------------------------------------------
-  # XPS 13 (2015) specific patches
-  # -------------------------------------------------------------------
-
-  # add xps specific mic patches
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit?id=e1e62b98ebddc3234f3259019d3236f66fc667f8
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit?id=f3b703326541d0c1ce85f5e570f6d2b6bd4296ec 
-  patch -p1 -i "${srcdir}/hda-realtek-dell-headset-mode-for-alc288.patch"
-  patch -p1 -i "${srcdir}/hda-realtek-dell-headset-mode-for-alc286-288.patch"
-
-  # add patch to fix gnome shell (et al) bug wherein all trackpad
-  # touches are interpreted as clicks after some time
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers?id=c627589282213bbef12a482c0b87f23526ceb3f0
-  patch -p1 -i "${srcdir}/input_mt_get_slot_by_key.patch"
-
-  # -------------------------------------------------------------------
-  # END linux-xps13-alt patches
-  # -------------------------------------------------------------------
+  # Fix XPS-13 mic
+  # https://git.kernel.org/cgit/linux/kernel/git/tiwai/sound.git/commit/?h=for-linus&id=831bfdf9520e389357cfeee42a6174a73ce7bdb7
+  patch -p1 -i "${srcdir}/hda_dell_mic_fixup.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
