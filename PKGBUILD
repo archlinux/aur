@@ -2,8 +2,7 @@
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=1.7.3.26.g2209d76
-_pkgver=1.7.0
+pkgver=1.7.3.37.gbac5d03
 pkgrel=1
 _subver=2
 pkgdesc="Build and distribute virtualized development environments"
@@ -45,7 +44,7 @@ package() {
 
   ln -s /opt/$_pkgname/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 
-  ln -s /opt/$_pkgname/embedded/gems/gems/$_pkgname-$_pkgver/contrib/bash/completion.sh \
+  install -Dm644 "$srcdir"/$_pkgname/contrib/bash/completion.sh \
     "$pkgdir"/usr/share/bash-completion/completions/$_pkgname
 
   install -Dm644 "$srcdir"/$_pkgname/LICENSE \

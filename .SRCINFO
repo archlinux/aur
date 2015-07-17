@@ -1,6 +1,6 @@
 pkgbase = vagrant-git
 	pkgdesc = Build and distribute virtualized development environments
-	pkgver = 1.7.3.26.g2209d76
+	pkgver = 1.7.3.37.gbac5d03
 	pkgrel = 1
 	url = http://vagrantup.com
 	arch = i686
