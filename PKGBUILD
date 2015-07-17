@@ -2,12 +2,12 @@
 
 pkgname=gnome-shell-extension-freon-git
 pkgver=1.3.r120.g12ecebd
-pkgrel=1
-pkgdesc="Extension for displaying CPU temperature, HDD/SSD temperature, video card temperature (Nvidia/Catalyst), voltage and fan RPM in GNOME Shell."
+pkgrel=2
+pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in GNOME Shell."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
 license=('GPL')
-depends=('dconf')
+depends=('dconf' 'gnome-shell')
 makedepends=('git' 'gnome-common' 'intltool')
 provides=('gnome-shell-extension-freon')
 conflicts=('gnome-shell-extensions-git' 'gnome-shell-extensions-freon')
@@ -23,13 +23,15 @@ pkgver() {
   )
 }
 
-build() {
-    cd "${srcdir}/${pkgname}"
-    sed -i 's#\[\"3.12\", \"3.14\"\]#\[\"3.12\", \"3.14\", \"3.16\"\]#g' "./freon@UshakovVasilii_Github.yahoo.com/metadata.json"
+prepare() {
+  _branch=master
+  cd "${srcdir}/${pkgname}"
+  git checkout ${_branch}
+  sed -i 's#\[\"3.12\", \"3.14\"\]#\[\"3.12\", \"3.14\", \"3.16\"\]#g' "./freon@UshakovVasilii_Github.yahoo.com/metadata.json"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
-    cp -r freon@UshakovVasilii_Github.yahoo.com "${pkgdir}/usr/share/gnome-shell/extensions/"
+  cd "${srcdir}/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
+  cp -r freon@UshakovVasilii_Github.yahoo.com "${pkgdir}/usr/share/gnome-shell/extensions/"
 }

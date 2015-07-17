@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-freon-git
-	pkgdesc = Extension for displaying CPU temperature, HDD/SSD temperature, video card temperature (Nvidia/Catalyst), voltage and fan RPM in GNOME Shell.
+	pkgdesc = Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in GNOME Shell.
 	pkgver = 1.3.r120.g12ecebd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UshakovVasilii/gnome-shell-extension-freon
 	install = gschemas.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = gnome-shell-extension-freon-git
 	makedepends = gnome-common
 	makedepends = intltool
 	depends = dconf
+	depends = gnome-shell
 	provides = gnome-shell-extension-freon
 	conflicts = gnome-shell-extensions-git
 	conflicts = gnome-shell-extensions-freon
