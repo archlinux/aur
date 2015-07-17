@@ -1,0 +1,17 @@
+# Copied from Fedora's opensm-3.3.17-4.fc22.x86_64.rpm
+# Modified to follow Arch layout
+                                                     
+[Unit]
+Description=Starts the OpenSM InfiniBand fabric Subnet Manager
+Documentation=man:opensm
+DefaultDependencies=false
+Before=network.target remote-fs-pre.target
+Requires=rdma.service
+After=rdma.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/opensm --daemon
+
+[Install]
+WantedBy=network.target

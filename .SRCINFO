@@ -1,0 +1,18 @@
+pkgbase = opensm
+	pkgdesc = OpenFabrics Alliance InfiniBand Subnet Manager and Administrator
+	pkgver = 3.3.19
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibumad
+	depends = rdma
+	source = https://www.openfabrics.org/downloads/management/opensm-3.3.19.tar.gz
+	source = opensm.service
+	md5sums = b41a64985fc3050b934ce6082cbac1be
+	md5sums = 130d30d701776a27ecad9c8c90b9eb09
+
+pkgname = opensm
+
