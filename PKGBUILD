@@ -2,7 +2,7 @@
 
 _pkgname=cutadapt
 pkgname=python2-$_pkgname
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='trim adapters from high-throughput sequencing reads'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://code.google.com/p/$_pkgname/"
 license=('custom')
 depends=('python2')
 source=("https://pypi.python.org/packages/source/c/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('73cc9c52d1b14883c24a4c29b16e0b61')
+md5sums=('bcc9cc9d5ac5c8fc5bf91aad42fa7f82')
 provides=('cutadapt')
 conflicts=('python-cutadapt')
 
