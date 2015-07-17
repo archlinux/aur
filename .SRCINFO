@@ -1,0 +1,19 @@
+pkgbase = buttersink-git
+	pkgdesc = Buttersink is like rsync for btrfs snapshots
+	pkgver = 0.6.r2.g2ad4585
+	pkgrel = 1
+	url = https://github.com/AmesCornish/buttersink.git
+	arch = any
+	license = GPL3
+	depends = btrfs-progs
+	depends = python2-boto
+	depends = python2-crcmod
+	depends = python2-flake8
+	depends = python2-psutil
+	provides = buttersink
+	conflicts = buttersink
+	source = git+https://github.com/AmesCornish/buttersink.git
+	md5sums = SKIP
+
+pkgname = buttersink-git
+
