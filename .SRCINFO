@@ -1,7 +1,7 @@
 pkgbase = ampache
 	pkgdesc = A PHP-based tool for managing and playing your audio/video files via a web interface
 	pkgver = 3.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.ampache.org/
 	install = ampache.install
 	arch = i686
