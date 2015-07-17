@@ -1,0 +1,1365 @@
+From 74d2b442bdbf023b5ba300233c038b4cd46b9ac6 Mon Sep 17 00:00:00 2001
+From: Kailang Yang <kailang@realtek.com>
+Date: Tue, 12 May 2015 17:11:10 +0800
+Subject: [PATCH 01/10] ALSA: hda/realtek - Support headset mode for ALC298
+
+Support headset mode for ALC298 platform.
+
+Signed-off-by: Kailang Yang <kailang@realtek.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/pci/hda/patch_realtek.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index 6d01045..e62c766 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -3586,6 +3586,7 @@ static void alc_headset_mode_unplugged(struct hda_codec *codec)
+ 		break;
+ 	case 0x10ec0286:
+ 	case 0x10ec0288:
++	case 0x10ec0298:
+ 		alc_process_coef_fw(codec, coef0288);
+ 		break;
+ 	case 0x10ec0292:
+@@ -3660,6 +3661,7 @@ static void alc_headset_mode_mic_in(struct hda_codec *codec, hda_nid_t hp_pin,
+ 		break;
+ 	case 0x10ec0286:
+ 	case 0x10ec0288:
++	case 0x10ec0298:
+ 		alc_update_coef_idx(codec, 0x4f, 0x000c, 0);
+ 		snd_hda_set_pin_ctl_cache(codec, hp_pin, 0);
+ 		alc_process_coef_fw(codec, coef0288);
+@@ -3743,6 +3745,7 @@ static void alc_headset_mode_default(struct hda_codec *codec)
+ 		break;
+ 	case 0x10ec0286:
+ 	case 0x10ec0288:
++	case 0x10ec0298:
+ 		alc_process_coef_fw(codec, coef0288);
+ 		break;
+ 	case 0x10ec0292:
+@@ -3807,6 +3810,9 @@ static void alc_headset_mode_ctia(struct hda_codec *codec)
+ 	case 0x10ec0283:
+ 		alc_process_coef_fw(codec, coef0233);
+ 		break;
++	case 0x10ec0298:
++		alc_update_coef_idx(codec, 0x8e, 0x0070, 0x0020);/* Headset output enable */
++		/* ALC298 jack type setting is the same with ALC286/ALC288 */
+ 	case 0x10ec0286:
+ 	case 0x10ec0288:
+ 		alc_update_coef_idx(codec, 0x4f, 0xfcc0, 0xd400);
+@@ -3875,6 +3881,9 @@ static void alc_headset_mode_omtp(struct hda_codec *codec)
+ 	case 0x10ec0283:
+ 		alc_process_coef_fw(codec, coef0233);
+ 		break;
++	case 0x10ec0298:
++		alc_update_coef_idx(codec, 0x8e, 0x0070, 0x0010);/* Headset output enable */
++		/* ALC298 jack type setting is the same with ALC286/ALC288 */
+ 	case 0x10ec0286:
+ 	case 0x10ec0288:
+ 		alc_update_coef_idx(codec, 0x4f, 0xfcc0, 0xe400);
+@@ -3937,6 +3946,9 @@ static void alc_determine_headset_type(struct hda_codec *codec)
+ 		val = alc_read_coef_idx(codec, 0x46);
+ 		is_ctia = (val & 0x0070) == 0x0070;
+ 		break;
++	case 0x10ec0298:
++		alc_update_coef_idx(codec, 0x8e, 0x0070, 0x0020); /* Headset output enable */
++		/* ALC298 check jack type is the same with ALC286/ALC288 */
+ 	case 0x10ec0286:
+ 	case 0x10ec0288:
+ 		alc_process_coef_fw(codec, coef0288);
+-- 
+2.4.5
+
+
+From b3c4501cb1d510436ada487a7e8502b96632d32f Mon Sep 17 00:00:00 2001
+From: Kailang Yang <kailang@realtek.com>
+Date: Mon, 18 May 2015 15:31:20 +0800
+Subject: [PATCH 02/10] ALSA: hda/realtek - Support Dell headset mode for
+ ALC298
+
+Dell create new platform with ALC298 codec.
+This patch will enable headset mode for ALC298/ALC3266 platform.
+
+Signed-off-by: Kailang Yang <kailang@realtek.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/pci/hda/patch_realtek.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index e62c766..b9d8a4e 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -4529,6 +4529,7 @@ enum {
+ 	ALC288_FIXUP_DELL_XPS_13_GPIO6,
+ 	ALC292_FIXUP_DELL_E7X,
+ 	ALC292_FIXUP_DISABLE_AAMIX,
++	ALC298_FIXUP_DELL1_MIC_NO_PRESENCE,
+ };
+ 
+ static const struct hda_fixup alc269_fixups[] = {
+@@ -5061,6 +5062,16 @@ static const struct hda_fixup alc269_fixups[] = {
+ 		.chained = true,
+ 		.chain_id = ALC292_FIXUP_DISABLE_AAMIX
+ 	},
++	[ALC298_FIXUP_DELL1_MIC_NO_PRESENCE] = {
++		.type = HDA_FIXUP_PINS,
++		.v.pins = (const struct hda_pintbl[]) {
++			{ 0x18, 0x01a1913c }, /* use as headset mic, without its own jack detect */
++			{ 0x1a, 0x01a1913d }, /* use as headphone mic, without its own jack detect */
++			{ }
++		},
++		.chained = true,
++		.chain_id = ALC269_FIXUP_HEADSET_MODE
++	},
+ };
+ 
+ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+@@ -5329,6 +5340,13 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
+ 	{0x1d, 0x40700001}, \
+ 	{0x1e, 0x411111f0}
+ 
++#define ALC298_STANDARD_PINS \
++	{0x18, 0x411111f0}, \
++	{0x19, 0x411111f0}, \
++	{0x1a, 0x411111f0}, \
++	{0x1e, 0x411111f0}, \
++	{0x1f, 0x411111f0}
++
+ static const struct snd_hda_pin_quirk alc269_pin_fixup_tbl[] = {
+ 	SND_HDA_PIN_QUIRK(0x10ec0255, 0x1028, "Dell", ALC255_FIXUP_DELL2_MIC_NO_PRESENCE,
+ 		ALC255_STANDARD_PINS,
+@@ -5608,6 +5626,14 @@ static const struct snd_hda_pin_quirk alc269_pin_fixup_tbl[] = {
+ 		{0x16, 0x411111f0},
+ 		{0x18, 0x411111f0},
+ 		{0x19, 0x411111f0}),
++	SND_HDA_PIN_QUIRK(0x10ec0298, 0x1028, "Dell", ALC298_FIXUP_DELL1_MIC_NO_PRESENCE,
++		ALC298_STANDARD_PINS,
++		{0x12, 0x90a60130},
++		{0x13, 0x40000000},
++		{0x14, 0x411111f0},
++		{0x17, 0x90170140},
++		{0x1d, 0x4068a36d},
++		{0x21, 0x03211020}),
+ 	{}
+ };
+ 
+-- 
+2.4.5
+
+
+From fbeae46c723575a717d9753fde1746b133e8128f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Sat, 6 Jun 2015 10:23:28 +0200
+Subject: [PATCH 03/10] dell-rbtn: Dell Airplane Mode Switch driver
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is an ACPI driver for Dell laptops which receive HW slider radio
+switch or hotkey toggle wifi button events. It exports rfkill device
+dell-rbtn (which provide correct hard rfkill state) or hotkey input device.
+
+Alex Hung is author of original hotkey input device code.
+
+Signed-off-by: Pali Rohár <pali.rohar@gmail.com>
+Tested-by: Gabriele Mazzotta <gabriele.mzt@gmail.com>
+Cc: Alex Hung <alex.hung@canonical.com>
+[fengguang.wu@intel.com: rbtn_ops can be static]
+Signed-off-by: Fengguang Wu <fengguang.wu@intel.com>
+[dvhart@linux.intel.com: Correct multi-line comment formatting]
+Signed-off-by: Darren Hart <dvhart@linux.intel.com>
+---
+ MAINTAINERS                      |   5 +
+ drivers/platform/x86/Kconfig     |  16 ++
+ drivers/platform/x86/Makefile    |   1 +
+ drivers/platform/x86/dell-rbtn.c | 332 +++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 354 insertions(+)
+ create mode 100644 drivers/platform/x86/dell-rbtn.c
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d8afd29..fbb6ba3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3085,6 +3085,11 @@ L:	platform-driver-x86@vger.kernel.org
+ S:	Maintained
+ F:	drivers/platform/x86/dell-laptop.c
+ 
++DELL LAPTOP RBTN DRIVER
++M:	Pali Rohár <pali.rohar@gmail.com>
++S:	Maintained
++F:	drivers/platform/x86/dell-rbtn.*
++
+ DELL LAPTOP FREEFALL DRIVER
+ M:	Pali Rohár <pali.rohar@gmail.com>
+ S:	Maintained
+diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
+index f9f205c..37357aa 100644
+--- a/drivers/platform/x86/Kconfig
++++ b/drivers/platform/x86/Kconfig
+@@ -138,6 +138,22 @@ config DELL_SMO8800
+ 	  To compile this driver as a module, choose M here: the module will
+ 	  be called dell-smo8800.
+ 
++config DELL_RBTN
++	tristate "Dell Airplane Mode Switch driver"
++	depends on ACPI
++	depends on INPUT
++	depends on RFKILL
++	---help---
++	  Say Y here if you want to support Dell Airplane Mode Switch ACPI
++	  device on Dell laptops. Sometimes it has names: DELLABCE or DELRBTN.
++	  This driver register rfkill device or input hotkey device depending
++	  on hardware type (hw switch slider or keyboard toggle button). For
++	  rfkill devices it receive HW switch events and set correct hard
++	  rfkill state.
++
++	  To compile this driver as a module, choose M here: the module will
++	  be called dell-rbtn.
++
+ 
+ config FUJITSU_LAPTOP
+ 	tristate "Fujitsu Laptop Extras"
+diff --git a/drivers/platform/x86/Makefile b/drivers/platform/x86/Makefile
+index f82232b..b3e54ed 100644
+--- a/drivers/platform/x86/Makefile
++++ b/drivers/platform/x86/Makefile
+@@ -14,6 +14,7 @@ obj-$(CONFIG_DELL_LAPTOP)	+= dell-laptop.o
+ obj-$(CONFIG_DELL_WMI)		+= dell-wmi.o
+ obj-$(CONFIG_DELL_WMI_AIO)	+= dell-wmi-aio.o
+ obj-$(CONFIG_DELL_SMO8800)	+= dell-smo8800.o
++obj-$(CONFIG_DELL_RBTN)		+= dell-rbtn.o
+ obj-$(CONFIG_ACER_WMI)		+= acer-wmi.o
+ obj-$(CONFIG_ACERHDF)		+= acerhdf.o
+ obj-$(CONFIG_HP_ACCEL)		+= hp_accel.o
+diff --git a/drivers/platform/x86/dell-rbtn.c b/drivers/platform/x86/dell-rbtn.c
+new file mode 100644
+index 0000000..1c19fff
+--- /dev/null
++++ b/drivers/platform/x86/dell-rbtn.c
+@@ -0,0 +1,332 @@
++/*
++    Dell Airplane Mode Switch driver
++    Copyright (C) 2014-2015  Pali Rohár <pali.rohar@gmail.com>
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++*/
++
++#include <linux/module.h>
++#include <linux/acpi.h>
++#include <linux/rfkill.h>
++#include <linux/input.h>
++
++enum rbtn_type {
++	RBTN_UNKNOWN,
++	RBTN_TOGGLE,
++	RBTN_SLIDER,
++};
++
++struct rbtn_data {
++	enum rbtn_type type;
++	struct rfkill *rfkill;
++	struct input_dev *input_dev;
++};
++
++
++/*
++ * acpi functions
++ */
++
++static enum rbtn_type rbtn_check(struct acpi_device *device)
++{
++	unsigned long long output;
++	acpi_status status;
++
++	status = acpi_evaluate_integer(device->handle, "CRBT", NULL, &output);
++	if (ACPI_FAILURE(status))
++		return RBTN_UNKNOWN;
++
++	switch (output) {
++	case 0:
++	case 1:
++		return RBTN_TOGGLE;
++	case 2:
++	case 3:
++		return RBTN_SLIDER;
++	default:
++		return RBTN_UNKNOWN;
++	}
++}
++
++static int rbtn_get(struct acpi_device *device)
++{
++	unsigned long long output;
++	acpi_status status;
++
++	status = acpi_evaluate_integer(device->handle, "GRBT", NULL, &output);
++	if (ACPI_FAILURE(status))
++		return -EINVAL;
++
++	return !output;
++}
++
++static int rbtn_acquire(struct acpi_device *device, bool enable)
++{
++	struct acpi_object_list input;
++	union acpi_object param;
++	acpi_status status;
++
++	param.type = ACPI_TYPE_INTEGER;
++	param.integer.value = enable;
++	input.count = 1;
++	input.pointer = &param;
++
++	status = acpi_evaluate_object(device->handle, "ARBT", &input, NULL);
++	if (ACPI_FAILURE(status))
++		return -EINVAL;
++
++	return 0;
++}
++
++
++/*
++ * rfkill device
++ */
++
++static void rbtn_rfkill_query(struct rfkill *rfkill, void *data)
++{
++	struct acpi_device *device = data;
++	int state;
++
++	state = rbtn_get(device);
++	if (state < 0)
++		return;
++
++	rfkill_set_states(rfkill, state, state);
++}
++
++static int rbtn_rfkill_set_block(void *data, bool blocked)
++{
++	/* NOTE: setting soft rfkill state is not supported */
++	return -EINVAL;
++}
++
++static struct rfkill_ops rbtn_ops = {
++	.query = rbtn_rfkill_query,
++	.set_block = rbtn_rfkill_set_block,
++};
++
++static int rbtn_rfkill_init(struct acpi_device *device)
++{
++	struct rbtn_data *rbtn_data = device->driver_data;
++	int ret;
++
++	if (rbtn_data->rfkill)
++		return 0;
++
++	/*
++	 * NOTE: rbtn controls all radio devices, not only WLAN
++	 *       but rfkill interface does not support "ANY" type
++	 *       so "WLAN" type is used
++	 */
++	rbtn_data->rfkill = rfkill_alloc("dell-rbtn", &device->dev,
++					 RFKILL_TYPE_WLAN, &rbtn_ops, device);
++	if (!rbtn_data->rfkill)
++		return -ENOMEM;
++
++	ret = rfkill_register(rbtn_data->rfkill);
++	if (ret) {
++		rfkill_destroy(rbtn_data->rfkill);
++		rbtn_data->rfkill = NULL;
++		return ret;
++	}
++
++	return 0;
++}
++
++static void rbtn_rfkill_exit(struct acpi_device *device)
++{
++	struct rbtn_data *rbtn_data = device->driver_data;
++
++	if (!rbtn_data->rfkill)
++		return;
++
++	rfkill_unregister(rbtn_data->rfkill);
++	rfkill_destroy(rbtn_data->rfkill);
++	rbtn_data->rfkill = NULL;
++}
++
++static void rbtn_rfkill_event(struct acpi_device *device)
++{
++	struct rbtn_data *rbtn_data = device->driver_data;
++
++	if (rbtn_data->rfkill)
++		rbtn_rfkill_query(rbtn_data->rfkill, device);
++}
++
++
++/*
++ * input device
++ */
++
++static int rbtn_input_init(struct rbtn_data *rbtn_data)
++{
++	int ret;
++
++	rbtn_data->input_dev = input_allocate_device();
++	if (!rbtn_data->input_dev)
++		return -ENOMEM;
++
++	rbtn_data->input_dev->name = "DELL Wireless hotkeys";
++	rbtn_data->input_dev->phys = "dellabce/input0";
++	rbtn_data->input_dev->id.bustype = BUS_HOST;
++	rbtn_data->input_dev->evbit[0] = BIT(EV_KEY);
++	set_bit(KEY_RFKILL, rbtn_data->input_dev->keybit);
++
++	ret = input_register_device(rbtn_data->input_dev);
++	if (ret) {
++		input_free_device(rbtn_data->input_dev);
++		rbtn_data->input_dev = NULL;
++		return ret;
++	}
++
++	return 0;
++}
++
++static void rbtn_input_exit(struct rbtn_data *rbtn_data)
++{
++	input_unregister_device(rbtn_data->input_dev);
++	rbtn_data->input_dev = NULL;
++}
++
++static void rbtn_input_event(struct rbtn_data *rbtn_data)
++{
++	input_report_key(rbtn_data->input_dev, KEY_RFKILL, 1);
++	input_sync(rbtn_data->input_dev);
++	input_report_key(rbtn_data->input_dev, KEY_RFKILL, 0);
++	input_sync(rbtn_data->input_dev);
++}
++
++
++/*
++ * acpi driver
++ */
++
++static int rbtn_add(struct acpi_device *device);
++static int rbtn_remove(struct acpi_device *device);
++static void rbtn_notify(struct acpi_device *device, u32 event);
++
++static const struct acpi_device_id rbtn_ids[] = {
++	{ "DELRBTN", 0 },
++	{ "DELLABCE", 0 },
++	{ "", 0 },
++};
++
++static struct acpi_driver rbtn_driver = {
++	.name = "dell-rbtn",
++	.ids = rbtn_ids,
++	.ops = {
++		.add = rbtn_add,
++		.remove = rbtn_remove,
++		.notify = rbtn_notify,
++	},
++	.owner = THIS_MODULE,
++};
++
++
++/*
++ * acpi driver functions
++ */
++
++static int rbtn_add(struct acpi_device *device)
++{
++	struct rbtn_data *rbtn_data;
++	enum rbtn_type type;
++	int ret = 0;
++
++	type = rbtn_check(device);
++	if (type == RBTN_UNKNOWN) {
++		dev_info(&device->dev, "Unknown device type\n");
++		return -EINVAL;
++	}
++
++	ret = rbtn_acquire(device, true);
++	if (ret < 0) {
++		dev_err(&device->dev, "Cannot enable device\n");
++		return ret;
++	}
++
++	rbtn_data = devm_kzalloc(&device->dev, sizeof(*rbtn_data), GFP_KERNEL);
++	if (!rbtn_data)
++		return -ENOMEM;
++
++	rbtn_data->type = type;
++	device->driver_data = rbtn_data;
++
++	switch (rbtn_data->type) {
++	case RBTN_TOGGLE:
++		ret = rbtn_input_init(rbtn_data);
++		break;
++	case RBTN_SLIDER:
++		ret = rbtn_rfkill_init(device);
++		break;
++	default:
++		ret = -EINVAL;
++	}
++
++	return ret;
++
++}
++
++static int rbtn_remove(struct acpi_device *device)
++{
++	struct rbtn_data *rbtn_data = device->driver_data;
++
++	switch (rbtn_data->type) {
++	case RBTN_TOGGLE:
++		rbtn_input_exit(rbtn_data);
++		break;
++	case RBTN_SLIDER:
++		rbtn_rfkill_exit(device);
++		break;
++	default:
++		break;
++	}
++
++	rbtn_acquire(device, false);
++	device->driver_data = NULL;
++
++	return 0;
++}
++
++static void rbtn_notify(struct acpi_device *device, u32 event)
++{
++	struct rbtn_data *rbtn_data = device->driver_data;
++
++	if (event != 0x80) {
++		dev_info(&device->dev, "Received unknown event (0x%x)\n",
++			 event);
++		return;
++	}
++
++	switch (rbtn_data->type) {
++	case RBTN_TOGGLE:
++		rbtn_input_event(rbtn_data);
++		break;
++	case RBTN_SLIDER:
++		rbtn_rfkill_event(device);
++		break;
++	default:
++		break;
++	}
++}
++
++
++/*
++ * module functions
++ */
++
++module_acpi_driver(rbtn_driver);
++
++MODULE_DEVICE_TABLE(acpi, rbtn_ids);
++MODULE_DESCRIPTION("Dell Airplane Mode Switch driver");
++MODULE_AUTHOR("Pali Rohár <pali.rohar@gmail.com>");
++MODULE_LICENSE("GPL");
+-- 
+2.4.5
+
+
+From 9fe54271d5255106f135079dbd62de17ebf1ac08 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Sat, 6 Jun 2015 10:23:29 +0200
+Subject: [PATCH 04/10] dell-rbtn: Export notifier for other kernel modules
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This patch exports notifier functions so other modules can receive HW
+switch events. By default when some module register notifier, dell-rbtn
+driver automatically remove rfkill interfaces from system (it is expected
+that other module will use events for other rfkill interface). This
+behaviour can be changed with new module parameter "auto_remove_rfkill".
+
+This patch is designed for dell-laptop module for receiving those events.
+
+Signed-off-by: Pali Rohár <pali.rohar@gmail.com>
+Tested-by: Gabriele Mazzotta <gabriele.mzt@gmail.com>
+[dvhart@linux.intel.com: Cleanup MODULE_PARM_DESC formatting and grammar]
+Signed-off-by: Darren Hart <dvhart@linux.intel.com>
+---
+ drivers/platform/x86/dell-rbtn.c | 93 +++++++++++++++++++++++++++++++++++++++-
+ drivers/platform/x86/dell-rbtn.h | 24 +++++++++++
+ 2 files changed, 116 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/platform/x86/dell-rbtn.h
+
+diff --git a/drivers/platform/x86/dell-rbtn.c b/drivers/platform/x86/dell-rbtn.c
+index 1c19fff..cd410e3 100644
+--- a/drivers/platform/x86/dell-rbtn.c
++++ b/drivers/platform/x86/dell-rbtn.c
+@@ -233,6 +233,86 @@ static struct acpi_driver rbtn_driver = {
+ 
+ 
+ /*
++ * notifier export functions
++ */
++
++static bool auto_remove_rfkill = true;
++
++static ATOMIC_NOTIFIER_HEAD(rbtn_chain_head);
++
++static int rbtn_inc_count(struct device *dev, void *data)
++{
++	struct acpi_device *device = to_acpi_device(dev);
++	struct rbtn_data *rbtn_data = device->driver_data;
++	int *count = data;
++
++	if (rbtn_data->type == RBTN_SLIDER)
++		(*count)++;
++
++	return 0;
++}
++
++static int rbtn_switch_dev(struct device *dev, void *data)
++{
++	struct acpi_device *device = to_acpi_device(dev);
++	struct rbtn_data *rbtn_data = device->driver_data;
++	bool enable = data;
++
++	if (rbtn_data->type != RBTN_SLIDER)
++		return 0;
++
++	if (enable)
++		rbtn_rfkill_init(device);
++	else
++		rbtn_rfkill_exit(device);
++
++	return 0;
++}
++
++int dell_rbtn_notifier_register(struct notifier_block *nb)
++{
++	bool first;
++	int count;
++	int ret;
++
++	count = 0;
++	ret = driver_for_each_device(&rbtn_driver.drv, NULL, &count,
++				     rbtn_inc_count);
++	if (ret || count == 0)
++		return -ENODEV;
++
++	first = !rbtn_chain_head.head;
++
++	ret = atomic_notifier_chain_register(&rbtn_chain_head, nb);
++	if (ret != 0)
++		return ret;
++
++	if (auto_remove_rfkill && first)
++		ret = driver_for_each_device(&rbtn_driver.drv, NULL,
++					     (void *)false, rbtn_switch_dev);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(dell_rbtn_notifier_register);
++
++int dell_rbtn_notifier_unregister(struct notifier_block *nb)
++{
++	int ret;
++
++	ret = atomic_notifier_chain_unregister(&rbtn_chain_head, nb);
++	if (ret != 0)
++		return ret;
++
++	if (auto_remove_rfkill && !rbtn_chain_head.head)
++		ret = driver_for_each_device(&rbtn_driver.drv, NULL,
++					     (void *)true, rbtn_switch_dev);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(dell_rbtn_notifier_unregister);
++
++
++/*
+  * acpi driver functions
+  */
+ 
+@@ -266,7 +346,10 @@ static int rbtn_add(struct acpi_device *device)
+ 		ret = rbtn_input_init(rbtn_data);
+ 		break;
+ 	case RBTN_SLIDER:
+-		ret = rbtn_rfkill_init(device);
++		if (auto_remove_rfkill && rbtn_chain_head.head)
++			ret = 0;
++		else
++			ret = rbtn_rfkill_init(device);
+ 		break;
+ 	default:
+ 		ret = -EINVAL;
+@@ -313,6 +396,7 @@ static void rbtn_notify(struct acpi_device *device, u32 event)
+ 		break;
+ 	case RBTN_SLIDER:
+ 		rbtn_rfkill_event(device);
++		atomic_notifier_call_chain(&rbtn_chain_head, event, device);
+ 		break;
+ 	default:
+ 		break;
+@@ -326,6 +410,13 @@ static void rbtn_notify(struct acpi_device *device, u32 event)
+ 
+ module_acpi_driver(rbtn_driver);
+ 
++module_param(auto_remove_rfkill, bool, 0444);
++
++MODULE_PARM_DESC(auto_remove_rfkill, "Automatically remove rfkill devices when "
++				     "other modules start receiving events "
++				     "from this module and re-add them when "
++				     "the last module stops receiving events "
++				     "(default true)");
+ MODULE_DEVICE_TABLE(acpi, rbtn_ids);
+ MODULE_DESCRIPTION("Dell Airplane Mode Switch driver");
+ MODULE_AUTHOR("Pali Rohár <pali.rohar@gmail.com>");
+diff --git a/drivers/platform/x86/dell-rbtn.h b/drivers/platform/x86/dell-rbtn.h
+new file mode 100644
+index 0000000..c59cc6b
+--- /dev/null
++++ b/drivers/platform/x86/dell-rbtn.h
+@@ -0,0 +1,24 @@
++/*
++    Dell Airplane Mode Switch driver
++    Copyright (C) 2014-2015  Pali Rohár <pali.rohar@gmail.com>
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++*/
++
++#ifndef _DELL_RBTN_H_
++#define _DELL_RBTN_H_
++
++struct notifier_block;
++
++int dell_rbtn_notifier_register(struct notifier_block *nb);
++int dell_rbtn_notifier_unregister(struct notifier_block *nb);
++
++#endif
+-- 
+2.4.5
+
+
+From 17cd4b70f5cdd0d5ccd9243fa93e2f8c7ba4b465 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Sat, 6 Jun 2015 10:23:30 +0200
+Subject: [PATCH 05/10] dell-laptop: Use dell-rbtn instead i8042 filter when
+ possible
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Until now module dell-laptop registered rfkill device which used i8042
+filter function for receiving HW switch rfkill events (handling special
+keycode).
+
+But for some dell laptops there is native ACPI driver dell-rbtn which can
+receive rfkill events (without i8042 hooks).
+
+So this patch will combine best from both sides. It will use native ACPI
+driver dell-rbtn for receiving events and dell-laptop SMBIOS interface for
+enabling or disabling radio devices. If ACPI driver or device will not be
+available fallback to i8042 filter function will be used.
+
+Patch also changes module_init() to late_initcall() to ensure that init
+function will be called after initializing dell-rbtn.c driver.
+
+Signed-off-by: Pali Rohár <pali.rohar@gmail.com>
+Tested-by: Gabriele Mazzotta <gabriele.mzt@gmail.com>
+Signed-off-by: Darren Hart <dvhart@linux.intel.com>
+---
+ drivers/platform/x86/dell-laptop.c | 94 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 86 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/platform/x86/dell-laptop.c b/drivers/platform/x86/dell-laptop.c
+index d688d80..83e3d7f 100644
+--- a/drivers/platform/x86/dell-laptop.c
++++ b/drivers/platform/x86/dell-laptop.c
+@@ -32,6 +32,7 @@
+ #include <linux/debugfs.h>
+ #include <linux/seq_file.h>
+ #include "../../firmware/dcdbas.h"
++#include "dell-rbtn.h"
+ 
+ #define BRIGHTNESS_TOKEN 0x7d
+ #define KBD_LED_OFF_TOKEN 0x01E1
+@@ -642,6 +643,20 @@ static bool dell_laptop_i8042_filter(unsigned char data, unsigned char str,
+ 	return false;
+ }
+ 
++static int (*dell_rbtn_notifier_register_func)(struct notifier_block *);
++static int (*dell_rbtn_notifier_unregister_func)(struct notifier_block *);
++
++static int dell_laptop_rbtn_notifier_call(struct notifier_block *nb,
++					  unsigned long action, void *data)
++{
++	schedule_delayed_work(&dell_rfkill_work, 0);
++	return NOTIFY_OK;
++}
++
++static struct notifier_block dell_laptop_rbtn_notifier = {
++	.notifier_call = dell_laptop_rbtn_notifier_call,
++};
++
+ static int __init dell_setup_rfkill(void)
+ {
+ 	int status, ret, whitelisted;
+@@ -718,10 +733,62 @@ static int __init dell_setup_rfkill(void)
+ 			goto err_wwan;
+ 	}
+ 
+-	ret = i8042_install_filter(dell_laptop_i8042_filter);
+-	if (ret) {
+-		pr_warn("Unable to install key filter\n");
++	/*
++	 * Dell Airplane Mode Switch driver (dell-rbtn) supports ACPI devices
++	 * which can receive events from HW slider switch.
++	 *
++	 * Dell SMBIOS on whitelisted models supports controlling radio devices
++	 * but does not support receiving HW button switch events. We can use
++	 * i8042 filter hook function to receive keyboard data and handle
++	 * keycode for HW button.
++	 *
++	 * So if it is possible we will use Dell Airplane Mode Switch ACPI
++	 * driver for receiving HW events and Dell SMBIOS for setting rfkill
++	 * states. If ACPI driver or device is not available we will fallback to
++	 * i8042 filter hook function.
++	 *
++	 * To prevent duplicate rfkill devices which control and do same thing,
++	 * dell-rbtn driver will automatically remove its own rfkill devices
++	 * once function dell_rbtn_notifier_register() is called.
++	 */
++
++	dell_rbtn_notifier_register_func =
++		symbol_request(dell_rbtn_notifier_register);
++	if (dell_rbtn_notifier_register_func) {
++		dell_rbtn_notifier_unregister_func =
++			symbol_request(dell_rbtn_notifier_unregister);
++		if (!dell_rbtn_notifier_unregister_func) {
++			symbol_put(dell_rbtn_notifier_register);
++			dell_rbtn_notifier_register_func = NULL;
++		}
++	}
++
++	if (dell_rbtn_notifier_register_func) {
++		ret = dell_rbtn_notifier_register_func(
++			&dell_laptop_rbtn_notifier);
++		symbol_put(dell_rbtn_notifier_register);
++		dell_rbtn_notifier_register_func = NULL;
++		if (ret != 0) {
++			symbol_put(dell_rbtn_notifier_unregister);
++			dell_rbtn_notifier_unregister_func = NULL;
++		}
++	} else {
++		pr_info("Symbols from dell-rbtn acpi driver are not available\n");
++		ret = -ENODEV;
++	}
++
++	if (ret == 0) {
++		pr_info("Using dell-rbtn acpi driver for receiving events\n");
++	} else if (ret != -ENODEV) {
++		pr_warn("Unable to register dell rbtn notifier\n");
+ 		goto err_filter;
++	} else {
++		ret = i8042_install_filter(dell_laptop_i8042_filter);
++		if (ret) {
++			pr_warn("Unable to install key filter\n");
++			goto err_filter;
++		}
++		pr_info("Using i8042 filter function for receiving events\n");
+ 	}
+ 
+ 	return 0;
+@@ -744,6 +811,14 @@ err_wifi:
+ 
+ static void dell_cleanup_rfkill(void)
+ {
++	if (dell_rbtn_notifier_unregister_func) {
++		dell_rbtn_notifier_unregister_func(&dell_laptop_rbtn_notifier);
++		symbol_put(dell_rbtn_notifier_unregister);
++		dell_rbtn_notifier_unregister_func = NULL;
++	} else {
++		i8042_remove_filter(dell_laptop_i8042_filter);
++	}
++	cancel_delayed_work_sync(&dell_rfkill_work);
+ 	if (wifi_rfkill) {
+ 		rfkill_unregister(wifi_rfkill);
+ 		rfkill_destroy(wifi_rfkill);
+@@ -1961,8 +2036,6 @@ static int __init dell_init(void)
+ 	return 0;
+ 
+ fail_backlight:
+-	i8042_remove_filter(dell_laptop_i8042_filter);
+-	cancel_delayed_work_sync(&dell_rfkill_work);
+ 	dell_cleanup_rfkill();
+ fail_rfkill:
+ 	free_page((unsigned long)bufferpage);
+@@ -1983,8 +2056,6 @@ static void __exit dell_exit(void)
+ 	if (quirks && quirks->touchpad_led)
+ 		touchpad_led_exit();
+ 	kbd_led_exit();
+-	i8042_remove_filter(dell_laptop_i8042_filter);
+-	cancel_delayed_work_sync(&dell_rfkill_work);
+ 	backlight_device_unregister(dell_backlight_device);
+ 	dell_cleanup_rfkill();
+ 	if (platform_device) {
+@@ -1995,7 +2066,14 @@ static void __exit dell_exit(void)
+ 	free_page((unsigned long)buffer);
+ }
+ 
+-module_init(dell_init);
++/* dell-rbtn.c driver export functions which will not work correctly (and could
++ * cause kernel crash) if they are called before dell-rbtn.c init code. This is
++ * not problem when dell-rbtn.c is compiled as external module. When both files
++ * (dell-rbtn.c and dell-laptop.c) are compiled statically into kernel, then we
++ * need to ensure that dell_init() will be called after initializing dell-rbtn.
++ * This can be achieved by late_initcall() instead module_init().
++ */
++late_initcall(dell_init);
+ module_exit(dell_exit);
+ 
+ MODULE_AUTHOR("Matthew Garrett <mjg@redhat.com>");
+-- 
+2.4.5
+
+
+From 6e0ee91df4a390228637ca40bf9ba37cc7d28736 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Sun, 21 Jun 2015 10:39:26 +0200
+Subject: [PATCH 06/10] dell-laptop: Update information about wireless control
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Make sure that all existing SMBIOS calls for wireless control are properly
+documented. This commit also add new documentation released by Dell.
+
+Signed-off-by: Pali Rohár <pali.rohar@gmail.com>
+Signed-off-by: Darren Hart <dvhart@linux.intel.com>
+---
+ drivers/platform/x86/dell-laptop.c | 158 ++++++++++++++++++++++++++++---------
+ 1 file changed, 119 insertions(+), 39 deletions(-)
+
+diff --git a/drivers/platform/x86/dell-laptop.c b/drivers/platform/x86/dell-laptop.c
+index 83e3d7f..ab89103 100644
+--- a/drivers/platform/x86/dell-laptop.c
++++ b/drivers/platform/x86/dell-laptop.c
+@@ -423,45 +423,125 @@ static inline int dell_smi_error(int value)
+ 	}
+ }
+ 
+-/* Derived from information in DellWirelessCtl.cpp:
+-   Class 17, select 11 is radio control. It returns an array of 32-bit values.
+-
+-   Input byte 0 = 0: Wireless information
+-
+-   result[0]: return code
+-   result[1]:
+-     Bit 0:      Hardware switch supported
+-     Bit 1:      Wifi locator supported
+-     Bit 2:      Wifi is supported
+-     Bit 3:      Bluetooth is supported
+-     Bit 4:      WWAN is supported
+-     Bit 5:      Wireless keyboard supported
+-     Bits 6-7:   Reserved
+-     Bit 8:      Wifi is installed
+-     Bit 9:      Bluetooth is installed
+-     Bit 10:     WWAN is installed
+-     Bits 11-15: Reserved
+-     Bit 16:     Hardware switch is on
+-     Bit 17:     Wifi is blocked
+-     Bit 18:     Bluetooth is blocked
+-     Bit 19:     WWAN is blocked
+-     Bits 20-31: Reserved
+-   result[2]: NVRAM size in bytes
+-   result[3]: NVRAM format version number
+-
+-   Input byte 0 = 2: Wireless switch configuration
+-   result[0]: return code
+-   result[1]:
+-     Bit 0:      Wifi controlled by switch
+-     Bit 1:      Bluetooth controlled by switch
+-     Bit 2:      WWAN controlled by switch
+-     Bits 3-6:   Reserved
+-     Bit 7:      Wireless switch config locked
+-     Bit 8:      Wifi locator enabled
+-     Bits 9-14:  Reserved
+-     Bit 15:     Wifi locator setting locked
+-     Bits 16-31: Reserved
+-*/
++/*
++ * Derived from information in smbios-wireless-ctl:
++ *
++ * cbSelect 17, Value 11
++ *
++ * Return Wireless Info
++ * cbArg1, byte0 = 0x00
++ *
++ *     cbRes1 Standard return codes (0, -1, -2)
++ *     cbRes2 Info bit flags:
++ *
++ *     0 Hardware switch supported (1)
++ *     1 WiFi locator supported (1)
++ *     2 WLAN supported (1)
++ *     3 Bluetooth (BT) supported (1)
++ *     4 WWAN supported (1)
++ *     5 Wireless KBD supported (1)
++ *     6 Uw b supported (1)
++ *     7 WiGig supported (1)
++ *     8 WLAN installed (1)
++ *     9 BT installed (1)
++ *     10 WWAN installed (1)
++ *     11 Uw b installed (1)
++ *     12 WiGig installed (1)
++ *     13-15 Reserved (0)
++ *     16 Hardware (HW) switch is On (1)
++ *     17 WLAN disabled (1)
++ *     18 BT disabled (1)
++ *     19 WWAN disabled (1)
++ *     20 Uw b disabled (1)
++ *     21 WiGig disabled (1)
++ *     20-31 Reserved (0)
++ *
++ *     cbRes3 NVRAM size in bytes
++ *     cbRes4, byte 0 NVRAM format version number
++ *
++ *
++ * Set QuickSet Radio Disable Flag
++ *     cbArg1, byte0 = 0x01
++ *     cbArg1, byte1
++ *     Radio ID     value:
++ *     0        Radio Status
++ *     1        WLAN ID
++ *     2        BT ID
++ *     3        WWAN ID
++ *     4        UWB ID
++ *     5        WIGIG ID
++ *     cbArg1, byte2    Flag bits:
++ *             0 QuickSet disables radio (1)
++ *             1-7 Reserved (0)
++ *
++ *     cbRes1    Standard return codes (0, -1, -2)
++ *     cbRes2    QuickSet (QS) radio disable bit map:
++ *     0 QS disables WLAN
++ *     1 QS disables BT
++ *     2 QS disables WWAN
++ *     3 QS disables UWB
++ *     4 QS disables WIGIG
++ *     5-31 Reserved (0)
++ *
++ * Wireless Switch Configuration
++ *     cbArg1, byte0 = 0x02
++ *
++ *     cbArg1, byte1
++ *     Subcommand:
++ *     0 Get config
++ *     1 Set config
++ *     2 Set WiFi locator enable/disable
++ *     cbArg1,byte2
++ *     Switch settings (if byte 1==1):
++ *     0 WLAN sw itch control (1)
++ *     1 BT sw itch control (1)
++ *     2 WWAN sw itch control (1)
++ *     3 UWB sw itch control (1)
++ *     4 WiGig sw itch control (1)
++ *     5-7 Reserved (0)
++ *    cbArg1, byte2 Enable bits (if byte 1==2):
++ *     0 Enable WiFi locator (1)
++ *
++ *    cbRes1     Standard return codes (0, -1, -2)
++ *    cbRes2 QuickSet radio disable bit map:
++ *     0 WLAN controlled by sw itch (1)
++ *     1 BT controlled by sw itch (1)
++ *     2 WWAN controlled by sw itch (1)
++ *     3 UWB controlled by sw itch (1)
++ *     4 WiGig controlled by sw itch (1)
++ *     5-6 Reserved (0)
++ *     7 Wireless sw itch config locked (1)
++ *     8 WiFi locator enabled (1)
++ *     9-14 Reserved (0)
++ *     15 WiFi locator setting locked (1)
++ *     16-31 Reserved (0)
++ *
++ * Read Local Config Data (LCD)
++ *     cbArg1, byte0 = 0x10
++ *     cbArg1, byte1 NVRAM index low byte
++ *     cbArg1, byte2 NVRAM index high byte
++ *     cbRes1 Standard return codes (0, -1, -2)
++ *     cbRes2 4 bytes read from LCD[index]
++ *     cbRes3 4 bytes read from LCD[index+4]
++ *     cbRes4 4 bytes read from LCD[index+8]
++ *
++ * Write Local Config Data (LCD)
++ *     cbArg1, byte0 = 0x11
++ *     cbArg1, byte1 NVRAM index low byte
++ *     cbArg1, byte2 NVRAM index high byte
++ *     cbArg2 4 bytes to w rite at LCD[index]
++ *     cbArg3 4 bytes to w rite at LCD[index+4]
++ *     cbArg4 4 bytes to w rite at LCD[index+8]
++ *     cbRes1 Standard return codes (0, -1, -2)
++ *
++ * Populate Local Config Data from NVRAM
++ *     cbArg1, byte0 = 0x12
++ *     cbRes1 Standard return codes (0, -1, -2)
++ *
++ * Commit Local Config Data to NVRAM
++ *     cbArg1, byte0 = 0x13
++ *     cbRes1 Standard return codes (0, -1, -2)
++ */
+ 
+ static int dell_rfkill_set(void *data, bool blocked)
+ {
+-- 
+2.4.5
+
+
+From c4a3ad928cfdedb2d43a0ae52aa5830463a24a8e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Sun, 21 Jun 2015 10:41:42 +0200
+Subject: [PATCH 07/10] dell-laptop: Show info about WiGig and UWB in debugfs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This commit show additional information about rfkill state in debugfs based
+on newly released documentation by Dell.
+
+Signed-off-by: Pali Rohár <pali.rohar@gmail.com>
+Signed-off-by: Darren Hart <dvhart@linux.intel.com>
+---
+ drivers/platform/x86/dell-laptop.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/drivers/platform/x86/dell-laptop.c b/drivers/platform/x86/dell-laptop.c
+index ab89103..9724613 100644
+--- a/drivers/platform/x86/dell-laptop.c
++++ b/drivers/platform/x86/dell-laptop.c
+@@ -629,12 +629,21 @@ static int dell_debugfs_show(struct seq_file *s, void *data)
+ 		  (status & BIT(4)) >> 4);
+ 	seq_printf(s, "Bit 5 : Wireless keyboard supported: %lu\n",
+ 		  (status & BIT(5)) >> 5);
++	seq_printf(s, "Bit 6 : UWB supported:               %lu\n",
++		  (status & BIT(6)) >> 6);
++	seq_printf(s, "Bit 7 : WiGig supported:             %lu\n",
++		  (status & BIT(7)) >> 7);
+ 	seq_printf(s, "Bit 8 : Wifi is installed:           %lu\n",
+ 		  (status & BIT(8)) >> 8);
+ 	seq_printf(s, "Bit 9 : Bluetooth is installed:      %lu\n",
+ 		  (status & BIT(9)) >> 9);
+ 	seq_printf(s, "Bit 10: WWAN is installed:           %lu\n",
+ 		  (status & BIT(10)) >> 10);
++	seq_printf(s, "Bit 11: UWB installed:               %lu\n",
++		  (status & BIT(11)) >> 11);
++	seq_printf(s, "Bit 12: WiGig installed:             %lu\n",
++		  (status & BIT(12)) >> 12);
++
+ 	seq_printf(s, "Bit 16: Hardware switch is on:       %lu\n",
+ 		  (status & BIT(16)) >> 16);
+ 	seq_printf(s, "Bit 17: Wifi is blocked:             %lu\n",
+@@ -643,6 +652,10 @@ static int dell_debugfs_show(struct seq_file *s, void *data)
+ 		  (status & BIT(18)) >> 18);
+ 	seq_printf(s, "Bit 19: WWAN is blocked:             %lu\n",
+ 		  (status & BIT(19)) >> 19);
++	seq_printf(s, "Bit 20: UWB is blocked:              %lu\n",
++		  (status & BIT(20)) >> 20);
++	seq_printf(s, "Bit 21: WiGig is blocked:            %lu\n",
++		  (status & BIT(21)) >> 21);
+ 
+ 	seq_printf(s, "\nhwswitch_state:\t0x%X\n", hwswitch_state);
+ 	seq_printf(s, "Bit 0 : Wifi controlled by switch:      %lu\n",
+@@ -651,6 +664,10 @@ static int dell_debugfs_show(struct seq_file *s, void *data)
+ 		   (hwswitch_state & BIT(1)) >> 1);
+ 	seq_printf(s, "Bit 2 : WWAN controlled by switch:      %lu\n",
+ 		   (hwswitch_state & BIT(2)) >> 2);
++	seq_printf(s, "Bit 3 : UWB controlled by switch:       %lu\n",
++		   (hwswitch_state & BIT(3)) >> 3);
++	seq_printf(s, "Bit 4 : WiGig controlled by switch:     %lu\n",
++		   (hwswitch_state & BIT(4)) >> 4);
+ 	seq_printf(s, "Bit 7 : Wireless switch config locked:  %lu\n",
+ 		   (hwswitch_state & BIT(7)) >> 7);
+ 	seq_printf(s, "Bit 8 : Wifi locator enabled:           %lu\n",
+-- 
+2.4.5
+
+
+From 905d505548e9db312d6aa663fd76bfd30beac31e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Tue, 23 Jun 2015 10:11:19 +0200
+Subject: [PATCH 08/10] dell-laptop: Fix allocating & freeing SMI buffer page
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This commit fix kernel crash when probing for rfkill devices in dell-laptop
+driver failed. Function free_page() was incorrectly used on struct page *
+instead of virtual address of SMI buffer.
+
+This commit also simplify allocating page for SMI buffer by using
+__get_free_page() function instead of sequential call of functions
+alloc_page() and page_address().
+
+Signed-off-by: Pali Rohár <pali.rohar@gmail.com>
+Acked-by: Michal Hocko <mhocko@suse.cz>
+Cc: stable@vger.kernel.org
+Signed-off-by: Darren Hart <dvhart@linux.intel.com>
+---
+ drivers/platform/x86/dell-laptop.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/platform/x86/dell-laptop.c b/drivers/platform/x86/dell-laptop.c
+index 9724613..35758cb 100644
+--- a/drivers/platform/x86/dell-laptop.c
++++ b/drivers/platform/x86/dell-laptop.c
+@@ -306,7 +306,6 @@ static const struct dmi_system_id dell_quirks[] __initconst = {
+ };
+ 
+ static struct calling_interface_buffer *buffer;
+-static struct page *bufferpage;
+ static DEFINE_MUTEX(buffer_mutex);
+ 
+ static int hwswitch_state;
+@@ -2068,12 +2067,11 @@ static int __init dell_init(void)
+ 	 * Allocate buffer below 4GB for SMI data--only 32-bit physical addr
+ 	 * is passed to SMI handler.
+ 	 */
+-	bufferpage = alloc_page(GFP_KERNEL | GFP_DMA32);
+-	if (!bufferpage) {
++	buffer = (void *)__get_free_page(GFP_KERNEL | GFP_DMA32);
++	if (!buffer) {
+ 		ret = -ENOMEM;
+ 		goto fail_buffer;
+ 	}
+-	buffer = page_address(bufferpage);
+ 
+ 	ret = dell_setup_rfkill();
+ 
+@@ -2135,7 +2133,7 @@ static int __init dell_init(void)
+ fail_backlight:
+ 	dell_cleanup_rfkill();
+ fail_rfkill:
+-	free_page((unsigned long)bufferpage);
++	free_page((unsigned long)buffer);
+ fail_buffer:
+ 	platform_device_del(platform_device);
+ fail_platform_device2:
+-- 
+2.4.5
+
+
+From fe015f8464b5127c3f07ae66692743ab6bd1dfa2 Mon Sep 17 00:00:00 2001
+From: Hui Wang <hui.wang@canonical.com>
+Date: Fri, 26 Jun 2015 12:35:17 +0800
+Subject: [PATCH 09/10] ALSA: hda - restore the MIC FIXUP for some Dell
+ machines
+
+Those FIXUPs were applied to the machines through pin quirks, but
+recently the PCI_QUIRK makes them can't apply to the machines.
+
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=99851
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+Cc: <stable@vger.kernel.org> # v4.1
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/pci/hda/patch_realtek.c | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index b9d8a4e..1615ab0 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -4527,6 +4527,8 @@ enum {
+ 	ALC288_FIXUP_DELL_HEADSET_MODE,
+ 	ALC288_FIXUP_DELL1_MIC_NO_PRESENCE,
+ 	ALC288_FIXUP_DELL_XPS_13_GPIO6,
++	ALC288_FIXUP_DELL_XPS_13,
++	ALC288_FIXUP_DISABLE_AAMIX,
+ 	ALC292_FIXUP_DELL_E7X,
+ 	ALC292_FIXUP_DISABLE_AAMIX,
+ 	ALC298_FIXUP_DELL1_MIC_NO_PRESENCE,
+@@ -5052,9 +5054,23 @@ static const struct hda_fixup alc269_fixups[] = {
+ 		.chained = true,
+ 		.chain_id = ALC288_FIXUP_DELL1_MIC_NO_PRESENCE
+ 	},
++	[ALC288_FIXUP_DISABLE_AAMIX] = {
++		.type = HDA_FIXUP_FUNC,
++		.v.func = alc_fixup_disable_aamix,
++		.chained = true,
++		.chain_id = ALC288_FIXUP_DELL_XPS_13_GPIO6
++	},
++	[ALC288_FIXUP_DELL_XPS_13] = {
++		.type = HDA_FIXUP_FUNC,
++		.v.func = alc_fixup_dell_xps13,
++		.chained = true,
++		.chain_id = ALC288_FIXUP_DISABLE_AAMIX
++	},
+ 	[ALC292_FIXUP_DISABLE_AAMIX] = {
+ 		.type = HDA_FIXUP_FUNC,
+ 		.v.func = alc_fixup_disable_aamix,
++		.chained = true,
++		.chain_id = ALC269_FIXUP_DELL2_MIC_NO_PRESENCE
+ 	},
+ 	[ALC292_FIXUP_DELL_E7X] = {
+ 		.type = HDA_FIXUP_FUNC,
+@@ -5095,7 +5111,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x1028, 0x0638, "Dell Inspiron 5439", ALC290_FIXUP_MONO_SPEAKERS_HSJACK),
+ 	SND_PCI_QUIRK(0x1028, 0x064a, "Dell", ALC293_FIXUP_DELL1_MIC_NO_PRESENCE),
+ 	SND_PCI_QUIRK(0x1028, 0x064b, "Dell", ALC293_FIXUP_DELL1_MIC_NO_PRESENCE),
+-	SND_PCI_QUIRK(0x1028, 0x0665, "Dell XPS 13", ALC292_FIXUP_DELL_E7X),
++	SND_PCI_QUIRK(0x1028, 0x0665, "Dell XPS 13", ALC288_FIXUP_DELL_XPS_13),
+ 	SND_PCI_QUIRK(0x1028, 0x06c7, "Dell", ALC255_FIXUP_DELL1_MIC_NO_PRESENCE),
+ 	SND_PCI_QUIRK(0x1028, 0x06d9, "Dell", ALC293_FIXUP_DELL1_MIC_NO_PRESENCE),
+ 	SND_PCI_QUIRK(0x1028, 0x06da, "Dell", ALC293_FIXUP_DELL1_MIC_NO_PRESENCE),
+-- 
+2.4.5
+
+
+From 3f4d4630afba4770f3027ea2b86eeb47a8bf206e Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Mon, 29 Jun 2015 10:56:53 +0200
+Subject: [PATCH 10/10] ALSA: hda - Add a fixup for Dell E7450
+
+Dell E7450 [0128:062e] needs the same quirk as other E7xx models.
+
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=100571
+Cc: <stable@vger.kernel.org> # v4.1
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/pci/hda/patch_realtek.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index 1615ab0..c67d43c 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -5108,6 +5108,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x1028, 0x05f6, "Dell", ALC269_FIXUP_DELL1_MIC_NO_PRESENCE),
+ 	SND_PCI_QUIRK(0x1028, 0x0615, "Dell Vostro 5470", ALC290_FIXUP_SUBWOOFER_HSJACK),
+ 	SND_PCI_QUIRK(0x1028, 0x0616, "Dell Vostro 5470", ALC290_FIXUP_SUBWOOFER_HSJACK),
++	SND_PCI_QUIRK(0x1028, 0x062e, "Dell Latitude E7450", ALC292_FIXUP_DELL_E7X),
+ 	SND_PCI_QUIRK(0x1028, 0x0638, "Dell Inspiron 5439", ALC290_FIXUP_MONO_SPEAKERS_HSJACK),
+ 	SND_PCI_QUIRK(0x1028, 0x064a, "Dell", ALC293_FIXUP_DELL1_MIC_NO_PRESENCE),
+ 	SND_PCI_QUIRK(0x1028, 0x064b, "Dell", ALC293_FIXUP_DELL1_MIC_NO_PRESENCE),
+-- 
+2.4.5
+

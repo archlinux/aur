@@ -1,0 +1,65 @@
+pkgbase = linux-dell
+	pkgver = 4.1.2
+	pkgrel = 2.1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = 0001-block-loop-convert-to-per-device-workqueue.patch
+	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+	source = bitmap-enable-booting-for-dm-md-raid1.patch
+	source = v4.1+dell-laptop.patch
+	source = change-default-console-loglevel.patch
+	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
+	sha256sums = SKIP
+	sha256sums = 1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef
+	sha256sums = SKIP
+	sha256sums = 96f87518fd7ad76d971068aeed00cc88e2094bd0765beec0c9476e844f4f886c
+	sha256sums = d298114398349233fcf16a32a23519efe27393b90a10aba424d77cfccb90a771
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
+	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
+	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
+	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
+	sha256sums = c85aed49361f43e41c0cf858f5df3a2cce946e01eb6107924e5825f4bbefff4b
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-dell
+	pkgdesc = The Linux-dell kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-dell=4.1.2
+	conflicts = kernel26-dell
+	replaces = kernel26-dell
+	backup = etc/mkinitcpio.d/linux-dell.preset
+
+pkgname = linux-dell-headers
+	pkgdesc = Header files and scripts for building modules for Linux-dell kernel
+	provides = kernel26-dell-headers=4.1.2
+	conflicts = kernel26-dell-headers
+	replaces = kernel26-dell-headers
+
+pkgname = linux-dell-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-dell kernel
+	provides = kernel26-dell-docs=4.1.2
+	conflicts = kernel26-dell-docs
+	replaces = kernel26-dell-docs
+
