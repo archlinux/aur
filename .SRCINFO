@@ -1,0 +1,16 @@
+pkgbase = fabtests
+	pkgdesc = OpenFabrics Alliance high performance fabric library tests using libfabric
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libfabric
+	depends = bash
+	source = https://www.openfabrics.org/downloads/ofi/fabtests-1.0.0.tar.gz
+	md5sums = fc1952e9f53def1748d9910aacaf3a31
+
+pkgname = fabtests
+
