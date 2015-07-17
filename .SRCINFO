@@ -23,8 +23,8 @@ pkgbase = qmplay2
 	depends = libcddb
 	optdepends = pulseaudio
 	optdepends = youtube-dl
-	source = http://downloads.sourceforge.net/project/zaps166/QMPlay2/QMPlay2-src-15.07.13.tar.bz2
-	sha256sums = 0b9043d8a5ab5a4fd8991a9a3443156abd3e16c5fec04e992bca2c423a6672e6
+	source = https://github.com/zaps166/QMPlay2/archive/15.07.13.tar.gz
+	sha256sums = 21423610aff39e0a69735504e1ac3abc8384e2549fa635f5faac5b389a3108e6
 
 pkgname = qmplay2
 
