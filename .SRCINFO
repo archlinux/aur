@@ -1,0 +1,21 @@
+pkgbase = flac-git_p
+	pkgdesc = Free Lossless Audio Codec
+	pkgver = 1.3.1.r55.g6ced857
+	pkgrel = 1
+	url = http://flac.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = BSD
+	makedepends = git
+	makedepends = nasm
+	depends = gcc-libs
+	depends = libogg
+	provides = flac
+	conflicts = flac
+	options = !makeflags
+	source = git+https://git.xiph.org/flac.git
+	sha512sums = SKIP
+
+pkgname = flac-git_p
+
