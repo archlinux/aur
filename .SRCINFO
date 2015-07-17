@@ -1,0 +1,23 @@
+pkgbase = perl-moosex-types-datetime
+	pkgdesc = DateTime related constraints and coercions for
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Types-DateTime
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	depends = perl-datetime>=0.4302
+	depends = perl-datetime-locale>=0.40
+	depends = perl-datetime-timezone>=0.95
+	depends = perl-moose>=0.41
+	depends = perl-moosex-types>=0.30
+	depends = perl-test-use-ok>=0
+	depends = perl-namespace-clean>=0.08
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-DateTime-0.10.tar.gz
+	md5sums = 3f9a0b5c99949df997da1af47047c30d
+	sha512sums = 16a30b8940dd60790ae26e5e628556520589f6a8abeadb95c184aa901aa48fe53e49c09395522cb1cc2d82b3eaf46fd61e0f0f7ccc823bfedf7e9c93016049f1
+
+pkgname = perl-moosex-types-datetime
+
