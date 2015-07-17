@@ -4,7 +4,7 @@
 #Contributor: Diego <cdprincipe@gmail.com
 pkgname=ampache
 pkgver=3.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
