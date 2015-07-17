@@ -1,12 +1,13 @@
+# Maintainer: Stefan Majewsky <majewsky@gmx.net>
 pkgname="flashplugin-must-die"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Hinder flashplugin from being installed on your system.'
 arch=('any')
 url='https://aur4.archlinux.org/packages/flashplugin-must-die'
 license=('BSD')
-provides=('flashplugin')
-conflicts=('flashplugin')
+provides=()
+conflicts=('flashplugin' 'freshplayerplugin' 'pepper-flash' 'chromium-pepper-flash')
 
 build() {
 cd "${srcdir}"
