@@ -5,7 +5,7 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-manpages
-_pkgver=3.19-gnu
+_pkgver=4.1-gnu
 
 _srcname=linux-${_pkgver%-*}
 _archpkgver=${_pkgver%-*}
@@ -20,7 +20,7 @@ replaces=('kernel26-manpages' 'kernel26-libre-manpages' 'linux-manpages')
 conflicts=('kernel26-manpages' 'kernel26-libre-manpages' 'linux-manpages')
 provides=('kernel26-manpages' 'kernel26-libre-manpages' "linux-manpages=${_archpkgver}")
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz")
-sha256sums=('2a60ec99ae498e7cdafac63ecca1c0ca07643eaa6c9a1a83f19e4daa3e75b9d9')
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324')
 
 build() {
   cd "${srcdir}/${_srcname}"
