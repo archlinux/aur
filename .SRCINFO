@@ -1,6 +1,6 @@
 pkgbase = bin32-jre-devel
 	pkgdesc = Oracle Java 9 Runtime Environment Snapshot (32-bit)
-	pkgver = 9b72
+	pkgver = 9b73
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	install = bin32-jre-devel.install
@@ -44,8 +44,8 @@ pkgbase = bin32-jre-devel
 	source = OTN-Early-Adopter-License-Terms.txt
 	md5sums = 643277e142823bf695b0a6327d3ef963
 	md5sums = f09947a67691a2d78d20a3885889981c
-	source_x86_64 = http://download.java.net/jdk9/archive/b72/binaries/jre-9-ea-bin-b72-linux-i586-08_jul_2015.tar.gz
-	md5sums_x86_64 = 81d37ae7a968396838dd2df90fc159e6
+	source_x86_64 = http://download.java.net/jdk9/archive/b73/binaries/jre-9-ea-bin-b73-linux-i586-15_jul_2015.tar.gz
+	md5sums_x86_64 = 8b4fabc0009e12bd98b0dc836dce6ed0
 
 pkgname = bin32-jre-devel
 
