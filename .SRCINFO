@@ -1,6 +1,6 @@
 pkgbase = libutvideo-git
 	pkgdesc = utvideo with patches for the buildsystem (GIT Version)
-	pkgver = v15.2.0.67.gd2057eb
+	pkgver = v15.1.0.64.g36eb60c
 	pkgrel = 1
 	url = https://github.com/qyot27/libutvideo
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libutvideo-git
 	makedepends = git
 	provides = libutvideo
 	conflicts = libutvideo
-	source = git://github.com/qyot27/libutvideo.git#branch=buildsystem
+	source = git://github.com/qyot27/libutvideo.git#branch=15.1.0
 	sha1sums = SKIP
 
 pkgname = libutvideo-git

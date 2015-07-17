@@ -2,7 +2,7 @@
 # Contributor: HitomiTenshi <Johann.Rekowski@googlemail.com>
 
 pkgname=libutvideo-git
-pkgver=v15.2.0.67.gd2057eb
+pkgver=v15.1.0.64.g36eb60c
 pkgrel=1
 pkgdesc="utvideo with patches for the buildsystem (GIT Version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('git')
 conflicts=('libutvideo')
 provides=('libutvideo')
-source=('git://github.com/qyot27/libutvideo.git#branch=buildsystem')
+source=('git://github.com/qyot27/libutvideo.git#branch=15.1.0')
 sha1sums=('SKIP')
 
 pkgver() {
