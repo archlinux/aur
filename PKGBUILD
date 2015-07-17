@@ -1,0 +1,44 @@
+# Maintainer: chimeracoder <dev@chimeracoder.net>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Generator  : CPANPLUS::Dist::Arch 1.19
+# PKGBUILD Version history: https://github.com/ChimeraCoder/PKGBUILDS
+
+pkgname=perl-file-homedir
+_cpanname=File-HomeDir
+pkgver=1.00
+pkgrel=2
+pkgdesc="Find your home and other directories on any platform"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-file-which')
+makedepends=()
+url="https://metacpan.org/release/$_cpanname"
+source=("http://cpan.metacpan.org/authors/id/A/AD/ADAMK/$_cpanname-$pkgver.tar.gz")
+md5sums=('aa290cab9db52e2f76280fd1febf794e')
+
+build() {
+  cd "$srcdir/$_cpanname-$pkgver"
+
+  # install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+check() {
+  cd "$srcdir/$_cpanname-$pkgver"
+  make test
+}
+package() {
+  cd "$srcdir/$_cpanname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
+
+  # remove perllocal.pod and .packlist
+  find "$pkgdir" -name '*.pod' -o -name '.packlist' -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
