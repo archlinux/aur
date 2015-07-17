@@ -1,4 +1,5 @@
-# Maintainer: TDY <tdy@archlinux.info>
+# Maintainer: Aerion <emile@aerion.co.uk>
+# Contributor: TDY <tdy@archlinux.info>
 
 pkgname=ttf-beteckna
 pkgver=0.4
