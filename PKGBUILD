@@ -1,5 +1,5 @@
 pkgname=hawkey
-pkgver=0.5.7
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="High-level API for the libsolv library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'python' 'python-sphinx' 'rpm-org')
 checkdepends=('check' 'python-nose')
 optdepends=('python: for python bindings')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver-1.tar.gz")
-md5sums=('93adf5c058e1ff6d975b414f414ac2ba')
+md5sums=('3203a823f517df6b7f39b5cb6a8a4e54')
 
 prepare() {
 	cd "$pkgname-$pkgname-$pkgver-1"
@@ -25,7 +25,6 @@ build() {
 	cd "$pkgname-$pkgname-$pkgver-1"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DCMAKE_SKIP_RPATH=ON       \
 	      -DPYTHON_DESIRED=3          \
 	      ..
 	make
