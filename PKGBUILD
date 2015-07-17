@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
 depends=('gcc-libs')
-provides=('libx265' 'x265')
+provides=('x265'
+          'libx265.so' 'libx265_main10.so' 'libx265_main12.so')
 conflicts=('x265')
 makedepends=('cmake' 'mercurial' 'yasm')
 source=('hg+https://bitbucket.org/multicoreware/x265'
