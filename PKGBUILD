@@ -34,11 +34,10 @@ md5sums_i686=('c91760a04f658845722380f6c7fd4709')
 md5sums_x86_64=('4eea308a1b04553f720f82fd2fac79d3')
 [[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('60bcf9f25c0736b17a48bf1e060cb271')
 
-# Auto-detect patches
-_patches=($(ls *.patch 2>/dev/null))
-for _patch in ${_patches[@]}; do
-    source+=("$_patch")
-    md5sums+=('SKIP')
+# Auto-detect patches (e.g. nvidia-linux-4.1.patch)
+for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
+  source+=("$_patch")
+  md5sums+=('SKIP')
 done
 
 _create_links() {
@@ -66,21 +65,18 @@ prepare() {
   cd $_pkg
   bsdtar -xf nvidia-persistenced-init.tar.bz2
 
-  # Patch?
-  if [[ $(ls "$srcdir"/*.patch 2>/dev/null) ]]; then
-    # Loop
-    for _patch in "$srcdir"/*.patch; do
-      # Version variables
-      _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
-      _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
+  # Loop patches
+  for _patch in $(ls "$srcdir"/*.patch 2>/dev/null); do
+    # Version variables
+    _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
+    _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
       
-      # Check version
-      if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
-        msg2 "Applying ${_patch##*/}..."
-        patch -p1 -i "$_patch"
-      fi
-    done
-  fi
+    # Check version
+    if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
+      msg2 "Applying ${_patch##*/}..."
+      patch -p1 -i "$_patch"
+    fi
+  done
 }
 
 build() {
