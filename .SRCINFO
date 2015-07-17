@@ -1,0 +1,15 @@
+pkgbase = libocrdma
+	pkgdesc = OpenFabrics Alliance userspace Emulex OneConnect RDMA adapter libibverbs plug-in
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.openfabrics.org/downloads/libocrdma/README.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/libocrdma/libocrdma-1.0.5.tar.gz
+	md5sums = bae45452c11465e6951adff8e1480964
+
+pkgname = libocrdma
+
