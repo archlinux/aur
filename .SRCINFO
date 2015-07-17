@@ -1,7 +1,7 @@
 pkgbase = opensm
 	pkgdesc = OpenFabrics Alliance InfiniBand Subnet Manager and Administrator
 	pkgver = 3.3.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,10 @@ pkgbase = opensm
 	depends = rdma
 	source = https://www.openfabrics.org/downloads/management/opensm-3.3.19.tar.gz
 	source = opensm.service
+	source = opensm.launch
 	md5sums = b41a64985fc3050b934ce6082cbac1be
-	md5sums = 130d30d701776a27ecad9c8c90b9eb09
+	md5sums = f1155dd8fb07ce56c427bceb7ce3fffb
+	md5sums = 7cd151f96d46ba1bc651fce0e2b7e8dc
 
 pkgname = opensm
 

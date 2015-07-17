@@ -1,0 +1,9 @@
+#!/bin/bash
+# Copied from Fedora's opensm-3.3.17-4.fc22.x86_64.rpm
+# Modified to just launch opensm
+# Will come back to adding multiple OpenSM daemons running at once, which is what the rest of Fedora's version is for
+#
+# Launch the necessary OpenSM daemons for systemd
+
+(while true; do /usr/bin/opensm; sleep 30; done) &
+exit 0

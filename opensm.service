@@ -11,7 +11,9 @@ After=rdma.service
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/opensm --daemon
+# There is a timing bug that intermittently causes signal 15 failures on start
+# Fedora's workaround is to use a separate script
+ExecStart=/usr/bin/opensm.launch
 
 [Install]
 WantedBy=network.target
