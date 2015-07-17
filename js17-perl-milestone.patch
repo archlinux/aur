@@ -1,0 +1,22 @@
+diff --git a/js/src/config/milestone.pl b/js/src/config/milestone.pl
+--- a/js/src/config/milestone.pl
++++ b/js/src/config/milestone.pl
+@@ -50,17 +50,17 @@ if (!defined($OBJDIR)) { $OBJDIR = '.'; 
+ $MILESTONE_FILE  = "$TOPSRCDIR/config/milestone.txt";
+ @MILESTONE_PARTS = (0, 0, 0, 0);
+ 
+ #
+ # Grab milestone (top line of $MILESTONE_FILE that starts with a digit)
+ #
+ my $milestone = Moz::Milestone::getOfficialMilestone($MILESTONE_FILE);
+ 
+-if (defined(@TEMPLATE_FILE)) {
++if (@TEMPLATE_FILE) {
+   my $TFILE;
+ 
+   foreach $TFILE (@TEMPLATE_FILE) {
+     my $BUILT_FILE = "$OBJDIR/$TFILE";
+     $TFILE = "$SRCDIR/$TFILE.tmpl";
+ 
+     if (-e $TFILE) {
+ 
