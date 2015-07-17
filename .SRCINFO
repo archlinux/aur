@@ -1,8 +1,8 @@
 pkgbase = act_mirred-connmark
 	pkgdesc = Modified MIRRED TC action to retrieve the MARK of a packet through CTMARK in INGRESS. Source modified from OpenWRT.org
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
-	url = https://dev.openwrt.org/browser/trunk/target/linux/generic/patches-3.19/621-sched_act_connmark.patch
+	url = https://dev.openwrt.org/browser/trunk/target/linux/generic/patches-4.0/621-sched_act_connmark.patch
 	install = act_mirred-connmark.install
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = act_mirred-connmark
 	makedepends = linux-headers
 	depends = linux
 	source = act_mirred-connmark.patch
-	source = act_mirred.c::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/plain/net/sched/act_mirred.c?id=refs/tags/v4.0
+	source = act_mirred.c::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/plain/net/sched/act_mirred.c?id=refs/tags/v4.1
 	source = Makefile
 	md5sums = 8b92ff40b4de5b4d1a5aacb48a3832b3
-	md5sums = bc8e7278b090e6e27c75785141613d3d
+	md5sums = f54cd6b531630267818aa9ae7cdc6d77
 	md5sums = 7226ee15834b25f51fe65fca74a3b3c5
 
 pkgname = act_mirred-connmark
