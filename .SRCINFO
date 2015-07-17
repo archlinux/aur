@@ -1,0 +1,16 @@
+pkgbase = qperf
+	pkgdesc = OpenFabrics Alliance InfiniBand performance benchmark for bandwidth and latency
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = glibc
+	optdepends = librdmacm
+	source = https://www.openfabrics.org/downloads/qperf/qperf-0.4.9.tar.gz
+	md5sums = a9eea1953ee5379e57ae5fd7b09fecf2
+
+pkgname = qperf
+
