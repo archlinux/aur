@@ -2,12 +2,12 @@
 
 pkgname=untrunc-git
 pkgver=r30.c74920f
-pkgrel=2
+pkgrel=3
 pkgdesc="restore a damaged (truncated) mp4, m4v, mov, 3gp video"
 arch=('x86_64' 'i686')
 url="https://github.com/ponchio/untrunc"
 license=('GPL2')
-depends=('ffmpeg' 'qt-base')
+depends=('ffmpeg' 'qt5-base')
 source=("${pkgname}"::'git+https://github.com/ponchio/untrunc.git')
 md5sums=(SKIP)
 
