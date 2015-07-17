@@ -1,0 +1,15 @@
+pkgbase = perl-net-mac
+	pkgdesc = Net::MAC - Perl extension for representing and manipulating MAC addresses
+	pkgver = 2.103622
+	pkgrel = 2
+	url = http://search.cpan.org/~oliver/Net-MAC/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OL/OLIVER/Net-MAC-2.103622.tar.gz
+	md5sums = 6a63fce9e6564bf3ca2ca8df02e4937e
+
+pkgname = perl-net-mac
+
