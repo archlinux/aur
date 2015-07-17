@@ -1,0 +1,16 @@
+pkgbase = perl-file-sharedir-install
+	pkgdesc = File::ShareDir::Install - Install read-only data files from a distribution
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-ShareDir-Install
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	options = !emptydirs
+	source = http://cpan.org/modules/by-module/File/File-ShareDir-Install-0.10.tar.gz
+	sha512sums = 96c3a94da78e51c97223f16892c6bdb6a93f9602643aca6ee73fd661aefb0a018938f03b8265f255dc3daba467e01a2d2a924f33a5e1e4d2e9c9fe2698a3d09f
+
+pkgname = perl-file-sharedir-install
+
