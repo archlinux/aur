@@ -5,7 +5,7 @@
 _pkgbase=fltk
 pkgname=lib32-${_pkgbase}
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical user interface toolkit for X (32-bit)"
 arch=('x86_64')
 url="http://www.fltk.org"
@@ -17,6 +17,8 @@ sha512sums=('277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559e
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   patch -p1 -i ../../tigervnc.patch
   patch -p1 -i ../../fltk-config-dynlibs.patch
   sed -i 's/class Fl_XFont_On_Demand/class FL_EXPORT Fl_XFont_On_Demand/' FL/x.H
