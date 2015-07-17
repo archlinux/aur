@@ -1,6 +1,6 @@
 pkgbase = btsync
 	pkgdesc = BitTorrent Sync - automatically sync files via secure, distributed technology
-	pkgver = 2.0.128
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://www.bittorrent.com/sync
 	install = btsync.install
@@ -19,16 +19,16 @@ pkgbase = btsync
 	sha1sums = 05038b03a673dd0207b2758a2e01db5d28c409d1
 	sha1sums = d30deb7e41ba1d163b4a5e442b8d8118758d312a
 	sha1sums = bf7d6bd7ffe2d23cce51a51e92fac3b82a7c87bb
-	source_i686 = https://download-cdn.getsyncapp.com/2.0.128/linux-i386/BitTorrent-Sync_i386.tar.gz
-	sha1sums_i686 = a7868403951dd29eba826da638a578c3287ff79c
-	source_x86_64 = https://download-cdn.getsyncapp.com/2.0.128/linux-x64/BitTorrent-Sync_x64.tar.gz
-	sha1sums_x86_64 = 80b9483355f0425ad49b17eeba8c1139282f8618
-	source_arm = https://download-cdn.getsyncapp.com/2.0.128/linux-arm/BitTorrent-Sync_arm.tar.gz
-	sha1sums_arm = 8b83250520169b2fb816ce3aee49a6d857cb2da2
-	source_armv6h = https://download-cdn.getsyncapp.com/2.0.128/linux-arm/BitTorrent-Sync_arm.tar.gz
-	sha1sums_armv6h = 8b83250520169b2fb816ce3aee49a6d857cb2da2
-	source_armv7h = https://download-cdn.getsyncapp.com/2.0.128/linux-arm/BitTorrent-Sync_arm.tar.gz
-	sha1sums_armv7h = 8b83250520169b2fb816ce3aee49a6d857cb2da2
+	source_i686 = https://download-cdn.getsyncapp.com/2.1.1/linux-i386/BitTorrent-Sync_i386.tar.gz
+	sha1sums_i686 = 6c79813908838130f90e6e69024ef1214dc96837
+	source_x86_64 = https://download-cdn.getsyncapp.com/2.1.1/linux-x64/BitTorrent-Sync_x64.tar.gz
+	sha1sums_x86_64 = 4ee51168ae9859b0d1416721ffc395eb2312035e
+	source_arm = https://download-cdn.getsyncapp.com/2.1.1/linux-arm/BitTorrent-Sync_arm.tar.gz
+	sha1sums_arm = 7d0be9ddf56afcf75292da2e3ea170934a898703
+	source_armv6h = https://download-cdn.getsyncapp.com/2.1.1/linux-arm/BitTorrent-Sync_arm.tar.gz
+	sha1sums_armv6h = 7d0be9ddf56afcf75292da2e3ea170934a898703
+	source_armv7h = https://download-cdn.getsyncapp.com/2.1.1/linux-arm/BitTorrent-Sync_arm.tar.gz
+	sha1sums_armv7h = 7d0be9ddf56afcf75292da2e3ea170934a898703
 
 pkgname = btsync
 
