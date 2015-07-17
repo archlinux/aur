@@ -1,7 +1,7 @@
 pkgbase = grotz
 	pkgdesc = A Z-code interactive fiction interpreter for GTK.
 	pkgver = 0.2c
-	pkgrel = 4
+	pkgrel = 5
 	url = http://kevinboone.net/README_grotz.html
 	install = grotz.install
 	arch = i686
