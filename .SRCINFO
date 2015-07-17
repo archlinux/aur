@@ -1,0 +1,20 @@
+pkgbase = apple_set_os
+	pkgdesc = Tiny EFI program for unlocking the Intel integrated graphics device on the Macbook Pro 11,3
+	pkgver = v0
+	pkgrel = 1
+	url = https://github.com/0xbb/apple_set_os.efi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gnu-efi-libs
+	optdepends = efibootmgr: manage UEFI boot entries
+	optdepends = grub: boot loader capable of UEFI chainloading
+	optdepends = gummiboot: boot loader capable of UEFI chainloading
+	optdepends = refind-efi: boot loader capable of UEFI chainloading
+	optdepends = systemd: has boot loader capable of UEFI chainloading
+	source = apple_set_os::git+https://github.com/0xbb/apple_set_os.efi.git
+	md5sums = SKIP
+
+pkgname = apple_set_os
+
