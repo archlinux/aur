@@ -15,7 +15,7 @@ options=('!makeflags')
 conflicts=('flac')
 provides=('flac')
 replaces=()
-source=("git+https://git.xiph.org/flac.git")
+source=("${_srcname}::git+https://git.xiph.org/flac.git")
 sha512sums=('SKIP')
 
 pkgver() {
