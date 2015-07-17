@@ -29,8 +29,11 @@ md5sums_i686=('c91760a04f658845722380f6c7fd4709')
 md5sums_x86_64=('4eea308a1b04553f720f82fd2fac79d3')
 
 # Auto-detect patches
-source=($(ls *.patch 2>/dev/null))
-md5sums=('SKIP')
+_patches=($(ls *.patch 2>/dev/null))
+for _patch in ${_patches[@]}; do
+    source+=("$_patch")
+    md5sums+=('SKIP')
+done
 
 prepare() {
   # Remove previous builds
