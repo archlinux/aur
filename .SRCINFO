@@ -1,0 +1,12 @@
+pkgbase = phpmetrics
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.phpmetrics.org/
+	arch = any
+	license = MIT
+	depends = php
+	source = https://github.com/Halleck45/PhpMetrics/raw/v1.1.1/build/phpmetrics.phar
+	md5sums = fbc5f2d0f3930f0a941077bd2566a594
+
+pkgname = phpmetrics
+
