@@ -4,28 +4,26 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=1.90.90.r12568.71e3d0a
+pkgver=1.90.90.r12597.42041a5
 pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
-arch=(i686 x86_64)
-url="http://www.kdevelop.org/"
-license=(GPL)
-groups=(kde)
+arch=('i686' 'x86_64')
+url='http://www.kdevelop.org'
+license=('GPL')
 depends=('qt5-quick1' 'ktexteditor' 'threadweaver' 'kcmutils' 'kdelibs4support' 'knewstuff'
          'knotifyconfig'  'grantlee-qt5' 'libkomparediff2-git' 'hicolor-icon-theme')
-makedepends=('cmake' 'boost' 'git' 'extra-cmake-modules' 'kdoctools' 'subversion')
 optdepends=('kompare-git: difference checking'
             'subversion: Subversion plugin')
-provides=('kdevplatform')
+makedepends=('cmake' 'boost' 'git' 'extra-cmake-modules' 'kdoctools' 'subversion')
 conflicts=('kdevplatform')
-source=('git+git://anongit.kde.org/kdevplatform')
+source=('git://anongit.kde.org/kdevplatform')
 sha1sums=('SKIP')
-install='kdevplatform-git.install'
+install=kdevplatform-git.install
 
 pkgver() {
   cd kdevplatform
-  _ver="$(cat CMakeLists.txt | grep -e KDEVPLATFORM_VERSION_MAJOR -e KDEVPLATFORM_VERSION_MINOR -e KDEVPLATFORM_VERSION_PATCH | head -n3 | cut -d ' ' -f2 | tr -d ')')"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
