@@ -1,0 +1,26 @@
+pkgbase = perl-ppi
+	pkgdesc = Parse, Analyze and Manipulate Perl (without perl)
+	pkgver = 1.220
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/PPI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-nowarnings>=0.084
+	checkdepends = perl-test-object>=0.07
+	checkdepends = perl-test-subcalls>=1.07
+	makedepends = perl-class-inspector>=1.22
+	makedepends = perl-file-remove>=1.42
+	depends = perl-clone>=0.30
+	depends = perl-io-string>=1.07
+	depends = perl-list-moreutils>=0.16
+	depends = perl-params-util>=1.00
+	depends = perl-task-weaken
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MITHALDU/PPI-1.220.tar.gz
+	md5sums = 52224156144862b79b91fb53191ae47f
+	sha512sums = 03ff865424a11cb351211dc7d57b6477848e8f354de74dc5bae214614438549f1dba6818842f6312f88fa631514abad69b0023046d56c8e8584d0b634c202694
+
+pkgname = perl-ppi
+
