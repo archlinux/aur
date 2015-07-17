@@ -3,7 +3,7 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-qt-git')
-pkgver=4.0.2.r6957.009148d
+pkgver=4.0.2.r7019.35e9ada
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
@@ -20,8 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd dolphin-emu
 
-  _tag='4.0.2'
-  echo "${_tag}.r$(git rev-list --count ${_tag}..HEAD).$(git rev-parse --short HEAD)"
+  echo "4.0.2.r$(git rev-list --count 4.0..HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
