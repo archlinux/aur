@@ -1,0 +1,15 @@
+pkgbase = kalibrate-hackrf-git
+	pkgdesc = GSM base stations scanner (for HackRF)
+	pkgver = 20150303
+	pkgrel = 1
+	url = https://github.com/scateu/kalibrate-hackrf
+	arch = i686
+	arch = x86_64
+	makedepends = gcc
+	makedepends = make
+	depends = git
+	source = git+https://github.com/scateu/kalibrate-hackrf
+	md5sums = SKIP
+
+pkgname = kalibrate-hackrf-git
+
