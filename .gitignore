@@ -1,0 +1,4 @@
+gnome-news/
+pkg/
+src/
+*.pkg.tar.xz
