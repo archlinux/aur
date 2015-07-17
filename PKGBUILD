@@ -10,7 +10,7 @@
 
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
@@ -19,7 +19,7 @@ license=('GPL' 'LGPL2.1')
 url="http://www.gnome.org/projects/$_pkgname/"
 depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 
          'wpa_supplicant' 'dhclient' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
-         'libteam')
+         'libteam' 'libgudev')
 makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
              "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala')
 optdepends=('modemmanager: for modem management service'
@@ -38,19 +38,16 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
-        0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
         )
-sha256sums=('359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff'
+sha256sums=('e4099fa2f4f4b8d95d0ad9fdd03ec20960845085fa500bf79aecbf54cee018c9'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
-            '4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a')
+            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   patch -Np1 -i ../disable_set_hostname.patch
-  patch -Np1 -i ../0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 

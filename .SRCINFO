@@ -1,6 +1,6 @@
 pkgbase = networkmanager-consolekit
 	pkgdesc = NetworkManager with ConsoleKit support for non-systemd systems
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager.install
@@ -16,7 +16,7 @@ pkgbase = networkmanager-consolekit
 	makedepends = modemmanager
 	makedepends = rp-pppoe
 	makedepends = vala
-	depends = libnm-glib>=1.0.2
+	depends = libnm-glib>=1.0.4
 	depends = iproute2
 	depends = libnl
 	depends = polkit-consolekit
@@ -28,6 +28,7 @@ pkgbase = networkmanager-consolekit
 	depends = libnewt
 	depends = libndp
 	depends = libteam
+	depends = libgudev
 	optdepends = modemmanager: for modem management service
 	optdepends = dhcpcd: alternative DHCP client; does not support DHCPv6
 	optdepends = iptables: connection sharing
@@ -35,20 +36,18 @@ pkgbase = networkmanager-consolekit
 	optdepends = bluez: bluetooth support
 	optdepends = openresolv: resolvconf support
 	optdepends = ppp: dialup connection support
-	provides = networkmanager=1.0.2
+	provides = networkmanager=1.0.4
 	conflicts = networkmanager
 	replaces = networkmanager
 	backup = etc/NetworkManager/NetworkManager.conf
-	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.0/NetworkManager-1.0.2.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.0/NetworkManager-1.0.4.tar.xz
 	source = NetworkManager.conf
 	source = disable_set_hostname.patch
 	source = networkmanager.rc
-	source = 0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
-	sha256sums = 359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff
+	sha256sums = e4099fa2f4f4b8d95d0ad9fdd03ec20960845085fa500bf79aecbf54cee018c9
 	sha256sums = 2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b
 	sha256sums = 25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460
 	sha256sums = e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc
-	sha256sums = 4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a
 
 pkgname = networkmanager-consolekit
 
