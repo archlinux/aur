@@ -1,0 +1,22 @@
+Description: drop constants removed upstream
+ they were shortcuts to the real defines and are missing in firebird 2.5
+Author: Damyan Ivanov <dmn@debian.org>
+Forwarded: no
+Bug-Debian: http://bugs.debian.org/643473
+
+--- a/_kiservices.c
++++ b/_kiservices.c
+@@ -806,13 +806,9 @@ int _init_kiservices_ibase_header_consta
+   SIC(isc_info_db_impl_last_value);
+   #endif /* isc_info_firebird_version */
+ 
+-  SIC(isc_info_db_impl_isc_a);
+   SIC(isc_info_db_impl_isc_apl_68K);
+-  SIC(isc_info_db_impl_isc_u);
+   SIC(isc_info_db_impl_isc_vax_ultr);
+-  SIC(isc_info_db_impl_isc_v);
+   SIC(isc_info_db_impl_isc_vms);
+-  SIC(isc_info_db_impl_isc_s);
+   SIC(isc_info_db_impl_isc_sun_68k);
+   SIC(isc_info_db_class_access);
+   SIC(isc_info_db_class_y_valve);
