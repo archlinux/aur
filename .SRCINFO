@@ -8,7 +8,8 @@ pkgbase = nixnote
 	license = GPL
 	depends = java-runtime
 	depends = libpng12
-	source = http://sourceforge.net/projects/nevernote/files/NixNote%201.6/nixnote-1.6_amd64.tar.gz/download
+	source = http://download2.polytechnic.edu.na/pub4/sourceforge/n/project/project/ne/nevernote/NixNote%201.6/nixnote-1.6_amd64.tar.gz
+	sha256sums = 781f8b9cbe3e1137b62d4dbb76670b3e2d5a20403b04b3767e03a2e89dba860e
 
 pkgname = nixnote
 
