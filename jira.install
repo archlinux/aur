@@ -1,10 +1,10 @@
 post_install() {
-	if ! getent passwd jira > /dev/null; then
-		useradd -r jira
-	fi
-	chown -R jira:jira '/opt/atlassian-jira'
+  if ! getent passwd jira > /dev/null; then
+    useradd -r jira
+  fi
+  chown -R jira:jira '/opt/atlassian-jira'
 }
 
 post_upgrade() {
-	chown -R jira:jira '/opt/atlassian-jira'
+  chown -R jira:jira '/opt/atlassian-jira'
 }

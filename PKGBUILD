@@ -2,7 +2,7 @@
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=atlassian-jira
-pkgver=6.4.7
+pkgver=6.4.8
 pkgrel=1
 pkgdesc="Bug tracking, issue tracking and project management software"
 url="https://www.atlassian.com/software/jira"
@@ -19,7 +19,7 @@ install='jira.install'
 source=("http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-$pkgver.tar.gz"
         'jira.conf.d'
         'jira.service')
-sha256sums=('c8623ca2a1c0fea18e3921ee1834b3ffe39d70ee2c539f99a99eee2cfb09edd4'
+sha256sums=('cdf5c7c11f249f6efcb0bd4b492dd8479dc4611c54f8af5ceb3971573b258569'
             'd1ca27e15edb0032a37b1b0df302209e78d11671d44b6a239a017be9881708d0'
             'cff80b2a8f930ba3d1c11df809afa11ffe29b78d946689cb588b1ce2f4c01e5d')
 
