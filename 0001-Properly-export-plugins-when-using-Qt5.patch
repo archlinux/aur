@@ -1,0 +1,165 @@
+From bfe4215e5c538697afa715e34f71d876dab2fece Mon Sep 17 00:00:00 2001
+From: Dimitri Merejkowsky <dmerejkowsky@aldebaran-robotics.com>
+Date: Thu, 4 Dec 2014 14:14:47 +0100
+Subject: [PATCH] Properly export plugins when using Qt5
+
+---
+ backends/redland/redlandbackend.h     | 4 ++++
+ backends/sesame2/sesame2backend.h     | 4 ++++
+ backends/virtuoso/virtuosobackend.h   | 4 ++++
+ parsers/nquads/nquadparser.h          | 5 +++++
+ parsers/raptor/raptorparser.h         | 3 +++
+ serializers/nquads/nquadserializer.h  | 4 ++++
+ serializers/raptor/raptorserializer.h | 4 ++++
+ 7 files changed, 28 insertions(+)
+
+diff --git a/backends/redland/redlandbackend.h b/backends/redland/redlandbackend.h
+index 51306c7..8653754 100644
+--- a/backends/redland/redlandbackend.h
++++ b/backends/redland/redlandbackend.h
+@@ -26,6 +26,7 @@
+ 
+ #include <QtCore/QObject>
+ #include <QtCore/QMutex>
++#include <QtCore/QtPlugin>
+ 
+ namespace Soprano
+ {
+@@ -35,6 +36,9 @@ namespace Soprano
+         {
+             Q_OBJECT
+             Q_INTERFACES(Soprano::Backend)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++            Q_PLUGIN_METADATA(IID "org.soprano.plugins.Backend/2.1")
++#endif
+ 
+         public:
+             BackendPlugin();
+diff --git a/backends/sesame2/sesame2backend.h b/backends/sesame2/sesame2backend.h
+index b358816..ed2602e 100644
+--- a/backends/sesame2/sesame2backend.h
++++ b/backends/sesame2/sesame2backend.h
+@@ -26,6 +26,7 @@
+ 
+ #include <QtCore/QObject>
+ #include <QtCore/QMutex>
++#include <QtCore/QtPlugin>
+ 
+ 
+ class JNIWrapper;
+@@ -36,6 +37,9 @@ namespace Soprano {
+         {
+             Q_OBJECT
+             Q_INTERFACES(Soprano::Backend)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++            Q_PLUGIN_METADATA(IID "org.soprano.plugins.Backend/2.1")
++#endif
+ 
+         public:
+             BackendPlugin();
+diff --git a/backends/virtuoso/virtuosobackend.h b/backends/virtuoso/virtuosobackend.h
+index b5ca547..ba651bd 100644
+--- a/backends/virtuoso/virtuosobackend.h
++++ b/backends/virtuoso/virtuosobackend.h
+@@ -26,6 +26,7 @@
+ 
+ #include <QtCore/QObject>
+ #include <QtCore/QMutex>
++#include <QtCore/QtPlugin>
+ 
+ 
+ namespace Soprano {
+@@ -38,6 +39,9 @@ namespace Soprano {
+         {
+             Q_OBJECT
+             Q_INTERFACES(Soprano::Backend)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++            Q_PLUGIN_METADATA(IID "org.soprano.plugins.Backend/2.1")
++#endif
+ 
+         public:
+             BackendPlugin();
+diff --git a/parsers/nquads/nquadparser.h b/parsers/nquads/nquadparser.h
+index a4fa7f9..d681d3d 100644
+--- a/parsers/nquads/nquadparser.h
++++ b/parsers/nquads/nquadparser.h
+@@ -24,6 +24,7 @@
+ 
+ #include <QtCore/QUrl>
+ #include <QtCore/QObject>
++#include <QtCore/QtPlugin>
+ 
+ #include "parser.h"
+ #include "statement.h"
+@@ -35,6 +36,10 @@ namespace Soprano {
+     {
+     Q_OBJECT
+         Q_INTERFACES(Soprano::Parser)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++        Q_PLUGIN_METADATA(IID "org.soprano.plugins.Parser/1.0")
++#endif
++
+         
+     public:
+     NQuadParser();
+diff --git a/parsers/raptor/raptorparser.h b/parsers/raptor/raptorparser.h
+index bed94d1..e50a52b 100644
+--- a/parsers/raptor/raptorparser.h
++++ b/parsers/raptor/raptorparser.h
+@@ -36,6 +36,9 @@ namespace Soprano {
+       class Parser : public QObject, public Soprano::Parser { 
+         Q_OBJECT
+         Q_INTERFACES(Soprano::Parser)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++        Q_PLUGIN_METADATA(IID "org.soprano.plugins.Parser/1.0")
++#endif
+ 
+     public:
+         Parser();
+diff --git a/serializers/nquads/nquadserializer.h b/serializers/nquads/nquadserializer.h
+index 5f9b34e..811bd67 100644
+--- a/serializers/nquads/nquadserializer.h
++++ b/serializers/nquads/nquadserializer.h
+@@ -24,6 +24,7 @@
+ 
+ #include <QtCore/QUrl>
+ #include <QtCore/QObject>
++#include <QtCore/QtPlugin>
+ 
+ #include "serializer.h"
+ #include "node.h"
+@@ -35,6 +36,9 @@ namespace Soprano {
+     {
+     Q_OBJECT
+     Q_INTERFACES(Soprano::Serializer)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++    Q_PLUGIN_METADATA(IID "org.soprano.plugins.Serializer/1.0")
++#endif
+ 
+     public:
+     NQuadSerializer();
+diff --git a/serializers/raptor/raptorserializer.h b/serializers/raptor/raptorserializer.h
+index 4a8426b..b3605ba 100644
+--- a/serializers/raptor/raptorserializer.h
++++ b/serializers/raptor/raptorserializer.h
+@@ -25,6 +25,7 @@
+ 
+ #include <QtCore/QUrl>
+ #include <QtCore/QObject>
++#include <QtCore/QtPlugin>
+ 
+ #include "serializer.h"
+ 
+@@ -34,6 +35,9 @@ namespace Soprano {
+         {
+             Q_OBJECT
+             Q_INTERFACES(Soprano::Serializer)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
++            Q_PLUGIN_METADATA(IID "org.soprano.plugins.Serializer/1.0")
++#endif
+ 
+         public:
+             Serializer();
+-- 
+2.1.3
+

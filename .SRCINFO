@@ -1,0 +1,27 @@
+pkgbase = soprano-qt5-git
+	pkgdesc = A library which provides a highly usable object-oriented C++/Qt5 framework for RDF data
+	pkgver = v2.9.3.90.g3e00d37
+	pkgrel = 3
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	groups = kde-git
+	license = LGPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = qt5-base
+	depends = libiodbc
+	depends = redland
+	optdepends = virtuoso
+	provides = soprano
+	provides = soprano-qt5
+	conflicts = soprano
+	conflicts = soprano-qt5
+	source = git://anongit.kde.org/soprano
+	source = 0001-Properly-export-plugins-when-using-Qt5.patch
+	md5sums = SKIP
+	md5sums = 2b844cc3abe7574691aeb4083c5cec22
+
+pkgname = soprano-qt5-git
+
