@@ -9,12 +9,15 @@ pkgname=shimmer-wallpapers
 _pkgname=Wallpapers
 _pkgnamelong="Shimmer-Wallpapers"
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Complementary wallpaper collection for the Shimmer Project Xfce themes"
 arch=("any")
 url=http://shimmerproject.org
 license=(CCPL:by-sa-3.0)
 groups=("xfce-themes-shimmer-collection")
+replaces=("shimmer-wallpapers-git")
+conflicts=("shimmer-wallpapers-git")
+provides=("shimmer-wallpapers-git" "shimmer-wallpapers")
 makedepends=("git")
 optdepends=("elementary-xfce-icons: matching icon set, -git or stable"
     "xfce-theme-albatross: matching Shimmer Project Xfce theme, -git or stable"
