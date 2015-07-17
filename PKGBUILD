@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=snazzer-git
-pkgver=0
+pkgver=r146.8d85449
 pkgrel=1
 pkgdesc="btrfs snapshotting and backup system offering snapshot measurement, transport and pruning. "
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('btrfs-progs')
 source=("git+https://github.com/csirac2/snazzer.git")
 
-prepare() {
+pkgver() {
   cd "snazzer"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
