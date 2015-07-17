@@ -1,0 +1,17 @@
+pkgbase = perftest
+	pkgdesc = OpenFabrics Alliance Infiniband verbs performance testing and benchmarking tools
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = librdmacm
+	depends = libibumad
+	depends = bash
+	source = https://www.openfabrics.org/downloads/perftest/perftest-3.0-0.9.g214990b.tar.gz
+	md5sums = 527cc1b725229bd841e2605e88baf7ce
+
+pkgname = perftest
+
