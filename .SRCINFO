@@ -1,0 +1,18 @@
+pkgbase = delaycut-git_p
+	pkgdesc = Cuts and corrects delay in ac3 and dts files.
+	pkgver = 1.4.3.7.r17.gcd12340
+	pkgrel = 1
+	url = https://github.com/darealshinji/delaycut
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt4
+	provides = delaycut
+	conflicts = delaycut
+	conflicts = delaycut-git
+	source = delaycut::git+https://github.com/darealshinji/delaycut.git
+	sha256sums = SKIP
+
+pkgname = delaycut-git_p
+
