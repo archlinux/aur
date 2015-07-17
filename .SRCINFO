@@ -1,6 +1,6 @@
 pkgbase = xfce-theme-greybird-git
 	pkgdesc = Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity
-	pkgver = 1.5.3.r604
+	pkgver = 1.6.r611
 	pkgrel = 1
 	url = https://github.com/shimmerproject/Greybird
 	arch = any
