@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url='https://github.com/foo86/dcadec.git'
 license=('LGPL2.1')
 depends=('glibc')
-conflicts=()
 provides=('dcadec')
 makedepends=('git')
 source=('git://github.com/foo86/dcadec.git')
