@@ -1,17 +1,18 @@
 post_install() {
-        cat <<-EndOfMessage
-        ==> If you want to use Ampache's transcoding and/or downsampling you'll
-            need the packages specified in optdepends.
-            Check out http://wiki.archlinux.org/index.php/Ampache and
-            https://github.com/ampache/ampache/wiki/Transcoding for more info.
-        ==> Please enable curl and pdo_mysql modules in php.ini.
-        ==> Database will be upgraded automatically in case of update from 3.7.
-            Check out https://github.com/ampache/ampache/wiki/Installation for
-            more info about installation process.
-        EndOfMessage
-        /bin/true
+	cat << EOF
+==> If you want to use Ampache's transcoding and/or downsampling you'll
+    need the packages specified in optdepends.
+    Check out http://wiki.archlinux.org/index.php/Ampache and
+    https://github.com/ampache/ampache/wiki/Transcoding for more info.
+==> Please enable curl and pdo_mysql modules in php.ini.
+==> Database will be upgraded automatically in case of update from 3.7.
+    Check out https://github.com/ampache/ampache/wiki/Installation for
+    more info about installation process.
+EOF
+	/bin/true
 }
 
 post_upgrade() {
-        post_install
+	post_install
 }
+post_install
