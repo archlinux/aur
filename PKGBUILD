@@ -1,6 +1,6 @@
 pkgname=terasology-devbuild
-pkgver=1468
-_omega_ver=201
+pkgver=1470
+_omega_ver=203
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ source=(
 )
 sha512sums=('9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669'
             '9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19'
-            'ded70e67609e94d555d987884e99a4ee08146ae1cd4c068799dd78c507c41c4b1d1ade49551d98f9e9aa4b6482135de3579d2dd88ce7a0b364bc7354273782a2')
+            '212b9b26d0529b7e28e3cfb273c09fd8ace2039ef69d2c01ec285cc93c4aed88dc4bb257cc0c0fca60e41668e7ac3e8894a94b8227a7aae001569862cb7cfc98')
 
 package() {
     cd "$srcdir"
