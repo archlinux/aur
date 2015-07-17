@@ -1,0 +1,22 @@
+pkgbase = x265-hg_p
+	pkgdesc = CLI tools for encoding H265/HEVC video streams.
+	pkgver = 1.7.r357.b2ba7df1fc69
+	pkgrel = 1
+	url = https://bitbucket.org/multicoreware/x265
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	makedepends = cmake
+	makedepends = mercurial
+	depends = gcc-libs
+	provides = x265
+	provides = libx265.so
+	conflicts = x265
+	conflicts = x265-hg
+	conflicts = x265-10bit
+	source = x265::hg+https://bitbucket.org/multicoreware/x265
+	sha512sums = SKIP
+
+pkgname = x265-hg_p
+
