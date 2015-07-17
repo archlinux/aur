@@ -1,4 +1,4 @@
-# Maintainer (Arch):  Joakim Hernberg <jbh@alchemy.lu>
+# Maintainer (Arch): Joakim Hernberg <jbh@alchemy.lu>
 # Contributor (Arch): Ray Rashif <schiv@archlinux.org>
 # Contributor (Arch): timbosa <tinny_tim@dodo.com.au>
 # Contributor (Arch): Tobias Powalowski <tpowa@archlinux.org>
@@ -12,9 +12,9 @@
 
 pkgbase=linux-libre-rt      # Build stock -rt kernel
 _pkgbasever=4.0-gnu
-_pkgver=4.0.5-gnu
+_pkgver=4.0.8-gnu
 _rtbasever=4.0
-_rtpatchver=rt4
+_rtpatchver=rt6
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -48,9 +48,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch')
 sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
-            '5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172'
+            '16153fc11146d0de0158b7f7ed24437b42c61a16e5e404b258d04bdceef5b9e0'
             'SKIP'
-            '9503166ca9cfc71b3d05d3c86a650a42f730f28d62eb04e77443d67a70f5d2df'
+            'e89e33318b32c7f0a4a81d6c65751bbc57480f31485a019292f4702673b27174'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -58,13 +58,12 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'af56a529b4ecf2d2022e90a2cb45b333ddb2c289ba67a2fa230ae8ffa1d4312d'
-            '38ad70222577fc0c995569228dc9104b00deee0846995542661d1fcc2a8e9344'
+            '8c2c3bf41a61251a5cb02650a639768ee80f2482a2f21885ee1c73af85999978'
+            'e2d986b6adac4c98cb4a124bdad95a7963683260e4d02d5423618285fe470b2c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
-              'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
               '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
               '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73' # Steven Rostedt

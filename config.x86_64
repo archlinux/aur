@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.0.4-gnu-rt1-2-rt Kernel Configuration
+# Linux/x86 4.0.8-gnu-rt6-1-rt Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -1764,7 +1764,7 @@ CONFIG_AD525X_DPOT_I2C=m
 # CONFIG_AD525X_DPOT_SPI is not set
 # CONFIG_DUMMY_IRQ is not set
 # CONFIG_IBM_ASM is not set
-CONFIG_HWLAT_DETECTOR=y
+CONFIG_HWLAT_DETECTOR=m
 CONFIG_PHANTOM=m
 CONFIG_SGI_IOC4=m
 CONFIG_TIFM_CORE=m
