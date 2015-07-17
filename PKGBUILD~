@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-experimental
-pkgver=0.12.0
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories. - Experimental Version"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ depends=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 conflicts=('factorio')
 md5sums=('5cacd198a3156c157a482aeab368e9a1'
          '22fce67d66c080fa5c89ab437b3d8724')
-PKGEXT=.pkg.tar
 source=(factorio.desktop
         LICENSE)
 if test "$CARCH" == i686; then

@@ -1,6 +1,6 @@
 pkgbase = factorio-experimental
 	pkgdesc = A 2D game about building and maintaining factories. - Experimental Version
-	pkgver = 0.11.22
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = i686
