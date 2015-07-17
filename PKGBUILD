@@ -2,7 +2,7 @@
 
 pkgname=vimb
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='The vim-like browser'
 arch=('i686' 'x86_64')
 url=http://fanglingsu.github.io/vimb
