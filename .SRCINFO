@@ -1,0 +1,16 @@
+pkgbase = python2-autobahn
+	pkgdesc = Twisted-based WebSocket/WAMP client and server framework
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = http://autobahn.ws/python/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = twisted
+	depends = python2-six
+	source = https://pypi.python.org/packages/source/a/autobahn/autobahn-0.10.4.tar.gz
+	md5sums = 4ae22413ee9ba8f6692e80e171b68777
+
+pkgname = python2-autobahn
+
