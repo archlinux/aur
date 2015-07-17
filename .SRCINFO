@@ -1,0 +1,15 @@
+pkgbase = libcxgb4
+	pkgdesc = OpenFabrics Alliance userspace Chelsio T4/T5 iWARP RNIC driver
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://www.openfabrics.org/downloads/cxgb4/README.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/cxgb4/libcxgb4-1.3.5.tar.gz
+	md5sums = d186d374318511c2a0c572f1433ac2c2
+
+pkgname = libcxgb4
+
