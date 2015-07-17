@@ -1,0 +1,12 @@
+post_install() {
+cat << EOF
+  Breaking Change for versions >= 0.6.0:
+    Directory structure evolved to the recommendations from the Angular
+    team. Do not run this version of the generator on an existing project
+    generated with a previous version.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
