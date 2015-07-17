@@ -1,6 +1,6 @@
 # Maintainer: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 
-pkgname=swc-git
+pkgname=swc-wl-git
 pkgver=r509.b189935
 pkgrel=1
 pkgdesc='A library for making a simple Wayland compositor'
