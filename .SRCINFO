@@ -1,0 +1,16 @@
+pkgbase = ttf-beteckna
+	pkgdesc = A geometric sans serif typeface inspired by the popular Futura
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://web.archive.org/web/20130517030302/http://gnu.ethz.ch/linuks.mine.nu/beteckna/
+	install = ttf.install
+	arch = any
+	license = GPL3
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://web.archive.org/web/20130517030302/http://gnu.ethz.ch/linuks.mine.nu/beteckna/beteckna-0.4.tar.gz
+	sha256sums = 7b2d02e82422c0d4f5550cb8c3679e0549343bad49b261673c04f44dda8ee307
+
+pkgname = ttf-beteckna
+
