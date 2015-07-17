@@ -2,7 +2,7 @@
 
 pkgname=pamixer
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pulseaudio command-line mixer like amixer"
 arch=('i686' 'x86_64')
 url="https://github.com/cdemoulins/pamixer"
