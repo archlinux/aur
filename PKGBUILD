@@ -22,7 +22,7 @@ install=kdevplatform-git.install
 
 pkgver() {
   cd kdevplatform
-  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e KDEVPLATFORM_VERSION_MAJOR -e KDEVPLATFORM_VERSION_MINOR -e KDEVPLATFORM_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
