@@ -1,0 +1,16 @@
+pkgbase = apache-ivy
+	pkgdesc = The agile dependency manager
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://ant.apache.org/ivy/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = apache-ant
+	source = http://mirror.ventraip.net.au/apache/ant/ivy/2.4.0/apache-ivy-2.4.0-bin.tar.gz
+	source = ivy.sh
+	sha1sums = 97a206e3b6ec2ce9793d2ee151fa997a12647c7f
+	sha1sums = e7889030dd6d4ca4cd479e37afa808b4b15196cf
+
+pkgname = apache-ivy
+
