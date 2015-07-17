@@ -1,4 +1,4 @@
-pkgbase = swc-git
+pkgbase = swc-wl-git
 	pkgdesc = A library for making a simple Wayland compositor
 	pkgver = r509.b189935
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = swc-git
 	source = git+https://github.com/michaelforney/swc.git
 	md5sums = SKIP
 
-pkgname = swc-git
+pkgname = swc-wl-git
 
