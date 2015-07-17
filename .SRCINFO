@@ -8,8 +8,7 @@ pkgbase = nvidia-full-beta
 	makedepends = linux-headers
 	makedepends = pacman>=4.2.0
 	options = !strip
-	source = 20-nvidia.conf
-	md5sums = 2640eac092c220073f0668a7aaff61f7
+	md5sums = SKIP
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.21/NVIDIA-Linux-x86-352.21.run
 	md5sums_i686 = c91760a04f658845722380f6c7fd4709
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.21/NVIDIA-Linux-x86_64-352.21-no-compat32.run
