@@ -1,14 +1,14 @@
 pkgbase = libgomp-docs
 	pkgdesc = Documentation of libgomp (GNU implementation of the OpenMP)
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://gcc.gnu.org/onlinedocs/
 	arch = any
 	license = GPL
 	options = docs
 	options = !strip
-	source = https://gcc.gnu.org/onlinedocs/gcc-5.1.0/libgomp-html.tar.gz
-	sha256sums = 427a954cd51e981fb43880ef6c2d7cfb50a0a8bb44f4453617e31f3995edcfec
+	source = libgomp-docs-html-5.2.0.tar.gz::https://gcc.gnu.org/onlinedocs/gcc-5.2.0/libgomp-html.tar.gz
+	sha256sums = 60f08c63f4e803851bca64bc63098af56a0b927f251521daaa4008d6ffb36098
 
 pkgname = libgomp-docs
 
