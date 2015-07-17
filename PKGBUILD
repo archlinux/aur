@@ -3,8 +3,8 @@
 
 pkgname=ampache-git
 _gitname=ampache
-pkgver=3.8.0.beta2.11.g41e837b
-pkgrel=1
+pkgver=3.8.0.beta2.25.gf946a1c
+pkgrel=2
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
@@ -18,8 +18,8 @@ optdepends=('ffmpeg: all transcoding/downsampling'
             'faad2: m4a transcoding/downsampling'
             'mp3splt: mp3, ogg and flac downsampling')
 conflicts=('ampache' 'ampache-development')
-install=ampache.install
-source=(git://github.com/ampache/ampache.git 'nginx-example.conf')
+install=${_gitname}.install
+source=(git://github.com/${_gitname}/${_gitname}.git 'nginx-example.conf')
 md5sums=('SKIP' '60c0e437bd20d5ba8a53f61768d037b6')
 
 pkgver() {
