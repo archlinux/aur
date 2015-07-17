@@ -1,0 +1,22 @@
+pkgbase = qibuild
+	pkgdesc = The meta build framework
+	pkgver = 3.8
+	pkgrel = 2
+	url = https://community.aldebaran-robotics.com/doc/qibuild/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-docutils
+	depends = python2
+	depends = cmake
+	optdepends = git: for qisrc
+	optdepends = python2-sphinx: Sphinx support in qidoc
+	optdepends = python2-virtualenv: for qipy
+	optdepends = doxygen: Doxygen support in qidoc
+	optdepends = gettext: Gettext support in qilinguist
+	optdepends = qt5-tool: QtLinguist support in qilinguist
+	source = https://pypi.python.org/packages/source/q/qibuild/qibuild-3.8.tar.gz
+	md5sums = c8448fe063cc9a7b444a0ca6738e9741
+
+pkgname = qibuild
+
