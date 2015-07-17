@@ -1,0 +1,31 @@
+pkgbase = openresty
+	pkgdesc = a powerful web app server by extending nginx
+	pkgver = 1.7.10.1
+	pkgrel = 2
+	url = http://openresty.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = perl>=5.6.1
+	depends = readline
+	depends = pcre
+	depends = openssl
+	backup = opt/openresty/nginx/conf/fastcgi.conf
+	backup = opt/openresty/nginx/conf/fastcgi_params
+	backup = opt/openresty/nginx/conf/koi-win
+	backup = opt/openresty/nginx/conf/koi-utf
+	backup = opt/openresty/nginx/conf/mime.types
+	backup = opt/openresty/nginx/conf/nginx.conf
+	backup = opt/openresty/nginx/conf/scgi_params
+	backup = opt/openresty/nginx/conf/uwsgi_params
+	backup = opt/openresty/nginx/conf/win-utf
+	backup = etc/logrotate.d/openresty
+	source = http://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
+	source = service
+	source = openresty.logrotate
+	sha256sums = 4fd0d73e5955319cee51c6fa574e254be4538a63ae3e673c35eacdf9d4bce679
+	sha256sums = ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5
+	sha256sums = 613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23
+
+pkgname = openresty
+
