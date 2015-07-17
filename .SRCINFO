@@ -1,6 +1,6 @@
 pkgbase = namcap-git
 	pkgdesc = A Pacman package analyzer (git)
-	pkgver = 3.2.1.23.ga8f17d1
+	pkgver = 3.2.1.35.g228172a
 	pkgrel = 1
 	url = http://projects.archlinux.org/namcap.git/
 	arch = any

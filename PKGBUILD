@@ -1,9 +1,10 @@
-#  Maintainer: sudokode <sudokode@gmail.com>
+# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: Jesse Young <jesse.young@gmail.com>
 
 pkgname=namcap-git
-pkgver=3.2.1.23.ga8f17d1
+pkgver=3.2.1.35.g228172a
 pkgrel=1
 pkgdesc="A Pacman package analyzer (git)"
 arch=('any')
@@ -25,8 +26,8 @@ pkgver() {
 check() {
   cd $pkgname
 
-  env PARSE_PKGBUILD_PATH="$srcdir/${pkgname}-${pkgver}" \
-      PATH="$srcdir/${pkgname}-${pkgver}:$PATH" \
+  env PARSE_PKGBUILD_PATH="$srcdir/${pkgname}" \
+      PATH="$srcdir/${pkgname}:$PATH" \
       python3 setup.py test
 }
 
