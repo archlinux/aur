@@ -1,7 +1,7 @@
 pkgbase = crtmpserver-svn
 	pkgdesc = high performance streaming server
 	pkgver = 811
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rtmpd.com/
 	arch = i686
 	arch = x86_64

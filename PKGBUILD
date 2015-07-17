@@ -4,7 +4,7 @@
 pkgname=crtmpserver-svn
 pkgdesc="high performance streaming server"
 arch=(i686 x86_64)
-pkgrel=1
+pkgrel=2
 url="http://www.rtmpd.com/"
 license=('GPL')
 depends=('openssl')
@@ -43,5 +43,6 @@ build() {
 
 package(){
   cd "$srcdir/${pkgname#-svn}-build"/builders/cmake
+  mv $pkgdir/usr/{sbin,bin}
   make DESTDIR="$pkgdir" install
 }
