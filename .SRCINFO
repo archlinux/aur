@@ -1,0 +1,17 @@
+pkgbase = purple-vk-plugin
+	pkgdesc = Plugin for Pidgin, adding Vk.com support
+	pkgver = 0.9+r346
+	pkgrel = 1
+	url = http://bitbucket.org/olegoandreev/purple-vk-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = libpurple
+	depends = libxml2
+	options = !strip
+	source = https://bitbucket.org/olegoandreev/purple-vk-plugin/downloads/purple-vk-plugin-0.9+r346.tar.gz
+	sha256sums = 2ed87184f839a86f4569deb88d0cc0f219c96be18d6ca44bb0bb197f28828176
+
+pkgname = purple-vk-plugin
+
