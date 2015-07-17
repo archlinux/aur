@@ -1,0 +1,17 @@
+pkgbase = gog-resonance
+	pkgdesc = A particle physicist’s mysterious and spectacular death sparks a race to find his hidden vault and claim his terrifying new discovery.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/resonance
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	source = local://gog_resonance_1.0.0.1.tar.gz
+	source = gog-resonance
+	sha256sums = f7fafc948fe3bb996b06bf19bb94d51b55052f67a012a45648a8932119b352d9
+	sha256sums = 7077e75c7621aaae2b169593116be9e2567527fa10521f44c3534f5a4b1b5e08
+
+pkgname = gog-resonance
+
