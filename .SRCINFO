@@ -1,0 +1,20 @@
+pkgbase = perl-moosex-lazyrequire
+	pkgdesc = Required attributes which fail only when trying to use them
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-LazyRequire
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-checkdeps>=0.002
+	checkdepends = perl-test-fatal>=0
+	depends = perl-moose>=0.94
+	depends = perl-aliased>=0.30
+	depends = perl-namespace-autoclean>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-LazyRequire-0.10.tar.gz
+	md5sums = d79e895f72f75de2d58dd272069ed6fc
+	sha512sums = c2f600d55493093338153a458f2067c8a39c1aad4d33324720a3418d249268a46b8f9ae8a2bcdcd40aa2d1cacc15c9a936af3e8f747bde4bd725d07b74058eee
+
+pkgname = perl-moosex-lazyrequire
+
