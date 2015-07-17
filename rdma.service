@@ -1,0 +1,18 @@
+# Copied from Fedora's rdma-2.0-15.fc22.noarch.rpm
+# Modified for Arch
+
+[Unit]
+Description=Initialize the iWARP/InfiniBand/RDMA stack in the kernel
+Documentation=file:/etc/rdma.conf
+RefuseManualStop=true
+DefaultDependencies=false
+Conflicts=emergency.target emergency.service
+Before=network.target remote-fs-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/rdma-init-kernel
+
+[Install]
+WantedBy=sysinit.target

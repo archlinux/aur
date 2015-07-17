@@ -1,0 +1,23 @@
+pkgbase = rdma
+	pkgdesc = Remote direct memory access scripts, for kernel InfiniBand and iWARP drivers
+	pkgver = 3.00
+	pkgrel = 1
+	url = https://apps.fedoraproject.org/packages/rdma
+	arch = any
+	license = GPL2
+	depends = systemd
+	source = 70-persistent-ipoib.rules
+	source = 98-rdma.rules
+	source = rdma.conf
+	source = rdma-fixup-mtrr.awk
+	source = rdma-init-kernel
+	source = rdma.service
+	md5sums = 163f7a6b114f9223efce59f8c2b8dafc
+	md5sums = 3b95c1ce438004f1fc114137efa1455e
+	md5sums = 9fb936e312afd4b2c1b8ad8d597b7e60
+	md5sums = afa0ae69de23d2bd8886c7bae1013f26
+	md5sums = e9426ad7097fd001f4c4bd3a39b7dcb9
+	md5sums = abb7786f98c132def4592fe40138d2e1
+
+pkgname = rdma
+
