@@ -1,6 +1,6 @@
 pkgbase = purescript-bin
 	pkgdesc = A strongly, statically typed language compiling to JavaScript.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://www.purescript.org/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = purescript-bin
 	depends = gcc-libs
 	depends = libtinfo
 	provides = purescript
-	source = https://github.com/joneshf/purescript/releases/download/v0.7.0/linux64.tar.gz
-	sha512sums = 7ba26a530067f45749831b86605f6bdeedba08812e3beabb7fc636c26380328aa8102945b5e61ece7ed674e77286ed30209020cf9a08da352171d3c4eff51f95
+	source = https://github.com/joneshf/purescript/releases/download/v0.7.1/linux64.tar.gz
+	sha512sums = ad006ae0a8ce799a18095df62e5e0c67dd86cd1dbf8d3c16102309cffdca36a13cba4ccdf6438370769a3a909d46c64f3c3a0f5b81ed2d75609c9e070d61934a
 
 pkgname = purescript-bin
 
