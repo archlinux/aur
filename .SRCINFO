@@ -1,0 +1,23 @@
+pkgbase = ampache
+	pkgdesc = A PHP-based tool for managing and playing your audio/video files via a web interface
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = http://www.ampache.org/
+	install = ampache.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mariadb>=5.0
+	depends = php>=5.3
+	optdepends = lame: all transcoding/downsampling
+	optdepends = vorbis-tools: all transcoding
+	optdepends = flac: flac transcoding/downsampling
+	optdepends = faad2: m4a transcoding/downsampling
+	optdepends = mp3splt: mp3 and ogg transcoding/downsampling
+	conflicts = ampache-git
+	conflicts = ampache-development
+	source = https://github.com/ampache/ampache/archive/3.8.0.tar.gz
+	sha256sums = 10a167b162af9b0f2c17a6cf0d92bbc6fc3c80b4be802d77defcfe761f177304
+
+pkgname = ampache
+
