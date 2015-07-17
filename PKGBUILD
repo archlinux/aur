@@ -3,7 +3,7 @@
 
 pkgname=piaware-git
 _gitname=piaware
-pkgver=2.1.2.r0.g5a453da
+pkgver=2.1.2.r1.ga1076de
 pkgrel=1
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
@@ -42,9 +42,8 @@ package() {
 
   mkdir -p "${pkgdir}/etc/systemd/system"
   cd "${srcdir}/${_gitname}"
-  make install PREFIX=${pkgdir}
+  make install DESTDIR=${pkgdir} SYSTEMD=usr/lib/systemd/system
 
-  mv "${pkgdir}/etc/systemd" "${pkgdir}/usr/lib/systemd"
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
-  rmdir "${pkgdir}/etc"
+  rm -rf "${pkgdir}/etc"
 }

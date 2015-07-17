@@ -1,6 +1,6 @@
 pkgbase = piaware-git
 	pkgdesc = Client-side package and programs for forwarding ADS-B data to FlightAware
-	pkgver = 2.1.2.r0.g5a453da
+	pkgver = 2.1.2.r1.ga1076de
 	pkgrel = 1
 	url = https://github.com/flightaware/piaware
 	install = piaware-git.install
