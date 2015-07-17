@@ -1,6 +1,6 @@
 pkgbase = mt7601u-git
 	pkgdesc = Driver for Mediatek MT7601U USB bgn WiFi dongle
-	pkgver = 2015.05.06
+	pkgver = 2015.06.29
 	pkgrel = 1
 	url = https://github.com/kuba-moo/mt7601u
 	install = mt7601u.install
@@ -8,10 +8,10 @@ pkgbase = mt7601u-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = linux-headers>=4.0
-	makedepends = linux-headers<4.1
-	depends = linux>=4.0
-	depends = linux<4.1
+	makedepends = linux-headers>=4.1
+	makedepends = linux-headers<4.2
+	depends = linux>=4.1
+	depends = linux<4.2
 	options = !strip
 	source = git+https://github.com/kuba-moo/mt7601u.git
 	source = http://www.mediatek.com/AmazonS3/Downloads/linux/DPO_MT7601U_LinuxSTA_3.0.0.4_20130913.tar.bz2
