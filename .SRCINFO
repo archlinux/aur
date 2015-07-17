@@ -1,0 +1,28 @@
+pkgbase = electricsheep-svn
+	pkgdesc = A screensaver that realize the collective dream of sleeping computers from all over the Internet
+	pkgver = 160
+	pkgrel = 2
+	url = http://www.electricsheep.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = subversion
+	depends = boost
+	depends = curl
+	depends = expat
+	depends = flam3
+	depends = glee
+	depends = gtk2
+	depends = ffmpeg
+	depends = libglade
+	depends = libgtop
+	depends = libpng
+	depends = lua
+	depends = tinyxml
+	depends = wxgtk
+	provides = electricsheep-svn
+	source = electricsheep-160.patch
+	sha1sums = 02c507eff0fccd13071c157bda44231294e17e56
+
+pkgname = electricsheep-svn
+

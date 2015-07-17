@@ -1,0 +1,22 @@
+Index: client_generic/configure.ac
+===================================================================
+--- client_generic/configure.ac	(revision 160)
++++ client_generic/configure.ac	(working copy)
+@@ -109,7 +109,7 @@
+     AC_MSG_ERROR([Please install development libraries for wxWidgets 2.9.1 or higher, and then run this configure script again.])
+ fi
+ 
+-WX_CXXFLAGS="`$WX_CONFIG --cxxflags`"
++WX_CXXFLAGS="`$WX_CONFIG --cxxflags` -std=c++11"
+ WX_LIBS="-static `$WX_CONFIG --libs` `$WX_CONFIG --libs richtext`"
+ 
+ echo "WX_CXXFLAGS is $WX_CXXFLAGS"
+@@ -175,7 +175,7 @@
+ 
+ dnl Check for glee
+ 
+-PKG_CHECK_MODULES([GLEE],[glee], [HAVE_GLEE=true] , [HAVE_GLEE=false] )
++PKG_CHECK_MODULES([GLEE],[glee GLee], [HAVE_GLEE=true] , [HAVE_GLEE=false] )
+ if test "$HAVE_GLEE" = "false"; then
+ 
+    PKG_CHECK_MODULES([GLEE],[GLee], [HAVE_GLEE=true] , [HAVE_GLEE=false] )
