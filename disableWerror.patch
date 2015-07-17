@@ -1,0 +1,124 @@
+diff -rupN mstflint-4.0.1.original/cmdif/Makefile.am mstflint-4.0.1/cmdif/Makefile.am
+--- mstflint-4.0.1.original/cmdif/Makefile.am	2015-06-23 13:19:21.000000000 +0000
++++ mstflint-4.0.1/cmdif/Makefile.am	2015-06-23 13:19:21.000000000 +0000
+@@ -36,7 +36,7 @@ MTCR_DIR = $(USER_DIR)/include/mtcr_ul
+ TOOLS_LAYOUTS_DIR = $(USER_DIR)/tools_layouts
+ INCLUDES = -I. -I../common -I../tools_layouts  -I$(MTCR_DIR) -I.. -I$(USER_DIR)/mtcr_ul
+ 
+-AM_CFLAGS = -W -Wall -Werror -g -MP -MD $(COMPILER_FPIC) -DCMDIF_EXPORTS
++AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC) -DCMDIF_EXPORTS
+ CMDIF_VERSION = 1
+ noinst_LIBRARIES = libcmdif.a
+ 
+diff -rupN mstflint-4.0.1.original/cmdif/Makefile.in mstflint-4.0.1/cmdif/Makefile.in
+--- mstflint-4.0.1.original/cmdif/Makefile.in	2015-06-23 13:40:50.000000000 +0000
++++ mstflint-4.0.1/cmdif/Makefile.in	2015-06-23 13:40:50.000000000 +0000
+@@ -322,7 +322,7 @@ USER_DIR = $(top_srcdir)
+ MTCR_DIR = $(USER_DIR)/include/mtcr_ul
+ TOOLS_LAYOUTS_DIR = $(USER_DIR)/tools_layouts
+ INCLUDES = -I. -I../common -I../tools_layouts  -I$(MTCR_DIR) -I.. -I$(USER_DIR)/mtcr_ul
+-AM_CFLAGS = -W -Wall -Werror -g -MP -MD $(COMPILER_FPIC) -DCMDIF_EXPORTS
++AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC) -DCMDIF_EXPORTS
+ CMDIF_VERSION = 1
+ noinst_LIBRARIES = libcmdif.a
+ libcmdif_a_SOURCES = tools_cif.c
+diff -rupN mstflint-4.0.1.original/configure mstflint-4.0.1/configure
+--- mstflint-4.0.1.original/configure	2015-06-23 13:40:52.000000000 +0000
++++ mstflint-4.0.1/configure	2015-06-23 13:40:52.000000000 +0000
+@@ -15230,8 +15230,8 @@ if test "x$enable_dynamic_ld" = "xyes";
+ 
+ fi
+ 
+-CFLAGS="$CFLAGS -Werror -DMST_UL"
+-CXXFLAGS="$CXXFLAGS -Werror -DMST_UL"
++CFLAGS="$CFLAGS -DMST_UL"
++CXXFLAGS="$CXXFLAGS -DMST_UL"
+ 
+ ac_config_files="$ac_config_files mstflint.spec"
+ 
+diff -rupN mstflint-4.0.1.original/configure.ac mstflint-4.0.1/configure.ac
+--- mstflint-4.0.1.original/configure.ac	2015-06-23 13:19:21.000000000 +0000
++++ mstflint-4.0.1/configure.ac	2015-06-23 13:19:21.000000000 +0000
+@@ -61,8 +61,8 @@ AS_IF([test "x$enable_dynamic_ld" = "xye
+   LDFLAGS="$LDFLAGS -Wl,--dynamic-linker=/lib64/ld64.so.2"
+ ])
+ 
+-CFLAGS="$CFLAGS -Werror -DMST_UL"
+-CXXFLAGS="$CXXFLAGS -Werror -DMST_UL"
++CFLAGS="$CFLAGS -DMST_UL"
++CXXFLAGS="$CXXFLAGS -DMST_UL"
+ 
+ AC_CONFIG_FILES( mstflint.spec )
+ 
+diff -rupN mstflint-4.0.1.original/mft_utils/Makefile.am mstflint-4.0.1/mft_utils/Makefile.am
+--- mstflint-4.0.1.original/mft_utils/Makefile.am	2015-06-23 13:19:22.000000000 +0000
++++ mstflint-4.0.1/mft_utils/Makefile.am	2015-06-23 13:19:22.000000000 +0000
+@@ -34,7 +34,7 @@
+ USER_DIR = $(top_srcdir)
+ INCLUDES = -I. -I$(USER_DIR)/common
+ 
+-AM_CFLAGS = -MD -pipe -Wall -W -Werror
++AM_CFLAGS = -MD -pipe -Wall -W
+ 
+ noinst_HEADERS = mft_sig_handler.h errmsg.h
+ 
+diff -rupN mstflint-4.0.1.original/mft_utils/Makefile.in mstflint-4.0.1/mft_utils/Makefile.in
+--- mstflint-4.0.1.original/mft_utils/Makefile.in	2015-06-23 13:40:50.000000000 +0000
++++ mstflint-4.0.1/mft_utils/Makefile.in	2015-06-23 13:40:50.000000000 +0000
+@@ -341,7 +341,7 @@ top_srcdir = @top_srcdir@
+ # Makefile.am -- Process this file with automake to produce Makefile.in
+ USER_DIR = $(top_srcdir)
+ INCLUDES = -I. -I$(USER_DIR)/common
+-AM_CFLAGS = -MD -pipe -Wall -W -Werror
++AM_CFLAGS = -MD -pipe -Wall -W
+ noinst_HEADERS = mft_sig_handler.h errmsg.h
+ noinst_LIBRARIES = libmftutils.a
+ libmftutils_a_SOURCES = mft_sig_handler.c errmsg.cpp
+diff -rupN mstflint-4.0.1.original/reg_access/Makefile.am mstflint-4.0.1/reg_access/Makefile.am
+--- mstflint-4.0.1.original/reg_access/Makefile.am	2015-06-23 13:19:23.000000000 +0000
++++ mstflint-4.0.1/reg_access/Makefile.am	2015-06-23 13:19:23.000000000 +0000
+@@ -38,7 +38,7 @@ USER_DIR = $(top_srcdir)
+ 
+ INCLUDES = -I. -I$(USER_DIR) -I$(srcdir) -I$(LAYOUTS_DIR) -I$(USER_DIR)/include/mtcr_ul
+ 
+-AM_CFLAGS = -W -Wall -Werror -g -MP -MD $(COMPILER_FPIC)
++AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC)
+ 
+ noinst_LIBRARIES = libreg_access.a
+ 
+diff -rupN mstflint-4.0.1.original/reg_access/Makefile.in mstflint-4.0.1/reg_access/Makefile.in
+--- mstflint-4.0.1.original/reg_access/Makefile.in	2015-06-23 13:40:51.000000000 +0000
++++ mstflint-4.0.1/reg_access/Makefile.in	2015-06-23 13:40:51.000000000 +0000
+@@ -323,7 +323,7 @@ COMMON_DIR = $(top_srcdir)/common
+ LAYOUTS_DIR = $(top_srcdir)/tools_layouts
+ USER_DIR = $(top_srcdir)
+ INCLUDES = -I. -I$(USER_DIR) -I$(srcdir) -I$(LAYOUTS_DIR) -I$(USER_DIR)/include/mtcr_ul
+-AM_CFLAGS = -W -Wall -Werror -g -MP -MD $(COMPILER_FPIC)
++AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC)
+ noinst_LIBRARIES = libreg_access.a
+ libreg_access_a_SOURCES = reg_access.c
+ libreg_access_a_DEPENDENCIES = $(USER_DIR)/tools_layouts/libtools_layouts.a
+diff -rupN mstflint-4.0.1.original/tools_res_mgmt/Makefile.am mstflint-4.0.1/tools_res_mgmt/Makefile.am
+--- mstflint-4.0.1.original/tools_res_mgmt/Makefile.am	2015-06-23 13:19:23.000000000 +0000
++++ mstflint-4.0.1/tools_res_mgmt/Makefile.am	2015-06-23 13:19:23.000000000 +0000
+@@ -35,7 +35,7 @@ USER_DIR = $(top_srcdir)
+ MTCR_DIR = $(USER_DIR)/include/mtcr_ul
+ INCLUDES = -I. -I../common -I$(MTCR_DIR) -I.. -I$(USER_DIR)/mtcr_ul
+ 
+-AM_CFLAGS = -W -Wall -Werror -g -MP -MD $(COMPILER_FPIC) 
++AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC) 
+ noinst_LIBRARIES = libtools_res_mgmt.a
+ 
+ libtools_res_mgmt_a_SOURCES = tools_res_mgmt.c
+diff -rupN mstflint-4.0.1.original/tools_res_mgmt/Makefile.in mstflint-4.0.1/tools_res_mgmt/Makefile.in
+--- mstflint-4.0.1.original/tools_res_mgmt/Makefile.in	2015-06-23 13:40:51.000000000 +0000
++++ mstflint-4.0.1/tools_res_mgmt/Makefile.in	2015-06-23 13:40:51.000000000 +0000
+@@ -321,7 +321,7 @@ top_srcdir = @top_srcdir@
+ USER_DIR = $(top_srcdir)
+ MTCR_DIR = $(USER_DIR)/include/mtcr_ul
+ INCLUDES = -I. -I../common -I$(MTCR_DIR) -I.. -I$(USER_DIR)/mtcr_ul
+-AM_CFLAGS = -W -Wall -Werror -g -MP -MD $(COMPILER_FPIC) 
++AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC) 
+ noinst_LIBRARIES = libtools_res_mgmt.a
+ libtools_res_mgmt_a_SOURCES = tools_res_mgmt.c
+ all: all-am
