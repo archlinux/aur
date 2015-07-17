@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/blackwell-convergence"
+
+"$gogdir"/start.sh

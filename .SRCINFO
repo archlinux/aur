@@ -1,0 +1,17 @@
+pkgbase = gog-blackwell-convergence
+	pkgdesc = Meet Rosangela Blackwell, an embittered writer who just found out that she is a medium and that it’s her mission.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/blackwell_bundle
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	source = local://gog_blackwell_convergence_1.0.0.1.tar.gz
+	source = gog-blackwell-convergence
+	sha256sums = 0f6b907914f3212353416b3f188f746416d6e1fde5b0918e6561df40a59edb81
+	sha256sums = 74898834a9e5f0bb614173ac7333a1bc6cf535416c0fc4fb741ff78784aaf7b3
+
+pkgname = gog-blackwell-convergence
+
