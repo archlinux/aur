@@ -1,0 +1,20 @@
+pkgbase = libfdk-aac-git_p
+	pkgdesc = Fraunhofer FDK AAC codec library
+	pkgver = 0.1.4.r0.g83ac4a9
+	pkgrel = 1
+	url = http://sourceforge.net/projects/opencore-amr/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = libfdk-aac
+	provides = libfdk-aac-git
+	provides = libfdk-aac.so
+	conflicts = libfdk-aac
+	options = !libtool
+	source = libfdk-aac::git://git.code.sf.net/p/opencore-amr/fdk-aac
+	sha256sums = SKIP
+
+pkgname = libfdk-aac-git_p
+
