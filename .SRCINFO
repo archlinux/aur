@@ -1,6 +1,6 @@
 pkgbase = canto-curses
 	pkgdesc = ncurses user interface for canto-daemon
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = http://codezen.org/canto-ng/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = canto-curses
 	depends = ncurses
 	depends = readline
 	depends = canto-daemon>=0.9.0
-	source = https://github.com/themoken/canto-curses/archive/v0.9.3.tar.gz
-	md5sums = 60e4cdedc20cd4c2ea1774c3497f4c6a
+	source = https://github.com/themoken/canto-curses/archive/v0.9.4.tar.gz
+	md5sums = 30b051ce45d066e2861bbb9d6c6c1e67
 
 pkgname = canto-curses
 
