@@ -12,22 +12,22 @@
 
 pkgname=ffmpeg-full
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete and free Internet live audio and video broadcasting solution (with all options)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
-license=('GPL' 'custom:UNREDISTRIBUTABLE')
+license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
       'alsa-lib' 'bzip2' 'fontconfig' 'gnutls' 'gsm' 'lame' 'libass' 'libvdpau'
-      'libbluray' 'libmodplug' 'libpulse' 'libtheora' 'libva' 'opencore-amr'
-      'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore'
-      'zlib' 'fribidi' 'libssh'
+      'libbluray' 'libmodplug' 'libpulse' 'libtheora' 'libva' 'libwebp'
+      'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils'
+      'xvidcore' 'zlib' 'fribidi' 'libssh'
       'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
       'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
       'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
       'libfdk-aac' 'libgme' 'libiec61883' 'libsoxr' 'libutvideo-git'
-      'libwebp' 'libxv' 'mesa' 'openal' 'opencl-headers12' 'rtmpdump' 'shine' 'twolame'
+      'libxv' 'mesa' 'openal' 'opencl-headers12' 'rtmpdump' 'shine' 'twolame'
       'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'zeromq' 'zvbi' 
       )
 makedepends=('libvdpau' 'yasm' 'hardening-wrapper')
