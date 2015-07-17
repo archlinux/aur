@@ -1,38 +1,34 @@
-# Maintainer: inkr <i@inkr.ml>
+# Maintainer: Maxqia maxqia@kliznoe.com
 
-pkgname=keepassx-http
+pkgname=keepassx-http-merge
 _gitname=keepassx
-# _upversion=2.0-alpha1
-pkgver=2.0.alpha5.r254.g4008e6a
+pkgver=2.0.alpha6.r235.gf076ad3
 pkgrel=1
-pkgdesc="KeePassX + keepasshttp + autotype"
+pkgdesc="KeepassX, with eugenesan's merge request for keepasshttp."
 arch=('i686' 'x86_64')
-url="https://github.com/jdachtera/keepassx.git"
+url="https://github.com/eugenesan/keepassx/tree/http"
 license=('GPL2')
-depends=('libxtst' 'qt4' 'shared-mime-info')
+depends=('libxtst' 'qt4' 'shared-mime-info' 'qjson' 'libmicrohttpd')
 install=keepassx.install
-makedepends=('git' 'intltool' 'cmake' 'libmicrohttpd')
-conflicts=('keepassx-svn' 'keepassx' 'keepassx2-git' 'keepassx2' 'keepassx-git' 'keepassx')
-source=("git+https://github.com/Ivan0xFF/keepassx.git")
-#source=("https://github.com/keithbennett/keepassx/archive/${_upversion}.tar.gz")
+makedepends=('git' 'intltool' 'cmake' 'zlib' 'libgcrypt')
+optdepends=('libxtst: auto-type support')
+conflicts=('keepassx-svn' 'keepassx' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassx-git')
+source=(git+https://github.com/eugenesan/keepassx.git#branch=http)
 md5sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
-#     cd "${_gitname}-${_upversion}"
     git describe --long | sed 's/^FOO-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${_gitname}"
-#     cd "${_gitname}-${_upversion}"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_VERBOSE_MAKEFILE=ON -DWITH_GUI_TESTS=OFF
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_VERBOSE_MAKEFILE=ON -DWITH_GUI_TESTS=ON
     make
 }
 
 package() {
     cd "${_gitname}"
-#     cd "${_gitname}-${_upversion}"
     make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 
