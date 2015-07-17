@@ -1,0 +1,15 @@
+pkgbase = libibcm
+	pkgdesc = OpenFabrics Alliance InfiniBand userspace communication manager
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/rdmacm/libibcm-1.0.5.tar.gz
+	md5sums = 7ede8d7e96d6a65f09f289767bd931ea
+
+pkgname = libibcm
+
