@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sly-git
-pkgver=beta.26.g5810558
-pkgrel=2
+pkgver=beta.37.gf13a5bf
+pkgrel=1
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
 url="https://github.com/capitaomorte/sly"
@@ -32,8 +32,6 @@ package() {
     $pkgdir/usr/share/emacs/site-lisp/sly
   
   install -d $pkgdir/usr/share/common-lisp/systems
-  ln -s /usr/share/emacs/site-lisp/sly/slynk.asd \
-    $pkgdir/usr/share/common-lisp/systems/
   rm $pkgdir/usr/share/emacs/site-lisp/sly/doc/texinfo-tabulate.awk
   install -D -m644 README.md \
     $pkgdir/usr/share/licenses/$pkgname/public_domain.txt 
