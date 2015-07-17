@@ -43,7 +43,6 @@ package() {
   cd "${srcdir}/${_gitname2}"
   make install DESTDIR=${pkgdir}
 
-  mkdir -p "${pkgdir}/etc/systemd/system"
   cd "${srcdir}/${_gitname}"
   make install DESTDIR=${pkgdir} SYSTEMD=usr/lib/systemd/system
 
@@ -51,5 +50,4 @@ package() {
   ./setup.py install --prefix="${pkgdir}"/usr
 
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
-  rm -rf "${pkgdir}/etc"
 }
