@@ -4,7 +4,7 @@
 
 pkgname=lib32-pciutils
 pkgver=3.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="PCI bus configuration space access library (32-bit)"
 arch=('x86_64')
 url="http://mj.ucw.cz/sw/pciutils/"
@@ -28,5 +28,5 @@ package() {
   cd "${srcdir}/pciutils-${pkgver}"
   make CC="gcc -m32" SHARED=yes PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 DESTDIR="${pkgdir}" install install-lib
   install -m644 "${srcdir}/libpci.a" "${pkgdir}/usr/lib32/"
-  rm -rf "${pkgdir}/usr/"{sbin,share,include}
+  rm -rf "${pkgdir}/usr/"{bin,share,include}
 }

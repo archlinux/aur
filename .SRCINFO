@@ -1,7 +1,7 @@
 pkgbase = lib32-pciutils
 	pkgdesc = PCI bus configuration space access library (32-bit)
 	pkgver = 3.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://mj.ucw.cz/sw/pciutils/
 	arch = x86_64
 	license = GPL2
