@@ -1,7 +1,7 @@
 pkgbase = nixnote-beta
 	pkgdesc = Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux.
 	pkgver = 2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.sourceforge.net/projects/nevernote/
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = nixnote-beta
 	conflicts = nixnote
 	conflicts = nixnote2-git
 	replaces = nixnote
-	source = http://sourceforge.net/projects/nevernote/files/NixNote2%20-%20Beta%203/nixnote2-2.0-beta3_amd64.tar.gz/download
+	source = http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/NixNote2%20-%20Beta%203/nixnote2-2.0-beta3_amd64.tar.gz
 	sha256sums = 09c22b0a3bc7eca73abc94feb82b719a3229b90c9607a367a62b5b0771fc3126
 
 pkgname = nixnote-beta
