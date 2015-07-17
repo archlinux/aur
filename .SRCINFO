@@ -1,18 +1,17 @@
 pkgbase = deefuzzer
 	pkgdesc = Easy and instant media streaming tool
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 1
 	url = http://pypi.python.org/pypi/DeeFuzzer/
 	arch = any
 	license = custom:CeCILL
+	depends = python2-distribute
 	depends = python2-shout
 	depends = mutagen
-	depends = python2-pycurl
-	depends = python2-yaml
-	depends = python2-shout
-	optdepends = python2-twitter: Auto twitting #nowplaying tracks
-	optdepends = python2-oauth2: Auto twitting #nowplaying tracks
-	optdepends = python2-pyliblo: control deefuzzer with any OSC remote
+	depends = python-pycurl
+	optdepends = python2-twitter
+	optdepends = python-tinyurl
+	optdepends = python-pyliblo
 	source = http://pypi.python.org/packages/source/D/DeeFuzzer/DeeFuzzer-0.7.1.tar.gz
 	md5sums = 59ed358457028e0e9de25ebc1a59258e
 
