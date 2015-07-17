@@ -1,0 +1,19 @@
+pkgbase = perl-test-use-ok
+	pkgdesc = Alternative to Test::More::use_ok
+	pkgver = 0.11
+	pkgrel = 2
+	url = http://search.cpan.org/~audreyt/Test-use-ok
+	arch = any
+	license = perl
+	depends = perl>=5.8.9
+	provides = test-use-ok=0.11
+	provides = ok=0.11
+	provides = perl-ok=0.11
+	provides = Test::use::ok=0.11
+	provides = perl-test-use-ok=0.11
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Test-use-ok-0.11.tar.gz
+	md5sums = 014364cc2f0df651d8416ebb60451f18
+
+pkgname = perl-test-use-ok
+
