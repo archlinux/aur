@@ -63,21 +63,29 @@ prepare() {
   cd $_pkg
   bsdtar -xf nvidia-persistenced-init.tar.bz2
 
+  # Loop for all kernels
   for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
     # Use separate source directories
     cp -r kernel kernel-$_kernel
-    # Patch
+
+    # Patch?
     if [[ $(ls "$srcdir"/*.patch 2>/dev/null) ]]; then
-      # Loop
+      # Cd in place
       cd kernel-$_kernel
+      
+      # Loop all patches
       for _patch in "$srcdir"/*.patch; do
-        # Check version
+        # Patch version
         _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
+        
+        # Check version
         if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
           msg2 "Applying ${_patch##*/} for $_kernel..."
           patch -p2 -i "$_patch"
         fi
       done
+      
+      # Return
       cd ..
     fi
   done
