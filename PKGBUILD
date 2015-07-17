@@ -17,19 +17,19 @@ source=(${pkgname}::git+https://github.com/scanmem/scanmem.git)
 sha512sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname}
+  cd ${pkgname}
   git describe --always|sed 's|-|.|g'|sed -r 's|v(.*)|\1|'
 }
 
 build() {
-	cd ${pkgname}
+  cd ${pkgname}
   ./autogen.sh
   ./configure --enable-gui --prefix=/usr
   make
 }
 
 package() {
-	cd ${pkgname}
+  cd ${pkgname}
   make DESTDIR="${pkgdir}" install
 }
 
