@@ -33,6 +33,7 @@ build() {
 }
 
 package() {
+  install -D -m 644 ${startdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
   cd "$srcdir/$pkgname"
   install -D -m 755 bmx6 ${pkgdir}/usr/bin/bmx6
   install -D -m 755 lib/bmx6_json/bmx6_json.so ${pkgdir}/usr/lib/bmx6_json.so
