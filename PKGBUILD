@@ -3,11 +3,12 @@
 
 pkgname=ocrgui
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI for OCR programs (Tesseract, GOCR)"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/ocrgui/"
 license=('GPL3')
+makedepends=('intltool')
 depends=('gtk2' 'hunspell' 'imagemagick')
 optdepends=('gocr: OCR program'
             'tesseract: OCR program')
