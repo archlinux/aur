@@ -63,13 +63,15 @@ prepare() {
   cd $_pkg
   bsdtar -xf nvidia-persistenced-init.tar.bz2
 
-  # Patch
+  # Patch?
   if [[ $(ls "$srcdir"/*.patch 2>/dev/null) ]]; then
     # Loop
     for _patch in "$srcdir"/*.patch; do
-      # Check version
+      # Version variables
       _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
       _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
+      
+      # Check version
       if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
         msg2 "Applying ${_patch##*/}..."
         patch -p1 -i "$_patch"
