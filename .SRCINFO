@@ -1,6 +1,6 @@
 pkgbase = apple_set_os
 	pkgdesc = Tiny EFI program for unlocking the Intel integrated graphics device on the Macbook Pro 11,3
-	pkgver = v0
+	pkgver = v0.r6.g824a907
 	pkgrel = 1
 	url = https://github.com/0xbb/apple_set_os.efi
 	arch = i686
