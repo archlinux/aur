@@ -1,7 +1,7 @@
 pkgbase = sowing
 	pkgdesc = Tools for documenting and improving portability
 	pkgver = 1.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cs.uiuc.edu/~wgropp/projects/software/sowing
 	arch = any
 	license = GPL
