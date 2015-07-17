@@ -1,9 +1,9 @@
-# Maintainter: thr <r at sledinmay dot com>
+# Maintainer: thr <r at sledinmay dot com>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 pkgname=gtklevel9
 pkgver=5.1
-pkgrel=3
-pkgdesc="An interpreter for games from the British text adventure company Level 9."
+pkgrel=4
+pkgdesc="An interpreter for British text adventures by Level 9."
 arch=(i686 x86_64)
 url="http://mirror.ifarchive.org/indexes/if-archiveXlevel9XinterpretersXlevel9.html"
 license=('GPL')
@@ -16,23 +16,22 @@ md5sums=('7566e9b527a22164bf91c02b44a2bc81'
          '8611e0ea83131a909395d2be3fd0fb22'
          '4eb964f974666388080af3bc8eaba9d8')
 
-build() {
-  patch -Np0 -i $srcdir/gargoyle.patch
-  patch -Np0 -i $srcdir/glibc.patch
+prepare() {
+ patch -Np0 -i gargoyle.patch
+ patch -Np0 -i glibc.patch
+}
 
-  cd $srcdir/Gtk
-  make || return 1
+build() {
+ cd Gtk
+ make
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin/
-  mkdir -p $pkgdir/usr/share/level9
-
-  install -D Gtk/README $pkgdir/usr/share/level9/
-  install -D Gtk/BUGS $pkgdir/usr/share/level9/
-  install -D $srcdir/level9.txt $pkgdir/usr/share/level9/
-  install -D $srcdir/../$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -D -m644 $srcdir/../$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -D Gtk/gtklevel9 $pkgdir/usr/bin/
-  ln -s /usr/bin/gtklevel9 $pkgdir/usr/bin/level9
+ install -D Gtk/gtklevel9 ${pkgdir}/usr/bin/gtklevel9
+ ln -s /usr/bin/gtklevel9 ${pkgdir}/usr/bin/level9
+ install -D -m644 Gtk/README ${pkgdir}/usr/share/level9/README
+ cp level9.txt ${pkgdir}/usr/share/level9/
+ cp Gtk/BUGS ${pkgdir}/usr/share/level9/
+ install -D -m644 ${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+ install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
