@@ -1,0 +1,22 @@
+pkgbase = perl-moosex-fileattribute
+	pkgdesc = Sugar for classes that have file or directory attributes
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-FileAttribute
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-exception
+	makedepends = perl-extutils-makemaker
+	makedepends = perl-module-install
+	makedepends = git
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-moosex-types-path-class
+	options = !emptydirs
+	source = MooseX-FileAttribute::git+https://github.com/jrockway/moosex-fileattribute.git#commit=440a9e3
+	md5sums = SKIP
+
+pkgname = perl-moosex-fileattribute
+
