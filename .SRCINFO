@@ -1,12 +1,16 @@
 pkgbase = blasr-git
 	pkgdesc = The PacBio long read aligner
-	pkgver = r70.463a369
+	pkgver = r98.caaf74a
 	pkgrel = 1
 	url = https://github.com/PacificBiosciences/blasr
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = python2
 	depends = hdf5-cpp-fortran
+	depends = htslib
+	provides = blasr
+	conflicts = blasr
 	source = blasr-git::git+https://github.com/PacificBiosciences/blasr
 	md5sums = SKIP
 
