@@ -15,7 +15,7 @@ source=("http://download.oracle.com/otn-pub/java/javafx_scenebuilder/2.0-b20/jav
 sha256sums=('80212f7748c2671b89b6085000717c747851db004409dce3bb97f3a2aeb91cdd')
 if test "$CARCH" == x86_64; then
 	source=("http://download.oracle.com/otn-pub/java/javafx_scenebuilder/2.0-b20/javafx_scenebuilder-2_0-linux-x64.tar.gz")
-	sha256sums=('80212f7748c2671b89b6085000717c747851db004409dce3bb97f3a2aeb91cdd')
+	sha256sums=('44f6d82fb2d35f3d6cdbb973bfc598f89716e43cc012bab507d1d8f472e7c62c')
 fi
 DLAGENTS=('http::/usr/bin/wget -c --no-check-certificate --no-cookies --header Cookie:\ oraclelicense=accept-securebackup-cookie %u')
 
