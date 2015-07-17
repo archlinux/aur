@@ -16,6 +16,7 @@ pkgbase = nvidia-beta-all
 	conflicts = nvidia-173xx
 	conflicts = nvidia
 	options = !strip
+	md5sums = SKIP
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.21/NVIDIA-Linux-x86-352.21.run
 	md5sums_i686 = c91760a04f658845722380f6c7fd4709
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.21/NVIDIA-Linux-x86_64-352.21-no-compat32.run
