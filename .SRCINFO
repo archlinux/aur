@@ -1,0 +1,15 @@
+pkgbase = libibscif
+	pkgdesc = OpenFabrics Alliance userspace library for OFED/SCIF for libibverbs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/libibscif/libibscif-1.0.0.tar.gz
+	md5sums = d9acbd3e62568beb3202e0c8c0a3fd6c
+
+pkgname = libibscif
+
