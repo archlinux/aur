@@ -1,0 +1,16 @@
+pkgbase = libipathverbs
+	pkgdesc = OpenFabrics Alliance userspace Intel InfiniBand HCA driver for libibverbs
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	depends = sh
+	source = https://www.openfabrics.org/downloads/libipathverbs/libipathverbs-1.3.tar.gz
+	md5sums = 740692ea205c49f7b2be9f81207474cf
+
+pkgname = libipathverbs
+
