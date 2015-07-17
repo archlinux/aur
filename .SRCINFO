@@ -1,6 +1,6 @@
 pkgbase = azcat
 	pkgdesc = A alternative to cat(1); specialized for printing files
-	pkgver = 1.01
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://github.com/nuta/azcat
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = azcat
 	makedepends = python3
 	depends = python
 	depends = python-chardet
-	source = https://pypi.python.org/packages/source/a/azcat/azcat-1.01.tar.gz
-	md5sums = 5fb8a0ef8ce6f2528c5f28eb2573e316
+	source = https://github.com/nuta/azcat/archive/v1.0.2.tar.gz
+	md5sums = 808f7fbadf2bba14df329ffc03be1e17
 
 pkgname = azcat
 
