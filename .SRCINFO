@@ -1,0 +1,15 @@
+pkgbase = libnes
+	pkgdesc = OpenFabrics Alliance NetEffect Ethernet Cluster Server libibverbs plug-in
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://www.openfabrics.org/downloads/nes/README.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = libibverbs
+	source = https://www.openfabrics.org/downloads/nes/libnes-1.1.4.tar.gz
+	md5sums = 7702b473a6d3d11a5262e8e9306de557
+
+pkgname = libnes
+
