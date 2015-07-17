@@ -1,0 +1,18 @@
+pkgbase = perl-convert-color
+	pkgdesc = Color space conversions and named lookups
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/~pevans/Convert-Color
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-pluggable
+	makedepends = perl-test-number-delta
+	depends = perl>=5.5.0
+	depends = perl-list-utilsby
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Convert-Color-0.11.tar.gz
+	sha1sums = c555c9e708587022cb2d5cfd12ebc094cee6e708
+
+pkgname = perl-convert-color
+
