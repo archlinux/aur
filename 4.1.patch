@@ -1,6 +1,6 @@
-diff -rupN ipfw3-2012.org/kipfw/ipfw2_mod.c ipfw3-2012/kipfw/ipfw2_mod.c
---- ipfw3-2012.org/kipfw/ipfw2_mod.c	2013-05-02 12:04:52.000000000 +0200
-+++ ipfw3-2012/kipfw/ipfw2_mod.c	2015-03-19 20:11:03.972017679 +0100
+diff -rupN ipfw3-2012/kipfw/ipfw2_mod.c ipfw3-2012.new/kipfw/ipfw2_mod.c
+--- ipfw3-2012/kipfw/ipfw2_mod.c	2013-05-02 12:04:52.000000000 +0200
++++ ipfw3-2012.new/kipfw/ipfw2_mod.c	2015-07-17 18:07:38.362211570 +0200
 @@ -218,7 +218,7 @@ ipfw_ctl_h(struct sockopt *s, int cmd, i
  	struct thread t;
  	int ret = EINVAL;
@@ -10,7 +10,7 @@ diff -rupN ipfw3-2012.org/kipfw/ipfw2_mod.c ipfw3-2012/kipfw/ipfw2_mod.c
  	s->sopt_name = cmd;
  	s->sopt_dir = dir;
  	s->sopt_valsize = len;
-@@ -466,7 +466,7 @@ static struct nf_sockopt_ops ipfw_sockop
+@@ -466,16 +466,15 @@ static struct nf_sockopt_ops ipfw_sockop
   * so we have an #ifdef to set the proper argument type.
   */
  static unsigned int
@@ -19,16 +19,41 @@ diff -rupN ipfw3-2012.org/kipfw/ipfw2_mod.c ipfw3-2012/kipfw/ipfw2_mod.c
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,23) // in 2.6.22 we have **
  	struct sk_buff  **skb,
  #else
-@@ -475,7 +475,7 @@ call_ipfw(unsigned int hooknum,
- 	const struct net_device *in, const struct net_device *out,
- 	int (*okfn)(struct sk_buff *))
+ 	struct sk_buff  *skb,
+ #endif
+-	const struct net_device *in, const struct net_device *out,
+-	int (*okfn)(struct sk_buff *))
++	const struct nf_hook_state *state)
  {
 -	(void)hooknum; (void)skb; (void)in; (void)out; (void)okfn; /* UNUSED */
-+	(void)ops; (void)skb; (void)in; (void)out; (void)okfn; /* UNUSED */
++	(void)ops; (void)skb; (void)state; /* UNUSED */
  	return NF_QUEUE;
  }
  
-@@ -615,7 +615,7 @@ netisr_dispatch(int num, struct mbuf *m)
+@@ -550,7 +549,7 @@ ipfw2_queue_handler(QH_ARGS)
+ 	m->m_skb = skb;
+ 	m->m_len = skb->len;		/* len from ip header to end */
+ 	m->m_pkthdr.len = skb->len;	/* total packet len */
+-	m->m_pkthdr.rcvif = info->indev;
++	m->m_pkthdr.rcvif = info->state.in;
+ 	m->queue_entry = info;
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,22)	/* XXX was 2.6.0 */
+ 	m->m_data = (char *)skb->nh.iph;
+@@ -559,10 +558,10 @@ ipfw2_queue_handler(QH_ARGS)
+ #endif
+ 
+ 	/* XXX add the interface */
+-	if (info->hook == IPFW_HOOK_IN) {
+-		ret = ipfw_check_hook(NULL, &m, info->indev, PFIL_IN, NULL);
++	if (info->state.hook == IPFW_HOOK_IN) {
++		ret = ipfw_check_hook(NULL, &m, info->state.in, PFIL_IN, NULL);
+ 	} else {
+-		ret = ipfw_check_hook(NULL, &m, info->outdev, PFIL_OUT, NULL);
++		ret = ipfw_check_hook(NULL, &m, info->state.out, PFIL_OUT, NULL);
+ 	}
+ 
+ 	if (m != NULL) {	/* Accept. reinject and free the mbuf */
+@@ -615,7 +614,7 @@ netisr_dispatch(int num, struct mbuf *m)
  #endif
  
  	/* XXX to obey one-pass, possibly call the queue handler here */
@@ -37,7 +62,7 @@ diff -rupN ipfw3-2012.org/kipfw/ipfw2_mod.c ipfw3-2012/kipfw/ipfw2_mod.c
  }
  
  /*
-@@ -724,8 +724,8 @@ linux_lookup(const int proto, const __be
+@@ -724,8 +723,8 @@ linux_lookup(const int proto, const __be
  #define _CURR_GID f_gid
  #else /* 2.6.29 and above */
  /* use the current's file access real uid/gid */
@@ -48,7 +73,7 @@ diff -rupN ipfw3-2012.org/kipfw/ipfw2_mod.c ipfw3-2012/kipfw/ipfw2_mod.c
  #endif
  
  #define GOOD_STATES (	\
-@@ -818,18 +818,22 @@ nf_unregister_hooks(struct nf_hook_ops *
+@@ -818,18 +817,22 @@ nf_unregister_hooks(struct nf_hook_ops *
  
  static struct nf_hook_ops ipfw_ops[] __read_mostly = {
          {
@@ -73,9 +98,9 @@ diff -rupN ipfw3-2012.org/kipfw/ipfw2_mod.c ipfw3-2012/kipfw/ipfw2_mod.c
          },
  };
  #endif /* __linux__ */
-diff -rupN ipfw3-2012.org/kipfw/missing.h ipfw3-2012/kipfw/missing.h
---- ipfw3-2012.org/kipfw/missing.h	2013-05-02 12:04:52.000000000 +0200
-+++ ipfw3-2012/kipfw/missing.h	2015-03-19 20:10:45.591705704 +0100
+diff -rupN ipfw3-2012/kipfw/missing.h ipfw3-2012.new/kipfw/missing.h
+--- ipfw3-2012/kipfw/missing.h	2013-05-02 12:04:52.000000000 +0200
++++ ipfw3-2012.new/kipfw/missing.h	2015-07-17 17:49:06.714466420 +0200
 @@ -334,6 +334,14 @@ struct ifaltq {
  #define	if_xname	name
  #define	if_snd		XXX
@@ -91,9 +116,9 @@ diff -rupN ipfw3-2012.org/kipfw/missing.h ipfw3-2012/kipfw/missing.h
  #include <linux/inetdevice.h>
  
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,25)
-diff -rupN ipfw3-2012.org/sys/netinet/ipfw/ip_dummynet.c ipfw3-2012/sys/netinet/ipfw/ip_dummynet.c
---- ipfw3-2012.org/sys/netinet/ipfw/ip_dummynet.c	2012-08-20 17:43:52.000000000 +0200
-+++ ipfw3-2012/sys/netinet/ipfw/ip_dummynet.c	2015-03-19 20:10:45.591705704 +0100
+diff -rupN ipfw3-2012/sys/netinet/ipfw/ip_dummynet.c ipfw3-2012.new/sys/netinet/ipfw/ip_dummynet.c
+--- ipfw3-2012/sys/netinet/ipfw/ip_dummynet.c	2012-08-20 17:43:52.000000000 +0200
++++ ipfw3-2012.new/sys/netinet/ipfw/ip_dummynet.c	2015-07-17 17:49:06.714466420 +0200
 @@ -635,7 +635,7 @@ fsk_detach(struct dn_fsk *fs, int flags)
  		fs->sched->fp->free_fsk(fs);
  	fs->sched = NULL;
