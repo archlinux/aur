@@ -5,7 +5,7 @@
 
 pkgname=electricsheep-svn
 pkgver=160
-pkgrel=2
+pkgrel=3
 pkgdesc="A screensaver that realize the collective dream of sleeping computers from all over the Internet"
 url="http://www.electricsheep.org/"
 arch=('i686' 'x86_64')
