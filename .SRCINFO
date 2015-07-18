@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
-	pkgver = 5.1.0
-	pkgrel = 3
+	pkgver = 5.2.0
+	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = aarch64-linux-gnu-gcc
 	depends = aarch64-linux-gnu-eglibc
 	depends = libmpc
 	depends = zlib
-	provides = aarch64-linux-gnu-gcc-stage1=5.1.0
-	provides = aarch64-linux-gnu-gcc-stage2=5.1.0
+	provides = aarch64-linux-gnu-gcc-stage1=5.2.0
+	provides = aarch64-linux-gnu-gcc-stage2=5.2.0
 	conflicts = aarch64-linux-gnu-gcc-stage1
 	conflicts = aarch64-linux-gnu-gcc-stage2
 	replaces = aarch64-linux-gnu-gcc-stage1
@@ -23,9 +23,9 @@ pkgbase = aarch64-linux-gnu-gcc
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = ftp://gcc.gnu.org/pub/gcc/snapshots/5-20150630/gcc-5-20150630.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.bz2
 	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
-	sha256sums = b20a8b7e05caaf7c688440c76e5344bc728262ec68efc39c774073bf5e69a757
+	sha256sums = 5f835b04b5f7dd4f4d2dc96190ec1621b8d89f2dc6f638f9f8bc1b1014ba8cad
 	sha256sums = 1f20561843eb9f6ae2076800bc45f3680ff7696520257cd5734ccfb843464cae
 
 pkgname = aarch64-linux-gnu-gcc
