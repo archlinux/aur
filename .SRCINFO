@@ -1,0 +1,14 @@
+pkgbase = festige
+	pkgdesc = A GUI for fst and dssi-vst, allowing you to run Windows VST plugins on Linux.
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://festige.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	optdepends = dssi-vst: alternative utility
+	source = https://downloads.sourceforge.net/project/festige/1.0.2/festige-1.0.2-src.tar.gz
+	sha512sums = bd5afc4c82334dbec10f48d664fdab0df162ab3de8d50a80941fd44759480af0797ab5db7757b0f0f568f1999f5add03ce348714ae8fe5e739f893743775786e
+
+pkgname = festige
+
