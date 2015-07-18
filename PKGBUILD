@@ -1,6 +1,6 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 
-pkgname=liggghts-lpp
+pkgname=liggghts-lpp #t1
 pkgver=3.2
 pkgrel=0
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software - Post Processing (Pizza.py)"
