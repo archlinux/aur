@@ -1,14 +1,13 @@
 pkgbase = upwork
 	pkgdesc = Team App (ex. oDesk)
 	pkgver = 4.0.86.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.upwork.com/downloads/new-team-application
 	install = upwork.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = gtk2
-	depends = gcc-libs-multilib
 	depends = nss
 	depends = gconf
 	depends = alsa-lib
