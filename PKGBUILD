@@ -18,12 +18,12 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${_pkgname}"
-  stack build --resolver ghc-7.10
+  stack build --resolver nightly-2015-07-17
 }
 
 check() {
   cd "$srcdir/${_pkgname}"
-  stack test --resolver ghc-7.10
+  stack test --resolver nightly-2015-07-17
 }
 
 package() {
