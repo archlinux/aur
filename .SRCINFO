@@ -1,0 +1,15 @@
+pkgbase = typescript-tools
+	pkgdesc = Typescript-Tools
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/clausreinke/typescript-tools
+	arch = any
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	noextract = typescript-tools-0.3.1.tgz
+	source = http://registry.npmjs.org/typescript-tools/-/typescript-tools-0.3.1.tgz
+	sha1sums = 325852bbe945c30210a636ce763307707a53c449
+
+pkgname = typescript-tools
+
