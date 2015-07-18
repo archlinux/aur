@@ -7,7 +7,7 @@ _major=6
 _minor=45
 _build=b06
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
 arch=('i686' 'x86_64')
 url=https://www.java.com/en/download/faq/java_6.xml
@@ -22,7 +22,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
@@ -43,11 +43,13 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=('javaws-launcher'
+source=("http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
+        'javaws-launcher'
         "policytool-$_jname.desktop")
 source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin")
-md5sums=('45c15a6b4767288f2f745598455ea2bf'
+md5sums=('b20f9d6ed14e55d73a5ed204bca01e7a'
+         '45c15a6b4767288f2f745598455ea2bf'
          '1ae1bd8b6f12af6c30a2558a39da0fe4')
 md5sums_i686=('1d8001ef61a2e3a11fe7b9eec9f08948')
 md5sums_x86_64=('4a4569126f05f525f48bacf761f7185c')
@@ -132,6 +134,13 @@ package() {
     # Move/link licenses
     mv COPYRIGHT LICENSE README *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
+
+    msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
+    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # things like 256-bit AES. Enabled by default in OpenJDK:
+    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    install -m644 "$srcdir"/jce/*.jar lib/security/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
