@@ -5,7 +5,7 @@
 pkgname=openchange
 _codename=VULCAN
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
 and Exchange protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -25,7 +25,7 @@ source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-$
 
 sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
             '45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3'
-            '65dc742e95dd1bff1581ea3d76b4dfe8d01ca52ab5e64ffc80efc10417a2ff97'
+            '067d25b0442ab233f47fbfd32a56042fa161b3d0aa65081f222fddde3648c439'
             'e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834')
 
 # Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT

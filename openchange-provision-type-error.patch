@@ -1,6 +1,6 @@
-diff -rupN a/python/openchange/mailbox.py b/python/openchange/mailbox.py
---- a/python/openchange/mailbox.py	2015-06-16 14:58:47.625735072 -0700
-+++ b/python/openchange/mailbox.py	2015-06-16 14:58:16.188582238 -0700
+diff -Naurp openchange-openchange-2.3-VULCAN-org/python/openchange/mailbox.py openchange-openchange-2.3-VULCAN/python/openchange/mailbox.py
+--- openchange-openchange-2.3-VULCAN-org/python/openchange/mailbox.py	2015-05-16 10:22:04.000000000 -0500
++++ openchange-openchange-2.3-VULCAN/python/openchange/mailbox.py	2015-07-17 18:48:13.929579900 -0500
 @@ -498,7 +498,7 @@ class OpenChangeDBWithMysqlBackend(Mysql
      def change_number(self):
          if self._change_number is None:
@@ -10,3 +10,24 @@ diff -rupN a/python/openchange/mailbox.py b/python/openchange/mailbox.py
              data = cur.fetchone()
              if data:
                  self._change_number = data[0]
+diff -Naurp openchange-openchange-2.3-VULCAN-org/python/openchange/migration/__init__.py openchange-openchange-2.3-VULCAN/python/openchange/migration/__init__.py
+--- openchange-openchange-2.3-VULCAN-org/python/openchange/migration/__init__.py	2015-05-16 10:22:04.000000000 -0500
++++ openchange-openchange-2.3-VULCAN/python/openchange/migration/__init__.py	2015-07-17 18:49:02.877532654 -0500
+@@ -65,7 +65,7 @@ class MigrationManager(object):
+         """Create the table_name table if not exists
+         """
+         cur = self.db.cursor()
+-        cur.execute("""SHOW TABLES LIKE %s""", self.table_name)
++        cur.execute("""SHOW TABLES LIKE %s""", (self.table_name,))
+         row = cur.fetchone()
+         if row is None or row[0] is None:
+             cur.execute("""CREATE TABLE IF NOT EXISTS `{0}` (
+@@ -87,7 +87,7 @@ class MigrationManager(object):
+         if self._version[app] is None:
+             cur = self.db.cursor()
+             cur.execute('SELECT MAX(version) FROM {0} WHERE app = %s'.format(self.table_name),
+-                        app)
++                        (app,))
+             row = cur.fetchone()
+             if row and row[0]:
+                 self._version[app] = int(row[0])
