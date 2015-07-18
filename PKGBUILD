@@ -12,7 +12,8 @@ url="https://spideroak.com/"
 license=('custom')
 depends=('glibc>=2.9')
 makedepends=('desktop-file-utils')
-conflicts=('spideroak-beta', 'spideroak')
+provides=('spideroak')
+conflicts=('spideroak-beta' 'spideroak')
 replaces=('spideroak')
 options=('!strip')
 install=${pkgname}.install
