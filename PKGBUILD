@@ -47,7 +47,7 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"
+source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
