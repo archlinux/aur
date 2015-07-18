@@ -1,0 +1,19 @@
+pkgbase = archey-plus
+	pkgdesc = Based on Archey 0.2.8, adding support for Manjaro, Cinnamon dm/me, and bug fixes
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/imp0se/archey-plus
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = lsb-release
+	depends = scrot
+	provides = archey
+	conflicts = archey
+	conflicts = archey2
+	source = git://github.com/imp0se/archey-plus.git
+	md5sums = SKIP
+
+pkgname = archey-plus
+
