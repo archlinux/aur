@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktimer-git
-pkgver=r264.a3d42f7
+pkgver=0.10.r264.a3d42f7
 pkgrel=1
 pkgdesc="A little tool to execute programs after some time. (GIT version)"
 url='https://www.kde.org/applications/utilities/ktimer'
@@ -11,13 +11,14 @@ depends=('kio' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
 conflicts=('kdeutils-ktimer' 'ktimer')
 provides=('ktimer')
-source=("git://anongit.kde.org/ktimer.git")
+source=('git://anongit.kde.org/ktimer.git')
 sha1sums=('SKIP')
 install=ktimer-git.install
 
 pkgver() {
   cd ktimer
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat main.cpp | grep -m1 'version\[\]' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {

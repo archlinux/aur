@@ -1,6 +1,6 @@
 pkgbase = ktimer-git
 	pkgdesc = A little tool to execute programs after some time. (GIT version)
-	pkgver = r264.a3d42f7
+	pkgver = 0.10.r264.a3d42f7
 	pkgrel = 1
 	url = https://www.kde.org/applications/utilities/ktimer
 	install = ktimer-git.install
