@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution (Same as official package except with libfdk-aac support)"
 arch=('i686' 'x86_64')
