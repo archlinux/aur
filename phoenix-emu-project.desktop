@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=phoenix-emu-project
+
+Name=PhoenixEmuProject
+GenericName=3DO consoles Emulator
+Comment=An emulator of 3DO consoles
+Icon=phoenix-emu-project-logo
+
+Categories=Game;Emulator;
+

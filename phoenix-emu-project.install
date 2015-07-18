@@ -1,0 +1,10 @@
+post_install () {
+	echo -e "\t\033[0;31mNote\033[0m"
+	echo -e "\tNow most of the interface is only available in Russian."
+        echo -e "\tHowever, the developer plans to implement a multilanguage interface."
+}
+post_upgrade () {
+	echo -e "\t\033[0;31mNote\033[0m"
+	echo -e "\tNow most of the interface is only available in Russian."
+        echo -e "\tHowever, the developer plans to implement a multilanguage interface."
+}
