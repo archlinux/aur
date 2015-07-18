@@ -1,7 +1,7 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
 pkgname=archdroid-icon-theme-git
-pkgver=r79.4ea3b0a
+pkgver=r85.2ae6370
 pkgrel=1
 pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
 arch=('any')
@@ -15,6 +15,12 @@ install="${pkgname%-*}.install"
 source=("git+https://github.com/GreenRaccoon23/${pkgname%-*}.git")
 md5sums=("SKIP")
 
+_error2() {
+  for e; do
+    echo "    ${e}";
+  done;
+}
+
 pkgver() {
   cd "$srcdir/${pkgname%-*}"
   ( set -o pipefail
@@ -23,9 +29,20 @@ pkgver() {
   )
 }
 
+prepare() {
+  if fc-list | grep Roboto >/dev/null; then
+    return;
+  fi;
+
+  error "Required font 'Roboto' is not installed."
+  error "Please install a font package which includes 'Roboto', such as:"
+  _error2 ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg;
+  return 1;
+}
+
 package() {
-	msg2 "Installing ${pkgname%-*}..." ;
-	cd "${pkgname%-*}/${pkgname%-*}";
-  	install -dm 755 "${pkgdir}"/usr/share/icons/
-  	cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/
+  msg2 "Installing ${pkgname%-*}..." ;
+  cd "${pkgname%-*}/${pkgname%-*}";
+  install -dm 755 "${pkgdir}"/usr/share/icons/;
+  cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/;
 }

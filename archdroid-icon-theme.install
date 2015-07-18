@@ -1,71 +1,76 @@
+_color() {
+  tput bold && tput setaf "${1}";
+  if ! [ "${2}" ]; then
+    return;
+  fi;
+  printf "%s" "${2}";
+}
+
 _green() {
-	tput bold && tput setaf 2;
-	printf "%s" "${1}";
+  _color "2" "${1}";
 }
 
 _blue() {
-	tput bold && tput setaf 4;
-	printf "%s" "${1}";
+  _color "4" "${1}";
 }
 
 _white() {
-	tput bold && tput setaf 7;
-	for line ; do
-		echo "${line}" ;
-	done ;
+  _color "7";
+  for line ; do
+    echo "${line}" ;
+  done ;
 }
 
 _msg() {
-	_green "==> ";
-	_white "$@";
-	tput sgr 0;
+  _green "==> ";
+  _white "$@";
+  tput sgr 0;
 }
 
 _msg2() {
-	_blue "  -> ";
-	_white "$@";
-	tput sgr 0;
+  _blue "  -> ";
+  _white "$@";
+  tput sgr 0;
 }
 
 _gtkUpdate() {
-	_msg "Updating icon cache"...;
+  _msg "Updating icon cache"...;
 
-	a="Archdroid";
-	colors=( Amber ArchBlue Blue BlueGrey Brown Cyan DeepOrange DeepPurple Green Grey Indigo KellyGreen LightBlue LightGreen Lime Orange Pink Purple Red Shamrock Teal Yellow );
+  a="Archdroid";
+  Colors=( 
+    Amber ArchBlue Blue BlueGrey 
+    Brown Cyan DeepOrange DeepPurple 
+    Green Grey Indigo KellyGreen 
+    LightBlue LightGreen Lime Orange 
+    Pink Purple Red Shamrock 
+    Teal Yellow 
+  );
 
-	for c in "${colors[@]}"; do
-		t="${a}-${c}";
-		d="usr/share/icons/${t}";
+  for c in "${Colors[@]}"; do
+    t="${a}-${c}";
+    d="usr/share/icons/${t}";
 
-		_msg2 "${t}";
-        gtk-update-icon-cache -ftq "${d}";
-    done ;
+    _msg2 "${t}";
+    gtk-update-icon-cache -ftq "${d}";
+  done;
 }
 
 _credits() {
-	_msg "Credits to Google, Ubuntu Mono, Mint-X, and Numix for this theme"
+  _msg "Credits to Google, Ubuntu Mono, Mint-X, and Numix for this theme";
 }
 
 post_install() {
-    _gtkUpdate;
-
-    _credits;
-
-    go=( 
-        "To enable icons for golang scripts, manually run this command:"
-        'sudo echo "text/x-go        go" | sudo tee -a /etc/mime.types' 
-       );
-    _msg "${go[@]}";
+  _gtkUpdate;
+  _credits;
 }
 
 post_upgrade() {
-    _gtkUpdate;
-    
-    _credits;
+  _gtkUpdate;
+  _credits;
 }
 
 post_remove() {
-    gtk-update-icon-cache;
+  gtk-update-icon-cache;
 }
 
 # vim: ts=2 sw=2 et:
