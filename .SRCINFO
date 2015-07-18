@@ -1,0 +1,25 @@
+pkgbase = guvcview-git
+	pkgdesc = A video viewer and capturer for the linux uvc driver
+	pkgver = v2.0.1.r43.g8f6cc14
+	pkgrel = 1
+	url = http://guvcview.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = gtk3
+	depends = ffmpeg
+	depends = portaudio
+	depends = sdl2
+	depends = gsl
+	optdepends = pulseaudio: for PulseAudio support
+	provides = guvcview
+	conflicts = guvcview
+	source = guvcview-git::git://git.code.sf.net/p/guvcview/git-master
+	source = v4l2_core.patch
+	sha1sums = SKIP
+	sha1sums = b92920fc6545209045fe8203ee23678549ad749b
+
+pkgname = guvcview-git
+

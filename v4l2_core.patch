@@ -1,0 +1,11 @@
+--- guvcview-git/gview_v4l2core/v4l2_core.c_old	2015-04-04 00:42:28.770072098 +0200
++++ guvcview-git/gview_v4l2core/v4l2_core.c	2015-04-04 00:42:52.879798677 +0200
+@@ -915,7 +915,7 @@
+ 	if(vd->streaming == STRM_OK)
+ 	{
+ 		fprintf(stderr, "V4L2_CORE: (stream already started) stream_status = STRM_OK\n");
+-		return;
++		return 0;
+ 	}
+ 
+ 	int type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
