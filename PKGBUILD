@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=farragone
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Batch file renamer for programmers"
 arch=(any)
@@ -9,7 +9,7 @@ license=(GPL3)
 makedepends=("python>=3")
 depends=("python>=3.1" "python-pyqt5>=5.2" "qt5-base>=5.2" libxkbcommon-x11)
 source=(http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('567564dd3fcc6ed348435d708c407ffe')
+md5sums=('76d7aaaac51f4a9565550f3d21e79e38')
 
 build () {
     cd "$srcdir/${pkgname}-$pkgver"

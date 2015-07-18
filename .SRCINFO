@@ -1,6 +1,6 @@
 pkgbase = farragone
 	pkgdesc = Batch file renamer for programmers
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = http://ikn.org.uk/Farragone
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = farragone
 	depends = python-pyqt5>=5.2
 	depends = qt5-base>=5.2
 	depends = libxkbcommon-x11
-	source = http://ikn.org.uk/files/desktop/farragone/farragone-0.2.3.tar.gz
-	md5sums = 567564dd3fcc6ed348435d708c407ffe
+	source = http://ikn.org.uk/files/desktop/farragone/farragone-0.2.4.tar.gz
+	md5sums = 76d7aaaac51f4a9565550f3d21e79e38
 
 pkgname = farragone
 
