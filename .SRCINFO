@@ -1,0 +1,15 @@
+pkgbase = utimer
+	pkgdesc = A command-line multifunction timer tool.
+	pkgver = 0.4
+	pkgrel = 8
+	url = http://utimer.codealpha.net/utimer/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = intltool
+	depends = glib2
+	source = http://utimer.codealpha.net/files/utimer-0.4.tar.gz
+	sha1sums = b9590ef4ff6bb8ecf64bb703f50f1bfeddf3fbdd
+
+pkgname = utimer
+
