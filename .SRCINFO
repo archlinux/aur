@@ -1,0 +1,18 @@
+pkgbase = pololu-maestro
+	pkgdesc = Pololu Maestro Control Center
+	pkgver = 150116
+	pkgrel = 1
+	url = http://www.pololu.com/docs/0J40/3.b
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = mono
+	source = maestro_linux_150116.tar.gz::http://www.pololu.com/file/download/maestro_linux_150116.tar.gz?file_id=0J315
+	source = UscCmd
+	source = MaestroControlCenter
+	md5sums = 84feed740c0695bb0eea13ccf7988b97
+	md5sums = e665487da271355e5d7a1c61701927bc
+	md5sums = 1ac31c86f9d968fd72d54fb01936664e
+
+pkgname = pololu-maestro
+
