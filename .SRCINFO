@@ -1,0 +1,20 @@
+pkgbase = spideroak-one
+	pkgdesc = Secure file backup, sync and sharing client. This provides the client for SpiderOakONE.
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://spideroak.com/
+	install = spideroak-one.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = desktop-file-utils
+	depends = glibc>=2.9
+	conflicts = spideroak-beta,
+	conflicts = spideroak
+	replaces = spideroak
+	options = !strip
+	source = terms.txt
+	sha256sums = 4819c8d923ab19e552e877b87adf1d45aca6adcb5dffcb238d7819501e6e6737
+
+pkgname = spideroak-one
+
