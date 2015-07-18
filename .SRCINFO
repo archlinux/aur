@@ -1,0 +1,25 @@
+pkgbase = libx264-git_p
+	pkgdesc = Library for encoding H264/AVC video streams (Git dev-version bit depth=8)
+	pkgver = 148.2574.e6d2a36
+	pkgrel = 1
+	epoch = 2
+	url = http://www.videolan.org/developers/x264.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = yasm
+	depends = glibc
+	provides = libx264.so
+	provides = x264-dev
+	provides = libx264
+	provides = libx264-git
+	conflicts = x264-dev
+	conflicts = libx264
+	conflicts = libx264-git
+	replaces = x264-dev
+	source = x264::git://git.videolan.org/x264/x264-sandbox.git
+	sha512sums = SKIP
+
+pkgname = libx264-git_p
+
