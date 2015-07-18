@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=EoloAPP
+Comment=Show remaining high-bandwidth traffic usage for NGI S.P.A. EOLO clients 
+Exec=eoloapp
+Icon=eoloapp
+Terminal=false
+Type=Application

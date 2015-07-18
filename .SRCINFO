@@ -1,0 +1,19 @@
+pkgbase = eoloapp
+	pkgdesc = Allows NGI S.P.A EOLO clients to see their avaible high-bandwidth traffic usage.
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/EOLOlab/EOLOapp
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = adobe-air
+	noextract = EOLOapp.air
+	source = https://www.eolo.it/docroot/media/eoloApp/EOLOapp.air
+	source = eoloapp.desktop
+	source = eoloapp.sh
+	sha1sums = dc22911f1259e0260bc8a4857d2e2098a53bb0e7
+	sha1sums = a128f54dfd0a9032900fffdc7c79553727f246f9
+	sha1sums = 2f151b095bb0e926672030edfcd86094a299ef8a
+
+pkgname = eoloapp
+
