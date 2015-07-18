@@ -118,6 +118,17 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
+_common_package() {
+   cd "${srcdir}/${_srcname}"
+
+  KARCH=x86
+
+  # get kernel version
+  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _basekernel=${_kernver%%-*}
+  _basekernel=${_basekernel%.*}
+}
+
 _package() {
   pkgdesc="The Linux kernel and modules with patches to enable GPU passthrough with KVM"
   [ "${pkgbase}" = "linux" ] && groups=('base')
@@ -128,15 +139,6 @@ _package() {
   replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
-
-  cd "${srcdir}/${_srcname}"
-
-  KARCH=x86
-
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
@@ -321,6 +323,7 @@ pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
+    _common_package
     _package${_p#${pkgbase}}
   }"
 done
