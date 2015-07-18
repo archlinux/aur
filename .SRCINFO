@@ -1,0 +1,23 @@
+pkgbase = gog-dustforce-dx
+	pkgdesc = A fast-paced 2D action platforming game. As an acrobatic janitor, you are an adept force against dust and disorder. Leap and dash off walls and ceilings, and deftly traverse precarious environments. GOG Version. Linux native.
+	pkgver = 1.2.0.4
+	pkgrel = 1
+	url = https://www.gog.com/game/dustforce_dx
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mesa
+	depends = libgl
+	depends = sdl2
+	depends = libxdamage
+	depends = libidn
+	depends = libvorbis
+	depends = libxft
+	depends = xdg-utils
+	depends = curl
+	depends = openal
+	source = gog://gog_dustforce_dx_1.2.0.4.tar.gz
+	sha256sums = 0f8225af92fa797738d04e288863c23ca625acda72ac25cfd0a1eef064e205d4
+
+pkgname = gog-dustforce-dx
+
