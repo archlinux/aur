@@ -1,14 +1,14 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack-git
 _pkgname=stack
-pkgver=20150615.c63b8b9
+pkgver=20150718.df9a4e1
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('i686' 'x86_64')
 url="https://www.github.com/commercialhaskell/stack"
 license=('BSD3')
 depends=('libtinfo')
-makedepends=('ghc' 'cabal-install')
+makedepends=('ghc' 'haskell-stack')
 optdepends=('docker: Use Docker images to build your project in a temporary container')
 provides=('haskell-stack')
 conflicts=('haskell-stack')
@@ -18,39 +18,29 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  rm -rf .cabal-sandbox
-  cabal sandbox init
-  rm -f cabal.config
-  wget https://www.stackage.org/nightly/cabal.config
-  echo "Removing stack constraint in the stackage snapshot"
-  sed -i -e "/^\s*stack ==/d" cabal.config
-  cabal update
-  cabal clean
-  cabal install --only-dependencies --reorder-goals --enable-tests
-  cabal install cpphs
+  stack build
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
   BIN_DIR="$srcdir/${_pkgname}/bin"
-  SHARE_DIR="$srcdir/${_pkgname}/share"
   mkdir -p $BIN_DIR
-  mkdir -p $SHARE_DIR
-  cabal install --disable-documentation \
-        --disable-library-profiling \
-        --bindir=$BIN_DIR 
+  stack build
 }
 
 check() {
   cd "$srcdir/${_pkgname}"
-  cabal test
+  stack test
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
-  BIN_DIR="$srcdir/${_pkgname}/bin/"
+  BIN_DIR=`stack path | grep "local-install-root" | cut -d ' ' -f2`/bin
   STACK_BIN=$BIN_DIR/stack
   install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack" 
+  STACK_MAN_DIR=./man/man1
+  gzip -k $STACK_MAN_DIR/stack.1
+  install -Dm755 $STACK_MAN_DIR/stack.1.gz "$pkgdir/$STACK_MAN_DIR/stack.1.gz" 
 }
 
 pkgver() {
