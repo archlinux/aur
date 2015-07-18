@@ -1,0 +1,29 @@
+post_install () {
+package_name="EnergyPlus-8-3-0"
+install_directory="/opt"
+link_directory="/usr/local/bin"
+
+chmod o+w "${install_directory}/${package_name}/PreProcess/IDFVersionUpdater/"
+mv "${install_directory}/${package_name}/energyplus.1" /usr/share/man/man1/
+
+for i in "PreProcess/GrndTempCalc/Basement PreProcess/GrndTempCalc/BasementGHT.idd PostProcess/convertESOMTRpgm/convertESOMTR energyplus Energy+.idd EPMacro ExpandObjects PostProcess/HVAC-Diagram PreProcess/IDFVersionUpdater/IDFVersionUpdater PreProcess/ParametricPreProcessor/parametricpreprocessor PreProcess/FMUParser/parser PostProcess/ReadVarsESO runenergyplus runepmacro runreadvars PreProcess/GrndTempCalc/Slab PreProcess/GrndTempCalc/SlabGHT.idd PreProcess/IDFVersionUpdater/Transition-V8-2-0-to-V8-3-0 PreProcess/IDFVersionUpdater/V8-2-0-Energy+.idd PreProcess/IDFVersionUpdater/V8-3-0-Energy+.idd";
+do
+ln -sf "${install_directory}/${package_name}/$i" "${link_directory}"
+done
+}
+
+
+pre_remove() {
+link_directory=/usr/local/bin
+for i in "Basement BasementGHT.idd convertESOMTR EnergyPlus Energy+.idd Energy+.idd EP-Compare EPMacro ExpandObjects HVAC-Diagram IDFVersionUpdater parametricpreprocessor parser ReadVarsESO runenergyplus runepmacro runreadvars Slab SlabGHT.idd Transition-V8-2-0-to-V8-3-0 V8-2-0-Energy+.idd V8-3-0-Energy+.idd"
+do
+rm -f "${link_directory}/$i"
+done
+
+rm -f /usr/local/share/man/man1/energyplus.1
+}
+
+post_upgrade() {
+  post_install
+}
+
