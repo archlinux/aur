@@ -9,6 +9,7 @@ pkgbase = cl-trivial-gray-streams-git
 	license = BSD
 	makedepends = git
 	depends = common-lisp
+	provides = cl-trivial-gray-streams
 	source = git+https://github.com/trivial-gray-streams/trivial-gray-streams.git
 	md5sums = SKIP
 

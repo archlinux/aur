@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url=("git://github.com/trivial-gray-streams/trivial-gray-streams")
 license=('BSD')
 depends=('common-lisp')
+provides=('cl-trivial-gray-streams')
 makedepends=('git')
 install=cl-trivial-gray-streams.install
 _gitname=("trivial-gray-streams")
