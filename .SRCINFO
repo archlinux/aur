@@ -7,6 +7,21 @@ pkgbase = python2-nuxeo-drive
 	license = GPLv2
 	makedepends = python2-setuptools
 	depends = python2
+	depends = python2-yappi>=0.94
+	depends = python2-xattr>=0.7.7
+	depends = python2-send2trash>=1.3.0
+	depends = python2-argparse>=1.3.0
+	depends = python2-coverage>=3.7.1
+	depends = python2-esky>=0.9.8
+	depends = python2-faulthandler>=2.4
+	depends = python2-nose>=1.3.7
+	depends = python2-poster>=0.8.1
+	depends = python2-psutil>=3.0.1
+	depends = python2-watchdog>=0.8.3
+	depends = python2-universal-analytics-python>=0.2.4
+	depends = python2-mock>=1.0.1
+	depends = python2-crypto>=2.6.1
+	depends = python2-pyqt4
 	source = https://github.com/nuxeo/nuxeo-drive/archive/release-2.0.0626.tar.gz
 	md5sums = e07715d709bd97ebad49d87ab04e76dd
 
