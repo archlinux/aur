@@ -1,0 +1,16 @@
+pkgbase = cl-trivial-gray-streams-git
+	pkgdesc = Compatibility layer library for gray streams in Common Lisp
+	pkgver = r57.0483ade
+	pkgrel = 1
+	url = git://github.com/trivial-gray-streams/trivial-gray-streams
+	install = cl-trivial-gray-streams.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	source = git+https://github.com/trivial-gray-streams/trivial-gray-streams.git
+	md5sums = SKIP
+
+pkgname = cl-trivial-gray-streams-git
+
