@@ -1,0 +1,20 @@
+pkgbase = libsoxr-git_p
+	pkgdesc = SoX Resampler library
+	pkgver = 0.1.1.r4.g988f830
+	pkgrel = 1
+	url = http://sourceforge.net/projects/soxr/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = libsoxr
+	provides = libsoxr-git
+	conflicts = libsoxr
+	options = !emptydirs
+	source = libsoxr::git://git.code.sf.net/p/soxr/code
+	sha256sums = SKIP
+
+pkgname = libsoxr-git_p
+
