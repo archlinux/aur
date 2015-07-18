@@ -3,7 +3,7 @@
 
 pkgname=ladish-git
 pkgver=0.3.r147.g5fe205f
-pkgrel=6
+pkgrel=7
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
@@ -15,9 +15,11 @@ conflicts=('ladish' 'lash')
 install=${pkgname}.install
 source=("${pkgname}::git://repo.or.cz/ladish.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^ladish.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -25,7 +27,6 @@ pkgver() {
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
   sed -i "s|env python|&2|" ladish_control
