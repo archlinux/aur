@@ -1,0 +1,13 @@
+pkgbase = gnome-defaults-list
+	pkgdesc = default file associations for GNOME environment
+	pkgver = 3.14.0
+	pkgrel = 4
+	url = http://packages.ubuntu.com/source/vivid/gnome-session
+	arch = any
+	license = GPL
+	license = LGPL
+	source = http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_3.14.0-2ubuntu4.debian.tar.gz
+	md5sums = c4f3267e501465c7352f47a1d8c65727
+
+pkgname = gnome-defaults-list
+
