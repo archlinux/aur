@@ -1,21 +1,43 @@
 pkgbase = lrexlib
 	pkgdesc = regular expression libraries for lua
-	pkgver = 2.7.2
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = http://rrthomas.github.com/lrexlib/
 	arch = i686
 	arch = x86_64
-	license = custom:lua
-	makedepends = git2cl-git
+	license = custom
 	makedepends = luarocks
-	depends = lua
+	provides = lrexlib
+	noextract = lrexlib-gnu-2.8.0-1.src.rock
+	noextract = lrexlib-oniguruma-2.8.0-1.src.rock
+	noextract = lrexlib-pcre-2.8.0-1.src.rock
+	noextract = lrexlib-posix-2.8.0-1.src.rock
+	noextract = lrexlib-tre-2.8.0-1.src.rock
+	source = https://luarocks.org/lrexlib-gnu-2.8.0-1.src.rock
+	source = https://luarocks.org/lrexlib-oniguruma-2.8.0-1.src.rock
+	source = https://luarocks.org/lrexlib-pcre-2.8.0-1.src.rock
+	source = https://luarocks.org/lrexlib-posix-2.8.0-1.src.rock
+	source = https://luarocks.org/lrexlib-tre-2.8.0-1.src.rock
+	sha512sums = 094004723cc6a300377b33b4c9a91d41625b06b622655b4d66f7d7e389ad5729ca07f7343acd8d72f8cc2eacaabae3b0b96572c75a25f0098822994a6965e6f4
+	sha512sums = 22214e274fcda24f1744444a5461a01481536ed14aab1df91371eae845a5cbbca6ca7df07b3b9859448af354494c9603c659567a90af847c9f986eec1924c90f
+	sha512sums = a75837ab50748963b993b623ad648f6f147496767975a59165f72f02fa1edf1f396c37477d84cfd39b622cfe808248b139070fe310a26ca69de04a95c02b22c7
+	sha512sums = 7cf92da4d12fb6f2a808ce6120eabf8147e35aa2d9df58c6c164478f5d5be70241eb01e95d95cd16e01a1b380c9be62d8d07e0946906cbf2f0e7bb463985fa3c
+	sha512sums = 798ea42aa4974a30db889addb788f22e058594a10c506aa6371715a97ca85972a9bfedf4026a355c1ae0ff74d650b41847402eb04b82cdc7dda15e770006d01b
+
+pkgname = lrexlib-gnu
+
+pkgname = lrexlib-oniguruma
+	depends = 
 	depends = oniguruma
-	depends = tre
+
+pkgname = lrexlib-pcre
+	depends = 
 	depends = pcre
 	conflicts = lrexlib-pcre5.1
-	conflicts = lrexlib-pcre
-	source = LICENSE
-	md5sums = 57bcf624164eaa14fd37807983ea219b
 
-pkgname = lrexlib
+pkgname = lrexlib-posix
+
+pkgname = lrexlib-tre
+	depends = 
+	depends = tre
 
