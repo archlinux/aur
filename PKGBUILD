@@ -1,12 +1,12 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 pkgname=acme-sac
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Programmer's editor and shell, running over Inferno"
 arch=('any')
 url="http://code.google.com/p/acme-sac/"
 license=('GPL')
-depends=()
+depends=('libx11' 'libxext' 'gcc')
 provides=('acme')
 source=(http://acme-sac.googlecode.com/files/acme-sac_0.14_i386.deb)
 noextract=()
