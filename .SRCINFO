@@ -1,5 +1,5 @@
 pkgbase = tvheadend-atsc-epg-git
-	pkgdesc = TV streaming server for Linux
+	pkgdesc = TV streaming server for Linux (with PSIP ATSC EPG Grabber)
 	pkgver = 5905+gc8df8b5
 	pkgrel = 1
 	url = https://tvheadend.org/

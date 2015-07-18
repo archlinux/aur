@@ -1,4 +1,5 @@
 tvheadend
+*.pkg.tar.xz
 *.src.tar.gz
 *.log
 pkg
