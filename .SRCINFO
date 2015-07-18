@@ -1,0 +1,12 @@
+pkgbase = vmware-hook
+	pkgdesc = mkinitcpio hook to rebuild vmware kernel modules
+	pkgver = 1.0
+	pkgrel = 1
+	install = vmware-hook.install
+	arch = any
+	license = GPL3
+	source = vmware
+	sha256sums = f78cc38547317a2bcfaa6f896c04e6ec2f4ef9c738317605b3b75c115a116948
+
+pkgname = vmware-hook
+

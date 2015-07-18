@@ -1,0 +1,3 @@
+post_install() {
+    echo "Please add 'vmware' to the HOOKs array in /etc/mkinitcpio.conf to enable module compilation"
+}

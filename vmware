@@ -1,0 +1,13 @@
+build()
+{
+	vmware-modconfig --console --install-all -k ${KERNELVERSION}
+	echo "Ok"
+}
+
+help ()
+{
+cat<<HELPEOF
+    This hook rebuilds vmware modules. It does nothing to the initrd image.
+HELPEOF
+}
+
