@@ -1,14 +1,14 @@
 # Maintainer: Brandon Mulcahy <brandon@jangler.info>
 pkgname=schematic
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Create a color scheme based on a seed RGB color value"
 arch=('any')
-url="https://github.com/jangler/schematic"
+url="http://jangler.info/code/schematic"
 license=('MIT')
 depends=()
 source=("https://github.com/jangler/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8031d1ff472bb7ef34c59395236a740591dbac812d364d3ffcb73ec89e585cd7')
+sha256sums=('4bcdda1b43b0dd79f3fe2089925c9c1e4f71fb9f89d600f91f5045f8413ea83c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
