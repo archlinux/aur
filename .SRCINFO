@@ -1,7 +1,7 @@
 pkgbase = lib32-fltk
 	pkgdesc = Graphical user interface toolkit for X (32-bit)
 	pkgver = 1.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.fltk.org
 	install = lib32-fltk.install
 	arch = x86_64
@@ -15,7 +15,11 @@ pkgbase = lib32-fltk
 	depends = lib32-libxinerama
 	depends = lib32-libxcursor
 	source = http://fltk.org/pub/fltk/1.3.3/fltk-1.3.3-source.tar.gz
+	source = tigervnc.patch
+	source = fltk-config-dynlibs.patch
 	sha512sums = 277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559eed4ecd5215ac26d53a1091ada003e17f1553194cebaa97dd854809dd2885d
+	sha512sums = 30fd8ad3cbedc7e4cb0b3e08d21cc28aa9c8f20d4d1970646de931243c3752f55c4414d921aec29dbdf3b1e4eade0365d3c806fb5c9ecaa29ac3d7cf01f216be
+	sha512sums = 33743f009c4486cc2199dc90b031cfe977c779f6bf6e958de29a2180578f3866004f20f6411a049aa1192ea4f8adad4636cd90cb4f0ff6ae05205bd2bc016fef
 
 pkgname = lib32-fltk
 
