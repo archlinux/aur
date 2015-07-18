@@ -7,14 +7,14 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=34523.18ca617
+pkgver=4.11.4.34572.7113c80
 pkgrel=1
+epoch=1
 pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
 url='http://www.metasploit.com/'
 arch=('any')
 license=('BSD')
-depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler')
-makedepends=('git')
+depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'git')
 optdepends=(
   'java-runtime: msfgui support'
   'ruby-pg: database support'
@@ -28,15 +28,17 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" \
+    "$(git tag -l|grep -E '.+\..+\..+'|cut -d- -f1|sort -V -r|head -n1)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
-
 
 package() {
   cd ${pkgname}
 
   mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  cp -r . "${pkgdir}/opt/${pkgname}"
+  find . -maxdepth 1 -mindepth 1 -not -path './.git*' -exec cp -r '{}' "${pkgdir}/opt/${pkgname}" \;
 
   for f in "${pkgdir}"/opt/${pkgname}/msf*; do
     local _msffile="${pkgdir}/usr/bin/`basename "${f}"`"
