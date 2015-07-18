@@ -4,8 +4,8 @@
 # New Maintainer: BlindPenguin <ferdinand holzner at gmail dot com>
 #
 pkgname=cdesktopenv
-pkgver=2.2.2
-pkgrel=3
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
