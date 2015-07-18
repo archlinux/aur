@@ -1,0 +1,16 @@
+pkgbase = cl-trivial-features
+	pkgdesc = ensures consistent *FEATURES* across multiple Common Lisp implementations
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.cliki.net/trivial-features/
+	install = cl-trivial-features.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = sbcl
+	options = docs
+	source = http://common-lisp.net/~loliveira/tarballs/trivial-features/trivial-features_0.8.tar.gz
+	md5sums = 48f27718475f16a0c3e6d0714f6f5a6e
+
+pkgname = cl-trivial-features
+
