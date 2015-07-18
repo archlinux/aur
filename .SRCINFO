@@ -1,0 +1,15 @@
+pkgbase = lua-iconv
+	pkgdesc = Lua bindings for POSIX APIs and curses
+	pkgver = 7
+	pkgrel = 1
+	url = https://luaposix.github.io/luaposix
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/lua-iconv-7-1.src.rock
+	sha512sums = 88046ca7aec54993c64a1cd6d5a2c6a7793a3987b21d37441ad23bb3af229b3cd28385b73cd99f9351a3362b7219709bad762f401c70926f0dbbe5efd7a61e8e
+
+pkgname = lua-iconv
+
