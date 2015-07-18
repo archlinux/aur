@@ -7,7 +7,7 @@ _major=8
 _minor=51
 _build=b16
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -43,9 +43,11 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("policytool32-$_jname.desktop")
+source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+        "policytool32-$_jname.desktop")
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-md5sums=('271b97a9b95d809a99999ec5fb74313c')
+md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+         '271b97a9b95d809a99999ec5fb74313c')
 md5sums_x86_64=('f234dacdff97e6ac5ff3e85d58f2d158')
 
 package() {
@@ -115,6 +117,13 @@ package() {
     # Move/link licenses
     mv COPYRIGHT LICENSE README *.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
     ln -sf /usr/share/licenses/java${_major}-${_pkgname}32/ "$pkgdir"/usr/share/licenses/$pkgname
+
+    msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
+    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # things like 256-bit AES. Enabled by default in OpenJDK:
+    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/*.jar lib/security/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
