@@ -1,6 +1,6 @@
 pkgbase = lammps
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator.
-	pkgver = 2Feb13
+	pkgver = 15May15
 	pkgrel = 1
 	url = http://lammps.sandia.gov/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = lammps
 	license = GPL
 	depends = fftw
 	depends = openmpi
-	source = http://downloads.sourceforge.net/project/lammps/lammps-2Feb13.tar.gz
+	source = http://lammps.sandia.gov/tars/lammps-stable.tar.gz
 	source = fftw3.patch
-	md5sums = a948f8550c61178fcd88903d9da65b1b
-	md5sums = 05eb4e2e9bd70ea62818d637875a5dfb
+	md5sums = 8029c9ad293e06db1bb293c03ea325fb
+	md5sums = 995c3d49f0df9c28f287fca0a3ea0752
 
 pkgname = lammps
 
