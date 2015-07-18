@@ -1,0 +1,17 @@
+pkgbase = nouveau-fw
+	pkgdesc = This package provides video & pgraph firmwares for all NVIDIA chipsets that need them
+	pkgver = 325.15
+	pkgrel = 1
+	url = http://nouveau.freedesktop.org/wiki/
+	arch = any
+	license = custom
+	makedepends = python2
+	source = https://raw.github.com/imirkin/re-vp2/master/extract_firmware.py
+	source = http://us.download.nvidia.com/XFree86/Linux-x86/325.15/NVIDIA-Linux-x86-325.15.run
+	md5sums = SKIP
+	md5sums = 528fc538584de6446384b9cec3099d6c
+	sha256sums = SKIP
+	sha256sums = 3d790e4bfed24641f7cc76879144ab5d52b12271012ba381b0d33aa1a2e08775
+
+pkgname = nouveau-fw
+
