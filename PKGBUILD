@@ -25,7 +25,7 @@ depends=(
       )
 makedepends=('libvdpau' 'yasm' 'hardening-wrapper')
 conflicts=("$_name")
-provides=("$_name=$pkgver")
+provides=("$_name=$pkgver", "qt-faststart")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2)
 md5sums=('f159c6d7eed8546b23e1a17325cbf1f8')
 
