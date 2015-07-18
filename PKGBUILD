@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-freon-git
 pkgver=1.3.r120.g12ecebd
-pkgrel=2
+pkgrel=3
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in GNOME Shell."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
@@ -14,9 +14,11 @@ conflicts=('gnome-shell-extensions-git' 'gnome-shell-extensions-freon')
 install="gschemas.install"
 source=("${pkgname}::git+https://github.com/UshakovVasilii/gnome-shell-extension-freon.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -24,7 +26,6 @@ pkgver() {
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
   sed -i 's#\[\"3.12\", \"3.14\"\]#\[\"3.12\", \"3.14\", \"3.16\"\]#g' "./freon@UshakovVasilii_Github.yahoo.com/metadata.json"
