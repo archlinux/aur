@@ -1,6 +1,6 @@
 pkgbase = x264-git_p
-	pkgdesc = CLI tools for encoding H264/AVC video streams
-	pkgver = 146.2538.121396c
+	pkgdesc = CLI tools for encoding H264/AVC video streams (Git dev-version bit depth=8)
+	pkgver = 148.2574.e6d2a36
 	pkgrel = 1
 	epoch = 2
 	url = http://www.videolan.org/developers/x264.html
@@ -9,25 +9,19 @@ pkgbase = x264-git_p
 	license = GPL
 	makedepends = git
 	makedepends = yasm
-	depends = glibc
-	source = x264::git://git.videolan.org/x264.git
-	sha512sums = SKIP
-
-pkgname = x264-git_p
-	pkgdesc = CLI tools for encoding H264/AVC video streams
-	depends = 
+	depends = libx264-git_p>=148.2574.e6d2a36
+	depends = l-smash-git_p
+	depends = ffmpeg-full-git_p
 	provides = x264
 	provides = x264-git
 	conflicts = x264
+	conflicts = x264-git
 	conflicts = x264-10bit
+	replaces = x264
+	replaces = x264-git
+	replaces = x264-10bit
+	source = x264::git://git.videolan.org/x264/x264-sandbox.git
+	sha512sums = SKIP
 
-pkgname = libx264-git_p
-	pkgdesc = Library for encoding H264/AVC video streams
-	provides = libx264.so
-	provides = libx264
-	provides = libx264-git
-	provides = x264-dev
-	conflicts = x264-dev
-	conflicts = libx264
-	conflicts = libx264-10bit
+pkgname = x264-git_p
 
