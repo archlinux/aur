@@ -3,7 +3,7 @@
 
 _srcname=wavpack
 pkgname=${_srcname}-git_p
-pkgver=4.75.0.r16.gd9a0960
+pkgver=4.75.0.r19.ga7d18b2
 pkgrel=1
 pkgdesc="Audio compression format with lossless, lossy and hybrid compression modes"
 arch=('i686' 'x86_64')
@@ -26,9 +26,13 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "${srcdir}/${_srcname}"
+  autoreconf -fiv
+}
+
 build() {
   cd "${srcdir}/${_srcname}"
-  ./autogen.sh
   ./configure --prefix=/usr --libdir=/usr/lib --disable-asm
   make
 }
