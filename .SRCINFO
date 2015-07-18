@@ -1,7 +1,7 @@
 pkgbase = openchange
 	pkgdesc = A portable, open source implementation of Microsoft Exchange server and Exchange protocols.
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openchange.org
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = openchange
 	source = openchange-issue-249.patch
 	sha256sums = 46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e
 	sha256sums = 45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3
-	sha256sums = 65dc742e95dd1bff1581ea3d76b4dfe8d01ca52ab5e64ffc80efc10417a2ff97
+	sha256sums = 067d25b0442ab233f47fbfd32a56042fa161b3d0aa65081f222fddde3648c439
 	sha256sums = e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834
 
 pkgname = openchange
