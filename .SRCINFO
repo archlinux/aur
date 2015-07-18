@@ -1,0 +1,16 @@
+pkgbase = killcx
+	pkgdesc = a Perl script to close a TCP connection under Linux, whatever its state is
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://spamcleaner.org/en/misc/killcx.html
+	arch = any
+	license = GPLv3
+	depends = perl
+	depends = perl-net-rawip
+	depends = perl-net-pcap
+	depends = perl-netpacket
+	source = http://downloads.sourceforge.net/project/killcx/killcx/1.0.3/killcx-1.0.3.tgz
+	sha256sums = 0d383ab743bbd02f877072f4ced0044f7746981460f25ec0da5df0a95825f111
+
+pkgname = killcx
+
