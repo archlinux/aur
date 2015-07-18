@@ -11,7 +11,7 @@ _pkgver=$_major
 pkgver=${_major}${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
 arch=('i686' 'x86_64')
 url=https://jdk$_major.java.net/
@@ -26,11 +26,11 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major")
 
 # Variables
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
 backup=("etc/java-$_jname/amd64/jvm.cfg"
-        "etc/java-$_jname/images/cursors/cursors.properties"
         "etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/management/management.properties"
         "etc/java-$_jname/security/java.policy"
@@ -44,11 +44,13 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=("policytool-$_jname.desktop"
+source=("http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"
+        "policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_i686=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-i586-$_date.tar.gz")
 source_x86_64=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-x64-$_date.tar.gz")
-md5sums=('855a74ddead31f8b30943ac1a7d3a7a6'
+md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+         '855a74ddead31f8b30943ac1a7d3a7a6'
          'f09947a67691a2d78d20a3885889981c')
 md5sums_i686=('8b4fabc0009e12bd98b0dc836dce6ed0')
 md5sums_x86_64=('83482c22a54a56333b7c4ece57d6971e')
@@ -126,6 +128,13 @@ package() {
     mv COPYRIGHT LICENSE README *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     install -m644 "$srcdir"/OTN-Early-Adopter-License-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
+
+    msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
+    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # things like 256-bit AES. Enabled by default in OpenJDK:
+    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK8/*.jar lib/security/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
