@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-appindicator-git
 pkgver=15.r2.g0c53cfb
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('any')
 url="https://github.com/rgcjonas/gnome-shell-extension-appindicator"
@@ -15,9 +15,11 @@ options=('!emptydirs')
 install="gschemas.install"
 source=("${pkgname}::git+https://github.com/rgcjonas/gnome-shell-extension-appindicator.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -25,7 +27,6 @@ pkgver() {
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
  sed -i 's#\[\"3.8\", \"3.10\", \"3.12\", \"3.14\"\]#\[\"3.8\", \"3.10\", \"3.12\", \"3.14\", \"3.16\"\]#g' "./metadata.json"
