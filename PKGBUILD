@@ -1,22 +1,19 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=3.0.6
-pkgrel=4
+pkgver=3.0.8
+pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
 arch=(i686 x86_64)
 url="http://www.clutter-project.org/"
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage libgudev)
 makedepends=(gobject-introspection)
-source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz
-        stream-crash.patch)
-sha256sums=('d6d5493ae57cc175deee479304569c419d2bb90de3be124e6f3350ae7e73df76'
-            '891315e34c1f8dbe7e89d78f59707b567b14953e2e5151ffcbe021ab5a0fe9c2')
+source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
+sha256sums=('582e85b88482e16f7ec719363e38fadf84fab4d4baaa21e5227a454b824f135c')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i ../stream-crash.patch
 }
 
 build() {
