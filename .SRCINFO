@@ -1,0 +1,23 @@
+pkgbase = portaudio-svn_p
+	pkgdesc = A Free, cross platform, open-source, audio I/O library.
+	pkgver = r1954
+	pkgrel = 1
+	url = http://www.portaudio.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = subversion
+	depends = gcc-libs
+	depends = jack
+	provides = portaudio
+	provides = portaudio-svn
+	conflicts = portaudio
+	conflicts = portaudio-svn
+	options = !libtool
+	source = portaudio::svn+https://subversion.assembla.com/svn/portaudio/portaudio/trunk/
+	source = portaudio-audacity.patch
+	sha512sums = SKIP
+	sha512sums = 86d14e1e984671593a9afdb5ec45bc944bd87610f32f8dde34f770eba067ff4a229400c3c0af403c32114c26ab43e5d81bcc70c742b0f6df864fd5ed3adf74af
+
+pkgname = portaudio-svn_p
+
