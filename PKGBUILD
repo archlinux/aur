@@ -29,9 +29,13 @@ pkgver() {
   )
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${_srcname}"
   autoreconf -fiv
+}
+
+build() {
+  cd "${srcdir}/${_srcname}"
   ./configure --prefix=/usr
   make
 }
