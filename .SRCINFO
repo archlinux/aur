@@ -1,0 +1,15 @@
+pkgbase = ttf-inconsolata-g
+	pkgdesc = Monospace font for pretty code listings and for the terminal modified by Leonardo Maffi (http://www.fantascienza.net/leonardo/)
+	pkgver = 20090213
+	pkgrel = 3
+	url = http://levien.com/type/myfonts/inconsolata.html
+	install = ttf-inconsolata-g.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.fantascienza.net/leonardo/ar/inconsolatag/inconsolata-g_font.zip
+	md5sums = c36e53cb9022f8096fb78a0aae00cbb0
+
+pkgname = ttf-inconsolata-g
+
