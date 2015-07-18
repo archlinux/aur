@@ -2,7 +2,7 @@
 
 pkgname=dummynet
 pkgver=20130607
-pkgrel=7
+pkgrel=8
 pkgdesc="A live network emulation tool, originally designed for testing networking protocols, and since then used for a variety of applications including bandwidth management."
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -12,7 +12,7 @@ install=dummynet.install
 source=('http://info.iet.unipi.it/~luigi/doc/20130607-ipfw3.tgz'
 	'4.1.patch')
 md5sums=('004e65e6d545a89c4dcc3e741e287444'
-         'e5bb97bd5fd49f6ed64a6bcfa3c2b63c')
+         '85d91ca475a1a9b06614584968054251')
 url="http://info.iet.unipi.it/~luigi/dummynet/"
 
 _kernmajor="$(pacman -Q linux | awk '{print $2}' | cut -d - -f1 | cut -d . -f1,2)"
