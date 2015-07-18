@@ -1,6 +1,6 @@
 pkgbase = mathematica
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing.
-	pkgver = 10.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	install = mathematica.install
@@ -9,8 +9,8 @@ pkgbase = mathematica
 	license = proprietary
 	depends = ttf-bitstream-vera
 	options = !strip
-	source = file://Mathematica_10.1.0_LINUX.sh
-	md5sums = 1523e5ed52161e8bb3f55bd688e11f35
+	source = file://Mathematica_10.2.0_LINUX.sh
+	md5sums = cb624598a470179ff57952c0771ae51a
 
 pkgname = mathematica
 
