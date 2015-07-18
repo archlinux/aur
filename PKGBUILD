@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-python-jsonrpc
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Simple to use Python JSONRPC-Library"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/gerold-penz/python-jsonrpc"
 license=('Apache')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('7edd99673206a0243219912047d5fe93')
-sha256sums=('6645eeaf3760f2cfddaf6a1b768ac81f4d047e328e133fa7aae3d2ed44a2521b')
+md5sums=('04c0c1631fc5162736549e2a6da3966c')
+sha256sums=('010fcdc24bc7bcfd27900a1d85f801eb9f3b1bf1803707c2eece059e3c6b28f3')
 provides=('pyjsonrpc' 'python2-pyjsonrpc' 'python2-python-jsonrpc')
 
 prepare(){
