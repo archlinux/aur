@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=vsxu-git
-pkgver=v0.5.1.r1.gbcc7e75
+pkgver=0.5.1.r1.gbcc7e75
 pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch} --quiet
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
