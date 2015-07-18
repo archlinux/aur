@@ -1,9 +1,9 @@
 # Maintainer: Daniel Kirchner <daniel at ekpyron dot org>
 pkgname=oglp-git
-pkgver=r116.99543f0
+pkgver=r123.b1f662f
 pkgrel=1
 pkgdesc="OpenGL wrapper for C++"
-license=('GPL')
+license=('MIT')
 arch=('any')
 url="http://github.com/ekpyron/oglp/"
 depends=('glm')
@@ -12,7 +12,7 @@ source=('git+git://github.com/ekpyron/oglp')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir"/oglp
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
