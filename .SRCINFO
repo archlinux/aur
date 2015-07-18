@@ -1,0 +1,15 @@
+pkgbase = iometer
+	pkgdesc = Dynamo I/O subsystem benchmark measurement tool for single and clustered systems
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.iometer.org/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libaio
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/project/iometer/iometer-stable/1.1.0/iometer-1.1.0-src.tar.bz2
+	md5sums = 44ab0450d789f3f810a66d84f8052a7a
+
+pkgname = iometer
+
