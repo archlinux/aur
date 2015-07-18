@@ -16,21 +16,14 @@ conflicts=('haskell-stack')
 source=("${_pkgname}::git+https://github.com/commercialhaskell/stack.git")
 md5sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/${_pkgname}"
-  stack build
-}
-
 build() {
   cd "$srcdir/${_pkgname}"
-  BIN_DIR="$srcdir/${_pkgname}/bin"
-  mkdir -p $BIN_DIR
-  stack build
+  stack build --resolver ghc-7.10
 }
 
 check() {
   cd "$srcdir/${_pkgname}"
-  stack test
+  stack test --resolver ghc-7.10
 }
 
 package() {
