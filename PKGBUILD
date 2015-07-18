@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-msm
-pkgver=15.03.01.00
-pkgrel=2
+pkgver=15.05.01.00
+pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
 arch=('i686' 'x86_64')
 url='http://www.lsi.com'
@@ -34,8 +34,8 @@ source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.1
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
-source_i686=("${pkgver}_Linux-x86_MSM.gz::http://www.lsi.com/downloads/Public/Syncro%20Shared%20Storage/downloads/${pkgver}_Linux-32_MXM.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.gz::http://www.lsi.com/downloads/Public/Syncro%20Shared%20Storage/downloads/${pkgver}_Linux-64_MSM.gz")
+source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/MSM_linux_installer-${pkgver//.00/-00}.tar.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/MSM_linux_x64_installer-${pkgver//.00/-00}.tar.gz")
 sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
           '79fbe24898030db50295a6254e7c4627e2b51b7c'
@@ -48,21 +48,31 @@ sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           'e8c0cea2589daebcd94ec2baf726391d4cd516cd'
           'a4d642b7be3c3400539dac5014f66463dc567221'
           '1eadb4d032cb7e7367317e61fee6a6e1f9f68868')
-sha1sums_i686=('26d1693eee4f2d397b7344c36492ec3ca8888f99')
-sha1sums_x86_64=('95e854133b338e2d7c0166095bb870ec8b6b1e33')
+sha1sums_i686=('caac4ba06e9e9e3d519f51eef4d33d9dbb0d501c')
+sha1sums_x86_64=('ca53ea0c32ae6d041c03dab6d5d99e1f3cca088d')
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
         'etc/lsi_mrdsnmp/sas-ir/sas_ir_TrapDestination.conf'
         'usr/share/MegaRAID_Storage_Manager/StrongSSLEncryption.ini'
+        'usr/share/MegaRAID_Storage_Manager/installationmode.properties'
         'usr/share/MegaRAID_Storage_Manager/vivaldikey.properties'
+        'usr/share/MegaRAID_Storage_Manager/vivaldikeys'
+        'usr/share/MegaRAID_Storage_Manager/vivaldikeys2048'
         'usr/share/MegaRAID_Storage_Manager/Framework/vivaldikey.properties'
-        'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikey.properties')
+        'usr/share/MegaRAID_Storage_Manager/Framework/vivaldikeys'
+        'usr/share/MegaRAID_Storage_Manager/Framework/vivaldikeys2048'
+        'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikey.properties'
+        'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikeys'
+        'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikeys2048')
 options=('!strip')
 
-create_links() {
+_create_links() {
   # create soname links
-  for _lib in $(find "${pkgdir}/usr/lib" -name '*.so*' && find "${pkgdir}/opt/lsi/Pegasus" -name '*.so*'); do
+  for _lib in $(find "${pkgdir}/usr/lib" -name '*.so*' && \
+                find "${pkgdir}/opt/lsi/Pegasus" -name '*.so*' && \
+                find "${pkgdir}/opt/lsi/msm/lib" -name '*.so*' && \
+                find "${pkgdir}/opt/lsi/snmp/lib" -name '*.so*'); do
     _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
     _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
     [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
@@ -92,7 +102,7 @@ package() {
   cd "${pkgdir}"
 
   # Extract RPM's
-  for i in $(find "${srcdir}/disk" -type f -name '*.rpm'); do bsdtar -xf ${i}; done &> /dev/null
+  for i in $(find "${srcdir}/disk" -type f -name '*.rpm'); do bsdtar -xf "${i}"; done &> /dev/null
 
   # Move to correct place
   [ "${CARCH}" = "x86_64" ] && mv usr/lib64 usr/lib
@@ -103,6 +113,9 @@ package() {
   install -Dm644 usr/share/MegaRAID_Storage_Manager/setdisp.png usr/share/pixmaps/setdisp.png
   install -Dm644 usr/share/MegaRAID_Storage_Manager/MSMHelp.desktop.SuSE usr/share/applications/MSMHelp.desktop
   install -Dm644 usr/share/MegaRAID_Storage_Manager/MSMStartupUI.desktop.SuSE usr/share/applications/MSMStartupUI.desktop
+
+  # setup installation properties
+  echo INSTALLATION_MODE=0 > usr/share/MegaRAID_Storage_Manager/installationmode.properties
 
   # Set correct path in desktop launchers and fix entries
   sed -e 's|local/MegaRAID Storage Manager|share/MegaRAID_Storage_Manager|g' \
@@ -122,7 +135,7 @@ package() {
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpmain usr/bin/lsi_mrdsnmpmain
 
   # Remove RH/SuSe paths remains
-  for i in "$(find . -type f -name '*.sh' -o -name 'popup')"; do sed -e '/msm_profile/d' -i ${i}; done
+  for i in $(find . -type f -name '*.sh' -o -name 'popup'); do sed -e '/msm_profile/d' -i "${i}"; done
 
   # Standarized /usr/share/MegaRAID_Storage_Manager/start{,monitor}help.sh whit xdg-open ## Someday, I'll create a patch instead sed
   sed -e '13,20d' -e 's|mozilla|xdg-open|g' -e 's|/firefox||g' -i usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
@@ -150,7 +163,9 @@ package() {
   rm -fr etc/init.d \
          etc/lsi_mrdsnmp/lsi_mrdsnmpd.{rh,suse} \
          etc/lsi_mrdsnmp/sas{,-ir}/{install,uninstall} \
-         usr/share/MegaRAID_Storage_Manager/{*desktop.{SuSE,redhat},{uninstaller,pwd,.__uninst}.sh,vmware{35,40},installtype} \
+         usr/share/MegaRAID_Storage_Manager/*desktop.{SuSE,redhat} \
+         usr/share/MegaRAID_Storage_Manager/{uninstaller,pwd,.__uninst}.sh \
+         usr/share/MegaRAID_Storage_Manager/vmware{35,40}
 
   # Instal compiled Pegasus framework libraries
   rm -fr opt/lsi/Pegasus
@@ -166,44 +181,19 @@ package() {
                       'libpegqueryexpression.so.1'
                       'libpegwql.so.1'
                      )
-  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" "${pkgdir}/opt/lsi/Pegasus/${i}"; done
+  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" "opt/lsi/Pegasus/${i}"; done
 
   # Create soname links
-  create_links
+  _create_links
 
-  # Softlinking libs
-  cd "${pkgdir}/opt/lsi/msm/lib"
-  ln -s libstorelib.so.*.*         libstorelib.so.4
-  ln -s libstorelib.so.4           libstorelib.so
-
-  ln -s libstorelibir-2.so.*.*     libstorelibir-2.so.20
-  ln -s libstorelibir-2.so.20      libstorelibir-2.so
-
-  ln -s libstorelibir-3.so.*.*     libstorelibir-3.so.7
-  ln -s libstorelibir-3.so.7       libstorelibir-3.so
-
-  ln -s libstorelibir.so.*.*       libstorelibir.so.5
-  ln -s libstorelibir.so.5         libstorelibir.so
-
-  cd "${pkgdir}/opt/lsi/snmp/lib"
-  ln -s libstorelib.so.*.*         libstorelib.so.4
-  ln -s libstorelib.so.4           libstorelib.so
-
-  ln -s libstorelibir.so.*.*       libstorelibir.so.5
-  ln -s libstorelibir.so.5         libstorelibir.so
-
-  ln -s libstorelibir-2.so.*.*     libstorelibir-2.so.20
-  ln -s libstorelibir-2.so.20      libstorelibir-2.so
-
-  ln -s libstorelibir-3.so.*.*     libstorelibir-3.so.7
-  ln -s libstorelibir-3.so.7       libstorelibir-3.so
+  # Softlinking needed libs
+  (cd opt/lsi/snmp/lib; ln -s libstorelibir-3.so.*.* libstorelibir-3.so.7)
 
   # Add /opt/lsi/msm/lib, /opt/lsi/Pegasus and /opt/lsi/snmp/lib to ldconf search path
-  install -d "${pkgdir}/etc/ld.so.conf.d"
-  install -Dm644 "${srcdir}/ld.so.lsi-msm.conf" "${pkgdir}/etc/ld.so.conf.d/lsi.conf"
+  install -Dm644 "${srcdir}/ld.so.lsi-msm.conf" etc/ld.so.conf.d/lsi.conf
 
   # Remove Megapopup system launcher. because eats tons of RAM
-  rm -fr "${pkgdir}/etc/X11"
+  rm -fr etc/X11
 
   # Install licenses
   install -Dm644 "${srcdir}/SLA_AdvancedSoftware.pdf" "usr/share/licenses/${pkgname}/SLA_AdvancedSoftware.pdf"
