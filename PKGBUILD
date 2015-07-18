@@ -4,12 +4,12 @@
 
 pkgname=metasploit
 pkgver=4.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
 url="https://www.metasploit.com/"
 arch=('any')
 license=('BSD')
-depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler')
+depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'git')
 optdepends=(
   'java-runtime: msfgui support'
   'ruby-pg: database support'
@@ -17,7 +17,7 @@ optdepends=(
 options=('!strip')
 install="${pkgname}.install"
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rapid7/metasploit-framework/archive/${pkgver}.tar.gz)
-sha512sums=('530b4016f2405d0ca793961ce11e70efde75f1da4f58e5045ff0fd46386e35be2eb88dacde9365ae256c8d7397c47b6bed03474ce16649de573c9f1b68a714ee')
+sha512sums=('853ed18ab61cc5f5d28cdb0779ba6076dac9a1e310d2d684041039590dc6dc07249244390b26ae60555b022df2266bfdc84c9d3d0b2b62b9848330bcd3e70eaa')
 
 package() {
   cd ${pkgname}-framework-${pkgver}
