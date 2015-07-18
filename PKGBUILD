@@ -26,8 +26,8 @@ source=("http://downloads.sourceforge.net/$pkgname/cde-src-$pkgver.tar.gz"
         'cde.desktop'
 	'startxsession.sh')
 
-md5sums=('8ceb3110832421c14b135058c6c11cd9'
-	 '66ff27b4c6b7c5fda4e2db69f829e4aa'
+md5sums=('fe5701f80764f6053627705c8ff806ed'
+         '66ff27b4c6b7c5fda4e2db69f829e4aa'
          '18f9ef4643ff7ed6637907f5cbdabecf'
          '5cc80c2851ea90b94e94b0c5d92d81fb'
          '897316929176464ebc9ad085f31e7284'
