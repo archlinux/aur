@@ -1,0 +1,28 @@
+pkgbase = tvheadend-atsc-epg-git
+	pkgdesc = TV streaming server for Linux
+	pkgver = 5905+gc8df8b5
+	pkgrel = 1
+	url = https://tvheadend.org/
+	install = tvheadend.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = avahi
+	depends = openssl
+	depends = python2
+	depends = uriparser
+	depends = ffmpeg
+	optdepends = xmltv: For an alternative source of programme listings
+	provides = tvheadend
+	conflicts = tvheadend
+	conflicts = hts-tvheadend
+	conflicts = hts-tvheadend-svn
+	conflicts = tvheadend-git
+	source = tvheadend::git+https://github.com/laurimyllari/tvheadend.git#branch=atsc-epg
+	source = tvheadend.service
+	md5sums = SKIP
+	md5sums = b546f4486f0d28bea13ad1fb676acb27
+
+pkgname = tvheadend-atsc-epg-git
+
