@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution (Same as official package except with libfdk-aac support)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ depends=(
       )
 makedepends=('libvdpau' 'yasm' 'hardening-wrapper')
 conflicts=("$_name")
-provides=("$_name=$pkgver", "qt-faststart")
+provides=("$_name=$pkgver" "qt-faststart")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2)
 md5sums=('f159c6d7eed8546b23e1a17325cbf1f8')
 

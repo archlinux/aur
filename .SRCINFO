@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete and free Internet live audio and video broadcasting solution (Same as official package except with libfdk-aac support)
 	pkgver = 2.7.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = libx264.so
 	depends = libx265.so
 	depends = libfdk-aac
-	provides = ffmpeg=2.7.1,
+	provides = ffmpeg=2.7.1
 	provides = qt-faststart
 	conflicts = ffmpeg
 	source = http://ffmpeg.org/releases/ffmpeg-2.7.1.tar.bz2
