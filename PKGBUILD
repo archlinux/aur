@@ -37,8 +37,8 @@ build() {
   cd "${srcdir}/${pkgname}"
   export PYTHON=/usr/bin/python2
   python2 waf configure --prefix=/usr \
-                        --enable-liblash \
-                        --enable-pylash
+              --enable-liblash \
+              --enable-pylash
   python2 waf
 }
 
