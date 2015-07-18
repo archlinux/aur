@@ -3,7 +3,7 @@
 _pkgname=lxqt-desktop
 pkgname=$_pkgname-git
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The LXQt desktop"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
@@ -24,6 +24,7 @@ depends=(
 	"lxqt-qtplugin-git"
 	"lxqt-runner-git"
 	"lxqt-session-git"
+	"lxqt-sudo-git"
 )
 optdepends=(
 	"lximage-qt-git: The LXQt image viewer"
