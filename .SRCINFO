@@ -1,0 +1,23 @@
+pkgbase = arduide-git
+	pkgdesc = ArduIDE is a Qt-based IDE for the open-source Arduino electronics prototyping platform.
+	pkgver = 0.r340.8beb733
+	pkgrel = 1
+	url = http://mupuf.org/project/arduide.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt4>=4.5
+	depends = qtwebkit
+	depends = qscintilla
+	depends = grantlee-qt4>=0.1
+	depends = udev
+	depends = gcc-libs
+	depends = avr-gcc
+	depends = avr-libc
+	source = arduide-git::git+https://github.com/mupuf/arduide.git
+	sha256sums = SKIP
+
+pkgname = arduide-git
+
