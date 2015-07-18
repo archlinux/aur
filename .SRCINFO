@@ -1,7 +1,7 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
-	pkgver = 2.15.4
-	pkgrel = 1
+	pkgver = 2.15.5
+	pkgrel = 2
 	url = http://packages.qa.debian.org/d/devscripts.html
 	install = devscripts.install
 	arch = any
@@ -22,12 +22,10 @@ pkgbase = devscripts
 	depends = debhelper
 	optdepends = sensible-utils: for sensible alternative selection
 	options = !makeflags
-	source = http://ftp.debian.org/debian/pool/main/d/devscripts/devscripts_2.15.4.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/d/devscripts/devscripts_2.15.5.tar.xz
 	source = fixes.patch
-	source = devscripts.install
-	md5sums = 940e520d057b68fa565f15f057e73d52
-	md5sums = 8a1a9315dabe0403c92938680319eae6
-	md5sums = 5ca9e31b6cbe4f32115dedd3a2c2d5b0
+	md5sums = dbcf6ba9a619f698a2136099ecb4f1af
+	md5sums = 046df590290194cb1e47a0fe9cc37d83
 
 pkgname = devscripts
 
