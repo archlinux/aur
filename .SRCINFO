@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-libmng
+	pkgdesc = A collection of routines used to create and manipulate MNG format graphics files (mingw-w64)
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://www.libmng.com/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-lcms2
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://downloads.sourceforge.net/sourceforge/libmng/libmng-2.0.3.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/libmng/libmng-2.0.3.tar.xz.asc
+	source = libmng-1.0.9-dont-leak-zlib-streams.diff
+	source = libmng-1.0.10-mingw.patch
+	source = no-undefined.patch
+	sha1sums = 0f141482ffcef6f8cd4413f945a59310ac2e49af
+	sha1sums = SKIP
+	sha1sums = d6f2a94cf77cecb4dcca3ee3029016d921608ad7
+	sha1sums = 1cb7bbeb2cc7ab0c4ba2730510cb91b9fc189d29
+	sha1sums = 29ceb317cb9ffce4a36f7662131feb70502231be
+
+pkgname = mingw-w64-libmng
+
