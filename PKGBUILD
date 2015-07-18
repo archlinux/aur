@@ -1,9 +1,9 @@
 pkgname=lua-iconv
 pkgver=7
 pkgrel=1
-pkgdesc="Lua bindings for POSIX APIs and curses"
+pkgdesc="Lua bindings for the iconv API"
 arch=('i686' 'x86_64')
-url="https://luaposix.github.io/luaposix"
+url="http://ittner.github.com/lua-iconv/"
 license=('custom')
 depends=('lua')
 makedepends=('luarocks')

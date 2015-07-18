@@ -1,8 +1,8 @@
 pkgbase = lua-iconv
-	pkgdesc = Lua bindings for POSIX APIs and curses
+	pkgdesc = Lua bindings for the iconv API
 	pkgver = 7
 	pkgrel = 1
-	url = https://luaposix.github.io/luaposix
+	url = http://ittner.github.com/lua-iconv/
 	arch = i686
 	arch = x86_64
 	license = custom
