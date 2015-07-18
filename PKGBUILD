@@ -3,8 +3,8 @@
 
 pkgname="gnome-shell-extension-volume-mixer-git"
 pkgver=0.9.1.r0.gf289b00
-pkgrel=1
-pkgdesc="Enable configuration of individual PulseAudio mixers from GNOME Shell's quick settings menu."
+pkgrel=2
+pkgdesc="Enable configuration of individual PulseAudio mixers from GNOME Shell's status menu."
 arch=('any')
 url="https://github.com/aleho/gnome-shell-volume-mixer"
 license=('GPL2')
@@ -15,9 +15,11 @@ conflicts=("${pkgname%-*}")
 install=gschemas.install
 source=("${pkgname%-*}::git+https://github.com/aleho/gnome-shell-volume-mixer.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -25,7 +27,6 @@ pkgver() {
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname%-*}"
   git checkout ${_branch}
 }
