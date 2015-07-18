@@ -1,6 +1,6 @@
 pkgbase = ksystemlog-frameworks-git
-	pkgdesc = KDE SystemLog Application. KF5 Frameworks branch (GIT version)
-	pkgver = r225.c061909
+	pkgdesc = KDE SystemLog Application. KF5 Frameworks branch. (GIT version)
+	pkgver = 0.4.r225.c061909
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdeadmin/ksystemlog
 	install = ksystemlog-frameworks-git.install

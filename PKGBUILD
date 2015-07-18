@@ -1,9 +1,9 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ksystemlog-frameworks-git
-pkgver=r225.c061909
+pkgver=0.4.r225.c061909
 pkgrel=1
-pkgdesc='KDE SystemLog Application. KF5 Frameworks branch (GIT version)'
+pkgdesc='KDE SystemLog Application. KF5 Frameworks branch. (GIT version)'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdeadmin/ksystemlog'
 license=(GPL)
@@ -11,13 +11,14 @@ depends=('kio')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 conflicts=('kdeadmin-ksystemlog' 'ksystemlog')
 provides=('kdeadmin-ksystemlog' 'ksystemlog')
-install=$pkgname.install
-source=("git://anongit.kde.org/ksystemlog.git#branch=frameworks")
+source=('git://anongit.kde.org/ksystemlog.git#branch=frameworks')
 sha256sums=('SKIP')
+install=ksystemlog-frameworks-git.install
 
 pkgver() {
   cd ksystemlog
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat src/main.cpp | grep -m3 QStringLiteral | tail -n1 | cut -d '"' -f2)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
