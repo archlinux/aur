@@ -13,5 +13,6 @@ post_install() {
 
 post_remove() {
 	# Remove calibration files
-	rm -r /var/lib/yawls
+	rm -rf /var/lib/yawls
+	rm -rf /var/log/yawls*
 }

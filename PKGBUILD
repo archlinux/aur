@@ -2,7 +2,7 @@
 
 pkgname=yawls
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor"
 url="https://launchpad.net/yawls"
 arch=('any')
@@ -33,16 +33,12 @@ conflicts=('yawls-bzr')
 source=(
 	https://launchpad.net/${pkgname}/${pkgver%?}x/${pkgver}/+download/${pkgname}_${pkgver}.tar.gz{,.asc}
 	${pkgname}d.service
-	$pkgname.install
 	)
 install=("$pkgname.install")
 # Got from Launchpad downloads page: https://launchpad.net/yawls/+download
-md5sums=(
-	'75b4c2bbd20e27d36884608f4c13dde4'
-	SKIP
-	'71bee05eb02253016fc642d72fa68c16'
-	'80c90707ba9415338c316c18fd762d7a'
-	)
+md5sums=('75b4c2bbd20e27d36884608f4c13dde4'
+         'SKIP'
+         '71bee05eb02253016fc642d72fa68c16')
 
 # Adding developer's GPG key for more checks
 # Dominik Brämer: https://launchpad.net/~thedsweb (see 'OpenPGP keys')
