@@ -1,0 +1,19 @@
+pkgbase = leiningen
+	pkgdesc = Automating Clojure projects without setting your hair on fire.
+	pkgver = 2.5.1
+	pkgrel = 1
+	epoch = 1
+	url = http://github.com/technomancy/leiningen
+	arch = any
+	license = EPL
+	depends = java-environment
+	depends = bash
+	optdepends = rlwrap: for readline support
+	optdepends = leiningen-completions: completion scripts
+	source = https://raw.github.com/technomancy/leiningen/27e5e209028af733bdd20e0685b1c4554eb3b26e/bin/lein
+	source = https://raw.github.com/technomancy/leiningen/27e5e209028af733bdd20e0685b1c4554eb3b26e/doc/lein.1
+	sha1sums = b59d741e3ad28b3a11ea28eab417133492ca2138
+	sha1sums = 290b634c0648e0710911aeee71f795401af6b2e7
+
+pkgname = leiningen
+
