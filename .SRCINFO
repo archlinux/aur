@@ -1,0 +1,21 @@
+pkgbase = libsndfile-git_p
+	pkgdesc = A C library for reading and writing files containing sampled sound
+	pkgver = 1.0.26pre6.d9bae19
+	pkgrel = 1
+	url = http://www.mega-nerd.com/libsndfile
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	checkdepends = python2
+	depends = alsa-lib
+	depends = flac-git_p
+	depends = libvorbis
+	provides = libsndfile
+	provides = libsndfile-git
+	conflicts = libsndfile
+	conflicts = libsndfile-git
+	source = libsndfile::git+https://github.com/erikd/libsndfile.git
+	sha256sums = SKIP
+
+pkgname = libsndfile-git_p
+
