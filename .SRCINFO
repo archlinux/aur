@@ -1,0 +1,36 @@
+pkgbase = sox-git_p
+	pkgdesc = The Swiss Army knife of sound processing tools (Development version with all optional libraries)
+	pkgver = 14.4.2.r5.g7e74b25
+	pkgrel = 1
+	url = http://sox.sourceforge.net/Main/HomePage
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	checkdepends = time
+	makedepends = git
+	depends = libpng
+	depends = file
+	depends = ladspa
+	depends = libltdl
+	depends = libsndfile-git_p
+	depends = libao
+	depends = gsm
+	depends = opencore-amr
+	depends = lame
+	depends = opusfile
+	depends = twolame
+	depends = libmad
+	depends = libid3tag
+	depends = wavpack-git_p
+	depends = libpulse
+	optdepends = alsa-lib: for alsa plugin
+	provides = sox
+	provides = sox-git
+	conflicts = sox
+	conflicts = sox-git
+	source = sox::git://sox.git.sourceforge.net/gitroot/sox/sox
+	sha256sums = SKIP
+
+pkgname = sox-git_p
+
