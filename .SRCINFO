@@ -1,0 +1,16 @@
+pkgbase = hardening-check
+	pkgdesc = Check binaries for security hardening features
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://wiki.debian.org/Hardening
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = perl
+	source = http://ftp.de.debian.org/debian/pool/main/h/hardening-wrapper/hardening-wrapper_2.7.tar.xz
+	source = http://ftp.de.debian.org/debian/pool/main/h/hardening-wrapper/hardening-wrapper_2.7.dsc
+	sha256sums = 20c601c6ccac7534d17d4be9442a4ad8f02b8461c2c50dee8b45d596cd6cf8e7
+	sha256sums = a41080316928a0e086a622dcdae12fefb45abbaec6c435fa98e39754dfe64d79
+
+pkgname = hardening-check
+
