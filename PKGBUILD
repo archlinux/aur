@@ -1,8 +1,8 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=jacktrip-git
-pkgver=1.1.r16.gb5ad0df
-pkgrel=3
+pkgver=1.1.r17.gb5ad0df
+pkgrel=1
 pkgdesc="Tool to manage and tune JACK settings for optimum performance between networked machines."
 arch=('i686' 'x86_64')
 url="https://github.com/jcacerec/jacktrip"
@@ -12,17 +12,18 @@ provides=('jacktrip')
 conflicts=('jacktrip')
 source=("${pkgname}::git+https://github.com/jcacerec/jacktrip.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^jacktrip.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
 }
