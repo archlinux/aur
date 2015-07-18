@@ -1,0 +1,9 @@
+post_install() {
+  useradd -r -d /etc/sogo sogo &>/dev/null
+  chown -R sogo:sogo /etc/sogo
+}
+
+pre_remove() {
+  userdel sogo
+  groupdel sogo
+}

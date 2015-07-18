@@ -1,0 +1,52 @@
+pkgbase = sogo
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://www.sogo.nu/
+	install = sogo.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-base
+	makedepends = libwbxml
+	makedepends = libmemcached
+	makedepends = sope>=2.3.0
+	options = !strip
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-2.3.0.tar.gz
+	source = sogo_configure.patch
+	source = UI_MailPartViewers_GNUmakefile.patch
+	source = sogo.service
+	sha256sums = 26134eee48b6a42b047fea61a093b7774bf5066778debf02bcff6f6682803e0a
+	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
+	sha256sums = ef6ab2829d35c2abb5529ee8ea9a4cc541913b0a82bc91f4c9fa21c65d44a4aa
+	sha256sums = 62a22aa4231059fd85315795ea735638da4bc71cde4c7da21a71f2559647a4b1
+
+pkgname = sogo
+	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
+	depends = sope>=2.3.0
+	depends = gnustep-base
+	depends = libmemcached
+	depends = memcached
+	optdepends = postgresql: run database server for sogo locally
+	optdepends = mariadb: run database server for sogo locally
+	optdepends = openldap: run directory server for sogo locally
+	optdepends = postfix: run smtp server for sogo locally
+	optdepends = dovecot: run imap server for sogo locally
+	optdepends = courier-imap: run imap server for sogo locally
+	optdepends = nginx: webserver to provide web interface locally
+	optdepends = apache: webserver to provide web interface locally
+	optdepends = lighttpd: webserver to provide web interface locally
+	optdepends = funambol: sync mobile devices with sogo contacts, events, tasks via SyncML
+	backup = etc/sogo/sogo.conf
+	backup = etc/httpd/conf/extra/SOGo.conf
+
+pkgname = sogo-openchange
+	pkgdesc = OpenChange module for SOGo
+	depends = sogo=2.3.0
+	depends = openchange
+
+pkgname = sogo-activesync
+	pkgdesc = ActiveSync module for SOGo
+	depends = sogo=2.3.0
+	depends = libwbxml
+
