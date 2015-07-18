@@ -1,0 +1,37 @@
+pkgbase = python-powerline-git
+	pkgdesc = The ultimate statusline/prompt utility
+	pkgver = 2381.03195cf
+	pkgrel = 1
+	url = https://github.com/powerline/powerline
+	install = powerline.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = powerline::git://github.com/powerline/powerline.git#branch=develop
+	source = powerline.install
+	sha256sums = SKIP
+	sha256sums = af07852748ddba1544feee53fdf747d3dd163597f026719f8a6f80045d0c5425
+
+pkgname = python2-powerline-git
+	depends = python2>=2.6
+	optdepends = python2-psutil: improved system information
+	optdepends = python2-pygit2: improved git support
+	optdepends = mercurial: improved mercurial support
+	optdepends = zsh: better shell prompt
+	optdepends = gvim: vim compiled with Python support
+	conflicts = python2-powerline
+	conflicts = python-powerline-git
+	conflicts = python-powerline
+	conflicts = otf-powerline-symbols-git
+
+pkgname = python-powerline-git
+	depends = python>=3.2
+	optdepends = python-psutil: improved system information
+	optdepends = python-pygit2: improved git support
+	optdepends = zsh: better shell prompt
+	optdepends = gvim: vim compiled with Python support
+	conflicts = python2-powerline
+	conflicts = python2-powerline-git
+	conflicts = python-powerline
+	conflicts = otf-powerline-symbols-git
+
