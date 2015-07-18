@@ -3,7 +3,7 @@
 # Contributor: Christopher Krooß <didi2002 at web dot de>
 
 pkgname=gnome-shell-extension-dash-to-dock-git
-pkgver=44.r29.gaa1720b
+pkgver=46.r10.gaa1720b
 pkgrel=1
 pkgdesc="Extends the dash, transforming it into an intellihide dock."
 arch=('any')
@@ -16,17 +16,18 @@ conflicts=('gnome-shell-extensions-git' 'gnome-shell-extension-dash-to-dock')
 install="gschemas.install"
 source=("${pkgname}::git+https://github.com/micheleg/dash-to-dock.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^extensions.gnome.org.v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^extensions.gnome.org.v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
   sed -i 's/INSTALLBASE = ~\/.local\/share\/gnome-shell\/extensions/INSTALLBASE = ${DESTDIR}/' Makefile
