@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete and free Internet live audio and video broadcasting solution (Same as official package except with libfdk-aac support)
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = i686
