@@ -46,7 +46,7 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8zip"
+source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
