@@ -44,7 +44,7 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"
+source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_x86_64=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-i586-$_date.tar.gz")
