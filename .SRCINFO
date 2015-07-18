@@ -1,0 +1,22 @@
+pkgbase = perl-app-dapper
+	pkgdesc = App::Dapper module
+	pkgver = 0.18
+	pkgrel = 0
+	url = http://search.cpan.org/~mdb/App-Dapper/bin/dapper
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-datetime-format-xsd
+	depends = perl-file-monitor
+	depends = perl-sub-name
+	depends = perl-http-server-brick
+	depends = perl-text-multimarkdown
+	depends = perl-template-alloy
+	depends = perl-getopt-mixed
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDB/App-Dapper-0.18.tar.gz
+	sha1sums = ad1a97b666c2460153cddb746420daa54663bfca
+
+pkgname = perl-app-dapper
+
