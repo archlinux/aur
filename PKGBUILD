@@ -1,9 +1,9 @@
 #Maintainer: Dan Ziemba <zman0900@gmail.com>
 
 pkgbase=linux-vfio
-_srcname=linux-4.0
-pkgver=4.0.7
-pkgrel=2
+_srcname=linux-4.1
+pkgver=4.1.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,15 +23,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'override_for_missing_acs_capabilities.patch'
         'i915_317.patch'
         )
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
+            '48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad'
             'SKIP'
-            'e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1'
-            '5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be'
+            'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
+            '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
             'f86ce528b63f198b84c4d8d92d35329aa4000d462217dc2db03bac5eb693cf19')
