@@ -1,0 +1,13 @@
+--- OpenStudio.desktop	2015-05-07 02:53:05.000000000 -0300
++++ OpenStudio2.desktop	2015-05-07 03:19:13.460308587 -0300
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Version=1.0
++Version=1.7
+ Name=OpenStudio
+ Comment=Supports whole building energy modeling using EnergyPlus
+-Exec=LD_LIBRARY_PATH= /usr/local/share/openstudio-1.7.0/lib/:$LD_LIBRARY_PATH  /usr/local/bin/OpenStudio %f
++Exec=Exec=LD_LIBRARY_PATH= /usr/local/share/openstudio-1.7.0/lib/:$LD_LIBRARY_PATH  /usr/local/bin/OpenStudio %f
+ Terminal=false
+ Type=Application
+ Icon=OpenStudio
