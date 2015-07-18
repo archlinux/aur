@@ -1,0 +1,24 @@
+pkgbase = muttprint
+	pkgdesc = An app to print email from CLI mail clients, mutt in particular
+	pkgver = 0.73_4
+	pkgrel = 1
+	url = http://muttprint.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	depends = texlive-latexextra
+	depends = perl-timedate
+	depends = perl-file-which
+	depends = perl-text-iconv
+	depends = psutils
+	depends = dialog
+	optdepends = texlive-fontsextra: Adds the CMBright font
+	backup = etc/Muttprintrc
+	source = http://downloads.sf.net/muttprint/muttprint-0.73.tar.gz
+	source = muttprint_0.73-4.diff.gz
+	md5sums = 39b76058b838e3078df93236eda2c316
+	md5sums = d5d2ba786cd4ff0a40b7fd2c53e11562
+
+pkgname = muttprint
+
