@@ -1,0 +1,15 @@
+pkgbase = gprof2dot
+	pkgdesc = A Python script to convert the output from many profilers into a dot graph.
+	pkgver = 2015.02.03
+	pkgrel = 1
+	url = http://jrfonseca.googlecode.com/
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python
+	provides = gprof2dot
+	source = https://pypi.python.org/packages/source/g/gprof2dot/gprof2dot-2015.02.03.tar.gz
+	md5sums = b026772f1cc8f7f203143855e0316443
+
+pkgname = gprof2dot
+
