@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-lockkeys-git
 pkgver=r77.76ac557
-pkgrel=2
+pkgrel=3
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
 url="https://github.com/kazysmaster/gnome-shell-extension-lockkeys"
@@ -16,9 +16,11 @@ conflicts=("${pkgname%-*}")
 install="gschemas.install"
 source=("${pkgname%-*}::git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,7 +28,6 @@ pkgver() {
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname%-*}"
   git checkout ${_branch}
 }
