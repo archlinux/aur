@@ -1,0 +1,18 @@
+pkgbase = git-gitlab
+	pkgdesc = gitlab command line interface
+	pkgver = f5392cabaf5e9d97b2e33390ab77f05367924379
+	pkgrel = 1
+	url = http://github.com/numa08/git-gitlab
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go,
+	makedepends = libgit2
+	depends = libgit2
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/numa08/git-gitlab/archive/f5392cabaf5e9d97b2e33390ab77f05367924379.zip
+	sha256sums = eaa2b26f4e1c332631beff2413a5a9cae33fc6c9383f7ca66a232ba975a53abf
+
+pkgname = git-gitlab
+
