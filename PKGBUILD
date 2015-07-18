@@ -2,7 +2,7 @@
 # Contributor: Tom < reztho at archlinux dot org >
 
 pkgname=tuned-git
-pkgver=2.4.1.r61.gd172b5b
+pkgver=2.5.0.r6.ge32bd6b
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
