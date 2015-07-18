@@ -17,11 +17,6 @@ build() {
     python2 setup.py build
 }
 
-check() {
-    cd "$srcdir/zbase32-$pkgver"
-    python2 setup.py test
-}
-
 package() {
     cd "$srcdir/zbase32-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
