@@ -11,9 +11,9 @@
 
 pkgname=go-git
 epoch=2
-pkgver=1.4beta1.r2871.gc9778ec
+pkgver=1.5beta2.r14.gaadd84e
 pkgrel=1
-provides=(go=1.4)
+provides=(go=1.5)
 conflicts=('go' 'go-hg')
 pkgdesc='Compiler and tools for the Go programming language from Google'
 arch=('x86_64' 'i686')
