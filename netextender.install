@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo "To allow non-root users to use NetExtender, run chmod -v u+s /usr/sbin/pppd"
+}
+post_remove() {
+  echo
+  echo "If you had allowed non-root users to use NetExtender, you may wish to run chmod -v u-s /usr/sbin/pppd"
+}
