@@ -1,9 +1,9 @@
 # Maintainer: tailinchu <use_my_id at gmail dot com>
 
 pkgname=sai-git
-pkgver=40.2f66ea6
+pkgver=42.a168840
 pkgrel=1
-pkgdesc="taylorchu's sai repo (git version)"
+pkgdesc="simple arch installer (sai)"
 arch=('any')
 url="http://github.com/taylorchu/sai"
 license=('GPL2')

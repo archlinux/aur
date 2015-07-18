@@ -1,6 +1,6 @@
 pkgbase = sai-git
-	pkgdesc = taylorchu's sai repo (git version)
-	pkgver = 40.2f66ea6
+	pkgdesc = simple arch installer (sai)
+	pkgver = 42.a168840
 	pkgrel = 1
 	url = http://github.com/taylorchu/sai
 	arch = any
