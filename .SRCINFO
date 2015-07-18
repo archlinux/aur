@@ -1,0 +1,19 @@
+pkgbase = l-smash-git_p
+	pkgdesc = MP4 muxer and other tools (GIT Version)
+	pkgver = 2.3.0.r147.gad4d50a
+	pkgrel = 1
+	url = http://l-smash.github.io/l-smash/
+	arch = i686
+	arch = x86_64
+	license = custom:l-smash
+	makedepends = git
+	depends = glibc
+	provides = lsmash
+	provides = lsmash-git
+	conflicts = lsmash
+	conflicts = lsmash-git
+	source = l-smash::git+https://github.com/l-smash/l-smash
+	sha512sums = SKIP
+
+pkgname = l-smash-git_p
+
