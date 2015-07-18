@@ -1,7 +1,7 @@
 pkgbase = realmd
 	pkgdesc = DBus service for joining hosts to Active Directory and FreeIPA realms
-	pkgver = 0.15.2
-	pkgrel = 2
+	pkgver = 0.16.1
+	pkgrel = 1
 	url = http://freedesktop.org/software/realmd/
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = realmd
 	depends = openldap
 	depends = packagekit
 	depends = polkit
-	source = http://www.freedesktop.org/software/realmd/releases/realmd-0.15.2.tar.gz
-	source = http://www.freedesktop.org/software/realmd/releases/realmd-0.15.2.tar.gz.sig
-	sha256sums = dbe872ea290d093e9c99d4db9b56e63083a2d24775f0be71d86109d51eb8f7bc
+	source = http://www.freedesktop.org/software/realmd/releases/realmd-0.16.1.tar.gz
+	source = http://www.freedesktop.org/software/realmd/releases/realmd-0.16.1.tar.gz.sig
+	sha256sums = 602c2f030507ccb0367808b4c952654c524659c0fe037e012dae2899ae9b947d
 	sha256sums = SKIP
 
 pkgname = realmd
