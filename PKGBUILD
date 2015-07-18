@@ -5,7 +5,7 @@
 
 _srcname=ffmpeg
 pkgname=${_srcname}-full-git_p
-pkgver=2.7.dev.r3259.g9010be2
+pkgver=2.7.dev.r3269.ge03cb1e
 pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (nearly all codecs; git version)"
