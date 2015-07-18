@@ -1,6 +1,6 @@
 pkgbase = nodejs-ungit
 	pkgdesc = Git made easy
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/FredrikNoren/ungit
 	arch = i686
