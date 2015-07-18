@@ -1,0 +1,12 @@
+pkgbase = liggghts-lpp
+	pkgdesc = Open Source Discrete Element Method Particle Simulation Software - Post Processing (Pizza.py)
+	pkgver = 3.2
+	pkgrel = 0
+	url = https://github.com/CFDEMproject/LPP
+	arch = any
+	license = GPL
+	depends = liggghts
+	depends = python2-numpy
+
+pkgname = liggghts-lpp
+
