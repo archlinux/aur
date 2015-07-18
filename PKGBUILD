@@ -2,7 +2,7 @@
 # Contributor: Andrea Cattaneo <andrea.cattaneo.dev@gmail.com>
 
 pkgname=genymotion
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ install=$pkgname.install
 sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7')
 if [[ $CARCH == x86_64 ]]; then
   _ARCH="x64"
-  sha512sums+=('d4c4f6b7f4d5c6d8ea6efc68a80db29cb7f443ff0a57f2e904947874a5a8801bb718c96a3f433ce54fe768376c1dbaaf699d43efeb8d8ef3c7b3b440997cacd8')
+  sha512sums+=('3cb21992a022ab88aa66af3a26ca478606a1a5120be0a6a401d65cbe93206137cf22faea9d73a4ceee02a47c3a1f433b2baf0149422164956ed3cef1e32e21e5')
 else
   _ARCH="x86"
-  sha512sums+=('747e7d25bc419e4129bcebb120b718d45a2a5f2a650e63c6ac578b2da2f2535fd37f5e5b1d7782f19de0e7268d552edaeb3d1f323ea4358e81dcacd015e63769')
+  sha512sums+=('d6be204d31c326c90f1d214f7215bdc3ce4afa96cd2d37e159ea941e050e58b8705f90027680c194f5fe123451ad8e3326904e3cad24e7e1727f7ec4531a9de1')
 fi
 source=("genymotion.desktop"
         "http://files2.genymotion.com/genymotion/genymotion-$pkgver/$pkgname-${pkgver}_$_ARCH.bin")

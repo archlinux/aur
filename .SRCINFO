@@ -1,6 +1,6 @@
 pkgbase = genymotion
 	pkgdesc = Complete set of tools that provides a virtual environment for Android.
-	pkgver = 2.5.0
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = http://www.genymotion.com/
 	install = genymotion.install
@@ -15,9 +15,9 @@ pkgbase = genymotion
 	depends = ffmpeg-compat
 	depends = protobuf
 	source = genymotion.desktop
-	source = http://files2.genymotion.com/genymotion/genymotion-2.5.0/genymotion-2.5.0_x86.bin
+	source = http://files2.genymotion.com/genymotion/genymotion-2.5.2/genymotion-2.5.2_x86.bin
 	sha512sums = 48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7
-	sha512sums = 747e7d25bc419e4129bcebb120b718d45a2a5f2a650e63c6ac578b2da2f2535fd37f5e5b1d7782f19de0e7268d552edaeb3d1f323ea4358e81dcacd015e63769
+	sha512sums = d6be204d31c326c90f1d214f7215bdc3ce4afa96cd2d37e159ea941e050e58b8705f90027680c194f5fe123451ad8e3326904e3cad24e7e1727f7ec4531a9de1
 
 pkgname = genymotion
 
