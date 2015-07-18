@@ -1,7 +1,7 @@
 # Maintainer: Alain Kalker <a.c.kalker@gmail.com>
 _pkgbase=chromium-ext-chromiumos-tts
 pkgname=$_pkgbase-git
-pkgver=r479.4e1622e
+pkgver=r492.e5a7af0
 pkgrel=1
 pkgdesc="Chromium OS text-to-speech as a Chromium extension"
 arch=('arm' 'i686' 'x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 install=$_pkgbase.install
 _gitname=chromiumos-platform-assets
 source=($_gitname::git+https://chromium.googlesource.com/chromiumos/platform/assets
-	0001-Add-missing-Dutch-voice.patch)
+        0001-Add-missing-Dutch-voice.patch)
 md5sums=('SKIP'
          'b43d30ad8f0c863841925b34920f0d28')
 
@@ -56,8 +56,8 @@ build() {
     md5=$(md5sum $d/project | cut -d" " -f1)
     size=$(wc -c $d/project | cut -d" " -f1)
     sed -i \
-	-e "/'path': 'voice_data.*\/project'/{n;n;s/'md5sum': '.*'/'md5sum': '"$md5"'/;n;s/'size': .*,/'size': $size,/}" \
-	"$f"
+        -e "/'path': 'voice_data.*\/project'/{n;n;s/'md5sum': '.*'/'md5sum': '"$md5"'/;n;s/'size': .*,/'size': $size,/}" \
+        "$f"
   done
 
   # The following no longer applies after Chromium security update
@@ -75,9 +75,9 @@ build() {
   # http://stackoverflow.com/a/10089780/588561
   _ext_id=$(
     cat $_pkgbase.pem |
-	openssl rsa -pubout -outform DER |
-	openssl dgst -sha256 |
-	awk '{print $2}' | cut -c 1-32 | tr '0-9a-f' 'a-p')
+        openssl rsa -pubout -outform DER |
+        openssl dgst -sha256 |
+        awk '{print $2}' | cut -c 1-32 | tr '0-9a-f' 'a-p')
   cat > $_ext_id.conf <<EOF
 {
     "external_crx": "/usr/share/chromium/extensions/$_pkgbase.crx",
