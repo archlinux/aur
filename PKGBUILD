@@ -5,7 +5,7 @@ pkgbase=lib32-gstreamer0.10-ugly
 _pkgbase=gstreamer0.10-ugly
 pkgname=('lib32-gstreamer0.10-ugly' 'lib32-gstreamer0.10-ugly-plugins')
 pkgver=0.10.19
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 license=('LGPL')
 makedepends=('gstreamer0.10-ugly' 'gstreamer0.10-ugly-plugins' 'pkgconfig' 'lib32-gstreamer0.10-base>=0.10.34' 'lib32-libdvdread' 'lib32-lame' 'lib32-libmpeg2' 'lib32-a52dec' 'lib32-libmad' 'lib32-libsidplay' 'lib32-libcdio' 'lib32-libx264' 'lib32-opencore-amr' 'git')
