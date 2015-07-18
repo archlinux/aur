@@ -1,0 +1,18 @@
+pkgbase = perl-datetime-format-xsd
+	pkgdesc = Parse and Format DateTimes using XSD
+	pkgver = 0.2
+	pkgrel = 0
+	url = http://search.cpan.org/~druoso/DateTime-Format-XSD-0.2/lib/DateTime/Format/XSD.pm
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime>=0.72
+	depends = perl-datetime-locale>=0.45
+	depends = perl-datetime-timezone>=0.79
+	depends = perl-params-validate>=0.64
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRUOSO/DateTime-Format-XSD-0.2.tar.gz
+	md5sums = 8b78130ef8630d24935c8f1df3467a98
+
+pkgname = perl-datetime-format-xsd
+
