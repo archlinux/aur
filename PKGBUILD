@@ -41,9 +41,6 @@ build() {
   #patch < "$srcdir/0001-Add-missing-Dutch-voice.patch"
   #sed -i -e '/ko-KR/{p;s//nl-NL/}' manifest.json
 
-  # Rename extension
-  sed -i -e '/"name": /s/US English Female/Chromium OS/' manifest.json
-
   # Adjust files
   for f in voice_data_*.js; do
     d=$(basename "$f" .js)
