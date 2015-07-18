@@ -9,6 +9,8 @@ pkgbase = mate-applet-dock-git
 	makedepends = git
 	depends = mate-panel
 	depends = python
+	depends = python-xdg
+	depends = python-cairo
 	source = git+http://github.com/robint99/dock-applet
 	md5sums = SKIP
 
