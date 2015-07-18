@@ -1,6 +1,6 @@
 # Maintainer: Christoph Haag <haagch@frickel.club>
 pkgname=glslang-svn
-pkgver=r31499
+pkgver=r31716
 pkgrel=1
 pkgdesc="Glslang is the official reference compiler front end for the OpenGL ES and OpenGL shading languages. Also includes spirv-remap (improve compression of SPIR-V binary files)"
 arch=("i686" "x86_64")

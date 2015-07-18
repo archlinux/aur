@@ -1,6 +1,6 @@
 pkgbase = glslang-svn
 	pkgdesc = Glslang is the official reference compiler front end for the OpenGL ES and OpenGL shading languages. Also includes spirv-remap (improve compression of SPIR-V binary files)
-	pkgver = r31499
+	pkgver = r31716
 	pkgrel = 1
 	url = http://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 	arch = i686
