@@ -1,13 +1,13 @@
 pkgbase = crfpp
 	pkgdesc = A Conditional Random Field implementation
 	pkgver = 0.58
-	pkgrel = 3
+	pkgrel = 5
 	url = http://crfpp.sourceforge.net
 	arch = x86_64
 	arch = i686
 	license = LGPL
 	license = BSD
-	source = http://crfpp.googlecode.com/files/CRF%2B%2B-0.58.tar.gz
+	source = https://docs.google.com/a/google.com/uc?authuser=0&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ&export=download
 	md5sums = c8ffd456ab1a6815ba916c1083194a99
 
 pkgname = crfpp
