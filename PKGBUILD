@@ -9,7 +9,7 @@ depends=('ruby')
 # optdep=('energyplus')
 license=('LGPL')
 source=("https://openstudio-builds.s3.amazonaws.com/$pkgver.$pkgrel/OpenStudio-$pkgver.$pkgrel.97b69c8a8d-Linux.deb" 'patch_desktop.patch')
-md5sums=('797b96959747fa70ec163a45014f7c21' '7851218f71a0c2a67b1fd4d7c8ef46cd')
+md5sums=('797b96959747fa70ec163a45014f7c21' '5afef8d61b5af033c69a26daa5959508')
 
 package() {
 cd "${srcdir}/"
