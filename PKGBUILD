@@ -26,8 +26,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|' src/binheader_writef_check.py \
   src/create_symbols_file.py programs/test-sndfile-metadata-set.py
-  
-  ./autogen.sh
+  autoreconf -fiv
 }
 
 build() {
