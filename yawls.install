@@ -1,0 +1,17 @@
+post_install() {
+	echo "Now you should enable and start the Yawls daemon with:"
+	echo "$ systemctl enable yawlsd.service"
+	echo "$ systemctl start yawlsd.service"
+	echo "And then calibrate Yawls. You can do it in 2 ways:"
+	echo "- Doing 'sudo yawls -c' first in a lightful place, then in a dark one"
+	echo "- Use the GUI, go under 'Preferences' and choose 'Calibrate', then follow the steps"
+
+	# See LP:1475841 (https://bugs.launchpad.net/yawls/+bug/1475841)
+	echo "NOTICE: For now, 'systemctl stop yawlsd.service' report the unit as 'failed'"
+	echo "This is expected, a bug request is already filed upstream."
+}
+
+post_remove() {
+	# Remove calibration files
+	rm -r /var/lib/yawls
+}
