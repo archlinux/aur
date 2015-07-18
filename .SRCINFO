@@ -1,6 +1,6 @@
 pkgbase = csound
 	pkgdesc = A programming language for sound rendering and signal processing.
-	pkgver = 6.05
+	pkgver = 6.05.0
 	pkgrel = 1
 	url = http://csound.github.io
 	arch = i686
@@ -29,9 +29,9 @@ pkgbase = csound
 	optdepends = vim-csound: Syntax Highlighting and Bindings for Vim
 	optdepends = java-environment: Java Wrapper
 	optdepends = csound-doc: The Canonical Csound Reference Manual
-	source = http://downloads.sourceforge.net/project/csound/csound6/Csound6.05/Csound6.05.tar.gz
+	source = https://github.com/csound/csound/archive/6.05.0.tar.gz
 	source = csound.sh
-	sha256sums = 0d0ab4c1804265f4947e07c5e41ee72bc1a122b873bd77b9e7179f4c4db43a28
+	sha256sums = 2384cbc82fe37b70192c87977b52c55b336731ecbfd3be1d8d30c7223815d7b9
 	sha256sums = 23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb
 
 pkgname = csound
