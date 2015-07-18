@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Shalygin (k0ste@k0ste.ru)
 
 pkgname='mailfromd'
-pkgver='7.99.93'
-pkgrel='1'
+pkgver='7.99.94'
+pkgrel='0'
 pkgdesc='General-Purpose Mail Filter'
 arch=('any')
 url='http://puszcza.gnu.org.ua/software/mailfromd'
@@ -11,7 +11,7 @@ license=('GPL')
 source=('mailfromd.service'
 	"ftp://download.gnu.org.ua/pub/alpha/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('26a380c1bfe964c1aaaf351f85504c72ca7be5dca199e7cd79252c83382a9ce0'
-	    '250e1248b71adbf8e5c502f4cdb02777a018d706fcf1a5f46158f2029fa2ea38')
+            '84d771fd0d27d859125b0b4f69fd484aa9ba64356fc7a792d0173f4a7a38f325')
 backup=('etc/mailfromd.mf')
 
 build() {
