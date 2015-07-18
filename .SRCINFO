@@ -1,0 +1,16 @@
+pkgbase = oglp-git
+	pkgdesc = OpenGL wrapper for C++
+	pkgver = r116.99543f0
+	pkgrel = 1
+	url = http://github.com/ekpyron/oglp/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = cmake
+	depends = glm
+	source = git+git://github.com/ekpyron/oglp
+	md5sums = SKIP
+
+pkgname = oglp-git
+
