@@ -1,0 +1,22 @@
+pkgbase = envytools-git
+	pkgdesc = A tool for nouveau debugging
+	pkgver = 0.r4044.3b4bd3e
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/envytools/envytools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = cython
+	depends = python
+	depends = libpciaccess
+	depends = libxml2
+	depends = libvdpau
+	options = staticlibs
+	source = envytools-git::git+https://github.com/envytools/envytools.git
+	sha256sums = SKIP
+
+pkgname = envytools-git
+
