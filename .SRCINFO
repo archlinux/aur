@@ -1,0 +1,19 @@
+pkgbase = testssl.sh-git
+	pkgdesc = Testing TLS/SSL encryption (git version)
+	pkgver = v2.4.r126.gcbbe7d8
+	pkgrel = 1
+	url = https://github.com/drwetter/testssl.sh
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	depends = openssl
+	provides = testssl.sh
+	conflicts = testssl.sh
+	source = testssl.sh-git::git+https://github.com/drwetter/testssl.sh.git
+	sha256sums = SKIP
+
+pkgname = testssl.sh-git
+
