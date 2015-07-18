@@ -1,0 +1,14 @@
+pkgbase = dnstop
+	pkgdesc = displays various tables of DNS traffic on your network
+	pkgver = 20140915
+	pkgrel = 1
+	url = http://dns.measurement-factory.com/tools/dnstop
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libpcap
+	source = http://dns.measurement-factory.com/tools/dnstop/src/dnstop-20140915.tar.gz
+	md5sums = f0fe1690b114e076196a51d63266eadc
+
+pkgname = dnstop
+
