@@ -1,7 +1,7 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
 pkgname=archdroid-icon-theme
-pkgver=r79.4ea3b0a
+pkgver=r86.ab8e2ae
 pkgrel=1
 pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
 arch=('any')
@@ -13,27 +13,27 @@ conflicts=("${pkgname}")
 #options=('!strip')
 install="${pkgname}.install"
 source=("https://github.com/GreenRaccoon23/${pkgname}/raw/master/${pkgname}.tar.xz")
-md5sums=("9a5cddd7b567c484e6e8f9c8f40ee5e5")
-
-_error2() {
-	for e; do
-		echo "    ${e}";
-	done;
-}
+# To revert to an older version, find them here:
+#   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
+md5sums=("8ca3630ee86e77799c013e9d10314360")
 
 prepare() {
-	if ! fc-list | grep Roboto >/dev/null; then
-		error "Required font 'Roboto' is not installed."
-		error "Please install a font package which includes 'Roboto', such as:"
-		_error2 ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg;
-		return 1;
-	fi;
+  if fc-list | grep Roboto >/dev/null; then
+    return;
+  fi;
+
+  error "Required font 'Roboto' is not installed."
+  error "Please install a font package which includes 'Roboto', such as:"
+  for e in ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg; do
+    echo "${e}";
+  done;
+  return 1;
 }
 
 package() {
-	msg2 "Installing ${pkgname}..." ;
-	cd ${pkgname} ;
-  	install -dm 755 "${pkgdir}"/usr/share/icons
-  	cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/
+  msg2 "Installing ${pkgname}...";
+  cd ${pkgname};
+  install -dm 755 "${pkgdir}"/usr/share/icons;
+  cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/;
 }
 
