@@ -3,8 +3,8 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.5.3'
-pkgrel='570'
-_rel='f9afa343863f'
+pkgrel='575'
+_rel='ea6b3879183e'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url=('http://ivideon.com/')
@@ -18,7 +18,7 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	'sysusers.conf'
 	'videoserverd.install'
 	'schedule.json')
-sha256sums=(	"f6d31bf43627a3629fd640846830e74f642dc1397b48051fe83765a5bdecf2ba"
+sha256sums=(	"037929d64f9684fdd1a52a2b5958cd489f63f12768521928e9c495a9496d97de"
 		'922cfb91761eed9fba58c0fb48237a87d5928e4ff289f6a88e8c1630bc8f47b3'
 		'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
 		'91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
