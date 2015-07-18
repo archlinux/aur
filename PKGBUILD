@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack-git
 _pkgname=stack
-pkgver=20150718.df9a4e1
+pkgver=20150718.b939373
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('i686' 'x86_64')
@@ -18,12 +18,13 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${_pkgname}"
-  stack build --resolver nightly-2015-07-17
+  stack setup --reinstall
+  stack build
 }
 
 check() {
   cd "$srcdir/${_pkgname}"
-  stack test --resolver nightly-2015-07-17
+  stack test
 }
 
 package() {
