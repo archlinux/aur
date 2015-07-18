@@ -7,7 +7,7 @@ arch=('i686')
 license=('GPL')
 depends=('gtk3')
 makedepends=('git' 'cmake')
-optdepends=('ttf-kanjistrokeorders: Display kanji with stroke order')
+optdepends=('ttf-kanjistrokeorders: Display kanji with stroke order' 'edict: A Japanese-English Dictionary file')
 source=("git://github.com/odrevet/gjitenkai.git")
 md5sums=('SKIP')
 
