@@ -3,9 +3,9 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=gnome-shell-extension-coverflow-alt-tab-git
-pkgver=r104.db5bd2c
+pkgver=1.0.r4.gdb5bd2c
 pkgrel=1
-pkgdesc="Alternate Alt-Tab behaviour: iterates through windows in a manner akin to Cover Flow."
+pkgdesc="Alternate alt-tab behaviour: iterates through windows in a manner akin to Cover Flow."
 arch=('any')
 url="https://github.com/dmo60/CoverflowAltTab"
 license=('GPL')
@@ -16,13 +16,20 @@ conflicts=("${pkgname%-*}")
 install=gschemas.install
 source=("${pkgname%-*}::git+https://github.com/dmo60/CoverflowAltTab.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%-*}"
+  git checkout ${_branch}
 }
 
 package() {

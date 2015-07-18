@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-coverflow-alt-tab-git
-	pkgdesc = Alternate Alt-Tab behaviour: iterates through windows in a manner akin to Cover Flow.
-	pkgver = r104.db5bd2c
+	pkgdesc = Alternate alt-tab behaviour: iterates through windows in a manner akin to Cover Flow.
+	pkgver = 1.0.r4.gdb5bd2c
 	pkgrel = 1
 	url = https://github.com/dmo60/CoverflowAltTab
 	install = gschemas.install
