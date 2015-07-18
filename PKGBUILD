@@ -2,14 +2,14 @@
 
 pkgname=fbc-git
 pkgver=1.00
-pkgrel=4
+pkgrel=5
 _pkgname=fbc
-_bootver=1.02.1
+_bootver=1.03.1
 pkgdesc="FreeBASIC Compiler (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.freebasic.net"
 license=('GPL2' 'LGPL')
-makedepends=('libffi' 'libffi-compat' 'libtinfo')
+makedepends=('libffi' 'libtinfo')
 provides=('fbc')
 conflicts=('freebasic' 'fbc')
 options=(staticlibs)

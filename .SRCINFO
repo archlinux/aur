@@ -1,14 +1,13 @@
 pkgbase = fbc-git
 	pkgdesc = FreeBASIC Compiler (Development version)
 	pkgver = 1.00
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.freebasic.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = LGPL
 	makedepends = libffi
-	makedepends = libffi-compat
 	makedepends = libtinfo
 	provides = fbc
 	conflicts = freebasic
