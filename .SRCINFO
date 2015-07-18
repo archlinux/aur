@@ -1,0 +1,15 @@
+pkgbase = bs1770gain_p
+	pkgdesc = A loudness scanner to measure and adjust audio and video sound loudness.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = http://bs1770gain.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sox-git_p
+	depends = ffmpeg-full-git_p
+	source = http://downloads.sourceforge.net/sourceforge/bs1770gain/bs1770gain-0.4.5.tar.gz
+	sha512sums = 9323a0b0aabc95413e49711eeb05a62d3c2d9a860db6bb822504a573110b80f9457a02f48eac730472679a2291c76c9de8fc2b2d0a3d9c796bc6e5550ea21988
+
+pkgname = bs1770gain_p
+
