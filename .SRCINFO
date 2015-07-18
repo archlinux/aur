@@ -1,0 +1,15 @@
+pkgbase = perl-file-monitor
+	pkgdesc = Portable implementation of file-mon
+	pkgver = 1.00
+	pkgrel = 0
+	url = http://search.cpan.org/~andya/File-Monitor-1.00/lib/File/Monitor.pm
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/File-Monitor-1.00.tar.gz
+	md5sums = 29ca8fcacbd96017d1024611fae08974
+
+pkgname = perl-file-monitor
+
