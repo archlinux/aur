@@ -1,19 +1,18 @@
 pkgbase = user-manager
-	pkgdesc = A simple system settings module to manage the users of your system (GIT version)
+	pkgdesc = A simple system settings module to manage the users of your system
 	pkgver = 5.2.95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kdereview/user-manager
 	arch = i686
 	arch = x86_64
-	groups = plasma-next
 	license = GPL
 	license = LGPL
 	license = FDL
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
-	makedepends = cmake
 	depends = libpwquality
 	depends = kdelibs4support
+	depends = accountsservice
 	source = http://download.kde.org/unstable/plasma/5.2.95/user-manager-5.2.95.tar.xz
 	md5sums = 2facfbb9477656b8d9659a5849edfb05
 

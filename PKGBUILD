@@ -3,14 +3,13 @@
 
 pkgname=user-manager
 pkgver=5.2.95
-pkgrel=1
-pkgdesc="A simple system settings module to manage the users of your system (GIT version)"
+pkgrel=2
+pkgdesc="A simple system settings module to manage the users of your system"
 url='https://projects.kde.org/projects/kdereview/user-manager'
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL')
-groups=('plasma-next')
-depends=('libpwquality' 'kdelibs4support')
-makedepends=('extra-cmake-modules' 'kdoctools' 'cmake')
+arch=(i686 x86_64)
+license=(GPL LGPL FDL)
+depends=(libpwquality kdelibs4support accountsservice)
+makedepends=(extra-cmake-modules kdoctools)
 source=("http://download.kde.org/unstable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
 md5sums=('2facfbb9477656b8d9659a5849edfb05')
 
