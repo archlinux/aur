@@ -1,0 +1,21 @@
+pkgbase = chromaprint-git_p
+	pkgdesc = Client library, written in C++, for extracting audio fingerprints.
+	pkgver = 1.2.r10.gfedf202
+	pkgrel = 1
+	url = http://wiki.acoustid.org/wiki/Chromaprint
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = ffmpeg-full-git_p
+	provides = chromaprint
+	provides = chromaprint-git
+	conflicts = chromaprint-bzr
+	conflicts = chromaprint
+	conflicts = chromaprint-git
+	source = chromaprint::git+https://bitbucket.org/acoustid/chromaprint.git
+	sha256sums = SKIP
+
+pkgname = chromaprint-git_p
+
