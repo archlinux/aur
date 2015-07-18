@@ -36,9 +36,9 @@ build() {
   cd "${srcdir}/${pkgname}"
   [[ -d build ]] || mkdir build && cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-              -DGLFW_LIBRARY=/usr/lib/libglfw2.so \
-              -DPNG_LIBRARY=/usr/lib/libpng12.so \
-              -DPNG_PNG_INCLUDE_DIR=/usr/include/libpng12
+        -DGLFW_LIBRARY=/usr/lib/libglfw2.so \
+        -DPNG_LIBRARY=/usr/lib/libpng12.so \
+        -DPNG_PNG_INCLUDE_DIR=/usr/include/libpng12
   make
 }
 
