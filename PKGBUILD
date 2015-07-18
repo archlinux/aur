@@ -3,7 +3,7 @@
 
 pkgname=laditools-git
 pkgver=1.0.r9.g498fc36
-pkgrel=6
+pkgrel=7
 pkgdesc="Utilities to improve integration and workflow with JACK and LASH."
 arch=('any')
 url="https://launchpad.net/laditools"
@@ -15,9 +15,11 @@ conflicts=('laditools')
 install=${pkgname}.install
 source=("${pkgname}::git://repo.or.cz/laditools.git")
 sha512sums=('SKIP')
+_branch=master
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -25,7 +27,6 @@ pkgver() {
 }
 
 prepare() {
-  _branch=master
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
 }
