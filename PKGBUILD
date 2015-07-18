@@ -44,7 +44,7 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"
+source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_i686=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-i586-$_date.tar.gz")
