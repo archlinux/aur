@@ -1,0 +1,10 @@
+--- src/VORONOI/Makefile.lammps.old	2015-05-19 01:16:44.000000000 -0300
++++ src/VORONOI/Makefile.lammps	2015-05-19 08:09:13.829257967 -0300
+@@ -15,6 +15,6 @@
+ 
+ # Settings that the LAMMPS build will import when this package is installed
+ 
+-voronoi_SYSINC = -I/usr/local/include/voro++
++voronoi_SYSINC = -I/usr/include/voro++
+ voronoi_SYSLIB = -lvoro++
+ voronoi_SYSPATH = -L/usr/local/lib

@@ -1,0 +1,18 @@
+pkgbase = liggghts
+	pkgdesc = Open Source Discrete Element Method Particle Simulation Software
+	pkgver = 3.2
+	pkgrel = 0
+	url = https://github.com/CFDEMproject/LIGGGHTS-PUBLIC
+	arch = any
+	license = GPL
+	depends = paraview
+	depends = openmpi
+	depends = voro++
+	depends = fftw
+	source = fftw3.patch
+	source = usrlocal.patch
+	md5sums = 20fb3f88185884af9f0e16477671ca8e
+	md5sums = ea4006138a0750ab6223678bb767ef0c
+
+pkgname = liggghts
+

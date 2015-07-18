@@ -1,0 +1,11 @@
+--- src/MAKE/Makefile.openmpi.old	2015-05-19 00:03:36.000000000 -0300
++++ src/MAKE/Makefile.openmpi	2015-05-19 07:50:05.492251486 -0300
+@@ -51,7 +51,7 @@
+ 
+ FFT_INC =       -DFFT_FFTW3
+ FFT_PATH = 
+-FFT_LIB =	-lfftw
++FFT_LIB =	-lfftw3
+ 
+ # JPEG and/or PNG library, OPTIONAL
+ # see discussion in doc/Section_start.html#2_2 (step 7)
