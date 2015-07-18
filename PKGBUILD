@@ -1,7 +1,8 @@
 # Maintainer: Ben Widawsky <ben@bwidawsk.net>
+# Contributor:  Rob McCathie <korrode at gmail>
 # Contributor:  Ionut Biru <ibiru@archlinux.org>
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor:  Rob McCathie <korrode at gmail>
+# Contributor:  Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
@@ -13,12 +14,12 @@ epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution (Same as official package except with libfdk-aac support)"
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
-license=('GPL' 'custom')
+license=('GPL3' 'custom')
 depends=(
       'alsa-lib' 'bzip2' 'fontconfig' 'gnutls' 'gsm' 'lame' 'libass' 'libvdpau'
-      'libbluray' 'libmodplug' 'libpulse' 'libtheora' 'libva' 'opencore-amr'
-      'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore'
-      'zlib' 'fribidi' 'libssh'
+      'libbluray' 'libmodplug' 'libpulse' 'libtheora' 'libva' 'libwebp'
+      'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils'
+      'xvidcore' 'zlib' 'fribidi' 'libssh'
       'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
       'libfdk-aac'
       )
@@ -60,6 +61,7 @@ build() {
     --enable-libv4l2 \
     --enable-libvorbis \
     --enable-libvpx \
+    --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxvid \
