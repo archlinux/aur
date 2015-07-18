@@ -1,0 +1,14 @@
+pkgbase = hnb
+	pkgdesc = Ncurses based hierarchical notebook to structure many kinds of data in one place.
+	pkgver = 1.9.17
+	pkgrel = 5
+	url = http://hnb.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ncurses
+	source = http://downloads.sourceforge.net/hnb/hnb-1.9.17.tar.gz
+	md5sums = c73b5f63d8ffe1976c915c1f8265951d
+
+pkgname = hnb
+
