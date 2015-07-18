@@ -1,0 +1,16 @@
+pkgbase = wapiti
+	pkgdesc = A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections...
+	pkgver = 2.3.0
+	pkgrel = 2
+	url = http://wapiti.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-requests
+	depends = python2-beautifulsoup3
+	source = http://downloads.sourceforge.net/sourceforge/wapiti/wapiti/wapiti-2.3.0/wapiti-2.3.0.tar.gz
+	md5sums = dd8b0ab120518215abf9c7b22251fd8b
+
+pkgname = wapiti
+
