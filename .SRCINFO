@@ -1,6 +1,6 @@
 pkgbase = archdroid-icon-theme-git
 	pkgdesc = Port of Android 5.0 Lollipop's material design icons to Arch.
-	pkgver = r85.2ae6370
+	pkgver = r86.ab8e2ae
 	pkgrel = 1
 	url = https://github.com/GreenRaccoon23/archdroid-icon-theme
 	install = archdroid-icon-theme.install
