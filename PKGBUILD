@@ -1,5 +1,5 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
-#Contributor: Alexandre Minoshi (Almin-Soft Group)
+# Contributor: Alexandre Minoshi (Almin-Soft Group)
 
 pkgname=pacmanxg
 pkgver=4.16.3
