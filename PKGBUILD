@@ -1,5 +1,5 @@
-# Maintainer: -
-# Contributors: Det, josephgbr
+# Maintainer: Det
+# Contributors: josephgbr
 
 _pkgname=jre
 pkgname=jre7
@@ -10,7 +10,7 @@ pkgver=${_major}u${_minor}
 pkgrel=2
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
 arch=('i686' 'x86_64')
-url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
+url='http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html'
 license=('custom')
 depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-runtime-common'
          'libxrender' 'libxtst' 'shared-mime-info' 'xdg-utils')
@@ -41,6 +41,7 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
+[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "policytool-$_jname.desktop")
@@ -111,7 +112,7 @@ package() {
 
     # Suffix man pages
     for i in $(find man/ -type f); do
-        mv "${i}" "${i/.1}-${_jname}.1"
+        mv "$i" "${i/.1}-$_jname.1"
     done
 
     # Move man pages
@@ -128,6 +129,8 @@ package() {
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
     install -m644 "$srcdir"/UnlimitedJCEPolicy/*.jar lib/security/
+    install -Dm644 "$srcdir"/UnlimitedJCEPolicy/README.txt \
+                   "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
