@@ -1,0 +1,16 @@
+pkgbase = cl-alexandria-git
+	pkgdesc = Common Lisp portability library
+	pkgver = r194.b1c6ee0
+	pkgrel = 1
+	url = http://common-lisp.net/project/alexandria/
+	install = cl-alexandria.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = common-lisp
+	provides = cl-alexandria
+	conflicts = cl-alexandria-darcs
+	options = docs
+
+pkgname = cl-alexandria-git
+
