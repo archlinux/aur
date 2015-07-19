@@ -1,0 +1,28 @@
+pkgbase = vera-desktop-environment
+	pkgdesc = simple, lightweight, GTK3 based desktop environment
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera
+	install = vera-desktop-environment.install
+	arch = i686
+	arch = x86_64
+	license = GPL2.1
+	makedepends = bake
+	depends = vala
+	depends = libpeas
+	depends = gtk3
+	depends = libgee06
+	depends = vera-xsettings-git
+	depends = gobject-introspection
+	optdepends = opensnap-git
+	optdepends = pcmanfm
+	optdepends = volumeicon
+	optdepends = xscreensaver
+	provides = vera-desktop-environment-git
+	conflicts = vera-desktop-environment-git
+	replaces = vera-desktop-environment-git
+	source = https://github.com/vera-desktop/vera/archive/release-7/1.0.6-1.tar.gz
+	md5sums = 8f7c5e7971a2860564b3e261d83304de
+
+pkgname = vera-desktop-environment
+
