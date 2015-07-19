@@ -13,19 +13,15 @@ depends=('glib2' 'openssl')
 optdepends=('perl-libwww: for the scriptassist script')
 backup=('etc/irssi.conf')
 source=("http://irssi.org/files/irssi-${pkgver}.tar.bz2"
-	utf8-keybind.patch
 	hostname-expandos.patch)
 provides=('irssi')
 conflicts=('irssi')
 md5sums=('ecf64be47978d89a742b435a81cb47db'
-	 '125e57521a4db14215de5fc64ed5d683'
 	 '3538336c7317f3f52b076543ff2c798d')
 
 build() {
   cd "${srcdir}/irssi-${pkgver}"
 
-  # See irssi bug 553
-  patch -p0 < "${srcdir}/utf8-keybind.patch"
   # See irssi bug 829
   patch -p0 < "${srcdir}/hostname-expandos.patch"
 
