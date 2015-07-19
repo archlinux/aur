@@ -1,0 +1,19 @@
+pkgbase = questofdungeons-hib
+	pkgdesc = A turn based dungeon crawler game, a roguelike.
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://www.questofdungeons.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = freetype2
+	depends = libvorbis
+	depends = libgl
+	depends = openal
+	depends = sdl2
+	conflicts = questofdungeons
+	source = hib://QuestofDungeons_linux_1.1.0.zip
+	md5sums = e36fe29b119b3bb60ed9091408de4c3e
+
+pkgname = questofdungeons-hib
+
