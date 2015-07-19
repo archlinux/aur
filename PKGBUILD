@@ -3,8 +3,8 @@
 pkgname=linux-xps13
 true && pkgname=(linux-xps13 linux-xps13-headers)
 _kernelname=-xps13
-_srcname=linux-4.0
-pkgver=4.0.7
+_srcname=linux-4.1
+pkgver=4.1.2
 pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/gunzy83/linux-xps13-aur"
@@ -20,17 +20,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-xps13.preset'
         '0001-block-loop-convert-to-per-device-workqueue.patch'
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch'
         'xps13.patch')
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'c6deb2cda4d87fc2e09442e31f3e6e70e54962744c3a4d2653a8fda381442de0'
+            '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
             'SKIP'
-            'e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1'
-            '5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be'
+            'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
+            '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
             'bf7ccd0ca928dc47b7e2a87d08d8f19faafbb21ff957e22f1ee78a180961047e'
-            '0682df710e8d23f0d420b3b01fbfe409b3911940b1a379b78d9f4a5ac8590386'
-            'af42b1456caee0b0db8f3cc770c78083b40159260b99db4930e503ac7824eacc'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
+            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
+            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'            
             'f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2')
 validpgpkeys=(
@@ -47,10 +51,22 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
   # Fix deadlock with stacked loop devices (FS#45129)
   # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
   patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
   patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+
+  # Fix bluetooth chip initialization on some macbooks (FS#45554)
+  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
