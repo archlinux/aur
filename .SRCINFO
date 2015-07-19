@@ -1,6 +1,6 @@
 pkgbase = libreoffice-style-elementary-git
 	pkgdesc = elementary icons for LibreOffice
-	pkgver = bffd596
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/shimmerproject/libreoffice-style-elementary
 	arch = i686
