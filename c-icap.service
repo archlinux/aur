@@ -1,0 +1,11 @@
+[Unit]
+Description=ICAP server implementation
+
+[Service]
+User=proxy
+Type=forking
+PIDFile=/run/c-icap/c-icap.pid
+ExecStart=/usr/bin/c-icap
+
+[Install]
+WantedBy=multi-user.target

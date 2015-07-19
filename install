@@ -1,0 +1,7 @@
+post_upgrade() {
+	systemd-tmpfiles --create c-icap.conf
+}
+
+post_install() {
+	post_upgrade
+}

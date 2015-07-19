@@ -1,0 +1,9 @@
+/var/log/c-icap/*.log {
+	create 600 proxy proxy
+	sharedscripts
+	missingok
+	notifempty
+	postrotate
+			/bin/kill -HUP `cat /run/c-icap/c-icap.pid 2>/dev/null` 2> /dev/null || true
+	endscript
+}
