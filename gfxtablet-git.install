@@ -1,0 +1,9 @@
+post_install() {
+  groupadd -r uinput
+  echo "To run as normal user, update udev rules:"
+  echo "# udevadm control -R"
+  echo "# udevadm trigger"
+  echo "Then add yourself to 'uinput' group."
+  echo "# gpasswd -a $USER uinput"
+}
+
