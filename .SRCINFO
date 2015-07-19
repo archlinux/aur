@@ -1,7 +1,7 @@
 pkgbase = kiba-dock-bin
 	pkgdesc = An eyecandy'd physics-based application launcher. (binary version)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/kiba-dock
 	install = kiba-dock-bin.install
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = kiba-dock-bin
 	depends_i686 = zenity
 	depends_i686 = gnome-python
 	depends_i686 = python2-egg
+	depends_i686 = gconf-editor
 	depends_x86_64 = lib32-gconf
 	depends_x86_64 = lib32-orbit2
 	depends_x86_64 = lib32-librsvg
@@ -29,6 +30,7 @@ pkgbase = kiba-dock-bin
 	depends_x86_64 = zenity
 	depends_x86_64 = gnome-python
 	depends_x86_64 = python2-egg
+	depends_x86_64 = gconf-editor
 
 pkgname = kiba-dock-bin
 
