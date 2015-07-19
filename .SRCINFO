@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-vimtips
+	pkgdesc = Vim fortune cookies
+	pkgver = 201510719
+	pkgrel = 3
+	url = https://github.com/hobbestigrou/vimtips-fortune
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	source = https://raw.githubusercontent.com/hobbestigrou/vimtips-fortune/master/fortunes/vimtips
+	md5sums = SKIP
+
+pkgname = fortune-mod-vimtips
+
