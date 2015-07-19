@@ -6,7 +6,7 @@ pkgbase = python-setuptools_scm
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/pypa/python-setuptools_scm/archive/v1.5.5.tar.gz
+	source = https://github.com/pypa/setuptools_scm/archive/v1.5.5.tar.gz
 	md5sums = 9e642db2f2d61b58698ceeda9ffccf7a
 
 pkgname = python-setuptools_scm

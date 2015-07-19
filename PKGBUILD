@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/pypa/setuptools_scm"
 license=('MIT')
 depends=('python')
-source=("https://github.com/pypa/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/pypa/$_pkgname/archive/v$pkgver.tar.gz")
 md5sums=('9e642db2f2d61b58698ceeda9ffccf7a')
 
 
