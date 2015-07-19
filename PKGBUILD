@@ -2,7 +2,7 @@
 
 pkgname=libopencm3-ldscripts-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="ldscripts generator for ARM MCUs from libopencm3 library"
 url="https://github.com/libopencm3/libopencm3"
 arch=('any')
@@ -24,6 +24,7 @@ build() {
 
 package() {
 	cd "${srcdir}/libopencm3/ld"
+	mkdir -p "${pkgdir}/usr/arm-none-eabi/lib"
 	install devices.data "${pkgdir}/usr/arm-none-eabi/lib/"
 	install linker.ld.S "${pkgdir}/usr/arm-none-eabi/lib/"
 	install Makefile.linker "${pkgdir}/usr/arm-none-eabi/lib/"
