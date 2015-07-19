@@ -1,0 +1,19 @@
+pkgbase = thefall
+	pkgdesc = Adventure, puzzle, and side-scroller action game (requires full copy of the game)
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://www.overthemoongames.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = gcc-libs
+	depends = glu
+	source = TheFall_Linux_1_5.zip::hib://TheFall_Linux_1_5.zip
+	source = thefall.sh
+	source = thefall.desktop
+	md5sums = dca669c3278a3f899d3b2daede234b06
+	md5sums = 14ee5efab3c35dde029811b2807afd9b
+	md5sums = 69eb03b143b605184e1505d60e66818a
+
+pkgname = thefall
+
