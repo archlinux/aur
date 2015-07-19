@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# add openjdk8 to PATH
+export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+
+# start easytranscript
+exec java -jar '/usr/share/java/easytranscript/easytranscript.jar' "$@"

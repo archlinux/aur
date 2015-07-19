@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Easytranscript
+GenericName=transcription-software
+Name[de]=easytranscript
+GenericName[de]=Transkriptions-Software
+
+Exec=easytranscript
+Icon=easytranscript
+Terminal=false
+Type=Application
+Categories=Science;Office
