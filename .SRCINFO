@@ -1,0 +1,19 @@
+pkgbase = lib32-smpeg
+	pkgdesc = SDL MPEG Player Library (32-bit)
+	pkgver = 0.4.5
+	pkgrel = 2
+	url = http://icculus.org/smpeg/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = lib32-mesa
+	makedepends = lib32-glu
+	makedepends = subversion
+	depends = lib32-sdl
+	depends = lib32-gcc-libs
+	optdepends = lib32-glu: to use glmovie
+	source = smpeg::svn://svn.icculus.org/smpeg/tags/release_0_4_5
+	sha512sums = SKIP
+
+pkgname = lib32-smpeg
+
