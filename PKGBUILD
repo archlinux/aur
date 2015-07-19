@@ -20,20 +20,6 @@ pkgver() {
 	  cd ${_gitname}
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     }
-build(){
-	cd "$srcdir"
-	msg "Connecting to GIT server...."
-
-	if [[ -d "$_gitname" ]]; then
-		cd "$_gitname" && git pull origin master
-		msg "The local files are updated."
-	else
-		git clone "$_gitroot" "$_gitname"
-	fi
-
-	msg "GIT checkout done or server timeout"
-	msg "Starting build..."
-}
 package() {
 
 	cd "${_gitname}"
