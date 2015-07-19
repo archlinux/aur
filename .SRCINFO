@@ -1,0 +1,16 @@
+pkgbase = mysql-jdbc
+	pkgdesc = The official JDBC driver for MySQL
+	pkgver = 5.1.36
+	pkgrel = 1
+	url = https://dev.mysql.com/downloads/connector/j/
+	install = mysql-jdbc.install
+	arch = any
+	license = GPL2
+	depends = java-runtime
+	source = http://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz
+	source = http://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz.asc
+	md5sums = 9a06f655da5d533a3c1b2565b76306c7
+	md5sums = SKIP
+
+pkgname = mysql-jdbc
+
