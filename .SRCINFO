@@ -1,0 +1,17 @@
+pkgbase = ledgerhub-git
+	pkgdesc = Common code that can convert various transaction detail files and statement from financial institutions into the various Ledger implementations.
+	pkgver = 0
+	pkgrel = 1
+	url = https://bitbucket.org/blais/ledgerhub
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = python3>=3.3
+	depends = python-beautifulsoup4
+	provides = ledgerhub
+	conflicts = ledgerhub
+	source = ledgerhub::git+https://bitbucket.org/blais/ledgerhub#branch=default
+	md5sums = SKIP
+
+pkgname = ledgerhub-git
+
