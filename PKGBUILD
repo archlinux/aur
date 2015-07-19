@@ -5,13 +5,13 @@
 _pkgbase=libva-vdpau-driver
 pkgname=lib32-${_pkgbase}
 pkgver=0.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="VDPAU backend for VA API (32-bit)"
 arch=('x86_64')
 url="http://freedesktop.org/wiki/Software/vaapi"
 license=('GPL')
 depends=('lib32-libva' 'lib32-libvdpau' 'lib32-libgl' 'libva-vdpau-driver')
-makedepends=('lib32-mesa')
+makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-mesa')
 source=("http://freedesktop.org/software/vaapi/releases/${_pkgbase}/${_pkgbase}-${pkgver}.tar.bz2"
         "libva-vdpau-driver-0.7.4-glext-missing-definition.patch"
         "libva-vdpau-driver-0.7.4-libvdpau-0.8.patch"
