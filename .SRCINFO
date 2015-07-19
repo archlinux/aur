@@ -1,0 +1,32 @@
+pkgbase = pulledpork
+	pkgdesc = Tool to automatically update rules for snort
+	pkgver = 0.7.0
+	pkgrel = 3
+	url = https://code.google.com/p/pulledpork
+	install = install
+	arch = any
+	license = GPL
+	depends = cron
+	depends = perl
+	depends = perl-lwp-protocol-https
+	depends = perl-crypt-ssleay
+	depends = perl-archive-tar
+	depends = perl-switch
+	optdepends = snort
+	backup = etc/pulledpork/pulledpork.conf
+	backup = etc/pulledpork.conf
+	backup = etc/pulledpork/disablesid.conf
+	backup = etc/pulledpork/dropsid.conf
+	backup = etc/pulledpork/enablesid.conf
+	backup = etc/pulledpork/modifysid.conf
+	source = https://pulledpork.googlecode.com/files/pulledpork-0.7.0.tar.gz
+	source = pulledpork.conf
+	source = pulledpork_update.sh
+	source = pulledpork.cron
+	sha256sums = f60c005043850bb65a72582b9d6d68a7e7d51107f30f2b3fc67e607c995aa1a8
+	sha256sums = 3c788c1f0c50070bc5e3ccde59f9cf38d1007b5a89828228cd02d47f56fb6f9c
+	sha256sums = 7ec58f5e73b3432eadab9a6050f17d5a1bd038ef2cfe52023da9f772ac532f98
+	sha256sums = c9213d3076424dc391d09a6c19f769631f668f27206585dd98dcbf9390a1b9ee
+
+pkgname = pulledpork
+
