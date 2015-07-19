@@ -4,10 +4,18 @@ post_install() {
     need the packages specified in optdepends.
     Check out http://wiki.archlinux.org/index.php/Ampache and
     https://github.com/ampache/ampache/wiki/Transcoding for more info.
-==> Please enable curl and pdo_mysql modules in php.ini.
+==> Please enable curl, iconv and pdo_mysql modules in php.ini.
 ==> Database will be upgraded automatically in case of update from 3.7.
     Check out https://github.com/ampache/ampache/wiki/Installation for
     more info about installation process.
+==> An nginx example vhost in provided in /usr/share/doc/ampache/nginx-example.conf
+    To use it, follow following instructions :
+    * Copy the file to /etc/nginx/ampache.conf
+    * Customize server_name directive using your FQDN
+    * Add all your music local directories to open_basedir directive
+    * Add this line to /etc/nginx/nginx.conf :
+      include ampache.conf;
+    * Reload nginx using : systemctl reload nginx
 EOF
 	/bin/true
 }
