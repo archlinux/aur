@@ -1,12 +1,13 @@
 pkgbase = libcouchbase-2.4
 	pkgdesc = The C library provides fast access to documents in Couchbase Server 2.4.x
 	pkgver = 2.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/couchbase/libcouchbase
 	install = libcouchbase-2.4.install
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = cmake
 	depends = libevent
 	conflicts = libcouchbase
 	options = !emptydirs
