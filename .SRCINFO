@@ -1,6 +1,6 @@
 pkgbase = openbox_eui
 	pkgdesc = Highly configurable and lightweight X11 window manager
-	pkgver = 2015.03.31
+	pkgver = 2015.07.19
 	pkgrel = 2
 	url = http://openbox.org
 	install = install

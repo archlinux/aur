@@ -1,7 +1,7 @@
 # Maintainer: Alexey Korop <akorop@ukr.net>
 
 pkgname=openbox_eui
-pkgver=2015.03.31
+pkgver=2015.07.19
 pkgrel=2
 pkgdesc='Highly configurable and lightweight X11 window manager'
 arch=('i686' 'x86_64')
@@ -55,9 +55,9 @@ md5sums=(
 )
 
 prepare() {
-  git clone https://github.com/danakj/openbox.git
+  git clone https://github.com/Mikachu/openbox
   cd openbox
-  git reset --hard 9e8813e111cbe6c1088f6abbc771a29470f05fc2
+  git reset --hard 249020d6237bec9abfefc31953e934e83105c91c
    sed -i 's|/usr/bin/env python|/usr/bin/env python2|' \
     data/autostart/openbox-xdg-autostart
 }
