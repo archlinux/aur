@@ -1,0 +1,18 @@
+pkgbase = cl-babel
+	pkgdesc = A charset encoding/decoding library, not unlike GNU libiconv, written in Common Lisp
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://common-lisp.net/project/babel/
+	install = cl-babel.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = common-lisp
+	depends = cl-trivial-features
+	depends = cl-trivial-gray-streams
+	depends = cl-alexandria
+	source = http://common-lisp.net/project/babel/releases/babel_0.5.0.tar.gz
+	md5sums = 17983533872983573d1646b2e66d1fe4
+
+pkgname = cl-babel
+
