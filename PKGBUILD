@@ -1,5 +1,5 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
-# Maintainer: Padfoot <padfoot at exemail dot com dot au>
+# Contributor: Padfoot <padfoot at exemail dot com dot au>
 # Contributor: Maxime Gauduin <alucryd at gmail dot com>
 # Contributor: josephgbr <rafael.f.f1 at gmail dot com>
 
