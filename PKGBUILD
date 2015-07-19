@@ -1,7 +1,7 @@
 # Maintainer: lynix <lynix47@gmail.com>
 
 pkgname=journalcheck-git
-pkgver=20150318
+pkgver=latest
 pkgrel=1
 pkgdesc="A simple replacement for logcheck when using journald"
 url="https://github.com/lynix/journalcheck"
@@ -15,6 +15,11 @@ replaces=()
 backup=()
 source=("git://github.com/lynix/journalcheck.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
