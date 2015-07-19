@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Droid Assault
+GenericName=Tactical Shooter
+Comment=A unique tactical arcade shooter, with the fun addictive gameplay of classics like Paradroid and Quazatron.
+Exec=droidassault
+Icon=/usr/share/pixmaps/droidassault.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
+
