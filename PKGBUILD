@@ -16,13 +16,20 @@ conflicts=('haskell-stack')
 source=("${_pkgname}::git+https://github.com/commercialhaskell/stack.git")
 md5sums=('SKIP')
 
-build() {
-  cd "$srcdir/${_pkgname}"
+
+prepare() {
+  STACK_ROOT=$srcdir
   stack setup --reinstall
-  stack build
+}
+
+build() {
+  STACK_ROOT=$srcdir
+  cd "$srcdir/${_pkgname}"
+  stack build --no-system-ghc
 }
 
 check() {
+  STACK_ROOT=$srcdir
   cd "$srcdir/${_pkgname}"
   stack test
 }
