@@ -1,7 +1,7 @@
 pkgbase = open-fuse-iso
-	pkgdesc = Automatic userspace mounting/unmounting of image files through the open-iso script
-	pkgver = 1.0
-	pkgrel = 5
+	pkgdesc = Rapid image mounting/unmounting in userspace using fuseiso.
+	pkgver = 1.1
+	pkgrel = 1
 	url = http://forum.manjaro.org/index.php?topic=9306.0
 	install = open-fuse-iso.install
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = open-fuse-iso
 	makedepends = binutils
 	depends = fuseiso
 	depends = libnotify
-	source = https://www.dropbox.com/s/o1okqgx1apgqp8i/open-fuse-iso
-	source = https://www.dropbox.com/s/wkd70lo3at67oiv/open-fuse-iso.desktop
-	md5sums = 6629c2213e9a1d51942ef2c08d849730
-	md5sums = e784d7f56586b3985cd9dbd0447a8f37
+	provides = open-fuse-iso-term
+	conflicts = open-fuse-iso-term
+	source = open-fuse-iso::git+https://github.com/alexandruianu/open-fuse-iso
+	md5sums = SKIP
 
 pkgname = open-fuse-iso
 
