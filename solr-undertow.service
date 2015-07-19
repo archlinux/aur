@@ -1,0 +1,15 @@
+[Unit]
+Description=High performance server for Solr and SolrCloud
+After=network.target
+
+[Service]
+Type=simple
+User=solr
+Group=solr
+PrivateTmp=true
+WorkingDirectory=/var/lib/solr-undertow
+ExecStartPre=/usr/bin/mkdir /tmp/solr-undertow
+ExecStart=/usr/bin/solr-undertow /etc/solr-undertow/default.conf
+
+[Install]
+WantedBy=multi-user.target

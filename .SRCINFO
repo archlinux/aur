@@ -1,0 +1,22 @@
+pkgbase = solr-undertow
+	pkgdesc = Solr / SolrCloud running in high performance server
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/bremeld/solr-undertow
+	install = solr-undertow.install
+	arch = i686
+	arch = x86_64
+	arch = any
+	license = Apache
+	depends = java-environment>=7
+	provides = solr=5
+	provides = solr5=5
+	source = https://github.com/bremeld/solr-undertow/releases/download/v1.3.0/solr-undertow-1.3.0-with-solr-5.0.0.tgz
+	source = default.conf
+	source = solr-undertow.service
+	md5sums = 03b1b4b9d63542e9b17f8bb04139f59a
+	md5sums = 9c44676a7afb66443a07ddc5aebbeee8
+	md5sums = e081bb003ce7f9548992d5ccc1917f86
+
+pkgname = solr-undertow
+
