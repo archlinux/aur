@@ -11,12 +11,12 @@ arch=('i686' 'x86_64')
 conflicts=()
 provides=()
 license=('LGPL')
-source=("${pkgname}.profile" "doc_salome_gui_GEOM_collect_geom_methods.py.patch")
+source=("${pkgname}.profile" "collect_geom_methods.py.patch")
 
 _source=geom
 _installdir=/opt/salome/geom
 _paraviewrootdir=/usr
-_paraviewver=4.3
+_paraviewver=4.2
 
 prepare(){
   msg "Connecting to git server..."
@@ -31,7 +31,7 @@ prepare(){
 
   msg "GIT checkout done or server timeout"
 
-  patch -Np1 -i "${srcdir}/doc_salome_gui_GEOM_collect_geom_methods.py.patch"
+  patch -Np1 -i "${srcdir}/collect_geom_methods.py.patch"
   
   # sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_BINS}|\"\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_BINS}\"|" -i CMakeLists.txt
   # sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_PYTHON}|\"\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${SALOME_INSTALL_PYTHON}\"|" -i CMakeLists.txt
@@ -80,5 +80,5 @@ package() {
     optipng -quiet -force -fix ${pkgdir}${_installdir}/${_FILE}
   done
 }
-md5sums=('dd6f6ea96cb26b594777316451c278ac'
+md5sums=('2940bd4abd4b626b2866f018f1cdc680'
          '28be73960779f51a29eef77ff1bc627d')
