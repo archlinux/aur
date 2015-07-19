@@ -1,5 +1,5 @@
-# Maintainer: -
-# Contributors: Det, Ethan Hall, Guillaume ALAUX, Daniel J Griffiths, Jason Chu, Geoffroy Carrier, Thomas Dziedzic, Dan Serban
+# Maintainer: Det
+# Contributors: Ethan Hall, Guillaume ALAUX, Daniel J Griffiths, Jason Chu, Geoffroy Carrier, Thomas Dziedzic, Dan Serban
 
 _pkgname=jre
 pkgname=jre6
@@ -10,7 +10,7 @@ pkgver=${_major}u${_minor}
 pkgrel=3
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
 arch=('i686' 'x86_64')
-url=https://www.java.com/en/download/faq/java_6.xml
+url="https://www.java.com/en/download/faq/java_$_major.xml"
 license=('custom')
 depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-runtime-common'
          'libxrender' 'libxtst' 'shared-mime-info' 'xdg-utils')
@@ -124,7 +124,7 @@ package() {
 
     # Suffix man pages
     for i in $(find man/ -type f); do
-        mv "${i}" "${i/.1}-${_jname}.1"
+        mv "$i" "${i/.1}-$_jname.1"
     done
 
     # Move man pages
@@ -141,6 +141,8 @@ package() {
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
     install -m644 "$srcdir"/jce/*.jar lib/security/
+    install -Dm644 "$srcdir"/jce/README.txt \
+                   "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
