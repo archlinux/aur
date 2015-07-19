@@ -1,0 +1,15 @@
+pkgbase = perl-capstone
+	pkgdesc = A Perl binding for the capstone-engine library
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/t00sh/capstone-perl
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPLv3
+	depends = capstone
+	source = https://github.com/t00sh/capstone-perl/archive/0.1.tar.gz
+	sha256sums = 0ce4273e69bd69b3067b401d419a6427024a75c5c6e0ce3bf11e3476679adbd4
+
+pkgname = perl-capstone
+
