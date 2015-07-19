@@ -1,0 +1,16 @@
+pkgbase = ofxhome-git
+	pkgdesc = .
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/captin411/ofxclient
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = python2>=2.7
+	provides = ofxhome
+	conflicts = ofxhome
+	source = ofxhome::git+https://github.com/captin411/ofxhome.git#branch=master
+	md5sums = SKIP
+
+pkgname = ofxhome-git
+
