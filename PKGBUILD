@@ -1,4 +1,6 @@
-#Contributor: Zephyr
+# Contributor: Zephyr
+# Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
+
 pkgname=oxygen-gtk3-git
 pkgver=20130417_vgtk3_1.1.2_45_ge0b88
 pkgrel=1
