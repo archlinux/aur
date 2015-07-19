@@ -13,7 +13,7 @@ pkgbase = ofxparse-git
 	depends = python2-beautifulsoup4
 	provides = ofxparse
 	conflicts = ofxparse
-	source = ofxparse::git://github.com/jseutter/ofxparse.git
+	source = ofxparse::git+https://github.com/jseutter/ofxparse.git#branch=master
 	md5sums = SKIP
 
 pkgname = ofxparse-git

@@ -16,13 +16,18 @@ depends=('python2>=2.7.6'
 #optdepends=('')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($_pkgname::git://github.com/jseutter/ofxparse.git)
+source=('ofxparse::git+https://github.com/jseutter/ofxparse.git#branch=master')
 md5sums=('SKIP')
- 
+
+
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir$pkgname"
+    ( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
+
  
 build() {
   cd $_pkgname
