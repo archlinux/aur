@@ -5,7 +5,7 @@
 pkgname=spotify-beta
 pkgver=1.0.9.133
 _anotherpkgver=.gcedaee38
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -38,7 +38,7 @@ package() {
 
     rm "${pkgdir}"/usr/bin/spotify
     echo "#!/bin/sh" > "${pkgdir}"/usr/bin/spotify
-    echo "LD_PRELOAD=libcurl.so.3 /usr/share/spotify/spotify" >> "${pkgdir}"/usr/bin/spotify
+    echo "LD_PRELOAD=libcurl.so.3 /usr/share/spotify/spotify \$@" >> "${pkgdir}"/usr/bin/spotify
     chmod +x "${pkgdir}"/usr/bin/spotify
 
     # Copy license

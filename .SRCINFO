@@ -1,7 +1,7 @@
 pkgbase = spotify-beta
 	pkgdesc = A proprietary peer-to-peer music streaming service
 	pkgver = 1.0.9.133
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spotify.com
 	changelog = spotify.changelog
 	arch = x86_64
