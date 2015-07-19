@@ -1,3 +1,9 @@
+2015-07-19 carstene1ns <arch carsten-teibes de>
+
+	* 1.3.2-1 :
+	new upstream release.
+	use custom, compiled-in sdl_mixer.
+
 2015-01-24 carstene1ns <arch carsten-teibes de>
 
 	* 1.3.1-1 :
