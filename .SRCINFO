@@ -1,15 +1,15 @@
 pkgbase = lwjgl
 	pkgdesc = Lightweight Java Game Library - for use in game projects in Java.
-	pkgver = 2.9.1
+	pkgver = 3.0.0a
 	pkgrel = 1
 	url = http://lwjgl.org/
 	changelog = ChangeLog
 	arch = any
 	license = BSD
 	options = !strip
-	source = http://downloads.sourceforge.net/java-game-lib/lwjgl-2.9.1.zip
-	md5sums = 6dbb92aa4ff5b0a4bfe83daeacead75c
-	sha1sums = d800311023a1112f729a40b1efe183cb485532e7
+	source = http://build.lwjgl.org/release/3.0.0a/lwjgl-3.0.0a.zip
+	md5sums = 3198c644b983c20534d58cf2d8e3f029
+	sha1sums = baa3bb9ac71040c675ba717198a424e7c086c90e
 
 pkgname = lwjgl
 
