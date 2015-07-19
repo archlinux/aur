@@ -1,7 +1,7 @@
 # Maintainer: TOSH <tosh@t0x0sh.org>b
 
 pkgname=perl-capstone
-pkgver=0.2.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A Perl binding for the capstone-engine library"
 arch=('i686' 'x86_64')
