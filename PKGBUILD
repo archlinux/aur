@@ -4,18 +4,18 @@
 
 pkgname=lib32-pciutils
 pkgver=3.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="PCI bus configuration space access library (32-bit)"
 arch=('x86_64')
 url="http://mj.ucw.cz/sw/pciutils/"
 license=('GPL2')
-depends=('lib32-systemd' 'pciutils' 'lib32-kmod')
+depends=('lib32-systemd' 'lib32-kmod' "${pkgname#lib32-}")
 makedepends=('gcc-multilib')
-source=("ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-${pkgver}.tar.xz")
+source=("ftp://ftp.kernel.org/pub/software/utils/${pkgname#lib32-}/${pkgname#lib32-}-${pkgver}.tar.xz")
 sha512sums=('47772dedfa5d5efdd7ddc2970e64903090b32ac1579d63951e30edde5d886807952550fa00e5480f9cf782058a1fa5b2864744ab237031e59a0531197244c468')
 
 build() {
-  cd "${srcdir}/pciutils-${pkgver}"
+  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
   export LDFLAGS='-m32'
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   make CC="gcc -m32" OPT="${CFLAGS} -fPIC -DPIC" ZLIB=no SHARED=no PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 lib/libpci.a
