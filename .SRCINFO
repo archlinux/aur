@@ -1,7 +1,7 @@
 pkgbase = backdrop-randomizer
 	pkgdesc = Companion for xfdesktop which randomly cycles through wallpapers without repeating them until all have been displayed once.
 	pkgver = 2.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graysky2/backdrop-randomizer
 	install = readme.install
 	arch = any
