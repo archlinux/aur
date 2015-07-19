@@ -1,7 +1,7 @@
 pkgbase = ofxparse-git
 	pkgdesc = Ofxparse is a parser for Open Financial Exchange (.ofx) format files.
 	pkgver = 0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/jseutter/ofxparse
 	arch = i686
 	arch = x86_64
