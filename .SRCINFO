@@ -16,7 +16,7 @@ pkgbase = glfw-git
 	makedepends = libxkbcommon
 	makedepends = libgl
 	optdepends = doxygen: build glfw html documentation
-	provides = glfw=3.2
+	provides = glfw=3.1.1
 	conflicts = glfw
 	source = glfw::git+https://github.com/glfw/glfw
 	md5sums = SKIP
