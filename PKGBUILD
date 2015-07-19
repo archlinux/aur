@@ -6,7 +6,7 @@ pkgname=('sogo'
          'sogo-openchange'
          'sogo-activesync')
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -16,7 +16,6 @@ makedepends=('gcc-objc'
              'libmemcached'
              'sope>=2.3.0')
 options=('!strip')
-install=sogo.install
 source=(
   http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz
   sogo_configure.patch
@@ -51,12 +50,14 @@ optdepends=(
 	'lighttpd: webserver to provide web interface locally'
 	'funambol: sync mobile devices with sogo contacts, events, tasks via SyncML')
 backup=(etc/sogo/sogo.conf etc/httpd/conf/extra/SOGo.conf)
+install=sogo.install
 
   cd "${srcdir}/SOGo-${pkgver}"
   make install DESTDIR="${pkgdir}" GNUSTEP_SYSTEM_ADMIN_TOOLS="/usr/bin"
   install -D -m 0644 "${srcdir}"/sogo.service "${pkgdir}"/usr/lib/systemd/system/sogo.service
   install -D -m 0600 "${srcdir}"/SOGo-${pkgver}/Scripts/sogo.conf "${pkgdir}"/etc/sogo/sogo.conf
   install -D -m 0644 "${srcdir}"/SOGo-${pkgver}/Apache/SOGo.conf "${pkgdir}"/etc/httpd/conf/extra/SOGo.conf
+  install -D -m 0644 "${srcdir}"/SOGo-${pkgver}/Scripts/logrotate "${pkgdir}"/etc/logrotate.d/sogo
 }
 
 package_sogo-openchange() {

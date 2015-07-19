@@ -1,6 +1,7 @@
 post_install() {
   useradd -r -d /etc/sogo sogo &>/dev/null
-  chown -R sogo:sogo /etc/sogo
+  mkdir -p /var/log/sogo
+  chown -R sogo:sogo /etc/sogo /var/log/sogo
 }
 
 pre_remove() {

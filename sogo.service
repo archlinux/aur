@@ -5,7 +5,7 @@ After=network.target slapd.service memcached.service postfix.service dovecot.ser
 [Service]
 User=sogo
 RuntimeDirectory=sogo
-ExecStart=/usr/bin/sogod -WOPidFile /var/run/sogo/sogo.pid -WOLogFile "-" -WONoDetach YES
+ExecStart=/usr/bin/sogod -WOPidFile /var/run/sogo/sogo.pid -WONoDetach YES
 
 [Install]
 WantedBy=multi-user.target
