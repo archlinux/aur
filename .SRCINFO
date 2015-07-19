@@ -1,6 +1,6 @@
 pkgbase = rar-beta
 	pkgdesc = A command-line port of the rar compression utility Beta Version
-	pkgver = 5.2.1
+	pkgver = 5.3.b1
 	pkgrel = 1
 	url = http://www.rarlab.com/rarnew.htm
 	arch = i686
