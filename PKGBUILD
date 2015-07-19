@@ -7,8 +7,16 @@ pkgdesc="Simple ofxclient command line utility and OFX client libraries for deve
 arch=('x86_64' 'i686')
 url="https://github.com/captin411/ofxclient"
 license=('MIT')
-depends=('python2')
+depends=('python2>=2.7'
+		'python2-beautifulsoup4'
+		'ofxparse>=0.8'
+		'ofxhome'
+		'keyring'
+		'argparse'
+		)
 # makedepends=()
+provides=(ofxclient)
+conflicts=(ofxclient)
 source=('ofxclient::git+https://github.com/captin411/ofxclient.git#branch=master')
 md5sums=('SKIP')
 
