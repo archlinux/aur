@@ -1,7 +1,7 @@
 # Maintainer: Maxime de Roucy <maxime.deroucy@gmail.com>
 
 pkgname=pam_u2f
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Universal 2nd Factor (U2F) PAM authentication module from Yubico"
 arch=('i686' 'x86_64')
@@ -34,5 +34,4 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	cp COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-sha256sums=('79bb1bb9bdeececa0bcbd611519240560c9eca7608108b17be0519d7980dae07')
+sha256sums=('d77dd150d65836c7b9a12d75d22159484663c11cea5739653bf31c44a3609522')
