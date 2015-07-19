@@ -2,7 +2,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 everelname="aegis"
 everelver=1.0
@@ -30,6 +30,6 @@ package() {
   rm "${pkgdir}"/usr/share/pyfa/config.pyc
 }
 
-md5sums=('9e192643e953e97f841f7465496578fb'
+md5sums=('4bc1a11ee26345ec8e688fdf172dbe37'
          'a6f1cef5a9fcc5dfd6c5ecdddf2c5e38'
          '9937192cfce7f5e16e9cf26086f1899c') #generate with 'makepkg -g'
