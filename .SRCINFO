@@ -1,6 +1,6 @@
 pkgbase = grib_api
 	pkgdesc = A program interface for encoding and decoding GRIB messages
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/GRIB/Home
 	arch = i686
@@ -14,14 +14,14 @@ pkgbase = grib_api
 	depends = libpng
 	depends = python2
 	depends = netcdf
+	optdepends = libaec
+	optdepends = jasper
 	provides = grib_api
 	conflicts = grib_def
 	replaces = grib_api
 	replaces = grib_def
-	source = http://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.13.1.tar.gz
-	source = configure.patch
-	md5sums = 2d76933cd11ed33ff4141717a8761070
-	md5sums = bd0e0fe50e6ae8ffee0bdfeeecd300f4
+	source = http://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.14.0-Source.tar.gz
+	md5sums = afcfc0a465ce93d9418aea4e99523eb5
 
 pkgname = grib_api
 
