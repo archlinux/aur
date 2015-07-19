@@ -6,26 +6,32 @@
 _pkgname=conky
 pkgname=conky-cli
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
-url="http://conky.sourceforge.net/"
+url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
 arch=('i686' 'x86_64')
 provides=('conky')
 conflicts=('conky')
-makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db')
+makedepends=('cmake' 'docbook2x' 'docbook-xml' 'docbook-xsl' 'man-db')
 depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
         'ascii.patch'
-        'lua53.patch')
+        'lua53.patch'
+        'ipv6.patch'
+        'curl.patch')
 md5sums=('cdc0298e5f257829d574ae8114170d9b'
          'd5b765cb7400d2fdca88b6c86aa8eec1'
-         '44cdadfe92266e99698e5424b7c6e265')
+         '44cdadfe92266e99698e5424b7c6e265'
+         '702650dfaaacb4e778f3d3c6a296df0b'
+         '8236606ca3d39b9d00a59022d4f953ac')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	patch -p1 -i ../ascii.patch # db2x_manxml fails on non-ascii chars
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
+	patch -p1 -i ../ipv6.patch # https://bugs.archlinux.org/task/45626
+	patch -p1 -i ../curl.patch # https://github.com/bagder/curl/issues/342
 }
 
 build() {
