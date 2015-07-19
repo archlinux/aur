@@ -1,6 +1,6 @@
 pkgbase = systemd-knock
-	pkgver = 221
-	pkgrel = 2.1
+	pkgver = 222
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = systemd-knock
 	makedepends = git
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v221
+	source = git://github.com/systemd/systemd.git#tag=v222
 	source = https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-221.patch
 	source = https://repo.parabola.nu/other/systemd-knock/splash-parabola.bmp
 	source = initcpio-hook-udev
@@ -42,7 +42,7 @@ pkgbase = systemd-knock
 	md5sums = db7c5e4aaa501c1af4301e011f4f5966
 	md5sums = 90ea67a7bb237502094914622a39e281
 	md5sums = 976c5511b6493715e381f43f16cdb151
-	md5sums = bde43090d4ac0ef048e3eaee8202a407
+	md5sums = 1b3aa3a0551b08af9305d33f85b5c2fc
 	md5sums = 36ee74767ac8734dede1cbd0f4f275d7
 	md5sums = 9b9f4a58e4c4009bf5290c5b297600c3
 
@@ -54,7 +54,6 @@ pkgname = systemd-knock
 	depends = acl
 	depends = bash
 	depends = dbus
-	depends = glib2
 	depends = iptables
 	depends = kbd
 	depends = kmod
@@ -75,9 +74,9 @@ pkgname = systemd-knock
 	optdepends = systemd-knock-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=221
-	provides = udev=221
-	provides = systemd=221
+	provides = systemd-tools=222
+	provides = udev=222
+	provides = systemd=222
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -109,7 +108,6 @@ pkgname = systemd-knock
 pkgname = libsystemd-knock
 	pkgdesc = systemd client libraries with support for stealth TCP sockets
 	license = GPL2
-	depends = glib2
 	depends = glibc
 	depends = libgcrypt
 	depends = lz4
@@ -120,14 +118,14 @@ pkgname = libsystemd-knock
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=221
+	provides = libsystemd=222
 	conflicts = libsystemd
 
 pkgname = systemd-knock-sysvcompat
 	pkgdesc = sysvinit compat for systemd-knock
 	license = GPL2
 	depends = systemd-knock
-	provides = systemd-sysvcompat=221
+	provides = systemd-sysvcompat=222
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 

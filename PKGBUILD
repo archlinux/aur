@@ -6,8 +6,8 @@
 _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
-pkgver=221
-pkgrel=2.1
+pkgver=222
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
@@ -29,36 +29,12 @@ md5sums=('SKIP'
          'db7c5e4aaa501c1af4301e011f4f5966'
          '90ea67a7bb237502094914622a39e281'
          '976c5511b6493715e381f43f16cdb151'
-         'bde43090d4ac0ef048e3eaee8202a407'
+         '1b3aa3a0551b08af9305d33f85b5c2fc'
          '36ee74767ac8734dede1cbd0f4f275d7'
          '9b9f4a58e4c4009bf5290c5b297600c3')
 
 prepare() {
   cd "$_pkgbase"
-
-  # pam_systemd: Properly check kdbus availability
-  # https://github.com/systemd/systemd/commit/c5d452bb228e
-  git cherry-pick -n c5d452bb228e
-
-  # udevd: suppress warning if we don't find cgroup
-  # https://github.com/systemd/systemd/commit/11b9fb15be96
-  git cherry-pick -n 11b9fb15be96
-
-  # core: fix reversed dependency check in unit_check_unneeded
-  # https://github.com/systemd/systemd/commit/084918ba41ac
-  git cherry-pick -n 084918ba41ac
-
-  # rules: remove all power management from udev
-  # https://github.com/systemd/systemd/commit/e2452eef02a8
-  git cherry-pick -n e2452eef02a8
-
-  # logind: fix delayed execution regression
-  # https://github.com/systemd/systemd/commit/418b22b88f79
-  git cherry-pick -n 418b22b88f79
-
-  # bus-proxy: never apply policy when sending signals
-  # https://github.com/systemd/systemd/commit/3723263f4989
-  git cherry-pick -n 3723263f4989
 
   patch -Np1 <../0001-adds-TCP-Stealth-support-to-systemd-221.patch
 
@@ -91,7 +67,7 @@ build() {
 package_systemd-knock() {
   pkgdesc="system and service manager with support for stealth TCP sockets (Parabola rebranded)"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'glib2' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-knock' 'libidn' 'lz4' 'pam' 'libseccomp' 'util-linux'
            'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
@@ -183,7 +159,7 @@ package_systemd-knock() {
 
 package_libsystemd-knock() {
   pkgdesc="systemd client libraries with support for stealth TCP sockets"
-  depends=('glib2' 'glibc' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
   provides=('libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
             'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so' "libsystemd=$pkgver")
