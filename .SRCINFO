@@ -18,12 +18,12 @@ pkgbase = salome-gui
 	depends = python2-pyqt4
 	depends = opencascade>=6.9.0
 	depends = qwt
-	depends = paraview-salome=4.3.1
+	depends = paraview-salome=4.2.0
 	depends = sip
 	source = salome-gui.profile
 	source = salome.desktop
 	source = salome
-	md5sums = 9ee448ab4c97667a75a96450dc8e118a
+	md5sums = 26d2dead4610fe2653f9f9cdf72d33d0
 	md5sums = a102063b779e332914ef0b73843e928a
 	md5sums = c47b2bb9e51120089bd3169c2298abf3
 

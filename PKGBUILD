@@ -5,7 +5,7 @@ pkgver=7.6.0
 pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
-depends=('salome-kernel>=7.6.0' 'salome-kernel<7.7.0' 'qt4' 'python2-pyqt4' 'opencascade>=6.9.0' 'qwt' 'paraview-salome=4.3.1' 'sip')
+depends=('salome-kernel>=7.6.0' 'salome-kernel<7.7.0' 'qt4' 'python2-pyqt4' 'opencascade>=6.9.0' 'qwt' 'paraview-salome=4.2.0' 'sip')
 makedepends=('doxygen' 'swig2' 'boost' 'optipng' 'python2-sphinx' 'git')
 arch=('i686' 'x86_64')
 conflicts=()
@@ -16,7 +16,7 @@ source=("${pkgname}.profile" "salome.desktop" "salome")
 _source=gui
 _installdir=/opt/salome/gui
 _paraviewrootdir=/usr
-_paraviewver=4.3
+_paraviewver=4.2
 
 prepare(){
   msg "Connecting to git server..."
@@ -103,6 +103,6 @@ package() {
 
   sed -e "s|GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS|GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS,EFICAS,ASTER|" -i ${pkgdir}${_installdir}/share/salome/resources/gui/SalomeApp.xml
 }
-md5sums=('9ee448ab4c97667a75a96450dc8e118a'
+md5sums=('26d2dead4610fe2653f9f9cdf72d33d0'
          'a102063b779e332914ef0b73843e928a'
          'c47b2bb9e51120089bd3169c2298abf3')
