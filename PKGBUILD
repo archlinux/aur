@@ -1,7 +1,7 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname=libreoffice-style-elementary
 pkgname=${_pkgname}-git
-pkgver=bffd596
+pkgver=0.1
 pkgrel=1
 pkgdesc='elementary icons for LibreOffice'
 arch=('i686' 'x86_64')
