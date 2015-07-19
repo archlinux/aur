@@ -6,9 +6,6 @@ pkgbase = libopencm3-ldscripts-git
 	arch = any
 	license = LGPL3
 	makedepends = git
-	makedepends = awk
-	depends = python2
-	depends = python2-pyserial
 	optdepends = libopencm3-git
 
 pkgname = libopencm3-ldscripts-git
