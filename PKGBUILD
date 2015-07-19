@@ -3,8 +3,8 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=irssi-naughty-bugs
-pkgver=0.8.16
-pkgrel=1
+pkgver=0.8.17
+pkgrel=2
 pkgdesc="irssi with some unaccepted patches"
 arch=('i686' 'x86_64')
 url="http://irssi.org/"
@@ -17,7 +17,7 @@ source=("http://irssi.org/files/irssi-${pkgver}.tar.bz2"
 	hostname-expandos.patch)
 provides=('irssi')
 conflicts=('irssi')
-md5sums=('4346119c4c000d0198cda17666ff1f06'
+md5sums=('ecf64be47978d89a742b435a81cb47db'
 	 '125e57521a4db14215de5fc64ed5d683'
 	 '3538336c7317f3f52b076543ff2c798d')
 
