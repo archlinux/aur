@@ -2,7 +2,7 @@
 
 
 pkgname=python-picuplib
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Picflash upload library"
 arch=('any')
