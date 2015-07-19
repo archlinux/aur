@@ -1,6 +1,6 @@
 pkgname=telegram-desktop
 pkgver=0.8.38
-pkgrel=3
+pkgrel=4
 _qtver=5.4.0
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
@@ -8,6 +8,8 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11' 'mtdev' 'openal' 'desktop-file-utils' 'gtk-update-icon-cache')
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2' 'xorg-server-xvfb')
+conflicts=('telegram-desktop')
+provides=('telegram-desktop')
 source=("http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.gz"
 	"disable-custom-scheme-linux.patch"
 	"disable-updater.patch"
@@ -33,7 +35,6 @@ prepare() {
 		cp "$srcdir/tdesktop/Telegram/_qt_${_qtver//./_}_patch.diff" "$srcdir/Libraries/QtStatic"
 		cd "$srcdir/Libraries/QtStatic"
 		patch -p1 -i "_qt_${_qtver//./_}_patch.diff"
-		#git apply "_qt_${_qtver//./_}_patch.diff"
 	fi
 	
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
@@ -89,7 +90,7 @@ package() {
 	install -d "$pkgdir/usr/share/applications"
 	install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
 	
-	local icon_size
+	local icon_size icon_dir
 	for icon_size in 16 32 48 64 128 256 512; do
 		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		
