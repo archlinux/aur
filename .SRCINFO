@@ -1,6 +1,6 @@
 pkgbase = python-powerline-git
 	pkgdesc = The ultimate statusline/prompt utility
-	pkgver = 2381.03195cf
+	pkgver = 2386.06a15ee
 	pkgrel = 1
 	url = https://github.com/powerline/powerline
 	install = powerline.install

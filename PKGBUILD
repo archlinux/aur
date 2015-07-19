@@ -7,7 +7,7 @@ _gitbranch=develop
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2381.03195cf
+pkgver=2386.06a15ee
 pkgrel=1
 url='https://github.com/powerline/powerline'
 license=('MIT')
@@ -21,6 +21,12 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${_gitname}"
 	echo "$(git rev-list --count ${_gitbranch}).$(git rev-parse --short ${_gitbranch})"
+}
+
+build() {
+	cd "${_gitname}"/docs
+	SPHINXBUILD=sphinx-build2 BUILDDIR=_build-python2 make man
+	SPHINXBUILD=sphinx-build BUILDDIR=_build-python make man
 }
 
 package_generic() {
@@ -41,6 +47,10 @@ package_generic() {
 
 	# License
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Manpages
+	install -dm755 "${pkgdir}/usr/share/man/man1/"
+	install -Dm644 "docs/${_BUILDDIR}/man/"* "${pkgdir}/usr/share/man/man1/"
 }
 
 package_python2-powerline-git() {
@@ -50,7 +60,7 @@ package_python2-powerline-git() {
 	            'mercurial: improved mercurial support'
 	            'zsh: better shell prompt'
 	            'gvim: vim compiled with Python support')
-	makedepends=('git' 'python2-setuptools')
+	makedepends=('git' 'python2-setuptools' 'python2-sphinx')
 	conflicts=('python2-powerline'
 	           'python-powerline-git'
 	           'python-powerline'
@@ -58,6 +68,8 @@ package_python2-powerline-git() {
 
 	cd "${_gitname}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
+
+	export _BUILDDIR=_build-python2
 
 	package_generic
 }
@@ -68,7 +80,7 @@ package_python-powerline-git() {
 	            'python-pygit2: improved git support'
 	            'zsh: better shell prompt'
 	            'gvim: vim compiled with Python support')
-	makedepends=('git' 'python-setuptools')
+	makedepends=('git' 'python-setuptools' 'python-sphinx')
 	conflicts=('python2-powerline'
 	           'python2-powerline-git'
 	           'python-powerline'
@@ -76,6 +88,8 @@ package_python-powerline-git() {
 
 	cd "${_gitname}"
 	python setup.py install --root="${pkgdir}" --optimize=1
+
+	export _BUILDDIR=_build-python
 
 	package_generic
 }
