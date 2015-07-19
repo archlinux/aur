@@ -1,0 +1,127 @@
+---
+ gcc/graphite-blocking.c          |    1 +
+ gcc/graphite-dependences.c       |    1 +
+ gcc/graphite-interchange.c       |    1 +
+ gcc/graphite-isl-ast-to-gimple.c |    2 ++
+ gcc/graphite-optimize-isl.c      |    2 ++
+ gcc/graphite-poly.c              |    1 +
+ gcc/graphite-scop-detection.c    |    1 +
+ gcc/graphite-sese-to-poly.c      |    1 +
+ gcc/graphite.c                   |    1 +
+ 9 files changed, 11 insertions(+)
+
+diff --git a/gcc/graphite-blocking.c b/gcc/graphite-blocking.c
+index 73d7c59..172bdcd 100644
+--- a/gcc/graphite-blocking.c
++++ b/gcc/graphite-blocking.c
+@@ -27,6 +27,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+diff --git a/gcc/graphite-dependences.c b/gcc/graphite-dependences.c
+index 9a0986d..df52e54 100644
+--- a/gcc/graphite-dependences.c
++++ b/gcc/graphite-dependences.c
+@@ -25,6 +25,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+diff --git a/gcc/graphite-interchange.c b/gcc/graphite-interchange.c
+index aee51a8..bcf7f3b 100644
+--- a/gcc/graphite-interchange.c
++++ b/gcc/graphite-interchange.c
+@@ -27,6 +27,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/aff.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+diff --git a/gcc/graphite-isl-ast-to-gimple.c b/gcc/graphite-isl-ast-to-gimple.c
+index b32781a..7aafee2 100644
+--- a/gcc/graphite-isl-ast-to-gimple.c
++++ b/gcc/graphite-isl-ast-to-gimple.c
+@@ -24,7 +24,9 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
++#include <isl/union_set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+ #include <isl/ast_build.h>
+diff --git a/gcc/graphite-optimize-isl.c b/gcc/graphite-optimize-isl.c
+index 388e25c..2b55783 100644
+--- a/gcc/graphite-optimize-isl.c
++++ b/gcc/graphite-optimize-isl.c
+@@ -24,7 +24,9 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
++#include <isl/union_set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+ #include <isl/schedule.h>
+diff --git a/gcc/graphite-poly.c b/gcc/graphite-poly.c
+index bcd08d8..e3ddd57 100644
+--- a/gcc/graphite-poly.c
++++ b/gcc/graphite-poly.c
+@@ -25,6 +25,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+diff --git a/gcc/graphite-scop-detection.c b/gcc/graphite-scop-detection.c
+index 47e0da0..22fdde3 100644
+--- a/gcc/graphite-scop-detection.c
++++ b/gcc/graphite-scop-detection.c
+@@ -25,6 +25,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+diff --git a/gcc/graphite-sese-to-poly.c b/gcc/graphite-sese-to-poly.c
+index 5064247..7b10289 100644
+--- a/gcc/graphite-sese-to-poly.c
++++ b/gcc/graphite-sese-to-poly.c
+@@ -24,6 +24,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+ #include <isl/union_map.h>
+diff --git a/gcc/graphite.c b/gcc/graphite.c
+index a81ef6a..32f405a 100644
+--- a/gcc/graphite.c
++++ b/gcc/graphite.c
+@@ -38,6 +38,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Workaround for GMP 5.1.3 bug, see PR56019.  */
+ #include <stddef.h>
+ 
++#include <isl/constraint.h>
+ #include <isl/set.h>
+ #include <isl/map.h>
+ #include <isl/options.h>
+-- 
+1.7.10.4
+

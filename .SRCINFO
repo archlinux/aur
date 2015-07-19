@@ -16,17 +16,17 @@ pkgbase = gcc-git
 	makedepends = gcc-ada
 	makedepends = doxygen
 	makedepends = git
-	depends = zlib
-	depends = libmpc
 	options = !emptydirs
 	source = git://gcc.gnu.org/git/gcc.git
-	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
-	source = pr66035.patch
+	source = http://isl.gforge.inria.fr/isl-0.15.tar.bz2
 	source = gcc.libstdc++-v3.python.dot.fix.patch
+	source = gcc.isl.0.15.patch
+	source = gcc.isl.0.15.includes.patch
 	md5sums = SKIP
-	md5sums = 118d1a379abf7606a3334c98a8411c79
-	md5sums = 5b980076cd5fcbc3aff6014f306282dd
+	md5sums = 8428efbbc6f6e2810ce5c1ba73ecf98c
 	md5sums = 7de06deb9ee0c10454219a319e62e4dc
+	md5sums = 7069b4d1f9413a04ce4cfba039b1b0ba
+	md5sums = 6daf2d3f9365a0e768bdaaa1595b18f6
 
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (developmental version)
@@ -53,6 +53,8 @@ pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC (developmental version)
 	install = gcc-fortran.install
 	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	depends = libmpc
+	depends = zlib
 	provides = gcc-fortran
 	conflicts = gcc-fortran
 	options = !emptydirs
@@ -60,6 +62,8 @@ pkgname = gcc-fortran-git
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (developmental version)
 	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	depends = libmpc
+	depends = zlib
 	provides = gcc-objc
 	conflicts = gcc-objc
 
@@ -67,6 +71,8 @@ pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT) (developmental version)
 	install = gcc-ada.install
 	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	depends = libmpc
+	depends = zlib
 	provides = gcc-ada
 	conflicts = gcc-ada
 	options = staticlibs
@@ -76,6 +82,8 @@ pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (developmental version)
 	install = gcc-go.install
 	depends = gcc-git=6.0.0.r139654.12dcc3b-1
+	depends = libmpc
+	depends = zlib
 	provides = gcc-go
 	conflicts = go,
 	conflicts = gcc-go

@@ -7,15 +7,14 @@
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 #    * This PKGBUILD as closely as possible matches core's gcc 5.1.0-5
-#    * Builds from git commit 12dcc3b7 (2015-07-01 02:15:32 UTC), rather than master, because after that the default standard changes, causing many errors
-#    * The volumous test suite failures ("UNRESOLVED:", "FAIL:") occur during building core's 5.1.0-5, so the problem is upstream from here
+#    * The many test suite failures ("UNRESOLVED:", "FAIL:") occur during building core's 5.1.0-5, so the problem is upstream from here
 #    * Core's 5.1.0-5 pr65882.patch is omitted, because it is git commit 1774df35
 #    * Core's 5.1.0-5 pr66647.patch is omitted, because it is git commit fa4f365b
+#    * Core's 5.1.0-5 pr66035.patch is omitted, because it is git commit 635e1b2f, slightly modified
 #    * gcc.libstdc++-v3.python.dot.fix.patch is added, to fix an accidentical misnaming of gdb.py
-#    * Addition of zlib and libmpc depends, due to new /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0/gnat1
-#    * All namcap warnings are identical, as of 6.0.0.r139654.12dcc3b, except:
+#    * All namcap warnings are identical, as of 6.0.0.r140049.cab0d20, except:
 #       * Error of a missing custom license directory of /usr/share/licenses/gcc*-git
-#       * Symlink /usr/lib/bfd-plugins/liblto_plugin.so points to non-existing /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0.r139654.12dcc3b/liblto_plugin.so
+#       * Symlink /usr/lib/bfd-plugins/liblto_plugin.so points to non-existing /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0.r140049.cab0d20/liblto_plugin.so
 #    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source at that point
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
@@ -26,26 +25,26 @@ _pkgname=gcc
 pkgver=6.0.0.r139654.12dcc3b
 _pkgver_base=6.0.0
 _pkgver=6
-# Bug report upstream.  As of 2015-07-07, gcc master is incompatible with isl ver 0.15, starting with compilation errors in gcc/graphite-poly.h
-_islver=0.14.1
+_islver=0.15
 pkgrel=1
 
 pkgdesc="The GNU Compiler Collection (developmental version)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=('zlib' 'libmpc')
 makedepends=('binutils>=2.25' 'libmpc' 'gcc-ada' 'doxygen' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=(git://gcc.gnu.org/git/gcc.git
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        pr66035.patch
-        gcc.libstdc++-v3.python.dot.fix.patch)
+        gcc.libstdc++-v3.python.dot.fix.patch
+        gcc.isl.0.15.patch
+        gcc.isl.0.15.includes.patch)
 md5sums=('SKIP'
-         '118d1a379abf7606a3334c98a8411c79'
-         '5b980076cd5fcbc3aff6014f306282dd'
-         '7de06deb9ee0c10454219a319e62e4dc')
+         '8428efbbc6f6e2810ce5c1ba73ecf98c'
+         '7de06deb9ee0c10454219a319e62e4dc'
+         '7069b4d1f9413a04ce4cfba039b1b0ba'
+         '6daf2d3f9365a0e768bdaaa1595b18f6')
 
 _basedir=${_pkgname}
 
@@ -53,8 +52,6 @@ _libdir="usr/lib/gcc/$CHOST/$_pkgver_base"
 
 pkgver() {
   cd ${srcdir}/gcc
-  # new work needed for beyond this point, default standard changed
-  git checkout 12dcc3b7405a43e28010b2f5c186bf6f5f809397 > /dev/null 2>&1
   echo $(cat gcc/BASE-VER).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
@@ -73,11 +70,14 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66035
-  patch -p1 -i ${srcdir}/pr66035.patch
-
   # Submitted upstream - Fixes misnaming of gdb.py file due to addition of libstdc++fs library
   patch -p0 -i ${srcdir}/gcc.libstdc++-v3.python.dot.fix.patch
+
+  # https://gcc.gnu.org/ml/gcc-patches/2015-07/msg01162.html
+  patch -p1 -i ${srcdir}/gcc.isl.0.15.patch
+
+  # https://gcc.gnu.org/ml/gcc-patches/2015-07/msg01507.html
+  patch -p1 -i ${srcdir}/gcc.isl.0.15.includes.patch
 
   mkdir ${srcdir}/gcc-build
 }
@@ -104,7 +104,7 @@ build() {
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
       --enable-checking=release \
-      --with-default-libstdcxx-abi=c++98
+      --with-default-libstdcxx-abi=gcc4-compatible
 
   make
   
@@ -276,14 +276,17 @@ EOF
 package_gcc-fortran-git()
 {
   pkgdesc="Fortran front-end for GCC (developmental version)"
-  depends=("gcc-git=$pkgver-$pkgrel")
+  # Addition of libmpc and zlib depends, due to new requirements of /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0/f951
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-fortran')
   conflicts=('gcc-fortran')
   options=('!emptydirs')
   install=gcc-fortran.install
 
   cd ${srcdir}/gcc-build
-  make -C $CHOST/libgfortran DESTDIR=$pkgdir install-{caf,my}execlibLTLIBRARIES \
+  # install-myexeclibLTLIBRARIES omitted because it was removed upstream
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=40267
+  make -C $CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS}
   make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
   make -C gcc DESTDIR=$pkgdir fortran.install-{common,man,info}
@@ -299,7 +302,8 @@ package_gcc-fortran-git()
 package_gcc-objc-git()
 {
   pkgdesc="Objective-C front-end for GCC (developmental version)"
-  depends=("gcc-git=$pkgver-$pkgrel")
+  # Addition of libmpc and zlib depends, due to new requirements of /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0/gnat1
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-objc')
   conflicts=('gcc-objc')
 
@@ -316,7 +320,8 @@ package_gcc-objc-git()
 package_gcc-ada-git()
 {
   pkgdesc="Ada front-end for GCC (GNAT) (developmental version)"
-  depends=("gcc-git=$pkgver-$pkgrel")
+  # Addition of libmpc and zlib depends, due to new requirements of /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0/gnat1
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-ada')
   conflicts=('gcc-ada')
   options=('staticlibs' '!emptydirs')
@@ -342,7 +347,8 @@ package_gcc-ada-git()
 package_gcc-go-git()
 {
   pkgdesc="Go front-end for GCC (developmental version)"
-  depends=("gcc-git=$pkgver-$pkgrel")
+  # Addition of libmpc and zlib depends, due to new requirements of /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0/go1
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-go')
   conflicts=('go', 'gcc-go')
   options=('!emptydirs')
