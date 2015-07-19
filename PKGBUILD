@@ -4,7 +4,7 @@ _name="supernova"
 _cmd="${_name}"
 
 pkgname=("supernova" "supernova2")
-pkgver="1.0.8"
+pkgver="2.0.0"
 pkgrel="1"
 pkgdesc="Use novaclient with multiple OpenStack nova environments the easy way"
 arch=("any")
@@ -13,8 +13,8 @@ license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("${url}/archive/v${pkgver}.tar.gz"
         "nova2-executable.patch")
-sha256sums=('5abc13e44ca1eeeb7626fe133a104fec19ec5663ea3b7077af8874cb70b7baad'
-            '688de41b2ab9f050b210b30ab24b6bf86bb40cb387eb8ef6a6816a79edb7b195')
+sha256sums=('43b27ee9ed2ca7b0b5860bf52422750e215b60cb71eca106a57b4f900faef24e'
+            'cd2d47ce9d9b949844c5e58ed7a1b32cb2367fd7c4429ec0d971fd24bd544704')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}"{,-python2}
@@ -23,7 +23,11 @@ prepare() {
 
 package_supernova() {
     conflicts=("python-supernova" "python-supernova-git" "supernova-git")
-    depends=("python-novaclient" "python-keyring")
+    depends=("python-click"
+             "python-configobj"
+             "python-keyring>=0.9.2"
+             "python-novaclient"
+             "python-six")
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
     install -Dm644 "contrib/${_cmd}-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/${_cmd}"
@@ -31,7 +35,11 @@ package_supernova() {
 
 package_supernova2() {
     conflicts=("python2-supernova" "python2-supernova-git" "supernova2-git")
-    depends=("python2-novaclient" "python2-keyring")
+    depends=("python2-click"
+             "python2-configobj"
+             "python2-keyring>=0.9.2"
+             "python2-novaclient"
+             "python2-six")
     cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1
     mv "${pkgdir}/usr/bin/${_cmd}" "${pkgdir}/usr/bin/${_cmd}2"
