@@ -2,8 +2,8 @@
 Type=Application
 Name=Isabelle
 Comment=HOL based theorem prover
-Exec="/usr/bin/isabelle jedit"
-Icon=/opt/isabelle/src/Tools/jEdit/dist/doc/jedit.png
+Exec=/usr/bin/isabelle jedit
+Icon=/opt/isabelle/lib/icons/isabelle.xpm
 Terminal=false
-Categories=Education;
+Categories=Education;Science;Math;
 X-Desktop-File-Install-Version=0.22
