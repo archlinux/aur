@@ -1,6 +1,6 @@
 pkgbase = smuxi-git
 	pkgdesc = free, distributed and user-friendly IRC / Twitter / XMPP / Campfire / JabbR client for GNOME/GTK+
-	pkgver = 1.0.rc4.r29.ga84de16
+	pkgver = 1.0.r1.g15529e8
 	pkgrel = 1
 	url = https://www.smuxi.im/
 	arch = any
@@ -21,7 +21,7 @@ pkgname = smuxi-server-git
 	depends = log4net
 	depends = nini
 	optdepends = sqlite: alternative for persistent message storing
-	provides = smuxi-server
+	provides = smuxi-server=1.0
 	conflicts = smuxi-server
 
 pkgname = smuxi-git
@@ -33,6 +33,6 @@ pkgname = smuxi-git
 	depends = stfl
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	provides = smuxi
+	provides = smuxi=1.0
 	conflicts = smuxi
 
