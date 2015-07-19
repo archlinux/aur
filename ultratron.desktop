@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ultratron
+GenericName=Shoot'em Up Arcade
+Comment=Intense shoot-em-up with 100% pure frenzied gameplay.
+Exec=ultratron
+Icon=/opt/ultratron/ultratron.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
