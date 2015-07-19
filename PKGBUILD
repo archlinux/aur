@@ -3,13 +3,13 @@
 
 pkgname=syncthing-bin
 _realname=syncthing
-pkgver=0.11.15
+pkgver=0.11.16
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing: binary."
 url="http://syncthing.net/"
 arch=('armv6h' 'i686' 'x86_64')
 license=('MPLv2')
-provides=('syncthing=0.11.15')
+provides=('syncthing=0.11.16')
 conflicts=('syncthing')
 install=${_realname}.install
 source=( 'syncthing.1')
@@ -18,13 +18,13 @@ sha1sums=('cabf3bf78457ce17057ae39fe3b0009a4aa446c4')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
-		sha1sums+=('4c8f0d370f24ce9e3cd9cb99351544fd6fedbf1d')
+		sha1sums+=('265a05b85a94931ba4935c37839c90a1013db38c')
 		;;
 	i686) _pkgarch="386"
-		sha1sums+=('b5890c6583b0fe2fd33d4f0150bc1081a3780329')
+		sha1sums+=('a8cf04c8965592f2315b3f464b486d22caa5a414')
 		;;
 	x86_64) _pkgarch="amd64"
-		sha1sums+=('5d0d050b6b059009eafd13d19d8a90b4fdda8fea')
+		sha1sums+=('84d242cf3c593316d7811a3cfa0eef2e68f6fac6')
 		;;
 esac
 
@@ -41,3 +41,5 @@ package() {
                       "${pkgdir}/usr/lib/systemd/user/${_realname}.service"
     install -D -m 644 "../${_realname}.1" "${pkgdir}/usr/share/man/man1/${_realname}.1"
 }
+
+# vim:set ts=2 sw=2 et:
