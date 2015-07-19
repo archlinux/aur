@@ -1,0 +1,23 @@
+post_install() {
+    systemctl daemon-reload
+
+    echo "You find an example in /etc/hopper_update/hopper_update_sample.json"
+    echo "After adding hopper_update in systemctl:"
+    echo "  systemctl enable hopper_update.timer"
+    echo "  systemctl start hopper_update.timer"
+
+    true
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+
+    true
+}
+
+pre_remove() {
+    systemctl disable hopper_update.timer
+    systemctl stop hopper_update.timer
+
+    true
+}

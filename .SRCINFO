@@ -1,0 +1,16 @@
+pkgbase = hopper_update
+	pkgdesc = If necessary, update your ip for hopper.pw
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Chipsterjulien/hopper_update
+	install = hopper_update.install
+	arch = any
+	license = WTFPL
+	makedepends = go
+	options = !strip
+	options = emptydirs
+	source = hopper_update-0.1.tar.gz
+	sha512sums = c784c62c00faab0ad4fb1407bd553d6b92db96ce19a5f9507b2ba51f2002032513c1e926baff23a4e6c747f505684c1b33d4637d9b8561b62c3cf13ff226418a
+
+pkgname = hopper_update
+
