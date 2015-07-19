@@ -1,0 +1,15 @@
+pkgbase = python-markdown-figures-git
+	pkgdesc = Extension for Python-Markdown to parse figure elements, optionally with a caption.
+	pkgver = 2.59e8be5
+	pkgrel = 1
+	url = http://github.com/helderco/markdown-figures
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python-markdown
+	conflicts = python-markdown-figures
+	source = python-markdown-figures-git::git://github.com/helderco/markdown-figures
+	md5sums = SKIP
+
+pkgname = python-markdown-figures-git
+
