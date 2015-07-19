@@ -10,7 +10,7 @@ license=('MIT')
 depends=('xfdesktop')
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
 install=readme.install
-sha256sums=('6d7e086e7421ce4ccec42d32d917312a02b2ee11f0bbaf73829eab81825fcbc7')
+sha256sums=('35ccd1f3bf8ebe4a22d7cfe7f080ddd72142d027052cd3a8c5e886ba4ef39dcf')
 
 build() {
 	cd "$pkgname-$pkgver"
