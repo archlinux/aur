@@ -1,7 +1,7 @@
 # Maintainer: Patrick Darwinkel <patrick@darwinkel.net>
 pkgname=ogar-git
 pkgver=git
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully functional open source Agar.io server implementation, written in Node.js."
 arch=(any)
 url="https://github.com/forairan/Ogar"
@@ -24,7 +24,7 @@ package() {
 	mkdir -p $pkgdir/usr/share
 	mv ogar $pkgdir/usr/share/ogar
 #	rm -R $pkgdir/usr/share/ogar/bin
-	rm $pkgdir/usr/share/ogar/Launch.bat
+#	rm $pkgdir/usr/share/ogar/Launch.bat
 	rm $pkgdir/usr/share/ogar/src/Start.bat
 	rm $pkgdir/usr/share/ogar/.gitignore
 	rm $pkgdir/usr/share/ogar/ogar-linux-script.sh

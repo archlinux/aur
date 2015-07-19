@@ -1,7 +1,7 @@
 pkgbase = ogar-git
 	pkgdesc = A fully functional open source Agar.io server implementation, written in Node.js.
 	pkgver = git
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/forairan/Ogar
 	install = ogar-git.install
 	arch = any
