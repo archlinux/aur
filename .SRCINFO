@@ -1,0 +1,16 @@
+pkgbase = moped
+	pkgdesc = An advanced tool to flexibly manipulate MPD playlists
+	pkgver = 2.16
+	pkgrel = 8
+	url = https://github.com/cassava/moped
+	install = moped.install
+	arch = any
+	license = GPL
+	depends = python>=3.1.2
+	depends = zenity
+	depends = mpd
+	source = https://github.com/downloads/cassava/moped/moped-2.16.tar.gz
+	md5sums = 15e6df587c6a1a3180cbb06a4fde1e52
+
+pkgname = moped
+
