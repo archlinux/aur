@@ -1,7 +1,7 @@
 pkgbase = lib32-libvisual
 	pkgdesc = Abstraction library that comes between applications and audio visualisation plugins (32-bit)
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/libvisual/
 	arch = x86_64
 	license = LGPL
