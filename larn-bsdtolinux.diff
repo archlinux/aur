@@ -1,0 +1,579 @@
+diff -Naur larn.bsd/Makefile larn.linux/Makefile
+--- larn.bsd/Makefile	2008-02-19 07:05:26.000000000 +0100
++++ larn.linux/Makefile	2009-09-06 00:27:03.208045111 +0200
+@@ -1,77 +1,17 @@
+-#	$NetBSD: Makefile,v 1.19 2008/02/19 06:05:26 dholland Exp $
+-#	@(#)Makefile	5.12 (Berkeley) 5/30/93
+-
+-# EXTRA
+-#	Incorporates code to gather additional performance statistics
+-#
+-# TERMIO
+-#	Use sysv termio
+-# TERMIOS
+-#	Use posix termios
+-# BSD
+-#	Use BSD specific features (mostly timer and signal stuff)
+-# BSD4.1
+-#	Use BSD4.1 to avoid some 4.2 dependencies (must be used with
+-#	BSD above; do not mix with SYSV)
+-# HIDEBYLINK
+-#	If defined, the program attempts to hide from ps
+-# DOCHECKPOINTS
+-#	If not defined, checkpoint files are periodically written by the
+-#	larn process (no forking) if enabled in the .larnopts description
+-#	file.  Checkpointing is handy on an unreliable system, but takes
+-#	CPU. Inclusion of DOCHECKPOINTS will cause fork()ing to perform the
+-#	checkpoints (again if enabled in the .larnopts file).  This usually
+-#	avoids pauses in larn while the checkpointing is being done (on
+-#	large machines).
+-# VER
+-#	This is the version of the software, example:  12
+-# SUBVER
+-#	This is the revision of the software, example:  1
+-# FLUSHNO=#
+-#	Set the input queue excess flushing threshold (default 5)
+-# NOVARARGS
+-#	Define for systems that don't have varargs (a default varargs will
+-#	be used).
+-# MACRORND
+-#	Define to use macro version of rnd() and rund() (fast and big)
+-# UIDSCORE
+-#	Define to use user id's to manage scoreboard.  Leaving this out will
+-#	cause player id's from the file ".playerids" to be used instead.
+-#	(.playerids is created upon demand).  Only one entry per id # is
+-#	allowed in each scoreboard (winning & non-winning).
+-#  VT100
+-#	Compile for using vt100 family of terminals.  Omission of this
+-#	define will cause larn to use termcap, but it will be MUCH slower
+-#	due to an extra layer of output interpretation.  Also, only VT100
+-#	mode allows 2 different standout modes, inverse video, and bold video.
+-#	And only in VT100 mode is the scrolling region of the terminal used
+-#	(much nicer than insert/delete line sequences to simulate it, if
+-#	VT100 is omitted).
+-# NONAP
+-#	This causes napms() to return immediately instead of delaying n
+-#	milliseconds.  This define may be needed on some systems if the nap
+-#	stuff does not work correctly (possible hang).  nap() is primarilly
+-#	used to delay for effect when casting missile type spells.
+-# NOLOG
+-#	Turn off logging.
+-
+-.include <bsd.own.mk>
+-
+-PROG=	larn
+-MAN=	larn.6
++CC= gcc
+ CPPFLAGS+=-DBSD -DVER=12 -DSUBVER=0 -DNONAP -DUIDSCORE -DTERMIOS
+-SRCS=	main.c object.c create.c tok.c display.c global.c data.c io.c \
+-	monster.c store.c diag.c help.c config.c nap.c bill.c scores.c \
+-	signal.c action.c moreobj.c movem.c regen.c fortune.c savelev.c
++OBJS=	main.o object.o create.o tok.o display.o global.o data.o io.o \
++	monster.o store.o diag.o help.o config.o nap.o bill.o scores.o \
++	signal.o action.o moreobj.o movem.o regen.o fortune.o savelev.o
++CCFLAGS= -g -w -DVER=12 -DSUBVER=0 -DNONAP -DUIDSCORE -DTERMIOS
++LDFLAGS= -lcurses
+ DPADD=	${LIBTERM}
+-LDADD=	-ltermcap
+-HIDEGAME=hidegame
+-SETGIDGAME=yes
+ 
+-.if ${MKSHARE} != "no"
+-DAT=larnmaze larnopts larn.help
+-FILES=${DAT:S@^@${.CURDIR}/datfiles/@g}
+-FILESDIR=/usr/share/games/larn
+-.endif
++larn: $(OBJS)
++	$(CC) $(CCFLAGS) -o larn $(OBJS) $(LDFLAGS)
++
++%.o: %.c
++	$(CC) $(CCFLAGS) -c $<
+ 
+-.include <bsd.prog.mk>
++clean:
++	rm -f *.o larn
+diff -Naur larn.bsd/action.c larn.linux/action.c
+--- larn.bsd/action.c	2008-02-19 07:05:26.000000000 +0100
++++ larn.linux/action.c	2009-09-05 23:41:49.825278921 +0200
+@@ -8,9 +8,6 @@
+  * ...
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: action.c,v 1.1 2008/02/19 06:05:26 dholland Exp $");
+-#endif				/* not lint */
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include "header.h"
+diff -Naur larn.bsd/bill.c larn.linux/bill.c
+--- larn.bsd/bill.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/bill.c	2009-09-05 23:42:09.825407698 +0200
+@@ -30,14 +30,6 @@
+  */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-#if 0
+-static char sccsid[] = "@(#)bill.c	5.2 (Berkeley) 5/28/91";
+-#else
+-__RCSID("$NetBSD: bill.c,v 1.10 2009/08/12 08:04:05 dholland Exp $");
+-#endif
+-#endif /* not lint */
+-
+ #include <sys/file.h>
+ #include <sys/wait.h>
+ #include <stdio.h>
+diff -Naur larn.bsd/config.c larn.linux/config.c
+--- larn.bsd/config.c	2008-01-28 06:38:53.000000000 +0100
++++ larn.linux/config.c	2009-09-05 23:42:24.328307034 +0200
+@@ -9,9 +9,6 @@
+  *		Larn is copyrighted 1986 by Noah Morgan.
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: config.c,v 1.6 2008/01/28 05:38:53 dholland Exp $");
+-#endif /* not lint */
+ 
+ #include "header.h"
+ #include "pathnames.h"
+diff -Naur larn.bsd/create.c larn.linux/create.c
+--- larn.bsd/create.c	2008-02-03 20:29:50.000000000 +0100
++++ larn.linux/create.c	2009-09-05 23:42:21.681640475 +0200
+@@ -3,9 +3,6 @@
+ /* create.c		Larn is copyrighted 1986 by Noah Morgan. */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: create.c,v 1.11 2008/02/03 19:29:50 dholland Exp $");
+-#endif				/* not lint */
+ 
+ #include "header.h"
+ #include "extern.h"
+diff -Naur larn.bsd/data.c larn.linux/data.c
+--- larn.bsd/data.c	2008-02-03 21:11:04.000000000 +0100
++++ larn.linux/data.c	2009-09-05 23:46:06.784977393 +0200
+@@ -30,13 +30,6 @@
+  */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-#if 0
+-static char     sccsid[] = "@(#)data.c	5.3 (Berkeley) 5/13/91";
+-#else
+-__RCSID("$NetBSD: data.c,v 1.13 2008/02/03 20:11:04 dholland Exp $");
+-#endif
+-#endif /* not lint */
+ 
+ /* data.c		Larn is copyrighted 1986 by Noah Morgan. */
+ /* #define NODEFS */
+diff -Naur larn.bsd/diag.c larn.linux/diag.c
+--- larn.bsd/diag.c	2008-02-03 20:20:41.000000000 +0100
++++ larn.linux/diag.c	2009-09-05 23:42:29.991639447 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* diag.c		Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: diag.c,v 1.12 2008/02/03 19:20:41 dholland Exp $");
+-#endif				/* not lint */
+ 
+ #include <sys/types.h>
+ #include <sys/times.h>
+diff -Naur larn.bsd/display.c larn.linux/display.c
+--- larn.bsd/display.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/display.c	2009-09-05 23:42:32.921644911 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* display.c		Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: display.c,v 1.9 2009/08/12 08:04:05 dholland Exp $");
+-#endif /* not lint */
+ 
+ #include "header.h"
+ #include "extern.h"
+diff -Naur larn.bsd/fortune.c larn.linux/fortune.c
+--- larn.bsd/fortune.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/fortune.c	2009-09-05 23:42:39.328321121 +0200
+@@ -30,13 +30,6 @@
+  */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-#if 0
+-static char     sccsid[] = "@(#)fortune.c	5.5 (Berkeley) 6/10/91";
+-#else
+-__RCSID("$NetBSD: fortune.c,v 1.7 2009/08/12 08:04:05 dholland Exp $");
+-#endif
+-#endif				/* not lint */
+ 
+ #include <stdlib.h>
+ 
+diff -Naur larn.bsd/global.c larn.linux/global.c
+--- larn.bsd/global.c	2008-02-04 02:07:01.000000000 +0100
++++ larn.linux/global.c	2009-09-05 23:42:43.974971581 +0200
+@@ -20,9 +20,6 @@
+  * quit()		subroutine to ask if the player really wants to quit
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: global.c,v 1.12 2008/02/04 01:07:01 dholland Exp $");
+-#endif /* not lint */
+ 
+ #include <string.h>
+ #include <unistd.h>
+diff -Naur larn.bsd/help.c larn.linux/help.c
+--- larn.bsd/help.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/help.c	2009-09-05 23:42:46.784977216 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* help.c		Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: help.c,v 1.8 2009/08/12 08:04:05 dholland Exp $");
+-#endif /* not lint */
+ 
+ #include <unistd.h>
+ 
+diff -Naur larn.bsd/io.c larn.linux/io.c
+--- larn.bsd/io.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/io.c	2009-09-06 00:24:04.514728812 +0200
+@@ -61,9 +61,6 @@
+  * Note: ** entries are available only in termcap mode.
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: io.c,v 1.24 2009/08/12 08:04:05 dholland Exp $");
+-#endif /* not lint */
+ 
+ #include "header.h"
+ #include "extern.h"
+@@ -650,7 +647,7 @@
+  * obvious meanings.
+  */
+ 
+-static struct tinfo *info;
++static char* bp;
+ static char *CM, *CE, *CD, *CL, *SO, *SE, *AL, *DL;	/* Termcap capabilities */
+ static char    *outbuf = 0;	/* translated output buffer */
+ 
+@@ -661,8 +658,9 @@
+ init_term()
+ {
+ 	char           *term;
++	char		   buffer[128];
+ 
+-	switch (t_getent(&info, term = getenv("TERM"))) {
++	switch (tgetent(bp, term = getenv("TERM"))) {
+ 	case -1:
+ 		write(2, "Cannot open termcap file.\n", 26);
+ 		exit(1);
+@@ -673,16 +671,16 @@
+ 		exit(1);
+ 	};
+ 
+-	CM = t_agetstr(info, "cm");	/* Cursor motion */
+-	CE = t_agetstr(info, "ce");	/* Clear to eoln */
+-	CL = t_agetstr(info, "cl");	/* Clear screen */
++	CM = tgetstr("cm", NULL);	/* Cursor motion */
++	CE = tgetstr("ce", NULL);	/* Clear to eoln */
++	CL = tgetstr("cl", NULL);	/* Clear screen */
+ 
+ 	/* OPTIONAL */
+-	AL = t_agetstr(info, "al");	/* Insert line */
+-	DL = t_agetstr(info, "dl");	/* Delete line */
+-	SO = t_agetstr(info, "so");	/* Begin standout mode */
+-	SE = t_agetstr(info, "se");	/* End standout mode */
+-	CD = t_agetstr(info, "cd");	/* Clear to end of display */
++	AL = tgetstr("al", NULL);	/* Insert line */
++	DL = tgetstr("dl", NULL);	/* Delete line */
++	SO = tgetstr("so", NULL);	/* Begin standout mode */
++	SE = tgetstr("se", NULL);	/* End standout mode */
++	CD = tgetstr("cd", NULL);	/* Clear to end of display */
+ 
+ 	if (!CM) {		/* can't find cursor motion entry */
+ 		write(2, "Sorry, for a ", 13);
+@@ -820,7 +818,7 @@
+ 	u_char  *str;
+ 	static int      curx = 0;
+ 	static int      cury = 0;
+-	char tgoto_buf[256];
++	char* tgoto_buf;
+ 
+ 	if ((lpoint = lpnt - lpbuf) > 0) {
+ #ifdef EXTRA
+@@ -863,8 +861,7 @@
+ 				case CURSOR:
+ 					curx = *++str - 1;
+ 					cury = *++str - 1;
+-					if (t_goto(info, CM, curx, cury,
+-						   tgoto_buf, 255) == 0)
++					if ((tgoto_buf = tgoto(CM, curx, cury)) != NULL)
+ 						tputs(tgoto_buf, 0, ttputch);
+ 					break;
+ 
+@@ -876,10 +873,7 @@
+ 
+ 							if (++scrline > 23)
+ 								scrline = 19;
+-							if (t_goto(info, CM, 0,
+-								   scrline,
+-								   tgoto_buf,
+-								   255) == 0)
++							if ((tgoto_buf = tgoto(CM, 0, scrline)) != NULL)
+ 								tputs(tgoto_buf,
+ 								      0,
+ 								      ttputch);
+@@ -887,27 +881,18 @@
+ 
+ 							if (--scrline < 19)
+ 								scrline = 23;
+-							if (t_goto(info, CM, 0,
+-								   scrline,
+-								   tgoto_buf,
+-								   255) == 0)
++							if ((tgoto_buf = tgoto(CM, 0, scrline)) != NULL)
+ 								tputs(tgoto_buf,
+ 								      0,
+ 								      ttputch);
+ 							tputs(CE, 0, ttputch);
+ 						} else {
+-							if (t_goto(info, CM, 0,
+-								   19,
+-								   tgoto_buf,
+-								   255) == 0)
++							if ((tgoto_buf = tgoto(CM, 0, 19)) != NULL)
+ 								tputs(tgoto_buf,
+ 								      0,
+ 								      ttputch);
+ 							tputs(DL, 0, ttputch);
+-							if (t_goto(info, CM, 0,
+-								   23,
+-								   tgoto_buf,
+-								   255) == 0)
++							if ((tgoto_buf = tgoto(CM, 0, 23)) != NULL)
+ 								tputs(tgoto_buf,
+ 								      0,
+ 								      ttputch);
+diff -Naur larn.bsd/main.c larn.linux/main.c
+--- larn.bsd/main.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/main.c	2009-09-05 23:42:55.951643109 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* main.c		 */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: main.c,v 1.24 2009/08/12 08:04:05 dholland Exp $");
+-#endif				/* not lint */
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
+diff -Naur larn.bsd/monster.c larn.linux/monster.c
+--- larn.bsd/monster.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/monster.c	2009-09-05 23:43:02.118303359 +0200
+@@ -99,9 +99,6 @@
+  *
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: monster.c,v 1.17 2009/08/12 08:04:05 dholland Exp $");
+-#endif				/* not lint */
+ 
+ #include <string.h>
+ #include <stdlib.h>
+diff -Naur larn.bsd/moreobj.c larn.linux/moreobj.c
+--- larn.bsd/moreobj.c	2008-02-19 07:05:26.000000000 +0100
++++ larn.linux/moreobj.c	2009-09-05 23:43:05.805107273 +0200
+@@ -8,9 +8,6 @@
+  * oaltar() othrone() ochest() ofountain()
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: moreobj.c,v 1.11 2008/02/19 06:05:26 dholland Exp $");
+-#endif				/* not lint */
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include "header.h"
+diff -Naur larn.bsd/movem.c larn.linux/movem.c
+--- larn.bsd/movem.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/movem.c	2009-09-05 23:43:09.238308480 +0200
+@@ -11,9 +11,6 @@
+  * movsphere() 		Function to look for and move spheres of annihilation
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: movem.c,v 1.7 2009/08/12 08:04:05 dholland Exp $");
+-#endif				/* not lint */
+ 
+ #include "header.h"
+ #include "extern.h"
+diff -Naur larn.bsd/nap.c larn.linux/nap.c
+--- larn.bsd/nap.c	1997-10-18 22:03:36.000000000 +0200
++++ larn.linux/nap.c	2009-09-05 23:43:11.878307976 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* nap.c		 Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: nap.c,v 1.5 1997/10/18 20:03:36 christos Exp $");
+-#endif				/* not lint */
+ 
+ #include <unistd.h>
+ #include "header.h"
+diff -Naur larn.bsd/object.c larn.linux/object.c
+--- larn.bsd/object.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/object.c	2009-09-05 23:43:15.381635103 +0200
+@@ -3,9 +3,6 @@
+ /* object.c		Larn is copyrighted 1986 by Noah Morgan. */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: object.c,v 1.15 2009/08/12 08:04:05 dholland Exp $");
+-#endif				/* not lint */
+ #include "header.h"
+ #include "extern.h"
+ 
+diff -Naur larn.bsd/pathnames.h larn.linux/pathnames.h
+--- larn.bsd/pathnames.h	2003-08-07 11:37:23.000000000 +0200
++++ larn.linux/pathnames.h	2009-09-06 01:03:03.644505585 +0200
+@@ -31,8 +31,8 @@
+  *	@(#)pathnames.h	5.2 (Berkeley) 4/27/95
+  */
+ 
+-#define	_PATH_LOG		"/var/games/larn/llog12.0"
+-#define	_PATH_SCORE		"/var/games/larn/lscore12.0"
+-#define	_PATH_HELP		"/usr/share/games/larn/larn.help"
+-#define	_PATH_LEVELS		"/usr/share/games/larn/larnmaze"
+-#define	_PATH_PLAYERIDS		"/var/games/larn/playerids"
++#define	_PATH_LOG		"/var/games/larn.log12.0"
++#define	_PATH_SCORE		"/var/games/larn.score12.0"
++#define	_PATH_HELP		"/usr/share/larn/larn.help"
++#define	_PATH_LEVELS		"/usr/share/larn/larnmaze"
++#define	_PATH_PLAYERIDS		"/var/games/larn.playerids"
+diff -Naur larn.bsd/regen.c larn.linux/regen.c
+--- larn.bsd/regen.c	1997-10-18 22:03:43.000000000 +0200
++++ larn.linux/regen.c	2009-09-05 23:43:19.598316927 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* regen.c 			Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: regen.c,v 1.5 1997/10/18 20:03:43 christos Exp $");
+-#endif				/* not lint */
+ 
+ #include "header.h"
+ #include "extern.h"
+diff -Naur larn.bsd/savelev.c larn.linux/savelev.c
+--- larn.bsd/savelev.c	2008-02-03 20:29:50.000000000 +0100
++++ larn.linux/savelev.c	2009-09-05 23:43:22.478307142 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* savelev.c		 Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: savelev.c,v 1.6 2008/02/03 19:29:50 dholland Exp $");
+-#endif				/* not lint */
+ #include "header.h"
+ #include "extern.h"
+ 
+diff -Naur larn.bsd/scores.c larn.linux/scores.c
+--- larn.bsd/scores.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/scores.c	2009-09-05 23:43:26.791660452 +0200
+@@ -25,9 +25,6 @@
+  * 
+  */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: scores.c,v 1.18 2009/08/12 08:04:05 dholland Exp $");
+-#endif				/* not lint */
+ #include <sys/types.h>
+ #include <sys/times.h>
+ #include <sys/stat.h>
+diff -Naur larn.bsd/signal.c larn.linux/signal.c
+--- larn.bsd/signal.c	2004-01-27 21:30:30.000000000 +0100
++++ larn.linux/signal.c	2009-09-05 23:47:54.292060018 +0200
+@@ -3,9 +3,6 @@
+ /* "Larn is copyrighted 1986 by Noah Morgan.\n" */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: signal.c,v 1.8 2004/01/27 20:30:30 jsm Exp $");
+-#endif	/* not lint */
+ 
+ #include <signal.h>
+ #include <stdio.h>
+@@ -109,7 +106,6 @@
+ 	signal(SIGILL, sigpanic);
+ 	signal(SIGTRAP, sigpanic);
+ 	signal(SIGIOT, sigpanic);
+-	signal(SIGEMT, sigpanic);
+ 	signal(SIGFPE, sigpanic);
+ 	signal(SIGBUS, sigpanic);
+ 	signal(SIGSEGV, sigpanic);
+@@ -132,8 +128,7 @@
+ 	char            buf[128];
+ 	signal(sig, SIG_DFL);
+ 	snprintf(buf, sizeof(buf),
+-	    "\nLarn - Panic! Signal %d received [SIG%s]", sig,
+-	    sys_signame[sig]);
++	    "\nLarn - Panic! Signal %d received", sig);
+ 	write(2, buf, strlen(buf));
+ 	sleep(2);
+ 	sncbr();
+diff -Naur larn.bsd/store.c larn.linux/store.c
+--- larn.bsd/store.c	2009-08-12 10:04:05.000000000 +0200
++++ larn.linux/store.c	2009-09-05 23:43:39.478325585 +0200
+@@ -30,13 +30,6 @@
+  */
+ 
+ #include <sys/cdefs.h>
+-#ifndef lint
+-#if 0
+-static char     sccsid[] = "@(#)store.c	5.4 (Berkeley) 5/13/91";
+-#else
+-__RCSID("$NetBSD: store.c,v 1.15 2009/08/12 08:04:05 dholland Exp $");
+-#endif
+-#endif				/* not lint */
+ 
+ /* store.c		Larn is copyrighted 1986 by Noah Morgan. */
+ #include "header.h"
+diff -Naur larn.bsd/tok.c larn.linux/tok.c
+--- larn.bsd/tok.c	2008-02-04 02:07:01.000000000 +0100
++++ larn.linux/tok.c	2009-09-05 23:52:53.308676239 +0200
+@@ -2,9 +2,6 @@
+ 
+ /* tok.c		Larn is copyrighted 1986 by Noah Morgan. */
+ #include <sys/cdefs.h>
+-#ifndef lint
+-__RCSID("$NetBSD: tok.c,v 1.10 2008/02/04 01:07:01 dholland Exp $");
+-#endif				/* not lint */
+ 
+ #include <sys/types.h>
+ #include <string.h>
+@@ -197,7 +194,7 @@
+ 		else if (strcmp(i, "monster:") == 0) {	/* name favorite monster */
+ 			if ((i = lgetw()) == 0)
+ 				break;
+-			strlcpy(usermonster[usermpoint], i, MAXMNAME);
++			strncpy(usermonster[usermpoint], i, MAXMNAME);
+ 			if (usermpoint >= MAXUM)
+ 				continue;	/* defined all of em */
+ 			if (isalpha(j = usermonster[usermpoint][0])) {
+@@ -212,7 +209,7 @@
+ 		else if (strcmp(i, "name:") == 0) {	/* defining players name */
+ 			if ((i = lgetw()) == 0)
+ 				break;
+-			strlcpy(logname, i, LOGNAMESIZE);
++			strncpy(logname, i, LOGNAMESIZE);
+ 			flag = 0;
+ 		} else if (strcmp(i, "no-introduction") == 0)
+ 			nowelcome = 1;
+@@ -221,7 +218,7 @@
+ 		else if (strcmp(i, "process-name:") == 0) {
+ 			if ((i = lgetw()) == 0)
+ 				break;
+-			strlcpy(psname, i, PSNAMESIZE);
++			strncpy(psname, i, PSNAMESIZE);
+ 		} else if (strcmp(i, "play-day-play") == 0) {
+ 			/* bypass time restrictions: ignored */
+ 		} else if (strcmp(i, "savefile:") == 0) {	/* defining savefilename */
