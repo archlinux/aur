@@ -1,6 +1,6 @@
 pkgbase = xpra-winswitch
 	pkgdesc = Modified version of xpra by Winswitch
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = http://xpra.org/
 	install = xpra-winswitch.install
@@ -23,10 +23,10 @@ pkgbase = xpra-winswitch
 	conflicts = parti-all
 	backup = etc/xpra/xpra.conf
 	backup = etc/xpra/xorg.conf
-	source = https://xpra.org/src/xpra-0.15.2.tar.xz
+	source = https://xpra.org/src/xpra-0.15.3.tar.xz
 	source = xpra-winswitch.install
 	source = xpra@.service
-	sha256sums = 30a123cf6b9a6db69de555e45482fc9311fc5d55a791e5f210c4c636947a4a33
+	sha256sums = 24a232d4d57626b05932086c97f20fbe5803ca649a1d71171e11400115c9e198
 	sha256sums = 1b1f8c58e1e8e5aa9816bffb1611a8a704a482ddfe789512159d5727035468f0
 	sha256sums = b882f72380ca6bdee9580e839440dd5bd3523b9db804095887127b9cce6cfaf2
 
