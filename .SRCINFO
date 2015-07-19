@@ -1,0 +1,20 @@
+pkgbase = yaoqiang-bpmn-editor
+	pkgdesc = An open source graphical editor for business process diagrams, compliant with OMG specifications (BPMN 2.0).
+	pkgver = 4.0.36
+	pkgrel = 1
+	url = http://bpmn.sourceforge.net/
+	arch = any
+	license = GPL3
+	license = custom: "free for non-commercial use"
+	depends = java-environment
+	source = yaoqiang-bpmn-editor
+	source = yaoqiang-bpmn-editor.desktop
+	source = yaoqiang-bpmn-editor.png
+	source = http://downloads.sourceforge.net/project/bpmn/4.0-GPLv3/yaoqiang-bpmn-editor-4.0.36.zip
+	sha256sums = e07d0a5de0f58ae849db7f273df0625cfe45d3416ece0511968c7951177e3cd0
+	sha256sums = 58d987538c56e8e0b542dd025803230c25265cd45d6040f9f398cc68ab4ad7ac
+	sha256sums = 038fd8a5e1f9518645fdb8382d704ed5297b89350c5fcace9f63213edb6d380e
+	sha256sums = 23af78721e17ab7d30b73ce7604c1bee4b73ef1eaa93a0aee92814c862b0e2d2
+
+pkgname = yaoqiang-bpmn-editor
+

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Yaoqiang BPMN Editor
+GenericName=BPMN and UML editor
+Exec=/opt/yaoqiang-bpmn-editor/yaoqiang-bpmn-editor
+Icon=/opt/yaoqiang-bpmn-editor/yaoqiang-bpmn-editor.png
+Path=/opt/yaoqiang-bpmn-editor
+Type=Application
+Categories=Development;IDE
