@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-shell-git
-pkgver=20150708.b8a467a
+pkgver=20150924.6c24840
 pkgrel=1
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ url="https://github.com/hawaii-desktop/hawaii-shell"
 license=('GPL', 'LGPL')
 depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg'
          'greenisland-git' 'pam' 'libpulse' 'libqtxdg' 'glib2' 'networkmanager-qt'
-         'hawaii-icon-themes-git' 'hawaii-wallpapers-git' 'solid'
+         'hawaii-icon-theme-git' 'hawaii-wallpapers-git' 'libhawaii-git' 'solid'
          'ttf-dejavu' 'ttf-droid')
 optdepends=('weston: nested mode support'
             'pulseaudio: audio support'
