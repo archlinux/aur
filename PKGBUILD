@@ -10,7 +10,7 @@ license=('GPLv3')
 groups=('base-devel')
 depends=('capstone')
 source=("https://github.com/t00sh/perl-capstone/archive/v$pkgver.tar.gz")
-md5sums=('2730e64c2fafd341668d8dc35dc5afbd')
+sha256sums=('1f23aa1c6088f2b27e3d5782298270c77ad6b1668835286e4fd5a0791ed0263e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
