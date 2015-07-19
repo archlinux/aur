@@ -2,17 +2,16 @@
 # Contributor: felixonmars
 # Contributor: Ionut Biru <ibiru at archlinux dot org>
 
-_pkgbase=libva-vdpau-driver
-pkgname=lib32-${_pkgbase}
+pkgname=lib32-libva-vdpau-driver
 pkgver=0.7.4
-pkgrel=4
+pkgrel=5
 pkgdesc="VDPAU backend for VA API (32-bit)"
 arch=('x86_64')
 url="http://freedesktop.org/wiki/Software/vaapi"
 license=('GPL')
 depends=('lib32-libva' 'lib32-libvdpau' 'lib32-libgl' 'libva-vdpau-driver')
 makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-mesa')
-source=("http://freedesktop.org/software/vaapi/releases/${_pkgbase}/${_pkgbase}-${pkgver}.tar.bz2"
+source=("http://freedesktop.org/software/vaapi/releases/${pkgname#lib32-}/${pkgname#lib32-}-${pkgver}.tar.bz2"
         "libva-vdpau-driver-0.7.4-glext-missing-definition.patch"
         "libva-vdpau-driver-0.7.4-libvdpau-0.8.patch"
         "libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch")
@@ -22,7 +21,7 @@ sha512sums=('89f98dc1d7d590fb68f440dd1e37e025d64a621324e013e85dd1367681c07b09132
             'f60e84f88eca17e762e3d5a53404d0215bca27051c02ff3e4441ad2c2897c0c04297b8e7b4693c37404bde95d7b5d7a6392b4c17ab1ece5f1bd78e6af376b301')
 
 prepare() {
-  cd ${_pkgbase}-${pkgver}
+  cd ${pkgname#lib32-}-${pkgver}
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
@@ -33,12 +32,12 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgbase}-${pkgver}
+  cd ${pkgname#lib32-}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${_pkgbase}-${pkgver}
+  cd ${pkgname#lib32-}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }

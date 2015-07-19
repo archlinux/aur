@@ -1,7 +1,7 @@
 pkgbase = lib32-libva-vdpau-driver
 	pkgdesc = VDPAU backend for VA API (32-bit)
 	pkgver = 0.7.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://freedesktop.org/wiki/Software/vaapi
 	arch = x86_64
 	license = GPL
