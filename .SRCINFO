@@ -1,0 +1,42 @@
+pkgbase = firefox-beta-bin-zh
+	pkgdesc = Standalone web browser from mozilla.org! Latest beta with Simplified Chinese language
+	pkgver = 40.0b4
+	pkgrel = 1
+	url = https://www.mozilla.org/zh-CN/firefox/channel/#beta
+	install = firefox-beta-bin.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = pacman>=4.2.0
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libevent
+	depends = libvpx
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = sqlite
+	optdepends = gst-plugins-base: vorbis decoding, ogg demuxing
+	optdepends = gst-plugins-good: webm and mp4 demuxing
+	optdepends = gst-plugins-bad: aac, vp8 and opus decoding
+	optdepends = gst-plugins-ugly: h.264 and mp3 decoding
+	optdepends = gst-libav: more decoders
+	optdepends = libpulse: PulseAudio driver
+	optdepends = networkmanager: Location detection via available WiFi networks
+	source = firefox-beta-bin.desktop
+	source = firefox-beta-bin-safe.desktop
+	md5sums = 13bd50c37f55a83539a680ce83162468
+	md5sums = 2d8d3cd7de5ffca9efc02aca300a51d6
+	source_i686 = http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0b4/linux-i686/zh-CN/firefox-40.0b4.tar.bz2
+	md5sums_i686 = c2ba478d9618662f0cd96f45f6c4462d
+	source_x86_64 = http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0b4/linux-x86_64/zh-CN/firefox-40.0b4.tar.bz2
+	md5sums_x86_64 = 16117352639757d8b9e6af9b1074ea49
+
+pkgname = firefox-beta-bin-zh
+
