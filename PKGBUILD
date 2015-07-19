@@ -1,5 +1,5 @@
-# Maintainer: -
-# Contributors: Det, josephgbr
+# Maintainer: Det
+# Contributors: josephgbr
 
 _pkgname=jre
 pkgname=bin32-jre
@@ -107,7 +107,7 @@ package() {
 
     # Suffix man pages
     for i in $(find man/ -type f); do
-        mv "${i}" "${i/.1}32-${_jname}.1"
+        mv "$i" "${i/.1}32-$_jname.1"
     done
 
     # Move man pages
@@ -124,6 +124,8 @@ package() {
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
     install -m644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/*.jar lib/security/
+    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/README.txt \
+                   "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
