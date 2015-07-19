@@ -9,27 +9,25 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://www.gnome.org/projects/NetworkManager/"
-makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc
-             lib32-dbus-glib iproute2 lib32-libnl lib32-nss lib32-polkit wpa_supplicant dhcp-client
-             lib32-libsoup lib32-systemd lib32-libndp lib32-libteam vala networkmanager)
+makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
+             lib32-dbus-glib iproute2 lib32-libnl lib32-nss lib32-polkit wpa_supplicant
+             lib32-libsoup lib32-systemd lib32-libgudev lib32-libndp
+             lib32-libteam vala networkmanager)
 checkdepends=(libx11 python-gobject python-dbus)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
-        disable_set_hostname.patch
-        0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch)
-sha256sums=('359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff'
-            '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            '4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a')
+        disable_set_hostname.patch)
+sha256sums=('e4099fa2f4f4b8d95d0ad9fdd03ec20960845085fa500bf79aecbf54cee018c9'
+            '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
 
 prepare() {
   cd NetworkManager-$pkgver
   patch -Np1 -i ../disable_set_hostname.patch
-  patch -Np1 -i ../0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -49,7 +47,7 @@ build() {
     --libexecdir=/usr/lib/networkmanager \
     --with-crypto=nss \
     --with-dhclient=/usr/bin/dhclient \
-    --with-dhcpcd=/usr/bin/dhcpcd \
+    --without-dhcpcd \
     --with-dnsmasq=/usr/bin/dnsmasq \
     --with-iptables=/usr/bin/iptables \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
@@ -72,12 +70,12 @@ build() {
 
 check() {
   cd NetworkManager-$pkgver
-  #make -k check
+  make -k check
 }
 
 package_lib32-networkmanager() {
-  depends=(lib32-libnm-glib iproute2 lib32-libnl lib32-polkit wpa_supplicant dhcp-client
-           lib32-libsoup  lib32-libndp lib32-libteam networkmanager)
+  depends=(lib32-libnm-glib iproute2 lib32-libnl lib32-polkit wpa_supplicant dhclient
+           lib32-libsoup  lib32-libndp lib32-libteam lib32-libgudev networkmanager)
 
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
@@ -94,7 +92,7 @@ package_lib32-networkmanager() {
 
 package_lib32-libnm-glib() {
   pkgdesc="NetworkManager library"
-  depends=(lib32-systemd lib32-nss lib32-dbus-glib)
+  depends=(lib32-libgudev lib32-nss lib32-dbus-glib lib32-util-linux)
 
   install -d "$pkgdir/usr/lib32"
   mv pkgconfig "$pkgdir/usr/lib32"
@@ -103,6 +101,7 @@ package_lib32-libnm-glib() {
   make DESTDIR="$pkgdir" -C libnm install
   make DESTDIR="$pkgdir" -C libnm-util install
   make DESTDIR="$pkgdir" -C libnm-glib install
+  make DESTDIR="$pkgdir" -C vapi install
 
   rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc"
 }
