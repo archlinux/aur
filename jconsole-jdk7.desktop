@@ -1,7 +1,7 @@
 [Desktop Entry]
 Exec=/usr/lib/jvm/java-7-jdk/bin/jconsole
 Icon=sun-java-jdk7
-Name=Java Monitoring and Management Console
+Name=Java 7 Monitoring and Management Console
 StartupNotify=true
 Terminal=false
 Type=Application
