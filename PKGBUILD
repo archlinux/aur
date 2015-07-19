@@ -15,7 +15,7 @@
 pkgname=ffmpeg-full-extra
 _pkgbasename=ffmpeg
 pkgver=2.7.1
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs; compatible to extra/ffmpeg)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ license=('GPL' 'custom:UNREDISTRIBUTABLE')
 depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'jack' 'lame'
          'libaacplus' 'libass' 'libavc1394' 'libbluray' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libfdk-aac' 'libiec61883' 'libmodplug' 'libpulse' 'libssh' 'libtheora' 'libva'
-         'libvdpau' 'openal' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl'
+         'libvdpau' 'libwebp' 'openal' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl'
          'speex' 'twolame' 'v4l-utils' 'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 'zlib'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
 makedepends=('libvdpau' 'yasm' 'pkg-config' 'hardening-wrapper')
@@ -81,6 +81,7 @@ build() {
     --enable-libvo-amrwbenc \
     --enable-libvorbis \
     --enable-libvpx \
+    --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxvid \

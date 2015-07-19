@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full-extra
 	pkgdesc = Record, convert, and stream audio and video (all codecs; compatible to extra/ffmpeg)
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = i686
@@ -37,6 +37,7 @@ pkgbase = ffmpeg-full-extra
 	depends = libtheora
 	depends = libva
 	depends = libvdpau
+	depends = libwebp
 	depends = openal
 	depends = opencore-amr
 	depends = openjpeg
