@@ -2,7 +2,7 @@ pkgbase=linux-e531
 _srcname=linux-4.1
 _patchname=patch-4.1.2
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 groups=('ThinkPad-E531')
 arch=('x86_64')
 url="http://www.hurrdurr.org/"
@@ -15,12 +15,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        )
+        '0001-block-loop-convert-to-per-device-workqueue.patch'
+        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch'
+        'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
-            '870934d91ef508e0014c698efe985496b6a6c7784bf4465cc07ae347761c4905'
+            'cfead5db43c0d8ad70e31eabaa8e2ecae7d2246e2d8a4334e3232f0e39d652d4'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
+            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
+            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -32,17 +39,36 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  patch -p1 -i "${srcdir}/${_patchname}"
+  # add upstream patch
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Fix deadlock with stacked loop devices (FS#45129)
+  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
+  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+
+  # Fix bluetooth chip initialization on some macbooks (FS#45554)
+  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  cat "${srcdir}/config.x86_64" > ./.config
+  if [ "${CARCH}" = "x86_64" ]; then
+    cat "${srcdir}/config.x86_64" > ./.config
+  else
+    cat "${srcdir}/config" > ./.config
+  fi
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -55,17 +81,16 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
+  # get kernel version
+  make prepare
+
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  make olddefconfig
   # ... or manually edit .config
-
-  # get kernel version
-  make prepare
 
   # rewrite configuration
   yes "" | make config >/dev/null
