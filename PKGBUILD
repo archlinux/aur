@@ -2,7 +2,7 @@
 
 pkgname=gnome-news-git
 _gitname=gnome-news
-pkgver=r98.ad5b706
+pkgver=r102.7280c26
 pkgrel=1
 pkgdesc='A GNOME 3 Feed Reader'
 arch=('i686' 'x86_64')
