@@ -1,0 +1,14 @@
+pkgbase = vera-xsettings-git
+	pkgdesc = a reference of the xsettings spec made for vera-desktop-environment
+	pkgver = 1.0.2.r21.g0c38f4b
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera-xsettings
+	arch = x86_64
+	arch = i686
+	license = GPL2.1
+	depends = vala
+	source = vera-xsettings::git+https://github.com/vera-desktop/vera-xsettings.git#branch=debian
+	md5sums = SKIP
+
+pkgname = vera-xsettings-git
+
