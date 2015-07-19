@@ -9,16 +9,24 @@ url="https://github.com/captin411/ofxclient"
 license=('MIT')
 depends=('python2>=2.7'
 		'python2-beautifulsoup4'
-		'ofxparse>=0.8'
+		'ofxparse'
 		'ofxhome'
-		'keyring'
-		'argparse'
+		'python2-keyring'
+		'python2-configargparse'
 		)
 # makedepends=()
 provides=(ofxclient)
 conflicts=(ofxclient)
 source=('ofxclient::git+https://github.com/captin411/ofxclient.git#branch=master')
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir$pkgname"
+    ( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 build() {
 	cd "$srcdir/ofxclient"

@@ -6,8 +6,15 @@ pkgbase = ofxclient-git
 	arch = x86_64
 	arch = i686
 	license = MIT
-	depends = python2.7
-	source = ofxclient::git+https://project_url#branch=project_branch
+	depends = python2>=2.7
+	depends = python2-beautifulsoup4
+	depends = ofxparse
+	depends = ofxhome
+	depends = python2-keyring
+	depends = python2-configargparse
+	provides = ofxclient
+	conflicts = ofxclient
+	source = ofxclient::git+https://github.com/captin411/ofxclient.git#branch=master
 	md5sums = SKIP
 
 pkgname = ofxclient-git
