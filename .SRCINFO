@@ -1,0 +1,15 @@
+pkgbase = libaec
+	pkgdesc = Adaptive Entropy Coding library
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://www.dkrz.de/redmine/projects/aec
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = custom
+	makedepends = cmake
+	source = https://www.dkrz.de/redmine/attachments/download/453/libaec-0.3.2.tar.gz
+	md5sums = 19c1211935d82d8b0bf581329634a6d7
+
+pkgname = libaec
+
