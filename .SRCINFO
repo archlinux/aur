@@ -9,7 +9,7 @@ pkgbase = python-gdspy
 	depends = python
 	depends = python-numpy
 	source = https://github.com/heitzmann/gdspy/archive/v0.7.1.tar.gz
-	md5sums = a222705b2b6151bd1e4ed15e29998a4e
+	md5sums = 5a6bbc5a64c05f8f18b666140778b47d
 
 pkgname = python-gdspy
 
