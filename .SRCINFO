@@ -1,0 +1,16 @@
+pkgbase = fairsplit
+	pkgdesc = A simple program to calculate how to split multiple expenses fairly.
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://github.com/cassava/fairsplit
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	options = !strip
+	source = git+https://github.com/cassava/fairsplit.git#tag=v1.1
+	md5sums = SKIP
+
+pkgname = fairsplit
+
