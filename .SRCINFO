@@ -1,0 +1,21 @@
+pkgbase = rmlint-git
+	pkgdesc = Tool to remove duplicates and other lint, being much faster than fdupes
+	pkgver = 967.812a5d5
+	pkgrel = 3
+	url = https://github.com/sahib/rmlint
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = scons
+	makedepends = python-sphinx
+	depends = glibc
+	depends = glib2>=2.31
+	depends = libutil-linux
+	depends = elfutils
+	provides = rmlint
+	source = rmlint-git::git+https://github.com/sahib/rmlint.git
+	md5sums = SKIP
+
+pkgname = rmlint-git
+
