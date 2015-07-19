@@ -1,15 +1,15 @@
 pkgbase = vdradmin-am
 	pkgdesc = Web user interface for VDR
 	pkgver = 3.6.10
-	pkgrel = 4
+	pkgrel = 5
 	url = http://andreas.vdr-developer.org/vdradmin-am
 	arch = any
 	license = GPL2
 	makedepends = perl-authen-sasl
-	makedepends = perl-cgi
 	makedepends = perl-digest-hmac
 	makedepends = perl-io-socket-inet6
 	makedepends = perl-io-socket-ssl
+	depends = perl-cgi
 	depends = perl-http-date
 	depends = perl-locale-gettext
 	depends = perl-template-plugin-javascript
