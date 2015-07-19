@@ -1,13 +1,13 @@
 pkgbase = lightdm-webkit-archsingle-theme-git
 	pkgdesc = Archlinux signeluser theme for LightDM Webkit
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/victorhaggqvist/lightdm-webkit-archsingle-theme
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = lightdm-webkit-greeter
+	depends = lightdm-webkit2-greeter
 	conflicts = lightdm-webkit-archsingle-theme
 	source = git://github.com/victorhaggqvist/lightdm-webkit-archsingle-theme
 	md5sums = SKIP

@@ -3,12 +3,12 @@
 _pkgname=lightdm-webkit-archsingle-theme
 pkgname=$_pkgname-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Archlinux signeluser theme for LightDM Webkit"
 arch=('i686' 'x86_64')
 url="https://github.com/victorhaggqvist/lightdm-webkit-archsingle-theme"
 license=("GPL2")
-depends=('lightdm-webkit-greeter')
+depends=('lightdm-webkit2-greeter')
 makedepends=('git')
 providers=("$_pkgname")
 conflicts=("$_pkgname")
