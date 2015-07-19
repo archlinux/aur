@@ -6,12 +6,13 @@ pkgbase = libkexiv2-frameworks-git
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
+	makedepends = git
 	makedepends = python
 	depends = ktextwidgets
 	depends = exiv2
+	conflicts = libkexiv2
 	source = git://anongit.kde.org/libkexiv2#branch=frameworks
 	sha1sums = SKIP
 

@@ -8,14 +8,15 @@ arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2'
 license=('LGPL')
 depends=('ktextwidgets' 'exiv2')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
+conflicts=('libkexiv2')
 source=('git://anongit.kde.org/libkexiv2#branch=frameworks')
 sha1sums=('SKIP')
 
 pkgver() {
   cd libkexiv2
-  _ver="$(cat CMakeLists.txt | grep -e KEXIV2_LIB_MAJOR_VERSION -e KEXIV2_LIB_MINOR_VERSION -e KEXIV2_LIB_PATCH_VERSION | head -n3 | cut -d '"' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e KEXIV2_LIB_MAJOR_VERSION -e KEXIV2_LIB_MINOR_VERSION -e KEXIV2_LIB_PATCH_VERSION | cut -d '"' -f2 | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
