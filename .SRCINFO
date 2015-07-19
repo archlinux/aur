@@ -1,0 +1,13 @@
+pkgbase = gotty
+	pkgdesc = Go TTY - The Really Simple TTY Terminal Application
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://gotty.io
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	source = https://github.com/gotty/gotty/releases/download/v1.2/gotty-1.2.tar.xz
+	sha256sums = 78b5341e0fde2747dad05ebecf04e11d19b2a9984029418d594ae381caf0ec32
+
+pkgname = gotty
+
