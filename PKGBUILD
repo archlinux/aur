@@ -2,7 +2,7 @@
 
 pkgname=greenisland
 pkgver=0.5.90
-pkgrel=1
+pkgrel=2
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/greenisland/greenisland.git'
