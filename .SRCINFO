@@ -1,0 +1,29 @@
+pkgbase = hawaii-qt5-wayland
+	pkgdesc = A cross-platform application and UI framework (QtWayland)
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = http://qt.io/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	makedepends = gdb
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = libxcomposite
+	depends = libxrender
+	depends = mtdev
+	depends = wayland
+	provides = qt5-wayland
+	conflicts = qt5-wayland
+	replaces = qt5-wayland
+	options = !libtool
+	options = debug
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtwayland-opensource-src-5.5.0.tar.xz
+	source = Update_wayland.xml_to_1.6.patch
+	md5sums = 34a8def020585b563fad9bfe9be49563
+	md5sums = 604ecf79b3c3c3943fae9c792074a250
+
+pkgname = hawaii-qt5-wayland
+
