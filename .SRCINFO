@@ -1,0 +1,17 @@
+pkgbase = mywire-connect
+	pkgdesc = Automatically complete the login process to a mywire internet connection
+	pkgver = 0.10
+	pkgrel = 3
+	url = https://github.com/cassava/mywire-connect
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = dbus: support for desktop notifications
+	options = !strip
+	source = git+https://github.com/cassava/mywire-connect.git#tag=v0.10
+	md5sums = SKIP
+
+pkgname = mywire-connect
+
