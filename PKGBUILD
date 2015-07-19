@@ -1,7 +1,7 @@
 # Maintainer: Justin Dray <justin@dray.be>
 
 pkgname=sickrage
-pkgver=4.0.22
+pkgver=4.0.40
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage and torrents support."
 arch=('any')
@@ -21,7 +21,7 @@ source=("https://github.com/SiCKRAGETV/SickRage/archive/v${pkgver}.tar.gz"
         'sickrage-system.service'
         'sickrage-user.service'
 	'sickrage.tmpfile')
-sha256sums=('c343e366e128209302912ea8a0e8d079407cd6d99128d0ea4674b635e04215ce'
+sha256sums=('01830d2332a0952fa091e5998925a073c9704b4454f2511f46487b032fa7d1e1'
             '468b04a3d143980c51bc5705237caff7fdd180c772081e4289ee69dd3aeb14f9'
             'c78db64732dc5f725868aea3e84f5ecc0fefef8fe7b5cbd419811929d0602714'
             '7fbf425e4ef14345e9a91c098c6f1a9cb6ddaed2617b04160a47d35747083565')
