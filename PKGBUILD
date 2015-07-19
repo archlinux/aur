@@ -1,7 +1,7 @@
 # Maintainer: tailinchu <use_my_id at gmail dot com>
 
 pkgname=ttf-noto
-pkgver=20150718
+pkgver=20150719
 pkgrel=1
 pkgdesc="Fonts support all languages/characters in Unicode"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=()
 conflicts=()
 provides=('ttf-font')
-source=("http://storage.googleapis.com/noto-website/pkgs/Noto-hinted.zip")
+source=("https://noto-website.storage.googleapis.com/pkgs/Noto-hinted.zip")
 install=$pkgname.install
 PKGEXT='.pkg.tar' # because XZ compression is awfully slow
 md5sums=('70cb627abadc32f66de34cfb6f2a65db')
