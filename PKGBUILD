@@ -1,6 +1,6 @@
 # Maintainer: xkero <sinister.ray@gmail.com>
 pkgname=zenbooru
-pkgver=0.4.0_1
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='A standalone client for image boards that supports Gelbooru v0.2, Danbooru (v1 & v2), Moebooru, and booru.org sites.'
 arch=(any)
@@ -15,7 +15,7 @@ source=(
 	'zenbooru.desktop'
 	'zenbooru.sh'
 )
-sha256sums=('4cc8020de05f8117201d29e7c363fa3804fb407281d48b17aec7e551b09ad783'
+sha256sums=('a8d328f6f493e0d09916447b02173cc19253c303567d659d2a4bb840b78902bd'
             'b07caa8f83cdc615a97a346b7cfea91b9f673f97aab66052eac7142401b33581'
             '92a1f17e9b3546a6865e098feab63c28c2e5dbb0336053624e1454a7fb115414'
             '95165ed7a6e609b76578b6594c3aa3f1a35917ee8166f09011f6fd850471fe21')
