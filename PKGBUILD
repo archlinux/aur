@@ -5,7 +5,7 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview-salome
-pkgver=4.3.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK - This version is built to be linked against salome modules'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('qtwebkit' 'openmpi' 'python2' 'ffmpeg-compat' 'boost' 'libcgns-paraview' 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf')
 makedepends=('cmake' 'mesa' 'eigen3')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language' 'python2-numpy: Needed for using some filters such as "Python Calculator"')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "patch-uint.diff" "patch-gcc49.diff")
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "uint.patch" "gcc49.patch" "ParaView-4.2.0.patch")
 
 options=(staticlibs)
 provides=("paraview=${pkgver}")
@@ -25,11 +25,14 @@ _installdir=/usr
 prepare(){
   cd "${srcdir}/ParaView-v${pkgver}-source"
 
-  # patch to solve uint conversion to int
-  patch -Np1 -i "${srcdir}/patch-gcc49.diff"
+  # patch to solve gcc49 compatiblity
+  patch -Np1 -i "${srcdir}/gcc49.patch"
   
   # patch to solve uint conversion to int
-  patch -Np1 -i "${srcdir}/patch-uint.diff"
+  patch -Np1 -i "${srcdir}/uint.patch"
+
+  # patch to solve uint conversion to int
+  patch -Np1 -i "${srcdir}/ParaView-4.2.0.patch"
 }
 
 build() {
@@ -100,7 +103,7 @@ package() {
   cd "${srcdir}"
 
   #Install missing cmake file
-  for _FILE in TopologicalSort.cmake VTKTargets.cmake
+  for _FILE in TopologicalSort.cmake
   do
     install -Dm644 `find ./ -name ${_FILE}` "${pkgdir}${_installdir}/lib/cmake/paraview-${pkgver:0:3}/"
   done
@@ -130,8 +133,9 @@ package() {
   done
   sed -e "s|${srcdir}/ParaView-v${pkgver}/CMake|${_installdir}/lib/CMake|" -i ParaViewConfig.cmake
 }
-md5sums=('d03d3ab504037edd21306413dff64293'
+md5sums=('77cf0e3804eb7bb91d2d94b10bd470f4'
          'db623002bc71a257ddfdd0c9c7b14c3f'
          'e3ba22be644f91da7018f429c3b7dd39'
          'e034fc590bd332175dcd6bf126f14d97'
-         '12fa547d0c79ea6a780279712574a5fe')
+         '12fa547d0c79ea6a780279712574a5fe'
+         '3e4c48633eb337c42653f51e6112f347')
