@@ -1,0 +1,14 @@
+pkgbase = pidgin-window_merge
+	pkgdesc = Pidgin plugin that merges the Buddy List window with a conversation window.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/dm0-/window_merge
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pidgin
+	source = https://github.com/downloads/dm0-/window_merge/window_merge-0.3.tar.gz
+	md5sums = f8cd52ea39cdd8eb618b2db2cc1ee1fe
+
+pkgname = pidgin-window_merge
+
