@@ -1,6 +1,6 @@
 pkgbase = journalcheck-git
 	pkgdesc = A simple replacement for logcheck when using journald
-	pkgver = latest
+	pkgver = r55.17602cb
 	pkgrel = 1
 	url = https://github.com/lynix/journalcheck
 	arch = any
