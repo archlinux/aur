@@ -2,7 +2,7 @@
 #Contributor:  Peter Mukhachev <rolling[dot]robot [shift-two] gmail [dot] com>
 
 # 'alexandria' is taken by another app
-pkgname=cl-alexandria-git 
+pkgname=cl-alexandria-git
 pkgver=r194.b1c6ee0
 pkgrel=1
 pkgdesc="Common Lisp portability library"
@@ -12,36 +12,21 @@ license=('custom') # Public Domain
 provides=('cl-alexandria')
 conflicts=('cl-alexandria-darcs')
 depends=('common-lisp')
+makedepends=('git')
 install=cl-alexandria.install
-source=()
-md5sums=()
+source=("git+https://github.com/keithj/alexandria.git")
+md5sums=("SKIP")
 options=(docs)
 
 _clname=alexandria
 
-_gitroot="https://github.com/keithj/alexandria.git"
 _gitname="alexandria"
 
 pkgver() {
-	cd $srcdir/${_gitname}
+	cd ${_gitname}
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	}
 
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-}
 package() {
 
     cat << EOM

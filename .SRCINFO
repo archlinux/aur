@@ -7,10 +7,13 @@ pkgbase = cl-alexandria-git
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = git
 	depends = common-lisp
 	provides = cl-alexandria
 	conflicts = cl-alexandria-darcs
 	options = docs
+	source = git+https://github.com/keithj/alexandria.git
+	md5sums = SKIP
 
 pkgname = cl-alexandria-git
 
