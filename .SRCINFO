@@ -1,6 +1,6 @@
 pkgbase = kipi-plugins-frameworks-git
 	pkgdesc = A collection of plugins extending the KDE graphics and image applications as digiKam, Gwenview, and KPhotoalbum. KF5 Frameworks branch. (GIT version)
-	pkgver = 5.0.0.r10553.936fe59
+	pkgver = 5.0.0.r10609.fa604ac
 	pkgrel = 1
 	url = http://www.digikam.org/sharedlibs
 	install = kipi-plugins-frameworks-git.install
@@ -14,6 +14,7 @@ pkgbase = kipi-plugins-frameworks-git
 	makedepends = git
 	makedepends = python
 	makedepends = qjson-qt5-git
+	makedepends = kwallet
 	makedepends = libkvkontakte-frameworks-git
 	makedepends = libmediawiki-frameworks-git
 	makedepends = libksane-frameworks-git
@@ -28,7 +29,8 @@ pkgbase = kipi-plugins-frameworks-git
 	optdepends = libmediawiki-frameworks-git: MediaWiki plugin
 	optdepends = libkgeomap-frameworks-git: Geolocator plugin
 	optdepends = kcalcore-git: Calendar plugin
-	optdepends = qjson-qt5-git: Google Services plugin
+	optdepends = qjson-qt5-git: Dropbox & Facebook plugin
+	optdepends = kwallet: Password management
 	optdepends = hugin: Panaorama plugin
 	conflicts = kipi-plugins
 	source = git://anongit.kde.org/kipi-plugins#branch=frameworks
