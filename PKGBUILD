@@ -14,7 +14,7 @@ replaces=()
 backup=()
 install=
 source=("https://github.com/heitzmann/${modname}/archive/v${pkgver}.tar.gz")
-md5sums=('a222705b2b6151bd1e4ed15e29998a4e')
+md5sums=('5a6bbc5a64c05f8f18b666140778b47d')
 
 build() {
   cd "${srcdir}/${modname}-${pkgver}"
