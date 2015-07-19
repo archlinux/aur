@@ -1,0 +1,24 @@
+pkgbase = csfml-bin
+	pkgdesc = SFML and CSFML multimedia API. C and C++ binaries from Ubuntu (including soil=0707), version 1.5+repack1
+	pkgver = 1.5ubuntu
+	pkgrel = 3
+	url = http://www.sfml-dev.org
+	arch = i686
+	arch = x86_64
+	license = zlib
+	depends = libsndfile
+	depends = openal
+	depends = glew1.5
+	depends = libjpeg6
+	depends = libpng12
+	depends = zlib
+	depends = freetype2
+	provides = sfml=1.5
+	provides = csfml=1.5
+	provides = soil=0707
+	conflicts = sfml
+	conflicts = csfml
+	conflicts = soil
+
+pkgname = csfml-bin
+
