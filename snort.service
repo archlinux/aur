@@ -1,0 +1,8 @@
+[Unit]
+Description=Snort IDS daemon in NFQUEUE mode
+
+[Service]
+ExecStart=/usr/bin/snort -Q -u snort -g snort -c /etc/snort/snort.conf -l /var/log/snort
+
+[Install]
+WantedBy=multi-user.target

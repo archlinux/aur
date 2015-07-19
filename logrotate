@@ -1,0 +1,19 @@
+/var/log/snort/*.log {
+	sharedscripts
+	missingok
+	notifempty
+}
+
+/var/log/snort/alert /var/log/snort/snort.log* /var/log/snort/snort_unified.log* {
+	nocompress
+	nocreate
+        olddir /var/log/snort/old
+	sharedscripts
+	missingok
+	postrotate
+		/usr/bin/find /var/log/snort/old -maxdepth 1 -name 'alert*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
+		/usr/bin/find /var/log/snort/old -maxdepth 1 -name 'snort.log*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
+		/usr/bin/find /var/log/snort/old -maxdepth 1 -name 'snort_unified.log*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
+		/usr/bin/systemctl is-active snort > /dev/null 2>&1 && /usr/bin/systemctl restart snort > /dev/null 2>&1 || true
+	endscript
+}

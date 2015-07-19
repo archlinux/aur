@@ -1,0 +1,47 @@
+pkgbase = snort-nfqueue
+	pkgdesc = A lightweight network intrusion detection system.
+	pkgver = 2.9.6.1
+	pkgrel = 7
+	url = http://www.snort.org
+	install = snort.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libdaq
+	depends = libdnet
+	depends = libnetfilter_queue
+	depends = libpcap
+	depends = openssl
+	depends = pcre
+	depends = zlib
+	provides = snort=2.9.6.1
+	conflicts = snort
+	options = !makeflags
+	options = !libtool
+	backup = etc/snort/snort.conf
+	backup = etc/snort/homenet.conf
+	backup = etc/snort/rules/local.rules
+	backup = etc/snort/rules/snort.rules
+	backup = etc/snort/threshold.conf
+	backup = etc/snort/reference.config
+	backup = etc/snort/classification.config
+	backup = etc/logrotate.d/snort
+	source = http://www.snort.org/dl/snort-current/snort-2.9.6.1.tar.gz
+	source = http://www.snort.org/dl/snort-current/snort-2.9.6.1.tar.gz.sig
+	source = http://rules.emergingthreats.net/open/snort-2.9.0/emerging.rules.tar.gz
+	source = snort.conf
+	source = homenet.conf
+	source = local.rules
+	source = logrotate
+	source = snort.service
+	sha256sums = 119e4c5df83fe36a8d465e72a0347fe31e7771704da286f04115b0c5baa5f7b8
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 7eb355f118a80002bc10b6069b641b57041ea9061e4d65f4c5e50d78aa640f84
+	sha256sums = b65d8d8e37f686244dfb7293b1ea378f1dfd8141c14dbaf5e83dba9440152808
+	sha256sums = ec4d81936b3905ba980ee694ae77ad15d5adda45c9f87fa0c27adc38f11bca08
+	sha256sums = 4df93871c41f94d688a6c8b9762fa221a703b54d309ee1436c90eebbd3fb8c9d
+	sha256sums = b904ed172ea0c1a4eeaddb30745aadb8db21e333eb9faaf93400ce3db166f90d
+
+pkgname = snort-nfqueue
+

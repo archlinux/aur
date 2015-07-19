@@ -1,0 +1,1 @@
+#alert tcp any any <> any 80 (msg: "Test web activity"; sid:1000001;)

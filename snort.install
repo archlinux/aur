@@ -1,0 +1,39 @@
+post_install() {
+  getent group snort &>/dev/null || groupadd -r -g 29 snort >/dev/null
+  getent passwd snort &>/dev/null || useradd -r -u 29 -c 'Snort user' -g snort -d /var/log/snort -s /bin/false snort >/dev/null
+
+cat << _EOF  
+
+>>> EDIT /etc/snort/homenet.conf file to match your local network.
+>>> Also EDIT /etc/snort/rules/emerging.conf as per your requirement.
+>>> Add local rules to /etc/snort/rules/local.rules
+
+>>> TIP: iptables rule to monitor all FORWARDed traffic:
+>>>   iptables -I FORWARD -j NFQUEUE --queue-bypass
+
+>>> Note: ALERTs are automatically deleted after 60 days
+>>>   use barnyard2 to store them in database
+
+_EOF
+
+  if [ ! -x "/usr/lib/daq/daq_nfq.so" ]; then
+    echo
+    echo 'WARNING: daq is without NFQUEUE support snort-nfqueue will NOT work'
+    echo 'WARNING: first download libdaq source, makepkg and install it'
+    echo
+    echo 'WEBSITE: https://www.archlinux.org/packages/?q=libdaq'
+    echo
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  getent passwd snort &>/dev/null && userdel snort >/dev/null
+  getent group snort &>/dev/null && groupdel snort >/dev/null
+  return 0
+}
+
+# vim:set ts=2 sw=2 et:
