@@ -1,6 +1,6 @@
 pkgbase = tarantool-git
 	pkgdesc = an in-memory database designed to store the most volatile and highly accessible web content
-	pkgver = 1.6.4.r451.gafa312b
+	pkgver = 1.6.5.r253.g48317c8
 	pkgrel = 1
 	url = http://www.tarantool.org
 	install = tarantool.install
