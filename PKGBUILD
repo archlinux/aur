@@ -13,7 +13,7 @@
 
 pkgname=terminator-trunk
 _pkgname=terminator
-pkgver=0.97.r1568
+pkgver=0.97.r1572
 pkgrel=1
 pkgdesc='Terminal emulator that supports tabs and grids (bzr trunk developmental version)'
 arch=('any')
@@ -31,6 +31,8 @@ md5sums=('SKIP')
 
 pkgver() {
    cd ${srcdir}/${_pkgname}
+   #bzr revert -r1572 > /dev/null 2>&1
+   # ^^ If terminator refuses to start for you, uncomment (remove the #) the line above
    echo $(tail -n 1 terminatorlib/version.py | sed "s|^APP_VERSION = '||" | sed "s|'$||").r$(bzr revno "${srcdir}/${_pkgname}")
 }
 
