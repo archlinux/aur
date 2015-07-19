@@ -11,7 +11,7 @@ makedepends=('cvs')
 source=('larn-bsdtolinux.diff')
 md5sums=('fd26cceed04e59ade0e9ec85d721d7c5')
 
-build() {
+package() {
 _cvsroot=":pserver:anoncvs@anoncvs.NetBSD.org:/cvsroot"
 _cvsmod="src/games/larn"
 
