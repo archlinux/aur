@@ -1,0 +1,37 @@
+From 88739b20109dc775fe152daeac7fff38d23420e4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 15 Dec 2014 17:27:09 +0100
+Subject: [PATCH] Substitute the correct GTK+ version in pkgconfig file
+
+This fixes the build of GTK+ 3 version of lxappearance-obconf.
+---
+ configure.ac            | 1 +
+ data/lxappearance.pc.in | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index a91c34b..2ba5d34 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,6 +88,7 @@ gmodule_modules="gmodule-export-2.0"
+ PKG_CHECK_MODULES(GMODULE, [$gmodule_modules])
+ AC_SUBST(GMODULE_CFLAGS)
+ AC_SUBST(GMODULE_LIBS)
++AC_SUBST(gtk_modules)
+ 
+ # gio_modules="gthread-2.0 gio-unix-2.0 glib-2.0 >= 2.18.0"
+ # PKG_CHECK_MODULES(GIO, [$gio_modules])
+diff --git a/data/lxappearance.pc.in b/data/lxappearance.pc.in
+index 9abd35e..e711a31 100644
+--- a/data/lxappearance.pc.in
++++ b/data/lxappearance.pc.in
+@@ -6,5 +6,5 @@ datadir=@datadir@
+ 
+ Name: lxappearance
+ Description: Tool used to customize look and feel of gtk+ applications.
+-Requires: gtk+-2.0 >= 2.12
++Requires: @gtk_modules@
+ Version: @VERSION@
+-- 
+2.1.3
+

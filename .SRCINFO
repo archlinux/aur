@@ -1,0 +1,23 @@
+pkgbase = lxappearance-gtk3
+	pkgdesc = Feature-rich GTK+ theme switcher of the LXDE Desktop (GTK+ 3 version)
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	makedepends = dbus-glib
+	depends = gtk3
+	provides = lxappearance
+	conflicts = lxappearance
+	source = http://downloads.sourceforge.net/lxde/lxappearance-0.6.1.tar.xz
+	source = 0001-Substitute-the-correct-GTK-version-in-pkgconfig-file.patch
+	source = 0002-Fix-About-dialog-for-GTK-3.patch
+	md5sums = 79740125628a8374c1101cf26e558fa5
+	md5sums = 4c8e294c268c884e92e7b2b87c3f0942
+	md5sums = ca89c010d12ca4be9120580334bcda79
+
+pkgname = lxappearance-gtk3
+
