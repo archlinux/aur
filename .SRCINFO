@@ -8,6 +8,7 @@ pkgbase = sunflower-git
 	makedepends = git
 	depends = pygtk
 	depends = librsvg
+	depends = python2-chardet
 	optdepends = python2-notify
 	optdepends = vte
 	conflicts = sunflower
