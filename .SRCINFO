@@ -1,0 +1,16 @@
+pkgbase = python-pyvisa
+	pkgdesc = A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/hgrecco/pyvisa
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-distribute
+	depends = python-docutils
+	optdepends = python-pyvisa-py: Pure Python backend
+	source = pyvisa-1.7.tar.gz::https://github.com/hgrecco/pyvisa/archive/1.7.tar.gz
+	md5sums = a55449a61536c59174b8ad207f321201
+
+pkgname = python-pyvisa
+
