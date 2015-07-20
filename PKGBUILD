@@ -7,7 +7,7 @@ _gitbranch=develop
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2386.06a15ee
+pkgver=2391.090cd13
 pkgrel=1
 url='https://github.com/powerline/powerline'
 license=('MIT')
@@ -25,8 +25,8 @@ pkgver() {
 
 build() {
 	cd "${_gitname}"/docs
-	SPHINXBUILD=sphinx-build2 BUILDDIR=_build-python2 make man
-	SPHINXBUILD=sphinx-build BUILDDIR=_build-python make man
+	make man SPHINXBUILD=sphinx-build2 BUILDDIR=_build-python2
+	make man SPHINXBUILD=sphinx-build BUILDDIR=_build-python
 }
 
 package_generic() {
