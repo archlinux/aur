@@ -1,6 +1,6 @@
 pkgbase = rxvt-unicode-24bit
 	pkgdesc = A unicode enabled rxvt-clone terminal emulator (urxvt) with 24-bit color support
-	pkgver = 10fcb24
+	pkgver = f252c55
 	pkgrel = 1
 	url = http://github.com/spudowiar/rxvt-unicode/tree/24bit
 	arch = i686
