@@ -14,7 +14,7 @@ BUILDENV+=('!check')
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
-pkgver=0.7.5.testing.build.1469.pre1.16.g4230369
+pkgver=0.7.5.1469
 pkgrel=1
 
 _pkgver=0.7.5
