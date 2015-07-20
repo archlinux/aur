@@ -8,9 +8,11 @@ arch=('any')
 license=('MIT')
 depends=('php')
 source=("https://github.com/Halleck45/PhpMetrics/raw/v${pkgver}/build/phpmetrics.phar"
-        "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${pkgver}/LICENSE")
+        "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${pkgver}/LICENSE"
+        "phpmetrics.install")
 md5sums=('fbc5f2d0f3930f0a941077bd2566a594'
-         '98c47c276d10a1201dc924b099e2ec00')
+         '98c47c276d10a1201dc924b099e2ec00'
+         '4b2b590f00765d9abdeebe5b0a100ed8')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"

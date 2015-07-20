@@ -8,8 +8,10 @@ pkgbase = phpmetrics
 	depends = php
 	source = https://github.com/Halleck45/PhpMetrics/raw/v1.1.1/build/phpmetrics.phar
 	source = https://raw.githubusercontent.com/Halleck45/PhpMetrics/v1.1.1/LICENSE
+	source = phpmetrics.install
 	md5sums = fbc5f2d0f3930f0a941077bd2566a594
 	md5sums = 98c47c276d10a1201dc924b099e2ec00
+	md5sums = 4b2b590f00765d9abdeebe5b0a100ed8
 
 pkgname = phpmetrics
 
