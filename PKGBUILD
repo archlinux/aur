@@ -2,7 +2,7 @@
 
 pkgname=('ekstertera')
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc=("GUI client for Yandex.Disk")
 arch=('i686' 'x86_64')
 url="https://github.com/abbat/${pkgname}"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 export QT_SELECT=5
 
 build() {
-    cd ${srcdir}/${pkgname}
+    cd "${pkgname}"
 
     QT_OPTS="network"
     SRC_3DPARTY="3dparty/json"
@@ -45,6 +45,8 @@ build() {
 }
 
 package() {
+    cd "${pkgname}"
+
     if [ "${QT_SELECT}" -eq "4" ]; then
         depends=('qt4')
     elif [ "${QT_SELECT}" -eq "5" ]; then
@@ -58,11 +60,11 @@ package() {
     install -d "${pkgdir}/usr/share/pixmaps"
     install -d "${pkgdir}/usr/share/applications"
 
-    install -D -m755 "${srcdir}/${pkgname}/${pkgname}-qt${QT_SELECT}" "${pkgdir}/usr/bin/${pkgname}-qt${QT_SELECT}"
-    install -D -m644 "${srcdir}/${pkgname}/${pkgname}.desktop"        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -D -m644 "${srcdir}/${pkgname}/src/icons/${pkgname}.xpm"  "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-    install -D -m644 "${srcdir}/${pkgname}/README.md"                 "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -D -m644 "${srcdir}/${pkgname}/debian/copyright"          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 "${pkgname}-qt${QT_SELECT}" "${pkgdir}/usr/bin/${pkgname}-qt${QT_SELECT}"
+    install -D -m644 "${pkgname}.desktop"        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 "src/icons/${pkgname}.xpm"  "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+    install -D -m644 "README.md"                 "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -D -m644 "debian/copyright"          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     ln -s "/usr/bin/${pkgname}-qt${QT_SELECT}" "${pkgdir}/usr/bin/${pkgname}"
 }
