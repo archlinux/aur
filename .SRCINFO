@@ -1,6 +1,6 @@
 pkgbase = gnome-news-git
 	pkgdesc = A GNOME 3 Feed Reader
-	pkgver = r102.7280c26
+	pkgver = r129.81d5eea
 	pkgrel = 1
 	url = https://github.com/ignatenkobrain/gnome-news
 	install = gnome-news.install
@@ -15,7 +15,7 @@ pkgbase = gnome-news-git
 	depends = libgrss
 	depends = python
 	depends = tracker
-	provides = gnome-news=r102.7280c26
+	provides = gnome-news=r129.81d5eea
 	conflicts = gnome-news
 	options = !emptydirs
 	source = git://github.com/ignatenkobrain/gnome-news.git
