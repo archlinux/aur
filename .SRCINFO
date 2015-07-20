@@ -1,0 +1,29 @@
+pkgbase = gnuplot-git
+	pkgdesc = A command-line driven interactive function and data plotting utility -- inoffifcial github fork
+	pkgver = 20150715
+	pkgrel = 1
+	url = https://github.com/Reen/gnuplot
+	install = gnuplot-git.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = emacs
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
+	makedepends = qtchooser
+	makedepends = qt5-tools
+	depends = gd
+	depends = qt5-svg
+	depends = lua
+	depends = wxgtk
+	provides = gnuplot=5.1
+	conflicts = gnuplot
+	options = !makeflags
+	source = git://github.com/gnuplot/gnuplot.git
+	source = lua53_compat.patch
+	md5sums = SKIP
+	md5sums = c84be2980e0d90037f20a5cf18f9868a
+
+pkgname = gnuplot-git
+

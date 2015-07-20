@@ -1,0 +1,23 @@
+post_install() {
+  if [ -f /usr/bin/mktexlsr ]; then
+    echo "Updating TeX tree..."
+    mktexlsr
+  fi
+  install-info /usr/share/info/gnuplot-info /usr/share/infor dir
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  install-info --delete /usr/share/info/gnuplot-info /usr/share/infor dir 
+}
+
+post_remove() {
+  if [ -f /usr/bin/mktexlsr ]; then
+    echo "Updating TeX tree..."
+    mktexlsr
+  fi
+}
+
