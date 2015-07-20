@@ -1,0 +1,12 @@
+pkgbase = meliaesvg-icon-theme
+	pkgdesc = MeliaeSVG
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://sora-meliae.deviantart.com/
+	arch = any
+	license = GPL
+	source = http://orig12.deviantart.net/7299/f/2010/065/9/1/meliae_svg_icon_theme_v__1_2_by_sora_meliae.zip
+	md5sums = 3a4092b83ea8a935ab7e2b0e9074ec23
+
+pkgname = meliaesvg-icon-theme
+
