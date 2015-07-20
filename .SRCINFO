@@ -1,8 +1,9 @@
 pkgbase = tint2-git
 	pkgdesc = Git official release
 	pkgver = v0.12.r23.g50e21b4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/o9000/tint2
+	install = tint2-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
