@@ -15,7 +15,10 @@ pkgbase = rar-beta
 	source = unrar.1
 	md5sums = 4cffd2771bb4a51e4a68500d799550d8
 	md5sums = 594b777453751ee331ef241160f31499
-	md5sums = SKIP
+	source_i686 = http://www.rarlab.com/rar/rarlinux-5.3.b1.tar.gz
+	md5sums_i686 = SKIP
+	source_x86_64 = http://www.rarlab.com/rar/rarlinux-x64-5.3.b1.tar.gz
+	md5sums_x86_64 = SKIP
 
 pkgname = rar-beta
 

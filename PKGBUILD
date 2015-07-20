@@ -11,20 +11,17 @@ license=('custom')
 backup=('etc/rarfiles.lst')
 conflicts=('rar' 'unrar')
 provides=('rar' 'unrar')
+
 source=('rar.1'
         'unrar.1')
-
-case "$CARCH" in
-      i686) source+=("http://www.rarlab.com/rar/rarlinux-${pkgver}.tar.gz") ;;
-    x86_64) source+=("http://www.rarlab.com/rar/rarlinux-x64-${pkgver}.tar.gz") ;;
-esac
-
-
 md5sums=('4cffd2771bb4a51e4a68500d799550d8'
-         '594b777453751ee331ef241160f31499'
-         'SKIP' #the checksums of the source from rarlab.com are changing
-                #almost every day so this will never be correct
-)
+         '594b777453751ee331ef241160f31499')
+
+source_i686+=("http://www.rarlab.com/rar/rarlinux-${pkgver}.tar.gz")
+source_x86_64+=("http://www.rarlab.com/rar/rarlinux-x64-${pkgver}.tar.gz")
+# the checksums of the source from rarlab.com are changing
+# almost every day so this will never be correct
+md5sums_i686=('SKIP') ; md5sums_x86_64=('SKIP')
 
 package() {
     cd "$srcdir/rar"
