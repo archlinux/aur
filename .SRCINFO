@@ -1,0 +1,19 @@
+pkgbase = mt7601-git
+	pkgdesc = Linux driver for MediaTek MT7601U chip with patch for stability and performance
+	pkgver = 2015.02.18
+	pkgrel = 1
+	url = https://github.com/porjo/mt7601
+	install = mt7601.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers>=3.0
+	depends = linux>=3.0
+	options = !strip
+	source = git+https://github.com/porjo/mt7601.git
+	md5sums = SKIP
+
+pkgname = mt7601-git
+
