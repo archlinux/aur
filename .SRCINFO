@@ -1,0 +1,19 @@
+pkgbase = hammerdb
+	pkgdesc = A database testing tool
+	pkgver = 2.17
+	pkgrel = 1
+	url = http://hammerdb.com
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = run.sh
+	source = hammerdb
+	md5sums = e6a1349accdd70b661f25f06a82023aa
+	md5sums = 17489353e99ad15858cdc2bcbbf839c5
+	source_i686 = http://downloads.sourceforge.net/project/hammerora/HammerDB/HammerDB-2.17/HammerDB-2.17-Linux-x86-Install
+	md5sums_i686 = e2692b2e02147c22956977e70ba6cdb4
+	source_x86_64 = http://downloads.sourceforge.net/project/hammerora/HammerDB/HammerDB-2.17/HammerDB-2.17-Linux-x86-64-Install
+	md5sums_x86_64 = 54695997e1f45ae4a9ebeea02fdfc1d4
+
+pkgname = hammerdb
+
