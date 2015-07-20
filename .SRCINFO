@@ -1,0 +1,13 @@
+pkgbase = python2-hpgl
+	pkgdesc = Python HPGL Parsing Library
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexforencich/python-hpgl
+	arch = any
+	license = MIT
+	depends = python2
+	source = python-hpgl-0.1.0.tar.gz::https://github.com/alexforencich/python-hpgl/archive/v0.1.0.tar.gz
+	md5sums = 36b34e1ebd3ab3211ed8d625725a09c4
+
+pkgname = python2-hpgl
+
