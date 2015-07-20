@@ -1,0 +1,16 @@
+pkgbase = python2-pyusb-git
+	pkgdesc = Easy USB access from Python
+	pkgver = 1.0.0b2.r52.g39816be
+	pkgrel = 1
+	url = http://sourceforge.net/apps/trac/pyusb/
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = libusb
+	provides = python2-pyusb
+	source = pyusb::git+https://github.com/walac/pyusb
+	md5sums = SKIP
+
+pkgname = python2-pyusb-git
+
