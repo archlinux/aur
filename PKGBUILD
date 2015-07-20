@@ -19,7 +19,7 @@ md5sums=('2736440d717a0ee97cdb35189814fc93'
 build() {
   cd $srcdir/tiemu-$pkgver
   patch -p1 --input ../01-build-fix.patch
-  ./configure --without-kde --disable-gdb --prefix=/usr || return 1
+  ./configure --without-kde --disable-gdb --prefix=/usr
   make
 }
 
