@@ -21,7 +21,7 @@ prepare() {
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  mkdir build
+  [ -d build ] || mkdir build
 }
 
 build() {
