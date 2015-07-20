@@ -8,8 +8,10 @@ pkgbase = phploc
 	depends = php
 	source = https://phar.phpunit.de/phploc-2.1.3.phar
 	source = https://raw.githubusercontent.com/sebastianbergmann/phploc/2.1.3/LICENSE
+	source = phploc.install
 	md5sums = 4304b744b31f44d5f476b2654caaade5
 	md5sums = 9efd7ec2636b1412c93a29f62c9a4e0b
+	md5sums = 4b2b590f00765d9abdeebe5b0a100ed8
 
 pkgname = phploc
 

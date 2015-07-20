@@ -9,9 +9,11 @@ arch=('any')
 license=('BSD')
 depends=('php')
 source=("https://phar.phpunit.de/phploc-${pkgver}.phar"
-        "https://raw.githubusercontent.com/sebastianbergmann/phploc/${pkgver}/LICENSE")
+        "https://raw.githubusercontent.com/sebastianbergmann/phploc/${pkgver}/LICENSE"
+        "phploc.install")
 md5sums=('4304b744b31f44d5f476b2654caaade5'
-         '9efd7ec2636b1412c93a29f62c9a4e0b')
+         '9efd7ec2636b1412c93a29f62c9a4e0b'
+         '4b2b590f00765d9abdeebe5b0a100ed8')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
