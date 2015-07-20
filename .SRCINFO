@@ -1,0 +1,25 @@
+pkgbase = inetsim
+	pkgdesc = Internet Services Simulation Suite
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = http://www.inetsim.org
+	install = inetsim.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-net-server
+	depends = perl-net-dns
+	depends = perl-ipc-shareable
+	depends = perl-digest-sha1
+	depends = perl-io-socket-ssl
+	optdepends = perlipq: Support for IP-based connection redirection
+	source = http://www.inetsim.org/downloads/inetsim-1.2.5.tar.gz
+	source = inetsim.service
+	source = inetsim.install
+	md5sums = f3a125ff6dd5618f7e14975628ec47a4
+	md5sums = 6db105d580545d9ac693fa922b6f098f
+	md5sums = c209c8fdcfa4b07ca65ae6c20cb5977c
+
+pkgname = inetsim
+

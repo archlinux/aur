@@ -1,0 +1,12 @@
+[Unit]
+Description=Inetsim - Internet Services Simulation Suite
+After=syslog.target 
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/inetsim/
+ExecStart=/opt/inetsim/inetsim
+
+[Install]
+WantedBy=multi-user.target
+

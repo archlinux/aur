@@ -1,0 +1,23 @@
+post_install() {
+  # add inetsim group
+  if [ ! `grep inetsim /etc/group` ]; then
+    groupadd -g 16 inetsim &>/dev/null
+  fi
+
+  # run inetsim setup script
+  cd /opt/inetsim
+  ./setup.sh
+
+  echo "[+] You can start the daemon with 'systemctl start inetsim'"
+  echo "[+] You find the conf files in /opt/inetsim/conf/"
+
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  # remove users & groups
+  groupdel inetsim &> /dev/null
+}
