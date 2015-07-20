@@ -1,6 +1,6 @@
 pkgbase = libkgapi-git
 	pkgdesc = A KDE-based library for accessing various Google services via their public API
-	pkgver = r598.3304f3c
+	pkgver = r687.
 	pkgrel = 1
 	url = https://projects.kde.org/projects/extragear/libs/libkgapi
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = libkgapi-git
 	license = GPL
 	license = LGPL
 	license = FDL
-	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = boost
-	depends = kdepimlibs
+	depends = kcontacts-git
+	depends = kcalcore-git
 	provides = libkgapi
-	conflicts = libkgapi
+	conflicts = libkgapilibkgapi-frameworks-git
 	source = libkgapi::git+git://anongit.kde.org/libkgapi
 	md5sums = SKIP
 
