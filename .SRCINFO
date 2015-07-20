@@ -1,0 +1,27 @@
+pkgbase = r3broot-svn
+	pkgdesc = Analysis framework based on root for the R3B experiment provided by GSI/FAIR.
+	pkgver = trunk
+	pkgrel = 1
+	url = http://fairroot.gsi.de
+	install = r3broot-svn.install
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	makedepends = clang
+	makedepends = bison
+	makedepends = flex
+	makedepends = gcc-fortran
+	makedepends = subversion
+	makedepends = curl
+	depends = fairsoft
+	depends = fairroot
+	provides = r3broot
+	options = !emptydirs
+	options = staticlibs
+	options = libtool
+	options = !strip
+	source = r3broot-svn::svn+https://subversion.gsi.de/fairroot/r3broot/trunk
+	md5sums = SKIP
+
+pkgname = r3broot-svn
+
