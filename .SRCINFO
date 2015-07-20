@@ -1,0 +1,29 @@
+pkgbase = libfm-gtk3
+	pkgdesc = Library for file management (GTK+ 3 version)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://pcmanfm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = udisks
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = menu-cache
+	depends = desktop-file-utils
+	depends = libexif
+	depends = dbus-glib
+	conflicts = libfm
+	source = http://downloads.sourceforge.net/pcmanfm/libfm-1.2.3.tar.xz
+	md5sums = 3ff38200701658f7e80e25ed395d92dd
+
+pkgname = libfm-gtk3
+	install = libfm.install
+	depends = gtk3
+	depends = menu-cache
+	depends = desktop-file-utils
+	depends = libexif
+	depends = dbus-glib
+	depends = libfm-extra
+
