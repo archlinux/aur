@@ -1,0 +1,23 @@
+pkgbase = boxfs2-static-git
+	pkgdesc = Box.com FUSE client based on APIv2, static linked with libapp and libjson
+	pkgver = 0.r91.g338fe2f
+	pkgrel = 1
+	url = https://github.com/drotiro/boxfs2
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	depends = fuse
+	depends = libxml2
+	depends = curl
+	conflicts = boxfs
+	source = git+https://github.com/drotiro/boxfs2.git
+	source = git+https://github.com/drotiro/libapp.git
+	source = git+https://github.com/vincenthz/libjson.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = boxfs2-static-git
+
