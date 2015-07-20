@@ -7,7 +7,7 @@ _cmd="${_module%client}"
 #pkgname=("python-${_module}" "python2-${_module}")
 pkgname="python-${_module}"
 pkgver="2.5.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Object Storage API Client Library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
@@ -18,10 +18,14 @@ source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-
 sha256sums=('6efcbff0bf60521ef682068c10c2d8959d887f70ed84ccd2def9945e8e94560e')
 
 prepare() {
+    # currently the syntax in this file causes this build error:
+    # error in setup command: 'tests_require' must be a string or list of strings
+    # containing valid project/version requirement specifiers; Expected ',' or
+    # end-of-list in mock>=1.0;python_version!='2.6' at ;python_version!='2.6'
+    rm -r "${_name}-${pkgver}/test-requirements.txt"
     #cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
     # futures is only needed for python 2
-    cd "${srcdir}/${_name}-${pkgver}"
-    sed -ri '/futures/d' requirements.txt
+    sed -ri '/futures/d' "${_name}-${pkgver}/requirements.txt"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = python-swiftclient
 	pkgdesc = OpenStack Object Storage API Client Library
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/python-swiftclient
 	arch = any
 	license = Apache
