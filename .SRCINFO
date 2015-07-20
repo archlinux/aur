@@ -1,0 +1,17 @@
+pkgbase = bzr-svn-plugin
+	pkgdesc = subversion foreign branch support for bazaar
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://www.samba.org/~jelmer/bzr-svn/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bzr>=2.5
+	depends = subvertpy>=0.9.0
+	conflicts = bzr-svn
+	replaces = bzr-svn
+	source = http://samba.org/~jelmer/bzr/bzr-svn-1.2.3.tar.gz
+	md5sums = a7664a536a26c0a187c41789021f36f7
+
+pkgname = bzr-svn-plugin
+
