@@ -10,7 +10,7 @@ pkgbase = purple-facebook
 	depends = libpurple
 	depends = json-glib
 	source = https://github.com/jgeboski/purple-facebook/releases/download/305f27dd23c0/purple-facebook-305f27dd23c0.tar.gz
-	md5sums = 2eb09df2e0895a09fbc7b2cbfdb467b6
+	md5sums = asd
 
 pkgname = purple-facebook
 
