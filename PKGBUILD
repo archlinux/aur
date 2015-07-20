@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lua-yaml-git
-pkgver=5.1.4.8.gfe9b858
+pkgver=5.1.4.10.g28f300b
 pkgrel=1
 pkgdesc="Lua bindings for YAML using the LibYAML library"
 arch=('i686' 'x86_64')
