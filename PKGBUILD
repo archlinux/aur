@@ -3,8 +3,8 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.1r20150715.0ad3b52
-pkgrel=1
+pkgver=5.1r20150715
+pkgrel=2
 pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
 arch=('i686' 'x86_64')
 url="https://github.com/Reen/gnuplot"
@@ -13,7 +13,7 @@ depends=('gd' 'qt5-svg' 'lua' 'wxgtk')
 makedepends=('git' 'emacs' 'texlive-core' 'texlive-latexextra' 'qtchooser' 'qt5-tools')
 provides=('gnuplot=5.1')
 conflicts=('gnuplot')
-install=$pkgname.install
+install=gnuplot.install
 source=('git://github.com/gnuplot/gnuplot.git' lua53_compat.patch)
 md5sums=('SKIP' 'c84be2980e0d90037f20a5cf18f9868a')
 options=('!makeflags')
