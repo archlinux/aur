@@ -1,7 +1,7 @@
 # Maintainer: Nikola Milinković <nikmil@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=jabref-git
-pkgver=2.11b2.133.g7b14540
+pkgver=2.11b3.163.g3ad6c18
 _pkgver=2.11dev
 _gitname="jabref"
 pkgrel=1
