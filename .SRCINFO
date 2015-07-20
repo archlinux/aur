@@ -1,0 +1,15 @@
+pkgbase = python-raspberry-gpio
+	pkgdesc = Python library for GPIO access on a Raspberry Pi
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = http://sourceforge.net/projects/raspberry-gpio-python/
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	source = https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.5.11.tar.gz
+	md5sums = 9dc3dab6ce2b7ccb833a866efb392821
+
+pkgname = python-raspberry-gpio
+
