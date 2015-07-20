@@ -2,8 +2,7 @@
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 
-pkgname=jdk-docs
-#pkgname=('jdk-docs' 'javafx-docs')
+pkgname=('jdk-docs' 'javafx-docs')
 _major=8
 _minor=51
 _build=b16
@@ -27,8 +26,7 @@ md5sums=('319c85a9b3e282749b53df07fda2cb94'
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
-package() {
-#package_jdk-docs() {
+package_jdk-docs() {
   # Install
   install -d "$pkgdir"/usr/share/doc/java/
   mv docs/* "$pkgdir"/usr/share/doc/java/
@@ -36,15 +34,15 @@ package() {
   # License
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -m644 LICENSE-Documentation "$pkgdir"/usr/share/licenses/$pkgname/
-  #install -Dm644 LICENSE-Documentation "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-#}
-#package_javafx-docs() {
+  install -Dm644 LICENSE-Documentation "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_javafx-docs() {
   # Install
   install -d "$pkgdir"/usr/share/doc/java/javafx/
   mv api "$pkgdir"/usr/share/doc/java/javafx/
 
   # License
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  install -m644 LICENSE-JavaFX "$pkgdir"/usr/share/licenses/$pkgname/
-  #install -Dm644 LICENSE-JavaFX "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE-JavaFX "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

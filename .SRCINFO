@@ -19,3 +19,5 @@ pkgbase = jdk-docs
 
 pkgname = jdk-docs
 
+pkgname = javafx-docs
+
