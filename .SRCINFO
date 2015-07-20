@@ -1,5 +1,5 @@
 pkgbase = linux-ck-fbcondecor
-	pkgver = 4.0.6
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-ck-fbcondecor
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.6.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.6.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.8.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.8.sign
 	source = fbcondecor-4.0.patch
 	source = config.x86_64
 	source = config
@@ -28,7 +28,7 @@ pkgbase = linux-ck-fbcondecor
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch
 	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
 	sha256sums = SKIP
-	sha256sums = d65b0bc24bf49cb333375f7c301c28b05a554bc03a5fc4ed751b4f05bc13e97d
+	sha256sums = 14487a99af8ade843f1c6c4dbc0c447a8546402bd737d30193cd4295577cbd80
 	sha256sums = SKIP
 	sha256sums = b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42
 	sha256sums = 9c007d15907fe17f3cd91b4629ce377d28dc1a40100487c040580c62e1751c90
@@ -53,9 +53,9 @@ pkgname = linux-ck-fbcondecor
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = nvidia-ck: nVidia drivers for linux-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-ck-fbcondecor=4.0.6
-	provides = linux-ck=4.0.6
-	provides = linux-fbcondecor=4.0.6
+	provides = linux-ck-fbcondecor=4.0.8
+	provides = linux-ck=4.0.8
+	provides = linux-fbcondecor=4.0.8
 	conflicts = kernel26-ck
 	conflicts = linux-ck-corex
 	conflicts = linux-ck-p4
@@ -80,10 +80,10 @@ pkgname = linux-ck-fbcondecor
 pkgname = linux-ck-fbcondecor-headers
 	pkgdesc = Header files and scripts to build modules for linux-ck-fbcondecor.
 	depends = linux-ck-fbcondecor
-	provides = linux-ck-headers=4.0.6
-	provides = linux-ck-fbcondecor-headers=4.0.6
-	provides = linux-fbcondecor-headers=4.0.6
-	provides = linux-headers=4.0.6
+	provides = linux-ck-headers=4.0.8
+	provides = linux-ck-fbcondecor-headers=4.0.8
+	provides = linux-fbcondecor-headers=4.0.8
+	provides = linux-headers=4.0.8
 	conflicts = kernel26-ck-headers
 	conflicts = linux-ck-corex-headers
 	conflicts = linux-ck-p4-headers
