@@ -2,8 +2,9 @@
 # Contributors:
 #
 
-_fred=#commit=38c543c  # build-1468 2015-07-11
+_fred=#tag=build01469  # build 1469: 2015-07-19
 #_fred=#branch=next    # git HEAD
+epoch=1
 
 # comment out to run unit tests
 BUILDENV+=('!check')
@@ -13,8 +14,8 @@ BUILDENV+=('!check')
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
-pkgver=0.7.5.1468.29.g38c543c
-pkgrel=3
+pkgver=0.7.5.testing.build.1469.pre1.16.g4230369
+pkgrel=1
 
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
@@ -44,7 +45,7 @@ noextract=('lzma465.tar.bz2'
            'jBitcollider-0.8.zip'
            'mantissa-7.2-src.zip'
            'db4o-7.4-java.zip'
-           *."jar")
+           *.jar)
 
 # here we have only java-commons-compress and java-db4o coming
 # prebuilt by the freenetproject, the rest we attempt to build ourselves
@@ -55,11 +56,8 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-KeyUtils.git"
         "git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next"
         "${url}/alpha/opennet/seednodes.fref"
-        #"https://downloads.freenetproject.org/alpha/freenet-ext.jar"
         #"http://www.aqute.biz/repo/biz/aQute/bnd/0.0.401/bnd.jar"
-        #"WebOfTrust.jar::${url}/alpha/plugins/WebOfTrust/WebOfTrust-build0013.jar"
         "${url}/contrib/jar/latest/commons-compress.jar"
-        "${url}/contrib/jar/latest/db4o.jar"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
         'fred.properties' 'contrib.properties' 'run.sh'
@@ -74,7 +72,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d'
-            'bb98650344e65138d694dfa54f89b5690088cc14f42d1ace2ae0063d35f417bd'
             'f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
             '24fed7935fcbfc6eb022e04abe8b9d22fda88eae8c1f73daf99e8f28a420d05f'
@@ -85,7 +82,7 @@ sha256sums=('SKIP'
             'ac83d727d6301e75cf1d441a1a1e72ba06ea119fa53a3bae65b3373108abf213'
             'c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e'
             '265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef'
-            '818a4b8bbcb50878a8b1b9f71b4274d242ab46bf860c74676e98dec1d0248821'
+            'b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044'
             'e438135d69139ed4fa44400f416ea73935d16afe50dfe490b7bba0602ee89476'
             '73f307a8cbd114fdc0af8daa067994a2cdc364c4053e6734d16b8dd1d5a0469f')
 
@@ -109,8 +106,9 @@ prepare() {
     ln -sf ../contrib contrib
     mkdir -p contrib/freenet-ext/{dist,lib}
 
-    # had a hard time building these two sources, we'll use the binaries
-    for dep in commons-compress ;do
+    # had a hard time building these sources, we'll use the binaries
+    for dep in commons-compress
+    do
         cp "$srcdir/${dep}.jar" contrib/freenet-ext/dist
     done
 
@@ -143,14 +141,14 @@ build() {
     build_jbigi
     build_jcpuid
     build_fec
-    #build_db4o
 
     msg "Building Freenet-ext..."
     cd "$srcdir/fred/contrib/freenet-ext"
     ant -propertyfile "$srcdir/contrib.properties"
 
     cd dist
-    for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper; do
+    for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper
+    do
         unzip -nq "${dep}.jar"
     done
     jar uf freenet-ext.jar com net org SevenZip
@@ -158,7 +156,7 @@ build() {
     msg "Building Freenet..."
     cd "$srcdir/fred"
     ant package-only -propertyfile "$srcdir/fred.properties" \
-        -f build-clean.xml
+        -f build-clean.xml -Ddoc.skip=true
 
     build_plugins
 }
@@ -197,14 +195,6 @@ build_fec() {
     _DEST="../../bin/lib/linux-${_arch}"
     mkdir -p "$_DEST"
     cp libfec*.so "$_DEST"
-    plain "done"
-}
-
-build_db4o() {
-    msg "Building db4o..."
-    cd "$srcdir/contrib/db4o"
-    ln -sf "$srcdir/db4o-7.4/src" .
-    ant
     plain "done"
 }
 
