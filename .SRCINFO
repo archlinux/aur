@@ -1,0 +1,17 @@
+pkgbase = virustotal
+	pkgdesc = Command-line client for virustotal.com
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://github.com/botherder/virustotal
+	install = virustotal.install
+	arch = any
+	license = BSD
+	depends = python
+	backup = etc/virustotal.conf
+	source = https://github.com/shibumi/virustotal/archive/1.1.tar.gz
+	source = virustotal.install
+	sha512sums = 48254029c3adf8ea25ed070a68363b5224a86291b5bfd3f14e102ecc3d377fd79f4d1a21ad00c2991c9b3ab4d81422aad5c710782b5e5214680c02bbda240ad9
+	sha512sums = 9fc9a73398e517a0bd330712633b2884bf3ab35f10c908650390f74341f368e9cf5528eca89a75fc2ceea27191659b4eee57a3ae7899eb1d3c102dcdaf6cc5be
+
+pkgname = virustotal
+
