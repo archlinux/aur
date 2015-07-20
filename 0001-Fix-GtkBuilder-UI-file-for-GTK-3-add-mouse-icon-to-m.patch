@@ -1,0 +1,86 @@
+From 0f949c3c727455aa2e3ce790289196ebca46bacf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 18 Dec 2014 04:29:17 +0100
+Subject: [PATCH] Fix GtkBuilder UI file for GTK+ 3, add mouse icon to mouse
+ tab
+
+---
+ data/lxinput.ui | 27 +++++++++++++--------------
+ 1 file changed, 13 insertions(+), 14 deletions(-)
+
+diff --git a/data/lxinput.ui b/data/lxinput.ui
+index a61cb8e..a3a4175 100644
+--- a/data/lxinput.ui
++++ b/data/lxinput.ui
+@@ -107,7 +107,6 @@
+                                 <property name="width_request">100</property>
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">True</property>
+-                                <property name="update_policy">discontinuous</property>
+                                 <property name="adjustment">mouse_accel_adj</property>
+                                 <property name="digits">1</property>
+                                 <property name="value_pos">right</property>
+@@ -123,7 +122,6 @@
+                                 <property name="width_request">100</property>
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">True</property>
+-                                <property name="update_policy">discontinuous</property>
+                                 <property name="adjustment">mouse_threshold_adj</property>
+                                 <property name="digits">0</property>
+                                 <property name="value_pos">right</property>
+@@ -247,6 +245,19 @@
+                 <property name="can_focus">False</property>
+                 <property name="spacing">6</property>
+                 <child>
++                  <object class="GtkImage" id="image1">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="pixel_size">16</property>
++                    <property name="icon_name">input-mouse</property>
++                  </object>
++                  <packing>
++                    <property name="expand">True</property>
++                    <property name="fill">True</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
+                   <object class="GtkLabel" id="label1">
+                     <property name="visible">True</property>
+                     <property name="can_focus">False</property>
+@@ -312,7 +323,6 @@
+                                     <property name="width_request">100</property>
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">True</property>
+-                                    <property name="update_policy">discontinuous</property>
+                                     <property name="adjustment">kb_daley_adj</property>
+                                     <property name="digits">0</property>
+                                     <property name="value_pos">right</property>
+@@ -329,7 +339,6 @@
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">True</property>
+                                     <property name="tooltip_text" translatable="yes">Interval between each key repeat</property>
+-                                    <property name="update_policy">discontinuous</property>
+                                     <property name="adjustment">kb_interval_adj</property>
+                                     <property name="digits">0</property>
+                                     <property name="value_pos">right</property>
+@@ -624,16 +633,6 @@
+       <action-widget response="-5">ok</action-widget>
+     </action-widgets>
+   </object>
+-  <object class="GtkImage" id="image1">
+-    <property name="visible">True</property>
+-    <property name="can_focus">False</property>
+-    <property name="icon_name">input-keyboard</property>
+-  </object>
+-  <object class="GtkImage" id="image10">
+-    <property name="visible">True</property>
+-    <property name="can_focus">False</property>
+-    <property name="icon_name">input-keyboard</property>
+-  </object>
+   <object class="GtkAdjustment" id="kb_daley_adj">
+     <property name="lower">100</property>
+     <property name="upper">1100</property>
+-- 
+2.1.3
+
