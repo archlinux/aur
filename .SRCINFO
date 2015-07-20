@@ -1,0 +1,16 @@
+pkgbase = python2-myhdl-git
+	pkgdesc = a Python-Based Hardware Description Language
+	pkgver = 0.9.0.r29.g983a169
+	pkgrel = 1
+	url = http://www.myhdl.org/
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python2
+	depends = iverilog
+	provides = python2-myhdl
+	source = myhdl::git+https://github.com/jandecaluwe/myhdl.git
+	md5sums = SKIP
+
+pkgname = python2-myhdl-git
+
