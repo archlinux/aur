@@ -5,8 +5,8 @@
 _debug=n
 
 # Compile from a specific commit?
-#_commit=cd029a6  #0.9.3
 #_commit=6a3234e  #0.9.4
+#_commit=3019261  #0.9.5
 _commit=HEAD
 
 pkgname=rtorrent-pyro-git
