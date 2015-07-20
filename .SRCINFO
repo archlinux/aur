@@ -1,0 +1,13 @@
+pkgbase = astrapiremoted
+	pkgdesc = Daemon for Astrapi Remote
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = http://www.astrapi.de/
+	arch = i686
+	arch = x86_64
+	license = custom:GPL
+	makedepends = git
+	provides = astrapiremoted
+
+pkgname = astrapiremoted
+
