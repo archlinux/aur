@@ -1,0 +1,14 @@
+pkgbase = python2-usbtmc
+	pkgdesc = A Python USBTMC driver for controlling instruments over USB.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/python-ivi/python-usbtmc
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-pyusb
+	source = python-usbtmc-0.6.tar.gz::https://github.com/python-ivi/python-usbtmc/archive/v0.6.tar.gz
+	md5sums = 41af1838195e03448dee941794bd2953
+
+pkgname = python2-usbtmc
+
