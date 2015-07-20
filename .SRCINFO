@@ -1,0 +1,16 @@
+pkgbase = subvertpy
+	pkgdesc = Alternative Python bindings for Subversion, split out from bzr-svn.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://www.samba.org/~jelmer/subvertpy
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = apr-util
+	makedepends = subversion
+	depends = python2
+	source = https://www.samba.org/~jelmer/subvertpy/subvertpy-0.9.1.tar.gz
+	md5sums = 365ff13066def2cac0bc0de75502d3d3
+
+pkgname = subvertpy
+
