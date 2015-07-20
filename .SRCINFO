@@ -1,0 +1,19 @@
+pkgbase = jed
+	pkgdesc = A freely available text editor for Unix and others OS
+	pkgver = 0.99.19
+	pkgrel = 2
+	url = http://www.jedsoft.org/jed
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxext
+	makedepends = libxt
+	depends = gpm
+	depends = slang
+	depends = libxft
+	options = !makeflags
+	source = ftp://space.mit.edu/pub/davis/jed/v0.99/jed-0.99-19.tar.bz2
+	md5sums = c9b2f58a3defc6f61faa1ce7d6d629ea
+
+pkgname = jed
+
