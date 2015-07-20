@@ -1,7 +1,7 @@
 pkgbase = carla
 	pkgdesc = Audio Plugin Host
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 3
 	url = http://kxstudio.sf.net/carla
 	install = carla.install
 	arch = i686
@@ -28,10 +28,9 @@ pkgbase = carla
 	optdepends = gtk3: lv2 gtk3 ui support
 	optdepends = pygtk: NekoFilter UI
 	optdepends = zlib: extra native plugins
-	optdepends = zynaddsubfx-git: zynaddsubfx banks
+	optdepends = zynaddsubfx: ZynAddSubFX banks
 	provides = carla
 	conflicts = carla
-	conflicts = carla-git
 	source = https://downloads.sourceforge.net/project/kxstudio/Releases/carla/Carla-1.2.4-src.tar.bz2
 	sha512sums = bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51
 
