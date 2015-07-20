@@ -3,7 +3,7 @@
 
 pkgname=kildclient-git
 pkgver=r1347.e437da1
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful MUD client written for GTK+ and support for Perl."
 
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('kildclient')
 provides=('kildclient=3.0.1')
 
 makedepends=('git')
-depends=('gtk3' 'libglade' 'gtkspell3' 'perl-locale-gettext' 'perl-json')
+depends=('gtk3' 'libglade' 'gtkspell3' 'perl-locale-gettext' 'perl-json' 'perl-xml-libxml')
 source=('kildclient::git+http://git.code.sf.net/p/kildclient/git')
 md5sums=('SKIP')
 
@@ -24,15 +24,19 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd "${srcdir}/kildclient"
+
   ./autogen.sh
   ./configure \
     --prefix=/usr \
-    --mandir=/usr/man \
     --with-gtkspell \
     --with-libgnutls \
     --with-docs
+}
+
+build() {
+  cd "${srcdir}/kildclient"  
   make || return 1
 }
 
