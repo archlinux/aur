@@ -1,0 +1,25 @@
+From 16fbd223e56ca8506aad9b842ed4218b4aabf8e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 15 Dec 2014 17:44:24 +0100
+Subject: [PATCH] Remove 'Utility' from desktop categories
+
+to avoid appearing more than once in the application menu.
+---
+ gpicview.desktop.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gpicview.desktop.in b/gpicview.desktop.in
+index e3420c3..dc23fe4 100644
+--- a/gpicview.desktop.in
++++ b/gpicview.desktop.in
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Categories=Graphics;Utility;Core;GTK;Viewer;RasterGraphics;2DGraphics;Photography;
++Categories=Graphics;Core;GTK;Viewer;RasterGraphics;2DGraphics;Photography;
+ Exec=gpicview %f
+ Icon=gpicview
+ StartupNotify=true
+-- 
+2.1.3
+

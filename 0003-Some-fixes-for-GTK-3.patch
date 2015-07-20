@@ -1,0 +1,47 @@
+From bb71b7edebed87f6d862b432078d74d4146366b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 18 Dec 2014 12:32:46 +0100
+Subject: [PATCH 3/3] Some fixes for GTK+ 3
+
+---
+ data/pref-dlg.ui | 1 -
+ src/main-win.c   | 4 ++--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/data/pref-dlg.ui b/data/pref-dlg.ui
+index 707ba5b..3faaadc 100644
+--- a/data/pref-dlg.ui
++++ b/data/pref-dlg.ui
+@@ -5,7 +5,6 @@
+     <property name="title" translatable="yes">Preferences</property>
+     <property name="resizable">False</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox">
+         <property name="visible">True</property>
+diff --git a/src/main-win.c b/src/main-win.c
+index 9b62504..32f6433 100644
+--- a/src/main-win.c
++++ b/src/main-win.c
+@@ -555,7 +555,7 @@ void on_size_allocate( GtkWidget* widget, GtkAllocation    *allocation )
+ gboolean on_win_state_event( GtkWidget* widget, GdkEventWindowState* state )
+ {
+     MainWin* mw = (MainWin*)widget;
+-    if( state->new_window_state == GDK_WINDOW_STATE_FULLSCREEN )
++    if( (state->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0 )
+     {
+         gtk_widget_modify_bg( mw->evt_box, GTK_STATE_NORMAL, &pref.bg_full );
+         gtk_widget_hide( gtk_widget_get_parent(mw->nav_bar) );
+@@ -1520,7 +1520,7 @@ void on_about( GtkWidget* menu, MainWin* mw )
+     gtk_container_set_border_width ( ( GtkContainer*)about_dlg , 2 );
+     gtk_about_dialog_set_version ( (GtkAboutDialog*)about_dlg, VERSION );
+     gtk_about_dialog_set_program_name ( (GtkAboutDialog*)about_dlg, _( "GPicView" ) );
+-    gtk_about_dialog_set_logo( (GtkAboutDialog*)about_dlg, gdk_pixbuf_new_from_file(  PACKAGE_DATA_DIR"/pixmaps/gpicview.png", NULL ) );
++    gtk_about_dialog_set_logo_icon_name ( (GtkAboutDialog*)about_dlg, "gpicview" );
+     gtk_about_dialog_set_copyright ( (GtkAboutDialog*)about_dlg, _( "Copyright (C) 2007 - 2011" ) );
+     gtk_about_dialog_set_comments ( (GtkAboutDialog*)about_dlg, _( "Lightweight image viewer from LXDE project" ) );
+     gtk_about_dialog_set_license ( (GtkAboutDialog*)about_dlg, "GPicView\n\nCopyright (C) 2007 Hong Jen Yee (PCMan)\n\nThis program is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version 2\nof the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA." );
+-- 
+2.1.3
+

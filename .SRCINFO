@@ -1,0 +1,27 @@
+pkgbase = gpicview-gtk3
+	pkgdesc = Lightweight image viewer (GTK+ 3 version)
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://lxde.org/
+	install = gpicview.install
+	arch = i686
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	depends = desktop-file-utils
+	optdepends = librsvg: For SVG support
+	provides = gpicview
+	conflicts = gpicview
+	source = http://downloads.sourceforge.net/sourceforge/lxde/gpicview-0.2.4.tar.gz
+	source = 0001-Remove-Utility-from-desktop-categories.patch
+	source = 0002-Beautify-GtkBuilder-UI-file-without-modification.patch
+	source = 0003-Some-fixes-for-GTK-3.patch
+	md5sums = b209e36531f89c48e3067b389699d4c7
+	md5sums = aa9950bccb95ff4bffd7e44c7e8750ec
+	md5sums = d5e57f50c0831c4e014cd1d7247f941b
+	md5sums = 9ed0daa0f6f2d74ae67c5a437b77e501
+
+pkgname = gpicview-gtk3
+
