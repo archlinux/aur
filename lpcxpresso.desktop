@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LPCXpresso
+GenericName=NXP LPC microcontroller development suite
+Comment=NXP LPC microcontroller development suite
+Icon=lpcxpresso.xpm
+Exec=lpcxpresso
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=false
+ 
