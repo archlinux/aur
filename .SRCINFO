@@ -1,6 +1,6 @@
 pkgbase = gnuplot-git
-	pkgdesc = A command-line driven interactive function and data plotting utility -- inoffifcial github fork
-	pkgver = 20150715
+	pkgdesc = A command-line driven interactive function and data plotting utility -- inofficial github fork
+	pkgver = 5.1r20150715
 	pkgrel = 1
 	url = https://github.com/Reen/gnuplot
 	install = gnuplot-git.install

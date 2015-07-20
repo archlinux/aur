@@ -3,9 +3,9 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=20150715
+pkgver=5.1r20150715
 pkgrel=1
-pkgdesc="A command-line driven interactive function and data plotting utility -- inoffifcial github fork"
+pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
 arch=('i686' 'x86_64')
 url="https://github.com/Reen/gnuplot"
 license=('custom')
@@ -21,7 +21,7 @@ _gitname="gnuplot"
 
 pkgver() {
   cd $srcdir/$_gitname
-  git log -1 --format="%cd" --date=short | tr -d '-'
+  printf "5.1r%s" $(git log -1 --format="%cd" --date=short | tr -d '-')
 }
 
 prepare() {
