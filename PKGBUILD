@@ -2,7 +2,7 @@
 
 pkgname=git-annex-cabal
 pkgdesc='manage files with git, without checking their contents into git (cabal sandbox build)'
-pkgver=5.20150528
+pkgver=5.20150710
 pkgrel=1
 
 url='http://git-annex.branchable.com/'
