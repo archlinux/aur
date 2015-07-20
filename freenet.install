@@ -23,6 +23,7 @@ post_upgrade() {
     echo " Freenet WebUI http://127.0.0.1:8888/ "
     echo "     Changelog https://github.com/freenet/fred/releases/tag/build01469"
     echo
+}
 
 pre_remove() {
     getent passwd freenet &>/dev/null && {
