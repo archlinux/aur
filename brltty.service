@@ -1,0 +1,12 @@
+[Unit]
+Description=Braille Console Driver
+DefaultDependencies=no
+Before=sysinit.target
+
+[Service]
+ExecStart=/usr/bin/brltty --pid-file=/run/brltty.pid
+Type=forking
+PIDFile=/run/brltty.pid
+
+[Install]
+WantedBy=sysinit.target
