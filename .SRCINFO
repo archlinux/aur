@@ -1,6 +1,6 @@
 pkgbase = tint2-git
 	pkgdesc = Git official release
-	pkgver = v0.12.rc6.r18.g47a7013
+	pkgver = v0.12.r23.g50e21b4
 	pkgrel = 2
 	url = https://gitlab.com/o9000/tint2
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = tint2-git
 	conflicts = tint2
 	conflicts = tint
 	conflicts = tint2-svn
-	options = !libtool
 	source = git+https://gitlab.com/o9000/tint2.git
 	md5sums = SKIP
 
