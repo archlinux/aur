@@ -9,7 +9,6 @@ pkgbase = rxvt-unicode-24bit
 	makedepends = libxft
 	makedepends = perl
 	makedepends = startup-notification
-	depends = rxvt-unicode-terminfo
 	depends = libxft
 	depends = perl
 	depends = startup-notification
