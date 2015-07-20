@@ -1,0 +1,17 @@
+pkgbase = polyphone
+	pkgdesc = Graphical user interface for editing sf2 and sfz files
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.polyphone.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = qt5-svg
+	depends = portaudio
+	provides = polyphone
+	source = http://sourceforge.net/projects/polyphone/files/polyphone%20releases/1.6/polyphone-1.6-src.zip
+	md5sums = c9ddaebbd865bbb2ea79f6d2334653e5
+
+pkgname = polyphone
+

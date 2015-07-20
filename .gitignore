@@ -1,0 +1,6 @@
+pkg/
+src/
+polyphone-*-src.zip
+polyphone-*.pkg.tar.xz
+.AURINFO
+
