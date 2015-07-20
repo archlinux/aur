@@ -1,6 +1,6 @@
 _pkgname=merkaartor
 pkgname=$_pkgname-git
-pkgver=0.18.1.r144.gdcebd61
+pkgver=0.18.2.r0.g59d30ce
 pkgrel=1
 pkgdesc='Merkaartor openstreetmap mapping program'
 url='http://www.merkaartor.be/'
@@ -16,14 +16,14 @@ conflicts=("$_pkgname")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_pkgname"
   lrelease-qt5 src/src.pro
   qmake-qt5 -r PREFIX='/usr'
-  make release
+  make
 }
 
 package() {
