@@ -1,0 +1,15 @@
+pkgbase = rop-tool
+	pkgdesc = A tool to help you write binary exploits
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/t00sh/rop-tool
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPLv3
+	depends = capstone
+	source = https://github.com/t00sh/rop-tool/archive/v2.3.1.tar.gz
+	sha256sums = f6dbb3e2cf4bd0e648af0593d2876793d99ee89a9de66d9b8d67b7a8da2453e7
+
+pkgname = rop-tool
+
