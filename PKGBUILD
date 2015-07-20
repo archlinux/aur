@@ -4,7 +4,7 @@
 
 pkgname=microchip-mplabx-bin
 pkgver=3.05
-pkgrel=3
+pkgrel=4
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url=http://www.microchip.com/mplabx
@@ -42,6 +42,7 @@ package() {
 
   ln -s /bin/bash $pkgdir/bin/
   ln -s /bin/sh $pkgdir/bin/
+  ln -s /usr/bin/find $pkgdir/usr/bin/
 
   echo "root:x:0:0:root:/root:/bin/bash" > $pkgdir/etc/passwd
   echo "root:x:0:root" > $pkgdir/etc/group
@@ -63,7 +64,7 @@ package() {
 
   echo "#!/bin/bash
   LD_LIBRARY_PATH=$srcdir/usr/lib/libfakeroot/fakechroot:\$LD_LIBRARY_PATH
-  ./$installer2 --mode text --installdir /opt/microchip/mplabcomm1.0 < inst_input2 &> /dev/null || true
+  #./$installer2 --mode text --installdir /opt/microchip/mplabcomm1.0 < inst_input2 &> /dev/null || true
   ./$installer --mode text < inst_input &> /dev/null || true"> $pkgdir/chroot_input.sh
 #  ./$installer --mode text < inst_input || true"> $pkgdir/chroot_input.sh
   chmod 0755 $pkgdir/chroot_input.sh
@@ -75,17 +76,20 @@ package() {
 
   sed -i 's|#jdkhome="/path/to/jdk"|jdkhome=/usr/lib/jvm/java-7-openjdk/|g' $pkgdir$instdir/v$pkgver/mplab_ide/etc/mplab_ide.conf
   sed -i 's|#jdkhome="/path/to/jdk"|jdkhome=/usr/lib/jvm/java-7-openjdk/|g' $pkgdir$instdir/v$pkgver/mplab_ipe/mplab_ipe
-  sed -i 's|\"$jdkhome\"bin/java -jar \"$jdkhome\"/../../../mplab_ipe/ipe.jar|\"$jdkhome\"bin/java -jar /opt/microchip/mplabx/mplab_ipe/ipe.jar|g' $pkgdir$instdir/v$pkgver/mplab_ipe/mplab_ipe
+  sed -i 's|\"$jdkhome\"bin/java -jar \"$jdkhome\"/../../../mplab_ipe/ipe.jar|\"$jdkhome\"bin/java -jar '$instdir'/v'$pkgver'/mplab_ipe/ipe.jar|g' $pkgdir$instdir/v$pkgver/mplab_ipe/mplab_ipe
 
-  rm $pkgdir/{chroot_input.sh,inst_input,$installer,etc/{group,passwd}}
-  rm -r $pkgdir/{bin,tmp}
+  rm $pkgdir/{chroot_input.sh,inst_input,inst_input2,$installer,$installer2,etc/{group,passwd}}
+  rm -r $pkgdir/{bin,tmp,usr/bin/find}
 
   ln -s $instdir/v$pkgver/mplab_ide/bin/mplab_ide $pkgdir/usr/bin/mplab_ide
   ln -s $instdir/v$pkgver/mplab_ipe/mplab_ipe $pkgdir/usr/bin/mplab_ipe
-  ln -s $instdir/../mplabcomm1_0_0/libmchpusb-1.0.so.0.0.0 $pkgdir/usr/local/lib/libmchpusb-1.0.so
-  ln -s $instdir/../mplabcomm1_0_0/mchplinusbdevice $pkgdir/etc/.mplab_ide
-  ln -s $instdir/../mplabcomm1_0_0/libUSBAccessLink.so $pkgdir/usr/lib/libUSBAccessLink.so
-  ln -s $instdir/../mplabcomm1_0_0/libSerialAccessLink.so $pkgdir/usr/lib/libSerialAccessLink.so
+  ln -s $instdir/../mplabcomm/v$pkgver/lib/libmchpusb-1.0.so.0.0.0 $pkgdir/usr/local/lib/libmchpusb-1.0.so
+  ln -s $instdir/../mplabcomm/v$pkgver/lib/mchplinusbdevice $pkgdir/etc/.mplab_ide
+  ln -s $instdir/../mplabcomm/v$pkgver/lib/libUSBAccessLink.so $pkgdir/usr/lib/libUSBAccessLink.so
+  ln -s $instdir/../mplabcomm/v$pkgver/lib/libSerialAccessLink.so $pkgdir/usr/lib/libSerialAccessLink.so
+ 
+  echo "StartupWMClass=MPLAB X IDE v$pkgver" >> $pkgdir/usr/share/applications/mplab.desktop
+  echo 'StartupWMClass=com-microchip-ipe-ui-ProdProgrammerApp' >> $pkgdir/usr/share/applications/mplab_ipe.desktop
 
   rm -f $pkgdir$instdir/Uninstall*
 

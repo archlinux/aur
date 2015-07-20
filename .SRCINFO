@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabx-bin
 	pkgdesc = IDE for Microchip PIC and dsPIC development
 	pkgver = 3.05
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.microchip.com/mplabx
 	install = microchip-mplabx-bin.install
 	arch = i686
