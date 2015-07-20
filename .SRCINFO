@@ -1,6 +1,6 @@
 pkgbase = gws
 	pkgdesc = Colorful KISS helper for git workspaces
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/StreakyCobra/gws
 	changelog = ChangeLog
@@ -8,8 +8,8 @@ pkgbase = gws
 	license = MIT
 	depends = bash>4.0
 	depends = git
-	source = https://github.com/StreakyCobra/gws/archive/0.1.7.tar.gz
-	md5sums = cc987317713ae94f1e7691df5f8d2436
+	source = https://github.com/StreakyCobra/gws/archive/0.1.8.tar.gz
+	md5sums = f6da0de648b5af5ce818e109f39f003f
 
 pkgname = gws
 
