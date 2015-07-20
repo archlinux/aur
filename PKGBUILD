@@ -11,7 +11,7 @@ url="http://dev.mysql.com/doc/"
 license=('GPL')
 options=('docs')
 source=("http://downloads.mysql.com/docs/refman-${pkgver}-en.html-chapter.tar.gz")
-md5sums=('73daa1165d1425911da97cfff716a062')
+md5sums=('d8791e47cf30d0cdd5f3a401036bc7bd')
 
 package() {
   install -d ${pkgdir}/usr/share/doc/mysql
