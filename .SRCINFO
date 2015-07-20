@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-libpng
+	pkgdesc = A collection of routines used to create PNG format graphics (mingw-w64)
+	pkgver = 1.6.16
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-zlib
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.16.tar.xz
+	source = http://downloads.sourceforge.net/project/libpng-apng/libpng16/1.6.16/libpng-1.6.16-apng.patch.gz
+	md5sums = 23b7286b5d4a86de950fd2ffc5cac742
+	md5sums = 52de72a29e5d0428a0e527be74b99c24
+
+pkgname = mingw-w64-libpng
+
