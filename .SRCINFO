@@ -1,0 +1,18 @@
+pkgbase = talkingarch-git
+	pkgdesc = Builds TalkingArch, an unofficial Arch Linux live CD with speech and braille support added
+	pkgver = 20150501
+	pkgrel = 1
+	url = http://talkingarch.tk/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = sox
+	makedepends = opus-tools
+	depends = archiso-git
+	provides = talkingarch
+	conflicts = talkingarch
+	source = git+https://notabug.org/talkingarch/talkingarch.git
+	md5sums = SKIP
+
+pkgname = talkingarch-git
+
