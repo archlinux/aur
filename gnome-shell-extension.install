@@ -1,0 +1,26 @@
+post_install() {
+  instructions_install
+}
+
+post_upgrade() {
+  instructions_upgrade
+}
+
+instructions_install() {
+  /bin/cat << EOF
+
+Restart GNOME Shell ([Alt]+[F2], r).
+Active the extension with gnome-tweak-tool.
+For more informations, see https://github.com/chrisss404/gnome-shell-ext-SkypeNotification.
+
+EOF
+}
+
+instructions_upgrade() {
+  /bin/cat << EOF
+
+Just restart GNOME Shell ([Alt]+[F2], r).
+For more informations, see https://github.com/chrisss404/gnome-shell-ext-SkypeNotification.
+
+EOF
+}

@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-skypenotification-git
+	pkgdesc = A Gnome Shell extension that integrates Skype into GNOME Shell.
+	pkgver = 20140501
+	pkgrel = 1
+	url = https://github.com/chrisss404/gnome-shell-ext-SkypeNotification
+	install = gnome-shell-extension.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-dbus
+	depends = gnome-shell
+	depends = skype
+	source = gnome-shell-extension-skypenotification-git::git+https://github.com/chrisss404/gnome-shell-ext-SkypeNotification
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-skypenotification-git
+
