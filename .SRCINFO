@@ -1,0 +1,15 @@
+pkgbase = nodejs-ttystudio
+	pkgdesc = A terminal-to-gif recorder minus the headaches
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/chjj/ttystudio
+	arch = any
+	license = ISC
+	depends = npm
+	noextract = ttystudio-0.0.11.tgz
+	source = http://registry.npmjs.org/ttystudio/-/ttystudio-0.0.11.tgz
+	md5sums = 0d80718c198c91a6f60b3b9be6b7a5a0
+	sha256sums = 6aeda92c19cbd58ecafb0ed8f879d4c1c1652596398c5e6073ba69026f7abb47
+
+pkgname = nodejs-ttystudio
+
