@@ -1,0 +1,12 @@
+pkgbase = meliaesvg-dark-icon-theme
+	pkgdesc = MeliaeSVG icon theme set - Dark/Light Panels version
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://sora-meliae.deviantart.com/
+	arch = any
+	license = GPL
+	source = http://orig14.deviantart.net/4b72/f/2010/065/1/7/meliae_svg_dark_v__1_2_by_sora_meliae.zip
+	md5sums = 5deea7afa77d896a384bbc7dfee52d32
+
+pkgname = meliaesvg-dark-icon-theme
+
