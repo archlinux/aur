@@ -1,6 +1,6 @@
 pkgbase = purple-facebook-git
 	pkgdesc = A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook Messenger protocol
-	pkgver = 201507013
+	pkgver = 565fbae05259.r3.g6bb0e31
 	pkgrel = 1
 	url = https://github.com/jgeboski/purple-facebook/
 	arch = i686

@@ -2,8 +2,8 @@
 
 pkgname=purple-facebook-git
 _gitname="purple-facebook"
-pkgver=201507013
 pkgrel=1
+pkgver=565fbae05259.r3.g6bb0e31
 pkgdesc="A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook 
 Messenger 
 protocol"
@@ -16,8 +16,8 @@ source=('purple-facebook::git+https://github.com/jgeboski/purple-facebook'
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  cd "$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
