@@ -1,0 +1,17 @@
+pkgbase = ysnotifier
+	pkgdesc = A minimal notification daemon for Gtk2.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://dev.yaki-syndicate.de/
+	arch = any
+	license = GPL
+	depends = dbus-python
+	depends = pygtk
+	depends = python2>=2.7
+	provides = notification-daemon
+	conflicts = notification-daemon
+	source = ysnotifier-0.5.1.tar.gz::https://github.com/creshal/ysnotifier/archive/0.5.1.tar.gz
+	sha256sums = 5bf467699014b7901040f105c2253439bc795ec9a2e0ae523ae59b7bf0a13f10
+
+pkgname = ysnotifier
+
