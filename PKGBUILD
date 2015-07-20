@@ -2,7 +2,7 @@
 
 pkgname=nuclide-server
 pkgver=0.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Server-side functionality required by Nuclide to support remote file editing."
 arch=('i686' 'x86_64')
 url="http://nuclide.io"
@@ -27,11 +27,12 @@ package() {
 
 	cd "$pkgdir"/usr/lib/node_modules/nuclide-server
 
-  patch -p4 -i "$srcdir"/cafix.diff
+	patch -p4 -i "$srcdir"/cafix.diff
 	sed '1 s/env python$/env python2/' -i scripts/*.py
+	sed '/import sys/a import ssl' -i scripts/utils.py
 
 	cd node_modules/nuclide-node-transpiler
-	# patch -p4 -i "$srcdir"/homecache.diff
+	patch -p4 -i "$srcdir"/homecache.diff
 	npm install --user root
 }
 

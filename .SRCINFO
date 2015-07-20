@@ -1,7 +1,7 @@
 pkgbase = nuclide-server
 	pkgdesc = Server-side functionality required by Nuclide to support remote file editing.
 	pkgver = 0.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nuclide.io
 	arch = i686
 	arch = x86_64
