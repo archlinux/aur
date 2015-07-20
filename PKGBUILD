@@ -25,8 +25,12 @@ pkgver() {
 
 build() {
 	cd "${_gitname}"/docs
-	make man SPHINXBUILD=sphinx-build2 BUILDDIR=_build-python2
-	make man SPHINXBUILD=sphinx-build BUILDDIR=_build-python
+	if [ -x "/usr/bin/sphinx-build2" ]; then
+		make man SPHINXBUILD=sphinx-build2 BUILDDIR=_build-python2
+	fi
+	if [ -x "/usr/bin/sphinx-build" ]; then
+		make man SPHINXBUILD=sphinx-build BUILDDIR=_build-python
+	fi
 }
 
 package_generic() {
