@@ -2,14 +2,14 @@
 
 pkgname=perl-capstone
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A Perl binding for the capstone-engine library"
 arch=('i686' 'x86_64')
 url="https://github.com/t00sh/perl-capstone"
 license=('GPL3')
 depends=('capstone' 'perl')
 source=("https://github.com/t00sh/perl-capstone/archive/v$pkgver.tar.gz")
-sha256sums=('1f23aa1c6088f2b27e3d5782298270c77ad6b1668835286e4fd5a0791ed0263e')
+sha256sums=('6ec97b21457c0463bd06f3e50fee06d2936c101ba060f7e2d02ea2c1c6d4e506')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
