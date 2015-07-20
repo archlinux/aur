@@ -1,7 +1,7 @@
 pkgbase = meliaesvg-icon-theme
-	pkgdesc = MeliaeSVG
+	pkgdesc = MeliaeSVG icon theme set
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sora-meliae.deviantart.com/
 	arch = any
 	license = GPL
