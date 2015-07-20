@@ -1,0 +1,17 @@
+pkgbase = osm-gps-map
+	pkgdesc = Gtk+ widget for displaying OpenStreetMap tiles
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://nzjrs.github.io/osm-gps-map
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	depends = cairo
+	depends = libsoup
+	source = https://github.com/nzjrs/osm-gps-map/releases/download/1.0.2/osm-gps-map-1.0.2.tar.gz
+	md5sums = 4ac0e5c58e2ff1add68eb51d17eab04e
+
+pkgname = osm-gps-map
+
