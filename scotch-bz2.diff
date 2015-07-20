@@ -1,0 +1,13 @@
+diff -Naur MED_SRC_7.4.0.orig/adm_local/cmake_files/FindScotch.cmake MED_SRC_7.4.0/adm_local/cmake_files/FindScotch.cmake
+--- MED_SRC_7.4.0.orig/adm_local/cmake_files/FindScotch.cmake	2015-02-27 19:22:28.242443238 +0100
++++ MED_SRC_7.4.0/adm_local/cmake_files/FindScotch.cmake	2015-02-27 20:50:38.817115068 +0100
+@@ -28,7 +28,8 @@
+ 
+ FIND_LIBRARY(SCOTCH_LIBRARIES scotch)
+ FIND_LIBRARY(SCOTCH_ERR_LIBRARIES scotcherr)
+-SET(SCOTCH_LIBRARIES ${SCOTCH_LIBRARIES} ${SCOTCH_ERR_LIBRARIES})
++FIND_LIBRARY(BZ2_LIBRARIES bz2)
++SET(SCOTCH_LIBRARIES ${SCOTCH_LIBRARIES} ${BZ2_LIBRARIES} ${SCOTCH_ERR_LIBRARIES})
+ FIND_PATH(SCOTCH_INCLUDE_DIRS scotch.h PATH_SUFFIXES "/scotch")
+ 
+ INCLUDE(FindPackageHandleStandardArgs)
