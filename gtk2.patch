@@ -1,6 +1,6 @@
 diff -up src/volumeicon-0.5.1/configure.ac.orig src/volumeicon-0.5.1/configure.ac
 --- src/volumeicon-0.5.1/configure.ac.orig	2015-03-02 15:42:13.000000000 -0700
-+++ src/volumeicon-0.5.1/configure.ac	2015-07-19 19:54:36.000000000 -0600
++++ src/volumeicon-0.5.1/configure.ac	2015-07-19 21:06:08.000000000 -0600
 @@ -35,7 +35,7 @@ AC_ARG_ENABLE([notify],
    [notify=no])
  
@@ -30,9 +30,131 @@ diff -up src/volumeicon-0.5.1/configure.ac.orig src/volumeicon-0.5.1/configure.a
  CPPFLAGS=${OLD_CPPFLAGS}
  
  # Pass the absolute path to the OSS header file
+diff -up src/volumeicon-0.5.1/data/gui/preferences.ui.orig src/volumeicon-0.5.1/data/gui/preferences.ui
+--- src/volumeicon-0.5.1/data/gui/preferences.ui.orig	2015-03-02 12:18:58.000000000 -0700
++++ src/volumeicon-0.5.1/data/gui/preferences.ui	2015-07-19 21:06:08.000000000 -0600
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Generated with glade 3.18.3 -->
+ <interface>
+-  <requires lib="gtk+" version="3.0"/>
++  <requires lib="gtk+" version="2.24"/>
+   <object class="GtkListStore" id="channel_name_model">
+     <columns>
+       <!-- column-name channel_name_column -->
+@@ -46,12 +46,10 @@
+     <property name="step_increment">1</property>
+   </object>
+   <object class="GtkWindow" id="window">
+-    <property name="width_request">406</property>
+     <property name="can_focus">False</property>
+     <property name="title" translatable="yes">Preferences</property>
+     <property name="resizable">False</property>
+     <property name="window_position">center</property>
+-    <property name="has_resize_grip">False</property>
+     <child>
+       <object class="GtkAlignment" id="alignment1">
+         <property name="visible">True</property>
+@@ -61,10 +59,9 @@
+         <property name="left_padding">10</property>
+         <property name="right_padding">10</property>
+         <child>
+-          <object class="GtkBox" id="box1">
++          <object class="GtkVBox" id="box1">
+             <property name="visible">True</property>
+             <property name="can_focus">False</property>
+-            <property name="orientation">vertical</property>
+             <child>
+               <object class="GtkNotebook" id="notebook1">
+                 <property name="visible">True</property>
+@@ -79,10 +76,9 @@
+                     <property name="left_padding">10</property>
+                     <property name="right_padding">10</property>
+                     <child>
+-                      <object class="GtkBox" id="box2">
++                      <object class="GtkVBox" id="box2">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+-                        <property name="orientation">vertical</property>
+                         <property name="spacing">5</property>
+                         <child>
+                           <object class="GtkFrame" id="frame2">
+@@ -231,10 +227,9 @@
+                     <property name="left_padding">10</property>
+                     <property name="right_padding">10</property>
+                     <child>
+-                      <object class="GtkBox" id="box6">
++                      <object class="GtkVBox" id="box6">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+-                        <property name="orientation">vertical</property>
+                         <child>
+                           <object class="GtkFrame" id="frame3">
+                             <property name="visible">True</property>
+@@ -248,10 +243,9 @@
+                                 <property name="left_padding">12</property>
+                                 <property name="right_padding">10</property>
+                                 <child>
+-                                  <object class="GtkBox" id="box7">
++                                  <object class="GtkVBox" id="box7">
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">False</property>
+-                                    <property name="orientation">vertical</property>
+                                     <property name="spacing">3</property>
+                                     <child>
+                                       <object class="GtkTable" id="table1">
+@@ -736,10 +730,9 @@
+                     <property name="left_padding">10</property>
+                     <property name="right_padding">10</property>
+                     <child>
+-                      <object class="GtkBox" id="box4">
++                      <object class="GtkVBox" id="box4">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+-                        <property name="orientation">vertical</property>
+                         <child>
+                           <object class="GtkFrame" id="frame9">
+                             <property name="visible">True</property>
+@@ -753,7 +746,7 @@
+                                 <property name="left_padding">12</property>
+                                 <property name="right_padding">10</property>
+                                 <child>
+-                                  <object class="GtkBox" id="box5">
++                                  <object class="GtkHBox" id="box5">
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">False</property>
+                                     <property name="spacing">10</property>
+@@ -776,7 +769,6 @@
+                                       <object class="GtkComboBox" id="notification_combobox">
+                                         <property name="visible">True</property>
+                                         <property name="can_focus">False</property>
+-                                        <property name="hexpand">True</property>
+                                         <property name="model">notification_type_model</property>
+                                         <child>
+                                           <object class="GtkCellRendererText" id="cellrenderertext5"/>
+@@ -841,10 +833,9 @@
+                 <property name="can_focus">False</property>
+                 <property name="top_padding">10</property>
+                 <child>
+-                  <object class="GtkBox" id="box3">
++                  <object class="GtkVBox" id="box3">
+                     <property name="visible">True</property>
+                     <property name="can_focus">False</property>
+-                    <property name="orientation">vertical</property>
+                     <child>
+                       <object class="GtkButton" id="close_button">
+                         <property name="label">gtk-close</property>
+@@ -852,7 +843,6 @@
+                         <property name="visible">True</property>
+                         <property name="can_focus">True</property>
+                         <property name="receives_default">True</property>
+-                        <property name="halign">end</property>
+                         <property name="use_stock">True</property>
+                       </object>
+                       <packing>
 diff -up src/volumeicon-0.5.1/src/bind.c.orig src/volumeicon-0.5.1/src/bind.c
 --- src/volumeicon-0.5.1/src/bind.c.orig	2015-03-02 13:03:01.000000000 -0700
-+++ src/volumeicon-0.5.1/src/bind.c	2015-07-19 19:54:36.000000000 -0600
++++ src/volumeicon-0.5.1/src/bind.c	2015-07-19 21:06:08.000000000 -0600
 @@ -151,7 +151,11 @@ grab_ungrab_with_ignorable_modifiers (Gd
  			XGrabKey (GDK_WINDOW_XDISPLAY (rootwin),
  			          keycode,
@@ -61,7 +183,7 @@ diff -up src/volumeicon-0.5.1/src/bind.c.orig src/volumeicon-0.5.1/src/bind.c
  	gdk_flush();
 diff -up src/volumeicon-0.5.1/src/volumeicon.c.orig src/volumeicon-0.5.1/src/volumeicon.c
 --- src/volumeicon-0.5.1/src/volumeicon.c.orig	2015-03-02 15:27:44.000000000 -0700
-+++ src/volumeicon-0.5.1/src/volumeicon.c	2015-07-19 20:06:26.000000000 -0600
++++ src/volumeicon-0.5.1/src/volumeicon.c	2015-07-19 21:11:19.000000000 -0600
 @@ -710,6 +710,7 @@ static gboolean scale_timeout(gpointer d
  	gtk_window_get_size(GTK_WINDOW(m_scale_window), &window.width, &window.height);
  	gtk_status_icon_get_geometry(m_status_icon, NULL, &icon, NULL);
@@ -197,12 +319,19 @@ diff -up src/volumeicon-0.5.1/src/volumeicon.c.orig src/volumeicon-0.5.1/src/vol
  		}
  	}
  
-@@ -1273,11 +1340,19 @@ int main(int argc, char * argv[])
+@@ -1271,13 +1338,26 @@ int main(int argc, char * argv[])
+     /* Initialize the progress bar. */
+     m_pbar = (GtkProgressBar *)gtk_progress_bar_new();
      gtk_progress_bar_set_fraction(m_pbar, 0.0);
++#if GTK_CHECK_VERSION(3,0,0)
      gtk_orientable_set_orientation(GTK_ORIENTABLE(m_pbar),
                                     GTK_ORIENTATION_HORIZONTAL);
-+#if GTK_CHECK_VERSION(3,0,0)
      gtk_progress_bar_set_show_text(m_pbar, TRUE);
++#elif GTK_CHECK_VERSION(2,16,0)
++    gtk_progress_bar_set_orientation(m_pbar,
++				     GTK_PROGRESS_LEFT_TO_RIGHT);
++#else
++#error No GTK version
 +#endif
      gtk_widget_show(GTK_WIDGET(m_pbar));
  
