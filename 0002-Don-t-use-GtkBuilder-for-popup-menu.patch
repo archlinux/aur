@@ -1,0 +1,213 @@
+From 2018923cf09f02d71184d0319a705d66c2916a4c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 20 Jul 2015 22:09:52 +0200
+Subject: [PATCH 2/2] Don't use GtkBuilder for popup menu
+
+This makes it compatible with GTK+ 3.
+---
+ data/Makefile.am    |  3 +--
+ data/popup.ui.glade | 69 ----------------------------------------------------
+ po/POTFILES.in      |  1 -
+ src/lxmusic.c       | 70 ++++++++++++++++++++++++++++++++++++++++++++---------
+ 4 files changed, 59 insertions(+), 84 deletions(-)
+ delete mode 100644 data/popup.ui.glade
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index bbdfe49..c7679de 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -13,8 +13,7 @@ uidir=$(datadir)/lxmusic
+ ui_DATA= \
+ 	lxmusic.ui.glade \
+ 	pref-dlg.ui.glade \
+-	track-info.ui.glade \
+-	popup.ui.glade
++	track-info.ui.glade
+ 
+ EXTRA_DIST = \
+ 	$(desktop_DATA) \
+diff --git a/data/popup.ui.glade b/data/popup.ui.glade
+deleted file mode 100644
+index 871dc64..0000000
+--- a/data/popup.ui.glade
++++ /dev/null
+@@ -1,69 +0,0 @@
+-<?xml version="1.0"?>
+-<!--*- mode: xml -*-->
+-<interface>
+-  <object class="GtkUIManager" id="uimanager1">
+-    <child>
+-      <object class="GtkActionGroup" id="actiongroup1">
+-        <child>
+-          <object class="GtkAction" id="show_main_win">
+-            <property name="stock_id">gtk-open</property>
+-            <property name="name">show_main_win</property>
+-            <property name="label" translatable="yes">_Show Main Window</property>
+-            <signal handler="on_show_main_win" name="activate"/>
+-          </object>
+-        </child>
+-        <child>
+-          <object class="GtkAction" id="play">
+-            <property name="stock_id">gtk-media-play</property>
+-            <property name="name">play</property>
+-            <signal handler="on_play_btn_clicked" name="activate"/>
+-          </object>
+-        </child>
+-        <child>
+-          <object class="GtkAction" id="stop">
+-            <property name="stock_id">gtk-media-stop</property>
+-            <property name="name">stop</property>
+-            <signal handler="on_stop_btn_clicked" name="activate"/>
+-          </object>
+-        </child>
+-        <child>
+-          <object class="GtkAction" id="prev">
+-            <property name="stock_id">gtk-media-previous</property>
+-            <property name="name">prev</property>
+-            <signal handler="on_prev_btn_clicked" name="activate"/>
+-          </object>
+-        </child>
+-        <child>
+-          <object class="GtkAction" id="next">
+-            <property name="stock_id">gtk-media-next</property>
+-            <property name="name">next</property>
+-            <signal handler="on_next_btn_clicked" name="activate"/>
+-          </object>
+-        </child>
+-        <child>
+-          <object class="GtkAction" id="quit">
+-            <property name="stock_id">gtk-quit</property>
+-            <property name="name">quit</property>
+-            <signal handler="on_quit" name="activate"/>
+-          </object>
+-        </child>
+-      </object>
+-    </child>
+-    <ui>
+-      <popup name="popup">
+-        <menuitem action="show_main_win"/>
+-        <separator/>
+-        <menuitem action="play"/>
+-        <menuitem action="stop"/>
+-        <menuitem action="prev"/>
+-        <menuitem action="next"/>
+-        <separator/>
+-        <menuitem action="quit"/>
+-      </popup>
+-    </ui>
+-  </object>
+-  <object class="GtkMenu" constructor="uimanager1" id="popup">
+-    <property name="visible">True</property>
+-    <signal handler="gtk_widget_destroy" name="selection_done"/>
+-  </object>
+-</interface>
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index c0245cc..19379ea 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -4,7 +4,6 @@ src/utils.c
+ src/lxmusic-plugin-config.c
+ data/lxmusic.desktop.in
+ data/lxmusic.ui.glade
+-data/popup.ui.glade
+ data/pref-dlg.ui.glade
+ data/track-info.ui.glade
+ src/lxmusic-notify.c
+diff --git a/src/lxmusic.c b/src/lxmusic.c
+index 14aa17a..30b939d 100644
+--- a/src/lxmusic.c
++++ b/src/lxmusic.c
+@@ -87,6 +87,10 @@ static int 	update_track				( xmmsv_t *value, GtkTreeRowReference* ref );
+ static int 	on_coll_info_received			( xmmsv_t* value, void* user_data );
+ static int 	on_picture_front_received		( xmmsv_t* value, void* user_data );
+ static int 	on_playback_started			( xmmsv_t* value, void* user_data );
++void		on_prev_btn_clicked			( GtkButton* btn, gpointer user_data );
++void		on_next_btn_clicked			( GtkButton* btn, gpointer user_data );
++void		on_play_btn_clicked			( GtkButton* btn, gpointer user_data );
++void		on_stop_btn_clicked			( GtkButton* btn, gpointer user_data );
+ 
+ static xmmsc_connection_t *con = NULL;
+ static GtkWidget *main_win = NULL;
+@@ -421,25 +425,67 @@ void on_show_main_win(GtkAction* act, gpointer user_data)
+ static void on_tray_icon_popup_menu(GtkStatusIcon* icon, guint btn, guint time, gpointer user_data)
+ {
+ 	/* init tray icon widgets */
+-	GtkBuilder *builder = gtk_builder_new ();
+-	if(gtk_builder_add_from_file(builder, PACKAGE_DATA_DIR "/lxmusic/popup.ui.glade", NULL))
+-	{
+-        	GtkWidget *tray_play_btn = (GtkWidget*)gtk_builder_get_object(builder, "play");
+-		GtkWidget *tray_popup = (GtkWidget*)gtk_builder_get_object(builder, "popup");
+-        	gtk_builder_connect_signals(builder, NULL);
+-		switch (playback_status)
++	GtkMenu *systray_menu;
++	GtkWidget *item = NULL;
++
++	systray_menu = GTK_MENU (gtk_menu_new());
++
++	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_OPEN, NULL);
++	gtk_menu_item_set_label (GTK_MENU_ITEM(item), _("Show Main Window"));
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++	g_signal_connect (G_OBJECT (item), "activate",
++			  G_CALLBACK(on_show_main_win),
++			  NULL);
++
++	item = gtk_separator_menu_item_new();
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++
++	switch (playback_status)
+ 		{
+ 			case XMMS_PLAYBACK_STATUS_PLAY:
+-				g_object_set ( (GObject*)tray_play_btn, "stock-id", "gtk-media-pause", NULL);
++				item = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_PAUSE, NULL);
+ 				break;
+ 			case XMMS_PLAYBACK_STATUS_PAUSE:
+ 			case XMMS_PLAYBACK_STATUS_STOP:
+-				g_object_set ( (GObject*)tray_play_btn, "stock-id", "gtk-media-play", NULL);
++				item = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_PLAY, NULL);
+ 				break;
+ 		}
+-		gtk_menu_popup((GtkMenu*)tray_popup, NULL, NULL, NULL, NULL, btn, time);
+-	}
+-	g_object_unref(builder);
++
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(on_play_btn_clicked), 
++			  NULL);
++
++	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_STOP, NULL);
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(on_stop_btn_clicked), 
++			  NULL);
++
++	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_PREVIOUS, NULL);
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(on_prev_btn_clicked), 
++			  NULL);
++
++	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_NEXT, NULL);
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(on_next_btn_clicked), 
++			  NULL);
++
++	item = gtk_separator_menu_item_new();
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++
++	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
++	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(on_quit), 
++			  NULL);
++
++	/* show */
++	gtk_widget_show_all(GTK_WIDGET(systray_menu));
++	gtk_menu_popup(GTK_MENU(systray_menu), NULL, NULL, NULL, NULL, btn, time);
+ 
+ 	return;
+ }
+-- 
+2.4.6
+
