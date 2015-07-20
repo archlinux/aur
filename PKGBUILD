@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=folly
-pkgver=0.41.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -11,12 +11,12 @@ makedepends=('python2')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz"
 'https://googletest.googlecode.com/files/gtest-1.7.0.zip'
 )
-md5sums=('d7ff7682850ea0846881fb1fb42136e9'
+md5sums=('a6af2b2fce90c065e7ecf69d620e6712'
          '2d6ec8ccdf5c46b05ba54a9fd1d130d7')
 
 prepare() {
-	cd "$pkgname-$pkgver/$pkgname"
-	autoreconf -ivf
+  cd "$pkgname-$pkgver/$pkgname"
+  autoreconf -ivf
   cd build
   for i in *.py; do
     sed --in-place -e '1s/python/python2/g' "$i"
@@ -28,18 +28,18 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver/$pkgname"
-	CFLAGS="$CFLAGS -fpermissive" CXXFLAGS="$CXXFLAGS -fpermissive" \
+  cd "$pkgname-$pkgver/$pkgname"
+  CFLAGS="$CFLAGS -fpermissive" CXXFLAGS="$CXXFLAGS -fpermissive" \
   LIBS=-latomic ./configure --prefix=/usr --disable-static
   make
 }
 
 check() {
-	cd "$pkgname-$pkgver/$pkgname"
-	CFLAGS=-fpermissive make check
+  cd "$pkgname-$pkgver/$pkgname"
+  CFLAGS=-fpermissive make check
 }
 
 package() {
-	cd "$pkgname-$pkgver/$pkgname"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver/$pkgname"
+  make DESTDIR="$pkgdir/" install
 }
