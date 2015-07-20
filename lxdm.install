@@ -1,0 +1,17 @@
+post_install() {
+  getent group lxdm > /dev/null 2>&1 && \
+    groupmod -g 121 lxdm > /dev/null 2>&1 || \
+    groupadd -g 121 lxdm
+  getent passwd lxdm > /dev/null 2>&1 && \
+    usermod -c 'Lightweight X11 Display Manager' -u 121 -g 121 -d /var/lib/lxdm -s /sbin/nologin lxdm > /dev/null 2>&1 || \
+    useradd -c 'Lightweight X11 Display Manager' -u 121 -g 121 -d /var/lib/lxdm -s /sbin/nologin lxdm
+  passwd -l lxdm > /dev/null
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent passwd lxdm > /dev/null 2>&1 && userdel lxdm
+}

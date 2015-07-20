@@ -1,0 +1,21 @@
+diff -Naur lxdm.orig/data/lxdm.conf.in lxdm/data/lxdm.conf.in
+--- lxdm.orig/data/lxdm.conf.in	2013-08-30 17:56:16.097006000 +0200
++++ lxdm/data/lxdm.conf.in	2013-09-04 01:54:12.942117085 +0200
+@@ -23,7 +23,7 @@
+ 
+ [server]
+ ## arg used to start xserver, not fully function
+-# arg=/usr/bin/X -background vt1
++arg=/usr/bin/X -background vt1
+ # uncomment this if you really want xserver listen to tcp
+ # tcp_listen=1
+ # uncoment this if you want reset the xserver after logou
+@@ -34,7 +34,7 @@
+ gtk_theme=Clearlooks
+ 
+ ## background of the greeter
+-bg=/usr/share/backgrounds/default.png
++# bg=/usr/share/backgrounds/default.png
+ 
+ ## if show bottom pane
+ bottom_pane=1
