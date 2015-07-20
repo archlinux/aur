@@ -1,0 +1,19 @@
+pkgbase = python-ivi-git
+	pkgdesc = Python Interchangeable Virtual Instrument Library
+	pkgver = 0.14.9.r0.g7edbd63
+	pkgrel = 1
+	url = https://github.com/python-ivi/python-ivi
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	optdepends = python-vxi11: VXI11 instrument support
+	optdepends = python-usbtmc: USBTMC instrument support
+	optdepends = python-pyvisa: PyVISA interface for NI drivers
+	provides = python-ivi
+	source = python-ivi::git+https://github.com/python-ivi/python-ivi.git
+	md5sums = SKIP
+
+pkgname = python-ivi-git
+
