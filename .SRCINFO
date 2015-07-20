@@ -1,0 +1,25 @@
+pkgbase = pcmanfm-gtk3
+	pkgdesc = Extremely fast and lightweight file manager (GTK+ 3 version)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://pcmanfm.sourceforge.net/
+	install = pcmanfm.install
+	arch = i686
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL
+	makedepends = intltool
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = libfm-gtk3
+	depends = lxmenu-data
+	optdepends = gvfs: for trash support, mounting with udisks and remote filesystems
+	optdepends = udisks: alternative for mounting volumes
+	optdepends = xarchiver: archive management
+	provides = pcmanfm
+	conflicts = pcmanfm
+	source = http://downloads.sourceforge.net/pcmanfm/pcmanfm-1.2.3.tar.xz
+	md5sums = c993402d407b0a3fc076f842ac1bc5c9
+
+pkgname = pcmanfm-gtk3
+
