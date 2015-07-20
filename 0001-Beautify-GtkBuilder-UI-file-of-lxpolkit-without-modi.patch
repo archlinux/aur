@@ -1,0 +1,202 @@
+From 71bc22508bc56dce51911eef98aa1be896188a2a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 18 Dec 2014 21:32:39 +0100
+Subject: [PATCH 1/2] Beautify GtkBuilder UI file of lxpolkit without
+ modification
+
+This makes it easier to track changes in the future.
+---
+ data/ui/lxpolkit.ui | 183 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 182 insertions(+), 1 deletion(-)
+
+diff --git a/data/ui/lxpolkit.ui b/data/ui/lxpolkit.ui
+index e0940a2..2859db0 100644
+--- a/data/ui/lxpolkit.ui
++++ b/data/ui/lxpolkit.ui
+@@ -1 +1,182 @@
+-<?xml version="1.0"?><interface><requires lib="gtk+" version="2.16"/><object class="GtkDialog" id="dlg"><property name="border_width">5</property><property name="title" translatable="yes">Authentication</property><property name="resizable">False</property><property name="window_position">center</property><property name="type_hint">normal</property><property name="has_separator">False</property><child internal-child="vbox"><object class="GtkVBox" id="dialog-vbox1"><property name="visible">True</property><property name="orientation">vertical</property><property name="spacing">2</property><child><object class="GtkVBox" id="vbox1"><property name="visible">True</property><property name="border_width">12</property><property name="orientation">vertical</property><property name="spacing">6</property><child><object class="GtkHBox" id="hbox1"><property name="visible">True</property><child><object class="GtkImage" id="icon"><property name="visible">True</property><property name="stock">gtk-missing-image</property></object><packing><property name="expand">False</property><property name="position">0</property></packing></child><child><object class="GtkLabel" id="msg"><property name="visible">True</property><property name="xalign">0</property><property name="yalign">0</property><property name="wrap">True</property></object><packing><property name="position">1</property></packing></child></object><packing><property name="expand">False</property><property name="position">0</property></packing></child><child><object class="GtkHBox" id="id_hbox"><property name="visible">True</property><property name="spacing">6</property><child><object class="GtkLabel" id="label1"><property name="visible">True</property><property name="label" translatable="yes">Identity:</property></object><packing><property name="expand">False</property><property name="position">0</property></packing></child><child><object class="GtkComboBox" id="id"><property name="visible">True</property><child><object class="GtkCellRendererText" id="rendertext"/><attributes><attribute name="text">0</attribute></attributes></child></object><packing><property name="position">1</property></packing></child></object><packing><property name="expand">False</property><property name="position">1</property></packing></child><child><object class="GtkHBox" id="hbox2"><property name="visible">True</property><child><object class="GtkLabel" id="request_label"><property name="visible">True</property></object><packing><property name="expand">False</property><property name="position">0</property></packing></child><child><object class="GtkEntry" id="request"><property name="visible">True</property><property name="can_focus">True</property><property name="has_focus">True</property><property name="visibility">False</property><property name="invisible_char">&#x2022;</property><property name="activates_default">True</property></object><packing><property name="position">1</property></packing></child></object><packing><property name="expand">False</property><property name="position">2</property></packing></child><child><object class="GtkLabel" id="detail"><property name="visible">True</property><property name="xalign">0</property><property name="yalign">0</property></object><packing><property name="expand">False</property><property name="position">3</property></packing></child></object><packing><property name="expand">False</property><property name="position">1</property></packing></child><child internal-child="action_area"><object class="GtkHButtonBox" id="dialog-action_area1"><property name="visible">True</property><property name="layout_style">end</property><child><object class="GtkButton" id="cancel"><property name="label">gtk-cancel</property><property name="visible">True</property><property name="can_focus">True</property><property name="receives_default">True</property><property name="use_stock">True</property></object><packing><property name="expand">False</property><property name="fill">False</property><property name="position">0</property></packing></child><child><object class="GtkButton" id="ok"><property name="label">gtk-ok</property><property name="visible">True</property><property name="can_focus">True</property><property name="can_default">True</property><property name="has_default">True</property><property name="receives_default">True</property><property name="use_stock">True</property></object><packing><property name="expand">False</property><property name="fill">False</property><property name="position">1</property></packing></child></object><packing><property name="expand">False</property><property name="pack_type">end</property><property name="position">0</property></packing></child></object></child><action-widgets><action-widget response="-6">cancel</action-widget><action-widget response="-5">ok</action-widget></action-widgets></object></interface>
++<?xml version="1.0"?>
++<interface>
++  <requires lib="gtk+" version="2.16" />
++  <object class="GtkDialog" id="dlg">
++    <property name="border_width">5</property>
++    <property name="title" translatable="yes">Authentication</property>
++    <property name="resizable">False</property>
++    <property name="window_position">center</property>
++    <property name="type_hint">normal</property>
++    <property name="has_separator">False</property>
++    <child internal-child="vbox">
++      <object class="GtkVBox" id="dialog-vbox1">
++        <property name="visible">True</property>
++        <property name="orientation">vertical</property>
++        <property name="spacing">2</property>
++        <child>
++          <object class="GtkVBox" id="vbox1">
++            <property name="visible">True</property>
++            <property name="border_width">12</property>
++            <property name="orientation">vertical</property>
++            <property name="spacing">6</property>
++            <child>
++              <object class="GtkHBox" id="hbox1">
++                <property name="visible">True</property>
++                <child>
++                  <object class="GtkImage" id="icon">
++                    <property name="visible">True</property>
++                    <property name="stock">gtk-missing-image</property>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkLabel" id="msg">
++                    <property name="visible">True</property>
++                    <property name="xalign">0</property>
++                    <property name="yalign">0</property>
++                    <property name="wrap">True</property>
++                  </object>
++                  <packing>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="position">0</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkHBox" id="id_hbox">
++                <property name="visible">True</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkLabel" id="label1">
++                    <property name="visible">True</property>
++                    <property name="label" translatable="yes">Identity:</property>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkComboBox" id="id">
++                    <property name="visible">True</property>
++                    <child>
++                      <object class="GtkCellRendererText" id="rendertext" />
++                      <attributes>
++                        <attribute name="text">0</attribute>
++                      </attributes>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="position">1</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkHBox" id="hbox2">
++                <property name="visible">True</property>
++                <child>
++                  <object class="GtkLabel" id="request_label">
++                    <property name="visible">True</property>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkEntry" id="request">
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="has_focus">True</property>
++                    <property name="visibility">False</property>
++                    <property name="invisible_char">•</property>
++                    <property name="activates_default">True</property>
++                  </object>
++                  <packing>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="position">2</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkLabel" id="detail">
++                <property name="visible">True</property>
++                <property name="xalign">0</property>
++                <property name="yalign">0</property>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="position">3</property>
++              </packing>
++            </child>
++          </object>
++          <packing>
++            <property name="expand">False</property>
++            <property name="position">1</property>
++          </packing>
++        </child>
++        <child internal-child="action_area">
++          <object class="GtkHButtonBox" id="dialog-action_area1">
++            <property name="visible">True</property>
++            <property name="layout_style">end</property>
++            <child>
++              <object class="GtkButton" id="cancel">
++                <property name="label">gtk-cancel</property>
++                <property name="visible">True</property>
++                <property name="can_focus">True</property>
++                <property name="receives_default">True</property>
++                <property name="use_stock">True</property>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">False</property>
++                <property name="position">0</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkButton" id="ok">
++                <property name="label">gtk-ok</property>
++                <property name="visible">True</property>
++                <property name="can_focus">True</property>
++                <property name="can_default">True</property>
++                <property name="has_default">True</property>
++                <property name="receives_default">True</property>
++                <property name="use_stock">True</property>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">False</property>
++                <property name="position">1</property>
++              </packing>
++            </child>
++          </object>
++          <packing>
++            <property name="expand">False</property>
++            <property name="pack_type">end</property>
++            <property name="position">0</property>
++          </packing>
++        </child>
++      </object>
++    </child>
++    <action-widgets>
++      <action-widget response="-6">cancel</action-widget>
++      <action-widget response="-5">ok</action-widget>
++    </action-widgets>
++  </object>
++</interface>
+-- 
+2.1.3
+

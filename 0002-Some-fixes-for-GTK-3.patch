@@ -1,0 +1,38 @@
+From 19295faf81acbedb6a79f283e29fae3939f0fdae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 18 Dec 2014 21:33:50 +0100
+Subject: [PATCH 2/2] Some fixes for GTK+ 3
+
+This makes lxpolkit and lxsession-edit compatible with GTK+ 3.
+---
+ data/ui/lxpolkit.ui       | 1 -
+ data/ui/lxsession-edit.ui | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/data/ui/lxpolkit.ui b/data/ui/lxpolkit.ui
+index 2859db0..c5b157c 100644
+--- a/data/ui/lxpolkit.ui
++++ b/data/ui/lxpolkit.ui
+@@ -7,7 +7,6 @@
+     <property name="resizable">False</property>
+     <property name="window_position">center</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+         <property name="visible">True</property>
+diff --git a/data/ui/lxsession-edit.ui b/data/ui/lxsession-edit.ui
+index 4d382aa..90cdada 100644
+--- a/data/ui/lxsession-edit.ui
++++ b/data/ui/lxsession-edit.ui
+@@ -10,7 +10,6 @@
+     <property name="default_width">512</property>
+     <property name="default_height">420</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">True</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox">
+         <property name="visible">True</property>
+-- 
+2.1.3
+
