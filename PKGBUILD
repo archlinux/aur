@@ -7,8 +7,9 @@ _gitbranch=develop
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2391.090cd13
+pkgver=r2391.090cd13
 pkgrel=1
+epoch=1
 url='https://github.com/powerline/powerline'
 license=('MIT')
 arch=('i686' 'x86_64')
@@ -20,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${_gitname}"
-	echo "$(git rev-list --count ${_gitbranch}).$(git rev-parse --short ${_gitbranch})"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
