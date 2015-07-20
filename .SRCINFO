@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-zlib
+	pkgdesc = A compression/decompression Library (mingw-w64)
+	pkgver = 1.2.8
+	pkgrel = 5
+	url = http://www.zlib.net/
+	arch = any
+	license = custom:zlib
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	provides = mingw-w64-zlib-static
+	conflicts = mingw-w64-zlib-static
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://zlib.net/zlib-1.2.8.tar.gz
+	md5sums = 44d667c142d7cda120332623eab69f40
+
+pkgname = mingw-w64-zlib
+
