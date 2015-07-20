@@ -1,0 +1,23 @@
+pkgbase = x42-plugins
+	pkgdesc = Collection of LV2 plugins
+	pkgver = 20150702
+	pkgrel = 1
+	url = https://github.com/x42/x42-plugins
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	makedepends = gtk2
+	makedepends = ftgl
+	makedepends = ttf-freefont
+	makedepends = lv2>1.6.0
+	depends = pango
+	depends = jack
+	depends = liblo
+	depends = zita-convolver>3
+	depends = libltc
+	source = http://gareus.org/misc/x42-plugins/x42-plugins-20150702.tar.xz
+	md5sums = 4fa76d39ddb5830bca9b0e5142b6ffe0
+
+pkgname = x42-plugins
+
