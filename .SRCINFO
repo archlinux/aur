@@ -1,22 +1,22 @@
 pkgbase = j8-git
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
-	pkgver = 1.4.2
-	pkgrel = 2
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = http://www.jsoftware.com
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = LGPL
-	depends = ncurses
+	depends = libtinfo
 	depends = qt5-tools
 	depends = qt5-websockets
 	depends = qt5-webengine
 	depends = wget
 	depends = pcre
 	source = http://www.jsoftware.com/gitlist/qtide.git/zipball/master
-	source = http://www.databaserossoverde.it/jsoftware/j804_env_20150622.tar.gz
+	source = http://www.databaserossoverde.it/jsoftware/j804_env_20150720.tar.gz
 	md5sums = SKIP
-	md5sums = 2c3b921dcb2ce7f23a4836fd11eeaa0c
+	md5sums = a4fc1f54932e8b12d8236458e2f3dc7a
 
 pkgname = j8-git
 
