@@ -1,0 +1,11 @@
+--- a/muttprint	2015-07-21 11:18:04.219578426 +1200
++++ b/muttprint	2015-07-21 11:18:53.906243779 +1200
+@@ -1635,7 +1635,7 @@
+ 	open (AUX, "$auxfile") or fatalError "Could not open $auxfile:\n$!";
+ 	
+ 	while (<AUX>) {
+-		($numberOfPages) = /\\newlabel{LastPage}{{}{(\d+)}}/;
++		($numberOfPages) = /\\newlabel\{LastPage}\{\{}\{(\d+)}}/;
+ 	}
+ 	
+ 	close AUX or fatalError "Could not close $auxfile:\n$!";

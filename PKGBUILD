@@ -14,16 +14,17 @@ depends=('texlive-latexextra' 'perl-timedate' 'perl-file-which' 'perl-text-iconv
 optdepends=('texlive-fontsextra:         Adds the CMBright font')
 makedepends=('imagemagick')
 url=(http://muttprint.sf.net)
-backup=(etc/Muttprintrc)
+backup=('etc/Muttprintrc')
 source=(http://downloads.sf.net/$pkgname/$pkgname-$_mainver.tar.gz
-        muttprint_0.73-4.diff.gz)
+        'muttprint_0.73-4.diff.gz' 'regex.patch')
 md5sums=('39b76058b838e3078df93236eda2c316'
-         'd5d2ba786cd4ff0a40b7fd2c53e11562')
+         'd5d2ba786cd4ff0a40b7fd2c53e11562'
+         'c0eb6dcfc195c95edf5e27c414f8290a')
 
-build() {
+prepare(){
    cd $srcdir/$pkgname-$_mainver
-   patch -p1 < ../muttprint_0.73-4.diff
-
+   patch -p1 < "$srcdir"/muttprint_0.73-4.diff
+   patch -p1 < "$srcdir"/regex.patch
    # convert images (and make pics/ build work)
    cd pics && \
      convert -flop BabyTuX.eps BabyTuX.eps
@@ -32,7 +33,10 @@ build() {
        convert $i $(basename $i .eps).png; \
      done && \
      convert penguin.eps penguin.jpg
-   cd ..
+}
+
+build() {
+   cd $srcdir/$pkgname-$_mainver
 
    aclocal
    automake --add-missing --copy
