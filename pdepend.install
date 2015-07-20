@@ -1,6 +1,6 @@
 post_install() {
   echo
-  echo "Warning: bz2.so must be enabled in your php.ini"
+  echo "Warning: phar.so and bz2.so must be enabled in your php.ini"
 }
 
 post_upgrade() {

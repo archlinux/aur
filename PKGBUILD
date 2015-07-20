@@ -13,7 +13,7 @@ source=("http://static.pdepend.org/php/${pkgver}/pdepend.phar"
         "pdepend.install")
 md5sums=('a865a41bc90c8ad121f6055e633f9442'
          '672b04a52b75ac6fbb6e4f0ed5713a35'
-         '2ac82322f6c7bf452459d422ce1f8bc3')
+         '0b56639c95c48c1237f628648dd83e03')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
