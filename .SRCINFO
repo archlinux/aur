@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-mediaplayer-git
+	pkgdesc = A mediaplayer indicator for the Gnome Shell
+	pkgver = 3.10.r445.2b62dc0
+	pkgrel = 1
+	url = https://github.com/eonpatapon/gnome-shell-extensions-mediaplayer
+	install = gnome-shell-extension-mediaplayer.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = gnome-shell
+	optdepends = mpdris2-git: MPD support
+	source = gnome-shell-extension-mediaplayer::git+https://github.com/eonpatapon/gnome-shell-extensions-mediaplayer.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-mediaplayer-git
+
