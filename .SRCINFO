@@ -1,6 +1,6 @@
 pkgbase = proxygen
 	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server
-	pkgver = 0.24.0
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/facebook/proxygen
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = proxygen
 	provides = proxygen
 	conflicts = proxygen-git
 	options = !makeflags
-	source = https://github.com/facebook/proxygen/archive/v0.24.0.tar.gz
+	source = https://github.com/facebook/proxygen/archive/v0.28.0.tar.gz
 	source = EchoServer.cpp.patch
 	source = HTTPDownstreamSessionTest.cpp.patch
-	md5sums = 390b8481e398f54dffed91fde90365bf
+	md5sums = 2564029b9702cf9f5b490df800a3e6f2
 	md5sums = f587fd8970bd02648474dac6d9d62326
 	md5sums = 4b0332e707b17770e72b67da7d9f3e65
 

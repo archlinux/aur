@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=proxygen
-pkgver=0.24.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('autoconf-archive' 'wget' 'ruby' 'gperftools')
 options=('!makeflags')
 conflicts=('proxygen-git')
 provides=('proxygen')
-md5sums=('390b8481e398f54dffed91fde90365bf'
+md5sums=('2564029b9702cf9f5b490df800a3e6f2'
          'f587fd8970bd02648474dac6d9d62326'
          '4b0332e707b17770e72b67da7d9f3e65')
 
