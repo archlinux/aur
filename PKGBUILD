@@ -14,7 +14,7 @@ source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
        'LICENSE')
 noextract=($_npmname-$pkgver.tgz)
 md5sums=('5b35a2a4187c45f6ea4e74a5f47de0f9'
-         '196006ee5e61740475b5d1fea5b285a1')
+         '56144547c46601ee8caeafc843fd99a6')
 
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
