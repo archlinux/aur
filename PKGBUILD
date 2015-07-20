@@ -16,7 +16,7 @@ source=("salome-smesh.profile")
 _source=smesh
 _installdir=/opt/salome/smesh
 _paraviewrootdir=/usr
-_paraviewver=4.3
+_paraviewver=4.2
 
 prepare() {
   msg "Connecting to git server..."
@@ -70,4 +70,5 @@ package() {
   install -D -m755 "${srcdir}/${pkgname}.profile" \
                    "${pkgdir}/etc/salome/profile.d/${pkgname}.sh"
 }
-md5sums=('2770fc45e9fc631a1f68ec5e851705e4')
+
+md5sums=('90ba130aca1a935a64f953fdadd23bc5')

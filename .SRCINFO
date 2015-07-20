@@ -15,7 +15,7 @@ pkgbase = salome-smesh
 	depends = salome-med>=7.6.0
 	depends = salome-med<7.7.0
 	source = salome-smesh.profile
-	md5sums = 2770fc45e9fc631a1f68ec5e851705e4
+	md5sums = 90ba130aca1a935a64f953fdadd23bc5
 
 pkgname = salome-smesh
 
