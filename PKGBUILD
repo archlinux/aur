@@ -1,6 +1,6 @@
 # Maintainer: Harley Wiltzer <harleyw@hotmail.com>
 pkgname=conway-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A conway's game of life player that uses ncurses"
 arch=('x86_64')
