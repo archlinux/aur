@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lokalize-git
-pkgver=2.0.r1175.78595a9
+pkgver=2.0.r1177.4768929
 pkgrel=1
 pkgdesc="Computer-Aided Translation System. (GIT version)"
 url='https://www.kde.org/applications/development/lokalize'
@@ -12,19 +12,22 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'hunspell' 'python')
 optdepends=('hunspell: Spell checker')
 conflicts=('kdesdk-lokalize' 'lokalize')
 provides=('lokalize')
-source=('git://anongit.kde.org/lokalize.git')
-sha1sums=('SKIP')
+source=('git://anongit.kde.org/lokalize.git'
+        'patch.patch')
+sha1sums=('SKIP'
+          'b33455548073fda877d390f7929a14dcefd7fea0')
 install=lokalize-git.install
 
 pkgver() {
   cd lokalize
-  _ver="$(cat src/version.h | grep -m1 'define LOKALIZE_VERSION' | grep -o "[[:digit:]]*" | xargs)"
-  echo -e "${_ver// /.}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat src/version.h | grep -m1 'define LOKALIZE_VERSION' | cut -d '"' -f2)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
-  sed 's|${DATA_INSTALL_DIR}|${KXMLGUI_INSTALL_DIR}|g' -i lokalize/src/CMakeLists.txt
+
+  patch -p0 -i ../patch.patch
 }
 
 build() {

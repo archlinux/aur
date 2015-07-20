@@ -1,0 +1,19 @@
+--- lokalize/src/CMakeLists.txt.orig	2015-07-20 21:10:24.460613123 +0200
++++ lokalize/src/CMakeLists.txt	2015-07-20 21:11:22.031921890 +0200
+@@ -180,15 +180,7 @@ install(TARGETS lokalize ${INSTALL_TARGE
+ 
+ install( PROGRAMS org.kde.lokalize.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+ install( FILES prefs/lokalize.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
+-install( FILES
+-        editorui.rc
+-        lokalizemainwindowui.rc
+-        scriptsui.rc
+-        project/projectmanagerui.rc
+-        tm/translationmemoryrui.rc
+-        filesearch/filesearchtabui.rc
+-        lokalize.notifyrc
+-        DESTINATION  ${DATA_INSTALL_DIR}/lokalize )
++install( FILES lokalize.notifyrc DESTINATION  ${KNOTIFYRC_INSTALL_DIR} )
+ 
+ install( FILES
+         editorui.rc

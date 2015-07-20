@@ -1,6 +1,6 @@
 pkgbase = lokalize-git
 	pkgdesc = Computer-Aided Translation System. (GIT version)
-	pkgver = 2.0.r1175.78595a9
+	pkgver = 2.0.r1177.4768929
 	pkgrel = 1
 	url = https://www.kde.org/applications/development/lokalize
 	install = lokalize-git.install
@@ -20,7 +20,9 @@ pkgbase = lokalize-git
 	conflicts = kdesdk-lokalize
 	conflicts = lokalize
 	source = git://anongit.kde.org/lokalize.git
+	source = patch.patch
 	sha1sums = SKIP
+	sha1sums = b33455548073fda877d390f7929a14dcefd7fea0
 
 pkgname = lokalize-git
 
