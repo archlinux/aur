@@ -1,0 +1,17 @@
+pkgbase = bzr-git-plugin
+	pkgdesc = Plugin for bzr to work with git trees
+	pkgver = 0.6.8
+	pkgrel = 4
+	url = http://wiki.bazaar.canonical.com/ForeignBranches/Git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2-dulwich
+	depends = bzr
+	conflicts = bzr-git
+	replaces = bzr-git
+	source = http://launchpad.net/bzr-git/trunk/0.6.8/+download/bzr-git-0.6.8.tar.gz
+	md5sums = 8f9f64787703750f38daf7c15162f75a
+
+pkgname = bzr-git-plugin
+
