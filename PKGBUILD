@@ -8,11 +8,12 @@ pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
 pkgver=r2391.090cd13
-pkgrel=1
+pkgrel=2
 epoch=1
 url='https://github.com/powerline/powerline'
 license=('MIT')
 arch=('i686' 'x86_64')
+makedepends=('git' 'python2-setuptools' 'python-setuptools' 'python2-sphinx')
 install="${_gitname}.install"
 source=("${_gitname}::git://github.com/powerline/${_gitname}.git#branch=${_gitbranch}"
         "${install}")
@@ -26,12 +27,7 @@ pkgver() {
 
 build() {
 	cd "${_gitname}"/docs
-	if [ -x "/usr/bin/sphinx-build2" ]; then
-		make man SPHINXBUILD=sphinx-build2 BUILDDIR=_build-python2
-	fi
-	if [ -x "/usr/bin/sphinx-build" ]; then
-		make man SPHINXBUILD=sphinx-build BUILDDIR=_build-python
-	fi
+	make man SPHINXBUILD=sphinx-build2
 }
 
 package_generic() {
@@ -55,7 +51,7 @@ package_generic() {
 
 	# Manpages
 	install -dm755 "${pkgdir}/usr/share/man/man1/"
-	install -Dm644 "docs/${_BUILDDIR}/man/"* "${pkgdir}/usr/share/man/man1/"
+	install -Dm644 "docs/_build/man/"* "${pkgdir}/usr/share/man/man1/"
 }
 
 package_python2-powerline-git() {
@@ -65,7 +61,6 @@ package_python2-powerline-git() {
 	            'mercurial: improved mercurial support'
 	            'zsh: better shell prompt'
 	            'gvim: vim compiled with Python support')
-	makedepends=('git' 'python2-setuptools' 'python2-sphinx')
 	conflicts=('python2-powerline'
 	           'python-powerline-git'
 	           'python-powerline'
@@ -73,8 +68,6 @@ package_python2-powerline-git() {
 
 	cd "${_gitname}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
-
-	export _BUILDDIR=_build-python2
 
 	package_generic
 }
@@ -85,7 +78,6 @@ package_python-powerline-git() {
 	            'python-pygit2: improved git support'
 	            'zsh: better shell prompt'
 	            'gvim: vim compiled with Python support')
-	makedepends=('git' 'python-setuptools' 'python-sphinx')
 	conflicts=('python2-powerline'
 	           'python2-powerline-git'
 	           'python-powerline'
@@ -93,8 +85,6 @@ package_python-powerline-git() {
 
 	cd "${_gitname}"
 	python setup.py install --root="${pkgdir}" --optimize=1
-
-	export _BUILDDIR=_build-python
 
 	package_generic
 }

@@ -1,13 +1,17 @@
 pkgbase = python-powerline-git
 	pkgdesc = The ultimate statusline/prompt utility
 	pkgver = r2391.090cd13
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/powerline/powerline
 	install = powerline.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	makedepends = python2-sphinx
 	source = powerline::git://github.com/powerline/powerline.git#branch=develop
 	source = powerline.install
 	sha256sums = SKIP
