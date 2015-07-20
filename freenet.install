@@ -8,17 +8,27 @@ post_install() {
         echo "ok" || echo "fail"
     }
     chown -R freenet:freenet /opt/freenet /run/freenet
-    echo "Please visit http://127.0.0.1:8888/ to configure your node"
+    echo
+    echo "Freenet will be slow at first startup while it discovers the network."
+    echo "You may see Data Not Found or Route Not Found errors, this is normal."
+    echo "For best performance Freenet should be run 24/7 as much as possible."
+    echo "Your node's configuration WebUI will be located at http://127.0.0.1:8888/ "
+    echo " https://freenetproject.org/faq.html"
+    echo
 }
 
 post_upgrade() {
     chown -R freenet:freenet /opt/freenet /run/freenet
-}
+    echo
+    echo " Freenet WebUI http://127.0.0.1:8888/ "
+    echo "     Changelog https://github.com/freenet/fred/releases/tag/build01469"
+    echo
 
 pre_remove() {
     getent passwd freenet &>/dev/null && {
         echo -n ">>> Removing freenet system user... "
         userdel freenet
         echo "ok"
+        echo
     }
 }

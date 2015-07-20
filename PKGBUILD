@@ -3,8 +3,8 @@
 #
 
 _fred=#tag=build01469  # build 1469: 2015-07-19
+#_fred=#tag=testing-build-1469-pre2
 #_fred=#branch=next    # git HEAD
-epoch=1
 
 # comment out to run unit tests
 BUILDENV+=('!check')
@@ -16,7 +16,7 @@ _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 pkgname=freenet
 pkgver=0.7.5.1469
 pkgrel=1
-
+epoch=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
 url="https://downloads.freenetproject.org"
