@@ -16,7 +16,7 @@ pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyros
 url="https://github.com/pyroscope/rtorrent-ps"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('libtorrent-pyro-git' 'libsigc++' 'ncurses' 'curl' 'xmlrpc-c' 'gcc>=4.9.0')
+depends=('libtorrent-pyro-git' 'libsigc++' 'ncurses' 'curl' 'xmlrpc-c')
 makedepends=('git' 'cppunit')
 optdepends=('ttf-dejavu: for utf8 glyphs'
             'ttf-everson-mono'
@@ -33,7 +33,6 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
 source=("git://github.com/rakshasa/rtorrent.git#commit=$_commit"
         "rtorrent.rc.sample"
-        #"http://libtorrent.rakshasa.no/downloads/xmlrpc2scgi.py"
         "${_url}/ps-ui_pyroscope_0.8.8.patch"
         "${_url}/pyroscope.patch"
         "${_url}/ui_pyroscope.patch"
@@ -83,7 +82,7 @@ build() {
     cd "$srcdir/rtorrent"
     #export CC=clang
     #export CXX=clang++
-    export CXXFLAGS+=" -std=c++11 -fno-strict-aliasing"
+    #export CXXFLAGS+=" -std=c++11 -fno-strict-aliasing"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
     ./configure $_debug \
