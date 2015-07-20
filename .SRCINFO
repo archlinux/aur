@@ -1,0 +1,20 @@
+pkgbase = aafm-git
+	pkgdesc = Android ADB File Manager.
+	pkgver = 20140930
+	pkgrel = 1
+	url = https://github.com/sole/aafm
+	install = aafm-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = desktop-file-utils
+	depends = python2
+	depends = pygtk
+	depends = android-sdk-platform-tools
+	provides = aafm
+	conflicts = aafm
+	source = aafm-git::git://github.com/sole/aafm.git
+	md5sums = SKIP
+
+pkgname = aafm-git
+
