@@ -1,0 +1,16 @@
+pkgbase = jsmath-fonts
+	pkgdesc = jsMath font archive
+	pkgver = 3.6a
+	pkgrel = 3
+	url = http://www.math.union.edu/~dpvc/jsMath/
+	install = jsmath-fonts.install
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.math.union.edu/~dpvc/jsMath/download/TeX-fonts-linux.tgz
+	md5sums = ec311947b2609a392b15a7a3b1e2acf3
+
+pkgname = jsmath-fonts
+
