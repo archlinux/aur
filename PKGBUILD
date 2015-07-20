@@ -6,7 +6,7 @@
 
 pkgname=mplayer-vaapi
 pkgver=36265
-pkgrel=14
+pkgrel=17
 pkgdesc="A movie player, compiled with vaapi support"
 arch=('i686' 'x86_64')
 url="http://gitorious.org/vaapi/mplayer"
