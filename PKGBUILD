@@ -9,7 +9,7 @@ arch=('any')
 license=('BSD')
 depends=('php')
 source=("https://phar.phpunit.de/phploc-${pkgver}.phar"
-        "https://raw.githubusercontent.com/sebastianbergmann/phploc/2.1.3/LICENSE")
+        "https://raw.githubusercontent.com/sebastianbergmann/phploc/${pkgver}/LICENSE")
 md5sums=('4304b744b31f44d5f476b2654caaade5'
          '9efd7ec2636b1412c93a29f62c9a4e0b')
 
