@@ -1,0 +1,14 @@
+pkgbase = vera-control-center
+	pkgdesc = Control Center for vera
+	pkgver = 1.0.17
+	pkgrel = 2
+	url = https://github.com/vera-desktop/vera-control-center
+	arch = x86_64
+	arch = i686
+	license = GPL2.1
+	depends = vera-desktop-environment
+	source = https://github.com/vera-desktop/vera-control-center/archive/release-7/1.0.17-1.tar.gz
+	md5sums = 3546e223d20f1570861c66c65183c91d
+
+pkgname = vera-control-center
+
