@@ -1,6 +1,6 @@
 pkgbase = hosts-update
 	pkgdesc = Injects the mvps blocklist to /etc/hosts to prevent thousands of parasites, hijackers and unwanted adware/spyware/privacy websites from working.
-	pkgver = 1.35
+	pkgver = 1.36
 	pkgrel = 1
 	url = https://github.com/graysky2/hosts-update
 	install = readme.install
@@ -10,8 +10,8 @@ pkgbase = hosts-update
 	conflicts = hosts_update
 	replaces = hosts_update
 	backup = etc/hosts.local
-	source = http://repo-ck.com/source/hosts-update/hosts-update-1.35.tar.xz
-	sha256sums = 5e5e8e7b2e5981fe3ad6b9c94f4a0fd9fd95de8ae6b8b8e7c1b136338c383162
+	source = http://repo-ck.com/source/hosts-update/hosts-update-1.36.tar.xz
+	sha256sums = ae6651a744e4f401f2b9e7a8bb0346d4dde50ece4a148dcb34baf49d9fc5eaa7
 
 pkgname = hosts-update
 
