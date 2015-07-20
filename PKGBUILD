@@ -1,7 +1,7 @@
 # Mantainer: Bruno Galeotti <bgaleotti at gmail dot com>
 
 pkgname=php-semver-checker
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Compares two source sets and determines the appropriate semantic versioning to apply."
 url="https://github.com/tomzx/php-semver-checker"
@@ -11,7 +11,7 @@ depends=("php>=5.4.0")
 makedepends=("php-box" "php-composer")
 source=("https://github.com/tomzx/${pkgname}/archive/v${pkgver}.tar.gz")
 #source=("${pkgname}::git+https://github.com/tomzx/${pkgname}.git")
-sha512sums=('c9b44353de4b8c63997e7dc5631edbc15ed5f4e4e43bf1af7456d81b316fd36701f2a746ad72385a105ab81a49531147b60791068edfa8e1221c21c756fe20cd')
+sha512sums=('c26ea5aac23e91f533289f159765825abef435a2c17bee1e86c466799eae3540d2e9207fe209a27ffcdc5e5ca1d0aceb73889d3854cae3d3363f0088f5b9c08b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
