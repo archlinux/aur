@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-pkg-config
+	pkgdesc = Support pkg-config script (does not depend on any particular version of pkg-config). Useful for pkg-config powered cross-compiling with mingw-w64, see http://tinyurl.com/pkg-config-cross for more info
+	pkgver = 2
+	pkgrel = 3
+	url = http://pkg-config.freedesktop.org/
+	install = mingw-w64-pkg-config.install
+	arch = any
+	license = zlib
+	depends = pkg-config
+	depends = mingw-w64-crt
+	source = x86_64-w64-mingw32-pkg-config
+	source = i686-w64-mingw32-pkg-config
+	md5sums = 7a828d6aa57390613679edb208610045
+	md5sums = 18530650bb2ef89bf91176cedd4ce20b
+
+pkgname = mingw-w64-pkg-config
+

@@ -1,0 +1,5 @@
+post_install() {
+  echo "Note that you can use PKG_CONFIG_PATH_CUSTOM to tweak pkg-config path further"
+  echo "See the x86_64-w64-mingw32-config (or i686-w64-mingw32-config) file itself"
+  echo "for more information"
+}
