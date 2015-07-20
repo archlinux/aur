@@ -2,69 +2,44 @@
 
 pkgname=('ekstertera')
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc=("GUI client for Yandex.Disk")
 arch=('i686' 'x86_64')
 url="https://github.com/abbat/${pkgname}"
 license=('BSD')
+depends=('qt5-base')
 makedepends=('qt5-base' 'qt5-tools' 'git')
 source=("git+https://github.com/abbat/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-export QT_SELECT=5
-
 build() {
     cd "${pkgname}"
 
-    QT_OPTS="network"
-    SRC_3DPARTY="3dparty/json"
+    PWD=$(pwd)
 
-    if [ "${QT_SELECT}" -eq "4" ]; then
-        SRC_3DPARTY="${SRC_3DPARTY} 3dparty/qt5"
-    elif [ "${QT_SELECT}" -eq "5" ]; then
-        QT_OPTS="${QT_OPTS} core widgets"
-    else
-        echo "Unknown Qt version"
-        exit 1
-    fi
-
-    qmake -project -recursive -Wall -nopwd -o "${pkgname}.pro" \
+    qmake-qt5 -project -recursive -Wall -nopwd -o "${pkgname}.pro" \
         "CODEC = UTF-8" \
         "CODECFORTR = UTF-8" \
         "CONFIG += release" \
-        "QT += ${QT_OPTS}" \
+        "QT += network core widgets" \
         "INCLUDEPATH += src" \
-        "TRANSLATIONS += src/translations/${pkgname}_en.ts" \
-        src ${SRC_3DPARTY}
+        "${PWD}/src" "${PWD}/3dparty/json"
 
     lrelease -compress -removeidentical "${pkgname}.pro"
-    qmake "${pkgname}.pro"
+    qmake-qt5 "${pkgname}.pro"
     make
-
-    mv "${pkgname}" "${pkgname}-qt${QT_SELECT}"
 }
 
 package() {
     cd "${pkgname}"
 
-    if [ "${QT_SELECT}" -eq "4" ]; then
-        depends=('qt4')
-    elif [ "${QT_SELECT}" -eq "5" ]; then
-        depends=('qt5-base')
-    else
-        echo "Unknown Qt version"
-        exit 1
-    fi
-
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/pixmaps"
     install -d "${pkgdir}/usr/share/applications"
 
-    install -D -m755 "${pkgname}-qt${QT_SELECT}" "${pkgdir}/usr/bin/${pkgname}-qt${QT_SELECT}"
-    install -D -m644 "${pkgname}.desktop"        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -D -m644 "src/icons/${pkgname}.xpm"  "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-    install -D -m644 "README.md"                 "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -D -m644 "debian/copyright"          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    ln -s "/usr/bin/${pkgname}-qt${QT_SELECT}" "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m755 ${pkgname}               "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m644 ekstertera.desktop       "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 src/icons/ekstertera.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+    install -D -m644 README.md                "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -D -m644 debian/copyright         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
