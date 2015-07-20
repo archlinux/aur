@@ -8,6 +8,7 @@ ExecStart=/usr/bin/CopyAgent
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
+RestartSec=20
 
 [Install]
 WantedBy=multi-user.target
