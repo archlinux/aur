@@ -1,6 +1,6 @@
 pkgbase = enlightenment-wayland-git
 	pkgdesc = Highly expermimental Enlightenment window manager for Wayland - Development version
-	pkgver = 0.19.99.19896.2894bae
+	pkgver = 0.19.99.20261.g3593883
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = enlightenment.install
@@ -23,6 +23,7 @@ pkgbase = enlightenment-wayland-git
 	optdepends = gdb: create backtraces on crash
 	optdepends = geoclue2: geolocation module
 	optdepends = packagekit: packagekit module
+	optdepends = xorg-server-xwayland: xwayland module
 	options = debug
 	source = git://git.enlightenment.org/core/enlightenment.git
 	source = enlightenment_start_wayland

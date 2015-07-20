@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.19.99.19896.2894bae
+pkgver=0.19.99.20261.g3593883
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland - Development version"
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'geoclue2: geolocation module'
-            'packagekit: packagekit module')
+            'packagekit: packagekit module'
+            'xorg-server-xwayland: xwayland module')
 options=('debug')
 install=enlightenment.install
 source=("git://git.enlightenment.org/core/$_pkgname.git"
@@ -46,8 +47,7 @@ build() {
 
   ./autogen.sh \
     --prefix=/opt/enlightenment-wayland \
-    --enable-wl-drm \
-    --enable-wayland-only
+    --enable-wayland
 
   make
 }
