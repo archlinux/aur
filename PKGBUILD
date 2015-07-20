@@ -6,7 +6,7 @@ _cmd="${_module%client}"
 
 #pkgname=("python-${_module}" "python2-${_module}")
 pkgname="python-${_module}"
-pkgver="2.4.0"
+pkgver="2.5.0"
 pkgrel="1"
 pkgdesc="OpenStack Object Storage API Client Library"
 arch=("any")
@@ -15,7 +15,7 @@ license=("Apache")
 #makedepends=("python-pbr>=0.11" "python2-pbr>=0.11")
 makedepends=("python-pbr>=0.11")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e865553b3afc63a9952cfa30f155a604564cae31a40275fa2ce94c80d7affd4b')
+sha256sums=('6efcbff0bf60521ef682068c10c2d8959d887f70ed84ccd2def9945e8e94560e')
 
 prepare() {
     #cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
@@ -33,7 +33,6 @@ build() {
 
 package_python-swiftclient() {
     depends=("python-requests>=1.1"
-             "python-simplejson>=2.0.9"
              "python-six>=1.5.2")
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
@@ -42,7 +41,6 @@ package_python-swiftclient() {
 #package_python2-swiftclient() {
 #    depends=("python2-futures>=2.1.3"
 #             "python-requests>=1.1"
-#             "python-simplejson>=2.0.9"
 #             "python-six>=1.5.2")
 #    cd "${srcdir}/${_name}-${pkgver}-python2"
 #    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
