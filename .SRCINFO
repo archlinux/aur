@@ -1,6 +1,6 @@
 pkgbase = skype4pidgin-git
 	pkgdesc = A Skype plugin for libpurple clients (Pidgin, Empathy, Finch, etc)
-	pkgver = r728.158ddac
+	pkgver = r771.ba5483c
 	pkgrel = 1
 	url = https://github.com/EionRobb/skype4pidgin
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = skype4pidgin-git
 	replaces = skype4empathy-svn
 	source = skype4pidgin-git::git+https://github.com/EionRobb/skype4pidgin
 	source = Makefile.patch
-	source = https://copy.com/D1X42Cf78kCl/public/packages/skype_icons_empathy.tar.xz
+	source = https://repo.dray.be/package-files/skype_icons_empathy.tar.xz
 	md5sums = SKIP
 	md5sums = 8848134ab5babbc46549ae627365ff20
 	md5sums = 5728aa01ac674fca2c01348719fe8672
