@@ -1,0 +1,27 @@
+post_install() {
+	version=$1
+	cd /opt/fairsoft/$version/src/FairSoft
+	export version
+	./configure.sh ../arch.conf
+
+	echo "Add the following line to your ~/.profile"
+	echo "  export SIMPATH=/opt/fairsoft/$version"
+}
+
+post_upgrade() {
+	version=$1
+	cd /opt/fairsoft/$version/src/FairSoft
+	export version
+	./configure.sh ../arch.conf
+
+	echo "Add the following line to your ~/.profile"
+	echo "  export SIMPATH=/opt/fairsoft/$version"
+}
+
+pre_remove() {
+	:
+}
+
+post_remove() {
+	:
+}
