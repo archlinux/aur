@@ -1,0 +1,21 @@
+pkgbase = lxrandr-gtk3
+	pkgdesc = Monitor configuration tool (part of LXDE, GTK+ 3 version)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	depends = xorg-xrandr
+	provides = lxrandr
+	conflicts = lxrandr
+	source = http://downloads.sourceforge.net/lxde/lxrandr-0.3.0.tar.xz
+	source = 0001-Add-icon-to-the-about-dialog.patch
+	md5sums = 250f0ebb09c1e02f430f951911ba1259
+	md5sums = 0a3201017f165f2c15a611214eea1fa2
+
+pkgname = lxrandr-gtk3
+
