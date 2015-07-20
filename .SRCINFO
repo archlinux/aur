@@ -1,0 +1,16 @@
+pkgbase = slockd
+	pkgdesc = A simple screen locker for X, daemonizing
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://tools.suckless.org/slock
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxext
+	conflicts = slock
+	replaces = slock
+	source = slockd-1.2.tar.gz::https://github.com/creshal/slockd/archive/1.2.tar.gz
+	sha512sums = 77d211eb9a9eb3a471f991ded749939be9efa1de92ce2fb1e46c23a56bda589a22ed8e432117e742beae7dc6df8e63208578a59c7963619ab50db2badf71097e
+
+pkgname = slockd
+
