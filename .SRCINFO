@@ -1,0 +1,20 @@
+pkgbase = lxtask-gtk3
+	pkgdesc = Task manager of the LXDE Desktop (GTK+ 3 version)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	provides = lxtask
+	conflicts = lxtask
+	source = http://downloads.sourceforge.net/lxde/lxtask-0.1.6.tar.xz
+	source = 0001-Add-icon-to-the-about-dialog.patch
+	md5sums = 14b5341822aaa049f2d4d5a56c1b28f2
+	md5sums = SKIP
+
+pkgname = lxtask-gtk3
+
