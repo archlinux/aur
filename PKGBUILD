@@ -42,7 +42,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/libtorrent"
     #patch -Np1 -i "${startdir}/libtorrent.patch"
-    #patch -Np1 -i "${startdir}/remove_tr1_prefix.patch"
+
     ./autogen.sh
 }
 
@@ -50,7 +50,6 @@ build() {
     cd "$srcdir/libtorrent"
     #export CC=clang
     #export CXX=clang++
-    export CXXFLAGS+=" -std=c++11"
 
     ./configure $_falloc $_debug \
         --prefix=/usr
