@@ -1,5 +1,6 @@
 # Contributor: Tilmann Sult <t.sult@gmx.de>
-# Maintainer: Adam Hirst <adam@aphirst.karoo.co.uk>
+# Contributor: Adam Hirst <adam@aphirst.karoo.co.uk>
+# Maintainer: Carl Mueller  archlinux at carlm e4ward com
 pkgname=jsmath-fonts
 pkgver=3.6a
 pkgrel=3
