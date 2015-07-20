@@ -1,0 +1,16 @@
+pkgbase = flack
+	pkgdesc = A menu-driven BASH script to edit FLAC tags
+	pkgver = 2.0.6
+	pkgrel = 2
+	url = http://www.sourceforge.net/projects/flack/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash>=3.2
+	depends = flac>=1.2.1
+	backup = etc/flackrc
+	source = http://downloads.sourceforge.net/flack/flack-2.0.6.tar.gz
+	sha1sums = 86fd01dbb312ab6f85dfc3e1297ba64a8f365aa3
+
+pkgname = flack
+
