@@ -5,8 +5,8 @@
 _debug=n
 
 # Compile from a specific commit?
-#_commit=4202ad3  #0.13.3
 #_commit=51cd5ea  #0.13.4
+#_commit=a7857b2  #0.13.5
 _commit=HEAD
 
 # Add the following to your rtorrent.rc if your
