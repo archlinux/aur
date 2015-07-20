@@ -1,7 +1,12 @@
-#!/bin/bash
-
-post_install(){
-  echo "[+] Please enable PEDA with: echo 'source /usr/share/peda/peda.py' >> .gdbinit"
-  echo "[+] To execute PEDA just execute GDB and enjoy :)"
+post_install() {
+    echo "
+    >>> enable PEDA per user via:
+    >>> echo 'source /usr/share/peda/peda.py' > ~/.gdbinit
+    "
 }
 
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:

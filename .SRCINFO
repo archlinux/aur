@@ -1,16 +1,20 @@
 pkgbase = peda-git
 	pkgdesc = PEDA - Python Exploit Development Assistance for GDB
-	pkgver = 45.d0bd978
-	pkgrel = 2
+	pkgver = 68.69068b0
+	pkgrel = 1
 	url = https://github.com/longld/peda
 	install = peda.install
 	arch = any
-	license = Creative Commons
+	license = custom:Creative Commons
 	makedepends = git
 	depends = gdb
 	depends = python2
-	source = git+http://github.com/longld/peda
-	md5sums = SKIP
+	depends = binutils
+	depends = nasm
+	provides = peda
+	conflicts = peda
+	source = peda-git::git+https://github.com/longld/peda
+	sha512sums = SKIP
 
 pkgname = peda-git
 
