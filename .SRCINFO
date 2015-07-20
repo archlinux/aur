@@ -1,0 +1,20 @@
+pkgbase = cl-cffi
+	pkgdesc = Common Foreign Function Interface for Common Lisp
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = http://common-lisp.net/project/cffi/
+	install = cl-cffi.install
+	arch = any
+	license = BSD
+	depends = libffi
+	depends = common-lisp
+	depends = cl-alexandria
+	depends = cl-babel
+	depends = cl-trivial-features
+	optdepends = cl-bordeaux-threads: For the test suite
+	optdepends = cl-rt: For the test suite
+	source = http://common-lisp.net/project/cffi/releases/cffi_0.15.0.tar.gz
+	md5sums = 85f79f2b9a0aaa3b77ce6d1671ddf37f
+
+pkgname = cl-cffi
+

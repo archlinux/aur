@@ -1,0 +1,34 @@
+# arg 1:  the new package version
+
+_pkgname=cffi
+
+post_install() {
+    rm -f /usr/share/common-lisp/source/$_pkgname/ffi.h
+    rm -f /usr/share/common-lisp/source/$_pkgname/ffitarget.h
+    ln -s /usr/lib/libffi-3.2.1/include/ffi.h /usr/share/common-lisp/source/$_pkgname
+    ln -s /usr/lib/libffi-3.2.1/include/ffitarget.h /usr/share/common-lisp/source/$_pkgname
+    cat << EOM
+
+    To load this library with asdf, run the following line
+    (or its equivalent for your lisp of choice):
+
+    (asdf:load-system '${_pkgname})
+EOM
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    rm -f /usr/share/common-lisp/source/$_pkgname/ffi.h
+    rm -f /usr/share/common-lisp/source/$_pkgname/ffitarget.h
+}
+
+
+op=$1
+shift
+
+$op $*
+
+# End of file
