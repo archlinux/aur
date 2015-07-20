@@ -2,7 +2,7 @@
 
 pkgname=polyphone
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
 url="http://www.polyphone.fr/"
