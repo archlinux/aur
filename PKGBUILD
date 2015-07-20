@@ -8,8 +8,8 @@
 
 pkgname=volumeicon-gtk2
 _pkgname=volumeicon
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Volume control for your system tray (compiled for gtk2)'
 arch=('x86_64' 'i686')
 url='http://softwarebakery.com/maato/volumeicon.html'
@@ -20,8 +20,8 @@ depends=('gtk2' 'alsa-lib' 'libnotify')
 makedepends=('intltool')
 source=("http://softwarebakery.com/maato/files/volumeicon/$_pkgname-$pkgver.tar.gz"
         gtk2.patch)
-sha256sums=('e5f1179f9ec5ab25e3740e4f6bbe0baa75368f0ae87d370197b3fbefb61bd782'
-            'd9be16c6536008dd6e8d40a2b7ea9b82c3d6048698c948caddfc9a61ee1ace7e')
+sha256sums=('24b8c1d0a81d708b201ce6e67301fc175d65588d892d01859f667b8db8a05da0'
+            '68a0d28096e40ec734a0dd27d7bbfba45e26024a609a06aa52b5c6c5f1c665b8')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -36,7 +36,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-notify
-  make
+  make V=0
 }
 
 package() {
