@@ -18,12 +18,12 @@ md5sums=('17314564e4b078b76531ca945195913b')
 build() {
 	cd "$srcdir/syncterm-20150719"
 	cd "src/syncterm/"
-	make SRC_ROOT="$(realpath ..)" PREFIX="/usr" || true
+	make MANPREFIX="$pkgdir/usr/share" SRC_ROOT="$(realpath ..)" PREFIX="/usr" || true
 }
 
 package() {
 	cd "$srcdir/syncterm-20150719"
 	cd "src/syncterm/"
-	make SRC_ROOT="$(realpath ..)" PREFIX="$pkgdir/usr" install
+	make MANPREFIX="$pkgdir/usr/share" SRC_ROOT="$(realpath ..)" PREFIX="$pkgdir/usr" install
 }
 
