@@ -1,8 +1,8 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=java8-openjdk-hsdis
 _java_ver=8
-_jdk_update=45
-_jdk_build=14
+_jdk_update=51
+_jdk_build=16
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 _binutils_commit=69352378
@@ -15,7 +15,7 @@ _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(hotspot-${_repo_ver}.tar.gz::${_url_src}/hotspot/archive/${_repo_ver}.tar.gz
         git://sourceware.org/git/binutils-gdb.git#commit=${_binutils_commit}
         binutils-e9c1bdad.patch)
-sha256sums=('1dc7c5038f57f77a1e92cf1b48a188a0291805e69f570e1164efb7adb34c5a59'
+sha256sums=('a7236d5e5824cea20b48ca4efb8e5109007024af9b85214e9153c4d633665d0a'
             'SKIP'
             '4dc13852d61825aa59b7436ae41c449d181e5a66b355b6ca69604e4da3e03699')
 
