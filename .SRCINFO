@@ -1,0 +1,16 @@
+pkgbase = cargo-check-git
+	pkgver = r3.872765d
+	pkgrel = 1
+	url = https://github.com/rsolomo/cargo-check
+	arch = x86
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cargo
+	provides = cargo-check
+	conflicts = cargo-check
+	source = cargo-check::git+https://github.com/rsolomo/cargo-check.git
+	sha1sums = SKIP
+
+pkgname = cargo-check-git
+
