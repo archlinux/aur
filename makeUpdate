@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$1" = "" ] ; then
+  echo Usage $0 version
+fi
+
+git pull
+
+echo -n Calculating MD5 sum ... 
+MD5=$(curl -Ss -L https://github.com/jgeboski/purple-facebook/releases/download/$1/purple-facebook-$1.tar.gz | md5sum | cut -d ' ' -f 1) || exit $?
+echo $MD5
+
+
+echo Updating PKBUILD
+sed -i "s/pkgver=.*/pkgver=$1/g" PKGBUILD || exit $?
+sed -i "s/md5sums=.*/md5sums=\(\"$MD5\"\)/g" PKGBUILD || exit $?
+
+echo mksrcinfo
+mksrcinfo
+
+echo Commit and push
+git stage .SRCINFO PKGBUILD 
+git commit -m "Version bump to $1"
+git push
+
+echo
+echo DONE
+
