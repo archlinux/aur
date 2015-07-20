@@ -8,8 +8,10 @@ pkgbase = phpunit
 	license = BSD
 	depends = php
 	source = https://phar.phpunit.de/phpunit-4.7.7.phar
+	source = https://raw.githubusercontent.com/sebastianbergmann/phpunit/4.7.7/LICENSE
 	source = phpunit.install
 	md5sums = f7d59a6924b2e3ee35ab70a637451abc
+	md5sums = 61b8f921dcb4c23a050e7253cae57980
 	md5sums = 1fbae58bd7ae27afdf86ce14985dedd8
 
 pkgname = phpunit
