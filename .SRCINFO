@@ -1,7 +1,7 @@
 pkgbase = linux-fbcondecor
 	pkgdesc = The linux-fbcondecor kernel and modules with frame buffer decoration support.
-	pkgver = 4.0.1
-	pkgrel = 1
+	pkgver = 4.1.2
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -12,23 +12,31 @@ pkgbase = linux-fbcondecor
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.1.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.1.sign
-	source = fbcondecor-4.0.patch
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.sign
+	source = fbcondecor-4.1.patch
 	source = config
 	source = config.x86_64
 	source = linux-fbcondecor.preset
+	source = 0001-block-loop-convert-to-per-device-workqueue.patch
+	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	source = change-default-console-loglevel.patch
-	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = 9b4b47eb6584dc39aaa5db46843b83f7c60975abecbda4dc106a8722eabe96fb
+	sha256sums = 1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef
 	sha256sums = SKIP
 	sha256sums = b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42
-	sha256sums = 29557f1c147be731027040243f2566a75933c3b2af44f1448acf80352daafe30
-	sha256sums = 076ab498c60ce0aa6f8aba0841ce3b2b3999cafa8a0f03c70e741715570cc588
+	sha256sums = 94d0987bca23a4c0a4d4e81df1badf655136f70b7541f1d47fe429159e737c96
+	sha256sums = f0eae16576ddc5309ebf557e9f6026a5afbcdafba9517bb0a574fbb3d21a95d7
 	sha256sums = 521b572c7fcd08112eb9b15d302fa30ac9bc72c590164742da3c405ba54e00ef
+	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
+	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
+	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
+	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-fbcondecor
@@ -39,20 +47,20 @@ pkgname = linux-fbcondecor
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-fbcondecor=4.0.1
+	provides = kernel26-fbcondecor=4.1.2
 	conflicts = kernel26-fbcondecor
 	replaces = kernel26-fbcondecor
 	backup = etc/mkinitcpio.d/linux-fbcondecor.preset
 
 pkgname = linux-fbcondecor-headers
 	pkgdesc = Header files and scripts for building modules for Linux-fbcondecor kernel
-	provides = kernel26-fbcondecor-headers=4.0.1
+	provides = kernel26-fbcondecor-headers=4.1.2
 	conflicts = kernel26-fbcondecor-headers
 	replaces = kernel26-fbcondecor-headers
 
 pkgname = linux-fbcondecor-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-fbcondecor kernel
-	provides = kernel26-fbcondecor-docs=4.0.1
+	provides = kernel26-fbcondecor-docs=4.1.2
 	conflicts = kernel26-fbcondecor-docs
 	replaces = kernel26-fbcondecor-docs
 
