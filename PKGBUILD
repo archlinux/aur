@@ -3,8 +3,8 @@
 # Contributor: Bartlomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=pkgconf
-pkgver=0.9.11
-pkgrel=3
+pkgver=0.9.12
+pkgrel=1
 pkgdesc='Light pkg-config replacement'
 url='https://github.com/pkgconf/pkgconf'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('pkg-config' 'pkgconfig')
 replaces=('pkg-config' 'pkgconfig')
 depends=('glibc')
 source=("https://github.com/pkgconf/pkgconf/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('6649762eee0d222e1d231e6b4ab2e4596a23788f3341b040eea404d4c85731c1')
+sha256sums=('d31a19e22908e5bf277454261222da0640115844f7a62672dbe9e92061d547c5')
 
 build() {                                                                       
     cd "$srcdir/$pkgname-$pkgname-$pkgver" 
