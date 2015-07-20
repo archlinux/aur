@@ -1,0 +1,16 @@
+post_install() {
+	echo "Add the following line to your ~/.profile"
+	echo "  source /opt/r3broot/svn/config.sh"
+}
+
+post_upgrade() {
+	:
+}
+
+pre_remove() {
+	:
+}
+
+post_remove() {
+	:
+}
