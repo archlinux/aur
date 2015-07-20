@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg at gmail dot com>
 # Special thanks to: James Henderson
 pkgname=datomic
-pkgver=0.9.5173
+pkgver=0.9.5201
 pkgrel=1
 pkgdesc="A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions"
 arch=('any')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.zip::https://my.datomic.com/downloads/free/$pkgver"
   'transactor.properties'
   $pkgname.service
 )
-md5sums=('1b7add77a995f8beeaf1eeb1d161697f'
+md5sums=('9a61ecc7c10d8323a0b5f810949d6973'
          '19e8f0692138f52961a584d8f428a306'
          '1a90dced8cf46b36a2a87c666aa3b47b')
 
