@@ -1,6 +1,6 @@
 pkgbase = roboptim-core-git
 	pkgdesc = Numerical Optimization for Robotics
-	pkgver = 3.0.r5.ga4dcac7
+	pkgver = 3.1.r19.g9d1e41c
 	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686
@@ -9,8 +9,6 @@ pkgbase = roboptim-core-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = texlive-core
-	makedepends = ghostscript
 	depends = eigen3
 	depends = boost>=1.41
 	depends = libltdl

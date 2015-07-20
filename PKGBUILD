@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-git
-pkgver=3.0.r5.ga4dcac7
+pkgver=3.1.r19.g9d1e41c
 pkgrel=1
 pkgdesc="Numerical Optimization for Robotics"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://roboptim.net/"
 license=('(L)GPL2')
 depends=('eigen3' 'boost>=1.41' 'libltdl' 'log4cxx>=0.10')
 optdepends=()
-makedepends=('git' 'cmake' 'doxygen' 'texlive-core' 'ghostscript')
+makedepends=('git' 'cmake' 'doxygen')
 provides=('roboptim-core')
 conflicts=('roboptim-core')
 
