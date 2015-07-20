@@ -1,0 +1,10 @@
+--- qdigidoc-3.10.0.1401/common/qtsingleapplication/src/qtlocalpeer.cpp	2015-02-16 16:00:04.000000000 +0200
++++ qdigidoc-3.10.0.1401/common/qtsingleapplication/src/qtlocalpeer.cpp.1	2015-07-20 14:10:10.009994836 +0300
+@@ -42,6 +42,7 @@
+ #include "qtlocalpeer.h"
+ #include <QCoreApplication>
+ #include <QTime>
++#include <QDataStream>
+ 
+ #if defined(Q_OS_WIN)
+ #include <QLibrary>
