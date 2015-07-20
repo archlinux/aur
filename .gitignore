@@ -1,0 +1,9 @@
+/src
+/pkg
+
+/rxvt-unicode
+/libptytty
+/libev
+/libecb
+
+*.pkg.tar.xz
