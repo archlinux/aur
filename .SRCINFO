@@ -1,0 +1,18 @@
+pkgbase = ncmpy-git
+	pkgdesc = A [Python + Curses]-based MPD client.
+	pkgver = 20110908
+	pkgrel = 1
+	url = http://ncmpy.cykerway.com/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-httplib2
+	depends = python2-mpd
+	depends = python-lxml
+	depends = pyosd
+	provides = ncmpy
+	conflicts = ncmpy
+
+pkgname = ncmpy-git
+
