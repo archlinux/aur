@@ -1,7 +1,7 @@
 pkgbase = rkt
 	pkgdesc = App container runtime
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/coreos/rkt
 	arch = x86_64
 	license = apache
