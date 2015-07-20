@@ -1,0 +1,28 @@
+pkgbase = fairroot
+	pkgdesc = Analysis framework based on root provided by GSI/FAIR.
+	pkgver = 15.07
+	pkgrel = 1
+	url = http://fairroot.gsi.de
+	install = fairroot.install
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = clang
+	makedepends = bison
+	makedepends = flex
+	makedepends = gcc-fortran
+	makedepends = subversion
+	makedepends = git
+	makedepends = curl
+	depends = fairsoft
+	options = !emptydirs
+	options = staticlibs
+	options = libtool
+	options = !strip
+	source = https://github.com/FairRootGroup/FairRoot/archive/v-15.07.tar.gz
+	source = fairroot.install
+	md5sums = 3c5f73693b00844e8cb0d91ec7b1aba3
+	md5sums = d2d2d7b11b308120382fba7e32c5268a
+
+pkgname = fairroot
+

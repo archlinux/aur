@@ -1,0 +1,16 @@
+post_install() {
+	echo "Add the following line to your ~/.profile"
+	echo "  export FAIRROOTPATH=/opt/fairroot/<fairroot-version>"
+}
+
+post_upgrade() {
+	:
+}
+
+pre_remove() {
+	:
+}
+
+post_remove() {
+	:
+}
