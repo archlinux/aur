@@ -5,7 +5,7 @@
 # Contributer: Patrik Plihal <patrik.plihal@gmail.com>
 
 pkgname=ckan-git
-pkgver=v1.10.0.r2.g031a52c
+pkgver=v1.10.3.r24.ge4c7d58
 pkgrel=1
 pkgdesc="A metadata repository and associated tools for searching, installing, and managing mods for Kerbal Space Program (KSP)"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git' 'python2' 'python2-requests')
 source=('git://github.com/KSP-CKAN/CKAN'
         'disable_version_checks.diff')
 sha256sums=('SKIP'
-            '9dc21143045cb85511b114f83c33583ab7fc48d647e153e93596cc1445cc6aa1')
+            '21ed582d41da7f52ea4014fdcfadcadb7025f0fbae924fccd345c3b1f0fbff44')
 
 pkgver() {
   cd "$srcdir/CKAN"

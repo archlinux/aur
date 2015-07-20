@@ -1,6 +1,6 @@
 pkgbase = ckan-git
 	pkgdesc = A metadata repository and associated tools for searching, installing, and managing mods for Kerbal Space Program (KSP)
-	pkgver = v1.10.0.r2.g031a52c
+	pkgver = v1.10.3.r24.ge4c7d58
 	pkgrel = 1
 	url = http://forum.kerbalspaceprogram.com/threads/100067-
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ckan-git
 	source = git://github.com/KSP-CKAN/CKAN
 	source = disable_version_checks.diff
 	sha256sums = SKIP
-	sha256sums = 9dc21143045cb85511b114f83c33583ab7fc48d647e153e93596cc1445cc6aa1
+	sha256sums = 21ed582d41da7f52ea4014fdcfadcadb7025f0fbae924fccd345c3b1f0fbff44
 
 pkgname = ckan-git
 
