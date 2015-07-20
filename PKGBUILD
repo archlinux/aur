@@ -3,7 +3,7 @@
 
 
 pkgname=pidgin-opensteamworks-svn
-pkgver=116
+pkgver=120
 pkgrel=1
 pkgdesc="A plugin to connect to Steam Friends/Steam IM (purple plugin). "
 url=('https://code.google.com/p/pidgin-opensteamworks')
