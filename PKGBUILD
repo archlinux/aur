@@ -75,5 +75,5 @@ package() {
     
     # perform settings
     # => replace carddav_root_uri
-    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1\/sabre-zarafa\3/" ${pkgdir}/usr/share/webapps/${pkgname}/config.inc.php
+    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1\/sabre-zarafa\3/" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
 }
