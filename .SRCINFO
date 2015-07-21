@@ -1,0 +1,13 @@
+pkgbase = skb
+	pkgdesc = Simple keyboard layout indicator.
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://plhk.ru/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://plhk.ru/static/skb/skb-0.4.tar.gz
+	md5sums = feaf75eb5d4c557ed9ac75620a7ce264
+
+pkgname = skb
+
