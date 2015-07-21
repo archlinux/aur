@@ -1,0 +1,16 @@
+pkgbase = python2-pyhash
+	pkgdesc = Python Non-cryptographic Hash Library
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://code.google.com/p/pyfasthash/
+	arch = any
+	license = Apache 2.0
+	makedepends = python2-distribute
+	makedepends = boost
+	depends = python2
+	depends = boost-libs
+	source = https://github.com/flier/pyfasthash/archive/0.6.2.tar.gz
+	sha1sums = e703ff597cd8db8bfd83f44f0e42e7ac9153c302
+
+pkgname = python2-pyhash
+
