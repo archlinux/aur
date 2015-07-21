@@ -1,0 +1,13 @@
+[Unit]
+Description=Spotify Helios Master
+Documentation=https://github.com/spotify/helios/tree/master/docs
+After=zookeeper.service docker.socket
+Requires=zookeeper.service docker.socket
+
+[Service]
+EnvironmentFile=/etc/default/helios-master
+WorkingDirectory=/var/lib/helios-master
+ExecStart=/usr/bin/helios-master --zk-namespace helios --name %H
+
+[Install]
+WantedBy=multi-user.target

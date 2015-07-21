@@ -1,0 +1,13 @@
+[Unit]
+Description=Spotify Helios Agent
+Documentation=https://github.com/spotify/helios/tree/master/docs
+After=zookeeper.service docker.socket
+Requires=zookeeper.service docker.socket
+
+[Service]
+EnvironmentFile=/etc/default/helios-agent
+WorkingDirectory=/var/lib/helios-agent
+ExecStart=/usr/bin/helios-agent --zk-namespace helios --name %H
+
+[Install]
+WantedBy=multi-user.target
