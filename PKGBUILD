@@ -25,6 +25,13 @@ install=$_pkgname.install
 source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz)
 md5sums=('c993402d407b0a3fc076f842ac1bc5c9')
 
+prepare() {
+  cd $_pkgname-$pkgver
+
+  # Fix about dialog
+  sed -i 's|<property name="has_separator">False</property>||g' data/ui/*
+}
+
 build() {
   cd $_pkgname-$pkgver
   ./configure --sysconfdir=/etc --prefix=/usr --with-gtk=3
