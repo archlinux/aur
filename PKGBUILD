@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-wpilib-git
-pkgver=1073.7f5ee01
+pkgver=1081.eb7d55f
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ options=('!strip' 'libtool' 'staticlibs')
 source=("git+https://usfirst.collab.net/gerrit/allwpilib"
         "0001-artf4155-Move-Port.h-from-hal-lib-Athena-to-hal-incl.patch")
 sha512sums=('SKIP'
-            '18a6e1f492b28eaa913b7aebe168ce349824092c3ce6792fad569ea5604a8382bb69e2a0a17732291f8f5bd25270bff19890f5af8b918d55025d3730dd76590a')
+            '3dbf006ccf7c96a58c6b5a0ad446b40d60b6cc1962b876c7cbc0ed041f34a4f17dc3848bfff183ee9258466103940e80935ccfdc3f6d0da762c01f0be023e338')
 
 pkgver() {
   cd allwpilib
@@ -34,7 +34,7 @@ build() {
   make ${MAKEFLAGS} || return 1
 }
 
-package () {
+package() {
   cd "$srcdir/allwpilib/build"
   make ${MAKEFLAGS} DESTDIR="${pkgdir}" install || return 1
   mv $pkgdir/usr/local $pkgdir/usr/arm-frc-linux-gnueabi
