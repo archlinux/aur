@@ -1,0 +1,16 @@
+pkgbase = boost.dll-git
+	pkgdesc = Library for comfortable work with DLL and DSO.
+	pkgver = 222.4deb402
+	pkgrel = 1
+	url = http://apolukhin.github.io/Boost.DLL/index.html
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = boost
+	provides = boost.dll
+	conflicts = boost.dll
+	source = boost.dll-git::git+https://github.com/apolukhin/Boost.DLL.git
+	md5sums = SKIP
+
+pkgname = boost.dll-git
+
