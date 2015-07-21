@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-imageviewer
+	pkgdesc = Sugar image viewer
+	pkgver = 62
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/ImageViewer/ImageViewer-62.tar.bz2
+	md5sums = 3767449ae711ca9aac115a5bfd61572f
+
+pkgname = sugar-activity-imageviewer
+
