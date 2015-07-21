@@ -1,0 +1,21 @@
+pkgbase = libva-intel-driver-g45-h264
+	pkgdesc = VA-API implementation for Intel G45 chipsets with H264 support.
+	pkgver = 20150703
+	pkgrel = 2
+	url = http://freedesktop.org/wiki/Software/vaapi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = automake
+	makedepends = libtool
+	makedepends = python2
+	depends = libva
+	provides = libva-intel-driver
+	conflicts = libva-intel-driver
+	replaces = libva-intel-driver
+	options = !libtool
+	source = https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-20150703.tar.gz
+	sha256sums = 67c5d1d35e1f76f2b028fcc85cad435e2560c8ab2c91cf4f387807d0bcf15980
+
+pkgname = libva-intel-driver-g45-h264
+
