@@ -1,0 +1,13 @@
+pkgbase = toplip-bin
+	pkgdesc = Very strong encryption and decryption utility with optional plausible deniability, image embedding, and multiple/variable passphrase complexity
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://2ton.com.au/toplip/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = https://2ton.com.au/standalone_binaries/toplip
+	sha256sums = c45999132f5abdcabd9dd55c98724a9f7f403c429d78de5a1622f2094b090bd9
+
+pkgname = toplip-bin
+
