@@ -1,7 +1,7 @@
 pkgbase = ini-git
 	pkgdesc = Command line tool for examining the contents of INI files
-	pkgver = r2.fa7665b
-	pkgrel = 2
+	pkgver = r13.16fd59a
+	pkgrel = 1
 	url = https://github.com/2ion/ini
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = ini-git
 	makedepends = automake
 	makedepends = pkg-config
 	depends = iniparser
+	optdepends = pandoc: for building the man page at compile time
 	provides = ini
 	conflicts = ini
 	source = ini::git+https://github.com/2ion/ini.git#branch=master
