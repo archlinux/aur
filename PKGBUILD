@@ -2,7 +2,7 @@
 
 pkgname=yawls
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor"
 url="https://launchpad.net/yawls"
 arch=('any')
@@ -66,8 +66,8 @@ prepare() {
 	sed "s/\$OPTIONS/\$OPTIONS -Djava.library.path=\/usr\/share\/opencv\/java/" -i yawls_cli.sh
 
 	# We use systemd on Arch
-	sed "s/invoke-rc.d --quiet yawls stop/systemctl stop yawls/" -i yawls
-	sed "s/invoke-rc.d --quiet yawls start/systemctl start yawls/" -i yawls
+	sed "s/invoke-rc.d --quiet yawls stop/systemctl stop yawlsd/" -i yawls
+	sed "s/invoke-rc.d --quiet yawls start/systemctl start yawlsd/" -i yawls
 }
 
 build() {

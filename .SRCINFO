@@ -1,7 +1,7 @@
 pkgbase = yawls
 	pkgdesc = Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/yawls
 	install = yawls.install
 	arch = any
