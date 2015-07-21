@@ -1,0 +1,21 @@
+pkgbase = gtkhtml3
+	pkgdesc = A lightweight HTML renderer/editor widget for GTK2
+	pkgver = 3.32.2
+	pkgrel = 4
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gconf
+	depends = gtk2
+	depends = gnome-icon-theme
+	depends = enchant
+	depends = iso-codes
+	depends = libsoup
+	replaces = gtkhtml
+	source = http://ftp.gnome.org/pub/gnome/sources/gtkhtml/3.32/gtkhtml-3.32.2.tar.bz2
+	sha256sums = 8746053cf709e1de37c7ac775ab1364ddda4b75167660ed7f98a237b3797e39f
+
+pkgname = gtkhtml3
+
