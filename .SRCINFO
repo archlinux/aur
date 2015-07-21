@@ -1,0 +1,30 @@
+pkgbase = sugar
+	pkgdesc = Sugar is the core component of a worldwide effort to provide every child with equal opportunity for a quality education
+	pkgver = 0.106.0
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	install = sugar.install
+	arch = any
+	groups = sugar-desktop
+	groups = glucose
+	license = GPL
+	makedepends = gcc
+	makedepends = perl>=5.8.1
+	depends = python2
+	depends = gtk2
+	depends = telepathy-mission-control
+	depends = python-simplejson
+	depends = python2-wnck
+	depends = sugar-datastore>=0.102.0
+	depends = sugar-artwork
+	depends = sugar-toolkit
+	depends = metacity
+	depends = python2-dateutil
+	depends = sugar-toolkit-gtk3
+	depends = python2-simplejson
+	depends = python2-gwebsockets-git
+	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar/sugar-0.106.0.tar.xz
+	md5sums = 420ec473500fdd94218409c6eee84c86
+
+pkgname = sugar
+
