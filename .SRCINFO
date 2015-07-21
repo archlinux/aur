@@ -1,0 +1,25 @@
+pkgbase = sugar-toolkit-gtk3
+	pkgdesc = Set of widgets for Sugar applications
+	pkgver = 0.106.0
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = sugar-desktop
+	groups = glucose
+	license = GPL
+	makedepends = intltool>=0.33
+	makedepends = gcc
+	makedepends = perl>=5.8.1
+	depends = gtk3
+	depends = python2
+	depends = sugar-datastore
+	depends = sugar-presence-service
+	depends = hippo-canvas
+	depends = alsa-lib
+	depends = python2-gconf
+	depends = python2-rsvg
+	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar-toolkit-gtk3/sugar-toolkit-gtk3-0.106.0.tar.xz
+	md5sums = a2ceabea1c5d85ef704634b42731c139
+
+pkgname = sugar-toolkit-gtk3
+
