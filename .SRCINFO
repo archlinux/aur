@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-write
+	pkgdesc = Sugar text editor
+	pkgver = 97
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Write/Write-97.tar.bz2
+	md5sums = d27d36b8330ab7fba210b86058c65579
+
+pkgname = sugar-activity-write
+
