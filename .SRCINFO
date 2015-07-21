@@ -1,0 +1,13 @@
+pkgbase = hoichess
+	pkgdesc = Xboard compatible chess engine and xiangqi (Chinese chess) engine
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = http://www.hoicher.de/hoichess
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://www.hoicher.de/hoichess/download/hoichess-0.16.0-gpl.tar.gz
+	md5sums = 0bea20843c30410de1f865b6efb15b85
+
+pkgname = hoichess
+
