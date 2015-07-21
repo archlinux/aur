@@ -1,0 +1,23 @@
+pkgbase = systemsim-cell
+	pkgdesc = IBM Full-System Simulator for the Cell Broadband Engine Processor
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://www.ibm.com/
+	arch = x86_64
+	groups = Cell Simulator
+	license = IBM Licensed Materials
+	makedepends = rpmextract
+	depends = gcc-libs
+	depends = perl
+	depends = tk
+	noextract = systemsim-cell-3.1-25.f9.x86_64.rpm
+	options = !strip
+	source = http://git.gitbrew.org/openclit/packages/CELL_EMULATOR/systemsim-cell-3.1-25.f9.x86_64.rpm
+	source = 99-systemsim-cell.rules
+	source = systemsim-cell.sh
+	md5sums = 4b069cebf26bd16cec8e768d2c68e830
+	md5sums = e470b6ef7d042cfe4ade6180b5c45cb8
+	md5sums = bf46bc7b66e0aa4f3c8894a49bdbade8
+
+pkgname = systemsim-cell
+
