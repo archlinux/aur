@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libvorbis
+	pkgdesc = Vorbis codec library (mingw-w64)
+	pkgver = 1.3.4
+	pkgrel = 3
+	url = http://xiph.org
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-binutils
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-libogg
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.4.tar.gz
+	md5sums = 8851c593a52d1ef9c526d95174873852
+
+pkgname = mingw-w64-libvorbis
+
