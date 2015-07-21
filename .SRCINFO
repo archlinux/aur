@@ -1,7 +1,7 @@
 pkgbase = qibuild
 	pkgdesc = The meta build framework
-	pkgver = 3.8
-	pkgrel = 2
+	pkgver = 3.9
+	pkgrel = 1
 	url = http://doc.aldebaran.com/qibuild/
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = qibuild
 	optdepends = doxygen: Doxygen support in qidoc
 	optdepends = gettext: Gettext support in qilinguist
 	optdepends = qt5-tool: QtLinguist support in qilinguist
-	source = https://pypi.python.org/packages/source/q/qibuild/qibuild-3.8.tar.gz
-	md5sums = c8448fe063cc9a7b444a0ca6738e9741
+	source = https://pypi.python.org/packages/source/q/qibuild/qibuild-3.9.tar.gz
+	md5sums = ccd4b2b2f31edb40a0b479204a464215
 
 pkgname = qibuild
 
