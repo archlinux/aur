@@ -1,14 +1,14 @@
 pkgbase = cinnamon-theme-ciliora-prima
 	pkgdesc = Ciliora-Prima theme for Cinnamon 2.6
-	pkgver = 20150624
+	pkgver = 20150712
 	pkgrel = 1
 	url = http://cinnamon-spices.linuxmint.com/themes/view/323
 	arch = any
 	license = GPL
 	depends = cinnamon>=2.6.0
 	depends = cinnamon<2.7.0
-	source = http://cinnamon-spices.linuxmint.com/uploads/themes/C59X-BR2Q-P3IV.zip
-	sha256sums = d9a3b431b0083529ab4b329712714be5535b44ce73a5a84ae0cd2ceaf829b700
+	source = http://cinnamon-spices.linuxmint.com/uploads/themes/F3YC-EWXY-XMK9.zip
+	sha256sums = c576799b2048efc8b1b8836dce96ddd88bebb286f0dcc3788b60f5303996227a
 
 pkgname = cinnamon-theme-ciliora-prima
 
