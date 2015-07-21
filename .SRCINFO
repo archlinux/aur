@@ -1,6 +1,6 @@
 pkgbase = emacs-psvn
 	pkgdesc = Subversion interface for emacs
-	pkgver = 20130820
+	pkgver = 2015.07.20_21.42.00
 	pkgrel = 1
 	url = http://www.emacswiki.org/cgi-bin/wiki/SubVersion
 	install = emacs-psvn.install
@@ -9,7 +9,7 @@ pkgbase = emacs-psvn
 	makedepends = awk
 	depends = emacs
 	source = http://www.xsteve.at/prg/emacs/psvn.el
-	md5sums = 41ca422b4f1ebba5276382a6d0aec317
+	md5sums = ec4b76a5f93ee23001fab5b9f6ae4c97
 
 pkgname = emacs-psvn
 
