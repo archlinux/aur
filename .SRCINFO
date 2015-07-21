@@ -8,7 +8,7 @@ pkgbase = decox
 	arch = armv7h
 	license = ISC
 	source = http://fenua.org/gaetan/src//decox-1.7.c
-	sha1sums = ddc25f77656adaa5b464d4f6b0e5d65b763c3a9e
+	sha1sums = 0f37e4f599dd8f4216626ad85ceae58997c1209f
 
 pkgname = decox
 
