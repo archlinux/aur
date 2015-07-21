@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-jukebox
+	pkgdesc = Sugar juke box
+	pkgver = 32
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Jukebox/Jukebox-32.tar.bz2
+	md5sums = 8aa4d5d82a4d3ec3e75612aba9df14c4
+
+pkgname = sugar-activity-jukebox
+
