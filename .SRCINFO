@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-dvblink
 	pkgdesc = DVBLink PVR addon for Kodi
-	pkgver = 20150701.bf96fc7
+	pkgver = 20150717.cf756e9
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.dvblink
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-pvr-dvblink
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = tinyxml2
-	source = https://github.com/kodi-pvr/pvr.dvblink/archive/bf96fc72846cd076c536bf95c7c500b41065fa8e.tar.gz
+	source = https://github.com/kodi-pvr/pvr.dvblink/archive/cf756e9241c58d98c3b56dfcae89da9f35e4555f.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-dvblink
