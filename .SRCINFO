@@ -1,0 +1,26 @@
+pkgbase = sugar-base
+	pkgdesc = Helpers for the development of services and activities in Sugar
+	pkgver = 0.98.0
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = sugar-desktop
+	groups = glucose
+	license = GPL
+	makedepends = intltool>=0.33
+	makedepends = perl>=5.8.1
+	makedepends = pkg-config
+	makedepends = pygobject2-devel
+	depends = python2
+	depends = pygtk
+	depends = python2-gobject2
+	depends = python2-decorator
+	depends = python2-cjson
+	depends = pygtksourceview2
+	optdepends = ipython: Nicer traceback
+	options = !libtool
+	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar-base/sugar-base-0.98.0.tar.bz2
+	md5sums = 0513b1909d57e69d71d92d244576d32e
+
+pkgname = sugar-base
+
