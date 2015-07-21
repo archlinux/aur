@@ -4,7 +4,7 @@
 
 pkgname=rkt
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -16,6 +16,7 @@ replaces=('rocket')
 conflicts=('rocket')
 source=("https://github.com/coreos/rkt/archive/v${pkgver}.tar.gz")
 sha256sums=('1e5996c9c26a69f107d9d4f8dd2a3e55ca3a9b8491ecbd9fe2dfe423c7c384ce')
+install="${pkgname}.install"
 
 prepare() {
   cd "${pkgname}-${pkgver}"
