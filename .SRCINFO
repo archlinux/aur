@@ -10,9 +10,9 @@ pkgbase = pdepend
 	source = http://static.pdepend.org/php/2.1.0/pdepend.phar
 	source = https://raw.githubusercontent.com/pdepend/pdepend/2.1.0/LICENSE
 	source = pdepend.install
-	md5sums = a865a41bc90c8ad121f6055e633f9442
-	md5sums = 672b04a52b75ac6fbb6e4f0ed5713a35
-	md5sums = 0b56639c95c48c1237f628648dd83e03
+	sha512sums = 8d3e5f5992dc7d0f5708a1224229492e751af56a9d359580d6a942ce6c38ca92a9bc2630d60f48d9cb128952aecfa7b37fc925885e5f4b5bfb4a3b74b0c92f8f
+	sha512sums = e77faa58731d21b1f55523f8aec955043ba383f472a76b5cfb5994a6cdfdf3dc63d3a329b50754ab9ff0ab869920bc38a58b3688bf37d3cddac22585b917c2d9
+	sha512sums = 0f51b813c69db50f985a4c168c17623e5cdf792aaa1c5f73e238945d7c979486f7fb95584e11eaf6ea6e67ba675c6f489a97e32328ac9c05974adc5534286403
 
 pkgname = pdepend
 
