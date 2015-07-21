@@ -1,0 +1,32 @@
+pkgbase = openfoam2.3-git
+	pkgdesc = The open source CFD toolbox
+	pkgver = 20150305.ade709a
+	pkgrel = 3
+	url = http://www.openfoam.com
+	install = openfoam.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = cgal
+	depends = paraview
+	depends = parmetis
+	depends = scotch
+	depends = boost
+	provides = openfoam
+	conflicts = openfoam
+	source = git+https://github.com/OpenFOAM/OpenFOAM-2.3.x.git
+	source = decomp-options.patch
+	source = paraFoam.patch
+	source = scotch-options.patch
+	source = prefs.sh
+	source = scotch.sh
+	md5sums = SKIP
+	md5sums = b1a4e397f8e508a1a032ba0805467424
+	md5sums = 50abc2599f5dfc72fe80255b5659290d
+	md5sums = f877bf51a61a4a0a547257ce3e6e5eaf
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = openfoam2.3-git
+

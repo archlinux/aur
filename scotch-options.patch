@@ -1,0 +1,8 @@
+--- src/OpenFOAM-2.3.x/src/parallel/decompose/ptscotchDecomp/Make/options
++++ src/OpenFOAM-2.3.x/src/parallel/decompose/ptscotchDecomp/Make/options
+@@ -9,4 +9,4 @@
+     -I../decompositionMethods/lnInclude
+ 
+ LIB_LIBS = \
+-    -L$(SCOTCH_ROOT)/lib -L$(FOAM_EXT_LIBBIN)/$(FOAM_MPI) -lptscotch -lptscotcherrexit ${LINK_FLAGS} -lrt
++    -L$(SCOTCH_ROOT)/lib -L$(FOAM_EXT_LIBBIN)/$(FOAM_MPI) -lptscotch -lscotch -lptscotcherrexit -lscotcherrexit ${LINK_FLAGS} -lrt
