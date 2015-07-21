@@ -11,9 +11,11 @@ pkgbase = helios-git
 	source = helios-git::git+ssh://git@github.com/spotify/helios.git
 	source = helios-master.service
 	source = helios-agent.service
+	source = helios-env.sh
 	md5sums = SKIP
 	md5sums = 2aeb4f23cf3520abbffa230d50a96ce6
 	md5sums = a0f0cd98b3b3888aba00ff8436e22506
+	md5sums = 584cdaa52f45e71d6d4dfc6c6c11e02a
 
 pkgname = helios-git
 
