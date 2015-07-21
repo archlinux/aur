@@ -6,15 +6,15 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=2.7.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix (32 bit)"
 arch=('x86_64')
 url="http://ffmpeg.org/"
-license=('GPL')
+license=('GPL3')
 depends=("$_pkgbasename"
       'lib32-alsa-lib' 'lib32-fontconfig'
-      'lib32-gnutls' 'lib32-sdl' 'lib32-libva'
+      'lib32-gnutls' 'lib32-sdl' 'lib32-libva' 'lib32-libwebp'
       'lib32-libass' 'lib32-libbluray' 'lib32-fribidi'
       'lib32-gsm' 'lib32-libmodplug' 'lib32-lame'
       'lib32-opus' 'lib32-libpulse' 'lib32-schroedinger'
@@ -56,6 +56,7 @@ build() {
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvorbis \
+    --enable-libwebp \
     --enable-libx264 \
     --enable-libxvid \
     --enable-shared \
