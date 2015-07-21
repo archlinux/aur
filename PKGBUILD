@@ -1,4 +1,4 @@
-# Maintainer: Alexander 'chron' Kempen <chronischzuspaet at gmail dot com>
+# Maintainer chron <chronischzuspaet at gmail dot com>
 pkgname=httpdiff-git
 _pkgname=httpdiff
 pkgver=git
