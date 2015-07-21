@@ -1,0 +1,18 @@
+pkgbase = glogic
+	pkgdesc = An educational graphical logic circuit simulator
+	pkgver = 2.6
+	pkgrel = 2
+	url = https://launchpad.net/glogic
+	install = glogic.install
+	arch = any
+	license = GPL3
+	makedepends = itstool
+	depends = hicolor-icon-theme
+	depends = intltool
+	depends = python
+	depends = python-cairo
+	source = https://launchpad.net/glogic/trunk/2.6/+download/glogic-2.6.tar.gz
+	sha256sums = 62fabbc39aa7d72491fb83aa0547385cbb89d7a593ad2fb80b019607593d1bde
+
+pkgname = glogic
+
