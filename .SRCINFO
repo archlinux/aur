@@ -1,0 +1,14 @@
+pkgbase = simgrid-stable
+	pkgdesc = Grid and Cloud Simulator (Stable Version)
+	pkgver = 3.11.1
+	pkgrel = 1
+	url = http://simgrid.gforge.inria.fr/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	source = http://gforge.inria.fr/frs/download.php/file/33686/SimGrid-3.11.1.tar.gz
+	md5sums = SKIP
+
+pkgname = simgrid-stable
+
