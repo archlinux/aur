@@ -1,16 +1,16 @@
 pkgbase = ambiance-radiance-flat-colors-suite
-	pkgdesc = Ambiance & Radiance Flat Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops
+	pkgdesc = A Modern, Beautiful and Vivid Re-imagination of the Ambiance & Radiance Color GTK 2/3 Themes.
 	pkgver = 15.04.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ravefinity.com/p/download-ambiance-radiance-flat-colors.html
 	arch = any
-	groups = x11
-	license = GPL
+	license = GPL2
+	depends = gtk3>=3.14
 	depends = gtk-engine-murrine
 	optdepends = vibrancy-colors
 	options = !strip
 	options = !zipman
-	source = ambiance-radiance-flat-colors-suite.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QATjFSZW5OYThqeWM
+	source = $pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QATjFSZW5OYThqeWM
 	md5sums = 6d384fb15d6da777db12589fa99ce8b4
 
 pkgname = ambiance-radiance-flat-colors-suite
