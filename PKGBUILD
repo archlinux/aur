@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-html-pipeline
-pkgver=1.11.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="GitHub HTML processing filters and utilities"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jch/html-pipeline"
 license=('MIT')
 depends=('ruby' 'ruby-activesupport' 'ruby-nokogiri')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('3461d1f709ef4812f11cc9789bdebb801813ba726e5544df3aad6c62336d93f9')
+sha256sums=('2cedb2f8d8506c8b5b334a1f0d7c6885059b96518852b5dc7cc23c065e51a67f')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 
 package() {
