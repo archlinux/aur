@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-pctv
 _gitname=pvr.pctv
-pkgver=20150701.0a6b235
-_gitver=0a6b235c12cadc474fbb992bdd5889dad247f3e4
+pkgver=20150717.d23160c
+_gitver=d23160c043b0cd0a86463f6a3590a8126ff8af9d
 _jsoncpp_ver=0.5.0
 pkgrel=1
 pkgdesc='PCTV PVR client addon for Kodi'
