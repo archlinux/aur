@@ -39,6 +39,9 @@ package() {
     cd "$srcdir/$pkgname"
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/licenses/$pkgname
+    mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/elfexe/dynamic
+    mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/libcdemo
+    mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/elfobj
     install -m755 source/libc/$pkgname $pkgdir/usr/bin
     install -m644 license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
@@ -47,6 +50,15 @@ package() {
         for s in listing prepsrc symbols; do
         install -D $s $pkgdir/usr/bin/$pkgname-$s
     done
+
+    # docs
+    cp $pkgname.txt whatsnew.txt $pkgdir/usr/share/doc/$pkgname
+    cp examples/elfexe/*.asm $pkgdir/usr/share/doc/$pkgname/examples/elfexe/
+    cp examples/elfexe/dynamic/*.asm $pkgdir/usr/share/doc/$pkgname/examples/elfexe/dynamic
+    cp examples/elfexe/dynamic/*.inc $pkgdir/usr/share/doc/$pkgname/examples/elfexe/dynamic
+    cp examples/elfobj/*.asm $pkgdir/usr/share/doc/$pkgname/examples/elfobj/
+    cp examples/libcdemo/*.asm $pkgdir/usr/share/doc/$pkgname/examples/libcdemo/
+    cp examples/libcdemo/*.inc $pkgdir/usr/share/doc/$pkgname/examples/libcdemo/
 }
 
 # vim:set ts=2 sw=2 et:
