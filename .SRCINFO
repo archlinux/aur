@@ -1,0 +1,15 @@
+pkgbase = sugar-activity-browse
+	pkgdesc = Sugar internet browser.
+	pkgver = 157.2
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	depends = python2-dateutil
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Browse/Browse-157.2.tar.bz2
+	md5sums = 53c07ffc60606112c3fd1543693eeb12
+
+pkgname = sugar-activity-browse
+
