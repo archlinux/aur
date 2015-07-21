@@ -31,8 +31,9 @@ md5sums=('SKIP')
 
 pkgver() {
    cd ${srcdir}/${_pkgname}
-   #bzr revert -r1572 > /dev/null 2>&1
-   # ^^ If terminator refuses to start for you, uncomment (remove the #) the line above
+# If terminator refuses to start for you, uncomment (remove the # on) the line below
+   #bzr revert -r1572 > /dev/null 2>&1 && echo 0.97.r1572
+# **AND** comment (add a # at the beginning of) the line below
    echo $(tail -n 1 terminatorlib/version.py | sed "s|^APP_VERSION = '||" | sed "s|'$||").r$(bzr revno "${srcdir}/${_pkgname}")
 }
 
