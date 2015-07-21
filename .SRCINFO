@@ -1,0 +1,14 @@
+pkgbase = mpatch
+	pkgdesc = Applies diffs and is generally similar to patch, but it can also help resolve a number of common causes of patch rejects
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://oss.oracle.com/~mason/mpatch/
+	arch = any
+	license = GPL
+	depends = python2
+	options = !emptydirs
+	source = http://oss.oracle.com/~mason/mpatch/mpatch-0.8.tar.bz2
+	md5sums = 24f2027ae9d7b59e2c635ee2e485a887
+
+pkgname = mpatch
+
