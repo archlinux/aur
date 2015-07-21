@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-read
+	pkgdesc = Sugar book reader
+	pkgver = 116
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Read/Read-116.tar.bz2
+	md5sums = bad023b3ebe8049fba3b4ef611a5a919
+
+pkgname = sugar-activity-read
+
