@@ -1,8 +1,9 @@
 pkgbase = rkt-git
 	pkgdesc = App container runtime
-	pkgver = 0.7.0.r47.gfd6e630
+	pkgver = 0.7.0.r70.g278f2e9
 	pkgrel = 1
 	url = https://github.com/coreos/rkt
+	install = rkt.install
 	arch = x86_64
 	license = apache
 	makedepends = cpio

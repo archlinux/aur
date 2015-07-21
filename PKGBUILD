@@ -4,7 +4,7 @@
 # Contributor: Boohbah <boohbah at gmail dot com>
 
 pkgname=rkt-git
-pkgver=0.7.0.r47.gfd6e630
+pkgver=0.7.0.r70.g278f2e9
 pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
@@ -16,6 +16,7 @@ replaces=('rocket' 'rkt')
 conflicts=('rocket' 'rkt')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
+install="rkt.install"
 
 pkgver() {
   cd "$pkgname"
@@ -36,7 +37,15 @@ build() {
 }
 
 package() {
-  cd "${pkgname}"/build-rkt-*+git
+  cd "${pkgname}"
+  local unit
+  for unit in rkt-gc.{timer,service} rkt-metadata.{socket,service}
+  do
+    install -Dm644 "dist/init/systemd/${unit}" \
+      "${pkgdir}/usr/lib/systemd/system/${unit}"
+  done
+
+  cd build-rkt-*+git
   install -Dm755 bin/rkt "$pkgdir/usr/bin/rkt"
   install -Dm755 bin/actool "$pkgdir/usr/bin/actool"
   install -Dm644 bin/stage1.aci "$pkgdir/usr/share/rkt/stage1.aci"
