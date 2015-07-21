@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-vuplus
 _gitname=pvr.vuplus
-pkgver=20150701.f7dfd47
-_gitver=f7dfd479252d384f3ba4452a73056c7e08f18327
+pkgver=20150717.96115e9
+_gitver=96115e9b8898ed6bde36874b43b2fba531cfef5c
 pkgrel=1
 pkgdesc='VuPlus PVR client addon for Kodi'
 arch=('i686' 'x86_64')
