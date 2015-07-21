@@ -1,0 +1,17 @@
+pkgbase = pacregex-git
+	pkgdesc = Advanced regex search of pacman repositories.
+	pkgver = r64.db5ef25
+	pkgrel = 1
+	url = https://github.com/ids1024/pagregex
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = pyalpm
+	depends = python-pyparsing
+	depends = rsync
+	source = git://github.com/ids1024/pacregex.git
+	md5sums = SKIP
+
+pkgname = pacregex-git
+
