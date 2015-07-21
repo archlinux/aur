@@ -1,5 +1,5 @@
 #Contributor: M0Rf30
-#Maintainer: Alexander 'chron' Kempen <chronischzuspaet at gmail dot com>
+#Maintainer: chron <chronischzuspaet at gmail dot com>
 
 pkgname=gnome-multi-writer
 pkgver=3.16.0
