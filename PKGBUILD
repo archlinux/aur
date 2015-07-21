@@ -1,14 +1,18 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=1.3.r120.g12ecebd
-pkgrel=3
-pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in GNOME Shell."
+pkgver=13.r0.g12ecebd
+pkgrel=1
+pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
 license=('GPL')
-depends=('dconf' 'gnome-shell')
+depends=('dconf' 'gnome-shell' 'lm_sensors')
 makedepends=('git' 'gnome-common' 'intltool')
+optdepends=(
+  'udisks2: optional backend for storage temperature sensors.'
+  'hddtemp: optional backend for S.M.A.R.T. temperature sensors.'
+)
 provides=('gnome-shell-extension-freon')
 conflicts=('gnome-shell-extensions-git' 'gnome-shell-extensions-freon')
 install="gschemas.install"
@@ -20,7 +24,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch} --quiet
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^EGO.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -28,7 +32,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
-  sed -i 's#\[\"3.12\", \"3.14\"\]#\[\"3.12\", \"3.14\", \"3.16\"\]#g' "./freon@UshakovVasilii_Github.yahoo.com/metadata.json"
 }
 
 package() {
