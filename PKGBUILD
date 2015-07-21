@@ -2,7 +2,7 @@
 
 pkgname=sabre-zarafa
 pkgver=0.23
-pkgrel=2
+pkgrel=3
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
@@ -29,7 +29,7 @@ md5sums=('b2e64ec204acf44a72b34ae1cb2f92d0'
          '191c6f53107a53e3b51331282c125e63'
          'b0b98696ff5b11a5f06056686dff82d6'
          'e7fe86eb090b69d503f5cc28e03bf9ce'
-         '73451bc5c35072b22b0b2925c5920978'
+         '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
          '7adcf5e023718421a5e8e07e5e9a2480'
          '67fe9a12d3bafc877100bdaea728bbce')
 
