@@ -3,6 +3,7 @@ pkgbase = fasm
 	pkgver = 1.71.39
 	pkgrel = 1
 	url = http://www.flatassembler.net/
+	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = gcc
