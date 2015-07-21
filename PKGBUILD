@@ -1,7 +1,7 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 _pkgname=cargo-check
 pkgname=$_pkgname-git
-pkgver=r3.872765d
+pkgver=r7.d582b94
 pkgrel=1
 pkgdesc=""
 arch=('x86' 'x86_64')
