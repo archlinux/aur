@@ -7,7 +7,7 @@ provides=networkmanager
 replaces=networkmanager
 conflicts=networkmanager
 
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=3
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless 
 cards)"
@@ -31,18 +31,16 @@ makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc "pp
              systemd libmm-glib rp-pppoe libnewt libndp libteam vala)
 checkdepends=(libx11 python-gobject python-dbus)
 source=(http://ftp.gnome.org/pub/gnome/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
-        NetworkManager.conf disable_set_hostname.patch disable_wifi_scan_when_connected.patch 0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch)
-sha256sums=('359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff'
-            '759db295ddae7a6dc6b29211fc0ec08695f875584d456dd146d3679e2c33e2e3'
+        NetworkManager.conf disable_set_hostname.patch disable_wifi_scan_when_connected.patch)
+sha256sums=('e4099fa2f4f4b8d95d0ad9fdd03ec20960845085fa500bf79aecbf54cee018c9'
+            '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'c14204de91e8b055982771aa11b57feee2fa42f04eee003e621252b320be1e31'
-            '4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a')
+            'c14204de91e8b055982771aa11b57feee2fa42f04eee003e621252b320be1e31')
 
 prepare() {
   cd NetworkManager-$pkgver
   patch -Np1 -i ../disable_set_hostname.patch
   patch -Np1 -i ../disable_wifi_scan_when_connected.patch
-  patch -Np1 -i ../0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
