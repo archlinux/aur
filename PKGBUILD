@@ -10,7 +10,7 @@ depends=('pacman' 'sed' 'coreutils')
 optdepends=('postfix: send report by mail'
             'libnotify: get desktop notification')
 makedepends=()
-conflicts=('pacmanhealth.git')
+conflicts=('pacmanhealth-git')
 replaces=()
 backup=()
 source=("http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz"
