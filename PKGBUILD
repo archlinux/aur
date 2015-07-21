@@ -16,7 +16,7 @@ depends=('desktop-file-utils' 'java-runtime')
 optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
             'vuze-plugin-mldht: The alternative Distributed Hash Table implementation (DHT) used by µTorrent'
             'xulrunner192: Needed for the channels GUI')
-options=(!strip)
+options=('!strip')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2")
 md5sums=('c20397aa00614ab8b271afef93c877bc')
