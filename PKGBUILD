@@ -3,10 +3,10 @@
 
 pkgname=slim-theme-burning-arch
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Slim theme for ArchLinux"
 license=('custom')
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://sourceforge.net/projects/slimburningarch/"
 depends=('slim')
 install=burning-arch.install
