@@ -1,6 +1,6 @@
 pkgbase = reicast-git
 	pkgdesc = A multiplatform Sega Dreamcast emulator (development version)
-	pkgver = r1200.a9fc0f5
+	pkgver = r1252.5b92793
 	pkgrel = 1
 	url = http://reicast.com/
 	arch = i686
@@ -9,14 +9,12 @@ pkgbase = reicast-git
 	license = BSD
 	license = MIT
 	makedepends = git
+	depends = libgl
+	depends = alsa-lib
 	provides = reicast
 	conflicts = reicast
 	source = reicast::git+https://github.com/reicast/reicast-emulator.git
 	md5sums = SKIP
-	depends_i686 = libgl
-	depends_i686 = alsa-lib
-	depends_x86_64 = lib32-libgl
-	depends_x86_64 = lib32-alsa-lib
 
 pkgname = reicast-git
 
