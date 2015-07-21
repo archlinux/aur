@@ -1,7 +1,7 @@
 # Maintainer: Adrien Oliva <yapbreak@yapbreak.fr>
 pkgname="pacmanhealth"
-pkgver="0.1.0"
-pkgrel="2"
+pkgver="0.1.1"
+pkgrel="1"
 pkgdesc="Pacman health monitoring system"
 arch=('any')
 url="https://redmine.yapbreak.fr/projects/pacman-health"
@@ -16,7 +16,7 @@ backup=()
 source=("http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz"
         "http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz.sig")
 # TODO
-md5sums=('8e748924f4b7f53408a1215e0cb4b217'
+md5sums=('9356a5f43211a8e28c3d3bb5e5c037a0'
          'SKIP')
 noextract=()
 
