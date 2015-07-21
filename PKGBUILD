@@ -6,15 +6,15 @@
 # Modifications to revert commit 743970d
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGBUILD as closely as possible matches core's systemd 221-2
+#    * This PKGBUILD as closely as possible matches core's systemd 222-1
 #    * splash-arch.bmp is omitted, because it is over AUR4's 250k file size limit
 #    * All namcap warnings and errors are identical
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
 _pkgname=systemd
-pkgver=221
-pkgrel=2
+pkgver=222
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
@@ -31,32 +31,12 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
 md5sums=('SKIP'
          '90ea67a7bb237502094914622a39e281'
          '976c5511b6493715e381f43f16cdb151'
-         'bde43090d4ac0ef048e3eaee8202a407'
+         '1b3aa3a0551b08af9305d33f85b5c2fc'
          '20ead378f5d6df4b2a3e670301510a7d'
          'ddaef54f68f6c86c6c07835fc668f62a')
 
 prepare() {
   cd "$_pkgname"
-
-  # pam_systemd: Properly check kdbus availability
-  # https://github.com/systemd/systemd/commit/c5d452bb228e
-  git cherry-pick -n c5d452bb228e
-
-  # udevd: suppress warning if we don't find cgroup
-  # https://github.com/systemd/systemd/commit/11b9fb15be96
-  git cherry-pick -n 11b9fb15be96
-
-  # core: fix reversed dependency check in unit_check_unneeded
-  # https://github.com/systemd/systemd/commit/084918ba41ac
-  git cherry-pick -n 084918ba41ac
-
-  # rules: remove all power management from udev
-  # https://github.com/systemd/systemd/commit/e2452eef02a8
-  git cherry-pick -n e2452eef02a8
-
-  # logind: fix delayed execution regression
-  # https://github.com/systemd/systemd/commit/418b22b88f79
-  git cherry-pick -n 418b22b88f79
 
   # revert commit that under certain circumstances sends processes a
   # kill -9 during system shutdown.  most common data loss from this is
@@ -94,7 +74,7 @@ build() {
 package_systemd-kill-fix() {
   pkgdesc="system and service manager (with kill fix)"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'glib2' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libseccomp' 'util-linux'
            'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
@@ -185,9 +165,9 @@ package_systemd-kill-fix() {
 
 package_libsystemd-kill-fix() {
   pkgdesc="systemd client libraries (with kill fix)"
-  depends=('glib2' 'glibc' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so=221' 'libsystemd-daemon.so=221' 'libsystemd-id128.so=221' 'libsystemd-journal.so=221' 'libsystemd-login.so=221' 'libudev.so=221' 'libsystemd=221')
+  provides=('libsystemd.so=222' 'libsystemd-daemon.so=222' 'libsystemd-id128.so=222' 'libsystemd-journal.so=222' 'libsystemd-login.so=222' 'libudev.so=222' 'libsystemd=222')
   conflicts=('libsystemd')
 
   mv "$srcdir/_libsystemd"/* "$pkgdir"
@@ -197,7 +177,7 @@ package_systemd-sysvcompat-kill-fix() {
   pkgdesc="sysvinit compat for systemd (with kill fix)"
   license=('GPL2')
   groups=('base')
-  provides=('systemd-sysvcompat=221')
+  provides=('systemd-sysvcompat=222')
   conflicts=('sysvinit', 'systemd-sysvcompat')
   depends=('systemd')
 

@@ -1,6 +1,6 @@
 pkgbase = systemd-kill-fix
-	pkgver = 221
-	pkgrel = 2
+	pkgver = 222
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = systemd-kill-fix
 	makedepends = git
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v221
+	source = git://github.com/systemd/systemd.git#tag=v222
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -38,7 +38,7 @@ pkgbase = systemd-kill-fix
 	md5sums = SKIP
 	md5sums = 90ea67a7bb237502094914622a39e281
 	md5sums = 976c5511b6493715e381f43f16cdb151
-	md5sums = bde43090d4ac0ef048e3eaee8202a407
+	md5sums = 1b3aa3a0551b08af9305d33f85b5c2fc
 	md5sums = 20ead378f5d6df4b2a3e670301510a7d
 	md5sums = ddaef54f68f6c86c6c07835fc668f62a
 
@@ -50,7 +50,6 @@ pkgname = systemd-kill-fix
 	depends = acl
 	depends = bash
 	depends = dbus
-	depends = glib2
 	depends = iptables
 	depends = kbd
 	depends = kmod
@@ -71,9 +70,9 @@ pkgname = systemd-kill-fix
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=221
-	provides = udev=221
-	provides = systemd=221
+	provides = systemd-tools=222
+	provides = udev=222
+	provides = systemd=222
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -105,18 +104,17 @@ pkgname = systemd-kill-fix
 pkgname = libsystemd-kill-fix
 	pkgdesc = systemd client libraries (with kill fix)
 	license = GPL2
-	depends = glib2
 	depends = glibc
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = libsystemd.so=221
-	provides = libsystemd-daemon.so=221
-	provides = libsystemd-id128.so=221
-	provides = libsystemd-journal.so=221
-	provides = libsystemd-login.so=221
-	provides = libudev.so=221
-	provides = libsystemd=221
+	provides = libsystemd.so=222
+	provides = libsystemd-daemon.so=222
+	provides = libsystemd-id128.so=222
+	provides = libsystemd-journal.so=222
+	provides = libsystemd-login.so=222
+	provides = libudev.so=222
+	provides = libsystemd=222
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-kill-fix
@@ -124,7 +122,7 @@ pkgname = systemd-sysvcompat-kill-fix
 	groups = base
 	license = GPL2
 	depends = systemd
-	provides = systemd-sysvcompat=221
+	provides = systemd-sysvcompat=222
 	conflicts = sysvinit,
 	conflicts = systemd-sysvcompat
 
