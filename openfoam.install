@@ -14,4 +14,7 @@ post_install() {
   echo "If you need other components of the ThirdParty bundle"
   echo "it will have to be installed manually."
   echo "See http://www.openfoam.com/download/source.php for details."
+  echo ""
+  echo "Also, to avoid conflict with 'R' from r-project.org, please"
+  echo "type 'ofoam' to initialize the environment."
 }

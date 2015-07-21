@@ -1,7 +1,7 @@
 pkgbase = openfoam2.3-git
 	pkgdesc = The open source CFD toolbox
-	pkgver = 20150305.ade709a
-	pkgrel = 3
+	pkgver = 20150704.2f9138f
+	pkgrel = 1
 	url = http://www.openfoam.com
 	install = openfoam.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = openfoam2.3-git
 	md5sums = SKIP
 	md5sums = b1a4e397f8e508a1a032ba0805467424
 	md5sums = 50abc2599f5dfc72fe80255b5659290d
-	md5sums = f877bf51a61a4a0a547257ce3e6e5eaf
+	md5sums = eccc08317145b0985f823caee3b17756
 	md5sums = SKIP
 	md5sums = SKIP
 

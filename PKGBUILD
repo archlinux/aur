@@ -7,8 +7,8 @@ pkgname=openfoam2.3-git
 _distpkgname=OpenFOAM
 _distpkgver=2.3.x
 _gitname=$_distpkgname-$_distpkgver
-pkgver=20150305.ade709a
-pkgrel=3
+pkgver=20150704.2f9138f
+pkgrel=1
 pkgdesc="The open source CFD toolbox"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com"
@@ -33,12 +33,12 @@ install=openfoam.install
 md5sums=('SKIP'
          'b1a4e397f8e508a1a032ba0805467424'
          '50abc2599f5dfc72fe80255b5659290d'
-         'f877bf51a61a4a0a547257ce3e6e5eaf'
+         'eccc08317145b0985f823caee3b17756'
          'SKIP'
          'SKIP')
 
 pkgver() {
-	cd "$srcdir/OpenFOAM-2.3.x"
+	cd "$srcdir/$_gitname"
 	git log -1 --date=short --format="%cd.%h" | tr -d '-'
 }
 
@@ -91,9 +91,9 @@ package() {
   mv "$srcdir/$_gitname" "$pkgdir/opt/$_distpkgname/$_gitname" || return 1
 
   # Add source file
-#  echo "export FOAM_INST_DIR=/opt/$_distpkgname" > "$pkgdir/etc/profile.d/openfoam.sh" || return 1
-#  echo "source \$FOAM_INST_DIR/$_gitname/etc/bashrc" >> "$pkgdir/etc/profile.d/openfoam.sh" || return 1
-
+  echo "export FOAM_INST_DIR=/opt/$_distpkgname" > "$pkgdir/etc/profile.d/openfoam.sh" || return 1
+  echo "alias ofoam=\"\$FOAM_INST_DIR/$_gitname/etc/bashrc\"" >> "$pkgdir/etc/profile.d/openfoam.sh" || return 1
+  
   # Add stub thirdparty directory to keep openfoam happy
   install -d "$pkgdir/opt/$_distpkgname/ThirdParty-$_distpkgver" || return 1
 
