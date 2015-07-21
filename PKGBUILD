@@ -1,4 +1,4 @@
-# Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
+# Contributor: David Vogt <dave@winged.ch>
 _npmname=typescript-tools
 _npmver=0.3.1
 pkgname=typescript-tools
