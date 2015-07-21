@@ -1,6 +1,6 @@
 pkgbase = sonarr-develop
 	pkgdesc = PVR for newsgroup users. Formerly known as NZBDrone, with added torrent support.
-	pkgver = 2.0.0.3229
+	pkgver = 2.0.0.3368
 	pkgrel = 1
 	url = http://www.sonarr.tv
 	install = sonarr.install
