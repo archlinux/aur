@@ -10,11 +10,9 @@ pkgbase = mod_auth_kerb
 	depends = krb5
 	source = http://downloads.sourceforge.net/project/modauthkerb/mod_auth_kerb/mod_auth_kerb-5.4/mod_auth_kerb-5.4.tar.gz
 	source = auth_kerb.conf
-	source = mod_auth_kerb_compile.patch
 	source = https://sourceforge.net/p/modauthkerb/patches/_discuss/thread/418c3b51/739d/attachment/mod_auth_kerb-5.4-apache24.patch
 	sha256sums = 690ddd66c6d941e2fa2dada46588329a6f57d0a3b9b2fd9bf055ebc427558265
 	sha256sums = 9125317197d7dccfb5006982b48a2bd68579bdde0ccfb771671e9e81e9348d1b
-	sha256sums = 1241fe1b44755a355e0ee30e1c3ec2ab71326c252d6558f40068bfc87dce6234
 	sha256sums = 069ea2c354d5228fe407e0964be22a5a12a8591a4f0d30fecdfe98422778ba4b
 
 pkgname = mod_auth_kerb
