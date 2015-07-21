@@ -2,12 +2,12 @@
 
 pkgname=python-eg-git
 _pkgname=python-eg
-pkgver=0.0.3.r31.gb844e37
+pkgver=0.1.1.r9.g08d9264
 pkgrel=1
 pkgdesc="Useful examples at the command line."
 arch=('any')
 url="https://github.com/srsudar/eg"
-license=('GPL')
+license=('MIT')
 depends=('python')
 makedepends=('git')
 provides=('python-eg')
@@ -27,6 +27,7 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
