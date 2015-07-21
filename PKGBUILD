@@ -10,10 +10,12 @@ depends=('java-runtime' 'zookeeper')
 makedepends=('git' 'maven')
 source=("$pkgname::git+ssh://git@github.com/spotify/helios.git"
         'helios-master.service'
-        'helios-agent.service')
+        'helios-agent.service'
+        'helios-env.sh')
 md5sums=('SKIP'
          '2aeb4f23cf3520abbffa230d50a96ce6'
-         'a0f0cd98b3b3888aba00ff8436e22506')
+         'a0f0cd98b3b3888aba00ff8436e22506'
+         '584cdaa52f45e71d6d4dfc6c6c11e02a')
 
 pkgver() {
   cd "$pkgname"
@@ -29,6 +31,7 @@ package() {
   install -dm755 "$pkgdir/var/lib/helios-master"
   install -dm755 "$pkgdir/var/lib/helios-agent"
 
+  install -Dm755 helios-env.sh -t "$pkgdir/etc/profile.d/helios-env.sh"
   install -Dm644 helios-master.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 helios-agent.service -t "$pkgdir/usr/lib/systemd/system"
 
