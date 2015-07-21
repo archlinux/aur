@@ -30,7 +30,7 @@ index 258a019..6a7bd6b 100644
  
  # For "sqlite3" only, path relative to data_path setting
 -path = grafana.db
-+path = /var/lib/grafanagrafana.db
++path = /var/lib/grafana/grafana.db
  
  #################################### Session ####################################
  [session]
