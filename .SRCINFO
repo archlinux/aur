@@ -1,7 +1,7 @@
 pkgbase = mutate
 	pkgdesc = A simple launcher inspired by Alfred.
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/qdore/Mutate
 	install = mutate.install
 	arch = i686
