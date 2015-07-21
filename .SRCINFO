@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-glew
+	pkgdesc = GLEW, The OpenGL Extension Wrangler Library (mingw-w64)
+	pkgver = 1.11.0
+	pkgrel = 3
+	url = http://glew.sourceforge.net/
+	arch = any
+	license = Modified BSD/MIT/GPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	provides = mingw-w64-glew-lib32
+	provides = mingw-w64-glew-pure64
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/glew/glew-1.11.0.tgz
+	md5sums = f6d72c7426a5f66580ad09e50816450a
+
+pkgname = mingw-w64-glew
+
