@@ -3,13 +3,15 @@
 _pkgname=grafana
 pkgname=${_pkgname}-git
 pkgver=v2.0.2.r566.ga386733
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
 license=('APACHE')
 depends=(phantomjs)
 makedepends=(go nodejs-grunt-cli)
+provides=grafana
+conflicts=grafana
 install=${_pkgname}.install
 backup=("etc/${_pkgname}/${_pkgname}.ini")
 source=("git+https://github.com/${_pkgname}/${_pkgname}"
