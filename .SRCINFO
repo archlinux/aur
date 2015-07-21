@@ -1,15 +1,15 @@
 pkgbase = eclipse-emf
 	pkgdesc = EMF and XSD frameworks for the Eclipse platform
-	pkgver = 2.10.2
-	pkgrel = 2
+	pkgver = 2.11.0
+	pkgrel = 1
 	url = http://www.eclipse.org/modeling/emf/
 	arch = any
 	license = EPL
 	depends = eclipse>=3.5
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/emf/downloads/drops/2.10.2/R201501230452/emf-runtime-2.10.2.zip
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/emf/downloads/drops/2.10.2/R201501230452/xsd-runtime-2.10.2.zip
-	sha256sums = 1243978ebfd2de2178b72c4227d4ee47b46d1d4d13442c3f1ae0a9ec0eef42f6
-	sha256sums = 8bb29f58772f2a1a2167ff8c4b825a58fdd64923c44aec0c48d66c5afcb76fc7
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/emf/downloads/drops/2.11.0/R201506010402/emf-runtime-2.11.0.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/emf/downloads/drops/2.11.0/R201506010402/xsd-runtime-2.11.0.zip
+	sha256sums = 0f84c8348f1ec0c958b3abd0c6509e1ae793fe8394eacd51349ba7338c118052
+	sha256sums = 948be83fe4216bacae2c61189d0bec9097add1e0842a12383f43e28a2be6610f
 
 pkgname = eclipse-emf
 
