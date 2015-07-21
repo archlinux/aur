@@ -1,14 +1,14 @@
 pkgbase = cinnamon-theme-ciliora-tertia
 	pkgdesc = Ciliora-Tertia theme for Cinnamon 2.6
-	pkgver = 20150624
+	pkgver = 20150712
 	pkgrel = 1
 	url = http://cinnamon-spices.linuxmint.com/themes/view/426
 	arch = any
 	license = GPL
 	depends = cinnamon>=2.6.0
 	depends = cinnamon<2.7.0
-	source = http://cinnamon-spices.linuxmint.com/uploads/themes/RVE9-WY8V-QNTF.zip
-	sha256sums = 36e690604a555a358aff80cd18da84121959376a7131f0554292efd004adbb01
+	source = http://cinnamon-spices.linuxmint.com/uploads/themes/VX83-M10G-5217.zip
+	sha256sums = ac54340e6014116e501b23678eeb2ff031de50672f0d7f4fe18391659e5f4ce6
 
 pkgname = cinnamon-theme-ciliora-tertia
 
