@@ -19,6 +19,10 @@ sha512sums=('ab2286de30d33582a92f16e46436fcbc44b74649952df6e94d96aedc2cabb18d336
 
 prepare(){
   cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   # libvisual's definition of "inline" causes issues when compiling with the new C++11 ABI (patch from Fedora)
   patch -Np1 -i ../libvisual-0.4.0-inlinedefineconflict.patch
@@ -26,10 +30,6 @@ prepare(){
 
 build() {
   cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   ./configure --prefix='/usr' --libdir='/usr/lib32'
   make
 }
