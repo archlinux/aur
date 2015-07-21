@@ -4,7 +4,7 @@ __pkgname=Mutate
 _pkgname=mutate
 pkgname=${_pkgname}
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple launcher inspired by Alfred.'
 arch=('i686' 'x86_64')
 url="https://github.com/qdore/$__pkgname"
@@ -18,20 +18,20 @@ install=${_pkgname}.install
 license=('MIT')
 
 build() {
-    cd "$srcdir/$__pkgname/src"
+    cd "$srcdir/$__pkgname-$pkgver/src"
     qmake-qt5 PREFIX=$pkgdir/usr/bin
     make
 }
 
 package() {
-    cd "$srcdir/$__pkgname/src"
+    cd "$srcdir/$__pkgname-$pkgver/src"
     make DESTDIR="$pkgdir" install
     mkdir -p "$pkgdir/usr/share/doc/mutate/config"
-    cp -R "$srcdir/$__pkgname/config" "$pkgdir/usr/share/doc/mutate/"
+    cp -R "$srcdir/$__pkgname-$pkgver/config" "$pkgdir/usr/share/doc/mutate/"
     chmod -R a+x "$pkgdir/usr/share/doc/mutate/config/scripts"
     chmod -R a+w "$pkgdir/usr/share/doc/mutate/config"
     mkdir -p "$pkgdir/usr/share/icons"
-    cp "$srcdir/$__pkgname/info/mutate.png" "$pkgdir/usr/share/icons"
+    cp "$srcdir/$__pkgname-$pkgver/info/mutate.png" "$pkgdir/usr/share/icons"
     mkdir -p "$pkgdir/usr/share/applications"
-    cp "$srcdir/$__pkgname/info/Mutate.desktop" "$pkgdir/usr/share/applications"
+    cp "$srcdir/$__pkgname-$pkgver/info/Mutate.desktop" "$pkgdir/usr/share/applications"
 }
