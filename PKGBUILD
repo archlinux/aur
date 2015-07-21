@@ -7,7 +7,7 @@ pkgdesc="Software defined radio (SDR)"
 arch=('i686' 'x86_64')
 url="http://james.ahlstrom.name/quisk/"
 license=('GPL')
-depends=('python3' 'fftw' 'portaudio' 'wxpython')
+depends=('python2' 'fftw' 'portaudio' 'wxpython')
 source=(http://james.ahlstrom.name/quisk/$pkgname-$pkgver.tar.gz
         $pkgname
         $pkgname.desktop
