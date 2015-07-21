@@ -1,6 +1,6 @@
 pkgbase = pencil
 	pkgdesc = Sketching and GUI prototyping/wireframing tool
-	pkgver = 2.0.12
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = http://github.com/prikhi/pencil
 	install = pencil.install
@@ -9,8 +9,8 @@ pkgbase = pencil
 	depends = xulrunner
 	optdepends = pencil-android-lollipop-stencils-git: Android UI
 	optdepends = pencil-material-icons-git: Material Design Icons
-	source = https://github.com/prikhi/pencil/releases/download/v2.0.12/Pencil-2.0.12-linux-pkg.tar.gz
-	sha256sums = 6f4cc1808faec42bd791e6d809131380b04a11d41db2fd9af83b115ae40a7165
+	source = https://github.com/prikhi/pencil/releases/download/v2.0.13/Pencil-2.0.13-linux-pkg.tar.gz
+	sha256sums = f3c23b9dfe6999149b20b1377821b68a81ea68f65182e036a001d823b0d21294
 
 pkgname = pencil
 
