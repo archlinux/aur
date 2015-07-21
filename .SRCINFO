@@ -1,7 +1,7 @@
 pkgbase = reflector-timer
 	pkgdesc = A service and timer for the reflector mirrorlist upgrade.
 	pkgver = 3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xyne.archlinux.ca/projects/reflector/
 	arch = any
 	license = GPL

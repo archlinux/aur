@@ -1,7 +1,7 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 pkgname=reflector-timer
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc='A service and timer for the reflector mirrorlist upgrade.'
 arch=('any')
 url='http://xyne.archlinux.ca/projects/reflector/'
@@ -20,5 +20,5 @@ package() {
     install -D -m 644 'reflector.timer' "$pkgdir/usr/lib/systemd/system/reflector.timer"
     install -D -m 644 'reflector.conf' "$pkgdir/etc/conf.d/reflector.conf"
     install -d -m 755 "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants"
-    ln -s "../reflector.timer" "${pkdir}/usr/lib/systemd/system/multi-user.target.wants/reflector.timer"
+    ln -s "../reflector.timer" "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/reflector.timer"
 }
