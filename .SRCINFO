@@ -1,0 +1,23 @@
+pkgbase = mininet
+	pkgdesc = Process-based network emulator (stable branch)
+	pkgver = 2.2.1
+	pkgrel = 2
+	url = https://github.com/mininet/mininet/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = help2man
+	makedepends = python2-setuptools
+	depends = bash
+	depends = python2
+	depends = python2-networkx
+	depends = net-tools
+	depends = iputils
+	depends = iperf
+	optdepends = openvswitch
+	optdepends = xorg-xhost
+	source = git://github.com/mininet/mininet.git
+	md5sums = SKIP
+
+pkgname = mininet
+
