@@ -1,0 +1,98 @@
+diff -Naur lxterminal-0.2.0.orig/src/preferences.c lxterminal-0.2.0/src/preferences.c
+--- lxterminal-0.2.0.orig/src/preferences.c	2015-07-21 12:49:48.920613000 +0200
++++ lxterminal-0.2.0/src/preferences.c	2015-07-21 17:31:55.641212550 +0200
+@@ -42,13 +42,13 @@
+     gtk_color_button_get_rgba(widget, &setting->background_color);
+ #else
+     gtk_color_button_get_color(widget, &setting->background_color);
+-#endif
+     setting->background_alpha = gtk_color_button_get_alpha(widget);
+ 
+     if (setting->background_alpha == 0)
+     {
+         setting->background_alpha = 1;
+     }
++#endif
+ }
+ 
+ /* Handler for "color-set" signal on Foreground Color color button. */
+@@ -196,8 +196,8 @@
+     gtk_color_button_set_rgba(GTK_COLOR_BUTTON(w), &setting->background_color);
+ #else
+     gtk_color_button_set_color(GTK_COLOR_BUTTON(w), &setting->background_color);
+-#endif
+     gtk_color_button_set_alpha(GTK_COLOR_BUTTON(w), setting->background_alpha);
++#endif
+     g_signal_connect(G_OBJECT(w), "color-set", 
+         G_CALLBACK(preferences_dialog_background_color_set_event), setting);
+ 
+diff -Naur lxterminal-0.2.0.orig/src/setting.c lxterminal-0.2.0/src/setting.c
+--- lxterminal-0.2.0.orig/src/setting.c	2015-07-21 12:49:48.920613000 +0200
++++ lxterminal-0.2.0/src/setting.c	2015-07-21 17:40:02.614255153 +0200
+@@ -48,10 +48,10 @@
+ #endif
+     printf("Background color: %s\n", p);
+     g_free(p);
+-    printf("Background Alpha: %i\n", setting->background_alpha);
+ #if VTE_CHECK_VERSION (0, 38, 0)
+     p = gdk_rgba_to_string(&setting->foreground_color);
+ #else
++    printf("Background Alpha: %i\n", setting->background_alpha);
+     p = gdk_color_to_string(&setting->foreground_color);
+ #endif
+     printf("Foreground color: %s\n", p);
+@@ -115,10 +115,10 @@
+     if (p != NULL)
+         g_key_file_set_string(setting->keyfile, GENERAL_GROUP, BG_COLOR, p);
+     g_free(p);
+-    g_key_file_set_integer(setting->keyfile, GENERAL_GROUP, BG_ALPHA, setting->background_alpha);
+ #if VTE_CHECK_VERSION (0, 38, 0)
+     p = gdk_rgba_to_string(&setting->foreground_color);
+ #else
++    g_key_file_set_integer(setting->keyfile, GENERAL_GROUP, BG_ALPHA, setting->background_alpha);
+     p = gdk_color_to_string(&setting->foreground_color);
+ #endif
+     if (p != NULL)
+@@ -252,8 +252,13 @@
+     setting = g_slice_new0(Setting);
+ 
+     /* Initialize nonzero integer values to defaults. */
++#if VTE_CHECK_VERSION (0, 38, 0)
++    setting->background_color.alpha = setting->foreground_color.alpha = 1;
++    setting->foreground_color.red = setting->foreground_color.green = setting->foreground_color.blue = (gdouble) 170/255;
++#else
+     setting->background_alpha = 65535;
+     setting->foreground_color.red = setting->foreground_color.green = setting->foreground_color.blue = 0xaaaa;
++#endif
+ 
+     /* Load configuration. */
+     setting->keyfile = g_key_file_new();
+@@ -269,13 +274,13 @@
+             gdk_rgba_parse(&setting->background_color, p);
+ #else
+             gdk_color_parse(p, &setting->background_color);
+-#endif
+         }
+         setting->background_alpha = g_key_file_get_integer(setting->keyfile, GENERAL_GROUP, BG_ALPHA, &error);
+         if (error && (error->code == G_KEY_FILE_ERROR_KEY_NOT_FOUND))
+         {   
+             /* Set default value if key not found! */
+             setting->background_alpha = 65535;
++#endif
+         }
+         p = g_key_file_get_string(setting->keyfile, GENERAL_GROUP, FG_COLOR, NULL);
+         if (p != NULL)
+diff -Naur lxterminal-0.2.0.orig/src/setting.h lxterminal-0.2.0/src/setting.h
+--- lxterminal-0.2.0.orig/src/setting.h	2015-07-21 12:49:48.920613000 +0200
++++ lxterminal-0.2.0/src/setting.h	2015-07-21 16:48:24.284189585 +0200
+@@ -78,9 +78,9 @@
+     GdkRGBA foreground_color;      /* Foreground color */
+ #else
+     GdkColor background_color;      /* Background color */
++    guint16 background_alpha;       /* Alpha value to go with background color */
+     GdkColor foreground_color;      /* Foreground color */
+ #endif
+-    guint16 background_alpha;       /* Alpha value to go with background color */
+     gboolean disallow_bold;     /* Disallow bolding by VTE */
+     gboolean cursor_blink;      /* True if cursor blinks */
+     gboolean cursor_underline;      /* True if underline cursor; false if block cursor */
