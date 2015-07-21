@@ -4,24 +4,28 @@
 
 pkgname=mod_auth_kerb
 pkgver=5.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A Kerberos authentication module for the Apache Http Server"
 arch=('i686' 'x86_64')
-#url="http://sourceforge.net/projects/mod_auth_kerb/"
-url="http://sourceforge.net/projects/modauthkerb/files/mod_auth_kerb/mod_auth_kerb-5.4/mod_auth_kerb-5.4.tar.gz/download"
+url="http://modauthkerb.sourceforge.net/"
 license=('custom')
 depends=('apache>=2.0' 'krb5')
 source=(http://downloads.sourceforge.net/project/modauthkerb/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
         auth_kerb.conf
-        https://sourceforge.net/p/modauthkerb/patches/_discuss/thread/418c3b51/739d/attachment/mod_auth_kerb-5.4-apache24.patch)
+        #https://raw.githubusercontent.com/pld-linux/apache-mod_auth_kerb/master/apache-mod_auth_kerb-heimdal.patch
+        #https://raw.githubusercontent.com/pld-linux/apache-mod_auth_kerb/master/mod_auth_kerb-apache24.patch
+        https://sourceforge.net/p/modauthkerb/patches/_discuss/thread/418c3b51/739d/attachment/mod_auth_kerb-5.4-apache24.patch
+        https://raw.githubusercontent.com/pld-linux/apache-mod_auth_kerb/master/mod_auth_kerb-delegation.patch)
 sha256sums=('690ddd66c6d941e2fa2dada46588329a6f57d0a3b9b2fd9bf055ebc427558265'
             '9125317197d7dccfb5006982b48a2bd68579bdde0ccfb771671e9e81e9348d1b'
-            '069ea2c354d5228fe407e0964be22a5a12a8591a4f0d30fecdfe98422778ba4b')
+            '069ea2c354d5228fe407e0964be22a5a12a8591a4f0d30fecdfe98422778ba4b'
+            '1c4625e1de2904957ac156df220d8d6898d89cdc4712772bd02e564673bb87b9')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   patch -p0 < "$srcdir/mod_auth_kerb-5.4-apache24.patch"
+  patch -p1 < "$srcdir/mod_auth_kerb-delegation.patch"
 }
 
 build() {
