@@ -1,0 +1,54 @@
+From f9badba845c027198d94843241706e71d8329883 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 22 Jul 2015 00:57:02 +0200
+Subject: [PATCH] Fix demo area background for GTK+ 3
+
+Without this, the whole area become black, depending on the actually selected theme.
+---
+ src/widget-theme.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/src/widget-theme.c b/src/widget-theme.c
+index 0a17326..75453fd 100644
+--- a/src/widget-theme.c
++++ b/src/widget-theme.c
+@@ -131,12 +131,28 @@ static void on_font_set(GtkFontButton* btn, gpointer user_data)
+     }
+ }
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++static void on_style_updated(GtkWidget* demo_vbox, gpointer user_data)
++{
++    GtkWidget* toplevel;
++    GtkStyle* style;
++    GdkColor color;
++
++    toplevel = gtk_widget_get_toplevel (demo_vbox);
++    style = gtk_widget_get_style (toplevel);
++    color = style->bg[GTK_STATE_NORMAL];
++    gtk_widget_modify_bg(demo_vbox, GTK_STATE_NORMAL, &color);
++}
++#endif
++
+ void widget_theme_init(GtkBuilder* b)
+ {
+     GtkWidget* demo;
++    GtkWidget* demo_vbox;
+     GdkColor black = {0, 0, 0, 0};
+ 
+     demo = GTK_WIDGET(gtk_builder_get_object(b, "demo"));
++    demo_vbox = GTK_WIDGET(gtk_builder_get_object(b, "demo_vbox"));
+     app.widget_theme_view = GTK_WIDGET(gtk_builder_get_object(b, "widget_theme_view"));
+ 
+     gtk_widget_modify_bg(demo, GTK_STATE_NORMAL, &black);
+@@ -149,4 +165,7 @@ void widget_theme_init(GtkBuilder* b)
+     app.default_font_btn = GTK_WIDGET(gtk_builder_get_object(b, "default_font"));
+     gtk_font_button_set_font_name(GTK_FONT_BUTTON(app.default_font_btn), app.default_font);
+     g_signal_connect(app.default_font_btn, "font-set", G_CALLBACK(on_font_set), NULL);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    g_signal_connect (demo_vbox, "style-updated", G_CALLBACK (on_style_updated), NULL);
++#endif
+ }
+-- 
+2.4.6
+
