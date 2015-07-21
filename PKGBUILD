@@ -2,8 +2,8 @@
 pkgname=bulk77i-apps-git
 _pkgname=bulk77i-apps
 pkgrel=1
-pkgver=v0.2.4.g4b04119
-pkgdesc="mar77i's basic C datatypes collection"
+pkgver=v0.1
+pkgdesc="Collection of executable targets that were developed around bulk77i modules"
 arch=(x686 x86_64)
 url="https://github.com/mar77i/bulk77i-apps"
 license=('GPL')

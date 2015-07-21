@@ -1,12 +1,13 @@
 pkgbase = bulk77i-apps-git
-	pkgdesc = mar77i's basic C datatypes collection
-	pkgver = v0.2.4.g4b04119
+	pkgdesc = Collection of executable targets that were developed around bulk77i modules
+	pkgver = v0.1
 	pkgrel = 1
 	url = https://github.com/mar77i/bulk77i-apps
 	arch = x686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = bulk77i-git
 	source = git+https://github.com/mar77i/bulk77i-apps.git
 	md5sums = SKIP
 
