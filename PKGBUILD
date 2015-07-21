@@ -1,9 +1,9 @@
 # Maintainer: Alexiobash <me@alexiobash.com>
 
 pkgname='tor-browser-it'
-pkgver='4.5.2'
+pkgver='4.5.3'
 _language='it'
-pkgrel=4
+pkgrel=1
 pkgdesc='Tor Browser Bundle: browsing anonimo usando firefox e tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')

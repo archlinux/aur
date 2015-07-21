@@ -1,7 +1,7 @@
 pkgbase = tor-browser-it
 	pkgdesc = Tor Browser Bundle: browsing anonimo usando firefox e tor
-	pkgver = 4.5.2
-	pkgrel = 4
+	pkgver = 4.5.3
+	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	install = tor-browser-it.install
 	arch = x86_64
@@ -34,12 +34,12 @@ pkgbase = tor-browser-it
 	md5sums = f0cfc7681d58a77251abc49b250802d3
 	md5sums = 494afbfa60fb4ce21840244cc3f7208c
 	md5sums = bb53b2544e2038943e703c7c6ccf48a1
-	source_x86_64 = https://dist.torproject.org/torbrowser/4.5.2/tor-browser-linux64-4.5.2_it.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/4.5.2/tor-browser-linux64-4.5.2_it.tar.xz.asc
+	source_x86_64 = https://dist.torproject.org/torbrowser/4.5.3/tor-browser-linux64-4.5.3_it.tar.xz
+	source_x86_64 = https://dist.torproject.org/torbrowser/4.5.3/tor-browser-linux64-4.5.3_it.tar.xz.asc
 	md5sums_x86_64 = 38c97d9964019a6cf965dced0fdf41de
 	md5sums_x86_64 = SKIP
-	source_i686 = https://dist.torproject.org/torbrowser/4.5.2/tor-browser-linux32-4.5.2_it.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/4.5.2/tor-browser-linux32-4.5.2_it.tar.xz.asc
+	source_i686 = https://dist.torproject.org/torbrowser/4.5.3/tor-browser-linux32-4.5.3_it.tar.xz
+	source_i686 = https://dist.torproject.org/torbrowser/4.5.3/tor-browser-linux32-4.5.3_it.tar.xz.asc
 	md5sums_i686 = 2e4a3cd8e75f33b02f4cc84714be4748
 	md5sums_i686 = SKIP
 
