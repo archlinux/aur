@@ -1,0 +1,16 @@
+pkgbase = cl-yacc
+	pkgdesc = LALR(1) parser generator for Common Lisp, somewhat like Zebu or LALR.cl
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.pps.univ-paris-diderot.fr/~jch/software/cl-yacc/
+	install = cl-yacc.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = common-lisp
+	options = docs
+	source = https://github.com/jech/cl-yacc/archive/cl-yacc-0.3.tar.gz
+	md5sums = 39c943108ca4ac520d377712b8143de9
+
+pkgname = cl-yacc
+
