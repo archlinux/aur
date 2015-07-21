@@ -1,0 +1,37 @@
+diff -u -Naur tf-50b8/src/macro.c tinyfugue/src/macro.c
+--- tf-50b8/src/macro.c	2007-01-14 00:12:39.000000000 +0100
++++ tinyfugue/src/macro.c	2015-07-21 21:43:13.900563427 +0200
+@@ -893,7 +893,8 @@
+     }
+     spec->attr &= ~F_NONE;
+     if (spec->nsubattr) {
+-	int n = pcre_info(spec->trig.ri->re, NULL, NULL);
++	int n;
++	pcre_fullinfo(spec->trig.ri->re, NULL, PCRE_INFO_CAPTURECOUNT, &n);
+ 	for (i = 0; i < spec->nsubattr; i++) {
+ 	    spec->subattr[i].attr &= ~F_NONE;
+ 	    if (spec->subattr[i].subexp > n) {
+diff -u -Naur tf-50b8/src/pattern.c tinyfugue/src/pattern.c
+--- tf-50b8/src/pattern.c	2007-01-14 00:12:39.000000000 +0100
++++ tinyfugue/src/pattern.c	2015-07-21 21:43:13.900563427 +0200
+@@ -151,7 +151,7 @@
+ 	    emsg ? emsg : "unknown error");
+ 	goto tf_reg_compile_error;
+     }
+-    n = pcre_info(ri->re, NULL, NULL);
++    pcre_fullinfo(ri->re, NULL, PCRE_INFO_CAPTURECOUNT, &n);
+     if (n < 0) goto tf_reg_compile_error;
+     ri->ovecsize = 3 * (n + 1);
+     ri->ovector = dmalloc(NULL, sizeof(int) * ri->ovecsize, file, line);
+diff -u -Naur tf-50b8/src/pattern.h tinyfugue/src/pattern.h
+--- tf-50b8/src/pattern.h	2007-01-14 00:12:39.000000000 +0100
++++ tinyfugue/src/pattern.h	2015-07-21 21:43:13.900563427 +0200
+@@ -10,7 +10,7 @@
+ #ifndef PATTERN_H
+ #define PATTERN_H
+ 
+-#include "pcre-2.08/pcre.h"
++#include <pcre.h>
+ 
+ typedef struct RegInfo {
+     pcre *re;
