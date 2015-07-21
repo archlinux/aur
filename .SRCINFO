@@ -1,0 +1,34 @@
+pkgbase = python-matplotlib-noqt
+	pkgdesc = A python plotting library, making publication quality plots
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://matplotlib.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python-pytz
+	makedepends = python-numpy
+	makedepends = tk
+	makedepends = python-cairo
+	makedepends = python-dateutil
+	makedepends = python-gobject
+	makedepends = python-pyparsing
+	makedepends = python-six
+	makedepends = ghostscript
+	makedepends = texlive-bin
+	depends = python-pytz
+	depends = python-numpy
+	depends = python-cairo
+	depends = python-dateutil
+	depends = python-pyparsing
+	optdepends = python-gobject: for GTK3Agg/GTK3Cairo backend
+	optdepends = python-cairo: for GTK3Cairo backend
+	optdepends = tk: used by the TkAgg backend
+	optdepends = ghostscript: usetex dependencies
+	optdepends = texlive-bin: usetex dependencies
+	optdepends = python-tornado: for webagg backend
+	source = https://github.com/matplotlib/matplotlib/archive/v1.4.3.tar.gz
+	sha512sums = 4aebbda31934bedbee5206b783e5cbe07db17367d50117a50bb80b7ea4aad987ec225958bed58885c561f00582c309d6e8c0a69861d3b4210a09b2d63975d2aa
+
+pkgname = python-matplotlib-noqt
+
