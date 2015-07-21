@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Giovanni Santini 'ItachiSan' <giovannisantini93@yahoo.it>
 # Contributors: Det, JavaAtom, Ethan Hall, Giovanni Santini, Guillaume ALAUX, Daniel J Griffiths,
 #               Jason Chu, Geoffroy Carrier, Thomas Dziedzic, Dan Serban
 
@@ -8,7 +8,7 @@ _major=6
 _minor=45
 _build=b06
 pkgver=${_major}u${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc="Oracle Java $_major Development Kit (public release - end of support)"
 arch=('i686' 'x86_64')
 url=https://www.java.com/en/download/faq/java_6.xml
@@ -26,9 +26,10 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 
 # Variables
 DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+if [[ $CARCH = x86_64 ]]; then
 _arch=x64
 _arch2=amd64
-if [[ $CARCH = i686 ]]; then
+else # Force fallback to i386 for AUR
   _arch=i586
   _arch2=i386
 fi
@@ -57,19 +58,22 @@ backup=("etc/java-$_jname/$_arch2/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 options=(!strip) # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-$_arch.bin"
-        'javaws-launcher'
+source=('javaws-launcher'
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
-        "policytool-$_jname.desktop")
-md5sums=('40c1a87563c5c6a90a0ed6994615befe'
-         '45c15a6b4767288f2f745598455ea2bf'
+        "policytool-$_jname.desktop"
+        "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip")
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin")
+md5sums=('45c15a6b4767288f2f745598455ea2bf'
          '4ecc28010b77b31c101e61f420a415fa'
          '6ab27fa31a5a83f98f4a36ec3bd47911'
          'b30ca4304c8bb6b01650d9d235f97995'
-         'e513ee55f55467f7fd323195ae70f418')
-[[ $CARCH = i686 ]] && md5sums[0]='3269370b7c34e6cbfed8785d3d0c5cbd'
+         'e513ee55f55467f7fd323195ae70f418'
+         'b20f9d6ed14e55d73a5ed204bca01e7a')
+md5sums_i686=('3269370b7c34e6cbfed8785d3d0c5cbd')
+md5sums_x86_64=('40c1a87563c5c6a90a0ed6994615befe')
 
 package() {
   msg2 "Extracting the .bin"
@@ -127,6 +131,10 @@ package() {
   # Licenses
   mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
   ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
+
+  # Java Cryptography Extension (JCE) Unlimited Strength files
+  rename -- ".jar" "-limited.jar" jre/lib/security/*
+  install -Dm644 "$srcdir"/jce/* jre/lib/security/
 
   # Do the move
   mv * "$pkgdir"/$_jvmdir
