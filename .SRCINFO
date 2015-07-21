@@ -1,0 +1,18 @@
+pkgbase = sugar-presence-service
+	pkgdesc = Interfaces between Sugar and Telepathy Connection Managers
+	pkgver = 0.90.2
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = sugar-desktop
+	groups = glucose
+	license = GPL
+	depends = python2
+	depends = sugar-base
+	depends = python2-telepathy
+	depends = gnome-python
+	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar-presence-service/sugar-presence-service-0.90.2.tar.bz2
+	md5sums = bb53b4dc20e81697deb5124fc2cd0fc6
+
+pkgname = sugar-presence-service
+
