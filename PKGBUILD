@@ -2,14 +2,15 @@
 
 # Choose, which icons to use for menus and system tray ("blue", "gray" or "default").
 _icon="default"
+
 pkgname=vuze-dev
-pkgver=5.6.1.3_B02
-pkgrel=2
-pkgdesc="An open source Java-based BitTorrent client (previously called 'Azureus') - Development Build"
+pkgver=5.6.1.3_B14
+pkgrel=1
+pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus') - Development Build"
 arch=('i686' 'x86_64')
 url="http://dev.vuze.com/"
 license=('GPL')
-depends=('desktop-file-utils' 'gconf' 'java-runtime')
+depends=('desktop-file-utils' 'java-runtime')
 optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
             'vuze-plugin-mldht: The alternative Distributed Hash Table implementation (DHT) used by µTorrent'
             'xulrunner192: Needed for the channels GUI')
@@ -20,16 +21,16 @@ install=$pkgname.install
 # Fetch info
 _versions=$(curl -sLO http://dev.vuze.com/versions.json)
 
-# Variables
+# Version variables
 _main_ver_flat=$(grep -Po 'version": "\K[^"]*' versions.json | tail -1) # 5612
 _dev_ver_flat=$(grep -Pom1 'version": "\K[^"]*' versions.json)          # 5613
 _dev_ver=$(echo $_dev_ver_flat | sed -r 's/([0-9])/.\1/g' | cut -c 2-)  # 5.6.1.3
 _dev_beta=$(grep -Pom1 'build": "\K[^"]*' versions.json)                # 02
 
-source=("http://downloads.sourceforge.net/project/azureus/vuze/Vuze_${_main_ver_flat}/Vuze_${_main_ver_flat}_linux.tar.bz2"
+source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_main_ver_flat}/Vuze_${_main_ver_flat}_linux.tar.bz2"
         "http://cf1.vuze.com/torrent/files/Azureus${_dev_ver_flat}-B${_dev_beta}.jar"
          {blue,gray}_{16,32,64,128}.png)
-noextract=("Azureus${_dev_ver_flat}-B${_dev_beta}.jar")
+noextract=($(basename ${source[1]}))
 md5sums=('SKIP'
          'SKIP'
          '5eba696cfcc430504706f476e13b2ade'
@@ -75,22 +76,21 @@ package() {
   mv LICENSES.txt "$pkgdir"/usr/share/licenses/vuze-dev/
   mv TOS.txt      "$pkgdir"/usr/share/licenses/vuze-dev/
 
-  # Remove redundancies
+  msg2 "Removing redundancies..."
   rm -r swt/
   rm    azureus
   rm    installer.log
   rm    README.txt
   rm    vuze.schemas
 
-  # Move main stuff
+  msg2 "Installing to /opt..."
   mv * "$pkgdir"/opt/vuze-dev/
 
-  msg2 "Tweaking paths"
-  # Launcher
+  msg2 "Fixing paths"
   sed 's|#PROGRAM_DIR=.*|PROGRAM_DIR="/opt/vuze-dev"|' \
       -i "$pkgdir"/usr/bin/vuze-dev
 
-  # Desktop
+  msg2 "Adding support for magnet links..."
   sed -r -e 's|Name=Vuze|Name=Vuze Development Build|' \
          -e 's|Exec=vuze %f|Exec=vuze-dev %U|' \
          -e 's|Icon=vuze.png|Icon=vuze-dev.png|' \

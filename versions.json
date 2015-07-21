@@ -2,11 +2,11 @@
    "versions": {
       "client-dev": {
          "version": "5613",
-         "build": "02",
-         "timestamp": "12 Jun 2015 11:21:08 PM",
-         "name": "Vuze_5613-02",
-         "jar_url": "http://cf1.vuze.com/torrent/files/Azureus5613-B02.jar",
-         "torrent_url": "http://cf1.vuze.com/torrent/torrents/Azureus5613-B02.jar.torrent"
+         "build": "14",
+         "timestamp": "18 Jul 2015 12:59:01 AM",
+         "name": "Vuze_5613-14",
+         "jar_url": "http://cf1.vuze.com/torrent/files/Azureus5613-B14.jar",
+         "torrent_url": "http://cf1.vuze.com/torrent/torrents/Azureus5613-B14.jar.torrent"
       },      
       "client-release": {
          "version": "5612",
