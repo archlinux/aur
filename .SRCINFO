@@ -1,0 +1,17 @@
+pkgbase = redstore
+	pkgdesc = RedStore is a lightweight RDF triplestore written in C using the Redland library.
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = http://www.aelius.com/njh/redstore/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = rasqal>=0.9.27
+	depends = redland>=1.0.14
+	depends = raptor>=2.0.4
+	options = !libtool
+	source = http://www.aelius.com/njh/redstore/redstore-0.5.4.tar.gz
+	md5sums = 5857c99d0aaf384050ea17e15354feba
+
+pkgname = redstore
+
