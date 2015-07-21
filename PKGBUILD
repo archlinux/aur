@@ -1,25 +1,25 @@
 # Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
 pkgname=quisk
-pkgver=3.6.22
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Software defined radio (SDR)"
 arch=('i686' 'x86_64')
 url="http://james.ahlstrom.name/quisk/"
 license=('GPL')
-depends=('python2' 'fftw' 'portaudio' 'wxpython')
+depends=('python3' 'fftw' 'portaudio' 'wxpython')
 source=(http://james.ahlstrom.name/quisk/$pkgname-$pkgver.tar.gz
         $pkgname
         $pkgname.desktop
         $pkgname.patch)
-md5sums=('aaa7538a67f1d275aa89a4a85edeb51c'
+md5sums=('94d2f54e1592df2965757c21491b7471'
          '8a7445eee98db1f085dda69d606c5205'
          '44cddf20e06994ce3abcd4b563567ef3'
-         '677f0de1d01e3662f6a1c87c67df6134')
-sha512sums=('e940d6ab1acbd27a72471e93e49582504ad41837c50cb0473e6a2d822427b7d6403b80f0f3b7ea9613efc322618a193899b44ae3b8e86f925b919baec3b3504d'
+         'e369900227c9bea8d3bc68cb21838651')
+sha512sums=('7b7a2f241f33306473fca809ef43a44e19a858126063995745d11717384db3d7f6d645d696e6fc71d5991f43e8db337c6fbfd21ac43681395fbe970973a64a9e'
             '94f09cc0e847e308ca66bf90c8f729924273f66524fed8bc63565c8060113ae8dcae6ed3f14075e03a7168da182059b3279c0315a1d2d00cf4292e4d68cf7871'
             '3ad02f730b4a4033b86a2ce510865c13c2f2e228304283cae0bb389442f7ab49a5d530cd94e32460e19b53da24037abc855027ce34c93fdabcd1faf8a91852b1'
-            '09d18308ecd53204cfdc44c31256eabe7c2a8707ab79e4523a98c304d155f5c072c426beaee62295e213f1e303c91201962a604892a854838f20c798bd693435')
+            'a471e8ca91b598c825bcfb829bbcf32317596b5e88771c0eddc6558dfa8b1e0b0c0483344ba7cf95a8a231fdce1f8eb86e0a67603474d50ff2c0a978d1e5c099')
 build() {
   # use python2 instead python for compilation
   cd $srcdir
