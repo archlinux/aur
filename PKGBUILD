@@ -6,7 +6,7 @@
 
 pkgname=vuze
 pkgver=5.6.1.2
-pkgrel=2
+pkgrel=3
 _ver=${pkgver//./} 
 pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus')"
 arch=('i686' 'x86_64')

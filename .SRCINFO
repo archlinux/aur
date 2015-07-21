@@ -1,7 +1,7 @@
 pkgbase = vuze
 	pkgdesc = A feature-rich Java-based BitTorrent client (previously called 'Azureus')
 	pkgver = 5.6.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/azureus/
 	install = vuze.install
 	arch = i686
