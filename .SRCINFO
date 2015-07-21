@@ -1,0 +1,13 @@
+pkgbase = toplip
+	pkgdesc = Command line encryption and decryption utility with optional plausible deniability, image embedding, and multiple/variable passphrase complexity
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://2ton.com.au/toplip/
+	arch = x86_64
+	license = GPL3
+	makedepends = fasm
+	source = https://2ton.com.au/HeavyThing-1.13.tar.gz
+	md5sums = 068ddcbafbc5185f7d6710a6c6b735df
+
+pkgname = toplip
+
