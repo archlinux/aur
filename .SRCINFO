@@ -1,0 +1,27 @@
+pkgbase = rxvt-unicode-enhanced
+	pkgdesc = A unicode enabled rxvt-clone terminal emulator (urxvt) with 24-bit color support
+	pkgver = 180ed03
+	pkgrel = 1
+	url = http://github.com/spudowiar/rxvt-unicode/tree/24bit
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxft
+	makedepends = perl
+	makedepends = startup-notification
+	depends = libxft
+	depends = perl
+	depends = startup-notification
+	optdepends = gtk2-perl: to use the urxvt-tabbed
+	provides = rxvt-unicode
+	provides = rxvt-unicode-terminfo
+	conflicts = rxvt-unicode
+	conflicts = rxvt-unicode-terminfo
+	source = git://github.com/spudowiar/rxvt-unicode.git#branch=24bit
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = rxvt-unicode-enhanced
+
