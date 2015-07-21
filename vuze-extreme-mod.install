@@ -1,10 +1,10 @@
 # Colored makepkg-like functions
 msg_blue() {
-    printf "${blue}::${bold} $1${all_off}\n"
+    printf "${blue}==>${bold} $1${all_off}\n"
 }
 
 note() {
-    printf "${blue}${yellow}::${bold} $1${all_off}\n"
+    printf "${blue}${yellow}==>${bold} $1${all_off}\n"
 }
 
 all_off="$(tput sgr0)"
@@ -17,6 +17,7 @@ post_install() {
     update-desktop-database -q
 
     note "The launcher is called: 'vuze-extreme-mod'"
+    note "This package installs side-by-side with 'vuze'."
 }
 
 post_upgrade() {
