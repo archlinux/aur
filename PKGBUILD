@@ -19,6 +19,13 @@ conflicts=($_pkgname)
 source=(http://downloads.sourceforge.net/pcmanfm/$_pkgname-$pkgver.tar.xz)
 md5sums=('3ff38200701658f7e80e25ed395d92dd')
 
+prepare() {
+  cd $_pkgname-$pkgver
+
+  # Fix some dialogs
+  sed -i 's|<property name="has_separator">False</property>||g' data/ui/*
+}
+
 build() {
   cd $_pkgname-$pkgver
   ./configure --prefix=/usr \
