@@ -31,7 +31,7 @@ package() {
   install -dm755 "$pkgdir/var/lib/helios-master"
   install -dm755 "$pkgdir/var/lib/helios-agent"
 
-  install -Dm755 helios-env.sh -t "$pkgdir/etc/profile.d/helios-env.sh"
+  install -Dm755 helios-env.sh -t "$pkgdir/etc/profile.d/"
   install -Dm644 helios-master.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 helios-agent.service -t "$pkgdir/usr/lib/systemd/system"
 
