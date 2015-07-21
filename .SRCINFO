@@ -1,0 +1,19 @@
+pkgbase = hipl
+	pkgdesc = Implementation of the Host Identity Protocol (HIP) for Linux.
+	pkgver = 20130906
+	pkgrel = 1
+	url = http://infrahip.hiit.fi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = GPL
+	makedepends = automake
+	makedepends = libtool
+	depends = libnetfilter_queue
+	depends = python2
+	depends = perl-net-dns
+	source = http://hipl.hiit.fi/hipl/hipl.tar.gz
+	sha256sums = e9779f00d1466355777b48050123487d01d3b19475a9a030535ee097ed8988fb
+
+pkgname = hipl
+
