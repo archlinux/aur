@@ -1,6 +1,7 @@
 post_install() {
-	id grafana 2>/dev/null || useradd -d /var/lib/grafana -r -U -M -s /bin/false grafana
-	chown grafana.grafana /var/lib/grafana /var/log/grafana
+	getent group grafana >/dev/null || groupadd -r grafana
+	getent passwd grafana >/dev/null || useradd -d /var/lib/grafana -g grafana -r -M -s /bin/false grafana
+	chown grafana:grafana /var/{lib,log}/grafana
 }
 
 
