@@ -1,10 +1,10 @@
 pkgname=hvl_replay-kode54-git
 pkgver=r47.f8ecadf
-pkgrel=1
+pkgrel=2
 pkgdesc="Hively Tracker (HVL and AHX) replayer library (kode54's fork, from foo_input_hvl)"
 arch=(i686 x86_64)
 url='https://bitbucket.org/kode54/foo_input_hvl'
-license=(custom:MIT)
+license=(MIT)
 depends=(glibc)
 makedepends=('git' 'qtchooser')
 source=("${pkgname}::git+https://bitbucket.org/kode54/foo_input_hvl.git")
