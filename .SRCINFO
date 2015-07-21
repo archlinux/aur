@@ -7,7 +7,7 @@ pkgbase = mod_auth_kerb
 	arch = x86_64
 	license = custom
 	depends = apache>=2.0
-	depends = heimdal
+	depends = krb5
 	source = http://downloads.sourceforge.net/project/modauthkerb/mod_auth_kerb/mod_auth_kerb-5.4/mod_auth_kerb-5.4.tar.gz
 	source = auth_kerb.conf
 	source = mod_auth_kerb.patch
