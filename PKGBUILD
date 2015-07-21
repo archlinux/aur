@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon-git
-pkgver=20150623
+pkgver=20150718
 pkgrel=1
 pkgdesc="SIP/IAX2 compatible softphone for Linux, based on a DHT (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -9,11 +9,11 @@ license=('GPL3')
 groups=("ring")
 depends=('opendht-git' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack'
          'libsamplerate' 'libsndfile' 'dbus-c++' 'ffmpeg' 'udev' 'gnutls'
-         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp')
+         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp')
 makedepends=('git' 'boost')
 provides=('ring-daemon')
 conflicts=('ring-daemon')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon")
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=b264aa7b6617ac56c2c49463da20b4494b104841")
 md5sums=('SKIP')
 
 pkgver() {
