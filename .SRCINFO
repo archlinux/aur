@@ -1,5 +1,5 @@
 pkgbase = cgasm-git
-	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
+	pkgdesc = Commandline IA32/AMD64 documentation
 	pkgver = 20150721.8.4b72eb8
 	pkgrel = 1
 	url = https://github.com/bnagy/cgasm

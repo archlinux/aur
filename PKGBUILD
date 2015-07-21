@@ -2,7 +2,7 @@
 pkgname="cgasm-git"
 pkgver=20150721.8.4b72eb8
 pkgrel=1
-pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
+pkgdesc="Commandline IA32/AMD64 documentation"
 arch=('i686' 'x86_64')
 url="https://github.com/bnagy/cgasm"
 license=('GPL2')
