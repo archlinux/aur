@@ -1,23 +1,20 @@
 pkgbase = vuze
-	pkgdesc = The java-based bittorrent kitchen-sink servlet.
+	pkgdesc = A feature-rich Java-based BitTorrent client (previously called 'Azureus')
 	pkgver = 5.6.1.2
 	pkgrel = 2
-	url = http://azureus.sourceforge.net/
+	url = http://sourceforge.net/projects/azureus/
 	install = vuze.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = unzip
-	depends = java-runtime
 	depends = desktop-file-utils
-	optdepends = webkitgtk: For fully functional Vuze GUI. GTK3 based.
-	optdepends = mldht: Talk DHT to uTorrent, Transmission, etc. Install with internal plugin manager. It autoupdates.
-	optdepends = i2phelper: I2P support. Install with internal plugin manager. It autoupdates!
-	provides = azureus
-	noextract = Vuze_5612.jar
+	depends = java-runtime
+	optdepends = vuze-plugin-countrylocator: Country flags for the "Peers" tab
+	optdepends = vuze-plugin-mldht: The alternative Distributed Hash Table implementation (DHT) used by µTorrent
+	optdepends = xulrunner192: Needed for the channels GUI
 	options = !strip
 	source = http://downloads.sourceforge.net/azureus/vuze/Vuze_5612/Vuze_5612_linux.tar.bz2
-	sha256sums = 66198316ec111cfb82e00f229d3f863a3a3716fa92241f1370e953cfc2e0fcdd
+	md5sums = c20397aa00614ab8b271afef93c877bc
 
 pkgname = vuze
 
