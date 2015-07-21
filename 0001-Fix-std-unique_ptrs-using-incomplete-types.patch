@@ -1,0 +1,96 @@
+From 881dcd08e5015761eb4168df6a8c05798901aa28 Mon Sep 17 00:00:00 2001
+From: Tyler Veness <calcmogul@gmail.com>
+Date: Mon, 20 Jul 2015 19:58:13 -0700
+Subject: [PATCH] Fix std::unique_ptrs using incomplete types
+
+CANTalon declared a std::unique_ptr<CanTalonSRX> with CanTalonSRX as an incomplete type. This causes a compilation error in code using CANTalons. The CANTalonTest didn't catch this because it included ctre/CanTalonSRX.h as well as CANTalon.h. Normal user code doesn't do that.
+
+I reviewed uses of std::unique_ptr elsewhere and determined that PIDCommand may suffer from the same problem. There is no test for PIDCommand to prove otherwise.
+
+Change-Id: I54caf4941927910471ffb7170eb6737ba0e08437
+---
+ wpilibc/wpilibC++/include/Commands/PIDCommand.h        | 3 +--
+ wpilibc/wpilibC++/src/Commands/PIDCommand.cpp          | 1 -
+ wpilibc/wpilibC++Devices/include/CANTalon.h            | 3 +--
+ wpilibc/wpilibC++Devices/src/CANTalon.cpp              | 1 -
+ wpilibc/wpilibC++IntegrationTests/src/CANTalonTest.cpp | 1 -
+ 5 files changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/wpilibc/wpilibC++/include/Commands/PIDCommand.h b/wpilibc/wpilibC++/include/Commands/PIDCommand.h
+index 216818f..20443f4 100644
+--- a/wpilibc/wpilibC++/include/Commands/PIDCommand.h
++++ b/wpilibc/wpilibC++/include/Commands/PIDCommand.h
+@@ -9,13 +9,12 @@
+ #define __PID_COMMAND_H__
+ 
+ #include "Commands/Command.h"
++#include "PIDController.h"
+ #include "PIDSource.h"
+ #include "PIDOutput.h"
+ 
+ #include <memory>
+ 
+-class PIDController;
+-
+ class PIDCommand : public Command, public PIDOutput, public PIDSource {
+  public:
+   PIDCommand(const std::string &name, double p, double i, double d);
+diff --git a/wpilibc/wpilibC++/src/Commands/PIDCommand.cpp b/wpilibc/wpilibC++/src/Commands/PIDCommand.cpp
+index e508e36..52a568a 100644
+--- a/wpilibc/wpilibC++/src/Commands/PIDCommand.cpp
++++ b/wpilibc/wpilibC++/src/Commands/PIDCommand.cpp
+@@ -7,7 +7,6 @@
+ 
+ #include "Commands/PIDCommand.h"
+ 
+-#include "PIDController.h"
+ #include "float.h"
+ 
+ PIDCommand::PIDCommand(const std::string &name, double p, double i, double d, double f,
+diff --git a/wpilibc/wpilibC++Devices/include/CANTalon.h b/wpilibc/wpilibC++Devices/include/CANTalon.h
+index a3d679a..9de185a 100644
+--- a/wpilibc/wpilibC++Devices/include/CANTalon.h
++++ b/wpilibc/wpilibC++Devices/include/CANTalon.h
+@@ -10,14 +10,13 @@
+ #include "PIDOutput.h"
+ #include "PIDSource.h"
+ #include "PIDInterface.h"
++#include "ctre/CanTalonSRX.h"
+ #include "MotorSafetyHelper.h"
+ #include "LiveWindow/LiveWindowSendable.h"
+ #include "tables/ITable.h"
+ 
+ #include <memory>
+ 
+-class CanTalonSRX;
+-
+ /**
+  * CTRE Talon SRX Speed Controller with CAN Control
+  */
+diff --git a/wpilibc/wpilibC++Devices/src/CANTalon.cpp b/wpilibc/wpilibC++Devices/src/CANTalon.cpp
+index 3e2c807..8d3eff5 100644
+--- a/wpilibc/wpilibC++Devices/src/CANTalon.cpp
++++ b/wpilibc/wpilibC++Devices/src/CANTalon.cpp
+@@ -6,7 +6,6 @@
+ 
+ #include "CANTalon.h"
+ #include "WPIErrors.h"
+-#include "ctre/CanTalonSRX.h"
+ #include <unistd.h>  // usleep
+ #include <sstream>
+ 
+diff --git a/wpilibc/wpilibC++IntegrationTests/src/CANTalonTest.cpp b/wpilibc/wpilibC++IntegrationTests/src/CANTalonTest.cpp
+index ca2c148..03f7ad9 100644
+--- a/wpilibc/wpilibC++IntegrationTests/src/CANTalonTest.cpp
++++ b/wpilibc/wpilibC++IntegrationTests/src/CANTalonTest.cpp
+@@ -7,7 +7,6 @@
+ #include "WPILib.h"
+ #include "gtest/gtest.h"
+ #include "TestBench.h"
+-#include "ctre/CanTalonSRX.h"
+ 
+ const int deviceId = 0;
+ 
+-- 
+2.4.6
+

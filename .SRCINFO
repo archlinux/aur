@@ -1,6 +1,6 @@
 pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	pkgdesc = The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain
-	pkgver = 935.87e1df0
+	pkgver = 1081.eb7d55f
 	pkgrel = 1
 	url = https://usfirst.collab.net/sf/projects/wpilib/
 	arch = i686
@@ -16,8 +16,10 @@ pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	options = staticlibs
 	source = git+https://usfirst.collab.net/gerrit/allwpilib
 	source = 0001-artf4155-Move-Port.h-from-hal-lib-Athena-to-hal-incl.patch
+	source = 0001-Fix-std-unique_ptrs-using-incomplete-types.patch
 	sha512sums = SKIP
-	sha512sums = 18a6e1f492b28eaa913b7aebe168ce349824092c3ce6792fad569ea5604a8382bb69e2a0a17732291f8f5bd25270bff19890f5af8b918d55025d3730dd76590a
+	sha512sums = 3dbf006ccf7c96a58c6b5a0ad446b40d60b6cc1962b876c7cbc0ed041f34a4f17dc3848bfff183ee9258466103940e80935ccfdc3f6d0da762c01f0be023e338
+	sha512sums = b83b9bd1d19efc17a961ae0b73f91cb5e48506f25a5f51bdea53827676fbbebdc45f24223b97633cf6d34d6bad8434f52e40326dc316c47335e05ec01218ca27
 
 pkgname = arm-frc-linux-gnueabi-wpilib-git
 
