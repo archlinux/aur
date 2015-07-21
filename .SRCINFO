@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-log
+	pkgdesc = Sugar log viewer
+	pkgver = 37
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Log/Log-37.tar.bz2
+	md5sums = 8ef6eaecdfb151395ee7a6e9dbe9a9e4
+
+pkgname = sugar-activity-log
+
