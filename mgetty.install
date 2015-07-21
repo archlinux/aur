@@ -1,0 +1,20 @@
+post_install() {
+    /usr/bin/udevadm trigger
+
+    if [ -z "`grep '^fax:' /etc/passwd`" ]; then
+    useradd -u 51 -d /var/spool/fax -g root -s /usr/bin/nologin fax
+    fi
+
+    chown -R fax:root /var/spool/fax
+    touch /var/log/sendfax.log
+    chown fax.root /var/log/sendfax.log
+    echo --- Please read notes: ---
+    echo Please update files in /etc/mgetty+sendfax/ before starting daemon
+    echo Daemon is faxrunqd, add to /etc/rc.conf daemon list if you want to
+    echo ---------------------------
+}
+
+post_remove() {
+    userdel fax &> /dev/null
+    /sbin/udevadm trigger
+}

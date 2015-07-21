@@ -1,0 +1,47 @@
+--- Makefile	2007-06-15 13:15:56.000000000 +0200
++++ ../gepatcht/Makefile	2010-01-24 23:05:15.000000000 +0100
+@@ -102,7 +102,7 @@
+ #	    USTAT	  - ustat(), no statfs etc.
+ #
+ #CFLAGS=-Wall -O2 -pipe -DSECUREWARE -DUSE_POLL
+-CFLAGS=-O2 -Wall -pipe
++CFLAGS=$(RPM_OPT_FLAGS) -Wall -pipe -DAUTO_PPP
+ #CFLAGS=-O -DSVR4
+ #CFLAGS=-O -DSVR4 -DSVR42
+ #CFLAGS=-O -DUSE_POLL
+@@ -164,7 +164,7 @@
+ #
+ # if your systems doesn't have one, use the shell script that I provide
+ # in "inst.sh" (taken from X11R5). Needed on IRIX5.2
+-INSTALL=install -c -o bin -g bin
++INSTALL=install -c -o root -g root
+ #INSTALL=install -c -o root -g wheel		# NeXT/BSD
+ #INSTALL=/usr/ucb/install -c -o bin -g bin	# AIX, Solaris 2.x
+ #INSTALL=installbsd -c -o bin -g bin		# OSF/1, AIX 4.1, 4.2
+@@ -172,7 +172,7 @@
+ #
+ # prefix, where most (all?) of the stuff lives, usually /usr/local or /usr
+ #
+-prefix=/usr/local
++prefix=/usr
+ #
+ # prefix for all the spool directories (usually /usr/spool or /var/spool)
+ #
+@@ -192,7 +192,7 @@
+ #
+ # where the configuration files (*.config, aliases, fax.allow/deny) go to
+ #
+-CONFDIR=$(prefix)/etc/mgetty+sendfax
++CONFDIR=/etc/mgetty+sendfax
+ #CONFDIR=/etc/default/
+ #
+ #
+@@ -275,7 +275,7 @@
+ # please use the "mg.echo" program provided in the compat/ subdirectory.
+ # Set ECHO="mg.echo" and INSTALL_MECHO to mg.echo
+ #
+-ECHO="echo"
++ECHO="echo -e"
+ #
+ # INSTALL_MECHO=mg.echo
+ 

@@ -1,0 +1,28 @@
+--- policy.h	2010-01-24 00:28:51.000000000 +0100
++++ policy.h.neu	2010-01-24 22:36:18.000000000 +0100
+@@ -564,14 +564,14 @@
+ #endif
+ 
+ #ifndef MAILER
+-# define MAILER		"/usr/lib/sendmail"
++# define MAILER		"/usr/sbin/sendmail"
+ # define NEED_MAIL_HEADERS
+ #endif
+ 
+ /* where to send notify mail about incoming faxes to
+  * (remember to create an mail alias if no such user exists!)
+  */
+-#define MAIL_TO		"faxadmin"
++#define MAIL_TO		"root"
+ 
+ /* after a fax has arrived, mgetty can call a program for further
+  * processing of this fax.
+@@ -586,7 +586,7 @@
+  * If you don't want this type of service, do not define it at all
+  * Absolute path name has to be used here!
+  */
+-#define FAX_NOTIFY_PROGRAM "/usr/local/lib/mgetty+sendfax/new_fax"
++#define FAX_NOTIFY_PROGRAM "/usr/lib/mgetty+sendfax/new_fax"
+ 
+ /* default minimum space required on spooling partition for receiving a FAX
+  * (in KILObytes)

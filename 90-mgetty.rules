@@ -1,0 +1,2 @@
+KERNEL=="ttyS[0-9]*", NAME="tts/%n", SYMLINK+="%k", GROUP="uucp", MODE="0666"
+ 

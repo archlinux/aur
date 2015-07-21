@@ -1,0 +1,135 @@
+172a173,176
+> # Installation prefix for Build
+> #
+> DESTDIR=""
+> #
+175c179
+< prefix=/usr/local
+---
+> prefix=/usr
+183c187
+< SBINDIR=$(prefix)/sbin
+---
+> SBINDIR=/usr/sbin
+195c199
+< CONFDIR=$(prefix)/etc/mgetty+sendfax
+---
+> CONFDIR=/etc/mgetty+sendfax
+588,589c592,593
+< 	-test -d $(BINDIR)  || ( ./mkidirs $(BINDIR)  ; chmod 755 $(BINDIR)  )
+< 	$(INSTALL) -m 755 newslock $(BINDIR)
+---
+> 	-test -d $(DESTDIR)$(BINDIR)  || ( ./mkidirs $(DESTDIR)$(BINDIR)  ; chmod 755 $(DESTDIR)$(BINDIR)  )
+> 	$(INSTALL) -m 755 newslock $(DESTDIR)$(BINDIR)
+591,595c595,599
+< 	-test -d $(SBINDIR) || ( ./mkidirs $(SBINDIR) ; chmod 755 $(SBINDIR) )
+< 	-mv -f $(SBINDIR)/mgetty $(SBINDIR)/mgetty.old
+< 	-mv -f $(SBINDIR)/sendfax $(SBINDIR)/sendfax.old
+< 	$(INSTALL) -s -m 700 mgetty $(SBINDIR)
+< 	$(INSTALL) -s -m 755 sendfax $(SBINDIR)
+---
+> 	-test -d $(DESTDIR)$(SBINDIR) || ( ./mkidirs $(DESTDIR)$(SBINDIR) ; chmod 755 $(DESTDIR)$(SBINDIR) )
+> 	-mv -f $(DESTDIR)$(SBINDIR)/mgetty $(DESTDIR)$(SBINDIR)/mgetty.old
+> 	-mv -f $(DESTDIR)$(SBINDIR)/sendfax $(DESTDIR)$(SBINDIR)/sendfax.old
+> 	$(INSTALL) -s -m 700 mgetty $(DESTDIR)$(SBINDIR)
+> 	$(INSTALL) -s -m 755 sendfax $(DESTDIR)$(SBINDIR)
+599,612c603,616
+< 	test -d $(LIBDIR)  || \
+< 		( ./mkidirs $(LIBDIR) &&  chmod 755 $(LIBDIR) )
+< 	test -d $(CONFDIR) || \
+< 		( ./mkidirs $(CONFDIR) && chmod 755 $(CONFDIR))
+< 	test -f $(CONFDIR)/login.config || \
+< 		$(INSTALL) -o root -m 600 login.config $(CONFDIR)/
+< 	test -f $(CONFDIR)/mgetty.config || \
+< 		$(INSTALL) -o root -m 600 mgetty.config $(CONFDIR)/
+< 	test -f $(CONFDIR)/sendfax.config || \
+< 		$(INSTALL) -o root -m 644 sendfax.config $(CONFDIR)/
+< 	test -f $(CONFDIR)/dialin.config || \
+< 		$(INSTALL) -o root -m 600 dialin.config $(CONFDIR)/
+< 	test -f $(CONFDIR)/faxrunq.config || \
+< 		$(INSTALL) -o root -m 644 faxrunq.config $(CONFDIR)/
+---
+> 	test -d $(DESTDIR)$(LIBDIR)  || \
+> 		( ./mkidirs $(DESTDIR)$(LIBDIR) &&  chmod 755 $(DESTDIR)$(LIBDIR) )
+> 	test -d $(DESTDIR)$(CONFDIR) || \
+> 		( ./mkidirs $(DESTDIR)$(CONFDIR) && chmod 755 $(DESTDIR)$(CONFDIR))
+> 	test -f $(DESTDIR)$(CONFDIR)/login.config || \
+> 		$(INSTALL) -o root -m 600 login.config $(DESTDIR)$(CONFDIR)/
+> 	test -f $(DESTDIR)$(CONFDIR)/mgetty.config || \
+> 		$(INSTALL) -o root -m 600 mgetty.config $(DESTDIR)$(CONFDIR)/
+> 	test -f $(DESTDIR)$(CONFDIR)/sendfax.config || \
+> 		$(INSTALL) -o root -m 644 sendfax.config $(DESTDIR)$(CONFDIR)/
+> 	test -f $(DESTDIR)$(CONFDIR)/dialin.config || \
+> 		$(INSTALL) -o root -m 600 dialin.config $(DESTDIR)$(CONFDIR)/
+> 	test -f $(DESTDIR)$(CONFDIR)/faxrunq.config || \
+> 		$(INSTALL) -o root -m 644 faxrunq.config $(DESTDIR)$(CONFDIR)/
+616c620
+< 	-@if test -f $(LIBDIR)/mgetty.login ; \
+---
+> 	-@if test -f $(DESTDIR)$(LIBDIR)/mgetty.login ; \
+626,637c630,641
+< 	test -d $(spool) || \
+< 		( mkdir $(spool) && chmod 755 $(spool) )
+< 	test -d $(FAX_SPOOL) || \
+< 		( mkdir $(FAX_SPOOL) && \
+< 		  chown $(FAX_OUT_USER) $(FAX_SPOOL) && \
+< 		  chmod 755 $(FAX_SPOOL) )
+< 	test -d $(FAX_SPOOL_IN) || \
+< 		( mkdir $(FAX_SPOOL_IN) && chmod 755 $(FAX_SPOOL_IN) )
+< 	test -d $(FAX_SPOOL_OUT) || \
+< 		  mkdir $(FAX_SPOOL_OUT)
+< 	chown $(FAX_OUT_USER) $(FAX_SPOOL_OUT)
+< 	chmod 755 $(FAX_SPOOL_OUT)
+---
+> 	test -d $(DESTDIR)$(spool) || \
+> 		( mkdir $(DESTDIR)$(spool) && chmod 755 $(DESTDIR)$(spool) )
+> 	test -d $(DESTDIR)$(FAX_SPOOL) || \
+> 		( mkdir $(DESTDIR)$(FAX_SPOOL) && \
+> 		  chown $(FAX_OUT_USER) $(DESTDIR)$(FAX_SPOOL) && \
+> 		  chmod 755 $(DESTDIR)$(FAX_SPOOL) )
+> 	test -d $(DESTDIR)$(FAX_SPOOL_IN) || \
+> 		( mkdir $(DESTDIR)$(FAX_SPOOL_IN) && chmod 755 $(DESTDIR)$(FAX_SPOOL_IN) )
+> 	test -d $(DESTDIR)$(FAX_SPOOL_OUT) || \
+> 		  mkdir $(DESTDIR)$(FAX_SPOOL_OUT)
+> 	chown $(FAX_OUT_USER) $(DESTDIR)$(FAX_SPOOL_OUT)
+> 	chmod 755 $(DESTDIR)$(FAX_SPOOL_OUT)
+642,643c646,647
+< 				BINDIR=$(BINDIR) \
+< 				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+---
+> 				BINDIR=$(DESTDIR)$(BINDIR) \
+> 				LIBDIR=$(DESTDIR)$(LIBDIR) CONFDIR=$(DESTDIR)$(CONFDIR)
+649,650c653,654
+< 				BINDIR=$(BINDIR) SBINDIR=$(SBINDIR) \
+< 				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+---
+> 				BINDIR=$(DESTDIR)$(BINDIR) SBINDIR=$(DESTDIR)$(SBINDIR) \
+> 				LIBDIR=$(DESTDIR)$(LIBDIR) CONFDIR=$(DESTDIR)$(CONFDIR)
+657c661
+< 	    $(INSTALL) -s -m 755 mg.echo $(BINDIR) ; \
+---
+> 	    $(INSTALL) -s -m 755 mg.echo $(DESTDIR)$(BINDIR) ; \
+665,669c669,673
+< 				MAN1DIR=$(MAN1DIR) \
+< 				MAN4DIR=$(MAN4DIR) \
+< 				MAN5DIR=$(MAN5DIR) \
+< 				MAN8DIR=$(MAN8DIR) \
+< 				INFODIR=$(INFODIR)
+---
+> 				MAN1DIR=$(DESTDIR)$(MAN1DIR) \
+> 				MAN4DIR=$(DESTDIR)$(MAN4DIR) \
+> 				MAN5DIR=$(DESTDIR)$(MAN5DIR) \
+> 				MAN8DIR=$(DESTDIR)$(MAN8DIR) \
+> 				INFODIR=$(DESTDIR)$(INFODIR)
+676,677c680,681
+< 				BINDIR=$(BINDIR) \
+< 				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+---
+> 				BINDIR=$(DESTDIR)$(BINDIR) \
+> 				LIBDIR=$(DESTDIR)$(LIBDIR) CONFDIR=$(DESTDIR)$(CONFDIR)
+693,694c697,698
+< 	BINDIR="$(BINDIR)" SBINDIR="$(SBINDIR)" LIBDIR="$(LIBDIR)" \
+< 	CONFDIR="$(CONFDIR)" MAN1DIR="$(MAN1DIR)" MAN8DIR="$(MAN8DIR)" INSTALL="$(INSTALL)" \
+---
+> 	BINDIR="$(DESTDIR)$(BINDIR)" SBINDIR="$(DESTDIR)$(SBINDIR)" LIBDIR="$(DESTDIR)$(LIBDIR)" \
+> 	CONFDIR="$(DESTDIR)$(CONFDIR)" MAN1DIR="$(DESTDIR)$(MAN1DIR)" MAN8DIR="$(DESTDIR)$(MAN8DIR)" INSTALL="$(INSTALL)" \
