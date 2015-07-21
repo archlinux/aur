@@ -12,14 +12,14 @@ pkgdesc="A modded version of the Vuze BitTorrent client with multiple spoofing c
 arch=('i686' 'x86_64')
 url="http://www.sb-innovation.de/f41/"
 license=('GPL')
-depends=('desktop-file-utils' 'gconf' 'java-runtime')
+depends=('desktop-file-utils' 'java-runtime')
 optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
             'vuze-plugin-mldht: The alternative Distributed Hash Table implementation (DHT) used by µTorrent'
             'xulrunner192: Needed for the channels GUI')
 provides=('vuze')
 options=('!strip')
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/project/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2"
+source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2"
         'http://www.sb-innovation.de/attachments/f41/15477d1434194241-vuze-extreme-mod-sb-innovation-5-6-1-3-vpem_5613-01.zip'
          {blue,gray}_{16,32,64,128}.png)
 noextract=($(basename ${source[1]}))
@@ -64,22 +64,21 @@ package() {
   mv LICENSES.txt "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
   mv TOS.txt      "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
 
-  # Remove redundancies
+  msg2 "Removing redundancies..."
   rm -r swt/
   rm    azureus
   rm    installer.log
   rm    README.txt
   rm    vuze.schemas
 
-  # Move main stuff
+  msg2 "Installing to /opt..."
   mv * "$pkgdir"/opt/vuze-extreme-mod/
 
-  msg2 "Tweaking paths"
-  # Launcher
+  msg2 "Fixing paths"
   sed 's|#PROGRAM_DIR=.*|PROGRAM_DIR="/opt/vuze-extreme-mod"|' \
       -i "$pkgdir"/usr/bin/vuze-extreme-mod
 
-  # Desktop
+  msg2 "Adding support for magnet links..."
   sed -r -e 's|Name=Vuze|Name=Vuze Extreme Mod|' \
          -e 's|Exec=vuze %f|Exec=vuze-extreme-mod %U|' \
          -e 's|Icon=vuze.png|Icon=vuze-extreme-mod.png|' \
