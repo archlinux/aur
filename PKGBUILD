@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=coinffeine
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Coinffeine is an open source, peer-to-peer (P2P) bitcoin exchange platform"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ source=("LICENSE")
 source_x86_64=("https://s3-eu-west-1.amazonaws.com/coinffeine-releases/v${pkgver}/coinffeine-${pkgver}_linux64.deb")
 source_i686=("https://s3-eu-west-1.amazonaws.com/coinffeine-releases/v${pkgver}/coinffeine-${pkgver}_linux32.deb")
 sha256sums=('eb488d0f731d3d4977e7c46b3934ca9c26ab27b73b40c22074054fc37a85010f')
-sha256sums_i686=('40caab28e175b9e9de24907f5d72ea198f6fbc63d9f56812e48d447b271433d4')
-sha256sums_x86_64=('728b484d1bc16e808888aa44693ed98fd343ce04a74529a78279a3f8fb69dabd')
+sha256sums_i686=('9a1f6a165dd8d061b968cc5fd69f3bf51ac8634b9ef8060b20952e5bdf2ed222')
+sha256sums_x86_64=('b1c40d2f49fe8aa40a4f7d9a47ce652e9433359907a70d831773f7fa819feb53')
 _binname=Coinffeine
 
 prepare() {
