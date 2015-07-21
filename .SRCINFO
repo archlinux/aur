@@ -1,6 +1,6 @@
 pkgbase = docker-machine
 	pkgdesc = Machine management for a container-centric world
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/docker/machine
@@ -10,8 +10,8 @@ pkgbase = docker-machine
 	license = Apache
 	provides = docker-machine
 	conflicts = docker-machine-bin
-	source = docker-machine::https://github.com/docker/machine/releases/download/v0.3.0/docker-machine_linux-amd64
-	sha256sums = ed753c2cca60072be7a082bda1531ab64618403d283bd06b09d3fddc2fd55f12
+	source = docker-machine::https://github.com/docker/machine/releases/download/v0.3.1/docker-machine_linux-amd64
+	sha256sums = bc33a3a930cf570b57193649b42f22c9d8f2c97cb7ed8462235f21d82a9ac024
 
 pkgname = docker-machine
 
