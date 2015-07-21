@@ -1,0 +1,20 @@
+pkgbase = eiciel
+	pkgdesc = GNOME file ACL editor
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://rofi.roger-ferrer.org/eiciel/
+	install = eiciel.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = acl
+	depends = gtkmm3
+	depends = nautilus
+	depends = desktop-file-utils
+	depends = gnome-vfs
+	options = !libtool
+	source = http://rofi.roger-ferrer.org/eiciel/download/eiciel-0.9.9.tar.bz2
+	sha512sums = d2031cdc479851ce207000251dcef9121501f8447b60d37fad9f0fe940bfde0e775443f6988f058e565920089cfacf007461f3c8b5a4146f779f9a22396ac7e9
+
+pkgname = eiciel
+
