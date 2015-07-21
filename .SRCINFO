@@ -1,14 +1,14 @@
 pkgbase = cinnamon-theme-ciliora-secunda
 	pkgdesc = Ciliora-Secunda theme for Cinnamon 2.6
-	pkgver = 20150624
+	pkgver = 20150712
 	pkgrel = 1
 	url = http://cinnamon-spices.linuxmint.com/themes/view/411
 	arch = any
 	license = GPL
 	depends = cinnamon>=2.6.0
 	depends = cinnamon<2.7.0
-	source = http://cinnamon-spices.linuxmint.com/uploads/themes/DKC0-D6WT-MA4P.zip
-	sha256sums = 680b05a40fe83bc6e70cefcc01d107e23f4e0d3e5ce0c0dcdc94edd985d651e6
+	source = http://cinnamon-spices.linuxmint.com/uploads/themes/A6N0-05Z1-SUHT.zip
+	sha256sums = 267369dd70def1a81500c5438e577118adfc6eea148f7c6df8fd077dbf9bfbb6
 
 pkgname = cinnamon-theme-ciliora-secunda
 
