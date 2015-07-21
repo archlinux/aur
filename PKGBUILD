@@ -1,7 +1,7 @@
 # Maintainer: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=gtk-theme-egtk
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="The official elementary GTK theme designed to be smooth, attractive, fast, and usable. Lastest version from Launchpad."
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPLv2')
 depends=('gtk-engine-murrine' 'gtk-engine-unico')
 provides=('gtk-theme-elementary-bzr')
 conflicts=('elementary-gtk-theme' 'elementary-gtk-theme-bzr')
-source=(https://launchpad.net/egtk/4.x/${pkgver}/+download/elementary.tar.gz)
-md5sums=('ddd7a10fa56acfc85b53350f28ed521c')
+source=(https://launchpad.net/egtk/4.x/${pkgver}/+download/elementary.tar.xz)
+md5sums=('89388e3c31db64fb57a0aabdb544a636')
 
 package () {
 	cd $srcdir
