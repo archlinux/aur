@@ -1,0 +1,16 @@
+pkgbase = fasm-linux-git
+	pkgdesc = fast assembler for x86 and x86-64 [github mirror of linux version]
+	pkgver = 1.71.39
+	pkgrel = 3
+	url = http://flatassembler.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = fasm
+	conflicts = fasm
+	source = git+https://github.com/the-little-language-designer/fasm-linux.git
+	md5sums = SKIP
+
+pkgname = fasm-linux-git
+
