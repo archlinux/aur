@@ -1,6 +1,6 @@
 # Maintainer: Adrien Oliva <yapbreak@yapbreak.fr>
 pkgname="pacmanhealth-git"
-pkgver="0.1.0.8g611c09c"
+pkgver="0.1.0.9g45d3546"
 pkgrel="2"
 pkgdesc="Pacman health monitoring system"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('postfix: send report by mail'
 makedepends=()
 conflicts=('pacmanhealth')
 replaces=()
-backup=()
+backup=('/etc/pacmanhealth.conf')
 source=('git://redmine.yapbreak.fr/pacmanhealth.git')
 noextract=()
 md5sums=('SKIP')
