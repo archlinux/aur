@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-calculate
+	pkgdesc = Sugar calculator
+	pkgver = 43
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Calculate/Calculate-43.tar.bz2
+	md5sums = 3b7f46f3ce9da2a4e8d40498ba0e9298
+
+pkgname = sugar-activity-calculate
+
