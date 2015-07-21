@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libsndfile
+	pkgdesc = A C library for reading and writing files containing sampled sound (mingw-w64)
+	pkgver = 1.0.25
+	pkgrel = 3
+	url = http://www.mega-nerd.com/libsndfile
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-flac
+	depends = mingw-w64-libvorbis
+	depends = mingw-w64-crt
+	depends = mingw-w64-configure
+	options = staticlibs
+	options = !strip
+	source = http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.25.tar.gz
+	md5sums = e2b7bb637e01022c7d20f95f9c3990a2
+
+pkgname = mingw-w64-libsndfile
+
