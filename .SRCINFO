@@ -1,0 +1,15 @@
+pkgbase = sugar-activity-terminal
+	pkgdesc = Sugar terminal emulator
+	pkgver = 44
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	depends = vte
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Terminal/Terminal-44.tar.bz2
+	md5sums = a9569f92a6bae18b3195f9e5dbfff44a
+
+pkgname = sugar-activity-terminal
+
