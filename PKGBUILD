@@ -1,6 +1,6 @@
 # Contributor: jordz <jordz@archlinux.us>
 # Contributor: kevku <kevku@gmx.com>
-# Maintainer: Alexander 'chron' Kempen <chronischzuspaet at gmail dot com>
+# Maintainer: chron <chronischzuspaet at gmail dot com>
 pkgname=par2cmdline-tbb
 _pkgname=par2cmdline
 pkgver=20150503
