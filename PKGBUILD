@@ -3,10 +3,10 @@
 # Contributor: Louis Tim Larsen <louis(a)louis.dk>
 pkgname='ambiance-radiance-colors-suite'
 pkgver='15.04.1'
-pkgrel=3
+pkgrel=4
 pkgdesc="Ambiance & Radiance Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops"
 arch=('any')
-license=('GPL')
+license=('GPL2')
 options=('!strip' '!zipman')
 url="http://www.ravefinity.com/p/ambiance-radiance-colors-suite.html"
 depends=('gtk3>=3.14' 'gtk-engine-murrine')
