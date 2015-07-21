@@ -24,6 +24,10 @@ validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <mar
 
 prepare() {
   cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   # patch not upstreamable for obex file transfer - FS#37773 taken from FC
   # http://www.hadess.net/2013/11/bluetooth-file-sharing-obexpush-in.html
   patch -Np1 -i "${srcdir}/0001-Allow-using-obexd-without-systemd-in-the-user-session.patch"
@@ -32,10 +36,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   ./configure \
               --prefix=/usr \
               --mandir=/usr/share/man \
