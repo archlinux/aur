@@ -1,0 +1,17 @@
+pkgbase = cicada-git
+	pkgdesc = programming language with the following features 1. threaded code based 2. aggressively developed 3. never provide backward compatibility [github git version]
+	pkgver = 2015.06.24
+	pkgrel = 1
+	url = http://cicada-language.github.io/
+	install = cicada-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = fasm-linux-git
+	provides = cicada
+	conflicts = cicada
+	source = git+https://github.com/cicada-language/cicada.git
+	md5sums = SKIP
+
+pkgname = cicada-git
+

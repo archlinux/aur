@@ -1,0 +1,40 @@
+## arg 1:  the new package version
+pre_upgrade() {
+  echo -e " \e[33;1m"
+  echo "* updating cicada-language"
+  echo "  version : " $1
+  echo "  the language is still in its primitive stage"
+  echo -e "\e[0m "
+}
+
+## arg 1:  the new package version
+pre_install() {
+  echo -e " \e[33;1m"
+  echo "* installing cicada-language"
+  echo "  version : " $1
+  echo "  the language is still in its primitive stage"
+  echo "* installed programs are as following :"
+  echo "  1. cn"
+  echo "     it denotes cicada-nymph"
+  echo "     it is cicada-nymph's interpreter"
+  echo "  2. cn32"
+  echo "     32bit version of cn"
+  echo "  more programs will coming soon :)"
+  echo -e "\e[0m "
+}
+
+## arg 1:  the new package version
+post_install() {
+  echo -e " \e[33;1m"
+  echo "* thank you for installing cicada-language"
+  echo "  I wish you have fun playing with it ^-^"
+  echo -e "\e[0m "
+}
+
+## arg 1:  the new package version
+post_upgrade() {
+  echo -e " \e[33;1m"
+  echo "* cicada-language is up to date ^-^"
+  echo "  I wish you a lovely day { or night :P }"
+  echo -e "\e[0m "
+}
