@@ -1,0 +1,16 @@
+pkgbase = cl-iterate
+	pkgdesc = iterate is an iteration construct for Common Lisp.
+	pkgver = 20140713_darcs
+	pkgrel = 1
+	url = http://common-lisp.net/project/iterate/
+	install = cl-iterate.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = common-lisp
+	options = docs
+	source = http://beta.quicklisp.org/archive/iterate/2014-07-13/iterate-20140713-darcs.tgz
+	md5sums = f3d8e9eb6a9241bb1303c9708a37ade4
+
+pkgname = cl-iterate
+
