@@ -1,0 +1,23 @@
+pkgbase = gtkevemon-git
+	pkgdesc = EVE Online skill monitor
+	pkgver = LATEST
+	pkgrel = 1
+	url = https://github.com/gtkevemon/gtkevemon/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gtkmm
+	makedepends = git
+	depends = gtkmm
+	depends = libxml2
+	depends = openssl
+	provides = gtkevemon
+	conflicts = gtkevemon
+	conflicts = gtkevemon-svn
+	conflicts = gtkevemon-hg
+	replaces = gtkevemon-hg
+	source = git+https://github.com/gtkevemon/gtkevemon/
+	sha512sums = SKIP
+
+pkgname = gtkevemon-git
+
