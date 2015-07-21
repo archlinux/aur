@@ -37,13 +37,14 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  mkdir -p "$pkgdir/usr/lib/httpd/modules"
-  mkdir -p "$pkgdir/etc/httpd/conf"
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 755 "src/.libs/$pkgname.so" \
+                  "$pkgdir/usr/lib/httpd/modules/$pkgname.so"
 
-  install -m 755 "src/.libs/$pkgname.so"  "$pkgdir/usr/lib/httpd/modules"
-  install -m 644 "$srcdir/auth_kerb.conf" "$pkgdir/etc/httpd/conf/auth_kerb.conf.sample"
-  install -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "LICENSE" \
+                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm 644 "$srcdir/auth_kerb.conf" \
+                  "$pkgdir/etc/httpd/conf/auth_kerb.conf.sample"
 }
 
 # vim: ts=2:sw=2:et:nowrap
