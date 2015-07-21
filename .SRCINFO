@@ -1,7 +1,7 @@
 pkgbase = eclipse-emf
 	pkgdesc = EMF and XSD frameworks for the Eclipse platform
 	pkgver = 2.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclipse.org/modeling/emf/
 	arch = any
 	license = EPL
