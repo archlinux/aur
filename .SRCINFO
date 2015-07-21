@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-turtleart
+	pkgdesc = Sugar turtle art
+	pkgver = 170
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/TurtleArt/TurtleArt-170.tar.bz2
+	md5sums = ff5c5d1ae1ee17367545a65d247c472a
+
+pkgname = sugar-activity-turtleart
+
