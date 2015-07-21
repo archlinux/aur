@@ -1,8 +1,8 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=nghttp2-custom
-pkgver=1.0.5
-_pkgver=v1.0.5
+pkgver=1.1.2
+_pkgver=v1.1.2
 _pkgname=${pkgname/-custom/}
 pkgrel=1
 pkgdesc="HTTP/2 C Library (with python binding, sample server implementation and other utils)"
@@ -14,7 +14,7 @@ provides=('nghttp2')
 conflicts=('nghttp2' 'nghttp2-git')
 source=("https://github.com/tatsuhiro-t/nghttp2/releases/download/${_pkgver}/nghttp2-${pkgver}.tar.gz")
 backup=('etc/nghttpx/nghttpx.conf')
-sha256sums=('64e066816606178188bfaf0aa7298e1f44cef943dd9ae936497dab38b3b2569e')
+sha256sums=('81899b9a240b11bf4f83108cd4f278c2bf21151aff447a59ce97224b2e2518aa')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

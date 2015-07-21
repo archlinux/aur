@@ -1,6 +1,6 @@
 pkgbase = nghttp2-custom
 	pkgdesc = HTTP/2 C Library (with python binding, sample server implementation and other utils)
-	pkgver = 1.0.5
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://nghttp2.org/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = nghttp2-custom
 	conflicts = nghttp2
 	conflicts = nghttp2-git
 	backup = etc/nghttpx/nghttpx.conf
-	source = https://github.com/tatsuhiro-t/nghttp2/releases/download/v1.0.5/nghttp2-1.0.5.tar.gz
-	sha256sums = 64e066816606178188bfaf0aa7298e1f44cef943dd9ae936497dab38b3b2569e
+	source = https://github.com/tatsuhiro-t/nghttp2/releases/download/v1.1.2/nghttp2-1.1.2.tar.gz
+	sha256sums = 81899b9a240b11bf4f83108cd4f278c2bf21151aff447a59ce97224b2e2518aa
 
 pkgname = nghttp2-custom
 
