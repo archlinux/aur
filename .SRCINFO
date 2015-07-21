@@ -3,6 +3,7 @@ pkgbase = phploc
 	pkgver = 2.1.3
 	pkgrel = 2
 	url = https://github.com/sebastianbergmann/phploc
+	install = phploc.install
 	arch = any
 	license = BSD
 	depends = php
