@@ -1,0 +1,15 @@
+pkgbase = iitxt-c-git
+	pkgdesc = simple client for ii network written on C
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://ii-net.tk/ii-doc
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = vim
+	source = git+https://github.com/vit1-irk/iitxt-c/
+	md5sums = SKIP
+
+pkgname = iitxt-c-git
+
