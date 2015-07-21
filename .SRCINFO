@@ -1,6 +1,6 @@
 pkgbase = hhvm-git
 	pkgdesc = Virtual Machine, Runtime, and JIT for PHP
-	pkgver = 20150716
+	pkgver = 20150720
 	pkgrel = 1
 	url = http://hhvm.com
 	install = hhvm.install
