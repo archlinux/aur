@@ -1,7 +1,7 @@
 pkgbase = pacman-helper
 	pkgdesc = Pacman helper scripts for those who can not remember the options
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL2
 	depends = pacman
