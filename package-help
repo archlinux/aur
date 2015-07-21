@@ -1,0 +1,54 @@
+#!/bin/bash
+
+echo "PACMAN DATABASE COMMANDS
+========================
+package-mark-dependency      - Mark package(s) as a dependency
+package-mark-explicit        - Mark package(s) as explicitly installed
+
+PACMAN QUERY COMMANDS
+=====================
+package-contents-installed   - Show file(s) installed by package(s)
+package-file-owner           - Show package owning file(s)
+package-info-installed       - Info on package(s) installed
+package-installed-check      - Check files in package(s) are still installed,
+                               including permissions, file sizes, and
+                               modification times
+package-installed-dependency - Show package(s) installed as dependencies
+package-installed-explicit   - Show package(s) installed explicitly
+package-installed-manually   - Show package(s) not in the sync repo
+package-list-installed       - List installed packages
+package-orphans              - Show package(s) installed as dependencies,
+                               that are no longer dependencies
+package-search-installed     - Search for package(s) installed
+
+PACMAN REMOVE COMMANDS
+======================
+package-remove               - Remove package(s), packages that depend on it
+                               (recursively), and no longer needed and not
+                               explicitly asked for dependencies (recursively),
+                               saving most configuration files with a .pacsave
+                               extension
+package-remove-fully         - Remove package(s), packages that depend on it
+                               (recursively), no longer needed and not
+                               explicitly asked for dependencies (recursively),
+                               and their configuration files
+
+PACMAN SYNC COMMANDS
+====================
+package-cache-clean          - Remove from cache no longer installed packages
+package-cache-delete         - Remove from cache all packages
+package-download-tarball     - Download package(s) from repos, as tarball, but
+package-info                 - Info on package(s) in repos
+package-install              - Install package(s) from repos
+package-search               - Search for package(s) in repos
+package-sysupgrade           - Upgrade any out of date packages
+                               do not install
+
+PACMAN UPGRADE COMMANDS
+=======================
+package-install-file         - Install package(s) from local file or url
+
+PKGFILE COMMANDS
+================
+package-contents             - List package's file and directory contents
+package-provides             - Show which package provides a file, path optional"
