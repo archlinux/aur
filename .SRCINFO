@@ -1,0 +1,14 @@
+pkgbase = rmdupe
+	pkgdesc = Removes duplicate files; supports trash, simulate, size, custom rm command
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/IgnorantGuru/rmdupe
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	depends = bash
+	source = rmdupe-1.0.4.tar.xz::https://raw.githubusercontent.com/IgnorantGuru/rmdupe/master/packages/1.0.4/rmdupe-1.0.4.tar.xz
+	sha256sums = 548730c5530eb1036dea985846924307d9758564985477078cec468bf3fda05f
+
+pkgname = rmdupe
+
