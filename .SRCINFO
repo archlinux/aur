@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-mediaportal-tvserver
 	pkgdesc = MediaPortal PVR client addon for Kodi
-	pkgver = 20150701.9cf9f36
+	pkgver = 20150717.29809d1
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.mediaportal.tvserver
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-pvr-mediaportal-tvserver
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = tinyxml
-	source = https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/9cf9f36dd500e030c4693906f55e8dcaf0748a6a.tar.gz
+	source = https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/29809d10010a21b08b9e652e36bc51dac2171690.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-mediaportal-tvserver

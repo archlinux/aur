@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-mediaportal-tvserver
 _gitname=pvr.mediaportal.tvserver
-pkgver=20150701.9cf9f36
-_gitver=9cf9f36dd500e030c4693906f55e8dcaf0748a6a
+pkgver=20150717.29809d1
+_gitver=29809d10010a21b08b9e652e36bc51dac2171690
 pkgrel=1
 pkgdesc='MediaPortal PVR client addon for Kodi'
 arch=('i686' 'x86_64')
