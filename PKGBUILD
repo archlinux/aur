@@ -2,7 +2,7 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 pkgname=grafana
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "config.patch"
         "grafana.service")
 md5sums=('ac0111eef2e1d3329edfcfe2c6346255'
-         'd5691b6e4f0ac0e0aa010801c9870d30'
+         'f676cfe7bdd2463e2600ff8fce75a2d6'
          '05508c9c21f4c93ad86944a52d37e925')
 
 prepare () {
@@ -46,6 +46,8 @@ build() {
 package() {
   install -Dm644 "${srcdir}/grafana.service" "$pkgdir/usr/lib/systemd/system/grafana.service"
   cd "${srcdir}/${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/var/lib/grafana"
+  install -dm755 "${pkgdir}/var/log/grafana"
   install -Dsm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
   install -Dm644 tmp/conf/sample.ini "$pkgdir/etc/${pkgname}/${pkgname}.ini"
   install -Dm644 tmp/conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
