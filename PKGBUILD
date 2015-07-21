@@ -3,7 +3,7 @@
 
 _pkgname=cbatticon
 pkgname=cbatticon-git
-pkgver=0.r58.652d99b
+pkgver=0.r116.7ee9555
 pkgrel=1
 pkgdesc='A lightweight and fast battery icon that sits in your system tray'
 arch=('i686' 'x86_64' 'armv7h')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  make -C "${_pkgname}"
+  make -C "${_pkgname}" WITH_NOTIFY=1 WITH_GTK3=0
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = cbatticon-git
 	pkgdesc = A lightweight and fast battery icon that sits in your system tray
-	pkgver = 0.r58.652d99b
+	pkgver = 0.r116.7ee9555
 	pkgrel = 1
 	url = https://github.com/valr/cbatticon
 	arch = i686
