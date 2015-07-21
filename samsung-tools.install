@@ -1,0 +1,18 @@
+post_install() {
+cat <<EOF
+==> To set initial status of devices at boot, enable the systemd service (samsung-tools.service).
+==> Samsung Tools has support for both 'easy-slow-down-manager' and 'samsung-laptop' kernel modules.
+    If both control interfaces are available, 'easy-slow-down-manager' will be used.
+EOF
+}
+
+post_upgrade() {
+  # Remove old installation (if any)
+  rm -rf /usr/lib/samsung-tools/
+}
+
+post_remove() {
+  rm -rf /usr/share/samsung-tools/
+  rm -f /etc/sysctl.d/30-samsung-tools.conf
+}
+
