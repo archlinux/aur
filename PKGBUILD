@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=blasr-git
-pkgver=r98.caaf74a
+pkgver=r114.b5b717f
 pkgrel=1
 pkgdesc="The PacBio long read aligner"
 arch=('i686' 'x86_64')
@@ -29,7 +29,8 @@ prepare() {
   git submodule update
 
   sed -e 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' \
-      -i libcpp/configure.py
+      -i configure.py \
+         libcpp/configure.py
 
   # we want to link against shared libs
   sed -e 's|LDFLAGS   := $(LDFLAGS1) $(HDF5_LIB)/libhdf5_cpp.a $(HDF5_LIB)/libhdf5.a -lpthread -lz -ldl|LDFLAGS   += $(LDFLAGS1) -lhdf5_cpp -lhdf5 -lpthread -lz -ldl|' \
@@ -43,29 +44,35 @@ prepare() {
       -e 's|$(HTSLIB_LIB)/libhts.a|$(HTSLIB_LIB)/libhts.so|' \
       -i common.mk
 
-  # PBINCROOT fix
-  sed -e '1 i top_srcdir := $(PWD)' \
-      -e '1 i PBINCROOT := $(top_srcdir)/libcpp' \
-      -i Makefile
-
-  # moar PBINCROOT fixes
-  sed -e '1 i PBINCROOT := ../libcpp' \
-      -e 's|pblib: $(PBINCROOT)/Makefile|pblib: $(PBINCROOT)/makefile|' \
-      -i utils/Makefile
-
-  # this is neither included nor needed
-  sed -e 's|-lpbbam||' \
-      -i common.mk
-
-  # don't link statically
-  sed -e 's|-static||' \
-      -i common.mk
+  sed -e 's|DEP_LIBS += ${LIBPBDATA_LIB} ${HDF5_LIB} ${PBBAM_LIB} ${HTSLIB_LIB} ${ZLIB_LIB}|DEP_LIBS += ${LIBPBDATA_LIB} ${PBBAM_LIB} ${HTSLIB_LIB} ${ZLIB_LIB}|' \
+      -i libcpp/alignment/makefile \
+         libcpp/hdf/makefile
 }
 
 build() {
   cd $srcdir/$pkgname
 
-  make -j1 HDF5_LIB=/usr/lib/libhdf5.so HDF5_INC=/usr/include ZLIB_ROOT=/usr
+  export NOPBBAM=
+  export HDF5_INCLUDE=/usr/include
+  export HDF5_LIB=/usr/lib
+
+  cd libcpp
+
+  ./configure.py \
+    --no-pbbam \
+    --submodules \
+    --shared
+
+  make
+
+  cd ..
+
+  ./configure.py \
+    --no-pbbam \
+    --submodules \
+    --shared
+
+  make
 }
 
 package() {
