@@ -1,7 +1,7 @@
 # Maintainer: proudzhu <proudzhu.fdu at gmail.com>
 
-pkgname=python-eg-git
-_pkgname=python-eg
+pkgname=eg-git
+_pkgname=eg
 pkgver=0.1.1.r9.g08d9264
 pkgrel=1
 pkgdesc="Useful examples at the command line."
@@ -10,8 +10,9 @@ url="https://github.com/srsudar/eg"
 license=('MIT')
 depends=('python')
 makedepends=('git')
-provides=('python-eg')
-conflicts=('python-eg')
+provides=('eg' 'python-eg-git')
+conflicts=('eg' 'python-eg-git')
+replaces=('python-eg-git')
 options=(!emptydirs)
 source=("$_pkgname::git+https://github.com/srsudar/eg.git")
 md5sums=('SKIP')

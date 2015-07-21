@@ -1,17 +1,20 @@
-pkgbase = python-eg-git
+pkgbase = eg-git
 	pkgdesc = Useful examples at the command line.
-	pkgver = 0.0.3.r31.gb844e37
+	pkgver = 0.1.1.r9.g08d9264
 	pkgrel = 1
 	url = https://github.com/srsudar/eg
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
 	depends = python
-	provides = python-eg
-	conflicts = python-eg
+	provides = eg
+	provides = python-eg-git
+	conflicts = eg
+	conflicts = python-eg-git
+	replaces = python-eg-git
 	options = !emptydirs
-	source = python-eg::git+https://github.com/srsudar/eg.git
+	source = eg::git+https://github.com/srsudar/eg.git
 	md5sums = SKIP
 
-pkgname = python-eg-git
+pkgname = eg-git
 
