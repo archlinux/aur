@@ -3,9 +3,9 @@
 # Contributor: Jesus Jerez <jhuss@archlinux.org.ve>
 
 pkgname=eclipse-platform
-pkgver=4.4.2
-_pkgbuild=201502041700
-pkgrel=2
+pkgver=4.5
+_pkgbuild=201506032000
+pkgrel=1
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="http://www.eclipse.org"
 arch=('i686' 'x86_64')
@@ -24,14 +24,14 @@ source=(
 	"eclipse.desktop"
 )
 
-md5sums=('ee01d78a2c8a85d59df8fc5275d73c35'
+md5sums=('558896a05f134eb2e6db179b83b93f55'
          'e07b2ccfc4689c288fd876a4beb8403d'
          'a0f93d5e697837d75911f5af9a386f19'
          '45b39512f5e3e97fa078598a11245504')
 
 if [ "$CARCH" = "x86_64" ]; then
 	source[0]=${source/linux-gtk/linux-gtk-x86_64}
-	md5sums[0]='e41938334858e5e6524e20d13d1e113f'
+	md5sums[0]='2242bc0ff1341a300fdd16b361fa6868'
 fi
 
 package() {
@@ -43,9 +43,9 @@ package() {
 	install -m644 "${srcdir}/eclipse.desktop" "${pkgdir}/usr/share/applications/"
 	mv "${srcdir}/eclipse" "${pkgdir}/usr/share/"
 	
-	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}.v*/eclipse16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/eclipse.png"
-	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}.v*/eclipse32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/eclipse.png"
-	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}.v*/eclipse48.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/eclipse.png"
+	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/eclipse.png"
+	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/eclipse.png"
+	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse48.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/eclipse.png"
 	
 	install -Dm644 ${srcdir}/eclipse.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/eclipse.svg
 }
