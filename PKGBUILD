@@ -1,15 +1,15 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knotifications-git
-pkgver=r108.b792a14
+pkgver=r182.50c0a31
 pkgrel=1
 pkgdesc='KNotifications'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/knotifications'
-license=('LGPL')
-depends=('libdbusmenu-qt5' 'phonon-qt5' 'kservice-git' 'kiconthemes-git')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'python')
-groups=('kf5')
+license=(LGPL)
+depends=(libdbusmenu-qt5 phonon-qt5 kwindowsystem-git kcodecs-git kconfig-git kcoreaddons-git)
+makedepends=(extra-cmake-modules-git git qt5-tools python)
+groups=(kf5)
 conflicts=(knotifications)
 provides=(knotifications)
 source=('git://anongit.kde.org/knotifications.git')
