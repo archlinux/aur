@@ -1,0 +1,58 @@
+installvars() {
+    READER_DIR=/usr/share/striata-reader
+    ICON_DIR=/usr/share/striata-reader/icons
+    MIME_NAME="application-striata-emc"
+    MIME_EMD="application-striata-emd"
+    MIME_ICON="striata-emc.png"
+    APP_ICON="striata-keymail.png"
+    XML_FILE="$READER_DIR/striata-emc.xml"
+    XML_EMD="$READER_DIR/striata-emd.xml"
+    DESKTOP_FILE="$READER_DIR/striata-keymail.desktop"
+    RESOLUTIONS=" 16 22 24 32 48 72 96 128 192 256 "
+}
+
+post_install() {
+	installvars
+	xdg-mime install $XML_FILE
+	xdg-mime install $XML_EMD
+
+    for i in $RESOLUTIONS
+    do
+        xdg-icon-resource install --mode system --size $i --context mimetypes $ICON_DIR/$i/$MIME_ICON $MIME_NAME
+        xdg-icon-resource install --mode system --size $i --context mimetypes $ICON_DIR/$i/$MIME_ICON $MIME_EMD
+        xdg-icon-resource install --mode system --size $i $ICON_DIR/$i/$APP_ICON
+    done
+
+	xdg-icon-resource forceupdate
+	xdg-desktop-menu install $DESKTOP_FILE
+	xdg-desktop-menu forceupdate
+}
+
+pre_upgrade() {
+  pre_remove ${1}
+}
+
+post_upgrade() {
+  post_install ${1}
+}
+
+pre_remove() {
+	installvars
+	xdg-desktop-menu uninstall $DESKTOP_FILE
+
+    for i in $RESOLUTIONS
+    do
+        xdg-icon-resource uninstall --context mimetypes --mode system --size $i $MIME_EMD
+        xdg-icon-resource uninstall --context mimetypes --mode system --size $i $MIME_NAME
+        xdg-icon-resource uninstall --mode system --size $i $APP_ICON
+    done
+
+	xdg-mime uninstall $XML_EMD
+	xdg-mime uninstall $XML_FILE
+	xdg-icon-resource forceupdate
+	xdg-desktop-menu forceupdate
+}
+
+post_remove() {
+	true
+}
