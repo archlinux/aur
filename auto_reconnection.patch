@@ -1,0 +1,269 @@
+--- a/src/camel/camel-mapi-transport.c	
++++ a/src/camel/camel-mapi-transport.c	
+@@ -39,20 +39,27 @@ 
+ #include <ctype.h>
+ #include <errno.h>
+ 
++#include <libemail-engine/libemail-engine.h>
++
++#include "camel-mapi-sasl-krb.h"
+ #include "camel-mapi-settings.h"
+ #include "camel-mapi-store.h"
+-#include "camel-mapi-folder.h"
+-#include "camel-mapi-store-summary.h"
+-#define d(x)
+ 
+-#include <e-mapi-defs.h>
++#include "e-mapi-defs.h"
+ #include "e-mapi-mail-utils.h"
+ #include "e-mapi-utils.h"
+ 
++#define d(x)
++
+ #define STREAM_SIZE 4000
+ 
+ G_DEFINE_TYPE (CamelMapiTransport, camel_mapi_transport, CAMEL_TYPE_TRANSPORT)
+ 
++struct _CamelMapiTransportPrivate
++{
++	EMapiConnection *conn;
++};
++
+ static gboolean
+ convert_message_to_object_cb (EMapiConnection *conn,
+ 			      TALLOC_CTX *mem_ctx,
+@@ -80,6 +87,7 @@ mapi_send_to_sync (CamelTransport *transport,
+                    GError **error)
+ {
+ 	EMapiConnection *conn;
++	CamelMapiTransport *mapi_transport;
+ 	const gchar *namep;
+ 	const gchar *addressp;
+ 	mapi_id_t mid = 0;
+@@ -89,8 +97,12 @@ mapi_send_to_sync (CamelTransport *transport,
+ 	gchar *profile;
+ 	GError *mapi_error = NULL;
+ 
++	mapi_transport = CAMEL_MAPI_TRANSPORT (transport);
++
++	g_return_val_if_fail (mapi_transport != NULL, FALSE);
++
+ 	if (!camel_internet_address_get (CAMEL_INTERNET_ADDRESS (from), 0, &namep, &addressp)) {
+-		return (FALSE);
++		return FALSE;
+ 	}
+ 
+ 	g_return_val_if_fail (CAMEL_IS_SERVICE (transport), FALSE);
+@@ -131,7 +143,11 @@ mapi_send_to_sync (CamelTransport *transport,
+ 		g_list_free_full (services, (GDestroyNotify) g_object_unref);
+ 	}
+ 
+-	conn = e_mapi_connection_find (profile);
++	conn = mapi_transport->priv->conn;
++	if (conn)
++		g_object_ref (conn);
++	else
++		conn = e_mapi_connection_find (profile);
+ 
+ 	g_free (profile);
+ 
+@@ -170,7 +186,8 @@ mapi_send_to_sync (CamelTransport *transport,
+ }
+ 
+ static gchar *
+-mapi_transport_get_name(CamelService *service, gboolean brief)
++mapi_transport_get_name (CamelService *service,
++			 gboolean brief)
+ {
+ 	CamelNetworkSettings *network_settings;
+ 	CamelSettings *settings;
+@@ -201,21 +218,172 @@ mapi_transport_get_name(CamelService *service, gboolean brief)
+ 	return name;
+ }
+ 
++static gboolean
++mapi_connect_sync (CamelService *service,
++                   GCancellable *cancellable,
++                   GError **error)
++{
++	CamelMapiTransport *mapi_transport = CAMEL_MAPI_TRANSPORT (service);
++	CamelServiceConnectionStatus status;
++	CamelSession *session;
++	CamelSettings *settings;
++	EMapiProfileData empd = { 0 };
++	gchar *name;
++
++	session = camel_service_ref_session (service);
++
++	if (!camel_session_get_online (session)) {
++		g_set_error_literal (
++			error, CAMEL_SERVICE_ERROR, CAMEL_SERVICE_ERROR_UNAVAILABLE,
++			_("Cannot connect MAPI store in offline mode"));
++		return FALSE;
++	}
++
++	status = camel_service_get_connection_status (service);
++	if (status == CAMEL_SERVICE_DISCONNECTED) {
++		return FALSE;
++	}
++
++	if (mapi_transport->priv->conn && e_mapi_connection_connected (mapi_transport->priv->conn)) {
++		return TRUE;
++	}
++
++	name = camel_service_get_name (service, TRUE);
++	camel_operation_push_message (cancellable, _("Connecting to '%s'"), name);
++
++	settings = camel_service_ref_settings (service);
++	e_mapi_util_profiledata_from_settings (&empd, CAMEL_MAPI_SETTINGS (settings));
++	g_object_unref (settings);
++
++	if (!camel_session_authenticate_sync (session, service, empd.krb_sso ? "MAPIKRB" : NULL, cancellable, error)) {
++		camel_operation_pop_message (cancellable);
++		g_free (name);
++		return FALSE;
++	}
++
++	camel_operation_pop_message (cancellable);
++	g_free (name);
++
++	return mapi_transport->priv->conn != NULL;
++}
++
++static gboolean
++mapi_disconnect_sync (CamelService *service,
++                      gboolean clean,
++                      GCancellable *cancellable,
++                      GError **error)
++{
++	CamelMapiTransport *mapi_transport = CAMEL_MAPI_TRANSPORT (service);
++
++	if (mapi_transport->priv->conn) {
++		e_mapi_utils_unref_in_thread (G_OBJECT (mapi_transport->priv->conn));
++		mapi_transport->priv->conn = NULL;
++	}
++
++	return TRUE;
++}
++
++static CamelAuthenticationResult
++mapi_authenticate_sync (CamelService *service,
++                        const gchar *mechanism,
++                        GCancellable *cancellable,
++                        GError **error)
++{
++	CamelAuthenticationResult result;
++	CamelMapiTransport *mapi_transport = CAMEL_MAPI_TRANSPORT (service);
++	CamelSession *session;
++	CamelSettings *settings;
++	CamelMapiSettings *mapi_settings;
++	CamelNetworkSettings *network_settings;
++	EMapiProfileData empd = { 0 };
++	const gchar *profile;
++	const gchar *password;
++	GError *mapi_error = NULL;
++	ENamedParameters *credentials;
++
++	settings = camel_service_ref_settings (service);
++	mapi_settings = CAMEL_MAPI_SETTINGS (settings);
++	network_settings = CAMEL_NETWORK_SETTINGS (settings);
++
++	empd.server = camel_network_settings_get_host (network_settings);
++	empd.username = camel_network_settings_get_user (network_settings);
++	e_mapi_util_profiledata_from_settings (&empd, mapi_settings);
++
++	profile = camel_mapi_settings_get_profile (mapi_settings);
++
++	if (empd.krb_sso) {
++		if (!e_mapi_util_trigger_krb_auth (&empd, error)) {
++			g_object_unref (settings);
++			return CAMEL_AUTHENTICATION_ERROR;
++		}
++
++		password = NULL;
++	} else {
++		password = camel_service_get_password (service);
++
++		if (password == NULL) {
++			g_set_error_literal (
++				error, CAMEL_SERVICE_ERROR,
++				CAMEL_SERVICE_ERROR_CANT_AUTHENTICATE,
++				_("Authentication password not available"));
++			g_object_unref (settings);
++			return CAMEL_AUTHENTICATION_ERROR;
++		}
++	}
++
++	credentials = e_named_parameters_new (); e_named_parameters_set (credentials, E_SOURCE_CREDENTIAL_PASSWORD, password);
++	session = camel_service_ref_session (service);
++	mapi_transport->priv->conn = e_mapi_connection_new (
++		e_mail_session_get_registry (E_MAIL_SESSION (session)),
++		profile, credentials, cancellable, &mapi_error);
++	e_named_parameters_free (credentials);
++	if (mapi_transport->priv->conn && e_mapi_connection_connected (mapi_transport->priv->conn)) {
++		result = CAMEL_AUTHENTICATION_ACCEPTED;
++	} else if (g_error_matches (mapi_error, E_MAPI_ERROR, MAPI_E_LOGON_FAILED) ||
++		   g_error_matches (mapi_error, E_MAPI_ERROR, ecRpcFailed)) {
++		g_clear_error (&mapi_error);
++		result = CAMEL_AUTHENTICATION_REJECTED;
++	} else {
++		/* mapi_error should be set */
++		g_return_val_if_fail (
++			mapi_error != NULL,
++			CAMEL_AUTHENTICATION_ERROR);
++		if (!e_mapi_utils_propagate_cancelled_error (mapi_error, error))
++			g_propagate_error (error, mapi_error);
++		else
++			g_clear_error (&mapi_error);
++		result = CAMEL_AUTHENTICATION_ERROR;
++	}
++
++	g_object_unref (settings);
++
++	return result;
++}
++
+ static void
+ camel_mapi_transport_class_init (CamelMapiTransportClass *class)
+ {
+ 	CamelServiceClass *service_class;
+ 	CamelTransportClass *transport_class;
+ 
++	/* register MAPIKRB auth type */
++	CAMEL_TYPE_MAPI_SASL_KRB;
++
++	g_type_class_add_private (class, sizeof (CamelMapiTransportPrivate));
++
+ 	service_class = CAMEL_SERVICE_CLASS (class);
+ 	service_class->get_name = mapi_transport_get_name;
+ 	service_class->settings_type = CAMEL_TYPE_MAPI_SETTINGS;
++	service_class->connect_sync = mapi_connect_sync;
++	service_class->disconnect_sync = mapi_disconnect_sync;
++	service_class->authenticate_sync = mapi_authenticate_sync;
+ 
+ 	transport_class = CAMEL_TRANSPORT_CLASS (class);
+ 	transport_class->send_to_sync = mapi_send_to_sync;
+ }
+ 
+ static void
+-camel_mapi_transport_init (CamelMapiTransport *transport)
++camel_mapi_transport_init (CamelMapiTransport *mapi_transport)
+ {
++	mapi_transport->priv = G_TYPE_INSTANCE_GET_PRIVATE (mapi_transport, CAMEL_TYPE_MAPI_TRANSPORT, CamelMapiTransportPrivate);
+ }
+--- a/src/camel/camel-mapi-transport.h	
++++ a/src/camel/camel-mapi-transport.h	
+@@ -50,11 +50,12 @@ 
+ G_BEGIN_DECLS
+ 
+ typedef struct _CamelMapiTransport CamelMapiTransport;
++typedef struct _CamelMapiTransportPrivate CamelMapiTransportPrivate;
+ typedef struct _CamelMapiTransportClass CamelMapiTransportClass;
+ 
+ struct _CamelMapiTransport {
+ 	CamelTransport parent;
+-	gboolean connected;
++	CamelMapiTransportPrivate *priv;
+ };
+ 
+ struct _CamelMapiTransportClass {
