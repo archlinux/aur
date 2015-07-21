@@ -18,7 +18,9 @@ pkgbase = terminator-trunk
 	provides = terminator
 	conflicts = terminator
 	source = terminator::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk
+	source = kde.patch
 	md5sums = SKIP
+	md5sums = dacdc91bad8cf01bb3e5b2a01d3c8f7d
 
 pkgname = terminator-trunk
 

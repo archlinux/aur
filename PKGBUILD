@@ -26,15 +26,20 @@ makedepends=('desktop-file-utils' 'gettext' 'intltool' 'bzr')
 provides=('terminator')
 conflicts=('terminator')
 install=terminator.install
-source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk")
-md5sums=('SKIP')
+source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk"
+        'kde.patch')
+md5sums=('SKIP'
+         'dacdc91bad8cf01bb3e5b2a01d3c8f7d')
 
 pkgver() {
    cd ${srcdir}/${_pkgname}
-# If terminator refuses to start for you, uncomment (remove the # on) the line below
-   #bzr revert -r1572 > /dev/null 2>&1 && echo 0.97.r1572
-# **AND** comment (add a # at the beginning of) the line below
    echo $(tail -n 1 terminatorlib/version.py | sed "s|^APP_VERSION = '||" | sed "s|'$||").r$(bzr revno "${srcdir}/${_pkgname}")
+}
+
+prepare() {
+   cd ${srcdir}/${_pkgname}
+# If you're running KDE, and terminator refuses to start for you, uncomment (remove the # on) the line below
+   #patch -p1 -i ${srcdir}/kde.patch
 }
 
 build() {
