@@ -1,0 +1,24 @@
+pkgbase = sugar-toolkit
+	pkgdesc = Set of widgets for Sugar applications
+	pkgver = 0.98.1
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = sugar-desktop
+	groups = glucose
+	license = GPL
+	makedepends = intltool>=0.33
+	makedepends = gcc
+	makedepends = perl>=5.8.1
+	depends = python2
+	depends = sugar-datastore
+	depends = sugar-presence-service
+	depends = hippo-canvas
+	depends = alsa-lib
+	depends = python2-gconf
+	depends = python2-rsvg
+	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar-toolkit/sugar-toolkit-0.98.1.tar.bz2
+	md5sums = ff0e201eb0f404a6d2fa7297d5b723c1
+
+pkgname = sugar-toolkit
+
