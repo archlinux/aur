@@ -3,12 +3,12 @@
 
 pkgname=peda-git
 pkgver=68.69068b0
-pkgrel=1
+pkgrel=2
 pkgdesc="PEDA - Python Exploit Development Assistance for GDB"
 url='https://github.com/longld/peda'
 arch=('any')
 license=('custom:Creative Commons')
-depends=( 'gdb' 'python2' 'binutils' 'nasm')
+depends=( 'gdb' 'binutils' 'nasm' 'python2-six')
 makedepends=('git')
 provides=('peda')
 conflicts=('peda')
