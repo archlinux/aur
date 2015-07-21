@@ -6,22 +6,23 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=2.7.1
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix (32 bit)"
 arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("$_pkgbasename"
-      'lib32-alsa-lib' 'lib32-fontconfig'
-      'lib32-gnutls' 'lib32-sdl' 'lib32-libva' 'lib32-libwebp'
-      'lib32-libass' 'lib32-libbluray' 'lib32-fribidi'
-      'lib32-gsm' 'lib32-libmodplug' 'lib32-lame'
-      'lib32-opus' 'lib32-libpulse' 'lib32-schroedinger'
-      'lib32-libtheora' 'lib32-v4l-utils' 'lib32-libxv'
-      'lib32-libx264' 'lib32-xvidcore' 'lib32-libvdpau'
+      'lib32-alsa-lib' 'lib32-fontconfig' 'lib32-fribidi'
+      'lib32-gnutls' 'lib32-gsm' 'lib32-lame' 'lib32-libass'
+      'lib32-libbluray' 'lib32-libmodplug' 'lib32-libpulse'
+      'lib32-libtheora' 'lib32-libva' 'lib32-libvdpau'
+      'lib32-libwebp' 'lib32-opus' 'lib32-schroedinger'
+      'lib32-sdl' 'lib32-v4l-utils' 'lib32-xvidcore'
+      'lib32-zlib'
+      'libvorbis.so' 'libvorbisenc.so' 'libx264.so'
       )
-makedepends=('yasm' 'hardening-wrapper')
+makedepends=('hardening-wrapper' 'yasm')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
 sha256sums=('7e07b97d2415feeae9c9b5595e35e7b7aab33207e81bf9f8c0d1eece43f7f720')
 
