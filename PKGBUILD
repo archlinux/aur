@@ -19,7 +19,7 @@ pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
 # when building specific commit: 1) pkgver=commit_sha   2) _gitver=$pkgver
-pkgver=15.0rc2
+pkgver=15.0
 #_gitver=$pkgver
 _gitver=$pkgver-Isengard
 
@@ -42,7 +42,7 @@ makedepends=(
 
 source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
 sha256sums=(
-  '47b91e31dd1b7e41d81223000c9a15ebaf45872f1e7dfe18851c90da3182f9f8')
+  '27dba173cfe74b323f4dbaa72ae2bfe5961f76c27bddcd5210253be91cae0dff')
 
 _prefix='/usr'
 
