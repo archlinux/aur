@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-openal
+	pkgdesc = OpenAL audio library for use with opengl (mingw-w64)
+	pkgver = 1.16.0
+	pkgrel = 5
+	url = http://connect.creativelabs.com/openal/
+	arch = any
+	license = GPL2
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://kcat.strangesoft.net/openal-releases/openal-soft-1.16.0.tar.bz2
+	md5sums = 14db4b0d12f07252070b4fe5eb5911f6
+
+pkgname = mingw-w64-openal
+
