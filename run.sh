@@ -50,7 +50,6 @@ check_if_running() {
     if [[ -f "$PIDFILE" ]]; then
         if [[ -r "$PIDFILE" ]]; then
             pid=$(cat "$PIDFILE")
-            #echo "debug: pid:$pid get_pid:$(get_pid)"
             if [[ ! "$pid" ]]; then
                 pid=$(get_pid)
                 if [[ ! "$pid" ]]; then
@@ -84,12 +83,14 @@ _start() {
         eval $COMMAND_LINE
         [[ $? != 0 ]] && fail "Failed to launch the wrapper!"
         i=0
-        while [[ ! "$pid" || $i < $TIMEOUT ]]; do
-            echo -n "."
-            sleep 1
-            check_if_running
-            ((i++))
-        done
+        if [[ ! $_quiet ]]; then
+            while [[ ! "$pid" || $i < $TIMEOUT ]]; do
+                echo -n "."
+                sleep 1
+                check_if_running
+                ((i++))
+            done
+        fi
         [[ $(get_pid) ]] &&
             echo " done" || fail "timeout: Failed to start wrapper!"
     else
@@ -105,31 +106,21 @@ _restart() {
 _stop() {
     if [[ "$pid" ]]; then
         echo -n "Stopping Freenet"
-        kill -TERM $pid
+        kill -TERM $(get_wrapper_pid)
         [[ $? != 0 ]] && fail "Unable to stop Freenet: kill -TERM $pid"
         i=0
-        while [[ "$pid" || $i > $TIMEOUT ]]; do
-            echo -n "."
-            sleep 1
-            [[ ! $(get_pid) ]] && unset pid
-            ((i++))
-        done
-        if [[ "$pid" ]]; then
-            fail "timeout: Failed to stop wrapper!"
-        else
-            echo " done"
-            [[ "$1" = 'start' ]] && _start
+        if [[ ! $_quiet ]]; then
+            while [[ "$pid" || $i > $TIMEOUT ]]; do
+                echo -n "."
+                sleep 1
+                [[ ! $(get_pid) ]] && unset pid
+                ((i++))
+            done
+            if [[ "$pid" ]]; then
+                fail "timeout: Failed to stop wrapper!"
+            fi
         fi
-    else
-        echo "Freenet is not running."
-    fi
-}
-
-_graceful() {
-    if [[ "$pid" ]]; then
-        echo "Stopping Freenet gracefully..."
-        kill -HUP $pid
-        [[ $? != 0 ]] && fail "Unable to stop Freenet."
+        echo " done"
     else
         echo "Freenet is not running."
     fi
@@ -152,9 +143,12 @@ _dump() {
 }
 #-----------------------------------------------------------------------------
 
-check_user "$@"
+check_user "$*"
 init_vars
 check_if_running
+
+[[ "$2" = '--quiet' ]] &&
+    _quiet=true
 
 case "$1" in
      'console') _console
@@ -162,8 +156,6 @@ case "$1" in
        'start') _start
                 ;;
         'stop') _stop
-                ;;
-    'graceful') _graceful
                 ;;
      'restart') _restart
                 ;;
@@ -178,7 +170,6 @@ case "$1" in
         echo "  console     Launch in the current console"
         echo "  start       Start in the background as a daemon process"
         echo "  stop        Stop if running as a daemon or in another console"
-        echo "  graceful    Stop gracefully, may take up to 11 minutes for all tunnels to close"
         echo "  restart     Restart the JVM"
         echo "  status      Query the current status"
         echo "  dump        Request a Java thread dump if running"
@@ -186,4 +177,3 @@ case "$1" in
         ;;
 esac
 exit 0
-

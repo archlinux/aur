@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=forking
 User=freenet
-ExecStart=/opt/freenet/run.sh start
-ExecStop=/opt/freenet/run.sh stop
+ExecStart=/opt/freenet/run.sh start --quiet
+ExecStop=/opt/freenet/run.sh stop --quiet
 WorkingDirectory=/opt/freenet
 
 [Install]
