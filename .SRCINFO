@@ -1,0 +1,18 @@
+pkgbase = cl-optima-git
+	pkgdesc = optima is the recommended pattern-matching library
+	pkgver = r158.373b245
+	pkgrel = 1
+	url = http://www.cliki.net/optima/
+	install = cl-optima-git.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	depends = cl-closer-mop
+	provides = cl-optima
+	source = git+https://github.com/m2ym/optima.git
+	md5sums = SKIP
+
+pkgname = cl-optima-git
+
