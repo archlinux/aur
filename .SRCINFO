@@ -1,0 +1,12 @@
+pkgbase = fasm
+	pkgdesc = Fast and efficient self-assembling x86 assembler for DOS, Windows and Linux operating systems
+	pkgver = 1.71.39
+	pkgrel = 1
+	url = http://www.flatassembler.net/
+	arch = x86_64
+	license = custom
+	source = http://www.flatassembler.net/fasm-1.71.39.tgz
+	md5sums = 22a100b479e350efc8a8c2d814c1ee67
+
+pkgname = fasm
+
