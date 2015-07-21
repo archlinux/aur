@@ -1,5 +1,5 @@
 pkgbase = cl-closer-mop-git
-	pkgdesc = Compatibility layer library for gray streams in Common Lisp
+	pkgdesc = A compatibility layer that rectifies many of the absent or incorrect MOP features as detected by MOP Feature Tests.
 	pkgver = r249.f0ee095
 	pkgrel = 1
 	url = git://github.com/trivial-gray-streams/trivial-gray-streams
