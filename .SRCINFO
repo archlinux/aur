@@ -1,7 +1,7 @@
 pkgbase = mod_auth_kerb
 	pkgdesc = A Kerberos authentication module for the Apache Http Server
 	pkgver = 5.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/modauthkerb/files/mod_auth_kerb/mod_auth_kerb-5.4/mod_auth_kerb-5.4.tar.gz/download
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,12 @@ pkgbase = mod_auth_kerb
 	source = auth_kerb.conf
 	source = mod_auth_kerb.patch
 	source = mod_auth_kerb_compile.patch
-	md5sums = 642b81763ad3ca81dba359cb952da5e3
-	md5sums = 399f8ab44947ac79f23f718c4ca9a527
-	md5sums = 3a4ed51a6bfb949fc588148074e1df5a
-	md5sums = 051f97f87667c92db00f34d20404261d
+	source = https://sourceforge.net/p/modauthkerb/patches/_discuss/thread/418c3b51/739d/attachment/mod_auth_kerb-5.4-apache24.patch
+	sha256sums = 690ddd66c6d941e2fa2dada46588329a6f57d0a3b9b2fd9bf055ebc427558265
+	sha256sums = 9125317197d7dccfb5006982b48a2bd68579bdde0ccfb771671e9e81e9348d1b
+	sha256sums = d380254a525e8825ac292394c6b9a8b3f4ba511f72a7552eda7db99fe504d241
+	sha256sums = 1241fe1b44755a355e0ee30e1c3ec2ab71326c252d6558f40068bfc87dce6234
+	sha256sums = 069ea2c354d5228fe407e0964be22a5a12a8591a4f0d30fecdfe98422778ba4b
 
 pkgname = mod_auth_kerb
 
