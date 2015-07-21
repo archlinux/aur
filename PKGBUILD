@@ -1,7 +1,7 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 pkgname=rave-x-colors
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A vivid and classically styled icon theme based on Faenza. The inspiration for Mint-X, but with support for dark panels."
 arch=('any')
 url="http://www.ravefinity.com/p/rave-x-icon-theme.html"
@@ -15,5 +15,5 @@ md5sums=('23934c1e096be974694a46876e891fea')
 package() {
  mkdir -p $pkgdir/usr/share/icons/
  cp -r $srcdir/* $pkgdir/usr/share/icons/
- rm "$pkgdir/usr/share/icons/RAVEX-Icon-Manual-Doc.txt" "$pkgdir/usr/share/icons/rave-x-colors-2.0B.tar.gz"
+ rm "$pkgdir/usr/share/icons/RAVEX-Icon-Manual-Doc.txt" "$pkgdir/usr/share/icons/$pkgname-$pkgver.tar.gz"
 }
