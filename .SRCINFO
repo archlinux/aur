@@ -1,4 +1,4 @@
-pkgbase = simgrid-stable
+pkgbase = simgrid
 	pkgdesc = Grid and Cloud Simulator (Stable Version)
 	pkgver = 3.11.1
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = simgrid-stable
 	source = http://gforge.inria.fr/frs/download.php/file/33686/SimGrid-3.11.1.tar.gz
 	md5sums = SKIP
 
-pkgname = simgrid-stable
+pkgname = simgrid
 

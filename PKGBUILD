@@ -3,7 +3,7 @@
 #
 
 # Maintainer: Javier J. Salmeron-Garcia <javsalgar@gmail.com>
-pkgname=simgrid-stable
+pkgname=simgrid
 pkgver=3.11.1
 pkgrel=1
 pkgdesc='Grid and Cloud Simulator (Stable Version)'
