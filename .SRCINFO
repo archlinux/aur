@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-pippy
+	pkgdesc = Sugar interactive python editor
+	pkgver = 66
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Pippy/Pippy-66.tar.bz2
+	md5sums = bd35a47bab11b95c28197811d2706d04
+
+pkgname = sugar-activity-pippy
+
