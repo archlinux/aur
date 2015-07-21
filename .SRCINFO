@@ -1,0 +1,32 @@
+pkgbase = lxpanel-gtk3
+	pkgdesc = Lightweight X11 desktop panel for LXDE (GTK+ 3 version)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	makedepends = wireless_tools
+	depends = gtk3
+	depends = alsa-lib
+	depends = menu-cache
+	depends = lxmenu-data
+	depends = libwnck3
+	depends = libfm-gtk3
+	depends = libkeybinder3
+	optdepends = wireless_tools: netstat plugin
+	provides = lxpanel
+	conflicts = lxpanel
+	source = http://downloads.sourceforge.net/lxde/lxpanel-0.8.1.tar.xz
+	source = lxpanel-0.8.0-gtk3.patch
+	source = gtk3.patch
+	sha256sums = c657eb049a0f59e7b2d1ad6cb621c272833b765705c19089e48b3c248351b1e0
+	sha256sums = 2397d98806df273f32d35d66fcc532fdf08bec783e727b0ecfb30b7fcb9851df
+	sha256sums = a8779eac8b7342e96bcdd2208bd440b23328ffa7bd46db58d7b2cb9a3fd2ccbb
+
+pkgname = lxpanel-gtk3
+

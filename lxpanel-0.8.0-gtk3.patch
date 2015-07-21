@@ -1,0 +1,344 @@
+diff -dupr lxpanel-0.8.0-old/plugins/cpu/cpu.c lxpanel-0.8.0/plugins/cpu/cpu.c
+--- lxpanel-0.8.0-old/plugins/cpu/cpu.c	2014-12-07 17:18:06.000000000 +0100
++++ lxpanel-0.8.0/plugins/cpu/cpu.c	2015-01-14 06:00:40.462795410 +0100
+@@ -59,7 +59,11 @@ typedef struct {
+ static void redraw_pixmap(CPUPlugin * c);
+ static gboolean cpu_update(CPUPlugin * c);
+ static gboolean configure_event(GtkWidget * widget, GdkEventConfigure * event, CPUPlugin * c);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget * widget, GdkEventExpose * event, CPUPlugin * c);
++#else
++static gboolean draw(GtkWidget * widget, cairo_t * cr, CPUPlugin * c);
++#endif
+ 
+ static void cpu_destructor(gpointer user_data);
+ 
+@@ -207,6 +211,7 @@ static gboolean configure_event(GtkWidge
+ }
+ 
+ /* Handler for expose_event on drawing area. */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget * widget, GdkEventExpose * event, CPUPlugin * c)
+ {
+     /* Draw the requested part of the pixmap onto the drawing area.
+@@ -226,6 +231,22 @@ static gboolean expose_event(GtkWidget *
+     }
+     return FALSE;
+ }
++#else
++static gboolean draw(GtkWidget * widget, cairo_t * cr, CPUPlugin * c)
++{
++    /* Draw the requested part of the pixmap onto the drawing area.
++     * Translate it in both x and y by the border size. */
++    if (c->pixmap != NULL)
++    {
++        cairo_set_source_rgb(cr, 0, 0, 0);
++        cairo_set_source_surface(cr, c->pixmap,
++              BORDER_SIZE, BORDER_SIZE);
++        cairo_paint(cr);
++        /* check_cairo_status(cr); */
++    }
++    return FALSE;
++}
++#endif
+ 
+ /* Plugin constructor. */
+ static GtkWidget *cpu_constructor(LXPanel *panel, config_setting_t *settings)
+@@ -251,7 +272,11 @@ static GtkWidget *cpu_constructor(LXPane
+ 
+     /* Connect signals. */
+     g_signal_connect(G_OBJECT(c->da), "configure-event", G_CALLBACK(configure_event), (gpointer) c);
++    #if !GTK_CHECK_VERSION(3, 0, 0)
+     g_signal_connect(G_OBJECT(c->da), "expose-event", G_CALLBACK(expose_event), (gpointer) c);
++    #else
++    g_signal_connect(G_OBJECT(c->da), "draw", G_CALLBACK(draw), (gpointer) c);
++    #endif
+ 
+     /* Show the widget.  Connect a timer to refresh the statistics. */
+     gtk_widget_show(c->da);
+diff -dupr lxpanel-0.8.0-old/plugins/launchtaskbar.c lxpanel-0.8.0/plugins/launchtaskbar.c
+--- lxpanel-0.8.0-old/plugins/launchtaskbar.c	2014-12-07 17:18:06.000000000 +0100
++++ lxpanel-0.8.0/plugins/launchtaskbar.c	2015-01-14 03:34:24.148186524 +0100
+@@ -1904,6 +1904,7 @@ static void task_delete(LaunchTaskBarPlu
+ 
+ /* Get a pixbuf from a pixmap.
+  * Originally from libwnck, Copyright (C) 2001 Havoc Pennington. */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xpixmap, int width, int height)
+ {
+     /* Get the drawable. */
+@@ -1953,6 +1954,50 @@ static GdkPixbuf * _wnck_gdk_pixbuf_get_
+         g_object_unref(G_OBJECT(drawable));
+     return retval;
+ }
++#else
++static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xpixmap, int width, int height)
++{
++  cairo_surface_t *surface;
++  GdkPixbuf *pixbuf;
++  Display *xdisplay;
++  Window root_return;
++  XWindowAttributes attrs;
++
++  surface = NULL;
++  xdisplay = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
++
++
++  gdk_error_trap_push();
++
++  if (!XGetWindowAttributes (xdisplay, root_return, &attrs))
++    goto TRAP_POP;
++
++  if (attrs.depth == 1)
++    {
++      surface = cairo_xlib_surface_create_for_bitmap (xdisplay,
++                                                      xpixmap,
++                                                      attrs.screen,
++                                                      width,
++                                                      height);
++    }
++  else
++    {
++      surface = cairo_xlib_surface_create (xdisplay,
++                                           xpixmap,
++                                           attrs.visual,
++                                           width, height);
++    }
++
++  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
++  cairo_surface_destroy (surface);
++
++TRAP_POP:
++  gdk_flush();
++  gdk_error_trap_pop();
++
++  return pixbuf;
++}
++#endif
+ 
+ /* Apply a mask to a pixbuf.
+  * Originally from libwnck, Copyright (C) 2001 Havoc Pennington. */
+diff -dupr lxpanel-0.8.0-old/plugins/monitors/monitors.c lxpanel-0.8.0/plugins/monitors/monitors.c
+--- lxpanel-0.8.0-old/plugins/monitors/monitors.c	2014-12-07 17:18:06.000000000 +0100
++++ lxpanel-0.8.0/plugins/monitors/monitors.c	2015-01-14 06:24:03.506308298 +0100
+@@ -144,7 +144,11 @@ static void     mem_tooltip_update (Moni
+ 
+ 
+ static gboolean configure_event(GtkWidget*, GdkEventConfigure*, gpointer);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget *, GdkEventExpose *, Monitor *);
++#else
++static gboolean draw(GtkWidget *, cairo_t *, Monitor *);
++#endif
+ static void redraw_pixmap (Monitor *m);
+ 
+ /* Monitors functions */
+@@ -169,8 +173,13 @@ monitor_init(MonitorsPlugin *mp, Monitor
+     /* Signals */
+     g_signal_connect(G_OBJECT(m->da), "configure-event",
+         G_CALLBACK(configure_event), (gpointer) m);
++    #if !GTK_CHECK_VERSION(3, 0, 0)
+     g_signal_connect (G_OBJECT(m->da), "expose-event",
+         G_CALLBACK(expose_event), (gpointer) m);
++    #else
++    g_signal_connect (G_OBJECT(m->da), "draw",
++        G_CALLBACK(draw), (gpointer) m);
++    #endif
+     /* g_signal_connect(G_OBJECT(m->da), "button-press-event",
+                     G_CALLBACK(plugin_button_press_event), p); */
+ 
+@@ -465,6 +474,7 @@ configure_event(GtkWidget* widget, GdkEv
+     return TRUE;
+ }
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean
+ expose_event(GtkWidget * widget, GdkEventExpose * event, Monitor *m)
+ {
+@@ -485,6 +495,23 @@ expose_event(GtkWidget * widget, GdkEven
+ 
+     return FALSE;
+ }
++#else
++static gboolean
++draw(GtkWidget * widget, cairo_t * cr, Monitor *m)
++{
++    /* Draw the requested part of the pixmap onto the drawing area.
++     * Translate it in both x and y by the border size. */
++    if (m->pixmap != NULL)
++    {
++        cairo_set_source_rgb(cr, 0, 0, 0);
++        cairo_set_source_surface(cr, m->pixmap, BORDER_SIZE, BORDER_SIZE);
++        cairo_paint(cr);
++        check_cairo_status(cr);
++    }
++
++    return FALSE;
++}
++#endif
+ 
+ 
+ static gboolean monitors_button_press_event(GtkWidget* widget, GdkEventButton* evt, LXPanel *panel)
+diff -dupr lxpanel-0.8.0-old/plugins/netstatus/netstatus-icon.c lxpanel-0.8.0/plugins/netstatus/netstatus-icon.c
+--- lxpanel-0.8.0-old/plugins/netstatus/netstatus-icon.c	2014-12-07 17:18:06.000000000 +0100
++++ lxpanel-0.8.0/plugins/netstatus/netstatus-icon.c	2015-01-08 23:08:55.269497782 +0100
+@@ -449,7 +449,11 @@ netstatus_icon_signal_changed (Netstatus
+ }
+ 
+ static void
++#if GTK_CHECK_VERSION(3, 0, 0)
++netstatus_icon_destroy (GtkWidget *widget)
++#else
+ netstatus_icon_destroy (GtkObject *widget)
++#endif
+ {
+   NetstatusIcon *icon = (NetstatusIcon *) widget;
+ 
+@@ -477,7 +481,11 @@ netstatus_icon_destroy (GtkObject *widge
+ 
+   icon->priv->image = NULL;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++  GTK_WIDGET_CLASS (parent_class)->destroy (widget);
++#else
+   GTK_OBJECT_CLASS (parent_class)->destroy (widget);
++#endif
+ }
+ 
+ static GdkPixbuf *
+@@ -583,6 +591,7 @@ get_box_class (GtkOrientation orientatio
+   return g_type_class_peek(orientation == GTK_ORIENTATION_HORIZONTAL ? GTK_TYPE_HBOX : GTK_TYPE_VBOX);
+ }
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static void
+ netstatus_icon_size_request (GtkWidget      *widget,
+ 			     GtkRequisition *requisition)
+@@ -595,6 +604,7 @@ netstatus_icon_size_request (GtkWidget
+   if (GTK_WIDGET_CLASS (klass)->size_request)
+     GTK_WIDGET_CLASS (klass)->size_request (widget, requisition);
+ }
++#endif
+ 
+ static void
+ netstatus_icon_size_allocate (GtkWidget     *widget,
+@@ -668,7 +678,9 @@ netstatus_icon_realize (GtkWidget *widge
+   attributes.window_type = GDK_WINDOW_CHILD;
+   attributes.wclass = GDK_INPUT_OUTPUT;
+   attributes.visual = gtk_widget_get_visual (widget);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   attributes.colormap = gtk_widget_get_colormap (widget);
++#endif
+   attributes.event_mask = gtk_widget_get_events (widget) |
+                           GDK_BUTTON_MOTION_MASK         |
+                           GDK_BUTTON_PRESS_MASK          |
+@@ -677,7 +689,10 @@ netstatus_icon_realize (GtkWidget *widge
+                           GDK_ENTER_NOTIFY_MASK          |
+                           GDK_LEAVE_NOTIFY_MASK;
+ 
+-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
++  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
++#if !GTK_CHECK_VERSION(3, 0, 0)
++   attributes_mask |= GDK_WA_COLORMAP;
++#endif
+ 
+   window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
+   gtk_widget_set_window (widget, window);
+@@ -797,7 +812,9 @@ static void
+ netstatus_icon_class_init (NetstatusIconClass *klass)
+ {
+   GObjectClass   *gobject_class   = (GObjectClass   *) klass;
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   GtkObjectClass *gtkobject_class = (GtkObjectClass *) klass;
++#endif
+   GtkWidgetClass *widget_class    = (GtkWidgetClass *) klass;
+ 
+   parent_class = g_type_class_peek_parent (klass);
+@@ -809,9 +826,15 @@ netstatus_icon_class_init (NetstatusIcon
+ 
+   gobject_class->finalize     = netstatus_icon_finalize;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++  widget_class->destroy = netstatus_icon_destroy;
++#else
+   gtkobject_class->destroy = netstatus_icon_destroy;
++#endif
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   widget_class->size_request       = netstatus_icon_size_request;
++#endif
+   widget_class->size_allocate      = netstatus_icon_size_allocate;
+   widget_class->realize            = netstatus_icon_realize;
+   widget_class->button_press_event = netstatus_icon_button_press_event;
+diff -dupr lxpanel-0.8.0-old/src/panel.c lxpanel-0.8.0/src/panel.c
+--- lxpanel-0.8.0-old/src/panel.c	2014-12-07 17:25:13.000000000 +0100
++++ lxpanel-0.8.0/src/panel.c	2015-01-14 05:08:55.019287357 +0100
+@@ -216,7 +216,12 @@ static void lxpanel_size_request(GtkWidg
+     Panel *p = panel->priv;
+     GdkRectangle rect;
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     GTK_WIDGET_CLASS(lxpanel_parent_class)->size_request(widget, req);
++#else
++    GTK_WIDGET_CLASS(lxpanel_parent_class)->get_preferred_width(widget, &req->width, &req->width);
++    GTK_WIDGET_CLASS(lxpanel_parent_class)->get_preferred_height(widget, &req->height, &req->height);
++#endif
+ 
+     if (!p->visible)
+         /* When the panel is in invisible state, the content box also got hidden, thus always
+@@ -230,6 +235,32 @@ static void lxpanel_size_request(GtkWidg
+     req->height = rect.height;
+ }
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++static void
++lxpanel_get_preferred_width (GtkWidget *widget,
++                             gint      *minimal_width,
++                             gint      *natural_width)
++{
++  GtkRequisition requisition;
++
++  lxpanel_size_request (widget, &requisition);
++
++  *minimal_width = *natural_width = requisition.width;
++}
++
++static void
++lxpanel_get_preferred_height (GtkWidget *widget,
++                              gint      *minimal_height,
++                              gint      *natural_height)
++{
++  GtkRequisition requisition;
++
++  lxpanel_size_request (widget, &requisition);
++
++  *minimal_height = *natural_height = requisition.height;
++}
++#endif
++
+ static void lxpanel_size_allocate(GtkWidget *widget, GtkAllocation *a)
+ {
+     LXPanel *panel = LXPANEL(widget);
+@@ -320,7 +351,12 @@ static void lxpanel_class_init(PanelTopl
+     gtk_object_class->destroy = lxpanel_destroy;
+ #endif
+     widget_class->realize = lxpanel_realize;
++#if GTK_CHECK_VERSION(3, 0, 0)
++    widget_class->get_preferred_width = lxpanel_get_preferred_width;
++    widget_class->get_preferred_height = lxpanel_get_preferred_height;
++#else
+     widget_class->size_request = lxpanel_size_request;
++#endif
+     widget_class->size_allocate = lxpanel_size_allocate;
+     widget_class->configure_event = lxpanel_configure_event;
+     widget_class->style_set = lxpanel_style_set;
+@@ -794,7 +830,9 @@ static void _panel_update_background(LXP
+ 
+     /* Redraw the top level widget. */
+     _panel_determine_background_pixmap(p);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     gdk_window_clear(gtk_widget_get_window(w));
++#endif
+     gtk_widget_queue_draw(w);
+ 
+     /* Loop over all plugins redrawing each plugin. */
