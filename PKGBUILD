@@ -11,6 +11,7 @@
 pkgname=cairo-compmgr
 pkgver=0.3.1
 pkgrel=12
+epoch=2
 pkgdesc="A Cairo based composite manager"
 arch=(i686 x86_64)
 url="https://github.com/gandalfn/Cairo-Composite-Manager"

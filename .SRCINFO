@@ -2,6 +2,7 @@ pkgbase = cairo-compmgr
 	pkgdesc = A Cairo based composite manager
 	pkgver = 0.3.1
 	pkgrel = 12
+	epoch = 2
 	url = https://github.com/gandalfn/Cairo-Composite-Manager
 	install = cairo-compmgr.install
 	arch = i686
