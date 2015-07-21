@@ -46,8 +46,6 @@ package() {
     cp ${srcdir}/nginx-ssl.example.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp ${srcdir}/${pkgname}-${pkgver}/config.inc.php ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
-    # replace carddav_root_uri
-    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1/sabre-zarafa\3/" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
     ln -s /etc/webapps/${pkgname}/config.inc.php ${pkgdir}/usr/share/webapps/${pkgname}/config.inc.php
 
     mkdir -p ${pkgdir}/etc/php/conf.d
@@ -74,4 +72,8 @@ package() {
     cat /usr/share/php-composer/php.ini >> /tmp/composer.ini
     $(which php) -nc/tmp/composer.ini  $(which composer) install
     rm /tmp/composer.ini
+    
+    # perform settings
+    # => replace carddav_root_uri
+    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1\/sabre-zarafa\3/" ${pkgdir}/usr/share/webapps/${pkgname}/config.inc.php
 }
