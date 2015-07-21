@@ -1,0 +1,13 @@
+pkgbase = maskprocessor
+	pkgdesc = High-Performance word generator with a per-position configureable charset
+	pkgver = 0.73
+	pkgrel = 1
+	url = https://github.com/jsteube/maskprocessor
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/jsteube/maskprocessor/archive/v0.73.tar.gz
+	sha256sums = ad2b2945b896d9221eedebac9999a44043e2add3aea6aa1dae2ad1fd9eff5bc4
+
+pkgname = maskprocessor
+
