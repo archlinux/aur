@@ -19,7 +19,7 @@ options=('!strip')
 install=$pkgname.install
 
 # Fetch info
-_versions=$(curl -sLO http://dev.vuze.com/versions.json)
+curl -sL -O http://dev.vuze.com/versions.json
 
 # Version variables
 _main_ver_flat=$(grep -Po 'version": "\K[^"]*' versions.json | tail -1) # 5612
