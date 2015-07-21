@@ -1,7 +1,7 @@
 # Maintainer: Robert Knauer <robert@privatdemail.net>
 
 pkgname=courier-unicode
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Courier Unicode Library"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ source=(
   "https://sourceforge.net/projects/courier/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
 )
 sha256sums=(
-  'a10e61d20f3bf25bebdec495dea54258948f333a29f29a7f155a31f9bfb3f56c'
+  '8067d2fec621af1a463b690b325c700920f98e1271052354abfd4c8ca82f7e68'
 )
 
 build() {
