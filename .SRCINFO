@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-getthingsdone
+	pkgdesc = Sugar get things done
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/GetThingsDone/GetThingsDone-1.tar.bz2
+	md5sums = 21b11502282a4732bf20a473564ea79f
+
+pkgname = sugar-activity-getthingsdone
+
