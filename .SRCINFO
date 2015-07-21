@@ -1,6 +1,6 @@
 pkgbase = libringclient-git
 	pkgdesc = Client communication library for Ring (formerly known as SFLphone)
-	pkgver = 20150623
+	pkgver = 20150720
 	pkgrel = 1
 	url = http://ring.cx
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libringclient-git
 	depends = qt5-base
 	provides = libringclient
 	conflicts = libringclient
-	source = git+https://gerrit-ring.savoirfairelinux.com/ring-lrc
+	source = git+https://gerrit-ring.savoirfairelinux.com/ring-lrc#commit=02acbf871257c02fbcbda6c45f824a9d05dab62c
 	md5sums = SKIP
 
 pkgname = libringclient-git
