@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-clock
+	pkgdesc = Sugar clock
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Clock/Clock-1.tar.bz2
+	md5sums = 69b222bd64cf59fcdc144d504fe87319
+
+pkgname = sugar-activity-clock
+
