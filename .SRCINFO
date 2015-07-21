@@ -1,7 +1,7 @@
 pkgbase = eclipse-shelled
 	pkgdesc = Superb shell script editor for Eclipse
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://shelled.sourceforge.net/
 	arch = any
 	license = EPL

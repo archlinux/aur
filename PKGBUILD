@@ -3,7 +3,7 @@
 
 pkgname=eclipse-shelled
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Superb shell script editor for Eclipse"
 arch=('any')
 url="http://shelled.sourceforge.net/"
@@ -15,7 +15,7 @@ source=("$_mirror/project/shelled/shelled/ShellEd%20${pkgver}/net.sourceforge.sh
 md5sums=('1a675ac069c628b311b1007690ca055f')
 
 package() {
-	_dest=$pkgdir/usr/share/eclipse/dropins/${pkgname#eclipse-}/eclipse
+	_dest=$pkgdir/usr/lib/eclipse/
 	cd $srcdir
 	install -dm755 $_dest/
 	for d in features plugins; do
