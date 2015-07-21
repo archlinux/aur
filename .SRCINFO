@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-chat
+	pkgdesc = Sugar IRC client
+	pkgver = 81
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/Chat/Chat-81.tar.bz2
+	md5sums = d92295711b9207b1e6ca3967da7bd913
+
+pkgname = sugar-activity-chat
+
