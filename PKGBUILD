@@ -1,21 +1,20 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh
-pkgver=2.9.3
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('i686' 'x86_64')
 url="http://www.geuz.org/gmsh/"
 license=('custom')
 depends=('fltk' 'lapack' 'med' 'opencascade' 'cairo')
-#depends=('fltk' 'lapack' 'med' 'mesa' 'cairo')
 makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig')
 optdepends=('gmsh-docs: docs for gmsh'
             'python2: for onelab.py'
             'python: for onelab.py')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-md5sums=('16a7ae54676b5c7b93a63b3bb07d7488'
+md5sums=('22e0e40fb7ae8f66fe8204966d203f3c'
          'e63dc24ba025741fc1a82633b475e4a8'
          '9ee4b5bf27956de5aa412bbc939660d3')
 
@@ -33,7 +32,6 @@ build() {
    cd build
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_BUILD_SHARED=ON .. 
-   #cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_BUILD_SHARED=ON -DENABLE_OCC=0 .. 
 
    make
 }
