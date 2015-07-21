@@ -1,0 +1,22 @@
+pkgbase = dokku
+	pkgdesc = Docker powered mini-Heroku in around 100 lines of Bash.
+	pkgver = 0.3.21
+	pkgrel = 1
+	url = https://github.com/progrium/dokku
+	install = dokku.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = docker
+	source = git+https://github.com/progrium/dokku.git#tag=v0.3.21
+	source = dokku.install
+	source = pluginhook.go
+	source = sshcommand
+	sha256sums = SKIP
+	sha256sums = d59d82c65583b571b0f9645425a10f7fcb888aedd6aecd0e39d2a3fdb6c1fe8d
+	sha256sums = a8be92d37d9e99e2f5d0b44aed2451dc590daa7e5366b5cb2ba3197fb0ae65b0
+	sha256sums = 610eb140386de622ea46e6144be9f6f0a130887f94005319a395aed081d95879
+
+pkgname = dokku
+

@@ -1,0 +1,33 @@
+#!/bin/sh
+post_install() {
+  getent group dokku >/dev/null ||
+    groupadd --system dokku
+
+  getent passwd dokku >/dev/null ||
+    useradd --system \
+            --gid dokku \
+            --shell /usr/bin/dokku \
+            --home-dir /var/dokku/ \
+	    -m \
+            dokku
+
+  chown dokku:dokku /var/dokku/
+  mkdir /var/dokku/.ssh/
+  chown dokku:dokku /var/dokku/.ssh/
+  gpasswd -a dokku docker
+
+  if [ ! -f "/var/dokku/HOSTNAME" ]; then
+    hostname -f > "/var/dokku/HOSTNAME"
+    chown dokku:dokku "/var/dokku/HOSTNAME"
+  fi
+
+  echo "
+    Please add your ssh pubkey like:
+      $ cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku comment
+"
+}
+
+pre_remove() {
+  userdel dokku &>/dev/null || true
+  groupdel dokku &>/dev/null || true
+}

@@ -1,0 +1,16 @@
+*.sw[po]
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+# AUR metadata
+.AURINFO
+#.SRCINFO
+
+pkg/
+src/
+dokku/
