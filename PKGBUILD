@@ -3,7 +3,7 @@
 # Contributor: Louis Tim Larsen <louis(a)louis.dk>
 pkgname='ambiance-radiance-colors-suite'
 pkgver='15.04.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Ambiance & Radiance Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops"
 arch=('any')
 license=('GPL')
@@ -11,8 +11,7 @@ options=('!strip' '!zipman')
 url="http://www.ravefinity.com/p/ambiance-radiance-colors-suite.html"
 depends=('gtk3>=3.14' 'gtk-engine-murrine')
 optdepends=('rave-x-colors')
-source="Ambiance&Radiance-Colors-15-04-1bx-GTK-3-14-Theme.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QANXFqSU1wWk14bGs"
-#source="http://www.mediafire.com/download/1wjp0hn9h8nkmit/Ambiance&Radiance-Colors-15-04-1bx-GTK-3-14-Theme.tar.gz"
+source="$pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QANXFqSU1wWk14bGs"
 md5sums=('0ac06ff4f88fc2303349a1429748a64c')
 
 package() {
