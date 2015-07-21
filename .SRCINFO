@@ -1,0 +1,14 @@
+pkgbase = sugar-activity-helloworld
+	pkgdesc = Sugar hello world
+	pkgver = 4
+	pkgrel = 1
+	url = http://www.sugarlabs.org/
+	arch = any
+	groups = fructose
+	license = GPL
+	depends = sugar
+	source = http://download.sugarlabs.org/sources/sucrose/fructose/HelloWorld/HelloWorld-4.tar.bz2
+	md5sums = 01bd3d41daf3c7126fe54b43feccfb44
+
+pkgname = sugar-activity-helloworld
+
