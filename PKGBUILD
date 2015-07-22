@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 241024 2015-06-18 22:16:52Z heftig $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 
 _pkgbase=pygobject
 pkgbase=pygobject-patched
