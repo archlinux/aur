@@ -13,6 +13,7 @@ provides=(kscreen)
 conflicts=(kscreen)
 install=$pkgname.install
 source=('git://anongit.kde.org/kscreen.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
