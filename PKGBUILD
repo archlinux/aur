@@ -13,6 +13,7 @@ conflicts=('kmenuedit' 'kdebase-workspace')
 provides=('kmenuedit')
 install=$pkgname.install
 source=('git://anongit.kde.org/kmenuedit.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
