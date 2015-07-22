@@ -1,7 +1,7 @@
 pkgbase = coinffeine
 	pkgdesc = Coinffeine is an open source, peer-to-peer (P2P) bitcoin exchange platform
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://coinffeine.com/
 	arch = i686
 	arch = x86_64

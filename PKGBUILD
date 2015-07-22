@@ -2,7 +2,7 @@
 
 pkgname=coinffeine
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Coinffeine is an open source, peer-to-peer (P2P) bitcoin exchange platform"
 arch=('i686' 'x86_64')
 url="http://coinffeine.com/"
