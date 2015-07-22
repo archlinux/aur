@@ -1,9 +1,9 @@
 # Author: Micah Elliott <mde@MicahElliott.com>
 # package guidelines: https://wiki.archlinux.org/index.php/VCS_package_guidelines
 
-pkgname=flickpapr-git
+pkgname=flickpapr
 _pkgname=flickpapr
-pkgver=r21.9b91c11
+pkgver=r23.83f6ae9
 pkgrel=1
 pkgdesc='randomly choose an “interesting” flickr photo for desktop wallpaper'
 arch=('any')

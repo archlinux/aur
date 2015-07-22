@@ -1,6 +1,6 @@
 pkgbase = flickpapr
 	pkgdesc = randomly choose an “interesting” flickr photo for desktop wallpaper
-	pkgver = r21.9b91c11
+	pkgver = r23.83f6ae9
 	pkgrel = 1
 	url = https://github.com/MicahElliott/flickpapr
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = flickpapr
 	depends = imagemagick
 	depends = daemonize
 	depends = dunst
-	provides = flickpapr=r21.9b91c11
+	provides = flickpapr=r23.83f6ae9
 	source = git://github.com/MicahElliott/flickpapr.git
 	md5sums = SKIP
 
