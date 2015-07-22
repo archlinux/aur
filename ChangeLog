@@ -1,0 +1,5 @@
+2015-07-22 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.1 :
+	- Initial release.
+	- Provide the encryptssh hook and the cryptsetup_shell as it is on the original dropbear_initrd_encrypt package.

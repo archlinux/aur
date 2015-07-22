@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-utils
+	pkgdesc = Collection of Archlinux mkinitcpio utilities performing various tasks
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/grazzolini/mkinitcpio-utils
+	install = mkinitcpio-utils.install
+	changelog = ChangeLog
+	arch = any
+	license = BSD
+	depends = cryptsetup
+	optdepends = mkinitcpio-tinyssh: Allow the encryptssh hook to unlock a root container remotely
+	source = https://github.com/grazzolini/mkinitcpio-utils/archive/v0.0.1.tar.gz
+	sha512sums = 5d7f91e0d5a5d437d941eba6e3e944125f89a0e18e72d2ee464030e03a2cc2d96b38d0346521c9876e25bd8e4c094cd897dafb3e0dcd2c95dd98b9b20d2aad47
+
+pkgname = mkinitcpio-utils
+
