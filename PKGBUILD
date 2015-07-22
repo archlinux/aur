@@ -3,7 +3,7 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
-pkgver=4.3.28
+pkgver=5.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -61,4 +61,5 @@ package_virtualbox-ck-guest-modules() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
 }
+
 
