@@ -35,6 +35,7 @@ build() {
 package_python-gobject-patched() {
   pkgdesc="Python 3 bindings for GObject, with a patch for cairo"
   depends=('gobject-introspection-runtime' "pygobject-devel=$pkgver" 'python' 'cairo')
+  provides=("python-gobject=$pkgver")
   conflicts=('python-gobject')
 
   cd build-py3
@@ -45,6 +46,7 @@ package_python-gobject-patched() {
 package_python2-gobject-patched() {
   pkgdesc="Python 2 bindings for GObject, with a patch for cairo"
   depends=('gobject-introspection-runtime' "pygobject-devel=$pkgver" 'python2' 'cairo')
+  provides=("python2-gobject=$pkgver")
   conflicts=('python2-gobject')
 
   cd build-py2

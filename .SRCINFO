@@ -22,6 +22,7 @@ pkgname = python-gobject-patched
 	depends = pygobject-devel=3.16.2
 	depends = python
 	depends = cairo
+	provides = python-gobject=3.16.2
 	conflicts = python-gobject
 
 pkgname = python2-gobject-patched
@@ -30,5 +31,6 @@ pkgname = python2-gobject-patched
 	depends = pygobject-devel=3.16.2
 	depends = python2
 	depends = cairo
+	provides = python2-gobject=3.16.2
 	conflicts = python2-gobject
 
