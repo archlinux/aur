@@ -1,0 +1,18 @@
+pkgbase = cl-lambda-reader-git
+	pkgdesc = Compatibility layer library for gray streams in Common Lisp
+	pkgver = r14.89366cf
+	pkgrel = 1
+	url = git://github.com/trivial-gray-streams/trivial-gray-streams
+	install = cl-lambda-reader-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = common-lisp
+	depends = cl-named-readtables
+	provides = cl-lambda-reader
+	source = git+https://gitlab.common-lisp.net/frideau/lambda-reader.git
+	md5sums = SKIP
+
+pkgname = cl-lambda-reader-git
+
