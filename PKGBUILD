@@ -8,7 +8,7 @@ pkgdesc="Graphics API Tracing from git (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=('BSD')
-makedepends=('cmake' 'git' 'lib32-mesa' 'lib32-libgl' 'python2' 'gcc-multilib')
+makedepends=('cmake' 'git' 'lib32-mesa' 'lib32-libgl' 'lib32-procps-ng' 'python2' 'gcc-multilib')
 provides=('lib32-apitrace')
 conflicts=('lib32-apitrace')
 source=('apitrace::git+http://github.com/apitrace/apitrace.git#branch=master')
