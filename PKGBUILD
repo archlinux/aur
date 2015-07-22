@@ -4,8 +4,8 @@
 # Contributor: Feirlane
 
 pkgname=adom
-pkgver=1.2.0_pre23
-pkgrel=2
+pkgver=59
+pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=('i686' 'x86_64' 'armv6h')
 depends=('ncurses')
@@ -15,17 +15,17 @@ sha1sums=('' '51d28fe3f0420cd354113fd7ceb2a1a7abf1b069')
 if [ "$CARCH" = x86_64 ]
  then
   _arch_link='debian_64'
-  sha1sums[0]='a9cfba4875f770bee9e2d4417942d196cedc0350'
+  sha1sums[0]='21f0102d9ba8234936f4bd0de3c2a41761f086f5'
  elif [ "$CARCH" = 'armv6h' ]
   then
   _arch_link='arm'
-  sha1sums[0]='29897b84d3288f060557cf1ecbb1bfe3937c082e'
+  sha1sums[0]='00c5d07bb1f86a1bb0357d361170dddbbc745a35'
   else
    _arch_link='debian_32'
-   sha1sums[0]='c8a2530b499085c45957ee290aba1c0bcf4b0e6e'
+   sha1sums[0]='9e236660214306803e9c2971632705f17ccfff99'
 fi
 
-source=(http://ancardia.us.to/download/adom_linux_${_arch_link}_${pkgver}.tar.gz LICENSE)
+source=(http://ancardia.us.to/download/adom_linux_${_arch_link}_r${pkgver}_pub.tar.gz LICENSE)
 
 package() {
   cd ${srcdir}/${pkgname}
