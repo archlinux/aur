@@ -13,7 +13,7 @@ makedepends=('git' 'libx11' 'xcb-util')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "tint3-cpp-git")
-conclicts=("${_pkgname}" "tint3-get")
+conclicts=("${_pkgname}" "tint3-git")
 source=("git://github.com/tmathmeyer/${_pkgname}.git")
 md5sums=('SKIP')
 
