@@ -1,0 +1,12 @@
+pkgbase = dod-digglegods
+	pkgdesc = Realm of the Diggle Gods: DLC expansion for Dungeons of Dredmor
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://dungeonsofdredmor.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = dungeons-of-dredmor
+
+pkgname = dod-digglegods
+
