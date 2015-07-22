@@ -4,7 +4,7 @@ pkgname=nginx-mainline
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -63,7 +63,8 @@ build() {
     --with-http_mp4_module \
     --with-http_secure_link_module \
     --with-http_sub_module \
-    --with-threads
+    --with-threads \
+    --with-stream
 
   make
 }

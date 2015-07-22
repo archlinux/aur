@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
 	pkgver = 1.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nginx.org
 	install = nginx.install
 	arch = i686
