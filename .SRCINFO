@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 221
-	pkgrel = 2
+	pkgver = 222
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = systemd-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v221
+	source = git://github.com/systemd/systemd.git#tag=v222
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -41,7 +41,7 @@ pkgbase = systemd-selinux
 	md5sums = SKIP
 	md5sums = 90ea67a7bb237502094914622a39e281
 	md5sums = 976c5511b6493715e381f43f16cdb151
-	md5sums = bde43090d4ac0ef048e3eaee8202a407
+	md5sums = 1b3aa3a0551b08af9305d33f85b5c2fc
 	md5sums = 20ead378f5d6df4b2a3e670301510a7d
 	md5sums = ddaef54f68f6c86c6c07835fc668f62a
 	md5sums = 1e2f9a8b0fa32022bf0a8f39123e5f4e
@@ -77,9 +77,9 @@ pkgname = systemd-selinux
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=221
-	provides = udev=221
-	provides = systemd=221-2
+	provides = systemd-tools=222
+	provides = udev=222
+	provides = systemd=222-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -113,7 +113,6 @@ pkgname = systemd-selinux
 pkgname = libsystemd-selinux
 	pkgdesc = systemd client libraries with SELinux support
 	license = GPL2
-	depends = glib2
 	depends = glibc
 	depends = libgcrypt
 	depends = lz4
@@ -124,15 +123,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=221-2
+	provides = libsystemd=222-1
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=221-2
-	provides = selinux-systemd-sysvcompat=221-2
+	provides = systemd-sysvcompat=222-1
+	provides = selinux-systemd-sysvcompat=222-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
