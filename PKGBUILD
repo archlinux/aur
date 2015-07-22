@@ -8,6 +8,7 @@ license=('GPL')
 source=("git+https://github.com/Atha/update-conf.d")
 md5sums=("SKIP")
 makedepends=("git")
+backup=("etc/update-conf.d.conf")
 
 build() {
   cd "${srcdir}/update-conf.d"
@@ -16,7 +17,10 @@ build() {
 
 package() {
   cd "${srcdir}/update-conf.d"
-  make CONFIGDIR="${pkgdir}/etc" INSTALLDIR="${pkgdir}/usr" SBINDIR="${pkgdir}/usr/bin" install
-  chmod 755 "${pkgdir}/usr/bin/update-conf.d"
-  chmod 644 "${pkgdir}/usr/share/man/man8/update-conf.d.8.gz"
+
+  mkdir "${pkgdir}/etc/"
+  touch "${pkgdir}/etc/update-conf.d.conf"
+  chmod 644 "${pkgdir}/etc/update-conf.d.conf"
+  install -D -m 755 update-conf.d.complex "${pkgdir}/usr/bin/update-conf.d"
+  install -D -m 644 update-conf.d.8 "${pkgdir}/usr/share/man/man8/update-conf.d.8"
 }
