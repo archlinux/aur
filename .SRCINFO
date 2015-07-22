@@ -5,6 +5,7 @@ pkgbase = plasma-nm-git
 	url = https://projects.kde.org/projects/kde/workspace/plasma-nm
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = GPL2
 	makedepends = extra-cmake-modules
 	makedepends = git
