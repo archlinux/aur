@@ -1,6 +1,6 @@
 pkgbase = gnome-todo
 	pkgdesc = a personal task manager for GNOME
-	pkgver = 3.17.3
+	pkgver = 3.17.4
 	pkgrel = 1
 	url = https://feaneron.wordpress.com/2015/06/22/introducing-gnome-to-do/
 	install = gnome-todo.install
@@ -11,8 +11,10 @@ pkgbase = gnome-todo
 	makedepends = gnome-common
 	depends = evolution-data-server>=3.17.1
 	depends = pango
-	source = https://git.gnome.org/browse/gnome-todo/snapshot/GNOME_TODO_3_17_3.tar.xz
-	sha256sums = e480b86d99edaeb079f66774742e56b76fb5957b8c7b3dbffdf0f69ee46b7c50
+	depends = gtk3
+	depends = glib2
+	source = https://git.gnome.org/browse/gnome-todo/snapshot/GNOME_TODO_3_17_4.tar.xz
+	sha256sums = dd3bdbdac37d5d818c58740281c4eb8897279ffdead7a4fd20669c5b65e097df
 
 pkgname = gnome-todo
 
