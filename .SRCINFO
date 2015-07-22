@@ -1,7 +1,7 @@
 pkgbase = gimagereader
 	pkgdesc = A graphical frontend to tesseract-ocr
-	pkgver = 3.1.1
-	pkgrel = 2
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = http://sourceforge.net/projects/gimagereader/
 	install = gimagereader.install
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = gimagereader
 	depends = tesseract
 	depends = qtspell
 	depends = poppler-qt4
-	source = http://sourceforge.net/projects/gimagereader/files/3.1.1/gimagereader-3.1.1.tar.xz
-	sha256sums = 461ae7fac1dc0e0b85f30a8237ddd2684ee77061645d3f77747d0079f5093638
+	source = https://github.com/manisandro/gImageReader/releases/download/v3.1.2/gimagereader-3.1.2.tar.xz
+	sha256sums = 1fbe97554e37902f143c53ad122c0dcb5ca2dcebba53a9f8c8da727cbb0dcaf2
 
 pkgname = gimagereader
 
