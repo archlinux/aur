@@ -12,6 +12,8 @@ pkgbase = grantlee-qt5-git
 	depends = qt5-script
 	provides = grantlee-qt5
 	conflicts = grantlee-qt5
+	conflicts = grantlee-git
+	replaces = grantlee-git
 	source = grantlee-qt5-git::git+https://github.com/steveire/grantlee.git
 	md5sums = SKIP
 
