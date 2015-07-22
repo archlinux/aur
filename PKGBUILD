@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 conflicts=('powerdevil')
 provides=('powerdevil')
 source=('git://anongit.kde.org/powerdevil.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
