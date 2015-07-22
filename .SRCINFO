@@ -1,6 +1,6 @@
 pkgbase = plasma-git-meta
 	pkgdesc = Meta package for KDE Plasma 5
-	pkgver = 20150508
+	pkgver = 20150722
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = any
@@ -25,7 +25,6 @@ pkgbase = plasma-git-meta
 	depends = systemsettings-git
 	depends = khelpcenter-git
 	depends = kde-cli-tools-git
-	depends = kio-extras-git
 	depends = breeze-git
 	depends = kcm-user-manager-git
 	depends = sddm-kcm-git
