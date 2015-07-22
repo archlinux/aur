@@ -1,5 +1,5 @@
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Contributor: vigo <vigo.the.unholy.carpathian@gmail.com>
+# Maintainer: vigo <vigo.the.unholy.carpathian@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: judd <jvinet@zeroflux.org>
 
