@@ -12,6 +12,7 @@ makedepends=(extra-cmake-modules git python kdoctools)
 conflicts=(ksshaskpass)
 provides=(ksshaskpass)
 source=('git://anongit.kde.org/ksshaskpass.git' 'ksshaskpass.sh')
+groups=('plasma')
 md5sums=('SKIP'
          'aef2815fb704c98737f23eead3b4e894')
 

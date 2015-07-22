@@ -5,6 +5,7 @@ pkgbase = ksshaskpass-git
 	url = https://projects.kde.org/projects/kde/workspace/ksshaskpass
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
