@@ -18,5 +18,5 @@ pkgbase = flickpapr
 	source = git://github.com/MicahElliott/flickpapr.git
 	md5sums = SKIP
 
-pkgname = flickpapr-git
+pkgname = flickpapr
 
