@@ -12,8 +12,8 @@ _password=
 DLAGENTS=("http::/usr/bin/wget --user ${_username} --password ${_password} %u")
 
 pkgname=adom-restricted
-pkgver=57
-pkgrel=2
+pkgver=58
+pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=('i686' 'x86_64' 'armv6h')
 conflicts=('adom')
@@ -24,16 +24,15 @@ license=('custom: "adom"')
 sha1sums=('' '51d28fe3f0420cd354113fd7ceb2a1a7abf1b069')
 if [ "$CARCH" = x86_64 ]
   then
-  _arch_link='ubuntu_64'
-  sha1sums[0]='47bf8c7790c0e7b63a8a04c6c37e2b0df0ba052b'
-  depends+=('libtinfo')
+  _arch_link='debian_64'
+  sha1sums[0]='ff6e73bf084992fbbf4730d4aa5cf21d9b132391'
  elif [ "$CARCH" = 'armv6h' ]
   then
   _arch_link='arm'
-  sha1sums[0]='343ee4b8617603c8b065e19ddf01099030b8b03c'
+  sha1sums[0]='e61fbb507c4d8c30ced3c8b4c99ea06db3b45c41'
  else
   _arch_link='debian_32'
-  sha1sums[0]='d4bcb519ff13c304d0f0a3c46c11258f4dff9ff2'
+  sha1sums[0]='4aa867795043a88d04c7fcf2a72aa302cc9f3c63'
 fi
 
 
