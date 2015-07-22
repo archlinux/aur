@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=hdctools-git
-pkgver=r493.73e85ec
+pkgver=r498.689d9e2
 pkgrel=1
 pkgdesc='Chrome OS Hardware Debug & Control Tools'
 url='http://sites.google.com/a/google.com/chromeos-partner/hardware-control-and-debug'
