@@ -1,6 +1,6 @@
 pkgbase = nap-git
 	pkgdesc = sleep with a progressbar (git version)
-	pkgver = 0.2.3.r2.ga875a1b
+	pkgver = 0.2.4.r0.g20c375c
 	pkgrel = 1
 	url = https://github.com/Kwpolska/nap
 	arch = i686

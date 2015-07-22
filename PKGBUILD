@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=nap-git
 _gitname=nap
-pkgver=0.2.3.r2.ga875a1b
+pkgver=0.2.4.r0.g20c375c
 pkgrel=1
 pkgdesc='sleep with a progressbar (git version)'
 arch=('i686' 'x86_64')
