@@ -1,9 +1,8 @@
 post_install() {
 
   # prepare settings
-  chown root:zarafa /var/log/zarafa-webaccess
-  
-  chown root:zarafa /var/lib/zarafa-webaccess
+  chown http:http -R /var/log/zarafa-webaccess
+  chown http:http -R /var/lib/zarafa-webaccess
   
   cp -n /etc/webapps/zarafa-webaccess/config.example.php /etc/webapps/zarafa-webaccess/config.php
   cp -n /etc/webapps/zarafa-webaccess/debug.example.php /etc/webapps/zarafa-webaccess/debug.php 
