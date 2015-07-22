@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 conflicts=('ksysguard' 'kdebase-workspace')
 provides=('ksysguard')
 source=('git://anongit.kde.org/ksysguard.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
