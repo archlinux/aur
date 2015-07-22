@@ -19,7 +19,6 @@ pkgbase = zarafa-server
 	makedepends = kyotocabinet
 	makedepends = clucene
 	makedepends = boost
-	optdepends = php: for webaccess
 	source = zarafa-7.1.12.tar.gz::http://download.zarafa.com/community/final/7.1/7.1.12-48726/sourcecode/zcp-7.1.12.tar.gz
 	source = zarafa-server.service
 	source = zarafa-ical.service
@@ -57,8 +56,4 @@ pkgname = zarafa-server
 	backup = etc/zarafa/monitor.cfg
 	backup = etc/zarafa/spooler.cfg
 	backup = etc/zarafa/ical.cfg
-
-pkgname = zarafa-webaccess
-	pkgdesc = Webaccess client for the Zarafa Open Source Groupware Solution
-	depends = zarafa-server
 

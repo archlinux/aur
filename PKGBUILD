@@ -1,7 +1,7 @@
 # Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Archist archist@die-optimisten.net
 # Contributor: C Anthony Risinger
-pkgname=('zarafa-server' 'zarafa-webaccess')
+pkgname=('zarafa-server')
 pkgver=7.1.12
 _pkgrel=48726
 pkgrel=1
@@ -10,7 +10,6 @@ arch=('x86_64' 'i686')
 url="http://www.zarafa.com/"
 license=('AGPL3')
 makedepends=('libical' 'php' 'e2fsprogs' 'openldap' 'automake' 'swig' 'zarafa-libvmime' 'mysql' 'python2' 'kyotocabinet' 'clucene' 'boost')
-optdepends=('php: for webaccess')
 install=${pkgname}.install
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/7.1/${pkgver}-${_pkgrel}/sourcecode/zcp-${pkgver}.tar.gz"
 	"zarafa-server.service"
@@ -61,7 +60,7 @@ build() {
 }
 
 
-package_zarafa-server() {
+package(){
   pkgdesc="Open Source Groupware Solution"
   depends=('libical>=0.44' 'mysql' 'curl' 'libxml2' 'openssl' 'openldap' 'krb5' 'libical'
 	 'boost-libs' 'python2' 'kyotocabinet' 'zarafa-libvmime' 'libmariadbclient')
@@ -99,17 +98,4 @@ package_zarafa-server() {
   for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/*.cfg; do
     install -m 755 -o root -g root -D ${cfg} ${pkgdir}/etc/zarafa
   done
-}
-
-package_zarafa-webaccess() {
-  pkgdesc="Webaccess client for the Zarafa Open Source Groupware Solution"
-  depends=('zarafa-server')
-
-  # Webaccess
-  install -d ${pkgdir}/etc/httpd/conf/extra/
-  install -m 755 ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/zarafa-webaccess.conf ${pkgdir}/etc/httpd/conf/extra/zarafa-webaccess.conf
-  install -m 755 -d ${pkgdir}/usr/share/zarafa-webaccess/
-
-  cp -r ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/* ${pkgdir}/usr/share/zarafa-webaccess/
-  mv ${pkgdir}/usr/share/zarafa-webaccess/config.php.dist ${pkgdir}/usr/share/zarafa-webaccess/config.php
 }
