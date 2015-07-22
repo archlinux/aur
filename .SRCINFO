@@ -1,0 +1,14 @@
+pkgbase = guifications-clearlooks2glo
+	pkgdesc = Clearlooks2 GLO themes for guifications
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://kdyne.net/projekty/guifications/index.php?section=get
+	arch = any
+	license = GPL
+	depends = pidgin
+	depends = guifications
+	source = http://kdyne.net/projekty/guifications/download.php?fileName=cl2glo-1.0-noarch.tar.gz
+	md5sums = e6b216fcfdd0088b719db2474967265b
+
+pkgname = guifications-clearlooks2glo
+
