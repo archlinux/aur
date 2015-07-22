@@ -1,3 +1,4 @@
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: forest76 <forestt@poczta.onet.pl>
 # Contributor: Tilman Blumenbach <tilman@ax86.net>
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
