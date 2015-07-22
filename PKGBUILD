@@ -57,7 +57,7 @@ _libata_enable=
 pkgname=(linux-lts318-ck linux-lts318-ck-headers)
 _kernelname=-lts318-ck
 _srcname=linux-3.18
-pkgver=3.18.18
+pkgver=3.18.19
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -84,7 +84,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            'bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e'
+            '27764fcbefea9e1a83a2f31c55c1baf8bb580634fdce243c4a386850d2724c37'
             'SKIP'
             'e603c2752c160c124ae54dba8a4a9820d86912e5685b3bf6cd99705d7b147552'
             '7ea49a31d2e0391c78588f07a8f0e0262535f5981b22d6a7fe0c1697f9dda282'
