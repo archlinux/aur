@@ -13,6 +13,7 @@ replaces=('milou-frameworks-git')
 depends=('krunner-git')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 source=('git://anongit.kde.org/milou')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
