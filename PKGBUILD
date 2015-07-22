@@ -3,7 +3,7 @@
 
 pkgname=envypn-font
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Readable bitmap font inspired by Envy Code R"
 url="http://ywstd.fr/me/#envypn"
 arch=('any')
@@ -17,10 +17,10 @@ sha256sums=('f8ec617d2a5fa914e7f17f128eaa494e1877ec3dbb96244b31b48c3071c524f2')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -d "{$pkgdir}/usr/share/fonts/envypn"
-  install -m644 *.pcf.gz "{$pkgdir}/usr/share/fonts/envypn"
-  install -m644 "fonts.alias" "{$pkgdir}/usr/share/fonts/envypn/fonts.alias"
-  install -Dm644 "LICENSE" "{$pkgdir}/usr/share/licenses/envypn/LICENSE"
-  install -Dm644 "README" "{$pkgdir}/usr/share/doc/envypn/README"
+  install -d "${pkgdir}/usr/share/fonts/envypn"
+  install -m644 *.pcf.gz "${pkgdir}/usr/share/fonts/envypn"
+  install -m644 "fonts.alias" "${pkgdir}/usr/share/fonts/envypn/fonts.alias"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/envypn/LICENSE"
+  install -Dm644 "README" "${pkgdir}/usr/share/doc/envypn/README"
 }
 

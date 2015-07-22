@@ -1,7 +1,7 @@
 pkgbase = envypn-font
 	pkgdesc = Readable bitmap font inspired by Envy Code R
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ywstd.fr/me/#envypn
 	install = envypn-font.install
 	changelog = envypn-font.changelog
