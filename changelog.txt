@@ -1,0 +1,5 @@
+# Changelog for git versions. Major items only
+
+* Wine Steam support
+* Sorting on game list
+* Steam starts in silent mode

@@ -1,0 +1,18 @@
+pkgbase = steamcurses-git
+	pkgdesc = Steam Ncurses for both native and wine versions
+	pkgver = 8c106e6
+	pkgrel = 1
+	url = https://github.com/TOTBWF/SteamCurses
+	changelog = changelog.txt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = steam
+	depends = ncurses
+	provides = steamcurses
+	conflicts = steamcurses
+	source = git+https://github.com/TOTBWF/SteamCurses.git
+	sha256sums = SKIP
+
+pkgname = steamcurses-git
+
