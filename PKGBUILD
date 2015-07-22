@@ -5,7 +5,7 @@
 pkgname=z-push
 pkgver=2.2.1
 _pkgrev=1939
-pkgrel=3
+pkgrel=4
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
@@ -35,7 +35,7 @@ md5sums=('6c0e968c1ca07ec65824193d01c016b9'
          '6e87a175d15fce77264ae87ed016b223'
          'b61c194ee4e3e3bf8bfa6a72e6f38019'
          '9637d4164f85cb3fb9a886654645a46c'
-         '73451bc5c35072b22b0b2925c5920978'
+         '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
          '7adcf5e023718421a5e8e07e5e9a2480')
 
 package() {
