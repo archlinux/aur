@@ -32,6 +32,7 @@ prepare(){
 build(){
   cd ${_name}-$pkgver
   ./configure --prefix=/usr --sbindir=/usr/bin --enable-openssl
+  export prefix=/usr  # libite needs this
   make
 }
 
