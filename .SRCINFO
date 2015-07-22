@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-mainline
-	pkgver = 4.3.28
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = virtualbox-modules-mainline
 	makedepends = dkms
 	makedepends = linux-mainline-headers>=4.2rc1
 	makedepends = linux-mainline-headers<4.3rc1
-	makedepends = virtualbox-host-dkms>=4.3.28
-	makedepends = virtualbox-guest-dkms>=4.3.28
+	makedepends = virtualbox-host-dkms>=5.0.0
+	makedepends = virtualbox-guest-dkms>=5.0.0
 	depends = linux-mainline>=4.2rc1
 	depends = linux-mainline<4.3rc1
 

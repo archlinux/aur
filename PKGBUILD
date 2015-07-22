@@ -4,8 +4,8 @@
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
-pkgver=4.3.28
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -14,27 +14,11 @@ makedepends=('dkms' 'linux-mainline-headers>=4.2rc1' 'linux-mainline-headers<4.3
 # remember to also adjust the .install files and the package deps below
 _extramodules=extramodules-4.2-mainline
 
-prepare() {
-  # dkms need modification to be run as user
-  cp -r /var/lib/dkms .
-  echo "dkms_tree='$srcdir/dkms'" > dkms.conf
-
-  # workaround to patch virtualbox-guest for linux 3.19<
-  # credits: Philip Müller <philm@manjaro.org>
-  rm -r $srcdir/dkms/vboxguest/$pkgver/source
-  cp -r /usr/src/vboxguest-$pkgver $srcdir/dkms/vboxguest/$pkgver/source
-  sed -i -e 's|>f_dentry|>f_path.dentry|g' $srcdir/dkms/vboxguest/$pkgver/source/vboxsf/dirops.c
-  sed -i -e 's|>f_dentry|>f_path.dentry|g' $srcdir/dkms/vboxguest/$pkgver/source/vboxsf/regops.c
-}
-
 build() {
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   # dkms need modification to be run as user
-  
-  # NOTE: this is made above in prepare() section
-  # cp -r /var/lib/dkms .
-  # echo "dkms_tree='$srcdir/dkms'" > dkms.conf
-  
+  cp -r /var/lib/dkms .
+  echo "dkms_tree='$srcdir/dkms'" > dkms.conf
   # build host modules
   msg2 'Host modules'
   dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
