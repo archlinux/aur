@@ -1,6 +1,6 @@
 pkgbase = cxxtools-git
 	pkgdesc = A collection of general-purpose C++ classes
-	pkgver = V2.3rc1.r4.ge0ddfff
+	pkgver = 2.3rc1.r4.ge0ddfff
 	pkgrel = 1
 	url = http://www.tntnet.org/cxxtools.html
 	arch = i686

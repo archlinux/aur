@@ -1,7 +1,7 @@
 # Maintainer: Jonas Platte <aur@jonasplatte.de>
 
 pkgname=cxxtools-git
-pkgver=V2.3rc1.r4.ge0ddfff
+pkgver=2.3rc1.r4.ge0ddfff
 pkgrel=1
 pkgdesc="A collection of general-purpose C++ classes"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/-/.r/;s/-/./'
+  git describe --long | sed 's/^V//' | sed 's/-/.r/;s/-/./'
 }
 
 build() {
