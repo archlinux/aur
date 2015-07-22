@@ -2,7 +2,7 @@
 
 pkgname=sabre-zarafa
 pkgver=0.23
-pkgrel=3
+pkgrel=4
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
@@ -75,5 +75,5 @@ package() {
     
     # perform settings
     # => replace carddav_root_uri
-    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1\/sabre-zarafa\3/" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
+    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1\/carddav\3/" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
 }
