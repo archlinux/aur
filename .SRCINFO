@@ -11,7 +11,7 @@ pkgbase = ovmf-git
 	makedepends = python2
 	makedepends = iasl
 	makedepends = nasm
-	provides = ovmf=659.1bf35ac
+	provides = ovmf
 	provides = ovmf-bin
 	provides = ovmf-svn
 	conflicts = ovmf

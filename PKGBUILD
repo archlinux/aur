@@ -36,7 +36,7 @@ makedepends=('git' 'python2' 'iasl' 'nasm')
 options=('!strip' 'docs' '!makeflags')
 
 conflicts=('ovmf' 'ovmf-bin' 'ovmf-svn')
-provides=("ovmf=${pkgver}" 'ovmf-bin' 'ovmf-svn')
+provides=('ovmf' 'ovmf-bin' 'ovmf-svn')
 
 install="${_pkgname}.install"
 
