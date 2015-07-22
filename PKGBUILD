@@ -3,7 +3,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 
 pkgname=purple-whatsapp
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="WhatsApp protocol implementation for libpurple (pidgin)"
 arch=('i686' 'x86_64')
