@@ -1,8 +1,8 @@
 # Maintainer: Jonas Platte <aur@jonasplatte.de>
 
 pkgname=tntnet-git
-pkgver=2.3.pre1.b824f78
-pkgrel=2
+pkgver=2.3rc1.r4.g6c10627
+pkgrel=1
 pkgdesc="A modular, multithreaded, high performance webapplication server for C++"
 arch=('i686' 'x86_64')
 url="http://www.tntnet.org/tntnet.html"
@@ -16,11 +16,9 @@ backup=('etc/tntnet/tntnet.xml')
 source=("$pkgname::git+https://github.com/maekitalo/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
-# This will very likely break if tntnet starts using tags. That is intentional,
-# as the --always will be removed then anyway, requiring an update
 pkgver() {
   cd "$pkgname"
-  echo "2.3.pre1.$(git describe --always)"
+  git describe --long | sed 's/^V//' | sed 's/-/.r/;s/-/./'
 }
 
 build() {
