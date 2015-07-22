@@ -2,7 +2,7 @@
 # Maintainer monty <linksoft [at] gmx [dot] de>
 
 pkgname=libbson
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc='A BSON utility library.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.mongodb.org/display/DOCS/C+Language+Center'
 license=('Apache')
 makedepends=(python)
 source=(https://github.com/mongodb/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('eba60954ec9f11e118a2ee44b92f78dded71aa599806e3289212c2cba0cdb7e33c3c347afcd4297a6cac1d8502ce2b2d00b3e145a6b77233faf731b2319bcff0')
+sha512sums=('636178bafb19e7b103b5192866dbda0c70b8d7173560b0466f88b3a85cce3292a7caac9521808fa8c09d187f8c96564dcd9fb787e855d1619610f813583379bc')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
