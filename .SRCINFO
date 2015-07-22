@@ -1,8 +1,7 @@
 pkgbase = sogo
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/
-	install = sogo.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -23,6 +22,7 @@ pkgbase = sogo
 
 pkgname = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
+	install = sogo.install
 	depends = sope>=2.3.0
 	depends = gnustep-base
 	depends = libmemcached
