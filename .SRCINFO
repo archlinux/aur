@@ -1,0 +1,17 @@
+pkgbase = netmenu
+	pkgdesc = A wifi controller for dmenu
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/tmathmeyer/netmenu
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dmenu
+	optdepends = systemd
+	provides = netmenu
+	conflicts = netmenu
+	source = git://github.com/tmathmeyer/netmenu.git
+	md5sums = SKIP
+
+pkgname = netmenu
+
