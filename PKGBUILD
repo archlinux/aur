@@ -235,7 +235,7 @@ package() {
 
     # freenet
     install -dm755 "$pkgdir"/usr/bin
-    install -dm750 "$pkgdir"/run/freenet
+    install -dm700 "$pkgdir"/run/freenet
     install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf/node,persistent-temp,tmp,plugins/data,user/{data,certs}}
 
     install -m640 "$srcdir"/{wrapper.config,run.sh}            "$pkgdir"/opt/freenet
@@ -260,7 +260,7 @@ package() {
     # systemd
     install -dm755 "$pkgdir"/usr/lib/tmpfiles.d
     install -Dm644 "$srcdir"/freenet.service    "$pkgdir"/usr/lib/systemd/system/freenet.service
-    echo 'd /run/freenet 0750 freenet freenet' >"$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
+    echo 'd /run/freenet 0700 freenet freenet' >"$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
 
     # license
     install -dm755        "$pkgdir"/usr/share/licenses/freenet
