@@ -2,7 +2,7 @@
 
 _pkgname=atticmatic
 pkgname=atticmatic-hg
-pkgver=0.0.6.r2_462b138ca659
+pkgver=0.1.1.r2_3bb266098c1a
 pkgrel=1
 pkgdesc="A simple Python wrapper script for the Attic backup software that initiates a backup and prunes any old backups according to a retention policy."
 arch=('i686' 'x86_64')
