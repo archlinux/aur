@@ -1,0 +1,9 @@
+post_install() {
+	[ ! -z `which update-desktop-database` ]&& update-desktop-database -q
+}
+
+post_remove()
+{
+	echo "You can remove old data from a terminl doing:"
+	echo "rm -r ~/.TelegramDesktop"
+}
