@@ -16,7 +16,7 @@ sha256sums_x86_64=('b1c40d2f49fe8aa40a4f7d9a47ce652e9433359907a70d831773f7fa819f
 _binname=Coinffeine
 
 prepare() {
-  tar -zxvf data.tar.gz
+  tar -Jxvf data.tar.xz
 }
 
 package() {
