@@ -1,0 +1,10 @@
+--- plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp.orig	2015-02-17 12:11:05.062973479 +0000
++++ plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp	2015-02-17 12:11:38.909495002 +0000
+@@ -87,7 +87,6 @@
+   parse_options_set_min_null_count(m_Opts, 0);
+   parse_options_set_max_null_count(m_Opts, 0);
+   parse_options_set_islands_ok(m_Opts, 0);
+-  parse_options_set_panic_mode(m_Opts, TRUE);
+   parse_options_reset_resources(m_Opts);
+   UT_sint32 num_linkages = sentence_parse(sent, m_Opts);
+   bool res =  (num_linkages >= 1);

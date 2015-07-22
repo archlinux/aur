@@ -1,0 +1,45 @@
+--- abiword-3.0.0/plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp.orig	2014-06-29 14:50:30.000000000 -0500
++++ abiword-3.0.0/plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp	2014-06-29 14:55:39.000000000 -0500
+@@ -145,12 +145,11 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 	  }
+ 	  AbiGrammarError * pWordMap = new  AbiGrammarError();
+ 	  pWordMap->m_iErrLow = iLow;
+-	  pWordMap->m_iErrHigh = iLow + strlen(sentence_get_nth_word(sent, i));
++	  pWordMap->m_iErrHigh = iLow + strlen(linkage_get_word(linkage, i));
+ 	  pWordMap->m_iWordNum = i;
+ 	  vecMapOfWords.addItem(pWordMap);
+ 	  bool bNew = false;
+-	  if(!sentence_nth_word_has_disjunction(sent, i))
+-	  {
++
+ 	    //UT_DEBUGMSG(("|%s| NULL LINK\n",sent->word[i].string));
+ 	    if(pErr == NULL)
+ 	    {
+@@ -167,7 +166,7 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 		}
+ 		pErr = new AbiGrammarError();
+ 	      }
+-	      iHigh = iLow + strlen(sentence_get_nth_word(sent, i));
++	      iHigh = iLow + strlen(linkage_get_word(linkage, i));
+ 	      pErr->m_iErrLow = iLow + iOff -1;
+ 	      pErr->m_iErrHigh = iHigh + iOff -1;
+ 	      if(pErr->m_iErrLow < 0)
+@@ -188,7 +187,7 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 	      //
+ 	      // Expand the sqiggle
+ 	      //
+-	      iHigh = iLow + strlen(sentence_get_nth_word(sent, i)) + iOff;
++	      iHigh = iLow + strlen(linkage_get_word(linkage, i)) + iOff;
+ 	      pErr->m_iErrHigh = iHigh;
+ 	      if(pErr->m_iErrHigh < totlen-1)
+ 	      {
+@@ -196,8 +195,7 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 	      }
+ 	      pErr->m_iWordNum = i;
+ 	    }
+-	  }
+-	  iLow += strlen(sentence_get_nth_word(sent, i));
++	  iLow += strlen(linkage_get_word(linkage, i));
+ 	}
+ 	//
+ 	// No NULL links but still an error , mark the whole sentence bad.

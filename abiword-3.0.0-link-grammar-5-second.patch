@@ -1,0 +1,35 @@
+--- abiword-3.0.0/plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp.orig	2014-06-30 08:21:30.000000000 -0500
++++ abiword-3.0.0/plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp	2014-06-30 08:27:01.000000000 -0500
+@@ -220,6 +220,7 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 	  pErr = NULL;
+ 	}
+ 
++#ifdef DEAD_DEBUG_CODE
+ 	//	  for(i=0; i< pT->m_vecGrammarErrors.getItemCount(); i++)
+ 	// {
+ 	//    pErr = pT->m_vecGrammarErrors.getNthItem(i);
+@@ -227,15 +228,10 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 	//  }
+ 	UT_UTF8String sErr = linkage_get_violation_name(linkage);
+ 	//	UT_DEBUGMSG(("Top Level error message |%s|\n",sErr.utf8_str()));
+-	UT_sint32 count = linkage_get_num_sublinkages(linkage);
+ 	//
+ 	// Find linkages with violations
+ 	//
+-	for(i=0; i<count;i++)
+ 	{
+-	  UT_sint32 iok = linkage_set_current_sublinkage(linkage, i);
+-	  if(iok == 0)
+-	    continue;
+ 	  UT_sint32 j = 0;
+ 	  UT_sint32 iNum = linkage_get_num_links(linkage);
+ 	  for(j=0;j< iNum;j++)
+@@ -252,6 +248,8 @@ bool LinkGrammarWrap::parseSentence(Piec
+ 	  }
+ 	}
+ 	linkage_delete(linkage);
++#endif // DEAD_DEBUG_CODE
++
+ 	for(i=0; i<  vecMapOfWords.getItemCount(); i++)
+ 	{
+ 	  AbiGrammarError * p = vecMapOfWords.getNthItem(i);
