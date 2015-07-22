@@ -4,7 +4,7 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=0.12.1
+pkgver=0.13
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
@@ -17,17 +17,18 @@ depends=('python2-netlib' 'python2-pyasn1' 'python2-pyopenssl'
 optdepends=('python2-pyamf: Contentviews - Decodes AMF files'
             'python2-protobuf: Contentviews - Extended content decoding'
             'python2-cssutils: Contentviews - Beautifies CSS files')
-conflicts=('mitmproxy-git')
+makedepends=('git')
+checkdepends=('python2-nose' 'pathod' 'python2-mock')  # python2-html2text
 provides=('python2-libmproxy')
-source=("http://mitmproxy.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('a7a59faa1f79a97c5cbd7acdaca72cfbf9903b9e39823226bc5d8a30efc07e70')
+source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/^#\!\/usr\/bin\/env python$/#\!\/usr\/bin\/env python2/' libmproxy/contrib/html2text.py
+check() {
+  cd "$srcdir/$pkgname"
+  nosetests2 || warning "Failures should be related to missing html2text"
 }
  
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   python2 setup.py install --root="$pkgdir" -O1
 }
