@@ -1,0 +1,19 @@
+pkgbase = tmate
+	pkgdesc = Instant terminal sharing
+	pkgver = 1.8.10
+	pkgrel = 1
+	url = http://tmate.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = libevent
+	makedepends = ncurses
+	makedepends = openssl
+	makedepends = zlib
+	makedepends = ruby
+	source = pedantic.patch
+	md5sums = 452225069476d70bc24fce03a152a489
+
+pkgname = tmate
+
