@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'plasma-framework-git')
 conflicts=('kinfocenter' 'kdebase-workspace')
 provides=('kinfocenter')
 source=('git://anongit.kde.org/kinfocenter.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
