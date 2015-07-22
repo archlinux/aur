@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
+# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgbase=vte3-notification
