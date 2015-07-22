@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 conflicts=('khelpcenter' 'kdebase-runtime')
 provides=('khelpcenter')
 source=('git://anongit.kde.org/khelpcenter.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
