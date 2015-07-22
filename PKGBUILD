@@ -13,6 +13,7 @@ provides=(bluedevil)
 conflicts=(bluedevil)
 install=$pkgname.install
 source=("git://anongit.kde.org/bluedevil.git")
+groups=('plasma')
 sha256sums=('SKIP')
 
 pkgver() {
