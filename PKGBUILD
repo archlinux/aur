@@ -1,4 +1,4 @@
-# Maintainer: notfoss <AT> gmx.com
+# Maintainer: gt <AT> notfoss.com
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname="lnav-git"
