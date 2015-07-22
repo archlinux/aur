@@ -2,7 +2,7 @@
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=atlassian-confluence
-pkgver=5.8.5
+pkgver=5.8.6
 pkgrel=1
 pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
@@ -19,7 +19,7 @@ install='confluence.install'
 source=("http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-$pkgver.tar.gz"
         'confluence.conf.d'
         'confluence.service')
-sha256sums=('5def693857255bd9e890ab2b621b80aa188c37f0a48dd1b44ef73b7d9d852e2a'
+sha256sums=('07cb225379426ecf38e7f403293d652de134d4702a5d0b399ce4e7e12e8e9893'
             '0cf76082cf11c04131ad03cf784c7d58152c2c20bfdcbe9809e552cfd42ae9a3'
             '7017750e78fbe0611111ccc00a44f31a93241c4f924a893875804d50d085f9dd')
 
