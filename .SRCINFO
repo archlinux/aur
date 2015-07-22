@@ -1,0 +1,25 @@
+pkgbase = zarafa-webaccess
+	pkgdesc = Open Source Groupware Solution
+	pkgver = 7.2.0
+	pkgrel = 7
+	url = http://www.zarafa.com/
+	install = install
+	arch = any
+	license = AGPL3
+	makedepends = gettext
+	depends = php
+	source = zarafa-7.2.0.tar.gz::http://download.zarafa.com/community/final/7.2/7.2.0-48204/sourcecode/zarafa-7.2.0.tar.gz
+	source = nginx-location.conf
+	source = nginx-ssl.example.conf
+	source = php-fpm.example.conf
+	source = zarafa-webaccess.conf
+	source = zarafa-webaccess.ini
+	md5sums = 7dc8a526b3eb83e6eb5bbc9d2215b501
+	md5sums = bdb65922b267d27f4602026f3c55423f
+	md5sums = 73451bc5c35072b22b0b2925c5920978
+	md5sums = 7adcf5e023718421a5e8e07e5e9a2480
+	md5sums = 38ce6fbf16357ded687db57d5ef581bd
+	md5sums = daedd4114b213e9279806ee720eeb1ef
+
+pkgname = zarafa-webaccess
+
