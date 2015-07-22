@@ -2,8 +2,8 @@
 # Contributor: Andre Osku Schmidt (oskude) <(andre.osku.schmidt) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ################
-_TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/trunk/edk2"
-_TIANO_DIR_="tianocore-edk2-svn"
+_TIANOCORE_GIT_URL="https://github.com/tianocore/edk2"
+_TIANO_DIR_="edk2"
 ################
 
 ################
@@ -18,39 +18,39 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2c"
+_OPENSSL_VERSION="1.0.2d"
 ################
 
 _pkgname="ovmf"
-pkgname="${_pkgname}-svn"
+pkgname="${_pkgname}-git"
 
-pkgver=17722
+pkgver=659.1bf35ac
 pkgrel=1
-pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
+pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
 url="https://tianocore.github.io/ovmf/"
 arch=('x86_64' 'i686')
 license=('BSD')
 
-makedepends=('subversion' 'python2' 'iasl' 'nasm')
+makedepends=('git' 'python2' 'iasl' 'nasm')
 
 options=('!strip' 'docs' '!makeflags')
 
-conflicts=('ovmf' 'ovmf-tianocore-edk2' 'ovmf-tianocore-edk2-svn')
-provides=("ovmf=${pkgver}" "ovmf-tianocore-edk2=${pkgver}" "ovmf-tianocore-edk2-svn=${pkgver}")
+conflicts=('ovmf' 'ovmf-bin' 'ovmf-svn')
+provides=("ovmf=${pkgver}" 'ovmf-bin' 'ovmf-svn')
 
 install="${_pkgname}.install"
 
 source=("https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
+	source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
 done
 
 for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellPkg FatBinPkg OvmfPkg ; do
-	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
+	source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
 done
 
-sha1sums=('6e4a5e91159eb32383296c7c83ac0e59b83a0a44'
+sha1sums=('d01d17b44663e8ffa6a33a5a30053779d9593c3d'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -69,8 +69,8 @@ noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
 pkgver() {
 	
-	cd "${srcdir}/${_TIANO_DIR_}_OvmfPkg/"
-	echo "$(svnversion)" | tr -d [A-z]
+	cd "${srcdir}/${_TIANO_DIR_}-OvmfPkg/"
+	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
 	
 }
 
@@ -86,7 +86,7 @@ _bail_out() {
 _setup_env_vars() {
 	
 	msg "Setup UDK PATH ENV variables"
-	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
+	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
 	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
 	
 }
@@ -100,11 +100,11 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/"
 	
 	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}_${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
 	done
 	
 	for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellPkg FatBinPkg OvmfPkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}_${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
 	done
 	
 	cd "${_UDK_DIR}/"

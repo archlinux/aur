@@ -1,41 +1,41 @@
-pkgbase = ovmf-svn
-	pkgdesc = UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version
-	pkgver = 17722
+pkgbase = ovmf-git
+	pkgdesc = UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version
+	pkgver = 659.1bf35ac
 	pkgrel = 1
 	url = https://tianocore.github.io/ovmf/
 	install = ovmf.install
 	arch = x86_64
 	arch = i686
 	license = BSD
-	makedepends = subversion
+	makedepends = git
 	makedepends = python2
 	makedepends = iasl
 	makedepends = nasm
-	provides = ovmf=17722
-	provides = ovmf-tianocore-edk2=17722
-	provides = ovmf-tianocore-edk2-svn=17722
+	provides = ovmf=659.1bf35ac
+	provides = ovmf-bin
+	provides = ovmf-svn
 	conflicts = ovmf
-	conflicts = ovmf-tianocore-edk2
-	conflicts = ovmf-tianocore-edk2-svn
-	noextract = openssl-1.0.2c.tar.gz
+	conflicts = ovmf-bin
+	conflicts = ovmf-svn
+	noextract = openssl-1.0.2d.tar.gz
 	options = !strip
 	options = docs
 	options = !makeflags
-	source = https://www.openssl.org/source/openssl-1.0.2c.tar.gz
-	source = tianocore-edk2-svn_BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
-	source = tianocore-edk2-svn_MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
-	source = tianocore-edk2-svn_MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
-	source = tianocore-edk2-svn_IntelFrameworkPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/IntelFrameworkPkg
-	source = tianocore-edk2-svn_IntelFrameworkModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/IntelFrameworkModulePkg
-	source = tianocore-edk2-svn_PcAtChipsetPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/PcAtChipsetPkg
-	source = tianocore-edk2-svn_UefiCpuPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/UefiCpuPkg
-	source = tianocore-edk2-svn_OptionRomPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/OptionRomPkg
-	source = tianocore-edk2-svn_CryptoPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/CryptoPkg
-	source = tianocore-edk2-svn_SecurityPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/SecurityPkg
-	source = tianocore-edk2-svn_ShellPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellPkg
-	source = tianocore-edk2-svn_FatBinPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/FatBinPkg
-	source = tianocore-edk2-svn_OvmfPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/OvmfPkg
-	sha1sums = 6e4a5e91159eb32383296c7c83ac0e59b83a0a44
+	source = https://www.openssl.org/source/openssl-1.0.2d.tar.gz
+	source = edk2-BaseTools::git+https://github.com/tianocore/edk2-BaseTools.git#branch=master
+	source = edk2-MdePkg::git+https://github.com/tianocore/edk2-MdePkg.git#branch=master
+	source = edk2-MdeModulePkg::git+https://github.com/tianocore/edk2-MdeModulePkg.git#branch=master
+	source = edk2-IntelFrameworkPkg::git+https://github.com/tianocore/edk2-IntelFrameworkPkg.git#branch=master
+	source = edk2-IntelFrameworkModulePkg::git+https://github.com/tianocore/edk2-IntelFrameworkModulePkg.git#branch=master
+	source = edk2-PcAtChipsetPkg::git+https://github.com/tianocore/edk2-PcAtChipsetPkg.git#branch=master
+	source = edk2-UefiCpuPkg::git+https://github.com/tianocore/edk2-UefiCpuPkg.git#branch=master
+	source = edk2-OptionRomPkg::git+https://github.com/tianocore/edk2-OptionRomPkg.git#branch=master
+	source = edk2-CryptoPkg::git+https://github.com/tianocore/edk2-CryptoPkg.git#branch=master
+	source = edk2-SecurityPkg::git+https://github.com/tianocore/edk2-SecurityPkg.git#branch=master
+	source = edk2-ShellPkg::git+https://github.com/tianocore/edk2-ShellPkg.git#branch=master
+	source = edk2-FatBinPkg::git+https://github.com/tianocore/edk2-FatBinPkg.git#branch=master
+	source = edk2-OvmfPkg::git+https://github.com/tianocore/edk2-OvmfPkg.git#branch=master
+	sha1sums = d01d17b44663e8ffa6a33a5a30053779d9593c3d
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
@@ -50,5 +50,5 @@ pkgbase = ovmf-svn
 	sha1sums = SKIP
 	sha1sums = SKIP
 
-pkgname = ovmf-svn
+pkgname = ovmf-git
 
