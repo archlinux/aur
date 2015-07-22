@@ -19,10 +19,6 @@ pkgver () {
 	)
 }
 
-build () {
-	:
-}
-
 package () {
 	cd "${pkgname}"
 	install -dm755 "${pkgdir}/usr/share/icons/Vertex-Icons"
