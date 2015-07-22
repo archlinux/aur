@@ -1,0 +1,29 @@
+pkgbase = tcp_wrappers
+	pkgdesc = Monitors and Controls incoming TCP connections
+	pkgver = 7.6
+	pkgrel = 16
+	url = ftp://ftp.porcupine.org/pub/security/index.html
+	arch = i686
+	arch = x86_64
+	arch = armv5te
+	arch = armv6h
+	arch = armv6l
+	arch = armv7h
+	arch = armv7l
+	groups = base
+	license = custom
+	depends = bash
+	depends = glibc
+	backup = etc/hosts.allow
+	backup = etc/hosts.deny
+	source = ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz
+	source = http://archlinux-stuff.googlecode.com/files/tcp-wrappers-7.6%2B.patch.gz
+	source = hosts.allow
+	source = hosts.deny
+	md5sums = e6fa25f71226d090f34de3f6b122fb5a
+	md5sums = 3e786669e16b78ba726f948ddb73c9db
+	md5sums = 32cfeeed797161034f62bb45f3167baa
+	md5sums = e4743ca604a1749c7312f9283b4bb0d1
+
+pkgname = tcp_wrappers
+
