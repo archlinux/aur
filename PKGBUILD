@@ -173,7 +173,6 @@ build_jbigi() {
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
     gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjbigi-linux-none.so jbigi.o
-    plain "done"
 }
 
 build_nativethread() {
@@ -186,7 +185,6 @@ build_nativethread() {
     javah -o NativeThread.h -classpath ../../fred/src freenet.support.io.NativeThread
     gcc -c $CFLAGS $INCLUDES NativeThread.c
     gcc $LDFLAGS $INCLUDES -o "$_objdir"/libNativeThread-${__arch}.so NativeThread.o
-    plain "done"
 }
 
 build_jcpuid() {
@@ -198,7 +196,6 @@ build_jcpuid() {
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
     gcc -c $CFLAGS $INCLUDES src/jcpuid.c
     gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjcpuid-${_arch}-linux.so jcpuid.o
-    plain "done"
 }
 
 build_fec() {
@@ -209,7 +206,6 @@ build_fec() {
     _DEST="../../bin/lib/linux-${_arch}"
     mkdir -p "$_DEST"
     cp libfec*.so "$_DEST"
-    plain "done"
 }
 
 build_plugins() {
