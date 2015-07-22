@@ -1,0 +1,18 @@
+pkgbase = python-hieroglyph-git
+	pkgdesc = hieroglyph is an extension for Sphinx which builds HTML5 slides from ReStructured Text documents.
+	pkgver = 0.7.1.r11.g6861328
+	pkgrel = 1
+	url = http://yergler.net/projects/hieroglyph/
+	arch = any
+	license = BSD
+	makedepends = python-distribute
+	makedepends = git
+	depends = python
+	depends = python-sphinx
+	provides = python-hieroglyph
+	conflicts = python-hieroglyph
+	source = git://github.com/nyergler/hieroglyph.git
+	md5sums = SKIP
+
+pkgname = python-hieroglyph-git
+
