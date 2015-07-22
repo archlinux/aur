@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libepoxy
 	pkgdesc = A library for handling OpenGL function pointer management for you (mingw-w64)
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/anholt/libepoxy
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-libepoxy
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = libepoxy-1.2.tar.gz::https://github.com/anholt/libepoxy/archive/v1.2.tar.gz
-	sha256sums = 42c328440f60a5795835c5ec4bdfc1329e75bba16b6e22b3a87ed17e9679e8f6
+	source = https://github.com/anholt/libepoxy/releases/download/v1.3.1/libepoxy-1.3.1.tar.bz2
+	sha256sums = 1d8668b0a259c709899e1c4bab62d756d9002d546ce4f59c9665e2fc5f001a64
 
 pkgname = mingw-w64-libepoxy
 
