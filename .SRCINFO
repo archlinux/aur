@@ -1,7 +1,7 @@
 pkgbase = autotrace
 	pkgdesc = An utility to trace bitmaps: convert bitmaps to vector graphics
 	pkgver = 0.31.1
-	pkgrel = 12
+	pkgrel = 13
 	url = http://autotrace.sourceforge.net/
 	arch = i686
 	arch = x86_64

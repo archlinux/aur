@@ -4,7 +4,7 @@
 
 pkgname=autotrace
 pkgver=0.31.1
-pkgrel=12
+pkgrel=13
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
 arch=('i686' 'x86_64')
 url='http://autotrace.sourceforge.net/'
