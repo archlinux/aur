@@ -16,5 +16,5 @@ build() {
 
 package() {
   cd "${srcdir}/update-conf.d"
-  make CONFIGDIR="${pkgdir}/etc" INSTALLDIR="${pkgdir}/usr" SBINDIR="${pkgdir}/bin" install
+  make CONFIGDIR="${pkgdir}/etc" INSTALLDIR="${pkgdir}/usr" SBINDIR="${pkgdir}/usr/bin" install
 }
