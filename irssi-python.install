@@ -1,0 +1,9 @@
+post_install() {
+    echo ""
+    echo "Documentation can be found in /usr/share/doc/irssi/irssi-python.html"
+    echo "To load the python module automatically add \"load python\" to ~/.irssi/startup"
+    echo ""
+    echo "Also, if irssi is currently running, restart it."
+}
+
+
