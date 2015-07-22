@@ -1,8 +1,8 @@
 # Maintainer: Jonas Platte <aur@jonasplatte.de>
 
 pkgname=cxxtools-git
-pkgver=2.2.2.97e42ae
-pkgrel=2
+pkgver=V2.3rc1.r4.ge0ddfff
+pkgrel=1
 pkgdesc="A collection of general-purpose C++ classes"
 arch=('i686' 'x86_64')
 url="http://www.tntnet.org/cxxtools.html"
@@ -14,11 +14,9 @@ conflicts=('cxxtools')
 source=("$pkgname::git+https://github.com/maekitalo/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
-# This will very likely break if cxxtools starts using tags. That is intentional,
-# as the --always will be removed then anyway, requiring an update
 pkgver() {
   cd "$pkgname"
-  echo "2.2.2.$(git describe --always)"
+  git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 build() {
