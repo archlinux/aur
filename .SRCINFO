@@ -1,0 +1,22 @@
+pkgbase = cl-matlisp-git
+	pkgdesc = BLAS and LAPACK linear algebra library wrapper which makes their features accessible through a set of CLOS classes
+	pkgver = r955.96cc6aa
+	pkgrel = 1
+	url = https://github.com/matlisp/matlisp/
+	install = cl-matlisp-git.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	depends = cl-cffi
+	depends = cl-iterate
+	depends = cl-optima
+	depends = cl-lambda-reader
+	depends = cl-trivial-garbage
+	provides = matlisp
+	source = git+https://github.com/matlisp/matlisp.git#branch=t2
+	md5sums = SKIP
+
+pkgname = cl-matlisp-git
+
