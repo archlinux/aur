@@ -4,8 +4,8 @@
 # Contributor: tlm
 
 pkgname=gimagereader
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="A graphical frontend to tesseract-ocr"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gimagereader/"
@@ -16,9 +16,9 @@ depends=('hicolor-icon-theme' 'sane' 'tesseract' 'qtspell' 'poppler-qt4')
 makedepends=('desktop-file-utils' 'intltool')
 install=${pkgname}.install
 source=(
-  "http://sourceforge.net/projects/gimagereader/files/${pkgver}/${pkgname}-${pkgver}.tar.xz"
+  "https://github.com/manisandro/gImageReader/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
 )
-sha256sums=('461ae7fac1dc0e0b85f30a8237ddd2684ee77061645d3f77747d0079f5093638')
+sha256sums=('1fbe97554e37902f143c53ad122c0dcb5ca2dcebba53a9f8c8da727cbb0dcaf2')
 
 build() {
   cd "$pkgname-$pkgver"
