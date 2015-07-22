@@ -3,7 +3,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=mock
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc='A simple chroot build environment manager for building RPMs'
 url='http://fedoraproject.org/wiki/Projects/Mock'
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 options=('!strip' 'libtool' 'staticlibs')
 
 source=("https://git.fedorahosted.org/cgit/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('00726cb5ec38692d8631cb26fae85a8ad1d28b66fac2694eaec6779276b7334b')
+sha256sums=('6787ad35ff1478a4817b15be1998ef1986487de4051ff2af37254b909a95e2aa')
 
 build() {
     cd "${pkgname}-${pkgver}"
