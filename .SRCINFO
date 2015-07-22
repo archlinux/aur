@@ -8,7 +8,7 @@ pkgbase = wp-cli
 	depends = php
 	source = https://github.com/wp-cli/wp-cli/archive/v0.19.2.tar.gz
 	source = https://raw.githubusercontent.com/wp-cli/wp-cli/v0.19.2/utils/wp-completion.bash
-	md5sums = 13a86a482262dd38d00ae28b66a82534
+	md5sums = a1f59e3264a19e656d0e7c8223dadcce
 	md5sums = 696410d404d8c0ad2e10a223302effe6
 
 pkgname = wp-cli
