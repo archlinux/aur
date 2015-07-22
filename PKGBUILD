@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 conflicts=('systemsettings' 'kde-workspace<0')
 provides=('systemsettings')
 source=('git://anongit.kde.org/systemsettings.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
