@@ -175,11 +175,9 @@ package() {
 
   cp out/Release/{*.pak,*.bin} "$pkgdir/usr/lib/chromium/"
 
-
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
     "$pkgdir/usr/lib/chromium/chromedriver"
-  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so"
 
   if (( $_build_nacl )); then
     cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
