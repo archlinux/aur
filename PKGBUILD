@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 conflicts=('kwrited')
 provides=('kwrited')
 source=('git://anongit.kde.org/kwrited.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
