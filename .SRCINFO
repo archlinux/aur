@@ -1,7 +1,7 @@
 pkgbase = mkinitcpio-dropbear
 	pkgdesc = Archlinux mkinitcpio hook to install and enable the dropbear daemon in early userspace
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grazzolini/mkinitcpio-dropbear
 	install = mkinitcpio-dropbear.install
 	changelog = ChangeLog

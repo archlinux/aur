@@ -10,7 +10,7 @@ post_install() {
     "cat ~/.ssh/id_rsa.pub > /etc/dropbear/root_key". 
     
     Afterwards add the "dropbear" hook after any networking hook (netconf/ppp)
-    and before any shell provided with the mkinitcpio-shells package in the
+    and before any hook provided with the mkinitcpio-utils package in the
     "HOOKS" array in "/etc/mkinitcpio.conf". Finally rebuild the initramsfs
     ("mkinitcpio -p linux").
 INSTALLEOF
