@@ -31,6 +31,10 @@ build() {
 
     autoreconf -fi
     ./configure ${_configure_args}
+    
+    # Thanks goes to haawda at this point
+    sed -i '320s+@LIBPNG_LDFLAGS@+-lpng16+' Makefile
+    
     make
 }
 
