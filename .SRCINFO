@@ -1,0 +1,19 @@
+pkgbase = sopcast-player
+	pkgdesc = GUI front-end for p2p TV sopcast
+	pkgver = 0.8.5
+	pkgrel = 2
+	url = http://code.google.com/p/sopcast-player/
+	install = sopcast-player.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = pygtk
+	depends = sopcast
+	depends = vlc
+	source = http://sopcast-player.googlecode.com/files/sopcast-player-0.8.5.tar.gz
+	md5sums = 731e2f2a9c9af4ec4c92321fae9a2fea
+
+pkgname = sopcast-player
+
