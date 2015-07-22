@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'qt5-tools')
 conflicts=('sddm-kcm')
 provides=('sddm-kcm')
 source=("git://anongit.kde.org/sddm-kcm.git")
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {

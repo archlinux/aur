@@ -5,6 +5,7 @@ pkgbase = sddm-kcm-git
 	url = https://projects.kde.org/projects/kdereview/sddm-kcm/
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
