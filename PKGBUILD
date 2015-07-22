@@ -2,7 +2,7 @@
 
 pkgname=8085-simulator
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Jubin's 8085 Simulator with Trainer Kit, written in Java"
 arch=('any')
 url="https://8085simulator.codeplex.com"
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.jar::http://download-codeplex.sec.s-msft.com/Downl
         "${pkgname}.desktop")
 noextract=("8085-simulator-2.0.jar")
 sha256sums=("9ca0323f74e9cf5db13476a65c563bcf52ebf13dceb92a1f472b6d35bf7dd01e"
-            "3f0a6856e16655e53ef70780a73fdfa516db2dc1c5be5727e3477087f5d77f32"
+            "5ee001588d0af1839c5bf2d37e3da2b5a2826a49c824441a14e9c078eb2bdb91"
             "596e4a94073169a2d5e10f2dee9109a9646f64172b5af258beafe043ad273e76")
 
 package() {
