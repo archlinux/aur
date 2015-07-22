@@ -26,6 +26,7 @@ package() {
   install -Dm755 bin/flickloop $pkgdir/usr/bin/flickloop
   install -Dm755 bin/flickd    $pkgdir/usr/bin/flickd
   install -Dm755 share/flickpapr/flickr-icon-64.png    $pkgdir/usr/share/flickpapr/flickr-icon-64.png
+  install -d -Dm755 $pkgdir/usr/share/flickpapr/
   install -Dm755 share/flickpapr/flickr-icon-bw-64.png $pkgdir/usr/share/flickpapr/flickr-icon-bw-64.png 
 }
 
