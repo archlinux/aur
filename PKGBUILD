@@ -12,7 +12,6 @@ arch=('any')
 url=('http://www.zarafa.com/')
 license=('AGPL3')
 install=('install')
-backup=("etc/webapps/zarafa-webapp/config.php")
 depends=('php')
 makedepends=('apache-ant'
 	     'gettext')
