@@ -1,13 +1,13 @@
 pkgbase = vertex-icons-git
 	pkgdesc = A Gnome icon theme to match the Vertex Gtk theme
 	pkgver = r16.f27e47e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/horst3180/Vertex-Icons/
 	install = vertex-icons-git.install
 	arch = any
 	license = GPL
-	depends = moka-icon-theme-git
-	depends = faba-mono-icons-git
+	optdepends = moka-icon-theme-git: Default fall-back icon theme
+	optdepends = faba-mono-icons-git: Default fall-back icon theme
 	source = vertex-icons-git::git://github.com/horst3180/Vertex-Icons.git
 	sha512sums = SKIP
 
