@@ -6,7 +6,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=43.0.2357.134
+pkgver=44.0.2403.89
 pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -31,14 +31,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium.desktop
         0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
         0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
-        add-build-flag-to-disable-hotwording.patch
         chromium-widevine.patch)
-sha256sums=('d3a1bbe3e1445dfcf5ef4aff4b11a8f3770436c8b8954b7cc5fee5416f117659'
+sha256sums=('badd9aa979487b55bbcce4f54ec16926c6fa7eb46ec2536866200a5e68853a98'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
             '8fb428244be7b50268a2848a34405c5551232e5c77f9e553cfdd3103979748d2'
-            '3a1c589aa90c0597776d945d34638d43e2d40d93bc1962148815831a5122ac4e'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -66,12 +64,6 @@ prepare() {
 
   # https://code.google.com/p/chromium/issues/detail?id=490260
   patch -Np1 -i ../0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
-
-  # Add build flag to disable 'Ok Google' hotwording feature
-  # The issue with this functionality is that it downloads a binary blob
-  # and that this behavior cannot be disabled if a user wishes to do so.
-  # https://code.google.com/p/chromium/issues/detail?id=491435
-  patch -Np1 -i ../add-build-flag-to-disable-hotwording.patch
 
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
@@ -149,7 +141,6 @@ build() {
     -Dusb_ids_path=/usr/share/hwdata/usb.ids
     -Duse_mojo=0
     -Duse_gconf=0
-    -Denable_hotwording=0
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
 
@@ -182,8 +173,8 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
 
-  cp out/Release/{*.pak,*.bin,libffmpegsumo.so} \
-    "$pkgdir/usr/lib/chromium/"
+  cp out/Release/{*.pak,*.bin} "$pkgdir/usr/lib/chromium/"
+
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
