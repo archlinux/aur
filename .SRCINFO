@@ -1,6 +1,6 @@
 pkgbase = projectascension-dev-git
 	pkgdesc = Community-driven open source gaming client
-	pkgver = 0
+	pkgver = rfb7a622.258
 	pkgrel = 1
 	url = http://www.projectascension.io
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = projectascension-dev-git
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-webkit
+	conflicts = projectascension-git
 	source = projectascension::git+https://www.github.com/Proj-Ascension/Client#branch=dev
 	md5sums = SKIP
 
