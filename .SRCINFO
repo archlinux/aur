@@ -5,6 +5,7 @@ pkgbase = plasma-mediacenter-git
 	url = http://community.kde.org/Plasma/Plasma_Media_Center/
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = GPL3
 	makedepends = git
 	makedepends = cmake

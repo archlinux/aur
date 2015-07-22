@@ -11,6 +11,7 @@ makedepends=('git' 'cmake' 'baloo')
 conflicts=('plasma-mediacenter')
 provides=('plasma-mediacenter')
 source=('git://anongit.kde.org/plasma-mediacenter.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 _gitname="plasma-mediacenter"
