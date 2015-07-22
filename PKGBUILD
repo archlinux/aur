@@ -7,7 +7,7 @@
 pkgname=gpicview-gtk3
 _pkgname=gpicview
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight image viewer (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -22,11 +22,13 @@ install=$_pkgname.install
 source=(http://downloads.sourceforge.net/sourceforge/lxde/$_pkgname-$pkgver.tar.gz
         0001-Remove-Utility-from-desktop-categories.patch
         0002-Beautify-GtkBuilder-UI-file-without-modification.patch
-        0003-Some-fixes-for-GTK-3.patch)
+        0003-Some-fixes-for-GTK-3.patch
+        0001-Set-default-size-for-scale-widgets.patch)
 md5sums=('b209e36531f89c48e3067b389699d4c7'
          'aa9950bccb95ff4bffd7e44c7e8750ec'
          'd5e57f50c0831c4e014cd1d7247f941b'
-         '9ed0daa0f6f2d74ae67c5a437b77e501')
+         '9ed0daa0f6f2d74ae67c5a437b77e501'
+         'be6eaf41f862d4eed9f42ccd9581fcca')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -37,6 +39,7 @@ prepare() {
   # Some fixes for GTK+ 3
   patch -Np1 -i ../0002-Beautify-GtkBuilder-UI-file-without-modification.patch
   patch -Np1 -i ../0003-Some-fixes-for-GTK-3.patch
+  patch -Np1 -i ../0001-Set-default-size-for-scale-widgets.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = gpicview-gtk3
 	pkgdesc = Lightweight image viewer (GTK+ 3 version)
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lxde.org/
 	install = gpicview.install
 	arch = i686
@@ -18,10 +18,12 @@ pkgbase = gpicview-gtk3
 	source = 0001-Remove-Utility-from-desktop-categories.patch
 	source = 0002-Beautify-GtkBuilder-UI-file-without-modification.patch
 	source = 0003-Some-fixes-for-GTK-3.patch
+	source = 0001-Set-default-size-for-scale-widgets.patch
 	md5sums = b209e36531f89c48e3067b389699d4c7
 	md5sums = aa9950bccb95ff4bffd7e44c7e8750ec
 	md5sums = d5e57f50c0831c4e014cd1d7247f941b
 	md5sums = 9ed0daa0f6f2d74ae67c5a437b77e501
+	md5sums = be6eaf41f862d4eed9f42ccd9581fcca
 
 pkgname = gpicview-gtk3
 
