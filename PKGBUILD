@@ -13,6 +13,7 @@ conflicts=(polkit-kde-agent polkit-kde-git)
 provides=(polkit-kde-agent)
 replaces=(polkit-kde-git)
 source=('git://anongit.kde.org/polkit-kde-agent-1.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {

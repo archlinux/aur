@@ -5,6 +5,7 @@ pkgbase = polkit-kde-agent-git
 	url = https://projects.kde.org/projects/kde/workspace/polkit-kde-agent-1
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
