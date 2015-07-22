@@ -3,7 +3,7 @@
 
 pkgname=clfft
 pkgver=2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A software library containing FFT functions written in OpenCL"
 arch=("i686" "x86_64")
 url="https://github.com/clMathLibraries/clFFT"
@@ -25,7 +25,6 @@ fi
 build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
-  echo `pwd`
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "../clFFT-${pkgver}/src"
   make
 }
