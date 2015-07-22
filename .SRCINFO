@@ -12,6 +12,7 @@ pkgbase = guile-git
 	depends = libtool
 	depends = libffi
 	depends = libunistring
+	optdepends = texinfo: for using texinfo scheme sources
 	provides = guile
 	conflicts = guile
 	conflicts = guile-devel
