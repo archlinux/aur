@@ -1,7 +1,7 @@
 # Maintainer: Jonas Platte <aur@jonasplatte.de>
 
 pkgname=tntdb-git
-pkgver=1.3.1.3dd171f
+pkgver=1.4rc1.r1.gef30fa1
 pkgrel=1
 pkgdesc="A C++ library for easy and robust access of SQL databases"
 arch=('i686' 'x86_64')
@@ -14,11 +14,9 @@ conflicts=('tntdb')
 source=("$pkgname::git+https://github.com/maekitalo/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
-# This will very likely break if tntdb starts using tags. That is intentional,
-# as the --always will be removed then anyway, requiring an update
 pkgver() {
   cd "$pkgname"
-  echo "1.3.1.$(git describe --always)"
+  git describe --long | sed 's/^V//' | sed 's/-/.r/;s/-/./'
 }
 
 build() {
