@@ -1,11 +1,10 @@
 pkgbase = golismero
 	pkgdesc = Is a free software framework for security testing. It's currently geared towards web security, but it can easily be expanded to other kinds of scans.
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.0Beta3
+	pkgrel = 1
 	url = http://www.golismero.com/
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = python2
 	depends = python2-beautifulsoup3
 	depends = python2-colorizer
@@ -21,8 +20,9 @@ pkgbase = golismero
 	depends = python2-tldextract
 	depends = python2-pymongo>=2.8
 	depends = python-simplejson
-	source = https://github.com/golismero/golismero/archive/master.zip
-	sha256sums = 27f66c7743c62cea6f15f6aa27580064a0521847dda9bbba5e545ad74cc9a28b
+	provides = golismero
+	source = git+https://github.com/golismero/golismero.git
+	sha256sums = SKIP
 
 pkgname = golismero
 

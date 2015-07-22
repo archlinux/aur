@@ -1,10 +1,9 @@
-# Contributor: Cyberpunk <apocalipsisfull-2011@outlook.com>
-# Maintainer: Cyberpunk <apocalipsisfull-2011@outlook.com>
+# Contributor: Cyberpunk <aur_linuxero@outlook.com>
+# Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 pkgname=golismero
-_pkgname=master
-pkgver=2.0
-pkgrel=2
+pkgver=2.0Beta3
+pkgrel=1
 pkgdesc="Is a free software framework for security testing. It's currently geared towards web security, but it can easily be expanded to other kinds of scans."
 arch=('any')
 url="http://www.golismero.com/"
@@ -24,14 +23,14 @@ depends=('python2'
 	 'python2-tldextract'
 	 'python2-pymongo>=2.8'
 	 'python-simplejson')
-makedepends=('git')
-source=('https://github.com/golismero/golismero/archive/master.zip')
+provides=('golismero')
+source=("git+https://github.com/golismero/golismero.git")
 
 package() {
   msg2 "Installing golismero..."
   install -dm755 "${pkgdir}/usr/bin/"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  cd "${srcdir}/${pkgname}-${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   cp -aRp --copy-contents * "${pkgdir}/usr/share/${pkgname}"
 
 cat > $pkgdir/usr/bin/golismero << "EOF"
@@ -40,5 +39,4 @@ cd /usr/share/golismero/ && python2 golismero.py "$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/golismero"
 }
-
-sha256sums=('27f66c7743c62cea6f15f6aa27580064a0521847dda9bbba5e545ad74cc9a28b')
+sha256sums=('SKIP')
