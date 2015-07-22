@@ -7,6 +7,7 @@ url='https://github.com/Atha/update-conf.d'
 license=('GPL')
 source=("git+https://github.com/Atha/update-conf.d")
 md5sums=("SKIP")
+makedepends=("git")
 
 build() {
   cd "${srcdir}/update-conf.d"
