@@ -1,4 +1,4 @@
-# Maintainer: Adrián Pérez de Castro
+# Maintainer: Adrián Pérez de Castro <adrian@perezdecastro.org>
 pkgname='vertex-icons-git'
 pkgdesc='A Gnome icon theme to match the Vertex Gtk theme'
 pkgver=r16.f27e47e
