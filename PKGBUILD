@@ -1,7 +1,7 @@
 # Maintainer: Ted Meyer <tmathmeyer@gmail.com>
 
 _pkgname=tint3
-pkgname=${_pkgname}-git
+pkgname=${_pkgname}
 pkgver=192
 pkgrel=1
 pkgdesc='An independant status bar for X11 (works best with bspwm)'
@@ -13,6 +13,7 @@ makedepends=('git' 'libx11' 'xcb-util')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "tint3-cpp-git")
+conclicts=("${_pkgname}" "tint3-get")
 source=("git://github.com/tmathmeyer/${_pkgname}.git")
 md5sums=('SKIP')
 

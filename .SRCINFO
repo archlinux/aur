@@ -1,4 +1,4 @@
-pkgbase = tint3-git
+pkgbase = tint3
 	pkgdesc = An independant status bar for X11 (works best with bspwm)
 	pkgver = 192
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = tint3-git
 	source = git://github.com/tmathmeyer/tint3.git
 	md5sums = SKIP
 
-pkgname = tint3-git
+pkgname = tint3
 
