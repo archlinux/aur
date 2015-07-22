@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'python')
 conflicts=('muon')
 provides=('muon')
 source=('git://anongit.kde.org/muon.git')
+groups=('plasma')
 md5sums=('SKIP')
 install=$pkgname.install
 
