@@ -1,0 +1,32 @@
+pkgbase = pygobject
+	pkgver = 3.16.2
+	pkgrel = 1
+	url = https://live.gnome.org/PyGObject
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	makedepends = python2
+	makedepends = python-cairo
+	makedepends = python2-cairo
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	source = http://ftp.gnome.org/pub/gnome/sources/pygobject/3.16/pygobject-3.16.2.tar.xz
+	source = 01_cairo_region.patch
+	sha256sums = de620e00fe7ecb788aa2dc0d664e41f71b8e718e728168e8d982cf193a9e7e64
+	sha256sums = 194fc7946beb01d02a3fba587a214f2f38da56e3b63ecc9b7de37da210488919
+
+pkgname = python-gobject-patched
+	pkgdesc = Python 3 bindings for GObject, with a patch for cairo
+	depends = gobject-introspection-runtime
+	depends = pygobject-devel=3.16.2
+	depends = python
+	depends = cairo
+
+pkgname = python2-gobject-patched
+	pkgdesc = Python 2 bindings for GObject, with a patch for cairo
+	depends = gobject-introspection-runtime
+	depends = pygobject-devel=3.16.2
+	depends = python2
+	depends = cairo
+
