@@ -1,7 +1,7 @@
 pkgbase = ampache-git
 	pkgdesc = A PHP-based tool for managing and playing your audio/video files via a web interface
 	pkgver = 3.8.0.beta2.25.gf946a1c
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.ampache.org/
 	install = ampache.install
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = ampache-git
 	conflicts = ampache-development
 	source = git://github.com/ampache/ampache.git
 	source = nginx-example.conf
-	md5sums = SKIP
-	md5sums = 60c0e437bd20d5ba8a53f61768d037b6
+	sha256sums = SKIP
+	sha256sums = efb63c0ac7e6462ee5c705b9c1998a1d2462502e19e7e5c97fce2c5142b8e62e
 
 pkgname = ampache-git
 
