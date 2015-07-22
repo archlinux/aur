@@ -6,6 +6,7 @@ pkgbase = helios-git
 	license = Apache
 	makedepends = git
 	makedepends = maven
+	depends = docker
 	depends = java-runtime
 	depends = zookeeper
 	source = helios-git::git+ssh://git@github.com/spotify/helios.git

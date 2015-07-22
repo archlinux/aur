@@ -6,7 +6,7 @@ pkgdesc="Spotify Helios - Docker container orchestration platform"
 license=('Apache')
 
 arch=('any')
-depends=('java-runtime' 'zookeeper')
+depends=('docker' 'java-runtime' 'zookeeper')
 makedepends=('git' 'maven')
 source=("$pkgname::git+ssh://git@github.com/spotify/helios.git"
         'helios-master.service'
