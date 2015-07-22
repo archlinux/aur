@@ -1,6 +1,6 @@
 pkgbase = pecl-http
 	pkgdesc = Extended HTTP Support
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://pecl.php.net/package/pecl_http
 	install = http.install
@@ -11,8 +11,8 @@ pkgbase = pecl-http
 	depends = php
 	depends = pecl-raphf
 	depends = pecl-propro
-	source = http://pecl.php.net/get/pecl_http-2.4.3.tgz
-	md5sums = 32be010a0e4b1125c2797fa6c28b8cab
+	source = http://pecl.php.net/get/pecl_http-2.5.0.tgz
+	md5sums = 367302919d7c1c86792581ba8ccbdac7
 
 pkgname = pecl-http
 
