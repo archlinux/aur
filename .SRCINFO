@@ -1,7 +1,7 @@
 pkgbase = yasem-git
 	pkgdesc = IPTV STB emulator
 	pkgver = 0.1
-	pkgrel = 19
+	pkgrel = 20
 	url = https://github.com/mvasilchuk/yasem
 	arch = i686
 	arch = x86_64
