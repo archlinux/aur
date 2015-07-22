@@ -1,6 +1,6 @@
 pkgbase = flowblade
 	pkgdesc = a multitrack non-linear video editor for Linux
-	pkgver = 0.18
+	pkgver = 1.0.0
 	pkgrel = 4
 	url = https://github.com/jliljebl/flowblade
 	install = flowblade.install
@@ -19,8 +19,8 @@ pkgbase = flowblade
 	provides = flowblade
 	conflicts = flowblade-hg
 	conflicts = flowblade-git
-	source = https://github.com/jliljebl/flowblade/archive/v0.18.tar.gz
-	md5sums = 42f9b18020455c81aa15545469acdf96
+	source = https://www.dropbox.com/s/goligzl0lnhi77k/flowblade-1.0.0.tar.gz?dl=0
+	md5sums = ecd8c5fd13121fd7beca0bce18d1f189
 
 pkgname = flowblade
 
