@@ -13,6 +13,7 @@ conflicts=(kde-gtk-config)
 provides=(kde-gtk-config)
 install=$pkgname.install
 source=('git://anongit.kde.org/kde-gtk-config.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
