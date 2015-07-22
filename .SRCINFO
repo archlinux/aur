@@ -1,7 +1,7 @@
 pkgbase = tcp_wrappers
 	pkgdesc = Monitors and Controls incoming TCP connections
 	pkgver = 7.6
-	pkgrel = 16
+	pkgrel = 18
 	url = ftp://ftp.porcupine.org/pub/security/index.html
 	arch = i686
 	arch = x86_64
