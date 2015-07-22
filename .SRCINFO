@@ -1,0 +1,13 @@
+pkgbase = mrunit
+	pkgdesc = Apache MRUnit is a Java library that helps developers unit test Apache Hadoop map reduce jobs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://mrunit.apache.org/
+	arch = any
+	license = apache
+	depends = mockito
+	source = http://mirror.cc.columbia.edu/pub/software/apache/mrunit/mrunit-1.0.0/apache-mrunit-1.0.0-hadoop2-bin.tar.gz
+	md5sums = a942422d1677c12f0ed5444d08e6f023
+
+pkgname = mrunit
+
