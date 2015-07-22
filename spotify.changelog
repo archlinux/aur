@@ -1,36 +1,3 @@
-22nd May 2015 (GMT) Gadget3000 <gadget3000 at msn dot com>
-    * 0.9.17.8
-		Updated spotify version (.gd06432d.31-1)
-		Removed 32-bit support
-		Updated dependencies
-
-24th March 2015 (GMT) Gadget3000 <gadget3000 at msn dot com>
-    * 0.9.17.1
-		Updated spotify version (.g9b85d43.7-1)
-
-5th March 2015 (GMT) Gadget3000 <gadget3000 at msn dot com>
-    * PKGBUILD
-		Removed gtk2 libraries. gtk2 2.24.27 fixed the segfaulting problem
-
-27th February 2015 (GMT) Gadget3000 <gadget3000 at msn dot com>
-    * PKGBUILD
-    Added gtk2 2.24.24 libraries to stop segfaulting from gtk2 version 2.24.26
-
-22nd July 2014 (GMT) Gadget3000 <gadget3000 at msn dot com>
-    * 0.9.11.27
-		Updated spotify version (.g2b1a638.81-1)
-
-3rd July 2014 (GMT) Gadget3000 <gadget3000 at msn dot com>
-		* 0.9.11.26
-		Updated spotify version (.g995ec04.78-1)
-
-20th May 2014 (GMT) Gadget3000 <gadget3000 at msn dot com>
-    * 0.9.10.17
-		Updated spotify version (.g4129e1c.78-1)
-
-		* PKGBUILD
-		Numerous libraries no longer need to be symlinked
-
 10th October 2013 (GMT) Gadget3000 <gadget3000 at msn dot com>
     * 0.9.4.183
     Updated spotify version (.g644e24e.428-1)
