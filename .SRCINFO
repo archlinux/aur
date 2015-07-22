@@ -1,7 +1,7 @@
 pkgbase = zarafa-server-arm
 	pkgdesc = Open Source Groupware Solution
 	pkgver = 7.2.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.zarafa.com/
 	install = install
 	arch = any
