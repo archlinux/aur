@@ -1,4 +1,4 @@
-# Maintainer: notfoss <AT> gmx.com
+# Maintainer: gt <AT> notfoss.com
 # Contributor:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Paul Mattal <paul.archlinux.org>
 
