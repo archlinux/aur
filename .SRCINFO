@@ -1,0 +1,15 @@
+pkgbase = simpy
+	pkgdesc = Event discrete, process based simulation for Python.
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = https://simpy.rtfd.org
+	arch = any
+	license = MIT
+	makedepends = python3
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/s/simpy/simpy-3.0.8.tar.gz
+	sha256sums = e127921510773f7b6189ab3596362809a37b87b7c2ae298b29ba3a6cca03e677
+
+pkgname = simpy
+
