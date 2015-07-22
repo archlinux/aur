@@ -1,6 +1,6 @@
 pkgbase = flattr-icon-theme-git
 	pkgdesc = An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
-	pkgver = 560.222f37e
+	pkgver = 561.1de2541
 	pkgrel = 1
 	url = https://github.com/NitruxSA/flattr-icons
 	install = flattr-icon-theme-git.install

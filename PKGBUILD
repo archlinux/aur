@@ -2,7 +2,7 @@
 # Submitter: Steffen L. Norgren (incongruous) <steffen[at]norgren[dot]ca>
 
 pkgname=flattr-icon-theme-git
-pkgver=560.222f37e
+pkgver=561.1de2541
 pkgrel=1
 pkgdesc="An icon theme for Linux desktops, the set is inspired by the latest flat design trend."
 arch=('any')
