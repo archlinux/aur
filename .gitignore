@@ -1,0 +1,4 @@
+src/
+pkg/
+terraform_*.zip
+terraform-bin-*.pkg.tar.xz
