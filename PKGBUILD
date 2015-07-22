@@ -11,7 +11,7 @@ provides=('tcllauncher')
 source=(${pkgname}::git://github.com/flightaware/tcllauncher.git)
 md5sums=('SKIP')
 depends=('tcl')
-makedepends=('git')
+makedepends=('git' 'autoconf')
 
 pkgver() {
   cd "$pkgname"

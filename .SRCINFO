@@ -9,6 +9,7 @@ pkgbase = tcllauncher-git
 	arch = armv7h
 	license = BSD
 	makedepends = git
+	makedepends = autoconf
 	depends = tcl
 	provides = tcllauncher
 	source = tcllauncher-git::git://github.com/flightaware/tcllauncher.git
