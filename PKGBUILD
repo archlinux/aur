@@ -11,32 +11,37 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.7.2
+pkgrel=1
 epoch=1
-pkgdesc='Complete and free Internet live audio and video broadcasting solution (with all options)'
+pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-      'alsa-lib' 'bzip2' 'fontconfig' 'gnutls' 'gsm' 'lame' 'libass' 'libvdpau'
-      'libbluray' 'libmodplug' 'libpulse' 'libtheora' 'libva' 'libwebp'
-      'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils'
-      'xvidcore' 'zlib' 'fribidi' 'libssh'
-      'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+      'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
+      'libbluray' 'libmodplug' 'libpulse' 'libssh' 'libtheora' 'libva'
+      'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger'
+      'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+      'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
       'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
       'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
       'libfdk-aac' 'libgme' 'libiec61883' 'libsoxr' 'libutvideo-git'
       'libxv' 'mesa' 'openal' 'opencl-headers12' 'rtmpdump' 'shine' 'twolame'
       'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'zeromq' 'zvbi' 
       )
-makedepends=('libvdpau' 'yasm' 'hardening-wrapper')
+makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
-provides=('ffmpeg')
+provides=(
+      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+      'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+      'libswscale.so'
+      'ffmpeg'
+      )
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('7e07b97d2415feeae9c9b5595e35e7b7aab33207e81bf9f8c0d1eece43f7f720'
+sha256sums=('7ceb7550ad628c526fa6c9ff23fdfb687a62f54d90c4a730998d8c2b417b9ef2'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -112,7 +117,6 @@ build() {
     --enable-opengl \
     --enable-openssl \
     --enable-runtime-cpudetect \
-    --enable-shared \
     --enable-swresample \
     --enable-vdpau \
     --enable-version3 \
