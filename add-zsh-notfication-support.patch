@@ -1,0 +1,27 @@
+From 9e2914d67cdb8cbaf43b4371aac79b0870f843ae Mon Sep 17 00:00:00 2001
+From: Fernando Fernandez <fernando@softwareperonista.com.ar>
+Date: Fri, 3 Apr 2015 16:40:47 -0300
+Subject: [PATCH 1/1] add zsh notfication support
+
+---
+ src/vte.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/vte.sh b/src/vte.sh
+index 2d211ca..6730aa3 100644
+--- a/src/vte.sh
++++ b/src/vte.sh
+@@ -46,7 +46,9 @@ __vte_ps1() {
+ }
+ 
+ __vte_osc7 () {
+-  printf "\033]7;file://%s%s\007" "${HOSTNAME:-}" "$(__vte_urlencode "${PWD}")"
++  last_command=$(history | tail -n1 - | cut -c8-)
++
++  printf "\033]777;notify;Command completed;%s\007\033]7;file://%s%s\007" "${last_command}" "${HOSTNAME:-}" "$(__vte_urlencode "${PWD}")"
+ }
+ 
+ __vte_prompt_command() {
+-- 
+2.3.4
+
