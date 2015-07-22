@@ -1,5 +1,5 @@
 pkgbase = cl-lambda-reader-git
-	pkgdesc = Compatibility layer library for gray streams in Common Lisp
+	pkgdesc = Use unicode character λ for LAMBDA in reader and printer
 	pkgver = r14.89366cf
 	pkgrel = 1
 	url = git://github.com/trivial-gray-streams/trivial-gray-streams
