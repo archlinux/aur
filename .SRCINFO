@@ -1,0 +1,19 @@
+pkgbase = kdevelop-qmake-git
+	pkgdesc = KDevelop Plugin for qmake support
+	pkgver = 779.1330892
+	pkgrel = 1
+	url = http://www.kdevelop.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = kdevelop-pg-qt-git
+	depends = kdevelop-git
+	provides = kdevelop-qmake
+	conflicts = kdevelop-qmake
+	source = git://anongit.kde.org/kdev-qmake
+	md5sums = SKIP
+
+pkgname = kdevelop-qmake-git
+
