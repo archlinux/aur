@@ -1,7 +1,7 @@
 pkgbase = zarafa-server-arm
 	pkgdesc = Open Source Groupware Solution
 	pkgver = 7.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.zarafa.com/
 	install = install
 	arch = any
@@ -35,9 +35,11 @@ pkgbase = zarafa-server-arm
 	depends = kyotocabinet
 	depends = krb5
 	depends = mysql
+	optdepends = zarafa-webaccess
 	optdepends = zarafa-webapp
 	optdepends = sabre-zarafa
 	optdepends = z-push
+	provides = zarafa-server=7.2.0
 	source = zarafa-7.2.0.tar.gz::http://download.zarafa.com/community/final/7.2/7.2.0-48204/sourcecode/zarafa-7.2.0.tar.gz
 	source = arm.diff
 	source = zarafa-server.service
