@@ -23,7 +23,7 @@ md5sums=('e6fa25f71226d090f34de3f6b122fb5a'
          'e4743ca604a1749c7312f9283b4bb0d1')
 
 prepare() {
-  cd $srcdir/${pkgname}_${pkgver}
+  cd $srcdir/tcp_wrappers_${pkgver}
   sed -i 's/CC\t= gcc/CC\t= gcc -m32/' $srcdir/tcp-wrappers-${pkgver}%2B.patch
   patch -p1 <$srcdir/tcp-wrappers-${pkgver}%2B.patch
   sed -i 's|usr/lib|usr/lib32|g' Makefile
@@ -31,12 +31,12 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/${pkgname}_${pkgver}
+  cd $srcdir/tcp_wrappers_${pkgver}
   make CC='gcc -m32' REAL_DAEMON_DIR=/usr/bin STYLE=-DPROCESS_OPTIONS linux
 }
 
 package() {
-  cd $srcdir/${pkgname}_${pkgver}
+  cd $srcdir/tcp_wrappers_${pkgver}
   make REAL_DAEMON_DIR=/usr/bin DESTDIR=$pkgdir install
   install -D -m644 ../hosts.allow $pkgdir/etc/hosts.allow
   install -D -m644 ../hosts.deny $pkgdir/etc/hosts.deny
