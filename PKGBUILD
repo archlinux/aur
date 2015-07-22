@@ -5,27 +5,28 @@
 
 pkgname=mitmproxy
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
 license=('GPL')
-depends=('python2-netlib' 'python2-pyasn1' 'python2-pyopenssl' 
+depends=('python2-netlib' 'python2-pyasn1' 'python2-pyparsing' 
          'python2-configargparse' 'python2-tornado'
          'python2-pyperclip' 'python2-blinker' 'python2-setuptools'
-         'python2-urwid' 'python2-lxml' 'python2-pillow')
+         'python2-urwid' 'python2-lxml' 'python2-pillow'
+         'python2-html2text')
 optdepends=('python2-pyamf: Contentviews - Decodes AMF files'
             'python2-protobuf: Contentviews - Extended content decoding'
             'python2-cssutils: Contentviews - Beautifies CSS files')
 makedepends=('git')
-checkdepends=('python2-nose' 'pathod' 'python2-mock')  # python2-html2text
+checkdepends=('python2-nose' 'pathod' 'python2-mock')
 provides=('python2-libmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 check() {
   cd "$srcdir/$pkgname"
-  nosetests2 || warning "Failures should be related to missing html2text"
+  nosetests2
 }
  
 package() {
