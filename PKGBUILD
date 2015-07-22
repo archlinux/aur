@@ -45,22 +45,18 @@ if [[ "${_USE_GNU_EFI}" == "1" ]]; then
 else
 	
 	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
-	makedepends+=('subversion' 'python2')
+	makedepends+=('git' 'python2')
 	
-	_TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/branches/UDK2014"
-	_TIANO_DIR_="tianocore-udk-2014-svn"
-	_TIANO_SVN_REV_="15322"
+	_TIANOCORE_GIT_URL="https://github.com/tianocore/edk2"
+	_TIANO_DIR_="edk2"
 	
 	_TIANOCORE_PKG="Mde"
 	_TIANOCORE_TARGET="RELEASE"
 	_UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
-	_COMPILER="GCC48"
+	_COMPILER="GCC49"
 	
-	source+=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools")
-	
-	## BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg
-	for _DIR_ in MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-		source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}#revision=${_TIANO_SVN_REV_}")
+	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
+		source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
 	done
 	
 fi
@@ -73,17 +69,7 @@ pkgver() {
 	cd "${srcdir}/${__pkgname}/"
 	
 	_ACTUAL_REFIND_VER="$(grep 'rEFInd Version' "${srcdir}/${__pkgname}/refind/main.c" | awk '{print $4}' | sed -e 's|");||g')"
-	
-	if [[ "${_USE_GNU_EFI}" == "1" ]]; then
-		echo "${_ACTUAL_REFIND_VER}.$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|.|g'
-	else
-		cd "${srcdir}/${_TIANO_DIR_}_MdePkg/"
-		_TIANOCORE_SVN_REV="$(svnversion | tr -d [A-z])"
-		
-		echo "${_ACTUAL_REFIND_VER}.$(git rev-list --count HEAD).$(git describe --always).r${_TIANOCORE_SVN_REV}" | sed -e 's|-|.|g'
-		
-		unset _TIANOCORE_SVN_REV
-	fi
+	echo "${_ACTUAL_REFIND_VER}.$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|.|g'
 	
 	unset _ACTUAL_REFIND_VER
 	
@@ -92,7 +78,7 @@ pkgver() {
 _setup_tianocore_env_vars() {
 	
 	msg "Setup UDK PATH ENV variables"
-	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
+	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
 	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
 	
 }
@@ -106,7 +92,7 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/"
 	
 	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}_${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
 	done
 	
 	cd "${_UDK_DIR}/"
