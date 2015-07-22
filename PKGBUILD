@@ -1,4 +1,4 @@
-# Maintainer: notfoss <AT> gmx.com
+# Maintainer: gt <AT> notfoss.com
 
 pkgname="dex-editor-git"
 pkgver="1889.b1f65ce"
