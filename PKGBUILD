@@ -20,7 +20,7 @@ prepare() {
   mkdir -p build-py2 build-py3
   cd ${_pkgbase}-${pkgver}
   sed -i '/Werror=format/d' configure # gcc 4.8
-  patch -Np1 -i ../01_cairo_region.patch
+  patch -Np1 -i "$srcdir/01_cairo_region.patch"
 }
 
 build() {
@@ -55,3 +55,5 @@ package_python2-gobject-patched() {
   rm -r "$pkgdir"/usr/{include,lib/pkgconfig}
   python2 -m compileall "$pkgdir"//usr/lib/python2.7/site-packages/gi
 }
+
+# vim:set ts=2 sw=2 et:
