@@ -13,6 +13,7 @@ optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'oxygen
 conflicts=(breeze breeze-icons)
 provides=(breeze breeze-icons)
 source=('git://anongit.kde.org/breeze.git')
+groups=('plasma')
 md5sums=('SKIP')
 install=$pkgname.install
 
