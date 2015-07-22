@@ -17,7 +17,7 @@ source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "no-nested-deprecated-warnings.patch")
 md5sums=('fddf71348546af523353bd43d34919c1'
          'eac80070a6324fc67ed5b3ac85551789'
-         '9f73e8b77000cf364bba8dd86b380e35')
+         '507f0b6c95ad5ff8e436697ae093a10d')
 
 build() {
   cd "${srcdir}/gcc-${pkgver}"

@@ -24,7 +24,7 @@ pkgbase = arm-frc-linux-gnueabi-gcc
 	source = no-nested-deprecated-warnings.patch
 	md5sums = fddf71348546af523353bd43d34919c1
 	md5sums = eac80070a6324fc67ed5b3ac85551789
-	md5sums = 9f73e8b77000cf364bba8dd86b380e35
+	md5sums = 507f0b6c95ad5ff8e436697ae093a10d
 
 pkgname = arm-frc-linux-gnueabi-gcc
 
