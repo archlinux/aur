@@ -2,16 +2,16 @@
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=lib32-libepoxy
-pkgver=1.2
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='A library for handling OpenGL function pointer management for you'
 arch=('i686' 'x86_64')
 url='https://github.com/anholt/libepoxy'
 license=('MIT')
 depends=('lib32-glibc')
 makedepends=('lib32-libgl' 'python' 'xorg-util-macros')
-source=("libepoxy-${pkgver}.tar.gz::https://github.com/anholt/libepoxy/archive/v${pkgver}.tar.gz")
-sha256sums=('42c328440f60a5795835c5ec4bdfc1329e75bba16b6e22b3a87ed17e9679e8f6')
+source=("https://github.com/anholt/libepoxy/releases/download/v${pkgver}/libepoxy-${pkgver}.tar.bz2")
+sha256sums=('1d8668b0a259c709899e1c4bab62d756d9002d546ce4f59c9665e2fc5f001a64')
 
 build() {
   cd libepoxy-${pkgver}
@@ -20,7 +20,7 @@ build() {
   export CXX='/bin/false'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./autogen.sh \
+  ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32'
 }
