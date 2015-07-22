@@ -1,0 +1,18 @@
+pkgbase = qooxdoo-sdk
+	pkgdesc = Framework for creating rich internet applications.
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://qooxdoo.org
+	install = qooxdoo-sdk.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = EGPL
+	depends = python2
+	provides = qooxdoo
+	options = !strip
+	source = http://downloads.sourceforge.net/qooxdoo/qooxdoo-5.0-sdk.zip
+	md5sums = 8de6e4d71e2a9036bc1212cf6fec3869
+
+pkgname = qooxdoo-sdk
+
