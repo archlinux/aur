@@ -11,16 +11,11 @@ arch=(x86_64)
 url="ftp://ftp.porcupine.org/pub/security/index.html"
 license=('custom')
 groups=('base')
-backup=(etc/hosts.allow etc/hosts.deny)
 depends=('bash' 'lib32-glibc' 'tcp_wrappers')
 source=(ftp://ftp.porcupine.org/pub/security/tcp_wrappers_${pkgver}.tar.gz
-	http://archlinux-stuff.googlecode.com/files/tcp-wrappers-${pkgver}%2B.patch.gz
-	hosts.allow
-	hosts.deny)
+	http://archlinux-stuff.googlecode.com/files/tcp-wrappers-${pkgver}%2B.patch.gz)
 md5sums=('e6fa25f71226d090f34de3f6b122fb5a'
-         '3e786669e16b78ba726f948ddb73c9db'
-         '32cfeeed797161034f62bb45f3167baa'
-         'e4743ca604a1749c7312f9283b4bb0d1')
+         '3e786669e16b78ba726f948ddb73c9db')
 
 prepare() {
   cd $srcdir/tcp_wrappers_${pkgver}
@@ -33,13 +28,10 @@ prepare() {
 build() {
   cd $srcdir/tcp_wrappers_${pkgver}
   make CC='gcc -m32' REAL_DAEMON_DIR=/usr/bin STYLE=-DPROCESS_OPTIONS linux
-  rm -rf $pkgdir/etc $pkgdir/usr/sbin $pkgdir/usr/share $pkgdir/usr/include
 }
 
 package() {
   cd $srcdir/tcp_wrappers_${pkgver}
-  make REAL_DAEMON_DIR=/usr/bin DESTDIR=$pkgdir install
-  install -D -m644 ../hosts.allow $pkgdir/etc/hosts.allow
-  install -D -m644 ../hosts.deny $pkgdir/etc/hosts.deny
+  make REAL_DAEMON_DIR=/usr/bin DESTDIR=$pkgdir install-lib
   install -D -m644 DISCLAIMER $pkgdir/usr/share/licenses/$pkgname/license.txt
 }
