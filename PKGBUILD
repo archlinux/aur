@@ -12,6 +12,7 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 conflicts=('khotkeys' 'kdebase-workspace')
 provides=('khotkeys')
 source=('git://anongit.kde.org/khotkeys.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
