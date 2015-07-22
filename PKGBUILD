@@ -2,14 +2,14 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=ts
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A Unix batch system where the tasks spooled run one after the other"
 arch=('i686' 'x86_64')
 url="http://vicerveza.homeunix.net/~viric/soft/ts/"
 license=('GPL2')
 source=("http://vicerveza.homeunix.net/~viric/soft/ts/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1a638f9dc5a96a764dde7b8af04c2dbb88d8cb0326139e9b231b8091804a5910')
+sha256sums=('216d09dcfbae2f9bfea7582a71494172fe91c33d65499ea01b3bcac0600de96d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
