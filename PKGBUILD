@@ -3,7 +3,7 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
 pkgver=4.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -13,9 +13,11 @@ depends=("${_target}-binutils" "${_target}-eglibc" 'libmpc' 'elfutils')
 options=('!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs'
   '!strip' 'staticlibs')
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-        "minorSOname.patch")
+        "minorSOname.patch"
+        "no-nested-deprecated-warnings.patch")
 md5sums=('fddf71348546af523353bd43d34919c1'
-         'eac80070a6324fc67ed5b3ac85551789')
+         'eac80070a6324fc67ed5b3ac85551789'
+         '9f73e8b77000cf364bba8dd86b380e35')
 
 build() {
   cd "${srcdir}/gcc-${pkgver}"
@@ -23,6 +25,7 @@ build() {
   echo ${pkgver} > gcc/BASE-VER
 
   patch -p1 < ${srcdir}/minorSOname.patch
+  patch -p1 < ${srcdir}/no-nested-deprecated-warnings.patch
 
   [[ -d gcc-build ]] || mkdir gcc-build
   cd gcc-build

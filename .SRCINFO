@@ -1,7 +1,7 @@
 pkgbase = arm-frc-linux-gnueabi-gcc
 	pkgdesc = The GNU Compiler Collection (arm-frc-linux-gnueabi)
 	pkgver = 4.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -21,8 +21,10 @@ pkgbase = arm-frc-linux-gnueabi-gcc
 	options = staticlibs
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.9.1/gcc-4.9.1.tar.bz2
 	source = minorSOname.patch
+	source = no-nested-deprecated-warnings.patch
 	md5sums = fddf71348546af523353bd43d34919c1
 	md5sums = eac80070a6324fc67ed5b3ac85551789
+	md5sums = 9f73e8b77000cf364bba8dd86b380e35
 
 pkgname = arm-frc-linux-gnueabi-gcc
 
