@@ -1,0 +1,15 @@
+pkgbase = psg
+	pkgdesc = C program for generating powerline PS1s for bash
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/tmathmeyer/psg
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = psg
+	conflicts = psg
+	source = git://github.com/tmathmeyer/psg.git
+	md5sums = SKIP
+
+pkgname = psg
+
