@@ -1,16 +1,17 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
-pkgname=grantlee-git
-pkgver=v0.4.0.0.g358e826
+pkgname=grantlee-qt5-git
+pkgver=v5.0.0.13.g8b120f2
 pkgrel=1
 pkgdesc="Grantlee is a string template engine based on the Django template system."
 arch=('i686' 'x86_64')
 url="http://www.grantlee.org"
 license=('LGPL2.1')
-depends=('qt4')
+depends=('qt5-base' 'qt5-script')
 makedepends=('git' 'cmake')
-conflicts=('grantlee')
-provides=('grantlee')
-source=("$pkgname"::'git://gitorious.org/grantlee/grantlee.git')
+optdepends=()
+conflicts=('grantlee-qt5')
+provides=('grantlee-qt5')
+source=("$pkgname"::'git+https://github.com/steveire/grantlee.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,13 +22,13 @@ pkgver() {
 }
 
 build() {
-	mkdir "$pkgname/build"
-	cd "$pkgname/build"
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ".."
+	mkdir "build"
+	cd "build"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "../$pkgname"
 	make
 }
 
 package() {
-	cd "$pkgname/build"
+	cd "build"
 	make DESTDIR="$pkgdir/" install
 }
