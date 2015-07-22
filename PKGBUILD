@@ -1,6 +1,6 @@
 # Maintainer: Ellis Kenyo <elken at member dot fsf dot org>
 pkgname=projectascension-git
-pkgver=0
+pkgver=r39abb56.157
 pkgrel=1
 pkgdesc="Community-driven open source gaming client"
 arch=('any')
@@ -12,10 +12,10 @@ install=
 source=('projectascension::git+https://www.github.com/Proj-Ascension/Client')
 md5sums=('SKIP')
 
-# pkgver() {
-# 	cd "$srcdir/${pkgname%-git}"
-# 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-# }
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+        printf "r%s.%s" "$(git rev-parse --short HEAD)" "$(git rev-list --count HEAD)"
+}
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-        install -Dm755 ProjectAscension ${pkgdir}/usr/bin
+       install -Dm755 ProjectAscension ${pkgdir}/usr/bin/ProjectAscension
 }

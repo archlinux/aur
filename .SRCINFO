@@ -1,6 +1,6 @@
 pkgbase = projectascension-git
 	pkgdesc = Community-driven open source gaming client
-	pkgver = 0
+	pkgver = r39abb56.157
 	pkgrel = 1
 	url = http://www.projectascension.io
 	arch = any
