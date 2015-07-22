@@ -6,7 +6,7 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-plugins')
 pkgver=2.0.2.48619
 _pkgrel=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc=('WebApp for Zarafa')
 arch=('any')
 url=('http://www.zarafa.com/')
@@ -26,7 +26,7 @@ source=("webapp-${pkgver}.tar.gz::http://download.zarafa.com/community/final/Web
 	
 md5sums=('0d384708bd97d52fc2f9eb651f6f6f1e'
          'eac81900679ed0fc111fcaa1171bbd32'
-         '73451bc5c35072b22b0b2925c5920978'
+         '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
          '7adcf5e023718421a5e8e07e5e9a2480'
          'cc8143c1fa12911a17578c1e775225fe'
          'daedd4114b213e9279806ee720eeb1ef')
