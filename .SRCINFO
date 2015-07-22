@@ -1,0 +1,15 @@
+pkgbase = musl-git
+	pkgdesc = Lightweight implementation of C standard library
+	pkgver = v1.1.10.r48.g3975577
+	pkgrel = 1
+	url = http://www.musl-libc.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	options = staticlibs
+	options = !buildflags
+	source = musl-git::git://git.etalabs.net/musl
+	md5sums = SKIP
+
+pkgname = musl-git
+
