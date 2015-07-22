@@ -1,4 +1,4 @@
-# Maintainer: notfoss <AT> gmx.com
+# Maintainer: gt <AT> notfoss.com
 # Contributor: Jim Pryor <profjim@jimpryor.net>
 
 pkgname="dcron-git"
