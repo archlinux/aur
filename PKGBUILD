@@ -16,6 +16,7 @@ provides=(plasma-desktop)
 replaces=(kcm-touchpad-git)
 install=$pkgname.install
 source=('git://anongit.kde.org/plasma-desktop.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {

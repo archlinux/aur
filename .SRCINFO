@@ -6,6 +6,7 @@ pkgbase = plasma-desktop-git
 	install = plasma-desktop-git.install
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = LGPL
 	makedepends = xorg-server-devel
 	makedepends = xf86-input-synaptics
