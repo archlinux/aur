@@ -4,7 +4,7 @@
 #Contributor: Diego <cdprincipe@gmail.com
 pkgname=ampache
 pkgver=3.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
@@ -20,7 +20,7 @@ install=${pkgname}.install
 source=(https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz
         'nginx-example.conf')
 sha256sums=('10a167b162af9b0f2c17a6cf0d92bbc6fc3c80b4be802d77defcfe761f177304'
-            '4781fd154cd9654e89a528cecf2906a51acdd5cd9a96412107b3fc3b51943d0d')
+            'efb63c0ac7e6462ee5c705b9c1998a1d2462502e19e7e5c97fce2c5142b8e62e')
 
 build() {
   echo "" > /dev/null
