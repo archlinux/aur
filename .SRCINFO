@@ -1,7 +1,7 @@
 pkgbase = perl-opengl
 	pkgdesc = Interface to OpenGL drawing/imaging library
 	pkgver = 0.6704
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/OpenGL/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = perl-opengl
 	depends = freeglut>=2.8.1
 	depends = glu>=9.0.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/OpenGL-0.6704.tar.gz
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHM/OpenGL-0.6704.tar.gz
+	source = OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch::http://pkgs.fedoraproject.org/cgit/perl-OpenGL.git/plain/OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch?id=7498635332872268a0d4519723b44725e9a496dc
 	md5sums = 433e4f197d7200c219494a8604f3e06b
+	md5sums = 75ecc0b0751503fdc2fbad1301e9a1f4
 
 pkgname = perl-opengl
 
