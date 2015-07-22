@@ -1,27 +1,29 @@
-pkgbase = uefi-shell-svn
-	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - SVN Version
-	pkgver = 17582
+pkgbase = uefi-shell-git
+	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - GIT Version
+	pkgver = 681.85807a5
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg
 	install = uefi-shell.install
 	arch = x86_64
 	arch = i686
 	license = BSD
-	makedepends = subversion
+	makedepends = git
 	makedepends = python2
 	makedepends = nasm
-	provides = uefi-shell=17582
+	provides = uefi-shell
+	provides = uefi-shell-svn
 	conflicts = uefi-shell
+	conflicts = uefi-shell-svn
 	options = !strip
 	options = !makeflags
-	source = tianocore-edk2-svn_BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
-	source = tianocore-edk2-svn_MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
-	source = tianocore-edk2-svn_MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
-	source = tianocore-edk2-svn_ShellPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellPkg
+	source = edk2-BaseTools::git+https://github.com/tianocore/edk2-BaseTools.git#branch=master
+	source = edk2-MdePkg::git+https://github.com/tianocore/edk2-MdePkg.git#branch=master
+	source = edk2-MdeModulePkg::git+https://github.com/tianocore/edk2-MdeModulePkg.git#branch=master
+	source = edk2-ShellPkg::git+https://github.com/tianocore/edk2-ShellPkg.git#branch=master
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 
-pkgname = uefi-shell-svn
+pkgname = uefi-shell-git
 

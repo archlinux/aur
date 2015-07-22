@@ -4,8 +4,8 @@
 _SHELL_IA32_ARCH_X64="1"
 
 ###############
-_TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/trunk/edk2"
-_TIANO_DIR_="tianocore-edk2-svn"
+_TIANOCORE_GIT_URL="https://github.com/tianocore/edk2"
+_TIANO_DIR_="edk2"
 ###############
 
 ###############
@@ -24,28 +24,28 @@ _COMPILER="GCC49"
 ###############
 
 _pkgname="uefi-shell"
-pkgname="${_pkgname}-svn"
+pkgname="${_pkgname}-git"
 
-pkgver=17582
+pkgver=681.85807a5
 pkgrel=1
-pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
+pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
 arch=('x86_64' 'i686')
 license=('BSD')
 
-makedepends=('subversion' 'python2' 'nasm')
+makedepends=('git' 'python2' 'nasm')
 
 options=('!strip' '!makeflags')
 
-conflicts=('uefi-shell')
-provides=("uefi-shell=${pkgver}")
+conflicts=('uefi-shell' 'uefi-shell-svn')
+provides=('uefi-shell' 'uefi-shell-svn')
 
 install="${_pkgname}.install"
 
 source=()
 
 for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
-	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
+	source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
 done
 
 sha1sums=('SKIP'
@@ -55,15 +55,15 @@ sha1sums=('SKIP'
 
 pkgver() {
 	
-	cd "${srcdir}/${_TIANO_DIR_}_${_TIANOCORE_PKG}Pkg/"
-	echo "$(svnversion)" | tr -d [A-z]
+	cd "${srcdir}/${_TIANO_DIR_}-${_TIANOCORE_PKG}Pkg/"
+	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
 	
 }
 
 _setup_env_vars() {
 	
 	msg "Setup UDK PATH ENV variables"
-	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
+	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
 	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
 	
 }
@@ -77,7 +77,7 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/"
 	
 	for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}_${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
 	done
 	
 	cd "${_UDK_DIR}/"
