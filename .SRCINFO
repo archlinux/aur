@@ -1,7 +1,8 @@
 pkgbase = python-pygal
 	pkgdesc = A Python SVG graph plotting library
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 1
 	url = http://pygal.org/
 	arch = any
 	license = LGPL3
