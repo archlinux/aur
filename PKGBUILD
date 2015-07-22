@@ -1,8 +1,7 @@
-
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-dropbear
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Archlinux mkinitcpio hook to install and enable the dropbear daemon in early userspace"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-dropbear"
