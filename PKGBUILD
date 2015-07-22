@@ -1,6 +1,6 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=beamer-theme-m-git
-pkgver=20150615
+pkgver=20150722
 pkgrel=1
 pkgdesc="A modern LaTeX Beamer theme"
 url="https://github.com/matze/mtheme"
@@ -20,17 +20,11 @@ pkgver() {
 build() {
     # Generate the style files.
     cd $srcdir/mtheme
-    latex mtheme.ins
+    make
 }
 
 package() {
-    # Create the necessary directories in pkgdir.
-    mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/beamer/themes/{theme,font,color}
-
-    # Copy the .sty files over.
     cd $srcdir/mtheme
-    install -m644 beamerthemem.sty               ${pkgdir}/usr/share/texmf-dist/tex/latex/beamer/themes/theme
-    install -m644 beamerfontthememetropolis.sty  ${pkgdir}/usr/share/texmf-dist/tex/latex/beamer/themes/font
-    install -m644 beamercolorthememetropolis.sty ${pkgdir}/usr/share/texmf-dist/tex/latex/beamer/themes/color
-    
+    TEXMFROOT=$(kpsewhich -var-value=TEXMFROOT)
+    make TEXMFHOME=$pkgdir/$TEXMFROOT install
 }
