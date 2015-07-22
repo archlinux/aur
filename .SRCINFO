@@ -1,0 +1,15 @@
+pkgbase = spice-protocol-git
+	pkgdesc = Headers defining SPICE protocols
+	pkgver = 0.12.8.1.g4ba5072
+	pkgrel = 1
+	url = http://www.spice-space.org
+	arch = any
+	license = custom
+	makedepends = git
+	provides = spice-protocol
+	conflicts = spice-protocol
+	source = git://anongit.freedesktop.org/spice/spice-protocol
+	sha256sums = SKIP
+
+pkgname = spice-protocol-git
+
