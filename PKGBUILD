@@ -10,11 +10,11 @@
 _name=yappi
 _py=python2
 pkgname=$_py-$_name
-pkgver=0.82
+pkgver=0.94
 pkgrel=1
 pkgdesc="Yet Another Python Profiler, but this time Thread-Aware"
 arch=(any)
-url="http://code.google.com/p/$_name/"
+url="http://${_name}.googlecode.com/"
 
 license=('MIT')
 groups=()
@@ -26,8 +26,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://yappi.googlecode.com/files/$_name-$pkgver.tar.gz")
-md5sums=('3386a00eca61c490db521ebd96390bdd')
+source=("https://pypi.python.org/packages/source/y/yappi/${_name}-${pkgver}.tar.gz")
+md5sums=('a02c49efe783c4e31d6bbd805a37adec')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
