@@ -1,0 +1,37 @@
+pkgbase = gnome-terminal-fedora
+	pkgdesc = The GNOME Terminal Emulator with Fedora patches
+	pkgver = 3.16.1
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = gnome-terminal-fedora.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = desktop-file-utils
+	makedepends = appdata-tools
+	makedepends = gnome-shell
+	makedepends = gconf
+	makedepends = vala
+	makedepends = yelp-tools
+	depends = vte3-notification
+	depends = gsettings-desktop-schemas
+	depends = dconf
+	depends = libnautilus-extension
+	optdepends = gconf: settings migration when upgrading from older version
+	conflicts = gnome-terminal
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.16/gnome-terminal-3.16.1.tar.xz
+	source = gnome-terminal-restore-transparency.patch
+	source = gnome-terminal-restore-dark.patch
+	source = gnome-terminal-command-notify.patch
+	sha256sums = 7dce4df5d88e4968ed64d57e61d51e2ab7944a02ece34d5776582a0ed3d7b45b
+	sha256sums = 00e8e84d6f348bfb4ac3c63c4971f4f1da1d603ca32deed45d8586f4aac73e1c
+	sha256sums = 5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff
+	sha256sums = 9c7a4f631dce079892dad72cd9ee1a143fb637d1d9fc961bbde36defca89e7c3
+
+pkgname = gnome-terminal-fedora
+

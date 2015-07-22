@@ -1,0 +1,636 @@
+From 94b29611359d0d8510876be531825ec2edf44e09 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Tue, 27 Jan 2015 18:40:13 +0100
+Subject: [PATCH 1/3] Support desktop notifications from OSC 777
+
+https://bugzilla.gnome.org/show_bug.cgi?id=711059
+---
+ src/terminal-app.c       |  32 ++++++++++++++
+ src/terminal-screen.c    | 108 +++++++++++++++++++++++++++++++++++++++++++++++
+ src/terminal-tab-label.c |  28 +++++++++++-
+ src/terminal-tab-label.h |   4 ++
+ 4 files changed, 171 insertions(+), 1 deletion(-)
+
+diff --git a/src/terminal-app.c b/src/terminal-app.c
+index 94fa35b..de74532 100644
+--- a/src/terminal-app.c
++++ b/src/terminal-app.c
+@@ -299,6 +299,31 @@ app_menu_quit_cb (GSimpleAction *action,
+     gtk_widget_destroy (GTK_WIDGET (window));
+ }
+ 
++/* Other action callbacks */
++
++static void
++action_activate_tab_cb (GSimpleAction *action,
++                        GVariant      *parameter,
++                        gpointer       user_data)
++{
++  GtkApplication *application = user_data;
++  GtkWidget *toplevel;
++  TerminalScreen *screen;
++  const char *uuid;
++
++  g_variant_get (parameter, "&s", &uuid);
++  screen = terminal_app_get_screen_by_uuid (TERMINAL_APP (application), uuid);
++  if (screen == NULL)
++    return;
++
++  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
++  if (!gtk_widget_is_toplevel (toplevel))
++    return;
++
++  terminal_window_switch_screen (TERMINAL_WINDOW (toplevel), screen);
++  gtk_window_present (GTK_WINDOW (toplevel));
++}
++
+ /* Class implementation */
+ 
+ G_DEFINE_TYPE (TerminalApp, terminal_app, GTK_TYPE_APPLICATION)
+@@ -321,6 +346,10 @@ terminal_app_startup (GApplication *application)
+     { "quit",        app_menu_quit_cb,          NULL, NULL, NULL }
+   };
+ 
++  const GActionEntry other_actions[] = {
++    { "activate-tab",   action_activate_tab_cb, "s",  NULL, NULL }
++  };
++
+   gs_unref_object GtkBuilder *builder;
+   GError *error = NULL;
+ 
+@@ -332,6 +361,9 @@ terminal_app_startup (GApplication *application)
+   g_action_map_add_action_entries (G_ACTION_MAP (application),
+                                    app_menu_actions, G_N_ELEMENTS (app_menu_actions),
+                                    application);
++  g_action_map_add_action_entries (G_ACTION_MAP (application),
++                                   other_actions, G_N_ELEMENTS (other_actions),
++                                   application);
+ 
+   builder = gtk_builder_new ();
+   gtk_builder_add_from_resource (builder,
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index df3fdde..bb139e3 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -48,6 +48,7 @@
+ #include "terminal-marshal.h"
+ #include "terminal-schemas.h"
+ #include "terminal-screen-container.h"
++#include "terminal-tab-label.h"
+ #include "terminal-util.h"
+ #include "terminal-window.h"
+ #include "terminal-info-bar.h"
+@@ -81,6 +82,7 @@ struct _TerminalScreenPrivate
+   char **initial_env;
+   char **override_command;
+   gboolean shell;
++  gboolean shell_prompt_shown;
+   int child_pid;
+   GSList *match_tags;
+   guint launch_child_source_id;
+@@ -131,11 +133,16 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
+ static gboolean terminal_screen_popup_menu (GtkWidget *widget);
+ static gboolean terminal_screen_button_press (GtkWidget *widget,
+                                               GdkEventButton *event);
++static gboolean terminal_screen_focus_in (GtkWidget *widget,
++                                          GdkEventFocus *event);
+ static gboolean terminal_screen_do_exec (TerminalScreen *screen,
+                                          FDSetupData    *data,
+                                          GError **error);
+ static void terminal_screen_child_exited  (VteTerminal *terminal,
+                                            int status);
++static void terminal_screen_notification_received (VteTerminal *terminal,
++                                                   const char  *summary,
++                                                   const char  *body);
+ 
+ static void terminal_screen_window_title_changed      (VteTerminal *vte_terminal,
+                                                        TerminalScreen *screen);
+@@ -434,12 +441,14 @@ terminal_screen_class_init (TerminalScreenClass *klass)
+   object_class->get_property = terminal_screen_get_property;
+   object_class->set_property = terminal_screen_set_property;
+ 
++  widget_class->focus_in_event = terminal_screen_focus_in;
+   widget_class->realize = terminal_screen_realize;
+   widget_class->drag_data_received = terminal_screen_drag_data_received;
+   widget_class->button_press_event = terminal_screen_button_press;
+   widget_class->popup_menu = terminal_screen_popup_menu;
+ 
+   terminal_class->child_exited = terminal_screen_child_exited;
++  terminal_class->notification_received = terminal_screen_notification_received;
+ 
+   signals[PROFILE_SET] =
+     g_signal_new (I_("profile-set"),
+@@ -561,6 +570,10 @@ terminal_screen_dispose (GObject *object)
+   TerminalScreen *screen = TERMINAL_SCREEN (object);
+   TerminalScreenPrivate *priv = screen->priv;
+   GtkSettings *settings;
++  TerminalApp *app;
++
++  app = terminal_app_get ();
++  g_application_withdraw_notification (G_APPLICATION (app), priv->uuid);
+ 
+   settings = gtk_widget_get_settings (GTK_WIDGET (screen));
+   g_signal_handlers_disconnect_matched (settings, G_SIGNAL_MATCH_DATA,
+@@ -1502,6 +1515,43 @@ terminal_screen_button_press (GtkWidget      *widget,
+   return FALSE;
+ }
+ 
++static gboolean
++terminal_screen_focus_in (GtkWidget     *widget,
++                          GdkEventFocus *event)
++{
++  TerminalScreen *screen = TERMINAL_SCREEN (widget);
++  TerminalApp *app;
++  TerminalWindow *window;
++
++  window = terminal_screen_get_window (screen);
++  if (window != NULL)
++    {
++      TerminalScreenContainer *screen_container;
++
++      screen_container = terminal_screen_container_get_from_screen (screen);
++      if (screen_container != NULL)
++        {
++          GtkWidget *mdi_container;
++
++          mdi_container = terminal_window_get_mdi_container (window);
++          /* FIXME: add interface method to retrieve tab label */
++          if (GTK_IS_NOTEBOOK (mdi_container))
++            {
++              GtkWidget *tab_label;
++
++              tab_label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (mdi_container), GTK_WIDGET (screen_container));
++              terminal_tab_label_set_bold (TERMINAL_TAB_LABEL (tab_label), FALSE);
++              terminal_tab_label_set_icon (TERMINAL_TAB_LABEL (tab_label), NULL, NULL);
++            }
++        }
++    }
++
++  app = terminal_app_get ();
++  g_application_withdraw_notification (G_APPLICATION (app), screen->priv->uuid);
++
++  return GTK_WIDGET_CLASS (terminal_screen_parent_class)->focus_in_event (widget, event);
++}
++
+ /**
+  * terminal_screen_get_current_dir:
+  * @screen:
+@@ -1603,6 +1653,64 @@ terminal_screen_child_exited (VteTerminal *terminal,
+ }
+ 
+ static void
++terminal_screen_notification_received (VteTerminal *terminal,
++                                       const char  *summary,
++                                       const char  *body)
++{
++  TerminalScreen *screen = TERMINAL_SCREEN (terminal);
++  TerminalScreenPrivate *priv = screen->priv;
++  TerminalWindow *window;
++
++  if (G_UNLIKELY (!priv->shell_prompt_shown))
++    {
++      priv->shell_prompt_shown = TRUE;
++      return;
++    }
++
++  window = terminal_screen_get_window (screen);
++  if (window == NULL)
++    return;
++
++  if (gtk_window_is_active (GTK_WINDOW (window)))
++    {
++      GtkWidget *mdi_container;
++      TerminalScreenContainer *screen_container;
++
++      if (screen == terminal_window_get_active (window))
++        return;
++
++      screen_container = terminal_screen_container_get_from_screen (screen);
++      if (screen_container == NULL)
++        return;
++
++      mdi_container = terminal_window_get_mdi_container (window);
++      /* FIXME: add interface method to retrieve tab label */
++      if (GTK_IS_NOTEBOOK (mdi_container))
++        {
++          GtkWidget *tab_label;
++
++          tab_label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (mdi_container), GTK_WIDGET (screen_container));
++          terminal_tab_label_set_bold (TERMINAL_TAB_LABEL (tab_label), TRUE);
++          terminal_tab_label_set_icon (TERMINAL_TAB_LABEL (tab_label), "dialog-information-symbolic", summary);
++        }
++    }
++  else
++    {
++      gs_unref_object GNotification *notification = NULL;
++      TerminalApp *app;
++      gs_free char *detailed_action = NULL;
++
++      notification = g_notification_new (summary);
++      g_notification_set_body (notification, body);
++      detailed_action = g_strdup_printf ("app.activate-tab::%s", priv->uuid);
++      g_notification_set_default_action (notification, detailed_action);
++
++      app = terminal_app_get ();
++      g_application_send_notification (G_APPLICATION (app), priv->uuid, notification);
++    }
++}
++
++static void
+ terminal_screen_drag_data_received (GtkWidget        *widget,
+                                     GdkDragContext   *context,
+                                     gint              x,
+diff --git a/src/terminal-tab-label.c b/src/terminal-tab-label.c
+index 0850652..987e93c 100644
+--- a/src/terminal-tab-label.c
++++ b/src/terminal-tab-label.c
+@@ -34,6 +34,7 @@
+ struct _TerminalTabLabelPrivate
+ {
+   TerminalScreen *screen;
++  GtkWidget *icon;
+   GtkWidget *label;
+   GtkWidget *close_button;
+   gboolean bold;
+@@ -179,7 +180,7 @@ terminal_tab_label_constructed (GObject *object)
+ {
+   TerminalTabLabel *tab_label = TERMINAL_TAB_LABEL (object);
+   TerminalTabLabelPrivate *priv = tab_label->priv;
+-  GtkWidget *hbox, *label, *close_button;
++  GtkWidget *hbox, *icon, *label, *close_button;
+ 
+   G_OBJECT_CLASS (terminal_tab_label_parent_class)->constructed (object);
+ 
+@@ -189,6 +190,10 @@ terminal_tab_label_constructed (GObject *object)
+   
+   gtk_box_set_spacing (GTK_BOX (hbox), SPACING);
+ 
++  priv->icon = icon = gtk_image_new ();
++  gtk_widget_set_no_show_all (icon, TRUE);
++  gtk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
++
+   priv->label = label = gtk_label_new (NULL);
+   gtk_widget_set_halign (label, GTK_ALIGN_CENTER);
+   gtk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+@@ -377,6 +382,27 @@ terminal_tab_label_set_bold (TerminalTabLabel *tab_label,
+ }
+ 
+ /**
++ * terminal_tab_label_set_icon:
++ * @tab_label: a #TerminalTabLabel
++ * @icon_name: (allow-none): an icon name
++ * @tooltip: (allow-none): text to be used as tooltip
++ *
++ * Shows an icon at the beginning of @tab_label. If @icon_name is
++ * %NULL, then the icon will be hidden.
++ */
++void
++terminal_tab_label_set_icon (TerminalTabLabel *tab_label,
++                             const char *icon_name,
++                             const char *tooltip)
++{
++  TerminalTabLabelPrivate *priv = tab_label->priv;
++
++  gtk_widget_set_visible (priv->icon, icon_name != NULL);
++  gtk_image_set_from_icon_name (GTK_IMAGE (priv->icon), icon_name, GTK_ICON_SIZE_MENU);
++  gtk_widget_set_tooltip_text (GTK_WIDGET (priv->icon), tooltip);
++}
++
++/**
+  * terminal_tab_label_get_screen:
+  * @tab_label: a #TerminalTabLabel
+  *
+diff --git a/src/terminal-tab-label.h b/src/terminal-tab-label.h
+index 20cfbce..a987025 100644
+--- a/src/terminal-tab-label.h
++++ b/src/terminal-tab-label.h
+@@ -59,6 +59,10 @@ GtkWidget *     terminal_tab_label_new        (TerminalScreen *screen);
+ void            terminal_tab_label_set_bold   (TerminalTabLabel *tab_label,
+                                                gboolean bold);
+ 
++void            terminal_tab_label_set_icon   (TerminalTabLabel *tab_label,
++                                               const char *icon_name,
++                                               const char *tooltip);
++
+ TerminalScreen *terminal_tab_label_get_screen (TerminalTabLabel *tab_label);
+ 
+ G_END_DECLS
+-- 
+2.1.0
+
+
+From 261c88d13ede50b165aaef859f2f95660dc6c965 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Tue, 27 Jan 2015 19:04:19 +0100
+Subject: [PATCH 2/3] Make notifications based on org.gtk.Notification work
+
+The desktop file should be named after the application ID for this.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=711059
+---
+ Makefile.am                            |  4 ++--
+ configure.ac                           |  2 +-
+ gnome-terminal.appdata.xml.in          | 38 ----------------------------------
+ gnome-terminal.desktop.in.in           | 16 --------------
+ org.gnome.Terminal.appdata.xml.in      | 38 ++++++++++++++++++++++++++++++++++
+ org.gnome.Terminal.desktop.in.in       | 16 ++++++++++++++
+ po/POTFILES.in                         |  4 ++--
+ po/POTFILES.skip                       |  2 +-
+ src/gnome-terminal-search-provider.ini |  2 +-
+ 9 files changed, 61 insertions(+), 61 deletions(-)
+ delete mode 100644 gnome-terminal.appdata.xml.in
+ delete mode 100644 gnome-terminal.desktop.in.in
+ create mode 100644 org.gnome.Terminal.appdata.xml.in
+ create mode 100644 org.gnome.Terminal.desktop.in.in
+
+diff --git a/Makefile.am b/Makefile.am
+index f6f41a6..3aa8677 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,7 +14,7 @@ DISTCHECK_CONFIGURE_FLAGS = \
+ 	$(NULL)
+ 
+ desktopdir = $(datadir)/applications
+-desktop_in_files = @PACKAGE@.desktop.in.in
++desktop_in_files = org.gnome.Terminal.desktop.in.in
+ nodist_desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
+ @INTLTOOL_DESKTOP_RULE@
+ 
+@@ -25,7 +25,7 @@ desktop-file-validate: $(nodist_desktop_DATA)
+ 	done
+ 
+ appdatadir = $(datadir)/appdata
+-appdata_in_files = gnome-terminal.appdata.xml.in
++appdata_in_files = org.gnome.Terminal.appdata.xml.in
+ nodist_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+ @INTLTOOL_XML_RULE@
+ 
+diff --git a/configure.ac b/configure.ac
+index 523a0da..e68392d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -345,7 +345,7 @@ AC_SUBST([AM_LDFLAGS])
+ 
+ AC_CONFIG_FILES([
+ Makefile
+-gnome-terminal.desktop.in
++org.gnome.Terminal.desktop.in
+ src/Makefile
+ src/terminal-version.h
+ help/Makefile
+diff --git a/gnome-terminal.appdata.xml.in b/gnome-terminal.appdata.xml.in
+deleted file mode 100644
+index 7ef61e9..0000000
+--- a/gnome-terminal.appdata.xml.in
++++ /dev/null
+@@ -1,38 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!--
+-  Copyright © 2014 Christian Persch
+-
+-  This program is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU General Public License as published by
+-  the Free Software Foundation; either version 3, or (at your option)
+-  any later version.
+-
+-  This program is distributed in the hope conf it will be useful,
+-  but WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-  GNU General Public License for more details.
+-
+-  You should have received a copy of the GNU General Public License
+-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+--->
+-<!-- FIXME: the xmlns for appdata is made-up -->
+-<application
+-  xmlns="https://www.freedesktop.org/standards/appdata/1.0"
+-  xmlns:xi="http://www.w3.org/2001/XInclude"
+-  xmlns:its="http://www.w3.org/2005/11/its">
+-  <id type="desktop">gnome-terminal.desktop</id>
+-  <metadata_license>GPL-3.0+</metadata_license>
+-  <project_license>GPL-3.0+</project_license>
+-  <_name>Terminal</_name>
+-  <_summary>Use the command line</_summary>
+-  <description>
+-    <_p>GNOME Terminal is a terminal emulator application for accessing a UNIX shell environment which can be used to run programs available on your system.</_p>
+-    <_p>It supports several profiles, multiple tabs and implements several keyboard shortcuts.</_p>
+-  </description>
+-  <screenshots>
+-    <screenshot type="default">https://help.gnome.org/users/gnome-terminal/stable/figures/gnome-terminal.png</screenshot>
+-  </screenshots>
+-  <url type="homepage">https://wiki.gnome.org/Apps/Terminal</url>
+-  <project_group>GNOME</project_group>
+-  <updatecontact>https://wiki.gnome.org/Apps/Terminal/ReportingBugs</updatecontact>
+-</application>
+diff --git a/gnome-terminal.desktop.in.in b/gnome-terminal.desktop.in.in
+deleted file mode 100644
+index e01c998..0000000
+--- a/gnome-terminal.desktop.in.in
++++ /dev/null
+@@ -1,16 +0,0 @@
+-[Desktop Entry]
+-_Name=Terminal
+-_Comment=Use the command line
+-_Keywords=shell;prompt;command;commandline;
+-TryExec=gnome-terminal
+-Exec=gnome-terminal
+-Icon=utilities-terminal
+-Type=Application
+-X-GNOME-DocPath=gnome-terminal/index.html
+-X-GNOME-Bugzilla-Bugzilla=GNOME
+-X-GNOME-Bugzilla-Product=gnome-terminal
+-X-GNOME-Bugzilla-Component=BugBuddyBugs
+-X-GNOME-Bugzilla-Version=@VERSION@
+-Categories=GNOME;GTK;System;TerminalEmulator;
+-StartupNotify=true
+-X-GNOME-SingleWindow=false
+diff --git a/org.gnome.Terminal.appdata.xml.in b/org.gnome.Terminal.appdata.xml.in
+new file mode 100644
+index 0000000..ab4f23b
+--- /dev/null
++++ b/org.gnome.Terminal.appdata.xml.in
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++  Copyright © 2014 Christian Persch
++
++  This program is free software; you can redistribute it and/or modify
++  it under the terms of the GNU General Public License as published by
++  the Free Software Foundation; either version 3, or (at your option)
++  any later version.
++
++  This program is distributed in the hope conf it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++  GNU General Public License for more details.
++
++  You should have received a copy of the GNU General Public License
++  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++-->
++<!-- FIXME: the xmlns for appdata is made-up -->
++<application
++  xmlns="https://www.freedesktop.org/standards/appdata/1.0"
++  xmlns:xi="http://www.w3.org/2001/XInclude"
++  xmlns:its="http://www.w3.org/2005/11/its">
++  <id type="desktop">org.gnome.Terminal.desktop</id>
++  <metadata_license>GPL-3.0+</metadata_license>
++  <project_license>GPL-3.0+</project_license>
++  <_name>Terminal</_name>
++  <_summary>Use the command line</_summary>
++  <description>
++    <_p>GNOME Terminal is a terminal emulator application for accessing a UNIX shell environment which can be used to run programs available on your system.</_p>
++    <_p>It supports several profiles, multiple tabs and implements several keyboard shortcuts.</_p>
++  </description>
++  <screenshots>
++    <screenshot type="default">https://help.gnome.org/users/gnome-terminal/stable/figures/gnome-terminal.png</screenshot>
++  </screenshots>
++  <url type="homepage">https://wiki.gnome.org/Apps/Terminal</url>
++  <project_group>GNOME</project_group>
++  <updatecontact>https://wiki.gnome.org/Apps/Terminal/ReportingBugs</updatecontact>
++</application>
+diff --git a/org.gnome.Terminal.desktop.in.in b/org.gnome.Terminal.desktop.in.in
+new file mode 100644
+index 0000000..e01c998
+--- /dev/null
++++ b/org.gnome.Terminal.desktop.in.in
+@@ -0,0 +1,16 @@
++[Desktop Entry]
++_Name=Terminal
++_Comment=Use the command line
++_Keywords=shell;prompt;command;commandline;
++TryExec=gnome-terminal
++Exec=gnome-terminal
++Icon=utilities-terminal
++Type=Application
++X-GNOME-DocPath=gnome-terminal/index.html
++X-GNOME-Bugzilla-Bugzilla=GNOME
++X-GNOME-Bugzilla-Product=gnome-terminal
++X-GNOME-Bugzilla-Component=BugBuddyBugs
++X-GNOME-Bugzilla-Version=@VERSION@
++Categories=GNOME;GTK;System;TerminalEmulator;
++StartupNotify=true
++X-GNOME-SingleWindow=false
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index af1304d..0aa03ec 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1,8 +1,8 @@
+ [encoding: UTF-8]
+ # List of source files containing translatable strings.
+ # Please keep this file sorted alphabetically.
+-gnome-terminal.appdata.xml.in
+-gnome-terminal.desktop.in.in
++org.gnome.Terminal.appdata.xml.in
++org.gnome.Terminal.desktop.in.in
+ [type: gettext/glade]src/find-dialog.ui
+ src/gterminal.vala
+ src/migration.c
+diff --git a/po/POTFILES.skip b/po/POTFILES.skip
+index 7c37b7f..ef7c635 100644
+--- a/po/POTFILES.skip
++++ b/po/POTFILES.skip
+@@ -1,4 +1,4 @@
+ # List of source files that should *not* be translated.
+ # Please keep this file sorted alphabetically.
+-gnome-terminal.desktop.in
++org.gnome.Terminal.desktop.in
+ src/gterminal.c
+diff --git a/src/gnome-terminal-search-provider.ini b/src/gnome-terminal-search-provider.ini
+index b6506f2..1b9f81c 100644
+--- a/src/gnome-terminal-search-provider.ini
++++ b/src/gnome-terminal-search-provider.ini
+@@ -14,7 +14,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ [Shell Search Provider]
+-DesktopId=gnome-terminal.desktop
++DesktopId=org.gnome.Terminal.desktop
+ BusName=org.gnome.Terminal
+ ObjectPath=/org/gnome/Terminal/SearchProvider
+ Version=2
+-- 
+2.1.0
+
+
+From acd11f2b16e6fffebcb881a447b37913a960a324 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Thu, 29 Jan 2015 11:47:21 +0100
+Subject: [PATCH 3/3] Sprinkle debug messages for notifications
+
+This can be useful for finding out whether the escape sequence wasn't
+emitted or the filtering was faulty.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=711059
+---
+ src/terminal-debug.c  | 1 +
+ src/terminal-debug.h  | 3 ++-
+ src/terminal-screen.c | 6 ++++++
+ 3 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/terminal-debug.c b/src/terminal-debug.c
+index 0ff321f..dac79c3 100644
+--- a/src/terminal-debug.c
++++ b/src/terminal-debug.c
+@@ -38,6 +38,7 @@ _terminal_debug_init(void)
+     { "settings-list", TERMINAL_DEBUG_SETTINGS_LIST },
+     { "appmenu",       TERMINAL_DEBUG_APPMENU       },
+     { "search",        TERMINAL_DEBUG_SEARCH        },
++    { "notifications", TERMINAL_DEBUG_NOTIFICATIONS },
+   };
+ 
+   _terminal_debug_flags = g_parse_debug_string (g_getenv ("GNOME_TERMINAL_DEBUG"),
+diff --git a/src/terminal-debug.h b/src/terminal-debug.h
+index 5dc3ca4..7499ebe 100644
+--- a/src/terminal-debug.h
++++ b/src/terminal-debug.h
+@@ -34,7 +34,8 @@ typedef enum {
+   TERMINAL_DEBUG_PROFILE       = 1 << 6,
+   TERMINAL_DEBUG_SETTINGS_LIST = 1 << 7,
+   TERMINAL_DEBUG_APPMENU       = 1 << 8,
+-  TERMINAL_DEBUG_SEARCH        = 1 << 9
++  TERMINAL_DEBUG_SEARCH        = 1 << 9,
++  TERMINAL_DEBUG_NOTIFICATIONS = 1 << 10
+ } TerminalDebugFlags;
+ 
+ void _terminal_debug_init(void);
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index bb139e3..cd12ab9 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -1523,6 +1523,8 @@ terminal_screen_focus_in (GtkWidget     *widget,
+   TerminalApp *app;
+   TerminalWindow *window;
+ 
++  _terminal_debug_print (TERMINAL_DEBUG_NOTIFICATIONS, "Notification withdrawn\n");
++
+   window = terminal_screen_get_window (screen);
+   if (window != NULL)
+     {
+@@ -1661,6 +1663,8 @@ terminal_screen_notification_received (VteTerminal *terminal,
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalWindow *window;
+ 
++  _terminal_debug_print (TERMINAL_DEBUG_NOTIFICATIONS, "Notification received: [%s]: %s\n", summary, body);
++
+   if (G_UNLIKELY (!priv->shell_prompt_shown))
+     {
+       priv->shell_prompt_shown = TRUE;
+@@ -1692,6 +1696,7 @@ terminal_screen_notification_received (VteTerminal *terminal,
+           tab_label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (mdi_container), GTK_WIDGET (screen_container));
+           terminal_tab_label_set_bold (TERMINAL_TAB_LABEL (tab_label), TRUE);
+           terminal_tab_label_set_icon (TERMINAL_TAB_LABEL (tab_label), "dialog-information-symbolic", summary);
++          _terminal_debug_print (TERMINAL_DEBUG_NOTIFICATIONS, "Notify tab\n");
+         }
+     }
+   else
+@@ -1707,6 +1712,7 @@ terminal_screen_notification_received (VteTerminal *terminal,
+ 
+       app = terminal_app_get ();
+       g_application_send_notification (G_APPLICATION (app), priv->uuid, notification);
++      _terminal_debug_print (TERMINAL_DEBUG_NOTIFICATIONS, "Notify desktop\n");
+     }
+ }
+ 
+-- 
+2.1.0
+
