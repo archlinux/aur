@@ -1,13 +1,13 @@
 pkgbase = openvas-lib
 	pkgdesc = This project is a Python library to connect and manage the latest OpenVAS servers using the OMPv4 protocol.
-	pkgver = 0.1.0
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.golismero.com/
 	arch = any
 	license = GPL2
 	depends = python2
-	source = https://github.com/golismero/openvas_lib/archive/master.zip
-	sha256sums = d6f2eb580fdb01a8334e38044eab8036074310a2b89a0d4760b94eda115416b1
+	source = https://github.com/golismero/openvas_lib/archive/1.0.tar.gz
+	sha256sums = 3c61203e25324c3393c607764d5558cbf6fa6fed3c15ad92f901bb3a29036c65
 
 pkgname = openvas-lib
 
