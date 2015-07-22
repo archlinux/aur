@@ -1,5 +1,5 @@
 pkgname=wp-cli
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
