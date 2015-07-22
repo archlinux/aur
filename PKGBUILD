@@ -6,7 +6,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -21,7 +21,8 @@ depends=("$_pkgbasename"
       'lib32-sdl' 'lib32-v4l-utils'
       'lib32-libxv'
       'lib32-xvidcore' 'lib32-zlib'
-      'libvorbis.so' 'libvorbisenc.so' 'libx264.so'
+      'lib32-libvorbis' 'libvorbis.so' 'libvorbisenc.so'
+      'lib32-libx264' 'libx264.so'
       )
 makedepends=('hardening-wrapper' 'yasm')
 provides=(
