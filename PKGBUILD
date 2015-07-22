@@ -1,5 +1,5 @@
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
+# Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-terminal-fedora
