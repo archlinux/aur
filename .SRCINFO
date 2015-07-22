@@ -1,7 +1,7 @@
 pkgbase = letsencrypt-git
 	pkgdesc = A utility that works alongside Apache and nginx to automatically obtain a certificate and convert a website to HTTPS
-	pkgver = 2463.01481aa
-	pkgrel = 2
+	pkgver = 2496.8e63bbe
+	pkgrel = 1
 	url = https://letsencrypt.org/
 	arch = any
 	license = Apache
