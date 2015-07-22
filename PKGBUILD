@@ -13,6 +13,7 @@ optdepends=("oxygen-kde4-git: Oxygen widget style for KDE4 applications")
 conflicts=(oxygen oxygen-cursors kdebase-workspace)
 provides=(oxygen oxygen-cursors)
 source=('git://anongit.kde.org/oxygen.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
