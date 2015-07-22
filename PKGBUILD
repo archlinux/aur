@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-git
-pkgver=0.8.0.r432.g2ed8108
+pkgver=0.8.0.r439.gdbf959f
 pkgrel=1
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
@@ -19,7 +19,7 @@ install=xrdp-git.install
 source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git"
         "arch-config.diff")
 md5sums=('SKIP'
-         'd08f0984fc543e2478eaa79337726da7')
+         'b27f96f733825fed0d589a377a717dce')
 
 pkgver() {
   cd $pkgname

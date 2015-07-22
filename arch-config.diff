@@ -1,6 +1,6 @@
 diff -up src/xrdp-git/instfiles/pam.d/xrdp-sesman.orig src/xrdp-git/instfiles/pam.d/xrdp-sesman
---- src/xrdp-git/instfiles/pam.d/xrdp-sesman.orig	2015-07-13 18:05:56.000000000 -0600
-+++ src/xrdp-git/instfiles/pam.d/xrdp-sesman	2015-07-13 18:06:11.000000000 -0600
+--- src/xrdp-git/instfiles/pam.d/xrdp-sesman.orig	2015-07-22 16:01:32.000000000 -0600
++++ src/xrdp-git/instfiles/pam.d/xrdp-sesman	2015-07-22 16:01:35.000000000 -0600
 @@ -1,5 +1,5 @@
  #%PAM-1.0
 -@include common-auth
@@ -12,25 +12,24 @@ diff -up src/xrdp-git/instfiles/pam.d/xrdp-sesman.orig src/xrdp-git/instfiles/pa
 +password include system-auth
 +session include system-auth
 diff -up src/xrdp-git/instfiles/xrdp.service.orig src/xrdp-git/instfiles/xrdp.service
---- src/xrdp-git/instfiles/xrdp.service.orig	2015-07-13 18:04:27.000000000 -0600
-+++ src/xrdp-git/instfiles/xrdp.service	2015-07-13 18:04:30.000000000 -0600
-@@ -6,9 +6,9 @@ After=syslog.target network.target xrdp-
+--- src/xrdp-git/instfiles/xrdp.service.orig	2015-07-22 16:01:32.000000000 -0600
++++ src/xrdp-git/instfiles/xrdp.service	2015-07-22 16:10:39.000000000 -0600
+@@ -6,9 +6,8 @@ After=syslog.target network.target xrdp-
  [Service]
  Type=forking
  PIDFile=/var/run/xrdp.pid
 -EnvironmentFile=/etc/sysconfig/xrdp
--ExecStart=/usr/sbin/xrdp $XRDP_OPTIONS
+-ExecStart=/usr/sbin/xrdp $XRDP_OPTIONS --nodaemon
 -ExecStop=/usr/sbin/xrdp $XRDP_OPTIONS --kill
-+EnvironmentFile=/etc/xrdp/xrdp.ini
-+ExecStart=/usr/bin/xrdp $XRDP_OPTIONS
-+ExecStop=/usr/bin/xrdp $XRDP_OPTIONS --kill
++ExecStart=/usr/bin/xrdp
++ExecStop=/usr/bin/xrdp --kill
  
  [Install]
  WantedBy=multi-user.target
 diff -up src/xrdp-git/instfiles/xrdp-sesman.service.orig src/xrdp-git/instfiles/xrdp-sesman.service
---- src/xrdp-git/instfiles/xrdp-sesman.service.orig	2015-07-13 18:04:27.000000000 -0600
-+++ src/xrdp-git/instfiles/xrdp-sesman.service	2015-07-13 18:04:30.000000000 -0600
-@@ -6,9 +6,9 @@ StopWhenUnneeded=true
+--- src/xrdp-git/instfiles/xrdp-sesman.service.orig	2015-07-22 16:01:32.000000000 -0600
++++ src/xrdp-git/instfiles/xrdp-sesman.service	2015-07-22 16:01:35.000000000 -0600
+@@ -7,9 +7,9 @@ BindTo=xrdp.service
  [Service]
  Type=forking
  PIDFile=/var/run/xrdp-sesman.pid
@@ -44,8 +43,8 @@ diff -up src/xrdp-git/instfiles/xrdp-sesman.service.orig src/xrdp-git/instfiles/
  [Install]
  WantedBy=multi-user.target
 diff -up src/xrdp-git/instfiles/xrdp.sh.orig src/xrdp-git/instfiles/xrdp.sh
---- src/xrdp-git/instfiles/xrdp.sh.orig	2015-07-13 18:04:27.000000000 -0600
-+++ src/xrdp-git/instfiles/xrdp.sh	2015-07-13 18:04:30.000000000 -0600
+--- src/xrdp-git/instfiles/xrdp.sh.orig	2015-07-22 16:01:32.000000000 -0600
++++ src/xrdp-git/instfiles/xrdp.sh	2015-07-22 16:01:35.000000000 -0600
 @@ -17,7 +17,7 @@
  # Description: starts xrdp
  ### END INIT INFO
@@ -56,8 +55,8 @@ diff -up src/xrdp-git/instfiles/xrdp.sh.orig src/xrdp-git/instfiles/xrdp.sh
  CFGDIR=/etc/xrdp
  
 diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
---- src/xrdp-git/sesman/startwm.sh.orig	2015-07-13 18:09:26.000000000 -0600
-+++ src/xrdp-git/sesman/startwm.sh	2015-07-13 18:09:45.000000000 -0600
+--- src/xrdp-git/sesman/startwm.sh.orig	2015-07-22 16:01:33.000000000 -0600
++++ src/xrdp-git/sesman/startwm.sh	2015-07-22 16:01:35.000000000 -0600
 @@ -8,6 +8,17 @@ wm_start()
      export LANG LANGUAGE
    fi
@@ -77,8 +76,8 @@ diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
    if [ -r /etc/X11/Xsession ]; then
      . /etc/X11/Xsession
 diff -up src/xrdp-git/xrdp/xrdp.ini.orig src/xrdp-git/xrdp/xrdp.ini
---- src/xrdp-git/xrdp/xrdp.ini.orig	2015-07-13 18:12:33.000000000 -0600
-+++ src/xrdp-git/xrdp/xrdp.ini	2015-07-13 18:12:42.000000000 -0600
+--- src/xrdp-git/xrdp/xrdp.ini.orig	2015-07-22 16:01:35.000000000 -0600
++++ src/xrdp-git/xrdp/xrdp.ini	2015-07-22 16:01:35.000000000 -0600
 @@ -51,7 +51,7 @@ grey=dedede
  # require_credentials=yes
  
