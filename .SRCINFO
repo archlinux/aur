@@ -1,0 +1,17 @@
+pkgbase = haskell-reflection
+	pkgdesc = Reifies arbitrary terms into types that can be reflected back into terms
+	pkgver = 2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/reflection
+	install = haskell-reflection.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/reflection/2/reflection-2.tar.gz
+	md5sums = bbee37d501c90018cd1cea8d7a7679e0
+
+pkgname = haskell-reflection
+
