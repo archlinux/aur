@@ -15,7 +15,7 @@ _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
 pkgver=0.7.5.1469
-pkgrel=1
+pkgrel=2
 epoch=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
@@ -34,9 +34,9 @@ backup=('opt/freenet/wrapper.config'
 # these are packages we need to download to prevent ant from
 # downloading them itself we are also going to build as much
 # as we can from source, including this array
-_deps=("https://downloads.sourceforge.net/project/sevenzip/LZMA%20SDK/4.65/lzma465.tar.bz2"
+_deps=("http://downloads.sourceforge.net/project/sevenzip/LZMA%20SDK/4.65/lzma465.tar.bz2"
        "league-lzmajio-0.95-0-gd38bf5c.tar.gz::https://codeload.github.com/league/lzmajio/legacy.tar.gz/0.95"
-       "https://downloads.sourceforge.net/project/bitcollider/jBitcollider%20%28Java%29/0.8/jBitcollider-0.8.zip"
+       "http://downloads.sourceforge.net/project/bitcollider/jBitcollider%20%28Java%29/0.8/jBitcollider-0.8.zip"
        "https://www.spaceroots.org/software/mantissa/mantissa-7.2-src.zip"
        "${url}/contrib/db4o-7.4-java.zip")
 
@@ -91,16 +91,16 @@ pkgver() {
     echo "${_pkgver}.$(git describe |sed 's/build0//;s/-/./g')"
 }
 
+if [[ "$CARCH" = 'i686' ]]; then
+     _arch=x86
+    __arch=i386
+else
+     _arch=x86_64
+    __arch=amd64
+fi
+
 prepare() {
     cd "$srcdir/fred"
-
-    if [[ "$CARCH" = 'i686' ]]; then
-         _arch=x86
-        __arch=i386
-    else
-         _arch=x86_64
-        __arch=amd64
-    fi
 
     rm -rf contrib
     ln -sf ../contrib contrib
@@ -120,6 +120,7 @@ prepare() {
     # we're going to compile our own c libraries
     cd "$srcdir/contrib"
     rm -rf NativeBigInteger/lib/net/i2p/util/*
+    rm -rf NativeThread/lib/freenet/support/io/*.so
     rm -rf onion-fec/bin/lib/{freebsd,linux,win32}-*
 
     cd "$srcdir/contrib/jcpuid"
@@ -139,6 +140,7 @@ build() {
     source /etc/profile.d/jre.sh
 
     build_jbigi
+    build_nativethread
     build_jcpuid
     build_fec
 
@@ -162,26 +164,40 @@ build() {
 }
 
 build_jbigi() {
-    msg "Building libjbigi..."
+    msg "Building NativeBigInt..."
     cd "$srcdir/contrib/NativeBigInteger"
 
-    _objdir='net/i2p/util'
+    _objdir='lib/net/i2p/util'
     CFLAGS+=" -fPIC -Wall"
     INCLUDES="-I./jbigi/include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
-    gcc $LDFLAGS $INCLUDES -o lib/"$_objdir"/libjbigi-linux-none.so jbigi.o
+    gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjbigi-linux-none.so jbigi.o
+    plain "done"
+}
+
+build_nativethread() {
+    msg "Building NativeThread..."
+    cd "$srcdir/contrib/NativeThread"
+
+    _objdir='lib/freenet/support/io'
+    INCLUDES="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
+    LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,llibnative.so -lc"
+    javah -o NativeThread.h -classpath ../../fred/src freenet.support.io.NativeThread
+    gcc -c $CFLAGS $INCLUDES NativeThread.c
+    gcc $LDFLAGS $INCLUDES -o "$_objdir"/libNativeThread-${__arch}.so NativeThread.o
     plain "done"
 }
 
 build_jcpuid() {
-    msg "Building libjcpuid..."
+    msg "Building NativeCPUID..."
     cd "$srcdir/contrib/jcpuid"
 
-    _objdir='freenet/support/CPUInformation'
+    _objdir='lib/freenet/support/CPUInformation'
     INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
-    gcc $CFLAGS $LDFLAGS $INCLUDES src/jcpuid.c -o lib/"$_objdir"/libjcpuid-${_arch}-linux.so
+    gcc -c $CFLAGS $INCLUDES src/jcpuid.c
+    gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjcpuid-${_arch}-linux.so jcpuid.o
     plain "done"
 }
 
@@ -189,9 +205,7 @@ build_fec() {
     msg "Building onion-fec..."
     cd "$srcdir/contrib/onion-fec/src/csrc"
 
-    CFLAGS+=" -I${JAVA_HOME}/include" \
-        make
-
+    make
     _DEST="../../bin/lib/linux-${_arch}"
     mkdir -p "$_DEST"
     cp libfec*.so "$_DEST"
@@ -225,7 +239,7 @@ package() {
 
     # freenet
     install -dm755 "$pkgdir"/usr/bin
-    install -dm700 "$pkgdir"/run/freenet
+    install -dm750 "$pkgdir"/run/freenet
     install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf/node,persistent-temp,tmp,plugins/data,user/{data,certs}}
 
     install -m640 "$srcdir"/{wrapper.config,run.sh}            "$pkgdir"/opt/freenet
@@ -250,7 +264,7 @@ package() {
     # systemd
     install -dm755 "$pkgdir"/usr/lib/tmpfiles.d
     install -Dm644 "$srcdir"/freenet.service    "$pkgdir"/usr/lib/systemd/system/freenet.service
-    echo 'd /run/freenet 0700 freenet freenet' >"$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
+    echo 'd /run/freenet 0750 freenet freenet' >"$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
 
     # license
     install -dm755        "$pkgdir"/usr/share/licenses/freenet
