@@ -22,6 +22,7 @@ pkgname = python-gobject-patched
 	depends = pygobject-devel=3.16.2
 	depends = python
 	depends = cairo
+	conflicts = python-gobject
 
 pkgname = python2-gobject-patched
 	pkgdesc = Python 2 bindings for GObject, with a patch for cairo
@@ -29,4 +30,5 @@ pkgname = python2-gobject-patched
 	depends = pygobject-devel=3.16.2
 	depends = python2
 	depends = cairo
+	conflicts = python2-gobject
 
