@@ -6,6 +6,7 @@ pkgbase = python2-smbus
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = GPL
 	makedepends = python2
 	makedepends = subversion
