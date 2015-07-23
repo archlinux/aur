@@ -6,14 +6,14 @@
 pkgname=keepassx-git
 _gitname=keepassx
 pkgver=2.0.beta1.r38.g4fcce6f
-pkgrel=1
+pkgrel=2
 pkgdesc="KeePassX is a cross platform port of the windows application 'Keepass Password Safe'. It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way. It uses a highly encrypted database locked with one master key."
 arch=('i686' 'x86_64')
 url="https://github.com/keepassx/keepassx"
 license=('GPL2')
 depends=('libxtst' 'shared-mime-info' 'qt5-x11extras')
 install=keepassx.install
-makedepends=('git' 'intltool' 'cmake')
+makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git')
 source=(git+https://github.com/keepassx/keepassx.git#branch=qt5)
 md5sums=('SKIP')
