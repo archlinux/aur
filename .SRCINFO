@@ -1,0 +1,16 @@
+pkgbase = ruijieclient-git
+	pkgdesc = A Ruijie Network Supplicant For GNU/Linux - Git Version
+	pkgver = 20111205
+	pkgrel = 1
+	url = http://code.google.com/p/ruijieclient/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = libpcap
+	depends = libxml2
+	provides = ruijieclient
+	conflicts = ruijieclient
+
+pkgname = ruijieclient-git
+
