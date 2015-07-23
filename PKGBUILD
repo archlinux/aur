@@ -2,17 +2,19 @@
 # Contributor: Suhaimi Ghazali <serdotlinecho@gmail.com>
 
 pkgname=i3status-mpd-git
-pkgver=r401.0e4c207
+pkgver=r473.8008db2
 pkgrel=1
 pkgdesc="Generates a status bar to use with i3bar, dzen2 or xmobar (with mpd support)."
 arch=('i686' 'x86_64')
 url="https://github.com/Gravemind/i3status"
 license=('BSD')
-depends=('alsa-lib' 'confuse' 'libmpdclient' 'wireless_tools' 'yajl')
+depends=('alsa-lib' 'confuse' 'libmpdclient' 'libpulse' 'wireless_tools' 'yajl')
 makedepends=('asciidoc' 'git')
 provides=('i3status')
 conflicts=('i3status' 'i3status-git')
 backup=('etc/i3status.conf')
+install=i3status.install
+options=('docs')
 source=("$pkgname"::'git://github.com/Gravemind/i3status.git')
 sha1sums=('SKIP')
 
