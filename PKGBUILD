@@ -1,13 +1,12 @@
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 pkgname=starplot-yale5
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Stellar data set for starplot from Yale Bright Star Catalog, 5th Rev. Ed., Hoffleit, 1991."
 arch=('any')
 url="http://starplot.org/datafiles.html"
 license=('custom')
 depends=('starplot')
-makedepends=('starplot')
 source=(http://starplot.org/data/yale5-$pkgver.tar.gz)
 md5sums=('6a5c7f633db97c2ca20e492bab3107d3')
 
