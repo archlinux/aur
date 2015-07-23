@@ -1,0 +1,25 @@
+diff -aur octopi-73b684d231722181cbc2f8507fb5cd74f3695a78/src/mainwindow_refresh.cpp octopi-new/src/mainwindow_refresh.cpp
+--- octopi-73b684d231722181cbc2f8507fb5cd74f3695a78/src/mainwindow_refresh.cpp	2015-03-18 02:51:38.000000000 +0100
++++ octopi-new/src/mainwindow_refresh.cpp	2015-04-04 08:06:48.948358814 +0200
+@@ -60,18 +60,9 @@
+ 
+   if ((m_outdatedStringList->count() > 0))
+   {
+-    setWindowIcon(IconHelper::getIconOctopiRed());
+-    if(m_commandExecuting != ectn_MIRROR_CHECK && !isAURGroupSelected()) enableSystemUpgrade=true;
++      if(m_commandExecuting != ectn_MIRROR_CHECK && !isAURGroupSelected()) enableSystemUpgrade=true;
+   }
+-  else if(m_outdatedAURStringList->count() > 0)
+-  {
+-    setWindowIcon(IconHelper::getIconOctopiYellow());
+-  }
+-  else
+-  {
+-    setWindowIcon(IconHelper::getIconOctopiGreen());
+-  }
+-
++  
+   ui->actionSystemUpgrade->setEnabled(enableSystemUpgrade);
+ }
+ 
+Only in octopi-new/src: mainwindow_refresh.cpp~
