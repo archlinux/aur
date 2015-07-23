@@ -1,0 +1,16 @@
+pkgbase = xskat
+	pkgdesc = The card game Skat as defined by the official Skat Order
+	pkgver = 4.0
+	pkgrel = 7
+	url = http://www.xskat.de/xskat.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	source = http://www.xskat.de/xskat-4.0.tar.gz
+	source = xskat.desktop
+	md5sums = 6744cea48a890771736b75083e7ea2b5
+	md5sums = f863249c1fb206444097c277c5cf913f
+
+pkgname = xskat
+
