@@ -2,7 +2,7 @@
 
 pkgname=xscreensaver-xmatrix-color
 pkgver=5.32
-pkgrel=2
+pkgrel=3
 pkgdesc="Screen saver and locker for the X Window System, modified xmatrix with variable color."
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
@@ -19,7 +19,7 @@ source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 	LICENSE)
 sha1sums=('3131d45295b9a18a2901737c9b95f1c5434f53a6'
           'e8dc57b6471fb3867ee099304ac6bf628351cb98'
-          '054b4fee6f0369c0831da156bf244a8ff55dfee2'
+          '8b63742086f2f8b3c97a3383ba370df5f5a27622'
           'bf8995d86609cdab678ca277ae685407f82691db')
 
 prepare() {

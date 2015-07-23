@@ -1,5 +1,5 @@
---- xmatrix.c	2014-10-05 01:35:38.000000000 -0500
-+++ xmatrix.c.mod	2015-07-23 12:28:13.674460728 -0500
+--- hacks/xmatrix.c	2014-10-05 01:35:38.000000000 -0500
++++ hacks/xmatrix.c.mod	2015-07-23 12:54:20.337356781 -0500
 @@ -232,8 +232,97 @@
  
  
@@ -228,8 +228,8 @@
    { 0, 0, 0, 0 }
  };
  
---- config/xmatrix.xml	2015-06-13 18:08:53.000000000 -0500
-+++ config/xmatrix.xml.mod	2015-07-23 12:28:13.691127249 -0500
+--- hacks/config/xmatrix.xml	2015-06-13 18:08:53.000000000 -0500
++++ hacks/config/xmatrix.xml.mod	2015-07-23 12:54:20.337356781 -0500
 @@ -25,6 +25,16 @@
       <option id="top"    _label="Slider algorithm"    arg-set="-insert top"/>
       <option id="bottom" _label="Expansion algorithm" arg-set="-insert bottom"/>
@@ -247,8 +247,8 @@
    </hgroup>
  
    <hgroup>
---- xmatrix.man	2011-08-03 13:44:25.000000000 -0500
-+++ xmatrix.man.mod	2015-07-23 12:28:13.697793858 -0500
+--- hacks/xmatrix.man	2011-08-03 13:44:25.000000000 -0500
++++ hacks/xmatrix.man.mod	2015-07-23 12:54:20.340690085 -0500
 @@ -26,6 +26,8 @@
  [\-mode \fImode\fP]
  [\-phone \fInumber\fP]
