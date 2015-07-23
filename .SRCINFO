@@ -2,7 +2,7 @@
 # Thu May 14 02:56:36 UTC 2015
 pkgbase = cassandra
 	pkgdesc = Apache Cassandra NoSQL database
-	pkgver = 2.1.5
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = http://cassandra.apache.org/
 	install = cassandra.install
