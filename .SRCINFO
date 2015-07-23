@@ -1,0 +1,34 @@
+pkgbase = lib32-fcitx
+	pkgdesc = Flexible Context-aware Input Tool with eXtension - 32-bit Libs & IM Modules
+	pkgver = 4.2.8.3
+	pkgrel = 1
+	url = http://code.google.com/p/fcitx/
+	arch = x86_64
+	groups = fcitx-im-multilib
+	license = GPL
+	makedepends = cmake
+	makedepends = lib32-icu
+	makedepends = lib32-gtk2
+	makedepends = lib32-qt4
+	source = http://download.fcitx-im.org/fcitx/fcitx-4.2.8.3.tar.xz
+	source = qconfig.h
+	sha512sums = 9c05255901476ff36b0fa0833d96b8593ddf2fe5adb4c602fe4709d8f6e5b4ebc1cbb50b75f52eb3210fd52bed230c9351af7728ad95937b92b8de536a958b39
+	sha512sums = db6e66b914068932d8696712dc34ce97b11580d66a4e819db2838d622df632a9d2c633ebef59d6bc7dc9f0a093ebdf3c271403f0cdc582999a9e053bd1eac48f
+
+pkgname = lib32-fcitx
+	pkgdesc = Flexible Context-aware Input Tool with eXtension - 32-bit libs
+	depends = lib32-glib2
+
+pkgname = lib32-fcitx-gtk2
+	pkgdesc = GTK2 IM Module for fcitx - 32-bit
+	install = fcitx-gtk2.install
+	depends = lib32-gtk2
+	depends = lib32-fcitx
+
+pkgname = lib32-fcitx-qt4
+	pkgdesc = QT IM Module for fcitx - 32-bit
+	depends = lib32-qt4
+	depends = lib32-fcitx
+	conflicts = lib32-fcitx-qt
+	replaces = lib32-fcitx-qt
+
