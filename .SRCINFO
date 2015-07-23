@@ -1,0 +1,20 @@
+pkgbase = lensfun-git
+	pkgdesc = Library to correct optical lens defects and lens database
+	pkgver = 0.3.0.r56.ge4a7da7
+	pkgrel = 1
+	url = http://lensfun.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = python2
+	makedepends = libpng
+	makedepends = cmake
+	depends = glibc
+	depends = glib2
+	provides = lensfun=0.3.0
+	conflicts = lensfun
+	source = lensfun::git://git.code.sf.net/p/lensfun/code
+	md5sums = SKIP
+
+pkgname = lensfun-git
+
