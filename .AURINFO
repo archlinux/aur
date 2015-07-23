@@ -1,0 +1,14 @@
+pkgbase = python2-topia.termextract
+	pkgdesc = Content Term Extraction using POS Tagging
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://www.braintreepayments.com/docs/python
+	arch = any
+	license = custom:ZPL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-zope-interface
+	source = https://pypi.python.org/packages/source/t/topia.termextract/topia.termextract-1.1.0.tar.gz
+
+pkgname = python2-topia.termextract
+
