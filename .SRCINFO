@@ -1,0 +1,19 @@
+pkgbase = keepassc
+	pkgdesc = KeePassC is a curses-based password manager compatible to KeePass v.1.x and KeePassX
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://raymontag.github.com/keepassc
+	arch = any
+	license = GPL
+	depends = python-kppy>=1.4.0
+	depends = python>=3.3
+	optdepends = xsel: copy usernames and password to clipboard
+	optdepends = openssl: to create server certificates
+	provides = keepassc
+	conflicts = keepassc-git
+	conflicts = keepassc-dev
+	source = https://pypi.python.org/packages/source/k/keepassc/keepassc-1.7.0.tar.gz
+	md5sums = ee602ba69763b0eb2a9bde9fa3491b2b
+
+pkgname = keepassc
+
