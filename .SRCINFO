@@ -7,6 +7,7 @@ pkgbase = libgd-doc-git
 	license = unknown
 	makedepends = git
 	makedepends = naturaldocs
+	provides = libgd-doc
 	source = git+https://bitbucket.org/libgd/gd-libgd/
 	md5sums = SKIP
 

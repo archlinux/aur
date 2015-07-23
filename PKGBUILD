@@ -2,11 +2,12 @@
 
 pkgname=libgd-doc-git
 pkgver=gd.2.1.1.30.g10a1b82
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference documentation for libgd, HTML format."
 arch=('any')
 url="https://bitbucket.org/libgd/gd-libgd/"
 license=('unknown')
+conflicts=('libgd-doc')
 makedepends=('git' 'naturaldocs')
 source=(git+https://bitbucket.org/libgd/gd-libgd/)
 md5sums=('SKIP')
