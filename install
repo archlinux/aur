@@ -5,22 +5,29 @@ post_install() {
   getent passwd zarafa &>/dev/null || useradd -r -c 'Zarafa Groupware Suite' -g zarafa -d /dev/null -s /bin/false zarafa
   passwd -l zarafa &>/dev/null
   
-  # => create database
+
   if [ ! -d "/var/lib/mysql" ]
   then
+   # => create database
    mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
    systemctl start mysqld
-   /usr/bin/mysql_secure_installation
-  fi
 
-  # => prepare database
-  echo ">>> MySQL user zarafa, with unrestricted access to a "zarafa" database, must exist"
-  echo "    > CREATE DATABASE IF NOT EXISTS zarafa;"
-  echo "    > GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa';"
-  echo ">>> Ensure the GLOBAL MySQL variable, max_allowed_packet, is >= 16MB, or is SESSION writable"
-  echo "    > SET GLOBAL max_allowed_packet=16777216;"
-  echo ">>> Log files located at /var/log/zarafa"
-  mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS zarafa; GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa'; SET GLOBAL max_allowed_packet=16777216;"
+   # => prepare database
+   mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa; GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa'; SET GLOBAL max_allowed_packet=16777216;"
+  
+  else
+   # => show instructions
+   echo ">>> MySQL user zarafa, with unrestricted access to a "zarafa" database, must exist"
+   echo "    > CREATE DATABASE IF NOT EXISTS zarafa;"
+   echo "    > GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa';"
+   echo ">>> Run /usr/bin/mysql_secure_installation"
+   echo 
+   echo ">>> Ensure the GLOBAL MySQL variable, max_allowed_packet, is >= 16MB, or is SESSION writable"
+   echo "    > SET GLOBAL max_allowed_packet=16777216;"
+   echo
+   echo ">>> Log files located at /var/log/zarafa"
+
+  fi
 
   # => set permission (PWD)
   chown zarafa:zarafa -R /var/log/zarafa
