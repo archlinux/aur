@@ -1,7 +1,7 @@
 pkgbase = thunderbird-lightning-bin
 	pkgdesc = A calendar that's fully integrated into Thunderbird.
 	pkgver = 4.0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mozilla.org/en-US/projects/calendar/
 	arch = i686
 	arch = x86_64

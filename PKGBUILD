@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-lightning-bin
 pkgver=4.0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A calendar that's fully integrated into Thunderbird."
 arch=('i686' 'x86_64')
 groups=('office')
