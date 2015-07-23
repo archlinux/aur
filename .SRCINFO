@@ -1,14 +1,16 @@
 pkgbase = include-what-you-use
 	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = http://code.google.com/p/include-what-you-use/
+	url = http://include-what-you-use.org
 	arch = i686
 	arch = x86_64
 	license = LLVM Release License
 	makedepends = clang>=3.6
 	makedepends = clang<=3.7
+	makedepends = llvm>=3.6
+	makedepends = llvm<=3.7
 	depends = clang>=3.6
 	depends = clang<=3.7
 	optdepends = python2
