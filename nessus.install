@@ -1,0 +1,11 @@
+post_install() {
+    echo "See https://wiki.archlinux.org/index.php/Nessus and the nessus man pages for documentation."
+    ldconfig
+}
+
+pre_remove() {
+    if [ -f /opt/nessus/var/nessus/nessusd.pid ]; then
+        echo "Shutting down the Nessus server."
+        kill $(cat /opt/nessus/var/nessus/nessusd.pid) >/dev/null 2>&1
+    fi
+}

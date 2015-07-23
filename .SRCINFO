@@ -1,0 +1,20 @@
+pkgbase = nessus
+	pkgdesc = Vulnerability scanner
+	pkgver = 6.4.2
+	pkgrel = 1
+	url = https://www.nessus.org
+	install = nessus.install
+	arch = x86_64
+	license = custom
+	depends = openssl
+	depends = gnupg
+	source = nessus.sh
+	source = LICENSE.NESSUS
+	source = nessus.install
+	md5sums = e624eb041a900db7178b7ae7e6f5d9f9
+	md5sums = 8c5772ac63f97d94475fe03e80d6ba5c
+	md5sums = 8ff98bc9488304fcb66753d3cfb5f30e
+	md5sums = d9d25d4075acc50c0050c7a4f244c7cb
+
+pkgname = nessus
+
