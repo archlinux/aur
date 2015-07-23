@@ -1,0 +1,41 @@
+From 73f961c933765a7310822c33fac5442725849466 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Fri, 24 Jul 2015 00:15:52 +0200
+Subject: [PATCH] Make gtk3 theme consistent with gtk2 theme
+
+---
+ data/themes/Industrial/gtk.css | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/data/themes/Industrial/gtk.css b/data/themes/Industrial/gtk.css
+index 7621345..179f0d6 100644
+--- a/data/themes/Industrial/gtk.css
++++ b/data/themes/Industrial/gtk.css
+@@ -1,6 +1,6 @@
+ #lxdm {
+ 	background-image: url("wave.svg");
+-	background-size: 100%;
++	background-repeat: round;
+ }
+ 
+ #bottom_pane {
+@@ -12,10 +12,12 @@
+ 	color: #ffffff;
+ }
+ 
+-#user_list, #login_entry {
+-	background-image: none;
++#prompt {
++	font: Sans 14;
++	color: #000000;
+ }
+ 
+-#prompt, #bottom_pane GtkLabel {
+-	color: #ffffff;
++#bottom_pane GtkLabel {
++	font: Sans 12;
++	color: #9E9D9B;
+ }
+-- 
+2.4.6
+
