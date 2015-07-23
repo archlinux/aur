@@ -1,0 +1,15 @@
+pkgbase = python-evergreen
+	pkgdesc = Cooperative i/o and multitasking for Python
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/saghul/evergreen
+	arch = any
+	license = custom:MIT
+	depends = python
+	depends = python-pyuv
+	depends = python-greenlet
+	source = https://github.com/saghul/evergreen/archive/release-0.2.0.tar.gz
+	md5sums = 850b072c0465dfd383e9ef65bfae93d8
+
+pkgname = python-evergreen
+
