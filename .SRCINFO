@@ -1,0 +1,15 @@
+pkgbase = python2-py-bcrypt
+	pkgdesc = py-bcrypt is an implementation the OpenBSD Blowfish password hashing algorithm
+	pkgver = 0.4
+	pkgrel = 2
+	url = https://code.google.com/p/py-bcrypt/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://py-bcrypt.googlecode.com/files/py-bcrypt-0.4.tar.gz
+	md5sums = dd8b367d6b716a2ea2e72392525f4e36
+
+pkgname = python2-py-bcrypt
+
