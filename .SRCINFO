@@ -1,0 +1,18 @@
+pkgbase = lib32-a52dec
+	pkgdesc = A free library for decoding ATSC A/52 streams
+	pkgver = 0.7.4
+	pkgrel = 7
+	url = http://liba52.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = a52dec
+	options = !libtool
+	source = http://liba52.sourceforge.net/files/a52dec-0.7.4.tar.gz
+	source = a52dec-0.7.4-build.patch
+	md5sums = caa9f5bc44232dc8aeea773fea56be80
+	md5sums = fa16f224a7dceb7613824380abef0052
+
+pkgname = lib32-a52dec
+
