@@ -1,0 +1,22 @@
+pkgbase = lib32-faac
+	pkgdesc = An AAC audio encoder (32 bit)
+	pkgver = 1.28
+	pkgrel = 7
+	url = http://www.audiocoding.com/
+	arch = x86_64
+	license = GPL
+	license = custom:FAAC
+	makedepends = gcc-multilib
+	depends = lib32-libmp4v2
+	depends = faac
+	source = http://downloads.sourceforge.net/faac/faac-1.28.tar.gz
+	source = altivec.patch
+	source = mp4v2-1.9.patch
+	source = mp4v2-2.0.0.patch
+	md5sums = 80763728d392c7d789cde25614c878f6
+	md5sums = db6b43868ad91127c6a7b57f5c6ca6bb
+	md5sums = 9d52a17e68fa15ca94e88e1457b94b74
+	md5sums = 482f515920716899ecda925613f0c31e
+
+pkgname = lib32-faac
+
