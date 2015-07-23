@@ -2,7 +2,7 @@
 
 pkgname=xscreensaver-xmatrix-color
 pkgver=5.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen saver and locker for the X Window System, modified xmatrix with variable color."
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
