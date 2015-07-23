@@ -1,7 +1,7 @@
 pkgbase = canto-curses-git
 	pkgdesc = ncurses user interface for canto-daemon/canto-next. Git version
-	pkgver = 0.9.3.r60.g456e3b8
-	pkgrel = 2
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = http://codezen.org/canto-ng/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = canto-curses-git
 	depends = readline
 	depends = canto-daemon>=0.9.1
 	optdepends = xdg-utils: xdg-open is used as default browser
-	provides = canto-curses=0.9.4
+	provides = canto-curses=0.9.5
 	conflicts = canto-curses
 	source = git://github.com/themoken/canto-curses#branch=master
 	md5sums = SKIP
