@@ -8,6 +8,7 @@ pkgbase = libsemanage
 	arch = x86_64
 	groups = selinux
 	license = GPL
+	makedepends = flex
 	depends = ustr
 	depends = libselinux>=2.4
 	depends = audit

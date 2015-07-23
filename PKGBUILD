@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
+makedepends=('flex')
 depends=('ustr' 'libselinux>=2.4' 'audit')
 optdepends=('python2: python2 bindings'
             'python: python bindings')
