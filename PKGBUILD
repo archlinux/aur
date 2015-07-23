@@ -20,7 +20,7 @@ pkgver() {
 build() {
 	cd pam-u2f/
 	autoreconf -fi
-	./configure --prefix=/usr
+	./configure --prefix=/ --with-pam-dir=/lib/security/
 	make
 }
 
