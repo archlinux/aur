@@ -1,0 +1,18 @@
+pkgbase = plasma-sdk-git
+	pkgdesc = Applications useful for Plasma development
+	pkgver = r1486.1b90443
+	pkgrel = 1
+	url = https://projects.kde.org/plasma-sdk
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = ktexteditor
+	depends = knewstuff
+	depends = qt5-webkit
+	source = git://anongit.kde.org/plasma-sdk.git
+	md5sums = SKIP
+
+pkgname = plasma-sdk-git
+
