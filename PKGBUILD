@@ -4,7 +4,7 @@ _name="docker-py"
 _module="${_name%-py}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.3.0"
+pkgver="1.3.1"
 pkgrel="1"
 pkgdesc="An API client for docker written in Python"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/docker/${_name}"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ac4c960e84a44f5dbbcee775c46c3a8a194241e37767f60d64aa84d704c95dfd')
+sha256sums=('743f3fc78f6159d14ac603def6470cf1b4edefc04de8b1ad8c349b380b503f50')
 
 package_python-docker() {
     depends=("python-requests>=2.5.3"
