@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://unfs3.sourceforge.net/"
 license=("BSD")
 makedepends=("flex")
-depends=('rpcbind')
+depends=('rpcbind' 'flex')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz" "unfsd.conf" "unfsd" "unfsd.service")
 md5sums=('ddf679a5d4d80096a59f3affc64f16e5' '7c28cd320ac4868cc6f0ca089fbf2e75' 'e1010b2da0d5fb962112eed243b2b5ed' '4dfcdd618b7b2229d9b6082401a52880')
 
