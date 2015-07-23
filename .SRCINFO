@@ -1,0 +1,20 @@
+pkgbase = batmon
+	pkgdesc = A lightweight battery monitor in C++.
+	pkgver = 0.5beta1
+	pkgrel = 1
+	url = https://github.com/arachnid92/Batmon
+	arch = any
+	license = GPL2
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = libnotify
+	depends = boost-libs
+	depends = gdk-pixbuf2
+	depends = gtk2
+	depends = glib2
+	source = git+https://github.com/arachnid92/Batmon.git
+	md5sums = SKIP
+
+pkgname = batmon
+
