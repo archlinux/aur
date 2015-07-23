@@ -1,0 +1,12 @@
+diff -Naur octopi-0.7.0-orig octopi-0.7.0
+diff -Naur octopi-0.7.0-orig/src/QtSolutions/qtlocalpeer.cpp octopi-0.7.0/src/QtSolutions/qtlocalpeer.cpp
+--- octopi-0.7.0-orig/src/QtSolutions/qtlocalpeer.cpp	2015-07-23 09:02:22.817230596 -0400
++++ octopi-0.7.0/src/QtSolutions/qtlocalpeer.cpp	2015-07-23 09:03:11.350983792 -0400
+@@ -41,6 +41,7 @@
+ #include "qtlocalpeer.h"
+ #include <QtCore/QCoreApplication>
+ #include <QtCore/QTime>
++#include <QDataStream>
+ 
+ #if defined(Q_OS_WIN)
+ #include <QtCore/QLibrary>

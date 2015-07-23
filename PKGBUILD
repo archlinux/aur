@@ -3,21 +3,25 @@
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
 makedepends=('qt5-declarative' 'qt4' 'knotifications' 'libnotify')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
-				'octopi-repoeditor.desktop')
+				'octopi-repoeditor.desktop'
+				'qt55.patch')
 sha256sums=('03d15458ebe482e5a9a00e7a3db5676a53886c754b13a7c56e36d75b73f2d496'
-            '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef')
+            '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
+            '459f924eba5bc780cb3a0cb955e9d7c634fe77d7e9f7b1a44d86c827535acbe3')
 
 build() {
   _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
   _jc=$((${_cpucount:-1}))
    
   cd "${srcdir}/${pkgbase}-${pkgver}"
+
+	patch -p1 < ../qt55.patch
 
   qmake-qt5 octopi.pro
   make -j $_jc
