@@ -12,7 +12,7 @@ license=('custom:chromiumos')
 depends=(libutil-linux openssl)
 makedepends=(libyaml trousers)
 source=(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/refs/heads/$_tag.tar.gz)
-sha1sums=('97026bb8b33a82153900d0c9117d80482144994c')
+sha1sums=('SKIP')
 
 build() {
   make
