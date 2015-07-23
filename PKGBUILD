@@ -1,13 +1,14 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-utils
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of Archlinux mkinitcpio utilities performing various tasks"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-utils"
 license=('BSD')
 depends=('cryptsetup')
 optdepends=('mkinitcpio-dropbear: Allow the encryptssh hook to unlock a root container remotely using dropbear' 'mkinitcpio-tinyssh: Allow the encryptssh hook to unlock a root container remotely using tinyssh')
+conflicts=('dropbear_initrd_encrypt')
 install=$pkgname.install
 changelog='ChangeLog'
 source=($url/archive/v$pkgver.tar.gz)
