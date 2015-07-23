@@ -1,0 +1,16 @@
+pkgbase = ttf-malayalam-font-raghumalayalamsans
+	pkgdesc = This is Raghu Malayalam Sans, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://smc.org.in/fonts/
+	install = ttf-malayalam-fonts.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://smc.org.in/downloads/fonts/raghumalayalamsans/RaghuMalayalamSans.ttf
+	source = https://gitlab.com/smc/raghumalayalamsans/raw/master/67-smc-raghumalayalamsans.conf
+	md5sums = 9417236366dbe7514d70ec681911874d
+	md5sums = 3ea0148691b9cbfe12bf17a1f0456bad
+
+pkgname = ttf-malayalam-font-raghumalayalamsans
+
