@@ -1,6 +1,6 @@
 pkgbase = python2-smbus
 	pkgdesc = Python wrapper for SMBus access over i2c-dev.
-	pkgver = r6284
+	pkgver = r6311
 	pkgrel = 1
 	url = http://www.lm-sensors.org/wiki/I2CTools
 	arch = i686

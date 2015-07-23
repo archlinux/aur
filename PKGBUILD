@@ -3,7 +3,7 @@
 # Contributor: DonVla <donvla at users dot sourceforge dot net>
 
 pkgname=python2-smbus
-pkgver=r6284
+pkgver=r6311
 pkgrel=1
 pkgdesc="Python wrapper for SMBus access over i2c-dev."
 arch=('i686' 'x86_64' 'armv6h')
