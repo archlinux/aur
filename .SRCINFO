@@ -1,0 +1,16 @@
+pkgbase = ttf-malayalam-font-keraleeyam
+	pkgdesc = This is Keraleeyam, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
+	pkgver = 1.0_beta
+	pkgrel = 1
+	url = http://smc.org.in/fonts/
+	install = ttf-malayalam-fonts.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam.ttf
+	source = https://gitlab.com/smc/keraleeyam/raw/master/67-smc-keraleeyam.conf
+	md5sums = 174dbb956afc9b412e4e3867844a84dc
+	md5sums = 37d7da81268fa7cf4a9702d241c7ea1c
+
+pkgname = ttf-malayalam-font-keraleeyam
+
