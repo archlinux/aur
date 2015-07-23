@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-seafile-shared
 	pkgdesc = Shared components of seafile: seafile-daemon, libseafile, libseafile python bindings (mingw-w64).
-	pkgver = 4.2.3
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://github.com/haiwen/seafile/
 	arch = any
 	license = GPL
@@ -15,9 +15,9 @@ pkgbase = mingw-w64-seafile-shared
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = seafile-4.2.3.tar.gz::https://github.com/haiwen/seafile/archive/v4.2.3.tar.gz
+	source = seafile-4.3.0.tar.gz::https://github.com/haiwen/seafile/archive/v4.3.0.tar.gz
 	source = seafile-pull-1265.patch::https://patch-diff.githubusercontent.com/raw/haiwen/seafile/pull/1265.patch
-	sha256sums = 9f4ffd912312e7154cecb8451612674e32400b345bb50345cb257c3da8218f44
+	sha256sums = 1e4bdd6dc5e2903fafc410cf2596e98c3083c91b0f2d1371cdc1286fa0f6866e
 	sha256sums = 50ef89aa3d4382af7ba45c9c95530ce8b3a9c355dd1c425c35a26651c62692bb
 
 pkgname = mingw-w64-seafile-shared
