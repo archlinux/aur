@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=mingw-w64-ccnet
-pkgver=4.2.3
-pkgrel=4
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="A framework for writing networked applications in C (mingw-w64)."
 arch=('any')
 url="https://github.com/haiwen/ccnet/"
@@ -20,7 +20,7 @@ source=("ccnet-${pkgver}.tar.gz::https://github.com/haiwen/ccnet/archive/v${pkgv
 	"0001-Add-autoconfiguration-for-libjansson.patch"
 	"ccnet-pull-86.patch::https://patch-diff.githubusercontent.com/raw/haiwen/ccnet/pull/86.patch"
 	"ccnet-pull-87.patch::https://patch-diff.githubusercontent.com/raw/haiwen/ccnet/pull/87.patch")
-sha256sums=('7da578ed4b04b99673c711cf22a9dc535e31c6f323e5701348211129be48c92d'
+sha256sums=('f45c61d87ececa261408c9307a7d2ce864cf78c01acc0882ed87ce18ed9629c5'
             '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f'
             '382b1da33e2b6c0ebab8d3921d92b7417fa11d969ad822cd43aee499fd7b3d94'
             'b5c4cea9c718cf0e2e32572068ec9da4dc26cac7cfc1597eceff4aa53a4d0156'
