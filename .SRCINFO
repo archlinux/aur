@@ -1,0 +1,16 @@
+pkgbase = libgd-doc
+	pkgdesc = Reference documentation for libgd, HTML format.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://bitbucket.org/libgd/gd-libgd/
+	arch = any
+	license = unknown
+	makedepends = naturaldocs
+	conflicts = libgd-doc-git
+	source = https://bitbucket.org/libgd/gd-libgd/downloads/libgd-2.1.1.tar.gz
+	source = missing_getver.patch
+	md5sums = 914f27f31ceb46827a322a1bc5165aff
+	md5sums = b6c4bd7db10c83f6048dcffc5475defa
+
+pkgname = libgd-doc
+
