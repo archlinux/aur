@@ -1,0 +1,15 @@
+pkgbase = lib32-libmpcdec
+	pkgdesc = Musepack decoding library (32 bit)
+	pkgver = 1.2.6
+	pkgrel = 2
+	url = http://musepack.net/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = libmpcdec
+	source = http://files.musepack.net/source/libmpcdec-1.2.6.tar.bz2
+	md5sums = 7f7a060e83b4278acf4b77d7a7b9d2c0
+
+pkgname = lib32-libmpcdec
+
