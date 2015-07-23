@@ -5,13 +5,13 @@ python=python2
 
 _libname=docker-py
 pkgname=python2-$_libname
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Python client for Docker."
-depends=('python2-requests' 'python2-six' 'python2-websocket-client')
+depends=('python2-requests' 'python2-six' 'python2-websocket-client>=0.32.0')
 arch=('any')
 source=(https://pypi.python.org/packages/source/d/docker-py/docker-py-$pkgver.tar.gz)
-md5sums=('5fef05a2360f5d7b11dffb53ad51cab4')
+md5sums=('07a5f41fd3f8cc72d05deed628700e99')
 
 url="https://github.com/dotcloud/docker-py"
 license="Apache2"
