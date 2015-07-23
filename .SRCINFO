@@ -1,0 +1,21 @@
+pkgbase = newrelic-php53
+	pkgdesc = NewRelic PHP 5.3
+	pkgver = 4.22.0.99
+	pkgrel = 1
+	url = http://newrelic.com/
+	install = newrelic-php53.install
+	arch = i686
+	arch = x86_64
+	license = non-free
+	depends = glibc
+	depends = php53
+	backup = etc/php/conf.d/newrelic.ini
+	source = https://download.newrelic.com/php_agent/release/newrelic-php5-4.22.0.99-linux.tar.gz
+	source = newrelic-daemon.service
+	source = newrelic-php53.install
+	md5sums = d120ad145c2b262b7abf4d3b16dfa864
+	md5sums = 4fc78347663adcb32ed28eddb546619c
+	md5sums = 32167cda26104c489f5a672a87543821
+
+pkgname = newrelic-php53
+
