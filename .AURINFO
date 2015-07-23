@@ -1,0 +1,17 @@
+pkgbase = php53-xcache
+	pkgdesc = A PHP 5.3 opcode cacher
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://xcache.lighttpd.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = php53
+	backup = etc/php/conf.d/xcache.ini
+	source = http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.bz2
+	source = xcache.ini
+	md5sums = 3655bd20483dc23d24f87f9dc924a62e
+	md5sums = 8fd9ce537ada9463c4b0c042243158c0
+
+pkgname = php53-xcache
+
