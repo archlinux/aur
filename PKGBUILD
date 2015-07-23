@@ -1,14 +1,14 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=r3broot-svn
 pkgver=trunk
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis framework based on root for the R3B experiment provided by GSI/FAIR."
 arch=('x86_64')
 url="http://fairroot.gsi.de"
 license=('unknown')
 groups=()
-fairsoftver=jul15p1-2
-fairrootver=v-15.07
+fairsoftver=jul15p1-1
+fairrootver=v-15.07-2
 makedepends=('cmake'
 	'clang'
 	'bison'
