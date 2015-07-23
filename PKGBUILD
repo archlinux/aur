@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _pkgname=acd_cli
 pkgname=$_pkgname-git
-pkgver=1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="acd_cli provides a command line interface to 
 Amazon Cloud Drive and allows mounting your cloud drive 
