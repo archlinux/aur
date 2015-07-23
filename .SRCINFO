@@ -1,0 +1,18 @@
+pkgbase = itools
+	pkgdesc = Islamic console tools (ical, idate, ipraytime, ireminder)
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://www.arabeyes.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = libitl
+	depends = perl
+	source = http://downloads.sourceforge.net/arabeyes/itools-1.0.tar.gz
+	source = itools-1.0-ipraytime-in-utf8.patch
+	md5sums = 4ac97946b906caa021c6c9cab5798079
+	md5sums = e405a35870fdf71282b84b66213e82da
+
+pkgname = itools
+

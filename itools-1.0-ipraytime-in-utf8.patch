@@ -1,0 +1,40 @@
+--- itools-1.0/ipraytime.c.utf8	2009-03-09 13:17:51.000000000 +0900
++++ itools-1.0/ipraytime.c	2010-08-07 04:14:39.000000000 +0900
+@@ -460,21 +460,21 @@
+ 
+    int deg, min;
+    double sec;
+-   const char symb = (char)0xB0;
++   const char *symb_str = "\xC2\xB0";
+ 
+    printf("\n");
+    printf("Prayer schedule for,\n");
+ 
+    /* Print Cityname if there is something to print */
+-   if (city_name[0] != (char) NULL)
++   if (city_name[0] != (char) 0)
+       printf(" City             : %s\n", city_name);
+     
+    decimal2Dms(loc->degreeLat, &deg, &min, &sec);
+-   printf(" Latitude         : %03d%c %02d\' %02d\" %c\n", abs(deg), symb,
++   printf(" Latitude         : %03d%s %02d\' %02d\" %c\n", abs(deg), symb_str,
+           abs(min), abs(sec), (loc->degreeLat >=0 ? 'N' : 'S'));
+ 
+    decimal2Dms(loc->degreeLong, &deg, &min, &sec);
+-   printf(" Longitude        : %03d%c %02d\' %02d\" %c\n", abs(deg), symb,
++   printf(" Longitude        : %03d%s %02d\' %02d\" %c\n", abs(deg), symb_str,
+           abs(min), abs(sec), (loc->degreeLong >=0 ? 'E' : 'W'));
+ 
+    printf(" Angle Method     : %s\n", method_name);
+@@ -485,8 +485,8 @@
+    /* Deal with Qibla Information */
+    qibla        = getNorthQibla(loc);
+    decimal2Dms (qibla, &deg, &min, &sec);
+-   printf(" Qibla            : %03d%c %02d\' %02d\" %c of true North\n",
+-          abs (deg), symb, abs (min), abs (sec), (qibla >=0 ? 'W' : 'E'));
++   printf(" Qibla            : %03d%s %02d\' %02d\" %c of true North\n",
++          abs (deg), symb_str, abs (min), abs (sec), (qibla >=0 ? 'W' : 'E'));
+ 
+    printf("\n");
+ 
+
