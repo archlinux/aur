@@ -1,3 +1,4 @@
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor : mok <mok at ethetricks dot eu>
 
 pkgname='ike-scan'
