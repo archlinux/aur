@@ -1,0 +1,14 @@
+pkgbase = golismero-fingerprinter-git
+	pkgdesc = Is a tool that aims to compile as many signatures of web servers as possible and make a large database.
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://www.golismero.com/
+	arch = any
+	license = GPL2
+	depends = python2
+	provides = golismero-fingerprinter
+	source = git+https://github.com/golismero/golismero-fingerprinter.git
+	sha256sums = SKIP
+
+pkgname = golismero-fingerprinter-git
+
