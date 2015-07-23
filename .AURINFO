@@ -1,0 +1,17 @@
+pkgbase = tmux1.8
+	pkgdesc = A terminal multiplexer - Legacy version 1.8, the last version that support grid-style navigation
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://tmux.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = libevent
+	provides = tmux=1.8
+	conflicts = tmux
+	source = http://downloads.sourceforge.net/tmux/tmux-1.8.tar.gz
+	source = LICENSE
+
+pkgname = tmux1.8
+
