@@ -1,6 +1,6 @@
 pkgbase = guix
 	pkgdesc = GNU guix is a purely functional package manager
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://www.gnu.org/software/guix/
 	install = guix.install
@@ -15,11 +15,11 @@ pkgbase = guix
 	depends = libgcrypt
 	optdepends = bash-completion: to enable bash programmable completion
 	optdepends = emacs: to enable Emacs Interface
-	source = ftp://alpha.gnu.org/gnu/guix/guix-0.8.2.tar.gz
-	source = ftp://alpha.gnu.org/gnu/guix/guix-0.8.2.tar.gz.sig
+	source = ftp://alpha.gnu.org/gnu/guix/guix-0.8.3.tar.gz
+	source = ftp://alpha.gnu.org/gnu/guix/guix-0.8.3.tar.gz.sig
 	source = guix.service
-	sha256sums = ff1380a551f8ba18057f7c5e8fdbcc6a371c89817718ff4b7ceef013e0b4afa8
-	sha256sums = 6bf1b3ea501109feb11ec550dec9619fd1f8fe703986b50a58921b51d5e02cc0
+	sha256sums = dfea48f13e6584db812c24746467eb21cb0553a2f5860e1fe40d4e06e4b4c092
+	sha256sums = 411b3b850191f1fc701e9a2178aa02a403c44baa59b58a6ef9c18237a10fd049
 	sha256sums = d0a014de859c4f5d6f760be84991b88f4855ead933368f3ab815a1deabc361ce
 
 pkgname = guix

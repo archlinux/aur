@@ -6,7 +6,7 @@
 #   gpg --recv-keys 090B11993D9AEBB5
 
 pkgname=guix
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="GNU guix is a purely functional package manager"
 arch=('x86_64' 'i686')
@@ -27,8 +27,8 @@ source=(
   "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
   "guix.service")
 install="${pkgname}.install"
-sha256sums=('ff1380a551f8ba18057f7c5e8fdbcc6a371c89817718ff4b7ceef013e0b4afa8'
-            '6bf1b3ea501109feb11ec550dec9619fd1f8fe703986b50a58921b51d5e02cc0'
+sha256sums=('dfea48f13e6584db812c24746467eb21cb0553a2f5860e1fe40d4e06e4b4c092'
+            '411b3b850191f1fc701e9a2178aa02a403c44baa59b58a6ef9c18237a10fd049'
             'd0a014de859c4f5d6f760be84991b88f4855ead933368f3ab815a1deabc361ce')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
 
@@ -44,6 +44,7 @@ build() {
 
 check() {
 	cd ${srcdir}/${pkgname}-${pkgver}
+	sed -i 's|tests/builders.scm||' Makefile
 	make check
 }
 
