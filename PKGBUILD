@@ -2,7 +2,7 @@
 # Contributor: pisuka <tekmon@gmail.com>
 
 pkgname=heroku-toolbelt
-pkgver=3.39.5
+pkgver=3.40.5
 pkgrel=1
 pkgdesc="Everything you need to get started using Heroku (including foreman)"
 arch=('any')
@@ -13,24 +13,21 @@ makedepends=("ruby-bundler")
 optdepends=('git')
 conflicts=('ruby-heroku' 'ruby-foreman' 'heroku-client')
 source=('Gemfile' 'Gemfile.lock')
-sha256sums=('40408f90fb021e95253a07cc5972b2cad952e05d5f632a62b7bbdc34bb1ad7f1'
-            '6e16c9f5dafe10ead8d9b3f7e47dc6b284d4f01a84ab1564446ecabdfc6d7806')
+sha256sums=('7238bb49d905f8b2a201b7b780892a3629b145bcc679ef74a1af5dc1053b210a'
+            '69a01fe24de67c23da7ac5394557742aea2e49ae0cca4311c297be2ba171c917')
 
 package() {
-	cd "$pkgdir"
-	mkdir -p "usr/lib/ruby/vendor_ruby/$pkgname" "usr/bin" "usr/share/man/man1"
-	cd "usr/lib/ruby/vendor_ruby/$pkgname"
+  cd "$pkgdir"
+  mkdir -p "usr/lib/ruby/vendor_ruby/$pkgname" "usr/bin" "usr/share/man/man1"
+  cd "usr/lib/ruby/vendor_ruby/$pkgname"
 
-	#cp -R "$srcdir/heroku-client" .
-	cp -L "$srcdir"/Gemfile* .
+  cp -L "$srcdir"/Gemfile* .
 
-	#find "heroku-client/bin" -maxdepth 1 -type f -executable -printf "/usr/lib/ruby/vendor_ruby/$pkgname/heroku-client/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin/"
+  bundle install --standalone --deployment --binstubs="$pkgdir/usr/bin"
 
-	bundle install --standalone --deployment --binstubs="$pkgdir/usr/bin"
+  cd "$pkgdir"
 
-	cd "$pkgdir"
+  find "usr/bin" -type f ! -name heroku ! -name foreman -execdir rm "{}" +
 
-	find "usr/bin" -type f ! -name heroku ! -name foreman -execdir rm "{}" +
-
-	find "usr/lib/ruby/vendor_ruby/heroku-toolbelt/vendor/bundle/ruby" -path "*/gems/*/man/*" -exec ln -st "usr/share/man/man1/" "/{}" \;
+  find "usr/lib/ruby/vendor_ruby/heroku-toolbelt/vendor/bundle/ruby" -path "*/gems/*/man/*" -exec ln -st "usr/share/man/man1/" "/{}" \;
 }

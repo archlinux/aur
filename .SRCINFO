@@ -1,6 +1,6 @@
 pkgbase = heroku-toolbelt
 	pkgdesc = Everything you need to get started using Heroku (including foreman)
-	pkgver = 3.39.5
+	pkgver = 3.40.5
 	pkgrel = 1
 	url = https://toolbelt.heroku.com
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = heroku-toolbelt
 	conflicts = heroku-client
 	source = Gemfile
 	source = Gemfile.lock
-	sha256sums = 40408f90fb021e95253a07cc5972b2cad952e05d5f632a62b7bbdc34bb1ad7f1
-	sha256sums = 6e16c9f5dafe10ead8d9b3f7e47dc6b284d4f01a84ab1564446ecabdfc6d7806
+	sha256sums = 7238bb49d905f8b2a201b7b780892a3629b145bcc679ef74a1af5dc1053b210a
+	sha256sums = 69a01fe24de67c23da7ac5394557742aea2e49ae0cca4311c297be2ba171c917
 
 pkgname = heroku-toolbelt
 
