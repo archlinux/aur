@@ -1,0 +1,16 @@
+pkgbase = lib32-libdca
+	pkgdesc = Free library for decoding DTS Coherent Acoustics streams (32 bit)
+	pkgver = 0.0.5
+	pkgrel = 4
+	url = http://www.videolan.org/developers/libdca.html
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = libdca
+	options = !emptydirs
+	source = http://download.videolan.org/pub/videolan/libdca/0.0.5/libdca-0.0.5.tar.bz2
+	md5sums = dab6b2795c66a82a6fcd4f8343343021
+
+pkgname = lib32-libdca
+
