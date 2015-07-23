@@ -11,7 +11,7 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-bzip2')
 makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=(!strip !buildflags staticlibs)
-source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.bz2 boost-mingw.patch)
+source=("http://downloads.sourceforge.net/boost/boost/1.58.0/boost_1_58_0.tar.bz2" boost-mingw.patch)
 md5sums=('b8839650e61e9c1c0a89f371dd475546'
          '01f5f0d6b915d3b04dbabfd6db40f1e9')
 
