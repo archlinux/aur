@@ -295,7 +295,7 @@ package_linux-ck-fbcondecor() {
 	true && install=${install}.pkg
 
 	sed \
-		-e  "s/KERNEL_NAME=.*/KERNEL_NAME=-ck/g" \
+		-e  "s/KERNEL_NAME=.*/KERNEL_NAME=-ck-fbcondecor/g" \
 		-e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
 		-i "${startdir}/${install}"
 
