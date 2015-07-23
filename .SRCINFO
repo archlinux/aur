@@ -1,0 +1,34 @@
+pkgbase = mingw-w64-ccnet
+	pkgdesc = A framework for writing networked applications in C (mingw-w64).
+	pkgver = 4.2.3
+	pkgrel = 4
+	url = https://github.com/haiwen/ccnet/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	makedepends = vala>=0.8
+	makedepends = python2>=2.6
+	depends = mingw-w64-crt
+	depends = mingw-w64-libevent>=2.0
+	depends = mingw-w64-glib2>=2.26.0
+	depends = mingw-w64-libsearpc
+	depends = mingw-w64-winpthreads
+	depends = mingw-w64-jansson>=2.2.1
+	depends = mingw-w64-sqlite
+	depends = mingw-w64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = ccnet-4.2.3.tar.gz::https://github.com/haiwen/ccnet/archive/v4.2.3.tar.gz
+	source = libccnet.pc.patch
+	source = 0001-Add-autoconfiguration-for-libjansson.patch
+	source = ccnet-pull-86.patch::https://patch-diff.githubusercontent.com/raw/haiwen/ccnet/pull/86.patch
+	source = ccnet-pull-87.patch::https://patch-diff.githubusercontent.com/raw/haiwen/ccnet/pull/87.patch
+	sha256sums = 7da578ed4b04b99673c711cf22a9dc535e31c6f323e5701348211129be48c92d
+	sha256sums = 66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f
+	sha256sums = 382b1da33e2b6c0ebab8d3921d92b7417fa11d969ad822cd43aee499fd7b3d94
+	sha256sums = b5c4cea9c718cf0e2e32572068ec9da4dc26cac7cfc1597eceff4aa53a4d0156
+	sha256sums = 1ea5f5555c6472afcbf6ad58b0ebdd86e5b58db0a848576f8b74c100083a8b7d
+
+pkgname = mingw-w64-ccnet
+
