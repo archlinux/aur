@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Blue Moon AI
+Comment=A computer implementation and AI of the Reiner Knizia's card game Blue Moon
+Exec=bluemoon
+Terminal=false
+Type=Application
+Categories=GTK;Game;CardGame;
