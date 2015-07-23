@@ -1,0 +1,17 @@
+pkgbase = fcitx-tsundere
+	pkgdesc = Tsundere module for fcitx, adds something following every character you input.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/felixonmars/fcitx-tsundere
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = intltool
+	depends = fcitx>=4.2.0
+	conflicts = fcitx-tsundere-git
+	source = fcitx-tsundere.tar.gz::https://github.com/felixonmars/fcitx-tsundere/tarball/0.1
+	md5sums = e490c2833d4f2ed38d3155b842bb0ff4
+
+pkgname = fcitx-tsundere
+
