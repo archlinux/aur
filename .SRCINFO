@@ -1,0 +1,26 @@
+pkgbase = subliminal-git
+	pkgdesc = Search and download subtitles.
+	pkgver = 1.0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/Diaoul/subliminal
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-beautifulsoup4>=4.2.0
+	depends = python2-guessit>=0.9.1
+	depends = python2-requests>=2.0
+	depends = python2-enzyme>=0.4.1
+	depends = python2-dogpile-cache>=0.5.4
+	depends = python2-click>=4.0
+	depends = python2-pysrt>=1.0.1
+	depends = python2-six>=1.9.0
+	depends = python2-babelfish>=0.5.2
+	depends = python2-chardet>=2.3.0
+	depends = python2-stevedore>=1.0.0
+	conflicts = subliminal
+	source = subliminal::git+https://github.com/Diaoul/subliminal.git
+	md5sums = SKIP
+
+pkgname = subliminal-git
+
