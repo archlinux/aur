@@ -302,7 +302,7 @@ package_linux-ck-fbcondecor() {
 	# install mkinitcpio preset file for kernel
 	install -D -m644 "${srcdir}/linux-ck-fbcondecor.preset" "${pkgdir}/etc/mkinitcpio.d/linux-ck-fbcondecor.preset"
 	sed \
-		-e "1s|'linux.*'|'linux-ck'|" \
+		-e "1s|'linux.*'|'linux-ck-fbcondecor'|" \
 		-e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-ck-fbcondecor\"|" \
 		-e "s|default_image=.*|default_image=\"/boot/initramfs-linux-ck-fbcondecor.img\"|" \
 		-e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-ck-fbcondecor-fallback.img\"|" \
