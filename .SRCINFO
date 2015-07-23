@@ -1,0 +1,15 @@
+pkgbase = lib32-liblrdf
+	pkgdesc = A library for the manipulation of RDF file in LADSPA plugins (32 bit)
+	pkgver = 0.5.0
+	pkgrel = 3
+	url = https://github.com/swh/LRDF
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-raptor
+	depends = liblrdf
+	source = liblrdf-0.5.0.tar.gz::https://github.com/swh/LRDF/tarball/0.5.0
+	md5sums = 005ea24152620da7f2ee80a78e17f784
+
+pkgname = lib32-liblrdf
+
