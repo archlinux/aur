@@ -1,0 +1,18 @@
+pkgbase = python2-guessit-git
+	pkgdesc = A library for guessing information from video files.
+	pkgver = 0.10.3.r29.gad6be75
+	pkgrel = 1
+	url = https://github.com/wackou/guessit
+	arch = any
+	license = LGPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-babelfish
+	depends = python2-stevedore
+	provides = python2-guessit=${pkgver}
+	conflicts = python2-guessit
+	source = guessit::git+https://github.com/wackou/guessit
+	md5sums = SKIP
+
+pkgname = python2-guessit-git
+
