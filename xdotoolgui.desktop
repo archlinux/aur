@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.2
+Encoding=UTF-8
+Name=Xdotool Gui
+Name[zh_CN]=按键精灵
+Icon=/usr/share/xdotool-gui/xdotoolgui.gif
+Comment=GUI for command-line X11 automation tool
+Exec=/usr/bin/xdotool-gui
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+StartupNotify=false

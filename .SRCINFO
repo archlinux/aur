@@ -1,0 +1,17 @@
+pkgbase = xdotool-gui
+	pkgdesc = GUI for command-line X11 automation tool
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://sourceforge.net/projects/xdotool-gui/
+	arch = any
+	license = GPL
+	depends = xdotool
+	depends = python2
+	depends = pygtk
+	source = http://downloads.sourceforge.net/project/xdotool-gui/xdotoolgui_1.2-1.tar.gz
+	source = xdotoolgui.desktop
+	md5sums = 1cde9e5d2d773decc7d92e0f0d2b25f3
+	md5sums = c8249f6de5d7dc64f1bc1434790bd1a8
+
+pkgname = xdotool-gui
+
