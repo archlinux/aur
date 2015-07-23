@@ -1,0 +1,24 @@
+pkgbase = minbar
+	pkgdesc = Islamic prayer times and athan for GNOME
+	pkgver = 0.2.1
+	pkgrel = 8
+	url = http://djihed.com/minbar
+	install = minbar.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libitl
+	depends = libgnomecanvas
+	depends = gstreamer0.10
+	depends = libnotify
+	depends = gconf
+	depends = hicolor-icon-theme
+	depends = rarian
+	optdepends = xfce4-xfapplet-plugin: adds Xfce4 panel support
+	source = http://files.djihed.com/minbar/minbar-0.2.1.tar.bz2
+	source = minbar.patch
+	md5sums = dd1543a2e6cc9873d39d60b61dec7508
+	md5sums = 7b28640c6797c15bfc31b3a3be8ff27d
+
+pkgname = minbar
+

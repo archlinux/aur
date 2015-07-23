@@ -1,0 +1,51 @@
+diff -rupN minbar-0.2.1/configure.ac minbar-0.2.1-updated/configure.ac
+--- minbar-0.2.1/configure.ac	2007-12-23 19:08:23.000000000 +0300
++++ minbar-0.2.1-updated/configure.ac	2013-03-25 05:31:04.520442632 +0300
+@@ -34,6 +34,9 @@ pkg_modules="gtk+-2.0 >= 2.10 glib-2.0 l
+ PKG_CHECK_MODULES(MINBAR, [$pkg_modules])
+ 
+ AC_CHECK_HEADER(itl/prayer.h,ITL_LIBS=-litl,AC_MSG_ERROR("itl/prayer.h not found."))
++
++LDFLAGS="$LDFLAGS -L/usr/lib/itl -Xlinker -rpath -Xlinker /usr/lib/itl"
++
+ AC_SUBST(ITL_LIBS)
+ 
+ # libnotify check
+diff -rupN minbar-0.2.1/src/locations-xml.c minbar-0.2.1-updated/src/locations-xml.c
+--- minbar-0.2.1/src/locations-xml.c	2007-11-17 18:35:19.000000000 +0300
++++ minbar-0.2.1-updated/src/locations-xml.c	2013-03-25 04:51:27.667225033 +0300
+@@ -17,6 +17,7 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include <ctype.h>
+ #include <string.h>
+ #include <math.h>
+ #include <locale.h>
+diff -rupN minbar-0.2.1/src/main.c minbar-0.2.1-updated/src/main.c
+--- minbar-0.2.1/src/main.c	2007-12-23 19:08:24.000000000 +0300
++++ minbar-0.2.1-updated/src/main.c	2013-03-25 04:54:06.986663140 +0300
+@@ -1256,12 +1256,8 @@ void show_notification(gchar * message)
+ 
+ void create_notification()
+ {
+-	notification = notify_notification_new
+-                                            (program_name,
+-                                             NULL,
+-                                             NULL,
+-					     NULL);
+-	notify_notification_attach_to_status_icon (notification, status_icon );
++	notification = notify_notification_new (program_name, NULL, NULL);
++//	notify_notification_attach_to_status_icon (notification, status_icon );
+ 	notify_notification_set_timeout (notification, 8000);
+ }
+ #endif
+@@ -1397,7 +1393,7 @@ void calculate_qibla_direction()
+ 	gtk_widget_set_direction ((GtkWidget*)canvas, GTK_TEXT_DIR_RTL);
+ 	gnome_canvas_set_pixels_per_unit((GnomeCanvas*) canvas, 1);	
+ 
+-	root = gnome_canvas_root (GNOME_CANVAS (canvas));
++	root = gnome_canvas_root (canvas);
+ 
+ 	double height =  (double) GTK_WIDGET (canvas)->allocation.height;
+ 	double width  =  (double) GTK_WIDGET (canvas)->allocation.width;
