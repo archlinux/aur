@@ -1,0 +1,15 @@
+Author: Moritz Muehlenhoff <jmm@inutil.org>
+Description: CAN-2005-0706: Bufferoverflow in CDDB lookup parsing
+
+diff -Naurp libcdaudio.orig/src/cddb.c libcdaudio/src/cddb.c
+--- libcdaudio.orig/src/cddb.c	2009-08-02 10:30:05.000000000 +0000
++++ libcdaudio/src/cddb.c	2009-08-02 10:34:57.000000000 +0000
+@@ -1052,7 +1052,7 @@ cddb_query(int cd_desc, int sock,
+     }
+ 	   
+     query->query_matches = 0;
+-    while(!cddb_read_line(sock, inbuffer, 256)) {
++    while(query->query_matches < MAX_INEXACT_MATCHES && !cddb_read_line(sock, inbuffer, 256)) {
+       slashed = 0;
+       if(strchr(inbuffer, '/') != NULL && parse_disc_artist) {
+ 	index = 0;

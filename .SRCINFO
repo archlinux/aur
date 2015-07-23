@@ -1,0 +1,19 @@
+pkgbase = lib32-libcdaudio
+	pkgdesc = Library for controlling Audio CDs and interacting with CDDB (32 bit)
+	pkgver = 0.99.12
+	pkgrel = 2
+	url = http://libcdaudio.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = libcdaudio
+	source = http://downloads.sourceforge.net/sourceforge/libcdaudio/libcdaudio-0.99.12.tar.gz
+	source = 01-cddb-bufferoverflow.patch
+	source = 02-cddb-bufferoverflow.patch
+	md5sums = 63b49cf14d53eed31e7a87cca17a3963
+	md5sums = f78c881b92cd7d25472daa90af284e18
+	md5sums = e36755c125d2710dc8619bb401e37444
+
+pkgname = lib32-libcdaudio
+
