@@ -4,10 +4,10 @@
 
 pkgname=i2c-tools-svn
 _pkgname=i2c-tools
-pkgver=r6284
+pkgver=r6311
 pkgrel=1
 pkgdesc="Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors."
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lm-sensors.org/wiki/I2CTools"
 license=('GPL')
 provides=('i2c-tools')
@@ -28,14 +28,14 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   make clean
-  make
-  make -C eepromer LDLIBS="-L../lib" LDFLAGS="-li2c"
+  make EXTRA=eeprog
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
   make prefix="${pkgdir}/usr" sbindir="$pkgdir/usr/bin" install
-  install -Dm755 eepromer/eeprog eepromer/eeprom eepromer/eepromer "${pkgdir}/usr/bin"
+  install -Dm755 eeprog/eeprog "${pkgdir}/usr/bin"
+  install -Dm755 eeprog/eeprog.8 "${pkgdir}/usr/share/man/man8"
 }
 
 # vim:set ts=2 sw=2 et:

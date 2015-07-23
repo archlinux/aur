@@ -1,11 +1,12 @@
 pkgbase = i2c-tools-svn
 	pkgdesc = Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors.
-	pkgver = r6284
+	pkgver = r6311
 	pkgrel = 1
 	url = http://www.lm-sensors.org/wiki/I2CTools
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = GPL
 	makedepends = subversion
 	optdepends = read-edid: for decode-edid script
