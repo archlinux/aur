@@ -1,0 +1,24 @@
+pkgbase = surf-webkit2gtk-git
+	pkgdesc = a WebKit based browser (surf2 branch, which uses webkit2gtk)
+	pkgver = 0.6.89.g9343744
+	pkgrel = 1
+	url = http://surf.suckless.org/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT/X
+	makedepends = git
+	depends = webkit2gtk
+	depends = xorg-xprop
+	optdepends = dmenu: url bar and search
+	optdepends = ca-certificates: SSL verification
+	optdepends = st: default terminal for the download handler
+	optdepends = curl: default download handler
+	provides = surf
+	conflicts = surf
+	source = surf::git+http://git.suckless.org/surf#branch=surf2
+	source = config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = surf-webkit2gtk-git
+
