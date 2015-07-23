@@ -5,9 +5,9 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.1
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
-_toipatch=tuxonice-for-linux-head-4.1.0-2015-06-26.patch
+_toipatch=tuxonice-for-linux-4.1.3-2015-07-23.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,12 +28,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch'
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
-        'toi.patch'
 )
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
+            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
             'SKIP'
             '91424411ac70e4de659d6aac011367ae3129218b48f79f277b3b8074f10ed487'
             '05b827b1caaa3bfada202d5b0b8b7ff7f568802a6df971104bc9f92a3e24d6df'
@@ -44,8 +43,7 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
             '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'dab9121ba5405d02306d12f379fc042d612e0a2470b13d90708d403004853ed9'
-            '913b8d6ecf9a6d46bfcd3969a0f58f29b85b02deb24a4d093192d2ecfa8892fd')
+            '1ff28ccbd6c6469c636290d3eb4bfd9fe3b4d5b7b520c9eb98f81d2afa644431')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -82,8 +80,7 @@ prepare() {
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # tuxonice patch
-  patch -p1 -i "${srcdir}/${_toipatch}" || true
-  patch -p1 -i "${srcdir}/toi.patch"
+  patch -p1 -i "${srcdir}/${_toipatch}"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
