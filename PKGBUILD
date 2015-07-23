@@ -1,15 +1,16 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 
 pkgname=python2-pyelftools
 _pkgname=pyelftools
 pkgver=0.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for analyzing ELF files and DWARF debugging information"
 url="https://github.com/eliben/pyelftools"
 arch=('any')
 license=('custom:Public Domain')
 depends=('python2')
+options=('!strip')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/eliben/${_pkgname}/archive/v${pkgver}.tar.gz)
 sha512sums=('277976a889291c4abf9a700655d4a2e373f763aa80f8d5929822dd323a7d3563d51a51b7cf72979752f33790394aabdc3cbd06e03c4bb54022030adc8942dd4b')
 
@@ -29,7 +30,11 @@ check() {
   cd ${_pkgname}-${pkgver}
   python2 test/run_all_unittests.py
   python2 test/run_examples_test.py
-  python2 test/run_readelf_tests.py
+  if [ "${CARCH}" == "x86_64" ]; then
+    python2 test/run_readelf_tests.py
+  else
+    warning "Skipping readelf tests (require x86_64)"
+  fi
 }
 
 package() {
