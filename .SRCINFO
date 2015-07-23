@@ -1,6 +1,6 @@
 pkgbase = lua-yaml-git
 	pkgdesc = Lua bindings for YAML using the LibYAML library
-	pkgver = 5.1.4.10.g28f300b
+	pkgver = 5.1.4.12.gc4cf783
 	pkgrel = 1
 	url = http://yaml.luaforge.net/
 	arch = i686
