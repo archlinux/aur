@@ -1,6 +1,6 @@
 pkgbase = lensfun-git
 	pkgdesc = Library to correct optical lens defects and lens database
-	pkgver = 0.3.0.r56.ge4a7da7
+	pkgver = 0.3.1.r75.gb305978
 	pkgrel = 1
 	url = http://lensfun.sourceforge.net
 	arch = i686

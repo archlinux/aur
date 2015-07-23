@@ -1,7 +1,7 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 pkgname=lensfun-git
 _gitname=lensfun
-pkgver=0.3.0.r56.ge4a7da7
+pkgver=0.3.1.r75.gb305978
 pkgrel=1
 pkgdesc="Library to correct optical lens defects and lens database"
 arch=(i686 x86_64)
