@@ -1,5 +1,4 @@
-# Maintainer: josephgbr <rffontenelle AT gmail DOT com>
-# Co-maintainer: Det <nimetonmaili gmail a-dot com>
+# Maintainer: Det <nimetonmaili gmail a-dot com>
 # Contributor: vorbote <palopezv AT gmail DOT com >
 # Contributor: td123 <gostrc AT gmail DOT com>
 # Contributor: phoenixlzx < phoenixlzx AT phoenixsec DOT org >
