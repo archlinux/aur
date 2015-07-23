@@ -5,7 +5,7 @@
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=gitlab
-pkgver=7.13.0
+pkgver=7.13.1
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('9b1220e4c5783579d547455d55768b6f811cdde7243031b8c8d4a79b9cd6d4259fd7be214734a4dcf7e905dba3fe306b5254d2c82e26f1510acfa78a48bff52e'
+sha512sums=('8b2225344977b9804db54022546dc204da6ff3030253db3cc92a57ea041e916776f6de9fc99a36ebde909fd7063d0e97e6ac8377b6f957d0d67abe1481f431e2'
 	'a16e762b0ff807e6e32ebf45562cf78b6b9b64babbfe4e42856a13f6e190c09553b74eb4d353d6213121c415cc08cc6cc82ffce56916208ebfd67b08cf012680'
 	'88132c32fddd067862b8d6973d3bfbb4fbd66aefc317ef8e030983709c939442a74de0d2ef80e55123837806531667ff5664e4b8d764d6bc1bc3a78a3fede249'
 	'a38c9c55ad77d857b521769442db95706d9aaf238682f9aa17150f1b5f682ac68eaabfb116e49841e7fce628dd3589685b654d770ac067dac718b5f9e0ee6124'
