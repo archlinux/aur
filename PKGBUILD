@@ -19,7 +19,7 @@ source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 	LICENSE)
 sha1sums=('3131d45295b9a18a2901737c9b95f1c5434f53a6'
           'e8dc57b6471fb3867ee099304ac6bf628351cb98'
-          '0c53c0bdec2c9ed00eaf1d11995a25c9cebfd2dd'
+          '054b4fee6f0369c0831da156bf244a8ff55dfee2'
           'bf8995d86609cdab678ca277ae685407f82691db')
 
 prepare() {
