@@ -16,8 +16,10 @@ pkgbase = subliminal-git
 	depends = python2-pysrt>=1.0.1
 	depends = python2-six>=1.9.0
 	depends = python2-babelfish>=0.5.2
+	depends = python2-dogpile-core
 	depends = python2-chardet>=2.3.0
 	depends = python2-stevedore>=1.0.0
+	depends = python2-dateutil>=2.1
 	conflicts = subliminal
 	source = subliminal::git+https://github.com/Diaoul/subliminal.git
 	md5sums = SKIP
