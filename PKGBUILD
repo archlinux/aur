@@ -3,15 +3,17 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 
 pkgname='dropbox-uploader-git'
-pkgver=0.15.r0.g4850de6
+pkgver=0.15.r3.g43e32ae
 pkgrel=1
 pkgdesc='A bash script to manage Dropbox from the CLI'
 arch=('any')
-url='https://github.com/andreafabrizi/Dropbox-Uploader'
+#url='https://github.com/andreafabrizi/Dropbox-Uploader'
+url='https://github.com/sevreach/Dropbox-Uploader'
 license=('GPL3')
 depends=('bash' 'curl')
 makedepends=('git')
-source=('git://github.com/andreafabrizi/Dropbox-Uploader.git')
+#source=('git://github.com/andreafabrizi/Dropbox-Uploader.git')
+source=('git://github.com/severach/Dropbox-Uploader.git')
 sha256sums=('SKIP')
 
 pkgver() {
