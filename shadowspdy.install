@@ -1,0 +1,10 @@
+post_install() {
+  cat << EOF
+------------------------------------------------------------------------
+  Read /usr/lib/node_modules/shadowspdy/README.md for configuration.
+  Use 'systemctl start shadowspdy.service' to run as a service.
+  You may also invoke 'splocal -c /path/to/config.json'.
+  Happy bypassing firewalls and may the odds be ever in your favor.
+------------------------------------------------------------------------
+EOF
+}

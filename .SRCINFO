@@ -1,0 +1,18 @@
+pkgbase = shadowspdy
+	pkgdesc = A tunnel proxy using spdy as the tunnel
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/clowwindy/shadowsocks-nodejs
+	install = shadowspdy.install
+	arch = any
+	license = MIT
+	depends = nodejs>=0.10.0
+	noextract = shadowspdy-0.1.8.tgz
+	backup = usr/lib/node_modules/shadowspdy/config.json
+	source = http://registry.npmjs.org/shadowspdy/-/shadowspdy-0.1.8.tgz
+	source = shadowspdy.service
+	sha256sums = cef338c7faaabb57e9094043b1695d7eb99fec417f74f6a7f44e75f1e4b79730
+	sha256sums = dae953e8ae694e5cce2a9ad54473eeb4395ca707cf03af21b7a3ed58c03bc0b1
+
+pkgname = shadowspdy
+

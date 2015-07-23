@@ -1,0 +1,9 @@
+[Unit]
+Description=A tunnel proxy using spdy as the tunnel
+
+[Service]
+ExecStart=/usr/bin/splocal -c /usr/lib/node_modules/shadowspdy/config.json
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
