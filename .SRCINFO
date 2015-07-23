@@ -1,0 +1,17 @@
+pkgbase = php53-mongo
+	pkgdesc = Officially supported PHP 5.3 driver for MongoDB
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = http://www.mongodb.org/display/DOCS/PHP+Language+Center
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = php53
+	backup = etc/php/conf.d/mongo.ini
+	source = http://pecl.php.net/get/mongo-1.5.8.tgz
+	source = mongo.ini
+	sha256sums = 7253436179755aa0235ecdf62b89e085f59138c935a8865dbc7c70ab5b07646c
+	sha256sums = c89685eee842d5c3a85149a5bb8e310e62bf1a17f94183bb66401593ab2b191b
+
+pkgname = php53-mongo
+
