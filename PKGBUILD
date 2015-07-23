@@ -21,6 +21,12 @@ conficts=('acd_cli')
 source=(git+https://github.com/yadayada/acd_cli.git)
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
    cd $_pkgname 
    python setup.py install --root="$pkgdir/" --optimize=1
