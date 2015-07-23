@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-libsearpc
+	pkgdesc = A simple and easy-to-use C language RPC framework (including both server side & client side) based on GObject System (mingw-w64).
+	pkgver = 3.0.latest
+	pkgrel = 4
+	url = https://github.com/haiwen/libsearpc/
+	arch = any
+	license = GPL3
+	makedepends = mingw-w64-configure
+	makedepends = libtool>1.4
+	makedepends = python2>=2.4
+	depends = mingw-w64-crt
+	depends = mingw-w64-glib2>=2.26.0
+	depends = mingw-w64-jansson>=2.2.1
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = libsearpc-3.0.latest.tar.gz::https://github.com/haiwen/libsearpc/archive/v3.0-latest.tar.gz
+	source = libsearpc.pc.patch
+	sha256sums = 56313771e0ad7dc075c4590b6a75daeb3939937b21716d82c91be2612133b8cd
+	sha256sums = aec39a303aaebc0777a22d8c53367f52f619654d63f62b362d75c1c599e632f4
+
+pkgname = mingw-w64-libsearpc
+
