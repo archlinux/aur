@@ -9,7 +9,7 @@ license=('GPL')
 depends=('java-environment')
 source=(charting-${pkgver}.jar::http://sourceforge.net/projects/${pkgname}/files/JOpenChart/${pkgver}/charting-${pkgver}.jar/download)
 
-build() {
+package() {
   mkdir -p ${pkgdir}/usr/share/java/${pkgname}/
   cp ${srcdir}/charting-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/
 }
