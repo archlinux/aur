@@ -1,0 +1,20 @@
+[Unit]
+Description=Dump1090 ADSB decoder daemon. Mutability fork.
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/dump1090
+Nice=-5
+Restart=on-failure
+RestartSec=30
+User=dump1090
+ProtectSystem=full
+ProtectHome=true
+RuntimeDirectory=dump1090
+RuntimeDirectoryMode=755
+
+ExecStart=/usr/bin/dump1090-mutability $DUMP1090_OPTS
+
+[Install]
+WantedBy=network-online.target

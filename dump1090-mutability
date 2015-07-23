@@ -1,0 +1,4 @@
+# dump1090-mutability configuration file
+# Run systemctl restart dump1090-mutability
+# to load changes.
+DUMP1090_OPTS=""
