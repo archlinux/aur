@@ -1,7 +1,7 @@
 pkgbase = grpc
 	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.grpc.io/
 	arch = i686
 	arch = x86_64
