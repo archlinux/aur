@@ -1,0 +1,18 @@
+pkgbase = php53-memcached
+	pkgdesc = PHP 5.3 extension for interfacing with memcached via libmemcached library
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://pecl.php.net/package/memcached
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php53
+	depends = libmemcached
+	provides = php-memcached
+	conflicts = php-memcached
+	backup = etc/php/conf.d/memcached.ini
+	source = http://pecl.php.net/get/memcached-2.2.0.tgz
+	sha256sums = 17b9600f6d4c807f23a3f5c45fcd8775ca2e61d6eda70370af2bef4c6e159f58
+
+pkgname = php53-memcached
+
