@@ -1,10 +1,10 @@
 diff -Naurp a/supernova/executable.py b/supernova/executable.py
---- a/supernova/executable.py	2015-07-18 00:22:07.000000000 -0500
-+++ b/supernova/executable.py	2015-07-18 21:58:23.018328979 -0500
-@@ -57,7 +57,7 @@ def print_env_list(ctx, param, value):
+--- a/supernova/executable.py	2015-07-21 16:11:04.000000000 -0500
++++ b/supernova/executable.py	2015-07-22 19:24:20.782381530 -0500
+@@ -66,7 +66,7 @@ command_settings = {
  
  
- @click.command()
+ @click.command(context_settings=command_settings)
 -@click.option('--executable', '-x', default='nova',
 +@click.option('--executable', '-x', default='nova2',
                help='Command to run', show_default=True)
