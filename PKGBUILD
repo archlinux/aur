@@ -1,13 +1,13 @@
 # Maintainer: illuser <lykouleon.eve@gmail.com>
+_nginxver=1.8.0
 
 pkgname=nginx-passenger-git
-pkgrel=1
-_nginxver=1.8.0
 pkgver=5.0.14.r5.gbf537aa
+pkgrel=1
 pkgdesc='A fast and robust web server and application server for Ruby, Python, and Node.js'
 arch=('i686' 'x86_64')
 url='https://www.phusionpassenger.com'
-license=('custom')
+license=('custom' 'custom')
 depends=('openssl' 'pcre' 'zlib' 'geoip' 'ruby')
 makedepends=('hardening-wrapper' 'git')
 optdepends=('nodejs: Support for nodejs web apps'
@@ -17,17 +17,9 @@ optdepends=('nodejs: Support for nodejs web apps'
             'clang: Faster compiling'
             'ccache: Faster recompiling')
 provides=('nginx' 'passenger')
-confilicts=('nginx' 'passenger')
-source=("http://nginx.org/download/nginx-$_nginxver.tar.gz"
-        'passenger::git+https://github.com/phusion/passenger#branch=stable-5.0'
-        service
-        logrotate
-        locations.ini)
-sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
-            'SKIP'
-            '0a8359248a1dd1e98a96b036a636095af0c2fe770d661ab7dd988b3999d08b9f'
-            'd85edb44894468d2e471d38176b6827635fb0c1251ce55765f4aa59c1bcb1791'
-            '6a99bd6544cadd0563b549a5fb24d0aed98fe51f5dcdaacbfa2f9b8026360d1e')
+confilicts=('nginx' 'passenger' 'nginx-devel' 'nginx-full' 'nginx-mainline' 'nginx-accesskey'
+  'nginx-custom' 'nginx-custom-dev' 'nginx-hg' 'nginx-libressl' 'nginx-mainline-waf'
+  'nginx-openrc' 'nginx-pam' 'nginx-passenger' 'nginx-passenger-mod-auth-kerb-git' 'nginx-tcp')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -38,6 +30,17 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/uwsgi_params'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
+install="$pkgname".install
+source=("http://nginx.org/download/nginx-$_nginxver.tar.gz"
+        'passenger::git+https://github.com/phusion/passenger#branch=stable-5.0'
+        service
+        logrotate
+        locations.ini)
+sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
+            'SKIP'
+            '0a8359248a1dd1e98a96b036a636095af0c2fe770d661ab7dd988b3999d08b9f'
+            'd85edb44894468d2e471d38176b6827635fb0c1251ce55765f4aa59c1bcb1791'
+            '6a99bd6544cadd0563b549a5fb24d0aed98fe51f5dcdaacbfa2f9b8026360d1e')
 
 pkgver() {
   cd "$srcdir/passenger"
@@ -128,8 +131,10 @@ package() {
 
   cd "$srcdir/passenger"
 
-  install -d "$pkgdir"/usr/bin
-  cp -R bin/* "$pkgdir"/usr/bin/
+  for i in `ls bin/`; do
+    install -Dm755 bin/"$i" "$pkgdir"/usr/bin/"$i"
+  done
+
   /usr/bin/ruby ./dev/install_scripts_bootstrap_code.rb --ruby \
     /usr/lib/ruby/vendor_ruby "$pkgdir"/usr/bin/passenger*
 
