@@ -1,0 +1,16 @@
+pkgbase = ttf-malayalam-font-meera
+	pkgdesc = This is Meera, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = http://smc.org.in/fonts/
+	install = ttf-malayalam-fonts.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://smc.org.in/downloads/fonts/meera/Meera.ttf
+	source = https://gitlab.com/smc/meera/raw/master/65-0-smc-meera.conf
+	md5sums = e217ad37fa43c073368e66419e16ef1a
+	md5sums = 4c02bd80a4d2b9fcfd47ef7685357359
+
+pkgname = ttf-malayalam-font-meera
+
