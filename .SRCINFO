@@ -1,0 +1,29 @@
+pkgbase = lib32-libofa
+	pkgdesc = An open-source audio fingerprint by MusicIP (32 bit)
+	pkgver = 0.9.3
+	pkgrel = 4
+	url = http://code.google.com/p/musicip-libofa/
+	arch = x86_64
+	license = GPL2
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = lib32-curl
+	depends = lib32-expat
+	depends = lib32-fftw
+	depends = lib32-gcc-libs
+	depends = libofa
+	source = http://musicip-libofa.googlecode.com/files/libofa-0.9.3.tar.gz
+	source = gcc-4.patch
+	source = gcc4.3.patch
+	source = gcc4.5.patch
+	source = libofa-0.9.3-curl-7.21.patch
+	source = libofa-0.9.3-gcc-4.7.patch
+	md5sums = 51507d2c4b432bd2755f48d58471696e
+	md5sums = a6f78b90bd0f4354d022a71c3e58ef6c
+	md5sums = dd57db13770b8f8d196e8a3d3a50e713
+	md5sums = c245363368d0e6fa2b4676364b81b74f
+	md5sums = 2e1579d74613cfbb1799d0ab5f1a4cba
+	md5sums = a53a0104f9b5bba220322c6d0b68bf96
+
+pkgname = lib32-libofa
+
