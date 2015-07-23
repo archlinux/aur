@@ -1,0 +1,22 @@
+pkgbase = ndiswrapper-dkms
+	pkgdesc = Module for NDIS (Windows Network Drivers) drivers supplied by vendors.Use with DKMS
+	pkgver = 1.59
+	pkgrel = 5
+	url = http://sourceforge.net/projects/ndiswrapper/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	optdepends = ndisgtk: GTK+ based frontend for ndiswrapper.
+	provides = ndiswrapper
+	conflicts = ndiswrapper
+	source = http://download.sourceforge.net/ndiswrapper/ndiswrapper-1.59.tar.gz
+	source = https://raw.githubusercontent.com/Schwartz/ndiswrapper-patch/master/ndiswrapper-1.59.patch
+	source = dkms.conf
+	md5sums = e26a7213468ccd6b0bb4c211c7aadeaa
+	md5sums = 8bc2bec85cfbd1a04d4038757fbc7829
+	md5sums = d8c1c66ef19e6222e66274c0cdfb481a
+
+pkgname = ndiswrapper-dkms
+
