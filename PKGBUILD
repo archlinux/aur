@@ -7,40 +7,39 @@
 # Contributor: hack.augusto <hack.augusto@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r2484.c15fe57
+pkgver=r2780.af0b79e
 pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
 url='http://dev.chromium.org/developers/how-tos/install-depot-tools'
 source=("${pkgname}::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
-	'depot_tools.sh' 'repo_fix.sh')
+	'depot_tools.sh' 'repo_fix.sh' 'fixshebangs.py')
 license=('Custom')
 depends=('python2' 'python2-colorama' 'python2-pylint')
 makedepends=('git' 'scons' 'setconf')
 provides=('depot_tools' 'gclient')
 conflicts=('gclient-svn' 'depot_tools-svn')
 options=('!strip')
-md5sums=('SKIP'
-         '39d5d3e78fa7456a1d8dd5ac10a1c8bb'
-         'fb0c546a078c312aa64c1f2a31599557')
 install="depot_tools.install"
+sha512sums=('SKIP'
+            '8bccc9b116cffabfb605431ff229e149865b00d8de20beb310a3ce5f6edb643dc4ab592a901e89d33bdc75b79104e5940ee8b876bf0bb033ee9f85dad770f3db'
+            'bde33ffcad42a4d554d5490b6562981ef4b9f3abebadbed909749ee05ba391da4b5acb31b901e785b6f019b4ed3f9c740ab92623dd6a87e67b4b599a0010374b'
+            '1fb1cbca2540dfe98ad52fce493e6545e1c7803aaa6e83ce5cde1ffcb3ced9ad39d2ff1a7a6918e1f0c33e8260ea46c03692d276d1beea2bc96383f7061e8043')
 
-scripts_to_fix=(
+scripts_to_fix_exec=(
 	apply_issue
-	drover
-	gcl
-	git-cl
-	git-gs
-	git-try
-	hammer
-	weekly
-	wtf
-	update_depot_tools
-	fetch
-	download_from_google_storage
-	gn
+	cit
 	clang-format
+	depot-tools-auth
+	download_from_google_storage
+	drover
+	fetch
+	gcl
+	gclient
 	git-runhooks
+	gn
+	hammer
+	roll-dep-svn
 	roll-dep
 )
 
@@ -57,48 +56,18 @@ prepare () {
 	# gclient.py require a fix for work correctly with python2-colorama
 	# Another way is make default python2, but I don't think is a good idea!
 	# Fixing python scripts.
-	msg "Patching script for python2 usage..."
-	for script in *.py
-	do
-		sed -i -r -e 's/#!(.*)python.*/#!\1python2/' "${script}"
-	done
+	msg "Patching scripts for python2 usage..."
+	"${srcdir}/fixshebangs.py"
 
-	# Fixing gclient.py
-	sed -i -r -e 's/#!(.*)python.*/#!\1python2/' \
-		        -e 's/from third_party import colorama/import colorama/' \
-			  	  -e 's/from third_party.colorama import Fore/from colorama import Fore/' \
+	# Fix gclient.py
+	sed -i -r -e 's/from third_party import colorama/import colorama/' \
+			  -e 's/from third_party.colorama import Fore/from colorama import Fore/' \
 		gclient.py
-	sed -i -e 's/exec python/exec python2/' \
-		gclient
 
-	# Fixing repo
-	sed -r -i -e 's/"exec" python/"exec" python2/' repo
-
-	# Fixing scripts in root folder
-	for script in "${scripts_to_fix[@]}"
+	# Fixing scripts which use "exec python"
+	for script in "${scripts_to_fix_exec[@]}"
 	do
-		sed -r -i -e 's/exec python/exec python2/' \
-			        -e 's/#!(.*)python.*/#!\1python2/' \
-			"${script}"
-	done
-
-	# Fixing scripts in other folders
-	# Is it safe remove those folders?? I don't now, further tests required. For now fix it and include all tools.
-	sed -r -i -e 's/python/python2/' git-cl-upload-hook
-
-	for script in {git_utils/git-tree-prune,support/chromite_wrapper,tests/sample_pre_commit_hook,third_party/pylint/epylint.py}
-	do
-		sed -r -i -e 's/env python/env python2/' "${script}"
-	done
-
-	for folder in {testing_support,tests,third_party}
-	do
-		cd "${folder}"
-		for script in *.py
-		do
-			sed -r -i -e 's/env python/env python2/' "${script}"
-		done
-		cd ..
+		sed -r -i -e 's/exec python/exec python2/' "${script}"
 	done
 }
 
