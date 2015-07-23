@@ -1,0 +1,14 @@
+pkgbase = ike-scan
+	pkgdesc = A tool that uses IKE protocol to discover, fingerprint and test IPSec VPN servers
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://www.nta-monitor.com/tools/ike-scan/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = http://www.nta-monitor.com/tools/ike-scan/download/ike-scan-1.9.tar.gz
+	sha256sums = 05d15c7172034935d1e46b01dacf1101a293ae0d06c0e14025a4507656f1a7b6
+
+pkgname = ike-scan
+
