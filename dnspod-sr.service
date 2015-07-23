@@ -1,0 +1,11 @@
+[Unit]
+Description=DNSPod Security Recursive DNS Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dnspod-sr /etc/dnspod-sr.conf
+
+[Install]
+WantedBy=multi-user.target
+
