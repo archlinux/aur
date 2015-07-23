@@ -25,13 +25,13 @@
 
 pkgname=catalyst-firepro
 pkgver=14.301.1019
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.1' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.16.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.16.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 makedepends=('unzip')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
@@ -84,7 +84,8 @@ source=(
     fglrx_gpl_symbol.patch
     fglrx_3.17rc6-no_hotplug.patch
     kolasa-3.19-get_cpu_var.patch
-    kolasa_4.0-cr4-strn.patch)
+    kolasa_4.0-cr4-strn.patch
+    kolasa_4.1_remove-IRQF_DISABLED.patch)
 
 md5sums=('70d5f3b7e8f0c939380df09517c21b8b'
 	 '601d9c756571dd79d26944e54827631e'
@@ -110,7 +111,8 @@ md5sums=('70d5f3b7e8f0c939380df09517c21b8b'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '67a22f624bae95a76638ce269392cb01'
 	 '3aa45013515b724a71bbd8e01f98ad99'
-	 'dee3df1c5d3ed87363f4304da917fc00')
+	 'dee3df1c5d3ed87363f4304da917fc00'
+	 '81a9e38dee025151cccb7e5db2362cfb')
 
 
 
@@ -294,6 +296,7 @@ package() {
       patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
+      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
 
     # Prepare modules source files
       _archdir=x86_64
