@@ -1,11 +1,13 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
+# Co-Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname='tinyssh'
 pkgver='20150501'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Small SSH server using NaCl / TweetNaCl'
 url='http://tinyssh.org'
 arch=('x86_64' 'i686' 'arm')
 license=('Public Domain')
+makedepends=('gcc' 'make')
 install='tinyssh.install'
 source=("http://mojzis.com/software/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	tinyssh@.socket tinyssh@.service tinysshgenkeys.service)

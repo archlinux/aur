@@ -1,13 +1,15 @@
 pkgbase = tinyssh
 	pkgdesc = Small SSH server using NaCl / TweetNaCl
 	pkgver = 20150501
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tinyssh.org
 	install = tinyssh.install
 	arch = x86_64
 	arch = i686
 	arch = arm
 	license = Public Domain
+	makedepends = gcc
+	makedepends = make
 	source = http://mojzis.com/software/tinyssh/tinyssh-20150501.tar.bz2
 	source = tinyssh@.socket
 	source = tinyssh@.service
