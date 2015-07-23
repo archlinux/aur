@@ -1,0 +1,11 @@
+--- A/pmg.c	2012-04-05 16:04:17.362043894 +0800
++++ B/pmg.c	2012-04-05 16:05:32.915373721 +0800
+@@ -302,7 +302,7 @@
+ 
+ #define NCOLOR 107
+ 
+-static const char *glade_fname = "pmg.glade";
++static const char *glade_fname = "/usr/share/pmgmusic/pmg.glade";
+ static const double vx_min = -0.1, vx_max = 7.1, vx_mid = 3.5, vy_min = -1.0, vy_max = 0.2;
+ static const double note_vw = 0.1; /* width of long note borders */
+ static const double note_vt = 0.01;

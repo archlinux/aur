@@ -1,0 +1,22 @@
+pkgbase = pmgmusic
+	pkgdesc = PMG - a VOS clone for linux
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/felixonmars/pmgmusic
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = popt
+	depends = alsa-lib
+	depends = gtk2
+	depends = glib2
+	depends = libglade
+	optdepends = fluidsynth
+	optdepends = timidity++
+	source = fix_glade_path.patch
+	source = https://github.com/felixonmars/pmgmusic/archive/v1.0.tar.gz
+	md5sums = 68f454557d83a0c1e9d9d0083011bbfb
+	md5sums = 4661f5d0ed0715587efd3c92993499f7
+
+pkgname = pmgmusic
+
