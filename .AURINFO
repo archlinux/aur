@@ -1,0 +1,21 @@
+pkgbase = jython27
+	pkgdesc = An implementation of the Python language written in Java
+	pkgver = 2.7b3
+	pkgrel = 1
+	url = http://www.jython.org/
+	install = jython.install
+	arch = any
+	license = PSF
+	license = APACHE
+	license = custom
+	depends = java-environment
+	depends = bash
+	provides = jython=2.7b3
+	source = http://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7-b3/jython-installer-2.7-b3.jar
+	source = README.ArchLinux
+	noextract = jython-installer-2.7-b3.jar
+	options = !emptydirs
+	backup = opt/jython27/registry
+
+pkgname = jython27
+
