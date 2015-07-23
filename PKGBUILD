@@ -4,7 +4,7 @@
 
 pkgname=gnome-terminal-fedora
 _pkgname=gnome-terminal
-pkgver=3.16.1
+pkgver=3.16.2
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with Fedora patches"
 arch=(i686 x86_64)
@@ -18,17 +18,20 @@ url="http://www.gnome.org"
 conflicts=('gnome-terminal')
 install=gnome-terminal-fedora.install
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
+	0001-build-Don-t-treat-warnings-as-errors.patch
 	gnome-terminal-restore-transparency.patch
 	gnome-terminal-restore-dark.patch
 	gnome-terminal-command-notify.patch)
-sha256sums=('7dce4df5d88e4968ed64d57e61d51e2ab7944a02ece34d5776582a0ed3d7b45b'
-            '00e8e84d6f348bfb4ac3c63c4971f4f1da1d603ca32deed45d8586f4aac73e1c'
+sha256sums=('9df7bab7bfd15ca9a3c60612e425baaf5c8b32ba181619f740b7129a0768f4e0'
+			'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
+            '14f50bc4a531adc830742968de49c9cf8364e44ed635e7f4e787132da563cd6e'
             '5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff'
             '9c7a4f631dce079892dad72cd9ee1a143fb637d1d9fc961bbde36defca89e7c3')
 
 prepare () {
   cd $_pkgname-$pkgver
 
+  patch -p1 -i ../0001-build-Don-t-treat-warnings-as-errors.patch
   patch -p1 -i ../gnome-terminal-restore-transparency.patch
   patch -p1 -i ../gnome-terminal-restore-dark.patch
   patch -p1 -i ../gnome-terminal-command-notify.patch
