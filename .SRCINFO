@@ -1,0 +1,13 @@
+pkgbase = python2-arrow
+	pkgdesc = Better dates and times for Python
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://crsmithdev.com/arrow/
+	arch = any
+	license = GPL
+	depends = python2
+	source = https://github.com/crsmithdev/arrow/archive/0.6.0.tar.gz
+	sha256sums = 297a9287e5d4256ef7e3f66271fc20fbc54cf790260d6cdd3a1e7495e95bfdd2
+
+pkgname = python2-arrow
+
