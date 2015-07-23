@@ -1,0 +1,12 @@
+pkgbase = slorry
+	pkgdesc = russian post console tracker
+	pkgver = 11.a4182ba
+	pkgrel = 1
+	url = https://github.com/seletskiy/slorry
+	arch = any
+	license = GPL
+	source = git+https://github.com/seletskiy/slorry
+	md5sums = SKIP
+
+pkgname = slorry
+
