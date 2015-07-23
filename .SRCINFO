@@ -1,0 +1,21 @@
+pkgbase = sequeljoe
+	pkgdesc = SQL database administration tool
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://sequeljoe.ohwg.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt5-base
+	depends = libssh2
+	depends = libnotify
+	optdepends = libmariadbclient: MySQL/MariaDB support
+	optdepends = sqlite: sqlite support
+	optdepends = postgresql-libs: PostgreSQL support (experimental)
+	options = strip
+	source = https://github.com/ohwgiles/sequeljoe/archive/0.4.zip
+	md5sums = a715fb01f3f03d16bbaa5a695c7db299
+
+pkgname = sequeljoe
+
