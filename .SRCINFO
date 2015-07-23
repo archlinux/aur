@@ -1,0 +1,14 @@
+pkgbase = libgd-doc-git
+	pkgdesc = Reference documentation for libgd, HTML format.
+	pkgver = gd.2.1.1.30.g10a1b82
+	pkgrel = 1
+	url = https://bitbucket.org/libgd/gd-libgd/
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = naturaldocs
+	source = git+https://bitbucket.org/libgd/gd-libgd/
+	md5sums = SKIP
+
+pkgname = libgd-doc-git
+
