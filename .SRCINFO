@@ -1,0 +1,15 @@
+pkgbase = vamp-libxtract-plugins
+	pkgdesc = Low-level feature extraction plugins using Jamie Bullock's libxtract library to provide around 50 spectral and other features
+	pkgver = 0.6.6.20121204
+	pkgrel = 1
+	url = https://code.soundsoftware.ac.uk/projects/vamp-libxtract-plugins
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = vamp-plugin-sdk
+	depends = libxtract-git
+	source = https://code.soundsoftware.ac.uk/attachments/download/618/vamp-libxtract-plugins-0.6.6.20121204.tar.gz
+	md5sums = bc96f10c4d6c86b3fe2685331e9a3e7f
+
+pkgname = vamp-libxtract-plugins
+
