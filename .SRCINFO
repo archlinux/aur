@@ -1,0 +1,17 @@
+pkgbase = filebench
+	pkgdesc = FileBench is a framework of file system workloads for measuring and comparing file system performance
+	pkgver = 1.4.9.1
+	pkgrel = 2
+	url = http://filebench.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = CDDL
+	depends = perl
+	depends = libaio
+	depends = libtecla
+	options = docs
+	source = http://downloads.sourceforge.net/sourceforge/filebench/filebench-1.4.9.1.tar.gz
+	md5sums = e30a4feb78ce5e8224c7ec15fd337e42
+
+pkgname = filebench
+
