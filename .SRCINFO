@@ -1,6 +1,6 @@
 pkgbase = yad
 	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line
-	pkgver = 0.28.1
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/yad-dialog
 	install = yad.install
@@ -10,8 +10,10 @@ pkgbase = yad
 	makedepends = intltool
 	depends = gtk3
 	depends = hicolor-icon-theme
-	source = http://sourceforge.net/projects/yad-dialog/files/yad-0.28.1.tar.xz
-	sha1sums = f7e3a94bd689370a9c58276928908a61b06da6ed
+	source = http://sourceforge.net/projects/yad-dialog/files/yad-0.29.0.tar.xz
+	source = disable-html.patch
+	sha1sums = 1df3209675ff6a1e3c700eb50871dd267862c2f6
+	sha1sums = 2abe257235fd4110ccc408bca155eac42cf09d2f
 
 pkgname = yad
 
