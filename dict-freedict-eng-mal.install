@@ -1,0 +1,5 @@
+post_install() {
+  echo "Adding the database to dictd configuration"
+  echo -e 'database Freedict-English-Malayalam  {data “/usr/share/dictd/dict-en-ml.dict.dz” \n\t index “/usr/share/dictd/dict-en-ml.index”}' >> /etc/dict/dictd.conf
+}
+

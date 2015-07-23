@@ -1,0 +1,14 @@
+pkgbase = dict-freedict-eng-mal
+	pkgdesc = Dict package for English-Malayalam Freedict dictionary for DICT protocol clients
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://smc.org.in/
+	install = dict-freedict-eng-mal.install
+	arch = i686
+	license = GPL
+	depends = dictd
+	source = http://download.savannah.nongnu.org/releases/smc/dictionary/dict-freedict-eng-mal-0.1.tar.gz
+	md5sums = 23ae2f1e7bdd9325c0effb1c6d42b22f
+
+pkgname = dict-freedict-eng-mal
+
