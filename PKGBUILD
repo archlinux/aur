@@ -1,7 +1,7 @@
 # Maintainer: Michael Egger <gcarq@archlinux.info>
 
 pkgname=inox-bin
-pkgver=43.0.2357.130
+pkgver=44.0.2403.89
 pkgrel=1
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google. (binary version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'kdeutils-kwalletmanager: for storing passwords in KWallet')
 options=('!strip')
 source=(inox-bin.tar.xz::https://bintray.com/artifact/download/gcarq/generic/$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.xz)
-sha256sums=('99b9359ea531f5fbc3025c537525b37bacda2fb35d098fe1735db84e9dbd303c')
+sha256sums=('291ba8d66ba56993c537c08c9ca6690677feb6a00c482b94d7c509abffb43577')
 
 package() {
   tar xJvf ${srcdir}/inox-bin.tar.xz -C ${pkgdir}/
