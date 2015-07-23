@@ -1,0 +1,15 @@
+pkgbase = vamp-aubio-plugins
+	pkgdesc = Onset detection, pitch tracking, note tracking and tempo tracking plugins using Paul Brossier's aubio library
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://code.soundsoftware.ac.uk/projects/vamp-aubio-plugins
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = vamp-plugin-sdk
+	depends = aubio
+	source = https://code.soundsoftware.ac.uk/attachments/download/622/vamp-aubio-plugins-0.4.0.tar.gz
+	md5sums = f4ebb07b0547c5462043aab422b82291
+
+pkgname = vamp-aubio-plugins
+
