@@ -1,0 +1,19 @@
+pkgbase = munipack
+	pkgdesc = General astronomical photometry software package
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://munipack.physics.muni.cz/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-fortran
+	depends = cfitsio
+	depends = wxgtk
+	depends = webkitgtk2
+	optdepends = fitspng: for FITS to PNG conversion
+	optdepends = rawtran: for RAW to FITS conversion
+	source = ftp://integral.physics.muni.cz/pub/munipack/munipack-0.5.6.tar.gz
+	md5sums = f609ee8cba91fdb63c5a3bf90277b812
+
+pkgname = munipack
+
