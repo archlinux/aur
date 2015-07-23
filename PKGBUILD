@@ -3,13 +3,13 @@
 
 pkgname=boxes
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("https://github.com/ascii-boxes/boxes/archive/v$pkgver.zip")
-md5sums=('b73a4e2f3bc8a99bc4030f6ccb0f04d3')
+md5sums=('4951b407b478ac42f7efc0ece4d5e355')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
