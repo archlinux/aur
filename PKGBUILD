@@ -19,7 +19,7 @@ source=(${pkgname}::git://github.com/mutability/dump1090
 	${_pkgbase}.service)
 sha1sums=('SKIP'
           '578a300700e746ba3e5f8403764fb14a9b1f88d5'
-          '6485cf596a6cf9b1a274e0f2ca94edda9c86e47d')
+          'aa4c8b844e7008794094947cea02530791dddfb1')
 optdepends=('lighttpd: web display support')
 changelog=('dump1090-mutability.changelog')
 

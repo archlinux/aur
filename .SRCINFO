@@ -20,7 +20,7 @@ pkgbase = dump1090-mutability-git
 	source = dump1090-mutability.service
 	sha1sums = SKIP
 	sha1sums = 578a300700e746ba3e5f8403764fb14a9b1f88d5
-	sha1sums = 6485cf596a6cf9b1a274e0f2ca94edda9c86e47d
+	sha1sums = aa4c8b844e7008794094947cea02530791dddfb1
 
 pkgname = dump1090-mutability-git
 
