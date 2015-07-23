@@ -1,0 +1,20 @@
+2015-07-23  Pekman <pekman@openmailbox.org>
+
+	* 0.7.3-1:
+	Fix warnings
+
+
+2010-09-18  Ivy Foster  <joyfulgirl@archlinux.us>
+	
+	* 0.7.0-1:
+	Upstream update
+	Use sha1sums, since upstream provides them
+	Now depends on fltk rather than fltk2
+	    (the fltk2 branch is now obsolete)
+	
+2010-09-18  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* $pkgrel bump
+	* Manpage now goes to /usr/share/man/man1, instead of
+	  to /usr/man/man1
+	* Added ChangeLog

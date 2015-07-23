@@ -1,0 +1,16 @@
+pkgbase = flpsed
+	pkgdesc = A WYSIWYG PostScript annotator
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://flpsed.org/flpsed.html
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghostscript
+	depends = fltk
+	source = http://flpsed.org/flpsed-0.7.3.tar.gz
+	sha256sums = b70bb751bd70af9893ae2369f0789fd79729d0d6d1fee6e0522c4e6f55c7cf6e
+
+pkgname = flpsed
+
