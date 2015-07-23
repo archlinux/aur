@@ -20,7 +20,7 @@ prepare() {
 
     # Prevent building the testsuite on the x64, this requires the cunit pkg
     # from the AUR, its a pain and useless to keep it a build-dep
-    sed -i "${srcdir}/wrapper_${pkgver}_src/src/c/Makefile-linux-x86*.make" \
+    sed -i "${srcdir}/wrapper_${pkgver}_src/src/c/Makefile-linux-x86"*.make \
         -e "s|all: .*|all: init wrapper libwrapper.so|"
 }
 
