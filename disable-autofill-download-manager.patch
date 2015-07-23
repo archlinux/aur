@@ -1,5 +1,5 @@
 --- ./components/autofill/core/browser/autofill_download_manager.cc	2015-05-14 00:35:46.000000000 +0200
-+++ ./components/autofill/core/browser/autofill_download_manager.cc.new	2015-06-07 03:58:13.640789314 +0200
++++ ./components/autofill/core/browser/autofill_download_manager.cc.new	2015-07-23 03:58:13.640789314 +0200
 @@ -44,11 +44,6 @@
    return std::string();
  }
@@ -23,9 +23,9 @@
 -
 -  // Id is ignored for regular chrome, in unit test id's for fake fetcher
 -  // factory will be 0, 1, 2, ...
--  net::URLFetcher* fetcher = net::URLFetcher::Create(
--      fetcher_id_for_unittest_++, request_url, net::URLFetcher::POST,
--      this);
+-  net::URLFetcher* fetcher =
+-      net::URLFetcher::Create(fetcher_id_for_unittest_++, request_url,
+-                              net::URLFetcher::POST, this).release();
 -  url_fetchers_[fetcher] = request_data;
 -  fetcher->SetAutomaticallyRetryOn5xx(false);
 -  fetcher->SetRequestContext(request_context);

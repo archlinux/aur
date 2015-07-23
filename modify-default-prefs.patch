@@ -1,40 +1,42 @@
 --- ./components/content_settings/core/browser/content_settings_default_provider.cc
 +++ ./components/content_settings/core/browser/content_settings_default_provider.cc.new
-@@ -39,7 +39,7 @@ struct DefaultContentSettingInfo {
+@@ -40,7 +40,7 @@
  // default content setting. This array must be kept in sync with the enum
  // |ContentSettingsType|.
  const DefaultContentSettingInfo kDefaultSettings[] = {
--    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW, true},
-+    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY, true},
-     {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW, true},
-     {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW, true},
-     {prefs::kDefaultPluginsSetting, CONTENT_SETTING_ALLOW, true}, 
+-  {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW},
++  {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY},
+   {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW},
+   {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW},
+   {prefs::kDefaultPluginsSetting, CONTENT_SETTING_DEFAULT},
+
 
 
 --- ./chrome/browser/chrome_content_browser_client.cc
 +++ ./chrome/browser/chrome_content_browser_client.cc.new
-@@ -620,7 +620,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kEnableHyperlinkAuditing,
--      true,
-+      false, /* default setting for HL-A */
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterListPref(
-       prefs::kEnableDeprecatedWebPlatformFeatures, 
+@@ -639,7 +639,7 @@
+ void ChromeContentBrowserClient::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(prefs::kDisable3DAPIs, false);
+-  registry->RegisterBooleanPref(prefs::kEnableHyperlinkAuditing, true);
++  registry->RegisterBooleanPref(prefs::kEnableHyperlinkAuditing, false);
+   registry->RegisterListPref(prefs::kEnableDeprecatedWebPlatformFeatures);
+ }
+ 
 
 
 --- ./chrome/browser/ui/browser_ui_prefs.cc
 +++ ./chrome/browser/ui/browser_ui_prefs.cc.new
-@@ -114,7 +114,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kCloudPrintSubmitEnabled,
--      true,
-+      false,
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kDevToolsDisabled,
+@@ -86,7 +86,7 @@
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+   registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
+   registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);
+-  registry->RegisterBooleanPref(prefs::kCloudPrintSubmitEnabled, true);
++  registry->RegisterBooleanPref(prefs::kCloudPrintSubmitEnabled, false);
+   registry->RegisterBooleanPref(prefs::kDevToolsDisabled, false);
+   registry->RegisterDictionaryPref(prefs::kBrowserWindowPlacement);
+   registry->RegisterDictionaryPref(prefs::kBrowserWindowPlacementPopup);
+
 
 
 --- ./chrome/browser/net/net_pref_observer.cc
@@ -147,20 +149,17 @@
 
 --- ./chrome/browser/signin/signin_promo.cc
 +++ ./chrome/browser/signin/signin_promo.cc.new
-@@ -258,11 +258,11 @@
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kSignInPromoUserSkipped,
--      false,
-+      true,
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kSignInPromoShowOnFirstRunAllowed,
--      true,
-+      false,
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kSignInPromoShowNTPBubble,
+@@ -253,8 +253,8 @@
+ void RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterIntegerPref(prefs::kSignInPromoStartupCount, 0);
+-  registry->RegisterBooleanPref(prefs::kSignInPromoUserSkipped, false);
+-  registry->RegisterBooleanPref(prefs::kSignInPromoShowOnFirstRunAllowed, true);
++  registry->RegisterBooleanPref(prefs::kSignInPromoUserSkipped, true);
++  registry->RegisterBooleanPref(prefs::kSignInPromoShowOnFirstRunAllowed, false);
+   registry->RegisterBooleanPref(prefs::kSignInPromoShowNTPBubble, false);
+ }
+ 
 
 
 --- ./chrome/browser/ui/browser_ui_prefs.cc
@@ -218,15 +217,16 @@
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kSafeBrowsingExtendedReportingEnabled,
-@@ -118,7 +118,7 @@
+@@ -104,7 +104,7 @@
+   // This pref is intentionally outside the above #if. That flag corresponds
+   // to the Notifier extension and does not gate the launcher page.
    // TODO(skare): Remove or rename ENABLE_GOOGLE_NOW: http://crbug.com/459827.
-   registry->RegisterBooleanPref(
-       prefs::kGoogleNowLauncherEnabled,
--      true,
-+      false,
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kDisableExtensions,
+-  registry->RegisterBooleanPref(prefs::kGoogleNowLauncherEnabled, true);
++  registry->RegisterBooleanPref(prefs::kGoogleNowLauncherEnabled, false);
+   registry->RegisterBooleanPref(prefs::kDisableExtensions, false);
+ #if defined(ENABLE_EXTENSIONS)
+   registry->RegisterBooleanPref(extensions::pref_names::kAlertsInitialized,
+
 
 
 --- ./chrome/service/cloud_print/connector_settings.cc

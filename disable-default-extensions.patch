@@ -1,6 +1,6 @@
 --- ./chrome/browser/extensions/external_component_loader.cc
 +++ ./chrome/browser/extensions/external_component_loader.cc.new
-@@ -35,58 +35,11 @@
+@@ -37,67 +37,11 @@
  
  // static
  bool ExternalComponentLoader::IsModifiable(const Extension* extension) {
@@ -13,7 +13,8 @@
 -    return SimpleFeature::IsIdInArray(
 -        extension->id(), kEnhancedExtensions, arraysize(kEnhancedExtensions));
 -  }
-   return false;
+-  return false;
++
  }
  
  void ExternalComponentLoader::StartLoading() {
@@ -48,6 +49,16 @@
 -  }
 -#endif
 -
+-
+-#if defined(ENABLE_MEDIA_ROUTER)
+-  if (switches::MediaRouterEnabled()) {
+-    std::string media_router_extension_id(
+-        extension_misc::kMediaRouterStableExtensionId);
+-    prefs_->SetString(media_router_extension_id + ".external_update_url",
+-                      extension_urls::GetWebstoreUpdateUrl().spec());
+-  }
+-#endif  // defined(ENABLE_MEDIA_ROUTER)
+-
 -#if defined(ENABLE_APP_LIST) && defined(OS_CHROMEOS)
 -  std::string google_now_extension_id;
 -  if (GetGoogleNowExtensionId(&google_now_extension_id)) {
@@ -55,10 +66,11 @@
 -                      extension_urls::GetWebstoreUpdateUrl().spec());
 -  }
 -#endif
--
+ 
    LoadFinished();
  }
- 
+
+
 
 --- ./chrome/browser/extensions/component_loader.cc
 +++ ./chrome/browser/extensions/component_loader.cc.new

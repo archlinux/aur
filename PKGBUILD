@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=43.0.2357.130
+pkgver=44.0.2403.89
 pkgrel=1
 _launcher_ver=2
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -43,16 +43,16 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         launcher-branding.patch
         disable-missing-key-warning.patch)
         
-sha256sums=('62fb55439396a5d49ba53d4377e8d2554c14c2e8a6255f07909ccee8f248002e'
+sha256sums=('badd9aa979487b55bbcce4f54ec16926c6fa7eb46ec2536866200a5e68853a98'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
             '8fb428244be7b50268a2848a34405c5551232e5c77f9e553cfdd3103979748d2'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
-            '4ed267ac792c7dbd5e1353018e05debfe31b95d3d003e8509137059fc593b8fb'
-            '5c0ae89a5384dd2c89fc8c8e369158a62f6e981bfce7a3cb4d2fec5f5a29d589'
-            'c6632b2023d97a114f1f78baa0c4d9f39ef4a887089705bfb12a77924ad62e7e'
-            '88809f37c70ac02b0effabbab5913f6d0afa07d945bad8de295b3ddea61e99ad'
+            '68aae00fe82ab9e039b2c6481761c6ac5a7f0685eaf3366cbee00b9ac9dd5483'
+            'f28a6d92f2f2ee3a69694468019a59718a8328c28be22c0db23671f376f786f2'
+            'ef498690b92a9140cb22facccf595640dfd378353c30e6efd05a4c92e64599de'
+            'b6fd027dfcaab88cbe36c952d5eb1ec0e4331f6c1f8fc9f1a0454b3f75502235'
             '9ace9483fc37bbf9ab59b4e58a05c18e66078c29e9e40044e36fc9117bd55bfd'
             'e9e86f7c9146e19c18ba7a10737ec94a655b737f96ce37b25798a5bd11f61c65'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
@@ -217,13 +217,12 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/$pkgname/inoxdriver"
 
-  cp out/Release/{*.pak,*.bin,libffmpegsumo.so} \
+  cp out/Release/{*.pak,*.bin} \
     "$pkgdir/usr/lib/$pkgname/"
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/$pkgname/"{"$pkgname",chrome-sandbox} \
     "$pkgdir/usr/lib/$pkgname/inoxdriver"
-  strip $STRIP_SHARED "$pkgdir/usr/lib/$pkgname/libffmpegsumo.so"
 
   if (( $_build_nacl )); then
     cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \

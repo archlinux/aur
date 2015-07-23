@@ -23,8 +23,8 @@
 -    return;
 -
 -  already_fetched_ = true;
--  fetcher_.reset(net::URLFetcher::Create(
--      fetcher_id_, GURL(kSearchDomainCheckURL), net::URLFetcher::GET, this));
+-  fetcher_ = net::URLFetcher::Create(fetcher_id_, GURL(kSearchDomainCheckURL),
+-                                     net::URLFetcher::GET, this);
 -  ++fetcher_id_;
 -  // We don't want this fetch to set new entries in the cache or cookies, lest
 -  // we alarm the user.
@@ -46,4 +46,5 @@
 -
 -  fetcher_->Start();
  }
+
 
