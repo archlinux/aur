@@ -1,0 +1,33 @@
+UPDMAP="/etc/texmf/web2c/updmap.cfg"
+UPDMAPLOCAL="/etc/texmf/web2c/updmap-local.cfg"
+
+post_install() {
+	echo ">> Running mktexlsr"
+	mktexlsr
+	# also save the map definition to the local cfg file
+	# so it survives an update of a package that regenerates
+	# the main config file, like texlive-fontsextra
+	if ! grep -q "^Map culmus.map$" $UPDMAPLOCAL 2>/dev/null; then
+		echo "Map culmus.map" >> $UPDMAPLOCAL
+	fi
+	# this adds it to the main cfg file $UPDMAP
+	echo ">> Running updmap-sys"
+	updmap-sys --quiet --enable Map=culmus.map
+}
+
+post_upgrade() {
+	echo ">> Running mktexlsr"
+	mktexlsr
+}
+
+post_remove() {
+	echo ">> Running mktexlsr"
+	mktexlsr
+	# remove it from the local file
+	sed '/^Map culmus.map$/d' -i $UPDMAPLOCAL
+	# remove it from the main file and regenerate
+	sed '/^Map culmus.map$/d' -i $UPDMAP
+	echo ">> Running updmap-sys"
+	updmap-sys --quiet
+}
+

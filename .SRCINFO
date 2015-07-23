@@ -1,0 +1,16 @@
+pkgbase = texlive-culmus
+	pkgdesc = Hebrew fonts from the Culmus project for LaTeX
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://www.guyrutenberg.com/culmus-latex/
+	install = texlive-culmus.install
+	arch = any
+	license = GPL2
+	license = custom:culmus
+	depends = texlive-core
+	conflicts = culmus-latex
+	source = http://downloads.sourceforge.net/project/ivritex/culmus-latex/culmus-latex-0.7/culmus-latex-0.7-r1.tar.gz
+	md5sums = 0c6f6d5b9e7a0d6ba59fc55680ed48a5
+
+pkgname = texlive-culmus
+
