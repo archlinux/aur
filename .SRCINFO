@@ -1,0 +1,22 @@
+pkgbase = okular-backend-mupdf-git
+	pkgdesc = MuPDF-based backend for Okular (git version)
+	pkgver = r33.7c02d23
+	pkgrel = 1
+	url = https://github.com/xylosper/okular-backend-mupdf
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = git
+	depends = kdegraphics-okular
+	depends = openjpeg2
+	depends = mupdf
+	provides = okular-backend-mupdf
+	conflicts = okular-backend-mupdf
+	source = git+https://github.com/xylosper/okular-backend-mupdf
+	md5sums = SKIP
+
+pkgname = okular-backend-mupdf-git
+
