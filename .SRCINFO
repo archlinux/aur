@@ -12,6 +12,7 @@ pkgbase = kcm-user-manager-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = git
+	depends = accountsservice
 	depends = libpwquality
 	depends = kdelibs4support
 	provides = kcm-user-manager
