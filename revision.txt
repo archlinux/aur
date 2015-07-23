@@ -5,8 +5,38 @@
                               http://www.fmod.org
 ===============================================================================
 
+22/07/15 1.06.07 - Studio API patch release (build 66161)
+----------------------------------------------------
+
+Fixes:
+* LowLevel API - Win - Fix audio glitches at initialization time when using 
+                       the WASAPI output mode on Windows 10.
+* LowLevel API - Fix UTF8 strings in MP3 ID3V2 tags not being null terminated 
+                 properly leading to possible string overflow crash.
+* Lowlevel API - PS4 - Fixed issue with non-1024 sample aligned loop-points and AT9 
+                       compressed samples.
+* Lowlevel API - Fixed memory leak when releasing connections that have a user
+                 allocated mix matrix.
+* LowLevel API - Added pre-wet and post-wet arguments to WetDryMix in C# wrapper.                 
+* Lowlevel API - Fixed crash with FADPCM streams.
+* LowLevel API - Fixed another potential crash in PitchShifter DSP if changing
+                 channel count while running.
+* LowLevel API - Win - Fix issues caused by WASAPI allocating the output buffer at
+                       the mixer's sample rate instead of the device's sample rate.
+* Studio API   - XboxOne - Fix setting the thread affinity of the studio loading thread.
+* Studio API   - Fixed case of nested events on parameters being stopped while
+                 still active. Introduced in 1.06.04.
+
+Notes:
+* Incremented bank version, requires runtime 1.06.06 or later.
+* Runtime supports loading old bank versions from 1.03.00.
+* LowLevel API - XboxOne - Thread affinity can now be set as a mask of allowed cores.
+
 08/07/15 1.06.06 - Studio API patch release (build 65638)
 ----------------------------------------------------
+
+Features:
+* Lowlevel API - Added FMOD_DSP_COMPRESSOR_LINKED parameter to DSP compressor.
 
 Fixes:
 * Studio API   - Fixed potential invalid memory access when a bank is unloaded
