@@ -1,0 +1,22 @@
+pkgbase = lib32-faad2
+	pkgdesc = ISO AAC audio decoder (32 bit)
+	pkgver = 2.7
+	pkgrel = 5
+	url = http://www.audiocoding.com/
+	arch = x86_64
+	license = GPL
+	license = custom:FAAD2
+	depends = lib32-glibc
+	depends = faad2
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/faac/faad2-2.7.tar.bz2
+	source = faad2-2.7-libmp4ff-install-mp4ff_int_types_h.patch
+	source = faad2-2.7-libmp4ff-shared-lib.patch
+	source = faad2-2.7-man1_MANS.patch
+	md5sums = 4c332fa23febc0e4648064685a3d4332
+	md5sums = b33354022bc1696a89b3ccc1ab94c54f
+	md5sums = b23d2853fec6f07ae7769fd4eabd8f42
+	md5sums = a8cee29241a696ab24d010af35b951b8
+
+pkgname = lib32-faad2
+
