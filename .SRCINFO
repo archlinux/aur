@@ -1,0 +1,21 @@
+pkgbase = pythonbits-git
+	pkgdesc = The Python Baconbits description generator
+	pkgver = r139.d8c332b
+	pkgrel = 1
+	url = https://github.com/Ichabond/Pythonbits
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = ffmpeg
+	depends = mediainfo
+	depends = python2-beautifulsoup4
+	depends = python2-wsgiref
+	depends = python2-requests
+	depends = python2-imdbpie
+	depends = tvdb_api
+	source = pythonbits::git+git://github.com/hiphiphiphip/Pythonbits.git
+	md5sums = SKIP
+
+pkgname = pythonbits-git
+
