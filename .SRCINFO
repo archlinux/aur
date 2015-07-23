@@ -1,0 +1,15 @@
+pkgbase = php53-apc
+	pkgdesc = A free, open, and robust framework for caching and optimizing PHP intermediate code
+	pkgver = 3.1.13
+	pkgrel = 1
+	url = http://pecl.php.net/package/APC
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php53
+	backup = etc/php/conf.d/apc.ini
+	source = http://pecl.php.net/get/APC-3.1.13.tgz
+	md5sums = c9e47002e3a67ebde3a6f81437c7b6e0
+
+pkgname = php53-apc
+
