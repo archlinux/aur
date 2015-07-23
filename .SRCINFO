@@ -1,0 +1,16 @@
+pkgbase = fortune-mod-zh-git
+	pkgdesc = Chinese poems for fortune-mod
+	pkgver = 1.8.r38.g3a06c3c
+	pkgrel = 1
+	url = http://packages.qa.debian.org/f/fortune-zh.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = fortune-mod
+	conflicts = fortune-mod-zh
+	source = git+https://anonscm.debian.org/git/chinese/fortune-zh.git#branch=master
+	md5sums = SKIP
+
+pkgname = fortune-mod-zh-git
+
