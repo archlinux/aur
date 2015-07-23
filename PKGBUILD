@@ -35,7 +35,7 @@ source=("http://search.cpan.org/CPAN/authors/id/E/EW/EWILHELM/wxPerl-Constructor
 md5sums=('f98a5d0692bec9df8decc48d26345306')
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "$srcdir/$_perlmod-v$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
   /usr/bin/perl Build.PL
@@ -43,14 +43,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "$srcdir/$_perlmod-v$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   ./Build test
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "$srcdir/$_perlmod-v$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   sudo ./Build install installdirs=vendor destdir="$pkgdir"
 }
