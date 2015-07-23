@@ -1,0 +1,46 @@
+pkgbase = nginx-passenger-git
+	pkgdesc = A fast and robust web server and application server for Ruby, Python, and Node.js
+	pkgver = 5.0.14.r5.gbf537aa
+	pkgrel = 1
+	url = https://www.phusionpassenger.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = hardening-wrapper
+	makedepends = git
+	depends = openssl
+	depends = pcre
+	depends = zlib
+	depends = geoip
+	depends = ruby
+	optdepends = nodejs: Support for nodejs web apps
+	optdepends = iojs: Support for nodejs web apps
+	optdepends = python: Support for python web apps
+	optdepends = meteorjs: Support for meteorjs apps
+	optdepends = clang: Faster compiling
+	optdepends = ccache: Faster recompiling
+	provides = nginx
+	provides = passenger
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/mime.types
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+	source = http://nginx.org/download/nginx-1.8.0.tar.gz
+	source = passenger::git+https://github.com/phusion/passenger#branch=stable-5.0
+	source = service
+	source = logrotate
+	source = locations.ini
+	sha256sums = 23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5
+	sha256sums = SKIP
+	sha256sums = 0a8359248a1dd1e98a96b036a636095af0c2fe770d661ab7dd988b3999d08b9f
+	sha256sums = d85edb44894468d2e471d38176b6827635fb0c1251ce55765f4aa59c1bcb1791
+	sha256sums = 6a99bd6544cadd0563b549a5fb24d0aed98fe51f5dcdaacbfa2f9b8026360d1e
+
+pkgname = nginx-passenger-git
+
