@@ -1,0 +1,17 @@
+[Unit]
+Description=Userspace NFSv3 Server
+Requires=rpcbind.service
+After=rpcbind.service
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/unfsd.conf
+PIDFile=/run/unfsd.pid
+ExecStart=/usr/sbin/unfsd -i /run/unfsd.pid $PORT_UNPRIVILEGED -n $PORT_NFS -m $PORT_MOUNT $TCP_ONLY $NO_PORTMAPPER $NO_WRITE_CACHE $CLUSTER_EXTENSION $CLUSTER_PATH $SINGLE_USER $BRUTE_FORCE $INTERFACE $DEBUG
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
