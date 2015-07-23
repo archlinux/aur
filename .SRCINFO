@@ -1,0 +1,16 @@
+pkgbase = ttf-malayalam-font-suruma
+	pkgdesc = This is Suruma, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = http://smc.org.in/fonts/
+	install = ttf-malayalam-fonts.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://smc.org.in/downloads/fonts/suruma/Suruma.ttf
+	source = https://gitlab.com/smc/suruma/raw/master/67-smc-suruma.conf
+	md5sums = 00d4598d7318a36c21b25a3568f0b73d
+	md5sums = 35dce66571d6efd51e1add35e284b598
+
+pkgname = ttf-malayalam-font-suruma
+
