@@ -5,7 +5,7 @@
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.0.1
+pkgver=2.1
 pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
         )
 
 # The first hash comes from the .sha file
-sha256sums=('b6ae4e55cd9ee05c5fea800b4c9a757202d90a6278956a1c818113d17cc2f022'
+sha256sums=('a47f823e8ca51ecbba051349b899430b9c8037a8c90d043c53e49d997007680d'
             'SKIP'
             'SKIP')
 
