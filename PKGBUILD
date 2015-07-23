@@ -1,13 +1,12 @@
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 pkgname=starplot-gliese3
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Stellar data set for starplot from Third Catalogue of Nearby Stars, Gliese, 1991."
 arch=('any')
 url="http://starplot.org/datafiles.html"
 license=('custom')
 depends=('starplot')
-makedepends=('starplot')
 source=(http://starplot.org/data/gliese3-$pkgver.tar.gz)
 md5sums=('c4f5435c0082bd8b9a7fb2a765f25414')
 

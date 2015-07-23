@@ -1,11 +1,10 @@
 pkgbase = starplot-gliese3
 	pkgdesc = Stellar data set for starplot from Third Catalogue of Nearby Stars, Gliese, 1991.
 	pkgver = 0.95
-	pkgrel = 1
+	pkgrel = 2
 	url = http://starplot.org/datafiles.html
 	arch = any
 	license = custom
-	makedepends = starplot
 	depends = starplot
 	source = http://starplot.org/data/gliese3-0.95.tar.gz
 	md5sums = c4f5435c0082bd8b9a7fb2a765f25414
