@@ -12,20 +12,21 @@ print(cbind(links,md5sums))
 _EOF_
 
 pkgname=rstudio-desktop-bin
-pkgver=0.99.465
+pkgver=0.99.467
 pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'shared-mime-info')
+depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
 provides=("rstudio-desktop=${pkgver}")
 #options=(!strip)
 
 
-_x86md5=6133776644207a563cad827bc96b23a5
-_x64md5=5b269c4687b5064d3071eafd87c2892c
+_x86md5=0ca919255495cc87112df12a1cff7e29
+_x64md5=dd64fc165de55a0be229f2362cd776da
+
 case "$CARCH" in
 	'i686')
 		_arch=i386
