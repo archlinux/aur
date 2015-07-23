@@ -1,0 +1,17 @@
+pkgbase = word2vec-svn
+	pkgdesc = Tool for computing continuous distributed representations of words
+	pkgver = 32
+	pkgrel = 1
+	url = http://code.google.com/p/word2vec/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = subversion
+	depends = glibc
+	provides = word2vec
+	conflicts = word2vec
+	source = svn+http://word2vec.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = word2vec-svn
+
