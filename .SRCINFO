@@ -1,6 +1,6 @@
 pkgbase = agrum
 	pkgdesc = C++ Bayesian networks library
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://forge.lip6.fr/projects/aGrUM/wiki
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = agrum
 	makedepends = python
 	depends = gcc-libs
 	optdepends = python: python bindings
-	source = agrum-0.9.1::git+git://forge.lip6.fr/aGrUM#tag=0.9.1
+	source = agrum-0.9.2::git+git://forge.lip6.fr/aGrUM#tag=0.9.2
 	md5sums = SKIP
 
 pkgname = agrum

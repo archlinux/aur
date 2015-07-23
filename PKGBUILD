@@ -1,5 +1,5 @@
 pkgname=agrum
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="C++ Bayesian networks library"
 license=('GPL')
@@ -13,10 +13,10 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s|print sysconfig.get_python_lib(1,0,prefix='\${CMAKE_INSTALL_PREFIX}')|print(sysconfig.get_python_lib(1,0,prefix='\${CMAKE_INSTALL_PREFIX}'))|g" wrappers/pyAgrum/CMakeLists.txt
+  #sed -i "s|print sysconfig.get_python_lib(1,0,prefix='\${CMAKE_INSTALL_PREFIX}')|print(sysconfig.get_python_lib(1,0,prefix='\${CMAKE_INSTALL_PREFIX}'))|g" wrappers/pyAgrum/CMakeLists.txt
 
   # see 6b89d669e8f5086f4de6ad8a4e34385080073b26
-  sed -i "s|<< traceFileName <<|<< traceFileName.str() <<|g" src/agrum/FMDP/planning/SPUDDPlanning.tcc
+  #sed -i "s|<< traceFileName <<|<< traceFileName.str() <<|g" src/agrum/FMDP/planning/SPUDDPlanning.tcc
 }
 
 build() {
