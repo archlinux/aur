@@ -1,0 +1,18 @@
+pkgbase = wqy-bitmapsong-beta
+	pkgdesc = A bitmapped Song Ti (serif) Chinese font - Beta Version
+	pkgver = 1.0.0_rc1
+	pkgrel = 1
+	url = http://wenq.org/
+	install = wqy-bitmapsong-beta.install
+	arch = any
+	license = GPL
+	license = custom:"font embedding exception"
+	depends = xorg-font-utils
+	depends = fontconfig
+	provides = wqy-bitmapfont
+	conflicts = wqy-bitmapfont
+	source = http://downloads.sourceforge.net/wqy/wqy-bitmapsong-pcf-1.0.0-RC1.tar.gz
+	md5sums = 11205e41f7876b016041523c55f0c8af
+
+pkgname = wqy-bitmapsong-beta
+
