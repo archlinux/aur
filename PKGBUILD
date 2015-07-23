@@ -14,12 +14,13 @@
 
 pkgname=perl-config-inifiles
 pkgver=2.83
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl module for reading .ini-style configuration files"
 arch=('any')
 url="http://search.cpan.org/dist/Config-IniFiles/"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-list-moreutils')
+makedepends=('perl-module-build')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Config-IniFiles-$pkgver.tar.gz")
 md5sums=('c34156374d3842289e537aaafa7b937f')

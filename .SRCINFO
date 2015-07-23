@@ -1,11 +1,12 @@
 pkgbase = perl-config-inifiles
 	pkgdesc = A Perl module for reading .ini-style configuration files
 	pkgver = 2.83
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Config-IniFiles/
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-module-build
 	depends = perl
 	depends = perl-list-moreutils
 	options = !emptydirs
