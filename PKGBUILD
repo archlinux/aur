@@ -52,5 +52,5 @@ check() {
 package() {
   cd "$srcdir/$_perlmod-v$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  sudo ./Build install installdirs=vendor destdir="$pkgdir"
+  ./Build install installdirs=vendor destdir="$pkgdir"
 }
