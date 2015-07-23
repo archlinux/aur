@@ -1,0 +1,18 @@
+pkgbase = simple-image-reducer
+	pkgdesc = An GTK application to easily reduce and rotate images.
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = http://simple-image-reducer.org.ua/
+	install = simple-image-reducer.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = pygtk
+	depends = python2-pillow
+	depends = exifread
+	depends = desktop-file-utils
+	source = http://simple-image-reducer.org.ua/download/simple-image-reducer-1.0.2.tar.bz2
+	md5sums = 675d5923388270721328cc0674bd7055
+
+pkgname = simple-image-reducer
+
