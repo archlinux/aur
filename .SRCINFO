@@ -1,0 +1,16 @@
+pkgbase = dtach-git
+	pkgdesc = emulates the detach feature of screen
+	pkgver = r40.c794d06
+	pkgrel = 1
+	url = http://dtach.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = dtach
+	conflicts = dtach
+	source = dtach-git::git+https://github.com/crigler/dtach.git
+	md5sums = SKIP
+
+pkgname = dtach-git
+
