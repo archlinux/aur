@@ -11,10 +11,10 @@ pkgdesc='Parallel Visualization Application using VTK - This version is built to
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qtwebkit' 'openmpi' 'python2' 'ffmpeg-compat' 'boost' 'libcgns-paraview' 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf')
+depends=('qtwebkit' 'python2' 'ffmpeg-compat' 'boost' 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf')
 makedepends=('cmake' 'mesa' 'eigen3')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language' 'python2-numpy: Needed for using some filters such as "Python Calculator"')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "uint.patch" "gcc49.patch" "ParaView-4.2.0.patch")
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "uint.patch" "gcc49.patch" "ParaView-4.2.0.patch" "surface_lic.png" )
 
 options=(staticlibs)
 provides=("paraview=${pkgver}")
@@ -24,15 +24,19 @@ _installdir=/usr
 
 prepare(){
   cd "${srcdir}/ParaView-v${pkgver}-source"
-
+  
   # patch to solve gcc49 compatiblity
   patch -Np1 -i "${srcdir}/gcc49.patch"
   
   # patch to solve uint conversion to int
   patch -Np1 -i "${srcdir}/uint.patch"
 
-  # patch to solve uint conversion to int
+  # patch from salome-platform
   patch -Np1 -i "${srcdir}/ParaView-4.2.0.patch"
+
+  sed -i "s%RTLD_LAZY%RTLD_LAZY|RTLD_NODELETE%g" VTK/Utilities/KWSys/vtksys/DynamicLoader.cxx
+
+  cp -f ${srcdir}/surface_lic.png Plugins/SurfaceLIC/doc
 }
 
 build() {
@@ -40,57 +44,135 @@ build() {
   mkdir "${srcdir}/build"
   cd "${srcdir}/build"
   
-  # flags to enable system libs
-  local cmake_system_flags=""
-  for lib in EXPAT FREETYPE HDF5 JPEG LIBXML2 PNG TIFF ZLIB; do
-    cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}=ON "
-  done
+  local cmake_options=""
 
-  # flags to use python2 instead of python which is 3.x.x on archlinux
-  local cmake_system_python_flags="-DPYTHON_EXECUTABLE=/usr/bin/python2 \
-         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so"
+  if test "$CARCH" == x86_64; then
+    cmake_options+=" -DCMAKE_CXX_FLAGS:STRING=-m64"
+    cmake_options+=" -DCMAKE_C_FLAGS:STRING=-m64"
+  fi
 
+  # cmake general settings
+  cmake_options+=" -DCMAKE_BUILD_TYPE:STRING=Release"
+  cmake_options+=" -DCMAKE_INSTALL_PREFIX=${_installdir}"
+  cmake_options+=" -DBUILD_SHARED_LIBS=ON"
+  cmake_options+=" -DBUILD_TESTING=OFF"
+  cmake_options+=" -DBUILD_EXAMPLES=OFF"
+  cmake_options+=" -DBUILD_DOCUMENTATION=ON"
+  cmake_options+=" -DDOCUMENTATION_HTML_HELP=ON"
+  cmake_options+=" -DCMAKE_VERBOSE_MAKEFILE=OFF"
+
+  # Paraview general settings
+  cmake_options+=" -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON"
+
+  # VTK general settings
+  cmake_options+=" -DVTK_USE_64BIT_IDS:BOOL=OFF"
+
+  # Qt settings
+  cmake_options+=" -DPARAVIEW_BUILD_QT_GUI:BOOL=ON"
+  cmake_options+=" -DQT_HELP_GENERATOR:STRING=/usr/bin/qhelpgenerator-qt4"
+  cmake_options+=" -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4"
+
+  # Python settings
+  cmake_options+=" -DPARAVIEW_ENABLE_PYTHON:BOOL=ON"
+  cmake_options+=" -DVTK_WRAP_PYTHON:BOOL=ON"
+  cmake_options+=" -DPYTHON_EXECUTABLE:STRING=/usr/bin/python2"
+  cmake_options+=" -DPYTHON_INCLUDE_DIR:STRING=/usr/include/python2.7"
+  cmake_options+=" -DPYTHON_LIBRARY:STRING=/usr/lib/python2.7/config/libpython2.7.so"
+  cmake_options+=" -DVTK_NO_PYTHON_THREADS:BOOL=OFF"
+
+  # Tcl/Tk settings
+  # TEMPORARILY DISABLE TCL WRAPPINGS DUE TO BUG IN PARAVIEW WRAPPER UTILITY!
+  if false ; then
+    local tcl_version = "8.6"
+    cmake_options+=" -DVTK_WRAP_TCL:BOOL=ON"
+    cmake_options+=" -DTCL_INCLUDE_PATH:STRING=/usr/include"
+    cmake_options+=" -DTCL_LIBRARY:STRING=/usr/lib/libtcl${tcl_version}.so"
+    cmake_options+=" -DTCL_TCLSH:STRING=/usr/bin/tclsh${tcl_version}"
+    cmake_options+=" -DTK_INCLUDE_PATH:STRING=/usr/include"
+    cmake_options+=" -DTK_LIBRARY:STRING=/usr/lib/libtk${tcl_version}.so"
+    cmake_options+=" -DTK_WISH:STRING=/usr/bin/wish${tcl_version}"
+  else
+    cmake_options+=" -DVTK_WRAP_TCL:BOOL=OFF"
+  fi
+
+  # Java settings
+  cmake_options+=" -DVTK_WRAP_JAVA:BOOL=OFF"
+
+  # eigen settings
+  cmake_options+=" -DEigen_DIR=/usr/include/eigen3"
+
+  # MPI settings
+  cmake_options+=" -DPARAVIEW_USE_MPI:BOOL=OFF"
+
+  # HDF5 settings
+  cmake_options+=" -DVTK_USE_SYSTEM_HDF5:BOOL=ON"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_H5PartReader:BOOL=OFF"
+
+  # VisIt Database bridge settings
+  cmake_options+=" -DPARAVIEW_USE_VISITBRIDGE=ON"
+
+  # Boost settings
+  cmake_options+=" -DBOOST_ROOT=/usr"
+
+  # gl2ps settings
+  cmake_options+=" -DVTK_USE_SYSTEM_GL2PS:BOOL=OFF"
+
+  # libxml2 settings
+  cmake_options+=" -DVTK_USE_SYSTEM_LIBXML2:BOOL=ON"
+  cmake_options+=" -DLIBXML2_INCLUDE_DIR:STRING=/usr/include/libxml2"
+  cmake_options+=" -DLIBXML2_LIBRARIES:STRING=/usr/lib/libxml2.so"
+
+  # freetype settings
+  cmake_options+=" -DVTK_USE_SYSTEM_FREETYPE:BOOL=ON"
+
+  # expat settings
+  cmake_options+=" -DVTK_USE_SYSTEM_EXPAT:BOOL=ON"
+
+  # jpeg settings
+  cmake_options+=" -DVTK_USE_SYSTEM_JPEG:BOOL=ON"
+
+  # tiff settings
+  cmake_options+=" -DVTK_USE_SYSTEM_TIFF:BOOL=ON"
+
+  # png settings
+  cmake_options+=" -DVTK_USE_SYSTEM_PNG:BOOL=ON"
+
+  # zlib settings
+  cmake_options+=" -DVTK_USE_SYSTEM_ZLIB:BOOL=ON"
+
+  # Extra options (switch off non-used Paraview plug-ins)
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_Moments:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_PrismPlugin:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_SLACTools:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_SierraPlotTools:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_PacMan:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_MobileRemoteControl:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_ENABLE_COPROCESSING:BOOL=OFF"
+  cmake_options+=" -DPARAVIEW_ENABLE_CATALYST:BOOL=OFF"
+
+  # Extra options (switch on required Paraview plug-ins)
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_EyeDomeLighting:BOOL=ON"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_ForceTime:BOOL=ON"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_H5PartReader:BOOL=ON"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_PointSprite:BOOL=ON"
+  cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_SurfaceLIC:BOOL=ON"
+
+  # use ffmpeg
+  cmake_options+=" -DVTK_USE_MPEG2_ENCODER=OFF"
+  cmake_options+=" -DVTK_USE_FFMPEG_ENCODER=ON"
+  cmake_options+=" -DPARAVIEW_ENABLE_FFMPEG=ON"
+  
   # flags to use ffmpeg-compat instead of ffmpeg
-  local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR=/usr/include/ffmpeg-compat \
-  	 -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg-compat/libavcodec.so \
-  	 -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg-compat/libavformat.so \
-  	 -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg-compat/libavutil.so \
-  	 -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg-compat/libswscale.so"
+  cmake_options+=" -DFFMPEG_INCLUDE_DIR=/usr/include/ffmpeg-compat"
+  cmake_options+=" -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg-compat/libavcodec.so"
+  cmake_options+=" -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg-compat/libavformat.so"
+  cmake_options+=" -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg-compat/libavutil.so"
+  cmake_options+=" -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg-compat/libswscale.so"
 
+  # let's start
   cmake -Wno-dev \
-        -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_C_COMPILER=mpicc \
-        -DCMAKE_CXX_COMPILER=mpicxx \
-        -DCMAKE_INSTALL_PREFIX=${_installdir} \
-        -DCMAKE_VERBOSE_MAKEFILE=OFF \
-	-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF  \
-	-DCMAKE_SKIP_RPATH=OFF \
-	-DBUILD_SHARED_LIBS=ON \
-	-DBUILD_TESTING=OFF \
-	-DBUILD_EXAMPLES=ON \
-	-DBUILD_DOCUMENTATION=ON \
-	-DDOCUMENTATION_HTML_HELP=ON \
- 	-DPARAVIEW_ENABLE_FFMPEG=ON \
-        ${ffmpeg_compat_flags} \
-        -DPARAVIEW_ENABLE_PYTHON=ON \
-	-DPARAVIEW_ENABLE_WEB=OFF \
-	-DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
-        -DPARAVIEW_USE_MPI=ON \
-        -DPARAVIEW_USE_VISITBRIDGE=ON \
-	-DPARAVIEW_BUILD_PLUGIN_AdiosReader=ON \
-	-DPARAVIEW_BUILD_PLUGIN_EyeDomeLighting=ON \
-	-DVTK_USE_MPEG2_ENCODER=OFF \
- 	-DVTK_USE_FFMPEG_ENCODER=ON \
-	-DVTK_USE_64BIT_IDS=OFF \
-	-DVTK_WRAP_PYTHON=ON \
-	-DEigen_DIR=/usr/include/eigen3 \
-        -DQT_HELP_GENERATOR=/usr/lib/qt4/bin/qhelpgenerator \
-        -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 \
-	-DVISIT_BUILD_READER_CGNS=ON \
-        ${cmake_system_flags} \
-        ${cmake_system_python_flags} \
-        ../ParaView-v${pkgver}-source
+        ${cmake_options} \
+	../ParaView-v${pkgver}-source
 
   make
 }
@@ -107,12 +189,6 @@ package() {
   do
     install -Dm644 `find ./ -name ${_FILE}` "${pkgdir}${_installdir}/lib/cmake/paraview-${pkgver:0:3}/"
   done
-
-  #Install missing header
-  #for _FILE in pqViewFrameActionGroup.h vtkSIVectorPropertyTemplate.h vtkMaterialInterfaceIdListItem.h vtkExodusIIReaderPrivate.h vtk3DS.h
-  #do
-  #  install -Dm644 `find ./ -name ${_FILE}` "${pkgdir}${_installdir}/include/paraview-${pkgver:0:3}/"
-  #done
 
   #Install license
   install -Dm644 "${srcdir}/ParaView-v${pkgver}-source/License_v1.2.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -138,4 +214,5 @@ md5sums=('77cf0e3804eb7bb91d2d94b10bd470f4'
          'e3ba22be644f91da7018f429c3b7dd39'
          'e034fc590bd332175dcd6bf126f14d97'
          '12fa547d0c79ea6a780279712574a5fe'
-         '3e4c48633eb337c42653f51e6112f347')
+         '3e4c48633eb337c42653f51e6112f347'
+         '2f3f049a703224ca230eadffd5016455')
