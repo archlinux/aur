@@ -1,7 +1,7 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=fairroot
-pkgver=15.07
-fairsoftver=jul15p1-2
+pkgver=15.07-2
+fairsoftver=jul15p1-1
 pkgrel=1
 pkgdesc="Analysis framework based on root provided by GSI/FAIR."
 arch=('x86_64')
