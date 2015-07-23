@@ -7,7 +7,7 @@ arch=('x86_64')
 url="http://fairroot.gsi.de"
 license=('unknown')
 groups=()
-fairsoftver=jul15-1
+fairsoftver=jul15p1-2
 fairrootver=v-15.07
 makedepends=('cmake'
 	'clang'
