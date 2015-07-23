@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Raansu <gero3977@gmail.com>
 _pkgname=acd_cli
 pkgname=$_pkgname-git
 pkgver=0.3.0
@@ -21,5 +21,5 @@ md5sums=('SKIP')
 
 package() {
    cd $_pkgname 
-   python setup.py install 
+   python setup.py install --root="$pkgdir/" --optimize=1
 }
