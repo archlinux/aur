@@ -1,0 +1,14 @@
+pkgbase = python2-textseg
+	pkgdesc = Python module for text segmentation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pytextseg/
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/pytextseg/pytextseg-0.2.0.tar.gz
+	sha512sums = d4c73ba9b371f0994b6e32bb16ce2959893389f851a762c0d316a24728b2867e1863db10bb2836acf5c491bdc569396cb0d65f86f797401994ca94bb16504831
+
+pkgname = python2-textseg
+
