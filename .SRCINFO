@@ -1,6 +1,6 @@
 pkgbase = fairsoft
 	pkgdesc = Software collection provided by GSI/FAIR for analysis.
-	pkgver = jul15
+	pkgver = jul15p1
 	pkgrel = 1
 	url = http://fairroot.gsi.de
 	install = fairsoft.install
@@ -34,10 +34,10 @@ pkgbase = fairsoft
 	options = !strip
 	options = staticlibs
 	options = libtool
-	source = https://github.com/FairRootGroup/FairSoft/archive/jul15.tar.gz
+	source = https://github.com/FairRootGroup/FairSoft/archive/jul15p1.tar.gz
 	source = arch.conf
 	source = fairsoft.install
-	md5sums = 1a8ab56423d357e6eeb1b5e59802617f
+	md5sums = ba06575c41988d27cb684126080536c8
 	md5sums = d546737b7c15de7d71f6ea2090fa4b96
 	md5sums = 748ceeb13cf954c4f732f93023ae879e
 
