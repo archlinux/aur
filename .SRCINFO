@@ -1,0 +1,17 @@
+pkgbase = sdedit
+	pkgdesc = Lightweight sequence diagram editor
+	pkgver = 4.01
+	pkgrel = 1
+	url = http://sdedit.sourceforge.net
+	arch = any
+	license = BSD
+	depends = java-runtime
+	depends = bash
+	noextract = sdedit-4.01.jar
+	source = http://downloads.sourceforge.net/project/sdedit/sdedit/4.0/sdedit-4.01.jar
+	source = sdedit.sh
+	md5sums = 57932b49bdfc4d2503f570c262eeb096
+	md5sums = df660cb818236d83567cefc50742ca88
+
+pkgname = sdedit
+
