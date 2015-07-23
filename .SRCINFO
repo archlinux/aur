@@ -1,0 +1,15 @@
+pkgbase = hyenae
+	pkgdesc = A highly flexible platform independent network packet generator. It allows you to reproduce several MITM, DoS and DDoS attack scenarios
+	pkgver = 0.36
+	pkgrel = 2
+	url = http://sourceforge.net/projects/hyenae/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libpcap
+	depends = libdnet
+	source = http://downloads.sourceforge.net/project/hyenae/0.36-1/hyenae-0.36-1.tar.gz
+	sha256sums = 8f752061c0ba8ce3e771bf03b1d9c18849d7e1d91751323971e42695ac277db8
+
+pkgname = hyenae
+
