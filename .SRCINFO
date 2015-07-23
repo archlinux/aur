@@ -1,0 +1,31 @@
+pkgbase = pypayd-git
+	pkgdesc = Minimalistic daemon for accepting bitcoin payments
+	pkgver = r20.c179fd6
+	pkgrel = 1
+	url = https://github.com/pik/pypayd
+	arch = any
+	license = MIT
+	depends = python-cherrypy
+	depends = python-flask
+	depends = python-flask-httpauth
+	depends = python-jinja
+	depends = python-markupsafe
+	depends = python-pillow
+	depends = python-werkzeug
+	depends = python-appdirs
+	depends = python-apsw
+	depends = python-configobj
+	depends = python-itsdangerous
+	depends = python-json-rpc
+	depends = python-pycoin
+	depends = python-crypto
+	depends = python-qrcode
+	depends = python-requests
+	depends = python-simple-crypt
+	depends = python-six
+	depends = python-addict
+	source = git+https://github.com/pik/pypayd
+	md5sums = SKIP
+
+pkgname = pypayd-git
+

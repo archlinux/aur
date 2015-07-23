@@ -1,0 +1,20 @@
+--- pypayd.py.	2015-07-23 16:52:28.348118213 +0700
++++ pypayd.py	2015-07-23 16:52:33.364748966 +0700
+@@ -7,6 +7,7 @@
+ import sys
+ import time
+ from configobj import ConfigObj
++sys.path.append('/usr/share/pypayd')
+ from src import wallet, db, payments, api, config
+ 
+ if __name__ == '__main__':
+--- tests.py.	2015-07-23 16:54:23.867297102 +0700
++++ tests.py	2015-07-23 16:54:04.954097411 +0700
+@@ -1,5 +1,7 @@
+ import requests
+ import os
++import sys
++sys.path.append('/usr/share/pypayd')
+ from src import wallet, db, payments, api, config, priceinfo
+ from src.priceinfo import ticker
+ from src.payments import PaymentHandler
