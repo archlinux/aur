@@ -38,10 +38,10 @@ prepare() {
 build() {
   cd tcpcrypt
 
-  export JAIL_DIR='/run/tcpcryptd'
-  export JAIL_USER='tcpcryptd'
-  export DIVERT_PORT='1666'
-  export CONTROL_SOCKET='/run/tcpcryptd.control'
+  export JAIL_DIR="/run/tcpcryptd"
+  export JAIL_USER="tcpcryptd"
+  export DIVERT_PORT="1666"
+  export CONTROL_SOCKET="/run/tcpcryptd.control"
 
   ./configure --prefix=/usr
   make
