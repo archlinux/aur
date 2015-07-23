@@ -1,0 +1,18 @@
+pkgbase = wayland++-git
+	pkgdesc = Wayland C++ bindings
+	pkgver = 56
+	pkgrel = 1
+	url = https://github.com/NilsBrause/waylandpp
+	arch = i686
+	arch = x86_64
+	arch = armv5
+	arch = armv6
+	arch = armv7
+	arch = armv8
+	makedepends = scons
+	depends = wayland
+	source = wayland++-git::git+https://github.com/NilsBrause/waylandpp.git
+	md5sums = SKIP
+
+pkgname = wayland++-git
+
