@@ -1,7 +1,7 @@
 pkgbase = canto-curses
 	pkgdesc = ncurses user interface for canto-daemon
-	pkgver = 0.9.4
-	pkgrel = 2
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = http://codezen.org/canto-ng/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = canto-curses
 	depends = readline
 	depends = canto-daemon>=0.9.0
 	optdepends = xdg-utils: xdg-open is used as default browser
-	source = https://github.com/themoken/canto-curses/archive/v0.9.4.tar.gz
-	md5sums = 30b051ce45d066e2861bbb9d6c6c1e67
+	source = https://github.com/themoken/canto-curses/archive/v0.9.5.tar.gz
+	md5sums = 1ace583a775b1481d71b24f1a2f99e75
 
 pkgname = canto-curses
 
