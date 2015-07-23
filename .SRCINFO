@@ -1,0 +1,14 @@
+pkgbase = arpoison
+	pkgdesc = The UNIX arp cache update utility
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://www.arpoison.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libnet
+	source = http://www.arpoison.net/arpoison-0.7.tar.gz
+	md5sums = 0e86186eb18c9aabf78afa9706b40530
+
+pkgname = arpoison
+
