@@ -7,6 +7,7 @@ pkgname=octopi-git
 _pkgname=octopi
 pkgver=0.7.0.28.g3906d74
 pkgrel=1
+epoch=1
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
