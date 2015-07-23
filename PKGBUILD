@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/yadayada/acd_cli"
 license=('GPL')
 depends=('python-appdirs' 'python-requests>=2.1.0' 
-'python-sqlalchemy' 'python-dateutils' 
+'python-sqlalchemy' 'python-dateutil' 
 'python-requests-toolbelt')
 makedepends=('python')
 provides=('acd_cli')
