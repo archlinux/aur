@@ -1,0 +1,15 @@
+pkgbase = ruijieclient
+	pkgdesc = A More Powerful Ruijie Supplicant For GNU/Linux
+	pkgver = 1.0_rc1
+	pkgrel = 1
+	url = http://code.google.com/p/ruijieclient/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = libpcap
+	depends = libxml2
+	source = http://ruijieclient.googlecode.com/files/ruijieclient-1.0-rc1.tar.gz
+	md5sums = f1e343e4422d67d723a16e7fde977c16
+
+pkgname = ruijieclient
+
