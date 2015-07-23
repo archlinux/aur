@@ -1,0 +1,215 @@
+# Contributor : anish [ at ] gatech [dot] edu
+# Maintainer  : anish [ at ] gatech [dot] edu
+
+pkgname=piaware-git
+_gitname=piaware
+pkgver=2.1.2.r1.ga1076de
+pkgrel=2
+
+pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
+
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/flightaware/piaware"
+license=('BSD')
+
+depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls' 'python')
+makedepends=('git' 'autoconf' 'tcl' 'python')
+
+source=('piaware::git+git://github.com/flightaware/piaware'
+	'tcllauncher::git+git://github.com/flightaware/tcllauncher.git'
+	'mlat::git+git://github.com/mutability/mlat-client.git')
+md5sums=('SKIP'
+         'SKIP'
+mlat-client (0.2.3) unstable; urgency=medium
+
+  * Produce integer speed/heading/vrate values in Basestation output, maybe
+    this will make VRS happier.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Thu, 09 Jul 2015 12:27:20 +0100
+
+mlat-client (0.2.2) unstable; urgency=medium
+
+  * Big overhaul of option handling. Existing configs should be upgraded
+    automatically. See new config questions or mlat-client --help for details.
+
+  * Support both listen and connect ("push") modes for result connections.
+
+  * Add Beast-format result connections that generate synthetic DF17 messages
+    for result position and velocity. The synthetic messages have a special
+    timestamps (FF 00 MLAT) to indicate they are mlat-generated. mlat-client
+    will ignore any messages with this timestamp that it receives. Input
+    messages from the receiver are _not_ looped through to result connections.
+
+  * Support receiving mlat results via a Flightaware-style connections in
+    fa-mlat-client.
+
+  * Support the full range of input / result options in fa-mlat-client.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Thu, 02 Jul 2015 16:48:45 +0100
+
+mlat-client (0.2.1) unstable; urgency=medium
+
+  * Add Breaks/Replaces for piaware versions that also provide
+    /usr/bin/fa-mlat-client (piaware 2.0-5 stops providing this)
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sun, 28 Jun 2015 12:05:22 +0100
+
+mlat-client (0.2.0) unstable; urgency=medium
+
+  * Integrate the Flightaware version of the client into the main release.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Thu, 18 Jun 2015 20:33:17 +0100
+
+mlat-client (0.1.17) unstable; urgency=medium
+
+  * Handle keepalives and other messages that have a timestamp of zero.
+  * Log a better explanation when a ClockResetError is seen.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Mon, 15 Jun 2015 20:17:11 +0100
+
+mlat-client (0.1.16) unstable; urgency=medium
+
+  * Workaround for dump1090-mutability issue #47 (a bug when using --modeac that would
+    trigger ClockResetErrors)
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Mon, 08 Jun 2015 17:13:03 +0100
+
+mlat-client (0.1.15) unstable; urgency=medium
+
+  * Fix "TypeError: expected an object with the buffer interface" and
+    timestamp problems when configured for a SBS receiver.
+  * Added some debugging info to ClockResetError.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sun, 07 Jun 2015 11:16:30 +0100
+
+mlat-client (0.1.14) unstable; urgency=medium
+
+  * Fix looping "_modes.ClockResetError" errors after dump1090 restart.
+  * Skip 0.1.13 since the 0.1.12 release had the wrong client version
+    embedded in the code.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sun, 31 May 2015 14:04:28 +0100
+
+mlat-client (0.1.12) unstable; urgency=medium
+
+  * Log client version on startup.
+  * Add an inactivity timeout to server connections.
+    In particular, this should help with connections that silently die
+    during the handshaking phase, where we would otherwise wait forever
+    without writing.
+  * Convert to Python 3.
+  * Use time.monotonic() if available; emulate it if not available. This should
+    help with cases where system time goes backwards.
+  * More processing moved into the extension module. This seems to reduce the
+    client CPU by around 20% overall.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Wed, 27 May 2015 14:28:16 +0100
+
+mlat-client (0.1.11) unstable; urgency=medium
+
+  * Bugfixes for SBS support.
+  * Entirely clean up UDP state on server disconnect.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sun, 03 May 2015 23:52:01 +0100
+
+mlat-client (0.1.10) unstable; urgency=medium
+
+  * Rename --clock-type to --input-type.
+  * Add support for SBS "raw socket" inputs (--input-type sbs).
+  * Clean up the Radarcape GPS rollover code.
+  * Improvements to options help.
+  * Remove --random-drop as it's no longer useful.
+  * Added configuration-script support for --input-type.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Tue, 28 Apr 2015 14:09:21 +0100
+
+mlat-client (0.1.9) unstable; urgency=medium
+
+  * Support for Radarcape when in GPS timestamp mode.
+  * Add --privacy command-line option.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sat, 25 Apr 2015 18:29:31 +0100
+
+mlat-client (0.1.8) unstable; urgency=medium
+
+  * Don't explode if there is no covariance matrix in an ECEF result.
+  * Log server message parsing failures with a bit more detail.
+  * Fix server->client decompression in zlib2 when a partial packet is received.
+  * Fix server->client path for zlib and "no" compression (oops).
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Fri, 24 Apr 2015 10:09:50 +0100
+
+mlat-client (0.1.7) unstable; urgency=medium
+
+  * Remove --byteswap-timestamp option: the timestamps generated by a
+    big-endian dump1090 are irretrievably broken.
+  * Futureproofing: add support for "split sync" sync message
+  * Futureproofing: add a sequence number to the UDP header, bump UDP version
+  * Futureproofing: restructure the heartbeat message so more fields can be
+    added later
+  * Add support for ECEF-style return results.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Thu, 23 Apr 2015 00:10:45 +0100
+
+mlat-client (0.1.6) unstable; urgency=medium
+
+  * Raise better exceptions on input error to try to diagnose Radarcape problems.
+  * Handle (and skip) the mystery '4' message that Radarcape systems generate.
+  * Add --byteswap-timestamp for dealing with dump1090s that (incorrectly)
+    generate little-endian timestamp values.
+  * Use the normal reconnect delay when reconnecting after a timestamp problem is
+    seen.
+  * Don't forward DF17 sync messages with NUC<6.
+  * Use UDP transport for mlat/sync messages if requested by the server. Can
+    be disabled with --no-udp.
+  * Send ADS-B position rate reports if requested by the server.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sat, 18 Apr 2015 09:31:50 +0100
+
+mlat-client (0.1.5) unstable; urgency=medium
+
+  * Fix exception logging.
+  * Fix server vs client confusion in the shutdown message.
+  * Escape CSV fields that might have commas/quotes.
+  * Add support for extended Basestation-like output format on a separate port via --sbs-ext-port.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sat, 04 Apr 2015 13:06:41 +0100
+
+mlat-client (0.1.4) unstable; urgency=medium
+
+  * Emit ICAO addresses in SBS output in all-caps to make VRS happier.
+  * If no Beast data (not even keepalives) is seen for 2.5 minutes, reconnect.
+  * Clean up connection logging a little.
+  * Re-add some periodic stats.
+  * Increase the allowable backwards-timestamp value a little.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Mon, 30 Mar 2015 22:59:10 +0100
+
+mlat-client (0.1.3) unstable; urgency=medium
+
+  * If message timestamps go significantly backwards, drop the input connection
+    and reconnect.
+  * Ignore heartbeat messages with a zero timestamp.
+  * Expire all current aircraft state if the input connetion is lost.
+  * Handle connection errors a bit more reliably.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Mon, 23 Mar 2015 10:44:51 +0000
+
+mlat-client (0.1.2) unstable; urgency=medium
+
+  * Reset last-message-timestamp when reconnecting to input.
+    Should fix the client getting stuck if dump1090 restarts.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Wed, 18 Mar 2015 14:20:02 +0000
+
+mlat-client (0.1.1) unstable; urgency=low
+
+  * Fix BaseStation time format to make VRS happier.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Wed, 18 Mar 2015 10:59:30 +0000
+
+mlat-client (0.1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Oliver Jowett <oliver@mutability.co.uk>  Tue, 17 Mar 2015 21:59:40 +0000
