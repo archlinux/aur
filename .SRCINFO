@@ -1,0 +1,23 @@
+pkgbase = shadowvpn
+	pkgdesc = A fast, safe VPN based on libsodium
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/clowwindy/ShadowVPN
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libsodium
+	options = !emptydirs
+	backup = etc/shadowvpn/client.conf
+	backup = etc/shadowvpn/client_down.sh
+	backup = etc/shadowvpn/client_up.sh
+	backup = etc/shadowvpn/server.conf
+	backup = etc/shadowvpn/server_down.sh
+	backup = etc/shadowvpn/server_up.sh
+	source = git+https://github.com/clowwindy/ShadowVPN.git#tag=0.1.6
+	md5sums = SKIP
+
+pkgname = shadowvpn
+
