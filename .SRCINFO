@@ -1,0 +1,17 @@
+pkgbase = sparta-git
+	pkgdesc = Is a python GUI application which simplifies network infrastructure penetration testing by aiding the penetration tester in the scanning and enumeration phase.
+	pkgver = 1.0.2beta
+	pkgrel = 1
+	url = http://sparta.secforce.com/
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-elixir
+	depends = python2-lxml
+	conflicts = sparta
+	source = git+https://github.com/secforce/sparta.git
+	sha256sums = SKIP
+
+pkgname = sparta-git
+
