@@ -1,0 +1,15 @@
+pkgbase = vamp-onsetsds-plugin
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.vamp-plugins.org/download.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = vamp-plugin-sdk
+	source = http://downloads.sourceforge.net/vamp/vamp-onsetsds-plugin-0.2.tar.gz
+	source = fix_fPIC.patch
+	md5sums = b2964178130bdfacb80737f68d221139
+	md5sums = a9e380560f83ef532716a8ea782059ce
+
+pkgname = vamp-onsetsds-plugin
+
