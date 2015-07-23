@@ -1,7 +1,7 @@
 # Maintainer: Isaac True <isaac@is.having.coffee>
 pkgname=python2-teacup
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TEACUP enables repeatable testing of different TCP algorithms over a range of emulated network path conditions, bottleneck rate limits and bottleneck queuing disciplines."
 arch=('any')
 url="http://sourceforge.net/projects/teacup/"
