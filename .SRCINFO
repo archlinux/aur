@@ -1,0 +1,31 @@
+pkgbase = zynaddsubfx-git
+	pkgdesc = A powerful realtime, multi-timbral software synthesizer.
+	pkgver = 2.5.1.r0.g05a5397
+	pkgrel = 1
+	url = http://zynaddsubfx.sourceforge.net
+	install = zynaddsubfx-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = dssi
+	depends = fltk
+	depends = ntk-git
+	depends = fftw
+	depends = portaudio
+	depends = lash
+	depends = mxml
+	depends = liblo
+	optdepends = dssi: dssi plugin
+	provides = zynaddsubfx
+	conflicts = zynaddsubfx
+	noextract = unsortedzynaddsubfxParameters_20140402.zip
+	options = !emptydirs
+	source = zynaddsubfx-git::git://git.code.sf.net/p/zynaddsubfx/code/
+	source = http://zynaddsubfx.sourceforge.net/doc/instruments/unsortedzynaddsubfxParameters_20140402.zip
+	sha512sums = SKIP
+	sha512sums = 13e7ed9746d0ce7959afa067211175cd007fdeb77500756dd5b0a57e6230e425934a7fe267a5197b539c3305c497745beb2fef2f5e79e4c8662a9c57cf2345f0
+
+pkgname = zynaddsubfx-git
+
