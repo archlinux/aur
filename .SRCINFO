@@ -1,0 +1,19 @@
+pkgbase = newrelic-php5
+	pkgdesc = NewRelic PHP
+	pkgver = 4.22.0.99
+	pkgrel = 1
+	url = http://newrelic.com/
+	install = newrelic-php5.install
+	arch = i686
+	arch = x86_64
+	license = non-free
+	depends = glibc
+	depends = php
+	backup = etc/php/conf.d/newrelic.ini
+	source = https://download.newrelic.com/php_agent/release/newrelic-php5-4.22.0.99-linux.tar.gz
+	source = newrelic-daemon.service
+	md5sums = d120ad145c2b262b7abf4d3b16dfa864
+	md5sums = 4fc78347663adcb32ed28eddb546619c
+
+pkgname = newrelic-php5
+
