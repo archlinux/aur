@@ -1,0 +1,149 @@
+From bf9e12f494b3ca8ba928844bbbaceb6b6ffd8855 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 25 Jul 2015 00:36:58 +0200
+Subject: [PATCH 2/2] Add styling support for GTK+ 3
+
+Styling is done via CSS files. Add a default CSS style.
+---
+ Makefile.am          |  4 +++-
+ README               |  6 ++++--
+ data/lxlauncher.1.in |  5 ++++-
+ gtk.css              | 26 ++++++++++++++++++++++++++
+ src/lxlauncher.c     | 26 ++++++++++++++++++++++++++
+ 5 files changed, 63 insertions(+), 4 deletions(-)
+ create mode 100644 gtk.css
+
+diff --git a/Makefile.am b/Makefile.am
+index d939271..e99f472 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,7 +7,9 @@ conf_in_files=settings.conf.in
+ conf_DATA=$(conf_in_files:.conf.in=.conf)
+ 
+ themedir=$(confdir)
+-theme_DATA=gtkrc
++theme_DATA=\
++	gtkrc \
++	gtk.css
+ 
+ menufiledir=$(sysconfdir)/xdg/menus
+ menufile_DATA=\
+diff --git a/README b/README
+index 3be4e9c..122ca01 100644
+--- a/README
++++ b/README
+@@ -16,7 +16,7 @@ Also, if you put the tab icons of Asus launcher under
+ /usr/share/lxlauncher/icons, they will be used in the tabs.
+ Otherwise, some icons from the gtk+ icon theme will be used instead.
+ 
+-The LXLauncher has two configuration files to be tuned by users:
++The LXLauncher has three configuration files to be tuned by users:
+ 
+ 1) ~/.config/lxlauncher/settings.conf which is an init-style file with
+ contents defaults as below:
+@@ -25,7 +25,9 @@ contents defaults as below:
+ BUTTON_SIZE = 120
+ IMG_SIZE = 48
+ 
+-2) ~/.config/lxlauncher/gtkrc which is an RC file with custom style.
++2) ~/.config/lxlauncher/gtkrc which is a GTK+ 2 RC file with custom style.
++
++3) ~/.config/lxlauncher/gtk.css which is a GTK+ 3 CSS file with custom style.
+ 
+ Also one additional setting can be set in global GTK settings:
+ 
+diff --git a/data/lxlauncher.1.in b/data/lxlauncher.1.in
+index 3ce7193..79514df 100644
+--- a/data/lxlauncher.1.in
++++ b/data/lxlauncher.1.in
+@@ -17,7 +17,10 @@ specific application programs to one view under tabs.
+ An init-style file with display settings
+ .TP
+ .I ~/.config/lxlauncher/gtkrc
+-A GTK+ RC file with style definitions
++A GTK+ 2 RC file with style definitions
++.TP
++.I ~/.config/lxlauncher/gtk.css
++A GTK+ 3 CSS file with style definitions
+ .SH AUTHOR
+ lxlauncher was written by Hong Jen Yee <pcman.tw@gmail.com>.
+ Some code was taken from guification plugin of gaim/pidgin and
+diff --git a/gtk.css b/gtk.css
+new file mode 100644
+index 0000000..93407ee
+--- /dev/null
++++ b/gtk.css
+@@ -0,0 +1,26 @@
++GtkViewport {
++	background: none;
++}
++
++.notebook {
++	background: #3675AD;
++	font: Sans Bold 11;
++}
++
++.notebook > .frame,
++.notebook > .vertical {
++	background: #B7D6EA;
++}
++
++.notebook > .horizontal .label {
++	color: #B7D6EA;
++}
++
++.notebook > .horizontal.active-page .label {
++	color: #FFFFFF;
++}
++
++.notebook > .vertical .label,
++.button .label {
++	color: #3675AD;
++}
+diff --git a/src/lxlauncher.c b/src/lxlauncher.c
+index b6f566e..74d9d08 100644
+--- a/src/lxlauncher.c
++++ b/src/lxlauncher.c
+@@ -908,6 +908,31 @@ int main(int argc, char** argv)
+     gchar *file;
+ 
+     i = g_strv_length((char **)system_dirs);
++#if GTK_CHECK_VERSION(3,0,0)
++    while (i > 0)
++    {
++        file=g_build_filename(system_dirs[--i], "lxlauncher/gtk.css", NULL);
++        if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
++        {
++            GtkCssProvider *css = gtk_css_provider_new();
++            gtk_css_provider_load_from_path(css, file, NULL);
++            gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
++                    GTK_STYLE_PROVIDER(css),
++                    GTK_STYLE_PROVIDER_PRIORITY_USER);
++        }
++        free(file);
++    }
++    file=g_build_filename(g_get_user_config_dir(), "lxlauncher/gtk.css", NULL);
++    if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
++    {
++        GtkCssProvider *css = gtk_css_provider_new();
++        gtk_css_provider_load_from_path(css, file, NULL);
++        gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
++                GTK_STYLE_PROVIDER(css),
++                GTK_STYLE_PROVIDER_PRIORITY_USER);
++    }
++    free(file);
++#else
+     while (i > 0)
+     {
+         file = g_build_filename(system_dirs[--i], "lxlauncher/gtkrc", NULL);
+@@ -919,6 +944,7 @@ int main(int argc, char** argv)
+     if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
+         gtk_rc_parse(file);
+     free(file);
++#endif
+ 
+     button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
+     img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);
+-- 
+2.4.6
+
