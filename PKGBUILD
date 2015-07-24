@@ -3,12 +3,13 @@
 pkgname=python2-pyvona
 _pypiname=pyvona
 pkgver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Python text-to-speech IVONA Wrapper"
 arch=('any')
 url="http://zacharybears.com/pyvona/"
 license=('MIT')
-depends=('python2')
+depends=('python2' 'python2-requests')
+optdepends=('python2-pygame: speak method support')
 makedepends=('python2')
 conflicts=('python2-pyvona-git')
 provides=('python2-pyvona')
