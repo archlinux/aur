@@ -19,7 +19,7 @@ build() {
   export R_LIBS=$PWD
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
-        -DUSE_SPHINX=OFF . # latest sphinx has a bug
+        .
   make
 }
 
