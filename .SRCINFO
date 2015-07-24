@@ -1,0 +1,15 @@
+pkgbase = apache-mod_proxy_msrpc
+	pkgdesc = Apache module for Outlook Anywhere support in reverse proxy setups
+	pkgver = r41.9065a97
+	pkgrel = 1
+	url = https://github.com/bombadil/mod_proxy_msrpc
+	arch = x86_64
+	arch = i686
+	license = apache
+	makedepends = check
+	depends = apache
+	source = git://github.com/bombadil/mod_proxy_msrpc
+	md5sums = SKIP
+
+pkgname = apache-mod_proxy_msrpc
+
