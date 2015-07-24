@@ -1,0 +1,12 @@
+diff -Naur a/plugins/xmms/src/Makefile.am b/plugins/xmms/src/Makefile.am
+--- a/plugins/xmms/src/Makefile.am	2009-01-26 16:51:44.000000000 -0600
++++ b/plugins/xmms/src/Makefile.am	2015-06-24 23:15:27.782279146 -0500
+@@ -7,7 +7,7 @@
+        -I$(top_srcdir)/include -I$(top_srcdir)/common/mp4ff
+ 
+ libmp4_la_LIBADD = $(top_builddir)/libfaad/libfaad.la \
+-       $(top_builddir)/common/mp4ff/libmp4ff.a
++       $(top_builddir)/common/mp4ff/libmp4ff.la
+ 
+ libmp4_la_LDFLAGS = -module -avoid-version $(local_LDFLAGS) -lpthread
+ 

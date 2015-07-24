@@ -1,0 +1,23 @@
+pkgbase = xmms-mp4-plugin
+	pkgdesc = ISO AAC audio decoder
+	pkgver = 2.7
+	pkgrel = 4
+	url = http://www.audiocoding.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/faac/faad2-2.7.tar.bz2
+	source = faad2-2.7-libmp4ff-install-mp4ff_int_types_h.patch
+	source = faad2-2.7-libmp4ff-shared-lib.patch
+	source = faad2-2.7-man1_MANS.patch
+	source = faad2-2.7-xmms-shared-lib.patch
+	sha256sums = 14561b5d6bc457e825bfd3921ae50a6648f377a9396eaf16d4b057b39a3f63b5
+	sha256sums = c554313121f935aaabbe5b05addfc065bdf782bc0634ee9a91ceabde001ea823
+	sha256sums = e0aaefeb20ebfec2f09e88a190f78e5744d9f1c71fe41977db8e4f29b5b88022
+	sha256sums = e3e745cca309443d0149a09cc9988fec09c51e242b0e564afcb0af787dbb9031
+	sha256sums = 1bc896c2454dafa954b5e658ead0604b12460441bc3f71d1b01a1c124650400a
+
+pkgname = xmms-mp4-plugin
+
