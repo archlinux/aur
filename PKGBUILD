@@ -1,10 +1,11 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
-# Packager: AUR Perl <aurperl@juster.info>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Contributor: AUR Perl <aurperl@juster.info>
 
 pkgname=perl-scope-guard
 _cpanname="Scope-Guard"
-pkgver=0.20
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc="Lexically-scoped resource management"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +13,7 @@ options=('!emptydirs')
 depends=('perl>=5.5.0')
 url="http://search.cpan.org/~chocolate/$_cpanname"
 source=("http://search.cpan.org/CPAN/authors/id/C/CH/CHOCOLATE/$_cpanname-$pkgver.tar.gz")
-md5sums=('495d5ae16a2df8128fd068c386c9d4ac')
+md5sums=('be57b915d23ddac7677ef2ad9e52b92a')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
