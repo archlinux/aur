@@ -1,0 +1,14 @@
+pkgbase = xmlada
+	pkgdesc = A full XML suite for Ada
+	pkgver = 2015
+	pkgrel = 1
+	url = http://libre.adacore.com/libre/tools/xmlada/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-ada
+	source = http://mirrors.cdn.adacore.com/art/949752df2432aed8d06c48d57cea71f38d0517cc
+	md5sums = 98c96b8c6a877617ec4da3ef6a03288a
+
+pkgname = xmlada
+
