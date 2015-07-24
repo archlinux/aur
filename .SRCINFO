@@ -1,0 +1,13 @@
+pkgbase = jasper-tts-ivona
+	pkgdesc = Meta package to satisfy dependencies for Jasper's Ivona TTS engine.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://jasperproject.github.io
+	arch = any
+	license = MIT
+	depends = jasper-voice-control
+	depends = python2-pyvona
+	depends = python2-pymad
+
+pkgname = jasper-tts-ivona
+
