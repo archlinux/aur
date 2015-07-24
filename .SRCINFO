@@ -1,0 +1,14 @@
+pkgbase = vmd-stride
+	pkgdesc = Used by VMD to compute the secondary structure given the protein 3D coordinates
+	pkgver = 19950628
+	pkgrel = 1
+	url = http://www.ks.uiuc.edu/Research/vmd/doxygen/extprogs.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.ks.uiuc.edu/Research/vmd/extsrcs/Stride_src.tar.Z
+	sha256sums = c40f7de64947ebab7ec49511c0d264b08bc0fcbc703014bdc85d83a7389be230
+
+pkgname = vmd-stride
+
