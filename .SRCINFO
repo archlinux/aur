@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-ublock-gorhill-git
+	pkgdesc = Feature-Complete version of UBlock as maintained by gorhill, git version.
+	pkgver = r2471.416c7b4
+	pkgrel = 1
+	url = https://github.com/gorhill/uBlock
+	arch = any
+	license = GPL
+	makedepends = python
+	depends = firefox
+	depends = git
+	source = firefox-extension-ublock-gorhill-git::git+https://github.com/gorhill/uBlock.git
+	md5sums = SKIP
+
+pkgname = firefox-extension-ublock-gorhill-git
+
