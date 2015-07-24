@@ -1,0 +1,20 @@
+pkgbase = kgpg-git
+	pkgdesc = KGpg is a simple interface for GnuPG, a powerful encryption utility. Git version.
+	pkgver = r2566.87fa48f
+	pkgrel = 1
+	url = https://utils.kde.org/projects/kgpg/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	depends = gnupg
+	depends = kdepimlibs
+	provides = kdeutils-kgpg
+	provides = kgpg
+	conflicts = kdeutils-kgpg
+	source = git://anongit.kde.org/kgpg
+	sha256sums = SKIP
+
+pkgname = kgpg-git
+
