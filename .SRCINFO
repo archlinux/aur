@@ -1,0 +1,19 @@
+pkgbase = the-incredible-machine-2
+	pkgdesc = A classic puzzle game from Abandonia, played in DosBox.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.abandonia.com/en/games/395/Incredible+Machine+2,+The.html
+	install = tim2.install
+	arch = any
+	license = custom-freeware
+	license = Abandonware
+	depends = dosbox
+	depends = unionfs-fuse
+	optdepends = abandonia-menu
+	source = The_Incredible_Machine_2.zip::http://files.abandonia.com/download.php?game=Incredible+Machine+2%2C+The&secure=98ddb7b4cd755918180065de92319f8f&td=1297665430
+	source = TIM2.png
+	md5sums = b0e1b4e0f7000a49ef9bb2920ab288a4
+	md5sums = cd42b0e995ef697377ef8e05fd7092b5
+
+pkgname = the-incredible-machine-2
+
