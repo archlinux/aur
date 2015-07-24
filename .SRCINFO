@@ -1,5 +1,5 @@
 pkgbase = fbsplash
-	pkgdesc = Userspace splash screen implementation (formerly 'gensplash')
+	pkgdesc = Userspace splash screen implementation (formerly 'gensplash') (deprecated, see: Plymouth)
 	pkgver = 1.5.4.4
 	pkgrel = 16
 	url = http://sourceforge.net/projects/fbsplash.berlios/

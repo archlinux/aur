@@ -4,7 +4,7 @@
 pkgname=fbsplash
 pkgver=1.5.4.4
 pkgrel=16
-pkgdesc="Userspace splash screen implementation (formerly 'gensplash')"
+pkgdesc="Userspace splash screen implementation (formerly 'gensplash') (deprecated, see: Plymouth)"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/fbsplash.berlios/"
 license=('GPL')
