@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Berusky
+Exec=berusky
+Icon=berusky
+Type=Application
+Comment=A puzzle game
+Categories=Game;LogicGame;

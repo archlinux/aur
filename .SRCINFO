@@ -1,0 +1,19 @@
+pkgbase = berusky
+	pkgdesc = A logic game based on the puzzle game Sokoban
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://anakreon.cz/?q=node/1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = berusky-data
+	source = http://www.anakreon.cz/download/berusky-1.7.tar.gz
+	source = berusky.png
+	source = berusky.desktop
+	md5sums = e76626588228b8d320772ea5c173579d
+	md5sums = 8a5f5607b4883f4c86d1ba9fd5ab6156
+	md5sums = 08699c6e9e1004887c3a6f53f2bf797f
+
+pkgname = berusky
+
