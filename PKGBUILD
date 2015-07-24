@@ -10,7 +10,7 @@ makedepends=('python2-distribute' )
 license=('CUSTOM')
 arch=('any')
 source=("https://pypi.python.org/packages/source/r/rabbitpy/rabbitpy-$pkgver.tar.gz")
-md5sums=('6430a629d8d7b4c7f6db8e87a28c1b4d')
+md5sums=('39bceee9daa496c53158308d0962dbf8')
 
 build() {
     cd $srcdir/rabbitpy-$pkgver
