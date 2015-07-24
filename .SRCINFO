@@ -1,0 +1,14 @@
+pkgbase = mmonit
+	pkgdesc = Easy, proactive monitoring of Unix systems, network and cloud services. Conduct automatic maintenance and recovery and execute meaningful causal actions in error situations.
+	pkgver = 3.5
+	pkgrel = 2
+	url = http://mmonit.com/
+	arch = x86_64
+	license = Commercial
+	source = https://mmonit.com/dist/mmonit-3.5-linux-x64.tar.gz
+	source = mmonit.service
+	sha256sums = c872bd09811804ff4f41319507b77626926f3a028b56e2f320d470f07e032c7b
+	sha256sums = 9a4edf62ef3da3af1e3dcfebd7b3bb3f96e81c5a9767021f0e4ed775f2dbb469
+
+pkgname = mmonit
+
