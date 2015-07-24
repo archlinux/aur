@@ -1,0 +1,10 @@
+--- a/contrib/src/pjproject/rules.mak	2015-05-25 22:56:19.336180871 +0200
++++ b/contrib/src/pjproject/rules.mak	2015-05-25 22:56:50.069512254 +0200
+@@ -61,6 +61,7 @@
+ 	$(APPLY) $(SRC)/pjproject/ice_config.patch
+ 	$(APPLY) $(SRC)/pjproject/multiple_listeners.patch
+ 	$(APPLY) $(SRC)/pjproject/pj_ice_sess.patch
++	$(APPLY) $(SRC)/pjproject/fix-isblank-gcc5.patch
+ 	$(UPDATE_AUTOCONFIG)
+ 	$(MOVE)
+ 
