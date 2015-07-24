@@ -1,0 +1,24 @@
+pkgbase = avogadrolibs-git
+	pkgdesc = Avogadro 2: libraries
+	pkgver = 0.8.0.r969.2d2f8d3
+	pkgrel = 1
+	url = http://openchemistry.org/projects/avogadro2
+	arch = i686
+	arch = x86_64
+	license = Kitware
+	makedepends = git
+	makedepends = cmake
+	makedepends = eigen3
+	depends = libgl
+	depends = glew
+	depends = qt5-base
+	depends = vtk
+	depends = hdf5
+	depends = molequeue
+	provides = avogadrolibs
+	conflicts = avogadrolibs
+	source = git://github.com/OpenChemistry/avogadrolibs.git
+	sha256sums = SKIP
+
+pkgname = avogadrolibs-git
+
