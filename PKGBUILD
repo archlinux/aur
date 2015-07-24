@@ -3,7 +3,7 @@
 pkgname=steam-wrapper-git
 _gitname=steam-wrapper
 pkgdesc="Steam wrapper for common operations (git version)"
-pkgver=0.1.7
+pkgver=0.1.8.git
 pkgrel=1
 arch=('i686' 'x86_64')
 optdepends=('steam-native: Native runtime library support')
@@ -15,6 +15,11 @@ license=('custom')
 url="https://github.com/pyamsoft/steam-wrapper.git"
 source=("${_gitname}::git+${url}#branch=dev")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$_gitname"
+	echo "$(awk -F '=' '{if (/^VERSION=/) {print $2}}' 'steam-wrapper').git"
+}
 
 package() {
 	cd "$srcdir/$_gitname"
