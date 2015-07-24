@@ -1,12 +1,4 @@
-This version brings some major additions to opsu!:
+This is primarily a bug fix release.
 
-    New slider rendering implementation (mmsliders) using FBOs. (#64)
-        This is now the default rendering method, but the old method is used as a fallback.
-    New skin loader implementation. (40e4495)
-        Skins are now loaded from subdirectories of the root "Skins" directory, and can be changed in-game.
-        Added a skin.ini parser, and implemented many (but not all) of the skin settings.
-    New replay features. (#99)
-        Replays from osu! (or opsu!) can be automatically imported into the game by placing them in the ReplayImport directory.
-        Seeking is now possible in replays by enabling the "Replay Seeking" setting in the options menu.
-    Score formula improvements. (#99)
-        Scoring is now slightly closer to osu!'s implementation, but is still not entirely correct.
+    Fixed a major rendering issue when using the "Flashlight" mod with the new slider style. (#108)
+    Updated Maven dependencies to their latest versions (LWJGL 2, Slick2D, Commons Compress, lzma-java, maven-artifact).
