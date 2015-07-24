@@ -7,13 +7,12 @@
 # Contributor: Adrian C. <anrxc..sysphere.org>
 
 pkgname=xf86-video-intel-git
-_pkgname=xf86-video-intel
-pkgver=2.99.916.165.g9c2c485
-pkgrel=4
+pkgver=2.99.917.392.g8090a65
+pkgrel=1
 
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
-arch=("i686" "x86_64")
 url="http://intellinuxgraphics.org/"
+arch=("i686" "x86_64")
 license=("custom")
 
 depends=("intel-dri" "libxvmc" "libpciaccess" "libdrm" "dri2proto" "xcb-util" "libxfixes" "udev")
@@ -22,18 +21,19 @@ makedepends=("git" "xorg-server-devel" "X-ABI-VIDEODRV_VERSION=19" "libx11"
 provides=("xf86-video-intel")
 conflicts=("xf86-video-intel")
 replaces=("xf86-video-intel")
+
 options=("!libtool" "!strip")
-source=(git+https://anongit.freedesktop.org/git/xorg/driver/$_pkgname)
-sha1sums=("SKIP")
+source=($pkgname::git://anongit.freedesktop.org/git/xorg/driver/${pkgname%-git})
+sha1sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "$pkgname"
     git describe --always | sed 's|-|.|g'
 }
 
 
 build() {
-    cd "${pkgname}"
+    cd "$pkgname"
     ./autogen.sh --prefix=/usr \
 		 --enable-xvmc \
 		 --enable-sna
