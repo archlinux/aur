@@ -1,6 +1,6 @@
 # MINGW port for the evince-light AUR package
 
-pkgbase=evince
+pkgbase=mingw-w64-evince-light
 pkgname=mingw-w64-evince-light
 pkgver=3.16.1
 pkgrel=1
