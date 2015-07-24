@@ -4,7 +4,7 @@
 
 pkgname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver"
-pkgver=1.2.8
+pkgver=1.2.11
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('coreutils')
@@ -15,7 +15,7 @@ conflicts=('pstate-frequency')
 license=('GPLv2')
 url="https://github.com/pyamsoft/pstate-frequency/archive/${pkgver}.tar.gz"
 source=("${url}")
-sha256sums=('dc4a621586a9619be73e8576a069d3d4c09bfd8344cb70226c7e46c024b9b3df')
+sha256sums=('e877ca76e114a514ac45cb6aa819ff47753b0f54abdf138bd26878388e9b69c7')
 
 ###############################################################################
 
@@ -29,9 +29,10 @@ sha256sums=('dc4a621586a9619be73e8576a069d3d4c09bfd8344cb70226c7e46c024b9b3df')
 # _CXX="g++"
 # _PREFIX="/usr/local"
 # _INCLUDE_BASH_COMPLETION=1
-# _INCLUDE_ZSH_COMPLETION=1
-# _INCLUDE_UDEV_RULE=1
+# _INCLUDE_ZSH_COMPLETION=0
+# _INCLUDE_UDEV_RULE=0
 # _INCLUDE_SYSTEMD_UNIT=1
+# _X86_ENERGY_PERF_POLICY=1
 ##
 
 _CXX="g++"
@@ -42,6 +43,7 @@ _INCLUDE_UDEV_RULE=0
 _INCLUDE_SYSTEMD_UNIT=1
 _INCLUDE_DOC=1
 _INCLUDE_SRC=1
+_X86_ENERGY_PERF_POLICY=1
 
 prepare() {
 	cd "$srcdir/${pkgname}-${pkgver}"
@@ -49,6 +51,7 @@ prepare() {
 		DESTDIR="$pkgdir" \
 		CXX="${_CXX}" \
 		PREFIX="${_PREFIX}" \
+		X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
 		INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
 		INCLUDE_ZSH_COMPLETION=${_INCLUDE_ZSH_COMPLETION} \
 		INCLUDE_UDEV_RULE=${_INCLUDE_UDEV_RULE} \
@@ -64,6 +67,7 @@ build() {
 		DESTDIR="$pkgdir" \
 		CXX="${_CXX}" \
 		PREFIX="${_PREFIX}" \
+		X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
 		INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
 		INCLUDE_ZSH_COMPLETION=${_INCLUDE_ZSH_COMPLETION} \
 		INCLUDE_UDEV_RULE=${_INCLUDE_UDEV_RULE} \
@@ -78,6 +82,7 @@ package() {
 		DESTDIR="$pkgdir" \
 		CXX="${_CXX}" \
 		PREFIX="${_PREFIX}" \
+		X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
 		INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
 		INCLUDE_ZSH_COMPLETION=${_INCLUDE_ZSH_COMPLETION} \
 		INCLUDE_UDEV_RULE=${_INCLUDE_UDEV_RULE} \
