@@ -4,7 +4,7 @@
 # Based on a modified version of the gcc PKGBUILD
 
 pkgname=gcc-gcj
-pkgver=5.1.0
+pkgver=5.2.0
 _pkgver=5
 _islver=0.14.1
 _cloogver=0.18.3
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath' 'gcc-gcj-ecj')
-makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'gcc=5.1.0' 'libart-lgpl')
+makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'gcc=5.2.0' 'libart-lgpl')
 optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
 options=('!libtool')
@@ -23,7 +23,7 @@ source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 	"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 	
-sha512sums=('30f6a94d3adb25bc51fcaddf32a6c41429f569eeb9ed64330445b1296f99998fbfa03277b375be4f7b2b80f519910ef88e4149db7cd9031e2c61a49f501bde94'
+sha512sums=('844120349ec04465dcea52d8ec747f1cbbc9d76a39fe3d8ef5e6b93614e63d718862d60d0a1c1cbf59ffc7815562287d0a2e536a6b220cebcd0b8de4ba35e715'
             '0d8e04e4a029a1c382357570d0e58b45cff0c89ef576084af3841dda112a1275575fb85f62e7c0ea6e89a4fccf90cae55cdd12c37b824ce5e8845ed6d31edb2d'
             '14fc2af0da62cd17b1a9f5a7a1704da6bfe5dc78639928637588203e61847795a652ff788c313c34b6e7dd85fb329678eb4f72e0e1c9c149be6619ebf046cff8')
 
