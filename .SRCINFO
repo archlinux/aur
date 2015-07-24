@@ -1,0 +1,15 @@
+pkgbase = python-flipflop
+	pkgdesc = A python FastCGI wrapper for WSGI applications
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Kozea/flipflop
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/flipflop/flipflop-1.0.tar.gz
+	md5sums = 9c129c4ef7b269a73113410b640edadd
+	sha256sums = 32a23ed7bdb53bab03271c4c92abceae1ee3a337dd7fd5a18334fd64930ebcfd
+
+pkgname = python-flipflop
+
