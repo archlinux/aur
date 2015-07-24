@@ -6,7 +6,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=44.0.2403.89
+pkgver=44.0.2403.107
 pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
         0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
         chromium-widevine.patch)
-sha256sums=('badd9aa979487b55bbcce4f54ec16926c6fa7eb46ec2536866200a5e68853a98'
+sha256sums=('d0634ffbe4f158010852fde3ee32aaf7bdf200932573fdf57328dd9ba5983d71'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
