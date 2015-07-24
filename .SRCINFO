@@ -18,7 +18,7 @@ pkgbase = mingw-w64-evince-light
 	depends = mingw-w64-poppler
 	provides = mingw-w64-evince-light
 	options = !strip
-	source = http://ftp.gnome.org/pub/GNOME/sources/mingw-w64-evince-light/3.16/mingw-w64-evince-light-3.16.1.tar.xz
+	source = http://ftp.gnome.org/pub/GNOME/sources/evince/3.16/evince-3.16.1.tar.xz
 	sha256sums = 06ff75065b2a30cd588c402f6bd2ea88ee3166181805e0cc00bd54f71dbf6130
 
 pkgname = mingw-w64-evince-light
