@@ -1,6 +1,6 @@
 pkgbase = wget-git
 	pkgdesc = A network utility to retrieve files from the Web
-	pkgver = 1.16.3.r60.gfd3a324
+	pkgver = 1.16.3.r90.g4e56a91
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	install = wget.install
@@ -17,10 +17,10 @@ pkgbase = wget-git
 	depends = libutil-linux
 	depends = gnutls
 	depends = libidn
-	depends = pcre
 	depends = libpsl>=0.7.1-3
-	optdepends = ca-certificates: HTTPS Downloads,
-	optdepends = libmetalink: Metalink support.
+	depends = libmetalink
+	depends = gpgme
+	optdepends = ca-certificates: HTTPS Downloads
 	provides = wget
 	conflicts = wget
 	backup = etc/wgetrc
