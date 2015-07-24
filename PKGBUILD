@@ -3,7 +3,7 @@
 # Contributor: Alexandru Ianu <alexandru.ianu@gmail.com>
 pkgname=steam-native
 pkgver=1.0.0.50
-pkgrel=7
+pkgrel=8
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
 url="http://steampowered.com/"
