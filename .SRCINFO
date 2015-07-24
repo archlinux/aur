@@ -1,0 +1,18 @@
+pkgbase = python-visitor
+	pkgdesc = A tiny pythonic visitor implementation.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mbr/visitor
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/v/visitor/visitor-0.1.tar.gz
+	md5sums = f70b47d75ceeb0a983d433a6d92de517
+
+pkgname = python2-visitor
+	depends = python2
+
+pkgname = python-visitor
+	depends = python
+
