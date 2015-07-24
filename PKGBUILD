@@ -2,7 +2,7 @@
 # Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
 
 pkgname=opsu-git
-pkgver=0.10.0.r0.g47f6823
+pkgver=0.10.1.r0.g6a4c6a8
 pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')

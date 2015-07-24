@@ -1,3 +1,81 @@
+* commit 6a4c6a8d37844a8263bad8537c4227f991ff2f05
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sat Jul 18 23:55:06 2015 -0500
+| 
+|     Updating to version 0.10.1.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 5dac21a5458bb2f3f963926f642a47d69628b72b
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Thu Jul 16 18:14:46 2015 -0500
+| 
+|     Cursor trail now considers actual FPS (not target FPS). (fixes #109)
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 4e2074e41bc399c848850bfebc2af79b5579ed9a
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sat Jul 11 10:51:52 2015 -0500
+| 
+|     Show errors if any directories could not be created. (fixes #97)
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 05c7ac0a02d1f85927a39a0b7d29fb6ed31e9595
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Thu Jul 9 11:59:53 2015 -0500
+| 
+|     Minor follow-up to #108.
+|     Set minimum OpenGL version for mmsliders to 3.0 (from 3.2) and removed an unused variable.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|    
+*   commit 2be92ecdcaf1edbe9624afb01ae17ce6e3161cc5
+|\  Merge: 26ab619 7941a70
+| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
+| | Date:   Thu Jul 9 11:54:27 2015 -0500
+| | 
+| |     Merge pull request #108 from Bigpet/viewport_fix
+| |     
+| |     Backup and restore the viewport size when rendering sliders
+| |   
+| * commit 7941a70238ad2a54e5f69359e10e6ff0f7813eb6
+| | Author: Peter Tissen <dravorek@gmail.com>
+| | Date:   Thu Jul 9 18:37:39 2015 +0200
+| | 
+| |     use EXT version of FBOs instead of the ARB version
+| |     
+| |     This doesn't actually make a difference in functionality.
+| |     The issue is that the flashlight mod uses Slicks FBO functions which
+| |     use the EXT version and Intel drivers generate the same FBO IDs twice
+| |     if the EXT and ARB versions are mixed.
+| |   
+| * commit 420f1fb02cbdbad90c28ed5c484f118e499d3fcd
+|/  Author: Peter Tissen <dravorek@gmail.com>
+|   Date:   Wed Jul 8 16:18:41 2015 +0200
+|   
+|       Backup and restore the viewport size when rendering sliders. Needed because Slick tends to allocate offscreen buffers for itself only with power of two textures, so it will use another viewport when rendering to its own offscreen buffers.
+|  
+* commit 26ab61910e051dfb1dac5b8258b70bcf7df7ac8e
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Tue Jul 7 19:03:54 2015 -0500
+| 
+|     Added option to disable automatic checking for updates.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 8b9e230fa75c3178f59dfee28ffbf2f127b589c3
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Tue Jul 7 18:37:03 2015 -0500
+| 
+|     Updated dependencies.
+|     - LWJGL is now at the final 2.x release version.
+|     - Slick2D is now at the final (?) release version.
+|     - Added dependency for org.tukaani.xz, since it becomes optional in commons-compress 1.9 and is needed for LZMA compression.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
 * commit 47f682352dd65cb322fb02907af219ba5e882472
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
 | Date:   Sat Jul 4 23:29:46 2015 -0500
@@ -5,108 +83,3 @@
 |     Updating to version 0.10.0.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 2167698740086dd06ffb242bf203a6f14eeb09e8
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Thu Jul 2 22:16:14 2015 -0500
-| 
-|     Follow-up to #99: replay seeking improvements.
-|     - Added on/off option for replay seeking in the "custom" menu.
-|     - Mute sounds while seeking.
-|     - Draw a bar on the left of the screen during replays for seeking (instead of just clicking near the top of the screen).
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 495a7e7f8b01116307c81e3767d68e19c30a8361
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jun 29 20:18:28 2015 -0500
-| 
-|     Follow-up to d860a30: replay importing fixes.
-|     - Move failed imports to a "failed" subdirectory so that errors aren't generated each time the program is launched.
-|     - Importing now overwrites files.
-|     - Add "ReplayImportDirectory" option to config file.
-|     - Fixed a bug with scores not being properly added.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit d860a30aed3dcca31ac15e700e09bb93f2db51a1
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jun 29 19:22:38 2015 -0500
-| 
-|     Follow-up to #99.
-|     - Many code style changes.
-|     - Don't increment combo if missing the last slider circle.
-|     - Added player name in ranking screen.
-|     - Don't show null/default player names.
-|     - Only import replays with .osr extension.
-|     - Display loading status for importing replays.
-|     - Moved MD5InputStreamWrapper to package "opsu.io".
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|    
-*   commit 7d08a7d39128a3d0d14485a888adadb3714630d5
-|\  Merge: 52cb5d2 5562803
-| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
-| | Date:   Sun Jun 28 21:14:10 2015 -0500
-| | 
-| |     Merge pull request #99 from fluddokt/ReplayTest
-| |     
-| |     Replay importing, spinner fixes (fixes #67), replay seeking, in-place MD5 calculation, pitch change time sync (fixes #86).
-| |   
-| * commit 55628038feb5390b37061cd5778eb22e53fb9bbf
-| | Author: fd <fd@b>
-| | Date:   Sun Jun 21 22:57:30 2015 -0400
-| | 
-| |     Restores drainRate
-| |     
-| |     Single file read md5
-| |     
-| |     pitch change synctime
-| |     
-| *   commit df07c626095eb8b7c9054a4715bd5ba8acc2f4ed
-| |\  Merge: 3675a25 81d9421
-| | | Author: fd <fd@b>
-| | | Date:   Sun Jun 21 20:05:36 2015 -0400
-| | | 
-| | |     Merge remote-tracking branch 'org/master' into ReplayTest
-| | |     
-| | |     Conflicts:
-| | |     	src/itdelatrisu/opsu/GameData.java
-| | |     	src/itdelatrisu/opsu/states/Game.java
-| | |    
-| * | commit 3675a25c44dcf527a6f0a19871ba58c69d1d16b4
-| | | Author: fd <fd@b>
-| | | Date:   Sun Jun 21 19:45:38 2015 -0400
-| | | 
-| | |     Spinner Test 3
-| | |     
-| | |     Clean up
-| | |    
-| * | commit 038a5d57799d1d8899afaf64a12199478f01f634
-| | | Author: fd <fd@b>
-| | | Date:   Sat Jun 13 21:16:27 2015 -0400
-| | | 
-| | |     WIPTest Merge Fixes
-| | |      
-| * |   commit fd3f7fdabe3aede7037c33d38625e2f0bac193ef
-| |\ \  Merge: 40e67ce 85c2328
-| | | | Author: fd <fd@b>
-| | | | Date:   Sat Jun 13 20:28:30 2015 -0400
-| | | | 
-| | | |     Merge remote-tracking branch 'org/master' into ReplayTest
-| | | |     
-| | | |     Conflicts:
-| | | |     	src/itdelatrisu/opsu/GameData.java
-| | | |     	src/itdelatrisu/opsu/Options.java
-| | | |     	src/itdelatrisu/opsu/OsuFile.java
-| | | |     	src/itdelatrisu/opsu/OsuGroupList.java
-| | | |     	src/itdelatrisu/opsu/OsuHitObject.java
-| | | |     	src/itdelatrisu/opsu/OsuParser.java
-| | | |     	src/itdelatrisu/opsu/UI.java
-| | | |     	src/itdelatrisu/opsu/db/OsuDB.java
-| | | |     	src/itdelatrisu/opsu/objects/Circle.java
-| | | |     	src/itdelatrisu/opsu/objects/HitObject.java
-| | | |     	src/itdelatrisu/opsu/objects/Slider.java
-| | | |     	src/itdelatrisu/opsu/objects/Spinner.java
-| | | |     	src/itdelatrisu/opsu/states/Game.java
-| | | |     	src/itdelatrisu/opsu/states/Splash.java
