@@ -8,7 +8,7 @@
 
 pkgname=openssh-selinux
 pkgver=6.9p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
@@ -23,6 +23,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 groups=('selinux')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
 source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
+        'keyboard-interactive.patch'
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
@@ -30,6 +31,7 @@ source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-
         'sshd.conf'
         'sshd.pam')
 sha1sums=('86ab57f00d0fd9bf302760f2f6deac1b6e9df265' 'SKIP'
+          'ef9e9327a943839abb3d202783b318e9cd2bdcd5'
           'cc1ceec606c98c7407e7ac21ade23aed81e31405'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
@@ -40,6 +42,11 @@ sha1sums=('86ab57f00d0fd9bf302760f2f6deac1b6e9df265' 'SKIP'
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
 install=install
+
+prepare() {
+	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	patch -p1 -i ../keyboard-interactive.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"

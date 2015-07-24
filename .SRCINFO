@@ -1,7 +1,7 @@
 pkgbase = openssh-selinux
 	pkgdesc = Free version of the SSH connectivity tools with SELinux support
 	pkgver = 6.9p1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openssh.org/portable.html
 	install = install
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = openssh-selinux
 	depends = libselinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
-	provides = openssh=6.9p1-1
-	provides = selinux-openssh=6.9p1-1
+	provides = openssh=6.9p1-2
+	provides = selinux-openssh=6.9p1-2
 	conflicts = openssh
 	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
@@ -25,6 +25,7 @@ pkgbase = openssh-selinux
 	backup = etc/pam.d/sshd
 	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.9p1.tar.gz
 	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.9p1.tar.gz.asc
+	source = keyboard-interactive.patch
 	source = sshdgenkeys.service
 	source = sshd@.service
 	source = sshd.service
@@ -33,6 +34,7 @@ pkgbase = openssh-selinux
 	source = sshd.pam
 	sha1sums = 86ab57f00d0fd9bf302760f2f6deac1b6e9df265
 	sha1sums = SKIP
+	sha1sums = ef9e9327a943839abb3d202783b318e9cd2bdcd5
 	sha1sums = cc1ceec606c98c7407e7ac21ade23aed81e31405
 	sha1sums = 6a0ff3305692cf83aca96e10f3bb51e1c26fccda
 	sha1sums = ec49c6beba923e201505f5669cea48cad29014db
