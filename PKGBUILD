@@ -25,6 +25,7 @@ build() {
   cd build
   cmake ../telepathy-hanging \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release
 }
 
