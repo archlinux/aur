@@ -46,6 +46,8 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
 
+  export PYTHON=python2
+
   ./configure --prefix=/usr
 
   # do not link against system-installed libbam.a
