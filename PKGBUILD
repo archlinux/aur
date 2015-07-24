@@ -4,9 +4,9 @@
 pkgname=fbsplash
 pkgver=1.5.4.4
 pkgrel=16
-pkgdesc="Userspace implementation of a splash screen for Linux (formerly gensplash)"
+pkgdesc="Userspace splash screen implementation (formerly 'gensplash')"
 arch=('i686' 'x86_64')
-url="http://fbsplash.alanhaggai.org"
+url="http://sourceforge.net/projects/fbsplash.berlios/"
 license=('GPL')
 depends=('miscsplashutils' 'freetype2' 'libjpeg' 'libpng' 'libmng' 'lcms' 'gpm') 
 optdepends=('linux-fbcondecor: enable console background images'
