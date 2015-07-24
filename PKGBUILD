@@ -2,18 +2,18 @@
 
 pkgbase=linux-samus4
 pkgver=4.1
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-4.1-samus/archive/v4.1-7.tar.gz"
+source=("https://github.com/raphael/linux-4.1-samus/archive/v4.1-8.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-4.1-samus-4.1-7/build/linux/
+_linuxsrc=linux-4.1-samus-4.1-8/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -240,6 +240,6 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('5fa2bac14e7a1d5a77dab1686b99e517'
+md5sums=('0868d291e9a9eaf1f2ebd9a21226674f'
          '01ac288139b58b57bf4a2709a5340ada'
          '5aae464a8085b2f3adcdcaff29853d04')

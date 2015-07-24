@@ -1,6 +1,6 @@
 pkgbase = linux-samus4
 	pkgver = 4.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = linux-samus4
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://github.com/raphael/linux-4.1-samus/archive/v4.1-7.tar.gz
+	source = https://github.com/raphael/linux-4.1-samus/archive/v4.1-8.tar.gz
 	source = config
 	source = linux.preset
 	md5sums = a028cb0ed5744d170d9a1e4c61e4db49
