@@ -5,9 +5,9 @@ pkgver=r191.f7b776b
 pkgrel=1
 
 pkgdesc='An extension to dmenu for quickly opening files and folders.'
-arch=('any')
 url='https://github.com/markjones112358/dmenu-extended'
 license=('MIT')
+arch=('any')
 
 depends=('dmenu' 'python')
 makedepends=('python')
@@ -15,7 +15,7 @@ source=("git+https://github.com/markjones112358/dmenu-extended.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/./g'
 }
 
