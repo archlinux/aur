@@ -1,0 +1,15 @@
+pkgbase = darcsver
+	pkgdesc = generate a version number from darcs history
+	pkgver = 1.7.4
+	pkgrel = 2
+	url = http://allmydata.org/trac/darcsver
+	arch = any
+	license = BSD
+	makedepends = python2-mock
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/d/darcsver/darcsver-1.7.4.tar.gz
+	md5sums = e38aecd1343ab8447888a479ab12cb59
+
+pkgname = darcsver
+
