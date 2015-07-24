@@ -1,0 +1,21 @@
+pkgbase = wqy-microhei-nightly_build
+	pkgdesc = A Sans-Serif style high quality CJK outline font. This is a nightly-build version.
+	pkgver = 0.2
+	pkgrel = 6
+	url = http://wenq.org
+	install = wqy-microhei-nightly_build.install
+	arch = any
+	license = GPL3
+	license = APACHE
+	license = custom:"font embedding exception"
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = wqy-microhei
+	conflicts = wqy-microhei
+	source = http://wenq.org/daily/microhei/wqy-microhei-0.2.NB-nightlybuild.tar.gz
+	source = 44-wqy-microhei.conf
+	md5sums = SKIP
+	md5sums = 2614129902fda4e45aa7f0f7b635cc4f
+
+pkgname = wqy-microhei-nightly_build
+
