@@ -2,8 +2,8 @@
 # Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=cottage
-pkgver=0.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="https://github.com/HarveyHunt/cottage"
 license=('GPL')
 
 checkdepends=('linux-headers')
-source=("https://github.com/HarveyHunt/cottage/archive/v$pkgver.tar.gz")
-sha256sums=('ba24c1e2a2e365879653b5d824970dd502cc20375710b1cd2208ba7a3a785934')
+source=("https://github.com/HarveyHunt/cottage/archive/$pkgver.tar.gz")
+sha256sums=('3daedc4a8771ca08d53662a3b9868ba2e7f30c00cadd64310b372833d9c6c3b2')
 
 build() {
   cd "$pkgname-$pkgver"
