@@ -1,0 +1,14 @@
+pkgbase = xmlrpc-epi
+	pkgdesc = An implementation of the xmlrpc protocol in C
+	pkgver = 0.54.2
+	pkgrel = 1
+	url = http://xmlrpc-epi.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = expat
+	source = http://downloads.sourceforge.net/project/xmlrpc-epi/xmlrpc-epi-base/0.54.2/xmlrpc-epi-0.54.2.tar.bz2
+	md5sums = 081e605491429cda17c5f021f211b8fd
+
+pkgname = xmlrpc-epi
+
