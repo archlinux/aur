@@ -1,0 +1,15 @@
+pkgbase = berusky2
+	pkgdesc = A logic game based on the puzzle game Sokoban
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://www.anakreon.cz/en/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = mesa
+	depends = berusky2-data
+	source = http://downloads.sourceforge.net/project/berusky2/berusky2-0.10/berusky2-0.10.tar.gz
+
+pkgname = berusky2
+
