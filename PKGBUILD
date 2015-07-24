@@ -2,15 +2,19 @@
 
 pkgname=tophat
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="fast splice junction mapper for RNA-Seq reads"
 arch=('x86_64' 'i686')
 url="http://ccb.jhu.edu/software/tophat/index.shtml"
-license=('BSL')
+license=('custom')
 depends=('boost-libs' 'bowtie2' 'python2')
 makedepends=('boost')
-source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz")
-md5sums=('1ace6e96fa692af6ed885bad5fe7c4d7')
+source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz"
+        'https://github.com/seqan/seqan/archive/seqan-v1.4.2.tar.gz'
+        'fix_build_w_seqan1.4.patch')
+md5sums=('1ace6e96fa692af6ed885bad5fe7c4d7'
+         '7b0080b01feeb223e054dabef53d6fc5'
+         '93d47e54408b7b5eb4132d65f5dd5085')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -30,15 +34,17 @@ prepare() {
          src/tophat.py \
          src/tophat-fusion-post
 
+  # fixes seqan issues
+  rm -rf src/SeqAn-1.3
+  patch -Np1 -i $srcdir/fix_build_w_seqan1.4.patch
+  sed -e "s|-I./SeqAn-1.3|-I$srcdir/seqan-seqan-v1.4.2/core/include|" \
+      -i configure.ac
+
   autoreconf -fi
 }
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-
-  export CC=clang
-  export CXX=clang++
-  export PYTHON=python2
 
   ./configure --prefix=/usr
 
@@ -53,4 +59,6 @@ package() {
   cd $srcdir/$pkgname-$pkgver
 
   make DESTDIR=$pkgdir install
+
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
