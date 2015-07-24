@@ -27,7 +27,7 @@ provides=("${pkgbase}")
 options=(!strip)
 
 install=${pkgbase}.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz")
+source=("http://ftp.gnome.org/pub/GNOME/sources/evince/${pkgver%.*}/evince-${pkgver}.tar.xz")
 sha256sums=('06ff75065b2a30cd588c402f6bd2ea88ee3166181805e0cc00bd54f71dbf6130')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
