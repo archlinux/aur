@@ -1,0 +1,22 @@
+pkgbase = st-solarized
+	pkgdesc = A simple virtual terminal emulator for X. Patched for solarized colorscheme.
+	pkgver = 0.5
+	pkgrel = 0
+	url = http://st.suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxext
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = http://dl.suckless.org/st/st-0.5.tar.gz
+	source = http://st.suckless.org/patches/st-0.5-no-bold-colors.diff
+	source = http://st.suckless.org/patches/st-solarized-dark.diff
+	md5sums = 4f8ae2737120a8cba34b23c6020fe51e
+	md5sums = 18c28fc0ff19de6c2e4a58a711c91b15
+	md5sums = b4fd6228e0009c448194b6a637d86352
+
+pkgname = st-solarized
+
