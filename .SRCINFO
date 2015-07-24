@@ -1,0 +1,15 @@
+pkgbase = python2-pafy-git
+	pkgdesc = Python API for YouTube
+	pkgver = v0.3.74.10.g80d5b87
+	pkgrel = 1
+	url = http://np1.github.io/pafy
+	arch = any
+	license = GPL3
+	depends = python2
+	provides = python2-pafy
+	conflicts = python-pafy
+	source = python2-pafy::git+https://github.com/mps-youtube/pafy.git
+	md5sums = SKIP
+
+pkgname = python2-pafy-git
+
