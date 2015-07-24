@@ -1,0 +1,18 @@
+--- src/libdc1394-2.2.1/configure	2013-01-28 11:47:43.000000000 +0900
++++ src/libdc1394-2.2.1/configure	2015-01-12 02:10:24.646720866 +0900
+@@ -13322,13 +13322,13 @@
+   if test x$sdl_exec_prefix != x ; then
+     sdl_config_args="$sdl_config_args --exec-prefix=$sdl_exec_prefix"
+     if test x${SDL_CONFIG+set} != xset ; then
+-      SDL_CONFIG=$sdl_exec_prefix/bin/sdl-config
++      SDL_CONFIG=$sdl_exec_prefix/bin/sdl-config-32
+     fi
+   fi
+   if test x$sdl_prefix != x ; then
+     sdl_config_args="$sdl_config_args --prefix=$sdl_prefix"
+     if test x${SDL_CONFIG+set} != xset ; then
+-      SDL_CONFIG=$sdl_prefix/bin/sdl-config
++      SDL_CONFIG=$sdl_prefix/bin/sdl-config-32
+     fi
+   fi
+ 

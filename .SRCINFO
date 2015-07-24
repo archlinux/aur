@@ -1,0 +1,19 @@
+pkgbase = lib32-libdc1394
+	pkgdesc = High level programming interface to control IEEE 1394 based cameras (32 bit)
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libdc1394/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-libraw1394
+	depends = lib32-libusb
+	depends = libdc1394
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/libdc1394/libdc1394-2.2.3.tar.gz
+	source = sdl-config-32.patch
+	md5sums = 443d0638e51054ff37fb8e551e07672a
+	md5sums = c17d80af8323d82fbc9a4993b758d4ab
+
+pkgname = lib32-libdc1394
+
