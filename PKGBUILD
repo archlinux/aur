@@ -4,7 +4,7 @@
 
 pkgname=lib32-tcp_wrappers-libs
 pkgver=7.6
-pkgrel=18
+pkgrel=19
 pkgdesc="Monitors and Controls incoming TCP connections - 32 bit libraries"
 arch=(x86_64)
 url="ftp://ftp.porcupine.org/pub/security/index.html"
