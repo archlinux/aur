@@ -1,0 +1,20 @@
+pkgbase = lib32-musicbrainz
+	pkgdesc = The second generation incarnation of the CD Index (32 bit)
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://www.musicbrainz.org/index.html
+	arch = x86_64
+	license = LGPL
+	makedepends = lib32-python2
+	makedepends = gcc-multilib
+	depends = lib32-expat
+	depends = lib32-gcc-libs
+	depends = musicbrainz
+	options = !libtool
+	source = ftp://ftp.musicbrainz.org/pub/musicbrainz/historical/libmusicbrainz-2.1.5.tar.gz
+	source = gcc4.3.patch
+	md5sums = d5e19bb77edd6ea798ce206bd05ccc5f
+	md5sums = 9455555d03e3bd15d488ffdb2287ffa7
+
+pkgname = lib32-musicbrainz
+
