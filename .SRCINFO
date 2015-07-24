@@ -1,6 +1,6 @@
 pkgbase = starcal2-git
 	pkgdesc = A full-featured international calendar writen in Python
-	pkgver = 2015.04.27
+	pkgver = 2015.07.24
 	pkgrel = 1
 	url = http://starcal.sourceforge.net
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = starcal2-git
 	optdepends = python2-gnomevfs
 	conflicts = starcal2
 	source = git://github.com/ilius/starcal.git
-	source = patch.install
+	source = remove-sudo.patch
 	md5sums = SKIP
 	md5sums = 8e8805cd60fc15a1e5031a4c3742beca
 

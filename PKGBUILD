@@ -1,7 +1,7 @@
 # Maintainer: Saeed Rasooli <saeed.gnu at gmail dot com>
 
 pkgname=starcal2-git
-pkgver=2015.04.27
+pkgver=2015.07.24
 pkgrel=1
 pkgdesc='A full-featured international calendar writen in Python'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('python2-igraph' 'python2-gflags' 'python2-httplib2' 'python2-gnomev
 makedepends=('git')
 conflicts=('starcal2')
 source=('git://github.com/ilius/starcal.git'
-	'patch.install')
+	'remove-sudo.patch')
 _gitname='starcal'
 md5sums=('SKIP'
 	'8e8805cd60fc15a1e5031a4c3742beca')
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
     cd "${_gitname}"
-    patch -p1 < "$srcdir"/install.patch
+    patch -p1 < "$srcdir"/remove-sudo.patch
 }
 
 package() {
