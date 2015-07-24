@@ -1,0 +1,22 @@
+pkgbase = akonadi-search-git
+	pkgdesc = Libraries and daemons to implement searching in Akonadi. (GIT version)
+	pkgver = r490.007a017
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/pim/akonadi-search
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = xapian-core
+	depends = kdepimlibs-git
+	provides = akonadi-search
+	conflicts = akonadi-search
+	source = git://anongit.kde.org/akonadi-search
+	sha1sums = SKIP
+
+pkgname = akonadi-search-git
+
