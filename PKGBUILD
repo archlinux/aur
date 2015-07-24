@@ -7,7 +7,7 @@ _pkgbase=libgcrypt15-git
 
 pkgname=lib32-$_pkgbase
 pkgver=1.5.4.r3.g35cd81f
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11 (32bit)."
 arch=('x86_64')
 url="http://www.gnupg.org"
@@ -32,6 +32,9 @@ pkgver() {
 }
 
 build() {
+  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
+  _jc=$((${_cpucount:-1}))
+
   export CFLAGS="-m32"
   export CXXFLAGS="-m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -48,7 +51,7 @@ build() {
               --host=$setHost \
               --libdir=$_setLibdir \
               --prefix=$_setPrefix
-  make
+  make -j $_jc
 }
 
 # check() {
