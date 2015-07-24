@@ -1,0 +1,17 @@
+pkgbase = jazz-jackrabbit-2
+	pkgdesc = A classic platform scroller from Abandonia, played in Wine.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.abandonia.com/en/games/294/Jazz+Jackrabbit+2.html
+	install = jazz2.install
+	arch = any
+	license = custom-freeware
+	license = Abandonware
+	depends = wine
+	depends = unionfs-fuse
+	optdepends = abandonia-menu
+	source = Jazz_Jackrabbit_2.zip::http://files.abandonia.com/download.php?game=Jazz+Jackrabbit+2&secure=ce95c11a306aa2eeaadff7b0e973e3fa&td=1304618652
+	md5sums = df245a8185fc2c0f8278b88d2ed9ee7a
+
+pkgname = jazz-jackrabbit-2
+

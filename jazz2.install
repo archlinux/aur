@@ -1,0 +1,10 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+	echo "==> To play the game simply type"
+	echo "==> Jazz2"
+	echo "==> Saved games etc. are in ~/.abandonia/Jazz2/Game"
+	echo "==> There is a long delay when the game exits - hit [Esc] once to speed it up."
+}
