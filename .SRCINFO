@@ -11,6 +11,7 @@ pkgbase = mopidy-youtube-git
 	depends = python2-setuptools
 	depends = python2-pafy
 	depends = python2-requests
+	provides = mopidy-youtube
 	conflicts = mopidy-youtube
 	source = mopidy-youtube::git+https://github.com/dz0ny/mopidy-youtube.git
 	md5sums = SKIP
