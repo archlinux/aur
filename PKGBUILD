@@ -3,7 +3,7 @@
 _gitname=libgcrypt
 pkgname=libgcrypt15-git
 pkgver=1.5.4.r3.g35cd81f
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11."
 arch=('i686'
       'x86_64')
@@ -28,6 +28,9 @@ pkgver() {
 }
 
 build() {
+  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
+  _jc=$((${_cpucount:-1}))
+
   echo "$srcdir/$_gitname"
   cd "$srcdir/$_gitname"
   ./autogen.sh --force
@@ -37,7 +40,7 @@ build() {
               --prefix=/usr \
               --disable-static \
               --disable-padlock-support
-  make
+  make -j $_jc
 }
 
 # check() {
