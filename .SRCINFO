@@ -1,6 +1,6 @@
 pkgbase = python2-pafy-git
 	pkgdesc = Python API for YouTube
-	pkgver = v0.3.74.10.g80d5b87
+	pkgver = v0.3.74r10.g80d5b87
 	pkgrel = 1
 	url = http://np1.github.io/pafy
 	arch = any
