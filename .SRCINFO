@@ -1,0 +1,16 @@
+pkgbase = lib32-tcp_wrappers-lib
+	pkgdesc = Monitors and Controls incoming TCP connections - 32 bit libraries
+	pkgver = 7.6
+	pkgrel = 18
+	url = ftp://ftp.porcupine.org/pub/security/index.html
+	arch = x86_64
+	groups = base
+	license = custom
+	depends = lib32-glibc
+	source = ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz
+	source = http://archlinux-stuff.googlecode.com/files/tcp-wrappers-7.6%2B.patch.gz
+	sha256sums = 9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d
+	sha256sums = 875239e808030936c1dd576aba4dee6044496e8316bc32b2169468a2e9f471a1
+
+pkgname = lib32-tcp_wrappers-lib
+
