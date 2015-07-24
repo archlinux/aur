@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 prepare() {
   STACK_ROOT=$srcdir
-  stack setup --reinstall
+  stack setup
 }
 
 build() {
