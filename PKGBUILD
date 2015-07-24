@@ -4,7 +4,7 @@
 pkgname=lib32-icu48
 _pkgname=icu
 pkgver=4.8.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="International Components for Unicode library, version 4.8"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
@@ -43,6 +43,9 @@ prepare() {
 }
 
 build() {
+  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
+  _jc=$((${_cpucount:-1}))
+
   cd ${srcdir}/icu/source
 
   export CC='gcc -m32'
@@ -53,7 +56,7 @@ build() {
               --sysconfdir=/etc \
               --mandir=/usr/share/man \
               --libdir=/usr/lib32
-  make
+  make -j $_jc
 }
 
 check() {
