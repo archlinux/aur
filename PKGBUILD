@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
-pkgver=20150723.2cb5b9b
+pkgver=20150724.3e764b4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
