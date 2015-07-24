@@ -1,6 +1,6 @@
 pkgbase = gr-air-modes-git
 	pkgdesc = A software-defined radio receiver for Mode S transponder signals, including ADS-B reports from equipped aircraft.
-	pkgver = 20150526
+	pkgver = 20150710
 	pkgrel = 1
 	url = https://github.com/bistromath/gr-air-modes
 	install = gr-air-modes-git.install
