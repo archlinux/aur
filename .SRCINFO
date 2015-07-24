@@ -1,0 +1,19 @@
+pkgbase = mopidy-youtube
+	pkgdesc = Mopidy extension for playing music from Youtube
+	pkgver = v1.0.1
+	pkgrel = 1
+	url = http://www.mopidy.com
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = mopidy
+	depends = python2-pykka>=1.1
+	depends = python2-pafy
+	depends = python2-requests
+	conflicts = mopidy-youtube-git
+	source = mopidy-youtube-v1.0.1.tar.gz::https://github.com/dz0ny/mopidy-youtube/tarball/v1.0.1
+	md5sums = de254f9a713cbc6a8b6f76fb2c7eac43
+
+pkgname = mopidy-youtube
+
