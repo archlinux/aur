@@ -1,0 +1,25 @@
+pkgbase = evince
+	pkgdesc = GNOME document viewer ported for win32, built with pdf support
+	pkgver = 3.16.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Evince
+	install = evince.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = itstool
+	makedepends = intltool
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-binutils
+	depends = gsettings-desktop-schemas
+	depends = mingw-w64-gtk3
+	depends = mingw-w64-libxml2
+	depends = mingw-w64-poppler
+	provides = evince
+	options = !strip
+	source = http://ftp.gnome.org/pub/GNOME/sources/evince/3.16/evince-3.16.1.tar.xz
+	sha256sums = 06ff75065b2a30cd588c402f6bd2ea88ee3166181805e0cc00bd54f71dbf6130
+
+pkgname = mingw-w64-evince-light
+
