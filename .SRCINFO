@@ -1,0 +1,14 @@
+pkgbase = sunwait
+	pkgdesc = A small C program for calculating sunrise and sunset times
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.risacher.org/sunwait/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/project/sunwait4windows/sunwait0-8.tar
+	md5sums = 97b062fb4adce37d4af59f5b42675fce
+
+pkgname = sunwait
+
