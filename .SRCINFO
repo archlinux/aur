@@ -1,0 +1,15 @@
+pkgbase = obfs4-git
+	pkgdesc = The obfourscator - tor project
+	pkgver = 130.69ffcc3
+	pkgrel = 1
+	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = go
+	makedepends = git
+	source = git+https://git.torproject.org/pluggable-transports/obfs4.git
+	sha1sums = SKIP
+
+pkgname = obfs4-git
+
