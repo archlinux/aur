@@ -1,6 +1,6 @@
 pkgbase = ufw-bzr
 	pkgdesc = Uncomplicated and easy to use CLI tool for managing a netfilter firewall. Development branch.
-	pkgver = 865
+	pkgver = 898
 	pkgrel = 1
 	url = https://code.launchpad.net/~jdstrand/ufw/trunk
 	arch = any

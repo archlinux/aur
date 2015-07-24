@@ -6,7 +6,7 @@
 
 pkgname=ufw-bzr
 _pkgname=ufw
-pkgver=865
+pkgver=898
 pkgrel=1
 pkgdesc="Uncomplicated and easy to use CLI tool for managing a netfilter firewall. Development branch."
 arch=('any')
