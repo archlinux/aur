@@ -12,18 +12,23 @@ pkgbase = tcp_wrappers
 	arch = armv7l
 	groups = base
 	license = custom
-	depends = bash
-	depends = glibc
-	backup = etc/hosts.allow
-	backup = etc/hosts.deny
 	source = ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz
 	source = http://archlinux-stuff.googlecode.com/files/tcp-wrappers-7.6%2B.patch.gz
 	source = hosts.allow
 	source = hosts.deny
-	md5sums = e6fa25f71226d090f34de3f6b122fb5a
-	md5sums = 3e786669e16b78ba726f948ddb73c9db
-	md5sums = 32cfeeed797161034f62bb45f3167baa
-	md5sums = e4743ca604a1749c7312f9283b4bb0d1
+	sha256sums = 9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d
+	sha256sums = 875239e808030936c1dd576aba4dee6044496e8316bc32b2169468a2e9f471a1
+	sha256sums = c1b19035a14ba552e8795ec3d7171e688592c9317f2eb14373320315435565e3
+	sha256sums = 969414f0a161e95fbe4cfe32df7c657a2793734d09416c00fa1116c5c0a9924f
 
 pkgname = tcp_wrappers
+	depends = bash
+	depends = tcp_wrappers-libs
+	backup = etc/hosts.allow
+	backup = etc/hosts.deny
+	optdepends_x86_64 = lib32-tcp_wrappers-libs: 32 bit support
+
+pkgname = tcp_wrappers-libs
+	pkgdesc = Monitors and Controls incoming TCP connections - Libraries
+	depends = glibc
 
