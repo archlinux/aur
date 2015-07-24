@@ -1,7 +1,7 @@
 pkgbase = otter-browser-qtwebengine-git
 	pkgdesc = Project aiming to recreate aspects of Opera 12.x UI using Qt5. Built against QtWebEngine (experimental).
 	pkgver = 0.9.07.dev81.1.g1528984
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.otter-browser.org
 	arch = i686
 	arch = x86_64

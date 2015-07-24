@@ -3,7 +3,7 @@
 _pkgname=otter-browser
 pkgname=$_pkgname-qtwebengine-git
 pkgver=0.9.07.dev81.1.g1528984
-pkgrel=1
+pkgrel=2
 pkgdesc="Project aiming to recreate aspects of Opera 12.x UI using Qt5.
          Built against QtWebEngine (experimental)."
 arch=("i686" "x86_64")
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-    mkdir build && cd build
+    mkdir -p build && cd build
     cmake $srcdir/$_pkgname -DEnableQtwebengine=ON -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
