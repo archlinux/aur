@@ -1,8 +1,8 @@
 # Maintainer: Hugues Chabot <at google mail>
 _npmname=eslint
-_npmver=1.0.0-rc-1
+_npmver=1.0.0-rc-2
 pkgname=nodejs-eslint # All lowercase
-pkgver=1.0.0_rc_1
+pkgver=1.0.0_rc_2
 pkgrel=1
 pkgdesc="An AST-based pattern checker for JavaScript."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('9b8f1fbb16127106f0da8d38869a9786037c8b16b85ba92a1bed714714927f61')
+sha256sums=('cf4b72c1d817e47c7b0c767a246375d824bcc09c47b13baca18bb6b33e4ba339')
 
 package() {
   cd $srcdir
