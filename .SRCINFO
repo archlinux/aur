@@ -1,0 +1,31 @@
+pkgbase = yawls-bzr
+	pkgdesc = Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor - Bazaar sources
+	pkgver = 1.2.1.1.r19
+	pkgrel = 1
+	url = https://launchpad.net/yawls
+	install = yawls-bzr.install
+	arch = any
+	license = GPL3
+	makedepends = java-environment>=7
+	makedepends = gettext-java
+	makedepends = java-gnome
+	makedepends = opencv-java
+	makedepends = apache-ant
+	makedepends = po4a
+	makedepends = gzip
+	makedepends = bzr
+	depends = java-runtime-headless>=7
+	depends = gettext-java
+	depends = gtk3
+	depends = java-gnome
+	depends = opencv-java
+	depends = polkit-gnome
+	provides = yawls
+	conflicts = yawls
+	source = bzr+lp:yawls
+	source = yawls-bzrd.service
+	md5sums = SKIP
+	md5sums = ae6497e82edd0e43914ebc72f1975fa0
+
+pkgname = yawls-bzr
+
