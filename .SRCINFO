@@ -1,0 +1,15 @@
+pkgbase = rodentbane-git
+	pkgdesc = Implementation of keynav for awesome, rapid cursor control using the keyboard
+	pkgver = 20150724
+	pkgrel = 3
+	url = https://github.com/dodo/rodentbane
+	arch = any
+	license = custom:"WTFPL"
+	makedepends = git
+	depends = awesome
+	depends = xdotool
+	source = http://www.wtfpl.net/txt/copying
+	md5sums = 8365d07beeb5f39d87e846dca3ae7b64
+
+pkgname = rodentbane-git
+
