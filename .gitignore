@@ -1,0 +1,6 @@
+pkg/
+src/
+ocenaudio*.deb
+ocenaudio-*.pkg.tar.xz
+.AURINFO
+

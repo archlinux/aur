@@ -1,0 +1,20 @@
+pkgbase = ocenaudio-bin
+	pkgdesc = cross-platform, easy to use, fast and functional audio editor
+	pkgver = 2.0.16
+	pkgrel = 1
+	url = http://loopauditioneer.sourceforge.net/
+	install = ocenaudio.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = gcc-libs-multilib
+	depends = gtk-update-icon-cache
+	depends = shared-mime-info
+	provides = ocenaudio
+	conflicts = ocenaudio
+	source = http://www.ocenaudio.com.br/downloads/ocenaudio.deb
+
+pkgname = ocenaudio-bin
+
