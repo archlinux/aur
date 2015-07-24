@@ -13,4 +13,5 @@ pkgbase = telepathy-hanging-git
 
 pkgname = telepathy-hanging-git
 	depends = telepathy-qt5
+	depends = libhangish-git
 

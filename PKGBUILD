@@ -29,7 +29,7 @@ build() {
 }
 
 package_telepathy-hanging-git() {
-  depends=('telepathy-qt5')
+  depends=('telepathy-qt5' 'libhangish-git')
   cd build
   make DESTDIR="$pkgdir" install
 }
