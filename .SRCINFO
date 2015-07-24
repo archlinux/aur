@@ -1,0 +1,18 @@
+pkgbase = ipsumdump
+	pkgdesc = A tool that summarizes TCP/IP dump files into a self-describing ASCII format easily readable by humans and programs
+	pkgver = 1.82
+	pkgrel = 1
+	url = http://www.cs.ucla.edu/~kohler/ipsumdump/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:Click
+	depends = gcc-libs
+	depends = libpcap
+	source = http://www.cs.ucla.edu/~kohler/ipsumdump/ipsumdump-1.82.tar.gz
+	source = LICENSE
+	sha256sums = 149a08324990fafa04b8d3dea2bf9e2d9f977891aba68ad6cf97647cc6c19c4f
+	sha256sums = 5824ab84c843681a0c7b3a71fcaf2412d0cb4c38baf6883e77eb19e41499557f
+
+pkgname = ipsumdump
+
