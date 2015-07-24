@@ -1,0 +1,21 @@
+pkgbase = wqy-zenhei-nightly_build
+	pkgdesc = A Hei Ti Style (sans-serif) Chinese Outline Font. This is a nightly-build version.
+	pkgver = 0.9.47
+	pkgrel = 2
+	url = http://wenq.org
+	install = wqy-zenhei-nightly_build.install
+	arch = any
+	license = GPL2
+	license = custom:"font embedding exception"
+	depends = fontconfig
+	depends = xorg-font-utils
+	optdepends = zenity: configuration gui support
+	provides = wqy-zenhei
+	conflicts = wqy-zenhei
+	source = http://wenq.org/daily/zenhei/wqy-zenhei-0.9.47-nightlybuild.tar.gz
+	source = 44-wqy-zenhei.conf
+	md5sums = SKIP
+	md5sums = bd2d5dd235260fce873a6eeb513ac3ef
+
+pkgname = wqy-zenhei-nightly_build
+

@@ -1,0 +1,22 @@
+post_install() {
+	echo -n "Updating font cache... "
+	mkfontscale /usr/share/fonts/wenquanyi/wqy-zenhei
+	mkfontdir /usr/share/fonts/wenquanyi/wqy-zenhei
+	fc-cache -f /usr/share/fonts/wenquanyi/wqy-zenhei > /dev/null
+	echo "done."
+	echo -e "you can use command (with root permission)\n\tzenheiset aa\nto display only the smooth vector glyphs, or\n\tzenheiset bitmap\nto use the embedded Hanzi bitmaps, except the experimental 13px, or\n\tzenheiset bitmapfull\nto use all available bitmaps."
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+post_remove() {
+	rm -r /usr/share/fonts/wenquanyi/wqy-zenhei
+	rmdir --ignore-fail-on-non-empty /usr/share/fonts/wenquanyi/
+}
+
+op=$1
+shift
+
+$op $*
