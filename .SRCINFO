@@ -1,5 +1,5 @@
 pkgbase = pmars
-	pkgdesc = Reference implementation of Corewar
+	pkgdesc = Reference implementation of Corewar game
 	pkgver = 0.9.2
 	pkgrel = 2
 	url = http://sourceforge.net/projects/corewar/

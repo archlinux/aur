@@ -4,7 +4,7 @@
 pkgname=pmars
 pkgver=0.9.2
 pkgrel=2
-pkgdesc="Reference implementation of Corewar"
+pkgdesc="Reference implementation of Corewar game"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/corewar/"
 license=('GPL2')
