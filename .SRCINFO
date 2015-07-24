@@ -1,0 +1,18 @@
+pkgbase = hexedit-advanced-search
+	pkgdesc = Hex Editor for Linux with advanced search patch from Volker Schatz
+	pkgver = 1.2.13
+	pkgrel = 2
+	url = http://rigaux.org/hexedit.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	provides = hexedit
+	conflicts = hexedit
+	source = http://rigaux.org/hexedit-1.2.13.src.tgz
+	source = http://www.volkerschatz.com/unix/patches/hexedit-search2a.diff.gz
+	md5sums = a5af1378d028512a9cad27a5ba3e15f9
+	md5sums = 519d24ad17bd87fd6f97ae14043dce89
+
+pkgname = hexedit-advanced-search
+
