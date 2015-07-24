@@ -1,0 +1,18 @@
+pkgbase = molequeue-git
+	pkgdesc = Desktop integration of high performance computing resources
+	pkgver = 0.8.0.r779.8897623
+	pkgrel = 1
+	url = http://www.openchemistry.org/projects/molequeue
+	arch = i686
+	arch = x86_64
+	license = Kitware
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = molequeue
+	conflicts = molequeue
+	source = git://github.com/OpenChemistry/molequeue.git
+	sha256sums = SKIP
+
+pkgname = molequeue-git
+
