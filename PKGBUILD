@@ -6,7 +6,7 @@
 pkgbase=tcp_wrappers
 pkgname=(tcp_wrappers tcp_wrappers-libs)
 pkgver=7.6
-pkgrel=18
+pkgrel=19
 pkgdesc="Monitors and Controls incoming TCP connections"
 arch=(i686 x86_64 armv5te armv6h armv6l armv7h armv7l)
 url="ftp://ftp.porcupine.org/pub/security/index.html"
