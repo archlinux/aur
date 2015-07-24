@@ -1,0 +1,15 @@
+pkgbase = python-flask-sqlalchemy
+	pkgdesc = Adds SQLAlchemy support to your Flask application
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://pythonhosted.org/Flask-SQLAlchemy/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-SQLAlchemy/Flask-SQLAlchemy-2.0.tar.gz
+	md5sums = 06ae73194cca73b72e178f870d1dac7c
+
+pkgname = python-flask-sqlalchemy
+	depends = python-flask
+
