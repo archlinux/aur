@@ -1,0 +1,14 @@
+pkgbase = lib32-spandsp
+	pkgdesc = A DSP library for telephony (32 bit)
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = http://www.soft-switch.org/
+	arch = x86_64
+	license = GPL
+	depends = lib32-libtiff
+	depends = spandsp
+	source = http://www.soft-switch.org/downloads/spandsp/spandsp-0.0.6.tar.gz
+	md5sums = 897d839516a6d4edb20397d4757a7ca3
+
+pkgname = lib32-spandsp
+
