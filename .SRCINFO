@@ -1,0 +1,16 @@
+pkgbase = telepathy-hanging-git
+	pkgdesc = Telepathy Connection Manager for Google Talk
+	pkgver = r12.ab43734
+	pkgrel = 1
+	url = https://github.com/tiagosh/telepathy-hanging/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/tiagosh/telepathy-hanging
+	md5sums = SKIP
+
+pkgname = telepathy-hanging-git
+	depends = telepathy-qt5
+
