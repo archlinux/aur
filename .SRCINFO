@@ -1,0 +1,17 @@
+pkgbase = cpy
+	pkgdesc = A replacement for [c]at with automatic syntax highlighting
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rumpelsepp/c.py
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-docopt
+	depends = python-pygments
+	source = cpy::git+https://github.com/rumpelsepp/c.py.git#commit=f53697549857fdb9fcf0df5761a36eca1f3441be
+	sha256sums = SKIP
+
+pkgname = cpy
+
