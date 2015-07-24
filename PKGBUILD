@@ -7,7 +7,7 @@
 
 pkgname=snort
 pkgver=2.9.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64')
 url='http://www.snort.org'
@@ -54,4 +54,4 @@ package() {
 
 md5sums=('fd271788c0f8876be87a858a9142f202'
          'SKIP'
-         '49c7e8dbde680322ff5c4e0883f2b908')
+         'a847030a34396e6b2d1cacd272ad42da')
