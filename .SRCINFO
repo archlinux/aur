@@ -1,0 +1,18 @@
+pkgbase = python-flask-bootstrap
+	pkgdesc = Packages Bootstrap into an extension that mostly consists of a blueprint named ‘bootstrap’.
+	pkgver = 3.3.5.3
+	pkgrel = 1
+	url = https://pythonhosted.org/Flask-Bootstrap/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-Bootstrap/Flask-Bootstrap-3.3.5.3.tar.gz
+	md5sums = 1756e7de2893a900bac82267fa78b94b
+
+pkgname = python2-flask-bootstrap
+	depends = python2-flask
+
+pkgname = python-flask-bootstrap
+	depends = python-flask
+
