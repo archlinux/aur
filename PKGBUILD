@@ -1,46 +1,45 @@
 # Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=howm-x11-git
-_pkgname=howm
-pkgver=0.5.29.g8879be1
-pkgrel=9
+pkgver=0.5.33.gafffe1e
+pkgrel=1
 
 pkgdesc='A lightweight, tiling X11 window manager that mimics vi by offering operators, motions and modes.'
-arch=('i686' 'x86_64')
 url='https://github.com/HarveyHunt/howm'
 license=('GPL')
+arch=('i686' 'x86_64')
 
 depends=('bash' 'xcb-util-wm' 'sxhkd' 'cottage-git')
 makedepends=('git')
 checkdepends=('linux-headers')
 provides=('howm-x11')
 conflicts=('howm-x11')
-options=('!strip' 'debug')
-source=('git+https://github.com/HarveyHunt/howm#branch=develop')
+
+options=('debug')
+source=("$pkgname::git+https://github.com/HarveyHunt/howm#branch=develop")
 sha256sums=('SKIP')
 install=howm.install
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgname"
     git describe --tags | sed 's/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
+    cd "$pkgname"
     make debug
 }
 
 check() {
-    cd "$_pkgname"
+    cd "$pkgname"
     find /usr/lib/modules -name checkpatch.pl -print -quit | xargs -i cp {} .
 
-    echo "spellingtxt||disable" > spelling.txt
+    printf 'spellingtxt||disable\n' > spelling.txt
     make check
 }
 
 package() {
-    cd "$_pkgname"
-
+    cd "$pkgname"
     find examples/ -type f ! -executable -execdir \
 	 install -Dm644 {} "$pkgdir"/usr/share/howm/examples/{} \;
     find examples/ -type f -executable -execdir \
