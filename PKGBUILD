@@ -3,7 +3,7 @@
 
 set -u
 pkgname='pmacct'
-pkgver='0.14.0'
+pkgver='1.5.1'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("http://www.pmacct.net/${pkgname}-${pkgver}.tar.gz"
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('c4b4ed5608c600910bd580f92faefd8d3af0f6d5c4aabddb5ce31c6d192e0336'
+sha256sums=('96134549a10947f3f6d610b670a26f1a54e01af4be0eff09bf48c19246d33584'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -23,7 +23,7 @@ sha256sums=('c4b4ed5608c600910bd580f92faefd8d3af0f6d5c4aabddb5ce31c6d192e0336'
 prepare() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix='/usr' --mandir='/usr/share/man' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads
+  ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads
   set +u
 }
 
@@ -61,7 +61,8 @@ package() {
   # documentation
   install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/README.* -t "${pkgdir}/usr/share/doc/pmacct/"
   install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/docs"/* -t "${pkgdir}/usr/share/doc/pmacct/"
-  cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'EXAMPLES' 'FAQS' 'KNOWN-BUGS' 'README' 'TODO' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
+  cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'KNOWN-BUGS' 'README' 'TODO' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
+  # EXAMPLES changed to QUICKSTART
 
   # Ensure there are no forbidden paths (git-aurcheck)
   ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
