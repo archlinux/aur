@@ -1,0 +1,13 @@
+pkgbase = lstree
+	pkgdesc = ls in tree form
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ErkiDerLoony/lstree
+	arch = any
+	license = GPL3
+	depends = bash
+	source = https://github.com/ErkiDerLoony/lstree/archive/v0.1.tar.gz
+	sha256sums = e18b1a6a08d82a56dffdaef8d2b31832f421ad6e37cb826977a81923ca242a1e
+
+pkgname = lstree
+
