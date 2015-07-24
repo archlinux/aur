@@ -4,7 +4,7 @@
 _pkgbasename=ibus-qt
 pkgname=lib32-${_pkgbasename}
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='IBus qt library and IBus qt input method plugin'
 arch=('x86_64')
 license=('LGPL')
@@ -15,6 +15,9 @@ source=("https://github.com/ibus/ibus-qt/releases/download/${pkgver}/${_pkgbasen
 sha1sums=('3711d9099ac97d1b3bc7313080a016caa04ae66e')
 
 build() {
+  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
+  _jc=$((${_cpucount:-1}))
+
   cd "${srcdir}"
   mkdir -p build
   cd build
@@ -24,7 +27,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cmake "../${_pkgbasename}-${pkgver}-Source" -DCMAKE_INSTALL_PREFIX=/usr -DLIBDIR=lib32 -DQT_PLUGINS_DIR=/usr/lib32/qt/plugins/
-  make
+  make -j $_jc
 }
 
 package() {
