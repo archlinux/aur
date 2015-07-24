@@ -1,0 +1,18 @@
+pkgbase = python-dominate
+	pkgdesc = Python library for creating and manipulating HTML documents using an elegant DOM API.
+	pkgver = 2.1.12
+	pkgrel = 1
+	url = https://github.com/Knio/dominate
+	arch = any
+	license = LGPL3
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/d/dominate/dominate-2.1.12.tar.gz
+	md5sums = af77ace88dc32cedb3989412528ae635
+
+pkgname = python2-dominate
+	depends = python2
+
+pkgname = python-dominate
+	depends = python
+
