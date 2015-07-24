@@ -1,6 +1,7 @@
 # MINGW port for the evince-light AUR package
 
 pkgbase=mingw-w64-evince-light
+_pkgbase=evince
 pkgname=mingw-w64-evince-light
 pkgver=3.16.1
 pkgrel=1
@@ -27,14 +28,14 @@ provides=("${pkgbase}")
 options=(!strip)
 
 install=${pkgbase}.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/evince/${pkgver%.*}/evince-${pkgver}.tar.xz")
+source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgbase}/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz")
 sha256sums=('06ff75065b2a30cd588c402f6bd2ea88ee3166181805e0cc00bd54f71dbf6130')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build()
 {
-    cd ${srcdir}/${pkgbase}-${pkgver}
+    cd ${srcdir}/${_pkgbase}-${pkgver}
 
 #        --enable-pdf if building with poppler-glib
 #        --enable-ps if building with libspectre
@@ -88,7 +89,7 @@ build()
 
 package()
 {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
   for _arch in ${_architectures}; do
     cd "build-${_arch}"
 	alias strip=${_arch}-strip
