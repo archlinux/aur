@@ -2,6 +2,18 @@ infodir=usr/share/info
 file=guix.info
 
 post_install() {
+  echo "Guix 0.8.3 already provides a systemd service file in its release,"
+  echo "so the one included in AUR package is now removed. Please use the"
+  echo "following commands to keep your installation compatible with the"
+  echo "new service file:"
+  echo
+  echo "  systemctl disable guix"
+  echo "  systemctl enable guix-daemon"
+  echo "  groupmod -n guixbuild guix-builder"
+  echo "  usermod -l guixbuild guix-builder"
+  echo
+  echo "If you have /etc/systemd/system/guix.service.d, please also remember"
+  echo "to review its content and rename it to guix-daemon.service.d."
   [[ -x usr/bin/install-info ]] || return 0
   install-info "$infodir/$file.gz" "$infodir/dir" 2> /dev/null
 }
