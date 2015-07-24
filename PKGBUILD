@@ -56,10 +56,6 @@ prepare(){
   # pyuic4 -> python2-pyuic4
   sed -e 's|pyuic4|python2-pyuic4|' \
       -i adm_local/cmake_files/FindPyQt4.cmake
-      
-  # now "-py2" is default for pyrcc4
-  #  sed -e 's|${PYQT_PYRCC_EXECUTABLE}|${PYQT_PYRCC_EXECUTABLE}" -py2"|' \
-  #      -i adm_local/cmake_files/FindPyQt4.cmake
 }
 
 build() {
