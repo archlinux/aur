@@ -1,0 +1,13 @@
+pkgbase = python2-dvbstreamer
+	pkgdesc = python control modules for dvbstreamer (https://aur4.archlinux.org/packages/dvbstreamer/)
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/dvbstreamer/
+	arch = any
+	license = GPLv2
+	makedepends = python2-setuptools
+	source = http://downloads.sourceforge.net/project/dvbstreamer/pydvbstreamer/0.1/pydvbstreamer-0.1.tar.bz2
+	sha256sums = 33e23f0f9305e12f27bebae585a494340e4d5b152c0512d9bbe2201a08a7b5e5
+
+pkgname = pydvbstreamer
+
