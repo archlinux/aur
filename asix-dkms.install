@@ -1,9 +1,9 @@
 post_install (){
     DKMS=$(which dkms)
 
-    $DKMS add -m asix -v v4.17.0
-    $DKMS build -m asix -v v4.17.0
-    $DKMS install -m asix -v v4.17.0
+    $DKMS add -m asix -v v4.17.2
+    $DKMS build -m asix -v v4.17.2
+    $DKMS install -m asix -v v4.17.2
     
     echo " >> "
     echo " >> rmmod asix"

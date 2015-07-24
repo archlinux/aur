@@ -3,7 +3,7 @@
 
 _pkgbase=asix
 pkgname=asix-dkms
-pkgver=v4.17.0
+pkgver=v4.17.2
 pkgrel=1
 pkgdesc="Driver for USB ASIX Ethernet models AX88772C 772B 772A 760 772 178"
 arch=('i686' 'x86_64')
@@ -17,15 +17,15 @@ options=(!strip)
 _pkgname="AX88772C_772B_772A_760_772_178_LINUX_DRIVER"
 _pkgname2="Source"
 
-source=("http://www.asix.com.tw/FrootAttach/driver/${_pkgname}_${pkgver}_${_pkgname2}.tar.bz2"
+source=("http://www.asix.com.tw/FrootAttach/driver/${_pkgname}_${pkgver}_${_pkgname2}.tar.gz"
         "dkms.conf"
         "asix-dkms.install"
         "time_date_errors.patch")
 		
-md5sums=('611a447e67ac0443d36d16fd065a5a41'
+md5sums=('cd2f85d6076e6cde602e5bf8b77d9930'
          'fc33b5dd739e8964a346525a1434143e'
-         '5710bd634c776a8aa842687125386c12'
-         'a13efd5ba934b4b983496d1172ee716a')
+         '017b38c2bc5e98f81bdfeb50896e5c28'
+         '4bcb0a6797a8adbbe327c21edfc46272')
 
 package() {
 	
