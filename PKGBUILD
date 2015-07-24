@@ -3,7 +3,7 @@
 
 pkgname=puppetserver
 pkgver=2.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
@@ -29,7 +29,6 @@ prepare() {
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:/opt/puppetlabs/puppet/lib/ruby/vendor_ruby:$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ):" ext/config/conf.d/$pkgname.conf
-  sed -i "s:run/puppetlabs:run/puppet:" ext/config/conf.d/$pkgname.conf
 }
 
 package() {
