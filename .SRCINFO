@@ -1,7 +1,7 @@
 pkgbase = wabbitemu
 	pkgdesc = An emulator for Texas Instruments Calculators
-	pkgver = 1.8.2.26
-	pkgrel = 3
+	pkgver = 1.9.5.20
+	pkgrel = 1
 	url = https://wabbit.codeplex.com/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wabbitemu
 	depends = wine
 	source = http://buckeyedude.com/Revsoft/Wabbitemu/Wabbitemu.exe
 	source = wabbitemu
-	md5sums = 38d3d44e26651a09976bfb10efc237ee
+	md5sums = 6ff92cf1d489f8e74bf0271654e56c32
 	md5sums = 1a1d0a376bf296da5cbcc5c9fcabe41c
 
 pkgname = wabbitemu
