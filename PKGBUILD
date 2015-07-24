@@ -10,7 +10,6 @@ pkgdesc="Mopidy extension for playing music from Youtube"
 arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
-provides=("mopidy-youtube")
 depends=(
   'mopidy'
   'python2-pykka>=1.1'
