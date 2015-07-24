@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.28.10
+pkgver=1.30.0
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -63,8 +63,8 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('95c659be0b2f6fd5880c253d5b4ad6ec2adfdc6078c1679ebdb0df4ebb8ae90bcc703cb513350fc1fdea0ea28e9c5585fbccc5cbff1a4fe39338bb39b2b8668d'
-            '044035f1bcd56d6475301ad903003d036602e518dc896b0a050db9ae67cdc6662dda732ecc7bdde3d3aeed2ad64a2d4efb3a36c977bf2a5562ec3932204ae23f')
+sha512sums=('b3a68cb5de208f359d2b9aa5d26fe0248575ee03975a6cf60e1a3509cf34c3c55116ba24db7d4dbeee2ed79bc9e2bdd5056a9de82d9263c41cb657eb702ae45e'
+            '5ea0649eb3c4fda98e15a01842149ce041d427eb585b33874aea2a6dc06155a61e8e0821984e13742a639b1d295f892b7946904a79d3bb3a9059c26436cfe4ca')
 
 check() {
     # test-lock fails, perhaps related to:
