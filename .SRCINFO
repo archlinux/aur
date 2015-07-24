@@ -1,0 +1,22 @@
+pkgbase = chemkit-git
+	pkgdesc = An open source software library for cheminformatics, molecular modeling and molecular visualization
+	pkgver = 1101
+	pkgrel = 1
+	url = http://www.chemkit.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = eigen3
+	makedepends = boost
+	depends = qt4
+	depends = boost-libs
+	depends = glu
+	provides = chemkit
+	conflicts = chemkit
+	source = git+https://github.com/kylelutz/chemkit
+	sha256sums = SKIP
+
+pkgname = chemkit-git
+
