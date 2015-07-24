@@ -1,6 +1,6 @@
 pkgbase = linux-libre-knock
-	pkgver = 4.1.2_gnu
-	pkgrel = 2
+	pkgver = 4.1.3_gnu
+	pkgrel = 1
 	url = https://gnunet.org/knock
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = linux-libre-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.2-gnu/patch-4.1-gnu-4.1.2-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.3-gnu/patch-4.1-gnu-4.1.3-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.3-gnu/patch-4.1-gnu-4.1.3-gnu.xz.sign
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -33,7 +33,7 @@ pkgbase = linux-libre-knock
 	source = change-default-console-loglevel.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988
+	sha256sums = d52669f17a1cd13abba4f47a04e1991be59cfa707926b21f9c5bf031ec10c5d0
 	sha256sums = SKIP
 	sha256sums = da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc
 	sha256sums = SKIP
@@ -62,7 +62,7 @@ pkgname = linux-libre-knock
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-knock=4.1.2
+	provides = linux-knock=4.1.3
 	conflicts = kernel26-knock
 	conflicts = kernel26-libre-knock
 	replaces = linux-knock
@@ -72,7 +72,7 @@ pkgname = linux-libre-knock
 
 pkgname = linux-libre-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
-	provides = linux-knock-headers=4.1.2
+	provides = linux-knock-headers=4.1.3
 	conflicts = kernel26-knock-headers
 	conflicts = kernel26-libre-knock-headers
 	replaces = linux-knock-headers
@@ -81,7 +81,7 @@ pkgname = linux-libre-knock-headers
 
 pkgname = linux-libre-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
-	provides = linux-knock-docs=4.1.2
+	provides = linux-knock-docs=4.1.3
 	conflicts = kernel26-knock-docs
 	conflicts = kernel26-libre-knock-docs
 	replaces = linux-knock-docs

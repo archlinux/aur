@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-knock # Build stock knock kernel
 _pkgbasever=4.1-gnu
-_pkgver=4.1.2-gnu
+_pkgver=4.1.3-gnu
 _knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -19,7 +19,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gnunet.org/knock"
 license=('GPL2')
@@ -50,7 +50,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            'b9c0dd82967a29943da584ed80cc731097b17852c13cb8e8b9df440aef724988'
+            'd52669f17a1cd13abba4f47a04e1991be59cfa707926b21f9c5bf031ec10c5d0'
             'SKIP'
             'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
