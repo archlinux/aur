@@ -1,0 +1,14 @@
+pkgbase = pmars
+	pkgdesc = Reference implementation of Corewar
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = http://sourceforge.net/projects/corewar/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libx11
+	source = http://downloads.sourceforge.net/project/corewar/pMARS/0.9.2/pmars-0.9.2.tar.gz
+	md5sums = a73943a34e9de8f0d3028fc4566cd558
+
+pkgname = pmars
+
