@@ -1,0 +1,23 @@
+pkgbase = mugshot
+	pkgdesc = Program to update personal user details
+	pkgver = 0.2.5
+	pkgrel = 5
+	url = https://launchpad.net/mugshot
+	install = mugshot.install
+	arch = any
+	license = GPLv3
+	depends = python-pexpect
+	depends = python-dbus
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-distutils-extra
+	optdepends = gstreamer0.10-good-plugins: webcam support
+	optdepends = pidgin: update buddy icon
+	optdepends = libreoffice: update user details
+	optdepends = accountsservice: user image management without ~/.face
+	options = !emptydirs
+	source = https://launchpad.net/mugshot/0.2/0.2.5/+download/mugshot-0.2.5.tar.gz
+	md5sums = 11a5e5aac8ed876bc50ebd937fb450ab
+
+pkgname = mugshot
+
