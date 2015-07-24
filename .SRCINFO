@@ -1,16 +1,15 @@
 pkgbase = tsmclient
 	pkgdesc = IBM Tivoli Storage Manager Client
-	pkgver = 7.1.0
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = http://www-03.ibm.com/software/products/en/tivostormana/
 	arch = x86_64
 	license = proprietary
 	makedepends = rpmextract
-	source = ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v710/7.1.0.0-TIV-TSMBAC-LinuxX86.tar
-	source = run.sh
+	optdepends = jre8-openjdk: support for dsmj java gui
+	source = ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v712/7.1.2.0-TIV-TSMBAC-LinuxX86.tar
 	source = dsmcad.service
-	sha1sums = 6e790443ebd4de883cf4b03c642621233978103e
-	sha1sums = c4de331dc34a617a7957f164ef25e0f4baf69be9
+	sha1sums = de8988b38c86ceb85104d01d95d2c978d79d90f1
 	sha1sums = d4702d06339da46e998980e0d145e1f3e92f30aa
 
 pkgname = tsmclient
