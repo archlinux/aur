@@ -2,11 +2,11 @@
 
 _gitname=kdebugsettings
 pkgname=$_gitname-git
-pkgver=r90.568760c
+pkgver=r125.1ca4ca4
 pkgrel=1
 pkgdesc='An application to enable/disable qCDebug'
 arch=(i686 x86_64)
-url='https://projects.kde.org/projects/playground/utils/kdebugsettings'
+url='http://projects.kde.org/kdebugsettings'
 license=(GPL)
 depends=(ki18n kcompletion kdbusaddons kitemviews kcoreaddons)
 makedepends=(extra-cmake-modules git)
