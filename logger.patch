@@ -1,0 +1,10 @@
+--- logger.h	2015-07-06 22:36:39.000000000 +0200
++++ logger.h	2015-07-17 23:38:47.917826848 +0200
+@@ -6,6 +6,7 @@
+ #ifndef LOGGER_H
+ #define LOGGER_H
+ 
++#include <QObject>
+ #include <QtGlobal>
+ #include <QThreadStorage>
+ #include <QHash>
