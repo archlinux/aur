@@ -1,6 +1,6 @@
 pkgbase = crawl-git
 	pkgdesc = A modern roguelike game played in the console.
-	pkgver = 0.17.a0.r1020.ge683cc4
+	pkgver = 0.17.a0.r1572.g7a1422d
 	pkgrel = 1
 	url = http://crawl.develz.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = crawl-git
 	makedepends = git
 	depends = zlib
 	depends = ncurses
-	source = git+https://gitorious.org/crawl/crawl.git
+	source = git+https://github.com/crawl/crawl
 	md5sums = SKIP
 
 pkgname = crawl-git
