@@ -1,0 +1,18 @@
+pkgbase = python-flask-appconfig
+	pkgdesc = Configures Flask applications in a canonical way. Also auto-configures Heroku. Aims to standardize configuration.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://github.com/mbr/flask-appconfig
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/f/flask-appconfig/flask-appconfig-0.10.1.tar.gz
+	md5sums = 136fc9ce5c3f55dee78c82e529864f2d
+
+pkgname = python2-flask-appconfig
+	depends = python2-flask
+
+pkgname = python-flask-appconfig
+	depends = python-flask
+
