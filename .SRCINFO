@@ -12,7 +12,11 @@ pkgbase = python-flask-bootstrap
 
 pkgname = python2-flask-bootstrap
 	depends = python2-flask
+	depends = python2-visitor
+	depends = python2-dominate
 
 pkgname = python-flask-bootstrap
 	depends = python-flask
+	depends = python-visitor
+	depends = python-dominate
 

@@ -18,7 +18,7 @@ prepare() {
 }
 
 package_python2-flask-bootstrap() {
-depends=('python2-flask')
+depends=('python2-flask' 'python2-visitor' 'python2-dominate')
 
     cd python2-$_pipname-$pkgver
     python2 setup.py install --root="$pkgdir/" --optimize=1
@@ -26,7 +26,7 @@ depends=('python2-flask')
 }
 
 package_python-flask-bootstrap() {
-depends=('python-flask')
+depends=('python-flask' 'python-visitor' 'python-dominate')
 
     cd $_pipname-$pkgver 
     python setup.py install --root="$pkgdir/" --optimize=1
