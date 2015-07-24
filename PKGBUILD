@@ -8,7 +8,7 @@
 pkgname=nvidia-mainline
 pkgver=352.21
 _extramodules=extramodules-4.2-mainline
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux-mainline"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -19,7 +19,7 @@ install=nvidia.install
 options=(!strip)
 
 source=("nvidia-4.2.patch")
-sha256sums=('863a43c374eb00678bf8a16b60bb941c63a21b98d7ab4d13e217771e4296589c')
+sha256sums=('01fe34a2eeb88057d51849098966e202f1ab94e548afe85ef25f533c8375e3c3')
 
 if [ "$CARCH" = "i686" ]; then
     _arch='x86'

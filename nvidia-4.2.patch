@@ -1,5 +1,5 @@
 diff --git a/kernel/nv-frontend.c b/kernel/nv-frontend.c
-index 65bbb1b..e4813eb 100644
+index 65bbb1b..be39c8d 100644
 --- a/kernel/nv-frontend.c
 +++ b/kernel/nv-frontend.c
 @@ -15,7 +15,7 @@
@@ -7,12 +7,12 @@ index 65bbb1b..e4813eb 100644
  
  #if defined(MODULE_LICENSE)
 -MODULE_LICENSE("NVIDIA");
-+MODULE_LICENSE("GPL");
++MODULE_LICENSE("GPL\0NVIDIA");
  #endif
  #if defined(MODULE_INFO)
  MODULE_INFO(supported, "external");
 diff --git a/kernel/nv.c b/kernel/nv.c
-index abe81ed..2bc765b 100644
+index abe81ed..05945b5 100644
 --- a/kernel/nv.c
 +++ b/kernel/nv.c
 @@ -31,7 +31,7 @@
@@ -20,7 +20,7 @@ index abe81ed..2bc765b 100644
  #if defined(NV_VMWARE) || (NV_BUILD_MODULE_INSTANCES != 0)
  #if defined(MODULE_LICENSE)
 -MODULE_LICENSE("NVIDIA");
-+MODULE_LICENSE("GPL");
++MODULE_LICENSE("GPL\0NVIDIA");
  #endif
  #if defined(MODULE_INFO)
  MODULE_INFO(supported, "external");
