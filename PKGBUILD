@@ -1,5 +1,6 @@
-# Contributor: Alexandru Ianu <alexandru.ianu@gmail.com>
 # Maintainer: Alexandru Ianu <alexandru.ianu@gmail.com>
+# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: Alexandru Ianu <alexandru.ianu@gmail.com>
 pkgname=steam-native
 pkgver=1.0.0.50
 pkgrel=7
