@@ -2,40 +2,39 @@
 # Maintainer:  Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=cottage-git
-_pkgname=cottage
 pkgver=94f2379
 pkgrel=4
 
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
-arch=('i686' 'x86_64')
 url="https://github.com/HarveyHunt/cottage"
 license=('GPL')
+arch=('i686' 'x86_64')
 
 checkdepends=('linux-headers')
-options=('!strip' 'debug')
-source=("git+https://github.com/HarveyHunt/cottage#branch=master")
+options=('debug')
+source=("$pkgname::git+https://github.com/HarveyHunt/cottage#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   git rev-parse --short HEAD
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$pkgname"
   make debug
 }
 
 check() {
-  cd "$_pkgname"
+  cd "$pkgname"
   find /usr/lib/modules -name checkpatch.pl -print -quit | xargs -i cp {} .
 
-  echo "spellingtxt||getoutofmyface" > spelling.txt
+  printf 'spellingtxt||disable\n' > spelling.txt
   make check
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$pkgname"
   install -Dm755 "bin/debug/cottage" "$pkgdir/usr/bin/cottage"
 }
 
