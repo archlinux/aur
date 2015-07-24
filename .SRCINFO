@@ -12,7 +12,9 @@ pkgbase = python-flask-appconfig
 
 pkgname = python2-flask-appconfig
 	depends = python2-flask
+	depends = python2-click
 
 pkgname = python-flask-appconfig
 	depends = python-flask
+	depends = python-click
 
