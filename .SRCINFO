@@ -1,6 +1,6 @@
 pkgbase = lua51-moonscript
 	pkgdesc = Dynamic scripting language that compiles into Lua (5.1)
-	pkgver = 0.2.6
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = http://moonscript.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = lua51-moonscript
 	depends = lua51-alt-getopt
 	depends = lua51-lpeg
 	conflicts = moonscript
-	source = https://github.com/leafo/moonscript/archive/v0.2.6.tar.gz
-	sha256sums = ed9dc2508f036dbc4571d5b654a73363ff71fe1045c6ee6456654e94d476e1e6
+	source = https://github.com/leafo/moonscript/archive/v0.3.2.tar.gz
+	sha256sums = 1fb616c1ed43008a03e10579cb9b3eabc9a95fae4f97d3e261819afdbaa6c4b0
 
 pkgname = lua51-moonscript
 

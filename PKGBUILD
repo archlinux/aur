@@ -2,7 +2,7 @@
 
 pkgname=lua51-moonscript
 _pkgname=moonscript
-pkgver=0.2.6
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Dynamic scripting language that compiles into Lua (5.1)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('lua51-filesystem' 'lua51-alt-getopt' 'lua51-lpeg')
 conflicts=('moonscript')
 source=("https://github.com/leafo/moonscript/archive/v${pkgver}.tar.gz")
-sha256sums=('ed9dc2508f036dbc4571d5b654a73363ff71fe1045c6ee6456654e94d476e1e6')
+sha256sums=('1fb616c1ed43008a03e10579cb9b3eabc9a95fae4f97d3e261819afdbaa6c4b0')
 
 prepare() {
   rm -fr build
