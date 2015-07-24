@@ -1,14 +1,14 @@
 pkgbase = python-rabbitpy
 	pkgdesc = A pure python, thread-safe, minimalistic and pythonic RabbitMQ client library
-	pkgver = 0.25.0
+	pkgver = 0.26.2
 	pkgrel = 1
 	url = http://rabbitpy.readthedocs.org
 	arch = any
 	license = CUSTOM
 	makedepends = python3
 	depends = python
-	source = https://pypi.python.org/packages/source/r/rabbitpy/rabbitpy-0.23.0.tar.gz
-	md5sums = 6430a629d8d7b4c7f6db8e87a28c1b4d
+	source = https://pypi.python.org/packages/source/r/rabbitpy/rabbitpy-0.26.2.tar.gz
+	md5sums = 39bceee9daa496c53158308d0962dbf8
 
 pkgname = python-rabbitpy
 
