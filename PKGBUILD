@@ -13,7 +13,7 @@ makedepends=(wine winetricks)
 install=${pkgname}.install
 _installer=ADE_4.0_Installer.exe
 source=("http://download.adobe.com/pub/adobe/digitaleditions/${_installer}")
-md5sums=('74c73f7e68df9fff35f0a6d940ff2876')
+md5sums=('SKIP')
 
 package() {
     install -Dm644 ${_installer} ${pkgdir}/tmp/${_installer}
